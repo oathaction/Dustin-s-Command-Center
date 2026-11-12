@@ -1,0 +1,220 @@
+{
+ "title": "Creative director’s rescores for Phase 3, round 0: chapter 13 and the palette proofs, after the fix pass and DR-191’s second pass",
+ "date": "2026-11-12",
+ "author": "Creative director (oa-creative-director), subagent of the main session",
+ "basis": "The strict build in the scratchpad’s phase-3/round-0-review/20261112_Round-0-Rescore-Guide.html (9,959,450 bytes, chapter 13 at 248,530 bytes, 0 warnings), anchor #evidence, looked at by the creative director at 1440 and 390 px with all 27 plates captured; the editor’s notes, “Fix pass”, “Fix pass read” and “Second pass”; the palette sheet work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs.html at 1440 and 390 px, with the palette notes’ “Fix pass”, “Fix pass 2” and “Second pass”; 20261111_Palette-Proposal.json; tokens.json release 6.0.0-gate3.1",
+ "first_scores_file": "work/handoffs/phase-3/20261111_Round-0-CD-Scores.json",
+ "review": "work/handoffs/phase-3/20261111_CD-Review-Of-Round-0.md, section “Rescore”",
+ "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
+ "criteria": [
+  {
+   "key": "craft",
+   "name": "Craft"
+  },
+  {
+   "key": "clarity",
+   "name": "Clarity"
+  },
+  {
+   "key": "brand_fidelity",
+   "name": "Brand fidelity"
+  },
+  {
+   "key": "usefulness",
+   "name": "Usefulness"
+  },
+  {
+   "key": "evidence_honesty",
+   "name": "Evidence honesty"
+  },
+  {
+   "key": "accessibility",
+   "name": "Accessibility"
+  }
+ ],
+ "items": [
+  {
+   "key": "ch13",
+   "name": "Chapter 13, Evidence and sourcing",
+   "anchor": "#evidence",
+   "stage": "Phase 3, round 0, after the fix pass and DR-191’s second pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 3,
+    "evidence_honesty": 3,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "The mapping table’s rules now run whole, the cards sit centered at true size, 13.7 and 13.13 draw through the kit, and patterned lines run solid under their ticks, though the opener sets a numeral inside a quotation (R1).",
+    "clarity": "The intro is 73 words and the opener’s grade chip and first typed chip reach the first screen at 1440 px, and the terms I checked (Supplemental Poverty Measure, seasonally adjusted, feasibility, pharmacy benefit managers) are defined at first use.",
+    "brand_fidelity": "The opener now carries the evidence chip on the first screen, the line code holds at 2x, and red appears only as Rule 12.5’s target in 13.5, one meaning per view.",
+    "usefulness": "Rule 13.4 cites the ten oa.chart.grade tokens by name with their values, which match tokens.json (shortest run 20 widths, 1 px rails, 28 px lead-in), and Rule 13.1 says what a diagram prints in the label’s place.",
+    "evidence_honesty": "No plate prints “Official statistic”, 13.9 reads “can raise”, atlas names sit in quotation marks, 13.7 names both groups and one release, and 13.1 prints its margin of error and its estimate’s method, though 13.2’s Documented title states a fact other than its connection’s claim (R2).",
+    "accessibility": "Grade travels in pattern, word and the record square, and the phone tables stack readably at 390 px; I did not rerun axe or read the new alt texts, and the editor reports 0 axe violations at both widths."
+   },
+   "first_must_fix": [
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+   ],
+   "first_should_fix": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7"
+   ],
+   "first_items_landed": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6",
+    "S7"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [
+    "R1",
+    "R2"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 2,
+   "ready": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "palettes",
+   "name": "Palette proofs and the proposed palette tokens",
+   "anchor": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs.html; 20261111_Palette-Proposal.json",
+   "stage": "Phase 3, round 0, after the fix pass and DR-191’s second pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 3,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 5,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "At 390 px the sheet now shows each chart’s phone form with every name on screen, and the categorical bar names every segment on leaders that cross no name.",
+    "clarity": "Each section keeps its status chip, and the line code section prints every value with the line of the atlas build it comes from.",
+    "brand_fidelity": "Four brand inks in an order that keeps both close pairs apart in a stack, two mixes of Prussian toward Newsprint, pair B with boxed arrows, and red on red resolved by Rule 05.3’s order.",
+    "usefulness": "The proposal carries every token with its value and source, group 4’s label token names its placement (labelBeside), and the grade tokens agree with Rule 13.4 and tokens.json.",
+    "evidence_honesty": "Both charts in the categorical card now draw the same four sectors, each segment carries its name, all 46 scripted checks pass, and the national figure prints with its margin of error at 90 percent.",
+    "accessibility": "Every scrolling frame is a named region a keyboard can reach, and axe finds 0 violations at 1440 and 390 px, as the data lead reports; every label still passes 4.5 to 1 on its fill or sits beside it."
+   },
+   "first_must_fix": [
+    "M2",
+    "M5"
+   ],
+   "first_should_fix": [
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "first_items_landed": [
+    "M2",
+    "M5",
+    "S8",
+    "S9",
+    "S10"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [
+    "R3"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true,
+   "to_ready": "Ready."
+  }
+ ],
+ "pending": [
+  {
+   "key": "kit",
+   "name": "The chart kit with S01 to S16",
+   "first_scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "status": "Rescored when the engineer’s last items land and the main session sends the build"
+  }
+ ],
+ "totals": {
+  "must_fix": 0,
+  "should_fix": 3,
+  "under_4": [],
+  "ready": [
+   "ch13",
+   "palettes"
+  ],
+  "not_ready": []
+ },
+ "must_fix": {},
+ "should_fix": {
+  "R1": {
+   "items": [
+    "ch13"
+   ],
+   "where": "s-13-opener",
+   "what": "Numeral 1 sits inside the quoted atlas name, “Political spending can ❶ tilt policy toward donors”, so a mark breaks a quotation Rule 13.12 asks to print exactly.",
+   "fix": "Set the numeral after the closing quotation mark, or before the title with the list naming the verb “can”.",
+   "owner": "Editor"
+  },
+  "R2": {
+   "items": [
+    "ch13"
+   ],
+   "where": "s-13-2-correct, the Documented row",
+   "what": "The other four rows title the connection’s own claim at its grade. The Documented row’s title, “The Department of Transportation had spent 46.6 percent of the infrastructure law’s transportation funds by July 31, 2026”, states a fact from the record’s evidence, while Connection LE02 claims “Congress decides public investment levels”.",
+   "fix": "Title the claim in record words, such as “Congress set the infrastructure law’s investment levels in 2021”, and keep the spending figure in the source line.",
+   "owner": "Editor"
+  },
+  "R3": {
+   "items": [
+    "palettes"
+   ],
+   "where": "Red on red, views 7 and 8",
+   "what": "The data lead asks the creative director to choose. In the light-fill variant the named bar stands apart in gray (0.371 against 0.635) and every value prints beside its bar; in view 1 it prints almost like its neighbors (0.371 against 0.386).",
+   "fix": "Adopt the light fill for the other bars wherever one named bar is emphasized, in red or in ink, and write it into chapter 14’s palette specification in round 5.",
+   "owner": "Data visualization lead"
+  }
+ },
+ "risks_for_dustin": [
+  "Chapter 13 builds at 248,530 bytes of its 250,000 ceiling. Any later word or plate change will pass the ceiling; the editor should cut before adding, and the engineer’s weight pass may free room.",
+  "The two new colors, Prussian 56 and 29 percent toward Newsprint, still wait for Dustin’s approval on board 1. I recommend he approve them."
+ ],
+ "questions_for_dustin": []
+}

@@ -8,7 +8,7 @@ Oath & Action Edition 06, Phase 3, round 0, November 11, 2026. Written by the en
 
 GUIDE HOOK READY. The Contracts below were written first, as the brief asks; everything else is done as far as this list says. Updated after the weight pass, the data lead's fix pass and fix pass 2 (November 12).
 
-- **Fix pass 2** (section below): D3-93 to D3-97 and D3-100 to D3-102 by code, with every kit item of the four reports but E13 and the spec-word items sent back as X12 to X18. All 16 specs pass at every column the guide gives a chart, in forced colors, with scripts off and in print. Chapter 14 projects at 2.951 MB on the final kit, with the compact carrier; board 1's four options are under "Board 1 weight options".
+- **Fix pass 2** (section below): D3-93 to D3-97 and D3-100 to D3-102 by code, with every kit item of the four reports but E13 and the spec-word items sent back as X12 to X18. All 16 specs pass at every column the guide gives a chart, in forced colors, with scripts off and in print. Chapter 14 projects at 2.954 MB on the final kit, with the compact carrier; board 1's four options are under "Board 1 weight options".
 
 - **The chart kit** (`work/build/chart-kit/`) draws S01 to S16 from their data files with one command, `node work/build/chart-kit/oa-chart.mjs build --all`, at 1440 and 390 px on Newsprint and Charcoal, with SVG, PNG and CSV exports, captures and grayscale proofs, and checks each drawing at a 328 px column too. 16 of 16 pass every check. `dataviz_check.js --kit` finds 0 faults in the drawings as the browser renders them. 19 forms in 17 modules, plain JavaScript, no library, running in a plain page from `tokens.css`, a data file and a spec (DR-235, tested).
 - **The drawing method**: drawn when the page loads, each chart's rows read back from its own table equivalent (`load-table`). The lightest of four measured in a real guide build. It passes scripts off, print, forced colors, reduced motion, resize, export parity and the rendered chart check.
@@ -206,11 +206,11 @@ D3-xxx | Board 1's weight options are read by script (`weight_options.py`) from 
 - Token build and `run_token_tests.py` with `leadIn`: all pass, 545 tokens; token table regenerated.
 - `v7_check.py --page` on the strict page: 0 failures; its self-test: every fault caught. `weight_pass.py --self-test`: every case passes.
 - Looked at: S01 at 358 and 256 px, S08 at 720 px, S09 at 558 to 1024 px, S13 and S16 at 1440 px, as rendered PNGs.
-- After the compact carrier: `oa-chart.mjs build --all --date 20261111`, 16 of 16 with page-to-Node parity; all 192 board files equal byte for byte to those built before it; `dataviz_check.js --kit` 16 of 16; the kit's self-test; `guide_build.py --strict` 0 warnings (9,958,797 bytes) and `--self-test` 296 of 296; `v7_check.py` 0 failures; the data check 61 tables, 0 faults; a fresh pilot; `weight_options.py` on both. The quick guide check on the fresh strict page: GCHECK3.
+- After the compact carrier: `oa-chart.mjs build --all --date 20261111`, 16 of 16 with page-to-Node parity; all 192 board files equal byte for byte to those built before it; `dataviz_check.js --kit` 16 of 16; the kit's self-test; `guide_build.py --strict` 0 warnings (9,958,797 bytes) and `--self-test` 296 of 296; `v7_check.py` 0 failures; the data check 61 tables, 0 faults; a fresh pilot; `weight_options.py` on both. The quick guide check on the fresh strict page: PASS, 0 failures at 1440 and 390 px.
 
 ### Not tested
 
-- **The weight after this pass.** Superseded by "Board 1 weight options" above: chapter 14 now projects at 2.951 MB on the final kit, mostly from D3-95's unrounded values, the Explainer maker's new notes, the scripts-off line and caption on every figure, and this pass's kit code.
+- **The weight after this pass.** Superseded by "Board 1 weight options" above: chapter 14 now projects at 2.954 MB on the final kit, mostly from D3-95's unrounded values, the Explainer maker's new notes, the scripts-off line and caption on every figure, and this pass's kit code.
 - Firefox and Safari for any of it; forced colors only as Chromium emulates them (light scheme), not Windows' own themes.
 - Print on paper: only Chromium's print media and the pilot check's probe; no PDF was paged and looked at in this pass.
 - Real screen readers: the name and description are checked in the DOM, not heard.
@@ -220,16 +220,16 @@ D3-xxx | Board 1's weight options are read by script (`weight_options.py`) from 
 
 ## Board 1 weight options
 
-D3-104's four options, measured on the final kit (November 12) by `work/build/scripts/phase-3/weight_options.py` from a fresh strict build (`guide_build.py --strict`: 0 warnings, 9,958,797 bytes) and a fresh pilot (`chart_pilot.py --methods load-table`, 16 plates, chapter 14 projected for 97 specimens). The board builder can read the same figures from the script's JSON, written to scratch as `round-0-fix-2/engineer/20261112_Board-1-Weight-Options.json`, or rerun the script on its own builds. Each ask is chapter 14's overrun of its 1.75 MB stop less the page's room under 15.5 MB (444,387 bytes on this build), never below zero, with Phase 5's 0.40 MB untouched. The compression rows count about 600 bytes for the script that inflates the data (an estimate). The photo row frees room elsewhere on the page and leaves chapter 14 as it stands.
+D3-104's four options, measured on the final kit after the second pass (November 12) by `work/build/scripts/phase-3/weight_options.py` from a fresh strict build (`guide_build.py --strict`: 0 warnings, 9,959,613 bytes) and a fresh pilot (`chart_pilot.py --methods load-table`, 16 plates, chapter 14 projected for 97 specimens). The board builder can read the same figures from the script's JSON, written to scratch as `round-0-fix-2/engineer/20261112_Board-1-Weight-Options.json`, or rerun the script on its own builds. Each ask is chapter 14's overrun of its 1.75 MB stop less the page's room under 15.5 MB (443,798 bytes on this build), never below zero, with Phase 5's 0.40 MB untouched. The compression rows count about 600 bytes for the script that inflates the data (an estimate). The photo row frees room elsewhere on the page and leaves chapter 14 as it stands.
 
 | Option | Chapter 14 projected | Over its 1.75 MB stop | Smallest ask of Phase 4's 2.54 MB | What a reader loses |
 |---|---|---|---|---|
-| As it stands | 2.951 MB | 1.201 MB | 0.756 MB | Nothing |
-| Chart data carried compressed | 2.792 MB | 1.042 MB | 0.597 MB | Nothing: only the script reads the data |
-| Tables compressed too | 2.137 MB | 0.387 MB | 0.000 MB | With scripts off, every chart's table (title, description, notes and source line stay) |
-| The smaller photo copies | 2.951 MB | 1.201 MB | 0.000 MB | A visible resample: chapter 01's photographs (3 on the page, one shown twice) at 1,200 px wide, which frees 1.060 MB of the page |
+| As it stands | 2.954 MB | 1.204 MB | 0.761 MB | Nothing |
+| Chart data carried compressed | 2.796 MB | 1.046 MB | 0.602 MB | Nothing: only the script reads the data |
+| Tables compressed too | 2.141 MB | 0.391 MB | 0.000 MB | With scripts off, every chart's table (title, description, notes and source line stay) |
+| The smaller photo copies | 2.954 MB | 1.204 MB | 0.000 MB | A visible resample: chapter 01's photographs (3 on the page, one shown twice) at 1,200 px wide, which frees 1.060 MB of the page |
 
-What each row measures: chart data compressed deflates each chart's data island (1,643 bytes saved per plate on average); tables compressed too deflates the table equivalent with it (8,389 per plate), so a reader with scripts off, a search inside the page before the script runs and a reader mode see no table. The creative director advised against that row (part 2, "The weight and what to ask Dustin"). The photo copies are a visible change for Dustin and the research lead, whose records hold each file's SHA-256.
+What each row measures: chart data compressed deflates each chart's data island (1,643 bytes saved per plate on average); tables compressed too deflates the table equivalent with it (8,388 per plate), so a reader with scripts off, a search inside the page before the script runs and a reader mode see no table. The creative director advised against that row (part 2, "The weight and what to ask Dustin"). The photo copies are a visible change for Dustin and the research lead, whose records hold each file's SHA-256.
 
 The compact carrier, built for this (fix pass 2): a number column whose printed figures do not give back the stored value now carries its values in the chart's island as one comma-separated list, and its cells carry no attribute (`K.lean_carry`, `K.rows_from_table`). Proof: `oa-chart.mjs build --all` passes 16 of 16 with page-to-Node parity, the 192 board files (captures, exports, CSV) are byte for byte what they were before it, and `dataviz_check.js --kit` passes all 16 pages. On the pilot it took S13 from 49,769 to 47,145 bytes, S15 from 19,463 to 18,117, and S11 and S12 down 444 each; the estimate of half was high, because S13's island also carries an unrounded column the table does not show.
 
@@ -251,7 +251,14 @@ Requests back: the Explainer maker can now set S13's peak (X13, E32) and switch 
 D3-xxx | A form prints shared words only through `OAChart.word` | One source for the words, with the editor's wording on a page and in Node alike
 D3-xxx | On a phone a totals row's peak words go right of its name, else under its sparkline | The name holds the line above the sparkline at that width (E32)
 
-Tested: SECOND_TESTED
+Tested:
+- `oa-chart.mjs build --all --date 20261112`: 16 of 16 pass every check, page-to-Node parity included; the board folder, refreshed from it, equals the committed board byte for byte (192 files): no drawing, export or CSV changed. The build's last line names its folder.
+- A copy of S13 with the held peak setting: passes at every width; it prints "Peak: 3,013,000 in October 2024" at 1024, 358 and 256 px.
+- `dataviz_check.js --kit` on the 16 pages: 16 of 16 pass; its self-test: every planted fault caught.
+- `oa-chart.mjs self-test`, including the words in `kit.js` equal to the editor's `words.json`: every fault caught.
+- `data_round0_build.py`: 61 tables, 0 faults; only `v7-scenarios-2030.meta.json` changed.
+- `guide_build.py --strict`: 0 warnings, 9,959,613 bytes; `--self-test` 296 of 296; `v7_check.py` 0 failures; a fresh pilot and `weight_options.py` for the table above. The quick guide check on this page: GCHECK4.
+Not tested: the README read by someone who does not code; S06 with `directions_wording` and S13 with its peak, which wait on the Explainer maker's specs.
 
 ## Contracts
 

@@ -220,3 +220,25 @@ Chapter 14 projects to 2.76 MB against its 1.75 MB stop, and the page to 16.06 M
 - A new chart built from the kit, the plain browser page of DR-235, and the CSV and SVG exports opened.
 - Load time on a phone or slow device; the 97-chart load figure is a projection from 16.
 - The engineer's weight pass and the compressed-table option, which are still running.
+
+# Rescore: chapter 13 and the palette proofs
+
+November 12, 2026, after the fix pass and DR-191's second pass. Scores in `work/handoffs/phase-3/20261112_Round-0-CD-Rescores.json`, with the first scores beside them. I read chapter 13 in the strict build `20261112_Round-0-Rescore-Guide.html` (chapter 13 at 248,530 bytes, 0 warnings), all 27 plates at 1440 and 390 px, and the palette sheet at both widths. The kit waits for the engineer's last items.
+
+| Item | Craft | Clarity | Brand fidelity | Usefulness | Evidence honesty | Accessibility | Must | Should | Ready |
+|---|---|---|---|---|---|---|---|---|---|
+| Chapter 13 (first) | 4 | 4 | 4 | 3 | 3 | 4 | 4 | 7 | no |
+| Chapter 13 (now) | 4 | 4 | 4 | 4 | 4 | 4 | 0 | 2 | yes |
+| Palette proofs (first) | 4 | 4 | 5 | 4 | 3 | 4 | 2 | 3 | no |
+| Palette proofs (now) | 4 | 4 | 5 | 4 | 4 | 4 | 0 | 1 | yes |
+
+**What landed.** In chapter 13 every first item landed. No plate prints "Official statistic", 13.9 reads "can raise", and atlas names sit in quotation marks. Rule 13.4 cites the ten `oa.chart.grade` tokens with values that match `tokens.json`, and Rule 13.1 says a diagram prints its least certain grade in the label's place. 13.7 draws two kit charts in one window and names both groups and one release. The opener's chip reaches the first screen, and the table's rules run whole. On the sheet, the categorical card draws one set of four sectors in both charts, and every bar segment carries its name. The phone forms show at 390 px, and group 4's label token now says where the label goes.
+
+**Should fix, new.**
+- **R1 (Editor).** The opener sets numeral 1 inside the quoted atlas name, "Political spending can ❶ tilt policy toward donors". Move it outside the quotation marks.
+- **R2 (Editor).** 13.2's Documented title states the department's spending figure, while Connection LE02 claims "Congress decides public investment levels". Title the claim in record words and keep the figure in the source line.
+- **R3 (Data lead), the choice the data lead asked me to make.** Adopt views 7 and 8's light fill for the other bars wherever one bar is named, in red or in ink. In gray it keeps the named bar apart (0.371 against 0.635), and every value prints.
+
+**Risks.** Chapter 13 sits 1,470 bytes under its 0.25 MB ceiling, so any addition must come with a cut. The two new colors still need Dustin's approval on board 1; I recommend it.
+
+**Tested.** Both builds' captures, read by me. By script: the chapter's rule text, specifications and tokens; the absence of "Official statistic"; the token values in `tokens.json` and the proposal; 46 of 46 palette checks; the sheet's words for straight apostrophes and em dashes. **Not tested.** axe, keyboard and forced colors on either item; the new alt texts; the color-vision captures after the fix pass.
