@@ -1,0 +1,40 @@
+{
+  "id": "14.20",
+  "title": "Use a slope chart to compare many items at two points in time.",
+  "rule": [
+    "Draw each item as a straight line from its earlier value on the left axis to its later value on the right, printing the earlier value at the left and the later value with the item’s name at the right. Set the item the title names in ink and the rest in gray, and print both years over the axes.",
+    "Choose the two years for a reason the measure line states, and when a longer record would change how a reader sees the move, give that record in a note (Rule 14.10)."
+  ],
+  "use_when": "The reader asks which items rose and which fell between two dates, and how their order changed.",
+  "use_instead": [
+    {
+      "when": "The years between the two points matter, or there are more than two",
+      "rule": "14.30"
+    },
+    {
+      "when": "More than about ten lines would cross into a tangle, so each item needs a row of its own",
+      "rule": "14.19"
+    },
+    {
+      "when": "The reader asks how far each item moved and toward which side",
+      "rule": "14.25"
+    }
+  ],
+  "why": {
+    "text": [
+      "The angle of each line shows the direction and size of a change at a glance, and lines that cross show a change in order that two lists of numbers hide. Two points alone say nothing about the years between them, so the chart owes the reader the reason for its dates."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S20",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.3",
+    "14.9",
+    "14.10"
+  ],
+  "builders": "Form slope: node work/build/chart-kit/oa-chart.mjs build s20, or copy specs/s20.json and point it at a new dataset; labels.from and labels.to name the two times.",
+  "correct": null,
+  "failure": null
+}

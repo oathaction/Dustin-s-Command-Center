@@ -1,0 +1,39 @@
+{
+  "id": "14.19",
+  "title": "Use a dumbbell for two values in each row and the gap between.",
+  "rule": [
+    "Join each row’s two values with a line on one scale for every row, the earlier as an open dot and the later filled, and print both values beside their dots. When the scale starts above zero, say where in the measure line, and test each change against its margin of error before the words call it a change (Rule 14.9)."
+  ],
+  "use_when": "The reader asks how far apart two values are for each group, such as the same age group in two elections, and which way each one moved.",
+  "use_instead": [
+    {
+      "when": "Many items at two points in time, where a change in their order matters",
+      "rule": "14.20"
+    },
+    {
+      "when": "The direction and size of each shift matter more than the two values",
+      "rule": "14.25"
+    },
+    {
+      "when": "Two to four measures per category are compared as lengths from zero",
+      "rule": "14.22"
+    }
+  ],
+  "why": {
+    "text": [
+      "The line between the dots draws the gap itself, so a reader sees its size without subtracting, and the two dot styles keep the years apart in gray print. A dot carries no length from zero, so the scale may start where the data starts, as long as the chart says so."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S04",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.3",
+    "14.4",
+    "14.9"
+  ],
+  "builders": "Form dumbbell: node work/build/chart-kit/oa-chart.mjs build s04, or copy specs/s04.json and point it at a new dataset; labels.from and labels.to name the two series values.",
+  "correct": null,
+  "failure": null
+}

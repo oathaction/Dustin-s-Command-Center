@@ -1,0 +1,41 @@
+{
+  "id": "14.22",
+  "title": "Use grouped bars when two to four measures share each category.",
+  "rule": [
+    "Set the series side by side within each category, in the four-ink order with the fourth hatched (Rule 14.5), start every bar at zero and print each value at its end. Name each series after its value in the first group, so the chart needs no key (Rule 14.3).",
+    "Past four series, split into small multiples (Rule 14.8). When the title names a gap between two survey estimates, test it against the margin of error first and say in a note that it passes (Rule 14.9)."
+  ],
+  "use_when": "The reader compares two to four series within each category first, such as men and women at each age, and across categories second.",
+  "use_instead": [
+    {
+      "when": "There are more than four series, or the reader compares one series across categories and the others only distract",
+      "rule": "14.23"
+    },
+    {
+      "when": "The series are two dates for the same item and the change is the point",
+      "rule": "14.19"
+    },
+    {
+      "when": "The series are parts that add to one whole",
+      "rule": "14.46"
+    }
+  ],
+  "why": {
+    "text": [
+      "Bars that touch are compared first, so grouping decides which comparison the reader makes. Grouping by category puts the two series of each category side by side, which suits a gap within each group, and the eye can still run down one series’ bars to compare across groups."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S22",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.3",
+    "14.5",
+    "14.8",
+    "14.9"
+  ],
+  "builders": "Form grouped-bar: node work/build/chart-kit/oa-chart.mjs build s22, or copy specs/s22.json and point it at a new dataset; labels.series sets each series’ name and the order its bars draw.",
+  "correct": null,
+  "failure": null
+}

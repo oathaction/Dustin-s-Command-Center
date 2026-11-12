@@ -1,0 +1,35 @@
+{
+  "id": "14.33",
+  "title": "Set a word-sized line inside a sentence to show a trend’s shape.",
+  "rule": [
+    "Use a sparkline, a line as tall as the type and a few words wide, where a sentence or a table row names a trend. Print the first and last figures in the words beside it, put a dot on the last value, scale each line to its own lowest and highest values, and leave out axes and gridlines."
+  ],
+  "use_when": "The reader is reading a sentence or scanning a row and needs the shape of a trend next to its figures, without leaving the line.",
+  "use_instead": [
+    {
+      "when": "The reader needs to read values off the line, or to compare lines on one scale",
+      "rule": "14.29"
+    },
+    {
+      "when": "The same trend runs down many rows of a table",
+      "rule": "14.128"
+    },
+    {
+      "when": "Many parts of one total need one shared scale",
+      "rule": "14.34"
+    }
+  ],
+  "why": {
+    "text": [
+      "A sparkline gives the shape of a series in the space of a word, so the reader keeps reading. Each line takes its own scale, so its height says nothing about size, and the figures in the sentence carry the amounts."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S28",
+  "tier": "core",
+  "tokens": [],
+  "related": [],
+  "builders": "Form sparkline: node work/build/chart-kit/oa-chart.mjs build s28; each sentence in labels.sentences holds {spark} where the line sits and takes its figures from the data.",
+  "correct": null,
+  "failure": null
+}

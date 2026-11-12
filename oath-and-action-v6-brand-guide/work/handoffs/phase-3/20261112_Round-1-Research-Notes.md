@@ -6,7 +6,9 @@ Oath & Action Edition 06, Phase 3, round 1. Research lead (`oa-research-lead`), 
 
 **Round 3's data plan** is written for the data lead's sign-off: `work/handoffs/phase-3/20261112_Round-3-Data-Plan.md` (ready 04:05 UTC). It covers all 32 round 3 forms (rules 14.93 to 14.124): 20 new data-bearing specimens, 3 built maps that become entries (S07, S12, S16) and 9 rule-only sketches. Thirteen forms change data from the coverage plan under DR-229 and one dataset per lesson. Counted for chapter 14 as a whole (about 95 examples with round 4 as planned), the largest domain, elections and representation, reaches 16 against a limit of 23, and no state passes 3 against 19. One download is needed (item 2, the Department of Labor's state minimum wage history, for row 113), and one request goes to the engineer (ENG-10, geometry in the data folder).
 
-**Status.** Plan: waiting for sign-off. Route sources (FA, FR, ENF, CRT, AV, IC, CIV): in progress. Fetch and freeze: after sign-off.
+**The seven remaining routes** are in `work/research/20261111_Policy-Workflow-Sources.md`, section "Round 1: the seven remaining routes" (done 04:15 UTC): FA, FR, ENF, CRT, AV, IC and CIV, each stage with the official source that sets it, a quote from the text read today, the address and the date checked. Two findings worth carrying: the Senate's vote records settle the 2013 and 2017 cloture precedents that round 0 left open (votes 242 to 244 of November 21, 2013; vote 109 of April 6, 2017), and 21 Congressional Review Act disapprovals became law in the 119th Congress through November 12, 2026, out of 140 laws (Congress.gov API). The file's title now names all eleven routes, and its round 0 list of unverified claims marks item 5 settled.
+
+**Status.** Plan: waiting for sign-off. Route sources: done. Fetch and freeze: after sign-off.
 
 ## Routine calls
 
@@ -17,6 +19,8 @@ Oath & Action Edition 06, Phase 3, round 1. Research lead (`oa-research-lead`), 
 - D3-xxx | The network diagram draws both 2024 presidential joint fundraising committees the same way | Both parties use the mechanism, so Rule 01.11 asks for a case from each in the same form
 - D3-xxx | Map geometry comes from the Census Bureau's 2024 cartographic boundary and Gazetteer files, frozen unprojected and unsimplified, with the kit projecting and simplifying at build (ENG-10) | Public-domain federal files; projection is a drawing choice, so the data stays neutral and the page carries only drawn paths
 - D3-xxx | The district tile map's layout is the studio's own, from the Census Bureau's district centers | Published tile layouts are third-party work, study only under Master Brief section 2
+- D3-xxx | The executive action route shows revocation with one order from each of the last two transitions, Executive Order 13992 (2021) and Executive Order 14148 (2025), each counted from its Federal Register text | The mechanism belongs to every administration, so the source shows a case from each in the same form (Rule 01.11)
+- D3-xxx | Quotes that hold an em dash in the source are split into quoted fragments rather than repunctuated | The guide sets no em dash, and a quote keeps the source's words and punctuation
 
 ## Requests
 
@@ -30,8 +34,13 @@ Oath & Action Edition 06, Phase 3, round 1. Research lead (`oa-research-lead`), 
 - That data.medicaid.gov lists "Medicaid and CHIP Updated Renewal Outcomes" (identifier e6205a51-e6d7-4849-9882-4483b8a28c41, modified November 1, 2024), and that fec.gov links `2024congressgecands.xlsx` and the Census folders hold every file the geometry table names.
 - The round 3 table's domain totals, recounted by script from the plan's own rows: 20 new specimens, with the totals the count table prints.
 - No em dash or U+2011 in the plan.
+- Route sources: 53 requests between 04:05 and 04:10 UTC, 47 of them answered with the page or record asked for, each in its own download folder (`.../round-1/research/dl-routes-1/` to `dl-routes-3/`, with `fetch-log.tsv` in each), converted to text by script and quoted from that text. The revocation counts of Executive Orders 13992 (6 orders) and 14148 (67 orders, 11 memoranda) were counted by script from each order's section 2 with line-break hyphens joined; the 21 disapproval laws by script from the Congress.gov law list (140 laws, pagination count 140).
+- No em dash or U+2011 in the workflow sources file.
 
 ## Not tested
+
+- The route sources' pages that refused or were not found (ftc.gov's enforcement overview, justice.gov's filings page, rules.senate.gov, the appellate rules file, the Impoundment Control Act sections at the address tried); each is listed in the file's round 1 claims.
+- The Senate's committee steps for nominations and any precedent after 2017.
 
 - Any dataset's contents: nothing is fetched until the sign-off.
 - The Census Bureau's own terms for its boundary files, which I read before freezing.
@@ -39,6 +48,9 @@ Oath & Action Edition 06, Phase 3, round 1. Research lead (`oa-research-lead`), 
 - The FEC committee IDs of the two joint fundraising committees, and the H.R. 5371 roll call numbers; both are read from the record at fetch.
 
 ## Change log
+
+Modified:
+- `work/research/20261111_Policy-Workflow-Sources.md`: the title, one sentence of the opening, item 5 of round 0's unverified claims, and the new section "Round 1: the seven remaining routes" with its own list of claims not verified
 
 Created:
 - `work/handoffs/phase-3/20261112_Round-3-Data-Plan.md`

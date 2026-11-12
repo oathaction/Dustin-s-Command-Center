@@ -1,0 +1,97 @@
+{
+  "kit": 1,
+  "id": "S24",
+  "form": "change-lollipop",
+  "family": "shift-and-swing",
+  "tier": "core",
+  "dataset": "census-bfs-business-applications-by-state",
+  "where": {
+    "year": [
+      2019,
+      2025
+    ]
+  },
+  "sort": [
+    {
+      "field": "name",
+      "order": "asc"
+    },
+    {
+      "field": "year",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "Where did applications to start a business rise most since 2019?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: Census Bureau counts of applications for a tax ID",
+  "title": "Applications to start a business rose in every state and DC from 2019 to 2025, by 62 percent nationwide and most in Wyoming, where they quadrupled.",
+  "reading_guide": "Each line runs from zero to the state’s rise in business applications from 2019 to 2025, longest first. The key shows the length of a 100 percent rise, a doubling.",
+  "measure_line": "Change in business applications from 2019 to 2025, percent, 50 states and DC, with the United States above them. 2019 is the last full year before the pandemic, and 2025 the latest full year.",
+  "notes": [
+    "A business application is a request for a federal tax ID that signals a new business. Many applications never become a business that hires anyone.",
+    "Each year’s total is Oath & Action’s sum of the Census Bureau’s monthly counts, before seasonal adjustment.",
+    "The smallest rise was 22 percent, in the District of Columbia. Wyoming went from 19,663 applications to 79,023."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Ranked lollipop chart of the rise in business applications from 2019 to 2025 in each state and DC. Every one rose. The United States rose 62 percent. Wyoming rose most, 302 percent, followed by New Mexico and Delaware at 133 and 132 percent; the District of Columbia rose least, 22 percent.",
+  "table": {
+    "caption": "Business applications, by state, 2019 and 2025",
+    "pivot": {
+      "row": "name",
+      "column": "year",
+      "value": "business_applications",
+      "format": "integer",
+      "labels": {
+        "2019": "2019",
+        "2025": "2025"
+      }
+    },
+    "columns": [
+      {
+        "field": "name",
+        "label": "State",
+        "format": "text",
+        "row_header": true
+      }
+    ]
+  },
+  "chart_notes": [
+    "Key: a line the length of a 100 percent rise.",
+    "Each state’s rise in percent is printed beside its dot, from Wyoming’s +302% to the District of Columbia’s +22%; the United States, set apart at the top, rose 62%."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D06",
+  "states": [
+    "WY"
+  ],
+  "encode": {
+    "key": "code",
+    "label": "name",
+    "x": "year",
+    "y": "business_applications"
+  },
+  "formats": {
+    "value": "signed:0",
+    "key": "number:0",
+    "tick": "signed:0"
+  },
+  "labels": {
+    "from": 2019,
+    "to": 2025,
+    "measure": "percent",
+    "apart": "US",
+    "key": "A rise of {value} percent",
+    "key_value": 100,
+    "value": "{value}%"
+  },
+  "notes_internal": [
+    "Maker B, round 1. Data plan row 12, rule 14.26. Domain D06 from the sidecar (Competition and market power). states: WY, named in the title (Rule 01.12's count; the plan said 'top states named by the data').",
+    "Checked by script against census-bfs-business-applications-by-state.csv, 2019 and 2025 rows: United States 3,498,990 to 5,671,836, +62.1 percent; every state and DC rose; Wyoming 19,663 to 79,023, +301.9 percent, 4.02 times, 'quadrupled'; New Mexico +133.4, Delaware +132.3; District of Columbia +21.7, the smallest.",
+    "The form computes each change from the two years' rows, since the data folder holds no derived change file; the table pivots the same rows to 2019 and 2025 by state, sorted by name. Request R-B4 asks the research lead for a derived file with the change, so the table can print it beside the counts.",
+    "H09: the window 2019 to 2025 compares two whole calendar years and splits no period at an inauguration; the measure line gives both ends' reasons. Read from the left and the right: the title reports a rise everywhere and names no party or official.",
+    "Palette note from the data lead: direction by position, every stem in the subject ink, no fill."
+  ]
+}

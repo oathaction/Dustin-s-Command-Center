@@ -1,0 +1,38 @@
+{
+  "id": "14.23",
+  "title": "Repeat one small bar chart per group when groups need comparing.",
+  "rule": [
+    "Draw the same bars in one panel per group, on one scale shared by every panel, with the categories in the same order in each, so the eye compares a bar with the bar in the same place next door. Give each panel a title with its group and its size, set the category the title names in ink, and place as many panels across as fit, one across on a phone."
+  ],
+  "use_when": "The reader asks how the same mix or ranking differs from group to group, such as the evidence grades behind each topic, or there are more groups than four inks can carry (Rule 14.8).",
+  "use_instead": [
+    {
+      "when": "There are two to four groups and the reader compares them within each category",
+      "rule": "14.22"
+    },
+    {
+      "when": "Each group’s parts add to one whole and the whole is the point",
+      "rule": "14.46"
+    },
+    {
+      "when": "Each group is one value, so a panel would hold one bar",
+      "rule": "14.15"
+    }
+  ],
+  "why": {
+    "text": [
+      "Panels that repeat one design let the reader learn the chart once and then read every group the same way. A shared scale keeps a long bar in one panel the same size as a long bar in another, which separate scales would break without any sign on the page."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S23",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.4",
+    "14.8"
+  ],
+  "builders": "Form small-multiple-bars: node work/build/chart-kit/oa-chart.mjs build s23, or copy specs/s23.json and point it at a new dataset; encode.panel names the column that splits the panels, scale.x the scale they share.",
+  "correct": null,
+  "failure": null
+}

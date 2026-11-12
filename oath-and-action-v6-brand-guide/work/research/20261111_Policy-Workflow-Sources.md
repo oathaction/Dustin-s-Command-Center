@@ -1,8 +1,8 @@
-# Policy workflow sources: federal statute, state statute, state ballot and local routes
+# Policy workflow sources: the eleven routes to change
 
 Oath & Action Edition 06, Phase 3, round 0. Research lead, November 11, 2026, for chapter 15's workflows (proposal section 1.4). Paths are relative to `oath-and-action-v6-brand-guide/`.
 
-This first pass covers four of V7's eleven routes to change, the ones the proposal names first: FS (federal statute), SS (state statute), BI (state ballot) and LOC (local). For each stage the systems designer will draw, it gives the source that sets the rule, what the source says, and the date I read it. I read each source in full from this container on November 11, 2026, unless the row says "search only". A labeled secondary source stands in only where the primary refused. The other seven routes (FA, FR, ENF, CRT, AV, IC, CIV) follow in round 1.
+This first pass covers four of V7's eleven routes to change, the ones the proposal names first: FS (federal statute), SS (state statute), BI (state ballot) and LOC (local). For each stage the systems designer will draw, it gives the source that sets the rule, what the source says, and the date I read it. I read each source in full from this container on November 11, 2026, unless the row says "search only". A labeled secondary source stands in only where the primary refused. The other seven routes (FA, FR, ENF, CRT, AV, IC, CIV) follow in the section "Round 1: the seven remaining routes", added November 12, 2026.
 
 **What answered and what refused today.** archives.gov, house.gov, senate.gov, govinfo.gov, malegislature.gov, nebraskalegislature.gov, law.lis.virginia.gov, azleg.gov, sos.ca.gov and elections.alaska.gov answered. congress.gov, ncsl.org, csg.org and leginfo.legislature.ca.gov refused automated readers (403); the Texas Legislature's statutes site sent a page with no text; library.municode.com refused (403); boston.gov's council page sent a 212-byte reply with no text. Phase 2's list of answering hosts is in the Gate 2 report, section 9.
 
@@ -77,5 +77,126 @@ Nebraska's Legislature has one chamber, so the six-step tracker shows one floor 
 2. Texas's veto provisions (the site served no text).
 3. The Boston and Minneapolis ordinance rules, seen only as search snippets from the cities' own domains.
 4. Massachusetts Article XLVIII's legislative stages and second signature round, and California's limit on amending an initiative statute.
-5. The Senate's 2013 and 2017 changes for nominations.
+5. The Senate's 2013 and 2017 changes for nominations. Settled in round 1 from the Senate's vote records (FR section).
 6. Alaska's petition process (its ballot measures page returned "Not found").
+
+## Round 1: the seven remaining routes
+
+Research lead, November 12, 2026, under the round 1 brief (D3-226). Each source below was fetched from this container between 04:05 and 04:10 UTC on November 12, 2026, saved in its own download folder, and read as text; a quote is copied from that text. Answered today: govinfo.gov (the U.S. Code, the Code of Federal Regulations, the Federal Register and the Senate's standing rules), archives.gov, senate.gov (pages and vote records), uscourts.gov, supremecourt.gov, nlrb.gov, irs.gov, app.leg.wa.gov, revisor.mn.gov, tile.loc.gov, and api.congress.gov with its key. Refused or missing: ftc.gov's enforcement page (404 at the address tried), justice.gov's antitrust filings page (404), rules.senate.gov (a page drawn by script, no text), and the federal appellate rules file on uscourts.gov (404 at the address tried). federalregister.gov's pages send a bot check; its API answered.
+
+## FA. Federal executive action (V7: 7 route entries)
+
+V7: "Executive order, agency rule, guidance, staffing and budget execution", by the "President, agency heads"; "This is the least durable route: what one order does, another can undo."
+
+| Stage | What the source says | Source | Checked |
+|---|---|---|---|
+| Executive order | "Executive orders are official documents, numbered consecutively, through which the President of the United States manages the operations of the Federal Government." | National Archives, Office of the Federal Register, "Executive Orders", https://www.archives.gov/federal-register/executive-orders | 2026-11-12 |
+| Publication | "There shall be published in the Federal Register" "Presidential proclamations and Executive orders, except those not having general applicability and legal effect or effective only against Federal agencies or persons in their capacity as officers, agents, or employees thereof" | 44 U.S.C. 1505(a), https://www.govinfo.gov/content/pkg/USCODE-2024-title44/html/USCODE-2024-title44-chap15-sec1505.htm | 2026-11-12 |
+| What counts as a rule | "'rule' means the whole or a part of an agency statement of general or particular applicability and future effect designed to implement, interpret, or prescribe law or policy" (in part) | 5 U.S.C. 551(4), https://www.govinfo.gov/content/pkg/USCODE-2024-title5/html/USCODE-2024-title5-partI-chap5-subchapII-sec551.htm | 2026-11-12 |
+| Review of a draft rule at the White House | The Office of Information and Regulatory Affairs "shall waive review or notify the agency in writing of the results of its review" within 10 working days for preliminary actions and, "For all other regulatory actions, within 90 calendar days after the date of submission" of the agency's analysis (section 6(b)(2)) | Executive Order 12866 of September 30, 1993, 58 FR (October 4, 1993), National Archives copy, https://www.archives.gov/files/federal-register/executive-orders/pdf/12866.pdf. Later orders have amended parts of it; this pass did not trace them | 2026-11-12 |
+| Proposed rule, comment and final rule | Notice in the Federal Register, comment, and publication of a substantive rule "not less than 30 days before its effective date" (as the FS section above quotes) | 5 U.S.C. 553(b) to (d) | 2026-11-11 |
+| Guidance with no comment period | Notice and comment do not apply "to interpretative rules, general statements of policy, or rules of agency organization, procedure, or practice", except where a statute requires them | 5 U.S.C. 553(b)(A), https://www.govinfo.gov/content/pkg/USCODE-2024-title5/html/USCODE-2024-title5-partI-chap5-subchapII-sec553.htm | 2026-11-12 |
+| Congressional Review Act: report and waiting period | An agency reports each rule to both houses and the Comptroller General before it takes effect; a major rule takes effect no sooner than 60 days after Congress receives the report or the rule is published, whichever is later | 5 U.S.C. 801(a)(1) and (3), https://www.govinfo.gov/content/pkg/USCODE-2024-title5/html/USCODE-2024-title5-partI-chap8-sec801.htm | 2026-11-12 |
+| Congressional Review Act: disapproval | "A rule shall not take effect (or continue), if the Congress enacts a joint resolution of disapproval"; a disapproved rule "may not be reissued in substantially the same form" unless a later law authorizes it | 5 U.S.C. 801(b) | 2026-11-12 |
+| Congressional Review Act: the fast track | A joint resolution must be introduced within 60 days of the report (days of adjournment over 3 days excluded); in the Senate, 30 senators can discharge the committee after 20 calendar days, and debate "shall be limited to not more than 10 hours"; the Senate fast track lapses "after the expiration of the 60 session days beginning with the applicable submission or publication date" | 5 U.S.C. 802(a), (c), (d) and (e), https://www.govinfo.gov/content/pkg/USCODE-2024-title5/html/USCODE-2024-title5-partI-chap8-sec802.htm | 2026-11-12 |
+| Litigation | A reviewing court shall "hold unlawful and set aside agency action, findings, and conclusions" found to be "arbitrary, capricious, an abuse of discretion, or otherwise not in accordance with law", among other grounds | 5 U.S.C. 706(2), https://www.govinfo.gov/content/pkg/USCODE-2024-title5/html/USCODE-2024-title5-partI-chap7-sec706.htm | 2026-11-12 |
+| Revocation by a later administration | A new order revokes earlier ones by number. Executive Order 13992 of January 20, 2021 revoked six orders (13771, 13777, 13875, 13891, 13892 and 13893) in its section 2; Executive Order 14148 of January 20, 2025 revoked 67 orders and 11 presidential memoranda in its section 2 | Federal Register, 86 FR 7049 (January 25, 2021), https://www.govinfo.gov/content/pkg/FR-2021-01-25/pdf/2021-01767.pdf ; 90 FR 8237 (January 28, 2025), https://www.govinfo.gov/content/pkg/FR-2025-01-28/pdf/2025-01901.pdf ; both counted by script from the text | 2026-11-12 |
+
+**A real route traced.** In the 119th Congress, 21 joint resolutions of disapproval under the Congressional Review Act became law, the first on March 14, 2025 and the latest on April 27, 2026, among 140 laws enacted to November 12, 2026 (Congress.gov API, law list for the 119th Congress, titles read by script). Examples: H.J.Res. 35, Public Law 119-2; S.J.Res. 80, Public Law 119-47.
+
+**Not settled by these sources.** The orders that amended Executive Order 12866 after 1993; the Federal Register's own rulemaking guide (bot check); staffing and budget execution, which V7 lists as part of this route (the Impoundment Control Act's sections, 2 U.S.C. 683 and 684, redirected at the address tried).
+
+## FR. Chamber rule or confirmation (V7: 6 route entries)
+
+V7: "House or Senate rule; Senate confirmation of nominees", by "A majority of one chamber"; it depends on "A majority willing to bind itself, and the next majority's willingness to keep the rule."
+
+| Stage | What the source says | Source | Checked |
+|---|---|---|---|
+| Each chamber sets its rules | "Each House may determine the Rules of its Proceedings" | U.S. Constitution, Article I, Section 5, https://www.archives.gov/founding-docs/constitution-transcript | 2026-11-12 |
+| House: rules adopted each Congress | H.Res. 5, "Adopting the Rules of the House of Representatives for the One Hundred Nineteenth Congress", was "Agreed to by the Yeas and Nays: 215 - 209 (Roll no. 5)" on January 3, 2025, the day the Congress convened | Library of Congress, Congress.gov API, H.Res. 5 (119th Congress) and its actions, https://api.congress.gov/v3/bill/119/hres/5/actions | 2026-11-12 |
+| Senate: rules carry over | "The rules of the Senate shall continue from one Congress to the next Congress unless they are changed as provided in these rules." | Standing Rules of the Senate, Rule V, paragraph 2, Senate Document 113-18 (revised to January 24, 2013), https://www.govinfo.gov/content/pkg/CDOC-113sdoc18/pdf/CDOC-113sdoc18.pdf | 2026-11-12 |
+| Senate: ending debate, and changing the rules | Cloture needs "three-fifths of the Senators duly chosen and sworn", and on "a measure or motion to amend the Senate rules" the vote needed is "two-thirds of the Senators present and voting" | Same, Rule XXII, paragraph 2 | 2026-11-12 |
+| Senate: a precedent set by majority vote | On November 21, 2013, on the nomination of Patricia Ann Millett, the Senate voted 48 to 52 not to sustain the chair on Senator Reid's appeal (vote 242) and 52 to 48 to sustain the chair on Senator McConnell's appeal (vote 243), then invoked cloture 55 to 43 with a majority requirement of one-half (vote 244). On April 6, 2017, on the nomination of Neil M. Gorsuch, it voted 48 to 52 not to sustain the chair (vote 109) | U.S. Senate roll call vote records, https://www.senate.gov/legislative/LIS/roll_call_votes/vote1131/vote_113_1_00242.xml (and 00241, 00243, 00244) and https://www.senate.gov/legislative/LIS/roll_call_votes/vote1151/vote_115_1_00109.xml | 2026-11-12 |
+| Nomination | The President "shall nominate, and by and with the Advice and Consent of the Senate, shall appoint" ambassadors, judges of the Supreme Court and other officers (in part) | U.S. Constitution, Article II, Section 2; U.S. Senate, "About Nominations", https://www.senate.gov/about/powers-procedures/nominations.htm | 2026-11-12 |
+| Committee referral and the final question | Nominations "shall, unless otherwise ordered, be referred to appropriate committees; and the final question on every nomination shall be, 'Will the Senate advise and consent to this nomination?'" | Standing Rules of the Senate, Rule XXXI, paragraph 1 | 2026-11-12 |
+| A nomination that lapses | "if the Senate shall adjourn or take a recess for more than thirty days, all nominations pending and not finally acted upon at the time of taking such adjournment or recess shall be returned by the Secretary to the President" | Same, Rule XXXI, paragraph 6 | 2026-11-12 |
+
+**Not settled by these sources.** Committee hearing and vote steps, which each committee's rules set; the Senate's later precedents on nominations after 2017, including any in 2025 (not read today); the House rules' own text for the 119th Congress (the resolution's actions were read, not its text). The vote records settle the 2013 and 2017 changes that round 0 left open (FS section above).
+
+## ENF. Enforcement and litigation (V7: 5 route entries)
+
+V7: "Cases and settlements under existing law", by "The Justice Department, the Federal Trade Commission, the National Labor Relations Board, state attorneys general and private plaintiffs"; "Consent decrees bind for a set term; verdicts can be appealed for years."
+
+| Stage | What the source says | Source | Checked |
+|---|---|---|---|
+| Complaint | "A civil action begins when a party to a dispute files a complaint"; the plaintiff "files a complaint with the court and 'serves' a copy of the complaint on the defendant" | U.S. Courts, "Civil Cases", https://www.uscourts.gov/about-federal-courts/types-cases/civil-cases | 2026-11-12 |
+| Discovery, settlement and trial | Discovery "may include a deposition"; "Absent a settlement, the court will schedule a trial" | Same | 2026-11-12 |
+| An agency's own complaint (FTC) | When the Commission has "reason to believe" a firm is using an unfair method of competition or an unfair or deceptive practice, and a proceeding would be in the public interest, "it shall issue and serve upon such person, partnership, or corporation a complaint stating its charges" | 15 U.S.C. 45(b), https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap2-subchapI-sec45.htm | 2026-11-12 |
+| Consent order (FTC) | Accepting a proposed consent agreement "does not constitute final approval"; the Commission places it on the public record for "30 days, or such other period as the Commission may specify, for the receipt of comments" | 16 CFR 2.34(a) and (c), 2025 edition, https://www.govinfo.gov/content/pkg/CFR-2025-title16-vol1/xml/CFR-2025-title16-vol1-sec2-34.xml | 2026-11-12 |
+| Consent judgment (Justice Department, antitrust) | A proposed consent judgment is filed with the court "and published by the United States in the Federal Register at least 60 days prior to the effective date of such judgment"; "Before entering any consent judgment proposed by the United States under this section, the court shall determine that the entry of such judgment is in the public interest" | 15 U.S.C. 16(b) and (e)(1), the Tunney Act, https://www.govinfo.gov/content/pkg/USCODE-2024-title15/html/USCODE-2024-title15-chap1-sec16.htm | 2026-11-12 |
+| Labor charge, investigation and complaint (NLRB) | "Each charge is investigated by Board agents"; "The majority of charges are settled by the parties, withdrawn by the charging party, or dismissed by the Regional Director"; "If no settlement is reached in a meritorious case, the agency issues a complaint", which "leads to a hearing before an NLRB Administrative Law Judge (unless there is a settlement)" | National Labor Relations Board, "Investigate Charges", https://www.nlrb.gov/about-nlrb/what-we-do/investigate-charges | 2026-11-12 |
+| Time limit and court review (NLRB) | No complaint may issue on an unfair labor practice "occurring more than six months prior to the filing of the charge"; the Board may petition a court of appeals to enforce its order, and "Any person aggrieved by a final order of the Board" may seek review in a court of appeals | 29 U.S.C. 160(b), (e) and (f), https://www.govinfo.gov/content/pkg/USCODE-2024-title29/html/USCODE-2024-title29-chap7-subchapII-sec160.htm | 2026-11-12 |
+| Appeal | "The losing party in a decision by a trial court in the federal courts normally is entitled to appeal the decision to a federal court of appeals." | U.S. Courts, "Appeals", https://www.uscourts.gov/about-federal-courts/types-cases/appeals | 2026-11-12 |
+
+**Not settled by these sources.** State attorneys general's procedures, which differ by state; how long a consent decree binds, which each decree sets; the FTC's own overview page (404 at the address tried). V7's examples (R-19's FTC consent orders, R-38's RealPage final judgment of May 19, 2026) rest on V7's own sources and were not re-read here.
+
+## CRT. Court doctrine (V7: 7 route entries)
+
+V7: "Rulings that change what other routes may do", by "Federal and state courts"; "No one controls this route directly."
+
+| Stage | What the source says | Source | Checked |
+|---|---|---|---|
+| Trial court and courts of appeals | "There are 13 appellate courts that sit below the U.S. Supreme Court, and they are called U.S. courts of appeals. The appellate court's task is to determine whether the law was applied correctly in the trial court or federal administrative agency." | U.S. Courts, "Court Role and Structure", https://www.uscourts.gov/about-federal-courts/court-role-and-structure | 2026-11-12 |
+| Appeal from a final decision | "The courts of appeals (other than the United States Court of Appeals for the Federal Circuit) shall have jurisdiction of appeals from all final decisions of the district courts of the United States" (in part) | 28 U.S.C. 1291, https://www.govinfo.gov/content/pkg/USCODE-2024-title28/html/USCODE-2024-title28-partIV-chap83-sec1291.htm | 2026-11-12 |
+| Decision, en banc review or remand | "Most appeals are final. The court of appeals decision usually will be the final word in the case, unless it sends the case back to the trial court for additional proceedings, or the parties ask the U.S. Supreme Court to review the case. In some cases the decision may be reviewed en banc" | U.S. Courts, "Appeals" | 2026-11-12 |
+| Asking the Supreme Court | Cases in the courts of appeals may be reviewed "By writ of certiorari granted upon the petition of any party"; a petition in a civil case is due "within ninety days after the entry of such judgment or decree", extendable by a justice for up to sixty days | 28 U.S.C. 1254(1), https://www.govinfo.gov/content/pkg/USCODE-2024-title28/html/USCODE-2024-title28-partIV-chap81-sec1254.htm ; 28 U.S.C. 2101(c), https://www.govinfo.gov/content/pkg/USCODE-2024-title28/html/USCODE-2024-title28-partV-chap133-sec2101.htm | 2026-11-12 |
+| Whether the Court takes the case | "Review on a writ of certiorari is not a matter of right, but of judicial discretion. A petition for a writ of certiorari will be granted only for compelling reasons." | Rules of the Supreme Court of the United States, Rule 10 (rules adopted 2023), https://www.supremecourt.gov/filingandrules/2023RulesoftheCourt.pdf | 2026-11-12 |
+| Later doctrine replaces earlier doctrine | "Chevron is overruled. Courts must exercise their independent judgment in deciding whether an agency has acted within its statutory authority, as the APA requires." Argued January 17, 2024; decided June 28, 2024 | Loper Bright Enterprises v. Raimondo, No. 22-451, opinion of the Court, https://www.supremecourt.gov/opinions/23pdf/22-451_7m58.pdf | 2026-11-12 |
+
+**Not settled by these sources.** State court systems, which each state sets (R-04 runs through state courts enforcing fair-district clauses); the appellate rules' notice-of-appeal deadlines (the rules file was not found at the address tried); V7's cases (Learning Resources, Storch v. Hegseth, the Cook matter), which rest on V7's sources.
+
+## AV. Article V: constitutional amendment (V7: 3 route entries)
+
+| Stage | What the source says | Source | Checked |
+|---|---|---|---|
+| Proposal by Congress or a convention | "The Congress, whenever two thirds of both Houses shall deem it necessary, shall propose Amendments to this Constitution, or, on the Application of the Legislatures of two thirds of the several States, shall call a Convention for proposing Amendments" | U.S. Constitution, Article V, https://www.archives.gov/founding-docs/constitution-transcript | 2026-11-12 |
+| Ratification by the states | Amendments are valid "when ratified by the Legislatures of three fourths of the several States, or by Conventions in three fourths thereof, as the one or the other Mode of Ratification may be proposed by the Congress" | Same | 2026-11-12 |
+| Who administers it | "After Congress proposes an amendment, the Archivist of the United States ... is charged with responsibility for administering the ratification process under the provisions of 1 U.S.C. 106b." "Neither Article V of the Constitution nor section 106b describe the ratification process in detail." | National Archives, Office of the Federal Register, "The Constitutional Amendment Process", https://www.archives.gov/federal-register/constitution | 2026-11-12 |
+| When it takes effect | "A proposed amendment becomes part of the Constitution as soon as it is ratified by three-fourths of the States (38 of 50 States)." | Same | 2026-11-12 |
+| Certification | The Archivist "shall forthwith cause the amendment to be published, with his certificate, specifying the States by which the same may have been adopted" | 1 U.S.C. 106b, https://www.govinfo.gov/content/pkg/USCODE-2024-title1/html/USCODE-2024-title1-chap2-sec106b.htm | 2026-11-12 |
+
+**Not settled by these sources.** Deadlines for ratification, which Congress has set in some proposals and not others; whether a state may rescind a ratification. Neither appears in Article V or 1 U.S.C. 106b.
+
+## IC. Interstate compact (V7: 1 route entry, R-50, the National Popular Vote compact)
+
+| Stage | What the source says | Source | Checked |
+|---|---|---|---|
+| The consent rule | "No State shall, without the Consent of Congress, ... enter into any Agreement or Compact with another State, or with a foreign Power" (in part) | U.S. Constitution, Article I, Section 10 | 2026-11-12 |
+| Which compacts need consent | The Court read the clause as "directed to the formation of any combination tending to the increase of political power in the States, which may encroach upon or interfere with the just supremacy of the United States" | Virginia v. Tennessee, 148 U.S. 503 (1893), U.S. Reports scan at the Library of Congress, https://tile.loc.gov/storage-services/service/ll/usrep/usrep148/usrep148503/usrep148503.pdf (text extracted from the scan) | 2026-11-12 |
+| Enactment, state by state | "Any state of the United States and the District of Columbia may become a member of this agreement by enacting this agreement." | Revised Code of Washington 29A.56.300, Article I, https://app.leg.wa.gov/RCW/default.aspx?cite=29A.56.300 | 2026-11-12 |
+| The threshold | "This agreement shall take effect when states cumulatively possessing a majority of the electoral votes have enacted this agreement in substantially the same form and the enactments by such states have taken effect in each state." | Same; the same words in Minnesota Statutes 208.051 (History: 2023 c 62 art 4 s 124), https://www.revisor.mn.gov/statutes/cite/208.051 | 2026-11-12 |
+| Withdrawal | "Any member state may withdraw from this agreement, except that a withdrawal occurring six months or less before the end of a president's term shall not become effective until a president or vice president shall have been qualified to serve the next term." | Both statutes | 2026-11-12 |
+
+**Not settled by these sources.** Whether this compact needs the consent of Congress, which V7 names as disputed; the count of member states, which V7 gives as "18 states plus DC, 222 electoral votes of 270 needed" (snapshot October 15, 2026) and which was not recounted from the states' statutes today.
+
+## CIV. Civil society (V7: 4 route entries)
+
+No government stage decides this route. These sources set its outer limits.
+
+| Stage | What the source says | Source | Checked |
+|---|---|---|---|
+| Organize and act | Congress shall make no law abridging "the right of the people peaceably to assemble, and to petition the Government for a redress of grievances" (in part) | U.S. Constitution, First Amendment, National Archives Bill of Rights transcription, https://www.archives.gov/founding-docs/bill-of-rights-transcript | 2026-11-12 |
+| Fund a charity | A 501(c)(3) organization "may not attempt to influence legislation as a substantial part of its activities and it may not participate in any campaign activity for or against political candidates" | Internal Revenue Service, "Exemption requirements - 501(c)(3) organizations", https://www.irs.gov/charities-non-profits/charitable-organizations/exemption-requirements-501c3-organizations | 2026-11-12 |
+| Fund an advocacy group | "Seeking legislation germane to the organization's programs is a permissible means of attaining social welfare purposes"; a 501(c)(4) "may engage in some political activities, so long as that is not its primary activity" | Internal Revenue Service, "Social welfare organizations", https://www.irs.gov/charities-non-profits/other-non-profits/social-welfare-organizations | 2026-11-12 |
+| Bargain as workers | "Employees shall have the right to self-organization, to form, join, or assist labor organizations, to bargain collectively through representatives of their own choosing" (in part) | 29 U.S.C. 157, section 7 of the National Labor Relations Act, https://www.govinfo.gov/content/pkg/USCODE-2024-title29/html/USCODE-2024-title29-chap7-subchapII-sec157.htm | 2026-11-12 |
+
+**Not settled by these sources.** Nothing here says how a group sustains itself; V7's examples (Press Forward, the Writers Guild's 2023 contract) rest on V7's sources.
+
+## Claims I could not verify (round 1)
+
+1. The orders that amended Executive Order 12866 after 1993.
+2. The Senate's precedents on nominations after 2017, including any in 2025.
+3. Each Senate and House committee's own steps for a nomination or a bill.
+4. The federal appellate rules' deadlines (file not found at the address tried) and the FTC's enforcement overview (404).
+5. Whether the National Popular Vote compact needs the consent of Congress, and today's count of its members.
+6. Ratification deadlines and rescission under Article V.

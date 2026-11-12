@@ -1,0 +1,139 @@
+{
+  "kit": 1,
+  "id": "S25",
+  "form": "diverging-bar",
+  "family": "shift-and-swing",
+  "tier": "core",
+  "dataset": "opm-federal-employment-by-agency",
+  "sort": [
+    {
+      "field": "change",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "Which federal agencies gained or lost civilian employees?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the Office of Personnel Management’s records of federal employees",
+  "title": "Federal agencies in the personnel files had 130,369 fewer civilian employees in August 2026 than in January 2022, and 33 of the 37 with 1,000 or more shrank.",
+  "reading_guide": "A bar to the left of zero is an agency that lost employees, and a bar to the right one that gained. Each figure sits across the zero line from its bar.",
+  "measure_line": "Change in federal civilian employees by department or agency, January 31, 2022 to August 31, 2026, people, for the 37 agencies with 1,000 or more employees on either date. The window starts in January 2022, as the guide’s jobs charts do, and ends in August 2026, the latest month the Office of Personnel Management did not flag as incomplete.",
+  "notes": [
+    "Each bar nets every hire and departure between January 31, 2022 and August 31, 2026, so it hides any rise and fall inside the window.",
+    "The 37 agencies drawn held 99.4 percent of employees in January 2022. The table lists all 129 agencies in the files, where a small agency can show a large percent change.",
+    "The files count people on the rolls on one day, full-time and part-time alike. They leave out intelligence agencies, the Postal Service and some others that do not report to the Office of Personnel Management.",
+    "Agency names are shortened from the August 2026 file, which still calls the largest the Department of Defense."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Diverging bar chart of the change in civilian employees at 37 federal agencies from January 2022 to August 2026. Defense lost 73,248, the most, followed by Health and Human Services, Treasury and the Social Security Administration. Four gained: Veterans Affairs 21,956, Homeland Security 14,584, Interior 275 and the Government Publishing Office 88. All agencies in the files together lost 130,369.",
+  "table": {
+    "caption": "Federal civilian employees by agency, January 2022 and August 2026",
+    "columns": [
+      {
+        "field": "department",
+        "label": "Agency, as the file names it",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "employees_2022_01",
+        "label": "January 2022",
+        "format": "integer"
+      },
+      {
+        "field": "employees_2026_08",
+        "label": "August 2026",
+        "format": "integer"
+      },
+      {
+        "field": "change",
+        "label": "Change",
+        "format": "signed:0"
+      },
+      {
+        "field": "change_pct",
+        "label": "Change, percent",
+        "format": "signed:1"
+      },
+      {
+        "field": "size_1000_plus",
+        "label": "In the chart",
+        "format": "text",
+        "words": {
+          "true": "Yes",
+          "false": "No"
+        }
+      }
+    ]
+  },
+  "chart_notes": [
+    "Bars: Prussian blue to the left of zero for a loss, Verdigris green to the right for a gain. The scale runs from −80,000 to +40,000.",
+    "Above the bars: all agencies in the files, −130,369."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D04",
+  "states": [],
+  "encode": {
+    "key": "department_code",
+    "label": "department",
+    "value": "change",
+    "include": "size_1000_plus"
+  },
+  "formats": {
+    "value": "signed:0",
+    "tick": "signed:0"
+  },
+  "labels": {
+    "names": {
+      "DOD": "Defense",
+      "HE": "Health and Human Services",
+      "TR": "Treasury",
+      "SZ": "Social Security Administration",
+      "DJ": "Justice",
+      "CM": "Commerce",
+      "AG": "Agriculture",
+      "SB": "Small Business Administration",
+      "AM": "Agency for International Development",
+      "GS": "General Services Administration",
+      "DL": "Labor",
+      "NN": "NASA",
+      "EP": "Environmental Protection Agency",
+      "HU": "Housing and Urban Development",
+      "ED": "Education",
+      "ST": "State",
+      "DN": "Energy",
+      "FD": "Federal Deposit Insurance Corporation",
+      "SE": "Securities and Exchange Commission",
+      "FR": "Federal Reserve System",
+      "OM": "Office of Personnel Management",
+      "IB": "Agency for Global Media",
+      "NF": "National Science Foundation",
+      "EE": "Equal Employment Opportunity Commission",
+      "SM": "Smithsonian Institution",
+      "NU": "Nuclear Regulatory Commission",
+      "FC": "Federal Communications Commission",
+      "CU": "National Credit Union Administration",
+      "NQ": "National Archives",
+      "TD": "Transportation",
+      "NL": "National Labor Relations Board",
+      "FQ": "Court Services and Offender Supervision",
+      "FT": "Federal Trade Commission",
+      "LP": "Government Publishing Office",
+      "IN": "Interior",
+      "HS": "Homeland Security",
+      "VA": "Veterans Affairs"
+    },
+    "apart": "ALL",
+    "apart_words": "All agencies in the files: {value} employees",
+    "value": "{value}"
+  },
+  "notes_internal": [
+    "Maker B, round 1. Data plan row 13, rule 14.27, with the data lead's change 1 (window from January 2022) and the fix pass S14 size rule (chart draws the 37 agencies of 1,000 or more, the table every agency). Domain D04 from the sidecar; no state named.",
+    "Checked by script against opm-federal-employment-by-agency.csv: ALL 2,155,201 to 2,024,832, −130,369; 37 agencies with size_1000_plus, 33 with a loss and 4 with a gain; their January 2022 share 99.37 percent, '99.4 percent'; 129 agencies besides ALL; Defense −73,248, Veterans Affairs +21,956, Homeland Security +14,584, Interior +275, Government Publishing Office +88.",
+    "H09: the window has no split at an inauguration and matches S13 and S14's start; the note says each bar nets the whole window, as the sidecar asks. Read from the left and the right: the title gives the net count and the number of agencies that shrank, names no administration and claims no cause.",
+    "Short names are labels.names; the table keeps the file's own names in capitals, labeled as such. Request R-B5 asks the research lead for a readable name column.",
+    "Pair B's middle steps (div-2 for a loss, div-4 for a gain) repeat the direction that position and sign already carry, per the data lead's palette note for row 13."
+  ]
+}

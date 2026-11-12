@@ -1,0 +1,104 @@
+{
+  "kit": 1,
+  "id": "S26",
+  "form": "diverging-bar-arrows",
+  "family": "shift-and-swing",
+  "tier": "extended",
+  "dataset": "house-history-party-divisions",
+  "sort": [
+    {
+      "field": "congress",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "How large was the House majority’s seat advantage in each Congress?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the House’s own record of party divisions",
+  "title": "The House majority opened the 119th Congress in 2025 with 5 more seats than the minority, its smallest lead at the start of any Congress since 1951.",
+  "reading_guide": "Each row is one Congress, oldest at the top. An arrow points toward the party that held the majority when the Congress opened, and its length is the majority’s lead in seats.",
+  "measure_line": "Seats held by the majority party minus seats held by the other major party, at the opening of each Congress, House of Representatives, 82nd to 119th Congress, 1951 to 2027. The chart starts with the 82nd Congress so it covers the 38 Congresses of the last 75 years.",
+  "notes": [
+    "Democrats held the majority at the opening of 25 of the 38 Congresses and Republicans 13. Control changed hands seven times.",
+    "The largest lead was 155 seats, for Democrats in the 89th Congress, which opened in 1965.",
+    "The counts are the House’s figures from the first election results for each Congress, so deaths, resignations, special elections and party switches after that are left out. On November 11, 2026, the Clerk of the House listed 218 Republicans, 214 Democrats, one independent and two vacancies.",
+    "Members of other parties, never more than two in these years, count in neither side’s seats."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Arrows for each Congress from 1951 to 2025 show the House majority’s lead in seats at the opening of each Congress, pointing left for Democratic majorities and right for Republican ones. Democratic leads ran as high as 155 seats in 1965; leads since 1995 have mostly been under 60 seats, and the 119th Congress opened in 2025 with a Republican lead of 5, the smallest in the chart.",
+  "table": {
+    "caption": "House seats at the opening of each Congress, by party",
+    "columns": [
+      {
+        "field": "congress",
+        "label": "Congress",
+        "format": "integer",
+        "row_header": true
+      },
+      {
+        "field": "first_year",
+        "label": "Opened",
+        "format": "year"
+      },
+      {
+        "field": "democrats",
+        "label": "Democrats",
+        "format": "integer"
+      },
+      {
+        "field": "republicans",
+        "label": "Republicans",
+        "format": "integer"
+      },
+      {
+        "field": "other",
+        "label": "Other",
+        "format": "integer"
+      },
+      {
+        "field": "majority_party",
+        "label": "Majority",
+        "format": "text"
+      },
+      {
+        "field": "majority_advantage_seats",
+        "label": "Majority’s lead, seats",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Arrows point left for a Democratic majority and right for a Republican majority, all in one ink; the scale runs to 150 seats each way from the center line.",
+    "The party is named at the first row and at each row where the majority changed sides; in a narrow column the titles over the two halves name the sides."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D02",
+  "states": [],
+  "encode": {
+    "key": "congress",
+    "x": "first_year",
+    "left": "democrats",
+    "right": "republicans"
+  },
+  "formats": {
+    "x": "year",
+    "value": "integer",
+    "tick": "integer"
+  },
+  "labels": {
+    "left_title": "Democratic majority",
+    "right_title": "Republican majority",
+    "left_name": "Democrats +{value}",
+    "right_name": "Republicans +{value}",
+    "value": "{value}"
+  },
+  "notes_internal": [
+    "Maker B, round 1. Data plan row 14, rule 14.28, with the data lead's change 3: one neutral ink, each party's name on the marks (over each half and on the rows where control changed), no pair B, no categorical inks, no red. Domain D02; election data stays on a form built for seat counts (DR-229).",
+    "Checked by script against house-history-party-divisions.csv: 38 Congresses; smallest lead 5 (119th, 2025), next 8 (83rd) and 9 (107th, 118th); largest 155 (89th, 1965); Democratic majorities 25, Republican 13; control changed 7 times (1953, 1955, 1995, 2007, 2011, 2019, 2023); every row's majority_advantage_seats equals the absolute difference of the two parties' seats.",
+    "Orientation follows S11: Democratic to the left, Republican to the right, as the guide's other election charts set them. Read from the left and the right: the title reports the size of the lead and names no party.",
+    "The current count from the sidecar's notes prints with its date, so a reader does not take the opening count for today's House.",
+    "The arrows draw through K.parts.arrow, which shift-arrows.js defines; request R-B6 asks the engineer to move it into parts.js so a page that loads this form alone has it."
+  ]
+}

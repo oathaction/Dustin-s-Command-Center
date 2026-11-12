@@ -1,0 +1,42 @@
+{
+  "id": "14.15",
+  "title": "Rank bars from the longest when the order is the answer.",
+  "rule": [
+    "Draw one bar per category from a zero line, longest first unless the categories keep an order of their own, with the full name at the left and the total at the bar’s end. A bar may split into parts that stay apart in gray print by fill, outline, hatch and dash, named in a key above the bars."
+  ],
+  "use_when": "The reader asks which category is biggest and by how much, among a dozen or fewer whose names are too long to sit under columns.",
+  "use_instead": [
+    {
+      "when": "A few categories or a short run of years reads best from left to right",
+      "rule": "14.16"
+    },
+    {
+      "when": "Dozens of items sit on one scale, or their values sit far from zero",
+      "rule": "14.18"
+    },
+    {
+      "when": "A long ranked list would form one dark block of bars",
+      "rule": "14.21"
+    },
+    {
+      "when": "The parts of each bar add to one whole and their shares are the point",
+      "rule": "14.46"
+    }
+  ],
+  "why": {
+    "text": [
+      "Readers judge length from a shared zero line more exactly than any other mark, and sorting puts the answer at the top of the chart. A bar laid on its side leaves room for a category’s full name, so nobody has to decode an abbreviation."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S03",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.3",
+    "14.4"
+  ],
+  "builders": "Form ranked-bar: node work/build/chart-kit/oa-chart.mjs build s03, or copy specs/s03.json and point it at a new dataset; labels.parts names each part and its style.",
+  "correct": null,
+  "failure": null
+}

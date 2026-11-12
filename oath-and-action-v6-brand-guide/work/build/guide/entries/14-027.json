@@ -1,0 +1,43 @@
+{
+  "id": "14.27",
+  "title": "Draw gains and losses as bars from one zero line, losses to the left.",
+  "rule": [
+    "Use a diverging bar when items moved both ways from a baseline: start every bar on one zero line, send losses left and gains right, order the bars by size, and print each figure with its sign. Pair B’s middle steps may repeat the direction in color, Prussian for a loss and Verdigris for a gain, and the total sits apart above the bars in words."
+  ],
+  "use_when": "The reader asks which items gained and which lost between two dates, and how much each moved.",
+  "use_instead": [
+    {
+      "when": "Every item moved the same way and the reader wants them ranked",
+      "rule": "14.26"
+    },
+    {
+      "when": "The gain or loss is measured election by election and the reader follows it over time",
+      "rule": "14.28"
+    },
+    {
+      "when": "Where each item started and ended matters as much as the change",
+      "rule": "14.25"
+    }
+  ],
+  "why": {
+    "text": [
+      "Bars from one zero line let the eye compare every gain and loss by length (Rule 14.4), and the side of the line tells the direction before a reader reaches a figure. A figure set across zero from its bar lines up with every other figure, so the column reads as a list. Color repeats what position says, so the chart still reads in grayscale (Rule 14.5)."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S25",
+  "tier": "core",
+  "tokens": [
+    "oa.chart.color.diverging.fill.step2.onNewsprint",
+    "oa.chart.color.diverging.fill.step4.onNewsprint",
+    "oa.chart.color.diverging.fill.step2.onCharcoal",
+    "oa.chart.color.diverging.fill.step4.onCharcoal"
+  ],
+  "related": [
+    "14.4",
+    "14.5"
+  ],
+  "builders": "Form diverging-bar: node work/build/chart-kit/oa-chart.mjs build s25; encode.include keeps small items in the table and out of the drawing.",
+  "correct": null,
+  "failure": null
+}

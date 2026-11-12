@@ -1,0 +1,38 @@
+{
+  "id": "14.21",
+  "title": "Use lollipops when a long ranked list would look heavy as bars.",
+  "rule": [
+    "Draw each row as a thin stem from the zero line to a dot at its value, print the value past the dot and the name at the left, and sort the rows so the order answers the question. Set the rows the title names in ink and the rest in gray."
+  ],
+  "use_when": "The reader asks which items lead a ranking of a dozen or more, and the values sit close enough that solid bars would form one dark block.",
+  "use_instead": [
+    {
+      "when": "There are a dozen rows or fewer, or each bar splits into parts",
+      "rule": "14.15"
+    },
+    {
+      "when": "The values sit far from zero, so the reader compares positions along one scale",
+      "rule": "14.18"
+    },
+    {
+      "when": "Each row carries a change from one value to another",
+      "rule": "14.26"
+    }
+  ],
+  "why": {
+    "text": [
+      "A stem keeps the length a reader compares from the zero line while putting little ink on the page, so a long list stays easy to scan. The dot marks where each length ends, which is the one place the eye needs."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S21",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.3",
+    "14.4"
+  ],
+  "builders": "Form lollipop: node work/build/chart-kit/oa-chart.mjs build s21, or copy specs/s21.json and point it at a new dataset; labels.named lists the rows set in ink.",
+  "correct": null,
+  "failure": null
+}

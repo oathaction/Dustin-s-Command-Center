@@ -1,0 +1,84 @@
+{
+  "kit": 1,
+  "id": "S21",
+  "form": "lollipop",
+  "family": "comparison",
+  "tier": "extended",
+  "dataset": "v7-claims-by-grade",
+  "sort": [
+    {
+      "field": "total",
+      "order": "desc"
+    },
+    {
+      "field": "title",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "Which everyday answers rest on the most claims?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the atlas’s own register of graded claims",
+  "v7": {
+    "grade": "documented",
+    "ids": [],
+    "snapshot": "2026-10-15"
+  },
+  "title": "Of the atlas’s 16 everyday answers, voting and public influence rests on the most claims, 42, and roads, bridges and transit on the fewest, 13.",
+  "measure_line": "Claims in the atlas’s register behind each of its 16 everyday answers, 433 claims in all, checked through October 15, 2026, United States. Stems start at zero.",
+  "notes": [
+    "A count shows how many claims an answer cites. How sure each claim is depends on its own grade, which the atlas gives claim by claim.",
+    "The answer with the most claims takes the reader’s question “Which election decides who represents me, and how can I influence the people who decide?”; the one with the fewest, “Why is the repair on my street taking so long?”"
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Lollipops rank the atlas’s 16 everyday answers by the claims behind each. Voting and public influence leads with 42, then pay and working conditions with 39 and housing costs with 34; roads, bridges and transit has the fewest, 13. The 16 answers rest on 433 claims in all.",
+  "table": {
+    "caption": "Claims behind each everyday answer",
+    "columns": [
+      {
+        "field": "title",
+        "label": "Answer",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "question",
+        "label": "Reader question",
+        "format": "text"
+      },
+      {
+        "field": "total",
+        "label": "Claims",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "The two answers the title names are drawn in the text’s ink; the other 14 are gray."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "all",
+  "states": [],
+  "encode": {
+    "category": "title",
+    "value": "total",
+    "key": "id"
+  },
+  "labels": {
+    "named": [
+      "PW15",
+      "PW13"
+    ]
+  },
+  "formats": {
+    "value": "integer"
+  },
+  "notes_internal": [
+    "Data plan row 7, kept from the coverage plan (claims per everyday question); the engineer's v7-claims-by-grade, also S10's. Domain all, as the sidecar's domain_note gives.",
+    "No atlas ID prints, so v7.ids is empty, as in S10; labels.named matches the id column, which never prints.",
+    "Ties (28: medical bills and drug prices, taxes and benefits; 24: home and auto insurance, clean drinking water) read in title order.",
+    "Figures checked by script (figures.py s21): 42 PW15 the unique maximum; 13 PW13 the unique minimum; 39 PW09 and 34 PW01 second and third; the 16 totals add to 433; the two questions quoted match the file."
+  ]
+}

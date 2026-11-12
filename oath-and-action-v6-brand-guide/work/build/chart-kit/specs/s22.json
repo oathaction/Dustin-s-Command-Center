@@ -1,0 +1,105 @@
+{
+  "kit": 1,
+  "id": "S22",
+  "form": "grouped-bar",
+  "family": "comparison",
+  "tier": "extended",
+  "dataset": "census-acs-labor-force-by-age-sex",
+  "reader_question": "How does taking part in the labor force differ by age for men and women?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: a Census Bureau survey; the rates are estimates",
+  "title": "In 2025, women were in the labor force at lower rates than men in every age group from 22 on, with the widest gap, 9.7 points, at ages 60 and 61.",
+  "measure_line": "Labor force participation, the share of people who are working or looking for work, by sex and age, 2025, United States, in the Census Bureau’s age groups. Bars start at zero.",
+  "notes": [
+    "Each gap is tested against its margin of error at 90 percent confidence, computed by Oath & Action from the table’s counts with the Census Bureau’s formula. Every gap from age 22 on passes its margin, and so does the gap at 60 and 61 against the next widest, at 62 to 64.",
+    "Among people 16 to 19, women’s rate, 41.3 percent, was higher than men’s, 39.6, past the margin of error. At 20 and 21 the two rates, 71.5 and 71.2 percent, are within it.",
+    "The age groups are the Census Bureau’s and vary in width, from two years to ten."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Pairs of bars compare the labor force participation of men and women in 13 age groups in 2025. Men’s rates run from 10.2 percent at 75 and over to 89.4 at 30 to 34; women’s from 6.1 to 82.6 at 25 to 29. Women’s rates are lower in every group from 22 on, by 9.7 points at 60 and 61.",
+  "table": {
+    "caption": "Labor force participation by sex and age, 2025, percent",
+    "pivot": {
+      "row": "age_group",
+      "column": "sex",
+      "value": "participation_pct",
+      "format": "number:1",
+      "labels": {
+        "male": "Men",
+        "female": "Women"
+      }
+    },
+    "columns": [
+      {
+        "field": "age_group",
+        "label": "Age",
+        "format": "text",
+        "row_header": true,
+        "words": {
+          "16 to 19 years": "16 to 19",
+          "20 and 21 years": "20 and 21",
+          "22 to 24 years": "22 to 24",
+          "25 to 29 years": "25 to 29",
+          "30 to 34 years": "30 to 34",
+          "35 to 44 years": "35 to 44",
+          "45 to 54 years": "45 to 54",
+          "55 to 59 years": "55 to 59",
+          "60 and 61 years": "60 and 61",
+          "62 to 64 years": "62 to 64",
+          "65 to 69 years": "65 to 69",
+          "70 to 74 years": "70 to 74",
+          "75 years and over": "75 and over"
+        }
+      }
+    ]
+  },
+  "chart_notes": [
+    "In each pair, the first bar is men and the second is women; the first pair names them."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D07",
+  "states": [],
+  "encode": {
+    "category": "age_group",
+    "series": "sex",
+    "value": "participation_pct"
+  },
+  "labels": {
+    "series": {
+      "male": "Men",
+      "female": "Women"
+    },
+    "categories": {
+      "16 to 19 years": "16 to 19",
+      "20 and 21 years": "20 and 21",
+      "22 to 24 years": "22 to 24",
+      "25 to 29 years": "25 to 29",
+      "30 to 34 years": "30 to 34",
+      "35 to 44 years": "35 to 44",
+      "45 to 54 years": "45 to 54",
+      "55 to 59 years": "55 to 59",
+      "60 and 61 years": "60 and 61",
+      "62 to 64 years": "62 to 64",
+      "65 to 69 years": "65 to 69",
+      "70 to 74 years": "70 to 74",
+      "75 years and over": "75 and over"
+    }
+  },
+  "formats": {
+    "value": "number:1"
+  },
+  "scale": {
+    "x": [
+      0,
+      100
+    ]
+  },
+  "notes_internal": [
+    "Data plan row 8, re-picked under DR-229 from turnout by age; two series take the four-ink set's first two, Charcoal and Verdigris, with direct labels (data lead's palette note).",
+    "Margins: Census proportion formula, MOE(p) = sqrt(MOE_Y^2 - p^2 MOE_X^2) / X, at 90 percent; the gap's margin is the root of the two squared. Largest rate margin 0.46 points. Widest gap 9.73 (60 and 61, margin 0.62); against 62 to 64 (8.82, 0.54) the difference 0.91 passes its margin 0.82. 16 to 19: 1.70 against 0.44. 20 and 21: 0.32 against 0.46, within. Checked by figures.py s22.",
+    "The table pivots the 26 rows into 13 rows of two cells, as S04 does."
+  ]
+}

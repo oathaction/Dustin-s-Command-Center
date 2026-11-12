@@ -1,0 +1,89 @@
+{
+  "kit": 1,
+  "id": "S28",
+  "form": "sparkline",
+  "family": "change-over-time",
+  "tier": "core",
+  "dataset": "census-cbp-civic-organizations",
+  "sort": [
+    {
+      "field": "year",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "Has the number of civic and social organizations grown or shrunk?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: Census Bureau counts of employers and their payrolls",
+  "title": "Civic and social organizations with paid staff ran 24,698 locations in 2023, 23 percent fewer than in 1998.",
+  "reading_guide": "Each small line runs from 1998 at its left end to 2023 at its right, with a large dot on 2023. The words around it give the figures.",
+  "measure_line": "Locations of civic and social organizations with paid employees, and the people they paid in mid-March, United States, 1998 to 2023. The count starts in 1998, the first year County Business Patterns sorted businesses by the North American Industry Classification System. Each line is scaled to its own lowest and highest year, so the two lines’ heights do not compare.",
+  "notes": [
+    "A location, which the Census Bureau calls an establishment, is one place where an organization does business with paid employees. One organization can run several.",
+    "County Business Patterns counts only places with paid employees, so groups run by volunteers alone are left out. The series tracks paid organizations, not membership or volunteering.",
+    "The industry kept its code, 813410, and its title through the code revisions of 2002, 2007, 2012 and 2017."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Two sentences, each with a word-sized line. Civic and social organizations with paid staff ran 32,054 locations in 1998 and 24,698 in 2023, a line that falls with small rises along the way. Their paid employees numbered 314,723 in 1998 and 201,423 in 2023, with a low of 166,962 in 2021.",
+  "table": {
+    "caption": "Civic and social organizations with paid staff, by year",
+    "columns": [
+      {
+        "field": "year",
+        "label": "Year",
+        "format": "year",
+        "row_header": true
+      },
+      {
+        "field": "establishments",
+        "label": "Locations",
+        "format": "integer"
+      },
+      {
+        "field": "employees",
+        "label": "Paid employees",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Each word-sized line is scaled to its own lowest and highest year. A small dot marks 1998, a large dot marks 2023, and a ring marks the employees’ low in 2021."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D10",
+  "states": [],
+  "encode": {
+    "x": "year",
+    "values": [
+      "establishments",
+      "employees"
+    ]
+  },
+  "formats": {
+    "x": "year",
+    "establishments": "integer",
+    "employees": "integer"
+  },
+  "labels": {
+    "sentences": [
+      {
+        "field": "establishments",
+        "text": "Civic and social organizations with paid staff ran {first} locations in {first_x} {spark} and {last} in {last_x}."
+      },
+      {
+        "field": "employees",
+        "text": "They paid {first} employees in {first_x} {spark} and {last} in {last_x}, after a low of {min} in {min_x}.",
+        "low": true
+      }
+    ]
+  },
+  "notes_internal": [
+    "Maker B, round 1. Data plan row 19, rule 14.33. Domain D10 from the sidecar (Taking part, trust and shared norms); no state named.",
+    "Checked by script against census-cbp-civic-organizations.csv: establishments 32,054 in 1998 and 24,698 in 2023, a change of −22.9 percent, '23 percent fewer'; employees 314,723 and 201,423, low 166,962 in 2021. The sentences in the drawing take every figure from the data through the form, so they cannot drift from it.",
+    "The title says 'locations' for CBP's establishments, and note 1 gives the Bureau's term (H02).",
+    "H09: the window's start and its reason, as in S29; request R-B1 asks the research lead for the sidecar line.",
+    "Each sparkline takes its own scale, the form's convention; the measure line says the heights do not compare."
+  ]
+}

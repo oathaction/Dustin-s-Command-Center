@@ -1,0 +1,102 @@
+{
+  "kit": 1,
+  "id": "S20",
+  "form": "slope",
+  "family": "comparison",
+  "tier": "core",
+  "dataset": "census-hvs-homeownership-by-age",
+  "where": {
+    "grouping": "summary",
+    "year": [
+      2015,
+      2025
+    ],
+    "series_variant": {
+      "not": [
+        "revised_1990_census",
+        "revised_2000_census"
+      ]
+    }
+  },
+  "reader_question": "Did younger households lose ground on owning a home?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: a Census Bureau survey; the rates are estimates",
+  "title": "In 2025, 37.0 percent of householders under 35 owned their homes, against 35.0 percent in 2015, the lowest rate of the five age groups in both years.",
+  "measure_line": "Homeownership rate, the share of households that own their home, by age of the householder, annual averages for 2015 and 2025, the latest year and the year ten years before, United States. The scale runs from 30 to 80 percent.",
+  "notes": [
+    "The rate for householders under 35 was highest in 2004, at 43.1 percent, and lowest in 2016, at 34.5 percent, so 2015 sits near its low.",
+    "The 2025 average leaves out October 2025, when a lapse in federal funding stopped the survey’s data collection."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Slope lines show the homeownership rate of five age groups in 2015 and 2025. Householders under 35 went from 35.0 to 37.0 percent and those 35 to 44 from 58.5 to 60.8; the three older groups stayed within half a point, from 70.0 to 69.8, 75.4 to 75.9 and 78.9 to 78.6.",
+  "table": {
+    "caption": "Homeownership rate by age of householder, percent",
+    "pivot": {
+      "row": "age_group",
+      "column": "year",
+      "value": "rate_pct",
+      "format": "number:1",
+      "labels": {
+        "2015": "2015",
+        "2025": "2025"
+      }
+    },
+    "columns": [
+      {
+        "field": "age_group",
+        "label": "Age of householder",
+        "format": "text",
+        "row_header": true,
+        "words": {
+          "Less than 35 years": "Under 35",
+          "35 to 44 years": "35 to 44",
+          "45 to 54 years": "45 to 54",
+          "55 to 64 years": "55 to 64",
+          "65 years and over": "65 and over"
+        }
+      }
+    ]
+  },
+  "chart_notes": [
+    "Householders under 35, the group the title names, are drawn in the text’s ink; the other four groups are gray."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D09",
+  "states": [],
+  "encode": {
+    "category": "age_group",
+    "value": "rate_pct",
+    "series": "year"
+  },
+  "labels": {
+    "from": "2015",
+    "to": "2025",
+    "categories": {
+      "Less than 35 years": "Under 35",
+      "35 to 44 years": "35 to 44",
+      "45 to 54 years": "45 to 54",
+      "55 to 64 years": "55 to 64",
+      "65 years and over": "65 and over"
+    },
+    "named": "Less than 35 years"
+  },
+  "formats": {
+    "value": "number:1"
+  },
+  "scale": {
+    "y": [
+      30,
+      80
+    ]
+  },
+  "notes_internal": [
+    "Data plan row 6 (re-picked under DR-229 from homeownership by race, which S05 draws); data lead change 5: the 2025 average leaves out October 2025, said in note 2.",
+    "The title states the two estimates and the ranking, which passes any margin (20 points to the next group); it claims no size of change, since the file carries no margin of error (DR-64, Rule 14.9). Request A2 asks for the margins; with them the title may say whether the 2.0-point change passes its margin.",
+    "Note 1 gives the longer record so a reader on either side sees where 2015 sits (DR-93, DR-124); request A3 asks the data lead whether the window should start earlier.",
+    "Figures checked by script (figures.py s20).",
+    "Source line: the sidecar's names 1982 to 2025; request A2 asks for a variant naming 2015 and 2025."
+  ]
+}
