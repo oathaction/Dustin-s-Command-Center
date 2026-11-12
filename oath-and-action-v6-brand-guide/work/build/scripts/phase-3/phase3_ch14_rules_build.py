@@ -1277,7 +1277,7 @@ def opener(B):
                    f'<span class="fm">{e(fam)}</span></li>')
     body = ('<p class="k" style="margin:0 0 12px">Every chart answers one question</p><ol class="opq">' + "".join(lis) + "</ol>")
     B.add("s-14-opener", body, readable=True,
-          alt="The sixteen questions chapter 14’s groups answer, each with its family and rules: "
+          alt="The sixteen questions chapter 14’s groups answer, each with its family: "
               + "; ".join(g["title"] for g in PLAN["groups"][1:]) + ".",
           notes="The chapter's opener: the reader's questions that open groups 2 to 17, read from the plan file.")
     return {"specimen": "s-14-opener", "caption": "Each group of this chapter opens with the question a reader brings, and its forms answer it.",

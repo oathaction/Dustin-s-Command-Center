@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 1, November 12, 2026. Written by the sy
 
 ## Summary
 
-In progress. The main session fixed the rule list as proposed (R7), with round 1 building Rules 15.1 to 15.10, 15.13 and 15.14 and the opener. Built so far: the generator `work/build/scripts/phase-3/phase3_ch15_build.py`, which writes `work/build/guide/chapters/15-systems-graphics.json`, 25 specimens `work/build/guide/specimens/s-15-*.html` and `work/build/guide/specimens/manifest-systems-graphics.json`. Chapter 15 weighs 214,643 bytes in a strict guide build (under round 1's 250,000).
+Round 1's share of chapter 15 is built and passes its checks. The main session fixed the rule list as proposed (R7). The generator `work/build/scripts/phase-3/phase3_ch15_build.py` writes `work/build/guide/chapters/15-systems-graphics.json` (opener, intro, two groups, Rules 15.1 to 15.10, 15.13 and 15.14), 25 plates `work/build/guide/specimens/s-15-*.html` (the opener and a correct and a failure plate for each rule) and `work/build/guide/specimens/manifest-systems-graphics.json`. Every atlas value is read by script from `work/extract/atlas-v7-data.json`, held by a `need()` check, and printed with the snapshot date. Every line is the atlas build's `wire_marks` at 2 px, with the 28 px lead-in from `oa.chart.grade.leadIn` on patterned lines that carry ticks. Chapter 15 weighs WEIGHT bytes in a strict guide build, under round 1's 250,000, with the page projected at PROJ MB. The V7 check finds 0 failures in chapter 15. The data lead's sign-off is still to come.
 
 ## Rule list
 
@@ -69,23 +69,64 @@ Counts in the subjects were read today by script from `work/extract/atlas-v7-dat
 
 ### Round 1 builds
 
-Rules 15.1 to 15.10 (the grammar), 15.13 (Loop R1) and 15.14 (Loop R8), each with a correct and a failure plate, and the chapter's opener. Rules 15.11, 15.12 and 15.15 to 15.25 are listed in the chapter file's plan and built in later rounds.
+Rules 15.1 to 15.10 (the grammar), 15.13 (worked example 1, Loop R1) and 15.14 (worked example 2, Loop R8), each with a correct and a failure plate, and the chapter's opener. The other thirteen rules wait for their rounds; their titles sit in the generator's `PLANNED` list, and no reader text cites them yet.
+
+| Plate | What it draws from the atlas | Example log domain |
+|---|---|---|
+| s-15-opener | Loop R13 with authority connection LE02 crossing into the economy layer, six numerals tied to Rules 15.2, 15.3, 15.6, 15.5, 15.9 and 13.4 | D04 |
+| 15.1 | Loop B1a at one weight; failure: one step at 6 px and one pill enlarged, no key | D05 |
+| 15.2 | Variables B3 (stock), B1 (flow), C3 (condition) with kind and higher-value sentence; failure: B5 cut to "Turnout" under connection L44's minus | D10, D03, D02 |
+| 15.3 | Connections L46 (+, a harm) and L16 (minus), each with its sign sentence, and a key quoting "A positive sign does not mean a benefit."; failure: a key reading "Positive effect / Negative effect" | D10, D05 |
+| 15.4 | Connections L28 (money), L26 (information), T12 (ownership) with type words; failure: the types in three palette colors only | D06, D01, D08 |
+| 15.5 | Authority connections LT13 and LT14 into Variable TC7 across the core and technology boundary; failure: LT13 with an arrowhead, a minus and "lowers" | D06 |
+| 15.6 | Loop R18 (two minus signs, reinforcing) and Loop B5 (one, balancing), numbered, read aloud; failure: R18 unnumbered and labeled "A vicious cycle" | D05, D03 |
+| 15.7 | Loop R16 (closes through a hypothesis) and Loop B3 (conceptual, hollow lines, thin pills); failure: B3 drawn solid and numbered | D01, D06 |
+| 15.8 | Open chain E1, EC6, A4 (connections LE12 minus, LE14 plus) through the economy layer's frame, beside core connection L37 (minus); failure: a summary arrow with the last step's plus | D08 |
+| 15.9 | X4 outside every frame, B6 in the core layer's cluster B, TC1 in the technology layer, connections LX4 and LT01 breaking the frames; failure: one frame named "The model" | D01 |
+| 15.10 | Connection LT01 with rejected connection LTR1 in words and the atlas's reason; failure: a dashed TC1 to B4 line | D10 |
+| 15.13 | Loop R1 with L02 dashed and marked weakest, labeled Plausible; failure: every step solid, labeled Well supported | D03 |
+| 15.14 | Loop R8 with the atlas's revision quoted as exact fragments and its reason from the qualification and connection T12; failure: the loop routed through A1 with plus signs and no date | D09 |
+
+Example log (Rule 01.12), counted for Rule 01.9: 20 examples, D01 3, D02 1, D03 3, D04 1, D05 3, D06 3, D08 2, D09 1, D10 3; no domain over one in four, no state named (the atlas runs at the national level).
 
 ## Routine calls
 
 - D3-xxx | Chapter 15 proposes 25 rules in six groups: the grammar (10), reforms on the drawing (2), the six worked examples (6), interaction (3), workflows (3), reconciliation (1) | Every row of Master Brief section 14's grammar table, its six examples, its interaction lessons, the workflows and the reconciliation each get one home, and chapter 13's rules are cited rather than restated
 - D3-xxx | Each worked example is a rule with its own lesson as its title, a correct plate (the example) and a failure plate (its common misreading) | Chapter template, Master Brief section 7; the proposal's "what the reader learns" column gives each example its rule
 - D3-xxx | The 11 workflows sit under one rule (15.24) as a reference set, not one rule each | Eleven failure plates would repeat one lesson and spend the chapter's 0.60 MB
+- D3-xxx | Rules 15.1 and 15.8 take shorter titles (15 and 13 words), same numbers and subjects | Chapter 13's title check holds every rule title at fifteen words or fewer
+- D3-xxx | Rule 15.13 draws Loop R1 as a still systems drawing and cites Rule 11.14's live stepper, and places no second copy of the stepper | The guide build places each specimen once, and D2-1753 keeps one live drawing of one loop; the still drawing is the systems graphic the rule teaches
+- D3-xxx | Every drawing sits on one 296 px artboard with no word under 15 px, two columns with its words from 48em | A 360 px phone shows it at true size and a 320 px phone shrinks it to 13 px, System 1's phone rule (DR-36); one drawing per plate keeps the bytes down
+- D3-xxx | On a bent line the lead-in is cut from the first straight run, and the build stops if that run is under 28 px plus the pattern's gap | D3-105 and D3-165 set the lead-in for straight lines; loops bend, and the ticks sit on the first run
+- D3-xxx | Patterns are fitted to the measured length of the rounded path, corners included | `wire_marks` fits to the polyline's length, which leaves a pattern a few pixels off ink after a corner
+- D3-xxx | Drawings print raises and lowers on every grade, and the grade lives in the line and the grade word; "can" stays with titles and sentences (Rule 13.2) | System 1 and Rule 10.10 draw the verb as the sign's word; a step's grade already shows twice
+- D3-xxx | A typed connection's words take two rows, the type with its comma, then the verb ("money," / "raises") | One row overran the 296 px artboard beside a loop's upright steps
+- D3-xxx | A pill widens to hold its longest word (State and local experimentation) | A fixed 130 px pill let "experimentation" touch its outline
+- D3-xxx | Short names follow DR-185's rule, read from the loops that hold each variable, else the title | One label rule across chapters 10 to 15
+- D3-xxx | Any drawing that shows two layers carries the boundary rule (the opener, 15.5, 15.8, 15.10), so Rule 15.9 holds on every plate | A rule the chapter breaks on its own plates would teach two ways
+- D3-xxx | Quotations of the atlas that hold an ID print exact fragments with the ID in its typed chip outside the quotation marks (Loop R1's weakest step, Loop R8's revision and its reason) | Rule 13.9 and the V7 check's bare-ID test; the words stay the atlas's own
+- D3-xxx | Round 1's groups are numbered 1 and 2; the worked examples become group 3 when Rules 15.11 and 15.12 land | The guide build requires group numbers 1, 2, 3 in rule order among the groups present
+- D3-xxx | Rule 15.14's failure routes Loop R8 through Variable A1 with a closing step the atlas does not hold, and its caption says so | It shows the dependency the atlas withdrew without presenting any earlier drawing as a record of what was published
+- D3-xxx | Plates draw through theme tokens (graphic essential, surface, text, border strong), so they flip to Charcoal under `data-oa-theme="dark"` while the guide page stays light (D2-1133) | One drawing serves a product's dark mode (DR-204)
 
 ## Requests
 
-None yet.
+1. **Engineer, `work/build/scripts/phase-3/v7_check.py`.** The bare-ID pattern `L[ETR]?\d{2}` misses connections whose IDs start with T (T01, T02, T07, T12) or LX (LX4), so a bare T12 or LX4 in reader text passes. Chapter 15 now prints neither bare, so adding `T\d{2}` and `LX\d` would not fail it. Not blocking.
+2. **Data visualization lead, sign-off of the grammar and examples 1 and 2.** Points I would like ruled on: (a) raises and lowers on dotted and dashed lines in drawings (routine call above); (b) Rule 15.14's failure plate, which draws a closing step the atlas does not hold; (c) the three-variable loop drawn with one pill above two for the 296 px artboard, where System 1's card had two above one; (d) outside drivers marked by place and the words "Outside driver" in the same pill as a variable, since the glossary's pill is unconfirmed in the renderer; (e) Loop B3's conceptual stations in 1 px pills, with the signs the loop record lists on hollow lines.
+3. **Editor, optional.** A words pass on chapter 15's rule text and captions, if the round's words pass can take it; I own the file and will apply changes.
 
 ## Tested
 
-- The counts in the rule list's subjects, read by script from `work/extract/atlas-v7-data.json`: link types, signs, variable kinds, layers, the seven authority links (none in a loop), loop closures, the leverage bands, omissions (9) and rejected links (3).
-- Loop type against sign parity on all 20 numbered loops: 0 mismatches.
+- `python3 -I work/build/scripts/phase-3/phase3_ch15_build.py`: every `need()` against the atlas (each loop, connection and variable a plate draws; the glossary, conventions, boundary and limits sentences it quotes; the kinds, types, layers, closures, rejected connections and omissions it counts), the kind of all 20 numbered loops against their count of minus signs (0 disagree), no authority connection in any loop, chapter 13's word checks (no em dash or U+2011, no listed filler, no studio word or decision code, titles at fifteen words or fewer, failure captions led "Fails Rule 15.N.", every failure plate with the do-not-publish band and an alt opening "Failure case: do not publish."), no literal color, no px font size, no heading element, every chip ID in the atlas, no citation of a rule this round does not build, Rule 01.9 over the example log.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide.html`: exit 0, 0 warnings, chapter 15 at WEIGHT bytes, the page at PAGE bytes, projected PROJ MB.
+- `python3 -I work/build/scripts/phase-3/v7_check.py --page <scratch>/guide.html`: chapter 15, 35 chips, 0 failures; chapter 13 unchanged at 0.
+- Captures of all 25 plates from the strict build at 1440 and 390 px (Playwright, Chromium): no stage overflow and no text under 13 px at either width, each read by eye at 1440 and on a 390 px contact sheet; a grayscale capture at 1440.
+- On Charcoal: the opener and Rules 15.7 and 15.9's plates in a scratch preview with `data-oa-theme="dark"`, every mark and word flipping through the tokens.
+- GUIDECHECK
 
 ## Not tested
 
-- Nothing built yet.
+- A 320 px window: the drawings scale to 256 of 296 px there, which sets 15 px words at 13 px by arithmetic; not rendered.
+- Charcoal for the other 22 plates, color-vision simulations, print and forced colors.
+- A screen reader reading the plates' alt text and the chapter.
+- The data lead's sign-off and the editor's words pass.

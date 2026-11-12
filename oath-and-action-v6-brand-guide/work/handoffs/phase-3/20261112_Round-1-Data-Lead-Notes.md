@@ -72,6 +72,9 @@ What holds on every plate: each connection's sign and its verb match V7 (L01 to 
 - D3-xxx | S20 keeps the 2015 and 2025 window, with the longer record in its note | Ten years to the latest year is a checkable reason, and either other start sits on a peak or a collection change
 - D3-xxx | A chart that names one bar takes the light fill on its other bars on Newsprint as soon as the kit draws it (S17 first) | The approved palette's rule R3 (DR-236), carried into round 1's kit work by D3-191
 - D3-xxx | A chart's printed scale note must describe the scale the form draws, at every width | S25 and S26 print scales their forms do not draw; the table equivalent is what a screen reader hears
+- D3-xxx | Every correct plate in chapter 15 that draws an atlas connection carries Rule 13.1's evidence label and Rule 13.4's grade words, with the record square on documented lines | A correct plate is the model a builder lifts; chapter 13 is approved as built (DR-237)
+- D3-xxx | Chapter 15 counts variable kinds by V7's `type` and prints no kind for Variable D6 until Dustin settles it | V7's `type` and `kind_plain` disagree on D6 alone, and the guide never changes V7
+- D3-xxx | Chapter 15's worked example 1 cites the live stepper in Rule 11.14's plate and Rule 18.22 rather than drawing a second one | One live stepper in the guide; a citation by number keeps the rule unrestated and spends no bytes
 
 ## Requests
 
@@ -136,11 +139,13 @@ The twelve changes in the plan's "Data lead sign-off" section, by row: 95, 108, 
 - Read each spec's words and its entry (14-015 to 14-023, 14-026 to 14-028, 14-033, 14-035 to 14-037, 14-040) against the plan file's forms; every `use_instead` names a real rule number for the form it describes.
 - Checked S25's and S26's scale notes against their forms' scale code (`forms/diverging-bar.js`, lines 27 to 30) and the drawings; checked S30's words against `govinfo-child-tax-credit-by-law.csv` and its sidecar; checked S29's code list against `census-cbp-newspaper-publishers.meta.json` (the 2023 file is served under the 2017 code list).
 
+- Chapter 15: `guide_build.py --out <scratch>/guide/guide.html` (built; its notes reported no failure for chapter 15). Playwright captures of all 25 plate stages at 1440 and 390 px and of each rule's block at 1440 px; I looked at every plate at 1440 px and every correct plate at 390 px, and zoomed on 15.8's frame crossings and 15.13's ticks. Script checks on V7: every link's ends, sign, type, grade and delay named above; loop chains, closures and kinds; variable types and plain kinds (finding D6); the glossary, methods, evidence-note, qualification and `sign_meaning` quotations; LTR1's full reason; chapter 11's Rule 11.14 and chapter 18's Rule 18.22.
+
 ## Not tested
 
 - No fetch: I did not open any publisher's page, so the claims about FEC, Census, CMS, Congress.gov and DOL files in the round 3 changes (the FEC totals' cash-on-hand fields, the DOL table's as-of day, which states hold unusual House seats) are for the research lead to confirm at the fetch.
 - Whether Tennessee's act reaches city elections: I read only the frozen scope note.
 - DL-B1 (how the Business Formation Statistics assign a state) and DL-B6 (the 2017 code list's place for online-only publishers) rest on my knowledge of the Bureau's documentation, not a reading of it today; the makers check before they write.
 - The page-to-Node parity, the guide widths (656 to 256 px) and the kit's checks are the build's own; I did not rerun them apart from the build command.
-- S23, S32, S34, S35, S37 to S40 and the four sketches: not yet done by their makers. The built specimens' entries: 14-015 and 14-019 read for their cross-references only; 14-125, 14-127 and 14-128 not read. Chapter 15's plates: not yet reported ready, so not read.
+- S23, S32, S34, S35, S37 to S40 and the four sketches: not yet done by their makers. The built specimens' entries: 14-015 and 14-019 read for their cross-references only; 14-125, 14-127 and 14-128 not read. Chapter 15: failure plates at 390 px, the plates in a dark or forced-colors theme, the build in `--strict` mode, `v7_check.py` on the page, and the 15.9 frame breaks at 390 px were not checked; the plates' screen reader text was not read.
 - DL-B9's inflation point rests on the sidecar and the measure line, which name no adjustment; I did not open the FHFA release.

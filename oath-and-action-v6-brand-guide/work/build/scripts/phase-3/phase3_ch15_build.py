@@ -923,8 +923,8 @@ def rule_15_4(book):
                     "caption": "Three connections from our systems atlas, one of each type that names what moves, each with its "
                                "type in words before its verb and its line in its grade’s pattern."},
         "failure": {"specimen": "s-15-4-failure",
-                    "caption": "<strong>Fails Rule 15.4.</strong> Color alone tells the three types apart, so a reader with gray "
-                               "print or low color vision cannot tell money from information."},
+                    "caption": "<strong>Fails Rule 15.4.</strong> Color alone tells the three types apart. In gray print the "
+                               "money and ownership lines match, and the key cannot say which is which."},
         "specs": [
             {"label": "Type word", "value": "Money, information or ownership, before the verb and a comma: money, lowers"},
             {"label": "Causal", "value": "No type word; the verb alone"},
