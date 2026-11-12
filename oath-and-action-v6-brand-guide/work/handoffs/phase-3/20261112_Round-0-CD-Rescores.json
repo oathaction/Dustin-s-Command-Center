@@ -1,8 +1,9 @@
 {
- "title": "Creative director’s rescores for Phase 3, round 0: chapter 13 and the palette proofs, after the fix pass and DR-191’s second pass",
+ "title": "Creative director’s rescores for Phase 3, round 0: chapter 13, the palette proofs and the chart kit with S01 to S16, after the fix passes and DR-191’s second pass",
  "date": "2026-11-12",
  "author": "Creative director (oa-creative-director), subagent of the main session",
  "basis": "The strict build in the scratchpad’s phase-3/round-0-review/20261112_Round-0-Rescore-Guide.html (9,959,450 bytes, chapter 13 at 248,530 bytes, 0 warnings), anchor #evidence, looked at by the creative director at 1440 and 390 px with all 27 plates captured; the editor’s notes, “Fix pass”, “Fix pass read” and “Second pass”; the palette sheet work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs.html at 1440 and 390 px, with the palette notes’ “Fix pass”, “Fix pass 2” and “Second pass”; 20261111_Palette-Proposal.json; tokens.json release 6.0.0-gate3.1",
+ "basis_kit": "The 16 kit pages in the scratchpad’s phase-3/round-0-review/kit-pages-final/ (November 12), looked at by the creative director at true size and from the 2x exports, in Chromium’s forced colors at 1440 px and with drawings 296 and 264 px wide; the fix-2 pilot’s chapter 14 printed to Letter PDF; the part 2 fix brief, the engineer’s “Weight pass”, “Fix pass 2”, “Board 1 weight options” and “Second pass”, the Explainer maker’s “Fix pass 2” and “Second pass”, and the editor’s “Fix pass read”",
  "first_scores_file": "work/handoffs/phase-3/20261111_Round-0-CD-Scores.json",
  "review": "work/handoffs/phase-3/20261111_CD-Review-Of-Round-0.md, section “Rescore”",
  "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
@@ -155,12 +156,12 @@
    "should_fix_count": 1,
    "ready": true,
    "to_ready": "Ready."
-  }
- ],
- "pending": [
+  },
   {
    "key": "kit",
-   "name": "The chart kit with S01 to S16",
+   "name": "The chart kit with its 16 specimens, S01 to S16",
+   "anchor": "kit pages built November 12 in the scratchpad’s phase-3/round-0-review/kit-pages-final/; work/boards/phase-3/round-0/specimens/",
+   "stage": "Phase 3, round 0, after fix pass 2 and DR-191’s second pass",
    "first_scores": {
     "craft": 3,
     "clarity": 4,
@@ -169,16 +170,82 @@
     "evidence_honesty": 4,
     "accessibility": 4
    },
-   "status": "Rescored when the engineer’s last items land and the main session sends the build"
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "S16’s circles are back at full size, S09 cuts its names at the parenthesis with no leader through a label, S13’s gray line shows in all 14 panels over the light fill, and S08’s ring sits at the stack’s foot with its leader, though S11’s right end, S09’s small dots and S16 at 296 px still fall short of Phase 2 (KR2 to KR4).",
+    "clarity": "S01 heads its votes “The votes on H.R. 7008, 2026”, names both provisions where the votes are drawn and reads “for” and “against” on every segment, S06’s glosses are back, and S09’s note now says what the drawing does.",
+    "brand_fidelity": "Four inks, pair B with boxed arrows, no red in any of the 16, parties named in words in one neutral ink with the vote in words, and the system still reads with the wordmark covered.",
+    "usefulness": "The README now gives a recipe, a starter spec per form and what each failing check asks, check messages say what to change, and the build names the folder it wrote; the creative director did not build a new chart from it.",
+    "evidence_honesty": "S15 prints North Dakota +36.4 and North Carolina 2020 +1.3, S13 +1.3% for professional and business services, and S03 and S08 add a dated November 11 note on the three ballot measures under Rule 13.10, keeping the atlas’s snapshot coding.",
+    "accessibility": "In forced colors the tile maps, S16 and S03 keep every word and mark apart, every chapter 13 kit plate is named by its visible description, and the printed chapter keeps S09 whole with its source line, though S06’s hatches run through its cell words (KR1)."
+   },
+   "first_must_fix": [
+    "KM1",
+    "KM2",
+    "KM3"
+   ],
+   "first_should_fix": [
+    "KS1",
+    "KS2",
+    "KS3",
+    "KS4",
+    "KS5",
+    "KS6"
+   ],
+   "first_items_landed": [
+    "KM1",
+    "KM2",
+    "KM3",
+    "KS1",
+    "KS2",
+    "KS3",
+    "KS4",
+    "KS6"
+   ],
+   "first_items_open": [
+    "KS5 (in part, now KR3)"
+   ],
+   "reviewers_must_fix_checked": {
+    "access M1, forced colors": "Fixed in substance: probed all 16 at 1440 px and with a 264 and 296 px drawing, 0 labels in the ink of the mark under them; S06’s hatch through words remains (KR1)",
+    "access M2, guide widths": "Fixed: all 16 drawn at 296 px and 264 px with 0 text overlaps except S16 (1 at 296, 2 at 264) and S08’s ring 1.5 px past the edge (KR2, KR5)",
+    "access M3, chapter 13 plates’ names": "Fixed: in the rescore guide all five kit plates are role img, named by an alt paragraph that exists on the page",
+    "access M4, print": "Fixed: the pilot’s chapter 14 printed to Letter PDF in Chromium prints S09’s four lanes, notes, source line and table, with S10 starting on its own page; 16 of 16 drawn",
+    "statistics P2-M1, double rounding": "Fixed: S15 prints North Dakota 2024 +36.4, North Carolina 2020 +1.3 and Mississippi 2020 +16.5; S13 prints +1.3%",
+    "statistics P2-M2, decided ballot measures": "Fixed: S03 and S08 carry “As of November 11, 2026: voters have cast their ballots on all three measures this chart counts as pending …”",
+    "brand K1 and CD KM1, S16’s size": "Fixed at 1440 and 390 px",
+    "brand K2, S16’s leaders at 390 px": "Fixed at 390 px; at 296 px see KR2",
+    "brand K3 and CD KM2, S09": "Fixed",
+    "brand K4, S01’s vote bars": "Fixed"
+   },
+   "must_fix": [],
+   "should_fix": [
+    "KR1",
+    "KR2",
+    "KR3",
+    "KR4",
+    "KR5"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 5,
+   "ready": true,
+   "to_ready": "Ready."
   }
  ],
  "totals": {
   "must_fix": 0,
-  "should_fix": 3,
+  "should_fix": 8,
   "under_4": [],
   "ready": [
    "ch13",
-   "palettes"
+   "palettes",
+   "kit"
   ],
   "not_ready": []
  },
@@ -210,7 +277,64 @@
    "what": "The data lead asks the creative director to choose. In the light-fill variant the named bar stands apart in gray (0.371 against 0.635) and every value prints beside its bar; in view 1 it prints almost like its neighbors (0.371 against 0.386).",
    "fix": "Adopt the light fill for the other bars wherever one named bar is emphasized, in red or in ink, and write it into chapter 14’s palette specification in round 5.",
    "owner": "Data visualization lead"
+  },
+  "KR1": {
+   "items": [
+    "kit"
+   ],
+   "where": "S06 in forced colors (Chromium emulation), every hatched cell",
+   "what": "The hatch that marks a direction step runs its lines through the cell’s words (“up in reform states”, “up on structure; uncertain on behavior”); at 2x no Canvas halo shows behind the letters.",
+   "fix": "In forced colors set each cell’s words on a solid Canvas plate the size of the text block, as labels elsewhere sit on halos, and have the probe test letters against the hatch as well as the fill.",
+   "owner": "Engineer"
+  },
+  "KR2": {
+   "items": [
+    "kit"
+   ],
+   "where": "S16 with the drawing 296 px wide, both color modes",
+   "what": "The ring key’s last line, “margin of error”, touches the map’s top circles, and several labels sit far from their circles on long leaders (TN, KY, AL and GA below and right of theirs) while ten states go unlabeled.",
+   "fix": "At this width move the ring key under the map, and label only circles wide enough to hold their code, listing the rest under the map as the kit already does.",
+   "owner": "Engineer"
+  },
+  "KR3": {
+   "items": [
+    "kit"
+   ],
+   "where": "S11, the scale’s right end",
+   "what": "The last tick still reads “40 points”, and West Virginia and Wyoming still set their labels left of their arrows while every other Republican-side label sits right (first review KS5, in part).",
+   "fix": "Print the 50 tick the axis now runs to, and keep both labels right of their arrows.",
+   "owner": "Engineer"
+  },
+  "KR4": {
+   "items": [
+    "kit"
+   ],
+   "where": "S09",
+   "what": "Event dots are about 3 px where Phase 2 drew them near 8 px, and wraps split “P.L. / 119-21” and “Citizens United v. / FEC”.",
+   "fix": "Draw the dots at Phase 2’s size, and hold a law number and “v.” with the next word in one no-wrap span, as “H.R. 7008” already is.",
+   "owner": "Engineer"
+  },
+  "KR5": {
+   "items": [
+    "kit"
+   ],
+   "where": "S08 with the drawing 296 px wide",
+   "what": "The ring around entry RL47 runs 1.5 px past the drawing’s right edge.",
+   "fix": "Inset the stack so its ring stays inside the drawing, and let the guard count a ring’s stroke.",
+   "owner": "Engineer"
   }
+ },
+ "weight_recommendation": {
+  "options_read": "The engineer’s “Board 1 weight options”: as it stands 2.954 MB, ask 0.762 MB; chart data compressed 2.796 MB, ask 0.603 MB, no reader loss; tables compressed too 2.141 MB, no ask, every table lost with scripts off; smaller photo copies frees 1.060 MB of the page, no ask, a visible resample of chapter 01’s photographs to 1,200 px wide",
+  "changes_my_advice": "Yes. The photo row did not exist at Part 2, and it frees more than chapter 14 needs without touching a chart, a table or Phase 4.",
+  "recommend": [
+   "Take the smaller photo copies at 1,200 px wide. The page shows them at most 600 px wide, so 1,200 px holds every pixel a 2x screen draws at 100 percent, and a standard screen at 200 percent; only a 2x screen zoomed past 100 percent shows a softer photo. The research lead keeps the originals and their records, updates each SHA-256 and keeps the Corps of Engineers photo’s color profile. It is a visible change, so it needs Dustin’s named approval with the photos shown side by side at true size.",
+   "Carry the chart data compressed, which no reader sees (0.158 MB off chapter 14).",
+   "Keep every table as live text. I still advise against the tables-compressed row.",
+   "Then ask Dustin for no bytes from Phase 4. Raise chapter 14’s stop to the measured figure, about 2.8 MB, paid for by the bytes chapter 01 frees. The page then holds about 0.46 MB of room under 15.5 MB.",
+   "Set a budget per finished plate (about 15 KB, today’s measured average) that the build reports each round, since the projection rose from 2.709 to 2.954 MB within this round as notes and words grew."
+  ],
+  "not_tested": "I did not see the resampled photographs; the advice rests on the engineer’s measured bytes and the 600 px display width."
  },
  "risks_for_dustin": [
   "Chapter 13 builds at 248,530 bytes of its 250,000 ceiling. Any later word or plate change will pass the ceiling; the editor should cut before adding, and the engineer’s weight pass may free room.",

@@ -242,3 +242,40 @@ November 12, 2026, after the fix pass and DR-191's second pass. Scores in `work/
 **Risks.** Chapter 13 sits 1,470 bytes under its 0.25 MB ceiling, so any addition must come with a cut. The two new colors still need Dustin's approval on board 1; I recommend it.
 
 **Tested.** Both builds' captures, read by me. By script: the chapter's rule text, specifications and tokens; the absence of "Official statistic"; the token values in `tokens.json` and the proposal; 46 of 46 palette checks; the sheet's words for straight apostrophes and em dashes. **Not tested.** axe, keyboard and forced colors on either item; the new alt texts; the color-vision captures after the fix pass.
+
+## Rescore: the chart kit with S01 to S16
+
+November 12, after fix pass 2 and DR-191's second pass. I looked at the 16 pages in the scratchpad's `kit-pages-final/` at true size and in the 2x exports. I also probed them in Chromium's forced colors at 1440 px, with drawings 296 and 264 px wide, and printed the fix-2 pilot's chapter 14 to a Letter PDF.
+
+| Item | Craft | Clarity | Brand fidelity | Usefulness | Evidence honesty | Accessibility | Must | Should | Ready |
+|---|---|---|---|---|---|---|---|---|---|
+| Kit with S01 to S16 (first) | 3 | 4 | 4 | 4 | 4 | 4 | 3 | 6 | no |
+| Kit with S01 to S16 (now) | 4 | 4 | 4 | 4 | 4 | 4 | 0 | 5 | yes |
+
+**Must fix, checked myself.**
+- My KM1 to KM3 are fixed. S16's circles are back at full size. S09 cuts each name at its parenthesis, sets each year in bold and runs no leader through a label. S13's gray line shows in all 14 panels over the light fill.
+- Brand K1 to K4 are fixed. S01 heads its votes "The votes on H.R. 7008, 2026", names both provisions there, and reads "for" or "against" on every segment.
+- Statistics P2-M1 and P2-M2 are fixed: North Dakota +36.4, North Carolina 2020 +1.3, professional services +1.3%, and a dated November 11 note on S03 and S08.
+- Access M1 to M4:
+  - Forced colors: 0 labels in their mark's ink across all 16.
+  - Narrow widths: 0 text overlaps at 296 px but S16's one.
+  - Chapter 13's five kit plates are named by a visible description.
+  - Print: S09 prints with all four lanes and its source line.
+
+**Should fix, new** (all Engineer).
+- **KR1.** In forced colors, S06's hatch lines run through its cell words. Set the words on a solid Canvas plate.
+- **KR2.** S16 at 296 px: the ring key's last line touches the map, and several labels sit far from their circles. Move the key under the map and label only circles that hold their code.
+- **KR3.** S11 still ends its ticks at 40, and West Virginia and Wyoming still set their labels on the left.
+- **KR4.** S09's dots are about 3 px against Phase 2's 8 px, and "P.L. / 119-21" and "v. / FEC" break across lines.
+- **KR5.** S08's ring runs 1.5 px past the drawing's edge at 296 px.
+
+**Weight: the options change my advice.** The engineer's new photo row frees 1.060 MB of the page without touching a chart, a table or Phase 4. I now recommend this to Dustin:
+1. **The smaller photo copies at 1,200 px wide**, for photographs the page shows at most 600 px wide. That holds every pixel a 2x screen draws at 100 percent. Only a 2x screen zoomed past 100 percent shows a softer photo. It is a visible change, so it needs his named approval, with the photos side by side at true size. The research lead keeps the originals and their records.
+2. **The chart data carried compressed**, which no reader sees.
+3. **Every table kept as live text.**
+4. **No bytes taken from Phase 4.** Raise chapter 14's stop to the measured figure, about 2.8 MB, paid for by chapter 01's freed bytes. That leaves the page about 0.46 MB of room under 15.5 MB.
+5. **A per-plate budget of about 15 KB, reported each round.** The projection grew from 2.709 to 2.954 MB within this round alone.
+
+I did not see the resampled photographs.
+
+**Not tested.** Firefox and Safari, Windows' own contrast themes, a real printer, screen readers, and a new chart built from the README.
