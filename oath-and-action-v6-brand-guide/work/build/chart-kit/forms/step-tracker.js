@@ -2,8 +2,8 @@
  * 11.5 and 11.6): numbered circles, filled for a step done, a heavy ring on the step the bill is at now, a fine ring on
  * a step ahead, and a step that never happened keeps its number under a slash. Each step gives its name, its state in
  * words with its date, and a note. Across the row where each step's sixth holds its date on one line (720 px for
- * dates in full); narrower, the
- * steps run down the page with the words beside each mark (Rule 11.6). The end words follow the marks.
+ * dates in full), each mark at its sixth's left edge with its words flush left beneath, states and dates on shared
+ * lines; narrower, the steps run down the page with the words beside each mark (Rule 11.6). The end words follow the marks.
  * Each step's date is the first action whose code the step lists; a step with no action before a later step done
  * never happened (Rule 11.2).
  * encode: date (date), code (code: the action's code), action (text).
@@ -46,21 +46,27 @@
       var reached = function (i) { return i < now; };
       var bottom = 0;
       if (wide) {
-        // across: a sixth of the row a step, the joining rule heavy as far as the bill has come
-        var pitch = W / steps.length, cy = r + 2;
+        // across: a sixth of the row a step, each mark at its column's left edge with the words flush left under it, the
+        // joining rule heavy as far as the bill has come. The names share a top, and every state, date and note starts on
+        // one line across the row, however many lines a name takes (BC S11)
+        var pitch = W / steps.length, cy = r + 2, mw = pitch - 8, col = function (i) { return pitch * i; };
         for (var i = 1; i < steps.length; i++) {
-          var xa = pitch * (i - 1) + pitch / 2 + r, xb = pitch * i + pitch / 2 - r, on = reached(i);
+          var xa = col(i - 1) + d + 1, xb = col(i) + 1, on = reached(i);
           c.rect(xa, cy - (on ? 1 : 0.5), xb - xa, on ? 2 : 1, { fill: on ? 'subject' : 'context', mark: false });
         }
+        var nlh2 = Math.round(size * 1.25), nlines = 1;
+        steps.forEach(function (st) { nlines = Math.max(nlines, c.wrap(st.name, 'label', mw, 700).length); });
+        var ny = cy + r + 8 + size, sy = ny + (nlines - 1) * nlh2 + c.size('label') * 0.136 + 2 + tick * 0.95;
+        var dy = sy + tick * 0.136 + 1 + tick * 0.95, ny2 = dy + tick * 0.136 + 4 + note * 0.95;
         steps.forEach(function (st, i) {
-          var cx = pitch * i + pitch / 2, mw = pitch - 6, sw = S[state(i)] || state(i);
-          mark(i, cx, cy);
-          var nb = c.text(cx, cy + r + 8 + size, st.name, { role: 'label', weight: 700, anchor: 'middle', max: mw });
-          // across, the state and its date each take a line, the date held whole
-          var sb = c.text(cx, nb.bottom + 2 + tick * 0.95, sw, { role: 'tick', anchor: 'middle', max: mw, fill: 'label' });
-          if (hits[i]) sb = c.text(cx, sb.bottom + 1 + tick * 0.95, K.fmt(hits[i][ed], 'date').replace(/ /g, '\u00a0'), { role: 'tick', anchor: 'middle', fill: 'label' });
-          var bb = sb;
-          if (st.note) bb = c.text(cx, sb.bottom + 4 + note * 0.95, st.note, { role: 'note', anchor: 'middle', max: mw, leading: nlh, fill: 'secondary' });
+          var x0 = col(i);
+          mark(i, x0 + r + 1, cy);
+          c.text(x0, ny, st.name, { role: 'label', weight: 700, max: mw, leading: nlh2 });
+          // the state and its date each take a line, the date held whole
+          c.text(x0, sy, S[state(i)] || state(i), { role: 'tick', max: mw, fill: 'label' });
+          if (hits[i]) c.text(x0, dy, K.fmt(hits[i][ed], 'date').replace(/ /g, '\u00a0'), { role: 'tick', fill: 'label' });
+          var bb = { bottom: dy + tick * 0.136 };
+          if (st.note) bb = c.text(x0, ny2, st.note, { role: 'note', max: mw, leading: nlh, fill: 'secondary' });
           bottom = Math.max(bottom, bb.bottom);
         });
       } else {

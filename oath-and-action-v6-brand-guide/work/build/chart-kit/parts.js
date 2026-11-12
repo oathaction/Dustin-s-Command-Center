@@ -241,7 +241,8 @@
   // never bridges). Each run is one closed path in o.fill ('band' by default, or o.pattern); o.edge draws each edge as a
   // line in that stroke role. A run of one point draws a short whisker. Returns {runs: [[first, last]], top, bottom}.
   P.band = function (c, pts, o) {
-    o = o || {};
+    o = Object.assign({}, o || {});
+    if (o.edge === true) o.edge = 'context';   // B-M1 (round 2 fix pass): edge: true is the context ink at 1 px
     var runs = [], cur = null, top = Infinity, bottom = -Infinity;
     var ok = function (p) { return p && isFinite(p.x) && isFinite(p.y0) && isFinite(p.y1) && p.y0 !== null && p.y1 !== null; };
     pts.forEach(function (p, i) {

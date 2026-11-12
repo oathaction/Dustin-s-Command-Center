@@ -11,7 +11,8 @@
  * labels: names ({key: printed name}), count ("{count} counties": words under each name), median ("{median}": words over
  * the median line), named (keys of groups in the subject ink, the rest in the light fill), point (the one group in the
  * red point), outliers ({dataset, category, value}: the second dataset's name and its columns for each unit past a
- * whisker), axis (words under the value axis).
+ * whisker), axis (words under the value axis). Outliers that would touch take a lane above or below the row's line, and
+ * on a phone the gridlines run only through each row's box and outliers (round 2 fix pass, BC S1 and BC S17).
  * formats: value (the median's words), tick. scale: x ([lo, hi]). On a phone the same arrangement draws narrower, the
  * name over its box. Maker B, round 2. */
 (function (K) {
@@ -50,7 +51,35 @@
       var xs = K.scale.linear([dom[0], dom[1]], [x0 + pad, x1 - pad]);
       var bh = ph ? 26 : 30, head = ph ? size + tick + 14 : 0;
       var pitch = bh + head + (ph ? 22 : 28), top = 6, bottom = top + c.rows.length * pitch - (ph ? 12 : 16);
-      ticks.forEach(function (t) { c.line(xs(t), top, xs(t), bottom, { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); });
+      // the units past the whiskers, each row's laid out first: a small open dot at its value, moved up or down a lane where
+      // it would touch another dot or the whisker's cap, so a dense run reads as dots, never as a bar (BC S17)
+      var orad = ph ? 2.5 : 3, cap = bh * 0.3, lane = 2 * orad + 1.5, reach = 0;
+      var swarm = function (r) {
+        if (!oc) return [];
+        var k = r[ek], hx = xs(r[ehi]), lx = xs(r[elo]), placed = [];
+        var mine = outs.filter(function (u) { return String(u[oc.category]) === String(r[ec]) || String(u[oc.category]) === String(k); })
+          .sort(function (a, b) { return a[oc.value] - b[oc.value]; });
+        var lanes = [0];
+        for (var n = 1; n * lane <= bh / 2 + 8; n++) lanes.push(-n * lane, n * lane);
+        mine.forEach(function (u) {
+          var x = xs(u[oc.value]), best = null, bestd = -1;
+          lanes.forEach(function (dy) {
+            if (best !== null && bestd >= 2 * orad + 0.5) return;
+            var onCap = (Math.abs(x - hx) < orad + 1.5 || Math.abs(x - lx) < orad + 1.5) && Math.abs(dy) < cap + orad + 1;
+            var d = placed.reduce(function (m, p) { return Math.min(m, Math.sqrt((p.x - x) * (p.x - x) + (p.dy - dy) * (p.dy - dy))); }, Infinity);
+            if (onCap) d = Math.min(d, 0);
+            if (d > bestd + 0.01) { best = dy; bestd = d; }
+          });
+          placed.push({ u: u, x: x, dy: best });
+          reach = Math.max(reach, Math.abs(best) + orad);
+        });
+        return placed;
+      };
+      var swarms = c.rows.map(swarm), half = Math.max(bh / 2, reach) + 3;
+      ticks.forEach(function (t) {
+        if (!ph) { c.line(xs(t), top, xs(t), bottom, { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); return; }
+        c.rows.forEach(function (r, i) { var cy = top + i * pitch + head + bh / 2; c.line(xs(t), cy - half, xs(t), cy + half, { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); });
+      });
       c.rows.forEach(function (r, i) {
         var role = ink(r), b = ink.named && ink.is_named(r) || ink.is_point(r), y0 = top + i * pitch + head, cy = y0 + bh / 2, k = r[ek];
         // the group's name and its count of units
@@ -64,7 +93,7 @@
         // the named group's box in the subject ink, its median, whiskers and outliers in ink with it; every other box in the
         // light fill with its median as a 2 px line in the subject ink and its whiskers and outliers in the context ink
         // (the data lead's ruling (e))
-        var lit = role === 'subject' || role === 'point', wst = lit ? 'subject' : 'context', cap = bh * 0.3;
+        var lit = role === 'subject' || role === 'point', wst = lit ? 'subject' : 'context';
         [[elo, e1], [e3, ehi]].forEach(function (pr, j) {
           var a = xs(r[pr[0]]), z = xs(r[pr[1]]);
           c.line(a, cy, z, cy, { stroke: wst, width: c.t('line-context'), mark: false });
@@ -78,12 +107,13 @@
         c.rect(K.snap(mx, 2) - mlw / 2, y0, mlw, bh, { fill: lit ? 'label-on-subject' : 'subject', data: { key: k, field: em, value: r[em] } });
         if (L.median) {
           var words = String(L.median).replace('{median}', K.fmt(r[em], fv)), mw = c.measure(words, 'tick', b ? 700 : 600);
-          c.text(Math.min(Math.max(mx, x0 + mw / 2), W - mw / 2), y0 - 7, words, { role: 'tick', weight: b ? 700 : 600, anchor: 'middle', fill: 'label' });
+          c.text(Math.min(Math.max(mx, x0 + mw / 2), W - mw / 2), y0 - 7, words, { role: 'tick', weight: b ? 700 : 600, anchor: 'middle', fill: 'label', halo: true });
         }
-        // the units past the whiskers, small open dots on the row's line
-        if (oc) outs.filter(function (u) { return String(u[oc.category]) === String(r[ec]) || String(u[oc.category]) === String(k); }).forEach(function (u) {
-          c.circle(xs(u[oc.value]), cy, 3, { fill: 'surface', data: { key: String(k) + '|' + u[oc.value], field: oc.value, value: u[oc.value] } });
-          c.circle(xs(u[oc.value]), cy, 3, { stroke: wst, width: c.t('line-hairline') + 0.5, mark: false });
+        // the units past the whiskers, small open dots on the row's line or the lane the swarm gave them
+        swarms[i].forEach(function (p) {
+          var u = p.u;
+          c.circle(p.x, cy + p.dy, orad, { fill: 'surface', data: { key: String(k) + '|' + u[oc.value], field: oc.value, value: u[oc.value] } });
+          c.circle(p.x, cy + p.dy, orad, { stroke: wst, width: c.t('line-hairline') + 0.5, mark: false });
         });
       });
       // the value axis along the bottom

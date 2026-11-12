@@ -358,8 +358,9 @@ function band_faults(d, tok, at) {
 }
 // D3-899 (call 9, V20 section 3; AX M1): an interval form's plot is wide enough for its marks. Each row's interval is read
 // from what the drawing records, its low and high ends (K.parts.whisker and K.parts.band record them), and its estimate's
-// mark (a dot's diameter; a line's width for a band, 2 px). Where the middle row's interval, in pixels, runs less than 2 px
-// past its estimate's mark on each side, most intervals cannot be seen at this width, and the drawing fails.
+// mark (a dot's diameter; a line's width for a band, 2 px). The middle row's interval, in pixels, must be at least twice
+// its estimate's mark and run at least 2 px past it on each side; under that, most intervals hide behind their marks at
+// this width (Rule 14.9's plate at 294 px with its rows side by side: 19.7 px against a 13 px dot), and the drawing fails.
 function interval_faults(spec, d, def, at) {
   if (!def || !def.interval) return [];
   const enc = spec.encode || {}, vf = enc.value !== undefined ? enc.value : enc.y;
@@ -383,12 +384,88 @@ function interval_faults(spec, d, def, at) {
     let len = 0;
     e.lo.forEach(a => e.hi.forEach(b => { len = Math.max(len, Math.hypot(b[0] - a[0], b[1] - a[1])); }));
     runs.push(len);
-    needs.push((e.est || line) + 4);
+    const mk = e.est || line;
+    needs.push(Math.max(2 * mk, mk + 4));
   }
   if (!runs.length) return [];
   const mr = median(runs), mn = median(needs);
-  if (mr + 1e-6 < mn) return [`interval: at this width the middle row's interval spans ${mr.toFixed(1)} px, under the ${mn.toFixed(1)} px its estimate's mark needs to show 2 px of it on each side, so the intervals cannot be seen; give the plot more width, or stack the rows (D3-899)${at}`];
+  if (mr + 1e-6 < mn) return [`interval: at this width the middle row's interval spans ${mr.toFixed(1)} px, under the ${mn.toFixed(1)} px its estimate's mark needs (twice the mark, and 2 px past it each side), so the intervals cannot be seen; give the plot more width, or stack the rows (D3-899)${at}`];
   return [];
+}
+// AX S2 and BC S1 (round 2 fix pass): no line, path or outline crosses a word unless the word carries the ground's halo
+// and was drawn after it, so the halo knocks the line out under its letters; and no dot or bar sits half under a word.
+// A word is read by its box less 1.5 px a side, as the guard reads a leader through a label. Leaders are the guard's own.
+const CROSS_SKIP = ['surface', 'none', 'leader'];
+const FILL_SKIP = ['surface', 'none', 'band', 'track', 'land', 'mag-1', 'mag-2', 'light-fill', 'seq-1', 'div-3'];
+function seg_box(ax, ay, bx, by, x0, y0, x1, y1) {
+  let t0 = 0, t1 = 1;
+  const dx = bx - ax, dy = by - ay, p = [-dx, dx, -dy, dy], q = [ax - x0, x1 - ax, ay - y0, y1 - ay];
+  for (let i = 0; i < 4; i++) {
+    if (p[i] === 0) { if (q[i] < 0) return false; continue; }
+    const r = q[i] / p[i];
+    if (p[i] < 0) { if (r > t1) return false; if (r > t0) t0 = r; } else { if (r < t0) return false; if (r < t1) t1 = r; }
+  }
+  return t0 <= t1;
+}
+function outline_segs(b) {
+  if (b.seg) return [b.seg];
+  if (b.subs) {
+    const out = [];
+    b.subs.forEach(pts => { for (let i = 0; i + 1 < pts.length; i++) out.push([pts[i][0], pts[i][1], pts[i + 1][0], pts[i + 1][1]]); if (b.kind === 'polygon' || (pts.length > 2 && b.closed)) out.push([pts[pts.length - 1][0], pts[pts.length - 1][1], pts[0][0], pts[0][1]]); });
+    return out;
+  }
+  if (b.kind === 'rect') return [[b.x, b.y, b.x + b.w, b.y], [b.x + b.w, b.y, b.x + b.w, b.y + b.h], [b.x + b.w, b.y + b.h, b.x, b.y + b.h], [b.x, b.y + b.h, b.x, b.y]];
+  return null;
+}
+// a filled shape that covers the whole of a box (a dot or a tile drawn over a line, under its words)
+function covers(s, x0, y0, x1, y1) {
+  if (s.ring) { const [cx, cy, r] = s.ring; return [[x0, y0], [x1, y0], [x0, y1], [x1, y1]].every(p => Math.hypot(p[0] - cx, p[1] - cy) <= r); }
+  if (s.poly) return [[x0, y0], [x1, y0], [x0, y1], [x1, y1]].every(p => in_subs(s.poly, p[0], p[1]));
+  return s.x <= x0 && s.y <= y0 && s.x + s.w >= x1 && s.y + s.h >= y1;
+}
+function in_subs(subs, px, py) {
+  let inside = false;
+  for (const pts of subs || []) for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) {
+    const a = pts[i], b = pts[j];
+    if ((a[1] > py) !== (b[1] > py) && px < (b[0] - a[0]) * (py - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+  }
+  return inside;
+}
+function crossing_faults(d, at) {
+  const f = [], seen = new Set();
+  const solids = (d.ink || []).filter(s => s.fill && s.fill !== 'none' && s.a > 0);
+  for (const t of d.texts || []) {
+    const x0 = t.x + 1.5, x1 = t.x + t.w - 1.5, y0 = t.y + 1.5, y1 = t.y + t.h - 1.5;
+    if (x1 <= x0 || y1 <= y0) continue;
+    const cx = t.x + t.w / 2, cy = t.y + t.h / 2;
+    for (const b of d.ink || []) {
+      if (b.x > x1 || b.x + b.w < x0 || b.y > y1 || b.y + b.h < y0) continue;
+      // a stroke across the word, unless the word's halo knocks it out or a shape drawn after it covers the word
+      if (b.stroke && CROSS_SKIP.indexOf(b.stroke) < 0 && !(t.halo && b.seq < t.seq) && !solids.some(s => s.seq > b.seq && s.seq < t.seq && covers(s, x0, y0, x1, y1))) {
+        let hit = false;
+        if (b.ring) {
+          const [ccx, ccy, r] = b.ring, nx = Math.max(x0, Math.min(ccx, x1)), ny = Math.max(y0, Math.min(ccy, y1));
+          const near = Math.hypot(nx - ccx, ny - ccy), far = Math.max(Math.hypot(x0 - ccx, y0 - ccy), Math.hypot(x1 - ccx, y0 - ccy), Math.hypot(x0 - ccx, y1 - ccy), Math.hypot(x1 - ccx, y1 - ccy));
+          hit = near < r && r < far;
+        } else {
+          const segs = outline_segs(b);
+          hit = segs ? segs.some(s => seg_box(s[0], s[1], s[2], s[3], x0, y0, x1, y1)) : false;
+        }
+        if (hit) { const k = 's|' + t.words + '|' + b.stroke; if (!seen.has(k)) { seen.add(k); f.push(`layout: a ${b.dash ? 'dashed ' : ''}${b.kind} in ${b.stroke} crosses "${String(t.words).slice(0, 30)}"${t.halo && b.seq > t.seq ? ', drawn over its halo' : ''}; set the words on the ground's halo after the line (K.parts.clear_label), or move them clear (AX S2, BC S1)${at}`); } }
+      }
+      // a dot or bar half under the word: its fill reaches into the word's box but does not hold the word's middle
+      if (b.fill && FILL_SKIP.indexOf(b.fill) < 0 && b.a > 0 && !b.plate && b.seq < t.seq) {
+        const inside = b.ring ? Math.hypot(cx - b.ring[0], cy - b.ring[1]) < b.ring[2] : b.poly ? null : (cx > b.x && cx < b.x + b.w && cy > b.y && cy < b.y + b.h);
+        if (inside === false) {
+          let hit;
+          if (b.ring) { const [ccx, ccy, r] = b.ring, nx = Math.max(x0, Math.min(ccx, x1)), ny = Math.max(y0, Math.min(ccy, y1)); hit = Math.hypot(nx - ccx, ny - ccy) < r - 0.5; }
+          else hit = b.x < x1 - 0.5 && b.x + b.w > x0 + 0.5 && b.y < y1 - 0.5 && b.y + b.h > y0 + 0.5;
+          if (hit) { const k = 'f|' + t.words + '|' + b.fill; if (!seen.has(k)) { seen.add(k); f.push(`layout: a ${b.kind} in ${b.fill} sits half under "${String(t.words).slice(0, 30)}"; set the words clear of the mark or wholly on it (AX S2)${at}`); } }
+        }
+      }
+    }
+  }
+  return f;
 }
 // CD A-M2 (round 2 fix pass): Pillar Red's share of a view. Every shape's paint: its fill's area where the fill resolves to
 // Pillar Red, and its stroke's length times its width where the stroke does. The view is the drawing, or, where the
@@ -594,5 +671,5 @@ function id_types() {
   return out;
 }
 
-module.exports = { id_types, check_spec, check_drawing, check_csv, red_share, RED_SHARE, contrast, band_faults, interval_faults, to_csv, load_dataset, rows_of, v7, role_color, hex_to_lab_l, strings,
+module.exports = { id_types, check_spec, check_drawing, check_csv, red_share, RED_SHARE, contrast, band_faults, interval_faults, crossing_faults, to_csv, load_dataset, rows_of, v7, role_color, hex_to_lab_l, strings,
   FAMILIES, TIERS, EVIDENCE, DISCLOSURE, KEY_LIGHTNESS_MARGIN, ROOT, DATA };

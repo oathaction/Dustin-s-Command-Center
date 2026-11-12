@@ -874,27 +874,40 @@ def rule_14_6(B):
          "line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Marks the title names "
          "together, such as the bars of one age band, share the red. Every other mark takes "
          "the light fill on Newsprint and the context ink on Charcoal (Rule 05.7).",
+         # RF-17 (BC S5, CD R-S1): what counts as one mark, and the comparison case, each read on its own
+         "A line or a single bar is one mark, and a run of columns is a set of marks, so a title can name one column of a run and give it "
+         "the red, as on Rule 14.12’s plate. A chart that draws only one line, bar or path has no other mark to set it apart from, so the "
+         "mark takes Charcoal at the subject weight and the value the title names carries a label. When the title names a second mark only "
+         "to measure the first against, as “more than twice Zion’s” does on this rule’s plate, that mark is a comparison. It keeps the light "
+         "fill with its label, and the red stays on the finding.",
          "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step "
          "the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber "
          "whose majority readers know, an election result, money spent to elect a candidate and a policy readers link to one party all "
          "carry that tie, "
-         "and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7). A title that names two marks in two roles, such as the most "
-         "and the least, sets both in Charcoal the same way, since two reds would split the reader’s first look. Red never codes a series, "
-         "a group, a step on a scale or a sign, such as a deficit or a loss."],
+         "and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7).",
+         # RF-17's two findings, and RF-1 (D3-890, BC M1, CD A-M2): Rule 05.1's share, stated once here
+         "A title that states two findings, each on its own, such as the most and the least, sets both marks in Charcoal the same way, since "
+         "two reds would split the reader’s first look. Rule 05.1 keeps the red within 5 percent of the drawing at every width, so a named "
+         "mark that would pass that share, such as a part of a treemap, pie or donut, or a tall column in a short run, takes Charcoal at the "
+         "subject weight as well. Red never codes a series, a group, a step on a scale or a sign, such as a deficit or a loss."],
         ["One red mark tells a reader where to look first, and the title tells them why. A second red mark splits their attention, and red "
          "that codes a group reads as a warning about that group."],
         [("The point", "Pillar Red with a 1 px Charcoal keyline", "oa.chart.color.point.onNewsprint"),
          ("Its label", "Beside the mark, in the text ink"),
+         ("A chart of one mark", "One line, bar or path in Charcoal at the subject weight, the title’s value labeled",
+          "oa.chart.color.subject.onNewsprint"),
+         ("A comparison", "The light fill, with its label", "oa.chart.color.lightFill.onNewsprint"),
          ("An error, a step, a sign or a party tie", "Charcoal at the subject weight, with the label", "oa.chart.color.subject.onNewsprint"),
-         ("Two marks in two roles", "Both in Charcoal at the subject weight, each with its label"),
+         ("Two findings", "Both in Charcoal at the subject weight, each with its label"),
+         ("Past 5 percent of the drawing", "Charcoal at the subject weight, with the label (Rule 05.1)", "oa.chart.color.subject.onNewsprint"),
          ("A total or national line", "Dashed in the text’s ink, with its own label", "oa.chart.color.label.onNewsprint"),
          ("Red never", "Codes a series, a group, a step on a scale or a sign, such as a deficit or a loss")],
-        ["05.3", "05.5", "05.7", "01.1", "01.2", "14.7"],
+        ["05.1", "05.3", "05.5", "05.7", "01.1", "01.2", "14.7", "14.12"],
         "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; "
         "where the subject ink takes its place, labels.named does it instead, with a list for two marks. The kit counts working reds and "
-        "fails a view whose red falls on two jobs.",
-        B.plate("s-14-6-correct", "The title names Great Smoky Mountains, and its bar alone takes the view’s red, inside its keyline, with "
-                                  "every other park in gray."),
+        "fails a view whose red falls on two jobs or covers more than 5 percent of the drawing at any width it checks.",
+        B.plate("s-14-6-correct", "The title names Great Smoky Mountains, and its bar alone takes the view’s red, inside its keyline. Zion, "
+                                  "which the title names only to compare, stays gray with its value like every other park."),
         B.plate("s-14-6-failure", fails("14.6", "Red falls on three parks while the title names one, so a reader cannot tell which bar the "
                                                 "title means.")),
         [ex("Recreation visits, the 12 most visited national parks, 2025", "D04", where="14.6")],
@@ -1047,7 +1060,13 @@ def turnout10():
     for r in st:
         v, m = float(r["voted_pct"]), float(r["moe_pct"])
         gm = math.sqrt(m * m + nm * nm)
-        out.append({"code": r["code"], "name": r["name"], "v": v, "m": m, "gap": v - n, "gm": gm, "past": abs(v - n) > gm})
+        # RF-7 (ST S4): a state sits inside the nation, so the exact test takes out twice its share w of the nation's citizens
+        # of voting age times its own squared margin; the plate holds only while both tests agree
+        w = int(r["citizen_vap_thousands"]) / int(nat["citizen_vap_thousands"])
+        gx = math.sqrt(m * m * (1 - 2 * w) + nm * nm)
+        need((abs(v - n) > gm) == (abs(v - n) > gx), f"{r['name']}: the two gap tests disagree")
+        out.append({"code": r["code"], "name": r["name"], "v": v, "m": m, "gap": v - n, "gm": gm, "gx": gx, "w": w,
+                    "past": abs(v - n) > gm})
     return n, nm, out
 
 
@@ -1092,7 +1111,14 @@ def rule_14_9(B):
                formats={"value": "number:1", "tick": "integer"}, scale={"x": [50, 80]}, phone="same",
                notes_internal="Rule 14.9's correct plate on the kit's range-bar form (ED-E4). Checked by script: five states past the "
                               "gap's margin from the nation (the form's labels.test reads the same margins), five within it; the ranked "
-                              "ends inside their own margins.", **common)
+                              "ends inside their own margins. Each state is part of the nation, so the exact test (the data lead's RF-7, "
+                              "ST S4) is the square root of a²(1 − 2w) + b², with w the state's share of the nation's citizens of voting "
+                              f"age ({min(x['w'] for x in st) * 100:.1f} to {max(x['w'] for x in st) * 100:.1f} percent here); the "
+                              "generator checks that it sets apart the same five states as the independent test the kit draws "
+                              f"(California {next(x['gm'] for x in st if x['code'] == 'CA'):.2f} falls to "
+                              f"{next(x['gx'] for x in st if x['code'] == 'CA'):.2f} against a gap of 0.6; Ohio "
+                              f"{next(x['gm'] for x in st if x['code'] == 'OH'):.2f} to {next(x['gx'] for x in st if x['code'] == 'OH'):.2f} "
+                              "against 2.1).", **common)
         B.add("s-14-9-correct", chart("s-14-9-range"), alt=f"Dots with margin of error lines for ten states against the nation. {title}.")
     else:
         B.spec("s-14-9-dots", form="dot-plot", measure_line=measure,
@@ -1119,7 +1145,10 @@ def rule_14_9(B):
          "near three points, may stand in either order across the whole population, and a ranking that puts one first tells a reader "
          "something the survey cannot know."],
         [("Interval", "The publisher’s margin of error at its stated confidence, a line through the dot", "oa.chart.color.context.onNewsprint"),
-         ("A gap’s margin", "For two independent survey figures, the square root of the sum of their squared margins"),
+         ("A gap’s margin, two separate places", "The square root of the sum of their squared margins"),
+         ("A gap’s margin, a place inside an area", "The square root of the sum of the two squared margins less twice the place’s "
+                                                    "squared margin times its share of the people the area counts; where the data hold "
+                                                    "no share, the first test, and the note says it treats the two as independent"),
          ("Within the margin", "An open dot and the words “within the margin of error”"),
          ("Counts", "No sampling margin; they rank as they stand")],
         ["13.5", "13.1"],
@@ -1311,7 +1340,10 @@ def rule_14_12(B):
            phone="differs", phone_note="On a phone the twelve columns turn into bars, so every value keeps its label.", phone_view=True,
            domain="D08", states=[], notes_internal="Rule 14.12's correct plate: the kit's column form and its phone drawing, one spec. "
                                                    "The 2026 column the title names takes the red point (D3-665): a year's total "
-                                                   "receipts carries no tie on Rule 14.6's list.")
+                                                   "receipts carries no tie on Rule 14.6's list. 2015 is the title's comparison, so it "
+                                                   "keeps the light fill with its value in both drawings, and a run of columns is a set "
+                                                   "of marks (the data lead's RF-17, BC S5, CD R-S1). The red measures 2.8 to 4.1 "
+                                                   "percent of the drawing, inside Rule 05.1's 5 (the engineer's red-share check).")
     B.add("s-14-12-correct", chart("s-14-12-cols"),
           alt=f"The same twelve years drawn twice, as columns at full width and as bars on a phone. {title}.")
     last3 = data[-3:]
@@ -1363,18 +1395,22 @@ def rule_14_13(B):
            evidence="finding", evidence_label="Finding", grade_line="Documented: the Federal Election Commission’s records",
            title=title, measure_line=measure, source_line=src(ds),
            notes=["A late or amended filing can change a past cycle’s count; these are the commission’s totals on November 12, 2026."],
-           alt=f"Eight columns of super PACs, one for each two-year cycle: {', '.join(f'{y} {comma(r[y])}' for y in cycles)}, the last in red.",
+           alt=f"Eight columns of super PACs, one for each two-year cycle: {', '.join(f'{y} {comma(r[y])}' for y in cycles)}, the last, "
+               "the one the title names, in the dark ink and the rest in gray.",
            table={"caption": "Super PACs in the Federal Election Commission’s totals, by two-year cycle",
                   "columns": [{"field": "cycle", "label": "Cycle", "format": "year", "row_header": True},
                               {"field": "super_pacs", "label": "Super PACs", "format": "integer"}]},
-           encode={"x": "cycle", "y": "super_pacs"}, labels={"point": last}, domain="D03", states=[],
-           notes_internal="Rule 14.13's correct plate: a still chart with every value printed and its table as live text.")
-    # the failure: the same columns, the named one in its red and keyline as the kit draws it, with no values printed
+           encode={"x": "cycle", "y": "super_pacs"}, labels={"named": last}, domain="D03", states=[],
+           notes_internal="Rule 14.13's correct plate: a still chart with every value printed and its table as live text. The 2024 "
+                          "column the title names takes the subject ink: in red it covered 6.2 percent of the drawing at desk widths "
+                          "and 5.0 to 5.4 down to 296 px, past Rule 05.1's 5 (the engineer's red-share check; the data lead's RF-1, "
+                          "Rule 14.6's tall column in a short run).")
+    # the failure: the same columns, the named one in the subject ink as the kit draws it, with no values printed
     top = 2200
     need(r[last] < top, "a column runs past the failure plate's scale")
     n = len(cycles)
     stp = 1000 / n
-    bars = "".join(f'<rect class="{"pt" if y == last else "lf"}" x="{i * stp + stp * 0.15:.0f}" y="{1000 - 10 * pct(r[y], 0, top):.0f}" '
+    bars = "".join(f'<rect class="{"fs" if y == last else "lf"}" x="{i * stp + stp * 0.15:.0f}" y="{1000 - 10 * pct(r[y], 0, top):.0f}" '
                    f'width="{stp * 0.7:.0f}" height="{10 * pct(r[y], 0, top):.0f}"/>' for i, y in enumerate(cycles))
     xt = [(str(y), (i + 0.5) * 100 / n, "" if i % 2 == 1 else "w") for i, y in enumerate(cycles)]
     tip = f'<p class="tip" style="top:calc({100 - pct(r[last], 0, top):.1f}% + 10px)">{last}: {comma(r[last])}</p>'

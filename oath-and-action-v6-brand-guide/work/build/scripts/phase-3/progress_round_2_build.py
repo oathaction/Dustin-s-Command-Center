@@ -1,36 +1,37 @@
-"""Build the round 1 progress page of Phase 3 (November 12, 2026; the page builder, working as the design director).
+"""Build the round 2 progress page of Phase 3 (November 12, 2026; the page builder, working as the design director).
 
-Usage:
-    python3 -I work/build/scripts/phase-3/progress_round_1_build.py [--reuse] [--check] [--strict] [--scratch DIR] [--out PATH]
+Adapted from progress_round_1_build.py, which stays as it is. Usage:
+    python3 -I work/build/scripts/phase-3/progress_round_2_build.py [--reuse] [--check] [--strict] [--scratch DIR] [--out PATH]
 
 Reads, on every run:
-    work/boards/phase-3/round-1/progress/20261112_Round-1-Progress-Content.json   the page's own words and the files it reads
-    work/handoffs/phase-3/20261112_Chapter-14-Plan.json         round 1's forms, their rules, makers, families and states
+    work/boards/phase-3/round-2/progress/20261112_Round-2-Progress-Content.json   the page's own words and the files it reads
+    work/handoffs/phase-3/20261112_Chapter-14-Plan.json         round 2's forms, their rules, makers, families and states
     a fresh strict build of the guide (guide_build.py --strict --out <scratch>/guide/), for every guide picture, each
-    chart's printed title and the weights in its build report
+    chart's printed title and evidence label, the wide stage's width at 1024 and 768 px, and the weights in its report
     the chart kit's own captures, built afresh into <scratch>/kit-out/ by oa-chart.mjs (one folder per chart)
-    work/build/guide/chapters/14-data-visualization.json and 15-systems-graphics.json (rules, plates, captions)
-    work/handoffs/phase-3/20261112_Round-3-Data-Plan.md and work/build/data/ (round 3's frozen tables, the Department
-    of Labor table once it is frozen)
-    the creative director's scores and the newest *Round-1-CD-Rescore*.json, the three red team reports, and every
-    Tested and Not tested list in the files the content file names
+    work/build/guide/chapters/14-data-visualization.json and 15-systems-graphics.json (rules, plates, captions), the rule
+    plates' chart files and chapter 13's chart files in work/build/guide/specimens/ (round 1's carried items)
+    work/boards/phase-3/round-1/progress/20261112_Round-1-Progress-Figures.json   which chapter 15 rules round 1 built
+    work/handoffs/phase-3/20261112_Round-4-Data-Plan.md, work/build/data/ and the research ledger (round 4's frozen data)
+    the creative director's scores and the newest *Round-2-CD-Rescore*.json, the three red team reports, the guide check
+    results files in the session's scratch folder, and the notes files the content file names for part 10
     work/build/tokens/tokens.css (the :root tokens the page's styles name, and only those)
     work/ledger/*_Decision-Log.md and *_Open-Questions.md      every code in a reference line must exist
 Writes:
-    work/boards/phase-3/round-1/progress/20261112_Round-1-Progress.html            the page (no scripts; the host wraps it)
-    work/boards/phase-3/round-1/progress/img/                                      every picture it shows, composed
-    work/boards/phase-3/round-1/progress/20261112_Round-1-Progress-Figures.json    every figure it prints, with its source
-    work/boards/phase-3/round-1/progress/20261112_Round-1-Progress-Check-Results.json  (written by dataviz_check.js)
-    <scratch>/  the guide build, the kit's builds, the photographs and the composition cache
+    work/boards/phase-3/round-2/progress/20261112_Round-2-Progress.html            the page (no scripts; the host wraps it)
+    work/boards/phase-3/round-2/progress/img/                                      every picture it shows, composed
+    work/boards/phase-3/round-2/progress/20261112_Round-2-Progress-Figures.json    every figure it prints, with its source
+    work/boards/phase-3/round-2/progress/20261112_Round-2-Progress-Check-Results.json  (written by dataviz_check.js)
+    <scratch>/  the guide build, the kit's builds, the photographs, the measurements and the composition cache
 
 --reuse keeps a kit capture when its spec, data, form module and the kit's shared files are unchanged, and a guide
-photograph when its element's HTML, the page's styles and scripts and the window width are unchanged; without it,
-every capture and photograph is made afresh. --check runs dataviz_check.js with --board --no-captures, from work/build,
-twice: on the page itself, whose results file lands beside it, and on a copy in the scratch folder wrapped as the host
-wraps it (doctype, <html lang="en">, charset and viewport). The page carries no <html> tag by its contract, so axe's
-html-has-lang is the one failure allowed on the page itself; the wrapped copy must pass every check. Either failing
-otherwise fails the build. --strict exits 1 on any warning. A part whose file is missing or still
-pending prints "Waiting for". Images the page no longer names are removed from img/ on every run.
+photograph or measurement when its element's HTML, the page's styles and scripts and the window width are unchanged;
+without it, every capture and photograph is made afresh. --check runs dataviz_check.js with --board --no-captures, from
+work/build, twice: on the page itself, whose results file lands beside it, and on a copy in the scratch folder wrapped as
+the host wraps it (doctype, <html lang="en">, charset and viewport). The page carries no <html> tag by its contract, so
+axe's html-has-lang is the one failure allowed on the page itself; the wrapped copy must pass every check. Either failing
+otherwise fails the build. --strict exits 1 on any warning. A part whose file is missing or still pending prints
+"Waiting for". Images the page no longer names are removed from img/ on every run.
 """
 import argparse
 import datetime
@@ -52,12 +53,12 @@ sys.path.insert(0, str(SCRIPTS3))
 import board_1_build as B1  # noqa: E402   board 1's Markdown readers, quoted-words rules (D3-206) and Tested-list reader
 
 DATE = '20261112'
-PAGE_DIR = ROOT / 'work/boards/phase-3/round-1/progress'
+PAGE_DIR = ROOT / 'work/boards/phase-3/round-2/progress'
 IMG = PAGE_DIR / 'img'
-CONTENT = PAGE_DIR / f'{DATE}_Round-1-Progress-Content.json'
-FIGURES = PAGE_DIR / f'{DATE}_Round-1-Progress-Figures.json'
-OUT = PAGE_DIR / f'{DATE}_Round-1-Progress.html'
-SCRATCH_DEFAULT = pathlib.Path('/tmp/claude-0/-home-user-Dustin-s-Command-Center/256961f5-3911-5bd9-908d-f34ce0435ace/scratchpad/phase-3/round-1/progress-page')
+CONTENT = PAGE_DIR / f'{DATE}_Round-2-Progress-Content.json'
+FIGURES = PAGE_DIR / f'{DATE}_Round-2-Progress-Figures.json'
+OUT = PAGE_DIR / f'{DATE}_Round-2-Progress.html'
+SCRATCH_DEFAULT = pathlib.Path('/tmp/claude-0/-home-user-Dustin-s-Command-Center/3ab6316c-6935-5f23-804c-cfaafd548447/scratchpad/phase-3/round-2/progress-page')
 LABEL_FONT = '/usr/share/fonts/opentype/inter/Inter-Medium.otf'
 NEWSPRINT = (0xDC, 0xD9, 0xD2)
 LABEL_INK = (0x4E, 0x53, 0x5B)
@@ -245,35 +246,39 @@ def kit_build(ids, reuse):
 
 # ------------------------------------------------------------------------------------------------------- photographs
 def run_shots(G, items, reuse):
-    """items: [(key, element id, width)] -> {key: path}. One page load per width, only for the pictures that changed."""
+    """items: [(key, element id, width)] or [(key, element id, width, 'measure')] -> {key: path}. A measure item takes no
+    picture; its file holds the plate stage's width at that window (the renderer's docstring). One page load per width,
+    only for the items that changed; a width with only measure items loads the page without drawing its charts."""
     shots = SCRATCH / 'shots'
     shots.mkdir(parents=True, exist_ok=True)
     sig_file = SCRATCH / 'shot-sigs.json'
     sigs = json.loads(sig_file.read_text()) if sig_file.exists() else {}
     frame = page_frame_sig(G['text'])
     paths, todo = {}, {}
-    for key, el, w in items:
-        p = shots / f'{key}.png'
+    for key, el, w, *kind in items:
+        measure = bool(kind and kind[0] == 'measure')
+        p = shots / (f'{key}.json' if measure else f'{key}.png')
         paths[key] = p
         src = element_html(G['text'], el)
         if src is None:
             warn(f'the guide holds no element #{el}')
             continue
-        s = sha(frame, w, src)
+        s = sha(frame, w, src, 'measure' if measure else 'picture')
         if reuse and p.exists() and sigs.get(key) == s:
             continue
-        todo.setdefault(w, []).append((key, el, s, p))
-    jobs = [{'file': str(G['page']), 'width': w, 'height': 900 if w > 600 else 844, 'static_sticky': True, 'draw_all': True,
-             'items': [{'selector': f'#{el}', 'out': str(p)} for key, el, s, p in its]} for w, its in sorted(todo.items(), reverse=True)]
+        todo.setdefault(w, []).append((key, el, s, p, measure))
+    jobs = [{'file': str(G['page']), 'width': w, 'height': 900 if w > 600 else 844, 'static_sticky': True,
+             'draw_all': not all(x[4] for x in its),
+             'items': [{'selector': f'#{el}', 'out': str(p), 'measure': m} for key, el, s, p, m in its]} for w, its in sorted(todo.items(), reverse=True)]
     if jobs:
-        print(f'photographing {sum(len(j["items"]) for j in jobs)} pictures from the guide ...')
+        print(f'photographing or measuring {sum(len(j["items"]) for j in jobs)} elements of the guide ...')
         for its in todo.values():
-            for key, el, s, p in its:
+            for key, el, s, p, m in its:
                 if p.exists():
                     p.unlink()
         jp = SCRATCH / 'render-jobs.json'
         jp.write_text(json.dumps(jobs))
-        r = subprocess.run(['node', str(SCRIPTS3 / 'progress_round_1_render.js'), str(jp)], cwd=ROOT / 'work/build',
+        r = subprocess.run(['node', str(SCRIPTS3 / 'progress_round_2_render.js'), str(jp)], cwd=ROOT / 'work/build',
                            capture_output=True, text=True, env=dict(os.environ, TMPDIR=str(SCRATCH)))
         (SCRATCH / 'render.log').write_text(r.stdout + r.stderr)
         for line in r.stdout.splitlines():
@@ -282,7 +287,7 @@ def run_shots(G, items, reuse):
         if r.returncode != 0 and 'failed' not in r.stdout:
             warn('the renderer stopped: ' + r.stderr[-300:])
         for its in todo.values():
-            for key, el, s, p in its:
+            for key, el, s, p, m in its:
                 if p.exists():
                     sigs[key] = s
         sig_file.write_text(json.dumps(sigs, indent=1))
@@ -396,126 +401,219 @@ def pending(text):
 
 def plan():
     P = json.loads((ROOT / C['slots']['plan']).read_text())
-    r1 = [f for f in P['forms'] if f.get('round') == 1]
-    return P, r1
+    rn = [f for f in P['forms'] if f.get('round') == C['round']]
+    need(rn, f'the plan holds no rows for round {C["round"]}')
+    return P, rn
 
 
-def round3_data():
-    """Round 3's data, read from the plan's table "Datasets to fetch and freeze" (each line's files and the rows they
-    serve, the map geometry included), against the files in the data folder: a file is frozen when it and its sidecar
-    are there, and a row when every file it needs is."""
-    t = read(C['slots']['round3_plan']) or ''
+def data_freeze():
+    """Round 4's data, read from its plan's table "Datasets to fetch and freeze" (each line's files and the rows they
+    serve) against the files in the data folder: a file is frozen when it and its sidecar are there, and a row when every
+    file it needs is. The new files are those whose sidecar's ledger row comes at or after the row the plan's section
+    names first ("from P7-301 on"); each of their rows must stand in the research ledger."""
+    t = read(C['slots']['data_plan']) or ''
     sec = B1.md_section(t, [r'datasets to fetch and freeze']) or ''
     dd = ROOT / C['slots']['data_dir']
-    need_rows, stems_all, missing_kinds = {}, [], []
+    need_rows, stems_all = {}, []
     for head, body in B1.md_tables(sec):
         if not head or not head[0].startswith('Dataset') or 'Rows' not in head:
             continue
         k_rows = head.index('Rows')
         for r in body:
-            cell = r[0]
-            stems = re.findall(r'`([a-z0-9-]+)`', cell)
-            full = [s for s in stems if not s.startswith('-')]
-            base = re.sub(r'-[a-z0-9]+$', '', full[0]) if full else ''
-            stems = [s if not s.startswith('-') else base + s for s in stems]
+            stems = [s for s in re.findall(r'`([a-z0-9-]+)`', r[0]) if not s.startswith('-')]
             rows = []
             for a, b in re.findall(r'(\d+)(?:\s+to\s+(\d+))?', r[k_rows] if k_rows < len(r) else ''):
                 rows += list(range(int(a), int(b) + 1)) if b else [int(a)]
-            label = re.match(r'([A-Z][a-z ]+):', cell)
             for s in stems:
                 stems_all.append(s)
                 have = any((dd / f'{s}{e}').exists() for e in ('.csv', '.json')) and (dd / f'{s}.meta.json').exists()
                 for n in rows:
                     need_rows.setdefault(n, []).append((s, have))
-                if not have:
-                    missing_kinds.append(f'the {label.group(1).lower()} files' if label else 'a data table')
     if not need_rows:
-        warn('the round 3 data plan’s table "Datasets to fetch and freeze" was not found')
-    frozen_rows = [n for n, xs in need_rows.items() if all(h for _, h in xs)]
-    waiting_rows = sorted(n for n in need_rows if n not in frozen_rows)
-    have = sorted({s for xs in need_rows.values() for s, h in xs if h})
+        warn('the round 4 data plan’s table "Datasets to fetch and freeze" was not found')
+    m = re.search(r'from (P7-(\d+)) on', sec)
+    first = int(m.group(2)) if m else None
+    if first is None:
+        warn('the round 4 data plan does not say which ledger row its files start from')
+    ledger = read(C['slots']['research_ledger']) or ''
     stems_u = list(dict.fromkeys(stems_all))
-    FIG['round3'] = {'data_rows': len(need_rows), 'frozen_rows': len(frozen_rows), 'waiting_rows': waiting_rows, 'files_named': stems_u,
-                     'files_frozen': have, 'files_waiting': [s for s in stems_u if s not in have]}
-    return len(need_rows), len(frozen_rows), len(have), len(stems_u), waiting_rows, list(dict.fromkeys(missing_kinds))
-
-
-def dol():
-    stem = C['slots']['dol_dataset']
-    dd = ROOT / C['slots']['data_dir']
-    f = next((dd / f'{stem}{e}' for e in ('.csv', '.json') if (dd / f'{stem}{e}').exists()), None)
-    m = dd / f'{stem}.meta.json'
-    if f and m.exists():
-        side = json.loads(m.read_text())
-        notes = read(C['slots']['research_notes']) or ''
+    have = [s for s in stems_u if all(h for x, h in sum(need_rows.values(), []) if x == s)]
+    new, rows_new = [], []
+    for s in have:
+        side = json.loads((dd / f'{s}.meta.json').read_text())
         lr = str(side.get('ledger_row', ''))
-        if not (lr and re.search(r'(?i)frozen\W[^\n]{0,160}' + re.escape(lr), notes)):
-            warn(f'{f.name} is in the data folder, but the research lead’s notes do not record it frozen with row {lr or "?"}')
-            FIG['dol'] = {'file': rel(f), 'in_notes': False}
-            return False
-        n = sum(1 for _ in open(f)) - 1 if f.suffix == '.csv' else len(json.loads(f.read_text()))
-        FILL.update({'dol_file': f.name, 'dol_rows': f'{n:,}', 'dol_row': side.get('ledger_row', '?')})
-        FIG['dol'] = {'file': rel(f), 'rows': n, 'ledger_row': side.get('ledger_row')}
-        return True
-    FIG['dol'] = None
-    return False
+        mm = re.fullmatch(r'P7-(\d+)', lr)
+        if first is not None and mm and int(mm.group(1)) >= first:
+            new.append(s)
+            rows_new.append(lr)
+            if not re.search(r'^\|\s*' + re.escape(lr) + r'\s*\|\s*' + re.escape(s) + r'\s*\|', ledger, flags=re.M):
+                warn(f'{lr} for {s} is not a row of the research ledger')
+    rows_new.sort(key=lambda x: int(x.split('-')[1]))
+    frozen_rows = sorted(n for n, xs in need_rows.items() if all(h for _, h in xs))
+    waiting = sorted(n for n in need_rows if n not in frozen_rows)
+    FIG['round4'] = {'data_rows': len(need_rows), 'frozen_rows': len(frozen_rows), 'waiting_rows': waiting, 'files_named': stems_u,
+                     'files_frozen': have, 'new_files': new, 'ledger_rows': rows_new}
+    return {'rows': len(need_rows), 'frozen': len(frozen_rows), 'waiting': waiting, 'named': len(stems_u), 'have': len(have),
+            'new': len(new), 'ledger': rows_new}
 
 
-def round_section(G, P, r1):
+def ledger_span(rows):
+    """P7-301 ... P7-310, every row in between present -> "P7-301 to P7-310"."""
+    if not rows:
+        return ''
+    ns = [int(r.split('-')[1]) for r in rows]
+    if ns == list(range(ns[0], ns[0] + len(ns))) and len(ns) > 2:
+        return f'{rows[0]} to {rows[-1]}'
+    return join_words(rows)
+
+
+def round1_ch15():
+    """The chapter 15 rules round 1 built, as round 1's page recorded them."""
+    p = ROOT / C['slots']['round1_figures']
+    if not p.exists():
+        warn('round 1’s figures file is missing, so chapter 15’s new rules cannot be told apart')
+        return []
+    return json.loads(p.read_text()).get('round', {}).get('ch15_rules', [])
+
+
+def new_ch15(ch15):
+    done = set(round1_ch15())
+    return [r for r in ch15['rules'] if r['id'] not in done]
+
+
+def wide_plates(G, rules):
+    """The chapter 15 plates the guide sets on the wide stage (data-wide on the frame), in the chapter's order."""
+    out = []
+    for r in rules:
+        for k in ('correct', 'failure'):
+            sp = (r.get(k) or {}).get('specimen') if isinstance(r.get(k), dict) else None
+            src = element_html(G['text'], f'fig-{sp}') if sp else None
+            m = re.search(r'data-wide="(\d+)"', src or '')
+            if m:
+                out.append((r['id'], k, sp, int(m.group(1))))
+    return out
+
+
+def carried(G, P, ch14, shots):
+    """Round 1's carried items, each read from the file that shows it done, as (label, words, done)."""
+    S = C['sections']['round']['carried']
+    spec_dir = ROOT / C['slots']['plate_specs_dir']
+    forms = {f.get('form_id'): f for f in P['forms']}
+    out = []
+    # Rule 14.9's correct plate on the interval form
+    r = C['carried']['interval_rule']
+    files = sorted(spec_dir.glob(f's-14-{r.split(".")[1]}-*.chart.json'))
+    plate = read(f'{C["slots"]["plate_specs_dir"]}/s-14-{r.split(".")[1]}-correct.html') or ''
+    hit = None
+    for f in files:
+        d = json.loads(f.read_text())
+        if d.get('form') in forms and f.name.replace('.chart.json', '') in plate:
+            hit = forms[d['form']]
+    FIG.setdefault('carried', {})['interval'] = {'files': [rel(f) for f in files], 'form': hit.get('form_id') if hit else None}
+    out.append((fill(S['interval_h'], {'r': r}),
+                fill(S['interval'], {'r': r, 'form': hit['form'].lower(), 'form_rule': hit['rule']}) if hit else S['not_found'], bool(hit)))
+    # Rule 14.3's red point
+    r = C['carried']['point_rule']
+    pt = None
+    plate = read(f'{C["slots"]["plate_specs_dir"]}/s-14-{r.split(".")[1]}-correct.html') or ''
+    for f in sorted(spec_dir.glob(f's-14-{r.split(".")[1]}-*.chart.json')):
+        d = json.loads(f.read_text())
+        lab = d.get('labels') or {}
+        if lab.get('point') and f.name.replace('.chart.json', '') in plate:
+            name = (lab.get('series') or {}).get(lab['point'], lab['point'])
+            pt = (name, name.lower() in (d.get('title') or '').lower())
+    FIG['carried']['point'] = pt
+    out.append((fill(S['point_h'], {'r': r}),
+                (fill(S['point'], {'r': r, 'name': pt[0]}) + (S['point_named'] if pt[1] else '')) if pt else S['not_found'], bool(pt)))
+    # chapter 14's plate style, printed once
+    parts = G['report'].get('weight', {}).get('chapter_14_parts', {})
+    ok = bool(ch14.get('plate_css')) and bool(parts.get('plate_css'))
+    FIG['carried']['plate_css'] = {'bytes': parts.get('plate_css'), 'rules_and_opener': parts.get('rules_and_opener'), 'allowance': parts.get('allowance')}
+    out.append((S['style_h'], fill(S['style'], {'b': f'{parts.get("plate_css", 0):,}', 'ro': f'{parts.get("rules_and_opener", 0):,}',
+                                                'al': f'{parts.get("allowance", 0):,}'}) if ok else S['not_found'], ok))
+    # chapter 13's chart titles with a closing period
+    files = sorted(spec_dir.glob('s-13-*.chart.json'))
+    ends = [f for f in files if (json.loads(f.read_text()).get('title') or '').rstrip().endswith('.')]
+    FIG['carried']['ch13_titles'] = {'files': [rel(f) for f in files], 'with_period': len(ends)}
+    every = bool(files) and len(ends) == len(files)
+    out.append((S['ch13_h'], fill(S['ch13_all'] if every else S['ch13_some'], {'k': nw(len(ends)), 'n': nw(len(files))}), every))
+    # chapter 15's wide stage at 1024 and 768 px
+    wides = wide_plates(G, json.loads((ROOT / C['slots']['chapter15']).read_text())['rules'])
+    res = {}
+    for w in C['carried']['wide_widths']:
+        got = []
+        for rid, k, sp, wide in wides:
+            p = shots.get(f'wide-{sp}-{w}')
+            if p and p.exists():
+                m = json.loads(p.read_text())
+                got.append(m.get('stage_w') is not None and abs(m['stage_w'] - wide) < 0.5)
+        res[w] = (sum(got), len(got))
+    FIG['carried']['wide_stage'] = {'plates': [f'{rid} {k}' for rid, k, *_ in wides], 'widths': {str(w): list(v) for w, v in res.items()}}
+    ok = bool(wides) and all(v[0] == v[1] == len(wides) for v in res.values())
+    ws = list(res)
+    wide_w = wides[0][3] if wides else 0
+    out.append((S['wide_h'], fill(S['wide'], {'k': 'all ' + nw(len(wides)) if ok else ' and '.join(f'{v[0]} of {v[1]}' for v in res.values()),
+                                              'w1': ws[0] if ws else '', 'w2': ws[-1] if ws else '', 'px': wide_w}) if wides else S['not_found'], ok))
+    for lab, words, done in out:
+        if not done:
+            warn(f'round 1’s carried item “{lab}” is not shown done in its files')
+    return out
+
+
+def round_section(G, P, rn, shots):
     S = C['sections']['round']
     ch14 = json.loads((ROOT / C['slots']['chapter14']).read_text())
     ch15 = json.loads((ROOT / C['slots']['chapter15']).read_text())
-    new = [f for f in r1 if f['status'] == 'new']
-    built = [f for f in r1 if f['status'] == 'built']
-    sk = [f for f in r1 if f['status'] == 'sketch']
-    entries = [r for r in ch14['rules'] if r.get('entry')]
-    if len(entries) != len(r1):
-        warn(f'chapter 14 holds {len(entries)} entries and the plan’s round 1 lists {len(r1)} forms')
-    ids = sorted({f['spec_id'] for f in new}, key=lambda s: int(s[1:]))
-    cr = [x for x in P['chapter_rules'] if x.get('round') == 1]
+    new = [f for f in rn if f['status'] == 'new']
+    built = [f for f in rn if f['status'] == 'built']
+    sk = [f for f in rn if f['status'] == 'sketch']
     held = {r['id']: r for r in ch14['rules']}
-    rule_plates = sum(1 for x in cr for k in ('correct', 'failure') if isinstance(held.get(x['rule'], {}).get(k), dict))
-    r15 = [r['id'] for r in ch15['rules']]
-    p15 = (1 if ch15.get('opener') else 0) + sum(1 for r in ch15['rules'] for k in ('correct', 'failure') if isinstance(r.get(k), dict))
-    rows, frozen, n_have, n_named, waiting, kinds = round3_data()
+    entries = [f for f in rn if held.get(f['rule'], {}).get('entry')]
+    if len(entries) != len(rn):
+        warn(f'chapter 14 holds {len(entries)} of the plan’s {len(rn)} round {C["round"]} forms as entries')
+    ids = sorted({f['spec_id'] for f in new}, key=lambda s: int(s[1:]))
+    built_ids = [f['spec_id'] for f in built]
+    r15 = new_ch15(ch15)
+    p15 = sum(1 for r in r15 for k in ('correct', 'failure') if isinstance(r.get(k), dict))
+    fams = list(dict.fromkeys(f['family_section'] for f in rn))
+    D = data_freeze()
     rep = G['report']
     FILL.update({'n_entries': len(entries), 'n_new': len(new), 'n_built': len(built), 'n_sketch': len(sk), 'n_sketch_w': nw(len(sk)), 'new_first': ids[0], 'new_last': ids[-1],
-                 'r_first': cr[0]['rule'], 'r_last': cr[-1]['rule'], 'n_ch_rules': len(cr), 'n_rule_plates': rule_plates,
-                 'n15': len(r15), 'n15_plates': p15})
+                 'n15': len(r15), 'n15_w': nw(len(r15)), 'n15_plates': p15, 'n_fam_w': nw(len(fams))})
+    sk_av = sum(1 for f in sk if (held.get(f['rule'], {}).get('correct') or {}).get('kind') == 'avoid')
     facts = [
-        (S['facts']['entries'], f'{len(entries)}: {len(new)} new charts, {ids[0]} to {ids[-1]}; {nw(len(built)) if len(built) < 10 else len(built)} charts already built, '
-                                f'set in as entries; {nw(len(sk))} sketches'),
-        (S['facts']['rules'], f'Rules {cr[0]["rule"]} to {cr[-1]["rule"]}, with {rule_plates} plates, and the chapter’s opening plate'
-                              + ('' if ch14.get('opener') else '; the opening plate is missing')),
-        (S['facts']['ch15'], f'The opening plate and {len(r15)} rules, {join_words(compact_ids(r15))}: {p15} plates'),
-        (S['facts']['data'], f'{frozen} of its {rows} data rows have every file frozen; {n_have} of the {n_named} files its plan names are in the data folder'
-                             + (f'. Waiting: {join_words(kinds)}, for '
-                                + ('row ' if len(waiting) == 1 else 'rows ') + join_words([str(n) for n in waiting]) if waiting else '')),
-        (S['facts']['dol'], fill(S['dol_frozen']) if dol() else S['dol_waiting']),
+        (S['facts']['entries'], f'{len(entries)}: {len(new)} new charts, {ids[0]} to {ids[-1]}; {nw(len(built))} charts already built, '
+                                f'{join_words(built_ids)}, set in as entries; {len(sk)} sketches, {nw(sk_av)} of them forms to avoid'),
+        (S['facts']['ch15'], f'{cap(nw(len(r15)))} new rules, {join_words(compact_ids([r["id"] for r in r15]))}, with {p15} plates'),
+        (S['facts']['data'], (f'{cap(nw(D["new"]))} new tables frozen with their sidecars, research ledger rows {ledger_span(D["ledger"])}; '
+                              f'{"all " + nw(D["rows"]) if D["frozen"] == D["rows"] else str(D["frozen"]) + " of " + str(D["rows"])} of its data rows have every file in the data folder'
+                              + (f'. Waiting: rows {join_words([str(n) for n in D["waiting"]])}' if D['waiting'] else ''))),
     ]
+    car = carried(G, P, ch14, shots)
+    facts += [(a, b) for a, b, _ in car]
     if G['ok']:
         FILL['build_when'] = when_utc(G['mtime'])
         facts.append((S['facts']['build'], f'{rep.get("bytes", 0):,} bytes, {rep.get("rules", 0)} rules, {rep.get("specimens_placed", 0)} examples, '
                                            f'{nw(len(rep.get("warnings", [])))} warnings, from a strict build on {FILL["build_when"]}'))
     else:
         facts.append((S['facts']['build'], 'The strict build did not pass; see its log.'))
-    FIG['round'] = {'entries': len(entries), 'new': len(new), 'built': len(built), 'sketches': len(sk), 'new_ids': ids,
-                    'chapter_rules': [x['rule'] for x in cr], 'rule_plates': rule_plates, 'ch15_rules': r15, 'ch15_plates': p15}
-    deck = C['cover']['no_decision']
+    FIG['round'] = {'entries': len(entries), 'new': len(new), 'built': built_ids, 'sketches': len(sk), 'avoid': sk_av, 'new_ids': ids,
+                    'families': fams, 'ch15_rules': [r['id'] for r in r15], 'ch15_plates': p15}
     body = (f'<dl class="facts">' + ''.join(f'<div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in facts) + '</dl>'
-            f'<p class="nodec">{esc(deck)}</p>')
-    return section('round', body, 'ready' if G['ok'] else ('partial', 'build'))
+            f'<p class="nodec">{esc(C["cover"]["no_decision"])}</p>')
+    done = all(d for _, _, d in car)
+    return section('round', body, 'ready' if G['ok'] and done else ('partial', 'build' if not G['ok'] else 'render'))
 
 
 def compact_ids(ids):
-    """15.1, 15.2, ... 15.10, 15.13 -> ['15.1 to 15.10', '15.13'] for a sentence."""
+    """15.11, 15.12, 15.15, 15.16, 15.17, 15.18 -> ['15.11', '15.12', '15.15 to 15.18'] for a sentence."""
     out, run = [], []
     for x in ids + [None]:
         if x and run and x.split('.')[0] == run[-1].split('.')[0] and int(x.split('.')[1]) == int(run[-1].split('.')[1]) + 1:
             run.append(x)
             continue
         if run:
-            out.append(f'{run[0]} to {run[-1]}' if len(run) > 2 else ', '.join(run) if len(run) == 2 else run[0])
+            out.extend([f'{run[0]} to {run[-1]}'] if len(run) > 2 else run)
         run = [x] if x else []
     return out
 
@@ -532,59 +630,88 @@ def printed_title(G, sid):
     return 'spec'
 
 
-def charts_section(G, P, r1, kit_out):
+def printed_evidence(G, sid):
+    """The evidence label and grade line the guide prints over the chart, as (label, grade)."""
+    fig = element_html(G['text'], f'oac-s-14-{sid.lower()}') or ''
+    k = re.search(r'<p class="oac-ev-k"[^>]*>(.*?)</p>', fig, flags=re.S)
+    g = re.search(r'<p class="oac-ev-g"[^>]*>(.*?)</p>', fig, flags=re.S)
+    return (text_of(k.group(1)) if k else None, text_of(g.group(1)) if g else None)
+
+
+def chart_article(G, f, kit_out, S, what=None):
+    """One chart as part 2 shows it: its rule, form and maker, its title as printed, the guide's evidence label where it
+    is the one the content file marks, the kit's two composed pictures and the line under them. None when the kit made
+    no pictures (the article then waits)."""
+    sid, lo = f['spec_id'], f['spec_id'].lower()
+    weights = G['report'].get('weight', {}).get('charts', {})
+    spec = json.loads((ROOT / C['slots']['specs_dir'] / f'{lo}.json').read_text())
+    d = kit_out / lo
+    caps = {(g, w): d / f'{lo}-{g}-{w}.png' for g in ('newsprint', 'charcoal') for w in (1440, 390)}
+    chk_p = d / f'{lo}-check.json'
+    title = printed_title(G, sid) if G['ok'] else None
+    title_from = 'guide'
+    if title in (None, 'spec'):
+        if title is None and G['ok']:
+            warn(f'{sid} was not found in the guide; the spec’s title prints instead')
+        title, title_from = spec['title'], 'spec'
+    QUOTED.append(title)
+    ev, grade = printed_evidence(G, sid) if G['ok'] else (None, None)
+    marked = ev is not None and ev == C['sections']['charts']['mark_label']
+    if marked:
+        QUOTED.extend([ev, grade or ''])
+    aid = f'chart-{f["rule"].replace(".", "-")}'
+    head = (f'<header class="ch-h"><p class="label">Rule {esc(f["rule"])} · {esc(f["form"])} · {esc(fill(S["maker"], {"m": f.get("maker", "?")}))}</p>'
+            + (f'<p class="ev"><span class="ev-k">{esc(ev)}</span><span class="ev-g">{esc(grade or "")}</span></p>' if marked else '')
+            + f'<h4 class="ch-t">{esc(title)}</h4></header>'
+            + (f'<p class="what">{esc(what)}</p>' if what else ''))
+    rec = {'rule': f['rule'], 'form': f['form'], 'maker': f.get('maker'), 'title': title, 'title_from': title_from, 'evidence': ev, 'marked': marked}
+    if not chk_p.exists() or not all(p.exists() for p in caps.values()):
+        return f'<article class="chart" id="{aid}">{head}{pending("The kit’s pictures for this chart were not made at this build.")}</article>', rec, False
+    chk = json.loads(chk_p.read_text())
+    faults = chk.get('faults', [])
+    alt = text_of(spec.get('alt', ''))
+    stem = f'Chart-{f["rule"].replace(".", "-")}'
+    rn_ = compose(f'{stem}-Newsprint', [(caps[('newsprint', 1440)], S['label_1440']), (caps[('newsprint', 390)], S['label_390'])])
+    rc_ = compose(f'{stem}-Charcoal', [(caps[('charcoal', 1440)], S['label_1440']), (caps[('charcoal', 390)], S['label_390'])])
+    wb = weights.get(f's-14-{lo}', {}).get('bytes')
+    if wb is None:
+        warn(f'the build report gives no bytes for {sid}')
+    nd = len(chk.get('drawings', []))
+    result = ('passes every check in the kit, ' + f'{nd} drawings checked' if not faults else
+              f'{nw(len(faults))} {"fault" if len(faults) == 1 else "faults"} in the kit’s check: ' + '; '.join(B1.shorten_paths(x) for x in faults[:3])
+              + (f'; and {len(faults) - 3} more' if len(faults) > 3 else ''))
+    QUOTED.extend(faults)
+    line = (f'{wb:,} bytes in the guide' if wb is not None else 'Its bytes in the guide were not found') + f'; {result}.'
+    body = (f'<article class="chart" id="{aid}">{head}'
+            f'<p class="row-label">{esc(S["row_newsprint"])}</p>{frame(rn_, f"{f["form"]}, Rule {f["rule"]}, on Newsprint, drawn for a 1440 px page and for a 390 px page, side by side. {alt}", lazy=len(IMAGES) > 2)}'
+            f'<p class="row-label">{esc(S["row_charcoal"])}</p>{frame(rc_, f"{f["form"]}, Rule {f["rule"]}, on Charcoal, drawn for a 1440 px page and for a 390 px page, side by side.")}'
+            f'<p class="ch-line">{esc(line)}</p></article>')
+    rec.update({'bytes_in_guide': wb, 'faults': len(faults), 'drawings': nd, 'rows': chk.get('rows')})
+    return body, rec, not faults
+
+
+def charts_section(G, P, rn, kit_out):
     S = C['sections']['charts']
     groups = {g.get('family_section'): g for g in P['groups']}
-    weights = G['report'].get('weight', {}).get('charts', {})
-    new = [f for f in r1 if f['status'] == 'new']
-    parts, cur, missing, n_pass = [], None, [], 0
+    new = [f for f in rn if f['status'] == 'new']
+    parts, cur, missing, n_pass, marked = [], None, [], 0, []
     for f in new:
-        sid, lo = f['spec_id'], f['spec_id'].lower()
         if f['family_section'] != cur:
             cur = f['family_section']
             g = groups.get(cur, {})
             QUOTED.append(g.get('title', ''))
             parts.append(f'<h3 class="sub grp">{esc(g.get("title", f["family"]))}</h3>')
-        spec = json.loads((ROOT / C['slots']['specs_dir'] / f'{lo}.json').read_text())
-        d = kit_out / lo
-        caps = {(g, w): d / f'{lo}-{g}-{w}.png' for g in ('newsprint', 'charcoal') for w in (1440, 390)}
-        chk_p = d / f'{lo}-check.json'
-        title = printed_title(G, sid) if G['ok'] else None
-        title_from = 'guide'
-        if title in (None, 'spec'):
-            if title is None and G['ok']:
-                warn(f'{sid} was not found in the guide; the spec’s title prints instead')
-            title, title_from = spec['title'], 'spec'
-        QUOTED.append(title)
-        head = (f'<header class="ch-h"><p class="label">Rule {esc(f["rule"])} · {esc(f["form"])} · {esc(fill(S["maker"], {"m": f.get("maker", "?")}))}</p>'
-                f'<h4 class="ch-t">{esc(title)}</h4></header>')
-        if not chk_p.exists() or not all(p.exists() for p in caps.values()):
+        body, rec, ok = chart_article(G, f, kit_out, S)
+        parts.append(body)
+        FIG.setdefault('charts', {})[f['spec_id']] = rec
+        if 'bytes_in_guide' not in rec:
             missing.append(f'Rule {f["rule"]}')
-            parts.append(f'<article class="chart" id="chart-{f["rule"].replace(".", "-")}">{head}{pending("The kit’s pictures for this chart were not made at this build.")}</article>')
-            continue
-        chk = json.loads(chk_p.read_text())
-        faults = chk.get('faults', [])
-        n_pass += 0 if faults else 1
-        alt = text_of(spec.get('alt', ''))
-        rn = compose(f'Chart-{f["rule"].replace(".", "-")}-Newsprint', [(caps[('newsprint', 1440)], S['label_1440']), (caps[('newsprint', 390)], S['label_390'])])
-        rc = compose(f'Chart-{f["rule"].replace(".", "-")}-Charcoal', [(caps[('charcoal', 1440)], S['label_1440']), (caps[('charcoal', 390)], S['label_390'])])
-        wb = weights.get(f's-14-{lo}', {}).get('bytes')
-        if wb is None:
-            warn(f'the build report gives no bytes for {sid}')
-        nd = len(chk.get('drawings', []))
-        result = ('passes every check in the kit, ' + f'{nd} drawings checked' if not faults else
-                  f'{nw(len(faults))} {"fault" if len(faults) == 1 else "faults"} in the kit’s check: ' + '; '.join(B1.shorten_paths(x) for x in faults[:3])
-                  + (f'; and {len(faults) - 3} more' if len(faults) > 3 else ''))
-        QUOTED.extend(faults)
-        line = (f'{wb:,} bytes in the guide' if wb is not None else 'Its bytes in the guide were not found') + f'; {result}.'
-        parts.append(f'<article class="chart" id="chart-{f["rule"].replace(".", "-")}">{head}'
-                     f'<p class="row-label">{esc(S["row_newsprint"])}</p>{frame(rn, f"{f["form"]}, Rule {f["rule"]}, on Newsprint, drawn for a 1440 px page and for a 390 px page, side by side. {alt}", lazy=len(IMAGES) > 2)}'
-                     f'<p class="row-label">{esc(S["row_charcoal"])}</p>{frame(rc, f"{f["form"]}, Rule {f["rule"]}, on Charcoal, drawn for a 1440 px page and for a 390 px page, side by side.")}'
-                     f'<p class="ch-line">{esc(line)}</p></article>')
-        FIG.setdefault('charts', {})[sid] = {'rule': f['rule'], 'form': f['form'], 'maker': f.get('maker'), 'title': title, 'bytes_in_guide': wb,
-                                             'faults': len(faults), 'drawings': nd, 'rows': chk.get('rows'), 'title_from': title_from}
-    FILL['n_pass'] = n_pass
-    lede = f'<p class="intro">{esc(fill(S["lede"]))}</p>'
+        n_pass += 1 if ok else 0
+        if rec['marked']:
+            marked.append(f['spec_id'])
+    FILL.update({'n_pass': n_pass, 'n_marked_w': nw(len(marked)), 'n_marked_cap': cap(nw(len(marked))), 'marked_ids': join_words(marked), 'mark_label': S['mark_label']})
+    FIG['estimate_charts'] = marked
+    lede = f'<p class="intro">{esc(fill(S["lede"]))}</p>' + (f'<p>{esc(fill(S["lede_mark"]))}</p>' if marked else '')
     idx = ('<nav class="idx" aria-label="The new charts by rule"><ol>' + ''.join(f'<li><a href="#chart-{f["rule"].replace(".", "-")}">{esc(f["rule"])}</a></li>' for f in new) + '</ol></nav>')
     status = 'ready'
     if missing:
@@ -593,54 +720,98 @@ def charts_section(G, P, r1, kit_out):
     return section('charts', lede + idx + ''.join(parts), status)
 
 
+def changed_section(G, P, kit_out):
+    """Round 1 charts the round changed, each as part 2 shows a chart, with the content file's line on what changed."""
+    S = C['sections']['changed']
+    by_id = {f.get('spec_id'): f for f in P['forms'] if f.get('spec_id')}
+    out, missing = [f'<p class="intro">{esc(fill(S["lede"]))}</p>'], []
+    for it in S['charts']:
+        f = by_id.get(it['spec'])
+        if not f:
+            warn(f'the plan holds no row for {it["spec"]}')
+            continue
+        body, rec, ok = chart_article(G, f, kit_out, C['sections']['charts'], what=it['what'])
+        out.append(body)
+        FIG.setdefault('changed', {})[it['spec']] = rec
+        if 'bytes_in_guide' not in rec:
+            missing.append(it['spec'])
+    return section('changed', ''.join(out), 'ready' if not missing else ('partial', 'kit'))
+
+
 def entry_section(G, shots):
     S = C['sections']['entry']
     ch14 = json.loads((ROOT / C['slots']['chapter14']).read_text())
     r = next((x for x in ch14['rules'] if x['id'] == S['rule']), None)
     need(r is not None, f'chapter 14 holds no Rule {S["rule"]}')
-    FILL.update({'entry_rule': r['id'], 'entry_title': r['title'].rstrip('.')})
-    QUOTED.append(r['title'].rstrip('.'))
-    body = f'<p class="intro">{esc(fill(S["lede"]))}</p>'
+    src = element_html(G['text'], f'rule-{r["id"].replace(".", "-")}') or ''
+    ph = re.search(r'<p class="oac-phone-k"[^>]*>(.*?)</p>', src, flags=re.S)
+    phone = text_of(ph.group(1)) if ph else ''
+    if G['ok'] and not phone:
+        warn(f'Rule {r["id"]} prints no desk phone drawing')
+    FILL.update({'entry_rule': r['id'], 'entry_title': r['title'].rstrip('.'), 'entry_phone': phone})
+    QUOTED.extend([r['title'].rstrip('.'), phone])
+    body = f'<p class="intro">{esc(fill(S["lede"]))}</p>' + (f'<p>{esc(fill(S["phone_line"]))}</p>' if phone else '')
     k14, k39 = f'entry-{r["id"]}-1440', f'entry-{r["id"]}-390'
     if G['ok'] and shots.get(k14, pathlib.Path('-')).exists() and shots.get(k39, pathlib.Path('-')).exists():
         a = compose(f'Entry-{r["id"].replace(".", "-")}-1440', [(shots[k14], '')])
         b = compose(f'Entry-{r["id"].replace(".", "-")}-390', [(shots[k39], '')])
-        body += (f'<div class="pair">{figure(a, f"Rule {r["id"]} as the guide prints it at a 1440 px window: the rule, use it when, use instead, why it works, the example chart and its table", esc(S["cap_1440"]))}'
+        body += (f'<div class="pair">{figure(a, f"Rule {r["id"]} as the guide prints it at a 1440 px window: the rule, use it when, use instead, why it works, the example chart with its drawing for a phone beside it, and its table", esc(S["cap_1440"]))}'
                  f'{figure(b, f"Rule {r["id"]} as the guide prints it at a 390 px window, in the same order", esc(S["cap_390"]))}</div>')
         return section('entry', body, 'ready')
     return section('entry', body + pending('Waiting for a passing guide build and its photographs.'), ('waiting', 'build'))
 
 
-def sketch_heading(G, spec_id):
+def sketch_print(G, spec_id):
+    """The heading the guide prints over a sketch, its caption chip and its caption."""
     src = element_html(G['text'], f'fig-{spec_id}') or ''
     m = re.search(r'class="plate-label-t">(.*?)</span>', src, flags=re.S)
-    return text_of(m.group(1)) if m else None
+    c = re.search(r'<figcaption[^>]*>(.*?)</figcaption>', src, flags=re.S)
+    chip, words = '', ''
+    if c:
+        k = re.search(r'<span class="illus">(.*?)</span>', c.group(1), flags=re.S)
+        chip = text_of(k.group(1)) if k else ''
+        words = text_of(re.sub(r'<span class="illus">.*?</span>', '', c.group(1), flags=re.S))
+    return (text_of(m.group(1)) if m else None), chip, words
 
 
-def sketches_section(G, r1, shots):
+def sketch_order(rn, ch14):
+    sk = [f for f in rn if f['status'] == 'sketch']
+    kind = lambda f: (ch14.get(f['rule'], {}).get('correct') or {}).get('kind', '')
+    return [f for f in sk if kind(f) == 'avoid'] + [f for f in sk if kind(f) != 'avoid']
+
+
+def sketches_section(G, rn, shots):
     S = C['sections']['sketches']
     ch14 = {r['id']: r for r in json.loads((ROOT / C['slots']['chapter14']).read_text())['rules']}
-    sk = [f for f in r1 if f['status'] == 'sketch']
+    sk = sketch_order(rn, ch14)
     kinds = [((ch14.get(f['rule'], {}).get('correct') or {}).get('kind', '')) for f in sk]
     n_av = sum(1 for k in kinds if k == 'avoid')
     FILL.update({'n_sketch_cap': cap(nw(len(sk))), 'n_avoid_w': nw(n_av), 'n_ref_w': nw(len(sk) - n_av)})
     out, missing = [f'<p class="intro">{esc(fill(S["lede"]))}</p>'], []
+    shown = None
     for f in sk:
         r = ch14.get(f['rule'], {})
         sid = f.get('sketch_id') or (r.get('correct') or {}).get('specimen')
         kind = (r.get('correct') or {}).get('kind', '')
-        head = sketch_heading(G, sid) if G['ok'] else None
+        if kind != shown:
+            shown = kind
+            out.append(f'<h3 class="sub grp">{esc(S["h_avoid"] if kind == "avoid" else S["h_reference"])}</h3>')
+        head, chip, words = sketch_print(G, sid) if G['ok'] else (None, '', '')
         key = f'sketch-{f["rule"]}'
         kw = S['kind_avoid'] if kind == 'avoid' else S['kind_reference']
-        QUOTED.extend([r.get('title', ''), head or ''])
+        QUOTED.extend([r.get('title', ''), head or '', chip, words])
         h = (f'<header class="ch-h"><p class="label">Rule {esc(f["rule"])} · {esc(kw)}</p><h4 class="ch-t">{esc(r.get("title", f["form"]))}</h4></header>')
         if head and shots.get(key, pathlib.Path('-')).exists():
             rec = compose(f'Sketch-{f["rule"].replace(".", "-")}', [(shots[key], '')])
-            out.append(f'<article class="sketch">{h}{figure(rec, f"The sketch for Rule {f["rule"]}, headed “{head}”, as the guide prints it at a 1440 px window", "The heading the guide prints: <b>" + esc(head) + "</b>")}</article>')
+            capt = (f'{esc(S["heading_k"])} <b>{esc(head)}</b><br>{esc(S["caption_k"])} '
+                    + (f'<span class="chip">{esc(chip)}</span> ' if chip else '') + esc(words))
+            out.append(f'<article class="sketch">{h}{figure(rec, f"The sketch for Rule {f["rule"]}, headed “{head}”, with its caption, as the guide prints it at a 1440 px window. {words}", capt)}</article>')
         else:
             missing.append(f['rule'])
             out.append(f'<article class="sketch">{h}{pending("Waiting for a passing guide build and its photograph.")}</article>')
-        FIG.setdefault('sketches', {})[f['rule']] = {'specimen': sid, 'heading': head, 'kind': kind}
+        if G['ok'] and not words:
+            warn(f'the sketch for Rule {f["rule"]} prints no caption')
+        FIG.setdefault('sketches', {})[f['rule']] = {'specimen': sid, 'heading': head, 'kind': kind, 'caption': words}
     return section('sketches', ''.join(out), 'ready' if not missing else ('partial', 'render'))
 
 
@@ -648,11 +819,32 @@ def caption_text(x):
     return text_of(x.get('caption', '')) if isinstance(x, dict) else ''
 
 
-def rules_section(G, P, shots):
+def changed_rules():
+    """The rules of 14.1 to 14.14 that round 2 changed, as the creative director's scores name them: the rule numbers in
+    the parenthesis of the item the content file names (its name lists them, "(14.3, 14.6, ...)")."""
+    S = C['sections']['rules']
+    p = ROOT / C['slots']['cd_scores']
+    if not p.exists():
+        warn('the creative director’s scores are missing, so the changed rules cannot be read')
+        return []
+    it = next((i for i in json.loads(p.read_text()).get('items', []) if i.get('key') == S['score_key']), None)
+    if not it:
+        warn(f'the creative director’s scores hold no item {S["score_key"]}')
+        return []
+    ids = []
+    for par in re.findall(r'\(([^()]*)\)', it.get('name', '')):
+        ids += re.findall(r'\b14\.\d+\b', par)
+    if not ids:
+        warn(f'the creative director’s item {S["score_key"]} names no changed rule')
+    FIG['changed_rules_from'] = {'file': rel(p), 'item': S['score_key'], 'rules': ids}
+    return list(dict.fromkeys(ids))
+
+
+def rules_section(G, rules, shots):
     S = C['sections']['rules']
     ch14 = json.loads((ROOT / C['slots']['chapter14']).read_text())
     held = {r['id']: r for r in ch14['rules']}
-    cr = [x['rule'] for x in P['chapter_rules'] if x.get('round') == 1]
+    FILL.update({'n_changed_w': nw(len(rules)), 'changed_list': join_words(rules)})
     out, missing = [f'<p class="intro">{esc(fill(S["lede"]))}</p>'], []
     op = ch14.get('opener', {}).get('specimen')
     if op and shots.get('ch14-opener', pathlib.Path('-')).exists():
@@ -661,7 +853,7 @@ def rules_section(G, P, shots):
         out.append(f'<h3 class="sub">{esc(S["opener_h"])}</h3>' + figure(rec, f'Chapter 14’s opening plate at a 1440 px window. {caption_text(ch14["opener"])}', esc(caption_text(ch14['opener'])), lazy=True))
     elif op:
         missing.append('the opening plate')
-    for rid in cr:
+    for rid in rules:
         r = held.get(rid)
         if not r:
             warn(f'chapter 14 holds no Rule {rid}')
@@ -684,12 +876,17 @@ def rules_section(G, P, shots):
         FIG.setdefault('rules', {})[rid] = {'plates': len(have), 'layout': 'side by side' if side else 'stacked', 'size': [rec['w'], rec['h']]}
     if missing:
         warn('plates not photographed: ' + ', '.join(missing))
-    return section('rules', ''.join(out), 'ready' if not missing else ('partial', 'render'))
+    return section('rules', ''.join(out), 'ready' if rules and not missing else ('partial', 'render' if rules else 'cd'))
 
 
 def ch15_section(G, shots):
     S = C['sections']['ch15']
     ch15 = json.loads((ROOT / C['slots']['chapter15']).read_text())
+    r15 = new_ch15(ch15)
+    wides = wide_plates(G, r15) if G['ok'] else []
+    w1 = wides[0] if wides else None
+    FILL.update({'wide_rule': w1[0] if w1 else '', 'wide_kind': (S['kind_correct'] if w1[1] == 'correct' else S['kind_failure']).lower() if w1 else '',
+                 'wide_px': w1[3] if w1 else ''})
     out, missing = [f'<p class="intro">{esc(fill(S["lede"]))}</p>'], []
 
     def pair(key, name, alt):
@@ -699,10 +896,8 @@ def ch15_section(G, shots):
             return pending('Waiting for this plate’s photographs.')
         rec = compose(f'Ch15-{name}', [(a, S['label_1440']), (b, S['label_390'])])
         return figure(rec, alt)
-    if ch15.get('opener'):
-        out.append(f'<h3 class="sub">{esc(S["opener_h"])}</h3>' + pair('ch15-opener', 'Opener', f'Chapter 15’s opening plate at a 1440 px window and at a 390 px window, side by side. {caption_text(ch15["opener"])}'))
     groups = {g['before_rule']: g for g in ch15.get('groups', [])}
-    for r in ch15['rules']:
+    for r in r15:
         rid = r['id']
         if rid in groups:
             QUOTED.append(groups[rid]['title'])
@@ -710,13 +905,22 @@ def ch15_section(G, shots):
         figs = ''
         for k in ('correct', 'failure'):
             if isinstance(r.get(k), dict):
-                figs += (f'<p class="row-label">{"Correct plate" if k == "correct" else "Failure plate"}</p>'
+                figs += (f'<p class="row-label">{esc(S["kind_correct"] if k == "correct" else S["kind_failure"])}</p>'
                          + pair(f'ch15-{rid}-{k}', f'{rid.replace(".", "-")}-{cap(k)}', f'Rule {rid}’s {k} plate at a 1440 px window and at a 390 px window, side by side. {caption_text(r[k])}'))
+                if w1 and (rid, k) == (w1[0], w1[1]):
+                    p = shots.get(f'ch15-{rid}-{k}-1024')
+                    if p and p.exists():
+                        rec = compose(f'Ch15-{rid.replace(".", "-")}-{cap(k)}-1024', [(p, S['label_1024'])])
+                        figs += (f'<p class="row-label">{esc(fill(S["wide_h"]))}</p>'
+                                 + figure(rec, f'Rule {rid}’s {k} plate at a 1024 px window, on its {w1[3]} px wide stage. {caption_text(r[k])}', esc(fill(S['wide_cap']))))
+                    else:
+                        missing.append(f'{rid} at 1024 px')
         QUOTED.append(r['title'])
         out.append(f'<article class="rule"><h4 class="r-h"><span class="rid">Rule {esc(rid)}</span> {esc(r["title"])}</h4>{figs}</article>')
     if missing:
         warn('chapter 15 plates not photographed: ' + ', '.join(missing))
-    return section('ch15', ''.join(out), 'ready' if not missing else ('partial', 'render'))
+    FIG['ch15'] = {'rules': [r['id'] for r in r15], 'wide_at_1024': list(w1[:3]) if w1 else None}
+    return section('ch15', ''.join(out), 'ready' if r15 and not missing else ('partial', 'render'))
 
 
 # ------------------------------------------------------------------------------------------------------- scores
@@ -998,7 +1202,7 @@ def next_section():
 
 
 # ------------------------------------------------------------------------------------------------------- page
-ORDER = ['round', 'charts', 'entry', 'sketches', 'rules', 'ch15', 'scores', 'weight', 'tested', 'next']
+ORDER = ['round', 'charts', 'changed', 'entry', 'sketches', 'rules', 'ch15', 'scores', 'weight', 'tested', 'next']
 
 
 def cover(rescored):
@@ -1007,7 +1211,7 @@ def cover(rescored):
                   f'{chip(STATUS[k], short=True)}</li>' for k in ORDER)
     return (f'<header class="cover"><div class="mast"><b>OATH &amp; ACTION</b><span class="label">{esc(K["kicker"])}</span></div>'
             f'<p class="label for">{esc(fill(K["for_line"]))}</p><h1>{esc(K["title"])}</h1>'
-            f'<div class="cover-grid"><div class="deck"><p>{esc(K["deck_rescored"] if rescored else K["deck_building"])}</p><p>{esc(K["no_decision"])}</p>'
+            f'<div class="cover-grid"><div class="deck"><p>{esc(fill(K["deck_rescored"] if rescored else K["deck_building"]))}</p><p>{esc(K["no_decision"])}</p>'
             f'<p class="caption">{esc(K["minutes"])}</p></div>'
             f'<nav class="toc" aria-labelledby="toc-h"><p class="label" id="toc-h">{esc(K["toc_h"])}</p><ol>{toc}</ol></nav></div></header>')
 
@@ -1071,6 +1275,11 @@ h1{font:var(--oa-type-title);letter-spacing:var(--oa-type-title-letter-spacing);
 .ch-t{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);margin-top:var(--oa-space-050);max-width:var(--oa-layout-measure-intro-max);text-wrap:balance}
 .row-label{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--ink-2);margin:var(--oa-space-300) 0 var(--oa-space-100)}
 .ch-line{font:var(--oa-type-body-small);margin-top:var(--oa-space-150);font-variant-numeric:tabular-nums}
+.ev{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--oa-space-050) var(--oa-space-150);margin:var(--oa-space-100) 0 0}
+.ev-k{font:var(--oa-type-caption);font-weight:600;padding:0 .5em;border:var(--oa-border-width-hairline) solid var(--strong);line-height:1.6}
+.ev-g{font:var(--oa-type-caption);color:var(--ink-2)}
+.what{font:var(--oa-type-body-small);border-left:var(--oa-border-width-bar) solid var(--charcoal);padding-left:var(--oa-space-200);margin:var(--oa-space-150) 0 var(--oa-space-200)}
+.shot figcaption .chip{font-weight:600;color:var(--ink);padding:0 .4em;border:var(--oa-border-width-hairline) solid var(--strong)}
 .rule{margin-top:var(--oa-space-500);border-top:var(--oa-border-width-hairline) solid var(--strong);padding-top:var(--oa-space-200)}
 .r-h{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);max-width:var(--oa-layout-measure-intro-max);text-wrap:balance;margin-bottom:var(--oa-space-150)}
 .r-h .rid{display:block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--ink-2);margin-bottom:var(--oa-space-050)}
@@ -1275,37 +1484,41 @@ def main():
     t0 = datetime.datetime.now()
     print('building the guide (strict) ...')
     G = guide_build()
-    P, r1 = plan()
-    new_ids = [f['spec_id'] for f in r1 if f['status'] == 'new']
-    kit_out = kit_build(new_ids, a.reuse)
+    P, rn = plan()
+    new_ids = [f['spec_id'] for f in rn if f['status'] == 'new']
+    kit_out = kit_build(new_ids + [x['spec'] for x in C['sections']['changed']['charts']], a.reuse)
     ch14 = json.loads((ROOT / C['slots']['chapter14']).read_text())
     ch15 = json.loads((ROOT / C['slots']['chapter15']).read_text())
+    rules = changed_rules()
     shots = {}
     if G['ok']:
         er = C['sections']['entry']['rule']
         items = [(f'entry-{er}-1440', f'rule-{er.replace(".", "-")}', 1440), (f'entry-{er}-390', f'rule-{er.replace(".", "-")}', 390)]
         held = {r['id']: r for r in ch14['rules']}
-        for f in r1:
-            if f['status'] == 'sketch':
-                sid = f.get('sketch_id') or (held.get(f['rule'], {}).get('correct') or {}).get('specimen')
-                items.append((f'sketch-{f["rule"]}', f'fig-{sid}', 1440))
+        for f in sketch_order(rn, held):
+            sid = f.get('sketch_id') or (held.get(f['rule'], {}).get('correct') or {}).get('specimen')
+            items.append((f'sketch-{f["rule"]}', f'fig-{sid}', 1440))
         if ch14.get('opener'):
             items.append(('ch14-opener', f'fig-{ch14["opener"]["specimen"]}', 1440))
-        for x in P['chapter_rules']:
-            if x.get('round') == 1:
-                for k in ('correct', 'failure'):
-                    sp = (held.get(x['rule'], {}).get(k) or {}).get('specimen')
-                    if sp:
-                        items.append((f'plate-{x["rule"]}-{k}', f'fig-{sp}', 1440))
-        if ch15.get('opener'):
-            items += [(f'ch15-opener-{w}', f'fig-{ch15["opener"]["specimen"]}', w) for w in (1440, 390)]
-        for r in ch15['rules']:
+        for rid in rules:
+            for k in ('correct', 'failure'):
+                sp = (held.get(rid, {}).get(k) or {}).get('specimen')
+                if sp:
+                    items.append((f'plate-{rid}-{k}', f'fig-{sp}', 1440))
+        r15 = new_ch15(ch15)
+        for r in r15:
             for k in ('correct', 'failure'):
                 if isinstance(r.get(k), dict):
                     items += [(f'ch15-{r["id"]}-{k}-{w}', f'fig-{r[k]["specimen"]}', w) for w in (1440, 390)]
+        w1 = (wide_plates(G, r15) or [None])[0]
+        if w1:
+            items.append((f'ch15-{w1[0]}-{w1[1]}-1024', f'fig-{w1[2]}', 1024))
+        for rid, k, sp, wide in wide_plates(G, ch15['rules']):
+            items += [(f'wide-{sp}-{w}', f'fig-{sp}', w, 'measure') for w in C['carried']['wide_widths']]
         shots = run_shots(G, items, a.reuse)
-    parts = [round_section(G, P, r1), charts_section(G, P, r1, kit_out), entry_section(G, shots), sketches_section(G, r1, shots),
-             rules_section(G, P, shots), ch15_section(G, shots), scores_section(), weight_section(G), tested_section(G), next_section()]
+    parts = [round_section(G, P, rn, shots), charts_section(G, P, rn, kit_out), changed_section(G, P, kit_out), entry_section(G, shots),
+             sketches_section(G, rn, shots), rules_section(G, rules, shots), ch15_section(G, shots), scores_section(), weight_section(G),
+             tested_section(G), next_section()]
     cache_file.write_text(json.dumps(CACHE))
     keep = set(IMAGES)
     for p in [q for q in IMG.iterdir() if q.suffix.lower() in IMG_EXT]:
@@ -1341,7 +1554,7 @@ def main():
     tested_words = len(re.findall(r"[A-Za-z0-9][A-Za-z0-9’'.,-]*", visible_text(page[page.find('id="p-tested"'):page.find('id="p-next"')])))
     FIG.update({'words': words, 'words_tested_part': tested_words})
     FIGURES.write_text(json.dumps(FIG, indent=1, ensure_ascii=False, default=str))
-    print(f'wrote {rel(a.out)} ({len(page.encode()) / 1e3:.0f} kB, {words:,} words, part 9 {tested_words}) and {len(imgs)} images; the folder holds {len(files)} files, {total:,} bytes')
+    print(f'wrote {rel(a.out)} ({len(page.encode()) / 1e3:.0f} kB, {words:,} words, part 10 {tested_words}) and {len(imgs)} images; the folder holds {len(files)} files, {total:,} bytes')
     print('parts: ' + ', '.join(f'{k} {status_words(v)}' for k, v in STATUS.items()))
     print(f'{len(WARN)} warnings')
     if a.check:

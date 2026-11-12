@@ -15,18 +15,18 @@
   "evidence": "estimate",
   "evidence_label": "Estimate",
   "grade_line": "Documented: the Census Bureau’s Vintage 2025 population estimates",
-  "title": "The Census Bureau estimated 41.2 million people aged 55 to 64 on July 1, 2025, the ten years of age before 65.",
+  "title": "The Census Bureau estimated 41.2 million people aged 55 to 64 on July 1, 2025, the ten years before most people qualify for Medicare at 65.",
   "measure_line": "Resident population by single year of age and sex, July 1, 2025, United States; the top bar counts everyone 100 and over.",
-  "reading_guide": "Each bar is one year of age, men to the left and women to the right. The red bars are ages 55 to 64.",
+  "reading_guide": "Each bar is one year of age, men to the left and women to the right, and the bars in the strongest ink are ages 55 to 64.",
   "notes": [
     "Social Security retirement benefits can start at age 62, and Medicare covers most people from age 65.",
     "Method: the Census Bureau starts from the 2020 Census and adds births, subtracts deaths and adds net migration for each year since; each new vintage revises the years before it."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "A population pyramid for July 1, 2025, one bar per year of age, men on the left and women on the right. The bars for ages 55 to 64, 41.2 million people, are red; the largest single ages sit in the 20s and 30s, and the bars narrow past the late 60s.",
+  "alt": "A population pyramid for July 1, 2025, one bar per year of age, men on the left and women on the right. The bars for ages 55 to 64, 41.2 million people, stand out on both sides in the strongest ink; the largest single ages sit in the 20s and 30s, and the bars narrow past the late 60s.",
   "table": {
-    "caption": "Resident population by age and sex, July 1, 2025",
+    "caption": "Resident population by age and sex, July 1, 2025; the row for age 100 counts everyone 100 and over",
     "pivot": {
       "row": "age",
       "column": "sex",
@@ -47,7 +47,7 @@
     ]
   },
   "chart_notes": [
-    "The red bars are ages 55 to 64 on both sides, named at the upper left. The scale is millions of people at each age."
+    "The bars for ages 55 to 64 take the strongest ink on both sides and are named at the upper left; every other age is muted. The scale is millions of people at each age."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -65,22 +65,23 @@
       "male": "Men",
       "female": "Women"
     },
-    "point": {
+    "band_words": "Ages 55 to 64: 41.2 million",
+    "top": "100+",
+    "axis": "Millions of people at each age",
+    "named": {
       "from": 55,
       "to": 64
-    },
-    "band_words": "Red bars: ages 55 to 64, 41.2 million",
-    "top": "100+",
-    "axis": "Millions of people at each age"
+    }
   },
   "formats": {
     "tick": "millions-value:1"
   },
   "notes_internal": [
     "Maker B, round 2. Data plan row 58, rule 14.62. Draws the frozen census-pep-population-by-age-sex (P7-029), men and women by single year of age, 202 rows.",
-    "Ruling (a): the age band the title names takes the red point on both sides as one job (labels.point read as a range of ages); every other age the light fill. Ruling (e): both sides in one ink, sex by position. The age marks (62 and 65) were drawn as hairlines and left out: across bars that nearly fill both halves they read as stripes, and note 1 gives both ages. Ruling (d): Estimate, grade line and Method note.",
+    "Ruling (a): the age band the title names takes the red point on both sides as one job (labels.point read as a range of ages); every other age the light fill. Ruling (e): both sides in one ink, sex by position. The age marks (62 and 65) were drawn as hairlines and left out: across bars that nearly fill both halves they read as stripes, and note 1 gives both ages. Ruling (d): Estimate, grade line and Method note. Review fix pass, the data lead’s RF-1 (D3-890): the band at 6.1 percent of the 1440 px export passed Rule 05.1’s 5 percent, so it takes the subject ink through labels.named and no red.",
     "Figures checked by maker_b_round2_derive.py --figures (check S53): ages 55 to 64, men and women, sum to 41,189,716 (41.2 million).",
-    "Note 1’s program ages (62 for Social Security retirement benefits, 65 for Medicare) are policy facts, not data from the file; request RB-R3 asks the research lead to confirm both on the agencies’ pages and give a source line variant. Until then the note rests on the atlas’s own pathway texts (Medicare “for people 65 and older”; “Claiming at 62 cuts the monthly benefit by 30 percent”), read November 12, 2026."
+    "Note 1’s program ages (62 for Social Security retirement benefits, 65 for Medicare) are policy facts, not data from the file; request RB-R3 asks the research lead to confirm both on the agencies’ pages and give a source line variant. Until then the note rests on the atlas’s own pathway texts (Medicare “for people 65 and older”; “Claiming at 62 cuts the monthly benefit by 30 percent”), read November 12, 2026.",
+    "Review fix pass: CD B-S3, the title gives the reason 65 matters (Medicare, as note 1 and the source line’s program ages give it). AX S4 and RF-1: the band’s words name the ages, never a color, since the band is dark on Newsprint, light on Charcoal and the system highlight in forced colors; the alt, reading guide and chart note say “the strongest ink”, true on every ground. AX S5: the table’s caption says the row for age 100 counts everyone 100 and over (request RB-G5 asks the engineer to let a pivot’s row header print “100 and over”). Figures checked by maker_b_round2_derive.py --figures (check S53)."
   ],
   "source_line": "Source: U.S. Census Bureau, Vintage 2025 population estimates, resident population by single year of age and sex, July 1, 2025, United States. Retrieved November 11, 2026. Estimates are revised with each vintage; the top row counts everyone 100 and over. Program ages from the Social Security Act, 42 U.S.C. 402(a) and 426(a), read November 12, 2026."
 }

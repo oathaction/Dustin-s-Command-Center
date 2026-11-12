@@ -51,6 +51,13 @@
           }
         });
       });
+      // the blocks between the ends drop 0.6 of a row into the hollow, keeping their spacing, so they read apart from the
+      // end blocks' edges above them
+      var ms0 = seats.filter(function (s) { return mids.indexOf(s.g) >= 0; });
+      if (ms0.length) {
+        var dr = (Ro - Ri) / (Rr - 1), rm = Ri - 0.6 * dr, am0 = ms0.reduce(function (t, s) { return t + s.p.a; }, 0) / ms0.length;
+        ms0.forEach(function (s) { var an = am0 + (s.p.a - am0) * Ri / rm; s.p = { a: an, r: rm, x: cx + rm * Math.cos(an), y: cy - rm * Math.sin(an) }; });
+      }
       var rad = Math.max(1.5, Math.min((Ro - Ri) / (Rr - 1), Math.PI * Ri / (per[0] + 2)) * 0.42);
       var openg = L.open === undefined ? null : String(L.open);
       seats.forEach(function (s) {

@@ -343,6 +343,7 @@
     this.warnings = [];
     this.ink = [];   // K-S2 (round 1 fix pass): the box of every shape drawn, marks or not, so the check finds one outside the drawing
     this._tf = 0;
+    this._seq = 0;   // the order shapes and words are drawn in, so the checks know what a halo knocks out (AX S2)
     this._h = 0;
     this._arr = null;
     this._job = null;
@@ -356,7 +357,8 @@
     if (this._tf) return;
     var g = geo || {};
     this.ink.push({ kind: kind, x: x, y: y, w: w, h: h, role: (o && (o.fill || o.stroke)) || '', fill: o && o.fill, plate: !!(o && o.cls && /\boac-fc-plate\b/.test(o.cls)), poly: o && o._poly,
-      stroke: o && o.stroke, sw: o && o.stroke ? (+o.width || 1) : 0, a: g.a === undefined ? w * h : g.a, len: g.len === undefined ? 2 * (w + h) : g.len });
+      stroke: o && o.stroke, sw: o && o.stroke ? (+o.width || 1) : 0, a: g.a === undefined ? w * h : g.a, len: g.len === undefined ? 2 * (w + h) : g.len,
+      seq: this._seq++, seg: g.seg, subs: g.subs, ring: g.ring, dash: !!(o && o.dash) });
   };
   // the area inside each subpath (shoelace) and the length along them, for a path's paint
   function poly_geo(subs, closed) {
@@ -485,7 +487,7 @@
     }
     var a = data_of(o, { x1: r1(x1), y1: r1(y1), x2: r1(x2), y2: r1(y2), 'class': cls_of(o), 'stroke-width': o.width, 'stroke-dasharray': o.dash });
     this._push('<line' + attrs(a) + '/>');
-    this._ink('line', Math.min(x1, x2), Math.min(y1, y2), Math.abs(x2 - x1), Math.abs(y2 - y1), o, { a: 0, len: Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)) });
+    this._ink('line', Math.min(x1, x2), Math.min(y1, y2), Math.abs(x2 - x1), Math.abs(y2 - y1), o, { a: 0, len: Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)), seg: [x1, y1, x2, y2] });
     // a leader is kept for the guard, which fails one that runs through a label (D3-93)
     if (o.stroke === 'leader' && !this._grp_t) this.leaders.push({ x1: x1, y1: y1, x2: x2, y2: y2 });
     if (o.mark !== false) this.mark({ kind: o.kind || 'line', x: Math.min(x1, x2), y: Math.min(y1, y2), w: Math.abs(x2 - x1), h: Math.abs(y2 - y1), stroke: o.stroke, data: o.data || {}, job: o.job });
@@ -500,7 +502,9 @@
     var poly = o.fill && o.fill !== 'none' ? path_poly(String(d)) : null;
     // its paint: the area inside its outline and the length along it, read from its points (a curve: from its box)
     var pg = poly ? poly_geo(poly, true) : null;
-    if (!pg) { var pts = path_poly(String(d)); pg = pts ? poly_geo(pts, /Z/i.test(String(d))) : null; if (pg && !(o.fill && o.fill !== 'none')) pg.a = 0; }
+    var pts = poly || path_poly(String(d));
+    if (!pg) { pg = pts ? poly_geo(pts, /Z/i.test(String(d))) : null; if (pg && !(o.fill && o.fill !== 'none')) pg.a = 0; }
+    if (pg && pts) { pg.subs = pts; pg.closed = /Z/i.test(String(d)); }
     if (pb) this._ink('path', pb[0], pb[1], pb[2], pb[3], poly ? Object.assign({}, o, { _poly: poly }) : o, pg || { a: pb[2] * pb[3], len: pb[2] + pb[3] });
     if (box && o.mark !== false) this.mark({ kind: o.kind || 'path', x: box[0], y: box[1], w: box[2], h: box[3], fill: o.fill, stroke: o.stroke, data: o.data || {}, job: o.job, poly: poly || undefined });
   };
@@ -512,7 +516,7 @@
     o = o || {};
     var a = data_of(o, { cx: r1(cx), cy: r1(cy), r: r2(r), 'class': cls_of(o), 'stroke-width': o.width });
     this._push('<circle' + attrs(a) + '/>');
-    this._ink('circle', cx - r, cy - r, 2 * r, 2 * r, o, { a: Math.PI * r * r, len: 2 * Math.PI * r });
+    this._ink('circle', cx - r, cy - r, 2 * r, 2 * r, o, { a: Math.PI * r * r, len: 2 * Math.PI * r, ring: [cx, cy, r] });
     if (o.mark !== false) this.mark({ kind: o.kind || 'circle', x: cx - r, y: cy - r, w: 2 * r, h: 2 * r, r: r, fill: o.fill, stroke: o.stroke, data: o.data || {}, area_of: o.area_of, row: o.row, job: o.job });
   };
   Ctx.prototype.polygon = function (pts, o) {
@@ -520,7 +524,8 @@
     var xs = pts.map(function (p) { return p[0]; }), ys = pts.map(function (p) { return p[1]; });
     var a = data_of(o, { points: pts.map(function (p) { return r1(p[0]) + ',' + r1(p[1]); }).join(' '), 'class': cls_of(o) });
     this._push('<polygon' + attrs(a) + '/>');
-    this._ink('polygon', Math.min.apply(null, xs), Math.min.apply(null, ys), Math.max.apply(null, xs) - Math.min.apply(null, xs), Math.max.apply(null, ys) - Math.min.apply(null, ys), o, poly_geo([pts], true));
+    var pgeo = poly_geo([pts], true); pgeo.subs = [pts]; pgeo.closed = true;
+    this._ink('polygon', Math.min.apply(null, xs), Math.min.apply(null, ys), Math.max.apply(null, xs) - Math.min.apply(null, xs), Math.max.apply(null, ys) - Math.min.apply(null, ys), o, pgeo);
     if (o.mark !== false) this.mark({ kind: o.kind || 'polygon', x: Math.min.apply(null, xs), y: Math.min.apply(null, ys), w: Math.max.apply(null, xs) - Math.min.apply(null, xs), h: Math.max.apply(null, ys) - Math.min.apply(null, ys), fill: o.fill, data: o.data || {}, job: o.job });
   };
   Ctx.prototype.text = function (x, y, words, o) {
@@ -552,7 +557,7 @@
     var asc = size * vm.ascent / 1000, desc = size * vm.descent / 1000, half = (asc + desc - size) / 2;
     var box = { x: x0, y: y - asc + half, w: w, h: asc + desc - 2 * half + lh * (lines.length - 1), size: size, words: String(words), role: role,
       overlap_ok: !!o.overlap_ok, id: o.guard_id, top: y - asc, bottom: y + desc + lh * (lines.length - 1), halo: !!o.halo, fill: o.fill,
-      on_gray: on_gray, on_context: on_gray && under === 'context' };
+      on_gray: on_gray, on_context: on_gray && under === 'context', seq: this._seq++ };
     this.texts.push(box);
     return box;
   };
@@ -647,7 +652,17 @@
       c.texts.forEach(function (b) { b.y += dy; if (b.top !== undefined) { b.top += dy; b.bottom += dy; } });
       c.marks.forEach(function (m) { m.y += dy; if (m.zero !== undefined && m.axis !== 'x') m.zero += dy; });
       c.leaders.forEach(function (l) { l.y1 += dy; l.y2 += dy; });
-      c.ink.forEach(function (b) { b.y += dy; });
+      // the shapes' outlines and points move with them (AX S2: the crossing check reads them against the moved words)
+      var mv = function (S) { return S.map(function (pts) { return pts.map(function (q) { return [q[0], q[1] + dy]; }); }); };
+      c.ink.forEach(function (b) {
+        b.y += dy;
+        if (b.seg) b.seg = [b.seg[0], b.seg[1] + dy, b.seg[2], b.seg[3] + dy];
+        if (b.ring) b.ring = [b.ring[0], b.ring[1] + dy, b.ring[2]];
+        var same = b.subs && b.subs === b.poly;
+        if (b.subs) b.subs = mv(b.subs);
+        if (b.poly) b.poly = same ? b.subs : mv(b.poly);
+      });
+      c.marks.forEach(function (m) { if (m.poly) m.poly = mv(m.poly); });
       c._h += dy;
     }
     // the drawing is as tall as its tallest part: the form's height, every text and every mark

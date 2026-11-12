@@ -4,7 +4,7 @@
  * both break and the year draws both estimates, each a small dot (Rule 14.11): a row whose break value is in
  * labels.break_end ends a run, and one in labels.break_start begins the next; at one x an ending row sorts first and a
  * starting row last, as line-event-notes reads the same lists. Notes at a break come from spec.annotations
- * ({at: {x, break}, text, place, dx, dy}). The last estimate is named at the line's end with its interval.
+ * ({at: {x, break}, text, place, anchor, dx, dy}; anchor "start" sets the words to the right of their point). The last estimate is named at the line's end with its interval.
  * encode: x (year), y (number), low and high (numbers), or margin (number), break (category, optional).
  * labels: break_end, break_start (a value or a list), end (words at the line's end, with {y}, {low}, {high}, {margin}),
  * y_axis (words over the value axis).
@@ -80,7 +80,7 @@
       (c.annotations || []).forEach(function (a) {
         var at = a.at || {}, r = rows.filter(function (q) { return String(q[ex]) === String(at.x) && (at.break === undefined || bv(q) === String(at.break)); })[0];
         if (!r) { c.warn('an annotation names no row: ' + JSON.stringify(at)); return; }
-        var o = { place: (ph && a.phone && a.phone.place) || a.place || 'above', dx: (ph && a.phone && a.phone.dx !== undefined) ? a.phone.dx : a.dx, dy: a.dy, max: ph ? 120 : 180 };
+        var o = { place: (ph && a.phone && a.phone.place) || a.place || 'above', anchor: (ph && a.phone && a.phone.anchor) || a.anchor, dx: (ph && a.phone && a.phone.dx !== undefined) ? a.phone.dx : a.dx, dy: a.dy, max: ph ? 120 : 180 };
         if (!(ph && a.phone && a.phone.hide)) P.note(c, xs(K.time(r[ex])), ys(r[ey]) - (o.place === 'above' ? 6 : 0), a.text, o);
       });
       // the last estimate named at the line's end

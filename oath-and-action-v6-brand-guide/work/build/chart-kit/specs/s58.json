@@ -100,7 +100,8 @@
         "break": "7"
       },
       "text": "New questions",
-      "place": "below"
+      "place": "below",
+      "anchor": "start"
     }
   ],
   "formats": {
