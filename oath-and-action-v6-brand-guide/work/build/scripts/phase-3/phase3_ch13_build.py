@@ -539,21 +539,23 @@ def rule_13_1(book):
                  f"Human Resources, 2022, online job postings, 2010 to 2013, United States, as recorded in {ATLAS}, claim "
                  f"CL1507, snapshot of {SNAP}. Online postings leave out some jobs.")
     assoc_gl = "Well supported, as our systems atlas grades the research on employer concentration"
+    # DR-247 (D3-898): the four correct heads end with a period like every chart title in the guide; the failure head
+    # below keeps its fault, and the alt names each title inside its own sentence, so it stays as it was
     finding = chart_head("Finding", GL_CENSUS,
-                         "Child poverty stood at 13.4 percent in 2025 under the Supplemental Poverty Measure",
+                         "Child poverty stood at 13.4 percent in 2025 under the Supplemental Poverty Measure.",
                          "Children under 18 below the poverty line, Supplemental Poverty Measure, percent, United States, 2009 to 2025",
                          notes=["The Supplemental Poverty Measure adds tax credits and benefits such as food aid to income, and "
                                 "subtracts taxes and costs such as medical expenses. The survey’s margin of error for 2025 is 0.6 points "
                                 "at 90 percent confidence."],
                          source=src_cp)
     assoc = chart_head("Association", assoc_gl,
-                       "Job postings offered 17 percent lower wages where a few employers did more of the hiring",
+                       "Job postings offered 17 percent lower wages where a few employers did more of the hiring.",
                        "Posted wages in a local job market at the 75th percentile of employer concentration against one at the 25th, "
                        "United States, 2010 to 2013",
                        notes=["The study measured a pattern across markets. It does not show that concentration caused the lower wages."],
                        source=assoc_src)
     estimate = chart_head("Estimate", "Well supported, as our systems atlas grades this delivery case",
-                          "Vehicle safety technologies saved an estimated 614,000 lives from 1960 to 2012",
+                          "Vehicle safety technologies saved an estimated 614,000 lives from 1960 to 2012.",
                           "Lives saved by vehicle safety technologies and the federal safety standards behind them, United States, "
                           "1960 to 2012",
                           notes=["Method: the National Highway Traffic Safety Administration removes each technology from its crash "
@@ -565,7 +567,7 @@ def rule_13_1(book):
                                   f"as recorded in our systems atlas’s delivery log, delivery case DL06, snapshot of {SNAP}. The "
                                   "estimate assumes each technology’s effect held steady for five decades."))
     illus = chart_head("Illustration", "Invented values that show how a ranked bar works",
-                       "A ranked bar puts the town with the most library hours first",
+                       "A ranked bar puts the town with the most library hours first.",
                        "Hours a week the main library is open, five invented towns",
                        source="Values invented for this example.", illus="Illustrative data")
     body = "".join(f'<div class="lp">{x}</div>' for x in (finding, assoc, estimate, illus))
@@ -1115,8 +1117,11 @@ def rule_13_6(book):
     last = data[-1]
     need((last["month"], last["status"]) == ("2026-09", "preliminary") and round(float(last["avg3_thousands"])) == 51,
          "the payroll file's last month changed")
-    title = "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure"
-    trs = "".join(f'<tr><th scope="row">{e(k)}</th><td data-k="Words in this line">{e(w)}</td></tr>' for k, w in parts)
+    # DR-247 (D3-898): the jobs head on both plates ends with a period like every chart title in the guide; each alt names
+    # the title inside its own sentence, so it prints the words without the period and stays as it was
+    title = "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure."
+    title_words = title.removesuffix(".")
+    trs ="".join(f'<tr><th scope="row">{e(k)}</th><td data-k="Words in this line">{e(w)}</td></tr>' for k, w in parts)
     atlas_line = (f"Source: {ATLAS}, connection L02, political spending and policy toward donors, snapshot of {SNAP}, United "
                   "States. Retrieved November 11, 2026. Graded plausible on a 2016 field experiment in which congressional "
                   "offices granted meetings more often to people identified as donors.")
@@ -1129,7 +1134,7 @@ def rule_13_6(book):
               f'<th scope="col">Part</th><th scope="col">Words in this line</th></tr></thead><tbody>{trs}</tbody></table>'
             + f'<div class="blk"><p class="k">A value from our systems atlas, in the same order</p><p class="src">{e(atlas_line)}</p></div>')
     book.add("s-13-6-correct", body, rule="13.6", readable=True,
-             alt=(f"A jobs chart's head and foot: the grade line {GL_BLS}, the title {title}, its measure line, a note that says "
+             alt=(f"A jobs chart's head and foot: the grade line {GL_BLS}, the title {title_words}, its measure line, a note that says "
                   f"what seasonally adjusted means, and the source line, {line} A table then takes the line apart: publisher, "
                   "title or table, observation period, geography, the copy we read, date retrieved and qualification. Under it, "
                   "a source line for a value from our systems atlas follows the same order."),
@@ -1139,7 +1144,7 @@ def rule_13_6(book):
     book.log("13.6 correct", "Monthly payroll change (BLS via FRED)", "D07")
     fail = dnp() + chart_head("Finding", GL_BLS, title, "Monthly change in jobs, thousands", source="Source: FRED data.")
     book.add("s-13-6-failure", fail, rule="13.6",
-             alt=FC + f"The same jobs chart's head, titled {title}, with a short measure line and the source line Source: FRED data.",
+             alt=FC + f"The same jobs chart's head, titled {title_words}, with a short measure line and the source line Source: FRED data.",
              notes="Labeled failure: a copy named in place of the publisher; no table, period, geography, date or qualification. "
                    "The grade line is right, so the plate fails on its source line alone.")
     return {
@@ -1271,8 +1276,10 @@ def rule_13_7(book):
                    "release's line from the sidecar's variant, its qualification as statistics M3 gives it. The two charts are "
                    "the kit's line-event-notes form through the guide hook (contract C7).")
     book.log("13.7 correct", "Child poverty releases (Census P60-287 and P60-290)", "D08")
+    # DR-247 (D3-898): the failure plate's left head ends with a period, since its fault is the mixed releases and windows;
+    # the alt names the title in its own sentence and stays as it was
     fb = chart_head("Finding", GL_CENSUS,
-                    f"Child poverty fell from {pair[0][1]} percent in 2020 to {pair[1][1]} percent in 2021, then rose to {pair[2][2]} percent in 2024",
+                    f"Child poverty fell from {pair[0][1]} percent in 2020 to {pair[1][1]} percent in 2021, then rose to {pair[2][2]} percent in 2024.",
                     "Children in poverty, percent")
     fc = cp_spec("s-13-7-fail-all", "all_ages", all_title,
                   "Line chart of poverty among all people under the Supplemental Poverty Measure, 2017 to 2025.",
@@ -1967,11 +1974,23 @@ def visible(fragment):
     return " ".join(html.unescape(t).split())
 
 
+# DR-247 (D3-898): the seven chart heads this script draws, by plate, each ending with a period. The failure heads of
+# Rules 13.1 to 13.3 keep their faults on purpose and sit on no plate listed here.
+DR247_HEADS = {"s-13-1-correct": 4, "s-13-6-correct": 1, "s-13-6-failure": 1, "s-13-7-failure": 1}
+
+
 def check(data, book, spec):
     fails = []
     for cid in ("s-13-7-all", "s-13-7-children", "s-13-7-fail-all", "s-13-13-correct", "s-13-13-fail-chart"):
         if not KIT_SPECS.get(cid, {}).get("title", "").endswith("."):
             fails.append(f"{cid}: its chart title lacks the closing period DR-242 gives it")
+    for sid, n in DR247_HEADS.items():
+        heads = [visible(h) for h in re.findall(r'<p class="ct">(.*?)</p>', book.files.get(sid, ""), flags=re.S)]
+        if len(heads) != n:
+            fails.append(f"{sid}: {len(heads)} script-drawn chart heads where DR-247 counts {n}")
+        for h in heads:
+            if not h.endswith("."):
+                fails.append(f"{sid}: the chart head “{h}” lacks the closing period DR-247 gives it")
     texts = {"chapter": " ".join(strings({k: v for k, v in data.items() if k not in ("sources",)}))}
     for sid, frag in book.files.items():
         texts[sid] = visible(frag)

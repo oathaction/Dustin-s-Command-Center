@@ -33,7 +33,10 @@
         "field": "label",
         "label": "Households",
         "format": "text",
-        "row_header": true
+        "row_header": true,
+        "words": {
+          "Third fifth": "Middle fifth"
+        }
       },
       {
         "field": "share_of_households_pct",
@@ -82,10 +85,11 @@
   "notes_internal": [
     "Data plan row 3; coverage plan re-pick under DR-229 (income shares against each fifth's 20 percent, in place of CPS voters by age).",
     "The top 5 percent row sits inside the highest fifth, so it is left out of the bars (where) and given in note 1; the five fifths add to 100.0.",
-    "The Census Bureau's 'Third fifth' prints as 'Middle fifth' in the drawing, the plain name; the table keeps the Bureau's label.",
+    "The Census Bureau's 'Third fifth' prints as 'Middle fifth' in the drawing and the table (the label column's words), the plain name; the CSV export keeps the Bureau's label as stored.",
     "Figures checked by script (figures.py s18): 51.58 and 2.96 round to 51.6 and 3.0; 8.53, 14.36, 22.57; 23.11; the highest fifth's share is over the other four together; the largest margin in the file is 0.08.",
     "Every row's benchmark is 20, so the tick's words print once over the first tick.",
-    "Round 2, data lead ruling (c) and request A2: the title names two marks in two roles, so the highest and lowest fifths take the subject ink through labels.named and the middle three the light fill, values printed; bar-benchmark-tick reads named and point through K.parts.named_fill."
+    "Round 2, data lead ruling (c) and request A2: the title names two marks in two roles, so the highest and lowest fifths take the subject ink through labels.named and the middle three the light fill, values printed; bar-benchmark-tick reads named and point through K.parts.named_fill.",
+    "Round 2 fix pass, ST S11: the table printed 'Third fifth' while the drawing printed 'Middle fifth'; the table now prints 'Middle fifth' through the column's words map, and reads back to the stored label."
   ],
   "reading_guide": "Each fifth holds 20 percent of households, marked by the tick."
 }
