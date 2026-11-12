@@ -100,6 +100,54 @@ The systems designer's open points (its request 2): (a) "raises" and "lowers" on
 - Tested: `oa-chart.mjs build` for S17 to S22, S25 to S27, S29 to S39, S41 and S42 (22 specs, all PASS); scripted recounts of S37's, S38's and S39's title figures from their data files; the four sketches' bytes, classes and parts read from the files and drawn on both grounds and in grayscale; chapter 15's new plate text extracted and its quotations and least-certain grades checked against V7 by script; the plates captured after the rebuild.
 - Not tested: S38's live lookup (not built, A9); S23 and S40 (no real data yet); the opener's drawing after SD-1 (its words checked from the file, not captured); the sketches inside the guide page itself (drawn on my own test page with the kit's CSS).
 
+## Third batch
+
+November 12, 2026. `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py`: 55 rules, 36 chart plates, 49 examples logged, 0 faults, 0 files written. `guide_build.py --strict --out <scratch>/guide3/guide.html`: exit 0, 0 warnings, 10,011,436 bytes; chapter 14 at 790,454 bytes against its 2,803,941 stop, chapter 15 at 225,443. Playwright in that page at 1440 and 390 px: both openers, all 28 plates of Rules 14.1 to 14.14, the entries for S23, S34, S39 and S40, and each chapter 14 rule block at 1440; no sideways page scroll at either width. The nine plate specs pass `oa-chart.mjs check`; S23, S34, S39 and S40 pass `build`.
+
+**Rules 14.1 to 14.14 (the editor).**
+
+| Rule | Plates | Data and domain | Verdict |
+|---|---|---|---|
+| Opener | 1 | None | Signed off (ED-9 optional) |
+| 14.1 | 2 | Business applications, D06 | Signed off |
+| 14.2 | 2 | Civic and social organizations, D10 | Signed off |
+| 14.3 | 2 | Reported voting by age, D10 | Signed off (ED-6) |
+| 14.4 | 2 | Reported voting, citizens, D10 | Signed off (ED-6) |
+| 14.5 | 2 | Invented county channels, labeled, D04 | Signed off |
+| 14.6 | 2 | Active appeals judges, D05 | Changes: ED-1, ED-3 |
+| 14.7 | 2 | House party breakdown, D02 | Signed off (ED-7 optional) |
+| 14.8 | 2 | Homeownership by age, D09 | Signed off |
+| 14.9 | 2 | Reported turnout, ten states, D10 | Changes: ED-4 |
+| 14.10 | 2 | Newspaper establishments, D01 | Changes: ED-5 |
+| 14.11 | 2 | Median household income, D08 | Signed off (ED-8 optional) |
+| 14.12 | 2 | Federal receipts, D08 | Changes: ED-1, ED-2 |
+| 14.13 | 2 | Newspaper employees, D01 | Signed off (ED-6) |
+| 14.14 | 2 | None | Signed off |
+
+Every plate's domain is the subject of its data, as DL-ED1 asked, and the generator's log holds Rule 01.9 for round 1: 49 examples, the largest domain taxes at 7 (14 percent), New York the most-named state at 2. Checked by script against the frozen files: 14.6 (the Ninth Circuit's 29 active judges, the most of 13); 14.9 (the nation's 65.3; Michigan, Pennsylvania, Texas, Florida and New York past the gap's margin, the other five within; the failure caption's 2.6 and 1.3 point gaps within theirs); 14.11 ($87,460, margin $1,040); 14.12 ($5.40 trillion and $3.25 trillion). Each rule cites by number rules that exist and hold the subject cited. Party data sits on 14.7 alone, in one ink with names; 14.7's failure plate and 14.10's presidents carry the do-not-publish bar.
+
+**Chapter 15: the opener on Loop R18.** Every value checks against V7: L14 documented and L15 plausible, both minus, so the loop reinforces; LT16 an authority connection, documented, from Variable D2 to Variable TC5, with no sign. As a first picture it works: the six numbered parts teach the grammar in one look and it reads at 390 px. Signed off as it stands. Its one weakness is that Rule 15.6's correct plate draws Loop R18 too, so a reader meets the same loop as the chapter's first picture and again five rules later. **Bring Loop R13 back once the engineer's codes test reads a typed chip whole** (the systems designer's request 4): it teaches the same six parts, puts Congress and the presidency on one loop with an authority line into the economy layer, and appears in no other round 1 plate. If that fix comes after the fix pass, swap Rule 15.6's R18 for Loop R4b, "Voting rules shape who can hold rule-makers accountable" (two minus signs, plausible), so no loop repeats. The plates changed for SD-1 to SD-5 stand as signed off in the second batch; the 05:05 regeneration kept every evidence label, the full LTR1 quotation and the Rule 18.22 citation.
+
+**Maker A's S23, S39 and S40 and maker B's S34: all signed off.** S23's figures match `v7-claims-by-hub-and-grade` (84.5, 67.2, 18.8 and 8.2 percent; 433 claims). S39 prints each claim's sources (DL-A5). S40: eight bills, two laws, as the file holds; each sponsor's party in words. S34 takes DL-B11's title, DL-B12's phone rows (the 27 Congresses before 1971 summed in one sentence, 49 votes and no more than 7 in any, checked by script), and the sidecar now records the 2013 and 2017 changes from the Senate's own record (DL-R4).
+
+### Third batch requests
+
+- **ED-1, Rules 14.6 and 14.12, correct plates.** The other bars take the context ink, a dark slate, beside the named bar. The approved palette's rule R3 (DR-236) gives them the light fill on Newsprint whenever a chart names one bar, in red or in ink, and D3-164 names 14.6's case, a red point among bars, by itself. Draw the other bars in the light fill, as the kit's column and ranked bar now do.
+- **ED-2, Rule 14.12, correct plate at 390 px.** The plate's 640 px frame clips the title ("$5.40 trilli"), the measure line and the source line on a phone, and the full-width drawing stops at 2021. That is Rule 14.12's own fault on its correct plate. Keep the title, measure line and source line in the column at every width and let only the full-width drawing scroll or scale beside the phone bars.
+- **ED-3, Rule 14.6, correct plate at 390 px.** The bars draw in about 45 px beside names and counts, so the red point barely reads. Give the bars the width (names above the bars at phone width, as the kit's ranked bar sets them), or draw the plate from the kit once ED-E1 lands.
+- **ED-4, Rule 14.9, correct plate at 390 px.** The margin lines shrink to a few pixels, and they are what the plate teaches. Move each value into its name's line ("Michigan 72.3%") or under the name, so the interval column takes the width.
+- **ED-5, Rule 14.10, failure plate.** At 1440 px the band labels "Trump" and "Biden" touch. The fault on the plate is the bands; set the labels apart.
+- **ED-6, recommended for the fix pass if the weight allows.** Three rule plates (14.3, 14.4, 14.9) draw the Census Bureau's reported-voting tables, which S04 and S16 already draw; 14.10 and 14.13 both draw newspaper publishers, which S29 draws; 14.2 draws the civic organizations S28 draws. Rule 01.9 holds, but round 0's data plan moved two rows off the reported-voting tables for this reason. Move 14.4 (a cut axis needs a series in a narrow band: the unemployment rate in `fred-unemployment-and-job-openings`, or women's to men's earnings by state in `census-acs-earnings-ratio-by-state`) and 14.13 to other frozen data. The rules have 261 bytes of their 0.20 MB left, so this waits on the engineer's weight report.
+- **ED-7, optional, Rule 14.7.** "Vacancies 2" draws as a bar in the party ink; a vacant seat is no party. Print it in the context ink or as words under the bars.
+- **ED-8, optional, Rule 14.11.** At 1440 px the correct plate's line fills about half the stage; drawn at the stage width, the 2013 and 2017 breaks read more easily.
+- **ED-9, optional, the opener.** The sixteen questions carry the group numbers 2 to 17, so the list starts at 2; drop the numbers or say they are the groups' numbers.
+- **SD-6, to the systems designer.** Restore Loop R13 as the opener once the codes test reads a typed chip whole, or swap Rule 15.6's R18 for Loop R4b (above).
+
+### Third batch: tested and not tested
+
+- Tested: both generators and the strict build, as above; captures of every listed plate and entry at 1440 and 390 px, looked at (rule blocks for 14.1 to 14.14 at 1440 only); the four title checks above by script; the example log read; Rule 14.x citations resolved against the chapter files; V7 values for the R18 opener and R4b by script.
+- Not tested: failure plates of Rules 14.9 to 14.14 at 390 px (captured, not looked at); chapter 14 in grayscale or on Charcoal inside the page; the guide check (`guide_check.js`) on this build; S38's live lookup (A9).
+
 ## Routine calls
 
 - D3-xxx | Round 3's data plan is signed off with twelve changes; no dataset is replaced | Rule 01.9 and DR-229 hold on a scripted recount of both plans; the changes fix data that could not be drawn honestly as planned

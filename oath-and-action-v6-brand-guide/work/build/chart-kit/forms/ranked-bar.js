@@ -3,7 +3,8 @@
  * encode: category (text), value (number, the total), parts (list of number columns, optional).
  * labels: parts ([{field, label, style}] where style is solid, open, gray, hatch or dashed), total_suffix ({category: words}),
  * value_unit (words after each total, optional), named (a category or list the title names: the rest take the light fill,
- * K.parts.named_fill). formats: value. A negative value draws left of the zero line; a long
+ * K.parts.named_fill), point (the one category the title names in working red, with its keyline on Newsprint; ED-E1).
+ * formats: value. A negative value draws left of the zero line; a long
  * category name wraps. */
 (function (K) {
   'use strict';
@@ -13,11 +14,11 @@
     name: 'Ranked Bar',
     family: 'comparison',
     encode: { category: 'text', value: 'number', parts: 'list?' },
-    labels: ['parts', 'total_suffix', 'value_unit', 'named'],
+    labels: ['parts', 'total_suffix', 'value_unit', 'named', 'point'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, rows = c.rows, ek = c.field('category'), ev = c.field('value'), parts = c.field('parts', false) || [];
-      var f = c.spec.formats || {}, W = c.width, y = 0, fill = P.named_fill(c, c.labels.named, ek);
+      var f = c.spec.formats || {}, W = c.width, y = 0, fill = P.named_fill(c, c.labels.named, ek, null, c.labels.point);
       var defs = (c.labels.parts || []).filter(function (p) { return parts.indexOf(p.field) >= 0; });
       parts.forEach(function (p) { if (!defs.some(function (d) { return d.field === p; })) c.warn('labels.parts names no style for ' + p); });
       if (defs.length) {
@@ -63,7 +64,7 @@
           });
         } else {
           var xe = xs(r[ev]);
-          c.rect(Math.min(zx, xe), by, Math.abs(xe - zx), bh, { fill: fill(r), kind: 'bar', axis: 'x', zero: zx, data: { key: r[ek], field: ev, value: r[ev] } });
+          c.rect(Math.min(zx, xe), by, Math.abs(xe - zx), bh, Object.assign({ fill: fill(r), kind: 'bar', axis: 'x', zero: zx, data: { key: r[ek], field: ev, value: r[ev] } }, fill.keyline(r)));
           x = xe;
         }
         var neg = r[ev] < 0;

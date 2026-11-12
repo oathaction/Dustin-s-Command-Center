@@ -3,9 +3,10 @@
   "chapter": "14",
   "rule": null,
   "width_px": null,
-  "alt": "The sixteen questions chapter 14’s groups answer, each with its family: Comparison: which is bigger, and how do they rank?; Shift and swing: what moved, and which way?; Change over time: how has it moved?; Composition: what is it made of?; Distribution and density: how are the values spread?; Correlation: do two things move together?; Uncertainty and estimates: how sure is it?; Proportion and overlap: how much, and how do groups overlap?; Gauges and indicators: where does it stand now?; Behavior: how do people move through a process?; Structure: who decides, and how does it work?; Relationships: who is connected to whom?; Flow: where does it go?; Maps: where is it happening?; Tables and plain words: where does a reader look things up, and when do words answer faster?; Infographics: how does it work, in one look?.",
+  "alt": "The sixteen reader questions that open chapter 14’s groups, from which is bigger and how they rank to how something works in one look, each with the family of forms that answers it.",
   "illustrative": false,
-  "notes": "The chapter's opener: the reader's questions that open groups 2 to 17, read from the plan file."
+  "notes": "The chapter's opener: the reader's questions that open groups 2 to 17, read from the plan file.",
+  "readable": true
  },
  "s-14-1-correct": {
   "chapter": "14",
@@ -68,7 +69,8 @@
   "rule": "14.5",
   "alt": "The four data palettes, each with its swatches, its one job and the question it answers: sequential Verdigris for one measure from low to high; diverging pair B from Prussian through the page color to Verdigris for values above and below a midpoint; four group inks, Charcoal, Verdigris, Prussian and hatched Stone, for named groups; and Stone steps for size with no direction.",
   "illustrative": false,
-  "notes": "Swatches drawn from the chart tokens the stage's surface class sets, so the strip follows Newsprint and Charcoal."
+  "notes": "Swatches drawn from the chart tokens the stage's surface class sets, so the strip follows Newsprint and Charcoal.",
+  "readable": true
  },
  "s-14-5-failure": {
   "chapter": "14",
@@ -164,7 +166,7 @@
  "s-14-12-correct": {
   "chapter": "14",
   "rule": "14.12",
-  "alt": "The same twelve years of federal receipts drawn twice: as columns at full width, each value above its column, and as bars on a phone, each value beside its bar. Both rise from 3,249 billion dollars in 2015 to 5,403 billion in 2026, with a fall in 2023.",
+  "alt": "The same twelve years of federal receipts drawn twice, as columns at full width and as bars on a phone, each value printed. Both rise from 3,249 billion dollars in 2015 to 5,403 billion in 2026, with a fall in 2023.",
   "width_px": 640,
   "illustrative": false,
   "notes": "The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; the plate is 640 px wide, so its full-width drawing keeps its size on a phone, inside the guide's scrolling frame."
@@ -179,7 +181,7 @@
  "s-14-13-correct": {
   "chapter": "14",
   "rule": "14.13",
-  "alt": "Columns with every value printed and the table open beneath them. Newspaper publishers employed 91,350 people in March 2023, under a quarter of the 401,373 of 1998.",
+  "alt": "Columns with every value printed and the table open beneath them. Newspaper publishers lost the most paid jobs from 2008 to 2013, 127,637, of any five-year step from 1998 to 2023.",
   "illustrative": false,
   "notes": ""
  },
@@ -195,7 +197,8 @@
   "rule": "14.14",
   "alt": "One kit command, node work/build/chart-kit/oa-chart.mjs build s14, and the three files it writes for the payroll chart: an SVG, a PNG and a CSV, each with a dated name that says what the chart is, its ground and its width.",
   "illustrative": false,
-  "notes": "File names as the kit writes them for the payroll chart on November 12, 2026."
+  "notes": "File names as the kit writes them for the payroll chart on November 12, 2026.",
+  "readable": true
  },
  "s-14-14-failure": {
   "chapter": "14",

@@ -571,7 +571,8 @@ def rule_14_3(B):
         "14.3", "Label the data directly, and use a key only when labels cannot fit.",
         ["Rule 12.6 sets where a label sits. In a chart, each line takes its name beside it toward its last point, where the lines stand "
          "apart, each bar its value at its end, and each "
-         "group its name on or beside its marks, in the ink of the text. Units go once in the measure line, so the labels carry numbers alone.",
+         "group its name on or beside its marks, in the ink of the text. Units go once in the measure line, so a label carries its number "
+         "with at most a sign or a percent sign.",
          "A key earns its place only when a mark codes something a label cannot carry on every mark, such as an evidence grade, a pattern or a "
          "run of shades. Then it sits under the measure line, in the order the marks run, as Rule 12.6 sets."],
         ["A reader matching inks between a key and the lines looks away from the data at every step, and close inks are hard to match at "
@@ -1078,8 +1079,8 @@ def rule_14_11(B):
                  f'<text x="{xs(2013) - 4:.1f}" y="{T + 44}" text-anchor="end">questions</text>')
     inner = (axis_y(ys, [60000, 75000, 90000], L, R, lambda t: f"${t // 1000},000") + axis_x(xs, [2005, 2015, 2025], Bt + 18, str)
              + lines + dots + notes_svg)
-    notes = ["The line breaks twice where the survey changed. In 2013 it asked new income questions, and in 2017 it moved to a new "
-             "processing system; each year prints both its estimates, the old method’s as an open dot and the new one’s filled.",
+    notes = ["The line breaks where the survey changed: new income questions in 2013 and a new processing system in 2017. Each of those "
+             "years prints both estimates, the earlier method’s open and the new one’s filled.",
              f"The 2025 figure carries a margin of error of ±${comma(moe)} at 90 percent confidence."]
     method = {(2013, 0): ", earlier questions", (2013, 1): ", new questions", (2017, 1): ", earlier processing", (2017, 2): ", new processing"}
     tab = table("Median household income, 2025 dollars", ["Year", "Median income"],
@@ -1142,8 +1143,8 @@ def rule_14_12(B):
              + hbars([(str(y), v) for y, v in data], vmax * 1.02, comma, subject=("2026",)).replace('class="hb"', 'class="hb yr"') + "</div>")
     tab = table("Federal receipts by fiscal year, billions of dollars", ["Fiscal year", "Billions of dollars"], [(y, comma(v)) for y, v in data])
     B.add("s-14-12-correct", head("Finding", g, title, measure=measure) + f'<div class="art st2">{desk}{phone}</div>' + foot([], src(ds)) + tab,
-          alt=f"The same twelve years of federal receipts drawn twice: as columns at full width, each value above its column, and as bars on a "
-              f"phone, each value beside its bar. Both rise from {comma(d[2015])} billion dollars in 2015 to {comma(d[2026])} billion in 2026, "
+          alt=f"The same twelve years of federal receipts drawn twice, as columns at full width and as bars on a phone, each value "
+              f"printed. Both rise from {comma(d[2015])} billion dollars in 2015 to {comma(d[2026])} billion in 2026, "
               f"with a fall in 2023.",
           notes="The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; the plate is "
                 "640 px wide, so its full-width drawing keeps its size on a phone, inside the guide's scrolling frame.", width=640)
@@ -1185,8 +1186,9 @@ NEWS_YEARS = [1998, 2003, 2008, 2013, 2018, 2023]
 def rule_14_13(B):
     ds = "census-cbp-newspaper-publishers"
     r = {int(x["year"]): int(x["employees"]) for x in rows(ds)}
-    need(r[2023] / r[1998] < 0.25 and r[2023] == 91350 and r[1998] == 401373, "the newspaper employment figures moved")
-    title = f"Newspaper publishers employed {comma(r[2023])} people in March 2023, under a quarter of the {comma(r[1998])} of 1998"
+    steps = {(a, b): r[a] - r[b] for a, b in zip(NEWS_YEARS, NEWS_YEARS[1:])}
+    need(max(steps, key=steps.get) == (2008, 2013) and steps[(2008, 2013)] == 127637, "the largest five-year fall moved")
+    title = f"Newspaper publishers lost the most paid jobs from 2008 to 2013, {comma(steps[(2008, 2013)])}, of any five-year step from 1998 to 2023"
     measure = "Paid employees of newspaper publishers in mid-March, every fifth year from 1998 to 2023, United States"
     B.spec("s-14-13-cols", form="column", family="comparison", tier="core", dataset=ds, where={"year": NEWS_YEARS},
            reader_question="How many people do newspaper publishers employ, and how has that changed?",
@@ -1196,12 +1198,12 @@ def rule_14_13(B):
            table={"caption": "Paid employees of newspaper publishers, mid-March",
                   "columns": [{"field": "year", "label": "Year", "format": "year", "row_header": True},
                               {"field": "employees", "label": "Employees", "format": "integer"}]},
-           encode={"x": "year", "y": "employees"}, labels={"named": 2023}, domain="D01", states=[],
+           encode={"x": "year", "y": "employees"}, labels={"named": [2008, 2013]}, domain="D01", states=[],
            notes_internal="Rule 14.13's correct plate: a still chart with every value printed and its table as live text.")
     W, H, L, R, T, Bt = 320, 190, 10, 310, 12, 160
     step = (R - L) / len(NEWS_YEARS)
     ys = scale(0, 420000, Bt, T)
-    bars = "".join(f'<rect class="{"fs" if y == 2023 else "fc"}" x="{L + i * step + 6:.1f}" y="{ys(r[y]):.1f}" width="{step - 12:.1f}" '
+    bars = "".join(f'<rect class="{"fs" if y in (2008, 2013) else "fc"}" x="{L + i * step + 6:.1f}" y="{ys(r[y]):.1f}" width="{step - 12:.1f}" '
                    f'height="{Bt - ys(r[y]):.1f}"/><text class="tk" x="{L + i * step + step / 2:.1f}" y="{Bt + 18}" text-anchor="middle">{y}</text>'
                    for i, y in enumerate(NEWS_YEARS))
     inner = bars + f'<line class="ax" x1="{L}" x2="{R}" y1="{Bt}" y2="{Bt}"/>'
@@ -1288,8 +1290,8 @@ def opener(B):
                    f'<span class="fm">{e(fam)}</span></li>')
     body = ('<p class="k" style="margin:0 0 12px">Every chart answers one question</p><ol class="opq">' + "".join(lis) + "</ol>")
     B.add("s-14-opener", body, readable=True,
-          alt="The sixteen questions chapter 14’s groups answer, each with its family: "
-              + "; ".join(g["title"] for g in PLAN["groups"][1:]) + ".",
+          alt="The sixteen reader questions that open chapter 14’s groups, from which is bigger and how they rank to how something works "
+              "in one look, each with the family of forms that answers it.",
           notes="The chapter's opener: the reader's questions that open groups 2 to 17, read from the plan file.")
     return {"specimen": "s-14-opener", "caption": "Each group of this chapter opens with the question a reader brings, and its forms answer it.",
             **{k: v for k, v in B.plates["s-14-opener"].items()}}

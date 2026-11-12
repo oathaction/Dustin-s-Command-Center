@@ -39,7 +39,7 @@ LOG = ENTRIES / "14-example-log.json"
 DOMAIN_SHARE = 1 / 4      # DR-229: no atlas domain supplies more than one example in four in chapter 14
 STATE_SHARE = 1 / 5       # and no state more than one in five
 ENTRY_DROP = {"use_when", "use_instead", "specimen", "tier", "correct", "failure", "examples"}
-PLATE_META = ("width_px", "illustrative", "notes", "fit_switch", "interactive")
+PLATE_META = ("width_px", "illustrative", "notes", "fit_switch", "interactive", "readable", "height_px", "surface", "scale", "check_exempt", "breakout")   # ED-E2: readable and the shell's other keys
 
 
 def tier_of(t):
@@ -63,7 +63,8 @@ def outputs(rounds):
     opener = dict(chap.get("opener") or {})
     if opener.get("specimen"):
         manifest[opener["specimen"]] = {"chapter": "14", "rule": None, "width_px": opener.get("width_px"), "alt": opener.get("alt", ""),
-                                        "illustrative": bool(opener.get("illustrative")), "notes": opener.get("notes", "chapter 14's opener")}
+                                        "illustrative": bool(opener.get("illustrative")), "notes": opener.get("notes", "chapter 14's opener"),
+                                        **{k: opener[k] for k in PLATE_META if k in opener and k not in ("width_px", "illustrative", "notes")}}
     for p in sorted(built, key=lambda r: num_key(r["rule"])):
         rid = p["rule"]
         ef = ENTRIES / f"14-{int(rid.split('.')[1]):03d}.json"

@@ -164,13 +164,19 @@
   // values of the given field), those take the subject ink and every other takes the light fill on Newsprint and the
   // context ink on Charcoal, values still printed. With nothing named every mark takes the subject ink. Returns a
   // function row -> color role, with .named (true when the spec names any) and .is_named(row).
-  P.named_fill = function (c, named, field, base) {
+  // point (ED-E1, round 1): the one mark a title names in working red takes the point role, with the 1 px keyline on
+  // Newsprint where Pillar Red measures 2.96 to 1 (fn.keyline(row) gives the stroke options to merge into the mark's).
+  P.named_fill = function (c, named, field, base, point) {
     var list = named === undefined || named === null ? null : [].concat(named).map(String);
+    var pt = point === undefined || point === null ? null : String(point);
     var other = c.ground === 'charcoal' ? 'context' : 'light-fill';
     var is_named = function (r) { return !list || list.indexOf(String(r[field])) >= 0; };
-    var fn = function (r) { return is_named(r) ? (base || 'subject') : other; };
+    var is_point = function (r) { return pt !== null && String(r[field]) === pt; };
+    var fn = function (r) { return is_point(r) ? 'point' : is_named(r) ? (base || 'subject') : other; };
     fn.named = !!list;
     fn.is_named = is_named;
+    fn.is_point = is_point;
+    fn.keyline = function (r) { return is_point(r) && c.ground !== 'charcoal' ? { stroke: 'point-keyline', width: c.t('keyline') } : {}; };
     return fn;
   };
 })(typeof globalThis !== 'undefined' ? globalThis : this);

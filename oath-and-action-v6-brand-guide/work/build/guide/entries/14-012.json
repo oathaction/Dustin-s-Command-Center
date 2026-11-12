@@ -46,7 +46,7 @@
  "correct": {
   "specimen": "s-14-12-correct",
   "caption": "At full width the twelve years stand as columns with their values above them. On a phone those values would not fit over columns that narrow, so the columns become bars, with the same rows, title and finding.",
-  "alt": "The same twelve years of federal receipts drawn twice: as columns at full width, each value above its column, and as bars on a phone, each value beside its bar. Both rise from 3,249 billion dollars in 2015 to 5,403 billion in 2026, with a fall in 2023.",
+  "alt": "The same twelve years of federal receipts drawn twice, as columns at full width and as bars on a phone, each value printed. Both rise from 3,249 billion dollars in 2015 to 5,403 billion in 2026, with a fall in 2023.",
   "illustrative": false,
   "notes": "The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; the plate is 640 px wide, so its full-width drawing keeps its size on a phone, inside the guide's scrolling frame.",
   "width_px": 640
