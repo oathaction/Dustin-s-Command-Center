@@ -67,7 +67,7 @@ Composition, distribution and density, correlation, uncertainty and estimates, g
 ```
 I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on the branch claude/friendly-brahmagupta-tonmfa in the oathaction/Dustin-s-Command-Center repo, in the folder oath-and-action-v6-brand-guide/. Fetch that branch and work from it. Keep committing and pushing to it unless I say otherwise.
 
-Round 1 of Phase 3 is built. Close its build stage, run the checks, then run its review, fix pass, second pass and the creative director's rescore, and show me the progress page (DR-241). Then plan round 2.
+Round 1 of Phase 3 is built and its build stage is closed: the strict build and the four-width guide check passed at the end of the last chat. Confirm the committed state with a strict build and the quick guide check, then run round 1's review, fix pass, second pass and the creative director's rescore, and show me the progress page (DR-241). Then plan round 2. The Department of Labor page I downloaded for round 3 is saved in work/research/downloads/; have the research lead freeze it.
 
 Before you do anything else, read these in order:
 1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from G2-01 to the end), the change ledger (to C-098), the open questions, and the Gate 2 report (work/ledger/20261111_Gate-2-Report.md), section 9.
