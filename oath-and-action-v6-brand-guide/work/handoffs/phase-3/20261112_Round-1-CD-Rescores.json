@@ -1,0 +1,404 @@
+{
+ "title": "Creative director’s rescores for Phase 3, round 1: rules 14.1 to 14.14 with the opener, maker A’s and maker B’s specimens with their entries, the four sketches, and chapter 15’s round 1 plates, after the review fix pass and DR-191’s second pass",
+ "date": "2026-11-12",
+ "author": "Creative director (oa-creative-director), subagent of the main session",
+ "basis": "The final strict build in the scratchpad’s phase-3/round-1-final/build/guide.html (9,991,740 bytes, built 2026-11-12T17:51, 0 warnings) and its guide-Build-Report.json; all 94 plates of chapters 14 and 15 captured by the creative director at 1440, 1024 and 390 px on Newsprint and at 1440 and 390 px on Charcoal (a scratch copy with each stage’s surface class set to Charcoal), five plates at 2x; the fix brief work/handoffs/phase-3/20261112_Round-1-Fix-Brief.md with its addendum; the decision log from D3-476 to D3-645; each owner’s “Review fix pass” and “Second pass”; the three reviewers’ second passes",
+ "first_scores_file": "work/handoffs/phase-3/20261112_Round-1-CD-Scores.json",
+ "review": "work/handoffs/phase-3/20261112_CD-Review-Of-Round-1.md, section “Rescore”",
+ "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
+ "criteria": [
+  {
+   "key": "craft",
+   "name": "Craft"
+  },
+  {
+   "key": "clarity",
+   "name": "Clarity"
+  },
+  {
+   "key": "brand_fidelity",
+   "name": "Brand fidelity"
+  },
+  {
+   "key": "usefulness",
+   "name": "Usefulness"
+  },
+  {
+   "key": "evidence_honesty",
+   "name": "Evidence honesty"
+  },
+  {
+   "key": "accessibility",
+   "name": "Accessibility"
+  }
+ ],
+ "items": [
+  {
+   "key": "ch14_rules",
+   "name": "Rules 14.1 to 14.14 with chapter 14’s opener",
+   "anchor": "#data-visualization, #group-14-1; work/build/guide/entries/14-001.json to 14-014.json, 14-chapter.json",
+   "stage": "Phase 3, round 1, after the review fix pass and DR-191’s second pass",
+   "first_scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "14.3's stray zero line is gone (no mark leaves any kit drawing in chapters 13 to 15 by more than 2 px, by script at 1440 and 390 px), each failure now draws at its partner's scale, and 14.6, 14.9, 14.11 and 14.12 take the kit's anatomy with the bold \"Source:\" and the credit.",
+    "clarity": "The opener sets a small drawn mark beside each of its 16 questions and links the built groups, and 14.11 says in its guide why 2017's $300 gap shows no break.",
+    "brand_fidelity": "One red per view on a mark no reader ties to a party, the subject ink where one would, and red and blue only on 14.7's failure.",
+    "usefulness": "Rule 14.2 now gives the grade line for a count of the atlas's records, and Rule 14.6 and entry 14.16 name `labels.point` and `labels.named`.",
+    "evidence_honesty": "Each frozen series prints its release, 14.11's gaps ($2,200 and $300) check against the file, and 14.13 now draws the FEC's count of super PACs, so no Census business series carries more than two plates.",
+    "accessibility": "axe-core 4.10 finds no violation in chapter 14 at 1440, 1024 or 390 px, and the static drawings hold their true size."
+   },
+   "first_must_fix": [
+    "RM1",
+    "RM2"
+   ],
+   "first_should_fix": [
+    "R-S1",
+    "R-S2",
+    "R-S3",
+    "R-S4",
+    "R-S5"
+   ],
+   "first_items_landed": [
+    "RM1",
+    "RM2",
+    "R-S1",
+    "R-S2",
+    "R-S3",
+    "R-S4",
+    "R-S5",
+    "K-S1",
+    "K-S2",
+    "ST-S1"
+   ],
+   "first_items_open": [
+    "R-S4 for chapter 13 only, which waits on Dustin (D3-488)"
+   ],
+   "must_fix": [],
+   "should_fix": [
+    "RS-S4"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "maker_a",
+   "name": "Maker A: S17 to S23 and S36 to S42 with their entries, and the entries for S03, S04, S06, S15 and 14.128",
+   "anchor": "#group-14-2, #group-14-16; work/build/chart-kit/specs/s17.json to s23.json, s36.json to s42.json",
+   "stage": "Phase 3, round 1, after the review fix pass and DR-191’s second pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 3,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "S37's eleven heads sit on one row over their columns, its groups print once, the checked mark reads at 6 px, and S23's scale now ends at the largest share.",
+    "clarity": "S38 shows one list under its search with one count (\"17 of 17 issue records\"), and S37 frames the federal statute column its title counts.",
+    "brand_fidelity": "The red point lands on an age group (S20), an atlas answer (S21) and one hub's bar (S23), and the 118th Congress and FF PAC keep the subject ink, each read fairly from the left and the right.",
+    "usefulness": "Each entry whose form changes on a phone shows the phone drawing at a desk (\"On a phone, 358 px\"), as DR-240 names.",
+    "evidence_honesty": "S36 names the party the FEC records for four committees and says it records none for 21 of 22 PACs, and S37 quotes the atlas's four feasibility definitions word for word.",
+    "accessibility": "S38's lookup takes the still list's place with a labeled search and one live count, and S37's low-step words carry the forced-colors plate."
+   },
+   "first_must_fix": [
+    "AM1",
+    "AM2"
+   ],
+   "first_should_fix": [
+    "A-S1"
+   ],
+   "first_items_landed": [
+    "AM1",
+    "AM2",
+    "A-S1"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [
+    "RS-S2",
+    "RS-S3"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 2,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "maker_b",
+   "name": "Maker B: S24 to S35 with their entries, and the entries for S02, S05, S09, S11, S13 and S14",
+   "anchor": "#group-14-3, #group-14-4; work/build/chart-kit/specs/s24.json to s35.json",
+   "stage": "Phase 3, round 1, after the review fix pass and DR-191’s second pass",
+   "first_scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "S33 keeps every value with its name and gives the phone a full-width plot with the other eight sources listed under it, and S34 staggers its circles above and below the line with the 116th Congress drawn solid.",
+    "clarity": "S27 names Montana and Utah with the United States dashed, and the 100 lines on S27 and S33 now read as references, never as series.",
+    "brand_fidelity": "Wyoming, customs duties and the 116th Congress take the subject ink under the party test, and S26 sets its 119th row bold with the party named.",
+    "usefulness": "Entries 14.26 to 14.41 describe the redrawn specimens, so an entry and its specimen agree.",
+    "evidence_honesty": "S34's 119th row prints 295 votes through November 10, 2026, and S25 gives three dated totals with no split at an inauguration.",
+    "accessibility": "Each phone form keeps every row, and S34's phone row wraps inside its 326 px column."
+   },
+   "first_must_fix": [
+    "BM1"
+   ],
+   "first_should_fix": [
+    "B-S1",
+    "B-S2"
+   ],
+   "first_items_landed": [
+    "BM1",
+    "B-S1",
+    "B-S2"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [
+    "RS-S2"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "sketches",
+   "name": "The four sketches with their entries: 14.24 radar and 14.45 streamgraph (avoid), 14.43 run chart and 14.44 cycle chart (reference)",
+   "anchor": "#rule-14-24, #rule-14-43, #rule-14-44, #rule-14-45; work/build/guide/specimens/s-14-24-sketch.html, s-14-43-sketch.html to s-14-45-sketch.html",
+   "stage": "Phase 3, round 1, after the review fix pass and DR-191’s second pass",
+   "first_scores": {
+    "craft": 3,
+    "clarity": 3,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Each sketch takes a stage of its own width, centered, and each avoid pair sets the do-not-publish bar over the misleading half and \"Use instead\" over the other.",
+    "clarity": "The radar draws one set of values in two spoke orders, the dark shape larger in one and smaller in the other, beside grouped bars of the same values, and the streamgraph's steady middle band bends where the small multiples lie flat.",
+    "brand_fidelity": "Every half draws in the kit's role classes, the second radar group dashed so it reads in grayscale.",
+    "usefulness": "Each avoid entry now draws the better choice it links.",
+    "evidence_honesty": "\"Illustrative data\" sits over each half.",
+    "accessibility": "Each sketch has its description, and the radar pair stacks on a phone with each label on one line."
+   },
+   "first_must_fix": [
+    "SK-M1",
+    "SK-M2"
+   ],
+   "first_should_fix": [],
+   "first_items_landed": [
+    "SK-M1",
+    "SK-M2"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [
+    "RS-S2"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready."
+  },
+  {
+   "key": "ch15",
+   "name": "Chapter 15, Systems graphics: the opener and Rules 15.1 to 15.10, 15.13 and 15.14 (25 plates)",
+   "anchor": "#systems-graphics; work/build/guide/chapters/15-systems-graphics.json, specimens s-15-*",
+   "stage": "Phase 3, round 1, after the review fix pass and DR-191’s second pass",
+   "first_scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 5,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "At 1440 and 1280 px the 15 correct plates (with 15.3's and 15.4's failures) set a 680 px stage with the drawing at its true 296 px beside its words, two drawings side by side or three cards across, and plate heights fall from 1,013 to 1,442 px to 607 to 1,118; at 390 px the plates are as before.",
+    "clarity": "The opener's callouts are letters A to F, clear of the loop's step numbers, and Rule 15.13's plate keys \"money, raises\" and the ticks.",
+    "brand_fidelity": "One ink, the line code at 2 px, typed chips for every ID, and the plates flip cleanly to Charcoal.",
+    "usefulness": "The true-size line names both widths, and the shared plate CSS sits in one chapter block.",
+    "evidence_honesty": "Every value is read by script and held by the generator's checks, 15.6's Loop R10 takes its label from its least certain step, and 15.14 quotes the atlas's revision with its date.",
+    "accessibility": "axe-core finds no violation in the chapter at 1440, 1024 or 390 px, and type stays at 13 to 15 px at every width."
+   },
+   "first_must_fix": [
+    "CH15-M1"
+   ],
+   "first_should_fix": [
+    "CH15-S1"
+   ],
+   "first_items_landed": [
+    "CH15-M1",
+    "CH15-S1"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [
+    "RS-S1"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready."
+  }
+ ],
+ "totals": {
+  "must_fix": 0,
+  "should_fix": 4,
+  "under_4": [],
+  "ready": [
+   "ch14_rules",
+   "maker_a",
+   "maker_b",
+   "sketches",
+   "ch15"
+  ],
+  "not_ready": [],
+  "first_must_fix_landed": 8,
+  "first_should_fix_landed": 12
+ },
+ "must_fix": {},
+ "should_fix": {
+  "RS-S1": {
+   "items": [
+    "ch15"
+   ],
+   "where": "Chapter 15's wide stage at 1024 and 768 px",
+   "what_and_fix": "Where the frame is 680 to about 760 px wide, narrow the frame's mat so the 680 px stage fits, and switch on the frame's own width as now. A few dozen bytes of shell CSS.",
+   "owner": "Engineer, systems designer"
+  },
+  "RS-S2": {
+   "items": [
+    "sketches",
+    "maker_a",
+    "maker_b"
+   ],
+   "where": "The avoid captions",
+   "what_and_fix": "Print the alt's first sentence as the visible caption, for instance \"The same values with the spokes in two orders draw two different shapes; grouped bars show them as lengths from one zero.\"",
+   "owner": "Maker A for 14.24, maker B for 14.45, the editor on the words"
+  },
+  "RS-S3": {
+   "items": [
+    "maker_a"
+   ],
+   "where": "S37 at 1024 px",
+   "what_and_fix": "Where the figure already draws its chips (the 1024 px column is too narrow for the grid), the \"On a phone, 358 px\" drawing repeats the first reform group in the same form. Show the desk phone drawing only where the figure draws a different form at that width.",
+   "owner": "Engineer"
+  },
+  "RS-S4": {
+   "items": [
+    "ch14_rules"
+   ],
+   "where": "14.3's named line",
+   "what_and_fix": "The caption says the youngest group \"stands out in ink\", and Rule 14.6 gives a named mark the red unless a party tie or an error holds it. Ask the data lead to rule on reported voting by age under D3-489, then draw the red point or let the caption name the case that sets ink.",
+   "owner": "Editor, with the data lead"
+  }
+ },
+ "judgments": {
+  "chapter_15_wide_plates": "",
+  "chapter_15_one_column_at_1024": "Its one column at 1024 px: acceptable, and it can do better. D3-625 kept the 328 px column at 1024 px because my CH15-M1 said \"the narrower 1024 px column\". That rested on a measure I did not check: the frame is 702 px wide at 1024 px, though its content box is 606 px. So the 680 px stage would fit if the frame's mat narrowed from 48 px to about 11 px a side, as it already does on a phone. As built, 1024 px shows the same true-size column chapters 11 and 12 show there, so it ships. Should fix RS-S1 below brings the wide composition to 1024 and 768 px. A switch at 600 px would not help: it leaves a words column about 250 px wide.",
+  "avoid_pairs": "The avoid pairs: they teach. Each shows the fault and the cure from the same invented values, side by side, and only the misleading half carries the bar. The visible caption still reads only \"Radar chart, drawn small with illustrative data.\"; RS-S2 gives it the one sentence the alt already has.",
+  "rule_14_6_national_parks": "Rule 14.6 on national parks: the right example. No reader ties a park's visits to a party, so the red point the rule teaches carries no second meaning. The count is documented, and Great Smoky Mountains leads Zion by 2.3 times, a margin that shows at once. The source line says the count is of visits, not people, and of national parks only. The rule's text has grown a list of party ties; risk R1 below.",
+  "s37_over_the_share": "S37 at 16 KB, over the share: accept it. Its chart weighs 16,253 bytes against the 14,337 share, and its entry 20,499 with words. It is an extended form drawing 126 cells for 50 reforms; the far-over test allows it, and the desk phone drawing adds no data (D3-554). Round 1's new entries have a median of 12,584 bytes, about 1.75 KB under the share, so the pool absorbs it. S37 now runs 5,427 px tall at 1440 px; the 1024 px repeat in RS-S3 is the one part to trim."
+ },
+ "weight_recommendation": {
+  "chapter_14_now": 789622,
+  "stop": 2803941,
+  "share_per_plate": 14337,
+  "plates_to_come": 61,
+  "rules_and_opener": {
+   "bytes": 205007,
+   "allowance": 212288
+  },
+  "chapter_15_now": 184665,
+  "chapter_15_round_1_limit": 250000,
+  "chapter_15_ceiling": 600000,
+  "round_1_new_entries_median_bytes": 12584,
+  "s37": {
+   "chart_bytes": 16253,
+   "entry_bytes": 20499
+  },
+  "verdict": "Holds: round 1’s new entries sit about 1.75 KB under the share at the median, which absorbs S37; little margin is left for round 3’s maps and distributions."
+ },
+ "distinctiveness_test": [
+  {
+   "view": "Chapter 14, opener in view at 1440 px, wordmark covered",
+   "verdict": "Now reads as Oath & Action: sixteen small drawn marks in the house line beside Inter Tight questions."
+  },
+  {
+   "view": "Chapter 15, any wide plate at 1440 px",
+   "verdict": "Reads as Oath & Action: typed chips, the line code with its ticks, lettered callouts and the legend beside the drawing."
+  },
+  {
+   "view": "Rule 14.6 at 2x",
+   "verdict": "Reads as Oath & Action: one red bar inside its keyline, every other bar in the light fill."
+  }
+ ],
+ "risks_for_dustin": [
+  "The party test is spreading. D3-489 lists five ties, and the studio has applied it well, but 14.12's 2026 receipts column takes ink because the year's receipts carry the sitting president's tariffs (D3-589), a reason outside the list. Applied that broadly, red becomes rare, and the reason given is itself a political reading. I recommend the data lead keep the test to the list Rule 14.6 prints, and add a case to the rule before using it.",
+  "Where readers learn the red point. Most entries that draw it now draw the atlas's own records (S21, S23). Rule 14.6's park plate shows it on public data; a later round should add one entry specimen like it.",
+  "Margin. Chapter 14's share is 14,337 bytes for each of 61 plates, with sketch entries reserved whole. Round 1's median sits about 1.75 KB under it, which leaves little for round 3's maps and distributions."
+ ],
+ "questions_for_dustin": []
+}

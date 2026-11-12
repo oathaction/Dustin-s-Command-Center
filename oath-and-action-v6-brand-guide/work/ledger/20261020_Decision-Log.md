@@ -4584,3 +4584,9 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-643 | A drawing taller than a page prints as slices cut between its words | An SVG is one unbreakable box, so Chromium moved it whole and left its title (access S4); slices of 360 px leave at most a slice's height blank |
 | D3-644 | The kit checks every width the guide draws a chart at, an entry's and a rule plate's apart | A 326 px column went unchecked and S34 ran past its edge there (N2) |
 | D3-645 | A static figure's drawing never scales; a narrower column scrolls | Scaling took its words under 13 px (N3) |
+
+### Main session, the round 1 rescore
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-646 | The creative director's rescore ships all five round 1 items at 4 or more on every criterion: rules 14.1 to 14.14 with the opener (4 4 4 4 4 4), maker A's 14 specimens (4 4 4 4 4 4), maker B's 12 (4 4 4 4 4 4), the four sketches (4 4 4 4 4 4), chapter 15's round 1 plates (4 4 4 4 5 4); its four new Should fix items, chapter 15's wide stage at 1024 px among them, go to round 2's carried list | The ship threshold of Master Brief section 6; the creative director names its own CH15-M1 misjudgment of the 1024 px column, so D3-625 is reopened for round 2 |

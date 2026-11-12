@@ -170,3 +170,112 @@ None. Every fix sits inside the approved round.
 - Charcoal as the page's ground: the guide stays on Newsprint (DR-204), so my Charcoal views set each stage alone.
 - Round 3's data plan and its frozen files.
 - Any reader with the chapters.
+
+# Rescore
+
+November 12, 2026, after the review fix pass and DR-191's second pass. The rescores are also in `20261112_Round-1-CD-Rescores.json`.
+
+What I looked at: the final strict build in the scratchpad's `phase-3/round-1-final/build/guide.html` (9,991,740 bytes, built 17:51, 0 warnings) and its build report. I captured all 94 plates of chapters 14 and 15 at 1440, 1024 and 390 px on Newsprint, and at 1440 and 390 px on Charcoal (a scratch copy with each stage's surface class set to Charcoal); five plates again at 2x (the radar pair, 14.6, S20, S36, 15.6). I read the fix brief with its addendum, the decision log from D3-476 to D3-645, each owner's "Review fix pass" and "Second pass", and the three reviewers' second passes.
+
+## Decision or verdict
+
+All five items ship: each scores 4 or more on all six criteria and carries no Must fix. All eight of my Must fixes and all twelve Should fixes landed, R-S4 for chapter 14 only: chapter 13's five titles wait on Dustin (D3-488). I checked R-S1 (14.1's axis now in millions) and R-S2 (no straight apostrophe left in the four places I named) in the build myself.
+
+The fix pass did more than close items. Chapter 15 at 1440 px is now the best systems page in the book: the opener sets its drawing beside a lettered key the way chapter 13's opener does, and 15.6 sets Loop R10 and Loop B5 side by side on one stage. The avoid entries teach their fault at a glance. S33, S34, S37 and S38 now draw what their titles say.
+
+## Rescores
+
+| Item | Craft | Clarity | Brand fidelity | Usefulness | Evidence honesty | Accessibility | Ships |
+|---|---|---|---|---|---|---|---|
+| Rules 14.1 to 14.14 with the opener | 4 (was 3) | 4 | 4 | 4 | 4 | 4 | yes |
+| Maker A | 4 | 4 (was 3) | 4 | 4 | 4 | 4 | yes |
+| Maker B | 4 (was 3) | 4 | 4 | 4 | 4 | 4 | yes |
+| The four sketches | 4 (was 3) | 4 (was 3) | 4 | 4 | 4 | 4 | yes |
+| Chapter 15 | 4 (was 3) | 4 | 4 | 4 | 5 (was 4) | 4 | yes |
+
+## Reasons
+
+**Rules 14.1 to 14.14 with the opener.**
+- Craft 4. 14.3's stray zero line is gone (no mark leaves any kit drawing in chapters 13 to 15 by more than 2 px, by script at 1440 and 390 px), each failure now draws at its partner's scale, and 14.6, 14.9, 14.11 and 14.12 take the kit's anatomy with the bold "Source:" and the credit.
+- Clarity 4. The opener sets a small drawn mark beside each of its 16 questions and links the built groups, and 14.11 says in its guide why 2017's $300 gap shows no break.
+- Brand fidelity 4. One red per view on a mark no reader ties to a party, the subject ink where one would, and red and blue only on 14.7's failure.
+- Usefulness 4. Rule 14.2 now gives the grade line for a count of the atlas's records, and Rule 14.6 and entry 14.16 name `labels.point` and `labels.named`.
+- Evidence honesty 4. Each frozen series prints its release, 14.11's gaps ($2,200 and $300) check against the file, and 14.13 now draws the FEC's count of super PACs, so no Census business series carries more than two plates.
+- Accessibility 4. axe-core 4.10 finds no violation in chapter 14 at 1440, 1024 or 390 px, and the static drawings hold their true size.
+
+**Maker A.**
+- Craft 4. S37's eleven heads sit on one row over their columns, its groups print once, the checked mark reads at 6 px, and S23's scale now ends at the largest share.
+- Clarity 4. S38 shows one list under its search with one count ("17 of 17 issue records"), and S37 frames the federal statute column its title counts.
+- Brand fidelity 4. The red point lands on an age group (S20), an atlas answer (S21) and one hub's bar (S23), and the 118th Congress and FF PAC keep the subject ink, each read fairly from the left and the right.
+- Usefulness 4. Each entry whose form changes on a phone shows the phone drawing at a desk ("On a phone, 358 px"), as DR-240 names.
+- Evidence honesty 4. S36 names the party the FEC records for four committees and says it records none for 21 of 22 PACs, and S37 quotes the atlas's four feasibility definitions word for word.
+- Accessibility 4. S38's lookup takes the still list's place with a labeled search and one live count, and S37's low-step words carry the forced-colors plate.
+
+**Maker B.**
+- Craft 4. S33 keeps every value with its name and gives the phone a full-width plot with the other eight sources listed under it, and S34 staggers its circles above and below the line with the 116th Congress drawn solid.
+- Clarity 4. S27 names Montana and Utah with the United States dashed, and the 100 lines on S27 and S33 now read as references, never as series.
+- Brand fidelity 4. Wyoming, customs duties and the 116th Congress take the subject ink under the party test, and S26 sets its 119th row bold with the party named.
+- Usefulness 4. Entries 14.26 to 14.41 describe the redrawn specimens, so an entry and its specimen agree.
+- Evidence honesty 4. S34's 119th row prints 295 votes through November 10, 2026, and S25 gives three dated totals with no split at an inauguration.
+- Accessibility 4. Each phone form keeps every row, and S34's phone row wraps inside its 326 px column.
+
+**The four sketches.**
+- Craft 4. Each sketch takes a stage of its own width, centered, and each avoid pair sets the do-not-publish bar over the misleading half and "Use instead" over the other.
+- Clarity 4. The radar draws one set of values in two spoke orders, the dark shape larger in one and smaller in the other, beside grouped bars of the same values, and the streamgraph's steady middle band bends where the small multiples lie flat.
+- Brand fidelity 4. Every half draws in the kit's role classes, the second radar group dashed so it reads in grayscale.
+- Usefulness 4. Each avoid entry now draws the better choice it links.
+- Evidence honesty 4. "Illustrative data" sits over each half.
+- Accessibility 4. Each sketch has its description, and the radar pair stacks on a phone with each label on one line.
+
+**Chapter 15.**
+- Craft 4. At 1440 and 1280 px the 15 correct plates (with 15.3's and 15.4's failures) set a 680 px stage with the drawing at its true 296 px beside its words, two drawings side by side or three cards across, and plate heights fall from 1,013 to 1,442 px to 607 to 1,118; at 390 px the plates are as before.
+- Clarity 4. The opener's callouts are letters A to F, clear of the loop's step numbers, and Rule 15.13's plate keys "money, raises" and the ticks.
+- Brand fidelity 4. One ink, the line code at 2 px, typed chips for every ID, and the plates flip cleanly to Charcoal.
+- Usefulness 4. The true-size line names both widths, and the shared plate CSS sits in one chapter block.
+- Evidence honesty 5. Every value is read by script and held by the generator's checks, 15.6's Loop R10 takes its label from its least certain step, and 15.14 quotes the atlas's revision with its date.
+- Accessibility 4. axe-core finds no violation in the chapter at 1440, 1024 or 390 px, and type stays at 13 to 15 px at every width.
+
+## The four judgments asked for
+
+**Chapter 15's wide plates: they work.** At 1440 px the opener, 15.13 and 15.10 read as chapter 13's opener does, a drawing with its legend beside it; 15.6's two loops and 15.4's three cards compare on one line. The ten failure plates that hold one drawing stay at 328 px, centered; that is right, since a wide stage would set empty Newsprint beside them.
+
+**Its one column at 1024 px: acceptable, and it can do better.** D3-625 kept the 328 px column at 1024 px because my CH15-M1 said "the narrower 1024 px column". That rested on a measure I did not check: the frame is 702 px wide at 1024 px, though its content box is 606 px. So the 680 px stage would fit if the frame's mat narrowed from 48 px to about 11 px a side, as it already does on a phone. As built, 1024 px shows the same true-size column chapters 11 and 12 show there, so it ships. Should fix RS-S1 below brings the wide composition to 1024 and 768 px. A switch at 600 px would not help: it leaves a words column about 250 px wide.
+
+**The avoid pairs: they teach.** Each shows the fault and the cure from the same invented values, side by side, and only the misleading half carries the bar. The visible caption still reads only "Radar chart, drawn small with illustrative data."; RS-S2 gives it the one sentence the alt already has.
+
+**Rule 14.6 on national parks: the right example.** No reader ties a park's visits to a party, so the red point the rule teaches carries no second meaning. The count is documented, and Great Smoky Mountains leads Zion by 2.3 times, a margin that shows at once. The source line says the count is of visits, not people, and of national parks only. The rule's text has grown a list of party ties; risk R1 below.
+
+**S37 at 16 KB, over the share: accept it.** Its chart weighs 16,253 bytes against the 14,337 share, and its entry 20,499 with words. It is an extended form drawing 126 cells for 50 reforms; the far-over test allows it, and the desk phone drawing adds no data (D3-554). Round 1's new entries have a median of 12,584 bytes, about 1.75 KB under the share, so the pool absorbs it. S37 now runs 5,427 px tall at 1440 px; the 1024 px repeat in RS-S3 is the one part to trim.
+
+## Should fix (none blocks shipping)
+
+- **RS-S1. Chapter 15's wide stage at 1024 and 768 px (engineer, systems designer).** Where the frame is 680 to about 760 px wide, narrow the frame's mat so the 680 px stage fits, and switch on the frame's own width as now. A few dozen bytes of shell CSS.
+- **RS-S2. The avoid captions (maker A for 14.24, maker B for 14.45, the editor on the words).** Print the alt's first sentence as the visible caption, for instance "The same values with the spokes in two orders draw two different shapes; grouped bars show them as lengths from one zero."
+- **RS-S3. S37 at 1024 px (engineer).** Where the figure already draws its chips (the 1024 px column is too narrow for the grid), the "On a phone, 358 px" drawing repeats the first reform group in the same form. Show the desk phone drawing only where the figure draws a different form at that width.
+- **RS-S4. 14.3's named line (editor, with the data lead).** The caption says the youngest group "stands out in ink", and Rule 14.6 gives a named mark the red unless a party tie or an error holds it. Ask the data lead to rule on reported voting by age under D3-489, then draw the red point or let the caption name the case that sets ink.
+
+## Risks for Dustin to weigh
+
+1. **The party test is spreading.** D3-489 lists five ties, and the studio has applied it well, but 14.12's 2026 receipts column takes ink because the year's receipts carry the sitting president's tariffs (D3-589), a reason outside the list. Applied that broadly, red becomes rare, and the reason given is itself a political reading. I recommend the data lead keep the test to the list Rule 14.6 prints, and add a case to the rule before using it.
+2. **Where readers learn the red point.** Most entries that draw it now draw the atlas's own records (S21, S23). Rule 14.6's park plate shows it on public data; a later round should add one entry specimen like it.
+3. **Margin.** Chapter 14's share is 14,337 bytes for each of 61 plates, with sketch entries reserved whole. Round 1's median sits about 1.75 KB under it, which leaves little for round 3's maps and distributions.
+
+## Distinctiveness test, rescored
+
+| View | Verdict |
+|---|---|
+| Chapter 14, opener in view at 1440 px, wordmark covered | Now reads as Oath & Action: sixteen small drawn marks in the house line beside Inter Tight questions. |
+| Chapter 15, any wide plate at 1440 px | Reads as Oath & Action: typed chips, the line code with its ticks, lettered callouts and the legend beside the drawing. |
+| Rule 14.6 at 2x | Reads as Oath & Action: one red bar inside its keyline, every other bar in the light fill. |
+
+## Tested in the rescore
+
+- All 94 plates of chapters 14 and 15 as element captures at 1440, 1024 and 390 px on Newsprint and at 1440 and 390 px on Charcoal, with no capture error; the radar pair, 14.6, S20, S36 and 15.6 at 2x, with crops looked at.
+- Looked at closely: the chapter 14 opener; 14.3, 14.4's and 14.8's failures, 14.6 and its failure, 14.9 on Charcoal, 14.11 and its failure, 14.12 at 390 px; S17 with its desk phone drawing; S20, S21, S23 (Charcoal), S24, S25 (Charcoal), S26, S27, S28, S33 at 390 px, S34, S36, S37 at 1440 and 1024 px, S38 on both grounds; the four sketches at 1440 and 390 px; chapter 15's opener and 15.2, 15.3 (Charcoal), 15.4, 15.6, 15.7, 15.10, 15.13 and 15.14 (Charcoal) at 1440 px, the opener and 15.6 at 1024 px, the opener and 15.3 (Charcoal) at 390 px.
+- By script on the final build: chapter 15's frame, content box and stage widths and plate heights at 1440, 1280, 1024 and 768 px; marks outside their drawing in every kit figure of chapters 13 to 15 at 1440 and 390 px (none past 2 px); axe-core 4.10 on chapters 14 and 15 at 1440, 1024 and 390 px (no violations); bytes per entry and the rules' weight (205,007 against 212,288) from the build and its report; S25's notes.
+
+## Not tested in the rescore
+
+- Keyboard and screen reader on S38's lookup; forced colors, print, 200 percent text and 320 px reflow (the accessibility reviewer's second pass covers these).
+- Figures against their data files, beyond the build's own report; the statistics reviewer's second pass covers these.
+- Chapter 15 at 1280 px by eye (measured by script only), and the 1024 px captures of chapter 14's rule plates beyond 14.6 and S37.
