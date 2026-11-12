@@ -6,9 +6,9 @@
  ],
  "examples": 49,
  "by_domain": {
-  "D01": 4,
+  "D01": 3,
   "D02": 5,
-  "D03": 3,
+  "D03": 4,
   "D04": 4,
   "D05": 2,
   "D06": 4,
@@ -162,8 +162,8 @@
    "source": "14-012.json"
   },
   {
-   "example": "Newspaper publishers’ employees, every fifth year, 1998 to 2023",
-   "domain": "D01",
+   "example": "Super PACs in the Federal Election Commission’s totals, by cycle, 2010 to 2024",
+   "domain": "D03",
    "states": [],
    "level": "federal",
    "where": "14.13",

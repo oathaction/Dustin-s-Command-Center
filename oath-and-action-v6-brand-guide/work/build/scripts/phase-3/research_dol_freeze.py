@@ -544,7 +544,7 @@ def freeze(page):
                                 'November 12, 2026. State law only; some rates apply only to larger employers.'),
         'source_line_variants': {
             'states_and_dc_2010_to_2024': ('Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum '
-                                           'Wages in Non-Farm Employment Under State Law, rates as of January 1, 2010 to 2024, '
+                                           'Wages in Non-Farm Employment Under State Law, January 1 rates, 2010 to 2024, '
                                            '50 states and DC. Retrieved November 12, 2026. State law only; some rates apply '
                                            'only to larger employers.'),
         },
@@ -607,16 +607,19 @@ def freeze(page):
                           'each row quotes the page\'s note for its marks. ' + common_quals[4] + ' ' + common_quals[3]),
         'columns': cls_cols,
         'printed_source_line': ('Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm '
-                                'Employment Under State Law, rates as of January 1, 2010 to 2024, 50 states and DC. Retrieved '
+                                'Employment Under State Law, January 1 rates, 2010 to 2024, 50 states and DC. Retrieved '
                                 'November 12, 2026. Classes by Oath & Action from each state\'s highest listed rate; some rates '
                                 'apply only to larger employers, and where a state is below $7.25 or has none, covered employers pay '
                                 'the federal rate.'),
         'source_line_variants': {
-            'panels_2010_2015_2020_2024': ('Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum '
-                                           'Wages in Non-Farm Employment Under State Law, rates as of January 1, 2010, 2015, 2020 '
-                                           'and 2024, 50 states and DC. Retrieved November 12, 2026. Classes by Oath & Action from '
-                                           'each state\'s highest listed rate; some rates apply only to larger employers, and where '
-                                           'a state is below $7.25 or has none, covered employers pay the federal rate.'),
+            # the data lead's panels (row 113, review fix pass): the latest as-of day and every fifth year back, 2009 moved to 2010
+            'panels_2010_2014_2019_2024': CLS_LINE.format(period='January 1 rates in 2010, 2014, 2019 and 2024'),
+        },
+        # access S1 (review fix pass): the kit fills {from} and {to} with the first and last years a chart draws. "January 1
+        # rates", never "rates as of January 1, 2010", since the kit reads "as of" with a date as a vintage, not a period
+        'source_line_templates': {
+            'span': CLS_LINE.format(period='January 1 rates, {from} to {to}'),
+            'two_years': CLS_LINE.format(period='January 1 rates in {from} and {to}'),
         },
         'ledger_row': LEDGER,
         'domain': 'D07',
@@ -688,6 +691,13 @@ def freeze(page):
     print('  unmarked two-rate cells:', ranges_unmarked)
     print('  below with a state rate:', below_states)
     print('  read back: every published cell equal; every class recomputed from the frozen file equal')
+
+
+# The classes file's printed line around its period words (review fix pass); {{from}} and {{to}} stay for the templates
+CLS_LINE = ('Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under '
+            'State Law, {period}, 50 states and DC. Retrieved November 12, 2026. Classes by Oath & Action from each state\u2019s highest '
+            'listed rate; some rates apply only to larger employers, and where a state is below $7.25 or has none, covered employers '
+            'pay the federal rate.')
 
 
 def main():

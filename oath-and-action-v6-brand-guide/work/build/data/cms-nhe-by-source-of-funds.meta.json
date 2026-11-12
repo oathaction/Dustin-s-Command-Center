@@ -79,5 +79,8 @@
  "printed_source_line": "Source: Centers for Medicare & Medicaid Services, National Health Expenditure Accounts, spending by source of funds, 1960 to 2024, United States. Retrieved November 11, 2026. Nominal dollars; premiums count under the insurer that receives them.",
  "ledger_row": "P7-023",
  "domain": "D09",
- "states": []
+ "states": [],
+ "source_line_templates": {
+  "span": "Source: Centers for Medicare & Medicaid Services, National Health Expenditure Accounts, spending by source of funds, {from} to {to}, United States. Retrieved November 11, 2026. Nominal dollars; premiums count under the insurer that receives them."
+ }
 }

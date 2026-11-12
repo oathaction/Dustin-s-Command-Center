@@ -43,7 +43,7 @@
  "correct": {
   "specimen": "s-14-13-correct",
   "caption": "Each column prints its value, so the still image needs no pointer, and the table under the source line gives the same rows as live text.",
-  "alt": "Columns with every value printed and the table open beneath them. Newspaper publishers lost the most paid jobs from 2008 to 2013, 127,637, of any five-year step from 1998 to 2023.",
+  "alt": "Columns with every value printed and the table open beneath them. The Federal Election Commission’s totals held 2,062 super PACs in the 2024 election cycle, more than 25 times the 80 of 2010.",
   "illustrative": false,
   "notes": "",
   "charts": [
@@ -53,14 +53,14 @@
  "failure": {
   "specimen": "s-14-13-failure",
   "caption": "<strong>Fails Rule 14.13.</strong> The values show only in a tooltip, which a newsletter, an email and a screen reader never reach, and the chart carries no table.",
-  "alt": "Failure case: do not publish. The same columns with no values printed, a tooltip over the 2023 column, a line asking the reader to hover over a column, and no table or source line.",
+  "alt": "Failure case: do not publish. The same columns with no values printed, a tooltip over the 2024 column, a line asking the reader to hover over a column, and no table or source line.",
   "illustrative": false,
   "notes": ""
  },
  "examples": [
   {
-   "example": "Newspaper publishers’ employees, every fifth year, 1998 to 2023",
-   "domain": "D01",
+   "example": "Super PACs in the Federal Election Commission’s totals, by cycle, 2010 to 2024",
+   "domain": "D03",
    "states": [],
    "level": "federal",
    "where": "14.13"

@@ -165,6 +165,7 @@ CSS = {
     "ld": ".ld{stroke:var(--oa-chart-color-leader);stroke-width:1}",
     "fs": ".fs{fill:var(--oa-chart-color-subject)}",
     "lf": ".lf{fill:var(--oa-chart-color-light-fill)}",
+    "pt": ".pt{fill:var(--oa-chart-color-point);stroke:var(--oa-chart-color-point-keyline);stroke-width:1}",
     "dt": (".dt{position:absolute;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;border:2px solid var(--oa-chart-color-subject);"
            "background:var(--oa-chart-color-subject)}.dt.o{background:var(--oa-color-surface)}"),
     "g1": ".g1{stroke:var(--oa-chart-color-categorical-fill-group1)}.g2{stroke:var(--oa-chart-color-categorical-fill-group2)}"
@@ -849,7 +850,8 @@ def rule_14_6(B):
          "the light fill on Newsprint and the context ink on Charcoal (Rule 05.7).",
          "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step "
          "the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber "
-         "whose majority readers know, an election result, a campaign’s money and a policy readers link to one party all carry that tie, "
+         "whose majority readers know, an election result, money spent to elect a candidate and a policy readers link to one party all "
+         "carry that tie, "
          "and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7). Red never codes a series, a group or a step on a scale."],
         ["One red mark tells a reader where to look first, and the title tells them why. A second red mark splits their attention, and red "
          "that codes a group reads as a warning about that group."],
@@ -1186,7 +1188,7 @@ def rule_14_11(B):
            encode={"x": "year", "y": "median_income", "break": "footnotes"}, labels={"break_end": "7", "break_start": ["6", "5"]},
            formats={"y": "dollars", "y_tick": "dollars"}, scale={"y": [lo, hi]},
            annotations=[{"at": {"x": 2013, "break": "6"}, "text": "New questions", "place": "above"},
-                        {"at": {"x": 2017, "break": "5"}, "text": "New processing", "place": "below"}],
+                        {"at": {"x": 2017, "break": "5"}, "text": "New processing", "place": "below", "dx": 44}],
            domain="D08", states=[], notes_internal="Rule 14.11's correct plate (BC M2): the kit breaks the line at the Census Bureau's "
                                                    "footnotes 7 and 6 (2013) and at 5 (2017).")
     B.add("s-14-11-correct", chart("s-14-11-line"),
@@ -1286,42 +1288,44 @@ def rule_14_12(B):
 # ===============================================================================================================
 # 14.13 The table, and the still image first
 # ===============================================================================================================
-NEWS_YEARS = [1998, 2003, 2008, 2013, 2018, 2023]
-
-
 def rule_14_13(B):
-    ds = "census-cbp-newspaper-publishers"
-    r = {int(x["year"]): int(x["employees"]) for x in rows(ds)}
-    steps = {(a, b): r[a] - r[b] for a, b in zip(NEWS_YEARS, NEWS_YEARS[1:])}
-    need(max(steps, key=steps.get) == (2008, 2013) and steps[(2008, 2013)] == 127637, "the largest five-year fall moved")
-    title = f"Newspaper publishers lost the most paid jobs from 2008 to 2013, {comma(steps[(2008, 2013)])}, of any five-year step from 1998 to 2023"
-    measure = "Paid employees of newspaper publishers in mid-March, every fifth year from 1998 to 2023, United States"
-    B.spec("s-14-13-cols", form="column", family="comparison", tier="core", dataset=ds, where={"year": NEWS_YEARS},
-           reader_question="How many people do newspaper publishers employ, and how has that changed?",
-           evidence="finding", evidence_label="Finding", grade_line="Documented: a Census Bureau count of employers",
+    # its own data, which no other plate draws (CD R-S3): the commission's count of super PACs in each two-year cycle
+    ds = "fec-super-pacs-by-cycle"
+    r = {int(x["cycle"]): int(x["super_pacs"]) for x in rows(ds)}
+    cycles = sorted(r)
+    first, last = cycles[0], cycles[-1]
+    need(cycles == list(range(2010, 2026, 2)) and r[last] == 2062 and r[first] == 80 and 25 < r[last] / r[first] < 26,
+         "the super PAC counts moved")
+    title = f"The Federal Election Commission’s totals held {comma(r[last])} super PACs in the {last} election cycle, more than 25 times the {r[first]} of {first}"
+    measure = (f"Super PACs, committees that may raise and spend unlimited sums for or against candidates but may not give to them, in the "
+               f"commission’s financial totals for each two-year election cycle, named for the year it ends, from {first}, the first cycle "
+               f"the totals list any, to {last}, United States")
+    B.spec("s-14-13-cols", form="column", family="comparison", tier="core", dataset=ds,
+           reader_question="How many super PACs are there, and how has that changed?",
+           evidence="finding", evidence_label="Finding", grade_line="Documented: the Federal Election Commission’s records",
            title=title, measure_line=measure, source_line=src(ds),
-           alt=f"Six columns of newspaper publishers’ employees, every fifth year: {', '.join(f'{y} {comma(r[y])}' for y in NEWS_YEARS)}.",
-           table={"caption": "Paid employees of newspaper publishers, mid-March",
-                  "columns": [{"field": "year", "label": "Year", "format": "year", "row_header": True},
-                              {"field": "employees", "label": "Employees", "format": "integer"}]},
-           encode={"x": "year", "y": "employees"}, labels={"named": [2008, 2013]}, domain="D01", states=[],
+           notes=["A late or amended filing can change a past cycle’s count; these are the commission’s totals on November 12, 2026."],
+           alt=f"Eight columns of super PACs, one for each two-year cycle: {', '.join(f'{y} {comma(r[y])}' for y in cycles)}, the last in red.",
+           table={"caption": "Super PACs in the Federal Election Commission’s totals, by two-year cycle",
+                  "columns": [{"field": "cycle", "label": "Cycle", "format": "year", "row_header": True},
+                              {"field": "super_pacs", "label": "Super PACs", "format": "integer"}]},
+           encode={"x": "cycle", "y": "super_pacs"}, labels={"point": last}, domain="D03", states=[],
            notes_internal="Rule 14.13's correct plate: a still chart with every value printed and its table as live text.")
-    # the failure: the same columns, named ones in ink and the rest in the light fill as the kit draws them, with no values
-    top = 420000
-    need(max(r[y] for y in NEWS_YEARS) < top, "a column runs past the failure plate's scale")
-    n = len(NEWS_YEARS)
+    # the failure: the same columns, the named one in its red and keyline as the kit draws it, with no values printed
+    top = 2200
+    need(r[last] < top, "a column runs past the failure plate's scale")
+    n = len(cycles)
     stp = 1000 / n
-    bars = "".join(f'<rect class="{"fs" if y in (2008, 2013) else "lf"}" x="{i * stp + stp * 0.15:.0f}" y="{1000 - 10 * pct(r[y], 0, top):.0f}" '
-                   f'width="{stp * 0.7:.0f}" height="{10 * pct(r[y], 0, top):.0f}"/>' for i, y in enumerate(NEWS_YEARS))
-    xt = [(str(y), (i + 0.5) * 100 / n, "") for i, y in enumerate(NEWS_YEARS)]
-    last = NEWS_YEARS[-1]
+    bars = "".join(f'<rect class="{"pt" if y == last else "lf"}" x="{i * stp + stp * 0.15:.0f}" y="{1000 - 10 * pct(r[y], 0, top):.0f}" '
+                   f'width="{stp * 0.7:.0f}" height="{10 * pct(r[y], 0, top):.0f}"/>' for i, y in enumerate(cycles))
+    xt = [(str(y), (i + 0.5) * 100 / n, "" if i % 2 == 1 else "w") for i, y in enumerate(cycles)]
     tip = f'<p class="tip" style="bottom:calc({pct(r[last], 0, top):.1f}% + 8px)">{last}: {comma(r[last])}</p>'
     B.add("s-14-13-correct", chart("s-14-13-cols"),
           alt=f"Columns with every value printed and the table open beneath them. {title}.")
     B.add("s-14-13-failure", dnp() + tl(title) + fluid(bars + BASE_LINE, (), xt, over=tip, yw=0)
           + '<p class="hov">Hover over a column to see its value.</p>',
-          alt=FC + "The same columns with no values printed, a tooltip over the 2023 column, a line asking the reader to hover over a column, "
-                   "and no table or source line.")
+          alt=FC + f"The same columns with no values printed, a tooltip over the {last} column, a line asking the reader to hover over a "
+                   "column, and no table or source line.")
     return entry(
         "14.13", "Carry every chart’s table as live text, and publish the still image first.",
         ["Every chart carries its table: the rows it draws, as live text that a screen reader, a search and a copy can reach, folded under the "
@@ -1343,7 +1347,7 @@ def rule_14_13(B):
                                    "gives the same rows as live text."),
         B.plate("s-14-13-failure", fails("14.13", "The values show only in a tooltip, which a newsletter, an email and a screen reader never "
                                                   "reach, and the chart carries no table.")),
-        [ex("Newspaper publishers’ employees, every fifth year, 1998 to 2023", "D01", where="14.13")],
+        [ex("Super PACs in the Federal Election Commission’s totals, by cycle, 2010 to 2024", "D03", where="14.13")],
         basis="WCAG 2.2, success criterion 1.1.1, Non-text Content, and design judgment, from the chart system our founder and editor approved in November 2026")
 
 

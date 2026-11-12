@@ -53,5 +53,8 @@
  ],
  "raw_files_sha256_prefix": {
   "comps_cust.xlsx": "81370bd2c6bc139b"
+ },
+ "source_line_templates": {
+  "span": "Source: U.S. Census Bureau and U.S. Department of Housing and Urban Development, New Residential Construction, new privately owned housing units completed by units in structure, {from} to {to}, United States. Retrieved November 11, 2026. Survey estimates in thousands of units; parts may not add to totals because of rounding."
  }
 }

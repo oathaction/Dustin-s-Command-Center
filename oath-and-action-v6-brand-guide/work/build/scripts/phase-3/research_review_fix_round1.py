@@ -663,8 +663,44 @@ def item_ed_r2(dl):
         print(f'wrote {pm.relative_to(ROOT)}')
 
 
+# ---------------------------------------------------------------------------------------------------------------
+# ax_s1: AX S1 with the engineer's source_line_templates. Each multi-year annual file a later chart may draw across a
+# subset of its years gains "span" ({from} to {to}) and, where a chart may draw two years alone, "two_years" ({from} and
+# {to}), made from its printed line by swapping the period words, so the rest of the line stays word for word.
+# (The DOL classes file's templates are written by research_dol_freeze.py; monthly and quarterly files are left out,
+# since the kit fills years only.)
+# ---------------------------------------------------------------------------------------------------------------
+TEMPLATE_FILES = {
+    # name: (period words in printed_source_line, span words, two-year words or None)
+    'treasury-mts-outlays-by-function': ('fiscal 2026,', 'fiscal {from} to {to},', 'fiscal {from} and {to},'),
+    'treasury-mts-receipts-by-source': ('fiscal 2015 to 2026,', 'fiscal {from} to {to},', 'fiscal {from} and {to},'),
+    'census-bfs-business-applications-by-state': ('business applications, 2019 and 2025,', 'business applications, {from} to {to},',
+                                                  'business applications, {from} and {to},'),
+    'census-cbp-civic-organizations': ('(NAICS 813410), 1998 to 2023,', '(NAICS 813410), {from} to {to},', '(NAICS 813410), {from} and {to},'),
+    'census-cbp-newspaper-publishers': ('(NAICS 511110), 1998 to 2023,', '(NAICS 511110), {from} to {to},', '(NAICS 511110), {from} and {to},'),
+    'census-hvs-homeownership-by-age': ('age of householder, 1982 to 2025,', 'age of householder, {from} to {to},',
+                                        'age of householder, {from} and {to},'),
+    'census-cps-median-household-income': ('median household income, 1967 to 2025,', 'median household income, {from} to {to},', None),
+    'cms-nhe-by-source-of-funds': ('source of funds, 1960 to 2024,', 'source of funds, {from} to {to},', None),
+    'census-nrc-completions-by-structure': ('units in structure, 1968 to 2025,', 'units in structure, {from} to {to},', None),
+}
+
+
+def item_ax_s1(dl):
+    for name, (old, span, two) in TEMPLATE_FILES.items():
+        meta, nl = load(name)
+        line = meta['printed_source_line']
+        if line.count(old) != 1:
+            raise SystemExit(f'{name}: "{old}" is not in its printed line once; nothing written')
+        tpl = {'span': line.replace(old, span)}
+        if two:
+            tpl['two_years'] = line.replace(old, two)
+        meta['source_line_templates'] = tpl
+        save(name, meta, nl)
+
+
 ITEMS = {'s24': item_s24, 's34': item_s34, 's31': item_s31, 's27': item_s27, 'bc_m3': item_bc_m3, 'bc_s20': item_bc_s20,
-         'ed_r1': item_ed_r1, 'ed_r2': item_ed_r2}
+         'ed_r1': item_ed_r1, 'ed_r2': item_ed_r2, 'ax_s1': item_ax_s1}
 
 
 def main(argv):

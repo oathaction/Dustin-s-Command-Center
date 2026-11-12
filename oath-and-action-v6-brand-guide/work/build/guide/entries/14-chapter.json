@@ -7,7 +7,7 @@
  "opener": {
   "specimen": "s-14-opener",
   "caption": "Each group of this chapter opens with the question a reader brings, and its forms answer it.",
-  "alt": "The sixteen reader questions that open chapter 14’s groups, from which is bigger and how they rank to how something works in one look, each with the family of forms that answers it.",
+  "alt": "The sixteen reader questions that open chapter 14’s groups, from which is bigger and how they rank to how something works in one look, each with a small drawing of its typical form and the family of forms that answers it.",
   "illustrative": false,
   "notes": "The chapter's opener: the reader's questions that open groups 2 to 17, read from the plan file.",
   "readable": true
@@ -177,6 +177,7 @@
   "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points.",
   "Source: U.S. Census Bureau, County Business Patterns, newspaper publishers (NAICS 511110), 1998 to 2023, United States. Retrieved November 11, 2026. Establishments with paid employees only; employees counted in mid-March.",
   "Source: U.S. Census Bureau, Income in the United States: 2025, Table 2, median household income, 1967 to 2025, United States. Retrieved November 11, 2026. Survey estimates in 2025 dollars with 90 percent margins of error; methods changed in several years, marked in the table.",
-  "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2015 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation."
+  "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2015 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation.",
+  "Source: Federal Election Commission, financial totals for PACs and party committees, independent expenditure-only committees, known as super PACs, counted by two-year cycle, 2009 to 2010 through 2023 to 2024, United States. Retrieved November 12, 2026. Hybrid PACs, which also make independent expenditures, are not counted."
  ]
 }

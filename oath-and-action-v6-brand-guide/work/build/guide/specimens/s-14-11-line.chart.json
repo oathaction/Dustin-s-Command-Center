@@ -109,7 +109,8 @@
     "break": "5"
    },
    "text": "New processing",
-   "place": "below"
+   "place": "below",
+   "dx": 44
   }
  ],
  "domain": "D08",

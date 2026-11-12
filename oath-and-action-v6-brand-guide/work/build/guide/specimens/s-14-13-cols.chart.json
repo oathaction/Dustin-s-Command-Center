@@ -4,52 +4,42 @@
  "form": "column",
  "family": "comparison",
  "tier": "core",
- "dataset": "census-cbp-newspaper-publishers",
- "where": {
-  "year": [
-   1998,
-   2003,
-   2008,
-   2013,
-   2018,
-   2023
-  ]
- },
- "reader_question": "How many people do newspaper publishers employ, and how has that changed?",
+ "dataset": "fec-super-pacs-by-cycle",
+ "reader_question": "How many super PACs are there, and how has that changed?",
  "evidence": "finding",
  "evidence_label": "Finding",
- "grade_line": "Documented: a Census Bureau count of employers",
- "title": "Newspaper publishers lost the most paid jobs from 2008 to 2013, 127,637, of any five-year step from 1998 to 2023.",
- "measure_line": "Paid employees of newspaper publishers in mid-March, every fifth year from 1998 to 2023, United States",
- "source_line": "Source: U.S. Census Bureau, County Business Patterns, newspaper publishers (NAICS 511110), 1998 to 2023, United States. Retrieved November 11, 2026. Establishments with paid employees only; employees counted in mid-March.",
- "alt": "Six columns of newspaper publishers’ employees, every fifth year: 1998 401,373, 2003 384,716, 2008 346,373, 2013 218,736, 2018 153,060, 2023 91,350.",
+ "grade_line": "Documented: the Federal Election Commission’s records",
+ "title": "The Federal Election Commission’s totals held 2,062 super PACs in the 2024 election cycle, more than 25 times the 80 of 2010.",
+ "measure_line": "Super PACs, committees that may raise and spend unlimited sums for or against candidates but may not give to them, in the commission’s financial totals for each two-year election cycle, named for the year it ends, from 2010, the first cycle the totals list any, to 2024, United States",
+ "source_line": "Source: Federal Election Commission, financial totals for PACs and party committees, independent expenditure-only committees, known as super PACs, counted by two-year cycle, 2009 to 2010 through 2023 to 2024, United States. Retrieved November 12, 2026. Hybrid PACs, which also make independent expenditures, are not counted.",
+ "notes": [
+  "A late or amended filing can change a past cycle’s count; these are the commission’s totals on November 12, 2026."
+ ],
+ "alt": "Eight columns of super PACs, one for each two-year cycle: 2010 80, 2012 857, 2014 956, 2016 1,377, 2018 1,454, 2020 1,800, 2022 1,884, 2024 2,062, the last in red.",
  "table": {
-  "caption": "Paid employees of newspaper publishers, mid-March",
+  "caption": "Super PACs in the Federal Election Commission’s totals, by two-year cycle",
   "columns": [
    {
-    "field": "year",
-    "label": "Year",
+    "field": "cycle",
+    "label": "Cycle",
     "format": "year",
     "row_header": true
    },
    {
-    "field": "employees",
-    "label": "Employees",
+    "field": "super_pacs",
+    "label": "Super PACs",
     "format": "integer"
    }
   ]
  },
  "encode": {
-  "x": "year",
-  "y": "employees"
+  "x": "cycle",
+  "y": "super_pacs"
  },
  "labels": {
-  "named": [
-   2008,
-   2013
-  ]
+  "point": 2024
  },
- "domain": "D01",
+ "domain": "D03",
  "states": [],
  "notes_internal": "Rule 14.13's correct plate: a still chart with every value printed and its table as live text.",
  "credit": "Chart: Oath & Action",

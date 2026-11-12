@@ -42,5 +42,9 @@
  "states": [],
  "notes": [
   "Release confirmed November 12, 2026 from the Bureau’s own pages: the BFS release schedule (https://www.census.gov/econ/bfs/release_schedule.html) lists the September 2026 report on Wednesday, October 14, 2026 and the October 2026 report on Thursday, November 12, 2026, and the BFS page (https://www.census.gov/econ/bfs/index.html) reads \"The latest annual update was applied during the October 2026 monthly release on November 12, 2026.\" The file this one was summed from was retrieved November 11, between the two. The November 12 file (last-modified Thu, 12 Nov 2026 15:00:14 GMT; SHA-256 prefix 47975a1c7bca0aad), summed the same way, matches this file in every row for 2005 to 2021 and differs for 2022 to 2025: the 2025 United States total is 5,696,742 there against 5,671,836 here, a rise from 2019 of 62.8 percent against 62.1, and Wyoming has 81,688 against 79,023. The frozen figures stay until the Phase 5 refresh (research ledger, Part 7, \"Phase 5 refresh list\")."
- ]
+ ],
+ "source_line_templates": {
+  "span": "Source: U.S. Census Bureau, Business Formation Statistics, September 2026 monthly release (October 14, 2026), business applications, {from} to {to}, 50 states and DC. Retrieved November 11, 2026. Applications for a tax ID that signal a new business; many never hire; annual totals summed by Oath & Action.",
+  "two_years": "Source: U.S. Census Bureau, Business Formation Statistics, September 2026 monthly release (October 14, 2026), business applications, {from} and {to}, 50 states and DC. Retrieved November 11, 2026. Applications for a tax ID that signal a new business; many never hire; annual totals summed by Oath & Action."
+ }
 }

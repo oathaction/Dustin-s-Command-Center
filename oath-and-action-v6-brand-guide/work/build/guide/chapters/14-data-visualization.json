@@ -310,7 +310,7 @@
    "title": "Spend the view’s one red on the point the title names.",
    "rule": [
     "Rule 05.3 gives each view one working red and says which job claims it first. In a chart, the red goes to the one point, bar or line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Every other mark takes the light fill on Newsprint and the context ink on Charcoal (Rule 05.7).",
-    "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber whose majority readers know, an election result, a campaign’s money and a policy readers link to one party all carry that tie, and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7). Red never codes a series, a group or a step on a scale."
+    "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber whose majority readers know, an election result, money spent to elect a candidate and a policy readers link to one party all carry that tie, and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7). Red never codes a series, a group or a step on a scale."
    ],
    "why": {
     "text": [
@@ -2442,7 +2442,8 @@
   "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points.",
   "Source: U.S. Census Bureau, County Business Patterns, newspaper publishers (NAICS 511110), 1998 to 2023, United States. Retrieved November 11, 2026. Establishments with paid employees only; employees counted in mid-March.",
   "Source: U.S. Census Bureau, Income in the United States: 2025, Table 2, median household income, 1967 to 2025, United States. Retrieved November 11, 2026. Survey estimates in 2025 dollars with 90 percent margins of error; methods changed in several years, marked in the table.",
-  "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2015 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation."
+  "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2015 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation.",
+  "Source: Federal Election Commission, financial totals for PACs and party committees, independent expenditure-only committees, known as super PACs, counted by two-year cycle, 2009 to 2010 through 2023 to 2024, United States. Retrieved November 12, 2026. Hybrid PACs, which also make independent expenditures, are not counted."
  ],
  "planned_rules": [
   "14.46",

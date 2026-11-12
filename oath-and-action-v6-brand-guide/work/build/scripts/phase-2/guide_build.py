@@ -3082,7 +3082,9 @@ def weigh(page, sprite_bytes):
     if total > WEIGHT_PAGE:
         R.warn("page weight", f"the page weighs {total / MB:.2f} MB, over its budget of {WEIGHT_PAGE / MB:.1f} MB (the limit is {WEIGHT_LIMIT / MB:.0f} MB)")
     return {"bytes": total, "budget_page": WEIGHT_PAGE, "limit": WEIGHT_LIMIT, "parts": parts,
-            "chapters": {n: {"bytes": b, "budget": guide_charts.CEILING.get(n, WEIGHT_BUDGET.get(n, WEIGHT_DEFAULT) * MB)} for n, b in sorted(chapters.items())}}
+            "chapters": {n: {"bytes": b, "budget": guide_charts.CEILING.get(n, WEIGHT_BUDGET.get(n, WEIGHT_DEFAULT) * MB)} for n, b in sorted(chapters.items())},
+            # call 4 (Phase 3 round 1 fix pass): chapter 14's rules with the opener, and its sketch entries whole
+            "chapter_14_parts": guide_charts.chapter14_parts(page)}
 
 
 def build(args):

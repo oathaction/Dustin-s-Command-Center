@@ -71,6 +71,43 @@ NOT_PLATES = {"reference sketches (22 at 4 KB) and avoid entries (8 at 2 KB)": 2
               "selection guide and palette specification": 100_000,
               "three complex examples": 90_000,
               "shared map geometry": 250_000}
+# Call 4 (D3-479, round 1 fix pass): rules 14.1 to 14.14 with the opener take 0.20 MB and 12,288 bytes more, moved from
+# chapter 14's room, so the eight narrow plates draw at their partner's width; the build measures them and warns past it.
+# The sketch entries count whole (the creative director's weight paragraph): each one still to come is reserved at its
+# sketch's cap (4,096 bytes for both tiers since D3-486) plus the words and frame the built sketch entries measure.
+RULES_ALLOWANCE = 200_000 + 12_288
+SKETCH_ENTRIES = {"reference": 22, "avoid": 8}
+SKETCH_CAP = 4096
+SKETCH_WORDS_DEFAULT = 3_800     # the creative director's measure of the four built, before the page measures its own
+RULE_START = re.compile(r'<div class="rule" id="rule-14-(\d+)" data-rule="14\.\d+">')
+NEXT_BLOCK = re.compile(r'<div class="rule"|<div class="rule-group"|<div class="closer"|<nav class="chapnav"|</section>')
+
+
+def chapter14_parts(page):
+    """Chapter 14's measured parts on a built page: rules 14.1 to 14.14 (each block with its plates), the opener's plate,
+    and every sketch entry whole (its block with its plate) with its sketch's bytes. None when chapter 14 is not there."""
+    i = page.find('id="data-visualization"')
+    if i < 0:
+        return None
+    start = page.rfind("<section", 0, i)
+    end = page.find("</section>", i)
+    sec = page[start:end]
+    size = lambda x: len(x.encode())
+    rules, sketches = 0, []
+    for m in RULE_START.finditer(sec):
+        n = m.group(m.lastindex)
+        nx = NEXT_BLOCK.search(sec, m.end())
+        blk = sec[m.start():nx.start() if nx else len(sec)]
+        if int(n) <= 14:
+            rules += size(blk)
+        k = re.search(r'<figure class="plate plate--(avoid|sketch)\b', blk)
+        if k:
+            st = re.search(r'data-specimen="s-14-\d+-sketch"[^>]*>(.*?)</div></div><figcaption', blk, re.S)
+            sk = sum(size(x) for x in re.findall(r"<svg\b.*?</svg>", st.group(1), re.S)) if st else 0
+            sketches.append({"rule": "14." + n, "kind": k.group(1), "bytes": size(blk), "sketch_bytes": sk})
+    op = re.search(r'<figure class="plate plate--opener[^"]*"[^>]*>.*?</figure>', sec, re.S)
+    opener = size(op.group(0)) if op else 0
+    return {"rules_1_to_14": rules, "opener": opener, "rules_and_opener": rules + opener, "allowance": RULES_ALLOWANCE, "sketch_entries": sketches}
 # Chapters Phase 3 is still building: the projection counts each at no less than its allocation until its round ends
 IN_PROGRESS = ("14", "15")
 ENTRY_PLATE = re.compile(r"^s-14-s\d+$")   # an entry's specimen (R1-C3); a chapter-wide rule's plates (s-14-1-line) count under NOT_PLATES
@@ -211,7 +248,13 @@ def gates(weights, charts, fonts_file_bytes, present, warn):
            "held_to_allocation": {n: round(v) for n, v in sorted(held.items())},
            "projected_bytes": round(proj), "budget": PAGE_BUDGET, "chapter_14_with_kit": c14, "chart_kit": kit,
            "far_over_approved": approved}
-    share = per_plate(ch.get("14", 0), kit, charts, KIT_SIZES)
+    parts14 = weights.get("chapter_14_parts")
+    if parts14:
+        rec["chapter_14_rules"] = {k: parts14[k] for k in ("rules_1_to_14", "opener", "rules_and_opener", "allowance")}
+        if parts14["rules_and_opener"] > RULES_ALLOWANCE:
+            warn("chapter 14", f"rules 14.1 to 14.14 with the opener weigh {parts14['rules_and_opener']:,} bytes, over their {RULES_ALLOWANCE:,} "
+                               "(0.20 MB and the 12,288 bytes call 4 moved to them)")
+    share = per_plate(ch.get("14", 0), kit, charts, KIT_SIZES, parts14)
     if share:
         rec["chapter_14_per_plate"] = share
     if proj > PAGE_BUDGET:
@@ -221,7 +264,22 @@ def gates(weights, charts, fonts_file_bytes, present, warn):
     return stop, rec
 
 
-def per_plate(ch14, kit, charts, sizes):
+def not_plates(parts14):
+    """The reserve for chapter 14's parts that are not finished core and extended plates. With the page's measure (call 4):
+    the sketch entries still to come whole, and what rules 14.1 to 14.14 have not yet spent of their allowance; without
+    it, the proposal's figures."""
+    if not parts14:
+        return dict(NOT_PLATES)
+    built = parts14.get("sketch_entries") or []
+    words = (sum(x["bytes"] - x["sketch_bytes"] for x in built) / len(built)) if built else SKETCH_WORDS_DEFAULT
+    to_come = max(0, sum(SKETCH_ENTRIES.values()) - len(built))
+    out = {k: v for k, v in NOT_PLATES.items() if not k.startswith("reference sketches")}
+    out[f"sketch entries whole ({to_come} to come at {SKETCH_CAP:,} bytes of sketch and {words:,.0f} of words and frame)"] = round(to_come * (SKETCH_CAP + words))
+    out["rules 14.1 to 14.14 with the opener, unspent of their allowance (call 4)"] = max(0, RULES_ALLOWANCE - parts14["rules_and_opener"])
+    return out
+
+
+def per_plate(ch14, kit, charts, sizes, parts14=None):
     """Chapter 14's room under its stop, divided among the finished specimens still to come.
 
     room = the stop, less the renderer grown to FORMS forms (the kit in the page without its map geometry, plus a module at
@@ -236,7 +294,8 @@ def per_plate(ch14, kit, charts, sizes):
     placed = sum(1 for cid, r in charts.items() if ENTRY_PLATE.match(cid)
                  and (r.get("tier") or "core").split(",")[0] in ("core", "extended"))
     to_come = max(1, PLATES - placed)
-    reserved = sum(NOT_PLATES.values())
+    reserve = not_plates(parts14)
+    reserved = sum(reserve.values())
     room = CEILING[HARD_STOP] - renderer - reserved - ch14
     share = room / to_come
     line = (f"chapter 14's share per plate: {share:,.0f} bytes for each of the {to_come} finished specimens still to come "
@@ -245,7 +304,7 @@ def per_plate(ch14, kit, charts, sizes):
             "its figure, words, table, compressed data and plate frame")
     return {"per_plate": round(share), "plates_to_come": to_come, "plates_placed": placed, "room": round(room),
             "stop": CEILING[HARD_STOP], "renderer_grown": round(renderer), "renderer_now": kit - sizes.get("geo", 0),
-            "forms_registered": sizes["registered"], "form_average": round(avg), "not_plates": NOT_PLATES,
+            "forms_registered": sizes["registered"], "form_average": round(avg), "not_plates": reserve,
             "chapter_14_now": ch14, "line": line}
 
 
@@ -339,6 +398,28 @@ def self_test():
     bad += not ok
     ok = per_plate(0, 0, {}, {}) is None
     print(f"{'pass' if ok else 'FAIL'} no per-plate share on a page with no chart kit")
+    bad += not ok
+    # call 4 (round 1 fix pass): the rules' allowance and the sketch entries counted whole, from the page's measure
+    p14 = {"rules_1_to_14": 190_000, "opener": 4_000, "rules_and_opener": 194_000, "allowance": RULES_ALLOWANCE,
+           "sketch_entries": [{"rule": "14.24", "kind": "avoid", "bytes": 6_000, "sketch_bytes": 2_000}, {"rule": "14.43", "kind": "sketch", "bytes": 7_000, "sketch_bytes": 3_000}]}
+    rs = not_plates(p14)
+    want = 28 * (4096 + 4_000) + (RULES_ALLOWANCE - 194_000) + 100_000 + 90_000 + 250_000
+    ok = abs(sum(rs.values()) - want) <= 1
+    print(f"{'pass' if ok else 'FAIL'} call 4: 28 sketch entries to come whole at the built ones' words, and the rules' unspent 18,288 bytes, reserved")
+    bad += not ok
+    w = json.loads(json.dumps(base)); w["chapter_14_parts"] = dict(p14, rules_and_opener=RULES_ALLOWANCE + 1)
+    _, rec, got = run(w, {}, 300_000, set())
+    ok = any("over their 212,288" in g for g in got)
+    print(f"{'pass' if ok else 'FAIL'} rules 14.1 to 14.14 with the opener one byte over 212,288 warn")
+    bad += not ok
+    pg = ('<section class="chapter" id="data-visualization"><figure class="plate plate--opener" id="fig-s-14-opener"><p>Op</p></figure>'
+          '<div class="rule" id="rule-14-1" data-rule="14.1"><p>One</p></div><div class="rule" id="rule-14-24" data-rule="14.24"><p>W</p></div>'
+          '<figure class="plate plate--avoid" id="fig-s-14-24-sketch"><div class="plate-scroll"><div class="plate-stage" data-specimen="s-14-24-sketch">'
+          '<svg class="oac-svg oac-sketch">x</svg></div></div><figcaption>c</figcaption></figure><div class="closer" id="x"></div></section>')
+    m = chapter14_parts(pg)
+    ok = m is not None and m["rules_1_to_14"] == len('<div class="rule" id="rule-14-1" data-rule="14.1"><p>One</p></div>') and m["opener"] > 0 \
+        and len(m["sketch_entries"]) == 1 and m["sketch_entries"][0]["sketch_bytes"] == len('<svg class="oac-svg oac-sketch">x</svg>')
+    print(f"{'pass' if ok else 'FAIL'} the page's measure finds rules 14.1 to 14.14, the opener and each sketch entry whole")
     bad += not ok
     print("guide_charts self-test: " + ("every planted fault caught" if not bad else f"{bad} failed"))
     return bad

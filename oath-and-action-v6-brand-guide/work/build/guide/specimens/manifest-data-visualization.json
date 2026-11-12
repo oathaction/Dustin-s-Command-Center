@@ -3,7 +3,7 @@
   "chapter": "14",
   "rule": null,
   "width_px": null,
-  "alt": "The sixteen reader questions that open chapter 14’s groups, from which is bigger and how they rank to how something works in one look, each with the family of forms that answers it.",
+  "alt": "The sixteen reader questions that open chapter 14’s groups, from which is bigger and how they rank to how something works in one look, each with a small drawing of its typical form and the family of forms that answers it.",
   "illustrative": false,
   "notes": "The chapter's opener: the reader's questions that open groups 2 to 17, read from the plan file.",
   "readable": true
@@ -181,14 +181,14 @@
  "s-14-13-correct": {
   "chapter": "14",
   "rule": "14.13",
-  "alt": "Columns with every value printed and the table open beneath them. Newspaper publishers lost the most paid jobs from 2008 to 2013, 127,637, of any five-year step from 1998 to 2023.",
+  "alt": "Columns with every value printed and the table open beneath them. The Federal Election Commission’s totals held 2,062 super PACs in the 2024 election cycle, more than 25 times the 80 of 2010.",
   "illustrative": false,
   "notes": ""
  },
  "s-14-13-failure": {
   "chapter": "14",
   "rule": "14.13",
-  "alt": "Failure case: do not publish. The same columns with no values printed, a tooltip over the 2023 column, a line asking the reader to hover over a column, and no table or source line.",
+  "alt": "Failure case: do not publish. The same columns with no values printed, a tooltip over the 2024 column, a line asking the reader to hover over a column, and no table or source line.",
   "illustrative": false,
   "notes": ""
  },

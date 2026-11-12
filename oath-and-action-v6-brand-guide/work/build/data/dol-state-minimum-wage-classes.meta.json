@@ -70,9 +70,13 @@
    "description": "the page's words for each mark in the cell, quoted, and the range or \"...\" reading; empty where the cell carries none"
   }
  },
- "printed_source_line": "Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under State Law, rates as of January 1, 2010 to 2024, 50 states and DC. Retrieved November 12, 2026. Classes by Oath & Action from each state’s highest listed rate; some rates apply only to larger employers, and where a state is below $7.25 or has none, covered employers pay the federal rate.",
+ "printed_source_line": "Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under State Law, January 1 rates, 2010 to 2024, 50 states and DC. Retrieved November 12, 2026. Classes by Oath & Action from each state’s highest listed rate; some rates apply only to larger employers, and where a state is below $7.25 or has none, covered employers pay the federal rate.",
  "source_line_variants": {
-  "panels_2010_2015_2020_2024": "Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under State Law, rates as of January 1, 2010, 2015, 2020 and 2024, 50 states and DC. Retrieved November 12, 2026. Classes by Oath & Action from each state’s highest listed rate; some rates apply only to larger employers, and where a state is below $7.25 or has none, covered employers pay the federal rate."
+  "panels_2010_2014_2019_2024": "Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under State Law, January 1 rates in 2010, 2014, 2019 and 2024, 50 states and DC. Retrieved November 12, 2026. Classes by Oath & Action from each state’s highest listed rate; some rates apply only to larger employers, and where a state is below $7.25 or has none, covered employers pay the federal rate."
+ },
+ "source_line_templates": {
+  "span": "Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under State Law, January 1 rates, {from} to {to}, 50 states and DC. Retrieved November 12, 2026. Classes by Oath & Action from each state’s highest listed rate; some rates apply only to larger employers, and where a state is below $7.25 or has none, covered employers pay the federal rate.",
+  "two_years": "Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under State Law, January 1 rates in {from} and {to}, 50 states and DC. Retrieved November 12, 2026. Classes by Oath & Action from each state’s highest listed rate; some rates apply only to larger employers, and where a state is below $7.25 or has none, covered employers pay the federal rate."
  },
  "ledger_row": "P7-223",
  "domain": "D07",

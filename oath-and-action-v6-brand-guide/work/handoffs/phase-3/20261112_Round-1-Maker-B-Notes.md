@@ -137,3 +137,80 @@ Created later: `work/build/scripts/phase-3/maker_b_figure_checks.py` (named for 
 
 Modified:
 - `work/build/chart-kit/specs/s14.json` (the `with_margin` source line and the margin figure in note 4)
+
+## Review fix pass
+
+November 12, 2026, under `work/handoffs/phase-3/20261112_Round-1-Fix-Brief.md` (calls D3-476 to D3-483, the brand and craft addendum D3-484 to D3-488) and the data lead's rulings (a) to (g) in `20261112_Round-1-Data-Lead-Notes.md`, section "Review fix pass", with the main session's party test (D3-489) and S33's reversal (D3-490).
+
+### Summary
+
+Every item the fix brief gives maker B is done. Statistics: M1 (S24 prints the frozen file's vintage, figures unchanged under D3-476), M2 (S26), M3 (S34's 119th row, 295 votes through November 10, 2026), S1 (S31's margin), S2 (S27 names Montana and Utah and draws the United States), S3 (vintages on S25, S27 and S31), S4 (S25's title), S8 (entry 14.37), S10 (S34's note 1). Creative director: BM1 (S33), B-S1 (S34), B-S2 (S27 and S33's reference line, S28's band), SK-M1 (the streamgraph). Access: S6 (S25's empty cells), S9 (S31's FRED). Brand and craft: M4 (the streamgraph beside small multiples), S8 (S25's end steps and margin), S11 (S26's 119th row), S13 (names flush left, S24's key dropped), S14, S15 (S27's years, S32, S34's margin), S20 (S25's January 2025 count). Call 2 under D3-489: S24, S27, S33 and S34 keep the subject ink with the others in the light fill, and none takes the red. BC S7 (the reference sketches' stages) is the engineer's build, which now sets a single sketch at its true width.
+
+All 18 of my specs pass `oa-chart.mjs build` at 1440 and 390 px on both grounds and the five guide widths, with page-to-Node parity, on the kit as it stood after the engineer's pixel snapping (BC S16). `maker_b_figure_checks.py` now runs nine checks, 0 faults.
+
+### Routine calls
+
+- D3-xxx | S26 says "as first elected" and "won" in its title, reading guide, measure line, note 1, alt and table caption, with the title in the statistics reviewer's words | The House page counts "the House party divisions as of the initial election results for a particular Congress", not the House on opening day
+- D3-xxx | S26's 119th row sets its figure bold with the party named (`labels.lit`, a new name on `diverging-bar-arrows`), and takes no red | Its arrow is a party mark, which DR-48 keeps out of Pillar Red; the bold and the name mark the row the title names
+- D3-xxx | S25's title names "Agencies that report to the Office of Personnel Management" | The files leave out the Postal Service and intelligence agencies (statistics S4)
+- D3-xxx | S25's bars take pair B's end steps (div-1 and div-5), the scale ends 8 px inside the drawing, and names sit flush left | Data lead rulings (f) and (g): a pale fill means "not named" in this family; the Veterans Affairs bar met the edge
+- D3-xxx | S25 adds note 2 and a January 2025 table column with OPM's January 31, 2025 count, and prints the `with_january_2025` source line | Brand S20: the record shows when the change came while the drawing stays whole across the window (H09, Rule 14.10); the note gives both spans as counts and says the day falls 11 days after the inauguration, with no verb of credit or blame
+- D3-xxx | S25's two blank percent cells print "Not defined: none in January 2022" | Access S6
+- D3-xxx | S24 drops its key, keeps the labeled gridline at +100 and picks the finest tick step whose figures fit, so a phone also shows +100 | Data lead ruling (f) and brand S13; the reading guide names the gridline
+- D3-xxx | S24's names sit flush left (`change-lollipop`), Wyoming takes the subject ink with its name and figure bold, and the other states the light fill (`labels.named`) | Data lead rulings (b) and (f), D3-489: a state ties to a party, so no red
+- D3-xxx | S27's title names Montana and Utah, both in the subject ink with no red; `states` is MT, UT and CT | Statistics S2 and the data lead's ruling (b): 7.42 and 7.25 times the base, a near tie
+- D3-xxx | S27 draws the United States as a dashed line in the text's ink with its end label, through `labels.apart` in `line-field`, which I wrote myself since the form file is mine | Data lead ruling (d): the series comes from the same August 25, 2026 release, base and adjustment; the engineer was told to drop the request
+- D3-xxx | S27 and S33 draw the line at 100 thin in the secondary ink; S27 names it "1991 = 100" at its right end, and S33 leaves the end name out | CD B-S2, brand S14; at S33's right end the name joined the crowded stack near 100 and read as one more series, and the axis head already names the base
+- D3-xxx | S27's year labels run evenly back from the last year (1996, 2006, 2016, 2026 on a phone) | Brand S15: 1991, 2001, 2011 and 2026 read as an uneven run, and 2021 cannot sit beside 2026 at 358 px
+- D3-xxx | `line-field` and `indexed-line` never leave a figure alone on a line: the name's last word goes down with it, and a one-word name keeps its figure on its own line | CD BM1
+- D3-xxx | S33 changes form under 600 px (`phone: differs`): the plot takes the full width, a key inside its empty upper left names customs duties and all receipts, and the other eight sources are listed under it with their 2026 index, highest first; above the plot where no corner is empty | CD BM1 and Rule 14.12; the form tests the corner against every line
+- D3-xxx | S33's all receipts keep the context ink while the other eight sources take the light gray | The reading guide and the phone key name the total as the reference line; the data lead's ruling (b) spoke of "the other nine" in the light fill, so the data lead may want it gray
+- D3-xxx | S33's table prints receipts in billions to one decimal (`billions-value:1`) | R-B7 landed; whole dollars were hard to read
+- D3-xxx | S34's wide drawing sums the 27 Congresses before 1971 in the phone's sentence and sets the later circles alternately above and below the line, each touching it, at the largest radius where no two on one side meet (about 23 px at 720 px wide, where one line allowed 34) | CD B-S1: the circles from 2005 on merged into one mass; the form keeps its one line of time, which entry 14.41 teaches
+- D3-xxx | S34's note 1 says "Until 1975, ending debate took a two-thirds vote" | Statistics S10: the old words skipped 1949 to 1959, when the base was the whole Senate; the Senate's "About Filibusters and Cloture" page, read November 12, 2026, gives the 1917 two-thirds rule, the 1975 change and the 2010s precedents, and does not name 1949 or 1959, so the note states what holds across all of it
+- D3-xxx | S34's note 3, alt and phone row print "295 votes through November 10, 2026", the date held with no-break spaces where the phone row wraps; the dashed circle ends 8 px inside the edge | Statistics M3 and Rule 13.10; brand S15
+- D3-xxx | S28's word-sized lines sit between the words' baseline and cap height | CD B-S2: both now share one band whatever their shape
+- D3-xxx | S31 prints the `with_margin` source line, and note 1 says the 1.1-point rise is more than three times the Bureau's 0.3-point interval for one month's change, which it gives for no longer span | Statistics S1 and S3; the research lead's reading of the technical note
+- D3-xxx | S31's grade line glosses FRED as "the Federal Reserve Bank of St. Louis’s data site", and its `where` takes the month range | Access S9; R-B3 landed
+- D3-xxx | S32 spells out the Department of Health and Human Services where our summary says "HHS", and holds "other requirements" together with a no-break space in the drawing | Brand S15; the law's headings keep "PBM", which note 1 explains
+- D3-xxx | The streamgraph sketch draws one invented set of three parts twice: a streamgraph whose steady middle part bends with its neighbors, and small multiples on flat baselines where it lies flat (3,206 bytes, `data-label="Small multiples"`, an entry `sketch_alt`) | BC M4, CD SK-M1, D3-486
+- D3-xxx | Entry 14.37 sends "the latest months are preliminary" to Rule 14.29, marked as Rule 14.11 sets | Statistics S8
+- D3-xxx | Entries 14.26, 14.27, 14.31, 14.40 and 14.41 describe the redrawn specimens (no key, flush-left names, end steps, the tie and the national line, the thin base line and the phone list, the staggered circles) | An entry's words and its specimen must agree; the editor reads them in the second pass
+
+### Requests
+
+- To the data lead: sign-off of S24, S25, S26, S27, S31, S33 and S34 as rebuilt, and a word on S33's all-receipts line (context ink, as above).
+- To the editor (second pass, call 8): the words I changed are S24's reading guide and chart note 1; S25's title, note 2 and table caption; S26's title, reading guide, measure line, note 1, alt, table caption and chart note 2; S27's title, reading guide, measure line, alt, chart note and table caption; S31's grade line and note 1; S33's chart notes, phone note and list title; S34's note 1, note 3, measure line, reading guide, alt, chart notes, phone note and phone row words; entries 14.26 (title and rule), 14.27, 14.31, 14.37, 14.40, 14.41 and 14.45's `sketch_alt`; the sketch's two titles and descriptions.
+- To the research lead (optional): write the full department name into the `what_takes_effect` cell of `govinfo-pl-119-75-effective-dates.csv` that says "HHS", so S32's words maps can drop that entry; R-B13's two straight apostrophes ("plans'") remain in the file.
+- None to the engineer: the national line is in my own form, and the kit's light-fill stroke role was not needed (my field lines use the ghost role, the same token as the light fill on Newsprint).
+
+### Tested
+
+- `node work/build/chart-kit/oa-chart.mjs build s24 s25 s26 s27 s28 s29 s30 s31 s32 s33 s34 s35 s02 s05 s09 s11 s13 s14 --out <scratch>/kit-out`: 18 of 18 PASS, 0 faults, at 1440 and 390 px on Newsprint and Charcoal and at 656, 558, 358, 296 and 256 px, page-to-Node parity included, on the kit after the engineer's pixel snapping. A run during the engineer's edit failed parity on 16 specs; a rerun minutes later passed all 18 with no change of mine.
+- `node work/build/scripts/phase-2/dataviz_check.js <page> --kit --no-captures` on the build pages of S24 to S28 and S31 to S34: PASS, 2 figures each at 1440 and 390 px, 0 failures.
+- Looked at by eye, mostly at twice size by crop: S24 (Newsprint 1440, Charcoal 1440 and 390), S25 (Newsprint 1440 and 390, Charcoal 390), S26 (Newsprint 1440, Charcoal 390), S27 (Newsprint 1440 at 1.4 and 2x, Charcoal 390), S28 (Newsprint 1440 at 2x, Charcoal 390), S31 (Newsprint 1440, Charcoal 390), S32 (Newsprint 1440), S33 (Newsprint 1440 and 390, Charcoal 1440), S34 (Newsprint 1440 and 390, Charcoal 390). Fixed what read badly though the checks passed: S24's phone axis without +100, S27's "Connecticut / 319", S33's base name in the label stack, S25's note wording.
+- The streamgraph sketch rendered in Chromium (Playwright) in a page with `tokens.css` and `kit.css`, on Newsprint and Charcoal and in grayscale, at device scale 2, and looked at; 3,206 bytes, classes only from R1-C1, no `style`, no literal color, two titles, two descriptions and the label in each drawing.
+- `python3 -I work/build/scripts/phase-3/maker_b_figure_checks.py`: 9 checks, 0 faults. Checks 3 to 9 read every figure the fix pass printed or kept in S24 to S27, S31, S33 and S34 from the spec's words and compute it from the frozen data. A mutated copy (S34 294, S27 741, S25 279,754, S31's note at 0.2) failed on all four, after I moved S31's margin check onto the note alone, since the source line had satisfied it.
+- The chapter 14 generator's `outputs()` run in memory, writing nothing: 55 rules, 41 entries, 0 faults; it reads the sketch as an avoid pair and takes its `sketch_alt`.
+- My specs, entries and the sketch scanned for em dashes, U+2011 and straight apostrophes in reader words: none.
+- The Senate's "About Filibusters and Cloture" pages fetched (200) for note 1's history.
+
+### Not tested
+
+- The strict guide build and the quick guide check with these changes; the main session runs both. So the avoid pair, the do-not-publish bar over its first half, the phone drawings shown at a desk (D3-487) for S33 and S34, and the reference sketches' new stages were not seen in the guide.
+- Every capture at twice size: S29, S30, S35, S02, S05, S09, S11, S13 and S14 changed only by the engineer's kit work and were rebuilt, not looked at again.
+- Forced colors, print, 200 percent text and a real screen reader on the changed specimens.
+- The 1949 to 1959 cloture base on a Senate page: none read today names it, so note 1 avoids the claim rather than stating it.
+- Weight: the plates' bytes after S25's new column and note and the phone drawings at a desk for S33 and S34 were not measured; the engineer's weight report will give them.
+
+### Fix pass change log
+
+Modified:
+- `work/build/chart-kit/forms/` `change-lollipop.js`, `diverging-bar.js`, `diverging-bar-arrows.js`, `line-field.js`, `indexed-line.js`, `bubble-timeline.js`, `sparkline.js`
+- `work/build/chart-kit/specs/` `s24.json`, `s25.json`, `s26.json`, `s27.json`, `s31.json`, `s32.json`, `s33.json`, `s34.json`
+- `work/build/guide/entries/` `14-026.json`, `14-027.json`, `14-031.json`, `14-037.json`, `14-040.json`, `14-041.json`, `14-045.json`
+- `work/build/guide/specimens/s-14-45-sketch.html`
+- `work/build/scripts/phase-3/maker_b_figure_checks.py`
+- `work/handoffs/phase-3/20261112_Round-1-Maker-B-Notes.md` (this section)
+
+Created: none in the repository. Scratch scripts (`make_s45.py`, `render_sketch.cjs`, the spec edits) and captures are in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/256961f5-3911-5bd9-908d-f34ce0435ace/scratchpad/phase-3/round-1-fix/maker-b/`.

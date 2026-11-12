@@ -24,13 +24,13 @@ C1 covers the data folder, C2 the spec, C3 the command, C4 a form module and C5 
 |---|---|
 | `kit.js` | The renderer, the code that turns a spec and its rows into a drawing. A page reaches it by one name, `OAChart`, and it carries the shared words |
 | `parts.js` | Drawing parts the forms share: keys, gridlines, notes, scales, styled fills and tile sizes |
-| `forms/*.js` | One file per chart form, 19 forms in 17 files. Each file's header lists the `encode` and `labels` names it reads |
+| `forms/*.js` | One file per chart form, 45 forms in 43 files (November 12, 2026). Each file's header lists the `encode` and `labels` names it reads |
 | `metrics.js` | Widths of Inter and Inter Tight, so a chart lays out the same way in Node and in every browser |
 | `geo.js` | The state tiles and the map, for the map forms |
 | `kit.css` | The figure's style. It uses only `var(--oa-...)` tokens from `tokens.css` |
 | `words.json` | The words every figure prints the same way, such as "Source:". The editor owns them |
 | `checks.js`, `oa-chart.mjs` | The checks and the command |
-| `specs/` | The specs for S01 to S16. Each one is a starter for its form |
+| `specs/` | The specs for S01 to S42, the charts in chapter 14. Each one is a starter for its form |
 
 ## Make a chart from an existing dataset
 
@@ -62,15 +62,28 @@ C1 covers the data folder, C2 the spec, C3 the command, C4 a form module and C5 
 
 | Form | Starter spec | Form | Starter spec |
 |---|---|---|---|
-| `big-number` | `specs/s01.json` | `percent-bar` | `specs/s10.json` |
-| `line-event-notes` | `specs/s02.json` | `shift-arrows` | `specs/s11.json` |
-| `ranked-bar` | `specs/s03.json` | `tile-map-shift-arrows` | `specs/s12.json` |
-| `dumbbell` | `specs/s04.json` | `area-sparklines` | `specs/s13.json` |
-| `multi-line-highlight` | `specs/s05.json` | `columns-moving-average` | `specs/s14.json` |
-| `scenario-directions` | `specs/s06.json` | `results-table` | `specs/s15.json` |
-| `tile-map-categorical` | `specs/s07.json` | `bubble-map` | `specs/s16.json` |
-| `unit-chart` | `specs/s08.json` | `comparison-matrix` | `specs/s06.json`, with `form` changed |
-| `timeline` | `specs/s09.json` | `sparkline-table`, `social-data-card` | Read the form's header in `forms/` |
+| `area` | `specs/s29.json` | `line-event-notes` | `specs/s02.json` |
+| `area-sparklines` | `specs/s13.json` | `line-field` | `specs/s27.json` |
+| `bar-benchmark-tick` | `specs/s18.json` | `lollipop` | `specs/s21.json` |
+| `benefit-cliff` | `specs/s35.json` | `multi-line-highlight` | `specs/s05.json` |
+| `big-number` | `specs/s01.json` | `one-sentence` | `specs/s42.json` |
+| `bubble-map` | `specs/s16.json` | `percent-bar` | `specs/s10.json` |
+| `bubble-timeline` | `specs/s34.json` | `plain-table` | `specs/s41.json` |
+| `change-lollipop` | `specs/s24.json` | `ranked-bar` | `specs/s03.json` |
+| `column` | `specs/s17.json` | `ranked-register` | `specs/s36.json` |
+| `columns-moving-average` | `specs/s14.json` | `results-table` | `specs/s15.json` |
+| `comparison-matrix` | `specs/s06.json` (with `form` changed) | `scenario-directions` | `specs/s06.json` |
+| `diverging-bar` | `specs/s25.json` | `shift-arrows` | `specs/s11.json` |
+| `diverging-bar-arrows` | `specs/s26.json` | `slope` | `specs/s20.json` |
+| `dot-plot` | `specs/s19.json` | `small-multiple-bars` | `specs/s23.json` |
+| `dumbbell` | `specs/s04.json` | `sparkline` | `specs/s28.json` |
+| `evidence-table` | `specs/s39.json` | `step-line` | `specs/s30.json` |
+| `filterable-lookup-table` | `specs/s38.json` | `tile-map-categorical` | `specs/s07.json` |
+| `grouped-bar` | `specs/s22.json` | `tile-map-shift-arrows` | `specs/s12.json` |
+| `heat-table` | `specs/s37.json` | `timeline` | `specs/s09.json` |
+| `implementation-timeline` | `specs/s32.json` | `tracker-list` | `specs/s40.json` |
+| `indexed-line` | `specs/s33.json` | `unit-chart` | `specs/s08.json` |
+| `line-data-gap` | `specs/s31.json` | `sparkline-table`, `social-data-card` | Read the form's header in `forms/` |
 
 ## The keys a spec takes
 
@@ -87,7 +100,22 @@ or `avoid`) sort the chart in chapter 14. These keys are required:
 
 These keys are optional: `where`, `sort`, `labels`, `annotations`, `notes`, `chart_notes`, `formats`, `scale`,
 `phone_notes`, `reading_guide`, `grade_line`, `v7` (atlas IDs and grade), `artboard` (`reading`, `mid` or `wide`),
-`show` and `words`.
+`show`, `words`, `lookup` (a search and filters over the table, S38), `phone_view` (true: the guide also shows the phone
+drawing, at 358 px, under the desktop one) and `source_line_template` (below).
+
+**The source line's years.** The check reads the years a source line names, leaving out the date it was retrieved or
+released, and fails a line whose years leave out a year the chart draws: a line for "fiscal 2026" under a chart of
+fiscal 2016 and 2026 fails. Where a sidecar carries `source_line_templates`, such as
+`{"span": "Source: ..., fiscal {from} and {to}, ..."}`, set `"source_line_template": "span"` and leave `source_line` out:
+the kit fills `{from}` and `{to}` with the first and last year the chart draws.
+
+**Dollars across years.** A chart of amounts across years says in its measure line whether they are adjusted for
+inflation: "not adjusted for inflation", or the index it adjusts by.
+
+**Two values far apart in size.** A dumbbell's `labels.domain` is in the value column's own unit, as the data file holds
+it (dollars for a column of dollars printed as billions). The check fails a row whose two dots sit closer than a dot's
+radius while its values differ by a tenth or more: the drawing hides the change. Chart the change in percent (a change
+lollipop) or split the rows into panels by size.
 
 `table.columns` is a list of `{field, label, format}` objects. A column may also take these keys:
 
@@ -101,8 +129,13 @@ These keys are optional: `where`, `sort`, `labels`, `annotations`, `notes`, `cha
 ```sh
 node work/build/chart-kit/oa-chart.mjs build <ID or spec path>... [--all] [--widths 1440,390] [--grounds newsprint,charcoal] [--no-png]
 node work/build/chart-kit/oa-chart.mjs check <ID or spec path>... [--all]
+node work/build/chart-kit/oa-chart.mjs figure <spec path> --svg DRAWING.svg [--phone-svg PHONE.svg] [--id ID] [--out FILE]
 node work/build/chart-kit/oa-chart.mjs self-test
 ```
+
+`figure` sets a drawing made outside the kit, until a kit form draws it, inside the kit's figure: the title, measure
+line, notes, source line, credit and table come from the spec, and the drawing follows the sketch rules (the class
+`oac-svg`, the kit's role classes, no literal color, text at 13 px or more).
 
 ## A plain page, opened from disk
 
@@ -154,3 +187,9 @@ editing an export. Embedding the fonts in each export waits for Phase 5's packag
   its **system colors**, for contrast. In that mode this label would print in the same color as the mark under it. This
   needs the engineer.
 - **`data: a bar reads "Total"`**: a chart of the parts leaves the total out with `where` and `not`.
+- **`source: the source line names ..., but the chart draws ...`**: print a line for the years drawn: a variant, or a
+  template named by `source_line_template`. If the sidecar has neither, ask the research lead.
+- **`chart: a line (baseline) drawn outside its drawing`**: a shape the form draws lies outside the drawing's box, where it
+  would paint over the figure's words. A zero line draws only where the scale holds zero; for anything else, tell the
+  engineer.
+- **`chart: ... row(s) draw their two dots closer than a dot's radius`**: see "Two values far apart in size" above.

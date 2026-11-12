@@ -39,5 +39,9 @@
  ],
  "ledger_row": "P7-024",
  "domain": "D08",
- "states": []
+ "states": [],
+ "source_line_templates": {
+  "span": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, outlays by function, fiscal {from} to {to}, United States. Retrieved November 11, 2026. Net outlays in nominal dollars; offsetting receipts are shown as negative.",
+  "two_years": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, outlays by function, fiscal {from} and {to}, United States. Retrieved November 11, 2026. Net outlays in nominal dollars; offsetting receipts are shown as negative."
+ }
 }
