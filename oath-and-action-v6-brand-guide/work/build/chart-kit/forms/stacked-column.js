@@ -73,8 +73,8 @@
         if (i < 0) { c.warn('labels.part_values names no column ' + pv.x); return; }
         var g = st[i].segs.filter(function (q) { return q.field === pv.field; })[0];
         if (!g || g.missing) return;
-        var cxp = x0 + step * i + step / 2, t = K.fmt(g.value, f.total || 'number:1'), tw = c.measure(t, 'label', 700, true);
-        var by = ys(g.end) + 2 + size * 0.86, top_y = by - size * 0.86 - 2;
+        var cxp = x0 + step * i + step / 2, t = K.fmt(g.value, f.total || 'number:1'), tw = c.measure(t, 'label', 400, true);
+        var by = ys(g.end) + 2 + size * 0.86;
         var clear = function (dir) {
           var xa = dir < 0 ? cxp - bw / 2 - 4 - tw : cxp + bw / 2 + 4, xb = xa + tw;
           if (xa < (c.phone ? 0 : x0) || xb > (c.phone ? W : x1)) return false;
@@ -82,7 +82,7 @@
         };
         var dir = clear(-1) ? -1 : clear(1) ? 1 : 0;
         if (!dir) { c.warn('no room beside ' + pv.x + ' for its part value'); return; }
-        c.text(dir < 0 ? cxp - bw / 2 - 4 : cxp + bw / 2 + 4, by, t, { role: 'label', weight: 700, anchor: dir < 0 ? 'end' : 'start', tnum: true, data: { key: pv.x, field: pv.field, value: g.value } });
+        c.text(dir < 0 ? cxp - bw / 2 - 4 : cxp + bw / 2 + 4, by, t, { role: 'label', weight: 400, anchor: dir < 0 ? 'end' : 'start', tnum: true, data: { key: pv.x, field: pv.field, value: g.value } });
       });
       // each part's name beside the last column, at its middle, moved apart where two would touch, with a hairline
       // back to its part when moved

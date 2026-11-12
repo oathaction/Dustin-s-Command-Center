@@ -56,7 +56,7 @@
     ]
   },
   "chart_notes": [
-    "The parts stack from the zero line: one-unit buildings, then two to four units, then five or more, each named beside the last column, or in a key on a phone. Totals, in thousands of homes, print over 2006, 2011 and 2024."
+    "The parts stack from the zero line: one-unit buildings, then two to four units, then five or more, each named beside the last column, or in a key on a phone. Totals, in thousands of homes, print over 2006, 2011 and 2024, and 2024’s five or more units, 591.7, prints beside its part."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -92,7 +92,13 @@
       2011,
       2024
     ],
-    "y_head": "Thousands of homes"
+    "y_head": "Thousands of homes",
+    "part_values": [
+      {
+        "x": 2024,
+        "field": "five_or_more_units_thousands"
+      }
+    ]
   },
   "formats": {
     "y_tick": "integer",
@@ -105,6 +111,7 @@
     "encode.total prints the published total, since the parts' sum differs by rounding (2006: 1,979.5 against 1,979.4). Source line from the sidecar's span template, 2000 to 2025.",
     "Second run, data lead MA-1 and MA-2: the printed totals take the axis's unit, thousands of homes (1,979.4, 584.9 and 1,626.9); a note gives the longer record, the share higher in 1969, 1970, 1973 and 1974, last in 1974 at 40.1 percent, by script; the 2000 window stays (S20's case).",
     "Round 2 review fix pass, ST S6: the source line names the release, through the sidecar's span_september_2026_release template (the research lead's variant).",
-    "Round 2 review fix pass, CD A-M1, RF-22: the title gives the count the stack shows; the share and the long record move to notes 1 and 2. AX S9, RF-23: two to four units stays at true height, named at the last column with its leader, and note 3 says why it is a seam. BC S17: a total raised over a taller neighbor takes a hairline down to its own column, and the last total and year sit 2 px inside the drawing's edge. Checked by script (fixfigs.py): 591.7 thousand in 2024, the most of 2000 to 2025 (467.7 in 2025, 438.3 in 2023); 36.4 percent of 1,626.9; more in 1972 (724.7), 1973 (779.8, the most) and 1974 (692.9); 1974's share 40.1; two to four units 0.57 (2021) to 1.83 (2009) percent from 2009 to 2025."
+    "Round 2 review fix pass, CD A-M1, RF-22: the title gives the count the stack shows; the share and the long record move to notes 1 and 2. AX S9, RF-23: two to four units stays at true height, named at the last column with its leader, and note 3 says why it is a seam. BC S17: a total raised over a taller neighbor takes a hairline down to its own column, and the last total and year sit 2 px inside the drawing's edge. Checked by script (fixfigs.py): 591.7 thousand in 2024, the most of 2000 to 2025 (467.7 in 2025, 438.3 in 2023); 36.4 percent of 1,626.9; more in 1972 (724.7), 1973 (779.8, the most) and 1974 (692.9); 1974's share 40.1; two to four units 0.57 (2021) to 1.83 (2009) percent from 2009 to 2025.",
+    "Round 2 review fix pass, the data lead's MA-F1 (RF-22): 2024's five-or-more part prints its value, 591.7 thousand, beside the top of its segment, on the side whose neighbor stands lower (stacked-column's new labels.part_values); the chart note says so. Checked by script (fixfigs.py): 591.7 in 2024, the title's 591,700."
   ]
 }
