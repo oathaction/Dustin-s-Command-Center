@@ -245,7 +245,95 @@ def item_s31(dl):
     save(UNEMP, meta, nl)
 
 
-ITEMS = {'s24': item_s24, 's34': item_s34, 's31': item_s31}
+# ---------------------------------------------------------------------------------------------------------------
+# s27: ST S2 and ST S3, with the data lead's ruling (d). The nation's purchase-only index, quarterly, seasonally adjusted
+# and not, first quarter 1991 = 100, from the release the state rows come from (August 25, 2026, through 2026Q2), joins
+# the state file as code US, first, as the BFS files carry the nation. The state rows do not change. --dl holds
+# hpi_po_us_and_census.txt and hpi_po_state.txt as fetched November 12, 2026; the state file must equal the frozen
+# rows in every value, or nothing is written.
+# ---------------------------------------------------------------------------------------------------------------
+FHFA = 'fhfa-house-price-index-by-state'
+FHFA_REL = 'quarterly release of August 25, 2026'
+
+
+def fhfa_num(x):
+    return ('%.2f' % float(x)).rstrip('0').rstrip('.')
+
+
+def fhfa_line(geo, retrieved):
+    return (f'Source: Federal Housing Finance Agency, House Price Index, purchase-only, {FHFA_REL}, seasonally adjusted, first quarter 1991 '
+            f'to second quarter 2026, {geo}. Retrieved {retrieved}. Repeat sales of homes with Fannie Mae or Freddie Mac mortgages; '
+            'an index of change since 1991, not a price.')
+
+
+def item_s27(dl):
+    if dl is None:
+        raise SystemExit('s27 needs --dl <folder with hpi_po_us_and_census.txt and hpi_po_state.txt>')
+    p = DATA / f'{FHFA}.csv'
+    raw = p.read_text(encoding='utf-8')
+    rows = list(csv.DictReader(io.StringIO(raw)))
+    head = list(rows[0].keys())
+    states = [r for r in rows if r['code'] != 'US']
+    # the state file today equals the frozen rows: the same release
+    today = {}
+    for line in (dl / 'hpi_po_state.txt').read_text(encoding='utf-8').splitlines()[1:]:
+        c = line.split('\t')
+        if len(c) >= 5:
+            today[(c[0], c[1], c[2])] = (fhfa_num(c[4]), fhfa_num(c[3]))
+    same = sum(today.get((r['code'], r['year'], r['quarter'])) == (r['index_sa'], r['index_nsa']) for r in states)
+    if same != len(states) or len(today) != len(states):
+        raise SystemExit(f'the state file differs from the frozen rows ({same} of {len(states)} equal); nothing written')
+    us = []
+    lines = (dl / 'hpi_po_us_and_census.txt').read_text(encoding='utf-8').splitlines()
+    if lines[0].split('\t') != ['division', 'year', 'qtr', 'index_po_not_seasonally_adjusted', 'index_po_seasonally_adjusted']:
+        raise SystemExit('the national file has other columns; nothing written')
+    for line in lines[1:]:
+        c = line.split('\t')
+        if c[0] == 'USA':
+            us.append({'code': 'US', 'name': 'United States', 'year': c[1], 'quarter': c[2], 'index_sa': fhfa_num(c[4]),
+                       'index_nsa': fhfa_num(c[3]), 'small_sample': 'false'})
+    by_q = {(r['year'], r['quarter']): float(r['index_sa']) for r in us}
+    assert by_q[('1991', '1')] == 100 and len(us) == 142 and ('2026', '2') in by_q and ('2026', '3') not in by_q
+    qoq = 100 * (by_q[('2026', '2')] / by_q[('2026', '1')] - 1)
+    yoy = 100 * (by_q[('2026', '2')] / by_q[('2025', '2')] - 1)
+    print(f'United States, seasonally adjusted: 2026Q2 {by_q[("2026", "2")]}, {qoq:.2f} percent on the quarter, {yoy:.2f} on the year')
+    assert round(qoq, 1) == 0.3 and round(yoy, 1) == 2.1, 'the release of August 25, 2026 reads up 0.3 on the quarter and 2.1 on the year'
+    out = io.StringIO()
+    w = csv.DictWriter(out, fieldnames=head, lineterminator='\n')
+    w.writeheader()
+    w.writerows(us + states)
+    if out.getvalue() != raw:
+        p.write_text(out.getvalue(), encoding='utf-8')
+        print(f'wrote {p.relative_to(ROOT)}')
+    meta, nl = load(FHFA)
+    meta['title_or_table'] = ('FHFA House Price Index, purchase-only indexes, quarterly: states (hpi_po_state) and the United States '
+                              '(hpi_po_us_and_census, division USA)')
+    meta['table_id'] = 'HPI purchase-only, state and U.S., quarterly'
+    meta['url'] = ['https://www.fhfa.gov/hpi/download/quarterly_datasets/hpi_po_state.csv',
+                   'https://www.fhfa.gov/hpi/download/quarterly_datasets/hpi_po_us_and_census.txt',
+                   'https://www.fhfa.gov/data/hpi/datasets']
+    meta['geography'] = '50 states and DC, with a United States row (code US)'
+    meta['vintage'] = ('FHFA’s quarterly release of August 25, 2026, through the second quarter of 2026: the state rows as retrieved November 11, '
+                       '2026, and the United States rows from the same release’s U.S. and census division file, retrieved November 12, 2026, '
+                       'when the state file still equaled the frozen rows in all 7,242 values. FHFA revises earlier quarters each release; '
+                       'its next quarterly release is due Tuesday, November 24, 2026')
+    cols = meta['columns']
+    cols['code']['description'] = 'USPS state code, or US for the nation'
+    cols['name']['description'] = 'state name, or United States'
+    cols['small_sample']['description'] = 'FHFA note: fewer than 15,000 transactions in ten years; false for the nation'
+    meta['printed_source_line'] = fhfa_line('50 states, DC and the United States', 'November 11 and 12, 2026')
+    meta.setdefault('source_line_variants', {})['states_and_dc'] = fhfa_line('50 states and DC', 'November 11, 2026')
+    set_note(meta, 'The United States rows (code US)',
+             'The United States rows (code US) were added November 12, 2026 for S27’s national line (statistics review S2, the data '
+             'lead’s ruling (d)): division USA of hpi_po_us_and_census.txt (SHA-256 prefix 4776cd3261d1a5ba), the same purchase-only index, '
+             'quarterly, first quarter 1991 = 100, seasonally adjusted and not, 142 quarters. FHFA’s news release of August 25, 2026, '
+             '"U.S. House Prices Rise 2.1 Percent Year over Year; Up 0.3 percent Quarter over Quarter" (read through the session’s '
+             f'web-fetch tool), matches these rows: {qoq:.2f} percent on the quarter and {yoy:.2f} on the year, seasonally adjusted. '
+             'The state rows are unchanged. A chart of the states alone filters code US out and prints the states_and_dc line.')
+    save(FHFA, meta, nl)
+
+
+ITEMS = {'s24': item_s24, 's34': item_s34, 's31': item_s31, 's27': item_s27}
 
 
 def main(argv):

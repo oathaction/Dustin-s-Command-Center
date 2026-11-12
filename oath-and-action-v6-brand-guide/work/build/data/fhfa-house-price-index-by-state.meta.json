@@ -2,27 +2,28 @@
  "file": "fhfa-house-price-index-by-state.csv",
  "kind": "public",
  "publisher": "Federal Housing Finance Agency",
- "title_or_table": "FHFA House Price Index, purchase-only indexes, states, quarterly (hpi_po_state)",
- "table_id": "HPI purchase-only, state, quarterly",
+ "title_or_table": "FHFA House Price Index, purchase-only indexes, quarterly: states (hpi_po_state) and the United States (hpi_po_us_and_census, division USA)",
+ "table_id": "HPI purchase-only, state and U.S., quarterly",
  "url": [
   "https://www.fhfa.gov/hpi/download/quarterly_datasets/hpi_po_state.csv",
+  "https://www.fhfa.gov/hpi/download/quarterly_datasets/hpi_po_us_and_census.txt",
   "https://www.fhfa.gov/data/hpi/datasets"
  ],
  "observation_period": "First quarter 1991 to quarter 2 of 2026",
- "geography": "50 states and DC",
+ "geography": "50 states and DC, with a United States row (code US)",
  "universe_or_base": "Repeat sales of the same single-family homes with mortgages bought or guaranteed by Fannie Mae or Freddie Mac",
  "unit": "index, first quarter 1991 = 100; index_sa is seasonally adjusted, index_nsa is not",
  "date_retrieved": "2026-11-11",
- "vintage": "File as posted on November 11, 2026, through 2026 quarter 2; FHFA revises earlier quarters each release",
+ "vintage": "FHFA’s quarterly release of August 25, 2026, through the second quarter of 2026: the state rows as retrieved November 11, 2026, and the United States rows from the same release’s U.S. and census division file, retrieved November 12, 2026, when the state file still equaled the frozen rows in all 7,242 values. FHFA revises earlier quarters each release; its next quarterly release is due Tuesday, November 24, 2026",
  "qualification": "Covers homes with conforming mortgages only, so it leaves out cash sales and the most expensive homes; an index shows change since 1991 in each state, not price levels, so states cannot be compared by height. FHFA flags states with fewer than 15,000 transactions over the latest ten years (small_sample)",
  "columns": {
   "code": {
    "type": "code",
-   "description": "USPS state code"
+   "description": "USPS state code, or US for the nation"
   },
   "name": {
    "type": "text",
-   "description": "state name"
+   "description": "state name, or United States"
   },
   "year": {
    "type": "year",
@@ -44,14 +45,18 @@
   },
   "small_sample": {
    "type": "boolean",
-   "description": "FHFA note: fewer than 15,000 transactions in ten years"
+   "description": "FHFA note: fewer than 15,000 transactions in ten years; false for the nation"
   }
  },
- "printed_source_line": "Source: Federal Housing Finance Agency, House Price Index, purchase-only, seasonally adjusted, first quarter 1991 to second quarter 2026, 50 states and DC. Retrieved November 11, 2026. Repeat sales of homes with Fannie Mae or Freddie Mac mortgages; an index of change since 1991, not a price.",
+ "printed_source_line": "Source: Federal Housing Finance Agency, House Price Index, purchase-only, quarterly release of August 25, 2026, seasonally adjusted, first quarter 1991 to second quarter 2026, 50 states, DC and the United States. Retrieved November 11 and 12, 2026. Repeat sales of homes with Fannie Mae or Freddie Mac mortgages; an index of change since 1991, not a price.",
  "ledger_row": "P7-009",
  "domain": "D09",
  "states": [],
  "notes": [
-  "States flagged for small samples: AK, DC, DE, HI, VT, WV, WY"
- ]
+  "States flagged for small samples: AK, DC, DE, HI, VT, WV, WY",
+  "The United States rows (code US) were added November 12, 2026 for S27’s national line (statistics review S2, the data lead’s ruling (d)): division USA of hpi_po_us_and_census.txt (SHA-256 prefix 4776cd3261d1a5ba), the same purchase-only index, quarterly, first quarter 1991 = 100, seasonally adjusted and not, 142 quarters. FHFA’s news release of August 25, 2026, \"U.S. House Prices Rise 2.1 Percent Year over Year; Up 0.3 percent Quarter over Quarter\" (read through the session’s web-fetch tool), matches these rows: 0.35 percent on the quarter and 2.14 on the year, seasonally adjusted. The state rows are unchanged. A chart of the states alone filters code US out and prints the states_and_dc line."
+ ],
+ "source_line_variants": {
+  "states_and_dc": "Source: Federal Housing Finance Agency, House Price Index, purchase-only, quarterly release of August 25, 2026, seasonally adjusted, first quarter 1991 to second quarter 2026, 50 states and DC. Retrieved November 11, 2026. Repeat sales of homes with Fannie Mae or Freddie Mac mortgages; an index of change since 1991, not a price."
+ }
 }
