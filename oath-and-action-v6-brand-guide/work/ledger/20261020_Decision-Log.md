@@ -4539,3 +4539,9 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-623 | A word on a GrayText mark takes Canvas in forced colors, found from the shapes drawn under it; a plate under the word answers first | GrayText sits between Canvas and CanvasText in both contrast themes, and Canvas clears it in both (maker A's flag); S37's plates already carry their words |
 | D3-624 | Rule 14.6's correct plate, the one plate that must show the red on a named point, moves to an example that passes D3-489's party-color test; the editor picks it from frozen data and the data lead signs it off | The brand reviewer's second pass: many readers tie the Ninth Circuit to one side, so its red reads as a party's color on the very plate that teaches the rule |
 | D3-625 | Chapter 15's plates stay one 328 px column at 1024 px, where the frame is 702 px wide | D3-485: where the brand reviewer and the creative director differ, the creative director's version holds, and its CH15-M1 keeps the narrower 1024 px column in one column; the creative director judges it in the rescore |
+
+### Research lead, round 1 second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-626 | S34’s line names all five changes in the votes needed, from Riddick’s Senate Procedure | The line and note 1 must state the rule one way; Riddick is the Senate’s own procedure manual |
