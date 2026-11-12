@@ -1,0 +1,92 @@
+{
+  "kit": 1,
+  "id": "P02",
+  "form": "range-bar",
+  "family": "uncertainty-and-estimates",
+  "tier": "core",
+  "dataset": "census-acs-broadband-by-state",
+  "sort": [
+    {
+      "field": "code",
+      "values": [
+        "US"
+      ]
+    },
+    {
+      "field": "broadband_fixed_pct",
+      "order": "desc"
+    }
+  ],
+  "reader_question": "How sure can a reader be of each state’s share of households with fixed broadband, and which states differ from the nation’s?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: a Census Bureau survey, with shares and their margins computed by Oath & Action",
+  "title": "In 2025, 76.6 percent of the nation’s households had fixed broadband, and in 40 states and the District of Columbia the share differed from the nation’s by more than the margin of error.",
+  "measure_line": "Households with broadband such as cable, fiber optic or DSL, as a percent of all households, 2025, 50 states and DC. Each line spans a figure’s 90 percent margin of error.",
+  "reading_guide": "A filled dot differs from the nation’s 76.6 percent by more than the margin of error of the gap between them; an open dot sits within it.",
+  "notes": [
+    "Fixed broadband counts cable, fiber optic and DSL service; a household with a cellular data plan alone does not count.",
+    "A state differs from the nation where the gap between them passes the gap’s own margin of error, the square root of the sum of the two margins squared, the Census Bureau’s test. By that test, 18 states and the District of Columbia sit above the nation and 22 states below it. Where two places sit within each other’s margins, the order between them is not certain."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Dots with margin of error lines for the 50 states and DC around the nation’s 76.6 percent of households with fixed broadband. Nineteen filled dots above the nation’s line and 22 below it differ from it by more than the margin of error; the open dots of the other 10 states sit within it. New Hampshire is highest, at 84.0 percent, and Alaska lowest, at 66.6.",
+  "table": {
+    "caption": "Households with fixed broadband, percent, 2025",
+    "columns": [
+      {
+        "field": "name",
+        "label": "State",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "broadband_fixed_pct",
+        "label": "Households with fixed broadband, percent",
+        "format": "number:1"
+      },
+      {
+        "field": "broadband_fixed_pct_moe",
+        "label": "Margin of error, points",
+        "format": "number:1"
+      }
+    ]
+  },
+  "chart_notes": [
+    "The dashed line marks the nation, 76.6 percent. Filled dots differ from it by more than the margin of error; open dots sit within it. Where a margin is narrower than its dot, no line shows past the dot; the table gives every margin."
+  ],
+  "phone": "differs",
+  "artboard": "reading",
+  "domain": "D01",
+  "states": [],
+  "encode": {
+    "category": "name",
+    "value": "broadband_fixed_pct",
+    "margin": "broadband_fixed_pct_moe",
+    "key": "code"
+  },
+  "labels": {
+    "reference": "US",
+    "reference_label": "United States: {value}%",
+    "test": "reference",
+    "short": {
+      "DC": "D.C."
+    },
+    "value": "{value}%",
+    "stack_below": 240
+  },
+  "formats": {
+    "value": "number:1",
+    "tick": "integer"
+  },
+  "scale": {
+    "x": [
+      60,
+      90
+    ]
+  },
+  "notes_internal": [
+    "Simulated production test, round 2 (simulated, untested with real people). V2: margin from a scratch column, broadband_fixed_pct_moe, the count's margin over households; source line left to the sidecar as the README says."
+  ],
+  "phone_note": "On a phone each state’s name and figure share one line, and its interval runs the full width on the line beneath, on one scale."
+}

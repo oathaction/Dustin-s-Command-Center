@@ -1,0 +1,35 @@
+{
+ "id": "P02",
+ "faults": [],
+ "rows": 52,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 720,
+   "height": 1246,
+   "bytes": 26777
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 2215,
+   "bytes": 33582
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 720,
+   "height": 1246,
+   "bytes": 26777
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 2215,
+   "bytes": 33582
+  }
+ ]
+}

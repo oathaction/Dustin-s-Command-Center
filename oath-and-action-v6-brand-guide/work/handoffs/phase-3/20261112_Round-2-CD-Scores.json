@@ -2,7 +2,7 @@
  "title": "Creative director’s scores for Phase 3, round 2 (first pass): maker A’s and maker B’s specimens with their entries, the 15 sketches, rules 14.1 to 14.14 with the opener as round 2 changed them, and chapter 15’s six new rules",
  "date": "2026-11-12",
  "author": "Creative director (oa-creative-director), subagent of the main session",
- "basis": "work/handoffs/phase-3/20261112_Phase-3-Round-2-Review-Brief.md, creative director’s lens; Master Brief section 6 rubric; a copy of the strict build (scratchpad phase-3/round-2-review/main/guide.html, 10,587,775 bytes, 0 warnings, 312 rules, 606 specimens) and its guide-Build-Report.json; all 41 round 2 entries captured whole at 1440 and 390 px on Newsprint, rules 14.1 to 14.14 and chapter 15’s six rules at 1440 and 390 px, chapter 15’s six and Rules 14.9 and 14.11 at 1024 px, plates on Charcoal at 1440 and 390 px, plates at 2x; S47 and S53 built alone with the kit and measured",
+ "basis": "work/handoffs/phase-3/20261112_Phase-3-Round-2-Review-Brief.md, creative director’s lens; Master Brief section 6 rubric; a copy of the strict build (scratchpad phase-3/round-2-review/main/guide.html, 10,587,775 bytes, 0 warnings, 312 rules, 606 specimens) and its guide-Build-Report.json; all 41 round 2 entries captured whole at 1440 and 390 px on Newsprint, rules 14.1 to 14.14 and chapter 15’s six rules at 1440 and 390 px, chapter 15’s six and Rules 14.9 and 14.11 at 1024 px, 32 plates on Charcoal at 1440 px and 11 at 390 px, eight plates at 2x; S47 and S53 built alone with the kit and measured",
  "review": "work/handoffs/phase-3/20261112_CD-Review-Of-Round-2.md",
  "first_pass_of_round": 2,
  "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
@@ -66,10 +66,11 @@
     "A-S1",
     "A-S2",
     "A-S3",
-    "A-S4"
+    "A-S4",
+    "A-S5"
    ],
    "must_fix_count": 2,
-   "should_fix_count": 4,
+   "should_fix_count": 5,
    "ready": false,
    "to_ready": "Land A-M1 and A-M2; clarity and brand fidelity then reach 4."
   },
@@ -215,7 +216,7 @@
  ],
  "totals": {
   "must_fix": 3,
-  "should_fix": 12,
+  "should_fix": 13,
   "under_4": [
    "maker_a.clarity",
    "maker_a.brand_fidelity",
@@ -311,6 +312,14 @@
    "title": "S10's overall line",
    "what_and_fix": "S10 draws \"All 433 claims: 74% documented\" as a solid hairline in the label ink; Rule 14.6 now dashes a total or national line in the text's ink. Decide whether ruling (b) reaches board 1's S10; if it does, percent-bar dashes its mark_at line.",
    "owner": "Main session, then maker A",
+   "items": [
+    "maker_a"
+   ]
+  },
+  "A-S5": {
+   "title": "S48's independent seat",
+   "what_and_fix": "At 2x the one independent seat sits at the inner end of the Democrats' rows with no gap a reader can see, and the leader from \"1 independent, 2 vacant\" ends under the two open rings. Set the independent seat apart by the same gap as the blocks, and give it and the vacancies each a leader that ends on its own marks.",
+   "owner": "Maker A",
    "items": [
     "maker_a"
    ]
