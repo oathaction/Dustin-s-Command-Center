@@ -198,7 +198,7 @@
       "n": 5,
       "nav": "Chapter 13",
       "title": "Chapter 13, Evidence and sourcing",
-      "lede": "Chapter 13 holds {n_rules} rules in three groups, each with a correct plate and a failure plate. Every failure plate leads with the rule it breaks and carries the do-not-publish band.",
+      "lede": "The chapter holds {n_rules} rules in three groups, each with a correct plate and a failure plate. Every failure plate leads with the rule it breaks and carries the do-not-publish band.",
       "lede_2": "The plates below come from a strict build of the guide made for this board, {build_when}, photographed in the guide at a 1440 px window at true size. The chapter weighs {ch13_bytes} bytes against its {ch13_budget} byte ceiling.",
       "first_h": "The chapter’s first screen",
       "first_cap": "As a reader lands on the chapter from the contents, at 1440 by 900 px and at 390 by 844 px.",
@@ -243,7 +243,8 @@
         "Source"
       ],
       "printed_h": "The note S03 and S08 print",
-      "refs": "DR-229 · DR-230 · D3-08 · D3-24 · D3-44 · D3-45 · D3-46 · D3-47 · D3-48 · D3-58 · D3-88 · D3-89 · D3-98"
+      "refs": "DR-229 · DR-230 · D3-08 · D3-24 · D3-44 · D3-45 · D3-46 · D3-47 · D3-48 · D3-58 · D3-88 · D3-89 · D3-98",
+      "download_cite": "The research lead’s notes, “The five-download list”"
     },
     "scores": {
       "n": 7,

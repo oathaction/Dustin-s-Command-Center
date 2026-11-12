@@ -233,7 +233,7 @@ def md_section(text, names, nth=0):
     found = 0
     for i, l in enumerate(lines):
         m = re.match(r'^(#+)\s*(.+?)\s*$', l)
-        if m and any(re.fullmatch(n, m.group(2).strip(), flags=re.I) for n in names):
+        if m and any(re.fullmatch(n, m.group(2).strip(), flags=re.I) or re.fullmatch(n, re.sub(r'^\d+\.\s*', '', m.group(2).strip()), flags=re.I) for n in names):
             if found < nth:
                 found += 1
                 continue
@@ -672,7 +672,7 @@ def palette_facts(TOK):
                  'r56': f'{contrast(new[0][1], ch):.2f}' if new else '?', 'r29': f'{contrast(new[1][1], ch):.2f}' if len(new) > 1 else '?',
                  'cat_order': join_words(order)})
     FIG['palette'] = {'new_tints': new, 'contrast_on_charcoal': [FILL['r56'], FILL['r29']], 'categorical_order': order,
-                      'release': tj.get('version') or tj.get('$version')}
+                      'release': re.search(r'"version":\s*"([^"]+)"', (ROOT / C['slots']['tokens_json']).read_text()).group(1)}
     return new, order
 
 
@@ -976,7 +976,7 @@ def weight_panel(G, E):
     parts = [f'<p class="intro">{esc(fill(P["lede"]))}</p>']
     if E['pilot_tables']:
         head, rows = E['pilot_tables'][0]
-        parts.append(f'<h3 class="sub">{esc(P["pilot_h"])}</h3>' + table_html(head, rows, caption=P['pilot_h']))
+        parts.append(f'<h3 class="sub">{esc(P["pilot_h"])}</h3>' + table_html(head, rows, caption=P['pilot_h'], cls='wide-t'))
         QUOTED.append(' '.join(' '.join(r) for r in rows))
     if E['found']:
         L = P['bar_labels']
@@ -989,7 +989,7 @@ def weight_panel(G, E):
         parts.append(f'<h3 class="sub">{esc(P["options_h"])}</h3><figure class="wfig" data-spec="chapter-14-weight"><div class="tw" role="region" tabindex="0" aria-label="{esc(P["options_h"])}; scrolls sideways">'
                      f'<table class="wt"><caption>{esc(fill(P["fig_caption"]))}</caption><thead><tr><th scope="col">Option</th><th scope="col"><span class="vh">Bar</span></th><th scope="col">Chapter 14</th></tr></thead><tbody>{rows}</tbody></table></div></figure>')
         head, rws = E['table']
-        parts.append(table_html(head, rws, caption='The options as the engineer’s notes give them'))
+        parts.append(table_html(head, rws, caption='The options as the engineer’s notes give them', cls='wide-t'))
         QUOTED.append(' '.join(' '.join(r) for r in rws))
     parts.append(f'<h3 class="sub">{esc(P["today_h"])}</h3><p>{esc(fill(P["today"]))}</p>')
     secs = ''
@@ -1097,7 +1097,10 @@ def data_panel():
         for head, rows in md_tables(md_section(plan, [re.escape(sname)]) or ''):
             if 'States' in head:
                 k = head.index('States')
+                st_k = head.index('Status') if 'Status' in head else None
                 for r in rows:
+                    if st_k is not None and st_k < len(r) and r[st_k].startswith('Built'):
+                        continue      # a built chart counts once, from its spec
                     for code, nm in names.items():
                         if code != 'US' and re.search(r'\b' + re.escape(nm) + r'\b', r[k] if k < len(r) else ''):
                             count.setdefault(code, []).append(f'row {r[0]}')
@@ -1127,12 +1130,14 @@ def data_panel():
     done = re.search(r'\*\*Done\.\*\*\s*(.+)', dl)
     if done:
         QUOTED.append(done.group(1))
-        dl_html += f'<p>{md_inline(done.group(1))}</p>'
+        dl_html += f'<blockquote class="q"><p>{md_inline(done.group(1))}</p><footer>{esc(P["download_cite"])}</footer></blockquote>'
     fr = next((p for p in tables if p.stem == 'fred-unemployment-and-job-openings'), None)
     if fr:
         n_rows = sum(1 for _ in open(fr)) - 1
         s = side[fr.name]
-        dl_html += f'<p class="small">The frozen file today: <code>{esc(fr.name)}</code>, {n_rows:,} rows, read {esc(s.get("date_retrieved", ""))}, research ledger row {esc(s.get("ledger_row", ""))}. {esc(s.get("printed_source_line", ""))}</p>'
+        dr = s.get('date_retrieved', '')
+        dr = words_when(datetime.datetime.strptime(dr, '%Y-%m-%d')) if re.fullmatch(r'\d{4}-\d\d-\d\d', dr) else dr
+        dl_html += f'<p class="small">The frozen file today: <code>{esc(fr.name)}</code>, {n_rows:,} rows, read {esc(dr)}, research ledger row {esc(s.get("ledger_row", ""))}. {esc(s.get("printed_source_line", ""))}</p>'
     # the three November 3 outcomes
     fp2 = md_section(rn, [r'fix pass 2']) or ''
     blk = re.search(r'\*\*D3-98:.*?\*\*(.*?)(?:\n\*\*D3-95|\Z)', fp2, flags=re.S)
@@ -1339,7 +1344,7 @@ def panel(key, P, body, status):
     refs = P['refs']
     check_refs(refs, 'panel ' + key)
     if MOVED:
-        extra = sorted((c for c in MOVED if c in LOG), key=lambda c: (re.sub(r'[^A-Z]', '', c.split('-')[0]), int(re.sub(r'\D', '', c.split('-')[1]) or 0)))
+        extra = sorted((c for c in MOVED if c in LOG and not re.search(r'\b' + re.escape(c) + r'\b', refs)), key=lambda c: (re.sub(r'[^A-Z]', '', c.split('-')[0]), int(re.sub(r'\D', '', c.split('-')[1]) or 0)))
         if extra:
             refs += ' · from teammates’ files: ' + ' · '.join(extra)
         MOVED.clear()
@@ -1387,13 +1392,13 @@ a{color:inherit;text-decoration-thickness:var(--oa-border-width-underline);text-
 p{margin:0 0 var(--oa-space-150);max-width:var(--oa-layout-measure-body-max);text-wrap:pretty}
 h1,h2,h3,h4{margin:0}
 .vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.board{max-width:calc(var(--max) + var(--m) + var(--mr));margin:0 auto;padding:0 var(--mr) var(--oa-space-1300) var(--m)}
+.board{max-width:calc(var(--max) + var(--m) + var(--mr));margin:0 auto;padding:0 var(--mr) var(--oa-space-1300) var(--m);overflow-wrap:break-word}
 .label{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--ink-2);margin:0}
 .caption,.small{font:var(--oa-type-caption);color:var(--ink-2)}
 .small{max-width:var(--oa-layout-measure-intro-max)}
 .intro{font:var(--oa-type-intro);max-width:var(--oa-layout-measure-intro-max);margin-bottom:var(--oa-space-300)}
 .codes{font:var(--oa-type-caption);color:var(--ink-2);margin:var(--oa-space-300) 0 0;font-variant-numeric:tabular-nums;max-width:none}
-code{font-size:.9em;overflow-wrap:anywhere}
+code{font-size:max(.9em,13px);overflow-wrap:anywhere}
 .mast{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:var(--oa-space-100) var(--oa-space-300);padding:var(--oa-space-300) 0 var(--oa-space-200);border-bottom:var(--oa-border-width-rule) solid var(--strong)}
 .mast b{font:800 1.25rem/1 var(--oa-font-family-display);letter-spacing:-.01em;white-space:nowrap}
 .for{margin-top:var(--oa-space-800)}
@@ -1427,7 +1432,8 @@ h1{font:var(--oa-type-title);letter-spacing:var(--oa-type-title-letter-spacing);
 .dec-q{font:var(--oa-type-intro);max-width:var(--oa-layout-measure-intro-max)}
 .dec-rec{max-width:var(--oa-layout-measure-intro-max);font-weight:600}
 .dec-sub{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);margin:var(--oa-space-400) 0 var(--oa-space-150)}
-table.opts th[scope=row]{min-width:14rem}
+table.opts{min-width:46rem}table.opts th[scope=row]{min-width:14rem}
+table.wide-t{min-width:44rem}table.small-t{min-width:52rem}
 tr.recrow th,tr.recrow td{background:var(--oa-color-tint-stone-n88)}
 blockquote.q{margin:var(--oa-space-150) 0;padding:var(--oa-space-150) 0 var(--oa-space-150) var(--oa-space-300);border-left:var(--oa-border-width-bar) solid var(--oa-color-palette-charcoal);max-width:var(--oa-layout-measure-intro-max)}
 blockquote.q p{margin:0 0 var(--oa-space-100)}

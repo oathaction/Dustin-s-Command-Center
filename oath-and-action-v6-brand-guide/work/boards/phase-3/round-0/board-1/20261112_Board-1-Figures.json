@@ -1,9 +1,9 @@
 {
  "guide_build": {
   "exit": 0,
-  "page_bytes": 9957097,
+  "page_bytes": 9957130,
   "warnings": 0,
-  "built": "2026-11-12T00:40:42",
+  "built": "2026-11-12T00:53:02",
   "report": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/guide/20261112_Board-1-Guide-Build-Report.json"
  },
  "engineer_options": {
@@ -38,7 +38,7 @@
   },
   "photos": 1.31
  },
- "built": "2026-11-12T00:40:37.879117+00:00",
+ "built": "2026-11-12T00:52:57.477484+00:00",
  "palette": {
   "new_tints": [
    [
@@ -60,7 +60,7 @@
    "Prussian",
    "Stone"
   ],
-  "release": null
+  "release": "6.0.0-gate3.1"
  },
  "cd": {
   "first": "work/handoffs/phase-3/20261111_Round-0-CD-Scores.json",
@@ -317,7 +317,7 @@
   ]
  },
  "weight": {
-  "page_bytes": 9957097,
+  "page_bytes": 9957130,
   "projected": 15055613,
   "budget": 15500000.0,
   "pass_saved": 46523
@@ -340,14 +340,12 @@
   "top_domain": 12,
   "states": {
    "WA": [
-    "S11",
-    "row 11"
+    "S11"
    ],
    "NY": [
     "S11",
     "S12",
-    "S16",
-    "row 11"
+    "S16"
    ],
    "NJ": [
     "S12"
@@ -426,8 +424,8 @@
    "Accessibility and the production test",
    "all",
    3,
-   0,
-   0,
+   4,
+   10,
    0
   ]
  ],
@@ -467,12 +465,16 @@
   "work/handoffs/phase-3/20261111_CD-Review-Of-Round-0.md": {
    "tested": 15,
    "not": 11
+  },
+  "work/handoffs/phase-3/20261112_Board-1-Builder-Notes.md": {
+   "tested": 8,
+   "not": 9
   }
  },
  "board": "work/boards/phase-3/round-0/board-1/20261112_Board-1.html",
- "html_bytes": 355499,
+ "html_bytes": 359016,
  "images": 123,
- "folder_bytes_with_images": 56530631,
+ "folder_bytes_with_images": 56534148,
  "largest_image": [
   3423838,
   "20261112_Palette-Page-390.png"
@@ -488,10 +490,7 @@
    "partial",
    "cd"
   ],
-  "tested": [
-   "partial",
-   "notes"
-  ]
+  "tested": "ready"
  },
  "image_sources": {
   "img/20261112_Decide-Diverging-On-Charcoal-Steps.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/palette/diverging-charcoal.png",
@@ -698,9 +697,7 @@
   "G2-01",
   "G2-02"
  ],
- "notes": [
-  "red team count differs from the fix brief: Accessibility and the production test, part all: reports 0 and 0, brief says 4 and 10"
- ],
+ "notes": [],
  "warnings": [],
- "visible_text_sha1": "a7a576e257040597f39757296942ed77cc97c4fd"
+ "visible_text_sha1": "23a82e6cb7dcda0961a355ee22aa522042aac6c6"
 }
