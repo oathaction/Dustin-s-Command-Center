@@ -229,3 +229,27 @@ The engineer's X12 to X18 and E13, November 12, after its kit fixes landed:
 Before setting these, I rechecked every figure my words print against the unrounded data (D3-95): S13's totals and industries, and S11, S12 and S15's margins and shifts all print as before.
 
 Rebuilt all 16 with `oa-chart.mjs build --all` at 00:58 UTC, after the engineer's last kit change (00:56): 16 of 16 pass. Board folder refreshed, 192 files, 28 MB. S01's vote block viewed at 1440. Not viewed after this round of changes: S10, S11, S13 and S14's captures.
+
+## Second pass
+
+November 12, DR-191's second pass: the editor's faults E1 to E13 in its notes, "Fix pass read" (its numbering, not my requests'). Rebuilt all 16 with `oa-chart.mjs build --all` after the engineer's latest kit change: 16 of 16 pass at every width. Board folder refreshed, 192 files.
+
+| Editor's code | Fix | Spec |
+|---|---|---|
+| E1 | "plus or minus 1.9 percentage points" | S01 |
+| E2 | The Senate chart note says "short" once and spells out "two against": "the Senate vote to take it up got 53 of the 60 votes it needed, 53 to 47: Republicans 53 for, Democrats 45 against and independents two against" | S01 |
+| E3 | Measure lines: "Entries in the atlas’s repair log, its dated list of changes to the rules that decide who officials answer to, by how each rule changed and the direction the atlas assigns it, …"; S08's runs one sentence, and "The count above each year gives every entry the log holds that year" moves to a note | S03, S08 |
+| E4 | Missouri's source names the publisher first: "Missouri Secretary of State, unofficial statewide returns, via St. Charles County, Missouri, November 4, 2026" | S03, S08 |
+| E5 | "margin of error" each time in S04's notes and chart notes; the 65-and-over label reads "No clear change (+0.2)", since "Within the margin of error (+0.2)" ran into its row label in the 296 and 256 px columns. I also set S16's "within its margin of error of the nation’s 65.3", the same reading in a turnout chart | S04, S16 |
+| E6 | "the constants the Bureau publishes for computing a margin of error" in the note, and "for that purpose" in the source line | S04 |
+| E7 | "when the Bureau collected no data" | S05 |
+| E8 | Not fixed in the spec: the line is the sidecar's `printed_source_line`, which C2 requires the spec to match. Request to the engineer (its `data_round0_build.py` writes `v7-scenarios-2030.meta.json`): a variant ending "Each scenario gives a direction, with no odds, that holds only if its assumptions do, and the atlas keeps the four families apart." I switch S06 to it when it lands | S06 |
+| E9 | "neither way: a failed measure that kept the rules, a mixed change, or a measure pending on November 3, 2026" | S08 |
+| E10 | "chose which changes to include", in the note and the measure line | S09 |
+| E11 | "39 of the 50 states and DC" | S11 |
+| E12 | "14" for "fourteen", in the note, the alt text and `notes_internal` | S13 |
+| E13 | "standard errors of 0.1 to 0.9 percent …, smaller than a 90 percent margin of error", and "Retrieved November 11, 2026" | S13 |
+
+D3-xxx | S04's 65-and-over label reads "No clear change (+0.2)" and the notes give its margin of error | The editor's "margin of error" made the label too wide for the narrow guide columns; "no clear change" says what the margin test found
+
+Tested: `oa-chart.mjs build --all`, 16 of 16; each changed string found and replaced by script, with an assertion that the old words were present. Not tested: the editor's read of these new strings; the captures viewed after this pass.
