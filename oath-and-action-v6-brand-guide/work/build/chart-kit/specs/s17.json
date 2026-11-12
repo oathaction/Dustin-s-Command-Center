@@ -108,6 +108,7 @@
     "Figures checked by script against congress-gov-laws-by-congress.csv (maker A's check, s17 in the notes' Tested list): 274 is the 118th's public_laws and the minimum of the ten rows; 482 the 109th's; 283 the 112th's; 442 the 115th's; the 116th to 118th are each under 400; 138 is the 119th's.",
     "Note 1 restates the sidecar's own qualification (research lead).",
     "Named column in ink, the others in the light fill on Newsprint and the context ink on Charcoal (palette rule R3, DR-236; data lead DL-A1), with no red: a count of laws carries no direction a reader on either side would agree is good or bad, and red would read as alarm.",
-    "Source line: the sidecar's line names 93rd to 118th Congress, the dataset's span. Request A1 asks the research lead for a variant naming the charted span; when it lands, source_line takes it."
-  ]
+    "Source line: the sidecar's last_ten variant (request A1, research lead)."
+  ],
+  "source_line": "Source: Library of Congress, Congress.gov, laws by Congress, 109th to 118th Congress (2005 to 2024), United States. Retrieved November 11, 2026. A count of laws, short or long; the 119th Congress is still in session."
 }

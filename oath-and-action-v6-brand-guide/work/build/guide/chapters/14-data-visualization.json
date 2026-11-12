@@ -9,9 +9,8 @@
   "caption": "Each group of this chapter opens with the question a reader brings, and its forms answer it."
  },
  "intro": [
-  "This chapter sets how Oath & Action shows numbers. Fourteen rules come first and hold for every chart. Each form a chart can take then has its own entry, grouped by the question it answers, with when to use it, what to use instead, and a finished example drawn from real data or labeled as illustrative.",
-  "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files.",
-  "The entries’ charts are drawn by our chart kit from frozen data files, the same way a chart in a story will be, and each one carries its table as live text."
+  "This chapter sets how Oath & Action shows numbers. Fourteen rules come first and hold for every chart. Each form a chart can take then has its own entry, grouped by the question it answers, with when to use it, what to use instead, and a finished example that our chart kit draws from frozen data, with its table as live text.",
+  "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files."
  ],
  "groups": [
   {
@@ -1172,7 +1171,11 @@
      "when": "Each group is one value, so a panel would hold one bar",
      "rule": "14.15"
     }
-   ]
+   ],
+   "correct": {
+    "specimen": "s-14-s23",
+    "caption": "How sure is each of the five topic hubs' evidence?"
+   }
   },
   {
    "id": "14.24",
@@ -2359,7 +2362,11 @@
      "when": "How many items sit at each stage, with no single bill named",
      "rule": "14.93"
     }
-   ]
+   ],
+   "correct": {
+    "specimen": "s-14-s40",
+    "caption": "Where do this Congress's housing bills stand?"
+   }
   },
   {
    "id": "14.133",

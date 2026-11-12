@@ -55,6 +55,11 @@
         "format": "text"
       },
       {
+        "field": "source_words",
+        "label": "Source",
+        "format": "text"
+      },
+      {
         "field": "limitation",
         "label": "Limits",
         "format": "text"
@@ -62,7 +67,7 @@
     ]
   },
   "chart_notes": [
-    "Each row gives the claim’s grade and period at the left, and the claim, who it covers and its limits at the right."
+    "Each row gives the claim’s grade and period at the left, and the claim, who it covers, its source and its limits at the right."
   ],
   "phone": "differs",
   "phone_note": "On a phone the grade runs above the claim, and the period moves under it.",
@@ -75,7 +80,8 @@
     "grade": "confidence",
     "period": "period",
     "covers": "population",
-    "limits": "limitation"
+    "limits": "limitation",
+    "source": "source_words"
   },
   "labels": {
     "grades": {
@@ -92,7 +98,7 @@
   "notes_internal": [
     "Data plan row 38, narrowed to one pathway (PW06's 11 drug-price claims, the research lead's filter). Claims, periods, populations and limits print in V7's own words.",
     "Claim IDs are not among the atlas IDs the V7 check types, so none prints; v7.ids lists PW06 only, which the sidecar's source line names, so it prints in its chip after its type word (H11). The CSV export carries the claim IDs.",
-    "Sources: request A7 asks for each claim's sources in words; the form then prints them with encode.source and the table takes a Source column.",
-    "Figures checked by script (figures.py s39)."
+    "Figures checked by script (figures.py s39).",
+    "Sources: each claim's sources print in V7's own words (source_words, request A7, research lead), as V7 stores them."
   ]
 }

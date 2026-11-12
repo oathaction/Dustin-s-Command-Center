@@ -117,22 +117,24 @@ CSS = {
            f".eq td.n{{text-align:right;font-variant-numeric:tabular-nums}}"),
     # HTML bars: a name, a track and a value per row, so the words stay at their size at any width
     "hb": (f".hb{{list-style:none;margin:0;padding:0;display:grid;gap:6px;{SMALL}}}"
-           ".hb li{display:grid;grid-template-columns:minmax(0,9.5rem) minmax(0,1fr) 3.4rem;align-items:center;gap:10px}"
-           ".hb .bt{position:relative;height:var(--oa-chart-bar-phone-height)}.hb .b{position:absolute;left:0;top:0;bottom:0;background:var(--oa-chart-color-context)}"
-           ".hb .b.s{background:var(--oa-chart-color-subject)}.hb .b.pt{background:var(--oa-chart-color-point);box-shadow:inset 0 0 0 1px var(--oa-chart-color-point-keyline)}"
-           ".hb .v{text-align:right;font-variant-numeric:tabular-nums}.hb .nm.s,.hb .v.s{font-weight:var(--oa-font-weight-bold)}"
-           ".hb .bt::before{content:'';position:absolute;left:0;top:-3px;bottom:-3px;border-left:var(--oa-chart-line-baseline) solid var(--oa-chart-color-baseline)}"),
+           ".hb li{display:grid;grid-template-columns:minmax(0,9.5rem) minmax(0,1fr) 4.8rem;align-items:center;gap:10px}"
+           ".hb i{display:block;height:var(--oa-chart-bar-phone-height);background:var(--oa-chart-color-context);"
+           "border-left:var(--oa-chart-line-baseline) solid var(--oa-chart-color-baseline)}"
+           ".hb .s i{background:var(--oa-chart-color-subject)}.hb .pt i{background:var(--oa-chart-color-point);box-shadow:inset 0 0 0 1px var(--oa-chart-color-point-keyline)}"
+           ".hb b{font-weight:inherit;text-align:right;font-variant-numeric:tabular-nums}.hb .s,.hb .pt{font-weight:var(--oa-font-weight-bold)}"),
     "rk": (f".rk{{list-style:none;margin:0;padding:0;{SMALL}}}.rk li{{display:grid;grid-template-columns:2.2rem minmax(0,1fr) 4rem;gap:8px;padding:5px 0;"
            f"border-bottom:1px solid var(--oa-color-border-hairline)}}.rk .r{{font-weight:var(--oa-font-weight-bold)}}.rk .v{{text-align:right;font-variant-numeric:tabular-nums}}"),
     # a dot with its interval per row, positioned in percent of the track
     "di": (f".di{{list-style:none;margin:0;padding:0;display:grid;gap:4px;{SMALL}}}"
            ".di li{display:grid;grid-template-columns:minmax(0,7.5rem) minmax(0,1fr) 4.2rem;align-items:center;gap:10px;min-height:26px}"
-           ".di .tk{position:relative;height:22px}.di .iv{position:absolute;top:10px;height:2px;background:var(--oa-chart-color-context)}"
-           ".di .dt{position:absolute;top:4px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--oa-chart-color-subject);border:2px solid var(--oa-chart-color-subject)}"
-           ".di .dt.o{background:var(--oa-color-surface)}"
-           ".di .ref{position:absolute;top:-6px;bottom:-6px;border-left:var(--oa-chart-line-baseline) dashed var(--oa-chart-color-baseline)}"
-           ".di .v{text-align:right;font-variant-numeric:tabular-nums}.di li.hd{min-height:0}.di li.hd .tk{height:auto;"
-           f"{CAP};color:var(--oa-color-text-secondary)}}"),
+           ".di i{position:relative;display:block;height:26px;background:linear-gradient(var(--oa-chart-color-baseline),var(--oa-chart-color-baseline)) "
+           "no-repeat var(--n) 0/2px 100%}"
+           ".di i::before{content:'';position:absolute;top:12px;height:2px;left:var(--a);width:var(--w);background:var(--oa-chart-color-context)}"
+           ".di i::after{content:'';position:absolute;top:6px;left:var(--v);width:14px;height:14px;margin-left:-7px;border-radius:50%;"
+           "background:var(--oa-chart-color-subject);border:2px solid var(--oa-chart-color-subject)}"
+           ".di .o i::after{background:var(--oa-color-surface)}.di b{font-weight:inherit;text-align:right;font-variant-numeric:tabular-nums}"
+           f".di .hd i{{height:auto;padding:2px 0 2px calc(var(--n) + 6px);{CAP};color:var(--oa-color-text-secondary)}}"
+           ".di .hd i::before,.di .hd i::after{content:none}"),
     "ky": f".ky{{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px;{CAP}}}.ky span{{display:inline-flex;align-items:center;gap:6px}}",
     "kd": (".kd{display:inline-block;width:14px;height:14px;border-radius:50%;border:2px solid var(--oa-chart-color-subject);background:var(--oa-chart-color-subject)}"
            ".kd.o{background:var(--oa-color-surface)}"),
@@ -283,9 +285,8 @@ def hbars(data, vmax, fmt, subject=(), point=(), red=()):
     out = []
     for name, v in data:
         cls = "pt" if name in point else ("s" if name in subject else "")
-        red_attr = ' data-red="failure"' if name in red else ""
-        out.append(f'<li><span class="nm{" s" if cls else ""}">{e(name)}</span><span class="bt"><span class="b {cls}"{red_attr} '
-                   f'style="width:{100 * v / vmax:.2f}%"></span></span><span class="v{" s" if cls else ""}">{e(fmt(v))}</span></li>')
+        out.append(f'<li{f" class={chr(34)}{cls}{chr(34)}" if cls else ""}><span>{e(name)}</span><i{" data-red=" + chr(34) + "failure" + chr(34) if name in red else ""} '
+                   f'style="width:{100 * v / vmax:.1f}%"></i><b>{e(fmt(v))}</b></li>')
     return '<ul class="hb">' + "".join(out) + "</ul>"
 
 
@@ -402,7 +403,9 @@ def rule_14_1(B):
     B.add("s-14-1-correct", chart("s-14-1-line"),
           alt=f"A line chart answers how business applications changed: {title}. The line climbs slowly to 2019 and jumps to 2021.",
           notes="A line answers a question about change over time; the kit draws it from the US rows of the business formation file.")
-    B.add("s-14-1-failure", dnp() + chart("s-14-1-sorted"),
+    B.specs.pop("s-14-1-sorted")
+    B.add("s-14-1-failure", dnp() + tl(title) + '<div class="art">'
+          + hbars([(str(y), v) for y, v in by_size], by_size[0][1] * 1.02, comma, subject=("2025",)) + "</div>",
           alt=FC + "The same applications drawn as bars sorted by size, 2025 first and 2009 last, so the years fall out of order.")
     return entry(
         "14.1", "Start from the reader’s question, then choose the form.",
@@ -823,20 +826,26 @@ def ownership():
     return out
 
 
+OWN_YEARS = [1995, 2000, 2005, 2010, 2015, 2020, 2025]
+
+
 def rule_14_8(B):
     ds = "census-hvs-homeownership-by-age"
     o = ownership()
-    years = sorted(set.intersection(*(set(v) for v in o.values())))
+    need(all(y in o[a] for a in OWN_AGES for y in OWN_YEARS), "a year of the homeownership panels is missing")
+    years = OWN_YEARS
     y0, y1 = years[0], years[-1]
     need(all(o["Less than 35 years"][y] + 15 < o[a][y] for y in years for a in OWN_AGES[1:]), "under 35 is not clearly lowest every year")
-    title = f"Householders under 35 were the least likely to own their homes in every year from {y0} to {y1}"
+    title = f"Householders under 35 were the least likely of five age groups to own their homes in each year shown, {y0} to {y1}"
     B.spec("s-14-8-panels", form="multi-line-highlight", family="change-over-time", tier="core", dataset=ds,
-           where={"grouping": "summary", "age_group": OWN_AGES, "series_variant": {"not": ["revised_1990_census", "revised_2000_census"]}},
+           where={"grouping": "summary", "age_group": OWN_AGES, "series_variant": {"not": ["revised_1990_census", "revised_2000_census"]},
+                  "year": OWN_YEARS},
            reader_question="How does homeownership differ by age, and has that changed?",
            evidence="finding", evidence_label="Finding", grade_line="Documented: a Census Bureau survey",
            title=title,
            reading_guide="Each panel draws one age group in ink over the other four in gray, on one shared scale.",
-           measure_line=f"Share of households that own their home, by the householder’s age, each year from {y0} to {y1}, United States",
+           measure_line=f"Share of households that own their home, by the householder’s age, every fifth year from {y0} to {y1}, three "
+                        f"decades, United States",
            source_line=src(ds),
            alt=f"Five small panels of homeownership by age from {y0} to {y1}, one group in ink in each: under 35 lowest, near "
                f"{round(o['Less than 35 years'][y1])} percent in {y1}; 65 and over highest, near {round(o['65 years and over'][y1])} percent.",
@@ -915,13 +924,11 @@ def rule_14_9(B):
     measure = "Share of citizens 18 and over who reported voting, November 2024, the ten states with the most voting-age citizens"
     lo, hi = 50, 80
     pos = lambda v: 100 * (v - lo) / (hi - lo)
-    li = ['<li class="hd"><span></span><span class="tk">' + f'<span class="ref" style="left:{pos(n):.2f}%"></span>'
-          + f'<span style="position:relative;left:{pos(n):.2f}%;margin-left:4px">Nation 65.3%</span></span><span></span></li>']
+    li = ['<li class="hd"><span></span><i>Nation 65.3%</i><b></b></li>']
     for s in by:
-        li.append(f'<li><span>{e(s["name"])}</span><span class="tk"><span class="ref" style="left:{pos(n):.2f}%"></span>'
-                  f'<span class="iv" style="left:{pos(s["v"] - s["m"]):.2f}%;width:{pos(s["v"] + s["m"]) - pos(s["v"] - s["m"]):.2f}%"></span>'
-                  f'<span class="dt{"" if s["past"] else " o"}" style="left:{pos(s["v"]):.2f}%"></span></span>'
-                  f'<span class="v">{fmt1(s["v"])}%</span></li>')
+        li.append(f'<li{"" if s["past"] else " class=" + chr(34) + "o" + chr(34)}><span>{e(s["name"])}</span>'
+                  f'<i style="--a:{pos(s["v"] - s["m"]):.1f}%;--w:{pos(s["v"] + s["m"]) - pos(s["v"] - s["m"]):.1f}%;--v:{pos(s["v"]):.1f}%"></i>'
+                  f'<b>{fmt1(s["v"])}%</b></li>')
     keyw = ('<p class="ky"><span><i class="kd"></i>Differs from the nation by more than the margin</span>'
             '<span><i class="kd o"></i>Within the margin of error</span></p>')
     notes = ["Each line spans a state’s margin of error at 90 percent confidence. A gap counts only past the margin of the gap itself, "
@@ -929,7 +936,7 @@ def rule_14_9(B):
     tab = table("Reported voting, November 2024, percent", ["State", "Reported voting", "Margin of error", "Gap from the nation"],
                 [(s["name"], fmt1(s["v"]), "±" + fmt1(s["m"]), (fmt1(s["gap"]) if s["gap"] < 0 else "+" + fmt1(s["gap"]))
                   + (" past" if s["past"] else " within")) for s in by])
-    B.add("s-14-9-correct", head("Finding", g, title, measure=measure) + f'<div class="art">{keyw}<ul class="di">{"".join(li)}</ul></div>'
+    B.add("s-14-9-correct", head("Finding", g, title, measure=measure) + f'<div class="art">{keyw}<ul class="di" style="--n:{pos(n):.1f}%">{"".join(li)}</ul></div>'
           + foot(notes, variant(ds, "source_line_2024_only")) + tab,
           alt=f"Dots with margin of error lines for ten states’ reported turnout in 2024, against a dashed line at the nation’s 65.3 percent. "
               f"Filled dots, past the margin: {', '.join(s['name'] for s in by if s['past'])}. Open dots, within it: "
@@ -1317,11 +1324,9 @@ def chapter(B, sources):
         "intro": [
             "This chapter sets how Oath & Action shows numbers. Fourteen rules come first and hold for every chart. Each form a chart can take "
             "then has its own entry, grouped by the question it answers, with when to use it, what to use instead, and a finished example "
-            "drawn from real data or labeled as illustrative.",
+            "that our chart kit draws from frozen data, with its table as live text.",
             "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those "
-            "rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files.",
-            "The entries’ charts are drawn by our chart kit from frozen data files, the same way a chart in a story will be, and each one "
-            "carries its table as live text."],
+            "rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files."],
         "groups": groups,
         "related_chapters": [
             {"chapter": "01", "reason": "Rules 01.1 to 01.3 on parties and two-way scales, and Rule 01.9’s limits on examples."},

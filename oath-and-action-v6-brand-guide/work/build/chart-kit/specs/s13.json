@@ -82,8 +82,7 @@
     "change_since_2022_01_thousands": "signed-compact-thousands",
     "pct_change_since_2022_01": "signed:1",
     "tick": "signed",
-    "y_tick_top": "percent:0",
-    "employees_thousands": "thousands"
+    "y_tick_top": "percent:0"
   },
   "labels": {
     "panels": [
@@ -171,8 +170,7 @@
         "value": "CES9091000001",
         "label": "Federal government",
         "indent": 2,
-        "peak": "Peak: {value} in {x}",
-        "peak_field": "employees_thousands"
+        "peak": "Peak: 3,013,000 in {x}"
       }
     ],
     "totals_title": "The total, its two parts and federal jobs",
@@ -190,6 +188,7 @@
     "Statistics P2-S10: 'seasonally adjusted' glossed. P2-S2 (the industry estimates' sampling errors) waits on the research lead's sidecar (R8).",
     "R8, statistics P2-S2: the research lead's sentence on sampling error, with its source in the note until ENG-9 adds it to the sidecar.",
     "X15: the heads are in sentence case. X13 is held: the federal row's peak label ('Peak: {value} in {x}', peak_field employees_thousands) overlaps its row label at 390 px and narrower, where the form sets both on one line (E32); the third note gives the peak in words.",
-    "X13: the federal row's peak label is set, now that E32 places it at every width."
+    "X13: the federal row's peak label is set, now that E32 places it at every width.",
+    "Round 1 weight trim (maker B): the federal peak's figure is written into labels.totals[3].peak, so the island no longer carries employees_thousands for all 1,026 rows (about 4,000 bytes); the form still finds the peak's month and place from the data. Checked by script: the federal government's highest pct_change_since_2022_01 and highest employees_thousands both fall in October 2024, at 3,013.0 thousand; the drawing is byte for byte as before."
   ]
 }

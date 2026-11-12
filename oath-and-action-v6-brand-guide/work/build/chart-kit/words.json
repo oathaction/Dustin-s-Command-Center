@@ -7,5 +7,9 @@
  "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.",
  "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.",
  "scripts_off": "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below.",
- "export_fonts": "Set in Inter and Inter Tight. On a computer without both fonts, the labels fall back to another font and change width."
+ "export_fonts": "Set in Inter and Inter Tight. On a computer without both fonts, the labels fall back to another font and change width.",
+ "lookup_clear_search": "Clear the search",
+ "lookup_filters": "Filters, {n} on",
+ "lookup_clear_filters": "Clear filters",
+ "lookup_count": "{n} of {total} {noun}"
 }

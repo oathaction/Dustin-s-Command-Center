@@ -61,6 +61,45 @@ What holds on every plate: each connection's sign and its verb match V7 (L01 to 
 | 15.13 Example 1, Loop R1 | 2 | Signed off with SD-3 | SD-3 |
 | 15.14 Example 2, Loop R8 | 2 | Signed off | None |
 
+## Second batch
+
+November 12, 2026, after the makers applied the first batch's requests. Every spec below was rebuilt into `<scratch>/kit-out2` (all 22 PASS, 0 faults), its words reread against the request, and its captures looked at (desktop on Newsprint, the phone on one ground, grayscale where a fill changed).
+
+**Rechecks of what I sent back: all signed off.** S17 and S36 draw the other bars in the light fill on Newsprint and say so (DL-A1); S36's longest bar now stops short of the frame (DL-A4); S18, S21 and S22 draw their zero line at 390 px (DL-A2); S41 and S42 print the survey-only source line with the margin (DL-A3, by A5); S24 adds no note, since the Bureau's methodology pages say nothing on how a state is assigned (DL-B1, closed); S25's scale note, note 4 and entry 14-027 (DL-B2 to B4); S26's scale note (DL-B5); S27's inflation words and `states: ["MT", "CT"]` (DL-B9, B10); S29's online-only sentence (DL-B6); S30's title, measure line and note 4 (DL-B7, B8); S31's unemployment-only source line (DL-R1); S33's fiscal 2016 to 2026 line (DL-R2). S19, S20 and S41 stay signed off.
+
+**New specimens.**
+
+| Spec | Rule | Maker | Verdict | Requests |
+|---|---|---|---|---|
+| S32 Implementation timeline | 14.39 | B | Signed off | None |
+| S34 Bubble timeline | 14.41 | B | Changes | DL-B11, DL-B12, DL-R4 |
+| S35 Benefit-cliff line | 14.42 | B | Signed off: "Illustrative data" beside the chart, an invented county, the title says "invented budget" (Rule 13.8) | None |
+| S37 Heat table | 14.129 | A | Signed off: 36 of 38, 24 of 29 and 14 of 15 recounted from `v7-reform-routes`; each tint carries its word and holds in grayscale; 13 dots for the dated routes (Rule 13.10) | None |
+| S38 Filterable lookup table | 14.130 | A | Signed off as the still image, with DL-A6 and DL-R5; the live lookup waits on A9 | DL-A6, DL-R5 |
+| S39 Evidence table | 14.131 | A | Changes | DL-A5 |
+
+**Answer to A10 (S38's domain): confirmed, `domain: "D01"`.** The specimen draws one domain's 17 records, so it counts there, and news and records had the most room. Recount: rounds 0 to 3, news and records 4 of 84 and atlas-wide 9; the chapter, news and records 4 of 95 and atlas-wide 10. Every limit holds, and no other domain moves.
+
+**Sketches (R4, R1-C1): all four signed off.** Each is one inline SVG classed `oac-svg oac-sketch`, viewBox 320 px wide or less, with a `<title>`, a one-line `<desc>` and "Illustrative data" inside the drawing; each uses only R1-C1's role classes, with no literal color, `style` or font name; sizes 1,071 bytes (14.24, avoid, under 2,048), 2,570 (14.43, reference, under 4,096), 1,842 (14.44) and 1,713 (14.45, avoid). The two avoid entries name better forms in `use_instead` (14.24: 14.18, 14.23, 14.22; 14.45: 14.34, 14.51, 14.30). I drew all four with `tokens.css` and `kit.css` on Newsprint and Charcoal and in grayscale: every stroke class leaves its shape unfilled, the streamgraph's layers keep the approved order (Charcoal, Verdigris, Prussian, so the close pair never touches), and the run chart's six shaded weeks sit above the median, as its description says.
+
+**Chapter 15: SD-1 to SD-5 applied; all 25 plates signed off.** Rebuilt (`guide_build.py`, 0 warnings from chapter 15) and recaptured the seven changed correct plates (15.3 to 15.6, 15.8 to 15.10) at 1440 and 390 px and looked at each; the opener's new words were read from its file. The opener, 15.3, 15.4, 15.5, 15.6 (one label per loop), 15.8, 15.9 and 15.10 now carry the evidence label naming their least certain connection, each checked by script against V7's grades (L12, L46, L28, LT13, L15 and L48, L37, LT01, LT01), and every connection prints its chip and grade word, with the record square before Documented. 15.10 quotes LTR1's reason through "and is small", every fragment matching V7 word for word, with Connection L47 and its grade word, Contested. 15.13 cites Rule 18.22 and Rule 11.14's plate. 15.9 allows the divider, and 15.8 names its core layer. **DL-M1 is withdrawn:** D6's kind is already item 8 of the Atlas V7.1 issue list (approved under Q-07).
+
+The systems designer's open points (its request 2): (a) "raises" and "lowers" on dashed and dotted lines stand, since the sign word gives direction and the line and grade word give certainty, each its own mark (Rule 13.5); (b) 15.14's failure plate may draw the closing step the atlas does not hold, under its do-not-publish bar, as its caption says; (c) one pill above two at 296 px is fine; (d) outside drivers marked by place and the words "Outside driver" are enough until the renderer's pill is confirmed; (e) Loop B3's stations in 1 px pills, with the signs its chain record lists, on hollow lines, stand.
+
+### Second batch requests
+
+- **DL-B11, S34's title.** The 119th Congress's circle, at 294 votes so far, sits beside the 116th's 298, and the 119th runs to January 3, 2027, so it may pass 298. A title that names only 2019 and 2020 leaves the reader to find the second circle alone. Write: "The Senate held 298 votes on ending debate in 2019 and 2020 and 294 so far in 2025 and 2026, after no more than seven in any Congress before 1971."
+- **DL-B12, S34 at phone width.** At 358 px the circles from about 1970 on merge into one mass, and no Congress after 1990 can be told apart, so the reading guide's "every outline still shows" no longer holds. Change the form on the phone (`phone: differs`, DR-64, Rule 14.12): for example, one row per Congress since 1971 with its circle and count, the earlier Congresses summed in a line of words; same data, same finding.
+- **DL-R4, research lead, `senate-cloture-motions-by-congress.meta.json`.** S34's note 1 states that changes in 2013 and 2017 lowered the threshold to a simple majority for nominations, which the sidecar lists as unconfirmed. Confirm it on a Senate page and move it out of `unconfirmed`, or S34 drops the clause.
+- **DL-A5, S39.** The research lead's `source_words` column is now in `v7-claims-drug-prices` (A7). Add `encode.source` so each claim prints its sources, as the coverage plan's evidence table needs.
+- **DL-A6, S38's title.** "Ten are documented or well supported" joins two grades into a band the atlas does not define. Give each grade its count: "Of the atlas's 17 issue records on news, records and public information, two are documented, eight well supported, six plausible and one a hypothesis."
+- **DL-R5, research lead, `v7-issues.meta.json`.** Add a source line variant naming the one domain S38 draws, such as "issue records in the domain of news, records and public information, 17 of 194 issues", so the printed line describes the rows drawn (Rule 13.6); S38 then takes it.
+
+### Second batch: tested and not tested
+
+- Tested: `oa-chart.mjs build` for S17 to S22, S25 to S27, S29 to S39, S41 and S42 (22 specs, all PASS); scripted recounts of S37's, S38's and S39's title figures from their data files; the four sketches' bytes, classes and parts read from the files and drawn on both grounds and in grayscale; chapter 15's new plate text extracted and its quotations and least-certain grades checked against V7 by script; the plates captured after the rebuild.
+- Not tested: S38's live lookup (not built, A9); S23 and S40 (no real data yet); the opener's drawing after SD-1 (its words checked from the file, not captured); the sketches inside the guide page itself (drawn on my own test page with the kit's CSS).
+
 ## Routine calls
 
 - D3-xxx | Round 3's data plan is signed off with twelve changes; no dataset is replaced | Rule 01.9 and DR-229 hold on a scripted recount of both plans; the changes fix data that could not be drawn honestly as planned
@@ -124,7 +163,7 @@ The twelve changes in the plan's "Data lead sign-off" section, by row: 95, 108, 
 
 ### To the main session
 
-- **DL-M1, for the open questions ledger (I write only my notes).** Atlas V7 types Variable D6, State and local testing of reforms, as a flow, while its `kind_plain` calls it a stock and adds that its indicators count a flow and that "the stock would be the number of reforms in force or the legal room states and localities have to act". Dustin decides which kind D6 is; the guide does not change V7, and chapter 15 prints no kind for D6 until he answers (SD-4).
+- **DL-M1, for the open questions ledger (I write only my notes).** Atlas V7 types Variable D6, State and local testing of reforms, as a flow, while its `kind_plain` calls it a stock and adds that its indicators count a flow and that "the stock would be the number of reforms in force or the legal room states and localities have to act". Dustin decides which kind D6 is; the guide does not change V7, and chapter 15 prints no kind for D6 until he answers (SD-4). **Withdrawn in the second batch:** the question is already item 8 of `work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md`, approved under Q-07, so no new ledger row is needed.
 
 ### To the editor
 

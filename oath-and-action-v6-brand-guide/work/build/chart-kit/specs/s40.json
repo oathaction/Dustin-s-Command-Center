@@ -1,0 +1,147 @@
+{
+  "kit": 1,
+  "id": "S40",
+  "form": "tracker-list",
+  "family": "tables-and-plain-words",
+  "tier": "core",
+  "dataset": "congress-gov-housing-bills-119",
+  "sort": [
+    {
+      "field": "became_law_date",
+      "order": "desc"
+    },
+    {
+      "field": "first_chamber_passed",
+      "order": "desc"
+    },
+    {
+      "field": "latest_action_date",
+      "order": "desc"
+    }
+  ],
+  "reader_question": "Where do this Congress’s housing bills stand?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the record of each bill on Congress.gov",
+  "title": "Of eight housing bills that moved past committee referral in the 119th Congress, two had become law by November 11, 2026.",
+  "measure_line": "Housing bills of the 119th Congress that moved past referral to committee, each at its step toward law, of six, as of November 11, 2026, United States Congress.",
+  "notes": [
+    "Congress.gov records a hearing only when it is tied to a bill’s number, and it records none on these eight bills, so step 2 keeps its slash on each; a hearing on the subject, or on a draft with no number, would not show.",
+    "H.R. 224 and H.R. 965 passed the House with no committee vote on record, so step 3 keeps its slash too. The Senate Committee on Banking, Housing, and Urban Affairs reported S. 2651 as a measure of its own.",
+    "The list holds every housing bill in the bill lists of the Senate Committee on Banking, Housing, and Urban Affairs and the House Committee on Financial Services that moved past referral, leaving out one whose title concerns another subject. Housing provisions also ride in larger bills these lists do not catch.",
+    "The ideas in S. 2651 may have moved in H.R. 6644, which this record does not show.",
+    "Status words are Oath & Action’s, from each bill’s latest action on Congress.gov."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A list of eight housing bills with six steps toward law each. Two became law: H.R. 224, the Disabled Veterans Housing Support Act, on January 20, 2026, and H.R. 6644, the 21st Century ROAD to Housing Act, on July 11, 2026. Two passed the House and wait in a Senate committee; four wait for a vote in the chamber where they were filed.",
+  "table": {
+    "caption": "Housing bills of the 119th Congress past committee referral, as of November 11, 2026",
+    "columns": [
+      {
+        "field": "bill",
+        "label": "Bill",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "title",
+        "label": "Name",
+        "format": "text"
+      },
+      {
+        "field": "sponsor",
+        "label": "Sponsor",
+        "format": "text"
+      },
+      {
+        "field": "sponsor_party",
+        "label": "Party",
+        "format": "text"
+      },
+      {
+        "field": "committee_vote",
+        "label": "Committee vote",
+        "format": "text",
+        "empty": "None recorded"
+      },
+      {
+        "field": "first_chamber_passed",
+        "label": "First chamber passed",
+        "format": "date",
+        "empty": "Not yet"
+      },
+      {
+        "field": "second_chamber_passed",
+        "label": "Second chamber passed",
+        "format": "date",
+        "empty": "Not yet"
+      },
+      {
+        "field": "became_law_date",
+        "label": "Became law",
+        "format": "date",
+        "empty": "Not yet"
+      },
+      {
+        "field": "law_number",
+        "label": "Public law",
+        "format": "text",
+        "empty": "None"
+      },
+      {
+        "field": "status",
+        "label": "Where it stands",
+        "format": "text"
+      },
+      {
+        "field": "latest_action_date",
+        "label": "Latest action",
+        "format": "date"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Each row’s six circles are the steps Filed, Hearing, Committee vote, First chamber, Second chamber and President: filled where done, a heavy ring on the step the bill is at, a fine ring ahead, and a slash on a step the bill went past with nothing recorded."
+  ],
+  "phone": "differs",
+  "phone_note": "Below 552 px the circles start on the text edge and the step names move into a key after the list.",
+  "artboard": "reading",
+  "domain": "D09",
+  "states": [],
+  "encode": {
+    "key": "bill",
+    "name": "title",
+    "hearing": "hearing_recorded",
+    "committee": "committee_vote",
+    "committee_record": "committee_record",
+    "first": "first_chamber_passed",
+    "second": "second_chamber_passed",
+    "law_date": "became_law_date",
+    "law": "law_number",
+    "status": "status",
+    "date": "latest_action_date"
+  },
+  "labels": {
+    "steps": [
+      "Filed",
+      "Hearing",
+      "Committee vote",
+      "First chamber",
+      "Second chamber",
+      "President"
+    ],
+    "now": "Step {n} of 6: {step}.",
+    "detail": "{status}; latest action {date}.",
+    "became": "Became law on {date}, Public Law {law}.",
+    "sub": "Sponsor: {sponsor} ({sponsor_party}, {sponsor_state})",
+    "key_title": "Steps:",
+    "committee_also": "Reported Original Measure"
+  },
+  "notes_internal": [
+    "Data plan row 39. The six steps and their marks follow Rules 11.1 to 11.5; a list row is drawn as Rule 11.5 sets it.",
+    "Request A6 answered by the research lead: the file carries the recorded facts, and the form sets each step from them (hearing_recorded; committee_vote, or 'Reported Original Measure' in committee_record for S. 2651; the two chamber dates; became_law_date). A step passed with nothing recorded takes Rule 11.2's slash, and note 1 says what the slash on step 2 means, since the record cannot show a hearing held without a bill number.",
+    "Parties named in words in the text's ink (H10); no party mark.",
+    "Figures checked by script (figures.py s40)."
+  ]
+}

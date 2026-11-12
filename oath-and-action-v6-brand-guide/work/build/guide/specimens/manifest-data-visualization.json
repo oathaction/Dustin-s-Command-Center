@@ -108,7 +108,7 @@
  "s-14-8-correct": {
   "chapter": "14",
   "rule": "14.8",
-  "alt": "Five small panels, one age group in ink in each over the rest in gray. Householders under 35 were the least likely to own their homes in every year from 1982 to 2025.",
+  "alt": "Five small panels, one age group in ink in each over the rest in gray. Householders under 35 were the least likely of five age groups to own their homes in each year shown, 1995 to 2025.",
   "illustrative": false,
   "notes": ""
  },
@@ -247,7 +247,7 @@
   "chapter": "14",
   "rule": "14.20",
   "width_px": null,
-  "alt": "Slope lines show the homeownership rate of five age groups in 2015 and 2025. Householders under 35 went from 35.0 to 37.0 percent and those 35 to 44 from 58.5 to 60.8; the three older groups stayed within half a point, from 70.0 to 69.8, 75.4 to 75.9 and 78.9 to 78.6.",
+  "alt": "Slope lines show the homeownership rate of five age groups in 2015 and 2025. Householders under 35 went from 35.0 to 37.0 percent and those 35 to 44 from 58.5 to 60.8, both past their margins of error; the three older groups changed by less than their margins, from 70.0 to 69.8, 75.4 to 75.9 and 78.9 to 78.6.",
   "illustrative": false,
   "notes": "S20, slope: the chart kit draws it from work/build/chart-kit/specs/s20.json (contract R1-C3)"
  },
@@ -266,6 +266,14 @@
   "alt": "Pairs of bars compare the labor force participation of men and women in 13 age groups in 2025. Men’s rates run from 10.2 percent at 75 and over to 89.4 at 30 to 34; women’s from 6.1 to 82.6 at 25 to 29. Women’s rates are lower in every group from 22 on, by 9.7 points at 60 and 61.",
   "illustrative": false,
   "notes": "S22, grouped-bar: the chart kit draws it from work/build/chart-kit/specs/s22.json (contract R1-C3)"
+ },
+ "s-14-s23": {
+  "chapter": "14",
+  "rule": "14.23",
+  "width_px": null,
+  "alt": "Five panels, one per topic hub, show the share of each hub’s claims at each evidence grade. Documented claims lead in every hub, from 84.5 percent in public services where you live and 77.9 in cost of living to 67.2 in voice, power and information.",
+  "illustrative": false,
+  "notes": "S23, small-multiple-bars: the chart kit draws it from work/build/chart-kit/specs/s23.json (contract R1-C3)"
  },
  "s-14-24-sketch": {
   "chapter": "14",
@@ -490,6 +498,14 @@
   "alt": "A table of the atlas’s 11 claims about drug prices, each with its grade, period, who it covers and its limits. Ten are documented, among them that the three largest pharmacy benefit managers processed nearly 80% of U.S. prescriptions in 2023; one, that generic competition lowers drug prices, is well supported.",
   "illustrative": false,
   "notes": "S39, evidence-table: the chart kit draws it from work/build/chart-kit/specs/s39.json (contract R1-C3)"
+ },
+ "s-14-s40": {
+  "chapter": "14",
+  "rule": "14.132",
+  "width_px": null,
+  "alt": "A list of eight housing bills with six steps toward law each. Two became law: H.R. 224, the Disabled Veterans Housing Support Act, on January 20, 2026, and H.R. 6644, the 21st Century ROAD to Housing Act, on July 11, 2026. Two passed the House and wait in a Senate committee; four wait for a vote in the chamber where they were filed.",
+  "illustrative": false,
+  "notes": "S40, tracker-list: the chart kit draws it from work/build/chart-kit/specs/s40.json (contract R1-C3)"
  },
  "s-14-s41": {
   "chapter": "14",

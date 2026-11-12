@@ -4072,3 +4072,8 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | # | Decision | Reason |
 |---|---|---|
 | D3-350 | Round 0's approved specimens over three times their tier's average (S05 and S13) are listed by name with their bytes in the build report rather than failing the far-over test, once maker B confirms they carry no unused column; every new specimen keeps the test | Dustin approved them on board 1 at their measured bytes, and the 2.804 MB stop he approved was projected from them (DR-238) |
+
+### Data visualization lead, round 1 second batch
+
+| # | Decision | Reason |
+|---|---|---|

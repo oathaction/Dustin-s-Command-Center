@@ -4,7 +4,10 @@
   "form": "slope",
   "family": "comparison",
   "tier": "core",
-  "dataset": "census-hvs-homeownership-by-age",
+  "dataset": [
+    "census-hvs-homeownership-by-age",
+    "census-hvs-homeownership-by-age-moe"
+  ],
   "where": {
     "grouping": "summary",
     "year": [
@@ -22,15 +25,16 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: a Census Bureau survey; the rates are estimates",
-  "title": "In 2025, 37.0 percent of householders under 35 owned their homes, against 35.0 percent in 2015, the lowest rate of the five age groups in both years.",
+  "title": "In 2025, 37.0 percent of householders under 35 owned their homes, up 2.0 points from 2015 and past the survey’s margin of error, still the lowest rate of the five age groups.",
   "measure_line": "Homeownership rate, the share of households that own their home, by age of the householder, annual averages for 2015 and 2025, the latest year and the year ten years before, United States. The scale runs from 30 to 80 percent.",
   "notes": [
+    "The rise for householders under 35 passes its margin of error of about 0.8 points at 90 percent confidence, and so does the rise for those 35 to 44 (2.3 points, margin 1.1). The changes for the three older groups are within their margins.",
     "The rate for householders under 35 was highest in 2004, at 43.1 percent, and lowest in 2016, at 34.5 percent, so 2015 sits near its low.",
     "The 2025 average leaves out October 2025, when a lapse in federal funding stopped the survey’s data collection."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Slope lines show the homeownership rate of five age groups in 2015 and 2025. Householders under 35 went from 35.0 to 37.0 percent and those 35 to 44 from 58.5 to 60.8; the three older groups stayed within half a point, from 70.0 to 69.8, 75.4 to 75.9 and 78.9 to 78.6.",
+  "alt": "Slope lines show the homeownership rate of five age groups in 2015 and 2025. Householders under 35 went from 35.0 to 37.0 percent and those 35 to 44 from 58.5 to 60.8, both past their margins of error; the three older groups changed by less than their margins, from 70.0 to 69.8, 75.4 to 75.9 and 78.9 to 78.6.",
   "table": {
     "caption": "Homeownership rate by age of householder, percent",
     "pivot": {
@@ -93,10 +97,11 @@
     ]
   },
   "notes_internal": [
-    "Data plan row 6 (re-picked under DR-229 from homeownership by race, which S05 draws); data lead change 5: the 2025 average leaves out October 2025, said in note 2.",
-    "The title states the two estimates and the ranking, which passes any margin (20 points to the next group); it claims no size of change, since the file carries no margin of error (DR-64, Rule 14.9). Request A2 asks for the margins; with them the title may say whether the 2.0-point change passes its margin.",
-    "Note 1 gives the longer record so a reader on either side sees where 2015 sits (DR-93, DR-124); request A3 asks the data lead whether the window should start earlier.",
-    "Figures checked by script (figures.py s20).",
-    "Source line: the sidecar's names 1982 to 2025; request A2 asks for a variant naming 2015 and 2025."
-  ]
+    "Data plan row 6 (re-picked under DR-229); window 2015 and 2025, confirmed by the data lead (A3). Data lead change 5: the 2025 average leaves out October 2025 (note 3).",
+    "Request A2 answered: census-hvs-homeownership-by-age-moe gives HVS Table B-5's margins and each change's margin (root of the summed squares, approximate). The under-35 change, 2.0, passes 0.78; 35 to 44, 2.3, passes 1.08; the three older groups do not. The title now claims the rise with its margin (DR-64, Rule 14.9), and note 1 prints the margins.",
+    "Two datasets, so the source line names both tables with each retrieval date (C2).",
+    "Note 2 gives the longer record so a reader on either side sees where 2015 sits (DR-93, DR-124).",
+    "Figures checked by script (figures.py s20)."
+  ],
+  "source_line": "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Annual Statistics 2015 and 2025, Tables 17 and B-5, homeownership rate by age of householder with margins of error, 2015 and 2025, United States. Retrieved November 11 and 12, 2026. Survey estimates; the 2025 average leaves out October, when no data were collected; margins of the changes computed by Oath & Action."
 }

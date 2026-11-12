@@ -140,3 +140,21 @@
 /* A lean table (method load-table): numbers right-aligned by default, text cells marked .t */
 .oac-table[data-oa-lean] td { text-align: right; font-variant-numeric: tabular-nums; }
 .oac-table[data-oa-lean] .t { text-align: left; }
+
+/* A lookup (A9, round 1): chapter 18's search field and filter bar above an open table; the controls show only once the
+   script wires them, and print shows every row */
+.oac-lk { margin-top: 18px; display: grid; gap: 8px; max-width: 42em; }
+.oac-lk[hidden], .oac-lk [hidden] { display: none; }
+.oac-lk-label, .oac-lk-k { font: var(--oa-font-weight-semibold) 15px/22px var(--oa-font-family-reading); margin: 0; }
+.oac-lk-box, .oac-lk-bar, .oac-lk-chips { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.oac-lk-input { flex: 1 1 14em; min-width: 0; min-height: var(--oa-size-target-touch); box-sizing: border-box; padding: 8px 10px; font: var(--oa-font-weight-regular) 16px/22px var(--oa-font-family-reading);
+  color: var(--oa-color-text-primary); background: var(--oa-color-field-ground); border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); border-radius: 0; }
+.oac-lk-btn { display: inline-flex; align-items: center; min-height: var(--oa-size-target-touch); box-sizing: border-box; margin: 0; padding: 8px 13px; cursor: pointer;
+  font: var(--oa-font-weight-regular) 15px/22px var(--oa-font-family-reading); color: var(--oa-color-text-primary); background: transparent;
+  border: var(--oa-border-width-hairline) solid var(--oa-color-border-strong); border-radius: 0; text-align: start; }
+.oac-lk-btn:hover { text-decoration: underline; text-underline-offset: .2em; }
+.oac-lk-input:focus-visible, .oac-lk-btn:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: 2px; }
+.oac-lk-chip[aria-pressed="true"] { font-weight: var(--oa-font-weight-semibold); box-shadow: inset 0 0 0 1px var(--oa-color-border-strong); }
+.oac-lk-chip[aria-pressed="true"]::before { content: "\2713"; margin-right: 6px; }
+.oac-lk-status { margin: 4px 0 0; font: var(--oa-font-weight-regular) 15px/22px var(--oa-font-family-reading); }
+@media print { .oac-lk { display: none; } .oac-fig[data-oa-lookup] .oac-table tr[hidden] { display: table-row; } }

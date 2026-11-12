@@ -4,7 +4,7 @@
  "rounds": [
   1
  ],
- "examples": 47,
+ "examples": 49,
  "by_domain": {
   "D01": 4,
   "D02": 5,
@@ -14,10 +14,10 @@
   "D06": 4,
   "D07": 4,
   "D08": 7,
-  "D09": 4,
+  "D09": 5,
   "D10": 6
  },
- "all_domains": 4,
+ "all_domains": 5,
  "by_state": {
   "CA": 1,
   "CT": 1,
@@ -208,7 +208,7 @@
    "source": "s04.json"
   },
   {
-   "example": "In 2025, 37.0 percent of householders under 35 owned their homes, against 35.0 percent in 2015, the lowest rate of the five age groups in both years.",
+   "example": "In 2025, 37.0 percent of householders under 35 owned their homes, up 2.0 points from 2015 and past the survey’s margin of error, still the lowest rate of the five age groups.",
    "domain": "D09",
    "states": [],
    "rule": "14.20",
@@ -227,6 +227,13 @@
    "states": [],
    "rule": "14.22",
    "source": "s22.json"
+  },
+  {
+   "example": "Public services where you live has the largest share of documented claims of the atlas’s five hubs, 84.5 percent, and voice, power and information the smallest, 67.2.",
+   "domain": "all",
+   "states": [],
+   "rule": "14.23",
+   "source": "s23.json"
   },
   {
    "example": "The margin in every state and DC moved toward the Republican nominee from 2020 to 2024, by 1.0 point in Washington to 10.5 points in New York.",
@@ -403,6 +410,13 @@
    "states": [],
    "rule": "14.131",
    "source": "s39.json"
+  },
+  {
+   "example": "Of eight housing bills that moved past committee referral in the 119th Congress, two had become law by November 11, 2026.",
+   "domain": "D09",
+   "states": [],
+   "rule": "14.132",
+   "source": "s40.json"
   },
   {
    "example": "Republican and Democratic voters favored a ban on stock trading by members of Congress at almost the same rate in a May 2023 survey, 87 and 88 percent.",

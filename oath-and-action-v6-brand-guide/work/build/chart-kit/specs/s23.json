@@ -1,0 +1,93 @@
+{
+  "kit": 1,
+  "id": "S23",
+  "form": "small-multiple-bars",
+  "family": "comparison",
+  "tier": "extended",
+  "dataset": "v7-claims-by-hub-and-grade",
+  "reader_question": "How sure is each of the five topic hubs’ evidence?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the atlas’s own register of graded claims",
+  "v7": {
+    "grade": "documented",
+    "ids": [],
+    "snapshot": "2026-10-15"
+  },
+  "title": "Public services where you live has the largest share of documented claims of the atlas’s five hubs, 84.5 percent, and voice, power and information the smallest, 67.2.",
+  "measure_line": "Claims behind the atlas’s 16 everyday answers, grouped by its five topic hubs, as a share of each hub’s claims by evidence grade, 433 claims checked through October 15, 2026, United States. Every panel shares one scale, and bars start at zero.",
+  "notes": [
+    "Grades: documented means on the public record; well supported means strong research evidence; plausible means some evidence; contested means evidence disputed. A claim’s grade covers that claim alone.",
+    "Voice, power and information has the largest share of plausible claims, 18.8 percent, and work and financial security the largest share contested, 8.2 percent."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Five panels, one per topic hub, show the share of each hub’s claims at each evidence grade. Documented claims lead in every hub, from 84.5 percent in public services where you live and 77.9 in cost of living to 67.2 in voice, power and information.",
+  "table": {
+    "caption": "Claims by topic hub and evidence grade",
+    "columns": [
+      {
+        "field": "hub_title",
+        "label": "Hub",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "grade",
+        "label": "Grade",
+        "format": "text",
+        "words": {
+          "documented": "Documented",
+          "well_supported": "Well supported",
+          "plausible": "Plausible",
+          "contested": "Contested"
+        }
+      },
+      {
+        "field": "claims",
+        "label": "Claims",
+        "format": "integer"
+      },
+      {
+        "field": "share_pct",
+        "label": "Share of the hub’s claims",
+        "format": "percent:1"
+      }
+    ]
+  },
+  "chart_notes": [
+    "In each panel the documented bar is drawn in the text’s ink and the other three grades in light gray."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "all",
+  "states": [],
+  "encode": {
+    "panel": "hub",
+    "category": "grade",
+    "value": "share_pct"
+  },
+  "labels": {
+    "panel_title": "{hub_title}, {hub_claims} claims",
+    "categories": {
+      "documented": "Documented",
+      "well_supported": "Well supported",
+      "plausible": "Plausible",
+      "contested": "Contested"
+    },
+    "named": "documented"
+  },
+  "formats": {
+    "value": "percent:1"
+  },
+  "scale": {
+    "x": [
+      0,
+      100
+    ]
+  },
+  "notes_internal": [
+    "Data plan row 9 (coverage plan: evidence mix by topic hub). Draws the engineer's derived file v7-claims-by-hub-and-grade (request A4), the sums of v7-claims-by-grade over each hub; C1 keeps the grouping in its own file. Its printed source line is the sidecar's.",
+    "Figures checked by script (figures.py s23) against v7-claims-by-grade itself."
+  ]
+}

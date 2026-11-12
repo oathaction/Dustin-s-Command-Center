@@ -602,7 +602,7 @@
   K.words = K.words || {};
   // words.json's words, carried inside the kit so a plain page opened from disk prints them too (access S8); the kit's
   // self-test fails when this copy and words.json differ
-  K.WORDS = {"source_label": "Source:", "table_summary": "The table and notes", "notes_in_chart": "Notes in the chart", "table_region": "{caption}, table", "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.", "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.", "scripts_off": "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below.", "export_fonts": "Set in Inter and Inter Tight. On a computer without both fonts, the labels fall back to another font and change width."};
+  K.WORDS = {"source_label": "Source:", "table_summary": "The table and notes", "notes_in_chart": "Notes in the chart", "table_region": "{caption}, table", "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.", "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.", "scripts_off": "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below.", "export_fonts": "Set in Inter and Inter Tight. On a computer without both fonts, the labels fall back to another font and change width.", "lookup_clear_search": "Clear the search", "lookup_filters": "Filters, {n} on", "lookup_clear_filters": "Clear filters", "lookup_count": "{n} of {total} {noun}"};
   function word(opts, k) {
     var w = (opts && opts.words) || K.words;
     if (k in w) return w[k];
@@ -812,8 +812,12 @@
     } else {
       var cols = tb.columns || [];
       head = '<tr>' + cols.map(function (col) { return '<th scope="col"' + (num_col(col) ? '' : ' class="t"') + '>' + K.chips(col.label, ids) + '</th>'; }).join('') + '</tr>';
+      // a lookup (A9) also searches columns the table does not print: their words ride on the row as data-oa-find
+      var lk = spec.lookup && spec.lookup.search, shown = cols.map(function (c) { return c.field; });
+      var extra_find = lk ? (lk.fields || []).filter(function (f) { return shown.indexOf(f) < 0; }) : [];
       body = t.rows.map(function (r) {
-        return '<tr>' + cols.map(function (col) {
+        var find = extra_find.map(function (f) { return r[f] == null ? '' : String(r[f]); }).join(' ').replace(/\s+/g, ' ').trim();
+        return '<tr' + (find ? ' data-oa-find="' + esc(find) + '"' : '') + '>' + cols.map(function (col) {
           var h = K.chips(K.cell_text(col, r), ids), tag = col.row_header ? 'th' : 'td';
           return '<' + tag + (col.row_header ? ' scope="row"' : '') + (num_col(col) ? '' : ' class="t"') + dv(r[col.field], h, col) + '>' + h + '</' + tag + '>';
         }).join('') + '</tr>';
@@ -1016,11 +1020,86 @@
       spec.chart_notes.map(function (n) { return '<li>' + K.chips(n, ids) + '</li>'; }).join('') + '</ul>' : '';
     var region = word(opts, 'table_region').replace('{caption}', (spec.table && spec.table.caption) || spec.id);
     var cap = (spec.table && spec.table.caption) || spec.title || '';
-    p.push('<details class="oac-eq" data-role="equivalent"' + (opts.svg ? '' : ' open') + '><summary>' + esc(word(opts, 'table_summary')) + (cap ? '<span class="oac-vh">: ' + esc(cap) + '</span>' : '') + '</summary>' +
+    var lookup = spec.lookup && !(spec.table && spec.table.pivot) ? K.lookup_html(spec, id, opts) : '';
+    if (lookup) p.push(lookup);
+    p.push('<details class="oac-eq" data-role="equivalent"' + (opts.svg && !lookup ? '' : ' open') + '><summary>' + esc(word(opts, 'table_summary')) + (cap ? '<span class="oac-vh">: ' + esc(cap) + '</span>' : '') + '</summary>' +
       '<div class="oac-eq-b">' + cn + (opts.guide ? '<div class="oac-tw" role="group" aria-label="' + esc(region) + '">' : '<div class="oac-tw" role="region" tabindex="0" aria-label="' + esc(region) + '">') + K.table_html(spec, rows, { lean: opts.lean_table, types: opts.types }) + '</div></div></details>');
     var fail = spec.failure ? ' data-oa-failure="' + esc(spec.failure.rule || '') + '"' : '';
     var ab = spec.artboard && spec.artboard !== 'reading' ? ' data-oa-artboard="' + esc(spec.artboard) + '"' : '';
-    return '<figure class="oac-fig" id="' + id + '" data-oa-chart-id="' + esc(spec.id) + '" data-form="' + esc(spec.form) + '" data-evidence="' + esc(spec.evidence) + '"' + ab + fail + '>' + p.join('') + '</figure>';
+    return '<figure class="oac-fig" id="' + id + '" data-oa-chart-id="' + esc(spec.id) + '" data-form="' + esc(spec.form) + '" data-evidence="' + esc(spec.evidence) + '"' + ab + fail + (lookup ? ' data-oa-lookup' : '') + '>' + p.join('') + '</figure>';
+  };
+  // A lookup (A9, round 1; chapter 18's search, Rule 18.15, and filter bar, Rule 18.16): a search field, a Filters button
+  // that opens a sheet of chips, and one status line that counts the rows shown, above the table equivalent, which stays
+  // open. The controls carry hidden until the script wires them, so with scripts off, and in print, the whole table shows.
+  // spec.lookup: {search: {label, fields}, filters: [{field, label, words}], noun, none}. Within a filter any chip on may
+  // match; across filters every filter with a chip on must match; the search matches the row's words and data-oa-find.
+  K.lookup_html = function (spec, id, opts) {
+    var lk = spec.lookup, cols = (spec.table && spec.table.columns) || [], fields = cols.map(function (c) { return c.field; });
+    var lid = id + '-lk', out = ['<div class="oac-lk" data-oa-lookup-controls hidden>'];
+    if (lk.search) {
+      out.push('<label class="oac-lk-label" for="' + lid + '-q">' + esc(lk.search.label || '') + '</label><div class="oac-lk-box">' +
+        '<input class="oac-lk-input" id="' + lid + '-q" type="search" autocomplete="off" spellcheck="false" aria-describedby="' + lid + '-n">' +
+        '<button type="button" class="oac-lk-btn oac-lk-clear" hidden>' + esc(word(opts, 'lookup_clear_search')) + '</button></div>');
+    }
+    var fl = (lk.filters || []).filter(function (f) { return fields.indexOf(f.field) >= 0 && f.words; });
+    if (fl.length) {
+      out.push('<div class="oac-lk-bar"><button type="button" class="oac-lk-btn oac-lk-toggle" aria-expanded="false" aria-controls="' + lid + '-f">' +
+        '<span class="oac-lk-count" data-words="' + esc(word(opts, 'lookup_filters')) + '">' + esc(word(opts, 'lookup_filters').replace('{n}', '0')) + '</span></button>' +
+        '<button type="button" class="oac-lk-btn oac-lk-unfilter" hidden>' + esc(word(opts, 'lookup_clear_filters')) + '</button></div><div class="oac-lk-sheet" id="' + lid + '-f" hidden>');
+      fl.forEach(function (f, i) {
+        out.push('<p class="oac-lk-k" id="' + lid + '-g' + i + '">' + esc(f.label || f.field) + '</p><div class="oac-lk-chips" role="group" aria-labelledby="' + lid + '-g' + i + '" data-col="' + fields.indexOf(f.field) + '">' +
+          Object.keys(f.words).map(function (v) { return '<button type="button" class="oac-lk-btn oac-lk-chip" aria-pressed="false">' + esc(f.words[v]) + '</button>'; }).join('') + '</div>');
+      });
+      out.push('</div>');
+    }
+    out.push('<p class="oac-lk-status" id="' + lid + '-n" role="status" data-noun="' + esc(lk.noun || '') + '" data-none="' + esc(lk.none || '') + '" data-words="' + esc(word(opts, 'lookup_count')) + '"></p></div>');
+    return out.join('');
+  };
+  K.lookup = function (fig) {
+    // wire a figure's lookup from its own markup: no island is needed, so the controls work as soon as the page loads
+    var box = fig.querySelector('[data-oa-lookup-controls]');
+    if (!box || box._oac_wired) return;
+    box._oac_wired = true;
+    var q = box.querySelector('.oac-lk-input'), clear = box.querySelector('.oac-lk-clear'), toggle = box.querySelector('.oac-lk-toggle');
+    var unfilter = box.querySelector('.oac-lk-unfilter'), count = box.querySelector('.oac-lk-count'), status = box.querySelector('.oac-lk-status');
+    var groups = Array.prototype.slice.call(box.querySelectorAll('.oac-lk-chips')), chips = Array.prototype.slice.call(box.querySelectorAll('.oac-lk-chip'));
+    var rows = Array.prototype.slice.call(fig.querySelectorAll('table.oac-table tbody tr'));
+    var norm = function (t) { return String(t || '').replace(/\s+/g, ' ').trim().toLowerCase(); };
+    var on = function (c) { return c.getAttribute('aria-pressed') === 'true'; };
+    function run() {
+      var term = q ? norm(q.value) : '', n = 0;
+      rows.forEach(function (tr) {
+        var hit = !term || norm(tr.textContent + ' ' + (tr.getAttribute('data-oa-find') || '')).indexOf(term) >= 0;
+        hit = hit && groups.every(function (g) {
+          var want = Array.prototype.filter.call(g.querySelectorAll('.oac-lk-chip'), on).map(function (c) { return norm(c.textContent); });
+          var cell = tr.children[+g.getAttribute('data-col')];
+          return !want.length || (cell && want.indexOf(norm(cell.textContent)) >= 0);
+        });
+        tr.hidden = !hit;
+        if (hit) n++;
+      });
+      var k = chips.filter(on).length;
+      if (count) count.textContent = count.getAttribute('data-words').replace('{n}', k);
+      if (unfilter) unfilter.hidden = !k;
+      if (clear) clear.hidden = !(q && q.value);
+      status.textContent = status.getAttribute('data-words').replace('{n}', n).replace('{total}', rows.length).replace('{noun}', status.getAttribute('data-noun')) +
+        (n ? '' : '. ' + status.getAttribute('data-none'));
+    }
+    if (q) {
+      q.addEventListener('input', run);
+      q.addEventListener('keydown', function (e) { if (e.key === 'Escape' && q.value) { e.preventDefault(); q.value = ''; run(); q.focus(); } });
+    }
+    if (clear) clear.addEventListener('click', function () { q.value = ''; run(); q.focus(); });
+    if (toggle) toggle.addEventListener('click', function () {
+      var open = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(open));
+      var sheet = fig.ownerDocument.getElementById(toggle.getAttribute('aria-controls'));
+      if (sheet) sheet.hidden = !open;
+    });
+    chips.forEach(function (c) { c.addEventListener('click', function () { c.setAttribute('aria-pressed', String(!on(c))); run(); }); });
+    if (unfilter) unfilter.addEventListener('click', function () { chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); }); run(); toggle.focus(); });
+    box.hidden = false;
+    run();
   };
 
   // ------------------------------------------------------------------------------------------------------------
@@ -1094,7 +1173,8 @@
       if (!f.querySelector('script[data-oa-chart-data]')) continue;
       f.setAttribute('data-oa-js', '');
       var eq = f.querySelector('details.oac-eq[open]');
-      if (eq && !f.getAttribute('data-oa-drawn')) eq.removeAttribute('open');
+      if (f.hasAttribute('data-oa-lookup')) K.lookup(f);
+      else if (eq && !f.getAttribute('data-oa-drawn')) eq.removeAttribute('open');
       lazy.push(f);
     }
     K._pending = (K._pending || []).concat(lazy);

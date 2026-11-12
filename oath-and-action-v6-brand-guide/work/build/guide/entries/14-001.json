@@ -56,10 +56,7 @@
   "caption": "<strong>Fails Rule 14.1.</strong> The reader asked how applications changed, and bars sorted by size put 2025 first and 2009 last, so the years fall out of order and the jump after 2019 cannot be seen.",
   "alt": "Failure case: do not publish. The same applications drawn as bars sorted by size, 2025 first and 2009 last, so the years fall out of order.",
   "illustrative": false,
-  "notes": "",
-  "charts": [
-   "s-14-1-sorted"
-  ]
+  "notes": ""
  },
  "examples": [
   {

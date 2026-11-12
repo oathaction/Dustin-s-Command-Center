@@ -4,9 +4,13 @@
  * happened keeps its number under a slash; a bill that became law fills all six. The status words follow the marks. Where
  * the row is 552 px or wider each step takes a sixth of it with its name under its circle; narrower, the circles start on
  * the text edge and the step names move into a key after the list (Rule 11.5).
- * encode: key (the bill number), name (text), step (integer, 1 to 6: the step the bill is at now), law (text, optional: a
- * value here means the bill became law), skipped (text, optional: step numbers that never happened, such as "2"),
- * status (text: words for where it stands), date (date: the status's date).
+ * Each bill's steps come from its record: Filed always; Hearing done where a hearing is recorded on the bill; Committee
+ * vote done where a vote is recorded (or the committee record holds labels.committee_also, such as a measure a committee
+ * reported as its own); First chamber, Second chamber and the signer's step done by their dates. A step the bill went past
+ * with nothing recorded keeps its number under a slash (Rule 11.2); the step after the last one done is the step it is at.
+ * encode: key (the bill number), name (text), hearing (boolean), committee (text: the committee vote, empty where none),
+ * committee_record (text, optional), first (date), second (date), law_date (date), law (text: the public law number),
+ * status (text: words for where it stands), date (date: the latest action's date).
  * labels: steps (the six step names), now ("Step {n} of 6: {step}."), detail (words after it while a bill moves, with
  * {status} and {date}), sub (the second line, with {column} placeholders), became ("Became law on {date}, Public Law {law}."), key_title (the key's head on narrow rows). */
 (function (K) {
@@ -15,26 +19,31 @@
     form: 'tracker-list',
     name: 'Tracker List',
     family: 'tables-and-plain-words',
-    encode: { key: 'id', name: 'text', step: 'integer', law: 'text?', skipped: 'text?', status: 'text', date: 'date' },
-    labels: ['steps', 'now', 'became', 'detail', 'sub', 'key_title'],
+    encode: { key: 'id', name: 'text', hearing: 'boolean', committee: 'text', committee_record: 'text?', first: 'date', second: 'date', law_date: 'date', law: 'text', status: 'text', date: 'date' },
+    labels: ['steps', 'now', 'became', 'detail', 'sub', 'key_title', 'committee_also'],
     phone: 'differs',
     draw: function (c) {
-      var rows = c.rows, ek = c.field('key'), en = c.field('name'), es = c.field('step'), el = c.field('law', false);
-      var esk = c.field('skipped', false), est = c.field('status'), ed = c.field('date');
+      var rows = c.rows, ek = c.field('key'), en = c.field('name'), eh = c.field('hearing'), ecv = c.field('committee');
+      var ecr = c.field('committee_record', false), e1 = c.field('first'), e2 = c.field('second'), eld = c.field('law_date');
+      var el = c.field('law'), est = c.field('status'), ed = c.field('date');
       var W = c.width, L = c.labels, steps = L.steps || ['1', '2', '3', '4', '5', '6'];
       var wide = W >= 552, size = c.size('label'), tick = c.size('tick'), lh = Math.round(size * 1.3);
       var d = wide ? 30 : 26, r = d / 2, nsize = d >= 28 ? 14 : 13;
       var pitch = wide ? W / 6 : Math.min(60, (W - d) / 5), x0 = wide ? pitch / 2 : r;
       var fill = function (t, row, n) {
         return String(t || '').replace(/\{n\}/g, n).replace(/\{step\}/g, steps[n - 1] || '')
-          .replace(/\{date\}/g, K.fmt(row[ed], 'date')).replace(/\{law\}/g, el ? (row[el] || '') : '')
+          .replace(/\{date\}/g, K.fmt(n === 6 && row[eld] ? row[eld] : row[ed], 'date')).replace(/\{law\}/g, row[el] || '')
           .replace(/\{status\}/g, String(row[est] || ''));
       };
       var y = 0;
       c.line(0, y, W, y, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
       rows.forEach(function (row) {
-        var law = el && row[el] !== null && row[el] !== undefined && String(row[el]) !== '';
-        var now = law ? 7 : row[es], skip = String(esk ? row[esk] || '' : '').split(/[ ,;]+/).filter(Boolean).map(Number);
+        var has = function (v) { return v !== null && v !== undefined && v !== '' && v !== false; };
+        var com = has(row[ecv]) || !!(L.committee_also && ecr && String(row[ecr] || '').indexOf(L.committee_also) >= 0);
+        var done = [true, has(row[eh]) && row[eh] !== 'false', com, has(row[e1]), has(row[e2]), has(row[eld])];
+        var last = 0; done.forEach(function (d, i) { if (d) last = i + 1; });
+        var law = done[5], now = law ? 7 : last + 1;
+        var skip = []; for (var q = 1; q < last; q++) if (!done[q - 1]) skip.push(q);
         // the bill's number and name, then its second line
         var top = y + 16, nb = c.text(0, top + size, String(row[ek]) + ', ' + String(row[en]), { role: 'label', weight: 600, max: W });
         var yy = nb.bottom - size * 0.241;
@@ -48,7 +57,7 @@
         }
         for (var n = 1; n <= 6; n++) {
           var cx = x0 + (n - 1) * pitch, ty = cy + nsize * 0.36;
-          var data = { data: { key: row[ek] + '|' + n, field: es, value: n } };
+          var data = { data: { key: row[ek] + '|' + n, field: 'step', value: n } };
           if (skip.indexOf(n) >= 0 && n < now) {
             c.circle(cx, cy, r - 0.75, Object.assign({ fill: 'surface' }, data));
             c.circle(cx, cy, r - 0.75, { stroke: 'context', width: 1.5, mark: false });
