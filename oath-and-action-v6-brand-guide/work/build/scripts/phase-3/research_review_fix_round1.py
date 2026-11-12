@@ -381,9 +381,9 @@ def item_bc_m3(dl):
             continue
         new_cols[k] = v
         if k == 'committee_type_words':
-            new_cols['party'] = {'type': 'category', 'description': 'party code on the committee’s FEC record (DEM, REP); empty where the record lists none'}
-            new_cols['party_full'] = {'type': 'text', 'description': 'party as the committee’s FEC record lists it'}
-            new_cols['party_words'] = {'type': 'category', 'description': 'the party in a reader’s word (Democratic, Republican); empty where the record lists none'}
+            new_cols['party'] = {'type': 'category', 'description': 'the party affiliation the FEC records for the committee, as its code (DEM, REP); empty where the record names none, as for most PACs'}
+            new_cols['party_full'] = {'type': 'text', 'description': 'the party affiliation the FEC records for the committee, as the record spells it'}
+            new_cols['party_words'] = {'type': 'category', 'description': 'the recorded party affiliation in a reader’s word (Democratic, Republican); empty where the record names none'}
     meta['columns'] = new_cols
     meta['url'] = ['https://api.open.fec.gov/v1/totals/pac-party/?cycle=2024&sort=-independent_expenditures&per_page=40',
                    'https://api.open.fec.gov/v1/committee/<committee_id>/']
@@ -392,9 +392,9 @@ def item_bc_m3(dl):
                        'Parties from the committee records as served November 12, 2026')
     meta['qualification'] = ('Independent expenditures are spending for or against candidates made without coordinating with them; the totals '
                              'count spending for and against together and leave out groups that are not political committees (filers of Form 5, '
-                             'such as some nonprofits). Money moved between committees is counted where it was spent. The party columns copy '
-                             'the party each committee’s FEC record lists: the three party committees list theirs, one hybrid PAC lists one, '
-                             'and the other 21 PACs list none')
+                             'such as some nonprofits). Money moved between committees is counted where it was spent. The party columns hold the '
+                             'party affiliation the commission records for each committee, filled wherever its record names one: the three '
+                             'party committees and one hybrid PAC, SFA Fund, Inc.; most PACs record none, and 21 of the 22 here record none')
     meta['printed_source_line'] = ('Source: Federal Election Commission, financial totals for PACs and party committees, independent expenditures, '
                                    '2023 to 2024 cycle, from reports the commission had processed by November 11, 2026, with each party committee’s '
                                    'party from its committee record, United States. Retrieved November 11 and 12, 2026. Spending for and against '

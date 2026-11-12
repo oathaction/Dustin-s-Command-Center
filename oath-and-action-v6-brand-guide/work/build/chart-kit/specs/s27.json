@@ -32,9 +32,9 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Federal Housing Finance Agency’s index of repeat home sales",
-  "title": "Home prices rose in every state and DC from 1991 to 2026, most in Montana, where they grew more than sevenfold.",
-  "reading_guide": "Each thin gray line is one state or DC; Montana is the heavy line. Every line starts near 100 in 1991, so a line at 400 means prices four times their 1991 level in that state. A line’s height shows growth from that state’s own 1991 level.",
-  "measure_line": "House price index, purchase-only, seasonally adjusted, not adjusted for inflation, first quarter 1991 = 100, second quarter of every fifth year from 1991 to 2026, 50 states and DC. The index starts in 1991, its first year for states, and the latest quarter is the second of 2026.",
+  "title": "Home prices rose in every state and DC from 1991 to 2026, most in Montana and Utah, each more than seven times their level in early 1991.",
+  "reading_guide": "Each thin gray line is one state or DC; Montana and Utah are the heavy lines, and the dashed line is the United States. Every line starts near 100 in 1991, so a line at 400 means prices four times their 1991 level. A line’s height shows growth from its own 1991 level.",
+  "measure_line": "House price index, purchase-only, seasonally adjusted, not adjusted for inflation, first quarter 1991 = 100, second quarter of every fifth year from 1991 to 2026, 50 states, DC and the United States. The index starts in 1991, its first year for states, and the latest quarter is the second of 2026.",
   "notes": [
     "Each line joins the second quarter of 1991, 1996, 2001, 2006, 2011, 2016, 2021 and 2026, and skips the quarters between them.",
     "The index follows repeat sales of the same single-family homes with mortgages bought or guaranteed by Fannie Mae or Freddie Mac. It leaves out cash sales and the most expensive homes.",
@@ -42,9 +42,9 @@
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Thin lines for the 50 states and DC show the house price index for every state and DC from 1991 to 2026, all starting near 100. Montana, drawn heavy, rose most, to 742 in the second quarter of 2026. Connecticut, the lowest, reached 319. Many lines peak in 2006 and dip by 2011 before climbing again.",
+  "alt": "Thin lines for the 50 states and DC show the house price index from 1991 to 2026, all starting near 100. Montana and Utah, drawn heavy, rose most, to 742 and 725 in the second quarter of 2026, and the United States as a whole, dashed, reached 436. Connecticut, the lowest, reached 319. Many lines peak in 2006 and dip by 2011 before climbing again.",
   "table": {
-    "caption": "House price index by state, second quarter of each year shown, first quarter 1991 = 100",
+    "caption": "House price index, the United States and each state, second quarter of each year shown, first quarter 1991 = 100",
     "pivot": {
       "row": "name",
       "column": "year",
@@ -71,13 +71,14 @@
     ]
   },
   "chart_notes": [
-    "Heavy line: Montana, 742 in 2026. Darker gray line: Connecticut, the lowest, 319. The heavy horizontal line marks 100, the 1991 level; the scale runs from 0 to 800."
+    "Heavy lines: Montana, 742 in 2026, and Utah, 725. Dashed line: the United States, 436 in 2026. Darker gray line: Connecticut, the lowest, 319. The thin line at 100 marks the first quarter of 1991; the scale runs from 0 to 800."
   ],
   "phone": "same",
   "artboard": "reading",
   "domain": "D09",
   "states": [
     "MT",
+    "UT",
     "CT"
   ],
   "encode": {
@@ -91,12 +92,18 @@
     "tick": "integer"
   },
   "labels": {
-    "lit": "MT",
+    "lit": [
+      "MT",
+      "UT"
+    ],
     "named": [
       "CT"
     ],
+    "apart": "US",
     "end": "{name} {y}",
+    "apart_end": "{name} {y}",
     "base": 100,
+    "base_end": "1991 = 100",
     "base_label": "Index, first quarter 1991 = 100"
   },
   "notes_internal": [
@@ -104,6 +111,7 @@
     "Checked by script against fhfa-house-price-index-by-state.csv, second quarters: highest in 2026 Montana 742.06 ('more than seven times'), then Utah 724.90 and Colorado 674.35; lowest Connecticut 319.12; every state and DC above 100 in 2026; second-quarter 1991 values 97.65 to 103.16 ('near 100'); Montana is also the highest quarter in the whole file. Nevada, Arizona, Florida and California fell from 2006 to 2011 in the drawn quarters.",
     "Weight (R6): the chart draws the second quarter of every fifth year, 8 points a state, 408 rows, in place of all 7,242 quarters; the notes say which quarters the lines join. The fifth years land on 2006 and 2011, near most states' peak and low.",
     "H09: the window runs from the index's first year for states to its latest quarter, with no split at an inauguration. Read from the left and the right: the title reports the index's rise and names one state chosen by the data.",
-    "Data lead DL-B9 applied: the measure line says the index is not adjusted for inflation."
+    "Data lead DL-B9 applied: the measure line says the index is not adjusted for inflation.",
+    "Review fix pass (data lead rulings b and d, statistics S2 and S3, creative director B-S2, brand S14 and S15): the title names Montana and Utah, a near tie (7.42 and 7.25 times the first quarter of 1991, about 7.19 each from the second quarter of 1991), in the statistics reviewer’s words; both lines take the subject ink with no red, since a state ties to a party for a U.S. reader (D3-489), and the field keeps the light fill. The United States joins as a dashed line in the text’s ink with its end label (labels.apart), from the same August 25, 2026 release, base and adjustment; it counts as no state. The sidecar’s printed line now names the release (the vintage). The line at 100 is a thin reference line in the secondary ink named \"1991 = 100\" at its right end. Year labels run evenly back from 2026. states: MT, UT, CT. Checked by script (maker_b_figure_checks.py, check S27): 2026 second quarter Montana 742.06, Utah 724.90, both over 700 and the two highest; United States 435.69; Connecticut 319.12 the lowest; every state and DC above 100; 416 rows drawn."
   ]
 }

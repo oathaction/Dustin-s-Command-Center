@@ -144,21 +144,33 @@ CSS = {
            ".q4 i{background:var(--oa-chart-color-sequential-fill-step4)}.q5 i{background:var(--oa-chart-color-sequential-fill-step5)}"),
     "kd": (".kd{display:inline-block;width:14px;height:14px;border-radius:50%;border:2px solid var(--oa-chart-color-subject);background:var(--oa-chart-color-subject)}"
            ".kd.o{background:var(--oa-color-surface)}"),
-    "sv": (".sv{display:block;max-width:100%;height:auto;overflow:visible}.sv text{font-family:var(--oa-font-family-reading);"
-           "font-size:var(--oa-chart-type-label);fill:var(--oa-chart-color-label)}.sv .tk{font-size:var(--oa-chart-type-tick);fill:var(--oa-color-text-secondary)}"),
-    "ax": ".sv .ax{stroke:var(--oa-chart-color-baseline);stroke-width:var(--oa-chart-line-baseline)}",
-    "gl": ".sv .gl{stroke:var(--oa-chart-color-gridline);stroke-width:1}",
-    "ln": ".sv .ln{fill:none;stroke:var(--oa-chart-color-subject);stroke-width:var(--oa-chart-line-subject);stroke-linejoin:round}",
-    "ld": ".sv .ld{stroke:var(--oa-chart-color-leader);stroke-width:1}",
-    "fs": ".sv .fs{fill:var(--oa-chart-color-subject)}",
-    "fc": ".sv .fc{fill:var(--oa-chart-color-context)}",
-    "fo": ".sv .fo{fill:var(--oa-color-surface);stroke:var(--oa-chart-color-subject);stroke-width:2}",
-    "g1": ".sv .g1{stroke:var(--oa-chart-color-categorical-fill-group1)}.sv .g2{stroke:var(--oa-chart-color-categorical-fill-group2)}"
-          ".sv .g3{stroke:var(--oa-chart-color-categorical-fill-group3)}.sv .g4{stroke:var(--oa-chart-color-categorical-fill-group4)}"
-          ".sv .g5{stroke:var(--oa-chart-color-sequential-fill-step3)}.sv .kl{stroke-width:3}",
-    "band": ".sv .bd{fill:var(--oa-chart-color-band)}",
-    "rb": ".sv .rd{fill:var(--oa-color-palette-pillar-red)}.sv .bl{fill:var(--oa-color-palette-prussian)}",
-    "kc": ".sv .kc{fill:var(--oa-chart-color-subject)}",
+    # a drawing at its partner's width (CD RM2): the art box is a size container, the plot's height follows the kit's at
+    # the kit's own phone width (kit.js PHONE_MAX, 480 px), and ticks and words sit in HTML at their true size
+    "cq": ".cq{container-type:inline-size}",
+    "fl": (".fl{display:grid;grid-template-columns:var(--yw) minmax(0,1fr);max-width:var(--oa-chart-artboard-reading);padding-right:12px}"
+           ".fy,.fp{position:relative}.fp{height:var(--oa-chart-columns-phone-height)}"
+           "@container (min-width:480px){.fp{height:var(--oa-chart-columns-height)}.fx .w{display:block}.fx .n{display:none}}"
+           ".fp>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.fp>svg *{vector-effect:non-scaling-stroke}"
+           ".fx{grid-column:2;position:relative;height:26px}.fx .w{display:none}"
+           ".tk{position:absolute;font:var(--oa-font-weight-regular) var(--oa-chart-type-tick)/1 var(--oa-font-family-reading);"
+           "color:var(--oa-color-text-secondary);white-space:nowrap}.fy .tk{right:8px;transform:translateY(-50%)}"
+           ".fx .tk{top:8px;transform:translateX(-50%)}.fx .s{transform:none}.fx .e,.fp .e{transform:translateX(-100%)}"
+           ".lb{position:absolute;font:var(--oa-font-weight-semibold) var(--oa-chart-type-label)/1.2 var(--oa-font-family-reading);"
+           "color:var(--oa-chart-color-label);white-space:nowrap}.fl+.ky{margin:16px 0 0}"),
+    "ax": ".ax{stroke:var(--oa-chart-color-baseline);stroke-width:var(--oa-chart-line-baseline)}",
+    "gl": ".gl{stroke:var(--oa-chart-color-gridline);stroke-width:1}",
+    "ln": ".ln{fill:none;stroke:var(--oa-chart-color-subject);stroke-width:var(--oa-chart-line-subject);stroke-linejoin:round}",
+    "ld": ".ld{stroke:var(--oa-chart-color-leader);stroke-width:1}",
+    "fs": ".fs{fill:var(--oa-chart-color-subject)}",
+    "lf": ".lf{fill:var(--oa-chart-color-light-fill)}",
+    "dt": (".dt{position:absolute;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;border:2px solid var(--oa-chart-color-subject);"
+           "background:var(--oa-chart-color-subject)}.dt.o{background:var(--oa-color-surface)}"),
+    "g1": ".g1{stroke:var(--oa-chart-color-categorical-fill-group1)}.g2{stroke:var(--oa-chart-color-categorical-fill-group2)}"
+          ".g3{stroke:var(--oa-chart-color-categorical-fill-group3)}.g4{stroke:var(--oa-chart-color-categorical-fill-group4)}"
+          ".g5{stroke:var(--oa-chart-color-sequential-fill-step3)}.kl{stroke-width:3}",
+    "bd": ".bd{fill:var(--oa-chart-color-band)}",
+    "rd": (".hb i.rd,.ky i.rd{background:var(--oa-color-palette-pillar-red)}.hb i.bl,.ky i.bl{background:var(--oa-color-palette-prussian)}"
+           ".ky i{display:inline-block;width:14px;height:14px}"),
     "pal": (f".pal{{display:grid;gap:14px}}.pal .row{{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding-bottom:12px;border-bottom:1px solid var(--oa-color-border-hairline)}}"
             f"@media (min-width:48em){{.pal .row{{grid-template-columns:12rem minmax(0,15rem) minmax(0,1fr);gap:16px;align-items:center}}}}"
             f".pal .nm{{font-weight:var(--oa-font-weight-bold)}}.pal .sw{{display:flex;gap:3px}}.pal .sw i{{flex:1 1 0;height:28px;min-width:20px}}"
@@ -196,7 +208,7 @@ CSS = {
             f"font:var(--oa-type-body-small);overflow-wrap:anywhere}}"),
     "hov": (f".hov{{{CAP};color:var(--oa-color-text-secondary);margin-top:8px}}"),
     "k": f".k{{{LBL};color:var(--oa-color-text-secondary)}}",
-    "tip": (f".tip{{display:inline-block;margin-top:10px;padding:6px 10px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);{SMALL}}}"),
+    "tip": (f".tip{{position:absolute;right:0;padding:6px 10px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);{SMALL}}}"),
     "opq": (".opq{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:0}"
             "@media (min-width:48em){.opq{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}}"
             ".opq li{display:grid;gap:4px;padding:10px 0;border-top:1px solid var(--oa-color-border-hairline)}"

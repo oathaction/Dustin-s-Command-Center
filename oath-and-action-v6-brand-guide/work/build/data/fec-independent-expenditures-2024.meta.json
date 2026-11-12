@@ -14,7 +14,7 @@
  "unit": "dollars, nominal, as the FEC's processed totals give them",
  "date_retrieved": "2026-11-11",
  "vintage": "FEC processed data as served on November 11, 2026: the totals stand on the reports and amendments the commission had processed by then, every committee’s covering through December 31, 2024; a later amendment can change a total. Parties from the committee records as served November 12, 2026",
- "qualification": "Independent expenditures are spending for or against candidates made without coordinating with them; the totals count spending for and against together and leave out groups that are not political committees (filers of Form 5, such as some nonprofits). Money moved between committees is counted where it was spent. The party columns copy the party each committee’s FEC record lists: the three party committees list theirs, one hybrid PAC lists one, and the other 21 PACs list none",
+ "qualification": "Independent expenditures are spending for or against candidates made without coordinating with them; the totals count spending for and against together and leave out groups that are not political committees (filers of Form 5, such as some nonprofits). Money moved between committees is counted where it was spent. The party columns hold the party affiliation the commission records for each committee, filled wherever its record names one: the three party committees and one hybrid PAC, SFA Fund, Inc.; most PACs record none, and 21 of the 22 here record none",
  "columns": {
   "rank": {
    "type": "integer",
@@ -38,15 +38,15 @@
   },
   "party": {
    "type": "category",
-   "description": "party code on the committee’s FEC record (DEM, REP); empty where the record lists none"
+   "description": "the party affiliation the FEC records for the committee, as its code (DEM, REP); empty where the record names none, as for most PACs"
   },
   "party_full": {
    "type": "text",
-   "description": "party as the committee’s FEC record lists it"
+   "description": "the party affiliation the FEC records for the committee, as the record spells it"
   },
   "party_words": {
    "type": "category",
-   "description": "the party in a reader’s word (Democratic, Republican); empty where the record lists none"
+   "description": "the recorded party affiliation in a reader’s word (Democratic, Republican); empty where the record names none"
   },
   "independent_expenditures": {
    "type": "number",
