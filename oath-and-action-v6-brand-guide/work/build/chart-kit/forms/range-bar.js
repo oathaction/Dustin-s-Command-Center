@@ -14,8 +14,8 @@
  * key_interval (a key above the rows, each entry left out when its words are), named (keys whose name and value print
  * bold, in the subject ink against the light fill), point (the one key in the red point), names ({key: printed name}),
  * short ({key: name printed on a phone}), value (the right column's words, with {value}, {margin}, {low}, {high};
- * default {value}). formats: value (also margin, low and high unless their own are set), tick. scale: x ([lo, hi]).
- * stack_below (px: the plot's width under which the rows stack; default 160).
+ * default {value}), stack_below (px: the plot's width under which the rows stack; default 160).
+ * formats: value (also margin, low and high unless their own are set), tick. scale: x ([lo, hi]).
  * The value scale is ticked along the bottom, and along the top as well past 20 rows. Where the name and value columns would
  * leave the plot narrower than labels.stack_below, the rows stack (ED-E16): each row's name and value on one line, its
  * interval across the full width on the line beneath, the gridlines and the reference only through the interval lines, and
