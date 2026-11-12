@@ -1,0 +1,723 @@
+{
+ "guide_build": {
+  "exit": 0,
+  "page_bytes": 9957097,
+  "warnings": 0,
+  "built": "2026-11-12T00:38:35",
+  "report": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/guide/20261112_Board-1-Guide-Build-Report.json"
+ },
+ "engineer_options": {
+  "phase4_share": 2.54,
+  "before": {
+   "label": "Before the pass (earlier pilot; today's page without the pass has 404,025 bytes of room)",
+   "proj": 2.755,
+   "over": 1.005,
+   "ask": 0.601,
+   "ask_words": "0.601 MB"
+  },
+  "after": {
+   "label": "After (a) to (c)",
+   "proj": 2.709,
+   "over": 0.959,
+   "ask": 0.51,
+   "ask_words": "0.510 MB"
+  },
+  "islands": {
+   "label": "With (d), the islands only, no reader loss",
+   "proj": 2.595,
+   "over": 0.845,
+   "ask": 0.396,
+   "ask_words": "0.396 MB"
+  },
+  "tables": {
+   "label": "With (d), tables and islands, tables lost with scripts off",
+   "proj": 1.959,
+   "over": 0.209,
+   "ask": null,
+   "ask_words": "none: the page's room covers it"
+  },
+  "photos": 1.31
+ },
+ "built": "2026-11-12T00:38:30.791764+00:00",
+ "palette": {
+  "new_tints": [
+   [
+    "prussianN56",
+    "#828A9D"
+   ],
+   [
+    "prussianN29",
+    "#505C7D"
+   ]
+  ],
+  "contrast_on_charcoal": [
+   "5.42",
+   "2.83"
+  ],
+  "categorical_order": [
+   "Charcoal",
+   "Verdigris",
+   "Prussian",
+   "Stone"
+  ],
+  "release": null
+ },
+ "cd": {
+  "first": "work/handoffs/phase-3/20261111_Round-0-CD-Scores.json",
+  "rescore": null
+ },
+ "payroll": {
+  "months": 57,
+  "drops": [
+   [
+    "2025-01",
+    "-48.0"
+   ],
+   [
+    "2025-06",
+    "-20.0"
+   ],
+   [
+    "2025-08",
+    "-70.0"
+   ],
+   [
+    "2025-10",
+    "-140.0"
+   ],
+   [
+    "2025-12",
+    "-17.0"
+   ],
+   [
+    "2026-02",
+    "-156.0"
+   ],
+   [
+    "2026-07",
+    "-10.0"
+   ]
+  ],
+  "interval": 122000,
+  "passing": [
+   "October 2025",
+   "February 2026"
+  ],
+  "source": "work/build/data/fred-payrolls-monthly-change.csv"
+ },
+ "kit": {
+  "S01": {
+   "faults": 0,
+   "rows": 8,
+   "svg_bytes_1440": 6432,
+   "svg_bytes_390": 6060,
+   "exports": {
+    "20261111_S01-Big-Number-In-Context.csv": 733,
+    "20261111_S01-Big-Number-In-Context-Newsprint-1440.svg": 14811,
+    "20261111_S01-Big-Number-In-Context-Newsprint-1440.png": 132038
+   }
+  },
+  "S02": {
+   "faults": 0,
+   "rows": 39,
+   "svg_bytes_1440": 10457,
+   "svg_bytes_390": 9864,
+   "exports": {
+    "20261111_S02-Line-With-Event-Notes.csv": 4952,
+    "20261111_S02-Line-With-Event-Notes-Newsprint-1440.svg": 26874,
+    "20261111_S02-Line-With-Event-Notes-Newsprint-1440.png": 166622
+   }
+  },
+  "S03": {
+   "faults": 0,
+   "rows": 7,
+   "svg_bytes_1440": 8879,
+   "svg_bytes_390": 8679,
+   "exports": {
+    "20261111_S03-Ranked-Bar.csv": 308,
+    "20261111_S03-Ranked-Bar-Newsprint-1440.svg": 22034,
+    "20261111_S03-Ranked-Bar-Newsprint-1440.png": 79325
+   }
+  },
+  "S04": {
+   "faults": 0,
+   "rows": 8,
+   "svg_bytes_1440": 5127,
+   "svg_bytes_390": 5095,
+   "exports": {
+    "20261111_S04-Dumbbell.csv": 641,
+    "20261111_S04-Dumbbell-Newsprint-1440.svg": 12285,
+    "20261111_S04-Dumbbell-Newsprint-1440.png": 55471
+   }
+  },
+  "S05": {
+   "faults": 0,
+   "rows": 132,
+   "svg_bytes_1440": 12160,
+   "svg_bytes_390": 12751,
+   "exports": {
+    "20261111_S05-Small-Multiple-Lines.csv": 14728,
+    "20261111_S05-Small-Multiple-Lines-Newsprint-1440.svg": 24444,
+    "20261111_S05-Small-Multiple-Lines-Newsprint-1440.png": 71990
+   }
+  },
+  "S06": {
+   "faults": 0,
+   "rows": 8,
+   "svg_bytes_1440": 21473,
+   "svg_bytes_390": 21568,
+   "exports": {
+    "20261111_S06-Scenario-Directions.csv": 5282,
+    "20261111_S06-Scenario-Directions-Newsprint-1440.svg": 67598,
+    "20261111_S06-Scenario-Directions-Newsprint-1440.png": 394227
+   }
+  },
+  "S07": {
+   "faults": 0,
+   "rows": 51,
+   "svg_bytes_1440": 14149,
+   "svg_bytes_390": 12188,
+   "exports": {
+    "20261111_S07-Tile-Grid-Map-Categorical.csv": 10539,
+    "20261111_S07-Tile-Grid-Map-Categorical-Newsprint-1440.svg": 36918,
+    "20261111_S07-Tile-Grid-Map-Categorical-Newsprint-1440.png": 83856
+   }
+  },
+  "S08": {
+   "faults": 0,
+   "rows": 64,
+   "svg_bytes_1440": 17460,
+   "svg_bytes_390": 16447,
+   "exports": {
+    "20261111_S08-Unit-Chart.csv": 40884,
+    "20261111_S08-Unit-Chart-Newsprint-1440.svg": 44102,
+    "20261111_S08-Unit-Chart-Newsprint-1440.png": 62343
+   }
+  },
+  "S09": {
+   "faults": 0,
+   "rows": 24,
+   "svg_bytes_1440": 12577,
+   "svg_bytes_390": 11262,
+   "exports": {
+    "20261111_S09-Timeline.csv": 9967,
+    "20261111_S09-Timeline-Newsprint-1440.svg": 36295,
+    "20261111_S09-Timeline-Newsprint-1440.png": 355764
+   }
+  },
+  "S10": {
+   "faults": 0,
+   "rows": 16,
+   "svg_bytes_1440": 15608,
+   "svg_bytes_390": 15536,
+   "exports": {
+    "20261111_S10-One-Hundred-Percent-Bar.csv": 2387,
+    "20261111_S10-One-Hundred-Percent-Bar-Newsprint-1440.svg": 36673,
+    "20261111_S10-One-Hundred-Percent-Bar-Newsprint-1440.png": 202438
+   }
+  },
+  "S11": {
+   "faults": 0,
+   "rows": 52,
+   "svg_bytes_1440": 25800,
+   "svg_bytes_390": 30006,
+   "exports": {
+    "20261111_S11-Shift-Arrows.csv": 2969,
+    "20261111_S11-Shift-Arrows-Newsprint-1440.svg": 71165,
+    "20261111_S11-Shift-Arrows-Newsprint-1440.png": 407254
+   }
+  },
+  "S12": {
+   "faults": 0,
+   "rows": 52,
+   "svg_bytes_1440": 30740,
+   "svg_bytes_390": 16063,
+   "exports": {
+    "20261111_S12-Tile-Grid-Map-With-Shift-Arrows.csv": 2969,
+    "20261111_S12-Tile-Grid-Map-With-Shift-Arrows-Newsprint-1440.svg": 90889,
+    "20261111_S12-Tile-Grid-Map-With-Shift-Arrows-Newsprint-1440.png": 151171
+   }
+  },
+  "S13": {
+   "faults": 0,
+   "rows": 1026,
+   "svg_bytes_1440": 50284,
+   "svg_bytes_390": 52642,
+   "exports": {
+    "20261111_S13-Small-Multiple-Area-Sparklines.csv": 59515,
+    "20261111_S13-Small-Multiple-Area-Sparklines-Newsprint-1440.svg": 85725,
+    "20261111_S13-Small-Multiple-Area-Sparklines-Newsprint-1440.png": 250902
+   }
+  },
+  "S14": {
+   "faults": 0,
+   "rows": 57,
+   "svg_bytes_1440": 15377,
+   "svg_bytes_390": 15254,
+   "exports": {
+    "20261111_S14-Columns-With-Moving-Average.csv": 1358,
+    "20261111_S14-Columns-With-Moving-Average-Newsprint-1440.svg": 33645,
+    "20261111_S14-Columns-With-Moving-Average-Newsprint-1440.png": 113660
+   }
+  },
+  "S15": {
+   "faults": 0,
+   "rows": 52,
+   "svg_bytes_1440": 69113,
+   "svg_bytes_390": 55697,
+   "exports": {
+    "20261111_S15-Results-Table.csv": 2969,
+    "20261111_S15-Results-Table-Newsprint-1440.svg": 179878,
+    "20261111_S15-Results-Table-Newsprint-1440.png": 744802
+   }
+  },
+  "S16": {
+   "faults": 0,
+   "rows": 52,
+   "svg_bytes_1440": 63361,
+   "svg_bytes_390": 64137,
+   "exports": {
+    "20261111_S16-Bubble-Map.csv": 1685,
+    "20261111_S16-Bubble-Map-Newsprint-1440.svg": 95684,
+    "20261111_S16-Bubble-Map-Newsprint-1440.png": 326746
+   }
+  }
+ },
+ "palettes": {
+  "checks": [
+   "46",
+   "46"
+  ],
+  "images": [
+   "20261112_Palette-Categorical-1440-Deuteranopia.png",
+   "20261112_Palette-Categorical-1440-Grayscale.png",
+   "20261112_Palette-Categorical-1440-Protanopia.png",
+   "20261112_Palette-Categorical-1440-Tritanopia.png",
+   "20261112_Palette-Categorical-1440.png",
+   "20261112_Palette-Diverging-1440-Deuteranopia.png",
+   "20261112_Palette-Diverging-1440-Grayscale.png",
+   "20261112_Palette-Diverging-1440-Protanopia.png",
+   "20261112_Palette-Diverging-1440-Tritanopia.png",
+   "20261112_Palette-Diverging-1440.png",
+   "20261112_Palette-Line-Code-1440-2x.png",
+   "20261112_Palette-Line-Code-1440-Grayscale.png",
+   "20261112_Palette-Line-Code-1440.png",
+   "20261112_Palette-Magnitude-1440-Grayscale.png",
+   "20261112_Palette-Magnitude-1440.png",
+   "20261112_Palette-Opening-1440.png",
+   "20261112_Palette-Page-390.png",
+   "20261112_Palette-Past-Four-Groups-1440-Grayscale.png",
+   "20261112_Palette-Past-Four-Groups-1440.png",
+   "20261112_Palette-Prussian-1440-Grayscale.png",
+   "20261112_Palette-Prussian-1440.png",
+   "20261112_Palette-Red-On-Red-1440-Grayscale.png",
+   "20261112_Palette-Red-On-Red-1440.png",
+   "20261112_Palette-Sequential-1440-Grayscale.png",
+   "20261112_Palette-Sequential-1440.png"
+  ]
+ },
+ "weight": {
+  "page_bytes": 9957097,
+  "projected": 15055613,
+  "budget": 15500000.0,
+  "pass_saved": 46523
+ },
+ "ch13": {
+  "rules": 13,
+  "plates": 26,
+  "bytes": "247,941",
+  "budget": "250,000"
+ },
+ "data": {
+  "tables": 61,
+  "kinds": {
+   "secondary": 1,
+   "public": 45,
+   "derived": 5,
+   "v7": 10
+  },
+  "examples": 64,
+  "top_domain": 12,
+  "states": {
+   "WA": [
+    "S11",
+    "row 11"
+   ],
+   "NY": [
+    "S11",
+    "S12",
+    "S16",
+    "row 11"
+   ],
+   "NJ": [
+    "S12"
+   ],
+   "FL": [
+    "S12",
+    "S16"
+   ],
+   "CA": [
+    "S12"
+   ],
+   "TX": [
+    "S16"
+   ],
+   "IL": [
+    "row 79"
+   ]
+  },
+  "outcomes": [
+   [
+    "**Massachusetts Question 3**, repair log RL64",
+    "rejected, 1,566,336 no (61.04 percent) to 999,746 yes (38.96 percent), 2,383 of 2,384 precincts; unofficial, not certified; the Associated Press called it on November 4.",
+    "NBC Boston, Massachusetts ballot question results, report of November 9, 2026, 7:26 p.m., a secondary source (the Secretary of the Commonwealth had posted no 2026 results). Retrieved November 11, 2026. Research ledger row P7-036b."
+   ],
+   [
+    "**Alaska Ballot Measure 2**, RL62",
+    "trailing, 110,298 yes (47.43 percent) to 122,266 no (52.57 percent); unofficial count of November 10, 2026; mailed ballots due by November 13 and overseas ballots by November 18; certification targeted for November 25.",
+    "State of Alaska, Division of Elections, 2026 General Election, Election Summary Report, unofficial results, November 10, 2026. Retrieved November 11, 2026. Research ledger row P7-036a."
+   ],
+   [
+    "**Missouri Proposition A**, RL63",
+    "rejected in the unofficial statewide count, 1,273,815 no to 785,969 yes (61.84 percent no, computed by us); not certified.",
+    "St. Charles County, Missouri, \"Voters Turn Out for 2026 Midterm Election in St. Charles County\", November 4, 2026, unofficial statewide returns. Retrieved November 11, 2026. Research ledger row P7-036c."
+   ]
+  ]
+ },
+ "cd_scores": {
+  "items": 3,
+  "ready": 0,
+  "rescore": false
+ },
+ "red_teams": [
+  [
+   "Statistics and civic education",
+   "1",
+   3,
+   6,
+   19,
+   1
+  ],
+  [
+   "Statistics and civic education",
+   "2",
+   4,
+   2,
+   10,
+   0
+  ],
+  [
+   "Nonpartisanship, brand and craft",
+   "1",
+   3,
+   3,
+   14,
+   1
+  ],
+  [
+   "Nonpartisanship, brand and craft",
+   "2",
+   3,
+   4,
+   12,
+   1
+  ],
+  [
+   "Accessibility and the production test",
+   "all",
+   3,
+   0,
+   0,
+   0
+  ]
+ ],
+ "tested": {
+  "work/handoffs/phase-3/20261111_Round-0-Engineer-Notes.md": {
+   "tested": 28,
+   "not": 12
+  },
+  "work/handoffs/phase-3/20261111_Round-0-Palette-Notes.md": {
+   "tested": 21,
+   "not": 15
+  },
+  "work/handoffs/phase-3/20261111_Round-0-Editor-Notes.md": {
+   "tested": 16,
+   "not": 13
+  },
+  "work/handoffs/phase-3/20261111_Round-0-Explainer-Notes.md": {
+   "tested": 8,
+   "not": 7
+  },
+  "work/handoffs/phase-3/20261111_Round-0-Research-Notes.md": {
+   "tested": 20,
+   "not": 15
+  },
+  "work/handoffs/phase-3/20261111_Round-0-Red-Team-Statistics-Civic.md": {
+   "tested": 23,
+   "not": 14
+  },
+  "work/handoffs/phase-3/20261111_Round-0-Red-Team-Brand-Craft.md": {
+   "tested": 18,
+   "not": 14
+  },
+  "work/handoffs/phase-3/20261111_Round-0-Red-Team-Access-Production.md": {
+   "tested": 13,
+   "not": 9
+  },
+  "work/handoffs/phase-3/20261111_CD-Review-Of-Round-0.md": {
+   "tested": 15,
+   "not": 11
+  }
+ },
+ "board": "work/boards/phase-3/round-0/board-1/20261112_Board-1.html",
+ "html_bytes": 351452,
+ "images": 123,
+ "folder_bytes_with_images": 56324598,
+ "largest_image": [
+  3423838,
+  "20261112_Palette-Page-390.png"
+ ],
+ "status": {
+  "decide": "ready",
+  "kit": "ready",
+  "palettes": "ready",
+  "weight": "ready",
+  "ch13": "ready",
+  "data": "ready",
+  "scores": [
+   "partial",
+   "cd"
+  ],
+  "tested": [
+   "partial",
+   "notes"
+  ]
+ },
+ "image_sources": {
+  "img/20261112_Decide-Diverging-On-Charcoal-Steps.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/palette/diverging-charcoal.png",
+  "img/20261112_Decide-Diverging-On-Charcoal-Table.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/palette/div-charcoal.png",
+  "img/20261112_Decide-Four-Inks-On-Newsprint.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/palette/categorical-newsprint.png",
+  "img/20261112_Decide-Four-Inks-On-Charcoal.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/palette/categorical-charcoal.png",
+  "img/20261112_Decide-Four-Inks-In-Charts.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/palette/cat-newsprint.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/palette/cat-charcoal.png",
+  "img/20261112_S01-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s01-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s01-newsprint-390.png",
+  "img/20261112_S01-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s01-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s01-charcoal-390.png",
+  "img/20261112_S01-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s01-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s01-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s01-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s01-charcoal-390-grayscale.png",
+  "img/20261112_S01-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S01-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S01-390.png",
+  "img/20261112_S02-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s02-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s02-newsprint-390.png",
+  "img/20261112_S02-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s02-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s02-charcoal-390.png",
+  "img/20261112_S02-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s02-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s02-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s02-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s02-charcoal-390-grayscale.png",
+  "img/20261112_S02-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S02-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S02-390.png",
+  "img/20261112_S03-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s03-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s03-newsprint-390.png",
+  "img/20261112_S03-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s03-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s03-charcoal-390.png",
+  "img/20261112_S03-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s03-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s03-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s03-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s03-charcoal-390-grayscale.png",
+  "img/20261112_S03-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S03-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S03-390.png",
+  "img/20261112_S04-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s04-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s04-newsprint-390.png",
+  "img/20261112_S04-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s04-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s04-charcoal-390.png",
+  "img/20261112_S04-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s04-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s04-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s04-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s04-charcoal-390-grayscale.png",
+  "img/20261112_S04-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S04-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S04-390.png",
+  "img/20261112_S05-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s05-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s05-newsprint-390.png",
+  "img/20261112_S05-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s05-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s05-charcoal-390.png",
+  "img/20261112_S05-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s05-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s05-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s05-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s05-charcoal-390-grayscale.png",
+  "img/20261112_S05-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S05-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S05-390.png",
+  "img/20261112_S06-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s06-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s06-newsprint-390.png",
+  "img/20261112_S06-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s06-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s06-charcoal-390.png",
+  "img/20261112_S06-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s06-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s06-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s06-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s06-charcoal-390-grayscale.png",
+  "img/20261112_S06-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S06-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S06-390.png",
+  "img/20261112_S07-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s07-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s07-newsprint-390.png",
+  "img/20261112_S07-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s07-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s07-charcoal-390.png",
+  "img/20261112_S07-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s07-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s07-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s07-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s07-charcoal-390-grayscale.png",
+  "img/20261112_S07-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S07-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S07-390.png",
+  "img/20261112_S08-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s08-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s08-newsprint-390.png",
+  "img/20261112_S08-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s08-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s08-charcoal-390.png",
+  "img/20261112_S08-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s08-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s08-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s08-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s08-charcoal-390-grayscale.png",
+  "img/20261112_S08-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S08-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S08-390.png",
+  "img/20261112_S09-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s09-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s09-newsprint-390.png",
+  "img/20261112_S09-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s09-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s09-charcoal-390.png",
+  "img/20261112_S09-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s09-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s09-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s09-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s09-charcoal-390-grayscale.png",
+  "img/20261112_S09-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S09-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S09-390.png",
+  "img/20261112_S10-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s10-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s10-newsprint-390.png",
+  "img/20261112_S10-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s10-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s10-charcoal-390.png",
+  "img/20261112_S10-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s10-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s10-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s10-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s10-charcoal-390-grayscale.png",
+  "img/20261112_S10-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S10-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S10-390.png",
+  "img/20261112_S11-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s11-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s11-newsprint-390.png",
+  "img/20261112_S11-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s11-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s11-charcoal-390.png",
+  "img/20261112_S11-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s11-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s11-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s11-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s11-charcoal-390-grayscale.png",
+  "img/20261112_S11-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S11-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S11-390.png",
+  "img/20261112_S12-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s12-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s12-newsprint-390.png",
+  "img/20261112_S12-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s12-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s12-charcoal-390.png",
+  "img/20261112_S12-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s12-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s12-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s12-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s12-charcoal-390-grayscale.png",
+  "img/20261112_S12-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S12-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S12-390.png",
+  "img/20261112_S13-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s13-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s13-newsprint-390.png",
+  "img/20261112_S13-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s13-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s13-charcoal-390.png",
+  "img/20261112_S13-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s13-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s13-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s13-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s13-charcoal-390-grayscale.png",
+  "img/20261112_S13-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S13-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S13-390.png",
+  "img/20261112_S14-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s14-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s14-newsprint-390.png",
+  "img/20261112_S14-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s14-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s14-charcoal-390.png",
+  "img/20261112_S14-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s14-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s14-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s14-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s14-charcoal-390-grayscale.png",
+  "img/20261112_S14-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S14-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S14-390.png",
+  "img/20261112_S15-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s15-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s15-newsprint-390.png",
+  "img/20261112_S15-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s15-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s15-charcoal-390.png",
+  "img/20261112_S15-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s15-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s15-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s15-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s15-charcoal-390-grayscale.png",
+  "img/20261112_S15-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S15-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S15-390.png",
+  "img/20261112_S16-Newsprint.png": "composed from work/boards/phase-3/round-0/specimens/s16-newsprint-1440.png, work/boards/phase-3/round-0/specimens/s16-newsprint-390.png",
+  "img/20261112_S16-Charcoal.png": "composed from work/boards/phase-3/round-0/specimens/s16-charcoal-1440.png, work/boards/phase-3/round-0/specimens/s16-charcoal-390.png",
+  "img/20261112_S16-Grayscale.png": "composed from work/boards/phase-3/round-0/specimens/s16-newsprint-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s16-newsprint-390-grayscale.png, work/boards/phase-3/round-0/specimens/s16-charcoal-1440-grayscale.png, work/boards/phase-3/round-0/specimens/s16-charcoal-390-grayscale.png",
+  "img/20261112_S16-Phase-2.png": "composed from /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S16-1440.png, /tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/phase-2/S16-390.png",
+  "img/20261112_Palette-Opening-1440.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Opening-1440.png",
+  "img/20261112_Palette-Sequential-1440.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Sequential-1440.png",
+  "img/20261112_Palette-Sequential-1440-Grayscale.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Sequential-1440-Grayscale.png",
+  "img/20261112_Palette-Diverging-1440.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Diverging-1440.png",
+  "img/20261112_Palette-Diverging-1440-Grayscale.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Diverging-1440-Grayscale.png",
+  "img/20261112_Palette-Diverging-1440-Protanopia.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Diverging-1440-Protanopia.png",
+  "img/20261112_Palette-Diverging-1440-Deuteranopia.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Diverging-1440-Deuteranopia.png",
+  "img/20261112_Palette-Diverging-1440-Tritanopia.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Diverging-1440-Tritanopia.png",
+  "img/20261112_Palette-Categorical-1440.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Categorical-1440.png",
+  "img/20261112_Palette-Categorical-1440-Grayscale.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Categorical-1440-Grayscale.png",
+  "img/20261112_Palette-Categorical-1440-Protanopia.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Categorical-1440-Protanopia.png",
+  "img/20261112_Palette-Categorical-1440-Deuteranopia.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Categorical-1440-Deuteranopia.png",
+  "img/20261112_Palette-Categorical-1440-Tritanopia.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Categorical-1440-Tritanopia.png",
+  "img/20261112_Palette-Past-Four-Groups-1440.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Past-Four-Groups-1440.png",
+  "img/20261112_Palette-Past-Four-Groups-1440-Grayscale.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Past-Four-Groups-1440-Grayscale.png",
+  "img/20261112_Palette-Magnitude-1440.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Magnitude-1440.png",
+  "img/20261112_Palette-Magnitude-1440-Grayscale.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Magnitude-1440-Grayscale.png",
+  "img/20261112_Palette-Line-Code-1440.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Line-Code-1440.png",
+  "img/20261112_Palette-Line-Code-1440-Grayscale.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Line-Code-1440-Grayscale.png",
+  "img/20261112_Palette-Line-Code-1440-2x.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Line-Code-1440-2x.png",
+  "img/20261112_Palette-Red-On-Red-1440.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Red-On-Red-1440.png",
+  "img/20261112_Palette-Red-On-Red-1440-Grayscale.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Red-On-Red-1440-Grayscale.png",
+  "img/20261112_Palette-Prussian-1440.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Prussian-1440.png",
+  "img/20261112_Palette-Prussian-1440-Grayscale.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Prussian-1440-Grayscale.png",
+  "img/20261112_Palette-Page-390.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Page-390.png",
+  "img/20261112_Ch13-First-Screen-1440.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/first-screen-1440.png",
+  "img/20261112_Ch13-First-Screen-390.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/first-screen-390.png",
+  "img/20261112_Ch13-Opener-Plate.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-opener.png",
+  "img/20261112_Ch13-S-13-1-Correct.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-1-correct.png",
+  "img/20261112_Ch13-S-13-1-Failure.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-1-failure.png",
+  "img/20261112_Ch13-S-13-2-Correct.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-2-correct.png",
+  "img/20261112_Ch13-S-13-2-Failure.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-2-failure.png",
+  "img/20261112_Ch13-S-13-3-Correct.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-3-correct.png",
+  "img/20261112_Ch13-S-13-3-Failure.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-3-failure.png",
+  "img/20261112_Ch13-S-13-4-Correct.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-4-correct.png",
+  "img/20261112_Ch13-S-13-4-Failure.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-4-failure.png",
+  "img/20261112_Ch13-S-13-5-Correct.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-5-correct.png",
+  "img/20261112_Ch13-S-13-5-Failure.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-5-failure.png",
+  "img/20261112_Ch13-S-13-6-Correct.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-6-correct.png",
+  "img/20261112_Ch13-S-13-6-Failure.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-6-failure.png",
+  "img/20261112_Ch13-S-13-7-Correct.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-7-correct.png",
+  "img/20261112_Ch13-S-13-7-Failure.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-7-failure.png",
+  "img/20261112_Ch13-S-13-8-Correct.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-8-correct.png",
+  "img/20261112_Ch13-S-13-8-Failure.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-8-failure.png",
+  "img/20261112_Ch13-S-13-9-Correct.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-9-correct.png",
+  "img/20261112_Ch13-S-13-9-Failure.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-9-failure.png",
+  "img/20261112_Ch13-S-13-10-Correct.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-10-correct.png",
+  "img/20261112_Ch13-S-13-10-Failure.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-10-failure.png",
+  "img/20261112_Ch13-S-13-11-Correct.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-11-correct.png",
+  "img/20261112_Ch13-S-13-11-Failure.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-11-failure.png",
+  "img/20261112_Ch13-S-13-12-Correct.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-12-correct.png",
+  "img/20261112_Ch13-S-13-12-Failure.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-12-failure.png",
+  "img/20261112_Ch13-S-13-13-Correct.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-13-correct.png",
+  "img/20261112_Ch13-S-13-13-Failure.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/plates/s-13-13-failure.png"
+ },
+ "codes_in_reference_lines": [
+  "D3-08",
+  "D3-09",
+  "D3-100",
+  "D3-101",
+  "D3-102",
+  "D3-104",
+  "D3-11",
+  "D3-12",
+  "D3-13",
+  "D3-14",
+  "D3-15",
+  "D3-16",
+  "D3-17",
+  "D3-18",
+  "D3-19",
+  "D3-20",
+  "D3-21",
+  "D3-22",
+  "D3-23",
+  "D3-24",
+  "D3-44",
+  "D3-45",
+  "D3-46",
+  "D3-47",
+  "D3-48",
+  "D3-58",
+  "D3-59",
+  "D3-60",
+  "D3-61",
+  "D3-62",
+  "D3-63",
+  "D3-64",
+  "D3-65",
+  "D3-66",
+  "D3-67",
+  "D3-68",
+  "D3-69",
+  "D3-70",
+  "D3-71",
+  "D3-72",
+  "D3-73",
+  "D3-74",
+  "D3-75",
+  "D3-76",
+  "D3-77",
+  "D3-78",
+  "D3-79",
+  "D3-80",
+  "D3-81",
+  "D3-82",
+  "D3-83",
+  "D3-84",
+  "D3-85",
+  "D3-86",
+  "D3-87",
+  "D3-88",
+  "D3-89",
+  "D3-90",
+  "D3-91",
+  "D3-93",
+  "D3-94",
+  "D3-95",
+  "D3-96",
+  "D3-97",
+  "D3-98",
+  "D3-99",
+  "DR-227",
+  "DR-229",
+  "DR-230",
+  "DR-232",
+  "DR-233",
+  "DR-234",
+  "DR-235",
+  "DR-54",
+  "DR-64",
+  "DR-73",
+  "G2-01"
+ ],
+ "notes": [
+  "red team count differs from the fix brief: Accessibility and the production test, part all: reports 0 and 0, brief says 4 and 10",
+  "removed 20261112_Palette-Magnitude-1440-Protanopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Past-Four-Groups-1440-Tritanopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Past-Four-Groups-1440-Deuteranopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Red-On-Red-1440-Protanopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Magnitude-1440-Deuteranopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Red-On-Red-1440-Tritanopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Prussian-1440-Protanopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Line-Code-1440-Deuteranopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Sequential-1440-Deuteranopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Red-On-Red-1440-Deuteranopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Sequential-1440-Protanopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Magnitude-1440-Tritanopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Line-Code-1440-Tritanopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Line-Code-1440-Protanopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Prussian-1440-Deuteranopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Sequential-1440-Tritanopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Past-Four-Groups-1440-Protanopia.png, which the board no longer shows",
+  "removed 20261112_Palette-Prussian-1440-Tritanopia.png, which the board no longer shows"
+ ],
+ "warnings": [],
+ "visible_text_sha1": "e1584d14d24aa83b988668fef1e4a6f7f4655bd2"
+}

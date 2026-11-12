@@ -15,17 +15,22 @@
       var rows = c.rows, ek = c.field('key'), el = c.field('label'), ef = c.field('from'), et = c.field('to'), esh = c.field('shift'), esc = c.field('scope', false);
       var L = c.labels, f = c.spec.formats || {}, W = c.width, T = L.titles || {}, lead = L.lead || {}, size = c.size('tick');
       var words = function (v) { return (lead[v < 0 ? 'neg' : 'pos'] || '') + ' +' + K.fmt(Math.abs(v), f.margin || 'number:1'); };
-      var nw = 0;
-      rows.forEach(function (r) { nw = Math.max(nw, c.measure(r[el], 'label', 600)); });
-      nw = Math.min(nw + 12, c.phone ? 112 : 150);
-      var sw = c.phone ? 64 : 90, mw = (W - nw - sw) / (c.phone ? 1 : 2);
-      if (c.phone) nw = 0;
+      var nw = 0, tw_max = 0;
+      rows.forEach(function (r) {
+        nw = Math.max(nw, c.measure(r[el], 'label', 600));
+        tw_max = Math.max(tw_max, c.measure(words(r[et]), 'tick', 700), c.measure(words(r[ef]), 'tick', 400));
+      });
+      // the two margins side by side only where each fits its half of its column; else the phone's stacked rows (D3-93)
+      var narrow = c.phone || (W - Math.min(nw + 12, 150) - 90) / 4 - 6 < tw_max;
+      nw = Math.min(nw + 12, narrow ? 112 : 150);
+      var sw = narrow ? 64 : 90, mw = (W - nw - sw) / (narrow ? 1 : 2);
+      if (narrow) nw = 0;
       var mx = Math.max.apply(null, rows.map(function (r) { return Math.max(Math.abs(r[ef]), Math.abs(r[et])); }));
       var y = 0, hb = c.t('results-bar');
       c.text(0, y + size, T.label || '', { role: 'tick', weight: 700 });
-      if (!c.phone) c.text(nw + mw / 2, y + size, T.to || '', { role: 'tick', weight: 700, anchor: 'middle' });
-      if (!c.phone) c.text(nw + mw + mw / 2, y + size, T.from || '', { role: 'tick', weight: 700, anchor: 'middle' });
-      var sh = c.text(W, y + size, T.shift || '', { role: 'tick', weight: 700, anchor: 'end', max: sw });
+      if (!narrow) c.text(nw + mw / 2, y + size, T.to || '', { role: 'tick', weight: 700, anchor: 'middle' });
+      if (!narrow) c.text(nw + mw + mw / 2, y + size, T.from || '', { role: 'tick', weight: 700, anchor: 'middle' });
+      var sh = c.text(W, y + size, T.shift || '', { role: 'tick', weight: 700, anchor: 'end', max: narrow ? Math.max(sw, W * 0.5) : sw });
       y = Math.max(y + size, sh.y + sh.h) + 10;
       c.line(0, y, W, y, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
       var smax = Math.max.apply(null, rows.map(function (r) { return Math.abs(r[esh]); }));
@@ -33,10 +38,12 @@
         var mid = x0 + w / 2, len = (w / 2 - 6) * Math.abs(v) / mx, dir = v < 0 ? -1 : 1;
         c.line(mid, yy - 12, mid, yy + 12, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
         c.rect(dir < 0 ? mid - len : mid, yy + 4, len, hb, { fill: strong ? 'subject' : 'context', kind: 'bar', axis: 'x', zero: mid, data: { key: key, field: field, value: v, party: lead[v < 0 ? 'neg' : 'pos'] } });
-        var txt = words(v);
-        c.text(dir < 0 ? mid - 4 : mid + 4, yy, txt, { role: 'tick', weight: strong ? 700 : 400, anchor: dir < 0 ? 'end' : 'start', fill: strong ? 'label' : 'secondary' });
+        // the words sit over the bar on the leader's side, kept inside the cell
+        var txt = words(v), tw = c.measure(txt, 'tick', strong ? 700 : 400);
+        var tx = dir < 0 ? Math.max(mid - 4, x0 + tw) : Math.min(mid + 4, x0 + w - tw);
+        c.text(tx, yy, txt, { role: 'tick', weight: strong ? 700 : 400, anchor: dir < 0 ? 'end' : 'start', fill: strong ? 'label' : 'secondary' });
       };
-      var pitch = c.phone ? 44 : 34;
+      var pitch = narrow ? 44 : 34;
       var prev = null;
       rows.forEach(function (r, i) {
         var apart = esc && String(r[esc]) === String(L.apart_value);
@@ -50,20 +57,20 @@
         if (!apart) prev = r[et];
         var yy = y + pitch / 2 + 2;
         var tagged = L.tag && (r[ef] < 0) !== (r[et] < 0);
-        var nb = c.text(0, c.phone ? y + 18 : yy, r[el], { role: 'label', weight: 600, size: c.size('tick') + 1, max: c.phone ? W - sw - 10 : nw - 6 });
+        var nb = c.text(0, narrow ? y + 18 : yy, r[el], { role: 'label', weight: 600, size: c.size('tick') + 1, max: narrow ? W - sw - 10 : nw - 6 });
         if (tagged) {
-          var tw = c.measure(L.tag, 'tick', 600) + 8, tgx = c.phone ? nb.x + nb.w + 8 : 0, tgy = c.phone ? y + 5 : yy + 5;
+          var tw = c.measure(L.tag, 'tick', 600) + 8, tgx = narrow ? nb.x + nb.w + 8 : 0, tgy = narrow ? y + 5 : yy + 5;
           c.rect(tgx + 0.5, tgy + 0.5, tw, 17, { stroke: 'label', mark: false }); c.text(tgx + 4, tgy + 13, L.tag, { role: 'tick', weight: 600 });
         }
-        var cy = c.phone ? y + 40 : yy;
-        cell(c.phone ? 0 : nw, c.phone ? W - sw : mw, r[et], cy, true, r[ek], et);
-        if (!c.phone) cell(nw + mw, mw, r[ef], yy, false, r[ek], ef);
+        var cy = narrow ? y + 40 : yy;
+        cell(narrow ? 0 : nw, narrow ? W - sw : mw, r[et], cy, true, r[ek], et);
+        if (!narrow) cell(nw + mw, mw, r[ef], yy, false, r[ek], ef);
         else if (L.phone_from) c.text(0, cy + 26, String(L.phone_from).replace('{from}', words(r[ef])), { role: 'tick', fill: 'secondary' });
-        var sy = c.phone ? y + 18 : yy;
+        var sy = narrow ? y + 18 : yy;
         var al = (sw - 40) * Math.abs(r[esh]) / smax, ax = W - sw + 6;
         K.parts.arrow(c, ax, ax + Math.max(al, 4), sy - 4, { data: { key: r[ek], field: esh, value: r[esh] } });
         c.text(ax + Math.max(al, 4) + 6, sy, K.fmt(Math.abs(r[esh]), f.shift || 'number:1'), { role: 'tick' });
-        y += (c.phone ? (L.phone_from ? 78 : 60) : pitch) + (tagged && !c.phone ? 8 : 0);
+        y += (narrow ? (L.phone_from ? 78 : 60) : pitch) + (tagged && !narrow ? 8 : 0);
         c.line(0, y, W, y, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
         if (apart) { y += 6; c.line(0, y, W, y, { stroke: 'baseline', width: c.t('line-baseline'), mark: false }); }
       });

@@ -6,7 +6,9 @@ Oath & Action Edition 06, Phase 3, round 0, November 11, 2026. Written by the en
 
 ## Summary
 
-GUIDE HOOK READY. The Contracts below were written first, as the brief asks; everything else is done as far as this list says. Updated after the weight pass and the data lead's fix pass (November 11, late).
+GUIDE HOOK READY. The Contracts below were written first, as the brief asks; everything else is done as far as this list says. Updated after the weight pass, the data lead's fix pass and fix pass 2 (November 12).
+
+- **Fix pass 2** (section below): D3-93 to D3-97 and D3-100 to D3-102 by code, with every kit item of the four reports but E13 and the spec-word items sent back as X12 to X18. All 16 specs pass at every column the guide gives a chart, in forced colors, with scripts off and in print. The chapter 14 projection rose to 2.980 MB, mostly from D3-95's unrounded values in the tables (see its Not tested).
 
 - **The chart kit** (`work/build/chart-kit/`) draws S01 to S16 from their data files with one command, `node work/build/chart-kit/oa-chart.mjs build --all`, at 1440 and 390 px on Newsprint and Charcoal, with SVG, PNG and CSV exports, captures and grayscale proofs, and checks each drawing at a 328 px column too. 16 of 16 pass every check. `dataviz_check.js --kit` finds 0 faults in the drawings as the browser renders them. 19 forms in 17 modules, plain JavaScript, no library, running in a plain page from `tokens.css`, a data file and a spec (DR-235, tested).
 - **The drawing method**: drawn when the page loads, each chart's rows read back from its own table equivalent (`load-table`). The lightest of four measured in a real guide build. It passes scripts off, print, forced colors, reduced motion, resize, export parity and the rendered chart check.
@@ -117,6 +119,101 @@ Not touched, and why:
 | With (d), tables and islands, tables lost with scripts off | 1.959 MB | 0.209 MB | none: the page's room covers it |
 
 Each ask is chapter 14's overrun less the page's room, so it holds the page at 15.5 MB with Phase 5's 0.40 MB untouched. Between the two pilots the Explainer maker's specs grew, so the measured plate average rose from 13,961 to 14,383 bytes; at the earlier average (a) to (c) would project 2.667 MB. The photo renditions above, if Dustin takes them, free about 1.31 MB of the page, more than any ask in the table.
+
+## Fix pass 2
+
+From `work/handoffs/phase-3/20261111_Round-0-Fix-Brief-Part-2.md`, November 11 to 12: the main session's calls D3-93 to D3-97 and D3-100 to D3-102, every kit item in the four part 2 reports, the Explainer maker's E27 to E31, the research lead's ENG-8 and ENG-9, the editor's three kit requests, and the data lead's `leadIn` token. The weight pass's gains stand: the guide still minifies the kit and runs the weight pass (46,100 bytes).
+
+### Fixed, by code
+
+| Codes | Fix | Where |
+|---|---|---|
+| D3-93, access M2, brand K2, K3, KS8, CD KM2 | Every spec is drawn and checked at each column the guide and zoom give a chart: 656, 558, 358, 296 and 256 px, with 243 and 224 for chapter 13's plates, beside the export widths; any guard fault fails the build. The guard also fails a leader line that runs through a label. Forms fixed so all 16 pass at every width: `results-table` stacks its margins where they would touch and keeps each figure in its cell; `tile-map-categorical` moves its key under the map where it would touch a tile and drops codes from tiles too small for them (a line under the map says the table names every state); `tile-map-shift-arrows` uses the shaded tiles where a tile is too small for its code, figure and arrow; `scenario-directions` stacks where a column would leave its words under 90 px; `shift-arrows` moves a phone value under the state's name; `unit-chart` wraps its phone key; `area-sparklines` wraps a long end label and the context label; keys wrap an entry wider than the key; a note moves off text already drawn; `timeline` stacks labels so no leader runs through one (a label that covers another event's leader sits above it, mutually covering labels turn to one side or wrap narrower) and stacks the band labels that would touch; `big-number` places the words of narrow vote segments in rows where no leader or the votes-needed line runs through them; `bubble-map` places phone labels clear of every leader and names under the map any small state it cannot label at a phone width | `oa-chart.mjs` (`GUIDE_WIDTHS`), `kit.js` (`K.guard`, leaders), the forms |
+| D3-94, access M1 | Forced colors: the drawing sets `forced-color-adjust: none` and paints each role in a system color (CanvasText, GrayText, Canvas with a CanvasText outline, Highlight), with the steps between as hatches each drawing carries in its own defs, so a scale's steps stay apart; text is CanvasText on a Canvas halo, and text on a dark fill is Canvas on a CanvasText halo. The kit's check emulates it on every spec at every width (`K.FC`) and fails a label in the ink of the mark under it; `dataviz_check.js --kit` probes the rendered page in Chromium's forced colors the same way | `kit.css`, `kit.js` (`K.FC`, `forced_patterns`), `checks.js`, `dataviz_check.js` |
+| D3-95, statistics P2-M1, ENG-8 | The two derived files are computed from the publisher's counts and levels and stored to six decimals: the four cells now print North Dakota 2024 Republican +36.4, North Carolina 2020 +1.3, Mississippi 2020 +16.5 and professional and business services +1.3%. The data check recomputes every derived margin and percent change from its source and fails a difference | `data_round0_build.py` (`keep`, `check_derived`) |
+| D3-96, brand K1, CD KM1 | The bubble map's size scale takes only the rows it draws; the national row stays in the table and sets no circle. California is drawn at the full radius again | `forms/bubble-map.js` |
+| D3-97, access S1, S2, S3, CD KS6 | With scripts off a figure shows its description as words, a line saying the drawing needs scripts, and its table open. With scripts on, each figure closes its table and hides those words at load, and draws as it nears the screen (an observer 1,200 px ahead); every figure draws before print. The drawing is named by the description, which then leaves the reading order, so the title and the description are each heard once. The disclosure's name ends in the table's caption ("Show the table and notes: ..."), never an ID | `kit.js` (`K.figure`, `K.mount`, `K.mount_all`, `K.draw_all`), `kit.css`, `words.json` |
+| D3-100, access M4 | Print: a chart plate may break across pages, never inside its title block, drawing, source block or a table row; its frame never clips it; the kit opens every table before print and closes it after | `kit.css`, `kit.js`, the shell's print rules in `work/build/guide/shell/guide-shell.css` |
+| D3-101, access M3, editor request 1 | The drawing names an element that is on the page (the description, else the title, else the spec's words); `dataviz_check.js --kit` fails a name or description that points at a missing element, and a drawing with no name | `kit.js`, `dataviz_check.js` |
+| D3-102, access S6, S7, S8, S9 | `work/build/chart-kit/README.md`, a plain recipe with a starter spec per form, the commands, a plain page and what each failing check asks; check messages say what to change (the sidecar to ask for, the columns there are); a one-dataset spec may leave `source_line` out; `where` takes `not`; a `ranked-bar` warns on a "Total" bar, draws negative values and wraps long names; `OAChart.render` makes a plain page in one call, with the words inside `kit.js`; the SVG export names its fonts in `data-fonts` and its description | `README.md`, `checks.js`, `kit.js`, `forms/ranked-bar.js`, `oa-chart.mjs` |
+| Access S4 | A table column's `empty` word prints where a cell has no value; the lean table keeps the empty value for the drawing | `kit.js` (`K.cell_text`) |
+| Access S5 | The key test takes the smaller gap of CIE L* and the grayscale proof's luma; a direct label exempts an entry only where every mark of that fill has words on or beside it; entries told apart by outline, dash or hatch are left out as patterns are; an ordered scale tests neighbors at 8 and its lightest step against the ground unless its marks carry an outline (S12's phone tiles now do) | `checks.js`, `parts.js`, four forms |
+| E27, statistics P2-S1, brand K4, CD KS1 | Each vote segment reads "{party} {v} for" or "{party} {v} against" (`party_words_yes`, `party_words_no`) | `forms/big-number.js` |
+| E28, brand KS11, CD KS3 | The ringed square draws last in its stack, at the stack's foot, with its leader from the ring to "19 states" | `forms/unit-chart.js` |
+| E29, statistics P2-S5, brand K3 | Each timeline year prints once, in bold, before the name; a name that begins with its year drops it | `forms/timeline.js` |
+| E30 | A vote's bar steps under its label's last line, and the date moves under the label when the label runs past it | `forms/big-number.js` |
+| E31, brand KS7 | `labels.pitch` sets the percent bar's row pitch | `forms/percent-bar.js` |
+| Brand KS1 | The measure line sits under the title, then the reading guide | `kit.js` |
+| Brand KS2, CD KM3 | S13's panels draw the area in the light band fill, then the gray all-nonfarm line, then the series line, so the line the key promises shows in every panel; the totals rows are 44 px tall on a baseline at the first value, with a peak dot and words where the spec names them | `forms/area-sparklines.js` |
+| Brand KS3 (in part) | S05's own line at the subject's weight with a dot at each year | `forms/multi-line-highlight.js` |
+| Brand KS4 | An arrow shorter than its head draws the head alone | `forms/shift-arrows.js` |
+| Brand KS6 | S06's phone cells set the atlas's words at reading size in the label ink | `forms/scenario-directions.js` |
+| Brand KS8 | S15's shift head wraps across half the width on narrow layouts (two lines, not five) | `forms/results-table.js` |
+| Brand KS10 (key), CD KS4 | The subject's line comes first in a phone key; a note beside its point takes no leader under 12 px, so no dash reads as a minus sign | `forms/line-event-notes.js`, `parts.js` |
+| CD KS5 | The shift axis runs to the tick past the farthest value (S11 to 50) | `forms/shift-arrows.js` |
+| Editor requests 2 and 3 | The ranked bar's phone zero line runs beside each bar, never through the names; the shell hides only its own rail (`nav.rail`), so a drawing's class `rail` shows | `forms/ranked-bar.js`, `guide-shell.css` |
+| ENG-9 | The survey's margin of error in `v7-stock-trading-ban.meta.json` and the Bureau's sampling-error note in `fred-payrolls-by-sector.meta.json` | `data_round0_build.py` |
+| Data lead, fix pass 2 | `oa.chart.grade.leadIn`, 28 px, in 6.0.0-gate3.1 (545 tokens) | `oa-tokens.src.mjs` |
+
+### Not fixed, and why
+
+- **E13 and the rest of brand KS3**: S05's gap brackets and a 2003 tick need a new spec key and drawing; not built in this pass.
+- **Brand KS5, S14**: the scale's top (+1,000,000) is the spec's `scale.y` and the "+29,000 jobs" and phone average labels are spec annotations; request X14 below. The guard passes them at every width.
+- **Brand KS9**: the kit draws heads in the words the spec gives; the caps are spec words. The kit's one style for a head in a drawing is the spec's sentence-case words at tick size, bold, in the secondary ink; request X15.
+- **Brand KS12**: "How to read our charts" stays out of the figure footer until chapter 14 has the section it would point to; a `words.json` key takes it then.
+- **Access S8, beyond the recipe**: the checks and exports in a plain page, and an export that reads the page's computed tokens, wait for Gate 3 as the report proposes.
+- **Access S9, embedding fonts**: waits for Phase 5's package (D3-102).
+- **Access S6, the chapter pointer**: one line in chapter 13 or 14 saying where the kit lives is the editor's.
+- **D3-95's printed-figure check**: the kit prints each figure from the stored value, rounded once by its format; the check that matters is the data folder's, which recomputes every derived value from its source.
+
+### Requests
+
+- **X12 to the Explainer maker (S09, CD KM2, brand K3):** set `labels.cut_at: " ("`, so the names stop at their first parenthesis as the note says; and write a phone note that matches the phone list, which draws no bands.
+- **X13 (S13, brand KS2):** on the federal government totals row set `"peak": "Peak: {value} in {x}"` (and `peak_field` if the peak should print a column other than the drawn one).
+- **X14 (S14, brand KS5):** a `scale.y` top nearer +819,000, the "+29,000 jobs" label clear of the top line, and on phones `phone.hide` for the "Three-month average" note, which the key already names.
+- **X15 (brand KS9):** heads inside drawings (`bars_title`, `votes_title`, `shade_title`, `size_title`, `totals_title`, `panels_title`, `key_title`) in sentence case.
+- **X16 (access S4):** `empty` words on the columns the report names: S14's status ("Final"), S05's and S02's margins ("Not published"), S07's scope, year and measure ("No ban"), S06's blank cells.
+- **X17 (S10, E31):** `labels.pitch: 35`.
+- **X18 (S01, E30):** E30 has landed; the House label naming both provisions can go in the vote block.
+- **To the editor:** wording for the four new `words.json` keys (`scripts_off`, `unlabeled_marks`, `unlabeled_tiles`, `export_fonts`) in DR-191's read, and the chapter pointer to the kit's README (access S6).
+
+### Routine calls
+
+D3-xxx | The kit checks every spec at 656, 558, 358, 296 and 256 px (and 243 and 224 px for chapter 13's plates), never exporting them | The widths the guide shell and zoom give a chart (D3-93); exports stay at 1440 and 390 px
+D3-xxx | A leader line counts as crossing a label when it enters the label's box by more than 1.5 px away from both its ends | A leader may end at its own label; anything else through a label is a fault (D3-93)
+D3-xxx | At phone widths a map names under the drawing the small states it cannot label, and a tile map too small for codes draws none | The table names every state; a label that cannot be placed clear is worse than a named list (D3-93)
+D3-xxx | In forced colors the drawing keeps the system colors with hatches for the steps between, rather than its brand inks | D3-94's decision; the access lead's own recommendation was the brand inks on their own ground
+D3-xxx | Derived values are stored to six decimals | They drop only floating-point noise, so the kit's one rounding is the publisher's figure (D3-95)
+D3-xxx | A chart draws when it comes within 1,200 px of the screen, and every chart draws before print and for any check | D3-97; about two screens ahead, so a reader scrolling at reading speed never meets an empty box
+D3-xxx | The drawing takes its name from the description and the description leaves the reading order once the chart is drawn | Each is then heard once (access S1); with scripts off the description stays as words
+D3-xxx | The four new shared words go in `words.json` and `kit.js` carries a copy, which the kit's self-test holds equal | A plain page opened from disk cannot read `words.json`; the editor still owns the words
+D3-xxx | The shell hides only `nav.rail` | Its rule hid a drawing's hollow-line rails in chapter 13, and chapter 15 would meet the same
+D3-xxx | The S13 panels' area takes the light band fill | Phase 2's lighter fill, under the gray line the key promises (CD KM3)
+
+### Tested
+
+- `node work/build/chart-kit/oa-chart.mjs build --all --date 20261111`: 16 of 16 pass every check at 1440 and 390 px on both grounds and at 656, 558, 358, 296 and 256 px, page-to-Node parity included; the five chapter 13 plate specs pass at those widths and at 243 and 224 px.
+- The board folder `work/boards/phase-3/round-0/specimens/` refreshed: all 192 files, same names, each equal to the fresh build byte for byte (28 MB).
+- `oa-chart.mjs self-test`: 28 planted faults caught (new: a leader through a label, a label in the ink of its mark in forced colors, ordered steps too close) and the clean pivot and the words copy pass.
+- `dataviz_check.js --kit` on the 16 kit pages at 1440 and 390 px, now with the forced-colors probe and the name checks: 16 of 16 pass (after two fixes it found: S05's end dots cut by the edge, and a probe that read a hatch as one ink). `--kit-self-test`: every planted fault caught, including a drawing named by a missing element.
+- The pilot rebuilt (`chart_pilot.py --methods load-table`, scratch `round-0-fix-2/engineer/pilot/`) and `chart_pilot_check.js` on it: scripts on at 1440 and 390, resize, scripts off, print, forced colors and reduced motion, 0 failures.
+- `guide_build.py --strict`: 0 warnings, 9,957,130 bytes (10,003,653 without the weight pass, which saves 46,523), chapter 13 at 247,941 bytes, the chart kit 191,517, projected 15,055,613 against 15.5 MB. `--self-test`: 27 of 27 scenarios, 296 of 296 expectations.
+- The quick guide check (`guide_check.js --quick`) on the strict page built before S05's last form change: GCHECK_RESULT.
+- A plain page opened from disk with the README's recipe (`OAChart.render` with S14's data, script tags by file address): drawn at 720 px, 57 table rows, the sidecar's source line, set in Inter Tight, no page error.
+- `data_round0_build.py` and `--check` after ENG-8 and ENG-9: 61 tables, 0 faults, every derived margin and percent change equal to its recomputation; the four cells the statistics review named print +36.4, +1.3, +16.5 and +1.3%.
+- Token build and `run_token_tests.py` with `leadIn`: all pass, 545 tokens; token table regenerated.
+- `v7_check.py --page` on the strict page: 0 failures; its self-test: every fault caught. `weight_pass.py --self-test`: every case passes.
+- Looked at: S01 at 358 and 256 px, S08 at 720 px, S09 at 558 to 1024 px, S13 and S16 at 1440 px, as rendered PNGs.
+
+### Not tested
+
+- **The weight after this pass.** The pilot now projects chapter 14 at 2.980 MB (2.709 MB after the weight pass): specimens average 16,658 bytes with a 1,322 byte frame (from 14,383 and 1,313), and the renderer at 97 forms 489,173 (from 440,283). Most of the rise is D3-95: the unrounded values no longer match their printed figures, so the lean table carries each one as an attribute (S13 18,456 bytes, S15 4,876, S11 and S12 2,914 each). The rest is the Explainer maker's new notes, the scripts-off line and caption on every figure, and this pass's kit code (16 KB). At 2.980 MB the smallest ask of Phase 4's share becomes 0.785 MB. Not yet measured: carrying those values as one compact list in the island, which I estimate saves about half of them.
+- Firefox and Safari for any of it; forced colors only as Chromium emulates them (light scheme), not Windows' own themes.
+- Print on paper: only Chromium's print media and the pilot check's probe; no PDF was paged and looked at in this pass.
+- Real screen readers: the name and description are checked in the DOM, not heard.
+- The lazy drawing at 97 charts: the observer's timing was not measured, and the guide check's own conditions on a page full of charts were not rerun (the strict page carries only chapter 13's five).
+- The quick guide check on the final strict page: it ran on the build made before S05's last form change, which no guide page draws.
+- E13 and the other open items above.
 
 ## Contracts
 
@@ -260,13 +357,18 @@ It writes, for each spec, into `<out>/<id>/`:
 **Files.** `work/build/chart-kit/kit.js` is the shared renderer: plain JavaScript, no library, a classic script that defines one global, `OAChart`, in a browser and in Node alike. Each form is one file, `work/build/chart-kit/forms/<form-id>.js`, a classic script that calls `OAChart.register_chart()` once. `work/build/chart-kit/kit.css` holds the figure's style, written only in `var(--oa-...)` tokens. A plain page needs no build step:
 
 ```html
-<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
 <link rel="stylesheet" href="kit.css">
+<style>/* @font-face for Inter and Inter Tight from work/build/assets/fonts/, as README.md shows */</style>
+<script src="metrics.js"></script>
 <script src="kit.js"></script>
-<script src="forms/columns-moving-average.js"></script>
-<div class="oa-surface-newsprint"><figure data-oa-chart></figure></div>
-<script>OAChart.mount(document.querySelector('[data-oa-chart]'), spec, OAChart.parse_csv(csvText));</script>
+<script src="parts.js"></script>
+<script src="forms/columns-moving-average.js"></script>   <!-- geo.js first for a map form -->
+<div class="oa-surface-newsprint" id="chart"></div>
+<script>OAChart.render(document.getElementById('chart'), spec, csvText, sidecar);</script>
 ```
+
+(Corrected in fix pass 2: the first version listed two of the five scripts, loaded no words and mounted into an empty figure, so it drew nothing. `OAChart.render` prints the figure, types and selects the rows, and draws; the shared words now travel inside `kit.js`. The recipe is in `work/build/chart-kit/README.md`.)
 
 **Registering.**
 
@@ -343,6 +445,7 @@ beside a spec file in the editor's own specimen space, `work/build/guide/specime
 ### Contract changes
 
 - November 11, before any other agent's file used them: `domain` may be `all` for an atlas-wide table, with `domain_note`; a sidecar may carry `source_line_variants`.
+- November 12, fix pass 2: `source_line` may be left out of a one-dataset spec, which then prints its sidecar's line (D3-102); `where` takes `{column: {not: [...]}}`; a table column may carry `empty`, the words printed where a cell has no value (access S4); `labels.pitch` on `percent-bar` (E31); `party_words_yes` and `party_words_no` on `big-number` votes (E27); `labels.totals[].peak` with `peak_field` on `area-sparklines` (brand KS2); `words.json` gains `scripts_off`, `unlabeled_marks`, `unlabeled_tiles` and `export_fonts`, and `kit.js` carries the same words (`OAChart.WORDS`); `OAChart.render(box, spec, text, sidecar)` for a plain page; `OAChart.draw_all()` draws every figure at once; kit roles `on-cat-1` to `on-cat-3` and `beside-cat-4`. C4's snippet is corrected above.
 - November 11, from the Explainer maker's requests: spec keys `formats`, `scale` and `phone_notes`; table formats `lead:N`, `thousands:0` and `signed-thousands:0` (rounded to the thousand), `compact-thousands`; `table.pivot.row` may be a list, with `pivot.row_words`; an annotation's `phone` object may carry `"hide": true`; the kit sets V7's type word inside a chip when the words before the ID lack it (E7). Each form's own `labels` names are listed in the header comment of its file in `work/build/chart-kit/forms/`.
 
 ## Routine calls
@@ -487,6 +590,8 @@ Earlier in the round:
 
 ## Files
 
+Created in fix pass 2: `work/build/chart-kit/README.md`.
 Created: `work/build/chart-kit/` (kit.js, parts.js, kit.css, metrics.js, geo.js, geo-LICENSE.txt, words.json, checks.js, oa-chart.mjs, forms/ with 17 modules, tools/metrics_build.js, tools/geo_build.py, tools/minify.mjs, tools/kit_snapshot.mjs, fixtures/specs/s14.json); `work/build/scripts/phase-3/weight_pass.py` and `weight_pass_proof.js`; `work/build/data/` (18 tables and sidecars, by `work/build/scripts/phase-3/data_round0_build.py`); `work/build/scripts/phase-3/` (data_round0_build.py, guide_charts.py, chart_pilot.py, chart_pilot_check.js, v7_check.py); this notes file.
+Modified in fix pass 2: the kit (`kit.js`, `kit.css`, `parts.js`, `checks.js`, `oa-chart.mjs`, `words.json`, 13 forms), `work/build/scripts/phase-3/data_round0_build.py` and the files it writes in `work/build/data/` (the two derived tables, `v7-stock-trading-ban.meta.json`, `fred-payrolls-by-sector.meta.json`), `work/build/scripts/phase-2/dataviz_check.js`, `work/build/scripts/phase-3/chart_pilot_check.js`, `work/build/guide/shell/guide-shell.css` (the rail rule and chart plates in print), `work/build/tokens/src/oa-tokens.src.mjs` with `tokens.css`, `tokens.json`, the token test results and `s-26-token-table.html` (`leadIn`), and `work/boards/phase-3/round-0/specimens/` (refreshed).
 Modified: `work/build/scripts/phase-2/guide_build.py` (the hook, gates, `--pilot`, `--chart-method`, two budgets, the weight pass and `--no-weight-pass`, the self-test's CSS reading and its front-page expectation), `work/build/scripts/phase-3/chart_pilot.py` (chapter 14's plates only), `work/build/scripts/phase-2/dataviz_check.js` (`--kit`, `--kit-self-test`), `work/build/scripts/phase-2/tokens_build.mjs` (stroke styles), `work/build/tokens/src/oa-tokens.src.mjs`, `work/build/tokens/tokens.css`, `work/build/tokens/tokens.json`, `work/build/tests/tokens/test_token_rules.py`, `test_token_parity.py`, `sd_crosscheck.mjs`, `20261106_Token-Test-Results.json`, `work/build/guide/specimens/s-26-token-table.html` (regenerated), `work/boards/phase-3/round-0/specimens/` (refreshed captures and exports, at the coordinator's request).
 Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/round-0/engineer/` (pilot pages and results in `pilot2/` to `pilot6/`, kit builds in `all-out/` and `kit-out/`, the weight pass's pages, proofs and measurements in `weight/`, test specs, terser and the JPEG tool).

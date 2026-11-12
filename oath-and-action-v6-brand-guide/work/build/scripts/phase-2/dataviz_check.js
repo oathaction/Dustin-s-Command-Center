@@ -270,6 +270,12 @@ async function kitAudit(page) {
       if (/\u2014/.test(txt)) f.push('an em dash in the figure');
       if (/Yes on 3|Veterans for All Voters|Ranked Choice Melrose/.test(txt)) f.push('the retired disclosure in the figure (DR-100)');
       if (!svg) { out.push({ id, f: f.concat(fig.getAttribute('data-oa-error') ? ['drawing error: ' + fig.getAttribute('data-oa-error')] : ['no drawing']) }); return; }
+      // the drawing's name and description name elements that are on the page (D3-101, access M3)
+      ['aria-labelledby', 'aria-describedby'].forEach((a) => {
+        (svg.getAttribute(a) || '').split(/\s+/).filter(Boolean).forEach((ref) => { if (!document.getElementById(ref)) f.push(`the drawing's ${a} names ${ref}, which is not on the page`); });
+      });
+      const named = (svg.getAttribute('aria-labelledby') || '').split(/\s+/).filter(Boolean).map((r) => (document.getElementById(r) || {}).textContent || '').join(' ').trim() || svg.getAttribute('aria-label') || (svg.querySelector('title') || {}).textContent;
+      if (!named) f.push('the drawing has no accessible name');
       const sb = svg.getBoundingClientRect(), scale = sb.width / (+svg.getAttribute('width') || sb.width);
       const boxes = [];
       svg.querySelectorAll('text').forEach((t) => {
@@ -303,6 +309,37 @@ async function kitAudit(page) {
     return out;
   }, { RED, PRUSSIAN });
 }
+// Forced colors (D3-94): with the reader's system colors forced, no drawing text may print in the ink of the shape under it
+async function kitForced(page) {
+  return page.evaluate(() => {
+    const out = [];
+    document.querySelectorAll('figure.oac-fig svg.oac-svg').forEach((svg) => {
+      const id = (svg.closest('figure') || {}).id;
+      const shapes = Array.from(svg.querySelectorAll('rect, circle, path, polygon')).filter((e) => !e.closest('defs'));
+      svg.querySelectorAll('text').forEach((t) => {
+        const b = t.getBBox(), m = t.getCTM(), sm = svg.getCTM();
+        if (!m || !sm) return;
+        const pt = new DOMPoint(b.x + b.width / 2, b.y + b.height / 2).matrixTransform(m).matrixTransform(sm.inverse());
+        let ground = getComputedStyle(svg.closest('figure') || svg).backgroundColor, under = null;
+        for (const e of shapes) {
+          if (e.compareDocumentPosition(t) & Node.DOCUMENT_POSITION_PRECEDING) break;   // painted after the text
+          const cs = getComputedStyle(e);
+          if (!cs.fill || cs.fill === 'none') continue;
+          const em = e.getCTM();
+          if (!em) continue;
+          const lp = pt.matrixTransform(sm).matrixTransform(em.inverse());
+          // a hatch under the text is no single ink: the text's halo carries it, so it is not compared
+          if (e.isPointInFill && e.isPointInFill(new DOMPoint(lp.x, lp.y))) { under = cs.fill.indexOf('url') === 0 ? 'pattern' : cs.fill; }
+        }
+        if (under === 'pattern') return;
+        const ink = getComputedStyle(t).fill;
+        const g = under || ground;
+        if (ink && g && ink === g && !/rgba\(0, 0, 0, 0\)|transparent/.test(g)) out.push(`${id}: forced colors: "${t.textContent.slice(0, 30)}" prints in the ink of its ground (${ink} on ${under ? "a shape" : "the figure"})`);
+      });
+    });
+    return out;
+  });
+}
 async function kitMain(target, widths) {
   const browser = await chromium.launch();
   const report = { page: target, checked: new Date().toISOString(), widths, figures: 0, failures: [] };
@@ -311,10 +348,15 @@ async function kitMain(target, widths) {
     const page = await ctx.newPage();
     await page.goto('file://' + target, { waitUntil: 'load', timeout: 120000 });
     await page.evaluate(() => document.fonts.ready);
+    // charts draw as they near the screen (D3-97); a check draws them all first
+    await page.evaluate(() => window.OAChart && OAChart.draw_all && OAChart.draw_all());
     await page.waitForFunction(() => Array.from(document.querySelectorAll('figure.oac-fig')).every((f) => f.getAttribute('data-oa-drawn') || f.getAttribute('data-oa-error') || f.querySelector('svg.oac-svg')), null, { timeout: 60000 });
     const res = await kitAudit(page);
     report.figures = Math.max(report.figures, res.length);
     res.forEach((r) => r.f.forEach((x) => report.failures.push(`${width}: ${r.id}: ${x}`)));
+    await page.emulateMedia({ forcedColors: 'active' });
+    (await kitForced(page)).forEach((x) => report.failures.push(`${width}: ${x}`));
+    await page.emulateMedia({ forcedColors: 'none' });
     await ctx.close();
   }
   await browser.close();
@@ -322,7 +364,7 @@ async function kitMain(target, widths) {
 }
 async function kitSelfTest() {
   // one clean figure and one figure for each planted fault, drawn as the kit draws (static SVG, no script needed)
-  const fig = (id, body, extra) => `<figure class="oac-fig" id="${id}" data-oa-drawn="300"><p>Title.${extra || ''}</p><div data-oa-art><svg class="oac-svg" width="300" height="100" viewBox="0 0 300 100" style="display:block">${body}</svg></div></figure>`;
+  const fig = (id, body, extra, name) => `<figure class="oac-fig" id="${id}" data-oa-drawn="300"><p>Title.${extra || ''}</p><div data-oa-art><svg class="oac-svg" width="300" height="100" viewBox="0 0 300 100" style="display:block" ${name || 'aria-label="A drawing."'}>${body}</svg></div></figure>`;
   const T = (x, y, s, w) => `<text x="${x}" y="${y}" font-size="${s || 15}" font-family="Inter, Arial">${w || 'Label'}</text>`;
   const cases = [
     ['clean', fig('clean', T(10, 30) + '<rect x="10" y="50" width="40" height="20" fill="#121212"/>'), null],
@@ -334,6 +376,7 @@ async function kitSelfTest() {
     ['two working reds', fig('reds', '<circle cx="20" cy="20" r="5" fill="#E63946"/><circle cx="60" cy="20" r="5" fill="#E63946"/>'), 'working-red'],
     ['an em dash', fig('dash', T(10, 30), ' One \u2014 two.'), 'em dash'],
     ['the retired disclosure', fig('disc', T(10, 30), ' The editor works with the Yes on 3 campaign.'), 'disclosure'],
+    ['a drawing named by an element not on the page', fig('noname', T(10, 30), '', 'aria-labelledby="not-here"'), 'not on the page'],
   ];
   const tmp = path.join(require('os').tmpdir(), `oa-kit-self-test-${process.pid}.html`);
   fs.writeFileSync(tmp, `<!doctype html><html><head><meta charset="utf-8"></head><body style="margin:20px">${cases.map((c) => c[1]).join('')}</body></html>`);

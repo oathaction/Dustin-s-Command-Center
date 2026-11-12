@@ -31,7 +31,7 @@
         c.line(nx, sy - 4, nx, sy + 16, { stroke: 'label', width: c.t('line-baseline'), mark: false });
         if (L.nation_label) c.text(Math.max(nx, c.measure(L.nation_label, 'tick', 600) / 2), sy - 8, L.nation_label, { role: 'tick', weight: 600, anchor: 'middle' });
       }
-      c.key([1, 2, 3, 4, 5].map(function (i) { return { fill: 'seq-' + i, direct: true }; }));
+      c.key([1, 2, 3, 4, 5].map(function (i) { return { fill: 'seq-' + i, ordered: true, outline: true }; }));   // circles carry an outline
       var steps = L.size_steps || [];
       var szx = c.phone ? 0 : W * 0.62, szy = c.phone ? sy + 48 : 12;
       if (L.size_title) c.text(szx, szy, L.size_title, { role: 'eyebrow', weight: 700, fill: 'secondary' });

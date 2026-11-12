@@ -13,7 +13,12 @@
 .oac-art { position: relative; margin: 28px 0 0; }
 .oac-art > svg.oac-svg { display: block; max-width: 100%; height: auto; overflow: visible; }
 .oac-illus { margin: 0 0 8px; font: var(--oa-font-weight-semibold) 14px/20px var(--oa-font-family-reading); }
-.oac-alt, .oac-vh { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.oac-vh, .oac-fig[data-oa-js] .oac-alt { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+/* With scripts off (no data-oa-js on the figure), the description shows as words with a line saying the drawing needs
+   scripts, and the table stands open (D3-97) */
+.oac-alt { margin: 20px 0 0; font: var(--oa-font-weight-regular) 15px/22px var(--oa-font-family-reading); max-width: 42em; }
+.oac-noscript { margin: 6px 0 0; font: var(--oa-font-weight-regular) 13px/18px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); }
+.oac-fig[data-oa-js] .oac-noscript { display: none; }
 .oac-notes { margin: 22px 0 0; padding: 14px 0 0 18px; border-top: 1px solid var(--oa-color-border-hairline); max-width: 38em; font: var(--oa-font-weight-regular) 15px/23px var(--oa-font-family-reading); }
 .oac-notes li + li { margin-top: 8px; }
 .oac-src { display: flex; justify-content: space-between; align-items: flex-start; gap: 4px 24px; flex-wrap: wrap; margin-top: 20px; padding-top: 10px; border-top: 1px solid var(--oa-color-border-hairline); }
@@ -114,9 +119,14 @@
   .oac-svg .oac-t:is(.oac-f-label-on-subject, .oac-f-on-cat-1, .oac-f-on-cat-2, .oac-f-on-cat-3, .oac-f-chip-label) { fill: Canvas; stroke: CanvasText; }
   .oac-ev-k { forced-color-adjust: none; background: CanvasText; color: Canvas; }
 }
+/* Print (D3-100): a figure taller than a page may break, but never inside its title block, its drawing, its source block or
+   a table row; the kit opens every table before print */
 @media print {
-  .oac-eq { break-inside: avoid; }
-  .oac-fig { break-inside: avoid-page; }
+  .oac-fig { break-inside: auto; }
+  .oac-ev, .oac-title, .oac-measure, .oac-guide, .oac-art, .oac-src, .oac-notes li, .oac-table tr { break-inside: avoid; }
+  .oac-title, .oac-measure, .oac-guide { break-after: avoid; }
+  .oac-tw { overflow: visible; }
+  .oac-eq > summary::before { content: none; }
 }
 
 /* Lean inline SVG (the pilot's first method): the desktop and phone drawings sit side by side in the page, one shown */

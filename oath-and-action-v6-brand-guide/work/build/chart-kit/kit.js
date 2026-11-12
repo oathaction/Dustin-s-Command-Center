@@ -197,8 +197,10 @@
     var w = spec.where || {};
     var out = rows.filter(function (r) {
       for (var k in w) {
-        var want = Array.isArray(w[k]) ? w[k] : [w[k]];
-        if (want.map(String).indexOf(String(r[k])) < 0) return false;
+        // where: {column: value or [values]} keeps those rows; {column: {not: value or [values]}} leaves them out
+        var neg = w[k] && typeof w[k] === 'object' && !Array.isArray(w[k]) && 'not' in w[k];
+        var want = neg ? [].concat(w[k].not) : Array.isArray(w[k]) ? w[k] : [w[k]];
+        if ((want.map(String).indexOf(String(r[k])) >= 0) === neg) return false;
       }
       return true;
     });
@@ -580,10 +582,14 @@
   // Words: atlas IDs in chips, the figure, the table equivalent
   // ------------------------------------------------------------------------------------------------------------
   K.words = K.words || {};
+  // words.json's words, carried inside the kit so a plain page opened from disk prints them too (access S8); the kit's
+  // self-test fails when this copy and words.json differ
+  K.WORDS = {"source_label": "Source:", "table_summary": "Show the table and notes", "notes_in_chart": "Notes in the chart", "table_region": "{caption}, table", "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.", "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.", "scripts_off": "The drawing needs scripts to appear. Its figures are in the table below.", "export_fonts": "Set in Inter and Inter Tight. Without both fonts installed, the labels set in another font and change width."};
   function word(opts, k) {
     var w = (opts && opts.words) || K.words;
-    if (!(k in w)) throw new Error('OAChart: words.json has no "' + k + '"');
-    return w[k];
+    if (k in w) return w[k];
+    if (k in K.WORDS) return K.WORDS[k];
+    throw new Error('OAChart: words.json has no "' + k + '"; add it there and to K.WORDS in kit.js');
   }
   K.chips = function (text, ids) {
     // set each atlas ID the spec names (spec.v7.ids) in its typed chip; an ASCII hyphen, never U+2011, in a no-wrap span
@@ -667,6 +673,8 @@
   }
   K.cell_text = function (col, r) {
     var v = r[col.field];
+    // a column's "empty" word prints where a cell has no value, so a reader can tell none from missing (access S4)
+    if ((v === null || v === undefined || v === '') && col.empty) return col.empty;
     var lm = /^lead(?::(\d+))?$/.exec(String(col.format || ''));
     if (lm) return K.lead(v, col.lead, lm[1] ? +lm[1] : 0);
     if (col.words && v !== null && v !== undefined && col.words[String(v)] !== undefined) return col.words[String(v)];
@@ -805,12 +813,16 @@
         (spec.grade_line ? '<p class="oac-ev-g" data-role="grade">' + K.chips(spec.grade_line, ids) + '</p>' : '') + '</div>');
     }
     if (has('title')) p.push('<p class="oac-title" id="' + id + '-t" data-role="title">' + K.chips(spec.title, ids) + '</p>');
-    if (has('guide') && spec.reading_guide) p.push('<p class="oac-guide" data-role="reading-guide">' + K.chips(spec.reading_guide, ids) + '</p>');
+    // the measure line sits under the title, then the reading guide (Rule 13.7, Rule 12.6; brand KS1)
     if (has('measure') && spec.measure_line) p.push('<p class="oac-measure" data-role="measure">' + K.chips(spec.measure_line, ids) + '</p>');
+    if (has('guide') && spec.reading_guide) p.push('<p class="oac-guide" data-role="reading-guide">' + K.chips(spec.reading_guide, ids) + '</p>');
     if (has('chart')) {
       var illus = spec.illustrative ? '<p class="oac-illus" data-role="illustrative">' + esc(spec.illustrative) + '</p>' : '';
       p.push('<div class="oac-art" data-oa-art' + (opts.art_attrs || '') + '>' + illus + (opts.svg || '') + '</div>');
+      // with scripts off a reader sees the description as words and a line saying the drawing needs scripts; once the
+      // script runs, the description names the drawing and leaves the reading order, so it is heard once (D3-97)
       if (spec.alt) p.push('<p class="oac-alt" id="' + id + '-alt" data-role="alt">' + K.chips(spec.alt, ids) + '</p>');
+      if (!opts.svg) p.push('<p class="oac-noscript" data-role="scripts-off">' + esc(word(opts, 'scripts_off')) + '</p>');
     }
     if (has('chart') && spec.phone_notes && spec.phone_notes.length) p.push('<ul class="oac-notes oac-phone-notes" data-role="phone-notes">' + spec.phone_notes.map(function (n) { return '<li>' + K.chips(n, ids) + '</li>'; }).join('') + '</ul>');
     if (has('notes') && spec.notes && spec.notes.length) p.push('<ul class="oac-notes" data-role="notes">' + spec.notes.map(function (n) { return '<li>' + K.chips(n, ids) + '</li>'; }).join('') + '</ul>');
@@ -824,7 +836,8 @@
     var cn = spec.chart_notes && spec.chart_notes.length ? '<p class="oac-eq-h">' + esc(word(opts, 'notes_in_chart')) + '</p><ul class="oac-eq-n">' +
       spec.chart_notes.map(function (n) { return '<li>' + K.chips(n, ids) + '</li>'; }).join('') + '</ul>' : '';
     var region = word(opts, 'table_region').replace('{caption}', (spec.table && spec.table.caption) || spec.id);
-    p.push('<details class="oac-eq" data-role="equivalent"><summary>' + esc(word(opts, 'table_summary')) + '<span class="oac-vh"> ' + esc(spec.id) + '</span></summary>' +
+    var cap = (spec.table && spec.table.caption) || spec.title || '';
+    p.push('<details class="oac-eq" data-role="equivalent"' + (opts.svg ? '' : ' open') + '><summary>' + esc(word(opts, 'table_summary')) + (cap ? '<span class="oac-vh">: ' + esc(cap) + '</span>' : '') + '</summary>' +
       '<div class="oac-eq-b">' + cn + (opts.guide ? '<div class="oac-tw" role="group" aria-label="' + esc(region) + '">' : '<div class="oac-tw" role="region" tabindex="0" aria-label="' + esc(region) + '">') + K.table_html(spec, rows, { lean: opts.lean_table, types: opts.types }) + '</div></div></details>');
     var fail = spec.failure ? ' data-oa-failure="' + esc(spec.failure.rule || '') + '"' : '';
     var ab = spec.artboard && spec.artboard !== 'reading' ? ' data-oa-artboard="' + esc(spec.artboard) + '"' : '';
@@ -850,14 +863,16 @@
       // by its description, so the name never points at an element that is not there
       var doc = fig.ownerDocument || root.document;
       var has_t = fig.id && doc.getElementById(fig.id + '-t'), has_alt = fig.id && doc.getElementById(fig.id + '-alt');
-      var lid = has_t ? fig.id + '-t' : (has_alt ? fig.id + '-alt' : null);
+      // the description names the drawing and the printed title stays in the reading order, so each is heard once
+      // (access S1); a figure with neither names it from the spec
+      var lid = has_alt ? fig.id + '-alt' : (has_t ? fig.id + '-t' : null);
       result = K.draw(spec, rows, { width: w, ground: ground, t: t, extra: extra, uid: (fig.id || 'oac') + '-' + w, label_id: lid });
       var old = art.querySelector('svg.oac-svg');
       if (old) old.remove();
       art.insertAdjacentHTML('beforeend', result.svg);
       var svg = art.querySelector('svg.oac-svg');
-      if (svg && has_t && has_alt) svg.setAttribute('aria-describedby', fig.id + '-alt');
       if (svg && !lid) svg.setAttribute('aria-label', String(spec.alt || spec.title || ''));
+      if (has_alt) has_alt.hidden = true;
       fig.setAttribute('data-oa-drawn', String(w));
       if (result.guard.length || result.warnings.length) fig.setAttribute('data-oa-warnings', String(result.guard.length + result.warnings.length));
     }
@@ -868,12 +883,16 @@
     if (tw && eq) { eq.addEventListener('toggle', stop); if (root.addEventListener) root.addEventListener('resize', stop); }
     return { redraw: function () { last = -1; draw(); }, result: function () { return result; } };
   };
-  K.mount_all = function (scope) {
-    // every figure with a JSON island: a script element of type application/json marked data-oa-chart-data, holding {spec, columns, csv}
-    var figs = (scope || root.document).querySelectorAll('figure.oac-fig');
-    for (var i = 0; i < figs.length; i++) {
-      var f = figs[i], isl = f.querySelector('script[data-oa-chart-data]');
-      if (!isl || f.getAttribute('data-oa-drawn')) continue;
+  K.mount_all = function (scope, o) {
+    // every figure with a JSON island: a script element of type application/json marked data-oa-chart-data. At load each
+    // figure closes its table and hides its scripts-off words at once; the drawing comes as the figure nears the screen,
+    // and every figure draws before the page prints (D3-97). o.now draws them all at once.
+    var figs = (scope || root.document).querySelectorAll('figure.oac-fig'), lazy = [];
+    var go = function (f) {
+      if (f.getAttribute('data-oa-drawn') || f.getAttribute('data-oa-error') || f._oac_busy) return;
+      var isl = f.querySelector('script[data-oa-chart-data]');
+      if (!isl) return;
+      f._oac_busy = true;
       try {
         var d = JSON.parse(isl.textContent);
         var rows = d.mode === 'table' ? K.rows_from_table(f.querySelector('table.oac-table'), d.spec, d)
@@ -884,10 +903,56 @@
       } catch (e) {
         f.setAttribute('data-oa-error', String(e && e.message || e));
       }
+    };
+    for (var i = 0; i < figs.length; i++) {
+      var f = figs[i];
+      if (!f.querySelector('script[data-oa-chart-data]')) continue;
+      f.setAttribute('data-oa-js', '');
+      var eq = f.querySelector('details.oac-eq[open]');
+      if (eq && !f.getAttribute('data-oa-drawn')) eq.removeAttribute('open');
+      lazy.push(f);
     }
+    K._pending = (K._pending || []).concat(lazy);
+    K._go = go;
+    if (o && o.now || !root.IntersectionObserver) { lazy.forEach(go); return; }
+    var io = new root.IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { io.unobserve(e.target); go(e.target); } });
+    }, { rootMargin: '1200px 0px' });
+    lazy.forEach(function (f) { io.observe(f); });
+  };
+  // A plain page (DR-235; access S8): the figure from a spec, the data file's text and its sidecar's columns. The rows are
+  // typed, chosen by the spec's where and put in its order, then drawn: OAChart.render(box, spec, csvText, meta.columns)
+  K.render = function (box, spec, text, columns, opts) {
+    // columns may be the whole sidecar: its columns type the rows and its printed line stands in for a missing source_line
+    if (columns && columns.columns) {
+      if (!spec.source_line && columns.printed_source_line) spec = Object.assign({}, spec, { source_line: columns.printed_source_line });
+      columns = columns.columns;
+    }
+    var raw = /^\s*\{/.test(text) ? JSON.parse(text).rows : K.parse_csv(text);
+    var rows = K.select(spec, K.type_rows(raw, columns || {}));
+    box.innerHTML = K.figure(spec, rows, Object.assign({ id: 'oac-' + String(spec.id).toLowerCase(), types: columns }, opts || {}));
+    var fig = box.querySelector('figure.oac-fig');
+    fig.setAttribute('data-oa-js', '');
+    var eq = fig.querySelector('details.oac-eq[open]');
+    if (eq) eq.removeAttribute('open');
+    return K.mount(fig, spec, rows, opts || {});
+  };
+  K.draw_all = function () {
+    // every figure not yet drawn, at once: before print, and for checks that read every drawing
+    (K._pending || []).forEach(function (f) { if (K._go) K._go(f); });
   };
   if (root.document && root.document.addEventListener) {
     var go = function () { K.mount_all(); };
+    // before print every chart draws and every table opens, so paper carries both; after print the tables close again
+    var opened = [];
+    if (root.addEventListener) {
+      root.addEventListener('beforeprint', function () {
+        K.draw_all();
+        opened = Array.prototype.slice.call(root.document.querySelectorAll('figure.oac-fig details.oac-eq:not([open])'));
+        opened.forEach(function (d) { d.setAttribute('open', ''); });
+      });
+      root.addEventListener('afterprint', function () { opened.forEach(function (d) { d.removeAttribute('open'); }); opened = []; });
+    }
     if (root.document.readyState === 'loading') root.document.addEventListener('DOMContentLoaded', go); else setTimeout(go, 0);
   }
 })(typeof globalThis !== 'undefined' ? globalThis : this);

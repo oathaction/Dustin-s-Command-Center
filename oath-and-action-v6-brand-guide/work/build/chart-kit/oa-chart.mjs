@@ -247,12 +247,14 @@ async function captures(items, o) {
           p.on('pageerror', e => errors.push(String(e)));
           await p.goto('file://' + page_file);
           await p.evaluate(() => document.fonts.ready);
+          // charts draw as they near the screen (D3-97); a check draws them all first
+          await p.evaluate(() => window.OAChart && OAChart.draw_all && OAChart.draw_all());
           await p.waitForFunction(() => Array.from(document.querySelectorAll('figure.oac-fig')).every(f => f.getAttribute('data-oa-drawn') || f.getAttribute('data-oa-error')), null, { timeout: 15000 });
           errors.forEach(e => res.faults.push(`page error at ${w}: ${e}`));
           for (const g of o.grounds) {
             const fid = `#oac-${spec.id.toLowerCase()}-${g}`;
             const node = res.drawings.find(d => d.ground === g && d.page === w);
-            const info = await p.evaluate(({ fid, node_svg, title, alt }) => {
+            const info = await p.evaluate(({ fid, node_svg, title, alt, fonts_note }) => {
               const f = document.querySelector(fid);
               const err = f.getAttribute('data-oa-error');
               const svg = f.querySelector('svg.oac-svg');
@@ -265,7 +267,7 @@ async function captures(items, o) {
               const ser = new XMLSerializer();
               const a = ser.serializeToString(clone);
               const b = node_svg ? ser.serializeToString(new DOMParser().parseFromString(node_svg, 'image/svg+xml').documentElement) : null;
-              const norm = x => x ? x.replace(/ aria-labelledby="[^"]*"/g, '').replace(/<title>.*?<\/title>|<desc>.*?<\/desc>/gs, '').replace(/oac-[a-z0-9-]*?-(\d+)-([a-z0-9]+)/g, 'U-$1-$2') : x;
+              const norm = x => x ? x.replace(/ aria-labelledby="[^"]*"/g, '').replace(/<title>.*?<\/title>|<desc>.*?<\/desc>/gs, '').replace(/<style>.*?<\/style>/gs, '').replace(/ oac-u-[a-z0-9-]+/g, '').replace(/<pattern id="[^"]*-fc-[^"]*".*?<\/pattern>/gs, '').replace(/<defs><\/defs>/g, '').replace(/oac-[a-z0-9-]*?-(\d+)-([a-z0-9]+)/g, 'U-$1-$2') : x;
               out.parity = norm(a) === norm(b);
               out.width = svg.getAttribute('width');
               // the standalone export: computed colors and type written on each element, no classes, title and desc kept
@@ -288,6 +290,11 @@ async function captures(items, o) {
               const NS = 'http://www.w3.org/2000/svg';
               if (!ex.querySelector(':scope > desc') && alt) { const d = document.createElementNS(NS, 'desc'); d.textContent = alt; ex.insertBefore(d, ex.firstChild); }
               if (!ex.querySelector(':scope > title') && title) { const t = document.createElementNS(NS, 'title'); t.textContent = title; ex.insertBefore(t, ex.firstChild); }
+              // the file names its fonts and says they are needed (D3-102, access S9); embedding them waits for Phase 5's package
+              const dd = ex.querySelector(':scope > desc');
+              if (dd && fonts_note) dd.textContent = dd.textContent + ' ' + fonts_note;
+              ex.setAttribute('data-fonts', 'Inter, Inter Tight');
+              ex.querySelectorAll('style').forEach(st => st.remove());
               ex.removeAttribute('aria-describedby');
               ex.removeAttribute('aria-labelledby');
               ex.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
@@ -301,7 +308,7 @@ async function captures(items, o) {
               const back = new DOMParser().parseFromString(out.export, 'image/svg+xml');
               out.export_ok = !back.querySelector('parsererror') && !!back.querySelector('svg > title') && !!back.querySelector('svg > desc') && out.export.indexOf('var(') < 0 && out.export.indexOf(' class=') < 0;
               return out;
-            }, { fid, node_svg: node ? node.svg : null, title: spec.title, alt: spec.alt });
+            }, { fid, node_svg: node ? node.svg : null, title: spec.title, alt: spec.alt, fonts_note: K.words.export_fonts });
             if (info.err) { res.faults.push(`page: ${g} ${w}: ${info.err}`); continue; }
             if (dpr === 1) {
               if (!info.parity) res.faults.push(`parity: the page's drawing at ${w} on ${g} differs from the Node drawing the exports use`);
@@ -466,6 +473,9 @@ async function self_test() {
     ['a label on group 4\'s hatch', d => { d.marks.push({ kind: 'rect', x: 0, y: 0, w: 200, h: 40, fill: 'cat-4', data: {} }); d.texts = (d.texts || []).concat([{ x: 10, y: 10, w: 60, h: 16, size: 15, words: 'Group four' }]); }, 'group 4\'s hatch'],
     ['a circle sized by radius', d => { d.marks.push({ kind: 'circle', x: 0, y: 0, w: 20, h: 20, r: 10, data: {}, area_of: { value: 25, max_value: 100, max_radius: 40 } }); }, 'sized by area'],
     ['a key told apart by lightness alone, too close', d => { d.keys = [[{ fill: 'subject' }, { fill: 'cat-1' }]]; }, 'lightness'],
+    ['a leader line through a label', d => { d.guard = K.guard({ texts: [{ x: 10, y: 10, w: 60, h: 16, size: 15, words: 'label' }], leaders: [{ x1: 0, y1: 18, x2: 100, y2: 18 }] }, d.width, d.height); }, 'leader line crosses'],
+    ['a label in the ink of its mark in forced colors', d => { d.marks.push({ kind: 'rect', x: 0, y: 0, w: 200, h: 40, fill: 'subject', data: {} }); d.texts = (d.texts || []).concat([{ x: 10, y: 10, w: 60, h: 16, size: 15, words: 'Inked', fill: 'label' }]); }, 'forced colors'],
+    ['ordered steps too close to their neighbors', d => { d.keys = [[{ fill: 'seq-2', ordered: true, outline: true }, { fill: 'seq-2', ordered: true, outline: true }]]; }, 'neighbors'],
   ];
   for (const [name, fn, want] of plant) {
     const d = JSON.parse(JSON.stringify(d0));
@@ -475,6 +485,11 @@ async function self_test() {
     console.log(`${hit ? 'caught' : 'MISSED'} ${name}${hit ? '' : ': ' + JSON.stringify(f.slice(0, 3))}`);
     if (!hit) bad++;
   }
+  // the words inside kit.js equal words.json
+  const wj = Object.assign({}, K.words); delete wj.about;
+  const same = JSON.stringify(wj) === JSON.stringify(K.WORDS);
+  console.log(`${same ? 'pass' : 'FAIL'} the words carried in kit.js equal words.json`);
+  if (!same) bad++;
   // the CSV check
   const cols = Object.keys(r.datasets[0].meta.columns);
   const csv = C.to_csv(r.rows.slice(1), cols);

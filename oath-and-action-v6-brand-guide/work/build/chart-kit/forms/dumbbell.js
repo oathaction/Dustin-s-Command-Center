@@ -55,7 +55,7 @@
           c.text(b, yy, L.to_label, { role: 'tick', anchor: apart ? 'middle' : (a < b ? 'start' : 'end'), weight: 600 });
         }
       });
-      c.key([{ fill: 'subject', direct: true }, { fill: 'surface', direct: true }]);
+      c.key([{ fill: 'subject', direct: true }, { fill: 'surface', pattern: true }]);   // the open circle reads by its outline
       c.height(y + (cats.length - 1) * pitch + (c.phone ? 40 : 16));
     }
   });

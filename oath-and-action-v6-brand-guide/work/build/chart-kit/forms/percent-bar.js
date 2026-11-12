@@ -8,7 +8,7 @@
   K.register_chart({
     form: 'percent-bar', name: 'One Hundred Percent Bar', family: 'composition',
     encode: { category: 'text', parts: 'list', total: 'number?' },
-    labels: ['parts', 'share', 'mark_at', 'mark_label', 'share_head'],
+    labels: ['parts', 'share', 'mark_at', 'mark_label', 'share_head', 'pitch'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, rows = c.rows, ek = c.field('category'), parts = c.field('parts'), et = c.field('total', false);
@@ -27,7 +27,8 @@
       };
       rows.forEach(function (r) { var s = share(r); sw = Math.max(sw, c.measure(String(L.share || '{p}%').replace('{p}', s.p).replace('{total}', s.tot), 'label', 700)); });
       var x0 = c.phone ? 0 : Math.ceil(lw + 20), x1 = W - sw - 14, bh = c.t(c.phone ? 'bar-phone-height' : 'bar-dense-height');
-      var pitch = c.phone ? c.t('bar-phone-pitch') - 8 : c.t('bar-dense-pitch') - 12;
+      // labels.pitch sets the desktop row pitch (E31; Phase 2 set S10's rows 35 px apart), at least the bar and 8 px
+      var pitch = c.phone ? c.t('bar-phone-pitch') - 8 : Math.max(bh + 8, L.pitch || c.t('bar-dense-pitch') - 12);
       rows.forEach(function (r, i) {
         var s = share(r), by = y + i * pitch + (c.phone ? c.size('label') + 6 : 0), x = x0;
         if (c.phone) c.text(0, by - 6, r[ek], { role: 'label', weight: 600 });

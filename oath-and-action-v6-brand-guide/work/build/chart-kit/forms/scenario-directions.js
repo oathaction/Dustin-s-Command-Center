@@ -40,7 +40,9 @@
       y += 36;
       c.key(L.key.map(function (k) { var s = st[k['class']] || {}; return { fill: s.tint && s.tint !== 'none' ? s.tint : 'surface', direct: true }; }));
     }
-    if (c.phone) {
+    // the stacked phone layout wherever a table column would leave its words under 90 px (D3-93)
+    var idw0 = L.id_column ? 34 : 0, cw0 = (W - idw0 - Math.round((W - idw0) * 0.25)) / cols.length;
+    if (c.phone || cw0 - 12 - (tinted ? gs + 6 : 0) < 90) {
       rows.forEach(function (r) {
         var head = (L.id_column ? r[er] + '  ' : '') + r[en];
         var t = c.text(0, y + c.size('label'), head, { role: 'label', weight: 700, max: W });
@@ -52,11 +54,12 @@
           var tt = c.text(0, y + small, titles[j] || col, { role: 'tick', weight: 700, fill: 'secondary' });
           y = tt.y + tt.h + 4;
           var tx = tinted ? gs + 8 : 0;
-          var lines = K.wrap(r[col], small, W - tx - 8, 400);
-          var h = lines.length * Math.round(small * 1.36) + 10;
+          // the atlas's words at reading size in the label ink (KS6)
+          var ns = c.size('note'), lines = K.wrap(r[col], ns, W - tx - 8, 400);
+          var h = lines.length * Math.round(ns * 1.36) + 10;
           if (tinted && s.tint && s.tint !== 'none') c.rect(0, y - 2, W, h, { fill: s.tint, data: { key: r[er] + '|' + col, field: cls[j], value: r[cls[j]] } });
           if (tinted) glyph(c, 4, y + 2, gs, s.glyph, s.tint);
-          c.text(tx + 4, y + small + 1, r[col], { role: 'tick', max: W - tx - 8, fill: tinted ? ink(s.tint) : 'label', data: { key: r[er] + '|' + col } });
+          c.text(tx + 4, y + ns + 1, r[col], { role: 'note', max: W - tx - 8, fill: tinted ? ink(s.tint) : 'label', data: { key: r[er] + '|' + col } });
           y += h + 6;
         });
         y += 12;

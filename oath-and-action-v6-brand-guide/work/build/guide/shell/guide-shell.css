@@ -116,15 +116,15 @@ code, pre, kbd { font-family: var(--mono); font-size: .875rem; overflow-wrap: an
 
 /* ---------------------------------------------------------------- Frame: rail and main on the page grid */
 .frame { max-width: 100rem; margin: 0 auto; padding: 0 var(--m) }
-.rail { display: none }
+nav.rail { display: none }   /* the shell's own rail only: a plate's drawing may name a class rail (the hollow line's rails) */
 @media (min-width: 64em) {
   .frame { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g) }
-  .rail { grid-column: 1 / span 3; display: block; position: sticky; top: var(--head-h); align-self: start; max-height: calc(100vh - var(--head-h));
+  nav.rail { grid-column: 1 / span 3; display: block; position: sticky; top: var(--head-h); align-self: start; max-height: calc(100vh - var(--head-h));
     overflow-y: auto; overscroll-behavior: contain; padding: var(--oa-space-400) 0 var(--oa-space-600) }
   main { grid-column: 4 / -1 }
 }
-@media (min-width: 90em) { .rail { grid-column: 1 / span 2 } main { grid-column: 3 / -1 } }
-.rail.is-covered { visibility: hidden }
+@media (min-width: 90em) { nav.rail { grid-column: 1 / span 2 } main { grid-column: 3 / -1 } }
+nav.rail.is-covered { visibility: hidden }
 /* CA-S8 (round 2): while the rail can scroll further down, its foot fades and says "More below"; the cue sits in the
    flow, so showing it never changes how far the rail scrolls, and it lets every press through to the links under it */
 .rail { padding-bottom: 0 }
@@ -733,13 +733,16 @@ a.toc-part-k:hover { text-decoration: underline }
   .home .wm { --amp: currentColor }
 }
 @media print {
-  .masthead, .rail, .menu, .skip, .chapnav, .return, .btn, .btn-row, .status, .fit-switch, .plate-hint, .route-index { display: none !important }
+  .masthead, nav.rail, .menu, .skip, .chapnav, .return, .btn, .btn-row, .status, .fit-switch, .plate-hint, .route-index { display: none !important }
   .frame { display: block; padding: 0 }
   body, .plate-scroll { background: none }
   .appendix, .plate.is-breakout > .plate-scroll { margin-left: 0 }
   .chapter, .part, .contents, .start, .appendix { break-before: page }
   .route-step { break-inside: avoid }
   .plate, .rule-h, .hinge { break-inside: avoid }
+  /* a chart plate may run past a page: it breaks between its parts (kit.css) and its frame never clips it (D3-100) */
+  .plate:has(.oac-fig), .plate:has(.oac-fig) .plate-stage { break-inside: auto }
+  .plate-scroll:has(.oac-fig) { overflow: visible !important; max-height: none }
   .local-toc { position: static }
   .code { max-height: none; overflow: visible }
   a { text-decoration: none }

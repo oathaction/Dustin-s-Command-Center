@@ -25,6 +25,11 @@
     var per = Math.max(1, Math.floor((cw - 2 + ug) / (u + ug)));
     var cell = {};
     rows.forEach(function (r) { var k = gkey(r) + '\u0000' + r[ec]; (cell[k] = cell[k] || []).push(r); });
+    // the ringed entry is drawn last in its stack, at the stack's foot, so its leader runs straight to its words (E28)
+    if (L.ring) Object.keys(cell).forEach(function (k) {
+      var l = cell[k], i = l.findIndex(function (r) { return r[ek] === L.ring.key; });
+      if (i >= 0) l.push(l.splice(i, 1)[0]);
+    });
     var nrows = function (v) { var m = 0; groups.forEach(function (g) { m = Math.max(m, Math.ceil((cell[g + '\u0000' + v] || []).length / per)); }); return m; };
     var nUp = nrows(up), nDown = nrows(down);
     var ring = L.ring || null, ringBox = null;
@@ -37,6 +42,8 @@
     if (c.phone) {
       [up, down].forEach(function (v, i) {
         var x = i ? c.measure((cats[up] || {}).label || up, 'tick', 600) + 40 : 0, st = STY[(cats[v] || {}).style] || STY.solid;
+        // the second entry takes its own line where the two would not fit side by side (D3-93)
+        if (i && x + 18 + c.measure((cats[v] || {}).label || v, 'tick', 600) > W) { x = 0; y += 22; }
         c.rect(x, y + 2, 12, 12, { fill: st.fill === 'surface' ? 'surface' : st.fill, mark: false });
         if (st.stroke) c.rect(x + 0.5, y + 2.5, 11, 11, { stroke: st.stroke, mark: false });
         c.text(x + 18, y + 13, (cats[v] || {}).label || v, { role: 'tick', weight: 600 });
@@ -90,7 +97,7 @@
       c.circle(rx, ry, u * 0.9, { stroke: 'label', width: c.t('line-baseline'), mark: false });
       var ty = Math.max(downEnd, ry + u) + small + 8;
       var t = c.text(Math.min(W, rx + u), ty, ring.text, { role: 'tick', weight: 600, anchor: 'end' });
-      c.line(Math.min(W - 2, rx + u * 0.6), Math.max(downEnd, ry + u * 0.9), Math.min(W - 2, rx + u * 0.6), t.y - 1, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+      c.line(rx, ry + u * 0.9, rx, t.y - 1, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
       y = Math.max(y, t.y + t.h + 14);
       ring = null;
     }
@@ -124,7 +131,7 @@
       var t = c.text(Math.min(W, rx + u), ry + u * 0.9 + small + 8, ring.text, { role: 'tick', weight: 600, anchor: 'end' });
       c.line(rx, ry + u * 0.9, Math.min(rx, t.x + t.w - 4), t.y - 1, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
     }
-    c.key((L.categories || []).map(function (x) { var st = STY[x.style] || STY.solid; return { fill: st.fill && st.fill !== 'none' && st.fill !== 'surface' ? st.fill : 'subject', direct: true }; }));
+    c.key((L.categories || []).map(function (x) { var st = STY[x.style] || STY.solid; return { fill: st.fill && st.fill !== 'none' && st.fill !== 'surface' ? st.fill : 'subject', pattern: !!(st.pattern || st.dash || st.stroke), direct: true }; }));
     c.height(y + 4);
   }
   K.register_chart({
@@ -190,7 +197,7 @@
         c.text(cx, y + c.size('tick'), g, { role: 'tick', anchor: 'middle' });
         right = cx + tw / 2;
       });
-      c.key(cats.map(function (x) { var s = STY[x.style] || STY.solid; return { fill: s.fill && s.fill !== 'none' && s.fill !== 'surface' ? s.fill : 'subject', pattern: !!s.pattern, direct: true }; }));
+      c.key(cats.map(function (x) { var s = STY[x.style] || STY.solid; return { fill: s.fill && s.fill !== 'none' && s.fill !== 'surface' ? s.fill : 'subject', pattern: !!(s.stroke || s.dash) || !!s.pattern, direct: true }; }));
       c.height(y + c.size('tick') + 6);
     }
   });

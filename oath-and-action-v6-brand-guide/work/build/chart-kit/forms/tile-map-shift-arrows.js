@@ -15,10 +15,12 @@
       var G = globalThis.OAChartGeo, rows = c.rows, ec = c.field('code'), es = c.field('shift'), ef = c.field('from', false), et = c.field('to', false);
       var L = c.labels, f = c.spec.formats || {}, W = c.width;
       var tm = K.parts.tiles(c), gap = tm.gap, size = tm.size, pitch = tm.pitch;
+      // the phone's shaded tiles wherever a tile is too small for its code, figure and arrow (D3-93)
+      var tight = c.phone || size < c.measure('WW 88.8', 'tick', 700) + 12;
       var max = Math.max.apply(null, rows.map(function (r) { return Math.abs(r[es]); }));
       var ky = 0;
       // key
-      if (!c.phone && L.key_title) {
+      if (!tight && L.key_title) {
         c.text(pitch, 14, L.key_title, { role: 'eyebrow', weight: 700, fill: 'secondary' });
         var kx = pitch;
         (L.key_steps || []).forEach(function (s) {
@@ -31,9 +33,9 @@
       }
       var steps = L.steps || [2, 5, 8];
       var shade = function (v) { var a = Math.abs(v); return a >= steps[2] ? 'mag-4' : a >= steps[1] ? 'mag-3' : a >= steps[0] ? 'mag-2' : 'mag-1'; };
-      var top = c.phone ? 0 : 0;
+      var top = tight ? 0 : 0;
       var nation = rows.filter(function (r) { return !G.tiles[r[ec]] && (r[ec] === 'US' || r[ec] === L.nation_code); })[0];
-      if (nation && L.nation_label && !c.phone) {
+      if (nation && L.nation_label && !tight) {
         var ny = 58, nx = pitch;
         var nt = c.text(nx, ny, String(L.nation_label).replace('{shift}', K.fmt(Math.abs(nation[es]), f.shift || 'number:1')), { role: 'tick', weight: 700 });
         K.parts.arrow(c, nt.x + nt.w + 10, nt.x + nt.w + 10 + (size - 14) * Math.abs(nation[es]) / max, ny - 4, { data: { key: nation[ec], field: es, value: nation[es] } });
@@ -43,9 +45,11 @@
         if (!t) return;
         var x = t[0] * pitch, y = top + t[1] * pitch;
         var framed = L.frame === 'sign' && ef && et && (r[ef] < 0) !== (r[et] < 0);
-        if (c.phone) {
+        if (tight) {
           var sh = shade(r[es]);
           c.rect(x, y, size, size, { fill: sh, data: { key: r[ec], field: es, value: r[es] } });
+          // a 1 px outline keeps the lightest step apart from the ground (access S5)
+          c.rect(x + 0.5, y + 0.5, size - 1, size - 1, { stroke: 'sequential-outline', width: 1, mark: false });
           c.text(x + size / 2, y + size / 2 + 4, r[ec], { role: 'tick', size: c.t('type-tile-code-phone'), weight: 600, anchor: 'middle', fill: sh === 'mag-4' || sh === 'mag-3' ? 'label-on-subject' : 'label' });
         } else {
           // the track ground keeps the code and figure at 4.5 to 1 or more on both grounds, in the label ink
@@ -59,7 +63,7 @@
         if (framed) c.rect(x - 2, y - 2, size + 4, size + 4, { stroke: 'label', width: c.t('tile-frame'), mark: false });
       });
       ky = top + 8 * pitch;
-      if (c.phone && L.steps_labels) {
+      if (tight && L.steps_labels) {
         var yy = ky + 10, kx2 = 0;
         ['mag-1', 'mag-2', 'mag-3', 'mag-4'].forEach(function (m, i) {
           if (!L.steps_labels[i]) return;
@@ -68,7 +72,7 @@
           kx2 = t.x + t.w + 14;
           if (kx2 > W - 80) { kx2 = 0; yy += 22; }
         });
-        c.key(['mag-1', 'mag-2', 'mag-3', 'mag-4'].map(function (m) { return { fill: m }; }));
+        c.key(['mag-1', 'mag-2', 'mag-3', 'mag-4'].map(function (m) { return { fill: m, ordered: true, outline: true }; }));
         ky = yy + 22;
       }
       if (L.lists) {
@@ -78,11 +82,11 @@
           if (!L.lists[pair[0]]) return;
           ky += 22;
           var lx = c.text(0, ky, L.lists[pair[0]], { role: 'eyebrow', weight: 700, fill: 'secondary' });
-          var x = c.phone ? 0 : lx.x + Math.max(lx.w, 120) + 14;
-          if (c.phone) ky += 20;
+          var x = tight ? 0 : lx.x + Math.max(lx.w, 120) + 14;
+          if (tight) ky += 20;
           pair[1].forEach(function (r) {
             var w = c.measure(G.tiles[r[ec]][3] + ' ' + K.fmt(Math.abs(r[es]), f.shift || 'number:1'), 'tick', 600) + 16;
-            if (x + w > W) { x = c.phone ? 0 : lx.x + Math.max(lx.w, 120) + 14; ky += 20; }
+            if (x + w > W) { x = tight ? 0 : lx.x + Math.max(lx.w, 120) + 14; ky += 20; }
             var nb = c.text(x, ky, G.tiles[r[ec]][3], { role: 'tick', weight: 600 });
             c.text(nb.x + nb.w + 4, ky, K.fmt(Math.abs(r[es]), f.shift || 'number:1'), { role: 'tick', fill: 'secondary' });
             x += w;

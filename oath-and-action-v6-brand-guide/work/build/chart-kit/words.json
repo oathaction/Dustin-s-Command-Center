@@ -4,5 +4,8 @@
  "table_summary": "Show the table and notes",
  "notes_in_chart": "Notes in the chart",
  "table_region": "{caption}, table",
- "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one."
+ "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.",
+ "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.",
+ "scripts_off": "The drawing needs scripts to appear. Its figures are in the table below.",
+ "export_fonts": "Set in Inter and Inter Tight. Without both fonts installed, the labels set in another font and change width."
 }

@@ -64,8 +64,13 @@
           var ly = y + c.size('label') + 6;
           var lb = c.text(0, ly, v.label, { role: 'label', weight: 600, max: c.phone ? W - 8 : W * 0.6 });
           if (v.tally) c.text(W, c.phone ? lb.y + lb.h + c.size('label') + 2 : ly, v.tally, { role: 'label', weight: 700, anchor: 'end' });
-          if (v.date && !c.phone) c.text(W * 0.62, ly, v.date, { role: 'tick', anchor: 'middle' });
-          var y0 = (c.phone ? lb.y + lb.h + c.size('label') + 10 : ly + 8);
+          // the bar steps under the label's last line (E30); the date moves under the label when the label runs past it
+          var dw = v.date ? c.measure(v.date, 'tick') : 0, under = 0;
+          if (v.date && !c.phone) {
+            if (lb.x + lb.w + 12 > W * 0.62 - dw / 2) { under = c.size('tick') + 6; c.text(0, lb.y + lb.h + c.size('tick') + 2, v.date, { role: 'tick' }); }
+            else c.text(W * 0.62, ly, v.date, { role: 'tick', anchor: 'middle' });
+          }
+          var y0 = (c.phone ? lb.y + lb.h + c.size('label') + 10 : lb.y + lb.h + 8 + under);
           var mid = y0 + vh / 2 + c.size('label') * 0.35;
           var sp = v.split, parts = null;
           if (sp && c.extra[sp.dataset]) {
@@ -76,11 +81,12 @@
           if (parts) {
             // each party's votes as its own segment in the one neutral ink of its side, its name and count on the mark
             var small = [], x = 0;
-            [[sp.yes, 'party', 'label-on-subject'], [sp.no, 'light-fill', 'label']].forEach(function (side, si) {
+            [[sp.yes, 'party', 'label-on-subject', v.party_words_yes], [sp.no, 'light-fill', 'label', v.party_words_no]].forEach(function (side, si) {
               parts.forEach(function (r) {
                 var n = r[side[0]] || 0;
                 if (!n) return;
-                var w = xs(n), words = String(v.party_words || '{party} {v}').replace('{party}', r[sp.party]).replace('{v}', K.fmt(n, 'integer'));
+                // each segment says which way it voted (E27): party_words_yes and party_words_no, else party_words
+                var w = xs(n), words = String(side[3] || v.party_words || '{party} {v}').replace('{party}', r[sp.party]).replace('{v}', K.fmt(n, 'integer'));
                 c.rect(x, y0, w, vh, { fill: side[1], kind: x === 0 ? 'bar' : 'segment', axis: 'x', zero: 0, data: { key: (si ? no : yes)[ek] + '|' + r[sp.party], field: side[0], value: n, party: r[sp.party] } });
                 if (x > 0) c.line(x, y0, x, y0 + vh, { stroke: 'surface', width: 2, mark: false });
                 if (c.measure(words, 'label', 700) + 14 < w) c.text(si ? x + w - 7 : x + 7, mid, words, { role: 'label', weight: 700, fill: side[2], anchor: si ? 'end' : 'start' });
@@ -88,21 +94,54 @@
                 x += w;
               });
             });
-            // segments too narrow for their words: the words in one row under the bar, each on an elbow leader from its segment
-            var ty = y0 + vh + 14 + c.size('tick'), right = -1e9, rowsN = small.length ? 1 : 0;
-            small.forEach(function (p) {
-              var tw = c.measure(p[1], 'tick', 600), lx = Math.max(p[0] - 3, 0, right + 16);
-              if (lx + tw > W) {
-                if (right > -1e9 && W - tw < right + 16) { ty += c.size('tick') + 8; rowsN++; right = -1e9; }
-                lx = Math.min(Math.max(p[0] - 3, 0, right + 16), W - tw);
-              }
-              c.text(lx, ty, p[1], { role: 'tick', weight: 600 });
-              var top = ty - c.size('tick') - 3;
-              c.line(p[0], y0 + vh + 1, p[0], top, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
-              if (lx > p[0] + 1) c.line(p[0], top, lx, top, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
-              right = lx + tw;
+            // segments too narrow for their words: the words in rows under the bar, each on an elbow leader from its
+            // segment. Rightmost first, each takes the row nearest the bar where its words touch no words, its leader runs
+            // through no words in a row above it, and its words cover no leader that runs on to a row below (D3-93)
+            var rows_t = [], rh = c.size('tick') + 8, t0 = y0 + vh + 14 + c.size('tick');
+            var its = small.slice().sort(function (a, b) { return b[0] - a[0]; }).map(function (p) {
+              var tw = c.measure(p[1], 'tick', 600), cl = function (v) { return Math.min(Math.max(v, 0), W - tw); };
+              // the words start at the leader, end at it or sit centered under it; failing those, at either edge, or either
+              // side of the line at the votes needed, on a longer elbow
+              var cands = [cl(p[0] - 3), cl(p[0] + 3 - tw), cl(p[0] - tw / 2), 0, W - tw];
+              if (need) { var bx = xs(need[ev]); cands.push(cl(bx + 6), cl(bx - 6 - tw)); }
+              return { p: p, tw: tw, cands: cands };
             });
-            y = y0 + vh + (rowsN ? rowsN * (c.size('tick') + 8) + 10 : 0);
+            var block = need ? xs(need[ev]) : null;   // the line at the votes needed runs down through every row
+            var ok = function (it, k, x) {
+              var tw = it.tw, px = it.p[0];
+              if (block !== null && block > x - 3 && block < x + tw + 3) return false;
+              if ((rows_t[k] || []).some(function (q) { return x < q[1] + 12 && q[0] < x + tw + 12; })) return false;
+              for (var j = 0; j < k; j++) if ((rows_t[j] || []).some(function (q) { return px > q[0] - 3 && px < q[1] + 3; })) return false;
+              for (var m = k + 1; m < rows_t.length; m++) if ((rows_t[m] || []).some(function (q) { return q[2] > x - 3 && q[2] < x + tw + 3; })) return false;
+              return true;
+            };
+            // the fewest rows that hold every label, by a short search over rows and positions
+            var solve = function (n, maxr) {
+              if (n === its.length) return true;
+              var it = its[n];
+              for (var r = 0; r < maxr; r++) for (var ci = 0; ci < it.cands.length; ci++) {
+                var x = it.cands[ci];
+                if (!ok(it, r, x)) continue;
+                (rows_t[r] = rows_t[r] || []).push([x, x + it.tw, it.p[0]]);
+                it.r = r; it.x = x;
+                if (solve(n + 1, maxr)) return true;
+                rows_t[r].pop();
+              }
+              return false;
+            };
+            var found = false;
+            for (var maxr = 1; maxr <= its.length + 2 && !found; maxr++) { rows_t = []; found = solve(0, maxr); }
+            if (!found) { rows_t = []; its.forEach(function (it, n) { it.r = n; it.x = it.cands[0]; rows_t[n] = [[it.x, it.x + it.tw, it.p[0]]]; }); }
+            rows_t = rows_t.filter(function (q) { return q && q.length; });
+            its.forEach(function (it) {
+              var ty = t0 + it.r * rh, top = ty - c.size('tick') - 3, lx = it.x, tw = it.tw, p = it.p;
+              c.text(lx, ty, p[1], { role: 'tick', weight: 600 });
+              // the leader drops from the segment to the top of its words, with an elbow where the words sit to one side
+              var hx = Math.min(Math.max(p[0], lx + 2), lx + tw - 2);
+              c.line(p[0], y0 + vh + 1, p[0], top, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+              if (Math.abs(hx - p[0]) > 1) c.line(p[0], top, hx, top, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+            });
+            y = y0 + vh + (rows_t.length ? rows_t.length * rh + 10 : 0);
           } else {
             c.rect(0, y0, xs(yes[ev]), vh, { fill: 'subject', kind: 'bar', axis: 'x', zero: 0, data: { key: yes[ek], field: ev, value: yes[ev] } });
             c.rect(xs(yes[ev]), y0, W - xs(yes[ev]), vh, { fill: 'light-fill', kind: 'segment', data: { key: no[ek], field: ev, value: no[ev] } });
@@ -114,6 +153,7 @@
             var nx = xs(need[ev]);
             var nb = y;   // under the bar, and under any party words set beneath it
             c.line(nx, y0 - 6, nx, nb + 22, { stroke: 'label', width: c.t('line-hairline'), data: { key: need[ek], field: ev, value: need[ev] } });
+            c.leaders.push({ x1: nx, y1: y0 - 6, x2: nx, y2: nb + 22 });   // the guard treats it as a leader
             if (v.short) c.text(Math.min(nx, W - c.measure(v.short, 'label', 600)), nb + 22 + c.size('label'), v.short, { role: 'label', weight: 600, anchor: 'start' });
             y = nb + 22 + c.size('label') + 6;
           }

@@ -27,7 +27,10 @@
       var top0 = 0;
       if (keyed) {
         top0 = c.size('label') + 2;
-        top0 += P.key(c, order.filter(function (k) { return names[k]; }).map(function (k) {
+        // the subject's line first in the key, as the title is about it
+        var kord = order.filter(function (k) { return names[k]; });
+        kord.sort(function (a, b) { return (b === String(subj)) - (a === String(subj)); });
+        top0 += P.key(c, kord.map(function (k) {
           var sj = k === String(subj);
           return { label: names[k], shape: 'line', stroke: sj ? 'subject' : 'context', width: c.t(sj ? 'line-subject' : 'line-context'), direct: true };
         }), 0, top0, W) + 8;

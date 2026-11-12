@@ -10,8 +10,10 @@
     var size = c.size('label'), sw = Math.round(size * 0.9), gap = 24, lh = Math.round(size * 1.5);
     var cx = x, cy = y, first = true;
     entries.forEach(function (e) {
-      var w = sw + 8 + c.measure(e.label, 'label');
+      var w = sw + 8 + c.measure(e.label, 'label'), wrapmax = null;
       if (!first && cx + w > x + maxw) { cx = x; cy += lh; }
+      // an entry wider than the key's whole width wraps under its own words (D3-93)
+      if (w > maxw) { wrapmax = maxw - sw - 8; w = maxw; }
       var top = cy - sw + 2;
       if (e.shape === 'line') c.line(cx, top + sw / 2, cx + sw, top + sw / 2, { stroke: e.stroke || e.fill, width: e.width || c.t('line-subject'), dash: e.dash, mark: false });
       else if (e.shape === 'dot') c.circle(cx + sw / 2, top + sw / 2, sw / 2.4, { fill: e.fill, mark: false });
@@ -20,11 +22,13 @@
         else if (!e.fill && e.stroke) { c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { fill: e.open ? 'surface' : 'none', mark: false }); c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { stroke: e.stroke, dash: e.dash, mark: false }); }
         else c.rect(cx, top, sw, sw, { fill: e.fill, mark: false });
       }
-      c.text(cx + sw + 8, cy, e.label, { role: 'label' });
+      var tb = c.text(cx + sw + 8, cy, e.label, { role: 'label', max: wrapmax || undefined });
+      if (wrapmax) cy = tb.bottom - size * 0.241;   // the last line's baseline
       cx += w + gap;
       first = false;
     });
-    c.key(entries.map(function (e) { return { fill: e.fill || e.stroke, pattern: !!e.pattern, direct: !!e.direct }; }));
+    // an entry told apart by its outline, dash or hatch is marked, as a pattern is; the lightness test leaves it out
+    c.key(entries.map(function (e) { return { fill: e.fill || e.stroke, pattern: !!(e.pattern || e.dash || e.open || (!e.fill && e.stroke) || e.shape === 'line'), direct: !!e.direct }; }));
     return cy - y + lh;
   };
 
@@ -83,6 +87,16 @@
     // keep the note inside the artboard
     if (x0 < 0) { tx += -x0; x0 = 0; }
     if (x0 + w > c.width) { tx -= x0 + w - c.width; x0 = c.width - w; }
+    // a note that would touch a text already drawn moves up or down a line at a time, up to three, to the nearest clear
+    // place (D3-93: at a width the spec's offsets were not set for)
+    var asc = size * 0.969, touches = function (yy) {
+      var b = { x: x0, y: yy - asc + 2, w: w, h: h };
+      return c.texts.some(function (t) { return b.x < t.x + t.w + 1 && t.x < b.x + b.w + 1 && b.y < t.y + t.h + 1 && t.y < b.y + b.h + 1; });
+    };
+    if (touches(ty)) {
+      var step = h + 6, alt = [-1, 1, -2, 2, -3, 3].map(function (k) { return ty + k * step; }).filter(function (yy) { return yy - asc > 0 && !touches(yy); });
+      if (alt.length) ty = alt[0];
+    }
     var box = c.text(tx, ty, lines.join(' '), { role: 'label', weight: wgt, anchor: anchor, max: o.max ? o.max + 1 : undefined, halo: true });
     // the leader from the note's near edge to the point
     var lx = Math.max(box.x, Math.min(px, box.x + box.w)), ly;
@@ -90,7 +104,9 @@
     else if (place === 'below') ly = box.y - 3;
     else { lx = place === 'left' ? box.x + box.w + 3 : box.x - 3; ly = py; }
     var dist = Math.sqrt((lx - px) * (lx - px) + (ly - py) * (ly - py));
-    if (dist > 4 && o.leader !== false) c.line(lx, ly, px, py, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+    // beside its point a note needs no leader under a dozen pixels: a short dash before a figure reads as a minus sign
+    var side = place === 'left' || place === 'right';
+    if (dist > (side ? 12 : 4) && o.leader !== false) c.line(lx, ly, px, py, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
     return box;
   };
 

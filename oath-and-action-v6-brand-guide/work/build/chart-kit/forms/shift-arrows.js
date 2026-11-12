@@ -10,6 +10,8 @@
   function arrow(c, x1, x2, y, o) {
     var hl = c.t(c.phone ? 'arrow-phone-head-length' : 'arrow-head-length'), hw = c.t(c.phone ? 'arrow-phone-head-half-width' : 'arrow-head-half-width');
     var dir = x2 >= x1 ? 1 : -1, len = Math.abs(x2 - x1);
+    // an arrow shorter than its head draws the head alone, never a tail dot under it, which reads as a diamond (brand KS4)
+    if (len < hl + 2) { c.polygon([[x2, y], [x2 - dir * hl, y - hw], [x2 - dir * hl, y + hw]], { fill: 'subject', kind: 'arrow', data: o.data }); return; }
     c.circle(x1, y, c.t('arrow-tail-radius'), { fill: 'subject', mark: false });
     if (len > hl) c.line(x1, y, x2 - dir * hl, y, { stroke: 'subject', width: c.t('arrow-shaft'), mark: false });
     var b = x2 - dir * Math.min(hl, Math.max(len, hl * 0.6));
@@ -35,11 +37,15 @@
         y += 22;
         all.forEach(function (r, i) {
           if (i === apart.length && apart.length) { c.line(0, y - 8, W, y - 8, { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); y += 6; }
-          c.text(0, y + size * 0.8, r[el], { role: 'label', weight: 700 });
+          var nb = c.text(0, y + size * 0.8, r[el], { role: 'label', weight: 700 }), extra = 0;
           if (L.phone_value) {
             var lead = (L.lead || {})[r[et] < 0 ? 'neg' : 'pos'] || '';
-            c.text(W, y + size * 0.8, String(L.phone_value).replace('{lead}', lead).replace('{to}', K.fmt(Math.abs(r[et]), f.value || 'signed:1').replace(/^[+−]/, '+')), { role: 'tick', anchor: 'end' });
+            var pv = String(L.phone_value).replace('{lead}', lead).replace('{to}', K.fmt(Math.abs(r[et]), f.value || 'signed:1').replace(/^[+−]/, '+'));
+            // the value moves under the name when the two would touch on one line (D3-93)
+            if (nb.w + c.measure(pv, 'tick') + 12 > W) { extra = 18; c.text(0, y + size * 0.8 + extra, pv, { role: 'tick' }); }
+            else c.text(W, y + size * 0.8, pv, { role: 'tick', anchor: 'end' });
           }
+          y += extra;
           var ly = y + size + 12, xe = xs(Math.abs(r[esh]));
           c.line(0, ly, xe, ly, { stroke: 'subject', width: c.t('arrow-shaft'), mark: false });
           c.circle(xe, ly, c.t('dot-vertex-radius'), { fill: 'subject', data: { key: r[ek], field: esh, value: r[esh] } });
@@ -51,7 +57,10 @@
         return;
       }
       // desktop: a signed axis, optionally skipping a stretch so one far value fits
-      var dom = L.domain || [Math.min.apply(null, rows.map(function (r) { return Math.min(r[ef], r[et]); })), Math.max.apply(null, rows.map(function (r) { return Math.max(r[ef], r[et]); }))];
+      var dlo = Math.min.apply(null, rows.map(function (r) { return Math.min(r[ef], r[et]); })), dhi = Math.max.apply(null, rows.map(function (r) { return Math.max(r[ef], r[et]); }));
+      // the axis runs to the tick past the farthest value, so no arrow runs off the scale (CD KS5)
+      var dom = L.domain ? L.domain.slice() : [dlo, dhi];
+      dom = [Math.min(dom[0], Math.floor(dlo / 10) * 10), Math.max(dom[1], Math.ceil(dhi / 10) * 10)];
       var skip = L.skip, gap = c.t('shift-axis-break-gap');
       var span = (dom[1] - dom[0]) - (skip ? (skip[1] - skip[0]) : 0);
       var x0 = 8, x1 = W - 8, unit = (x1 - x0 - (skip ? gap : 0)) / span;

@@ -29,6 +29,8 @@ async function open(b, opts) {
   if (opts.media) await p.emulateMedia(opts.media);
   await p.goto(url, { waitUntil: 'load', timeout: 120000 });
   if (opts.ctx && opts.ctx.javaScriptEnabled === false) return { ctx, p, errors };
+  // charts draw as they near the screen (D3-97); a check draws them all first
+  await p.evaluate(() => window.OAChart && OAChart.draw_all && OAChart.draw_all());
   await p.waitForFunction(() => Array.from(document.querySelectorAll('figure.oac-fig')).every((f) => f.getAttribute('data-oa-drawn') || f.getAttribute('data-oa-error')), null, { timeout: 60000 });
   return { ctx, p, errors };
 }

@@ -1,0 +1,386 @@
+{
+  "about": "Board 1's own words and the files each panel reads. work/build/scripts/phase-3/board_1_build.py reads this file on every run; every number and picture it prints comes from the files named under slots, read at build time. A {name} in a sentence is filled from those files. Codes in a 'refs' field print only in the small reference lines.",
+  "title": "Phase 3 Board 1",
+  "cover": {
+    "kicker": "Edition 06 · Phase 3 · Board 1",
+    "title": "The chart kit, the palette and chapter 13",
+    "for_line": "For Dustin Cathcart · {built_date}",
+    "deck": [
+      "Round 0 built the chart kit and redrew the 16 Phase 2 charts in it, proofed the data palettes and wrote chapter 13, Evidence and sourcing. Four answers from you close the round.",
+      "Panel 1 sets out the four, each with the studio’s recommendation. The panels after it hold the charts, the proofs, the weights, the plates, the data, the scores and what the studio tested."
+    ],
+    "toc_h": "On this board",
+    "minutes": "Each panel opens with its answer in a sentence or two. Pictures show at true size; where one is wider than your window, its frame scrolls sideways."
+  },
+  "status_words": {
+    "ready": "Ready",
+    "waiting": "Waiting for {who}",
+    "partial": "Part waiting for {who}"
+  },
+  "status_short": {
+    "ready": "Ready",
+    "waiting": "Waiting",
+    "partial": "Part waiting"
+  },
+  "owners": {
+    "cd": "the creative director’s rescore",
+    "engineer": "the engineer",
+    "build": "a passing guide build",
+    "render": "the board’s pictures"
+  },
+  "pending_line": "Waiting for {who}. This part fills in when {file} lands.",
+  "panels": {
+    "decide": {
+      "n": 1,
+      "nav": "What you decide",
+      "title": "What you decide on board 1",
+      "lede": "Four answers close round 0: two new colors and the order of the four inks, chapter 13 as built, where chapter 14’s extra bytes come from, and one sentence about payrolls. The studio recommends a yes to the first two, the compressed chart data for the third, and the added sentence for the fourth.",
+      "reply": "To answer, reply “As recommended” or name the answer you want for any of the four.",
+      "items": [
+        {
+          "key": "palette",
+          "h": "1a. The palette",
+          "q": "Approve two new colors, {n56} and {n29}, so diverging pair B works on Charcoal in the dark theme, and the order of the four inks for groups: {cat_order}?",
+          "rec": "Approve both colors and the order. Each new color is Prussian mixed toward Newsprint, the lighter at {r56} to 1 on Charcoal and the darker at {r29} to 1, with every label on it at 4.5 to 1 or more, so no new hue enters the brand. In this order Charcoal never touches Prussian and Verdigris never touches Stone in a stacked bar, and Stone always carries its hatch.",
+          "show_h": "The two new colors on Charcoal, at true size, in the five steps they complete and in the table they draw",
+          "show_cat_h": "The four inks in their order, on Newsprint and on Charcoal, at true size",
+          "refs": "DR-234 · DR-54 · D3-11 · D3-12 · D3-13 · D3-14 · D3-23"
+        },
+        {
+          "key": "ch13",
+          "h": "1b. Chapter 13, Evidence and sourcing",
+          "q": "Approve chapter 13 as built: {n_rules} rules in three groups, each with a correct and a failure plate?",
+          "rec": "Approve it. The chapter tells a builder what kind of evidence a chart rests on, which verb its grade allows, how to write its source line and how to correct in the open. It weighs {ch13_bytes} bytes against its {ch13_budget} byte ceiling, and the strict guide build passes with {build_warnings} warnings. Panel 5 shows every plate.",
+          "refs": "DR-233 · G2-01 · D3-59 · D3-83 · D3-84 · D3-85 · D3-86"
+        },
+        {
+          "key": "weight",
+          "h": "1c. Page weight",
+          "q": "Chapter 14 projects to {proj_after} MB against its {stop} MB stop, after the studio’s own pass took off everything it could with no change a reader sees. Which of four measured options do you take?",
+          "rec": "Take option 2: move {ask_islands} MB from Phase 4’s share and carry the drawing data each chart’s script reads in compressed form. No reader loses anything, since every table stays live text, and of the two options that cost no reader anything it moves the fewer bytes.",
+          "options_h": "The four options, as the engineer measured them",
+          "cols": [
+            "Option",
+            "Moves from Phase 4’s {phase4_share} MB",
+            "Chapter 14 projected",
+            "What a reader sees"
+          ],
+          "options": [
+            {
+              "name": "1. Move bytes as the chapter stands",
+              "sees": "Nothing changes."
+            },
+            {
+              "name": "2. Move bytes, with chart data compressed",
+              "sees": "Nothing changes: the drawing data only the script reads goes compressed, and every table stays live text.",
+              "recommended": true
+            },
+            {
+              "name": "3. Compress the tables too and move none",
+              "sees": "A reader with scripts off loses every chart’s table, and find in page and reading modes see no table until the script runs."
+            },
+            {
+              "name": "4. Smaller copies of the photographs",
+              "sees": "A visible change: two photographs in chapter 01 resampled and encoded again, with their records redone."
+            }
+          ],
+          "phase4_line": "Phase 4’s {phase4_n} chapters hold {phase4_each} MB each today. After option 1 they would average {phase4_after_1} MB each, and after option 2, {phase4_after_2} MB.",
+          "cd_h": "The creative director’s advice",
+          "refs": "D3-104 · D3-90 · D3-91 · DR-232 · G2-01"
+        },
+        {
+          "key": "payroll",
+          "h": "1d. The payroll sentence",
+          "q": "Chapter 02’s approved example says payrolls “{approved}”. {n_pass_words} of those drops pass the survey’s margin of error. Keep the sentence as approved, or add a second one?",
+          "rec": "Keep chapter 02’s approved words and add: “{added}” The count stays true, and the second sentence tells a reader which drops the survey can show.",
+          "evidence_h": "What the payroll file shows",
+          "refs": "D3-87 · DR-73 · DR-64"
+        }
+      ],
+      "refs": "G2-01 · G2-02 · D3-09",
+      "cd_line_first": "The creative director’s first scores, out of 5: {scores}.",
+      "cd_line_re": "After the fix pass: {scores}, {ready}.",
+      "cd_line_wait": "The rescore after the fix pass joins here when it lands; panel 7 holds every score.",
+      "cd_cite": "The creative director, review of round 0, part 2, “The weight and what to ask Dustin”"
+    },
+    "kit": {
+      "n": 2,
+      "nav": "The chart kit and the 16 charts",
+      "title": "The chart kit and the 16 charts",
+      "lede": "One command draws all 16 Phase 2 charts from their data files, at 1440 and 390 px on Newsprint and Charcoal, with SVG, PNG and CSV exports. {n_pass} of 16 pass every check the kit runs.",
+      "lede_2": "Each chart below shows today’s drawing at both widths on each ground, Phase 2’s drawing beside the list of what changed, and the grayscale proofs. The pictures are the kit’s own captures from the board folder, made {captured}.",
+      "rows": {
+        "newsprint": "Now, on Newsprint",
+        "phase2": "Phase 2, as you approved it",
+        "charcoal": "Now, on Charcoal",
+        "gray": "The grayscale proofs"
+      },
+      "changed_h": "What changed since Phase 2",
+      "changed_later": "Later in round 0",
+      "exports_h": "Exports",
+      "refs": "D3-90 · D3-93 · D3-94 · D3-95 · D3-96 · D3-97 · D3-98 · D3-99 · D3-100 · D3-101 · D3-102 · DR-64 · DR-235",
+      "exports_note": "The board folder keeps the Newsprint set at 1440 px. The kit writes the same SVG and PNG for each ground and width from the same command, and the CSV once."
+    },
+    "palettes": {
+      "n": 3,
+      "nav": "The palette proofs",
+      "title": "The palette proofs",
+      "lede": "The data lead proofed every data palette on real data, on Newsprint, Charcoal and White, measured, in gray and under three color-vision simulations. {checks_pass} of {checks_n} scripted checks pass.",
+      "lede_2": "Each section shows as the sheet draws it at 1440 px, and every swatch carries its own grayscale and simulation strips. Open a section for its grayscale view; the two sections you approve, diverging pair B and the four inks, also open to whole protanopia, deuteranopia and tritanopia simulations.",
+      "sections": [
+        {
+          "key": "Opening",
+          "h": "The sheet’s opening"
+        },
+        {
+          "key": "Sequential",
+          "h": "Sequential Verdigris steps"
+        },
+        {
+          "key": "Diverging",
+          "h": "Diverging pair B, with the two new colors on Charcoal"
+        },
+        {
+          "key": "Categorical",
+          "h": "The four inks for groups"
+        },
+        {
+          "key": "Past-Four-Groups",
+          "h": "Past four groups: small multiples, and one group in ink"
+        },
+        {
+          "key": "Magnitude",
+          "h": "Stone magnitude steps"
+        },
+        {
+          "key": "Line-Code",
+          "h": "The grade line code"
+        },
+        {
+          "key": "Red-On-Red",
+          "h": "Red on red"
+        },
+        {
+          "key": "Prussian",
+          "h": "Why charts stay off Prussian"
+        }
+      ],
+      "other_views": "Grayscale and three simulations",
+      "twice": "The line code at twice size",
+      "phone": "The whole sheet at 390 px",
+      "refs": "DR-234 · DR-54 · D3-11 · D3-12 · D3-13 · D3-14 · D3-15 · D3-16 · D3-17 · D3-18 · D3-19 · D3-20 · D3-21 · D3-22 · D3-84",
+      "simulate": [
+        "Diverging",
+        "Categorical"
+      ],
+      "gray_view": "Grayscale"
+    },
+    "weight": {
+      "n": 4,
+      "nav": "Drawing method and page weight",
+      "title": "The drawing method and page weight",
+      "lede": "The engineer built a real guide four times, once per way of drawing a chart, and chose the lightest that passes every check: each chart draws when the page loads, from its own table. Even so, chapter 14 projects to {proj_after} MB for its 97 charts against a {stop} MB stop, which is why panel 1 asks you about bytes.",
+      "pilot_h": "Four drawing methods, measured on the 16 charts",
+      "options_h": "Chapter 14 against its stop",
+      "fig_caption": "Chapter 14 projected for 97 charts under each option, each bar drawn from zero against the {stop} MB stop. Sources: the engineer’s pilot and weight pass, with today’s strict build for the page.",
+      "today_h": "Today’s guide",
+      "today": "Today’s strict build, made for this board, weighs {page_mb} MB with chapter 13 in it and projects the finished page to {proj_mb} MB against the {budget_mb} MB budget, with chapter 14 held at its {stop} MB stop. The weight pass took {pass_saved} bytes off the page with no pixel changed.",
+      "notes_h": "The engineer’s notes, as written",
+      "refs": "D3-90 · D3-91 · D3-104 · DR-232 · DR-227 · G2-01",
+      "bar_labels": {
+        "before": "Before the studio’s weight pass",
+        "after": "Option 1: as the chapter stands",
+        "islands": "Option 2: chart data compressed",
+        "tables": "Option 3: tables compressed too"
+      }
+    },
+    "ch13": {
+      "n": 5,
+      "nav": "Chapter 13",
+      "title": "Chapter 13, Evidence and sourcing",
+      "lede": "Chapter 13 holds {n_rules} rules in three groups, each with a correct plate and a failure plate. Every failure plate leads with the rule it breaks and carries the do-not-publish band.",
+      "lede_2": "The plates below come from a strict build of the guide made for this board, {build_when}, photographed in the guide at a 1440 px window at true size. The chapter weighs {ch13_bytes} bytes against its {ch13_budget} byte ceiling.",
+      "first_h": "The chapter’s first screen",
+      "first_cap": "As a reader lands on the chapter from the contents, at 1440 by 900 px and at 390 by 844 px.",
+      "correct": "Correct",
+      "failure": "Failure",
+      "rule_text": "The rule as the chapter states it",
+      "refs": "DR-233 · G2-01 · D3-59 · D3-60 · D3-61 · D3-62 · D3-63 · D3-64 · D3-65 · D3-66 · D3-67 · D3-68 · D3-69 · D3-70 · D3-71 · D3-72 · D3-73 · D3-74 · D3-75 · D3-76 · D3-77 · D3-78 · D3-79 · D3-80 · D3-81 · D3-82 · D3-83 · D3-84 · D3-85 · D3-86",
+      "opener_h": "The opening plate",
+      "opener_cap": "One record from our systems atlas, each part numbered and tied to the rule that sets it."
+    },
+    "data": {
+      "n": 6,
+      "nav": "Data for rounds 1 and 2",
+      "title": "Data for rounds 1 and 2",
+      "lede": "Rounds 1 and 2’s data is fetched and frozen: {n_tables} tables in the data folder, each with its source record. With the 16 built charts, chapter 14’s {n_examples} examples so far hold the limit of one in four from any domain, with the largest domain at {top_domain_n}, and one in five from any state.",
+      "domain_h": "The count by domain",
+      "state_h": "The count by state",
+      "state_lede": "A chart counts toward a state when the state is its subject, is named in its title or is singled out on the chart. A chart of every state alike counts toward none.",
+      "state_cols": [
+        "State",
+        "Examples",
+        "Where"
+      ],
+      "plan_says": "The plan’s own words",
+      "tables_h": "The {n_tables} tables",
+      "tables_lede": "{kinds}. Each has a record beside it with its publisher, period, geography, the date it was read and the line a chart prints.",
+      "tables_open": "Every table, with its publisher and period",
+      "tables_cols": [
+        "Table",
+        "Kind",
+        "Publisher",
+        "Period",
+        "Domain",
+        "Ledger row"
+      ],
+      "download_h": "The one file you downloaded",
+      "outcomes_h": "The three November 3 measures, as of November 11",
+      "outcomes_lede": "Two charts, S03 and S08, print the atlas’s snapshot of October 15, when these measures were pending. Each now carries a dated note with the outcome as the record stood on November 11. None is certified.",
+      "outcomes_cols": [
+        "Measure",
+        "As the record stood",
+        "Source"
+      ],
+      "printed_h": "The note S03 and S08 print",
+      "refs": "DR-229 · DR-230 · D3-08 · D3-24 · D3-44 · D3-45 · D3-46 · D3-47 · D3-48 · D3-58 · D3-88 · D3-89 · D3-98"
+    },
+    "scores": {
+      "n": 7,
+      "nav": "Scores",
+      "title": "Scores",
+      "cd_h": "The creative director’s scores",
+      "cd_rescore_wait": "the creative director’s rescore",
+      "rt_h": "The red teams",
+      "rt_lede": "Three red teams read round 0 through six lenses, in two parts where the work landed in two stages. Each score runs from 1 to 5.",
+      "rt_cols": [
+        "Review",
+        "Part",
+        "Score",
+        "Must fix",
+        "Should fix",
+        "Questions for you"
+      ],
+      "refs": "D3-83 · D3-84 · D3-85 · D3-86 · D3-87 · D3-93 · D3-94 · D3-95 · D3-96 · D3-97 · D3-98 · D3-99 · D3-100 · D3-101 · D3-102",
+      "rt_note": "Counted from each report: every Must fix and Should fix it numbers, and every question it puts to you. Each report holds the fix and the owner for every item.",
+      "legend_first": "Scores run from 1 to 5, and an item is ready at 4 or more on every criterion with no Must fix open. A box marks a score under 4.",
+      "legend_both": "Scores run from 1 to 5, and an item is ready at 4 or more on every criterion with no Must fix open. In each cell the first score sits in small type and the rescore after the fix pass in bold; a box marks a score under 4, and a gray ground a score that moved.",
+      "short_names": {
+        "ch13": "chapter 13",
+        "palettes": "the palette proofs",
+        "kit": "the chart kit"
+      }
+    },
+    "tested": {
+      "n": 8,
+      "nav": "Tested and not tested",
+      "title": "Tested and not tested",
+      "lede": "Each maker and reviewer kept two lists: what they tested and what they did not. Both are quoted below as written, the lists not tested first.",
+      "path_note": "Paths into the studio’s private working folder are shortened to [scratch].",
+      "refs": "D3-09"
+    }
+  },
+  "slots": {
+    "tokens_css": "work/build/tokens/tokens.css",
+    "tokens_json": "work/build/tokens/tokens.json",
+    "board_base": "work/boards/board-base.css",
+    "guide_build": "work/build/scripts/phase-2/guide_build.py",
+    "chapter13": "work/build/guide/chapters/13-evidence.json",
+    "specimens_dir": "work/boards/phase-3/round-0/specimens",
+    "specs_dir": "work/build/chart-kit/specs",
+    "phase2": {
+      "explainer": "work/boards/phase-2/data-viz/01-explainer/20261106_Data-Viz-01-Explainer.html",
+      "stretch": "work/boards/phase-2/data-viz/stretch/20261106_Data-Viz-Stretch.html",
+      "stretch_ids": [
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16"
+      ]
+    },
+    "palettes_dir": "work/boards/phase-3/round-0/palettes",
+    "palette_page": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs.html",
+    "palette_notes": "work/handoffs/phase-3/20261111_Round-0-Palette-Notes.md",
+    "engineer_notes": "work/handoffs/phase-3/20261111_Round-0-Engineer-Notes.md",
+    "editor_notes": "work/handoffs/phase-3/20261111_Round-0-Editor-Notes.md",
+    "explainer_notes": "work/handoffs/phase-3/20261111_Round-0-Explainer-Notes.md",
+    "research_notes": "work/handoffs/phase-3/20261111_Round-0-Research-Notes.md",
+    "data_plan": "work/handoffs/phase-3/20261111_Rounds-1-2-Data-Plan.md",
+    "data_dir": "work/build/data",
+    "payroll_file": "work/build/data/fred-payrolls-monthly-change.csv",
+    "payroll_spec": "work/build/chart-kit/specs/s14.json",
+    "ch02_plate": "work/build/guide/specimens/s-02-22-correct.html",
+    "cd_review": "work/handoffs/phase-3/20261111_CD-Review-Of-Round-0.md",
+    "cd_scores": "work/handoffs/phase-3/20261111_Round-0-CD-Scores.json",
+    "cd_rescores_glob": "work/handoffs/phase-3/*Round-0-CD-Rescore*.json",
+    "stats_review": "work/handoffs/phase-3/20261111_Round-0-Red-Team-Statistics-Civic.md",
+    "red_teams": [
+      {
+        "file": "work/handoffs/phase-3/20261111_Round-0-Red-Team-Statistics-Civic.md",
+        "name": "Statistics and civic education"
+      },
+      {
+        "file": "work/handoffs/phase-3/20261111_Round-0-Red-Team-Brand-Craft.md",
+        "name": "Nonpartisanship, brand and craft"
+      },
+      {
+        "file": "work/handoffs/phase-3/20261111_Round-0-Red-Team-Access-Production.md",
+        "name": "Accessibility and the production test"
+      }
+    ],
+    "part_words": {
+      "1": "Chapter 13, the palettes and the data plan",
+      "2": "The kit and the 16 charts",
+      "all": "The kit, the 16 charts and chapter 13’s chart plates"
+    },
+    "fix_briefs": [
+      "work/handoffs/phase-3/20261111_Round-0-Fix-Brief-Part-1.md",
+      "work/handoffs/phase-3/20261111_Round-0-Fix-Brief-Part-2.md"
+    ],
+    "tested": [
+      {
+        "file": "work/handoffs/phase-3/20261111_Round-0-Engineer-Notes.md",
+        "label": "The engineer"
+      },
+      {
+        "file": "work/handoffs/phase-3/20261111_Round-0-Palette-Notes.md",
+        "label": "The data visualization lead"
+      },
+      {
+        "file": "work/handoffs/phase-3/20261111_Round-0-Editor-Notes.md",
+        "label": "The editor"
+      },
+      {
+        "file": "work/handoffs/phase-3/20261111_Round-0-Explainer-Notes.md",
+        "label": "The Explainer maker"
+      },
+      {
+        "file": "work/handoffs/phase-3/20261111_Round-0-Research-Notes.md",
+        "label": "The research lead"
+      },
+      {
+        "file": "work/handoffs/phase-3/20261111_Round-0-Red-Team-Statistics-Civic.md",
+        "label": "The statistics and civic education red team"
+      },
+      {
+        "file": "work/handoffs/phase-3/20261111_Round-0-Red-Team-Brand-Craft.md",
+        "label": "The brand and craft red team"
+      },
+      {
+        "file": "work/handoffs/phase-3/20261111_Round-0-Red-Team-Access-Production.md",
+        "label": "The accessibility and production red team"
+      },
+      {
+        "file": "work/handoffs/phase-3/20261111_CD-Review-Of-Round-0.md",
+        "label": "The creative director"
+      },
+      {
+        "file": "work/handoffs/phase-3/20261112_Board-1-Builder-Notes.md",
+        "label": "The board builder"
+      }
+    ]
+  },
+  "foot": "Built {built_date} by the studio’s board builder from the files each panel names. Studio codes in the small reference lines lead to the decision log."
+}

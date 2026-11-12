@@ -29,7 +29,8 @@ const CAUSAL = /\b(caus(?:e|es|ed|ing)|dr(?:ive|ives|ove|iving)|leads? to|led to
 const WEAK = ['plausible', 'plausible_contested', 'contested', 'hypothesis'];
 const PRUSSIAN = '#1F2D5A';
 const RED = '#E63946';
-const KEY_LIGHTNESS_MARGIN = 10;   // CIE L* between any two key entries told apart by fill alone
+const KEY_LIGHTNESS_MARGIN = 10;   // the smaller of CIE L* and luma x 100 between any two key entries told apart by fill alone
+const KEY_ORDERED_MARGIN = 8;     // neighbors on an ordered scale, and its lightest step against the ground (access S5; OKLab 0.08)
 
 let V7 = null;
 function v7() {
@@ -86,7 +87,9 @@ function check_spec(K, spec, opts) {
   opts = opts || {};
   const f = [];
   const datasets = [];
-  for (const k of REQUIRED) if (spec[k] === undefined || spec[k] === null || spec[k] === '') f.push(`spec: "${k}" is missing`);
+  // a chart of one dataset may leave source_line out and print its sidecar's line (D3-102)
+  const single = typeof spec.dataset === 'string';
+  for (const k of REQUIRED) if ((spec[k] === undefined || spec[k] === null || spec[k] === '') && !(k === 'source_line' && single)) f.push(`spec: "${k}" is missing; contract C2 in work/build/chart-kit/README.md lists every key`);
   if (spec.dataset === undefined && spec.data === undefined) f.push('spec: "dataset" is missing');
   if (spec.kit !== 1) f.push(`spec: "kit" must be 1 (contract 1), not ${JSON.stringify(spec.kit)}`);
   if (spec.form && !K.forms[spec.form]) f.push(`spec: form "${spec.form}" is not registered`);
@@ -124,18 +127,21 @@ function check_spec(K, spec, opts) {
     if (ds.fault) { f.push(ds.fault); return; }
     datasets.push(ds);
     if (i === 0) { first = ds; rows = rows_of(K, ds); }
+    if (i === 0 && single && !spec.source_line) spec.source_line = ds.meta.printed_source_line;
     if (DISCLOSURE.test(JSON.stringify(ds.meta)) || ds.meta.required_text) f.push(`dataset ${n}: its sidecar carries the retired disclosure (DR-100)`);
     if (ds.meta.kind === 'illustrative' && !spec.illustrative) f.push(`dataset ${n} is invented; the spec prints the Illustrative label`);
   });
   let sel = rows ? K.select(spec, rows) : [];
   if (rows && !sel.length) f.push('data: no rows left after "where"');
-  if (first && spec.where) for (const k of Object.keys(spec.where)) if (!(k in (first.meta.columns || {}))) f.push(`where: column ${k} is not in the data`);
+  if (first && spec.where) for (const k of Object.keys(spec.where)) if (!(k in (first.meta.columns || {}))) f.push(`where: column ${k} is not in the data; its columns are ${Object.keys(first.meta.columns || {}).join(', ')}`);
+  // a ranked bar of parts that keeps the total among them (production test S6)
+  if (spec.form === 'ranked-bar' && spec.encode && sel.some(r => /^(total|all)\b/i.test(String(r[spec.encode.category])))) f.push(`data: a bar reads "${sel.find(r => /^(total|all)\b/i.test(String(r[spec.encode.category])))[spec.encode.category]}"; a chart of the parts leaves the total out with where: {"${spec.encode.category}": {"not": [...]}}`);
   if (first) {
     const cols = first.meta.columns || {};
     const fields = [];
     const enc = spec.encode || {};
     Object.keys(enc).forEach(k => { const v = enc[k]; (Array.isArray(v) ? v : [v]).forEach(x => { if (typeof x === 'string' && k !== 'of') fields.push([k, x]); }); });
-    for (const [k, x] of fields) if (!(x in cols)) f.push(`encode.${k}: column "${x}" is not in ${first.file || 'the data'}`);
+    for (const [k, x] of fields) if (!(x in cols)) f.push(`encode.${k}: column "${x}" is not in ${first.file || 'the data'}; its columns are ${Object.keys(cols).join(', ')}`);
     const tb = spec.table || {};
     (tb.columns || []).forEach(c => { if (!(c.field in cols)) f.push(`table: column "${c.field}" is not in the data`); });
     if (tb.pivot) ['row', 'column', 'value'].forEach(k => { if (!(tb.pivot[k] in cols)) f.push(`table.pivot.${k}: "${tb.pivot[k]}" is not in the data`); });
@@ -144,7 +150,7 @@ function check_spec(K, spec, opts) {
     if (datasets.length === 1) {
       const m = datasets[0].meta;
       const ok = [m.printed_source_line].concat(Object.values(m.source_line_variants || {}));
-      if (ok.indexOf(spec.source_line) < 0) f.push(`source: the source line differs from ${datasets[0].file}'s printed_source_line (or its variants)`);
+      if (ok.indexOf(spec.source_line) < 0) f.push(`source: the source line differs from ${datasets[0].file}'s printed_source_line and its variants. Leave source_line out to print the sidecar's line, copy one of its variants, or ask the research lead to add a variant to work/build/data/${datasets[0].file.replace(/\.(csv|json)$/, '')}.meta.json`);
     } else if (datasets.length > 1) {
       // each dataset's publisher appears: any one of its "; " parts, whole or after its last comma, with "United States" read as "U.S."
       const norm = x => String(x).replace(/United States/g, 'U.S.').trim();
@@ -201,11 +207,18 @@ function hex_to_lab_l(hex) {
   const y = 0.2126 * lin(n >> 16 & 255) + 0.7152 * lin(n >> 8 & 255) + 0.0722 * lin(n & 255);
   return y > 0.008856 ? 116 * Math.cbrt(y) - 16 : 903.3 * y;
 }
+function luma(hex) {
+  // Chromium's grayscale(1): Rec. 709 weights on the encoded values, as the board's grayscale proofs and most office printers
+  const m = /^#?([0-9a-f]{6})$/i.exec(String(hex).trim());
+  if (!m) return null;
+  const n = parseInt(m[1], 16);
+  return (0.2126 * (n >> 16 & 255) + 0.7152 * (n >> 8 & 255) + 0.0722 * (n & 255)) / 255;
+}
 function role_color(role, tok) {
   // the hex a color role resolves to on a ground, from tokens.css's surface block (the same map kit.css reads)
   const names = {
     subject: 'chart-color-subject', context: 'chart-color-context', secondary: 'chart-color-secondary', label: 'chart-color-label',
-    baseline: 'chart-color-baseline', gridline: 'chart-color-gridline', point: 'chart-color-point', band: 'chart-color-band', track: 'chart-color-track',
+    surface: 'color-surface', baseline: 'chart-color-baseline', gridline: 'chart-color-gridline', point: 'chart-color-point', band: 'chart-color-band', track: 'chart-color-track',
     'light-fill': 'chart-color-light-fill', land: 'chart-color-land', party: 'chart-color-party-mark', leader: 'chart-color-leader',
     'cat-1': 'chart-color-categorical-fill-group1', 'cat-2': 'chart-color-categorical-fill-group2',
     'cat-3': 'chart-color-categorical-fill-group3', 'cat-4': 'chart-color-categorical-fill-group4', ghost: 'chart-color-ghost',
@@ -273,12 +286,41 @@ function check_drawing(spec, d, tok, where) {
       if (r.x <= m.x + m.w + 1 && m.x <= r.x + r.w + 1 && r.y <= m.y + m.h + 1 && m.y <= r.y + r.h + 1) f.push(`chart: red touches Prussian${at}`);
     }
   }
+  // keys told apart by lightness (access S5): the gap is the smaller of CIE L* and the grayscale proof's luma (x 100); a
+  // direct label is an exemption only where every mark of that fill carries a text on or beside it; an ordered scale needs
+  // its neighbors apart, at 8, and its lightest step apart from the ground unless its marks carry an outline
+  const ground = tok['--oa-color-surface'] || tok['--oa-chart-color-surface'];
+  const gap = (x, y) => {
+    const la = hex_to_lab_l(x), lb = hex_to_lab_l(y), ya = luma(x), yb = luma(y);
+    if (la === null || lb === null) return null;
+    return Math.min(Math.abs(la - lb), ya === null || yb === null ? Infinity : Math.abs(ya - yb) * 100);
+  };
+  const earned = e => {
+    if (!e.direct) return false;
+    const ms = d.marks.filter(m => m.fill === e.fill && m.w > 0 && m.h > 0);
+    return ms.every(m => (d.texts || []).some(t => t.x < m.x + m.w + 4 && m.x - 4 < t.x + t.w && t.y < m.y + m.h + 4 && m.y - 4 < t.y + t.h));
+  };
   for (const key of d.keys || []) {
-    const plain = key.filter(e => !e.pattern && !e.direct);
+    const ordered = key.length && key.every(e => e.ordered);
+    if (ordered) {
+      for (let i = 0; i + 1 < key.length; i++) {
+        if (key[i].pattern || key[i + 1].pattern || (earned(key[i]) && earned(key[i + 1]))) continue;
+        const g = gap(role_color(key[i].fill, tok), role_color(key[i + 1].fill, tok));
+        if (g === null) { f.push(`key: ${key[i].fill} or ${key[i + 1].fill} has no resolved color${at}`); continue; }
+        if (g < KEY_ORDERED_MARGIN) f.push(`key: neighbors ${key[i].fill} and ${key[i + 1].fill} differ by ${g.toFixed(1)} in lightness, under ${KEY_ORDERED_MARGIN}${at}`);
+      }
+      const light = key[0];
+      if (ground && !light.outline) {
+        const g = gap(role_color(light.fill, tok), String(ground).trim());
+        if (g !== null && g < KEY_ORDERED_MARGIN) f.push(`key: the lightest step ${light.fill} differs from the ground by ${g.toFixed(1)}, under ${KEY_ORDERED_MARGIN}, and its marks carry no outline${at}`);
+      }
+      continue;
+    }
+    const plain = key.filter(e => !e.pattern && !earned(e));
     for (let i = 0; i < plain.length; i++) for (let j = i + 1; j < plain.length; j++) {
-      const a = hex_to_lab_l(role_color(plain[i].fill, tok)), b = hex_to_lab_l(role_color(plain[j].fill, tok));
-      if (a === null || b === null) { f.push(`key: ${plain[i].fill} or ${plain[j].fill} has no resolved color${at}`); continue; }
-      if (Math.abs(a - b) < KEY_LIGHTNESS_MARGIN) f.push(`key: ${plain[i].fill} and ${plain[j].fill} differ by ${Math.abs(a - b).toFixed(1)} in lightness, under ${KEY_LIGHTNESS_MARGIN}, with no pattern or direct label${at}`);
+      const g = gap(role_color(plain[i].fill, tok), role_color(plain[j].fill, tok));
+      if (g === null) { f.push(`key: ${plain[i].fill} or ${plain[j].fill} has no resolved color${at}`); continue; }
+      if (g < KEY_LIGHTNESS_MARGIN) f.push(`key: ${plain[i].fill} and ${plain[j].fill} differ by ${g.toFixed(1)} in lightness, under ${KEY_LIGHTNESS_MARGIN}, with no pattern or direct label${at}`);
     }
   }
   if (spec.failure && spec.failure.exempt) {
