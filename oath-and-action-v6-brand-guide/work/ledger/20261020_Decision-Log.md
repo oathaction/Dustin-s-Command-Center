@@ -3648,3 +3648,159 @@ The main session asked four questions with its round 0 plan. Dustin: "Yeah, I ag
 | D3-103 | The engineer takes part 2's kit fixes after its weight pass, so one agent edits the kit at a time; the Explainer maker and the research lead start now on specs and sources | The weight pass touches the same form files |
 | D3-104 | The weight pass changed no pixel (3,420 screenshot pairs, light and dark at 1280 and 390 px, 0 differ) and took 0.046 MB off the built chapters and 0.088 MB off the projected renderer; a shared module for related forms saved almost nothing. Chapter 14 projects to 2.709 MB, 0.959 MB over its stop. The smallest asks of Phase 4's 2.54 MB share: 0.510 MB as it stands; 0.396 MB with chart data carried compressed (no loss to any reader); none if the tables are compressed too, which takes every table from a reader with scripts off. About 1.31 MB of smaller photo copies would be a visible change. All go to board 1 as measured options | DR-232: the studio's own steps fell short, so board 1 asks Dustin, with the creative director's advice to keep tables live |
 | D3-105 | Patterned grade lines that carry delay ticks run solid for their first 28 px (`oa.chart.grade.leadIn`), so no tick lands in a gap; chapter 13's generator draws it, and the atlas build's `wire_marks`, a Phase 2 record, stays as it is. Chapter 15's systems drawings take the lead-in from the token when they are built | The brand reviewer's S1; the data lead set the length from the tick constants (12 + 2 x 5 + 1 + 5) |
+
+### Engineer, the chart kit, the pilot and the gates (`20261111_Round-0-Engineer-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-106 | The data folder is flat, one table per file, CSV for public data and a row-list JSON for V7 tables, with derived tables as their own files | A table equivalent and a CSV export can then match a file row for row, and a spec never computes data |
+| D3-107 | A sidecar's `domain` may be `all` for an atlas-wide table (the claims register, the eight scenarios, the four history threads), counted apart under Rule 01.9 | Those three tables draw on every domain alike; giving them one domain would bend the count |
+| D3-108 | S04's and S16's turnout tables count under D10, Taking part, and election rules and results under D02 | V7's D10 holds the Participation subsystem; turnout measures who takes part |
+| D3-109 | The kit is classic scripts with one global, `OAChart`, and its own text metrics of Inter and Inter Tight, measured in Chromium from the guide's own fonts | A classic script runs from a file opened in a browser with no server or build step (DR-235), and one metrics table gives the same layout in Node and every browser, so exports and the guide cannot drift |
+| D3-110 | Specs live in `work/build/chart-kit/specs/` as `s01.json` to `s16.json`, the engineer's fixtures apart in `fixtures/specs/` | The maker and the engineer never write the same file |
+| D3-111 | Chapter 13's chart plates name a `.chart.json` spec beside their fragment, which `guide_build.py` expands with the kit | The editor keeps its words in its own files and the guide draws every chart with one renderer |
+| D3-112 | The few words every figure prints alike (the "Source:" label, the table's summary) live in `work/build/chart-kit/words.json`, which a spec may override | Words never live in the renderer, as the brief's contract 2 asks |
+| D3-113 | The drawing method is `load-table`: drawn at load, the rows read back from the chart's own table, the island holding only the drawing spec and the columns the table lacks | The lightest of four measured in a real guide build (2.74 MB projected against 6.54, 4.27 and 3.56), and it passes every check the brief names |
+| D3-114 | Chapter 14's projection runs 0.99 MB over its stop; DR-232's two steps save about 0.05 MB and nothing, so board 1 asks Dustin | DR-232's own order; the second step saves nothing because a phone drawing costs no bytes when the page draws it |
+| D3-115 | The kit's guard measures a text's box as the browser does (the font's ascent and descent, less the half-leading), and a drawing whose top text would be cut moves down | `dataviz_check.js --kit` found four faults the cap-height box missed |
+| D3-116 | Release 6.0.0-gate3.1 for the palette tokens, as the data lead suggested | Rule 26.8: before 6.0.0, every change raises the number after the hyphen; the first draft on the way to Gate 3 |
+| D3-117 | A DTCG stroke style writes its keyword to tokens.css (as Style Dictionary does) with `-dasharray` and `-line-cap` companion properties | An SVG line needs the dash array and the cap; the keyword keeps tokens.css and Style Dictionary in agreement |
+| D3-118 | The token rule test accepts pair B on Charcoal with Prussian's hue lifted toward Newsprint and a midpoint darker toward the ground | The proposal's measured scale; plain Prussian measures under 3 to 1 on Charcoal, and the midpoint tints toward the ground on each ground |
+| D3-119 | Five token descriptions lose a decision code and one a gate code ("DR-234", "Gate 1, M1"); the change note's reason keeps its rule number only | Chapter 26 prints descriptions and the newest note to readers, and reader words carry no decision codes (DR-218) |
+| D3-120 | Head and shell rise from 0.20 to 0.22 MB and chapter 26 from 1.0 to 1.1 MB | tokens.css, inlined in the head, grows by about 10 KB with the 40 tokens, and chapter 26 carries each token twice (its table and its tokens.json download); the projection still holds the page under 15.5 MB with chapter 14 at its allocation (15.05 MB) |
+| D3-121 | The token table (`s-26-token-table.html`) is regenerated by its own script for 6.0.0-gate3.1 | The strict build fails when the table and tokens.json disagree |
+| D3-122 | Phase 2's chart scripts and boards stay as records; nothing was rerun from them, and the November 10 promotion scripts were not touched | The brief |
+| D3-123 | Atlas tables' printed source lines name "Oath & Action’s systems atlas, Who Do They Answer To?", with the Phase 2 wording kept as the variant `phase_2_wording` until the specs move | The guide check bars "Atlas V7" from reader text, and chapter 02's own source lines name the atlas that way |
+| D3-124 | The kit's check fails a decision code, studio word or internal name in any printed word of a spec (not in `notes_internal`, `phone_note` or `reader_question`) | The guide check fails them on the page; the kit now catches them at the spec |
+| D3-125 | New token descriptions say "Proposed, until our founder and editor approves it." where the proposal wrote "Proposed until board 1" | Chapter 26's table prints every description, and "board 1" is a studio word in reader text; tokens.json keeps `proposed: "board 1"` as a machine field |
+| D3-126 | A specimen stage that holds a chart is a group, never an image, and the chart's table scrolls in the shell's frame (`data-plate-scroll`) inside the guide | The figure has its own title, drawing and table a reader opens; an image role over it hid them and nested a control (axe nested-interactive) |
+| D3-127 | Tile maps draw their light tiles on the track ground, with codes and figures in the label ink | The secondary ink on the light fill measured 3.03 to 1 for 13 px text |
+| D3-128 | Every build checks each chart at a 328 px column as well as its export widths | A guide plate at 390 px gives a chart less than 358 px; the pilot found one label that ran past it |
+| D3-129 | The kit is minified in the guide build by its own minifier (`tools/minify.mjs`), which renames nothing; terser 5.31.6 was measured in scratch only | No outside tool or version to keep, and the minified kit runs the same code, proved by 429 drawings and figures equal byte for byte |
+| D3-130 | `ranked-bar`, `unit-chart` and the two tile maps share `K.parts.style`, `styled` and `tiles` | One copy of the same drawing code; the drawings are equal byte for byte before and after |
+| D3-131 | The guide build runs a weight pass on the assembled page (CSS comments and ignorable white space; shown PNGs compressed again with the same pixels), with `--no-weight-pass` to compare | 46,100 bytes with no pixel changed, proved by screenshots of the whole page; the gates measure what ships |
+| D3-132 | The photographs, their duplicate, fonts, download files, inline styles, long decimals and white space between tags stay as they are | Each would change a pixel, a file a reader keeps, a provenance record or a browser's support (Weight pass, "Not touched") |
+| D3-133 | The pilot counts chapter 14's plates only | Chapter 13's chart plates joined the page and were being counted into chapter 14's average |
+| D3-134 | The guide build's self-test reads CSS as written or as the weight pass writes it | Four expectations looked for CSS with its spaces |
+| D3-135 | A drawing in a plate that prints no title takes its name from the figure's description, or its spec's words when there is none | The quick guide check found axe's svg-img-alt on chapter 13's five chart plates: the drawing named itself by a title the plate leaves out |
+| D3-136 | The data lead's fix pass goes into 6.0.0-gate3.1 itself, and `labelBeside` takes no alias | The coordinator asked for the same pre-release, and the draft has not shipped outside this round |
+| D3-137 | S01's votes draw each party's count on its own segment in the one neutral ink of its side, named on the mark, from `congress-hr7008-roll-calls` (`labels.votes[].split`) | D3-07 (both chambers' records can be read, so D2-104's condition is met); DR-48, DR-58, Rule 01.2 |
+
+### Editor, the fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-138 | Every line in chapter 13 is drawn by the atlas build's `wire_marks` at 2 px; the generator reads D3-84's values from the palette proposal and `tokens.json` and stops if they part | D3-84: one source |
+| D3-139 | 13.5's red targets draw at 148 px | At 88 px the ticks, sign tag and head left the red line almost hidden |
+| D3-140 | The kit prints the heads of 13.7's three charts, and 13.13's chart title and measure line under the plate's own label row | A head written beside a chart-only figure left the drawing's aria-labelledby naming no element, a serious axe fault; the kit's head uses the same tokens |
+| D3-141 | 13.13's article headline sets at 26 px | It stays above the 22 px chart title the kit prints in a narrow column |
+| D3-142 | True-size stages keep a 16 px gutter inside their 360 px | A phone's column, with text off the edge |
+| D3-143 | The hollow line's rails take the class `rl` | The page shell hides `.rail` on phones, which erased Loop B2's line |
+| D3-144 | 13.7's failure keeps one chart, all people from 2017; the children's head stands without its chart | A second chart would put chapter 13 over 0.25 MB |
+| D3-145 | The pair's source line is the sidecar's line with "children under 18 and all people" | Until the research lead adds a variant for both groups |
+| D3-146 | 13.7's chart alts say the scale starts at 0 | The kit draws to 30 while the spec asks 25; the words stay true either way |
+| D3-147 | The generator splits the line `wire_marks` draws into a 28 px solid lead-in and the fitted pattern after its own gap, only for patterned lines with ticks, and checks the lead-in ends one tick spacing past the third tick | The data lead set the lead-in under D3-84 (fix pass 2) because the atlas build draws none; the value comes from the palette proposal and the token, never typed here |
+
+### Editor, the second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-148 | The disclosure under every kit chart reads "The table and notes" | It names what opens, so it holds open or closed, and the kit opens it when no drawing loads |
+| D3-149 | Chapter 13's sources end "The association behind Rule 13.1." and "The estimate behind Rule 13.1.", as the quotation's line already did | One pattern, and no clause that reads as the agency's |
+
+### Explainer maker, the fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-150 | S01 keeps chapter 02's "individual stocks" for section 2, though the research lead's plain summary says "a covered investment" | Rule 02.25 and the Phase 2 apply pass read the same section; one wording across the guide. The data lead may prefer the bill's term |
+| D3-151 | S04 and S05 keep their Phase 2 titles and state the margin test in the first note | DR-64 asks a chart to say so; the titles already make only the claims the margins now support |
+| D3-152 | S14 prints no payroll interval yet | The interval is in the research ledger, not a sidecar, and D3-87 holds S14's words for Dustin (R6) |
+| D3-153 | S16's United States row prints in the table in name order, labeled, and on the key as "Nation 65.3%" | The bubble map draws no circle for the nation; the key is where it stands apart |
+
+### Explainer maker, fix pass 2
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-154 | S01 names both provisions in its measure line until the form can wrap a vote's label, rather than overlap the drawing | A passing, readable drawing for board 1; the full label is one line to change when E30 lands |
+| D3-155 | The November 3 outcomes sit in each chart's first note, with the Alaska measure called trailing, never decided | D3-98 and the research lead's instruction; Rule 13.10 keeps the snapshot and adds what happened with its own source and date |
+| D3-156 | S07's title keeps its count of 17 and credits it to Ballotpedia's reading | The reviewer offered both; the count is the chart's finding, and the credit says whose reading it is |
+| D3-157 | S06 keeps "by 2036" and cites V7's outcomes note for it | The research lead offered citing or dropping; the sidecar's source line says "to 2036", and a cited year keeps the title and the source line in step |
+
+### Explainer maker, the second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-158 | S04's 65-and-over label reads "No clear change (+0.2)" and the notes give its margin of error | The editor's "margin of error" made the label too wide for the narrow guide columns; "no clear change" says what the margin test found |
+
+### Data visualization lead, the fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-159 | The line code's numbers are read by script from the atlas build, with the shortest run set at 20 line widths and the record square at 7 px where the build defines none | D3-84; 20 widths holds two dash-dot periods and the closing dash, and 7 px is Gate 1 M1's size as the frame memo and Rule 13.4 give it |
+| D3-160 | `oa.chart.grade.conceptual.railSelected` is withdrawn and `oa.chart.grade.headClearance` (1.5 line widths) is added | The build draws 1 px rails at every width and stops a dotted line 1.5 widths short of its head |
+| D3-161 | The categorical order becomes Charcoal, Verdigris, Prussian, Stone | Charcoal and Prussian print 2 points of black apart in one-ink print, and Verdigris and Stone 0.05 apart in lightness; this order keeps both pairs from touching in a stack |
+| D3-162 | Group 4's label token is renamed `labelBeside` | Its label sits beside the hatch or on a halo; Charcoal on Stone measures 3.10 to 1 |
+| D3-163 | The proof sheet shows the phone form at 390 px and the desktop drawing at 1440 px | Board 1 shows both widths, and DR-64 lets a phone drawing change form when it carries the same data and finding |
+| D3-164 | Recommended for the creative director: where a red point stands among bars, the other bars take the light fill | The red point then holds in gray print, and the light fill already prints its values |
+
+### Data visualization lead, fix pass 2
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-165 | Patterned lines with delay ticks start with a 28 px solid lead-in, then their pattern's own gap; `oa.chart.grade.leadIn` = 28 px | The atlas build places ticks at 12, 17 and 22 px but draws no lead-in, so a tick can sit in a gap; 28 px covers three ticks plus 5 px clear at every width, one number for every case |
+| D3-166 | A scroll frame on the proof sheet is a named, focusable region only while it scrolls | WCAG 2.1.1 asks that a keyboard reach any scrolling content, and frames that fit need no tab stop |
+
+### Research lead, the fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-167 | Rows 63 and 64 draw the Census Bureau's B25071 rent share with its margin, rent against renter households' income, and drop the studio's ratio | D3-88; the Bureau's measure answers the question, and the old ratio ran 6.9 to 12.6 points low in every state |
+| D3-168 | Row 40 shows the 2023 survey alone | D3-89 and DR-98: the survey asked about a ban in general, and the bill also carries a photo ID requirement |
+| D3-169 | Row 13's chart draws absolute change for agencies with 1,000 or more employees on either date and leaves the rest to the table | Percent change would be led by bodies of a few people; the floor keeps 99.4 percent of employees |
+| D3-170 | Row 47 draws shares of each year's total, and its fourth group is "all other sources of funds" | Nominal dollars over 64 years hide the mix behind inflation, and investment and public health are not payers |
+| D3-171 | The payroll interval is cited as ±122,000 from the October 2026 Technical Note, read through the web-fetch tool, with its date | It is the Bureau's current figure; bls.gov refuses this container's reader, and the note's own example checks against it |
+
+### Research lead, fix pass 2
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-172 | Every computed value in my data files is stored to four decimals, and every published value exactly as published | D3-95: a chart rounds once, from the stored value |
+| D3-173 | Treasury and debt files store dollars and millions as published, with columns renamed for their unit | Billions to a tenth made a treemap's sum differ from Treasury's by a tenth; no maker has drawn from these files yet |
+| D3-174 | S03 and S08's note gives Missouri's count from St. Charles County's report of the unofficial statewide returns | The Secretary of State's results site refuses this container's reader, and the county is an election authority reporting the state's returns; chapter 01 already prints the same figures |
+
+### Research lead, the second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-175 | Every printed source line my scripts write sets its apostrophes curly | Rule 06's typography, fixed once in the shared writer so no line can miss it |
+
+### Engineer, fix pass 2
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-176 | The kit checks every spec at 656, 558, 358, 296 and 256 px (and 243 and 224 px for chapter 13's plates), never exporting them | The widths the guide shell and zoom give a chart (D3-93); exports stay at 1440 and 390 px |
+| D3-177 | A leader line counts as crossing a label when it enters the label's box by more than 1.5 px away from both its ends | A leader may end at its own label; anything else through a label is a fault (D3-93) |
+| D3-178 | At phone widths a map names under the drawing the small states it cannot label, and a tile map too small for codes draws none | The table names every state; a label that cannot be placed clear is worse than a named list (D3-93) |
+| D3-179 | In forced colors the drawing keeps the system colors with hatches for the steps between, rather than its brand inks | D3-94's decision; the access lead's own recommendation was the brand inks on their own ground |
+| D3-180 | Derived values are stored to six decimals | They drop only floating-point noise, so the kit's one rounding is the publisher's figure (D3-95) |
+| D3-181 | A chart draws when it comes within 1,200 px of the screen, and every chart draws before print and for any check | D3-97; about two screens ahead, so a reader scrolling at reading speed never meets an empty box |
+| D3-182 | The drawing takes its name from the description and the description leaves the reading order once the chart is drawn | Each is then heard once (access S1); with scripts off the description stays as words |
+| D3-183 | The four new shared words go in `words.json` and `kit.js` carries a copy, which the kit's self-test holds equal | A plain page opened from disk cannot read `words.json`; the editor still owns the words |
+| D3-184 | The shell hides only `nav.rail` | Its rule hid a drawing's hollow-line rails in chapter 13, and chapter 15 would meet the same |
+| D3-185 | The S13 panels' area takes the light band fill | Phase 2's lighter fill, under the gray line the key promises (CD KM3) |
+| D3-186 | A number column whose printed figures do not give back the stored value travels in the island as one list, not as an attribute on each cell | The same values in fewer bytes; the drawing and every export stay byte for byte the same |
+| D3-187 | Board 1's weight options are read by script (`weight_options.py`) from a fresh strict build and pilot | The board shows the figures the build gives, and any later build can give them again |
+
+### Engineer, the second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-188 | A form prints shared words only through `OAChart.word` | One source for the words, with the editor's wording on a page and in Node alike |
+| D3-189 | On a phone a totals row's peak words go right of its name, else under its sparkline | The name holds the line above the sparkline at that width (E32) |
+
+### Main session, after the second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-190 | Board 1's page weight options are the engineer's remeasure on the final kit, read from a fresh strict build: as it stands, chapter 14 at 2.954 MB and an ask of 0.762 MB from Phase 4's share; chart data carried compressed, 2.796 MB and 0.603 MB, with no loss to any reader; tables compressed too, 2.141 MB and no ask, with every table lost to a reader with scripts off; smaller photo copies, no ask and 1.060 MB freed, a visible change. The studio recommends the second, keeping tables live as the creative director advised | DR-232 sends the measured remainder to board 1; the compact carrier for D3-95's unrounded values brought the ask down from 0.785 MB |
+| D3-191 | Gap brackets (S05) and the named-bar light fill (R3) carry into round 1's kit work; S05 keeps its note until then | The kit draws neither yet, and no round 0 specimen names one bar |
