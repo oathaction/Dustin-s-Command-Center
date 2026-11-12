@@ -178,6 +178,12 @@ In progress. Items: ST M1, M2, M3, S1, S5, S8, S11; BC M1, M2, M3, S2, S3, S7, S
 | BC S11, AX S5 | S62, `step-tracker` | Done: across, flush left, shared lines; Step column in the table; "Public Law 119-12" held whole |
 | BC S17 (S44), AX S3 | S44 | Done: chart note names steps and totals by role and place |
 | BC S7 | S46, `stacked-area` | Done: a plate of the ground behind "All other sources" on the hatch |
+| SK-S1, BC S13 | sketches 14.54 to 14.57, 14.91, 14.92 | Done: reference sketches 320 px with a 10 px inset, avoid halves 288 px with an 8 px inset, "Illustrative data" in 13 px at the inset's corner, the progress bars widened to the half |
+| ST S5, RF-11a | S43 | Done: DP04 margin column, DC's 1.5 points in note 2, variant `with_dp04_margin` |
+| ST S6 | S45, S46, S47 | Done: the research lead's template and variants; S46's measure line "the whole series"; S47's year-end note |
+| BC M1, CD A-M2, RF-1, AX S4 | S47, `treemap`; entries 14.47, 14.52, 14.54 to 14.56, 14.87 | Done: Social Security in the subject ink, other tiles in the track ink with a context edge, no red, no plate; chart note names marks by role |
+| ST S1, RF-10 | S47, `treemap` | Done: `labels.fold: "fit"` folds the ten functions too small at 256 px; Veterans keeps its tile; the fold tile last |
+| BC M2, RF-12, CD A-S2, RF-13 | S61, `progress-bar`, entry 14.87 | Done: 47 no votes in outline, both in the party-mark ink; 30-word title; entry says it draws S01's vote a second way |
 
 ### Routine calls
 

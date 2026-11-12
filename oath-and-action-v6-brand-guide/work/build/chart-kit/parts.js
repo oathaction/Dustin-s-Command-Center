@@ -398,7 +398,8 @@
   // fill}] in the order they claim room (the named point first). Each label tries eight places around its point, right,
   // left, above, below, then the four corners, r + o.gap px out (default 4); then, with o.leaders (default true), the same
   // places o.reach px further (default 14) with a hairline leader; o.reach may be a list of reaches, tried in order (RB-G3). A place must sit inside the drawing (0 to c.width, o.top
-  // to o.bottom), clear of every label placed, every text already drawn, every point's dot and o.avoid boxes. Returns
+  // to o.bottom), clear of every label placed, every text already drawn, every point's dot and o.avoid boxes; o.paths (lists
+// of [x, y] points) are drawn paths no leader may cross, and with o.clear_paths no label may sit on (RB-G4). Returns
   // {placed: [{item, box}], unplaced: [items]}; name the unplaced in a note (K.word('unlabeled_marks')) or the table.
   P.place_labels = function (c, items, o) {
     o = o || {};
@@ -415,6 +416,17 @@
       return [it.x + dx / len * (r0 + 1), it.y + dy / len * (r0 + 1), bx - dx / len * 2, by - dy / len * 2];
     };
     var crosses = function (L, t) { return K.leader_crosses({ x1: L[0], y1: L[1], x2: L[2], y2: L[3] }, t); };
+    // RB-G4 (round 2 fix pass, D3-671): o.paths, drawn paths a leader may not cross, each a list of [x, y] points in drawing
+    // order; with o.clear_paths a label may not sit on one either
+    var psegs = [];
+    (o.paths || []).forEach(function (pts) { for (var i = 0; i + 1 < (pts || []).length; i++) psegs.push([pts[i][0], pts[i][1], pts[i + 1][0], pts[i + 1][1]]); });
+    var cross2 = function (a, b) {
+      var d = function (p, q, r) { return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]); };
+      var p1 = [a[0], a[1]], p2 = [a[2], a[3]], q1 = [b[0], b[1]], q2 = [b[2], b[3]];
+      var d1 = d(q1, q2, p1), d2 = d(q1, q2, p2), d3 = d(p1, p2, q1), d4 = d(p1, p2, q2);
+      return ((d1 > 0) !== (d2 > 0)) && ((d3 > 0) !== (d4 > 0)) && d1 !== 0 && d2 !== 0 && d3 !== 0 && d4 !== 0;
+    };
+    var on_path = function (b) { return psegs.some(function (sg) { return K.seg_hits_box(sg[0], sg[1], sg[2], sg[3], b.x, b.y, b.x + b.w, b.y + b.h); }); };
     var places = [['right', 1, 0], ['left', -1, 0], ['above', 0, -1], ['below', 0, 1], ['upper right', 0.75, -0.75], ['lower right', 0.75, 0.75], ['upper left', -0.75, -0.75], ['lower left', -0.75, 0.75]];
     items.forEach(function (it, n) {
       var wgt = it.weight || 400, w = c.measure(it.words, role, wgt), r = it.r || 0, done = null;
@@ -429,9 +441,11 @@
           if (taken.some(function (t) { return overlaps(b, t, pad); }) || c.texts.some(function (t) { return overlaps(b, t, pad); })) continue;
           if (dots.some(function (t, j) { return j !== n && t.w > 0 && overlaps(b, t, 1); })) continue;
           if ((c.leaders || []).some(function (l) { return K.leader_crosses(l, b); })) continue;
+          if (o.clear_paths && on_path(b)) continue;
           if (ring) {
             var L = leader_of(it, b);
             if (c.texts.some(function (t) { return crosses(L, t); })) continue;
+            if (psegs.some(function (sg) { return cross2(L, sg); })) continue;
           }
           done = { x: x, y: y, anchor: anchor, box: b, ring: ring };
         }

@@ -58,6 +58,9 @@
 .oac-svg { overflow: visible; }
 .oac-t { font-family: var(--oa-font-family-reading); }
 .oac-t-big { font-family: var(--oa-font-family-display); letter-spacing: -0.02em; }
+/* BC S12 (round 2 fix pass): a big figure that holds words opens its tracking, so "At least 17" reads as three words at 1x;
+   kit.js measures it so (K.open_space) */
+.oac-t-big.oac-t-open { letter-spacing: 0; word-spacing: 0.1em; }
 .oac-w4 { font-weight: var(--oa-font-weight-regular); }
 .oac-w6 { font-weight: var(--oa-font-weight-semibold); }
 .oac-w7 { font-weight: var(--oa-font-weight-bold); }
@@ -144,6 +147,8 @@
   .oac-svg .oac-t.oac-fc-on-gray { fill: Canvas; stroke: CanvasText; }
   .oac-svg:has(.oac-f-point, .oac-s-point) .oac-t.oac-fc-on-gray.oac-fc-on-context { fill: CanvasText; stroke: Canvas; }
   .oac-ev-k { forced-color-adjust: none; background: CanvasText; color: Canvas; }
+  /* AX S3 (round 2 fix pass): a total (fc: 'total') takes the ground with a 2 px outline, apart from every step's ink */
+  .oac-svg .oac-fc-total.oac-fc-total:not(.oac-t) { fill: Canvas; stroke: CanvasText; stroke-width: 2px; }
 }
 /* Print (D3-100): a figure taller than a page may break, but never inside its title block, its drawing, its source block or
    a table row; the kit opens every table before print */

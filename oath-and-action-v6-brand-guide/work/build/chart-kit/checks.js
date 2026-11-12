@@ -132,6 +132,7 @@ function check_spec(K, spec, opts) {
     if (!ty || typeof ty !== 'object' || Array.isArray(ty)) f.push('spec: typography is {"curl_quotes": true, "replace": [["find", "put"]]}');
     else {
       if (ty.curl_quotes !== undefined && typeof ty.curl_quotes !== 'boolean') f.push('spec: typography.curl_quotes is true or false');
+      if (ty.nbsp !== undefined && typeof ty.nbsp !== 'boolean') f.push('spec: typography.nbsp is true or false');
       (ty.replace || []).forEach((pr, i) => {
         if (!Array.isArray(pr) || pr.length !== 2 || typeof pr[0] !== 'string' || typeof pr[1] !== 'string' || !pr[0]) f.push(`spec: typography.replace[${i}] is a pair of words, ["find", "put"]`);
         else if (pr[1].indexOf(pr[0]) >= 0) f.push(`spec: typography.replace[${i}] puts words that hold what it finds ("${pr[0]}"), so a second pass would change them again`);
@@ -572,7 +573,7 @@ function check_drawing(spec, d, tok, where) {
     for (const t of d.texts || []) {
       const cx = t.x + t.w / 2, cy = t.y + t.h / 2;
       let ground = 'Canvas', hit = false;
-      for (const m of fills) if (m.poly ? in_poly(m.poly, cx, cy) : (cx > m.x && cx < m.x + m.w && cy > m.y && cy < m.y + m.h)) { hit = true; ground = pointed && m.fill === 'context' ? 'Canvas' : d.fc[m.fill] || 'CanvasText'; }
+      for (const m of fills) if (m.poly ? in_poly(m.poly, cx, cy) : (cx > m.x && cx < m.x + m.w && cy > m.y && cy < m.y + m.h)) { hit = true; ground = m.fc === 'total' || (pointed && m.fill === 'context') ? 'Canvas' : d.fc[m.fill] || 'CanvasText'; }
       if (!hit) for (const m of paths) if (in_poly(m.poly, cx, cy)) ground = pointed && m.fill === 'context' ? 'Canvas' : d.fc[m.fill] || 'CanvasText';
       // a word on a GrayText mark takes Canvas (second pass), except on context beside a red point (kit.css)
       const ink = (d.fc_on_dark || []).indexOf(t.fill) >= 0 || (t.on_gray && !(pointed && t.on_context)) ? 'Canvas' : 'CanvasText';

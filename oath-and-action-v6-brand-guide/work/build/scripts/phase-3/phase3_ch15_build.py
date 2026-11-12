@@ -1266,8 +1266,10 @@ def rule_15_5(book):
     need((l13["from"], l13["to"], l14["from"], l14["to"]) == ("D4", "TC7", "D6", "TC7"), "connection LT13 or LT14 changed")
     need(node("TC7")["layer"] == "technology" and node("D4")["layer"] == node("D6")["layer"] == "core", "the layers changed")
     # two bodies, one decision: two authority lines into one variable across the core and technology boundary
-    a = Pill(own("D4"), 0, 0, 140)
-    b = Pill(own("D6"), 0, 0, 140)
+    # RF-16a: the variables' own titles; 148 and 132 px set each in three rows with no word alone, 12 px apart
+    a = Pill(own("D4"), 0, 0, 148)
+    b = Pill(own("D6"), 0, 0, 132)
+    need(len(a.rows) == len(b.rows) == 3 and a.pw + b.pw + 12 + 4 <= W, "15.5's two pills no longer sit side by side in three rows")
     a.cx, b.cx = 2 + a.pw / 2, W - 2 - b.pw / 2
     top = max(a.h, b.h)
     a.cy = b.cy = top / 2 + 2
@@ -2971,6 +2973,17 @@ def check(data, book):
     for sid, frag in book.files.items():
         for m in re.finditer(r'<span class="chip">([^<]*)<span class="id">([^<]*)</span></span>([,.;:!?)])', frag):
             fails.append(f"{sid}: {m.group(1)}{m.group(2)} is followed by {m.group(3)!r}; let words follow a chip")
+    # CD CH15-S1: a grade word that words follow ends with a period ("Well supported. The atlas calls it")
+    for sid, frag in book.files.items():
+        for m in re.finditer(r"<b>([A-Za-z ]+)</b></span></span></span> ([A-Z]\w*)", frag):
+            fails.append(f"{sid}: the grade word {m.group(1)!r} runs on into {m.group(2)!r} with no period")
+    # RF-16, RF-16a: a drawing outside any loop prints the atlas's own title for D1, D2, D4 and D6, never a loop's chain label
+    for sid in ("s-15-3-correct", "s-15-3-failure", "s-15-5-correct", "s-15-5-failure", "s-15-17-correct"):
+        drawn = " ".join(" ".join(re.sub(r"<[^>]+>", " ", t).split())
+                         for t in re.findall(r"<text\b[^>]*>(.*?)</text>", book.files[sid]))
+        for c in TWO_NAMES:
+            if LOOP_NAME[c] in drawn:
+                fails.append(f"{sid}: Variable {c} drawn as {LOOP_NAME[c]!r}, its loops' label, outside a loop (RF-16)")
     kinds = {"Variable": NODE, "Connection": LINK, "Loop": LOOP, "Reform": REFORM,
              "Route": {r["code"] for r in V7["routes"]["items"]}}
     for sid, frag in book.files.items():

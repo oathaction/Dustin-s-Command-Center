@@ -1,12 +1,12 @@
 {
- "built": "2026-11-12T22:19:25.793063+00:00",
+ "built": "2026-11-12T22:24:04.188822+00:00",
  "guide_build": {
   "exit": 1,
-  "bytes": 10600720,
+  "bytes": 10611038,
   "rules": 312,
   "specimens": 606,
-  "warnings": 121,
-  "built": "2026-11-12T22:19:32",
+  "warnings": 105,
+  "built": "2026-11-12T22:24:11",
   "pictures_from_failed_build": true
  },
  "kit_builds": {
@@ -216,8 +216,8 @@
    true
   ],
   "plate_css": {
-   "bytes": 4440,
-   "rules_and_opener": 169804,
+   "bytes": 4479,
+   "rules_and_opener": 172075,
    "allowance": 212288
   },
   "ch13_titles": {
@@ -327,7 +327,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 9050,
+   "bytes_in_guide": 9988,
    "faults": 0,
    "drawings": 4,
    "rows": 52
@@ -353,7 +353,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 6316,
+   "bytes_in_guide": 6340,
    "faults": 0,
    "drawings": 4,
    "rows": 26
@@ -366,7 +366,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 11002,
+   "bytes_in_guide": 11096,
    "faults": 0,
    "drawings": 4,
    "rows": 65
@@ -379,8 +379,8 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 5009,
-   "faults": 11,
+   "bytes_in_guide": 5144,
+   "faults": 0,
    "drawings": 4,
    "rows": 17
   },
@@ -392,7 +392,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 3842,
+   "bytes_in_guide": 3846,
    "faults": 0,
    "drawings": 4,
    "rows": 4
@@ -444,7 +444,7 @@
    "title_from": "guide",
    "evidence": "Estimate",
    "marked": true,
-   "bytes_in_guide": 7323,
+   "bytes_in_guide": 7595,
    "faults": 0,
    "drawings": 4,
    "rows": 74
@@ -496,7 +496,7 @@
    "title_from": "guide",
    "evidence": "Association",
    "marked": false,
-   "bytes_in_guide": 14479,
+   "bytes_in_guide": 14661,
    "faults": 0,
    "drawings": 4,
    "rows": 103
@@ -505,12 +505,12 @@
    "rule": "14.74",
    "form": "Range bar or error bar",
    "maker": "B",
-   "title": "Women who worked full time, year round had median earnings 82.0 percent of men’s in 2025, and in 25 states and the District of Columbia the figure differed from the nation’s by more than the margin of error.",
+   "title": "Among full-time, year-round workers, women’s median earnings were 82.0 percent of men’s in 2025; 25 states and the District of Columbia differed from that past the margin of error.",
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 10925,
-   "faults": 1,
+   "bytes_in_guide": 11135,
+   "faults": 0,
    "drawings": 4,
    "rows": 52
   },
@@ -746,7 +746,7 @@
    "layout": "stacked",
    "size": [
     868,
-    2125
+    2146
    ]
   },
   "14.9": {
@@ -895,8 +895,8 @@
    "name": "Statistics and civic education",
    "state": "ready",
    "score": 4,
-   "must_fix": 12,
-   "should_fix": 39,
+   "must_fix": 3,
+   "should_fix": 11,
    "second_score": null,
    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Statistics-Civic.md"
   },
@@ -904,8 +904,8 @@
    "name": "Fairness, brand and craft",
    "state": "ready",
    "score": 3,
-   "must_fix": 9,
-   "should_fix": 15,
+   "must_fix": 3,
+   "should_fix": 18,
    "second_score": null,
    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Brand-Craft.md"
   },
@@ -913,25 +913,25 @@
    "name": "Access and the test with simulated users",
    "state": "ready",
    "score": 4,
-   "must_fix": 5,
-   "should_fix": 43,
+   "must_fix": 1,
+   "should_fix": 11,
    "second_score": null,
    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Access-Production.md"
   }
  ],
  "weight": {
-  "chapter_14": 1172335,
+  "chapter_14": 1177386,
   "stop": 2803941,
-  "per_plate": 15462,
+  "per_plate": 15355,
   "plates_to_come": 36,
-  "chapter_15": 302270,
+  "chapter_15": 306534,
   "chapter_15_ceiling": 600000.0,
-  "page": 10600720,
+  "page": 10611038,
   "projected": 15042495,
   "budget": 15500000.0
  },
  "tested": {
-  "The strict build of the guide": "Not found in its file at this build.",
+  "The strict build of the guide": "did not pass today: 105 warnings on a build of 10,611,038 bytes",
   "The quick guide check": "Not found in its file at this build.",
   "The four-width guide check": "at 1440, 1024, 390 and 360 px, on a build of 10,587,775 bytes: no failures",
   "The chart kit’s build of every chart": "64 of 64 charts pass, checked without pictures",
@@ -949,13 +949,13 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-2/progress/20261112_Round-2-Progress.html",
- "html_bytes": 131500,
+ "html_bytes": 131154,
  "images": 84,
- "image_bytes": 23859342,
+ "image_bytes": 24425498,
  "folder_files": 88,
- "folder_bytes": 24037732,
+ "folder_bytes": 24613059,
  "largest_image": [
-  638394,
+  672614,
   "20261112_Chart-14-74-Newsprint.png"
  ],
  "status": {
@@ -1093,9 +1093,7 @@
   "D3-200",
   "D3-205",
   "D3-350",
-  "D3-890",
   "D3-894",
-  "D3-899",
   "D3-903",
   "DR-191",
   "DR-202",
@@ -1111,12 +1109,12 @@
  "warnings": [
   "the strict guide build failed (exit 1); the guide pictures wait for a passing build",
   "the page’s pictures come from a strict build that failed; a method run only, never one to publish",
-  "the quick guide check ran on 10,587,775 bytes and today’s strict build is 10,600,720",
+  "the quick guide check ran on 10,587,775 bytes and today’s strict build is 10,611,038",
   "Tested lines without their figure: The strict build of the guide, The quick guide check"
  ],
- "seconds": 212,
- "words": 4890,
- "words_tested_part": 237,
+ "seconds": 210,
+ "words": 4777,
+ "words_tested_part": 241,
  "check": {
   "page": {
    "failures": [

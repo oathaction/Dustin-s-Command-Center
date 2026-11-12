@@ -55,16 +55,20 @@
       }
       // the count and the rest named under the bar, each group's share listed under its side
       var names = L.groups || {}, gw = function (r, f) { var nm = names[r[eg]] !== undefined ? names[r[eg]] : String(r[eg]); return String(L.group_words || '{name} {v}').split('{name}').join(nm).split('{v}').join(K.fmt(r[f], 'integer')); };
-      var side = function (x, anchor, head, f, top) {
-        var hb = c.text(x, top + size, head, { role: 'label', weight: 700, anchor: anchor });
+      var listw = function (f) {
         var its = rows.filter(function (r) { return r[f] > 0; }).map(function (r) { return gw(r, f); });
-        var list = its.length > 1 ? its.slice(0, -1).join(', ') + ' and ' + its[its.length - 1] : its.join('');
+        return its.length > 1 ? its.slice(0, -1).join(', ') + ' and ' + its[its.length - 1] : its.join('');
+      };
+      // each side's words wrap at half the width, or, where the other side is narrower, at what it leaves free
+      var side = function (x, anchor, head, f, top, max) {
+        var hb = c.text(x, top + size, head, { role: 'label', weight: 700, anchor: anchor }), list = listw(f);
         if (!list) return hb.bottom;
-        var lb = c.text(x, hb.bottom + 2 + size * 0.95, list, { role: 'label', anchor: anchor, max: W / 2 - 12 });
+        var lb = c.text(x, hb.bottom + 2 + size * 0.95, list, { role: 'label', anchor: anchor, max: max });
         return lb.bottom;
       };
-      var top = yy + 12, b1 = side(0, 'start', fmt(L.value_words || '{v}', v), ev, top), b2 = top;
-      if (ea) b2 = side(W, 'end', fmt(L.against_words || '{v}', against), ea, top);
+      var h1 = fmt(L.value_words || '{v}', v), w1 = Math.max(c.measure(h1, 'label', 700), Math.min(W / 2 - 12, c.measure(listw(ev), 'label')));
+      var top = yy + 12, b1 = side(0, 'start', h1, ev, top, W / 2 - 12), b2 = top;
+      if (ea) b2 = side(W, 'end', fmt(L.against_words || '{v}', against), ea, top, Math.max(W / 2 - 12, W - w1 - 16));
       c.height(Math.max(b1, b2) + 4);
     }
   });

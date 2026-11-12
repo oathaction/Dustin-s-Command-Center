@@ -2,7 +2,7 @@
   "id": "14.87",
   "title": "Use a progress bar for a count toward a threshold.",
   "rule": [
-    "Draw one bar that runs to the whole, such as the 100 senators, with the count from zero in the red point, or in the subject ink where Rule 14.6 sets ink in its place, as for a vote, and the rest in the track gray. Mark the threshold with a tick in the text’s ink and its words over it, bracket the gap between the count and the threshold under the bar with its words, and name what fills the count and the rest under the bar, each party by name where the count is a vote (Rule 14.7)."
+    "Draw one bar that runs to the whole, such as the 100 senators, with the count from zero in the red point while its red stays within 5 percent of the drawing at every width (Rule 05.1), or in the subject ink where Rule 14.6 sets ink in its place, as for a vote, and the rest in the track gray. Where the count is a vote, draw the other side as a segment of its own in outline in the same ink (Rule 01.2), so each side of the vote has a mark. Mark the threshold with a tick in the text’s ink and its words over it, bracket the gap between the count and the threshold under the bar with its words, and name what fills the count and the rest under the bar, each party by name where the count is a vote (Rule 14.7)."
   ],
   "use_when": "The reader asks how close a count came to the number it needed, such as the votes to end debate in the Senate.",
   "use_instead": [
@@ -21,7 +21,8 @@
   ],
   "why": {
     "text": [
-      "A bar that runs to the whole shows the count, the threshold and the distance between them as lengths on one scale. The bracket and its words say the shortfall outright, so no reader has to subtract."
+      "A bar that runs to the whole shows the count, the threshold and the distance between them as lengths on one scale. The bracket and its words say the shortfall outright, so no reader has to subtract.",
+      "The specimen draws the Senate vote that Rule 14.85’s specimen sets beside a survey, here as a count toward the 60 votes that end debate."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
   },
@@ -33,7 +34,7 @@
     "14.6",
     "14.7"
   ],
-  "builders": "Form progress-bar: node work/build/chart-kit/oa-chart.mjs build s61; encode.value and encode.against name each group’s count and rest, and labels.of, labels.needed and their words set the whole and the threshold.",
+  "builders": "Form progress-bar: node work/build/chart-kit/oa-chart.mjs build s61; encode.value and encode.against name each group’s count and rest, and labels.of, labels.needed and their words set the whole and the threshold; labels.ink “party” and labels.rest “outline” draw a vote’s two sides in the party-mark ink, one solid and one in outline.",
   "correct": null,
   "failure": null
 }

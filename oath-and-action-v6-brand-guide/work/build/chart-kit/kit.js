@@ -460,6 +460,9 @@
     if (o.fill) c.push('oac-f-' + o.fill);
     if (o.stroke) c.push('oac-s-' + o.stroke);
     if (o.cls) c.push(o.cls);
+    // AX S3 (round 2 fix pass): fc: 'total' gives a total or a subtotal (a waterfall's) its own paint in forced colors, the
+    // ground with a 2 px CanvasText outline, so it never takes a step's ink
+    if (o.fc === 'total') c.push('oac-fc-total');
     return c.join(' ') || undefined;
   }
   function data_of(o, base) {
@@ -476,8 +479,13 @@
     return s;
   };
   Ctx.prototype.measure = function (words, role, weight, tnum) {
-    return K.measure(words, typeof role === 'number' ? role : this.size(role || 'label'), weight || 400, role === 'big' ? 'display' : 'reading', tnum);
+    var size = typeof role === 'number' ? role : this.size(role || 'label');
+    return K.measure(words, size, weight || 400, role === 'big' ? 'display' : 'reading', tnum) + (role === 'big' ? K.open_space(words, size) : 0);
   };
+  // BC S12 (round 2 fix pass): a big figure that holds words ("At least 17", "87% and 88%") sets them in open tracking, no
+  // tightening and a tenth of an em more at each word space (kit.css .oac-t-open), so its words read apart at 1x
+  K.OPEN_WORD_SPACE = 0.1;
+  K.open_space = function (line, size) { var n = (String(line).match(/[ \u00a0]/g) || []).length; return n * K.OPEN_WORD_SPACE * size; };
   Ctx.prototype.wrap = function (words, role, max, weight) {
     return K.wrap(words, this.size(role || 'note'), max, weight || 400, role === 'big' ? 'display' : 'reading');
   };
@@ -506,7 +514,7 @@
     if (o.pattern) a.fill = 'url(#' + this.uid + '-' + o.pattern + ')';
     this._push('<rect' + attrs(a) + '/>');
     this._ink('rect', x, y, w, h, o, { a: w * h, len: 2 * (w + h) });
-    if (o.mark !== false) this.mark({ kind: o.kind || 'rect', x: x, y: y, w: w, h: h, fill: o.fill, stroke: o.stroke, data: o.data || {}, zero: o.zero, axis: o.axis, job: o.job });
+    if (o.mark !== false) this.mark({ kind: o.kind || 'rect', x: x, y: y, w: w, h: h, fill: o.fill, fc: o.fc, stroke: o.stroke, data: o.data || {}, zero: o.zero, axis: o.axis, job: o.job });
   };
   // BC S16 (round 1 fix pass): a straight line of a whole-pixel width lands on the pixel grid, so it draws crisp at 1x: an
   // even width (2 px) on a whole pixel, an odd width (1 or 3 px) on a half pixel. Other widths (1.5 px) are left as drawn.
@@ -542,7 +550,7 @@
     if (!pg) { pg = pts ? poly_geo(pts, /Z/i.test(String(d))) : null; if (pg && !(o.fill && o.fill !== 'none')) pg.a = 0; }
     if (pg && pts) { pg.subs = pts; pg.closed = /Z/i.test(String(d)); }
     if (pb) this._ink('path', pb[0], pb[1], pb[2], pb[3], poly ? Object.assign({}, o, { _poly: poly }) : o, pg || { a: pb[2] * pb[3], len: pb[2] + pb[3] });
-    if (box && o.mark !== false) this.mark({ kind: o.kind || 'path', x: box[0], y: box[1], w: box[2], h: box[3], fill: o.fill, stroke: o.stroke, data: o.data || {}, job: o.job, poly: poly || undefined });
+    if (box && o.mark !== false) this.mark({ kind: o.kind || 'path', x: box[0], y: box[1], w: box[2], h: box[3], fill: o.fill, fc: o.fc, stroke: o.stroke, data: o.data || {}, job: o.job, poly: poly || undefined });
   };
   Ctx.prototype.datum = function (x, y, o) {
     // a record for the checks at a point the drawing already inks (a line's vertex): no element, no bytes
@@ -553,7 +561,7 @@
     var a = data_of(o, { cx: r1(cx), cy: r1(cy), r: r2(r), 'class': cls_of(o), 'stroke-width': o.width });
     this._push('<circle' + attrs(a) + '/>');
     this._ink('circle', cx - r, cy - r, 2 * r, 2 * r, o, { a: Math.PI * r * r, len: 2 * Math.PI * r, ring: [cx, cy, r] });
-    if (o.mark !== false) this.mark({ kind: o.kind || 'circle', x: cx - r, y: cy - r, w: 2 * r, h: 2 * r, r: r, fill: o.fill, stroke: o.stroke, data: o.data || {}, area_of: o.area_of, row: o.row, job: o.job });
+    if (o.mark !== false) this.mark({ kind: o.kind || 'circle', x: cx - r, y: cy - r, w: 2 * r, h: 2 * r, r: r, fill: o.fill, fc: o.fc, stroke: o.stroke, data: o.data || {}, area_of: o.area_of, row: o.row, job: o.job });
   };
   Ctx.prototype.polygon = function (pts, o) {
     o = o || {};
@@ -562,7 +570,7 @@
     this._push('<polygon' + attrs(a) + '/>');
     var pgeo = poly_geo([pts], true); pgeo.subs = [pts]; pgeo.closed = true;
     this._ink('polygon', Math.min.apply(null, xs), Math.min.apply(null, ys), Math.max.apply(null, xs) - Math.min.apply(null, xs), Math.max.apply(null, ys) - Math.min.apply(null, ys), o, pgeo);
-    if (o.mark !== false) this.mark({ kind: o.kind || 'polygon', x: Math.min.apply(null, xs), y: Math.min.apply(null, ys), w: Math.max.apply(null, xs) - Math.min.apply(null, xs), h: Math.max.apply(null, ys) - Math.min.apply(null, ys), fill: o.fill, data: o.data || {}, job: o.job });
+    if (o.mark !== false) this.mark({ kind: o.kind || 'polygon', x: Math.min.apply(null, xs), y: Math.min.apply(null, ys), w: Math.max.apply(null, xs) - Math.min.apply(null, xs), h: Math.max.apply(null, ys) - Math.min.apply(null, ys), fill: o.fill, fc: o.fc, data: o.data || {}, job: o.job });
   };
   // BC S1 (round 2 fix pass): the box c.text would give these words, drawn nothing, so a part can set a knockout under them
   Ctx.prototype.text_box = function (x, y, words, o) {
@@ -571,8 +579,8 @@
     var role = o.role || 'label', size = o.size || this.size(role), weight = o.weight || 400, anchor = o.anchor || 'start';
     var face = o.face || (role === 'big' ? 'display' : 'reading');
     var lines = o.max ? K.wrap(words, size, o.max, weight, face) : [String(words)];
-    var lh = o.leading || Math.round(size * (role === 'note' ? 1.36 : 1.25)), w = 0;
-    lines.forEach(function (ln) { w = Math.max(w, K.measure(ln, size, weight, face, o.tnum)); });
+    var lh = o.leading || Math.round(size * (role === 'note' ? 1.36 : 1.25)), w = 0, open = role === 'big' && /[ \u00a0]/.test(String(words));
+    lines.forEach(function (ln) { w = Math.max(w, K.measure(ln, size, weight, face, o.tnum) + (open ? K.open_space(ln, size) : 0)); });
     var x0 = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x;
     var vm = metrics().vertical[face === 'display' ? 'Inter Tight|800' : 'Inter|400'] || { ascent: 969, descent: 241 };
     var asc = size * vm.ascent / 1000, desc = size * vm.descent / 1000, half = (asc + desc - size) / 2;
@@ -586,12 +594,13 @@
     var face = o.face || (role === 'big' ? 'display' : 'reading');
     var lines = o.max ? K.wrap(words, size, o.max, weight, face) : [String(words)];
     var lh = o.leading || Math.round(size * (role === 'note' ? 1.36 : 1.25));
-    var self = this, w = 0;
-    lines.forEach(function (ln) { w = Math.max(w, K.measure(ln, size, weight, face, o.tnum)); });
+    var self = this, w = 0, open = role === 'big' && /[ \u00a0]/.test(String(words));
+    lines.forEach(function (ln) { w = Math.max(w, K.measure(ln, size, weight, face, o.tnum) + (open ? K.open_space(ln, size) : 0)); });
     var x0 = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x;
     var cls = ['oac-t', 'oac-t-' + (face === 'display' ? 'big' : role), 'oac-w' + Math.round(weight / 100), o.fill ? 'oac-f-' + o.fill : (role === 'tick' ? 'oac-f-secondary' : 'oac-f-label')];
     if (o.halo) cls.push('oac-halo');
     if (o.tnum) cls.push('oac-tnum');
+    if (open) cls.push('oac-t-open');
     // second pass (maker A's flag): in forced colors a mark in GrayText (seq-3, div-5, mag-3, cat-2, context) is a mid ink in
     // both themes, so a word set on one takes Canvas, as a word on a dark fill does; on context beside a red point, whose
     // marks take the ground (access S10), it keeps CanvasText (kit.css)
@@ -962,11 +971,19 @@
     t = t.replace(/(^|[\s(\[{\u2013\u2014-])'/g, '$1\u2018').replace(/'/g, '\u2019');
     return t.replace(/(^|[\s(\[{\u2013\u2014-])"/g, '$1\u201c').replace(/"/g, '\u201d');
   }
+  // BC S12 (round 2 fix pass): typography.nbsp holds a date's month and day together ("November 3, 2026") and a span of
+  // years with its "to" ("2017 to 2022"), with no-break spaces, in printed words only; a second pass changes nothing
+  var MONTHS = 'January|February|March|April|May|June|July|August|September|October|November|December';
+  K.nbsp = function (t) {
+    return String(t).replace(new RegExp('\\b(' + MONTHS + ') (\\d{1,2})\\b', 'g'), '$1\u00a0$2')
+      .replace(/\b((?:1[89]|20)\d{2}) (to|through) ((?:1[89]|20)\d{2})\b/g, '$1\u00a0$2\u00a0$3');
+  };
   K.typeset = function (spec, words) {
     var ty = spec && spec.typography;
     if (!ty || words === null || words === undefined) return words;
     var t = String(words);
     (ty.replace || []).forEach(function (pr) { if (pr && pr[0]) t = t.split(String(pr[0])).join(String(pr[1])); });
+    if (ty.nbsp) t = K.nbsp(t);
     return ty.curl_quotes ? curl(t) : t;
   };
   function text_col(col) { return !col.format || col.format === 'text'; }

@@ -264,3 +264,74 @@ Read and kept: every other title, rule sentence, why, basis, spec and builders l
 - Run 3 modified, words only: `work/build/chart-kit/specs/s45.json`, `s63.json`; `work/build/guide/entries/14-053.json`.
 - Run 4 modified: `work/build/scripts/phase-3/phase3_ch14_rules_build.py` (flag True, 14.11's 2017 words), which rewrote `14-009.json`, `14-011.json`, `s-14-9-correct.html`, `s-14-11-line.chart.json` and wrote `s-14-9-range.chart.json` in place of `s-14-9-dots.chart.json`; words only in `work/build/chart-kit/specs/` s51, s54, s55, s57, s58 and `work/build/guide/entries/` 14-059, 14-060, 14-067, 14-068.
 - Created: this file.
+
+## Review fix pass
+
+Under `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` (Editor paragraph, calls 1, 3, 8 and 10, and the access addendum), with the data lead's "Review fix pass" rulings RF-1, RF-2, RF-7 and RF-17. Written as I go; the container can restart. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/3ab6316c-6935-5f23-804c-cfaafd548447/scratchpad/phase-3/round-2-fix/editor/`.
+
+### Summary
+
+- **DR-247 (call 8, D3-898), done.** Chapter 13's seven script-drawn chart heads end with a period, wording unchanged: Rule 13.1's four correct heads, Rule 13.6's jobs head on both plates and the left head on Rule 13.7's failure plate. The failure heads of Rules 13.1, 13.2 and 13.3 keep their faults. `phase3_ch13_build.py` now fails a rerun that drops any of the seven (tested by dropping each in turn). Against the commit before the change, a character diff of the four plates shows exactly seven inserted periods; the chapter file and the manifest, which holds the alts, are byte for byte as before.
+- **Rule 14.6 (RF-1, RF-17; BC M1, BC S5, CD A-M2, CD R-S1), done.** The old second paragraph is now three, each case on its own: one mark against a set of marks, with D3-673's one-line case and the new comparison case; the two ink cases; and two findings, Rule 05.1's 5 percent share and red never. Three new spec rows and a renamed one; the builders line names the kit's red-share check. The correct caption names Zion as the comparison.
+- **Rule 14.12 (RF-17), held.** 2026 keeps the red and 2015 the light fill with its value in both drawings; only the spec's internal note changed.
+- **Rule 14.13, changed under RF-1.** The engineer's red-share check measured its red 2024 column at 6.2 percent at desk widths, so the column takes the subject ink, and its failure plate the same.
+- **Rule 14.9 (RF-7, ST S4), done.** Two gap-test rows replace one. The generator checks the exact test against the independent one for all ten states; the same five pass. Drawing, caption and title unchanged. The rows stack under a 176 px plot, since call 9's new interval check failed 321 to 330 px drawings.
+- **Rule 14.11 (ST S7), done.** Its reading guide glosses "median", the chapter's first. Its "New questions" note rises and wraps under 480 px, after AX S2's new guard found it half over a dot at 225 to 328 px.
+- **Group 8's line (CD R-S2), done.** 30 words with no stacked clauses.
+- **Left for the second pass, in makers' word fields:** ST S3 (14.69, 14.73), ST S7's "quartile" (14.60), ST S8 and RF-3 (S63's words), AX M1 and AX S10 (14.75 and 14.90's color-step names), AX S4 (S47 and S53), AX S8 (14.74's missing-margin words, from the research lead's notes), and the words the data lead's RF-4, RF-5, RF-12, RF-13, RF-18, RF-20 and RF-22 name me for. The makers had already set several by 22:10 (14.60's quartile gloss, 14.75's edges, the 14.69 and 14.73 pointers).
+- **Blocking one plate:** Rule 14.12's columns fail the kit's new sweep at 480 to 502 px (below).
+
+### Routine calls
+
+- D3-xxx | Rule 13.1's Finding head takes the period: "Child poverty stood at 13.4 percent in 2025 under the Supplemental Poverty Measure." | DR-247 (D3-898)
+- D3-xxx | Rule 13.1's Association head takes the period: "Job postings offered 17 percent lower wages where a few employers did more of the hiring." | DR-247
+- D3-xxx | Rule 13.1's Estimate head takes the period: "Vehicle safety technologies saved an estimated 614,000 lives from 1960 to 2012." | DR-247
+- D3-xxx | Rule 13.1's Illustration head takes the period: "A ranked bar puts the town with the most library hours first." | DR-247
+- D3-xxx | Rule 13.6's correct plate head takes the period: "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure." | DR-247
+- D3-xxx | Rule 13.6's failure plate head takes the same period | DR-247; the plate fails on its source line alone
+- D3-xxx | Rule 13.7's failure plate, left head, takes the period: "Child poverty fell from 9.7 percent in 2020 to 5.2 percent in 2021, then rose to 13.5 percent in 2024." | DR-247; its fault is the mixed releases and windows
+- D3-xxx | The failure heads of Rules 13.1, 13.2 and 13.3 keep no period | DR-247 keeps their faults on purpose
+- D3-xxx | The alts of Rules 13.1, 13.6 and 13.7 stay byte for byte; 13.6's alts print the title's words without the period | Each alt names the title inside its own sentence
+- D3-xxx | The chapter 13 generator fails a rerun where any of the seven heads lacks its period, or where a plate holds a different count of script-drawn heads than DR-247's (four, one, one, one) | So a later rerun keeps DR-247
+- D3-xxx | Rule 14.6 states Rule 05.1's share once: a named mark that would pass 5 percent of the drawing at any width, such as a part of a treemap, pie or donut, or a tall column in a short run, takes Charcoal at the subject weight, with a spec row | RF-1 (D3-890), BC M1, CD A-M2; entries 14.52 and 14.55 cite it
+- D3-xxx | Rule 14.6's second paragraph becomes three, one case to a paragraph | CD R-S1; it ran 15 lines at 1440 px
+- D3-xxx | Rule 14.6 states D3-673's case: a line or a single bar is one mark, a run of columns a set of marks, and a chart of one line, bar or path takes the subject ink with the title's value labeled | RF-17; BC S5 found one measure treated two ways between Rule 14.12 and entry 14.75
+- D3-xxx | Rule 14.6 adds the comparison case: a mark the title names only to measure the finding against keeps the light fill with its label | RF-17; the rule's own plate draws Zion so
+- D3-xxx | Rule 14.6's "Two marks in two roles" row becomes "Two findings" | RF-17 corrects ruling (c)
+- D3-xxx | Rule 14.6's related rules add 05.1 and 14.12, and its builders line says the kit fails red past 5 percent | The rule now cites both; the engineer's red-share check landed
+- D3-xxx | Rule 14.6's correct caption names Zion as the comparison | The rule points to the plate for that case
+- D3-xxx | Rule 14.12's plate keeps 2026 red and 2015 in the light fill with its value; the spec's internal note gives the reason and the red's 2.8 to 4.1 percent | RF-17; D3-665 stands
+- D3-xxx | Rule 14.13's 2024 column takes the subject ink through labels.named, and its failure plate's column the same; the alt calls it the column the title names, in the dark ink | The red-share check measured 6.2 percent at desk widths and 5.0 to 5.4 down to 296 px, past Rule 05.1's 5 (RF-1)
+- D3-xxx | Rule 14.9 prints two gap tests: two separate places, and a place inside an area, which takes the first only with a note saying it treats the two as independent | RF-7, ST S4
+- D3-xxx | The rules generator computes the exact test for each of the ten states and fails a rerun where it and the independent test disagree; the plate's internal note gives w, 3.2 to 10.7 percent, and California's margin (1.68 to 1.50 against a gap of 0.6) and Ohio's (2.55 to 2.46 against 2.1) | RF-7: the drawing, caption and title stay
+- D3-xxx | Rule 14.9's plate stacks its rows under a 176 px plot, up from the form's 160 | Call 9's interval check (D3-899) found the middle interval at 24.3 to 25.2 px against 26 at 321 to 330 px drawings
+- D3-xxx | Rule 14.11's reading guide opens "Half of households had more income than the median and half had less." | ST S7: the plate's title is chapter 14's first "median"
+- D3-xxx | Rule 14.11's "New questions" note rises 36 px and wraps at 70 px under 480 px | AX S2's guard found it half over the 2007 dot at 225 to 328 px; unwrapped at 256 px it met the rising line
+- D3-xxx | Group 8's line reads "A range, a band or a fan shows how sure a figure is, as its publisher states it, and an estimate’s note gives the method behind its range (Rule 13.1)." | CD R-S2: 44 words with stacked clauses
+- D3-xxx | Rule 14.11's plate takes no band words | RF-2 names "Rule 14.11's plate on the same form", but the plate draws `line-event-notes` with no band; entry 14.75 alone takes them
+- D3-xxx | Rule 14.5 keeps "The Stone magnitude steps" | It is the rule that sets the palettes, so the name is its subject; AX S10's fault is the name in 14.75 and 14.90, read without that context
+
+### Requests (fix pass)
+
+- **To maker A, `forms/column.js` (D3-904, a sweep fault on my spec `s-14-12-cols`).** At drawings of 480 to 502 px the twelve desk columns cannot carry their values: "3,249" runs past the left edge and onto "3,267". Rule 14.12 itself says columns become bars "when columns grow too narrow to carry their values". Please let the form draw its bar arrangement wherever the widest value would not fit its column, not only under the phone width, calling `c.arrange('phone')` as `range-bar` does. No spec key reaches it, so the plate waits on the form; the kit has no trillions format that would shorten the labels either.
+- **To maker A, `s63.json` (RF-3, ST S8).** The data lead names me to write S63's title, note 1 and X18's words. To keep two writers off one file while you work S63's form, I write them in the second pass once you report S63 done, unless you set the data lead's words as given first; I then read them.
+
+### Tested (fix pass)
+
+- `phase3_ch13_build.py`: a rerun of the committed generator before any change left `git status` clean under `work/build/`. After DR-247: every check passes; `--check-only` passes.
+- DR-247's guard: a script ran the generator's check six times, each on an in-memory copy with one head's period dropped (13.6's single title drops both plates'); each run exited 1 and named the head.
+- DR-247's diff: against commit a214f8ac (before the change; the main session's snapshot 2a256aaf took it in), a character diff of `s-13-1-correct`, `s-13-6-correct`, `s-13-6-failure` and `s-13-7-failure` shows seven inserted periods and nothing else; `13-evidence.json` and `manifest-evidence.json` show no diff.
+- Strict build after DR-247 (`guide_build.py --strict`): exit 0, 0 warnings, 10,587,880 bytes. The four chapter 13 plates by Playwright (`cap.js`, scratch) at 1440, 1024, 768, 390 and 360 px: no visible text under 13 px, nothing past the stage's edge, each head ending with its period; looked at by eye at 360, 768 and 1440 px.
+- `phase3_ch14_rules_build.py` after each change: every check passes (its exact gap test agrees for all ten states). The exact test's figures by a separate script on the frozen file: w 3.2 to 10.7 percent, the same five past.
+- `oa-chart.mjs build` (with the sweep) on my 18 plate specs, chapter 14's 13 and chapter 13's five: 17 PASS, 0 faults; `s-14-12-cols` FAIL, the sweep fault above. Red share: `s-14-13-cols` passes in the subject ink; 14.3, 14.6 and 14.12 pass in red.
+- Rule 14.11's note: five placements tried on scratch copies of the spec with the sweep; two passed; both looked at, at 390, 326 and 256 px, and the wrapped one taken.
+- `phase3_ch14_build.py`: 0 faults (96 rules). Strict build after my chapter 14 changes: exit 1 on 113 warnings, all on other owners' charts (S02, S05, S11, S14, S15, S25, S29, S35, S40, S47, S59, S62) under the engineer's new AX S2 guard; none on my plates. The page was written, 10,605,577 bytes.
+- In that page, by Playwright at 1440, 1024, 768, 390 and 360 px: `s-14-4-failure`, `s-14-6-correct`, `s-14-9-correct`, `s-14-11-correct`, `s-14-12-correct`, `s-14-13-correct`, `s-14-13-failure`, 35 of 35 with no visible text under 13 px and nothing past the stage's edge. Looked at by eye: 14.13's correct plate at 1440, 14.11's at 360 and 14.6's at 1024 px.
+- Group 8's line read from the written chapter file: 30 words.
+
+### Not tested (fix pass)
+
+- Rule 14.12's plate between 480 and 502 px in the page, which waits on maker A's form.
+- My changed plates on Charcoal, in grayscale and in forced colors in the page (the kit's own captures on both grounds passed its checks).
+- A strict build at exit 0 after my chapter 14 changes: other owners' charts fail the new guard.
+- The quick guide check (`guide_check.js`), the kit's `--all` and axe-core; the main session runs the first two.
