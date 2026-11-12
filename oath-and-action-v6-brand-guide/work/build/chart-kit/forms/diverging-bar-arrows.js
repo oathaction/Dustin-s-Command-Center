@@ -51,8 +51,16 @@
       var xs = function (v) { return xc + v / nk[1] * len; };
       // the halves' names, then the scale both ways from the center
       var y = size;
-      if (L.left_title) c.text(xc - 10, y, L.left_title, { role: 'label', weight: 700, anchor: 'end', max: xc - 10 });
-      if (L.right_title) c.text(xc + 10, y, L.right_title, { role: 'label', weight: 700, anchor: 'start', max: W - xc - 10 });
+      // each half's name over it; a name with a word wider than its side takes its own line, set to the drawing's edge
+      var widest = function (t) { return Math.max.apply(null, String(t).split(' ').map(function (w) { return c.measure(w, 'label', 700); })); };
+      if (L.left_title) {
+        if (widest(L.left_title) <= xc - 10) c.text(xc - 10, y, L.left_title, { role: 'label', weight: 700, anchor: 'end', max: xc - 10 });
+        else { var lt = c.text(0, y, L.left_title, { role: 'label', weight: 700, max: W }); y = lt.bottom + size; }
+      }
+      if (L.right_title) {
+        if (widest(L.right_title) <= W - xc - 10) c.text(xc + 10, y, L.right_title, { role: 'label', weight: 700, anchor: 'start', max: W - xc - 10 });
+        else { if (L.left_title && widest(L.left_title) <= xc - 10) y += Math.round(size * 1.3); c.text(W, y, L.right_title, { role: 'label', weight: 700, anchor: 'end', max: W }); }
+      }
       var tb = c.texts.length ? Math.max.apply(null, c.texts.map(function (t) { return t.bottom; })) : 0;
       var ty = tb + 8 + c.size('tick');
       // a figure at each step out from the center, skipping any that would touch the one inside it
@@ -61,6 +69,7 @@
         [1, -1].forEach(function (sg) {
           if (!t && sg < 0) return;
           var s2 = K.fmt(t, f.tick || 'integer'), hw = c.measure(s2, 'tick') / 2, x = xs(sg * t);
+          if (x - hw < x0 || x + hw > W) return;
           if (placed.some(function (p) { return x - hw < p[1] + 6 && p[0] < x + hw + 6; })) return;
           placed.push([x - hw, x + hw]);
           c.text(x, ty, s2, { role: 'tick', anchor: 'middle' });
@@ -69,7 +78,7 @@
       var top = ty + 10, end = top + pitch * rows.length;
       ticks.forEach(function (t) {
         if (!t) return;
-        [-1, 1].forEach(function (sg) { c.line(xs(sg * t), top, xs(sg * t), end, { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); });
+        [-1, 1].forEach(function (sg) { if (xs(sg * t) >= x0 && xs(sg * t) <= W) c.line(xs(sg * t), top, xs(sg * t), end, { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); });
       });
       c.line(xc, top - 4, xc, end, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
       rows.forEach(function (r, i) {
