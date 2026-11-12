@@ -1,0 +1,39 @@
+{
+  "id": "14.128",
+  "title": "Put a small trend line beside each row’s latest figures.",
+  "rule": [
+    "Give each series one row: its name, a sparkline of its whole run with the end marked, and the latest figures in columns at the right. Draw every row’s sparkline on one shared scale, name the period once in the measure line, and print a peak the title or a note cites beside its point."
+  ],
+  "use_when": "The reader looks up a handful of series, such as all jobs and its parts, and wants each one’s latest figure with a sense of how it got there.",
+  "use_instead": [
+    {
+      "when": "The shape of each series matters more than its latest figure",
+      "rule": "14.34"
+    },
+    {
+      "when": "One series, where each month’s value matters",
+      "rule": "14.32"
+    },
+    {
+      "when": "The reader needs the figures alone, with no path",
+      "rule": "14.133"
+    }
+  ],
+  "why": {
+    "text": [
+      "A sparkline gives a series’ path in the space of a word, so the table stays a table while the reader sees whether a figure came from a steady climb or a late turn. One shared scale keeps a flat line flat in every row."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S13",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.10",
+    "14.33",
+    "14.34"
+  ],
+  "builders": "Form sparkline-table: S13 draws it as its totals rows above the panels (node work/build/chart-kit/oa-chart.mjs build s13); for a table alone, copy specs/s13.json, set form to sparkline-table and list the printed columns in encode.columns.",
+  "correct": null,
+  "failure": null
+}

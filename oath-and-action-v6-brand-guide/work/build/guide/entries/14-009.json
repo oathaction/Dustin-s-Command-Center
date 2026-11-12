@@ -1,0 +1,79 @@
+{
+ "id": "14.9",
+ "title": "Show the publisher’s uncertainty, and rank only where a gap passes the margin of error.",
+ "rule": [
+  "Rule 13.5 draws a survey figure’s margin of error as an interval. A chart that ranks survey figures, or singles one out as higher or lower than another, does so only where the gap between them passes the gap’s own margin of error at the publisher’s stated confidence, and a note says so. Figures whose gaps sit inside it are drawn and described as alike: an open dot, a shared place, or the words “within the margin of error”.",
+  "A count of every case, such as votes cast or seats held, has no sampling margin and ranks as it stands."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "A survey measures a sample, so each figure could sit anywhere in its interval. Two states three points apart, each with a margin near three points, may stand in either order across the whole population, and a ranking that puts one first tells a reader something the survey cannot know."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [
+  "oa.chart.color.context.onNewsprint"
+ ],
+ "related": [
+  "13.5",
+  "13.1"
+ ],
+ "builders": "Carry each figure’s margin in its own column of the data; a form draws the interval from it and the note names the confidence.",
+ "specs": [
+  {
+   "label": "Interval",
+   "value": "The publisher’s margin of error at its stated confidence, a line through the dot",
+   "token": "oa.chart.color.context.onNewsprint"
+  },
+  {
+   "label": "A gap’s margin",
+   "value": "For two independent survey figures, the square root of the sum of their squared margins"
+  },
+  {
+   "label": "Within the margin",
+   "value": "An open dot and the words “within the margin of error”"
+  },
+  {
+   "label": "Counts",
+   "value": "No sampling margin; they rank as they stand"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-9-correct",
+  "caption": "Each state’s line shows its margin of error. Five states sit past the margin from the nation and take a filled dot; the five within it take an open one, and the chart ranks none of them.",
+  "alt": "Dots with margin of error lines for ten states’ reported turnout in 2024, against a dashed line at the nation’s 65.3 percent. Filled dots, past the margin: Michigan, Pennsylvania, Florida, New York, Texas. Open dots, within it: Ohio, Illinois, California, North Carolina, Georgia.",
+  "illustrative": false,
+  "notes": "Drawn here from the turnout file with each gap's margin computed by script, until the kit's interval form lands (round 2)."
+ },
+ "failure": {
+  "specimen": "s-14-9-failure",
+  "caption": "<strong>Fails Rule 14.9.</strong> The ranks put Michigan first and Texas last, but Michigan’s lead over Pennsylvania, 2.6 points, and Texas’s gap below New York, 1.3 points, both sit inside the margin of error, so the survey cannot order them.",
+  "alt": "Failure case: do not publish. The ten states ranked 1 to 10 by reported turnout, Michigan first at 72.3 percent and Texas tenth at 57.9 percent, with no margins of error.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "examples": [
+  {
+   "example": "Reported turnout, ten states with the most voting-age citizens, 2024",
+   "domain": "D10",
+   "states": [
+    "CA",
+    "TX",
+    "FL",
+    "NY",
+    "PA",
+    "IL",
+    "OH",
+    "NC",
+    "GA",
+    "MI"
+   ],
+   "level": "state",
+   "where": "14.9"
+  }
+ ]
+}

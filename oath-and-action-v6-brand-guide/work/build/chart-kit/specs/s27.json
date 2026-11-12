@@ -1,0 +1,109 @@
+{
+  "kit": 1,
+  "id": "S27",
+  "form": "line-field",
+  "family": "change-over-time",
+  "tier": "extended",
+  "dataset": "fhfa-house-price-index-by-state",
+  "where": {
+    "quarter": 2,
+    "year": [
+      1991,
+      1996,
+      2001,
+      2006,
+      2011,
+      2016,
+      2021,
+      2026
+    ]
+  },
+  "sort": [
+    {
+      "field": "name",
+      "order": "asc"
+    },
+    {
+      "field": "year",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "How did home prices move in every state, and where did they rise most?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the Federal Housing Finance Agency’s index of repeat home sales",
+  "title": "Home prices rose in every state and DC from 1991 to 2026 by the Federal Housing Finance Agency’s index, and most in Montana, to more than seven times their early-1991 level.",
+  "reading_guide": "Each thin gray line is one state or DC; Montana is the heavy line. Every line starts near 100 in 1991, so a line at 400 means prices four times their 1991 level in that state. Heights compare growth, not prices.",
+  "measure_line": "House price index, purchase-only, seasonally adjusted, not adjusted for inflation, first quarter 1991 = 100, second quarter of every fifth year from 1991 to 2026, 50 states and DC. The index starts in 1991, its first year for states, and the latest quarter is the second of 2026.",
+  "notes": [
+    "Each line joins the second quarter of 1991, 1996, 2001, 2006, 2011, 2016, 2021 and 2026, and skips the quarters between them.",
+    "The index follows repeat sales of the same single-family homes with mortgages bought or guaranteed by Fannie Mae or Freddie Mac. It leaves out cash sales and the most expensive homes.",
+    "Connecticut rose least, to 319. The agency flags Alaska, Delaware, the District of Columbia, Hawaii, Vermont, West Virginia and Wyoming for small samples."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Fifty-one thin lines show the house price index for every state and DC from 1991 to 2026, all starting near 100. Montana, drawn heavy, rose most, to 742 in the second quarter of 2026. Connecticut, the lowest, reached 319. Many lines peak in 2006 and dip by 2011 before climbing again.",
+  "table": {
+    "caption": "House price index by state, second quarter of each year shown, first quarter 1991 = 100",
+    "pivot": {
+      "row": "name",
+      "column": "year",
+      "value": "index_sa",
+      "format": "number:0",
+      "labels": {
+        "1991": "1991",
+        "1996": "1996",
+        "2001": "2001",
+        "2006": "2006",
+        "2011": "2011",
+        "2016": "2016",
+        "2021": "2021",
+        "2026": "2026"
+      }
+    },
+    "columns": [
+      {
+        "field": "name",
+        "label": "State",
+        "format": "text",
+        "row_header": true
+      }
+    ]
+  },
+  "chart_notes": [
+    "Heavy line: Montana, 742 in 2026. Darker gray line: Connecticut, the lowest, 319. The heavy horizontal line marks 100, the 1991 level; the scale runs from 0 to 800."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D09",
+  "states": [
+    "MT",
+    "CT"
+  ],
+  "encode": {
+    "x": "year",
+    "y": "index_sa",
+    "series": "code",
+    "label": "name"
+  },
+  "formats": {
+    "y": "number:0",
+    "tick": "integer"
+  },
+  "labels": {
+    "lit": "MT",
+    "named": [
+      "CT"
+    ],
+    "end": "{name} {y}",
+    "base": 100,
+    "base_label": "Index, first quarter 1991 = 100"
+  },
+  "notes_internal": [
+    "Maker B, round 1. Data plan row 17, rule 14.31. Domain D09 from the sidecar. states: MT, lit and named in the title, and CT, drawn darker and named at the field's lower edge and in note 3 (data lead DL-B10, Rule 01.12).",
+    "Checked by script against fhfa-house-price-index-by-state.csv, second quarters: highest in 2026 Montana 742.06 ('more than seven times'), then Utah 724.90 and Colorado 674.35; lowest Connecticut 319.12; every state and DC above 100 in 2026; second-quarter 1991 values 97.65 to 103.16 ('near 100'); Montana is also the highest quarter in the whole file. Nevada, Arizona, Florida and California fell from 2006 to 2011 in the drawn quarters.",
+    "Weight (R6): the chart draws the second quarter of every fifth year, 8 points a state, 408 rows, in place of all 7,242 quarters; the notes say which quarters the lines join. The fifth years land on 2006 and 2011, near most states' peak and low.",
+    "H09: the window runs from the index's first year for states to its latest quarter, with no split at an inauguration. Read from the left and the right: the title reports the index's rise and names one state chosen by the data.",
+    "Data lead DL-B9 applied: the measure line says the index is not adjusted for inflation."
+  ]
+}

@@ -1,0 +1,68 @@
+{
+ "rows": [
+  {
+   "order": 1,
+   "who": "State public utility commission (called a public service commission in some states)",
+   "jurisdiction": "state",
+   "controls": "Approves retail rates and capital spending recovery for investor-owned electric and gas utilities, divides costs among customer classes, approves special contracts and large-load tariffs; in some states also sets investor-owned water rates.",
+   "can_change_rule": true,
+   "how_to_reach": "File a public comment or speak at a public hearing in the rate case docket; open dockets and hearing schedules are posted on the commission's website, which your state government's official site links."
+  },
+  {
+   "order": 2,
+   "who": "State legislature",
+   "jurisdiction": "state",
+   "controls": "Writes the laws that define the commission's powers, can require protections for existing customers when large loads connect, and can fund state bill assistance.",
+   "can_change_rule": true,
+   "how_to_reach": "Contact your state senator and representative through the legislature's official website; testify at committee hearings on energy bills."
+  },
+  {
+   "order": 3,
+   "who": "City council or municipal utility board",
+   "jurisdiction": "local",
+   "controls": "Sets rates and spending for public power and city-owned water utilities.",
+   "can_change_rule": true,
+   "how_to_reach": "Public comment at council or utility board meetings; agendas are posted by the city clerk or utility."
+  },
+  {
+   "order": 4,
+   "who": "Electric cooperative board of directors",
+   "jurisdiction": "private",
+   "controls": "Sets rates and investment plans for a member-owned cooperative.",
+   "can_change_rule": true,
+   "how_to_reach": "Attend the co-op's annual membership meeting and board meetings; bylaws and board election notices come from the co-op."
+  },
+  {
+   "order": 5,
+   "who": "Federal Energy Regulatory Commission (FERC)",
+   "jurisdiction": "federal",
+   "controls": "Approves wholesale market rules, including PJM's capacity auction design and price limits, and sets transmission revenue requirements.",
+   "can_change_rule": true,
+   "how_to_reach": "Submit comments in the relevant docket through eComment on ferc.gov."
+  },
+  {
+   "order": 6,
+   "who": "PJM Interconnection and other regional grid operators",
+   "jurisdiction": "regional",
+   "controls": "Forecast demand, run capacity auctions and plan transmission; rule changes must be filed with and approved by FERC.",
+   "can_change_rule": false,
+   "how_to_reach": "Auction results, load forecasts and committee meeting materials are posted at pjm.com; formal rule changes can be commented on in FERC dockets."
+  },
+  {
+   "order": 7,
+   "who": "Congress and the Department of Health and Human Services",
+   "jurisdiction": "federal",
+   "controls": "Congress appropriates LIHEAP funds and amends the Federal Power Act; HHS distributes LIHEAP grants to states, tribes and territories.",
+   "can_change_rule": true,
+   "how_to_reach": "Contact your U.S. representative and senators through house.gov and senate.gov; appropriations for LIHEAP go through the Labor-HHS subcommittees."
+  },
+  {
+   "order": 8,
+   "who": "Investor-owned utility",
+   "jurisdiction": "private",
+   "controls": "Proposes rates, capital plans and contracts with large customers, and decides when to file a rate case.",
+   "can_change_rule": false,
+   "how_to_reach": "Customer service for billing disputes; the utility's filings are public in the commission docket."
+  }
+ ]
+}

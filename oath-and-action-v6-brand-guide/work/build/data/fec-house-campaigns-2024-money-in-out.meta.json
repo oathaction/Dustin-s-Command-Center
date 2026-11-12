@@ -1,0 +1,55 @@
+{
+ "file": "fec-house-campaigns-2024-money-in-out.csv",
+ "kind": "derived",
+ "publisher": "Federal Election Commission",
+ "title_or_table": "2024 House campaigns, money in and out through one node, summed from the FEC’s current campaigns file",
+ "table_id": "Current campaigns for House and Senate, 2023-2024 (webl24)",
+ "url": [
+  "https://www.fec.gov/files/bulk-downloads/2024/webl24.zip",
+  "https://www.fec.gov/campaign-finance-data/current-campaigns-house-and-senate-file-description/"
+ ],
+ "observation_period": "2023 to 2024 election cycle, through each campaign’s last report (coverage end dates mostly December 31, 2024)",
+ "geography": "United States House races",
+ "universe_or_base": "All 1926 House candidates in the file, primary losers included",
+ "unit": "dollars, summed and stored to the cent",
+ "date_retrieved": "2026-11-12",
+ "vintage": "webl24.zip as posted November 11, 2026",
+ "qualification": "No dollar received is traced to a dollar spent: the node is all House campaigns together. Loans and their repayments are their own lines, so a loan is not read as a gift. Transfers between a candidate’s own committees are netted out. Cash at the start plus receipts comes to $2,608,168,369.17; spending, refunds, repayments, transfers and cash at the end come to $2,606,635,211.14; the remainder, $1,533,158.03, is reports that do not balance in the file (cash figures from reports with different coverage dates).",
+ "columns": {
+  "order": {
+   "type": "integer",
+   "description": "display order"
+  },
+  "side": {
+   "type": "category",
+   "description": "in or out of the node"
+  },
+  "line_id": {
+   "type": "id",
+   "description": "stable line ID"
+  },
+  "line": {
+   "type": "text",
+   "description": "line, plain words"
+  },
+  "dollars": {
+   "type": "number",
+   "description": "sum over all House candidates",
+   "unit": "dollars"
+  }
+ },
+ "printed_source_line": "Source: Federal Election Commission, current campaigns for House and Senate file, 2023 to 2024 cycle, all House candidates. Retrieved November 12, 2026. Summed by Oath & Action; no receipt is traced to a disbursement.",
+ "ledger_row": "P7-217",
+ "domain": "D03",
+ "states": [],
+ "derived_from": [
+  "fec-house-campaigns-2024-by-candidate.csv"
+ ],
+ "derivation": "Sums of the file’s columns over every House candidate; other receipts and spending are totals less the named lines; transfers between a candidate’s committees are netted.",
+ "raw_files_sha256_prefix": {
+  "webl24.zip": "fbdba514d5b3f59a"
+ },
+ "notes": [
+  "In: 2,608,168,369.17; out: 2,606,635,211.14; remainder: 1,533,158.03 (0.059 percent of the in side)."
+ ]
+}

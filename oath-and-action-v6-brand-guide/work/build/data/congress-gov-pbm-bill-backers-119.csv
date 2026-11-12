@@ -1,0 +1,261 @@
+bill,role,member_id,member,party,state,date
+H.R. 950,sponsor,L000601,"Rep. Landsman, Greg [D-OH-1]",D,OH,2025-02-04
+H.R. 950,cosponsor,H001086,"Rep. Harshbarger, Diana [R-TN-1]",R,TN,2025-02-04
+H.R. 950,cosponsor,S001201,"Rep. Suozzi, Thomas R. [D-NY-3]",D,NY,2026-01-20
+S. 526,sponsor,G000386,"Sen. Grassley, Chuck [R-IA]",R,IA,2025-02-11
+S. 526,cosponsor,B001236,"Sen. Boozman, John [R-AR]",R,AR,2025-02-18
+S. 526,cosponsor,C000127,"Sen. Cantwell, Maria [D-WA]",D,WA,2025-02-11
+S. 526,cosponsor,C001047,"Sen. Capito, Shelley Moore [R-WV]",R,WV,2025-02-11
+S. 526,cosponsor,E000295,"Sen. Ernst, Joni [R-IA]",R,IA,2025-02-11
+S. 526,cosponsor,G000574,"Sen. Gallego, Ruben [D-AZ]",D,AZ,2025-09-15
+S. 526,cosponsor,H001046,"Sen. Heinrich, Martin [D-NM]",D,NM,2025-02-11
+S. 526,cosponsor,H001079,"Sen. Hyde-Smith, Cindy [R-MS]",R,MS,2025-02-11
+S. 526,cosponsor,M001198,"Sen. Marshall, Roger [R-KS]",R,KS,2025-02-11
+S. 526,cosponsor,M000934,"Sen. Moran, Jerry [R-KS]",R,KS,2025-02-11
+S. 526,cosponsor,R000605,"Sen. Rounds, Mike [R-SD]",R,SD,2025-02-11
+S. 526,cosponsor,S001181,"Sen. Shaheen, Jeanne [D-NH]",D,NH,2025-02-11
+S. 526,cosponsor,T000476,"Sen. Tillis, Thomas [R-NC]",R,NC,2025-02-11
+S. 526,cosponsor,W000790,"Sen. Warnock, Raphael G. [D-GA]",D,GA,2025-12-18
+S. 526,cosponsor,W000800,"Sen. Welch, Peter [D-VT]",D,VT,2025-02-11
+S. 882,sponsor,B001243,"Sen. Blackburn, Marsha [R-TN]",R,TN,2025-03-06
+S. 882,cosponsor,C001075,"Sen. Cassidy, Bill [R-LA]",R,LA,2025-03-10
+S. 882,cosponsor,C001113,"Sen. Cortez Masto, Catherine [D-NV]",D,NV,2025-03-10
+S. 882,cosponsor,H001076,"Sen. Hassan, Margaret Wood [D-NH]",D,NH,2025-03-06
+S. 882,cosponsor,L000575,"Sen. Lankford, James [R-OK]",R,OK,2025-03-06
+S. 882,cosponsor,M001198,"Sen. Marshall, Roger [R-KS]",R,KS,2025-03-06
+S. 882,cosponsor,W000805,"Sen. Warner, Mark R. [D-VA]",D,VA,2025-03-06
+S. 882,cosponsor,W000800,"Sen. Welch, Peter [D-VT]",D,VT,2025-03-06
+H.R. 2214,sponsor,M001215,"Rep. Miller-Meeks, Mariannette [R-IA-1]",R,IA,2025-03-18
+H.R. 2214,cosponsor,A000372,"Rep. Allen, Rick W. [R-GA-12]",R,GA,2025-03-18
+H.R. 2214,cosponsor,B001300,"Rep. Barragán, Nanette Diaz [D-CA-44]",D,CA,2025-03-18
+H.R. 2214,cosponsor,M000317,"Rep. Malliotakis, Nicole [R-NY-11]",R,NY,2025-03-18
+H.R. 2214,cosponsor,N000188,"Rep. Norcross, Donald [D-NJ-1]",D,NJ,2025-03-18
+H.R. 2214,cosponsor,S001190,"Rep. Schneider, Bradley Scott [D-IL-10]",D,IL,2025-03-18
+H.R. 2214,cosponsor,T000488,"Rep. Thanedar, Shri [D-MI-13]",D,MI,2025-11-04
+H.R. 4317,sponsor,C001103,"Rep. Carter, Earl L. ""Buddy"" [R-GA-1]",R,GA,2025-07-10
+H.R. 4317,cosponsor,A000372,"Rep. Allen, Rick W. [R-GA-12]",R,GA,2025-07-10
+H.R. 4317,cosponsor,A000375,"Rep. Arrington, Jodey C. [R-TX-19]",R,TX,2025-07-10
+H.R. 4317,cosponsor,A000148,"Rep. Auchincloss, Jake [D-MA-4]",D,MA,2025-07-21
+H.R. 4317,cosponsor,B001291,"Rep. Babin, Brian [R-TX-36]",R,TX,2025-12-16
+H.R. 4317,cosponsor,B001321,"Rep. Barrett, Tom [R-MI-7]",R,MI,2025-11-20
+H.R. 4317,cosponsor,B000668,"Rep. Bentz, Cliff [R-OR-2]",R,OR,2025-12-09
+H.R. 4317,cosponsor,B001325,"Rep. Biggs, Sheri [R-SC-3]",R,SC,2025-11-21
+H.R. 4317,cosponsor,B000490,"Rep. Bishop, Sanford D. [D-GA-2]",D,GA,2025-07-21
+H.R. 4317,cosponsor,B001327,"Rep. Bresnahan, Robert P. [R-PA-8]",R,PA,2025-09-08
+H.R. 4317,cosponsor,B001315,"Rep. Budzinski, Nikki [D-IL-13]",D,IL,2025-09-02
+H.R. 4317,cosponsor,C000059,"Rep. Calvert, Ken [R-CA-41]",R,CA,2025-10-21
+H.R. 4317,cosponsor,C001039,"Rep. Cammack, Kat [R-FL-3]",R,FL,2025-10-08
+H.R. 4317,cosponsor,C001067,"Rep. Clarke, Yvette D. [D-NY-9]",D,NY,2025-11-28
+H.R. 4317,cosponsor,C001115,"Rep. Cloud, Michael [R-TX-27]",R,TX,2025-10-21
+H.R. 4317,cosponsor,C001108,"Rep. Comer, James [R-KY-1]",R,KY,2025-09-09
+H.R. 4317,cosponsor,C001110,"Rep. Correa, J. Luis [D-CA-46]",D,CA,2025-07-16
+H.R. 4317,cosponsor,C001119,"Rep. Craig, Angie [D-MN-2]",D,MN,2025-10-17
+H.R. 4317,cosponsor,D000629,"Rep. Davids, Sharice [D-KS-3]",D,KS,2025-12-01
+H.R. 4317,cosponsor,D000230,"Rep. Davis, Donald G. [D-NC-1]",D,NC,2025-12-16
+H.R. 4317,cosponsor,D000624,"Rep. Dingell, Debbie [D-MI-6]",D,MI,2025-07-10
+H.R. 4317,cosponsor,D000628,"Rep. Dunn, Neal P. [R-FL-2]",R,FL,2025-12-19
+H.R. 4317,cosponsor,F000466,"Rep. Fitzpatrick, Brian K. [R-PA-1]",R,PA,2026-09-28
+H.R. 4317,cosponsor,F000459,"Rep. Fleischmann, Charles J. ""Chuck"" [R-TN-3]",R,TN,2025-07-16
+H.R. 4317,cosponsor,F000474,"Rep. Flood, Mike [R-NE-1]",R,NE,2025-09-03
+H.R. 4317,cosponsor,F000472,"Rep. Franklin, Scott [R-FL-18]",R,FL,2025-09-30
+H.R. 4317,cosponsor,G000601,"Rep. Goldman, Craig A. [R-TX-12]",R,TX,2025-10-03
+H.R. 4317,cosponsor,G000581,"Rep. Gonzalez, Vicente [D-TX-34]",D,TX,2025-07-10
+H.R. 4317,cosponsor,G000604,"Rep. Goodlander, Maggie [D-NH-2]",D,NH,2025-11-17
+H.R. 4317,cosponsor,H001090,"Rep. Harder, Josh [D-CA-9]",D,CA,2025-10-24
+H.R. 4317,cosponsor,H001052,"Rep. Harris, Andy [R-MD-1]",R,MD,2025-07-25
+H.R. 4317,cosponsor,H001086,"Rep. Harshbarger, Diana [R-TN-1]",R,TN,2025-07-10
+H.R. 4317,cosponsor,H001085,"Rep. Houlahan, Chrissy [D-PA-6]",D,PA,2025-11-04
+H.R. 4317,cosponsor,J000310,"Rep. Johnson, Julie [D-TX-32]",D,TX,2025-10-03
+H.R. 4317,cosponsor,J000302,"Rep. Joyce, John [R-PA-13]",R,PA,2025-12-16
+H.R. 4317,cosponsor,K000389,"Rep. Khanna, Ro [D-CA-17]",D,CA,2025-07-14
+H.R. 4317,cosponsor,K000399,"Rep. Kiggans, Jennifer A. [R-VA-2]",R,VA,2025-10-31
+H.R. 4317,cosponsor,K000391,"Rep. Krishnamoorthi, Raja [D-IL-8]",D,IL,2025-07-10
+H.R. 4317,cosponsor,L000601,"Rep. Landsman, Greg [D-OH-1]",D,OH,2025-07-15
+H.R. 4317,cosponsor,L000600,"Rep. Langworthy, Nicholas A. [R-NY-23]",R,NY,2025-09-30
+H.R. 4317,cosponsor,L000599,"Rep. Lawler, Michael [R-NY-17]",R,NY,2026-01-12
+H.R. 4317,cosponsor,M001230,"Rep. Mackenzie, Ryan [R-PA-7]",R,PA,2025-12-09
+H.R. 4317,cosponsor,M000317,"Rep. Malliotakis, Nicole [R-NY-11]",R,NY,2025-07-10
+H.R. 4317,cosponsor,M000871,"Rep. Mann, Tracey [R-KS-1]",R,KS,2025-09-08
+H.R. 4317,cosponsor,M001238,"Rep. McBride, Sarah [D-DE-At Large]",D,DE,2025-09-18
+H.R. 4317,cosponsor,M001218,"Rep. McCormick, Richard [R-GA-7]",R,GA,2025-07-29
+H.R. 4317,cosponsor,M001226,"Rep. Menendez, Robert [D-NJ-8]",D,NJ,2026-04-16
+H.R. 4317,cosponsor,M001233,"Rep. Messmer, Mark B. [R-IN-8]",R,IN,2025-11-12
+H.R. 4317,cosponsor,M000687,"Rep. Mfume, Kweisi [D-MD-7]",D,MD,2025-10-28
+H.R. 4317,cosponsor,M001215,"Rep. Miller-Meeks, Mariannette [R-IA-1]",R,IA,2025-08-15
+H.R. 4317,cosponsor,M001236,"Rep. Moore, Tim [R-NC-14]",R,NC,2025-09-08
+H.R. 4317,cosponsor,M001210,"Rep. Murphy, Gregory F. [R-NC-3]",R,NC,2025-07-10
+H.R. 4317,cosponsor,N000190,"Rep. Norman, Ralph [R-SC-5]",R,SC,2025-07-25
+H.R. 4317,cosponsor,O000176,"Rep. Olszewski, Johnny [D-MD-2]",D,MD,2026-01-20
+H.R. 4317,cosponsor,O000086,"Rep. Owens, Burgess [R-UT-4]",R,UT,2025-10-31
+H.R. 4317,cosponsor,G000600,"Rep. Perez, Marie Gluesenkamp [D-WA-3]",D,WA,2025-09-02
+H.R. 4317,cosponsor,P000608,"Rep. Peters, Scott H. [D-CA-50]",D,CA,2025-11-07
+H.R. 4317,cosponsor,R000395,"Rep. Rogers, Harold [R-KY-5]",R,KY,2025-12-03
+H.R. 4317,cosponsor,R000612,"Rep. Rose, John W. [R-TN-6]",R,TN,2025-07-10
+H.R. 4317,cosponsor,R000305,"Rep. Ross, Deborah K. [D-NC-2]",D,NC,2025-07-10
+H.R. 4317,cosponsor,S001221,"Rep. Scholten, Hillary J. [D-MI-3]",D,MI,2025-11-12
+H.R. 4317,cosponsor,S000250,"Rep. Sessions, Pete [R-TX-17]",R,TX,2025-11-12
+H.R. 4317,cosponsor,S001185,"Rep. Sewell, Terri A. [D-AL-7]",D,AL,2025-11-17
+H.R. 4317,cosponsor,S001230,"Rep. Subramanyam, Suhas [D-VA-10]",D,VA,2025-07-25
+H.R. 4317,cosponsor,T000481,"Rep. Tlaib, Rashida [D-MI-12]",D,MI,2025-10-10
+H.R. 4317,cosponsor,T000487,"Rep. Tokuda, Jill N. [D-HI-2]",D,HI,2025-08-26
+H.R. 4317,cosponsor,T000491,"Rep. Tran, Derek [D-CA-45]",D,CA,2025-07-10
+H.R. 4317,cosponsor,V000133,"Rep. Van Drew, Jefferson [R-NJ-2]",R,NJ,2026-01-08
+H.R. 4317,cosponsor,V000135,"Rep. Van Orden, Derrick [R-WI-3]",R,WI,2026-01-21
+H.R. 4317,cosponsor,V000136,"Rep. Vasquez, Gabe [D-NM-2]",D,NM,2025-12-09
+H.R. 4317,cosponsor,W000814,"Rep. Weber, Randy K. Sr. [R-TX-14]",R,TX,2025-08-12
+H.R. 4317,cosponsor,W000795,"Rep. Wilson, Joe [R-SC-2]",R,SC,2025-12-09
+H.R. 4409,sponsor,K000391,"Rep. Krishnamoorthi, Raja [D-IL-8]",D,IL,2025-07-15
+H.R. 4409,cosponsor,H001086,"Rep. Harshbarger, Diana [R-TN-1]",R,TN,2025-07-15
+H.R. 4409,cosponsor,S001190,"Rep. Schneider, Bradley Scott [D-IL-10]",D,IL,2025-07-23
+S. 3345,sponsor,C000880,"Sen. Crapo, Mike [R-ID]",R,ID,2025-12-04
+S. 3345,cosponsor,B001261,"Sen. Barrasso, John [R-WY]",R,WY,2025-12-04
+S. 3345,cosponsor,B001267,"Sen. Bennet, Michael F. [D-CO]",D,CO,2025-12-04
+S. 3345,cosponsor,B001243,"Sen. Blackburn, Marsha [R-TN]",R,TN,2025-12-04
+S. 3345,cosponsor,B001303,"Sen. Blunt Rochester, Lisa [D-DE]",D,DE,2025-12-16
+S. 3345,cosponsor,C001047,"Sen. Capito, Shelley Moore [R-WV]",R,WV,2025-12-16
+S. 3345,cosponsor,C001075,"Sen. Cassidy, Bill [R-LA]",R,LA,2025-12-04
+S. 3345,cosponsor,C001056,"Sen. Cornyn, John [R-TX]",R,TX,2025-12-04
+S. 3345,cosponsor,C001113,"Sen. Cortez Masto, Catherine [D-NV]",D,NV,2025-12-04
+S. 3345,cosponsor,D000618,"Sen. Daines, Steve [R-MT]",R,MT,2025-12-04
+S. 3345,cosponsor,G000386,"Sen. Grassley, Chuck [R-IA]",R,IA,2025-12-04
+S. 3345,cosponsor,H001076,"Sen. Hassan, Margaret Wood [D-NH]",D,NH,2025-12-04
+S. 3345,cosponsor,H001046,"Sen. Heinrich, Martin [D-NM]",D,NM,2026-01-28
+S. 3345,cosponsor,L000575,"Sen. Lankford, James [R-OK]",R,OK,2025-12-04
+S. 3345,cosponsor,L000570,"Sen. Luján, Ben Ray [D-NM]",D,NM,2025-12-04
+S. 3345,cosponsor,M001198,"Sen. Marshall, Roger [R-KS]",R,KS,2025-12-04
+S. 3345,cosponsor,M001243,"Sen. McCormick, David [R-PA]",R,PA,2026-08-07
+S. 3345,cosponsor,R000584,"Sen. Risch, James E. [R-ID]",R,ID,2026-01-05
+S. 3345,cosponsor,S001184,"Sen. Scott, Tim [R-SC]",R,SC,2025-12-16
+S. 3345,cosponsor,S001203,"Sen. Smith, Tina [D-MN]",D,MN,2025-12-04
+S. 3345,cosponsor,T000250,"Sen. Thune, John [R-SD]",R,SD,2025-12-04
+S. 3345,cosponsor,T000476,"Sen. Tillis, Thomas [R-NC]",R,NC,2025-12-04
+S. 3345,cosponsor,W000805,"Sen. Warner, Mark R. [D-VA]",D,VA,2025-12-04
+S. 3345,cosponsor,W000790,"Sen. Warnock, Raphael G. [D-GA]",D,GA,2025-12-04
+S. 3345,cosponsor,W000800,"Sen. Welch, Peter [D-VT]",D,VT,2025-12-04
+S. 3345,cosponsor,W000802,"Sen. Whitehouse, Sheldon [D-RI]",D,RI,2025-12-04
+S. 3345,cosponsor,W000779,"Sen. Wyden, Ron [D-OR]",D,OR,2025-12-04
+S. 3345,cosponsor,Y000064,"Sen. Young, Todd [R-IN]",R,IN,2025-12-16
+S. 3349,sponsor,M001198,"Sen. Marshall, Roger [R-KS]",R,KS,2025-12-04
+S. 3349,cosponsor,B001303,"Sen. Blunt Rochester, Lisa [D-DE]",D,DE,2025-12-04
+H.R. 6609,sponsor,A000148,"Rep. Auchincloss, Jake [D-MA-4]",D,MA,2025-12-11
+H.R. 6609,cosponsor,A000055,"Rep. Aderholt, Robert B. [R-AL-4]",R,AL,2026-02-09
+H.R. 6609,cosponsor,A000372,"Rep. Allen, Rick W. [R-GA-12]",R,GA,2026-08-31
+H.R. 6609,cosponsor,B001301,"Rep. Bergman, Jack [R-MI-1]",R,MI,2026-01-09
+H.R. 6609,cosponsor,B000490,"Rep. Bishop, Sanford D. [D-GA-2]",D,GA,2025-12-11
+H.R. 6609,cosponsor,B001315,"Rep. Budzinski, Nikki [D-IL-13]",D,IL,2025-12-11
+H.R. 6609,cosponsor,C001103,"Rep. Carter, Earl L. ""Buddy"" [R-GA-1]",R,GA,2025-12-11
+H.R. 6609,cosponsor,C001133,"Rep. Ciscomani, Juan [R-AZ-6]",R,AZ,2025-12-11
+H.R. 6609,cosponsor,C001116,"Rep. Clyde, Andrew S. [R-GA-9]",R,GA,2026-01-30
+H.R. 6609,cosponsor,C001068,"Rep. Cohen, Steve [D-TN-9]",D,TN,2025-12-11
+H.R. 6609,cosponsor,C001108,"Rep. Comer, James [R-KY-1]",R,KY,2025-12-11
+H.R. 6609,cosponsor,D000530,"Rep. Deluzio, Christopher R. [D-PA-17]",D,PA,2025-12-11
+H.R. 6609,cosponsor,F000459,"Rep. Fleischmann, Charles J. ""Chuck"" [R-TN-3]",R,TN,2026-01-07
+H.R. 6609,cosponsor,F000469,"Rep. Fulcher, Russ [R-ID-1]",R,ID,2026-01-07
+H.R. 6609,cosponsor,G000601,"Rep. Goldman, Craig A. [R-TX-12]",R,TX,2025-12-11
+H.R. 6609,cosponsor,G000581,"Rep. Gonzalez, Vicente [D-TX-34]",D,TX,2025-12-11
+H.R. 6609,cosponsor,H001086,"Rep. Harshbarger, Diana [R-TN-1]",R,TN,2025-12-11
+H.R. 6609,cosponsor,J000307,"Rep. James, John [R-MI-10]",R,MI,2026-04-30
+H.R. 6609,cosponsor,K000389,"Rep. Khanna, Ro [D-CA-17]",D,CA,2025-12-11
+H.R. 6609,cosponsor,K000391,"Rep. Krishnamoorthi, Raja [D-IL-8]",D,IL,2025-12-11
+H.R. 6609,cosponsor,L000600,"Rep. Langworthy, Nicholas A. [R-NY-23]",R,NY,2026-05-04
+H.R. 6609,cosponsor,L000562,"Rep. Lynch, Stephen F. [D-MA-8]",D,MA,2025-12-11
+H.R. 6609,cosponsor,M001228,"Rep. Maloy, Celeste [R-UT-2]",R,UT,2026-01-07
+H.R. 6609,cosponsor,M000871,"Rep. Mann, Tracey [R-KS-1]",R,KS,2026-04-21
+H.R. 6609,cosponsor,M001143,"Rep. McCollum, Betty [D-MN-4]",D,MN,2025-12-11
+H.R. 6609,cosponsor,M001220,"Rep. McGarvey, Morgan [D-KY-3]",D,KY,2026-01-07
+H.R. 6609,cosponsor,M001212,"Rep. Moore, Barry [R-AL-1]",R,AL,2025-12-11
+H.R. 6609,cosponsor,M001196,"Rep. Moulton, Seth [D-MA-6]",D,MA,2025-12-11
+H.R. 6609,cosponsor,P000609,"Rep. Palmer, Gary J. [R-AL-6]",R,AL,2026-05-14
+H.R. 6609,cosponsor,P000608,"Rep. Peters, Scott H. [D-CA-50]",D,CA,2025-12-11
+H.R. 6609,cosponsor,P000607,"Rep. Pocan, Mark [D-WI-2]",D,WI,2025-12-11
+H.R. 6609,cosponsor,P000617,"Rep. Pressley, Ayanna [D-MA-7]",D,MA,2025-12-11
+H.R. 6609,cosponsor,R000395,"Rep. Rogers, Harold [R-KY-5]",R,KY,2026-01-07
+H.R. 6609,cosponsor,R000575,"Rep. Rogers, Mike D. [R-AL-3]",R,AL,2026-02-04
+H.R. 6609,cosponsor,S001189,"Rep. Scott, Austin [R-GA-8]",R,GA,2026-01-07
+H.R. 6609,cosponsor,S000250,"Rep. Sessions, Pete [R-TX-17]",R,TX,2026-01-09
+H.R. 6609,cosponsor,S001220,"Rep. Strong, Dale W. [R-AL-5]",R,AL,2026-04-14
+H.R. 6609,cosponsor,S001230,"Rep. Subramanyam, Suhas [D-VA-10]",D,VA,2025-12-11
+H.R. 6609,cosponsor,T000478,"Rep. Tenney, Claudia [R-NY-24]",R,NY,2026-05-14
+H.R. 6609,cosponsor,T000481,"Rep. Tlaib, Rashida [D-MI-12]",D,MI,2025-12-11
+H.R. 6609,cosponsor,W000821,"Rep. Westerman, Bruce [R-AR-4]",R,AR,2025-12-23
+H.R. 6609,cosponsor,W000816,"Rep. Williams, Roger [R-TX-25]",R,TX,2026-02-23
+H.R. 6610,sponsor,A000148,"Rep. Auchincloss, Jake [D-MA-4]",D,MA,2025-12-11
+H.R. 6610,cosponsor,A000055,"Rep. Aderholt, Robert B. [R-AL-4]",R,AL,2026-02-09
+H.R. 6610,cosponsor,A000381,"Rep. Ansari, Yassamin [D-AZ-3]",D,AZ,2026-07-20
+H.R. 6610,cosponsor,B001301,"Rep. Bergman, Jack [R-MI-1]",R,MI,2026-01-09
+H.R. 6610,cosponsor,B000490,"Rep. Bishop, Sanford D. [D-GA-2]",D,GA,2025-12-11
+H.R. 6610,cosponsor,B001327,"Rep. Bresnahan, Robert P. [R-PA-8]",R,PA,2026-07-20
+H.R. 6610,cosponsor,B001315,"Rep. Budzinski, Nikki [D-IL-13]",D,IL,2025-12-11
+H.R. 6610,cosponsor,B001309,"Rep. Burchett, Tim [R-TN-2]",R,TN,2026-04-14
+H.R. 6610,cosponsor,C001103,"Rep. Carter, Earl L. ""Buddy"" [R-GA-1]",R,GA,2025-12-11
+H.R. 6610,cosponsor,C001133,"Rep. Ciscomani, Juan [R-AZ-6]",R,AZ,2025-12-11
+H.R. 6610,cosponsor,C001116,"Rep. Clyde, Andrew S. [R-GA-9]",R,GA,2026-01-30
+H.R. 6610,cosponsor,C001068,"Rep. Cohen, Steve [D-TN-9]",D,TN,2025-12-11
+H.R. 6610,cosponsor,C001108,"Rep. Comer, James [R-KY-1]",R,KY,2025-12-11
+H.R. 6610,cosponsor,C001087,"Rep. Crawford, Eric A. ""Rick"" [R-AR-1]",R,AR,2026-10-01
+H.R. 6610,cosponsor,D000594,"Rep. De La Cruz, Monica [R-TX-15]",R,TX,2026-09-24
+H.R. 6610,cosponsor,D000530,"Rep. Deluzio, Christopher R. [D-PA-17]",D,PA,2025-12-11
+H.R. 6610,cosponsor,E000235,"Rep. Ezell, Mike [R-MS-4]",R,MS,2026-08-24
+H.R. 6610,cosponsor,F000481,"Rep. Figures, Shomari [D-AL-2]",D,AL,2026-06-03
+H.R. 6610,cosponsor,F000459,"Rep. Fleischmann, Charles J. ""Chuck"" [R-TN-3]",R,TN,2026-01-07
+H.R. 6610,cosponsor,F000476,"Rep. Frost, Maxwell [D-FL-10]",D,FL,2026-07-06
+H.R. 6610,cosponsor,G000581,"Rep. Gonzalez, Vicente [D-TX-34]",D,TX,2025-12-11
+H.R. 6610,cosponsor,G000606,"Rep. Grijalva, Adelita S. [D-AZ-7]",D,AZ,2026-09-16
+H.R. 6610,cosponsor,G000591,"Rep. Guest, Michael [R-MS-3]",R,MS,2026-09-16
+H.R. 6610,cosponsor,H001086,"Rep. Harshbarger, Diana [R-TN-1]",R,TN,2025-12-11
+H.R. 6610,cosponsor,K000388,"Rep. Kelly, Trent [R-MS-1]",R,MS,2026-08-27
+H.R. 6610,cosponsor,K000389,"Rep. Khanna, Ro [D-CA-17]",D,CA,2025-12-11
+H.R. 6610,cosponsor,K000391,"Rep. Krishnamoorthi, Raja [D-IL-8]",D,IL,2025-12-11
+H.R. 6610,cosponsor,L000600,"Rep. Langworthy, Nicholas A. [R-NY-23]",R,NY,2026-05-04
+H.R. 6610,cosponsor,M001228,"Rep. Maloy, Celeste [R-UT-2]",R,UT,2026-01-07
+H.R. 6610,cosponsor,M000871,"Rep. Mann, Tracey [R-KS-1]",R,KS,2026-04-21
+H.R. 6610,cosponsor,M001143,"Rep. McCollum, Betty [D-MN-4]",D,MN,2025-12-11
+H.R. 6610,cosponsor,M001218,"Rep. McCormick, Richard [R-GA-7]",R,GA,2026-07-09
+H.R. 6610,cosponsor,M001220,"Rep. McGarvey, Morgan [D-KY-3]",D,KY,2026-01-07
+H.R. 6610,cosponsor,M001212,"Rep. Moore, Barry [R-AL-1]",R,AL,2025-12-11
+H.R. 6610,cosponsor,M001196,"Rep. Moulton, Seth [D-MA-6]",D,MA,2025-12-11
+H.R. 6610,cosponsor,P000609,"Rep. Palmer, Gary J. [R-AL-6]",R,AL,2026-05-14
+H.R. 6610,cosponsor,P000607,"Rep. Pocan, Mark [D-WI-2]",D,WI,2025-12-11
+H.R. 6610,cosponsor,P000617,"Rep. Pressley, Ayanna [D-MA-7]",D,MA,2025-12-11
+H.R. 6610,cosponsor,R000395,"Rep. Rogers, Harold [R-KY-5]",R,KY,2026-01-07
+H.R. 6610,cosponsor,R000575,"Rep. Rogers, Mike D. [R-AL-3]",R,AL,2026-02-04
+H.R. 6610,cosponsor,S001189,"Rep. Scott, Austin [R-GA-8]",R,GA,2026-01-07
+H.R. 6610,cosponsor,S000250,"Rep. Sessions, Pete [R-TX-17]",R,TX,2026-01-09
+H.R. 6610,cosponsor,S001220,"Rep. Strong, Dale W. [R-AL-5]",R,AL,2026-04-14
+H.R. 6610,cosponsor,S001230,"Rep. Subramanyam, Suhas [D-VA-10]",D,VA,2025-12-11
+H.R. 6610,cosponsor,T000193,"Rep. Thompson, Bennie G. [D-MS-2]",D,MS,2026-08-03
+H.R. 6610,cosponsor,T000481,"Rep. Tlaib, Rashida [D-MI-12]",D,MI,2025-12-11
+H.R. 6610,cosponsor,W000821,"Rep. Westerman, Bruce [R-AR-4]",R,AR,2025-12-23
+H.R. 6610,cosponsor,W000795,"Rep. Wilson, Joe [R-SC-2]",R,SC,2026-10-29
+S. 3549,sponsor,M001198,"Sen. Marshall, Roger [R-KS]",R,KS,2025-12-17
+S. 3549,cosponsor,G000386,"Sen. Grassley, Chuck [R-IA]",R,IA,2025-12-17
+S. 3549,cosponsor,H001076,"Sen. Hassan, Margaret Wood [D-NH]",D,NH,2025-12-17
+S. 3549,cosponsor,K000384,"Sen. Kaine, Tim [D-VA]",D,VA,2025-12-17
+H.R. 6837,sponsor,A000148,"Rep. Auchincloss, Jake [D-MA-4]",D,MA,2025-12-18
+H.R. 6837,cosponsor,M001230,"Rep. Mackenzie, Ryan [R-PA-7]",R,PA,2025-12-18
+H.R. 6837,cosponsor,T000488,"Rep. Thanedar, Shri [D-MI-13]",D,MI,2026-10-09
+S. 3729,sponsor,W000805,"Sen. Warner, Mark R. [D-VA]",D,VA,2026-01-29
+S. 3729,cosponsor,C001113,"Sen. Cortez Masto, Catherine [D-NV]",D,NV,2026-01-29
+S. 3729,cosponsor,M001198,"Sen. Marshall, Roger [R-KS]",R,KS,2026-01-29
+S. 3729,cosponsor,T000476,"Sen. Tillis, Thomas [R-NC]",R,NC,2026-01-29
+S. 3822,sponsor,W000817,"Sen. Warren, Elizabeth [D-MA]",D,MA,2026-02-10
+S. 3822,cosponsor,H001089,"Sen. Hawley, Josh [R-MO]",R,MO,2026-02-10
+H.R. 7895,sponsor,A000372,"Rep. Allen, Rick W. [R-GA-12]",R,GA,2026-03-12
+H.R. 8779,sponsor,H001086,"Rep. Harshbarger, Diana [R-TN-1]",R,TN,2026-05-13
+H.R. 8779,cosponsor,A000148,"Rep. Auchincloss, Jake [D-MA-4]",D,MA,2026-05-13
+H.R. 8779,cosponsor,C001103,"Rep. Carter, Earl L. ""Buddy"" [R-GA-1]",R,GA,2026-05-13
+H.R. 8779,cosponsor,D000530,"Rep. Deluzio, Christopher R. [D-PA-17]",D,PA,2026-05-21
+H.R. 8779,cosponsor,G000604,"Rep. Goodlander, Maggie [D-NH-2]",D,NH,2026-07-22
+H.R. 8779,cosponsor,L000601,"Rep. Landsman, Greg [D-OH-1]",D,OH,2026-05-13
+H.R. 8779,cosponsor,M001218,"Rep. McCormick, Richard [R-GA-7]",R,GA,2026-05-14
+H.R. 8779,cosponsor,N000002,"Rep. Nadler, Jerrold [D-NY-12]",D,NY,2026-05-13
+H.R. 8779,cosponsor,N000026,"Rep. Nehls, Troy E. [R-TX-22]",R,TX,2026-05-13
+S. 4509,sponsor,W000817,"Sen. Warren, Elizabeth [D-MA]",D,MA,2026-05-13
+S. 4509,cosponsor,F000479,"Sen. Fetterman, John [D-PA]",D,PA,2026-05-13
+S. 4509,cosponsor,H001089,"Sen. Hawley, Josh [R-MO]",R,MO,2026-05-13
+S. 4509,cosponsor,M001198,"Sen. Marshall, Roger [R-KS]",R,KS,2026-05-13
+H.R. 10369,sponsor,M001230,"Rep. Mackenzie, Ryan [R-PA-7]",R,PA,2026-09-14
+H.R. 10369,cosponsor,A000372,"Rep. Allen, Rick W. [R-GA-12]",R,GA,2026-09-14
+H.R. 10369,cosponsor,A000148,"Rep. Auchincloss, Jake [D-MA-4]",D,MA,2026-09-14
+H.R. 10369,cosponsor,M001208,"Rep. McBath, Lucy [D-GA-6]",D,GA,2026-09-14
+H.R. 10369,cosponsor,M001205,"Rep. Miller, Carol D. [R-WV-1]",R,WV,2026-09-14

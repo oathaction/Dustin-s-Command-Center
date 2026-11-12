@@ -2469,11 +2469,14 @@ WEIGHT_BUDGET = {"01": 2.7, "02": 0.85, "03": 0.65, "04": 0.45, "05": 0.45, "06"
 # so its budget rises from 0.6 to 1.0 MB.
 WEIGHT_DEFAULT = 0.45          # chapters 13 to 16, 20 to 25, 27 and 28
 WEIGHT_FIXED = {"head and shell": 0.22, "sprites": 0.35, "appendix": 0.2, "front matter and part openers": 0.1,
-                "fonts": 0.5, "chart kit": 0.22}
+                "fonts": 0.5, "chart kit": 0.55}
 # Phase 3 (round 0): head and shell rise from 0.20 to 0.22 MB, since tokens.css, inlined in the head, carries the palette
 # proposal's chart tokens (6.0.0-gate3.1, about 10 KB); the projection still holds the page under 15.5 MB.
 # Phase 3 (the proposal's section 3, DR-227): chapters 13, 14 and 15 take their ceilings from guide_charts.CEILING, where
-# chapter 14 with the chart kit is a hard stop; the chart kit weighs as its own part, allocated 0.22 MB inside chapter 14.   # Gate 2: six WOFF2 files, 255,920 bytes after the fix pass (CD-M1), about 342 KB as base64 (D2-1697)
+# chapter 14 with the chart kit is a hard stop; the chart kit weighs as its own part, allocated 0.22 MB inside chapter 14.
+# Board 1 apply (November 12, 2026): the chart kit's part rises from 0.22 to 0.55 MB. DR-238's stop of 2,803,941 bytes was
+# measured with the renderer grown to 97 forms (0.50 MB on board 1's pilot) beside the map geometry (45 KB today), all inside
+# chapter 14's hard stop; round 1's forms took the kit past 0.22 MB at 35 forms (0.25 MB), as that projection expects.   # Gate 2: six WOFF2 files, 255,920 bytes after the fix pass (CD-M1), about 342 KB as base64 (D2-1697)
 
 
 class Sprites:

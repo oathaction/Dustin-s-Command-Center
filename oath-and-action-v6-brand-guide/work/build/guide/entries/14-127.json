@@ -1,0 +1,39 @@
+{
+  "id": "14.127",
+  "title": "Lay options against criteria in a matrix of the source’s own words.",
+  "rule": [
+    "Put each option in a row and each criterion in a column, and print the source’s own words in every cell, so a reader compares options one criterion at a time. Leave out totals, counts and badges, since cells written in words cannot be added. On a phone each row becomes a card that lists its columns (Rule 14.12).",
+    "The specimen also marks each cell with Oath & Action’s reading as a glyph and a tint, labeled as ours, the scenario view of Rule 14.76; a plain matrix prints the words alone."
+  ],
+  "use_when": "The reader weighs a few options across the same criteria, and the source describes each cell in words that do not reduce to a number.",
+  "use_instead": [
+    {
+      "when": "Every cell is a number and its size matters",
+      "rule": "14.129"
+    },
+    {
+      "when": "The options are scenarios and each outcome has a direction",
+      "rule": "14.76"
+    },
+    {
+      "when": "Two or three options read best as cards side by side",
+      "rule": "14.137"
+    }
+  ],
+  "why": {
+    "text": [
+      "A matrix holds every option against every criterion in one view, so a reader can read across a row or down a column. The source’s words keep its qualifiers, such as “slightly up in metro areas that reform housing rules”, which a score would throw away."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S06",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.12",
+    "14.76"
+  ],
+  "builders": "Form comparison-matrix: copy specs/s06.json, set form to comparison-matrix and point it at a new dataset; it prints the words alone, and scenario-directions adds the glyphs and tints.",
+  "correct": null,
+  "failure": null
+}

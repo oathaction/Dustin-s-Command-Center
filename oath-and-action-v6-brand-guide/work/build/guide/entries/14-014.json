@@ -1,0 +1,54 @@
+{
+ "id": "14.14",
+ "title": "Export every chart from the kit, so its files match the page.",
+ "rule": [
+  "Make every file of a chart with the chart kit’s one command, from the same spec and data file the page draws. The kit writes three files for each ground and width: an SVG with the chart’s title and description inside it, a PNG at twice size, and a CSV of exactly the rows the chart draws. Each name carries the date, what the chart is, its ground and its width, as Rule 18.14 asks of a download.",
+  "To change a chart, change its spec or its data and run the command again; every file and the page then change together."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "A file made by hand drifts from the page the first time someone fixes one and forgets the other. One command from one spec keeps the drawing, the still image and the numbers in step, and the kit checks the CSV against the table each time it runs."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [],
+ "related": [
+  "18.14",
+  "14.13"
+ ],
+ "builders": "Run node work/build/chart-kit/oa-chart.mjs build <spec> --out <folder>; never edit an exported file, edit the spec and run it again.",
+ "specs": [
+  {
+   "label": "Command",
+   "value": "node work/build/chart-kit/oa-chart.mjs build <spec>"
+  },
+  {
+   "label": "Files",
+   "value": "SVG, PNG at twice size, CSV of the drawn rows"
+  },
+  {
+   "label": "Names",
+   "value": "Date, chart and form, ground and width, as the kit writes them (Rule 18.14)"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-14-correct",
+  "caption": "One command writes the three files from the spec the page uses, each named for its date, chart, ground and width.",
+  "alt": "One kit command, node work/build/chart-kit/oa-chart.mjs build s14, and the three files it writes for the payroll chart: an SVG, a PNG and a CSV, each with a dated name that says what the chart is, its ground and its width.",
+  "illustrative": false,
+  "notes": "File names as the kit writes them for S14 on November 12, 2026 (contract C3).",
+  "readable": true
+ },
+ "failure": {
+  "specimen": "s-14-14-failure",
+  "caption": "<strong>Fails Rule 14.14.</strong> Each file was made by hand: the screenshot drops the source line, the retyped numbers round away the table’s values, and the redrawn picture no longer matches the page.",
+  "alt": "Failure case: do not publish. Three files made by hand for the payroll chart: a screenshot cropped above its source line, a spreadsheet of retyped and rounded values, and a redrawn SVG whose title no longer matches the page.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "examples": []
+}

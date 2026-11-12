@@ -1,0 +1,39 @@
+{
+  "id": "14.131",
+  "title": "Set claims beside their grade, period, coverage and limits.",
+  "rule": [
+    "Give each claim one row in the source’s own words, with its grade in words and its period at the left, and who it covers, its source and its limits under it, each after a short head. Keep a claim’s limits in the same row as the claim, so no reader can quote one without the other, and say once in a note what each grade means (Rule 13.3)."
+  ],
+  "use_when": "The reader asks what the evidence says on a subject and how far to trust each piece of it, as when weighing claims about drug prices.",
+  "use_instead": [
+    {
+      "when": "The reader asks how sure a whole body of evidence is, more than what each claim says",
+      "rule": "14.23"
+    },
+    {
+      "when": "A few figures from one source answer the question",
+      "rule": "14.133"
+    },
+    {
+      "when": "Options are weighed against the same criteria in words",
+      "rule": "14.127"
+    }
+  ],
+  "why": {
+    "text": [
+      "A claim read apart from its grade and limits can say more than its evidence does. Setting them in one row means the qualification travels with the claim when a reader scans, quotes or shares it."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S39",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "13.2",
+    "13.3",
+    "13.10"
+  ],
+  "builders": "Form evidence-table: node work/build/chart-kit/oa-chart.mjs build s39, or copy specs/s39.json and point it at a new dataset; labels.grades prints each grade’s word and labels.heads the short heads.",
+  "correct": null,
+  "failure": null
+}

@@ -1,0 +1,57 @@
+{
+ "file": "congress-gov-pbm-bill-backers-119.csv",
+ "kind": "public",
+ "publisher": "Library of Congress, bill status data (Congress.gov), as published in bulk on govinfo by the U.S. Government Publishing Office",
+ "title_or_table": "Sponsors and cosponsors of the 119th Congress bills whose titles name pharmacy benefit managers",
+ "table_id": "BILLSTATUS bulk files, 119th Congress, hr and s",
+ "url": [
+  "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/hr/BILLSTATUS-119-hr.zip",
+  "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/s/BILLSTATUS-119-s.zip"
+ ],
+ "observation_period": "119th Congress, bills introduced January 3, 2025 to the files of November 11, 2026",
+ "geography": "United States Congress",
+ "universe_or_base": "Each sponsor and each cosponsor whose sponsorship was not withdrawn, of every bill in congress-gov-pbm-bills-119",
+ "unit": "one row per member per bill",
+ "date_retrieved": "2026-11-12",
+ "vintage": "BILLSTATUS bulk files last modified November 11, 2026",
+ "qualification": "Cosponsors who withdrew are left out. Party and state as the bill status file gives them on the cosponsorship.",
+ "columns": {
+  "bill": {
+   "type": "id",
+   "description": "bill label"
+  },
+  "role": {
+   "type": "category",
+   "description": "sponsor or cosponsor"
+  },
+  "member_id": {
+   "type": "id",
+   "description": "Bioguide ID"
+  },
+  "member": {
+   "type": "text",
+   "description": "member as the file names them"
+  },
+  "party": {
+   "type": "category",
+   "description": "party letter"
+  },
+  "state": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "date": {
+   "type": "date",
+   "description": "date introduced (sponsor) or date of cosponsorship"
+  }
+ },
+ "printed_source_line": "Source: Library of Congress, bill status data for the 119th Congress, bulk files of November 11, 2026, sponsors and cosponsors of bills whose titles name pharmacy benefit managers. Retrieved November 12, 2026. Withdrawn cosponsors left out.",
+ "ledger_row": "P7-205",
+ "domain": "D06",
+ "domain_note": "V7 files drug middlemen under competition and market power (I084)",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "BILLSTATUS-119-hr.zip": "b05399000833eae6",
+  "BILLSTATUS-119-s.zip": "c9b4e40831593153"
+ }
+}

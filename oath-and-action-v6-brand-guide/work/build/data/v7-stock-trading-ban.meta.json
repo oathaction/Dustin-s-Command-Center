@@ -50,6 +50,7 @@
  "domain_note": "Members’ stock trading is a conflict of interest, the Conflicts subsystem of V7 domain D03",
  "source_line_variants": {
   "with_bill_text": "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States; U.S. Government Publishing Office, H.R. 7008, Stop Insider Trading Act, text as passed by the House, sections 2 and 3; U.S. House of Representatives, Roll Call 280, July 22, 2026; U.S. Senate, Vote 253, September 30, 2026; as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. Bill text retrieved November 11, 2026. The survey predates both votes by three years.",
+  "survey_only": "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. A margin of error of plus or minus 1.9 points for the whole sample, with none by party.",
   "phase_2_wording": "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States; U.S. House of Representatives, Roll Call 280, July 22, 2026; U.S. Senate, Vote 253, September 30, 2026; as recorded in Oath & Action, Who Do They Answer To? Systems Atlas V7, snapshot of October 15, 2026. The survey predates both votes by three years."
  },
  "v7_figure": {

@@ -1,0 +1,37 @@
+{
+  "id": "14.31",
+  "title": "Draw every series thin and gray, and light the one the story follows.",
+  "rule": [
+    "Use a line field when dozens of series share one scale and the story follows one of them: draw every series as a thin gray line, so the reader sees the spread, and draw the subject in ink on top with its name and latest value at its end. Name one or two gray lines at the field’s edges where it helps, and carry every series in the table."
+  ],
+  "use_when": "The reader asks how one place or group moved against all the others, and the whole field matters as context.",
+  "use_instead": [
+    {
+      "when": "Four series or fewer, each to be followed",
+      "rule": "14.30"
+    },
+    {
+      "when": "The series differ greatly in size and the reader compares growth from one date",
+      "rule": "14.40"
+    },
+    {
+      "when": "Each series needs reading on its own",
+      "rule": "14.34"
+    }
+  ],
+  "why": {
+    "text": [
+      "Fifty colored lines tangle into noise, and fifty gray ones read as one shape: the range every place moved within. One line in ink against that shape shows where the subject sits without a key, and the table gives every other series a reader may want to find (Rule 14.8)."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S27",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.8"
+  ],
+  "builders": "Form line-field: node work/build/chart-kit/oa-chart.mjs build s27; labels.lit names the series in ink and labels.named the gray lines named at the field’s edges.",
+  "correct": null,
+  "failure": null
+}

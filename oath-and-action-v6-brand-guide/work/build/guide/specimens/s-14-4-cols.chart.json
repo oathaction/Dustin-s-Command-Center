@@ -1,0 +1,55 @@
+{
+ "kit": 1,
+ "id": "s-14-4-cols",
+ "form": "column",
+ "family": "comparison",
+ "tier": "core",
+ "dataset": "census-cps-reported-voting",
+ "where": {
+  "election_type": "presidential",
+  "base": "citizen_voting_age_population",
+  "age_group": "all"
+ },
+ "sort": [
+  {
+   "field": "year",
+   "order": "asc"
+  }
+ ],
+ "reader_question": "How many citizens report voting in presidential years?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: a Census Bureau survey",
+ "title": "In every presidential year from 1980 to 2024, between 58 and 68 percent of citizens 18 and over reported voting",
+ "measure_line": "Share of citizens 18 and over who reported voting, presidential years from 1980, the first the survey counted citizens alone, to 2024, United States",
+ "source_line": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting, citizen voting-age population, November 1978 to 2024, United States. Retrieved November 6, 2026. Self-reported in a survey; citizenship data before 1996 are not fully comparable.",
+ "alt": "Columns from zero for each presidential year from 1980 to 2024, all of similar height, from 58.4 percent in 1996 to 67.7 percent in 1992.",
+ "table": {
+  "caption": "Share of citizens who reported voting, presidential years, percent",
+  "columns": [
+   {
+    "field": "year",
+    "label": "Year",
+    "format": "year",
+    "row_header": true
+   },
+   {
+    "field": "voted_pct",
+    "label": "Reported voting",
+    "format": "percent:1"
+   }
+  ]
+ },
+ "encode": {
+  "x": "year",
+  "y": "voted_pct"
+ },
+ "formats": {
+  "value": "percent:0"
+ },
+ "domain": "D10",
+ "states": [],
+ "notes_internal": "Rule 14.4's correct plate. Checked by script: lowest 58.4 (1996), highest 67.7 (1992).",
+ "illustrative": false,
+ "phone": "same"
+}

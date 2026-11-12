@@ -407,6 +407,11 @@ def derive_fred():
                  'avg3_thousands': col('number', 'mean of this month’s change and the two before it', 'thousands of jobs'),
                  'status': col('category', 'preliminary for August and September 2026, else final')},
         printed_source_line=FRED_LINE.format(what='all nonfarm employees, monthly change'), specimens=['S14'],
+        # D3-219 (round 1): the line S14 prints with the survey's margin, in the editor's words (its round 0 notes, "Board 1
+        # apply"); the figure is the research ledger's P7-042, the Bureau's Employment Situation technical note
+        source_line_variants={'with_margin': FRED_LINE.format(what='all nonfarm employees, monthly change') + (
+            ' The margin of error is the Bureau’s 90 percent interval for a month’s change in its survey of employers, plus or minus '
+            '122,000, from its Employment Situation technical note, October 2026 release.')},
         derivation='From series PAYEMS: each month’s level minus the month before; avg3_thousands is the three-month moving average ending in that month, computed from December 2021 on so January 2022 has one. Rows from January 2022 on.',
     ))
 
@@ -501,7 +506,11 @@ def v7_tables():
             source_line_variants={'with_bill_text': ('Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, '
                                                      'United States; U.S. Government Publishing Office, H.R. 7008, Stop Insider Trading Act, text as passed by the House, sections 2 and 3; '
                                                      'U.S. House of Representatives, Roll Call 280, July 22, 2026; U.S. Senate, Vote 253, September 30, 2026; as recorded in Oath & Action’s systems atlas, '
-                                                     'Who Do They Answer To?, snapshot of October 15, 2026. Bill text retrieved November 11, 2026. The survey predates both votes by three years.')},
+                                                     'Who Do They Answer To?, snapshot of October 15, 2026. Bill text retrieved November 11, 2026. The survey predates both votes by three years.'),
+                                  # maker A's A5 (round 1): S41 and S42 show the survey rows alone (D3-89)
+                                  'survey_only': ('Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, '
+                                                  'United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. '
+                                                  'A margin of error of plus or minus 1.9 points for the whole sample, with none by party.')},
             v7_figure=n7, notes=['The 86 percent overall figure is in the survey source note (N40), not in the headline figure caption.',
                                  'DR-98: a chart names "H.R. 7008, the Stop Insider Trading Act" with both provisions at first mention; the spec carries those words.'])
 

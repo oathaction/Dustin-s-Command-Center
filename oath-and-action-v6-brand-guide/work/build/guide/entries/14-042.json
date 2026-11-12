@@ -1,0 +1,33 @@
+{
+  "id": "14.42",
+  "title": "Show what a household keeps as its earnings rise, cliffs and all.",
+  "rule": [
+    "Use a benefit-cliff line to show what one household has after taxes and benefits at each level of earnings: the household’s resources as a heavy line, its earnings alone as a dashed diagonal, and a light band from any drop to the earnings where the household is back where it was. Name the drop in words with its size, and state the household and the rules the chart assumes. Built on invented rules, the chart carries “Illustrative data” beside its top edge (Rule 13.8)."
+  ],
+  "use_when": "The reader asks whether earning more leaves a family better off, and benefits that end at set earnings may say no.",
+  "use_instead": [
+    {
+      "when": "An amount the law sets for each year, with no earnings involved",
+      "rule": "14.36"
+    },
+    {
+      "when": "How one benefit’s value has changed over time",
+      "rule": "14.29"
+    }
+  ],
+  "why": {
+    "text": [
+      "A raise that leaves a family with less is hard to believe until the reader sees the line fall. The diagonal of earnings alone shows what the benefits add, and the band shows how far the family must climb to get back, so the size of the trap reads before any figure. Real cliffs depend on the state, the family and the year, so the chart names the household it assumes."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S35",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "13.8"
+  ],
+  "builders": "Form benefit-cliff: node work/build/chart-kit/oa-chart.mjs build s35; the form finds the largest drop and the climb back from the rows.",
+  "correct": null,
+  "failure": null
+}

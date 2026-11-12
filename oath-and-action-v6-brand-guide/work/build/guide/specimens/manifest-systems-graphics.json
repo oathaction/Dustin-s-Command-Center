@@ -165,7 +165,7 @@
   "chapter": "15",
   "rule": "15.10",
   "width_px": null,
-  "alt": "Connection LT01 from our systems atlas, “Engagement-ranked feeds raise hostile-content exposure”, drawn from How platforms rank feeds and seek attention, in the technology layer, down to Hostile-content exposure, in the core layer, with the words information, raises. Beside it, under the heading Reviewed and not drawn, the claim from feed ranking to hostility toward the other party, with the atlas’s reason quoted: Feed ranking changes what people see (LT01). In the largest experiments, changing the feed did not measurably change hostility toward the other party: Facebook and Instagram feed changes in 2020, platform deactivation in 2020 and feed changes on X in 2023.",
+  "alt": "Connection LT01 from our systems atlas, “Engagement-ranked feeds raise hostile-content exposure”, drawn from How platforms rank feeds and seek attention, in the technology layer, down to Hostile-content exposure, in the core layer, with the words information, raises. Beside it, under the heading Reviewed and not drawn, the claim from feed ranking to hostility toward the other party, with the atlas’s reason quoted: In the largest experiments, changing the feed did not measurably change hostility toward the other party: Facebook and Instagram feed changes in 2020, platform deactivation in 2020 and feed changes on X in 2023.",
   "illustrative": false,
   "notes": "The rejected connection in words only, from the atlas's rejectedLinks record; no line drawn for it.",
   "readable": true
@@ -182,7 +182,7 @@
   "chapter": "15",
   "rule": "15.13",
   "width_px": null,
-  "alt": "Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, under a label reading Plausible, the grade of its least certain step. Three pills: Wealth concentration at the top, Money in politics below right, Policy tilt to insiders below left. Step 1, solid, money, raises; step 2, dashed, money, raises, marked weakest step; step 3, solid, money, raises. The loop reads: More wealth concentration, more money in politics, more policy tilt to insiders, and back to more wealth concentration. Beside it, each step with its grade, and the atlas’s words: The middle step, L02: Political spending can tilt policy toward donors, is plausible and the weakest.",
+  "alt": "Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, under a label reading Plausible, the grade of its least certain step. Three pills: Wealth concentration at the top, Money in politics below right, Policy tilt to insiders below left. Step 1, solid, money, raises; step 2, dashed, money, raises, marked weakest step; step 3, solid, money, raises. The loop reads: More wealth concentration, more money in politics, more policy tilt to insiders, and back to more wealth concentration. Beside it, each step with its grade. In the atlas’s evidence summary, the middle step, connection L02, “is plausible and the weakest.”",
   "illustrative": false,
   "notes": "Grades, signs, types and delays from each connection's record; the weakest step from the loop's evidence summary.",
   "readable": true
@@ -199,7 +199,7 @@
   "chapter": "15",
   "rule": "15.14",
   "width_px": null,
-  "alt": "Loop R8 from our systems atlas, “Housing scarcity strengthens owners’ incentive to restrict building”, under a label reading Well supported. Two pills, Housing scarcity and Owner home equity, with step 1 over the top, plus, raises, and step 2 under the bottom, plus, raises, both solid with three delay ticks. The loop reads: More housing scarcity, more owner home equity, and back to more housing scarcity. Beside it, the atlas’s revision as of October 15, 2026, quoted: well-supported for both links; the loop no longer depends on A1; and its reason, quoted: Rising home equity tends to lower the top 1% share of wealth (T12: Rising home equity lowers the top wealth share), so this loop does not explain that share.",
+  "alt": "Loop R8 from our systems atlas, “Housing scarcity strengthens owners’ incentive to restrict building”, under a label reading Well supported. Two pills, Housing scarcity and Owner home equity, with step 1 over the top, plus, raises, and step 2 under the bottom, plus, raises, both solid with three delay ticks. The loop reads: More housing scarcity, more owner home equity, and back to more housing scarcity. Beside it, the atlas’s revision as of October 15, 2026. Its evidence note reads “well-supported for both links”, and says the loop “no longer depends on” Variable A1, concentration of household wealth. Its reason, quoted from the atlas, citing connection T12: Rising home equity tends to lower the top 1% share of wealth (T12: Rising home equity lowers the top wealth share), so this loop does not explain that share.",
   "illustrative": false,
   "notes": "The revision and its reason quoted from the loop's evidence and qualification fields, with the snapshot date.",
   "readable": true

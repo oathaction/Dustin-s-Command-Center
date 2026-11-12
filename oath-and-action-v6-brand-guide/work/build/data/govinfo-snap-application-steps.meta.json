@@ -1,0 +1,62 @@
+{
+ "file": "govinfo-snap-application-steps.csv",
+ "kind": "public",
+ "publisher": "Office of the Federal Register and U.S. Government Publishing Office, Electronic Code of Federal Regulations",
+ "title_or_table": "Supplemental Nutrition Assistance Program, application processing, 7 CFR 273.2",
+ "table_id": "7 CFR 273.2 (c), (e), (f), (g) and (i)",
+ "url": [
+  "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-7?part=273&section=273.2",
+  "https://www.govinfo.gov/content/pkg/CFR-2025-title7-vol4/xml/CFR-2025-title7-vol4-sec273-2.xml",
+  "https://www.fns.usda.gov/snap/applicant-recipient"
+ ],
+ "observation_period": "Regulation as eCFR printed it, up to date as of November 9, 2026",
+ "geography": "United States; states run SNAP within these rules",
+ "universe_or_base": "A household’s path from application to benefits under the federal rule",
+ "unit": "steps; days",
+ "date_retrieved": "2026-11-12",
+ "vintage": "eCFR, title 7 up to date as of November 9, 2026; checked against the 2025 annual edition on govinfo",
+ "qualification": "The times are the regulation’s limits, not measured waits; states may move faster, and some miss the limits. The interview rule allows phone interviews and waivers under 273.2(e)(2).",
+ "columns": {
+  "order": {
+   "type": "integer",
+   "description": "display order"
+  },
+  "path": {
+   "type": "category",
+   "description": "main (every rule) or branch (some rules, or a way out)"
+  },
+  "step": {
+   "type": "text",
+   "description": "step name, plain words"
+  },
+  "who_acts": {
+   "type": "text",
+   "description": "who acts at this step"
+  },
+  "what_happens": {
+   "type": "text",
+   "description": "what happens, the research lead’s plain summary of the provision"
+  },
+  "time_limit": {
+   "type": "text",
+   "description": "the longest time the regulation allows, not a measured wait"
+  },
+  "legal_basis": {
+   "type": "text",
+   "description": "the provision"
+  },
+  "source_words": {
+   "type": "text",
+   "description": "the provision’s own words where it sets a test or a time"
+  }
+ },
+ "printed_source_line": "Source: Code of Federal Regulations, 7 CFR 273.2, SNAP application processing, as in force November 9, 2026, United States. Retrieved November 12, 2026. Times are the regulation’s limits, not measured waits.",
+ "ledger_row": "P7-208",
+ "domain": "D04",
+ "domain_note": "V7 I062, \"Delivering services\" (data lead change 3)",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "ecfr-273-2.xml": "b47660a89ecd6fe4",
+  "cfr7-273-2.xml": "d1f90c88f6e5dd8c"
+ }
+}

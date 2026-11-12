@@ -4,11 +4,11 @@ Oath & Action Edition 06, Phase 3, round 1, November 12, 2026. Written by the sy
 
 ## Summary
 
-In progress. First deliverable posted: chapter 15's proposed rule list, below, for the main session to fix (R7). Next: `work/build/scripts/phase-3/phase3_ch15_build.py`, `work/build/guide/chapters/15-systems-graphics.json`, `work/build/guide/specimens/manifest-systems-graphics.json` and the round 1 plates (the grammar, group 1, and worked examples 1 and 2).
+In progress. The main session fixed the rule list as proposed (R7), with round 1 building Rules 15.1 to 15.10, 15.13 and 15.14 and the opener. Built so far: the generator `work/build/scripts/phase-3/phase3_ch15_build.py`, which writes `work/build/guide/chapters/15-systems-graphics.json`, 25 specimens `work/build/guide/specimens/s-15-*.html` and `work/build/guide/specimens/manifest-systems-graphics.json`. Chapter 15 weighs 214,643 bytes in a strict guide build (under round 1's 250,000).
 
 ## Rule list
 
-Proposed for the main session to fix (R7). Built from Master Brief section 14 (the grammar table, the six worked examples, interaction, workflows, reconciliation) and the proposal's sections 1.3 to 1.5. Every row of section 14's grammar table has a home: a rule here, or a chapter 13 rule that chapter 15 cites by number and never restates (13.3 grade words, 13.4 line code, 13.5 grade, effect, uncertainty and delay apart, 13.9 typed chips, 13.10 dates and "Not checked", 13.11 documented events). Drawing sizes stay with Rules 10.10 and 12.5; the stepper component with Rule 18.22.
+Fixed by the main session as proposed (R7). Two titles were shortened to the fifteen-word limit chapter 13's checks hold (15.1 and 15.8); their numbers and subjects are unchanged. Built from Master Brief section 14 (the grammar table, the six worked examples, interaction, workflows, reconciliation) and the proposal's sections 1.3 to 1.5. Every row of section 14's grammar table has a home: a rule here, or a chapter 13 rule that chapter 15 cites by number and never restates (13.3 grade words, 13.4 line code, 13.5 grade, effect, uncertainty and delay apart, 13.9 typed chips, 13.10 dates and "Not checked", 13.11 documented events). Drawing sizes stay with Rules 10.10 and 12.5; the stepper component with Rule 18.22.
 
 Counts in the subjects were read today by script from `work/extract/atlas-v7-data.json` (snapshot of October 15, 2026).
 
@@ -16,14 +16,14 @@ Counts in the subjects were read today by script from `work/extract/atlas-v7-dat
 
 | Rule | Title (one clause) | Subject |
 |---|---|---|
-| 15.1 | Draw a mechanism as a systems graphic, and give width or size a measure only with a key. | What a systems graphic is and how it differs from a chart: variables, connections and loops, no axis. Line width and node area encode a quantity only with a defined measure and a legend; a Sankey needs measured, compatible flows and belongs in chapter 14 |
+| 15.1 | Draw mechanisms at one weight, and let width or size measure only with a key. | What a systems graphic is and how it differs from a chart: variables, connections and loops, no axis. Line width and node area encode a quantity only with a defined measure and a legend; a Sankey needs measured, compatible flows and belongs in chapter 14 |
 | 15.2 | Name each variable, its kind and what a higher value means. | The variable's name and typed chip, its kind in words (stock 31, flow 9, auxiliary 6, outside driver 5, from `kind_plain`) and its `increase_means` sentence beside it |
 | 15.3 | Read a plus or minus as the way two variables move together. | Signed links: the atlas's sign rule (a plus can mark harm), the verb the sign takes (raises, lowers), the connection's `sign_meaning`; 70 plus, 41 minus |
 | 15.4 | Say in words when a connection carries money, information or ownership. | Connection types without color: causal (80) is the default; money (17), information (9) and ownership (5) named on the label and in the key |
 | 15.5 | Draw authority with its open diamond and no sign, outside every loop. | The authority link: 7 connections, all documented, none signed, none in a loop; the word "decides"; a check that no authority link closes any loop |
 | 15.6 | Number a loop's steps in order, and name it reinforcing or balancing. | Loops: steps numbered from the starting variable; R or B read from the count of minus signs (even reinforces, odd balances), checked on all 20 numbered loops; either kind can help or harm, as the atlas says |
 | 15.7 | Say how a loop closes, apart from how strong its evidence is. | Closure: every step numbered (18), a hypothesized step (R2, R16), or no complete numbered chain (B2, B3, R9) drawn in the hollow line of Rule 13.4; the atlas also holds unnamed cycles |
-| 15.8 | Draw an open chain from its start to its end, and carry the sign along it. | Open chains: a path that does not return (a reform's path to an outcome; the layer steps behind one core arrow, whose combined sign agrees with it, as the atlas's conventions say); never closed into a loop by the drawing |
+| 15.8 | Draw an open chain from start to end, and carry its sign along. | Open chains: a path that does not return (a reform's path to an outcome; the layer steps behind one core arrow, whose combined sign agrees with it, as the atlas's conventions say); never closed into a loop by the drawing |
 | 15.9 | Frame the atlas's layers and clusters, and set outside drivers beyond the frames. | Boundaries: the three layers (core 31, economy 12, technology 8 variables), the five core clusters, drivers X1 to X5 outside every frame, and a mark on each connection that crosses a boundary; the driver pill stays unconfirmed |
 | 15.10 | Show what the model leaves out beside what it draws. | Model limits: 9 omissions, 3 rejected links, the boundary's left-out list, no measured loop strength, unnamed cycles |
 

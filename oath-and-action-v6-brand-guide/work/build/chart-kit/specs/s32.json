@@ -1,0 +1,97 @@
+{
+  "kit": 1,
+  "id": "S32",
+  "form": "implementation-timeline",
+  "family": "change-over-time",
+  "tier": "core",
+  "dataset": "govinfo-pl-119-75-effective-dates",
+  "sort": [
+    {
+      "field": "date",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "When does each part of the 2026 law on drug middlemen take effect?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the text of Public Law 119-75",
+  "title": "Congress set the 2026 law’s rules for pharmacy benefit managers to start on four dates, from an August 2027 deadline for federal rules to January 2029.",
+  "reading_guide": "Each row is one part of the law. Its bar starts on the date the part takes effect and runs on; a hatched stretch is the year in which the part reaches each health plan as that plan’s next plan year begins.",
+  "measure_line": "Effective dates of the pharmacy benefit manager sections of Public Law 119-75, the Consolidated Appropriations Act, 2026, from its approval on February 3, 2026 to the last date in those sections, January 1, 2029, United States.",
+  "notes": [
+    "Pharmacy benefit managers negotiate drug prices and rebates for health plans and run their pharmacy networks.",
+    "Two dates come from the law’s “18 months” and “30 months after the date of enactment”, counted from February 3, 2026 by Oath & Action.",
+    "The section headings are the law’s own. The lines under them are Oath & Action’s plain summaries of each section’s opening rule, and each section holds more requirements than its line names."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Timeline of when the parts of Public Law 119-75 on pharmacy benefit managers take effect, after the law’s approval on February 3, 2026: a deadline for federal reporting rules on August 3, 2027; Medicare drug plan rules on January 1, 2028; reporting and full rebate pass-through for employer plans for plan years from August 3, 2028; and Medicare pharmacy contract standards on January 1, 2029.",
+  "table": {
+    "caption": "Effective dates in Public Law 119-75’s pharmacy benefit manager sections",
+    "columns": [
+      {
+        "field": "date",
+        "label": "Date",
+        "format": "date",
+        "row_header": true
+      },
+      {
+        "field": "section",
+        "label": "Section",
+        "format": "text"
+      },
+      {
+        "field": "heading",
+        "label": "Heading in the law",
+        "format": "text"
+      },
+      {
+        "field": "what_takes_effect",
+        "label": "What starts",
+        "format": "text"
+      },
+      {
+        "field": "date_basis",
+        "label": "How the law sets the date",
+        "format": "text"
+      }
+    ]
+  },
+  "chart_notes": [
+    "A dashed mark on each lane is the law’s approval, February 3, 2026. Solid gray bars run from a part’s start date; a hatched first year marks parts that start with each plan’s next plan year; a dot marks a deadline."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D06",
+  "states": [],
+  "encode": {
+    "date": "date",
+    "title": "heading",
+    "text": "what_takes_effect",
+    "kind": "kind"
+  },
+  "formats": {
+    "date": "date"
+  },
+  "labels": {
+    "kinds": {
+      "enacted": "approved",
+      "deadline": "deadline",
+      "plan years beginning on or after": "phase"
+    },
+    "approved": "Law approved {date}",
+    "end": "2030-01-01",
+    "phase_months": 12,
+    "row_title": "{date}, {section}: {heading}",
+    "row_text": "{what_takes_effect}",
+    "start_key": "In effect",
+    "phase_key": "Reaching each plan as its plan year begins",
+    "deadline_key": "Deadline"
+  },
+  "notes_internal": [
+    "Maker B, round 1. Data plan row 25, rule 14.39. Domain D06 from the sidecar (Competition and market power); no state named.",
+    "Checked against govinfo-pl-119-75-effective-dates.csv: approval February 3, 2026; four later dates, August 3, 2027 (deadline), January 1, 2028, August 3, 2028 (two sections) and January 1, 2029, so 'four dates, from an August 2027 deadline ... to January 2029'. The 18- and 30-month dates are the sidecar's computed dates, which agree with V7 issue I084's status text (sidecar notes).",
+    "Every 'plan years beginning on or after' part takes the hatched first year, the sidecar's qualification; the chart does not claim when any plan's year begins.",
+    "H12: 'pharmacy benefit managers' in the title, the law's own term, with note 1's gloss (H02); the plan's 'drug middlemen' stays in the reader question. Read from the left and the right: the title gives the dates Congress set and no judgment of the rules."
+  ]
+}

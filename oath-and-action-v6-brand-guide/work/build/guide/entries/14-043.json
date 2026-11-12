@@ -1,0 +1,35 @@
+{
+  "id": "14.43",
+  "title": "Use a run chart to watch a process against its own median.",
+  "rule": [
+    "Use a run chart, a reference form, for a measure an office tracks week by week, such as days to answer a request: the values as dots joined by a line, a dashed line at their median, and a shaded run where six or more points in a row sit on one side of it. Oath & Action draws one when a story follows how a public service performs over time."
+  ],
+  "use_when": "The reader asks whether a process has changed or is only wobbling, and the measure has no outside target to compare with.",
+  "use_instead": [
+    {
+      "when": "The measure is an official statistic and its moments need explaining",
+      "rule": "14.29"
+    },
+    {
+      "when": "The reader compares one value with a target or a range",
+      "rule": "14.90"
+    },
+    {
+      "when": "The values swing month to month and a moving average shows the trend",
+      "rule": "14.32"
+    }
+  ],
+  "why": {
+    "text": [
+      "Every process wobbles, and a single high week proves nothing. A run of points on one side of the median is a simple, standard sign that something changed, which keeps a reader from taking noise for news or missing a real shift."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "s-14-43-sketch",
+  "tier": "reference",
+  "tokens": [],
+  "related": [],
+  "builders": "No kit form: a run chart is drawn from line-event-notes or line-data-gap with the median added as a note, until a story needs its own form.",
+  "correct": null,
+  "failure": null
+}

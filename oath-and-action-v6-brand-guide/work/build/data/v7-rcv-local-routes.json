@@ -1,0 +1,22 @@
+{
+ "rows": [
+  {
+   "reform_id": "R-01",
+   "reform_title": "All-party primaries with ranked general elections",
+   "route": "LOC",
+   "who": "Home-rule cities, for municipal offices",
+   "feasibility": "medium",
+   "note": "This route is closed to cities and counties in the 19 states that prohibit ranked-choice voting in some or all elections, as of October 15, 2026.",
+   "checked": "2026-10-15"
+  },
+  {
+   "reform_id": "R-02",
+   "reform_title": "Ranked-choice voting for single-winner races",
+   "route": "LOC",
+   "who": "Home-rule cities",
+   "feasibility": "medium",
+   "note": "Blocked in states with bans.",
+   "checked": null
+  }
+ ]
+}

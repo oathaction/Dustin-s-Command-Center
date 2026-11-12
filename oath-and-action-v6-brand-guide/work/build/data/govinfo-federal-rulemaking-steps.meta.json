@@ -1,0 +1,74 @@
+{
+ "file": "govinfo-federal-rulemaking-steps.csv",
+ "kind": "public",
+ "publisher": "U.S. Government Publishing Office, United States Code and Federal Register; National Archives",
+ "title_or_table": "Federal rulemaking: 5 U.S.C. 551, 553, 701 to 706, 801 and 802; Executive Order 12866 (as amended) and Executive Order 14215",
+ "table_id": "USCODE-2024 title 5; 58 FR (October 4, 1993); 90 FR 10447 (February 24, 2025)",
+ "url": [
+  "https://www.govinfo.gov/content/pkg/USCODE-2024-title5/html/USCODE-2024-title5-partI-chap5-subchapII-sec551.htm",
+  "https://www.govinfo.gov/content/pkg/USCODE-2024-title5/html/USCODE-2024-title5-partI-chap5-subchapII-sec553.htm",
+  "https://www.govinfo.gov/content/pkg/USCODE-2024-title5/html/USCODE-2024-title5-partI-chap7-sec701.htm",
+  "https://www.govinfo.gov/content/pkg/USCODE-2024-title5/html/USCODE-2024-title5-partI-chap7-sec704.htm",
+  "https://www.govinfo.gov/content/pkg/USCODE-2024-title5/html/USCODE-2024-title5-partI-chap7-sec706.htm",
+  "https://www.govinfo.gov/content/pkg/USCODE-2024-title5/html/USCODE-2024-title5-partI-chap8-sec801.htm",
+  "https://www.govinfo.gov/content/pkg/USCODE-2024-title5/html/USCODE-2024-title5-partI-chap8-sec802.htm",
+  "https://www.archives.gov/files/federal-register/executive-orders/pdf/12866.pdf",
+  "https://www.govinfo.gov/content/pkg/FR-2025-02-24/pdf/2025-03063.pdf"
+ ],
+ "observation_period": "Law and orders in force on November 12, 2026, as the 2024 edition of the U.S. Code and the Federal Register print them",
+ "geography": "United States, federal agencies",
+ "universe_or_base": "The steps by which a federal agency issues, amends or repeals a rule, with the branches where Congress, a court or the public can step in",
+ "unit": "steps",
+ "date_retrieved": "2026-11-12",
+ "vintage": "U.S. Code 2024 edition; Executive Order 12866 of September 30, 1993 as amended, including by Executive Order 14215 of February 18, 2025",
+ "qualification": "The statute sets the steps; agencies add their own practice. Some rules skip notice and comment under exceptions in 5 U.S.C. 553(b); White House review applies to significant rules only.",
+ "columns": {
+  "order": {
+   "type": "integer",
+   "description": "display order"
+  },
+  "path": {
+   "type": "category",
+   "description": "main (every rule) or branch (some rules, or a way out)"
+  },
+  "step": {
+   "type": "text",
+   "description": "step name, plain words"
+  },
+  "who_acts": {
+   "type": "text",
+   "description": "who acts at this step"
+  },
+  "what_happens": {
+   "type": "text",
+   "description": "what happens, the research lead’s plain summary of the provision"
+  },
+  "time_limit": {
+   "type": "text",
+   "description": "the time the law or order sets, if any"
+  },
+  "legal_basis": {
+   "type": "text",
+   "description": "the provision"
+  },
+  "source_words": {
+   "type": "text",
+   "description": "the provision’s own words where it sets a test or a time"
+  },
+  "url": {
+   "type": "text",
+   "description": "where the text was read"
+  }
+ },
+ "printed_source_line": "Source: U.S. Code, Title 5, sections 551, 553, 701 to 706, 801 and 802, 2024 edition; Executive Order 12866 (1993), as amended, and Executive Order 14215 (2025); United States. Retrieved November 12, 2026. Steps as the law sets them, not how long agencies take.",
+ "ledger_row": "P7-207",
+ "domain": "D05",
+ "domain_note": "V7’s \"Agency law\" subsystem, \"Who interprets the law\" (data lead check 1)",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "eo14215.pdf": "1301a366b60223bb",
+  "usc5-553.htm": "617331083e71b36a",
+  "usc5-802.htm": "53c11d9c34ff5d0a",
+  "eo12866.pdf": "8c6e71c85bc6c43f"
+ }
+}

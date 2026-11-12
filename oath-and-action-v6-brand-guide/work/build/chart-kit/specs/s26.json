@@ -69,7 +69,7 @@
     ]
   },
   "chart_notes": [
-    "Arrows point left for a Democratic majority and right for a Republican majority, all in one ink; the scale runs to 150 seats each way from the center line.",
+    "Arrows point left for a Democratic majority and right for a Republican majority, all in one ink. Both sides share one scale, and the center line sits off center to give the longer Democratic leads room.",
     "The party is named beside the figure at the first row and at each row where the majority changed sides."
   ],
   "phone": "same",
@@ -99,6 +99,7 @@
     "Checked by script against house-history-party-divisions.csv: 38 Congresses; smallest lead 5 (119th, 2025), next 8 (83rd) and 9 (107th, 118th); largest 155 (89th, 1965); Democratic majorities 25, Republican 13; control changed 7 times (1953, 1955, 1995, 2007, 2011, 2019, 2023); every row's majority_advantage_seats equals the absolute difference of the two parties' seats.",
     "Orientation follows S11: Democratic to the left, Republican to the right, as the guide's other election charts set them. Read from the left and the right: the title reports the size of the lead and names no party.",
     "The current count from the sidecar's notes prints with its date, so a reader does not take the opening count for today's House.",
-    "The arrows draw through K.parts.arrow, which shift-arrows.js defines; request R-B6 asks the engineer to move it into parts.js so a page that loads this form alone has it."
+    "The arrows draw through K.parts.arrow, which shift-arrows.js defines; request R-B6 asks the engineer to move it into parts.js so a page that loads this form alone has it.",
+    "Data lead DL-B5 applied: chart note 1 describes the shared scale and the off-center line in place of a fixed 150-seat reach."
   ]
 }

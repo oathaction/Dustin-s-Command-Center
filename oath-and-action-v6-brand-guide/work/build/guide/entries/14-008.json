@@ -1,0 +1,69 @@
+{
+ "id": "14.8",
+ "title": "Past four groups, split into small multiples or set one group in ink against gray.",
+ "rule": [
+  "The four group inks of Rule 14.5 are as many as a reader can tell apart and hold in mind. With five or more groups, draw one small panel for each on a shared scale, or draw the group the title names in ink and the others in gray. Either way, every group carries its name on the chart.",
+  "Rule 14.23 shows small multiples of bars, Rule 14.30 small multiples of lines, and Rule 14.31 one line in ink over a field of gray."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "Past four, the inks start to look alike and the key grows longer than a reader will hold. Small panels on one scale let a reader take each group’s shape and level one at a time, and still compare them."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [
+  "oa.chart.color.context.onNewsprint"
+ ],
+ "related": [
+  "14.5",
+  "14.23",
+  "14.30",
+  "14.31"
+ ],
+ "builders": "Use multi-line-highlight or small-multiple-bars for five or more groups; the kit fails a key of more than four inks.",
+ "specs": [
+  {
+   "label": "Groups in color",
+   "value": "Four at most, in Rule 14.5’s order"
+  },
+  {
+   "label": "Five or more",
+   "value": "Small multiples on one shared scale, or one group in ink and the rest in gray",
+   "token": "oa.chart.color.context.onNewsprint"
+  },
+  {
+   "label": "Names",
+   "value": "Every group named on the chart, in its panel or at its line’s end"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-8-correct",
+  "caption": "Each panel sets one age group in ink against the other four in gray, on one scale, so a reader compares five groups without a key.",
+  "alt": "Five small panels, one age group in ink in each over the rest in gray. Householders under 35 were the least likely to own their homes in every year from 1982 to 2025.",
+  "illustrative": false,
+  "notes": "",
+  "charts": [
+   "s-14-8-panels"
+  ]
+ },
+ "failure": {
+  "specimen": "s-14-8-failure",
+  "caption": "<strong>Fails Rule 14.8.</strong> Five groups take five inks, the fifth borrowed from a scale, and the key under the plot asks the reader to match each one.",
+  "alt": "Failure case: do not publish. The same five age groups as five lines in five inks on one plot, the fifth ink borrowed from a scale, with a key of five short lines under the chart.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "examples": [
+  {
+   "example": "Homeownership by age of householder",
+   "domain": "D09",
+   "states": [],
+   "level": "federal",
+   "where": "14.8"
+  }
+ ]
+}

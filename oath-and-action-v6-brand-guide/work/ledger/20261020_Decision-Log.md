@@ -3918,3 +3918,32 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-239 | S14's margin sentence ends the fourth note, after the list of seven months it qualifies | "The drops" points back to that list, and DR-239 has the sentence join the note; at 358 px the note runs five lines and reads as one passage |
 | D3-240 | S14's alt text stays as it was, with its seven months of losses | The alt text describes the drawing, which marks no margin of error; the note beside the drawing carries DR-239's sentence for every reader |
 | D3-241 | The margin's figure, plus or minus 122,000, stays out of S14's printed words and goes to the main session as a request | The brief asks for a request (D3-171); the figure comes from a source the chart's source line does not name, and C2 requires that line to equal its sidecar's |
+
+### Research lead, round 1 (`work/handoffs/phase-3/20261112_Round-1-Research-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-242 | Round 3's rows continue the rounds 1 and 2 plan's numbering, 83 to 114, in chapter 14's rule order | One numbering across the data plans lets a spec, a sidecar and a ledger row cite the same row |
+| D3-243 | Round 3's funnel draws Medicaid and CHIP renewal outcomes in place of the CPS voting tables | S04 and S16 already draw the CPS voting tables, rows 3 and 70 moved off them for the same reason, and V7 names the drop-out this funnel shows (I062) |
+| D3-244 | Each round 3 domain follows V7's own issue for the topic where V7 has one, named in the row | The count then rests on the atlas's filing, which the data lead and a reader can check |
+| D3-245 | The roll-call grid draws H.R. 5371, the November 2025 continuing appropriations act, with each chamber's recorded vote | H.R. 7008 already serves four specimens, and its Senate vote was on taking the bill up; H.R. 5371 has a recorded passage vote in each chamber |
+| D3-246 | The network diagram draws both 2024 presidential joint fundraising committees the same way | Both parties use the mechanism, so Rule 01.11 asks for a case from each in the same form |
+| D3-247 | Map geometry comes from the Census Bureau's 2024 cartographic boundary and Gazetteer files, frozen unprojected and unsimplified, with the kit projecting and simplifying at build (ENG-10) | Free to use with credit to the Census Bureau, as the files' own metadata says; projection is a drawing choice, so the data stays neutral and the page carries only drawn paths |
+| D3-248 | The district tile map's layout is the studio's own, from the Census Bureau's district centers | Published tile layouts are third-party work, study only under Master Brief section 2 |
+| D3-249 | The executive action route shows revocation with one order from each of the last two transitions, Executive Order 13992 (2021) and Executive Order 14148 (2025), each counted from its Federal Register text | The mechanism belongs to every administration, so the source shows a case from each in the same form (Rule 01.11) |
+| D3-250 | Quotes that hold an em dash in the source are split into quoted fragments rather than repunctuated | The guide sets no em dash, and a quote keeps the source's words and punctuation |
+| D3-251 | Rows 109 and 111 draw the Clerk of the House's 2024 election statistics in place of an FEC file | The FEC's 2024 congressional file lists candidates without votes; the Clerk compiles official results from the states |
+| D3-252 | The 2024 House margin is the winner's votes less the runner-up's over all votes for the office, with a labeled seat kind for one-candidate seats, one-party contests, other pairings, Alaska's first round, Maine's final round and Louisiana's open primary | One rule reads the same in every kind of seat (data lead change 9); blank, void and exhausted ballots are not votes for a candidate |
+| D3-253 | New York's and Connecticut's fusion lines are summed to the candidate above them | The Clerk prints each party line separately, and a candidate's vote is the sum of the lines |
+| D3-254 | Row 100 reads the FEC's current campaigns file (webl24) for every House candidate, primary losers included, and nets transfers between a candidate's own committees | The API's candidate totals lack the receipt and loan lines change 7 needs, and the FEC's own file description says to subtract those transfers |
+| D3-255 | Row 96 searches every title in the Library of Congress's bill status bulk files for "pharmacy benefit manager" and the word PBM, and draws the House's 10 bills | Change 6 asks for every title; one bulk file per chamber reads them all, and the House has more matches |
+| D3-256 | Row 94's committees are each nominee's joint fundraising committee that sent the most to the nominee's principal campaign committee, from the FEC's aggregates by recipient | One rule read the same way for both (change 8): the Harris Victory Fund and the Trump National Committee JFC |
+| D3-257 | Row 83's funnel sums April 2023 to March 2024 and nests due, decided, not ended for a procedural reason, and kept coverage, with pending renewals set apart | Twelve months avoid counting a person due in March of both years, and change 11 asks for stages that nest from one base |
+| D3-258 | Row 112 leaves out Puerto Rico and the island areas and drops the noise column, which the API returned as 0 for every county | The chart covers the 50 states and DC, and a column that says nothing is noise |
+| D3-259 | V7 connection signs are stored as words (positive, negative, none) | The data check reads a bare "-" as a missing value, and words keep V7's sign without a symbol a reader could mistake |
+
+### Main session, round 1
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-260 | The research lead's question on Medicaid renewals (V7 issue I062 cites KFF's "more than 25 million" to September 2024; CMS's own file counts 22,914,537 ended for renewals due April 2023 to March 2024) goes to the V7.1 issue list and board 2, not to Dustin now; round 3's funnel prints CMS's figures with CMS's period | Q-07's standing answer sends V7 inconsistencies to the V7.1 list, and board 2 is where Dustin decides V7.1 items; the chart states its own source and period, so nothing waits on the answer |

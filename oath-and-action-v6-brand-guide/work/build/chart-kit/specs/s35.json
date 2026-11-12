@@ -1,0 +1,94 @@
+{
+  "kit": 1,
+  "id": "S35",
+  "form": "benefit-cliff",
+  "family": "change-over-time",
+  "tier": "extended",
+  "dataset": "illustrative-benefit-cliff",
+  "sort": [
+    {
+      "field": "earnings",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "What does one family keep as its earnings rise and benefits phase out?",
+  "evidence": "illustration",
+  "evidence_label": "Illustration",
+  "title": "In this invented budget, a raise from $36,000 to $37,000 leaves a family $8,386 a year worse off, because its child care help ends.",
+  "reading_guide": "The heavy line is what the family has after taxes and benefits, and the dashed line is its earnings alone. Where the heavy line drops, a raise leaves the family with less.",
+  "measure_line": "What one invented family, a parent with two children in Alder County, has in a year after taxes and benefits, dollars, at earnings from $0 to $60,000 in steps of $1,000. Values and rules invented for this example.",
+  "notes": [
+    "In this example, child care help worth $9,000 a year ends once earnings pass $36,000, while tax credits keep shrinking and taxes keep rising with each raise.",
+    "The family is back above what it had at $36,000 only when it earns $51,000.",
+    "Every rule here is invented. Real benefit cliffs depend on the state, the family and the year."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": "Illustrative data",
+  "alt": "Line chart of an invented family’s resources after taxes and benefits as its earnings rise from $0 to $60,000, beside a dashed line of earnings alone. Resources climb to $44,706 at $36,000 of earnings, drop to $36,320 at $37,000 when child care help ends, and pass $44,706 again only at $51,000.",
+  "table": {
+    "caption": "An invented family’s year, dollars, by earnings",
+    "columns": [
+      {
+        "field": "earnings",
+        "label": "Earnings",
+        "format": "integer",
+        "row_header": true
+      },
+      {
+        "field": "taxes",
+        "label": "Taxes",
+        "format": "integer"
+      },
+      {
+        "field": "tax_credits",
+        "label": "Tax credits",
+        "format": "integer"
+      },
+      {
+        "field": "food_aid",
+        "label": "Food aid",
+        "format": "integer"
+      },
+      {
+        "field": "child_care_help",
+        "label": "Child care help",
+        "format": "integer"
+      },
+      {
+        "field": "net_resources",
+        "label": "After taxes and benefits",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Heavy line: resources after taxes and benefits. Dashed line: earnings alone. The light band runs from $36,000, where the drop comes, to $51,000, where the family is back above its $36,000 level. Both scales run from $0 to $60,000."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D08",
+  "states": [],
+  "encode": {
+    "x": "earnings",
+    "y": "net_resources"
+  },
+  "formats": {
+    "x": "integer",
+    "y": "integer",
+    "drop": "integer",
+    "tick": "integer"
+  },
+  "labels": {
+    "ref": "Earnings alone",
+    "line": "After taxes and benefits",
+    "cliff": "Child care help ends above ${from_x}: ${drop} less at ${to_x}",
+    "band": "Below its ${from_x} level until earnings reach ${back_x}",
+    "x_title": "Earnings in a year, dollars"
+  },
+  "notes_internal": [
+    "Maker B, round 1. Data plan row 28, rule 14.42: the one illustrative specimen of rounds 1 and 2. The data file and sidecar are maker B's (brief), written by make_benefit_cliff.py in maker B's scratch folder; the sidecar's qualification states every invented rule, so the file can be rebuilt from it.",
+    "Checked by the script that writes the file: the largest drop is from $36,000 (resources $44,706) to $37,000 ($36,320), $8,386; resources first reach $44,706 or more again at $51,000 ($44,998). The form finds the same drop and climb back from the rows.",
+    "Rule 13.1: Illustration, with no grade line; Rule 13.8: 'Illustrative data' beside the chart, an invented place (Alder County) and generic benefit names (food aid, child care help, tax credits), so no real program's amounts are implied. H08: the title says 'invented budget' and states arithmetic on invented rules.",
+    "The dollar signs come through the label templates; R-B2 asks for a dollars format for the axes and table."
+  ]
+}

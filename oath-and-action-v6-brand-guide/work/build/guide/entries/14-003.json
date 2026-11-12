@@ -1,0 +1,71 @@
+{
+ "id": "14.3",
+ "title": "Label the data directly, and use a key only when labels cannot fit.",
+ "rule": [
+  "Rule 12.6 sets where a label sits. In a chart, each line takes its name at its last point, each bar its value at its end, and each group its name on or beside its marks, in the ink of the text. Units go once in the measure line, so the labels carry numbers alone.",
+  "A key earns its place only when a mark codes something a label cannot carry on every mark, such as an evidence grade, a pattern or a run of shades. Then it sits under the measure line, in the order the marks run, as Rule 12.6 sets."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "A reader matching inks between a key and the lines looks away from the data at every step, and close inks are hard to match at all in grayscale or with a color vision deficiency. A name at the end of each line is read in place."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [
+  "oa.chart.color.label.onNewsprint"
+ ],
+ "related": [
+  "12.6",
+  "13.7"
+ ],
+ "builders": "Name each series in the spec's labels.series; the kit sets the names at the line ends and warns when one cannot fit.",
+ "specs": [
+  {
+   "label": "A line",
+   "value": "Its name at its last point, in the label ink",
+   "token": "oa.chart.color.label.onNewsprint"
+  },
+  {
+   "label": "A bar",
+   "value": "Its value at its end, its name beside it"
+  },
+  {
+   "label": "Units",
+   "value": "Once, in the measure line"
+  },
+  {
+   "label": "A key",
+   "value": "Only for a code no label can carry, under the measure line, in the order the marks run (Rule 12.6)"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-3-correct",
+  "caption": "Each line carries its own name where it ends, so a reader reads the age group in place and the youngest group, which the title names, stands out in ink.",
+  "alt": "Four lines of reported voting by age, each named at its last point. Citizens 18 to 24 reported voting at the lowest rate of four age groups in every presidential year from 2004 to 2024.",
+  "illustrative": false,
+  "notes": "",
+  "charts": [
+   "s-14-3-lines"
+  ]
+ },
+ "failure": {
+  "specimen": "s-14-3-failure",
+  "caption": "<strong>Fails Rule 14.3.</strong> Four lines in four inks send the reader down to a key and back for every line, where a name at each line’s end would be read in place.",
+  "alt": "Failure case: do not publish. The same four lines in four inks with no names on them, and a key under the chart that the reader must match.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "examples": [
+  {
+   "example": "Reported voting by age, presidential years 2004 to 2024",
+   "domain": "D10",
+   "states": [],
+   "level": "federal",
+   "where": "14.3"
+  }
+ ]
+}

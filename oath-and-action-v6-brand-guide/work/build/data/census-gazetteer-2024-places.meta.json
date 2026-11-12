@@ -1,0 +1,56 @@
+{
+ "file": "census-gazetteer-2024-places.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "2024 Gazetteer Files, places",
+ "table_id": "2024_Gaz_place_national",
+ "url": [
+  "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/2024_Gaz_place_national.zip"
+ ],
+ "observation_period": "2024 vintage (places as of January 1, 2024)",
+ "geography": "Two places in Kern County, California: Lake Isabella CDP and Bakersfield city",
+ "universe_or_base": "The locator’s place and the county’s largest city, for orientation",
+ "unit": "square miles; decimal degrees",
+ "date_retrieved": "2026-11-12",
+ "vintage": "2024 Gazetteer Files",
+ "qualification": "An internal point is a point inside the place, not its center or a street address. A census-designated place has no government of its own.",
+ "columns": {
+  "geoid": {
+   "type": "id",
+   "description": "place GEOID"
+  },
+  "name": {
+   "type": "text",
+   "description": "place name"
+  },
+  "state": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "land_sq_mi": {
+   "type": "number",
+   "description": "land area",
+   "unit": "square miles"
+  },
+  "lat": {
+   "type": "number",
+   "description": "internal point latitude",
+   "unit": "degrees"
+  },
+  "lon": {
+   "type": "number",
+   "description": "internal point longitude",
+   "unit": "degrees"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, 2024 Gazetteer Files, places, Kern County, California. Retrieved November 12, 2026. Points sit inside each place.",
+ "ledger_row": "P7-213",
+ "domain": "D10",
+ "domain_note": "V7 I146 (Participation): the locator places chapter 01’s public meeting (data lead change 2)",
+ "states": [
+  "CA"
+ ],
+ "raw_files_sha256_prefix": {
+  "2024_Gaz_place_national.zip": "cf262fc92b2326f7"
+ }
+}

@@ -1,0 +1,53 @@
+{
+ "file": "census-gazetteer-2024-cd119.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "2024 Gazetteer Files, congressional districts of the 119th Congress",
+ "table_id": "2024_Gaz_119CDs_national",
+ "url": [
+  "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/2024_Gaz_119CDs_national.zip"
+ ],
+ "observation_period": "Districts of the 119th Congress (elected November 5, 2024)",
+ "geography": "The 435 districts of the 50 states and the District of Columbia’s delegate area (436 rows); Puerto Rico and the water areas coded ZZ left out",
+ "universe_or_base": "Congressional districts, for the studio’s own tile layout",
+ "unit": "square miles; decimal degrees",
+ "date_retrieved": "2026-11-12",
+ "vintage": "2024 Gazetteer Files",
+ "qualification": "District 00 is an at-large seat; DC’s area is coded 98, a delegate with no vote on the House floor. Districts redrawn for 2026 elections are not these.",
+ "columns": {
+  "geoid": {
+   "type": "id",
+   "description": "state FIPS and district number"
+  },
+  "state": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "district": {
+   "type": "text",
+   "description": "district number; 00 at large; 98 for DC’s delegate"
+  },
+  "land_sq_mi": {
+   "type": "number",
+   "description": "land area",
+   "unit": "square miles"
+  },
+  "lat": {
+   "type": "number",
+   "description": "internal point latitude",
+   "unit": "degrees"
+  },
+  "lon": {
+   "type": "number",
+   "description": "internal point longitude",
+   "unit": "degrees"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, 2024 Gazetteer Files, congressional districts of the 119th Congress, 50 states and DC. Retrieved November 12, 2026.",
+ "ledger_row": "P7-214",
+ "domain": "D02",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "2024_Gaz_119CDs_national.zip": "544b14949130dfa5"
+ }
+}

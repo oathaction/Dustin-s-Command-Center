@@ -1,0 +1,51 @@
+{
+ "file": "clerk-house-results-2024-by-candidate.csv",
+ "kind": "public",
+ "publisher": "Office of the Clerk, U.S. House of Representatives",
+ "title_or_table": "Statistics of the Presidential and Congressional Election of November 5, 2024 (published March 10, 2025), House races",
+ "table_id": "Clerk of the House, election statistics 2024",
+ "url": [
+  "https://clerk.house.gov/member_info/electionInfo/2024/statistics2024.pdf"
+ ],
+ "observation_period": "General election of November 5, 2024 (Louisiana’s open primary the same day; Maine’s ranked-choice tabulation as the Clerk prints it)",
+ "geography": "The 435 House districts of the 50 states",
+ "universe_or_base": "Every line the Clerk prints for a House race: candidates, write-ins, and for Maine blank, continuing and exhausted ballots",
+ "unit": "votes",
+ "date_retrieved": "2026-11-12",
+ "vintage": "Compiled by the Clerk from official sources, published March 10, 2025",
+ "qualification": "Party labels as the Clerk prints them, which follow each state’s ballot. New York and Connecticut list a candidate’s votes on each party line separately (fusion). A candidate with no vote count printed (some states print none for an unopposed race) has an empty votes cell.",
+ "columns": {
+  "state": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "district": {
+   "type": "text",
+   "description": "district number; 00 at large"
+  },
+  "candidate": {
+   "type": "text",
+   "description": "candidate, or the ballot category as printed"
+  },
+  "party_line": {
+   "type": "text",
+   "description": "party line as printed; a fusion line carries the candidate above it"
+  },
+  "line_kind": {
+   "type": "category",
+   "description": "candidate, fusion line (New York and Connecticut), write-in or other, or not a vote for a candidate (blank, void, over and under votes, continuing and exhausted ballots)"
+  },
+  "votes": {
+   "type": "integer",
+   "description": "votes on this line",
+   "unit": "votes"
+  }
+ },
+ "printed_source_line": "Source: Office of the Clerk, U.S. House of Representatives, Statistics of the Presidential and Congressional Election of November 5, 2024, House races, 50 states. Retrieved November 12, 2026. Official results as compiled March 10, 2025.",
+ "ledger_row": "P7-215",
+ "domain": "D02",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "statistics2024.pdf": "d4ba800fc17135b6"
+ }
+}

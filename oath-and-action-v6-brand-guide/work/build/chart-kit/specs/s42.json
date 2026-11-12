@@ -1,0 +1,67 @@
+{
+  "kit": 1,
+  "id": "S42",
+  "form": "one-sentence",
+  "family": "tables-and-plain-words",
+  "tier": "core",
+  "dataset": "v7-stock-trading-ban",
+  "where": {
+    "key": [
+      "support-republicans",
+      "support-democrats"
+    ]
+  },
+  "reader_question": "Do Republicans and Democrats agree on a ban on stock trading by members of Congress?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: a published survey, as the atlas records it",
+  "v7": {
+    "grade": "documented",
+    "ids": [],
+    "snapshot": "2026-10-15"
+  },
+  "title": "In a May 2023 survey of 2,625 registered voters, 87 percent of Republicans and 88 percent of Democrats favored a ban on stock trading by members of Congress.",
+  "measure_line": "Registered voters who favor a ban on stock trading by members of Congress, percent, by party, survey fielded May 19 to 30, 2023, United States.",
+  "credit": "Oath & Action",
+  "illustrative": false,
+  "alt": "In a May 2023 survey of 2,625 registered voters, 87 percent of Republicans and 88 percent of Democrats favored a ban on stock trading by members of Congress.",
+  "table": {
+    "caption": "The figures the sentence cites",
+    "columns": [
+      {
+        "field": "group",
+        "label": "Registered voters",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "value",
+        "label": "Favor a ban, percent",
+        "format": "integer"
+      }
+    ]
+  },
+  "show": [
+    "evidence",
+    "chart",
+    "source",
+    "table"
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D03",
+  "states": [],
+  "encode": {
+    "value": "value"
+  },
+  "notes_internal": [
+    "Data plan row 41: the same question as S41, answered in one sourced sentence (coverage plan R01). The drawing is the sentence (labels.sentence, the title word for word; the page receives only a spec's drawing keys) in the title face; show prints the evidence label, the drawing, the source line and the folded table, and leaves out the printed title, measure line and notes, so the sentence appears once. The alt is the sentence, so a screen reader hears it word for word.",
+    "The drawing doubles as the still image for posts and cards (DR-49, Rule 14.13). A figure with no drawing cannot export, since the PNG and SVG exports come from the page's drawing.",
+    "Figures checked by script (figures.py s42).",
+    "Source line: the sidecar's survey_only variant (request A5, done by the engineer)."
+  ],
+  "labels": {
+    "sentence": "In a May 2023 survey of 2,625 registered voters, 87 percent of Republicans and 88 percent of Democrats favored a ban on stock trading by members of Congress."
+  },
+  "source_line": "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. A margin of error of plus or minus 1.9 points for the whole sample, with none by party."
+}

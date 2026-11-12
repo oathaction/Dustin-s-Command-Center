@@ -270,11 +270,17 @@ def verb_at(pts, sign, words, side):
     return lines(x - 15, y + 5 - (len(words) - 1) * LH / 2, words, "v", "end")
 
 
+def pill_w(label, pw=PW):
+    """A pill's width: the base, or wide enough for the label's longest word with PAD at each end."""
+    return max(pw, math.ceil(max(tw(w_, 600) for w_ in label.split()) + 2 * PAD + 2))
+
+
 class Pill:
     """A variable as a pill with its short name inside (System 1's station_block, DR-36), or a thin pill for a station
     that is no numbered variable (a conceptual loop's)."""
 
     def __init__(self, label, cx, cy, pw=PW, thin=False, cls=""):
+        pw = pill_w(label, pw)
         self.rows = wrap(label, pw - 2 * PAD)
         self.h = max(len(self.rows) * LH + 22, 44)
         self.cx, self.cy, self.pw, self.thin, self.cls = cx, cy, pw, thin, cls
@@ -324,9 +330,10 @@ def two_loop(codes, lids, numbered=True, weakest=None, inside=None, labels=None,
     (System 1's n == 2 cycle, drawn for the 296 px artboard). inside is (loop ID, kind word), set on one line inside the
     loop; a_in moves the second step's arrival along the first pill, to free room under it. Returns (body, h, pills)."""
     labels = labels or [short(c) for c in codes]
-    pw = [PW, PW] if not scale else [PW * s for s in scale]
+    pw = [pill_w(lb, PW if not scale else PW * sc) for lb, sc in zip(labels, scale or [1, 1])]
     rows_h = [max(len(wrap(lb, p - 2 * PAD)) * LH + 22, 44) for lb, p in zip(labels, pw)]
-    run_y = top + 28 + (LH if weakest == 0 else 0)
+    wrows = [len(step_words(1, x, ("weakest step",) if weakest == i else ())) if x else 1 for i, x in enumerate(lids)]
+    run_y = top + 30 + (wrows[0] - 1) * LH
     cy = run_y + RISE + max(rows_h) / 2
     a = Pill(labels[0], 2 + pw[0] / 2, cy, pw[0], thin)
     b = Pill(labels[1], W - 2 - pw[1] / 2, cy, pw[1], thin)
@@ -346,7 +353,7 @@ def two_loop(codes, lids, numbered=True, weakest=None, inside=None, labels=None,
     out.append(a.svg() + b.svg())
     if inside:
         out.append(loop_id(W / 2, run_y + 28, *inside))
-    h = bot_y + 34 + (LH if weakest == 1 else 0)
+    h = bot_y + 34 + (wrows[1] - 1) * LH
     return "".join(out), h, (a, b)
 
 
@@ -354,13 +361,13 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
     """A loop of three variables: the first centered at the top, the second below it to the right and the third to the
     left. Steps 1 and 3 run straight between overlapping pills; step 2 arches under the bottom row. Returns (body, h)."""
     labels = labels or [short(c) for c in codes]
-    hs = [max(len(wrap(lb, PW - 2 * PAD)) * LH + 22, 44) for lb in labels]
+    hs = [max(len(wrap(lb, pill_w(lb) - 2 * PAD)) * LH + 22, 44) for lb in labels]
     y1 = 4 + hs[0] / 2
-    gap = 92
+    gap = 108
     y2 = y1 + hs[0] / 2 + gap + max(hs[1], hs[2]) / 2
     p1 = Pill(labels[0], W / 2, y1, PW, thin)
-    p2 = Pill(labels[1], W - 2 - PW / 2, y2, PW, thin)
-    p3 = Pill(labels[2], 2 + PW / 2, y2, PW, thin)
+    p2 = Pill(labels[1], W - 2 - pill_w(labels[1]) / 2, y2, PW, thin)
+    p3 = Pill(labels[2], 2 + pill_w(labels[2]) / 2, y2, PW, thin)
     xr = (max(p1.left, p2.left) + min(p1.right, p2.right)) / 2
     xl = (max(p1.left, p3.left) + min(p1.right, p3.right)) / 2
     bot_y = max(p2.bot, p3.bot) + RISE
@@ -379,7 +386,8 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
     out.append(p1.svg() + p2.svg() + p3.svg())
     if inside:
         out.append(loop_id(W / 2, max(p2.bot, p3.bot) + 28, *inside))
-    h = bot_y + 34 + (LH if weakest == 1 else 0)
+    n2 = len(step_words(2, lids[1], ("weakest step",) if weakest == 1 else ())) if lids[1] else 1
+    h = bot_y + 34 + (n2 - 1) * LH
     return "".join(out), h
 
 
@@ -543,7 +551,7 @@ def opener(book):
 # More of the kit: one connection as a card, a boundary rule, a frame, a loop of drawn steps
 # ---------------------------------------------------------------------------------------------------------------
 CARD_PW = 170
-CARD_RUN = 92
+CARD_RUN = 116
 
 
 def boundary(y, gaps, above=None, below=None, x0=0, x1=W):
@@ -583,6 +591,7 @@ def card(a_code, b_code, lid, layers=None, words=None, sign=None, authority=None
     sign = l.get("polarity") if sign is None else (sign or None)
     authority = (l.get("type") == "authority") if authority is None else authority
     la, lb = labels or (short(a_code), short(b_code))
+    pw = max(pill_w(la, pw), pill_w(lb, pw))
     a = Pill(la, 2 + pw / 2, 0, pw)
     a.cy = head + a.h / 2 + 2
     run = CARD_RUN + (24 if layers else 0)
@@ -606,10 +615,12 @@ def drawn_loop(n, stations, steps, numbered=True, weakest=None, inside=None, thi
     """A loop drawn from explicit steps, for a mechanism with no numbered connections (a conceptual loop) or a loop drawn
     against the record in a failure plate. stations are labels; steps are dicts of sign, grade, delay, hollow."""
     if n == 3:
-        hs = [max(len(wrap(lb, PW - 2 * PAD)) * LH + 22, 44) for lb in stations]
+        hs = [max(len(wrap(lb, pill_w(lb) - 2 * PAD)) * LH + 22, 44) for lb in stations]
         y1 = 4 + hs[0] / 2
-        y2 = y1 + hs[0] / 2 + 92 + max(hs[1], hs[2]) / 2
-        p1, p2, p3 = Pill(stations[0], W / 2, y1, PW, thin), Pill(stations[1], W - 2 - PW / 2, y2, PW, thin), Pill(stations[2], 2 + PW / 2, y2, PW, thin)
+        y2 = y1 + hs[0] / 2 + 108 + max(hs[1], hs[2]) / 2
+        p1 = Pill(stations[0], W / 2, y1, PW, thin)
+        p2 = Pill(stations[1], W - 2 - pill_w(stations[1]) / 2, y2, PW, thin)
+        p3 = Pill(stations[2], 2 + pill_w(stations[2]) / 2, y2, PW, thin)
         xr = (max(p1.left, p2.left) + min(p1.right, p2.right)) / 2
         xl = (max(p1.left, p3.left) + min(p1.right, p3.right)) / 2
         bot_y = max(p2.bot, p3.bot) + RISE
@@ -757,10 +768,10 @@ def rule_15_2(book):
             f"Our systems atlas defines a variable as “{GLOSS['Variable'].split('.')[0].lower()}”. Draw each one as a pill "
             "holding its short name, the name the atlas gives it on its loops, or its title where it sits in no loop. The first "
             "time a reader meets it, give its typed chip, its kind in words and the atlas’s own sentence on what a higher value means.",
-            f"The atlas uses four kinds. A stock is an amount built up over time ({kinds['stock']} variables). A flow is an "
-            f"amount per period ({kinds['flow']}). A condition, which the atlas calls auxiliary, is worked out from other "
-            f"variables ({kinds['auxiliary']}). An outside driver is a force whose causes lie outside the model ({kinds['driver']}), "
-            "and Rule 15.9 sets where it goes.",
+            f"Of its {len(NODE)} variables, {kinds['stock']} are stocks, amounts built up over time, and "
+            f"{words_n(kinds['flow'])} are flows, amounts per period. {words_n(kinds['auxiliary']).capitalize()} are conditions "
+            f"the atlas calls auxiliary, worked out from other variables. The other {words_n(kinds['driver'])} are outside "
+            "drivers, forces whose causes lie outside the model, and Rule 15.9 sets where they go.",
         ],
         "tokens": ["oa.chart.type.label"],
         "why": {"text": ["A name alone leaves the direction open. Turnout could mean more voters or a smaller gap between "
@@ -897,9 +908,10 @@ def rule_15_4(book):
         "title": "Say in words when a connection carries money, information or ownership.",
         "rule": [
             "Our systems atlas gives each connection a type. Most are causal: a change in one variable changes another. "
-            f"Others name what moves along the line: money ({types['money']} connections), such as contributions or advertising "
-            f"revenue; information ({types['information']}), such as news coverage or a feed; or ownership ({types['ownership']}), "
-            "where one quantity is held inside another. Print the type in words before the verb, as in “money, lowers”, and in the key.",
+            f"Others name what moves along the line: money on {types['money']} of them, such as contributions or advertising "
+            f"revenue; information on {words_n(types['information'])}, such as news coverage or a feed; and ownership on "
+            f"{words_n(types['ownership'])}, where one quantity is held inside another. Print the type in words before the verb, "
+            "as in “money, lowers”, and in the key.",
             "Line patterns carry the evidence grade (Rule 13.4), so a type takes no pattern, width or color of its own. "
             "Authority, the fifth type, takes its own mark (Rule 15.5).",
         ],
@@ -936,21 +948,24 @@ def rule_15_5(book):
     need((l13["from"], l13["to"], l14["from"], l14["to"]) == ("D4", "TC7", "D6", "TC7"), "connection LT13 or LT14 changed")
     need(node("TC7")["layer"] == "technology" and node("D4")["layer"] == node("D6")["layer"] == "core", "the layers changed")
     # two bodies, one decision: two authority lines into one variable across the core and technology boundary
-    pw = 140
-    a = Pill(short("D4"), 2 + pw / 2, 0, pw)
-    b = Pill(short("D6"), W - 2 - pw / 2, 0, pw)
+    a = Pill(short("D4"), 0, 0, 140)
+    b = Pill(short("D6"), 0, 0, 140)
+    a.cx, b.cx = 2 + a.pw / 2, W - 2 - b.pw / 2
     top = max(a.h, b.h)
     a.cy = b.cy = top / 2 + 2
     t = Pill(short("TC7"), W / 2, 0, 172)
-    t.cy = top + 4 + 120 + t.h / 2
-    xs = [t.left + 32, t.right - 32]
-    need(a.left + 29 < xs[0] < a.right - 6 and b.left + 6 < xs[1] < b.right - 29, "the authority lines miss their pills")
+    t.cy = top + 4 + 128 + t.h / 2
+    lo = [max(a.left, t.left) + 29, min(a.right, t.right) - 29]
+    hi = [max(b.left, t.left) + 29, min(b.right, t.right) - 29]
+    need(lo[0] <= lo[1] and hi[0] <= hi[1], "the authority lines cannot meet both pills on their flat edges")
+    xs = [(lo[0] + lo[1]) / 2, hi[0] + 6]
     out = []
     for x, src_p, lid in ((xs[0], a, "LT13"), (xs[1], b, "LT14")):
         m, _ = conn([(x, src_p.bot + 2), (x, t.top - 2)], "documented", None, link(lid)["delay"], authority=True)
         out.append(f'<g class="wr">{m}</g>')
-    out.append(text(xs[0] - 12, a.bot + 54, "decides", "v", "end") + text(xs[1] + 12, b.bot + 54, "decides", "v", "start"))
-    out.append(boundary(t.top - 30, xs, "Core layer", None) + text(W, t.top - 8, "Technology layer", "fl", "end"))
+    out.append(text(xs[0] - 12, a.bot + 46, "decides", "v", "end") + text(xs[1] + 12, b.bot + 46, "decides", "v", "start"))
+    out.append(boundary(t.top - 48, xs, "Core layer", None) + lines(W, t.top - 26, ["Technology", "layer"], "fl", "end"))
+    need(W - tw("Technology") - 8 > xs[1], "the layer's name would touch the authority line")
     out.append(a.svg() + b.svg() + t.svg())
     svg = svg_wrap("".join(out), t.bot + 4)
     words = kw([say_link("LT13"), say_link("LT14"), f"“{e(l13['sign_meaning'])}”"])
@@ -977,7 +992,7 @@ def rule_15_5(book):
             "An authority connection shows that one body holds legal power over something: it appoints, appropriates, preempts, "
             f"enforces or sets a rate. In our systems atlas’s words, “{q}” Draw it solid, end it in an open diamond, and print "
             "decides where a causal line prints its verb.",
-            f"Keep it out of every loop drawing, even where it touches a variable the loop holds. All {len(auth)} of the "
+            f"Keep it out of every loop drawing, even where it touches a variable the loop holds. All {words_n(len(auth))} of the "
             "atlas’s authority connections are documented, and none sits in a loop.",
         ],
         "tokens": [TOKEN_LINE],
@@ -1040,7 +1055,8 @@ def rule_15_6(book):
         "title": "Number a loop’s steps in order, and name it reinforcing or balancing.",
         "rule": [
             "A loop is “a chain of causes that returns to its starting variable”, in our systems atlas’s words. Number its steps "
-            "from the variable the atlas starts it at, in the atlas’s order, and print its typed chip and its kind inside it: "
+            "from the variable the atlas starts it at, in the atlas’s order. Give the loop its typed chip and name beside the "
+            "drawing, and set its ID and its kind inside it: "
             "reinforcing, coded R, where the returning effect amplifies the first change, or balancing, coded B, where it pushes back.",
             "The minus signs give the kind. An even count, zero included, makes a loop reinforcing, and an odd count makes it "
             f"balancing, as on all {len(numbered)} of the atlas’s loops with numbered steps. Either kind can help or harm, "
@@ -1115,8 +1131,8 @@ def rule_15_7(book):
             "through a step graded hypothesis; or conceptual, a mechanism with no complete chain of numbered connections. Print "
             "the closure in words beside the loop’s grade. Draw a hypothesized step in dots, and each step of a conceptual loop "
             "as the hollow line of Rule 13.4, between thin pills, since its stations are not the atlas’s numbered variables.",
-            f"Of the atlas’s {len(LOOP)} loops, {closed} close through numbered connections, {len(hyp)} close through a "
-            f"hypothesis and {len(con)} are conceptual.",
+            f"Of the atlas’s {len(LOOP)} loops, {closed} close through numbered connections, {words_n(len(hyp))} close "
+            f"through a hypothesis and {words_n(len(con))} are conceptual.",
         ],
         "tokens": ["oa.chart.grade.hypothesis", "oa.chart.grade.conceptual.rail"],
         "why": {"text": ["Closure and grade answer different questions. A conceptual loop can rest on strong research and still "
@@ -1133,7 +1149,7 @@ def rule_15_7(book):
             {"label": "Every step numbered", "value": "The loop as Rule 15.6 draws it"},
             {"label": "Closes through a hypothesis", "value": "The closing step in dots, with these words beside the grade", "token": "oa.chart.grade.hypothesis"},
             {"label": "Conceptual", "value": "Hollow lines with their signs, 1 px pills, no step numbers or chips; “No numbered chain” beside the grade", "token": "oa.chart.grade.conceptual.rail"},
-            {"label": "Counts", "value": f"{closed} closed, {len(hyp)} through a hypothesis, {len(con)} conceptual, as of the snapshot"},
+            {"label": "Counts", "value": f"{closed} closed, {words_n(len(hyp))} through a hypothesis, {words_n(len(con))} conceptual, as of the snapshot"},
         ],
         "related": ["10", "13"],
         "builders": ["Read the closure from the loop’s record, and draw a conceptual loop’s steps from its own list of stations "
@@ -1244,11 +1260,11 @@ def layers_plate(failure=False):
     top = 40 if failure else 0
     x4 = Pill(short("X4"), 2 + pw / 2, 0, pw)
     x4.cy = top + x4.h / 2 + 2
-    cy0 = x4.bot + 56
+    cy0 = x4.bot + 84
     b6 = Pill(short("B6"), 2 + pw / 2, 0, pw)
     b6.cy = cy0 + 34 + b6.h / 2
     cy1 = b6.bot + 12
-    ty0 = cy1 + 70
+    ty0 = cy1 + 92
     tc = Pill(short("TC1"), 2 + pw / 2, 0, pw)
     tc.cy = ty0 + 34 + tc.h / 2
     ty1 = tc.bot + 12
@@ -1308,8 +1324,8 @@ def rule_15_9(book):
         "title": "Frame the atlas’s layers and clusters, and set outside drivers beyond the frames.",
         "rule": [
             f"Our systems atlas sorts its {len(NODE)} variables into three layers: the core, “{V7['layers']['core']['title']}”, "
-            f"with {lay['core']} variables, five of them outside drivers and the rest in {len(clusters)} clusters; the economy "
-            f"layer, with {lay['economy']}; and the technology layer, with {lay['technology']}. Where a drawing shows variables "
+            f"with {lay['core']} variables, five of them outside drivers and the rest in {words_n(len(clusters))} clusters; the "
+            f"economy layer, with {lay['economy']}; and the technology layer, with {words_n(lay['technology'])}. Where a drawing shows variables "
             "from more than one layer, frame each layer with a 1 px rule and its name, and name the cluster of a core variable.",
             f"An outside driver is “{q.lower()[0] + q[1:]}”, in the atlas’s words. Set it outside every frame, with its kind in "
             "words. Where a connection crosses a frame, break the frame around the line, so a reader sees where the effect comes in.",
@@ -1345,13 +1361,14 @@ def rule_15_10(book):
     need(r1["from"].startswith("TC1:") and r1["to"].startswith("B4:"), "rejected connection LTR1 changed")
     reason = C13_sentences(r1["reason"])
     need(reason[0] == "Feed ranking changes what people see (LT01).", "LTR1's reason changed")
-    quote = " ".join(reason[:2])
+    quote = reason[1]
+    need(quote.startswith("In the largest experiments, changing the feed did not measurably change hostility"), "LTR1's reason changed")
     gl = GLOSS["Rejected connection"]
     need(gl.startswith("A relationship that was reviewed against the evidence and left off the map"), "the atlas's rejected connection entry changed")
     b, h, _ = card("TC1", "B6", "LT01", layers=("Technology layer", "Core layer"))
     panel = (f'<p class="k">Reviewed and not drawn</p><p class="hed"><span>From {chip("Variable", "TC1")} to '
              f'{chip("Variable", "B4", ",")} {e(lc(node("B4")["title"]))}</span></p><p class="q">“{e(quote)}”</p>'
-             f'<p class="nt">The atlas keeps {len(rej)} connections it reviewed and left off its map, each with its reason.</p>')
+             f'<p class="nt">The atlas keeps {words_n(len(rej))} connections it reviewed and left off its map, each with its reason.</p>')
     body = (f'<div class="fx two"><div>{hed("Connection", "LT01", link("LT01")["name"])}{fig(svg_wrap(b, h))}</div>'
             f'<div>{panel}</div></div>' + src("connection LT01 and rejected connection LTR1"))
     book.add("s-15-10-correct", body, rule="15.10", readable=True,
@@ -1372,8 +1389,8 @@ def rule_15_10(book):
         "id": "15.10",
         "title": "Show what the model leaves out beside what it draws.",
         "rule": [
-            f"Our systems atlas keeps a record of what it left off its map: {len(rej)} connections it reviewed against the "
-            f"evidence and did not draw, {len(V7['omissions'])} subjects it names as omitted, and a boundary that lists what the "
+            f"Our systems atlas keeps a record of what it left off its map: {words_n(len(rej))} connections it reviewed against "
+            f"the evidence and did not draw, {words_n(len(V7['omissions']))} subjects it names as omitted, and a boundary that lists what the "
             "model does not cover. Where a drawing shows a mechanism next to one of those connections, print the connection "
             "beside it in words, with the atlas’s reason, under the heading Reviewed and not drawn.",
             "Draw no line for a connection the atlas reviewed and left out, in any pattern.",
@@ -1394,7 +1411,7 @@ def rule_15_10(book):
             {"label": "Heading", "value": "Reviewed and not drawn"},
             {"label": "Words", "value": "From and to, with typed chips, and the atlas’s reason quoted"},
             {"label": "Line", "value": "None, in any pattern"},
-            {"label": "Records", "value": f"{len(rej)} rejected connections and {len(V7['omissions'])} omissions, as of the snapshot"},
+            {"label": "Records", "value": f"{words_n(len(rej)).capitalize()} rejected connections and {words_n(len(V7['omissions']))} omissions, as of the snapshot"},
         ],
         "related": ["13"],
         "builders": ["Look up the atlas’s rejected connections for every pair of variables a drawing shows, and print any match "
@@ -1420,21 +1437,25 @@ def rule_15_13(book):
     q = "The middle step, L02: Political spending can tilt policy toward donors, is plausible and the weakest."
     need(q in es, "Loop R1's evidence summary no longer names L02 its weakest step")
     need(least_certain(lp["links"]) == "plausible", "Loop R1's least certain grade changed")
+    frag = "is plausible and the weakest."
+    need(q.endswith(frag), "the atlas's words on Loop R1's weakest step changed")
+    said = (f'In the atlas’s evidence summary, the middle step, {chip("Connection", "L02", ",")} “{e(frag)}”')
+    said_alt = f"In the atlas’s evidence summary, the middle step, connection L02, “{frag}”"
     codes = ["A1", "B1", "E1"]
     b, h = three_loop(codes, lp["links"], weakest=1, inside=("R1", "reinforcing"))
     svg = svg_wrap(b, h)
-    steps = kw([f"<b>{i}</b> {say_link(x)}" + (" The atlas names it the weakest step." if x == "L02" else "")
+    steps = kw([f"<b>{i}</b>&#160;{say_link(x)}" + (" The atlas names it the weakest step." if x == "L02" else "")
                 for i, x in enumerate(lp["links"], 1)])
     body = (diagram_label("plausible", "some evidence, the grade of the loop’s least certain step, Connection L02")
             + f'<div class="fx two"><div>{hed("Loop", "R1", lp["title"])}{fig(svg, read_aloud(codes, lp["links"]))}</div>'
-            f'<div><p class="k">Each step, and the weakest</p>{steps}<p class="q">“{e(q)}”</p></div></div>'
+            f'<div><p class="k">Each step, and the weakest</p>{steps}<p class="nt">{said}</p></div></div>'
             + src("loop R1 and connections L01, L02 and L03"))
     book.add("s-15-13-correct", body, rule="15.13", readable=True,
              alt=(f"Loop R1 from our systems atlas, “{lp['title']}”, under a label reading Plausible, the grade of its least "
                   "certain step. Three pills: Wealth concentration at the top, Money in politics below right, Policy tilt to "
                   "insiders below left. Step 1, solid, money, raises; step 2, dashed, money, raises, marked weakest step; step 3, "
-                  f"solid, money, raises. The loop reads: {read_aloud(codes, lp['links'])} Beside it, each step with its grade, "
-                  f"and the atlas’s words: {q}"),
+                  f"solid, money, raises. The loop reads: {read_aloud(codes, lp['links'])} Beside it, each step with its grade. "
+                  f"{said_alt}"),
              notes="Grades, signs, types and delays from each connection's record; the weakest step from the loop's evidence summary.")
     book.log("15.13 correct", "Loop R1, wealth and influence", "D03")
     fb, fh = three_loop(codes, lp["links"], grades={1: "well-supported"})
@@ -1485,12 +1506,22 @@ def rule_15_14(book):
     need(tq in qual, "Loop R8's qualification changed")
     t12 = link("T12")
     need((t12["from"], t12["to"], t12["polarity"]) == ("A6", "A1", "-"), "connection T12 changed")
+    r1, r2 = "tends to lower the top 1% share of wealth", "so this loop does not explain that share."
+    need(tq == f"Rising home equity {r1} (T12: {t12['name']}), {r2}", "Loop R8's qualification changed")
+    why_html = (f'Its reason, from the atlas’s qualification: rising home equity “{e(r1)}”, as {chip("Connection", "T12")} '
+                f'“{e(t12["name"])}” records, “{e(r2)}”')
+    why_txt = (f"Its reason, from the atlas’s qualification: rising home equity “{r1}”, as connection T12, “{t12['name']}”, "
+               f"records, “{r2}”")
     need([link(x)["evidence"] for x in lp["links"]] == ["well-supported", "well-supported"], "Loop R8's grades changed")
+    f1, f2 = "well-supported for both links", "no longer depends on"
+    need(lp["evidence"] == f"{f1}; the loop {f2} A1", "Loop R8's evidence note changed")
+    rev_html = (f'Its evidence note reads “{e(f1)}”, and says the loop “{e(f2)}” {chip("Variable", "A1", ",")} '
+                f'{e(lc(node("A1")["title"]))}.')
+    rev_txt = (f"Its evidence note reads “{f1}”, and says the loop “{f2}” Variable A1, {lc(node('A1')['title'])}.")
     codes = ["A5", "A6"]
     b, h, _ = two_loop(codes, lp["links"], inside=("R8", "reinforcing"))
-    panel = (f'<p class="k">The atlas’s revision, as of {SNAP}</p><p class="q">“{e(lp["evidence"])}”</p>'
-             f'<p class="nt">Why it no longer runs through {chip("Variable", "A1", ",")} {e(lc(node("A1")["title"]))}:</p>'
-             f'<p class="q">“{e(tq)}”</p>')
+    panel = (f'<p class="k">The atlas’s revision, as of {SNAP}</p><p class="nt">{rev_html}</p>'
+             f'<p class="nt">{why_html}</p>')
     body = (diagram_label("well-supported", "strong research evidence, the grade of both steps")
             + f'<div class="fx two"><div>{hed("Loop", "R8", lp["title"])}{fig(svg_wrap(b, h), read_aloud(codes, lp["links"]))}</div>'
             f'<div>{panel}</div></div>' + src("loop R8, its evidence note and qualification, and connection T12"))
@@ -1498,7 +1529,7 @@ def rule_15_14(book):
              alt=(f"Loop R8 from our systems atlas, “{lp['title']}”, under a label reading Well supported. Two pills, Housing "
                   "scarcity and Owner home equity, with step 1 over the top, plus, raises, and step 2 under the bottom, plus, "
                   f"raises, both solid with three delay ticks. The loop reads: {read_aloud(codes, lp['links'])} Beside it, the "
-                  f"atlas’s revision as of {SNAP}, quoted: {lp['evidence']}; and its reason, quoted: {tq}"),
+                  f"atlas’s revision as of {SNAP}. {rev_txt} {why_txt}"),
              notes="The revision and its reason quoted from the loop's evidence and qualification fields, with the snapshot date.")
     book.log("15.14 correct", "Loop R8, housing scarcity", "D09")
     stations = [short("A5"), short("A6"), short("A1")]
@@ -1513,8 +1544,9 @@ def rule_15_14(book):
         "title": "Show a change to the model in the atlas’s own words, with its date.",
         "rule": [
             "Our systems atlas revises its model as the evidence changes, and it records some revisions in its own text. Loop R8, "
-            f"“{lp['title']}”, carries one in its evidence note: “{lp['evidence']}”. Quote a revision as the atlas writes it, "
-            "with the snapshot date, and draw the loop as it stands now.",
+            f"“{lp['title']}”, carries one: its evidence note reads “{f1}”, and says the loop “{f2}” Variable A1, "
+            f"{lc(node('A1')['title'])}. Quote a revision as the atlas writes it, with the snapshot date, and draw the loop as "
+            "it stands now.",
             "A drawing made before the revision is a record of what we drew. It is never evidence for the model, and a page "
             "that published one corrects it as Rule 13.13 sets out.",
         ],
@@ -1597,6 +1629,17 @@ def chapter(book):
 # ===============================================================================================================
 # Checks
 # ===============================================================================================================
+def curly(o, skip=("specimen", "id", "before_rule", "chapter", "related", "token", "tokens", "anchor")):
+    """Atlas titles carry straight apostrophes; the chapter prints curly ones (chapter 06), as e() does in the plates."""
+    if isinstance(o, str):
+        return o.replace("'", "’")
+    if isinstance(o, list):
+        return [curly(x) for x in o]
+    if isinstance(o, dict):
+        return {k: (v if k in skip else curly(v)) for k, v in o.items()}
+    return o
+
+
 def check(data, book):
     fails = []
     texts = {"chapter": " ".join(C13.strings({k: v for k, v in data.items() if k not in ("sources",)}))}
@@ -1694,7 +1737,7 @@ def write(data, book):
 
 def main():
     book = Book()
-    data = chapter(book)
+    data = curly(chapter(book))
     fails, dom = check(data, book)
     frag = sum(len(x.encode()) for x in book.files.values())
     js = len(json.dumps(data, indent=1, ensure_ascii=False).encode())

@@ -1,0 +1,60 @@
+{
+ "file": "congress-gov-pbm-bills-119.csv",
+ "kind": "public",
+ "publisher": "Library of Congress, bill status data (Congress.gov), as published in bulk on govinfo by the U.S. Government Publishing Office",
+ "title_or_table": "Bills of the 119th Congress whose titles name pharmacy benefit managers",
+ "table_id": "BILLSTATUS bulk files, 119th Congress, hr and s",
+ "url": [
+  "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/hr/BILLSTATUS-119-hr.zip",
+  "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/s/BILLSTATUS-119-s.zip"
+ ],
+ "observation_period": "119th Congress, bills introduced January 3, 2025 to the files of November 11, 2026",
+ "geography": "United States Congress",
+ "universe_or_base": "Every bill of the 119th Congress (H.R. and S. bills) with any title the bill status file lists (official, short or popular, as introduced or later) containing \"pharmacy benefit manager\" (any case, singular or plural) or the word \"PBM\" or \"PBMs\"; a bill whose titles name neither is left out",
+ "unit": "bills",
+ "date_retrieved": "2026-11-12",
+ "vintage": "BILLSTATUS bulk files last modified November 11, 2026",
+ "qualification": "A title search finds bills that say what they do in a title; a bill that changes pharmacy benefit managers without naming them in any title is not here. The same bill in each chamber is two bills.",
+ "columns": {
+  "bill": {
+   "type": "id",
+   "description": "bill label, H.R. n or S. n"
+  },
+  "bill_type": {
+   "type": "category",
+   "description": "HR or S"
+  },
+  "number": {
+   "type": "integer",
+   "description": "bill number"
+  },
+  "introduced": {
+   "type": "date",
+   "description": "date introduced"
+  },
+  "title": {
+   "type": "text",
+   "description": "the bill’s display title"
+  },
+  "matched_title": {
+   "type": "text",
+   "description": "one title that matched the search"
+  },
+  "became_law": {
+   "type": "text",
+   "description": "public law, if any"
+  }
+ },
+ "printed_source_line": "Source: Library of Congress, bill status data for the 119th Congress, bulk files of November 11, 2026, bills whose titles name pharmacy benefit managers. Retrieved November 12, 2026. A bill that does not name them in a title is not counted.",
+ "ledger_row": "P7-205",
+ "domain": "D06",
+ "domain_note": "V7 files drug middlemen under competition and market power (I084)",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "BILLSTATUS-119-hr.zip": "b05399000833eae6",
+  "BILLSTATUS-119-s.zip": "c9b4e40831593153"
+ },
+ "notes": [
+  "Bills scanned: {'hr': 10984, 's': 5699}; matched: {'HR': 10, 'S': 8}; the chamber drawn (more matches): HR."
+ ]
+}

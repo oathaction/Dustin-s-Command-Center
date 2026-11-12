@@ -1,0 +1,72 @@
+{
+ "id": "14.7",
+ "title": "Tell parties apart by name, place and shape, with no red and blue.",
+ "rule": [
+  "Rule 01.2 draws every party in one neutral ink with its name on the mark, and Rule 01.1 keeps red off every party. A chart then tells parties apart by what a reader can read without color: the name on or beside each mark, the mark’s place in the order, a solid and an open mark where two sides sit side by side, and a word or sign for direction, as in “Republican +2.2”.",
+  "No election graphic pairs red with blue, social cards included, and Prussian never stands for a party."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "Red and blue turn a chart of results into team colors, and a reader decides which side the chart is on before reading a number. A name on each mark gives readers on both sides the same facts, in color or in grayscale."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [
+  "oa.chart.color.party.mark.onNewsprint"
+ ],
+ "related": [
+  "01.1",
+  "01.2",
+  "05.7"
+ ],
+ "builders": "Party data takes the party role in any form; the kit fails a party mark in Pillar Red or Prussian.",
+ "specs": [
+  {
+   "label": "Party marks",
+   "value": "One neutral ink for every party, Charcoal on Newsprint",
+   "token": "oa.chart.color.party.mark.onNewsprint"
+  },
+  {
+   "label": "Two sides at a glance",
+   "value": "One solid and one open mark, in the same ink (Rule 01.2)"
+  },
+  {
+   "label": "Direction",
+   "value": "An arrow, the mark’s place or a printed lead, such as “Republican +2.2”"
+  },
+  {
+   "label": "Never",
+   "value": "Red against blue, or Prussian for a party"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-7-correct",
+  "caption": "Every party takes the same ink and its name, so the bars compare seats and nothing else.",
+  "alt": "Bars in one ink with each party named on its bar. Republicans held 218 House seats and Democrats 214 on November 11, 2026, with one independent and two seats empty.",
+  "illustrative": false,
+  "notes": "",
+  "charts": [
+   "s-14-7-seats"
+  ]
+ },
+ "failure": {
+  "specimen": "s-14-7-failure",
+  "caption": "<strong>Fails Rule 14.7.</strong> Red and blue stand for the parties and a key holds their initials, so the chart reads as one team against another and loses the parties in grayscale.",
+  "alt": "Failure case: do not publish. Two bars, a red one marked R at 218 and a blue one marked D at 214, with a key of a red square for R and a blue square for D.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "examples": [
+  {
+   "example": "House seats by party, November 11, 2026",
+   "domain": "D02",
+   "states": [],
+   "level": "federal",
+   "where": "14.7"
+  }
+ ]
+}

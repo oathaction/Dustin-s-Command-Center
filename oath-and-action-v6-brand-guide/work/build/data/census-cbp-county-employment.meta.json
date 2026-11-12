@@ -1,0 +1,51 @@
+{
+ "file": "census-cbp-county-employment.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "County Business Patterns, all sectors (NAICS 00), paid employees and establishments by county",
+ "table_id": "CBP 2023, NAICS2017 00, EMP and ESTAB",
+ "url": [
+  "https://api.census.gov/data/2023/cbp?get=NAME,EMP,EMP_N,ESTAB,NAICS2017&for=county:*&NAICS2017=00",
+  "https://api.census.gov/data/2023/cbp?get=NAME,EMP,ESTAB,NAICS2017&for=us:*&NAICS2017=00",
+  "https://api.census.gov/data/2023/cbp/variables.json"
+ ],
+ "observation_period": "2023; employees in the pay period including March 12",
+ "geography": "Every county in the 50 states and DC that the file lists (3142); Puerto Rico and the island areas left out",
+ "universe_or_base": "Paid employees of private establishments; government, the self-employed and most farm and household workers are not counted",
+ "unit": "employees; establishments",
+ "date_retrieved": "2026-11-12",
+ "vintage": "CBP 2023 release",
+ "qualification": "Counts private-sector paid employees where they work, not where they live. The Bureau adds noise to protect employers; the data API returned the same noise range code (0) for every county total, and the code’s meaning was not read, so no county is marked. Kalawao County, Hawaii, and King County, Texas, are not in the file.",
+ "columns": {
+  "geoid": {
+   "type": "id",
+   "description": "county FIPS code"
+  },
+  "name": {
+   "type": "text",
+   "description": "county name and state"
+  },
+  "state": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "paid_employees": {
+   "type": "integer",
+   "description": "paid employees, pay period including March 12",
+   "unit": "employees"
+  },
+  "establishments": {
+   "type": "integer",
+   "description": "establishments with paid employees",
+   "unit": "establishments"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, County Business Patterns, paid employees by county, 2023, counties of the 50 states and DC. Retrieved November 12, 2026. Private-sector paid employees only, counted where they work.",
+ "ledger_row": "P7-212",
+ "domain": "D07",
+ "states": [],
+ "notes": [
+  "The counties sum to 132,151,802 paid employees; the national row, all sectors, gives 139,831,742. The difference was not traced today.",
+  "Noise range codes returned: {'0': 3142}."
+ ]
+}

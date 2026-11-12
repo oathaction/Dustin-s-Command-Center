@@ -1,0 +1,147 @@
+{
+  "kit": 1,
+  "id": "S37",
+  "form": "heat-table",
+  "family": "tables-and-plain-words",
+  "tier": "extended",
+  "dataset": "v7-reform-routes",
+  "reader_question": "Which routes could carry each reform, and how feasible is each?",
+  "evidence": "estimate",
+  "evidence_label": "Estimate",
+  "grade_line": "The atlas’s own judgment of feasibility for 2026 to 2030, on a four-step scale",
+  "v7": {
+    "grade": "documented",
+    "ids": [],
+    "snapshot": "2026-10-15"
+  },
+  "title": "The atlas rates 36 of its 38 routes through an act of Congress low or very low in feasibility for 2026 to 2030, and 24 of its 29 routes through a state law medium or high.",
+  "measure_line": "Each of the atlas’s 50 reforms by the routes that could carry it, 126 routes in all, with the atlas’s rating of how feasible each is from 2026 to 2030, United States, as of October 15, 2026. Each reform shows only the routes the atlas names for it.",
+  "notes": [
+    "Feasibility is the atlas’s own judgment on a four-step scale. Each cell gives its word, and the cells add to no score or total.",
+    "The atlas checked 13 of the 126 routes on October 15, 2026, each marked with a dot; every other route is not checked.",
+    "Local routes, 15 in all, are rated medium or high in 14 cases."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A heat table of the atlas’s 50 reforms against 11 routes to change, each cell tinted and labeled with the atlas’s rating of feasibility for 2026 to 2030. Routes through an act of Congress are rated low or very low in 36 of 38 cases; routes through a state law are rated medium or high in 24 of 29.",
+  "table": {
+    "caption": "Feasibility of each reform’s routes, 2026 to 2030, as the atlas rates them",
+    "pivot": {
+      "row": "reform_title",
+      "column": "route",
+      "value": "feasibility",
+      "format": "text",
+      "labels": {
+        "FS": "Federal statute",
+        "SS": "State statute",
+        "BI": "State ballot",
+        "LOC": "Local",
+        "FA": "Federal executive action",
+        "FR": "Chamber rule or confirmation",
+        "ENF": "Enforcement and litigation",
+        "CRT": "Court doctrine",
+        "AV": "Article V",
+        "IC": "Interstate compact",
+        "CIV": "Civil society"
+      }
+    },
+    "columns": [
+      {
+        "field": "reform_title",
+        "label": "Reform",
+        "format": "text",
+        "row_header": true
+      }
+    ]
+  },
+  "chart_notes": [
+    "Tints run from very low, the lightest, to high, the darkest, each with its word. A dot marks a route the atlas checked on October 15, 2026."
+  ],
+  "phone": "differs",
+  "phone_note": "On a phone each reform lists its routes as tinted chips that name the route and the rating.",
+  "artboard": "wide",
+  "domain": "all",
+  "states": [],
+  "encode": {
+    "row": "reform_id",
+    "row_label": "reform_title",
+    "group": "reform_group",
+    "column": "route",
+    "value": "feasibility",
+    "flag": "checked"
+  },
+  "labels": {
+    "columns": [
+      {
+        "value": "FS",
+        "label": "Federal statute"
+      },
+      {
+        "value": "SS",
+        "label": "State statute"
+      },
+      {
+        "value": "BI",
+        "label": "State ballot"
+      },
+      {
+        "value": "LOC",
+        "label": "Local"
+      },
+      {
+        "value": "FA",
+        "label": "Federal executive action"
+      },
+      {
+        "value": "FR",
+        "label": "Chamber rule or confirmation"
+      },
+      {
+        "value": "ENF",
+        "label": "Enforcement and litigation"
+      },
+      {
+        "value": "CRT",
+        "label": "Court doctrine"
+      },
+      {
+        "value": "AV",
+        "label": "Article V"
+      },
+      {
+        "value": "IC",
+        "label": "Interstate compact"
+      },
+      {
+        "value": "CIV",
+        "label": "Civil society"
+      }
+    ],
+    "steps": [
+      {
+        "value": "very low",
+        "label": "Very low"
+      },
+      {
+        "value": "low",
+        "label": "Low"
+      },
+      {
+        "value": "medium",
+        "label": "Medium"
+      },
+      {
+        "value": "high",
+        "label": "High"
+      }
+    ],
+    "flag_key": "Checked by the atlas on October 15, 2026; a cell with no dot is not checked",
+    "key_title": "Feasibility, 2026 to 2030"
+  },
+  "notes_internal": [
+    "Data plan row 36. The routes run in V7's order (proposal section 1.4); the reforms in V7's order under its reform groups.",
+    "Rule 13.10: the 13 dated routes take a dot; the key and note 2 say every other route is not checked. The sidecar's qualification: each cell's word, never a score or a total.",
+    "Evidence label Estimate: feasibility is the atlas's judgment of what could happen by 2030; the title reports the ratings as the atlas records them, so v7.grade is documented.",
+    "Figures checked by script (figures.py s37)."
+  ]
+}

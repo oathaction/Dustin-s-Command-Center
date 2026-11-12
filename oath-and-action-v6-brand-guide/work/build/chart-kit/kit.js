@@ -58,6 +58,9 @@
       case 'percent': return (v < 0 ? MINUS : '') + fixed(v, nd) + '%';
       case 'signed': return signed(v, fixed(v, nd));
       case 'points': return (v < 0 ? MINUS : '') + fixed(v, nd);
+      // dollars (R-B2, round 1): $2,000 and −$2,000; signed-dollars +$2,000; dollars:2 keeps cents
+      case 'dollars': return (v < 0 ? MINUS : '') + '$' + fixed(v, nd);
+      case 'signed-dollars': return signed(v, '$' + fixed(v, nd));
       case 'compact-thousands':
       case 'signed-compact-thousands': {
         var a = Math.abs(v) * 1000, sg = f === 'signed-compact-thousands' ? (v > 0 ? '+' : v < 0 ? MINUS : '') : (v < 0 ? MINUS : '');
@@ -194,11 +197,22 @@
       return o;
     });
   };
+  function in_range(v, rg) {
+    if (v === null || v === undefined || v === '') return false;
+    var num = function (x) { return typeof x === 'number' || (typeof x === 'string' && /^-?\d+(\.\d+)?$/.test(x)); };
+    var cmp = function (a, b) { return num(a) && num(b) ? Number(a) - Number(b) : String(a) < String(b) ? -1 : String(a) > String(b) ? 1 : 0; };
+    return !('from' in rg && cmp(v, rg.from) < 0) && !('to' in rg && cmp(v, rg.to) > 0);
+  }
   K.select = function (spec, rows) {
     var w = spec.where || {};
     var out = rows.filter(function (r) {
       for (var k in w) {
-        // where: {column: value or [values]} keeps those rows; {column: {not: value or [values]}} leaves them out
+        // where: {column: value or [values]} keeps those rows; {column: {not: value or [values]}} leaves them out;
+        // {column: {from: a, to: b}} keeps a to b, both ends kept, compared as numbers when both are, else as text (R-B3)
+        if (w[k] && typeof w[k] === 'object' && !Array.isArray(w[k]) && ('from' in w[k] || 'to' in w[k])) {
+          if (!in_range(r[k], w[k])) return false;
+          continue;
+        }
         var neg = w[k] && typeof w[k] === 'object' && !Array.isArray(w[k]) && 'not' in w[k];
         var want = neg ? [].concat(w[k].not) : Array.isArray(w[k]) ? w[k] : [w[k]];
         if ((want.map(String).indexOf(String(r[k])) >= 0) === neg) return false;
@@ -650,8 +664,8 @@
       return mm[1] === w.positive ? String(v) : mm[1] === w.negative ? String(-v) : undefined;
     }
     var base = f.replace(/:\d+$/, '');
-    if (/^(integer|number|percent|signed|points)$/.test(base)) {
-      var n = t.replace(/[+,%\s]/g, '').replace(MINUS, '-');
+    if (/^(integer|number|percent|signed|points|dollars|signed-dollars)$/.test(base)) {
+      var n = t.replace(/[+,%$\s]/g, '').replace(MINUS, '-');
       return /^-?\d+(\.\d+)?$/.test(n) ? n : undefined;
     }
     if (base === 'thousands' || base === 'signed-thousands') {
@@ -688,7 +702,7 @@
     var tb = spec.table || {}, ids = (spec.v7 && spec.v7.ids) || [];
     var cap = tb.caption ? '<caption>' + K.chips(tb.caption, ids) + '</caption>' : '';
     var t = K.table_rows(spec, rows), head = '', body = '';
-    function num_col(col) { return /^(integer|number|percent|signed|points|thousands|signed-thousands)/.test(String(col.format || '')); }
+    function num_col(col) { return /^(integer|number|percent|signed|points|thousands|signed-thousands|dollars|signed-dollars)/.test(String(col.format || '')); }
     if (t.pivot) {
       var pv = tb.pivot, rc = (tb.columns || [])[0] || { label: pv.row, format: 'text' };
       head = '<tr><th scope="col">' + esc(rc.label) + '</th>' + t.cols.map(function (cn) {
@@ -760,7 +774,7 @@
     var carried = opts.carry === false ? {} : carried_fields(spec, rows, types);
     var cap = tb.caption ? '<caption>' + K.chips(tb.caption, ids) + '</caption>' : '';
     var t = K.table_rows(spec, rows), head = '', body = '';
-    var num_col = function (col) { return /^(integer|number|percent|signed|points|thousands|signed-thousands|lead|compact-thousands|signed-compact-thousands)/.test(String(col.format || '')); };
+    var num_col = function (col) { return /^(integer|number|percent|signed|points|thousands|signed-thousands|lead|compact-thousands|signed-compact-thousands|dollars|signed-dollars)/.test(String(col.format || '')); };
     var dv = function (raw, html, col) {
       if (carried[col.field]) return '';
       var back = K.unformat(visible_text(html), col);

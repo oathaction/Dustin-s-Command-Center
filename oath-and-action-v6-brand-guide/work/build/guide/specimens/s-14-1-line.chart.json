@@ -1,0 +1,63 @@
+{
+ "kit": 1,
+ "id": "s-14-1-line",
+ "form": "line-event-notes",
+ "family": "change-over-time",
+ "tier": "core",
+ "dataset": "census-bfs-business-applications-by-state",
+ "where": {
+  "code": "US"
+ },
+ "reader_question": "How has the number of applications to start a business changed since 2005?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: a Census Bureau count of applications for a tax ID",
+ "title": "Americans filed 5.7 million applications to start a business in 2025, more than twice the 2.5 million of 2005",
+ "measure_line": "Applications for a federal tax ID that signal a new business, each year from 2005, the first full year the Census Bureau publishes, to 2025, United States",
+ "source_line": "Source: U.S. Census Bureau, Business Formation Statistics, business applications, 2005 to 2025, 50 states and DC. Retrieved November 11, 2026. Applications for a tax ID that signal a new business; many never hire; annual totals summed by Oath & Action.",
+ "notes": [
+  "Many applications never become a business that hires anyone, so the count measures plans to start one."
+ ],
+ "alt": "A line of business applications each year from 2005 to 2025 in the United States: about 2.5 million a year through 2013, rising to 3.5 million in 2019, 5.4 million in 2021 and 5.7 million in 2025.",
+ "table": {
+  "caption": "Business applications each year, United States",
+  "columns": [
+   {
+    "field": "year",
+    "label": "Year",
+    "format": "year",
+    "row_header": true
+   },
+   {
+    "field": "business_applications",
+    "label": "Applications",
+    "format": "integer"
+   }
+  ]
+ },
+ "domain": "D06",
+ "states": [],
+ "encode": {
+  "x": "year",
+  "y": "business_applications"
+ },
+ "annotations": [
+  {
+   "at": {
+    "x": 2005
+   },
+   "text": "2.5 million",
+   "place": "above"
+  },
+  {
+   "at": {
+    "x": 2025
+   },
+   "text": "5.7 million",
+   "place": "above"
+  }
+ ],
+ "notes_internal": "Rule 14.1's correct plate. Figures checked by script: 2005 and 2025 from the US rows.",
+ "illustrative": false,
+ "phone": "same"
+}

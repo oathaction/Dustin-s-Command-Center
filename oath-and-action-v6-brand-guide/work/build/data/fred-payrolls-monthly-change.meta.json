@@ -42,5 +42,8 @@
  "specimens": [
   "S14"
  ],
+ "source_line_variants": {
+  "with_margin": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised. The margin of error is the Bureau’s 90 percent interval for a month’s change in its survey of employers, plus or minus 122,000, from its Employment Situation technical note, October 2026 release."
+ },
  "derivation": "From series PAYEMS: each month’s level minus the month before; avg3_thousands is the three-month moving average ending in that month, computed from December 2021 on so January 2022 has one. Rows from January 2022 on."
 }

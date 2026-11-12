@@ -1,0 +1,79 @@
+{
+ "file": "fec-jfc-transfers-2024.csv",
+ "kind": "public",
+ "publisher": "Federal Election Commission",
+ "title_or_table": "Schedule B disbursements of each nominee’s joint fundraising committee to other committees, aggregated by recipient",
+ "table_id": "OpenFEC /schedules/schedule_b/by_recipient_id/ and /schedules/schedule_b/, 2024 cycle",
+ "url": [
+  "https://api.open.fec.gov/v1/schedules/schedule_b/by_recipient_id/?recipient_id=C00703975&cycle=2024",
+  "https://api.open.fec.gov/v1/schedules/schedule_b/by_recipient_id/?recipient_id=C00828541&cycle=2024",
+  "https://api.open.fec.gov/v1/schedules/schedule_b/by_recipient_id/?committee_id=C00744946&cycle=2024",
+  "https://api.open.fec.gov/v1/schedules/schedule_b/by_recipient_id/?committee_id=C00873893&cycle=2024"
+ ],
+ "observation_period": "2023 to 2024 election cycle",
+ "geography": "United States",
+ "universe_or_base": "For each major-party nominee, the joint fundraising committee that transferred the most to the nominee’s principal campaign committee in the 2024 cycle, and every committee it paid",
+ "unit": "dollars; transactions",
+ "date_retrieved": "2026-11-12",
+ "vintage": "FEC processed filings as the API served them on November 12, 2026",
+ "qualification": "Amounts are the FEC’s sums of itemized disbursements to each committee in the cycle; a joint fundraising committee splits contributions among its participants under its agreement, so a transfer is not a gift from the committee’s own funds. Each nominee had more than one joint fundraising committee; the rule above picks one for each, read the same way.",
+ "columns": {
+  "nominee": {
+   "type": "text",
+   "description": "the presidential nominee"
+  },
+  "jfc_id": {
+   "type": "id",
+   "description": "FEC ID of the joint fundraising committee"
+  },
+  "jfc_name": {
+   "type": "text",
+   "description": "its name"
+  },
+  "recipient_id": {
+   "type": "id",
+   "description": "FEC ID of the committee paid"
+  },
+  "recipient_name": {
+   "type": "text",
+   "description": "its name as the FEC gives it today"
+  },
+  "recipient_type": {
+   "type": "category",
+   "description": "committee type"
+  },
+  "recipient_state": {
+   "type": "code",
+   "description": "committee’s state, if any"
+  },
+  "amount": {
+   "type": "number",
+   "description": "total paid in the cycle",
+   "unit": "dollars"
+  },
+  "transactions": {
+   "type": "integer",
+   "description": "itemized transactions"
+  },
+  "schedule_b_lines": {
+   "type": "text",
+   "description": "Schedule B lines the itemized rows use"
+  },
+  "is_nominee_campaign": {
+   "type": "category",
+   "description": "yes for the nominee’s principal campaign committee"
+  }
+ },
+ "printed_source_line": "Source: Federal Election Commission, Schedule B disbursements of the Harris Victory Fund and the Trump National Committee JFC, 2023 to 2024 cycle, United States. Retrieved November 12, 2026. Each is the nominee’s joint fundraising committee that sent the most to the campaign.",
+ "ledger_row": "P7-216",
+ "domain": "D03",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "fetch-log.tsv": "see the download folder"
+ },
+ "notes": [
+  "{\"Kamala D. Harris\": {\"principal_committee\": \"C00703975\", \"principal_name_in_2024\": \"Harris for President\", \"principal_name_now\": \"FIGHT FOR THE PEOPLE PAC\", \"jfc\": \"C00744946\", \"jfc_name\": \"HARRIS VICTORY FUND\", \"to_campaign\": 528730999.7, \"other_jfcs\": [[\"HARRIS ACTION FUND\", 4900000.0], [\"HARRIS BALDWIN VICTORY FUND\", 35265.62]]}, \"Donald J. Trump\": {\"principal_committee\": \"C00828541\", \"principal_name_in_2024\": \"Donald J. Trump for President 2024\", \"principal_name_now\": \"NEVER SURRENDER, INC.\", \"jfc\": \"C00873893\", \"jfc_name\": \"TRUMP NATIONAL COMMITTEE JFC, INC.\", \"to_campaign\": 246821872.35, \"other_jfcs\": [[\"TRUMP SAVE AMERICA JOINT FUNDRAISING COMMITTEE\", 134018942.92], [\"TRUMP 47 COMMITTEE, INC.\", 26908283.76]]}}",
+  "Schedule B lines used: ['21B', '22', '28C'].",
+  "The principal campaign committees have since changed name and type, as the FEC lists them today (principal_name_now in the note above)."
+ ]
+}

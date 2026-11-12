@@ -1,0 +1,80 @@
+{
+ "file": "uscode-federal-courts-circuits-districts.csv",
+ "kind": "public",
+ "publisher": "U.S. Government Publishing Office, United States Code",
+ "title_or_table": "Title 28, sections 1, 41, 44, 81 to 131 and 133, and Title 48, sections 1424, 1424b, 1611, 1614 and 1821: the federal courts and their authorized judgeships",
+ "table_id": "USCODE-2024, titles 28 and 48",
+ "url": [
+  "https://www.govinfo.gov/content/pkg/USCODE-2024-title28/html/USCODE-2024-title28-partI-chap1-sec1.htm",
+  "https://www.govinfo.gov/content/pkg/USCODE-2024-title28/html/USCODE-2024-title28-partI-chap3.htm",
+  "https://www.govinfo.gov/content/pkg/USCODE-2024-title28/html/USCODE-2024-title28-partI-chap5.htm",
+  "https://www.govinfo.gov/content/pkg/USCODE-2024-title48/html/USCODE-2024-title48-chap8A.htm",
+  "https://www.govinfo.gov/content/pkg/USCODE-2024-title48/html/USCODE-2024-title48-chap12-subchapV-sec1611.htm",
+  "https://www.govinfo.gov/content/pkg/USCODE-2024-title48/html/USCODE-2024-title48-chap12-subchapV-sec1614.htm",
+  "https://www.govinfo.gov/content/pkg/USCODE-2024-title48/html/USCODE-2024-title48-chap17-subchapII-sec1821.htm"
+ ],
+ "observation_period": "Law as printed in the 2024 edition of the U.S. Code",
+ "geography": "United States: 50 states, the District of Columbia, Puerto Rico, Guam, the Northern Mariana Islands and the Virgin Islands",
+ "universe_or_base": "The Supreme Court, the 13 courts of appeals, the 91 district courts of the states, DC and Puerto Rico, and the 3 territorial district courts",
+ "unit": "courts; judgeships authorized by statute (not judges serving: vacancies and senior judges are not counted)",
+ "date_retrieved": "2026-11-12",
+ "vintage": "United States Code, 2024 edition, on govinfo.gov",
+ "qualification": "Authorized judgeships are seats the law creates, not judges in office; a later law changing a count would not be in the 2024 edition. The Federal Circuit hears appeals by subject (patents and some federal claims) from every district. 28 U.S.C. 41 still lists the District of the Canal Zone in the Fifth Circuit; it has no court today and is left out.",
+ "columns": {
+  "level": {
+   "type": "category",
+   "description": "supreme, appeals, district, district-shared (a judgeship shared by districts of one state) or district-territorial"
+  },
+  "court": {
+   "type": "text",
+   "description": "court name"
+  },
+  "parent": {
+   "type": "text",
+   "description": "the court that hears its appeals"
+  },
+  "code": {
+   "type": "code",
+   "description": "USPS code of the state or territory; empty above district level"
+  },
+  "state_or_territory": {
+   "type": "text",
+   "description": "state or territory, or for a court of appeals the places 28 U.S.C. 41 lists"
+  },
+  "judgeships": {
+   "type": "integer",
+   "description": "judgeships the statute authorizes",
+   "unit": "judgeships"
+  },
+  "article": {
+   "type": "category",
+   "description": "III for courts whose judges hold office during good behavior; IV for the territorial courts"
+  },
+  "statute": {
+   "type": "text",
+   "description": "the sections that set the court and its judgeships"
+  },
+  "note": {
+   "type": "text",
+   "description": "what a reader needs about this row"
+  }
+ },
+ "printed_source_line": "Source: U.S. Code, Title 28, sections 1, 41, 44, 81 to 131 and 133, and Title 48, sections 1424b, 1614 and 1821, 2024 edition, United States and territories. Retrieved November 12, 2026. Judgeships the law authorizes, not judges serving.",
+ "ledger_row": "P7-206",
+ "domain": "D05",
+ "domain_note": "V7’s \"Courts\" subsystem: how courts are staffed and run",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "usc28-1.htm": "3eac40ece272e43a",
+  "usc28-chap3.htm": "4f0599a4412bff75",
+  "usc28-chap5.htm": "e0fe4bda0e0f3741",
+  "usc48-1611.htm": "ee7d980e9991bbbc",
+  "usc48-1614.htm": "d3f55c6846df9f2a",
+  "usc48-1821.htm": "e2e20e087e572426",
+  "usc48-chap8A.htm": "01dad3b7e118c5a4"
+ },
+ "notes": [
+  "Courts of appeals judgeships: 179; district judgeships of the states, DC and Puerto Rico, shared seats included: 673; territorial: 4.",
+  "The territorial courts are not Article III courts: their judges serve ten-year terms (48 U.S.C. 1424b(a), 1614(a), 1821(b)(1))."
+ ]
+}

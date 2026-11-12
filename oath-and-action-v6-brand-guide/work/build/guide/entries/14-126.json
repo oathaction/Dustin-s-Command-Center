@@ -1,0 +1,43 @@
+{
+  "id": "14.126",
+  "title": "Rank a long list as a register a reader can scan.",
+  "rule": [
+    "Give each item a row with its rank, its name with a short second line such as its kind, and its amount right-aligned in figures of one width, under column heads that carry the unit. Add a thin bar from zero for each amount so the drop down the list shows, keep hairlines between rows, and print the item the title names bold.",
+    "Keep names as the source gives them in the table, and say in a note when the drawing sets them differently."
+  ],
+  "use_when": "The reader asks who leads a list of a dozen or more and wants to find a name and read its exact amount, such as the largest independent spenders in an election.",
+  "use_instead": [
+    {
+      "when": "The reader compares sizes more than reading names, among a dozen items or fewer",
+      "rule": "14.15"
+    },
+    {
+      "when": "A handful of values to look up, with no ranking",
+      "rule": "14.133"
+    },
+    {
+      "when": "The list is long enough that a reader needs to filter it",
+      "rule": "14.130"
+    },
+    {
+      "when": "Each row is a claim with its grade, source and limits",
+      "rule": "14.131"
+    }
+  ],
+  "why": {
+    "text": [
+      "A register keeps the name and the number side by side, which is what a reader looking for one group needs, and the rank tells them where it stands without counting. The thin bars add the shape of the drop from first to last at little cost in ink."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S36",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.3",
+    "14.4"
+  ],
+  "builders": "Form ranked-register: node work/build/chart-kit/oa-chart.mjs build s36, or copy specs/s36.json and point it at a new dataset; labels.divide, prefix and suffix set how each amount prints.",
+  "correct": null,
+  "failure": null
+}

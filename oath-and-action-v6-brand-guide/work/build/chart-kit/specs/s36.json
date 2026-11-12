@@ -1,0 +1,124 @@
+{
+  "kit": 1,
+  "id": "S36",
+  "form": "ranked-register",
+  "family": "tables-and-plain-words",
+  "tier": "core",
+  "dataset": "fec-independent-expenditures-2024",
+  "sort": [
+    {
+      "field": "rank",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "Which groups spent the most on their own in the 2024 federal elections?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: totals from the reports committees file with the Federal Election Commission",
+  "title": "FF PAC reported $503.3 million in independent spending for the 2024 federal elections, the most of any PAC or party committee.",
+  "measure_line": "Independent expenditures, spending for or against federal candidates made without coordinating with them, reported by each PAC and party committee for the 2023 to 2024 election cycle: the 25 largest of 9,688 committees, United States, in millions of dollars. Bars start at zero.",
+  "notes": [
+    "The totals count spending for and against candidates together. Groups that file outside the political committee system, such as some nonprofits, are left out.",
+    "A super PAC may raise unlimited sums but may not give to candidates or coordinate with them. A hybrid PAC keeps such spending in an account apart from the money it gives candidates.",
+    "The Federal Election Commission records no party for a PAC, so the register names each committee as the commission lists it, set here in capitals and lowercase. The table gives each name as filed.",
+    "The 25 committees reported $3.1 billion together."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A register of the 25 PACs and party committees that reported the most independent spending in the 2023 to 2024 cycle, from FF PAC at $503.3 million and Make America Great Again Inc. at $376.9 million to the NRCC at $36.5 million, each with a bar for its amount.",
+  "table": {
+    "caption": "The 25 largest independent spenders among PACs and party committees, 2023 to 2024 cycle",
+    "columns": [
+      {
+        "field": "rank",
+        "label": "Rank",
+        "format": "integer"
+      },
+      {
+        "field": "committee_name",
+        "label": "Committee, as filed",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "committee_type_words",
+        "label": "Kind of committee",
+        "format": "text"
+      },
+      {
+        "field": "independent_expenditures",
+        "label": "Independent spending, dollars",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Each row’s bar shows its amount on one scale from zero; FF PAC’s, the one the title names first, is in the text’s ink."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D03",
+  "states": [],
+  "encode": {
+    "rank": "rank",
+    "name": "committee_name",
+    "value": "independent_expenditures",
+    "sub": "committee_type_words"
+  },
+  "labels": {
+    "heads": {
+      "rank": "Rank",
+      "name": "Committee",
+      "value": "Millions of dollars"
+    },
+    "names": {
+      "FF PAC": "FF PAC",
+      "MAKE AMERICA GREAT AGAIN INC.": "Make America Great Again Inc.",
+      "WINSENATE": "WinSenate",
+      "CONGRESSIONAL LEADERSHIP FUND": "Congressional Leadership Fund",
+      "SENATE LEADERSHIP FUND": "Senate Leadership Fund",
+      "HMP": "HMP",
+      "AMERICA PAC": "America PAC",
+      "AMERICANS FOR PROSPERITY ACTION, INC. (AFP ACTION) DBA CVA ACTION AND DBA LIBRE ACTION": "Americans for Prosperity Action, Inc. (AFP Action)",
+      "PRESERVE AMERICA PAC": "Preserve America PAC",
+      "SFA FUND, INC": "SFA Fund, Inc.",
+      "DCCC": "DCCC",
+      "RIGHT FOR AMERICA": "Right for America",
+      "AMERICAN CROSSROADS": "American Crossroads",
+      "AB PAC": "AB PAC",
+      "DEFEND AMERICAN JOBS": "Defend American Jobs",
+      "KEYSTONE RENEWAL PAC": "Keystone Renewal PAC",
+      "WIN IT BACK PAC": "Win It Back PAC",
+      "LCV VICTORY FUND": "LCV Victory Fund",
+      "DSCC": "DSCC",
+      "RESTORATION PAC": "Restoration PAC",
+      "FAIRSHAKE": "Fairshake",
+      "UNITED DEMOCRACY PROJECT ('UDP')": "United Democracy Project (UDP)",
+      "NEVER BACK DOWN INC.": "Never Back Down Inc.",
+      "REPUBLICAN ACCOUNTABILITY PAC": "Republican Accountability PAC",
+      "NRCC": "NRCC"
+    },
+    "subs": {
+      "Super PAC (independent expenditure-only)": "Super PAC",
+      "Hybrid PAC, nonqualified": "Hybrid PAC",
+      "Hybrid PAC, qualified": "Hybrid PAC",
+      "Party committee, qualified": "Party committee"
+    },
+    "divide": 1000000,
+    "prefix": "$",
+    "suffix": "",
+    "named": [
+      "FF PAC"
+    ]
+  },
+  "formats": {
+    "value": "number:1"
+  },
+  "notes_internal": [
+    "Data plan row 33, re-picked under DR-229 (money and influence needed a register). Every row of the file is drawn.",
+    "Names: the drawing recases the FEC's capitals (labels.names) and shortens one long filed name (AFP Action, its doing-business-as names dropped); the table keeps every name as filed, as the sidecar asks.",
+    "No party is drawn or named for any PAC (sidecar; DR-48, DR-93); party committees keep their own names.",
+    "Note 2 describes the two kinds as the FEC defines independent-expenditure-only and hybrid (Carey) committees.",
+    "Figures checked by script (figures.py s36)."
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "14.34",
+  "title": "Show one trend across many parts as small area panels on one scale.",
+  "rule": [
+    "Use small-multiple area sparklines when the same measure runs across many parts of a whole: one small panel per part on one shared vertical scale, the area from zero under the part’s line, the whole’s line in gray in every panel, and the change printed over each panel. Order the panels by the change the title names, and set the totals above them."
+  ],
+  "use_when": "The reader asks which parts of a total grew and which shrank over the same span.",
+  "use_instead": [
+    {
+      "when": "The parts should be looked up row by row with their figures",
+      "rule": "14.128"
+    },
+    {
+      "when": "The parts differ greatly in size and the question is growth since one date",
+      "rule": "14.40"
+    },
+    {
+      "when": "One total, where its size is the point",
+      "rule": "14.35"
+    }
+  ],
+  "why": {
+    "text": [
+      "One shared scale lets a reader compare panels at a glance, and the gray line of the whole in every panel shows which parts ran ahead of it. Small panels give each part room that one plot of many lines cannot."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S13",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.8"
+  ],
+  "builders": "Form area-sparklines: node work/build/chart-kit/oa-chart.mjs build s13; labels.panels sets the order and labels.context the gray line in every panel.",
+  "correct": null,
+  "failure": null
+}

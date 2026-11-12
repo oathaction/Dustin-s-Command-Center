@@ -1,0 +1,63 @@
+{
+ "file": "v7-links-with-regions.json",
+ "kind": "v7",
+ "publisher": "Oath & Action’s systems atlas, Who Do They Answer To?",
+ "url": "work/extract/atlas-v7-data.json",
+ "geography": "United States",
+ "date_retrieved": "2026-10-15",
+ "vintage": "Atlas V7 snapshot of October 15, 2026",
+ "snapshot": "2026-10-15",
+ "ledger_row": "not needed: Atlas V7, read by script",
+ "columns": {
+  "id": {
+   "type": "id",
+   "description": "V7 connection ID"
+  },
+  "from": {
+   "type": "id",
+   "description": "V7 variable ID at the start"
+  },
+  "to": {
+   "type": "id",
+   "description": "V7 variable ID at the end"
+  },
+  "from_region": {
+   "type": "code",
+   "description": "V7 region of the start variable"
+  },
+  "to_region": {
+   "type": "code",
+   "description": "V7 region of the end variable"
+  },
+  "type": {
+   "type": "category",
+   "description": "causal, money, information, authority or ownership"
+  },
+  "polarity": {
+   "type": "category",
+   "description": "V7 sign in words: positive (+), negative (-) or none (authority connections carry no sign)"
+  },
+  "evidence": {
+   "type": "category",
+   "description": "V7 grade word as stored"
+  },
+  "delay": {
+   "type": "category",
+   "description": "S, M or L"
+  },
+  "name": {
+   "type": "text",
+   "description": "connection name"
+  }
+ },
+ "title_or_table": "connections, 118 links with the region of each end",
+ "table_id": "links; layers[].regions[].nodes",
+ "observation_period": "As of October 15, 2026",
+ "universe_or_base": "Every connection in the model; every variable sits in one of V7's ten regions",
+ "unit": "connections",
+ "qualification": "Regions are V7's own; V7 gives no domain to 20 variables and two domains to nine, so the matrix groups by region (data lead change 1)",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, model connections, 118 links by region, as of October 15, 2026, United States. Snapshot of October 15, 2026.",
+ "domain": "all",
+ "domain_note": "Every connection in the model",
+ "states": []
+}

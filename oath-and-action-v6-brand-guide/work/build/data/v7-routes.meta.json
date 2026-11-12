@@ -1,0 +1,48 @@
+{
+ "file": "v7-routes.json",
+ "kind": "v7",
+ "publisher": "Oath & Action’s systems atlas, Who Do They Answer To?",
+ "url": "work/extract/atlas-v7-data.json",
+ "geography": "United States",
+ "date_retrieved": "2026-10-15",
+ "vintage": "Atlas V7 snapshot of October 15, 2026",
+ "snapshot": "2026-10-15",
+ "ledger_row": "not needed: Atlas V7, read by script",
+ "columns": {
+  "route": {
+   "type": "code",
+   "description": "V7 route code"
+  },
+  "name": {
+   "type": "text",
+   "description": "route name"
+  },
+  "instrument": {
+   "type": "text",
+   "description": "instrument, verbatim"
+  },
+  "who": {
+   "type": "text",
+   "description": "who acts, verbatim"
+  },
+  "depends": {
+   "type": "text",
+   "description": "what a change on the route depends on, verbatim"
+  },
+  "route_entries": {
+   "type": "integer",
+   "description": "reform profiles that list this route",
+   "unit": "route entries"
+  }
+ },
+ "title_or_table": "routes to change, the eleven routes",
+ "table_id": "routes.items; reforms[].routes (counted)",
+ "observation_period": "As of October 15, 2026",
+ "universe_or_base": "Every route V7 defines, with how many reform profiles list it",
+ "unit": "routes; route entries",
+ "qualification": "Route entries count reforms that list a route, not how likely a change is; V7 rates feasibility per reform",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, routes to change, eleven routes, as of October 15, 2026, United States. Snapshot of October 15, 2026.",
+ "domain": "all",
+ "domain_note": "The routes serve reforms in every domain",
+ "states": []
+}

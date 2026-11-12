@@ -1,0 +1,98 @@
+{
+  "kit": 1,
+  "id": "S39",
+  "form": "evidence-table",
+  "family": "tables-and-plain-words",
+  "tier": "core",
+  "dataset": "v7-claims-drug-prices",
+  "reader_question": "What does the evidence say about drug middlemen and prices?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the atlas’s own register of graded claims",
+  "v7": {
+    "grade": "documented",
+    "ids": [
+      "PW06"
+    ],
+    "snapshot": "2026-10-15"
+  },
+  "title": "Ten of the atlas’s 11 claims about drug middlemen and prices are documented on the public record; the eleventh, on generic competition, is well supported.",
+  "measure_line": "Claims about drug prices in the atlas’s answer on medical bills and drug prices, 11 of its 28 claims, each with its grade, period, who it covers and its limits as the atlas records them, checked through October 15, 2026, United States.",
+  "notes": [
+    "Grades: documented means on the public record; well supported means strong research evidence. A claim’s grade covers that claim alone.",
+    "The atlas checked every claim on October 15, 2026, and the table shows the record as of that day.",
+    "Oath & Action chose these 11 of the answer’s 28 claims by their subject, drug prices; the rest concern medical bills."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A table of the atlas’s 11 claims about drug prices, each with its grade, period, who it covers and its limits. Ten are documented, among them that the three largest pharmacy benefit managers processed nearly 80% of U.S. prescriptions in 2023; one, that generic competition lowers drug prices, is well supported.",
+  "table": {
+    "caption": "The atlas’s claims about drug prices, with their grades and limits",
+    "columns": [
+      {
+        "field": "claim",
+        "label": "Claim",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "confidence",
+        "label": "Grade",
+        "format": "text",
+        "words": {
+          "documented": "Documented",
+          "well-supported": "Well supported"
+        }
+      },
+      {
+        "field": "period",
+        "label": "Period",
+        "format": "text"
+      },
+      {
+        "field": "population",
+        "label": "Covers",
+        "format": "text"
+      },
+      {
+        "field": "limitation",
+        "label": "Limits",
+        "format": "text"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Each row gives the claim’s grade and period at the left, and the claim, who it covers and its limits at the right."
+  ],
+  "phone": "differs",
+  "phone_note": "On a phone the grade runs above the claim, and the period moves under it.",
+  "artboard": "reading",
+  "domain": "D06",
+  "states": [],
+  "encode": {
+    "key": "id",
+    "claim": "claim",
+    "grade": "confidence",
+    "period": "period",
+    "covers": "population",
+    "limits": "limitation"
+  },
+  "labels": {
+    "grades": {
+      "documented": "Documented",
+      "well-supported": "Well supported"
+    },
+    "heads": {
+      "covers": "Covers:",
+      "limits": "Limits:",
+      "source": "Source:",
+      "period": "Period:"
+    }
+  },
+  "notes_internal": [
+    "Data plan row 38, narrowed to one pathway (PW06's 11 drug-price claims, the research lead's filter). Claims, periods, populations and limits print in V7's own words.",
+    "Claim IDs are not among the atlas IDs the V7 check types, so none prints; v7.ids lists PW06 only, which the sidecar's source line names, so it prints in its chip after its type word (H11). The CSV export carries the claim IDs.",
+    "Sources: request A7 asks for each claim's sources in words; the form then prints them with encode.source and the table takes a Source column.",
+    "Figures checked by script (figures.py s39)."
+  ]
+}

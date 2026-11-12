@@ -1,0 +1,53 @@
+{
+ "kit": 1,
+ "id": "s-14-2-bare",
+ "form": "line-event-notes",
+ "family": "change-over-time",
+ "tier": "core",
+ "dataset": "census-cbp-civic-organizations",
+ "reader_question": "How many people work for civic and social organizations, and how has that changed?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: a Census Bureau count of employers",
+ "title": "Civic and social organizations, 1998 to 2023",
+ "reading_guide": "Each point is one year’s count of paid employees, taken in the pay period that includes March 12.",
+ "measure_line": "Paid employees of civic and social organizations, such as service clubs and neighborhood associations, each year from 1998, the first year counted under today’s industry codes, to 2023, United States",
+ "notes": [
+  "Groups run only by volunteers have no paid employees and do not appear in the count."
+ ],
+ "source_line": "Source: U.S. Census Bureau, County Business Patterns, civic and social organizations (NAICS 813410), 1998 to 2023, United States. Retrieved November 11, 2026. Establishments with paid employees only; employees counted in mid-March.",
+ "alt": "A line of paid employees at civic and social organizations from 1998 to 2023: 314,723 in 1998, about 330,000 in 2007, 246,979 in 2009 and 201,423 in 2023.",
+ "table": {
+  "caption": "Paid employees of civic and social organizations, mid-March of each year",
+  "columns": [
+   {
+    "field": "year",
+    "label": "Year",
+    "format": "year",
+    "row_header": true
+   },
+   {
+    "field": "employees",
+    "label": "Employees",
+    "format": "integer"
+   }
+  ]
+ },
+ "encode": {
+  "x": "year",
+  "y": "employees"
+ },
+ "domain": "D10",
+ "states": [],
+ "show": [
+  "title",
+  "chart"
+ ],
+ "failure": {
+  "rule": "14.2",
+  "caption_lead": "Fails Rule 14.2."
+ },
+ "notes_internal": "Rule 14.2's failure plate: a topic for a title, and only the chart under it.",
+ "illustrative": false,
+ "phone": "same"
+}

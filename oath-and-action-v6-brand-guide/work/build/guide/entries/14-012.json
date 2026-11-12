@@ -1,0 +1,69 @@
+{
+ "id": "14.12",
+ "title": "Redraw for a phone only when the form must change, and keep the data and finding.",
+ "rule": [
+  "Draw a chart once for every width when its form still reads at 358 px. Change the form for a phone only when it must: when labels would fall under 13 px (Rule 06.3), when columns grow too narrow to carry their names, or when arrows grow too short to read. Columns then become bars, and a map of arrows becomes a list.",
+  "The phone drawing keeps every row, the title, the finding and the source line, and a note under the drawing carries any words that leave the plot."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "Many readers meet our charts on a phone first. A drawing redrawn for no reason gives them a second picture to learn, and one that drops rows or changes its title gives phone readers a different finding from everyone else."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [
+  "oa.chart.artboard.phone"
+ ],
+ "related": [
+  "06.3",
+  "14.16",
+  "14.25"
+ ],
+ "builders": "Set phone to differs and write phone_note in the spec when the form changes; the kit draws both and checks each at 358 px.",
+ "specs": [
+  {
+   "label": "Phone width",
+   "value": "358 px, the narrowest drawing the kit checks above 296 px",
+   "token": "oa.chart.artboard.phone"
+  },
+  {
+   "label": "Same form",
+   "value": "When every label and mark reads at that width"
+  },
+  {
+   "label": "A new form",
+   "value": "Columns as bars, arrows as a list, when the first form cannot carry its words"
+  },
+  {
+   "label": "Kept",
+   "value": "Every row, the title, the finding and the source line"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-12-correct",
+  "caption": "At full width the nine sources stand as columns. On a phone their names would not fit under them, so they become bars, with the same rows, title and finding.",
+  "alt": "The same nine sources of federal receipts drawn twice: as columns at full width, with names under each column, and as bars on a phone, with each name beside its bar. Both show individual income taxes largest at 2,846 billion dollars of 5,403 billion.",
+  "illustrative": false,
+  "notes": "The two drawings side by side, drawn here from the Treasury file, so the plate shows both widths at once."
+ },
+ "failure": {
+  "specimen": "s-14-12-failure",
+  "caption": "<strong>Fails Rule 14.12.</strong> The phone drawing keeps three of the nine sources and takes a new title, so a reader on a phone meets a different finding from a reader at a desk.",
+  "alt": "Failure case: do not publish. A phone version of the receipts chart that keeps three of nine sources and gives them a new title, “Income and payroll taxes pay for the federal government”.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "examples": [
+  {
+   "example": "Federal receipts by source, fiscal year 2026",
+   "domain": "D08",
+   "states": [],
+   "level": "federal",
+   "where": "14.12"
+  }
+ ]
+}

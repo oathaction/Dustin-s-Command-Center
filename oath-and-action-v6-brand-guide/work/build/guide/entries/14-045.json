@@ -1,0 +1,35 @@
+{
+  "id": "14.45",
+  "title": "Avoid streamgraphs, whose layers float on a baseline no one can read.",
+  "rule": [
+    "Leave streamgraphs out of every Oath & Action piece. Show parts of a total over time as small multiples, one panel per part on one scale, or as a stacked area with a flat baseline when the total matters."
+  ],
+  "use_when": "Never: a reader who asks how the parts of a total changed over time gets a truer answer from small multiples or a stacked area.",
+  "use_instead": [
+    {
+      "when": "Each part’s own trend matters",
+      "rule": "14.34"
+    },
+    {
+      "when": "The total and its parts both matter, with a few parts",
+      "rule": "14.51"
+    },
+    {
+      "when": "One part should be read against the rest",
+      "rule": "14.30"
+    }
+  ],
+  "why": {
+    "text": [
+      "A streamgraph stacks its layers around a wavy center line, so no layer sits on a flat baseline and none can be measured against a scale. When one layer swells, every layer above and below it bends, and a reader takes that bend for a change in layers that never moved."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "s-14-45-sketch",
+  "tier": "avoid",
+  "tokens": [],
+  "related": [],
+  "builders": "No kit form, by design; draw the parts with area-sparklines (s13) or, from round 2, the stacked area form.",
+  "correct": null,
+  "failure": null
+}

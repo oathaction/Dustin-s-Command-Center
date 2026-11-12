@@ -1,0 +1,17 @@
+order,side,line_id,line,dollars
+1,in,cash_start,Cash on hand at the start of the cycle,355303256.29
+2,in,individuals,Contributions from individuals,1384115131.69
+3,in,other_committees,Contributions from PACs and other political committees,429945549.53
+4,in,party,Contributions from party committees,2480784.68
+5,in,candidate_contributions,Contributions from the candidates themselves,14560211.29
+6,in,candidate_loans,Loans from the candidates,228525827.56
+7,in,other_loans,Other loans,3122314.17
+8,in,transfers_in_net,"Transfers from other committees of the same candidates, net of transfers out",156790523.89
+9,in,other_receipts,Other receipts (total receipts less the lines above),33324770.07
+10,out,spending,"Spending other than refunds, loan repayments and transfers (total disbursements less the lines below)",2045316351.59
+11,out,refunds_individuals,Refunds to individuals,34158556.48
+12,out,refunds_committees,Refunds to committees,4528694.63
+13,out,candidate_loan_repayments,Repayments of candidates’ loans,33717405.66
+14,out,other_loan_repayments,Repayments of other loans,1085456.32
+15,out,transfers_out_net,"Transfers to other committees of the same candidates, net of transfers in",0.00
+16,out,cash_end,Cash on hand at the end of the cycle,487828746.46

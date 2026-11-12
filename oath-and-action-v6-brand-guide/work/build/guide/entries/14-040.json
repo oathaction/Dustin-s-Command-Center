@@ -1,0 +1,37 @@
+{
+  "id": "14.40",
+  "title": "Index many series to one start when the reader compares growth.",
+  "rule": [
+    "Use an indexed line when series of very different sizes should be compared by how fast they grew: divide each by its own value at one base date and multiply by 100, so every line starts at 100. Draw the base line heavier and name the base, give one series the ink and the rest gray when there are more than four (Rule 14.8), and name every line at its end with its latest index."
+  ],
+  "use_when": "The reader asks which of several measures grew fastest since a date, and their sizes are too far apart to share a scale in their own units.",
+  "use_instead": [
+    {
+      "when": "The reader needs the amounts themselves, or how big each part is",
+      "rule": "14.35"
+    },
+    {
+      "when": "Each series needs its own panel to be read closely",
+      "rule": "14.34"
+    },
+    {
+      "when": "Only one series matters and its moments need explaining",
+      "rule": "14.29"
+    }
+  ],
+  "why": {
+    "text": [
+      "On a scale of dollars, a $35 billion source that quintuples lies flat beside a $3 trillion one. An index puts every series at 100 on the same date, so a line’s height shows growth alone. Growth is not size, so the notes give each highlighted series’ amount and share, and the reader does not take a fast-growing small source for a large one."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S33",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.8"
+  ],
+  "builders": "Form indexed-line: node work/build/chart-kit/oa-chart.mjs build s33; labels.base names the date that equals 100, and the form computes each index from the raw values.",
+  "correct": null,
+  "failure": null
+}

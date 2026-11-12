@@ -20,9 +20,9 @@
   "measure_line": "Change in federal civilian employees by department or agency, January 31, 2022 to August 31, 2026, people, for the 37 agencies with 1,000 or more employees on either date. The window starts in January 2022, as the guide’s jobs charts do, and ends in August 2026, the latest month the Office of Personnel Management did not flag as incomplete.",
   "notes": [
     "Each bar nets every hire and departure between January 31, 2022 and August 31, 2026, so it hides any rise and fall inside the window.",
-    "The 37 agencies drawn held 99.4 percent of employees in January 2022. The table lists all 129 agencies in the files, where a small agency can show a large percent change.",
+    "The 37 agencies drawn, those with 1,000 or more employees on either date, held 99.4 percent of employees in January 2022. The table lists all 129 agencies in the files, where a small agency can show a large percent change.",
     "The files count people on the rolls on one day, full-time and part-time alike. They leave out intelligence agencies, the Postal Service and some others that do not report to the Office of Personnel Management.",
-    "Agency names are shortened from the August 2026 file, which still calls the largest the Department of Defense."
+    "Agency names are shortened from the August 2026 file’s names; it names the largest the Department of Defense."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -55,20 +55,11 @@
         "field": "change_pct",
         "label": "Change, percent",
         "format": "signed:1"
-      },
-      {
-        "field": "size_1000_plus",
-        "label": "In the chart",
-        "format": "text",
-        "words": {
-          "true": "Yes",
-          "false": "No"
-        }
       }
     ]
   },
   "chart_notes": [
-    "Bars: Prussian blue to the left of zero for a loss, Verdigris green to the right for a gain. The scale runs from −80,000 to +40,000.",
+    "Bars: Prussian blue to the left of zero for a loss, Verdigris green to the right for a gain. Losses and gains share one scale.",
     "Above the bars: all agencies in the files, −130,369."
   ],
   "phone": "same",
@@ -134,6 +125,8 @@
     "Checked by script against opm-federal-employment-by-agency.csv: ALL 2,155,201 to 2,024,832, −130,369; 37 agencies with size_1000_plus, 33 with a loss and 4 with a gain; their January 2022 share 99.37 percent, '99.4 percent'; 129 agencies besides ALL; Defense −73,248, Veterans Affairs +21,956, Homeland Security +14,584, Interior +275, Government Publishing Office +88.",
     "H09: the window has no split at an inauguration and matches S13 and S14's start; the note says each bar nets the whole window, as the sidecar asks. Read from the left and the right: the title gives the net count and the number of agencies that shrank, names no administration and claims no cause.",
     "Short names are labels.names; the table keeps the file's own names in capitals, labeled as such. Request R-B5 asks the research lead for a readable name column.",
-    "Pair B's middle steps (div-2 for a loss, div-4 for a gain) repeat the direction that position and sign already carry, per the data lead's palette note for row 13."
+    "Pair B's middle steps (div-2 for a loss, div-4 for a gain) repeat the direction that position and sign already carry, per the data lead's palette note for row 13.",
+    "Weight (R1-C5): the table drops the 'In the chart' column, which note 2's size rule already states, to keep the plate under three times the core average (26,172 bytes before, by the kit's load-table fragment).",
+    "Data lead DL-B2 and DL-B3 applied: chart note 1 no longer names a scale the form does not draw; note 4 drops 'still'."
   ]
 }

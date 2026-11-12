@@ -15,10 +15,10 @@
     "The three-month average for a month is the mean of that month’s change and the two before it, so the averages for January and February 2022 draw on November and December 2021, months the chart does not show.",
     "Seasonally adjusted: the Bureau removes the swings that recur each year, such as summer hiring and holiday layoffs, so one month compares with the next.",
     "August and September 2026 are preliminary: the Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, and a yearly benchmark revision can move earlier months. The average is dashed where it includes a preliminary month.",
-    "Payrolls shrank in seven months: January, June, August, October and December 2025, and February and July 2026. Only the October 2025 and February 2026 drops pass the survey’s margin of error.",
+    "Payrolls shrank in seven months: January, June, August, October and December 2025, and February and July 2026. Only the October 2025 and February 2026 drops pass the survey’s margin of error. That margin is plus or minus 122,000 jobs for one month’s change.",
     "Both jobs charts run from January 2022 to September 2026, so they hold three full years before the January 2025 inauguration and every month since."
   ],
-  "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
+  "source_line": "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised. The margin of error is the Bureau’s 90 percent interval for a month’s change in its survey of employers, plus or minus 122,000, from its Employment Situation technical note, October 2026 release.",
   "credit": "Chart: Oath & Action",
   "illustrative": false,
   "alt": "Columns show the monthly change in payroll jobs from January 2022 to September 2026: large gains in 2022, up to 819,000 in February, that shrink to under 200,000 a month by 2025, with seven months of losses in 2025 and 2026. A line shows the three-month average, which stood at 51,000 in September 2026, a preliminary figure.",
@@ -115,7 +115,8 @@
     "D3-83: the grade line prints 'Documented' with its source after the colon; 'Official statistic' leaves every spec.",
     "Statistics P2-S9 and P2-S10: the first note names the two months outside the window, and a note glosses 'seasonally adjusted'. Access S4: the Status column prints 'Final'.",
     "DR-239 settled D3-87's hold: Dustin kept the title and its count of seven drops, and the fourth note now ends 'Only the October 2025 and February 2026 drops pass the survey's margin of error.' Checked by script against the Bureau's 90 percent interval for a month's change, plus or minus 122,000 (Employment Situation Technical Note, October 2026 release, retrieved November 11, 2026; D3-171, ledger P7-042): October 2025 (−140,000) and February 2026 (−156,000) pass it, and the other five drops sit inside it. The interval does not print; printing it is a request in the Explainer notes, Board 1 apply.",
-    "X14: the scale runs to +850,000, as Phase 2's did (E6); on phones the in-plot 'Three-month average' hides and the key names the line."
+    "X14: the scale runs to +850,000, as Phase 2's did (E6); on phones the in-plot 'Three-month average' hides and the key names the line.",
+    "Round 1, maker B (D3-219): the source line is the sidecar's with_margin variant, and note 4 keeps DR-239's sentence word for word and adds the figure, plus or minus 122,000 jobs. Checked by script: of the seven drops, only October 2025 (−140,000) and February 2026 (−156,000) exceed 122,000; the other five sit inside it."
   ],
   "scale": {
     "y": [

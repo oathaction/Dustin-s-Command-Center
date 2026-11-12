@@ -1,0 +1,73 @@
+{
+ "id": "14.1",
+ "title": "Start from the reader’s question, then choose the form.",
+ "rule": [
+  "Write down the question a reader brings to the numbers, in the words a reader would use, before choosing a form. The question names the comparison: which is bigger, what moved, how it changed, what it is made of, where it happens, or how sure a figure is. Each group of this chapter opens with one of those questions, and each entry in the group says when its form fits the data at hand.",
+  "When one figure answers the question, a sentence carries it (Rule 14.134). When a reader needs to look values up, a table does (Rule 14.133)."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "Each form answers one kind of question well. Bars sorted by size show which year was largest and hide the order of the years, so a reader who asked how something changed cannot see the change."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [],
+ "related": [
+  "14.29",
+  "14.15",
+  "14.133",
+  "14.134"
+ ],
+ "builders": "Write reader_question in the spec first, then pick the form from the group whose question matches; the kit draws it with node work/build/chart-kit/oa-chart.mjs build <spec>.",
+ "specs": [
+  {
+   "label": "First step",
+   "value": "The reader’s question, in a reader’s words, written into the chart’s spec before any drawing"
+  },
+  {
+   "label": "Question to form",
+   "value": "The question that opens each group of this chapter, then the entry whose use names the data at hand"
+  },
+  {
+   "label": "One figure",
+   "value": "A sentence, Rule 14.134"
+  },
+  {
+   "label": "Values to look up",
+   "value": "A table, Rule 14.133"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-1-correct",
+  "caption": "The question asks how applications changed, so the years run left to right on one line, and the jump after 2019 shows at once: from 3.5 million to 5.4 million in two years.",
+  "alt": "A line chart answers how business applications changed: Americans filed 5.7 million applications to start a business in 2025, more than twice the 2.5 million of 2005. The line climbs slowly to 2019 and jumps to 2021.",
+  "illustrative": false,
+  "notes": "A line answers a question about change over time; the kit draws it from the US rows of the business formation file.",
+  "charts": [
+   "s-14-1-line"
+  ]
+ },
+ "failure": {
+  "specimen": "s-14-1-failure",
+  "caption": "<strong>Fails Rule 14.1.</strong> The reader asked how applications changed, and bars sorted by size put 2025 first and 2009 last, so the years fall out of order and the jump after 2019 cannot be seen.",
+  "alt": "Failure case: do not publish. The same applications drawn as bars sorted by size, 2025 first and 2009 last, so the years fall out of order.",
+  "illustrative": false,
+  "notes": "",
+  "charts": [
+   "s-14-1-sorted"
+  ]
+ },
+ "examples": [
+  {
+   "example": "Business applications, United States, 2005 to 2025",
+   "domain": "D06",
+   "states": [],
+   "level": "federal",
+   "where": "14.1"
+  }
+ ]
+}

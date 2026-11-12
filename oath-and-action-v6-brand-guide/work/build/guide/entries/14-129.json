@@ -1,0 +1,40 @@
+{
+  "id": "14.129",
+  "title": "Tint a grid of many cells by step, and print each cell’s word.",
+  "rule": [
+    "Set rows down the left and columns across, tint each filled cell by its step on one ordered scale, light for the lowest and dark for the highest, and print the step’s word in every cell so the table reads in gray print and to a screen reader. Leave the cells unsummed, with no score or total, and mark a cell that carries a date or a caveat with a dot the key explains.",
+    "Where a cell’s word cannot fit its column, as on a phone, each row becomes its name with a run of tinted chips that name the column and the word (Rule 14.12)."
+  ],
+  "use_when": "The reader looks across dozens of rows and several columns for a pattern, such as which routes the atlas rates feasible for which reforms, and each cell holds one rating or a small number.",
+  "use_instead": [
+    {
+      "when": "The cells hold the source’s own words, which no scale can order",
+      "rule": "14.127"
+    },
+    {
+      "when": "Each cell is a value that changes over time and the trend matters",
+      "rule": "14.128"
+    },
+    {
+      "when": "The grid is a map of places",
+      "rule": "14.117"
+    }
+  ],
+  "why": {
+    "text": [
+      "Tints let the eye find the dark and light patches across a grid of a hundred cells before reading any of them, and the printed word keeps every cell exact. One scale from light to dark reads as more and less in color, in gray print and for readers who see color differently."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S37",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "13.10",
+    "14.5",
+    "14.12"
+  ],
+  "builders": "Form heat-table: node work/build/chart-kit/oa-chart.mjs build s37, or copy specs/s37.json and point it at a new dataset; labels.steps orders the scale and labels.columns the columns.",
+  "correct": null,
+  "failure": null
+}

@@ -148,4 +148,16 @@
       return K.fmt(v, f[k] || f[col] || 'text');
     });
   };
+  // A shift arrow from x1 (its tail dot) to x2 (its head) at height y, in the subject ink; o.data marks the head for the checks.
+  // Shared by shift-arrows, results-table, tile-map-shift-arrows and diverging-bar-arrows (moved from shift-arrows.js, R-B6).
+  P.arrow = function (c, x1, x2, y, o) {
+    var hl = c.t(c.phone ? 'arrow-phone-head-length' : 'arrow-head-length'), hw = c.t(c.phone ? 'arrow-phone-head-half-width' : 'arrow-head-half-width');
+    var dir = x2 >= x1 ? 1 : -1, len = Math.abs(x2 - x1);
+    // an arrow shorter than its head draws the head alone, never a tail dot under it, which reads as a diamond (brand KS4)
+    if (len < hl + 2) { c.polygon([[x2, y], [x2 - dir * hl, y - hw], [x2 - dir * hl, y + hw]], { fill: 'subject', kind: 'arrow', data: o.data }); return; }
+    c.circle(x1, y, c.t('arrow-tail-radius'), { fill: 'subject', mark: false });
+    if (len > hl) c.line(x1, y, x2 - dir * hl, y, { stroke: 'subject', width: c.t('arrow-shaft'), mark: false });
+    var b = x2 - dir * Math.min(hl, Math.max(len, hl * 0.6));
+    c.polygon([[x2, y], [b, y - hw], [b, y + hw]], { fill: 'subject', kind: 'arrow', data: o.data });
+  };
 })(typeof globalThis !== 'undefined' ? globalThis : this);

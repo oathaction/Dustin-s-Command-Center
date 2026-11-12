@@ -1,0 +1,77 @@
+{
+ "file": "census-acs-broadband-by-state.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "American Community Survey 1-year estimates, Table B28002, Presence and Types of Internet Subscriptions in Household",
+ "table_id": "ACS 2025 1-year, B28002 (lines 001, 004 and 007)",
+ "url": [
+  "https://api.census.gov/data/2025/acs/acs1?get=NAME,B28002_001E,B28002_001M,B28002_004E,B28002_004M,B28002_007E,B28002_007M&for=state:*",
+  "https://api.census.gov/data/2025/acs/acs1?get=NAME,B28002_001E,B28002_001M,B28002_004E,B28002_004M,B28002_007E,B28002_007M&for=us:1",
+  "https://api.census.gov/data/2025/acs/acs1/groups/B28002.json"
+ ],
+ "observation_period": "Calendar year 2025",
+ "geography": "50 states and DC, with a United States row (code US) to set apart",
+ "universe_or_base": "Households",
+ "unit": "households, with 90 percent margins of error; percentages computed by the studio and stored to four decimals",
+ "date_retrieved": "2026-11-12",
+ "vintage": "ACS 2025 1-year release",
+ "qualification": "\"Broadband of any type\" (line 004) counts a household with a cellular data plan alone; \"broadband such as cable, fiber optic or DSL\" (line 007) counts fixed service. The percent margin is the count’s margin over all households, an approximation that treats the household total as fixed. Compare states only where intervals do not overlap.",
+ "columns": {
+  "code": {
+   "type": "code",
+   "description": "USPS state code, US for the nation"
+  },
+  "name": {
+   "type": "text",
+   "description": "state name"
+  },
+  "households": {
+   "type": "integer",
+   "description": "households (B28002_001)",
+   "unit": "households"
+  },
+  "broadband_any": {
+   "type": "integer",
+   "description": "households with broadband of any type (B28002_004)",
+   "unit": "households"
+  },
+  "broadband_any_moe": {
+   "type": "integer",
+   "description": "90 percent margin of error",
+   "unit": "households"
+  },
+  "broadband_any_pct": {
+   "type": "number",
+   "description": "broadband of any type as a percent of households, computed",
+   "unit": "percent"
+  },
+  "broadband_any_pct_moe": {
+   "type": "number",
+   "description": "approximate margin of the percent, computed",
+   "unit": "percentage points"
+  },
+  "broadband_fixed": {
+   "type": "integer",
+   "description": "households with cable, fiber optic or DSL (B28002_007)",
+   "unit": "households"
+  },
+  "broadband_fixed_moe": {
+   "type": "integer",
+   "description": "90 percent margin of error",
+   "unit": "households"
+  },
+  "broadband_fixed_pct": {
+   "type": "number",
+   "description": "fixed broadband as a percent of households, computed",
+   "unit": "percent"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B28002, broadband of any type, 2025, 50 states and DC. Retrieved November 12, 2026. Survey estimates; a cellular data plan alone counts as broadband.",
+ "source_line_variants": {
+  "fixed": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B28002, broadband such as cable, fiber optic or DSL, 2025, 50 states and DC. Retrieved November 12, 2026. Survey estimates."
+ },
+ "ledger_row": "P7-210",
+ "domain": "D01",
+ "domain_note": "V7 I015, \"Public information is out of reach for some residents\", names slow or missing internet service",
+ "states": []
+}

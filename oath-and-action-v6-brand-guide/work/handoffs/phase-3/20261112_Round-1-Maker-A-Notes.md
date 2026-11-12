@@ -8,26 +8,26 @@ Read-first list done. Working one specimen at a time, simplest first. Each finis
 
 | Rule | Spec | Form ID | Status |
 |---|---|---|---|
-| 14.15 | S03 (built) | ranked-bar | entry to write |
+| 14.15 | S03 (built) | ranked-bar | entry written (14-015.json); drawing unchanged, check passes |
 | 14.16 | S17 | column | done: form, spec, entry 14-016; build passes; source line waits on request A1 |
 | 14.17 | S18 | bar-benchmark-tick | done: form, spec, entry 14-017; build passes |
 | 14.18 | S19 | dot-plot | done: form, spec, entry 14-018; build passes |
-| 14.19 | S04 (built) | dumbbell | entry to write |
+| 14.19 | S04 (built) | dumbbell | entry written (14-019.json); drawing unchanged, check passes |
 | 14.20 | S20 | slope | done: form, spec, entry 14-020; build passes; title and source line wait on requests A2 and A3 |
 | 14.21 | S21 | lollipop | done: form, spec, entry 14-021; build passes |
 | 14.22 | S22 | grouped-bar | done: form, spec, entry 14-022; build passes |
 | 14.23 | S23 | small-multiple-bars | form, entry 14-023 and spec drafted; spec waits in scratch (`drafts/s23.json`) for request A4's derived file; the form passes the build on a scratch copy of those rows |
-| 14.24 | sketch | radar (avoid) | waits for engineer's role classes |
-| 14.125 | S15 (built) | results-table | entry to write |
-| 14.126 | S36 | ranked-register | not started |
-| 14.127 | S06 (built) | comparison-matrix | entry to write |
-| 14.128 | S13 (built, maker B's spec) | sparkline-table | entry to write |
-| 14.129 | S37 | heat-table | not started |
+| 14.24 | sketch | radar (avoid) | done: sketch `s-14-24-sketch.html` (1,071 bytes, under 2,048) and entry 14-024 |
+| 14.125 | S15 (built) | results-table | entry written (14-125.json); drawing unchanged, check passes |
+| 14.126 | S36 | ranked-register | done: form, spec, entry 14-126; build passes |
+| 14.127 | S06 (built) | comparison-matrix | entry written (14-127.json); drawing unchanged, check passes |
+| 14.128 | S13 (built, maker B's spec) | sparkline-table | entry 14-128.json written; S13 is maker B's spec |
+| 14.129 | S37 | heat-table | done: form, spec, entry 14-129; build passes; 17.7 KB, over the per-figure share (see Tested) |
 | 14.130 | S38 | filterable-lookup-table | not started |
-| 14.131 | S39 | evidence-table | not started |
-| 14.132 | S40 | tracker-list | not started |
+| 14.131 | S39 | evidence-table | done: form, spec, entry 14-131; build passes; each claim's source in words waits on request A7 |
+| 14.132 | S40 | tracker-list | form, entry 14-132 and spec drafted; spec waits in scratch (`drafts/s40.json`) for request A6's step columns; the form passes the build on a scratch copy |
 | 14.133 | S41 | plain-table | done: form, spec, entry 14-133; build passes; source line waits on request A5 |
-| 14.134 | S42 | one-sentence | not started |
+| 14.134 | S42 | one-sentence | done: form, spec, entry 14-134; build passes; source line waits on request A5 |
 
 ## Routine calls
 
@@ -50,6 +50,18 @@ Read-first list done. Working one specimen at a time, simplest first. Each finis
 - D3-xxx | The grouped bar names each series after its value in the first group and draws no key | Rule 14.3; names set inside a 16 px bar were cramped, and a key repeated them
 - D3-xxx | S23 draws five hub panels of four grade bars on one shared 0 to 100 scale, documented in ink, from a derived hub-by-grade file | The question compares hubs' evidence mix; C1 keeps the grouping in its own file, so the spec waits on request A4 rather than summing inside a form
 - D3-xxx | Table forms (plain table, and the register, heat, evidence and tracker tables to come) draw as typeset tables through the context, with the live HTML table equivalent folded below | The approved S06 and S15 set this pattern; the drawing doubles as the still image for posts and cards (DR-49)
+- D3-xxx | S42's drawing is the sentence itself in the title face, carried in `labels.sentence`; `show` prints the label, the drawing, the source line and the folded table, and leaves out the printed title | A figure with no drawing cannot export, and the page receives only a spec's drawing keys; this way the sentence prints once, as live text in its alt and as the still image
+- D3-xxx | S42's credit reads "Oath & Action", without "Chart:" | The specimen is a sentence
+- D3-xxx | S36 draws all 25 committees in the file, names recased in the drawing and kept as filed in the table, the unit in the column head | The sidecar asks for names as the FEC lists them; capitals on every row shout, and "$ ... million" on every row is heavy
+- D3-xxx | S36's title names the top spender alone | The register shows every rank; adding the runner-up for its side would add a finding for balance (DR-124)
+- D3-xxx | S41 and S42 print the `survey_only` source line the engineer added (A5) | The two specimens show the survey rows alone (D3-89)
+- D3-xxx | The radar sketch draws two groups on five spokes in subject and context strokes over gridline rings, with no axis words | R1-C1's classes; an avoid sketch draws the misleading form small, and two overlapping shapes show both of its faults
+- D3-xxx | S40 draws each bill as chapter 11's list of bills (Rule 11.5): six numbered circles, filled to the step reached, a heavy ring on the step now, step names under the circles at 552 px and wider and in a key after the list below it | One tracker vocabulary across the guide; chapter 14 cites Rules 11.1 to 11.5 and does not restate them
+- D3-xxx | S40 waits for each bill's step and skipped steps from its actions, in place of mapping the status words to steps | Rule 11.2 gives a skipped hearing a slash, and the file does not record hearings; drawing step 2 as done could show a hearing that never happened
+- D3-xxx | S39 prints no claim IDs; it lists PW06, which the sidecar's source line names, so that ID prints in its chip | The V7 check does not type claim IDs, and H11 forbids a bare code
+- D3-xxx | S37's heat table stacks its 11 route heads on two levels with a hairline to each column, and turns each reform into a row of tinted chips wherever a cell's word cannot fit its column (the phone and the 656 and 558 px guide columns) | The route names run to 81 px a word; an 11-column grid holds four-step words only at the wide artboard
+- D3-xxx | S37's tints run seq-2 to seq-5, very low to high, with dark words on the first two steps and light on the last two | seq-1 sits at 1.21:1 against Newsprint, so its cells would vanish; every word clears 4.5:1 on both grounds (lowest 4.61)
+- D3-xxx | S37 keeps every one of its 126 routes, and its 17.7 KB stays over the 15.3 KB a figure may take on average | Its pivot table must carry 424 empty cells; my 11 measured figures average 6.7 KB, and S37 is under three times its tier's average
 
 ## Requests
 
@@ -58,6 +70,9 @@ Read-first list done. Working one specimen at a time, simplest first. Each finis
 - **A3, data visualization lead, the window of data plan row 6 (S20).** The plan sets 2015 and 2025. The under-35 rate was 43.1 in 2004, 34.5 in 2016 (its low) and 37.0 in 2025, so a 2015 start shows a gain of 2.0 points, a 2005 start a fall of 6.0, and a 2020 start a fall of 2.1 (2020 carries the pandemic's collection changes). S20 keeps 2015 under R1 and prints the longer record in a note. Please confirm the window, or set another with its reason; the spec changes in one line (`where.year`, `labels.from`).
 - **A4, engineer, a derived V7 table `work/build/data/v7-claims-by-hub-and-grade.json` with its sidecar (C1, `kind: derived`, `derived_from: ["v7-claims-by-grade.json"]`, domain `all`).** Twenty rows, one per hub and grade, hubs in the source file's order and grades in the order documented, well_supported, plausible, contested. Columns: `hub` (id), `hub_title` (category), `grade` (category), `claims` (integer, the grade's claims summed over the hub's pathways), `hub_claims` (integer, the hub's claims), `share_pct` (number, claims over hub_claims times 100, one decimal), `answers` (integer, pathways in the hub). Printed source line as `v7-claims-by-grade`'s with "grouped by its five topic hubs" after "16 everyday questions", or that file's line itself as a variant. S23's spec (scratch, `drafts/s23.json`) reads it as `dataset: v7-claims-by-hub-and-grade`; my scratch copy of the rows matches this layout (sums checked by `figures.py s23`). Data plan row 9 names `v7-claims-by-grade (its hub column)`; the change is the grouping C1 asks for, with the same source.
 - **A5, engineer, `work/build/data/v7-stock-trading-ban.meta.json` (written by `data_round0_build.py`).** Add a survey-only variant for S41 and S42, which show the survey rows alone (D3-89): `"survey_only": "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. A margin of error of plus or minus 1.9 points for the whole sample, with none by party."`. Until then both print the sidecar's line, which also names the two 2026 votes.
+- **A6, research lead, `work/build/data/congress-gov-housing-bills-119.csv` and its sidecar.** Add two columns read from each bill's actions (`/bill/119/{type}/{number}/actions`) and committee hearing records: `step_now` (integer, the Rule 11.1 step the bill is at on November 11, 2026: 1 Filed, 2 Hearing, 3 Committee vote, 4 First chamber, 5 Second chamber, 6 President; 6 for the two laws) and `steps_skipped` (text, "2" where a committee voted on the bill with no hearing on it, else empty; another step number only if the record shows it skipped). My reading of the status words gives step 6 for H.R. 224 and H.R. 6644, 5 for H.R. 225 and H.R. 965, and 4 for H.R. 1078, H.R. 1640, H.R. 5889 and S. 2651; the hearing step is the open question. S40's spec (scratch, `drafts/s40.json`) reads both columns; until they land it stays out of `specs/`.
+- **A7, research lead, `work/build/data/v7-claims-drug-prices.json` and its sidecar (written by `research_v7_extract.py`).** Add a column `source_words`: for each claim, its sources from V7's `sources` record as publisher and title, joined by "; " (for CL1358, "Federal Trade Commission, FTC second interim PBM staff report release"). An evidence table sets claim, grade, source, period and limits side by side (coverage plan 3.15); S39's form prints it under each claim once `encode.source` names the column.
+- **A8, engineer, optional, `kit.js` lean table.** A pivot's empty cell prints as `<td data-x></td>`; if the reader can rebuild rows without the attribute (for example by the column count), a bare `<td></td>` saves 7 bytes a cell, 3.0 KB on S37's 424 empty cells, which would bring S37 under 15.3 KB. Only if it costs nothing elsewhere.
 
 ## Tested
 
@@ -69,5 +84,14 @@ Read-first list done. Working one specimen at a time, simplest first. Each finis
 - S22: build passes, 0 faults, 26 rows pivoted into 13 table rows, at every width and both grounds with parity. Captures looked at: Newsprint 1440 and 390, Charcoal 1440, and Charcoal 390 in grayscale. Figure check `figures.py s22`, 8 assertions pass, among them each gap from age 22 on against its margin, the widest (9.7 at 60 and 61, margin 0.62) against the next widest (difference 0.91, margin 0.82), and 20 and 21 within its margin. Words lint clean on `s22.json` and `14-022.json`.
 - S23 (form only, data pending A4): the scratch spec with the 20 derived rows inline builds with 0 faults at every width and both grounds with parity. Captures looked at: Newsprint 1440, Charcoal 390. Figure check `figures.py s23`, 7 assertions pass against `v7-claims-by-grade` summed by hub. Words lint clean on the draft spec and `14-023.json`.
 - S41: build passes, 0 faults, at every width and both grounds with parity. Captures looked at: Newsprint 1440, Charcoal 390. Figure check `figures.py s41`, 5 assertions pass. Words lint clean on `s41.json` and `14-133.json`.
+- S42: build passes, 0 faults, at every width and both grounds with parity. Captures looked at: Newsprint 1440, Charcoal 390. Figure check `figures.py s42`, 4 assertions pass (sentence, title and alt equal; 87 and 88; the sample and month; the two cited rows). The kit's wrap keeps a no-break space, checked in Node. Words lint clean on `s42.json` and `14-134.json`.
+- Entries for the built specimens (14-015, 14-019, 14-125, 14-127, 14-128): words lint clean; `oa-chart.mjs check s03 s04` passes; 14-127's quoted cell words found verbatim in `v7-scenarios-2030.json`.
+- S36: build passes, 0 faults, 25 rows, at every width and both grounds with parity. Captures looked at: Newsprint 1440 (color and grayscale), Charcoal 390. Figure check `figures.py s36`, 7 assertions pass (503.3 the most; 376.9 second; NRCC 36.5 last; 25 rows totaling 3.1 billion; 9,688 from the sidecar; ranks match amounts; every name mapped). Words lint clean on `s36.json` and `14-126.json`.
+- `dataviz_check.js --kit` on each build page (S17 to S22, S36, S41, S42): 9 of 9 pass, 2 figures each at 1440 and 390 px, 0 failures.
+- Weight, measured with the kit's own `fragments` command (method load-table, as the guide carries a figure): S17 4,165 bytes; S18 3,973; S19 10,436; S20 3,826; S21 5,683; S22 4,901; S36 8,688; S41 3,294; S42 2,345. Each is under R1-C5's 15,300 per figure and under three times its tier's average. Form modules, minified: 635 to 3,667 bytes, each under the 3,877 average.
+- Sketch `s-14-24-sketch.html`: 1,071 bytes; no literal color, `style` or font name (grep, 0 hits); rendered in Chromium with `tokens.css` and `kit.css` on Newsprint, on Charcoal and in grayscale, computed strokes read from the page (subject, context and gridline each resolve on both grounds; text in Inter, label ink), and the capture looked at. Words lint clean on `14-024.json`.
+- S40 (form only, data pending A6): the scratch spec with the eight bills and my step reading inline builds with 0 faults at every width and both grounds with parity, after step names learned to wrap at 558 px. Captures looked at: Newsprint 1440, Charcoal 390. Figure check `figures.py s40`, 6 assertions pass. Words lint clean on the draft spec (one negation read by hand and reworded) and `14-132.json`.
+- S39: build passes, 0 faults, 11 rows, at every width and both grounds with parity; `dataviz_check.js --kit` passes. Captures looked at: Newsprint 1440, Charcoal 390 grayscale. Figure check `figures.py s39`, 5 assertions pass (10 documented and 1 well supported; the eleventh on generic competition; PW06's 28 claims from `v7-claims-by-grade`; every claim verified October 15, 2026; the alt's quoted words). A planted spec listing PW06 passes the V7 check and the kit chips it after "pathway". Words lint clean on `s39.json` and `14-131.json`.
+- S37: build passes, 0 faults, 126 rows, at every width and both grounds with parity (the 1440 drawing at the wide artboard, 1024 px); `dataviz_check.js --kit` passes. Captures looked at: Newsprint 1440 (top half), Charcoal 390. Contrast of each step's word against its tint computed from the tokens on both grounds: lowest 4.61:1. Figure check `figures.py s37`, 7 assertions pass. Weight 17,715 bytes (table 13,445, island 1,460). Words lint: two strings read by hand, both Rule 13.10's "not checked". S39 weighs 8,470 bytes.
 
 ## Not tested

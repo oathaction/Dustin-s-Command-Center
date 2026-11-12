@@ -1,0 +1,37 @@
+{
+  "id": "14.28",
+  "title": "Show who held the advantage in each term as arrows from one center line.",
+  "rule": [
+    "Use a diverging bar with arrows to follow an advantage that can change sides, such as a House majority, one election or term at a time: one row per term in time order, an arrow from a center line toward the side that held the advantage, as long as the advantage, and the figure at its tip. Draw every arrow in one neutral ink, name each side over its half, and print the party’s name on the first row and wherever the advantage changed sides (Rule 14.7)."
+  ],
+  "use_when": "The reader asks how big a lead was in each election or term, and when it passed from one side to the other.",
+  "use_instead": [
+    {
+      "when": "One change per item between two dates, ranked by size",
+      "rule": "14.26"
+    },
+    {
+      "when": "Many items gained or lost over one window, with no sequence of terms",
+      "rule": "14.27"
+    },
+    {
+      "when": "The seats in one chamber at one time, each seat counted",
+      "rule": "14.53"
+    }
+  ],
+  "why": {
+    "text": [
+      "An arrow’s direction answers who held the advantage and its length answers by how much, so a reader running down the rows sees both the size of each lead and every change of control. One ink for every arrow keeps color from taking a side (Rule 14.7); position and the printed names carry it."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S26",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.7"
+  ],
+  "builders": "Form diverging-bar-arrows: node work/build/chart-kit/oa-chart.mjs build s26; encode the two sides’ counts as left and right, and the form draws their difference.",
+  "correct": null,
+  "failure": null
+}

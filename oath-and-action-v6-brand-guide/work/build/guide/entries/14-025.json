@@ -1,0 +1,38 @@
+{
+  "id": "14.25",
+  "title": "Draw each item’s move between two dates as an arrow from start to end.",
+  "rule": [
+    "Use shift arrows when the reader needs where each item started, where it ended and which way it moved: one row per item, an arrow from the earlier value to the later one on one scale with a labeled center, and the national row set apart above the states (Rule 14.7 for party data). On a phone, where the arrows crowd, the chart ranks the items by the size of the shift and draws each as a stem from zero, with the later value in words on its row."
+  ],
+  "use_when": "The reader asks which places moved, which way and how far, between two elections or two years.",
+  "use_instead": [
+    {
+      "when": "Only the size of each move matters, ranked",
+      "rule": "14.26"
+    },
+    {
+      "when": "The places should be read as a map of the country",
+      "rule": "14.115"
+    },
+    {
+      "when": "The reader looks up each place’s figures more than the shape of the moves",
+      "rule": "14.125"
+    }
+  ],
+  "why": {
+    "text": [
+      "An arrow carries three facts at once: the start, the end and the direction, so a reader sees both that every state moved one way and how far apart they still stand. Party names in words and position carry the sides, never color (Rule 14.7)."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S11",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.7",
+    "14.12"
+  ],
+  "builders": "Form shift-arrows: node work/build/chart-kit/oa-chart.mjs build s11; encode from, to and shift, and the form draws the phone ranking under 480 px.",
+  "correct": null,
+  "failure": null
+}

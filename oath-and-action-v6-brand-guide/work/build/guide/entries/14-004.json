@@ -1,0 +1,71 @@
+{
+ "id": "14.4",
+ "title": "Start bars and columns at zero, keep one scale per axis, and size circles by area.",
+ "rule": [
+  "Draw an amount at its true size. Bars and columns start at zero, because a reader compares their lengths. A line may start above zero when the change is the point, with the axis labeled where it starts.",
+  "Each axis keeps one scale, so two measures take two panels side by side rather than a second axis on the right. A circle that stands for an amount takes its area from the value, so its radius grows with the square root of the value."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "Readers judge a bar by its length before they read its number. Cut the axis at 55 percent and 1992’s 67.7 percent stands 3.7 times as tall as 1996’s 58.4, for a gap of 9.3 points."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [
+  "oa.chart.line.baseline"
+ ],
+ "related": [
+  "14.23",
+  "14.29"
+ ],
+ "builders": "The kit draws every bar and column from zero and fails a circle not sized by area; scale may set a line’s range, never a bar’s.",
+ "specs": [
+  {
+   "label": "Bars and columns",
+   "value": "From a zero line drawn at the baseline weight",
+   "token": "oa.chart.line.baseline"
+  },
+  {
+   "label": "A line",
+   "value": "May start above zero, with the axis labeled at its start"
+  },
+  {
+   "label": "Two measures",
+   "value": "Two panels on two scales, side by side"
+  },
+  {
+   "label": "Circles",
+   "value": "Area in proportion to the value, so the radius follows its square root"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-4-correct",
+  "caption": "From zero, the columns stand close in height, as the shares do: a few points apart in every presidential year.",
+  "alt": "Columns from a zero line. In every presidential year from 1980 to 2024, between 58 and 68 percent of citizens 18 and over reported voting.",
+  "illustrative": false,
+  "notes": "",
+  "charts": [
+   "s-14-4-cols"
+  ]
+ },
+ "failure": {
+  "specimen": "s-14-4-failure",
+  "caption": "<strong>Fails Rule 14.4.</strong> The axis starts at 55 percent, so 1992’s column stands 3.7 times as tall as 1996’s for a gap of 9.3 points.",
+  "alt": "Failure case: do not publish. The same columns on an axis that starts at 55 percent, so 1992’s column stands 3.7 times as tall as 1996’s.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "examples": [
+  {
+   "example": "Reported voting, citizens 18 and over, presidential years",
+   "domain": "D10",
+   "states": [],
+   "level": "federal",
+   "where": "14.4"
+  }
+ ]
+}

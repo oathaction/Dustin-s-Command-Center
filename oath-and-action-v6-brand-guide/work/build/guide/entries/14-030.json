@@ -1,0 +1,37 @@
+{
+  "id": "14.30",
+  "title": "Give each group its own panel, lit against the others in gray.",
+  "rule": [
+    "Use a multi-line with one highlighted when several groups share a measure and the reader compares each with the rest: one small panel per group on one shared scale, the group’s own line heavy in ink over the others in thin gray, its name and latest value over the panel. Past four groups the panels carry the comparison (Rule 14.8)."
+  ],
+  "use_when": "The reader asks how far apart groups stand on one measure, and whether the gaps have closed.",
+  "use_instead": [
+    {
+      "when": "Dozens of series, with one the story follows",
+      "rule": "14.31"
+    },
+    {
+      "when": "The groups differ in size and the question is growth",
+      "rule": "14.40"
+    },
+    {
+      "when": "One series with the events behind it",
+      "rule": "14.29"
+    }
+  ],
+  "why": {
+    "text": [
+      "Four lines on one plot tangle where they cross, and a key makes the reader match colors. A panel per group, with the others drawn gray in every panel, keeps each line readable and puts every gap in view, and one scale keeps the panels honest with each other."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S05",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.8"
+  ],
+  "builders": "Form multi-line-highlight: node work/build/chart-kit/oa-chart.mjs build s05; labels.panels sets each panel’s group and order.",
+  "correct": null,
+  "failure": null
+}

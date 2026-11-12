@@ -1,0 +1,47 @@
+{
+ "file": "congress-gov-pbm-bill-shared-backers-119.csv",
+ "kind": "derived",
+ "publisher": "Library of Congress, bill status data (Congress.gov), as published in bulk on govinfo by the U.S. Government Publishing Office",
+ "title_or_table": "Pairs of House bills naming pharmacy benefit managers that share a sponsor or cosponsor",
+ "table_id": "BILLSTATUS bulk files, 119th Congress, hr and s",
+ "url": [
+  "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/hr/BILLSTATUS-119-hr.zip",
+  "https://www.govinfo.gov/bulkdata/BILLSTATUS/119/s/BILLSTATUS-119-s.zip"
+ ],
+ "observation_period": "119th Congress, bills introduced January 3, 2025 to the files of November 11, 2026",
+ "geography": "United States Congress",
+ "universe_or_base": "Every pair of bills in the drawn chamber with at least one member who sponsored or cosponsored both",
+ "unit": "members shared by the two bills",
+ "date_retrieved": "2026-11-12",
+ "vintage": "BILLSTATUS bulk files last modified November 11, 2026",
+ "qualification": "Sharing a backer says two bills drew some of the same members, not that the bills are alike.",
+ "columns": {
+  "bill_a": {
+   "type": "id",
+   "description": "earlier bill of the pair"
+  },
+  "bill_b": {
+   "type": "id",
+   "description": "later bill of the pair"
+  },
+  "shared_backers": {
+   "type": "integer",
+   "description": "members who sponsored or cosponsored both",
+   "unit": "members"
+  }
+ },
+ "printed_source_line": "Source: Library of Congress, bill status data for the 119th Congress, bulk files of November 11, 2026. Retrieved November 12, 2026. Shared backers counted by Oath & Action from each bill’s sponsors and cosponsors.",
+ "ledger_row": "P7-205",
+ "domain": "D06",
+ "domain_note": "V7 files drug middlemen under competition and market power (I084)",
+ "states": [],
+ "derived_from": [
+  "congress-gov-pbm-bills-119.csv",
+  "congress-gov-pbm-bill-backers-119.csv"
+ ],
+ "derivation": "For every pair of bills in the chamber with more matches, the count of member IDs present in both bills’ sponsor and cosponsor rows.",
+ "raw_files_sha256_prefix": {
+  "BILLSTATUS-119-hr.zip": "b05399000833eae6",
+  "BILLSTATUS-119-s.zip": "c9b4e40831593153"
+ }
+}

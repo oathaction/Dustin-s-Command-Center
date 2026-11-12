@@ -1,0 +1,35 @@
+{
+  "id": "14.44",
+  "title": "Lay each year over the same months to show a season’s pattern.",
+  "rule": [
+    "Use a cycle or seasonal chart, a reference form, when a measure repeats each year: months along the bottom, one thin gray line for each earlier year, and this year in ink, ending at its latest month. Name this year and the earlier years on the lines."
+  ],
+  "use_when": "The reader asks whether this month is high or low for the time of year, as with claims that rise every winter.",
+  "use_instead": [
+    {
+      "when": "The publisher removes the seasonal swing, and the trend is the question",
+      "rule": "14.29"
+    },
+    {
+      "when": "Many years of one measure, with one the story follows",
+      "rule": "14.31"
+    },
+    {
+      "when": "Monthly counts with an average through them",
+      "rule": "14.32"
+    }
+  ],
+  "why": {
+    "text": [
+      "A measure that rises every winter looks like a crisis on a plain line each December. Laying the years over the same months shows the season as the shape every year shares, and puts this year’s difference from that shape in view."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "s-14-44-sketch",
+  "tier": "reference",
+  "tokens": [],
+  "related": [],
+  "builders": "No kit form: draw it from line-field, with the month as x and each year as a series, until a story needs its own form.",
+  "correct": null,
+  "failure": null
+}

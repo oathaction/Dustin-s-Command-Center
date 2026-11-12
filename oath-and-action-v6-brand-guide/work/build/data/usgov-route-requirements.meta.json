@@ -1,0 +1,62 @@
+{
+ "file": "usgov-route-requirements.csv",
+ "kind": "public",
+ "publisher": "U.S. National Archives (the Constitution); U.S. Government Publishing Office (U.S. Code, CFR, Senate rules); U.S. Senate; state constitutions and election offices; Internal Revenue Service",
+ "title_or_table": "What each of the atlas’s eleven routes to change takes, from the official texts in the workflow sources file",
+ "table_id": "work/research/20261111_Policy-Workflow-Sources.md, sections FS to CIV",
+ "url": [
+  "https://www.archives.gov/founding-docs/constitution-transcript",
+  "https://www.govinfo.gov/content/pkg/CDOC-113sdoc18/pdf/CDOC-113sdoc18.pdf",
+  "https://www.archives.gov/federal-register/constitution"
+ ],
+ "observation_period": "Law and rules as read November 11 and 12, 2026",
+ "geography": "United States, with state examples named in each row",
+ "universe_or_base": "V7’s eleven routes, each with who decides, what it takes and how it can be undone, as official texts set them",
+ "unit": "routes",
+ "date_retrieved": "2026-11-12",
+ "vintage": "Official pages read November 11 and 12, 2026 (each row’s source in the workflow sources file)",
+ "qualification": "A summary of each route’s formal requirements, not of how hard it is; V7 rates feasibility separately. State and local rows name the examples read, and other states differ.",
+ "columns": {
+  "route": {
+   "type": "code",
+   "description": "V7 route code"
+  },
+  "name": {
+   "type": "text",
+   "description": "V7 route name"
+  },
+  "who_decides": {
+   "type": "text",
+   "description": "who decides on this route"
+  },
+  "what_it_takes": {
+   "type": "text",
+   "description": "the votes or approvals the official texts require"
+  },
+  "how_it_can_be_undone": {
+   "type": "text",
+   "description": "how a change made this way can be undone"
+  },
+  "sources": {
+   "type": "text",
+   "description": "the official texts behind the row"
+  },
+  "url": {
+   "type": "text",
+   "description": "one address per row; the workflow sources file lists every page"
+  }
+ },
+ "printed_source_line": "Source: U.S. Constitution; U.S. Code; Standing Rules of the Senate; state constitutions and election offices; Internal Revenue Service; requirements for each route as of November 12, 2026, United States. Retrieved November 11 and 12, 2026. Formal requirements only; state rows name examples.",
+ "ledger_row": "P7-209",
+ "domain": "all",
+ "domain_note": "Draws all eleven routes, which serve reforms in every domain (data lead check 1)",
+ "states": [
+  "MA",
+  "NE",
+  "VA",
+  "AZ",
+  "CA",
+  "WA",
+  "MN"
+ ]
+}

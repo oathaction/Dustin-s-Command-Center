@@ -7,17 +7,8 @@
  * (words with {to} and {lead}), lead ({neg, pos}: the leader's name by sign). formats: value, shift. */
 (function (K) {
   'use strict';
-  function arrow(c, x1, x2, y, o) {
-    var hl = c.t(c.phone ? 'arrow-phone-head-length' : 'arrow-head-length'), hw = c.t(c.phone ? 'arrow-phone-head-half-width' : 'arrow-head-half-width');
-    var dir = x2 >= x1 ? 1 : -1, len = Math.abs(x2 - x1);
-    // an arrow shorter than its head draws the head alone, never a tail dot under it, which reads as a diamond (brand KS4)
-    if (len < hl + 2) { c.polygon([[x2, y], [x2 - dir * hl, y - hw], [x2 - dir * hl, y + hw]], { fill: 'subject', kind: 'arrow', data: o.data }); return; }
-    c.circle(x1, y, c.t('arrow-tail-radius'), { fill: 'subject', mark: false });
-    if (len > hl) c.line(x1, y, x2 - dir * hl, y, { stroke: 'subject', width: c.t('arrow-shaft'), mark: false });
-    var b = x2 - dir * Math.min(hl, Math.max(len, hl * 0.6));
-    c.polygon([[x2, y], [b, y - hw], [b, y + hw]], { fill: 'subject', kind: 'arrow', data: o.data });
-  }
-  K.parts.arrow = arrow;
+  // the shared arrow lives in parts.js since round 1 (R-B6), so a form that draws arrows loads without this one
+  var arrow = K.parts.arrow;
   K.register_chart({
     form: 'shift-arrows', name: 'Shift Arrows', family: 'shift-and-swing',
     encode: { key: 'code', label: 'text', from: 'number', to: 'number', shift: 'number', scope: 'category?' },

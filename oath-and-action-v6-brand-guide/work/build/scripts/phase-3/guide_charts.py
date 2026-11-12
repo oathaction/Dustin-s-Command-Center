@@ -65,6 +65,8 @@ NOT_PLATES = {"reference sketches (22 at 4 KB) and avoid entries (8 at 2 KB)": 2
               "rules, selection guide and palette specification": 300_000,
               "three complex examples": 90_000,
               "shared map geometry": 250_000}
+# Chapters Phase 3 is still building: the projection counts each at no less than its allocation until its round ends
+IN_PROGRESS = ("14", "15")
 RULE_PLATE = re.compile(r"^s-14-\d+-(correct|failure)\b")   # a chapter-wide rule's plates (DR-240) count under NOT_PLATES
 KIT_SIZES = {}                   # set by expand(): the kit's parts as the page carries them, from oa-chart.mjs fragments
 METHODS = ("lean", "load", "load-trim", "load-table")
@@ -80,6 +82,10 @@ def spec_for(cid, spec_dirs):
         if p.exists():
             return p
     p = KIT / "specs" / f"{cid}.json"
+    # round 1 (contract R1-C3): chapter 14 places a maker's spec sNN as s-14-sNN, so its weight counts as chapter 14's plate
+    m = re.match(r"^s-14-(s\d+)$", cid)
+    if not p.exists() and m:
+        p = KIT / "specs" / f"{m.group(1)}.json"
     return p if p.exists() else None
 
 
@@ -175,15 +181,25 @@ def gates(weights, charts, fonts_file_bytes, present, warn):
     # the projection: today's bytes plus every unbuilt chapter's allocation
     unbuilt = {n: a for n, a in ALLOCATION.items() if n not in present}
     built14 = "14" in present
-    proj = weights["bytes"] + sum(unbuilt.values()) - (kit if not built14 and kit else 0)
+    # a chapter still being built (IN_PROGRESS) counts at no less than its allocation: round 1 places part of chapter 15,
+    # and its measured bytes alone would hand the rest of its allocation to the page's room
+    held = {}
+    for n in IN_PROGRESS:
+        if n in present:
+            now = ch.get(n, 0) + (kit if n == "14" else 0)
+            if now < ALLOCATION[n]:
+                held[n] = ALLOCATION[n] - now
+    proj = weights["bytes"] + sum(unbuilt.values()) - (kit if not built14 and kit else 0) + sum(held.values())
     rec = {"page_bytes": weights["bytes"], "unbuilt": {n: round(a) for n, a in sorted(unbuilt.items())},
+           "held_to_allocation": {n: round(v) for n, v in sorted(held.items())},
            "projected_bytes": round(proj), "budget": PAGE_BUDGET, "chapter_14_with_kit": c14, "chart_kit": kit}
     share = per_plate(ch.get("14", 0), kit, charts, KIT_SIZES)
     if share:
         rec["chapter_14_per_plate"] = share
     if proj > PAGE_BUDGET:
         warn("page weight", f"the projected page weighs {proj / MB:.2f} MB (today's {weights['bytes'] / MB:.2f} MB plus "
-                            f"{sum(unbuilt.values()) / MB:.2f} MB for the chapters not yet built), over its budget of {PAGE_BUDGET / MB:.1f} MB")
+                            f"{sum(unbuilt.values()) / MB:.2f} MB for the chapters not yet built and {sum(held.values()) / MB:.2f} MB still to come in "
+                            f"chapters being built), over its budget of {PAGE_BUDGET / MB:.1f} MB")
     return stop, rec
 
 
@@ -266,8 +282,22 @@ def self_test():
     ok = [m.group(1) for m in CHART_RE.finditer(page)] == ["s-14-s01"]
     print(f"{'pass' if ok else 'FAIL'} the hook finds a placeholder")
     bad += not ok
+    ok = spec_for("s-14-s03", []) == KIT / "specs" / "s03.json" and spec_for("s-14-s999", []) is None
+    print(f"{'pass' if ok else 'FAIL'} chapter 14's s-14-sNN finds the maker's spec sNN.json")
+    bad += not ok
     ok = kit_bytes('<style data-oa-chart-kit>abc</style><script data-oa-chart-kit>de</script>') == len('<style data-oa-chart-kit>abc</style>') + len('<script data-oa-chart-kit>de</script>')
     print(f"{'pass' if ok else 'FAIL'} the chart kit weighs as its own part")
+    bad += not ok
+    # a chapter still being built counts at its allocation in the projection, and at its bytes once past it
+    w = json.loads(json.dumps(base)); w["chapters"]["15"] = {"bytes": 200_000}
+    _, rec, _ = run(w, {}, 300_000, {"15"})
+    ok = rec["held_to_allocation"].get("15") == 400_000 and rec["projected_bytes"] == round(w["bytes"] + sum(a for n, a in ALLOCATION.items() if n != "15") - 100_000 + 400_000)
+    print(f"{'pass' if ok else 'FAIL'} chapter 15 built in part (0.20 MB) still projects at its 0.60 MB allocation")
+    bad += not ok
+    w = json.loads(json.dumps(base)); w["chapters"]["15"] = {"bytes": 590_000}; w["chapters"]["14"] = {"bytes": 1_000_000}
+    _, rec, _ = run(w, {}, 300_000, {"14", "15"})
+    ok = rec["held_to_allocation"] == {"14": round(CHAPTER_14_STOP - 1_100_000), "15": 10_000}
+    print(f"{'pass' if ok else 'FAIL'} chapter 14 in part counts with its kit against its allocation")
     bad += not ok
     # the stop's figure, its allocation in the projection, and the per-plate share's arithmetic
     ok = CEILING[HARD_STOP] == 2_803_941 and ALLOCATION["14"] == 2_803_941 and HARD_STOP == "14"

@@ -1,0 +1,48 @@
+{
+ "file": "census-acs5-county-median-household-income.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "American Community Survey 5-year estimates, Table B19013, Median Household Income in the Past 12 Months (in 2024 inflation-adjusted dollars)",
+ "table_id": "ACS 2020-2024 5-year, B19013_001",
+ "url": [
+  "https://api.census.gov/data/2024/acs/acs5?get=NAME,B19013_001E,B19013_001M&for=county:*"
+ ],
+ "observation_period": "2020 to 2024 (five years pooled)",
+ "geography": "Every county and county equivalent in the 50 states and DC (3144), Puerto Rico left out; Connecticut by its nine planning regions",
+ "universe_or_base": "Households",
+ "unit": "2024 dollars, with 90 percent margins of error",
+ "date_retrieved": "2026-11-12",
+ "vintage": "ACS 2020-2024 5-year release",
+ "qualification": "Five years of survey responses pooled, in 2024 dollars; margins are wide in small counties, so read classes with them. Connecticut’s counties are its planning regions, as in the 2024 boundary files.",
+ "columns": {
+  "geoid": {
+   "type": "id",
+   "description": "county FIPS code, state and county"
+  },
+  "name": {
+   "type": "text",
+   "description": "county name and state"
+  },
+  "state": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "median_household_income": {
+   "type": "integer",
+   "description": "median household income",
+   "unit": "2024 dollars"
+  },
+  "moe": {
+   "type": "integer",
+   "description": "90 percent margin of error",
+   "unit": "2024 dollars"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, American Community Survey 5-year estimates, Table B19013, median household income, 2020 to 2024, every county in the 50 states and DC. Retrieved November 12, 2026. Survey estimates in 2024 dollars; margins are wide in small counties.",
+ "ledger_row": "P7-211",
+ "domain": "D08",
+ "states": [],
+ "notes": [
+  "Counties with no published median: 1."
+ ]
+}

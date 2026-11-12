@@ -1,0 +1,80 @@
+{
+ "id": "14.5",
+ "title": "Give each color in a chart one job from the four data palettes.",
+ "rule": [
+  "Each palette does one job, and a chart uses one palette for each thing its colors encode. Sequential Verdigris runs one measure from low to high. Diverging pair B runs above and below a midpoint, as Rule 01.3 sets. The four group inks name up to four groups, always in the order Charcoal, Verdigris, Prussian, then Stone, which carries its hatch. The Stone magnitude steps show size with no direction.",
+  "Steps of one hue promise an order, so named groups take the group inks and a measure takes a scale. Rule 05.7 sets the subject, the context and the one red point inside any of them."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "A reader takes a color’s meaning from the first chart and carries it to the next. When each palette keeps its one job across our work, a reader who has learned that a darker green means more can trust it on every page."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [
+  "oa.chart.color.sequential.fill.step1.onNewsprint",
+  "oa.chart.color.diverging.fill.step1.onNewsprint",
+  "oa.chart.color.categorical.fill.group1.onNewsprint",
+  "oa.chart.color.magnitude.fill.step1.onNewsprint"
+ ],
+ "related": [
+  "01.3",
+  "05.7",
+  "14.8"
+ ],
+ "builders": "Name a color role in the form (seq-1 to seq-5, div-1 to div-5, cat-1 to cat-4, mag-1 to mag-4); a spec never names a color.",
+ "specs": [
+  {
+   "label": "Sequential",
+   "value": "Five steps of Verdigris, light to dark for low to high",
+   "token": "oa.chart.color.sequential.fill.step1.onNewsprint"
+  },
+  {
+   "label": "Diverging, pair B",
+   "value": "Five steps, Prussian through the page color to Verdigris (Rule 01.3)",
+   "token": "oa.chart.color.diverging.fill.step1.onNewsprint"
+  },
+  {
+   "label": "Groups",
+   "value": "Charcoal, Verdigris, Prussian, Stone with its hatch, in that order; four at most (Rule 14.8)",
+   "token": "oa.chart.color.categorical.fill.group1.onNewsprint"
+  },
+  {
+   "label": "Magnitude",
+   "value": "Four steps of Stone",
+   "token": "oa.chart.color.magnitude.fill.step1.onNewsprint"
+  },
+  {
+   "label": "One chart",
+   "value": "One palette for each thing its colors encode"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-5-correct",
+  "caption": "The four palettes, each beside its one job and the question it answers. The fourth group ink always carries its hatch, so it reads apart from the third in grayscale.",
+  "alt": "The four data palettes, each with its swatches, its one job and the question it answers: sequential Verdigris for one measure from low to high; diverging pair B from Prussian through the page color to Verdigris for values above and below a midpoint; four group inks, Charcoal, Verdigris, Prussian and hatched Stone, for named groups; and Stone steps for size with no direction.",
+  "illustrative": false,
+  "notes": "Swatches drawn from the chart tokens the stage's surface class sets, so the strip follows Newsprint and Charcoal.",
+  "readable": true
+ },
+ "failure": {
+  "specimen": "s-14-5-failure",
+  "caption": "<strong>Fails Rule 14.5.</strong> Four ways to reach the county take four steps of one green, so the key reads as a scale from less to more, though the channels have no order.",
+  "alt": "Failure case: do not publish. An illustrative bar chart of four ways residents reached Alder County, each bar in a darker step of one green, with a key that reads from light to dark as if the channels ran from less to more.",
+  "illustrative": true,
+  "notes": ""
+ },
+ "examples": [
+  {
+   "example": "Ways residents reached a county office, invented",
+   "domain": "D04",
+   "states": [],
+   "level": "county",
+   "where": "14.5"
+  }
+ ]
+}

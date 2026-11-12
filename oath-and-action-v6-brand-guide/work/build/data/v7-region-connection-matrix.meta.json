@@ -1,0 +1,64 @@
+{
+ "file": "v7-region-connection-matrix.json",
+ "kind": "derived",
+ "publisher": "Oath & Action’s systems atlas, Who Do They Answer To?",
+ "url": "work/extract/atlas-v7-data.json",
+ "geography": "United States",
+ "date_retrieved": "2026-10-15",
+ "vintage": "Atlas V7 snapshot of October 15, 2026",
+ "snapshot": "2026-10-15",
+ "ledger_row": "not needed: Atlas V7, read by script",
+ "columns": {
+  "from_region": {
+   "type": "code",
+   "description": "region at the start"
+  },
+  "from_title": {
+   "type": "text",
+   "description": "its title"
+  },
+  "to_region": {
+   "type": "code",
+   "description": "region at the end"
+  },
+  "to_title": {
+   "type": "text",
+   "description": "its title"
+  },
+  "links": {
+   "type": "integer",
+   "description": "connections from the one region to the other",
+   "unit": "connections"
+  },
+  "positive": {
+   "type": "integer",
+   "description": "with a plus sign"
+  },
+  "negative": {
+   "type": "integer",
+   "description": "with a minus sign"
+  },
+  "no_sign": {
+   "type": "integer",
+   "description": "authority connections, which carry no sign"
+  },
+  "link_ids": {
+   "type": "text",
+   "description": "the connection IDs, joined by \"; \""
+  }
+ },
+ "derived_from": [
+  "v7-links-with-regions.json"
+ ],
+ "derivation": "Counts of connections by start and end region, all 100 pairs of V7's ten regions, split by sign",
+ "title_or_table": "connections counted by region, ten regions by ten (44 of 100 cells filled)",
+ "table_id": "links grouped by layers[].regions",
+ "observation_period": "As of October 15, 2026",
+ "universe_or_base": "All 118 connections, counted for every pair of regions",
+ "unit": "connections",
+ "qualification": "A count says how many connections join two regions, not how strong they are; a plus sign means the two variables move together, not that the link is good",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, model connections counted by region, as of October 15, 2026, United States. Snapshot of October 15, 2026. Counted by Oath & Action.",
+ "domain": "all",
+ "domain_note": "Every connection in the model",
+ "states": []
+}

@@ -1,0 +1,1348 @@
+state,district,candidate,party_line,line_kind,votes
+AL,01,Barry Moore,Republican,candidate,258619
+AL,01,Tom Holmes,Democrat,candidate,70929
+AL,01,Write-in,,write-in or other,306
+AL,02,Caroleene Dobson,Republican,candidate,131414
+AL,02,Shomari Figures,Democrat,candidate,158041
+AL,02,Write-in,,write-in or other,219
+AL,03,Mike Rogers,Republican,candidate,243848
+AL,03,Write-in,,write-in or other,5160
+AL,04,Robert B. Aderholt,Republican,candidate,274498
+AL,04,Write-in,,write-in or other,3374
+AL,05,Dale W. Strong,Republican,candidate,250322
+AL,05,Write-in,,write-in or other,12088
+AL,06,Gary J. Palmer,Republican,candidate,243741
+AL,06,Elizabeth Anderson,Democrat,candidate,102504
+AL,06,Write-in,,write-in or other,380
+AL,07,Robin Litaker,Republican,candidate,106312
+AL,07,Terri A. Sewell,Democrat,candidate,186723
+AL,07,Write-in,,write-in or other,185
+AK,00,Nick Begich,Republican,candidate,159550
+AK,00,Mary Sattler Peltola,Democrat,candidate,152828
+AK,00,Eric Hafner,Democrat,candidate,3417
+AK,00,John Wayne Howe,Independence,candidate,13010
+AK,00,Write-in,,write-in or other,750
+AZ,01,David Schweikert,Republican,candidate,225538
+AZ,01,Amish Shah,Democrat,candidate,208966
+AZ,02,Elijah Crane,Republican,candidate,221413
+AZ,02,Jonathan Nez,Democrat,candidate,184963
+AZ,02,Richard William Ester,Write-in (Independent),write-in or other,28
+AZ,02,David Alexander,Write-in (Democratic),write-in or other,22
+AZ,02,"Charles “Charlie” Everette Holt, Jr.",Write-in (None),write-in or other,5
+AZ,03,Jeff Zink,Republican,candidate,53705
+AZ,03,Yassamin Ansari,Democrat,candidate,143336
+AZ,03,Alan Aversa,Green,candidate,5008
+AZ,03,Candace Cunningham,Write-in (Green),write-in or other,16
+AZ,04,Kelly Cooper,Republican,candidate,152052
+AZ,04,Greg Stanton,Democrat,candidate,176428
+AZ,04,Vincent Beck-Jones,Green,candidate,6065
+AZ,05,Andy Biggs,Republican,candidate,255628
+AZ,05,Katrina Schaffner,Democrat,candidate,167680
+AZ,06,Juan Ciscomani,Republican,candidate,215596
+AZ,06,Kirsten Engel,Democrat,candidate,204774
+AZ,06,Athena Eastwood,Green,candidate,10759
+AZ,06,Luis Pozzolo,Write-in (Independent),write-in or other,91
+AZ,07,"Daniel Francis Butierez, Sr.",Republican,candidate,99057
+AZ,07,Raúl M. Grijalva,Democrat,candidate,171954
+AZ,08,Abraham “Abe” Hamadeh,Republican,candidate,208269
+AZ,08,Gregory Whitten,Democrat,candidate,160344
+AZ,09,Paul A. Gosar,Republican,candidate,249583
+AZ,09,Quacy Smith,Democrat,candidate,132640
+AR,01,Eric A. “Rick” Crawford,Republican,candidate,194711
+AR,01,Rodney Govens,Democrat,candidate,64113
+AR,01,Steve G. Parsons,Libertarian,candidate,8353
+AR,02,J. French Hill,Republican,candidate,180509
+AR,02,Marcus A. Jones,Democrat,candidate,125777
+AR,03,Steve Womack,Republican,candidate,192101
+AR,03,Caitlin Draper,Democrat,candidate,95652
+AR,03,Bobby Wilson,Libertarian,candidate,13331
+AR,04,Bruce Westerman,Republican,candidate,197046
+AR,04,Risie Howard,Democrat,candidate,73207
+CA,01,Doug LaMalfa,Republican,candidate,208592
+CA,01,Rose Penelope Yee,Democrat,candidate,110636
+CA,02,Chris Coulombe,Republican,candidate,106734
+CA,02,Jared Huffman,Democrat,candidate,272883
+CA,03,Kevin Kiley,Republican,candidate,234246
+CA,03,Jessica Morse,Democrat,candidate,188067
+CA,04,John Munn,Republican,candidate,114950
+CA,04,Mike Thompson,Democrat,candidate,227730
+CA,05,Tom McClintock,Republican,candidate,227643
+CA,05,Michael J. “Mike” Barkley,Democrat,candidate,140919
+CA,06,Christine Bish,Republican,candidate,121664
+CA,06,Ami Bera,Democrat,candidate,165408
+CA,07,Tom Silva,Republican,candidate,98341
+CA,07,Doris O. Matsui,Democrat,candidate,197429
+CA,08,Rudy Recile,Republican,candidate,71068
+CA,08,John Garamendi,Democrat,candidate,201962
+CA,09,Kevin Lincoln,Republican,candidate,121174
+CA,09,Josh Harder,Democrat,candidate,130183
+CA,10,Katherine Piccinini,Republican,candidate,122219
+CA,10,Mark DeSaulnier,Democrat,candidate,242325
+CA,11,Bruce Lou,Republican,candidate,64315
+CA,11,Nancy Pelosi,Democrat,candidate,274796
+CA,12,Lateefah Simon,Democrat,candidate,185176
+CA,12,Jennifer Tran,Democrat,candidate,97849
+CA,13,John S. Duarte,Republican,candidate,105367
+CA,13,Adam Gray,Democrat,candidate,105554
+CA,14,Vin Kruttiventi,Republican,candidate,89125
+CA,14,Eric Swalwell,Democrat,candidate,187263
+CA,15,Anna Cheng Kramer,Republican,candidate,77896
+CA,15,Kevin Mullin,Democrat,candidate,211648
+CA,16,Sam Liccardo,Democrat,candidate,179583
+CA,16,Evan Low,Democrat,candidate,128893
+CA,17,Anita Chen,Republican,candidate,82415
+CA,17,Ro Khanna,Democrat,candidate,172462
+CA,18,Peter D. Hernandez,Republican,candidate,80832
+CA,18,Zoe Lofgren,Democrat,candidate,147674
+CA,19,Jason Michael Anderson,Republican,candidate,111862
+CA,19,Jimmy Panetta,Democrat,candidate,252458
+CA,20,Vince Fong,Republican,candidate,187862
+CA,20,Mike Boudreaux,Republican,candidate,100926
+CA,21,Michael Maher,Republican,candidate,92733
+CA,21,Jim Costa,Democrat,candidate,102798
+CA,22,David G. Valadao,Republican,candidate,89484
+CA,22,Rudy Salas,Democrat,candidate,78023
+CA,23,Jay Obernolte,Republican,candidate,159286
+CA,23,Derek Marshall,Democrat,candidate,105563
+CA,24,Thomas Cole,Republican,candidate,127755
+CA,24,Salud O. Carbajal,Democrat,candidate,214724
+CA,25,Ian M. Weeks,Republican,candidate,107194
+CA,25,Raul Ruiz,Democrat,candidate,137837
+CA,26,Michael Koslow,Republican,candidate,146913
+CA,26,Julia Brownley,Democrat,candidate,187393
+CA,27,Mike Garcia,Republican,candidate,146050
+CA,27,George Whitesides,Democrat,candidate,154040
+CA,28,April A. Verlato,Republican,candidate,110455
+CA,28,Judy Chu,Democrat,candidate,204489
+CA,29,Benito Benny Bernal,Republican,candidate,63374
+CA,29,Luz Maria Rivas,Democrat,candidate,146312
+CA,30,Alex Balekian,Republican,candidate,98559
+CA,30,Laura Friedman,Democrat,candidate,213100
+CA,31,Daniel Jose Bocic Martinez,Republican,candidate,99856
+CA,31,Gil Cisneros,Democrat,candidate,148095
+CA,32,Larry Thompson,Republican,candidate,108711
+CA,32,Brad Sherman,Democrat,candidate,212934
+CA,33,Tom Herman,Republican,candidate,96078
+CA,33,Pete Aguilar,Democrat,candidate,137197
+CA,34,Jimmy Gomez,Democrat,candidate,105394
+CA,34,David Kim,Democrat,candidate,84020
+CA,35,Mike Cargile,Republican,candidate,97142
+CA,35,Norma J. Torres,Democrat,candidate,136413
+CA,36,Melissa Toomim,Republican,candidate,111985
+CA,36,Ted Lieu,Democrat,candidate,246002
+CA,37,Sydney Kamlager-Dove,Democrat,candidate,160364
+CA,37,Juan Rey,No Party Preference,candidate,44450
+CA,38,Eric J. Ching,Republican,candidate,110818
+CA,38,Linda T. Sánchez,Democrat,candidate,165110
+CA,39,David Serpa,Republican,candidate,99469
+CA,39,Mark Takano,Democrat,candidate,130191
+CA,40,Young Kim,Republican,candidate,211998
+CA,40,Joe Kerr,Democrat,candidate,171637
+CA,41,Ken Calvert,Republican,candidate,183216
+CA,41,Will Rollins,Democrat,candidate,171229
+CA,42,John Briscoe,Republican,candidate,74410
+CA,42,Robert Garcia,Democrat,candidate,159153
+CA,43,Steve Williams,Republican,candidate,53152
+CA,43,Maxine Waters,Democrat,candidate,160080
+CA,44,Roger Groh,Republican,candidate,66087
+CA,44,Nanette Diaz Barragán,Democrat,candidate,164765
+CA,45,Michelle Steel,Republican,candidate,157611
+CA,45,Derek Tran,Democrat,candidate,158264
+CA,46,David Pan,Republican,candidate,77279
+CA,46,J. Luis Correa,Democrat,candidate,134013
+CA,47,Scott Baugh,Republican,candidate,171554
+CA,47,Dave Min,Democrat,candidate,181721
+CA,48,Darrell Issa,Republican,candidate,213625
+CA,48,Stephen Houlahan,Democrat,candidate,146665
+CA,49,Matt Gunderson,Republican,candidate,180950
+CA,49,Mike Levin,Democrat,candidate,197397
+CA,50,Peter J. Bono,Republican,candidate,128859
+CA,50,Scott H. Peters,Democrat,candidate,231836
+CA,51,Bill Wells,Republican,candidate,128749
+CA,51,Sara Jacobs,Democrat,candidate,198835
+CA,52,Justin Lee,Republican,candidate,87501
+CA,52,Juan Vargas,Democrat,candidate,172217
+CO,01,Valdamar Archuleta,Republican,candidate,74598
+CO,01,Diana DeGette,Democrat,candidate,264606
+CO,01,Critter Milton,Unity Party,candidate,4084
+CO,01,Daniel Lutz,Approval Voting Party,candidate,2351
+CO,01,Charles H. “Chuck” Norris,Write-in (Democratic),write-in or other,88
+CO,01,John R. Johnson,Write-in (Unaffiliated),write-in or other,8
+CO,02,Marshall Dawson,Republican,candidate,120633
+CO,02,Joe Neguse,Democrat,candidate,284994
+CO,02,Gaylon Kent,Libertarian,candidate,5180
+CO,02,Cynthia Munhos de Aquino Sirianni,Unity Party,candidate,3744
+CO,02,Jan Kok,Approval Voting Party,candidate,2349
+CO,02,Mike Watson,Write-in (Unaffiliated),write-in or other,8
+CO,03,Jeff Hurd,Republican,candidate,201951
+CO,03,Adam Frisch,Democrat,candidate,182147
+CO,03,James Wiley,Libertarian,candidate,10734
+CO,03,Adam Withrow,Unity Party,candidate,2721
+CO,04,Lauren Boebert,Republican,candidate,240213
+CO,04,Trisha Calvarese,Democrat,candidate,188249
+CO,04,Hannah Goodman,Libertarian,candidate,11676
+CO,04,Frank Atwood,Approval Voting Party,candidate,6233
+CO,04,Paul Noel Fiorino,Unity Party,candidate,1436
+CO,05,Jeff Crank,Republican,candidate,197924
+CO,05,River Gassen,Democrat,candidate,147972
+CO,05,Michael Keith Vance,Libertarian,candidate,6458
+CO,05,Joseph Gaye,Unaffiliated,candidate,4094
+CO,05,Christopher Mitchell,American Constitution,candidate,4006
+CO,05,Christopher Sweat,Forward Party,candidate,1627
+CO,05,Marcus Murphy,Write-in (Unaffiliated),write-in or other,4
+CO,06,John E. Fabbricatore,Republican,candidate,132174
+CO,06,Jason Crow,Democrat,candidate,202686
+CO,06,John Kittleson,Libertarian,candidate,4832
+CO,06,Travis Nicks,Approval Voting Party,candidate,4004
+CO,06,Brad Nickle,Write-in (Unaffiliated),write-in or other,25
+CO,07,Sergei Matveyuk,Republican,candidate,175273
+CO,07,Brittany Pettersen,Democrat,candidate,235688
+CO,07,Patrick Bohan,Libertarian,candidate,9697
+CO,07,Ron Tupa,Unity Party,candidate,5271
+CO,07,Patrick Flaherty,Write-in (Unaffiliated),write-in or other,37
+CO,08,Gabe Evans,Republican,candidate,163320
+CO,08,Yadira Caraveo,Democrat,candidate,160871
+CO,08,Chris Baum,Approval Voting Party,candidate,5741
+CO,08,Susan Patricia Hall,Unity Party,candidate,3677
+CO,08,James K. Treibert,Write-in (Unaffiliated),write-in or other,7
+CT,01,Jim Griffin,Republican,candidate,115065
+CT,01,John B. Larson,Democrat,candidate,197788
+CT,01,John B. Larson,Working Families,fusion line,10861
+CT,01,Mary L. Sanders,Green,candidate,6768
+CT,02,Mike France,Republican,candidate,157878
+CT,02,Joe Courtney,Democrat,candidate,218162
+CT,02,Jeffery Russell,Write-in,write-in or other,4
+CT,02,"Kenneth Kusmierski, Jr.",Write-in,write-in or other,3
+CT,03,Michael Massey,Republican,candidate,130095
+CT,03,Michael Massey,Independent,fusion line,5018
+CT,03,Rosa L. DeLauro,Democrat,candidate,193684
+CT,03,Shahd Omar,Write-in,write-in or other,124
+CT,03,Omar Scott Antar,Write-in,write-in or other,2
+CT,04,Michael Goldstein,Republican,candidate,122793
+CT,04,James A. Himes,Democrat,candidate,200791
+CT,04,Benjamin Wesley,Independent,candidate,5273
+CT,05,George Logan,Republican,candidate,157258
+CT,05,Jahana Hayes,Democrat,candidate,171337
+CT,05,Jahana Hayes,Working Families,fusion line,8931
+CT,05,Ahmad A J Darwish,Write-in,write-in or other,76
+CT,05,Bertram Ferguson,Write-in,write-in or other,3
+DE,00,John J. Whalen III,Republican,candidate,209606
+DE,00,Sarah McBride,Democrat,candidate,287830
+FL,01,Matt Gaetz,Republican,candidate,274108
+FL,01,Gay Valimont,Democrat,candidate,140980
+FL,02,Neal P. Dunn,Republican,candidate,247957
+FL,02,Yen Bailey,Democrat,candidate,154323
+FL,03,Kat Cammack,Republican,candidate,241174
+FL,03,Tom Wells,Democrat,candidate,150283
+FL,04,Aaron Bean,Republican,candidate,222364
+FL,04,LaShonda “L. J.” Holloway,Democrat,candidate,165912
+FL,04,Todd Schaefer,Write-in,write-in or other,73
+FL,05,John H. Rutherford,Republican,candidate,267471
+FL,05,Jay McGovern,Democrat,candidate,156570
+FL,05,Gary L. Koniz,Write-in,write-in or other,23
+FL,06,Michael Waltz,Republican,candidate,284414
+FL,06,James David Stockton III,Democrat,candidate,143050
+FL,06,Richard Paul Dembinsky,Write-in,write-in or other,10
+FL,07,Cory Mills,Republican,candidate,233937
+FL,07,Jennifer Adams,Democrat,candidate,179917
+FL,08,Mike Haridopolos,Republican,candidate,280352
+FL,08,Sandy Kennedy,Democrat,candidate,170096
+FL,09,Thomas Chalifoux,Republican,candidate,138076
+FL,09,Darren Soto,Democrat,candidate,178785
+FL,09,Marcus Carter,No Party Affiliation,candidate,7412
+FL,10,Willie J. Montague,Republican,candidate,109460
+FL,10,Maxwell Frost,Democrat,candidate,181455
+FL,11,Daniel Webster,Republican,candidate,269277
+FL,11,Barbie Harden Hall,Democrat,candidate,176726
+FL,12,Gus M. Bilirakis,Republican,candidate,306487
+FL,12,"Rock Aboujaoude, Jr.",Democrat,candidate,124949
+FL,13,Anna Paulina Luna,Republican,candidate,225636
+FL,13,Whitney Fox,Democrat,candidate,185930
+FL,13,Tony D’Arrigo,Write-in,write-in or other,27
+FL,14,Robert “Rocky” Rochford,Republican,candidate,145643
+FL,14,Kathy Castor,Democrat,candidate,199423
+FL,14,Christopher Bradley,No Party Affiliation,candidate,2595
+FL,14,Nathaniel T. Snyder,Libertarian Party of Florida,candidate,2524
+FL,15,Laurel M. Lee,Republican,candidate,195334
+FL,15,Patricia “Pat” Kemp,Democrat,candidate,152361
+FL,16,Vern Buchanan,Republican,candidate,247516
+FL,16,Jan Schneider,Democrat,candidate,168625
+FL,17,W. Gregory Steube,Republican,candidate,291347
+FL,17,Manny Lopez,Democrat,candidate,164566
+FL,17,Ralph E. Hartman,Write-in,write-in or other,8
+FL,18,Scott Franklin,Republican,candidate,225170
+FL,18,Andrea Doria Kale,Democrat,candidate,119637
+FL,19,Byron Donalds,Republican,candidate,275708
+FL,19,Kari L. Lerner,Democrat,candidate,140038
+FL,20,Sheila Cherfilus-McCormick,Democrat,candidate,
+FL,21,Brian J. Mast,Republican,candidate,277435
+FL,21,Thomas Witkop,Democrat,candidate,171312
+FL,21,Elizabeth Felton,Write-in,write-in or other,19
+FL,22,Dan Franzese,Republican,candidate,165248
+FL,22,Lois Frankel,Democrat,candidate,201608
+FL,23,Joseph “Joe” Kaufman,Republican,candidate,178006
+FL,23,Jared Moskowitz,Democrat,candidate,196311
+FL,24,Jesus Gabriel Navarro,Republican,candidate,90692
+FL,24,Frederica S. Wilson,Democrat,candidate,194874
+FL,24,Lavern Spicer,Write-in,write-in or other,22
+FL,25,Chris Eddy,Republican,candidate,156208
+FL,25,Debbie Wasserman Schultz,Democrat,candidate,186942
+FL,25,Eddie Goldfarb,Write-in,write-in or other,41
+FL,26,Mario Diaz-Balart,Republican,candidate,217199
+FL,26,Joey Atkins,Democrat,candidate,89072
+FL,27,Maria Elvira Salazar,Republican,candidate,199159
+FL,27,Lucia Baez-Geller,Democrat,candidate,130708
+FL,28,Carlos A. Gimenez,Republican,candidate,210057
+FL,28,Phil Ehr,Democrat,candidate,115280
+GA,01,Earl L. “Buddy” Carter,Republican,candidate,220576
+GA,01,Patti Hewitt,Democrat,candidate,135281
+GA,02,A. Wayne Johnson,Republican,candidate,136473
+GA,02,"Sanford D. Bishop, Jr.",Democrat,candidate,176028
+GA,03,Brian Jack,Republican,candidate,273036
+GA,03,Maura Keller,Democrat,candidate,138749
+GA,04,Eugene Yu,Republican,candidate,74071
+GA,04,"Henry C. “Hank” Johnson, Jr.",Democrat,candidate,229290
+GA,05,John “Bongo” Salvesen,Republican,candidate,49221
+GA,05,Nikema Williams,Democrat,candidate,294470
+GA,06,Jeff Criswell,Republican,candidate,93909
+GA,06,Lucy McBath,Democrat,candidate,277027
+GA,07,Richard McCormick,Republican,candidate,275907
+GA,07,Bob Christian,Democrat,candidate,149535
+GA,08,Austin Scott,Republican,candidate,231547
+GA,08,Darrius Butler,Democrat,candidate,104434
+GA,09,Andrew S. Clyde,Republican,candidate,271062
+GA,09,Tambrei Cash,Democrat,candidate,121754
+GA,10,Mike Collins,Republican,candidate,256442
+GA,10,Alexandra “Lexy” Doherty,Democrat,candidate,150274
+GA,11,Barry Loudermilk,Republican,candidate,269849
+GA,11,Katy “Kate” L. Stamper,Democrat,candidate,131064
+GA,12,Rick W. Allen,Republican,candidate,205849
+GA,12,Elizabeth “Liz” Johnson,Democrat,candidate,135417
+GA,13,Jonathan Chavez,Republican,candidate,100730
+GA,13,David Scott,Democrat,candidate,256902
+GA,14,Marjorie Taylor Greene,Republican,candidate,243446
+GA,14,Shawn Harris,Democrat,candidate,134759
+HI,01,Patrick C. Largey,Republican,candidate,64373
+HI,01,Ed Case,Democrat,candidate,164237
+HI,01,Blank Votes,,not a vote for a candidate,22669
+HI,01,Over Votes,,not a vote for a candidate,153
+HI,02,Steve Bond,Republican,candidate,75471
+HI,02,Jill N. Tokuda,Democrat,candidate,166251
+HI,02,Aaron Toman,Libertarian,candidate,4497
+HI,02,Randall Kelly Meyer,Nonpartisan,candidate,3937
+HI,02,Blank Votes,,not a vote for a candidate,20266
+HI,02,Over Votes,,not a vote for a candidate,382
+ID,01,Russ Fulcher,Republican,candidate,331049
+ID,01,Kaylee Peterson,Democrat,candidate,118656
+ID,01,Matt Loesby,Libertarian,candidate,9594
+ID,01,Brendan J. Gomez,Constitution,candidate,6933
+ID,01,Margot Dupre,Write-in,write-in or other,7
+ID,01,David D. Bot,Write-in,write-in or other,3
+ID,01,Under Votes,,not a vote for a candidate,22598
+ID,01,Over Votes,,not a vote for a candidate,246
+ID,02,Michael K. Simpson,Republican,candidate,250119
+ID,02,David Roth,Democrat,candidate,126229
+ID,02,Todd Corsetti,Libertarian,candidate,21310
+ID,02,Idaho Law - Carta Sierra,Constitution,candidate,9804
+ID,02,Under Votes,,not a vote for a candidate,20500
+ID,02,Over Votes,,not a vote for a candidate,552
+IL,01,Marcus Lewis,Republican,candidate,108064
+IL,01,Jonathan L. Jackson,Democrat,candidate,208398
+IL,01,Hilary Myrick-Winston,Write-in,write-in or other,45
+IL,02,Ashley Ramos,Republican,candidate,94004
+IL,02,Robin L. Kelly,Democrat,candidate,195777
+IL,02,Mike Vick,Write-in,write-in or other,33
+IL,02,Hilary Myrick-Winston,Write-in,write-in or other,29
+IL,03,John Booras,Republican,candidate,84987
+IL,03,Delia C. Ramirez,Democrat,candidate,174825
+IL,03,Angel Oakley,Write-in,write-in or other,96
+IL,04,Lupe Castillo,Republican,candidate,56323
+IL,04,Jesús G. “Chuy” García,Democrat,candidate,139343
+IL,04,Ed Hershey,Working Class,candidate,10704
+IL,04,Alicia Martinez,Write-in,write-in or other,26
+IL,05,Tommy Hanson,Republican,candidate,112931
+IL,05,Mike Quigley,Democrat,candidate,251025
+IL,05,Frank Rowder,Write-in,write-in or other,9
+IL,06,Niki Conforti,Republican,candidate,166116
+IL,06,Sean Casten,Democrat,candidate,196647
+IL,06,"Peter J. Meyer, Jr.",Write-in,write-in or other,86
+IL,07,Chad Koppie,Republican,candidate,44598
+IL,07,Danny K. Davis,Democrat,candidate,222408
+IL,07,Lien Choi,Write-in,write-in or other,133
+IL,07,Lowell Martin Seida,Write-in,write-in or other,13
+IL,08,Mark Rice,Republican,candidate,130153
+IL,08,Raja Krishnamoorthi,Democrat,candidate,172920
+IL,09,Seth Alan Cohen,Republican,candidate,107106
+IL,09,Janice D. Schakowsky,Democrat,candidate,231722
+IL,10,Jim Carris,Republican,candidate,131025
+IL,10,Bradley Scott Schneider,Democrat,candidate,196358
+IL,10,Joseph Severino,Write-in,write-in or other,238
+IL,11,Jerry Evans,Republican,candidate,159630
+IL,11,Bill Foster,Democrat,candidate,199825
+IL,11,Anna Schiefelbein,Write-in,write-in or other,229
+IL,12,Mike Bost,Republican,candidate,272754
+IL,12,Brian Roberts,Democrat,candidate,94875
+IL,13,Joshua Loyd,Republican,candidate,137917
+IL,13,Nikki Budzinski,Democrat,candidate,191339
+IL,13,Chibuihe Asonye,Write-in,write-in or other,244
+IL,14,James T. “Jim” Marter,Republican,candidate,149464
+IL,14,Lauren Underwood,Democrat,candidate,183446
+IL,14,Roy Jones,Write-in,write-in or other,16
+IL,14,Constant Connor VlaKancic,Write-in,write-in or other,3
+IL,15,Mary E. Miller,Republican,candidate,308825
+IL,15,William Bonnett,Write-in,write-in or other,1409
+IL,16,Darin LaHood,Republican,candidate,310925
+IL,16,Scott Summers,Write-in,write-in or other,183
+IL,17,Joe McGraw,Republican,candidate,142567
+IL,17,Eric Sorensen,Democrat,candidate,170261
+IN,01,Randy Niemeyer,Republican,candidate,145056
+IN,01,Frank J. Mrvan,Democrat,candidate,172467
+IN,01,Dakotah Miskus,Libertarian,candidate,5200
+IN,02,Rudy Yakym III,Republican,candidate,184848
+IN,02,Lori A. Camp,Democrat,candidate,101962
+IN,02,William E. Henry,Libertarian,candidate,7795
+IN,02,Michael John Hubbard,Write-in (Independent),write-in or other,13
+IN,03,Marlin A. Stutzman,Republican,candidate,202653
+IN,03,Kiley M. Adolph,Democrat,candidate,97871
+IN,03,Jarrad Lancaster,Libertarian,candidate,11015
+IN,04,James R. Baird,Republican,candidate,209794
+IN,04,Derrick Holder,Democrat,candidate,100091
+IN,04,Ashley Groff,Libertarian,candidate,13710
+IN,05,Victoria Spartz,Republican,candidate,203293
+IN,05,Deborah A. Pickett,Democrat,candidate,136554
+IN,05,Robby Slaughter,Independent,candidate,9790
+IN,05,Lauri Shillings,Libertarian,candidate,9567
+IN,06,Jefferson Shreve,Republican,candidate,201357
+IN,06,Cynthia “Cinde” Wirth,Democrat,candidate,99841
+IN,06,James Michael Sceniak,Libertarian,candidate,13711
+IN,07,John P. Schmitz,Republican,candidate,78792
+IN,07,André Carson,Democrat,candidate,185987
+IN,07,Rusty Johnson,Libertarian,candidate,7369
+IN,08,Mark Messmer,Republican,candidate,219941
+IN,08,Erik Hurt,Democrat,candidate,95311
+IN,08,K. Richard Fitzlaff,Libertarian,candidate,8381
+IN,09,Erin Houchin,Republican,candidate,222884
+IN,09,Timothy “Tim” Peck,Democrat,candidate,113400
+IN,09,Russell “Russ” Brooksbank,Libertarian,candidate,9454
+IA,01,Mariannette Miller-Meeks,Republican,candidate,206955
+IA,01,Christina Bohannan,Democrat,candidate,206156
+IA,01,Write-in,,write-in or other,967
+IA,02,Ashley Hinson,Republican,candidate,233340
+IA,02,Sarah Corkery,Democrat,candidate,169740
+IA,02,Jody Madlom Puffett,No Party,candidate,5381
+IA,02,Write-in,,write-in or other,341
+IA,03,Zachary Nunn,Republican,candidate,213746
+IA,03,Lanon Baccam,Democrat,candidate,197962
+IA,03,Write-in,,write-in or other,1197
+IA,04,Randy Feenstra,Republican,candidate,250522
+IA,04,Ryan Melton,Democrat,candidate,122175
+IA,04,Write-in,,write-in or other,1127
+KS,01,Tracey Mann,Republican,candidate,210493
+KS,01,Paul Buskirk,Democrat,candidate,93965
+KS,02,Derek Schmidt,Republican,candidate,172847
+KS,02,Nancy Boyda,Democrat,candidate,115685
+KS,02,John Hauer,Libertarian,candidate,14229
+KS,03,Prasanth Reddy,Republican,candidate,167570
+KS,03,Sharice Davids,Democrat,candidate,209871
+KS,03,Steve Roberts,Libertarian,candidate,15892
+KS,04,Ron Estes,Republican,candidate,198465
+KS,04,Esau Freeman,Democrat,candidate,106632
+KY,01,James Comer,Republican,candidate,252729
+KY,01,Erin Marshall,Democrat,candidate,85524
+KY,02,Brett Guthrie,Republican,candidate,252826
+KY,02,Hank Linderman,Democrat,candidate,93029
+KY,03,Mike Craven,Republican,candidate,124713
+KY,03,Morgan McGarvey,Democrat,candidate,203100
+KY,03,Daniel Cobble,Write-in,write-in or other,27
+KY,03,Jared Randall,Write-in,write-in or other,24
+KY,04,Thomas Massie,Republican,candidate,278386
+KY,04,Benjamin August Middendorf,Write-in,write-in or other,1131
+KY,05,Harold Rogers,Republican,candidate,261407
+KY,06,Andy Barr,Republican,candidate,222293
+KY,06,Randy Cravens,Democrat,candidate,130345
+LA,01,Steve Scalise,Republican,candidate,238842
+LA,01,Randall Arrington,Republican,candidate,17856
+LA,01,Ross Shales,Republican,candidate,8330
+LA,01,Mel Manuel,Democrat,candidate,85911
+LA,01,J. “Frankie” Hyers,No Party,candidate,6781
+LA,02,Christy Lynch,Republican,candidate,41641
+LA,02,Devin Lance Graham,Republican,candidate,39174
+LA,02,Shondrell Perrilloux,Republican,candidate,7878
+LA,02,Troy A. Carter,Democrat,candidate,184009
+LA,02,Devin Davis,Democrat,candidate,32482
+LA,03,Clay Higgins,Republican,candidate,226279
+LA,03,“Xan” John,Republican,candidate,13246
+LA,03,Priscilla Gonzalez,Democrat,candidate,59834
+LA,03,Sadi Summerlin,Democrat,candidate,21323
+LA,04,Mike Johnson,Republican,candidate,262821
+LA,04,Joshua Morott,Republican,candidate,43427
+LA,05,Julia Letlow,Republican,candidate,201037
+LA,05,M. V. “Vinny” Mendoza,Republican,candidate,35833
+LA,05,"Michael Vallien, Jr.",Democrat,candidate,82981
+LA,06,Elbert Guillory,Republican,candidate,111737
+LA,06,Cleo Fields,Democrat,candidate,150323
+LA,06,Quentin Anthony Anderson,Democrat,candidate,23811
+LA,06,Peter Williams,Democrat,candidate,6252
+LA,06,"Wilken Jones, Jr.",Democrat,candidate,3910
+ME,01,Ronald C. Russell,Republican,candidate,154849
+ME,01,Chellie Pingree,Democrat,candidate,249798
+ME,01,Ethan Weld Alcorn,Unenrolled Independent,candidate,20883
+ME,01,Blank,,not a vote for a candidate,14037
+ME,02,Austin Theriault,Republican,candidate,194445
+ME,02,Jared F. Golden,Democrat,candidate,197151
+ME,02,Continuing Ballots,,not a vote for a candidate,391596
+ME,02,Exhausted Ballots,,not a vote for a candidate,11340
+MD,01,Andy Harris,Republican,candidate,246356
+MD,01,Blane H. Miller III,Democrat,candidate,154985
+MD,01,Joshua W. O’Brien,Libertarian,candidate,12664
+MD,01,Other Write-ins,,write-in or other,675
+MD,02,Kim Klacik,Republican,candidate,152079
+MD,02,"John “Johnny O” Olszewski, Jr.",Democrat,candidate,223797
+MD,02,Jasen Joseph Wunder,Libertarian,candidate,8169
+MD,02,Other Write-ins,,write-in or other,749
+MD,03,Robert J. Steinberger,Republican,candidate,151186
+MD,03,Sarah Elfreth,Democrat,candidate,236681
+MD,03,Miguel Barajas,Libertarian,candidate,10471
+MD,03,Other Write-ins,,write-in or other,862
+MD,04,George McDermott,Republican,candidate,30454
+MD,04,Glenn Ivey,Democrat,candidate,239596
+MD,04,Other Write-ins,,write-in or other,920
+MD,05,Michelle Talkington,Republican,candidate,133985
+MD,05,Steny H. Hoyer,Democrat,candidate,283619
+MD,05,Other Write-ins,,write-in or other,999
+MD,06,Neil C. Parrott,Republican,candidate,175974
+MD,06,April McClain Delaney,Democrat,candidate,199788
+MD,06,Other Write-ins,,write-in or other,862
+MD,07,Scott M. Collier,Republican,candidate,49799
+MD,07,Kweisi Mfume,Democrat,candidate,232849
+MD,07,Ronald M. Owens-Bey,Libertarian,candidate,6840
+MD,07,Other Write-ins,,write-in or other,649
+MD,08,Cheryl Riley,Republican,candidate,77821
+MD,08,Jamie Raskin,Democrat,candidate,292101
+MD,08,Nancy Wallace,Green,candidate,9612
+MD,08,Other Write-ins,,write-in or other,786
+MA,01,Richard E. Neal,Democrat,candidate,223325
+MA,01,Nadia Donya Milleron,Independent,candidate,133552
+MA,01,Blanks,,not a vote for a candidate,26947
+MA,01,All Others,,write-in or other,1181
+MA,02,James P. McGovern,Democrat,candidate,251441
+MA,02,Cornelius Shea,Independent,candidate,114065
+MA,02,Blanks,,not a vote for a candidate,23009
+MA,02,All Others,,write-in or other,822
+MA,03,Lori Trahan,Democrat,candidate,264698
+MA,03,Blanks,,not a vote for a candidate,91119
+MA,03,All Others,,write-in or other,6861
+MA,04,Jake Auchincloss,Democrat,candidate,289347
+MA,04,Sana A. Fadel,Write-in,write-in or other,1099
+MA,04,Blanks,,not a vote for a candidate,113853
+MA,04,All Others,,write-in or other,7279
+MA,05,Katherine M. Clark,Democrat,candidate,286689
+MA,05,Blanks,,not a vote for a candidate,87811
+MA,05,All Others,,write-in or other,5201
+MA,06,Seth Moulton,Democrat,candidate,321186
+MA,06,Blanks,,not a vote for a candidate,110196
+MA,06,All Others,,write-in or other,7191
+MA,07,Ayanna Pressley,Democrat,candidate,232094
+MA,07,Blanks,,not a vote for a candidate,44193
+MA,07,All Others,,write-in or other,6907
+MA,08,Robert G. Burke,Republican,candidate,110638
+MA,08,Stephen F. Lynch,Democrat,candidate,265432
+MA,08,Blanks,,not a vote for a candidate,20937
+MA,08,All Others,,write-in or other,760
+MA,09,Dan Sullivan,Republican,candidate,193822
+MA,09,William R. Keating,Democrat,candidate,251931
+MA,09,Blanks,,not a vote for a candidate,18702
+MA,09,All Others,,write-in or other,642
+MI,01,Jack Bergman,Republican,candidate,282264
+MI,01,Callie Barr,Democrat,candidate,180937
+MI,01,Liz Hakola,Working Class,candidate,8497
+MI,01,Andrew Gale,Libertarian,candidate,5486
+MI,02,John R. Moolenaar,Republican,candidate,279167
+MI,02,Michael Lynch,Democrat,candidate,135824
+MI,02,Ben DeJong,Libertarian,candidate,7037
+MI,02,Scott Adams,U.S. Taxpayers,candidate,6522
+MI,03,Paul Hudson,Republican,candidate,183952
+MI,03,Hillary J. Scholten,Democrat,candidate,225510
+MI,03,Louis Palus,Working Class,candidate,5546
+MI,03,Alex Avery,Libertarian,candidate,5281
+MI,04,Bill Huizenga,Republican,candidate,234489
+MI,04,Jessica Swartz,Democrat,candidate,184641
+MI,04,Curtis Clark,U.S. Taxpayers,candidate,6687
+MI,05,Tim Walberg,Republican,candidate,269215
+MI,05,Libbi Urban,Democrat,candidate,134282
+MI,05,James Bronke,Green,candidate,6379
+MI,06,Heather Smiley,Republican,candidate,158658
+MI,06,Debbie Dingell,Democrat,candidate,281162
+MI,06,Clyde K. Shabazz,Green,candidate,7963
+MI,06,Bill Krebaum,Libertarian,candidate,5523
+MI,07,Tom Barrett,Republican,candidate,226722
+MI,07,Curtis Hertel,Democrat,candidate,209959
+MI,07,L. Rachel Dailey,Libertarian,candidate,14231
+MI,08,Paul Junge,Republican,candidate,189317
+MI,08,Kristen McDonald Rivet,Democrat,candidate,217490
+MI,08,Kathy Goodwin,Working Class,candidate,8492
+MI,08,Steve Barcelo,Libertarian,candidate,4768
+MI,08,James Allen Little,U.S. Taxpayers,candidate,2681
+MI,08,Jim Casha,Green,candidate,1602
+MI,09,Lisa C. McClain,Republican,candidate,312593
+MI,09,Clinton St. Mosley,Democrat,candidate,138138
+MI,09,Jim Walkowicz,Working Class,candidate,12169
+MI,09,Kevin Vayko,Libertarian,candidate,5338
+MI,10,John James,Republican,candidate,217437
+MI,10,Carl J. Marlinga,Democrat,candidate,191363
+MI,10,Andrea L. Kirby,Working Class,candidate,11162
+MI,10,Mike Saliba,Libertarian,candidate,5339
+MI,11,Nick Somberg,Republican,candidate,177432
+MI,11,Haley M. Stevens,Democrat,candidate,260780
+MI,11,Douglas Campbell,Green,candidate,9713
+MI,12,James D. Hooper,Republican,candidate,92490
+MI,12,Rashida Tlaib,Democrat,candidate,253354
+MI,12,Gary Walkowicz,Working Class,candidate,9401
+MI,12,Brenda K. Sanders,Green,candidate,8254
+MI,13,Martell D. Bivings,Republican,candidate,78917
+MI,13,Shri Thanedar,Democrat,candidate,220788
+MI,13,Simone R. Coleman,Working Class,candidate,13367
+MI,13,Chris Clark,Libertarian,candidate,5726
+MI,13,Chris Dardzinski,U.S. Taxpayers,candidate,2825
+MI,13,Shakira Lynette Hawkins,Write-in,write-in or other,25
+MI,13,Danetta Lynese Simpson,Write-in,write-in or other,1
+MN,01,Brad Finstad,Republican,candidate,220929
+MN,01,Rachel Bohman,Democratic-Farmer-Labor,candidate,156375
+MN,01,Write-in,,write-in or other,297
+MN,02,Joe Teirab,Republican,candidate,175621
+MN,02,Angie Craig,Democrat,candidate,231751
+MN,02,Thomas William Bowman,Constitutional Conservative,candidate,9492
+MN,02,Write-in,,write-in or other,455
+MN,03,Tad Jude,Republican,candidate,170427
+MN,03,Kelly Morrison,Democratic-Farmer-Labor,candidate,240209
+MN,03,Write-in,,write-in or other,504
+MN,04,May Lor Xiong,Republican,candidate,117618
+MN,04,Betty McCollum,Democrat,candidate,242802
+MN,04,Write-in,,write-in or other,623
+MN,05,Dalia Al-Aqidi,Republican,candidate,86213
+MN,05,Ilhan Omar,Democrat,candidate,261066
+MN,05,Write-in,,write-in or other,3768
+MN,06,Tom Emmer,Republican,candidate,260095
+MN,06,Jeanne Hendricks,Democratic-Farmer-Labor,candidate,155836
+MN,06,Write-in,,write-in or other,565
+MN,07,Michelle Fischbach,Republican,candidate,275098
+MN,07,A J “John” Peters,Democratic-Farmer-Labor,candidate,114979
+MN,07,Write-in,,write-in or other,433
+MN,08,Pete Stauber,Republican,candidate,244498
+MN,08,Jen Schultz,Democratic-Farmer-Labor,candidate,176724
+MN,08,Write-in,,write-in or other,384
+MS,01,Trent Kelly,Republican,candidate,223589
+MS,01,Dianne Dodson Black,Democrat,candidate,96697
+MS,02,Ron Eller,Republican,candidate,108956
+MS,02,Bennie G. Thompson,Democrat,candidate,177885
+MS,03,Michael Guest,Republican,candidate,265159
+MS,04,Mike Ezell,Republican,candidate,215095
+MS,04,Craig Elliot Raybon,Democrat,candidate,75771
+MO,01,Andrew Jones,Republican,candidate,56453
+MO,01,Wesley Bell,Democrat,candidate,233312
+MO,01,Rochelle A. Riggins,Libertarian,candidate,10070
+MO,01,Don Fitz,Green,candidate,5151
+MO,01,Blake Ashby,Better Party,candidate,2279
+MO,02,Ann Wagner,Republican,candidate,233444
+MO,02,Ray Hartmann,Democrat,candidate,182056
+MO,02,Brandon Daugherty,Libertarian,candidate,8951
+MO,02,Shelby Davis,Green,candidate,3941
+MO,03,Bob Onder,Republican,candidate,240620
+MO,03,Bethany E. Mann,Democrat,candidate,138532
+MO,03,Jordan Rowden,Libertarian,candidate,9298
+MO,03,William Hastings,Green,candidate,4013
+MO,04,Mark Alford,Republican,candidate,259886
+MO,04,Jeanette Cass,Democrat,candidate,96568
+MO,04,Thomas Holbrook,Libertarian,candidate,9240
+MO,04,David Haave,Write-in,write-in or other,2
+MO,05,Sean E. Smith,Republican,candidate,120957
+MO,05,Emanuel Cleaver,Democrat,candidate,199900
+MO,05,William Truman “Bill” Wayne,Libertarian,candidate,6658
+MO,05,Michael Day,Green,candidate,4414
+MO,06,Sam Graves,Republican,candidate,265210
+MO,06,Pam May,Democrat,candidate,100999
+MO,06,Andy Maidment,Libertarian,candidate,5919
+MO,06,Mike Diel,Green,candidate,3058
+MO,07,Eric Burlison,Republican,candidate,263231
+MO,07,Missi Hesketh,Democrat,candidate,96655
+MO,07,Kevin Craig,Libertarian,candidate,7982
+MO,08,Jason Smith,Republican,candidate,271249
+MO,08,Randi McCallian,Democrat,candidate,77649
+MO,08,Jake Dawson,Libertarian,candidate,7166
+MT,01,Ryan K. Zinke,Republican,candidate,168529
+MT,01,Monica Tranel,Democrat,candidate,143783
+MT,01,Dennis Hayes,Libertarian,candidate,9954
+MT,02,Troy Downing,Republican,candidate,181832
+MT,02,John B. Driscoll,Democrat,candidate,93713
+NE,01,Mike Flood,Republican,candidate,187559
+NE,01,Carol Blood,Democrat,candidate,124498
+NE,02,Don Bacon,Republican,candidate,160198
+NE,02,Tony Vargas,Democrat,candidate,154369
+NE,03,Adrian Smith,Republican,candidate,243481
+NE,03,Daniel Ebers,Democrat,candidate,59287
+NV,01,Mark Robertson,Republican,candidate,143650
+NV,01,Dina Titus,Democrat,candidate,167885
+NV,01,Ron “Ron Q.” Quince,No Political Party,candidate,3321
+NV,01,William Hoge,Independent American,candidate,2736
+NV,01,David Havlicek,Libertarian,candidate,2711
+NV,01,David Goossen,No Political Party,candidate,2596
+NV,02,Mark E. Amodei,Republican,candidate,219919
+NV,02,Greg Kidd,No Political Party,candidate,144064
+NV,02,Lynn Chapman,Independent American,candidate,19784
+NV,02,Javi “Trujillo” Tachiquin,Libertarian,candidate,15817
+NV,03,Drew Johnson,Republican,candidate,181084
+NV,03,Susie Lee,Democrat,candidate,191304
+NV,04,John Lee,Republican,candidate,148061
+NV,04,Steven Horsford,Democrat,candidate,174926
+NV,04,Russell Best,Independent American,candidate,4919
+NV,04,Tim “T J” Ferreira,Libertarian,candidate,4300
+NH,01,Russell Prescott,Republican,candidate,185936
+NH,01,Chris Pappas,Democrat,candidate,218577
+NH,01,Under Votes,,not a vote for a candidate,11678
+NH,01,Write-in,,write-in or other,295
+NH,01,Over Votes,,not a vote for a candidate,76
+NH,02,Lily Tang Williams,Republican,candidate,187810
+NH,02,Maggie Goodlander,Democrat,candidate,211641
+NH,02,Under Votes,,not a vote for a candidate,14548
+NH,02,Write-in,,write-in or other,367
+NH,02,Over Votes,,not a vote for a candidate,58
+NJ,01,Theodore “Teddy” Liddell,Republican,candidate,144390
+NJ,01,Donald Norcross,Democrat,candidate,208808
+NJ,01,Robin Brownfield,Green,candidate,5771
+NJ,01,Austin Johnson,No Slogan,candidate,2091
+NJ,02,Jefferson Van Drew,Republican,candidate,215946
+NJ,02,Joseph F. Salerno,Democrat,candidate,153117
+NJ,02,Thomas Cannavo,Green,candidate,2557
+NJ,03,Rajesh Mohan,Republican,candidate,169454
+NJ,03,Herb Conaway,Democrat,candidate,202034
+NJ,03,Steven Welzer,Green,candidate,3478
+NJ,03,Chris Russomanno,Libertarian,candidate,1951
+NJ,03,Douglas Anthony Wynn,Why Not Wynn,candidate,1332
+NJ,03,Justin R. Barbera,Join The Revolution,candidate,1235
+NJ,04,Christopher H. Smith,Republican,candidate,265652
+NJ,04,Matthew Jenkins,Democrat,candidate,124803
+NJ,04,John Morrison,Libertarian,candidate,1950
+NJ,04,Barry Bendar,Green,candidate,1823
+NJ,05,Mary Jo Guinchard,Republican,candidate,165287
+NJ,05,Josh Gottheimer,Democrat,candidate,208359
+NJ,05,Beau Forte,Green,candidate,3428
+NJ,05,James Tosone,Libertarian,candidate,2440
+NJ,05,Aamir Arif,Peace Freedom Liberty,candidate,2375
+NJ,06,Scott Fegler,Republican,candidate,122519
+NJ,06,"Frank Pallone, Jr.",Democrat,candidate,170275
+NJ,06,Fahad Akhtar,Common Sense Independent,candidate,4871
+NJ,06,Herb Tarbous,Green,candidate,4246
+NJ,06,Matthew Amitrano,Libertarian,candidate,1770
+NJ,07,"Thomas H. Kean, Jr.",Republican,candidate,223331
+NJ,07,Sue Altman,Democrat,candidate,200025
+NJ,07,Andrew Black,Green,candidate,4258
+NJ,07,Lana Leguia,Libertarian,candidate,3784
+NJ,08,Anthony Valdes,Republican,candidate,68152
+NJ,08,Robert Menendez,Democrat,candidate,116434
+NJ,08,Christian J. Robbins,Green,candidate,5465
+NJ,08,Pablo R. Olivera,Labour,candidate,4295
+NJ,08,Lea Sherman,Socialist Workers,candidate,2419
+NJ,09,Billy Prempeh,Republican,candidate,117939
+NJ,09,Nellie Pou,Democrat,candidate,130514
+NJ,09,Benjamin Taylor,Green,candidate,5027
+NJ,09,Bruno Pereira,Libertarian,candidate,3533
+NJ,10,Carmen Bucco,Republican,candidate,54405
+NJ,10,LaMonica McIver,Democrat,candidate,182020
+NJ,10,Jon Carlos Serrano,Green,candidate,3198
+NJ,10,Cynthia A. Johnson,C4C 2024,candidate,2132
+NJ,10,Michelle Middleton,All Of Us!,candidate,1686
+NJ,10,Donna Weiss,Social Activist,candidate,1136
+NJ,11,Joseph Belnome,Republican,candidate,164556
+NJ,11,Mikie Sherrill,Democrat,candidate,222583
+NJ,11,Lily Benavides,Green,candidate,4780
+NJ,11,Joshua Lanzara,Truth Freedom Prosperity,candidate,1832
+NJ,12,Darius Mayfield,Republican,candidate,117222
+NJ,12,Bonnie Watson Coleman,Democrat,candidate,196871
+NJ,12,Kim Meudt,Green,candidate,4652
+NJ,12,Vic Kaplan,Libertarian,candidate,2915
+NM,01,Steve Jones,Republican,candidate,149546
+NM,01,Melanie A. Stansbury,Democrat,candidate,193203
+NM,02,Yvette Herrell,Republican,candidate,127145
+NM,02,Gabe Vasquez,Democrat,candidate,138177
+NM,03,Sharon E. Clahchischilliage,Republican,candidate,126085
+NM,03,Teresa Leger Fernandez,Democrat,candidate,162342
+NY,01,Nick LaLota,Republican,candidate,200802
+NY,01,Nick LaLota,Conservative,fusion line,25483
+NY,01,John P. Avlon,Democrat,candidate,181647
+NY,01,John P. Avlon,Common Sense Suffolk,fusion line,1893
+NY,01,Blank,,not a vote for a candidate,19984
+NY,01,Void,,not a vote for a candidate,376
+NY,01,Scattering,,write-in or other,275
+NY,02,Andrew R. Garbarino,Republican,candidate,180374
+NY,02,Andrew R. Garbarino,Conservative,fusion line,22223
+NY,02,Rob Lubin,Democrat,candidate,129937
+NY,02,Rob Lubin,Working Families,fusion line,6434
+NY,02,Blank,,not a vote for a candidate,23708
+NY,02,Void,,not a vote for a candidate,251
+NY,02,Scattering,,write-in or other,189
+NY,03,"Michael J. LiPetri, Jr.",Republican,candidate,161196
+NY,03,"Michael J. LiPetri, Jr.",Conservative,fusion line,13497
+NY,03,Thomas R. Suozzi,Democrat,candidate,185491
+NY,03,Thomas R. Suozzi,Common Sense,fusion line,2160
+NY,03,Blank,,not a vote for a candidate,18315
+NY,03,Scattering,,write-in or other,780
+NY,03,Void,,not a vote for a candidate,443
+NY,04,Anthony D’Esposito,Republican,candidate,169641
+NY,04,Anthony D’Esposito,Conservative,fusion line,13516
+NY,04,Laura A. Gillen,Democrat,candidate,190569
+NY,04,Laura A. Gillen,Common Sense,fusion line,1191
+NY,04,Blank,,not a vote for a candidate,16465
+NY,04,Scattering,,write-in or other,601
+NY,04,Void,,not a vote for a candidate,347
+NY,05,Paul King,Republican,candidate,56689
+NY,05,Paul King,"Conservative, Common Sense",fusion line,5840
+NY,05,Gregory W. Meeks,Democrat,candidate,168425
+NY,05,Blank,,not a vote for a candidate,12060
+NY,05,Scattering,,write-in or other,782
+NY,06,Thomas J. Zmich,Republican,candidate,69654
+NY,06,Thomas J. Zmich,Conservative,fusion line,4905
+NY,06,Grace Meng,Democrat,candidate,120205
+NY,06,Joseph J. Chou,Truth,candidate,3272
+NY,06,Blank,,not a vote for a candidate,12467
+NY,06,Scattering,,write-in or other,654
+NY,07,Bill Kregler,Republican,candidate,43052
+NY,07,Bill Kregler,Conservative,fusion line,5383
+NY,07,Nydia M. Velázquez,Democrat,candidate,145141
+NY,07,Nydia M. Velázquez,Working Families,fusion line,27654
+NY,07,Blank,,not a vote for a candidate,15556
+NY,07,Scattering,,write-in or other,549
+NY,08,John J. Delaney,Republican,candidate,48369
+NY,08,John J. Delaney,Conservative,fusion line,6494
+NY,08,Hakeem S. Jeffries,Democrat,candidate,168036
+NY,08,Blank,,not a vote for a candidate,17346
+NY,08,Scattering,,write-in or other,905
+NY,09,Menachem M. Raitport,Republican,candidate,51458
+NY,09,Menachem M. Raitport,Conservative,fusion line,8606
+NY,09,Yvette D. Clarke,Democrat,candidate,173207
+NY,09,Blank,,not a vote for a candidate,17562
+NY,09,Scattering,,write-in or other,2501
+NY,10,Alexander Dodenhoff,Republican,candidate,37555
+NY,10,Daniel S. Goldman,Democrat,candidate,206206
+NY,10,Paul J. Briscoe,Conservative,candidate,6747
+NY,10,Blank,,not a vote for a candidate,24718
+NY,10,Scattering,,write-in or other,4048
+NY,11,Nicole Malliotakis,Republican,candidate,153105
+NY,11,Nicole Malliotakis,Conservative,fusion line,13994
+NY,11,Andrea S. Morse,Democrat,candidate,93586
+NY,11,Blank,,not a vote for a candidate,12861
+NY,11,Scattering,,write-in or other,1043
+NY,12,Michael K. Zumbluskas,Republican,candidate,62989
+NY,12,Jerrold Nadler,Democrat,candidate,243111
+NY,12,Jerrold Nadler,Working Families,fusion line,17054
+NY,12,Blank,,not a vote for a candidate,17949
+NY,12,Scattering,,write-in or other,866
+NY,13,Ruben D. Vargas,Republican,candidate,32071
+NY,13,Ruben D. Vargas,Conservative,fusion line,3751
+NY,13,Adriano Espaillat,Democrat,candidate,181800
+NY,13,Blank,,not a vote for a candidate,22917
+NY,13,Scattering,,write-in or other,1351
+NY,14,Tina Forte,Republican,candidate,54157
+NY,14,Tina Forte,Conservative,fusion line,4921
+NY,14,Alexandria Ocasio-Cortez,Democrat,candidate,118477
+NY,14,Alexandria Ocasio-Cortez,Working Families,fusion line,14237
+NY,14,Blank,,not a vote for a candidate,12366
+NY,14,Scattering,,write-in or other,759
+NY,15,Gonzalo Duran,Republican,candidate,32494
+NY,15,Gonzalo Duran,Conservative,fusion line,3516
+NY,15,Ritchie Torres,Democrat,candidate,130392
+NY,15,Jose Vega,LaRouche,candidate,4086
+NY,15,Blank,,not a vote for a candidate,17450
+NY,15,Scattering,,write-in or other,607
+NY,16,Miriam Levitt Flisser,Republican,candidate,86408
+NY,16,George S. Latimer,Democrat,candidate,217668
+NY,16,Blank,,not a vote for a candidate,26008
+NY,16,Scattering,,write-in or other,1003
+NY,17,Michael Lawler,Republican,candidate,180924
+NY,17,Michael Lawler,Conservative,fusion line,16921
+NY,17,Mondaire L. Jones,Democrat,candidate,173899
+NY,17,Anthony Frascone,Working Families,candidate,7530
+NY,17,Blank,,not a vote for a candidate,13917
+NY,17,Void,,not a vote for a candidate,535
+NY,17,Scattering,,write-in or other,234
+NY,18,Alison Esposito,Republican,candidate,138409
+NY,18,Alison Esposito,Conservative,fusion line,16720
+NY,18,Patrick Ryan,Democrat,candidate,189345
+NY,18,Patrick Ryan,Working Families,fusion line,17761
+NY,18,Blank,,not a vote for a candidate,13490
+NY,18,Void,,not a vote for a candidate,289
+NY,18,Scattering,,write-in or other,274
+NY,19,Marcus J. Molinaro,Republican,candidate,164001
+NY,19,Marcus J. Molinaro,Conservative,fusion line,20289
+NY,19,Josh Riley,Democrat,candidate,170049
+NY,19,Josh Riley,Working Families,fusion line,22598
+NY,19,Blank,,not a vote for a candidate,11862
+NY,19,Scattering,,write-in or other,406
+NY,19,Void,,not a vote for a candidate,121
+NY,20,Kevin M. Waltz,Republican,candidate,121609
+NY,20,Kevin M. Waltz,Conservative,fusion line,19542
+NY,20,Paul Tonko,Democrat,candidate,200354
+NY,20,Paul Tonko,Working Families,fusion line,21643
+NY,20,Blank,,not a vote for a candidate,14140
+NY,20,Scattering,,write-in or other,297
+NY,20,Void,,not a vote for a candidate,163
+NY,21,Elise M. Stefanik,Republican,candidate,195464
+NY,21,Elise M. Stefanik,Conservative,fusion line,20532
+NY,21,Paula Collins,Democrat,candidate,121289
+NY,21,Paula Collins,Working Families,fusion line,11158
+NY,21,Blank,,not a vote for a candidate,11688
+NY,21,Scattering,,write-in or other,197
+NY,21,Void,,not a vote for a candidate,130
+NY,22,Brandon Williams,Republican,candidate,142082
+NY,22,Brandon Williams,Conservative,fusion line,19857
+NY,22,John W. Mannion,Democrat,candidate,178394
+NY,22,John W. Mannion,Working Families,fusion line,16056
+NY,22,Blank,,not a vote for a candidate,10310
+NY,22,Scattering,,write-in or other,403
+NY,22,Void,,not a vote for a candidate,161
+NY,23,Nicholas A. Langworthy,Republican,candidate,213928
+NY,23,Nicholas A. Langworthy,Conservative,fusion line,33041
+NY,23,Thomas A. Carle,Democrat,candidate,128397
+NY,23,Blank,,not a vote for a candidate,21881
+NY,23,Scattering,,write-in or other,228
+NY,23,Void,,not a vote for a candidate,146
+NY,24,Claudia Tenney,Republican,candidate,207078
+NY,24,Claudia Tenney,Conservative,fusion line,28789
+NY,24,David Wagenhauser,Democrat,candidate,123317
+NY,24,Blank,,not a vote for a candidate,19371
+NY,24,Scattering,,write-in or other,223
+NY,24,Void,,not a vote for a candidate,133
+NY,25,Gregg A. Sadwick,Republican,candidate,141195
+NY,25,Joseph D. Morelle,Democrat,candidate,200507
+NY,25,Joseph D. Morelle,Working Families,fusion line,18668
+NY,25,Blank,,not a vote for a candidate,18899
+NY,25,Scattering,,write-in or other,263
+NY,25,Void,,not a vote for a candidate,84
+NY,26,Anthony G. Marecki,Republican,candidate,95035
+NY,26,Anthony G. Marecki,Conservative,fusion line,16737
+NY,26,Timothy M. Kennedy,Democrat,candidate,190668
+NY,26,Timothy M. Kennedy,Working Families,fusion line,18463
+NY,26,Blank,,not a vote for a candidate,20903
+NY,26,Scattering,,write-in or other,401
+NY,26,Void,,not a vote for a candidate,197
+NC,01,Laurie Buckhout,Republican,candidate,180034
+NC,01,Donald G. Davis,Democrat,candidate,186341
+NC,01,Tom Bailey,Libertarian,candidate,9949
+NC,02,Alan D. Swain,Republican,candidate,128164
+NC,02,Deborah K. Ross,Democrat,candidate,268662
+NC,02,Michael Dublin,Green,candidate,8691
+NC,03,Gregory F. Murphy,Republican,candidate,248276
+NC,03,Gheorghe Cormos,Libertarian,candidate,72565
+NC,04,Eric Blankenburg,Republican,candidate,112084
+NC,04,Valerie P. Foushee,Democrat,candidate,308064
+NC,04,Guy Meilleur,Libertarian,candidate,8632
+NC,05,Virginia Foxx,Republican,candidate,238304
+NC,05,Chuck Hubbard,Democrat,candidate,162390
+NC,06,Addison McDowell,Republican,candidate,233303
+NC,06,Kevin E. Hayes,Constitution,candidate,104017
+NC,07,David Rouzer,Republican,candidate,254022
+NC,07,Marlando D. Pridgen,Democrat,candidate,179512
+NC,08,Mark Harris,Republican,candidate,238640
+NC,08,Justin E. Dues,Democrat,candidate,161709
+NC,09,Richard Hudson,Republican,candidate,210042
+NC,09,Nigel William Bristow,Democrat,candidate,140852
+NC,09,Shelane Etchison,Unaffiliated,candidate,22183
+NC,10,Pat Harrigan,Republican,candidate,233814
+NC,10,"Ralph R. Scott, Jr.",Democrat,candidate,155383
+NC,10,Steven Feldman,Libertarian,candidate,11614
+NC,10,Todd Helm,Constitution,candidate,5884
+NC,11,Chuck Edwards,Republican,candidate,245546
+NC,11,Caleb Rudow,Democrat,candidate,186977
+NC,12,Addul Ali,Republican,candidate,91128
+NC,12,Alma S. Adams,Democrat,candidate,259627
+NC,13,Brad Knott,Republican,candidate,243655
+NC,13,Frank Pierce,Democrat,candidate,171835
+NC,14,Tim Moore,Republican,candidate,232987
+NC,14,Pam Genant,Democrat,candidate,168269
+ND,00,Julie Fedorchak,Republican,candidate,249101
+ND,00,Trygve Hammer,Democratic-Nonpartisan League,candidate,109231
+ND,00,Write-in,,write-in or other,1455
+OH,01,Orlando Sonza,Republican,candidate,177993
+OH,01,Greg Landsman,Democrat,candidate,213916
+OH,02,David J. Taylor,Republican,candidate,268211
+OH,02,Samantha Meadows,Democrat,candidate,96401
+OH,02,Alexander David Schrank,Write-in,write-in or other,4
+OH,03,Michael Young,Republican,candidate,100355
+OH,03,Joyce Beatty,Democrat,candidate,242632
+OH,04,Jim Jordan,Republican,candidate,273297
+OH,04,Tamie Wilson,Democrat,candidate,125905
+OH,05,Robert E. Latta,Republican,candidate,255633
+OH,05,Keith Mundy,Democrat,candidate,123024
+OH,06,Michael A. Rulli,Republican,candidate,245860
+OH,06,Michael L. Kripchak,Democrat,candidate,122515
+OH,07,Max L. Miller,Republican,candidate,204494
+OH,07,Matt Diemer,Democrat,candidate,144613
+OH,07,Dennis Kucinich,Independent,candidate,51264
+OH,08,Warren Davidson,Republican,candidate,237503
+OH,08,Vanessa Enoch,Democrat,candidate,140625
+OH,09,Derek Merrin,Republican,candidate,178716
+OH,09,Marcy Kaptur,Democrat,candidate,181098
+OH,09,Tom Pruss,Libertarian,candidate,15381
+OH,10,Michael R. Turner,Republican,candidate,213695
+OH,10,Amy Cox,Democrat,candidate,145420
+OH,10,Michael Harbaugh,Independent,candidate,11631
+OH,11,Alan Rapoport,Republican,candidate,59394
+OH,11,Shontel M. Brown,Democrat,candidate,236883
+OH,11,Sean Freeman,Independent,candidate,6107
+OH,11,Tracy Deforde,Write-in,write-in or other,27
+OH,11,Christopher Zelonish,Write-in,write-in or other,2
+OH,12,Troy Balderson,Republican,candidate,260450
+OH,12,Jerrad Christian,Democrat,candidate,119738
+OH,13,Kevin Coughlin,Republican,candidate,188924
+OH,13,Emilia Strong Sykes,Democrat,candidate,197466
+OH,14,David P. Joyce,Republican,candidate,243427
+OH,14,Brian Bob Kenderes,Democrat,candidate,140431
+OH,15,Mike Carey,Republican,candidate,196338
+OH,15,Adam Miller,Democrat,candidate,151411
+OK,01,Kevin Hern,Republican,candidate,188832
+OK,01,Dennis Baker,Democrat,candidate,107903
+OK,01,Mark David Garcia Sanders,Independent,candidate,15766
+OK,02,Josh Brecheen,Republican,candidate,238123
+OK,02,Brandon Wade,Democrat,candidate,68841
+OK,02,Ronnie Hopkins,Independent,candidate,14061
+OK,03,Frank D. Lucas,Republican,candidate,
+OK,04,Tom Cole,Republican,candidate,199962
+OK,04,Mary Brannon,Democrat,candidate,86641
+OK,04,James Stacy,Independent,candidate,19870
+OK,05,Stephanie I. Bice,Republican,candidate,207636
+OK,05,Madison Horn,Democrat,candidate,134471
+OR,01,Bob Todd,Republican,candidate,98908
+OR,01,Suzanne Bonamici,Democrat,candidate,241556
+OR,01,Joe Christman,Libertarian,candidate,10840
+OR,01,Miscellaneous,,write-in or other,687
+OR,02,Cliff Bentz,Republican,candidate,224601
+OR,02,Dan Ruby,Democrat,candidate,115337
+OR,02,Michael Kurt Stettler,Constitution,candidate,11255
+OR,02,Miscellaneous,,write-in or other,296
+OR,03,Joanna Harbour,Republican,candidate,84344
+OR,03,Maxine E. Dexter,Democrat,candidate,226405
+OR,03,"David W. Walker, Progressive",Independent,candidate,10245
+OR,03,Joe Meyer,Pacific Green,candidate,10106
+OR,03,David K. Frosch,Constitution,candidate,2459
+OR,03,Miscellaneous,,write-in or other,810
+OR,04,Monique DeSpain,Republican,candidate,166430
+OR,04,Val T. Hoyle,Democrat,candidate,195862
+OR,04,Justin Filip,Pacific Green,candidate,10315
+OR,04,Dan Bahlen,Libertarian,candidate,5704
+OR,04,Miscellaneous,,write-in or other,454
+OR,05,Lori Chavez-DeRemer,Republican,candidate,180420
+OR,05,Janelle S. Bynum,Democrat,candidate,191365
+OR,05,Brett Smith,Independent,candidate,18665
+OR,05,Sonja Feintech,Libertarian,candidate,6193
+OR,05,Andrea Thorn Townsend,Pacific Green,candidate,4155
+OR,05,Miscellaneous,,write-in or other,495
+OR,06,Mike Erickson,Republican,candidate,157634
+OR,06,Andrea Salinas,Democrat,candidate,180869
+OR,06,Miscellaneous,,write-in or other,562
+PA,01,Brian K. Fitzpatrick,Republican,candidate,261390
+PA,01,Ashley Ehasz,Democrat,candidate,202042
+PA,02,Aaron Bashir,Republican,candidate,77355
+PA,02,Brendan F. Boyle,Democrat,candidate,193691
+PA,03,Dwight Evans,Democrat,candidate,340223
+PA,04,David Winkler,Republican,candidate,186457
+PA,04,Madeleine Dean,Democrat,candidate,269066
+PA,05,Alfeia Goodwin,Republican,candidate,142355
+PA,05,Mary Gay Scanlon,Democrat,candidate,267754
+PA,06,Neil Young,Republican,candidate,183638
+PA,06,Chrissy Houlahan,Democrat,candidate,235625
+PA,07,Ryan E. Mackenzie,Republican,candidate,203688
+PA,07,Susan Wild,Democrat,candidate,199626
+PA,08,"Rob Bresnahan, Jr.",Republican,candidate,195663
+PA,08,Matt Cartwright,Democrat,candidate,189411
+PA,09,Daniel Meuser,Republican,candidate,276212
+PA,09,Amanda Waldman,Democrat,candidate,115523
+PA,10,Scott Perry,Republican,candidate,205567
+PA,10,Janelle Stelson,Democrat,candidate,200434
+PA,11,Lloyd Smucker,Republican,candidate,253672
+PA,11,Jim Atkinson,Democrat,candidate,149641
+PA,12,James Hayes,Republican,candidate,181426
+PA,12,Summer L. Lee,Democrat,candidate,234802
+PA,13,John Joyce,Republican,candidate,301460
+PA,13,Beth Farnham,Democrat,candidate,104823
+PA,14,Guy Reschenthaler,Republican,candidate,268380
+PA,14,Chris Dziados,Democrat,candidate,134755
+PA,15,Glenn Thompson,Republican,candidate,279027
+PA,15,Zach Womer,Democrat,candidate,111408
+PA,16,Mike Kelly,Republican,candidate,256923
+PA,16,Preston Nouri,Democrat,candidate,146709
+PA,17,Rob Mercuri,Republican,candidate,207900
+PA,17,Christopher R. Deluzio,Democrat,candidate,242838
+RI,01,Allen Rodney Waters,Republican,candidate,70742
+RI,01,Gabe Amo,Democrat,candidate,139352
+RI,01,C. D. Reynolds,Independent,candidate,10463
+RI,01,Write-in,,write-in or other,561
+RI,02,Stephen Joseph Corvi,Republican,candidate,109381
+RI,02,Seth Magaziner,Democrat,candidate,153439
+RI,02,Write-in,,write-in or other,660
+SC,01,Nancy Mace,Republican,candidate,227502
+SC,01,Michael B. Moore,Democrat,candidate,162582
+SC,01,Write-in,,write-in or other,693
+SC,02,Joe Wilson,Republican,candidate,211514
+SC,02,David Robinson II,Democrat,candidate,142985
+SC,02,Write-in,,write-in or other,786
+SC,03,Sheri Biggs,Republican,candidate,248451
+SC,03,Bryon L. Best,Democrat,candidate,87735
+SC,03,Mike Bedenbaugh,Alliance,candidate,9918
+SC,03,Write-in,,write-in or other,609
+SC,04,William R. Timmons IV,Republican,candidate,206916
+SC,04,Kathryn Harvey,Democrat,candidate,128976
+SC,04,Mark Hackett,Constitution,candidate,9779
+SC,04,Write-in,,write-in or other,743
+SC,05,Ralph Norman,Republican,candidate,228260
+SC,05,Evangeline Hundley,Democrat,candidate,130592
+SC,05,Write-in,,write-in or other,557
+SC,06,Duke Buckner,Republican,candidate,112360
+SC,06,James E. Clyburn,Democrat,candidate,182056
+SC,06,Michael Simpson,Libertarian,candidate,5279
+SC,06,Gregg Marcel Dixon,United Citizens,candidate,4927
+SC,06,Joseph Oddo,Alliance,candidate,1056
+SC,06,Write-in,,write-in or other,299
+SC,07,Russell Fry,Republican,candidate,240326
+SC,07,Mal Hyman,Democrat,candidate,129522
+SC,07,Write-in,,write-in or other,481
+SD,00,Dusty Johnson,Republican,candidate,303630
+SD,00,Sheryl Johnson,Democrat,candidate,117818
+TN,01,Diana Harshbarger,Republican,candidate,257825
+TN,01,Kevin Jenkins,Democrat,candidate,64021
+TN,01,Richard G. Baker,Independent,candidate,5714
+TN,01,Levi Brake,Independent,candidate,2639
+TN,02,Tim Burchett,Republican,candidate,250782
+TN,02,Jane George,Democrat,candidate,111316
+TN,03,Charles J. “Chuck” Fleischmann,Republican,candidate,236519
+TN,03,Jack Allen,Democrat,candidate,102841
+TN,03,Stephen “Scooter” King,Independent,candidate,5848
+TN,03,Jean Howard-Hill,Independent,candidate,5120
+TN,04,Scott DesJarlais,Republican,candidate,219133
+TN,04,Victoria Isabel Broderick,Democrat,candidate,83832
+TN,04,Keith Nolan,Independent,candidate,5601
+TN,04,Earnest Ensley,Independent,candidate,4689
+TN,05,Andrew Ogles,Republican,candidate,205075
+TN,05,Maryam Abolfazli,Democrat,candidate,142387
+TN,05,Jim Larkin,Independent,candidate,7607
+TN,05,Bob Titley,Independent,candidate,3065
+TN,05,Yomi “Fapas” Faparusi,Independent,candidate,2580
+TN,06,John W. Rose,Republican,candidate,225543
+TN,06,Lore Bergman,Democrat,candidate,106144
+TN,07,Mark E. Green,Republican,candidate,191992
+TN,07,Megan Barry,Democrat,candidate,122764
+TN,07,Shaun Greene,Independent,candidate,7900
+TN,08,David Kustoff,Republican,candidate,240411
+TN,08,Sarah Freeman,Democrat,candidate,85043
+TN,08,James Hart,Independent,candidate,6861
+TN,09,Charlotte Bergmann,Republican,candidate,57411
+TN,09,Steve Cohen,Democrat,candidate,159522
+TN,09,Wendell Wells,Independent,candidate,3708
+TN,09,Dennis Clark,Independent,candidate,3062
+TX,01,Nathaniel Moran,Republican,candidate,258523
+TX,02,Dan Crenshaw,Republican,candidate,214631
+TX,02,Peter Filler,Democrat,candidate,112252
+TX,03,Keith Self,Republican,candidate,237794
+TX,03,Sandeep Srivastava,Democrat,candidate,142953
+TX,04,Pat Fallon,Republican,candidate,241603
+TX,04,Simon Cardell,Democrat,candidate,111696
+TX,05,Lance Gooden,Republican,candidate,192185
+TX,05,Ruth “Truth” Torres,Democrat,candidate,107712
+TX,06,Jake Ellzey,Republican,candidate,188119
+TX,06,John Love III,Democrat,candidate,98319
+TX,07,Caroline Kane,Republican,candidate,94651
+TX,07,Lizzie Fletcher,Democrat,candidate,149820
+TX,08,Morgan Luttrell,Republican,candidate,233423
+TX,08,Laura Jones,Democrat,candidate,108754
+TX,09,Al Green,Democrat,candidate,184141
+TX,10,Michael T. McCaul,Republican,candidate,221229
+TX,10,Theresa Boisseau,Democrat,candidate,118280
+TX,10,Jeff Miller,Libertarian,candidate,8309
+TX,11,August Pfluger,Republican,candidate,211975
+TX,12,Craig Goldman,Republican,candidate,215564
+TX,12,Trey J. Hunt,Democrat,candidate,124154
+TX,13,Ronny Jackson,Republican,candidate,240622
+TX,14,"Randy K. Weber, Sr.",Republican,candidate,210320
+TX,14,Rhonda Hart,Democrat,candidate,95875
+TX,15,Monica De La Cruz,Republican,candidate,127804
+TX,15,Michelle Vallejo,Democrat,candidate,95965
+TX,16,Irene Armendariz Jackson,Republican,candidate,89281
+TX,16,Veronica Escobar,Democrat,candidate,131391
+TX,16,D. “DMB” Montanez,Write-in,write-in or other,156
+TX,17,Pete Sessions,Republican,candidate,193101
+TX,17,Mark Lorenzen,Democrat,candidate,97941
+TX,18,Lana Centonze,Republican,candidate,66810
+TX,18,Sylvester Turner,Democrat,candidate,151834
+TX,18,Vince Duncan,Write-in,write-in or other,62
+TX,18,Kevin Dural,Write-in,write-in or other,14
+TX,19,Jodey C. Arrington,Republican,candidate,214950
+TX,19,Nathan Lewis,Independent,candidate,27461
+TX,19,Bernard Johnson,Libertarian,candidate,23964
+TX,20,Joaquin Castro,Democrat,candidate,157890
+TX,21,Chip Roy,Republican,candidate,263744
+TX,21,Kristin Hook,Democrat,candidate,153765
+TX,21,Bob King,Libertarian,candidate,8914
+TX,22,Troy E. Nehls,Republican,candidate,209285
+TX,22,Marquette Greene-Scott,Democrat,candidate,127604
+TX,23,Tony Gonzales,Republican,candidate,180720
+TX,23,S. Limon,Democrat,candidate,109373
+TX,24,Beth Van Duyne,Republican,candidate,227108
+TX,24,Sam Eppler,Democrat,candidate,149518
+TX,25,Roger Williams,Republican,candidate,263042
+TX,25,Chad Hagg,Write-in,write-in or other,1661
+TX,26,Brandon Gill,Republican,candidate,241096
+TX,26,Ernest R. Lineberger III,Democrat,candidate,138558
+TX,26,Phil Gray,Libertarian,candidate,8773
+TX,27,Michael Cloud,Republican,candidate,183980
+TX,27,Tanya Lloyd,Democrat,candidate,94596
+TX,28,Jay Furman,Republican,candidate,112018
+TX,28,Henry Cuellar,Democrat,candidate,125280
+TX,29,Alan Garza,Republican,candidate,52830
+TX,29,Sylvia R. Garcia,Democrat,candidate,99379
+TX,30,Jasmine Crockett,Democrat,candidate,197650
+TX,30,Jrmar “J J” Jefferson,Libertarian,candidate,35175
+TX,31,John R. Carter,Republican,candidate,229087
+TX,31,Stuart Whitlow,Democrat,candidate,126470
+TX,32,Darrell Day,Republican,candidate,85941
+TX,32,Julie Johnson,Democrat,candidate,140536
+TX,32,Kevin A. Hale,Libertarian,candidate,5987
+TX,33,Patrick David Gillespie,Republican,candidate,51864
+TX,33,Marc A. Veasey,Democrat,candidate,114289
+TX,34,Mayra Flores,Republican,candidate,97603
+TX,34,Vicente Gonzalez,Democrat,candidate,102780
+TX,35,Steven Wright,Republican,candidate,82610
+TX,35,Greg Casar,Democrat,candidate,170509
+TX,36,Brian Babin,Republican,candidate,206009
+TX,36,Dayna Steele,Democrat,candidate,91009
+TX,37,Jenny Garcia Sharon,Republican,candidate,80366
+TX,37,Lloyd Doggett,Democrat,candidate,252980
+TX,37,Girish Altekar,Libertarian,candidate,7511
+TX,38,Wesley Hunt,Republican,candidate,215030
+TX,38,Melissa McDonough,Democrat,candidate,127640
+TX,38,Avery Ayers,Write-in,write-in or other,94
+UT,01,Blake D. Moore,Republican,candidate,230975
+UT,01,Bill Campbell,Democrat,candidate,117319
+UT,01,Daniel R. Cottam,Libertarian,candidate,17601
+UT,02,Celeste Maloy,Republican,candidate,205234
+UT,02,Nathaniel E. Woodward,Democrat,candidate,121114
+UT,02,Cassie Easley,Constitution,candidate,19650
+UT,02,Tyler Murset,Unaffiliated,candidate,7840
+UT,03,Mike Kennedy,Republican,candidate,242496
+UT,03,Glenn J. Wright,Democrat,candidate,122780
+UT,04,Burgess Owens,Republican,candidate,230627
+UT,04,Katrina Fallick-Wang,Democrat,candidate,109838
+UT,04,Vaughn R. Cook,United Utah,candidate,17347
+UT,04,M. Evan Bullard,Unaffiliated,candidate,5856
+VT,00,"Mark Coester, Republican",Libertarian,candidate,104451
+VT,00,Becca Balint,Democrat,candidate,218398
+VT,00,Adam Ortiz,Independent,candidate,19286
+VT,00,Jill “Jessy” Diamondstone,Green Mountain Peace and Justice,candidate,7552
+VT,00,Blank Votes,,not a vote for a candidate,21982
+VT,00,Write-in,,write-in or other,929
+VT,00,Over Votes,,not a vote for a candidate,287
+VA,01,Robert J. Wittman,Republican,candidate,269657
+VA,01,Leslie C. Mehta,Democrat,candidate,208445
+VA,01,Write-in,,write-in or other,804
+VA,02,Jennifer A. Kiggans,Republican,candidate,207368
+VA,02,Missy Cotter Smasal,Democrat,candidate,191666
+VA,02,"Robert E. Reid, Jr.",Independent,candidate,9197
+VA,02,Write-in,,write-in or other,471
+VA,03,John Sitka III,Republican,candidate,93801
+VA,03,Robert C. “Bobby” Scott,Democrat,candidate,219926
+VA,03,Write-in,,write-in or other,670
+VA,04,William J. “Bill” Moher III,Republican,candidate,121814
+VA,04,Jennifer L. McClellan,Democrat,candidate,252885
+VA,04,Write-in,,write-in or other,809
+VA,05,John J. McGuire III,Republican,candidate,249564
+VA,05,Gloria Tinsley Witt,Democrat,candidate,184229
+VA,05,Write-in,,write-in or other,2046
+VA,06,Ben Cline,Republican,candidate,256933
+VA,06,Ken L. Mitchell,Democrat,candidate,141612
+VA,06,"Robert C. “Robby” Wells, Jr.",Independent,candidate,7980
+VA,06,Write-in,,write-in or other,510
+VA,07,Derrick M. Anderson,Republican,candidate,192847
+VA,07,Eugene S. Vindman,Democrat,candidate,203336
+VA,07,Write-in,,write-in or other,1116
+VA,08,Jerry W. Torres,Republican,candidate,94676
+VA,08,"Donald S. Beyer, Jr.",Democrat,candidate,274593
+VA,08,David R. Kennedy,Independent,candidate,9956
+VA,08,Bentley F. Hensel,Independent,candidate,3656
+VA,08,Write-in,,write-in or other,1034
+VA,09,H. Morgan Griffith,Republican,candidate,290645
+VA,09,Karen G. H. Baker,Democrat,candidate,109570
+VA,09,Write-in,,write-in or other,748
+VA,10,Mike W. Clancy,Republican,candidate,196343
+VA,10,Suhas Subramanyam,Democrat,candidate,215131
+VA,10,Write-in,,write-in or other,1538
+VA,11,Mike L. Van Meter,Republican,candidate,134802
+VA,11,Gerald E. Connolly,Democrat,candidate,273529
+VA,11,Write-in,,write-in or other,1855
+WA,01,Jeb Brewer,Republican,candidate,132538
+WA,01,Suzan K. DelBene,Democrat,candidate,227213
+WA,01,Write-in,,write-in or other,907
+WA,02,Cody Hart,Republican,candidate,148167
+WA,02,Rick Larsen,Democrat,candidate,263750
+WA,02,Write-in,,write-in or other,1303
+WA,03,Joe Kent,Republican,candidate,199054
+WA,03,Marie Gluesenkamp Perez,Democrat,candidate,215177
+WA,03,Write-in,,write-in or other,1673
+WA,04,Dan Newhouse,Republican,candidate,153477
+WA,04,Jerrod Sessler,Republican,candidate,136175
+WA,04,Write-in,,write-in or other,5400
+WA,05,Michael Baumgartner,Republican,candidate,240619
+WA,05,Carmela Conroy,Democrat,candidate,156074
+WA,05,Write-in,,write-in or other,593
+WA,06,Drew C. MacEwen,Republican,candidate,182182
+WA,06,Emily Randall,Democrat,candidate,239687
+WA,06,Write-in,,write-in or other,753
+WA,07,Dan Alexander,Republican,candidate,66220
+WA,07,Pramila Jayapal,Democrat,candidate,352286
+WA,07,Write-in,,write-in or other,1313
+WA,08,Carmen Goers,Republican,candidate,190675
+WA,08,Kim Schrier,Democrat,candidate,224607
+WA,08,Write-in,,write-in or other,995
+WA,09,Adam Smith,Democrat,candidate,182780
+WA,09,Melissa Chaudhry,Democrat,candidate,90601
+WA,09,Write-in,,write-in or other,5917
+WA,10,Don Hewett,Republican,candidate,143492
+WA,10,Marilyn Strickland,Democrat,candidate,203732
+WA,10,Write-in,,write-in or other,820
+WV,01,Carol D. Miller,Republican,candidate,228491
+WV,01,Chris Bob Reed,Democrat,candidate,90038
+WV,01,Wes Holden,Independent,candidate,25616
+WV,01,Jim Umberger,Write-in,write-in or other,171
+WV,01,A. Warden,Write-in,write-in or other,3
+WV,02,Riley Moore,Republican,candidate,268190
+WV,02,Steven Wendelin,Democrat,candidate,110775
+WI,01,Bryan Steil,Republican,candidate,212515
+WI,01,Peter Barca,Democrat,candidate,172402
+WI,01,"Chester Todd, Jr.",Green,candidate,8191
+WI,01,Scattering,,write-in or other,385
+WI,02,Erik Olsen,Republican,candidate,136357
+WI,02,Mark Pocan,Democrat,candidate,320317
+WI,02,Scattering,,write-in or other,583
+WI,03,Derrick Van Orden,Republican,candidate,212064
+WI,03,Rebecca Cooke,Democrat,candidate,200808
+WI,03,Scattering,,write-in or other,309
+WI,04,Tim Rogers,Republican,candidate,74921
+WI,04,Gwen Moore,Democrat,candidate,249938
+WI,04,Robert R. Raymond,Independent,candidate,8792
+WI,04,Micah Leavitt,Write-in,write-in or other,13
+WI,04,Scattering,,write-in or other,618
+WI,05,Scott Fitzgerald,Republican,candidate,300521
+WI,05,Ben Steinhoff,Democrat,candidate,165653
+WI,05,Scattering,,write-in or other,508
+WI,06,Glenn Grothman,Republican,candidate,251889
+WI,06,John Zarbano,Democrat,candidate,159042
+WI,06,Scattering,,write-in or other,418
+WI,07,Thomas P. Tiffany,Republican,candidate,273553
+WI,07,Kyle Kilbourn,Democrat,candidate,156524
+WI,07,Scattering,,write-in or other,307
+WI,08,Tony Wied,Republican,candidate,240040
+WI,08,Kristin Lyerly,Democrat,candidate,178666
+WI,08,Scattering,,write-in or other,272
+WY,00,Harriet M. Hageman,Republican,candidate,184680
+WY,00,Kyle G. Cameron,Democrat,candidate,60778
+WY,00,Richard Brubaker,Libertarian,candidate,9223
+WY,00,Jeffrey Haggit,Constitution,candidate,5362
+WY,00,Under Votes,,not a vote for a candidate,7999
+WY,00,Over Votes,,not a vote for a candidate,1576
+WY,00,Write-in,,write-in or other,1505

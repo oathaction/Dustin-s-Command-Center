@@ -1,0 +1,37 @@
+{
+  "id": "14.38",
+  "title": "Set dated events on lanes along one true scale of time.",
+  "rule": [
+    "Use a timeline for dated events that fall into a few threads: one lane per thread, each event placed at its date on one scale that keeps true spacing, with its date and name printed, and shaded bands for stretches the notes explain. On a phone each lane becomes a dated list under its thread’s name."
+  ],
+  "use_when": "The reader asks what happened when, and which kind of change each event was.",
+  "use_instead": [
+    {
+      "when": "When each part of one law takes effect",
+      "rule": "14.39"
+    },
+    {
+      "when": "Each event or period carries a count",
+      "rule": "14.41"
+    },
+    {
+      "when": "A measure moves between the events",
+      "rule": "14.29"
+    }
+  ],
+  "why": {
+    "text": [
+      "True spacing shows the reader that some decades held many changes and others few, which an evenly spaced list hides. Lanes sort events by kind without a key, and a phone list keeps every date and name readable where a lane would crowd (Rule 14.12)."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S09",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.12"
+  ],
+  "builders": "Form timeline: node work/build/chart-kit/oa-chart.mjs build s09; labels.lanes names each thread and its question.",
+  "correct": null,
+  "failure": null
+}

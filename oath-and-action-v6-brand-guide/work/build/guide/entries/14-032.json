@@ -1,0 +1,38 @@
+{
+  "id": "14.32",
+  "title": "Draw noisy monthly counts as columns, with an average line through them.",
+  "rule": [
+    "Use columns with a moving average for a monthly count that swings from month to month: each month a column from zero, the average a heavy line over them, preliminary months hatched and the average dashed where it includes one, and the latest month labeled with its status. Where the publisher gives a margin of error, say in a note which months pass it."
+  ],
+  "use_when": "The reader asks how many were added or lost each month, and the trend matters more than any one month.",
+  "use_instead": [
+    {
+      "when": "A rate or a level that moves smoothly",
+      "rule": "14.29"
+    },
+    {
+      "when": "The same count across many industries or places",
+      "rule": "14.34"
+    },
+    {
+      "when": "A month has no figure at all",
+      "rule": "14.37"
+    }
+  ],
+  "why": {
+    "text": [
+      "Each column shows one month as the survey counted it, and the average shows where the months are heading, so a single bad month reads as a dip, not a turn. A survey’s monthly figure carries error, and the note that says which drops pass the margin keeps a small swing from reading as news (Rule 14.9)."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S14",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.9",
+    "14.11"
+  ],
+  "builders": "Form columns-moving-average: node work/build/chart-kit/oa-chart.mjs build s14; encode.status marks preliminary months.",
+  "correct": null,
+  "failure": null
+}

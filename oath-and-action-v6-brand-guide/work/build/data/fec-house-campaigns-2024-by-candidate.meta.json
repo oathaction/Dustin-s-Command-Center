@@ -1,0 +1,135 @@
+{
+ "file": "fec-house-campaigns-2024-by-candidate.csv",
+ "kind": "public",
+ "publisher": "Federal Election Commission",
+ "title_or_table": "Current campaigns for House and Senate file, House candidates",
+ "table_id": "Current campaigns for House and Senate, 2023-2024 (webl24)",
+ "url": [
+  "https://www.fec.gov/files/bulk-downloads/2024/webl24.zip",
+  "https://www.fec.gov/campaign-finance-data/current-campaigns-house-and-senate-file-description/"
+ ],
+ "observation_period": "2023 to 2024 election cycle, through each campaign’s last report (coverage end dates mostly December 31, 2024)",
+ "geography": "United States House races",
+ "universe_or_base": "Every House candidate with a principal campaign committee in the FEC’s current campaigns file for the 2024 cycle (1926 candidates), primary losers included",
+ "unit": "dollars",
+ "date_retrieved": "2026-11-12",
+ "vintage": "webl24.zip as posted November 11, 2026",
+ "qualification": "A candidate with more than one authorized committee has them combined, and transfers between them count on both sides; the file’s own description says to subtract them.",
+ "columns": {
+  "cand_id": {
+   "type": "id",
+   "description": "FEC candidate ID"
+  },
+  "candidate": {
+   "type": "text",
+   "description": "candidate name as filed"
+  },
+  "party": {
+   "type": "category",
+   "description": "party code as filed"
+  },
+  "state": {
+   "type": "code",
+   "description": "state"
+  },
+  "district": {
+   "type": "text",
+   "description": "district"
+  },
+  "incumbent_challenger": {
+   "type": "category",
+   "description": "I incumbent, C challenger, O open seat"
+  },
+  "coverage_end": {
+   "type": "text",
+   "description": "last date covered, MM/DD/YYYY as the file gives it"
+  },
+  "ttl_receipts": {
+   "type": "number",
+   "description": "TTL_RECEIPTS in the FEC file",
+   "unit": "dollars"
+  },
+  "trans_from_auth": {
+   "type": "number",
+   "description": "TRANS_FROM_AUTH in the FEC file",
+   "unit": "dollars"
+  },
+  "ttl_disb": {
+   "type": "number",
+   "description": "TTL_DISB in the FEC file",
+   "unit": "dollars"
+  },
+  "trans_to_auth": {
+   "type": "number",
+   "description": "TRANS_TO_AUTH in the FEC file",
+   "unit": "dollars"
+  },
+  "coh_bop": {
+   "type": "number",
+   "description": "COH_BOP in the FEC file",
+   "unit": "dollars"
+  },
+  "coh_cop": {
+   "type": "number",
+   "description": "COH_COP in the FEC file",
+   "unit": "dollars"
+  },
+  "cand_contrib": {
+   "type": "number",
+   "description": "CAND_CONTRIB in the FEC file",
+   "unit": "dollars"
+  },
+  "cand_loans": {
+   "type": "number",
+   "description": "CAND_LOANS in the FEC file",
+   "unit": "dollars"
+  },
+  "other_loans": {
+   "type": "number",
+   "description": "OTHER_LOANS in the FEC file",
+   "unit": "dollars"
+  },
+  "cand_loan_repay": {
+   "type": "number",
+   "description": "CAND_LOAN_REPAY in the FEC file",
+   "unit": "dollars"
+  },
+  "other_loan_repay": {
+   "type": "number",
+   "description": "OTHER_LOAN_REPAY in the FEC file",
+   "unit": "dollars"
+  },
+  "ttl_indiv_contrib": {
+   "type": "number",
+   "description": "TTL_INDIV_CONTRIB in the FEC file",
+   "unit": "dollars"
+  },
+  "other_pol_cmte_contrib": {
+   "type": "number",
+   "description": "OTHER_POL_CMTE_CONTRIB in the FEC file",
+   "unit": "dollars"
+  },
+  "pol_pty_contrib": {
+   "type": "number",
+   "description": "POL_PTY_CONTRIB in the FEC file",
+   "unit": "dollars"
+  },
+  "indiv_refunds": {
+   "type": "number",
+   "description": "INDIV_REFUNDS in the FEC file",
+   "unit": "dollars"
+  },
+  "cmte_refunds": {
+   "type": "number",
+   "description": "CMTE_REFUNDS in the FEC file",
+   "unit": "dollars"
+  }
+ },
+ "printed_source_line": "Source: Federal Election Commission, current campaigns for House and Senate file, 2023 to 2024 cycle, House candidates. Retrieved November 12, 2026. Candidates’ own committees combined.",
+ "ledger_row": "P7-217",
+ "domain": "D03",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "webl24.zip": "fbdba514d5b3f59a"
+ }
+}

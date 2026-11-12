@@ -1,0 +1,41 @@
+{
+ "kit": 1,
+ "id": "s-14-7-seats",
+ "form": "ranked-bar",
+ "family": "comparison",
+ "tier": "core",
+ "dataset": "clerk-house-current-party-breakdown",
+ "reader_question": "How many House seats does each party hold?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: the House Clerk’s record",
+ "title": "Republicans held 218 House seats and Democrats 214 on November 11, 2026, with one independent and two seats empty",
+ "measure_line": "Seats in the U.S. House of Representatives, by party, as of November 11, 2026",
+ "source_line": "Source: Office of the Clerk, U.S. House of Representatives, party breakdown, as of November 11, 2026, United States House. Retrieved November 11, 2026. Two seats vacant; the count changes with each vacancy and special election.",
+ "alt": "Four bars in one dark ink, each named: Republicans 218, Democrats 214, Independents 1, Vacancies 2.",
+ "table": {
+  "caption": "House seats by party, November 11, 2026",
+  "columns": [
+   {
+    "field": "party",
+    "label": "Party",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "seats",
+    "label": "Seats",
+    "format": "integer"
+   }
+  ]
+ },
+ "encode": {
+  "category": "party",
+  "value": "seats"
+ },
+ "domain": "D02",
+ "states": [],
+ "notes_internal": "Rule 14.7's correct plate: every party in the subject ink, named on its bar (Rule 01.2).",
+ "illustrative": false,
+ "phone": "same"
+}

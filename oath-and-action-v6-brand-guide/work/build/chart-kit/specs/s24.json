@@ -92,6 +92,7 @@
     "Checked by script against census-bfs-business-applications-by-state.csv, 2019 and 2025 rows: United States 3,498,990 to 5,671,836, +62.1 percent; every state and DC rose; Wyoming 19,663 to 79,023, +301.9 percent, 4.02 times, 'quadrupled'; New Mexico +133.4, Delaware +132.3; District of Columbia +21.7, the smallest.",
     "The form computes each change from the two years' rows, since the data folder holds no derived change file; the table pivots the same rows to 2019 and 2025 by state, sorted by name. Request R-B4 asks the research lead for a derived file with the change, so the table can print it beside the counts.",
     "H09: the window 2019 to 2025 compares two whole calendar years and splits no period at an inauguration; the measure line gives both ends' reasons. Read from the left and the right: the title reports a rise everywhere and names no party or official.",
-    "Palette note from the data lead: direction by position, every stem in the subject ink, no fill."
+    "Palette note from the data lead: direction by position, every stem in the subject ink, no fill.",
+    "Data lead DL-B1: the Census Bureau's Business Formation Statistics methodology and definitions pages (census.gov/econ/bfs/methodology.html and definitions.html, read November 12, 2026) do not say how an application is assigned to a state, so the chart adds no note and claims no cause for Wyoming's rise."
   ]
 }

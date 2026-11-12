@@ -1,0 +1,72 @@
+{
+ "id": "14.6",
+ "title": "Spend the view’s one red on the point the title names.",
+ "rule": [
+  "Rule 05.3 gives each view one working red and says which job claims it first. In a chart, the red goes to the one point, bar or line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Every other mark keeps the subject and context inks of Rule 05.7.",
+  "When an error or a step the reader can take already holds the view’s red, the named point gives it up and takes Charcoal at the subject weight, with its label. Red never codes a series, a group or a step on a scale."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "One red mark tells a reader where to look first, and the title tells them why. A second red mark splits their attention, and red that codes a group reads as a warning about that group."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [
+  "oa.chart.color.point.onNewsprint",
+  "oa.chart.color.subject.onNewsprint"
+ ],
+ "related": [
+  "05.3",
+  "05.5",
+  "05.7",
+  "01.1"
+ ],
+ "builders": "Name the one point in the spec (labels.named for the subject ink); the kit counts working reds and fails a view with two.",
+ "specs": [
+  {
+   "label": "The point",
+   "value": "Pillar Red with a 1 px Charcoal keyline",
+   "token": "oa.chart.color.point.onNewsprint"
+  },
+  {
+   "label": "Its label",
+   "value": "Beside the mark, in the text ink"
+  },
+  {
+   "label": "When red is taken",
+   "value": "Charcoal at the subject weight, with the label",
+   "token": "oa.chart.color.subject.onNewsprint"
+  },
+  {
+   "label": "Red never",
+   "value": "Codes a series, a group or a step on a scale"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-6-correct",
+  "caption": "The title names the Ninth Circuit, and its bar alone takes the view’s red, inside its keyline, with every other court in gray.",
+  "alt": "Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s in red with a dark edge and the rest in gray: Ninth Circuit 29, Fifth Circuit 17, Sixth Circuit 16, Fourth Circuit 15, Third Circuit 14, Second Circuit 13, Eleventh Circuit 12, Federal Circuit 12, Tenth Circuit 12, D.C. Circuit 11, Eighth Circuit 11, Seventh Circuit 11, First Circuit 6.",
+  "illustrative": false,
+  "notes": "Drawn here from the directory's rows, counted by script, until the kit takes a red point by name (request ED-E1)."
+ },
+ "failure": {
+  "specimen": "s-14-6-failure",
+  "caption": "<strong>Fails Rule 14.6.</strong> Red falls on three courts while the title names one, so a reader cannot tell which bar the title means.",
+  "alt": "Failure case: do not publish. The same bars with three courts in red, the Ninth, Fifth and Sixth Circuits, under a title that names one.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "examples": [
+  {
+   "example": "Active judges by federal court of appeals, November 11, 2026",
+   "domain": "D05",
+   "states": [],
+   "level": "federal",
+   "where": "14.6"
+  }
+ ]
+}

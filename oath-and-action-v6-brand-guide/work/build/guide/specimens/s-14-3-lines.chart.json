@@ -1,0 +1,83 @@
+{
+ "kit": 1,
+ "id": "s-14-3-lines",
+ "form": "line-event-notes",
+ "family": "change-over-time",
+ "tier": "core",
+ "dataset": "census-cps-reported-voting",
+ "where": {
+  "election_type": "presidential",
+  "base": "citizen_voting_age_population",
+  "age_group": [
+   "18_to_24",
+   "25_to_44",
+   "45_to_64",
+   "65_and_over"
+  ]
+ },
+ "reader_question": "Which age groups report voting most and least?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: a Census Bureau survey",
+ "title": "Citizens 18 to 24 reported voting at the lowest rate of four age groups in every presidential year from 2004 to 2024",
+ "measure_line": "Share of citizens who reported voting, by age, in presidential years from 2004, the first with these age groups, to 2024, United States",
+ "notes": [
+  "In every year the youngest group trails the next, citizens 25 to 44, by 11 to 16 points."
+ ],
+ "source_line": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting, citizen voting-age population, November 1978 to 2024, United States. Retrieved November 6, 2026. Self-reported in a survey; citizenship data before 1996 are not fully comparable.",
+ "alt": "Four lines of reported voting by age in presidential years from 2004 to 2024, each named at its end: 65 and over highest, near 71 to 75 percent; 45 to 64 next; 25 to 44 below; and 18 to 24 lowest, from 46.7 percent in 2004 to 47.7 percent in 2024.",
+ "table": {
+  "caption": "Share of citizens who reported voting, by age, percent",
+  "columns": [
+   {
+    "field": "year",
+    "label": "Year",
+    "format": "year",
+    "row_header": true
+   },
+   {
+    "field": "age_group",
+    "label": "Age",
+    "format": "text",
+    "words": {
+     "18_to_24": "18 to 24",
+     "25_to_44": "25 to 44",
+     "45_to_64": "45 to 64",
+     "65_and_over": "65 and over"
+    }
+   },
+   {
+    "field": "voted_pct",
+    "label": "Reported voting",
+    "format": "percent:1"
+   }
+  ]
+ },
+ "encode": {
+  "x": "year",
+  "y": "voted_pct",
+  "series": "age_group"
+ },
+ "labels": {
+  "subject": "18_to_24",
+  "series": {
+   "18_to_24": "18 to 24",
+   "25_to_44": "25 to 44",
+   "45_to_64": "45 to 64",
+   "65_and_over": "65 and over"
+  },
+  "series_place": {
+   "65_and_over": {
+    "dy": -9
+   },
+   "45_to_64": {
+    "dy": 9
+   }
+  }
+ },
+ "domain": "D10",
+ "states": [],
+ "notes_internal": "Rule 14.3's correct plate. Checked by script: 18 to 24 more than 10 points below every other group in each year (gaps 11.2 to 16.1).",
+ "illustrative": false,
+ "phone": "same"
+}

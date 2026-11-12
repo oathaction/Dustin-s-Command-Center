@@ -1,0 +1,64 @@
+{
+ "id": "14.11",
+ "title": "Mark a gap, a break in a series or a preliminary value in the drawing.",
+ "rule": [
+  "Draw what the data lacks or changes where it happens. A month or year with no figure leaves a gap in the line, and the line never bridges it. Where a publisher changes its method, the line breaks, the year prints both estimates, and a note says what changed. A preliminary value takes an open mark and the word preliminary beside it, and the qualification names it (Rule 13.7)."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "A line drawn through a missing month invents a value, and a line run across a change of method shows the change as a jump in what was measured. Marking each one where it falls lets a reader see what the data can and cannot say."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [
+  "oa.chart.color.leader.onNewsprint"
+ ],
+ "related": [
+  "13.7",
+  "14.37",
+  "14.32"
+ ],
+ "builders": "Mark breaks in the data's break column and preliminary rows in its status column; the kit leaves the gap and opens the mark.",
+ "specs": [
+  {
+   "label": "No figure",
+   "value": "A gap in the line, with a note that says why"
+  },
+  {
+   "label": "A change of method",
+   "value": "A break, both estimates printed, a note that names the change",
+   "token": "oa.chart.color.leader.onNewsprint"
+  },
+  {
+   "label": "Preliminary",
+   "value": "An open mark and the word preliminary; the qualification names it (Rule 13.7)"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-11-correct",
+  "caption": "The line breaks where the survey changed, and each of those years prints both its estimates, so a change of method never reads as a change in income.",
+  "alt": "A line of median household income from 1967 to 2025 in 2025 dollars, broken at 2013 and 2017 where the survey changed, with both estimates printed in each of those years; it ends at $87,460 in 2025.",
+  "illustrative": false,
+  "notes": "Drawn here from the Census Bureau's table, segments split by its footnotes 6 and 7 (2013) and 5 (2017)."
+ },
+ "failure": {
+  "specimen": "s-14-11-failure",
+  "caption": "<strong>Fails Rule 14.11.</strong> One line runs through both of 2013’s estimates and both of 2017’s, so a change in the survey’s questions draws as a jump in income.",
+  "alt": "Failure case: do not publish. The same income series as one line run through both estimates for 2013 and both for 2017, so each change in the survey draws as a sudden step in income.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "examples": [
+  {
+   "example": "Median household income, 1967 to 2025",
+   "domain": "D08",
+   "states": [],
+   "level": "federal",
+   "where": "14.11"
+  }
+ ]
+}

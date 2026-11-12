@@ -1,0 +1,436 @@
+state,district,winner,winner_party,winner_group,winner_votes,runner_up,runner_up_party,runner_up_group,runner_up_votes,total_votes,margin_pct,seat_kind,candidates
+AL,01,Barry Moore,Republican,Republican,258619,Tom Holmes,Democrat,Democratic,70929,329854,56.9009,Republican and Democratic,2
+AL,02,Shomari Figures,Democrat,Democratic,158041,Caroleene Dobson,Republican,Republican,131414,289674,9.1921,Republican and Democratic,2
+AL,03,Mike Rogers,Republican,Republican,243848,,,,,249008,,unopposed on the ballot,1
+AL,04,Robert B. Aderholt,Republican,Republican,274498,,,,,277872,,unopposed on the ballot,1
+AL,05,Dale W. Strong,Republican,Republican,250322,,,,,262410,,unopposed on the ballot,1
+AL,06,Gary J. Palmer,Republican,Republican,243741,Elizabeth Anderson,Democrat,Democratic,102504,346625,40.7463,Republican and Democratic,2
+AL,07,Terri A. Sewell,Democrat,Democratic,186723,Robin Litaker,Republican,Republican,106312,293220,27.4234,Republican and Democratic,2
+AK,00,Nick Begich,Republican,Republican,159550,Mary Sattler Peltola,Democrat,Democratic,152828,329555,2.0397,"ranked-choice, first round (the Clerk prints the first round)",4
+AZ,01,David Schweikert,Republican,Republican,225538,Amish Shah,Democrat,Democratic,208966,434504,3.8140,Republican and Democratic,2
+AZ,02,Elijah Crane,Republican,Republican,221413,Jonathan Nez,Democrat,Democratic,184963,406431,8.9683,Republican and Democratic,2
+AZ,03,Yassamin Ansari,Democrat,Democratic,143336,Jeff Zink,Republican,Republican,53705,202065,44.3575,Republican and Democratic,3
+AZ,04,Greg Stanton,Democrat,Democratic,176428,Kelly Cooper,Republican,Republican,152052,334545,7.2863,Republican and Democratic,3
+AZ,05,Andy Biggs,Republican,Republican,255628,Katrina Schaffner,Democrat,Democratic,167680,423308,20.7764,Republican and Democratic,2
+AZ,06,Juan Ciscomani,Republican,Republican,215596,Kirsten Engel,Democrat,Democratic,204774,431220,2.5096,Republican and Democratic,3
+AZ,07,Raúl M. Grijalva,Democrat,Democratic,171954,"Daniel Francis Butierez, Sr.",Republican,Republican,99057,271011,26.8982,Republican and Democratic,2
+AZ,08,Abraham “Abe” Hamadeh,Republican,Republican,208269,Gregory Whitten,Democrat,Democratic,160344,368613,13.0014,Republican and Democratic,2
+AZ,09,Paul A. Gosar,Republican,Republican,249583,Quacy Smith,Democrat,Democratic,132640,382223,30.5955,Republican and Democratic,2
+AR,01,Eric A. “Rick” Crawford,Republican,Republican,194711,Rodney Govens,Democrat,Democratic,64113,267177,48.8807,Republican and Democratic,3
+AR,02,J. French Hill,Republican,Republican,180509,Marcus A. Jones,Democrat,Democratic,125777,306286,17.8696,Republican and Democratic,2
+AR,03,Steve Womack,Republican,Republican,192101,Caitlin Draper,Democrat,Democratic,95652,301084,32.0339,Republican and Democratic,3
+AR,04,Bruce Westerman,Republican,Republican,197046,Risie Howard,Democrat,Democratic,73207,270253,45.8234,Republican and Democratic,2
+CA,01,Doug LaMalfa,Republican,Republican,208592,Rose Penelope Yee,Democrat,Democratic,110636,319228,30.6853,Republican and Democratic,2
+CA,02,Jared Huffman,Democrat,Democratic,272883,Chris Coulombe,Republican,Republican,106734,379617,43.7675,Republican and Democratic,2
+CA,03,Kevin Kiley,Republican,Republican,234246,Jessica Morse,Democrat,Democratic,188067,422313,10.9348,Republican and Democratic,2
+CA,04,Mike Thompson,Democrat,Democratic,227730,John Munn,Republican,Republican,114950,342680,32.9112,Republican and Democratic,2
+CA,05,Tom McClintock,Republican,Republican,227643,Michael J. “Mike” Barkley,Democrat,Democratic,140919,368562,23.5304,Republican and Democratic,2
+CA,06,Ami Bera,Democrat,Democratic,165408,Christine Bish,Republican,Republican,121664,287072,15.2380,Republican and Democratic,2
+CA,07,Doris O. Matsui,Democrat,Democratic,197429,Tom Silva,Republican,Republican,98341,295770,33.5017,Republican and Democratic,2
+CA,08,John Garamendi,Democrat,Democratic,201962,Rudy Recile,Republican,Republican,71068,273030,47.9413,Republican and Democratic,2
+CA,09,Josh Harder,Democrat,Democratic,130183,Kevin Lincoln,Republican,Republican,121174,251357,3.5841,Republican and Democratic,2
+CA,10,Mark DeSaulnier,Democrat,Democratic,242325,Katherine Piccinini,Republican,Republican,122219,364544,32.9469,Republican and Democratic,2
+CA,11,Nancy Pelosi,Democrat,Democratic,274796,Bruce Lou,Republican,Republican,64315,339111,62.0685,Republican and Democratic,2
+CA,12,Lateefah Simon,Democrat,Democratic,185176,Jennifer Tran,Democrat,Democratic,97849,283025,30.8549,one-party contest (top-two),2
+CA,13,Adam Gray,Democrat,Democratic,105554,John S. Duarte,Republican,Republican,105367,210921,0.0887,Republican and Democratic,2
+CA,14,Eric Swalwell,Democrat,Democratic,187263,Vin Kruttiventi,Republican,Republican,89125,276388,35.5073,Republican and Democratic,2
+CA,15,Kevin Mullin,Democrat,Democratic,211648,Anna Cheng Kramer,Republican,Republican,77896,289544,46.1940,Republican and Democratic,2
+CA,16,Sam Liccardo,Democrat,Democratic,179583,Evan Low,Democrat,Democratic,128893,308476,16.4324,one-party contest (top-two),2
+CA,17,Ro Khanna,Democrat,Democratic,172462,Anita Chen,Republican,Republican,82415,254877,35.3296,Republican and Democratic,2
+CA,18,Zoe Lofgren,Democrat,Democratic,147674,Peter D. Hernandez,Republican,Republican,80832,228506,29.2517,Republican and Democratic,2
+CA,19,Jimmy Panetta,Democrat,Democratic,252458,Jason Michael Anderson,Republican,Republican,111862,364320,38.5913,Republican and Democratic,2
+CA,20,Vince Fong,Republican,Republican,187862,Mike Boudreaux,Republican,Republican,100926,288788,30.1037,one-party contest (top-two),2
+CA,21,Jim Costa,Democrat,Democratic,102798,Michael Maher,Republican,Republican,92733,195531,5.1475,Republican and Democratic,2
+CA,22,David G. Valadao,Republican,Republican,89484,Rudy Salas,Democrat,Democratic,78023,167507,6.8421,Republican and Democratic,2
+CA,23,Jay Obernolte,Republican,Republican,159286,Derek Marshall,Democrat,Democratic,105563,264849,20.2844,Republican and Democratic,2
+CA,24,Salud O. Carbajal,Democrat,Democratic,214724,Thomas Cole,Republican,Republican,127755,342479,25.3940,Republican and Democratic,2
+CA,25,Raul Ruiz,Democrat,Democratic,137837,Ian M. Weeks,Republican,Republican,107194,245031,12.5058,Republican and Democratic,2
+CA,26,Julia Brownley,Democrat,Democratic,187393,Michael Koslow,Republican,Republican,146913,334306,12.1087,Republican and Democratic,2
+CA,27,George Whitesides,Democrat,Democratic,154040,Mike Garcia,Republican,Republican,146050,300090,2.6625,Republican and Democratic,2
+CA,28,Judy Chu,Democrat,Democratic,204489,April A. Verlato,Republican,Republican,110455,314944,29.8574,Republican and Democratic,2
+CA,29,Luz Maria Rivas,Democrat,Democratic,146312,Benito Benny Bernal,Republican,Republican,63374,209686,39.5534,Republican and Democratic,2
+CA,30,Laura Friedman,Democrat,Democratic,213100,Alex Balekian,Republican,Republican,98559,311659,36.7520,Republican and Democratic,2
+CA,31,Gil Cisneros,Democrat,Democratic,148095,Daniel Jose Bocic Martinez,Republican,Republican,99856,247951,19.4551,Republican and Democratic,2
+CA,32,Brad Sherman,Democrat,Democratic,212934,Larry Thompson,Republican,Republican,108711,321645,32.4031,Republican and Democratic,2
+CA,33,Pete Aguilar,Democrat,Democratic,137197,Tom Herman,Republican,Republican,96078,233275,17.6268,Republican and Democratic,2
+CA,34,Jimmy Gomez,Democrat,Democratic,105394,David Kim,Democrat,Democratic,84020,189414,11.2843,one-party contest (top-two),2
+CA,35,Norma J. Torres,Democrat,Democratic,136413,Mike Cargile,Republican,Republican,97142,233555,16.8145,Republican and Democratic,2
+CA,36,Ted Lieu,Democrat,Democratic,246002,Melissa Toomim,Republican,Republican,111985,357987,37.4363,Republican and Democratic,2
+CA,37,Sydney Kamlager-Dove,Democrat,Democratic,160364,Juan Rey,No Party Preference,other,44450,204814,56.5948,other pairing,2
+CA,38,Linda T. Sánchez,Democrat,Democratic,165110,Eric J. Ching,Republican,Republican,110818,275928,19.6761,Republican and Democratic,2
+CA,39,Mark Takano,Democrat,Democratic,130191,David Serpa,Republican,Republican,99469,229660,13.3772,Republican and Democratic,2
+CA,40,Young Kim,Republican,Republican,211998,Joe Kerr,Democrat,Democratic,171637,383635,10.5207,Republican and Democratic,2
+CA,41,Ken Calvert,Republican,Republican,183216,Will Rollins,Democrat,Democratic,171229,354445,3.3819,Republican and Democratic,2
+CA,42,Robert Garcia,Democrat,Democratic,159153,John Briscoe,Republican,Republican,74410,233563,36.2827,Republican and Democratic,2
+CA,43,Maxine Waters,Democrat,Democratic,160080,Steve Williams,Republican,Republican,53152,213232,50.1463,Republican and Democratic,2
+CA,44,Nanette Diaz Barragán,Democrat,Democratic,164765,Roger Groh,Republican,Republican,66087,230852,42.7451,Republican and Democratic,2
+CA,45,Derek Tran,Democrat,Democratic,158264,Michelle Steel,Republican,Republican,157611,315875,0.2067,Republican and Democratic,2
+CA,46,J. Luis Correa,Democrat,Democratic,134013,David Pan,Republican,Republican,77279,211292,26.8510,Republican and Democratic,2
+CA,47,Dave Min,Democrat,Democratic,181721,Scott Baugh,Republican,Republican,171554,353275,2.8779,Republican and Democratic,2
+CA,48,Darrell Issa,Republican,Republican,213625,Stephen Houlahan,Democrat,Democratic,146665,360290,18.5850,Republican and Democratic,2
+CA,49,Mike Levin,Democrat,Democratic,197397,Matt Gunderson,Republican,Republican,180950,378347,4.3471,Republican and Democratic,2
+CA,50,Scott H. Peters,Democrat,Democratic,231836,Peter J. Bono,Republican,Republican,128859,360695,28.5496,Republican and Democratic,2
+CA,51,Sara Jacobs,Democrat,Democratic,198835,Bill Wells,Republican,Republican,128749,327584,21.3948,Republican and Democratic,2
+CA,52,Juan Vargas,Democrat,Democratic,172217,Justin Lee,Republican,Republican,87501,259718,32.6185,Republican and Democratic,2
+CO,01,Diana DeGette,Democrat,Democratic,264606,Valdamar Archuleta,Republican,Republican,74598,345735,54.9577,Republican and Democratic,4
+CO,02,Joe Neguse,Democrat,Democratic,284994,Marshall Dawson,Republican,Republican,120633,416908,39.4238,Republican and Democratic,5
+CO,03,Jeff Hurd,Republican,Republican,201951,Adam Frisch,Democrat,Democratic,182147,397553,4.9815,Republican and Democratic,4
+CO,04,Lauren Boebert,Republican,Republican,240213,Trisha Calvarese,Democrat,Democratic,188249,447807,11.6041,Republican and Democratic,5
+CO,05,Jeff Crank,Republican,Republican,197924,River Gassen,Democrat,Democratic,147972,362085,13.7957,Republican and Democratic,6
+CO,06,Jason Crow,Democrat,Democratic,202686,John E. Fabbricatore,Republican,Republican,132174,343721,20.5143,Republican and Democratic,4
+CO,07,Brittany Pettersen,Democrat,Democratic,235688,Sergei Matveyuk,Republican,Republican,175273,425966,14.1831,Republican and Democratic,4
+CO,08,Gabe Evans,Republican,Republican,163320,Yadira Caraveo,Democrat,Democratic,160871,333616,0.7341,Republican and Democratic,4
+CT,01,John B. Larson,Democrat,Democratic,208649,Jim Griffin,Republican,Republican,115065,330482,28.3174,Republican and Democratic,3
+CT,02,Joe Courtney,Democrat,Democratic,218162,Mike France,Republican,Republican,157878,376047,16.0310,Republican and Democratic,2
+CT,03,Rosa L. DeLauro,Democrat,Democratic,193684,Michael Massey,Republican,Republican,135113,328923,17.8069,Republican and Democratic,2
+CT,04,James A. Himes,Democrat,Democratic,200791,Michael Goldstein,Republican,Republican,122793,328857,23.7179,Republican and Democratic,3
+CT,05,Jahana Hayes,Democrat,Democratic,180268,George Logan,Republican,Republican,157258,337605,6.8157,Republican and Democratic,2
+DE,00,Sarah McBride,Democrat,Democratic,287830,John J. Whalen III,Republican,Republican,209606,497436,15.7254,Republican and Democratic,2
+FL,01,Matt Gaetz,Republican,Republican,274108,Gay Valimont,Democrat,Democratic,140980,415088,32.0722,Republican and Democratic,2
+FL,02,Neal P. Dunn,Republican,Republican,247957,Yen Bailey,Democrat,Democratic,154323,402280,23.2758,Republican and Democratic,2
+FL,03,Kat Cammack,Republican,Republican,241174,Tom Wells,Democrat,Democratic,150283,391457,23.2186,Republican and Democratic,2
+FL,04,Aaron Bean,Republican,Republican,222364,LaShonda “L. J.” Holloway,Democrat,Democratic,165912,388349,14.5364,Republican and Democratic,2
+FL,05,John H. Rutherford,Republican,Republican,267471,Jay McGovern,Democrat,Democratic,156570,424064,26.1519,Republican and Democratic,2
+FL,06,Michael Waltz,Republican,Republican,284414,James David Stockton III,Democrat,Democratic,143050,427474,33.0696,Republican and Democratic,2
+FL,07,Cory Mills,Republican,Republican,233937,Jennifer Adams,Democrat,Democratic,179917,413854,13.0529,Republican and Democratic,2
+FL,08,Mike Haridopolos,Republican,Republican,280352,Sandy Kennedy,Democrat,Democratic,170096,450448,24.4770,Republican and Democratic,2
+FL,09,Darren Soto,Democrat,Democratic,178785,Thomas Chalifoux,Republican,Republican,138076,324273,12.5539,Republican and Democratic,3
+FL,10,Maxwell Frost,Democrat,Democratic,181455,Willie J. Montague,Republican,Republican,109460,290915,24.7478,Republican and Democratic,2
+FL,11,Daniel Webster,Republican,Republican,269277,Barbie Harden Hall,Democrat,Democratic,176726,446003,20.7512,Republican and Democratic,2
+FL,12,Gus M. Bilirakis,Republican,Republican,306487,"Rock Aboujaoude, Jr.",Democrat,Democratic,124949,431436,42.0776,Republican and Democratic,2
+FL,13,Anna Paulina Luna,Republican,Republican,225636,Whitney Fox,Democrat,Democratic,185930,411593,9.6469,Republican and Democratic,2
+FL,14,Kathy Castor,Democrat,Democratic,199423,Robert “Rocky” Rochford,Republican,Republican,145643,350185,15.3576,Republican and Democratic,4
+FL,15,Laurel M. Lee,Republican,Republican,195334,Patricia “Pat” Kemp,Democrat,Democratic,152361,347695,12.3594,Republican and Democratic,2
+FL,16,Vern Buchanan,Republican,Republican,247516,Jan Schneider,Democrat,Democratic,168625,416141,18.9578,Republican and Democratic,2
+FL,17,W. Gregory Steube,Republican,Republican,291347,Manny Lopez,Democrat,Democratic,164566,455921,27.8077,Republican and Democratic,2
+FL,18,Scott Franklin,Republican,Republican,225170,Andrea Doria Kale,Democrat,Democratic,119637,344807,30.6064,Republican and Democratic,2
+FL,19,Byron Donalds,Republican,Republican,275708,Kari L. Lerner,Democrat,Democratic,140038,415746,32.6329,Republican and Democratic,2
+FL,20,Sheila Cherfilus-McCormick,Democrat,Democratic,,,,,,,,unopposed on the ballot,1
+FL,21,Brian J. Mast,Republican,Republican,277435,Thomas Witkop,Democrat,Democratic,171312,448766,23.6477,Republican and Democratic,2
+FL,22,Lois Frankel,Democrat,Democratic,201608,Dan Franzese,Republican,Republican,165248,366856,9.9112,Republican and Democratic,2
+FL,23,Jared Moskowitz,Democrat,Democratic,196311,Joseph “Joe” Kaufman,Republican,Republican,178006,374317,4.8902,Republican and Democratic,2
+FL,24,Frederica S. Wilson,Democrat,Democratic,194874,Jesus Gabriel Navarro,Republican,Republican,90692,285588,36.4798,Republican and Democratic,2
+FL,25,Debbie Wasserman Schultz,Democrat,Democratic,186942,Chris Eddy,Republican,Republican,156208,343191,8.9554,Republican and Democratic,2
+FL,26,Mario Diaz-Balart,Republican,Republican,217199,Joey Atkins,Democrat,Democratic,89072,306271,41.8345,Republican and Democratic,2
+FL,27,Maria Elvira Salazar,Republican,Republican,199159,Lucia Baez-Geller,Democrat,Democratic,130708,329867,20.7511,Republican and Democratic,2
+FL,28,Carlos A. Gimenez,Republican,Republican,210057,Phil Ehr,Democrat,Democratic,115280,325337,29.1319,Republican and Democratic,2
+GA,01,Earl L. “Buddy” Carter,Republican,Republican,220576,Patti Hewitt,Democrat,Democratic,135281,355857,23.9689,Republican and Democratic,2
+GA,02,"Sanford D. Bishop, Jr.",Democrat,Democratic,176028,A. Wayne Johnson,Republican,Republican,136473,312501,12.6576,Republican and Democratic,2
+GA,03,Brian Jack,Republican,Republican,273036,Maura Keller,Democrat,Democratic,138749,411785,32.6109,Republican and Democratic,2
+GA,04,"Henry C. “Hank” Johnson, Jr.",Democrat,Democratic,229290,Eugene Yu,Republican,Republican,74071,303361,51.1664,Republican and Democratic,2
+GA,05,Nikema Williams,Democrat,Democratic,294470,John “Bongo” Salvesen,Republican,Republican,49221,343691,71.3574,Republican and Democratic,2
+GA,06,Lucy McBath,Democrat,Democratic,277027,Jeff Criswell,Republican,Republican,93909,370936,49.3665,Republican and Democratic,2
+GA,07,Richard McCormick,Republican,Republican,275907,Bob Christian,Democrat,Democratic,149535,425442,29.7037,Republican and Democratic,2
+GA,08,Austin Scott,Republican,Republican,231547,Darrius Butler,Democrat,Democratic,104434,335981,37.8334,Republican and Democratic,2
+GA,09,Andrew S. Clyde,Republican,Republican,271062,Tambrei Cash,Democrat,Democratic,121754,392816,38.0097,Republican and Democratic,2
+GA,10,Mike Collins,Republican,Republican,256442,Alexandra “Lexy” Doherty,Democrat,Democratic,150274,406716,26.1037,Republican and Democratic,2
+GA,11,Barry Loudermilk,Republican,Republican,269849,Katy “Kate” L. Stamper,Democrat,Democratic,131064,400913,34.6172,Republican and Democratic,2
+GA,12,Rick W. Allen,Republican,Republican,205849,Elizabeth “Liz” Johnson,Democrat,Democratic,135417,341266,20.6384,Republican and Democratic,2
+GA,13,David Scott,Democrat,Democratic,256902,Jonathan Chavez,Republican,Republican,100730,357632,43.6684,Republican and Democratic,2
+GA,14,Marjorie Taylor Greene,Republican,Republican,243446,Shawn Harris,Democrat,Democratic,134759,378205,28.7376,Republican and Democratic,2
+HI,01,Ed Case,Democrat,Democratic,164237,Patrick C. Largey,Republican,Republican,64373,228610,43.6831,Republican and Democratic,2
+HI,02,Jill N. Tokuda,Democrat,Democratic,166251,Steve Bond,Republican,Republican,75471,250156,36.2894,Republican and Democratic,4
+ID,01,Russ Fulcher,Republican,Republican,331049,Kaylee Peterson,Democrat,Democratic,118656,466242,45.5542,Republican and Democratic,4
+ID,02,Michael K. Simpson,Republican,Republican,250119,David Roth,Democrat,Democratic,126229,407462,30.4053,Republican and Democratic,4
+IL,01,Jonathan L. Jackson,Democrat,Democratic,208398,Marcus Lewis,Republican,Republican,108064,316507,31.7004,Republican and Democratic,2
+IL,02,Robin L. Kelly,Democrat,Democratic,195777,Ashley Ramos,Republican,Republican,94004,289843,35.1131,Republican and Democratic,2
+IL,03,Delia C. Ramirez,Democrat,Democratic,174825,John Booras,Republican,Republican,84987,259908,34.5653,Republican and Democratic,2
+IL,04,Jesús G. “Chuy” García,Democrat,Democratic,139343,Lupe Castillo,Republican,Republican,56323,206396,40.2236,Republican and Democratic,3
+IL,05,Mike Quigley,Democrat,Democratic,251025,Tommy Hanson,Republican,Republican,112931,363965,37.9416,Republican and Democratic,2
+IL,06,Sean Casten,Democrat,Democratic,196647,Niki Conforti,Republican,Republican,166116,362849,8.4142,Republican and Democratic,2
+IL,07,Danny K. Davis,Democrat,Democratic,222408,Chad Koppie,Republican,Republican,44598,267152,66.5576,Republican and Democratic,2
+IL,08,Raja Krishnamoorthi,Democrat,Democratic,172920,Mark Rice,Republican,Republican,130153,303073,14.1111,Republican and Democratic,2
+IL,09,Janice D. Schakowsky,Democrat,Democratic,231722,Seth Alan Cohen,Republican,Republican,107106,338828,36.7785,Republican and Democratic,2
+IL,10,Bradley Scott Schneider,Democrat,Democratic,196358,Jim Carris,Republican,Republican,131025,327621,19.9416,Republican and Democratic,2
+IL,11,Bill Foster,Democrat,Democratic,199825,Jerry Evans,Republican,Republican,159630,359684,11.1751,Republican and Democratic,2
+IL,12,Mike Bost,Republican,Republican,272754,Brian Roberts,Democrat,Democratic,94875,367629,48.3855,Republican and Democratic,2
+IL,13,Nikki Budzinski,Democrat,Democratic,191339,Joshua Loyd,Republican,Republican,137917,329500,16.2131,Republican and Democratic,2
+IL,14,Lauren Underwood,Democrat,Democratic,183446,James T. “Jim” Marter,Republican,Republican,149464,332929,10.2070,Republican and Democratic,2
+IL,15,Mary E. Miller,Republican,Republican,308825,,,,,310234,,unopposed on the ballot,1
+IL,16,Darin LaHood,Republican,Republican,310925,,,,,311108,,unopposed on the ballot,1
+IL,17,Eric Sorensen,Democrat,Democratic,170261,Joe McGraw,Republican,Republican,142567,312828,8.8528,Republican and Democratic,2
+IN,01,Frank J. Mrvan,Democrat,Democratic,172467,Randy Niemeyer,Republican,Republican,145056,322723,8.4937,Republican and Democratic,3
+IN,02,Rudy Yakym III,Republican,Republican,184848,Lori A. Camp,Democrat,Democratic,101962,294618,28.1334,Republican and Democratic,3
+IN,03,Marlin A. Stutzman,Republican,Republican,202653,Kiley M. Adolph,Democrat,Democratic,97871,311539,33.6337,Republican and Democratic,3
+IN,04,James R. Baird,Republican,Republican,209794,Derrick Holder,Democrat,Democratic,100091,323595,33.9013,Republican and Democratic,3
+IN,05,Victoria Spartz,Republican,Republican,203293,Deborah A. Pickett,Democrat,Democratic,136554,359204,18.5797,Republican and Democratic,4
+IN,06,Jefferson Shreve,Republican,Republican,201357,Cynthia “Cinde” Wirth,Democrat,Democratic,99841,314909,32.2366,Republican and Democratic,3
+IN,07,André Carson,Democrat,Democratic,185987,John P. Schmitz,Republican,Republican,78792,272148,39.3885,Republican and Democratic,3
+IN,08,Mark Messmer,Republican,Republican,219941,Erik Hurt,Democrat,Democratic,95311,323633,38.5097,Republican and Democratic,3
+IN,09,Erin Houchin,Republican,Republican,222884,Timothy “Tim” Peck,Democrat,Democratic,113400,345738,31.6668,Republican and Democratic,3
+IA,01,Mariannette Miller-Meeks,Republican,Republican,206955,Christina Bohannan,Democrat,Democratic,206156,414078,0.1930,Republican and Democratic,2
+IA,02,Ashley Hinson,Republican,Republican,233340,Sarah Corkery,Democrat,Democratic,169740,408802,15.5577,Republican and Democratic,3
+IA,03,Zachary Nunn,Republican,Republican,213746,Lanon Baccam,Democrat,Democratic,197962,412905,3.8227,Republican and Democratic,2
+IA,04,Randy Feenstra,Republican,Republican,250522,Ryan Melton,Democrat,Democratic,122175,373824,34.3335,Republican and Democratic,2
+KS,01,Tracey Mann,Republican,Republican,210493,Paul Buskirk,Democrat,Democratic,93965,304458,38.2739,Republican and Democratic,2
+KS,02,Derek Schmidt,Republican,Republican,172847,Nancy Boyda,Democrat,Democratic,115685,302761,18.8802,Republican and Democratic,3
+KS,03,Sharice Davids,Democrat,Democratic,209871,Prasanth Reddy,Republican,Republican,167570,393333,10.7545,Republican and Democratic,3
+KS,04,Ron Estes,Republican,Republican,198465,Esau Freeman,Democrat,Democratic,106632,305097,30.0996,Republican and Democratic,2
+KY,01,James Comer,Republican,Republican,252729,Erin Marshall,Democrat,Democratic,85524,338253,49.4319,Republican and Democratic,2
+KY,02,Brett Guthrie,Republican,Republican,252826,Hank Linderman,Democrat,Democratic,93029,345855,46.2035,Republican and Democratic,2
+KY,03,Morgan McGarvey,Democrat,Democratic,203100,Mike Craven,Republican,Republican,124713,327864,23.9084,Republican and Democratic,2
+KY,04,Thomas Massie,Republican,Republican,278386,,,,,279517,,unopposed on the ballot,1
+KY,05,Harold Rogers,Republican,Republican,261407,,,,,261407,,unopposed on the ballot,1
+KY,06,Andy Barr,Republican,Republican,222293,Randy Cravens,Democrat,Democratic,130345,352638,26.0743,Republican and Democratic,2
+LA,01,Steve Scalise,Republican,Republican,238842,Mel Manuel,Democrat,Democratic,85911,357720,42.7516,"Louisiana open primary, decided in November",5
+LA,02,Troy A. Carter,Democrat,Democratic,184009,Christy Lynch,Republican,Republican,41641,305184,46.6499,"Louisiana open primary, decided in November",5
+LA,03,Clay Higgins,Republican,Republican,226279,Priscilla Gonzalez,Democrat,Democratic,59834,320682,51.9034,"Louisiana open primary, decided in November",4
+LA,04,Mike Johnson,Republican,Republican,262821,Joshua Morott,Republican,Republican,43427,306248,71.6393,"Louisiana open primary, decided in November",2
+LA,05,Julia Letlow,Republican,Republican,201037,"Michael Vallien, Jr.",Democrat,Democratic,82981,319851,36.9097,"Louisiana open primary, decided in November",3
+LA,06,Cleo Fields,Democrat,Democratic,150323,Elbert Guillory,Republican,Republican,111737,296033,13.0344,"Louisiana open primary, decided in November",5
+ME,01,Chellie Pingree,Democrat,Democratic,249798,Ronald C. Russell,Republican,Republican,154849,425530,22.3131,Republican and Democratic,3
+ME,02,Jared F. Golden,Democrat,Democratic,197151,Austin Theriault,Republican,Republican,194445,391596,0.6910,"ranked-choice, final round (the Clerk prints the final round)",2
+MD,01,Andy Harris,Republican,Republican,246356,Blane H. Miller III,Democrat,Democratic,154985,414680,22.0341,Republican and Democratic,3
+MD,02,"John “Johnny O” Olszewski, Jr.",Democrat,Democratic,223797,Kim Klacik,Republican,Republican,152079,384794,18.6380,Republican and Democratic,3
+MD,03,Sarah Elfreth,Democrat,Democratic,236681,Robert J. Steinberger,Republican,Republican,151186,399200,21.4166,Republican and Democratic,3
+MD,04,Glenn Ivey,Democrat,Democratic,239596,George McDermott,Republican,Republican,30454,270970,77.1827,Republican and Democratic,2
+MD,05,Steny H. Hoyer,Democrat,Democratic,283619,Michelle Talkington,Republican,Republican,133985,418603,35.7460,Republican and Democratic,2
+MD,06,April McClain Delaney,Democrat,Democratic,199788,Neil C. Parrott,Republican,Republican,175974,376624,6.3230,Republican and Democratic,2
+MD,07,Kweisi Mfume,Democrat,Democratic,232849,Scott M. Collier,Republican,Republican,49799,290137,63.0909,Republican and Democratic,3
+MD,08,Jamie Raskin,Democrat,Democratic,292101,Cheryl Riley,Republican,Republican,77821,380320,56.3420,Republican and Democratic,3
+MA,01,Richard E. Neal,Democrat,Democratic,223325,Nadia Donya Milleron,Independent,other,133552,358058,25.0722,other pairing,2
+MA,02,James P. McGovern,Democrat,Democratic,251441,Cornelius Shea,Independent,other,114065,366328,37.5008,other pairing,2
+MA,03,Lori Trahan,Democrat,Democratic,264698,,,,,271559,,unopposed on the ballot,1
+MA,04,Jake Auchincloss,Democrat,Democratic,289347,,,,,297725,,unopposed on the ballot,1
+MA,05,Katherine M. Clark,Democrat,Democratic,286689,,,,,291890,,unopposed on the ballot,1
+MA,06,Seth Moulton,Democrat,Democratic,321186,,,,,328377,,unopposed on the ballot,1
+MA,07,Ayanna Pressley,Democrat,Democratic,232094,,,,,239001,,unopposed on the ballot,1
+MA,08,Stephen F. Lynch,Democrat,Democratic,265432,Robert G. Burke,Republican,Republican,110638,376830,41.0779,Republican and Democratic,2
+MA,09,William R. Keating,Democrat,Democratic,251931,Dan Sullivan,Republican,Republican,193822,446395,13.0174,Republican and Democratic,2
+MI,01,Jack Bergman,Republican,Republican,282264,Callie Barr,Democrat,Democratic,180937,477184,21.2344,Republican and Democratic,4
+MI,02,John R. Moolenaar,Republican,Republican,279167,Michael Lynch,Democrat,Democratic,135824,428550,33.4484,Republican and Democratic,4
+MI,03,Hillary J. Scholten,Democrat,Democratic,225510,Paul Hudson,Republican,Republican,183952,420289,9.8880,Republican and Democratic,4
+MI,04,Bill Huizenga,Republican,Republican,234489,Jessica Swartz,Democrat,Democratic,184641,425817,11.7064,Republican and Democratic,3
+MI,05,Tim Walberg,Republican,Republican,269215,Libbi Urban,Democrat,Democratic,134282,409876,32.9204,Republican and Democratic,3
+MI,06,Debbie Dingell,Democrat,Democratic,281162,Heather Smiley,Republican,Republican,158658,453306,27.0246,Republican and Democratic,4
+MI,07,Tom Barrett,Republican,Republican,226722,Curtis Hertel,Democrat,Democratic,209959,450912,3.7176,Republican and Democratic,3
+MI,08,Kristen McDonald Rivet,Democrat,Democratic,217490,Paul Junge,Republican,Republican,189317,424350,6.6391,Republican and Democratic,6
+MI,09,Lisa C. McClain,Republican,Republican,312593,Clinton St. Mosley,Democrat,Democratic,138138,468238,37.2578,Republican and Democratic,4
+MI,10,John James,Republican,Republican,217437,Carl J. Marlinga,Democrat,Democratic,191363,425301,6.1307,Republican and Democratic,4
+MI,11,Haley M. Stevens,Democrat,Democratic,260780,Nick Somberg,Republican,Republican,177432,447925,18.6076,Republican and Democratic,3
+MI,12,Rashida Tlaib,Democrat,Democratic,253354,James D. Hooper,Republican,Republican,92490,363499,44.2543,Republican and Democratic,4
+MI,13,Shri Thanedar,Democrat,Democratic,220788,Martell D. Bivings,Republican,Republican,78917,321649,44.1074,Republican and Democratic,5
+MN,01,Brad Finstad,Republican,Republican,220929,Rachel Bohman,Democratic-Farmer-Labor,Democratic,156375,377601,17.0958,Republican and Democratic,2
+MN,02,Angie Craig,Democrat,Democratic,231751,Joe Teirab,Republican,Republican,175621,417319,13.4501,Republican and Democratic,3
+MN,03,Kelly Morrison,Democratic-Farmer-Labor,Democratic,240209,Tad Jude,Republican,Republican,170427,411140,16.9728,Republican and Democratic,2
+MN,04,Betty McCollum,Democrat,Democratic,242802,May Lor Xiong,Republican,Republican,117618,361043,34.6729,Republican and Democratic,2
+MN,05,Ilhan Omar,Democrat,Democratic,261066,Dalia Al-Aqidi,Republican,Republican,86213,351047,49.8090,Republican and Democratic,2
+MN,06,Tom Emmer,Republican,Republican,260095,Jeanne Hendricks,Democratic-Farmer-Labor,Democratic,155836,416496,25.0324,Republican and Democratic,2
+MN,07,Michelle Fischbach,Republican,Republican,275098,A J “John” Peters,Democratic-Farmer-Labor,Democratic,114979,390510,41.0025,Republican and Democratic,2
+MN,08,Pete Stauber,Republican,Republican,244498,Jen Schultz,Democratic-Farmer-Labor,Democratic,176724,421606,16.0752,Republican and Democratic,2
+MS,01,Trent Kelly,Republican,Republican,223589,Dianne Dodson Black,Democrat,Democratic,96697,320286,39.6183,Republican and Democratic,2
+MS,02,Bennie G. Thompson,Democrat,Democratic,177885,Ron Eller,Republican,Republican,108956,286841,24.0304,Republican and Democratic,2
+MS,03,Michael Guest,Republican,Republican,265159,,,,,265159,,unopposed on the ballot,1
+MS,04,Mike Ezell,Republican,Republican,215095,Craig Elliot Raybon,Democrat,Democratic,75771,290866,47.8997,Republican and Democratic,2
+MO,01,Wesley Bell,Democrat,Democratic,233312,Andrew Jones,Republican,Republican,56453,307265,57.5591,Republican and Democratic,5
+MO,02,Ann Wagner,Republican,Republican,233444,Ray Hartmann,Democrat,Democratic,182056,428392,11.9956,Republican and Democratic,4
+MO,03,Bob Onder,Republican,Republican,240620,Bethany E. Mann,Democrat,Democratic,138532,392463,26.0121,Republican and Democratic,4
+MO,04,Mark Alford,Republican,Republican,259886,Jeanette Cass,Democrat,Democratic,96568,365696,44.6595,Republican and Democratic,3
+MO,05,Emanuel Cleaver,Democrat,Democratic,199900,Sean E. Smith,Republican,Republican,120957,331929,23.7831,Republican and Democratic,4
+MO,06,Sam Graves,Republican,Republican,265210,Pam May,Democrat,Democratic,100999,375186,43.7679,Republican and Democratic,4
+MO,07,Eric Burlison,Republican,Republican,263231,Missi Hesketh,Democrat,Democratic,96655,367868,45.2815,Republican and Democratic,3
+MO,08,Jason Smith,Republican,Republican,271249,Randi McCallian,Democrat,Democratic,77649,356064,54.3722,Republican and Democratic,3
+MT,01,Ryan K. Zinke,Republican,Republican,168529,Monica Tranel,Democrat,Democratic,143783,322266,7.6787,Republican and Democratic,3
+MT,02,Troy Downing,Republican,Republican,181832,John B. Driscoll,Democrat,Democratic,93713,275545,31.9799,Republican and Democratic,2
+NE,01,Mike Flood,Republican,Republican,187559,Carol Blood,Democrat,Democratic,124498,312057,20.2082,Republican and Democratic,2
+NE,02,Don Bacon,Republican,Republican,160198,Tony Vargas,Democrat,Democratic,154369,314567,1.8530,Republican and Democratic,2
+NE,03,Adrian Smith,Republican,Republican,243481,Daniel Ebers,Democrat,Democratic,59287,302768,60.8367,Republican and Democratic,2
+NV,01,Dina Titus,Democrat,Democratic,167885,Mark Robertson,Republican,Republican,143650,322899,7.5054,Republican and Democratic,6
+NV,02,Mark E. Amodei,Republican,Republican,219919,Greg Kidd,No Political Party,other,144064,399584,18.9835,other pairing,4
+NV,03,Susie Lee,Democrat,Democratic,191304,Drew Johnson,Republican,Republican,181084,372388,2.7444,Republican and Democratic,2
+NV,04,Steven Horsford,Democrat,Democratic,174926,John Lee,Republican,Republican,148061,332206,8.0868,Republican and Democratic,4
+NH,01,Chris Pappas,Democrat,Democratic,218577,Russell Prescott,Republican,Republican,185936,404808,8.0633,Republican and Democratic,2
+NH,02,Maggie Goodlander,Democrat,Democratic,211641,Lily Tang Williams,Republican,Republican,187810,399818,5.9605,Republican and Democratic,2
+NJ,01,Donald Norcross,Democrat,Democratic,208808,Theodore “Teddy” Liddell,Republican,Republican,144390,361060,17.8414,Republican and Democratic,4
+NJ,02,Jefferson Van Drew,Republican,Republican,215946,Joseph F. Salerno,Democrat,Democratic,153117,371620,16.9068,Republican and Democratic,3
+NJ,03,Herb Conaway,Democrat,Democratic,202034,Rajesh Mohan,Republican,Republican,169454,379484,8.5853,Republican and Democratic,6
+NJ,04,Christopher H. Smith,Republican,Republican,265652,Matthew Jenkins,Democrat,Democratic,124803,394228,35.7278,Republican and Democratic,4
+NJ,05,Josh Gottheimer,Democrat,Democratic,208359,Mary Jo Guinchard,Republican,Republican,165287,381889,11.2787,Republican and Democratic,5
+NJ,06,"Frank Pallone, Jr.",Democrat,Democratic,170275,Scott Fegler,Republican,Republican,122519,303681,15.7257,Republican and Democratic,5
+NJ,07,"Thomas H. Kean, Jr.",Republican,Republican,223331,Sue Altman,Democrat,Democratic,200025,431398,5.4024,Republican and Democratic,4
+NJ,08,Robert Menendez,Democrat,Democratic,116434,Anthony Valdes,Republican,Republican,68152,196765,24.5379,Republican and Democratic,5
+NJ,09,Nellie Pou,Democrat,Democratic,130514,Billy Prempeh,Republican,Republican,117939,257013,4.8927,Republican and Democratic,4
+NJ,10,LaMonica McIver,Democrat,Democratic,182020,Carmen Bucco,Republican,Republican,54405,244577,52.1778,Republican and Democratic,6
+NJ,11,Mikie Sherrill,Democrat,Democratic,222583,Joseph Belnome,Republican,Republican,164556,393751,14.7370,Republican and Democratic,4
+NJ,12,Bonnie Watson Coleman,Democrat,Democratic,196871,Darius Mayfield,Republican,Republican,117222,321660,24.7619,Republican and Democratic,4
+NM,01,Melanie A. Stansbury,Democrat,Democratic,193203,Steve Jones,Republican,Republican,149546,342749,12.7373,Republican and Democratic,2
+NM,02,Gabe Vasquez,Democrat,Democratic,138177,Yvette Herrell,Republican,Republican,127145,265322,4.1580,Republican and Democratic,2
+NM,03,Teresa Leger Fernandez,Democrat,Democratic,162342,Sharon E. Clahchischilliage,Republican,Republican,126085,288427,12.5706,Republican and Democratic,2
+NY,01,Nick LaLota,Republican,Republican,226285,John P. Avlon,Democrat,Democratic,183540,410100,10.4231,Republican and Democratic,2
+NY,02,Andrew R. Garbarino,Republican,Republican,202597,Rob Lubin,Democrat,Democratic,136371,339157,19.5266,Republican and Democratic,2
+NY,03,Thomas R. Suozzi,Democrat,Democratic,187651,"Michael J. LiPetri, Jr.",Republican,Republican,174693,363124,3.5685,Republican and Democratic,2
+NY,04,Laura A. Gillen,Democrat,Democratic,191760,Anthony D’Esposito,Republican,Republican,183157,375518,2.2910,Republican and Democratic,2
+NY,05,Gregory W. Meeks,Democrat,Democratic,168425,Paul King,Republican,Republican,62529,231736,45.6968,Republican and Democratic,2
+NY,06,Grace Meng,Democrat,Democratic,120205,Thomas J. Zmich,Republican,Republican,74559,198690,22.9735,Republican and Democratic,3
+NY,07,Nydia M. Velázquez,Democrat,Democratic,172795,Bill Kregler,Republican,Republican,48435,221779,56.0738,Republican and Democratic,2
+NY,08,Hakeem S. Jeffries,Democrat,Democratic,168036,John J. Delaney,Republican,Republican,54863,223804,50.5679,Republican and Democratic,2
+NY,09,Yvette D. Clarke,Democrat,Democratic,173207,Menachem M. Raitport,Republican,Republican,60064,235772,47.9883,Republican and Democratic,2
+NY,10,Daniel S. Goldman,Democrat,Democratic,206206,Alexander Dodenhoff,Republican,Republican,37555,254556,66.2530,Republican and Democratic,3
+NY,11,Nicole Malliotakis,Republican,Republican,167099,Andrea S. Morse,Democrat,Democratic,93586,261728,28.0876,Republican and Democratic,2
+NY,12,Jerrold Nadler,Democrat,Democratic,260165,Michael K. Zumbluskas,Republican,Republican,62989,324020,60.8530,Republican and Democratic,2
+NY,13,Adriano Espaillat,Democrat,Democratic,181800,Ruben D. Vargas,Republican,Republican,35822,218973,66.6648,Republican and Democratic,2
+NY,14,Alexandria Ocasio-Cortez,Democrat,Democratic,132714,Tina Forte,Republican,Republican,59078,192551,38.2423,Republican and Democratic,2
+NY,15,Ritchie Torres,Democrat,Democratic,130392,Gonzalo Duran,Republican,Republican,36010,171095,55.1635,Republican and Democratic,3
+NY,16,George S. Latimer,Democrat,Democratic,217668,Miriam Levitt Flisser,Republican,Republican,86408,305079,43.0249,Republican and Democratic,2
+NY,17,Michael Lawler,Republican,Republican,197845,Mondaire L. Jones,Democrat,Democratic,173899,379508,6.3097,Republican and Democratic,3
+NY,18,Patrick Ryan,Democrat,Democratic,207106,Alison Esposito,Republican,Republican,155129,362509,14.3381,Republican and Democratic,2
+NY,19,Josh Riley,Democrat,Democratic,192647,Marcus J. Molinaro,Republican,Republican,184290,377343,2.2147,Republican and Democratic,2
+NY,20,Paul Tonko,Democrat,Democratic,221997,Kevin M. Waltz,Republican,Republican,141151,363445,22.2444,Republican and Democratic,2
+NY,21,Elise M. Stefanik,Republican,Republican,215996,Paula Collins,Democrat,Democratic,132447,348640,23.9643,Republican and Democratic,2
+NY,22,John W. Mannion,Democrat,Democratic,194450,Brandon Williams,Republican,Republican,161939,356792,9.1120,Republican and Democratic,2
+NY,23,Nicholas A. Langworthy,Republican,Republican,246969,Thomas A. Carle,Democrat,Democratic,128397,375594,31.5692,Republican and Democratic,2
+NY,24,Claudia Tenney,Republican,Republican,235867,David Wagenhauser,Democrat,Democratic,123317,359407,31.3155,Republican and Democratic,2
+NY,25,Joseph D. Morelle,Democrat,Democratic,219175,Gregg A. Sadwick,Republican,Republican,141195,360633,21.6231,Republican and Democratic,2
+NY,26,Timothy M. Kennedy,Democrat,Democratic,209131,Anthony G. Marecki,Republican,Republican,111772,321304,30.3012,Republican and Democratic,2
+NC,01,Donald G. Davis,Democrat,Democratic,186341,Laurie Buckhout,Republican,Republican,180034,376324,1.6759,Republican and Democratic,3
+NC,02,Deborah K. Ross,Democrat,Democratic,268662,Alan D. Swain,Republican,Republican,128164,405517,34.6466,Republican and Democratic,3
+NC,03,Gregory F. Murphy,Republican,Republican,248276,Gheorghe Cormos,Libertarian,other,72565,320841,54.7658,other pairing,2
+NC,04,Valerie P. Foushee,Democrat,Democratic,308064,Eric Blankenburg,Republican,Republican,112084,428780,45.7064,Republican and Democratic,3
+NC,05,Virginia Foxx,Republican,Republican,238304,Chuck Hubbard,Democrat,Democratic,162390,400694,18.9456,Republican and Democratic,2
+NC,06,Addison McDowell,Republican,Republican,233303,Kevin E. Hayes,Constitution,other,104017,337320,38.3274,other pairing,2
+NC,07,David Rouzer,Republican,Republican,254022,Marlando D. Pridgen,Democrat,Democratic,179512,433534,17.1867,Republican and Democratic,2
+NC,08,Mark Harris,Republican,Republican,238640,Justin E. Dues,Democrat,Democratic,161709,400349,19.2160,Republican and Democratic,2
+NC,09,Richard Hudson,Republican,Republican,210042,Nigel William Bristow,Democrat,Democratic,140852,373077,18.5458,Republican and Democratic,3
+NC,10,Pat Harrigan,Republican,Republican,233814,"Ralph R. Scott, Jr.",Democrat,Democratic,155383,406695,19.2850,Republican and Democratic,4
+NC,11,Chuck Edwards,Republican,Republican,245546,Caleb Rudow,Democrat,Democratic,186977,432523,13.5412,Republican and Democratic,2
+NC,12,Alma S. Adams,Democrat,Democratic,259627,Addul Ali,Republican,Republican,91128,350755,48.0389,Republican and Democratic,2
+NC,13,Brad Knott,Republican,Republican,243655,Frank Pierce,Democrat,Democratic,171835,415490,17.2856,Republican and Democratic,2
+NC,14,Tim Moore,Republican,Republican,232987,Pam Genant,Democrat,Democratic,168269,401256,16.1289,Republican and Democratic,2
+ND,00,Julie Fedorchak,Republican,Republican,249101,Trygve Hammer,Democratic-Nonpartisan League,Democratic,109231,359787,38.8758,Republican and Democratic,2
+OH,01,Greg Landsman,Democrat,Democratic,213916,Orlando Sonza,Republican,Republican,177993,391909,9.1662,Republican and Democratic,2
+OH,02,David J. Taylor,Republican,Republican,268211,Samantha Meadows,Democrat,Democratic,96401,364616,47.1208,Republican and Democratic,2
+OH,03,Joyce Beatty,Democrat,Democratic,242632,Michael Young,Republican,Republican,100355,342987,41.4817,Republican and Democratic,2
+OH,04,Jim Jordan,Republican,Republican,273297,Tamie Wilson,Democrat,Democratic,125905,399202,36.9217,Republican and Democratic,2
+OH,05,Robert E. Latta,Republican,Republican,255633,Keith Mundy,Democrat,Democratic,123024,378657,35.0209,Republican and Democratic,2
+OH,06,Michael A. Rulli,Republican,Republican,245860,Michael L. Kripchak,Democrat,Democratic,122515,368375,33.4835,Republican and Democratic,2
+OH,07,Max L. Miller,Republican,Republican,204494,Matt Diemer,Democrat,Democratic,144613,400371,14.9564,Republican and Democratic,3
+OH,08,Warren Davidson,Republican,Republican,237503,Vanessa Enoch,Democrat,Democratic,140625,378128,25.6204,Republican and Democratic,2
+OH,09,Marcy Kaptur,Democrat,Democratic,181098,Derek Merrin,Republican,Republican,178716,375195,0.6349,Republican and Democratic,3
+OH,10,Michael R. Turner,Republican,Republican,213695,Amy Cox,Democrat,Democratic,145420,370746,18.4156,Republican and Democratic,3
+OH,11,Shontel M. Brown,Democrat,Democratic,236883,Alan Rapoport,Republican,Republican,59394,302413,58.6909,Republican and Democratic,3
+OH,12,Troy Balderson,Republican,Republican,260450,Jerrad Christian,Democrat,Democratic,119738,380188,37.0112,Republican and Democratic,2
+OH,13,Emilia Strong Sykes,Democrat,Democratic,197466,Kevin Coughlin,Republican,Republican,188924,386390,2.2107,Republican and Democratic,2
+OH,14,David P. Joyce,Republican,Republican,243427,Brian Bob Kenderes,Democrat,Democratic,140431,383858,26.8318,Republican and Democratic,2
+OH,15,Mike Carey,Republican,Republican,196338,Adam Miller,Democrat,Democratic,151411,347749,12.9194,Republican and Democratic,2
+OK,01,Kevin Hern,Republican,Republican,188832,Dennis Baker,Democrat,Democratic,107903,312501,25.8972,Republican and Democratic,3
+OK,02,Josh Brecheen,Republican,Republican,238123,Brandon Wade,Democrat,Democratic,68841,321025,52.7317,Republican and Democratic,3
+OK,03,Frank D. Lucas,Republican,Republican,,,,,,,,unopposed on the ballot,1
+OK,04,Tom Cole,Republican,Republican,199962,Mary Brannon,Democrat,Democratic,86641,306473,36.9759,Republican and Democratic,3
+OK,05,Stephanie I. Bice,Republican,Republican,207636,Madison Horn,Democrat,Democratic,134471,342107,21.3866,Republican and Democratic,2
+OR,01,Suzanne Bonamici,Democrat,Democratic,241556,Bob Todd,Republican,Republican,98908,351991,40.5260,Republican and Democratic,3
+OR,02,Cliff Bentz,Republican,Republican,224601,Dan Ruby,Democrat,Democratic,115337,351489,31.0860,Republican and Democratic,3
+OR,03,Maxine E. Dexter,Democrat,Democratic,226405,Joanna Harbour,Republican,Republican,84344,334369,42.4863,Republican and Democratic,5
+OR,04,Val T. Hoyle,Democrat,Democratic,195862,Monique DeSpain,Republican,Republican,166430,378765,7.7705,Republican and Democratic,4
+OR,05,Janelle S. Bynum,Democrat,Democratic,191365,Lori Chavez-DeRemer,Republican,Republican,180420,401293,2.7274,Republican and Democratic,5
+OR,06,Andrea Salinas,Democrat,Democratic,180869,Mike Erickson,Republican,Republican,157634,339065,6.8527,Republican and Democratic,2
+PA,01,Brian K. Fitzpatrick,Republican,Republican,261390,Ashley Ehasz,Democrat,Democratic,202042,463432,12.8062,Republican and Democratic,2
+PA,02,Brendan F. Boyle,Democrat,Democratic,193691,Aaron Bashir,Republican,Republican,77355,271046,42.9211,Republican and Democratic,2
+PA,03,Dwight Evans,Democrat,Democratic,340223,,,,,340223,,unopposed on the ballot,1
+PA,04,Madeleine Dean,Democrat,Democratic,269066,David Winkler,Republican,Republican,186457,455523,18.1350,Republican and Democratic,2
+PA,05,Mary Gay Scanlon,Democrat,Democratic,267754,Alfeia Goodwin,Republican,Republican,142355,410109,30.5770,Republican and Democratic,2
+PA,06,Chrissy Houlahan,Democrat,Democratic,235625,Neil Young,Republican,Republican,183638,419263,12.3996,Republican and Democratic,2
+PA,07,Ryan E. Mackenzie,Republican,Republican,203688,Susan Wild,Democrat,Democratic,199626,403314,1.0072,Republican and Democratic,2
+PA,08,"Rob Bresnahan, Jr.",Republican,Republican,195663,Matt Cartwright,Democrat,Democratic,189411,385074,1.6236,Republican and Democratic,2
+PA,09,Daniel Meuser,Republican,Republican,276212,Amanda Waldman,Democrat,Democratic,115523,391735,41.0198,Republican and Democratic,2
+PA,10,Scott Perry,Republican,Republican,205567,Janelle Stelson,Democrat,Democratic,200434,406001,1.2643,Republican and Democratic,2
+PA,11,Lloyd Smucker,Republican,Republican,253672,Jim Atkinson,Democrat,Democratic,149641,403313,25.7941,Republican and Democratic,2
+PA,12,Summer L. Lee,Democrat,Democratic,234802,James Hayes,Republican,Republican,181426,416228,12.8237,Republican and Democratic,2
+PA,13,John Joyce,Republican,Republican,301460,Beth Farnham,Democrat,Democratic,104823,406283,48.3990,Republican and Democratic,2
+PA,14,Guy Reschenthaler,Republican,Republican,268380,Chris Dziados,Democrat,Democratic,134755,403135,33.1465,Republican and Democratic,2
+PA,15,Glenn Thompson,Republican,Republican,279027,Zach Womer,Democrat,Democratic,111408,390435,42.9313,Republican and Democratic,2
+PA,16,Mike Kelly,Republican,Republican,256923,Preston Nouri,Democrat,Democratic,146709,403632,27.3056,Republican and Democratic,2
+PA,17,Christopher R. Deluzio,Democrat,Democratic,242838,Rob Mercuri,Republican,Republican,207900,450738,7.7513,Republican and Democratic,2
+RI,01,Gabe Amo,Democrat,Democratic,139352,Allen Rodney Waters,Republican,Republican,70742,221118,31.0287,Republican and Democratic,3
+RI,02,Seth Magaziner,Democrat,Democratic,153439,Stephen Joseph Corvi,Republican,Republican,109381,263480,16.7216,Republican and Democratic,2
+SC,01,Nancy Mace,Republican,Republican,227502,Michael B. Moore,Democrat,Democratic,162582,390777,16.6131,Republican and Democratic,2
+SC,02,Joe Wilson,Republican,Republican,211514,David Robinson II,Democrat,Democratic,142985,355285,19.2885,Republican and Democratic,2
+SC,03,Sheri Biggs,Republican,Republican,248451,Bryon L. Best,Democrat,Democratic,87735,346713,46.3542,Republican and Democratic,3
+SC,04,William R. Timmons IV,Republican,Republican,206916,Kathryn Harvey,Democrat,Democratic,128976,346414,22.4991,Republican and Democratic,3
+SC,05,Ralph Norman,Republican,Republican,228260,Evangeline Hundley,Democrat,Democratic,130592,359409,27.1746,Republican and Democratic,2
+SC,06,James E. Clyburn,Democrat,Democratic,182056,Duke Buckner,Republican,Republican,112360,305977,22.7782,Republican and Democratic,5
+SC,07,Russell Fry,Republican,Republican,240326,Mal Hyman,Democrat,Democratic,129522,370329,29.9204,Republican and Democratic,2
+SD,00,Dusty Johnson,Republican,Republican,303630,Sheryl Johnson,Democrat,Democratic,117818,421448,44.0890,Republican and Democratic,2
+TN,01,Diana Harshbarger,Republican,Republican,257825,Kevin Jenkins,Democrat,Democratic,64021,330199,58.6931,Republican and Democratic,4
+TN,02,Tim Burchett,Republican,Republican,250782,Jane George,Democrat,Democratic,111316,362098,38.5161,Republican and Democratic,2
+TN,03,Charles J. “Chuck” Fleischmann,Republican,Republican,236519,Jack Allen,Democrat,Democratic,102841,350328,38.1580,Republican and Democratic,4
+TN,04,Scott DesJarlais,Republican,Republican,219133,Victoria Isabel Broderick,Democrat,Democratic,83832,313255,43.1920,Republican and Democratic,4
+TN,05,Andrew Ogles,Republican,Republican,205075,Maryam Abolfazli,Democrat,Democratic,142387,360714,17.3789,Republican and Democratic,5
+TN,06,John W. Rose,Republican,Republican,225543,Lore Bergman,Democrat,Democratic,106144,331687,35.9975,Republican and Democratic,2
+TN,07,Mark E. Green,Republican,Republican,191992,Megan Barry,Democrat,Democratic,122764,322656,21.4557,Republican and Democratic,3
+TN,08,David Kustoff,Republican,Republican,240411,Sarah Freeman,Democrat,Democratic,85043,332315,46.7532,Republican and Democratic,3
+TN,09,Steve Cohen,Democrat,Democratic,159522,Charlotte Bergmann,Republican,Republican,57411,223703,45.6458,Republican and Democratic,4
+TX,01,Nathaniel Moran,Republican,Republican,258523,,,,,258523,,unopposed on the ballot,1
+TX,02,Dan Crenshaw,Republican,Republican,214631,Peter Filler,Democrat,Democratic,112252,326883,31.3198,Republican and Democratic,2
+TX,03,Keith Self,Republican,Republican,237794,Sandeep Srivastava,Democrat,Democratic,142953,380747,24.9092,Republican and Democratic,2
+TX,04,Pat Fallon,Republican,Republican,241603,Simon Cardell,Democrat,Democratic,111696,353299,36.7697,Republican and Democratic,2
+TX,05,Lance Gooden,Republican,Republican,192185,Ruth “Truth” Torres,Democrat,Democratic,107712,299897,28.1673,Republican and Democratic,2
+TX,06,Jake Ellzey,Republican,Republican,188119,John Love III,Democrat,Democratic,98319,286438,31.3506,Republican and Democratic,2
+TX,07,Lizzie Fletcher,Democrat,Democratic,149820,Caroline Kane,Republican,Republican,94651,244471,22.5667,Republican and Democratic,2
+TX,08,Morgan Luttrell,Republican,Republican,233423,Laura Jones,Democrat,Democratic,108754,342177,36.4341,Republican and Democratic,2
+TX,09,Al Green,Democrat,Democratic,184141,,,,,184141,,unopposed on the ballot,1
+TX,10,Michael T. McCaul,Republican,Republican,221229,Theresa Boisseau,Democrat,Democratic,118280,347818,29.5985,Republican and Democratic,3
+TX,11,August Pfluger,Republican,Republican,211975,,,,,211975,,unopposed on the ballot,1
+TX,12,Craig Goldman,Republican,Republican,215564,Trey J. Hunt,Democrat,Democratic,124154,339718,26.9076,Republican and Democratic,2
+TX,13,Ronny Jackson,Republican,Republican,240622,,,,,240622,,unopposed on the ballot,1
+TX,14,"Randy K. Weber, Sr.",Republican,Republican,210320,Rhonda Hart,Democrat,Democratic,95875,306195,37.3765,Republican and Democratic,2
+TX,15,Monica De La Cruz,Republican,Republican,127804,Michelle Vallejo,Democrat,Democratic,95965,223769,14.2285,Republican and Democratic,2
+TX,16,Veronica Escobar,Democrat,Democratic,131391,Irene Armendariz Jackson,Republican,Republican,89281,220828,19.0691,Republican and Democratic,2
+TX,17,Pete Sessions,Republican,Republican,193101,Mark Lorenzen,Democrat,Democratic,97941,291042,32.6963,Republican and Democratic,2
+TX,18,Sylvester Turner,Democrat,Democratic,151834,Lana Centonze,Republican,Republican,66810,218720,38.8734,Republican and Democratic,2
+TX,19,Jodey C. Arrington,Republican,Republican,214950,Nathan Lewis,Independent,other,27461,266375,70.3854,other pairing,3
+TX,20,Joaquin Castro,Democrat,Democratic,157890,,,,,157890,,unopposed on the ballot,1
+TX,21,Chip Roy,Republican,Republican,263744,Kristin Hook,Democrat,Democratic,153765,426423,25.7911,Republican and Democratic,3
+TX,22,Troy E. Nehls,Republican,Republican,209285,Marquette Greene-Scott,Democrat,Democratic,127604,336889,24.2457,Republican and Democratic,2
+TX,23,Tony Gonzales,Republican,Republican,180720,S. Limon,Democrat,Democratic,109373,290093,24.5945,Republican and Democratic,2
+TX,24,Beth Van Duyne,Republican,Republican,227108,Sam Eppler,Democrat,Democratic,149518,376626,20.6013,Republican and Democratic,2
+TX,25,Roger Williams,Republican,Republican,263042,,,,,264703,,unopposed on the ballot,1
+TX,26,Brandon Gill,Republican,Republican,241096,Ernest R. Lineberger III,Democrat,Democratic,138558,388427,26.3983,Republican and Democratic,3
+TX,27,Michael Cloud,Republican,Republican,183980,Tanya Lloyd,Democrat,Democratic,94596,278576,32.0860,Republican and Democratic,2
+TX,28,Henry Cuellar,Democrat,Democratic,125280,Jay Furman,Republican,Republican,112018,237298,5.5888,Republican and Democratic,2
+TX,29,Sylvia R. Garcia,Democrat,Democratic,99379,Alan Garza,Republican,Republican,52830,152209,30.5823,Republican and Democratic,2
+TX,30,Jasmine Crockett,Democrat,Democratic,197650,Jrmar “J J” Jefferson,Libertarian,other,35175,232825,69.7842,other pairing,2
+TX,31,John R. Carter,Republican,Republican,229087,Stuart Whitlow,Democrat,Democratic,126470,355557,28.8609,Republican and Democratic,2
+TX,32,Julie Johnson,Democrat,Democratic,140536,Darrell Day,Republican,Republican,85941,232464,23.4854,Republican and Democratic,3
+TX,33,Marc A. Veasey,Democrat,Democratic,114289,Patrick David Gillespie,Republican,Republican,51864,166153,37.5708,Republican and Democratic,2
+TX,34,Vicente Gonzalez,Democrat,Democratic,102780,Mayra Flores,Republican,Republican,97603,200383,2.5836,Republican and Democratic,2
+TX,35,Greg Casar,Democrat,Democratic,170509,Steven Wright,Republican,Republican,82610,253119,34.7264,Republican and Democratic,2
+TX,36,Brian Babin,Republican,Republican,206009,Dayna Steele,Democrat,Democratic,91009,297018,38.7182,Republican and Democratic,2
+TX,37,Lloyd Doggett,Democrat,Democratic,252980,Jenny Garcia Sharon,Republican,Republican,80366,340857,50.6412,Republican and Democratic,3
+TX,38,Wesley Hunt,Republican,Republican,215030,Melissa McDonough,Democrat,Democratic,127640,342764,25.4957,Republican and Democratic,2
+UT,01,Blake D. Moore,Republican,Republican,230975,Bill Campbell,Democrat,Democratic,117319,365895,31.0625,Republican and Democratic,3
+UT,02,Celeste Maloy,Republican,Republican,205234,Nathaniel E. Woodward,Democrat,Democratic,121114,353838,23.7736,Republican and Democratic,4
+UT,03,Mike Kennedy,Republican,Republican,242496,Glenn J. Wright,Democrat,Democratic,122780,365276,32.7741,Republican and Democratic,2
+UT,04,Burgess Owens,Republican,Republican,230627,Katrina Fallick-Wang,Democrat,Democratic,109838,363668,33.2141,Republican and Democratic,4
+VT,00,Becca Balint,Democrat,Democratic,218398,"Mark Coester, Republican",Libertarian,other,104451,350616,32.4991,other pairing,4
+VA,01,Robert J. Wittman,Republican,Republican,269657,Leslie C. Mehta,Democrat,Democratic,208445,478906,12.7816,Republican and Democratic,2
+VA,02,Jennifer A. Kiggans,Republican,Republican,207368,Missy Cotter Smasal,Democrat,Democratic,191666,408702,3.8419,Republican and Democratic,3
+VA,03,Robert C. “Bobby” Scott,Democrat,Democratic,219926,John Sitka III,Republican,Republican,93801,314397,40.1165,Republican and Democratic,2
+VA,04,Jennifer L. McClellan,Democrat,Democratic,252885,William J. “Bill” Moher III,Republican,Republican,121814,375508,34.9050,Republican and Democratic,2
+VA,05,John J. McGuire III,Republican,Republican,249564,Gloria Tinsley Witt,Democrat,Democratic,184229,435839,14.9906,Republican and Democratic,2
+VA,06,Ben Cline,Republican,Republican,256933,Ken L. Mitchell,Democrat,Democratic,141612,407035,28.3320,Republican and Democratic,3
+VA,07,Eugene S. Vindman,Democrat,Democratic,203336,Derrick M. Anderson,Republican,Republican,192847,397299,2.6401,Republican and Democratic,2
+VA,08,"Donald S. Beyer, Jr.",Democrat,Democratic,274593,Jerry W. Torres,Republican,Republican,94676,383915,46.8638,Republican and Democratic,4
+VA,09,H. Morgan Griffith,Republican,Republican,290645,Karen G. H. Baker,Democrat,Democratic,109570,400963,45.1600,Republican and Democratic,2
+VA,10,Suhas Subramanyam,Democrat,Democratic,215131,Mike W. Clancy,Republican,Republican,196343,413012,4.5490,Republican and Democratic,2
+VA,11,Gerald E. Connolly,Democrat,Democratic,273529,Mike L. Van Meter,Republican,Republican,134802,410186,33.8205,Republican and Democratic,2
+WA,01,Suzan K. DelBene,Democrat,Democratic,227213,Jeb Brewer,Republican,Republican,132538,360658,26.2506,Republican and Democratic,2
+WA,02,Rick Larsen,Democrat,Democratic,263750,Cody Hart,Republican,Republican,148167,413220,27.9713,Republican and Democratic,2
+WA,03,Marie Gluesenkamp Perez,Democrat,Democratic,215177,Joe Kent,Republican,Republican,199054,415904,3.8766,Republican and Democratic,2
+WA,04,Dan Newhouse,Republican,Republican,153477,Jerrod Sessler,Republican,Republican,136175,295052,5.8641,one-party contest (top-two),2
+WA,05,Michael Baumgartner,Republican,Republican,240619,Carmela Conroy,Democrat,Democratic,156074,397286,21.2806,Republican and Democratic,2
+WA,06,Emily Randall,Democrat,Democratic,239687,Drew C. MacEwen,Republican,Republican,182182,422622,13.6067,Republican and Democratic,2
+WA,07,Pramila Jayapal,Democrat,Democratic,352286,Dan Alexander,Republican,Republican,66220,419819,68.1403,Republican and Democratic,2
+WA,08,Kim Schrier,Democrat,Democratic,224607,Carmen Goers,Republican,Republican,190675,416277,8.1513,Republican and Democratic,2
+WA,09,Adam Smith,Democrat,Democratic,182780,Melissa Chaudhry,Democrat,Democratic,90601,279298,33.0038,one-party contest (top-two),2
+WA,10,Marilyn Strickland,Democrat,Democratic,203732,Don Hewett,Republican,Republican,143492,348044,17.3082,Republican and Democratic,2
+WV,01,Carol D. Miller,Republican,Republican,228491,Chris Bob Reed,Democrat,Democratic,90038,344319,40.2107,Republican and Democratic,3
+WV,02,Riley Moore,Republican,Republican,268190,Steven Wendelin,Democrat,Democratic,110775,378965,41.5381,Republican and Democratic,2
+WI,01,Bryan Steil,Republican,Republican,212515,Peter Barca,Democrat,Democratic,172402,393493,10.1941,Republican and Democratic,3
+WI,02,Mark Pocan,Democrat,Democratic,320317,Erik Olsen,Republican,Republican,136357,457257,40.2312,Republican and Democratic,2
+WI,03,Derrick Van Orden,Republican,Republican,212064,Rebecca Cooke,Democrat,Democratic,200808,413181,2.7242,Republican and Democratic,2
+WI,04,Gwen Moore,Democrat,Democratic,249938,Tim Rogers,Republican,Republican,74921,334282,52.3561,Republican and Democratic,3
+WI,05,Scott Fitzgerald,Republican,Republican,300521,Ben Steinhoff,Democrat,Democratic,165653,466682,28.8993,Republican and Democratic,2
+WI,06,Glenn Grothman,Republican,Republican,251889,John Zarbano,Democrat,Democratic,159042,411349,22.5713,Republican and Democratic,2
+WI,07,Thomas P. Tiffany,Republican,Republican,273553,Kyle Kilbourn,Democrat,Democratic,156524,430384,27.1918,Republican and Democratic,2
+WI,08,Tony Wied,Republican,Republican,240040,Kristin Lyerly,Democrat,Democratic,178666,418978,14.6485,Republican and Democratic,2
+WY,00,Harriet M. Hageman,Republican,Republican,184680,Kyle G. Cameron,Democrat,Democratic,60778,261548,47.3726,Republican and Democratic,4

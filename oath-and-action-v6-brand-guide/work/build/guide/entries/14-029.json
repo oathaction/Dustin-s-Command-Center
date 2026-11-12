@@ -1,0 +1,38 @@
+{
+  "id": "14.29",
+  "title": "Mark the moments that explain a line on the line itself.",
+  "rule": [
+    "Use a line with event notes for one series and the events a reader needs to read it: the subject series as a heavy line from a scale that starts at zero, any comparison series thin and gray, each series named on its line, and short notes inside the plot with leaders to the points they explain. Break the line where the publisher changed its method, and never draw across the break (Rule 14.11)."
+  ],
+  "use_when": "The reader asks what happened to one measure and when, and a few dated events explain its turns.",
+  "use_instead": [
+    {
+      "when": "One group should be read against several others",
+      "rule": "14.30"
+    },
+    {
+      "when": "The series has a period with no figure",
+      "rule": "14.37"
+    },
+    {
+      "when": "An amount a law sets changes on dates",
+      "rule": "14.36"
+    }
+  ],
+  "why": {
+    "text": [
+      "A note set at the point it explains lets the reader see the event and the change together, without a legend to match. The note says what happened and when, and leaves the cause to the evidence (Rule 13.2), so the timing of a rise is never offered as proof of what caused it."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S02",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.11",
+    "13.2"
+  ],
+  "builders": "Form line-event-notes: node work/build/chart-kit/oa-chart.mjs build s02; annotations place each note, and encode.break marks a method change.",
+  "correct": null,
+  "failure": null
+}

@@ -1,0 +1,92 @@
+{
+ "rows": [
+  {
+   "route": "LOC",
+   "name": "Local",
+   "instrument": "Ordinance, charter amendment or local practice",
+   "who": "City councils, county boards, charter commissions, voters in home-rule places",
+   "depends": "State home-rule law and preemption, a higher government limiting what a lower one may do. In Dillon's Rule states, where cities hold only the powers the state grants, the legislature can override local choices at will; 19 states prohibit ranked-choice voting in some or all elections.",
+   "route_entries": 15
+  },
+  {
+   "route": "SS",
+   "name": "State statute",
+   "instrument": "A bill passed by the legislature and signed, or a rule issued by a state agency or utility commission under a statute",
+   "who": "Legislators, governors, state agencies",
+   "depends": "A majority in both chambers and the governor's signature or a veto override. Where D7: Entrenched control of rule-setting institutions is high, the legislature that would pass a reform of election rules is the one that benefits from the current rules.",
+   "route_entries": 29
+  },
+  {
+   "route": "BI",
+   "name": "State ballot",
+   "instrument": "Citizen initiative, referendum or legislative referral",
+   "who": "Voters, petition campaigns, courts that review ballot language",
+   "depends": "Available only in states that allow it. Signature thresholds, single-subject rules, legislatures that can override statutes passed by initiative, and repeal campaigns all apply.",
+   "route_entries": 11
+  },
+  {
+   "route": "FS",
+   "name": "Federal statute",
+   "instrument": "Act of Congress, including appropriations and reconciliation",
+   "who": "House, Senate, President",
+   "depends": "Sixty Senate votes for most bills while the legislative filibuster stands (R-12: Reform the Senate filibuster); a simple majority for budget reconciliation, which can carry taxes and spending and excludes most rule changes.",
+   "route_entries": 38
+  },
+  {
+   "route": "FR",
+   "name": "Chamber rule or confirmation",
+   "instrument": "House or Senate rule; Senate confirmation of nominees",
+   "who": "A majority of one chamber",
+   "depends": "A majority willing to bind itself, and the next majority's willingness to keep the rule.",
+   "route_entries": 6
+  },
+  {
+   "route": "FA",
+   "name": "Federal executive action",
+   "instrument": "Executive order, agency rule, guidance, staffing and budget execution",
+   "who": "President, agency heads",
+   "depends": "Authority granted by statute, and the next administration. This is the least durable route: what one order does, another can undo.",
+   "route_entries": 7
+  },
+  {
+   "route": "ENF",
+   "name": "Enforcement and litigation",
+   "instrument": "Cases and settlements under existing law",
+   "who": "The Justice Department, the Federal Trade Commission, the National Labor Relations Board, state attorneys general and private plaintiffs",
+   "depends": "An agency with a quorum, staff and budget, and the courts. Consent decrees bind for a set term; verdicts can be appealed for years.",
+   "route_entries": 5
+  },
+  {
+   "route": "CRT",
+   "name": "Court doctrine",
+   "instrument": "Rulings that change what other routes may do",
+   "who": "Federal and state courts",
+   "depends": "No one controls this route directly. It moves through appointments, as D7: Entrenched control of rule-setting institutions shapes D3: Court rulings favoring the appointing coalition, and through litigation strategy over decades.",
+   "route_entries": 7
+  },
+  {
+   "route": "AV",
+   "name": "Article V",
+   "instrument": "Constitutional amendment",
+   "who": "Two-thirds of each house of Congress and three-quarters of the states, or a convention",
+   "depends": "Supermajorities across parties and regions. Treated as a long-horizon option.",
+   "route_entries": 3
+  },
+  {
+   "route": "IC",
+   "name": "Interstate compact",
+   "instrument": "Matching statutes in several states that take effect at a threshold",
+   "who": "State legislatures",
+   "depends": "Enough states joining to reach the threshold, and courts accepting the compact without the consent of Congress where that question is disputed.",
+   "route_entries": 1
+  },
+  {
+   "route": "CIV",
+   "name": "Civil society",
+   "instrument": "Organizing, philanthropy, newsrooms, unions, membership groups, private contracts",
+   "who": "Nonprofits, funders, workers, citizens",
+   "depends": "Money and members. No government action is needed, which makes it the fastest route and the easiest to underfund.",
+   "route_entries": 4
+  }
+ ]
+}

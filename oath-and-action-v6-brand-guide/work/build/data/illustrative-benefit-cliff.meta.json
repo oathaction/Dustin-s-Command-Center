@@ -1,0 +1,55 @@
+{
+ "file": "illustrative-benefit-cliff.csv",
+ "kind": "illustrative",
+ "publisher": "Oath & Action (invented values)",
+ "title_or_table": "An invented year’s budget for one parent with two children in Alder County, at earnings from $0 to $60,000",
+ "table_id": "none: invented by maker B, round 1, for chapter 14’s benefit-cliff line",
+ "url": [],
+ "observation_period": "One invented year",
+ "geography": "Alder County, an invented place",
+ "universe_or_base": "One invented family: a parent with two children",
+ "unit": "dollars a year, whole dollars",
+ "date_retrieved": "2026-11-12",
+ "vintage": "Invented on November 12, 2026",
+ "qualification": "Every value and rule is invented to show how a benefit cliff works, on the pattern of the Urban Institute’s Net Income Change Calculator; no real program, state or family is shown. The rules: taxes are 7.65 percent of earnings plus 10 percent of earnings above $30,000; tax credits phase in at 40 percent to $6,000 at $15,000, hold to $22,000 and phase out at 21 percent; food aid is $6,000 less 30 percent of earnings above $10,000; child care help is worth $9,000 while earnings are $36,000 or less and ends above that",
+ "columns": {
+  "earnings": {
+   "type": "integer",
+   "description": "the family’s earnings from work in the year, invented",
+   "unit": "dollars"
+  },
+  "taxes": {
+   "type": "integer",
+   "description": "payroll and income taxes the family pays, by the invented rules",
+   "unit": "dollars"
+  },
+  "tax_credits": {
+   "type": "integer",
+   "description": "refundable tax credits, by the invented rules",
+   "unit": "dollars"
+  },
+  "food_aid": {
+   "type": "integer",
+   "description": "food aid, by the invented rules",
+   "unit": "dollars"
+  },
+  "child_care_help": {
+   "type": "integer",
+   "description": "the value of child care help, by the invented rules",
+   "unit": "dollars"
+  },
+  "net_resources": {
+   "type": "integer",
+   "description": "earnings minus taxes plus credits, food aid and child care help",
+   "unit": "dollars"
+  }
+ },
+ "printed_source_line": "Source: Oath & Action, an invented budget for one family in Alder County over one year, on the pattern of the Urban Institute’s Net Income Change Calculator. Values and rules invented for this example.",
+ "ledger_row": "none: invented data, told to the research lead (R-B10)",
+ "domain": "D08",
+ "states": [],
+ "notes": [
+  "Written by a script in maker B’s round 1 scratch folder (make_benefit_cliff.py), which the qualification’s rules reproduce exactly",
+  "Data plan row 28; rule 14.42; spec S35"
+ ]
+}

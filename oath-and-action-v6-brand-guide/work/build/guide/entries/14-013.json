@@ -1,0 +1,69 @@
+{
+ "id": "14.13",
+ "title": "Carry every chart’s table as live text, and publish the still image first.",
+ "rule": [
+  "Every chart carries its table: the rows it draws, as live text that a screen reader, a search and a copy can reach, folded under the source line as “The table and notes”. Rule 18.10 sets the table’s markup. With scripts off, the table stands open and the chart’s description takes the drawing’s place.",
+  "Design the still image first, for a newsletter, an email or a social card, where nothing moves and nothing answers a pointer. A value a reader needs prints on the chart or in its notes. An interactive layer on the website adds filters or a switch to the still chart and takes nothing away from it."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "Many readers meet a chart as a still picture in an inbox, where hovering does nothing. A table in live text gives every reader the numbers, whether they listen to the page, search it or copy a figure into their own notes."
+  ],
+  "basis": "WCAG 2.2, success criterion 1.1.1, Non-text Content, and design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [],
+ "related": [
+  "18.10",
+  "19.2",
+  "14.130"
+ ],
+ "builders": "Fill the spec's table under contract C2; the kit writes the table, and its check fails one whose rows differ from the data.",
+ "specs": [
+  {
+   "label": "Table",
+   "value": "Every row the chart draws, live text, folded under the source line"
+  },
+  {
+   "label": "Scripts off",
+   "value": "The table open and the description in the drawing’s place"
+  },
+  {
+   "label": "Still image",
+   "value": "Designed first; every value a reader needs printed"
+  },
+  {
+   "label": "Interactive layer",
+   "value": "Adds to the still chart on the website, and drops nothing from it"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-13-correct",
+  "caption": "Each column prints its value, so the still image needs no pointer, and the table under the source line gives the same rows as live text.",
+  "alt": "Columns with every value printed and the table open beneath them. Newspaper publishers employed 91,350 people in March 2023, under a quarter of the 401,373 of 1998.",
+  "illustrative": false,
+  "notes": "",
+  "charts": [
+   "s-14-13-cols"
+  ]
+ },
+ "failure": {
+  "specimen": "s-14-13-failure",
+  "caption": "<strong>Fails Rule 14.13.</strong> The values show only in a tooltip, which a newsletter, an email and a screen reader never reach, and the chart carries no table.",
+  "alt": "Failure case: do not publish. The same columns with no values printed, a tooltip over the 2023 column, a line asking the reader to hover over a column, and no table or source line.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "examples": [
+  {
+   "example": "Newspaper publishers’ employees, every fifth year, 1998 to 2023",
+   "domain": "D01",
+   "states": [],
+   "level": "federal",
+   "where": "14.13"
+  }
+ ]
+}

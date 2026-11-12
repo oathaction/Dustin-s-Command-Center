@@ -20,7 +20,7 @@
   "measure_line": "Paid employees of newspaper publishers, print and online, each March, United States, 1998 to 2023. The count starts in 1998, the first year County Business Patterns sorted businesses by the North American Industry Classification System. The scale starts at zero.",
   "notes": [
     "Employment peaked at 413,951 in 2001 and fell in every year after that.",
-    "County Business Patterns counts paid employees in the pay period that includes March 12 at businesses classed as newspaper publishers. Freelancers, the self-employed and newsrooms classed in other industries are left out.",
+    "County Business Patterns counts paid employees in the pay period that includes March 12 at businesses classed as newspaper publishers. Freelancers, the self-employed and newsrooms classed in other industries are left out, and news sites that publish only online are classed in another industry and are not counted.",
     "The industry kept its code, 511110, and its title through the code revisions of 2002, 2007, 2012 and 2017."
   ],
   "credit": "Chart: Oath & Action",
@@ -98,6 +98,7 @@
     "Grade line opens with H08's grade word, Documented (D3-83 pattern). County Business Patterns comes from the Census Bureau's Business Register, so the line says counts, not a survey.",
     "H09: the measure line gives the window's start with its reason. The 1998 NAICS start is the Census Bureau's own break between the SIC and NAICS series; a request asks the research lead to add it to the sidecar's breaks_in_series.",
     "The source line is the sidecar's printed_source_line (left out of the spec, D3-102).",
-    "Notes 2 and 3 restate the sidecar's qualification in plain words."
+    "Notes 2 and 3 restate the sidecar's qualification in plain words.",
+    "Data lead DL-B6 applied: note 2 says online-only news sites sit in another industry (Internet publishing, 519130, under the 2017 code list the 2023 file uses), so the decline is not read as all news jobs. The code's scope rests on NAICS 2017's definitions, not read on census.gov today; request R-B1 asks the research lead to add it to the sidecar."
   ]
 }

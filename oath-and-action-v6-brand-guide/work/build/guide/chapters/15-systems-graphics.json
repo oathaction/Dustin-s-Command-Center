@@ -84,7 +84,7 @@
    "title": "Name each variable, its kind and what a higher value means.",
    "rule": [
     "Our systems atlas defines a variable as “a quantity or condition in the model that can rise or fall”. Draw each one as a pill holding its short name, the name the atlas gives it on its loops, or its title where it sits in no loop. The first time a reader meets it, give its typed chip, its kind in words and the atlas’s own sentence on what a higher value means.",
-    "The atlas uses four kinds. A stock is an amount built up over time (31 variables). A flow is an amount per period (9). A condition, which the atlas calls auxiliary, is worked out from other variables (6). An outside driver is a force whose causes lie outside the model (5), and Rule 15.9 sets where it goes."
+    "The atlas uses four kinds. Its 31 stocks are amounts built up over time, and its nine flows are amounts per period. Its six conditions, which the atlas calls auxiliary, are worked out from other variables. Its five outside drivers are forces whose causes lie outside the model, and Rule 15.9 sets where they go."
    ],
    "tokens": [
     "oa.chart.type.label"
@@ -350,7 +350,7 @@
    "title": "Say how a loop closes, apart from how strong its evidence is.",
    "rule": [
     "Our systems atlas records how each loop closes, in one of three ways: every step a numbered connection; closed through a step graded hypothesis; or conceptual, a mechanism with no complete chain of numbered connections. Print the closure in words beside the loop’s grade. Draw a hypothesized step in dots, and each step of a conceptual loop as the hollow line of Rule 13.4, between thin pills, since its stations are not the atlas’s numbered variables.",
-    "Of the atlas’s 23 loops, 18 close through numbered connections, 2 close through a hypothesis and 3 are conceptual."
+    "Of the atlas’s 23 loops, 18 close through numbered connections, two close through a hypothesis and three are conceptual."
    ],
    "tokens": [
     "oa.chart.grade.hypothesis",
@@ -387,7 +387,7 @@
     },
     {
      "label": "Counts",
-     "value": "18 closed, 2 through a hypothesis, 3 conceptual, as of the snapshot"
+     "value": "18 closed, two through a hypothesis, three conceptual, as of the snapshot"
     }
    ],
    "related": [
@@ -502,7 +502,7 @@
    "id": "15.10",
    "title": "Show what the model leaves out beside what it draws.",
    "rule": [
-    "Our systems atlas keeps a record of what it left off its map: 3 connections it reviewed against the evidence and did not draw, 9 subjects it names as omitted, and a boundary that lists what the model does not cover. Where a drawing shows a mechanism next to one of those connections, print the connection beside it in words, with the atlas’s reason, under the heading Reviewed and not drawn.",
+    "Our systems atlas keeps a record of what it left off its map: three connections it reviewed against the evidence and did not draw, nine subjects it names as omitted, and a boundary that lists what the model does not cover. Where a drawing shows a mechanism next to one of those connections, print the connection beside it in words, with the atlas’s reason, under the heading Reviewed and not drawn.",
     "Draw no line for a connection the atlas reviewed and left out, in any pattern."
    ],
    "tokens": [],
@@ -535,7 +535,7 @@
     },
     {
      "label": "Records",
-     "value": "3 rejected connections and 9 omissions, as of the snapshot"
+     "value": "Three rejected connections and nine omissions, as of the snapshot"
     }
    ],
    "related": [
@@ -600,7 +600,7 @@
    "id": "15.14",
    "title": "Show a change to the model in the atlas’s own words, with its date.",
    "rule": [
-    "Our systems atlas revises its model as the evidence changes, and it records some revisions in its own text. Loop R8, “Housing scarcity strengthens owners' incentive to restrict building”, carries one in its evidence note: “well-supported for both links; the loop no longer depends on A1”. Quote a revision as the atlas writes it, with the snapshot date, and draw the loop as it stands now.",
+    "Our systems atlas revises its model as the evidence changes, and it records some revisions in its own text. Loop R8, “Housing scarcity strengthens owners' incentive to restrict building”, carries one: its evidence note grades it “well-supported for both links”, and says the loop “no longer depends on” Variable A1, concentration of household wealth. Quote a revision as the atlas writes it, with the snapshot date, and draw the loop as it stands now.",
     "A drawing made before the revision is a record of what we drew. It is never evidence for the model, and a page that published one corrects it as Rule 13.13 sets out."
    ],
    "tokens": [],

@@ -1,0 +1,85 @@
+{
+ "id": "14.2",
+ "title": "Build every chart in one anatomy, from evidence label to table.",
+ "rule": [
+  "Every chart prints the same eight parts in the same order, so a reader always knows where to look: the evidence label and grade line (Rules 13.1 and 13.2), the title, the reading guide, the measure line (Rule 13.7), the chart, its notes, the source line (Rule 13.6) and the table (Rule 14.13).",
+  "The title is one full sentence, and house rule H08 sizes its claim. The reading guide says in a sentence or two how to read the drawing. Notes carry what the drawing cannot. A part with nothing to say is left out, and the rest keep their order."
+ ],
+ "use_when": null,
+ "use_instead": [],
+ "why": {
+  "text": [
+   "Readers learn where things are after a few charts. When every chart puts its source in the same place, a reader can check any figure in seconds, and a chart that lacks a part shows the gap."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": null,
+ "tier": null,
+ "tokens": [
+  "oa.chart.color.chip.fill.onNewsprint"
+ ],
+ "related": [
+  "13.1",
+  "13.2",
+  "13.6",
+  "13.7",
+  "14.13"
+ ],
+ "builders": "Fill every word field of the spec under contract C2; the kit prints the parts in this order and leaves out an empty one.",
+ "specs": [
+  {
+   "label": "Order",
+   "value": "Evidence label and grade line, title, reading guide, measure line, chart, notes, source line, table"
+  },
+  {
+   "label": "Evidence label",
+   "value": "On the chip fill, in the label style",
+   "token": "oa.chart.color.chip.fill.onNewsprint"
+  },
+  {
+   "label": "Title",
+   "value": "One full sentence in Inter Tight at the chart title size; its claim follows H08 and its verb Rule 13.2"
+  },
+  {
+   "label": "Reading guide",
+   "value": "One or two sentences, in the body style, only when the drawing needs one"
+  },
+  {
+   "label": "Measure line",
+   "value": "What is counted, the unit, the period and the place, under the title"
+  },
+  {
+   "label": "Table",
+   "value": "Every row the chart draws, folded under the source line as “The table and notes”"
+  }
+ ],
+ "correct": {
+  "specimen": "s-14-2-correct",
+  "caption": "The eight parts in order, each numbered where the kit prints it. The table sits folded under the source line.",
+  "alt": "A finished chart with each of its eight parts numbered in reading order: Evidence label and grade line, Title, Reading guide, Measure line, Chart, Notes, Source line, Table. Its title: Civic and social organizations employed 201,423 people in March 2023, about 113,300 fewer than in 1998.",
+  "illustrative": false,
+  "notes": "The numerals are drawn by the plate's style on the kit's own parts, so they follow the figure as the kit prints it.",
+  "charts": [
+   "s-14-2-full"
+  ]
+ },
+ "failure": {
+  "specimen": "s-14-2-failure",
+  "caption": "<strong>Fails Rule 14.2.</strong> The title names a topic and states no finding, and the chart drops its label, measure line, notes and source line, so a reader cannot tell what was counted or who counted it.",
+  "alt": "Failure case: do not publish. The same line under a title that names only the topic, with no label, measure line, notes or source line.",
+  "illustrative": false,
+  "notes": "",
+  "charts": [
+   "s-14-2-bare"
+  ]
+ },
+ "examples": [
+  {
+   "example": "Civic and social organizations, employees, 1998 to 2023",
+   "domain": "D10",
+   "states": [],
+   "level": "federal",
+   "where": "14.2"
+  }
+ ]
+}

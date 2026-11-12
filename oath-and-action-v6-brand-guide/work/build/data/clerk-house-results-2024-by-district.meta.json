@@ -1,0 +1,94 @@
+{
+ "file": "clerk-house-results-2024-by-district.csv",
+ "kind": "derived",
+ "publisher": "Office of the Clerk, U.S. House of Representatives",
+ "title_or_table": "Statistics of the Presidential and Congressional Election of November 5, 2024 (published March 10, 2025), House races",
+ "table_id": "Clerk of the House, election statistics 2024",
+ "url": [
+  "https://clerk.house.gov/member_info/electionInfo/2024/statistics2024.pdf"
+ ],
+ "observation_period": "General election of November 5, 2024 (Louisiana’s open primary the same day; Maine’s ranked-choice tabulation as the Clerk prints it)",
+ "geography": "The 435 House districts of the 50 states",
+ "universe_or_base": "Each of the 435 House races: winner, runner-up, total votes, margin and the kind of seat",
+ "unit": "votes; margin in percentage points of all votes cast for the office in the district",
+ "date_retrieved": "2026-11-12",
+ "vintage": "Compiled by the Clerk from official sources, published March 10, 2025",
+ "qualification": "Margin is the winner’s votes less the runner-up’s, over all votes for the office, so it reads the same in every kind of seat; blank, void, over and under votes and continuing and exhausted ballots are not votes for a candidate, and a fusion candidate’s party lines are summed. A seat with one candidate on the ballot has no margin, even where write-ins drew votes. In one-party contests both top candidates share a party, so the margin is between two candidates of one party. Alaska’s figures are the first round and Maine’s 2nd district the final round, as the Clerk prints them; Louisiana’s House races were decided in the November 5 open primary.",
+ "columns": {
+  "state": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "district": {
+   "type": "text",
+   "description": "district number; 00 at large"
+  },
+  "winner": {
+   "type": "text",
+   "description": "candidate with the most votes"
+  },
+  "winner_party": {
+   "type": "text",
+   "description": "winner’s main party line as printed"
+  },
+  "winner_group": {
+   "type": "category",
+   "description": "Republican, Democratic (Minnesota’s DFL and North Dakota’s Democratic-NPL included) or other"
+  },
+  "winner_votes": {
+   "type": "integer",
+   "description": "winner’s votes, all party lines summed",
+   "unit": "votes"
+  },
+  "runner_up": {
+   "type": "text",
+   "description": "candidate with the second most votes"
+  },
+  "runner_up_party": {
+   "type": "text",
+   "description": "runner-up’s main party line as printed"
+  },
+  "runner_up_group": {
+   "type": "category",
+   "description": "Republican, Democratic or other"
+  },
+  "runner_up_votes": {
+   "type": "integer",
+   "description": "runner-up’s votes, all party lines summed",
+   "unit": "votes"
+  },
+  "total_votes": {
+   "type": "integer",
+   "description": "all votes for candidates and write-ins in the district",
+   "unit": "votes"
+  },
+  "margin_pct": {
+   "type": "number",
+   "description": "winner less runner-up, as percentage points of total votes, computed",
+   "unit": "percentage points"
+  },
+  "seat_kind": {
+   "type": "category",
+   "description": "Republican and Democratic; one-party contest (top-two); other pairing; unopposed on the ballot; ranked-choice first or final round; Louisiana open primary"
+  },
+  "candidates": {
+   "type": "integer",
+   "description": "candidates on the ballot, write-ins left out"
+  }
+ },
+ "printed_source_line": "Source: Office of the Clerk, U.S. House of Representatives, Statistics of the Presidential and Congressional Election of November 5, 2024, 435 House districts. Retrieved November 12, 2026. Margins computed by Oath & Action from the official counts.",
+ "ledger_row": "P7-215",
+ "domain": "D02",
+ "states": [],
+ "derived_from": [
+  "clerk-house-results-2024-by-candidate.csv"
+ ],
+ "derivation": "For each district, the two candidates with the most votes (write-ins and ballot categories left out), their margin over all votes for the office, and the kind of seat by the rule in the qualification.",
+ "raw_files_sha256_prefix": {
+  "statistics2024.pdf": "d4ba800fc17135b6"
+ },
+ "notes": [
+  "Seats won by party as printed: {'Republican': 220, 'Democratic': 215}.",
+  "Seats by kind: {'Republican and Democratic': 390, 'unopposed on the ballot': 22, 'ranked-choice, first round (the Clerk prints the first round)': 1, 'one-party contest (top-two)': 6, 'other pairing': 9, 'Louisiana open primary, decided in November': 6, 'ranked-choice, final round (the Clerk prints the final round)': 1}."
+ ]
+}

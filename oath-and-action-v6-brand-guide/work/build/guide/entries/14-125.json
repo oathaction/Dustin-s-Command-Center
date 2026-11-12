@@ -1,0 +1,40 @@
+{
+  "id": "14.125",
+  "title": "Set results as a table with each row’s margin drawn in it.",
+  "rule": [
+    "Give each place one row: the later margin with the leader named in words, a bar from the center line toward the leader’s side, the earlier margin in gray and the shift as an arrow, all in neutral inks (Rule 14.7). Set the national row above the places, apart and labeled, and tag each row whose leader changed.",
+    "On a phone, where a full row does not fit, each row becomes a card that names the leader and margin in each year and gives the shift beside its arrow (Rule 14.12)."
+  ],
+  "use_when": "The reader looks up how one place voted and how far it moved since the last election, among every state.",
+  "use_instead": [
+    {
+      "when": "The reader asks which places moved and how far, more than how each one voted",
+      "rule": "14.25"
+    },
+    {
+      "when": "Where the places sit matters, so the shape of the country helps the reader",
+      "rule": "14.115"
+    },
+    {
+      "when": "The rows are names and amounts a reader scans by rank",
+      "rule": "14.126"
+    }
+  ],
+  "why": {
+    "text": [
+      "A table lets a reader find their own state by name and read its exact margin, which a map hides in its smallest places. The bar and arrow drawn in each row let the eye compare rows down the page without leaving the table."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S15",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.3",
+    "14.7",
+    "14.12"
+  ],
+  "builders": "Form results-table: node work/build/chart-kit/oa-chart.mjs build s15, or copy specs/s15.json and point it at a new dataset; labels.lead names each side’s party in words.",
+  "correct": null,
+  "failure": null
+}

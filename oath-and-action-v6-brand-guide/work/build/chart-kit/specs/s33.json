@@ -1,0 +1,113 @@
+{
+  "kit": 1,
+  "id": "S33",
+  "form": "indexed-line",
+  "family": "change-over-time",
+  "tier": "core",
+  "dataset": "treasury-mts-receipts-by-source",
+  "where": {
+    "fiscal_year": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ]
+  },
+  "sort": [
+    {
+      "field": "source",
+      "order": "asc"
+    },
+    {
+      "field": "fiscal_year",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "Which sources of federal revenue grew fastest since fiscal 2016?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the Treasury’s monthly statement of federal receipts",
+  "title": "Customs duties grew fastest of the federal government’s sources of revenue from fiscal 2016 to 2026, to almost five times their 2016 level, while all receipts grew 65 percent.",
+  "reading_guide": "Each line divides a source’s receipts by its own fiscal 2016 total and multiplies by 100, so every line starts at 100. A line at 200 has doubled; the lines compare growth, never size.",
+  "measure_line": "Federal receipts by source, indexed to fiscal 2016 = 100, nominal dollars, fiscal years 2016 to 2026 (October 1 to September 30), United States. The chart starts ten fiscal years before the latest. Customs duties take the heavy line, all receipts the medium gray line and the other sources thin gray lines.",
+  "notes": [
+    "Customs duties brought in $34.8 billion in fiscal 2016 and $173.2 billion in fiscal 2026, 3.2 percent of all receipts that year. A source that starts small can grow fast in percent and stay a small share of the total.",
+    "All receipts rose from $3,266.7 billion to $5,403.3 billion. The figures are not adjusted for inflation.",
+    "Payroll taxes are the Treasury’s employment and general retirement line. Miscellaneous receipts fell to 30 percent of their 2016 level.",
+    "Fiscal 2026 figures come from the September 2026 statement and may change in the Treasury’s year-end report."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Line chart of ten federal revenue sources indexed to fiscal 2016 = 100, fiscal 2016 to 2026. Customs duties rose highest, to 497 in 2026 after a peak of 559 in 2025. All receipts reached 165. Other retirement contributions reached 216, individual income taxes 184 and estate and gift taxes 181, while miscellaneous receipts fell to 30.",
+  "table": {
+    "caption": "Federal receipts by source, dollars, fiscal 2016 to 2026",
+    "columns": [
+      {
+        "field": "source",
+        "label": "Source, as the Treasury names it",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "fiscal_year",
+        "label": "Fiscal year",
+        "format": "year"
+      },
+      {
+        "field": "receipts_dollars",
+        "label": "Receipts, dollars",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Each line is a source’s receipts as an index, fiscal 2016 = 100; the heavy base line marks 100. The scale runs from 0 to 600.",
+    "End labels give each source’s index in fiscal 2026."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D08",
+  "states": [],
+  "encode": {
+    "x": "fiscal_year",
+    "y": "receipts_dollars",
+    "series": "source"
+  },
+  "formats": {
+    "index": "integer",
+    "tick": "integer"
+  },
+  "labels": {
+    "base": 2016,
+    "base_label": "Index, fiscal 2016 = 100",
+    "subject": "Customs Duties",
+    "second": "Total",
+    "names": {
+      "Individual Income Taxes": "Individual income taxes",
+      "Corporation Income Taxes": "Corporate income taxes",
+      "Employment and General Retirement": "Payroll taxes",
+      "Unemployment Insurance": "Unemployment insurance taxes",
+      "Other Retirement": "Other retirement contributions",
+      "Excise Taxes": "Excise taxes",
+      "Estate and Gift Taxes": "Estate and gift taxes",
+      "Customs Duties": "Customs duties",
+      "Miscellaneous Receipts": "Miscellaneous receipts",
+      "Total": "All receipts"
+    },
+    "end": "{name} {index}"
+  },
+  "notes_internal": [
+    "Maker B, round 1. Data plan row 26, rule 14.40, with the data lead's change 2: past four groups, the fastest-growing source in ink and the rest in gray (DR-234), every series named at its end. Domain D08; no state named.",
+    "Checked by script against treasury-mts-receipts-by-source.csv, fiscal 2016 = 100: highest 2026 index Customs Duties 497.2 ('almost five times'), peak 559.4 in 2025; Total 165.4 ('65 percent'); customs 34.8 and 173.2 billion, 3.2 percent of all receipts in 2026; Total 3266.7 and 5403.3 billion; Other Retirement 216, Individual 184, Estate and Gift 181, Miscellaneous 30.",
+    "H09: fiscal years run October to September, so no line splits a period at an inauguration; the window is the last ten fiscal years, which the measure line says. Read from the left and the right: the title reports growth in nominal dollars and names no policy or party; note 1 gives customs duties' small share, which the sidecar's qualification asks for.",
+    "The table prints whole dollars because the kit has no billions format; request R-B7. The rows run by source, then year.",
+    "The sidecar's printed line names fiscal 2015 to 2026, the file's span, while the chart draws 2016 to 2026; request R-B8 asks the research lead for a variant naming 2016 to 2026."
+  ]
+}

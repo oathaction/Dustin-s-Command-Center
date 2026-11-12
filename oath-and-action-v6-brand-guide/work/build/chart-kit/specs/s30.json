@@ -15,18 +15,18 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: public laws and an IRS revenue procedure",
-  "title": "Congress has changed the child tax credit’s top amount per child three times since 2017: to $2,000 in 2018, $3,000 for 2021 alone and $2,200 from 2025.",
+  "title": "Congress has changed the child tax credit’s top amount per child three times since 2017: to $2,000 in 2018, to $3,000 or $3,600 for 2021 alone, and to $2,200 from 2025.",
   "reading_guide": "Each flat run is a tax year, or a run of years, when one amount held. The line steps up or down in the year a law changed the amount.",
-  "measure_line": "Top amount of the child tax credit per qualifying child, dollars, tax years 2017 to 2026, United States, before income limits and refundability caps. The chart starts in 2017, the last year before Public Law 115-97 doubled the amount. The scale starts at zero.",
+  "measure_line": "Top amount of the child tax credit per qualifying child, dollars, tax years 2017 to 2026, United States, before income limits and refundability caps. For 2021 the heavy line is the amount for a child 6 or older and the thin line the amount for a child under 6; in every other year one amount covers every qualifying child. The chart starts in 2017, the last year before Public Law 115-97 doubled the amount. The scale starts at zero.",
   "notes": [
     "Public Law 115-97, signed December 22, 2017, set $2,000 per child for 2018 through 2025.",
     "Public Law 117-2, signed March 11, 2021, set $3,000 per child for 2021 alone, $3,600 for a child under 6, and made the credit fully refundable that year. Those rules then lapsed, and 2022 went back to $2,000.",
     "Public Law 119-21, signed July 4, 2025, set $2,200 from 2025, made the amount permanent and tied it to inflation. The yearly adjustment rounds down to a multiple of $100, so 2026 stays at $2,200 (IRS Revenue Procedure 2025-32).",
-    "Few families get exactly the top amount: income limits, phase-outs, the cap on the refundable part ($1,700 for 2025 and 2026) and, from 2025, Social Security number rules set each family’s credit."
+    "The amount drawn is the most a family can claim per child; income limits, phase-outs, the cap on the refundable part ($1,700 for 2025 and 2026) and, from 2025, Social Security number rules lower it for some families."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Step line of the child tax credit’s top amount per child, tax years 2017 to 2026: $1,000 in 2017, $2,000 from 2018 to 2020, $3,000 in 2021 ($3,600 for a child under 6), $2,000 again from 2022 to 2024, and $2,200 in 2025 and 2026.",
+  "alt": "Step line of the child tax credit’s top amount per child, tax years 2017 to 2026: $1,000 in 2017, $2,000 from 2018 to 2020, $3,000 in 2021 for a child 6 or older and $3,600 for a child under 6, $2,000 again from 2022 to 2024, and $2,200 in 2025 and 2026.",
   "table": {
     "caption": "Top child tax credit per qualifying child, dollars, by tax year",
     "columns": [
@@ -133,9 +133,10 @@
   "notes_internal": [
     "Maker B, round 1. Data plan row 22, rule 14.36. Domain D08 from the sidecar; no state named.",
     "Checked by script against govinfo-child-tax-credit-by-law.csv: three distinct laws after 'Before Public Law 115-97' (115-97, 117-2, 119-21); 2018 2,000; 2021 3,000 and 3,600 under 6; 2022 back to 2,000; 2025 and 2026 2,200. Signing dates and the $100 rounding come from the file's note column; the $1,700 refundable cap and the Social Security number rules from the sidecar's qualification.",
-    "Title: 'Congress has changed ... three times' counts the three laws; the 2022 return to $2,000 was a lapse, which note 2 says. Read from the left and the right: the title names each amount and law year and no party, since all three laws are named in the notes by number.",
+    "Title: 'Congress has changed ... three times' counts the three laws; the 2022 return to $2,000 was a lapse, which note 2 says. Data lead DL-B7: the title names both 2021 amounts, and the measure line says what each 2021 line holds. Read from the left and the right: the title names each amount and law year and no party.",
     "H09: the window starts with the last year before Public Law 115-97 and the measure line says so; the steps fall at tax years, which no inauguration date splits.",
     "Phone: the four law labels leave the plot (hide) and phone_notes names them in one line; the notes list every law in full on both widths.",
-    "The kit prints no dollar format; the step labels carry the dollar sign through the label template, and the axis prints plain figures with the measure line naming dollars. Request R-B2 asks the engineer for a dollars format."
+    "The kit prints no dollar format; the step labels carry the dollar sign through the label template, and the axis prints plain figures with the measure line naming dollars. Request R-B2 asks the engineer for a dollars format.",
+    "Data lead DL-B8 applied to note 4. DL-R3 asks the research lead to describe max_credit_per_child as the amount for a child 6 or older in 2021; the words above already say so."
   ]
 }
