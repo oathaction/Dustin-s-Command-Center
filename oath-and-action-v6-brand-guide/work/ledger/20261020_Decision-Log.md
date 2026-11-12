@@ -4403,3 +4403,35 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-532 | The DOL lines say "January 1 rates" | The kit’s line check reads "as of January 1, 2010" as a vintage and would drop the panel’s first year |
 | D3-533 | Ohio’s ban is "partly" for city elections and Tennessee’s "yes" | Ohio leaves home-rule cities an opening at a cost (Ballotpedia); Tennessee’s act names city offices that county commissions conduct (Public Chapter 621) |
 | D3-534 | A long figure's phone drawing shown at a desk may draw its first rows only, with a line saying so (S37, maker A's A17); on a phone the figure draws every row | D3-487 shows the phone drawing at a desk so a designer sees the form; S37's whole chip list added about 4,700 px under a heat table the creative director already faulted for length |
+
+### Engineer, round 1 review fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-535 | In forced colors a kit drawing takes the system ground, Canvas, as its own background | The reviewer's recommendation: it holds in any host, the guide's stage that keeps Newsprint, the atlas site and a plain page |
+| D3-536 | Beside a red point, context marks take Canvas with a CanvasText outline in forced colors, by a `:has()` rule | The point stood apart from GrayText bars by hue alone (access S10); the rule changes no drawing's markup |
+| D3-537 | The zero line takes the value scale and draws only where it holds zero | The line belongs to the scale; a line placed by a number cannot know (CD RM1) |
+| D3-538 | The kit records every shape's box and fails one outside the drawing; a stub of 12 px or less above the top lifts the drawing | Marks were checked and unmarked shapes were not (K-S2); axis stubs past the first bar are drawn on purpose, and a lift keeps them as drawn |
+| D3-539 | The guide check draws every kit chart and fails a shape 1.5 px or more outside its drawing or sketch | The kit's own tolerance in the browser (dataviz_check), on the page where the fault showed |
+| D3-540 | `wide_px` switches at 680 px only, and the shell's query names it | A container query cannot read a variable; D3-480 fixes 680, so any other figure warns |
+| D3-541 | `plate_css` prints as `@scope (#<anchor> [data-specimen])` | Every fragment's own style already takes `@scope` from the build, so the guide asks nothing new of a browser |
+| D3-542 | `frame_container` stays, unused, with its self-test | It costs nothing in a page that does not use it, and a later plate with one size may need prose that follows its frame |
+| D3-543 | A sketch of one drawing takes a stage of its drawing's width; an avoid pair takes a flowing stage, each half as wide as its drawing | True size, centered, with the bar the drawing's width (SK-M2, BC S7); a pair wraps where a phone cannot hold both |
+| D3-544 | The notes' rule runs the figure's width; each note keeps its 38em measure | Two rules of one figure at one measure (K-S1), with the reading measure kept |
+| D3-545 | Chapter 14's side list nests each group's rules and opens only the group in view once the script runs; with scripts off every group stays open | The list ran past 60 lines with no current rule in sight (ST-S1, BC S19); a reader with no script loses nothing |
+| D3-546 | Where the script runs, a lookup's controls and table move into the still drawing's place, which hides; the kit's build page keeps the still drawing | One list and one count (AM1, BC S9); the still image is the export, scripts-off view and print (Rule 14.13), and its PNG needs it shown |
+| D3-547 | The source check fails a line whose named years leave out a year the chart draws, reading the years outside retrieval, release, vintage and "as of" dates | It catches the production test's "fiscal 2026" under 2016 and 2026; a stricter test, an exact span, waits until every multi-year file has its template, since approved plates name the table's span over a window |
+| D3-548 | Templates fill {from} and {to} with years only | The research lead put templates on annual files; months and quarters need words a year cannot give |
+| D3-549 | The dots check fails a row whose two dots sit closer than a dot's radius only where its values differ by a tenth or more of the larger | A small change drawn as touching dots is honest (S04's 65 and over, 74.5 to 74.7); a hidden 54 percent rise is not (production test P01) |
+| D3-550 | The dumbbell moves its scale's ends in until every row's end values fit, and keeps today's ends where they already fit | Access S2 without moving S04 (unchanged) |
+| D3-551 | A kit figure's stage is a group named "specimen", with no description of its own; "interactive specimen" only where the manifest says interactive | The drawing carries the alt as its name, so a reader heard it twice (access S3); the table's disclosure is part of every figure |
+| D3-552 | A drawing taller than 864 px may break inside in print; the kit marks it before print | A drawing taller than a page was pushed whole to the next page and left its title alone (access S4) |
+| D3-553 | The chip's check mark takes an empty alternative text, and Escape in the filter sheet closes it and returns focus to Filters | `aria-pressed` carries the state; chapter 18's filter bar closes on Escape (access S7) |
+| D3-554 | The phone drawing at a desk is drawn by the figure's own script from its own rows, hidden from assistive technology | No second copy of the data on the page (BC S3); the description and table carry the data once |
+| D3-555 | Straight lines of a whole-pixel width snap to the pixel grid in the drawing context, not in each part | Every form draws its lines through `c.line`, so one rule reaches them all (BC S16 named `parts.js`; the arrow, the one part that draws a line with other shapes, snaps all three) |
+| D3-556 | The chapter's basis prints once after the introduction as a Basis box | BC S18; one box where 54 repeated it, and an entry's own box marks a basis that differs |
+| D3-557 | Rules 14.1 to 14.14 with the opener are measured against 212,288 bytes, and sketch entries are reserved whole at the built ones' measured words | Call 4, and the creative director's weight paragraph |
+| D3-558 | A drawing made outside the kit is set in the kit's figure by a command, not by copying the kit's classes into a script | One place prints the anatomy, the bold "Source:", the credit and the table (BC M2, ED-E9) |
+| D3-559 | Typography from a spec applies to words drawn from data and to text cells, never to the data or the CSV, and a replacement must not feed itself | Atlas values are copied, never edited (D3-349); the page reads its rows back from the printed table, so the setting must give the same words twice |
+| D3-560 | The claims lines count the claims that carry the check date, by script | 432 of the 433 claims carry October 15, 2026 and CL1723 carries none (ST S6) |
+| D3-561 | ENG-13's columns are added to the copied Phase 2 file row by row, and the script stops if a ban lacks a city reading or a reading lacks a ban | The file's first 11 columns stay byte for byte as Phase 2 left them |

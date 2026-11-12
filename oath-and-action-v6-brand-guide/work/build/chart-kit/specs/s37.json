@@ -204,6 +204,11 @@
     "Rule 13.10: the 13 dated routes take a dot; the key and note 2 say every other route is not checked. The sidecar's qualification: each cell's word, never a score or a total.",
     "Evidence label Estimate: feasibility is the atlas's judgment of what could happen by 2030; the title reports the ratings as the atlas records them, so v7.grade is documented.",
     "Figures checked by script (figures.py s37).",
-    "Review fix pass: CD AM2 (groups once; the federal statute column named, its head bold in ink with a hairline frame), BC S10 (heads on one row, each over its column, bottom-aligned, two hyphenated where a word is wider than the column at 723 px; the checked dot 6 px on a keyline of the ground), ST S7 (note 2 quotes V7's routes.feasibility_scale word for word, in the key's order), AX S6 (chart note 3 says what a blank cell means), AX S9 (route glossed in the measure line from Rule 13.10's words; Article V in note 3 from V7's routes.items; the grade line says the judgment is given in words). The title now counts reforms, so it cannot read as 38 acts (AX S9's reader). Figures checked by script (round-1-fix tools/figs.py s37)."
-  ]
+    "Review fix pass: CD AM2 (groups once; the federal statute column named, its head bold in ink with a hairline frame), BC S10 (heads on one row, each over its column, bottom-aligned, two hyphenated where a word is wider than the column at 723 px; the checked dot 6 px on a keyline of the ground), ST S7 (note 2 quotes V7's routes.feasibility_scale word for word, in the key's order), AX S6 (chart note 3 says what a blank cell means), AX S9 (route glossed in the measure line from Rule 13.10's words; Article V in note 3 from V7's routes.items; the grade line says the judgment is given in words). The title now counts reforms, so it cannot read as 38 acts (AX S9's reader). Figures checked by script (round-1-fix tools/figs.py s37).",
+    "A17 (D3-534): the phone drawing shown at a desk draws the first 20 route rows, the six reforms R-01 to R-06, all in the first reform group; the group's other four reforms come later in the data's order, so the label says six reforms, never the whole group."
+  ],
+  "desk_phone": {
+    "rows": 20,
+    "part": "the first six reforms shown; a phone draws all 50"
+  }
 }

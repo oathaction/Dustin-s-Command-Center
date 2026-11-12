@@ -155,13 +155,13 @@ November 12, 2026. The editor's 42 changes (its notes, "Requests", "To maker A")
 
 ## Review fix pass
 
-November 12, 2026. Maker A's items from the fix brief (`20261112_Round-1-Fix-Brief.md`, calls D3-476 to D3-488 and the brand and craft addendum, D3-484 to D3-488), with the data lead's rulings (a) to (g) (`20261112_Round-1-Data-Lead-Notes.md`, "Review fix pass", D3-489's party test) and the research lead's and engineer's landings as the main session relayed them.
+November 12, 2026. Maker A's items from the fix brief (`20261112_Round-1-Fix-Brief.md`, calls D3-476 to D3-483, and its brand and craft addendum, D3-484 to D3-488), with the data lead's rulings (a) to (g) (`20261112_Round-1-Data-Lead-Notes.md`, "Review fix pass", D3-489's party test) and the research lead's and engineer's landings as the main session relayed them.
 
 ### Summary
 
 - **Done:** CD AM2, BC S10, ST S7, AX S6 and AX S9 (S37); CD A-S1 (S23); CD SK-M1 and BC M4 (the radar sketch, now a pair); ST S5 (S19); ST S6 (S39, S21, and S23's same words); ST S13 and AX S9 (S20); BC S12 (S18); BC M3 (S36's recorded party and note 3); ST M4 by ruling (a) (S21, S23, S38, S39 grade lines); call 2 by ruling (b): the red point on S20, S21 and S23, the subject ink kept on S17 and S36; S21 and S23 retitled to one point; ST S8 (14.19, 14.20, 14.133, 14.134); AX S2's line (14.19); entry 14.16 and the other entries whose specimen changed (14.20, 14.21, 14.23, 14.24, 14.129) under D3-484 and ruling (b); CD AM1's spec side (S38); ruling (f) (my listing forms already set names flush left); ST S11 for S41 and S42 (the credited margin line).
-- **Kept, waiting on the engineer:** S39 prints four atlas strings curled and spaced through word maps (BC S17) until the engineer's typography key lands (D3-519); then the maps go, about 4.5 KB.
-- **Waiting on the research lead:** S20's source line as a variant naming both tables (ST S11). S20 prints its merged line until then; the kit check passes it.
+- **Landed from others and applied:** the engineer's typography key on S39 (D3-519; the word maps are gone, and S39 weighs 10,346 bytes in the strict build, under the 14,377-byte share per plate); the desk phone key on S37 (A17, D3-534; Rule 14.129 runs 6,673 px at 1440 in place of 10,685); the credited survey line on S41 and S42 (ENG-12); S20's `with_margins` variant (research lead), which its line already equals.
+- **Nothing of mine is waiting.**
 - **Not mine, found on the way:** in forced colors the kit fills the low step of a heat table (seq-3) with solid GrayText, under which CanvasText words read at 1.5 to 1; S37 now sets those words on the kit's forced-colors plate. Any other form that prints words on seq-3, mag-3, div-5, cat-2, context or secondary fills meets the same test.
 
 ### Routine calls
@@ -178,7 +178,6 @@ November 12, 2026. Maker A's items from the fix brief (`20261112_Round-1-Fix-Bri
 - D3-xxx | S20's red line and its two end dots are one outlined shape (two dots joined by a band of the subject line's width, under the 1 px keyline on Newsprint), and its other lines take the engineer's light-fill stroke | The page audit counts every red element, and Rule 05.3 gives one job one red; palette rule R3 for the others
 - D3-xxx | S17's 118th Congress and S36's FF PAC stay in the subject ink with the others in the light fill | Ruling (b): D3-489's party test; entry 14.16 now cites Rule 14.6's two cases
 - D3-xxx | S36's second line adds the party the FEC records for a committee where it records one (`encode.qualifier`, the research lead's `party_words`): "Party committee, Democratic" for the DCCC and DSCC, "Party committee, Republican" for the NRCC, "Hybrid PAC, Republican" for SFA Fund, Inc.; the table adds the column with "None recorded" for an empty cell; note 3 says the register prints the recorded party and most PACs record none, 21 of the 22 | BC M3; H10 (party in words, in the line's own ink)
-- D3-xxx | S39 prints four atlas strings curled or spaced through `labels.words` (a new key of the evidence-table form) and the table columns' `words` | BC S17; the studio's V7 extracts keep the atlas text as stored (D3-349), so the maps stay until the engineer's typography key (D3-519)
 - D3-xxx | S21, S23 and S39 print "Graded by the atlas, claim by claim: our count of its register of claims"; S38 "Graded by the atlas, record by record: our count of its issue records"; S21's note 1 drops the sentence the grade line now carries | Ruling (a), ST M4
 - D3-xxx | S21's and S23's measure lines give the snapshot date ("as of the atlas’s snapshot of October 15, 2026") in place of "checked through"; S39's note 2 and measure line say each of its 11 claims was checked that day | ST S6: 432 of the 433 claims carry the date and CL1723 carries none (Rule 13.10)
 - D3-xxx | S18 prints every value just past its bar's end, on a plate of the ground's color where the tick would cross it, with the kit's halo | BC S12; a halo alone let the tick show between the glyphs on a phone
@@ -186,21 +185,39 @@ November 12, 2026. Maker A's items from the fix brief (`20261112_Round-1-Fix-Bri
 - D3-xxx | Entries 14.16, 14.20, 14.21 and 14.23 say the named mark takes the red point, or the text's ink where Rule 14.6 sets ink in its place, and their builders lines name `labels.point` and `labels.named` | D3-484 and ruling (b); the entries cite Rule 14.6 and never restate it
 - D3-xxx | Entries 14.19 and 14.20 share one threshold (a slope chart for about ten items, a dumbbell beyond); 14.19 adds rows of very different size to Rule 14.26; 14.133 sends a dozen or more rows to 14.21 and 14.134 sends figures that differ in size to 14.16 | ST S8; AX S2
 - D3-xxx | S41 and S42 print the sidecar's `survey_only_margin_credited` line | ST S11: the margin comes from the Program for Public Consultation's page, read November 12, 2026
+- D3-xxx | S39 takes the engineer's `typography` setting (curled quotes, and "Act,2026" to "Act, 2026") and drops its word maps; the evidence-table form returns to its pre-pass text | D3-519 keeps the atlas text as stored in the extract and the CSV; the maps cost about 4.5 KB
+- D3-xxx | S37's phone drawing at a desk shows the first 20 route rows, the six reforms R-01 to R-06, labeled "the first six reforms shown; a phone draws all 50" | A17 (D3-534); the first group's other four reforms come later in the data's order, so "the first group" would not be true
+- D3-xxx | The radar sketch's grouped bars draw at 280 px | At 170 and 240 px the plate's "Use instead: Grouped bars" label wrapped to two lines and the two drawings sat at different heights
 - D3-xxx | Row names stay flush left in every listing form of mine (dot plot, lollipop, grouped bar, benchmark bars, column on a phone); the register keeps its rank column first, with every name on one left edge | Ruling (f)
 
 ### Requests
 
 - **A12, engineer, optional, `kit.js`:** `sort` taking an explicit order of values (such as `{"field": "reform_group", "values": [...]}`), so S37's table reads in the drawing's group order; the form already gathers the groups in the drawing.
-- **A13, done by the main session's call D3-519:** the engineer's typography key for S39; I drop S39's word maps when the key lands.
+- **A13, answered by the main session's call D3-519:** the engineer's typography key, now on S39.
 - **A14, engineer, optional, `kit.css`:** in forced colors, map `.oac-s-cat-2` to GrayText as `.oac-f-cat-2` is, so a group's outline and its bars keep one system color; the radar sketch dashes group 2 meanwhile.
 - **A15, V7.1 list (main session):** four atlas strings to correct at the source: CL1359's claim ("The FTC's" with a straight apostrophe), CL1363's limitation ("plan's"), CL1360's source title ('big three' in straight quotes) and CL1361's source title ("Consolidated Appropriations Act,2026", a missing space).
-- **A16, research lead:** S20's two-table source line as a variant on `census-hvs-homeownership-by-age-moe` (ST S11), so the check compares it word for word.
-- Done by others in this pass: the light-fill stroke role (engineer), S38's PNG export with the live lookup (engineer), the 432-of-433 claims line (engineer), S36's party columns and processed-report vintage (research lead), the credited margin line for S41 and S42 (engineer).
+- **A16, done by the research lead:** S20's two-table line as the variant `with_margins`; S20's line equals it.
+- **A17, done by the engineer (D3-534):** `desk_phone`, now on S37.
+- Done by others in this pass: the light-fill stroke role (engineer), S38's PNG export with the live lookup (engineer), the 432-of-433 claims line on `v7-claims-by-grade` and the hub file (engineer), S36's party columns and processed-report vintage (research lead), the credited margin line for S41 and S42 (engineer).
 
 ### Tested
 
-(Being written.)
+- Every spec I own (S03, S04, S06, S15, S17 to S23, S36 to S42) built with `node work/build/chart-kit/oa-chart.mjs build <ids> --out <scratch>/kit-out` after the last form change, with PNGs: 18 of 18 PASS, 0 faults, at 1440 and 390 px on both grounds and the five guide widths, with page-to-Node parity, under the engineer's pixel snapping and the new source-line year check. `oa-chart.mjs check` on the same 18 after the last spec change: 18 of 18 PASS. S20 checked again after the research lead's `with_margins` variant: PASS, and its line equals the variant on both sidecars, by script.
+- `dataviz_check.js --kit` on the build pages of all 18 specs: 18 of 18 PASS at 1440 and 390 px. Two failures found and fixed on the way: S20 counted three working reds (its red line and two dots as three elements), and S37's words on the low step read at 1.5 to 1 in both forced-colors themes.
+- Figure checks by script (`tools/figs.py` in my scratch folder), 109 assertions, 0 failed: S17 (274, 482, 283, 442, 138; ink kept), S19 (caveat c from BJS's footnote; Idaho and Missouri), S20 (37.0, 2.0, 0.8 and 1.1 margins, the three older groups within theirs, 43.1 and 34.5, every alt pair), S21 (42 and 13 unique, 39 and 34, 433 over 16 answers, 432 dated and one not), S23 (84.5 and 67.2, 77.9, 18.8, 8.2, shares recomputed, the hub file equal to `v7-claims-by-grade` summed), S36 (503.3, 376.9, 36.5, 3.1 billion, ranks, the four recorded parties, 21 of 22 PACs with none, 9,688), S37 (36 of 38, 24 of 29, 14 of 15, 13 of 126, 424 blanks, the four definitions quoted word for word, the nine groups in V7's order, the Article V gloss), S38 (17 records, two, eight, six and one, 194), S39 (10 and 1, each of the 11 dated in V7, 28 for PW06, the typography setting, no straight quote or "Act,2026" in the export).
+- Words lint by script (`tools/words.py`) on the 12 changed specs and 9 changed entries: no em dash, U+2011, straight quote, banned word or studio word in reader text; each "not", "but", "only" and "never" read by hand (a quoted definition, Rule 13.10's "not checked", record words).
+- Captures looked at, at twice size: S37 at 1024 px (Newsprint and Charcoal), at 723 px (both grounds; the guide's column) and at 390 px; S23, S21, S20, S18 and S36 at 723 px on both grounds; S38 at 723 px with the live lookup; S20, S21, S23, S18, S36 and S39 at 390 px on both grounds; S20, S21 and S23 in grayscale at 1440 (each red mark darker than the light fill); S37 in normal colors and in both forced-colors themes; the radar sketch on Newsprint, on Charcoal, in grayscale and in a dark forced-colors theme.
+- Radar sketch by script: 3,428 bytes (limit 4,096); two drawings at 300 and 280 px, the second with `data-label`; R1-C1's classes only; no literal color, `style`, `<style>` or font name; ids prefixed; "Illustrative data" in both; the dark group's polygon area larger in one spoke order (59.4 against 50.4) and smaller in the other (36.1 against 49.9).
+- Strict guide build into scratch (`guide_build.py --strict`): 9,989,341 bytes, one warning, maker B's S25; my plates S17 4,265, S18 3,992, S19 10,529, S20 4,320, S21 5,681, S22 4,844, S23 6,236, S36 10,109, S37 16,091 (over the 14,377 share, under three times its tier's average; 17,715 in round 1), S38 10,096, S39 10,346, S40 8,799, S41 3,408, S42 2,454 bytes. `phase3_ch14_build.py --check`: 39 of 39 files current with my entries.
+- In that build at 1440 px, by Playwright: Rules 14.16 (S17 with its phone drawing at a desk), 14.20, 14.24 (the pair under the do-not-publish bar and "Use instead: Grouped bars", both labels on one line) and 14.129 (the grid at 723 px, the desk phone drawing of six reforms; 6,673 px tall); at 390 px, Rules 14.23 and 14.24 (the pair stacks). Every figure drew with no warning and no page error.
 
 ### Not tested
 
-(Being written.)
+- Real screen readers, real devices and real readers; S38's live lookup was not walked by keyboard in this pass (the engineer changed its placement; my round 1 walk predates it).
+- `guide_check.js` and axe-core on the built page; the main session runs them.
+- Print emulation and 200 percent text on my changed figures; reduced motion.
+- Forced colors on the guide page itself (only on the kit pages and the sketch alone).
+- Grayscale captures of S36, S37 and S39 were made by the build and not looked at; S17's drawing did not change and was not looked at again beyond the guide capture.
+- My captures of the guide at 1024 and 360 px, and of 14.16, 14.20 and 14.129 at 390 px.
+- The engineer's `typography` setting on any page but S39's build page and its exports.
+- Whether S36's "Hybrid PAC, Republican" for SFA Fund, Inc. matches the FEC's current committee record today: I read the research lead's frozen columns, not the FEC.
