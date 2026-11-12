@@ -714,7 +714,15 @@
    "family": "Composition",
    "form": "100 percent bar",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 42,
+   "maker": "A",
+   "spec_id": "S10",
+   "status": "built",
+   "form_id": "percent-bar",
+   "data_status": "V7",
+   "reader_question": "How much of each everyday answer rests on documented fact?",
+   "entry_file": "work/build/guide/entries/14-046.json"
   },
   {
    "rule": "14.47",
@@ -722,7 +730,16 @@
    "family": "Composition",
    "form": "Stacked share bar with a midline",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 43,
+   "maker": "A",
+   "spec_id": "S43",
+   "status": "new",
+   "form_id": "stacked-share-bar",
+   "data_status": "Primary",
+   "reader_question": "In which states do renters make up the larger share of households?",
+   "dataset": "census-acs-tenure-by-state",
+   "entry_file": "work/build/guide/entries/14-047.json"
   },
   {
    "rule": "14.48",
@@ -730,7 +747,16 @@
    "family": "Composition",
    "form": "Waterfall",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 44,
+   "maker": "A",
+   "spec_id": "S44",
+   "status": "new",
+   "form_id": "waterfall",
+   "data_status": "Primary",
+   "reader_question": "How did fiscal 2026's receipts and outlays add up to the deficit?",
+   "dataset": "treasury-mts-fy2026-budget-results",
+   "entry_file": "work/build/guide/entries/14-048.json"
   },
   {
    "rule": "14.49",
@@ -738,7 +764,15 @@
    "family": "Composition",
    "form": "Unit chart or waffle",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 45,
+   "maker": "A",
+   "spec_id": "S08",
+   "status": "built",
+   "form_id": "unit-chart",
+   "data_status": "V7",
+   "reader_question": "Have the rules been moving toward voters or away from them?",
+   "entry_file": "work/build/guide/entries/14-049.json"
   },
   {
    "rule": "14.50",
@@ -746,7 +780,16 @@
    "family": "Composition",
    "form": "Stacked column",
    "tier": "Extended",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 46,
+   "maker": "A",
+   "spec_id": "S45",
+   "status": "new",
+   "form_id": "stacked-column",
+   "data_status": "Primary",
+   "reader_question": "What kinds of homes were finished each year?",
+   "dataset": "census-nrc-completions-by-structure",
+   "entry_file": "work/build/guide/entries/14-050.json"
   },
   {
    "rule": "14.51",
@@ -754,7 +797,16 @@
    "family": "Composition",
    "form": "Stacked area",
    "tier": "Extended",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 47,
+   "maker": "A",
+   "spec_id": "S46",
+   "status": "new",
+   "form_id": "stacked-area",
+   "data_status": "Primary",
+   "reader_question": "Who pays the nation's health care bill?",
+   "dataset": "cms-nhe-by-payer-four-groups",
+   "entry_file": "work/build/guide/entries/14-051.json"
   },
   {
    "rule": "14.52",
@@ -762,7 +814,16 @@
    "family": "Composition",
    "form": "Treemap",
    "tier": "Extended",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 48,
+   "maker": "A",
+   "spec_id": "S47",
+   "status": "new",
+   "form_id": "treemap",
+   "data_status": "Primary",
+   "reader_question": "Where did federal spending go in fiscal 2026?",
+   "dataset": "treasury-mts-outlays-by-function",
+   "entry_file": "work/build/guide/entries/14-052.json"
   },
   {
    "rule": "14.53",
@@ -770,7 +831,19 @@
    "family": "Composition",
    "form": "Parliament chart",
    "tier": "Extended",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 49,
+   "maker": "A",
+   "spec_id": "S48",
+   "status": "new",
+   "form_id": "parliament",
+   "data_status": "Primary",
+   "reader_question": "How are the House's seats divided by party today?",
+   "dataset": [
+    "house-history-party-divisions",
+    "clerk-house-current-party-breakdown"
+   ],
+   "entry_file": "work/build/guide/entries/14-053.json"
   },
   {
    "rule": "14.54",
@@ -778,7 +851,13 @@
    "family": "Composition",
    "form": "Pie",
    "tier": "Reference",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 50,
+   "maker": "A",
+   "status": "sketch",
+   "sketch_id": "s-14-54-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-054.json"
   },
   {
    "rule": "14.55",
@@ -786,7 +865,13 @@
    "family": "Composition",
    "form": "Donut with a center number",
    "tier": "Reference",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 51,
+   "maker": "A",
+   "status": "sketch",
+   "sketch_id": "s-14-55-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-055.json"
   },
   {
    "rule": "14.56",
@@ -794,7 +879,13 @@
    "family": "Composition",
    "form": "Marimekko",
    "tier": "Reference",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 52,
+   "maker": "A",
+   "status": "sketch",
+   "sketch_id": "s-14-56-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-056.json"
   },
   {
    "rule": "14.57",
@@ -802,7 +893,13 @@
    "family": "Composition",
    "form": "3D pie or bar",
    "tier": "Avoid",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 53,
+   "maker": "A",
+   "status": "sketch",
+   "sketch_id": "s-14-57-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-057.json"
   },
   {
    "rule": "14.58",
@@ -810,7 +907,16 @@
    "family": "Distribution and density",
    "form": "Histogram",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 54,
+   "maker": "B",
+   "spec_id": "S49",
+   "status": "new",
+   "form_id": "histogram",
+   "data_status": "Primary",
+   "reader_question": "How long have today's federal judges served?",
+   "dataset": "fjc-article-iii-judges",
+   "entry_file": "work/build/guide/entries/14-058.json"
   },
   {
    "rule": "14.59",
@@ -818,7 +924,16 @@
    "family": "Distribution and density",
    "form": "Beeswarm or strip plot",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 55,
+   "maker": "B",
+   "spec_id": "S50",
+   "status": "new",
+   "form_id": "beeswarm",
+   "data_status": "Primary",
+   "reader_question": "How much does each state collect in taxes per resident?",
+   "dataset": "census-stc-state-tax-collections",
+   "entry_file": "work/build/guide/entries/14-059.json"
   },
   {
    "rule": "14.60",
@@ -826,7 +941,16 @@
    "family": "Distribution and density",
    "form": "Box plot",
    "tier": "Extended",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 56,
+   "maker": "B",
+   "spec_id": "S51",
+   "status": "new",
+   "form_id": "box-plot",
+   "data_status": "Primary, model estimates",
+   "reader_question": "How widely do uninsured rates vary among counties in each region?",
+   "dataset": "census-sahie-county-uninsured",
+   "entry_file": "work/build/guide/entries/14-060.json"
   },
   {
    "rule": "14.61",
@@ -834,7 +958,16 @@
    "family": "Distribution and density",
    "form": "Line histogram",
    "tier": "Extended",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 57,
+   "maker": "B",
+   "spec_id": "S52",
+   "status": "new",
+   "form_id": "line-histogram",
+   "data_status": "Primary, model estimates",
+   "reader_question": "Did county child poverty rates shift between 2019 and the latest year?",
+   "dataset": "census-saipe-county-child-poverty",
+   "entry_file": "work/build/guide/entries/14-061.json"
   },
   {
    "rule": "14.62",
@@ -842,7 +975,16 @@
    "family": "Distribution and density",
    "form": "Population pyramid",
    "tier": "Extended",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 58,
+   "maker": "B",
+   "spec_id": "S53",
+   "status": "new",
+   "form_id": "population-pyramid",
+   "data_status": "Primary",
+   "reader_question": "How many people are near the ages of Social Security and Medicare?",
+   "dataset": "census-pep-population-by-age-sex",
+   "entry_file": "work/build/guide/entries/14-062.json"
   },
   {
    "rule": "14.63",
@@ -850,7 +992,13 @@
    "family": "Distribution and density",
    "form": "Violin",
    "tier": "Reference",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 59,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-63-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-063.json"
   },
   {
    "rule": "14.64",
@@ -858,7 +1006,13 @@
    "family": "Distribution and density",
    "form": "Ridgeline",
    "tier": "Reference",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 60,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-64-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-064.json"
   },
   {
    "rule": "14.65",
@@ -866,7 +1020,13 @@
    "family": "Distribution and density",
    "form": "Hexbin",
    "tier": "Reference",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 61,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-65-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-065.json"
   },
   {
    "rule": "14.66",
@@ -874,7 +1034,13 @@
    "family": "Distribution and density",
    "form": "Contour or density",
    "tier": "Reference",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 62,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-66-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-066.json"
   },
   {
    "rule": "14.67",
@@ -882,7 +1048,16 @@
    "family": "Correlation",
    "form": "Scatter plot with named points",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 63,
+   "maker": "B",
+   "spec_id": "S54",
+   "status": "new",
+   "form_id": "scatter-named",
+   "data_status": "Primary; Association label",
+   "reader_question": "Do rents run higher where renters earn more, and where does rent take the largest share of renters' income?",
+   "dataset": "census-acs-rent-and-income-by-state",
+   "entry_file": "work/build/guide/entries/14-067.json"
   },
   {
    "rule": "14.68",
@@ -890,7 +1065,16 @@
    "family": "Correlation",
    "form": "Bubble chart",
    "tier": "Extended",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 64,
+   "maker": "B",
+   "spec_id": "S55",
+   "status": "new",
+   "form_id": "bubble-scatter",
+   "data_status": "Primary; Association label",
+   "reader_question": "Do rents run higher where renters earn more, with each state sized by its renter households?",
+   "dataset": "census-acs-rent-and-income-by-state",
+   "entry_file": "work/build/guide/entries/14-068.json"
   },
   {
    "rule": "14.69",
@@ -898,7 +1082,16 @@
    "family": "Correlation",
    "form": "Connected scatter",
    "tier": "Extended",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 65,
+   "maker": "B",
+   "spec_id": "S56",
+   "status": "new",
+   "form_id": "connected-scatter",
+   "data_status": "Primary, FRED copy",
+   "reader_question": "How have unemployment and job openings moved together?",
+   "dataset": "fred-unemployment-and-job-openings",
+   "entry_file": "work/build/guide/entries/14-069.json"
   },
   {
    "rule": "14.70",
@@ -906,7 +1099,13 @@
    "family": "Correlation",
    "form": "Correlogram",
    "tier": "Reference",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 66,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-70-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-070.json"
   },
   {
    "rule": "14.71",
@@ -914,7 +1113,13 @@
    "family": "Correlation",
    "form": "Pair plot",
    "tier": "Reference",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 67,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-71-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-071.json"
   },
   {
    "rule": "14.72",
@@ -922,7 +1127,13 @@
    "family": "Correlation",
    "form": "Trajectory or speed chart",
    "tier": "Reference",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 68,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-72-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-072.json"
   },
   {
    "rule": "14.73",
@@ -930,7 +1141,13 @@
    "family": "Correlation",
    "form": "Dual-axis line",
    "tier": "Avoid",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 69,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-73-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-073.json"
   },
   {
    "rule": "14.74",
@@ -938,7 +1155,16 @@
    "family": "Uncertainty and estimates",
    "form": "Range bar or error bar",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 70,
+   "maker": "B",
+   "spec_id": "S57",
+   "status": "new",
+   "form_id": "range-bar",
+   "data_status": "Primary",
+   "reader_question": "How do women's earnings compare with men's in each state, and how sure is each figure?",
+   "dataset": "census-acs-earnings-ratio-by-state",
+   "entry_file": "work/build/guide/entries/14-074.json"
   },
   {
    "rule": "14.75",
@@ -946,7 +1172,16 @@
    "family": "Uncertainty and estimates",
    "form": "Confidence band on a line",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 71,
+   "maker": "B",
+   "spec_id": "S58",
+   "status": "new",
+   "form_id": "line-confidence-band",
+   "data_status": "Primary",
+   "reader_question": "How has the typical household's income changed, and how sure is each year's figure?",
+   "dataset": "census-cps-median-household-income",
+   "entry_file": "work/build/guide/entries/14-075.json"
   },
   {
    "rule": "14.76",
@@ -954,7 +1189,15 @@
    "family": "Uncertainty and estimates",
    "form": "Scenario directions",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 72,
+   "maker": "B",
+   "spec_id": "S06",
+   "status": "built",
+   "form_id": "scenario-directions",
+   "data_status": "V7",
+   "reader_question": "If a reform path were followed, which way would each outcome move?",
+   "entry_file": "work/build/guide/entries/14-076.json"
   },
   {
    "rule": "14.77",
@@ -962,7 +1205,16 @@
    "family": "Uncertainty and estimates",
    "form": "Fan chart",
    "tier": "Extended",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 73,
+   "maker": "B",
+   "spec_id": "S59",
+   "status": "new",
+   "form_id": "fan-chart",
+   "data_status": "Primary",
+   "reader_question": "Where do Federal Reserve officials expect unemployment to go, and how wide is the range?",
+   "dataset": "frb-fomc-projections-unemployment",
+   "entry_file": "work/build/guide/entries/14-077.json"
   },
   {
    "rule": "14.78",
@@ -970,7 +1222,13 @@
    "family": "Uncertainty and estimates",
    "form": "Hypothetical outcomes",
    "tier": "Reference",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 74,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-78-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-078.json"
   },
   {
    "rule": "14.79",
@@ -1026,7 +1284,15 @@
    "family": "Gauges and indicators",
    "form": "Big number in context",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 75,
+   "maker": "A",
+   "spec_id": "S01",
+   "status": "built",
+   "form_id": "big-number",
+   "data_status": "V7",
+   "reader_question": "Do Republicans and Democrats agree on anything about Congress?",
+   "entry_file": "work/build/guide/entries/14-085.json"
   },
   {
    "rule": "14.86",
@@ -1034,7 +1300,16 @@
    "family": "Gauges and indicators",
    "form": "Indicator row",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 76,
+   "maker": "A",
+   "spec_id": "S60",
+   "status": "new",
+   "form_id": "indicator-row",
+   "data_status": "V7",
+   "reader_question": "What are the atlas's headline figures?",
+   "dataset": "v7-numbers",
+   "entry_file": "work/build/guide/entries/14-086.json"
   },
   {
    "rule": "14.87",
@@ -1042,7 +1317,16 @@
    "family": "Gauges and indicators",
    "form": "Progress bar",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 77,
+   "maker": "A",
+   "spec_id": "S61",
+   "status": "new",
+   "form_id": "progress-bar",
+   "data_status": "Primary",
+   "reader_question": "How close did the Senate come to the 60 votes it needs to end debate on taking up H.R. 7008, the Stop Insider Trading Act?",
+   "dataset": "congress-hr7008-roll-calls",
+   "entry_file": "work/build/guide/entries/14-087.json"
   },
   {
    "rule": "14.88",
@@ -1050,7 +1334,16 @@
    "family": "Gauges and indicators",
    "form": "Step tracker",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 78,
+   "maker": "A",
+   "spec_id": "S62",
+   "status": "new",
+   "form_id": "step-tracker",
+   "data_status": "Primary",
+   "reader_question": "Where is a bill in its stages, from introduction to law?",
+   "dataset": "congress-gov-take-it-down-act-actions",
+   "entry_file": "work/build/guide/entries/14-088.json"
   },
   {
    "rule": "14.89",
@@ -1058,7 +1351,16 @@
    "family": "Gauges and indicators",
    "form": "Status chips",
    "tier": "Core",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 79,
+   "maker": "A",
+   "spec_id": "S63",
+   "status": "new",
+   "form_id": "status-chips",
+   "data_status": "V7",
+   "reader_question": "Where do the fights over removals, spending and watchdogs stand?",
+   "dataset": "v7-issue-status-checks-on-power",
+   "entry_file": "work/build/guide/entries/14-089.json"
   },
   {
    "rule": "14.90",
@@ -1066,7 +1368,16 @@
    "family": "Gauges and indicators",
    "form": "Bullet graph",
    "tier": "Extended",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 80,
+   "maker": "A",
+   "spec_id": "S64",
+   "status": "new",
+   "form_id": "bullet-graph",
+   "data_status": "Primary",
+   "reader_question": "How close is federal debt to the limit set in law?",
+   "dataset": "treasury-mspd-debt-subject-to-limit",
+   "entry_file": "work/build/guide/entries/14-090.json"
   },
   {
    "rule": "14.91",
@@ -1074,7 +1385,13 @@
    "family": "Gauges and indicators",
    "form": "Gauge",
    "tier": "Avoid",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 81,
+   "maker": "A",
+   "status": "sketch",
+   "sketch_id": "s-14-91-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-091.json"
   },
   {
    "rule": "14.92",
@@ -1082,7 +1399,13 @@
    "family": "Gauges and indicators",
    "form": "Thermometer",
    "tier": "Avoid",
-   "round": 2
+   "round": 2,
+   "data_plan_row": 82,
+   "maker": "A",
+   "status": "sketch",
+   "sketch_id": "s-14-92-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-092.json"
   },
   {
    "rule": "14.93",
