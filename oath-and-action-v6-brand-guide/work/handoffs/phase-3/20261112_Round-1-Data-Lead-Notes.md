@@ -245,3 +245,107 @@ The twelve changes in the plan's "Data lead sign-off" section, by row: 95, 108, 
 - The page-to-Node parity, the guide widths (656 to 256 px) and the kit's checks are the build's own; I did not rerun them apart from the build command.
 - S23, S32, S34, S35, S37 to S40 and the four sketches: not yet done by their makers. The built specimens' entries: 14-015 and 14-019 read for their cross-references only; 14-125, 14-127 and 14-128 not read. Chapter 15: failure plates at 390 px, the plates in a dark or forced-colors theme, the build in `--strict` mode, `v7_check.py` on the page, and the 15.9 frame breaks at 390 px were not checked; the plates' screen reader text was not read.
 - DL-B9's inflation point rests on the sidecar and the measure line, which name no adjustment; I did not open the FHFA release.
+
+## Review fix pass
+
+November 12, 2026, under `work/handoffs/phase-3/20261112_Round-1-Fix-Brief.md`, its brand and craft addendum (D3-484 to D3-488) and the main session's party test (D3-489). Rulings (a) to (g) first, as the brief asks; sign-offs follow under "Fix pass sign-offs" as each changed chart lands.
+
+### Summary
+
+- **(a) ST M4.** The four counts of the atlas's records print "Graded by the atlas, claim by claim: our count of its register of claims" (S38: "record by record ... its issue records"). Rule 13.1 holds as approved; nothing goes to Dustin.
+- **(b) Red or ink, by D3-489.** Red on the named mark: S20, S21, S23. Subject ink, others in the light fill: S17, S24, S27, S33, S34, S36. S21 and S23 retitle to name one point each; S27 names Montana and Utah. S33 reverses D3-484's listing for red; the main session confirms.
+- **(c) Row 113.** Panels at January 1 of 2010, 2014, 2019 and 2024.
+- **(d) S27's national line.** FHFA's U.S. purchase-only index from the same release, base and adjustment, dashed in the text's ink with its end label; if any of the three differs, a sentence instead of a line.
+- **(e) BC S2.** Rule 15.6 moves from Loop R18 to Loop R10; fallback Loop R7.
+- **(f) BC S13.** Row names flush left at the artboard's edge in every form that lists rows by name, at every length.
+- **(g) BC S8.** S25 takes pair B's end steps.
+
+### (a) The grade line for a count of the atlas's own records (ST M4)
+
+- **S21, S23 and S39:** "Graded by the atlas, claim by claim: our count of its register of claims"
+- **S38:** "Graded by the atlas, record by record: our count of its issue records"
+- Reason: Rule 13.1 gives a figure from the atlas "the atlas’s grade"; the atlas grades each claim and record and never a tally of them, so the line says where its grade sits and names our count as the source, the way Rule 13.1's diagram line already builds a chain's line from its steps. "Documented" goes, since it names a grade the atlas never gave and collides with the record grades printed under it.
+- The label stays Finding (a count with a source and a period). Each spec's `v7.grade` stays `documented`: the kit reads it only for the verb check (`checks.js`; `kit.js` prints `grade_line` alone), and a count of records takes record words under Rule 13.2's table. The Rule 13.3 gloss notes stay. S21's note 1 may drop its second sentence, which the grade line now carries.
+- An honest line works without changing Rule 13.1, so the question does not go to board 2. If the editor wants the case stated, Rule 14.2's grade-line spec may cite S38's line as an example; chapter 13 does not change.
+
+### (b) The titles that name a mark, read from the left and the right, with the D3-489 test
+
+The test: where a U.S. reader would tie the named mark to a party (a state, a Congress or a chamber whose majority the reader knows, an election result), the named mark takes the subject ink and every other mark the light fill (DR-48, DR-58, DR-64); everywhere else it takes the red point with its 1 px keyline on Newsprint (D3-477), the others in the light fill (R3, D3-164, D3-413).
+
+| Spec | Named mark | Test | Draw | Title | Read from the left and the right |
+|---|---|---|---|---|---|
+| S17 | The 118th Congress | A Congress whose majorities readers know | Subject ink, as drawn | Holds | "The fewest" is a record word; note 1 keeps a count of laws from reading as a verdict on output |
+| S20 | Householders under 35 | An age group | Red line with keyline | ST S13's words: "The homeownership rate for householders under 35 stood at 37.0 percent in 2025, up 2.0 points from 2015 and still the lowest of five age groups." | Rise and standing at the same length; the window crosses three administrations with no split |
+| S21 | Voting and public influence | An atlas answer | Red on PW15 alone | "Of the atlas’s 16 everyday answers, voting and public influence rests on the most claims, 42." New note 1: "Roads, bridges and transit rests on the fewest, 13." | A count of the atlas's own records; no side |
+| S23 | Public services where you live, documented bar | An atlas hub | Red on that one bar; every other bar in the light fill with its value printed | "Of the atlas’s five topic hubs, “Public services where you live” has the largest share of documented claims, 84.5 percent." Note 2: "“Voice, power and information” has the smallest share of documented claims, 67.2 percent, and the largest share of plausible claims, 18.8; work and financial security has the largest share contested, 8.2 percent." | No side |
+| S24 | Wyoming | A state | Wyoming in subject ink, other states in the light fill, the United States set apart as now | Holds (figures frozen, call 1) | The 2019 start sits before the pandemic; the window crosses two administrations with no split |
+| S27 | Montana and Utah | States | Both heavy in subject ink, each labeled; the field in the light fill; Connecticut as signed off; the nation as (d) | ST S2's: "Home prices rose in every state and DC from 1991 to 2026, most in Montana and Utah, each more than seven times their level in early 1991." `states`: `["MT", "UT", "CT"]` | Holds from either 1991 quarter: 7.42 and 7.25 times from the base, about 7.19 each from the first quarter drawn. The shared red of Rule 05.3 is moot here |
+| S33 | Customs duties | Its rise from fiscal 2025 comes from tariffs the sitting president set, which a reader ties to his party | Subject ink, the other nine sources in the light fill (reverses D3-484 for S33) | Holds | Note 1's dollars and 3.2 percent share keep the index's height from overstating the source |
+| S34 | The 116th Congress (and the 119th's dashed outline) | Congresses whose Senate majorities readers know | Subject ink; the 119th dashed as now | DL-B11's title holds; note 3 takes ST M3's dated count | Both counts are records; the pre-1971 sentence gives the long view |
+| S36 | FF PAC | A committee that spent to elect one presidential candidate, and BC M3 now prints the party of three committees in the same register | Subject ink, as drawn | Holds | Chosen by rank, every committee named as filed |
+
+- Why S21 and S23 retitle: Rule 14.6 gives the red to one point, and the most and the fewest are two points. Rule 05.3's "One job may take several marks" covers marks that share one role, such as a tie; it does not cover both ends of a ranking.
+- The chart notes for the three red charts: S20 "Householders under 35, the group the title names, are drawn in red with a dark outline; the other four groups are light gray." S21 "Voting and public influence, which the title names, is in red with a dark outline; the other 15 answers are light gray." S23 "The documented bar for public services where you live, which the title names, is in red with a dark outline; every other bar is light gray, with its value printed." The ink charts keep their present chart notes.
+- Outside the list, for the editor's stated case: S19 (Massachusetts and Mississippi) and S26 (the 119th House) already draw their named marks in ink, as the test asks. S02 (the poverty measure's line, round 0) and S41 (the all-voters row) name a measure and a group no party owns, so the test allows red; both are approved as built and stay unless the main session reopens them. Rule 14.6's correct plate names the Ninth Circuit, a court chosen by its count of judges; it passes the test as written.
+- Entry 14.16 (D3-484): its words cite Rule 14.6's two cases rather than one color; its own specimen, S17, shows the ink case.
+
+### (c) Row 113's panels
+
+- **January 1 of 2010, 2014, 2019 and 2024**, all from `dol-state-minimum-wage-classes.csv`.
+- Reason: the latest as-of day and every fifth year back, a rule fixed before reading the classes (S27's own rule), with 2009 moved to 2010, the first January 1 under the $7.25 federal rate (change 10). Each panel differs: above $7.25 in 15, 24, 30 and 31 of 51 (counted by script). 2010, 2015, 2020 and 2024 would spend a panel on two identical maps; 2010, 2013, 2015 and 2024 would pick years by where states moved.
+- A note under the panels: "No state changed class from January 1, 2015 to January 1, 2020; Virginia rose above $7.25 in 2021." V7's July 1, 2026 count prints as a sourced sentence beside the panels, as the research lead proposed, never as a fifth map.
+- If Dustin saves the Department's current state table, the last panel takes its as-of day, the first three stay, and the note names both as-of days.
+
+### (d) S27's national line (ST S2)
+
+- Data: FHFA's United States purchase-only index, seasonally adjusted, quarterly, first quarter 1991 = 100, from the same release as the state file, at the same eight second quarters. If the release's U.S. series differs in base, adjustment or frequency (a monthly January 1991 base, say), draw no line: print the national figure as a note with its own source, since two bases on one scale mislead.
+- Drawing: one dashed line in the text's ink at the field's thin weight, with the end label "United States {y}" in regular weight, set apart as S19 and S24 set theirs (DR-64). Pattern and label keep it apart from the 100 base line, which takes the reference role (CD B-S2), and from Montana and Utah's heavy solid lines, also in grayscale.
+- Words: the measure line reads "50 states, DC and the United States"; the chart note adds "Dashed line: the United States, {value} in 2026."; the alt text gives the national value; the table puts the United States first, set apart, as S24 does. The title stays as (b) gives it. The national line counts toward no state.
+
+### (e) Rule 15.6's loop (BC S2)
+
+- Move both 15.6 plates, correct and failure, from Loop R18 to **Loop R10, "Safe seats shift accountability to small primary electorates"**. Loop B5 stays beside it.
+- Reason: R10 sits outside executive power, reads the same from either side (both parties hold safe seats and draw maps), and teaches the count better: its four steps run plus, minus, minus, plus, so the reader counts two minus signs among plus signs to find "reinforcing". V7 by script: L08 (C1 to C2, plus, documented, short delay), L25 (C2 to C3, minus, well supported, short), L53 (C3 to C4, minus, plausible, medium), L42 (C4 to C1, plus, documented, medium); one layer, core; closed, every step numbered; least certain step L53, so the evidence label reads Plausible.
+- Fallback if four steps do not fit at 296 px: Loop R7, "Service performance and earned trust can reinforce each other" (L20 and L21, both plus, both plausible), an even count of zero, with the caption giving its count. The opener keeps Loop R13, so executive power appears once in chapter 15's first plates. No finding is dropped (DR-124).
+
+### (f) Row names in long lists (BC S13)
+
+- One alignment for both makers: row names flush left at the artboard's left edge in every form that lists rows by name beside its plot (dot plot, lollipop, change lollipop, ranked bar, ranked register, grouped bar, diverging bar), at every length; the plot starts at one x shared by every row. At phone width, names sit above their marks where the form already sets them so.
+- Reason: a reader scans a list down a straight left edge, and S03, S19, S21 and S22 already set it.
+- S24: drop the key and keep the labeled +100 gridline, since a reader reads the value where the scale is; if the phone drawing prints no gridline label, the key stays at phone width only.
+
+### (g) S25's fills (BC S8)
+
+- Pair B's end steps on both grounds, one side for losses and the other for gains, named in the chart note as DL-B4 set; the Veterans Affairs bar ends 8 px short of the edge.
+- Reason: in this family a pale fill means a mark the title does not name (R3), and S25 names no bar, so its bars should read as data. Each bar prints its value, and at 37 rows most bars are slivers, so no dark block forms. With the end steps, chart note 1's "Prussian blue" and "Verdigris green" become true.
+
+### Fix pass decisions
+
+- D3-xxx | A count of the atlas's records prints "Graded by the atlas, claim by claim" (or "record by record") with our count as the source | The atlas grades records, never tallies; Rule 13.1's atlas clause applied as written
+- D3-xxx | Red on S20, S21 and S23; subject ink on S17, S24, S27, S33, S34 and S36 | D3-489's party test applied chart by chart
+- D3-xxx | S33's customs duties line takes the subject ink | Its rise is the sitting president's tariff policy, which readers tie to his party; reverses D3-484 for S33 alone
+- D3-xxx | S21 and S23 name one point in the title | Rule 14.6 gives the red to one point; Rule 05.3's several marks serve one role, such as a tie
+- D3-xxx | Row 113's panels are January 1, 2010, 2014, 2019 and 2024 | The latest year and every fifth year back, fixed before reading the classes; four distinct maps
+- D3-xxx | S27's national line is drawn only from the same release, base and adjustment | Two bases on one scale mislead
+- D3-xxx | Rule 15.6 draws Loop R10, with R7 as the fallback | Outside executive power, and its mixed signs teach the minus count
+- D3-xxx | Row names flush left in every listing form | One alignment for the family; four forms already use it
+- D3-xxx | S25 takes pair B's end steps | A pale fill means "not named" in this family
+
+### Fix pass requests
+
+- **Maker A.** S20, S21 and S23 take the red point and the chart notes above; S21 and S23 take the titles and notes above; S21, S23, S38 and S39 take the grade lines in (a); S17 and S36 stay in ink; entry 14.16 cites Rule 14.6's two cases.
+- **Maker B.** S24's Wyoming and S34's 116th Congress in subject ink; S27's title, `states`, two heavy lines and national line as (b) and (d); S33's customs duties line in subject ink; S25's end steps; row names flush left; S24's key.
+- **Engineer.** `labels.point` in `slope` (S20), `lollipop` (S21) and `small-multiple-bars` (S23, naming panel and category); a set-apart national line in `line-field` (`labels.apart`), dashed, counted as no state.
+- **Research lead.** FHFA's U.S. purchase-only quarterly series from the state file's release, with a source line variant naming both; a classes variant `panels_2010_2014_2019_2024` naming the four January 1 dates; row 113's plan notes (ST S12).
+- **Systems designer.** Rule 15.6's correct and failure plates on Loop R10, or R7 if four steps do not fit.
+- **Editor.** Rule 14.6's stated case words D3-489's test; its builders line names `labels.point` for the red point and `labels.named` for the subject ink; no change to Rule 13.1.
+- **Main session.** Confirm S33's reversal of D3-484.
+
+### Fix pass: tested and not tested
+
+- Tested: the nine specs' titles, named marks, grade lines and chart notes read from the files by script; Rules 13.1, 13.2, 13.3, 13.6, 14.6 and 05.3 read from the chapter files; the kit's red handling read in code (`parts.js` `named_fill`, the working-red count in `checks.js`, the grade line in `kit.js`); the classes file counted by class and year and every change of class listed by script; V7's 22 loops listed with signs, grades and closures, and R10's four links read whole.
+- Not tested: no kit build or capture in this pass; whether the release holds a quarterly U.S. series at S27's base; R10 drawn at 296 px; pair B's end steps measured on S25; the S27 end labels at 390 px with two heavy lines 17 index points apart.
+
+### Fix pass sign-offs
+
+None yet; each changed chart is signed off here as it lands.
