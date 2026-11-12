@@ -176,8 +176,10 @@
   // point (ED-E1, round 1): the one mark a title names in working red takes the point role, with the 1 px keyline on
   // Newsprint where Pillar Red measures 2.96 to 1 (fn.keyline(row) gives the stroke options to merge into the mark's).
   P.named_fill = function (c, named, field, base, point) {
-    var list = named === undefined || named === null ? null : [].concat(named).map(String);
     var pt = point === undefined || point === null ? null : String(point);
+    // ED-E12 (second pass): a point with nothing else named names the point alone, so one key gives the red point and the
+    // light fill on every other mark (palette rule R3); a spec that sets both keys draws as before
+    var list = named === undefined || named === null ? (pt !== null ? [pt] : null) : [].concat(named).map(String);
     var other = c.ground === 'charcoal' ? 'context' : 'light-fill';
     var is_named = function (r) { return !list || list.indexOf(String(r[field])) >= 0; };
     var is_point = function (r) { return pt !== null && String(r[field]) === pt; };
