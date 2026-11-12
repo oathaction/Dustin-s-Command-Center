@@ -210,3 +210,22 @@ Later in fix pass 2, from the research lead's answers:
 D3-xxx | S06 keeps "by 2036" and cites V7's outcomes note for it | The research lead offered citing or dropping; the sidecar's source line says "to 2036", and a cited year keeps the title and the source line in step
 
 Rebuilt S01, S04, S06 and S13: each passes. Board folder refreshed. R7 and R8 are closed; the open requests are E27, E29, E30 and E31.
+
+The engineer's X12 to X18 and E13, November 12, after its kit fixes landed:
+
+| Request | What changed | Spec |
+|---|---|---|
+| X12 | Already in place: `labels.cut_at: " ("`; the first note says the bands show on wide screens, and the phone note describes the dated lists | S09 |
+| X13 | Held. The federal row's peak label overlaps its row label at 390 px and narrower, where the form sets both on one line, so the build fails with it; the third note gives the peak in words. The ready setting (`"peak": "Peak: {value} in {x}"`, `peak_field: "employees_thousands"`) is in the spec's `notes_internal`. E32 | S13 |
+| X14 | `scale.y` runs from −200,000 to +850,000, as Phase 2's did; on phones the in-plot "Three-month average" hides and the key names the line | S14 |
+| X15 | Heads inside drawings in sentence case: "By party", "The votes on H.R. 7008, 2026", "How to read an arrow", "The total, its two parts and federal jobs", "Private industries, by percent gain" | S01, S11, S13 |
+| X16 | Already in place from fix pass 2: the `empty` words, which the kit now prints | S02, S05, S06, S07, S14 |
+| X17 | `labels.pitch: 35` | S10 |
+| X18 | The House label names both provisions in the vote block; every segment reads "for" or "against" (E27); the measure line drops its interim words | S01 |
+| E13 | Not built by the kit; S05 keeps its gap note | S05 |
+
+- **E32. The sparkline table's peak label at phone width (S13).** Set the peak's words under the sparkline, or right of the row label when they fit, so "Peak: 3,013,000 in October 2024" can print at every width.
+
+Before setting these, I rechecked every figure my words print against the unrounded data (D3-95): S13's totals and industries, and S11, S12 and S15's margins and shifts all print as before.
+
+Rebuilt all 16 with `oa-chart.mjs build --all` at 00:58 UTC, after the engineer's last kit change (00:56): 16 of 16 pass. Board folder refreshed, 192 files, 28 MB. S01's vote block viewed at 1440. Not viewed after this round of changes: S10, S11, S13 and S14's captures.

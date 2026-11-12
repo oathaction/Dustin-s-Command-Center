@@ -90,7 +90,7 @@ def main():
         ("Tables compressed too", ch14 - FINISHED * both_save + EXPANDER, ask(ch14 - FINISHED * both_save + EXPANDER),
          "With scripts off, every chart's table (title, description, notes and source line stay)"),
         ("The smaller photo copies", ch14, ask(ch14, photos),
-         f"Chapter 01's {nph} shown photographs resampled to 1,200 px wide, frees {photos / MB:.3f} MB of the page"),
+         f"A visible resample: chapter 01's photographs ({nph} on the page, one shown twice) at 1,200 px wide, which frees {photos / MB:.3f} MB of the page"),
     ]
     out = {"page_bytes": rep["bytes"], "projected_page": rep["weight"]["projection"]["projected_bytes"], "room": round(room),
            "chapter_14_now": ch14, "stop": STOP, "plates": n, "island_saving_per_plate": round(isl_save),

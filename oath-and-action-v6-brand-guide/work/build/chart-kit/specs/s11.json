@@ -108,7 +108,7 @@
     },
     "axis_unit": "points",
     "how": {
-      "title": "HOW TO READ AN ARROW",
+      "title": "How to read an arrow",
       "sample": {
         "from": 0,
         "to": 10,
@@ -133,7 +133,8 @@
     "states: the two the title names. Checked by script: Washington 0.98, New York 10.54; 39 of 51 states moved less than the nation's 5.93.",
     "The second note drops Phase 2's 'more than the margin in', which read as the margin itself; the figure compared is the shift.",
     "X2: Phase 2's reading aid ('How to read an arrow'), its side note on the six changes of leader near Wisconsin and the axis unit return; labels now sit away from the Even line (E19).",
-    "Statistics P2-S8: the rounding sentence."
+    "Statistics P2-S8: the rounding sentence.",
+    "X15: the reading aid's head in sentence case."
   ],
   "formats": {
     "value": "signed:1",
