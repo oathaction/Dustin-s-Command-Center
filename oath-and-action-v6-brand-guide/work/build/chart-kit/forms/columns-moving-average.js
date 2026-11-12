@@ -47,7 +47,7 @@
           c.rect(xc(i) - bw / 2 + 0.5, Math.min(yz, yv) + 0.5, Math.max(0, bw - 1), Math.max(0, Math.abs(yv - yz) - 1), { stroke: 'context', mark: false });
         } else c.rect(xc(i) - bw / 2, Math.min(yz, yv), bw, Math.abs(yv - yz), Object.assign({ fill: 'context' }, o));
       });
-      P.zero_line(c, ys(0), x0, x1);
+      P.zero_line(c, ys, x0, x1);
       // the average: solid through final months, dashed from the first segment that reaches a preliminary month
       if (ea) {
         var pts = rows.map(function (r, i) { return r[ea] === null ? null : [xc(i), ys(r[ea]), is_pre(r)]; });

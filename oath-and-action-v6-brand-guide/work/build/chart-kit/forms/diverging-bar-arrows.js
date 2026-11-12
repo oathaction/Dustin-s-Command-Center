@@ -5,7 +5,8 @@
  * encode: key (id), x (year or label for the row), left (number), right (number): the two sides' counts; the advantage is
  * right minus left. labels: left_title, right_title (words over each half), left_name, right_name (the side's name, set
  * before the figure on the first row and on each row where the advantage changes sides), value (words at each
- * arrow's tip, with {value}). formats: x (the row's
+ * arrow's tip, with {value}), lit (the key of the row a title names: its figure is set bold with the side's name, at
+ * every width). formats: x (the row's
  * label, "year" by default), value, tick. Draws through K.parts.arrow, the shared arrow. Maker B, round 1. */
 (function (K) {
   'use strict';
@@ -14,7 +15,7 @@
     name: 'Diverging Bar With Arrows',
     family: 'shift-and-swing',
     encode: { key: 'id', x: 'time', left: 'number', right: 'number' },
-    labels: ['left_title', 'right_title', 'left_name', 'right_name', 'value'],
+    labels: ['left_title', 'right_title', 'left_name', 'right_name', 'value', 'lit'],
     phone: 'same',
     draw: function (c) {
       var L = c.labels, f = c.spec.formats || {}, W = c.width, ek = c.field('key'), ex = c.field('x'), elf = c.field('left'), erg = c.field('right');
@@ -27,10 +28,11 @@
       nk = [0, Math.max(mx, ticks[ticks.length - 1])];
       var flips = rows.map(function (r, i) { return i === 0 || (adv(r) > 0) !== (adv(rows[i - 1]) > 0); });
       // the figure at each tip; on the first row and each row where the majority changed sides, the party's name before it
-      var named = true;
+      var named = true, lit = L.lit === undefined || L.lit === null ? null : String(L.lit);
+      var is_lit = function (r) { return lit !== null && String(r[ek]) === lit; };
       var words = function (r, i) {
         var v = String(L.value || '{value}').replace('{value}', K.fmt(Math.abs(adv(r)), f.value || 'integer')), pn = adv(r) > 0 ? L.right_name : L.left_name;
-        return named && flips[i] && pn ? pn + ' ' + v : v;
+        return ((named && flips[i]) || is_lit(r)) && pn ? pn + ' ' + v : v;
       };
       var lw = 0;
       rows.forEach(function (r) { lw = Math.max(lw, c.measure(K.fmt(r[ex], f.x || 'year'), 'tick', 400, true)); });
@@ -85,7 +87,7 @@
         var ry = top + i * pitch + pitch / 2, a = adv(r), xe = xs(a);
         c.text(0, ry + size * 0.35, K.fmt(r[ex], f.x || 'year'), { role: 'tick', tnum: true });
         if (a) K.parts.arrow(c, xc, xe, ry, { data: { key: r[ek], field: 'advantage', value: a, party: a > 0 ? 'right' : 'left' } });
-        c.text(a >= 0 ? xe + 7 : xe - 7, ry + size * 0.35, words(r, i), { role: 'label', weight: flips[i] ? 700 : 400, anchor: a >= 0 ? 'start' : 'end', tnum: true, halo: true });
+        c.text(a >= 0 ? xe + 7 : xe - 7, ry + size * 0.35, words(r, i), { role: 'label', weight: flips[i] || is_lit(r) ? 700 : 400, anchor: a >= 0 ? 'start' : 'end', tnum: true, halo: true });
       });
       c.height(end + 4);
     }

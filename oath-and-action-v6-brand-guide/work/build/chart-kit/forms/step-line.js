@@ -33,7 +33,7 @@
       var x0 = gut + 8, x1 = W - (c.phone ? 4 : 8);
       var ys = K.scale.linear([vs.lo, vs.hi], [bot, top]), xs = K.scale.linear([t0[0], tend], [x0, x1]);
       P.value_grid(c, ys, ticks, f.y_tick || 'integer', x0, x1, gut);
-      P.zero_line(c, ys(0), x0, x1);
+      P.zero_line(c, ys, x0, x1);
       // the second amount, thin and in the context ink, only where it differs from the main one
       if (e2) {
         rows.forEach(function (r, i) {

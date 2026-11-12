@@ -42,7 +42,7 @@
       var x0 = gut + 8, x1 = W - (c.phone ? 8 : 16);
       var ys = K.scale.linear([vs.lo, vs.hi], [bot, top]), xs = K.scale.linear([tlo, thi], [x0, x1]);
       P.value_grid(c, ys, ticks, f.y_tick || 'number', x0, x1, gut);
-      P.zero_line(c, ys(0), x0, x1);
+      P.zero_line(c, ys, x0, x1);
       // segments: a break_end row closes the line; a break_start row opens a new one
       var be = c.labels.break_end, bs = c.labels.break_start;
       order.forEach(function (k) {

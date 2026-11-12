@@ -34,7 +34,7 @@
       var x0 = gut + 8, x1 = W - Math.ceil(lw) - 16;
       var ys = K.scale.linear([vs.lo, vs.hi], [bot, top]), xs = K.scale.linear([tlo, thi], [x0, x1]);
       P.value_grid(c, ys, ticks, f.tick || 'integer', x0, x1, gut);
-      P.zero_line(c, ys(0), x0, x1);
+      P.zero_line(c, ys, x0, x1);
       if (L.base !== undefined) c.line(x0, ys(L.base), x1, ys(L.base), { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
       var path = function (k) { return by[k].map(function (r, i) { return (i ? 'L' : 'M') + K.round(xs(K.time(r[ex]))) + ',' + K.round(ys(r[ey])); }).join(''); };
       // the field in gray, the named gray lines a step darker, then the lit line on its keyline

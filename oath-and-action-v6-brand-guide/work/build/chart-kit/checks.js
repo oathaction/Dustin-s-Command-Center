@@ -239,6 +239,14 @@ function check_drawing(spec, d, tok, where) {
   d.guard.forEach(g => f.push('layout guard: ' + g + at));
   d.warnings.forEach(w => f.push('form: ' + w + at));
   const W = d.width, H = d.height;
+  // K-S2 (round 1 fix pass): every shape the form draws, a mark a reader reads or not (a zero line, a gridline, a band),
+  // sits inside the drawing's box; the drawing's own overflow would paint it over the figure's words (CD RM1)
+  for (const b of d.ink || []) {
+    if (b.x < -1 || b.y < -1 || b.x + b.w > W + 1 || b.y + b.h > H + 1) {
+      f.push(`chart: a ${b.kind}${b.role ? ' (' + b.role + ')' : ''} drawn outside its drawing, at x ${Math.round(b.x)} to ${Math.round(b.x + b.w)}, y ${Math.round(b.y)} to ${Math.round(b.y + b.h)} in a ${W} by ${H} drawing${at}`);
+      break;
+    }
+  }
   for (const m of d.marks) {
     const key = (m.data && (m.data.key || m.data['key'])) || m.kind;
     if (m.x < -1 || m.y < -1 || m.x + m.w > W + 1 || m.y + m.h > H + 1) f.push(`chart: mark ${key} outside its drawing${at}`);

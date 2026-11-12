@@ -42,7 +42,7 @@
       var x0 = gut + 8, x1 = W - Math.ceil(lw) - 22;
       var ys = K.scale.linear([vs.lo, vs.hi], [bot, top]), xs = K.scale.linear([tlo, thi], [x0, x1]);
       P.value_grid(c, ys, ticks.filter(function (t) { return t !== 100; }), f.tick || 'integer', x0, x1, gut);
-      P.zero_line(c, ys(0), x0, x1);
+      P.zero_line(c, ys, x0, x1);
       // the base line at 100, heavier, with its words
       c.line(x0, ys(100), x1, ys(100), { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
       c.text(gut, ys(100) + c.size('tick') * 0.35, K.fmt(100, f.tick || 'integer'), { role: 'tick', anchor: 'end', tnum: true });

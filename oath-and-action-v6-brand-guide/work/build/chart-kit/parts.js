@@ -49,7 +49,14 @@
       c.text(gutter_x, y + c.size('tick') * 0.35, K.fmt(v, P.tick_fmt(c, ticks, i, fmt)), { role: 'tick', anchor: 'end', tnum: true });
     });
   };
+  // The zero line. Pass the value scale (a K.scale.linear) and the line draws only where the scale holds zero, so a scale
+  // that starts above zero never draws a line far under its plot (CD RM1); a number is the line's place, drawn as given.
   P.zero_line = function (c, y, x0, x1) {
+    if (typeof y === 'function') {
+      var d = y.domain || [0, 0];
+      if (Math.min(d[0], d[1]) > 0 || Math.max(d[0], d[1]) < 0) return;
+      y = y(0);
+    }
     c.line(x0, y, x1, y, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
   };
 

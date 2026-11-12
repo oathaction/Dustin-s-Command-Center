@@ -318,9 +318,29 @@
     this.marks = [];
     this.leaders = [];
     this.warnings = [];
+    this.ink = [];   // K-S2 (round 1 fix pass): the box of every shape drawn, marks or not, so the check finds one outside the drawing
+    this._tf = 0;
     this._h = 0;
   }
   K.Ctx = Ctx;
+  var SHAPE_LIFT = 12;
+  // a shape's box for the drawing-edge check; shapes inside a moved group (a map's projection) are left out
+  Ctx.prototype._ink = function (kind, x, y, w, h, o) {
+    if (this._tf) return;
+    this.ink.push({ kind: kind, x: x, y: y, w: w, h: h, role: (o && (o.fill || o.stroke)) || '' });
+  };
+  // the box of a path drawn with absolute M, L, H and V commands only (lines and areas); null for curves
+  function path_box(d) {
+    if (/[^MLHVZ0-9.,\s+eE-]/.test(d)) return null;
+    var re = /([MLHVZ])([^MLHVZ]*)/g, m, x = 0, y = 0, x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    while ((m = re.exec(d))) {
+      var n = (m[2].match(/-?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?/gi) || []).map(Number);
+      if (m[1] === 'H') n.forEach(function (v) { x = v; x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); });
+      else if (m[1] === 'V') n.forEach(function (v) { y = v; y0 = Math.min(y0, y); y1 = Math.max(y1, y); x0 = Math.min(x0, x); x1 = Math.max(x1, x); });
+      else for (var i = 0; i + 1 < n.length; i += 2) { x = n[i]; y = n[i + 1]; x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+    }
+    return x0 <= x1 ? [x0, y0, x1 - x0, y1 - y0] : null;
+  }
   function attrs(o) {
     var s = '';
     for (var k in o) if (o[k] !== undefined && o[k] !== null && o[k] !== false) s += ' ' + k + '="' + esc(o[k]) + '"';
@@ -352,11 +372,13 @@
   };
   Ctx.prototype._push = function (s) { (this._grp || this._els).push(s); };
   Ctx.prototype.group = function (o) {
-    var self = this, prev = this._grp, buf = [];
+    var self = this, prev = this._grp, buf = [], tf = !!(o && o.transform);
     this._grp = buf;
+    if (tf) this._tf++;
     return {
       end: function () {
         self._grp = prev;
+        if (tf) self._tf--;
         var a = data_of(o || {}, { 'class': cls_of(o || {}), transform: o && o.transform });
         self._push('<g' + attrs(a) + '>' + buf.join('') + '</g>');
       }
@@ -370,12 +392,14 @@
     var a = data_of(o, { x: r1(x), y: r1(y), width: r1(w), height: r1(h), 'class': cls_of(o), rx: o.rx, 'stroke-width': o.width, 'stroke-dasharray': o.dash });
     if (o.pattern) a.fill = 'url(#' + this.uid + '-' + o.pattern + ')';
     this._push('<rect' + attrs(a) + '/>');
+    this._ink('rect', x, y, w, h, o);
     if (o.mark !== false) this.mark({ kind: o.kind || 'rect', x: x, y: y, w: w, h: h, fill: o.fill, stroke: o.stroke, data: o.data || {}, zero: o.zero, axis: o.axis });
   };
   Ctx.prototype.line = function (x1, y1, x2, y2, o) {
     o = o || {};
     var a = data_of(o, { x1: r1(x1), y1: r1(y1), x2: r1(x2), y2: r1(y2), 'class': cls_of(o), 'stroke-width': o.width, 'stroke-dasharray': o.dash });
     this._push('<line' + attrs(a) + '/>');
+    this._ink('line', Math.min(x1, x2), Math.min(y1, y2), Math.abs(x2 - x1), Math.abs(y2 - y1), o);
     // a leader is kept for the guard, which fails one that runs through a label (D3-93)
     if (o.stroke === 'leader' && !this._grp_t) this.leaders.push({ x1: x1, y1: y1, x2: x2, y2: y2 });
     if (o.mark !== false) this.mark({ kind: o.kind || 'line', x: Math.min(x1, x2), y: Math.min(y1, y2), w: Math.abs(x2 - x1), h: Math.abs(y2 - y1), stroke: o.stroke, data: o.data || {} });
@@ -385,6 +409,8 @@
     var a = data_of(o, { d: d, 'class': cls_of(o), 'stroke-width': o.width, 'stroke-dasharray': o.dash });
     if (o.pattern) a.fill = 'url(#' + this.uid + '-' + o.pattern + ')';
     this._push('<path' + attrs(a) + '/>');
+    var pb = path_box(String(d)) || box;
+    if (pb) this._ink('path', pb[0], pb[1], pb[2], pb[3], o);
     if (box && o.mark !== false) this.mark({ kind: o.kind || 'path', x: box[0], y: box[1], w: box[2], h: box[3], fill: o.fill, stroke: o.stroke, data: o.data || {} });
   };
   Ctx.prototype.datum = function (x, y, o) {
@@ -395,6 +421,7 @@
     o = o || {};
     var a = data_of(o, { cx: r1(cx), cy: r1(cy), r: r2(r), 'class': cls_of(o), 'stroke-width': o.width });
     this._push('<circle' + attrs(a) + '/>');
+    this._ink('circle', cx - r, cy - r, 2 * r, 2 * r, o);
     if (o.mark !== false) this.mark({ kind: o.kind || 'circle', x: cx - r, y: cy - r, w: 2 * r, h: 2 * r, r: r, fill: o.fill, stroke: o.stroke, data: o.data || {}, area_of: o.area_of });
   };
   Ctx.prototype.polygon = function (pts, o) {
@@ -402,6 +429,7 @@
     var xs = pts.map(function (p) { return p[0]; }), ys = pts.map(function (p) { return p[1]; });
     var a = data_of(o, { points: pts.map(function (p) { return r1(p[0]) + ',' + r1(p[1]); }).join(' '), 'class': cls_of(o) });
     this._push('<polygon' + attrs(a) + '/>');
+    this._ink('polygon', Math.min.apply(null, xs), Math.min.apply(null, ys), Math.max.apply(null, xs) - Math.min.apply(null, xs), Math.max.apply(null, ys) - Math.min.apply(null, ys), o);
     if (o.mark !== false) this.mark({ kind: o.kind || 'polygon', x: Math.min.apply(null, xs), y: Math.min.apply(null, ys), w: Math.max.apply(null, xs) - Math.min.apply(null, xs), h: Math.max.apply(null, ys) - Math.min.apply(null, ys), fill: o.fill, data: o.data || {} });
   };
   Ctx.prototype.text = function (x, y, words, o) {
@@ -490,15 +518,19 @@
     for (var g in (spec.encode || {})) if (!(g in def.encode)) c.warn('encode.' + g + ' is not a name form ' + spec.form + ' reads');
     for (var l in (spec.labels || {})) if (def.labels.indexOf(l) < 0) c.warn('labels.' + l + ' is not a name form ' + spec.form + ' reads');
     def.draw(c);
-    // a text whose line box rises above the top edge moves the whole drawing down by that much, so nothing is cut
+    // a text whose line box rises above the top edge moves the whole drawing down by that much, so nothing is cut; so does
+    // a shape's short stub (an axis line run past its first bar, up to SHAPE_LIFT px: K-S2); a shape further out is a fault
+    // the check reports
     var lift = 0;
     c.texts.forEach(function (b) { lift = Math.max(lift, -(b.top !== undefined ? b.top : b.y)); });
+    c.ink.forEach(function (b) { if (-b.y <= SHAPE_LIFT) lift = Math.max(lift, -b.y); });
     if (lift > 0.25) {
       var dy = Math.ceil(lift);
       c._els = ['<g transform="translate(0,' + dy + ')">' + c._els.join('') + '</g>'];
       c.texts.forEach(function (b) { b.y += dy; if (b.top !== undefined) { b.top += dy; b.bottom += dy; } });
       c.marks.forEach(function (m) { m.y += dy; if (m.zero !== undefined && m.axis !== 'x') m.zero += dy; });
       c.leaders.forEach(function (l) { l.y1 += dy; l.y2 += dy; });
+      c.ink.forEach(function (b) { b.y += dy; });
       c._h += dy;
     }
     // the drawing is as tall as its tallest part: the form's height, every text and every mark
@@ -514,7 +546,7 @@
     var svg = '<svg xmlns="http://www.w3.org/2000/svg" class="oac-svg' + (fc.defs ? ' oac-u-' + c.uid : '') + '" viewBox="0 0 ' + width + ' ' + h + '" width="' + width + '" height="' + h + '"' +
       ' role="img" data-oa-form="' + esc(spec.form) + '" data-oa-width="' + width + '"' + (opts.label_id ? ' aria-labelledby="' + esc(opts.label_id) + '"' : '') + '>' +
       title + desc + fc.style + defs + c._els.join('') + '</svg>';
-    return { svg: svg, width: width, height: h, texts: c.texts, marks: c.marks, leaders: c.leaders, keys: c.keys || [], warnings: c.warnings, guard: guard, phone: c.phone,
+    return { svg: svg, width: width, height: h, texts: c.texts, marks: c.marks, leaders: c.leaders, ink: c.ink, keys: c.keys || [], warnings: c.warnings, guard: guard, phone: c.phone,
       fc: K.FC, fc_on_dark: K.FC_ON_DARK };
   };
 

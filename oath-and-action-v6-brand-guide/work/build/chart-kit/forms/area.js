@@ -36,7 +36,7 @@
       c.path(line, { stroke: 'surface', width: c.t('line-subject') + 2 * c.t('keyline'), mark: false });
       c.path(line, { stroke: 'subject', width: c.t('line-subject'), data: { field: ey } }, [x0, top, x1 - x0, plotH]);
       rows.forEach(function (r, i) { c.datum(pts[i][0], pts[i][1], { data: { key: r[ex], field: ey, value: r[ey] } }); });
-      P.zero_line(c, yz, x0, x1);
+      P.zero_line(c, ys, x0, x1);
       // the words that name the fill, set inside it under the line
       if (c.labels.area) {
         var at = c.labels.area_at !== undefined ? rows.filter(function (r) { return String(r[ex]) === String(c.labels.area_at); })[0] : rows[Math.floor(rows.length / 2)];

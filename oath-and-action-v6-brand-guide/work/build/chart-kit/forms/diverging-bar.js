@@ -1,7 +1,8 @@
 /* Diverging bar (coverage plan 3.2, core; S25). Gains and losses from one zero line: a bar to the left for a loss and to
  * the right for a gain, each starting on zero (Rule 14.4), in the order the spec sorts them. Position and the printed sign
- * carry the direction; the fill repeats it in diverging pair B's middle steps, Prussian for a loss and Verdigris for a
- * gain (DR-54). Each figure sits just across the zero line from its bar, so every figure lines up on zero.
+ * carry the direction; the fill repeats it in diverging pair B's end steps, Prussian for a loss and Verdigris for a
+ * gain (DR-54). Each figure sits just across the zero line from its bar, so every figure lines up on zero. Row names
+ * sit flush left, as the family's long ranked lists set them, and the scale ends 8 px inside the drawing's edge.
  * encode: key (code), label (text, optional when labels.names covers every drawn key), value (number), include (boolean,
  * optional: rows where it is false stay in the table and out of the drawing). labels: names ({key: words} for the drawn
  * rows), apart (a key, such as a total, printed in words above the bars and drawn without a bar), apart_words (with
@@ -32,7 +33,7 @@
       rows.forEach(function (r) { nw = Math.max(nw, c.measure(name(r), 'label')); vw = Math.max(vw, c.measure(words(r[ev]), 'label', 400, true)); });
       // a name column beside the bars, or each name above its bar where the column would crowd the bars
       var stacked = W - nw - 14 < W * 0.5;
-      var x0 = stacked ? 0 : Math.ceil(nw + 14), x1 = W - 2;
+      var x0 = stacked ? 0 : Math.ceil(nw + 14), x1 = W - 8;
       // the figures sit across zero from their bars, so each side keeps room for the other side's widest figure
       var pw = x1 - x0, needR = 0, needL = 0;
       rows.forEach(function (r) { var w = c.measure(words(r[ev]), 'label', 400, true) + 8; if (r[ev] < 0) needR = Math.max(needR, w); else needL = Math.max(needL, w); });
@@ -72,9 +73,9 @@
       rows.forEach(function (r, i) {
         var v = r[ev], by = pos[i].by;
         if (stacked) c.text(0, pos[i].ny, name(r), { role: 'label', weight: 600, max: W + 1 });
-        else c.text(x0 - 12, by + bh / 2 + size * 0.35, name(r), { role: 'label', anchor: 'end' });
+        else c.text(0, by + bh / 2 + size * 0.35, name(r), { role: 'label' });
         var xv = xs(v);
-        c.rect(Math.min(xz, xv), by, Math.max(Math.abs(xv - xz), 1), bh, { fill: v < 0 ? 'div-2' : 'div-4', kind: 'bar', axis: 'x', zero: xz, data: { key: r[ek], field: ev, value: v } });
+        c.rect(Math.min(xz, xv), by, Math.max(Math.abs(xv - xz), 1), bh, { fill: v < 0 ? 'div-1' : 'div-5', kind: 'bar', axis: 'x', zero: xz, data: { key: r[ek], field: ev, value: v } });
         // the figure across zero from its bar
         var tx = v < 0 ? xz + 6 : xz - 6;
         c.text(tx, by + bh / 2 + size * 0.35, words(v), { role: 'label', anchor: v < 0 ? 'start' : 'end', tnum: true, halo: true });

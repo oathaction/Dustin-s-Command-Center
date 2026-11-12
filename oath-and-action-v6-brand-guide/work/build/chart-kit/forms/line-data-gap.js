@@ -40,7 +40,7 @@
         c.rect(ga, top, Math.max(2, gb - ga), bot - top, { fill: 'track', data: { key: rows[g.a][ex], field: ey, gap: 'yes' } });
       });
       P.value_grid(c, ys, ticks, f.y_tick || 'number', x0, x1, gut);
-      P.zero_line(c, ys(0), x0, x1);
+      P.zero_line(c, ys, x0, x1);
       // the line, in segments that stop at each gap
       var segs = [[]];
       rows.forEach(function (r, i) {

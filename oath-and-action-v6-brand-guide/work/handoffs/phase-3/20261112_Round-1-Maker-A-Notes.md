@@ -152,3 +152,7 @@ November 12, 2026. The editor's 42 changes (its notes, "Requests", "To maker A")
 - Grayscale captures were looked at for S17, S18, S20, S21, S22, S23 (scratch), S36, S37 (phone), S39 and the sketch; the other specimens' grayscale captures were made by the build and not looked at.
 - The words of every spec and entry read aloud against chapter 02, beyond my reading and the lint; the editor's words pass has not reached my files.
 - Margins of error for S20 (none in its file) and S41 and S42 by party (none published).
+
+## Review fix pass
+
+November 12, 2026. Maker A's items from the fix brief (`20261112_Round-1-Fix-Brief.md`, calls D3-476 to D3-488) and its brand and craft addendum. In progress; this section is rewritten as items land.

@@ -49,7 +49,7 @@
       }
       // the x axis's ticks share the value axis's steps where the two scales match
       P.value_grid(c, ys, ticks, f.tick || 'integer', x0, x1, gut);
-      P.zero_line(c, ys(0), x0, x1);
+      P.zero_line(c, ys, x0, x1);
       // the earnings axis: as many round steps as fit side by side
       var xt, cnt = 6, wmax = c.measure(K.fmt(xhi, f.tick || 'integer'), 'tick') + 14, ay = bot + c.size('tick') + 10;
       do { xt = K.ticks(xlo, xhi, cnt); cnt--; } while (cnt > 1 && xt.length > 1 && xs(xt[1]) - xs(xt[0]) < wmax);
