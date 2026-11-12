@@ -67,19 +67,31 @@
           c.datum(xs(K.time(r[ex])), ys(r[ey]), { data: { key: pnl.value + '|' + r[ex] + (eb ? '|' + r[eb] : ''), field: ey, value: r[ey] } });
         });
         // gap brackets (E13): from this panel's point to another series' point in the same year
+        var placed = [];
         (c.spec.annotations || []).filter(function (a) { return String(a.panel) === String(pnl.value) && a.at && a.to_series !== undefined; }).forEach(function (a) {
           var at = K.time(a.at.x), here = mine.filter(function (r) { return K.time(r[ex]) === at; }), there = (by[String(a.to_series)] || []).filter(function (r) { return K.time(r[ex]) === at; });
           if (!here.length || !there.length) { c.warn('annotation: no ' + (here.length ? a.to_series : pnl.value) + ' value at ' + a.at.x); return; }
           var y1 = ys(here[here.length - 1][ey]), y2 = ys(there[there.length - 1][ey]), left = a.place !== 'right';
-          // the words stay inside the panel: the unit drops where they would cross its edge, then the bracket changes side
-          var full = String(a.text || '') + (a.unit ? ' ' + a.unit : ''), bare = String(a.text || ''), x0 = xs(at);
-          var fits = function (t, lft) { var tw = c.measure(t, 'tick'); return lft ? x0 - 9 - tw >= px : x0 + 9 + tw <= px + pw; };
-          var words = fits(full, left) ? full : fits(bare, left) ? bare : fits(full, !left) ? (left = !left, full) : (left = !left, bare);
-          var bx = x0 + (left ? -5 : 5), arm = left ? 3 : -3, w = c.t('line-hairline');
+          // the words stay inside the panel and clear the panel's other bracket words: the unit drops, then the bracket changes
+          // side, then the words move along the bracket, in that order
+          var full = String(a.text || '') + (a.unit ? ' ' + a.unit : ''), bare = String(a.text || ''), x0 = xs(at), th = c.size('tick');
+          var lo = Math.min(y1, y2), hi = Math.max(y1, y2), pick = null;
+          [[full, left], [bare, left], [full, !left], [bare, !left]].some(function (cand) {
+            return [(y1 + y2) / 2, lo + th * 0.6, hi - th * 0.2, lo - 2, hi + th].some(function (ty) {
+              var tw = c.measure(cand[0], 'tick'), tx = cand[1] ? x0 - 9 - tw : x0 + 9, box = { x: tx, y: ty - th, w: tw, h: th * 1.25 };
+              if (tx < px || tx + tw > px + pw) return false;
+              if (placed.some(function (b) { return box.x < b.x + b.w + 3 && b.x < box.x + box.w + 3 && box.y < b.y + b.h && b.y < box.y + box.h; })) return false;
+              pick = { words: cand[0], left: cand[1], y: ty, box: box };
+              return true;
+            });
+          });
+          if (!pick) { c.warn('annotation: no room for the bracket words at ' + a.at.x + ' in ' + pnl.value); return; }
+          placed.push(pick.box);
+          var bx = x0 + (pick.left ? -5 : 5), arm = pick.left ? 3 : -3, w = c.t('line-hairline');
           c.line(bx, y1, bx, y2, { stroke: 'secondary', width: w, mark: false });
           c.line(bx, y1, bx + arm, y1, { stroke: 'secondary', width: w, mark: false });
           c.line(bx, y2, bx + arm, y2, { stroke: 'secondary', width: w, mark: false });
-          c.text(bx + (left ? -4 : 4), (y1 + y2) / 2 + c.size('tick') * 0.35, words, { role: 'tick', anchor: left ? 'end' : 'start', halo: true });
+          c.text(bx + (pick.left ? -4 : 4), pick.y, pick.words, { role: 'tick', anchor: pick.left ? 'end' : 'start', halo: true });
         });
         var ay = py + head + ph + c.size('tick') + 6;
         var e0 = c.text(px, ay, K.fmt(tlo, 'year'), { role: 'tick' });

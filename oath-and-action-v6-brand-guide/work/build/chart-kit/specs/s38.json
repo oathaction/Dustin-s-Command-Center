@@ -127,9 +127,10 @@
     "The live lookup (search field, grade filter, count line) waits on request A9; until then the figure shows the still and the folded table, both complete.",
     "Every record's ID is listed in v7.ids, so the table prints each in its chip ('Issue I001').",
     "Figures checked by script (figures.py s38).",
-    "Data lead DL-A6: the title gives each grade its own count. DL-R5: a one-domain source line variant is coming from the research lead; S38 takes it when it lands."
+    "Data lead DL-A6: the title gives each grade its own count. DL-R5: S38 prints the sidecar's domain_d01 variant, which names the one domain drawn."
   ],
   "where": {
     "domain": "D01"
-  }
+  },
+  "source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, issue records in the domain of news, records and public information, 17 of 194 issues, as of October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own."
 }
