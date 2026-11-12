@@ -176,3 +176,100 @@ D3-xxx | The generator splits the line `wire_marks` draws into a 28 px solid lea
 - Grayscale and color-vision captures, 200 percent text, 320 px reflow, print, other widths, screen readers and real devices.
 - The research lead has not checked the derived source line for both groups.
 - No reader has seen the chapter.
+
+## Fix pass read
+
+DR-191's read, November 12, 2026: every reader-facing string that changed in round 0's two fix passes, read against chapter 02's writing rules (`work/handoffs/phase-2/20261106_Voice-Writing-Rules.md`) and chapter 13's evidence rules. A script listed each string that is new or changed since commit 586d2d99 (`changed_strings.py`, in scratch `/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/round-0-fix/editor/read/`). I read every listed string myself. The kit's words came after the coordinator said they had landed, and the specs came last, at commit 6bf4cc6f with s11 and s13 still uncommitted.
+
+Counts: 46 faults. Chapter 13 (editor): 17. Kit specs S01 to S16 (Explainer maker, numbered E1 to E13 here so they do not clash with its own X items): 13. Data files' printed lines (research lead): 2. Palette proof sheet (data lead): 7. Kit words, kit.js and README (engineer 4, editor 3, since `words.json` gives the editor its wording): 7.
+
+### Chapter 13 (editor)
+
+| # | Fault, quoted | Rule | Fix |
+|---|---|---|---|
+| C1 | 13.1: "a chip in the chart chip colors"; its spec: "on the chart chip fill, which turns with the theme" | W14 | "a chip in the colors our charts give their chips"; "on the chip fill, which changes between Newsprint and Charcoal" |
+| C2 | 13.1 spec: "a small-area model or a with-and-without calculation" | H02 | Define each: "a model that estimates small places from a larger sample", "a count of what would have happened without the program" |
+| C3 | s-13-1-correct: "counts taxes, tax credits and benefits such as food aid, and subtracts costs such as medical expenses" | Evidence, accuracy | The measure subtracts taxes: "adds tax credits and benefits such as food aid, and subtracts taxes and costs such as medical expenses" |
+| C4 | s-13-2-correct: "The Transportation Department had spent 46.6 percent…", source: "Connection LE02’s record cites the Department of Transportation’s count as of July 31, 2026." | H04, H02 | Add the record's qualification (75.7 percent was obligated, committed to projects, by the same date) and name the department one way |
+| C5 | 13.4: "drawn by the atlas build’s own function"; s-13-4-correct: "Lines drawn by the atlas build’s own function at 2 px." | W01 | "drawn by the same code that draws our systems atlas (Rule 10.10)" |
+| C6 | 13.4 spec: "butt caps" | H02 | "flat ends" |
+| C7 | 13.5: "The evidence grade takes… A reform’s effect size prints as… Uncertainty prints in… Delay, the time an effect takes, draws as…" | W13 | Recast: join grade and delay, the two marks on the line, in one sentence |
+| C8 | 13.5: "No mark carries two properties, and the four outcome families never add into one score." | W11 | "Each mark carries one property, and each outcome family keeps its own row, because…" with the atlas quotation |
+| C9 | 13.5 caption: "the grade of the evidence that it works in the label" | W01 | "the label giving the grade of the evidence that it works" |
+| C10 | s-13-6-correct: "Seasonally adjusted: with the swings that repeat every year, such as holiday hiring, taken out." | H02, W02 | One definition across the guide, S13's and S14's active one: "the Bureau removes the swings that recur each year…" |
+| C11 | 13.7: "new weights for 2024" | H02 | "new population weights, the counts that scale the survey's sample to the country" |
+| C12 | 13.11: "An event records what happened on a date. A causal claim says that one thing moves another, and the atlas grades it." | W10 | One sentence: "An event records what happened on a date; a causal claim, which the atlas grades, says one thing moves another." |
+| C13 | 13.11: "prints the atlas’s words as the atlas’s assessment, with the atlas named" | W15, W01 | "prints the atlas's words and names the atlas as their source" |
+| C14 | s-13-1-correct: "calls the result “a hypothetical estimate.”" beside "as in “connection L02”." elsewhere | Typography, consistency | Period outside the quotation mark, as the rest of the chapter sets it |
+| C15 | Chapter sources: "The agency calls its figure “a hypothetical estimate”, behind Rule 13.1." | W01 | "Behind Rule 13.1's estimate. The agency calls its figure “a hypothetical estimate”." |
+| C16 | s-13-opener alt: "A dashed line carries a plus sign tag and two delay ticks." | Accuracy | Since the lead-in: "A line, solid under its two delay ticks and dashed after them, carries a plus sign tag." |
+| C17 | s-13-7-fail-all chart note: "The line breaks in 2013, 2017 and 2019" on a chart of 2017 to 2025 | Accuracy | Name only the breaks inside each chart's window |
+
+### Kit specs S01 to S16 (Explainer maker)
+
+| # | Fault, quoted | Rule | Fix |
+|---|---|---|---|
+| E1 | S01 note: "a margin of error of plus or minus 1.9 percent" | W20 | "1.9 percentage points", as every other margin in the set |
+| E2 | S01 chart note: "fell short, 53 to 47, … independents 2 against, seven votes short of the 60 needed" | H06, W01 | "two against", and say "short" once |
+| E3 | S03 and S08 measure lines: "the repair log, the dated list of changes…, kept by the atlas, Oath & Action’s own research, … by the atlas’s direction code"; S08's runs two sentences | W14, W01, H02 | "Entries in the atlas's repair log, its dated list of changes to the rules that decide who officials answer to, by how each rule changed and the direction the atlas assigns it, …"; the count above each year moves to a note |
+| E4 | S03 and S08 note: "St. Charles County, Missouri, unofficial statewide returns" | Rule 13.6 | If the county's page copies the state's count, the publisher comes first: "Missouri Secretary of State, unofficial statewide returns, via St. Charles County" |
+| E5 | S04: "(margin 1.5)" and the label "Within the margin (+0.2)" | W01, W20 | In a voting chart "margin" reads as a lead: write "margin of error" each time |
+| E6 | S04 note: "the Bureau’s published variance parameters" | H02 | "the constants the Bureau publishes for computing a margin of error" |
+| E7 | S05 source line: "when no data were collected" | W02 | "when the Bureau collected no data" |
+| E8 | S06 source line: "It is no forecast, gives no odds, and the four families are never added together." | W11, W02 | "Each scenario gives a direction, with no odds, that holds only if its assumptions do, and the atlas keeps the four families apart." |
+| E9 | S08 chart note: "(voters kept existing rules when a ballot measure failed, mixed, or pending on November 3, 2026)" | W01 | "neither way: a failed measure that kept the rules, a mixed change, or a measure pending on November 3, 2026" |
+| E10 | S09 note: "The atlas chose which changes to date" | W01 | "The atlas chose which changes to include" |
+| E11 | S11 note: "more than in 39 of the 51 states" | W20, accuracy | "39 of the 50 states and DC" |
+| E12 | S13 note and alt: "The fourteen panels", "fourteen small area charts", and the third "fourteen" in the spec | H06 | "14" |
+| E13 | S13 note: "errors of 0.1 to 0.9 percent … read November 11, 2026" | Rule 13.5, H04 | Name them standard errors, which are smaller than a 90 percent margin of error, and write "Retrieved November 11, 2026" |
+
+### Data files' printed source lines (research lead, `research_v7_extract.py`)
+
+| # | Fault, quoted | Rule | Fix |
+|---|---|---|---|
+| D1 | `v7-claims-drug-prices` and `v7-issues`: "grades are the atlas's own" with a straight apostrophe, in lines that set "Oath & Action’s" curly | Typography | Curly apostrophe |
+| D2 | `v7-numbers`: "headline figures, 8 numbers" | H06 | "eight figures" |
+
+### Palette proof sheet (data lead)
+
+| # | Fault, quoted | Rule | Fix |
+|---|---|---|---|
+| P1 | Twelve straight apostrophes in the new text: "Charcoal's", "build's" twice, "Chromium's", "V7's renderer's", "code's", "memo's", "pattern's", "sectors'", "step's", "13.3's" | Typography | Curly apostrophes, set by the build script |
+| P2 | "Closest pair, Group 2 and 4" | Grammar | "Groups 2 and 4" |
+| P3 | "The United States stood at 65.3 percent, margin 0.5 points" | Rule 13.5, W20 | "margin of error 0.5 points at 90 percent confidence" |
+| P4 | "Swatches marked In tokens come from… Swatches marked Proposed come from…" | W13 | "Swatches marked In tokens come from release 6.0.0-gate3.1; those marked Proposed come from the palette proposal and wait for board 1." |
+| P5 | "the 2 new colors" | H06 | "the two new colors" |
+| P6 | "Phase 0 read V7's renderer's dash arrays" | W14 | "Phase 0 read the dash arrays in V7's drawing code" |
+| P7 | "A run shorter than 20 widths, key samples included, prints its grade in words beside it: 40 px on a 2 px line." | W01, consistency | "A run shorter than 20 line widths (40 px on a 2 px line), counted after any lead-in, prints its grade in words beside it." |
+
+### Kit words, kit.js and README
+
+| # | Fault, quoted | Rule | Fix | Owner |
+|---|---|---|---|---|
+| K1 | `forms/bubble-map.js` and `forms/tile-map-categorical.js` read `K.words`, which a page leaves empty, so they print their own words: "Not labeled at this width: {codes}." and "State codes are in the table at this width.", in place of `words.json`'s | Words, one source | Read through the kit's `word()`, or fill `K.words` from `K.WORDS` | Engineer |
+| K2 | `scripts_off`: "The drawing needs scripts to appear." | H02, W01 | "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below." | Editor |
+| K3 | `export_fonts`: "Without both fonts installed, the labels set in another font and change width." | W01 | "On a computer without both fonts, the labels fall back to another font and change width." | Editor |
+| K4 | `table_summary`: "Show the table and notes", which also heads the table when the kit opens it, with no drawing | W01 | "The table and notes", true open or closed | Editor |
+| K5 | README, for a reader who does not code: "spec", "form", "one global", "renderer", "Node", "SVG", "`encode`", "`family`", "`tier`", "forced colors" and "system color" are used undefined | H02 | Define each at first use, such as "a spec, the short file that says which data a chart draws and every word it prints" | Engineer |
+| K6 | README step 4: "`title` (a finding, a full sentence)", and its list of words, like the paragraph on `OAChart.render`, leaves out `evidence_label` and `grade_line` | Rules 13.1, 13.2 | "`title`, a full sentence in the verb its evidence grade allows (Rule 13.2)", and add `evidence_label` and `grade_line`, which every chart prints (Rule 13.1) | Engineer |
+| K7 | README: "It writes SVG, PNG and CSV exports … to the scratch folder" | W01 | Name the folder, or have the command print where it wrote | Engineer |
+
+### Not faults, for the record
+
+- The payroll sidecars' "are preliminary and will be revised" is passive, but chapter 02 prints the same line in H06 to H08, as approved. It did not change in these passes.
+- S14's title keeps "payrolls shrank in seven of the 57 months charted" under D3-87 until Dustin answers.
+- A question for the main session: every S01 to S16 title ends with a period, while chapter 13's chart titles and the kit's own heads do not. One style should hold across the set.
+
+### Tested
+
+- `changed_strings.py` against commit 586d2d99: 197 changed strings in chapter 13 (JSON, plate text and alts), 106 in the specs, nine printed source lines and variants, 136 new text blocks on the proof sheet. I read every one, and my own kit specs' titles, notes, alts and table words.
+- The proof sheet's chart text (1,320 SVG text items) checked by script for hyphens used as minus signs (none) and straight apostrophes.
+- The kit's `words.json`, the reader text in `kit.js` (scripts-off line, table disclosure and its hidden caption, forced-colors code), the forms' fallback words and `README.md`, all read in full.
+- The LE02 record and the Supplemental Poverty Measure's definition checked against the atlas and the Bureau's method, for C3 and C4.
+
+### Not tested
+
+- K1 comes from reading the code; I did not open a bubble map or tile map in a browser to see the fallback words print.
+- The specs may change after this read: the Explainer maker was still working on items X12 to X18, so a later spec string needs its own read.
+- The proof sheet's chart labels beyond those two checks, and the kit's form names, which no reader sees as far as I found.
+- None of these faults is fixed yet; DR-191's second pass takes them.
