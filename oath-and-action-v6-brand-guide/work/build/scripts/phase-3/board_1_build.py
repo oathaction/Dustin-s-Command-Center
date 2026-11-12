@@ -766,15 +766,22 @@ def decide_panel(G, E, TOK):
                      'photo_saving': f'{J["photo_saving"] / 1e6:.3f}', 'n_photos_w': nw(E['n_photos'] or 0), 'photo_w': E['photo_w'] or '?',
                      'shown_w': E['shown_w'] or '?', 'budget_mb': f'{proj.get("budget", 0) / 1e6:.1f}'})
         comb = E['combined']
+        R = J.get('recommended') if isinstance(J.get('recommended'), dict) else {}
+        if comb and R:
+            if R.get('chapter_14_stop') not in (None, comb['chapter_14']):
+                warn('the recommended stop and the combined option’s chapter 14 differ in the weight options file')
+            if R.get('phase_4_share_untouched') is False or comb.get('ask_of_phase_4'):
+                warn('the recommended option takes bytes from Phase 4')
         if comb:
-            room = next((comb[k] for k in ('room_after', 'page_room_after', 'room') if isinstance(comb.get(k), (int, float))), None)
+            room = R.get('room_left') if isinstance(R.get('room_left'), (int, float)) else None
+            room = room if room is not None else next((comb[k] for k in ('room_after', 'page_room_after', 'room') if isinstance(comb.get(k), (int, float))), None)
             if room is None:
                 m = re.search(r'keeps ([\d.]+) MB of room', comb.get('reader_loses', ''))
                 room = float(m.group(1)) * 1e6 if m else None
             FILL['comb_room_computed'] = room is None
             if room is None:     # the page's room once the stop rises to the measured figure and the photographs free their bytes
                 room = J['room'] - max(0, comb['chapter_14'] - J['stop']) + J['photo_saving']
-            FILL.update({'comb_ch14': f'{comb["chapter_14"] / 1e6:.3f}', 'comb_room': f'{room / 1e6:.3f}'})
+            FILL.update({'comb_ch14': f'{R.get("chapter_14_stop", comb["chapter_14"]) / 1e6:.3f}', 'comb_room': f'{room / 1e6:.3f}'})
     # Phase 4's chapters: the unbuilt chapters that share one allocation
     alloc = {}
     for k, v in unbuilt.items():

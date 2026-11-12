@@ -3,7 +3,7 @@
   "exit": 0,
   "page_bytes": 9962562,
   "warnings": 0,
-  "built": "2026-11-12T01:50:53",
+  "built": "2026-11-12T02:09:32",
   "report": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/guide/20261112_Board-1-Guide-Build-Report.json"
  },
  "engineer_options": {
@@ -48,7 +48,7 @@
   },
   "phase4_share": 2.54
  },
- "built": "2026-11-12T01:50:48.296631+00:00",
+ "built": "2026-11-12T02:09:27.867891+00:00",
  "palette": {
   "new_tints": [
    [
@@ -480,14 +480,14 @@
    "not": 12
   },
   "work/handoffs/phase-3/20261112_Board-1-Builder-Notes.md": {
-   "tested": 8,
-   "not": 9
+   "tested": 10,
+   "not": 8
   }
  },
  "board": "work/boards/phase-3/round-0/board-1/20261112_Board-1.html",
- "html_bytes": 376031,
+ "html_bytes": 376950,
  "images": 121,
- "folder_bytes_with_images": 59956357,
+ "folder_bytes_with_images": 59970826,
  "largest_image": [
   3348055,
   "20261112_Palette-Page-390.png"
@@ -711,5 +711,5 @@
  ],
  "notes": [],
  "warnings": [],
- "visible_text_sha1": "271c90ce043d46698ef819c7e6f0a425a15109ca"
+ "visible_text_sha1": "427af379dc77736b97077344250cc41f97998a01"
 }

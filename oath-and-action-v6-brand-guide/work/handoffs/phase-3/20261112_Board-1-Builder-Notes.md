@@ -7,7 +7,7 @@ Oath & Action Edition 06, Phase 3, round 0, November 12, 2026. The board builder
 - Built: `work/boards/phase-3/round-0/board-1/20261112_Board-1.html` and `img/` beside it, by `work/build/scripts/phase-3/board_1_build.py` with `board_1_render.js`, from the words in `20261112_Board-1-Content.json` beside the board. Every figure it prints, with its source file, goes to `20261112_Board-1-Figures.json`; the dataviz check writes `20261112_Board-1-Check-Results.json`.
 - Eight panels, in the order the brief sets: what Dustin decides (the palette, chapter 13, page weight, the payroll sentence, each with the studio's recommendation), the kit and the 16 charts, the palette proofs, the drawing method and page weight, chapter 13, data for rounds 1 and 2, scores, and Tested and Not tested.
 - All eight panels read Ready at this build. Panel 7 reads the rescore from the newest `work/handoffs/phase-3/*Round-0-CD-Rescore*.json` (now `20261112_Round-0-CD-Rescores.json`: all three items ready). Panel 1(c) leads with the combined weight option and the engineer's photo proof. The kit's captures on the board are the ones in the specimens folder at build time; the engineer is still applying the last kit fixes, so the main session will ask for a rerun.
-- The folder holds 121 images and the page, about 60 MB in all, under 250 files and one publish's 64 MB; the build warns at 64 MB.
+- The folder holds 121 images and the page, 122 files and 59,969,903 bytes, under 250 files and one publish's 64 MB; the build warns at 64 MB. Every image the page names is in `img/`, and `img/` holds nothing else.
 
 ## How the slots fill
 
@@ -47,29 +47,30 @@ D3-xxx | Tables with many columns keep a minimum width and scroll inside their n
 
 ## Tested
 
-- `python3 -I work/build/scripts/phase-3/board_1_build.py --check --strict`: 0 warnings; `node work/build/scripts/phase-2/dataviz_check.js work/boards/phase-3/round-0/board-1/20261112_Board-1.html --board --no-captures`: PASS at 1440, 390 and 360 px, 0 failures (no sideways scroll outside named scroll regions, no text under 13 px, text contrast, axe-core 4.10.2 WCAG 2.2 AA, focus rings on the first 40 stops, Rule 05.3's red marks, outside requests, page errors). The first runs failed on a 12.6 px code span in a caption and on a SHA-256 hash that pushed the page to 617 px at 390; both are fixed.
-- The build's own checks on every run: no em dash and no en dash in the board's words, no flagged filler word in its own words, no unfilled field, no decision code or Gate 1 ID on the board's face outside the reference lines, every code in a reference line found in the decision log or the open questions, no private path, no script, loads only from Google Fonts, no font size under 13 px in its CSS, every image's size read from its file, no image over 15 MB, fewer than 250 files.
-- The strict guide build run by the script: exit 0, 0 warnings; chapter 13 at 247,941 bytes against 250,000.
-- The red team counts read from the reports equal the fix briefs' tables in all five rows (3 of 5 with 6 and 19; 4 of 5 with 2 and 10; 3 of 5 with 3 and 14; 3 of 5 with 4 and 12; 3 of 5 with 4 and 10).
+- The final run, November 12, after the engineer's KR1 to KR5 and the refreshed specimen folder: `python3 -I work/build/scripts/phase-3/board_1_build.py --check --strict`, with fresh photographs: 0 warnings, every panel Ready. Inside it, `node work/build/scripts/phase-2/dataviz_check.js work/boards/phase-3/round-0/board-1/20261112_Board-1.html --board --no-captures`: PASS at 1440, 390 and 360 px, 0 failures (no sideways scroll outside named scroll regions, no text under 13 px, text contrast, axe-core 4.10.2 WCAG 2.2 AA, focus rings on the first 40 stops, Rule 05.3's red marks, outside requests, page errors). Earlier runs failed on a 12.6 px code span in a caption and on a SHA-256 hash that pushed the page to 617 px at 390; both are fixed.
+- The publish check by script on the final page: it references 121 images, every one in `img/`, and `img/` holds no image it does not reference; the page and its images are 122 files and 59,969,903 bytes, the largest image 3,348,055 bytes; the page carries no script and loads only from fonts.googleapis.com and fonts.gstatic.com. A publish-ready copy of exactly those 122 files, with their list, is in the scratch folder's `publish/` and `20261112_Board-1-Publish-List.txt`.
+- The build's own checks on every run: no em dash and no en dash in the board's words, no flagged filler word in its own words, no unfilled field, no decision code or Gate 1 ID on the board's face outside the reference lines, every code in a reference line found in the decision log or the open questions, no private path, no script, loads only from Google Fonts, no font size under 13 px in its CSS, every image's size read from its file, no image over 15 MB, fewer than 250 files, under 64 MB in all.
+- The strict guide build the script makes: exit 0, 0 warnings.
+- The kit's 16 check files in the refreshed specimen folder: 0 faults each.
+- The weight figures: the combined option read from the engineer's `recommended` key and its option row (stop 2,803,941 bytes, room 448,405 bytes, nothing from Phase 4), cross-checked by the build; the photo proof's 1,059,828 freed bytes equal the weight options file's.
+- The red team counts read from the reports equal the fix briefs' tables in all five rows; the rescore reads all three items ready.
 - The payroll sentence rebuilt from the file: seven drops in 57 months, October 2025 and February 2026 past plus or minus 122,000, the same words the statistics reviewer wrote.
-- The board read by eye from screenshots at 1440 px: the cover, all four decisions in panel 1, S01's rows in panel 2 (Newsprint, Phase 2 with its log, Charcoal), panel 3's opening, panel 4's tables and bars, panel 5's first screen and Rule 13.1, panel 6's domain table, download and outcomes, panel 7 and panel 8's first columns; at 390 px, panel 1's options table and S01's card.
-- Plate photographs: Rule 13.7's correct plate and Rule 13.11's failure plate viewed whole after the fix; all 27 photographed at 868 px wide.
-- The palette plates in panel 1 viewed whole: the diverging steps and table on Charcoal, the four inks on Newsprint and the line and bar charts.
+- The board read by eye from screenshots at 1440 px: the cover, all four decisions in panel 1 (1(c) with the combined option and the Rule 01.6 photo proof), S01's rows in panel 2, panel 3's opening, panel 4's tables and bars, panel 5's first screen and Rule 13.1, panel 6's domain table, download and outcomes, panel 7 with the rescore, and panel 8's first columns; at 390 px, panel 1's options table and S01's card. The combined option and photo proof were first proved on test inputs in scratch, then on the engineer's files.
+- Plate photographs: Rule 13.7's correct plate and Rule 13.11's failure plate viewed whole; all 27 photographed at 868 px wide.
 
 ## Not tested
 
 - The board in Safari or Firefox, on a 2x screen, or printed.
-- Every chart's pictures by eye: S01's were viewed; the other 15 were composed by the same code and checked only by their sizes.
-- Twenty-four of the 27 plate photographs viewed one by one.
-- The engineer's last kit fixes and the creative director's rescore, which had not landed at this build; the board shows the specimens folder as it stood.
+- The final run's pictures by eye: the kit captures refreshed for KR1 to KR5 were composed and checked by size, file count and the dataviz check, and not looked at one by one; of earlier runs, only S01's were viewed.
+- Twenty-four of the 27 plate photographs viewed one by one, and the Rule 01.8 photo proof viewed by eye.
 - Phase 2's photographs against the reviewers' own Phase 2 captures.
 - The exports opened; the board lists their names and sizes only.
 - A keyboard walk past the first 40 stops, and a screen reader.
-- The figures the board quotes from teammates' files: it checks that each file parses and that the counts agree where two files give the same count, and prints the rest as written.
+- The figures the board quotes from teammates' files: it checks that each file parses and that counts agree where two files give the same count, and prints the rest as written.
 - Publishing the folder; the main session publishes.
 
 ## Change log
 
 - Created: `work/build/scripts/phase-3/board_1_build.py`, `work/build/scripts/phase-3/board_1_render.js`, `work/boards/phase-3/round-0/board-1/20261112_Board-1.html`, `20261112_Board-1-Content.json`, `20261112_Board-1-Figures.json`, `20261112_Board-1-Check-Results.json` (written by the dataviz check) and `img/` (all in `work/boards/phase-3/round-0/board-1/`), and this file.
-- Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/` (the strict guide build and its report, the photographs, the composition cache, a kit build run once to read its export names, probes and screenshots).
+- Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/` (the strict guide build and its report, the photographs, the composition cache, a kit build run once to read its export names, test inputs, probes and screenshots, and `publish/` with `20261112_Board-1-Publish-List.txt`).
 - Modified: none outside these.
