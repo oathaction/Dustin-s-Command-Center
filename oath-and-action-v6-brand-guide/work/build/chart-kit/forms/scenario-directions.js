@@ -11,6 +11,11 @@
   var DARK = ['subject', 'seq-4', 'seq-5', 'div-1', 'div-5', 'mag-4', 'cat-1', 'cat-2', 'cat-3'];
   // a categorical group takes its own label ink on either ground (oa.chart.color.categorical.label.groupN)
   function ink(tint) { return /^cat-[123]$/.test(tint) ? 'on-' + tint : DARK.indexOf(tint) >= 0 ? 'label-on-subject' : 'label'; }
+  // in forced colors a hatched tint would run through its words, so the words sit on a plate that shows only there (CD KR1)
+  function plate(c, tint, x, y, w, h) {
+    var k = K.FC && K.FC[tint];
+    if (k === 'hatch' || k === 'dense' || k === 'hatch-gray') c.rect(x, y, w, h, { fill: 'none', cls: 'oac-fc-plate', mark: false });
+  }
   function glyph(c, x, y, s, kind, tint) {
     var k = ink(tint);
     c.rect(x + 0.5, y + 0.5, s - 1, s - 1, { stroke: k === 'label' ? 'label' : 'surface', mark: false });
@@ -34,6 +39,7 @@
         if (kx + w > W) { kx = 0; y += 26; }
         if (s.tint && s.tint !== 'none') c.rect(kx, y, w - 4, 22, { fill: s.tint, mark: false });
         glyph(c, kx + 4, y + 4, gs, s.glyph, s.tint);
+        plate(c, s.tint, kx + gs + 7, y + 3, c.measure(k.label, 'tick') + 6, 16);
         c.text(kx + gs + 10, y + 15.5, k.label, { role: 'tick', fill: ink(s.tint) });
         kx += w + 4;
       });
@@ -59,6 +65,7 @@
           var h = lines.length * Math.round(ns * 1.36) + 10;
           if (tinted && s.tint && s.tint !== 'none') c.rect(0, y - 2, W, h, { fill: s.tint, data: { key: r[er] + '|' + col, field: cls[j], value: r[cls[j]] } });
           if (tinted) glyph(c, 4, y + 2, gs, s.glyph, s.tint);
+          if (tinted) { var pw = 0; lines.forEach(function (l) { pw = Math.max(pw, c.measure(l, 'note')); }); plate(c, s.tint, tx + 1, y, pw + 6, lines.length * Math.round(ns * 1.36) + 4); }
           c.text(tx + 4, y + ns + 1, r[col], { role: 'note', max: W - tx - 8, fill: tinted ? ink(s.tint) : 'label', data: { key: r[er] + '|' + col } });
           y += h + 6;
         });
@@ -92,6 +99,11 @@
         else c.rect(x + 1, y + 1, cw - 2, h - 2, { fill: 'none', data: { key: r[er] + '|' + col, field: col } });
         var tx = x + 6;
         if (tinted) { glyph(c, tx, y + 8, gs, s.glyph, s.tint); tx += gs + 6; }
+        if (tinted) {
+          var cl = K.wrap(r[col], cs, x + cw - tx - 6, 400), cw2 = 0;
+          cl.forEach(function (l) { cw2 = Math.max(cw2, c.measure(l, 'note')); });
+          plate(c, s.tint, tx - 3, y + 6, cw2 + 6, cl.length * clh + 6);
+        }
         c.text(tx, y + 8 + cs, r[col], { role: 'note', max: x + cw - tx - 6, fill: tinted ? ink(s.tint) : 'label' });
       });
       y += h;

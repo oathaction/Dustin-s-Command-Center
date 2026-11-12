@@ -72,6 +72,8 @@
           var nm = String(r[et]), yr = K.fmt(r[ed], 'year');
           if (L.cut_at && nm.indexOf(L.cut_at) > 0) nm = nm.slice(0, nm.indexOf(L.cut_at)).replace(/\s+$/, '');
           if (nm.indexOf(yr + ' ') === 0) nm = nm.slice(yr.length + 1);
+          // an abbreviation stays on the line with the word after it: "P.L. 119-21", "v. FEC" (CD KR4)
+          nm = nm.replace(/(^|\s)(P\.L\.|v\.|No\.|U\.S\.)\s+/g, '$1$2\u00a0');
           return fit({ r: r, x: xs(K.time(r[ed])), yr: yr, nm: nm, yw: c.measure(yr, 'tick', 700) + 4 }, maxw);
         });
         // a label whose words cover another event's leader sits above that event's label: the covered ones go first,
@@ -136,7 +138,7 @@
           c.line(p.x, ty + (p.lines - 1) * llh + 4, p.x, base, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
           c.text(p.a0, ty, p.yr, { role: 'tick', weight: 700, halo: true });
           c.text(p.a0 + p.yw, ty, p.nm, { role: 'tick', halo: true, max: p.lines > 1 ? p.mw - p.yw + 1 : undefined });
-          c.circle(p.x, base, c.t('dot-small-vertex-radius'), { fill: 'subject', data: { key: p.r[ek], field: ed, value: p.r[ed] } });
+          c.circle(p.x, base, c.t('dot-vertex-radius'), { fill: 'subject', data: { key: p.r[ek], field: ed, value: p.r[ed] } });
         });
         c.line(x0, base, x1, base, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
         y = base + 26;

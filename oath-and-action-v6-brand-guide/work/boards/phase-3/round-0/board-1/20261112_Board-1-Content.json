@@ -34,8 +34,8 @@
       "n": 1,
       "nav": "What you decide",
       "title": "What you decide on board 1",
-      "lede": "Four answers close round 0: two new colors and the order of the four inks, chapter 13 as built, where chapter 14’s extra bytes come from, and one sentence about payrolls. The studio recommends a yes to the first two, the compressed chart data for the third, and the added sentence for the fourth.",
-      "reply": "To answer, reply “As recommended” or name the answer you want for any of the four.",
+      "lede": "Four answers close round 0: two new colors and the order of the four inks, chapter 13 as built, how chapter 14 fits the page, and one sentence about payrolls. The studio recommends a yes to the first two, the combined weight option for the third, which needs your approval of smaller photographs by name, and the added sentence for the fourth.",
+      "reply": "To answer, reply “As recommended, and I approve the smaller photographs”, or name the answer you want for any of the four.",
       "items": [
         {
           "key": "palette",
@@ -56,9 +56,9 @@
         {
           "key": "weight",
           "h": "1c. Page weight",
-          "q": "Chapter 14 projects to {proj_after} MB against its {stop} MB stop, after the studio’s own pass took off everything it could with no change a reader sees. Which of four measured options do you take?",
-          "rec": "Take option 2: move {ask_islands} MB from Phase 4’s share and carry the drawing data each chart’s script reads in compressed form. No reader loses anything, since every table stays live text, and of the two options that cost no reader anything it moves the fewer bytes.",
-          "options_h": "The four options, as the engineer measured them",
+          "q": "Chapter 14 projects to {ch14_now} MB for its 97 charts against a {stop} MB stop, after the studio’s own pass took off everything it could with no change a reader sees. Which of five measured options do you take?",
+          "rec": "Take the combined option. Chapter 01’s {n_photos_w} photographs go to {photo_w} px wide, twice the {shown_w} px the page shows them at; the chart data travels compressed; every table stays live text; and chapter 14’s stop rises to {comb_ch14} MB, paid for by the bytes the photographs free. Nothing comes from Phase 4’s share.",
+          "options_h": "The other four options, as measured",
           "cols": [
             "Option",
             "Moves from Phase 4’s {phase4_share} MB",
@@ -72,21 +72,35 @@
             },
             {
               "name": "2. Move bytes, with chart data compressed",
-              "sees": "Nothing changes: the drawing data only the script reads goes compressed, and every table stays live text.",
-              "recommended": true
+              "sees": "Nothing changes: the drawing data only the script reads goes compressed, and every table stays live text."
             },
             {
               "name": "3. Compress the tables too and move none",
               "sees": "A reader with scripts off loses every chart’s table, and find in page and reading modes see no table until the script runs."
             },
             {
-              "name": "4. Smaller copies of the photographs",
-              "sees": "A visible change: two photographs in chapter 01 resampled and encoded again, with their records redone."
+              "name": "4. Smaller copies of the photographs alone",
+              "sees": "A visible change: chapter 01’s photographs resampled and encoded again, with their records redone; chapter 14 stays over its stop."
             }
           ],
-          "phase4_line": "Phase 4’s {phase4_n} chapters hold {phase4_each} MB each today. After option 1 they would average {phase4_after_1} MB each, and after option 2, {phase4_after_2} MB.",
-          "cd_h": "The creative director’s advice",
-          "refs": "D3-104 · D3-90 · D3-91 · DR-232 · G2-01"
+          "phase4_line": "Phase 4’s {phase4_n} chapters hold {phase4_each} MB each today, and keep it under the combined option. Option 1 would leave them {phase4_after_1} MB each, and option 2, {phase4_after_2} MB.",
+          "cd_h": "The creative director’s advice, at the rescore",
+          "refs": "D3-193 · D3-190 · D3-187 · D3-104 · DR-232 · G2-01",
+          "comb_h": "The combined option, as the engineer measured it",
+          "comb_facts": [
+            "Chapter 14 projected, its stop raised to match",
+            "From Phase 4’s share",
+            "Page freed by the smaller photographs",
+            "Room left under the {budget_mb} MB budget",
+            "What a reader sees"
+          ],
+          "comb_room_note": "The room left is worked out from the engineer’s figures: today’s room under the budget, less chapter 14’s overrun of its old stop, plus the bytes the photographs free.",
+          "comb_wait": "The engineer is measuring the combined option now. Its figures join here from the engineer’s weight options file when they land.",
+          "proof_h": "The photographs, each current file beside its {photo_w} px copy",
+          "proof_lede": "Each photograph shows at the size the page displays it and at twice that, as a 2x screen draws it, with its bytes. The research lead keeps every original and its record.",
+          "proof_wait": "The engineer is writing the photo proof now: each current photograph beside its rendition at display size and at twice that size, with bytes. It joins here when it lands.",
+          "approve": "The smaller photographs are a visible change, so they need your approval by name: reply “I approve the smaller photographs”, or choose one of the four options below.",
+          "rec_wait": "Take the combined option. Chapter 01’s {n_photos_w} photographs go to {photo_w} px wide, twice the {shown_w} px the page shows them at; the chart data travels compressed; every table stays live text; and chapter 14’s stop rises to the measured figure, paid for by the bytes the photographs free. Nothing comes from Phase 4’s share."
         },
         {
           "key": "payroll",
@@ -101,7 +115,7 @@
       "cd_line_first": "The creative director’s first scores, out of 5: {scores}.",
       "cd_line_re": "After the fix pass: {scores}, {ready}.",
       "cd_line_wait": "The rescore after the fix pass joins here when it lands; panel 7 holds every score.",
-      "cd_cite": "The creative director, review of round 0, part 2, “The weight and what to ask Dustin”"
+      "cd_cite": "The creative director, rescore of the chart kit, November 12"
     },
     "kit": {
       "n": 2,
@@ -179,19 +193,20 @@
       "n": 4,
       "nav": "Drawing method and page weight",
       "title": "The drawing method and page weight",
-      "lede": "The engineer built a real guide four times, once per way of drawing a chart, and chose the lightest that passes every check: each chart draws when the page loads, from its own table. Even so, chapter 14 projects to {proj_after} MB for its 97 charts against a {stop} MB stop, which is why panel 1 asks you about bytes.",
+      "lede": "The engineer built a real guide four times, once per way of drawing a chart, and chose the lightest that passes every check: each chart draws when the page loads, from its own table. Even so, chapter 14 projects to {ch14_now} MB for its 97 charts against a {stop} MB stop, which is why panel 1 asks you how it fits.",
       "pilot_h": "Four drawing methods, measured on the 16 charts",
       "options_h": "Chapter 14 against its stop",
-      "fig_caption": "Chapter 14 projected for 97 charts under each option, each bar drawn from zero against the {stop} MB stop. Sources: the engineer’s pilot and weight pass, with today’s strict build for the page.",
+      "fig_caption": "Chapter 14 projected for 97 charts under each option, each bar drawn from zero against today’s {stop} MB stop. Option 4 leaves chapter 14 as it stands. Source: the engineer’s weight options, measured on a fresh strict build and pilot.",
       "today_h": "Today’s guide",
       "today": "Today’s strict build, made for this board, weighs {page_mb} MB with chapter 13 in it and projects the finished page to {proj_mb} MB against the {budget_mb} MB budget, with chapter 14 held at its {stop} MB stop. The weight pass took {pass_saved} bytes off the page with no pixel changed.",
       "notes_h": "The engineer’s notes, as written",
-      "refs": "D3-90 · D3-91 · D3-104 · DR-232 · DR-227 · G2-01",
+      "refs": "D3-90 · D3-91 · D3-104 · D3-187 · D3-190 · D3-193 · DR-232 · DR-227 · G2-01",
       "bar_labels": {
-        "before": "Before the studio’s weight pass",
-        "after": "Option 1: as the chapter stands",
+        "stands": "Option 1: as the chapter stands",
         "islands": "Option 2: chart data compressed",
-        "tables": "Option 3: tables compressed too"
+        "tables": "Option 3: tables compressed too",
+        "combined": "Recommended: chart data compressed, photographs smaller",
+        "stop": "Today’s stop for chapter 14"
       }
     },
     "ch13": {
@@ -381,7 +396,13 @@
         "file": "work/handoffs/phase-3/20261112_Board-1-Builder-Notes.md",
         "label": "The board builder"
       }
-    ]
+    ],
+    "weight_options_globs": [
+      "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/round-0-fix-2/engineer/*_Board-1-Weight-Options.json",
+      "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/*Weight-Options*.json",
+      "work/handoffs/phase-3/*_Board-1-Weight-Options.json"
+    ],
+    "photo_proof_dir": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof"
   },
   "foot": "Built {built_date} by the studio’s board builder from the files each panel names. Studio codes in the small reference lines lead to the decision log."
 }

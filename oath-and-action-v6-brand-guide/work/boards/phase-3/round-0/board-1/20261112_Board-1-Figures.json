@@ -1,44 +1,54 @@
 {
  "guide_build": {
   "exit": 0,
-  "page_bytes": 9957130,
+  "page_bytes": 9962562,
   "warnings": 0,
-  "built": "2026-11-12T00:53:02",
+  "built": "2026-11-12T01:47:58",
   "report": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/guide/20261112_Board-1-Guide-Build-Report.json"
  },
  "engineer_options": {
-  "phase4_share": 2.54,
-  "before": {
-   "label": "Before the pass (earlier pilot; today's page without the pass has 404,025 bytes of room)",
-   "proj": 2.755,
-   "over": 1.005,
-   "ask": 0.601,
-   "ask_words": "0.601 MB"
+  "file": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/test-proof/test-weight.json",
+  "options": [
+   {
+    "option": "As it stands",
+    "chapter_14": 2954302,
+    "ask_of_phase_4": 761784,
+    "reader_loses": "Nothing"
+   },
+   {
+    "option": "Chart data carried compressed",
+    "chapter_14": 2795531,
+    "ask_of_phase_4": 603013,
+    "reader_loses": "Nothing: only the script reads the data"
+   },
+   {
+    "option": "Tables compressed too",
+    "chapter_14": 2141224,
+    "ask_of_phase_4": 0,
+    "reader_loses": "With scripts off, every chart's table (title, description, notes and source line stay)"
+   },
+   {
+    "option": "The smaller photo copies",
+    "chapter_14": 2954302,
+    "ask_of_phase_4": 0,
+    "reader_loses": "A visible resample: chapter 01's photographs (3 on the page, one shown twice) at 1,200 px wide, which frees 1.060 MB of the page"
+   },
+   {
+    "option": "Combined: photo copies and chart data compressed",
+    "chapter_14": 2795531,
+    "ask_of_phase_4": 0,
+    "reader_loses": "TEST ONLY"
+   }
+  ],
+  "combined": {
+   "option": "Combined: photo copies and chart data compressed",
+   "chapter_14": 2795531,
+   "ask_of_phase_4": 0,
+   "reader_loses": "TEST ONLY"
   },
-  "after": {
-   "label": "After (a) to (c)",
-   "proj": 2.709,
-   "over": 0.959,
-   "ask": 0.51,
-   "ask_words": "0.510 MB"
-  },
-  "islands": {
-   "label": "With (d), the islands only, no reader loss",
-   "proj": 2.595,
-   "over": 0.845,
-   "ask": 0.396,
-   "ask_words": "0.396 MB"
-  },
-  "tables": {
-   "label": "With (d), tables and islands, tables lost with scripts off",
-   "proj": 1.959,
-   "over": 0.209,
-   "ask": null,
-   "ask_words": "none: the page's room covers it"
-  },
-  "photos": 1.31
+  "phase4_share": 2.54
  },
- "built": "2026-11-12T00:52:57.477484+00:00",
+ "built": "2026-11-12T01:47:53.634110+00:00",
  "palette": {
   "new_tints": [
    [
@@ -62,9 +72,17 @@
   ],
   "release": "6.0.0-gate3.1"
  },
+ "photo_proof": {
+  "dir": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/test-proof/proof",
+  "manifest": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/test-proof/proof/manifest.json",
+  "pictures": [
+   "Test-Photo-A-Current-Display.png",
+   "Test-Photo-A-Rendition-Display.png"
+  ]
+ },
  "cd": {
   "first": "work/handoffs/phase-3/20261111_Round-0-CD-Scores.json",
-  "rescore": null
+  "rescore": "work/handoffs/phase-3/20261112_Round-0-CD-Rescores.json"
  },
  "payroll": {
   "months": 57,
@@ -109,12 +127,12 @@
   "S01": {
    "faults": 0,
    "rows": 8,
-   "svg_bytes_1440": 6468,
-   "svg_bytes_390": 6493,
+   "svg_bytes_1440": 6628,
+   "svg_bytes_390": 6678,
    "exports": {
-    "20261111_S01-Big-Number-In-Context.csv": 733,
-    "20261111_S01-Big-Number-In-Context-Newsprint-1440.svg": 14988,
-    "20261111_S01-Big-Number-In-Context-Newsprint-1440.png": 140085
+    "20261112_S01-Big-Number-In-Context.csv": 733,
+    "20261112_S01-Big-Number-In-Context-Newsprint-1440.svg": 15794,
+    "20261112_S01-Big-Number-In-Context-Newsprint-1440.png": 164114
    }
   },
   "S02": {
@@ -123,9 +141,9 @@
    "svg_bytes_1440": 10368,
    "svg_bytes_390": 9779,
    "exports": {
-    "20261111_S02-Line-With-Event-Notes.csv": 4952,
-    "20261111_S02-Line-With-Event-Notes-Newsprint-1440.svg": 26751,
-    "20261111_S02-Line-With-Event-Notes-Newsprint-1440.png": 166554
+    "20261112_S02-Line-With-Event-Notes.csv": 4952,
+    "20261112_S02-Line-With-Event-Notes-Newsprint-1440.svg": 26761,
+    "20261112_S02-Line-With-Event-Notes-Newsprint-1440.png": 166554
    }
   },
   "S03": {
@@ -134,20 +152,20 @@
    "svg_bytes_1440": 8879,
    "svg_bytes_390": 9165,
    "exports": {
-    "20261111_S03-Ranked-Bar.csv": 308,
-    "20261111_S03-Ranked-Bar-Newsprint-1440.svg": 22175,
-    "20261111_S03-Ranked-Bar-Newsprint-1440.png": 79325
+    "20261112_S03-Ranked-Bar.csv": 308,
+    "20261112_S03-Ranked-Bar-Newsprint-1440.svg": 22185,
+    "20261112_S03-Ranked-Bar-Newsprint-1440.png": 79325
    }
   },
   "S04": {
    "faults": 0,
    "rows": 8,
-   "svg_bytes_1440": 5127,
-   "svg_bytes_390": 5095,
+   "svg_bytes_1440": 5125,
+   "svg_bytes_390": 5093,
    "exports": {
-    "20261111_S04-Dumbbell.csv": 641,
-    "20261111_S04-Dumbbell-Newsprint-1440.svg": 12426,
-    "20261111_S04-Dumbbell-Newsprint-1440.png": 55471
+    "20261112_S04-Dumbbell.csv": 641,
+    "20261112_S04-Dumbbell-Newsprint-1440.svg": 12434,
+    "20261112_S04-Dumbbell-Newsprint-1440.png": 55653
    }
   },
   "S05": {
@@ -156,9 +174,9 @@
    "svg_bytes_1440": 20216,
    "svg_bytes_390": 20787,
    "exports": {
-    "20261111_S05-Small-Multiple-Lines.csv": 14728,
-    "20261111_S05-Small-Multiple-Lines-Newsprint-1440.svg": 57721,
-    "20261111_S05-Small-Multiple-Lines-Newsprint-1440.png": 78409
+    "20261112_S05-Small-Multiple-Lines.csv": 14728,
+    "20261112_S05-Small-Multiple-Lines-Newsprint-1440.svg": 57731,
+    "20261112_S05-Small-Multiple-Lines-Newsprint-1440.png": 78409
    }
   },
   "S06": {
@@ -167,9 +185,9 @@
    "svg_bytes_1440": 22224,
    "svg_bytes_390": 22363,
    "exports": {
-    "20261111_S06-Scenario-Directions.csv": 5282,
-    "20261111_S06-Scenario-Directions-Newsprint-1440.svg": 68995,
-    "20261111_S06-Scenario-Directions-Newsprint-1440.png": 394227
+    "20261112_S06-Scenario-Directions.csv": 5282,
+    "20261112_S06-Scenario-Directions-Newsprint-1440.svg": 69005,
+    "20261112_S06-Scenario-Directions-Newsprint-1440.png": 394227
    }
   },
   "S07": {
@@ -178,9 +196,9 @@
    "svg_bytes_1440": 14149,
    "svg_bytes_390": 7512,
    "exports": {
-    "20261111_S07-Tile-Grid-Map-Categorical.csv": 10539,
-    "20261111_S07-Tile-Grid-Map-Categorical-Newsprint-1440.svg": 37059,
-    "20261111_S07-Tile-Grid-Map-Categorical-Newsprint-1440.png": 83856
+    "20261112_S07-Tile-Grid-Map-Categorical.csv": 10539,
+    "20261112_S07-Tile-Grid-Map-Categorical-Newsprint-1440.svg": 37069,
+    "20261112_S07-Tile-Grid-Map-Categorical-Newsprint-1440.png": 83856
    }
   },
   "S08": {
@@ -189,9 +207,9 @@
    "svg_bytes_1440": 17460,
    "svg_bytes_390": 16449,
    "exports": {
-    "20261111_S08-Unit-Chart.csv": 40884,
-    "20261111_S08-Unit-Chart-Newsprint-1440.svg": 44243,
-    "20261111_S08-Unit-Chart-Newsprint-1440.png": 62482
+    "20261112_S08-Unit-Chart.csv": 40884,
+    "20261112_S08-Unit-Chart-Newsprint-1440.svg": 44253,
+    "20261112_S08-Unit-Chart-Newsprint-1440.png": 62483
    }
   },
   "S09": {
@@ -200,9 +218,9 @@
    "svg_bytes_1440": 14993,
    "svg_bytes_390": 11262,
    "exports": {
-    "20261111_S09-Timeline.csv": 9967,
-    "20261111_S09-Timeline-Newsprint-1440.svg": 44534,
-    "20261111_S09-Timeline-Newsprint-1440.png": 366145
+    "20261112_S09-Timeline.csv": 9967,
+    "20261112_S09-Timeline-Newsprint-1440.svg": 44544,
+    "20261112_S09-Timeline-Newsprint-1440.png": 366145
    }
   },
   "S10": {
@@ -211,9 +229,9 @@
    "svg_bytes_1440": 15608,
    "svg_bytes_390": 15536,
    "exports": {
-    "20261111_S10-One-Hundred-Percent-Bar.csv": 2387,
-    "20261111_S10-One-Hundred-Percent-Bar-Newsprint-1440.svg": 36814,
-    "20261111_S10-One-Hundred-Percent-Bar-Newsprint-1440.png": 202438
+    "20261112_S10-One-Hundred-Percent-Bar.csv": 2387,
+    "20261112_S10-One-Hundred-Percent-Bar-Newsprint-1440.svg": 36824,
+    "20261112_S10-One-Hundred-Percent-Bar-Newsprint-1440.png": 206559
    }
   },
   "S11": {
@@ -222,9 +240,9 @@
    "svg_bytes_1440": 25883,
    "svg_bytes_390": 30225,
    "exports": {
-    "20261111_S11-Shift-Arrows.csv": 4010,
-    "20261111_S11-Shift-Arrows-Newsprint-1440.svg": 71026,
-    "20261111_S11-Shift-Arrows-Newsprint-1440.png": 408249
+    "20261112_S11-Shift-Arrows.csv": 4010,
+    "20261112_S11-Shift-Arrows-Newsprint-1440.svg": 71036,
+    "20261112_S11-Shift-Arrows-Newsprint-1440.png": 407647
    }
   },
   "S12": {
@@ -233,31 +251,31 @@
    "svg_bytes_1440": 30312,
    "svg_bytes_390": 21630,
    "exports": {
-    "20261111_S12-Tile-Grid-Map-With-Shift-Arrows.csv": 4010,
-    "20261111_S12-Tile-Grid-Map-With-Shift-Arrows-Newsprint-1440.svg": 88753,
-    "20261111_S12-Tile-Grid-Map-With-Shift-Arrows-Newsprint-1440.png": 150758
+    "20261112_S12-Tile-Grid-Map-With-Shift-Arrows.csv": 4010,
+    "20261112_S12-Tile-Grid-Map-With-Shift-Arrows-Newsprint-1440.svg": 88763,
+    "20261112_S12-Tile-Grid-Map-With-Shift-Arrows-Newsprint-1440.png": 150758
    }
   },
   "S13": {
    "faults": 0,
    "rows": 1026,
-   "svg_bytes_1440": 50446,
-   "svg_bytes_390": 53033,
+   "svg_bytes_1440": 50626,
+   "svg_bytes_390": 53268,
    "exports": {
-    "20261111_S13-Small-Multiple-Area-Sparklines.csv": 63522,
-    "20261111_S13-Small-Multiple-Area-Sparklines-Newsprint-1440.svg": 86812,
-    "20261111_S13-Small-Multiple-Area-Sparklines-Newsprint-1440.png": 262996
+    "20261112_S13-Small-Multiple-Area-Sparklines.csv": 63522,
+    "20261112_S13-Small-Multiple-Area-Sparklines-Newsprint-1440.svg": 87341,
+    "20261112_S13-Small-Multiple-Area-Sparklines-Newsprint-1440.png": 270132
    }
   },
   "S14": {
    "faults": 0,
    "rows": 57,
-   "svg_bytes_1440": 15377,
-   "svg_bytes_390": 15262,
+   "svg_bytes_1440": 15094,
+   "svg_bytes_390": 14406,
    "exports": {
-    "20261111_S14-Columns-With-Moving-Average.csv": 1568,
-    "20261111_S14-Columns-With-Moving-Average-Newsprint-1440.svg": 33786,
-    "20261111_S14-Columns-With-Moving-Average-Newsprint-1440.png": 113660
+    "20261112_S14-Columns-With-Moving-Average.csv": 1568,
+    "20261112_S14-Columns-With-Moving-Average-Newsprint-1440.svg": 32785,
+    "20261112_S14-Columns-With-Moving-Average-Newsprint-1440.png": 116250
    }
   },
   "S15": {
@@ -266,9 +284,9 @@
    "svg_bytes_1440": 69095,
    "svg_bytes_390": 53496,
    "exports": {
-    "20261111_S15-Results-Table.csv": 4010,
-    "20261111_S15-Results-Table-Newsprint-1440.svg": 178135,
-    "20261111_S15-Results-Table-Newsprint-1440.png": 744022
+    "20261112_S15-Results-Table.csv": 4010,
+    "20261112_S15-Results-Table-Newsprint-1440.svg": 178145,
+    "20261112_S15-Results-Table-Newsprint-1440.png": 744022
    }
   },
   "S16": {
@@ -277,9 +295,9 @@
    "svg_bytes_1440": 64547,
    "svg_bytes_390": 65188,
    "exports": {
-    "20261111_S16-Bubble-Map.csv": 1685,
-    "20261111_S16-Bubble-Map-Newsprint-1440.svg": 96708,
-    "20261111_S16-Bubble-Map-Newsprint-1440.png": 409087
+    "20261112_S16-Bubble-Map.csv": 1685,
+    "20261112_S16-Bubble-Map-Newsprint-1440.svg": 96718,
+    "20261112_S16-Bubble-Map-Newsprint-1440.png": 409087
    }
   }
  },
@@ -317,15 +335,15 @@
   ]
  },
  "weight": {
-  "page_bytes": 9957130,
-  "projected": 15055613,
+  "page_bytes": 9962562,
+  "projected": 15057482,
   "budget": 15500000.0,
-  "pass_saved": 46523
+  "pass_saved": 46528
  },
  "ch13": {
   "rules": 13,
   "plates": 26,
-  "bytes": "247,941",
+  "bytes": "248,558",
   "budget": "250,000"
  },
  "data": {
@@ -384,8 +402,8 @@
  },
  "cd_scores": {
   "items": 3,
-  "ready": 0,
-  "rescore": false
+  "ready": 3,
+  "rescore": true
  },
  "red_teams": [
   [
@@ -431,20 +449,20 @@
  ],
  "tested": {
   "work/handoffs/phase-3/20261111_Round-0-Engineer-Notes.md": {
-   "tested": 40,
-   "not": 19
+   "tested": 47,
+   "not": 20
   },
   "work/handoffs/phase-3/20261111_Round-0-Palette-Notes.md": {
-   "tested": 21,
-   "not": 15
+   "tested": 25,
+   "not": 16
   },
   "work/handoffs/phase-3/20261111_Round-0-Editor-Notes.md": {
-   "tested": 16,
-   "not": 13
+   "tested": 24,
+   "not": 20
   },
   "work/handoffs/phase-3/20261111_Round-0-Explainer-Notes.md": {
-   "tested": 8,
-   "not": 7
+   "tested": 9,
+   "not": 8
   },
   "work/handoffs/phase-3/20261111_Round-0-Research-Notes.md": {
    "tested": 20,
@@ -463,20 +481,20 @@
    "not": 9
   },
   "work/handoffs/phase-3/20261111_CD-Review-Of-Round-0.md": {
-   "tested": 15,
-   "not": 11
+   "tested": 16,
+   "not": 12
   },
   "work/handoffs/phase-3/20261112_Board-1-Builder-Notes.md": {
    "tested": 8,
    "not": 9
   }
  },
- "board": "work/boards/phase-3/round-0/board-1/20261112_Board-1.html",
- "html_bytes": 359016,
- "images": 123,
- "folder_bytes_with_images": 56534148,
+ "board": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/test-proof/test-board.html",
+ "html_bytes": 373690,
+ "images": 125,
+ "folder_bytes_with_images": 56453368,
  "largest_image": [
-  3423838,
+  3348055,
   "20261112_Palette-Page-390.png"
  ],
  "status": {
@@ -486,13 +504,12 @@
   "weight": "ready",
   "ch13": "ready",
   "data": "ready",
-  "scores": [
-   "partial",
-   "cd"
-  ],
+  "scores": "ready",
   "tested": "ready"
  },
  "image_sources": {
+  "img/20261112_Photo-Proof-Test-Photo-A-Current-Display.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/test-proof/proof/Test-Photo-A-Current-Display.png",
+  "img/20261112_Photo-Proof-Test-Photo-A-Rendition-Display.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/test-proof/proof/Test-Photo-A-Rendition-Display.png",
   "img/20261112_Decide-Diverging-On-Charcoal-Steps.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/palette/diverging-charcoal.png",
   "img/20261112_Decide-Diverging-On-Charcoal-Table.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/palette/div-charcoal.png",
   "img/20261112_Decide-Four-Inks-On-Newsprint.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/palette/categorical-newsprint.png",
@@ -632,7 +649,10 @@
   "D3-16",
   "D3-17",
   "D3-18",
+  "D3-187",
   "D3-19",
+  "D3-190",
+  "D3-193",
   "D3-20",
   "D3-21",
   "D3-22",
@@ -699,5 +719,5 @@
  ],
  "notes": [],
  "warnings": [],
- "visible_text_sha1": "23a82e6cb7dcda0961a355ee22aa522042aac6c6"
+ "visible_text_sha1": "1d0b5620b2745eba8f61d834cba749f4a07d4fb8"
 }

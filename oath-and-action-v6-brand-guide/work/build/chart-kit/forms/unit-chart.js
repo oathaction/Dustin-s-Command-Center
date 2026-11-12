@@ -21,7 +21,9 @@
     [up, down].forEach(function (v) { lw = Math.max(lw, c.measure((cats[v] || {}).label || v, 'label', 600) + 22); });
     if (L.count_label) lw = Math.max(lw, c.measure(L.count_label, 'tick'));
     if (nei.label) lw = Math.max(lw, c.measure(nei.label, 'label', 600));
-    var x0 = c.phone ? 0 : Math.ceil(lw + 14), cw = (W - x0) / Math.max(1, groups.length);
+    // a ring around a square at the edge reaches past the square by 0.4 of a unit and its stroke; the columns leave room (KR5)
+    var Wc = W - (L.ring ? Math.ceil(u * 0.4 + c.t('line-baseline')) + 1 : 0);
+    var x0 = c.phone ? 0 : Math.ceil(lw + 14), cw = (Wc - x0) / Math.max(1, groups.length);
     var per = Math.max(1, Math.floor((cw - 2 + ug) / (u + ug)));
     var cell = {};
     rows.forEach(function (r) { var k = gkey(r) + '\u0000' + r[ec]; (cell[k] = cell[k] || []).push(r); });
@@ -94,7 +96,7 @@
     if (ring && ringBox) {
       // the ring's words sit under the lower stack, on a leader up to the ringed square
       var rx = ringBox[0] + u / 2, ry = ringBox[1] + u / 2;
-      c.circle(rx, ry, u * 0.9, { stroke: 'label', width: c.t('line-baseline'), mark: false });
+      c.circle(rx, ry, u * 0.9, { stroke: 'label', width: c.t('line-baseline'), kind: 'ring' });   // a mark, so the check sees it inside the drawing
       var ty = Math.max(downEnd, ry + u) + small + 8;
       var t = c.text(Math.min(W, rx + u), ty, ring.text, { role: 'tick', weight: 600, anchor: 'end' });
       c.line(rx, ry + u * 0.9, rx, t.y - 1, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
@@ -127,7 +129,7 @@
     }
     if (ring && ringBox) {
       var rx = ringBox[0] + u / 2, ry = ringBox[1] + u / 2;
-      c.circle(rx, ry, u * 0.9, { stroke: 'label', width: c.t('line-baseline'), mark: false });
+      c.circle(rx, ry, u * 0.9, { stroke: 'label', width: c.t('line-baseline'), kind: 'ring' });   // a mark, so the check sees it inside the drawing
       var t = c.text(Math.min(W, rx + u), ry + u * 0.9 + small + 8, ring.text, { role: 'tick', weight: 600, anchor: 'end' });
       c.line(rx, ry + u * 0.9, Math.min(rx, t.x + t.w - 4), t.y - 1, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
     }

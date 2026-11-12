@@ -18,39 +18,42 @@
       // the size scale takes only the rows the map draws, so a national row in the table sets no circle's size (D3-96)
       var drawn = rows.filter(function (r) { return G.centers[r[ec]]; });
       var maxv = Math.max.apply(null, drawn.map(function (r) { return r[ez]; })), area = K.scale.sqrt(maxv, R);
-      // the key above the map
-      var y = 0, kw = c.phone ? W : W * 0.55;
-      if (L.shade_title) { c.text(0, 12, L.shade_title, { role: 'eyebrow', weight: 700, fill: 'secondary', max: kw }); }
-      var tb = L.shade_title ? c.texts[c.texts.length - 1] : { y: 0, h: 0 };
-      var sx = 0, sy = Math.ceil(tb.y + tb.h) + (L.nation_label ? 24 : 10), sw = c.phone ? (W - 10) / 5 : Math.min(46, (kw - 10) / 5);
-      for (var i = 1; i <= 5; i++) c.rect(sx + (i - 1) * sw, sy, sw, 12, { fill: 'seq-' + i, mark: false });
-      bins.forEach(function (b, i) { c.text(sx + (i + 1) * sw, sy + 28, K.fmt(b, f.bins || 'integer'), { role: 'tick', anchor: 'middle' }); });
-      if (L.nation !== undefined && bins.length) {
-        var lo = bins[0] - (bins[1] - bins[0]), hi = bins[bins.length - 1] + (bins[1] - bins[0]);
-        var nx = sx + 5 * sw * (L.nation - lo) / (hi - lo);
-        c.line(nx, sy - 4, nx, sy + 16, { stroke: 'label', width: c.t('line-baseline'), mark: false });
-        if (L.nation_label) c.text(Math.max(nx, c.measure(L.nation_label, 'tick', 600) / 2), sy - 8, L.nation_label, { role: 'tick', weight: 600, anchor: 'middle' });
-      }
-      c.key([1, 2, 3, 4, 5].map(function (i) { return { fill: 'seq-' + i, ordered: true, outline: true }; }));   // circles carry an outline
-      var steps = L.size_steps || [];
-      var szx = c.phone ? 0 : W * 0.62, szy = c.phone ? sy + 48 : 12;
-      if (L.size_title) c.text(szx, szy, L.size_title, { role: 'eyebrow', weight: 700, fill: 'secondary' });
-      var cx = szx, base = szy + 14 + 2 * area(steps.length ? steps[steps.length - 1] : maxv);
-      steps.forEach(function (s, si) {
-        var r = area(s), lab = (L.size_step_words || [])[si] || (K.fmt(s, f.size_step || 'integer') + (L.size_unit ? ' ' + L.size_unit : '')), lw = c.measure(lab, 'tick');
-        var mid = cx + Math.max(r, lw / 2);
-        c.circle(mid, base - r, r, { stroke: 'label', width: c.t('bubble-outline'), mark: false });
-        c.text(mid, base + 16, lab, { role: 'tick', anchor: 'middle' });
-        cx = mid + Math.max(r, lw / 2) + 14;
-      });
-      var ring = L.ring || [];
-      if (L.ring_label) {
-        var ry = c.phone ? base + 34 : sy + 50;
-        c.circle(7, ry - 4, 6, { stroke: 'label', width: c.t('bubble-ring'), mark: false });
-        c.text(20, ry, L.ring_label, { role: 'tick', max: c.phone ? W - 24 : kw - 24 });
-        y = ry + 26;
-      } else y = Math.max(sy + 48, base + 26);
-      y = Math.max(y, base + 30);
+      // the key: above the map, or under it at the narrowest widths, where the map takes the full width first (CD KR2)
+      var narrow = W < 340, ring = L.ring || [];
+      var drawKey = function (oy) {
+        var y = oy, kw = c.phone ? W : W * 0.55;
+        if (L.shade_title) { c.text(0, oy + 12, L.shade_title, { role: 'eyebrow', weight: 700, fill: 'secondary', max: kw }); }
+        var tb = L.shade_title ? c.texts[c.texts.length - 1] : { y: oy, h: 0 };
+        var sx = 0, sy = Math.ceil(tb.y + tb.h) + (L.nation_label ? 24 : 10), sw = c.phone ? (W - 10) / 5 : Math.min(46, (kw - 10) / 5);
+        for (var i = 1; i <= 5; i++) c.rect(sx + (i - 1) * sw, sy, sw, 12, { fill: 'seq-' + i, mark: false });
+        bins.forEach(function (b, i) { c.text(sx + (i + 1) * sw, sy + 28, K.fmt(b, f.bins || 'integer'), { role: 'tick', anchor: 'middle' }); });
+        if (L.nation !== undefined && bins.length) {
+          var lo = bins[0] - (bins[1] - bins[0]), hi = bins[bins.length - 1] + (bins[1] - bins[0]);
+          var nx = sx + 5 * sw * (L.nation - lo) / (hi - lo);
+          c.line(nx, sy - 4, nx, sy + 16, { stroke: 'label', width: c.t('line-baseline'), mark: false });
+          if (L.nation_label) c.text(Math.max(nx, c.measure(L.nation_label, 'tick', 600) / 2), sy - 8, L.nation_label, { role: 'tick', weight: 600, anchor: 'middle' });
+        }
+        c.key([1, 2, 3, 4, 5].map(function (i) { return { fill: 'seq-' + i, ordered: true, outline: true }; }));   // circles carry an outline
+        var steps = L.size_steps || [];
+        var szx = c.phone ? 0 : W * 0.62, szy = c.phone ? sy + 48 : oy + 12;
+        if (L.size_title) c.text(szx, szy, L.size_title, { role: 'eyebrow', weight: 700, fill: 'secondary' });
+        var cx = szx, base = szy + 14 + 2 * area(steps.length ? steps[steps.length - 1] : maxv);
+        steps.forEach(function (s, si) {
+          var r = area(s), lab = (L.size_step_words || [])[si] || (K.fmt(s, f.size_step || 'integer') + (L.size_unit ? ' ' + L.size_unit : '')), lw = c.measure(lab, 'tick');
+          var mid = cx + Math.max(r, lw / 2);
+          c.circle(mid, base - r, r, { stroke: 'label', width: c.t('bubble-outline'), mark: false });
+          c.text(mid, base + 16, lab, { role: 'tick', anchor: 'middle' });
+          cx = mid + Math.max(r, lw / 2) + 14;
+        });
+        if (L.ring_label) {
+          var ry = c.phone ? base + 34 : sy + 50;
+          c.circle(7, ry - 4, 6, { stroke: 'label', width: c.t('bubble-ring'), mark: false });
+          var rt = c.text(20, ry, L.ring_label, { role: 'tick', max: c.phone ? W - 24 : kw - 24 });
+          y = rt.bottom + 14;   // under the ring key's last line, however many it wraps to (KR2)
+        } else y = Math.max(sy + 48, base + 26);
+        return Math.max(y, base + 30);
+      };
+      var y = narrow ? 0 : drawKey(0);
       // the map in its 975 by 610 frame, scaled to the width
       var k = W / G.frame[0], top = y, mh = G.frame[1] * k;
       var tf = 'translate(0,' + K.round(top) + ') scale(' + Math.round(k * 10000) / 10000 + ')';
@@ -108,8 +111,8 @@
         var pad = c.t('bubble-label-pad') + 1, asc = s * 0.77, h = s;
         var cands = offs[code] ? [[p.x + offs[code][0], p.y + offs[code][1]]] : [[p.x + p.rad + pad, p.y + s * 0.35], [p.x - p.rad - pad - tw, p.y + s * 0.35], [p.x - tw / 2, p.y - p.rad - pad - s * 0.23], [p.x - tw / 2, p.y + p.rad + pad + asc],
           [p.x + p.rad + pad, p.y - p.rad], [p.x + p.rad + pad, p.y + p.rad + asc], [p.x - p.rad - pad - tw, p.y - p.rad], [p.x - p.rad - pad - tw, p.y + p.rad + asc]];
-        for (var ring = 1; ring <= (c.phone ? 14 : 6) && !offs[code]; ring++) {
-          var dd = p.rad + pad + ring * 12;
+        for (var rg = 1; rg <= (c.phone ? 14 : 6) && !offs[code]; rg++) {
+          var dd = p.rad + pad + rg * 12;
           for (var ang = 0; ang < 24; ang++) {
             var th = ang * Math.PI / 12, ex = p.x + Math.cos(th) * dd, ey = p.y + Math.sin(th) * dd;
             cands.push([Math.cos(th) < -0.1 ? ex - tw : Math.cos(th) > 0.1 ? ex : ex - tw / 2, ey + s * 0.35]);
@@ -125,19 +128,21 @@
         };
         var pick = null;
         for (var i = 0; i < cands.length && !pick; i++) { var b = { x: cands[i][0], y: cands[i][1] - asc, w: tw, h: h }; if (!hits(b) && leads_ok(b, cands[i])) pick = cands[i]; }
-        // on a phone, a small state with no clear place is named under the map instead, and the table names every state
-        if (!pick && c.phone && !offs[code]) { unlabeled.push(code); return; }
+        // on a phone, a small state with no clear place is named under the map instead, and the table names every state;
+        // at the narrowest widths only circles that hold their code are labeled (KR2)
+        if ((!pick && c.phone && !offs[code]) || narrow) { unlabeled.push(code); return; }
         if (!pick) { pick = cands[0]; c.warn('no clear place for the label ' + code + '; set labels.offsets.' + code); }
         var far = Math.sqrt(Math.pow(pick[0] + tw / 2 - p.x, 2) + Math.pow(pick[1] - asc / 2 - p.y, 2)) > p.rad + 2 * s;
         c.text(pick[0], pick[1], code, { role: 'tick', weight: 600, halo: true });
         if (far) { c.line(p.x, p.y, pick[0] + tw / 2, pick[1] - asc / 2, { stroke: 'leader', width: c.t('line-hairline'), mark: false }); lead.push([p.x, p.y, pick[0] + tw / 2, pick[1] - asc / 2]); }
       });
       c.height(top + mh + 4);
+      var low = top + mh;
+      c.texts.forEach(function (t) { low = Math.max(low, t.y + t.h); });
+      pts.forEach(function (q) { low = Math.max(low, q.y + q.rad); });
+      if (narrow) { low = drawKey(low + 16); c.height(low); }
       if (unlabeled.length) {
         var uw = K.word('unlabeled_marks');
-        var low = top + mh;
-        c.texts.forEach(function (t) { low = Math.max(low, t.y + t.h); });
-        pts.forEach(function (q) { low = Math.max(low, q.y + q.rad); });
         c.text(0, low + 22, uw.replace('{codes}', unlabeled.sort().join(', ')), { role: 'note', max: W, fill: 'secondary' });
       }
     }

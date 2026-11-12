@@ -69,15 +69,29 @@
         if (v <= skip[0]) return x0 + (v - dom[0]) * unit;
         return x0 + (skip[0] - dom[0]) * unit + gap / 2;
       };
+      // the scale narrows until every label on the right side of its arrow fits the drawing, so no label flips to the
+      // left for want of room (CD KR3); a few passes, as each narrowing moves the arrows
+      for (var pass = 0; pass < 4; pass++) {
+        var over = 0;
+        rows.forEach(function (r) {
+          if (r[et] < 0) return;
+          var lab = K.fmt(Math.abs(r[esh]), f.shift || 'number:1') + ' ' + r[el];
+          over = Math.max(over, Math.max(xs2(r[ef]), xs2(r[et])) + 8 + c.measure(lab, 'label', 600) - W);
+        });
+        if (over <= 0.5) break;
+        x1 -= over + 1;
+        unit = (x1 - x0 - (skip ? gap : 0)) / span;
+      }
       var ty = c.size('tick');
       c.text(x0, ty, L.left || '', { role: 'tick', weight: 600 });
       c.text(x1, ty, L.right || '', { role: 'tick', weight: 600, anchor: 'end' });
-      var ticks = K.ticks(dom[0], dom[1], 10).filter(function (t) { return !skip || t <= skip[0] || t >= skip[1]; });
+      var ticks = K.ticks(dom[0], dom[1], 0, 10).filter(function (t) { return !skip || t <= skip[0] || t >= skip[1]; });
       var tyy = ty + 22;
       ticks.forEach(function (t) {
         var w = t === 0 ? (L.center || '0') : K.fmt(Math.abs(t), 'integer');
-        if (xs2(t) - c.measure(w, 'tick') / 2 < 0 || xs2(t) + c.measure(w, 'tick') / 2 > W) return;
-        c.text(xs2(t), tyy, w, { role: 'tick', anchor: 'middle' });
+        // a tick word at an edge sets flush with that edge rather than dropping (CD KR3)
+        var tw = c.measure(w, 'tick'), xx = xs2(t), an = xx + tw / 2 > W ? 'end' : xx - tw / 2 < 0 ? 'start' : 'middle';
+        c.text(an === 'end' ? W : an === 'start' ? 0 : xx, tyy, w, { role: 'tick', anchor: an });
       });
       if (skip) { var sx = x0 + (skip[0] - dom[0]) * unit + gap / 2; c.text(sx, tyy, '//', { role: 'tick', anchor: 'middle', weight: 700 }); }
       var pitch = c.t('shift-axis-pitch'), y = tyy + 22;
@@ -106,6 +120,11 @@
       var hw = L.how;
       if (hw) {
         var hx = xs2(0) + 22, hwid = W - hx - 8, hy = firstRow;
+        // the block starts at the first row from which its whole box is clear of the rows' labels (D3-93)
+        var bh = (hw.title ? c.size('tick') + 14 : 0) + (hw.sample ? 46 : 0);
+        [].concat(hw.text || []).forEach(function (t) { bh += K.wrap(t, c.size('tick'), hwid, 400).length * Math.round(c.size('tick') * 1.25) + 8; });
+        var hit = function (yy) { return c.texts.some(function (t) { return t.x + t.w > hx - 4 && t.x < W && t.y + t.h > yy - 4 && t.y < yy + bh + 4; }); };
+        while (hit(hy) && hy < y) hy += pitch;
         if (hw.title) { c.text(hx, hy + c.size('tick'), hw.title, { role: 'eyebrow', weight: 700, fill: 'secondary' }); hy += c.size('tick') + 14; }
         if (hw.sample) {
           var sp = hw.sample, a0 = hx + 4, a1 = hx + 4 + (xs2(sp.to) - xs2(sp.from));
@@ -113,7 +132,11 @@
           c.marks = c.marks.filter(function (m) { return m.kind !== 'arrow' || (m.data && m.data.key); });
           if (sp.value) c.text(a1 + 8, hy + 8 + c.size('label') * 0.35, sp.value, { role: 'label' });
           if (sp.from_label) c.text(a0, hy + 30, sp.from_label, { role: 'tick' });
-          if (sp.to_label) c.text(a1, hy + 30, sp.to_label, { role: 'tick', anchor: 'middle' });
+          // the later year sits centered under the tip, moved right where it would touch the earlier one
+          if (sp.to_label) {
+            var fw = sp.from_label ? c.measure(sp.from_label, 'tick') : 0, tw2 = c.measure(sp.to_label, 'tick');
+            c.text(Math.max(a1, a0 + fw + 8 + tw2 / 2), hy + 30, sp.to_label, { role: 'tick', anchor: 'middle' });
+          }
           hy += 46;
         }
         [].concat(hw.text || []).forEach(function (t) { var b = c.text(hx, hy + c.size('tick'), t, { role: 'tick', max: hwid }); hy = b.y + b.h + 8; });
@@ -129,8 +152,8 @@
       y += 8;
       ticks.forEach(function (t, i) {
         var w = t === 0 ? (L.center || '0') : K.fmt(Math.abs(t), 'integer') + (i === ticks.length - 1 && L.axis_unit ? ' ' + L.axis_unit : '');
-        if (xs2(t) - c.measure(w, 'tick') / 2 < 0 || xs2(t) + c.measure(w, 'tick') / 2 > W) return;
-        c.text(xs2(t), y, w, { role: 'tick', anchor: 'middle' });
+        var tw = c.measure(w, 'tick'), xx = xs2(t), an = xx + tw / 2 > W ? 'end' : xx - tw / 2 < 0 ? 'start' : 'middle';
+        c.text(an === 'end' ? W : an === 'start' ? 0 : xx, y, w, { role: 'tick', anchor: an });
       });
       c.height(y + 4);
     }

@@ -9,28 +9,28 @@
    "page": 1440,
    "width": 1024,
    "height": 298,
-   "svg_bytes": 17460
+   "svg_bytes": 17485
   },
   {
    "ground": "newsprint",
    "page": 390,
    "width": 358,
    "height": 599,
-   "svg_bytes": 16449
+   "svg_bytes": 16441
   },
   {
    "ground": "charcoal",
    "page": 1440,
    "width": 1024,
    "height": 298,
-   "svg_bytes": 17460
+   "svg_bytes": 17485
   },
   {
    "ground": "charcoal",
    "page": 390,
    "width": 358,
    "height": 599,
-   "svg_bytes": 16449
+   "svg_bytes": 16441
   }
  ],
  "faults": []

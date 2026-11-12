@@ -13,6 +13,8 @@ photographs, and prints one Markdown table:
   3. tables compressed too: the table equivalent travels with the island, so a reader with scripts off loses every table
   4. the smaller photo copies: chapter 01's two shown photographs at 1,200 px wide (they show at 600 px at most), re-encoded,
      freeing page room; a visible resample
+  5. the creative director's recommendation: the photo copies and chart data compressed, tables live, with chapter 14's
+     stop raised to fit the chart data row, and the page's room left with Phase 4's share untouched
 
 Each row's ask is the bytes chapter 14 runs over its stop, less the page's room under 15.5 MB, never below zero.
 """
@@ -92,9 +94,16 @@ def main():
         ("The smaller photo copies", ch14, ask(ch14, photos),
          f"A visible resample: chapter 01's photographs ({nph} on the page, one shown twice) at 1,200 px wide, which frees {photos / MB:.3f} MB of the page"),
     ]
+    # 5: the stop rises to the chart-data row's chapter 14; the page then carries that overrun less the photos' saving
+    c14_rec = ch14 - FINISHED * isl_save + EXPANDER
+    page_rec = rep["weight"]["projection"]["projected_bytes"] + (c14_rec - STOP) - photos
+    rows.append(("Recommended: photo copies and chart data compressed, tables live", c14_rec, max(0, round(page_rec - BUDGET)),
+                 f"The photo resample only; chapter 14's stop rises to {c14_rec / MB:.3f} MB and the page keeps {(BUDGET - page_rec) / MB:.3f} MB of room with Phase 4's share untouched"))
     out = {"page_bytes": rep["bytes"], "projected_page": rep["weight"]["projection"]["projected_bytes"], "room": round(room),
            "chapter_14_now": ch14, "stop": STOP, "plates": n, "island_saving_per_plate": round(isl_save),
            "table_and_island_saving_per_plate": round(both_save), "photo_saving": photos,
+           "recommended": {"chapter_14_stop": round(c14_rec), "page_projected": round(page_rec), "room_left": round(BUDGET - page_rec),
+                           "phase_4_share_untouched": BUDGET - page_rec >= 0},
            "options": [{"option": r[0], "chapter_14": round(r[1]), "ask_of_phase_4": r[2], "reader_loses": r[3]} for r in rows]}
     print(f"Strict page {rep['bytes']:,} bytes, projected {out['projected_page']:,}; room under 15.5 MB {room:,.0f}. "
           f"Pilot: {n} plates, chapter 14 projected {ch14:,}.")

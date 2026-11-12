@@ -15,8 +15,8 @@
    "ground": "newsprint",
    "page": 390,
    "width": 358,
-   "height": 489,
-   "svg_bytes": 65188
+   "height": 496,
+   "svg_bytes": 65204
   },
   {
    "ground": "charcoal",
@@ -29,8 +29,8 @@
    "ground": "charcoal",
    "page": 390,
    "width": 358,
-   "height": 489,
-   "svg_bytes": 65188
+   "height": 496,
+   "svg_bytes": 65204
   }
  ],
  "faults": []

@@ -58,6 +58,9 @@ FLAGGED = ['genuinely', 'really', 'truly', 'actually', 'simply', 'just', 'levera
 LIMIT_PAGE = 16_000_000
 LIMIT_IMAGE = 15_000_000
 LIMIT_FILES = 250
+LIMIT_TOTAL = 64_000_000
+PHOTO_DIR = None
+WEIGHT_FILE = None
 REGION_W = 248
 WARN, NOTES, FIG, LINKED_CODES = [], [], {}, set()
 QUOTED = []
@@ -472,13 +475,25 @@ def file_sig(p):
     return f'{st.st_size}-{int(st.st_mtime)}'
 
 
+def image_size(p):
+    if pathlib.Path(p).suffix.lower() == '.png':
+        return png_size(p)
+    from PIL import Image
+    with Image.open(p) as im:
+        return im.size
+
+
+IMG_EXT = ('.png', '.jpg', '.jpeg', '.webp')
+
+
 def image_copy(src, name):
     src = pathlib.Path(src)
     need(src.exists(), f'missing image {rel(src)}')
-    out = IMG / f'{DATE}_{name}.png'
+    ext = src.suffix.lower() if src.suffix.lower() in IMG_EXT else '.png'
+    out = IMG / f'{DATE}_{name}{ext}'
     if not out.exists() or out.stat().st_size != src.stat().st_size or out.read_bytes() != src.read_bytes():
         shutil.copyfile(src, out)
-    w, h = png_size(out)
+    w, h = image_size(out)
     rec = {'src': f'img/{out.name}', 'file': out, 'w': w, 'h': h, 'source': rel(src)}
     IMAGES[out.name] = rec
     return rec
@@ -615,43 +630,85 @@ def render_jobs(G):
 
 # ------------------------------------------------------------------------------------------------------- engineer's numbers
 def engineer_numbers():
-    t = read(C['slots']['engineer_notes']) or ''
-    wp = md_section(t, [r'weight pass']) or ''
-    out = {'found': False}
-    tabs = md_tables(wp)
-    opt = None
-    for head, rows in tabs:
-        if head and head[0].lower() == 'option':
-            opt = (head, rows)
-    if opt:
-        head, rows = opt
-        m = re.search(r"Phase 4['’]s ([\d.]+) MB", ' '.join(head))
-        out['phase4_share'] = float(m.group(1)) if m else None
-
-        def row(pat):
-            for r in rows:
-                if re.search(pat, r[0], flags=re.I):
-                    return r
-            return None
-
-        def num(c):
-            m = re.search(r'([\d.]+) MB', c or '')
-            return float(m.group(1)) if m else None
-        for key, pat in (('before', r'^before'), ('after', r'^after'), ('islands', r'islands only'), ('tables', r'tables and islands')):
-            r = row(pat)
-            if r:
-                out[key] = {'label': r[0], 'proj': num(r[1]), 'over': num(r[2]), 'ask': num(r[3]), 'ask_words': r[3]}
-        out['found'] = all(k in out for k in ('after', 'islands', 'tables'))
-        out['table'] = opt
-    m = re.search(r'Smaller renditions[^.]*?about ([\d.]+) MB off the page', wp, flags=re.S)
-    out['photos'] = float(m.group(1)) if m else None
+    """The weight options as the engineer's script measured them (D3-187), the combined option once it is in, and the
+    sections of the engineer's notes the board quotes."""
+    S = C['slots']
+    t = read(S['engineer_notes']) or ''
+    out = {'found': False, 'combined': None, 'base': {}}
+    globs = [g if g.startswith('/') else str(ROOT / g) for g in S['weight_options_globs']]
+    cands = [str(WEIGHT_FILE)] if WEIGHT_FILE else sorted({f for g in globs for f in glob.glob(g)}, key=os.path.getmtime)
+    if cands:
+        J = json.loads(pathlib.Path(cands[-1]).read_text())
+        opts = J.get('options', [])
+        comb = next((o for o in opts if re.search(r'combin|recommend', o['option'], re.I)
+                     or (re.search(r'photo', o['option'], re.I) and re.search(r'compress|data', o['option'], re.I))), None)
+        if comb is None and len(opts) > 4:
+            comb = opts[4]
+        for key, pat in (('stands', r'as it stands'), ('islands', r'chart data'), ('tables', r'tables'), ('photos', r'photo')):
+            o = next((o for o in opts if o is not comb and re.search(pat, o['option'], re.I)), None)
+            if o:
+                out['base'][key] = o
+        out.update({'J': J, 'file': cands[-1], 'combined': comb, 'found': len(out['base']) == 4})
+        ph = out['base'].get('photos', {}).get('reader_loses', '')
+        m = re.search(r'\((\d+) on the page', ph)
+        out['n_photos'] = int(m.group(1)) if m else None
+        m = re.search(r'at ([\d,]+) px wide', ph)
+        out['photo_w'] = m.group(1) if m else None
+    m = re.search(r"Phase 4['’]s ([\d.]+) MB", md_section(t, [r'board 1 weight options']) or t)
+    out['phase4_share'] = float(m.group(1)) if m else None
+    m = re.search(r'at most (\d+) px wide', t)
+    out['shown_w'] = m.group(1) if m else None
+    bw = md_section(t, [r'board 1 weight options']) or ''
+    tabs = [x for x in md_tables(bw) if x[0] and x[0][0].lower() == 'option']
+    out['table'] = tabs[0] if tabs else None
     pil = md_section(t, [r'the drawing method \(pilot\)']) or ''
     out['pilot_tables'] = md_tables(pil)
-    out['sections'] = {n: md_section(t, [re.escape(n)]) for n in ('The drawing method (pilot)', 'The weight gates', 'Weight pass')}
+    out['sections'] = {n: md_section(t, [re.escape(n)]) for n in ('The drawing method (pilot)', 'The weight gates', 'Weight pass', 'Board 1 weight options')}
     if not out['found']:
-        warn('the engineer’s options table was not found under "Weight pass"')
-    FIG['engineer_options'] = {k: v for k, v in out.items() if k in ('phase4_share', 'before', 'after', 'islands', 'tables', 'photos')}
+        warn('the engineer’s weight options JSON was not found or lacks one of its four options')
+    if not out['combined']:
+        note('the combined weight option is not in the engineer’s JSON yet')
+    FIG['engineer_options'] = {'file': out.get('file'), 'options': out.get('J', {}).get('options'), 'combined': out['combined'],
+                               'phase4_share': out['phase4_share']}
     return out
+
+
+def photo_proof(P):
+    """The engineer's proof of the smaller photographs: each current file beside its rendition. A manifest in the folder
+    names the pictures and their bytes; without one, every picture in the folder shows by its file name."""
+    d = PHOTO_DIR or pathlib.Path(C['slots']['photo_proof_dir'])
+    if not d.exists():
+        return None
+    pics = sorted(p for p in d.iterdir() if p.suffix.lower() in IMG_EXT)
+    if not pics:
+        return None
+    mans = sorted((m for m in d.glob('*.json') if 'Weight-Options' not in m.name), key=os.path.getmtime)
+    M = json.loads(mans[-1].read_text()) if mans else None
+    entries = M if isinstance(M, list) else ((M or {}).get('photos') or (M or {}).get('items') or [])
+    used, out = set(), []
+
+    def pic_html(f, cap_):
+        r = image_copy(f, slug('Photo-Proof', f.stem.split('_', 1)[-1]))
+        used.add(f.name)
+        return figure(r, cap_, f'<b>{esc(cap_)}</b> <span class="num">{r["w"]} by {r["h"]} px, {f.stat().st_size:,} bytes</span>')
+    for e in entries if isinstance(entries, list) else []:
+        if not isinstance(e, dict):
+            continue
+        refs = [(k, d / pathlib.Path(v).name) for k, v in e.items() if isinstance(v, str) and pathlib.Path(v).suffix.lower() in IMG_EXT and (d / pathlib.Path(v).name).exists()]
+        if not refs:
+            continue
+        name = next((str(e[k]) for k in ('name', 'title', 'label', 'photo', 'subject') if k in e), refs[0][1].stem)
+        facts = ''.join(f'<div><dt>{esc(k.replace("_", " ").capitalize())}</dt><dd>{f"{v:,}" if isinstance(v, int) else esc(shorten_paths(v))}</dd></div>'
+                        for k, v in e.items() if isinstance(v, (int, float, str)) and not (isinstance(v, str) and pathlib.Path(v).suffix.lower() in IMG_EXT)
+                        and k not in ('name', 'title', 'label', 'photo', 'subject') and not str(v).startswith('/'))
+        QUOTED.append(name)
+        out.append(f'<h5 class="ph-h">{esc(shorten_paths(name))}</h5>' + (f'<dl class="facts kf">{facts}</dl>' if facts else '')
+                   + '<div class="pair">' + ''.join(pic_html(f, k.replace('_', ' ').capitalize()) for k, f in refs) + '</div>')
+    rest = [f for f in pics if f.name not in used]
+    if rest:
+        out.append('<div class="pair">' + ''.join(pic_html(f, f.stem.split('_', 1)[-1].replace('-', ' ')) for f in rest) + '</div>')
+    FIG['photo_proof'] = {'dir': str(d), 'manifest': str(mans[-1]) if mans else None, 'pictures': [p.name for p in pics]}
+    return ''.join(out)
 
 
 # ------------------------------------------------------------------------------------------------------- panel 1
@@ -702,8 +759,18 @@ def decide_panel(G, E, TOK):
     stop = unbuilt.get('14')
     FILL['stop'] = f'{stop / 1e6:.2f}' if stop else '?'
     if E['found']:
-        FILL.update({'proj_after': f'{E["after"]["proj"]:.3f}', 'ask_after': f'{E["after"]["ask"]:.3f}', 'ask_islands': f'{E["islands"]["ask"]:.3f}',
-                     'phase4_share': f'{E["phase4_share"]:.2f}'})
+        B, J = E['base'], E['J']
+        FILL.update({'ch14_now': f'{J["chapter_14_now"] / 1e6:.3f}', 'ask_stands': f'{B["stands"]["ask_of_phase_4"] / 1e6:.3f}',
+                     'ask_islands': f'{B["islands"]["ask_of_phase_4"] / 1e6:.3f}', 'phase4_share': f'{E["phase4_share"]:.2f}',
+                     'photo_saving': f'{J["photo_saving"] / 1e6:.3f}', 'n_photos_w': nw(E['n_photos'] or 0), 'photo_w': E['photo_w'] or '?',
+                     'shown_w': E['shown_w'] or '?', 'budget_mb': f'{proj.get("budget", 0) / 1e6:.1f}'})
+        comb = E['combined']
+        if comb:
+            room = next((comb[k] for k in ('room_after', 'page_room_after', 'room') if isinstance(comb.get(k), (int, float))), None)
+            FILL['comb_room_computed'] = room is None
+            if room is None:     # the page's room once the stop rises to the measured figure and the photographs free their bytes
+                room = J['room'] - max(0, comb['chapter_14'] - J['stop']) + J['photo_saving']
+            FILL.update({'comb_ch14': f'{comb["chapter_14"] / 1e6:.3f}', 'comb_room': f'{room / 1e6:.2f}'})
     # Phase 4's chapters: the unbuilt chapters that share one allocation
     alloc = {}
     for k, v in unbuilt.items():
@@ -711,12 +778,13 @@ def decide_panel(G, E, TOK):
             alloc.setdefault(v, []).append(k)
     p4 = max(alloc.values(), key=len) if alloc else []
     each = unbuilt.get(p4[0]) if p4 else None
-    if p4 and E.get('phase4_share'):
+    if p4 and E.get('phase4_share') and E['found']:
         if abs(len(p4) * each / 1e6 - E['phase4_share']) > 0.01:
             warn(f'Phase 4’s chapters in the build report ({len(p4)} at {each:,}) do not add to the notes’ {E["phase4_share"]} MB')
         FILL.update({'phase4_n': nw(len(p4)), 'phase4_each': f'{each / 1e6:.2f}',
-                     'phase4_after_1': f'{(E["phase4_share"] - E["after"]["ask"]) / len(p4):.2f}',
-                     'phase4_after_2': f'{(E["phase4_share"] - E["islands"]["ask"]) / len(p4):.2f}'})
+                     'phase4_after_1': f'{(E["phase4_share"] - B["stands"]["ask_of_phase_4"] / 1e6) / len(p4):.2f}',
+                     'phase4_after_2': f'{(E["phase4_share"] - B["islands"]["ask_of_phase_4"] / 1e6) / len(p4):.2f}'})
+    PROOF['html'] = photo_proof(P)
     first, rescore = cd_scores()
     cards = []
     for it in P['items']:
@@ -743,43 +811,68 @@ def decide_panel(G, E, TOK):
                     body += (f' {esc(fill(P["cd_line_re"], {"scores": score_words(ri, rescore["criteria"]), "ready": "ready" if ri.get("ready") else "not yet ready"}))}' if ri
                              else f' {esc(P["cd_line_wait"])}') + '</p>'
         elif it['key'] == 'weight' and E['found']:
-            rows = []
-            vals = [(E['after']['ask'], E['after']['proj']), (E['islands']['ask'], E['islands']['proj']), (E['tables']['ask'], E['tables']['proj'])]
-            for k, o in enumerate(it['options']):
-                if k < 3:
-                    ask, pr = vals[k]
-                    ask_w = f'{ask:.3f} MB' if ask is not None else esc(strip_codes(E['tables']['ask_words']).split(':')[0].capitalize())
-                    pr_w = f'{pr:.3f} MB'
-                else:
-                    ask_w = 'None'
-                    pr_w = f'Unchanged; the page loses about {E["photos"]:.2f} MB' if E.get('photos') else 'Not measured'
-                rec_ = ' <span class="tag rec">Recommended</span>' if o.get('recommended') else ''
-                rows.append(f'<tr{" class=recrow" if o.get("recommended") else ""}><th scope="row">{esc(o["name"])}{rec_}</th><td class="num">{ask_w}</td><td class="num">{pr_w}</td><td>{esc(o["sees"])}</td></tr>')
-            hd = ''.join(f'<th scope="col">{esc(fill(c))}</th>' for c in it['cols'])
-            body += (f'<h4 class="dec-sub">{esc(it["options_h"])}</h4><div class="tw" role="region" tabindex="0" aria-label="{esc(it["options_h"])}; scrolls sideways">'
-                     f'<table class="opts"><thead><tr>{hd}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
-                     f'<p class="small">{esc(fill(it["phase4_line"]))}</p>')
-            adv = cd_advice()
-            if adv:
-                body += f'<h4 class="dec-sub">{esc(it["cd_h"])}</h4><blockquote class="q"><p>{md_inline(adv)}</p><footer>{esc(P["cd_cite"])}</footer></blockquote>'
-                QUOTED.append(adv)
+            body += weight_body(it, E, P)
         elif it['key'] == 'payroll':
             body += payroll_body(it)
         q = fill(it['q'])
-        rec = fill(it['rec'])
+        rec = fill(it['rec_wait'] if it['key'] == 'weight' and not E.get('combined') and it.get('rec_wait') else it['rec'])
         cards.append(f'<article class="dec" id="decide-{esc(it["key"])}"><h3 class="dec-h">{esc(it["h"])}</h3><p class="dec-q">{esc(q)}</p>'
                      f'<p class="dec-rec"><span class="tag rec">Recommended</span> {esc(rec)}</p>{body}{refline(it["refs"], "decision " + it["key"])}</article>')
     body = f'<p class="intro">{esc(P["lede"])}</p><p class="reply">{esc(P["reply"])}</p>' + ''.join(cards)
-    return panel('decide', P, body, 'ready' if E['found'] else ('partial', 'engineer'))
+    ok = E['found'] and E['combined'] and PROOF.get('html')
+    return panel('decide', P, body, 'ready' if ok else ('partial', 'engineer'))
+
+
+PROOF = {}
+
+
+def weight_body(it, E, P):
+    B, J, comb = E['base'], E['J'], E['combined']
+    out = ''
+    if comb:
+        facts = [(it['comb_facts'][0], f'{comb["chapter_14"] / 1e6:.3f} MB'),
+                 (it['comb_facts'][1], 'None' if not comb.get('ask_of_phase_4') else f'{comb["ask_of_phase_4"] / 1e6:.3f} MB'),
+                 (it['comb_facts'][2], f'{J["photo_saving"] / 1e6:.3f} MB'),
+                 (it['comb_facts'][3], f'{FILL["comb_room"]} MB'),
+                 (it['comb_facts'][4], strip_codes(comb.get('reader_loses', '')))]
+        QUOTED.append(comb.get('reader_loses', ''))
+        out += (f'<h4 class="dec-sub">{esc(it["comb_h"])}</h4><dl class="facts">' + ''.join(f'<div><dt>{esc(fill(a))}</dt><dd>{esc(b)}</dd></div>' for a, b in facts) + '</dl>'
+                + (f'<p class="small">{esc(it["comb_room_note"])}</p>' if FILL.get('comb_room_computed') else ''))
+    else:
+        out += f'<div class="pending" role="status"><p><b>Waiting for the engineer.</b> {esc(it["comb_wait"])}</p></div>'
+    out += f'<h4 class="dec-sub">{esc(fill(it["proof_h"]))}</h4><p class="small">{esc(it["proof_lede"])}</p>'
+    out += PROOF.get('html') or f'<div class="pending" role="status"><p><b>Waiting for the engineer.</b> {esc(it["proof_wait"])}</p></div>'
+    out += f'<p class="dec-rec approve">{esc(fill(it["approve"]))}</p>'
+    rows = []
+    for k, o in zip(('stands', 'islands', 'tables', 'photos'), it['options']):
+        x = B[k]
+        ask_w = 'None' if not x['ask_of_phase_4'] else f'{x["ask_of_phase_4"] / 1e6:.3f} MB'
+        pr_w = f'{x["chapter_14"] / 1e6:.3f} MB' + (f'; frees {J["photo_saving"] / 1e6:.3f} MB of the page' if k == 'photos' else '')
+        rows.append(f'<tr><th scope="row">{esc(o["name"])}</th><td class="num">{ask_w}</td><td class="num">{pr_w}</td><td>{esc(o["sees"])}</td></tr>')
+    hd = ''.join(f'<th scope="col">{esc(fill(c))}</th>' for c in it['cols'])
+    out += (f'<h4 class="dec-sub">{esc(it["options_h"])}</h4><div class="tw" role="region" tabindex="0" aria-label="{esc(it["options_h"])}; scrolls sideways">'
+            f'<table class="opts"><thead><tr>{hd}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
+            f'<p class="small">{esc(fill(it["phase4_line"]))}</p>')
+    adv = cd_advice()
+    if adv:
+        QUOTED.append(adv)
+        out += f'<h4 class="dec-sub">{esc(it["cd_h"])}</h4><blockquote class="q">{md_html(adv)}<footer>{esc(P["cd_cite"])}</footer></blockquote>'
+    return out
+
 
 
 def cd_advice():
+    """The creative director's weight advice: the rescore's, where it gives one, else part 2's advice on tables."""
     t = read(C['slots']['cd_review']) or ''
+    sec = md_section(t, [r'rescore: the chart kit.*']) or ''
+    m = re.search(r'(\*\*Weight:.*?)(?=\n\n(?!\d+\.)[A-Z*#]|\Z)', sec, flags=re.S)
+    if m:
+        return m.group(1).strip()
     sec = md_section(t, [r'the weight and what to ask dustin']) or ''
     for x in md_items(sec):
         if re.search(r'compress', x, flags=re.I) and re.search(r'table', x, flags=re.I):
             return x
-    warn('the creative director’s advice on compressed tables was not found')
+    warn('the creative director’s weight advice was not found')
     return None
 
 
@@ -979,18 +1072,21 @@ def weight_panel(G, E):
         parts.append(f'<h3 class="sub">{esc(P["pilot_h"])}</h3>' + table_html(head, rows, caption=P['pilot_h'], cls='wide-t'))
         QUOTED.append(' '.join(' '.join(r) for r in rows))
     if E['found']:
-        L = P['bar_labels']
-        bars = [(L['before'], E.get('before', {}).get('proj')), (L['after'], E['after']['proj']), (L['islands'], E['islands']['proj']), (L['tables'], E['tables']['proj'])]
-        bars = [(n, v) for n, v in bars if n and v]
-        stop = float(FILL['stop'])
+        L, B = P['bar_labels'], E['base']
+        bars = [(L['stands'], B['stands']['chapter_14']), (L['islands'], B['islands']['chapter_14']), (L['tables'], B['tables']['chapter_14'])]
+        if E['combined']:
+            bars.append((L['combined'], E['combined']['chapter_14']))
+        bars = [(n, v / 1e6) for n, v in bars]
+        stop = E['J']['stop'] / 1e6
         mx = max([v for _, v in bars] + [stop]) * 1.1
         rows = ''.join(f'<tr><th scope="row">{esc(n)}</th><td class="barcell"><span class="bar" data-mark="bar" data-value="{v}" data-key="{esc(n)}" style="width:{100 * v / mx:.3f}%"></span></td><td class="num">{v:.3f} MB</td></tr>' for n, v in bars)
-        rows += f'<tr><th scope="row">The stop for chapter 14</th><td class="barcell"><span class="bar budget" data-mark="bar" data-value="{stop}" data-key="stop" style="width:{100 * stop / mx:.3f}%"></span></td><td class="num">{stop:.2f} MB</td></tr>'
+        rows += f'<tr><th scope="row">{esc(L["stop"])}</th><td class="barcell"><span class="bar budget" data-mark="bar" data-value="{stop}" data-key="stop" style="width:{100 * stop / mx:.3f}%"></span></td><td class="num">{stop:.2f} MB</td></tr>'
         parts.append(f'<h3 class="sub">{esc(P["options_h"])}</h3><figure class="wfig" data-spec="chapter-14-weight"><div class="tw" role="region" tabindex="0" aria-label="{esc(P["options_h"])}; scrolls sideways">'
                      f'<table class="wt"><caption>{esc(fill(P["fig_caption"]))}</caption><thead><tr><th scope="col">Option</th><th scope="col"><span class="vh">Bar</span></th><th scope="col">Chapter 14</th></tr></thead><tbody>{rows}</tbody></table></div></figure>')
-        head, rws = E['table']
-        parts.append(table_html(head, rws, caption='The options as the engineer’s notes give them', cls='wide-t'))
-        QUOTED.append(' '.join(' '.join(r) for r in rws))
+        if E['table']:
+            head, rws = E['table']
+            parts.append(table_html(head, rws, caption='The options as the engineer’s notes give them', cls='wide-t'))
+            QUOTED.append(' '.join(' '.join(r) for r in rws))
     parts.append(f'<h3 class="sub">{esc(P["today_h"])}</h3><p>{esc(fill(P["today"]))}</p>')
     secs = ''
     for n, blk in E['sections'].items():
@@ -1431,6 +1527,9 @@ h1{font:var(--oa-type-title);letter-spacing:var(--oa-type-title-letter-spacing);
 .dec-h{font:var(--oa-type-h3);letter-spacing:var(--oa-type-h3-letter-spacing);margin-bottom:var(--oa-space-150)}
 .dec-q{font:var(--oa-type-intro);max-width:var(--oa-layout-measure-intro-max)}
 .dec-rec{max-width:var(--oa-layout-measure-intro-max);font-weight:600}
+.dec-rec.approve{border-left:var(--oa-border-width-bar) solid var(--oa-color-palette-charcoal);padding-left:var(--oa-space-200)}
+.ph-h{font:var(--oa-type-ui);font-weight:700;margin:var(--oa-space-300) 0 var(--oa-space-100)}
+blockquote.q ol{margin:0 0 var(--oa-space-100);padding-left:1.2em}
 .dec-sub{font:var(--oa-type-h4);letter-spacing:var(--oa-type-h4-letter-spacing);margin:var(--oa-space-400) 0 var(--oa-space-150)}
 table.opts{min-width:46rem}table.opts th[scope=row]{min-width:14rem}
 table.wide-t{min-width:44rem}table.small-t{min-width:52rem}
@@ -1594,13 +1693,16 @@ def checks(page):
 
 
 def main():
-    global LOG, C, CACHE
+    global LOG, C, CACHE, PHOTO_DIR, WEIGHT_FILE
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('--strict', action='store_true')
     ap.add_argument('--check', action='store_true')
     ap.add_argument('--no-render', action='store_true')
     ap.add_argument('--out', type=pathlib.Path, default=OUT)
+    ap.add_argument('--photo-proof', type=pathlib.Path, help='read the photo proof from this folder (for a test)')
+    ap.add_argument('--weight-options', type=pathlib.Path, help='read the weight options from this file (for a test)')
     a = ap.parse_args()
+    PHOTO_DIR, WEIGHT_FILE = a.photo_proof, a.weight_options
     raw = CONTENT.read_text()
     need('—' not in raw, 'the content file holds an em dash')
     C = json.loads(raw)
@@ -1627,7 +1729,7 @@ def main():
     s_tes = tested_panel()
     CACHE_FILE.write_text(json.dumps(CACHE))
     keep = set(IMAGES)
-    for p in IMG.glob('*.png'):
+    for p in [q for q in IMG.iterdir() if q.suffix.lower() in IMG_EXT]:
         if p.name not in keep:
             p.unlink()
             note(f'removed {p.name}, which the board no longer shows')
@@ -1637,13 +1739,15 @@ def main():
     need(len(page.encode()) < LIMIT_PAGE, 'the board page is over 16 MB')
     a.out.parent.mkdir(parents=True, exist_ok=True)
     a.out.write_text(page)
-    files = [a.out] + sorted(IMG.glob('*.png'))
+    files = [a.out] + sorted(q for q in IMG.iterdir() if q.suffix.lower() in IMG_EXT)
     big = [p.name for p in files if p.stat().st_size > LIMIT_IMAGE]
     if big:
         warn('images over 15 MB: ' + ', '.join(big))
     if len(files) >= LIMIT_FILES:
         warn(f'{len(files)} files, at or over {LIMIT_FILES}')
     total = sum(p.stat().st_size for p in files)
+    if total >= LIMIT_TOTAL:
+        warn(f'the page and its images come to {total / 1e6:.2f} MB, at or over {LIMIT_TOTAL / 1e6:.0f} MB for one publish')
     FIG.update({'board': rel(a.out), 'html_bytes': len(page.encode()), 'images': len(files) - 1, 'folder_bytes_with_images': total,
                 'largest_image': max(((p.stat().st_size, p.name) for p in files[1:]), default=(0, None)),
                 'status': {k: (v if isinstance(v, str) else list(v)) for k, v in STATUS.items()},

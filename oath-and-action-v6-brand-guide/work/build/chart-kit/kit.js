@@ -97,13 +97,14 @@
     var m = metrics(), adv = m.faces[face_key(face, weight || 400, tnum)], s = String(text), w = 0;
     var fallback = adv[m.idx.n];
     for (var i = 0; i < s.length; i++) {
-      var j = m.idx[s[i]];
+      var j = m.idx[s[i] === '\u00a0' ? ' ' : s[i]];   // a no-break space is as wide as a space
       w += j === undefined ? fallback : adv[j];
     }
     return w * size / 1000;
   };
   K.wrap = function (text, size, max, weight, face) {
-    var words = String(text).split(/\s+/), lines = [], cur = '';
+    // lines break at spaces only, so a no-break space holds two words together
+    var words = String(text).split(/[ \t\r\n]+/), lines = [], cur = '';
     for (var i = 0; i < words.length; i++) {
       var t = cur ? cur + ' ' + words[i] : words[i];
       if (cur && K.measure(t, size, weight, face) > max) { lines.push(cur); cur = words[i]; } else cur = t;
