@@ -7,6 +7,12 @@
   "dataset": "census-acs-tenure-by-state",
   "sort": [
     {
+      "field": "code",
+      "values": [
+        "US"
+      ]
+    },
+    {
       "field": "renter_pct",
       "order": "desc"
     }
@@ -50,7 +56,7 @@
     ]
   },
   "chart_notes": [
-    "The line at the middle marks half of households; a dashed line marks the United States, 35 percent renters."
+    "The United States sits first, apart from the states. A line at the middle marks half of households; the District of Columbia’s renter share, the one past it, is set in ink and every other renter share in gray."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -65,13 +71,12 @@
   "labels": {
     "left": "Renters",
     "right": "Owners",
-    "midline": "Half",
+    "midline": "Half of households",
     "value_head": "Renters",
-    "point": "District of Columbia",
-    "reference": {
-      "key": "United States",
-      "label": "United States, 35%"
-    }
+    "named": [
+      "District of Columbia"
+    ],
+    "apart": "United States"
   },
   "formats": {
     "value": "percent:0"

@@ -54,7 +54,7 @@
     ]
   },
   "chart_notes": [
-    "A step up is set in ink and a step down in gray; the bar for all receipts and the deficit run from zero as outlined bars. A thin line joins each step to the next."
+    "Steps that add are green and steps that take away are dark blue, each with its value beside it. The bar for all receipts, in gray, and the deficit, in ink, run from zero. A thin line joins each step to the next."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -98,7 +98,9 @@
     "up": "Adds to the running total",
     "down": "Takes away from it",
     "scale_head": "Billions of dollars",
-    "point": "Deficit"
+    "named": [
+      "Deficit"
+    ]
   },
   "formats": {
     "value": "billions-value:1",
