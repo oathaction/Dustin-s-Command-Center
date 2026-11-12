@@ -57,7 +57,11 @@
       {
         "field": "date_basis",
         "label": "How the law sets the date",
-        "format": "text"
+        "format": "text",
+        "words": {
+          "Not later than 18 months after enactment, computed by the studio": "Not later than 18 months after enactment; date computed by Oath & Action from the law’s text",
+          "Plan years beginning on or after 30 months after enactment, computed by the studio": "Plan years beginning on or after 30 months after enactment; date computed by Oath & Action from the law’s text"
+        }
       }
     ]
   },
@@ -101,6 +105,7 @@
     "Checked against govinfo-pl-119-75-effective-dates.csv: approval February 3, 2026; four later dates, August 3, 2027 (deadline), January 1, 2028, August 3, 2028 (two sections) and January 1, 2029, so 'four dates, from an August 2027 deadline ... to January 2029'. The 18- and 30-month dates are the sidecar's computed dates, which agree with V7 issue I084's status text (sidecar notes).",
     "Every 'plan years beginning on or after' part takes the hatched first year, the sidecar's qualification; the chart does not claim when any plan's year begins.",
     "H12: 'pharmacy benefit managers' in the title, the law's own term, with note 1's gloss (H02); the plan's 'drug middlemen' stays in the reader question. Read from the left and the right: the title gives the dates Congress set and no judgment of the rules.",
-    "Words pass (editor 39): two summaries in the data file print a straight apostrophe (plans'); labels.words and the table column's words print them curled until the research lead curls the file (R-B13), which also covers the straight double quotes in the sidecar's printed source line."
+    "Words pass (editor 39): two summaries in the data file print a straight apostrophe (plans'); labels.words and the table column's words print them curled until the research lead curls the file (R-B13), which also covers the straight double quotes in the sidecar's printed source line.",
+    "Last fix: the data file's date_basis says 'computed by the studio' in three rows; the table column's words print 'date computed by Oath & Action from the law’s text' until the research lead rewords the file (R-B13)."
   ]
 }
