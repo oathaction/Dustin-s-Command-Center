@@ -630,3 +630,8 @@ I read S60's note 1 and S55's chart note from the specs.
 **RF-25a, `range-bar` (maker B), draw order.** The nation's dashed line is drawn over the dots, so where an open dot sits on it the line runs through the hollow. At 7 px this makes Texas, South Dakota and Minnesota (P02 at 390 and 256 px) read as half-filled marks rather than open dots. The open dot is exactly what carries Rule 14.9's "within the margin". Draw every estimate dot after the nation's line, and fill an open dot with the ground inside its edge, so the dashed line passes behind each dot at every size. This changes S57's, Rule 14.9's and P02's drawings only where a dot meets the line. I sign off from P02 at 390 and 256 px once it lands.
 
 - D3-xxx | `range-bar` draws its estimate dots after the nation's dashed line, open dots filled with the ground | RF-25a: at 7 px the line through an open dot's hollow hides Rule 14.9's "within the margin"
+
+**RF-25a: closed. Every item after the second pass is signed off.** I rebuilt S57 and P02 from the committed files with the sweep (`kit-p3`): 2 PASS, 0 faults. Maker B found the dots were already drawn after the nation's line and filled with the ground, so it added a 1.5 px ground halo under any open dot near the line, which stops the line short of the dot. On Newsprint at 1x:
+- In P02's middle rows at 390 px, Texas, South Dakota, Minnesota, South Carolina, Ohio and Vermont read as open rings, with the dashed line stopping at each ring.
+- At 256 px the 7 px open dots keep a clean hollow, with the dashes above and below them. They read as open beside the solid dots of Pennsylvania, Arizona, Wisconsin and Kansas.
+- S57's open dots from Minnesota to Kentucky at 390 px read as open rings over the nation's line.
