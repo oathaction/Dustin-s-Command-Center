@@ -4284,3 +4284,9 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | # | Decision | Reason |
 |---|---|---|
 | D3-457 | Rule 14.12's full-width drawing gives way to a line and the phone drawing where its stage is under 600 px, with nothing scrolling inside the stage | The shell names and hints at a plate's own frame; a second frame inside the stage set its hint without a frame to scroll |
+
+### Main session, the close of round 1's build stage
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-458 | Round 1's build stage is closed on a strict build of 10,017,051 bytes with 0 warnings and a four-width guide check that passes with 0 failures (265 rules, 610 specimens); the chat hands off with handoff V18 before the review, so the review, fix pass, second pass, rescore and progress page run in one new chat | The six faults the first four-width run found are fixed and rechecked; agents in this chat cannot be resumed from a new one, and the review needs a chat with room for four reviewers and a fix pass |
