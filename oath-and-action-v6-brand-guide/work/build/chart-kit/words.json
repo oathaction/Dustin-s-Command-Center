@@ -3,5 +3,6 @@
  "source_label": "Source:",
  "table_summary": "Show the table and notes",
  "notes_in_chart": "Notes in the chart",
- "table_region": "{caption}, table"
+ "table_region": "{caption}, table",
+ "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one."
 }

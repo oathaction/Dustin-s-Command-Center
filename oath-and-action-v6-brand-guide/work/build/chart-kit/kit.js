@@ -494,7 +494,8 @@
     var svg = '<svg xmlns="http://www.w3.org/2000/svg" class="oac-svg' + (fc.defs ? ' oac-u-' + c.uid : '') + '" viewBox="0 0 ' + width + ' ' + h + '" width="' + width + '" height="' + h + '"' +
       ' role="img" data-oa-form="' + esc(spec.form) + '" data-oa-width="' + width + '"' + (opts.label_id ? ' aria-labelledby="' + esc(opts.label_id) + '"' : '') + '>' +
       title + desc + fc.style + defs + c._els.join('') + '</svg>';
-    return { svg: svg, width: width, height: h, texts: c.texts, marks: c.marks, leaders: c.leaders, keys: c.keys || [], warnings: c.warnings, guard: guard, phone: c.phone };
+    return { svg: svg, width: width, height: h, texts: c.texts, marks: c.marks, leaders: c.leaders, keys: c.keys || [], warnings: c.warnings, guard: guard, phone: c.phone,
+      fc: K.FC, fc_on_dark: K.FC_ON_DARK };
   };
 
   // ------------------------------------------------------------------------------------------------------------
@@ -510,7 +511,7 @@
     'seq-1': 'Canvas', 'seq-2': 'hatch', 'seq-3': 'GrayText', 'seq-4': 'dense', 'seq-5': 'CanvasText',
     'div-1': 'CanvasText', 'div-2': 'hatch', 'div-3': 'Canvas', 'div-4': 'hatch-gray', 'div-5': 'GrayText',
     'mag-1': 'Canvas', 'mag-2': 'hatch', 'mag-3': 'GrayText', 'mag-4': 'CanvasText',
-    'cat-1': 'CanvasText', 'cat-2': 'GrayText', 'cat-3': 'dense', 'cat-4': 'hatch'
+    'cat-1': 'CanvasText', 'cat-2': 'GrayText', 'cat-3': 'dense', 'cat-4': 'hatch', none: 'Canvas'
   };
   // text inks: these set text on a dark fill, so they take Canvas in forced colors
   K.FC_ON_DARK = ['label-on-subject', 'on-cat-1', 'on-cat-2', 'on-cat-3', 'chip-label'];
@@ -521,7 +522,7 @@
       var kind = K.FC[role];
       if (!FC_PATTERN[kind] || body.indexOf('oac-f-' + role + '"') < 0 && body.indexOf('oac-f-' + role + ' ') < 0) return;
       used[kind] = true;
-      rules.push('.oac-u-' + c.uid + ' .oac-f-' + role + ':not(.oac-t){fill:url(#' + c.uid + '-fc-' + kind + ')}');
+      rules.push('.oac-svg.oac-u-' + c.uid + ' .oac-f-' + role + ':not(.oac-t){fill:url(#' + c.uid + '-fc-' + kind + ')}');
     });
     Object.keys(used).forEach(function (kind) {
       var p = FC_PATTERN[kind];
@@ -563,6 +564,7 @@
     });
     return out;
   };
+  K.seg_hits_box = seg_hits_box;
   function seg_hits_box(ax, ay, bx, by, x0, y0, x1, y1) {
     // Liang-Barsky: does the segment from (ax, ay) to (bx, by) enter the box?
     var t0 = 0, t1 = 1, dx = bx - ax, dy = by - ay, p = [-dx, dx, -dy, dy], q = [ax - x0, x1 - ax, ay - y0, y1 - ay];

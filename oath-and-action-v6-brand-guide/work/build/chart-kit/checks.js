@@ -240,6 +240,17 @@ function check_drawing(spec, d, tok, where) {
       if (Math.abs(want - m.r) > 0.5) f.push(`chart: circle ${key} is not sized by area (radius ${m.r.toFixed(2)}, area rule gives ${want.toFixed(2)})${at}`);
     }
   }
+  // forced colors (D3-94): no label in the ink of the mark under it, in the reader's system colors (kit.js, K.FC)
+  if (d.fc) {
+    const fills = d.marks.filter(m => m.fill && m.w > 0 && m.h > 0);
+    for (const t of d.texts || []) {
+      const cx = t.x + t.w / 2, cy = t.y + t.h / 2;
+      let ground = 'Canvas';
+      for (const m of fills) if (cx > m.x && cx < m.x + m.w && cy > m.y && cy < m.y + m.h) ground = d.fc[m.fill] || 'CanvasText';
+      const ink = (d.fc_on_dark || []).indexOf(t.fill) >= 0 ? 'Canvas' : 'CanvasText';
+      if (ink === ground) f.push(`forced colors: "${String(t.words).slice(0, 30)}" prints in ${ink} on a mark in ${ground}${at}`);
+    }
+  }
   // group 4's label sits beside its hatch or on a halo of the ground, never on the fill (labelBeside, D3-84 fix pass)
   for (const m of d.marks.filter(x => x.fill === 'cat-4')) {
     for (const t of d.texts || []) {

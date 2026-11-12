@@ -118,7 +118,7 @@ From `work/handoffs/phase-3/20261111_Round-0-Fix-Brief-Part-1.md`: every chapter
 | Statistics S19 | 13.13's why is rewritten as one argument, with no parallel run. |
 | CD M3 | Rule 13.1 says a diagram of atlas connections prints the grade word of its least certain step in the label's place. The opener, 13.4, 13.5 and 13.11 carry it, and 13.2's failure label reads Plausible, so it fails on the verb alone. |
 | Brand M1, D3-85 | 13.11 opens with the atlas's coding note; its headings read "The atlas codes these rows toward voters" and "The atlas codes these rows away from voters". All seven rows stay. |
-| Brand S1, CD S1 (in part) | Each chip holds its punctuation in one no-wrap span; six numerals mark the opener's parts and the list points to them. |
+| Brand S1, CD S1 | Each chip holds its punctuation in one no-wrap span; six numerals mark the opener's parts and the list points to them. A patterned line with delay ticks runs solid for its first 28 px, the data lead's lead-in (`oa.chart.grade.leadIn`), so no tick lands in a gap: the opener's L02 and 13.11's L02. Rule 13.4 states it in its Specifications, and 13.5's delay row points there. |
 | Brand S2, CD S2 | 13.3's line cell is a span inside its cell, so the row rules run whole; on phones the glyph and its words stack under the label. |
 | Brand S3 | The chapter's glyphs come from `wire_marks` (as D3-84). |
 | Brand S5, CD S3 | 13.7 draws its two charts through the kit's guide hook, one window and one scale, with the failure's 2017 chart; 13.13 draws its chart through the kit. |
@@ -133,7 +133,6 @@ From `work/handoffs/phase-3/20261111_Round-0-Fix-Brief-Part-1.md`: every chapter
 
 ### Not fixed, and why
 
-- **Brand S1's lead-in.** The reviewer asks the dash pattern to start after the delay ticks on a solid lead-in. D3-84 makes `wire_marks` the one source of the line code, and it draws no lead-in, so drawing one in chapter 13 alone would state the code a second way. The request is below.
 - **Brand S8, the rest.** The average stays above chapters 01 to 12's top of 690. What remains defines terms the reviews asked for; I moved the rest to Specifications.
 - **CD M4's single date.** Table and source line name the release, P60-290 of September 15, 2026. The qualification keeps statistics M3's words, "the Bureau's August 2026 correction", which name the method change, not a second release.
 - Statistics M5, M6 and S13 to S18 and the part 2 items belong to other agents.
@@ -149,12 +148,13 @@ D3-xxx | The hollow line's rails take the class `rl` | The page shell hides `.ra
 D3-xxx | 13.7's failure keeps one chart, all people from 2017; the children's head stands without its chart | A second chart would put chapter 13 over 0.25 MB
 D3-xxx | The pair's source line is the sidecar's line with "children under 18 and all people" | Until the research lead adds a variant for both groups
 D3-xxx | 13.7's chart alts say the scale starts at 0 | The kit draws to 30 while the spec asks 25; the words stay true either way
+D3-xxx | The generator splits the line `wire_marks` draws into a 28 px solid lead-in and the fitted pattern after its own gap, only for patterned lines with ticks, and checks the lead-in ends one tick spacing past the third tick | The data lead set the lead-in under D3-84 (fix pass 2) because the atlas build draws none; the value comes from the palette proposal and the token, never typed here
 
 ### Requests
 
 - **Engineer, the kit.** (1) `K.mount` sets `aria-labelledby` to the figure's id plus `-t` even when `spec.show` leaves out the title, so the drawing names a missing element. Please set it only when that element exists, so the `<title>` names the drawing. (2) The ranked bar's phone layout runs its zero line through the category labels: in `s-13-13-correct`, "Riverside" and "Elm Street" start on it at both widths. (3) The shell's `.rail{display:none}` on phones hides any plate element of class `rail`, the class `wire_marks` gives the hollow line's rails. I rename it in chapter 13; chapter 15 will meet the same.
 - **Research lead.** A `source_line_children_and_all_people` variant in `census-spm-child-poverty.meta.json`, so the generator stops deriving the pair's line. Optional: the payroll sidecars end "are preliminary and will be revised"; "the Bureau will revise them" is chapter 02's active voice. I print sidecar lines as they stand.
-- **Data visualization lead.** Should `wire_marks` take a solid lead-in after the delay ticks (brand S1)? If so, the atlas build and the tokens take it first, and chapter 13 follows by rerunning its generator.
+- **Data visualization lead.** Answered: the lead-in is set (28 px, `oa.chart.grade.leadIn`) and chapter 13 draws it.
 
 ### Tested
 
@@ -166,6 +166,7 @@ D3-xxx | 13.7's chart alts say the scale starts at 0 | The kit draws to 30 while
 - A probe of the five kit drawings: each `aria-labelledby` names its printed title.
 - Searches of the chapter's output: no "official statistic", no count of months, no em dash.
 - The Brandeis words against the U.S. Reports scan, page 311.
+- After the lead-in: the generator ran clean, with `oa.chart.grade.leadIn` in `tokens.json`; the strict build gave exit 0, 0 warnings and chapter 13 at 247,148 bytes. I captured the opener and 13.11 at 1440 and 390 px, and each of their lines at 2x, and looked at them: the ticks sit on solid line and the dashes start after it. `ch13check.js` on that build at both widths found 0 axe violations, 0 sizes off the list, 0 contrast faults and no sideways scroll.
 
 ### Not tested
 

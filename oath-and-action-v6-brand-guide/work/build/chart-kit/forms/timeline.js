@@ -48,17 +48,28 @@
         // stack labels in rows above the lane's line so none overlap, latest first at the top
         var slots = [], maxw = Math.min(260, (x1 - x0) * 0.45), lh = small + 6, llh = Math.round(small * 1.25);
         var placed = evs.map(function (r) {
-          var nm = String(r[et]);
+          var nm = String(r[et]), yr = K.fmt(r[ed], 'year');
           if (L.cut_at && nm.indexOf(L.cut_at) > 0) nm = nm.slice(0, nm.indexOf(L.cut_at)).replace(/\s+$/, '');
-          var x = xs(K.time(r[ed])), txt = K.fmt(r[ed], 'year') + ' ' + nm;
-          var lines = K.wrap(txt, small, maxw, 400), w = 0;
-          lines.forEach(function (l) { w = Math.max(w, c.measure(l, 'tick', 400) + 4); });
-          var anchor = x + w <= x1 ? 'start' : 'end';
-          var a0 = anchor === 'start' ? x : Math.max(x0, x - w);
+          // the year prints once, in bold, before the name (E29): a name that begins with its own year drops it
+          if (nm.indexOf(yr + ' ') === 0) nm = nm.slice(yr.length + 1);
+          var x = xs(K.time(r[ed])), yw = c.measure(yr, 'tick', 700) + 4;
+          var lines = K.wrap(nm, small, maxw - yw, 400), nw = 0;
+          lines.forEach(function (l) { nw = Math.max(nw, c.measure(l, 'tick', 400) + 4); });
+          var w = yw + nw;
+          var anchor = x + 3 + w <= x1 ? 'start' : 'end';
+          var a0 = anchor === 'start' ? x + 3 : Math.max(x0, x - w);
+          // a slot is free when the label touches no label in it, its leader runs through no label nearer the line, and no
+          // leader from a label farther out runs through it (D3-93)
           var s = 0;
-          while (slots[s] && slots[s].some(function (iv) { return a0 < iv[1] + 8 && iv[0] < a0 + w + 8; })) s++;
-          (slots[s] = slots[s] || []).push([a0, a0 + w]);
-          return { r: r, x: x, txt: txt, lines: lines.length, a0: a0, w: w, anchor: anchor, slot: s };
+          var clear = function (k) {
+            if ((slots[k] || []).some(function (iv) { return a0 < iv[1] + 8 && iv[0] < a0 + w + 8; })) return false;
+            for (var j = 0; j < k; j++) if ((slots[j] || []).some(function (iv) { return x > iv[0] - 3 && x < iv[1] + 3; })) return false;
+            for (var m = k + 1; m < slots.length; m++) if ((slots[m] || []).some(function (iv) { return iv[2] > a0 - 3 && iv[2] < a0 + w + 3; })) return false;
+            return true;
+          };
+          while (!clear(s)) s++;
+          (slots[s] = slots[s] || []).push([a0, a0 + w, x]);
+          return { r: r, x: x, yr: yr, nm: nm, yw: yw, lines: lines.length, a0: a0, w: w, anchor: anchor, slot: s };
         });
         var nslot = Math.max(1, slots.length);
         var sh = [];
@@ -75,8 +86,8 @@
         placed.forEach(function (p) {
           var ty = base - 12 - off[p.slot] - (p.lines - 1) * llh;
           c.line(p.x, ty + (p.lines - 1) * llh + 4, p.x, base, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
-          var tx = p.anchor === 'start' ? p.x + 3 : p.a0 + p.w;
-          c.text(tx, ty, p.txt, { role: 'tick', anchor: p.anchor, halo: true, max: p.lines > 1 ? Math.min(260, (x1 - x0) * 0.45) + 1 : undefined });
+          c.text(p.a0, ty, p.yr, { role: 'tick', weight: 700, halo: true });
+          c.text(p.a0 + p.yw, ty, p.nm, { role: 'tick', halo: true, max: p.lines > 1 ? Math.min(260, (x1 - x0) * 0.45) - p.yw + 1 : undefined });
           c.circle(p.x, base, c.t('dot-small-vertex-radius'), { fill: 'subject', data: { key: p.r[ek], field: ed, value: p.r[ed] } });
         });
         c.line(x0, base, x1, base, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });

@@ -104,6 +104,7 @@
   .oac-svg .oac-f-point:not(.oac-t) { fill: Highlight; }
   .oac-svg :is(.oac-f-band, .oac-f-track, .oac-f-land, .oac-f-light-fill, .oac-f-seq-1, .oac-f-div-3, .oac-f-mag-1):not(.oac-t) { fill: Canvas; stroke: CanvasText; stroke-width: 1px; }
   .oac-svg .oac-f-surface:not(.oac-t) { fill: Canvas; }
+  .oac-svg .oac-f-none:not(.oac-t) { fill: none; }
   .oac-svg :is(.oac-f-seq-2, .oac-f-seq-4, .oac-f-div-2, .oac-f-div-4, .oac-f-mag-2, .oac-f-cat-3, .oac-f-cat-4):not(.oac-t) { stroke: CanvasText; stroke-width: 1px; }
   .oac-svg [class*="oac-s-"] { stroke: CanvasText; }
   .oac-svg :is(.oac-s-context, .oac-s-secondary, .oac-s-gridline, .oac-s-ghost, .oac-s-leader, .oac-s-track) { stroke: GrayText; }

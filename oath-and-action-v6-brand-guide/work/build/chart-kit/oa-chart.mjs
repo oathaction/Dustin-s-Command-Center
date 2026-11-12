@@ -94,6 +94,11 @@ function extra_island(res) {
   return out;
 }
 
+export const GUIDE_WIDTHS = [656, 558, 358, 296, 256];
+export function guide_widths(spec) {
+  return /^s-13-/i.test(String(spec.id)) ? GUIDE_WIDTHS.concat([243, 224]) : GUIDE_WIDTHS;
+}
+
 // One spec, checked and drawn in Node at every width and ground
 export function run_spec(spec, o) {
   const res = { id: spec.id, faults: [], drawings: [], spec_path: o.spec_path };
@@ -112,11 +117,15 @@ export function run_spec(spec, o) {
     res.drawings.push({ ground: g, page: w, width: d.width, height: d.height, svg: d.svg, bytes: Buffer.byteLength(d.svg) });
   }
   if (!o.no_narrow) {
-    // the narrowest column any page gives a chart (328 px on a 360 px screen): checked, never exported
-    try {
-      const d = K.draw(spec, chk.rows, { width: 328, ground: 'newsprint', tokens: TOK.newsprint, extra: extra_rows(chk) });
-      res.faults.push(...C.check_drawing(spec, d, TOK.newsprint, 'newsprint 328 px column'));
-    } catch (e) { res.faults.push(`draw at 328: ${e.message}`); }
+    // every column width the guide and zoom give a chart (D3-93), checked and never exported: 656 px (200 percent text at
+    // 1440), 558 (1024), 358 (390), 296 (360) and 256 (320 px reflow); chapter 13's narrower plates add 243 and 224
+    for (const w of guide_widths(spec)) {
+      if (w > K.artboard(spec, K.token_reader(TOK.newsprint))) continue;
+      try {
+        const d = K.draw(spec, chk.rows, { width: w, ground: 'newsprint', tokens: TOK.newsprint, extra: extra_rows(chk) });
+        res.faults.push(...C.check_drawing(spec, d, TOK.newsprint, `a ${w} px guide column`));
+      } catch (e) { res.faults.push(`draw at a ${w} px guide column: ${e.message}`); }
+    }
   }
   return res;
 }

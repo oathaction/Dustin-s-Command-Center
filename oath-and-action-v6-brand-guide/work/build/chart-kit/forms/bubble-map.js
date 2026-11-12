@@ -15,7 +15,9 @@
       var G = globalThis.OAChartGeo, rows = c.rows, ec = c.field('code'), ez = c.field('size'), eh = c.field('shade');
       var L = c.labels, f = c.spec.formats || {}, W = c.width, bins = L.bins || [];
       var R = c.t(c.phone ? 'bubble-radius-max-phone' : (W >= 900 ? 'bubble-radius-max-wide' : W >= 560 ? 'bubble-radius-max-mid' : 'bubble-radius-max-phone'));
-      var maxv = Math.max.apply(null, rows.map(function (r) { return r[ez]; })), area = K.scale.sqrt(maxv, R);
+      // the size scale takes only the rows the map draws, so a national row in the table sets no circle's size (D3-96)
+      var drawn = rows.filter(function (r) { return G.centers[r[ec]]; });
+      var maxv = Math.max.apply(null, drawn.map(function (r) { return r[ez]; })), area = K.scale.sqrt(maxv, R);
       // the key above the map
       var y = 0, kw = c.phone ? W : W * 0.55;
       if (L.shade_title) { c.text(0, 12, L.shade_title, { role: 'eyebrow', weight: 700, fill: 'secondary', max: kw }); }
@@ -57,7 +59,7 @@
       c.path(G.borders, { stroke: 'surface', width: 1, mark: false });
       g.end();
       // circles: start at the centers, then push apart where they overlap (a fixed number of passes, so every run matches)
-      var pts = rows.filter(function (r) { return G.centers[r[ec]]; }).map(function (r) {
+      var pts = drawn.map(function (r) {
         var p = G.centers[r[ec]];
         return { r: r, x: p[0] * k, y: top + p[1] * k, rad: area(r[ez]), x0: p[0] * k, y0: top + p[1] * k };
       }).sort(function (a, b) { return b.rad - a.rad; });
@@ -74,6 +76,8 @@
         }
         if (!moved) break;
       }
+      // every circle stays inside the artboard
+      pts.forEach(function (p) { p.x = Math.max(p.rad + 1, Math.min(W - p.rad - 1, p.x)); });
       var shade = function (v) { var s = 1; bins.forEach(function (b) { if (v >= b) s++; }); return 'seq-' + Math.min(5, s); };
       pts.forEach(function (p) {
         var sh = shade(p.r[eh]);
@@ -90,7 +94,7 @@
       var offs = (c.phone && L.offsets_phone) || L.offsets || {};
       var fits = function (p) { return p.rad * 2 > c.measure(p.r[ec], 'tick', 700) + 6 && !offs[p.r[ec]]; };
       // a label goes inside its circle, largest circles first, unless it would touch a label already placed or leave the artboard
-      var outside = [];
+      var outside = [], lead = [], unlabeled = [];
       pts.slice().sort(function (a, b) { return b.rad - a.rad; }).forEach(function (p) {
         if (!fits(p)) { outside.push(p); return; }
         var s = c.size('tick'), tw = c.measure(p.r[ec], 'tick', 700), b = { x: p.x - tw / 2, y: p.y + s * 0.35 - s * 0.77, w: tw, h: s };
@@ -104,21 +108,38 @@
         var pad = c.t('bubble-label-pad') + 1, asc = s * 0.77, h = s;
         var cands = offs[code] ? [[p.x + offs[code][0], p.y + offs[code][1]]] : [[p.x + p.rad + pad, p.y + s * 0.35], [p.x - p.rad - pad - tw, p.y + s * 0.35], [p.x - tw / 2, p.y - p.rad - pad - s * 0.23], [p.x - tw / 2, p.y + p.rad + pad + asc],
           [p.x + p.rad + pad, p.y - p.rad], [p.x + p.rad + pad, p.y + p.rad + asc], [p.x - p.rad - pad - tw, p.y - p.rad], [p.x - p.rad - pad - tw, p.y + p.rad + asc]];
-        for (var ring = 1; ring <= (c.phone ? 9 : 4) && !offs[code]; ring++) {
-          var dd = p.rad + pad + ring * 14;
-          for (var ang = 0; ang < 12; ang++) {
-            var th = ang * Math.PI / 6, ex = p.x + Math.cos(th) * dd, ey = p.y + Math.sin(th) * dd;
+        for (var ring = 1; ring <= (c.phone ? 14 : 6) && !offs[code]; ring++) {
+          var dd = p.rad + pad + ring * 12;
+          for (var ang = 0; ang < 24; ang++) {
+            var th = ang * Math.PI / 12, ex = p.x + Math.cos(th) * dd, ey = p.y + Math.sin(th) * dd;
             cands.push([Math.cos(th) < -0.1 ? ex - tw : Math.cos(th) > 0.1 ? ex : ex - tw / 2, ey + s * 0.35]);
           }
         }
+        // a place is clear when its box touches no text or circle, no leader drawn so far runs through it, and its own
+        // leader (when it needs one) runs through no label (D3-93)
+        var leads_ok = function (b, cand) {
+          if (lead.some(function (l) { return K.seg_hits_box(l[0], l[1], l[2], l[3], b.x - 1, b.y - 1, b.x + b.w + 1, b.y + b.h + 1); })) return false;
+          var lx = cand[0] + tw / 2, ly = cand[1] - asc / 2;
+          if (Math.sqrt(Math.pow(lx - p.x, 2) + Math.pow(ly - p.y, 2)) <= p.rad + 2 * s) return true;
+          return !c.texts.some(function (t) { return K.seg_hits_box(p.x, p.y, lx, ly, t.x - 1, t.y - 1, t.x + t.w + 1, t.y + t.h + 1); });
+        };
         var pick = null;
-        for (var i = 0; i < cands.length && !pick; i++) { var b = { x: cands[i][0], y: cands[i][1] - asc, w: tw, h: h }; if (!hits(b)) pick = cands[i]; }
+        for (var i = 0; i < cands.length && !pick; i++) { var b = { x: cands[i][0], y: cands[i][1] - asc, w: tw, h: h }; if (!hits(b) && leads_ok(b, cands[i])) pick = cands[i]; }
+        // on a phone, a small state with no clear place is named under the map instead, and the table names every state
+        if (!pick && c.phone && !offs[code]) { unlabeled.push(code); return; }
         if (!pick) { pick = cands[0]; c.warn('no clear place for the label ' + code + '; set labels.offsets.' + code); }
         var far = Math.sqrt(Math.pow(pick[0] + tw / 2 - p.x, 2) + Math.pow(pick[1] - asc / 2 - p.y, 2)) > p.rad + 2 * s;
         c.text(pick[0], pick[1], code, { role: 'tick', weight: 600, halo: true });
-        if (far) c.line(p.x, p.y, pick[0] + tw / 2, pick[1] - asc / 2, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+        if (far) { c.line(p.x, p.y, pick[0] + tw / 2, pick[1] - asc / 2, { stroke: 'leader', width: c.t('line-hairline'), mark: false }); lead.push([p.x, p.y, pick[0] + tw / 2, pick[1] - asc / 2]); }
       });
       c.height(top + mh + 4);
+      if (unlabeled.length) {
+        var uw = (K.words && K.words.unlabeled_marks) || 'Not labeled at this width: {codes}.';
+        var low = top + mh;
+        c.texts.forEach(function (t) { low = Math.max(low, t.y + t.h); });
+        pts.forEach(function (q) { low = Math.max(low, q.y + q.rad); });
+        c.text(0, low + 22, uw.replace('{codes}', unlabeled.sort().join(', ')), { role: 'note', max: W, fill: 'secondary' });
+      }
     }
   });
 })(globalThis.OAChart);
