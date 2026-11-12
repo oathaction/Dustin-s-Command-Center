@@ -14,7 +14,7 @@
  * words, with any column in braces), x_axis, y_axis (axis words), size_key ([values] for a key of circle sizes),
  * size_key_label (each one's words, with {value}), size_key_title (words over that key), sub ({key: words}: a second
  * line in regular weight under a named point's bold name, or over it, such as the figure the title gives; round 2 fix
- * pass, BC S9). The key's circles take the field's fill and outline, as the circles they stand for (BC S17); the
+ * pass, BC S9); sub_short ({key: words}: the shorter line where the first finds no place). The key's circles take the field's fill and outline, as the circles they stand for (BC S17); the
  * reference's name keeps off every circle where it can (BC S9).
  * formats: x, y (ticks), size (the key). scale: x and y ([lo, hi]). On a phone the same arrangement draws narrower, with
  * smaller dots and circles. Maker B, round 2. */
@@ -25,7 +25,7 @@
     name: 'Scatter Named',
     family: 'correlation',
     encode: { key: 'code', label: 'text', x: 'number', y: 'number', size: 'number?' },
-    labels: ['named', 'point', 'labeled', 'names', 'reference', 'reference_label', 'x_axis', 'y_axis', 'size_key', 'size_key_label', 'size_key_title', 'sub'],
+    labels: ['named', 'point', 'labeled', 'names', 'reference', 'reference_label', 'x_axis', 'y_axis', 'size_key', 'size_key_label', 'size_key_title', 'sub', 'sub_short'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, L = c.labels, f = c.spec.formats || {}, W = c.width, ph = c.phone;
@@ -111,51 +111,66 @@
       var lab = pts.filter(function (p) { return p.ref ? !!L.reference_label : lit(p.r) || labeled.indexOf(String(p.r[ek])) >= 0; })
         .sort(function (a, b) { return order(a) - order(b) || a.x - b.x; });
       var item = function (p) { return { x: p.x, y: p.y, r: p.rad, words: p.ref ? P.fill(c, L.reference_label, p.r) : name(p.r), weight: lit(p.r) && !p.ref ? 700 : 400, key: p.r[ek] }; };
-      var reach = [14, 30, 48, 70, 96];
+      var reach = W < 330 ? [14, 30, 48] : [14, 30, 48, 70, 96];   // a narrow column keeps the other names' leaders short
+      var reach2 = [14, 30, 48, 70, 96, 124];   // a named point's block may reach further, so the title's marks keep their names
       // every dot and circle, for the tests below: a box meets a circle where its nearest point lies inside the circle
       var circ = pts.map(function (p) { return { x: p.x, y: p.y, r: p.rad, p: p }; });
       var meets = function (b, q, pad) { var nx = Math.max(b.x, Math.min(q.x, b.x + b.w)), ny = Math.max(b.y, Math.min(q.y, b.y + b.h)); return Math.pow(nx - q.x, 2) + Math.pow(ny - q.y, 2) < Math.pow(q.r + pad, 2); };
       // a named point with a second line (labels.sub, BC S9 and RF-18): its bold name and the regular line under it set as one
       // block, beside its circle or further out on a leader, clear of every word, dot and circle (round 2 fix pass)
       var subs = L.sub || {}, lh = Math.round(size * 1.2), unplaced2 = [];
-      var place2 = function (p) {
-        var nm = name(p.r), sb = subs[String(p.r[ek])], w = Math.max(c.measure(nm, 'label', 700), c.measure(sb, 'label', 400)), h = size + lh;
+      var plan2 = function (p, sb, taken) {
+        var nm = name(p.r), w = Math.max(c.measure(nm, 'label', 700), c.measure(sb, 'label', 400)), h = size + lh;
         var dirs = [[1, 0], [-1, 0], [0, -1], [0, 1], [0.75, -0.75], [0.75, 0.75], [-0.75, -0.75], [-0.75, 0.75]];
-        for (var ri = 0; ri < reach.length + 1; ri++) {
-          var d = p.rad + 4 + (ri ? reach[ri - 1] : 0);
+        var near = function (bx2) { return function (t) { return bx2.x < t.x + t.w + 3 && t.x < bx2.x + bx2.w + 3 && bx2.y < t.y + t.h + 2 && t.y < bx2.y + bx2.h + 2; }; };
+        for (var ri = 0; ri < reach2.length + 1; ri++) {
+          var d = p.rad + 4 + (ri ? reach2[ri - 1] : 0);
           for (var k = 0; k < dirs.length; k++) {
             var ax = dirs[k][0], ay2 = dirs[k][1], an = ax > 0 ? 'start' : ax < 0 ? 'end' : 'middle';
             var x = p.x + ax * d, t0 = ay2 < 0 ? p.y + ay2 * d - h : ay2 > 0 ? p.y + ay2 * d : p.y - h / 2;
             var bx = an === 'start' ? x : an === 'end' ? x - w : x - w / 2, box = { x: bx, y: t0, w: w, h: h };
             if (box.x < 0 || box.x + box.w > W || box.y < 0 || box.y + box.h > bot) continue;
-            if (c.texts.some(function (t) { return box.x < t.x + t.w + 3 && t.x < box.x + box.w + 3 && box.y < t.y + t.h + 2 && t.y < box.y + box.h + 2; })) continue;
+            if (c.texts.some(near(box)) || taken.some(function (t) { return near(box)(t.box); })) continue;
             if (circ.some(function (q) { return meets(box, q, 2); })) continue;
             var L0 = null;
             if (ri) {
               var lx = Math.max(box.x, Math.min(p.x, box.x + box.w)), ly = Math.max(box.y, Math.min(p.y, box.y + box.h));
               var vx = lx - p.x, vy = ly - p.y, len = Math.sqrt(vx * vx + vy * vy) || 1;
               L0 = [p.x + vx / len * (p.rad + 1), p.y + vy / len * (p.rad + 1), lx - vx / len * 2, ly - vy / len * 2];
-              if (c.texts.some(function (t) { return K.seg_hits_box(L0[0], L0[1], L0[2], L0[3], t.x - 1, t.y - 1, t.x + t.w + 1, t.y + t.h + 1); })) continue;
+              var segbox = function (t) { return K.seg_hits_box(L0[0], L0[1], L0[2], L0[3], t.x - 1, t.y - 1, t.x + t.w + 1, t.y + t.h + 1); };
+              if (c.texts.some(segbox) || taken.some(function (t) { return segbox(t.box); })) continue;
               if (circ.some(function (q) { return q.p !== p && K.seg_hits_box(L0[0], L0[1], L0[2], L0[3], q.x - q.r, q.y - q.r, q.x + q.r, q.y + q.r); })) continue;
             }
-            var tx = an === 'start' ? bx : an === 'end' ? bx + w : bx + w / 2;
-            c.text(tx, t0 + 0.864 * size, nm, { role: 'label', weight: 700, anchor: an, halo: true });
-            c.text(tx, t0 + 0.864 * size + lh, sb, { role: 'label', weight: 400, anchor: an, halo: true });
-            if (L0) c.line(L0[0], L0[1], L0[2], L0[3], { stroke: 'leader', width: c.t('line-hairline'), mark: false });
-            return true;
+            if (taken.some(function (t) { return t.L && K.seg_hits_box(t.L[0], t.L[1], t.L[2], t.L[3], box.x - 1, box.y - 1, box.x + box.w + 1, box.y + box.h + 1); })) continue;
+            return { p: p, nm: nm, sb: sb, an: an, tx: an === 'start' ? bx : an === 'end' ? bx + w : bx + w / 2, t0: t0, L: L0, box: box };
           }
         }
-        return false;
+        return null;
       };
       var withsub = lab.filter(function (p) { return !p.ref && subs[String(p.r[ek])] !== undefined; });
-      withsub.forEach(function (p) { if (!place2(p)) unplaced2.push(p); });
+      var subs_short = L.sub_short || {};
+      // the blocks claim room in the order that places the most of them (a few named points, so every order is tried)
+      var perms = function (xs) { return xs.length < 2 ? [xs] : xs.reduce(function (acc, x, i) { return acc.concat(perms(xs.slice(0, i).concat(xs.slice(i + 1))).map(function (pp) { return [x].concat(pp); })); }, []); };
+      var tryorder = function (ord) {
+        var taken = [];
+        ord.forEach(function (p) { var k = String(p.r[ek]); var pl2 = plan2(p, subs[k], taken) || (subs_short[k] ? plan2(p, subs_short[k], taken) : null); if (pl2) taken.push(pl2); });
+        return taken;
+      };
+      var best = [];
+      (withsub.length <= 5 ? perms(withsub) : [withsub]).some(function (ord) { var t = tryorder(ord); if (t.length > best.length) best = t; return best.length === withsub.length; });
+      best.forEach(function (q) {
+        c.text(q.tx, q.t0 + 0.864 * size, q.nm, { role: 'label', weight: 700, anchor: q.an, halo: true });
+        c.text(q.tx, q.t0 + 0.864 * size + lh, q.sb, { role: 'label', weight: 400, anchor: q.an, halo: true });
+        if (q.L) c.line(q.L[0], q.L[1], q.L[2], q.L[3], { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+      });
+      withsub.forEach(function (p) { if (!best.some(function (q) { return q.p === p; })) unplaced2.push(p); });
       // the other names through the kit's shared placing, the reference last, each clear of every dot and circle; a named
       // point whose block found no place takes its name alone here
       var rest = lab.filter(function (p) { return withsub.indexOf(p) < 0 || unplaced2.indexOf(p) >= 0; });
       var boxes = function (skip) { return pts.filter(function (p) { return skip.indexOf(p) < 0; }).map(function (p) { return { x: p.x - p.rad, y: p.y - p.rad, w: 2 * p.rad, h: 2 * p.rad }; }); };
       var pl = { placed: [], unplaced: [] };
       rest.forEach(function (p) {
-        var r1 = P.place_labels(c, [item(p)], { top: 0, bottom: bot, avoid: boxes([p]), reach: reach });
+        var r1 = P.place_labels(c, [item(p)], { top: 0, bottom: bot, avoid: boxes([p]), reach: !p.ref && lit(p.r) ? reach2 : reach });
         pl.placed = pl.placed.concat(r1.placed); pl.unplaced = pl.unplaced.concat(r1.unplaced);
       });
       var end = ay + 4;

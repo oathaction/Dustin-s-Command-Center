@@ -457,6 +457,7 @@ def figures():
     want('S54', t, 'Florida, 35.5 percent', 'title')
     want('S54', t, 'Florida’s 35.5 percent (margin 0.5) passes the next figures, California’s 32.9 (0.3) and Hawaii’s 32.8 (1.2), by more than their margins', 'note 2')
     same('S54', sp['labels']['sub']['FL'], 'rent %s%% of income' % rent['FL']['rent_pct_of_income'], 'Florida’s figure beside its mark (RF-19)')
+    same('S54', sp['labels']['sub_short']['FL'], '%s%%' % rent['FL']['rent_pct_of_income'], 'Florida’s figure, narrow columns')
     sp, t = spec_words('s54')
     lr = min(st, key=lambda r: num(r['median_gross_rent'])); hr = max(st, key=lambda r: num(r['median_gross_rent']))
     want('S54', t, 'West Virginia’s ${:,}'.format(int(lr['median_gross_rent'])), 'lowest rent')

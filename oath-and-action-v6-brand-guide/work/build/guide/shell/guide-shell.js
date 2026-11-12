@@ -74,7 +74,27 @@
       $$('.toc-group.is-open', toc).forEach(function (x) { if (x !== g) x.classList.toggle('is-open', false); });
       if (g) g.classList.add('is-open');
     }
-    if (a && toc && toc.scrollHeight > toc.clientHeight + 1) keepInView(a, toc, 16);
+    if (a && toc && toc.scrollHeight > toc.clientHeight + 1) {
+      // BC S17 (round 2 fix pass): the open group's head stays in sight with the current rule where both fit, and the list
+      // never stops with a line cut under its top rule
+      var head = g ? $('a', g) : null, tb = toc.getBoundingClientRect();
+      if (head && head !== a && a.getBoundingClientRect().bottom - head.getBoundingClientRect().top <= toc.clientHeight - 24) {
+        var ht = head.getBoundingClientRect().top;
+        if (ht < tb.top + 8) toc.scrollTop -= (tb.top + 8 - ht);
+        else keepInView(a, toc, 16);
+      } else keepInView(a, toc, 16);
+      snapTop(toc);
+    }
+  }
+  // the first line cut by a list's top edge comes into whole view
+  function snapTop(box) {
+    var top = box.getBoundingClientRect().top + box.clientTop, links = $$('a', box);
+    for (var i = 0; i < links.length; i++) {
+      var r = links[i].getBoundingClientRect();
+      if (!r.height) continue;
+      if (r.top < top && r.bottom > top) { box.scrollTop -= (top - r.top); return; }
+      if (r.top >= top) return;
+    }
   }
 
   // From 90em the appendix spans the whole page and slides over the rail; once it reaches the rail, the rail is hidden,

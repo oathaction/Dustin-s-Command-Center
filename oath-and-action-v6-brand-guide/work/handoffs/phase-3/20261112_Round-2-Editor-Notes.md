@@ -275,11 +275,11 @@ Under `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` (Editor paragraph, c
 - **Rule 14.6 (RF-1, RF-17; BC M1, BC S5, CD A-M2, CD R-S1), done.** The old second paragraph is now three, each case on its own: one mark against a set of marks, with D3-673's one-line case and the new comparison case; the two ink cases; and two findings, Rule 05.1's 5 percent share and red never. Three new spec rows and a renamed one; the builders line names the kit's red-share check. The correct caption names Zion as the comparison.
 - **Rule 14.12 (RF-17), held.** 2026 keeps the red and 2015 the light fill with its value in both drawings; only the spec's internal note changed.
 - **Rule 14.13, changed under RF-1.** The engineer's red-share check measured its red 2024 column at 6.2 percent at desk widths, so the column takes the subject ink, and its failure plate the same.
-- **Rule 14.9 (RF-7, ST S4), done.** Two gap-test rows replace one. The generator checks the exact test against the independent one for all ten states; the same five pass. Drawing, caption and title unchanged. The rows stack under a 176 px plot, since call 9's new interval check failed 321 to 330 px drawings.
+- **Rule 14.9 (RF-7, ST S4; ED-F1 and ED-F2), done.** Two gap-test rows replace one, the second's share counted in units, and the builders line takes the publisher's printed margin first. The generator checks the exact test against the independent one for all ten states; the same five pass. Drawing, caption and title unchanged. The rows stack under a 176 px plot, since call 9's new interval check failed 321 to 330 px drawings.
 - **Rule 14.11 (ST S7), done.** Its reading guide glosses "median", the chapter's first. Its "New questions" note rises and wraps under 480 px, after AX S2's new guard found it half over a dot at 225 to 328 px.
 - **Group 8's line (CD R-S2), done.** 30 words with no stacked clauses.
 - **Left for the second pass, in makers' word fields:** ST S3 (14.69, 14.73), ST S7's "quartile" (14.60), ST S8 and RF-3 (S63's words), AX M1 and AX S10 (14.75 and 14.90's color-step names), AX S4 (S47 and S53), AX S8 (14.74's missing-margin words, from the research lead's notes), and the words the data lead's RF-4, RF-5, RF-12, RF-13, RF-18, RF-20 and RF-22 name me for. The makers had already set several by 22:10 (14.60's quartile gloss, 14.75's edges, the 14.69 and 14.73 pointers).
-- **Blocking one plate:** Rule 14.12's columns fail the kit's new sweep at 480 to 502 px (below).
+- **Rule 14.12's sweep fault, closed (22:30).** Maker A's `column.js` now draws its bars wherever a value would not fit its column; `s-14-12-cols` passes with the sweep, and at 490 and 520 px the twelve years read as bars, 2015 gray with its value and 2026 red.
 
 ### Routine calls
 
@@ -304,6 +304,8 @@ Under `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` (Editor paragraph, c
 - D3-xxx | Rule 14.13's 2024 column takes the subject ink through labels.named, and its failure plate's column the same; the alt calls it the column the title names, in the dark ink | The red-share check measured 6.2 percent at desk widths and 5.0 to 5.4 down to 296 px, past Rule 05.1's 5 (RF-1)
 - D3-xxx | Rule 14.9 prints two gap tests: two separate places, and a place inside an area, which takes the first only with a note saying it treats the two as independent | RF-7, ST S4
 - D3-xxx | The rules generator computes the exact test for each of the ten states and fails a rerun where it and the independent test disagree; the plate's internal note gives w, 3.2 to 10.7 percent, and California's margin (1.68 to 1.50 against a gap of 0.6) and Ohio's (2.55 to 2.46 against 2.1) | RF-7: the drawing, caption and title stay
+- D3-xxx | Rule 14.9's second gap-test row reads "its share of the units the area’s figure counts, such as people or households" | ED-F1 (the data lead): tenure and broadband count households and S57 counts workers
+- D3-xxx | Rule 14.9's builders line opens "Take the margin the publisher prints for the figure drawn, and compute one only where it prints none, saying so in the sidecar." | ED-F2, RF-11a
 - D3-xxx | Rule 14.9's plate stacks its rows under a 176 px plot, up from the form's 160 | Call 9's interval check (D3-899) found the middle interval at 24.3 to 25.2 px against 26 at 321 to 330 px drawings
 - D3-xxx | Rule 14.11's reading guide opens "Half of households had more income than the median and half had less." | ST S7: the plate's title is chapter 14's first "median"
 - D3-xxx | Rule 14.11's "New questions" note rises 36 px and wraps at 70 px under 480 px | AX S2's guard found it half over the 2007 dot at 225 to 328 px; unwrapped at 256 px it met the rising line
@@ -313,7 +315,7 @@ Under `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` (Editor paragraph, c
 
 ### Requests (fix pass)
 
-- **To maker A, `forms/column.js` (D3-904, a sweep fault on my spec `s-14-12-cols`).** At drawings of 480 to 502 px the twelve desk columns cannot carry their values: "3,249" runs past the left edge and onto "3,267". Rule 14.12 itself says columns become bars "when columns grow too narrow to carry their values". Please let the form draw its bar arrangement wherever the widest value would not fit its column, not only under the phone width, calling `c.arrange('phone')` as `range-bar` does. No spec key reaches it, so the plate waits on the form; the kit has no trillions format that would shorten the labels either.
+- **Done by maker A (22:30): `forms/column.js` (D3-904, a sweep fault on my spec `s-14-12-cols`).** At drawings of 480 to 502 px the twelve desk columns cannot carry their values: "3,249" runs past the left edge and onto "3,267". Rule 14.12 itself says columns become bars "when columns grow too narrow to carry their values". Please let the form draw its bar arrangement wherever the widest value would not fit its column, not only under the phone width, calling `c.arrange('phone')` as `range-bar` does. No spec key reaches it, so the plate waits on the form; the kit has no trillions format that would shorten the labels either.
 - **To maker A, `s63.json` (RF-3, ST S8).** The data lead names me to write S63's title, note 1 and X18's words. To keep two writers off one file while you work S63's form, I write them in the second pass once you report S63 done, unless you set the data lead's words as given first; I then read them.
 
 ### Tested (fix pass)
@@ -325,13 +327,16 @@ Under `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` (Editor paragraph, c
 - `phase3_ch14_rules_build.py` after each change: every check passes (its exact gap test agrees for all ten states). The exact test's figures by a separate script on the frozen file: w 3.2 to 10.7 percent, the same five past.
 - `oa-chart.mjs build` (with the sweep) on my 18 plate specs, chapter 14's 13 and chapter 13's five: 17 PASS, 0 faults; `s-14-12-cols` FAIL, the sweep fault above. Red share: `s-14-13-cols` passes in the subject ink; 14.3, 14.6 and 14.12 pass in red.
 - Rule 14.11's note: five placements tried on scratch copies of the spec with the sweep; two passed; both looked at, at 390, 326 and 256 px, and the wrapped one taken.
+- `oa-chart.mjs build` on `s-14-12-cols` after maker A's form change: PASS with the sweep, 0 faults; its 490 and 520 px Newsprint drawings looked at.
 - `phase3_ch14_build.py`: 0 faults (96 rules). Strict build after my chapter 14 changes: exit 1 on 113 warnings, all on other owners' charts (S02, S05, S11, S14, S15, S25, S29, S35, S40, S47, S59, S62) under the engineer's new AX S2 guard; none on my plates. The page was written, 10,605,577 bytes.
 - In that page, by Playwright at 1440, 1024, 768, 390 and 360 px: `s-14-4-failure`, `s-14-6-correct`, `s-14-9-correct`, `s-14-11-correct`, `s-14-12-correct`, `s-14-13-correct`, `s-14-13-failure`, 35 of 35 with no visible text under 13 px and nothing past the stage's edge. Looked at by eye: 14.13's correct plate at 1440, 14.11's at 360 and 14.6's at 1024 px.
 - Group 8's line read from the written chapter file: 30 words.
+- After ED-F1 and ED-F2: `phase3_ch14_rules_build.py` passes every check, and its rerun changed `14-009.json` alone among my files.
+- The data lead signed off Rules 14.6, 14.9, 14.11, 14.12 and 14.13 and group 8's line (its notes, "Sign-off").
 
 ### Not tested (fix pass)
 
-- Rule 14.12's plate between 480 and 502 px in the page, which waits on maker A's form.
+- Rule 14.12's plate between 480 and 502 px in the page; the kit's drawings at 490 and 520 px were looked at instead.
 - My changed plates on Charcoal, in grayscale and in forced colors in the page (the kit's own captures on both grounds passed its checks).
 - A strict build at exit 0 after my chapter 14 changes: other owners' charts fail the new guard.
 - The quick guide check (`guide_check.js`), the kit's `--all` and axe-core; the main session runs the first two.

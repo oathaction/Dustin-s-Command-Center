@@ -478,12 +478,13 @@
     if (role === 'label' && this.phone) s = Math.max(this.t('type-phone-min'), Math.min(s, this.t('type-phone-min')));
     return s;
   };
-  Ctx.prototype.measure = function (words, role, weight, tnum) {
+  Ctx.prototype.measure = function (words, role, weight, tnum, open) {
     var size = typeof role === 'number' ? role : this.size(role || 'label');
-    return K.measure(words, size, weight || 400, role === 'big' ? 'display' : 'reading', tnum) + (role === 'big' ? K.open_space(words, size) : 0);
+    return K.measure(words, size, weight || 400, role === 'big' ? 'display' : 'reading', tnum) + (open && role === 'big' ? K.open_space(words, size) : 0);
   };
-  // BC S12 (round 2 fix pass): a big figure that holds words ("At least 17", "87% and 88%") sets them in open tracking, no
-  // tightening and a tenth of an em more at each word space (kit.css .oac-t-open), so its words read apart at 1x
+  // BC S12 (round 2 fix pass): a big figure that holds words ("At least 17", "87% and 88%") may set them in open tracking,
+  // c.text(..., {role: 'big', open: true}): no tightening and a tenth of an em more at each word space (kit.css
+  // .oac-t-open), so its words read apart at 1x; c.measure(words, 'big', weight, tnum, true) measures it so
   K.OPEN_WORD_SPACE = 0.1;
   K.open_space = function (line, size) { var n = (String(line).match(/[ \u00a0]/g) || []).length; return n * K.OPEN_WORD_SPACE * size; };
   Ctx.prototype.wrap = function (words, role, max, weight) {
@@ -579,7 +580,7 @@
     var role = o.role || 'label', size = o.size || this.size(role), weight = o.weight || 400, anchor = o.anchor || 'start';
     var face = o.face || (role === 'big' ? 'display' : 'reading');
     var lines = o.max ? K.wrap(words, size, o.max, weight, face) : [String(words)];
-    var lh = o.leading || Math.round(size * (role === 'note' ? 1.36 : 1.25)), w = 0, open = role === 'big' && /[ \u00a0]/.test(String(words));
+    var lh = o.leading || Math.round(size * (role === 'note' ? 1.36 : 1.25)), w = 0, open = !!o.open && face === 'display' && /[ \u00a0]/.test(String(words));
     lines.forEach(function (ln) { w = Math.max(w, K.measure(ln, size, weight, face, o.tnum) + (open ? K.open_space(ln, size) : 0)); });
     var x0 = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x;
     var vm = metrics().vertical[face === 'display' ? 'Inter Tight|800' : 'Inter|400'] || { ascent: 969, descent: 241 };
@@ -594,7 +595,7 @@
     var face = o.face || (role === 'big' ? 'display' : 'reading');
     var lines = o.max ? K.wrap(words, size, o.max, weight, face) : [String(words)];
     var lh = o.leading || Math.round(size * (role === 'note' ? 1.36 : 1.25));
-    var self = this, w = 0, open = role === 'big' && /[ \u00a0]/.test(String(words));
+    var self = this, w = 0, open = !!o.open && face === 'display' && /[ \u00a0]/.test(String(words));
     lines.forEach(function (ln) { w = Math.max(w, K.measure(ln, size, weight, face, o.tnum) + (open ? K.open_space(ln, size) : 0)); });
     var x0 = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x;
     var cls = ['oac-t', 'oac-t-' + (face === 'display' ? 'big' : role), 'oac-w' + Math.round(weight / 100), o.fill ? 'oac-f-' + o.fill : (role === 'tick' ? 'oac-f-secondary' : 'oac-f-label')];
@@ -973,9 +974,9 @@
   }
   // BC S12 (round 2 fix pass): typography.nbsp holds a date's month and day together ("November 3, 2026") and a span of
   // years with its "to" ("2017 to 2022"), with no-break spaces, in printed words only; a second pass changes nothing
-  var MONTHS = 'January|February|March|April|May|June|July|August|September|October|November|December';
+  var MONTH_ALT = 'January|February|March|April|May|June|July|August|September|October|November|December';
   K.nbsp = function (t) {
-    return String(t).replace(new RegExp('\\b(' + MONTHS + ') (\\d{1,2})\\b', 'g'), '$1\u00a0$2')
+    return String(t).replace(new RegExp('\\b(' + MONTH_ALT + ') (\\d{1,2})\\b', 'g'), '$1\u00a0$2')
       .replace(/\b((?:1[89]|20)\d{2}) (to|through) ((?:1[89]|20)\d{2})\b/g, '$1\u00a0$2\u00a0$3');
   };
   K.typeset = function (spec, words) {

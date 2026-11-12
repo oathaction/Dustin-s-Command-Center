@@ -271,7 +271,13 @@ function audit(page) {
         // names its drawing, so the stage carries no description of its own
         const kitAlt = norm(((s.querySelector('figure.oac-fig .oac-alt') || {}).textContent) || '');
         const d = (s.getAttribute('aria-describedby') || '').split(/\s+/).map((x) => document.getElementById(x)).filter(Boolean).map((x) => norm(x.textContent)).join(' ');
-        if (d.length < 15 && kitAlt.length < 15) sp.noAlt.push({ specimen: id, label: d, role });
+        // AX S6 (round 2 fix pass): a sketch stage is a group whose drawings are images, each named by its own title, under
+        // the figure's caption, the alt's first sentence; it needs no description of its own
+        const sk = Array.from(s.querySelectorAll('svg.oac-sketch'));
+        const fig = s.closest('figure');
+        const cap = norm(((fig && fig.querySelector('figcaption')) || {}).textContent || '');
+        const skNamed = sk.length > 0 && cap.length >= 15 && sk.every((v) => v.getAttribute('role') === 'img' && (norm(v.getAttribute('aria-label')) || v.getAttribute('aria-labelledby') || v.querySelector(':scope > title')));
+        if (d.length < 15 && kitAlt.length < 15 && !skNamed) sp.noAlt.push({ specimen: id, label: d, role });
       }
     });
     document.querySelectorAll('img').forEach((im) => { if (!im.hasAttribute('alt')) sp.imgNoAlt.push({ src: (im.getAttribute('src') || '').slice(0, 60), where: where(im) }); });

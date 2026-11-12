@@ -680,10 +680,16 @@ async function self_test() {
     if (!ok2) bad++;
     const cb = mk({});
     const pts = [[0, 50, 60], [10, 48, 62], [20, null, 60], [30, 40, 70], [40, 42, 66], [50, 45, 65], [60, 44, 64]].map((p, i) => ({ x: p[0], y0: p[1], y1: p[2], key: 'y' + i, low: i, high: i + 1, break: i === 5 }));
-    const br = P.band(cb, pts, { fill: 'band' });
+    const br = P.band(cb, pts, { fill: 'band', edge: false });
     const paths = cb._els.filter(e => /^<path/.test(e));
     const ok3 = JSON.stringify(br.runs) === '[[0,1],[3,4],[5,6]]' && paths.length === 3 && paths.every(p => /oac-f-band/.test(p)) && br.top === 40 && br.bottom === 70 &&
       cb.marks.filter(m => m.kind === 'datum').length === 12 && !cb.marks.some(m => m.kind === 'path');
+    // RF-2 (round 2 fix pass): by default each run also draws its two edges, 1 px in the context ink
+    const cbe = mk({}); P.band(cbe, pts, { fill: 'band' });
+    const pe = cbe._els.filter(e => /^<path/.test(e));
+    const ok3e = pe.length === 9 && pe.filter(p => /oac-s-context/.test(p) && /stroke-width="1"/.test(p) && /oac-f-none/.test(p)).length === 6;
+    console.log(`${ok3e ? 'pass' : 'FAIL'} band draws its two edges in the context ink at 1 px by default (RF-2)`);
+    if (!ok3e) bad++;
     const cb1 = mk({}); P.band(cb1, [{ x: 5, y0: 10, y1: 20 }, { x: 6, y0: NaN, y1: 1 }], {});
     const ok3b = cb1._els.length === 1 && /^<line/.test(cb1._els[0]);
     console.log(`${ok3 && ok3b ? 'pass' : 'FAIL'} band draws one path a run, breaks at a gap and at break: true, records each end, and draws a lone point as a whisker`);

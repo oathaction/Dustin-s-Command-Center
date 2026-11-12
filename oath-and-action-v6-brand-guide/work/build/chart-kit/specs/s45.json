@@ -14,15 +14,16 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: a Census Bureau survey of new construction",
-  "title": "Homes in buildings of five or more units made up 36 percent of the new homes finished in 2024, their largest share in any year from 2000 to 2025.",
+  "title": "Builders finished 591,700 homes in buildings of five or more units in 2024, more than in any other year from 2000 to 2025.",
   "measure_line": "New privately owned housing units completed, thousands, by the number of units in the building, United States, 2000 to 2025. The chart starts in 2000 so each year’s column stays wide enough to read.",
   "notes": [
-    "Builders finished 1,626,900 homes in 2024: 1,018,600 in one-unit buildings, 16,600 in buildings of two to four units and 591,700 in buildings of five or more.",
-    "The Census Bureau’s series starts in 1968; the share was last higher in 1974, at 40.1 percent."
+    "Builders finished 1,626,900 homes in 2024: 1,018,600 in one-unit buildings, 16,600 in buildings of two to four units and 591,700 in buildings of five or more, 36 percent of the year’s homes and the largest share from 2000 to 2025.",
+    "The Census Bureau’s series starts in 1968; more homes in buildings of five or more units were finished in 1972, 1973 and 1974, the most in 1973, 779,800, and their share was last higher in 1974, at 40.1 percent.",
+    "Homes in buildings of two to four units made up 0.6 to 1.8 percent of each year’s total from 2009 to 2025, too few to draw as more than a seam; the table gives each year."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Stacked columns of new homes finished each year from 2000 to 2025, split into one-unit buildings, buildings of two to four units and buildings of five or more. One-unit homes make up most of every year; homes in buildings of five or more units reached 591,700 in 2024, 36 percent of the year’s 1,626,900.",
+  "alt": "Stacked columns of new homes finished each year from 2000 to 2025, split into one-unit buildings, buildings of two to four units and buildings of five or more. One-unit homes make up most of every year; homes in buildings of five or more units reached 591,700 in 2024, the most of any year in the chart and 36 percent of the year’s 1,626,900. Two to four units shows as a thin seam from 2009 on.",
   "table": {
     "caption": "New homes finished by units in the building, thousands, 2000 to 2025",
     "columns": [
@@ -103,6 +104,7 @@
     "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): five or more units' share largest in 2024 of 2000 to 2025, 36.4 percent; 2024's 1,626.9 thousand total and parts 1,018.6, 16.6 and 591.7; 26 columns.",
     "encode.total prints the published total, since the parts' sum differs by rounding (2006: 1,979.5 against 1,979.4). Source line from the sidecar's span template, 2000 to 2025.",
     "Second run, data lead MA-1 and MA-2: the printed totals take the axis's unit, thousands of homes (1,979.4, 584.9 and 1,626.9); a note gives the longer record, the share higher in 1969, 1970, 1973 and 1974, last in 1974 at 40.1 percent, by script; the 2000 window stays (S20's case).",
-    "Round 2 review fix pass, ST S6: the source line names the release, through the sidecar's span_september_2026_release template (the research lead's variant)."
+    "Round 2 review fix pass, ST S6: the source line names the release, through the sidecar's span_september_2026_release template (the research lead's variant).",
+    "Round 2 review fix pass, CD A-M1, RF-22: the title gives the count the stack shows; the share and the long record move to notes 1 and 2. AX S9, RF-23: two to four units stays at true height, named at the last column with its leader, and note 3 says why it is a seam. BC S17: a total raised over a taller neighbor takes a hairline down to its own column, and the last total and year sit 2 px inside the drawing's edge. Checked by script (fixfigs.py): 591.7 thousand in 2024, the most of 2000 to 2025 (467.7 in 2025, 438.3 in 2023); 36.4 percent of 1,626.9; more in 1972 (724.7), 1973 (779.8, the most) and 1974 (692.9); 1974's share 40.1; two to four units 0.57 (2021) to 1.83 (2009) percent from 2009 to 2025."
   ]
 }

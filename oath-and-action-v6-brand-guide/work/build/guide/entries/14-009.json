@@ -22,7 +22,7 @@
   "13.5",
   "13.1"
  ],
- "builders": "Carry each figure’s margin in its own column of the data; a form draws the interval from it and the note names the confidence.",
+ "builders": "Take the margin the publisher prints for the figure drawn, and compute one only where it prints none, saying so in the sidecar. Carry each figure’s margin in its own column of the data; a form draws the interval from it and the note names the confidence.",
  "specs": [
   {
    "label": "Interval",
@@ -35,7 +35,7 @@
   },
   {
    "label": "A gap’s margin, a place inside an area",
-   "value": "The square root of the sum of the two squared margins less twice the place’s squared margin times its share of the people the area counts; where the data hold no share, the first test, and the note says it treats the two as independent"
+   "value": "The square root of the sum of the two squared margins less twice the place’s squared margin times its share of the units the area’s figure counts, such as people or households; where the data hold no share, the first test, and the note says it treats the two as independent"
   },
   {
    "label": "Within the margin",

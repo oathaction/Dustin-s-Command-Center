@@ -18,7 +18,7 @@
       ]
     }
   ],
-  "reader_question": "Where do the fights over removals, spending and watchdogs stand?",
+  "reader_question": "Where do six disputes over checks on power stand?",
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Checked by the atlas, record by record: its issue records, as of October 15, 2026",
@@ -34,10 +34,10 @@
     ],
     "snapshot": "2026-10-15"
   },
-  "title": "Of six disputes over checks on power, the Supreme Court had decided one by October 15, 2026, and had acted by interim order in three others.",
+  "title": "Of six disputes over checks on power, the Supreme Court had decided one by October 15, 2026, and two others stood on its interim orders.",
   "measure_line": "The status of six issues in the atlas on checks on power, each as its record stood when the atlas checked it on October 15, 2026, United States",
   "notes": [
-    "Each chip is our reading of the atlas’s status text, and the words under it give the case or finding and its date. An interim order holds while its case continues. The third interim order the title counts came in Issue I068, the dispute over withheld appropriations, on September 26, 2025, in Department of State v. AIDS Vaccine Advocacy Coalition; that issue’s chip gives its latest event, a watchdog finding.",
+    "Each chip is our reading of the atlas’s status text, and the words under it give the case or finding and its date. An interim order rules on an emergency application and holds while its case continues. The Court also acted by interim order in two disputes whose chips give a later event: Issue I068, on September 26, 2025, in Department of State v. AIDS Vaccine Advocacy Coalition, now under a watchdog finding, and Issue X18, on June 27, 2025, in Trump v. CASA, now under the Congressional Research Service’s count.",
     "Statuses may have changed since October 15, 2026."
   ],
   "credit": "Chart: Oath & Action",
@@ -58,6 +58,19 @@
         "format": "text"
       },
       {
+        "field": "id",
+        "label": "Atlas grade",
+        "format": "text",
+        "words": {
+          "I068": "Documented",
+          "I070": "Documented",
+          "I163": "Documented",
+          "X05": "Documented",
+          "X06": "Documented",
+          "X18": "Documented"
+        }
+      },
+      {
         "field": "status_text",
         "label": "Status, in the atlas’s words",
         "format": "text"
@@ -75,7 +88,7 @@
     ]
   },
   "chart_notes": [
-    "Every status chip takes one style, and its word gives the status. Each issue’s ID sits in its own chip before its title."
+    "Every status chip takes one style, and its word gives the status. Each issue’s ID sits in its own chip before its title. Each title is the atlas’s own name for the issue; the atlas grades all six Documented."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -117,7 +130,7 @@
       },
       "X18": {
         "chip": "Counted",
-        "words": "The Congressional Research Service (report R49022, July 7, 2026) counted 50 cases with nationwide injunctions against the administration from its first day, January 20, 2025, to June 27, 2026, 16 of them after Trump v. CASA, decided June 27, 2025."
+        "words": "The Congressional Research Service (report R49022, July 7, 2026) counted 50 cases with nationwide injunctions against the second Trump administration from its first day, January 20, 2025, to June 27, 2026, 16 of them after the Supreme Court limited such injunctions in Trump v. CASA on June 27, 2025."
       }
     },
     "check_words": "Atlas check: {result}, {date}"
@@ -127,6 +140,8 @@
     "Data lead rulings (d) and (e): grade line 'Checked by the atlas, record by record'; one chip style for every status, no red; typed ID chips (Rule 13.9). Chip words are our reading of V7's status text; each status's words quote V7's case and date.",
     "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): each status's case, vote and date in V7's status text (Slaughter 6 to 3 and Cook 5 to 4 on June 29, 2026; Illinois December 23, 2025; the July 20, 2026 minute order; GAO October 7, 2026; 34, 16 and 50 cases around June 27, 2025); every record checked October 15, 2026.",
     "Second run, data lead MA-5: the title names the six disputes as checks on power, the atlas's group for all six, and counts three interim orders: X06 and X05, and I068's emergency application of September 26, 2025, in V7's text; I068's chip stays Watchdog finding, its latest event.",
-    "Second run, data lead's H09 ruling on X18: the window stays as the Congressional Research Service gives it, the administration's first day to June 27, 2026, with that reason in the chip's words; 50 (34 plus 16) and report R49022 of July 7, 2026 checked against V7's status text by script."
+    "Second run, data lead's H09 ruling on X18: the window stays as the Congressional Research Service gives it, the administration's first day to June 27, 2026, with that reason in the chip's words; 50 (34 plus 16) and report R49022 of July 7, 2026 checked against V7's status text by script.",
+    "Round 2 review fix pass, ST M1, CD A-S1, D3-896, RF-3: the title counts what the chips show, two interim orders (X06, X05), with the data lead's words; note 1 gives the Court's two other interim orders, I068 (September 26, 2025, Department of State v. AIDS Vaccine Advocacy Coalition) and X18 (June 27, 2025, Trump v. CASA), as RF-3 words it. ST S8: X18's words name the second Trump administration, as V7's status text does, and 'decided' leaves them. The editor's notes leave these words to me if I set the data lead's words as given, which I did; the editor reads them in the second pass.",
+    "Round 2 review fix pass, BC S3, RF-15: each issue title prints as V7 stores it, in regular weight after its typed chip; the chart note says each title is the atlas's own name and that the atlas grades all six Documented; the table's 'Atlas grade' column reads 'Documented' for each ID through the column's words (V7's grade field, 'documented' for all six, by script; the issue file carries no grade column, request R-A3). The reader question says 'disputes', as the title does. AX S1: the title, words and check line wrap 2 px inside the edge, measured as printed after the typography, so no title runs past the artboard at any width the sweep draws."
   ]
 }

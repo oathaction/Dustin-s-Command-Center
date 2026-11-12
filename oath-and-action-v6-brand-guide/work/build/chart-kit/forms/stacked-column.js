@@ -55,9 +55,11 @@
         });
         if (at.indexOf(String(r[ex])) >= 0) {
           var tw = String(L.total_words || '{v}').split('{v}').join(K.fmt(s.total, f.total || 'integer'));
-          var hw = c.measure(tw, 'label', 700, true) / 2, tx = Math.max(hw, Math.min(W - hw, cx)), ty = ys(s.total);
-          // over every column its words reach across, so a taller neighbor never runs into them
+          var hw = c.measure(tw, 'label', 700, true) / 2, tx = Math.max(hw + 1, Math.min(W - hw - 2, cx)), ty = ys(s.total), ty0 = ty;
+          // over every column its words reach across, so a taller neighbor never runs into them; raised past its own
+          // column, a hairline joins the words to it (BC S17)
           st.forEach(function (o2, k) { var ox = x0 + step * k + step / 2; if (Math.abs(ox - tx) < hw + bw / 2 + 2) ty = Math.min(ty, ys(o2.total)); });
+          if (ty0 - ty > 6) c.line(cx, ty - 4, cx, ty0 - 2, { stroke: 'secondary', width: c.t('line-hairline'), mark: false });
           c.text(tx, ty - 7, tw, { role: 'label', weight: 700, anchor: 'middle', tnum: true });
         }
       });
@@ -80,7 +82,7 @@
       st.forEach(function (s, i) {
         var v = String(s.row[ex]);
         if (picks ? picks.indexOf(v) < 0 : (n - 1 - i) % every) return;
-        var cx = x0 + step * i + step / 2, w = c.measure(v, 'tick'), tx = Math.max(w / 2, Math.min(W - w / 2, cx));
+        var cx = x0 + step * i + step / 2, w = c.measure(v, 'tick'), tx = Math.max(w / 2 + 1, Math.min(W - w / 2 - 2, cx));
         c.line(cx, bot + 1, cx, bot + 5, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });
         c.text(tx, ay, K.fmt(s.row[ex], 'year'), { role: 'tick', anchor: 'middle' });
       });

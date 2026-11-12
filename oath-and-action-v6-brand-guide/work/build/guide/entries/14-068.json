@@ -2,9 +2,9 @@
  "id": "14.68",
  "title": "Size each point by a third measure only when its size answers the question.",
  "rule": [
-  "Draw the scatter plot with each circle’s area set by a third measure (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circle the title names in the view’s red point, or in the subject ink where Rule 14.6 sets ink in its place, as for a state, and keep the Association label and its note."
+  "Draw the scatter plot with each circle’s area set by a third measure (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circles the title names in the view’s red point while that red stays within 5 percent of the drawing (Rule 05.1), or in the subject ink where Rule 14.6 sets ink in its place, as for the four states here, each with the figure its size stands for, and keep the Association label and its note."
  ],
- "use_when": "The reader asks whether two measures move together and also how many people each place holds.",
+ "use_when": "The reader asks whether two measures move together and where the largest places, by a third measure such as renter households, sit among them.",
  "use_instead": [
   {
    "when": "The circle sizes add nothing the question asks",
@@ -30,7 +30,7 @@
   "13.1",
   "14.6"
  ],
- "builders": "Form bubble-scatter: node work/build/chart-kit/oa-chart.mjs build s55; encode size for the area; labels.size_key gives the key’s sizes and labels.size_key_title its words.",
+ "builders": "Form bubble-scatter: node work/build/chart-kit/oa-chart.mjs build s55; encode size for the area; labels.size_key gives the key’s sizes and labels.size_key_title its words; labels.sub sets a named circle’s figure under its name.",
  "correct": null,
  "failure": null
 }

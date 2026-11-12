@@ -409,6 +409,9 @@ a.toc-part-k:hover { text-decoration: underline }
 .sk-pair { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: var(--oa-space-300) }
 .sk-half { flex: none; width: min-content; max-width: 100% }
 .sk-half > svg { display: block }
+/* BC S14 (round 2 fix pass): each bar sets its words on two fixed lines, so a pair's two heads stand at one height */
+.plate-bar-l { display: flex; flex-direction: column; min-width: 0 }
+.plate-bar-l > span:not(.vh) { display: block }
 .plate-use { display: flex; align-items: center; gap: 8px; margin: 0 0 16px; padding: 5px 9px; border: var(--oa-border-width-hairline) solid var(--rule-strong);
   font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform) }
 /* BC S18: the chapter's basis, once, after its introduction */
@@ -782,6 +785,11 @@ a.toc-part-k:hover { text-decoration: underline }
   .plate:has(.oac-fig), .plate:has(.oac-fig) .plate-stage { break-inside: auto }
   .plate-scroll:has(.oac-fig) { overflow: visible !important; max-height: none }
   .local-toc { position: static }
+  /* AX S11 (round 2 fix pass): a plate's head keeps to the page, its size note wrapping under the label where the line is
+     short, and a head that reached over the rail on screen stands on the text column */
+  .plate.is-breakout-head > .plate-head { margin-left: 0 }
+  .plate-head { max-width: 100% }
+  .plate-size { flex: 1 1 auto; min-width: 0; margin-left: 0; white-space: normal; overflow-wrap: anywhere }
   .code { max-height: none; overflow: visible }
   a { text-decoration: none }
 }

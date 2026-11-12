@@ -92,6 +92,9 @@
     "y_axis": "Median gross rent, a month",
     "sub": {
       "FL": "rent 35.5% of income"
+    },
+    "sub_short": {
+      "FL": "35.5%"
     }
   },
   "formats": {

@@ -5,7 +5,8 @@
  * name, such as the years a Congress sat; printed under every column where it fits, else under the first and last).
  * labels: categories ({x value: printed name}; the x value itself otherwise), named (an x value or a list of them, set in
  * ink; with none, every column is in ink), point (the one x value a title names in working red, with its keyline on
- * Newsprint; ED-E1). The fills come from K.parts.named_fill. formats: value (the printed values). A negative value draws below the zero line. */
+ * Newsprint; ED-E1). The fills come from K.parts.named_fill. formats: value (the printed values). A negative value draws below the zero line.
+ * Wherever a column is too narrow for its value, at any width, the columns turn into the phone's bars. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -26,7 +27,12 @@
       var vals = rows.map(function (r) { return r[ey]; });
       var max = Math.max(0, Math.max.apply(null, vals)), min = Math.min(0, Math.min.apply(null, vals));
       var size = c.size('label'), tick = c.size('tick'), n = rows.length;
-      if (c.phone) {
+      // the columns turn into bars wherever the widest value would not fit its column with 4 px to spare, at any width,
+      // as Rule 14.12 says; the form then reports the phone's arrangement (RS-S3, D3-904's sweep)
+      var vmax = 0; rows.forEach(function (r) { vmax = Math.max(vmax, c.measure(val(r), 'label', 700, true)); });
+      var as_bars = c.phone || vmax + 4 > W / n;
+      if (as_bars && !c.phone) c.arrange('phone');
+      if (as_bars) {
         // bars, one per row from top to bottom: the name (and its second line) at the left, the value at the bar's end
         var lw = 0;
         rows.forEach(function (r) {

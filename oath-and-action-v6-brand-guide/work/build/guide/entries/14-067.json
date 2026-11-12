@@ -34,7 +34,7 @@
   "14.6",
   "14.9"
  ],
- "builders": "Form scatter-named: node work/build/chart-kit/oa-chart.mjs build s54; labels.named names the points in ink, labels.labeled points named in the light fill, labels.reference the open ring.",
+ "builders": "Form scatter-named: node work/build/chart-kit/oa-chart.mjs build s54; labels.named names the points in ink, labels.labeled points named in the light fill, labels.reference the open ring, labels.sub a named point’s figure under its name.",
  "correct": null,
  "failure": null
 }

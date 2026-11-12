@@ -113,7 +113,7 @@
    "n": 5,
    "nav": "The {n_sketch_w} sketches",
    "title": "The {n_sketch_w} sketches",
-   "lede": "{n_sketch_cap} forms get a small sketch with invented, labeled data in place of a finished chart: {n_avoid_w} the guide tells builders to avoid, each drawn beside the better choice, and {n_ref_w} it keeps for reference. Each is photographed at a 1440 px window, with its heading and caption printed under it as the guide prints them. The forms to avoid come first.",
+   "lede": "Round 2 gives {n_sketch_w} forms a small sketch with invented, labeled data in place of a finished chart: {n_avoid_w} the guide tells builders to avoid, each drawn beside the better choice, and {n_ref_w} it keeps for reference. Each is photographed at a 1440 px window, with its heading and caption printed under it as the guide prints them. The forms to avoid come first.",
    "h_avoid": "Forms to avoid, each beside the better choice",
    "h_reference": "Forms kept for reference",
    "kind_avoid": "A form to avoid",

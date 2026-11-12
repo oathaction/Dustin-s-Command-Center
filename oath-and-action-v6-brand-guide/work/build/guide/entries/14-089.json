@@ -2,9 +2,9 @@
   "id": "14.89",
   "title": "Use status chips to give each record’s status in a word.",
   "rule": [
-    "Give each record its status in a chip as chapter 18 draws one: the word in the label style on a hairline edge in the text’s ink, one style for every status, so the word carries the status. Lead each record with its typed ID in its own chip (Rule 13.9) and its title, then the words that give the status its case or finding and its date, then the date the record was checked."
+    "Give each record its status in a chip as chapter 18 draws one: the word in the label style on a hairline edge in the text’s ink, one style for every status, so the word carries the status. Lead each record with its typed ID in its own chip (Rule 13.9) and its title as the record stores it, in regular weight, then the words that give the status its case or finding and its date, then the date the record was checked."
   ],
-  "use_when": "The reader asks where a set of disputes or measures stands now, such as the fights over removals, spending and watchdogs.",
+  "use_when": "The reader asks where a set of disputes or measures stands now, such as six disputes over checks on power.",
   "use_instead": [
     {
       "when": "A record moves through set steps",

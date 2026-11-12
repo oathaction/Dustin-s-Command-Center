@@ -491,9 +491,14 @@ def new_ch15(ch15):
     return [r for r in ch15['rules'] if r['id'] not in done]
 
 
-def wide_plates(G, rules):
-    """The chapter 15 plates the guide sets on the wide stage (data-wide on the frame), in the chapter's order."""
+def wide_plates(G, rules, opener=None):
+    """The chapter 15 plates the guide sets on the wide stage (data-wide on the frame), in the chapter's order, the
+    opening plate first when it is given."""
     out = []
+    if opener:
+        m = re.search(r'data-wide="(\d+)"', element_html(G['text'], f'fig-{opener}') or '')
+        if m:
+            out.append(('opener', 'opener', opener, int(m.group(1))))
     for r in rules:
         for k in ('correct', 'failure'):
             sp = (r.get(k) or {}).get('specimen') if isinstance(r.get(k), dict) else None
@@ -548,7 +553,8 @@ def carried(G, P, ch14, shots):
     every = bool(files) and len(ends) == len(files)
     out.append((S['ch13_h'], fill(S['ch13_all'] if every else S['ch13_some'], {'k': nw(len(ends)), 'n': nw(len(files))}), every))
     # chapter 15's wide stage at 1024 and 768 px
-    wides = wide_plates(G, json.loads((ROOT / C['slots']['chapter15']).read_text())['rules'])
+    c15 = json.loads((ROOT / C['slots']['chapter15']).read_text())
+    wides = wide_plates(G, c15['rules'], (c15.get('opener') or {}).get('specimen'))
     res = {}
     for w in C['carried']['wide_widths']:
         got = []
@@ -596,7 +602,7 @@ def round_section(G, P, rn, shots):
         (S['facts']['entries'], f'{len(entries)}: {len(new)} new charts, {ids[0]} to {ids[-1]}; {nw(len(built))} charts already built, '
                                 f'{join_words(built_ids)}, set in as entries; {len(sk)} sketches, {nw(sk_av)} of them forms to avoid'),
         (S['facts']['ch15'], f'{cap(nw(len(r15)))} new rules, {join_words(compact_ids([r["id"] for r in r15]))}, with {p15} plates'),
-        (S['facts']['data'], (f'{cap(nw(D["new"]))} new tables frozen with their sidecars, research ledger rows {ledger_span(D["ledger"])}; '
+        (S['facts']['data'], (f'Frozen with their sidecars: {nw(D["new"])} new tables, research ledger rows {ledger_span(D["ledger"])}; '
                               f'{"all " + nw(D["rows"]) if D["frozen"] == D["rows"] else str(D["frozen"]) + " of " + str(D["rows"])} of its data rows have every file in the data folder'
                               + (f'. Waiting: rows {join_words([str(n) for n in D["waiting"]])}' if D['waiting'] else ''))),
     ]
@@ -676,10 +682,10 @@ def chart_article(G, f, kit_out, S, what=None):
     ev, grade = printed_evidence(G, sid) if G['usable'] else (None, None)
     marked = ev is not None and ev == C['sections']['charts']['mark_label']
     if marked:
-        QUOTED.extend([ev, grade or ''])
+        QUOTED.append(ev)
     aid = f'chart-{f["rule"].replace(".", "-")}'
     head = (f'<header class="ch-h"><p class="label">Rule {esc(f["rule"])} · {esc(f["form"])} · {esc(fill(S["maker"], {"m": f.get("maker", "?")}))}</p>'
-            + (f'<p class="ev"><span class="ev-k">{esc(ev)}</span><span class="ev-g">{esc(grade or "")}</span></p>' if marked else '')
+            + (f'<p class="ev"><span class="ev-k">{esc(ev)}</span></p>' if marked else '')
             + f'<h4 class="ch-t">{esc(title)}</h4></header>'
             + (f'<p class="what">{esc(what)}</p>' if what else ''))
     rec = {'rule': f['rule'], 'form': f['form'], 'maker': f.get('maker'), 'title': title, 'title_from': title_from, 'evidence': ev, 'marked': marked}
@@ -914,12 +920,16 @@ def ch15_section(G, shots):
             return pending('Waiting for this plate’s photographs.')
         rec = compose(f'Ch15-{name}', [(a, S['label_1440']), (b, S['label_390'])])
         return figure(rec, alt)
-    groups = {g['before_rule']: g for g in ch15.get('groups', [])}
+    order = [r['id'] for r in ch15['rules']]
+    starts = sorted((order.index(g['before_rule']), g) for g in ch15.get('groups', []) if g.get('before_rule') in order)
+    shown = None
     for r in r15:
         rid = r['id']
-        if rid in groups:
-            QUOTED.append(groups[rid]['title'])
-            out.append(f'<h3 class="sub grp">{esc(groups[rid]["title"])}</h3>')
+        g = next((g for i, g in reversed(starts) if i <= order.index(rid)), None)
+        if g and g is not shown:
+            shown = g
+            QUOTED.append(g['title'])
+            out.append(f'<h3 class="sub grp">{esc(g["title"])}</h3>')
         figs = ''
         for k in ('correct', 'failure'):
             if isinstance(r.get(k), dict):
@@ -1305,7 +1315,6 @@ h1{font:var(--oa-type-title);letter-spacing:var(--oa-type-title-letter-spacing);
 .ch-line{font:var(--oa-type-body-small);margin-top:var(--oa-space-150);font-variant-numeric:tabular-nums}
 .ev{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--oa-space-050) var(--oa-space-150);margin:var(--oa-space-100) 0 0}
 .ev-k{font:var(--oa-type-caption);font-weight:600;padding:0 .5em;border:var(--oa-border-width-hairline) solid var(--strong);line-height:1.6}
-.ev-g{font:var(--oa-type-caption);color:var(--ink-2)}
 .what{font:var(--oa-type-body-small);border-left:var(--oa-border-width-bar) solid var(--charcoal);padding-left:var(--oa-space-200);margin:var(--oa-space-150) 0 var(--oa-space-200)}
 .shot figcaption .chip{font-weight:600;color:var(--ink);padding:0 .4em;border:var(--oa-border-width-hairline) solid var(--strong)}
 .rule{margin-top:var(--oa-space-500);border-top:var(--oa-border-width-hairline) solid var(--strong);padding-top:var(--oa-space-200)}
@@ -1545,7 +1554,7 @@ def main():
         w1 = (wide_plates(G, r15) or [None])[0]
         if w1:
             items.append((f'ch15-{w1[0]}-{w1[1]}-1024', f'fig-{w1[2]}', 1024))
-        for rid, k, sp, wide in wide_plates(G, ch15['rules']):
+        for rid, k, sp, wide in wide_plates(G, ch15['rules'], (ch15.get('opener') or {}).get('specimen')):
             items += [(f'wide-{sp}-{w}', f'fig-{sp}', w, 'measure') for w in C['carried']['wide_widths']]
         shots = run_shots(G, items, a.reuse)
     parts = [round_section(G, P, rn, shots), charts_section(G, P, rn, kit_out), changed_section(G, P, kit_out), entry_section(G, shots),

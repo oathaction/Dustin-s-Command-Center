@@ -459,15 +459,17 @@ function crossing_faults(d, at) {
       seen.add(k);
       f.push(`layout: a ${b.dash ? 'dashed ' : ''}${b.kind} in ${b.stroke} runs through "${String(t.words).slice(0, 30)}"${b.seq > t.seq ? ', drawn after the words' : ''}; draw the words after it with K.parts.clear_label, move them clear, or mark a stroke drawn through words on purpose strike: true (AX S2, BC S1)${at}`);
     }
-    // a dot or bar half under the word: its fill reaches into the word's box but does not hold the word's middle
+    // a dot or bar half under the word: its fill reaches into the band its letters stand in (from the cap height to the
+    // baseline, line by line as one band) but does not hold the word's middle
+    const sz = t.size || 15, ly0 = t.y + 0.14 * sz, ly1 = t.y + t.h - 0.14 * sz;
     for (const b of ink) {
       if (!(b.fill && FILL_SKIP.indexOf(b.fill) < 0 && b.a > 0 && !b.plate && b.seq < t.seq)) continue;
-      if (b.x > x1 || b.x + b.w < x0 || b.y > y1 || b.y + b.h < y0) continue;
+      if (b.x > x1 || b.x + b.w < x0 || b.y > ly1 || b.y + b.h < ly0) continue;
       const inside = b.ring ? Math.hypot(cx - b.ring[0], cy - b.ring[1]) < b.ring[2] : b.poly ? null : (cx > b.x && cx < b.x + b.w && cy > b.y && cy < b.y + b.h);
       if (inside !== false) continue;
       let hit;
-      if (b.ring) { const [rx, ry, r] = b.ring, nx = Math.max(x0, Math.min(rx, x1)), ny = Math.max(y0, Math.min(ry, y1)); hit = Math.hypot(nx - rx, ny - ry) < r - 0.5; }
-      else hit = b.x < x1 - 0.5 && b.x + b.w > x0 + 0.5 && b.y < y1 - 0.5 && b.y + b.h > y0 + 0.5;
+      if (b.ring) { const [rx, ry, r] = b.ring, nx = Math.max(x0, Math.min(rx, x1)), ny = Math.max(ly0, Math.min(ry, ly1)); hit = Math.hypot(nx - rx, ny - ry) < r - 0.5; }
+      else hit = b.x < x1 - 0.5 && b.x + b.w > x0 + 0.5 && b.y < ly1 - 0.5 && b.y + b.h > ly0 + 0.5;
       // a shape drawn after it that covers the word (a knockout) hides it
       if (hit && ink.some(s => s.fill && s.fill !== 'none' && s.a > 0 && s.seq > b.seq && s.seq < t.seq && K.covers(s, t))) hit = false;
       if (!hit) continue;

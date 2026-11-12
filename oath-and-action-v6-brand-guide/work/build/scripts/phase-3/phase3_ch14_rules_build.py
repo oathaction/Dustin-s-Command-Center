@@ -1149,12 +1149,16 @@ def rule_14_9(B):
          "something the survey cannot know."],
         [("Interval", "The publisher’s margin of error at its stated confidence, a line through the dot", "oa.chart.color.context.onNewsprint"),
          ("A gap’s margin, two separate places", "The square root of the sum of their squared margins"),
+         # ED-F1 (the data lead): tenure and broadband count households and S57 counts workers, so the share is of units
          ("A gap’s margin, a place inside an area", "The square root of the sum of the two squared margins less twice the place’s "
-                                                    "squared margin times its share of the people the area counts; where the data hold "
-                                                    "no share, the first test, and the note says it treats the two as independent"),
+                                                    "squared margin times its share of the units the area’s figure counts, such as "
+                                                    "people or households; where the data hold no share, the first test, and the note "
+                                                    "says it treats the two as independent"),
          ("Within the margin", "An open dot and the words “within the margin of error”"),
          ("Counts", "No sampling margin; they rank as they stand")],
         ["13.5", "13.1"],
+        # ED-F2 (the data lead, RF-11a): the publisher's own margin first
+        "Take the margin the publisher prints for the figure drawn, and compute one only where it prints none, saying so in the sidecar. "
         "Carry each figure’s margin in its own column of the data; a form draws the interval from it and the note names the confidence.",
         B.plate("s-14-9-correct", "Each state’s line shows its margin of error. Five states sit past the margin from the nation and take a "
                                   "filled dot; the five within it take an open one, and the chart ranks none of them."),
