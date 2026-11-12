@@ -161,6 +161,9 @@ In progress. Order: items no ruling touches first (ST S3, ST S6's S58 note, ST S
 
 ### Requests to the engineer
 
+- **RB-G5, a pivot table's row header reads its column's `words`.** S53's table prints its top row as "100", and the sidecar says it counts everyone 100 and over (AX S5). In `K.table_html` and the lean table, the pivot's row header is `K.fmt(first[row], rc.format)`; let it print `rc.words[String(value)]` where the first column has `words` (S53 would set `{"100": "100 and over"}`), with `data-v` for the read-back as for any printed word. Until then S53's caption says the row for age 100 counts everyone 100 and over.
+- **RB-G6, a key swatch with an edge.** The data lead's RF-2 gives S59's two band swatches a 1 px edge in the context ink, as the bands themselves now take. `K.parts.key` draws a filled swatch with no edge; let an entry take `edge` (`{label, fill: 'mag-1', edge: 'context'}`) and draw the fill with a 1 px inset outline in that ink, as the hatched swatch does. `fan-chart` passes `edge: 'context'` on both band entries now, so the swatches take it as soon as the part reads it.
+
 ### Requests to the data lead
 
 ### Requests to the editor

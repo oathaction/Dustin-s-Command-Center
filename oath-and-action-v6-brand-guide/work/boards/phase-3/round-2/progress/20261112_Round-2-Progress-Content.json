@@ -140,7 +140,6 @@
    "kind_failure": "Failure plate",
    "label_1440": "At a 1440 px window",
    "label_390": "At a 390 px window",
-   "label_1024": "At a 1024 px window",
    "wide_h": "The same plate at a 1024 px window",
    "wide_cap": "At a 1024 px window the plate keeps its {wide_px} px stage.",
    "refs": "DR-244 · D3-200"

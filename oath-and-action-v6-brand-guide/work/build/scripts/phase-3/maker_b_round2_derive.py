@@ -13,6 +13,9 @@ ruling (g) of November 12, 2026 (work/handoffs/phase-3/20261112_Round-2-Data-Lea
 - fred-unemployment-and-job-openings-quarterly: quarterly averages of the two monthly series, first quarter of 2001 to
   third quarter of 2026, with no unemployment average for a quarter that lacks a month's rate (S56; the monthly table of
   310 rows put the plate over its far-over limit, so the chart draws the quarters)
+- fred-unemployment-fourth-quarter: the unemployment rate's fourth-quarter average, the measure the Federal Reserve
+  projects, for 2021 to 2025, with none for 2025, whose October rate was never published (S59's history, the data lead's
+  RF-20 in the round 2 fix pass)
 
 Each county or judge counts once. Quartiles are Python's statistics.quantiles(method="inclusive"), linear
 interpolation between ranked values. Prints every figure a title or note may use. --check writes nothing and fails
@@ -325,6 +328,45 @@ def openings_quarterly():
 
 
 # ---------------------------------------------------------------------------------------------------------------
+# S59: the unemployment rate's fourth-quarter average before the projections (the data lead's RF-20, review fix pass)
+# ---------------------------------------------------------------------------------------------------------------
+def unemployment_fourth_quarter():
+    src = 'fred-unemployment-and-job-openings'
+    rows = {r['month']: r for r in read(src)}
+    out = []
+    for yr in range(2021, 2026):
+        months = ['%d-%02d' % (yr, m) for m in (10, 11, 12)]
+        u = [num(rows[m]['unemployment_rate']) for m in months]
+        miss = [m for m, v in zip(months, u) if v is None]
+        out.append({'year': yr, 'unemployment_rate': round(sum(u) / 3, 4) if not miss else '',
+                    'note': ('no average: no unemployment rate was published for ' + ', '.join(MONTHS[int(m[5:]) - 1] + ' ' + m[:4] for m in miss)) if miss else ''})
+    name = 'fred-unemployment-fourth-quarter'
+    side = base_side(src, name,
+        title_or_table='FRED series UNRATE (Unemployment Rate), from the download of UNRATE and JTSJOL as fredgraph.csv',
+        table_id='UNRATE',
+        observation_period='Fourth-quarter averages, 2021 to 2025',
+        universe_or_base='Unemployed people as a percent of the civilian labor force, 16 and over',
+        unit='percent, the average of October, November and December\'s seasonally adjusted monthly rates, rounded to four decimals',
+        columns={
+            'year': {'type': 'year', 'description': 'calendar year whose fourth quarter is averaged'},
+            'unemployment_rate': {'type': 'number', 'description': 'average of the fourth quarter\'s three monthly rates; empty where a month has none', 'unit': 'percent'},
+            'note': {'type': 'text', 'description': 'why a cell is empty'},
+        },
+        printed_source_line=('Source: U.S. Bureau of Labor Statistics, Current Population Survey, Employment Situation for October 2026 '
+                             '(November 6, 2026), unemployment rate, seasonally adjusted, fourth-quarter averages, 2021 to 2024, United '
+                             'States, as copied by the Federal Reserve Bank of St. Louis (FRED). Retrieved November 11, 2026. '
+                             'Fourth-quarter averages of the monthly rate computed by Oath & Action; no rate was published for October '
+                             '2025, so 2025 has no fourth-quarter average.'),
+        derivation=('For each year from 2021 to 2025, the average of the seasonally adjusted unemployment rate for October, '
+                    'November and December, the fourth-quarter average the Federal Reserve\'s projections use; a year with a '
+                    'month that has no rate takes no average'),
+        notes=['The window is the four years before the projections with a full fourth quarter, 2021 to 2024, and 2025, '
+               'which has none; the data lead\'s RF-20, review fix pass'])
+    write(name, ['year', 'unemployment_rate', 'note'], out, side)
+    print('  S59 history ' + ', '.join('%d %s' % (o['year'], o['unemployment_rate'] if o['unemployment_rate'] != '' else 'none') for o in out))
+
+
+# ---------------------------------------------------------------------------------------------------------------
 # --figures: every figure maker B's round 2 specs print, read from the data
 # ---------------------------------------------------------------------------------------------------------------
 SPECS = os.path.normpath(os.path.join(HERE, '..', '..', 'chart-kit', 'specs'))
@@ -544,6 +586,7 @@ if __name__ == '__main__':
     uninsured()
     child_poverty()
     openings_quarterly()
+    unemployment_fourth_quarter()
     if FAULTS:
         print('\n'.join('FAULT ' + f for f in FAULTS))
         sys.exit(1)

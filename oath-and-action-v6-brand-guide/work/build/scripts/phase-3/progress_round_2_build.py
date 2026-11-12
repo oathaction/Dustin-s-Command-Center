@@ -938,7 +938,7 @@ def ch15_section(G, shots):
                 if w1 and (rid, k) == (w1[0], w1[1]):
                     p = shots.get(f'ch15-{rid}-{k}-1024')
                     if p and p.exists():
-                        rec = compose(f'Ch15-{rid.replace(".", "-")}-{cap(k)}-1024', [(p, S['label_1024'])])
+                        rec = compose(f'Ch15-{rid.replace(".", "-")}-{cap(k)}-1024', [(p, '')])
                         figs += (f'<p class="row-label">{esc(fill(S["wide_h"]))}</p>'
                                  + figure(rec, f'Rule {rid}’s {k} plate at a 1024 px window, on its {w1[3]} px wide stage. {caption_text(r[k])}', esc(fill(S['wide_cap']))))
                     else:

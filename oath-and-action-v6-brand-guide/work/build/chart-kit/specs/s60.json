@@ -22,9 +22,11 @@
   "title": "The atlas puts eight figures first, each checked against its sources on October 15, 2026.",
   "measure_line": "The atlas’s eight headline figures, in its order, each with the kind of figure the atlas calls it and its caption, United States, as of the atlas’s snapshot of October 15, 2026",
   "notes": [
+    "The 87 and 88 percent come from a University of Maryland Program for Public Consultation survey of 2,625 registered voters in May 2023. The bill the House passed, H.R. 7008, limited members’ stock purchases and required photo identification to vote in federal elections; the chart for Rule 14.87 draws the Senate’s vote on it.",
+    "The atlas repeats figure 4’s sentence on the inspectors general under figure 5, where it does not apply, so the table prints it under figure 4 only.",
     "The child poverty rates are as the Census Bureau first published them; it revised its Supplemental Poverty Measure estimates for 2019 to 2024 in August 2026.",
-    "Unite America, which built the 9.4 percent figure, is an advocacy group and defines “effectively decided” itself.",
-    "Each figure has its own source in the atlas, and several describe events that may have moved since the snapshot, such as Alaska’s Ballot Measure 2, on the ballot on November 3, 2026."
+    "Unite America, which built the 9.4 percent figure, is an advocacy group and defines “effectively decided” itself.",
+    "Each figure has its own source in the atlas, and several describe events that may have moved since the snapshot, such as Alaska’s Ballot Measure 2, on the ballot on November 3, 2026."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -49,6 +51,11 @@
         "format": "text"
       },
       {
+        "field": "qualification",
+        "label": "Qualification, in the atlas’s words",
+        "format": "text"
+      },
+      {
         "field": "verified_status",
         "label": "Checked",
         "format": "text"
@@ -60,7 +67,14 @@
   "domain": "all",
   "states": [],
   "typography": {
-    "curl_quotes": true
+    "curl_quotes": true,
+    "nbsp": true,
+    "replace": [
+      [
+        "On September 24, 2025 a federal district court said the President almost undoubtedly violated the Inspector General Act and reinstated no one (Storch v. Hegseth). The latest docket entry listed, a July 20, 2026 minute order, shows no ruling on the merits.",
+        "None of its own in the atlas; see the note"
+      ]
+    ]
   },
   "encode": {
     "figure": "figure",
@@ -78,13 +92,15 @@
       "shared view": "Shared view",
       "advocacy count": "Advocacy count"
     },
-    "columns": 4
+    "columns": 4,
+    "beside": true
   },
   "notes_internal": [
     "Maker A, round 2. Data plan row 76, rule 14.86. Domain all (the eight figures span domains).",
     "Data lead rulings (a), (d), (e) and A4: a Finding with the grade line 'Checked by the atlas, figure by figure'; every figure in the text's ink, V7's kind word over it and its caption under it, read from v7-numbers as stored; no fill, no red.",
-    "Figure 5's stored qualification is figure 4's Inspector General Act sentence (V7.1 list), so the table leaves the qualification column out; notes give figure 6's revision and figure 8's advocacy source from V7's own qualifications.",
+    "Round 2 review fix pass, ST M2, RF-4: the table prints V7's qualification for each figure as stored (a fifth column), through the typography; one exact replace pair prints 'None of its own in the atlas; see the note' in figure 5's cell alone, since V7 stores figure 4's sentence there with a different docket clause; checked by script (fixfigs.py) that figure 5's stored sentence occurs in that one cell and nowhere else in the data, and differs from figure 4's. Note 1 gives figure 7's survey, its date and both provisions of H.R. 7008; note 2 says why figure 5's cell differs. Replaces D3-742 and D3-687.",
     "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): eight figures, each checked October 15, 2026; figure 6's revision in August 2026; figure 8's advocacy group; Ballot Measure 2 on November 3, 2026.",
-    "typography curls the straight apostrophes stored in V7's captions."
+    "typography curls the straight apostrophes stored in V7's captions.",
+    "Round 2 review fix pass, CD A-S3: the captions are V7's as stored, so the desk drawing sets each figure beside its caption, one to a row (labels.beside), and the longest caption takes four lines at 720 px where the four-up grid took eleven; narrower than a 280 px caption column, the figures run one under another. BC S12: typography.nbsp holds 'November 3, 2026' and '2017 to 2022' together; figures that hold words set in open tracking (the engineer's open option). Entry 14.86 says where captions run long, each figure sits beside its caption."
   ]
 }

@@ -1,0 +1,45 @@
+{
+ "file": "fred-unemployment-fourth-quarter.csv",
+ "kind": "derived",
+ "publisher": "U.S. Bureau of Labor Statistics, Current Population Survey and Job Openings and Labor Turnover Survey, as copied by the Federal Reserve Bank of St. Louis (FRED)",
+ "title_or_table": "FRED series UNRATE (Unemployment Rate), from the download of UNRATE and JTSJOL as fredgraph.csv",
+ "table_id": "UNRATE",
+ "url": [
+  "https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE,JTSJOL",
+  "https://fred.stlouisfed.org/series/UNRATE",
+  "https://fred.stlouisfed.org/series/JTSJOL"
+ ],
+ "observation_period": "Fourth-quarter averages, 2021 to 2025",
+ "geography": "United States",
+ "universe_or_base": "Unemployed people as a percent of the civilian labor force, 16 and over",
+ "unit": "percent, the average of October, November and December's seasonally adjusted monthly rates, rounded to four decimals",
+ "date_retrieved": "2026-11-11",
+ "vintage": "FRED values as of Dustin Cathcart's download on November 11, 2026 (attached to the studio chat at 22:27 UTC); SHA-256 10c1d1ed61e8b494195f087331ad53aa7651ba3ceca05597599a7953c1a58532. BLS revises recent months and seasonal factors, so later downloads can differ. The unemployment rate comes from the Bureau’s Employment Situation for October 2026, released November 6, 2026, and job openings from its Job Openings and Labor Turnover Survey for September 2026, released November 3, 2026",
+ "qualification": "The unemployment rate has no value for October 2025: the cell is blank in FRED's file, matching the month the Current Population Survey collected no data during the lapse in federal funding (the Census Bureau notes the same gap in its CPS/HVS tables). A line chart breaks at that month. Job openings run one month behind the unemployment rate; recent months are preliminary",
+ "columns": {
+  "year": {
+   "type": "year",
+   "description": "calendar year whose fourth quarter is averaged"
+  },
+  "unemployment_rate": {
+   "type": "number",
+   "description": "average of the fourth quarter's three monthly rates; empty where a month has none",
+   "unit": "percent"
+  },
+  "note": {
+   "type": "text",
+   "description": "why a cell is empty"
+  }
+ },
+ "printed_source_line": "Source: U.S. Bureau of Labor Statistics, Current Population Survey, Employment Situation for October 2026 (November 6, 2026), unemployment rate, seasonally adjusted, fourth-quarter averages, 2021 to 2024, United States, as copied by the Federal Reserve Bank of St. Louis (FRED). Retrieved November 11, 2026. Fourth-quarter averages of the monthly rate computed by Oath & Action; no rate was published for October 2025, so 2025 has no fourth-quarter average.",
+ "ledger_row": "P7-013",
+ "domain": "D07",
+ "states": [],
+ "derived_from": [
+  "fred-unemployment-and-job-openings.csv"
+ ],
+ "derivation": "For each year from 2021 to 2025, the average of the seasonally adjusted unemployment rate for October, November and December, the fourth-quarter average the Federal Reserve's projections use; a year with a month that has no rate takes no average",
+ "notes": [
+  "The window is the four years before the projections with a full fourth quarter, 2021 to 2024, and 2025, which has none; the data lead's RF-20, review fix pass"
+ ]
+}
