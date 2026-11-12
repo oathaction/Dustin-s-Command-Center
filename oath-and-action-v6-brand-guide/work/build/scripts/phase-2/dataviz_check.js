@@ -309,18 +309,32 @@ async function kitAudit(page) {
     return out;
   }, { RED, PRUSSIAN });
 }
-// Forced colors (D3-94): with the reader's system colors forced, no drawing text may print in the ink of the shape under it
-async function kitForced(page) {
-  return page.evaluate(() => {
+// Forced colors (D3-94): with the reader's system colors forced, no drawing text may print in the ink of the shape under it.
+// Round 1 fix pass (access M1): the check runs in the light and the dark contrast theme, reads the ground a drawing sits on
+// (its own background, else the nearest one around it, as a host such as the guide's stage keeps it), and fails a text or a
+// data mark (one carrying data-key or data-value) whose ink falls under 3 to 1 against that ground, where the mark has no
+// outline that clears it.
+async function kitForced(page, scheme) {
+  return page.evaluate((scheme) => {
+    const rgb = (s) => { const m = /rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?/.exec(s || ''); return m ? { r: +m[1], g: +m[2], b: +m[3], a: m[4] === undefined ? 1 : +m[4] } : null; };
+    const lin = (v) => { v /= 255; return v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
+    const lum = (c) => 0.2126 * lin(c.r) + 0.7152 * lin(c.g) + 0.0722 * lin(c.b);
+    const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+    const groundOf = (el) => { for (let e = el; e && e.nodeType === 1; e = e.parentElement) { const c = rgb(getComputedStyle(e).backgroundColor); if (c && c.a > 0.5) return c; } return { r: 255, g: 255, b: 255, a: 1 }; };
     const out = [];
-    document.querySelectorAll('figure.oac-fig svg.oac-svg').forEach((svg) => {
-      const id = (svg.closest('figure') || {}).id;
+    // the system ground's own paint: a knockout mark painted only in it (a dumbbell's open dot, whose ring is its own
+    // element) is left out of the mark test
+    const probe = document.createElement('div'); probe.style.cssText = 'background-color: Canvas; position: absolute; width: 1px; height: 1px';
+    document.body.append(probe); const canvas = getComputedStyle(probe).backgroundColor; probe.remove();
+    document.querySelectorAll('figure.oac-fig svg.oac-svg, svg.oac-svg.oac-sketch').forEach((svg) => {
+      const id = (svg.closest('figure') || {}).id || (svg.closest('[data-specimen]') || { getAttribute: () => 'a drawing' }).getAttribute('data-specimen');
+      const g0 = groundOf(svg);
       const shapes = Array.from(svg.querySelectorAll('rect, circle, path, polygon')).filter((e) => !e.closest('defs'));
       svg.querySelectorAll('text').forEach((t) => {
         const b = t.getBBox(), m = t.getCTM(), sm = svg.getCTM();
         if (!m || !sm) return;
         const pt = new DOMPoint(b.x + b.width / 2, b.y + b.height / 2).matrixTransform(m).matrixTransform(sm.inverse());
-        let ground = getComputedStyle(svg.closest('figure') || svg).backgroundColor, under = null;
+        let under = null;
         for (const e of shapes) {
           if (e.compareDocumentPosition(t) & Node.DOCUMENT_POSITION_PRECEDING) break;   // painted after the text
           const cs = getComputedStyle(e);
@@ -332,13 +346,22 @@ async function kitForced(page) {
           if (e.isPointInFill && e.isPointInFill(new DOMPoint(lp.x, lp.y))) { under = cs.fill.indexOf('url') === 0 ? 'pattern' : cs.fill; }
         }
         if (under === 'pattern') return;
-        const ink = getComputedStyle(t).fill;
-        const g = under || ground;
-        if (ink && g && ink === g && !/rgba\(0, 0, 0, 0\)|transparent/.test(g)) out.push(`${id}: forced colors: "${t.textContent.slice(0, 30)}" prints in the ink of its ground (${ink} on ${under ? "a shape" : "the figure"})`);
+        const ink = rgb(getComputedStyle(t).fill);
+        const g = under ? rgb(under) : g0;
+        if (ink && g && ratio(ink, g) < 3) out.push(`${id}: forced colors, ${scheme} theme: "${t.textContent.slice(0, 30)}" prints at ${ratio(ink, g).toFixed(2)} to 1 on ${under ? 'a shape' : 'its ground'}`);
+      });
+      svg.querySelectorAll('[data-key], [data-value]').forEach((m) => {
+        if (!/^(rect|circle|path|polygon|line)$/.test(m.tagName) || m.closest('defs')) return;
+        const cs = getComputedStyle(m);
+        const paints = [cs.fill, cs.stroke].filter((p) => p && p !== 'none' && !(p === cs.stroke && parseFloat(cs.strokeWidth) === 0));
+        if (paints.some((p) => p.indexOf('url') === 0)) return;   // a hatch draws in the system inks on the ground's paint
+        if (paints.length && paints.every((p) => p === canvas)) return;
+        const best = Math.max(0, ...paints.map(rgb).filter(Boolean).filter((c) => c.a > 0.3).map((c) => ratio(c, g0)));
+        if (paints.length && best < 3) out.push(`${id}: forced colors, ${scheme} theme: the mark ${m.getAttribute('data-key') || m.tagName} reads at ${best.toFixed(2)} to 1 on its ground`);
       });
     });
     return out;
-  });
+  }, scheme);
 }
 async function kitMain(target, widths) {
   const browser = await chromium.launch();
@@ -354,9 +377,11 @@ async function kitMain(target, widths) {
     const res = await kitAudit(page);
     report.figures = Math.max(report.figures, res.length);
     res.forEach((r) => r.f.forEach((x) => report.failures.push(`${width}: ${r.id}: ${x}`)));
-    await page.emulateMedia({ forcedColors: 'active' });
-    (await kitForced(page)).forEach((x) => report.failures.push(`${width}: ${x}`));
-    await page.emulateMedia({ forcedColors: 'none' });
+    for (const scheme of ['light', 'dark']) {
+      await page.emulateMedia({ forcedColors: 'active', colorScheme: scheme });
+      (await kitForced(page, scheme)).forEach((x) => report.failures.push(`${width}: ${x}`));
+    }
+    await page.emulateMedia({ forcedColors: 'none', colorScheme: 'light' });
     await ctx.close();
   }
   await browser.close();
@@ -377,6 +402,10 @@ async function kitSelfTest() {
     ['an em dash', fig('dash', T(10, 30), ' One \u2014 two.'), 'em dash'],
     ['the retired disclosure', fig('disc', T(10, 30), ' The editor works with the Yes on 3 campaign.'), 'disclosure'],
     ['a drawing named by an element not on the page', fig('noname', T(10, 30), '', 'aria-labelledby="not-here"'), 'not on the page'],
+    // access M1 (round 1 fix pass): a host that keeps its light ground around a drawing in system inks; the dark theme's
+    // CanvasText then falls on Newsprint. The same drawing on its own Canvas ground passes.
+    ['a mark in system ink on a kept light ground, dark theme', `<div style="background:#DCD9D2;forced-color-adjust:none">${fig('fcdark', '<rect data-key="a" x="10" y="50" width="40" height="20" style="fill:CanvasText"/>')}</div><style>#fcdark svg{forced-color-adjust:none}</style>`, 'dark theme'],
+    ['the same drawing on its Canvas ground', `<div style="background:#DCD9D2;forced-color-adjust:none">${fig('fccanvas', '<rect data-key="a" x="10" y="50" width="40" height="20" style="fill:CanvasText"/>')}</div><style>#fccanvas svg{forced-color-adjust:none;background-color:Canvas}</style>`, null],
   ];
   const tmp = path.join(require('os').tmpdir(), `oa-kit-self-test-${process.pid}.html`);
   fs.writeFileSync(tmp, `<!doctype html><html><head><meta charset="utf-8"></head><body style="margin:20px">${cases.map((c) => c[1]).join('')}</body></html>`);
