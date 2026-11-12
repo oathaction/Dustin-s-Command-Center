@@ -73,7 +73,7 @@ async function probes(page, sel) {
     }
     await setMode(page, 'normal');
   }
-  const headH = await page.evaluate(() => { window.scrollTo(0, 0); return Math.round(document.querySelector('main').getBoundingClientRect().top + window.scrollY); });
+  const headH = await page.evaluate(() => { window.scrollTo(0, 0); return Math.round(document.querySelector('main section').getBoundingClientRect().top + window.scrollY); });
   await page.screenshot({ path: path.join(HERE, `${PREFIX}-Opening-1440.png`), fullPage: true, clip: { x: 0, y: 0, width: 1440, height: headH } });
   log.captures.push({ file: `${PREFIX}-Opening-1440.png`, section: 'opening', mode: 'normal', width: 1440, deviceScaleFactor: 1, probes: [] });
   await ctx.close();

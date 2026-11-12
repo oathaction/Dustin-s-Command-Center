@@ -236,6 +236,7 @@
     "oa.chart.grade.conceptual.rail",
     "oa.chart.grade.minRun",
     "oa.chart.grade.recordSquare",
+    "oa.chart.grade.leadIn",
     "oa.color.graphic.essential.onNewsprint"
    ],
    "why": {
@@ -283,8 +284,13 @@
      "token": "oa.chart.grade.conceptual.rail"
     },
     {
+     "label": "Lead-in under delay ticks",
+     "value": "A patterned line that carries delay ticks runs solid for its first 28 px from the tail, at every width: the third tick ends at 23 px, then 5 px of clear line. The pattern then leaves its own gap and starts on ink. Solid lines and lines without ticks take none",
+     "token": "oa.chart.grade.leadIn"
+    },
+    {
      "label": "Shortest run",
-     "value": "20 line widths, 40 px on a 2 px line, key samples included; a shorter step prints its grade in words beside it",
+     "value": "20 line widths, 40 px on a 2 px line, key samples included, counted after any lead-in; a shorter step prints its grade in words beside it",
      "token": "oa.chart.grade.minRun"
     },
     {
@@ -350,7 +356,7 @@
     },
     {
      "label": "Delay",
-     "value": "One, two or three ticks for under 2 years, 2 to 10 years and over 10 years, with the words"
+     "value": "One, two or three ticks for under 2 years, 2 to 10 years and over 10 years, with the words; on a patterned line the ticks sit on its solid lead-in (Rule 13.4)"
     },
     {
      "label": "Where a reform acts",

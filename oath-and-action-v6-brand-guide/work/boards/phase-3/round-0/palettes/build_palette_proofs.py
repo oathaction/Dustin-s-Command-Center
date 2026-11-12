@@ -197,6 +197,11 @@ def atlas_line_code():
     assert off and rail and clear, 'wire_marks changed shape; read it again by hand'
     rail_w, off_k = float(rail.group(1)), float(off.group(1))
     key_call = re.search(r'grade_glyph\(g, (\d+)\)', ast.get_source_segment(src, fn['evidence_key']))
+    tk = ast.get_source_segment(src, fn['tick_marks'])
+    tick = re.search(r'ux \* \((\d+) \+ i \* (\d+)\)', tk)
+    tick_half = re.search(r'half = w / 2 \+ (\d+)', tk)
+    tick_css = re.search(r'\.wire \.tk\{[^}]*stroke-width:(\d+)px', src)
+    assert tick and tick_half and tick_css, 'tick_marks changed shape; read it again by hand'
     common = ast.parse(ATLAS_COMMON.read_text())
     grades = next(ast.literal_eval(n.value) for n in common.body if isinstance(n, ast.Assign)
                   and getattr(n.targets[0], 'id', '') == 'GRADES')
@@ -211,6 +216,9 @@ def atlas_line_code():
         'hollow_rail_px': rail_w, 'hollow_rail_offset': f'w / 2 + {off_k:g}',
         'hollow_inner_gap': f'one line width plus {2 * off_k - rail_w:g} px',
         'dotted_head_clearance_widths': float(clear.group(1)),
+        'ticks': {'first_px_from_tail': int(tick.group(1)), 'apart_px': int(tick.group(2)),
+                  'stroke_px': int(tick_css.group(1)), 'length': f'w + {2 * int(tick_half.group(1))} px',
+                  'tick_marks_line': fn['tick_marks'].lineno, 'draws_lead_in': False},
         'key_glyph_px_at_2px': {'grade_glyph default': fn['grade_glyph'].args.defaults[0].value,
                                 'evidence_key': int(key_call.group(1)) if key_call else None},
         'grades': grades,
@@ -234,6 +242,12 @@ GRADES = [  # (key, V7 value, word, gloss, texture, pattern per 1 px of line wid
     ('conceptual', None, 'Conceptual step', 'no complete numbered chain, as in Loops B2, B3 and R9', 'hollow', None, 'butt'),
 ]
 MIN_RUN = 20            # line widths; set here, since the atlas build defines none (see the proposal's line_code_source)
+# Fix pass 2 (brand S1): a patterned line that carries delay ticks runs solid from its tail through the tick zone. The build
+# draws none, so it is set here once: three ticks end at 12 + 2 x 5 + 1 px, and 5 px of clear line, the ticks' own spacing,
+# brings the lead-in to 28 px. One length for every grade, width and tick count, so a builder never has to count ticks.
+TK_FIRST, TK_STEP, TK_STROKE = ALC['ticks']['first_px_from_tail'], ALC['ticks']['apart_px'], ALC['ticks']['stroke_px']
+LEAD_IN = TK_FIRST + 2 * TK_STEP + TK_STROKE // 2 + TK_STEP
+assert LEAD_IN == 28
 RECORD_SQUARE = 7       # px; set here from the Phase 2 atlas design frame memo, since the atlas build draws none
 V7_RENDERER = {'plausible': '9 4', 'contested': '9 3 2 3', 'hypothesis': '2 4'}
 LINE_WIDTHS = ALC['line_widths']
@@ -600,6 +614,14 @@ def build_proposal():
                  'source': src_ref,
                  'job': 'A dotted line stops 1.5 line widths short of its arrowhead, so its last dot stays clear of the head.',
                  'description': 'Gap between a dotted line\'s last dot and its arrowhead, in line widths. Proposed until board 1.'})
+    toks.append({'path': 'oa.chart.grade.leadIn', 'css': css_name('oa.chart.grade.leadIn'), 'tier': 'semantic',
+                 'type': 'dimension', 'value': f'{LEAD_IN}px', 'need': 'N-12',
+                 'source': 'set by the data lead in fix pass 2: the atlas build draws no lead-in (brand S1)',
+                 'job': (f'A patterned line that carries delay ticks runs solid for its first {LEAD_IN} px, at every width and '
+                         'for one, two or three ticks, then leaves its pattern\'s own gap and starts the fitted pattern on ink.'),
+                 'description': (f'Solid lead-in of a patterned connection under its delay ticks, {LEAD_IN} px from the tail: the '
+                                 'third tick ends at 23 px and 5 px of clear line follow. Lines with no ticks, such as key '
+                                 'samples, take none. Proposed until board 1.')})
     toks.append({'path': 'oa.chart.grade.recordSquare', 'css': css_name('oa.chart.grade.recordSquare'), 'tier': 'semantic',
                  'type': 'dimension', 'value': f'{RECORD_SQUARE}px', 'need': 'N-12',
                  'source': 'set by the data lead: the atlas build draws no record square (D3-84 log)',
@@ -609,7 +631,7 @@ def build_proposal():
                  'type': 'number', 'value': MIN_RUN, 'unit': 'line widths', 'need': 'N-12',
                  'source': 'set by the data lead: the atlas build defines no shortest line (D3-84 log)',
                  'at_widths': {f'{w} px': f'{MIN_RUN * w} px' for w in LINE_WIDTHS},
-                 'job': (f'The shortest run that may carry a texture, key samples included: {MIN_RUN} line widths, '
+                 'job': (f'The shortest run that may carry a texture, key samples included, counted after any lead-in: {MIN_RUN} line widths, '
                          f'{MIN_RUN * 2} px on a 2 px line, which holds two full dash-dot periods and the closing dash. '
                          'A shorter step prints its grade in words beside it.'),
                  'description': 'Shortest textured run, key samples included, in line widths. Proposed until board 1.'})
@@ -706,6 +728,7 @@ def build_proposal():
                                 f'line, at every width, so the ground between them is {ALC["hollow_inner_gap"]} '
                                 f'(wire_marks(), line {ALC["wire_marks_line"]})'),
                 'dotted_head_clearance_line_widths': ALC['dotted_head_clearance_widths'],
+                'delay_ticks': ALC['ticks'],
                 'grade_words_and_build_glosses': {k: list(v[:2]) for k, v in ALC['grades'].items()},
                 'key_glyph_lengths_px_on_a_2px_line': ALC['key_glyph_px_at_2px'],
             },
@@ -716,6 +739,14 @@ def build_proposal():
                          'dash-dot periods (8 widths each) and the closing dash at every width, which is what Rule 13.4\'s "long '
                          'enough to show its pattern twice" asks: 40 px at 2 px, 60 px at 3 px, 120 px at 6 px. It replaces '
                          'both the 28 widths of the Phase 2 frame memo, which the build never coded, and Rule 13.4\'s 48 px')},
+                {'value': f'oa.chart.grade.leadIn = {LEAD_IN} px (fix pass 2)',
+                 'why': (f'The build places delay ticks {TK_FIRST} px from the tail and {TK_STEP} px apart, {TK_STROKE} px wide '
+                         f'(tick_marks(), line {ALC["ticks"]["tick_marks_line"]}), but starts every pattern at the tail, so a '
+                         'tick can land on a gap and read as a letter (brand S1). A solid lead-in through the tick zone fixes it '
+                         f'for every tick count: the third tick ends at {TK_FIRST + 2 * TK_STEP + TK_STROKE // 2} px, and '
+                         f'{TK_STEP} px of clear line, the ticks\' own spacing, bring it to {LEAD_IN} px. One length for '
+                         'every grade, width and tick count. The pattern then leaves its own gap and starts on ink, and '
+                         'the shortest run counts after the lead-in')},
                 {'value': f'oa.chart.grade.recordSquare = {RECORD_SQUARE} px',
                  'why': ('The build draws no record square. Gate 1 M1 added it; the Phase 2 atlas design frame memo and Rule 13.4 '
                          'both set 7 px, so the value stays, set inline before the word Documented only')},
@@ -727,6 +758,7 @@ def build_proposal():
                 'oa.chart.grade.conceptual.railSelected (2 px on the 6 px route) is withdrawn: the build draws 1 px rails at every width',
                 f'oa.chart.grade.minRun goes from 28 to {MIN_RUN} line widths',
                 'oa.chart.grade.headClearance is new: 1.5 line widths, read from wire_marks()',
+                f'oa.chart.grade.leadIn is new in fix pass 2: {LEAD_IN} px of solid line under the delay ticks',
                 'The hypothesis gloss reads "not yet tested"',
                 'The source of every grade token is the atlas build, in place of "Atlas V7 renderer"',
             ],
@@ -855,6 +887,7 @@ a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
 .ph h3{margin:0;font:800 22px/26px "Inter Tight",sans-serif;letter-spacing:-.02em}
 .ph p{margin:0;font:400 15px/22px Inter,sans-serif;color:var(--sec)}
 .scroll{overflow-x:auto;position:relative}
+.scroll:focus-visible{outline:3px solid var(--ink,#121212);outline-offset:2px}
 table caption.vh,.lc caption.vh{left:0;top:0}
 .rg{display:grid;grid-template-columns:112px repeat(var(--n),152px) minmax(150px,1fr);gap:8px 10px;align-items:start;min-width:max-content}
 .rh{font:600 13px/18px Inter,sans-serif;color:var(--ink);padding-top:2px}
@@ -1398,9 +1431,22 @@ def fitted(pat, w, length):
     return [x * k for x in arr]
 
 
-def grade_line(key, w, length, color, x=0, y=0, case=None):
+def grade_line(key, w, length, color, x=0, y=0, case=None, ticks=0, lead=False):
+    """One graded line from x to x + length. With ticks, the delay ticks sit 12 px from the tail, 5 px apart, as the
+    atlas build places them; with lead, a patterned line runs solid for LEAD_IN px, leaves its pattern's own gap, and
+    starts the fitted pattern on ink."""
     g = next(r for r in GRADES if r[0] == key)
     pat, cap = g[5], g[6]
+    pre = ''
+    if ticks:
+        half = w / 2 + 4
+        pre = ''.join(f'<line x1="{f2(x + TK_FIRST + i * TK_STEP)}" y1="{f2(y - half)}" x2="{f2(x + TK_FIRST + i * TK_STEP)}" '
+                      f'y2="{f2(y + half)}" style="stroke:{color};stroke-width:{TK_STROKE}"/>' for i in range(ticks))
+    if lead and pat is not None:
+        pre = (f'<line x1="{f2(x)}" y1="{f2(y)}" x2="{f2(x + LEAD_IN)}" y2="{f2(y)}" style="stroke:{color};stroke-width:{w}"/>'
+               + pre)
+        gap = pat[1] * w
+        x, length = x + LEAD_IN + gap - (w / 2 if cap == 'round' else 0), length - LEAD_IN - gap + (w / 2 if cap == 'round' else 0)
     if key == 'conceptual':
         rail = ALC['hollow_rail_px']
         off = w / 2 + rail / 2
@@ -1416,7 +1462,7 @@ def grade_line(key, w, length, color, x=0, y=0, case=None):
                 f'stroke-width:{w + 2};stroke-linecap:{cap}{dash}"/>')
     out += (f'<line x1="{f2(x)}" y1="{f2(y)}" x2="{f2(x + length)}" y2="{f2(y)}" style="stroke:{color};'
             f'stroke-width:{w};stroke-linecap:{cap}{dash}"/>')
-    return out
+    return out + pre
 
 
 LC_VARIANTS = [
@@ -1713,6 +1759,25 @@ def checks(M):
     return res
 
 
+def lead_in_plate():
+    """Brand S1: delay ticks on a patterned line, as the build draws them and with the lead-in, at twice size."""
+    rows = []
+    for key in ('plausible', 'contested', 'hypothesis'):
+        g = next(r for r in GRADES if r[0] == key)
+        cells = []
+        for lead in (False, True):
+            body = grade_line(key, 2, 140, 'var(--oa-color-graphic-essential-on-newsprint)', 0, 10, ticks=3, lead=lead)
+            cells.append(f'<td class="cell g-newsprint" style="background:var(--gr)"><svg width="280" height="40" '
+                         f'viewBox="0 0 140 20" aria-hidden="true" focusable="false" style="display:block">{body}</svg></td>')
+        rows.append(f'<tr><th scope="row"><span class="gw">{e(g[2])}</span><span class="gg">three ticks, over 10 years</span></th>{"".join(cells)}</tr>')
+    return ('<div class="plate g-newsprint" id="lead-in"><div class="ph"><h3>Delay ticks on a patterned line, at twice size</h3>'
+            f'<p>Left, as the atlas build draws it: a tick can land in a gap. Right, with the {LEAD_IN} px solid lead-in, the '
+            'ticks sit on the line and the pattern starts after them.</p></div>'
+            '<div class="scroll" data-label="Delay ticks with and without the lead-in"><table class="lc"><caption class="vh">Delay ticks with and without the lead-in</caption>'
+            '<thead><tr><th scope="col">Grade</th><th scope="col">As the build draws it</th><th scope="col">With the lead-in</th></tr></thead>'
+            f'<tbody>{"".join(rows)}</tbody></table></div></div>')
+
+
 def line_code_values():
     """One table of every line code value, with where it comes from (D3-84)."""
     src = f'Atlas build, <code>pattern()</code>, line {ALC["pattern_line"]}'
@@ -1730,7 +1795,11 @@ def line_code_values():
         ('Fitting', 'stretched so each line starts and ends on ink', 'per run', f'Atlas build, <code>fitted()</code>, line {ALC["fitted_line"]}'),
         ('Dotted line before an arrowhead', f'stops {f2(ALC["dotted_head_clearance_widths"])} line widths short', '3 px',
          f'Atlas build, <code>wire_marks()</code>, line {ALC["wire_marks_line"]}'),
-        ('Shortest textured run', f'{MIN_RUN} line widths, key samples included', f'{MIN_RUN * 2} px',
+        ('Delay ticks', f'first {TK_FIRST} px from the tail, {TK_STEP} px apart, {TK_STROKE} px wide', f'{TK_FIRST}, {TK_FIRST + TK_STEP} and {TK_FIRST + 2 * TK_STEP} px',
+         f'Atlas build, <code>tick_marks()</code>, line {ALC["ticks"]["tick_marks_line"]}'),
+        ('Solid lead-in under the ticks', f'{LEAD_IN} px from the tail on a patterned line with ticks; then the pattern\'s own gap', f'{LEAD_IN} px',
+         'Set here: the build draws none; the third tick ends at 23 px, then 5 px clear'),
+        ('Shortest textured run', f'{MIN_RUN} line widths after any lead-in, key samples included', f'{MIN_RUN * 2} px',
          'Set here: the build defines none; two full dash-dot periods and the closing dash'),
         ('Record square', f'{RECORD_SQUARE} px, filled, inline before the word Documented', f'{RECORD_SQUARE} px',
          'Set here: the build draws none; Gate 1, M1, at the frame memo\'s size'),
@@ -1766,7 +1835,8 @@ def measure_table(M, pids):
                             f'<td class="n">{r["label_on_fill"]:.2f}</td><td class="n">{r["oklab_L"]:.3f}</td>'
                             f'<td>{sw(r["luminance_gray"])}</td><td>{sw(r["sim_protanopia"])}</td><td>{sw(r["sim_deuteranopia"])}</td>'
                             f'<td>{sw(r["sim_tritanopia"])}</td></tr>')
-    return (f'<details class="mt"><summary>Every measured value in this section</summary><div class="scroll">'
+    return (f'<details class="mt"><summary>Every measured value in this section</summary>'
+            f'<div class="scroll" data-label="{e("Every measured value: " + ", ".join(PALETTES[p_]["name"] for p_ in pids))}">'
             f'<table class="m"><caption class="vh">Measured values</caption><thead>{head}</thead><tbody>{"".join(rows)}</tbody></table></div></details>')
 
 
@@ -1799,7 +1869,7 @@ def build_page(M, CK):
     n_roles = sum(1 for tk in PROPOSAL_DATA['tokens'] if tk['tier'] == 'semantic' and tk['type'] == 'color')
 
     top = (f'<header class="mast"><div class="wrap mrow"><span class="wm">{wm}</span>'
-           '<p class="run">Phase 3 · Round 0 · Palette proofs</p></div></header>'
+           '<p class="run">Phase 3 · Round 0 · Palette proofs</p></div></header><main>'
            '<div class="wrap"><div class="top"><div><p class="eyebrow">Board 1 proof sheet · November 11, 2026</p>'
            '<h1 class="display">Data palettes, measured</h1><div class="deck">'
            '<p>Every data palette our charts use, drawn on each ground it may sit on, with its contrast, its grayscale and '
@@ -1942,7 +2012,7 @@ def build_page(M, CK):
         'and 4 for hypothesis; on a 2 px line the build draws 8 and 4, then 8, 3, 2 and 3, then round dots 5 px apart.</p>'
         f'<p>No coded line drops under 2 px. A run shorter than {MIN_RUN} widths, key samples included, prints its grade in '
         f'words beside it: {MIN_RUN * 2} px on a 2 px line.</p>',
-        line_code_values() +
+        line_code_values() + lead_in_plate() +
         '<div class="plate g-newsprint"><div class="ph"><h3>At true size</h3><p>Each grade at 2, 3 and 6 px, in color and in black, 168 px long.</p></div>'
         + line_code_table(1, caption='The grade line code at true size, in five treatments') +
         '<p class="pn">On a 2 px dotted line the Charcoal case swallows most of the red, so the dots read dark. The atlas '
@@ -1984,22 +2054,56 @@ def build_page(M, CK):
             'Oliveira and Fernandes (2009), severity 1.0, in linear RGB.</p></div></footer>')
     script = ('<script>document.querySelectorAll(\'input[name="sim"]\').forEach(function(r){r.addEventListener("change",'
               'function(){if(r.checked){if(r.value==="normal"){document.documentElement.removeAttribute("data-sim")}'
-              'else{document.documentElement.setAttribute("data-sim",r.value)}}})});</script>')
+              'else{document.documentElement.setAttribute("data-sim",r.value)}}})});'
+              # a frame is a tab stop and a named region only while it scrolls (access review S10)
+              '(function(){var fs=[].slice.call(document.querySelectorAll(".scroll"));fs.forEach(function(f){'
+              'f.dataset.name=f.getAttribute("aria-label")});function fit(){fs.forEach(function(f){'
+              'if(f.scrollWidth>f.clientWidth+1){f.setAttribute("tabindex","0");f.setAttribute("role","region");'
+              'f.setAttribute("aria-label",f.dataset.name)}else{f.removeAttribute("tabindex");f.removeAttribute("role");'
+              'f.removeAttribute("aria-label")}})}fit();window.addEventListener("resize",fit);[].forEach.call(document.querySelectorAll("details"),function(d){'
+              'd.addEventListener("toggle",fit)})})();</script>')
     head = ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">'
             '<title>Data Palettes, Measured</title>'
             '<meta name="description" content="Phase 3 round 0 palette proofs for the Oath &amp; Action brand guide: every data palette on each ground, with contrast, grayscale and color-vision simulations, the grade line code and the red-on-red specimen.">'
             '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
             '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Inter+Tight:wght@800&display=swap" rel="stylesheet">'
             f'<style>{token_css()}\n{ground_vars()}\n{PAGE_CSS}</style></head><body>')
-    page = (head + SIM_FILTERS + top + '<main class="wrap">' + s_seq + s_div + s_cat + s_past + s_mag + s_lc + s_red + s_pr
-            + '</main>' + foot + script + '</body></html>')
+    page = (head + SIM_FILTERS + top + '<div class="wrap">' + s_seq + s_div + s_cat + s_past + s_mag + s_lc + s_red + s_pr
+            + '</div></main>' + foot + script + '</body></html>')
     return page
+
+
+H2_RE = re.compile(r'<h2[^>]*>(.*?)</h2>', re.S)
+HEAD_RE = re.compile(r'<(?:h2|h3)[^>]*>(.*?)</(?:h2|h3)>|<p class="(?:ft|vlab[^"]*)"[^>]*>(.*?)</p>', re.S)
+
+
+def focusable_frames(page):
+    """Access review S10: every sideways scroll frame is a named region a keyboard can reach. Each frame takes
+    tabindex="0", role="region" and a name from the nearest heading before it; the page script removes all three from a
+    frame that does not scroll at the reader's width, so it adds no empty tab stop."""
+    out, last, n = [], 0, 0
+    for m in re.finditer(r'<div class="scroll"(?: data-label="([^"]*)")?>', page):
+        label = m.group(1)
+        if not label:
+            heads = list(HEAD_RE.finditer(page, 0, m.start()))
+            raw = (heads[-1].group(1) or heads[-1].group(2)) if heads else 'Figure'
+            label = html.unescape(re.sub(r'<[^>]+>', '', raw)).strip()
+            h2 = list(H2_RE.finditer(page, 0, m.start()))
+            sec = html.unescape(re.sub(r'<[^>]+>', '', h2[-1].group(1))).strip() if h2 else ''
+            if sec and sec != label:
+                label = f'{sec}: {label}'
+        n += 1
+        out.append(page[last:m.start()])
+        out.append(f'<div class="scroll" tabindex="0" role="region" aria-label="{e(label + ", scrolls sideways")}">')
+        last = m.end()
+    out.append(page[last:])
+    return ''.join(out), n
 
 
 def main():
     M = all_measures()
     CK = checks(M)
-    page = build_page(M, CK)
+    page, n_frames = focusable_frames(build_page(M, CK))
     assert '—' not in page and '‑' not in page, 'em dash or U+2011 in the page'
     used = set(re.findall(r'var\((--oa-[a-z0-9-]+)\)', page))
     defined = set(re.findall(r'(--oa-[a-z0-9-]+):', page))
@@ -2044,7 +2148,7 @@ def main():
     MEASURES.write_text(json.dumps(measures, indent=1, ensure_ascii=False) + '\n')
     fails = [c for c in CK if not c['passes']]
     print(f'wrote {SHEET.relative_to(ROOT)} ({len(page):,} bytes), {MEASURES.relative_to(ROOT)}, {PROPOSAL.relative_to(ROOT)}')
-    print(f'{len(CK) - len(fails)} of {len(CK)} checks pass')
+    print(f'{len(CK) - len(fails)} of {len(CK)} checks pass; {n_frames} scroll frames named and focusable')
     for c in fails:
         print('FAIL', c)
 

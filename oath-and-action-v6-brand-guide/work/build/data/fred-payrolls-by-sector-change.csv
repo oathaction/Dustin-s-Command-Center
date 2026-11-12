@@ -1,1027 +1,1027 @@
 series_id,sector,month,employees_thousands,pct_change_since_2022_01,change_since_2022_01_thousands,status
 PAYEMS,Total nonfarm,2022-01,150006.0,0.0,0.0,final
-PAYEMS,Total nonfarm,2022-02,150825.0,0.55,819.0,final
-PAYEMS,Total nonfarm,2022-03,151315.0,0.87,1309.0,final
-PAYEMS,Total nonfarm,2022-04,151623.0,1.08,1617.0,final
-PAYEMS,Total nonfarm,2022-05,151924.0,1.28,1918.0,final
-PAYEMS,Total nonfarm,2022-06,152358.0,1.57,2352.0,final
-PAYEMS,Total nonfarm,2022-07,153072.0,2.04,3066.0,final
-PAYEMS,Total nonfarm,2022-08,153362.0,2.24,3356.0,final
-PAYEMS,Total nonfarm,2022-09,153582.0,2.38,3576.0,final
-PAYEMS,Total nonfarm,2022-10,153939.0,2.62,3933.0,final
-PAYEMS,Total nonfarm,2022-11,154242.0,2.82,4236.0,final
-PAYEMS,Total nonfarm,2022-12,154342.0,2.89,4336.0,final
-PAYEMS,Total nonfarm,2023-01,154776.0,3.18,4770.0,final
-PAYEMS,Total nonfarm,2023-02,155066.0,3.37,5060.0,final
-PAYEMS,Total nonfarm,2023-03,155134.0,3.42,5128.0,final
-PAYEMS,Total nonfarm,2023-04,155375.0,3.58,5369.0,final
-PAYEMS,Total nonfarm,2023-05,155655.0,3.77,5649.0,final
-PAYEMS,Total nonfarm,2023-06,155880.0,3.92,5874.0,final
-PAYEMS,Total nonfarm,2023-07,156043.0,4.02,6037.0,final
-PAYEMS,Total nonfarm,2023-08,156261.0,4.17,6255.0,final
-PAYEMS,Total nonfarm,2023-09,156417.0,4.27,6411.0,final
-PAYEMS,Total nonfarm,2023-10,156576.0,4.38,6570.0,final
-PAYEMS,Total nonfarm,2023-11,156703.0,4.46,6697.0,final
-PAYEMS,Total nonfarm,2023-12,156857.0,4.57,6851.0,final
-PAYEMS,Total nonfarm,2024-01,157032.0,4.68,7026.0,final
-PAYEMS,Total nonfarm,2024-02,157238.0,4.82,7232.0,final
-PAYEMS,Total nonfarm,2024-03,157466.0,4.97,7460.0,final
-PAYEMS,Total nonfarm,2024-04,157530.0,5.02,7524.0,final
-PAYEMS,Total nonfarm,2024-05,157608.0,5.07,7602.0,final
-PAYEMS,Total nonfarm,2024-06,157695.0,5.13,7689.0,final
-PAYEMS,Total nonfarm,2024-07,157748.0,5.16,7742.0,final
-PAYEMS,Total nonfarm,2024-08,157757.0,5.17,7751.0,final
-PAYEMS,Total nonfarm,2024-09,157912.0,5.27,7906.0,final
-PAYEMS,Total nonfarm,2024-10,157945.0,5.29,7939.0,final
-PAYEMS,Total nonfarm,2024-11,158079.0,5.38,8073.0,final
-PAYEMS,Total nonfarm,2024-12,158316.0,5.54,8310.0,final
-PAYEMS,Total nonfarm,2025-01,158268.0,5.51,8262.0,final
-PAYEMS,Total nonfarm,2025-02,158310.0,5.54,8304.0,final
-PAYEMS,Total nonfarm,2025-03,158377.0,5.58,8371.0,final
-PAYEMS,Total nonfarm,2025-04,158485.0,5.65,8479.0,final
-PAYEMS,Total nonfarm,2025-05,158498.0,5.66,8492.0,final
-PAYEMS,Total nonfarm,2025-06,158478.0,5.65,8472.0,final
-PAYEMS,Total nonfarm,2025-07,158542.0,5.69,8536.0,final
-PAYEMS,Total nonfarm,2025-08,158472.0,5.64,8466.0,final
-PAYEMS,Total nonfarm,2025-09,158548.0,5.69,8542.0,final
-PAYEMS,Total nonfarm,2025-10,158408.0,5.6,8402.0,final
-PAYEMS,Total nonfarm,2025-11,158449.0,5.63,8443.0,final
-PAYEMS,Total nonfarm,2025-12,158432.0,5.62,8426.0,final
-PAYEMS,Total nonfarm,2026-01,158592.0,5.72,8586.0,final
-PAYEMS,Total nonfarm,2026-02,158436.0,5.62,8430.0,final
-PAYEMS,Total nonfarm,2026-03,158650.0,5.76,8644.0,final
-PAYEMS,Total nonfarm,2026-04,158798.0,5.86,8792.0,final
-PAYEMS,Total nonfarm,2026-05,158861.0,5.9,8855.0,final
-PAYEMS,Total nonfarm,2026-06,158892.0,5.92,8886.0,final
-PAYEMS,Total nonfarm,2026-07,158882.0,5.92,8876.0,final
-PAYEMS,Total nonfarm,2026-08,159015.0,6.01,9009.0,preliminary
-PAYEMS,Total nonfarm,2026-09,159044.0,6.03,9038.0,preliminary
+PAYEMS,Total nonfarm,2022-02,150825.0,0.545978,819.0,final
+PAYEMS,Total nonfarm,2022-03,151315.0,0.872632,1309.0,final
+PAYEMS,Total nonfarm,2022-04,151623.0,1.077957,1617.0,final
+PAYEMS,Total nonfarm,2022-05,151924.0,1.278616,1918.0,final
+PAYEMS,Total nonfarm,2022-06,152358.0,1.567937,2352.0,final
+PAYEMS,Total nonfarm,2022-07,153072.0,2.043918,3066.0,final
+PAYEMS,Total nonfarm,2022-08,153362.0,2.237244,3356.0,final
+PAYEMS,Total nonfarm,2022-09,153582.0,2.383905,3576.0,final
+PAYEMS,Total nonfarm,2022-10,153939.0,2.621895,3933.0,final
+PAYEMS,Total nonfarm,2022-11,154242.0,2.823887,4236.0,final
+PAYEMS,Total nonfarm,2022-12,154342.0,2.890551,4336.0,final
+PAYEMS,Total nonfarm,2023-01,154776.0,3.179873,4770.0,final
+PAYEMS,Total nonfarm,2023-02,155066.0,3.373198,5060.0,final
+PAYEMS,Total nonfarm,2023-03,155134.0,3.41853,5128.0,final
+PAYEMS,Total nonfarm,2023-04,155375.0,3.57919,5369.0,final
+PAYEMS,Total nonfarm,2023-05,155655.0,3.765849,5649.0,final
+PAYEMS,Total nonfarm,2023-06,155880.0,3.915843,5874.0,final
+PAYEMS,Total nonfarm,2023-07,156043.0,4.024506,6037.0,final
+PAYEMS,Total nonfarm,2023-08,156261.0,4.169833,6255.0,final
+PAYEMS,Total nonfarm,2023-09,156417.0,4.273829,6411.0,final
+PAYEMS,Total nonfarm,2023-10,156576.0,4.379825,6570.0,final
+PAYEMS,Total nonfarm,2023-11,156703.0,4.464488,6697.0,final
+PAYEMS,Total nonfarm,2023-12,156857.0,4.567151,6851.0,final
+PAYEMS,Total nonfarm,2024-01,157032.0,4.683813,7026.0,final
+PAYEMS,Total nonfarm,2024-02,157238.0,4.82114,7232.0,final
+PAYEMS,Total nonfarm,2024-03,157466.0,4.973134,7460.0,final
+PAYEMS,Total nonfarm,2024-04,157530.0,5.015799,7524.0,final
+PAYEMS,Total nonfarm,2024-05,157608.0,5.067797,7602.0,final
+PAYEMS,Total nonfarm,2024-06,157695.0,5.125795,7689.0,final
+PAYEMS,Total nonfarm,2024-07,157748.0,5.161127,7742.0,final
+PAYEMS,Total nonfarm,2024-08,157757.0,5.167127,7751.0,final
+PAYEMS,Total nonfarm,2024-09,157912.0,5.270456,7906.0,final
+PAYEMS,Total nonfarm,2024-10,157945.0,5.292455,7939.0,final
+PAYEMS,Total nonfarm,2024-11,158079.0,5.381785,8073.0,final
+PAYEMS,Total nonfarm,2024-12,158316.0,5.539778,8310.0,final
+PAYEMS,Total nonfarm,2025-01,158268.0,5.50778,8262.0,final
+PAYEMS,Total nonfarm,2025-02,158310.0,5.535779,8304.0,final
+PAYEMS,Total nonfarm,2025-03,158377.0,5.580443,8371.0,final
+PAYEMS,Total nonfarm,2025-04,158485.0,5.652441,8479.0,final
+PAYEMS,Total nonfarm,2025-05,158498.0,5.661107,8492.0,final
+PAYEMS,Total nonfarm,2025-06,158478.0,5.647774,8472.0,final
+PAYEMS,Total nonfarm,2025-07,158542.0,5.690439,8536.0,final
+PAYEMS,Total nonfarm,2025-08,158472.0,5.643774,8466.0,final
+PAYEMS,Total nonfarm,2025-09,158548.0,5.694439,8542.0,final
+PAYEMS,Total nonfarm,2025-10,158408.0,5.601109,8402.0,final
+PAYEMS,Total nonfarm,2025-11,158449.0,5.628442,8443.0,final
+PAYEMS,Total nonfarm,2025-12,158432.0,5.617109,8426.0,final
+PAYEMS,Total nonfarm,2026-01,158592.0,5.723771,8586.0,final
+PAYEMS,Total nonfarm,2026-02,158436.0,5.619775,8430.0,final
+PAYEMS,Total nonfarm,2026-03,158650.0,5.762436,8644.0,final
+PAYEMS,Total nonfarm,2026-04,158798.0,5.861099,8792.0,final
+PAYEMS,Total nonfarm,2026-05,158861.0,5.903097,8855.0,final
+PAYEMS,Total nonfarm,2026-06,158892.0,5.923763,8886.0,final
+PAYEMS,Total nonfarm,2026-07,158882.0,5.917097,8876.0,final
+PAYEMS,Total nonfarm,2026-08,159015.0,6.00576,9009.0,preliminary
+PAYEMS,Total nonfarm,2026-09,159044.0,6.025092,9038.0,preliminary
 USPRIV,Total private,2022-01,127957.0,0.0,0.0,final
-USPRIV,Total private,2022-02,128793.0,0.65,836.0,final
-USPRIV,Total private,2022-03,129282.0,1.04,1325.0,final
-USPRIV,Total private,2022-04,129554.0,1.25,1597.0,final
-USPRIV,Total private,2022-05,129799.0,1.44,1842.0,final
-USPRIV,Total private,2022-06,130216.0,1.77,2259.0,final
-USPRIV,Total private,2022-07,130766.0,2.2,2809.0,final
-USPRIV,Total private,2022-08,131056.0,2.42,3099.0,final
-USPRIV,Total private,2022-09,131285.0,2.6,3328.0,final
-USPRIV,Total private,2022-10,131646.0,2.88,3689.0,final
-USPRIV,Total private,2022-11,131863.0,3.05,3906.0,final
-USPRIV,Total private,2022-12,131977.0,3.14,4020.0,final
-USPRIV,Total private,2023-01,132292.0,3.39,4335.0,final
-USPRIV,Total private,2023-02,132528.0,3.57,4571.0,final
-USPRIV,Total private,2023-03,132554.0,3.59,4597.0,final
-USPRIV,Total private,2023-04,132733.0,3.73,4776.0,final
-USPRIV,Total private,2023-05,132933.0,3.89,4976.0,final
-USPRIV,Total private,2023-06,133088.0,4.01,5131.0,final
-USPRIV,Total private,2023-07,133206.0,4.1,5249.0,final
-USPRIV,Total private,2023-08,133354.0,4.22,5397.0,final
-USPRIV,Total private,2023-09,133469.0,4.31,5512.0,final
-USPRIV,Total private,2023-10,133583.0,4.4,5626.0,final
-USPRIV,Total private,2023-11,133667.0,4.46,5710.0,final
-USPRIV,Total private,2023-12,133766.0,4.54,5809.0,final
-USPRIV,Total private,2024-01,133892.0,4.64,5935.0,final
-USPRIV,Total private,2024-02,134027.0,4.74,6070.0,final
-USPRIV,Total private,2024-03,134170.0,4.86,6213.0,final
-USPRIV,Total private,2024-04,134233.0,4.9,6276.0,final
-USPRIV,Total private,2024-05,134278.0,4.94,6321.0,final
-USPRIV,Total private,2024-06,134356.0,5.0,6399.0,final
-USPRIV,Total private,2024-07,134348.0,4.99,6391.0,final
-USPRIV,Total private,2024-08,134321.0,4.97,6364.0,final
-USPRIV,Total private,2024-09,134463.0,5.08,6506.0,final
-USPRIV,Total private,2024-10,134459.0,5.08,6502.0,final
-USPRIV,Total private,2024-11,134575.0,5.17,6618.0,final
-USPRIV,Total private,2024-12,134787.0,5.34,6830.0,final
-USPRIV,Total private,2025-01,134711.0,5.28,6754.0,final
-USPRIV,Total private,2025-02,134751.0,5.31,6794.0,final
-USPRIV,Total private,2025-03,134818.0,5.36,6861.0,final
-USPRIV,Total private,2025-04,134917.0,5.44,6960.0,final
-USPRIV,Total private,2025-05,134937.0,5.45,6980.0,final
-USPRIV,Total private,2025-06,134892.0,5.42,6935.0,final
-USPRIV,Total private,2025-07,134957.0,5.47,7000.0,final
-USPRIV,Total private,2025-08,134937.0,5.45,6980.0,final
-USPRIV,Total private,2025-09,135005.0,5.51,7048.0,final
-USPRIV,Total private,2025-10,135018.0,5.52,7061.0,final
-USPRIV,Total private,2025-11,135090.0,5.57,7133.0,final
-USPRIV,Total private,2025-12,135083.0,5.57,7126.0,final
-USPRIV,Total private,2026-01,135263.0,5.71,7306.0,final
-USPRIV,Total private,2026-02,135115.0,5.59,7158.0,final
-USPRIV,Total private,2026-03,135317.0,5.75,7360.0,final
-USPRIV,Total private,2026-04,135467.0,5.87,7510.0,final
-USPRIV,Total private,2026-05,135528.0,5.92,7571.0,final
-USPRIV,Total private,2026-06,135554.0,5.94,7597.0,final
-USPRIV,Total private,2026-07,135582.0,5.96,7625.0,final
-USPRIV,Total private,2026-08,135671.0,6.03,7714.0,preliminary
-USPRIV,Total private,2026-09,135717.0,6.06,7760.0,preliminary
+USPRIV,Total private,2022-02,128793.0,0.653344,836.0,final
+USPRIV,Total private,2022-03,129282.0,1.035504,1325.0,final
+USPRIV,Total private,2022-04,129554.0,1.248076,1597.0,final
+USPRIV,Total private,2022-05,129799.0,1.439546,1842.0,final
+USPRIV,Total private,2022-06,130216.0,1.765437,2259.0,final
+USPRIV,Total private,2022-07,130766.0,2.195269,2809.0,final
+USPRIV,Total private,2022-08,131056.0,2.421907,3099.0,final
+USPRIV,Total private,2022-09,131285.0,2.600874,3328.0,final
+USPRIV,Total private,2022-10,131646.0,2.883,3689.0,final
+USPRIV,Total private,2022-11,131863.0,3.052588,3906.0,final
+USPRIV,Total private,2022-12,131977.0,3.14168,4020.0,final
+USPRIV,Total private,2023-01,132292.0,3.387857,4335.0,final
+USPRIV,Total private,2023-02,132528.0,3.572294,4571.0,final
+USPRIV,Total private,2023-03,132554.0,3.592613,4597.0,final
+USPRIV,Total private,2023-04,132733.0,3.732504,4776.0,final
+USPRIV,Total private,2023-05,132933.0,3.888806,4976.0,final
+USPRIV,Total private,2023-06,133088.0,4.009941,5131.0,final
+USPRIV,Total private,2023-07,133206.0,4.102159,5249.0,final
+USPRIV,Total private,2023-08,133354.0,4.217823,5397.0,final
+USPRIV,Total private,2023-09,133469.0,4.307697,5512.0,final
+USPRIV,Total private,2023-10,133583.0,4.39679,5626.0,final
+USPRIV,Total private,2023-11,133667.0,4.462437,5710.0,final
+USPRIV,Total private,2023-12,133766.0,4.539806,5809.0,final
+USPRIV,Total private,2024-01,133892.0,4.638277,5935.0,final
+USPRIV,Total private,2024-02,134027.0,4.743781,6070.0,final
+USPRIV,Total private,2024-03,134170.0,4.855537,6213.0,final
+USPRIV,Total private,2024-04,134233.0,4.904773,6276.0,final
+USPRIV,Total private,2024-05,134278.0,4.939941,6321.0,final
+USPRIV,Total private,2024-06,134356.0,5.000899,6399.0,final
+USPRIV,Total private,2024-07,134348.0,4.994647,6391.0,final
+USPRIV,Total private,2024-08,134321.0,4.973546,6364.0,final
+USPRIV,Total private,2024-09,134463.0,5.084521,6506.0,final
+USPRIV,Total private,2024-10,134459.0,5.081395,6502.0,final
+USPRIV,Total private,2024-11,134575.0,5.17205,6618.0,final
+USPRIV,Total private,2024-12,134787.0,5.337731,6830.0,final
+USPRIV,Total private,2025-01,134711.0,5.278336,6754.0,final
+USPRIV,Total private,2025-02,134751.0,5.309596,6794.0,final
+USPRIV,Total private,2025-03,134818.0,5.361958,6861.0,final
+USPRIV,Total private,2025-04,134917.0,5.439327,6960.0,final
+USPRIV,Total private,2025-05,134937.0,5.454958,6980.0,final
+USPRIV,Total private,2025-06,134892.0,5.419789,6935.0,final
+USPRIV,Total private,2025-07,134957.0,5.470588,7000.0,final
+USPRIV,Total private,2025-08,134937.0,5.454958,6980.0,final
+USPRIV,Total private,2025-09,135005.0,5.5081,7048.0,final
+USPRIV,Total private,2025-10,135018.0,5.51826,7061.0,final
+USPRIV,Total private,2025-11,135090.0,5.574529,7133.0,final
+USPRIV,Total private,2025-12,135083.0,5.569058,7126.0,final
+USPRIV,Total private,2026-01,135263.0,5.709731,7306.0,final
+USPRIV,Total private,2026-02,135115.0,5.594067,7158.0,final
+USPRIV,Total private,2026-03,135317.0,5.751932,7360.0,final
+USPRIV,Total private,2026-04,135467.0,5.869159,7510.0,final
+USPRIV,Total private,2026-05,135528.0,5.916831,7571.0,final
+USPRIV,Total private,2026-06,135554.0,5.937151,7597.0,final
+USPRIV,Total private,2026-07,135582.0,5.959033,7625.0,final
+USPRIV,Total private,2026-08,135671.0,6.028588,7714.0,preliminary
+USPRIV,Total private,2026-09,135717.0,6.064537,7760.0,preliminary
 USMINE,Mining and logging,2022-01,578.0,0.0,0.0,final
-USMINE,Mining and logging,2022-02,581.0,0.52,3.0,final
-USMINE,Mining and logging,2022-03,589.0,1.9,11.0,final
-USMINE,Mining and logging,2022-04,596.0,3.11,18.0,final
-USMINE,Mining and logging,2022-05,600.0,3.81,22.0,final
-USMINE,Mining and logging,2022-06,608.0,5.19,30.0,final
-USMINE,Mining and logging,2022-07,614.0,6.23,36.0,final
-USMINE,Mining and logging,2022-08,612.0,5.88,34.0,final
-USMINE,Mining and logging,2022-09,614.0,6.23,36.0,final
-USMINE,Mining and logging,2022-10,618.0,6.92,40.0,final
-USMINE,Mining and logging,2022-11,624.0,7.96,46.0,final
-USMINE,Mining and logging,2022-12,627.0,8.48,49.0,final
-USMINE,Mining and logging,2023-01,634.0,9.69,56.0,final
-USMINE,Mining and logging,2023-02,633.0,9.52,55.0,final
-USMINE,Mining and logging,2023-03,634.0,9.69,56.0,final
-USMINE,Mining and logging,2023-04,637.0,10.21,59.0,final
-USMINE,Mining and logging,2023-05,642.0,11.07,64.0,final
-USMINE,Mining and logging,2023-06,640.0,10.73,62.0,final
-USMINE,Mining and logging,2023-07,642.0,11.07,64.0,final
-USMINE,Mining and logging,2023-08,641.0,10.9,63.0,final
-USMINE,Mining and logging,2023-09,641.0,10.9,63.0,final
-USMINE,Mining and logging,2023-10,639.0,10.55,61.0,final
-USMINE,Mining and logging,2023-11,636.0,10.03,58.0,final
-USMINE,Mining and logging,2023-12,638.0,10.38,60.0,final
-USMINE,Mining and logging,2024-01,633.0,9.52,55.0,final
-USMINE,Mining and logging,2024-02,633.0,9.52,55.0,final
-USMINE,Mining and logging,2024-03,636.0,10.03,58.0,final
-USMINE,Mining and logging,2024-04,628.0,8.65,50.0,final
-USMINE,Mining and logging,2024-05,624.0,7.96,46.0,final
-USMINE,Mining and logging,2024-06,620.0,7.27,42.0,final
-USMINE,Mining and logging,2024-07,622.0,7.61,44.0,final
-USMINE,Mining and logging,2024-08,620.0,7.27,42.0,final
-USMINE,Mining and logging,2024-09,622.0,7.61,44.0,final
-USMINE,Mining and logging,2024-10,622.0,7.61,44.0,final
-USMINE,Mining and logging,2024-11,624.0,7.96,46.0,final
-USMINE,Mining and logging,2024-12,622.0,7.61,44.0,final
-USMINE,Mining and logging,2025-01,622.0,7.61,44.0,final
-USMINE,Mining and logging,2025-02,622.0,7.61,44.0,final
-USMINE,Mining and logging,2025-03,620.0,7.27,42.0,final
-USMINE,Mining and logging,2025-04,622.0,7.61,44.0,final
-USMINE,Mining and logging,2025-05,618.0,6.92,40.0,final
-USMINE,Mining and logging,2025-06,616.0,6.57,38.0,final
-USMINE,Mining and logging,2025-07,610.0,5.54,32.0,final
-USMINE,Mining and logging,2025-08,607.0,5.02,29.0,final
-USMINE,Mining and logging,2025-09,605.0,4.67,27.0,final
-USMINE,Mining and logging,2025-10,606.0,4.84,28.0,final
-USMINE,Mining and logging,2025-11,605.0,4.67,27.0,final
-USMINE,Mining and logging,2025-12,604.0,4.5,26.0,final
-USMINE,Mining and logging,2026-01,602.0,4.15,24.0,final
-USMINE,Mining and logging,2026-02,601.0,3.98,23.0,final
-USMINE,Mining and logging,2026-03,604.0,4.5,26.0,final
-USMINE,Mining and logging,2026-04,608.0,5.19,30.0,final
-USMINE,Mining and logging,2026-05,611.0,5.71,33.0,final
-USMINE,Mining and logging,2026-06,609.0,5.36,31.0,final
-USMINE,Mining and logging,2026-07,606.0,4.84,28.0,final
-USMINE,Mining and logging,2026-08,609.0,5.36,31.0,preliminary
-USMINE,Mining and logging,2026-09,607.0,5.02,29.0,preliminary
+USMINE,Mining and logging,2022-02,581.0,0.519031,3.0,final
+USMINE,Mining and logging,2022-03,589.0,1.903114,11.0,final
+USMINE,Mining and logging,2022-04,596.0,3.114187,18.0,final
+USMINE,Mining and logging,2022-05,600.0,3.806228,22.0,final
+USMINE,Mining and logging,2022-06,608.0,5.190311,30.0,final
+USMINE,Mining and logging,2022-07,614.0,6.228374,36.0,final
+USMINE,Mining and logging,2022-08,612.0,5.882353,34.0,final
+USMINE,Mining and logging,2022-09,614.0,6.228374,36.0,final
+USMINE,Mining and logging,2022-10,618.0,6.920415,40.0,final
+USMINE,Mining and logging,2022-11,624.0,7.958478,46.0,final
+USMINE,Mining and logging,2022-12,627.0,8.477509,49.0,final
+USMINE,Mining and logging,2023-01,634.0,9.688581,56.0,final
+USMINE,Mining and logging,2023-02,633.0,9.515571,55.0,final
+USMINE,Mining and logging,2023-03,634.0,9.688581,56.0,final
+USMINE,Mining and logging,2023-04,637.0,10.207612,59.0,final
+USMINE,Mining and logging,2023-05,642.0,11.072664,64.0,final
+USMINE,Mining and logging,2023-06,640.0,10.726644,62.0,final
+USMINE,Mining and logging,2023-07,642.0,11.072664,64.0,final
+USMINE,Mining and logging,2023-08,641.0,10.899654,63.0,final
+USMINE,Mining and logging,2023-09,641.0,10.899654,63.0,final
+USMINE,Mining and logging,2023-10,639.0,10.553633,61.0,final
+USMINE,Mining and logging,2023-11,636.0,10.034602,58.0,final
+USMINE,Mining and logging,2023-12,638.0,10.380623,60.0,final
+USMINE,Mining and logging,2024-01,633.0,9.515571,55.0,final
+USMINE,Mining and logging,2024-02,633.0,9.515571,55.0,final
+USMINE,Mining and logging,2024-03,636.0,10.034602,58.0,final
+USMINE,Mining and logging,2024-04,628.0,8.650519,50.0,final
+USMINE,Mining and logging,2024-05,624.0,7.958478,46.0,final
+USMINE,Mining and logging,2024-06,620.0,7.266436,42.0,final
+USMINE,Mining and logging,2024-07,622.0,7.612457,44.0,final
+USMINE,Mining and logging,2024-08,620.0,7.266436,42.0,final
+USMINE,Mining and logging,2024-09,622.0,7.612457,44.0,final
+USMINE,Mining and logging,2024-10,622.0,7.612457,44.0,final
+USMINE,Mining and logging,2024-11,624.0,7.958478,46.0,final
+USMINE,Mining and logging,2024-12,622.0,7.612457,44.0,final
+USMINE,Mining and logging,2025-01,622.0,7.612457,44.0,final
+USMINE,Mining and logging,2025-02,622.0,7.612457,44.0,final
+USMINE,Mining and logging,2025-03,620.0,7.266436,42.0,final
+USMINE,Mining and logging,2025-04,622.0,7.612457,44.0,final
+USMINE,Mining and logging,2025-05,618.0,6.920415,40.0,final
+USMINE,Mining and logging,2025-06,616.0,6.574394,38.0,final
+USMINE,Mining and logging,2025-07,610.0,5.536332,32.0,final
+USMINE,Mining and logging,2025-08,607.0,5.017301,29.0,final
+USMINE,Mining and logging,2025-09,605.0,4.67128,27.0,final
+USMINE,Mining and logging,2025-10,606.0,4.844291,28.0,final
+USMINE,Mining and logging,2025-11,605.0,4.67128,27.0,final
+USMINE,Mining and logging,2025-12,604.0,4.49827,26.0,final
+USMINE,Mining and logging,2026-01,602.0,4.152249,24.0,final
+USMINE,Mining and logging,2026-02,601.0,3.979239,23.0,final
+USMINE,Mining and logging,2026-03,604.0,4.49827,26.0,final
+USMINE,Mining and logging,2026-04,608.0,5.190311,30.0,final
+USMINE,Mining and logging,2026-05,611.0,5.709343,33.0,final
+USMINE,Mining and logging,2026-06,609.0,5.363322,31.0,final
+USMINE,Mining and logging,2026-07,606.0,4.844291,28.0,final
+USMINE,Mining and logging,2026-08,609.0,5.363322,31.0,preliminary
+USMINE,Mining and logging,2026-09,607.0,5.017301,29.0,preliminary
 USCONS,Construction,2022-01,7595.0,0.0,0.0,final
-USCONS,Construction,2022-02,7651.0,0.74,56.0,final
-USCONS,Construction,2022-03,7692.0,1.28,97.0,final
-USCONS,Construction,2022-04,7698.0,1.36,103.0,final
-USCONS,Construction,2022-05,7738.0,1.88,143.0,final
-USCONS,Construction,2022-06,7761.0,2.19,166.0,final
-USCONS,Construction,2022-07,7792.0,2.59,197.0,final
-USCONS,Construction,2022-08,7801.0,2.71,206.0,final
-USCONS,Construction,2022-09,7832.0,3.12,237.0,final
-USCONS,Construction,2022-10,7847.0,3.32,252.0,final
-USCONS,Construction,2022-11,7863.0,3.53,268.0,final
-USCONS,Construction,2022-12,7885.0,3.82,290.0,final
-USCONS,Construction,2023-01,7932.0,4.44,337.0,final
-USCONS,Construction,2023-02,7943.0,4.58,348.0,final
-USCONS,Construction,2023-03,7926.0,4.36,331.0,final
-USCONS,Construction,2023-04,7955.0,4.74,360.0,final
-USCONS,Construction,2023-05,7965.0,4.87,370.0,final
-USCONS,Construction,2023-06,8006.0,5.41,411.0,final
-USCONS,Construction,2023-07,8016.0,5.54,421.0,final
-USCONS,Construction,2023-08,8042.0,5.89,447.0,final
-USCONS,Construction,2023-09,8053.0,6.03,458.0,final
-USCONS,Construction,2023-10,8080.0,6.39,485.0,final
-USCONS,Construction,2023-11,8088.0,6.49,493.0,final
-USCONS,Construction,2023-12,8100.0,6.65,505.0,final
-USCONS,Construction,2024-01,8123.0,6.95,528.0,final
-USCONS,Construction,2024-02,8132.0,7.07,537.0,final
-USCONS,Construction,2024-03,8164.0,7.49,569.0,final
-USCONS,Construction,2024-04,8170.0,7.57,575.0,final
-USCONS,Construction,2024-05,8176.0,7.65,581.0,final
-USCONS,Construction,2024-06,8196.0,7.91,601.0,final
-USCONS,Construction,2024-07,8208.0,8.07,613.0,final
-USCONS,Construction,2024-08,8236.0,8.44,641.0,final
-USCONS,Construction,2024-09,8254.0,8.68,659.0,final
-USCONS,Construction,2024-10,8262.0,8.78,667.0,final
-USCONS,Construction,2024-11,8267.0,8.85,672.0,final
-USCONS,Construction,2024-12,8276.0,8.97,681.0,final
-USCONS,Construction,2025-01,8264.0,8.81,669.0,final
-USCONS,Construction,2025-02,8267.0,8.85,672.0,final
-USCONS,Construction,2025-03,8273.0,8.93,678.0,final
-USCONS,Construction,2025-04,8271.0,8.9,676.0,final
-USCONS,Construction,2025-05,8269.0,8.87,674.0,final
-USCONS,Construction,2025-06,8267.0,8.85,672.0,final
-USCONS,Construction,2025-07,8261.0,8.77,666.0,final
-USCONS,Construction,2025-08,8239.0,8.48,644.0,final
-USCONS,Construction,2025-09,8255.0,8.69,660.0,final
-USCONS,Construction,2025-10,8243.0,8.53,648.0,final
-USCONS,Construction,2025-11,8279.0,9.01,684.0,final
-USCONS,Construction,2025-12,8272.0,8.91,677.0,final
-USCONS,Construction,2026-01,8317.0,9.51,722.0,final
-USCONS,Construction,2026-02,8296.0,9.23,701.0,final
-USCONS,Construction,2026-03,8311.0,9.43,716.0,final
-USCONS,Construction,2026-04,8314.0,9.47,719.0,final
-USCONS,Construction,2026-05,8316.0,9.49,721.0,final
-USCONS,Construction,2026-06,8319.0,9.53,724.0,final
-USCONS,Construction,2026-07,8337.0,9.77,742.0,final
-USCONS,Construction,2026-08,8353.0,9.98,758.0,preliminary
-USCONS,Construction,2026-09,8364.0,10.13,769.0,preliminary
+USCONS,Construction,2022-02,7651.0,0.737327,56.0,final
+USCONS,Construction,2022-03,7692.0,1.277156,97.0,final
+USCONS,Construction,2022-04,7698.0,1.356155,103.0,final
+USCONS,Construction,2022-05,7738.0,1.882818,143.0,final
+USCONS,Construction,2022-06,7761.0,2.185648,166.0,final
+USCONS,Construction,2022-07,7792.0,2.593812,197.0,final
+USCONS,Construction,2022-08,7801.0,2.712311,206.0,final
+USCONS,Construction,2022-09,7832.0,3.120474,237.0,final
+USCONS,Construction,2022-10,7847.0,3.317972,252.0,final
+USCONS,Construction,2022-11,7863.0,3.528637,268.0,final
+USCONS,Construction,2022-12,7885.0,3.818302,290.0,final
+USCONS,Construction,2023-01,7932.0,4.43713,337.0,final
+USCONS,Construction,2023-02,7943.0,4.581962,348.0,final
+USCONS,Construction,2023-03,7926.0,4.35813,331.0,final
+USCONS,Construction,2023-04,7955.0,4.739961,360.0,final
+USCONS,Construction,2023-05,7965.0,4.871626,370.0,final
+USCONS,Construction,2023-06,8006.0,5.411455,411.0,final
+USCONS,Construction,2023-07,8016.0,5.54312,421.0,final
+USCONS,Construction,2023-08,8042.0,5.885451,447.0,final
+USCONS,Construction,2023-09,8053.0,6.030283,458.0,final
+USCONS,Construction,2023-10,8080.0,6.38578,485.0,final
+USCONS,Construction,2023-11,8088.0,6.491113,493.0,final
+USCONS,Construction,2023-12,8100.0,6.649111,505.0,final
+USCONS,Construction,2024-01,8123.0,6.951942,528.0,final
+USCONS,Construction,2024-02,8132.0,7.070441,537.0,final
+USCONS,Construction,2024-03,8164.0,7.491771,569.0,final
+USCONS,Construction,2024-04,8170.0,7.57077,575.0,final
+USCONS,Construction,2024-05,8176.0,7.64977,581.0,final
+USCONS,Construction,2024-06,8196.0,7.913101,601.0,final
+USCONS,Construction,2024-07,8208.0,8.071099,613.0,final
+USCONS,Construction,2024-08,8236.0,8.439763,641.0,final
+USCONS,Construction,2024-09,8254.0,8.676761,659.0,final
+USCONS,Construction,2024-10,8262.0,8.782093,667.0,final
+USCONS,Construction,2024-11,8267.0,8.847926,672.0,final
+USCONS,Construction,2024-12,8276.0,8.966425,681.0,final
+USCONS,Construction,2025-01,8264.0,8.808427,669.0,final
+USCONS,Construction,2025-02,8267.0,8.847926,672.0,final
+USCONS,Construction,2025-03,8273.0,8.926926,678.0,final
+USCONS,Construction,2025-04,8271.0,8.900592,676.0,final
+USCONS,Construction,2025-05,8269.0,8.874259,674.0,final
+USCONS,Construction,2025-06,8267.0,8.847926,672.0,final
+USCONS,Construction,2025-07,8261.0,8.768927,666.0,final
+USCONS,Construction,2025-08,8239.0,8.479263,644.0,final
+USCONS,Construction,2025-09,8255.0,8.689928,660.0,final
+USCONS,Construction,2025-10,8243.0,8.531929,648.0,final
+USCONS,Construction,2025-11,8279.0,9.005925,684.0,final
+USCONS,Construction,2025-12,8272.0,8.913759,677.0,final
+USCONS,Construction,2026-01,8317.0,9.506254,722.0,final
+USCONS,Construction,2026-02,8296.0,9.229756,701.0,final
+USCONS,Construction,2026-03,8311.0,9.427255,716.0,final
+USCONS,Construction,2026-04,8314.0,9.466754,719.0,final
+USCONS,Construction,2026-05,8316.0,9.493088,721.0,final
+USCONS,Construction,2026-06,8319.0,9.532587,724.0,final
+USCONS,Construction,2026-07,8337.0,9.769585,742.0,final
+USCONS,Construction,2026-08,8353.0,9.98025,758.0,preliminary
+USCONS,Construction,2026-09,8364.0,10.125082,769.0,preliminary
 MANEMP,Manufacturing,2022-01,12564.0,0.0,0.0,final
-MANEMP,Manufacturing,2022-02,12601.0,0.29,37.0,final
-MANEMP,Manufacturing,2022-03,12674.0,0.88,110.0,final
-MANEMP,Manufacturing,2022-04,12726.0,1.29,162.0,final
-MANEMP,Manufacturing,2022-05,12735.0,1.36,171.0,final
-MANEMP,Manufacturing,2022-06,12767.0,1.62,203.0,final
-MANEMP,Manufacturing,2022-07,12800.0,1.88,236.0,final
-MANEMP,Manufacturing,2022-08,12832.0,2.13,268.0,final
-MANEMP,Manufacturing,2022-09,12849.0,2.27,285.0,final
-MANEMP,Manufacturing,2022-10,12883.0,2.54,319.0,final
-MANEMP,Manufacturing,2022-11,12896.0,2.64,332.0,final
-MANEMP,Manufacturing,2022-12,12895.0,2.63,331.0,final
-MANEMP,Manufacturing,2023-01,12903.0,2.7,339.0,final
-MANEMP,Manufacturing,2023-02,12898.0,2.66,334.0,final
-MANEMP,Manufacturing,2023-03,12888.0,2.58,324.0,final
-MANEMP,Manufacturing,2023-04,12884.0,2.55,320.0,final
-MANEMP,Manufacturing,2023-05,12869.0,2.43,305.0,final
-MANEMP,Manufacturing,2023-06,12875.0,2.48,311.0,final
-MANEMP,Manufacturing,2023-07,12862.0,2.37,298.0,final
-MANEMP,Manufacturing,2023-08,12861.0,2.36,297.0,final
-MANEMP,Manufacturing,2023-09,12872.0,2.45,308.0,final
-MANEMP,Manufacturing,2023-10,12837.0,2.17,273.0,final
-MANEMP,Manufacturing,2023-11,12859.0,2.35,295.0,final
-MANEMP,Manufacturing,2023-12,12872.0,2.45,308.0,final
-MANEMP,Manufacturing,2024-01,12875.0,2.48,311.0,final
-MANEMP,Manufacturing,2024-02,12852.0,2.29,288.0,final
-MANEMP,Manufacturing,2024-03,12836.0,2.16,272.0,final
-MANEMP,Manufacturing,2024-04,12833.0,2.14,269.0,final
-MANEMP,Manufacturing,2024-05,12825.0,2.08,261.0,final
-MANEMP,Manufacturing,2024-06,12814.0,1.99,250.0,final
-MANEMP,Manufacturing,2024-07,12806.0,1.93,242.0,final
-MANEMP,Manufacturing,2024-08,12772.0,1.66,208.0,final
-MANEMP,Manufacturing,2024-09,12758.0,1.54,194.0,final
-MANEMP,Manufacturing,2024-10,12697.0,1.06,133.0,final
-MANEMP,Manufacturing,2024-11,12711.0,1.17,147.0,final
-MANEMP,Manufacturing,2024-12,12693.0,1.03,129.0,final
-MANEMP,Manufacturing,2025-01,12673.0,0.87,109.0,final
-MANEMP,Manufacturing,2025-02,12671.0,0.85,107.0,final
-MANEMP,Manufacturing,2025-03,12666.0,0.81,102.0,final
-MANEMP,Manufacturing,2025-04,12662.0,0.78,98.0,final
-MANEMP,Manufacturing,2025-05,12651.0,0.69,87.0,final
-MANEMP,Manufacturing,2025-06,12636.0,0.57,72.0,final
-MANEMP,Manufacturing,2025-07,12625.0,0.49,61.0,final
-MANEMP,Manufacturing,2025-08,12615.0,0.41,51.0,final
-MANEMP,Manufacturing,2025-09,12612.0,0.38,48.0,final
-MANEMP,Manufacturing,2025-10,12603.0,0.31,39.0,final
-MANEMP,Manufacturing,2025-11,12593.0,0.23,29.0,final
-MANEMP,Manufacturing,2025-12,12580.0,0.13,16.0,final
-MANEMP,Manufacturing,2026-01,12582.0,0.14,18.0,final
-MANEMP,Manufacturing,2026-02,12583.0,0.15,19.0,final
-MANEMP,Manufacturing,2026-03,12598.0,0.27,34.0,final
-MANEMP,Manufacturing,2026-04,12597.0,0.26,33.0,final
-MANEMP,Manufacturing,2026-05,12595.0,0.25,31.0,final
-MANEMP,Manufacturing,2026-06,12608.0,0.35,44.0,final
-MANEMP,Manufacturing,2026-07,12628.0,0.51,64.0,final
-MANEMP,Manufacturing,2026-08,12643.0,0.63,79.0,preliminary
-MANEMP,Manufacturing,2026-09,12652.0,0.7,88.0,preliminary
+MANEMP,Manufacturing,2022-02,12601.0,0.294492,37.0,final
+MANEMP,Manufacturing,2022-03,12674.0,0.875517,110.0,final
+MANEMP,Manufacturing,2022-04,12726.0,1.289398,162.0,final
+MANEMP,Manufacturing,2022-05,12735.0,1.361032,171.0,final
+MANEMP,Manufacturing,2022-06,12767.0,1.615727,203.0,final
+MANEMP,Manufacturing,2022-07,12800.0,1.878383,236.0,final
+MANEMP,Manufacturing,2022-08,12832.0,2.133079,268.0,final
+MANEMP,Manufacturing,2022-09,12849.0,2.268386,285.0,final
+MANEMP,Manufacturing,2022-10,12883.0,2.539,319.0,final
+MANEMP,Manufacturing,2022-11,12896.0,2.642471,332.0,final
+MANEMP,Manufacturing,2022-12,12895.0,2.634511,331.0,final
+MANEMP,Manufacturing,2023-01,12903.0,2.698185,339.0,final
+MANEMP,Manufacturing,2023-02,12898.0,2.658389,334.0,final
+MANEMP,Manufacturing,2023-03,12888.0,2.578797,324.0,final
+MANEMP,Manufacturing,2023-04,12884.0,2.54696,320.0,final
+MANEMP,Manufacturing,2023-05,12869.0,2.427571,305.0,final
+MANEMP,Manufacturing,2023-06,12875.0,2.475326,311.0,final
+MANEMP,Manufacturing,2023-07,12862.0,2.371856,298.0,final
+MANEMP,Manufacturing,2023-08,12861.0,2.363897,297.0,final
+MANEMP,Manufacturing,2023-09,12872.0,2.451449,308.0,final
+MANEMP,Manufacturing,2023-10,12837.0,2.172875,273.0,final
+MANEMP,Manufacturing,2023-11,12859.0,2.347978,295.0,final
+MANEMP,Manufacturing,2023-12,12872.0,2.451449,308.0,final
+MANEMP,Manufacturing,2024-01,12875.0,2.475326,311.0,final
+MANEMP,Manufacturing,2024-02,12852.0,2.292264,288.0,final
+MANEMP,Manufacturing,2024-03,12836.0,2.164916,272.0,final
+MANEMP,Manufacturing,2024-04,12833.0,2.141038,269.0,final
+MANEMP,Manufacturing,2024-05,12825.0,2.077364,261.0,final
+MANEMP,Manufacturing,2024-06,12814.0,1.989812,250.0,final
+MANEMP,Manufacturing,2024-07,12806.0,1.926138,242.0,final
+MANEMP,Manufacturing,2024-08,12772.0,1.655524,208.0,final
+MANEMP,Manufacturing,2024-09,12758.0,1.544094,194.0,final
+MANEMP,Manufacturing,2024-10,12697.0,1.05858,133.0,final
+MANEMP,Manufacturing,2024-11,12711.0,1.17001,147.0,final
+MANEMP,Manufacturing,2024-12,12693.0,1.026743,129.0,final
+MANEMP,Manufacturing,2025-01,12673.0,0.867558,109.0,final
+MANEMP,Manufacturing,2025-02,12671.0,0.85164,107.0,final
+MANEMP,Manufacturing,2025-03,12666.0,0.811843,102.0,final
+MANEMP,Manufacturing,2025-04,12662.0,0.780006,98.0,final
+MANEMP,Manufacturing,2025-05,12651.0,0.692455,87.0,final
+MANEMP,Manufacturing,2025-06,12636.0,0.573066,72.0,final
+MANEMP,Manufacturing,2025-07,12625.0,0.485514,61.0,final
+MANEMP,Manufacturing,2025-08,12615.0,0.405922,51.0,final
+MANEMP,Manufacturing,2025-09,12612.0,0.382044,48.0,final
+MANEMP,Manufacturing,2025-10,12603.0,0.310411,39.0,final
+MANEMP,Manufacturing,2025-11,12593.0,0.230818,29.0,final
+MANEMP,Manufacturing,2025-12,12580.0,0.127348,16.0,final
+MANEMP,Manufacturing,2026-01,12582.0,0.143266,18.0,final
+MANEMP,Manufacturing,2026-02,12583.0,0.151226,19.0,final
+MANEMP,Manufacturing,2026-03,12598.0,0.270614,34.0,final
+MANEMP,Manufacturing,2026-04,12597.0,0.262655,33.0,final
+MANEMP,Manufacturing,2026-05,12595.0,0.246737,31.0,final
+MANEMP,Manufacturing,2026-06,12608.0,0.350207,44.0,final
+MANEMP,Manufacturing,2026-07,12628.0,0.509392,64.0,final
+MANEMP,Manufacturing,2026-08,12643.0,0.628781,79.0,preliminary
+MANEMP,Manufacturing,2026-09,12652.0,0.700414,88.0,preliminary
 USWTRADE,Wholesale trade,2022-01,5851.6,0.0,0.0,final
-USWTRADE,Wholesale trade,2022-02,5876.5,0.43,24.9,final
-USWTRADE,Wholesale trade,2022-03,5913.7,1.06,62.1,final
-USWTRADE,Wholesale trade,2022-04,5945.3,1.6,93.7,final
-USWTRADE,Wholesale trade,2022-05,5970.7,2.04,119.1,final
-USWTRADE,Wholesale trade,2022-06,5987.6,2.32,136.0,final
-USWTRADE,Wholesale trade,2022-07,6002.2,2.57,150.6,final
-USWTRADE,Wholesale trade,2022-08,6025.3,2.97,173.7,final
-USWTRADE,Wholesale trade,2022-09,6031.0,3.07,179.4,final
-USWTRADE,Wholesale trade,2022-10,6043.4,3.28,191.8,final
-USWTRADE,Wholesale trade,2022-11,6049.4,3.38,197.8,final
-USWTRADE,Wholesale trade,2022-12,6059.8,3.56,208.2,final
-USWTRADE,Wholesale trade,2023-01,6073.4,3.79,221.8,final
-USWTRADE,Wholesale trade,2023-02,6089.7,4.07,238.1,final
-USWTRADE,Wholesale trade,2023-03,6094.4,4.15,242.8,final
-USWTRADE,Wholesale trade,2023-04,6091.5,4.1,239.9,final
-USWTRADE,Wholesale trade,2023-05,6098.5,4.22,246.9,final
-USWTRADE,Wholesale trade,2023-06,6101.0,4.26,249.4,final
-USWTRADE,Wholesale trade,2023-07,6112.5,4.46,260.9,final
-USWTRADE,Wholesale trade,2023-08,6116.7,4.53,265.1,final
-USWTRADE,Wholesale trade,2023-09,6125.9,4.69,274.3,final
-USWTRADE,Wholesale trade,2023-10,6127.4,4.71,275.8,final
-USWTRADE,Wholesale trade,2023-11,6132.3,4.8,280.7,final
-USWTRADE,Wholesale trade,2023-12,6132.8,4.81,281.2,final
-USWTRADE,Wholesale trade,2024-01,6126.0,4.69,274.4,final
-USWTRADE,Wholesale trade,2024-02,6120.5,4.6,268.9,final
-USWTRADE,Wholesale trade,2024-03,6127.2,4.71,275.6,final
-USWTRADE,Wholesale trade,2024-04,6127.5,4.71,275.9,final
-USWTRADE,Wholesale trade,2024-05,6109.1,4.4,257.5,final
-USWTRADE,Wholesale trade,2024-06,6111.9,4.45,260.3,final
-USWTRADE,Wholesale trade,2024-07,6110.4,4.42,258.8,final
-USWTRADE,Wholesale trade,2024-08,6106.2,4.35,254.6,final
-USWTRADE,Wholesale trade,2024-09,6099.4,4.23,247.8,final
-USWTRADE,Wholesale trade,2024-10,6094.8,4.16,243.2,final
-USWTRADE,Wholesale trade,2024-11,6089.5,4.07,237.9,final
-USWTRADE,Wholesale trade,2024-12,6092.1,4.11,240.5,final
-USWTRADE,Wholesale trade,2025-01,6073.3,3.79,221.7,final
-USWTRADE,Wholesale trade,2025-02,6075.9,3.83,224.3,final
-USWTRADE,Wholesale trade,2025-03,6062.0,3.6,210.4,final
-USWTRADE,Wholesale trade,2025-04,6066.9,3.68,215.3,final
-USWTRADE,Wholesale trade,2025-05,6067.7,3.69,216.1,final
-USWTRADE,Wholesale trade,2025-06,6057.3,3.52,205.7,final
-USWTRADE,Wholesale trade,2025-07,6051.6,3.42,200.0,final
-USWTRADE,Wholesale trade,2025-08,6043.0,3.27,191.4,final
-USWTRADE,Wholesale trade,2025-09,6051.8,3.42,200.2,final
-USWTRADE,Wholesale trade,2025-10,6054.6,3.47,203.0,final
-USWTRADE,Wholesale trade,2025-11,6048.2,3.36,196.6,final
-USWTRADE,Wholesale trade,2025-12,6042.5,3.26,190.9,final
-USWTRADE,Wholesale trade,2026-01,6044.6,3.3,193.0,final
-USWTRADE,Wholesale trade,2026-02,6053.0,3.44,201.4,final
-USWTRADE,Wholesale trade,2026-03,6051.3,3.41,199.7,final
-USWTRADE,Wholesale trade,2026-04,6051.9,3.42,200.3,final
-USWTRADE,Wholesale trade,2026-05,6054.4,3.47,202.8,final
-USWTRADE,Wholesale trade,2026-06,6059.0,3.54,207.4,final
-USWTRADE,Wholesale trade,2026-07,6065.3,3.65,213.7,final
-USWTRADE,Wholesale trade,2026-08,6073.3,3.79,221.7,preliminary
-USWTRADE,Wholesale trade,2026-09,6078.3,3.87,226.7,preliminary
+USWTRADE,Wholesale trade,2022-02,5876.5,0.425525,24.9,final
+USWTRADE,Wholesale trade,2022-03,5913.7,1.061248,62.1,final
+USWTRADE,Wholesale trade,2022-04,5945.3,1.601271,93.7,final
+USWTRADE,Wholesale trade,2022-05,5970.7,2.035341,119.1,final
+USWTRADE,Wholesale trade,2022-06,5987.6,2.324151,136.0,final
+USWTRADE,Wholesale trade,2022-07,6002.2,2.573655,150.6,final
+USWTRADE,Wholesale trade,2022-08,6025.3,2.968419,173.7,final
+USWTRADE,Wholesale trade,2022-09,6031.0,3.065828,179.4,final
+USWTRADE,Wholesale trade,2022-10,6043.4,3.277736,191.8,final
+USWTRADE,Wholesale trade,2022-11,6049.4,3.380272,197.8,final
+USWTRADE,Wholesale trade,2022-12,6059.8,3.558001,208.2,final
+USWTRADE,Wholesale trade,2023-01,6073.4,3.790416,221.8,final
+USWTRADE,Wholesale trade,2023-02,6089.7,4.068973,238.1,final
+USWTRADE,Wholesale trade,2023-03,6094.4,4.149293,242.8,final
+USWTRADE,Wholesale trade,2023-04,6091.5,4.099733,239.9,final
+USWTRADE,Wholesale trade,2023-05,6098.5,4.219359,246.9,final
+USWTRADE,Wholesale trade,2023-06,6101.0,4.262082,249.4,final
+USWTRADE,Wholesale trade,2023-07,6112.5,4.45861,260.9,final
+USWTRADE,Wholesale trade,2023-08,6116.7,4.530385,265.1,final
+USWTRADE,Wholesale trade,2023-09,6125.9,4.687607,274.3,final
+USWTRADE,Wholesale trade,2023-10,6127.4,4.713241,275.8,final
+USWTRADE,Wholesale trade,2023-11,6132.3,4.796979,280.7,final
+USWTRADE,Wholesale trade,2023-12,6132.8,4.805523,281.2,final
+USWTRADE,Wholesale trade,2024-01,6126.0,4.689316,274.4,final
+USWTRADE,Wholesale trade,2024-02,6120.5,4.595324,268.9,final
+USWTRADE,Wholesale trade,2024-03,6127.2,4.709823,275.6,final
+USWTRADE,Wholesale trade,2024-04,6127.5,4.71495,275.9,final
+USWTRADE,Wholesale trade,2024-05,6109.1,4.400506,257.5,final
+USWTRADE,Wholesale trade,2024-06,6111.9,4.448356,260.3,final
+USWTRADE,Wholesale trade,2024-07,6110.4,4.422722,258.8,final
+USWTRADE,Wholesale trade,2024-08,6106.2,4.350947,254.6,final
+USWTRADE,Wholesale trade,2024-09,6099.4,4.234739,247.8,final
+USWTRADE,Wholesale trade,2024-10,6094.8,4.156128,243.2,final
+USWTRADE,Wholesale trade,2024-11,6089.5,4.065555,237.9,final
+USWTRADE,Wholesale trade,2024-12,6092.1,4.109987,240.5,final
+USWTRADE,Wholesale trade,2025-01,6073.3,3.788707,221.7,final
+USWTRADE,Wholesale trade,2025-02,6075.9,3.83314,224.3,final
+USWTRADE,Wholesale trade,2025-03,6062.0,3.595598,210.4,final
+USWTRADE,Wholesale trade,2025-04,6066.9,3.679336,215.3,final
+USWTRADE,Wholesale trade,2025-05,6067.7,3.693007,216.1,final
+USWTRADE,Wholesale trade,2025-06,6057.3,3.515278,205.7,final
+USWTRADE,Wholesale trade,2025-07,6051.6,3.417869,200.0,final
+USWTRADE,Wholesale trade,2025-08,6043.0,3.2709,191.4,final
+USWTRADE,Wholesale trade,2025-09,6051.8,3.421286,200.2,final
+USWTRADE,Wholesale trade,2025-10,6054.6,3.469137,203.0,final
+USWTRADE,Wholesale trade,2025-11,6048.2,3.359765,196.6,final
+USWTRADE,Wholesale trade,2025-12,6042.5,3.262356,190.9,final
+USWTRADE,Wholesale trade,2026-01,6044.6,3.298243,193.0,final
+USWTRADE,Wholesale trade,2026-02,6053.0,3.441794,201.4,final
+USWTRADE,Wholesale trade,2026-03,6051.3,3.412742,199.7,final
+USWTRADE,Wholesale trade,2026-04,6051.9,3.422995,200.3,final
+USWTRADE,Wholesale trade,2026-05,6054.4,3.465719,202.8,final
+USWTRADE,Wholesale trade,2026-06,6059.0,3.54433,207.4,final
+USWTRADE,Wholesale trade,2026-07,6065.3,3.651993,213.7,final
+USWTRADE,Wholesale trade,2026-08,6073.3,3.788707,221.7,preliminary
+USWTRADE,Wholesale trade,2026-09,6078.3,3.874154,226.7,preliminary
 USTRADE,Retail trade,2022-01,15428.6,0.0,0.0,final
-USTRADE,Retail trade,2022-02,15537.4,0.71,108.8,final
-USTRADE,Retail trade,2022-03,15537.1,0.7,108.5,final
-USTRADE,Retail trade,2022-04,15488.0,0.38,59.4,final
-USTRADE,Retail trade,2022-05,15418.7,-0.06,-9.9,final
-USTRADE,Retail trade,2022-06,15464.6,0.23,36.0,final
-USTRADE,Retail trade,2022-07,15490.6,0.4,62.0,final
-USTRADE,Retail trade,2022-08,15521.8,0.6,93.2,final
-USTRADE,Retail trade,2022-09,15498.2,0.45,69.6,final
-USTRADE,Retail trade,2022-10,15512.0,0.54,83.4,final
-USTRADE,Retail trade,2022-11,15530.2,0.66,101.6,final
-USTRADE,Retail trade,2022-12,15533.9,0.68,105.3,final
-USTRADE,Retail trade,2023-01,15551.3,0.8,122.7,final
-USTRADE,Retail trade,2023-02,15602.6,1.13,174.0,final
-USTRADE,Retail trade,2023-03,15562.8,0.87,134.2,final
-USTRADE,Retail trade,2023-04,15556.0,0.83,127.4,final
-USTRADE,Retail trade,2023-05,15555.9,0.83,127.3,final
-USTRADE,Retail trade,2023-06,15533.2,0.68,104.6,final
-USTRADE,Retail trade,2023-07,15539.5,0.72,110.9,final
-USTRADE,Retail trade,2023-08,15531.2,0.66,102.6,final
-USTRADE,Retail trade,2023-09,15531.3,0.67,102.7,final
-USTRADE,Retail trade,2023-10,15543.9,0.75,115.3,final
-USTRADE,Retail trade,2023-11,15511.3,0.54,82.7,final
-USTRADE,Retail trade,2023-12,15550.9,0.79,122.3,final
-USTRADE,Retail trade,2024-01,15524.0,0.62,95.4,final
-USTRADE,Retail trade,2024-02,15528.5,0.65,99.9,final
-USTRADE,Retail trade,2024-03,15529.3,0.65,100.7,final
-USTRADE,Retail trade,2024-04,15531.2,0.66,102.6,final
-USTRADE,Retail trade,2024-05,15536.0,0.7,107.4,final
-USTRADE,Retail trade,2024-06,15499.9,0.46,71.3,final
-USTRADE,Retail trade,2024-07,15480.8,0.34,52.2,final
-USTRADE,Retail trade,2024-08,15458.4,0.19,29.8,final
-USTRADE,Retail trade,2024-09,15456.7,0.18,28.1,final
-USTRADE,Retail trade,2024-10,15452.4,0.15,23.8,final
-USTRADE,Retail trade,2024-11,15409.8,-0.12,-18.8,final
-USTRADE,Retail trade,2024-12,15460.1,0.2,31.5,final
-USTRADE,Retail trade,2025-01,15459.3,0.2,30.7,final
-USTRADE,Retail trade,2025-02,15441.8,0.09,13.2,final
-USTRADE,Retail trade,2025-03,15457.5,0.19,28.9,final
-USTRADE,Retail trade,2025-04,15461.6,0.21,33.0,final
-USTRADE,Retail trade,2025-05,15440.0,0.07,11.4,final
-USTRADE,Retail trade,2025-06,15425.5,-0.02,-3.1,final
-USTRADE,Retail trade,2025-07,15430.2,0.01,1.6,final
-USTRADE,Retail trade,2025-08,15440.3,0.08,11.7,final
-USTRADE,Retail trade,2025-09,15453.4,0.16,24.8,final
-USTRADE,Retail trade,2025-10,15438.0,0.06,9.4,final
-USTRADE,Retail trade,2025-11,15437.1,0.06,8.5,final
-USTRADE,Retail trade,2025-12,15413.5,-0.1,-15.1,final
-USTRADE,Retail trade,2026-01,15426.2,-0.02,-2.4,final
-USTRADE,Retail trade,2026-02,15425.9,-0.02,-2.7,final
-USTRADE,Retail trade,2026-03,15435.5,0.04,6.9,final
-USTRADE,Retail trade,2026-04,15459.0,0.2,30.4,final
-USTRADE,Retail trade,2026-05,15464.0,0.23,35.4,final
-USTRADE,Retail trade,2026-06,15473.6,0.29,45.0,final
-USTRADE,Retail trade,2026-07,15479.2,0.33,50.6,final
-USTRADE,Retail trade,2026-08,15474.1,0.29,45.5,preliminary
-USTRADE,Retail trade,2026-09,15479.9,0.33,51.3,preliminary
+USTRADE,Retail trade,2022-02,15537.4,0.705184,108.8,final
+USTRADE,Retail trade,2022-03,15537.1,0.703239,108.5,final
+USTRADE,Retail trade,2022-04,15488.0,0.384999,59.4,final
+USTRADE,Retail trade,2022-05,15418.7,-0.064167,-9.9,final
+USTRADE,Retail trade,2022-06,15464.6,0.233333,36.0,final
+USTRADE,Retail trade,2022-07,15490.6,0.401851,62.0,final
+USTRADE,Retail trade,2022-08,15521.8,0.604073,93.2,final
+USTRADE,Retail trade,2022-09,15498.2,0.45111,69.6,final
+USTRADE,Retail trade,2022-10,15512.0,0.540555,83.4,final
+USTRADE,Retail trade,2022-11,15530.2,0.658517,101.6,final
+USTRADE,Retail trade,2022-12,15533.9,0.682499,105.3,final
+USTRADE,Retail trade,2023-01,15551.3,0.795276,122.7,final
+USTRADE,Retail trade,2023-02,15602.6,1.127776,174.0,final
+USTRADE,Retail trade,2023-03,15562.8,0.869813,134.2,final
+USTRADE,Retail trade,2023-04,15556.0,0.825739,127.4,final
+USTRADE,Retail trade,2023-05,15555.9,0.825091,127.3,final
+USTRADE,Retail trade,2023-06,15533.2,0.677962,104.6,final
+USTRADE,Retail trade,2023-07,15539.5,0.718795,110.9,final
+USTRADE,Retail trade,2023-08,15531.2,0.664999,102.6,final
+USTRADE,Retail trade,2023-09,15531.3,0.665647,102.7,final
+USTRADE,Retail trade,2023-10,15543.9,0.747313,115.3,final
+USTRADE,Retail trade,2023-11,15511.3,0.536018,82.7,final
+USTRADE,Retail trade,2023-12,15550.9,0.792684,122.3,final
+USTRADE,Retail trade,2024-01,15524.0,0.618332,95.4,final
+USTRADE,Retail trade,2024-02,15528.5,0.647499,99.9,final
+USTRADE,Retail trade,2024-03,15529.3,0.652684,100.7,final
+USTRADE,Retail trade,2024-04,15531.2,0.664999,102.6,final
+USTRADE,Retail trade,2024-05,15536.0,0.69611,107.4,final
+USTRADE,Retail trade,2024-06,15499.9,0.462129,71.3,final
+USTRADE,Retail trade,2024-07,15480.8,0.338333,52.2,final
+USTRADE,Retail trade,2024-08,15458.4,0.193148,29.8,final
+USTRADE,Retail trade,2024-09,15456.7,0.182129,28.1,final
+USTRADE,Retail trade,2024-10,15452.4,0.154259,23.8,final
+USTRADE,Retail trade,2024-11,15409.8,-0.121852,-18.8,final
+USTRADE,Retail trade,2024-12,15460.1,0.204166,31.5,final
+USTRADE,Retail trade,2025-01,15459.3,0.198981,30.7,final
+USTRADE,Retail trade,2025-02,15441.8,0.085555,13.2,final
+USTRADE,Retail trade,2025-03,15457.5,0.187314,28.9,final
+USTRADE,Retail trade,2025-04,15461.6,0.213888,33.0,final
+USTRADE,Retail trade,2025-05,15440.0,0.073889,11.4,final
+USTRADE,Retail trade,2025-06,15425.5,-0.020093,-3.1,final
+USTRADE,Retail trade,2025-07,15430.2,0.01037,1.6,final
+USTRADE,Retail trade,2025-08,15440.3,0.075833,11.7,final
+USTRADE,Retail trade,2025-09,15453.4,0.16074,24.8,final
+USTRADE,Retail trade,2025-10,15438.0,0.060926,9.4,final
+USTRADE,Retail trade,2025-11,15437.1,0.055092,8.5,final
+USTRADE,Retail trade,2025-12,15413.5,-0.09787,-15.1,final
+USTRADE,Retail trade,2026-01,15426.2,-0.015556,-2.4,final
+USTRADE,Retail trade,2026-02,15425.9,-0.0175,-2.7,final
+USTRADE,Retail trade,2026-03,15435.5,0.044722,6.9,final
+USTRADE,Retail trade,2026-04,15459.0,0.197037,30.4,final
+USTRADE,Retail trade,2026-05,15464.0,0.229444,35.4,final
+USTRADE,Retail trade,2026-06,15473.6,0.291666,45.0,final
+USTRADE,Retail trade,2026-07,15479.2,0.327962,50.6,final
+USTRADE,Retail trade,2026-08,15474.1,0.294907,45.5,preliminary
+USTRADE,Retail trade,2026-09,15479.9,0.332499,51.3,preliminary
 CES4300000001,Transportation and warehousing,2022-01,6487.3,0.0,0.0,final
-CES4300000001,Transportation and warehousing,2022-02,6562.7,1.16,75.4,final
-CES4300000001,Transportation and warehousing,2022-03,6590.7,1.59,103.4,final
-CES4300000001,Transportation and warehousing,2022-04,6607.9,1.86,120.6,final
-CES4300000001,Transportation and warehousing,2022-05,6627.2,2.16,139.9,final
-CES4300000001,Transportation and warehousing,2022-06,6636.4,2.3,149.1,final
-CES4300000001,Transportation and warehousing,2022-07,6648.8,2.49,161.5,final
-CES4300000001,Transportation and warehousing,2022-08,6638.4,2.33,151.1,final
-CES4300000001,Transportation and warehousing,2022-09,6626.3,2.14,139.0,final
-CES4300000001,Transportation and warehousing,2022-10,6638.8,2.34,151.5,final
-CES4300000001,Transportation and warehousing,2022-11,6616.0,1.98,128.7,final
-CES4300000001,Transportation and warehousing,2022-12,6606.5,1.84,119.2,final
-CES4300000001,Transportation and warehousing,2023-01,6614.3,1.96,127.0,final
-CES4300000001,Transportation and warehousing,2023-02,6584.9,1.5,97.6,final
-CES4300000001,Transportation and warehousing,2023-03,6574.3,1.34,87.0,final
-CES4300000001,Transportation and warehousing,2023-04,6577.2,1.39,89.9,final
-CES4300000001,Transportation and warehousing,2023-05,6600.6,1.75,113.3,final
-CES4300000001,Transportation and warehousing,2023-06,6589.4,1.57,102.1,final
-CES4300000001,Transportation and warehousing,2023-07,6589.4,1.57,102.1,final
-CES4300000001,Transportation and warehousing,2023-08,6574.5,1.34,87.2,final
-CES4300000001,Transportation and warehousing,2023-09,6595.3,1.66,108.0,final
-CES4300000001,Transportation and warehousing,2023-10,6612.2,1.93,124.9,final
-CES4300000001,Transportation and warehousing,2023-11,6611.0,1.91,123.7,final
-CES4300000001,Transportation and warehousing,2023-12,6560.6,1.13,73.3,final
-CES4300000001,Transportation and warehousing,2024-01,6562.5,1.16,75.2,final
-CES4300000001,Transportation and warehousing,2024-02,6600.3,1.74,113.0,final
-CES4300000001,Transportation and warehousing,2024-03,6610.1,1.89,122.8,final
-CES4300000001,Transportation and warehousing,2024-04,6631.4,2.22,144.1,final
-CES4300000001,Transportation and warehousing,2024-05,6644.6,2.42,157.3,final
-CES4300000001,Transportation and warehousing,2024-06,6647.2,2.46,159.9,final
-CES4300000001,Transportation and warehousing,2024-07,6646.0,2.45,158.7,final
-CES4300000001,Transportation and warehousing,2024-08,6643.2,2.4,155.9,final
-CES4300000001,Transportation and warehousing,2024-09,6659.4,2.65,172.1,final
-CES4300000001,Transportation and warehousing,2024-10,6650.2,2.51,162.9,final
-CES4300000001,Transportation and warehousing,2024-11,6659.6,2.66,172.3,final
-CES4300000001,Transportation and warehousing,2024-12,6663.2,2.71,175.9,final
-CES4300000001,Transportation and warehousing,2025-01,6664.9,2.74,177.6,final
-CES4300000001,Transportation and warehousing,2025-02,6689.1,3.11,201.8,final
-CES4300000001,Transportation and warehousing,2025-03,6671.7,2.84,184.4,final
-CES4300000001,Transportation and warehousing,2025-04,6655.4,2.59,168.1,final
-CES4300000001,Transportation and warehousing,2025-05,6655.5,2.59,168.2,final
-CES4300000001,Transportation and warehousing,2025-06,6655.5,2.59,168.2,final
-CES4300000001,Transportation and warehousing,2025-07,6659.4,2.65,172.1,final
-CES4300000001,Transportation and warehousing,2025-08,6657.8,2.63,170.5,final
-CES4300000001,Transportation and warehousing,2025-09,6618.5,2.02,131.2,final
-CES4300000001,Transportation and warehousing,2025-10,6619.1,2.03,131.8,final
-CES4300000001,Transportation and warehousing,2025-11,6560.2,1.12,72.9,final
-CES4300000001,Transportation and warehousing,2025-12,6555.4,1.05,68.1,final
-CES4300000001,Transportation and warehousing,2026-01,6578.0,1.4,90.7,final
-CES4300000001,Transportation and warehousing,2026-02,6532.5,0.7,45.2,final
-CES4300000001,Transportation and warehousing,2026-03,6557.6,1.08,70.3,final
-CES4300000001,Transportation and warehousing,2026-04,6597.0,1.69,109.7,final
-CES4300000001,Transportation and warehousing,2026-05,6597.8,1.7,110.5,final
-CES4300000001,Transportation and warehousing,2026-06,6587.5,1.54,100.2,final
-CES4300000001,Transportation and warehousing,2026-07,6597.8,1.7,110.5,final
-CES4300000001,Transportation and warehousing,2026-08,6601.1,1.75,113.8,preliminary
-CES4300000001,Transportation and warehousing,2026-09,6608.7,1.87,121.4,preliminary
+CES4300000001,Transportation and warehousing,2022-02,6562.7,1.162271,75.4,final
+CES4300000001,Transportation and warehousing,2022-03,6590.7,1.593883,103.4,final
+CES4300000001,Transportation and warehousing,2022-04,6607.9,1.859017,120.6,final
+CES4300000001,Transportation and warehousing,2022-05,6627.2,2.156521,139.9,final
+CES4300000001,Transportation and warehousing,2022-06,6636.4,2.298337,149.1,final
+CES4300000001,Transportation and warehousing,2022-07,6648.8,2.489479,161.5,final
+CES4300000001,Transportation and warehousing,2022-08,6638.4,2.329166,151.1,final
+CES4300000001,Transportation and warehousing,2022-09,6626.3,2.142648,139.0,final
+CES4300000001,Transportation and warehousing,2022-10,6638.8,2.335332,151.5,final
+CES4300000001,Transportation and warehousing,2022-11,6616.0,1.983876,128.7,final
+CES4300000001,Transportation and warehousing,2022-12,6606.5,1.837436,119.2,final
+CES4300000001,Transportation and warehousing,2023-01,6614.3,1.957671,127.0,final
+CES4300000001,Transportation and warehousing,2023-02,6584.9,1.504478,97.6,final
+CES4300000001,Transportation and warehousing,2023-03,6574.3,1.341082,87.0,final
+CES4300000001,Transportation and warehousing,2023-04,6577.2,1.385785,89.9,final
+CES4300000001,Transportation and warehousing,2023-05,6600.6,1.746489,113.3,final
+CES4300000001,Transportation and warehousing,2023-06,6589.4,1.573844,102.1,final
+CES4300000001,Transportation and warehousing,2023-07,6589.4,1.573844,102.1,final
+CES4300000001,Transportation and warehousing,2023-08,6574.5,1.344165,87.2,final
+CES4300000001,Transportation and warehousing,2023-09,6595.3,1.664791,108.0,final
+CES4300000001,Transportation and warehousing,2023-10,6612.2,1.9253,124.9,final
+CES4300000001,Transportation and warehousing,2023-11,6611.0,1.906803,123.7,final
+CES4300000001,Transportation and warehousing,2023-12,6560.6,1.1299,73.3,final
+CES4300000001,Transportation and warehousing,2024-01,6562.5,1.159188,75.2,final
+CES4300000001,Transportation and warehousing,2024-02,6600.3,1.741865,113.0,final
+CES4300000001,Transportation and warehousing,2024-03,6610.1,1.892929,122.8,final
+CES4300000001,Transportation and warehousing,2024-04,6631.4,2.221263,144.1,final
+CES4300000001,Transportation and warehousing,2024-05,6644.6,2.424738,157.3,final
+CES4300000001,Transportation and warehousing,2024-06,6647.2,2.464816,159.9,final
+CES4300000001,Transportation and warehousing,2024-07,6646.0,2.446318,158.7,final
+CES4300000001,Transportation and warehousing,2024-08,6643.2,2.403157,155.9,final
+CES4300000001,Transportation and warehousing,2024-09,6659.4,2.652876,172.1,final
+CES4300000001,Transportation and warehousing,2024-10,6650.2,2.51106,162.9,final
+CES4300000001,Transportation and warehousing,2024-11,6659.6,2.655959,172.3,final
+CES4300000001,Transportation and warehousing,2024-12,6663.2,2.711452,175.9,final
+CES4300000001,Transportation and warehousing,2025-01,6664.9,2.737657,177.6,final
+CES4300000001,Transportation and warehousing,2025-02,6689.1,3.110693,201.8,final
+CES4300000001,Transportation and warehousing,2025-03,6671.7,2.842477,184.4,final
+CES4300000001,Transportation and warehousing,2025-04,6655.4,2.591217,168.1,final
+CES4300000001,Transportation and warehousing,2025-05,6655.5,2.592758,168.2,final
+CES4300000001,Transportation and warehousing,2025-06,6655.5,2.592758,168.2,final
+CES4300000001,Transportation and warehousing,2025-07,6659.4,2.652876,172.1,final
+CES4300000001,Transportation and warehousing,2025-08,6657.8,2.628212,170.5,final
+CES4300000001,Transportation and warehousing,2025-09,6618.5,2.022413,131.2,final
+CES4300000001,Transportation and warehousing,2025-10,6619.1,2.031662,131.8,final
+CES4300000001,Transportation and warehousing,2025-11,6560.2,1.123734,72.9,final
+CES4300000001,Transportation and warehousing,2025-12,6555.4,1.049743,68.1,final
+CES4300000001,Transportation and warehousing,2026-01,6578.0,1.398116,90.7,final
+CES4300000001,Transportation and warehousing,2026-02,6532.5,0.696746,45.2,final
+CES4300000001,Transportation and warehousing,2026-03,6557.6,1.083656,70.3,final
+CES4300000001,Transportation and warehousing,2026-04,6597.0,1.690996,109.7,final
+CES4300000001,Transportation and warehousing,2026-05,6597.8,1.703328,110.5,final
+CES4300000001,Transportation and warehousing,2026-06,6587.5,1.544556,100.2,final
+CES4300000001,Transportation and warehousing,2026-07,6597.8,1.703328,110.5,final
+CES4300000001,Transportation and warehousing,2026-08,6601.1,1.754197,113.8,preliminary
+CES4300000001,Transportation and warehousing,2026-09,6608.7,1.871349,121.4,preliminary
 CES4422000001,Utilities,2022-01,550.4,0.0,0.0,final
-CES4422000001,Utilities,2022-02,551.0,0.11,0.6,final
-CES4422000001,Utilities,2022-03,551.7,0.24,1.3,final
-CES4422000001,Utilities,2022-04,553.9,0.64,3.5,final
-CES4422000001,Utilities,2022-05,555.7,0.96,5.3,final
-CES4422000001,Utilities,2022-06,557.1,1.22,6.7,final
-CES4422000001,Utilities,2022-07,560.4,1.82,10.0,final
-CES4422000001,Utilities,2022-08,562.8,2.25,12.4,final
-CES4422000001,Utilities,2022-09,564.2,2.51,13.8,final
-CES4422000001,Utilities,2022-10,566.6,2.94,16.2,final
-CES4422000001,Utilities,2022-11,567.2,3.05,16.8,final
-CES4422000001,Utilities,2022-12,568.3,3.25,17.9,final
-CES4422000001,Utilities,2023-01,567.9,3.18,17.5,final
-CES4422000001,Utilities,2023-02,568.1,3.22,17.7,final
-CES4422000001,Utilities,2023-03,571.2,3.78,20.8,final
-CES4422000001,Utilities,2023-04,574.2,4.32,23.8,final
-CES4422000001,Utilities,2023-05,574.8,4.43,24.4,final
-CES4422000001,Utilities,2023-06,575.6,4.58,25.2,final
-CES4422000001,Utilities,2023-07,574.1,4.31,23.7,final
-CES4422000001,Utilities,2023-08,577.0,4.83,26.6,final
-CES4422000001,Utilities,2023-09,579.5,5.29,29.1,final
-CES4422000001,Utilities,2023-10,581.4,5.63,31.0,final
-CES4422000001,Utilities,2023-11,582.3,5.8,31.9,final
+CES4422000001,Utilities,2022-02,551.0,0.109012,0.6,final
+CES4422000001,Utilities,2022-03,551.7,0.236192,1.3,final
+CES4422000001,Utilities,2022-04,553.9,0.635901,3.5,final
+CES4422000001,Utilities,2022-05,555.7,0.962936,5.3,final
+CES4422000001,Utilities,2022-06,557.1,1.217297,6.7,final
+CES4422000001,Utilities,2022-07,560.4,1.81686,10.0,final
+CES4422000001,Utilities,2022-08,562.8,2.252907,12.4,final
+CES4422000001,Utilities,2022-09,564.2,2.507267,13.8,final
+CES4422000001,Utilities,2022-10,566.6,2.943314,16.2,final
+CES4422000001,Utilities,2022-11,567.2,3.052326,16.8,final
+CES4422000001,Utilities,2022-12,568.3,3.25218,17.9,final
+CES4422000001,Utilities,2023-01,567.9,3.179506,17.5,final
+CES4422000001,Utilities,2023-02,568.1,3.215843,17.7,final
+CES4422000001,Utilities,2023-03,571.2,3.77907,20.8,final
+CES4422000001,Utilities,2023-04,574.2,4.324128,23.8,final
+CES4422000001,Utilities,2023-05,574.8,4.43314,24.4,final
+CES4422000001,Utilities,2023-06,575.6,4.578488,25.2,final
+CES4422000001,Utilities,2023-07,574.1,4.305959,23.7,final
+CES4422000001,Utilities,2023-08,577.0,4.832849,26.6,final
+CES4422000001,Utilities,2023-09,579.5,5.287064,29.1,final
+CES4422000001,Utilities,2023-10,581.4,5.632267,31.0,final
+CES4422000001,Utilities,2023-11,582.3,5.795785,31.9,final
 CES4422000001,Utilities,2023-12,584.8,6.25,34.4,final
-CES4422000001,Utilities,2024-01,586.4,6.54,36.0,final
-CES4422000001,Utilities,2024-02,589.9,7.18,39.5,final
-CES4422000001,Utilities,2024-03,588.8,6.98,38.4,final
-CES4422000001,Utilities,2024-04,589.4,7.09,39.0,final
-CES4422000001,Utilities,2024-05,590.6,7.3,40.2,final
-CES4422000001,Utilities,2024-06,592.4,7.63,42.0,final
-CES4422000001,Utilities,2024-07,592.5,7.65,42.1,final
-CES4422000001,Utilities,2024-08,593.8,7.89,43.4,final
-CES4422000001,Utilities,2024-09,597.0,8.47,46.6,final
-CES4422000001,Utilities,2024-10,596.3,8.34,45.9,final
-CES4422000001,Utilities,2024-11,596.5,8.38,46.1,final
-CES4422000001,Utilities,2024-12,595.9,8.27,45.5,final
-CES4422000001,Utilities,2025-01,597.0,8.47,46.6,final
-CES4422000001,Utilities,2025-02,598.8,8.79,48.4,final
-CES4422000001,Utilities,2025-03,600.4,9.08,50.0,final
-CES4422000001,Utilities,2025-04,599.1,8.85,48.7,final
-CES4422000001,Utilities,2025-05,601.7,9.32,51.3,final
-CES4422000001,Utilities,2025-06,602.2,9.41,51.8,final
-CES4422000001,Utilities,2025-07,602.6,9.48,52.2,final
-CES4422000001,Utilities,2025-08,601.4,9.27,51.0,final
-CES4422000001,Utilities,2025-09,601.4,9.27,51.0,final
-CES4422000001,Utilities,2025-10,601.9,9.36,51.5,final
-CES4422000001,Utilities,2025-11,603.8,9.7,53.4,final
-CES4422000001,Utilities,2025-12,604.5,9.83,54.1,final
-CES4422000001,Utilities,2026-01,604.7,9.87,54.3,final
-CES4422000001,Utilities,2026-02,606.3,10.16,55.9,final
-CES4422000001,Utilities,2026-03,605.8,10.07,55.4,final
-CES4422000001,Utilities,2026-04,606.8,10.25,56.4,final
-CES4422000001,Utilities,2026-05,607.6,10.39,57.2,final
-CES4422000001,Utilities,2026-06,607.8,10.43,57.4,final
-CES4422000001,Utilities,2026-07,608.9,10.63,58.5,final
-CES4422000001,Utilities,2026-08,611.0,11.01,60.6,preliminary
-CES4422000001,Utilities,2026-09,611.5,11.1,61.1,preliminary
+CES4422000001,Utilities,2024-01,586.4,6.540698,36.0,final
+CES4422000001,Utilities,2024-02,589.9,7.176599,39.5,final
+CES4422000001,Utilities,2024-03,588.8,6.976744,38.4,final
+CES4422000001,Utilities,2024-04,589.4,7.085756,39.0,final
+CES4422000001,Utilities,2024-05,590.6,7.303779,40.2,final
+CES4422000001,Utilities,2024-06,592.4,7.630814,42.0,final
+CES4422000001,Utilities,2024-07,592.5,7.648983,42.1,final
+CES4422000001,Utilities,2024-08,593.8,7.885174,43.4,final
+CES4422000001,Utilities,2024-09,597.0,8.46657,46.6,final
+CES4422000001,Utilities,2024-10,596.3,8.33939,45.9,final
+CES4422000001,Utilities,2024-11,596.5,8.375727,46.1,final
+CES4422000001,Utilities,2024-12,595.9,8.266715,45.5,final
+CES4422000001,Utilities,2025-01,597.0,8.46657,46.6,final
+CES4422000001,Utilities,2025-02,598.8,8.793605,48.4,final
+CES4422000001,Utilities,2025-03,600.4,9.084302,50.0,final
+CES4422000001,Utilities,2025-04,599.1,8.84811,48.7,final
+CES4422000001,Utilities,2025-05,601.7,9.320494,51.3,final
+CES4422000001,Utilities,2025-06,602.2,9.411337,51.8,final
+CES4422000001,Utilities,2025-07,602.6,9.484012,52.2,final
+CES4422000001,Utilities,2025-08,601.4,9.265988,51.0,final
+CES4422000001,Utilities,2025-09,601.4,9.265988,51.0,final
+CES4422000001,Utilities,2025-10,601.9,9.356831,51.5,final
+CES4422000001,Utilities,2025-11,603.8,9.702035,53.4,final
+CES4422000001,Utilities,2025-12,604.5,9.829215,54.1,final
+CES4422000001,Utilities,2026-01,604.7,9.865552,54.3,final
+CES4422000001,Utilities,2026-02,606.3,10.15625,55.9,final
+CES4422000001,Utilities,2026-03,605.8,10.065407,55.4,final
+CES4422000001,Utilities,2026-04,606.8,10.247093,56.4,final
+CES4422000001,Utilities,2026-05,607.6,10.392442,57.2,final
+CES4422000001,Utilities,2026-06,607.8,10.428779,57.4,final
+CES4422000001,Utilities,2026-07,608.9,10.628634,58.5,final
+CES4422000001,Utilities,2026-08,611.0,11.010174,60.6,preliminary
+CES4422000001,Utilities,2026-09,611.5,11.101017,61.1,preliminary
 USINFO,Information,2022-01,2984.0,0.0,0.0,final
-USINFO,Information,2022-02,2990.0,0.2,6.0,final
-USINFO,Information,2022-03,3018.0,1.14,34.0,final
-USINFO,Information,2022-04,3034.0,1.68,50.0,final
-USINFO,Information,2022-05,3057.0,2.45,73.0,final
-USINFO,Information,2022-06,3076.0,3.08,92.0,final
-USINFO,Information,2022-07,3094.0,3.69,110.0,final
-USINFO,Information,2022-08,3097.0,3.79,113.0,final
-USINFO,Information,2022-09,3095.0,3.72,111.0,final
-USINFO,Information,2022-10,3100.0,3.89,116.0,final
-USINFO,Information,2022-11,3115.0,4.39,131.0,final
-USINFO,Information,2022-12,3092.0,3.62,108.0,final
-USINFO,Information,2023-01,3061.0,2.58,77.0,final
-USINFO,Information,2023-02,3048.0,2.14,64.0,final
-USINFO,Information,2023-03,3049.0,2.18,65.0,final
-USINFO,Information,2023-04,3043.0,1.98,59.0,final
-USINFO,Information,2023-05,3034.0,1.68,50.0,final
-USINFO,Information,2023-06,3021.0,1.24,37.0,final
-USINFO,Information,2023-07,3001.0,0.57,17.0,final
-USINFO,Information,2023-08,2981.0,-0.1,-3.0,final
-USINFO,Information,2023-09,2975.0,-0.3,-9.0,final
-USINFO,Information,2023-10,2951.0,-1.11,-33.0,final
-USINFO,Information,2023-11,2962.0,-0.74,-22.0,final
-USINFO,Information,2023-12,2963.0,-0.7,-21.0,final
-USINFO,Information,2024-01,2963.0,-0.7,-21.0,final
-USINFO,Information,2024-02,2958.0,-0.87,-26.0,final
-USINFO,Information,2024-03,2951.0,-1.11,-33.0,final
-USINFO,Information,2024-04,2940.0,-1.47,-44.0,final
-USINFO,Information,2024-05,2930.0,-1.81,-54.0,final
-USINFO,Information,2024-06,2930.0,-1.81,-54.0,final
-USINFO,Information,2024-07,2917.0,-2.25,-67.0,final
-USINFO,Information,2024-08,2909.0,-2.51,-75.0,final
-USINFO,Information,2024-09,2903.0,-2.71,-81.0,final
-USINFO,Information,2024-10,2887.0,-3.25,-97.0,final
-USINFO,Information,2024-11,2885.0,-3.32,-99.0,final
-USINFO,Information,2024-12,2895.0,-2.98,-89.0,final
-USINFO,Information,2025-01,2877.0,-3.59,-107.0,final
-USINFO,Information,2025-02,2876.0,-3.62,-108.0,final
-USINFO,Information,2025-03,2867.0,-3.92,-117.0,final
-USINFO,Information,2025-04,2865.0,-3.99,-119.0,final
-USINFO,Information,2025-05,2864.0,-4.02,-120.0,final
-USINFO,Information,2025-06,2863.0,-4.05,-121.0,final
-USINFO,Information,2025-07,2861.0,-4.12,-123.0,final
-USINFO,Information,2025-08,2860.0,-4.16,-124.0,final
-USINFO,Information,2025-09,2859.0,-4.19,-125.0,final
-USINFO,Information,2025-10,2853.0,-4.39,-131.0,final
-USINFO,Information,2025-11,2848.0,-4.56,-136.0,final
-USINFO,Information,2025-12,2842.0,-4.76,-142.0,final
-USINFO,Information,2026-01,2815.0,-5.66,-169.0,final
-USINFO,Information,2026-02,2792.0,-6.43,-192.0,final
-USINFO,Information,2026-03,2793.0,-6.4,-191.0,final
-USINFO,Information,2026-04,2787.0,-6.6,-197.0,final
-USINFO,Information,2026-05,2782.0,-6.77,-202.0,final
-USINFO,Information,2026-06,2763.0,-7.41,-221.0,final
-USINFO,Information,2026-07,2767.0,-7.27,-217.0,final
-USINFO,Information,2026-08,2749.0,-7.88,-235.0,preliminary
-USINFO,Information,2026-09,2739.0,-8.21,-245.0,preliminary
+USINFO,Information,2022-02,2990.0,0.201072,6.0,final
+USINFO,Information,2022-03,3018.0,1.13941,34.0,final
+USINFO,Information,2022-04,3034.0,1.675603,50.0,final
+USINFO,Information,2022-05,3057.0,2.446381,73.0,final
+USINFO,Information,2022-06,3076.0,3.08311,92.0,final
+USINFO,Information,2022-07,3094.0,3.686327,110.0,final
+USINFO,Information,2022-08,3097.0,3.786863,113.0,final
+USINFO,Information,2022-09,3095.0,3.719839,111.0,final
+USINFO,Information,2022-10,3100.0,3.887399,116.0,final
+USINFO,Information,2022-11,3115.0,4.39008,131.0,final
+USINFO,Information,2022-12,3092.0,3.619303,108.0,final
+USINFO,Information,2023-01,3061.0,2.580429,77.0,final
+USINFO,Information,2023-02,3048.0,2.144772,64.0,final
+USINFO,Information,2023-03,3049.0,2.178284,65.0,final
+USINFO,Information,2023-04,3043.0,1.977212,59.0,final
+USINFO,Information,2023-05,3034.0,1.675603,50.0,final
+USINFO,Information,2023-06,3021.0,1.239946,37.0,final
+USINFO,Information,2023-07,3001.0,0.569705,17.0,final
+USINFO,Information,2023-08,2981.0,-0.100536,-3.0,final
+USINFO,Information,2023-09,2975.0,-0.301609,-9.0,final
+USINFO,Information,2023-10,2951.0,-1.105898,-33.0,final
+USINFO,Information,2023-11,2962.0,-0.737265,-22.0,final
+USINFO,Information,2023-12,2963.0,-0.703753,-21.0,final
+USINFO,Information,2024-01,2963.0,-0.703753,-21.0,final
+USINFO,Information,2024-02,2958.0,-0.871314,-26.0,final
+USINFO,Information,2024-03,2951.0,-1.105898,-33.0,final
+USINFO,Information,2024-04,2940.0,-1.474531,-44.0,final
+USINFO,Information,2024-05,2930.0,-1.809651,-54.0,final
+USINFO,Information,2024-06,2930.0,-1.809651,-54.0,final
+USINFO,Information,2024-07,2917.0,-2.245308,-67.0,final
+USINFO,Information,2024-08,2909.0,-2.513405,-75.0,final
+USINFO,Information,2024-09,2903.0,-2.714477,-81.0,final
+USINFO,Information,2024-10,2887.0,-3.25067,-97.0,final
+USINFO,Information,2024-11,2885.0,-3.317694,-99.0,final
+USINFO,Information,2024-12,2895.0,-2.982574,-89.0,final
+USINFO,Information,2025-01,2877.0,-3.585791,-107.0,final
+USINFO,Information,2025-02,2876.0,-3.619303,-108.0,final
+USINFO,Information,2025-03,2867.0,-3.920912,-117.0,final
+USINFO,Information,2025-04,2865.0,-3.987936,-119.0,final
+USINFO,Information,2025-05,2864.0,-4.021448,-120.0,final
+USINFO,Information,2025-06,2863.0,-4.05496,-121.0,final
+USINFO,Information,2025-07,2861.0,-4.121984,-123.0,final
+USINFO,Information,2025-08,2860.0,-4.155496,-124.0,final
+USINFO,Information,2025-09,2859.0,-4.189008,-125.0,final
+USINFO,Information,2025-10,2853.0,-4.39008,-131.0,final
+USINFO,Information,2025-11,2848.0,-4.557641,-136.0,final
+USINFO,Information,2025-12,2842.0,-4.758713,-142.0,final
+USINFO,Information,2026-01,2815.0,-5.663539,-169.0,final
+USINFO,Information,2026-02,2792.0,-6.434316,-192.0,final
+USINFO,Information,2026-03,2793.0,-6.400804,-191.0,final
+USINFO,Information,2026-04,2787.0,-6.601877,-197.0,final
+USINFO,Information,2026-05,2782.0,-6.769437,-202.0,final
+USINFO,Information,2026-06,2763.0,-7.406166,-221.0,final
+USINFO,Information,2026-07,2767.0,-7.272118,-217.0,final
+USINFO,Information,2026-08,2749.0,-7.875335,-235.0,preliminary
+USINFO,Information,2026-09,2739.0,-8.210456,-245.0,preliminary
 USFIRE,Financial activities,2022-01,8934.0,0.0,0.0,final
-USFIRE,Financial activities,2022-02,8976.0,0.47,42.0,final
-USFIRE,Financial activities,2022-03,9002.0,0.76,68.0,final
-USFIRE,Financial activities,2022-04,9037.0,1.15,103.0,final
-USFIRE,Financial activities,2022-05,9049.0,1.29,115.0,final
-USFIRE,Financial activities,2022-06,9059.0,1.4,125.0,final
-USFIRE,Financial activities,2022-07,9073.0,1.56,139.0,final
-USFIRE,Financial activities,2022-08,9092.0,1.77,158.0,final
-USFIRE,Financial activities,2022-09,9097.0,1.82,163.0,final
-USFIRE,Financial activities,2022-10,9122.0,2.1,188.0,final
-USFIRE,Financial activities,2022-11,9136.0,2.26,202.0,final
-USFIRE,Financial activities,2022-12,9146.0,2.37,212.0,final
-USFIRE,Financial activities,2023-01,9144.0,2.35,210.0,final
-USFIRE,Financial activities,2023-02,9152.0,2.44,218.0,final
-USFIRE,Financial activities,2023-03,9150.0,2.42,216.0,final
-USFIRE,Financial activities,2023-04,9180.0,2.75,246.0,final
-USFIRE,Financial activities,2023-05,9175.0,2.7,241.0,final
-USFIRE,Financial activities,2023-06,9182.0,2.78,248.0,final
-USFIRE,Financial activities,2023-07,9193.0,2.9,259.0,final
-USFIRE,Financial activities,2023-08,9193.0,2.9,259.0,final
-USFIRE,Financial activities,2023-09,9186.0,2.82,252.0,final
-USFIRE,Financial activities,2023-10,9179.0,2.74,245.0,final
-USFIRE,Financial activities,2023-11,9172.0,2.66,238.0,final
-USFIRE,Financial activities,2023-12,9176.0,2.71,242.0,final
-USFIRE,Financial activities,2024-01,9165.0,2.59,231.0,final
-USFIRE,Financial activities,2024-02,9151.0,2.43,217.0,final
-USFIRE,Financial activities,2024-03,9149.0,2.41,215.0,final
-USFIRE,Financial activities,2024-04,9144.0,2.35,210.0,final
-USFIRE,Financial activities,2024-05,9147.0,2.38,213.0,final
-USFIRE,Financial activities,2024-06,9159.0,2.52,225.0,final
-USFIRE,Financial activities,2024-07,9154.0,2.46,220.0,final
-USFIRE,Financial activities,2024-08,9162.0,2.55,228.0,final
-USFIRE,Financial activities,2024-09,9162.0,2.55,228.0,final
-USFIRE,Financial activities,2024-10,9164.0,2.57,230.0,final
-USFIRE,Financial activities,2024-11,9173.0,2.68,239.0,final
-USFIRE,Financial activities,2024-12,9179.0,2.74,245.0,final
-USFIRE,Financial activities,2025-01,9187.0,2.83,253.0,final
-USFIRE,Financial activities,2025-02,9199.0,2.97,265.0,final
-USFIRE,Financial activities,2025-03,9201.0,2.99,267.0,final
-USFIRE,Financial activities,2025-04,9205.0,3.03,271.0,final
-USFIRE,Financial activities,2025-05,9211.0,3.1,277.0,final
-USFIRE,Financial activities,2025-06,9204.0,3.02,270.0,final
-USFIRE,Financial activities,2025-07,9204.0,3.02,270.0,final
-USFIRE,Financial activities,2025-08,9185.0,2.81,251.0,final
-USFIRE,Financial activities,2025-09,9189.0,2.85,255.0,final
-USFIRE,Financial activities,2025-10,9184.0,2.8,250.0,final
-USFIRE,Financial activities,2025-11,9185.0,2.81,251.0,final
-USFIRE,Financial activities,2025-12,9186.0,2.82,252.0,final
-USFIRE,Financial activities,2026-01,9147.0,2.38,213.0,final
-USFIRE,Financial activities,2026-02,9149.0,2.41,215.0,final
-USFIRE,Financial activities,2026-03,9132.0,2.22,198.0,final
-USFIRE,Financial activities,2026-04,9126.0,2.15,192.0,final
-USFIRE,Financial activities,2026-05,9106.0,1.93,172.0,final
-USFIRE,Financial activities,2026-06,9108.0,1.95,174.0,final
-USFIRE,Financial activities,2026-07,9098.0,1.84,164.0,final
-USFIRE,Financial activities,2026-08,9089.0,1.73,155.0,preliminary
-USFIRE,Financial activities,2026-09,9082.0,1.66,148.0,preliminary
+USFIRE,Financial activities,2022-02,8976.0,0.470114,42.0,final
+USFIRE,Financial activities,2022-03,9002.0,0.761137,68.0,final
+USFIRE,Financial activities,2022-04,9037.0,1.152899,103.0,final
+USFIRE,Financial activities,2022-05,9049.0,1.287217,115.0,final
+USFIRE,Financial activities,2022-06,9059.0,1.399149,125.0,final
+USFIRE,Financial activities,2022-07,9073.0,1.555854,139.0,final
+USFIRE,Financial activities,2022-08,9092.0,1.768525,158.0,final
+USFIRE,Financial activities,2022-09,9097.0,1.824491,163.0,final
+USFIRE,Financial activities,2022-10,9122.0,2.104321,188.0,final
+USFIRE,Financial activities,2022-11,9136.0,2.261025,202.0,final
+USFIRE,Financial activities,2022-12,9146.0,2.372957,212.0,final
+USFIRE,Financial activities,2023-01,9144.0,2.350571,210.0,final
+USFIRE,Financial activities,2023-02,9152.0,2.440116,218.0,final
+USFIRE,Financial activities,2023-03,9150.0,2.41773,216.0,final
+USFIRE,Financial activities,2023-04,9180.0,2.753526,246.0,final
+USFIRE,Financial activities,2023-05,9175.0,2.69756,241.0,final
+USFIRE,Financial activities,2023-06,9182.0,2.775912,248.0,final
+USFIRE,Financial activities,2023-07,9193.0,2.899037,259.0,final
+USFIRE,Financial activities,2023-08,9193.0,2.899037,259.0,final
+USFIRE,Financial activities,2023-09,9186.0,2.820685,252.0,final
+USFIRE,Financial activities,2023-10,9179.0,2.742333,245.0,final
+USFIRE,Financial activities,2023-11,9172.0,2.66398,238.0,final
+USFIRE,Financial activities,2023-12,9176.0,2.708753,242.0,final
+USFIRE,Financial activities,2024-01,9165.0,2.585628,231.0,final
+USFIRE,Financial activities,2024-02,9151.0,2.428923,217.0,final
+USFIRE,Financial activities,2024-03,9149.0,2.406537,215.0,final
+USFIRE,Financial activities,2024-04,9144.0,2.350571,210.0,final
+USFIRE,Financial activities,2024-05,9147.0,2.38415,213.0,final
+USFIRE,Financial activities,2024-06,9159.0,2.518469,225.0,final
+USFIRE,Financial activities,2024-07,9154.0,2.462503,220.0,final
+USFIRE,Financial activities,2024-08,9162.0,2.552048,228.0,final
+USFIRE,Financial activities,2024-09,9162.0,2.552048,228.0,final
+USFIRE,Financial activities,2024-10,9164.0,2.574435,230.0,final
+USFIRE,Financial activities,2024-11,9173.0,2.675173,239.0,final
+USFIRE,Financial activities,2024-12,9179.0,2.742333,245.0,final
+USFIRE,Financial activities,2025-01,9187.0,2.831878,253.0,final
+USFIRE,Financial activities,2025-02,9199.0,2.966197,265.0,final
+USFIRE,Financial activities,2025-03,9201.0,2.988583,267.0,final
+USFIRE,Financial activities,2025-04,9205.0,3.033356,271.0,final
+USFIRE,Financial activities,2025-05,9211.0,3.100515,277.0,final
+USFIRE,Financial activities,2025-06,9204.0,3.022163,270.0,final
+USFIRE,Financial activities,2025-07,9204.0,3.022163,270.0,final
+USFIRE,Financial activities,2025-08,9185.0,2.809492,251.0,final
+USFIRE,Financial activities,2025-09,9189.0,2.854265,255.0,final
+USFIRE,Financial activities,2025-10,9184.0,2.798299,250.0,final
+USFIRE,Financial activities,2025-11,9185.0,2.809492,251.0,final
+USFIRE,Financial activities,2025-12,9186.0,2.820685,252.0,final
+USFIRE,Financial activities,2026-01,9147.0,2.38415,213.0,final
+USFIRE,Financial activities,2026-02,9149.0,2.406537,215.0,final
+USFIRE,Financial activities,2026-03,9132.0,2.216253,198.0,final
+USFIRE,Financial activities,2026-04,9126.0,2.149093,192.0,final
+USFIRE,Financial activities,2026-05,9106.0,1.925229,172.0,final
+USFIRE,Financial activities,2026-06,9108.0,1.947616,174.0,final
+USFIRE,Financial activities,2026-07,9098.0,1.835684,164.0,final
+USFIRE,Financial activities,2026-08,9089.0,1.734945,155.0,preliminary
+USFIRE,Financial activities,2026-09,9082.0,1.656593,148.0,preliminary
 USPBS,Professional and business services,2022-01,22183.0,0.0,0.0,final
-USPBS,Professional and business services,2022-02,22372.0,0.85,189.0,final
-USPBS,Professional and business services,2022-03,22483.0,1.35,300.0,final
-USPBS,Professional and business services,2022-04,22468.0,1.28,285.0,final
-USPBS,Professional and business services,2022-05,22503.0,1.44,320.0,final
-USPBS,Professional and business services,2022-06,22564.0,1.72,381.0,final
-USPBS,Professional and business services,2022-07,22658.0,2.14,475.0,final
-USPBS,Professional and business services,2022-08,22697.0,2.32,514.0,final
-USPBS,Professional and business services,2022-09,22744.0,2.53,561.0,final
-USPBS,Professional and business services,2022-10,22783.0,2.7,600.0,final
-USPBS,Professional and business services,2022-11,22792.0,2.75,609.0,final
-USPBS,Professional and business services,2022-12,22774.0,2.66,591.0,final
-USPBS,Professional and business services,2023-01,22791.0,2.74,608.0,final
-USPBS,Professional and business services,2023-02,22837.0,2.95,654.0,final
-USPBS,Professional and business services,2023-03,22832.0,2.93,649.0,final
-USPBS,Professional and business services,2023-04,22837.0,2.95,654.0,final
-USPBS,Professional and business services,2023-05,22850.0,3.01,667.0,final
-USPBS,Professional and business services,2023-06,22826.0,2.9,643.0,final
-USPBS,Professional and business services,2023-07,22779.0,2.69,596.0,final
-USPBS,Professional and business services,2023-08,22768.0,2.64,585.0,final
-USPBS,Professional and business services,2023-09,22743.0,2.52,560.0,final
-USPBS,Professional and business services,2023-10,22715.0,2.4,532.0,final
-USPBS,Professional and business services,2023-11,22661.0,2.15,478.0,final
-USPBS,Professional and business services,2023-12,22643.0,2.07,460.0,final
-USPBS,Professional and business services,2024-01,22668.0,2.19,485.0,final
-USPBS,Professional and business services,2024-02,22658.0,2.14,475.0,final
-USPBS,Professional and business services,2024-03,22631.0,2.02,448.0,final
-USPBS,Professional and business services,2024-04,22616.0,1.95,433.0,final
-USPBS,Professional and business services,2024-05,22633.0,2.03,450.0,final
-USPBS,Professional and business services,2024-06,22606.0,1.91,423.0,final
-USPBS,Professional and business services,2024-07,22584.0,1.81,401.0,final
-USPBS,Professional and business services,2024-08,22544.0,1.63,361.0,final
-USPBS,Professional and business services,2024-09,22525.0,1.54,342.0,final
-USPBS,Professional and business services,2024-10,22486.0,1.37,303.0,final
-USPBS,Professional and business services,2024-11,22499.0,1.42,316.0,final
-USPBS,Professional and business services,2024-12,22532.0,1.57,349.0,final
-USPBS,Professional and business services,2025-01,22480.0,1.34,297.0,final
-USPBS,Professional and business services,2025-02,22473.0,1.31,290.0,final
-USPBS,Professional and business services,2025-03,22457.0,1.24,274.0,final
-USPBS,Professional and business services,2025-04,22470.0,1.29,287.0,final
-USPBS,Professional and business services,2025-05,22450.0,1.2,267.0,final
-USPBS,Professional and business services,2025-06,22419.0,1.06,236.0,final
-USPBS,Professional and business services,2025-07,22403.0,0.99,220.0,final
-USPBS,Professional and business services,2025-08,22375.0,0.87,192.0,final
-USPBS,Professional and business services,2025-09,22359.0,0.79,176.0,final
-USPBS,Professional and business services,2025-10,22335.0,0.69,152.0,final
-USPBS,Professional and business services,2025-11,22391.0,0.94,208.0,final
-USPBS,Professional and business services,2025-12,22372.0,0.85,189.0,final
-USPBS,Professional and business services,2026-01,22408.0,1.01,225.0,final
-USPBS,Professional and business services,2026-02,22412.0,1.03,229.0,final
-USPBS,Professional and business services,2026-03,22440.0,1.16,257.0,final
-USPBS,Professional and business services,2026-04,22460.0,1.25,277.0,final
-USPBS,Professional and business services,2026-05,22466.0,1.28,283.0,final
-USPBS,Professional and business services,2026-06,22502.0,1.44,319.0,final
-USPBS,Professional and business services,2026-07,22496.0,1.41,313.0,final
-USPBS,Professional and business services,2026-08,22491.0,1.39,308.0,preliminary
-USPBS,Professional and business services,2026-09,22482.0,1.35,299.0,preliminary
+USPBS,Professional and business services,2022-02,22372.0,0.852004,189.0,final
+USPBS,Professional and business services,2022-03,22483.0,1.352387,300.0,final
+USPBS,Professional and business services,2022-04,22468.0,1.284768,285.0,final
+USPBS,Professional and business services,2022-05,22503.0,1.442546,320.0,final
+USPBS,Professional and business services,2022-06,22564.0,1.717531,381.0,final
+USPBS,Professional and business services,2022-07,22658.0,2.141279,475.0,final
+USPBS,Professional and business services,2022-08,22697.0,2.31709,514.0,final
+USPBS,Professional and business services,2022-09,22744.0,2.528964,561.0,final
+USPBS,Professional and business services,2022-10,22783.0,2.704774,600.0,final
+USPBS,Professional and business services,2022-11,22792.0,2.745346,609.0,final
+USPBS,Professional and business services,2022-12,22774.0,2.664202,591.0,final
+USPBS,Professional and business services,2023-01,22791.0,2.740838,608.0,final
+USPBS,Professional and business services,2023-02,22837.0,2.948204,654.0,final
+USPBS,Professional and business services,2023-03,22832.0,2.925664,649.0,final
+USPBS,Professional and business services,2023-04,22837.0,2.948204,654.0,final
+USPBS,Professional and business services,2023-05,22850.0,3.006807,667.0,final
+USPBS,Professional and business services,2023-06,22826.0,2.898616,643.0,final
+USPBS,Professional and business services,2023-07,22779.0,2.686742,596.0,final
+USPBS,Professional and business services,2023-08,22768.0,2.637155,585.0,final
+USPBS,Professional and business services,2023-09,22743.0,2.524456,560.0,final
+USPBS,Professional and business services,2023-10,22715.0,2.398233,532.0,final
+USPBS,Professional and business services,2023-11,22661.0,2.154803,478.0,final
+USPBS,Professional and business services,2023-12,22643.0,2.07366,460.0,final
+USPBS,Professional and business services,2024-01,22668.0,2.186359,485.0,final
+USPBS,Professional and business services,2024-02,22658.0,2.141279,475.0,final
+USPBS,Professional and business services,2024-03,22631.0,2.019565,448.0,final
+USPBS,Professional and business services,2024-04,22616.0,1.951945,433.0,final
+USPBS,Professional and business services,2024-05,22633.0,2.02858,450.0,final
+USPBS,Professional and business services,2024-06,22606.0,1.906866,423.0,final
+USPBS,Professional and business services,2024-07,22584.0,1.807691,401.0,final
+USPBS,Professional and business services,2024-08,22544.0,1.627372,361.0,final
+USPBS,Professional and business services,2024-09,22525.0,1.541721,342.0,final
+USPBS,Professional and business services,2024-10,22486.0,1.365911,303.0,final
+USPBS,Professional and business services,2024-11,22499.0,1.424514,316.0,final
+USPBS,Professional and business services,2024-12,22532.0,1.573277,349.0,final
+USPBS,Professional and business services,2025-01,22480.0,1.338863,297.0,final
+USPBS,Professional and business services,2025-02,22473.0,1.307307,290.0,final
+USPBS,Professional and business services,2025-03,22457.0,1.23518,274.0,final
+USPBS,Professional and business services,2025-04,22470.0,1.293784,287.0,final
+USPBS,Professional and business services,2025-05,22450.0,1.203624,267.0,final
+USPBS,Professional and business services,2025-06,22419.0,1.063878,236.0,final
+USPBS,Professional and business services,2025-07,22403.0,0.99175,220.0,final
+USPBS,Professional and business services,2025-08,22375.0,0.865528,192.0,final
+USPBS,Professional and business services,2025-09,22359.0,0.7934,176.0,final
+USPBS,Professional and business services,2025-10,22335.0,0.685209,152.0,final
+USPBS,Professional and business services,2025-11,22391.0,0.937655,208.0,final
+USPBS,Professional and business services,2025-12,22372.0,0.852004,189.0,final
+USPBS,Professional and business services,2026-01,22408.0,1.01429,225.0,final
+USPBS,Professional and business services,2026-02,22412.0,1.032322,229.0,final
+USPBS,Professional and business services,2026-03,22440.0,1.158545,257.0,final
+USPBS,Professional and business services,2026-04,22460.0,1.248704,277.0,final
+USPBS,Professional and business services,2026-05,22466.0,1.275752,283.0,final
+USPBS,Professional and business services,2026-06,22502.0,1.438038,319.0,final
+USPBS,Professional and business services,2026-07,22496.0,1.41099,313.0,final
+USPBS,Professional and business services,2026-08,22491.0,1.388451,308.0,preliminary
+USPBS,Professional and business services,2026-09,22482.0,1.347879,299.0,preliminary
 CES6561000001,Private educational services,2022-01,3708.7,0.0,0.0,final
-CES6561000001,Private educational services,2022-02,3727.6,0.51,18.9,final
-CES6561000001,Private educational services,2022-03,3740.4,0.85,31.7,final
-CES6561000001,Private educational services,2022-04,3736.4,0.75,27.7,final
-CES6561000001,Private educational services,2022-05,3741.8,0.89,33.1,final
-CES6561000001,Private educational services,2022-06,3753.8,1.22,45.1,final
-CES6561000001,Private educational services,2022-07,3777.9,1.87,69.2,final
-CES6561000001,Private educational services,2022-08,3783.5,2.02,74.8,final
-CES6561000001,Private educational services,2022-09,3785.3,2.07,76.6,final
-CES6561000001,Private educational services,2022-10,3787.3,2.12,78.6,final
-CES6561000001,Private educational services,2022-11,3798.2,2.41,89.5,final
-CES6561000001,Private educational services,2022-12,3755.5,1.26,46.8,final
-CES6561000001,Private educational services,2023-01,3778.9,1.89,70.2,final
-CES6561000001,Private educational services,2023-02,3785.9,2.08,77.2,final
-CES6561000001,Private educational services,2023-03,3792.4,2.26,83.7,final
-CES6561000001,Private educational services,2023-04,3803.3,2.55,94.6,final
-CES6561000001,Private educational services,2023-05,3838.5,3.5,129.8,final
-CES6561000001,Private educational services,2023-06,3850.1,3.81,141.4,final
-CES6561000001,Private educational services,2023-07,3858.7,4.04,150.0,final
-CES6561000001,Private educational services,2023-08,3867.6,4.28,158.9,final
-CES6561000001,Private educational services,2023-09,3879.2,4.6,170.5,final
-CES6561000001,Private educational services,2023-10,3895.6,5.04,186.9,final
-CES6561000001,Private educational services,2023-11,3907.3,5.35,198.6,final
-CES6561000001,Private educational services,2023-12,3916.1,5.59,207.4,final
-CES6561000001,Private educational services,2024-01,3937.6,6.17,228.9,final
-CES6561000001,Private educational services,2024-02,3938.9,6.21,230.2,final
-CES6561000001,Private educational services,2024-03,3948.8,6.47,240.1,final
-CES6561000001,Private educational services,2024-04,3954.1,6.62,245.4,final
-CES6561000001,Private educational services,2024-05,3958.8,6.74,250.1,final
-CES6561000001,Private educational services,2024-06,3979.9,7.31,271.2,final
-CES6561000001,Private educational services,2024-07,3973.1,7.13,264.4,final
-CES6561000001,Private educational services,2024-08,3985.9,7.47,277.2,final
-CES6561000001,Private educational services,2024-09,4017.1,8.32,308.4,final
-CES6561000001,Private educational services,2024-10,4031.5,8.7,322.8,final
-CES6561000001,Private educational services,2024-11,4038.6,8.9,329.9,final
-CES6561000001,Private educational services,2024-12,4044.0,9.04,335.3,final
-CES6561000001,Private educational services,2025-01,4045.3,9.08,336.6,final
-CES6561000001,Private educational services,2025-02,4055.5,9.35,346.8,final
-CES6561000001,Private educational services,2025-03,4055.5,9.35,346.8,final
-CES6561000001,Private educational services,2025-04,4063.5,9.57,354.8,final
-CES6561000001,Private educational services,2025-05,4058.7,9.44,350.0,final
-CES6561000001,Private educational services,2025-06,4047.7,9.14,339.0,final
-CES6561000001,Private educational services,2025-07,4052.0,9.26,343.3,final
-CES6561000001,Private educational services,2025-08,4052.2,9.26,343.5,final
-CES6561000001,Private educational services,2025-09,4050.3,9.21,341.6,final
-CES6561000001,Private educational services,2025-10,4047.2,9.13,338.5,final
-CES6561000001,Private educational services,2025-11,4043.3,9.02,334.6,final
-CES6561000001,Private educational services,2025-12,4039.3,8.91,330.6,final
-CES6561000001,Private educational services,2026-01,4052.0,9.26,343.3,final
-CES6561000001,Private educational services,2026-02,4033.1,8.75,324.4,final
-CES6561000001,Private educational services,2026-03,4035.6,8.81,326.9,final
-CES6561000001,Private educational services,2026-04,4044.8,9.06,336.1,final
-CES6561000001,Private educational services,2026-05,4034.0,8.77,325.3,final
-CES6561000001,Private educational services,2026-06,4045.9,9.09,337.2,final
-CES6561000001,Private educational services,2026-07,4046.1,9.1,337.4,final
-CES6561000001,Private educational services,2026-08,4049.6,9.19,340.9,preliminary
-CES6561000001,Private educational services,2026-09,4046.4,9.11,337.7,preliminary
+CES6561000001,Private educational services,2022-02,3727.6,0.509613,18.9,final
+CES6561000001,Private educational services,2022-03,3740.4,0.854747,31.7,final
+CES6561000001,Private educational services,2022-04,3736.4,0.746892,27.7,final
+CES6561000001,Private educational services,2022-05,3741.8,0.892496,33.1,final
+CES6561000001,Private educational services,2022-06,3753.8,1.21606,45.1,final
+CES6561000001,Private educational services,2022-07,3777.9,1.865883,69.2,final
+CES6561000001,Private educational services,2022-08,3783.5,2.016879,74.8,final
+CES6561000001,Private educational services,2022-09,3785.3,2.065414,76.6,final
+CES6561000001,Private educational services,2022-10,3787.3,2.119341,78.6,final
+CES6561000001,Private educational services,2022-11,3798.2,2.413245,89.5,final
+CES6561000001,Private educational services,2022-12,3755.5,1.261898,46.8,final
+CES6561000001,Private educational services,2023-01,3778.9,1.892847,70.2,final
+CES6561000001,Private educational services,2023-02,3785.9,2.081592,77.2,final
+CES6561000001,Private educational services,2023-03,3792.4,2.256856,83.7,final
+CES6561000001,Private educational services,2023-04,3803.3,2.550759,94.6,final
+CES6561000001,Private educational services,2023-05,3838.5,3.499879,129.8,final
+CES6561000001,Private educational services,2023-06,3850.1,3.812657,141.4,final
+CES6561000001,Private educational services,2023-07,3858.7,4.044544,150.0,final
+CES6561000001,Private educational services,2023-08,3867.6,4.28452,158.9,final
+CES6561000001,Private educational services,2023-09,3879.2,4.597298,170.5,final
+CES6561000001,Private educational services,2023-10,3895.6,5.039502,186.9,final
+CES6561000001,Private educational services,2023-11,3907.3,5.354976,198.6,final
+CES6561000001,Private educational services,2023-12,3916.1,5.592256,207.4,final
+CES6561000001,Private educational services,2024-01,3937.6,6.171974,228.9,final
+CES6561000001,Private educational services,2024-02,3938.9,6.207027,230.2,final
+CES6561000001,Private educational services,2024-03,3948.8,6.473967,240.1,final
+CES6561000001,Private educational services,2024-04,3954.1,6.616874,245.4,final
+CES6561000001,Private educational services,2024-05,3958.8,6.743603,250.1,final
+CES6561000001,Private educational services,2024-06,3979.9,7.312535,271.2,final
+CES6561000001,Private educational services,2024-07,3973.1,7.129183,264.4,final
+CES6561000001,Private educational services,2024-08,3985.9,7.474317,277.2,final
+CES6561000001,Private educational services,2024-09,4017.1,8.315582,308.4,final
+CES6561000001,Private educational services,2024-10,4031.5,8.703858,322.8,final
+CES6561000001,Private educational services,2024-11,4038.6,8.8953,329.9,final
+CES6561000001,Private educational services,2024-12,4044.0,9.040904,335.3,final
+CES6561000001,Private educational services,2025-01,4045.3,9.075957,336.6,final
+CES6561000001,Private educational services,2025-02,4055.5,9.350986,346.8,final
+CES6561000001,Private educational services,2025-03,4055.5,9.350986,346.8,final
+CES6561000001,Private educational services,2025-04,4063.5,9.566695,354.8,final
+CES6561000001,Private educational services,2025-05,4058.7,9.437269,350.0,final
+CES6561000001,Private educational services,2025-06,4047.7,9.140669,339.0,final
+CES6561000001,Private educational services,2025-07,4052.0,9.256613,343.3,final
+CES6561000001,Private educational services,2025-08,4052.2,9.262006,343.5,final
+CES6561000001,Private educational services,2025-09,4050.3,9.210775,341.6,final
+CES6561000001,Private educational services,2025-10,4047.2,9.127187,338.5,final
+CES6561000001,Private educational services,2025-11,4043.3,9.022029,334.6,final
+CES6561000001,Private educational services,2025-12,4039.3,8.914175,330.6,final
+CES6561000001,Private educational services,2026-01,4052.0,9.256613,343.3,final
+CES6561000001,Private educational services,2026-02,4033.1,8.747,324.4,final
+CES6561000001,Private educational services,2026-03,4035.6,8.814409,326.9,final
+CES6561000001,Private educational services,2026-04,4044.8,9.062475,336.1,final
+CES6561000001,Private educational services,2026-05,4034.0,8.771268,325.3,final
+CES6561000001,Private educational services,2026-06,4045.9,9.092135,337.2,final
+CES6561000001,Private educational services,2026-07,4046.1,9.097527,337.4,final
+CES6561000001,Private educational services,2026-08,4049.6,9.1919,340.9,preliminary
+CES6561000001,Private educational services,2026-09,4046.4,9.105617,337.7,preliminary
 CES6562000001,Health care and social assistance,2022-01,20160.2,0.0,0.0,final
-CES6562000001,Health care and social assistance,2022-02,20256.3,0.48,96.1,final
-CES6562000001,Health care and social assistance,2022-03,20316.5,0.78,156.3,final
-CES6562000001,Health care and social assistance,2022-04,20380.8,1.09,220.6,final
-CES6562000001,Health care and social assistance,2022-05,20434.5,1.36,274.3,final
-CES6562000001,Health care and social assistance,2022-06,20513.3,1.75,353.1,final
-CES6562000001,Health care and social assistance,2022-07,20616.7,2.26,456.5,final
-CES6562000001,Health care and social assistance,2022-08,20684.8,2.6,524.6,final
-CES6562000001,Health care and social assistance,2022-09,20766.3,3.01,606.1,final
-CES6562000001,Health care and social assistance,2022-10,20855.0,3.45,694.8,final
-CES6562000001,Health care and social assistance,2022-11,20931.1,3.82,770.9,final
-CES6562000001,Health care and social assistance,2022-12,21017.7,4.25,857.5,final
-CES6562000001,Health care and social assistance,2023-01,21103.6,4.68,943.4,final
-CES6562000001,Health care and social assistance,2023-02,21170.1,5.01,1009.9,final
-CES6562000001,Health care and social assistance,2023-03,21240.9,5.36,1080.7,final
-CES6562000001,Health care and social assistance,2023-04,21309.4,5.7,1149.2,final
-CES6562000001,Health care and social assistance,2023-05,21382.4,6.06,1222.2,final
-CES6562000001,Health care and social assistance,2023-06,21464.2,6.47,1304.0,final
-CES6562000001,Health care and social assistance,2023-07,21576.6,7.03,1416.4,final
-CES6562000001,Health care and social assistance,2023-08,21676.7,7.52,1516.5,final
-CES6562000001,Health care and social assistance,2023-09,21761.7,7.94,1601.5,final
-CES6562000001,Health care and social assistance,2023-10,21839.2,8.33,1679.0,final
-CES6562000001,Health care and social assistance,2023-11,21945.4,8.86,1785.2,final
-CES6562000001,Health care and social assistance,2023-12,22018.7,9.22,1858.5,final
-CES6562000001,Health care and social assistance,2024-01,22095.6,9.6,1935.4,final
-CES6562000001,Health care and social assistance,2024-02,22191.2,10.07,2031.0,final
-CES6562000001,Health care and social assistance,2024-03,22276.6,10.5,2116.4,final
-CES6562000001,Health care and social assistance,2024-04,22359.2,10.91,2199.0,final
-CES6562000001,Health care and social assistance,2024-05,22424.6,11.23,2264.4,final
-CES6562000001,Health care and social assistance,2024-06,22493.7,11.57,2333.5,final
-CES6562000001,Health care and social assistance,2024-07,22541.9,11.81,2381.7,final
-CES6562000001,Health care and social assistance,2024-08,22586.7,12.04,2426.5,final
-CES6562000001,Health care and social assistance,2024-09,22673.6,12.47,2513.4,final
-CES6562000001,Health care and social assistance,2024-10,22754.8,12.87,2594.6,final
-CES6562000001,Health care and social assistance,2024-11,22831.6,13.25,2671.4,final
-CES6562000001,Health care and social assistance,2024-12,22901.4,13.6,2741.2,final
-CES6562000001,Health care and social assistance,2025-01,22960.4,13.89,2800.2,final
-CES6562000001,Health care and social assistance,2025-02,23008.3,14.13,2848.1,final
-CES6562000001,Health care and social assistance,2025-03,23076.0,14.46,2915.8,final
-CES6562000001,Health care and social assistance,2025-04,23152.0,14.84,2991.8,final
-CES6562000001,Health care and social assistance,2025-05,23217.0,15.16,3056.8,final
-CES6562000001,Health care and social assistance,2025-06,23277.5,15.46,3117.3,final
-CES6562000001,Health care and social assistance,2025-07,23360.1,15.87,3199.9,final
-CES6562000001,Health care and social assistance,2025-08,23382.9,15.99,3222.7,final
-CES6562000001,Health care and social assistance,2025-09,23438.2,16.26,3278.0,final
-CES6562000001,Health care and social assistance,2025-10,23485.8,16.5,3325.6,final
-CES6562000001,Health care and social assistance,2025-11,23545.7,16.79,3385.5,final
-CES6562000001,Health care and social assistance,2025-12,23587.5,17.0,3427.3,final
-CES6562000001,Health care and social assistance,2026-01,23694.4,17.53,3534.2,final
-CES6562000001,Health care and social assistance,2026-02,23664.0,17.38,3503.8,final
-CES6562000001,Health care and social assistance,2026-03,23756.7,17.84,3596.5,final
-CES6562000001,Health care and social assistance,2026-04,23813.8,18.12,3653.6,final
-CES6562000001,Health care and social assistance,2026-05,23848.6,18.3,3688.4,final
-CES6562000001,Health care and social assistance,2026-06,23887.2,18.49,3727.0,final
-CES6562000001,Health care and social assistance,2026-07,23900.5,18.55,3740.3,final
-CES6562000001,Health care and social assistance,2026-08,23935.6,18.73,3775.4,preliminary
-CES6562000001,Health care and social assistance,2026-09,23958.6,18.84,3798.4,preliminary
+CES6562000001,Health care and social assistance,2022-02,20256.3,0.476682,96.1,final
+CES6562000001,Health care and social assistance,2022-03,20316.5,0.77529,156.3,final
+CES6562000001,Health care and social assistance,2022-04,20380.8,1.094235,220.6,final
+CES6562000001,Health care and social assistance,2022-05,20434.5,1.360602,274.3,final
+CES6562000001,Health care and social assistance,2022-06,20513.3,1.751471,353.1,final
+CES6562000001,Health care and social assistance,2022-07,20616.7,2.264362,456.5,final
+CES6562000001,Health care and social assistance,2022-08,20684.8,2.602157,524.6,final
+CES6562000001,Health care and social assistance,2022-09,20766.3,3.006419,606.1,final
+CES6562000001,Health care and social assistance,2022-10,20855.0,3.446394,694.8,final
+CES6562000001,Health care and social assistance,2022-11,20931.1,3.823871,770.9,final
+CES6562000001,Health care and social assistance,2022-12,21017.7,4.25343,857.5,final
+CES6562000001,Health care and social assistance,2023-01,21103.6,4.679517,943.4,final
+CES6562000001,Health care and social assistance,2023-02,21170.1,5.009375,1009.9,final
+CES6562000001,Health care and social assistance,2023-03,21240.9,5.360562,1080.7,final
+CES6562000001,Health care and social assistance,2023-04,21309.4,5.70034,1149.2,final
+CES6562000001,Health care and social assistance,2023-05,21382.4,6.06244,1222.2,final
+CES6562000001,Health care and social assistance,2023-06,21464.2,6.46819,1304.0,final
+CES6562000001,Health care and social assistance,2023-07,21576.6,7.025724,1416.4,final
+CES6562000001,Health care and social assistance,2023-08,21676.7,7.522247,1516.5,final
+CES6562000001,Health care and social assistance,2023-09,21761.7,7.94387,1601.5,final
+CES6562000001,Health care and social assistance,2023-10,21839.2,8.32829,1679.0,final
+CES6562000001,Health care and social assistance,2023-11,21945.4,8.855071,1785.2,final
+CES6562000001,Health care and social assistance,2023-12,22018.7,9.218659,1858.5,final
+CES6562000001,Health care and social assistance,2024-01,22095.6,9.600103,1935.4,final
+CES6562000001,Health care and social assistance,2024-02,22191.2,10.074305,2031.0,final
+CES6562000001,Health care and social assistance,2024-03,22276.6,10.497912,2116.4,final
+CES6562000001,Health care and social assistance,2024-04,22359.2,10.90763,2199.0,final
+CES6562000001,Health care and social assistance,2024-05,22424.6,11.232031,2264.4,final
+CES6562000001,Health care and social assistance,2024-06,22493.7,11.574786,2333.5,final
+CES6562000001,Health care and social assistance,2024-07,22541.9,11.813871,2381.7,final
+CES6562000001,Health care and social assistance,2024-08,22586.7,12.036091,2426.5,final
+CES6562000001,Health care and social assistance,2024-09,22673.6,12.467138,2513.4,final
+CES6562000001,Health care and social assistance,2024-10,22754.8,12.869912,2594.6,final
+CES6562000001,Health care and social assistance,2024-11,22831.6,13.250861,2671.4,final
+CES6562000001,Health care and social assistance,2024-12,22901.4,13.597087,2741.2,final
+CES6562000001,Health care and social assistance,2025-01,22960.4,13.889743,2800.2,final
+CES6562000001,Health care and social assistance,2025-02,23008.3,14.12734,2848.1,final
+CES6562000001,Health care and social assistance,2025-03,23076.0,14.46315,2915.8,final
+CES6562000001,Health care and social assistance,2025-04,23152.0,14.840131,2991.8,final
+CES6562000001,Health care and social assistance,2025-05,23217.0,15.162548,3056.8,final
+CES6562000001,Health care and social assistance,2025-06,23277.5,15.462644,3117.3,final
+CES6562000001,Health care and social assistance,2025-07,23360.1,15.872362,3199.9,final
+CES6562000001,Health care and social assistance,2025-08,23382.9,15.985456,3222.7,final
+CES6562000001,Health care and social assistance,2025-09,23438.2,16.259759,3278.0,final
+CES6562000001,Health care and social assistance,2025-10,23485.8,16.495868,3325.6,final
+CES6562000001,Health care and social assistance,2025-11,23545.7,16.792988,3385.5,final
+CES6562000001,Health care and social assistance,2025-12,23587.5,17.000327,3427.3,final
+CES6562000001,Health care and social assistance,2026-01,23694.4,17.53058,3534.2,final
+CES6562000001,Health care and social assistance,2026-02,23664.0,17.379788,3503.8,final
+CES6562000001,Health care and social assistance,2026-03,23756.7,17.839605,3596.5,final
+CES6562000001,Health care and social assistance,2026-04,23813.8,18.122836,3653.6,final
+CES6562000001,Health care and social assistance,2026-05,23848.6,18.295453,3688.4,final
+CES6562000001,Health care and social assistance,2026-06,23887.2,18.48692,3727.0,final
+CES6562000001,Health care and social assistance,2026-07,23900.5,18.552891,3740.3,final
+CES6562000001,Health care and social assistance,2026-08,23935.6,18.726997,3775.4,preliminary
+CES6562000001,Health care and social assistance,2026-09,23958.6,18.841083,3798.4,preliminary
 USLAH,Leisure and hospitality,2022-01,15329.0,0.0,0.0,final
-USLAH,Leisure and hospitality,2022-02,15462.0,0.87,133.0,final
-USLAH,Leisure and hospitality,2022-03,15523.0,1.27,194.0,final
-USLAH,Leisure and hospitality,2022-04,15626.0,1.94,297.0,final
-USLAH,Leisure and hospitality,2022-05,15704.0,2.45,375.0,final
-USLAH,Leisure and hospitality,2022-06,15794.0,3.03,465.0,final
-USLAH,Leisure and hospitality,2022-07,15931.0,3.93,602.0,final
-USLAH,Leisure and hospitality,2022-08,15990.0,4.31,661.0,final
-USLAH,Leisure and hospitality,2022-09,16052.0,4.72,723.0,final
-USLAH,Leisure and hospitality,2022-10,16142.0,5.3,813.0,final
-USLAH,Leisure and hospitality,2022-11,16183.0,5.57,854.0,final
-USLAH,Leisure and hospitality,2022-12,16245.0,5.98,916.0,final
-USLAH,Leisure and hospitality,2023-01,16352.0,6.67,1023.0,final
-USLAH,Leisure and hospitality,2023-02,16431.0,7.19,1102.0,final
-USLAH,Leisure and hospitality,2023-03,16450.0,7.31,1121.0,final
-USLAH,Leisure and hospitality,2023-04,16487.0,7.55,1158.0,final
-USLAH,Leisure and hospitality,2023-05,16533.0,7.85,1204.0,final
-USLAH,Leisure and hospitality,2023-06,16594.0,8.25,1265.0,final
-USLAH,Leisure and hospitality,2023-07,16616.0,8.4,1287.0,final
-USLAH,Leisure and hospitality,2023-08,16651.0,8.62,1322.0,final
-USLAH,Leisure and hospitality,2023-09,16643.0,8.57,1314.0,final
-USLAH,Leisure and hospitality,2023-10,16689.0,8.87,1360.0,final
-USLAH,Leisure and hospitality,2023-11,16694.0,8.9,1365.0,final
-USLAH,Leisure and hospitality,2023-12,16704.0,8.97,1375.0,final
-USLAH,Leisure and hospitality,2024-01,16716.0,9.05,1387.0,final
-USLAH,Leisure and hospitality,2024-02,16744.0,9.23,1415.0,final
-USLAH,Leisure and hospitality,2024-03,16780.0,9.47,1451.0,final
-USLAH,Leisure and hospitality,2024-04,16762.0,9.35,1433.0,final
-USLAH,Leisure and hospitality,2024-05,16731.0,9.15,1402.0,final
-USLAH,Leisure and hospitality,2024-06,16744.0,9.23,1415.0,final
-USLAH,Leisure and hospitality,2024-07,16751.0,9.28,1422.0,final
-USLAH,Leisure and hospitality,2024-08,16746.0,9.24,1417.0,final
-USLAH,Leisure and hospitality,2024-09,16776.0,9.44,1447.0,final
-USLAH,Leisure and hospitality,2024-10,16799.0,9.59,1470.0,final
-USLAH,Leisure and hospitality,2024-11,16823.0,9.75,1494.0,final
-USLAH,Leisure and hospitality,2024-12,16862.0,10.0,1533.0,final
-USLAH,Leisure and hospitality,2025-01,16832.0,9.8,1503.0,final
-USLAH,Leisure and hospitality,2025-02,16796.0,9.57,1467.0,final
-USLAH,Leisure and hospitality,2025-03,16823.0,9.75,1494.0,final
-USLAH,Leisure and hospitality,2025-04,16836.0,9.83,1507.0,final
-USLAH,Leisure and hospitality,2025-05,16839.0,9.85,1510.0,final
-USLAH,Leisure and hospitality,2025-06,16837.0,9.84,1508.0,final
-USLAH,Leisure and hospitality,2025-07,16848.0,9.91,1519.0,final
-USLAH,Leisure and hospitality,2025-08,16870.0,10.05,1541.0,final
-USLAH,Leisure and hospitality,2025-09,16907.0,10.29,1578.0,final
-USLAH,Leisure and hospitality,2025-10,16948.0,10.56,1619.0,final
-USLAH,Leisure and hospitality,2025-11,16936.0,10.48,1607.0,final
-USLAH,Leisure and hospitality,2025-12,16961.0,10.65,1632.0,final
-USLAH,Leisure and hospitality,2026-01,16966.0,10.68,1637.0,final
-USLAH,Leisure and hospitality,2026-02,16935.0,10.48,1606.0,final
-USLAH,Leisure and hospitality,2026-03,16979.0,10.76,1650.0,final
-USLAH,Leisure and hospitality,2026-04,16972.0,10.72,1643.0,final
-USLAH,Leisure and hospitality,2026-05,17014.0,10.99,1685.0,final
-USLAH,Leisure and hospitality,2026-06,16960.0,10.64,1631.0,final
-USLAH,Leisure and hospitality,2026-07,16922.0,10.39,1593.0,final
-USLAH,Leisure and hospitality,2026-08,16959.0,10.63,1630.0,preliminary
-USLAH,Leisure and hospitality,2026-09,16969.0,10.7,1640.0,preliminary
+USLAH,Leisure and hospitality,2022-02,15462.0,0.867637,133.0,final
+USLAH,Leisure and hospitality,2022-03,15523.0,1.265575,194.0,final
+USLAH,Leisure and hospitality,2022-04,15626.0,1.937504,297.0,final
+USLAH,Leisure and hospitality,2022-05,15704.0,2.446344,375.0,final
+USLAH,Leisure and hospitality,2022-06,15794.0,3.033466,465.0,final
+USLAH,Leisure and hospitality,2022-07,15931.0,3.927197,602.0,final
+USLAH,Leisure and hospitality,2022-08,15990.0,4.312088,661.0,final
+USLAH,Leisure and hospitality,2022-09,16052.0,4.71655,723.0,final
+USLAH,Leisure and hospitality,2022-10,16142.0,5.303673,813.0,final
+USLAH,Leisure and hospitality,2022-11,16183.0,5.57114,854.0,final
+USLAH,Leisure and hospitality,2022-12,16245.0,5.975602,916.0,final
+USLAH,Leisure and hospitality,2023-01,16352.0,6.673625,1023.0,final
+USLAH,Leisure and hospitality,2023-02,16431.0,7.188988,1102.0,final
+USLAH,Leisure and hospitality,2023-03,16450.0,7.312936,1121.0,final
+USLAH,Leisure and hospitality,2023-04,16487.0,7.554309,1158.0,final
+USLAH,Leisure and hospitality,2023-05,16533.0,7.854394,1204.0,final
+USLAH,Leisure and hospitality,2023-06,16594.0,8.252332,1265.0,final
+USLAH,Leisure and hospitality,2023-07,16616.0,8.395851,1287.0,final
+USLAH,Leisure and hospitality,2023-08,16651.0,8.624176,1322.0,final
+USLAH,Leisure and hospitality,2023-09,16643.0,8.571988,1314.0,final
+USLAH,Leisure and hospitality,2023-10,16689.0,8.872073,1360.0,final
+USLAH,Leisure and hospitality,2023-11,16694.0,8.90469,1365.0,final
+USLAH,Leisure and hospitality,2023-12,16704.0,8.969926,1375.0,final
+USLAH,Leisure and hospitality,2024-01,16716.0,9.048209,1387.0,final
+USLAH,Leisure and hospitality,2024-02,16744.0,9.23087,1415.0,final
+USLAH,Leisure and hospitality,2024-03,16780.0,9.465719,1451.0,final
+USLAH,Leisure and hospitality,2024-04,16762.0,9.348294,1433.0,final
+USLAH,Leisure and hospitality,2024-05,16731.0,9.146063,1402.0,final
+USLAH,Leisure and hospitality,2024-06,16744.0,9.23087,1415.0,final
+USLAH,Leisure and hospitality,2024-07,16751.0,9.276535,1422.0,final
+USLAH,Leisure and hospitality,2024-08,16746.0,9.243917,1417.0,final
+USLAH,Leisure and hospitality,2024-09,16776.0,9.439624,1447.0,final
+USLAH,Leisure and hospitality,2024-10,16799.0,9.589667,1470.0,final
+USLAH,Leisure and hospitality,2024-11,16823.0,9.746233,1494.0,final
+USLAH,Leisure and hospitality,2024-12,16862.0,10.000652,1533.0,final
+USLAH,Leisure and hospitality,2025-01,16832.0,9.804945,1503.0,final
+USLAH,Leisure and hospitality,2025-02,16796.0,9.570096,1467.0,final
+USLAH,Leisure and hospitality,2025-03,16823.0,9.746233,1494.0,final
+USLAH,Leisure and hospitality,2025-04,16836.0,9.831039,1507.0,final
+USLAH,Leisure and hospitality,2025-05,16839.0,9.85061,1510.0,final
+USLAH,Leisure and hospitality,2025-06,16837.0,9.837563,1508.0,final
+USLAH,Leisure and hospitality,2025-07,16848.0,9.909322,1519.0,final
+USLAH,Leisure and hospitality,2025-08,16870.0,10.052841,1541.0,final
+USLAH,Leisure and hospitality,2025-09,16907.0,10.294214,1578.0,final
+USLAH,Leisure and hospitality,2025-10,16948.0,10.56168,1619.0,final
+USLAH,Leisure and hospitality,2025-11,16936.0,10.483397,1607.0,final
+USLAH,Leisure and hospitality,2025-12,16961.0,10.646487,1632.0,final
+USLAH,Leisure and hospitality,2026-01,16966.0,10.679105,1637.0,final
+USLAH,Leisure and hospitality,2026-02,16935.0,10.476874,1606.0,final
+USLAH,Leisure and hospitality,2026-03,16979.0,10.763912,1650.0,final
+USLAH,Leisure and hospitality,2026-04,16972.0,10.718246,1643.0,final
+USLAH,Leisure and hospitality,2026-05,17014.0,10.992237,1685.0,final
+USLAH,Leisure and hospitality,2026-06,16960.0,10.639963,1631.0,final
+USLAH,Leisure and hospitality,2026-07,16922.0,10.392067,1593.0,final
+USLAH,Leisure and hospitality,2026-08,16959.0,10.63344,1630.0,preliminary
+USLAH,Leisure and hospitality,2026-09,16969.0,10.698676,1640.0,preliminary
 USSERV,Other services,2022-01,5603.0,0.0,0.0,final
-USSERV,Other services,2022-02,5648.0,0.8,45.0,final
-USSERV,Other services,2022-03,5651.0,0.86,48.0,final
-USSERV,Other services,2022-04,5657.0,0.96,54.0,final
-USSERV,Other services,2022-05,5665.0,1.11,62.0,final
-USSERV,Other services,2022-06,5674.0,1.27,71.0,final
-USSERV,Other services,2022-07,5707.0,1.86,104.0,final
-USSERV,Other services,2022-08,5719.0,2.07,116.0,final
-USSERV,Other services,2022-09,5730.0,2.27,127.0,final
-USSERV,Other services,2022-10,5748.0,2.59,145.0,final
-USSERV,Other services,2022-11,5762.0,2.84,159.0,final
-USSERV,Other services,2022-12,5771.0,3.0,168.0,final
-USSERV,Other services,2023-01,5785.0,3.25,182.0,final
-USSERV,Other services,2023-02,5785.0,3.25,182.0,final
-USSERV,Other services,2023-03,5789.0,3.32,186.0,final
-USSERV,Other services,2023-04,5798.0,3.48,195.0,final
-USSERV,Other services,2023-05,5814.0,3.77,211.0,final
-USSERV,Other services,2023-06,5831.0,4.07,228.0,final
-USSERV,Other services,2023-07,5846.0,4.34,243.0,final
-USSERV,Other services,2023-08,5874.0,4.84,271.0,final
-USSERV,Other services,2023-09,5883.0,5.0,280.0,final
-USSERV,Other services,2023-10,5893.0,5.18,290.0,final
-USSERV,Other services,2023-11,5905.0,5.39,302.0,final
-USSERV,Other services,2023-12,5906.0,5.41,303.0,final
-USSERV,Other services,2024-01,5917.0,5.6,314.0,final
-USSERV,Other services,2024-02,5930.0,5.84,327.0,final
-USSERV,Other services,2024-03,5943.0,6.07,340.0,final
-USSERV,Other services,2024-04,5947.0,6.14,344.0,final
-USSERV,Other services,2024-05,5949.0,6.18,346.0,final
-USSERV,Other services,2024-06,5962.0,6.41,359.0,final
-USSERV,Other services,2024-07,5961.0,6.39,358.0,final
-USSERV,Other services,2024-08,5957.0,6.32,354.0,final
-USSERV,Other services,2024-09,5959.0,6.35,356.0,final
-USSERV,Other services,2024-10,5962.0,6.41,359.0,final
-USSERV,Other services,2024-11,5968.0,6.51,365.0,final
-USSERV,Other services,2024-12,5972.0,6.59,369.0,final
-USSERV,Other services,2025-01,5975.0,6.64,372.0,final
-USSERV,Other services,2025-02,5977.0,6.67,374.0,final
-USSERV,Other services,2025-03,5987.0,6.85,384.0,final
-USSERV,Other services,2025-04,5987.0,6.85,384.0,final
-USSERV,Other services,2025-05,5994.0,6.98,391.0,final
-USSERV,Other services,2025-06,5984.0,6.8,381.0,final
-USSERV,Other services,2025-07,5989.0,6.89,386.0,final
-USSERV,Other services,2025-08,6008.0,7.23,405.0,final
-USSERV,Other services,2025-09,6005.0,7.17,402.0,final
-USSERV,Other services,2025-10,5999.0,7.07,396.0,final
-USSERV,Other services,2025-11,6015.0,7.35,412.0,final
-USSERV,Other services,2025-12,6023.0,7.5,420.0,final
-USSERV,Other services,2026-01,6026.0,7.55,423.0,final
-USSERV,Other services,2026-02,6032.0,7.66,429.0,final
-USSERV,Other services,2026-03,6018.0,7.41,415.0,final
-USSERV,Other services,2026-04,6029.0,7.6,426.0,final
-USSERV,Other services,2026-05,6031.0,7.64,428.0,final
-USSERV,Other services,2026-06,6024.0,7.51,421.0,final
-USSERV,Other services,2026-07,6030.0,7.62,427.0,final
-USSERV,Other services,2026-08,6033.0,7.67,430.0,preliminary
-USSERV,Other services,2026-09,6039.0,7.78,436.0,preliminary
+USSERV,Other services,2022-02,5648.0,0.803141,45.0,final
+USSERV,Other services,2022-03,5651.0,0.856684,48.0,final
+USSERV,Other services,2022-04,5657.0,0.963769,54.0,final
+USSERV,Other services,2022-05,5665.0,1.10655,62.0,final
+USSERV,Other services,2022-06,5674.0,1.267178,71.0,final
+USSERV,Other services,2022-07,5707.0,1.856148,104.0,final
+USSERV,Other services,2022-08,5719.0,2.070319,116.0,final
+USSERV,Other services,2022-09,5730.0,2.266643,127.0,final
+USSERV,Other services,2022-10,5748.0,2.587899,145.0,final
+USSERV,Other services,2022-11,5762.0,2.837765,159.0,final
+USSERV,Other services,2022-12,5771.0,2.998394,168.0,final
+USSERV,Other services,2023-01,5785.0,3.24826,182.0,final
+USSERV,Other services,2023-02,5785.0,3.24826,182.0,final
+USSERV,Other services,2023-03,5789.0,3.31965,186.0,final
+USSERV,Other services,2023-04,5798.0,3.480278,195.0,final
+USSERV,Other services,2023-05,5814.0,3.76584,211.0,final
+USSERV,Other services,2023-06,5831.0,4.069249,228.0,final
+USSERV,Other services,2023-07,5846.0,4.336962,243.0,final
+USSERV,Other services,2023-08,5874.0,4.836695,271.0,final
+USSERV,Other services,2023-09,5883.0,4.997323,280.0,final
+USSERV,Other services,2023-10,5893.0,5.175799,290.0,final
+USSERV,Other services,2023-11,5905.0,5.38997,302.0,final
+USSERV,Other services,2023-12,5906.0,5.407817,303.0,final
+USSERV,Other services,2024-01,5917.0,5.604141,314.0,final
+USSERV,Other services,2024-02,5930.0,5.836159,327.0,final
+USSERV,Other services,2024-03,5943.0,6.068178,340.0,final
+USSERV,Other services,2024-04,5947.0,6.139568,344.0,final
+USSERV,Other services,2024-05,5949.0,6.175263,346.0,final
+USSERV,Other services,2024-06,5962.0,6.407282,359.0,final
+USSERV,Other services,2024-07,5961.0,6.389434,358.0,final
+USSERV,Other services,2024-08,5957.0,6.318044,354.0,final
+USSERV,Other services,2024-09,5959.0,6.353739,356.0,final
+USSERV,Other services,2024-10,5962.0,6.407282,359.0,final
+USSERV,Other services,2024-11,5968.0,6.514367,365.0,final
+USSERV,Other services,2024-12,5972.0,6.585758,369.0,final
+USSERV,Other services,2025-01,5975.0,6.6393,372.0,final
+USSERV,Other services,2025-02,5977.0,6.674996,374.0,final
+USSERV,Other services,2025-03,5987.0,6.853471,384.0,final
+USSERV,Other services,2025-04,5987.0,6.853471,384.0,final
+USSERV,Other services,2025-05,5994.0,6.978404,391.0,final
+USSERV,Other services,2025-06,5984.0,6.799929,381.0,final
+USSERV,Other services,2025-07,5989.0,6.889167,386.0,final
+USSERV,Other services,2025-08,6008.0,7.228271,405.0,final
+USSERV,Other services,2025-09,6005.0,7.174728,402.0,final
+USSERV,Other services,2025-10,5999.0,7.067642,396.0,final
+USSERV,Other services,2025-11,6015.0,7.353204,412.0,final
+USSERV,Other services,2025-12,6023.0,7.495984,420.0,final
+USSERV,Other services,2026-01,6026.0,7.549527,423.0,final
+USSERV,Other services,2026-02,6032.0,7.656613,429.0,final
+USSERV,Other services,2026-03,6018.0,7.406746,415.0,final
+USSERV,Other services,2026-04,6029.0,7.60307,426.0,final
+USSERV,Other services,2026-05,6031.0,7.638765,428.0,final
+USSERV,Other services,2026-06,6024.0,7.513832,421.0,final
+USSERV,Other services,2026-07,6030.0,7.620917,427.0,final
+USSERV,Other services,2026-08,6033.0,7.67446,430.0,preliminary
+USSERV,Other services,2026-09,6039.0,7.781546,436.0,preliminary
 USGOVT,Government,2022-01,22049.0,0.0,0.0,final
-USGOVT,Government,2022-02,22032.0,-0.08,-17.0,final
-USGOVT,Government,2022-03,22033.0,-0.07,-16.0,final
-USGOVT,Government,2022-04,22069.0,0.09,20.0,final
-USGOVT,Government,2022-05,22125.0,0.34,76.0,final
-USGOVT,Government,2022-06,22142.0,0.42,93.0,final
-USGOVT,Government,2022-07,22306.0,1.17,257.0,final
-USGOVT,Government,2022-08,22306.0,1.17,257.0,final
-USGOVT,Government,2022-09,22297.0,1.12,248.0,final
-USGOVT,Government,2022-10,22293.0,1.11,244.0,final
-USGOVT,Government,2022-11,22379.0,1.5,330.0,final
-USGOVT,Government,2022-12,22365.0,1.43,316.0,final
-USGOVT,Government,2023-01,22484.0,1.97,435.0,final
-USGOVT,Government,2023-02,22538.0,2.22,489.0,final
-USGOVT,Government,2023-03,22580.0,2.41,531.0,final
-USGOVT,Government,2023-04,22642.0,2.69,593.0,final
-USGOVT,Government,2023-05,22722.0,3.05,673.0,final
-USGOVT,Government,2023-06,22792.0,3.37,743.0,final
-USGOVT,Government,2023-07,22837.0,3.57,788.0,final
-USGOVT,Government,2023-08,22907.0,3.89,858.0,final
-USGOVT,Government,2023-09,22948.0,4.08,899.0,final
-USGOVT,Government,2023-10,22993.0,4.28,944.0,final
-USGOVT,Government,2023-11,23036.0,4.48,987.0,final
-USGOVT,Government,2023-12,23091.0,4.73,1042.0,final
-USGOVT,Government,2024-01,23140.0,4.95,1091.0,final
-USGOVT,Government,2024-02,23211.0,5.27,1162.0,final
-USGOVT,Government,2024-03,23296.0,5.66,1247.0,final
-USGOVT,Government,2024-04,23297.0,5.66,1248.0,final
-USGOVT,Government,2024-05,23330.0,5.81,1281.0,final
-USGOVT,Government,2024-06,23339.0,5.85,1290.0,final
-USGOVT,Government,2024-07,23400.0,6.13,1351.0,final
-USGOVT,Government,2024-08,23436.0,6.29,1387.0,final
-USGOVT,Government,2024-09,23449.0,6.35,1400.0,final
-USGOVT,Government,2024-10,23486.0,6.52,1437.0,final
-USGOVT,Government,2024-11,23504.0,6.6,1455.0,final
-USGOVT,Government,2024-12,23529.0,6.71,1480.0,final
-USGOVT,Government,2025-01,23557.0,6.84,1508.0,final
-USGOVT,Government,2025-02,23559.0,6.85,1510.0,final
-USGOVT,Government,2025-03,23559.0,6.85,1510.0,final
-USGOVT,Government,2025-04,23568.0,6.89,1519.0,final
-USGOVT,Government,2025-05,23561.0,6.86,1512.0,final
-USGOVT,Government,2025-06,23586.0,6.97,1537.0,final
-USGOVT,Government,2025-07,23585.0,6.97,1536.0,final
-USGOVT,Government,2025-08,23535.0,6.74,1486.0,final
-USGOVT,Government,2025-09,23543.0,6.78,1494.0,final
-USGOVT,Government,2025-10,23390.0,6.08,1341.0,final
-USGOVT,Government,2025-11,23359.0,5.94,1310.0,final
-USGOVT,Government,2025-12,23349.0,5.9,1300.0,final
-USGOVT,Government,2026-01,23329.0,5.81,1280.0,final
-USGOVT,Government,2026-02,23321.0,5.77,1272.0,final
-USGOVT,Government,2026-03,23333.0,5.82,1284.0,final
-USGOVT,Government,2026-04,23331.0,5.81,1282.0,final
-USGOVT,Government,2026-05,23333.0,5.82,1284.0,final
-USGOVT,Government,2026-06,23338.0,5.85,1289.0,final
-USGOVT,Government,2026-07,23300.0,5.67,1251.0,final
-USGOVT,Government,2026-08,23344.0,5.87,1295.0,preliminary
-USGOVT,Government,2026-09,23327.0,5.8,1278.0,preliminary
+USGOVT,Government,2022-02,22032.0,-0.077101,-17.0,final
+USGOVT,Government,2022-03,22033.0,-0.072566,-16.0,final
+USGOVT,Government,2022-04,22069.0,0.090707,20.0,final
+USGOVT,Government,2022-05,22125.0,0.344687,76.0,final
+USGOVT,Government,2022-06,22142.0,0.421788,93.0,final
+USGOVT,Government,2022-07,22306.0,1.165586,257.0,final
+USGOVT,Government,2022-08,22306.0,1.165586,257.0,final
+USGOVT,Government,2022-09,22297.0,1.124768,248.0,final
+USGOVT,Government,2022-10,22293.0,1.106626,244.0,final
+USGOVT,Government,2022-11,22379.0,1.496667,330.0,final
+USGOVT,Government,2022-12,22365.0,1.433172,316.0,final
+USGOVT,Government,2023-01,22484.0,1.972879,435.0,final
+USGOVT,Government,2023-02,22538.0,2.217788,489.0,final
+USGOVT,Government,2023-03,22580.0,2.408272,531.0,final
+USGOVT,Government,2023-04,22642.0,2.689464,593.0,final
+USGOVT,Government,2023-05,22722.0,3.052293,673.0,final
+USGOVT,Government,2023-06,22792.0,3.369767,743.0,final
+USGOVT,Government,2023-07,22837.0,3.573858,788.0,final
+USGOVT,Government,2023-08,22907.0,3.891333,858.0,final
+USGOVT,Government,2023-09,22948.0,4.077282,899.0,final
+USGOVT,Government,2023-10,22993.0,4.281373,944.0,final
+USGOVT,Government,2023-11,23036.0,4.476393,987.0,final
+USGOVT,Government,2023-12,23091.0,4.725838,1042.0,final
+USGOVT,Government,2024-01,23140.0,4.94807,1091.0,final
+USGOVT,Government,2024-02,23211.0,5.27008,1162.0,final
+USGOVT,Government,2024-03,23296.0,5.655585,1247.0,final
+USGOVT,Government,2024-04,23297.0,5.660121,1248.0,final
+USGOVT,Government,2024-05,23330.0,5.809787,1281.0,final
+USGOVT,Government,2024-06,23339.0,5.850605,1290.0,final
+USGOVT,Government,2024-07,23400.0,6.127262,1351.0,final
+USGOVT,Government,2024-08,23436.0,6.290535,1387.0,final
+USGOVT,Government,2024-09,23449.0,6.349494,1400.0,final
+USGOVT,Government,2024-10,23486.0,6.517302,1437.0,final
+USGOVT,Government,2024-11,23504.0,6.598939,1455.0,final
+USGOVT,Government,2024-12,23529.0,6.712323,1480.0,final
+USGOVT,Government,2025-01,23557.0,6.839312,1508.0,final
+USGOVT,Government,2025-02,23559.0,6.848383,1510.0,final
+USGOVT,Government,2025-03,23559.0,6.848383,1510.0,final
+USGOVT,Government,2025-04,23568.0,6.889201,1519.0,final
+USGOVT,Government,2025-05,23561.0,6.857454,1512.0,final
+USGOVT,Government,2025-06,23586.0,6.970838,1537.0,final
+USGOVT,Government,2025-07,23585.0,6.966302,1536.0,final
+USGOVT,Government,2025-08,23535.0,6.739535,1486.0,final
+USGOVT,Government,2025-09,23543.0,6.775817,1494.0,final
+USGOVT,Government,2025-10,23390.0,6.081908,1341.0,final
+USGOVT,Government,2025-11,23359.0,5.941313,1310.0,final
+USGOVT,Government,2025-12,23349.0,5.895959,1300.0,final
+USGOVT,Government,2026-01,23329.0,5.805252,1280.0,final
+USGOVT,Government,2026-02,23321.0,5.768969,1272.0,final
+USGOVT,Government,2026-03,23333.0,5.823393,1284.0,final
+USGOVT,Government,2026-04,23331.0,5.814323,1282.0,final
+USGOVT,Government,2026-05,23333.0,5.823393,1284.0,final
+USGOVT,Government,2026-06,23338.0,5.84607,1289.0,final
+USGOVT,Government,2026-07,23300.0,5.673727,1251.0,final
+USGOVT,Government,2026-08,23344.0,5.873282,1295.0,preliminary
+USGOVT,Government,2026-09,23327.0,5.796181,1278.0,preliminary
 CES9091000001,Federal government,2022-01,2879.0,0.0,0.0,final
-CES9091000001,Federal government,2022-02,2874.0,-0.17,-5.0,final
-CES9091000001,Federal government,2022-03,2867.0,-0.42,-12.0,final
-CES9091000001,Federal government,2022-04,2866.0,-0.45,-13.0,final
-CES9091000001,Federal government,2022-05,2862.0,-0.59,-17.0,final
-CES9091000001,Federal government,2022-06,2853.0,-0.9,-26.0,final
-CES9091000001,Federal government,2022-07,2862.0,-0.59,-17.0,final
-CES9091000001,Federal government,2022-08,2861.0,-0.63,-18.0,final
-CES9091000001,Federal government,2022-09,2865.0,-0.49,-14.0,final
-CES9091000001,Federal government,2022-10,2870.0,-0.31,-9.0,final
-CES9091000001,Federal government,2022-11,2877.0,-0.07,-2.0,final
-CES9091000001,Federal government,2022-12,2874.0,-0.17,-5.0,final
-CES9091000001,Federal government,2023-01,2880.0,0.03,1.0,final
-CES9091000001,Federal government,2023-02,2887.0,0.28,8.0,final
-CES9091000001,Federal government,2023-03,2893.0,0.49,14.0,final
-CES9091000001,Federal government,2023-04,2904.0,0.87,25.0,final
-CES9091000001,Federal government,2023-05,2915.0,1.25,36.0,final
-CES9091000001,Federal government,2023-06,2925.0,1.6,46.0,final
-CES9091000001,Federal government,2023-07,2930.0,1.77,51.0,final
-CES9091000001,Federal government,2023-08,2946.0,2.33,67.0,final
-CES9091000001,Federal government,2023-09,2951.0,2.5,72.0,final
-CES9091000001,Federal government,2023-10,2956.0,2.67,77.0,final
-CES9091000001,Federal government,2023-11,2960.0,2.81,81.0,final
-CES9091000001,Federal government,2023-12,2964.0,2.95,85.0,final
-CES9091000001,Federal government,2024-01,2971.0,3.2,92.0,final
-CES9091000001,Federal government,2024-02,2980.0,3.51,101.0,final
-CES9091000001,Federal government,2024-03,2989.0,3.82,110.0,final
-CES9091000001,Federal government,2024-04,2992.0,3.92,113.0,final
-CES9091000001,Federal government,2024-05,3001.0,4.24,122.0,final
-CES9091000001,Federal government,2024-06,3005.0,4.38,126.0,final
-CES9091000001,Federal government,2024-07,3007.0,4.45,128.0,final
-CES9091000001,Federal government,2024-08,3011.0,4.58,132.0,final
-CES9091000001,Federal government,2024-09,3012.0,4.62,133.0,final
-CES9091000001,Federal government,2024-10,3013.0,4.65,134.0,final
-CES9091000001,Federal government,2024-11,3009.0,4.52,130.0,final
-CES9091000001,Federal government,2024-12,3009.0,4.52,130.0,final
-CES9091000001,Federal government,2025-01,3010.0,4.55,131.0,final
-CES9091000001,Federal government,2025-02,2997.0,4.1,118.0,final
-CES9091000001,Federal government,2025-03,2988.0,3.79,109.0,final
-CES9091000001,Federal government,2025-04,2976.0,3.37,97.0,final
-CES9091000001,Federal government,2025-05,2952.0,2.54,73.0,final
-CES9091000001,Federal government,2025-06,2944.0,2.26,65.0,final
-CES9091000001,Federal government,2025-07,2935.0,1.95,56.0,final
-CES9091000001,Federal government,2025-08,2916.0,1.29,37.0,final
-CES9091000001,Federal government,2025-09,2914.0,1.22,35.0,final
-CES9091000001,Federal government,2025-10,2748.0,-4.55,-131.0,final
-CES9091000001,Federal government,2025-11,2733.0,-5.07,-146.0,final
-CES9091000001,Federal government,2025-12,2722.0,-5.45,-157.0,final
-CES9091000001,Federal government,2026-01,2685.0,-6.74,-194.0,final
-CES9091000001,Federal government,2026-02,2689.0,-6.6,-190.0,final
-CES9091000001,Federal government,2026-03,2682.0,-6.84,-197.0,final
-CES9091000001,Federal government,2026-04,2681.0,-6.88,-198.0,final
-CES9091000001,Federal government,2026-05,2685.0,-6.74,-194.0,final
-CES9091000001,Federal government,2026-06,2685.0,-6.74,-194.0,final
-CES9091000001,Federal government,2026-07,2686.0,-6.7,-193.0,final
-CES9091000001,Federal government,2026-08,2683.0,-6.81,-196.0,preliminary
-CES9091000001,Federal government,2026-09,2682.0,-6.84,-197.0,preliminary
+CES9091000001,Federal government,2022-02,2874.0,-0.173671,-5.0,final
+CES9091000001,Federal government,2022-03,2867.0,-0.416811,-12.0,final
+CES9091000001,Federal government,2022-04,2866.0,-0.451546,-13.0,final
+CES9091000001,Federal government,2022-05,2862.0,-0.590483,-17.0,final
+CES9091000001,Federal government,2022-06,2853.0,-0.903091,-26.0,final
+CES9091000001,Federal government,2022-07,2862.0,-0.590483,-17.0,final
+CES9091000001,Federal government,2022-08,2861.0,-0.625217,-18.0,final
+CES9091000001,Federal government,2022-09,2865.0,-0.48628,-14.0,final
+CES9091000001,Federal government,2022-10,2870.0,-0.312609,-9.0,final
+CES9091000001,Federal government,2022-11,2877.0,-0.069469,-2.0,final
+CES9091000001,Federal government,2022-12,2874.0,-0.173671,-5.0,final
+CES9091000001,Federal government,2023-01,2880.0,0.034734,1.0,final
+CES9091000001,Federal government,2023-02,2887.0,0.277874,8.0,final
+CES9091000001,Federal government,2023-03,2893.0,0.48628,14.0,final
+CES9091000001,Federal government,2023-04,2904.0,0.868357,25.0,final
+CES9091000001,Federal government,2023-05,2915.0,1.250434,36.0,final
+CES9091000001,Federal government,2023-06,2925.0,1.597777,46.0,final
+CES9091000001,Federal government,2023-07,2930.0,1.771448,51.0,final
+CES9091000001,Federal government,2023-08,2946.0,2.327197,67.0,final
+CES9091000001,Federal government,2023-09,2951.0,2.500868,72.0,final
+CES9091000001,Federal government,2023-10,2956.0,2.67454,77.0,final
+CES9091000001,Federal government,2023-11,2960.0,2.813477,81.0,final
+CES9091000001,Federal government,2023-12,2964.0,2.952414,85.0,final
+CES9091000001,Federal government,2024-01,2971.0,3.195554,92.0,final
+CES9091000001,Federal government,2024-02,2980.0,3.508163,101.0,final
+CES9091000001,Federal government,2024-03,2989.0,3.820771,110.0,final
+CES9091000001,Federal government,2024-04,2992.0,3.924974,113.0,final
+CES9091000001,Federal government,2024-05,3001.0,4.237582,122.0,final
+CES9091000001,Federal government,2024-06,3005.0,4.37652,126.0,final
+CES9091000001,Federal government,2024-07,3007.0,4.445988,128.0,final
+CES9091000001,Federal government,2024-08,3011.0,4.584925,132.0,final
+CES9091000001,Federal government,2024-09,3012.0,4.61966,133.0,final
+CES9091000001,Federal government,2024-10,3013.0,4.654394,134.0,final
+CES9091000001,Federal government,2024-11,3009.0,4.515457,130.0,final
+CES9091000001,Federal government,2024-12,3009.0,4.515457,130.0,final
+CES9091000001,Federal government,2025-01,3010.0,4.550191,131.0,final
+CES9091000001,Federal government,2025-02,2997.0,4.098645,118.0,final
+CES9091000001,Federal government,2025-03,2988.0,3.786037,109.0,final
+CES9091000001,Federal government,2025-04,2976.0,3.369225,97.0,final
+CES9091000001,Federal government,2025-05,2952.0,2.535603,73.0,final
+CES9091000001,Federal government,2025-06,2944.0,2.257728,65.0,final
+CES9091000001,Federal government,2025-07,2935.0,1.94512,56.0,final
+CES9091000001,Federal government,2025-08,2916.0,1.285168,37.0,final
+CES9091000001,Federal government,2025-09,2914.0,1.2157,35.0,final
+CES9091000001,Federal government,2025-10,2748.0,-4.550191,-131.0,final
+CES9091000001,Federal government,2025-11,2733.0,-5.071205,-146.0,final
+CES9091000001,Federal government,2025-12,2722.0,-5.453282,-157.0,final
+CES9091000001,Federal government,2026-01,2685.0,-6.738451,-194.0,final
+CES9091000001,Federal government,2026-02,2689.0,-6.599514,-190.0,final
+CES9091000001,Federal government,2026-03,2682.0,-6.842654,-197.0,final
+CES9091000001,Federal government,2026-04,2681.0,-6.877388,-198.0,final
+CES9091000001,Federal government,2026-05,2685.0,-6.738451,-194.0,final
+CES9091000001,Federal government,2026-06,2685.0,-6.738451,-194.0,final
+CES9091000001,Federal government,2026-07,2686.0,-6.703717,-193.0,final
+CES9091000001,Federal government,2026-08,2683.0,-6.807919,-196.0,preliminary
+CES9091000001,Federal government,2026-09,2682.0,-6.842654,-197.0,preliminary

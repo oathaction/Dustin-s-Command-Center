@@ -172,3 +172,37 @@ D3-xxx | Recommended for the creative director: where a red point stands among b
 - The guide build (`guide_build.py --strict`). The brief asks for it after a plate changes, and I changed no guide plate or chapter file.
 - The light fill's effect in print; only the screen's grayscale filter was measured.
 - The ACS universes behind rows 63 and 64, beyond the sidecar's own words.
+
+## Fix pass 2
+
+From the coordinator's message on November 12, 2026: the brand reviewer's S1 (a solid lead-in on patterned lines) and the access reviewer's S10 (scroll frames a keyboard cannot reach). No chart spec was rebuilt.
+
+### Brand S1: a solid lead-in, 28 px
+
+**Yes, there is one, and it is 28 px.** A patterned line (Plausible, Contested, Hypothesis) that carries delay ticks runs solid from its tail for 28 px. That holds at every width and for one, two or three ticks. After the lead-in the line leaves its pattern's own gap and starts the fitted pattern on ink: 2 widths for dashed, 1.5 for dash-dot, and a dot center 2.5 widths after the lead-in for dotted. Solid grades need nothing. Lines without ticks, such as key samples, take none. The shortest textured run, 20 line widths, counts after the lead-in. New token: `oa.chart.grade.leadIn`, 28 px.
+
+**Why.** The atlas build's `tick_marks()` (line 560) places ticks 12 px from the tail, 5 px apart and 2 px wide at every line width, and `wire_marks()` starts the pattern at the tail with no lead-in. So a tick can land in a gap and read as a letter, as the reviewer saw on the opener. The build script now reads those three numbers by script, and the lead-in follows from them. The third tick ends at 23 px, and 5 px of clear line, the ticks' own spacing, brings it to 28. One length for every grade, width and tick count means a builder never counts ticks. The proposal logs it under `line_code_source`, and the sheet adds the row "Solid lead-in under the ticks" to its values table. A plate in section 06, "Delay ticks on a patterned line, at twice size", shows the build's drawing beside the lead-in.
+
+Sent to the editor (`aab950e18c7699aa7`) and the engineer (`ab61c63fec660d199`) by message.
+
+### Access S10: scroll frames a keyboard can reach
+
+`focusable_frames()` in `build_palette_proofs.py` gives each of the sheet's 40 sideways frames `tabindex="0"`, `role="region"` and a name. The name joins the section heading and the nearest heading or figure title, such as "Sequential Verdigris: On Newsprint, scrolls sideways", and the measured-value tables name their palettes. The page script removes all three from a frame that does not scroll at the reader's width, and checks again on resize and when a "Every measured value" table opens. That way, no empty tab stop is added. With scripts off every frame stays reachable. A focused frame shows the 3 px focus ring. The intro moved inside `<main>` so all content sits in a landmark; the capture script now clips the opening at the first section.
+
+### Fix pass 2 routine calls
+
+D3-xxx | Patterned lines with delay ticks start with a 28 px solid lead-in, then their pattern's own gap; `oa.chart.grade.leadIn` = 28 px | The atlas build places ticks at 12, 17 and 22 px but draws no lead-in, so a tick can sit in a gap; 28 px covers three ticks plus 5 px clear at every width, one number for every case
+D3-xxx | A scroll frame on the proof sheet is a named, focusable region only while it scrolls | WCAG 2.1.1 asks that a keyboard reach any scrolling content, and frames that fit need no tab stop
+
+### Fix pass 2 tested
+
+- The tick geometry read by script from `tick_marks()` and the build's `.wire .tk` style; the build script asserts the lead-in comes to 28.
+- The lead-in plate at 1440 px: in the build's drawing a tick falls in a gap on all three patterns, and with the lead-in all three ticks sit on solid line.
+- axe-core 4.10 (WCAG 2.0 to 2.2 A and AA, plus best practice) on the sheet at 1440 and 390 px, with the measured-value tables closed and open: 0 violations. The 7 frames that scroll at 1440 px and the 26 at 390 px each have a tab stop, the region role and a name.
+- A keyboard walk at 390 px: Tab reaches the scrolling frames, and in each one reached, two presses of the right arrow scroll it.
+- 46 of 46 checks; 43 captures again, with 0 px of page overflow at 390 px; 459 samples matching tokens and simulations within 0.001.
+
+### Fix pass 2 not tested
+
+- A screen reader on the sheet; the names and roles were read from the DOM and axe only.
+- The lead-in in the kit and in chapter 13's plates, which the engineer and the editor draw.

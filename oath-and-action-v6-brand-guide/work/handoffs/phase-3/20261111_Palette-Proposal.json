@@ -26,13 +26,13 @@
    "oa.color.tint.prussianN56",
    "oa.color.tint.prussianN29"
   ],
-  "new_tokens_total": 40,
+  "new_tokens_total": 41,
   "by_group": {
    "oa.color.tint (new primitives)": 2,
    "oa.chart.color.diverging, on Charcoal": 10,
    "oa.chart.color.categorical": 16,
    "oa.chart.color.ghost": 2,
-   "oa.chart.grade": 10
+   "oa.chart.grade": 11
   },
   "existing_values_reused": [
    "{oa.color.palette.charcoal}",
@@ -100,6 +100,14 @@
    "line_widths_from": "ARROW, line 436",
    "hollow_line": "two rails of 1 px at w / 2 + 0.5 either side of the line, at every width, so the ground between them is one line width plus 0 px (wire_marks(), line 570)",
    "dotted_head_clearance_line_widths": 1.5,
+   "delay_ticks": {
+    "first_px_from_tail": 12,
+    "apart_px": 5,
+    "stroke_px": 2,
+    "length": "w + 8 px",
+    "tick_marks_line": 560,
+    "draws_lead_in": false
+   },
    "grade_words_and_build_glosses": {
     "documented": [
      "Documented",
@@ -133,6 +141,10 @@
     "why": "The build has no shortest-line constant. Its keys draw 32 and 36 px samples on a 2 px line (16 and 18 widths), which squeeze a dash-dot sample by up to a fifth to fit it. 20 widths holds two full dash-dot periods (8 widths each) and the closing dash at every width, which is what Rule 13.4's \"long enough to show its pattern twice\" asks: 40 px at 2 px, 60 px at 3 px, 120 px at 6 px. It replaces both the 28 widths of the Phase 2 frame memo, which the build never coded, and Rule 13.4's 48 px"
    },
    {
+    "value": "oa.chart.grade.leadIn = 28 px (fix pass 2)",
+    "why": "The build places delay ticks 12 px from the tail and 5 px apart, 2 px wide (tick_marks(), line 560), but starts every pattern at the tail, so a tick can land on a gap and read as a letter (brand S1). A solid lead-in through the tick zone fixes it for every tick count: the third tick ends at 23 px, and 5 px of clear line, the ticks' own spacing, bring it to 28 px. One length for every grade, width and tick count. The pattern then leaves its own gap and starts on ink, and the shortest run counts after the lead-in"
+   },
+   {
     "value": "oa.chart.grade.recordSquare = 7 px",
     "why": "The build draws no record square. Gate 1 M1 added it; the Phase 2 atlas design frame memo and Rule 13.4 both set 7 px, so the value stays, set inline before the word Documented only"
    },
@@ -145,6 +157,7 @@
    "oa.chart.grade.conceptual.railSelected (2 px on the 6 px route) is withdrawn: the build draws 1 px rails at every width",
    "oa.chart.grade.minRun goes from 28 to 20 line widths",
    "oa.chart.grade.headClearance is new: 1.5 line widths, read from wire_marks()",
+   "oa.chart.grade.leadIn is new in fix pass 2: 28 px of solid line under the delay ticks",
    "The hypothesis gloss reads \"not yet tested\"",
    "The source of every grade token is the atlas build, in place of \"Atlas V7 renderer\""
   ]
@@ -963,6 +976,17 @@
    "description": "Gap between a dotted line's last dot and its arrowhead, in line widths. Proposed until board 1."
   },
   {
+   "path": "oa.chart.grade.leadIn",
+   "css": "--oa-chart-grade-lead-in",
+   "tier": "semantic",
+   "type": "dimension",
+   "value": "28px",
+   "need": "N-12",
+   "source": "set by the data lead in fix pass 2: the atlas build draws no lead-in (brand S1)",
+   "job": "A patterned line that carries delay ticks runs solid for its first 28 px, at every width and for one, two or three ticks, then leaves its pattern's own gap and starts the fitted pattern on ink.",
+   "description": "Solid lead-in of a patterned connection under its delay ticks, 28 px from the tail: the third tick ends at 23 px and 5 px of clear line follow. Lines with no ticks, such as key samples, take none. Proposed until board 1."
+  },
+  {
    "path": "oa.chart.grade.recordSquare",
    "css": "--oa-chart-grade-record-square",
    "tier": "semantic",
@@ -987,7 +1011,7 @@
     "3 px": "60 px",
     "6 px": "120 px"
    },
-   "job": "The shortest run that may carry a texture, key samples included: 20 line widths, 40 px on a 2 px line, which holds two full dash-dot periods and the closing dash. A shorter step prints its grade in words beside it.",
+   "job": "The shortest run that may carry a texture, key samples included, counted after any lead-in: 20 line widths, 40 px on a 2 px line, which holds two full dash-dot periods and the closing dash. A shorter step prints its grade in words beside it.",
    "description": "Shortest textured run, key samples included, in line widths. Proposed until board 1."
   }
  ],

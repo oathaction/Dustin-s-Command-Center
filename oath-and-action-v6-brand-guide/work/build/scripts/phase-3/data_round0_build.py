@@ -95,6 +95,12 @@ def fmt(v, nd=1):
     return None if v is None else round(v, nd)
 
 
+# A derived value keeps the publisher's precision: computed from the counts or levels and stored to six decimals, so the kit
+# rounds it once, to the spec's format (D3-95, ENG-8). Six decimals only drop floating-point noise.
+def keep(v):
+    return None if v is None else round(v, 6)
+
+
 # ---------------------------------------------------------------------------------------------------------------
 # Public tables, copied byte for byte. Column types and the round 0 fields are added; Phase 2's other fields travel.
 # ---------------------------------------------------------------------------------------------------------------
@@ -128,8 +134,16 @@ ADDED_ROWS = {
     },
 }
 
-# Notes the research lead asked to add (ENG-2, ENG-3)
+# Notes the research lead asked to add (ENG-2, ENG-3; ENG-9 for the payroll sampling errors and the survey's margin)
+V7_NOTES = {
+    'v7-stock-trading-ban': ('The Program for Public Consultation gives the full sample’s margin of error as plus or minus 1.9 percent '
+                             '(https://publicconsultation.org/united-states/stock-trading-by-members-of-congress/, read November 11, 2026); '
+                             'it gives none for each party’s voters and states no confidence level.'),
+}
 EXTRA_NOTES = {
+    'fred-payrolls-by-sector': ('The Bureau of Labor Statistics publishes sampling errors for levels and for one-, three- and twelve-month changes '
+                                '(All Employees Standard Error Tables, https://www.bls.gov/web/empsit/cesvarae.htm, read November 11, 2026), '
+                                'none for longer changes, and none for government sectors.'),
     'census-cps-reported-voting': 'Margins for the 2020 and 2024 age-gap figures are in census-cps-voting-age-gap-moe: the gap between citizens 65 and over and citizens 18 to 24 grew 3.9 points with a margin of about 2.0 points.',
     'census-hvs-homeownership-by-race-annual': 'Margins for 2003 and the 2003 to 2025 gaps are in census-hvs-homeownership-gap-moe: the non-Hispanic White and Black gap widened 2.3 points with a margin of about 0.7 points.',
 }
@@ -283,14 +297,21 @@ def derive_fec_shift():
     for r in rows:
         t = nat.setdefault(int(float(r['year'])), [0, 0, 0])
         t[0] += num(r['total_votes']); t[1] += num(r['dem_votes']); t[2] += num(r['rep_votes'])
-    sh = {y: (round(100 * d / tv, 2), round(100 * rp / tv, 2), round(100 * (rp - d) / tv, 2)) for y, (tv, d, rp) in nat.items()}
-    out.append({'code': 'US', 'name': 'United States', 'scope': 'nation', 'margin_2020': sh[2020][2], 'margin_2024': sh[2024][2],
-                'shift_pts': round(sh[2024][2] - sh[2020][2], 2), 'dem_pct_2024': sh[2024][0], 'rep_pct_2024': sh[2024][1],
+    # every share from the vote counts, unrounded (ENG-8): margin = (Republican - Democratic) / total votes x 100
+    sh = {y: (100 * d / tv, 100 * rp / tv, 100 * (rp - d) / tv) for y, (tv, d, rp) in nat.items()}
+    out.append({'code': 'US', 'name': 'United States', 'scope': 'nation', 'margin_2020': keep(sh[2020][2]), 'margin_2024': keep(sh[2024][2]),
+                'shift_pts': keep(sh[2024][2] - sh[2020][2]), 'dem_pct_2024': keep(sh[2024][0]), 'rep_pct_2024': keep(sh[2024][1]),
                 'total_votes_2024': int(nat[2024][0])})
+
+    def share(r, k):
+        return 100 * num(r[k]) / num(r['total_votes'])
+
+    def margin(r):
+        return 100 * (num(r['rep_votes']) - num(r['dem_votes'])) / num(r['total_votes'])
     for code, s in sorted(by.items()):
-        m20, m24 = num(s[2020]['margin_pts']), num(s[2024]['margin_pts'])
-        out.append({'code': code, 'name': s['name'], 'scope': 'state', 'margin_2020': m20, 'margin_2024': m24,
-                    'shift_pts': round(m24 - m20, 2), 'dem_pct_2024': num(s[2024]['dem_pct']), 'rep_pct_2024': num(s[2024]['rep_pct']),
+        m20, m24 = margin(s[2020]), margin(s[2024])
+        out.append({'code': code, 'name': s['name'], 'scope': 'state', 'margin_2020': keep(m20), 'margin_2024': keep(m24),
+                    'shift_pts': keep(m24 - m20), 'dem_pct_2024': keep(share(s[2024], 'dem_votes')), 'rep_pct_2024': keep(share(s[2024], 'rep_votes')),
                     'total_votes_2024': int(num(s[2024]['total_votes']))})
     cols = ['code', 'name', 'scope', 'margin_2020', 'margin_2024', 'shift_pts', 'dem_pct_2024', 'rep_pct_2024', 'total_votes_2024']
     write_csv('fec-presidential-shift-by-state', cols, out)
@@ -347,18 +368,18 @@ def derive_fred():
                 continue
             v = num(r['employees_thousands'])
             sect.append({'series_id': sid, 'sector': r['sector'], 'month': mo, 'employees_thousands': v,
-                         'pct_change_since_2022_01': fmt((v / base - 1) * 100, 2) if base and v is not None else None,
-                         'change_since_2022_01_thousands': fmt(v - base, 1) if base and v is not None else None,
+                         'pct_change_since_2022_01': keep((v / base - 1) * 100) if base and v is not None else None,
+                         'change_since_2022_01_thousands': keep(v - base) if base and v is not None else None,
                          'status': 'preliminary' if mo in prelim else 'final'})
         if sid == 'PAYEMS':
             vals = [(r['date'][:7], num(r['employees_thousands'])) for r in rs]
-            diffs = [(vals[i][0], round(vals[i][1] - vals[i - 1][1], 1)) for i in range(1, len(vals))
+            diffs = [(vals[i][0], keep(vals[i][1] - vals[i - 1][1])) for i in range(1, len(vals))
                      if vals[i][1] is not None and vals[i - 1][1] is not None]
             for i, (dt, d) in enumerate(diffs):
                 w = [x for _, x in diffs[max(0, i - 2):i + 1]]
                 if dt < '2022-01':
                     continue
-                change.append({'month': dt, 'change_thousands': d, 'avg3_thousands': round(sum(w) / len(w), 1) if len(w) == 3 else None,
+                change.append({'month': dt, 'change_thousands': d, 'avg3_thousands': keep(sum(w) / len(w)) if len(w) == 3 else None,
                                'status': 'preliminary' if dt in prelim else 'final'})
     write_csv('fred-payrolls-by-sector-change', ['series_id', 'sector', 'month', 'employees_thousands', 'pct_change_since_2022_01',
                                                  'change_since_2022_01_thousands', 'status'], sect)
@@ -403,6 +424,8 @@ def v7_meta(name, table, table_id, period, geography, universe, unit, qual, colu
             'printed_source_line': line, 'ledger_row': 'not needed: Atlas V7, read by script', 'domain': domain, 'states': list(states),
             'snapshot': SNAP, 'specimens': specimens, 'extract_script': 'work/build/scripts/phase-3/data_round0_build.py'}
     meta.update(extra)
+    if name in V7_NOTES:
+        meta['notes'] = list(meta.get('notes') or []) + [V7_NOTES[name]]
     write_meta(name, meta)
 
 
@@ -623,8 +646,36 @@ def load_rows(p):
     return d.get('rows'), d
 
 
-def check_folder(out=OUT):
+def check_derived(out=OUT):
+    """D3-95: every derived value equals the value computed from the publisher's counts or levels, to six decimals, so the
+    kit rounds once. Returns faults."""
     faults = []
+    res = {(r['code'], int(float(r['year']))): r for r in read_csv(out / 'fec-presidential-results-by-state.csv')}
+    for r in read_csv(out / 'fec-presidential-shift-by-state.csv'):
+        if r['code'] == 'US':
+            continue
+        for y in (2020, 2024):
+            src = res[(r['code'], y)]
+            want = 100 * (num(src['rep_votes']) - num(src['dem_votes'])) / num(src['total_votes'])
+            if abs(num(r[f'margin_{y}']) - want) > 1e-5:
+                faults.append(f"fec-presidential-shift-by-state: {r['code']} margin_{y} reads {r[f'margin_{y}']}, the counts give {want:.6f}")
+    lev = {}
+    for r in read_csv(out / 'fred-payrolls-by-sector-change.csv'):
+        lev.setdefault(r['series_id'], []).append(r)
+    for sid, rs in lev.items():
+        base = num(rs[0]['employees_thousands'])
+        for r in rs:
+            v = num(r['employees_thousands'])
+            if v is None or r['pct_change_since_2022_01'] in ('', None):
+                continue
+            want = (v / base - 1) * 100
+            if abs(num(r['pct_change_since_2022_01']) - want) > 1e-5:
+                faults.append(f"fred-payrolls-by-sector-change: {sid} {r['month']} reads {r['pct_change_since_2022_01']}, the levels give {want:.6f}")
+    return faults
+
+
+def check_folder(out=OUT):
+    faults = check_derived(out)
     metas = sorted(out.glob('*.meta.json'))
     datas = sorted(p for p in out.iterdir() if p.suffix in ('.csv', '.json') and not p.name.endswith('.meta.json'))
     for p in out.iterdir():

@@ -133,22 +133,28 @@ def grade_values():
     v = {"plausible": per["Plausible"], "contested": per["Contested"], "hypothesis": per["Hypothesis"],
          "widths": read["line_widths_px"], "clearance": read["dotted_head_clearance_line_widths"],
          "min_run": int(set_here["oa.chart.grade.minRun"].split()[0]),
-         "square": int(set_here["oa.chart.grade.recordSquare"].split()[0]), "rail": 1, "gap": 1}
+         "square": int(set_here["oa.chart.grade.recordSquare"].split()[0]), "rail": 1, "gap": 1,
+         "lead_in": int(set_here["oa.chart.grade.leadIn"].split()[0])}
+    tk = read["delay_ticks"]
+    need(tk["first_px_from_tail"] + 2 * tk["apart_px"] + tk["stroke_px"] / 2 + tk["apart_px"] == v["lead_in"],
+         "the lead-in no longer ends one tick spacing past the third tick (D3-84, fix pass 2)")
     need(v["widths"] == sorted(BS.ARROW) and BS.ARROW[2] == (10, 8) and BS.TAG[2] == (14, 6, 16, 8, 2),
          "the atlas build's marks changed; reread Rule 10.10")
     t = json.loads((ROOT / "work/build/tokens/tokens.json").read_text())["oa"]["chart"]["grade"]
     held = {"minRun": t.get("minRun", {}).get("$value"), "recordSquare": (t.get("recordSquare", {}).get("$value") or {}).get("value"),
             "conceptual.rail": (t.get("conceptual", {}).get("rail", {}).get("$value") or {}).get("value"),
             "conceptual.gap": t.get("conceptual", {}).get("gap", {}).get("$value"),
-            "headClearance": t.get("headClearance", {}).get("$value")}
+            "headClearance": t.get("headClearance", {}).get("$value"),
+            "leadIn": (t.get("leadIn", {}).get("$value") or {}).get("value")}
     want = {"minRun": v["min_run"], "recordSquare": v["square"], "conceptual.rail": v["rail"], "conceptual.gap": v["gap"],
-            "headClearance": v["clearance"]}
+            "headClearance": v["clearance"], "leadIn": v["lead_in"]}
     for k, x in want.items():
         if held[k] != x:
             TOKEN_LAG.append(f"oa.chart.grade.{k}: tokens.json holds {held[k]!r}, D3-84 sets {x!r}")
     v["tokens"] = {k: k in t or k.split(".")[0] in t for k in ("documented", "wellSupported", "plausible", "contested", "hypothesis",
                                                               "conceptual.rail", "minRun", "recordSquare", "headClearance")}
     v["tokens"]["headClearance"] = "headClearance" in t
+    v["tokens"]["leadIn"] = "leadIn" in t
     return v
 
 
@@ -161,6 +167,25 @@ LW = 2                                    # the line width every plate draws at
 MIN_RUN = GV["min_run"] * LW              # the shortest textured run, oa.chart.grade.minRun: 40 px at 2 px
 KEY_W = MIN_RUN + 15                      # a key sample: the run, the 10 px arrowhead, the ends and the dots' clearance
 STEP_W = 88                               # a step's line in a list of steps
+LEAD = GV["lead_in"]                      # oa.chart.grade.leadIn: solid line under a patterned line's delay ticks
+
+
+def with_lead_in(marks, tex, w, y):
+    """D3-84, fix pass 2: a patterned line that carries delay ticks runs solid for LEAD px from the tail, leaves its
+    pattern's own gap, then starts the fitted pattern on ink, and the shortest run counts after the lead-in. The atlas
+    build draws no lead-in, so the line wire_marks drew is split here in two."""
+    x_end = (w - 1) - BS.ARROW[LW][0] - (GV["clearance"] * LW if tex == "dotted" else 0)
+    m = re.search(r'<path class="ak-mark" d="M1 ([\d.]+)L([\d.]+) [\d.]+"[^>]*/>', marks)
+    need(m and abs(float(m.group(2)) - x_end) < 0.01, "wire_marks drew a line the lead-in does not expect")
+    arr, cap = BS.pattern(tex, LW)
+    start = 1 + LEAD + arr[-1]
+    run = x_end - start
+    need(run >= MIN_RUN, f"a {w} px line keeps {run:g} px of pattern after its lead-in, under the shortest run, {MIN_RUN} px")
+    rnd = ' stroke-linecap="round"' if cap == "round" else ""
+    two = (f'<path class="ak-mark" d="M1 {m.group(1)}L{BS.f(1 + LEAD)} {m.group(1)}" stroke-width="{LW}"/>'
+           f'<path class="ak-mark" d="M{BS.f(start)} {m.group(1)}L{BS.f(x_end)} {m.group(1)}" stroke-width="{LW}"{rnd} '
+           f'stroke-dasharray="{BS.fitted(tex, LW, run)}"/>')
+    return marks[:m.start()] + two + marks[m.end():]
 
 
 def line_svg(grade=None, w=STEP_W, delay=None, sign=None, hollow=False, target=False):
@@ -177,6 +202,9 @@ def line_svg(grade=None, w=STEP_W, delay=None, sign=None, hollow=False, target=F
         # the case under a line shows only on a red target; the rest are defaults the stylesheet sets once
         marks = re.sub(r'<path class="ak-case"[^>]*/>', "", marks)
         marks = marks.replace(' fill="none"', "").replace(' stroke-linecap="butt"', "")
+    if delay and tex != "solid":
+        need(not target, "a red target drawn in a pattern with delay ticks needs its lead-in at 6 px")
+        marks = with_lead_in(marks, tex, w, y)
     # the guide's page shell hides its own .rail (the chapter list) on phones, so the hollow line's rails take another class
     marks = marks.replace('class="rail"', 'class="rl"')
     red = ' data-red="working" data-red-job="where a reform acts"' if target else ""
@@ -915,7 +943,7 @@ def rule_13_4(book):
                   "and no record square, so the plausible step looks as firm as the documented ones."),
              notes="Labeled failure: one solid line for every grade and no grade words.")
     toks = [k for k in ("documented", "wellSupported", "plausible", "contested", "hypothesis", "conceptual.rail", "minRun",
-                        "recordSquare") if v["tokens"].get(k)]
+                        "recordSquare", "leadIn") if v["tokens"].get(k)]
     tok = lambda k: f"oa.chart.grade.{k}" if v["tokens"].get(k) else None
     clear = f", stopping {v['clearance']:g} line widths short of the arrowhead"
     specs = [
@@ -925,7 +953,8 @@ def rule_13_4(book):
         {"label": "Hypothesis", "value": f"Round dots {hy[1]:g} line widths apart, {hy[1] * LW:g} px on a 2 px line{clear}", "token": tok("hypothesis")},
         {"label": "Widths and fit", "value": f"Lines at {', '.join(str(x) for x in v['widths'][:-1])} or {v['widths'][-1]} px; each pattern stretched to start and end on ink"},
         {"label": "Hollow line", "value": f"Two {v['rail']} px rails, {v['gap']} line width apart: {2 * v['rail'] + v['gap'] * LW} px across on a 2 px line", "token": tok("conceptual.rail")},
-        {"label": "Shortest run", "value": f"{v['min_run']} line widths, {MIN_RUN} px on a 2 px line, key samples included; a shorter step prints its grade in words beside it", "token": tok("minRun")},
+        {"label": "Lead-in under delay ticks", "value": f"A patterned line that carries delay ticks runs solid for its first {LEAD} px from the tail, at every width: the third tick ends at 23 px, then 5 px of clear line. The pattern then leaves its own gap and starts on ink. Solid lines and lines without ticks take none", "token": tok("leadIn")},
+        {"label": "Shortest run", "value": f"{v['min_run']} line widths, {MIN_RUN} px on a 2 px line, key samples included, counted after any lead-in; a shorter step prints its grade in words beside it", "token": tok("minRun")},
         {"label": "Record square", "value": f"{v['square']} px, filled in the label’s ink, inline before the word Documented and nowhere else", "token": tok("recordSquare")},
         {"label": "Beside the event mark", "value": "An event’s shape sits only at the head of an event row, with the figure’s key (Rule 13.11)"},
     ]
@@ -1049,7 +1078,7 @@ def rule_13_5(book):
             {"label": "Effect size", "value": "The atlas’s code and words, one row per outcome family: one to three pips right of the zero line for a gain, left for a cost, and a bar on the zero line for no expected effect"},
             {"label": "Uncertainty", "value": "The atlas’s words, quoted; for a survey figure, its margin of error at the publisher’s stated confidence, 90 percent for the Census Bureau and the Bureau of Labor Statistics, drawn as an interval"},
             {"label": "A gap between two survey figures", "value": "Counts only where it passes the margin of error of the gap itself; chapter 14 sets when a chart may rank survey figures"},
-            {"label": "Delay", "value": "One, two or three ticks for under 2 years, 2 to 10 years and over 10 years, with the words"},
+            {"label": "Delay", "value": "One, two or three ticks for under 2 years, 2 to 10 years and over 10 years, with the words; on a patterned line the ticks sit on its solid lead-in (Rule 13.4)"},
             {"label": "Where a reform acts", "value": "Its target connections in Rule 12.5’s red, at 4 px on a 1 px Charcoal edge and never at 2 px, with a note that names the reform",
              "token": "oa.color.data.emphasisRed.onNewsprint"},
             {"label": "Never", "value": "A total across families, or a width or darkness for a grade"},

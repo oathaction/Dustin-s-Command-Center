@@ -39,5 +39,8 @@
  "copied_from": "work/boards/phase-2/data-viz/shared/public/fred-payrolls-by-sector.csv",
  "copied_sha256_prefix": "395e0b0c4e8bf274",
  "months_missing": [],
- "fetched_by": "main session, after FRED closed the research lead's connections (D2-120)"
+ "fetched_by": "main session, after FRED closed the research lead's connections (D2-120)",
+ "notes": [
+  "The Bureau of Labor Statistics publishes sampling errors for levels and for one-, three- and twelve-month changes (All Employees Standard Error Tables, https://www.bls.gov/web/empsit/cesvarae.htm, read November 11, 2026), none for longer changes, and none for government sectors."
+ ]
 }
