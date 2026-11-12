@@ -4526,3 +4526,5 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | # | Decision | Reason |
 |---|---|---|
 | D3-617 | Rule 15.6's failure caption and both 15.6 alts take the editor's second-pass words | W11 (a run of negatives) and the alts' rule of quoting a loop's name, as the opener's and 15.13's do |
+| D3-618 | Correction to D3-614: the kit's full build passed 41 of 42 specs, not 42; S10 failed its source check because its spec still sets the claims register's old printed line by hand. The main session read only the last lines of the build's output. S10 does not draw in chapter 14 until round 2, which is why the strict build passed | The statistics reviewer's N2; a record must state what was checked |
+| D3-619 | S25 keeps the January 31, 2025 count as a table column and drops the note's before-and-after arithmetic; the note says only what the column is | House rule H09 forbids any chart or sentence that splits a period at an inauguration date; the column keeps the record checkable without the page doing the split (the statistics reviewer's N1, with its recommendation, so no question goes to Dustin) |

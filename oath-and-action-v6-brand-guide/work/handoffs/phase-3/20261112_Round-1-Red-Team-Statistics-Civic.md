@@ -113,3 +113,81 @@ None. Every fix above sits inside the approved phase.
 
 - Created: `work/handoffs/phase-3/20261112_Round-1-Red-Team-Statistics-Civic.md` (this report).
 - Modified: nothing else in the repository. Scripts, downloads and kit outputs are in the scratch folder named above.
+
+## Second pass
+
+November 12, 2026, DR-191's short second pass on my own items. Build read: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/256961f5-3911-5bd9-908d-f34ce0435ace/scratchpad/phase-3/round-1-second/build/guide.html` (9,986,588 bytes), the kit builds in `.../round-1-second/kit-out/`, the fix brief with D3-476 to D3-490 and its addendum, the decision log to D3-617, and the owners' "Review fix pass" sections. Every quoted line below was read from the spec, entry or sidecar and found in the built page by search.
+
+### Score
+
+**4 of 5.** All five Must fix items and all thirteen Should fix items are closed, and every changed figure I rechecked holds. The fix pass added one Must fix: S25's new note 2 splits the window at the inauguration in a sentence, which house rule H09 forbids. It also added four smaller faults (N2 to N5).
+
+### My items
+
+| Item | Status | Line checked |
+|---|---|---|
+| M1, S24 | Closed under D3-476 | Source line: "U.S. Census Bureau, Business Formation Statistics, September 2026 monthly release (October 14, 2026), business applications, 2019 and 2025, 50 states and DC. Retrieved November 11, 2026." Rule 14.1's plate prints the same release. |
+| M2, S26 | Closed | Title: "Republicans won five more House seats than Democrats in the 2024 election, the smallest lead in the first count for any Congress since 1951." Measure line: "as first elected for each Congress". The alt text and note 1 follow. |
+| M3, S34 | Closed | Note 3: "a dashed outline marks its 295 votes through November 10, 2026." My first count, 289, was too low: six cloture votes carry a blank question in the Senate's vote lists. I read each of the six vote records myself (session 1, votes 522, 525, 546 and 653; session 2, votes 124 and 221). Each reads "On the Cloture Motion", which gives 295 votes and 248 invoked, as the corrected row has them. The 116th Congress's two blank votes are not cloture votes, so its 298 stands. With the note now dated, D3-421 stands. |
+| M4, S21, S23, S38, S39 | Closed, one residual (R1) | Grade lines: "Graded by the atlas, claim by claim: our count of its register of claims" and "Graded by the atlas, record by record: our count of its issue records". "Documented: the atlas’s own register" no longer appears in the build. |
+| M5, Rule 14.6 | Closed | Rule 14.6: "The named mark gives up the red and takes Charcoal at the subject weight ... when a reader would tie the mark to a party." S20, S21 and S23 draw the red point. S17 (a Congress), S27 (states) and S36 (money spent to elect) take ink under the rule's party case. |
+| S1, S31 | Closed | Note 1: "That rise of 1.1 points is more than three times the margin of error the Bureau of Labor Statistics gives for one month’s change, plus or minus 0.3 point at 90 percent confidence; it gives none for longer spans." I could not confirm the 0.3: bls.gov refused this container (HTTP 403). The source line gives its condition, "at a rate near 6 percent"; note 1 leaves that condition out. |
+| S2, S27 | Closed | Title: "most in Montana and Utah, each more than seven times their level in early 1991". The U.S. line (436) matches all 142 quarters of FHFA's `hpi_po_us_and_census.txt` (division USA), read today. |
+| S3, vintages | Closed | S25: "January 2022 and January 2025 (version 4 of each, October 3, 2026) and August 2026 (version 1, October 4, 2026)". S27: "quarterly release of August 25, 2026". S31: "Employment Situation for October 2026 (November 6, 2026)". S36: "from reports the commission had processed by November 11, 2026". |
+| S4, S25 title | Closed; see N1 and N5 | Title: "Agencies that report to the Office of Personnel Management had 130,369 fewer civilian employees". |
+| S5, S19 | Closed | Table word for footnote c: "Leaves out its own prisoners held in federal or other states’ prisons". |
+| S6, S21 and S39 | Closed | S39 note 2: "The atlas checked each of these 11 claims on October 15, 2026". The claims sidecars: "432 of the 433 claims checked on October 15, 2026", which matches my count. |
+| S7, S37 | Closed; see N4 | Note 2 quotes V7's four definitions, word for word against `routes.feasibility_scale`. New title: "For 36 of the 38 reforms that could pass as an act of Congress". V7 has 38 FS entries on 38 distinct reforms. |
+| S8, use instead | Closed | 14.19: "About ten items or fewer ... -> 14.20". 14.20: "More than about ten items ... -> 14.19". 14.133: "a dozen or more rows -> 14.21". 14.134: "-> 14.16". 14.37: "the latest months are preliminary, marked as Rule 14.11 sets -> 14.29". |
+| S9, Rule 14.10 | Closed | "or a round span back from the latest figure when no earlier start has a reason of its own". |
+| S10, group line and S34 note 1 | Closed; see the check below and N3 | Group 14.74: "whether a survey’s margin of error around a finding or a model’s range around an estimate (Rule 13.1)". |
+| S11, source lines | Closed | S20 matches the variant `with_margins`. S41 and S42: "from the Program’s survey page, read November 12, 2026". That page reset this container's connection, so I did not confirm the margin. |
+| S12, round 3 plan | Closed | `reaches_city_elections` is "yes" for 18 bans and "partly" for Ohio, and Tennessee reads "yes". Row 113's note now gives "January 1, 2010, 2014, 2019 and 2024". D3-482 answers change 11. |
+| S13, S20 title | Closed | "The homeownership rate for householders under 35 stood at 37.0 percent in 2025". |
+
+### The two checks the main session asked for
+
+**S34's note 1, 1949 to 1959: confirmed.** Riddick's Senate Procedure (S. Doc. 101-28, 1992), chapter "Cloture Procedure", on govinfo (`https://www.govinfo.gov/content/pkg/GPO-RIDDICK-1992/pdf/GPO-RIDDICK-1992-20.pdf`, read November 12, 2026, SHA-256 prefix 950f4ccc948db7dd), under "Vote Required", says the 1917 rule "provided for cloture on a vote of 'two-thirds of those voting.' The number of Senators required to invoke cloture was changed in 1949, to 'two-thirds of the Senators duly chosen and sworn.' In 1959, this number was changed back to the original number of 'two-thirds of the Senators present and voting.'" The same page gives the 1975 change to "three-fifths of the Senators duly chosen and sworn". The note's "two-thirds of the whole Senate" is a fair plain-language gloss of "duly chosen and sworn". The research lead should add this source to the sidecar, so that D3-602's basis rests on a record and not on the reviewer's word.
+
+**D3-476, S24 kept frozen with its vintage printed: sound.** The Bureau's own pages confirm the printed release. Its release schedule lists "2026 September Wednesday, October 14, 2026" and "2026 October Thursday, November 12, 2026", and its home page says "The latest annual update was applied during the October 2026 monthly release on November 12, 2026." The frozen figures are true for the release the line names, Rule 13.7 asks a revised series to name its vintage, and Rule 13.7's update clause applies to published charts, which the Phase 5 refresh covers. The research ledger's "Phase 5 refresh list" carries the revision. At that refresh the words change with the numbers: the title becomes 63 percent, Wyoming's rise becomes 315 percent (4.15 times), and the alt text puts Delaware (138.4) ahead of New Mexico (138.1).
+
+### New faults from the fix pass
+
+**N1 (Must fix). S25's note 2 splits the window at the inauguration in a sentence.** The note reads: "The files counted 2,304,585 employees in all on January 31, 2025, 149,384 more than in January 2022 and 279,753 more than in August 2026. That day falls 11 days after the inauguration of January 20, 2025, so the change up to January 2025 includes those 11 days." House rule H09 says "No chart or sentence splits a period at an inauguration date, since a split invites credit or blame for one administration", and Rule 13.7 quotes it. The drawing stays whole, but the sentence gives the period's two halves as counts and ties the split point to the inauguration by name. The brand reviewer's S20 asked for the January 2025 count "without splitting the drawing", and Rule 14.10 allows a dated note. Neither covers a sentence that does the subtraction for the reader. Fix: keep the January 2025 column in the table as a dated record, and cut note 2 to "The table also gives each agency’s count on January 31, 2025." Owner: Maker B, with the editor. If the studio wants the split printed, that is an exception to H09 and goes to Dustin (Question 1 below).
+
+**N2 (Should fix). S10 now fails the kit check.** The claims sidecar's printed line changed for S6 ("432 of the 433 claims checked on October 15, 2026"). S10's spec still sets the old line by hand ("claims checked through October 15, 2026"), and `oa-chart.mjs build s10` fails: "the source line differs from v7-claims-by-grade.json's printed_source_line and its variants". The strict build passes only because S10 does not draw in chapter 14 until round 2. D3-614 records "all 42 kit specs passing", and the second pass's own `kit-out/s10/s10-check.json` holds this fault. Fix: drop S10's `source_line` so it prints the sidecar's line. Owner: S10's maker for round 2; the main session corrects D3-614's record.
+
+**N3 (Should fix). S34's source line now disagrees with note 1.** The printed line ends "the votes needed changed in 1975, 2013 and 2017", but note 1 now names changes in 1949 and 1959 as well. The sidecar's qualification still says "two-thirds of those voting until 1975". Fix: "the votes needed changed in 1949, 1959, 1975, 2013 and 2017", or "the votes needed changed over time, as note 1 sets out", with Riddick as the source. Owner: Research lead, then maker B.
+
+**N4 (Should fix). S37's note 3 compresses Article V until it misleads.** "Article V, the Constitution’s process for amending itself, takes two-thirds of each house of Congress and three-quarters of the states, or a convention." A newcomer can read this as saying a convention alone can amend the Constitution. A convention only proposes an amendment, and three-quarters of the states must still ratify it. The words copy V7's route field ("who") but print as our own sentence. Fix: "Under Article V, two-thirds of each house of Congress, or a convention called by two-thirds of the states, proposes an amendment, and three-quarters of the states must ratify it." Owner: Maker A.
+
+**N5 (Should fix). S25's January 2025 column does not add to its total.** The 129 agency rows sum to 2,304,166, and the "All agencies" row prints 2,304,585. The sidecar explains the gap of 419 (codes "No Data Reported", 416 people, and the Office of Pandemic Preparedness and Response Policy, 3), but note 3 tells the reader "The table lists all 129 agencies in the files". If the column stays (N1), add a sentence giving the 419 people under two codes with no row. Owner: Maker B.
+
+**R1 (Should fix, residual of M4).** The grade line for a count of the atlas's own records now sits only in four specs and in the data lead's notes. No rule tells the next builder to print it. Chapter 13 is frozen, so add it to Rule 14.2's specs or to an entry's builders line, as "A count of the atlas's own records: Graded by the atlas, record by record, then our count". Owner: Editor, with the data lead.
+
+### Questions for Dustin
+
+1. Only if the studio keeps N1's sentence: does H09 allow a note that gives counts on both sides of an inauguration, when the drawing stays whole? *Recommendation:* no. Keep the January 2025 count as a table column and drop the before-and-after arithmetic, so the record stays checkable and the page does not do the split for the reader.
+
+### Tested in the second pass
+
+- Diffed the reader words of all 26 specs, before and after the fix pass, by script, and read every change.
+- Searched the second build for each fixed line and for the old wording (13 lines).
+- Rebuilt S10, S21, S23 and S39 with the kit, then every spec (`--all`): only S10 fails.
+- Read the six blank-question cloture votes of the 119th Congress and the two of the 116th from their own Senate records.
+- Read Riddick's "Cloture Procedure" chapter on govinfo, and the Bureau's BFS release schedule and home page.
+- Compared S27's 142 U.S. quarters with FHFA's national file, and S36's four recorded parties (and FF PAC's none) with the FEC's committee records.
+- Counted V7's FS route entries (38, on 38 reforms) and quoted the four feasibility definitions against V7.
+- Checked S25's new note 2 arithmetic (149,384 and 279,753 hold) and its January 2025 column's sum (N5).
+- Read Rules 14.6 and 14.10, entries 14.16, 14.19, 14.20, 14.37, 14.133 and 14.134, group line 14.74, `ballotpedia-rcv-prohibitions-by-state.csv`'s new fields and row 113's note.
+
+### Not tested in the second pass
+
+- S31's 0.3 point margin (bls.gov refused this container) and S41's margin (the Program's page reset the connection).
+- OPM's January 2025 file for S25 (not fetched again; checked for internal sums only).
+- No captures looked at. Visual checks of the red points, S33 and chapter 15 belong to the other reviewers.
+- The editor's rebuilt rule plates and chapter 15's changes, outside my items.
+
+### Change log, second pass
+
+- Modified: `work/handoffs/phase-3/20261112_Round-1-Red-Team-Statistics-Civic.md` (this section appended). No other repository file.
