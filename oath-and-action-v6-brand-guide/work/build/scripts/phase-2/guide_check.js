@@ -115,6 +115,10 @@
 // Added in Gate 2's fix pass (November 11, 2026):
 //   failureLead        every failure plate's caption leads with "Fails Rule NN.N." (or "Fails Rules ...") in bold (CD-S2)
 //   filesShip          no Files list names a studio path or a script: only file names that ship (DT-M1)
+// Added in Phase 3's round 1 fix pass (November 12, 2026):
+//   chartEdges         every chart kit drawing (figure.oac-fig svg.oac-svg, every one drawn first) and every chapter 14
+//                      sketch (svg.oac-sketch) holds each shape it paints inside its own box, within 1.5 px: a drawing's
+//                      overflow is visible, so a shape outside it paints over the figure's words (CD RM1, K-S2)
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -618,6 +622,30 @@ function failuresFrom(a, width) {
 // CD-S9 (Q1 to Q4 pass): read every plate frame at true size. A frame scrolls when its content runs more than 1 px past
 // it, the shell's own threshold. The narrow side is the --oa-space-400 token (32 px at the default text size). A plate
 // set to Fit to window, or a pending one, is skipped; the page opens every plate at true size.
+// K-S2 (Phase 3, round 1 fix pass): every kit drawing and sketch keeps its shapes inside its box. Kit figures draw as they
+// near the screen, so the check draws them all first.
+async function chartEdges(page) {
+  await page.evaluate(() => window.OAChart && OAChart.draw_all && OAChart.draw_all()).catch(() => {});
+  await page.waitForFunction(() => [...document.querySelectorAll('figure.oac-fig')].every((f) => f.getAttribute('data-oa-drawn') || f.getAttribute('data-oa-error') || f.querySelector('svg.oac-svg')), null, { timeout: 60000 }).catch(() => {});
+  return page.evaluate(() => {
+    const out = []; let drawings = 0;
+    document.querySelectorAll('figure.oac-fig svg.oac-svg, svg.oac-sketch').forEach((svg) => {
+      const sb = svg.getBoundingClientRect();
+      if (!sb.width) return;
+      drawings++;
+      const st = svg.closest('[data-specimen]'), fg = svg.closest('figure');
+      const where = (st && st.getAttribute('data-specimen')) || (fg && fg.id) || 'a drawing';
+      for (const m of svg.querySelectorAll('rect, circle, ellipse, line, path, polygon, polyline')) {
+        if (m.closest('defs, pattern, clipPath, mask, marker, symbol')) continue;
+        const r = m.getBoundingClientRect();
+        if (!r.width && !r.height) continue;
+        const by = Math.max(sb.left - r.left, r.right - sb.right, sb.top - r.top, r.bottom - sb.bottom);
+        if (by > 1.5) { out.push({ where, shape: m.tagName + (m.getAttribute('class') ? '.' + m.getAttribute('class').split(/\s+/).join('.') : ''), by: Math.round(by) }); break; }
+      }
+    });
+    return { drawings, outside: out };
+  });
+}
 async function frameAudit(page) {
   return page.evaluate(async () => {
     const rootCs = getComputedStyle(document.documentElement);
@@ -2093,6 +2121,9 @@ async function checkPage(browser, file, widths, opts = {}) {
     if (outside.size) fails.push({ key: 'requests', msg: `${width}: outside requests to ${[...outside].join(', ')}` });
     if (fontAsks.length) fails.push({ key: 'fontsLocal', msg: `${width}: the page carries its fonts and still asked a server for ${fontAsks.length} font file(s) or stylesheet(s), first: ${fontAsks[0]} (D2-1697)` });
     if (errors.length) fails.push({ key: 'errors', msg: `${width}: script errors: ${errors.slice(0, 3).join(' | ')}` });
+    // K-S2 (round 1 fix pass): last before the captures, since it draws every kit chart
+    a.chartEdges = await chartEdges(page);
+    for (const o of a.chartEdges.outside) fails.push({ key: 'chartEdges', msg: `${width}: ${o.where}: a ${o.shape} paints ${o.by} px outside its drawing; every shape stays inside the drawing's box (CD RM1, K-S2)` });
     report.runs.push({ width, ...a, axe, focusStops: focus ? focus.length : null, focusProblems: focus ? focus.filter((x) => !x.ring || x.obscured).slice(0, 10) : null });
     report.failures.push(...fails);
     if (opts.captures && (width === 1440 || width === 390)) {
@@ -2671,6 +2702,14 @@ const PLANTS = [
   { key: 'startFocus', fault: 'a step link pulled out of reading order with tabindex="1"', js: () => { document.querySelectorAll('#start a.step-go')[2].setAttribute('tabindex', '1'); } },
   { key: 'startFocus', fault: 'a step link with its focus ring taken away', js: () => { const st = document.createElement('style'); st.textContent = '#start a.step-go:focus-visible { outline: none !important }'; document.head.append(st); } },
   // Gate 2 fix pass (November 11, 2026)
+  { key: 'chartEdges', fault: 'a kit drawing whose zero line runs 120 px under its box, over the figure\'s source line (CD RM1, K-S2)', js: () => {
+    const f = document.createElement('figure'); f.className = 'oac-fig'; f.id = 'plant-edge';
+    f.innerHTML = '<svg class="oac-svg" width="300" height="100" viewBox="0 0 300 100" style="display:block;overflow:visible" aria-hidden="true"><rect x="10" y="10" width="40" height="80"/><line x1="0" y1="220" x2="300" y2="220" stroke="#000"/></svg>';
+    document.querySelector('main').prepend(f); } },
+  { key: 'chartEdges', fault: 'the same drawing with its zero line on its plot (allowed: must not be flagged)', expect: false, js: () => {
+    const f = document.createElement('figure'); f.className = 'oac-fig'; f.id = 'plant-edge-ok';
+    f.innerHTML = '<svg class="oac-svg" width="300" height="100" viewBox="0 0 300 100" style="display:block;overflow:visible" aria-hidden="true"><rect x="10" y="10" width="40" height="80"/><line x1="0" y1="90" x2="300" y2="90" stroke="#000"/></svg>';
+    document.querySelector('main').prepend(f); } },
   { key: 'failureLead', fault: 'a failure caption that leads with its description, not "Fails Rule NN.N." (CD-S2)', js: () => {
     const c = document.querySelector('figure.plate--failure > .plate-cap'); c.innerHTML = 'The same notice with its words in Stone. ' + c.textContent; } },
   { key: 'filesShip', fault: 'a Files list that names a studio handoff (DT-M1)', js: () => {

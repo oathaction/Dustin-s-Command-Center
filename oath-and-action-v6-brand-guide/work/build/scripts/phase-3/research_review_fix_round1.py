@@ -196,7 +196,56 @@ def item_s34(dl):
     save(CLOTURE, meta, nl)
 
 
-ITEMS = {'s24': item_s24, 's34': item_s34}
+# ---------------------------------------------------------------------------------------------------------------
+# s31: ST S1 and ST S3. The unemployment file names its releases, and gains with_margin from the Bureau's technical
+# note (read through the session's web-fetch tool, as P7-042 was, since bls.gov refuses this container's reader).
+# The unemployment_rate_only variant S31 prints now carries the release too, so no line without it stays valid.
+# ---------------------------------------------------------------------------------------------------------------
+UNEMP = 'fred-unemployment-and-job-openings'
+ES_REL = 'Employment Situation for October 2026 (November 6, 2026)'
+UNEMP_ONLY = (f'Source: U.S. Bureau of Labor Statistics, Current Population Survey, {ES_REL}, unemployment rate, seasonally adjusted, '
+              'January 2022 to October 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 11, 2026. '
+              'No rate was published for October 2025.')
+UNEMP_MARGIN = (UNEMP_ONLY + ' The margin of error is the Bureau’s 90 percent interval for a month’s change in the rate, plus or minus '
+                '0.3 point at a rate near 6 percent, from the same release’s technical note.')
+BOTH_REL = 'releases for October 2026 (November 6, 2026) and September 2026 (November 3, 2026)'
+
+
+def both_line(span):
+    return ('Source: U.S. Bureau of Labor Statistics, Current Population Survey and Job Openings and Labor Turnover Survey, '
+            f'{BOTH_REL}, unemployment rate and job openings, seasonally adjusted, {span}, United States, via FRED, Federal Reserve Bank '
+            'of St. Louis. Retrieved November 11, 2026. No unemployment rate was published for October 2025; recent months are preliminary '
+            'and will be revised.')
+
+
+def item_s31(dl):
+    meta, nl = load(UNEMP)
+    base = meta['vintage'].split('. The unemployment rate comes from')[0]
+    meta['vintage'] = (base + '. The unemployment rate comes from the Bureau’s Employment Situation for October 2026, released November 6, '
+                       '2026, and job openings from its Job Openings and Labor Turnover Survey for September 2026, released November 3, 2026')
+    meta['printed_source_line'] = both_line('January 2022 to October 2026')
+    v = meta.setdefault('source_line_variants', {})
+    v['connected_scatter'] = both_line('December 2000 to September 2026')
+    v['unemployment_rate_only'] = UNEMP_ONLY
+    v['with_margin'] = UNEMP_MARGIN
+    set_note(meta, 'Margin of error, read November 12, 2026',
+             'Margin of error, read November 12, 2026 from the Bureau’s "Employment Situation Technical Note - 2026 M10 Results" '
+             '(https://www.bls.gov/news.release/empsit.tn.htm, "Last Modified Date: November 06, 2026") through the session’s web-fetch tool, '
+             'which returns quotes of at most 125 characters; two reads gave the same words: "At an unemployment rate of around 6.0 percent, '
+             'the 90-percent confidence interval for the monthly change in unemployment" "as measured by the household survey is about '
+             '+/- 425,000," "and for the monthly change in the unemployment rate it is about +/- 0.3 percentage point." The note gives no '
+             'interval for a change over more than one month and none for a level. The rise from 3.4 percent in April 2023 to 4.5 percent '
+             'in November 2025 is 1.1 points, more than three times the monthly interval; the Bureau publishes no interval for a 31-month '
+             'change to test it against directly.')
+    set_note(meta, 'Releases confirmed November 12, 2026',
+             'Releases confirmed November 12, 2026: the technical note above is titled "2026 M10 Results", last modified November 6, 2026; '
+             'the JOLTS news release (https://www.bls.gov/news.release/jolts.nr0.htm) reads "For release 10:00 a.m. (ET) Tuesday, November 3, '
+             '2026" and covers September 2026, with "The number of job openings was little changed at 7.5 million in September"; this file '
+             'holds 7,523 thousand for September 2026 and 4.1 percent for October 2026.')
+    save(UNEMP, meta, nl)
+
+
+ITEMS = {'s24': item_s24, 's34': item_s34, 's31': item_s31}
 
 
 def main(argv):

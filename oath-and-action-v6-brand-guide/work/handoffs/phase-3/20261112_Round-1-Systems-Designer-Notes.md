@@ -174,3 +174,18 @@ Tested in fix pass 2:
 
 Not tested in fix pass 2: the guide check itself (its zoom runs included) on the final page; a 320 px window, where the 328 px stage scrolls in its frame as chapter 11's 360 px plates do.
 
+
+## Review fix pass
+
+Written for `work/handoffs/phase-3/20261112_Round-1-Fix-Brief.md` (call D3-480, with D3-485 from the brand and craft addendum). Items: CD CH15-M1 with AX S5 and BC M1 (the composition by the plate's width), CD CH15-S1 with BC S1 (the opener's two numbering systems), AX S9 (Rule 15.3's "variables"; Rule 15.13's "money, raises" and its ticks), and BC S2 (optional, the data lead's call). In progress; this section is kept current.
+
+### Requests
+
+1. **Engineer, the stage hook for D3-480 (`guide_build.py`, `guide-shell.css`).** Chapter 15's manifest will carry `"wide_px": 680` beside `"width_px": 328` (with `"fit_switch": false`) on every plate that has words to set beside its drawing. For such a plate:
+   - (a) its frame (`.plate-scroll`) is an inline-size query container named `oa-frame` (`container: oa-frame / inline-size`), and the stage is not a container;
+   - (b) the stage is `--w` (328 px) wide, and `--w2` (680 px) wide when the frame's content box is 680 px or wider, by the shell's own rule: `@container oa-frame (min-width: 680px) { .plate-stage[data-wide] { width: var(--w2) } }`;
+   - (c) the size line names both widths (D3-485), for instance "True size, 680 px wide; 328 px in a column under 680 px", words the editor may tune;
+   - (d) everything else stays as for a fixed stage: the phone padding reads `--w`, the frame shows its hint and tab stop when it scrolls (at 320 px), and snug, breakout and the guide check's frame and type-scale tests read the stage as they do today (data-width 328, so the phone sizes; the plates set 13, 14 and 15 px at both widths);
+   - (e) my fragments query the same container: `@container oa-frame (min-width: 680px)` sets the drawing with its words beside it and two loops side by side, and `@container oa-frame (max-width: 327.98px)` narrows the prose to `calc(100cqi - 32px)`, the frame's visible width, so only the drawing reaches past it at 320 px (AX S5).
+   Measured on today's page: the frame's content box is 771 px at 1440, 798 at 1280, 606 at 1024, 358 at 390, 328 at 360 and 288 at 320, so the wide stage shows at 1440 and 1280 and the 1024 column keeps one column, as the creative director asked.
+2. **Engineer, one chapter-level block for the plate CSS shared by every plate (D3-480, CD CH15-M1's bytes).** A chapter-file key `"plate_css"` (one CSS string) that the shell prints once in the chapter's section, as `<style>@scope (#systems-graphics [data-specimen]) { … }</style>` (any chapter's anchor), so `:scope` is each stage of the chapter, and that the build's literal-color, px font size and em dash checks read as they read a fragment's style, and the weight report counts in the chapter. Plates keep a `<style>` only for rules no other plate uses. Today 49,860 of the plates' 54,709 bytes of CSS repeat across the 25 plates.

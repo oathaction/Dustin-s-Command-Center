@@ -14,7 +14,7 @@
  "universe_or_base": "Unemployment rate: unemployed people as a percent of the civilian labor force, 16 and over. Job openings: open positions at nonfarm employers on the last business day of the month",
  "unit": "unemployment_rate in percent; job_openings_thousands in thousands of openings; both seasonally adjusted as FRED serves these series",
  "date_retrieved": "2026-11-11",
- "vintage": "FRED values as of Dustin Cathcart's download on November 11, 2026 (attached to the studio chat at 22:27 UTC); SHA-256 10c1d1ed61e8b494195f087331ad53aa7651ba3ceca05597599a7953c1a58532. BLS revises recent months and seasonal factors, so later downloads can differ",
+ "vintage": "FRED values as of Dustin Cathcart's download on November 11, 2026 (attached to the studio chat at 22:27 UTC); SHA-256 10c1d1ed61e8b494195f087331ad53aa7651ba3ceca05597599a7953c1a58532. BLS revises recent months and seasonal factors, so later downloads can differ. The unemployment rate comes from the Bureau’s Employment Situation for October 2026, released November 6, 2026, and job openings from its Job Openings and Labor Turnover Survey for September 2026, released November 3, 2026",
  "qualification": "The unemployment rate has no value for October 2025: the cell is blank in FRED's file, matching the month the Current Population Survey collected no data during the lapse in federal funding (the Census Bureau notes the same gap in its CPS/HVS tables). A line chart breaks at that month. Job openings run one month behind the unemployment rate; recent months are preliminary",
  "columns": {
   "month": {
@@ -36,10 +36,11 @@
    "description": "studio note on a missing value"
   }
  },
- "printed_source_line": "Source: U.S. Bureau of Labor Statistics, Current Population Survey and Job Openings and Labor Turnover Survey, unemployment rate and job openings, seasonally adjusted, January 2022 to October 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 11, 2026. No unemployment rate was published for October 2025; recent months are preliminary and will be revised.",
+ "printed_source_line": "Source: U.S. Bureau of Labor Statistics, Current Population Survey and Job Openings and Labor Turnover Survey, releases for October 2026 (November 6, 2026) and September 2026 (November 3, 2026), unemployment rate and job openings, seasonally adjusted, January 2022 to October 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 11, 2026. No unemployment rate was published for October 2025; recent months are preliminary and will be revised.",
  "source_line_variants": {
-  "connected_scatter": "Source: U.S. Bureau of Labor Statistics, Current Population Survey and Job Openings and Labor Turnover Survey, unemployment rate and job openings, seasonally adjusted, December 2000 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 11, 2026. No unemployment rate was published for October 2025; recent months are preliminary and will be revised.",
-  "unemployment_rate_only": "Source: U.S. Bureau of Labor Statistics, Current Population Survey, unemployment rate, seasonally adjusted, January 2022 to October 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 11, 2026. No rate was published for October 2025."
+  "connected_scatter": "Source: U.S. Bureau of Labor Statistics, Current Population Survey and Job Openings and Labor Turnover Survey, releases for October 2026 (November 6, 2026) and September 2026 (November 3, 2026), unemployment rate and job openings, seasonally adjusted, December 2000 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 11, 2026. No unemployment rate was published for October 2025; recent months are preliminary and will be revised.",
+  "unemployment_rate_only": "Source: U.S. Bureau of Labor Statistics, Current Population Survey, Employment Situation for October 2026 (November 6, 2026), unemployment rate, seasonally adjusted, January 2022 to October 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 11, 2026. No rate was published for October 2025.",
+  "with_margin": "Source: U.S. Bureau of Labor Statistics, Current Population Survey, Employment Situation for October 2026 (November 6, 2026), unemployment rate, seasonally adjusted, January 2022 to October 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 11, 2026. No rate was published for October 2025. The margin of error is the Bureau’s 90 percent interval for a month’s change in the rate, plus or minus 0.3 point at a rate near 6 percent, from the same release’s technical note."
  },
  "ledger_row": "P7-013",
  "domain": "D07",
@@ -50,5 +51,9 @@
  "unconfirmed": [
   "Whether FRED's copies are seasonally adjusted was not read on the series pages today; UNRATE and JTSJOL are the seasonally adjusted series IDs on FRED, and the not-adjusted ones carry other IDs (UNRATENSA, JTUJOL)",
   "The cause of the October 2025 gap rests on the Census Bureau's CPS/HVS footnote (no data collected that month), not on a BLS page read today"
+ ],
+ "notes": [
+  "Margin of error, read November 12, 2026 from the Bureau’s \"Employment Situation Technical Note - 2026 M10 Results\" (https://www.bls.gov/news.release/empsit.tn.htm, \"Last Modified Date: November 06, 2026\") through the session’s web-fetch tool, which returns quotes of at most 125 characters; two reads gave the same words: \"At an unemployment rate of around 6.0 percent, the 90-percent confidence interval for the monthly change in unemployment\" \"as measured by the household survey is about +/- 425,000,\" \"and for the monthly change in the unemployment rate it is about +/- 0.3 percentage point.\" The note gives no interval for a change over more than one month and none for a level. The rise from 3.4 percent in April 2023 to 4.5 percent in November 2025 is 1.1 points, more than three times the monthly interval; the Bureau publishes no interval for a 31-month change to test it against directly.",
+  "Releases confirmed November 12, 2026: the technical note above is titled \"2026 M10 Results\", last modified November 6, 2026; the JOLTS news release (https://www.bls.gov/news.release/jolts.nr0.htm) reads \"For release 10:00 a.m. (ET) Tuesday, November 3, 2026\" and covers September 2026, with \"The number of job openings was little changed at 7.5 million in September\"; this file holds 7,523 thousand for September 2026 and 4.1 percent for October 2026."
  ]
 }
