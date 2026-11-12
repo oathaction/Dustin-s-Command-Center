@@ -2,7 +2,7 @@
  "id": "14.74",
  "title": "Draw a survey figure with its margin of error, and single out only what passes it.",
  "rule": [
-  "Draw each estimate as a dot on a thin line across its interval, the interval’s level named in the measure line, such as “90 percent margin of error”. Draw the nation as a dashed line in the text’s ink with its own label. A dot that differs from the nation by more than the gap’s own margin takes a solid fill; one within it takes an open dot (Rule 14.9). List rows by their figures and print each one, but never number them as ranks."
+  "Draw each estimate as a dot on a thin line across its interval, the interval’s level named in the measure line, such as “90 percent margin of error”. Draw the nation as a dashed line in the text’s ink with its own label (Rule 14.6). A dot that differs from the nation by more than the gap’s own margin takes a solid fill; one within it takes an open dot (Rule 14.9). List rows by their figures and print each one, but never number them as ranks."
  ],
  "use_when": "The reader asks how places compare on a survey figure, and how sure each one is.",
  "use_instead": [
@@ -21,7 +21,7 @@
  ],
  "why": {
   "text": [
-   "A survey figure is a range, not a point, and two places whose ranges overlap may stand in either order. Drawing the range and testing each gap keeps the chart from claiming more than the survey knows."
+   "A survey figure stands for a range of likely values, and two places whose ranges overlap may stand in either order. Drawing the range and testing each gap keeps the chart from claiming more than the survey knows."
   ],
   "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
  },

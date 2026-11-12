@@ -1,6 +1,6 @@
 {
  "id": "14.78",
- "title": "Show uncertainty as a run of possible outcomes only for experts, never as motion alone.",
+ "title": "Show uncertainty as a run of possible outcomes only for experts, with each draw as a still panel.",
  "rule": [
   "Use hypothetical outcomes, a reference form, to show uncertainty as several possible results drawn from the estimate’s range, set side by side as small panels or shown one after another. Label every draw as one possible outcome, and pair the form with a band or a range that a still image and a screen reader carry."
  ],

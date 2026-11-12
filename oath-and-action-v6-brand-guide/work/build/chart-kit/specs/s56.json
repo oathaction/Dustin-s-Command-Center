@@ -14,12 +14,12 @@
   "reading_guide": "Each dot is a quarter, joined in time order from early 2001 to the latest quarter. Dots higher up had more openings, and dots to the right more unemployment.",
   "notes": [
     "This shows the two move together; it does not show one causes the other.",
-    "No unemployment rate was published for October 2025, so the last quarter of 2025 has no average and the path breaks there.",
+    "The Bureau of Labor Statistics published no unemployment rate for October 2025, so the last quarter of 2025 has no average and the path breaks there.",
     "The chart draws the average of each quarter’s three months; the table gives every quarter."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "A connected scatter of quarterly unemployment rates against job openings from early 2001 to mid 2026. The path swings out to 13.0 percent unemployment in the spring of 2020 and up to 11.7 million openings in early 2022, then settles near 4.1 percent and 7.3 million in the latest quarter. It breaks at the end of 2025, when no rate was published for October.",
+  "alt": "A connected scatter of quarterly unemployment rates against job openings from early 2001 to the third quarter of 2026. The path swings out to 13.0 percent unemployment in the spring of 2020 and up to 11.7 million openings in early 2022, then settles near 4.1 percent and 7.3 million in the latest quarter. It breaks at the end of 2025, when no rate came out for October.",
   "table": {
     "caption": "Unemployment rate and job openings, quarterly averages",
     "columns": [
@@ -43,7 +43,7 @@
     ]
   },
   "chart_notes": [
-    "Five quarters are named on the path: the first and last, the highest unemployment and the most openings, and the end of 2009. The path breaks where the last quarter of 2025 has no unemployment average."
+    "The path names five quarters: the first and last, the highest unemployment and the most openings, and the end of 2009. The path breaks where the last quarter of 2025 has no unemployment average."
   ],
   "phone": "same",
   "artboard": "reading",

@@ -13,8 +13,8 @@
   "measure_line": "Judges in active service on November 11, 2026, by years since each one’s first appointment as a federal judge, in two-year bins: judges of the Supreme Court, the courts of appeals, the district courts and the Court of International Trade, who serve for life under Article III of the Constitution.",
   "reading_guide": "Each column counts the judges whose service falls in its two years. The dashed line marks the median: half the judges had served less, and half more.",
   "notes": [
-    "The 845 judges in active service are each counted once, including four who serve more than one district. A judge who takes senior status still hears cases but leaves this count, and a judge promoted to a higher court counts from the first appointment, so a promotion does not restart the years.",
-    "Years are counted back from November 11, 2026, so the bins’ edges fall on November 11 of even years and never on an inauguration day."
+    "Each of the 845 judges in active service counts once, including four who serve more than one district. A judge who takes senior status still hears cases but leaves this count, and a judge promoted to a higher court counts from the first appointment, so a promotion does not restart the years.",
+    "Years run back from November 11, 2026, so each bin’s edges fall on November 11 of an even year and never on an inauguration day."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,

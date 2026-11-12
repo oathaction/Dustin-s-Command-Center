@@ -81,5 +81,6 @@
     "Ruling (a): the age band the title names takes the red point on both sides as one job (labels.point read as a range of ages); every other age the light fill. Ruling (e): both sides in one ink, sex by position. The age marks (62 and 65) were drawn as hairlines and left out: across bars that nearly fill both halves they read as stripes, and note 1 gives both ages. Ruling (d): Estimate, grade line and Method note.",
     "Figures checked by maker_b_round2_derive.py --figures (check S53): ages 55 to 64, men and women, sum to 41,189,716 (41.2 million).",
     "Note 1’s program ages (62 for Social Security retirement benefits, 65 for Medicare) are policy facts, not data from the file; request RB-R3 asks the research lead to confirm both on the agencies’ pages and give a source line variant. Until then the note rests on the atlas’s own pathway texts (Medicare “for people 65 and older”; “Claiming at 62 cuts the monthly benefit by 30 percent”), read November 12, 2026."
-  ]
+  ],
+  "source_line": "Source: U.S. Census Bureau, Vintage 2025 population estimates, resident population by single year of age and sex, July 1, 2025, United States. Retrieved November 11, 2026. Estimates are revised with each vintage; the top row counts everyone 100 and over. Program ages from the Social Security Act, 42 U.S.C. 402(a) and 426(a), read November 12, 2026."
 }

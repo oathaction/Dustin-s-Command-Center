@@ -17,7 +17,7 @@
  ],
  "why": {
   "text": [
-   "Contours give the shape of a dense cloud with lines instead of ink, so points the story names can sit on top and stay readable. The smoothing changes the shape, so the reader needs to know it."
+   "Contours draw a dense cloud’s shape as lines, so points the story names can sit on top and stay readable. The smoothing changes the shape, so the reader needs to know it."
   ],
   "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
  },

@@ -13,12 +13,12 @@
   "evidence_label": "Estimate",
   "grade_line": "Documented: the Census Bureau’s Small Area Health Insurance Estimates",
   "title": "Counties in the South had the highest median uninsured rate of the four regions in 2024, 13.9 percent of people under 65, by the Census Bureau’s estimates.",
-  "measure_line": "Share of people under 65 without health insurance in each county, 2024, by Census region, 50 states and DC. Each box spans the middle half of a region’s counties; the whiskers reach the last county within one and a half times that span, and dots mark the counties beyond it.",
+  "measure_line": "Share of people under 65 without health insurance in each county, 2024, by Census region, 50 states and DC. Each box spans the middle half of a region’s counties; the whiskers reach the last county within one and a half times that span, and open circles mark the counties beyond it.",
   "reading_guide": "The line in each box is the median county. In the South, the middle half of counties ran from 11.0 to 17.9 percent.",
   "notes": [
-    "Each county counts once, whatever its population, so the boxes describe counties, not people. Kalawao County, Hawaii, has no estimate and is left out.",
+    "Each county counts once, whatever its population, so a small county weighs as much as a large one. Kalawao County, Hawaii, has no estimate, so the chart leaves it out.",
     "Method: the Census Bureau’s model combines survey answers with administrative records to estimate each county’s rate; small counties carry wide margins of error, so the chart ranks no county.",
-    "All 62 counties past a whisker sit above their region’s box; the highest estimate is Gaines County, Texas, at 42.5 percent."
+    "All 62 counties past a whisker sit above their region’s box, with estimates up to 42.5 percent."
   ],
   "source_line": "Source: U.S. Census Bureau, Small Area Health Insurance Estimates, people under 65 without health insurance, 2024, counties in the 50 states and DC. Retrieved November 11, 2026. Model-based estimates; small counties carry wide margins of error; each region’s quartiles, whiskers and outliers computed by Oath & Action.",
   "credit": "Chart: Oath & Action",

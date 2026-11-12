@@ -26,8 +26,8 @@
   "measure_line": "State government tax collections per resident, fiscal 2025 (July 2024 to June 2025 in 46 states), 50 states, with residents counted on July 1, 2024.",
   "reading_guide": "Each dot is a state, placed by its taxes per resident; dots stack where states sit close together. The dashed line marks all 50 states together.",
   "notes": [
-    "State government taxes only: states split taxing between state and local governments in different ways, and some collect taxes paid largely by nonresidents, such as taxes on oil and gas or on tourism.",
-    "Residents are the Census Bureau’s population estimate for July 1, 2024. The District of Columbia is left out: the survey counts state governments, and the District’s taxes include those a state would leave to its cities and counties."
+    "The chart counts state government taxes only. States split taxing between state and local governments in different ways, and some collect taxes paid largely by nonresidents, such as taxes on oil and gas or on tourism.",
+    "Residents are the Census Bureau’s population estimate for July 1, 2024. The chart leaves out the District of Columbia, because the survey counts state governments and the District’s taxes include those a state would leave to its cities and counties."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,

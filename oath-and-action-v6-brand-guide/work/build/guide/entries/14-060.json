@@ -22,7 +22,7 @@
  ],
  "why": {
   "text": [
-   "Four numbers a group, the quartiles, the median and the reach, let a reader compare many units across groups at a glance. The rule for the whiskers is fixed and stated, so a dot past them always means the same thing, and no group’s spread depends on how the chart was drawn."
+   "Five numbers a group, the two quartiles, the median and the whiskers’ two ends, let a reader compare many units across groups at a glance. The rule for the whiskers is fixed and stated, so an open circle past them always means the same thing, and no group’s spread depends on how the chart was drawn."
   ],
   "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
  },

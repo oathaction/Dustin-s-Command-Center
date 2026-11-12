@@ -4,7 +4,7 @@
  "rule": [
   "Use a trajectory or speed chart, a reference form, to show how fast something moved along a path: dots at equal time steps along a connected path, so wide spacing means fast change and close spacing slow. Mark the start and end and name the steps."
  ],
- "use_when": "A specialist asks not only where two measures went but how fast they got there.",
+ "use_when": "A specialist asks how fast two measures moved along their path, as well as where they went.",
  "use_instead": [
   {
    "when": "The relationship over time, without the pace",

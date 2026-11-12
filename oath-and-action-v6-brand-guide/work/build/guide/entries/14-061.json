@@ -2,7 +2,7 @@
  "id": "14.61",
  "title": "Overlay two distributions as stepped outlines on the same bins.",
  "rule": [
-  "Draw each year or group as a stepped outline over one baseline, with no fill, so each shape shows through the other. The series the title follows takes the subject ink at the subject weight and the other the context ink at the field weight, each named where its outline peaks. Use the same bins for both and count each unit once in each."
+  "Draw each year or group as a stepped outline over one baseline, with no fill, so each shape shows through the other. The series the title follows takes the subject ink at the subject weight and the other the context ink at the field weight, each named where its outline peaks. Use the same bins for both and count each unit once in each year or group."
  ],
  "use_when": "The reader asks whether a whole distribution moved between two years, or differs between two groups, on one measure.",
  "use_instead": [

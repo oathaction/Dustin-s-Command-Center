@@ -10,7 +10,7 @@
   "evidence_label": "Estimate",
   "grade_line": "Documented: the Federal Reserve’s Summary of Economic Projections, September 16, 2026",
   "title": "Federal Reserve officials projected a median unemployment rate of 4.1 percent for each year through 2029, and past forecast errors put 2029’s range at 2.0 to 6.2 percent.",
-  "measure_line": "Unemployment rate, average for the fourth quarter of each year, projected in September 2026 for 2026 to 2029 and the longer run, United States. The outer band spans the median plus and minus the average error of past forecasts, which the Board says covers about a 70 percent probability.",
+  "measure_line": "Unemployment rate, average for the fourth quarter of each year, projected in September 2026 for 2026 to 2029 and the longer run, United States. The outer band spans the median plus and minus the average error of past forecasts, a range the Board says holds the outcome with about a 70 percent probability.",
   "reading_guide": "The line is the officials’ median. The narrow inner band spans every official’s projection; the wide outer band shows how far past forecasts have missed.",
   "notes": [
     "Method: the line is the median of officials’ projections, each under that official’s view of appropriate policy; the outer band adds and subtracts the average error of past forecasts, 2006 to 2025, which the Board says covers about 70 percent of outcomes under certain assumptions. The longer run has no error band.",

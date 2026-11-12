@@ -2,7 +2,7 @@
  "id": "14.68",
  "title": "Size each point by a third measure only when its size answers the question.",
  "rule": [
-  "Draw the scatter plot with each circle’s area set by a third measure, never its radius (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circle the title names in the subject ink, and keep the Association label and its note."
+  "Draw the scatter plot with each circle’s area set by a third measure (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circle the title names in the subject ink, and keep the Association label and its note."
  ],
  "use_when": "The reader asks whether two measures move together and also how many people each place holds.",
  "use_instead": [
@@ -17,7 +17,7 @@
  ],
  "why": {
   "text": [
-   "Size lets a large place weigh as much on the page as it does in the country, so a small state at an extreme does not read as the whole story. Area, not radius, keeps a circle twice as large in value from looking four times as large."
+   "Size lets a large place weigh as much on the page as it does in the country, so a small state at an extreme does not read as the whole story. Setting the area by the value keeps a circle that stands for twice as much at twice the size on the page."
   ],
   "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
  },

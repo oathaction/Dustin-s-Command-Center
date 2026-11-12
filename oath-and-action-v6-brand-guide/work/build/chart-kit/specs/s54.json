@@ -17,7 +17,7 @@
   "grade_line": "Documented: a Census Bureau survey",
   "title": "Higher rents went with higher renter incomes across the states in 2025, and rent took the largest share of renters’ income in Florida, 35.5 percent.",
   "measure_line": "Median gross rent a month against renter households’ median income a year, 2025, 50 states and DC; each dot is a state.",
-  "reading_guide": "States to the right have renters with higher incomes, and states higher up have higher rents. Dots above the cloud pay more rent for their income.",
+  "reading_guide": "States to the right have renters with higher incomes, and states higher up have higher rents. States above the cloud pay more rent for their income.",
   "notes": [
     "This shows the two move together; it does not show one causes the other.",
     "Rent as a percent of income is the Census Bureau’s own measure: the median, across renter households paying cash rent, of each one’s rent over its income. Florida’s 35.5 percent carries a margin of error of 0.5 point at 90 percent confidence, and California’s 32.9 percent, the next highest, 0.3 point."
