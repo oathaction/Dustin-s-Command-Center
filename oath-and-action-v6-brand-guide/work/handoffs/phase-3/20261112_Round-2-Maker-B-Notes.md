@@ -271,3 +271,8 @@ Tested: `oa-chart.mjs build` with the sweep on, at 1440, 390, 328 and 288 px pag
 
 Not tested: the guide build with the changed form; P02 at 1440 px looked at.
 
+**S02 at 510 px (the engineer's widened sweep, N1).** Placement only:
+- D3-xxx | S02's 2021 note takes its place under the chart below 520 px (was 510) | At 510 px it overlapped the 2025 note, which already sits under the chart there
+
+Tested: `oa-chart.mjs build s02` with the sweep on: PASS, 0 faults. Node drawings at 720, 656, 558, 358, 326, 296 and 256 px on both grounds compared with the spec before the change: all 14 the same byte for byte, the 1440 and 390 px drawings among them.
+

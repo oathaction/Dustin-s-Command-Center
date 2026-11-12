@@ -162,7 +162,7 @@
         "dx": -22
       },
       "mid": {
-        "below": 510,
+        "below": 520,
         "to_foot": true
       }
     },
@@ -194,7 +194,7 @@
     "R1: the source line is the sidecar's source_line_both_measures variant, which names Tables 8 and 3. ENG-5 will reword its last sentence; switch to the new text when it lands.",
     "X6: on a phone the two long notes leave the plot for full-width text under the axis, and the series names become a line key above the plot, as Phase 2's phone drew them (E5).",
     "Fix pass 2: the 2025 note adds RL35's refundable cap and earnings floor (statistics P2-S6); the series sort puts the Supplemental measure first, so the phone key leads with the line the title names (brand KS10); the official measure's blank margins read 'Not published' once the kit prints `empty` (access S4).",
-    "Round 2 fix pass (D3-904, D3-911; placement only): in a desk column under 620 px the 2025 note sits under the chart, as on a phone, since there its words would cross the official measure’s dots; under 510 px the 2021 note joins it there."
+    "Round 2 fix pass (D3-904, D3-911; placement only): in a desk column under 620 px the 2025 note sits under the chart, as on a phone, since there its words would cross the official measure’s dots; under 520 px the 2021 note joins it there (510 px by the widened sweep, after the second pass)."
   ],
   "formats": {
     "y": "percent:1",
