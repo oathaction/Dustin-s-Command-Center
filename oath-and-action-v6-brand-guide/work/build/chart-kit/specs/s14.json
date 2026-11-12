@@ -90,7 +90,7 @@
       "text": "Three-month average",
       "target": "average",
       "place": "above",
-      "dy": -46,
+      "dy": -50,
       "phone": {
         "hide": true
       }
@@ -116,7 +116,8 @@
     "Statistics P2-S9 and P2-S10: the first note names the two months outside the window, and a note glosses 'seasonally adjusted'. Access S4: the Status column prints 'Final'.",
     "DR-239 settled D3-87's hold: Dustin kept the title and its count of seven drops, and the fourth note now ends 'Only the October 2025 and February 2026 drops pass the survey's margin of error.' Checked by script against the Bureau's 90 percent interval for a month's change, plus or minus 122,000 (Employment Situation Technical Note, October 2026 release, retrieved November 11, 2026; D3-171, ledger P7-042): October 2025 (−140,000) and February 2026 (−156,000) pass it, and the other five drops sit inside it. The interval does not print; printing it is a request in the Explainer notes, Board 1 apply.",
     "X14: the scale runs to +850,000, as Phase 2's did (E6); on phones the in-plot 'Three-month average' hides and the key names the line.",
-    "Round 1, maker B (D3-219): the source line is the sidecar's with_margin variant, and note 4 keeps DR-239's sentence word for word and adds the figure, plus or minus 122,000 jobs. Checked by script: of the seven drops, only October 2025 (−140,000) and February 2026 (−156,000) exceed 122,000; the other five sit inside it."
+    "Round 1, maker B (D3-219): the source line is the sidecar's with_margin variant, and note 4 keeps DR-239's sentence word for word and adds the figure, plus or minus 122,000 jobs. Checked by script: of the seven drops, only October 2025 (−140,000) and February 2026 (−156,000) exceed 122,000; the other five sit inside it.",
+    "Round 2 fix pass (D3-904, D3-911; placement only): the “Three-month average” note sits 50 px over the average (was 40) so no column reaches under it, and under 490 px it takes its phone setting (hidden; the key names the line); in a column under 300 px the latest month’s second line wraps so it clears the tall early columns."
   ],
   "scale": {
     "y": [

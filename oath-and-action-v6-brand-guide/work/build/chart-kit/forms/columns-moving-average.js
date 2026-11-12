@@ -88,8 +88,11 @@
       }
       // notes inside the plot
       c.annotations.forEach(function (a) {
-        if (c.phone && a.phone && a.phone.hide) return;
-        a = Object.assign({}, a, c.phone && a.phone ? a.phone : {});
+        // a column under 490 px takes a note's phone setting too: there the note's words would sit on the tall early columns
+        // (D3-904's sweep: 480 to 489 px; placement only)
+        var narrow = c.phone || W < 490;
+        if (narrow && a.phone && a.phone.hide) return;
+        a = Object.assign({}, a, narrow && a.phone ? a.phone : {});
         var i = rows.findIndex(function (r) { return String(r[ex]) === String(a.at.x); });
         if (i < 0) { c.warn('annotation at ' + a.at.x + ' matches no row'); return; }
         var r = rows[i], py;

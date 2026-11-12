@@ -311,6 +311,7 @@ Under `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` (Editor paragraph, c
 - D3-xxx | Rule 14.11's "New questions" note rises 36 px and wraps at 70 px under 480 px | AX S2's guard found it half over the 2007 dot at 225 to 328 px; unwrapped at 256 px it met the rising line
 - D3-xxx | Group 8's line reads "A range, a band or a fan shows how sure a figure is, as its publisher states it, and an estimate’s note gives the method behind its range (Rule 13.1)." | CD R-S2: 44 words with stacked clauses
 - D3-xxx | Rule 14.11's plate takes no band words | RF-2 names "Rule 14.11's plate on the same form", but the plate draws `line-event-notes` with no band; entry 14.75 alone takes them
+- D3-xxx | Chapter 15's second pass goes to the systems designer as a table of seven rows (15.10, 15.11, 15.12, 15.17), all applied | D3-900: the generator is the systems designer's; H11 for 15.10 and 15.11
 - D3-xxx | Rule 14.5 keeps "The Stone magnitude steps" | It is the rule that sets the palettes, so the name is its subject; AX S10's fault is the name in 14.75 and 14.90, read without that context
 
 ### Requests (fix pass)
@@ -331,6 +332,8 @@ Read at 22:45, after the systems designer reported: every field of `15-systems-g
 | 15.11 correct plate, the cluster note | Variable C4 sits in the electoral competition cluster with Variable C1 and stays in ink. | Variable C4 “Officeholders’ control over election rules”, the pill at the top, sits in the electoral competition cluster with Variable C1 and stays in ink. | H11: the pills carry names and no IDs, and C4's pill reads "Incumbent control of election rules", the loop's chain label (RF-16), so a bare chip leaves the reader to guess which pill; the targets above it already print their titles |
 | 15.11 alt, the same sentence | Variable C4 sits in the electoral competition cluster with Variable C1 and stays in ink | Variable C4, officeholders’ control over election rules, the pill at the top, sits in the electoral competition cluster with Variable C1 and stays in ink | The same |
 | 15.10 correct plate heading (round 1) | From Variable TC1 to Variable B4 “Hostility toward the other political party” | From Variable TC1 “How platforms rank feeds and seek attention” to Variable B4 “Hostility toward the other political party” | H11 and BC S16's pattern: the heading named one end and not the other. Check its wrap at 390 px; if it runs past three lines, the first change alone may wait |
+
+**Applied by the systems designer (22:50)**, all seven rows as written; its generator's checks pass and its strict build exits 0, and 15.10's heading holds three lines at every width it checked (its notes). I found all seven in the written chapter file, plates and manifest by script.
 
 Read and kept: 15.12's caption, specs "Order" and "Connections", the "Each step" list and the "Reading a step" key; 15.17's rule (RF-16's words), caption, the four bodies' list, the key's ticks line and the note on EC2, TC5, TC7 and EC10; 15.13's, 15.14's and 15.16's changed lines; 15.15's C3 line, its line on C1 and C2 and L54's period; 15.18's two lines; every changed alt but 15.11's; 15.3's and 15.5's pills under the variables' titles.
 

@@ -257,6 +257,29 @@ Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/65b3d20e-985e-5f
 
 The fix brief `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` (Engineer paragraph, calls 1, 9 and 11, and the access addendum, D3-903 to D3-905). Written as I go; the container can restart. Each part's call is written under "Contract changes" as it lands, so the makers can move onto it.
 
+### Summary
+
+Every engineer item is done. The data lead's RF-1 and RF-2 are read and applied on the kit side.
+
+- **CD A-M2 (call 1, RF-1):** a red-share check. Pillar Red over 5 percent of a drawing fails at every width the kit checks, and in a screen-tall window of a tall drawing. S47 and S53 now pass after the makers' changes, and so do Rules 14.3's, 14.6's and 14.13's plates.
+- **CD B-M1, AX M1 (D3-903, RF-2):** `K.parts.band` draws its context-ink edges by default. A band check fails a band whose fill and edge both fall under 3 to 1. The interval check below covers "shows past its line".
+- **Call 9 (D3-899):** the interval plot-width check.
+- **RB-G4:** `place_labels` takes `paths`.
+- **BC S1, AX S2:** the kit clears words that quiet lines cross, with a knockout. A crossing check fails the rest, and `clear_label` handles words that must sit on a line.
+- **BC S7:** `clear_label` knocks a hatch out behind words.
+- **BC S8 (call 11):** `row_name` and `row_value`.
+- **BC S12:** `typography.nbsp` and open tracking.
+- **BC S14:** the avoid bars on two fixed lines.
+- **BC S17:** the contents panel never cuts a line.
+- **AX S1 (D3-904):** the sweep from 256 to 723 px in `build` and `check`, and `data-oa-warnings` cleared on a clean redraw.
+- **AX S3:** `fc: 'total'`.
+- **AX S6:** sketch stages are groups, and each caption is heard once.
+- **AX S7:** the README covers round 2.
+- **AX S8 (D3-905):** the source-line, margin, unit and check-only checks.
+- **AX S11:** no blank print page, and the plate head wraps.
+- **Requests:** maker B's RB-G5 and RB-G6, and the systems designer's size line.
+- **Left to owners:** after the new checks, `build --all --no-png` has 56 of 64 passing. The 8 failing (S02, S05, S07, S12, S14, S15, S29 and S35) are round 1 specs whose faults sit in their forms. The main session has the list. The strict build passes and prints those faults as notes.
+
 ### Contract changes (November 12, fix pass)
 
 Landed so far, newest last. A line marked **LANDED** is in the kit now.
@@ -283,3 +306,39 @@ Landed so far, newest last. A line marked **LANDED** is in the kit now.
 - **LANDED: RB-G6 (maker B), a key swatch with an edge.** A `K.parts.key` entry takes `edge` (a stroke role, or `true` for the context ink) and draws a filled swatch's 1 px inset edge, as a band with edges is drawn. Told maker B.
 - **LANDED: the guide build lists this pass's new kit faults as notes.** Words crossed or half covered (`layout: a ...`) and red past its share (`chart: Pillar Red covers ...`) fail `oa-chart.mjs build` and `check`, the gate each owner runs on a spec; the strict guide build prints them as notes ("kit build fault, listed here"), as it leaves the sweep to the kit, so one owner's spec does not stop another owner's strict build while they are cleared. Every other kit fault still fails the strict build.
 - **Wide plate size line (BC S16's last point, the systems designer's request):** "True size, 680 px wide; 328 px in a column under 680 px" now holds each number to its unit and "under 680 px" together with no-break spaces (`guide_build.py`).
+
+### Routine calls
+
+- D3-xxx | The sweep runs in `build` and `check` by default, over every whole width from 256 px (224 for a plate) to 723 px, on Newsprint, skipping the six columns already checked | AX S1 found faults at 329, 560 and 636 px; one fault prints once with its widths, so the output stays readable (41 s for all 64 specs)
+- D3-xxx | The guide build lists this pass's new kit faults (words crossed, red past its share) as notes, and the kit's `build` fails them | One owner's spec must not stop another owner's strict build while the faults are cleared; the sweep already lives in the kit alone
+- D3-xxx | Red's share is measured on the drawing, and in a 900 px (desk) or 844 px (phone) tall window where the drawing is taller | RF-1 sets the drawing alone as the view; a tall drawing on a screen shows only a screen of it
+- D3-xxx | A band is measured against what lies under it: the ground, or a wider band drawn before it that holds it | A fan's inner band sits on its outer band, not on the ground (D3-903: "against its ground")
+- D3-xxx | The interval plot-width test reads the middle row: its interval runs 5 px past a dot on each side, 2 px past a line | A small margin may hide inside its dot by right (S57's note says so); a plot where most do cannot pass. Rule 14.9's plate with its rows forced side by side fails at 294 px (19.7 px against 23), and S57 as drawn passes at every entry width (27.5 px at 256)
+- D3-xxx | The kit clears a word on the ground that a quiet line (gridline, baseline, total line, context, secondary) drawn before it crosses: a knockout 2 px wider than its box, or the halo where a knockout would touch another shape | BC S1 asks for every such word; a halo alone left a gridline between "1" and "." in "51.4", which read as "51:4"; quiet lines are never data
+- D3-xxx | A data line through a word, any stroke drawn after a word and a dot half under a word fail, and the form fixes them | Only the form knows whether to move the words or the mark; `strike: true` marks a stroke drawn through words on purpose
+- D3-xxx | "Half under" reads the band the letters stand in, from the cap height to the baseline | A bar that reaches only into a word's descent space is not over its letters (S14's fixture at 1440 px)
+- D3-xxx | `K.parts.band` draws its edges by default, and `edge: false` turns them off | RF-2 asks for the default
+- D3-xxx | Open tracking for a big figure is opt-in (`open: true`) | Made automatic, it changed S42's display sentence, which BC S12 does not name
+- D3-xxx | The fixture `fixtures/specs/s14.json` hides its "Three-month average" note on a phone, as live S14 does | The new half-under check found the fixture's note on its columns at 358 to 256 px; the self-test needs a clean fixture
+- D3-xxx | A sketch stage is a group named for its plate; its drawings stay images named by their titles; a drawing's `<desc>` that holds the caption's sentence leaves its name | AX S6: the bars are read as words in order, and the caption is heard once
+- D3-xxx | The avoid bars hold their words on two lines, with a hidden colon after the first line for screen readers | BC S14's fixed lines; a reader hears "Form to avoid: Do not publish"
+- D3-xxx | A plate taller than 860 px on screen breaks inside in print, through a class the shell sets at `beforeprint` | Chapter 13's first plate (1,622 px) left page 3 blank; CSS cannot select by height
+- D3-xxx | The AX S8 checks read the research lead's sidecar fields as named (`source_line_columns`, `margin_columns`, `check_only_columns`, `unit`) | They landed first; one shape for every sidecar that takes them
+
+### Requests
+
+Taken, in the order they arrived:
+
+| Request | From | Status |
+|---|---|---|
+| The sweep, early | main session | **Done** at 21:40; first results sent |
+| `MONTHS` redeclared, dates print one letter | maker A | **Fixed** within minutes (`MONTH_ALT`); snapshot rerun clean |
+| AX S8's sidecar fields | research lead | **Read** as named; told the research lead |
+| Wide plate size line holds together (BC S16) | systems designer | **Done** in `guide_build.py`; told the systems designer |
+| RB-G5, a pivot row header's words | maker B | **Done**; told maker B |
+| RB-G6, a key swatch with an edge | maker B | **Done**; told maker B |
+
+To others:
+- **Maker A:** `waterfall` passes `fc: 'total'` on its total bars (AX S3); `indicator-row` sets `open: true` on its figures and S60 takes `"typography": {"nbsp": true}` (BC S12); `stacked-area` sets S46's "All other sources" with `K.parts.clear_label` (BC S7); listing forms move onto `row_name` and `row_value` (BC S8: S43, S44); `step-tracker` (S62) and `tracker-list` (S40) mark their struck-out steps `strike: true` (both pass today); S02, S05, S07, S12, S14 and S15 per the main session's routing.
+- **Maker B:** listing forms onto `row_name` and `row_value` (S51, S57); `connected-scatter` can pass its path to `place_labels` as `paths` (RB-G4); S29 and S35 per the routing.
+- **Main session:** the eight round 1 specs above; the guide build prints their faults as notes until they pass.

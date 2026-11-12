@@ -4,7 +4,9 @@
  * labels.break_end ends a segment, labels.break_start starts one; either may be one value or a list of values, and at one x
  * a row that ends a segment sorts first and a row that starts one sorts last, ED-E8). labels: subject (the series value drawn in Charcoal),
  * series ({value: name}), series_place ({value: {x, dy}}), break_end, break_start, y_max (number). formats: y, y_tick.
- * annotations: [{at: {x, series}, text, place, dx, dy, max, dot, value}] — "value": true prints the point's value.
+ * annotations: [{at: {x, series}, text, place, dx, dy, max, dot, value, phone, mid}] — "value": true prints the point's value;
+ * phone ({...}) sets a note on a phone, mid ({below, ...}) on a desk column narrower than below px (to_foot: true
+ * sets the words under the chart there, as a phone does).
  * Round 2 (ED-E14): labels.point names the series the title names in the working red, its line and vertex dots one job
  * (the view's one red) on the 1 px keyline on Newsprint; labels.named names series set in the subject ink. With either
  * set, every other series takes the light fill on Newsprint and the context ink on Charcoal (palette rule R3,
@@ -109,11 +111,14 @@
       c.annotations.forEach(function (a) {
         if (c.phone && a.phone && a.phone.hide) return;
         if (c.phone && a.text && !a.value && ((a.phone && a.phone.below) || (!(a.phone && a.phone.below === false) && a.text.length > 60))) { below.push(a.text); return; }
+        if (!c.phone && a.text && !a.value && a.mid && W < a.mid.below && a.mid.to_foot) { below.push(a.text); return; }
         var hit = rows.filter(function (r) { return String(r[ex]) === String(a.at.x) && (!es || a.at.series === undefined || String(r[es]) === String(a.at.series)) && (!eb || !a.at.break || r[eb] === a.at.break); })[0];
         if (!hit) { c.warn('annotation at ' + JSON.stringify(a.at) + ' matches no row'); return; }
         var px = xs(K.time(hit[ex])), py = ys(hit[ey]);
         if (a.dot) c.circle(px, py, c.t('dot-subject-radius'), { fill: 'subject', mark: false });
-        var o = Object.assign({}, a, c.phone && a.phone ? a.phone : {});
+        // a.mid ({below, max, dx, dy, place, anchor}): a setting for a desk column narrower than a.mid.below px, where the
+        // desk note's words would sit on the lines' dots (D3-904's sweep, D3-911; placement only)
+        var o = Object.assign({}, a, c.phone && a.phone ? a.phone : (!c.phone && a.mid && W < a.mid.below ? a.mid : {}));
         var words = a.value ? K.fmt(hit[ey], f.y || 'number') + (a.text ? a.text : '') : a.text;
         P.note(c, px, py, words, { place: o.place, dx: o.dx, dy: o.dy, max: o.max, weight: a.value ? 700 : 400, anchor: o.anchor, leader: o.leader });
       });
