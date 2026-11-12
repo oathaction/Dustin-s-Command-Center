@@ -653,7 +653,7 @@ def build_proposal():
          'proposed': 'Stroke of the hatch, in the ink of the mark it fills.'},
         {'path': 'oa.chart.color.lightFill', 'field': '$description', 'now': node('oa.chart.color.lightFill.onNewsprint')['$description'],
          'proposed': ('Light fill: a category under the subject, with its value printed. On Newsprint it also fills every other '
-                      'bar wherever a chart names one bar, in red or in ink, so the named bar holds in gray print (R3); on '
+                      'bar wherever a chart names one bar, in red or in ink, so the named bar holds in gray print; on '
                       'Charcoal those bars keep the context ink, since Stone prints as gray as Pillar Red.'),
          'decided': 'Creative director\'s rescore, R3, November 12, 2026'},
         {'path': 'oa.chart.color.point', 'field': '$description', 'now': node('oa.chart.color.point.onNewsprint')['$description'],

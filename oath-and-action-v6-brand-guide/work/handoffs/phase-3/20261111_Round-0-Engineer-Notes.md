@@ -220,12 +220,12 @@ D3-xxx | Board 1's weight options are read by script (`weight_options.py`) from 
 
 ## Board 1 weight options
 
-D3-104's four options, measured on the final kit after the second pass (November 12) by `work/build/scripts/phase-3/weight_options.py` from a fresh strict build (`guide_build.py --strict`: 0 warnings, 9,959,613 bytes) and a fresh pilot (`chart_pilot.py --methods load-table`, 16 plates, chapter 14 projected for 97 specimens). The board builder can read the same figures from the script's JSON, written to scratch as `round-0-fix-2/engineer/20261112_Board-1-Weight-Options.json`, or rerun the script on its own builds. Each ask is chapter 14's overrun of its 1.75 MB stop less the page's room under 15.5 MB (443,798 bytes on this build), never below zero, with Phase 5's 0.40 MB untouched. The compression rows count about 600 bytes for the script that inflates the data (an estimate). The photo row frees room elsewhere on the page and leaves chapter 14 as it stands.
+D3-104's four options, measured on the final kit after the second pass (November 12) by `work/build/scripts/phase-3/weight_options.py` from a fresh strict build (`guide_build.py --strict`: 0 warnings, 9,960,893 bytes) and a fresh pilot (`chart_pilot.py --methods load-table`, 16 plates, chapter 14 projected for 97 specimens). The board builder can read the same figures from the script's JSON, written to scratch as `round-0-fix-2/engineer/20261112_Board-1-Weight-Options.json`, or rerun the script on its own builds. Each ask is chapter 14's overrun of its 1.75 MB stop less the page's room under 15.5 MB (442,518 bytes on this build), never below zero, with Phase 5's 0.40 MB untouched. The compression rows count about 600 bytes for the script that inflates the data (an estimate). The photo row frees room elsewhere on the page and leaves chapter 14 as it stands.
 
 | Option | Chapter 14 projected | Over its 1.75 MB stop | Smallest ask of Phase 4's 2.54 MB | What a reader loses |
 |---|---|---|---|---|
-| As it stands | 2.954 MB | 1.204 MB | 0.761 MB | Nothing |
-| Chart data carried compressed | 2.796 MB | 1.046 MB | 0.602 MB | Nothing: only the script reads the data |
+| As it stands | 2.954 MB | 1.204 MB | 0.762 MB | Nothing |
+| Chart data carried compressed | 2.796 MB | 1.046 MB | 0.603 MB | Nothing: only the script reads the data |
 | Tables compressed too | 2.141 MB | 0.391 MB | 0.000 MB | With scripts off, every chart's table (title, description, notes and source line stay) |
 | The smaller photo copies | 2.954 MB | 1.204 MB | 0.000 MB | A visible resample: chapter 01's photographs (3 on the page, one shown twice) at 1,200 px wide, which frees 1.060 MB of the page |
 
@@ -248,6 +248,8 @@ DR-191's read of fix pass 2 gave the engineer four kit faults (the editor's "Fix
 
 Requests back: the Explainer maker can now set S13's peak (X13, E32) and switch S06 to `directions_wording` (E8).
 
+The data lead's R3 item (by message): `oa.chart.color.lightFill` takes its new description in 6.0.0-gate3.1, description only, with the decision code left out of the reader words and kept in the change note's record; token tests pass and the token table is regenerated. The kit behavior it describes (when a chart names one bar, the other bars in the light fill on Newsprint and the context ink on Charcoal) is not built: no spec names one bar today, and it would change what a reader sees, so it waits for a spec that needs it.
+
 D3-xxx | A form prints shared words only through `OAChart.word` | One source for the words, with the editor's wording on a page and in Node alike
 D3-xxx | On a phone a totals row's peak words go right of its name, else under its sparkline | The name holds the line above the sparkline at that width (E32)
 
@@ -257,7 +259,7 @@ Tested:
 - `dataviz_check.js --kit` on the 16 pages: 16 of 16 pass; its self-test: every planted fault caught.
 - `oa-chart.mjs self-test`, including the words in `kit.js` equal to the editor's `words.json`: every fault caught.
 - `data_round0_build.py`: 61 tables, 0 faults; only `v7-scenarios-2030.meta.json` changed.
-- `guide_build.py --strict`: 0 warnings, 9,959,613 bytes; `--self-test` 296 of 296; `v7_check.py` 0 failures; a fresh pilot and `weight_options.py` for the table above. The quick guide check on this page: GCHECK4.
+- `guide_build.py --strict`: 0 warnings, 9,959,613 bytes, and 9,960,893 after the light fill's new description (the token table); `--self-test` 296 of 296; `v7_check.py` 0 failures; a fresh pilot and `weight_options.py` for the table above. The quick guide check on this page: GCHECK4.
 Not tested: the README read by someone who does not code; S06 with `directions_wording` and S13 with its peak, which wait on the Explainer maker's specs.
 
 ## Contracts
