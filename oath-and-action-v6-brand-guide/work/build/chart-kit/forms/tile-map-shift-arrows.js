@@ -19,7 +19,8 @@
       var tight = c.phone || size < c.measure('WW 88.8', 'tick', 700) + 12;
       // a shaded tile too small for its code at the smallest text size draws no code, and a note says the table names
       // every state, as the categorical tile map does (D3-93; the sweep found codes across the tiles' edges at 256 to 279 px)
-      var codes = !tight || size - 4 >= c.measure('WW', 'tick', 600) * c.t('type-tile-code-phone') / c.size('tick');
+      var cmax = 0; c.rows.forEach(function (r) { if (G.tiles[r[ec]]) cmax = Math.max(cmax, c.measure(String(r[ec]), 'tick', 600)); });
+      var codes = !tight || size - 2 >= cmax * c.t('type-tile-code-phone') / c.size('tick');
       var max = Math.max.apply(null, rows.map(function (r) { return Math.abs(r[es]); }));
       var ky = 0;
       // key

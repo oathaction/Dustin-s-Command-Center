@@ -633,7 +633,9 @@ LAYOUT = (".fx{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.fx.pr{
           f".wd .fx.pr{{grid-template-columns:{W}px {W}px;column-gap:{GAP_PR}px}}"
           f".wd .fx.tri{{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:{GAP_TRI}px}}"
           ".wd .tri>.vc{margin:0;padding:0;border:0}"
-          f".wd .two{{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:{GAP_PR}px}}}}"
+          f".wd .two{{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:{GAP_PR}px}}"
+          ".wd .fx.g3>:nth-child(1){grid-column:1;grid-row:1}.wd .fx.g3>:nth-child(2){grid-column:2;grid-row:1/span 2}"
+          ".wd .fx.g3>:nth-child(3){grid-column:1;grid-row:2}}}"
           "@container oa-frame (max-width:327.98px){.p :is(p,ul,ol,.evr):not(.dnp){max-width:calc(100cqi - 32px)}}")
 CSS.update({
     "sv": (".sv{display:block;overflow:visible}"
@@ -1992,19 +1994,22 @@ def rule_15_12(book):
                        f'{grade_word(link(x)["evidence"], gloss=False)}</p>' for i, x in enumerate(chain, 1)))
     words = f'<p class="k">Two grades, apart</p>{blocks}'
     key = reading_key(chain, layers=("Technology layer", "Core layer"))
-    body = (hed("Reform", "R-32", r["title"]) + beside(fig(svg) + acts_note("R-32", r) + steps, words)
+    # SD-9: in the page's order (one column, and for a screen reader at every width) the two grades come before the
+    # step list; at 680 px the steps still sit under the drawing, with the grades in the right column across both rows
+    body = (hed("Reform", "R-32", r["title"])
+            + f'<div class="fx g3"><div>{fig(svg)}{acts_note("R-32", r)}</div><div>{words}</div><div>{steps}</div></div>'
             + f'<div class="kb"><p class="k">Reading a step</p>{key}</div>'
             + src("reform R-32, its problem and remedy evidence, and connections LT03 and L26"))
     book.add("s-15-12-correct", body, rule="15.12", readable=True, wide=True,
              alt=(f"Reform R-32 from our systems atlas, “{r['title']}”, on a chain of three pills drawn downward: Concentration "
                   "of platforms and digital advertising, in the technology layer, then across a rule into the core layer, Local "
                   "news supply and Electoral pressure. Both connections and the outline of Local news supply are red: money, "
-                  "lowers, then information, raises. Under the drawing, each step with its grade: "
+                  "lowers, then information, raises. Beside it, two labels: Well supported, strong research evidence, for the "
+                  f"evidence of the problem, with the atlas’s words: {pt[0]} Hypothesis, not yet tested, for the evidence for "
+                  f"the remedy, with the atlas’s words: {rt_} Under the drawing, each step with its grade: "
                   + "; ".join(f"step {i}, Connection {x}, {link(x)['name']}, {GRADE[link(x)['evidence']][0].lower()}"
                               for i, x in enumerate(chain, 1))
-                  + ". Beside it, two labels: Well supported, strong research evidence, for the evidence of the "
-                  f"problem, with the atlas’s words: {pt[0]} Hypothesis, not yet tested, for the evidence for the remedy, with "
-                  f"the atlas’s words: {rt_} A key says that money, lowers and information, raises name what moves along each "
+                  + f". A key says that money, lowers and information, raises name what moves along each "
                   f"connection and which way the next variable moves; that ticks count a step’s delay, {ticks_line(chain)}; and "
                   "that the technology layer and the core layer are two of the three layers of the atlas’s model."),
              notes="Both grades and their words read from the reform's problem_evidence and remedy_evidence; the connections' "
