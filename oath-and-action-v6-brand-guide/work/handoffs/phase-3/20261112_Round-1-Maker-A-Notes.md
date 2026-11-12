@@ -221,3 +221,15 @@ November 12, 2026. Maker A's items from the fix brief (`20261112_Round-1-Fix-Bri
 - My captures of the guide at 1024 and 360 px, and of 14.16, 14.20 and 14.129 at 390 px.
 - The engineer's `typography` setting on any page but S39's build page and its exports.
 - Whether S36's "Hybrid PAC, Republican" for SFA Fund, Inc. matches the FEC's current committee record today: I read the research lead's frozen columns, not the FEC.
+
+## Second pass
+
+November 12, 2026, the main session's three items.
+
+- D3-xxx | S10 leaves `source_line` out and prints the sidecar's line, "432 of the 433 claims checked on October 15, 2026"; its measure line gives the snapshot date in place of "checked through" | Statistics N2 and access N1: the hand-set line failed the kit check; the measure line held ST S6's same fault, fixed as on S21 and S23
+- D3-xxx | S37's note on Article V is our own sentence: "Under Article V, two-thirds of each house of Congress, or a convention called by two-thirds of the states, proposes an amendment, and three-quarters of the states must ratify it." | Statistics N4: the old words read as if a convention alone could amend the Constitution; the atlas's words stay where the drawing quotes them
+- D3-xxx | S37 sorts by `reform_group` with `values` in V7's group order, so the table and CSV follow the drawing's groups; its chart note says so; the desk phone drawing shows the whole first group (28 route rows, 10 reforms), labeled "the first reform group shown; a phone draws all 50 reforms" | A12 landed; the sort makes the first group contiguous
+
+Tested: S10 and S37 built with `oa-chart.mjs build` (PNGs, both grounds, 1440 and 390 px, the five guide widths, parity): 2 of 2 PASS, 0 faults. `dataviz_check.js --kit` on both pages: PASS. `tools/figs.py`: every assertion passes, with new S10 checks (no source_line, 432 of 433 dated, 433 claims, note 1's 23 of 24, 13 of 22 and 6 of 39 with their ranks) and new S37 checks (the Article V sentence, the sort's group order, 28 rows and 10 reforms in the first group). The CSV export's rows run in group order, each group once. Words lint on both specs: nothing to fix.
+
+Not tested: S37's desk phone drawing in a guide build (the key and rows built in the kit only); S10's captures were not looked at, since its drawing did not change.

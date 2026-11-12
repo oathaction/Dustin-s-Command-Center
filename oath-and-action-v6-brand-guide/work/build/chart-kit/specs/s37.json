@@ -5,6 +5,22 @@
   "family": "tables-and-plain-words",
   "tier": "extended",
   "dataset": "v7-reform-routes",
+  "sort": [
+    {
+      "field": "reform_group",
+      "values": [
+        "Elections and representation",
+        "Money, lobbying and ethics",
+        "Congress, courts and the executive",
+        "Competition and technology",
+        "Work and pay",
+        "Taxes and household security",
+        "Housing, care, energy and infrastructure",
+        "News and civic life",
+        "Rejected option"
+      ]
+    }
+  ],
   "reader_question": "Which routes could carry each reform, and how feasible is each?",
   "evidence": "estimate",
   "evidence_label": "Estimate",
@@ -19,7 +35,7 @@
   "notes": [
     "Routes through a state or local government fare better: the atlas rates 24 of the 29 state statute routes medium or high, and 14 of the 15 local routes.",
     "Feasibility is the atlas’s own judgment, on a scale it defines in four steps. Very low: “It needs a supermajority, a constitutional change or a reversal of court doctrine.” Low: “The route exists, but it needs a coalition that does not exist now.” Medium: “The route is open in some places, and a credible campaign could carry the reform through it by 2030.” High: “The route is open, and the reform has been adopted somewhere through it since 2020.” The cells add to no score or total.",
-    "Article V, the Constitution’s process for amending itself, takes two-thirds of each house of Congress and three-quarters of the states, or a convention.",
+    "Under Article V, two-thirds of each house of Congress, or a convention called by two-thirds of the states, proposes an amendment, and three-quarters of the states must ratify it.",
     "The atlas checked 13 of the 126 routes on October 15, 2026, each marked with a dot; every other route is not checked."
   ],
   "credit": "Chart: Oath & Action",
@@ -58,7 +74,7 @@
   "chart_notes": [
     "Tints run from very low, the lightest, to high, the darkest, each with its word. A dot marks a route the atlas checked on October 15, 2026.",
     "The federal statute column, which the title names, has its head in bold and a thin frame in the text’s ink.",
-    "The drawing sets the reforms under the atlas’s nine reform groups, with the rejected option last. A blank cell is a route the atlas does not name for that reform."
+    "The drawing prints the name of each of the atlas’s nine reform groups over its reforms, and the table lists the reforms in the same order, with the rejected option last. A blank cell is a route the atlas does not name for that reform."
   ],
   "phone": "differs",
   "phone_note": "On a phone each reform lists its routes as tinted chips that name the route and the rating.",
@@ -200,15 +216,16 @@
     "key_title": "Feasibility, 2026 to 2030"
   },
   "notes_internal": [
-    "Data plan row 36. The routes run in V7's order (proposal section 1.4). The drawing gathers the reforms under V7's nine reform groups, in V7's order (labels.groups, read from reformGroups), with each group's reforms in number order and the rejected option last, so each head prints once (CD AM2); the table keeps reform order.",
+    "Data plan row 36. The routes run in V7's order (proposal section 1.4). The drawing gathers the reforms under V7's nine reform groups, in V7's order (labels.groups, read from reformGroups), with each group's reforms in number order and the rejected option last, so each head prints once (CD AM2); sort (A12) puts the table in the same order.",
     "Rule 13.10: the 13 dated routes take a dot; the key and note 2 say every other route is not checked. The sidecar's qualification: each cell's word, never a score or a total.",
     "Evidence label Estimate: feasibility is the atlas's judgment of what could happen by 2030; the title reports the ratings as the atlas records them, so v7.grade is documented.",
     "Figures checked by script (figures.py s37).",
     "Review fix pass: CD AM2 (groups once; the federal statute column named, its head bold in ink with a hairline frame), BC S10 (heads on one row, each over its column, bottom-aligned, two hyphenated where a word is wider than the column at 723 px; the checked dot 6 px on a keyline of the ground), ST S7 (note 2 quotes V7's routes.feasibility_scale word for word, in the key's order), AX S6 (chart note 3 says what a blank cell means), AX S9 (route glossed in the measure line from Rule 13.10's words; Article V in note 3 from V7's routes.items; the grade line says the judgment is given in words). The title now counts reforms, so it cannot read as 38 acts (AX S9's reader). Figures checked by script (round-1-fix tools/figs.py s37).",
-    "A17 (D3-534): the phone drawing shown at a desk draws the first 20 route rows, the six reforms R-01 to R-06, all in the first reform group; the group's other four reforms come later in the data's order, so the label says six reforms, never the whole group."
+    "A17 (D3-534): the phone drawing shown at a desk draws the first 20 route rows, the six reforms R-01 to R-06, all in the first reform group; the group's other four reforms come later in the data's order, so the label says six reforms, never the whole group.",
+    "Second pass: note 3 is our own sentence on Article V (statistics N4), so the figure check holds it to its own words, not to V7's route field; sort takes the group order (A12), so the table follows the drawing; the desk phone drawing now shows the whole first group, its 28 route rows and 10 reforms, which the sort makes contiguous."
   ],
   "desk_phone": {
-    "rows": 20,
-    "part": "the first six reforms; a phone draws all 50"
+    "rows": 28,
+    "part": "the first reform group shown; a phone draws all 50 reforms"
   }
 }

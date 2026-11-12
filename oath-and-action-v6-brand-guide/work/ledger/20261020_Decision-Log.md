@@ -4545,3 +4545,11 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | # | Decision | Reason |
 |---|---|---|
 | D3-626 | S34’s line names all five changes in the votes needed, from Riddick’s Senate Procedure | The line and note 1 must state the rule one way; Riddick is the Senate’s own procedure manual |
+
+### Maker A, round 1 second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-627 | S10 leaves `source_line` out and prints the sidecar's line, "432 of the 433 claims checked on October 15, 2026"; its measure line gives the snapshot date in place of "checked through" | Statistics N2 and access N1: the hand-set line failed the kit check; the measure line held ST S6's same fault, fixed as on S21 and S23 |
+| D3-628 | S37's note on Article V is our own sentence: "Under Article V, two-thirds of each house of Congress, or a convention called by two-thirds of the states, proposes an amendment, and three-quarters of the states must ratify it." | Statistics N4: the old words read as if a convention alone could amend the Constitution; the atlas's words stay where the drawing quotes them |
+| D3-629 | S37 sorts by `reform_group` with `values` in V7's group order, so the table and CSV follow the drawing's groups; its chart note says so; the desk phone drawing shows the whole first group (28 route rows, 10 reforms), labeled "the first reform group shown; a phone draws all 50 reforms" | A12 landed; the sort makes the first group contiguous |

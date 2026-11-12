@@ -89,8 +89,13 @@ largest = sorted((r for k, r in opm.items() if k != "ALL"), key=lambda r: -int(r
 if {r["department_code"] for r in big} != {r["department_code"] for r in largest}:
     faults.append("S25: the agencies drawn are not the largest in January 2022")
 shrank = sum(1 for r in big if int(r["change"]) < 0)
-need("S25", t, f"{n22 - n26:,} fewer", f"{shrank} of the {len(big)} largest", f"{n25:,} employees", f"{n25 - n22:,} more than in January 2022",
-     f"{n25 - n26:,} more than in August 2026", f"{-int(opm['DOD']['change']):,}", f"Veterans Affairs {int(opm['VA']['change']):,}",
+sum25 = sum(int(r["employees_2025_01"]) for k, r in opm.items() if k != "ALL")
+side = json.loads((ROOT / "work/build/data/opm-federal-employment-by-agency.meta.json").read_text(encoding="utf-8"))
+nodata = re.search(r"No Data Reported \((\d+) employees\), OP \((\d+) employees\)", json.dumps(side, ensure_ascii=False))
+if not nodata or int(nodata.group(1)) + int(nodata.group(2)) != n25 - sum25:
+    faults.append("S25: the sidecar's two codes with no row do not account for the January 2025 gap")
+need("S25", t, f"{n22 - n26:,} fewer", f"{shrank} of the {len(big)} largest", f"{n22:,} employees on January 31, 2022, {n25:,} on January 31, 2025 and {n26:,} on August 31, 2026",
+     f"sum to {sum25:,}", f"{n25 - sum25} people under two codes", f"{nodata.group(1) if nodata else '?'} under", f"{-int(opm['DOD']['change']):,}", f"Veterans Affairs {int(opm['VA']['change']):,}",
      f"Homeland Security {int(opm['HS']['change']):,}", f"Interior {int(opm['IN']['change'])}", f"Government Publishing Office {int(opm['LP']['change'])}",
      f"{100 * sum(int(r['employees_2022_01']) for r in big) / n22:.1f} percent", f"all {len(opm) - 1} agencies")
 if (n25 - n22) + (n26 - n25) != n26 - n22 or int(a["change_2022_01_to_2025_01"]) != n25 - n22 or int(a["change_2025_01_to_2026_08"]) != n26 - n25:
