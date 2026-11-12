@@ -7,18 +7,19 @@
  * labels: bands ([{to, step, label}]: each band runs from the last one's end to `to`, in magnitude step 1 to 4, named
  * at its far edge), target_words ('{v}' words over the target's tick), value_words ('{v}'), rest_words ('{v}' words for
  * the distance to the target), category_format (a table format for the row names, such as month), per (a divisor for
- * the printed figures, such as 1000 to print millions as billions). formats: value (the figures in the words). */
+ * the printed figures, such as 1000 to print millions as billions), tick_words ('{v}' words for the scale under the last
+ * bar). formats: value (the figures in the words), tick (the scale's figures). */
 (function (K) {
   'use strict';
   K.register_chart({
     form: 'bullet-graph', name: 'Bullet Graph', family: 'gauges-and-indicators',
     encode: { category: 'category', value: 'number', target: 'number?' },
-    labels: ['bands', 'target_words', 'value_words', 'rest_words', 'category_format', 'per'],
+    labels: ['bands', 'target_words', 'value_words', 'rest_words', 'category_format', 'per', 'tick_words'],
     phone: 'same',
     draw: function (c) {
       var rows = c.rows, ek = c.field('category'), ev = c.field('value'), et = c.field('target', false), L = c.labels, W = c.width;
       var f = c.spec.formats || {}, bands = L.bands || [], size = c.size('label'), tick = c.size('tick');
-      var fv = function (t, v) { return String(t || '{v}').split('{v}').join(K.fmt(v / (L.per || 1), f.value || 'integer')); };
+      var fv = function (t, v, fm) { return String(t || '{v}').split('{v}').join(K.fmt(v / (L.per || 1), fm || f.value || 'integer')); };
       var name = function (r) { return K.fmt(r[ek], L.category_format || 'text'); };
       var hi = 0; rows.forEach(function (r) { hi = Math.max(hi, r[ev], et ? r[et] || 0 : 0); }); bands.forEach(function (b) { hi = Math.max(hi, b.to); });
       var nw = 0, vw = 0;
@@ -56,12 +57,26 @@
         c.rect(x0, cy - mh / 2, xs(r[ev]) - x0, mh, { fill: 'subject', kind: 'bar', axis: 'x', zero: x0, data: { key: r[ek], field: ev, value: r[ev] } });
         if (et && r[et]) c.line(xs(r[et]), by - 3, xs(r[et]), by + bh + 3, { stroke: 'label', width: 2, data: { key: r[ek], field: et, value: r[et] } });
         var rest = et && r[et] ? fv(L.rest_words, r[et] - r[ev]) : '';
+        // under the last bar, the scale from zero, so the reader sees the bar start there (Rule 14.4, MA-6)
+        var sb = by + bh;
+        if (i === rows.length - 1) {
+          var st = K.nice(0, hi, c.phone ? 3 : 4).step, ty = by + bh + 6 + tick, lastx = -1e9;
+          c.line(x0, by + bh + 1, x0, by + bh + 5, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });
+          for (var tv = 0; tv <= hi + 1e-9; tv += st) {
+            var tw = fv(L.tick_words || '{v}', tv, f.tick || 'integer'), ww = c.measure(tw, 'tick'), tx = Math.max(ww / 2, Math.min(x1 - ww / 2, xs(tv)));
+            if (tx - ww / 2 < lastx + 10) continue;
+            c.line(xs(tv), by + bh + 1, xs(tv), by + bh + 5, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });
+            c.text(tx, ty, tw, { role: 'tick', anchor: 'middle', tnum: true });
+            lastx = tx + ww / 2;
+          }
+          sb = ty + 4;
+        }
         if (!c.phone) {
           c.text(W, cy + (rest ? -2 : size * 0.35), fv(L.value_words, r[ev]), { role: 'label', weight: 700, anchor: 'end', tnum: true });
           if (rest) c.text(W, cy + tick + 1, rest, { role: 'tick', anchor: 'end' });
-          y = by + bh + 16;
+          y = sb + 16;
         } else {
-          var ny = by + bh + 8 + size;
+          var ny = sb + 8 + size;
           c.text(0, ny, name(r), { role: 'label', weight: 600 });
           c.text(W, ny, fv(L.value_words, r[ev]), { role: 'label', weight: 700, anchor: 'end', tnum: true });
           if (rest) { c.text(W, ny + 4 + tick, rest, { role: 'tick', anchor: 'end' }); ny += 4 + tick; }

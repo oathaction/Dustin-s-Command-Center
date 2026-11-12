@@ -106,3 +106,43 @@ Created: `work/build/chart-kit/forms/stacked-share-bar.js`, `waterfall.js`, `sta
 Modified: `work/build/chart-kit/forms/bar-benchmark-tick.js` (named and point, ruling (c), A2), `work/build/chart-kit/specs/s18.json` (ruling (c)), `work/build/chart-kit/forms/heat-table.js` (one line, D3-666).
 Written by running the engineer's generator (not edited by hand): `work/build/guide/chapters/14-data-visualization.json`, `work/build/guide/specimens/manifest-data-visualization.json`, `work/build/guide/entries/14-example-log.json` and the `s-14-sNN.html` fragments.
 Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/65b3d20e-985e-5fe9-b272-d7d01bd821cd/scratchpad/phase-3/round-2/maker-a/` (kit-out, tools, guide.html, captures).
+
+## Second run
+
+November 12, 2026, the main session's second run: the data lead's sign-off ("Sign-off, maker A", MA-1 to MA-9, and its H09 ruling on S63's X18), the editor's 18 word changes (kept as applied), and the engineer's A-E1 to A-E3.
+
+### Summary
+
+- **Done:** MA-1 and MA-2 (S45), MA-3 (S47), MA-5 and the X18 ruling (S63), MA-6 (S64), MA-7 (entries 14.46, 14.47, 14.48, 14.52, 14.55, 14.87, 14.90), MA-8 (14.53), MA-9, optional (S44). MA-4 (S60) was met by the editor's change ("on the ballot on November 3, 2026"), kept.
+- **Engineer's landings:** A-E1 taken (`stacked-area` drops its fill patch; the kit reads a word's path fill); A-E2 left (`bullet-graph` keeps `labels.per`, which still prints the same); A-E3 left (`treemap` keeps its own fit, since the plate under S47's words must be drawn before them and `fit_label` draws as it fits).
+- Signed off by the data lead and unchanged here: S18, S43, S46, S48, S61, S62 and the six sketches.
+
+### Routine calls
+
+- D3-xxx | S45 prints its totals in the axis's unit, thousands of homes (1,979.4, 584.9 and 1,626.9), measured in tabular figures | MA-1: one unit on the chart (Rule 14.3); the wider tabular figures ran past the edge at 390 px until measured so
+- D3-xxx | S45's note gives the longer record: the series starts in 1968, and the share was last higher in 1974, at 40.1 percent | MA-2, S20's case: the window stays and the note keeps the record
+- D3-xxx | S47's name and figure on the red tile sit on a plate of the ground, in the text's ink | MA-3: Charcoal on Pillar Red measures 4.49 to 1, under 4.5; the plate also takes Canvas in forced colors
+- D3-xxx | S63's title: "Of six disputes over checks on power, the Supreme Court had decided one by October 15, 2026, and had acted by interim order in three others." | MA-5: the old title left out X05 and X18 and missed I068's emergency order of September 26, 2025; I068's chip stays Watchdog finding, its latest event
+- D3-xxx | S63's X18 words give the Congressional Research Service's window with its reason, "from its first day, January 20, 2025," and the report, R49022 of July 7, 2026 | The data lead's H09 ruling: the count covers suits against the administration from its first day, and nothing falls before it
+- D3-xxx | S64 draws a scale from zero under its bar (0, 20,000 and 40,000 billion, thinned to fit) | MA-6: the reader sees the bar start at zero (Rule 14.4)
+- D3-xxx | S44 moves a value to its bar's other side where it would sit across the zero line and that side is clear | MA-9: "−1,667.1" and "−694.2" crossed lines at 1440 px
+- D3-xxx | Entries name a data mark's ink "the subject ink" and keep "the text's ink" for words, ticks and midlines; 14.47, 14.55 and 14.87 lead with Rule 14.6's red point and give the subject ink as its party case | MA-7, D3-572
+- D3-xxx | Entry 14.53 states the guide's order: Democrats from the left, as the chart for Rule 14.28 orders the parties, independents and vacancies between, Republicans from the right | MA-8: "the chamber's usual order" claimed a seating order nobody checked
+- D3-xxx | `stacked-area` drops the fill patch under each band's name | A-E1 landed: the kit and its check read the fill of a filled path under a word
+
+### Tested
+
+- `oa-chart.mjs build` with PNGs, after the last change: S43 to S48, S60 to S64 and S18, 12 of 12 PASS, 0 faults.
+- `dataviz_check.js --kit --no-captures` on the build pages of S44, S45, S46, S47, S63 and S64: 6 of 6 pass (S46 after the patch came out).
+- `tools/figs.py`: 91 assertions, 0 failed, with new checks for S45's longer record (higher in 1969, 1970, 1973 and 1974; 40.1 in 1974; the series from 1968), I068's emergency order and S63's X18 words (50, 16, R49022 of July 7, 2026, against V7's status text).
+- Captures looked at: S47 at 1440 px on Newsprint and 390 px on Charcoal (the plate on red); S64 at 1440 px and 390 px (the scale); S44's lower half at 1440 px.
+- `phase3_ch14_build.py`: 96 rules, 82 entries, 0 faults. Strict build: exit 0, no warning, 10,588,845 bytes; share per plate 16,031 for 36 to come; S44 8,259, S45 6,309, S46 11,002, S47 5,009, S63 9,433, S64 3,750 bytes.
+
+### Not tested
+
+- The changed entries in the guide by screen capture (the strict build placed them); S45 and S63 captures beyond the build's checks; real readers and devices.
+
+### Files
+
+Modified: `work/build/chart-kit/forms/treemap.js`, `bullet-graph.js`, `waterfall.js`, `stacked-column.js`, `stacked-area.js`; `work/build/chart-kit/specs/s45.json`, `s63.json`, `s64.json`; `work/build/guide/entries/14-046.json`, `14-047.json`, `14-048.json`, `14-052.json`, `14-053.json`, `14-055.json`, `14-087.json`, `14-090.json`; this notes file. By the generator: chapter 14's file and manifest.
+

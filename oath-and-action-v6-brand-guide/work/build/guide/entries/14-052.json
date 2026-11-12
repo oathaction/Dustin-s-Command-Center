@@ -2,7 +2,7 @@
   "id": "14.52",
   "title": "Use a treemap for a budget with many parts in one year.",
   "rule": [
-    "Draw each part as a rectangle whose area is its amount, largest first, every tile in one light gray with a gap of the page color between tiles, and print each tile’s name, amount and share inside it. The part the title names takes the red point, or the text’s ink where Rule 14.6 sets ink in its place. Fold parts too small to hold their words into one last tile, list each in the table, and say what a negative line the treemap cannot draw leaves out."
+    "Draw each part as a rectangle whose area is its amount, largest first, every tile in one light gray with a gap of the page color between tiles, and print each tile’s name, amount and share inside it. The part the title names takes the red point, or the subject ink where Rule 14.6 sets ink in its place, and its words sit on a small plate of the page color. Fold parts too small to hold their words into one last tile, list each in the table, and say what a negative line the treemap cannot draw leaves out."
   ],
   "use_when": "The reader asks where the money in one budget went, the parts number more than a bar chart reads quickly, and the largest few carry the answer.",
   "use_instead": [

@@ -91,7 +91,7 @@
       var stack = x1 - x0 < (L.stack_below || 160);
       if (stack) { x0 = 0; x1 = W; c.arrange('phone'); }
       var all = c.rows.map(lo).concat(c.rows.map(hi));
-      var sx = (c.spec.scale || {}).x, nt = stack || ph ? (W < 300 ? 3 : 4) : 6, dom = sx || K.nice(Math.min.apply(null, all), Math.max.apply(null, all), nt);
+      var sx = (c.spec.scale || {}).x, nt = stack ? 4 : ph ? (W < 300 ? 3 : 4) : 6, dom = sx || K.nice(Math.min.apply(null, all), Math.max.apply(null, all), nt);
       var pad = rd + 2, xs = K.scale.linear([dom[0], dom[1]], [x0 + pad, x1 - pad]);
       var ticks = K.ticks(dom[0], dom[1], 0, K.nice(dom[0], dom[1], nt).step), tf = f.tick || 'integer';
       var tick_at = function (t) { var w = c.measure(K.fmt(t, tf), 'tick'), x = xs(t); return { x: Math.min(Math.max(x, w / 2), W - w / 2) }; };

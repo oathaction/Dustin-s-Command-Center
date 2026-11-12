@@ -81,6 +81,9 @@
         var t = num(s), tw = c.measure(t, 'label', 700, true), right = s.total ? s.b >= 0 : r[ev] >= 0;
         if (right && xb + 4 + tw > W) right = false;
         if (!right && xa - 4 - tw < (c.phone ? 0 : x0)) right = true;
+        // a value that would sit across the zero line moves to the bar's other side where that side is clear (MA-9)
+        var zx = xs(0), spans = function (r_) { var a = r_ ? xb + 3.5 : xa - 3.5 - tw; return zx > a - 2 && zx < a + tw + 2; };
+        if (spans(right) && !spans(!right) && (right ? xa - 4 - tw >= (c.phone ? 0 : x0) : xb + 4 + tw <= W)) right = !right;
         c.text(right ? xb + 3.5 : xa - 3.5, cy, t, { role: 'label', weight: s.total || isn ? 700 : 400, anchor: right ? 'start' : 'end', tnum: true, halo: true });
         // a hairline from the last step's end to this one's start; on a phone only where it clears the name between
         var px = prev && xs(prev.x), nb = c.texts[c.texts.length - 2];

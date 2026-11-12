@@ -576,7 +576,7 @@
   "chapter": "14",
   "rule": "14.60",
   "width_px": null,
-  "alt": "Box plots of county uninsured rates for people under 65 in 2024, one row per Census region. The median county runs from 7.2 percent in the Northeast to 13.9 percent in the South, whose middle half spans 11.0 to 17.9 percent, the widest of the four; 62 counties sit above their region’s whiskers.",
+  "alt": "Box plots of county uninsured rates for people under 65 in 2024, one row per Census region. The median county stands at 7.2 percent in the Northeast, 8.8 in the Midwest, 12.4 in the West and 13.9 in the South, whose middle half spans 11.0 to 17.9 percent, the widest of the four; 62 counties sit above their region’s whiskers.",
   "illustrative": false,
   "notes": "S51, box-plot: the chart kit draws it from work/build/chart-kit/specs/s51.json (contract R1-C3)"
  },

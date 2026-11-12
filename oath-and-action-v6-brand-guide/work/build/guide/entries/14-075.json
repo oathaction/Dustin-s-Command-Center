@@ -2,7 +2,7 @@
  "id": "14.75",
  "title": "Draw a band around a line to show each year’s margin of error.",
  "rule": [
-  "Draw the series as a 2 px line in the subject ink over a light band from each year’s low to its high, at the publisher’s stated confidence, named in the measure line. Where the publisher changed its method, break the line and the band and draw both estimates for that year (Rule 14.11). Label the latest figure with its margin at the line’s end."
+  "Draw the series as a 2 px line in the subject ink over a band in Stone magnitude step 1 from each year’s low to its high, at the publisher’s stated confidence, named in the measure line. Where the publisher changed its method, break the line and the band and draw both estimates for that year (Rule 14.11). Label the latest figure with its margin at the line’s end."
  ],
  "use_when": "The reader asks how a survey figure changed over years and how sure each year’s figure is.",
  "use_instead": [

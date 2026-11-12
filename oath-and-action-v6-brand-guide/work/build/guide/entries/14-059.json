@@ -2,7 +2,7 @@
  "id": "14.59",
  "title": "Show every item as a dot on one scale when each one should stay visible.",
  "rule": [
-  "Place each item as one dot on a single value scale, packed up and down from a center line so no dot hides another; the packing follows the data alone, so it draws the same every time. Name the items the title names in the subject ink with their values, keep the rest in the light fill, and draw a total or national figure as a dashed line in the text’s ink with its own label (Rule 14.6).",
+  "Place each item as one dot on a single value scale, packed up and down from a center line so no dot hides another; the packing follows the data alone, so it draws the same every time. Name the items the title names with their values, in the view’s red point or, where a reader would tie them to a party, as a state, in the subject ink; keep the rest in the light fill, and draw a total or national figure as a dashed line in the text’s ink with its own label (Rule 14.6).",
   "A strip plot is the same form with the dots in one row; use it when the items rarely touch."
  ],
  "use_when": "The reader asks how about 20 to 100 places compare on one measure, and both the spread and a few named places matter.",

@@ -2,7 +2,7 @@
   "id": "14.90",
   "title": "Use a bullet graph to set one measure against its target and the ranges behind it.",
   "rule": [
-    "Draw the ranges as bands in the magnitude steps from zero, the measure as a narrow bar in the text’s ink from zero, and the target as a tick in the text’s ink across the bands. Name every band edge and the target with its figure once over the rows, and print the measure and its distance to the target beside each bar."
+    "Draw the ranges as bands in the magnitude steps from zero, the measure as a narrow bar in the subject ink from zero, and the target as a tick in the text’s ink across the bands. Name every band edge and the target with its figure once over the rows, and print the measure and its distance to the target beside each bar."
   ],
   "use_when": "The reader asks how close one measure is to a target or a limit, such as federal debt against the limit set in law, and the ranges give it meaning.",
   "use_instead": [

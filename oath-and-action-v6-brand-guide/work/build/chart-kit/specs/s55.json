@@ -15,12 +15,13 @@
   "evidence": "association",
   "evidence_label": "Association",
   "grade_line": "Documented: a Census Bureau survey",
-  "title": "Higher rents went with higher renter incomes across the states in 2025, and Florida’s 3.0 million renter households paid the largest share of income in rent, 35.5 percent.",
+  "title": "Higher rents went with higher renter incomes across the states in 2025, and in Florida, home to 3.0 million renter households, the median renter paid the largest share of income in rent, 35.5 percent.",
   "measure_line": "Median gross rent a month against renter households’ median income a year, 2025, 50 states and DC; each circle is a state, its area set by its renter households.",
   "reading_guide": "States to the right have renters with higher incomes, and states higher up have higher rents. A larger circle holds more renter households.",
   "notes": [
     "This shows the two move together; it does not show one causes the other.",
-    "Rent as a percent of income is the Census Bureau’s own measure: the median, across renter households paying cash rent, of each one’s rent over its income. Florida’s 35.5 percent carries a margin of error of 0.5 point at 90 percent confidence, and California’s 32.9 percent, the next highest, 0.3 point."
+    "Rent as a percent of income is the Census Bureau’s own measure: the median, across renter households paying cash rent, of each one’s rent over its income. Florida’s 35.5 percent (margin 0.5) passes the next figures, California’s 32.9 (0.3) and Hawaii’s 32.8 (1.2), by more than their margins.",
+    "North Dakota has the smallest figure, 23.8 percent (margin 1.2); Wyoming’s 25.5 (2.0) sits within its margin."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -106,7 +107,7 @@
   "scale": {
     "x": [
       30000,
-      80000
+      85000
     ],
     "y": [
       800,
@@ -116,6 +117,7 @@
   "notes_internal": [
     "Maker B, round 2. Data plan row 64, rule 14.68. Same file and rulings as S54; circles by area (D2-124), largest drawn first, each with a 1 px outline in the context ink (ruling (e)); the key gives two sizes (Rule 14.4).",
     "Figures checked by maker_b_round2_derive.py --figures (check S55): Florida 2,981,485 renter households (3.0 million), California 6,159,367 (6.2 million, the most), Florida’s 35.5 percent the largest share past the margin.",
-    "Read from the left and the right: as S54."
+    "Read from the left and the right: as S54.",
+    "Data lead MB-7 to MB-9 and MB-10, MB-11: California and North Dakota labeled in regular weight; note 2 tests Florida against California and Hawaii and a note gives North Dakota’s figure against Wyoming’s (checked by --figures); the income scale ends at $85,000 so DC’s dot at $79,741 sits inside the plot."
   ]
 }

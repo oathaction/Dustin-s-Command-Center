@@ -1,7 +1,7 @@
 /* Scatter plot with named points (coverage plan 3.6, core; S54), and the bubble chart's drawing (S55, through
  * forms/bubble-scatter.js, which sizes each point by a third measure). Two measures across places, one dot a place; the
- * dots the title names take the subject ink (or the red point) and carry their names, every other dot the light fill,
- * and a few more may carry their names in the light fill (labels.labeled). Names are placed by the kit's shared part
+ * dots the title names take the subject ink (or the red point) and carry their names in bold, every other dot the light
+ * fill, and a few more may carry their names in regular weight in the light fill (labels.labeled). Names are placed by the kit's shared part
  * (K.parts.place_labels): eight places around each dot, then further out with a leader, clear of every name, text and
  * dot; a name with no clear place is listed in a line under the chart. A reference point (labels.reference, such as the
  * nation) takes the kit's open ring in the text's ink (K.parts.total_ring) with its name. Axis words sit over the value
@@ -88,7 +88,8 @@
         c.circle(p.x, p.y, p.rad, Object.assign(o, ink.keyline(p.r)));
         // dots keep an outline of the ground so overlapping ones stay apart; circles sized by a measure take a 1 px outline
         // in the context ink, so overlaps read (the data lead's ruling (e))
-        if (ez) c.circle(p.x, p.y, p.rad, { stroke: lit(p.r) ? 'surface' : 'context', width: c.t('bubble-outline'), mark: false });
+        // on Charcoal the field's fill is the context ink itself, so its outline takes the ground's color there (MB-11)
+        if (ez) c.circle(p.x, p.y, p.rad, { stroke: lit(p.r) || c.ground === 'charcoal' ? 'surface' : 'context', width: c.t('bubble-outline'), mark: false });
         else if (!lit(p.r)) c.circle(p.x, p.y, p.rad, { stroke: 'surface', width: c.t('bubble-outline'), mark: false });
         c.datum(p.x, p.y, { data: { key: p.r[ek], field: ex, value: p.r[ex] } });
       });
@@ -108,7 +109,7 @@
       // a name may lie across a large circle's edge on its halo, as a map's bubble names do, but never over a dot
       var avoid = pts.filter(function (p) { return lab.indexOf(p) < 0 && p.rad <= 12; }).map(function (p) { return { x: p.x - p.rad, y: p.y - p.rad, w: 2 * p.rad, h: 2 * p.rad }; });
       var pl = P.place_labels(c, lab.map(function (p) {
-        return { x: p.x, y: p.y, r: p.rad, words: p.ref ? P.fill(c, L.reference_label, p.r) : name(p.r), weight: lit(p.r) && !p.ref ? 700 : p.ref ? 400 : 600, key: p.r[ek] };
+        return { x: p.x, y: p.y, r: p.rad, words: p.ref ? P.fill(c, L.reference_label, p.r) : name(p.r), weight: lit(p.r) && !p.ref ? 700 : 400, key: p.r[ek] };
       }), { top: 0, bottom: bot, avoid: avoid });
       var end = ay + 4;
       if (L.x_axis) { var xb = c.text(W, ay + tick + 10, L.x_axis, { role: 'tick', weight: 600, anchor: 'end', max: W - x0 }); end = xb.bottom; }

@@ -14,7 +14,7 @@
   "reading_guide": "Each column counts the judges whose service falls in its two years. The dashed line marks the median: half the judges had served less, and half more.",
   "notes": [
     "Each of the 845 judges in active service counts once, including four who serve more than one district. A judge who takes senior status still hears cases but leaves this count, and a judge promoted to a higher court counts from the first appointment, so a promotion does not restart the years.",
-    "Years run back from November 11, 2026, so each bin’s edges fall on November 11 of an even year and never on an inauguration day."
+    "Years run back from November 11, 2026, so each bin’s edges fall on November 11 of an even year."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -65,6 +65,7 @@
     "Maker B, round 2. Data plan row 54, rule 14.58. R2-2: drawn from the derived summary fjc-article-iii-judges-years-bins, written by work/build/scripts/phase-3/maker_b_round2_derive.py from the frozen fjc-article-iii-judges (P7-025) by the data lead’s corrected ruling (g) and request B7: the judge counted once by FJC ID, 845 judges from 850 service records (four judges in shared judgeships across districts), years_as_federal_judge, two-year bins closed on the left, 0 to 44.",
     "Ruling (a): no single named mark; the columns take the subject ink and the median the (b) line, dashed in the text’s ink with its own label in regular weight. Ruling (d): Finding, Documented.",
     "labels.marker.value is the median of the 845 judges’ unrounded years (8.0246), checked by maker_b_round2_derive.py --figures (check S49): 845 judges, median 8.0 years, 6 to under 8 the tallest bin with 130, 22 bins, four judges with more than one record.",
-    "H09: the bins count back from November 11, 2026; January 20 of 2001, 2009, 2017, 2021 and 2025 sit 25.81, 17.81, 9.81, 5.81 and 1.81 years back, so no edge falls on an inauguration (ruling (g)). Read from the left and the right: the title gives the median service and names no president or party; the appointing president is not in the file."
+    "H09: the bins count back from November 11, 2026; January 20 of 2001, 2009, 2017, 2021 and 2025 sit 25.81, 17.81, 9.81, 5.81 and 1.81 years back, so no edge falls on an inauguration (ruling (g)). Read from the left and the right: the title gives the median service and names no president or party; the appointing president is not in the file.",
+    "Data lead MB-1: note 2 drops \"and never on an inauguration day\"; the inauguration check stays in notes_internal (H09) and entry 14.58."
   ]
 }

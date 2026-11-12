@@ -51,10 +51,6 @@
         var hatch = CAT[Math.min(j, 3)] === 'cat-4', end = dfn.at === undefined, ax = end ? x1 - 8 : X(at);
         var cy = (ys(g.start) + ys(g.end)) / 2 - (lines.length - 1) * lh / 2 + size * 0.35;
         if (hgt < lines.length * lh + 4) c.warn('the band ' + p + ' is too thin for its name');
-        // a patch of the band's own fill under its name, so the forced-colors check reads the ink it sits on (a path is
-        // not a mark the check reads)
-        var nw = 0; lines.forEach(function (l) { nw = Math.max(nw, c.measure(l, 'label', 600)); });
-        if (!hatch) c.rect(end ? ax - nw : ax - nw / 2, cy - size, nw, lines.length * lh, { fill: CAT[j], kind: 'label-ground' });
         c.text(ax, cy, lab, { role: 'label', weight: 600, anchor: end ? 'end' : 'middle', max: mw + 1, leading: lh,
           fill: hatch ? 'beside-cat-4' : 'on-' + CAT[j], halo: hatch });
       });

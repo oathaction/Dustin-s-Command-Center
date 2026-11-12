@@ -21,7 +21,7 @@
   "reader_question": "How much does each state collect in taxes per resident?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: Census Bureau surveys of state tax collections and population",
+  "grade_line": "Documented: the Census Bureau’s survey of state tax collections and its population estimates",
   "title": "Vermont collected $8,052 in state taxes per resident in fiscal 2025, the most of the 50 states, and Alaska $2,290, the least.",
   "measure_line": "State government tax collections per resident, fiscal 2025 (July 2024 to June 2025 in 46 states), 50 states, with residents counted on July 1, 2024.",
   "reading_guide": "Each dot is a state, placed by its taxes per resident; dots stack where states sit close together. The dashed line marks all 50 states together.",
@@ -97,6 +97,7 @@
     "Maker B, round 2. Data plan row 55, rule 14.59. Draws census-stc-state-tax-collections (P7-026) after the research lead’s fix of the data lead’s R1: the US row is “All 50 states”, 339,312,487 residents, $4,526.34; DC stays in the file outside the total, and where leaves it out (request B4).",
     "Ruling (a) and (c): Vermont and Alaska, the two ends, two marks in two roles, both in the subject ink with no red (states); the others in the light fill; all 50 states as the (b) line.",
     "Figures checked by maker_b_round2_derive.py --figures (check S50): Vermont 8,052 the most, Alaska 2,290 the least, all 50 states 4,526; 46 states with a July to June fiscal year (from the sidecar’s observation period).",
-    "Read from the left and the right: the title gives the two ends of a measured collection; note 1 says what per-resident figures leave out, as the sidecar’s qualification asks."
+    "Read from the left and the right: the title gives the two ends of a measured collection; note 1 says what per-resident figures leave out, as the sidecar’s qualification asks.",
+    "Data lead MB-2: the grade line names the population figure as an estimate."
   ]
 }

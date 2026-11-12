@@ -12,18 +12,18 @@
   "evidence": "estimate",
   "evidence_label": "Estimate",
   "grade_line": "Documented: the Census Bureau’s Small Area Health Insurance Estimates",
-  "title": "Counties in the South had the highest median uninsured rate of the four regions in 2024, 13.9 percent of people under 65, by the Census Bureau’s estimates.",
+  "title": "The South’s median county had 13.9 percent of people under 65 without health insurance in 2024, the highest of the four regions, by the Census Bureau’s estimates.",
   "measure_line": "Share of people under 65 without health insurance in each county, 2024, by Census region, 50 states and DC. Each box spans the middle half of a region’s counties; the whiskers reach the last county within one and a half times that span, and open circles mark the counties beyond it.",
   "reading_guide": "The line in each box is the median county. In the South, the middle half of counties ran from 11.0 to 17.9 percent.",
   "notes": [
     "Each county counts once, whatever its population, so a small county weighs as much as a large one. Kalawao County, Hawaii, has no estimate, so the chart leaves it out.",
-    "Method: the Census Bureau’s model combines survey answers with administrative records to estimate each county’s rate; small counties carry wide margins of error, so the chart ranks no county.",
-    "All 62 counties past a whisker sit above their region’s box, among them Gaines County, Texas, at 42.5 percent."
+    "Method: the Census Bureau’s model combines survey answers with administrative records to estimate each county’s rate; small counties carry wide margins of error, so the chart names a county only where its gap passes both margins.",
+    "All 62 counties past a whisker sit above their region’s box, among them Gaines County, Texas, at 42.5 percent, 8.5 points above the next counties, past both margins."
   ],
   "source_line": "Source: U.S. Census Bureau, Small Area Health Insurance Estimates, people under 65 without health insurance, 2024, counties in the 50 states and DC. Retrieved November 11, 2026. Model-based estimates; small counties carry wide margins of error; each region’s quartiles, whiskers and outliers computed by Oath & Action.",
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Box plots of county uninsured rates for people under 65 in 2024, one row per Census region. The median county runs from 7.2 percent in the Northeast to 13.9 percent in the South, whose middle half spans 11.0 to 17.9 percent, the widest of the four; 62 counties sit above their region’s whiskers.",
+  "alt": "Box plots of county uninsured rates for people under 65 in 2024, one row per Census region. The median county stands at 7.2 percent in the Northeast, 8.8 in the Midwest, 12.4 in the West and 13.9 in the South, whose middle half spans 11.0 to 17.9 percent, the widest of the four; 62 counties sit above their region’s whiskers.",
   "table": {
     "caption": "County uninsured rates by Census region, people under 65, 2024, percent",
     "columns": [
@@ -114,6 +114,7 @@
     "Maker B, round 2. Data plan row 56, rule 14.60. R2-2: drawn from the derived summaries census-sahie-county-uninsured-box-by-region and census-sahie-county-uninsured-outliers (maker_b_round2_derive.py, from P7-027), Tukey’s box by the data lead’s ruling (g).",
     "Ruling (a): the South in the subject ink through labels.named (a Census region counts as a set of states). Ruling (d): Estimate, the grade line and the Method note in the ruling’s words. Ruling (e): boxes light with a dark median, whiskers and outliers in the context ink; the South’s box in ink.",
     "Figures checked by maker_b_round2_derive.py --figures (check S51): medians 7.2, 8.8, 13.9 and 12.35, the South highest (the alt leaves the West’s 12.35 out, since the kit prints it 12.3: request RB-E1); South quartiles 11.0 and 17.875 (17.9); 62 outliers, all above their box; Gaines County, TX, 42.5 the highest; Kalawao County the one missing estimate.",
-    "Read from the left and the right: the title gives a region’s median as the Bureau’s model estimates it and names no state or policy; the note says boxes describe counties, not people."
+    "Read from the left and the right: the title gives a region’s median as the Bureau’s model estimates it and names no state or policy; the note says boxes describe counties, not people.",
+    "Data lead MB-3 to MB-5: the title names the South’s median county; note 2 says a county is named only past both margins, and note 3 gives Gaines County’s 42.5 (margin 2.6) 8.5 points over Presidio and Starr at 34.0 (margins 3.1 and 2.6), a combined margin of about 4.0, checked by maker_b_round2_derive.py --figures; the engineer’s rounding fix (RB-G1) prints the West’s 12.35 as 12.4, so the alt gives all four medians."
   ]
 }

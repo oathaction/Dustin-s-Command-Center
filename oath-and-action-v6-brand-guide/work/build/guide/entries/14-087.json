@@ -2,7 +2,7 @@
   "id": "14.87",
   "title": "Use a progress bar for a count toward a threshold.",
   "rule": [
-    "Draw one bar that runs to the whole, such as the 100 senators, with the count in the text’s ink from zero and the rest in the track gray. Mark the threshold with a tick in the text’s ink and its words over it, bracket the gap between the count and the threshold under the bar with its words, and name what fills the count and the rest under the bar, each party by name where the count is a vote (Rule 14.7)."
+    "Draw one bar that runs to the whole, such as the 100 senators, with the count from zero in the red point, or in the subject ink where Rule 14.6 sets ink in its place, as for a vote, and the rest in the track gray. Mark the threshold with a tick in the text’s ink and its words over it, bracket the gap between the count and the threshold under the bar with its words, and name what fills the count and the rest under the bar, each party by name where the count is a vote (Rule 14.7)."
   ],
   "use_when": "The reader asks how close a count came to the number it needed, such as the votes to end debate in the Senate.",
   "use_instead": [

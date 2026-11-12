@@ -2036,7 +2036,7 @@
    "id": "14.46",
    "title": "Use a 100 percent bar to compare how wholes of different sizes divide into the same parts.",
    "rule": [
-    "Draw each whole as one bar of the same length, split into its parts in a fixed order, with the part the question is about first from the left and in the text’s ink. Step the other parts toward the page color, hatch the last, and print the first part’s share with the whole’s count at the right of each bar. Sort the bars by that share, and draw a line across them where an overall share helps the reader place each one."
+    "Draw each whole as one bar of the same length, split into its parts in a fixed order, with the part the question is about first from the left and in the subject ink. Step the other parts toward the page color, hatch the last, and print the first part’s share with the whole’s count at the right of each bar. Sort the bars by that share, and draw a line across them where an overall share helps the reader place each one."
    ],
    "why": {
     "text": [
@@ -2080,7 +2080,7 @@
    "id": "14.47",
    "title": "Use a stacked share bar with a midline when the question is which of two parts is the larger.",
    "rule": [
-    "Split each bar into its two parts as shares of the whole, the part the question asks about from the left and the other in the track gray, with a 1 px line in the text’s ink at half. Sort the bars by the first part’s share, print it at the right of each bar, and set a national or total row first, apart from the rest. The row the title names takes the text’s ink, or the red point where Rule 14.6 allows it, and every other first part takes light gray."
+    "Split each bar into its two parts as shares of the whole, the part the question asks about from the left and the other in the track gray, with a 1 px line in the text’s ink at half. Sort the bars by the first part’s share, print it at the right of each bar, and set a national or total row first, apart from the rest. The row the title names takes the red point, or the subject ink where Rule 14.6 sets ink in its place, as for a state, and every other first part takes light gray."
    ],
    "why": {
     "text": [
@@ -2120,7 +2120,7 @@
    "id": "14.48",
    "title": "Use a waterfall to show how steps add up to a total or a gap.",
    "rule": [
-    "Read the steps from top to bottom: each one floats from the running total before it to the one after, a step that adds in diverging pair B’s green and a step that takes away in its dark blue, with every value printed beside its bar with its sign. A total runs from the zero line in the context gray and starts the count again; the result the title names takes the text’s ink, never red (Rule 14.6). A thin line joins each step to the next. Keep every line the publisher prints, or fold small lines within one side only and list each in the table."
+    "Read the steps from top to bottom: each one floats from the running total before it to the one after, a step that adds in diverging pair B’s green and a step that takes away in its dark blue, with every value printed beside its bar with its sign. A total runs from the zero line in the context gray and starts the count again; the result the title names takes the subject ink, never red (Rule 14.6). A thin line joins each step to the next. Keep every line the publisher prints, or fold small lines within one side only and list each in the table."
    ],
    "why": {
     "text": [
@@ -2284,7 +2284,7 @@
    "id": "14.52",
    "title": "Use a treemap for a budget with many parts in one year.",
    "rule": [
-    "Draw each part as a rectangle whose area is its amount, largest first, every tile in one light gray with a gap of the page color between tiles, and print each tile’s name, amount and share inside it. The part the title names takes the red point, or the text’s ink where Rule 14.6 sets ink in its place. Fold parts too small to hold their words into one last tile, list each in the table, and say what a negative line the treemap cannot draw leaves out."
+    "Draw each part as a rectangle whose area is its amount, largest first, every tile in one light gray with a gap of the page color between tiles, and print each tile’s name, amount and share inside it. The part the title names takes the red point, or the subject ink where Rule 14.6 sets ink in its place, and its words sit on a small plate of the page color. Fold parts too small to hold their words into one last tile, list each in the table, and say what a negative line the treemap cannot draw leaves out."
    ],
    "why": {
     "text": [
@@ -2324,7 +2324,7 @@
    "id": "14.53",
    "title": "Use a parliament chart for the seats in a chamber.",
    "rule": [
-    "Draw every seat as one dot on a half circle of rows, every party in the one party-mark ink, with each party’s block named with its count and set apart from the next by a narrow gap (Rule 14.7). Lay the blocks in the chamber’s usual order, draw an empty seat as an open ring, and mark the seat that makes a majority with a tick. Print the date of the count, since seats change with every vacancy."
+    "Draw every seat as one dot on a half circle of rows, every party in the one party-mark ink, with each party’s block named with its count and set apart from the next by a narrow gap (Rule 14.7). Lay Democrats from the left, as the chart for Rule 14.28 orders the parties, with independents and vacancies between them and Republicans from the right, so every chamber we draw reads the same way. Draw an empty seat as an open ring, and mark the seat that makes a majority with a tick. Print the date of the count, since seats change with every vacancy."
    ],
    "why": {
     "text": [
@@ -2406,7 +2406,7 @@
    "id": "14.55",
    "title": "Use a donut with a number in its center only when that one number is the point.",
    "rule": [
-    "Use a donut, a reference form, for one share of a whole that a reader should remember, printed large in the center with its words under it. Give the share the text’s ink and the rest of the ring light gray, keep the ring to two parts, and print the whole the share is of."
+    "Use a donut, a reference form, for one share of a whole that a reader should remember, printed large in the center with its words under it. Give the share the red point, or the subject ink where Rule 14.6 sets ink in its place, and the rest of the ring light gray, keep the ring to two parts, and print the whole the share is of."
    ],
    "why": {
     "text": [
@@ -3437,7 +3437,7 @@
    "id": "14.87",
    "title": "Use a progress bar for a count toward a threshold.",
    "rule": [
-    "Draw one bar that runs to the whole, such as the 100 senators, with the count in the text’s ink from zero and the rest in the track gray. Mark the threshold with a tick in the text’s ink and its words over it, bracket the gap between the count and the threshold under the bar with its words, and name what fills the count and the rest under the bar, each party by name where the count is a vote (Rule 14.7)."
+    "Draw one bar that runs to the whole, such as the 100 senators, with the count from zero in the red point, or in the subject ink where Rule 14.6 sets ink in its place, as for a vote, and the rest in the track gray. Mark the threshold with a tick in the text’s ink and its words over it, bracket the gap between the count and the threshold under the bar with its words, and name what fills the count and the rest under the bar, each party by name where the count is a vote (Rule 14.7)."
    ],
    "why": {
     "text": [
@@ -3561,7 +3561,7 @@
    "id": "14.90",
    "title": "Use a bullet graph to set one measure against its target and the ranges behind it.",
    "rule": [
-    "Draw the ranges as bands in the magnitude steps from zero, the measure as a narrow bar in the text’s ink from zero, and the target as a tick in the text’s ink across the bands. Name every band edge and the target with its figure once over the rows, and print the measure and its distance to the target beside each bar."
+    "Draw the ranges as bands in the magnitude steps from zero, the measure as a narrow bar in the subject ink from zero, and the target as a tick in the text’s ink across the bands. Name every band edge and the target with its figure once over the rows, and print the measure and its distance to the target beside each bar."
    ],
    "why": {
     "text": [

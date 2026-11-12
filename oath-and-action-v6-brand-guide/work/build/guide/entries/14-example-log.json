@@ -449,7 +449,7 @@
    "source": "s50.json"
   },
   {
-   "example": "Counties in the South had the highest median uninsured rate of the four regions in 2024, 13.9 percent of people under 65, by the Census Bureau’s estimates.",
+   "example": "The South’s median county had 13.9 percent of people under 65 without health insurance in 2024, the highest of the four regions, by the Census Bureau’s estimates.",
    "domain": "D09",
    "states": [],
    "rule": "14.60",
@@ -481,7 +481,7 @@
    "source": "s54.json"
   },
   {
-   "example": "Higher rents went with higher renter incomes across the states in 2025, and Florida’s 3.0 million renter households paid the largest share of income in rent, 35.5 percent.",
+   "example": "Higher rents went with higher renter incomes across the states in 2025, and in Florida, home to 3.0 million renter households, the median renter paid the largest share of income in rent, 35.5 percent.",
    "domain": "D09",
    "states": [
     "FL",
@@ -555,7 +555,7 @@
    "source": "s62.json"
   },
   {
-   "example": "Of six disputes over removals, spending and watchdogs, the Supreme Court had decided one by October 15, 2026, and acted in two others by interim order.",
+   "example": "Of six disputes over checks on power, the Supreme Court had decided one by October 15, 2026, and had acted by interim order in three others.",
    "domain": "D05",
    "states": [
     "IL"

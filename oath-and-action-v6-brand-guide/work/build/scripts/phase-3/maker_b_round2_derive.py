@@ -380,14 +380,22 @@ def figures():
     meds = {k: num(v['median']) for k, v in box.items()}
     same('S51', max(meds, key=meds.get), 'South', 'highest median')
     want('S51', t, '%.1f percent of people under 65' % meds['South'], 'South median')
-    want('S51', t, 'from 7.2 percent in the Northeast to 13.9 percent in the South', 'alt medians')
-    same('S51', ('%.1f' % meds['Northeast'], '%.1f' % meds['Midwest']), ('7.2', '8.8'), 'medians')
+    want('S51', t, '7.2 percent in the Northeast, 8.8 in the Midwest, 12.4 in the West and 13.9 in the South', 'alt medians')
+    same('S51', ('%.1f' % meds['Northeast'], '%.1f' % meds['Midwest'], '%.2f' % meds['West']), ('7.2', '8.8', '12.35'), 'medians (12.35 prints 12.4, half up)')
     want('S51', t, 'from %.1f to %.1f percent' % (num(box['South']['q1']), num(box['South']['q3']) + 1e-9), 'South middle half')
     want('S51', t, 'All %d counties past a whisker' % len(outs), 'outliers')
     same('S51', all(num(o['uninsured_pct']) > num(box[o['region']]['q3']) for o in outs), True, 'every outlier above its box')
     o1 = max(outs, key=lambda o: num(o['uninsured_pct']))
     want('S51', t, 'Gaines County, Texas, at %.1f percent' % num(o1['uninsured_pct']), 'highest county')
     same('S51', o1['county'], 'Gaines County, TX', 'highest county')
+    sah = {r['geoid']: r for r in read('census-sahie-county-uninsured')}
+    g = sah[o1['geoid']]
+    nxt = sorted([r for r in sah.values() if r['uninsured_pct'] and r['geoid'] != o1['geoid']], key=lambda r: -num(r['uninsured_pct']))
+    top2 = [r for r in nxt if num(r['uninsured_pct']) == num(nxt[0]['uninsured_pct'])]
+    same('S51', sorted(r['county'] for r in top2), ['Presidio County, TX', 'Starr County, TX'], 'the next counties')
+    gap51 = num(g['uninsured_pct']) - num(top2[0]['uninsured_pct'])
+    want('S51', t, '%.1f points above the next counties, past both margins' % gap51, 'Gaines over the next')
+    same('S51', all(gap51 > (num(g['uninsured_moe']) ** 2 + num(r['uninsured_moe']) ** 2) ** 0.5 for r in top2), True, 'past both margins')
     # S52
     sp, t = spec_words('s52')
     raw = read('census-saipe-county-child-poverty')
@@ -423,18 +431,26 @@ def figures():
     for k in ('CA', 'ND'):
         r = rent[k]
         same('S54', abs(num(r['rent_pct_of_income']) - num(U['rent_pct_of_income'])) > (num(r['rent_pct_of_income_moe']) ** 2 + num(U['rent_pct_of_income_moe']) ** 2) ** 0.5, True, k + ' past the nation')
+    c3 = share[:3]
+    same('S54', [r['code'] for r in c3], ['FL', 'CA', 'HI'], 'the three highest shares')
+    for r in c3[1:]:
+        same('S54', num(a['rent_pct_of_income']) - num(r['rent_pct_of_income']) > (num(a['rent_pct_of_income_moe']) ** 2 + num(r['rent_pct_of_income_moe']) ** 2) ** 0.5, True, 'Florida past ' + r['code'])
+    nd, wy = share[-1], share[-2]
+    same('S54', (nd['code'], wy['code']), ('ND', 'WY'), 'the two smallest shares')
+    same('S54', num(wy['rent_pct_of_income']) - num(nd['rent_pct_of_income']) < (num(wy['rent_pct_of_income_moe']) ** 2 + num(nd['rent_pct_of_income_moe']) ** 2) ** 0.5, True, 'Wyoming within North Dakota’s margin')
     for sid in ('s54', 's55'):
         sp, t = spec_words(sid)
-        want(sid.upper(), t, 'Florida, 35.5 percent' if sid == 's54' else 'largest share of income in rent, 35.5 percent', 'title')
-        want(sid.upper(), t, 'Florida’s 35.5 percent carries a margin of error of 0.5 point', 'margin')
-        want(sid.upper(), t, 'California’s 32.9 percent, the next highest, 0.3 point', 'California')
+        want(sid.upper(), t, 'Florida, 35.5 percent' if sid == 's54' else 'the median renter paid the largest share of income in rent, 35.5 percent', 'title')
+        want(sid.upper(), t, 'Florida’s 35.5 percent (margin 0.5) passes the next figures, California’s 32.9 (0.3) and Hawaii’s 32.8 (1.2), by more than their margins', 'note 2')
+        want(sid.upper(), t, 'North Dakota has the smallest figure, 23.8 percent (margin 1.2); Wyoming’s 25.5 (2.0) sits within its margin', 'North Dakota')
+        same(sid.upper(), sp['scale']['x'][1] > max(num(r['renter_median_income']) for r in st), True, 'the income scale holds every state')
     sp, t = spec_words('s54')
     lr = min(st, key=lambda r: num(r['median_gross_rent'])); hr = max(st, key=lambda r: num(r['median_gross_rent']))
     want('S54', t, 'West Virginia’s ${:,}'.format(int(lr['median_gross_rent'])), 'lowest rent')
     want('S54', t, 'California’s ${:,}'.format(int(hr['median_gross_rent'])), 'highest rent')
     same('S54', (lr['code'], hr['code']), ('WV', 'CA'), 'rent ends')
     sp, t = spec_words('s55')
-    want('S55', t, 'Florida’s %.1f million renter households' % (int(rent['FL']['renter_households']) / 1e6), 'Florida households')
+    want('S55', t, 'home to %.1f million renter households' % (int(rent['FL']['renter_households']) / 1e6), 'Florida households')
     want('S55', t, 'California’s %.1f million renter households' % (int(rent['CA']['renter_households']) / 1e6), 'California households')
     same('S55', max(st, key=lambda r: int(r['renter_households']))['code'], 'CA', 'most renter households')
     # S56
@@ -471,6 +487,10 @@ def figures():
     g = int(y25['median_income']) - int(y24['median_income']); gm = (int(y25['median_moe']) ** 2 + int(y24['median_moe']) ** 2) ** 0.5
     same('S58', g > gm, True, 'the rise past its margin')
     want('S58', t, '2024’s ${:,}'.format(int(y24['median_income'])), '2024')
+    nx = sorted(inc, key=lambda r: -int(r['median_income']))[1]
+    same('S58', nx['year'], '2019', 'the next highest year')
+    same('S58', int(y25['median_income']) - int(nx['median_income']) > (int(y25['median_moe']) ** 2 + int(nx['median_moe']) ** 2) ** 0.5, True, 'the lead over 2019 past its margin')
+    want('S58', t, 'its lead over 2019’s ${:,}, the next highest year'.format(int(nx['median_income'])), 'note 1')
     y13 = sorted(int(r['median_income']) for r in inc if r['year'] == '2013'); y17 = sorted(int(r['median_income']) for r in inc if r['year'] == '2017')
     want('S58', t, '${:,} apart'.format(y13[1] - y13[0]), '2013 gap')
     want('S58', t, '${:,} apart'.format(y17[1] - y17[0]), '2017 gap')

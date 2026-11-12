@@ -55,7 +55,7 @@
         });
         if (at.indexOf(String(r[ex])) >= 0) {
           var tw = String(L.total_words || '{v}').split('{v}').join(K.fmt(s.total, f.total || 'integer'));
-          var hw = c.measure(tw, 'label', 700) / 2, tx = Math.max(hw, Math.min(W - hw, cx)), ty = ys(s.total);
+          var hw = c.measure(tw, 'label', 700, true) / 2, tx = Math.max(hw, Math.min(W - hw, cx)), ty = ys(s.total);
           // over every column its words reach across, so a taller neighbor never runs into them
           st.forEach(function (o2, k) { var ox = x0 + step * k + step / 2; if (Math.abs(ox - tx) < hw + bw / 2 + 2) ty = Math.min(ty, ys(o2.total)); });
           c.text(tx, ty - 7, tw, { role: 'label', weight: 700, anchor: 'middle', tnum: true });

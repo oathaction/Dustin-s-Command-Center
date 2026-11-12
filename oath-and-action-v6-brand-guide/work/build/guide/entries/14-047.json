@@ -2,7 +2,7 @@
   "id": "14.47",
   "title": "Use a stacked share bar with a midline when the question is which of two parts is the larger.",
   "rule": [
-    "Split each bar into its two parts as shares of the whole, the part the question asks about from the left and the other in the track gray, with a 1 px line in the text’s ink at half. Sort the bars by the first part’s share, print it at the right of each bar, and set a national or total row first, apart from the rest. The row the title names takes the text’s ink, or the red point where Rule 14.6 allows it, and every other first part takes light gray."
+    "Split each bar into its two parts as shares of the whole, the part the question asks about from the left and the other in the track gray, with a 1 px line in the text’s ink at half. Sort the bars by the first part’s share, print it at the right of each bar, and set a national or total row first, apart from the rest. The row the title names takes the red point, or the subject ink where Rule 14.6 sets ink in its place, as for a state, and every other first part takes light gray."
   ],
   "use_when": "The reader asks where one of two groups is the majority, such as the states where renters outnumber owners, and the answer turns on which side of half each bar ends.",
   "use_instead": [

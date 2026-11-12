@@ -1,5 +1,5 @@
 /* Confidence band on a line (coverage plan 3.7, core; S58). A series of survey estimates as a 2 px line in the subject
- * ink over a band across each one's interval (K.parts.band, in the band ink, the data lead's ruling (e)), the line thin
+ * ink over a band across each one's interval (K.parts.band, in Stone magnitude step 1, the data lead's RB-D2), the line thin
  * enough that the band shows. Where the publisher changed its method, the line and the band
  * both break and the year draws both estimates, each a small dot (Rule 14.11): a row whose break value is in
  * labels.break_end ends a run, and one in labels.break_start begins the next; at one x an ending row sorts first and a
@@ -57,7 +57,7 @@
           pts.push({ x: xs(K.time(r[ex])), y0: ys(t.lo), y1: ys(t.hi), key: r[ex] + (bv(r) ? '|' + bv(r) : ''), low: t.lo, high: t.hi, break: i === 0 });
         });
       });
-      P.band(c, pts, { fill: 'band', field_low: iv.fields.low || 'low', field_high: iv.fields.high || 'high' });
+      P.band(c, pts, { fill: 'mag-1', field_low: iv.fields.low || 'low', field_high: iv.fields.high || 'high' });
       // the line, one path a run
       var path = function (run) { return run.map(function (r, i) { return (i ? 'L' : 'M') + K.round(xs(K.time(r[ex]))) + ',' + K.round(ys(r[ey])); }).join(''); };
       // no keyline of the ground under the line: it would read as the band's edge

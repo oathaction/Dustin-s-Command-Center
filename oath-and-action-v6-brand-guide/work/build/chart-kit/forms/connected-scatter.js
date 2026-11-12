@@ -1,9 +1,10 @@
 /* Connected scatter (coverage plan 3.6, extended; S56). Two measures moving together over time: one dot a period at its
  * two values, joined in time order by a thin path in the subject ink, so the path's shape is the answer (the data lead's
  * rulings (a) and (e)). A period with either value missing breaks the path, which never bridges it, and the gap is named
- * by labels.gap at the middle of the break. Periods the spec names carry their words, placed by the kit's shared part
- * (K.parts.place_labels) clear of every dot, with a leader where they sit further out; a name with no clear place is
- * listed under the chart. The first and last periods take a larger dot, so the path's direction reads without arrows.
+ * by labels.gap at the middle of the break where a clear place exists (the chart note names it in any case). Periods the
+ * spec names carry their words beside their dot, or further out on a hairline leader that crosses no stretch of the path
+ * and passes no other dot (the data lead's MB-12); the latest period always sits beside its dot, on a halo over the path
+ * if it must; a name with no place is listed under the chart. The first and last periods take a larger dot, so the path's direction reads without arrows.
  * Gridlines both ways, the y values in a left gutter and the x values along the bottom.
  * encode: time (month or year: each period's first month for a quarter), x (number), y (number).
  * labels: named ({time: words}: periods named on the drawing; the latest claims room first, then the gap, then the rest
@@ -83,24 +84,64 @@
       // the latest period and the gap claim room first, then the named periods in the spec's order
       items.sort(function (a, b) { return (a.last ? 0 : a.gap ? 1 : 2) - (b.last ? 0 : b.gap ? 1 : 2); });
       // every dot and the path itself, sampled every few pixels, are boxes no name may cover, so names sit in open space
-      var avoid = have.map(function (r) { var p = pt(r); return { x: p[0] - rs, y: p[1] - rs, w: 2 * rs, h: 2 * rs }; });
+      var dotbox = have.map(function (r) { var p = pt(r); return { x: p[0] - rs, y: p[1] - rs, w: 2 * rs, h: 2 * rs }; });
+      var pathbox = [], segs = [];
       runs.forEach(function (run) {
         for (var i = 1; i < run.length; i++) {
           var a = pt(run[i - 1]), b = pt(run[i]), n = Math.ceil(Math.sqrt(Math.pow(b[0] - a[0], 2) + Math.pow(b[1] - a[1], 2)) / 5);
-          for (var j = 1; j < n; j++) avoid.push({ x: a[0] + (b[0] - a[0]) * j / n - 1, y: a[1] + (b[1] - a[1]) * j / n - 1, w: 2, h: 2 });
+          segs.push([a, b]);
+          for (var j = 1; j < n; j++) pathbox.push({ x: a[0] + (b[0] - a[0]) * j / n - 1, y: a[1] + (b[1] - a[1]) * j / n - 1, w: 2, h: 2 });
         }
       });
-      // each name in turn, reaching further out until a place is clear (the part tries one reach a call)
-      var pl = { placed: [], unplaced: [] };
-      items.forEach(function (it) {
-        var got = null;
-        [16, 30, 48, 70, 96, 130, 170, 220].some(function (reach) {
-          var res = P.place_labels(c, [it], { top: top, bottom: bot, avoid: avoid, reach: reach });
-          if (res.placed.length) { got = res.placed[0]; return true; }
-          return false;
+      var avoid = dotbox.concat(pathbox);
+      // a leader may cross no stretch of the path and pass no other dot (the data lead's MB-12)
+      var cross = function (p1, p2, p3, p4) {
+        var d = function (a, b, q) { return (b[0] - a[0]) * (q[1] - a[1]) - (b[1] - a[1]) * (q[0] - a[0]); };
+        return d(p1, p2, p3) * d(p1, p2, p4) < 0 && d(p3, p4, p1) * d(p3, p4, p2) < 0;
+      };
+      var leader_clear = function (it, l0, l1) {
+        if (segs.some(function (sg) { return cross(l0, l1, sg[0], sg[1]); })) return false;
+        return have.every(function (r) {
+          var q = pt(r); if (Math.abs(q[0] - it.x) < 0.5 && Math.abs(q[1] - it.y) < 0.5) return true;
+          var vx = l1[0] - l0[0], vy = l1[1] - l0[1], t = Math.max(0, Math.min(1, ((q[0] - l0[0]) * vx + (q[1] - l0[1]) * vy) / (vx * vx + vy * vy || 1)));
+          return Math.pow(l0[0] + t * vx - q[0], 2) + Math.pow(l0[1] + t * vy - q[1], 2) > Math.pow(rs + 2, 2);
         });
-        if (got) pl.placed.push(got); else pl.unplaced.push(it);
+      };
+      var size = c.size('label'), A = 0.864, B = 0.136;
+      var places = [[1, 0], [-1, 0], [0, -1], [0, 1], [0.75, -0.75], [0.75, 0.75], [-0.75, -0.75], [-0.75, 0.75]];
+      var hit = function (b, boxes) { return boxes.some(function (t) { return b.x < t.x + t.w + 2 && t.x < b.x + b.w + 2 && b.y < t.y + t.h + 2 && t.y < b.y + b.h + 2; }); };
+      // a name beside its dot, or further out on a hairline leader that keeps clear of the path and the other dots
+      var place = function (it, blocks, reaches) {
+        var w = c.measure(it.words, 'label', it.weight);
+        for (var ri = 0; ri < reaches.length; ri++) {
+          var dd = it.r + 4 + reaches[ri];
+          for (var k = 0; k < places.length; k++) {
+            var ax = places[k][0], ay2 = places[k][1], anchor = ax > 0 ? 'start' : ax < 0 ? 'end' : 'middle';
+            var x = it.x + ax * dd, yb = ay2 < 0 ? it.y + ay2 * dd - B * size : ay2 > 0 ? it.y + ay2 * dd + A * size : it.y + 0.35 * size;
+            var bx = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x, box = { x: bx, y: yb - A * size, w: w, h: size };
+            if (box.x < 0 || box.x + box.w > W || box.y < top || box.y + box.h > bot) continue;
+            if (hit(box, c.texts) || hit(box, blocks)) continue;
+            var lx = Math.max(box.x, Math.min(it.x, box.x + box.w)), ly = Math.max(box.y, Math.min(it.y, box.y + box.h));
+            var vx = lx - it.x, vy = ly - it.y, len = Math.sqrt(vx * vx + vy * vy) || 1;
+            var l0 = [it.x + vx / len * (it.r + 1), it.y + vy / len * (it.r + 1)], l1 = [lx - vx / len * 2, ly - vy / len * 2];
+            if (reaches[ri] > 0 && !leader_clear(it, l0, l1)) continue;
+            c.text(x, yb, String(it.words), { role: 'label', weight: it.weight, anchor: anchor, halo: true });
+            if (reaches[ri] > 0) c.line(l0[0], l0[1], l1[0], l1[1], { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+            return true;
+          }
+        }
+        return false;
+      };
+      var unplaced = [];
+      items.forEach(function (it) {
+        var mine = function (b) { return !(Math.abs(b.x + b.w / 2 - it.x) < 0.5 && Math.abs(b.y + b.h / 2 - it.y) < 0.5); };
+        // the latest period sits beside its dot, over the path on a halo if it must; the gap takes a clear place or
+        // none, since the chart note names it; the others reach out on leaders that cross no path
+        if (it.last) { if (!place(it, dotbox.filter(mine), [0])) unplaced.push(it); return; }
+        if (it.gap) { place(it, avoid, [0, 12, 26]); return; }
+        if (!place(it, avoid.filter(mine), [0, 12, 26, 44, 66, 92, 124, 160])) unplaced.push(it);
       });
+      var pl = { unplaced: unplaced };
       var end = ay + 4;
       if (L.x_axis) { var xb = c.text(W, ay + tick + 10, L.x_axis, { role: 'tick', weight: 600, anchor: 'end', max: W - x0 }); end = xb.bottom; }
       if (pl.unplaced.length) {
