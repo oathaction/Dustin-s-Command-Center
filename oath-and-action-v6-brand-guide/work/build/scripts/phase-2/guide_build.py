@@ -1661,7 +1661,10 @@ def chapter_groups(data, rules, num, where):
     if found and str(found[0]["before_rule"]) != ids[0]:
         R.warn(where, f"the first group opens before rule {found[0]['before_rule']}, so the rules ahead of it sit outside any group")
     nums = [g.get("number") for g in found]
-    if nums != list(range(1, len(found) + 1)):
+    # Phase 3, round 1: a chapter built over several rounds (planned_rules) keeps its plan's group numbers, so they need
+    # only rise in rule order until every group is built
+    partial = bool((data or {}).get("planned_rules"))
+    if (nums != list(range(1, len(found) + 1)) and not partial) or (partial and (nums != sorted(nums) or len(set(nums)) != len(nums))):
         R.warn(where, f"group numbers run {nums}; write 1, 2, 3 in rule order")
     member, cur = {}, None
     starts = {str(g["before_rule"]): g for g in found}

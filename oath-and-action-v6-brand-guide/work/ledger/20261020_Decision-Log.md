@@ -4041,3 +4041,20 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-332 | S36's scale ends 8 px short of the artboard's edge | Data lead DL-A4; the longest bar touched the frame |
 | D3-333 | S38's lookup holds the 17 issue records of one domain, news, records and public information, in place of all 194 | As live text the 194 rows weigh about 25 KB at the least and 51 KB with ID, domain and month, over three times the extended average (R1-C5, R6); the domain has the most room in chapter 14's count and all four grades; note 2 gives the whole count |
 | D3-334 | S38's drawing is the still image a post carries: the register with one filter on (well supported), under the count line the live table would show; the live search, filter and count belong to the figure's table | DR-49, still image first; the kit's forms draw SVG only, so live controls need the kit (request A9) |
+
+### Engineer, board 1 apply
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-335 | Every token description that called its token proposed drops the sentence, the line code, ghost and label inks included, not only the two colors and the ink order | DR-236 says the tokens drop "proposed", and the brief names every description that carries it |
+| D3-336 | The gate3.2 change note names the two new colors by their recipe, Prussian mixed 56% and 29% toward Newsprint, not by hex value | Chapter 26 prints the newest note in a plate, and the guide's build fails a literal color in a specimen (the first draft's hex values did) |
+| D3-337 | Chapter 26 is regenerated for gate3.2 by its own script, `stage_c_ch26_build.py` (the engineer's): 26-tokens.json, manifest-tokens.json and s-26-8-correct.html | Since gate3.1, Rule 26.8 had said the files carry 6.0.0-gate2.9 and chapter 26 had counted 504 tokens; the change note the brief asks for is reader text only once chapter 26 prints it (D3-119) |
+| D3-338 | The kit inflates each island with its own synchronous inflater, not the browser's DecompressionStream | DecompressionStream is asynchronous, so print and every check that calls draw_all could outrun it, and a browser without it would lose the drawing; the inflater costs 2,780 bytes once |
+| D3-339 | Raw deflate at level 9 as base64 in a text/plain data block, the attribute `data-oa-chart-data="deflate"` naming the encoding | The browser never runs a text/plain block, base64 holds no "<", and a JSON island still reads beside it |
+| D3-340 | The kit's own build pages carry the compressed island too | One carrier everywhere, so every kit build proves page-to-Node parity and export parity through the path the guide ships |
+| D3-341 | A figure whose island cannot be read returns to its scripts-off state | Its reader keeps the description, the needs-scripts line and the table, losing only the drawing |
+| D3-342 | Chapter 14's share per plate is its room under the stop, after the renderer grown to 97 forms and the parts that are not plates, divided among the core and extended plates still to come | The pilot's own model of chapter 14, so the share and the projection agree; the CD's 15 KB is close to what it leaves for the figure |
+| D3-343 | A chapter-wide rule's plates in chapter 14 count with the rules, not as plates | DR-240 gives the rules their own plates, which the proposal's 0.30 MB for rules and plates already covers |
+| D3-344 | The pilot check's scripts-off condition also requires the description as words, the needs-scripts line and the table open | The brief's scripts-off proof names all three |
+| D3-345 | The chart kit's own part budget rises from 0.22 to 0.55 MB | DR-238's stop was measured with the renderer grown to 97 forms (about 0.50 MB) beside the map geometry (45 KB), all inside chapter 14's hard stop; round 1's forms took the kit to 0.25 MB at 35 forms, as that projection expects |
+| D3-346 | Chapters 14 and 15, while Phase 3 builds them, count in the page's projection at no less than their allocations | A chapter built in part would otherwise hand the rest of its allocation to the page's room (385,719 bytes for chapter 15 on November 12) |

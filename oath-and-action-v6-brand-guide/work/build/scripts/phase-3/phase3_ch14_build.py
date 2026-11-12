@@ -79,6 +79,12 @@ def outputs(rounds):
             faults.append(f"Rule {rid}: {ef.name} says id {e.get('id')!r}; the plan fixes {rid}")
         rule = {k: v for k, v in e.items() if k not in ENTRY_DROP}
         rule["id"] = rid
+        # R2 gives "related" as the rule numbers an entry cites; the guide prints related chapters, so the rules' chapters
+        # other than 14 go there and the rule numbers stay beside them as "related_rules"
+        rel = [str(x) for x in (e.get("related") or [])]
+        if any("." in x for x in rel):
+            rule["related_rules"] = [x for x in rel if "." in x]
+            rule["related"] = sorted({x.split(".")[0].zfill(2) for x in rel if x.split(".")[0].zfill(2) != "14"} | {x for x in rel if "." not in x})
         for ex in e.get("examples") or []:
             log.append(dict(ex, rule=rid, source=ef.name))
         if p["kind"] == "rule":
