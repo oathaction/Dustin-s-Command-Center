@@ -64,9 +64,14 @@ November 12, 2026. The editor's 55 changes to maker B (`20261112_Round-1-Editor-
 
 Rebuilt: S02, S05, S09, S13, S14, S25 to S34, every width and both grounds, PASS, and `dataviz_check.js --kit` on each build page, PASS; `maker_b_figure_checks.py`, now two checks (S13's peak, S05's brackets and changes), 0 faults; `phase3_ch14_build.py`, 0 faults; `guide_build.py --strict`, exit 0, 0 warnings, 10,012,578 bytes. S05's phone drawing sets "25.8 points" close against the bracket's cap; the guard passes it.
 
+## Last fix
+
+- D3-xxx | S32's table prints "date computed by Oath & Action from the law’s text" where the data file's `date_basis` says "computed by the studio" (three rows), through the column's `words` | The guide check fails "the studio" in reader text; the data file is the research lead's, so R-B13 now also asks it to reword the three cells
+- Tested: `oa-chart.mjs build s32` PASS at every width on both grounds; `dataviz_check.js --kit` PASS; the build page's visible text holds "computed by Oath & Action" six times and "studio" nowhere; `phase3_ch14_build.py` 0 faults; `guide_build.py --strict` exit 0, 0 warnings, 10,012,898 bytes; chapter 14's rule 14.39 section of that page holds no "computed by the studio" outside the compressed island.
+
 ## Requests
 
-- R-B13, to the research lead (through the main session): curl the straight apostrophes in two `what_takes_effect` cells of `govinfo-pl-119-75-effective-dates.csv` ("plans'") and the straight double quotes in its sidecar's `printed_source_line` ("months after enactment"); S32 then drops its `words` maps
+- R-B13, to the research lead (through the main session): curl the straight apostrophes in two `what_takes_effect` cells of `govinfo-pl-119-75-effective-dates.csv` ("plans'") and the straight double quotes in its sidecar's `printed_source_line` ("months after enactment"), and reword the three `date_basis` cells that say "computed by the studio"; S32 then drops its `words` maps
 
 - R-B12, to the engineer (chapter 14's generator): the avoid entries' sketches (14.45 here, maker A's 14.24) print under the plate head "Correct application", which tells a reader the misleading form is the right one. An avoid sketch needs its own head, such as the failure plates' "Do not publish" treatment or a plain "Sketch of the form to avoid"; the reference sketches (14.43, 14.44) may keep a neutral head
 - R-B11, to the engineer: `extra_island` carries every column of a spec's second dataset even when the form never reads `c.extra` (S05's gap-margin file, about 400 bytes compressed); carry it only for forms that read it. S05's table, 25,500 of its 30,509 bytes, could shrink by the pivot its notes describe once `checks.js` accepts a list for `pivot.row` (E14); that would change the table's layout, so it waits on the main session
