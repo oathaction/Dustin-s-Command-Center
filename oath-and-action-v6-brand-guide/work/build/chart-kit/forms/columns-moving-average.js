@@ -76,6 +76,9 @@
       var last = rows[n - 1];
       if (c.labels.latest) {
         var lines = [].concat(c.labels.latest).map(function (t) { return P.fill(c, t, last); });
+        // in a narrow column the second line wraps, so it stays over the latest months and clear of the tall early columns
+        // (D3-904's sweep: 256 to 288 px; placement only)
+        if (W < 300) lines = [lines[0]].concat([].concat.apply([], lines.slice(1).map(function (l) { return c.wrap(l, 'tick', Math.round(W * 0.55), 400); })));
         var lx = xc(n - 1), ly = Math.min(ys(last[ey]), ys(0)) - 8;
         var lt = top - 4 + c.size('label');
         var hi_y = Math.min(ly - 12 - (lines.length - 1) * 19, lt);

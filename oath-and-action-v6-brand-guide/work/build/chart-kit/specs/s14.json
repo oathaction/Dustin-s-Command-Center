@@ -90,7 +90,7 @@
       "text": "Three-month average",
       "target": "average",
       "place": "above",
-      "dy": -40,
+      "dy": -46,
       "phone": {
         "hide": true
       }
