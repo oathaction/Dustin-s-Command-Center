@@ -61,17 +61,15 @@
       var fy = cy + rad + 8 + size, n0 = groups[0], n1 = groups[groups.length - 1];
       c.text(cx - Ro, fy, words(n0), { role: 'label', weight: 700 });
       if (groups.length > 1) c.text(cx + Ro, fy, words(n1), { role: 'label', weight: 700, anchor: 'end' });
-      // the blocks between, named in the hollow under their seats, each with a hairline up to its seats
-      var lyy = cy - rad - 10 - Math.round(size * 0.3), side = 0;
-      mids.forEach(function (g, k) {
-        var ss = seats.filter(function (s) { return s.g === g; }), mx = ss.reduce(function (t, s) { return t + s.p.x; }, 0) / ss.length;
-        var my = Math.max.apply(null, ss.map(function (s) { return s.p.y; }));
-        var w = c.measure(words(g), 'label', 600), anchor = mids.length === 1 ? 'middle' : k < mids.length / 2 ? 'end' : 'start';
-        var tx = anchor === 'middle' ? mx : anchor === 'end' ? mx + 4 : mx - 4;
-        var tb = c.text(tx, lyy + size, words(g), { role: 'label', weight: 600, anchor: anchor });
-        c.line(mx, my + rad + 2, mx, tb.y - 2, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
-        void w; void side;
-      });
+      // the blocks between, named together in the hollow, their words resting on the feet's line, with one hairline up to
+      // their seats in the innermost row
+      if (mids.length) {
+        var ms = seats.filter(function (s) { return mids.indexOf(s.g) >= 0; }), mx = ms.reduce(function (t, s) { return t + s.p.x; }, 0) / ms.length;
+        var my = Math.max.apply(null, ms.map(function (s) { return s.p.y; })), mw2 = 2 * (Ri - rad) - 8, lh2 = Math.round(size * 1.25);
+        var mtxt = mids.map(words).join(', '), nl = c.wrap(mtxt, 'label', mw2, 600).length;
+        var tb = c.text(cx, cy + rad - (nl - 1) * lh2, mtxt, { role: 'label', weight: 600, anchor: 'middle', max: mw2 + 1, leading: lh2 });
+        c.line(mx, my + rad + 3, mx, tb.y - 3, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+      }
       // the majority tick in the text's ink, over the outer row's gap before the last block
       if (L.majority) {
         var ga = gapa.filter(function (gp) { return gp.ri === Rr - 1; })[0], am = ga ? ga.a : Math.PI / 2;
