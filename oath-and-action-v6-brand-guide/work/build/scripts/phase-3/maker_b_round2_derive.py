@@ -410,7 +410,7 @@ def figures():
     pep = read('census-pep-population-by-age-sex')
     band = sum(int(r['population_july_2025']) for r in pep if r['sex'] in ('male', 'female') and 55 <= int(r['age']) <= 64)
     want('S53', t, '%.1f million people aged 55 to 64' % (band / 1e6), 'band')
-    same('S53', sp['labels']['band_words'], 'Red bars: ages 55 to %d, %.1f million' % (64, band / 1e6), 'band words')
+    same('S53', sp['labels']['band_words'].replace('\u00a0', ' '), 'Red bars: ages 55 to %d, %.1f million' % (64, band / 1e6), 'band words')
     # S54 and S55
     rent = {r['code']: r for r in read('census-acs-rent-and-income-by-state')}
     st = [r for k, r in rent.items() if k != 'US']

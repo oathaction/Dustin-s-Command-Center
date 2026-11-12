@@ -605,6 +605,7 @@ CSS.update({
 
 
 CSS["nt"] = CSS["nt"] + ".nt+.nt{margin-top:4px}"
+CSS["hed"] = CSS["hed"] + ".p>.hed+.evr{margin-top:12px}"     # a reform's chip and title at the head of its plate (round 2)
 
 
 def plate_css(files):
@@ -1757,13 +1758,13 @@ def rule_15_11(book):
     b, h = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=tg)
     svg = svg_wrap(b, h)
     items = kw(target_items(r, set(codes) | set(lp["links"])))
-    words = (hed("Reform", "R-03", r["title"]) + acts_note("R-03", r)
+    words = (acts_note("R-03", r)
              + f'<p class="k">Its targets, from the atlas</p>{items}'
              + f'<p class="k">Its band</p>{band_p(r)}'
              + src("reform R-03, loop R4a, connections L42, L55 and L56, and the bands of change"))
     under = (f'<p class="nt">{chip("Variable", "C4")} sits in the same cluster as {chip("Variable", "C1", ",")} '
              f'{e(cname.lower())}, and stays in ink.</p><p class="k">Its loops</p>{loops_p(r, "R4a")}')
-    body = (label_for(lp["links"], "the grade of the loop’s least certain step")
+    body = (hed("Reform", "R-03", r["title"]) + label_for(lp["links"], "the grade of the loop’s least certain step")
             + beside(hed("Loop", "R4a", lp["title"]) + fig(svg) + under, words))
     book.add("s-15-11-correct", body, rule="15.11", readable=True, wide=True,
              alt=(f"Reform R-03 from our systems atlas, “{r['title']}”, on Loop R4a, “{lp['title']}”. Three pills: "
@@ -1888,11 +1889,12 @@ def rule_15_12(book):
     blocks = (grade_block(r["problem_evidence"]["grade"], "evidence of the problem",
                           f"The atlas: “{e(pt[0])}”")
               + grade_block(r["remedy_evidence"]["grade"], "evidence for the remedy", f"The atlas: “{e(rt_)}”"))
-    words = (hed("Reform", "R-32", r["title"]) + acts_note("R-32", r)
+    words = (acts_note("R-32", r)
              + f'<p class="k">Two grades, apart</p>{blocks}'
              + src("reform R-32, its problem and remedy evidence, and connections LT03 and L26"))
     need(link("LT03")["evidence"] == link("L26")["evidence"], "the chain's two connections no longer share a grade")
-    body = (diagram_label("well-supported", f"{GRADE['well-supported'][1]}, the grade of both connections drawn")
+    body = (hed("Reform", "R-32", r["title"])
+            + diagram_label("well-supported", f"{GRADE['well-supported'][1]}, the grade of both connections drawn")
             + beside(fig(svg) + f'<p class="nt">{gl("LT03")}</p><p class="nt">{gl("L26")}</p>', words))
     book.add("s-15-12-correct", body, rule="15.12", readable=True, wide=True,
              alt=(f"Reform R-32 from our systems atlas, “{r['title']}”, on a chain of three pills drawn downward: Concentration "
@@ -2278,7 +2280,7 @@ def rule_15_16(book):
     b, h = four_loop(codes, lp["links"], inside=("R10", "reinforcing"), targets=tg)
     svg = svg_wrap(b, h)
     pe, re_ = r["problem_evidence"]["grade"], r["remedy_evidence"]["grade"]
-    words = (hed("Reform", "R-01", r["title"]) + acts_note("R-01", r)
+    words = (acts_note("R-01", r)
              + f'<p class="k">Its targets</p>{kw(target_items(r, set(codes) | set(lp["links"])))}'
              + f'<p class="k">Its two grades, apart (Rule 15.12)</p>'
              + grade_block(pe, "evidence of the problem") + grade_block(re_, "evidence for the remedy"))
@@ -2286,7 +2288,7 @@ def rule_15_16(book):
           f'<p class="nt">The atlas: “{e(q_note)}” Its confidence in these sizes: “{e(r["effects_confidence"])}”.</p></div>'
           f'<div><p class="k">Routes, with the date each was checked</p>{route_rows(r)}'
           f'<p class="nt">Feasibility is the atlas’s judgment for 2026 to 2030.</p></div>')
-    body = (label_for(lp["links"], "the grade of the loop’s least certain step")
+    body = (hed("Reform", "R-01", r["title"]) + label_for(lp["links"], "the grade of the loop’s least certain step")
             + beside(hed("Loop", "R10", lp["title"]) + fig(svg) + f'<p class="k">Its loops</p>{loops_p(r, "R10")}', words)
             + f'<div class="two">{fx}</div>'
             + src("reform R-01, its targets, effects and routes, and loop R10 with its connections"))

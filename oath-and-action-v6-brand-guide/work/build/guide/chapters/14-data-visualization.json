@@ -2815,7 +2815,7 @@
    "tokens": [],
    "related": [],
    "builders": "No kit form: draw hexbins with the sequential palette and a stated tile size, until a story needs its own form.",
-   "sketch_alt": "A field of hexagons shaded from light to dark by how many points fall in each, densest along a rising diagonal, with a three-step key.",
+   "sketch_alt": "A field of hexagons shaded from light to dark by how many points fall in each, densest along a rising diagonal, with a four-step key.",
    "related_rules": [
     "14.5",
     "14.67"
@@ -2834,7 +2834,7 @@
    ],
    "correct": {
     "specimen": "s-14-65-sketch",
-    "caption": "A field of hexagons shaded from light to dark by how many points fall in each, densest along a rising diagonal, with a three-step key.",
+    "caption": "A field of hexagons shaded from light to dark by how many points fall in each, densest along a rising diagonal, with a four-step key.",
     "kind": "sketch",
     "label": "Hexbin, a sketch"
    }

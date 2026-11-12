@@ -619,7 +619,7 @@
   "rule": "14.65",
   "width_px": 320,
   "illustrative": true,
-  "alt": "A field of hexagons shaded from light to dark by how many points fall in each, densest along a rising diagonal, with a three-step key.",
+  "alt": "A field of hexagons shaded from light to dark by how many points fall in each, densest along a rising diagonal, with a four-step key.",
   "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
   "fit_switch": false
  },
