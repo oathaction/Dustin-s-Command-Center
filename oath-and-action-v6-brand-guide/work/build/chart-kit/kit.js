@@ -450,6 +450,7 @@
   Ctx.prototype.text = function (x, y, words, o) {
     // y is the baseline. o: role (tick, label, note, big, eyebrow), weight, anchor, fill, halo, tnum, max (wrap width)
     o = o || {};
+    if (this.spec.typography) words = K.typeset(this.spec, words);   // D3-519
     var role = o.role || 'label', size = o.size || this.size(role), weight = o.weight || 400, anchor = o.anchor || 'start';
     var face = o.face || (role === 'big' ? 'display' : 'reading');
     var lines = o.max ? K.wrap(words, size, o.max, weight, face) : [String(words)];
@@ -746,7 +747,25 @@
   function visible_text(h) {
     return String(h).replace(/<[^>]*>/g, '').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
   }
-  K.cell_text = function (col, r) {
+  // D3-519 (round 1 fix pass): a spec's "typography" sets the guide's apostrophes and quotation marks, and any exact
+  // replacements it lists, in every word the figure prints from the data (the drawing, text cells of the table); the data
+  // itself, and so the CSV export, keeps the words as stored. Each replacement must leave nothing it would replace again,
+  // so the page, which reads its rows back from the printed table, draws what Node draws.
+  // {"typography": {"curl_quotes": true, "replace": [["Act,2026", "Act, 2026"]]}}
+  function curl(t) {
+    t = t.replace(/(^|[\s(\[{\u2013\u2014-])'/g, '$1\u2018').replace(/'/g, '\u2019');
+    return t.replace(/(^|[\s(\[{\u2013\u2014-])"/g, '$1\u201c').replace(/"/g, '\u201d');
+  }
+  K.typeset = function (spec, words) {
+    var ty = spec && spec.typography;
+    if (!ty || words === null || words === undefined) return words;
+    var t = String(words);
+    (ty.replace || []).forEach(function (pr) { if (pr && pr[0]) t = t.split(String(pr[0])).join(String(pr[1])); });
+    return ty.curl_quotes ? curl(t) : t;
+  };
+  function text_col(col) { return !col.format || col.format === 'text'; }
+  K.cell_text = function (col, r, spec) {
+    if (spec && spec.typography && text_col(col)) return K.typeset(spec, K.cell_text(col, r));
     var v = r[col.field];
     // a column's "empty" word prints where a cell has no value, so a reader can tell none from missing (access S4)
     if ((v === null || v === undefined || v === '') && col.empty) return col.empty;
@@ -786,7 +805,7 @@
       head = '<tr>' + cols.map(function (col) { return '<th scope="col"' + (num_col(col) ? ' class="oac-num"' : '') + '>' + K.chips(col.label, ids) + '</th>'; }).join('') + '</tr>';
       body = t.rows.map(function (r) {
         return '<tr data-oa-row="1">' + cols.map(function (col) {
-          var txt = K.chips(K.cell_text(col, r), ids);
+          var txt = K.chips(K.cell_text(col, r, spec), ids);
           return col.row_header ? '<th scope="row">' + txt + '</th>' : '<td' + (num_col(col) ? ' class="oac-num"' : '') + '>' + txt + '</td>';
         }).join('') + '</tr>';
       }).join('');
@@ -836,7 +855,9 @@
     var dv = function (raw, html, col) {
       if (carried[col.field]) return '';
       var back = K.unformat(visible_text(html), col);
-      return same_value(back, raw, types[col.field] && types[col.field].type) ? '' : ' data-v="' + esc(raw === null || raw === undefined ? '' : raw) + '"';
+      // a text cell set by the spec's typography reads back as the printed words, which draw the same (D3-519)
+      var want = spec.typography && text_col(col) && raw !== null && raw !== undefined ? K.typeset(spec, raw) : raw;
+      return same_value(back, want, types[col.field] && types[col.field].type) ? '' : ' data-v="' + esc(raw === null || raw === undefined ? '' : raw) + '"';
     };
     if (t.pivot) {
       var pv = tb.pivot, rc = (tb.columns || [])[0] || { label: pv.row, format: 'text' }, rows_by = [].concat(pv.row);
@@ -871,7 +892,7 @@
       body = t.rows.map(function (r) {
         var find = extra_find.map(function (f) { return r[f] == null ? '' : String(r[f]); }).join(' ').replace(/\s+/g, ' ').trim();
         return '<tr' + (find ? ' data-oa-find="' + esc(find) + '"' : '') + '>' + cols.map(function (col) {
-          var h = K.chips(K.cell_text(col, r), ids), tag = col.row_header ? 'th' : 'td';
+          var h = K.chips(K.cell_text(col, r, spec), ids), tag = col.row_header ? 'th' : 'td';
           return '<' + tag + (col.row_header ? ' scope="row"' : '') + (num_col(col) ? '' : ' class="t"') + dv(r[col.field], h, col) + '>' + h + '</' + tag + '>';
         }).join('') + '</tr>';
       }).join('');

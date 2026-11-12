@@ -1164,7 +1164,7 @@
     "14.4"
    ],
    "entry": true,
-   "use_when": "Never: a reader who asks how several groups compare across the same measures gets a truer answer from a dot plot or small-multiple bars.",
+   "use_when": "Never: a reader who asks how several groups compare across the same measures gets a truer answer from grouped bars, a dot plot or small-multiple bars.",
    "use_instead": [
     {
      "when": "Each group has one value on each of several measures and the reader compares positions",

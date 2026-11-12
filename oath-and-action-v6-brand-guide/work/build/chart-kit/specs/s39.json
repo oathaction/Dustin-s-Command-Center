@@ -33,10 +33,7 @@
         "field": "claim",
         "label": "Claim",
         "format": "text",
-        "row_header": true,
-        "words": {
-          "The FTC's 2024 complaint alleges the three largest PBMs used rebates that favored high-list-price insulins.": "The FTC’s 2024 complaint alleges the three largest PBMs used rebates that favored high-list-price insulins."
-        }
+        "row_header": true
       },
       {
         "field": "confidence",
@@ -60,19 +57,12 @@
       {
         "field": "source_words",
         "label": "Source",
-        "format": "text",
-        "words": {
-          "Federal Trade Commission, Caremark and Zinc Health Services: proposed consent order (Federal Register); Federal Trade Commission, FTC, Caremark settlement resolving the insulin case; HealthExec, FTC settles lawsuit with Optum Rx, ending its campaign against the 'big three' PBMs": "Federal Trade Commission, Caremark and Zinc Health Services: proposed consent order (Federal Register); Federal Trade Commission, FTC, Caremark settlement resolving the insulin case; HealthExec, FTC settles lawsuit with Optum Rx, ending its campaign against the ‘big three’ PBMs",
-          "Sidley Austin, Congress passes significant federal PBM reform (P.L. 119-75); U.S. Government Publishing Office, Consolidated Appropriations Act,2026, Public Law 119-75": "Sidley Austin, Congress passes significant federal PBM reform (P.L. 119-75); U.S. Government Publishing Office, Consolidated Appropriations Act, 2026, Public Law 119-75"
-        }
+        "format": "text"
       },
       {
         "field": "limitation",
         "label": "Limits",
-        "format": "text",
-        "words": {
-          "The cap covers drugs on the plan's formulary only; monthly premiums and drugs outside the formulary are separate.": "The cap covers drugs on the plan’s formulary only; monthly premiums and drugs outside the formulary are separate."
-        }
+        "format": "text"
       }
     ]
   },
@@ -103,12 +93,6 @@
       "limits": "Limits:",
       "source": "Source:",
       "period": "Period:"
-    },
-    "words": {
-      "The FTC's 2024 complaint alleges the three largest PBMs used rebates that favored high-list-price insulins.": "The FTC’s 2024 complaint alleges the three largest PBMs used rebates that favored high-list-price insulins.",
-      "The cap covers drugs on the plan's formulary only; monthly premiums and drugs outside the formulary are separate.": "The cap covers drugs on the plan’s formulary only; monthly premiums and drugs outside the formulary are separate.",
-      "Federal Trade Commission, Caremark and Zinc Health Services: proposed consent order (Federal Register); Federal Trade Commission, FTC, Caremark settlement resolving the insulin case; HealthExec, FTC settles lawsuit with Optum Rx, ending its campaign against the 'big three' PBMs": "Federal Trade Commission, Caremark and Zinc Health Services: proposed consent order (Federal Register); Federal Trade Commission, FTC, Caremark settlement resolving the insulin case; HealthExec, FTC settles lawsuit with Optum Rx, ending its campaign against the ‘big three’ PBMs",
-      "Sidley Austin, Congress passes significant federal PBM reform (P.L. 119-75); U.S. Government Publishing Office, Consolidated Appropriations Act,2026, Public Law 119-75": "Sidley Austin, Congress passes significant federal PBM reform (P.L. 119-75); U.S. Government Publishing Office, Consolidated Appropriations Act, 2026, Public Law 119-75"
     }
   },
   "notes_internal": [
@@ -116,6 +100,15 @@
     "Claim IDs are not among the atlas IDs the V7 check types, so none prints; v7.ids lists PW06 only, which the sidecar's source line names, so it prints in its chip after its type word (H11). The CSV export carries the claim IDs.",
     "Figures checked by script (figures.py s39).",
     "Sources: each claim's sources print in V7's own words (source_words, request A7, research lead), as V7 stores them.",
-    "Review fix pass: grade line by the data lead's ruling (a) (ST M4); measure line and note 2 say each of the 11 claims carries the October 15, 2026 check date, which all 11 do (ST S6; CL1723, outside this table, carries none). BC S17: four atlas strings print curled or spaced through labels.words and the table columns' words (FTC’s, plan’s, ‘big three’, Act, 2026); the atlas text goes to the V7.1 list (request A13). Figures checked by script (round-1-fix tools/figs.py s39)."
-  ]
+    "Review fix pass: grade line by the data lead's ruling (a) (ST M4); measure line and note 2 say each of the 11 claims carries the October 15, 2026 check date, which all 11 do (ST S6; CL1723, outside this table, carries none). BC S17: the engineer's typography setting (D3-519) curls the atlas's straight quotes and adds the missing space in 'Act, 2026' wherever the figure prints data words, the CSV keeping the words as stored; the word maps are gone; the atlas text goes to the V7.1 list (request A15). Figures checked by script (round-1-fix tools/figs.py s39)."
+  ],
+  "typography": {
+    "curl_quotes": true,
+    "replace": [
+      [
+        "Act,2026",
+        "Act, 2026"
+      ]
+    ]
+  }
 }

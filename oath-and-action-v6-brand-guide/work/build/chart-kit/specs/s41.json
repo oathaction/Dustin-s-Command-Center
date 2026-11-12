@@ -72,7 +72,8 @@
     "Parties named in words in the text's ink (H10, DR-48); the table draws no party mark.",
     "Note 2 keeps the margin S01 prints (sidecar notes: publicconsultation.org, read November 11, 2026) and says the one-point gap is within it (DR-64).",
     "Figures checked by script (figures.py s41).",
-    "Source line: the sidecar's survey_only variant (request A5, done by the engineer)."
+    "Source line: the sidecar's survey_only variant (request A5, done by the engineer).",
+    "Review fix pass, ST S11: the source line is the sidecar's survey_only_margin_credited variant (engineer, ENG-12), which credits the margin to the Program for Public Consultation's page and the day it was read."
   ],
-  "source_line": "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. A margin of error of plus or minus 1.9 points for the whole sample, with none by party."
+  "source_line": "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. A margin of error of plus or minus 1.9 points for the whole sample, with none by party, from the Program’s survey page, read November 12, 2026."
 }

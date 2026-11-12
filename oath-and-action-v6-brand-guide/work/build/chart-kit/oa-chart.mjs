@@ -467,6 +467,7 @@ async function self_test() {
     ['a bare atlas ID', s => { s.notes = ['As Loop R10 shows.']; }, 'not listed in v7.ids'],
     ['a causal verb on a plausible grade', s => { s.v7 = { grade: 'plausible', ids: [], snapshot: '2026-10-15' }; s.title = 'Tariffs caused the drop in jobs.'; }, 'causal verb'],
     ['an association titled as a cause', s => { s.evidence = 'association'; s.title = 'Rates drove the change.'; }, 'causal verb'],
+    ['a typography replacement whose words hold what it finds (D3-519)', s => { s.typography = { curl_quotes: true, replace: [['Act', 'Acts']] }; }, 'second pass'],
     ['a spec with no Illustrative label on invented data', s => { s.data = { columns: { month: { type: 'month', description: 'm' } }, rows: [{ month: '2022-01' }] }; delete s.dataset; s.illustrative = false; }, 'Illustrative'],
   ];
   let bad = 0;
@@ -591,6 +592,14 @@ async function self_test() {
       console.log(`${threw ? 'caught' : 'MISSED'} ${name}`);
       if (!threw) bad++;
     }
+  }
+  // D3-519: typography sets curly quotes and its replacements once, and a second pass changes nothing
+  {
+    const sp = { typography: { curl_quotes: true, replace: [['Act,2026', 'Act, 2026']] } };
+    const once = K.typeset(sp, "the 'big three' PBMs, \"Act,2026\""), twice = K.typeset(sp, once);
+    const okt = once === 'the \u2018big three\u2019 PBMs, \u201cAct, 2026\u201d' && twice === once && K.typeset({}, "it's") === "it's";
+    console.log(`${okt ? 'pass' : 'FAIL'} typography curls quotes and replaces once, and a second pass changes nothing`);
+    if (!okt) bad++;
   }
   // the words inside kit.js equal words.json
   const wj = Object.assign({}, K.words); delete wj.about;

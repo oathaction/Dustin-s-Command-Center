@@ -155,4 +155,52 @@ November 12, 2026. The editor's 42 changes (its notes, "Requests", "To maker A")
 
 ## Review fix pass
 
-November 12, 2026. Maker A's items from the fix brief (`20261112_Round-1-Fix-Brief.md`, calls D3-476 to D3-488) and its brand and craft addendum. In progress; this section is rewritten as items land.
+November 12, 2026. Maker A's items from the fix brief (`20261112_Round-1-Fix-Brief.md`, calls D3-476 to D3-488 and the brand and craft addendum, D3-484 to D3-488), with the data lead's rulings (a) to (g) (`20261112_Round-1-Data-Lead-Notes.md`, "Review fix pass", D3-489's party test) and the research lead's and engineer's landings as the main session relayed them.
+
+### Summary
+
+- **Done:** CD AM2, BC S10, ST S7, AX S6 and AX S9 (S37); CD A-S1 (S23); CD SK-M1 and BC M4 (the radar sketch, now a pair); ST S5 (S19); ST S6 (S39, S21, and S23's same words); ST S13 and AX S9 (S20); BC S12 (S18); BC M3 (S36's recorded party and note 3); ST M4 by ruling (a) (S21, S23, S38, S39 grade lines); call 2 by ruling (b): the red point on S20, S21 and S23, the subject ink kept on S17 and S36; S21 and S23 retitled to one point; ST S8 (14.19, 14.20, 14.133, 14.134); AX S2's line (14.19); entry 14.16 and the other entries whose specimen changed (14.20, 14.21, 14.23, 14.24, 14.129) under D3-484 and ruling (b); CD AM1's spec side (S38); ruling (f) (my listing forms already set names flush left); ST S11 for S41 and S42 (the credited margin line).
+- **Kept, waiting on the engineer:** S39 prints four atlas strings curled and spaced through word maps (BC S17) until the engineer's typography key lands (D3-519); then the maps go, about 4.5 KB.
+- **Waiting on the research lead:** S20's source line as a variant naming both tables (ST S11). S20 prints its merged line until then; the kit check passes it.
+- **Not mine, found on the way:** in forced colors the kit fills the low step of a heat table (seq-3) with solid GrayText, under which CanvasText words read at 1.5 to 1; S37 now sets those words on the kit's forced-colors plate. Any other form that prints words on seq-3, mag-3, div-5, cat-2, context or secondary fills meets the same test.
+
+### Routine calls
+
+- D3-xxx | S37 gathers its reforms under V7's nine reform groups, each head printed once, in V7's order (`labels.groups`, read from `reformGroups`), with each group's reforms in number order and the rejected option last; the table keeps reform order | CD AM2: the heads printed 22 times in reform order; the kit's `sort` cannot take an order of values, so the table's order waits on request A12
+- D3-xxx | S37 names the federal statute column (`labels.named`): its head bold in the text's ink and the other heads in the secondary ink, a hairline frame in ink down the column where the names sit at the left (1024 px), and an ink edge on each of its cells where the names cross the grid (723 px) and on its chips (phone) | CD AM2, as Rule 14.16 sets the named column in ink; a frame line through the reform names would strike them
+- D3-xxx | S37's eleven heads sit on one row, each over its own column and bottom-aligned, on the lines set in `labels.columns[].lines`, with two words broken at a hyphen ("Enforce-ment", "confir-mation"); the grid draws only where every head line fits its column, else the chips | BC S10; at 723 px a column holds 59 px of words, the kit draws no angled text, and codes with a key would send a reader to the key for every column
+- D3-xxx | S37's checked mark is a 6 px dot in the subject ink on a 1 px keyline of the ground, the same in the key, the cells and the chips | BC S10; the 4 px white dot vanished on the dark tints
+- D3-xxx | S37's title counts reforms ("For 36 of the 38 reforms that could pass as an act of Congress ..."); its grade line says the judgment is "given in words"; the measure line glosses a route in Rule 13.10's words; a note glosses Article V from V7's own route record | AX S9: the simulated reader read "38 routes" as 38 acts, and stopped at "routes", "Article V" and an estimate with no number
+- D3-xxx | S37's note 2 quotes V7's four feasibility definitions word for word, in the key's order; a chart note says a blank cell is a route the atlas does not name for that reform | ST S7 (Rule 13.1 asks an estimate for its method); AX S6
+- D3-xxx | S37's words on the low step take the kit's forced-colors plate (`oac-f-none oac-fc-plate`, invisible in normal colors) | Forced colors fill that step with solid GrayText, and the kit audit read its words at 1.5 to 1 in both themes; the halo alone left them as outlined type
+- D3-xxx | S23's one named bar takes the red point by panel and category (`labels.point: {panel, category}`), every other bar the light fill; its shared scale runs from zero to the largest share | Ruling (b) under D3-477 and D3-489; CD A-S1 (the bars filled a third of each panel)
+- D3-xxx | S21's named row ends in the red dot with its keyline, on a stem in the text's ink; the other rows take the light fill | One red mark per view; a 1.5 px red stem would need a keyline of its own
+- D3-xxx | S20's red line and its two end dots are one outlined shape (two dots joined by a band of the subject line's width, under the 1 px keyline on Newsprint), and its other lines take the engineer's light-fill stroke | The page audit counts every red element, and Rule 05.3 gives one job one red; palette rule R3 for the others
+- D3-xxx | S17's 118th Congress and S36's FF PAC stay in the subject ink with the others in the light fill | Ruling (b): D3-489's party test; entry 14.16 now cites Rule 14.6's two cases
+- D3-xxx | S36's second line adds the party the FEC records for a committee where it records one (`encode.qualifier`, the research lead's `party_words`): "Party committee, Democratic" for the DCCC and DSCC, "Party committee, Republican" for the NRCC, "Hybrid PAC, Republican" for SFA Fund, Inc.; the table adds the column with "None recorded" for an empty cell; note 3 says the register prints the recorded party and most PACs record none, 21 of the 22 | BC M3; H10 (party in words, in the line's own ink)
+- D3-xxx | S39 prints four atlas strings curled or spaced through `labels.words` (a new key of the evidence-table form) and the table columns' `words` | BC S17; the studio's V7 extracts keep the atlas text as stored (D3-349), so the maps stay until the engineer's typography key (D3-519)
+- D3-xxx | S21, S23 and S39 print "Graded by the atlas, claim by claim: our count of its register of claims"; S38 "Graded by the atlas, record by record: our count of its issue records"; S21's note 1 drops the sentence the grade line now carries | Ruling (a), ST M4
+- D3-xxx | S21's and S23's measure lines give the snapshot date ("as of the atlas’s snapshot of October 15, 2026") in place of "checked through"; S39's note 2 and measure line say each of its 11 claims was checked that day | ST S6: 432 of the 433 claims carry the date and CL1723 carries none (Rule 13.10)
+- D3-xxx | S18 prints every value just past its bar's end, on a plate of the ground's color where the tick would cross it, with the kit's halo | BC S12; a halo alone let the tick show between the glyphs on a phone
+- D3-xxx | The radar sketch draws the same invented values for two groups twice, spokes A to E in two orders, beside grouped bars of the same values: the dark group's shape is the larger in one order (area 59.4 against 50.4) and the smaller in the other (36.1 against 49.9); the second group's outline is dashed; 3,428 bytes in two drawings, the second with `data-label="Grouped bars"` | CD SK-M1, BC M4, D3-486; the dash keeps the groups apart in grayscale and in a dark contrast theme, where the kit turns both group strokes white
+- D3-xxx | Entries 14.16, 14.20, 14.21 and 14.23 say the named mark takes the red point, or the text's ink where Rule 14.6 sets ink in its place, and their builders lines name `labels.point` and `labels.named` | D3-484 and ruling (b); the entries cite Rule 14.6 and never restate it
+- D3-xxx | Entries 14.19 and 14.20 share one threshold (a slope chart for about ten items, a dumbbell beyond); 14.19 adds rows of very different size to Rule 14.26; 14.133 sends a dozen or more rows to 14.21 and 14.134 sends figures that differ in size to 14.16 | ST S8; AX S2
+- D3-xxx | S41 and S42 print the sidecar's `survey_only_margin_credited` line | ST S11: the margin comes from the Program for Public Consultation's page, read November 12, 2026
+- D3-xxx | Row names stay flush left in every listing form of mine (dot plot, lollipop, grouped bar, benchmark bars, column on a phone); the register keeps its rank column first, with every name on one left edge | Ruling (f)
+
+### Requests
+
+- **A12, engineer, optional, `kit.js`:** `sort` taking an explicit order of values (such as `{"field": "reform_group", "values": [...]}`), so S37's table reads in the drawing's group order; the form already gathers the groups in the drawing.
+- **A13, done by the main session's call D3-519:** the engineer's typography key for S39; I drop S39's word maps when the key lands.
+- **A14, engineer, optional, `kit.css`:** in forced colors, map `.oac-s-cat-2` to GrayText as `.oac-f-cat-2` is, so a group's outline and its bars keep one system color; the radar sketch dashes group 2 meanwhile.
+- **A15, V7.1 list (main session):** four atlas strings to correct at the source: CL1359's claim ("The FTC's" with a straight apostrophe), CL1363's limitation ("plan's"), CL1360's source title ('big three' in straight quotes) and CL1361's source title ("Consolidated Appropriations Act,2026", a missing space).
+- **A16, research lead:** S20's two-table source line as a variant on `census-hvs-homeownership-by-age-moe` (ST S11), so the check compares it word for word.
+- Done by others in this pass: the light-fill stroke role (engineer), S38's PNG export with the live lookup (engineer), the 432-of-433 claims line (engineer), S36's party columns and processed-report vintage (research lead), the credited margin line for S41 and S42 (engineer).
+
+### Tested
+
+(Being written.)
+
+### Not tested
+
+(Being written.)

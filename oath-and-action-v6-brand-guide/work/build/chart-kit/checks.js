@@ -125,6 +125,19 @@ function check_spec(K, spec, opts) {
   if (spec.illustrative !== false && (typeof spec.illustrative !== 'string' || !spec.illustrative.trim())) f.push('spec: illustrative is false or the printed label, such as "Illustrative data"');
   if (spec.source_line && !/^Source: /.test(spec.source_line)) f.push('spec: source_line starts "Source: "');
   if (spec.title && /^\s*[a-z]/.test(spec.title)) f.push('spec: the title starts with a capital');
+  // D3-519: typography is {curl_quotes: true|false, replace: [[find, put], ...]}; a replacement whose words hold what it finds
+  // would change them again on a page that reads its rows back from the table
+  if (spec.typography !== undefined) {
+    const ty = spec.typography;
+    if (!ty || typeof ty !== 'object' || Array.isArray(ty)) f.push('spec: typography is {"curl_quotes": true, "replace": [["find", "put"]]}');
+    else {
+      if (ty.curl_quotes !== undefined && typeof ty.curl_quotes !== 'boolean') f.push('spec: typography.curl_quotes is true or false');
+      (ty.replace || []).forEach((pr, i) => {
+        if (!Array.isArray(pr) || pr.length !== 2 || typeof pr[0] !== 'string' || typeof pr[1] !== 'string' || !pr[0]) f.push(`spec: typography.replace[${i}] is a pair of words, ["find", "put"]`);
+        else if (pr[1].indexOf(pr[0]) >= 0) f.push(`spec: typography.replace[${i}] puts words that hold what it finds ("${pr[0]}"), so a second pass would change them again`);
+      });
+    }
+  }
   // words
   for (const [where, s] of strings(spec)) {
     if (where.indexOf('notes_internal') === 0) continue;

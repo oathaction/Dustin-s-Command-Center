@@ -58,10 +58,11 @@
     "Data plan row 41: the same question as S41, answered in one sourced sentence (coverage plan R01). The drawing is the sentence (labels.sentence, the title word for word; the page receives only a spec's drawing keys) in the title face; show prints the evidence label, the drawing, the source line and the folded table, and leaves out the printed title, measure line and notes, so the sentence appears once. The alt is the sentence, so a screen reader hears it word for word.",
     "The drawing doubles as the still image for posts and cards (DR-49, Rule 14.13). A figure with no drawing cannot export, since the PNG and SVG exports come from the page's drawing.",
     "Figures checked by script (figures.py s42).",
-    "Source line: the sidecar's survey_only variant (request A5, done by the engineer)."
+    "Source line: the sidecar's survey_only variant (request A5, done by the engineer).",
+    "Review fix pass, ST S11: the source line is the sidecar's survey_only_margin_credited variant (engineer, ENG-12), which credits the margin to the Program for Public Consultation's page and the day it was read."
   ],
   "labels": {
     "sentence": "In a May 2023 survey of 2,625 registered voters, 87 percent of Republicans and 88 percent of Democrats favored a ban on stock trading by members of Congress."
   },
-  "source_line": "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. A margin of error of plus or minus 1.9 points for the whole sample, with none by party."
+  "source_line": "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. A margin of error of plus or minus 1.9 points for the whole sample, with none by party, from the Program’s survey page, read November 12, 2026."
 }
