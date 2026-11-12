@@ -35,7 +35,7 @@
       var lmax = c.phone ? W : Math.floor(W * 0.36), nw = 0;
       rows.forEach(function (r) { c.wrap(nm(r), 'label', lmax, 600).forEach(function (l) { nw = Math.max(nw, c.measure(l, 'label', 600)); }); });
       var x0 = c.phone ? 0 : Math.ceil(nw + 16), st = K.nice(lo, hi, 4).step;
-      var xs = K.scale.linear([lo, hi], [x0 + vw + 8, W - vw - 8]), ticks = K.ticks(Math.ceil(lo / st) * st, Math.floor(hi / st) * st, 0, st);
+      var xs = K.scale.linear([lo, hi], [x0 + vw + 6, W - vw - 6]), ticks = K.ticks(Math.ceil(lo / st) * st, Math.floor(hi / st) * st, 0, st);
       // the key, then the scale's labels over the plot
       var y = 0;
       if (L.up || L.down) {
@@ -79,9 +79,9 @@
         // the value beside the bar, on the side the step moves to (a total's on its far side), or the other side where
         // the drawing ends first
         var t = num(s), tw = c.measure(t, 'label', 700, true), right = s.total ? s.b >= 0 : r[ev] >= 0;
-        if (right && xb + 6 + tw > W) right = false;
-        if (!right && xa - 6 - tw < (c.phone ? 0 : x0)) right = true;
-        c.text(right ? xb + 6 : xa - 6, cy, t, { role: 'label', weight: s.total || isn ? 700 : 400, anchor: right ? 'start' : 'end', tnum: true, halo: true });
+        if (right && xb + 4 + tw > W) right = false;
+        if (!right && xa - 4 - tw < (c.phone ? 0 : x0)) right = true;
+        c.text(right ? xb + 3.5 : xa - 3.5, cy, t, { role: 'label', weight: s.total || isn ? 700 : 400, anchor: right ? 'start' : 'end', tnum: true, halo: true });
         // a hairline from the last step's end to this one's start; on a phone only where it clears the name between
         var px = prev && xs(prev.x), nb = c.texts[c.texts.length - 2];
         if (prev && (!c.phone || px > nb.x + nb.w + 4)) c.line(px, prev.y, px, by, { stroke: 'secondary', width: c.t('line-hairline'), mark: false });

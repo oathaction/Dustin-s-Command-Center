@@ -4038,6 +4038,9 @@ def self_test():
                      and pg.find('id="tokens"') < pg.find("data-plate-css") < pg.find('id="fig-s-26-w2"')),
                     ("the shell switches the stage by its frame's container", lambda pg: "container:oa-frame/inline-size" in pg.replace(" ", "")
                      and "@container oa-frame (min-width: 680px)" in pg or "@container oa-frame (min-width:680px)" in pg),
+                    ("RS-S1 (round 2): from 48em a frame with two true sizes narrows its mat to as little as 8 px to hold the wide stage",
+                     lambda pg: re.search(r"\.plate-scroll\[data-wide\]\s*\{\s*--room2:\s*calc\(100% - var\(--w2\)\)", pg) is not None
+                     and "(2 * var(--oa-space-100) + 2px - var(--room2)) * 1000" in pg),
                     ("a plate whose wide_px is ignored keeps one true size", lambda pg: 'data-specimen="s-26-w2b"' in pg
                      and not re.search(r'data-specimen="s-26-w2b"[^>]*data-wide', pg)),
                     ("frame_container makes the frame a container with one true size; wide_px does too; a plain plate's frame is none",
