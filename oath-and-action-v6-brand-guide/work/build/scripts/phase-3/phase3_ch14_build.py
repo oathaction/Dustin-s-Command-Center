@@ -38,7 +38,15 @@ MANIFEST = SPECIMENS / "manifest-data-visualization.json"
 LOG = ENTRIES / "14-example-log.json"
 DOMAIN_SHARE = 1 / 4      # DR-229: no atlas domain supplies more than one example in four in chapter 14
 STATE_SHARE = 1 / 5       # and no state more than one in five
-ENTRY_DROP = {"use_when", "use_instead", "specimen", "tier", "correct", "failure", "examples"}
+ENTRY_DROP = {"use_when", "use_instead", "specimen", "tier", "correct", "failure", "examples", "caption"}
+
+
+def curly(t):
+    """The guide's apostrophes and quotation marks (ED-E5): a straight ' or " in plan text becomes its curly form."""
+    t = re.sub(r"(^|[\s(\[{])'", lambda m: m.group(1) + "\u2018", str(t))
+    t = t.replace("'", "\u2019")
+    t = re.sub(r'(^|[\s(\[{])"', lambda m: m.group(1) + "\u201c", t)
+    return t.replace('"', "\u201d")
 PLATE_META = ("width_px", "illustrative", "notes", "fit_switch", "interactive", "readable", "height_px", "surface", "scale", "check_exempt", "breakout")   # ED-E2: readable and the shell's other keys
 
 
@@ -117,7 +125,8 @@ def outputs(rounds):
             if str(u.get("rule")).startswith("14.") and str(u.get("rule")) not in planned:
                 faults.append(f"Rule {rid}: use_instead names Rule {u.get('rule')}, which the plan does not hold")
         # a plate's caption until the editor's words pass gives its own: the reader's question the specimen answers
-        cap = p.get("reader_question") or f"{p['form']}."
+        # the entry's own caption first (the makers' and editor's words), else the plan's question, curled (ED-E5)
+        cap = e.get("caption") or curly(p.get("reader_question") or f"{p['form']}.")
         if p.get("spec_id"):
             sid = p["spec_id"].lower()
             sp = SPECS / f"{sid}.json"
