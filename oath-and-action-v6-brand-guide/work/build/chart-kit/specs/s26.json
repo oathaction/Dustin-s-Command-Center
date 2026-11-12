@@ -70,7 +70,7 @@
   },
   "chart_notes": [
     "Arrows point left for a Democratic majority and right for a Republican majority, all in one ink; the scale runs to 150 seats each way from the center line.",
-    "The party is named at the first row and at each row where the majority changed sides; in a narrow column the titles over the two halves name the sides."
+    "The party is named beside the figure at the first row and at each row where the majority changed sides."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -90,8 +90,8 @@
   "labels": {
     "left_title": "Democratic majority",
     "right_title": "Republican majority",
-    "left_name": "Democrats +{value}",
-    "right_name": "Republicans +{value}",
+    "left_name": "Democrats",
+    "right_name": "Republicans",
     "value": "{value}"
   },
   "notes_internal": [

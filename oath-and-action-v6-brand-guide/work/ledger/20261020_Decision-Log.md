@@ -3890,3 +3890,31 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-226 | The research lead's round 1 work is round 3's data plan, fetched and frozen, and sources for the seven routes not yet covered (FA, FR, ENF, CRT, AV, IC, CIV) | The research lead stays a round ahead; round 2's data is already frozen |
 | D3-227 | Chapter 15 starts with its rule list, the systems grammar and worked examples 1 and 2 (Loop R1 and Loop R8), drawn by the systems designer, with the data lead's sign-off | The proposal starts chapter 15 in round 1; chapter 11's stepper already runs Loop R1 |
 | D3-228 | Chapter 15's numbers are fixed as the systems designer proposed (its round 1 notes, "Rule list"): 25 rules in six groups, the grammar 15.1 to 15.10, reforms on the drawing 15.11 and 15.12, the six worked examples 15.13 to 15.18 in the proposal's order, interaction 15.19 to 15.21, routes as workflows 15.22 to 15.24, and the reconciliation 15.25; round 1 builds 15.1 to 15.10, 15.13 and 15.14 with the opener | Every row of Master Brief section 14's grammar has a home here or in a chapter 13 rule cited by number (R7) |
+
+### Research lead, board 1 apply
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-229 | Chapter 01's renditions use the engineer's board 1 call exactly (Pillow, Lanczos, quality 85, optimized, progressive, the original's color profile) with Pillow's default 4:2:0 subsampling | Both files then equal board 1's figures to the byte, so the pictures Dustin approved are the files the guide shows |
+| D3-230 | The renditions carry no added metadata, and the rights travel in each record | Neither original holds EXIF, XMP, IPTC or a comment to keep, and the Rosa Parks original holds no color profile, so both of its files read as sRGB |
+| D3-231 | The rights ledger names the renditions pho-01r and pho-04r and sets each directly under its original | The brief places them beside pho-01 and pho-04, and the r ties each to its source |
+| D3-232 | The research ledger stays as it is for DR-238 | No row there records these photographs; the rights ledger and the sidecars do |
+| D3-233 | Each rendition's record copies its original's rights and description fields unchanged and adds the original's file and hash, the method, the bytes, the hash and the checks | A reader of either record finds the terms, the credit and the way back to the source without opening the other |
+
+### Editor, board 1 apply
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-234 | DR-239 goes into chapter 02 through `content()` in `guide_editor_ch02.py`, which checks the approved text before it adds the sentence, and the Board 5 content file and writing rules file stay as they are | Those two files are the record of what Board 5 approved, D2-256 and D2-326 were applied the same way, and the editor build’s whole-section check reads `content()`, so it now proves the sentence is on the page |
+| D3-235 | H06’s example opens with a capital, “Payrolls shrank …”, now that a whole sentence follows it | A lowercase clause before a whole sentence reads as a fragment, and the words DR-239 keeps, “shrank in seven of the 57 months charted”, do not change |
+| D3-236 | In H08’s after line the new sentence carries the repair’s solid underline | The after line marks every change from the before, and the chapter’s key says a solid underline marks the repair |
+| D3-237 | The house rules plate keeps its caption; its internal notes record DR-239 | The caption’s “as approved” still holds, and decision codes stay out of reader text (H11) |
+| D3-238 | Chapter 01’s photographs carry a size hint of 1200 by 720 in place of 1920 by 1152 | The hint named a width the renditions do not have; the crop classes set each frame’s ratio, so nothing moves on the page (checked at 1440 and 390 px) |
+
+### Explainer maker, board 1 apply
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-239 | S14's margin sentence ends the fourth note, after the list of seven months it qualifies | "The drops" points back to that list, and DR-239 has the sentence join the note; at 358 px the note runs five lines and reads as one passage |
+| D3-240 | S14's alt text stays as it was, with its seven months of losses | The alt text describes the drawing, which marks no margin of error; the note beside the drawing carries DR-239's sentence for every reader |
+| D3-241 | The margin's figure, plus or minus 122,000, stays out of S14's printed words and goes to the main session as a request | The brief asks for a request (D3-171); the figure comes from a source the chart's source line does not name, and C2 requires that line to equal its sidecar's |

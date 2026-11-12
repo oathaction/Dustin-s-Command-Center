@@ -1,0 +1,77 @@
+{
+  "kit": 1,
+  "id": "S41",
+  "form": "plain-table",
+  "family": "tables-and-plain-words",
+  "tier": "core",
+  "dataset": "v7-stock-trading-ban",
+  "where": {
+    "body": "survey"
+  },
+  "reader_question": "Do Republicans and Democrats agree on a ban on stock trading by members of Congress?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: a published survey, as the atlas records it",
+  "v7": {
+    "grade": "documented",
+    "ids": [],
+    "snapshot": "2026-10-15"
+  },
+  "title": "Republican and Democratic voters favored a ban on stock trading by members of Congress at almost the same rate in a May 2023 survey, 87 and 88 percent.",
+  "measure_line": "Registered voters who favor a ban on stock trading by members of Congress, percent, by party, survey fielded May 19 to 30, 2023, United States.",
+  "notes": [
+    "The survey of 2,625 registered voters asked about a ban in general.",
+    "The Program for Public Consultation gives a margin of error of plus or minus 1.9 percentage points for the whole sample, with no confidence level stated and none by party, so the survey cannot tell the two parties’ rates apart."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A table of three rows: 86 percent of all registered voters, 87 percent of Republicans and 88 percent of Democrats favored a ban on stock trading by members of Congress in a May 2023 survey.",
+  "table": {
+    "caption": "Registered voters who favor a ban on stock trading by members of Congress, May 2023",
+    "columns": [
+      {
+        "field": "group",
+        "label": "Registered voters",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "value",
+        "label": "Favor a ban, percent",
+        "format": "integer"
+      }
+    ]
+  },
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D03",
+  "states": [],
+  "encode": {
+    "row": "group",
+    "columns": [
+      "value"
+    ]
+  },
+  "labels": {
+    "heads": {
+      "group": "Registered voters",
+      "value": "Favor a ban"
+    },
+    "rows": {
+      "All registered voters": "All"
+    },
+    "named": [
+      "All registered voters"
+    ]
+  },
+  "formats": {
+    "value": "percent:0"
+  },
+  "notes_internal": [
+    "Data plan row 40, fix pass D3-89: the survey rows alone; the House and Senate votes stay in S01 and round 2's progress bar. No bill is named, so DR-98's first-mention wording does not arise.",
+    "Parties named in words in the text's ink (H10, DR-48); the table draws no party mark.",
+    "Note 2 keeps the margin S01 prints (sidecar notes: publicconsultation.org, read November 11, 2026) and says the one-point gap is within it (DR-64).",
+    "Source line: the sidecar's line also names the two votes, which this table does not show; request A5 asks the engineer for a survey-only variant, which S41 and S42 then print.",
+    "Figures checked by script (figures.py s41)."
+  ]
+}

@@ -1,0 +1,677 @@
+{
+ "number": "15",
+ "anchor": "systems-graphics",
+ "title": "Systems graphics",
+ "part": "Evidence and media",
+ "instruction": "Draw our systems atlas’s mechanisms so a reader can follow them one connection at a time.",
+ "opener": {
+  "specimen": "s-15-opener",
+  "caption": "Loop R13 from our systems atlas, with the authority line that leaves it and the layer it reaches. Each numeral marks one part of the grammar, and the list names the rule that sets it."
+ },
+ "intro": [
+  "A systems graphic draws a mechanism: what moves what, which way, and how sure our systems atlas, Who Do They Answer To?, is of each step. It uses the atlas’s own parts. Variables are the quantities or conditions that can rise or fall, connections are the arrows between them, and loops are chains of connections that come back to where they started.",
+  "Chapter 13 sets how a connection carries its grade, its delay and its source. The rules here show how to read and combine those marks, then work through mechanisms from the atlas as it records them."
+ ],
+ "groups": [
+  {
+   "before_rule": "15.1",
+   "number": 1,
+   "title": "Reading a systems drawing",
+   "line": "Each mark in a systems drawing answers one question about the mechanism, and a reader can name every answer without color."
+  },
+  {
+   "before_rule": "15.13",
+   "number": 2,
+   "title": "Worked examples from the atlas",
+   "line": "Each example draws one mechanism from our systems atlas as the atlas records it, and shows what a reader can take from it."
+  }
+ ],
+ "rules": [
+  {
+   "id": "15.1",
+   "title": "Draw mechanisms at one weight, and let width or size measure only with a key.",
+   "rule": [
+    "A systems graphic draws how one change leads to another. Its variables, the quantities or conditions that can rise or fall, sit in labeled pills, and its connections run between them as arrows. It carries no axis and no scale. Every connection in a drawing takes one width, 2 px in a figure, and every variable takes one pill, sized only by its label, so neither can pass for an amount.",
+    "Give a line’s width or a shape’s area a quantity only when a defined measure stands behind it, and print the key beside the drawing. A drawing whose widths carry measured flows, such as dollars moving between budgets, is a chart, and chapter 14 sets its rules."
+   ],
+   "tokens": [
+    "oa.color.graphic.essential.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "Our systems atlas records the direction and the evidence of each connection and gives no loop a size: “Loops show structure: the size of any effect comes from the studies attached to each connection, and no whole loop has a measured strength.” A thicker line or a larger pill would claim a strength the atlas never measured, and a reader would take it at its word."
+    ],
+    "basis": "Our systems atlas’s methods, its limits; design judgment"
+   },
+   "correct": {
+    "specimen": "s-15-1-correct",
+    "caption": "Loop B1a from our systems atlas, “Independent oversight can limit policy favoritism”, with both connections at 2 px and both variables in pills of one size. The line patterns carry the grades, and nothing in the drawing measures."
+   },
+   "failure": {
+    "specimen": "s-15-1-failure",
+    "caption": "<strong>Fails Rule 15.1.</strong> The second step is three times as thick and one pill is larger, with no key, so the drawing claims sizes our systems atlas never measured."
+   },
+   "specs": [
+    {
+     "label": "Line width",
+     "value": "One width in a drawing: 2 px in a figure, 3 px in a large drawing; only Rule 12.5’s red target draws heavier",
+     "token": "oa.color.graphic.essential.onNewsprint"
+    },
+    {
+     "label": "Pill",
+     "value": "130 px wide on a 296 px drawing, with 12 px inside each end; 44 px tall, or the label’s rows at 18 px plus 22; a 2 px outline"
+    },
+    {
+     "label": "Width or area as a quantity",
+     "value": "Only with a defined measure and a key beside the drawing"
+    },
+    {
+     "label": "Measured flows",
+     "value": "A chart, under chapter 14’s rules"
+    }
+   ],
+   "related": [
+    "10",
+    "13",
+    "14"
+   ],
+   "builders": [
+    "Draw every connection with the atlas build’s <code>wire_marks</code> at one width, and size each pill from its wrapped label, so a pill grows only to hold its words."
+   ]
+  },
+  {
+   "id": "15.2",
+   "title": "Name each variable, its kind and what a higher value means.",
+   "rule": [
+    "Our systems atlas defines a variable as “a quantity or condition in the model that can rise or fall”. Draw each one as a pill holding its short name, the name the atlas gives it on its loops, or its title where it sits in no loop. The first time a reader meets it, give its typed chip, its kind in words and the atlas’s own sentence on what a higher value means.",
+    "The atlas uses four kinds. A stock is an amount built up over time (31 variables). A flow is an amount per period (9). A condition, which the atlas calls auxiliary, is worked out from other variables (6). An outside driver is a force whose causes lie outside the model (5), and Rule 15.9 sets where it goes."
+   ],
+   "tokens": [
+    "oa.chart.type.label"
+   ],
+   "why": {
+    "text": [
+     "A name alone leaves the direction open. Turnout could mean more voters or a smaller gap between groups, and only the atlas’s sentence settles it for Variable B5: “A higher value means turnout is more similar across income groups.” Once a reader knows which way is up, the sign on every connection into the variable can be read."
+    ],
+    "basis": "Our systems atlas’s glossary and model conventions; house rule H02"
+   },
+   "correct": {
+    "specimen": "s-15-2-correct",
+    "caption": "A stock, a flow and a condition from our systems atlas, each with its pill, its typed chip, its kind and the atlas’s sentence on what a higher value means."
+   },
+   "failure": {
+    "specimen": "s-15-2-failure",
+    "caption": "<strong>Fails Rule 15.2.</strong> Variable B5 is cut to Turnout, with no kind and no sentence, so its minus sign reads as fewer voters. The atlas’s variable is turnout equality, and the sign says the gap between income groups widens."
+   },
+   "specs": [
+    {
+     "label": "Short name",
+     "value": "The atlas’s name on the loops that hold the variable (25 of 51), or its title (26)"
+    },
+    {
+     "label": "Label",
+     "value": "15 px, semibold, wrapped inside the pill with 12 px at each end",
+     "token": "oa.chart.type.label"
+    },
+    {
+     "label": "Kind",
+     "value": "Stock, flow, condition or outside driver, in words, from the variable’s record"
+    },
+    {
+     "label": "Higher value",
+     "value": "The atlas’s sentence, quoted, where the reader meets the variable first"
+    },
+    {
+     "label": "Chip",
+     "value": "Variable and the ID, as Rule 13.9 sets"
+    }
+   ],
+   "related": [
+    "10",
+    "13",
+    "18"
+   ],
+   "builders": [
+    "Read the short name from the loops that hold the variable, and its kind and its higher-value sentence from its own record. Print the sentence as the atlas writes it."
+   ]
+  },
+  {
+   "id": "15.3",
+   "title": "Read a plus or minus as the way two variables move together.",
+   "rule": [
+    "Each causal connection carries a sign tag. A plus means the two variables tend to move the same way, and a minus means they move in opposite directions, with the model’s other conditions held steady. The word beside the tag says it again: raises for a plus, lowers for a minus.",
+    "Our systems atlas states the rule in its conventions: “The sign on a connection gives direction only.” Print the atlas’s sentence “A positive sign does not mean a benefit.” in every key that shows a sign."
+   ],
+   "tokens": [
+    "oa.color.graphic.essential.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "Readers bring the plus and minus of a ledger, where plus means gain. In the atlas a plus sits on harmful changes too: when hostility toward the other party rises, exposure to hostile content tends to rise, and that connection carries a plus."
+    ],
+    "basis": "Our systems atlas’s glossary and model conventions"
+   },
+   "correct": {
+    "specimen": "s-15-3-correct",
+    "caption": "Two connections from our systems atlas, each with its sign tag, its word and the atlas’s sentence on what its sign means, over a key that quotes the atlas on a positive sign."
+   },
+   "failure": {
+    "specimen": "s-15-3-failure",
+    "caption": "<strong>Fails Rule 15.3.</strong> The key calls a plus a positive effect, so more exposure to hostile content reads as good news and stronger oversight reads as harm."
+   },
+   "specs": [
+    {
+     "label": "Sign tag",
+     "value": "14 px body and 6 px point, 16 px tall, with an 8 by 2 px sign, on a 2 px line (Rule 10.10)"
+    },
+    {
+     "label": "Word",
+     "value": "Raises for a plus, lowers for a minus, 15 px beside the tag"
+    },
+    {
+     "label": "Minus",
+     "value": "A true minus sign, −, wherever the sign prints as text"
+    },
+    {
+     "label": "Key",
+     "value": "“A positive sign does not mean a benefit.”, quoted from the atlas"
+    },
+    {
+     "label": "Authority",
+     "value": "No tag (Rule 15.5)"
+    }
+   ],
+   "related": [
+    "10",
+    "13"
+   ],
+   "builders": [
+    "Take the word from the sign alone, and print the connection’s own sentence on its sign where a reader needs the reading in full."
+   ]
+  },
+  {
+   "id": "15.4",
+   "title": "Say in words when a connection carries money, information or ownership.",
+   "rule": [
+    "Our systems atlas gives each connection a type. Most are causal: a change in one variable changes another. Others name what moves along the line: money (17 connections), such as contributions or advertising revenue; information (9), such as news coverage or a feed; or ownership (5), where one quantity is held inside another. Print the type in words before the verb, as in “money, lowers”, and in the key.",
+    "Line patterns carry the evidence grade (Rule 13.4), so a type takes no pattern, width or color of its own. Authority, the fifth type, takes its own mark (Rule 15.5)."
+   ],
+   "tokens": [
+    "oa.color.graphic.essential.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "Gray print and low color vision take away color first, and the patterns already have a job. A word survives both, and it tells a reader what a connection is about before they open its record."
+    ],
+    "basis": "Our systems atlas’s glossary; WCAG 2.2 SC 1.4.1"
+   },
+   "correct": {
+    "specimen": "s-15-4-correct",
+    "caption": "Three connections from our systems atlas, one of each type that names what moves, each with its type in words before its verb and its line in its grade’s pattern."
+   },
+   "failure": {
+    "specimen": "s-15-4-failure",
+    "caption": "<strong>Fails Rule 15.4.</strong> Color alone tells the three types apart, so a reader with gray print or low color vision cannot tell money from information."
+   },
+   "specs": [
+    {
+     "label": "Type word",
+     "value": "Money, information or ownership, before the verb and a comma: money, lowers"
+    },
+    {
+     "label": "Causal",
+     "value": "No type word; the verb alone"
+    },
+    {
+     "label": "Never",
+     "value": "A color, a width or a pattern for a type"
+    },
+    {
+     "label": "Authority",
+     "value": "Its own mark and word (Rule 15.5)"
+    }
+   ],
+   "related": [
+    "05",
+    "10",
+    "13"
+   ],
+   "builders": [
+    "Print the type from the connection’s record, and leave the word out for a causal connection."
+   ]
+  },
+  {
+   "id": "15.5",
+   "title": "Draw authority with its open diamond and no sign, outside every loop.",
+   "rule": [
+    "An authority connection shows that one body holds legal power over something: it appoints, appropriates, preempts, enforces or sets a rate. In our systems atlas’s words, “It says who decides, without saying which way the decision goes, so it has no sign and never closes a loop.” Draw it solid, end it in an open diamond, and print decides where a causal line prints its verb.",
+    "Keep it out of every loop drawing, even where it touches a variable the loop holds. All 7 of the atlas’s authority connections are documented, and none sits in a loop."
+   ],
+   "tokens": [
+    "oa.color.graphic.essential.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "A sign would claim to know how an enforcer or a legislature will use its power. The atlas records the power and leaves the choice open, and a reader who met a diamond inside a loop would count a decision as one more step that runs by itself."
+    ],
+    "basis": "Our systems atlas’s glossary and model conventions"
+   },
+   "correct": {
+    "specimen": "s-15-5-correct",
+    "caption": "Two authority connections from our systems atlas into one variable, each with its open diamond and the word decides, crossing from the core layer to the technology layer."
+   },
+   "failure": {
+    "specimen": "s-15-5-failure",
+    "caption": "<strong>Fails Rule 15.5.</strong> The enforcers’ line takes an arrowhead, a minus and lowers, so it claims they will cut the use of pricing software. The atlas records only that they decide."
+   },
+   "specs": [
+    {
+     "label": "End",
+     "value": "An open diamond, 14 by 11 px, in place of the arrowhead (Rule 10.10)"
+    },
+    {
+     "label": "Line",
+     "value": "Solid; every authority connection is documented"
+    },
+    {
+     "label": "Word",
+     "value": "Decides, where a causal line prints its verb"
+    },
+    {
+     "label": "Sign",
+     "value": "None"
+    },
+    {
+     "label": "Loops",
+     "value": "None; the build stops if any loop lists an authority connection"
+    }
+   ],
+   "related": [
+    "10",
+    "13"
+   ],
+   "builders": [
+    "Draw it with <code>wire_marks</code> and its authority switch, which sets the diamond and leaves the tag off."
+   ]
+  },
+  {
+   "id": "15.6",
+   "title": "Number a loop’s steps in order, and name it reinforcing or balancing.",
+   "rule": [
+    "A loop is “a chain of causes that returns to its starting variable”, in our systems atlas’s words. Number its steps from the variable the atlas starts it at, in the atlas’s order, and print its typed chip and its kind inside it: reinforcing, coded R, where the returning effect amplifies the first change, or balancing, coded B, where it pushes back.",
+    "The minus signs give the kind. An even count, zero included, makes a loop reinforcing, and an odd count makes it balancing, as on all 20 of the atlas’s loops with numbered steps. Either kind can help or harm, depending on which way it runs."
+   ],
+   "tokens": [
+    "oa.color.graphic.essential.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "Numbers let a reader follow a loop in the atlas’s order, aloud or one step at a time on a stepper (Rule 18.22). The count lets anyone check the kind from the drawing alone, and it shows how two minus signs make a loop that feeds itself."
+    ],
+    "basis": "Our systems atlas’s glossary and loop records; design judgment"
+   },
+   "correct": {
+    "specimen": "s-15-6-correct",
+    "caption": "Two loops from our systems atlas, each with numbered steps, its number and kind inside it, a sentence that reads it aloud and its count of minus signs."
+   },
+   "failure": {
+    "specimen": "s-15-6-failure",
+    "caption": "<strong>Fails Rule 15.6.</strong> Loop R18 has no step numbers, no chip and no kind, and the words inside it judge the loop. Its two minus signs make it reinforcing."
+   },
+   "specs": [
+    {
+     "label": "Step number",
+     "value": "Bold, before the verb, from the atlas’s first connection: 1 raises"
+    },
+    {
+     "label": "Inside the loop",
+     "value": "The loop’s ID in bold, then reinforcing or balancing"
+    },
+    {
+     "label": "Kind check",
+     "value": "An even count of minus signs for reinforcing, odd for balancing; the build checks every numbered loop"
+    },
+    {
+     "label": "Read aloud",
+     "value": "One sentence that carries more or less around the loop and back to the start"
+    }
+   ],
+   "related": [
+    "11",
+    "13",
+    "18"
+   ],
+   "builders": [
+    "Number steps in the order of the loop’s own list of connections, and stop the build if a loop’s kind and its count of minus signs disagree."
+   ]
+  },
+  {
+   "id": "15.7",
+   "title": "Say how a loop closes, apart from how strong its evidence is.",
+   "rule": [
+    "Our systems atlas records how each loop closes, in one of three ways: every step a numbered connection; closed through a step graded hypothesis; or conceptual, a mechanism with no complete chain of numbered connections. Print the closure in words beside the loop’s grade. Draw a hypothesized step in dots, and each step of a conceptual loop as the hollow line of Rule 13.4, between thin pills, since its stations are not the atlas’s numbered variables.",
+    "Of the atlas’s 23 loops, 18 close through numbered connections, 2 close through a hypothesis and 3 are conceptual."
+   ],
+   "tokens": [
+    "oa.chart.grade.hypothesis",
+    "oa.chart.grade.conceptual.rail"
+   ],
+   "why": {
+    "text": [
+     "Closure and grade answer different questions. A conceptual loop can rest on strong research and still lack a chain a reader can trace, and a loop that closes through a hypothesis stays uncertain as a whole, as the atlas defines closure: “If any closing step is only a hypothesis, the whole loop stays uncertain.”"
+    ],
+    "basis": "Our systems atlas’s glossary and loop records"
+   },
+   "correct": {
+    "specimen": "s-15-7-correct",
+    "caption": "Loop R16, which closes through a hypothesis, and Loop B3, a conceptual loop, each with its closure in words beside its grade."
+   },
+   "failure": {
+    "specimen": "s-15-7-failure",
+    "caption": "<strong>Fails Rule 15.7.</strong> Loop B3 is drawn with solid numbered steps, so it passes for a chain of connections. The atlas grades the mechanism well supported and gives it no numbered connection."
+   },
+   "specs": [
+    {
+     "label": "Every step numbered",
+     "value": "The loop as Rule 15.6 draws it"
+    },
+    {
+     "label": "Closes through a hypothesis",
+     "value": "The closing step in dots, with these words beside the grade",
+     "token": "oa.chart.grade.hypothesis"
+    },
+    {
+     "label": "Conceptual",
+     "value": "Hollow lines with their signs, 1 px pills, no step numbers or chips; “No numbered chain” beside the grade",
+     "token": "oa.chart.grade.conceptual.rail"
+    },
+    {
+     "label": "Counts",
+     "value": "18 closed, 2 through a hypothesis, 3 conceptual, as of the snapshot"
+    }
+   ],
+   "related": [
+    "10",
+    "13"
+   ],
+   "builders": [
+    "Read the closure from the loop’s record, and draw a conceptual loop’s steps from its own list of stations and signs, since it lists no connections."
+   ]
+  },
+  {
+   "id": "15.8",
+   "title": "Draw an open chain from start to end, and carry its sign along.",
+   "rule": [
+    "An open chain is a run of connections that does not return to its start, such as the steps a layer draws behind one arrow on the core map. Draw it in one direction, from its first variable to its last, and read it the way a loop is read: each minus sign turns the direction. An even count of minus signs means the end moves with the start, and an odd count means it moves the other way.",
+    "Our systems atlas holds its chains to this: “Where the core map draws one arrow for a longer chain, the economy and technology layers show the steps, and their combined sign agrees with the core arrow.” Where a page shows a chain and the core arrow it stands behind, draw the core arrow beside the chain."
+   ],
+   "tokens": [
+    "oa.color.graphic.essential.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "A reader who takes the last step’s sign as the chain’s answer will often get it backward. Here the last step raises household security, and the chain as a whole lowers it, as the core arrow says."
+    ],
+    "basis": "Our systems atlas’s model conventions"
+   },
+   "correct": {
+    "specimen": "s-15-8-correct",
+    "caption": "An open chain from our systems atlas through its economy layer, read with its signs carried along, beside connection L37, the core map’s one arrow for the same path."
+   },
+   "failure": {
+    "specimen": "s-15-8-failure",
+    "caption": "<strong>Fails Rule 15.8.</strong> The summary arrow takes the last step’s plus, so the chain reads as raising household security. One minus sign along the way turns it, as connection L37 says."
+   },
+   "specs": [
+    {
+     "label": "Direction",
+     "value": "One way, first variable to last; an open chain never bends back into a loop"
+    },
+    {
+     "label": "Combined sign",
+     "value": "An even count of minus signs for the same direction, odd for the opposite"
+    },
+    {
+     "label": "Core arrow",
+     "value": "Beside the chain where the page shows both, with its own sign"
+    },
+    {
+     "label": "Read aloud",
+     "value": "More or less at each variable, carrying the signs, as Rule 15.6 reads a loop"
+    }
+   ],
+   "related": [
+    "13"
+   ],
+   "builders": [
+    "Work out the combined sign by script from each connection’s record, and stop the build if it disagrees with the core arrow."
+   ]
+  },
+  {
+   "id": "15.9",
+   "title": "Frame the atlas’s layers and clusters, and set outside drivers beyond the frames.",
+   "rule": [
+    "Our systems atlas sorts its 51 variables into three layers: the core, “Power and accountability”, with 31 variables, five of them outside drivers and the rest in 5 clusters; the economy layer, with 12; and the technology layer, with 8. Where a drawing shows variables from more than one layer, frame each layer with a 1 px rule and its name, and name the cluster of a core variable.",
+    "An outside driver is “a force that affects the model but whose own causes lie outside its boundary”, in the atlas’s words. Set it outside every frame, with its kind in words. Where a connection crosses a frame, break the frame around the line, so a reader sees where the effect comes in."
+   ],
+   "tokens": [
+    "oa.color.border.strong"
+   ],
+   "why": {
+    "text": [
+     "The frames tell a reader what the model explains and what it takes as given. A driver drawn inside a cluster reads as one more thing the model accounts for, and the atlas treats its five drivers as given from 2026 to 2036."
+    ],
+    "basis": "Our systems atlas’s layers, boundary and glossary"
+   },
+   "correct": {
+    "specimen": "s-15-9-correct",
+    "caption": "Foreign interference outside every frame, Hostile-content exposure in the core layer’s cluster B, and feed ranking in the technology layer, with each frame broken where a connection crosses it."
+   },
+   "failure": {
+    "specimen": "s-15-9-failure",
+    "caption": "<strong>Fails Rule 15.9.</strong> Foreign interference sits inside the model’s frame as one more variable, and feed ranking loses its layer, so a reader cannot tell what the model explains."
+   },
+   "specs": [
+    {
+     "label": "Frame",
+     "value": "1 px in the strong border color, its name at top right inside, 15 px",
+     "token": "oa.color.border.strong"
+    },
+    {
+     "label": "Crossing",
+     "value": "The frame breaks 7 px each side of the line"
+    },
+    {
+     "label": "Outside driver",
+     "value": "Outside every frame, marked Outside driver; the atlas’s glossary draws it as a rounded pill"
+    },
+    {
+     "label": "Layers",
+     "value": "Core 31, economy 12, technology 8; core clusters A to E"
+    }
+   ],
+   "related": [
+    "12",
+    "13"
+   ],
+   "builders": [
+    "Read each variable’s layer and cluster from the atlas’s layers record, and break a frame wherever a connection’s line crosses it."
+   ]
+  },
+  {
+   "id": "15.10",
+   "title": "Show what the model leaves out beside what it draws.",
+   "rule": [
+    "Our systems atlas keeps a record of what it left off its map: 3 connections it reviewed against the evidence and did not draw, 9 subjects it names as omitted, and a boundary that lists what the model does not cover. Where a drawing shows a mechanism next to one of those connections, print the connection beside it in words, with the atlas’s reason, under the heading Reviewed and not drawn.",
+    "Draw no line for a connection the atlas reviewed and left out, in any pattern."
+   ],
+   "tokens": [],
+   "why": {
+    "text": [
+     "A reader who sees feed ranking raise hostile content will ask whether feed ranking raises hostility itself. The atlas reviewed that claim and left it off its map, and its reason answers the question with the evidence."
+    ],
+    "basis": "Our systems atlas’s rejected connections, omissions and limits"
+   },
+   "correct": {
+    "specimen": "s-15-10-correct",
+    "caption": "Connection LT01 from our systems atlas, with the connection the atlas reviewed and left off its map printed beside it in words, with the atlas’s reason."
+   },
+   "failure": {
+    "specimen": "s-15-10-failure",
+    "caption": "<strong>Fails Rule 15.10.</strong> A dashed line runs from feed ranking to hostility toward the other party, a connection the atlas reviewed and left off its map, so the drawing claims some evidence where the largest experiments found no measurable change."
+   },
+   "specs": [
+    {
+     "label": "Heading",
+     "value": "Reviewed and not drawn"
+    },
+    {
+     "label": "Words",
+     "value": "From and to, with typed chips, and the atlas’s reason quoted"
+    },
+    {
+     "label": "Line",
+     "value": "None, in any pattern"
+    },
+    {
+     "label": "Records",
+     "value": "3 rejected connections and 9 omissions, as of the snapshot"
+    }
+   ],
+   "related": [
+    "13"
+   ],
+   "builders": [
+    "Look up the atlas’s rejected connections for every pair of variables a drawing shows, and print any match in words beside the drawing."
+   ]
+  },
+  {
+   "id": "15.13",
+   "title": "Let the least certain step set how far a reader trusts a loop.",
+   "rule": [
+    "Loop R1, “Wealth and political influence reinforce each other”, runs through three connections that carry money. Two are well supported. The middle one, connection L02, “Political spending can tilt policy toward donors”, is plausible, and our systems atlas names it the weakest step. The loop as a whole takes that grade: the atlas grades Loop R1 plausible.",
+    "Draw each step in its own line, mark the weakest in words, and give the diagram’s label the grade of the least certain step (Rule 13.1). Rule 11.14 runs the same loop on a live stepper, one connection at a time."
+   ],
+   "tokens": [
+    "oa.chart.grade.plausible"
+   ],
+   "why": {
+    "text": [
+     "A loop runs only when each of its steps runs, so its least certain step limits the whole. A reader who sees two solid lines and one dashed line can say how far the loop holds before reading its record."
+    ],
+    "basis": "Our systems atlas, Loop R1’s record and evidence summary"
+   },
+   "correct": {
+    "specimen": "s-15-13-correct",
+    "caption": "Loop R1 from our systems atlas, with its middle step dashed and marked as the weakest, under a label that gives the whole loop that step’s grade."
+   },
+   "failure": {
+    "specimen": "s-15-13-failure",
+    "caption": "<strong>Fails Rule 15.13.</strong> Every step is solid and the label reads Well supported, so the loop borrows the grade of its strongest steps and hides the one the atlas calls weakest."
+   },
+   "specs": [
+    {
+     "label": "Each step",
+     "value": "Its own line, by its own grade (Rule 13.4)"
+    },
+    {
+     "label": "Weakest step",
+     "value": "“Weakest step” under its words, where the atlas’s evidence summary names it"
+    },
+    {
+     "label": "The loop’s label",
+     "value": "The least certain step’s grade (Rule 13.1)"
+    },
+    {
+     "label": "Live",
+     "value": "Rule 11.14’s stepper runs Loop R1"
+    }
+   ],
+   "related": [
+    "11",
+    "13",
+    "18"
+   ],
+   "builders": [
+    "Take the weakest step from the loop’s evidence summary and the label from the least certain connection, and stop the build if the two disagree."
+   ]
+  },
+  {
+   "id": "15.14",
+   "title": "Show a change to the model in the atlas’s own words, with its date.",
+   "rule": [
+    "Our systems atlas revises its model as the evidence changes, and it records some revisions in its own text. Loop R8, “Housing scarcity strengthens owners' incentive to restrict building”, carries one in its evidence note: “well-supported for both links; the loop no longer depends on A1”. Quote a revision as the atlas writes it, with the snapshot date, and draw the loop as it stands now.",
+    "A drawing made before the revision is a record of what we drew. It is never evidence for the model, and a page that published one corrects it as Rule 13.13 sets out."
+   ],
+   "tokens": [],
+   "why": {
+    "text": [
+     "A revision in the atlas’s own words lets a reader check it against the atlas, and the date tells them which version they read. This one changes what the loop explains: the atlas records that rising home equity tends to lower the top wealth share, so the loop no longer accounts for wealth at the top."
+    ],
+    "basis": "Our systems atlas, Loop R8’s record and connection T12"
+   },
+   "correct": {
+    "specimen": "s-15-14-correct",
+    "caption": "Loop R8 as our systems atlas holds it, with the atlas’s revision and its reason quoted beside the drawing, as of October 15, 2026."
+   },
+   "failure": {
+    "specimen": "s-15-14-failure",
+    "caption": "<strong>Fails Rule 15.14.</strong> The drawing routes Loop R8 through wealth concentration with plus signs and prints no date. The atlas says the loop no longer depends on Variable A1, and its connection T12 runs from home equity to the top wealth share with a minus."
+   },
+   "specs": [
+    {
+     "label": "Revision",
+     "value": "The atlas’s words, quoted, from the record that carries them"
+    },
+    {
+     "label": "Date",
+     "value": "“As of” and the snapshot date, October 15, 2026 (Rule 13.10)"
+    },
+    {
+     "label": "Drawing",
+     "value": "The loop as the atlas holds it now"
+    },
+    {
+     "label": "An earlier drawing",
+     "value": "A record, never evidence; a published one is corrected under Rule 13.13"
+    }
+   ],
+   "related": [
+    "13"
+   ],
+   "builders": [
+    "Quote the revision from the loop’s own fields, and stop the build when those fields change, so the quotation never drifts from the atlas."
+   ]
+  }
+ ],
+ "extras": [],
+ "related_chapters": [
+  {
+   "chapter": "10",
+   "reason": "Rule 10.10, the atlas’s encoding glyphs and their measurements."
+  },
+  {
+   "chapter": "11",
+   "reason": "Rule 11.14, the live stepper that runs Loop R1."
+  },
+  {
+   "chapter": "12",
+   "reason": "Rule 12.5, the red target where a reform acts, and Rule 12.8, the stacked layers."
+  },
+  {
+   "chapter": "13",
+   "reason": "The grade words, the line code, delay, typed chips and dates every drawing here keeps."
+  },
+  {
+   "chapter": "14",
+   "reason": "Charts, where widths and areas carry measured amounts."
+  },
+  {
+   "chapter": "18",
+   "reason": "Rule 18.22, the loop stepper as a component, and Rule 18.24, the typed ID chip."
+  }
+ ],
+ "sources": [
+  "Source: Oath & Action’s systems atlas, Who Do They Answer To?, the records each rule names (variables, connections, loops, the layers, the rejected connections, the model’s conventions, boundary and limits, and the glossary), snapshot of October 15, 2026, United States. Retrieved November 12, 2026. Facts the atlas rechecked carry their own check dates; inclusion in the snapshot alone does not mean a fact was rechecked on that date."
+ ]
+}

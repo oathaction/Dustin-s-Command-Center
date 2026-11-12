@@ -1,0 +1,62 @@
+{
+ "file": "cms-medicaid-chip-renewal-funnel.csv",
+ "kind": "derived",
+ "publisher": "Centers for Medicare & Medicaid Services",
+ "title_or_table": "Medicaid and CHIP renewals, April 2023 to March 2024: nested funnel stages from one base",
+ "table_id": "data.medicaid.gov dataset e6205a51-e6d7-4849-9882-4483b8a28c41, October 2024 release, metrics 5 to 5d",
+ "url": [
+  "https://download.medicaid.gov/data/updated-renewal-outcomes-october-2024-releasefinal.csv",
+  "https://data.medicaid.gov/api/1/metastore/schemas/dataset/items/e6205a51-e6d7-4849-9882-4483b8a28c41?show-reference-ids=true"
+ ],
+ "observation_period": "Renewals due April 2023 to March 2024 (twelve reporting months)",
+ "geography": "United States, the sum of the states’ reports (checked equal by script)",
+ "universe_or_base": "Beneficiaries due for renewal in the twelve months; each stage sits inside the one before",
+ "unit": "people; share_of_due is the stage over renewals due, computed and stored to four decimals",
+ "date_retrieved": "2026-11-12",
+ "vintage": "Updated renewal outcomes, October 2024 final release (dataset modified November 1, 2024)",
+ "qualification": "State-reported counts, \"updated\" to show renewals that were pending three months after they were due; states began the unwinding in different months (4 reported renewals due in March 2023, and all 50 states and DC from July 2023), and the file ends with renewals due in March 2024, before the unwinding ended in every state. A person due in two months of the file counts twice. Pending renewals are set apart, not counted as decided. The figures differ from V7 I062’s \"more than 25 million\" disenrolled (KFF, through 2024), because this file ends with March 2024 renewals.",
+ "columns": {
+  "order": {
+   "type": "integer",
+   "description": "display order"
+  },
+  "stage_id": {
+   "type": "id",
+   "description": "stable stage id"
+  },
+  "stage": {
+   "type": "text",
+   "description": "stage label, plain words for the table"
+  },
+  "people": {
+   "type": "integer",
+   "description": "people at this stage, summed over the twelve months",
+   "unit": "people"
+  },
+  "share_of_due": {
+   "type": "number",
+   "description": "people over renewals due",
+   "unit": "share (0 to 1)"
+  },
+  "role": {
+   "type": "category",
+   "description": "stage (a nested funnel step), set apart (pending), drop (a way out between stages) or split (a breakdown of kept)"
+  }
+ },
+ "printed_source_line": "Source: Centers for Medicare & Medicaid Services, Medicaid and CHIP Updated Renewal Outcomes, renewals due April 2023 to March 2024, United States. Retrieved November 12, 2026. Stages summed by Oath & Action from the national rows; pending renewals set apart.",
+ "ledger_row": "P7-202",
+ "domain": "D04",
+ "domain_note": "V7 files paperwork that pushes people off benefits under Congress, agencies and public services (I062, \"Delivering services\")",
+ "states": [],
+ "derived_from": [
+  "cms-medicaid-chip-renewal-outcomes.csv"
+ ],
+ "derivation": "Sums of the national monthly rows for April 2023 to March 2024; decided is due less pending, not ended for a procedural reason is decided less procedural endings, kept is renewed (5a); the script asserts the stages nest.",
+ "raw_files_sha256_prefix": {
+  "renewals.csv": "a21e0c7692981a16"
+ },
+ "notes": [
+  "Ended in the twelve months: 22,914,537, of whom 15,966,431 (69.7 percent) for a procedural reason.",
+  "V7 I062 (observed 2024-09) cites KFF: more than 25 million disenrolled, 69 percent for procedural reasons; the chart prints CMS’s own figures and period (data lead change 11)."
+ ]
+}

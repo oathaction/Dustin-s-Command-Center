@@ -1,0 +1,81 @@
+{
+ "file": "cms-medicaid-chip-renewal-outcomes.csv",
+ "kind": "public",
+ "publisher": "Centers for Medicare & Medicaid Services",
+ "title_or_table": "Medicaid and CHIP Updated Renewal Outcomes, national rows (state code US)",
+ "table_id": "data.medicaid.gov dataset e6205a51-e6d7-4849-9882-4483b8a28c41, October 2024 release, metrics 5 to 5d",
+ "url": [
+  "https://download.medicaid.gov/data/updated-renewal-outcomes-october-2024-releasefinal.csv",
+  "https://data.medicaid.gov/api/1/metastore/schemas/dataset/items/e6205a51-e6d7-4849-9882-4483b8a28c41?show-reference-ids=true"
+ ],
+ "observation_period": "Renewals due March 2023 to March 2024, by reporting month",
+ "geography": "United States, the sum of the states’ reports (checked equal by script)",
+ "universe_or_base": "Medicaid and CHIP beneficiaries due for renewal in each month, as states reported them to CMS",
+ "unit": "people (beneficiaries)",
+ "date_retrieved": "2026-11-12",
+ "vintage": "Updated renewal outcomes, October 2024 final release (dataset modified November 1, 2024)",
+ "qualification": "State-reported counts, \"updated\" to show renewals that were pending three months after they were due; states began the unwinding in different months (4 reported renewals due in March 2023, and all 50 states and DC from July 2023), and the file ends with renewals due in March 2024, before the unwinding ended in every state. A person due in two months of the file counts twice.",
+ "columns": {
+  "month": {
+   "type": "month",
+   "description": "reporting month: the month the renewals were due"
+  },
+  "states_reporting": {
+   "type": "integer",
+   "description": "states and DC with a renewal count that month (51 possible)"
+  },
+  "due": {
+   "type": "integer",
+   "description": "beneficiaries due for renewal (metric 5)",
+   "unit": "people"
+  },
+  "renewed": {
+   "type": "integer",
+   "description": "coverage renewed (metric 5a)",
+   "unit": "people"
+  },
+  "renewed_ex_parte": {
+   "type": "integer",
+   "description": "renewed on an ex parte basis, from information the state already held (metric 5a1)",
+   "unit": "people"
+  },
+  "renewed_form": {
+   "type": "integer",
+   "description": "renewed on the return of a renewal form (metric 5a2)",
+   "unit": "people"
+  },
+  "ended": {
+   "type": "integer",
+   "description": "coverage terminated (metrics 5b plus 5c)",
+   "unit": "people"
+  },
+  "ended_ineligible": {
+   "type": "integer",
+   "description": "determined ineligible on the return of a renewal form (metric 5b)",
+   "unit": "people"
+  },
+  "ended_procedural": {
+   "type": "integer",
+   "description": "terminated for a procedural or administrative reason (metric 5c)",
+   "unit": "people"
+  },
+  "pending": {
+   "type": "integer",
+   "description": "renewal still pending at the end of the update window (metric 5d, updated)",
+   "unit": "people"
+  },
+  "unaccounted": {
+   "type": "integer",
+   "description": "due less renewed, ended and pending, computed by the studio; 0 when the row adds up",
+   "unit": "people"
+  }
+ },
+ "printed_source_line": "Source: Centers for Medicare & Medicaid Services, Medicaid and CHIP Updated Renewal Outcomes, renewals due March 2023 to March 2024, United States. Retrieved November 12, 2026. State-reported counts, updated three months after each renewal was due.",
+ "ledger_row": "P7-201",
+ "domain": "D04",
+ "domain_note": "V7 files paperwork that pushes people off benefits under Congress, agencies and public services (I062, \"Delivering services\")",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "renewals.csv": "a21e0c7692981a16"
+ }
+}

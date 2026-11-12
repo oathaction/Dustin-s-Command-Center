@@ -1,0 +1,10 @@
+order,stage_id,stage,people,share_of_due,role
+1,due,Renewals due,76734167,1.0000,stage
+2,decided,Renewals decided,71882535,0.9368,stage
+3,not_ended_procedural,Renewals not ended for a procedural reason,55916104,0.7287,stage
+4,kept,Renewals that kept coverage,48967998,0.6382,stage
+5,pending,"Pending, set apart",4851632,0.0632,set apart
+6,ended_procedural,Ended for a procedural reason,15966431,0.2081,drop
+7,ended_ineligible,Found ineligible,6948106,0.0905,drop
+8,renewed_ex_parte,Kept coverage automatically (ex parte),28979658,0.3777,split
+9,renewed_form,Kept coverage by returning a form,19988340,0.2605,split

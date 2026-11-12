@@ -26,7 +26,7 @@ Read-first list done. Working one specimen at a time, simplest first. Each finis
 | 14.130 | S38 | filterable-lookup-table | not started |
 | 14.131 | S39 | evidence-table | not started |
 | 14.132 | S40 | tracker-list | not started |
-| 14.133 | S41 | plain-table | not started |
+| 14.133 | S41 | plain-table | done: form, spec, entry 14-133; build passes; source line waits on request A5 |
 | 14.134 | S42 | one-sentence | not started |
 
 ## Routine calls
@@ -49,6 +49,7 @@ Read-first list done. Working one specimen at a time, simplest first. Each finis
 - D3-xxx | S22's title singles out gaps between survey estimates only after testing each against its margin, computed from the table's counts with the Census Bureau's formula for a proportion; a note says so | DR-64 and Rule 14.9; the file carries the counts' margins, and the sidecar already says the rates are Oath & Action's arithmetic
 - D3-xxx | The grouped bar names each series after its value in the first group and draws no key | Rule 14.3; names set inside a 16 px bar were cramped, and a key repeated them
 - D3-xxx | S23 draws five hub panels of four grade bars on one shared 0 to 100 scale, documented in ink, from a derived hub-by-grade file | The question compares hubs' evidence mix; C1 keeps the grouping in its own file, so the spec waits on request A4 rather than summing inside a form
+- D3-xxx | Table forms (plain table, and the register, heat, evidence and tracker tables to come) draw as typeset tables through the context, with the live HTML table equivalent folded below | The approved S06 and S15 set this pattern; the drawing doubles as the still image for posts and cards (DR-49)
 
 ## Requests
 
@@ -56,6 +57,7 @@ Read-first list done. Working one specimen at a time, simplest first. Each finis
 - **A2, research lead, `work/build/data/census-hvs-homeownership-by-age.meta.json` and a margins file.** (a) Add a source line variant for the charted years: `"two_years": "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Annual Statistics 2025, Table 17, homeownership rate by age of householder, 2015 and 2025, United States. Retrieved November 11, 2026. Survey estimates; the 2025 average leaves out October, when no data were collected."`. (b) Add the published margins of error for the five summary age groups in 2015 and 2025 (HVS Table B-7 or the 2015 release's matching table), as a file like `census-hvs-homeownership-gap-moe`, with the change's margin computed. S20 then says whether the under-35 rise of 2.0 points passes its margin (DR-64, Rule 14.9); until then its title claims no change.
 - **A3, data visualization lead, the window of data plan row 6 (S20).** The plan sets 2015 and 2025. The under-35 rate was 43.1 in 2004, 34.5 in 2016 (its low) and 37.0 in 2025, so a 2015 start shows a gain of 2.0 points, a 2005 start a fall of 6.0, and a 2020 start a fall of 2.1 (2020 carries the pandemic's collection changes). S20 keeps 2015 under R1 and prints the longer record in a note. Please confirm the window, or set another with its reason; the spec changes in one line (`where.year`, `labels.from`).
 - **A4, engineer, a derived V7 table `work/build/data/v7-claims-by-hub-and-grade.json` with its sidecar (C1, `kind: derived`, `derived_from: ["v7-claims-by-grade.json"]`, domain `all`).** Twenty rows, one per hub and grade, hubs in the source file's order and grades in the order documented, well_supported, plausible, contested. Columns: `hub` (id), `hub_title` (category), `grade` (category), `claims` (integer, the grade's claims summed over the hub's pathways), `hub_claims` (integer, the hub's claims), `share_pct` (number, claims over hub_claims times 100, one decimal), `answers` (integer, pathways in the hub). Printed source line as `v7-claims-by-grade`'s with "grouped by its five topic hubs" after "16 everyday questions", or that file's line itself as a variant. S23's spec (scratch, `drafts/s23.json`) reads it as `dataset: v7-claims-by-hub-and-grade`; my scratch copy of the rows matches this layout (sums checked by `figures.py s23`). Data plan row 9 names `v7-claims-by-grade (its hub column)`; the change is the grouping C1 asks for, with the same source.
+- **A5, engineer, `work/build/data/v7-stock-trading-ban.meta.json` (written by `data_round0_build.py`).** Add a survey-only variant for S41 and S42, which show the survey rows alone (D3-89): `"survey_only": "Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. A margin of error of plus or minus 1.9 points for the whole sample, with none by party."`. Until then both print the sidecar's line, which also names the two 2026 votes.
 
 ## Tested
 
@@ -66,5 +68,6 @@ Read-first list done. Working one specimen at a time, simplest first. Each finis
 - S21: build passes, 0 faults, at every width and both grounds with parity. Captures looked at: Newsprint 1440, Charcoal 390 grayscale. Figure check `figures.py s21`, 6 assertions pass. Words lint clean on `s21.json` and `14-021.json` (and re-run clean on S17 to S20 and their entries after the lint learned the ", not" turn).
 - S22: build passes, 0 faults, 26 rows pivoted into 13 table rows, at every width and both grounds with parity. Captures looked at: Newsprint 1440 and 390, Charcoal 1440, and Charcoal 390 in grayscale. Figure check `figures.py s22`, 8 assertions pass, among them each gap from age 22 on against its margin, the widest (9.7 at 60 and 61, margin 0.62) against the next widest (difference 0.91, margin 0.82), and 20 and 21 within its margin. Words lint clean on `s22.json` and `14-022.json`.
 - S23 (form only, data pending A4): the scratch spec with the 20 derived rows inline builds with 0 faults at every width and both grounds with parity. Captures looked at: Newsprint 1440, Charcoal 390. Figure check `figures.py s23`, 7 assertions pass against `v7-claims-by-grade` summed by hub. Words lint clean on the draft spec and `14-023.json`.
+- S41: build passes, 0 faults, at every width and both grounds with parity. Captures looked at: Newsprint 1440, Charcoal 390. Figure check `figures.py s41`, 5 assertions pass. Words lint clean on `s41.json` and `14-133.json`.
 
 ## Not tested

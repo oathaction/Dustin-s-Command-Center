@@ -1,0 +1,42 @@
+{
+  "id": "14.133",
+  "title": "Set a handful of numbers as a plain table when a chart adds nothing.",
+  "rule": [
+    "Set the numbers in rows under short column heads, with each row’s name at the left and its values right-aligned in figures of one width, a hairline under the heads and a rule under the last row. Keep the table only as wide as its columns need, and print it with its title, measure line, notes and source line like any chart (Rule 14.2)."
+  ],
+  "use_when": "The reader wants to look up a few exact values, such as three survey shares, and their sizes are close enough that bars would only repeat the numbers.",
+  "use_instead": [
+    {
+      "when": "One finding answers the question and a sentence states it faster",
+      "rule": "14.134"
+    },
+    {
+      "when": "The reader compares sizes across a dozen or more rows",
+      "rule": "14.15"
+    },
+    {
+      "when": "A long list needs sorting and scanning by rank",
+      "rule": "14.126"
+    },
+    {
+      "when": "Each row also carries a trend the reader should see",
+      "rule": "14.128"
+    }
+  ],
+  "why": {
+    "text": [
+      "Three numbers within two points of each other make bars of almost the same length, which tells the reader less than the figures do. A table puts the exact value where the eye lands, keeps live text for screen readers and copying, and costs the page almost nothing."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S41",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.2",
+    "14.13"
+  ],
+  "builders": "Form plain-table: node work/build/chart-kit/oa-chart.mjs build s41, or copy specs/s41.json and point it at a new dataset; encode.columns lists the value columns in order.",
+  "correct": null,
+  "failure": null
+}

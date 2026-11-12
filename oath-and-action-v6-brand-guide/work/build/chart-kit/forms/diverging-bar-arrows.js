@@ -3,8 +3,9 @@
  * arrow takes the one neutral ink, and each side's name is printed over its half and on the rows where the advantage
  * changes sides, so position and words carry the side (DR-48, DR-58).
  * encode: key (id), x (year or label for the row), left (number), right (number): the two sides' counts; the advantage is
- * right minus left. labels: left_title, right_title (words over each half), left_name, right_name (words on a row where
- * the advantage changes sides, with {value}), value (words at each arrow's tip, with {value}). formats: x (the row's
+ * right minus left. labels: left_title, right_title (words over each half), left_name, right_name (the side's name, set
+ * before the figure on the first row and on each row where the advantage changes sides), value (words at each
+ * arrow's tip, with {value}). formats: x (the row's
  * label, "year" by default), value, tick. Draws through K.parts.arrow, the shared arrow. Maker B, round 1. */
 (function (K) {
   'use strict';
@@ -24,30 +25,34 @@
       // the scale reaches the longest arrow, with ticks only inside it
       var nk = K.nice(0, mx, c.phone ? 2 : 3), ticks = K.ticks(0, mx, 0, nk.step);
       nk = [0, Math.max(mx, ticks[ticks.length - 1])];
+      var flips = rows.map(function (r, i) { return i === 0 || (adv(r) > 0) !== (adv(rows[i - 1]) > 0); });
+      // the figure at each tip; on the first row and each row where the majority changed sides, the party's name before it
       var named = true;
       var words = function (r, i) {
-        var a = adv(r), v = K.fmt(Math.abs(a), f.value || 'integer');
-        var flip = i === 0 || (a > 0) !== (adv(rows[i - 1]) > 0);
-        if (flip && named) return String(a > 0 ? L.right_name : L.left_name).replace('{value}', v);
-        return String(L.value || '{value}').replace('{value}', v);
+        var v = String(L.value || '{value}').replace('{value}', K.fmt(Math.abs(adv(r)), f.value || 'integer')), pn = adv(r) > 0 ? L.right_name : L.left_name;
+        return named && flips[i] && pn ? pn + ' ' + v : v;
       };
       var lw = 0;
       rows.forEach(function (r) { lw = Math.max(lw, c.measure(K.fmt(r[ex], f.x || 'year'), 'tick', 400, true)); });
-      var x0 = Math.ceil(lw + 14), half = (W - x0) / 2, xc = x0 + half;
-      // the tip words need room on each side: the widest decides the half's length; where a party's name beside its
-      // arrow would leave the arrows too short, the rows carry figures only and the titles over the halves name the sides
-      var room = 0;
-      rows.forEach(function (r, i) { room = Math.max(room, c.measure(words(r, i), 'label', 700, true)); });
-      if (half - room - 14 < half * 0.45) {
-        named = false; room = 0;
-        rows.forEach(function (r, i) { room = Math.max(room, c.measure(words(r, i), 'label', 700, true)); });
-      }
-      var len = Math.max(20, half - room - 14);
+      var x0 = Math.ceil(lw + 14);
+      // the arrows grow as long as every row's tip and its words still fit; the center line sits where the two sides'
+      // longest reaches meet, so a side whose arrows run shorter gives its room to the other
+      var reach = function (ln, sg) {
+        var m = 0;
+        rows.forEach(function (r, i) { var a = adv(r); if (a * sg > 0) m = Math.max(m, Math.abs(a) / nk[1] * ln + 8 + c.measure(words(r, i), 'label', 700, true)); });
+        return m;
+      };
+      var len = W - x0;
+      while (len > 20 && reach(len, -1) + reach(len, 1) > W - x0) len -= 1;
+      // in a column too narrow for the names beside short arrows, the rows carry figures and the titles name the halves
+      if (len < (W - x0) * 0.3) { named = false; len = W - x0; while (len > 20 && reach(len, -1) + reach(len, 1) > W - x0) len -= 1; }
+      var slack = Math.max(0, W - x0 - reach(len, -1) - reach(len, 1));
+      var xc = x0 + reach(len, -1) + slack / 2;
       var xs = function (v) { return xc + v / nk[1] * len; };
       // the halves' names, then the scale both ways from the center
       var y = size;
-      if (L.left_title) c.text(xc - 10, y, L.left_title, { role: 'label', weight: 700, anchor: 'end', max: half - 12 });
-      if (L.right_title) c.text(xc + 10, y, L.right_title, { role: 'label', weight: 700, anchor: 'start', max: half - 12 });
+      if (L.left_title) c.text(xc - 10, y, L.left_title, { role: 'label', weight: 700, anchor: 'end', max: xc - 10 });
+      if (L.right_title) c.text(xc + 10, y, L.right_title, { role: 'label', weight: 700, anchor: 'start', max: W - xc - 10 });
       var tb = c.texts.length ? Math.max.apply(null, c.texts.map(function (t) { return t.bottom; })) : 0;
       var ty = tb + 8 + c.size('tick');
       // a figure at each step out from the center, skipping any that would touch the one inside it
@@ -71,8 +76,7 @@
         var ry = top + i * pitch + pitch / 2, a = adv(r), xe = xs(a);
         c.text(0, ry + size * 0.35, K.fmt(r[ex], f.x || 'year'), { role: 'tick', tnum: true });
         if (a) K.parts.arrow(c, xc, xe, ry, { data: { key: r[ek], field: 'advantage', value: a, party: a > 0 ? 'right' : 'left' } });
-        var wds = words(r, i), flip = wds !== String(L.value || '{value}').replace('{value}', K.fmt(Math.abs(a), f.value || 'integer'));
-        c.text(a >= 0 ? xe + 7 : xe - 7, ry + size * 0.35, wds, { role: 'label', weight: flip ? 700 : 400, anchor: a >= 0 ? 'start' : 'end', tnum: true, halo: true });
+        c.text(a >= 0 ? xe + 7 : xe - 7, ry + size * 0.35, words(r, i), { role: 'label', weight: flips[i] ? 700 : 400, anchor: a >= 0 ? 'start' : 'end', tnum: true, halo: true });
       });
       c.height(end + 4);
     }
