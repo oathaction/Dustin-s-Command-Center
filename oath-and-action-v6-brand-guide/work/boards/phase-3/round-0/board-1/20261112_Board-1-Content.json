@@ -51,7 +51,7 @@
           "h": "1b. Chapter 13, Evidence and sourcing",
           "q": "Approve chapter 13 as built: {n_rules} rules in three groups, each with a correct and a failure plate?",
           "rec": "Approve it. The chapter tells a builder what kind of evidence a chart rests on, which verb its grade allows, how to write its source line and how to correct in the open. It weighs {ch13_bytes} bytes against its {ch13_budget} byte ceiling, and the strict guide build passes with {build_warnings} warnings. Panel 5 shows every plate.",
-          "refs": "DR-233 · G2-01 · D3-59 · D3-83 · D3-84 · D3-85 · D3-86"
+          "refs": "DR-233 · G2-01 · D3-59 · D3-83 · D3-84 · D3-85 · D3-86 · D3-192"
         },
         {
           "key": "weight",
@@ -97,10 +97,18 @@
           "comb_room_note": "The room left is worked out from the engineer’s figures: today’s room under the budget, less chapter 14’s overrun of its old stop, plus the bytes the photographs free.",
           "comb_wait": "The engineer is measuring the combined option now. Its figures join here from the engineer’s weight options file when they land.",
           "proof_h": "The photographs, each current file beside its {photo_w} px copy",
-          "proof_lede": "Each photograph shows at the size the page displays it and at twice that, as a 2x screen draws it, with its bytes. The research lead keeps every original and its record.",
+          "proof_lede": "The page shows these photographs no wider than {shown_w} px. Each picture below sets the current file on the left and the {photo_w} px copy on the right, first at that display width and then at twice the pixels, as a 2x screen draws them. The research lead keeps every original and its record.",
           "proof_wait": "The engineer is writing the photo proof now: each current photograph beside its rendition at display size and at twice that size, with bytes. It joins here when it lands.",
           "approve": "The smaller photographs are a visible change, so they need your approval by name: reply “I approve the smaller photographs”, or choose one of the four options below.",
-          "rec_wait": "Take the combined option. Chapter 01’s {n_photos_w} photographs go to {photo_w} px wide, twice the {shown_w} px the page shows them at; the chart data travels compressed; every table stays live text; and chapter 14’s stop rises to the measured figure, paid for by the bytes the photographs free. Nothing comes from Phase 4’s share."
+          "rec_wait": "Take the combined option. Chapter 01’s {n_photos_w} photographs go to {photo_w} px wide, twice the {shown_w} px the page shows them at; the chart data travels compressed; every table stays live text; and chapter 14’s stop rises to the measured figure, paid for by the bytes the photographs free. Nothing comes from Phase 4’s share.",
+          "proof_photo_h": "Rule {rule}’s photograph, by the {agency}, shown {times} on the page",
+          "proof_facts": [
+            "The current file",
+            "The {photo_w} px copy",
+            "Page bytes freed"
+          ],
+          "proof_cap_1x": "At the page’s display width: the current file on the left, the copy on the right.",
+          "proof_cap_2x": "The same at twice the pixels, as a 2x screen draws them."
         },
         {
           "key": "payroll",
@@ -140,7 +148,7 @@
       "nav": "The palette proofs",
       "title": "The palette proofs",
       "lede": "The data lead proofed every data palette on real data, on Newsprint, Charcoal and White, measured, in gray and under three color-vision simulations. {checks_pass} of {checks_n} scripted checks pass.",
-      "lede_2": "Each section shows as the sheet draws it at 1440 px, and every swatch carries its own grayscale and simulation strips. Open a section for its grayscale view; the two sections you approve, diverging pair B and the four inks, also open to whole protanopia, deuteranopia and tritanopia simulations.",
+      "lede_2": "Each section shows as the sheet draws it at 1440 px, and every swatch carries its own grayscale, protanopia, deuteranopia and tritanopia strips. Open a section for its grayscale view, and the last fold for the whole sheet at 390 px.",
       "sections": [
         {
           "key": "Opening",
@@ -183,10 +191,7 @@
       "twice": "The line code at twice size",
       "phone": "The whole sheet at 390 px",
       "refs": "DR-234 · DR-54 · D3-11 · D3-12 · D3-13 · D3-14 · D3-15 · D3-16 · D3-17 · D3-18 · D3-19 · D3-20 · D3-21 · D3-22 · D3-84",
-      "simulate": [
-        "Diverging",
-        "Categorical"
-      ],
+      "simulate": [],
       "gray_view": "Grayscale"
     },
     "weight": {
@@ -277,7 +282,7 @@
         "Should fix",
         "Questions for you"
       ],
-      "refs": "D3-83 · D3-84 · D3-85 · D3-86 · D3-87 · D3-93 · D3-94 · D3-95 · D3-96 · D3-97 · D3-98 · D3-99 · D3-100 · D3-101 · D3-102",
+      "refs": "D3-192 · D3-83 · D3-84 · D3-85 · D3-86 · D3-87 · D3-93 · D3-94 · D3-95 · D3-96 · D3-97 · D3-98 · D3-99 · D3-100 · D3-101 · D3-102",
       "rt_note": "Counted from each report: every Must fix and Should fix it numbers, and every question it puts to you. Each report holds the fix and the owner for every item.",
       "legend_first": "Scores run from 1 to 5, and an item is ready at 4 or more on every criterion with no Must fix open. A box marks a score under 4.",
       "legend_both": "Scores run from 1 to 5, and an item is ready at 4 or more on every criterion with no Must fix open. In each cell the first score sits in small type and the rescore after the fix pass in bold; a box marks a score under 4, and a gray ground a score that moved.",

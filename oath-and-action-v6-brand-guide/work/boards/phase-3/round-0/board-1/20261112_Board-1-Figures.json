@@ -3,7 +3,7 @@
   "exit": 0,
   "page_bytes": 9962562,
   "warnings": 0,
-  "built": "2026-11-12T01:48:16",
+  "built": "2026-11-12T01:50:53",
   "report": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/guide/20261112_Board-1-Guide-Build-Report.json"
  },
  "engineer_options": {
@@ -11,33 +11,44 @@
   "options": [
    {
     "option": "As it stands",
-    "chapter_14": 2954302,
-    "ask_of_phase_4": 761784,
+    "chapter_14": 2962839,
+    "ask_of_phase_4": 770321,
     "reader_loses": "Nothing"
    },
    {
     "option": "Chart data carried compressed",
-    "chapter_14": 2795531,
-    "ask_of_phase_4": 603013,
+    "chapter_14": 2803941,
+    "ask_of_phase_4": 611423,
     "reader_loses": "Nothing: only the script reads the data"
    },
    {
     "option": "Tables compressed too",
-    "chapter_14": 2141224,
+    "chapter_14": 2149609,
     "ask_of_phase_4": 0,
     "reader_loses": "With scripts off, every chart's table (title, description, notes and source line stay)"
    },
    {
     "option": "The smaller photo copies",
-    "chapter_14": 2954302,
+    "chapter_14": 2962839,
     "ask_of_phase_4": 0,
     "reader_loses": "A visible resample: chapter 01's photographs (3 on the page, one shown twice) at 1,200 px wide, which frees 1.060 MB of the page"
+   },
+   {
+    "option": "Recommended: photo copies and chart data compressed, tables live",
+    "chapter_14": 2803941,
+    "ask_of_phase_4": 0,
+    "reader_loses": "The photo resample only; chapter 14's stop rises to 2.804 MB and the page keeps 0.448 MB of room with Phase 4's share untouched"
    }
   ],
-  "combined": null,
+  "combined": {
+   "option": "Recommended: photo copies and chart data compressed, tables live",
+   "chapter_14": 2803941,
+   "ask_of_phase_4": 0,
+   "reader_loses": "The photo resample only; chapter 14's stop rises to 2.804 MB and the page keeps 0.448 MB of room with Phase 4's share untouched"
+  },
   "phase4_share": 2.54
  },
- "built": "2026-11-12T01:48:12.197277+00:00",
+ "built": "2026-11-12T01:50:48.296631+00:00",
  "palette": {
   "new_tints": [
    [
@@ -62,18 +73,13 @@
   "release": "6.0.0-gate3.1"
  },
  "photo_proof": {
-  "dir": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof",
   "manifest": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/20261112_Photo-Proof.json",
-  "pictures": [
-   "20261112_Photo-Proof-rule-01-6-1x.png",
-   "20261112_Photo-Proof-rule-01-6-2x.png",
-   "20261112_Photo-Proof-rule-01-8-1x.png",
-   "20261112_Photo-Proof-rule-01-8-2x.png",
-   "rule-01-6-1200.jpg",
-   "rule-01-6-current.jpg",
-   "rule-01-8-1200.jpg",
-   "rule-01-8-current.jpg"
-  ]
+  "photos": [
+   "rule-01-6",
+   "rule-01-8"
+  ],
+  "saved": 1059828,
+  "shown": 3
  },
  "cd": {
   "first": "work/handoffs/phase-3/20261111_Round-0-CD-Scores.json",
@@ -302,15 +308,9 @@
    "46"
   ],
   "images": [
-   "20261112_Palette-Categorical-1440-Deuteranopia.png",
    "20261112_Palette-Categorical-1440-Grayscale.png",
-   "20261112_Palette-Categorical-1440-Protanopia.png",
-   "20261112_Palette-Categorical-1440-Tritanopia.png",
    "20261112_Palette-Categorical-1440.png",
-   "20261112_Palette-Diverging-1440-Deuteranopia.png",
    "20261112_Palette-Diverging-1440-Grayscale.png",
-   "20261112_Palette-Diverging-1440-Protanopia.png",
-   "20261112_Palette-Diverging-1440-Tritanopia.png",
    "20261112_Palette-Diverging-1440.png",
    "20261112_Palette-Line-Code-1440-2x.png",
    "20261112_Palette-Line-Code-1440-Grayscale.png",
@@ -444,8 +444,8 @@
  ],
  "tested": {
   "work/handoffs/phase-3/20261111_Round-0-Engineer-Notes.md": {
-   "tested": 47,
-   "not": 20
+   "tested": 48,
+   "not": 21
   },
   "work/handoffs/phase-3/20261111_Round-0-Palette-Notes.md": {
    "tested": 25,
@@ -485,18 +485,15 @@
   }
  },
  "board": "work/boards/phase-3/round-0/board-1/20261112_Board-1.html",
- "html_bytes": 375394,
- "images": 131,
- "folder_bytes_with_images": 64440145,
+ "html_bytes": 376031,
+ "images": 121,
+ "folder_bytes_with_images": 59956357,
  "largest_image": [
   3348055,
   "20261112_Palette-Page-390.png"
  ],
  "status": {
-  "decide": [
-   "partial",
-   "engineer"
-  ],
+  "decide": "ready",
   "kit": "ready",
   "palettes": "ready",
   "weight": "ready",
@@ -506,14 +503,10 @@
   "tested": "ready"
  },
  "image_sources": {
-  "img/20261112_Photo-Proof-Photo-Proof-Rule-01-6-1x.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/20261112_Photo-Proof-rule-01-6-1x.png",
-  "img/20261112_Photo-Proof-Photo-Proof-Rule-01-6-2x.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/20261112_Photo-Proof-rule-01-6-2x.png",
-  "img/20261112_Photo-Proof-Photo-Proof-Rule-01-8-1x.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/20261112_Photo-Proof-rule-01-8-1x.png",
-  "img/20261112_Photo-Proof-Photo-Proof-Rule-01-8-2x.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/20261112_Photo-Proof-rule-01-8-2x.png",
-  "img/20261112_Photo-Proof-Rule-01-6-1200.jpg": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/rule-01-6-1200.jpg",
-  "img/20261112_Photo-Proof-Rule-01-6-Current.jpg": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/rule-01-6-current.jpg",
-  "img/20261112_Photo-Proof-Rule-01-8-1200.jpg": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/rule-01-8-1200.jpg",
-  "img/20261112_Photo-Proof-Rule-01-8-Current.jpg": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/rule-01-8-current.jpg",
+  "img/20261112_Photo-Proof-Rule-01-6-1x.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/20261112_Photo-Proof-rule-01-6-1x.png",
+  "img/20261112_Photo-Proof-Rule-01-6-2x.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/20261112_Photo-Proof-rule-01-6-2x.png",
+  "img/20261112_Photo-Proof-Rule-01-8-1x.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/20261112_Photo-Proof-rule-01-8-1x.png",
+  "img/20261112_Photo-Proof-Rule-01-8-2x.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/20261112_Photo-Proof-rule-01-8-2x.png",
   "img/20261112_Decide-Diverging-On-Charcoal-Steps.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/palette/diverging-charcoal.png",
   "img/20261112_Decide-Diverging-On-Charcoal-Table.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/palette/div-charcoal.png",
   "img/20261112_Decide-Four-Inks-On-Newsprint.png": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/palette/categorical-newsprint.png",
@@ -588,14 +581,8 @@
   "img/20261112_Palette-Sequential-1440-Grayscale.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Sequential-1440-Grayscale.png",
   "img/20261112_Palette-Diverging-1440.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Diverging-1440.png",
   "img/20261112_Palette-Diverging-1440-Grayscale.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Diverging-1440-Grayscale.png",
-  "img/20261112_Palette-Diverging-1440-Protanopia.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Diverging-1440-Protanopia.png",
-  "img/20261112_Palette-Diverging-1440-Deuteranopia.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Diverging-1440-Deuteranopia.png",
-  "img/20261112_Palette-Diverging-1440-Tritanopia.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Diverging-1440-Tritanopia.png",
   "img/20261112_Palette-Categorical-1440.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Categorical-1440.png",
   "img/20261112_Palette-Categorical-1440-Grayscale.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Categorical-1440-Grayscale.png",
-  "img/20261112_Palette-Categorical-1440-Protanopia.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Categorical-1440-Protanopia.png",
-  "img/20261112_Palette-Categorical-1440-Deuteranopia.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Categorical-1440-Deuteranopia.png",
-  "img/20261112_Palette-Categorical-1440-Tritanopia.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Categorical-1440-Tritanopia.png",
   "img/20261112_Palette-Past-Four-Groups-1440.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Past-Four-Groups-1440.png",
   "img/20261112_Palette-Past-Four-Groups-1440-Grayscale.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Past-Four-Groups-1440-Grayscale.png",
   "img/20261112_Palette-Magnitude-1440.png": "work/boards/phase-3/round-0/palettes/20261111_Palette-Proofs-Magnitude-1440.png",
@@ -656,6 +643,7 @@
   "D3-187",
   "D3-19",
   "D3-190",
+  "D3-192",
   "D3-193",
   "D3-20",
   "D3-21",
@@ -721,13 +709,7 @@
   "G2-01",
   "G2-02"
  ],
- "notes": [
-  "the combined weight option is not in the engineer’s JSON yet",
-  "removed 20261112_Photo-Proof-Test-Photo-A-Rendition-Display.png, which the board no longer shows",
-  "removed 20261112_Photo-Proof-Test-Photo-A-Current-Display.png, which the board no longer shows"
- ],
- "warnings": [
-  "the page and its images come to 64.44 MB, at or over 64 MB for one publish"
- ],
- "visible_text_sha1": "88abea4fb34469a880f3aa2afd9d431dcaff40ee"
+ "notes": [],
+ "warnings": [],
+ "visible_text_sha1": "271c90ce043d46698ef819c7e6f0a425a15109ca"
 }

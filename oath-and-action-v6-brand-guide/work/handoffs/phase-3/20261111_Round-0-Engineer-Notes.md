@@ -220,16 +220,21 @@ D3-xxx | Board 1's weight options are read by script (`weight_options.py`) from 
 
 ## Board 1 weight options
 
-D3-104's four options, measured on the final kit after the second pass (November 12) by `work/build/scripts/phase-3/weight_options.py` from a fresh strict build (`guide_build.py --strict`: 0 warnings, 9,960,893 bytes) and a fresh pilot (`chart_pilot.py --methods load-table`, 16 plates, chapter 14 projected for 97 specimens). The board builder can read the same figures from the script's JSON, written to scratch as `round-0-fix-2/engineer/20261112_Board-1-Weight-Options.json`, or rerun the script on its own builds. Each ask is chapter 14's overrun of its 1.75 MB stop less the page's room under 15.5 MB (442,518 bytes on this build), never below zero, with Phase 5's 0.40 MB untouched. The compression rows count about 600 bytes for the script that inflates the data (an estimate). The photo row frees room elsewhere on the page and leaves chapter 14 as it stands.
+D3-104's four options and the creative director's recommendation, measured on the final kit after the rescore items (November 12) by `work/build/scripts/phase-3/weight_options.py` from a fresh strict build (`guide_build.py --strict`: 0 warnings, 9,962,562 bytes) and a fresh pilot (`chart_pilot.py --methods load-table`, 16 plates, chapter 14 projected for 97 specimens). The board builder can read the same figures from the script's JSON, written to scratch as `round-0-fix-2/engineer/20261112_Board-1-Weight-Options.json`, or rerun the script on its own builds. Each ask is chapter 14's overrun of its 1.75 MB stop less the page's room under 15.5 MB (442,518 bytes on this build), never below zero, with Phase 5's 0.40 MB untouched. The compression rows count about 600 bytes for the script that inflates the data (an estimate). The photo row frees room elsewhere on the page and leaves chapter 14 as it stands.
 
 | Option | Chapter 14 projected | Over its 1.75 MB stop | Smallest ask of Phase 4's 2.54 MB | What a reader loses |
 |---|---|---|---|---|
-| As it stands | 2.954 MB | 1.204 MB | 0.762 MB | Nothing |
-| Chart data carried compressed | 2.796 MB | 1.046 MB | 0.603 MB | Nothing: only the script reads the data |
-| Tables compressed too | 2.141 MB | 0.391 MB | 0.000 MB | With scripts off, every chart's table (title, description, notes and source line stay) |
-| The smaller photo copies | 2.954 MB | 1.204 MB | 0.000 MB | A visible resample: chapter 01's photographs (3 on the page, one shown twice) at 1,200 px wide, which frees 1.060 MB of the page |
+| As it stands | 2.963 MB | 1.213 MB | 0.770 MB | Nothing |
+| Chart data carried compressed | 2.804 MB | 1.054 MB | 0.611 MB | Nothing: only the script reads the data |
+| Tables compressed too | 2.150 MB | 0.400 MB | 0.000 MB | With scripts off, every chart's table (title, description, notes and source line stay) |
+| The smaller photo copies | 2.963 MB | 1.213 MB | 0.000 MB | A visible resample: chapter 01's photographs (3 on the page, one shown twice) at 1,200 px wide, which frees 1.060 MB of the page |
+| Recommended: photo copies and chart data compressed, tables live | 2.804 MB | 1.054 MB | 0.000 MB | The photo resample only; chapter 14's stop rises to 2.804 MB and the page keeps 0.448 MB of room with Phase 4's share untouched |
 
-What each row measures: chart data compressed deflates each chart's data island (1,643 bytes saved per plate on average); tables compressed too deflates the table equivalent with it (8,388 per plate), so a reader with scripts off, a search inside the page before the script runs and a reader mode see no table. The creative director advised against that row (part 2, "The weight and what to ask Dustin"). The photo copies are a visible change for Dustin and the research lead, whose records hold each file's SHA-256.
+The recommendation (row 5): chapter 14's stop rises to 2,803,941 bytes; the page then projects at 15,051,595 bytes and keeps 448,405 bytes of room under 15.5 MB, with Phase 4's 2.54 MB untouched. The JSON's `recommended` key carries the same figures.
+
+The photo proof, in scratch only, for the board builder: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/photo-proof/`. For each of chapter 01's two shown photographs it holds the current file and the 1,200 px rendition (Lanczos, JPEG quality 85, progressive, color profile kept), a page setting them side by side at the guide's 600 px display width with each one's pixels and bytes, captures of it at 1x and 2x, and `20261112_Photo-Proof.json`: the Rosa Parks photograph 553,102 to 223,719 bytes, the public meeting 375,987 to 143,243 bytes (shown twice), 1,059,828 page bytes saved in all. Nothing in the build changed.
+
+What each row measures: chart data compressed deflates each chart's data island (1,644 bytes saved per plate on average); tables compressed too deflates the table equivalent with it (8,390 per plate), so a reader with scripts off, a search inside the page before the script runs and a reader mode see no table. The creative director advised against that row (part 2, "The weight and what to ask Dustin"). The photo copies are a visible change for Dustin and the research lead, whose records hold each file's SHA-256.
 
 The compact carrier, built for this (fix pass 2): a number column whose printed figures do not give back the stored value now carries its values in the chart's island as one comma-separated list, and its cells carry no attribute (`K.lean_carry`, `K.rows_from_table`). Proof: `oa-chart.mjs build --all` passes 16 of 16 with page-to-Node parity, the 192 board files (captures, exports, CSV) are byte for byte what they were before it, and `dataviz_check.js --kit` passes all 16 pages. On the pilot it took S13 from 49,769 to 47,145 bytes, S15 from 19,463 to 18,117, and S11 and S12 down 444 each; the estimate of half was high, because S13's island also carries an unrounded column the table does not show.
 
@@ -261,6 +266,23 @@ Tested:
 - `data_round0_build.py`: 61 tables, 0 faults; only `v7-scenarios-2030.meta.json` changed.
 - `guide_build.py --strict`: 0 warnings, 9,959,613 bytes, and 9,960,893 after the light fill's new description (the token table); `--self-test` 296 of 296; `v7_check.py` 0 failures; a fresh pilot and `weight_options.py` for the table above. The quick guide check on this page (before the light fill's description): PASS, 0 failures at 1440 and 390 px.
 Not tested: the README read by someone who does not code; S06 with `directions_wording` and S13 with its peak, which wait on the Explainer maker's specs.
+
+## Rescore items
+
+The creative director's rescore (`20261111_CD-Review-Of-Round-0.md`, "Rescore") left the engineer five Should fix items.
+
+| Code | Fix | Where |
+|---|---|---|
+| KR1 | In forced colors a cell's words sit on a Canvas plate, drawn under them with no fill outside forced colors, wherever its tint is a hatch there | `forms/scenario-directions.js`, `kit.css` |
+| KR2 | Under 340 px the bubble map draws the map first at the full width with its key under it, and labels only circles that hold their code, naming the rest under the key; the ring key now steps by its own wrapped height | `forms/bubble-map.js` |
+| KR3 | The shift axis ticks every 10 points to the tick past the farthest value (S11 to 50), sets an edge tick flush with the edge rather than dropping it, and narrows its scale until every label on an arrow's right side fits, so West Virginia and Wyoming read on the right; the reading aid starts below any row label in its way | `forms/shift-arrows.js` |
+| KR4 | Timeline dots take the vertex radius (6 px across; no token is 8 px, a question for the data lead), and an abbreviation stays on the line with the word after it ("P.L. 119-21", "v. FEC"): the kit's wrap now breaks at spaces only, so a no-break space holds, measured as a space | `forms/timeline.js`, `kit.js` |
+| KR5 | The unit chart leaves room for a ring at the drawing's edge, and the ring is a mark, so the check fails one that runs past the edge | `forms/unit-chart.js` |
+
+D3-xxx | Under 340 px a bubble map puts its key under the map and labels only circles that hold their code | At that width outside labels sit far from their circles (CD KR2); the table names every state
+D3-xxx | The kit wraps text at spaces only | A no-break space in a name or a spec's words then holds, as the browser holds it
+
+Tested: `oa-chart.mjs build --all --date 20261112` 16 of 16, page-to-Node parity included; the board folder refreshed from it (34 files changed, for S01, S06, S08, S09, S11 and S16; S01's export grew one byte where a no-break space in its words now survives the wrap, its captures unchanged); `dataviz_check.js --kit` 16 of 16; the kit's self-test; S06 captured in Chromium's forced colors (words on their plates); S16 rendered at 296 px; S08's ring at 296 px inside the drawing (290 of 296 px); S09's names checked for the no-break spaces; a fresh strict build (0 warnings, 9,962,562 bytes), a fresh pilot and `weight_options.py` for the table above. Not tested: the quick guide check after these items (the guide page draws none of these forms); a Windows contrast theme.
 
 ## Contracts
 

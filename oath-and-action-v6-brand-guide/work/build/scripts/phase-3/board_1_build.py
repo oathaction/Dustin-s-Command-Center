@@ -673,42 +673,43 @@ def engineer_numbers():
     return out
 
 
-def photo_proof(P):
-    """The engineer's proof of the smaller photographs: each current file beside its rendition. A manifest in the folder
-    names the pictures and their bytes; without one, every picture in the folder shows by its file name."""
+def photo_proof(it):
+    """The engineer's proof of the smaller photographs, read from its manifest: for each photograph, the picture of the
+    current file beside its rendition at the page's display width, and the same at twice the pixels, with bytes."""
     d = PHOTO_DIR or pathlib.Path(C['slots']['photo_proof_dir'])
-    if not d.exists():
+    mans = sorted((m for m in d.glob('*.json') if 'Weight-Options' not in m.name), key=os.path.getmtime) if d.exists() else []
+    if not mans:
         return None
-    pics = sorted(p for p in d.iterdir() if p.suffix.lower() in IMG_EXT)
-    if not pics:
-        return None
-    mans = sorted((m for m in d.glob('*.json') if 'Weight-Options' not in m.name), key=os.path.getmtime)
-    M = json.loads(mans[-1].read_text()) if mans else None
-    entries = M if isinstance(M, list) else ((M or {}).get('photos') or (M or {}).get('items') or [])
-    used, out = set(), []
-
-    def pic_html(f, cap_):
-        r = image_copy(f, slug('Photo-Proof', f.stem.split('_', 1)[-1]))
-        used.add(f.name)
-        return figure(r, cap_, f'<b>{esc(cap_)}</b> <span class="num">{r["w"]} by {r["h"]} px, {f.stat().st_size:,} bytes</span>')
-    for e in entries if isinstance(entries, list) else []:
-        if not isinstance(e, dict):
+    M = json.loads(mans[-1].read_text())
+    out, n_shown = [], 0
+    for e in M.get('photos', []):
+        name = e.get('photo', '')
+        x1 = sorted(d.glob(f'*{name}-1x.png'))
+        x2 = sorted(d.glob(f'*{name}-2x.png'))
+        if not (x1 and x2):
+            warn(f'the photo proof for {name} lacks its 1x or 2x picture')
             continue
-        refs = [(k, d / pathlib.Path(v).name) for k, v in e.items() if isinstance(v, str) and pathlib.Path(v).suffix.lower() in IMG_EXT and (d / pathlib.Path(v).name).exists()]
-        if not refs:
-            continue
-        name = next((str(e[k]) for k in ('name', 'title', 'label', 'photo', 'subject') if k in e), refs[0][1].stem)
-        facts = ''.join(f'<div><dt>{esc(k.replace("_", " ").capitalize())}</dt><dd>{f"{v:,}" if isinstance(v, int) else esc(shorten_paths(v))}</dd></div>'
-                        for k, v in e.items() if isinstance(v, (int, float, str)) and not (isinstance(v, str) and pathlib.Path(v).suffix.lower() in IMG_EXT)
-                        and k not in ('name', 'title', 'label', 'photo', 'subject') and not str(v).startswith('/'))
-        QUOTED.append(name)
-        out.append(f'<h5 class="ph-h">{esc(shorten_paths(name))}</h5>' + (f'<dl class="facts kf">{facts}</dl>' if facts else '')
-                   + '<div class="pair">' + ''.join(pic_html(f, k.replace('_', ' ').capitalize()) for k, f in refs) + '</div>')
-    rest = [f for f in pics if f.name not in used]
-    if rest:
-        out.append('<div class="pair">' + ''.join(pic_html(f, f.stem.split('_', 1)[-1].replace('-', ' ')) for f in rest) + '</div>')
-    FIG['photo_proof'] = {'dir': str(d), 'manifest': str(mans[-1]) if mans else None, 'pictures': [p.name for p in pics]}
-    return ''.join(out)
+        rec = {}
+        rp = ROOT / e.get('file', '')
+        if rp.suffix and rp.with_suffix('.json').exists():
+            rec = json.loads(rp.with_suffix('.json').read_text())
+        cur, ren = e['current'], e['rendition']
+        times = e.get('times_on_page', 1)
+        n_shown += times
+        head = fill(it['proof_photo_h'], {'rule': rec.get('for_rule', name), 'agency': rec.get('agency', ''), 'times': {1: 'once', 2: 'twice'}.get(times, f'{times} times')})
+        facts = [(it['proof_facts'][0], f'{cur["pixels"][0]:,} by {cur["pixels"][1]:,} px, {cur["bytes"]:,} bytes'),
+                 (fill(it['proof_facts'][1]), f'{ren["pixels"][0]:,} by {ren["pixels"][1]:,} px, {ren["bytes"]:,} bytes'),
+                 (it['proof_facts'][2], f'{e.get("page_bytes_saved", 0):,} bytes')]
+        r1 = image_copy(x1[-1], slug('Photo-Proof', name, '1x'))
+        r2 = image_copy(x2[-1], slug('Photo-Proof', name, '2x'))
+        out.append(f'<h5 class="ph-h">{esc(head)}</h5><dl class="facts kf3">' + ''.join(f'<div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in facts) + '</dl>'
+                   + figure(r1, f'{head}: the current file and the {FILL.get("photo_w", "")} px copy at the page’s display width', esc(it['proof_cap_1x']))
+                   + figure(r2, f'{head}: the same at twice the pixels', esc(it['proof_cap_2x'])))
+    tot = M.get('page_bytes_saved_total')
+    if tot is not None and FILL.get('photo_saving') and abs(tot / 1e6 - float(FILL['photo_saving'])) > 0.0005:
+        warn(f'the photo proof frees {tot:,} bytes and the weight options {FILL["photo_saving"]} MB')
+    FIG['photo_proof'] = {'manifest': str(mans[-1]), 'photos': [e.get('photo') for e in M.get('photos', [])], 'saved': tot, 'shown': n_shown}
+    return ''.join(out) or None
 
 
 # ------------------------------------------------------------------------------------------------------- panel 1
@@ -767,10 +768,13 @@ def decide_panel(G, E, TOK):
         comb = E['combined']
         if comb:
             room = next((comb[k] for k in ('room_after', 'page_room_after', 'room') if isinstance(comb.get(k), (int, float))), None)
+            if room is None:
+                m = re.search(r'keeps ([\d.]+) MB of room', comb.get('reader_loses', ''))
+                room = float(m.group(1)) * 1e6 if m else None
             FILL['comb_room_computed'] = room is None
             if room is None:     # the page's room once the stop rises to the measured figure and the photographs free their bytes
                 room = J['room'] - max(0, comb['chapter_14'] - J['stop']) + J['photo_saving']
-            FILL.update({'comb_ch14': f'{comb["chapter_14"] / 1e6:.3f}', 'comb_room': f'{room / 1e6:.2f}'})
+            FILL.update({'comb_ch14': f'{comb["chapter_14"] / 1e6:.3f}', 'comb_room': f'{room / 1e6:.3f}'})
     # Phase 4's chapters: the unbuilt chapters that share one allocation
     alloc = {}
     for k, v in unbuilt.items():
@@ -784,7 +788,7 @@ def decide_panel(G, E, TOK):
         FILL.update({'phase4_n': nw(len(p4)), 'phase4_each': f'{each / 1e6:.2f}',
                      'phase4_after_1': f'{(E["phase4_share"] - B["stands"]["ask_of_phase_4"] / 1e6) / len(p4):.2f}',
                      'phase4_after_2': f'{(E["phase4_share"] - B["islands"]["ask_of_phase_4"] / 1e6) / len(p4):.2f}'})
-    PROOF['html'] = photo_proof(P)
+    PROOF['html'] = photo_proof(next(i for i in P['items'] if i['key'] == 'weight'))
     first, rescore = cd_scores()
     cards = []
     for it in P['items']:
@@ -840,7 +844,7 @@ def weight_body(it, E, P):
                 + (f'<p class="small">{esc(it["comb_room_note"])}</p>' if FILL.get('comb_room_computed') else ''))
     else:
         out += f'<div class="pending" role="status"><p><b>Waiting for the engineer.</b> {esc(it["comb_wait"])}</p></div>'
-    out += f'<h4 class="dec-sub">{esc(fill(it["proof_h"]))}</h4><p class="small">{esc(it["proof_lede"])}</p>'
+    out += f'<h4 class="dec-sub">{esc(fill(it["proof_h"]))}</h4><p class="small">{esc(fill(it["proof_lede"]))}</p>'
     out += PROOF.get('html') or f'<div class="pending" role="status"><p><b>Waiting for the engineer.</b> {esc(it["proof_wait"])}</p></div>'
     out += f'<p class="dec-rec approve">{esc(fill(it["approve"]))}</p>'
     rows = []
@@ -1372,7 +1376,7 @@ def cd_table(d, first, P):
     if first:
         fi = first.get('items', [])
         summ = (f'<p class="intro">The creative director first found {nw(sum(1 for i in fi if i.get("ready")), "none")} of the {nw(len(fi))} items ready. After the fix pass the rescore finds '
-                f'{nw(len(items) - len(nr), "none")} of {len(items)} ready' + (f', with {join_words([short(i) for i in nr])} still short' if nr else '') + '.</p>')
+                + (f'all {nw(len(items))} ready' if not nr else f'{nw(len(items) - len(nr), "none")} of the {nw(len(items))} ready, with {join_words([short(i) for i in nr])} still short') + '.</p>')
     else:
         summ = (f'<p class="intro">The creative director’s first scores found {nw(len(items) - len(nr), "none")} of the {nw(len(items))} items ready'
                 + (f': {join_words([short(i) for i in nr])} each had a score under 4 or a Must fix open.' if nr else '.') + '</p>')
@@ -1568,7 +1572,7 @@ details.more{margin-top:var(--oa-space-200);border-top:var(--oa-border-width-hai
 details.more>summary{cursor:pointer;font:var(--oa-type-ui);font-weight:600;min-height:2.75rem;display:flex;align-items:center;gap:var(--oa-space-100)}
 .facts{display:grid;grid-template-columns:minmax(0,1fr);gap:0 var(--oa-space-500);margin:var(--oa-space-200) 0;border-top:var(--oa-border-width-hairline) solid var(--hair)}
 @media (min-width:48em){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (min-width:64em){.facts.kf{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:64em){.facts.kf{grid-template-columns:repeat(4,minmax(0,1fr))}.facts.kf3{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .facts div{padding:var(--oa-space-100) 0;border-bottom:var(--oa-border-width-hairline) solid var(--hair)}
 .facts dt{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--ink-2)}
 .facts dd{margin:var(--oa-space-050) 0 0;font:var(--oa-type-body-small)}

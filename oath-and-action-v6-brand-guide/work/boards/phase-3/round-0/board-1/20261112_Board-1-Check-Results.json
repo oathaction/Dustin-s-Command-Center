@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-3/round-0/board-1/20261112_Board-1.html",
- "checked": "2026-11-12T01:48:26.293Z",
+ "checked": "2026-11-12T01:50:53.812Z",
  "views": [
   "overview"
  ],
@@ -9,7 +9,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 1273,
+   "texts": 1293,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -31,7 +31,7 @@
    },
    "scale": {
     "groups": 1,
-    "marks": 4,
+    "marks": 5,
     "bad": []
    },
    "party": {
@@ -42,7 +42,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 217738,
+   "height": 213920,
    "axe": [],
    "focusStops": 40,
    "focusWithoutRing": []
@@ -51,7 +51,7 @@
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 1273,
+   "texts": 1293,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -73,7 +73,7 @@
    },
    "scale": {
     "groups": 1,
-    "marks": 4,
+    "marks": 5,
     "bad": []
    },
    "party": {
@@ -84,7 +84,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 242817,
+   "height": 239639,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
@@ -93,7 +93,7 @@
    "width": 360,
    "view": "overview",
    "rootVisible": true,
-   "texts": 1273,
+   "texts": 1293,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -115,7 +115,7 @@
    },
    "scale": {
     "groups": 1,
-    "marks": 4,
+    "marks": 5,
     "bad": []
    },
    "party": {
@@ -126,7 +126,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 246238,
+   "height": 242963,
    "axe": [],
    "focusStops": null,
    "focusWithoutRing": null
