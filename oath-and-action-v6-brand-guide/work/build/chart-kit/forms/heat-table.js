@@ -154,7 +154,7 @@
           c.rect(x, tp, cw - 2, h - 4, { fill: f, data: { key: k + '|' + col.value, field: ev, value: r[ev] } });
           var wl = c.wrap(word(r[ev]), 'tick', cw - 6, 600).length;
           c.text(x + (cw - 2) / 2, tp + (h - 4) / 2 + tick * 0.35 - (wl - 1) * lh3 / 2, word(r[ev]), { role: 'tick', weight: 600, anchor: 'middle', max: cw - 6, leading: lh3, fill: DARK[f] ? 'label-on-subject' : 'label' });
-          if (ef && r[ef]) dot(x + cw - 2 - 5, tp + 4.5);   // in the corner, above the word
+          if (ef && r[ef]) dot(x + cw - 2 - 6, tp + 4.5);   // in the corner, above the word
         });
         y += h;
         c.line(0, y, W, y, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });

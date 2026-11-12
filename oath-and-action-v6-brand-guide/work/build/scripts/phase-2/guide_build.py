@@ -3954,6 +3954,28 @@ def self_test():
          {"warn": ["gives no list of 41 IDs with the four pillar icons", "[s-10-c-nolist] CL-001 at 24 px draws its master on 1x screens"],
           "absent": ["[s-10-c-nolist] oa-sym-cl-048", "lacks", "off the list"]}),
     ]
+    # Phase 3, round 1 fix pass (D3-480): a plate with two true sizes, and a chapter's shared plate CSS printed once
+    w2_specs = {"s-26-w2.html": "<p>A plate composed for two widths.</p>", "s-26-w2b.html": "<p>A second.</p>"}
+    w2_man = {"s-26-w2": {"chapter": "26", "rule": "26.1", "alt": "A plate with two true sizes, a fixture.", "width_px": 328, "wide_px": 680, "fit_switch": False, "notes": "fixture"},
+              "s-26-w2b": {"chapter": "26", "rule": "26.1", "alt": "A plate with a wide size under its narrow one, a fixture.", "width_px": 328, "wide_px": 300, "fit_switch": False, "notes": "fixture"}}
+    w2 = chapter("26", "tokens", "Tokens and how to choose them", [rule("26.1", {"correct": {"specimen": "s-26-w2", "caption": "A fixture."},
+                                                                              "failure": {"specimen": "s-26-w2b", "caption": "A fixture."}})],
+                 plate_css=".oa-w2 { color: var(--oa-color-text-primary) }\n.oa-w2-bad { color: #E63946 }")
+    scenarios += [
+        ("round 1 fix pass: a plate with two true sizes (wide_px) and a chapter's shared plate CSS (D3-480)",
+         {"26-tokens.json": w2}, {"specimens": w2_specs, "manifest": w2_man},
+         {"warn": ["s-26-w2b: wide_px 300 needs a number above width_px (328); ignored", "\"plate_css\": 1 literal color value(s) (#E63946)"],
+          "absent": ["s-26-w2: wide_px"],
+          "html": ['style="--w:328px;--w2:680px" data-width="328" data-wide="680"', 'data-width="328" style="--w:328px;--w2:680px" data-wide="680"',
+                   'True size, 680 px wide; 328 px in a column under 680 px',
+                   '<style data-plate-css>@scope (#tokens [data-specimen]) {'],
+          "tests": [("the shared plate CSS prints once, at the head of its chapter", lambda pg: pg.count("data-plate-css") == 1
+                     and pg.find('id="tokens"') < pg.find("data-plate-css") < pg.find('id="fig-s-26-w2"')),
+                    ("the shell switches the stage by its frame's container", lambda pg: "container:oa-frame/inline-size" in pg.replace(" ", "")
+                     and "@container oa-frame (min-width: 680px)" in pg or "@container oa-frame (min-width:680px)" in pg),
+                    ("a plate whose wide_px is ignored keeps one true size", lambda pg: 'data-specimen="s-26-w2b"' in pg
+                     and not re.search(r'data-specimen="s-26-w2b"[^>]*data-wide', pg))]}),
+    ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:
         roots = {k: Path(tmp) / f"families-{k}" for k in ("full", "faulty", "fits")}

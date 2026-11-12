@@ -478,7 +478,7 @@ def rule_14_2(B):
                                    {"field": "employees", "label": "Employees", "format": "integer"}]},
                 encode={"x": "year", "y": "employees"}, domain="D10", states=[])
     B.spec("s-14-2-full", **dict(base, notes_internal="Rule 14.2's correct plate: every part of the anatomy, numbered by the plate's style."))
-    B.spec("s-14-2-bare", **dict(base, title="Civic and social organizations, 1998 to 2023", show=["title", "chart"],
+    B.spec("s-14-2-bare", topic=True, **dict(base, title="Civic and social organizations, 1998 to 2023", show=["title", "chart"],
                                  failure={"rule": "14.2", "caption_lead": "Fails Rule 14.2."},
                                  notes_internal="Rule 14.2's failure plate: a topic for a title, and only the chart under it."))
     # the numerals sit in the left margin at desktop and before each part on a phone, in the order of PARTS
@@ -501,8 +501,10 @@ def rule_14_2(B):
         ["Every chart prints the same eight parts in the same order, so a reader always knows where to look: the evidence label and grade "
          "line (Rules 13.1 and 13.2), the title, the measure line (Rule 13.7), the reading guide, the chart, its notes, the source line "
          "(Rule 13.6) and the table (Rule 14.13).",
-         "The title is one full sentence, and house rule H08 sizes its claim. The reading guide says in a sentence or two how to read the "
-         "drawing. Notes carry what the drawing cannot. A part with nothing to say is left out, and the rest keep their order."],
+         "The title is one full sentence, and house rule H08 sizes its claim. A chart of dollars across years says in its measure line "
+         "“not adjusted for inflation”, or names the dollars’ year and the price index that adjusted them. The reading guide says in a "
+         "sentence or two how to read the drawing. Notes carry what the drawing cannot. A part with nothing to say is left out, and the "
+         "rest keep their order."],
         ["Readers learn where things are after a few charts. When every chart puts its source in the same place, a reader can check any "
          "figure in seconds, and a chart that lacks a part shows the gap."],
         [("Order", "Evidence label and grade line, title, measure line, reading guide, chart, notes, source line, table"),
@@ -592,7 +594,7 @@ def rule_14_3(B):
          ("Units", "Once, in the measure line"),
          ("A key", "Only for a code no label can carry, under the measure line, in the order the marks run (Rule 12.6)")],
         ["12.6", "13.7"],
-        "Name each series in the spec's labels.series; the kit sets the names at the line ends and warns when one cannot fit.",
+        "Name each series in the spec’s labels.series; the kit sets the names at the line ends and warns when one cannot fit.",
         B.plate("s-14-3-correct", "Each line carries its own name beside it, so a reader reads the age group in place, and the youngest "
                                   "group, which the title names, stands out in ink."),
         B.plate("s-14-3-failure", fails("14.3", "Four lines in four inks send the reader down to a key and back for every line, where a name "
@@ -1040,8 +1042,8 @@ def rule_14_10(B):
     return entry(
         "14.10", "Choose the window from the question, and draw an inauguration only as a dated note.",
         ["Choose the window, the first and last period a chart shows, from the reader’s question, and print its reason in the measure line: "
-         "the first year a series exists, the first year a method holds, or the span the question names. Rule 13.7 gives charts shown "
-         "together one window.",
+         "the first year a series exists, the first year a method holds, the span the question names, or a round span back from the "
+         "latest figure when no earlier start has a reason of its own. Rule 13.7 gives charts shown together one window.",
          "An inauguration or an election may appear inside the window as a dated note on an unbroken line. The line keeps one ink and one "
          "weight across the date, and no band, color or break divides the period into one officeholder’s years and another’s (house rule H09)."],
         ["A window that starts where a line looks best can make a long fall look like a rise, and a reader cannot see what was left out. "
@@ -1052,7 +1054,7 @@ def rule_14_10(B):
          ("An event", "A dated note with a leader, on an unbroken line", "oa.chart.color.leader.onNewsprint"),
          ("An inauguration", "No band, color change or break at the date (house rule H09)")],
         ["13.7", "14.29"],
-        "Put the window's reason in measure_line and any event in annotations; the kit draws one line with no band.",
+        "Put the window’s reason in measure_line and any event in annotations; the kit draws one line with no band.",
         B.plate("s-14-10-correct", "The window runs from the first year these industry codes allow to the latest count, and the measure line "
                                    "says so. The line runs unbroken across every inauguration in it."),
         B.plate("s-14-10-failure", fails("14.10", "Bands at each inauguration cut a 25-year fall into four presidencies, so the drawing invites "
@@ -1079,8 +1081,8 @@ def rule_14_11(B):
     moe = [int(r["median_moe"]) for r in rs if r["year"] == "2025"][0]
     title = f"Median household income stood at ${comma(last[1])} in 2025, in 2025 dollars"
     g = "Documented: a Census Bureau survey"
-    measure = ("Median household income in 2025 dollars, each year from 2005 to 2025, the two decades around the survey’s changes in "
-               "2013 and 2017, United States")
+    measure = ("Median household income in 2025 dollars, adjusted by the chained consumer price index, each year from 2005 to 2025, "
+               "the two decades around the survey’s changes in 2013 and 2017, United States")
     W, H, L, R, T, Bt = 256, 220, 58, 246, 16, 184
     xs = scale(2005, 2025, L, R)
     ys = scale(60000, 90000, Bt, T)
@@ -1119,7 +1121,7 @@ def rule_14_11(B):
          ("A change of method", "A break, both estimates printed, a note that names the change", "oa.chart.color.leader.onNewsprint"),
          ("Preliminary", "An open mark and the word preliminary; the qualification names it (Rule 13.7)")],
         ["13.7", "14.37", "14.32"],
-        "Mark breaks in the data's break column and preliminary rows in its status column; the kit leaves the gap and opens the mark.",
+        "Mark breaks in the data’s break column and preliminary rows in its status column; the kit leaves the gap and opens the mark.",
         B.plate("s-14-11-correct", "The line breaks where the survey changed, and each of those years prints both its estimates, so a "
                                    "change of method never reads as a change in income."),
         B.plate("s-14-11-failure", fails("14.11", "One line runs through both of 2013’s estimates and both of 2017’s, so a change in the "
@@ -1318,7 +1320,8 @@ GROUP_LINES = {
     5: "Split bars, unit charts and treemaps show the parts of a whole and print the whole they add up to.",
     6: "Histograms, strip plots and box plots show how values spread, where they bunch and how far they run.",
     7: "Scatter plots and their relatives show whether two measures move together, and an association’s note says what the pattern cannot show about cause.",
-    8: "How sure a figure is shows as a range, a band or a fan, as its publisher states it.",
+    8: ("A range, a band or a fan shows how sure a figure is, as its publisher states it, whether a survey’s margin of error around "
+        "a finding or a model’s range around an estimate (Rule 13.1)."),
     9: "Icon arrays, proportional symbols and overlap diagrams make a share countable and show where groups overlap.",
     10: "Big numbers, bullet graphs and progress bars show where one measure stands now against a target or a range.",
     11: "People move through a process in funnels, cohort charts and survival curves, which show where they leave it.",
@@ -1338,14 +1341,17 @@ def chapter(B, sources):
         groups.append({"number": gp["group"], "before_rule": first, "title": gp["title"], "rules": gp["rules"], "line": GROUP_LINES[gp["group"]]})
     return {
         "number": "14", "anchor": "data-visualization", "title": "Data visualization", "part": "Evidence and media",
-        "instruction": "Start from the reader's question to choose a chart, then title it with the evidence it shows.",
+        "instruction": "Start from the reader’s question to choose a chart, then title it with the evidence it shows.",
         "opener": opener(B),
         "intro": [
             "This chapter sets how Oath & Action shows numbers. Fourteen rules come first and hold for every chart. Each form a chart can take "
             "then has its own entry, grouped by the question it answers, with when to use it, what to use instead, and a finished example "
             "that our chart kit draws from frozen data, with its table as live text.",
             "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those "
-            "rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files."],
+            "rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files. "
+            f"Each rule and entry rests on design judgment, from the chart system our founder and editor approved in November 2026, "
+            "unless it names a basis of its own."],
+        "basis": BASIS,
         "groups": groups,
         "related_chapters": [
             {"chapter": "01", "reason": "Rules 01.1 to 01.3 on parties and two-way scales, and Rule 01.9’s limits on examples."},
@@ -1460,7 +1466,7 @@ def check(entries, chap, B):
         for m in re.finditer(r"\bRules? (\d\d\.\d+)", s):
             if m.group(1) not in rules_known:
                 fails.append(f"{where} cites Rule {m.group(1)}, which no chapter or plan holds")
-        if re.search(r"(?<![\w’])'|\"", re.sub(r"<[^>]+>", "", s)) and "visible" not in where:
+        if re.search(r"['\"]", re.sub(r"<[^>]+>", "", s)):
             fails.append(f"a straight quote mark in {where}: {s[:60]}")
     for sid, t in B.files.items():
         bare = re.sub(r"var\([^)]*\)", "", t)

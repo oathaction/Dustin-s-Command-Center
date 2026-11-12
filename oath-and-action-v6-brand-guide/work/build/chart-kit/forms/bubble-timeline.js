@@ -72,17 +72,18 @@
         }
         y = base + 18;
       }
-      // on a phone the circles of busy decades would merge into one mass, so the form changes (DR-64, Rule 14.12): the periods
-      // before labels.phone_from are summed in a line of words, and each later period takes its own row, its circle and count
+      // the periods before labels.phone_from are summed in a line of words, on a phone and on a staggered wide drawing
       if (from !== null && early.length && L.phone_before && (c.phone || stagger)) {
-          var sum = 0, emax = 0;
-          early.forEach(function (r) { sum += r[es] || 0; emax = Math.max(emax, r[es] || 0); });
-          var ew = String(L.phone_before).replace('{first_x}', K.fmt(early[0][ex], f.x || 'year')).replace('{last_x}', K.fmt(early[early.length - 1][ex], f.x || 'year'))
-            .replace('{from_x}', K.fmt(L.phone_from, f.x || 'year')).replace('{n}', K.fmt(early.length, 'integer')).replace('{sum}', K.fmt(sum, f.size || 'integer')).replace('{max}', K.fmt(emax, f.size || 'integer'));
-          var eb = c.text(0, y + size, ew, { role: 'label', max: W });
-          early.forEach(function (r) { c.datum(0, eb.y, { data: { key: r[ek], field: es, value: r[es] || 0 } }); });
-          y = eb.bottom + 14;
+        var sum = 0, emax = 0;
+        early.forEach(function (r) { sum += r[es] || 0; emax = Math.max(emax, r[es] || 0); });
+        var ew = String(L.phone_before).replace('{first_x}', K.fmt(early[0][ex], f.x || 'year')).replace('{last_x}', K.fmt(early[early.length - 1][ex], f.x || 'year'))
+          .replace('{from_x}', K.fmt(L.phone_from, f.x || 'year')).replace('{n}', K.fmt(early.length, 'integer')).replace('{sum}', K.fmt(sum, f.size || 'integer')).replace('{max}', K.fmt(emax, f.size || 'integer'));
+        var eb = c.text(0, y + size, ew, { role: 'label', max: W });
+        early.forEach(function (r) { c.datum(0, eb.y, { data: { key: r[ek], field: es, value: r[es] || 0 } }); });
+        y = eb.bottom + 14;
       }
+      // on a phone the circles of busy decades would merge into one mass, so the form changes (DR-64, Rule 14.12): each
+      // later period takes its own row, its circle and count
       if (c.phone && from !== null) {
         var lmax = Math.max.apply(null, late.map(function (r) { return r[es] || 0; })), yw = 0;
         late.forEach(function (r) { yw = Math.max(yw, c.measure(K.fmt(r[ex], f.x || 'year'), 'tick', 400, true)); });
