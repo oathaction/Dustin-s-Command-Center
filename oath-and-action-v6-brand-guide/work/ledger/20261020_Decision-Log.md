@@ -4913,3 +4913,11 @@ The main session posted the round 2 plan with four questions. Dustin: "I approve
 |---|---|---|
 | D3-881 | Dustin's work tracker is published privately at https://claude.ai/artifact/57na3V5WrhNayPNYxXLaHA from `work/boards/tracker/20261112_Remaining-Work-Tracker.html`, with each remaining chat as a row in its database (`items` c00 to c18, `phases`, `meta/page`); each chat sets its own row active at its start and done at its close, and Dustin may tick rows himself | Dustin asked for one interactive view of the remaining work that the studio keeps current, so he need not ask for status |
 | D3-882 | Round 2's build closes on the committed state: strict build exit 0, 0 warnings, 10,587,775 bytes, 312 rules, 606 specimens; `phase3_ch14_build.py` 0 faults; `oa-chart.mjs build --all --no-png` 64 of 64 with 0 faults across every check file; data check 111 tables, 0 faults; V7 check 0 failures; quick guide check PASS at 1440 and 390 px (312 rules, 662 specimens, 3,047 same-page links, 0 failures) | The round's checks on the build the review will read; this chat hands off before the review (D3-661) |
+
+## Answer at round 2's close, November 12, 2026
+
+The main session asked whether chapter 13's seven script-drawn chart heads take a closing period (D3-667). Dustin: "I agree with all recommendations. So let's continue as recommended."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-247 | Chapter 13's seven script-drawn chart heads (Rule 13.1's four correct heads, Rule 13.6's jobs head on both plates, the left head on Rule 13.7's failure plate) take a closing period as a typographic correction, with no change to wording, so every chart title in the guide ends one way; the failure heads of Rules 13.1 to 13.3 keep their faults on purpose; chapter 13 stays otherwise as approved (DR-237, DR-242) | Dustin, November 12, as recommended (D3-667) |

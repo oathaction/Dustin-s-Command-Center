@@ -42,7 +42,7 @@ As round 1 ran them: one fix brief from the reports with each report's codes; ow
 Round 3: maps, structure, relationships, flow and behavior (32 forms), with a cartographer; data frozen in round 1 (`20261112_Round-3-Data-Plan.md`, row 113 under DR-243); map geometry (ENG-10's kit side) and DL-E1 (county map weight), held from round 2 (D3-660). Post the plan with questions and wait for his go. Board 2 follows round 3. Hand off after the progress page.
 
 ### E. Carried items
-- **For Dustin (D3-667):** chapter 13's seven script-drawn chart heads (Rule 13.1's four correct heads, Rule 13.6's jobs head on both plates, the left head on Rule 13.7's failure plate) still end without a period; DR-242 named five titles. Recommended: the same period, so every chart title in the guide ends one way. Asked in this chat's closing reply.
+- **DR-247 (answered):** chapter 13's seven script-drawn chart heads (Rule 13.1's four correct heads, Rule 13.6's jobs head on both plates, the left head on Rule 13.7's failure plate) take a closing period, wording unchanged; the failure heads of 13.1 to 13.3 keep their faults. The editor applies it in `phase3_ch13_build.py` during round 2's fix pass and logs each.
 - **V7.1 items for board 2:** Variable D6's kind (D3-261); Medicaid renewals (D3-260); R-01's measures; maker A's A15 atlas strings and the Article V wording; headline figure 5 storing figure 4's qualification (D3-668).
 - **Engineer, fix pass:** RB-G4, a `paths` option for `place_labels` (D3-671).
 - **Research:** the courts count 677 district judge positions against 673 in the statute's table (temporary judgeships likely; not traced); fiscal 2024 school revenue includes $39.2 billion of COVID-19 relief (in the file's qualification).
@@ -68,7 +68,7 @@ I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on 
 
 Round 2 of Phase 3 is built and signed off by the data lead; its review has not started. My round 2 approval (DR-246) covers the review, fix pass, second pass, the creative director's rescore and a second private progress page, so run them without asking me again. Confirm the committed state with a strict build and the quick guide check first, and run the four-width guide check the round 1 close deferred. After the progress page, post the round 3 plan with your questions and wait for my go.
 
-On chapter 13's seven script-drawn chart heads (D3-667): [I approve the period on all seven / leave them as they are].
+I approved the closing period on chapter 13's seven script-drawn chart heads (DR-247), with no change to wording; the editor applies it in the fix pass and logs it.
 
 Before you do anything else, read these in order:
 1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from D3-649 to the end), the change ledger (to C-098), the open questions, and the Gate 2 report (work/ledger/20261111_Gate-2-Report.md), section 9.
@@ -78,7 +78,7 @@ Data keys are already saved in this environment: the api.data.gov key for api.op
 
 Nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them, even when they fall more on one side (DR-93). Never manufacture balance.
 
-Settled and not to be changed: the Civic Line icons (DR-144) with the redraws and new drawings I approved (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 like every other reform (DR-223); the atlas visual system (DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on, including DR-225 to DR-246.
+Settled and not to be changed: the Civic Line icons (DR-144) with the redraws and new drawings I approved (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 like every other reform (DR-223); the atlas visual system (DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on, including DR-225 to DR-247.
 
 Phase 3 runs as the proposal sets it: form rounds 1 to 3 ending at board 2, rounds 4 and 5 with chapter 15 ending at board 3, then Gate 3. The guide stays one file.
 
@@ -94,7 +94,7 @@ How to work with me:
 - Move as fast as quality allows, and tell me when this chat should hand off to a new one.
 ```
 
-Dustin replaces the bracketed line with his answer before pasting.
+Dustin answered the chapter 13 question at this chat's close (DR-247); the prompt above carries his answer.
 
 ## 5. Change log of this chat
 
@@ -106,7 +106,7 @@ Created, all under `work/` unless named:
 - **Data:** `build/scripts/phase-3/maker_b_round2_derive.py` and its five derived files; round 4's ten frozen files with sidecars in `build/data/`.
 
 Modified:
-- `ledger/20261020_Decision-Log.md` (D3-649 to D3-882); `handoffs/phase-3/20261112_Chapter-14-Plan.json` (round 2 rows); `handoffs/phase-3/20261112_Round-3-Data-Plan.md` (row 113); `research/20261021_Research-Ledger.md` (P7-301 to P7-310 and notes).
+- `ledger/20261020_Decision-Log.md` (D3-649 to D3-882 and DR-247); `handoffs/phase-3/20261112_Chapter-14-Plan.json` (round 2 rows); `handoffs/phase-3/20261112_Round-3-Data-Plan.md` (row 113); `research/20261021_Research-Ledger.md` (P7-301 to P7-310 and notes).
 - The kit's shared files (`kit.js`, `parts.js`, `kit.css`, `checks.js`, `oa-chart.mjs`, `README.md`), round 1 forms `line-event-notes.js`, `bar-benchmark-tick.js`, `heat-table.js`, `indexed-line.js`, specs `s18.json` and `s33.json`; `phase3_ch13_build.py` and five `s-13-*.chart.json` files (DR-242); `phase3_ch14_rules_build.py`, entries `14-001.json` to `14-014.json`, `14-chapter.json` and the rule plates; `phase3_ch14_build.py`, `guide_charts.py`, `guide_build.py`, `dataviz_check.js`, `guide-shell.css`; `phase3_ch15_build.py`, chapter 15's file, plates and manifest; chapter 14's generated file, manifest and example log; data files and sidecars for S50, S53, S57, S62 and S64.
 
 Published: the work tracker, private (`boards/tracker/20261112_Remaining-Work-Tracker.html`, https://claude.ai/artifact/57na3V5WrhNayPNYxXLaHA). Not touched: `source/`, `deliverables/`, Atlas V7.
