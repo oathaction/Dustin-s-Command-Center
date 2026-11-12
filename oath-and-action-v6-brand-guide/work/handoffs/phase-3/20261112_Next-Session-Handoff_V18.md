@@ -46,7 +46,7 @@ A short private page: every round 1 specimen at 1440 and 390 px, rules 14.1 to 1
 Composition, distribution and density, correlation, uncertainty and estimates, gauges and indicators (41 forms; rules 14.46 to 14.92 by the plan file). Data frozen in round 0. The research lead fetches round 4's data. Chapter 15 continues (15.11, 15.12, 15.15 to 15.18). Write the round 2 brief on round 1's model.
 
 ### F. Carried items
-- Download item 2 for Dustin: the Department of Labor's state minimum wage history page, https://www.dol.gov/agencies/whd/state/minimum-wage/history, saved as PDF or HTML and attached unchanged; it serves round 3's row 113 only (DR-230 leaves three after it).
+- Download item 2 arrived: Dustin attached the Department of Labor's "Changes in Basic Minimum Wages in Non-Farm Employment Under State Law: Selected Years 1968 to 2024" page on November 12. It is saved unchanged at `work/research/downloads/20261112_DOL-State-Minimum-Wage-History-1968-To-2024.htm` (124,921 bytes, SHA-256 d16798c732ff…, full hash in the record beside it) with `...-1968-To-2024.json` (D3-459). The research lead parses and freezes it under C1 with a ledger row for round 3's row 113, checking it covers the panels the data lead's sign-off asks for (after July 24, 2009). DR-230 leaves three downloads.
 - V7.1 items for board 2: Variable D6's kind (issue list item 8, D3-261); Medicaid renewals, KFF's figure in I062 against CMS's own counts and period (D3-260); R-01's measures (round 0).
 - Missouri's certified count (Phase 5); Alaska's certification targeted November 25.
 - Open questions Q-04 and Q-12.

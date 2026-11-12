@@ -1,0 +1,16 @@
+{
+ "file": "20261112_DOL-State-Minimum-Wage-History-1968-To-2024.htm",
+ "supplied_by": "Dustin Cathcart, attached in chat November 12, 2026 (DR-230 download item 2)",
+ "original_name": "Changes_in_Basic_Minimum_Wages_in_Non-Farm_Employment_Under_State_Law__Selected_Years_1968_to_2024___U.S._Department_of_Labor.htm",
+ "page": "https://www.dol.gov/agencies/whd/state/minimum-wage/history",
+ "publisher": "U.S. Department of Labor, Wage and Hour Division",
+ "title_in_file": "Changes in Basic Minimum Wages in Non-Farm Employment Under State Law: Selected Years 1968 to 2024 | U.S. Department of Labor",
+ "bytes": 124921,
+ "sha256": "d16798c732ffc3fc6dbd0321858f6d477907e71d1adaa6df1689a2748bb6ccc0",
+ "serves": "Round 3 data plan row 113 only",
+ "status": "Saved unchanged; not yet parsed or frozen as a data table. The research lead freezes it under contract C1 with a ledger row in round 3's fetch.",
+ "years_seen_in_file": [
+  "1961",
+  "2025"
+ ]
+}
