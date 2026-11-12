@@ -276,3 +276,8 @@ Not tested: the guide build with the changed form; P02 at 1440 px looked at.
 
 Tested: `oa-chart.mjs build s02` with the sweep on: PASS, 0 faults. Node drawings at 720, 656, 558, 358, 326, 296 and 256 px on both grounds compared with the spec before the change: all 14 the same byte for byte, the 1440 and 390 px drawings among them.
 
+**RF-25a, open dots on the nation's line.** The dots were already drawn after the dashed line and filled with the ground; at 7 px the line ran along a dot's edge, so an open dot read as half filled.
+- D3-xxx | An open dot within 3 px plus its radius of the nation's dashed line takes a 1.5 px halo of the ground under it, so the line stops short of the dot | RF-25a: an open dot must read as open at 7 px; the halo changes no position and no ink
+
+Tested: `oa-chart.mjs build` with the sweep on: S57, `s-14-9-range` and `20261112_P02-Spec-V6.json` PASS, 0 faults. Node drawings compared with the committed form: S57 changes at every width only by the added halos (9 open dots at 1440 px, 12 at 390 px); Rule 14.9's plate is unchanged at its desk width and takes 2 to 4 halos from 656 px down (4 at 390 px). Looked at at twice size: P02 at 358 px (the 7 px open dots beside the line) and S57 at 358 px.
+

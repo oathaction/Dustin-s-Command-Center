@@ -160,6 +160,10 @@
         var wst = role === 'subject' || role === 'point' ? 'context' : role;
         if (state !== 'margins') P.whisker(c, a, z, cy, { dir: 'h', stroke: wst, key: k, low: lo(r), high: hi(r) });
         if (is_open(r)) {
+          // an open dot that the nation's dashed line passes through or beside takes a 1.5 px halo of the ground first, so
+          // the line stops short of it and a 7 px dot never reads as half filled (the data lead's RF-25a); the dots are drawn
+          // after the line, filled with the ground
+          if (refrow && Math.abs(x - xs(refrow[ev])) < rd + 3) c.circle(x, cy, rd + 1.5, { fill: 'surface', mark: false });
           c.circle(x, cy, rd, { fill: 'surface', data: { key: k, field: ev, value: r[ev] } });
           c.circle(x, cy, rd, { stroke: role, width: state === 'lines' ? c.t('line-context') : 1.5, mark: false });
         } else c.circle(x, cy, rd, Object.assign({ fill: role, data: { key: k, field: ev, value: r[ev] } }, ink.keyline(r)));
