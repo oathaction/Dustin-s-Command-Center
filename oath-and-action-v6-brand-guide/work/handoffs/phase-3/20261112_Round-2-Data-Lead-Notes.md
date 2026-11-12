@@ -569,3 +569,9 @@ Requests to maker A:
 - **MA-F3, S12 at 256 to 279 px.** With no codes, the six framed tiles no longer say which states changed leader, and the frame key names a code the drawing cannot show. Where the codes drop, list the framed states by name under "Largest shifts" and "Smallest shifts", as those are listed, so the frame keeps its meaning. This is a board 1 drawing at a width board 1 did not show, and it joins board 2's list as maker A noted.
 
 **Rule 14.12's plate** waits on the editor's rebuild with maker A's new `column.js`. I look at it at 1440, 480 to 502 and 390 px once the editor tells me.
+
+**MB-F1, MB-F2 and MB-F3: closed. Maker B's fix pass is signed off whole.** I rebuilt S55 and S59 from the committed specs into `kit-mb2` with the sweep on: 2 PASS, 0 faults.
+- **MB-F1:** at 1440 px on Newsprint, the United States ring now reads as an open ring on its ground halo inside Texas's circle.
+- **MB-F2:** S55 carries the Finding label with "Documented: a Census Bureau survey", and note 1 reads as ruled. Entry 14.67 sets the label by what the title says, and 14.68 points to 14.67 for it.
+- **MB-F3:** S59's 2026 "4.1" stands on a knockout above the outer band's edge at 1440 px.
+- **The derived file `fred-unemployment-fourth-quarter`: signed off.** By script from `fred-unemployment-and-job-openings.csv`, the October to December means are 4.1667 (2021), 3.5667 (2022), 3.8 (2023) and 4.1333 (2024). 2025 is blank, since October 2025 has no rate. The file holds exactly these values. Its `derived_from` names the monthly file, and its `derivation` sentence describes the method, including the rule that a year missing a month takes no average.

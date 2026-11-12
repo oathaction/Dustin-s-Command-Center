@@ -102,7 +102,17 @@
       if (L.frame_label) {
         c.rect(0.5, ky + 6.5, 13, 13, { stroke: 'label', width: c.t('tile-frame'), mark: false });
         var fb = c.text(20, ky + 18, L.frame_label, { role: 'tick', max: W - 24 });
-        if (!codes) bot = Math.max(bot, fb.bottom + 12);
+        if (!codes) {
+          // with no codes in the tiles, the framed states are named under the frame's words, so the drawing still says
+          // which states they are (the data lead's MA-F3)
+          var fr = rows.filter(function (r) { return G.tiles[r[ec]] && L.frame === 'sign' && ef && et && (r[ef] < 0) !== (r[et] < 0); })
+            .map(function (r) { return G.tiles[r[ec]][3]; }).sort();
+          if (fr.length) {
+            var fw = fr.length > 1 ? fr.slice(0, -1).join(', ') + ' and ' + fr[fr.length - 1] : fr[0];
+            fb = c.text(20, fb.bottom + 4 + c.size('tick') * 0.95, fw, { role: 'tick', weight: 600, max: W - 24 });
+          }
+          bot = Math.max(bot, fb.bottom + 12);
+        }
       }
       if (!codes) bot = c.text(0, bot + 6, K.word('unlabeled_tiles'), { role: 'note', max: W, fill: 'secondary' }).bottom + 4;
       c.height(bot);

@@ -278,7 +278,8 @@ Under `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` (Editor paragraph, c
 - **Rule 14.9 (RF-7, ST S4; ED-F1 and ED-F2), done.** Two gap-test rows replace one, the second's share counted in units, and the builders line takes the publisher's printed margin first. The generator checks the exact test against the independent one for all ten states; the same five pass. Drawing, caption and title unchanged. The rows stack under a 176 px plot, since call 9's new interval check failed 321 to 330 px drawings.
 - **Rule 14.11 (ST S7), done.** Its reading guide glosses "median", the chapter's first. Its "New questions" note rises and wraps under 480 px, after AX S2's new guard found it half over a dot at 225 to 328 px.
 - **Group 8's line (CD R-S2), done.** 30 words with no stacked clauses.
-- **Left for the second pass, in makers' word fields:** ST S3 (14.69, 14.73), ST S7's "quartile" (14.60), ST S8 and RF-3 (S63's words), AX M1 and AX S10 (14.75 and 14.90's color-step names), AX S4 (S47 and S53), AX S8 (14.74's missing-margin words, from the research lead's notes), and the words the data lead's RF-4, RF-5, RF-12, RF-13, RF-18, RF-20 and RF-22 name me for. The makers had already set several by 22:10 (14.60's quartile gloss, 14.75's edges, the 14.69 and 14.73 pointers).
+- **Second pass, done (23:20).** Chapter 15: seven rows to the systems designer, all applied. Maker A: five changes (S45, S48, S60, entry 14.90). Maker B: twelve (S55, S56, S57, S59, entries 14.60, 14.62, 14.68, 14.74, 14.75), with AX S8's words in 14.74 and AX S10's in 14.75 and 14.90. The family's ink words, at the data lead's question: "the text’s ink" and "gray", 30 changes in 22 files and four lines of my generator. Every touched spec passes the kit with the sweep; both makers' figure checks pass; the strict build exits 0 with no warnings.
+- **Was left for the second pass, in makers' word fields:** ST S3 (14.69, 14.73), ST S7's "quartile" (14.60), ST S8 and RF-3 (S63's words), AX M1 and AX S10 (14.75 and 14.90's color-step names), AX S4 (S47 and S53), AX S8 (14.74's missing-margin words, from the research lead's notes), and the words the data lead's RF-4, RF-5, RF-12, RF-13, RF-18, RF-20 and RF-22 name me for. The makers had already set several by 22:10 (14.60's quartile gloss, 14.75's edges, the 14.69 and 14.73 pointers).
 - **Rule 14.12's sweep fault, closed (22:30).** Maker A's `column.js` now draws its bars wherever a value would not fit its column; `s-14-12-cols` passes with the sweep, and at 490 and 520 px the twelve years read as bars, 2015 gray with its value and 2026 red.
 
 ### Routine calls
@@ -313,6 +314,14 @@ Under `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` (Editor paragraph, c
 - D3-xxx | Rule 14.11's plate takes no band words | RF-2 names "Rule 14.11's plate on the same form", but the plate draws `line-event-notes` with no band; entry 14.75 alone takes them
 - D3-xxx | The editor writes maker A's second pass straight into its word fields: S60's note 1, S45's note 1, S48's chart note, and entry 14.90's rule and builders | D3-669, D3-900; S60 named figures by numbers the plate never prints, S45 was passive, S48 called the independent an open ring
 - D3-xxx | Entry 14.90 says a range can be a past target, such as an earlier limit | AX S10's reader asked why S64 draws the limit no longer in force
+- D3-xxx | The editor writes maker B's second pass straight into its word fields: S55, S56, S57 and S59's notes, and entries 14.60, 14.62, 14.68, 14.74 and 14.75 | D3-669, D3-900; S59 called an empty column light, S56 printed a pixel width, 14.62 left two pronouns open
+- D3-xxx | Entry 14.74 carries the research lead's order for a missing margin: the publisher's own from the same release, the formula only where it prints none, no interval where neither exists | AX S8, D3-905
+- D3-xxx | Entries 14.75 and 14.90 print no color-step name in their rules; their builders lines name the steps | AX S10: the simulated reader stopped at "Stone magnitude step 1" and "magnitude steps"
+- D3-xxx | The family's notes and alts name the mark the title names "in the text’s ink" and the rest "gray"; bands are "shaded" and stepped inks run from "closest to the page color" to "the strongest"; no ink is called dark or light | Dark and light swap on Charcoal (D3-836) and the sequential steps reverse there; the subject ink is the text's color on both grounds and CanvasText in forced colors; one term with the rules (H02)
+- D3-xxx | S53 takes "the text’s ink" in place of its own "the strongest ink" | One term for the family; "the text’s ink" holds on all three grounds as "strongest" does, and the rules already use it
+- D3-xxx | A red mark's note drops "with a dark outline" (S20, S21, S23) | The keyline is drawn on Newsprint only
+- D3-xxx | Rule 14.5's why says "a stronger green means more" | "darker" was false on Charcoal, where the sequential steps reverse
+- D3-xxx | Sketch 14.66's `<desc>` takes its alt's new first sentence | The chapter build holds the two together (R2-3); words only
 - D3-xxx | Chapter 15's second pass goes to the systems designer as a table of seven rows (15.10, 15.11, 15.12, 15.17), all applied | D3-900: the generator is the systems designer's; H11 for 15.10 and 15.11
 - D3-xxx | Rule 14.5 keeps "The Stone magnitude steps" | It is the rule that sets the palettes, so the name is its subject; AX S10's fault is the name in 14.75 and 14.90, read without that context
 
@@ -334,6 +343,47 @@ Read at 23:05, after maker A reported done: every word field that changed since 
 | 14.90 | builders | labels.bands the bands with their steps and words, | labels.bands the bands, each with its magnitude step (1 to 4, the Stone steps of Rule 14.5) and words, | AX S10: the step names move here |
 
 Read and kept: S63's title, note 1 and X18's words, which maker A set from RF-3 as given (X18's words name the second Trump administration and its first day, ST S8), its chart note on the atlas's titles and grades, and its table's Atlas grade column; S60's survey note and its order of notes; S61's 30-word title (both provisions, DR-98), measure line, alt and chart note; S47's chart note and note 1, which repeat the fold's count because the chart note sits in the folded table section as the drawing's text equivalent; S43's margin note; S44's chart note naming steps by what they do (AX S3); S45's title and notes 1 and 3; S46's measure line; S62's step note and table words ("never happened" is the form's own term for the slash, Rule 11.2); S10's dashed line; entries 14.46, 14.47, 14.50, 14.52 to 14.56, 14.85 to 14.87 and 14.89, whose red-share wording is one across the area forms and RF-1's.
+
+### Second pass: maker B (D3-669)
+
+Read at 23:10, after maker B reported done: every word field that changed since 011cbdec in maker B's specs (S02, S05, S09, S11, S13, S14, S24 to S35, S49 to S59) and entries 14.58 to 14.78, 92 fields in S35, S51 to S59 and entries 14.60, 14.62, 14.67 to 14.69, 14.73 and 14.75, the same way as maker A's. The ten round 1 specs maker B moved for the sweep and the crossing check changed no word but S35's cliff label, whose words are the same. Applied by `words/words.py apply`, 12 changes in 9 files; it stopped once on 14.75, whose "step 1" moves to the builders line on purpose, and I marked that one figure as moved.
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| S55 | notes.1 | each by more than the margin of error of the gap. | each by more than the gap’s margin of error. | One term with Rule 14.9 (H02) |
+| S56 | chart_notes.0 | in a column narrower than 330 px each takes its year alone, and the latest quarter takes its year alone wherever its full words would cross the path. | where the drawing is narrow, each takes its year alone, as does the latest quarter wherever its full words would cross the path. | A pixel width is a builder's measure in words a reader hears (AX S10's sense); "takes its year alone" said twice |
+| S57 | notes.1 | By that test, 13 states | By either test, 13 states | After RF-7's sentence on the finer test, "that test" could mean either; both give the same count |
+| S59 | notes.2 | since no unemployment rate was published for October 2025. | since the Bureau of Labor Statistics published no unemployment rate for October 2025. | W02, as S56's note says it |
+| S59 | chart_notes.0 | and the light column at 2025 marks the year with no fourth-quarter average. | and the empty column at 2025, edged by a dashed line, marks the year with no fourth-quarter average. | The column is empty, in the ground's color with a dashed edge, as the 1440 px drawing and its key show |
+| 14.60 | rule.0 | while that red stays within 5 percent of the drawing (Rule 05.1) | while that red stays within 5 percent of the drawing at every width (Rule 05.1) | One wording for RF-1's case with 14.47, 14.62 and 14.87 |
+| 14.62 | rule.0 | and the subject ink where it would pass it, … naming its ages and never its color. | and the subject ink where the red would pass that share, … and name the band by its ages, since its ink changes with the ground and in forced colors. | "it would pass it" left both pronouns open; W09, the reason in place of "never its color" (AX S4) |
+| 14.68 | rule.0 | while that red stays within 5 percent of the drawing (Rule 05.1) | … at every width (Rule 05.1) | The same as 14.60 |
+| 14.75 | rule.0 | Fill the band in Stone magnitude step 1 and draw its two edges | Fill the band in the palest gray and draw its two edges | AX S10 and AX M1: the color step's name stopped the reader |
+| 14.75 | builders | for a change of method. | for a change of method. The form fills the band in magnitude step 1, the palest of the Stone steps in Rule 14.5, and draws its two edges in the context ink. | AX S10 and RF-2: the builder's names for the band's inks |
+| 14.74 | rule.0 | Draw the nation as a dashed line | Print the margin the publisher gives for the figure drawn, from the same release where it gives one, as the Census Bureau does in its data profile and subject tables, and compute one by its published formula only where it gives none, saying so in the note. With no margin to print or compute, leave the intervals out, set no figure above another, and say in the note that the publisher gives none. Draw the nation as a dashed line | AX S8 (D3-905), in the research lead's order ("When a margin is missing", its notes) |
+| 14.74 | builders | labels.value the right column’s words. | labels.value the right column’s words; encode.margin takes the column the sidecar’s margin_columns names for the value, and a column in check_only_columns serves the data check alone. | AX S8: the research lead's sidecar fields, so a designer picks the printed margin by name |
+
+Read and kept: S51's table heads (Lowest and Highest county); S52's chart note on the medians and the far counties; S53's title (Medicare at 65, CD B-S3), band words "Ages 55 to 64: 41.2 million" and table word "100 and over"; S54's Florida line; S55's question, title (RF-18 as given), reading guide, alt and labels; S56's reason for the end of 2009; S57's 29-word title, which maker B's figure check reads word for word; S57's note 2 in RF-7's words; S58's note on the two price indexes (ST S6) and its survey words, whose two "median" entries match footnotes 21 and 22, which say different things; S59's grade line, measure line (the window's reason), reading guide, note on the four averages, alt, key words and source line; 14.67, 14.69 and 14.73 (ST S3's pointers; chapter 14 has no rule for two measures in aligned panels, so 14.69 points to 14.73's rule text, as ST S3 allows); 14.62's builders line.
+
+### Second pass: one ink word for the family (the data lead's question, via the main session)
+
+S53 named its band by role ("the strongest ink"), and 18 other notes and alts said "dark ink", "light gray", "dark line" or "light band". Dark and light swap on Charcoal (D3-836), and the sequential steps reverse there too: step 1 is the palest on Newsprint and the darkest on Charcoal (`tokens.css`). I chose **"the text’s ink"** for the mark the title names and **"gray"** for the rest. The subject ink is the text's color on each ground, and the kit draws it as CanvasText in forced colors (`kit.css`), so the phrase holds in all three; it is already the rules' term ("Dashed in the text’s ink") and the phrase of S10, S17, S36 and S47. "Gray" holds on both grounds. A band is "shaded", and stepped inks run "from closest to the page color to the strongest". Red keeps its name where the view spends it (Rule 14.6), and a red mark's "dark outline" goes, since the keyline is drawn on Newsprint only.
+
+Applied by `words.py apply`, 30 changes in 22 files: chart notes, alts and reading guides of S10, S17, S18, S20, S21, S23, S24, S27, S34, S35, S36, S37, S47, S50 to S55 and S58, and the sketch alts of 14.55 and 14.66; and in my generator, the alts of Rule 14.7's correct plate ("Three bars, all in the text’s ink") and Rule 14.13's ("in the text’s ink and the rest in gray"), Rule 14.3's labels sentence ("in the text’s ink") and Rule 14.5's why ("a stronger green means more", which was false on Charcoal). Sketch 14.66's drawing file holds its alt's first sentence in its `<desc>`, which the chapter build checks, so I changed that one sentence there too (`s-14-66-sketch.html`, one line in `git diff`). The changes, in short:
+
+| Where | Before | After |
+|---|---|---|
+| S17, S18, S36, S50, S54, S55 (notes) | light gray | gray |
+| S20, S21, S23 | red with a dark outline; … light gray | red; … gray |
+| S24, S34, S50, S51, S52, S54, S55 (notes and alts) | dark ink, dark line, dark outline | the text’s ink, a line in the text’s ink, the outline in the text’s ink |
+| S53 (alt, chart note, reading guide) | the strongest ink; every other age is muted | the text’s ink; every other age is gray |
+| S10, S47 | the ink of the text | the text’s ink |
+| S27 | Darker gray line: Connecticut | Named gray line: Connecticut |
+| S35, S58 | light band | shaded band |
+| S37 | from very low, the lightest, to high, the darkest | from very low, closest to the page color, to high, the strongest |
+| Sketches 14.55, 14.66 | light gray; the inner ring darkest | gray; the inner ring the strongest |
+
+Round 1 drawings whose words changed (board 1 approved the drawings; no drawing changed): S10, S17, S18, S20, S21, S23, S24, S27, S34, S35, S36, S37. The entries' rule texts that set "light gray" for a builder (14.16, 14.20, 14.21, 14.23, 14.42, 14.47, 14.52, 14.55) stay: they set the Newsprint design, and Rule 14.6 sets the Charcoal ink.
 
 ### Second pass: words for the systems designer (chapter 15)
 
@@ -371,9 +421,26 @@ Read and kept: 15.12's caption, specs "Order" and "Connections", the "Each step"
 
 - Maker A's second pass: `words.py apply` failed once, on S45, whose stored sentence holds a no-break space before "percent"; corrected and applied, 5 changes in 4 files, one line each in `git diff`. `oa-chart.mjs build` with the sweep on S45, S48 and S60: 3 PASS, 0 faults. Maker A's `tools/fixfigs.py`: 38 passed, 0 failed. S45's new claim checked by script on the frozen file. S48's 1440 px drawing looked at (the independent solid, the two vacancies open). `phase3_ch14_build.py`: 0 faults.
 
+- Maker B's second pass: `words.py apply`, 12 changes in 9 files. `oa-chart.mjs build` with the sweep on S55, S56, S57, S59 and my `s-14-9-range` (on maker B's `range-bar`, now at the row weights) and `s-14-11-line`: 6 PASS, 0 faults. `maker_b_round2_derive.py --figures` and `--check`: 0 faults. S59 built at 1440 px on both grounds and its Newsprint drawing looked at (the empty 2025 column and its key). Census footnotes 21 and 22 read in S58's sidecar.
+- In a strict build after maker B's changes (`guide3.html`): exit 0, 0 warnings, 10,633,419 bytes. By Playwright at 1440 and 390 px, S45, S48, S55, S56, S57, S59 and S60's entries: no visible text under 13 px; nothing past the stage's edge outside the kit's sideways-scrolling table frame, where S55, S57, S59 and S60's tables run wider at 390 px by design (checked by a second run that sets the frame aside).
+- The family's ink words: `words.py apply`, 30 changes in 22 files. `oa-chart.mjs build` with the sweep on S10, S17, S18, S20, S21, S23, S24, S27, S34 to S37, S47, S50 to S55, S58, `s-14-7-seats` and `s-14-13-cols`: 22 PASS, 0 faults. Maker A's `fixfigs.py` 38 of 38; maker B's `--figures` 0 faults. A rescan of every spec's alt, notes, chart notes and reading guide and every chapter 13 and 14 alt in the manifests finds none of the old ink words. `tokens.css` read for the sequential and band inks on both grounds; `kit.css` for the forced-colors inks.
+- `phase3_ch14_build.py` failed once (sketch 14.66's `<desc>` no longer held its alt's first sentence) and passed, 0 faults, after the `<desc>` took the same words.
+- Last runs (23:20): strict build (`guide5.html`) exit 0, 0 warnings, 10,633,764 bytes; `phase3_ch14_build.py` 0 faults; `phase3_ch14_rules_build.py` every check passes; `oa-chart.mjs build` with the sweep on my 18 plate specs, 18 PASS, 18 check files; `maker_b_round2_derive.py --check` 0 faults.
+
 ### Not tested (fix pass)
 
 - Rule 14.12's plate between 480 and 502 px in the page; the kit's drawings at 490 and 520 px were looked at instead.
 - My changed plates on Charcoal, in grayscale and in forced colors in the page (the kit's own captures on both grounds passed its checks).
 - A strict build at exit 0 after my chapter 14 changes: other owners' charts fail the new guard.
 - The quick guide check (`guide_check.js`), the kit's `--all` and axe-core; the main session runs the first two.
+- The changed maker plates and sketches on Charcoal and in forced colors in the page; the kit's own captures on both grounds passed its checks, and I looked at S59 on Newsprint only.
+- Round 1 drawings whose words changed, by eye; their kit builds passed.
+- The quick guide check (`guide_check.js`), the kit's `--all` and axe-core; the main session runs the first two.
+
+### Files (fix pass)
+
+- Modified, mine: `work/build/scripts/phase-3/phase3_ch13_build.py` (DR-247), which rewrote `work/build/guide/specimens/s-13-1-correct.html`, `s-13-6-correct.html`, `s-13-6-failure.html` and `s-13-7-failure.html`; `work/build/scripts/phase-3/phase3_ch14_rules_build.py`, which rewrote `work/build/guide/entries/14-003.json`, `14-005.json`, `14-006.json`, `14-009.json`, `14-chapter.json` (group 8's line, `plate_css`), `work/build/guide/specimens/s-14-4-failure.html`, `s-14-13-failure.html`, and `s-14-7-seats.chart.json`, `s-14-9-range.chart.json`, `s-14-11-line.chart.json`, `s-14-12-cols.chart.json`, `s-14-13-cols.chart.json` (Rules 14.7's and 14.13's alts sit in their specs).
+- Modified, words only, in finished makers' files (second pass): `work/build/chart-kit/specs/` s10, s17, s18, s20, s21, s23, s24, s27, s34, s35, s36, s37, s45, s47, s48, s50, s51, s52, s53, s54, s55, s56, s57, s58, s59, s60 (`.json`); `work/build/guide/entries/` 14-055, 14-060, 14-062, 14-066, 14-068, 14-074, 14-075, 14-090 (`.json`); `work/build/guide/specimens/s-14-66-sketch.html` (its `<desc>` sentence).
+- Chapter 15's words: a table in this file, applied by the systems designer in its own generator.
+- Modified: this file. Created: none in the repository. Scratch only: `words/words.py`, `words/ch15dump.py`, the change lists, `cap.js`, `cap2.js` and the builds.
+
