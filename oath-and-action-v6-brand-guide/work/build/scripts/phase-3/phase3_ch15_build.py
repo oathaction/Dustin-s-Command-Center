@@ -22,6 +22,12 @@ Writes:
     work/build/guide/specimens/s-15-*.html
     work/build/guide/specimens/manifest-systems-graphics.json
 
+The review fix pass (D3-480, D3-485): every plate is a 328 px true-size stage whose frame is the query container
+oa-frame (manifest "frame_container"); a plate with words to set beside its drawing, or drawings to set side by side,
+also takes a 680 px stage where its frame holds it (manifest "wide_px") and composes for it with @container oa-frame,
+never a media query. No drawing scales. Every plate rule sits in one block, the chapter file's "plate_css", which the
+shell prints once; no plate carries a style of its own.
+
 Then runs its checks and stops on any failure: chapter 13's word checks (no em dash, no listed filler or corporate
 word, no studio word or decision code in reader text, titles of fifteen words or fewer, failure captions led by
 "Fails Rule 15.N.", failure plates with the do-not-publish band), no literal color, every font size from a token,

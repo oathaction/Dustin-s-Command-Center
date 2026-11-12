@@ -4491,3 +4491,19 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-600 | S34's note 1 said "Until 1975, ending debate took a two-thirds vote" (superseded by the editor's words below) | Statistics S10: the old words skipped 1949 to 1959, when the base was the whole Senate; the Senate's "About Filibusters and Cloture" page, read November 12, 2026, gives the 1917 two-thirds rule, the 1975 change and the 2010s precedents, and does not name 1949 or 1959, so the note states what holds across all of it |
 | D3-601 | S25's table drops its "Change, percent" column; note 2 drops "where a small agency can show a large percent change", and the caption names the change | The strict build failed S25 at 25,523 bytes, over 24,576 (three times the core average), after the January 2025 column; the percent column served no title, note or BC S20 need, and its unrounded values rode in the island. The kit's load-table fragment now measures 22,572 bytes; the two agencies with none in January 2022 print no blank cell, so access S6 needs no empty words |
 | D3-602 | S34's note 1 takes the editor's words: two-thirds of the senators present and voting from 1917 to 1975, except two-thirds of the whole Senate from 1949 to 1959 | Statistics S10 and the editor's request; the 1949 to 1959 base rests on the reviewer and the editor, since no Senate page read today names it |
+
+### Systems designer, round 1 review fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-603 | Chapter 15's plates compose by their frame's width: at 680 px or more a 680 px stage with the drawing at left and its words at right, or drawings side by side; under 680 px one 328 px column; under 328 px the prose follows the frame's visible width | D3-480 with CD CH15-M1, AX S5 and BC M1; the container is the frame, so the shell and the plate switch on one measure |
+| D3-604 | The ten failure plates that hold one drawing alone keep one 328 px stage at every width | A wide stage would set empty Newsprint beside the drawing; the correct plate above takes the width |
+| D3-605 | The failure plates of 15.3 and 15.4 take the wide stage | They draw two and three connections side by side, as their correct plates do |
+| D3-606 | Rules 15.2 and 15.4 set their three cards three across at the wide width, each card's artboard sized to its drawing, at most 200 px | Three 200 px columns with 16 px gaps fill 632 px inside the 24 px gutters, and a reader compares the three kinds or types on one line; the build stops if a card needs more |
+| D3-607 | In the wide composition the read-aloud sentence, chips, keys and source move to the words column, and the loop's chip and title stay over the drawing | The creative director's list of words for the right column; the narrow order is unchanged |
+| D3-608 | Rule 15.13's reading key and Rule 15.10's line for its drawn connection sit under their drawings | Each is the drawing's own legend, and the columns balance (15.13 at 764 px tall, 15.10 at 709) |
+| D3-609 | Every plate rule moves to the chapter's `plate_css`, and no plate carries a style | D3-480: 49,860 of 54,709 bytes repeated across 25 plates |
+| D3-610 | The opener's callouts are letters A to F | CD CH15-S1 and BC S1: the loop's steps carry numbers |
+| D3-611 | Rule 15.6 draws Loop R10 beside Loop B5 on a four-variable square | The data lead's ruling (e) on BC S2; the build stops if a side step misses its pills' flat edges or its words leave the 296 px artboard |
+| D3-612 | Rule 15.3 glosses variables at first use; Rule 15.13's plate keys "money, raises" and the ticks | AX S9; the delay words come from the atlas's glossary and chapter 13's delay classes |
+| D3-613 | The generator stops unless the guide build reads `plate_css`, `wide_px` and `frame_container` | The plates carry no style of their own and would print unstyled without the shell's hooks |
