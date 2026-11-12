@@ -32,5 +32,5 @@
   "builders": "No kit form, by design; draw the parts with area-sparklines (s13) or, from round 2, the stacked area form.",
   "correct": null,
   "failure": null,
-  "sketch_alt": "A streamgraph beside small multiples of the same illustrative data: the middle part never changes, yet its band bends in the streamgraph and lies flat in the small multiples."
+  "sketch_alt": "A streamgraph beside small multiples of the same illustrative data: the middle part holds steady, and its band bends in the streamgraph and lies flat in the small multiples."
 }

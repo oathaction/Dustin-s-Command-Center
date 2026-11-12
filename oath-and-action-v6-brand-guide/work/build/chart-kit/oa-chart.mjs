@@ -593,6 +593,25 @@ async function self_test() {
       if (!threw) bad++;
     }
   }
+  // second pass (D3-614): a point alone names itself (ED-E12), sort takes an order of values (A12), and a word drawn on a
+  // GrayText mark takes Canvas in forced colors
+  {
+    const cx = { ground: 'newsprint', t: () => 1 };
+    const one = K.parts.named_fill(cx, undefined, 'k', null, 'B'), both = K.parts.named_fill(cx, ['B'], 'k', null, 'B'), none = K.parts.named_fill(cx, undefined, 'k');
+    const ok1 = one({ k: 'A' }) === 'light-fill' && one({ k: 'B' }) === 'point' && both({ k: 'A' }) === 'light-fill' && both({ k: 'B' }) === 'point' && none({ k: 'A' }) === 'subject';
+    console.log(`${ok1 ? 'pass' : 'FAIL'} labels.point alone gives every other mark the light fill; with labels.named too, the same`);
+    if (!ok1) bad++;
+    const sel = K.select({ sort: [{ field: 'g', values: ['b', 'a'] }] }, [{ g: 'a', n: 1 }, { g: 'c', n: 2 }, { g: 'b', n: 3 }, { g: 'a', n: 4 }]).map(r => r.n).join(',');
+    const ok2 = sel === '3,1,4,2';
+    console.log(`${ok2 ? 'pass' : 'FAIL'} sort by an order of values keeps each value's rows in data order, unlisted values last (${sel})`);
+    if (!ok2) bad++;
+    const c3 = new K.Ctx({ id: 'T', labels: {}, encode: {} }, [], { width: 300, ground: 'newsprint', t: K.token_reader(TOK.newsprint), uid: 't' });
+    c3.rect(0, 0, 100, 40, { fill: 'seq-3', data: { key: 'x' } });
+    const tb = c3.text(50, 25, 'PA', { anchor: 'middle' }), tc = c3.text(200, 25, 'OH', { anchor: 'middle' });
+    const ok3 = tb.on_gray && !tc.on_gray && /oac-fc-on-gray/.test(c3._els[1]) && !/oac-fc-on-gray/.test(c3._els[2]);
+    console.log(`${ok3 ? 'pass' : 'FAIL'} a word on a GrayText mark is marked to take Canvas in forced colors, one beside it is not`);
+    if (!ok3) bad++;
+  }
   // D3-519: typography sets curly quotes and its replacements once, and a second pass changes nothing
   {
     const sp = { typography: { curl_quotes: true, replace: [['Act,2026', 'Act, 2026']] } };

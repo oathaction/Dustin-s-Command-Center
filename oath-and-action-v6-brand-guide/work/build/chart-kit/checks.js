@@ -336,7 +336,8 @@ function check_drawing(spec, d, tok, where) {
       const cx = t.x + t.w / 2, cy = t.y + t.h / 2;
       let ground = 'Canvas';
       for (const m of fills) if (cx > m.x && cx < m.x + m.w && cy > m.y && cy < m.y + m.h) ground = pointed && m.fill === 'context' ? 'Canvas' : d.fc[m.fill] || 'CanvasText';
-      const ink = (d.fc_on_dark || []).indexOf(t.fill) >= 0 ? 'Canvas' : 'CanvasText';
+      // a word on a GrayText mark takes Canvas (second pass), except on context beside a red point (kit.css)
+      const ink = (d.fc_on_dark || []).indexOf(t.fill) >= 0 || (t.on_gray && !(pointed && t.on_context)) ? 'Canvas' : 'CanvasText';
       if (ink === ground) f.push(`forced colors: "${String(t.words).slice(0, 30)}" prints in ${ink} on a mark in ${ground}${at}`);
     }
   }

@@ -805,7 +805,7 @@
    "id": "14.16",
    "title": "Use columns for a few categories or a short run of years.",
    "rule": [
-    "Use columns to compare a few counts side by side, or one count over a short run of years read from left to right, such as the laws each Congress enacted. Start every column at zero (Rule 14.4), print each value at the column’s end and its name below it, and give the column the title names the red point, or the text’s ink where Rule 14.6 sets ink in its place, with the rest in light gray.",
+    "Use columns to compare a few counts side by side, or one count over a short run of years read from left to right, such as the laws each Congress enacted. Start every column at zero (Rule 14.4), and print each value at the column’s end and its name below it. The column the title names takes the red point, or the text’s ink where Rule 14.6 sets ink in its place, and the rest take light gray.",
     "When a phone leaves too little room to print every name and value, the columns turn into bars read from top to bottom in the same order (Rule 14.12)."
    ],
    "why": {
@@ -815,7 +815,7 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "Form column: node work/build/chart-kit/oa-chart.mjs build s17, or copy specs/s17.json and point it at a new dataset; labels.point names the column in red and labels.named a column in the text’s ink (Rule 14.6).",
+   "builders": "Form column: node work/build/chart-kit/oa-chart.mjs build s17, or copy specs/s17.json and point it at a new dataset; labels.named names the column the title names and sets the rest in light gray, and labels.point with the same value draws it in red (Rule 14.6).",
    "related_rules": [
     "14.3",
     "14.4",
@@ -1109,7 +1109,7 @@
    "id": "14.23",
    "title": "Repeat one small bar chart per group when groups need comparing.",
    "rule": [
-    "Draw the same bars in one panel per group, on one scale shared by every panel, with the categories in the same order in each, so the eye compares a bar with the bar in the same place next door. Give each panel a title with its group and its size, give the one bar the title names the red point, or the text’s ink where Rule 14.6 sets ink in its place, with every other bar in light gray, and place as many panels across as fit, one across on a phone."
+    "Draw the same bars in one panel per group, on one scale shared by every panel, with the categories in the same order in each, so the eye compares a bar with the bar in the same place next door. Give each panel a title with its group and its size, and place as many panels across as fit, one across on a phone. The one bar the title names takes the red point, or the text’s ink where Rule 14.6 sets ink in its place, and every other bar takes light gray."
    ],
    "why": {
     "text": [
@@ -1763,7 +1763,7 @@
    "id": "14.40",
    "title": "Index many series to one start when the reader compares growth.",
    "rule": [
-    "Use an indexed line when the reader compares series of far different sizes by how fast they grew: divide each by its own value at one base date and multiply by 100, so every line starts at 100. Draw the line at 100 thin in the secondary ink so it never reads as a series, name the base over the value axis, give one series the ink and the rest gray when there are more than four (Rule 14.8), and name every line at its end with its latest index, the figure always on the line of its name. Under 600 px, name the inked lines in a key inside the plot and list the others under it with their latest index, highest first."
+    "Use an indexed line when the reader compares series of far different sizes by how fast they grew: divide each by its own value at one base date and multiply by 100, so every line starts at 100. Draw the line at 100 thin in the secondary ink, so it reads apart from the series, and name the base over the value axis. Give one series the ink and the rest gray when there are more than four (Rule 14.8), and name every line at its end with its latest index, the figure always on the line of its name. Under 600 px, name the inked lines in a key inside the plot and list the others under it with their latest index, highest first."
    ],
    "why": {
     "text": [
@@ -1959,7 +1959,7 @@
    "tokens": [],
    "related": [],
    "builders": "No kit form, by design; draw the parts with area-sparklines (s13) or, from round 2, the stacked area form.",
-   "sketch_alt": "A streamgraph beside small multiples of the same illustrative data: the middle part never changes, yet its band bends in the streamgraph and lies flat in the small multiples.",
+   "sketch_alt": "A streamgraph beside small multiples of the same illustrative data: the middle part holds steady, and its band bends in the streamgraph and lies flat in the small multiples.",
    "entry": true,
    "use_when": "Never: a reader who asks how the parts of a total changed over time gets a truer answer from small multiples or a stacked area.",
    "use_instead": [

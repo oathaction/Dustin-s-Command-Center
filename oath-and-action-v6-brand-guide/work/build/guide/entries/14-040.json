@@ -2,7 +2,7 @@
   "id": "14.40",
   "title": "Index many series to one start when the reader compares growth.",
   "rule": [
-    "Use an indexed line when the reader compares series of far different sizes by how fast they grew: divide each by its own value at one base date and multiply by 100, so every line starts at 100. Draw the line at 100 thin in the secondary ink so it never reads as a series, name the base over the value axis, give one series the ink and the rest gray when there are more than four (Rule 14.8), and name every line at its end with its latest index, the figure always on the line of its name. Under 600 px, name the inked lines in a key inside the plot and list the others under it with their latest index, highest first."
+    "Use an indexed line when the reader compares series of far different sizes by how fast they grew: divide each by its own value at one base date and multiply by 100, so every line starts at 100. Draw the line at 100 thin in the secondary ink, so it reads apart from the series, and name the base over the value axis. Give one series the ink and the rest gray when there are more than four (Rule 14.8), and name every line at its end with its latest index, the figure always on the line of its name. Under 600 px, name the inked lines in a key inside the plot and list the others under it with their latest index, highest first."
   ],
   "use_when": "The reader asks which of several measures grew fastest since a date, and their sizes are too far apart to share a scale in their own units.",
   "use_instead": [

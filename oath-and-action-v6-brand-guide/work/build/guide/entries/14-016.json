@@ -2,7 +2,7 @@
   "id": "14.16",
   "title": "Use columns for a few categories or a short run of years.",
   "rule": [
-    "Use columns to compare a few counts side by side, or one count over a short run of years read from left to right, such as the laws each Congress enacted. Start every column at zero (Rule 14.4), print each value at the column’s end and its name below it, and give the column the title names the red point, or the text’s ink where Rule 14.6 sets ink in its place, with the rest in light gray.",
+    "Use columns to compare a few counts side by side, or one count over a short run of years read from left to right, such as the laws each Congress enacted. Start every column at zero (Rule 14.4), and print each value at the column’s end and its name below it. The column the title names takes the red point, or the text’s ink where Rule 14.6 sets ink in its place, and the rest take light gray.",
     "When a phone leaves too little room to print every name and value, the columns turn into bars read from top to bottom in the same order (Rule 14.12)."
   ],
   "use_when": "The reader asks how a handful of counts compare, or how one count changed across a few years or terms of office, and each value matters on its own.",
@@ -43,7 +43,7 @@
     "14.12",
     "14.6"
   ],
-  "builders": "Form column: node work/build/chart-kit/oa-chart.mjs build s17, or copy specs/s17.json and point it at a new dataset; labels.point names the column in red and labels.named a column in the text’s ink (Rule 14.6).",
+  "builders": "Form column: node work/build/chart-kit/oa-chart.mjs build s17, or copy specs/s17.json and point it at a new dataset; labels.named names the column the title names and sets the rest in light gray, and labels.point with the same value draws it in red (Rule 14.6).",
   "correct": null,
   "failure": null
 }

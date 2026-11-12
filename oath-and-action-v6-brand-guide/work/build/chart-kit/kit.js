@@ -238,8 +238,13 @@
     };
     (spec.sort || []).slice().reverse().forEach(function (s) {
       var dir = s.order === 'desc' ? -1 : 1;
+      // A12 (second pass): "values" gives an order of its own, [{"field": "reform_group", "values": ["G1", "G2"]}]; a value
+      // it does not list sorts after those it does, in the data's order
+      var order = Array.isArray(s.values) ? s.values.map(String) : null;
+      var rank = function (v) { var i = order.indexOf(String(v)); return i < 0 ? order.length : i; };
       out = out.map(function (r, i) { return [r, i]; }).sort(function (a, b) {
         var x = a[0][s.field], y = b[0][s.field];
+        if (order) return (rank(x) - rank(y)) * dir || a[1] - b[1];
         if (x === y) return a[1] - b[1];
         if (x === null) return 1;
         if (y === null) return -1;
@@ -331,7 +336,7 @@
   // a shape's box for the drawing-edge check; shapes inside a moved group (a map's projection) are left out
   Ctx.prototype._ink = function (kind, x, y, w, h, o) {
     if (this._tf) return;
-    this.ink.push({ kind: kind, x: x, y: y, w: w, h: h, role: (o && (o.fill || o.stroke)) || '' });
+    this.ink.push({ kind: kind, x: x, y: y, w: w, h: h, role: (o && (o.fill || o.stroke)) || '', fill: o && o.fill, plate: !!(o && o.cls && /\boac-fc-plate\b/.test(o.cls)) });
   };
   // the box of a path drawn with absolute M, L, H and V commands only (lines and areas); null for curves
   function path_box(d) {
@@ -461,6 +466,12 @@
     var cls = ['oac-t', 'oac-t-' + (face === 'display' ? 'big' : role), 'oac-w' + Math.round(weight / 100), o.fill ? 'oac-f-' + o.fill : (role === 'tick' ? 'oac-f-secondary' : 'oac-f-label')];
     if (o.halo) cls.push('oac-halo');
     if (o.tnum) cls.push('oac-tnum');
+    // second pass (maker A's flag): in forced colors a mark in GrayText (seq-3, div-5, mag-3, cat-2, context) is a mid ink in
+    // both themes, so a word set on one takes Canvas, as a word on a dark fill does; on context beside a red point, whose
+    // marks take the ground (access S10), it keeps CanvasText (kit.css)
+    var under = K.FC_ON_DARK.indexOf(o.fill) < 0 ? this.fill_under(x0 + w / 2, y - size * 0.35) : null;
+    var on_gray = !!under && K.FC[under] === 'GrayText';
+    if (on_gray) { cls.push('oac-fc-on-gray'); if (under === 'context') cls.push('oac-fc-on-context'); }
     var a = data_of(o, { x: r1(x), y: r1(y), 'class': cls.join(' '), 'font-size': size, 'text-anchor': anchor === 'start' ? undefined : anchor });
     var body = lines.length === 1 ? esc(lines[0]) : lines.map(function (ln, i) { return '<tspan x="' + r1(x) + '"' + (i ? ' dy="' + lh + '"' : '') + '>' + esc(ln) + '</tspan>'; }).join('');
     this._push('<text' + attrs(a) + '>' + body + '</text>');
@@ -469,9 +480,24 @@
     var vm = metrics().vertical[face === 'display' ? 'Inter Tight|800' : 'Inter|400'] || { ascent: 969, descent: 241 };
     var asc = size * vm.ascent / 1000, desc = size * vm.descent / 1000, half = (asc + desc - size) / 2;
     var box = { x: x0, y: y - asc + half, w: w, h: asc + desc - 2 * half + lh * (lines.length - 1), size: size, words: String(words), role: role,
-      overlap_ok: !!o.overlap_ok, id: o.guard_id, top: y - asc, bottom: y + desc + lh * (lines.length - 1), halo: !!o.halo, fill: o.fill };
+      overlap_ok: !!o.overlap_ok, id: o.guard_id, top: y - asc, bottom: y + desc + lh * (lines.length - 1), halo: !!o.halo, fill: o.fill,
+      on_gray: on_gray, on_context: on_gray && under === 'context' };
     this.texts.push(box);
     return box;
+  };
+  // the fill role of the last filled rect or circle drawn under a point, marks or not, or null; a plate set under words on a
+  // fill (oac-fc-plate, Canvas in forced colors) answers 'plate', and a shape with no fill lets the one under it show
+  Ctx.prototype.fill_under = function (px, py) {
+    for (var i = this.ink.length - 1; i >= 0; i--) {
+      var m = this.ink[i];
+      if ((m.kind !== 'rect' && m.kind !== 'circle') || !(m.w > 0) || !(m.h > 0)) continue;
+      var inside = m.kind === 'circle' ? Math.pow(px - (m.x + m.w / 2), 2) + Math.pow(py - (m.y + m.h / 2), 2) < Math.pow(m.w / 2, 2)
+        : px > m.x && px < m.x + m.w && py > m.y && py < m.y + m.h;
+      if (!inside) continue;
+      if (m.plate) return 'plate';
+      if (m.fill && m.fill !== 'none') return m.fill;
+    }
+    return null;
   };
   Ctx.prototype.pattern = function (name, kind) {
     // a hatch for a preliminary or estimated value: lines in the mark's color on no fill (oa.chart.hatch.*)

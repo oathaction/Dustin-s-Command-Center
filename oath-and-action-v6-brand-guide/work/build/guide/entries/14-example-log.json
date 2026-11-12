@@ -216,7 +216,7 @@
    "source": "s20.json"
   },
   {
-   "example": "Of the atlas’s 16 everyday answers, voting and public influence rests on the most claims, 42.",
+   "example": "Of the atlas’s 16 everyday answers, the one on voting and public influence rests on the most claims, 42.",
    "domain": "all",
    "states": [],
    "rule": "14.21",

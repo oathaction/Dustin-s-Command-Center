@@ -315,7 +315,7 @@
   "chapter": "14",
   "rule": "14.28",
   "width_px": null,
-  "alt": "Arrows for each Congress from 1951 to 2025 show the House majority’s lead in seats as first elected, pointing left for Democratic majorities and right for Republican ones. Democratic leads ran as high as 155 seats in 1965, leads since 1995 have mostly been under 60 seats, and Republicans won the 119th Congress, which opened in 2025, by five seats, the smallest lead in the chart.",
+  "alt": "Arrows for each Congress from 1951 to 2025 show the House majority’s lead in seats as first elected, pointing left for Democratic majorities and right for Republican ones. Democratic leads ran as high as 155 seats in 1965, and leads since 1995 have mostly been under 60 seats. Republicans won the majority for the 119th Congress, which opened in 2025, by five seats, the smallest lead in the chart.",
   "illustrative": false,
   "notes": "S26, diverging-bar-arrows: the chart kit draws it from work/build/chart-kit/specs/s26.json (contract R1-C3)"
  },
@@ -454,7 +454,7 @@
   "rule": "14.45",
   "width_px": null,
   "illustrative": true,
-  "alt": "A streamgraph beside small multiples of the same illustrative data: the middle part never changes, yet its band bends in the streamgraph and lies flat in the small multiples.",
+  "alt": "A streamgraph beside small multiples of the same illustrative data: the middle part holds steady, and its band bends in the streamgraph and lies flat in the small multiples.",
   "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
  },
  "s-14-s15": {

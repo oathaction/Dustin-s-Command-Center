@@ -26,7 +26,7 @@
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Arrows for each Congress from 1951 to 2025 show the House majority’s lead in seats as first elected, pointing left for Democratic majorities and right for Republican ones. Democratic leads ran as high as 155 seats in 1965, leads since 1995 have mostly been under 60 seats, and Republicans won the 119th Congress, which opened in 2025, by five seats, the smallest lead in the chart.",
+  "alt": "Arrows for each Congress from 1951 to 2025 show the House majority’s lead in seats as first elected, pointing left for Democratic majorities and right for Republican ones. Democratic leads ran as high as 155 seats in 1965, and leads since 1995 have mostly been under 60 seats. Republicans won the majority for the 119th Congress, which opened in 2025, by five seats, the smallest lead in the chart.",
   "table": {
     "caption": "House seats as first elected for each Congress, by party",
     "columns": [
@@ -70,7 +70,7 @@
   },
   "chart_notes": [
     "Arrows point left for a Democratic majority and right for a Republican majority, all in one ink. Both sides share one scale, and the center line sits off center to give the longer Democratic leads room.",
-    "The party is named beside the figure at the first row, at each row where the majority changed sides and at the 119th Congress, which the title names, where the figure is set bold."
+    "The figure carries the party’s name at the first row, at each row where the majority changed sides and at the 119th Congress, which the title names, where the figure is bold."
   ],
   "phone": "same",
   "artboard": "reading",

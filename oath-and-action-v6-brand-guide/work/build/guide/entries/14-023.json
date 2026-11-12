@@ -2,7 +2,7 @@
   "id": "14.23",
   "title": "Repeat one small bar chart per group when groups need comparing.",
   "rule": [
-    "Draw the same bars in one panel per group, on one scale shared by every panel, with the categories in the same order in each, so the eye compares a bar with the bar in the same place next door. Give each panel a title with its group and its size, give the one bar the title names the red point, or the text’s ink where Rule 14.6 sets ink in its place, with every other bar in light gray, and place as many panels across as fit, one across on a phone."
+    "Draw the same bars in one panel per group, on one scale shared by every panel, with the categories in the same order in each, so the eye compares a bar with the bar in the same place next door. Give each panel a title with its group and its size, and place as many panels across as fit, one across on a phone. The one bar the title names takes the red point, or the text’s ink where Rule 14.6 sets ink in its place, and every other bar takes light gray."
   ],
   "use_when": "The reader asks how the same mix or ranking differs from group to group, such as the evidence grades behind each topic, or there are more groups than four inks can carry (Rule 14.8).",
   "use_instead": [

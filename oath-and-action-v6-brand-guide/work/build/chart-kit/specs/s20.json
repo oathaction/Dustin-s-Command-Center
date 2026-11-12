@@ -26,9 +26,9 @@
   "evidence_label": "Finding",
   "grade_line": "Documented: a Census Bureau survey",
   "title": "The homeownership rate for householders under 35 stood at 37.0 percent in 2025, up 2.0 points from 2015 and still the lowest of five age groups.",
-  "measure_line": "Homeownership rate, the share of households that own their home, by age of the householder, the person in whose name the home is owned or rented, annual averages for 2015 and 2025, the latest year and the year ten years before, United States. The scale runs from 30 to 80 percent.",
+  "measure_line": "Homeownership rate, the share of households that own their home, by age of the householder, the person who owns or rents the home, or one of them, annual averages for 2015 and 2025, the latest year and the year ten years before, United States. The scale runs from 30 to 80 percent.",
   "notes": [
-    "The rise for householders under 35 passes its margin of error, the range around the figure that sampling allows, of about 0.8 points at 90 percent confidence, and so does the rise for those 35 to 44 (2.3 points, margin 1.1). The changes for the three older groups are within their margins.",
+    "The rise for householders under 35 passes its margin of error, about 0.8 points at 90 percent confidence. A margin of error is the range around a survey figure that sampling allows. The rise for those 35 to 44 passes its margin too (2.3 points, margin 1.1), and the changes for the three older groups sit within theirs.",
     "The rate for householders under 35 was highest in 2004, at 43.1 percent, and lowest in 2016, at 34.5 percent, so 2015 sits near its low.",
     "The 2025 average leaves out October 2025, when a lapse in federal funding stopped the survey’s data collection."
   ],
@@ -64,7 +64,7 @@
     ]
   },
   "chart_notes": [
-    "Householders under 35, the group the title names, are drawn in red with a dark outline; the other four groups are light gray."
+    "The line for householders under 35, the group the title names, is red with a dark outline; the other four groups’ lines are light gray."
   ],
   "phone": "same",
   "artboard": "reading",

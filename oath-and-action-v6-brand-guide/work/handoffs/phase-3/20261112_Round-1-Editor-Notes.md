@@ -350,3 +350,60 @@ Weight, measured by script in the strict page: rules 14.1 to 14.14 take 198,584 
 - Charcoal, grayscale, forced colors (light or dark), scripts off and print for the redrawn plates and 14.9's static figure.
 - 14.9's figure and the opener's links by keyboard or screen reader.
 - The makers' changed words: the second pass.
+
+## Second pass
+
+November 12, 2026, under D3-483 and D3-615. I read every reader word the makers changed in this fix pass, by a script (`second/dump.py`, scratch) that prints each changed word field of the 34 chapter 14 specs and the entries against the fix brief's commit (3e967920), with a lint for chapter 02's patterns, and then by hand: 18 specs and 14 entries changed, plus the two avoid sketches, words.json's three phone lines and chapter 15's words in the systems designer's Request 3. Under D3-615 I applied my changes to word fields of specs and entries only, with every figure kept (the apply script asserts each change keeps its figures).
+
+### Changes made
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| s20 | measure_line | the person in whose name the home is owned or rented | the person who owns or rents the home, or one of them | W02, active |
+| s20 | notes[0] | …passes its margin of error, the range around the figure that sampling allows, of about 0.8 points… | …passes its margin of error, about 0.8 points at 90 percent confidence. A margin of error is the range around a survey figure that sampling allows. The rise for those 35 to 44 passes its margin too (2.3 points, margin 1.1), and the changes for the three older groups sit within theirs. | The gloss split the figure from its margin; one 41-word sentence becomes three |
+| s20 | chart_notes[0] | Householders under 35 … are drawn in red… | The line for householders under 35 … is red…; the other four groups’ lines are light gray. | W02 |
+| s21 | title | …16 everyday answers, voting and public influence rests on the most claims, 42. | …16 everyday answers, the one on voting and public influence rests on the most claims, 42. | An answer's name as the subject misreads aloud |
+| s21 | notes[0], chart_notes[0] | Roads, bridges and transit rests…; Voting and public influence, which… | The answer on roads, bridges and transit rests…; The answer on voting and public influence, which… | The same |
+| s23 | notes[1] | …plausible claims, 18.8; work and financial security has… | …plausible claims, 18.8 percent. “Work and financial security” has… | Hub names in quotation marks, as the title sets them; the unit with its figure |
+| s24 | chart_notes[0] | is drawn in dark ink | is in dark ink | W02 |
+| s25 | notes[4] | Agency names are shortened from the August 2026 file’s names; it names… | Oath & Action shortened the agency names from the August 2026 file, which names… | W02 |
+| s26 | alt | …under 60 seats, and Republicans won the 119th Congress, which opened in 2025, by five seats… | …under 60 seats. Republicans won the majority for the 119th Congress, which opened in 2025, by five seats… | Republicans won the majority, not the Congress; the 41-word sentence splits |
+| s26 | chart_notes[1] | The party is named beside the figure … where the figure is set bold. | The figure carries the party’s name … where the figure is bold. | W02 |
+| s33 | phone_note | …leave the plot so it takes the full width: a key … and the other eight sources are listed under the plot… | …leave the plot, which takes the full width. A key … and a list under it gives the other eight sources… | W02, W06; 43 words in one sentence |
+| s34 | phone_note | On phones each Congress… | On a phone each Congress… | One wording with the reading guide |
+| s36 | notes[2] | …for a committee: Democratic for the DCCC and the DSCC, and Republican for the NRCC and SFA Fund, Inc. Most PACs record none, 21 of the 22 here. Names are set in capitals… | …for a committee. It records Democratic for the Democratic Congressional Campaign Committee (DCCC) and the Democratic Senatorial Campaign Committee (DSCC), and Republican for the National Republican Congressional Committee (NRCC) and SFA Fund, Inc. The commission records no party for most PACs, 21 of the 22 here. The register sets names in capitals… | H02 and H11 (BC M3 asks for the full names); the commission records, PACs do not; W02 |
+| s37 | desk_phone.part | the first six reforms shown; a phone draws all 50 | the first six reforms; a phone draws all 50 | "On a phone, 358 px:" already says what is shown |
+| 14-016 | rule[0] | …and give the column the title names the red point, or the text’s ink …, with the rest in light gray. | Split: …its name below it. The column the title names takes the red point, or the text’s ink where Rule 14.6 sets ink in its place, and the rest take light gray. | A 47-word sentence |
+| 14-016 | builders | labels.point names the column in red and labels.named a column in the text’s ink (Rule 14.6). | labels.named names the column the title names and sets the rest in light gray, and labels.point with the same value draws it in red (Rule 14.6). | The column form leaves the rest in ink with labels.point alone (ED-E12), as Rule 14.6's builders line says |
+| 14-023 | rule[0] | One 53-word sentence | Split: panels and their titles first, then "The one bar the title names takes the red point, or the text’s ink …, and every other bar takes light gray." | Length |
+| 14-040 | rule[0] | Draw the line at 100 thin in the secondary ink so it never reads as a series, name the base…, and name every line… | Split in two, "so it reads apart from the series" | W09; a 61-word sentence |
+| 14-045 | sketch_alt | the middle part never changes, yet its band bends… | the middle part holds steady, and its band bends… | W09, W10 |
+
+Tried and restored: s37 note 3's Article V gloss. I rewrote it to say what each step does (two-thirds of each house of Congress, or a convention two-thirds of the states call, proposes; three-quarters of the states approve), and maker A's figure check holds it, rightly, to the atlas's own route record word for word. The atlas's words stay; the precise wording goes to the V7.1 list below.
+
+Read and kept as the makers wrote them: S19's caveat; S20's title (the reviewer's); S21's and S23's grade lines (ruling (a)); S23's title, measure line and chart note; S24's reading guide; S25's title, notes and table words; S26's title, reading guide, measure line, note 1 and caption; S27's title, guide, measure line, alt and chart note; S31's grade line and note 1; S32's word maps; S33's chart notes and list title; S34's guide, measure line, notes, alt, chart notes and phone row; S36's table words; S37's grade line, title, measure line, notes, alt, chart notes, column heads and groups; S38's and S39's changed words; entries 14.19, 14.20, 14.21, 14.24, 14.26, 14.27, 14.31, 14.37, 14.41 and 14.129; both avoid sketches' titles and descriptions; words.json's `phone_view`, `phone_view_part` and `phone_view_rows`, which read plainly as they stand. S25's, S31's, S41's and S42's source lines come from the sidecars and are the research lead's.
+
+### Requests
+
+**To the systems designer (chapter 15, exact lines).**
+1. `15-systems-graphics.json`, Rule 15.6's failure caption. Before: "<strong>Fails Rule 15.6.</strong> Loop R10 has no step numbers, no chip and no kind, and the words inside it judge the loop. Its two minus signs make it reinforcing." After: "<strong>Fails Rule 15.6.</strong> Loop R10 lacks its step numbers, chip and kind, and the words inside it judge the loop. Its two minus signs make it reinforcing." (W11, a run of negatives.)
+2. `s-15-6-correct`'s alt. Before: "Loop R10, Safe seats shift accountability to small primary electorates: More safe seats," After: "Loop R10, “Safe seats shift accountability to small primary electorates”: More safe seats," and before: "Loop B5, State and local experiments can correct policy favoritism: More policy tilt" after: "Loop B5, “State and local experiments can correct policy favoritism”: More policy tilt" (the opener's and 15.13's alts quote a loop's name).
+3. `s-15-6-failure`'s alt. Before: "Failure case: do not publish. Loop R10 drawn with no step numbers, no chip and no kind, and the words A vicious cycle inside it." After: "Failure case: do not publish. Loop R10 drawn without its step numbers, chip and kind, and the words “A vicious cycle” inside it."
+Read and kept: Rule 15.3's gloss of variables, Rule 15.6's "Inside the loop" line, the opener's caption, its list heading "What each lettered part says" and its alt, and Rule 15.13's key "Reading a step" and its alt.
+
+**To the main session, for the V7.1 list.** Route AV's `who` reads "Two-thirds of each house of Congress and three-quarters of the states, or a convention", which leaves unclear where the convention fits. Suggested: "Two-thirds of each house of Congress, or a convention two-thirds of the states call, to propose; three-quarters of the states to ratify". S37 note 3 follows the atlas until then.
+
+**To the engineer.** ED-E12 stands: `slope`, `lollipop` and `small-multiple-bars` set the rest in the light fill with `labels.point` alone, while `column` and `ranked-bar` need `labels.named` too. If those two are brought into line, entry 14.16's builders line and Rule 14.6's can drop the second key.
+
+### Tested
+
+- `node work/build/chart-kit/oa-chart.mjs build s20 s21 s23 s24 s25 s26 s33 s34 s36 s37 --no-png --out <scratch>/kit-out`: 10 of 10 PASS, 0 faults; s26, s36 and s37 again after their last change, PASS.
+- `python3 -I work/build/scripts/phase-3/maker_b_figure_checks.py`: 9 checks, 0 faults. Maker A's `tools/figs.py` (its scratch): 109 PASS, 0 failed, after s37's gloss was restored (it failed once on my rewrite).
+- `phase3_ch14_build.py`: 0 faults. `guide_build.py --strict --out <scratch>/build/guide2.html`: exit 0, 0 warnings. Six of the new phrases found once each in that page by script. Rules 14.1 to 14.14 with the opener still weigh 204,900 bytes.
+- The lint on my own changes: no em dash, straight quote or listed word; the remaining "passive" flags are "is red" and "is bold", and the long-sentence flags are measure lines and first sentences I did not change.
+
+### Not tested
+
+- The changed words in the page by eye; the script found them, and no capture was looked at in this pass.
+- The quick guide check and axe-core after this pass.
+- Chapter 15's words in its plates as built; I read them in the chapter file and the plates' source.

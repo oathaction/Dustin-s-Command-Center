@@ -24,10 +24,10 @@
     "ids": [],
     "snapshot": "2026-10-15"
   },
-  "title": "Of the atlas’s 16 everyday answers, voting and public influence rests on the most claims, 42.",
+  "title": "Of the atlas’s 16 everyday answers, the one on voting and public influence rests on the most claims, 42.",
   "measure_line": "Claims in the atlas’s register behind each of its 16 everyday answers, 433 claims in all, as of the atlas’s snapshot of October 15, 2026, United States.",
   "notes": [
-    "Roads, bridges and transit rests on the fewest, 13.",
+    "The answer on roads, bridges and transit rests on the fewest, 13.",
     "A count shows how many claims an answer cites.",
     "The answer with the most claims takes the reader’s question “Which election decides who represents me, and how can I influence the people who decide?”; the one with the fewest, “Why is the repair on my street taking so long?”"
   ],
@@ -56,7 +56,7 @@
     ]
   },
   "chart_notes": [
-    "Voting and public influence, which the title names, ends in a red dot with a dark outline; the other 15 answers are light gray."
+    "The answer on voting and public influence, which the title names, ends in a red dot with a dark outline; the other 15 answers are light gray."
   ],
   "phone": "same",
   "artboard": "reading",
