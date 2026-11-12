@@ -407,7 +407,7 @@ a.toc-part-k:hover { text-decoration: underline }
 /* D3-486 (round 1 fix pass): an avoid entry's pair, the misleading form under the bar and the better choice under "Use
    instead", each at its drawing's true width, side by side where the stage holds both; the stage centers them (CD SK-M2) */
 .sk-pair { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: var(--oa-space-300) }
-.sk-half { flex: none; max-width: 100% }
+.sk-half { flex: none; width: min-content; max-width: 100% }
 .sk-half > svg { display: block }
 .plate-use { display: flex; align-items: center; gap: 8px; margin: 0 0 16px; padding: 5px 9px; border: var(--oa-border-width-hairline) solid var(--rule-strong);
   font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing); text-transform: var(--oa-type-label-text-transform) }
