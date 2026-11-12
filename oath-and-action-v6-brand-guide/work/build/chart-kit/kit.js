@@ -61,6 +61,9 @@
       // dollars (R-B2, round 1): $2,000 and −$2,000; signed-dollars +$2,000; dollars:2 keeps cents
       case 'dollars': return (v < 0 ? MINUS : '') + '$' + fixed(v, nd);
       case 'signed-dollars': return signed(v, '$' + fixed(v, nd));
+      // billions (R-B7, round 1): a value in dollars as 173.2 billion; billions-value prints 173.2 for a column headed in billions
+      case 'billions': return (v < 0 ? MINUS : '') + fixed(v / 1e9, nd) + ' billion';
+      case 'billions-value': return (v < 0 ? MINUS : '') + fixed(v / 1e9, nd);
       case 'compact-thousands':
       case 'signed-compact-thousands': {
         var a = Math.abs(v) * 1000, sg = f === 'signed-compact-thousands' ? (v > 0 ? '+' : v < 0 ? MINUS : '') : (v < 0 ? MINUS : '');
@@ -668,6 +671,10 @@
       var n = t.replace(/[+,%$\s]/g, '').replace(MINUS, '-');
       return /^-?\d+(\.\d+)?$/.test(n) ? n : undefined;
     }
+    if (base === 'billions' || base === 'billions-value') {
+      var nb = t.replace(/ billion$/, '').replace(/[,\s]/g, '').replace(MINUS, '-');
+      return /^-?\d+(\.\d+)?$/.test(nb) ? String(parseFloat(nb) * 1e9) : undefined;
+    }
     if (base === 'thousands' || base === 'signed-thousands') {
       var n2 = t.replace(/[+,\s]/g, '').replace(MINUS, '-');
       return /^-?\d+$/.test(n2) ? String(parseFloat(n2) / 1000) : undefined;
@@ -702,7 +709,7 @@
     var tb = spec.table || {}, ids = (spec.v7 && spec.v7.ids) || [];
     var cap = tb.caption ? '<caption>' + K.chips(tb.caption, ids) + '</caption>' : '';
     var t = K.table_rows(spec, rows), head = '', body = '';
-    function num_col(col) { return /^(integer|number|percent|signed|points|thousands|signed-thousands|dollars|signed-dollars)/.test(String(col.format || '')); }
+    function num_col(col) { return /^(integer|number|percent|signed|points|thousands|signed-thousands|dollars|signed-dollars|billions)/.test(String(col.format || '')); }
     if (t.pivot) {
       var pv = tb.pivot, rc = (tb.columns || [])[0] || { label: pv.row, format: 'text' };
       head = '<tr><th scope="col">' + esc(rc.label) + '</th>' + t.cols.map(function (cn) {
@@ -774,7 +781,7 @@
     var carried = opts.carry === false ? {} : carried_fields(spec, rows, types);
     var cap = tb.caption ? '<caption>' + K.chips(tb.caption, ids) + '</caption>' : '';
     var t = K.table_rows(spec, rows), head = '', body = '';
-    var num_col = function (col) { return /^(integer|number|percent|signed|points|thousands|signed-thousands|lead|compact-thousands|signed-compact-thousands|dollars|signed-dollars)/.test(String(col.format || '')); };
+    var num_col = function (col) { return /^(integer|number|percent|signed|points|thousands|signed-thousands|lead|compact-thousands|signed-compact-thousands|dollars|signed-dollars|billions)/.test(String(col.format || '')); };
     var dv = function (raw, html, col) {
       if (carried[col.field]) return '';
       var back = K.unformat(visible_text(html), col);
