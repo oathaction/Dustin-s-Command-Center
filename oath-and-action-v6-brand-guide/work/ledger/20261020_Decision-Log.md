@@ -4566,3 +4566,13 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-635 | S34's year lines stay under the circles | Brand N6; the circles are opaque, and at 4x the lines show only in the gaps between them |
 | D3-636 | The reference sketches 14.43 and 14.44 take a 10 px inner margin through their viewBox (now 320 px wide) | Brand N3: the label sat 1 px from the frame; 14.44 takes the same margin for one look |
 | D3-637 | The streamgraph pair widens to 288 px a half, with an 8 px inner margin (3,408 bytes) | Brand N4: the plate's two labels wrapped over 196 px halves, where the radar pair's 280 and 300 px halves hold them on one line |
+
+### Editor, round 1 second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-638 | Rule 14.2's specifications gain "Grade line for a count of the atlas’s records": “Graded by the atlas, claim by claim: our count of its register of claims”, or record by record for its issue records, since the atlas grades each record and never the count (Rule 13.1) | Statistics R1; the data lead's ruling (a) words, where the next builder looks |
+| D3-639 | Rule 14.6's plates move from the courts of appeals to the National Park Service's recreation visits, 2025, the 12 most visited of the 63 national parks (the research lead's `nps-national-park-recreation-visits-2025`, ED-R3, `top_12` line), with the red point on Great Smoky Mountains, 11.5 million visits, more than twice Zion's 5.0 million; values in millions, the unit named once; the failure puts red on three parks | D3-624: many readers tie the Ninth Circuit to one side; a park's visits pass D3-489's test. The example moves from D05 to D04 (D04 now holds two of my 14). For the data lead's sign-off |
+| D3-640 | Rule 14.11 labels only the 2013 break; its reading guide, alt and caption say the 2017 estimates sit $300 apart, too close to show as a break, and the table prints both (the gaps, $2,200 and $300, computed from the data and checked) | Brand: the "New processing" label pointed at a break the line cannot show |
+| D3-641 | Rule 14.9's phone drawing is 224 px wide, the guide's narrowest column at 320 px, so it fits its column with its words at 13 px; the engineer's N3 rule keeps a static drawing at true size in any case | Access N3: at 320 px the 256 px drawing scaled to 11.4 px |
+| D3-642 | `labels.point` alone now names the red point on my two plates (s-14-6-bars, s-14-13-cols), and Rule 14.6's builders line and entry 14.16's say so | ED-E12 landed: one key gives the red point and the light fill on every other mark |

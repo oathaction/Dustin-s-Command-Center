@@ -407,3 +407,17 @@ Read and kept: Rule 15.3's gloss of variables, Rule 15.6's "Inside the loop" lin
 - The changed words in the page by eye; the script found them, and no capture was looked at in this pass.
 - The quick guide check and axe-core after this pass.
 - Chapter 15's words in its plates as built; I read them in the chapter file and the plates' source.
+
+### Second pass, four items on my plates and rules
+
+From the main session after the reviewers' second passes. All in `phase3_ch14_rules_build.py`.
+
+- D3-xxx | Rule 14.2's specifications gain "Grade line for a count of the atlas’s records": “Graded by the atlas, claim by claim: our count of its register of claims”, or record by record for its issue records, since the atlas grades each record and never the count (Rule 13.1) | Statistics R1; the data lead's ruling (a) words, where the next builder looks
+- D3-xxx | Rule 14.6's plates move from the courts of appeals to the National Park Service's recreation visits, 2025, the 12 most visited of the 63 national parks (the research lead's `nps-national-park-recreation-visits-2025`, ED-R3, `top_12` line), with the red point on Great Smoky Mountains, 11.5 million visits, more than twice Zion's 5.0 million; values in millions, the unit named once; the failure puts red on three parks | D3-624: many readers tie the Ninth Circuit to one side; a park's visits pass D3-489's test. The example moves from D05 to D04 (D04 now holds two of my 14). For the data lead's sign-off
+- D3-xxx | Rule 14.11 labels only the 2013 break; its reading guide, alt and caption say the 2017 estimates sit $300 apart, too close to show as a break, and the table prints both (the gaps, $2,200 and $300, computed from the data and checked) | Brand: the "New processing" label pointed at a break the line cannot show
+- D3-xxx | Rule 14.9's phone drawing is 224 px wide, the guide's narrowest column at 320 px, so it fits its column with its words at 13 px; the engineer's N3 rule keeps a static drawing at true size in any case | Access N3: at 320 px the 256 px drawing scaled to 11.4 px
+- D3-xxx | `labels.point` alone now names the red point on my two plates (s-14-6-bars, s-14-13-cols), and Rule 14.6's builders line and entry 14.16's say so | ED-E12 landed: one key gives the red point and the light fill on every other mark
+
+Tested: `oa-chart.mjs build` on s-14-6-bars, s-14-11-line and s-14-13-cols, PASS with 0 faults; `phase3_ch14_build.py` 0 faults; `guide_build.py --strict` exit 0 with 0 warnings; rules 14.1 to 14.14 and the opener 205,380 bytes, 6,908 under 212,288. Playwright on all 29 plates at 320 px: no text under 13 px and nothing past a stage's edge; 14.9's phone drawing 224 px in a 224 px column. 14.6, 14.11 and 14.2 again at 1440, 390 and 320 px after the change. axe-core 4.10.2 on the 29 stages at 1440 and 320 px: 0 violations. Looked at: 14.6's and 14.11's correct plates at 1440 px (14.11's label moved 24 px left after it touched the 2014 to 2015 segment).
+
+Not tested: the quick guide check after these changes; 14.6's and 14.9's new plates on Charcoal or in forced colors; Rule 01.9's count across the whole chapter (the generator's own log shows D04 at two of my 14 examples).

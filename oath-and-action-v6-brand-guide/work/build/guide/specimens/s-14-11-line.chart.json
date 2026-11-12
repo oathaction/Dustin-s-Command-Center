@@ -101,7 +101,8 @@
     "break": "6"
    },
    "text": "New questions",
-   "place": "above"
+   "place": "above",
+   "dx": -24
   }
  ],
  "domain": "D08",

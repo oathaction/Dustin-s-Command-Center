@@ -1191,7 +1191,7 @@ def rule_14_11(B):
                               {"field": "median_income", "label": "Median income", "format": "dollars"}]},
            encode={"x": "year", "y": "median_income", "break": "footnotes"}, labels={"break_end": "7", "break_start": ["6", "5"]},
            formats={"y": "dollars", "y_tick": "dollars"}, scale={"y": [lo, hi]},
-           annotations=[{"at": {"x": 2013, "break": "6"}, "text": "New questions", "place": "above"}],
+           annotations=[{"at": {"x": 2013, "break": "6"}, "text": "New questions", "place": "above", "dx": -24}],
            domain="D08", states=[], notes_internal="Rule 14.11's correct plate (BC M2): the kit breaks the line at the Census Bureau's "
                                                    "footnotes 7 and 6 (2013) and at 5 (2017).")
     B.add("s-14-11-correct", chart("s-14-11-line"),

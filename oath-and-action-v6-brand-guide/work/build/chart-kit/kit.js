@@ -1358,7 +1358,7 @@
   // whole to the next page, leaving its title alone. Before print, such a drawing prints as slices of up to SLICE_PX each,
   // cut in a gap between its words, every slice a copy of the drawing that shows one band of it; the first slice stays
   // under the title (kit.css), the drawing on screen is untouched, and after print the slices go.
-  var SLICE_PX = 640, TALL_PX = 864;
+  var SLICE_PX = 360, TALL_PX = 864;
   K.print_slices = function (doc) {
     Array.prototype.forEach.call(doc.querySelectorAll('figure.oac-fig .oac-art'), function (a) {
       var svg = a.querySelector(':scope > svg.oac-svg');
