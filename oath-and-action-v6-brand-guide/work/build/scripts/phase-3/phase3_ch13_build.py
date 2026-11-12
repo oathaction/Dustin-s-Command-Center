@@ -478,8 +478,8 @@ def opener(book):
     book.add("s-13-opener", body, rule=None, readable=True,
              alt=(f"One record from our systems atlas with the evidence it carries, each part numbered. A dark label reads "
                   f"Plausible, some evidence. Connection L02, in Loop R1, is named “{name}”, and runs from Variable B1, "
-                  f"{lc(node_title('B1'))}, to Variable E1, {lc(node_title('E1'))}. A dashed line carries a plus sign tag and two "
-                  f"delay ticks. Its words read Plausible, some evidence; sign plus, the two move the same way; delay M, "
+                  f"{lc(node_title('B1'))}, to Variable E1, {lc(node_title('E1'))}. A line, solid under its two delay ticks and "
+                  f"dashed after them, carries a plus sign tag. Its words read Plausible, some evidence; sign plus, the two move the same way; delay M, "
                   f"{DELAY['M'][1]}. The source line names the atlas and the snapshot of {SNAP}. A list beside it names the "
                   "six numbered parts and their rules: the verb can, Rule 13.2; the grade word and gloss, Rule 13.3; the dashed "
                   "line, Rule 13.4; the delay apart from the grade, Rule 13.5; the typed chip, Rule 13.9; the snapshot date, "
@@ -541,8 +541,8 @@ def rule_13_1(book):
     finding = chart_head("Finding", GL_CENSUS,
                          "Child poverty stood at 13.4 percent in 2025 under the Supplemental Poverty Measure",
                          "Children under 18 below the poverty line, Supplemental Poverty Measure, percent, United States, 2009 to 2025",
-                         notes=["The Supplemental Poverty Measure counts taxes, tax credits and benefits such as food aid, and "
-                                "subtracts costs such as medical expenses. The survey’s margin of error for 2025 is 0.6 points "
+                         notes=["The Supplemental Poverty Measure adds tax credits and benefits such as food aid to income, and "
+                                "subtracts taxes and costs such as medical expenses. The survey’s margin of error for 2025 is 0.6 points "
                                 "at 90 percent confidence."],
                          source=src_cp)
     assoc = chart_head("Association", assoc_gl,
@@ -557,7 +557,7 @@ def rule_13_1(book):
                           "1960 to 2012",
                           notes=["Method: the National Highway Traffic Safety Administration removes each technology from its crash "
                                  "records, using that technology’s measured effect, and counts the deaths that would have followed. "
-                                 "The agency’s figure is 613,501, and it calls the result “a hypothetical estimate.” Its crash "
+                                 "The agency’s figure is 613,501, and it calls the result “a hypothetical estimate”. Its crash "
                                  "records begin in 1975, so the agency extrapolates the earlier years."],
                           source=("Source: National Highway Traffic Safety Administration, Lives Saved by Vehicle Safety Technologies "
                                   "and Associated Federal Motor Vehicle Safety Standards, 1960 to 2012 (DOT HS 812 069), United States, "
@@ -595,7 +595,7 @@ def rule_13_1(book):
         "id": "13.1",
         "title": "Title each chart or diagram as a finding, an association, an estimate or an illustration.",
         "rule": [
-            "An evidence label, a chip in the chart chip colors, sits above every chart title and names the kind of evidence in "
+            "An evidence label, a chip in the colors our charts give their chips, sits above every chart title and names the kind of evidence in "
             "one of four words. A finding is a measured result with a source and a period, such as a count or a survey figure. "
             "An association is what our systems atlas defines as “" + GLOSS["Association"].split(". ")[0] + ".” An estimate "
             "rests on a model’s assumptions, such as a projection. An illustration shows how a design works with invented values.",
@@ -619,11 +619,11 @@ def rule_13_1(book):
                                "“cuts” wages, over a study that measured a pattern across job markets, so a reader takes the "
                                "pattern for a cause."},
         "specs": [
-            {"label": "Evidence label", "value": "Finding, Association, Estimate or Illustration, in the label style on the chart chip fill, which turns with the theme",
+            {"label": "Evidence label", "value": "Finding, Association, Estimate or Illustration, in the label style on the chip fill, which changes between Newsprint and Charcoal",
              "token": "oa.chart.color.chip.fill.onNewsprint"},
             {"label": "Grade line", "value": "After the label: the atlas’s grade for an atlas figure; Documented for a public agency’s own count or survey or a public record, then its source, as in “Documented: a Census Bureau survey”", "token": "oa.type.caption"},
             {"label": "A finding", "value": "A count or a survey tabulation, with the publisher’s margin of error where one exists, at its stated confidence"},
-            {"label": "An estimate", "value": "A figure that rests on a model’s assumptions, such as a projection, a small-area model or a with-and-without calculation, with its range or method"},
+            {"label": "An estimate", "value": "A figure that rests on a model’s assumptions, such as a projection, a small-area model, which estimates small places from a larger sample, or a with-and-without calculation, a count of what would have happened without a program, with its range or method"},
             {"label": "An association", "value": "Words such as “went with” at any grade, and a note that the pattern does not show cause"},
             {"label": "An illustration", "value": "Invented values only, with “Illustrative data” beside the chart (Rule 13.8)"},
             {"label": "An atlas diagram", "value": "The grade word of its least certain step in the label’s place, and what that grade belongs to after it"},
@@ -651,7 +651,7 @@ def lc(title):
 def rule_13_2(book):
     le02, l26, l20, l47, l18 = (link(i) for i in ("LE02", "L26", "L20", "L47", "L18"))
     need(le02["evidence"] == "documented" and "as of July 31, 2026" in le02["qualification"]
-         and "46.6% spent" in le02["qualification"] and "Department of Transportation" in le02["qualification"],
+         and "46.6% spent" in le02["qualification"] and "75.7% of the infrastructure law's transportation funds were obligated" in le02["qualification"] and "Department of Transportation" in le02["qualification"],
          "Connection LE02 changed")
     need(l26["evidence"] == "well-supported" and l20["evidence"] == "plausible" and l18["evidence"] == "hypothesis",
          "a ladder connection changed grade")
@@ -662,7 +662,7 @@ def rule_13_2(book):
     read_b = "A 2024 test on X and a break from Facebook found small drops in polarization."
     need(len(read_a.split()) == len(read_b.split()), "the two contested readings differ in length (Rule 01.16)")
     ladder = [
-        ("documented", "The Transportation Department had spent 46.6 percent of the infrastructure law’s transportation "
+        ("documented", "The Department of Transportation had spent 46.6 percent of the infrastructure law’s transportation "
                        "funds by July 31, 2026", "LE02", le02),
         ("well-supported", "Local reporting raises incumbents’ risk of losing office", "L26", l26),
         ("plausible", "Better public services can build earned trust in government", "L20", l20),
@@ -678,10 +678,11 @@ def rule_13_2(book):
             'grade allows</caption><thead><tr><th scope="col">Grade</th><th scope="col">Our title</th>'
             f'<th scope="col">The atlas record</th></tr></thead><tbody>{"".join(trs)}</tbody></table>'
             f'<p class="src">Source: {e(ATLAS)}, connections LE02, L26, L20, L47 and L18, snapshot of {SNAP}, United States. '
-            'Connection LE02’s record cites the Department of Transportation’s count as of July 31, 2026.</p>')
+            'Connection LE02’s record cites the Department of Transportation’s count as of July 31, 2026, when the department had '
+            'committed 75.7 percent of the funds to projects; money spent can trail money committed for years.</p>')
     book.add("s-13-2-correct", body, rule="13.2", readable=True,
              alt=("A table of five connections from our systems atlas, one at each grade, with the title its grade allows and the "
-                  "atlas record beside it, each name in quotation marks. Documented: The Transportation Department had spent "
+                  "atlas record beside it, each name in quotation marks. Documented: The Department of Transportation had spent "
                   "46.6 percent of the infrastructure law’s transportation funds by July 31, 2026. Well supported: Local "
                   "reporting raises incumbents’ risk of losing office. Plausible: Better public services can build earned trust "
                   "in government, beside the atlas name Better public services build earned trust. Contested: two readings of "
@@ -922,7 +923,7 @@ def rule_13_4(book):
     px = lambda xs: ", ".join(f"{x * LW:g}" for x in xs[:-1]) + f" and {xs[-1] * LW:g}"
     body = "".join(loop_block(x) for x in ("R10", "R16", "R3")) + loop_block("B2", conceptual=True)
     body += (f'<p class="src">Source: {e(ATLAS)}, loops R10, R16, R3 and B2 and their connections, snapshot of {SNAP}, '
-             'United States. Lines drawn by the atlas build’s own function at 2 px.</p>')
+             'United States. Lines drawn at 2 px by the same code that draws our systems atlas (Rule 10.10).</p>')
     book.add("s-13-4-correct", body, rule="13.4", readable=True,
              alt=("Four loops from our systems atlas, each with a dark label giving the grade of its least certain step, and each "
                   "step drawn as a short arrow in the line of its grade, with a sign tag, its typed chip, its name in quotation "
@@ -948,7 +949,7 @@ def rule_13_4(book):
     clear = f", stopping {v['clearance']:g} line widths short of the arrowhead"
     specs = [
         {"label": "Documented and Well supported", "value": "Solid", "token": tok("documented")},
-        {"label": "Plausible", "value": f"Dashed, {num(pl)} line widths, butt caps: {px(pl)} px on a 2 px line", "token": tok("plausible")},
+        {"label": "Plausible", "value": f"Dashed, {num(pl)} line widths, with flat ends: {px(pl)} px on a 2 px line", "token": tok("plausible")},
         {"label": "Contested", "value": f"Dash and dot, {num(ct)} line widths: {px(ct)} px on a 2 px line", "token": tok("contested")},
         {"label": "Hypothesis", "value": f"Round dots {hy[1]:g} line widths apart, {hy[1] * LW:g} px on a 2 px line{clear}", "token": tok("hypothesis")},
         {"label": "Widths and fit", "value": f"Lines at {', '.join(str(x) for x in v['widths'][:-1])} or {v['widths'][-1]} px; each pattern stretched to start and end on ink"},
@@ -963,7 +964,7 @@ def rule_13_4(book):
         "title": "Draw a connection’s grade in the atlas’s line code.",
         "rule": [
             "A connection, the arrow from one variable to another in our systems atlas, takes the line of its own grade, drawn "
-            "by the atlas build’s own function as Rule 10.10 sets out: solid for documented and well supported, dashed for "
+            "by the same code that draws our systems atlas, as Rule 10.10 sets out: solid for documented and well supported, dashed for "
             "plausible, dash and dot for contested, and dots for a hypothesis. Its grade word prints beside it, and a documented "
             "connection’s label starts with the record square, a filled square that says the public record itself shows the link.",
             "A loop, a chain of connections that returns to where it started, draws each step in its own line, so its least "
@@ -1053,13 +1054,12 @@ def rule_13_5(book):
         "id": "13.5",
         "title": "Keep grade, effect size, uncertainty and delay apart, each with its own mark.",
         "rule": [
-            "Four properties of a claim keep their own marks and words. The evidence grade takes the line of Rule 13.4 or the "
-            "grade word. A reform’s effect size prints as the atlas’s ordinal code, a rank of small, moderate or large with no "
-            "measured amount, in one row for each outcome family, one of the four groups of results the atlas judges reforms by. "
-            "Uncertainty prints in the atlas’s own words, or for a survey figure as its margin of error, the range around the "
-            "figure that sampling allows. Delay, the time an effect takes, draws as ticks on the connection.",
-            "No mark carries two properties, and the four outcome families never add into one score. Our systems atlas gives the "
-            "reason: “" + q2 + "”",
+            "Four properties of a claim keep their own marks and words. Two sit on the connection itself: the evidence grade, "
+            "as the line of Rule 13.4 or the grade word, and delay, the time an effect takes, as ticks. A reform’s effect size "
+            "prints as the atlas’s ordinal code, a rank of small, moderate or large with no measured amount, in one row for each "
+            "outcome family, one of the four groups of results the atlas judges reforms by. For uncertainty we quote the atlas’s "
+            "own words, or give a survey figure’s margin of error, the range around the figure that sampling allows.",
+            "Each mark carries one property, and each outcome family keeps its own row, as our systems atlas explains: “" + q2 + "”",
         ],
         "tokens": ["oa.color.graphic.essential.onNewsprint", "oa.color.data.emphasisRed.onNewsprint"],
         "why": {"text": ["Each property answers its own question: how strong the evidence is, how large the change, how sure the "
@@ -1067,8 +1067,8 @@ def rule_13_5(book):
                          "for stronger evidence, lets a large effect on thin evidence pass for a small one on strong evidence."],
                 "basis": "Our systems atlas’s methods and outcomes, with the effect and delay marks our founder and editor approved in October 2026"},
         "correct": {"specimen": "s-13-5-correct",
-                    "caption": "Reform R-30 with each property in its own place: the grade of the evidence that it works in the "
-                               "label, its effect on each outcome family with the atlas’s qualifiers kept, the atlas’s confidence in "
+                    "caption": "Reform R-30 with each property in its own place: the label giving the grade of the evidence that it "
+                               "works, its effect on each outcome family with the atlas’s qualifiers kept, the atlas’s confidence in "
                                "its own words, and the delay of each connection it targets, marked in Rule 12.5’s red."},
         "failure": {"specimen": "s-13-5-failure",
                     "caption": "<strong>Fails Rule 13.5.</strong> The card adds four codes into one score of +5, draws the grade "
@@ -1122,7 +1122,7 @@ def rule_13_6(book):
     need("2016 field experiment" in link("L02")["qualification"] and "donors" in link("L02")["qualification"], "L02's qualification changed")
     body = (chart_head("Finding", GL_BLS, title,
                        "Monthly change in jobs, thousands, seasonally adjusted, United States, January 2022 to September 2026",
-                       notes=["Seasonally adjusted: with the swings that repeat every year, such as holiday hiring, taken out."],
+                       notes=["Seasonally adjusted: the Bureau removes the swings that recur each year, such as summer hiring and holiday layoffs, so one month compares with the next."],
                        source=line)
             + '<table class="tb stack blk"><caption>The same line, part by part, in H04’s order</caption><thead><tr>'
               f'<th scope="col">Part</th><th scope="col">Words in this line</th></tr></thead><tbody>{trs}</tbody></table>'
@@ -1189,6 +1189,14 @@ def cp_spec(cid, group, title, alt, years=None):
     where = {"measure": "spm", "age_group": group, "vintage": "p60-290"}
     if years:
         where["year"] = years
+    # the breaks a chart's note names are the years inside its own window where the Bureau printed two estimates
+    seen = {}
+    for r in rows("census-spm-child-poverty"):
+        if r["measure"] == "spm" and r["age_group"] == group and r["vintage"] == "p60-290" and (not years or r["year"] in years):
+            seen[r["year"]] = seen.get(r["year"], 0) + 1
+    breaks = sorted(y for y, n in seen.items() if n > 1)
+    need(breaks, f"{cid}: the window holds no break, so its note needs new words")
+    years_w = breaks[0] if len(breaks) == 1 else ", ".join(breaks[:-1]) + " and " + breaks[-1]
     KIT_SPECS[cid] = {
         "kit": 1, "id": cid, "form": "line-event-notes", "family": "change-over-time", "tier": "core",
         "dataset": "census-spm-child-poverty", "where": where, "sort": [{"field": "year", "order": "asc"}],
@@ -1206,7 +1214,7 @@ def cp_spec(cid, group, title, alt, years=None):
                 "original_2011_method": "Original 2011 method"}},
             {"field": "percent", "label": "Percent", "format": "number:1"},
             {"field": "moe_pct", "label": "Margin of error, points (90%)", "format": "number:1"}]},
-        "chart_notes": ["The line breaks in 2013, 2017 and 2019, where the Census Bureau changed its survey or method."],
+        "chart_notes": [f"The line breaks in {years_w}, where the Census Bureau changed its survey or method."],
         "phone": "same", "domain": "D08", "states": [],
         "encode": {"x": "year", "y": "percent", "break": "comparable_with"},
         "labels": {"break_end": "earlier", "break_start": "later", "y_max": 25},
@@ -1281,7 +1289,8 @@ def rule_13_7(book):
             "The measure line names the observation period, such as 2009 to 2025. Where a publisher revises its figures, the "
             "chart also names the vintage, the release its figures come from, and marks any figure the publisher calls "
             "preliminary. The Census Bureau’s release of September 15, 2026 carries corrected poverty thresholds for 2019 to 2024 "
-            "and new weights for 2024, so a chart of those years names that release.",
+            "and new population weights for 2024, the counts that scale the survey’s sample to the country, so a chart of those "
+            "years names that release.",
             "Charts shown together share one time window, printed once with its reason, and house rule H09 holds: “No chart or "
             "sentence splits a period at an inauguration date.” When a publisher revises a figure a published chart shows, the "
             "chart takes the new release and a dated update line that names it; a correction note (Rule 13.13) is for our own errors.",
@@ -1611,10 +1620,10 @@ def rule_13_11(book):
             f"Our systems atlas keeps two logs of dated events. The repair log records {len(V7['repairLog']['rows'])} changes to "
             "the rules that decide who officials answer to, and the delivery log records "
             f"{len(V7['deliveryLog']['rows'])} times government did something hard at scale with a measured result. An event "
-            "records what happened on a date. A causal claim says that one thing moves another, and the atlas grades it.",
+            "records what happened on a date; a causal claim, which the atlas grades, says that one thing moves another.",
             "On a chart or diagram, an event takes a mark of its own, a shape for its instrument with an outline for one still "
             "pending, and no arrowhead, line pattern or sign. Where the atlas codes an event’s direction, such as toward voters, "
-            "the page prints the atlas’s words as the atlas’s assessment, with the atlas named, apart from the event’s date, "
+            "the page prints the atlas’s words and names the atlas as their source, apart from the event’s date, "
             "place and text. A causal claim keeps the arrow, the sign and the line of Rule 13.4.",
         ],
         "tokens": ["oa.color.graphic.essential.onNewsprint"],
@@ -1913,11 +1922,11 @@ def chapter(book):
              "rechecked on that date."),
             ("Source: José Azar, Ioana Marinescu and Marshall I. Steinbaum, “Labor Market Concentration,” Journal of Human "
              f"Resources, 2022, online job postings, 2010 to 2013, United States, as recorded in our systems atlas, claim CL1507, "
-             f"snapshot of {SNAP}. Online postings leave out some jobs, behind Rule 13.1."),
+             f"snapshot of {SNAP}. Online postings leave out some jobs. The association behind Rule 13.1."),
             ("Source: National Highway Traffic Safety Administration, Lives Saved by Vehicle Safety Technologies and Associated "
              "Federal Motor Vehicle Safety Standards, 1960 to 2012 (DOT HS 812 069), United States, as recorded in our systems "
-             f"atlas’s delivery log, delivery case DL06, snapshot of {SNAP}. The agency calls its figure “a hypothetical estimate”, "
-             "behind Rule 13.1."),
+             f"atlas’s delivery log, delivery case DL06, snapshot of {SNAP}. The agency calls its figure “a hypothetical estimate”. "
+             "The estimate behind Rule 13.1."),
             ("Source: New State Ice Co. v. Liebmann, 285 U.S. 262, 311 (1932), Brandeis, J., dissenting, decided March 21, 1932, "
              "United States Reports, via the Library of Congress. Retrieved November 11, 2026. The quotation behind Rule 13.12."),
         ],
