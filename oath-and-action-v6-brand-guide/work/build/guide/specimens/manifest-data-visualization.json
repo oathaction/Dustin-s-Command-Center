@@ -1,0 +1,510 @@
+{
+ "s-14-opener": {
+  "chapter": "14",
+  "rule": null,
+  "width_px": null,
+  "alt": "The sixteen questions chapter 14’s groups answer, each with its family: Comparison: which is bigger, and how do they rank?; Shift and swing: what moved, and which way?; Change over time: how has it moved?; Composition: what is it made of?; Distribution and density: how are the values spread?; Correlation: do two things move together?; Uncertainty and estimates: how sure is it?; Proportion and overlap: how much, and how do groups overlap?; Gauges and indicators: where does it stand now?; Behavior: how do people move through a process?; Structure: who decides, and how does it work?; Relationships: who is connected to whom?; Flow: where does it go?; Maps: where is it happening?; Tables and plain words: where does a reader look things up, and when do words answer faster?; Infographics: how does it work, in one look?.",
+  "illustrative": false,
+  "notes": "The chapter's opener: the reader's questions that open groups 2 to 17, read from the plan file."
+ },
+ "s-14-1-correct": {
+  "chapter": "14",
+  "rule": "14.1",
+  "alt": "A line chart answers how business applications changed: Americans filed 5.7 million applications to start a business in 2025, more than twice the 2.5 million of 2005. The line climbs slowly to 2019 and jumps to 2021.",
+  "illustrative": false,
+  "notes": "A line answers a question about change over time; the kit draws it from the US rows of the business formation file."
+ },
+ "s-14-1-failure": {
+  "chapter": "14",
+  "rule": "14.1",
+  "alt": "Failure case: do not publish. The same applications drawn as bars sorted by size, 2025 first and 2009 last, so the years fall out of order.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-2-correct": {
+  "chapter": "14",
+  "rule": "14.2",
+  "alt": "A finished chart with each of its eight parts numbered in reading order: Evidence label and grade line, Title, Reading guide, Measure line, Chart, Notes, Source line, Table. Its title: Civic and social organizations employed 201,423 people in March 2023, about 113,300 fewer than in 1998.",
+  "illustrative": false,
+  "notes": "The numerals are drawn by the plate's style on the kit's own parts, so they follow the figure as the kit prints it."
+ },
+ "s-14-2-failure": {
+  "chapter": "14",
+  "rule": "14.2",
+  "alt": "Failure case: do not publish. The same line under a title that names only the topic, with no label, measure line, notes or source line.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-3-correct": {
+  "chapter": "14",
+  "rule": "14.3",
+  "alt": "Four lines of reported voting by age, each named at its last point. Citizens 18 to 24 reported voting at the lowest rate of four age groups in every presidential year from 2004 to 2024.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-3-failure": {
+  "chapter": "14",
+  "rule": "14.3",
+  "alt": "Failure case: do not publish. The same four lines in four inks with no names on them, and a key under the chart that the reader must match.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-4-correct": {
+  "chapter": "14",
+  "rule": "14.4",
+  "alt": "Columns from a zero line. In every presidential year from 1980 to 2024, between 58 and 68 percent of citizens 18 and over reported voting.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-4-failure": {
+  "chapter": "14",
+  "rule": "14.4",
+  "alt": "Failure case: do not publish. The same columns on an axis that starts at 55 percent, so 1992’s column stands 3.7 times as tall as 1996’s.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-5-correct": {
+  "chapter": "14",
+  "rule": "14.5",
+  "alt": "The four data palettes, each with its swatches, its one job and the question it answers: sequential Verdigris for one measure from low to high; diverging pair B from Prussian through the page color to Verdigris for values above and below a midpoint; four group inks, Charcoal, Verdigris, Prussian and hatched Stone, for named groups; and Stone steps for size with no direction.",
+  "illustrative": false,
+  "notes": "Swatches drawn from the chart tokens the stage's surface class sets, so the strip follows Newsprint and Charcoal."
+ },
+ "s-14-5-failure": {
+  "chapter": "14",
+  "rule": "14.5",
+  "alt": "Failure case: do not publish. An illustrative bar chart of four ways residents reached Alder County, each bar in a darker step of one green, with a key that reads from light to dark as if the channels ran from less to more.",
+  "illustrative": true,
+  "notes": ""
+ },
+ "s-14-6-correct": {
+  "chapter": "14",
+  "rule": "14.6",
+  "alt": "Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s in red with a dark edge and the rest in gray: Ninth Circuit 29, Fifth Circuit 17, Sixth Circuit 16, Fourth Circuit 15, Third Circuit 14, Second Circuit 13, Eleventh Circuit 12, Federal Circuit 12, Tenth Circuit 12, D.C. Circuit 11, Eighth Circuit 11, Seventh Circuit 11, First Circuit 6.",
+  "illustrative": false,
+  "notes": "Drawn here from the directory's rows, counted by script, until the kit takes a red point by name (request ED-E1)."
+ },
+ "s-14-6-failure": {
+  "chapter": "14",
+  "rule": "14.6",
+  "alt": "Failure case: do not publish. The same bars with three courts in red, the Ninth, Fifth and Sixth Circuits, under a title that names one.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-7-correct": {
+  "chapter": "14",
+  "rule": "14.7",
+  "alt": "Bars in one ink with each party named on its bar. Republicans held 218 House seats and Democrats 214 on November 11, 2026, with one independent and two seats empty.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-7-failure": {
+  "chapter": "14",
+  "rule": "14.7",
+  "alt": "Failure case: do not publish. Two bars, a red one marked R at 218 and a blue one marked D at 214, with a key of a red square for R and a blue square for D.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-8-correct": {
+  "chapter": "14",
+  "rule": "14.8",
+  "alt": "Five small panels, one age group in ink in each over the rest in gray. Householders under 35 were the least likely to own their homes in every year from 1982 to 2025.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-8-failure": {
+  "chapter": "14",
+  "rule": "14.8",
+  "alt": "Failure case: do not publish. The same five age groups as five lines in five inks on one plot, the fifth ink borrowed from a scale, with a key of five short lines under the chart.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-9-correct": {
+  "chapter": "14",
+  "rule": "14.9",
+  "alt": "Dots with margin of error lines for ten states’ reported turnout in 2024, against a dashed line at the nation’s 65.3 percent. Filled dots, past the margin: Michigan, Pennsylvania, Florida, New York, Texas. Open dots, within it: Ohio, Illinois, California, North Carolina, Georgia.",
+  "illustrative": false,
+  "notes": "Drawn here from the turnout file with each gap's margin computed by script, until the kit's interval form lands (round 2)."
+ },
+ "s-14-9-failure": {
+  "chapter": "14",
+  "rule": "14.9",
+  "alt": "Failure case: do not publish. The ten states ranked 1 to 10 by reported turnout, Michigan first at 72.3 percent and Texas tenth at 57.9 percent, with no margins of error.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-10-correct": {
+  "chapter": "14",
+  "rule": "14.10",
+  "alt": "An unbroken line with its window’s reason in the measure line. Newspaper publishers ran 5,851 establishments in 2023, down from 8,686 in 1998.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-10-failure": {
+  "chapter": "14",
+  "rule": "14.10",
+  "alt": "Failure case: do not publish. The same line cut into four presidential terms by shaded bands at each inauguration, each band named for a president.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-11-correct": {
+  "chapter": "14",
+  "rule": "14.11",
+  "alt": "A line of median household income from 1967 to 2025 in 2025 dollars, broken at 2013 and 2017 where the survey changed, with both estimates printed in each of those years; it ends at $87,460 in 2025.",
+  "illustrative": false,
+  "notes": "Drawn here from the Census Bureau's table, segments split by its footnotes 6 and 7 (2013) and 5 (2017)."
+ },
+ "s-14-11-failure": {
+  "chapter": "14",
+  "rule": "14.11",
+  "alt": "Failure case: do not publish. The same income series as one line run through both estimates for 2013 and both for 2017, so each change in the survey draws as a sudden step in income.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-12-correct": {
+  "chapter": "14",
+  "rule": "14.12",
+  "alt": "The same nine sources of federal receipts drawn twice: as columns at full width, with names under each column, and as bars on a phone, with each name beside its bar. Both show individual income taxes largest at 2,846 billion dollars of 5,403 billion.",
+  "illustrative": false,
+  "notes": "The two drawings side by side, drawn here from the Treasury file, so the plate shows both widths at once."
+ },
+ "s-14-12-failure": {
+  "chapter": "14",
+  "rule": "14.12",
+  "alt": "Failure case: do not publish. A phone version of the receipts chart that keeps three of nine sources and gives them a new title, “Income and payroll taxes pay for the federal government”.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-13-correct": {
+  "chapter": "14",
+  "rule": "14.13",
+  "alt": "Columns with every value printed and the table open beneath them. Newspaper publishers employed 91,350 people in March 2023, under a quarter of the 401,373 of 1998.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-13-failure": {
+  "chapter": "14",
+  "rule": "14.13",
+  "alt": "Failure case: do not publish. The same columns with no values printed, a tooltip over the 2023 column, a line asking the reader to hover over a column, and no table or source line.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-14-correct": {
+  "chapter": "14",
+  "rule": "14.14",
+  "alt": "One kit command, node work/build/chart-kit/oa-chart.mjs build s14, and the three files it writes for the payroll chart: an SVG, a PNG and a CSV, each with a dated name that says what the chart is, its ground and its width.",
+  "illustrative": false,
+  "notes": "File names as the kit writes them for S14 on November 12, 2026 (contract C3)."
+ },
+ "s-14-14-failure": {
+  "chapter": "14",
+  "rule": "14.14",
+  "alt": "Failure case: do not publish. Three files made by hand for the payroll chart: a screenshot cropped above its source line, a spreadsheet of retyped and rounded values, and a redrawn SVG whose title no longer matches the page.",
+  "illustrative": false,
+  "notes": ""
+ },
+ "s-14-s03": {
+  "chapter": "14",
+  "rule": "14.15",
+  "width_px": null,
+  "alt": "Ranked bars of the 64 entries in the atlas’s repair log by how each rule changed, split by the atlas’s direction code. Ballot initiatives lead with 17 entries, none away from voters; court rulings follow with 14; and nine of the 11 state statutes moved the rules away from voters.",
+  "illustrative": false,
+  "notes": "S03, ranked-bar: the chart kit draws it from work/build/chart-kit/specs/s03.json (contract R1-C3)"
+ },
+ "s-14-s17": {
+  "chapter": "14",
+  "rule": "14.16",
+  "width_px": null,
+  "alt": "Columns show the public laws each of ten Congresses enacted, from 482 in the 109th (2005 to 2006) to 274 in the 118th (2023 to 2024), the fewest. The count fell to 283 in the 112th, rose to 442 in the 115th and has stayed under 400 since.",
+  "illustrative": false,
+  "notes": "S17, column: the chart kit draws it from work/build/chart-kit/specs/s17.json (contract R1-C3)"
+ },
+ "s-14-s18": {
+  "chapter": "14",
+  "rule": "14.17",
+  "width_px": null,
+  "alt": "Bars show each fifth of households’ share of all household income in 2025 against a tick at 20 percent, its share of households. The lowest fifth received 3.0 percent, the second 8.5, the middle 14.4 and the fourth 22.6; the highest fifth received 51.6 percent, more than the other four together.",
+  "illustrative": false,
+  "notes": "S18, bar-benchmark-tick: the chart kit draws it from work/build/chart-kit/specs/s18.json (contract R1-C3)"
+ },
+ "s-14-s19": {
+  "chapter": "14",
+  "rule": "14.18",
+  "width_px": null,
+  "alt": "Dots show each state’s imprisonment rate at the end of 2023, from highest to lowest, beside a dashed line for all states together at 318 per 100,000. Mississippi, Louisiana and Arkansas held the most, at 652, 617 and 596; Maine and Massachusetts the fewest, at 119 and 96.",
+  "illustrative": false,
+  "notes": "S19, dot-plot: the chart kit draws it from work/build/chart-kit/specs/s19.json (contract R1-C3)"
+ },
+ "s-14-s04": {
+  "chapter": "14",
+  "rule": "14.19",
+  "width_px": null,
+  "alt": "Dumbbell chart of the share of citizens who reported voting, by age group, in 2020 and 2024. Reported voting fell 3.7 points among citizens 18 to 24, to 47.7 percent, and stayed near 75 percent among those 65 and over, so the gap between the youngest and oldest grew from 23 points to 27.",
+  "illustrative": false,
+  "notes": "S04, dumbbell: the chart kit draws it from work/build/chart-kit/specs/s04.json (contract R1-C3)"
+ },
+ "s-14-s20": {
+  "chapter": "14",
+  "rule": "14.20",
+  "width_px": null,
+  "alt": "Slope lines show the homeownership rate of five age groups in 2015 and 2025. Householders under 35 went from 35.0 to 37.0 percent and those 35 to 44 from 58.5 to 60.8; the three older groups stayed within half a point, from 70.0 to 69.8, 75.4 to 75.9 and 78.9 to 78.6.",
+  "illustrative": false,
+  "notes": "S20, slope: the chart kit draws it from work/build/chart-kit/specs/s20.json (contract R1-C3)"
+ },
+ "s-14-s21": {
+  "chapter": "14",
+  "rule": "14.21",
+  "width_px": null,
+  "alt": "Lollipops rank the atlas’s 16 everyday answers by the claims behind each. Voting and public influence leads with 42, then pay and working conditions with 39 and housing costs with 34; roads, bridges and transit has the fewest, 13. The 16 answers rest on 433 claims in all.",
+  "illustrative": false,
+  "notes": "S21, lollipop: the chart kit draws it from work/build/chart-kit/specs/s21.json (contract R1-C3)"
+ },
+ "s-14-s22": {
+  "chapter": "14",
+  "rule": "14.22",
+  "width_px": null,
+  "alt": "Pairs of bars compare the labor force participation of men and women in 13 age groups in 2025. Men’s rates run from 10.2 percent at 75 and over to 89.4 at 30 to 34; women’s from 6.1 to 82.6 at 25 to 29. Women’s rates are lower in every group from 22 on, by 9.7 points at 60 and 61.",
+  "illustrative": false,
+  "notes": "S22, grouped-bar: the chart kit draws it from work/build/chart-kit/specs/s22.json (contract R1-C3)"
+ },
+ "s-14-24-sketch": {
+  "chapter": "14",
+  "rule": "14.24",
+  "width_px": null,
+  "illustrative": true,
+  "alt": "A sketch of a radar chart, with illustrative data.",
+  "notes": "avoid sketch, at most 2,048 bytes (contract R1-C1)"
+ },
+ "s-14-s11": {
+  "chapter": "14",
+  "rule": "14.25",
+  "width_px": null,
+  "alt": "Arrows for each state and DC from the 2020 presidential margin to the 2024 margin, with the United States above them. Every arrow points toward the Republican nominee, from 1.0 point in Washington to 10.5 points in New York, and six states changed leader from the Democratic to the Republican nominee: Wisconsin, Michigan, Pennsylvania, Georgia, Nevada and Arizona.",
+  "illustrative": false,
+  "notes": "S11, shift-arrows: the chart kit draws it from work/build/chart-kit/specs/s11.json (contract R1-C3)"
+ },
+ "s-14-s24": {
+  "chapter": "14",
+  "rule": "14.26",
+  "width_px": null,
+  "alt": "Ranked lollipop chart of the rise in business applications from 2019 to 2025 in each state and DC. Every one rose. The United States rose 62 percent. Wyoming rose most, 302 percent, followed by New Mexico and Delaware at 133 and 132 percent; the District of Columbia rose least, 22 percent.",
+  "illustrative": false,
+  "notes": "S24, change-lollipop: the chart kit draws it from work/build/chart-kit/specs/s24.json (contract R1-C3)"
+ },
+ "s-14-s25": {
+  "chapter": "14",
+  "rule": "14.27",
+  "width_px": null,
+  "alt": "Diverging bar chart of the change in civilian employees at 37 federal agencies from January 2022 to August 2026. Defense lost 73,248, the most, followed by Health and Human Services, Treasury and the Social Security Administration. Four gained: Veterans Affairs 21,956, Homeland Security 14,584, Interior 275 and the Government Publishing Office 88. All agencies in the files together lost 130,369.",
+  "illustrative": false,
+  "notes": "S25, diverging-bar: the chart kit draws it from work/build/chart-kit/specs/s25.json (contract R1-C3)"
+ },
+ "s-14-s26": {
+  "chapter": "14",
+  "rule": "14.28",
+  "width_px": null,
+  "alt": "Arrows for each Congress from 1951 to 2025 show the House majority’s lead in seats at the opening of each Congress, pointing left for Democratic majorities and right for Republican ones. Democratic leads ran as high as 155 seats in 1965; leads since 1995 have mostly been under 60 seats, and the 119th Congress opened in 2025 with a Republican lead of 5, the smallest in the chart.",
+  "illustrative": false,
+  "notes": "S26, diverging-bar-arrows: the chart kit draws it from work/build/chart-kit/specs/s26.json (contract R1-C3)"
+ },
+ "s-14-s02": {
+  "chapter": "14",
+  "rule": "14.29",
+  "width_px": null,
+  "alt": "Line chart of child poverty under the Supplemental Poverty Measure, 2009 to 2025, with the official measure in gray. It fell from 17.0 percent in 2009 to 5.1 percent in 2021, the year the expanded child tax credit was paid, rose to 12.0 percent in 2022 and stood at 13.4 percent in 2025, where both measures meet.",
+  "illustrative": false,
+  "notes": "S02, line-event-notes: the chart kit draws it from work/build/chart-kit/specs/s02.json (contract R1-C3)"
+ },
+ "s-14-s05": {
+  "chapter": "14",
+  "rule": "14.30",
+  "width_px": null,
+  "alt": "Four small line charts of the homeownership rate from 1994 to 2025, one each for all households, non-Hispanic White, Hispanic and Black householders, on one scale from 40 to 80 percent. In 2025 the rates were 65.2, 74.3, 48.5 and 44.7 percent; the gap between non-Hispanic White and Black households grew from 27.3 points in 2003 to 29.6 in 2025.",
+  "illustrative": false,
+  "notes": "S05, multi-line-highlight: the chart kit draws it from work/build/chart-kit/specs/s05.json (contract R1-C3)"
+ },
+ "s-14-s27": {
+  "chapter": "14",
+  "rule": "14.31",
+  "width_px": null,
+  "alt": "Fifty-one thin lines show the house price index for every state and DC from 1991 to 2026, all starting near 100. Montana, drawn heavy, rose most, to 742 in the second quarter of 2026. Connecticut, the lowest, reached 319. Many lines peak in 2006 and dip by 2011 before climbing again.",
+  "illustrative": false,
+  "notes": "S27, line-field: the chart kit draws it from work/build/chart-kit/specs/s27.json (contract R1-C3)"
+ },
+ "s-14-s14": {
+  "chapter": "14",
+  "rule": "14.32",
+  "width_px": null,
+  "alt": "Columns show the monthly change in payroll jobs from January 2022 to September 2026: large gains in 2022, up to 819,000 in February, that shrink to under 200,000 a month by 2025, with seven months of losses in 2025 and 2026. A line shows the three-month average, which stood at 51,000 in September 2026, a preliminary figure.",
+  "illustrative": false,
+  "notes": "S14, columns-moving-average: the chart kit draws it from work/build/chart-kit/specs/s14.json (contract R1-C3)"
+ },
+ "s-14-s28": {
+  "chapter": "14",
+  "rule": "14.33",
+  "width_px": null,
+  "alt": "Two sentences, each with a word-sized line. Civic and social organizations with paid staff ran 32,054 locations in 1998 and 24,698 in 2023, a line that falls with small rises along the way. Their paid employees numbered 314,723 in 1998 and 201,423 in 2023, with a low of 166,962 in 2021.",
+  "illustrative": false,
+  "notes": "S28, sparkline: the chart kit draws it from work/build/chart-kit/specs/s28.json (contract R1-C3)"
+ },
+ "s-14-s13": {
+  "chapter": "14",
+  "rule": "14.34",
+  "width_px": null,
+  "alt": "A sparkline table of the payroll total, its two parts and federal jobs, above 14 small area charts of the private industries, January 2022 to September 2026, on one scale of percent change. All nonfarm jobs rose 9.0 million, 6.0 percent. Health care and social assistance gained the most, 3.8 million jobs or 18.8 percent; information lost 245,000 jobs, 8.2 percent, and the federal government lost 197,000, 6.8 percent.",
+  "illustrative": false,
+  "notes": "S13, area-sparklines: the chart kit draws it from work/build/chart-kit/specs/s13.json (contract R1-C3)"
+ },
+ "s-14-s29": {
+  "chapter": "14",
+  "rule": "14.35",
+  "width_px": null,
+  "alt": "Area chart of paid employees at newspaper publishers each March from 1998 to 2023. The count rose to 413,951 in 2001, then fell in every year to 91,350 in 2023, less than a quarter of the 401,373 in 1998.",
+  "illustrative": false,
+  "notes": "S29, area: the chart kit draws it from work/build/chart-kit/specs/s29.json (contract R1-C3)"
+ },
+ "s-14-s30": {
+  "chapter": "14",
+  "rule": "14.36",
+  "width_px": null,
+  "alt": "Step line of the child tax credit’s top amount per child, tax years 2017 to 2026: $1,000 in 2017, $2,000 from 2018 to 2020, $3,000 in 2021 for a child 6 or older and $3,600 for a child under 6, $2,000 again from 2022 to 2024, and $2,200 in 2025 and 2026.",
+  "illustrative": false,
+  "notes": "S30, step-line: the chart kit draws it from work/build/chart-kit/specs/s30.json (contract R1-C3)"
+ },
+ "s-14-s31": {
+  "chapter": "14",
+  "rule": "14.37",
+  "width_px": null,
+  "alt": "Line chart of the monthly unemployment rate from January 2022 to October 2026. It held between 3.4 and 4.0 percent through 2023, rose to 4.4 percent by September 2025, and stood at 4.1 percent in October 2026. October 2025 has no figure, and the line breaks there.",
+  "illustrative": false,
+  "notes": "S31, line-data-gap: the chart kit draws it from work/build/chart-kit/specs/s31.json (contract R1-C3)"
+ },
+ "s-14-s09": {
+  "chapter": "14",
+  "rule": "14.38",
+  "width_px": null,
+  "alt": "A timeline of 24 changes in the rules from 1870 to 2026 on four lanes: who counts, who governs, who owns and who checks. The atlas’s picks bunch in two stretches, seven from 1964 to 1978 and eight from 2010 to 2026, from the Fifteenth Amendment in 1870 to Louisiana v. Callais and Trump v. Slaughter in 2026.",
+  "illustrative": false,
+  "notes": "S09, timeline: the chart kit draws it from work/build/chart-kit/specs/s09.json (contract R1-C3)"
+ },
+ "s-14-s32": {
+  "chapter": "14",
+  "rule": "14.39",
+  "width_px": null,
+  "alt": "Timeline of when the parts of Public Law 119-75 on pharmacy benefit managers take effect, after the law’s approval on February 3, 2026: a deadline for federal reporting rules on August 3, 2027; Medicare drug plan rules on January 1, 2028; reporting and full rebate pass-through for employer plans for plan years from August 3, 2028; and Medicare pharmacy contract standards on January 1, 2029.",
+  "illustrative": false,
+  "notes": "S32, implementation-timeline: the chart kit draws it from work/build/chart-kit/specs/s32.json (contract R1-C3)"
+ },
+ "s-14-s33": {
+  "chapter": "14",
+  "rule": "14.40",
+  "width_px": null,
+  "alt": "Line chart of ten federal revenue sources indexed to fiscal 2016 = 100, fiscal 2016 to 2026. Customs duties rose highest, to 497 in 2026 after a peak of 559 in 2025. All receipts reached 165. Other retirement contributions reached 216, individual income taxes 184 and estate and gift taxes 181, while miscellaneous receipts fell to 30.",
+  "illustrative": false,
+  "notes": "S33, indexed-line: the chart kit draws it from work/build/chart-kit/specs/s33.json (contract R1-C3)"
+ },
+ "s-14-s34": {
+  "chapter": "14",
+  "rule": "14.41",
+  "width_px": null,
+  "alt": "Bubble timeline of Senate votes on ending debate in each Congress from 1917 to 2026. The circles stay tiny or absent until about 1970, grow through the 1970s to 2000s, and swell after 2007; the largest is 298 votes in the Congress of 2019 and 2020, and the current Congress has held 294 so far.",
+  "illustrative": false,
+  "notes": "S34, bubble-timeline: the chart kit draws it from work/build/chart-kit/specs/s34.json (contract R1-C3)"
+ },
+ "s-14-s35": {
+  "chapter": "14",
+  "rule": "14.42",
+  "width_px": null,
+  "alt": "Line chart of an invented family’s resources after taxes and benefits as its earnings rise from $0 to $60,000, beside a dashed line of earnings alone. Resources climb to $44,706 at $36,000 of earnings, drop to $36,320 at $37,000 when child care help ends, and pass $44,706 again only at $51,000.",
+  "illustrative": true,
+  "notes": "S35, benefit-cliff: the chart kit draws it from work/build/chart-kit/specs/s35.json (contract R1-C3)"
+ },
+ "s-14-43-sketch": {
+  "chapter": "14",
+  "rule": "14.43",
+  "width_px": null,
+  "illustrative": true,
+  "alt": "A sketch of a run chart, with illustrative data.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1)"
+ },
+ "s-14-44-sketch": {
+  "chapter": "14",
+  "rule": "14.44",
+  "width_px": null,
+  "illustrative": true,
+  "alt": "A sketch of a cycle or seasonal chart, with illustrative data.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1)"
+ },
+ "s-14-45-sketch": {
+  "chapter": "14",
+  "rule": "14.45",
+  "width_px": null,
+  "illustrative": true,
+  "alt": "A sketch of a streamgraph, with illustrative data.",
+  "notes": "avoid sketch, at most 2,048 bytes (contract R1-C1)"
+ },
+ "s-14-s15": {
+  "chapter": "14",
+  "rule": "14.125",
+  "width_px": null,
+  "alt": "A results table of every state and DC, with the United States above them, giving the 2024 and 2020 presidential margins with the leader named and the shift toward the Republican nominee. The Republican nominee led in 31 states in 2024, six more than in 2020: Wisconsin, Michigan, Pennsylvania and Georgia by under 2.5 points, Nevada by 3.1 and Arizona by 5.5.",
+  "illustrative": false,
+  "notes": "S15, results-table: the chart kit draws it from work/build/chart-kit/specs/s15.json (contract R1-C3)"
+ },
+ "s-14-s36": {
+  "chapter": "14",
+  "rule": "14.126",
+  "width_px": null,
+  "alt": "A register of the 25 PACs and party committees that reported the most independent spending in the 2023 to 2024 cycle, from FF PAC at $503.3 million and Make America Great Again Inc. at $376.9 million to the NRCC at $36.5 million, each with a bar for its amount.",
+  "illustrative": false,
+  "notes": "S36, ranked-register: the chart kit draws it from work/build/chart-kit/specs/s36.json (contract R1-C3)"
+ },
+ "s-14-s06": {
+  "chapter": "14",
+  "rule": "14.127",
+  "width_px": null,
+  "alt": "A table of eight scenarios for 2036 against four outcome families: quality of democracy, government efficacy, economic performance, and income and wealth equality. Each cell gives the atlas’s direction words with Oath & Action’s arrow. Five of the seven scenarios beyond the baseline would lift at least one family if their assumptions hold, and in the baseline each family stays flat or falls.",
+  "illustrative": false,
+  "notes": "S06, comparison-matrix: the chart kit draws it from work/build/chart-kit/specs/s06.json (contract R1-C3)"
+ },
+ "s-14-s37": {
+  "chapter": "14",
+  "rule": "14.129",
+  "width_px": null,
+  "alt": "A heat table of the atlas’s 50 reforms against 11 routes to change, each cell tinted and labeled with the atlas’s rating of feasibility for 2026 to 2030. Routes through an act of Congress are rated low or very low in 36 of 38 cases; routes through a state law are rated medium or high in 24 of 29.",
+  "illustrative": false,
+  "notes": "S37, heat-table: the chart kit draws it from work/build/chart-kit/specs/s37.json (contract R1-C3)"
+ },
+ "s-14-s38": {
+  "chapter": "14",
+  "rule": "14.130",
+  "width_px": null,
+  "alt": "A lookup table of the atlas’s 17 issue records on news, records and public information, with a search field and a filter by grade. The still image shows the eight records graded well supported.",
+  "illustrative": false,
+  "notes": "S38, filterable-lookup-table: the chart kit draws it from work/build/chart-kit/specs/s38.json (contract R1-C3)"
+ },
+ "s-14-s39": {
+  "chapter": "14",
+  "rule": "14.131",
+  "width_px": null,
+  "alt": "A table of the atlas’s 11 claims about drug prices, each with its grade, period, who it covers and its limits. Ten are documented, among them that the three largest pharmacy benefit managers processed nearly 80% of U.S. prescriptions in 2023; one, that generic competition lowers drug prices, is well supported.",
+  "illustrative": false,
+  "notes": "S39, evidence-table: the chart kit draws it from work/build/chart-kit/specs/s39.json (contract R1-C3)"
+ },
+ "s-14-s41": {
+  "chapter": "14",
+  "rule": "14.133",
+  "width_px": null,
+  "alt": "A table of three rows: 86 percent of all registered voters, 87 percent of Republicans and 88 percent of Democrats favored a ban on stock trading by members of Congress in a May 2023 survey.",
+  "illustrative": false,
+  "notes": "S41, plain-table: the chart kit draws it from work/build/chart-kit/specs/s41.json (contract R1-C3)"
+ },
+ "s-14-s42": {
+  "chapter": "14",
+  "rule": "14.134",
+  "width_px": null,
+  "alt": "In a May 2023 survey of 2,625 registered voters, 87 percent of Republicans and 88 percent of Democrats favored a ban on stock trading by members of Congress.",
+  "illustrative": false,
+  "notes": "S42, one-sentence: the chart kit draws it from work/build/chart-kit/specs/s42.json (contract R1-C3)"
+ }
+}

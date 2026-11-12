@@ -1,0 +1,422 @@
+{
+ "chapter": "14",
+ "written_by": "work/build/scripts/phase-3/phase3_ch14_build.py",
+ "rounds": [
+  1
+ ],
+ "examples": 47,
+ "by_domain": {
+  "D01": 4,
+  "D02": 5,
+  "D03": 3,
+  "D04": 4,
+  "D05": 2,
+  "D06": 4,
+  "D07": 4,
+  "D08": 7,
+  "D09": 4,
+  "D10": 6
+ },
+ "all_domains": 4,
+ "by_state": {
+  "CA": 1,
+  "CT": 1,
+  "FL": 1,
+  "GA": 1,
+  "IL": 1,
+  "MA": 1,
+  "MI": 1,
+  "MS": 1,
+  "MT": 1,
+  "NC": 1,
+  "NY": 2,
+  "OH": 1,
+  "PA": 1,
+  "TX": 1,
+  "WA": 1,
+  "WY": 1
+ },
+ "limits": {
+  "domain": "one in four",
+  "state": "one in five"
+ },
+ "rows": [
+  {
+   "example": "Business applications, United States, 2005 to 2025",
+   "domain": "D06",
+   "states": [],
+   "level": "federal",
+   "where": "14.1",
+   "rule": "14.1",
+   "source": "14-001.json"
+  },
+  {
+   "example": "Civic and social organizations, employees, 1998 to 2023",
+   "domain": "D10",
+   "states": [],
+   "level": "federal",
+   "where": "14.2",
+   "rule": "14.2",
+   "source": "14-002.json"
+  },
+  {
+   "example": "Reported voting by age, presidential years 2004 to 2024",
+   "domain": "D10",
+   "states": [],
+   "level": "federal",
+   "where": "14.3",
+   "rule": "14.3",
+   "source": "14-003.json"
+  },
+  {
+   "example": "Reported voting, citizens 18 and over, presidential years",
+   "domain": "D10",
+   "states": [],
+   "level": "federal",
+   "where": "14.4",
+   "rule": "14.4",
+   "source": "14-004.json"
+  },
+  {
+   "example": "Ways residents reached a county office, invented",
+   "domain": "D04",
+   "states": [],
+   "level": "county",
+   "where": "14.5",
+   "rule": "14.5",
+   "source": "14-005.json"
+  },
+  {
+   "example": "Active judges by federal court of appeals, November 11, 2026",
+   "domain": "D05",
+   "states": [],
+   "level": "federal",
+   "where": "14.6",
+   "rule": "14.6",
+   "source": "14-006.json"
+  },
+  {
+   "example": "House seats by party, November 11, 2026",
+   "domain": "D02",
+   "states": [],
+   "level": "federal",
+   "where": "14.7",
+   "rule": "14.7",
+   "source": "14-007.json"
+  },
+  {
+   "example": "Homeownership by age of householder",
+   "domain": "D09",
+   "states": [],
+   "level": "federal",
+   "where": "14.8",
+   "rule": "14.8",
+   "source": "14-008.json"
+  },
+  {
+   "example": "Reported turnout, ten states with the most voting-age citizens, 2024",
+   "domain": "D10",
+   "states": [
+    "CA",
+    "TX",
+    "FL",
+    "NY",
+    "PA",
+    "IL",
+    "OH",
+    "NC",
+    "GA",
+    "MI"
+   ],
+   "level": "state",
+   "where": "14.9",
+   "rule": "14.9",
+   "source": "14-009.json"
+  },
+  {
+   "example": "Newspaper publishers’ establishments, 1998 to 2023",
+   "domain": "D01",
+   "states": [],
+   "level": "federal",
+   "where": "14.10",
+   "rule": "14.10",
+   "source": "14-010.json"
+  },
+  {
+   "example": "Median household income, 1967 to 2025",
+   "domain": "D08",
+   "states": [],
+   "level": "federal",
+   "where": "14.11",
+   "rule": "14.11",
+   "source": "14-011.json"
+  },
+  {
+   "example": "Federal receipts by source, fiscal year 2026",
+   "domain": "D08",
+   "states": [],
+   "level": "federal",
+   "where": "14.12",
+   "rule": "14.12",
+   "source": "14-012.json"
+  },
+  {
+   "example": "Newspaper publishers’ employees, every fifth year, 1998 to 2023",
+   "domain": "D01",
+   "states": [],
+   "level": "federal",
+   "where": "14.13",
+   "rule": "14.13",
+   "source": "14-013.json"
+  },
+  {
+   "example": "The atlas codes nine of the 11 state statutes in its log as moving the rules away from voters.",
+   "domain": "D02",
+   "states": [],
+   "rule": "14.15",
+   "source": "s03.json"
+  },
+  {
+   "example": "The 118th Congress enacted 274 public laws in 2023 and 2024, the fewest of the ten Congresses charted.",
+   "domain": "D04",
+   "states": [],
+   "rule": "14.16",
+   "source": "s17.json"
+  },
+  {
+   "example": "The highest-income fifth of households received 51.6 percent of all household income in 2025, and the lowest fifth received 3.0 percent.",
+   "domain": "D08",
+   "states": [],
+   "rule": "14.17",
+   "source": "s18.json"
+  },
+  {
+   "example": "State imprisonment rates at the end of 2023 ran from 96 sentenced prisoners per 100,000 residents in Massachusetts to 652 in Mississippi.",
+   "domain": "D05",
+   "states": [
+    "MS",
+    "MA"
+   ],
+   "rule": "14.18",
+   "source": "s19.json"
+  },
+  {
+   "example": "The gap in reported voting between citizens 18 to 24 and those 65 and over grew from 23 points in 2020 to 27 in 2024.",
+   "domain": "D10",
+   "states": [],
+   "rule": "14.19",
+   "source": "s04.json"
+  },
+  {
+   "example": "In 2025, 37.0 percent of householders under 35 owned their homes, against 35.0 percent in 2015, the lowest rate of the five age groups in both years.",
+   "domain": "D09",
+   "states": [],
+   "rule": "14.20",
+   "source": "s20.json"
+  },
+  {
+   "example": "Of the atlas’s 16 everyday answers, voting and public influence rests on the most claims, 42, and roads, bridges and transit on the fewest, 13.",
+   "domain": "all",
+   "states": [],
+   "rule": "14.21",
+   "source": "s21.json"
+  },
+  {
+   "example": "In 2025, women were in the labor force at lower rates than men in every age group from 22 on, with the widest gap, 9.7 points, at ages 60 and 61.",
+   "domain": "D07",
+   "states": [],
+   "rule": "14.22",
+   "source": "s22.json"
+  },
+  {
+   "example": "The margin in every state and DC moved toward the Republican nominee from 2020 to 2024, by 1.0 point in Washington to 10.5 points in New York.",
+   "domain": "D02",
+   "states": [
+    "WA",
+    "NY"
+   ],
+   "rule": "14.25",
+   "source": "s11.json"
+  },
+  {
+   "example": "Applications to start a business rose in every state and DC from 2019 to 2025, by 62 percent nationwide and most in Wyoming, where they quadrupled.",
+   "domain": "D06",
+   "states": [
+    "WY"
+   ],
+   "rule": "14.26",
+   "source": "s24.json"
+  },
+  {
+   "example": "Federal agencies in the personnel files had 130,369 fewer civilian employees in August 2026 than in January 2022, and 33 of the 37 with 1,000 or more shrank.",
+   "domain": "D04",
+   "states": [],
+   "rule": "14.27",
+   "source": "s25.json"
+  },
+  {
+   "example": "The House majority opened the 119th Congress in 2025 with 5 more seats than the minority, its smallest lead at the start of any Congress since 1951.",
+   "domain": "D02",
+   "states": [],
+   "rule": "14.28",
+   "source": "s26.json"
+  },
+  {
+   "example": "Child poverty fell to 5.1 percent in 2021, the lowest since the series began in 2009, and more than doubled the next year.",
+   "domain": "D08",
+   "states": [],
+   "rule": "14.29",
+   "source": "s02.json"
+  },
+  {
+   "example": "Non-Hispanic White and Black homeownership rates were nearly 30 points apart in 2025, a wider gap than in 2003.",
+   "domain": "D09",
+   "states": [],
+   "rule": "14.30",
+   "source": "s05.json"
+  },
+  {
+   "example": "Home prices rose in every state and DC from 1991 to 2026 by the Federal Housing Finance Agency’s index, and most in Montana, to more than seven times their early-1991 level.",
+   "domain": "D09",
+   "states": [
+    "MT",
+    "CT"
+   ],
+   "rule": "14.31",
+   "source": "s27.json"
+  },
+  {
+   "example": "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure, and payrolls shrank in seven of the 57 months charted.",
+   "domain": "D07",
+   "states": [],
+   "rule": "14.32",
+   "source": "s14.json"
+  },
+  {
+   "example": "Civic and social organizations with paid staff ran 24,698 locations in 2023, 23 percent fewer than in 1998.",
+   "domain": "D10",
+   "states": [],
+   "rule": "14.33",
+   "source": "s28.json"
+  },
+  {
+   "example": "Health care and social assistance added 3.8 million jobs from January 2022 to September 2026, the most of any industry; information and the federal government lost jobs.",
+   "domain": "D07",
+   "states": [],
+   "rule": "14.34",
+   "source": "s13.json"
+  },
+  {
+   "example": "Newspaper publishers employed 91,350 people in 2023, less than a quarter of the 401,373 they employed in 1998.",
+   "domain": "D01",
+   "states": [],
+   "rule": "14.35",
+   "source": "s29.json"
+  },
+  {
+   "example": "Congress has changed the child tax credit’s top amount per child three times since 2017: to $2,000 in 2018, to $3,000 or $3,600 for 2021 alone, and to $2,200 from 2025.",
+   "domain": "D08",
+   "states": [],
+   "rule": "14.36",
+   "source": "s30.json"
+  },
+  {
+   "example": "The unemployment rate stood at 4.1 percent in October 2026, and the government published no rate for October 2025.",
+   "domain": "D07",
+   "states": [],
+   "rule": "14.37",
+   "source": "s31.json"
+  },
+  {
+   "example": "The atlas traces 24 rule changes since 1870 on four threads: who counts, who governs, who owns and who checks.",
+   "domain": "all",
+   "states": [],
+   "rule": "14.38",
+   "source": "s09.json"
+  },
+  {
+   "example": "Congress set the 2026 law’s rules for pharmacy benefit managers to start on four dates, from an August 2027 deadline for federal rules to January 2029.",
+   "domain": "D06",
+   "states": [],
+   "rule": "14.39",
+   "source": "s32.json"
+  },
+  {
+   "example": "Customs duties grew fastest of the federal government’s sources of revenue from fiscal 2016 to 2026, to almost five times their 2016 level, while all receipts grew 65 percent.",
+   "domain": "D08",
+   "states": [],
+   "rule": "14.40",
+   "source": "s33.json"
+  },
+  {
+   "example": "The Senate held 298 votes on ending debate in the Congress of 2019 and 2020, after no more than seven in any Congress before 1971.",
+   "domain": "D04",
+   "states": [],
+   "rule": "14.41",
+   "source": "s34.json"
+  },
+  {
+   "example": "In this invented budget, a raise from $36,000 to $37,000 leaves a family $8,386 a year worse off, because its child care help ends.",
+   "domain": "D08",
+   "states": [],
+   "rule": "14.42",
+   "source": "s35.json"
+  },
+  {
+   "example": "The Republican nominee led in 31 states in 2024, six more than in 2020; in four of the six states that changed leader, the lead was under 2.5 points.",
+   "domain": "D02",
+   "states": [],
+   "rule": "14.125",
+   "source": "s15.json"
+  },
+  {
+   "example": "FF PAC reported $503.3 million in independent spending for the 2024 federal elections, the most of any PAC or party committee.",
+   "domain": "D03",
+   "states": [],
+   "rule": "14.126",
+   "source": "s36.json"
+  },
+  {
+   "example": "If their assumptions hold, five of the seven scenarios beyond the baseline would lift at least one outcome family by 2036.",
+   "domain": "all",
+   "states": [],
+   "rule": "14.127",
+   "source": "s06.json"
+  },
+  {
+   "example": "The atlas rates 36 of its 38 routes through an act of Congress low or very low in feasibility for 2026 to 2030, and 24 of its 29 routes through a state law medium or high.",
+   "domain": "all",
+   "states": [],
+   "rule": "14.129",
+   "source": "s37.json"
+  },
+  {
+   "example": "Of the atlas’s 17 issue records on news, records and public information, ten are documented or well supported, six plausible and one a hypothesis.",
+   "domain": "D01",
+   "states": [],
+   "rule": "14.130",
+   "source": "s38.json"
+  },
+  {
+   "example": "Ten of the atlas’s 11 claims about drug middlemen and prices are documented on the public record; the eleventh, on generic competition, is well supported.",
+   "domain": "D06",
+   "states": [],
+   "rule": "14.131",
+   "source": "s39.json"
+  },
+  {
+   "example": "Republican and Democratic voters favored a ban on stock trading by members of Congress at almost the same rate in a May 2023 survey, 87 and 88 percent.",
+   "domain": "D03",
+   "states": [],
+   "rule": "14.133",
+   "source": "s41.json"
+  },
+  {
+   "example": "In a May 2023 survey of 2,625 registered voters, 87 percent of Republicans and 88 percent of Democrats favored a ban on stock trading by members of Congress.",
+   "domain": "D03",
+   "states": [],
+   "rule": "14.134",
+   "source": "s42.json"
+  }
+ ]
+}

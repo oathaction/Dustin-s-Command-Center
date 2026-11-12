@@ -1,0 +1,2492 @@
+{
+ "number": "14",
+ "anchor": "data-visualization",
+ "title": "Data visualization",
+ "part": "Evidence and media",
+ "instruction": "Start from the reader's question to choose a chart, then title it with the evidence it shows.",
+ "opener": {
+  "specimen": "s-14-opener",
+  "caption": "Each group of this chapter opens with the question a reader brings, and its forms answer it."
+ },
+ "intro": [
+  "This chapter sets how Oath & Action shows numbers. Fourteen rules come first and hold for every chart. Each form a chart can take then has its own entry, grouped by the question it answers, with when to use it, what to use instead, and a finished example drawn from real data or labeled as illustrative.",
+  "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files.",
+  "The entries’ charts are drawn by our chart kit from frozen data files, the same way a chart in a story will be, and each one carries its table as live text."
+ ],
+ "groups": [
+  {
+   "number": 1,
+   "before_rule": "14.1",
+   "title": "Every chart",
+   "rules": "14.1 to 14.14",
+   "line": "Fourteen rules hold for every chart, from the question it answers to the files it ships as."
+  },
+  {
+   "number": 2,
+   "before_rule": "14.15",
+   "title": "Comparison: which is bigger, and how do they rank?",
+   "rules": "14.15 to 14.24",
+   "line": "Bars, dots and slopes set values side by side on one scale, so a reader sees which is bigger and by how much."
+  },
+  {
+   "number": 3,
+   "before_rule": "14.25",
+   "title": "Shift and swing: what moved, and which way?",
+   "rules": "14.25 to 14.28",
+   "line": "Arrows, lollipops and diverging bars show which way each value moved and how far, with the direction in a word as well as a mark."
+  },
+  {
+   "number": 4,
+   "before_rule": "14.29",
+   "title": "Change over time: how has it moved?",
+   "rules": "14.29 to 14.45",
+   "line": "Time runs from left to right in lines, columns and timelines, with each gap, break and preliminary value marked where it falls."
+  },
+  {
+   "number": 16,
+   "before_rule": "14.125",
+   "title": "Tables and plain words: where does a reader look things up, and when do words answer faster?",
+   "rules": "14.125 to 14.134",
+   "line": "A table lets a reader look a value up, and one sentence answers when a single figure is the whole story."
+  }
+ ],
+ "rules": [
+  {
+   "id": "14.1",
+   "title": "Start from the reader’s question, then choose the form.",
+   "rule": [
+    "Write down the question a reader brings to the numbers, in the words a reader would use, before choosing a form. The question names the comparison: which is bigger, what moved, how it changed, what it is made of, where it happens, or how sure a figure is. Each group of this chapter opens with one of those questions, and each entry in the group says when its form fits the data at hand.",
+    "When one figure answers the question, a sentence carries it (Rule 14.134). When a reader needs to look values up, a table does (Rule 14.133)."
+   ],
+   "why": {
+    "text": [
+     "Each form answers one kind of question well. Bars sorted by size show which year was largest and hide the order of the years, so a reader who asked how something changed cannot see the change."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.29",
+    "14.15",
+    "14.133",
+    "14.134"
+   ],
+   "builders": "Write reader_question in the spec first, then pick the form from the group whose question matches; the kit draws it with node work/build/chart-kit/oa-chart.mjs build <spec>.",
+   "specs": [
+    {
+     "label": "First step",
+     "value": "The reader’s question, in a reader’s words, written into the chart’s spec before any drawing"
+    },
+    {
+     "label": "Question to form",
+     "value": "The question that opens each group of this chapter, then the entry whose use names the data at hand"
+    },
+    {
+     "label": "One figure",
+     "value": "A sentence, Rule 14.134"
+    },
+    {
+     "label": "Values to look up",
+     "value": "A table, Rule 14.133"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-1-correct",
+    "caption": "The question asks how applications changed, so the years run left to right on one line, and the jump after 2019 shows at once: from 3.5 million to 5.4 million in two years."
+   },
+   "failure": {
+    "specimen": "s-14-1-failure",
+    "caption": "<strong>Fails Rule 14.1.</strong> The reader asked how applications changed, and bars sorted by size put 2025 first and 2009 last, so the years fall out of order and the jump after 2019 cannot be seen."
+   }
+  },
+  {
+   "id": "14.2",
+   "title": "Build every chart in one anatomy, from evidence label to table.",
+   "rule": [
+    "Every chart prints the same eight parts in the same order, so a reader always knows where to look: the evidence label and grade line (Rules 13.1 and 13.2), the title, the reading guide, the measure line (Rule 13.7), the chart, its notes, the source line (Rule 13.6) and the table (Rule 14.13).",
+    "The title is one full sentence, and house rule H08 sizes its claim. The reading guide says in a sentence or two how to read the drawing. Notes carry what the drawing cannot. A part with nothing to say is left out, and the rest keep their order."
+   ],
+   "why": {
+    "text": [
+     "Readers learn where things are after a few charts. When every chart puts its source in the same place, a reader can check any figure in seconds, and a chart that lacks a part shows the gap."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [
+    "oa.chart.color.chip.fill.onNewsprint"
+   ],
+   "related": [
+    "13.1",
+    "13.2",
+    "13.6",
+    "13.7",
+    "14.13"
+   ],
+   "builders": "Fill every word field of the spec under contract C2; the kit prints the parts in this order and leaves out an empty one.",
+   "specs": [
+    {
+     "label": "Order",
+     "value": "Evidence label and grade line, title, reading guide, measure line, chart, notes, source line, table"
+    },
+    {
+     "label": "Evidence label",
+     "value": "On the chip fill, in the label style",
+     "token": "oa.chart.color.chip.fill.onNewsprint"
+    },
+    {
+     "label": "Title",
+     "value": "One full sentence in Inter Tight at the chart title size; its claim follows H08 and its verb Rule 13.2"
+    },
+    {
+     "label": "Reading guide",
+     "value": "One or two sentences, in the body style, only when the drawing needs one"
+    },
+    {
+     "label": "Measure line",
+     "value": "What is counted, the unit, the period and the place, under the title"
+    },
+    {
+     "label": "Table",
+     "value": "Every row the chart draws, folded under the source line as “The table and notes”"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-2-correct",
+    "caption": "The eight parts in order, each numbered where the kit prints it. The table sits folded under the source line."
+   },
+   "failure": {
+    "specimen": "s-14-2-failure",
+    "caption": "<strong>Fails Rule 14.2.</strong> The title names a topic and states no finding, and the chart drops its label, measure line, notes and source line, so a reader cannot tell what was counted or who counted it."
+   }
+  },
+  {
+   "id": "14.3",
+   "title": "Label the data directly, and use a key only when labels cannot fit.",
+   "rule": [
+    "Rule 12.6 sets where a label sits. In a chart, each line takes its name at its last point, each bar its value at its end, and each group its name on or beside its marks, in the ink of the text. Units go once in the measure line, so the labels carry numbers alone.",
+    "A key earns its place only when a mark codes something a label cannot carry on every mark, such as an evidence grade, a pattern or a run of shades. Then it sits under the measure line, in the order the marks run, as Rule 12.6 sets."
+   ],
+   "why": {
+    "text": [
+     "A reader matching inks between a key and the lines looks away from the data at every step, and close inks are hard to match at all in grayscale or with a color vision deficiency. A name at the end of each line is read in place."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [
+    "oa.chart.color.label.onNewsprint"
+   ],
+   "related": [
+    "12.6",
+    "13.7"
+   ],
+   "builders": "Name each series in the spec's labels.series; the kit sets the names at the line ends and warns when one cannot fit.",
+   "specs": [
+    {
+     "label": "A line",
+     "value": "Its name at its last point, in the label ink",
+     "token": "oa.chart.color.label.onNewsprint"
+    },
+    {
+     "label": "A bar",
+     "value": "Its value at its end, its name beside it"
+    },
+    {
+     "label": "Units",
+     "value": "Once, in the measure line"
+    },
+    {
+     "label": "A key",
+     "value": "Only for a code no label can carry, under the measure line, in the order the marks run (Rule 12.6)"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-3-correct",
+    "caption": "Each line carries its own name where it ends, so a reader reads the age group in place and the youngest group, which the title names, stands out in ink."
+   },
+   "failure": {
+    "specimen": "s-14-3-failure",
+    "caption": "<strong>Fails Rule 14.3.</strong> Four lines in four inks send the reader down to a key and back for every line, where a name at each line’s end would be read in place."
+   }
+  },
+  {
+   "id": "14.4",
+   "title": "Start bars and columns at zero, keep one scale per axis, and size circles by area.",
+   "rule": [
+    "Draw an amount at its true size. Bars and columns start at zero, because a reader compares their lengths. A line may start above zero when the change is the point, with the axis labeled where it starts.",
+    "Each axis keeps one scale, so two measures take two panels side by side rather than a second axis on the right. A circle that stands for an amount takes its area from the value, so its radius grows with the square root of the value."
+   ],
+   "why": {
+    "text": [
+     "Readers judge a bar by its length before they read its number. Cut the axis at 55 percent and 1992’s 67.7 percent stands 3.7 times as tall as 1996’s 58.4, for a gap of 9.3 points."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [
+    "oa.chart.line.baseline"
+   ],
+   "related": [
+    "14.23",
+    "14.29"
+   ],
+   "builders": "The kit draws every bar and column from zero and fails a circle not sized by area; scale may set a line’s range, never a bar’s.",
+   "specs": [
+    {
+     "label": "Bars and columns",
+     "value": "From a zero line drawn at the baseline weight",
+     "token": "oa.chart.line.baseline"
+    },
+    {
+     "label": "A line",
+     "value": "May start above zero, with the axis labeled at its start"
+    },
+    {
+     "label": "Two measures",
+     "value": "Two panels on two scales, side by side"
+    },
+    {
+     "label": "Circles",
+     "value": "Area in proportion to the value, so the radius follows its square root"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-4-correct",
+    "caption": "From zero, the columns stand close in height, as the shares do: a few points apart in every presidential year."
+   },
+   "failure": {
+    "specimen": "s-14-4-failure",
+    "caption": "<strong>Fails Rule 14.4.</strong> The axis starts at 55 percent, so 1992’s column stands 3.7 times as tall as 1996’s for a gap of 9.3 points."
+   }
+  },
+  {
+   "id": "14.5",
+   "title": "Give each color in a chart one job from the four data palettes.",
+   "rule": [
+    "Each palette does one job, and a chart uses one palette for each thing its colors encode. Sequential Verdigris runs one measure from low to high. Diverging pair B runs above and below a midpoint, as Rule 01.3 sets. The four group inks name up to four groups, always in the order Charcoal, Verdigris, Prussian, then Stone, which carries its hatch. The Stone magnitude steps show size with no direction.",
+    "Steps of one hue promise an order, so named groups take the group inks and a measure takes a scale. Rule 05.7 sets the subject, the context and the one red point inside any of them."
+   ],
+   "why": {
+    "text": [
+     "A reader takes a color’s meaning from the first chart and carries it to the next. When each palette keeps its one job across our work, a reader who has learned that a darker green means more can trust it on every page."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [
+    "oa.chart.color.sequential.fill.step1.onNewsprint",
+    "oa.chart.color.diverging.fill.step1.onNewsprint",
+    "oa.chart.color.categorical.fill.group1.onNewsprint",
+    "oa.chart.color.magnitude.fill.step1.onNewsprint"
+   ],
+   "related": [
+    "01.3",
+    "05.7",
+    "14.8"
+   ],
+   "builders": "Name a color role in the form (seq-1 to seq-5, div-1 to div-5, cat-1 to cat-4, mag-1 to mag-4); a spec never names a color.",
+   "specs": [
+    {
+     "label": "Sequential",
+     "value": "Five steps of Verdigris, light to dark for low to high",
+     "token": "oa.chart.color.sequential.fill.step1.onNewsprint"
+    },
+    {
+     "label": "Diverging, pair B",
+     "value": "Five steps, Prussian through the page color to Verdigris (Rule 01.3)",
+     "token": "oa.chart.color.diverging.fill.step1.onNewsprint"
+    },
+    {
+     "label": "Groups",
+     "value": "Charcoal, Verdigris, Prussian, Stone with its hatch, in that order; four at most (Rule 14.8)",
+     "token": "oa.chart.color.categorical.fill.group1.onNewsprint"
+    },
+    {
+     "label": "Magnitude",
+     "value": "Four steps of Stone",
+     "token": "oa.chart.color.magnitude.fill.step1.onNewsprint"
+    },
+    {
+     "label": "One chart",
+     "value": "One palette for each thing its colors encode"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-5-correct",
+    "caption": "The four palettes, each beside its one job and the question it answers. The fourth group ink always carries its hatch, so it reads apart from the third in grayscale."
+   },
+   "failure": {
+    "specimen": "s-14-5-failure",
+    "caption": "<strong>Fails Rule 14.5.</strong> Four ways to reach the county take four steps of one green, so the key reads as a scale from less to more, though the channels have no order."
+   }
+  },
+  {
+   "id": "14.6",
+   "title": "Spend the view’s one red on the point the title names.",
+   "rule": [
+    "Rule 05.3 gives each view one working red and says which job claims it first. In a chart, the red goes to the one point, bar or line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Every other mark keeps the subject and context inks of Rule 05.7.",
+    "When an error or a step the reader can take already holds the view’s red, the named point gives it up and takes Charcoal at the subject weight, with its label. Red never codes a series, a group or a step on a scale."
+   ],
+   "why": {
+    "text": [
+     "One red mark tells a reader where to look first, and the title tells them why. A second red mark splits their attention, and red that codes a group reads as a warning about that group."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [
+    "oa.chart.color.point.onNewsprint",
+    "oa.chart.color.subject.onNewsprint"
+   ],
+   "related": [
+    "05.3",
+    "05.5",
+    "05.7",
+    "01.1"
+   ],
+   "builders": "Name the one point in the spec (labels.named for the subject ink); the kit counts working reds and fails a view with two.",
+   "specs": [
+    {
+     "label": "The point",
+     "value": "Pillar Red with a 1 px Charcoal keyline",
+     "token": "oa.chart.color.point.onNewsprint"
+    },
+    {
+     "label": "Its label",
+     "value": "Beside the mark, in the text ink"
+    },
+    {
+     "label": "When red is taken",
+     "value": "Charcoal at the subject weight, with the label",
+     "token": "oa.chart.color.subject.onNewsprint"
+    },
+    {
+     "label": "Red never",
+     "value": "Codes a series, a group or a step on a scale"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-6-correct",
+    "caption": "The title names the Ninth Circuit, and its bar alone takes the view’s red, inside its keyline, with every other court in gray."
+   },
+   "failure": {
+    "specimen": "s-14-6-failure",
+    "caption": "<strong>Fails Rule 14.6.</strong> Red falls on three courts while the title names one, so a reader cannot tell which bar the title means."
+   }
+  },
+  {
+   "id": "14.7",
+   "title": "Tell parties apart by name, place and shape, with no red and blue.",
+   "rule": [
+    "Rule 01.2 draws every party in one neutral ink with its name on the mark, and Rule 01.1 keeps red off every party. A chart then tells parties apart by what a reader can read without color: the name on or beside each mark, the mark’s place in the order, a solid and an open mark where two sides sit side by side, and a word or sign for direction, as in “Republican +2.2”.",
+    "No election graphic pairs red with blue, social cards included, and Prussian never stands for a party."
+   ],
+   "why": {
+    "text": [
+     "Red and blue turn a chart of results into team colors, and a reader decides which side the chart is on before reading a number. A name on each mark gives readers on both sides the same facts, in color or in grayscale."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [
+    "oa.chart.color.party.mark.onNewsprint"
+   ],
+   "related": [
+    "01.1",
+    "01.2",
+    "05.7"
+   ],
+   "builders": "Party data takes the party role in any form; the kit fails a party mark in Pillar Red or Prussian.",
+   "specs": [
+    {
+     "label": "Party marks",
+     "value": "One neutral ink for every party, Charcoal on Newsprint",
+     "token": "oa.chart.color.party.mark.onNewsprint"
+    },
+    {
+     "label": "Two sides at a glance",
+     "value": "One solid and one open mark, in the same ink (Rule 01.2)"
+    },
+    {
+     "label": "Direction",
+     "value": "An arrow, the mark’s place or a printed lead, such as “Republican +2.2”"
+    },
+    {
+     "label": "Never",
+     "value": "Red against blue, or Prussian for a party"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-7-correct",
+    "caption": "Every party takes the same ink and its name, so the bars compare seats and nothing else."
+   },
+   "failure": {
+    "specimen": "s-14-7-failure",
+    "caption": "<strong>Fails Rule 14.7.</strong> Red and blue stand for the parties and a key holds their initials, so the chart reads as one team against another and loses the parties in grayscale."
+   }
+  },
+  {
+   "id": "14.8",
+   "title": "Past four groups, split into small multiples or set one group in ink against gray.",
+   "rule": [
+    "The four group inks of Rule 14.5 are as many as a reader can tell apart and hold in mind. With five or more groups, draw one small panel for each on a shared scale, or draw the group the title names in ink and the others in gray. Either way, every group carries its name on the chart.",
+    "Rule 14.23 shows small multiples of bars, Rule 14.30 small multiples of lines, and Rule 14.31 one line in ink over a field of gray."
+   ],
+   "why": {
+    "text": [
+     "Past four, the inks start to look alike and the key grows longer than a reader will hold. Small panels on one scale let a reader take each group’s shape and level one at a time, and still compare them."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [
+    "oa.chart.color.context.onNewsprint"
+   ],
+   "related": [
+    "14.5",
+    "14.23",
+    "14.30",
+    "14.31"
+   ],
+   "builders": "Use multi-line-highlight or small-multiple-bars for five or more groups; the kit fails a key of more than four inks.",
+   "specs": [
+    {
+     "label": "Groups in color",
+     "value": "Four at most, in Rule 14.5’s order"
+    },
+    {
+     "label": "Five or more",
+     "value": "Small multiples on one shared scale, or one group in ink and the rest in gray",
+     "token": "oa.chart.color.context.onNewsprint"
+    },
+    {
+     "label": "Names",
+     "value": "Every group named on the chart, in its panel or at its line’s end"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-8-correct",
+    "caption": "Each panel sets one age group in ink against the other four in gray, on one scale, so a reader compares five groups without a key."
+   },
+   "failure": {
+    "specimen": "s-14-8-failure",
+    "caption": "<strong>Fails Rule 14.8.</strong> Five groups take five inks, the fifth borrowed from a scale, and the key under the plot asks the reader to match each one."
+   }
+  },
+  {
+   "id": "14.9",
+   "title": "Show the publisher’s uncertainty, and rank only where a gap passes the margin of error.",
+   "rule": [
+    "Rule 13.5 draws a survey figure’s margin of error as an interval. A chart that ranks survey figures, or singles one out as higher or lower than another, does so only where the gap between them passes the gap’s own margin of error at the publisher’s stated confidence, and a note says so. Figures whose gaps sit inside it are drawn and described as alike: an open dot, a shared place, or the words “within the margin of error”.",
+    "A count of every case, such as votes cast or seats held, has no sampling margin and ranks as it stands."
+   ],
+   "why": {
+    "text": [
+     "A survey measures a sample, so each figure could sit anywhere in its interval. Two states three points apart, each with a margin near three points, may stand in either order across the whole population, and a ranking that puts one first tells a reader something the survey cannot know."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [
+    "oa.chart.color.context.onNewsprint"
+   ],
+   "related": [
+    "13.5",
+    "13.1"
+   ],
+   "builders": "Carry each figure’s margin in its own column of the data; a form draws the interval from it and the note names the confidence.",
+   "specs": [
+    {
+     "label": "Interval",
+     "value": "The publisher’s margin of error at its stated confidence, a line through the dot",
+     "token": "oa.chart.color.context.onNewsprint"
+    },
+    {
+     "label": "A gap’s margin",
+     "value": "For two independent survey figures, the square root of the sum of their squared margins"
+    },
+    {
+     "label": "Within the margin",
+     "value": "An open dot and the words “within the margin of error”"
+    },
+    {
+     "label": "Counts",
+     "value": "No sampling margin; they rank as they stand"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-9-correct",
+    "caption": "Each state’s line shows its margin of error. Five states sit past the margin from the nation and take a filled dot; the five within it take an open one, and the chart ranks none of them."
+   },
+   "failure": {
+    "specimen": "s-14-9-failure",
+    "caption": "<strong>Fails Rule 14.9.</strong> The ranks put Michigan first and Texas last, but Michigan’s lead over Pennsylvania, 2.6 points, and Texas’s gap below New York, 1.3 points, both sit inside the margin of error, so the survey cannot order them."
+   }
+  },
+  {
+   "id": "14.10",
+   "title": "Choose the window from the question, and draw an inauguration only as a dated note.",
+   "rule": [
+    "Choose the window, the first and last period a chart shows, from the reader’s question, and print its reason in the measure line: the first year a series exists, the first year a method holds, or the span the question names. Rule 13.7 gives charts shown together one window.",
+    "An inauguration or an election may appear inside the window as a dated note on an unbroken line. The line keeps one ink and one weight across the date, and no band, color or break divides the period into one officeholder’s years and another’s (house rule H09)."
+   ],
+   "why": {
+    "text": [
+     "A window that starts where a line looks best can make a long fall look like a rise, and a reader cannot see what was left out. Bands at each inauguration ask the reader to credit or blame each officeholder for whatever the line does inside them, which the chart cannot show."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [
+    "oa.chart.color.leader.onNewsprint"
+   ],
+   "related": [
+    "13.7",
+    "14.29"
+   ],
+   "builders": "Put the window's reason in measure_line and any event in annotations; the kit draws one line with no band.",
+   "specs": [
+    {
+     "label": "Window",
+     "value": "From the question, its reason printed in the measure line"
+    },
+    {
+     "label": "Charts shown together",
+     "value": "One window, printed once (Rule 13.7)"
+    },
+    {
+     "label": "An event",
+     "value": "A dated note with a leader, on an unbroken line",
+     "token": "oa.chart.color.leader.onNewsprint"
+    },
+    {
+     "label": "An inauguration",
+     "value": "No band, color change or break at the date (H09)"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-10-correct",
+    "caption": "The window runs from the first year these industry codes allow to the latest count, and the measure line says so. The line runs unbroken across every inauguration in it."
+   },
+   "failure": {
+    "specimen": "s-14-10-failure",
+    "caption": "<strong>Fails Rule 14.10.</strong> Bands at each inauguration cut a 25-year fall into four presidencies, so the drawing invites a reader to credit or blame each president for a decline that runs through all four terms."
+   }
+  },
+  {
+   "id": "14.11",
+   "title": "Mark a gap, a break in a series or a preliminary value in the drawing.",
+   "rule": [
+    "Draw what the data lacks or changes where it happens. A month or year with no figure leaves a gap in the line, and the line never bridges it. Where a publisher changes its method, the line breaks, the year prints both estimates, and a note says what changed. A preliminary value takes an open mark and the word preliminary beside it, and the qualification names it (Rule 13.7)."
+   ],
+   "why": {
+    "text": [
+     "A line drawn through a missing month invents a value, and a line run across a change of method shows the change as a jump in what was measured. Marking each one where it falls lets a reader see what the data can and cannot say."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [
+    "oa.chart.color.leader.onNewsprint"
+   ],
+   "related": [
+    "13.7",
+    "14.37",
+    "14.32"
+   ],
+   "builders": "Mark breaks in the data's break column and preliminary rows in its status column; the kit leaves the gap and opens the mark.",
+   "specs": [
+    {
+     "label": "No figure",
+     "value": "A gap in the line, with a note that says why"
+    },
+    {
+     "label": "A change of method",
+     "value": "A break, both estimates printed, a note that names the change",
+     "token": "oa.chart.color.leader.onNewsprint"
+    },
+    {
+     "label": "Preliminary",
+     "value": "An open mark and the word preliminary; the qualification names it (Rule 13.7)"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-11-correct",
+    "caption": "The line breaks where the survey changed, and each of those years prints both its estimates, so a change of method never reads as a change in income."
+   },
+   "failure": {
+    "specimen": "s-14-11-failure",
+    "caption": "<strong>Fails Rule 14.11.</strong> One line runs through both of 2013’s estimates and both of 2017’s, so a change in the survey’s questions draws as a jump in income."
+   }
+  },
+  {
+   "id": "14.12",
+   "title": "Redraw for a phone only when the form must change, and keep the data and finding.",
+   "rule": [
+    "Draw a chart once for every width when its form still reads at 358 px. Change the form for a phone only when it must: when labels would fall under 13 px (Rule 06.3), when columns grow too narrow to carry their names, or when arrows grow too short to read. Columns then become bars, and a map of arrows becomes a list.",
+    "The phone drawing keeps every row, the title, the finding and the source line, and a note under the drawing carries any words that leave the plot."
+   ],
+   "why": {
+    "text": [
+     "Many readers meet our charts on a phone first. A drawing redrawn for no reason gives them a second picture to learn, and one that drops rows or changes its title gives phone readers a different finding from everyone else."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [
+    "oa.chart.artboard.phone"
+   ],
+   "related": [
+    "06.3",
+    "14.16",
+    "14.25"
+   ],
+   "builders": "Set phone to differs and write phone_note in the spec when the form changes; the kit draws both and checks each at 358 px.",
+   "specs": [
+    {
+     "label": "Phone width",
+     "value": "358 px, the narrowest drawing the kit checks above 296 px",
+     "token": "oa.chart.artboard.phone"
+    },
+    {
+     "label": "Same form",
+     "value": "When every label and mark reads at that width"
+    },
+    {
+     "label": "A new form",
+     "value": "Columns as bars, arrows as a list, when the first form cannot carry its words"
+    },
+    {
+     "label": "Kept",
+     "value": "Every row, the title, the finding and the source line"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-12-correct",
+    "caption": "At full width the nine sources stand as columns. On a phone their names would not fit under them, so they become bars, with the same rows, title and finding."
+   },
+   "failure": {
+    "specimen": "s-14-12-failure",
+    "caption": "<strong>Fails Rule 14.12.</strong> The phone drawing keeps three of the nine sources and takes a new title, so a reader on a phone meets a different finding from a reader at a desk."
+   }
+  },
+  {
+   "id": "14.13",
+   "title": "Carry every chart’s table as live text, and publish the still image first.",
+   "rule": [
+    "Every chart carries its table: the rows it draws, as live text that a screen reader, a search and a copy can reach, folded under the source line as “The table and notes”. Rule 18.10 sets the table’s markup. With scripts off, the table stands open and the chart’s description takes the drawing’s place.",
+    "Design the still image first, for a newsletter, an email or a social card, where nothing moves and nothing answers a pointer. A value a reader needs prints on the chart or in its notes. An interactive layer on the website adds filters or a switch to the still chart and takes nothing away from it."
+   ],
+   "why": {
+    "text": [
+     "Many readers meet a chart as a still picture in an inbox, where hovering does nothing. A table in live text gives every reader the numbers, whether they listen to the page, search it or copy a figure into their own notes."
+    ],
+    "basis": "WCAG 2.2, success criterion 1.1.1, Non-text Content, and design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "18.10",
+    "19.2",
+    "14.130"
+   ],
+   "builders": "Fill the spec's table under contract C2; the kit writes the table, and its check fails one whose rows differ from the data.",
+   "specs": [
+    {
+     "label": "Table",
+     "value": "Every row the chart draws, live text, folded under the source line"
+    },
+    {
+     "label": "Scripts off",
+     "value": "The table open and the description in the drawing’s place"
+    },
+    {
+     "label": "Still image",
+     "value": "Designed first; every value a reader needs printed"
+    },
+    {
+     "label": "Interactive layer",
+     "value": "Adds to the still chart on the website, and drops nothing from it"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-13-correct",
+    "caption": "Each column prints its value, so the still image needs no pointer, and the table under the source line gives the same rows as live text."
+   },
+   "failure": {
+    "specimen": "s-14-13-failure",
+    "caption": "<strong>Fails Rule 14.13.</strong> The values show only in a tooltip, which a newsletter, an email and a screen reader never reach, and the chart carries no table."
+   }
+  },
+  {
+   "id": "14.14",
+   "title": "Export every chart from the kit, so its files match the page.",
+   "rule": [
+    "Make every file of a chart with the chart kit’s one command, from the same spec and data file the page draws. The kit writes three files for each ground and width: an SVG with the chart’s title and description inside it, a PNG at twice size, and a CSV of exactly the rows the chart draws. Each name carries the date, what the chart is, its ground and its width, as Rule 18.14 asks of a download.",
+    "To change a chart, change its spec or its data and run the command again; every file and the page then change together."
+   ],
+   "why": {
+    "text": [
+     "A file made by hand drifts from the page the first time someone fixes one and forgets the other. One command from one spec keeps the drawing, the still image and the numbers in step, and the kit checks the CSV against the table each time it runs."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "18.14",
+    "14.13"
+   ],
+   "builders": "Run node work/build/chart-kit/oa-chart.mjs build <spec> --out <folder>; never edit an exported file, edit the spec and run it again.",
+   "specs": [
+    {
+     "label": "Command",
+     "value": "node work/build/chart-kit/oa-chart.mjs build <spec>"
+    },
+    {
+     "label": "Files",
+     "value": "SVG, PNG at twice size, CSV of the drawn rows"
+    },
+    {
+     "label": "Names",
+     "value": "Date, chart and form, ground and width, as the kit writes them (Rule 18.14)"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-14-correct",
+    "caption": "One command writes the three files from the spec the page uses, each named for its date, chart, ground and width."
+   },
+   "failure": {
+    "specimen": "s-14-14-failure",
+    "caption": "<strong>Fails Rule 14.14.</strong> Each file was made by hand: the screenshot drops the source line, the retyped numbers round away the table’s values, and the redrawn picture no longer matches the page."
+   }
+  },
+  {
+   "id": "14.15",
+   "title": "Rank bars from the longest when the order is the answer.",
+   "rule": [
+    "Draw one bar per category from a zero line, longest first unless the categories keep an order of their own, with the full name at the left and the total at the bar’s end. A bar may split into parts that stay apart in gray print by fill, outline, hatch and dash, named in a key above the bars."
+   ],
+   "why": {
+    "text": [
+     "Readers judge length from a shared zero line more exactly than any other mark, and sorting puts the answer at the top of the chart. A bar laid on its side leaves room for a category’s full name, so nobody has to decode an abbreviation."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.3",
+    "14.4"
+   ],
+   "builders": "Form ranked-bar: node work/build/chart-kit/oa-chart.mjs build s03, or copy specs/s03.json and point it at a new dataset; labels.parts names each part and its style.",
+   "entry": true,
+   "use_when": "The reader asks which category is biggest and by how much, among a dozen or fewer whose names are too long to sit under columns.",
+   "use_instead": [
+    {
+     "when": "A few categories or a short run of years reads best from left to right",
+     "rule": "14.16"
+    },
+    {
+     "when": "Dozens of items sit on one scale, or their values sit far from zero",
+     "rule": "14.18"
+    },
+    {
+     "when": "A long ranked list would form one dark block of bars",
+     "rule": "14.21"
+    },
+    {
+     "when": "The parts of each bar add to one whole and their shares are the point",
+     "rule": "14.46"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s03",
+    "caption": "Who changed the rules: voters, courts or legislatures?"
+   }
+  },
+  {
+   "id": "14.16",
+   "title": "Use columns for a few categories or a short run of years.",
+   "rule": [
+    "Use columns to compare a few counts side by side, or one count over a short run of years read from left to right, such as the laws each Congress enacted. Start every column at zero (Rule 14.4), print each value at the column’s end and its name below it, and set the column the title names in ink with the rest in gray.",
+    "When a phone leaves too little room to print every name and value, the columns turn into bars read from top to bottom in the same order (Rule 14.12)."
+   ],
+   "why": {
+    "text": [
+     "Every column stands on the same zero line, so the eye compares heights as amounts. Readers take left to right as the order of time, which suits a count per year or per term. Past a dozen or so, columns thin into a fence the eye cannot sort, and a line shows the same run more clearly."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.3",
+    "14.4",
+    "14.12"
+   ],
+   "builders": "Form column: node work/build/chart-kit/oa-chart.mjs build s17, or copy specs/s17.json and point it at a new dataset; labels.named names the columns set in ink.",
+   "entry": true,
+   "use_when": "The reader asks how a handful of counts compare, or how one count changed across a few years or terms of office, and each value matters on its own.",
+   "use_instead": [
+    {
+     "when": "The categories have long names, there are more than about a dozen, or they read best ranked by size",
+     "rule": "14.15"
+    },
+    {
+     "when": "The run of years is long and the shape of the change matters more than any one value",
+     "rule": "14.29"
+    },
+    {
+     "when": "Monthly values swing so much that the trend needs an average drawn through them",
+     "rule": "14.32"
+    },
+    {
+     "when": "Each category carries two or three measures that the reader compares within it",
+     "rule": "14.22"
+    },
+    {
+     "when": "The values run above and below zero and their direction is the point",
+     "rule": "14.27"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s17",
+    "caption": "How many bills became law in each Congress?"
+   }
+  },
+  {
+   "id": "14.17",
+   "title": "Add a benchmark tick when each bar has a fair share to meet.",
+   "rule": [
+    "Draw one bar per group from zero and cross it with a short tick at the value the reader should compare it with, such as the 20 percent of households each fifth holds. Print the bar’s value at its end, name the tick once above the first bar, and draw the tick in ink with an edge of the ground’s color so it shows across the bar."
+   ],
+   "why": {
+    "text": [
+     "A share means little until the reader knows what share to expect. The tick puts that expectation on every bar, so the gap shows as distance on the same scale and nobody has to subtract one number from another."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.3",
+    "14.4"
+   ],
+   "builders": "Form bar-benchmark-tick: node work/build/chart-kit/oa-chart.mjs build s18, or copy specs/s18.json and point it at a new dataset; encode.benchmark names the column the tick draws.",
+   "entry": true,
+   "use_when": "The reader asks how a group’s share compares with its size, or how each result compares with a target or a national figure.",
+   "use_instead": [
+    {
+     "when": "Each row compares two times or two measures, with no fixed value to meet",
+     "rule": "14.19"
+    },
+    {
+     "when": "The reader needs only the order of the groups, with nothing to compare each one against",
+     "rule": "14.15"
+    },
+    {
+     "when": "One value moves toward a target through ranges marked poor, fair and good",
+     "rule": "14.90"
+    },
+    {
+     "when": "The parts add to one whole and the reader asks how the whole divides",
+     "rule": "14.46"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s18",
+    "caption": "What share of all household income goes to each fifth of households?"
+   }
+  },
+  {
+   "id": "14.18",
+   "title": "Use a dot plot to set many items on one scale.",
+   "rule": [
+    "Give each item one row: its name at the left, a dot at its value and the value printed in a column at the right edge, sorted so the order answers the reader’s question. Draw a figure the reader compares against, such as all states together, as a labeled line across the rows, and mark rows counted another way with an open dot and a key."
+   ],
+   "why": {
+    "text": [
+     "A dot marks a position without the weight of a bar, so 50 rows stay light enough to scan and the eye follows the line of dots down the ranking. The printed column lets a reader find an exact figure without reading it off the scale."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.3",
+    "14.11"
+   ],
+   "builders": "Form dot-plot: node work/build/chart-kit/oa-chart.mjs build s19, or copy specs/s19.json and point it at a new dataset; labels.reference names the row drawn as the line, labels.open the status drawn as an open dot.",
+   "entry": true,
+   "use_when": "The reader asks where one item stands among dozens, such as their own state among 50, and the values sit far from zero or close together.",
+   "use_instead": [
+    {
+     "when": "There are a dozen items or fewer and their size from zero is the point",
+     "rule": "14.15"
+    },
+    {
+     "when": "Each item has two values, such as two years, and the change between them matters",
+     "rule": "14.19"
+    },
+    {
+     "when": "Each value is a survey estimate whose margin of error decides the order",
+     "rule": "14.74"
+    },
+    {
+     "when": "The reader asks how the values spread, and no single item matters",
+     "rule": "14.59"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s19",
+    "caption": "How many residents per 100,000 does each state hold in prison?"
+   }
+  },
+  {
+   "id": "14.19",
+   "title": "Use a dumbbell for two values in each row and the gap between.",
+   "rule": [
+    "Join each row’s two values with a line on one scale for every row, the earlier as an open dot and the later filled, and print both values beside their dots. When the scale starts above zero, say where in the measure line, and test each change against its margin of error before the words call it a change (Rule 14.9)."
+   ],
+   "why": {
+    "text": [
+     "The line between the dots draws the gap itself, so a reader sees its size without subtracting, and the two dot styles keep the years apart in gray print. A dot carries no length from zero, so the scale may start where the data starts, as long as the chart says so."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.3",
+    "14.4",
+    "14.9"
+   ],
+   "builders": "Form dumbbell: node work/build/chart-kit/oa-chart.mjs build s04, or copy specs/s04.json and point it at a new dataset; labels.from and labels.to name the two series values.",
+   "entry": true,
+   "use_when": "The reader asks how far apart two values are for each group, such as the same age group in two elections, and which way each one moved.",
+   "use_instead": [
+    {
+     "when": "Many items at two points in time, where a change in their order matters",
+     "rule": "14.20"
+    },
+    {
+     "when": "The direction and size of each shift matter more than the two values",
+     "rule": "14.25"
+    },
+    {
+     "when": "Two to four measures per category are compared as lengths from zero",
+     "rule": "14.22"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s04",
+    "caption": "Which age groups vote, and did that change between two elections?"
+   }
+  },
+  {
+   "id": "14.20",
+   "title": "Use a slope chart to compare many items at two points in time.",
+   "rule": [
+    "Draw each item as a straight line from its earlier value on the left axis to its later value on the right, printing the earlier value at the left and the later value with the item’s name at the right. Set the item the title names in ink and the rest in gray, and print both years over the axes.",
+    "Choose the two years for a reason the measure line states, and when a longer record would change how a reader sees the move, give that record in a note (Rule 14.10)."
+   ],
+   "why": {
+    "text": [
+     "The angle of each line shows the direction and size of a change at a glance, and lines that cross show a change in order that two lists of numbers hide. Two points alone say nothing about the years between them, so the chart owes the reader the reason for its dates."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.3",
+    "14.9",
+    "14.10"
+   ],
+   "builders": "Form slope: node work/build/chart-kit/oa-chart.mjs build s20, or copy specs/s20.json and point it at a new dataset; labels.from and labels.to name the two times.",
+   "entry": true,
+   "use_when": "The reader asks which items rose and which fell between two dates, and how their order changed.",
+   "use_instead": [
+    {
+     "when": "The years between the two points matter, or there are more than two",
+     "rule": "14.30"
+    },
+    {
+     "when": "More than about ten lines would cross into a tangle, so each item needs a row of its own",
+     "rule": "14.19"
+    },
+    {
+     "when": "The reader asks how far each item moved and toward which side",
+     "rule": "14.25"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s20",
+    "caption": "Did younger households lose ground on owning a home?"
+   }
+  },
+  {
+   "id": "14.21",
+   "title": "Use lollipops when a long ranked list would look heavy as bars.",
+   "rule": [
+    "Draw each row as a thin stem from the zero line to a dot at its value, print the value past the dot and the name at the left, and sort the rows so the order answers the question. Set the rows the title names in ink and the rest in gray."
+   ],
+   "why": {
+    "text": [
+     "A stem keeps the length a reader compares from the zero line while putting little ink on the page, so a long list stays easy to scan. The dot marks where each length ends, which is the one place the eye needs."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.3",
+    "14.4"
+   ],
+   "builders": "Form lollipop: node work/build/chart-kit/oa-chart.mjs build s21, or copy specs/s21.json and point it at a new dataset; labels.named lists the rows set in ink.",
+   "entry": true,
+   "use_when": "The reader asks which items lead a ranking of a dozen or more, and the values sit close enough that solid bars would form one dark block.",
+   "use_instead": [
+    {
+     "when": "There are a dozen rows or fewer, or each bar splits into parts",
+     "rule": "14.15"
+    },
+    {
+     "when": "The values sit far from zero, so the reader compares positions along one scale",
+     "rule": "14.18"
+    },
+    {
+     "when": "Each row carries a change from one value to another",
+     "rule": "14.26"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s21",
+    "caption": "Which everyday answers rest on the most claims?"
+   }
+  },
+  {
+   "id": "14.22",
+   "title": "Use grouped bars when two to four measures share each category.",
+   "rule": [
+    "Set the series side by side within each category, in the four-ink order with the fourth hatched (Rule 14.5), start every bar at zero and print each value at its end. Name each series after its value in the first group, so the chart needs no key (Rule 14.3).",
+    "Past four series, split into small multiples (Rule 14.8). When the title names a gap between two survey estimates, test it against the margin of error first and say in a note that it passes (Rule 14.9)."
+   ],
+   "why": {
+    "text": [
+     "Bars that touch are compared first, so grouping decides which comparison the reader makes. Grouping by category puts the two series of each category side by side, which suits a gap within each group, and the eye can still run down one series’ bars to compare across groups."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.3",
+    "14.5",
+    "14.8",
+    "14.9"
+   ],
+   "builders": "Form grouped-bar: node work/build/chart-kit/oa-chart.mjs build s22, or copy specs/s22.json and point it at a new dataset; labels.series sets each series’ name and the order its bars draw.",
+   "entry": true,
+   "use_when": "The reader compares two to four series within each category first, such as men and women at each age, and across categories second.",
+   "use_instead": [
+    {
+     "when": "There are more than four series, or the reader compares one series across categories and the others only distract",
+     "rule": "14.23"
+    },
+    {
+     "when": "The series are two dates for the same item and the change is the point",
+     "rule": "14.19"
+    },
+    {
+     "when": "The series are parts that add to one whole",
+     "rule": "14.46"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s22",
+    "caption": "How does taking part in the labor force differ by age for men and women?"
+   }
+  },
+  {
+   "id": "14.23",
+   "title": "Repeat one small bar chart per group when groups need comparing.",
+   "rule": [
+    "Draw the same bars in one panel per group, on one scale shared by every panel, with the categories in the same order in each, so the eye compares a bar with the bar in the same place next door. Give each panel a title with its group and its size, set the category the title names in ink, and place as many panels across as fit, one across on a phone."
+   ],
+   "why": {
+    "text": [
+     "Panels that repeat one design let the reader learn the chart once and then read every group the same way. A shared scale keeps a long bar in one panel the same size as a long bar in another, which separate scales would break without any sign on the page."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.4",
+    "14.8"
+   ],
+   "builders": "Form small-multiple-bars: node work/build/chart-kit/oa-chart.mjs build s23, or copy specs/s23.json and point it at a new dataset; encode.panel names the column that splits the panels, scale.x the scale they share.",
+   "entry": true,
+   "use_when": "The reader asks how the same mix or ranking differs from group to group, such as the evidence grades behind each topic, or there are more groups than four inks can carry (Rule 14.8).",
+   "use_instead": [
+    {
+     "when": "There are two to four groups and the reader compares them within each category",
+     "rule": "14.22"
+    },
+    {
+     "when": "Each group’s parts add to one whole and the whole is the point",
+     "rule": "14.46"
+    },
+    {
+     "when": "Each group is one value, so a panel would hold one bar",
+     "rule": "14.15"
+    }
+   ]
+  },
+  {
+   "id": "14.24",
+   "title": "Avoid radar charts, whose shapes change with the order of their spokes.",
+   "rule": [
+    "Leave radar charts out of every Oath & Action piece. Draw the same measures as a dot plot on one scale, or as small-multiple bars with one panel per group, so each value is read as a position or a length from zero."
+   ],
+   "why": {
+    "text": [
+     "A radar chart draws values as a shape, and a shape's area grows with the square of its values, so a group a little ahead on every spoke looks far bigger. Moving one spoke to another place changes every shape on the chart with no change in the data, and overlapping outlines hide each other."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.4"
+   ],
+   "builders": "No form: the kit draws no radar chart. The sketch is work/build/guide/specimens/s-14-24-sketch.html, drawn small; build the better choice with the dot-plot or small-multiple-bars form.",
+   "entry": true,
+   "use_when": "Never: a reader who asks how several groups compare across the same measures gets a truer answer from a dot plot or small-multiple bars.",
+   "use_instead": [
+    {
+     "when": "Each group has one value on each of several measures and the reader compares positions",
+     "rule": "14.18"
+    },
+    {
+     "when": "The reader compares each group's mix of measures, panel by panel",
+     "rule": "14.23"
+    },
+    {
+     "when": "Two to four groups are compared within each measure",
+     "rule": "14.22"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-24-sketch",
+    "caption": "Radar chart, drawn small with illustrative data."
+   }
+  },
+  {
+   "id": "14.25",
+   "title": "Draw each item’s move between two dates as an arrow from start to end.",
+   "rule": [
+    "Use shift arrows when the reader needs where each item started, where it ended and which way it moved: one row per item, an arrow from the earlier value to the later one on one scale with a labeled center, and the national row set apart above the states (Rule 14.7 for party data). On a phone, where the arrows crowd, the chart ranks the items by the size of the shift and draws each as a stem from zero, with the later value in words on its row."
+   ],
+   "why": {
+    "text": [
+     "An arrow carries three facts at once: the start, the end and the direction, so a reader sees both that every state moved one way and how far apart they still stand. Party names in words and position carry the sides, never color (Rule 14.7)."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.7",
+    "14.12"
+   ],
+   "builders": "Form shift-arrows: node work/build/chart-kit/oa-chart.mjs build s11; encode from, to and shift, and the form draws the phone ranking under 480 px.",
+   "entry": true,
+   "use_when": "The reader asks which places moved, which way and how far, between two elections or two years.",
+   "use_instead": [
+    {
+     "when": "Only the size of each move matters, ranked",
+     "rule": "14.26"
+    },
+    {
+     "when": "The places should be read as a map of the country",
+     "rule": "14.115"
+    },
+    {
+     "when": "The reader looks up each place’s figures more than the shape of the moves",
+     "rule": "14.125"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s11",
+    "caption": "Which states moved toward which party between 2020 and 2024, and how far?"
+   }
+  },
+  {
+   "id": "14.26",
+   "title": "Rank one change per item as a stem from zero, with a key for its length.",
+   "rule": [
+    "Use a change lollipop when each item has one change between two dates: draw a stem from zero to the change with a dot at its end, rank the items from the largest change, print each change beside its dot, and set the national figure apart at the top. A key above the stems shows the length of one round change. Position and the printed sign carry the direction."
+   ],
+   "why": {
+    "text": [
+     "Ranking by the size of the change answers the reader’s question in the order they ask it. A stem from zero gives each change a length the eye can compare, as a bar does (Rule 14.4), and the key ties that length to a number. The dot marks where each change stops with less ink than a full bar, so fifty rows stay light."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.4"
+   ],
+   "builders": "Form change-lollipop: node work/build/chart-kit/oa-chart.mjs build s24; give it two rows per item with labels.from and labels.to, or one change column as encode.value.",
+   "entry": true,
+   "use_when": "The reader asks which places or groups moved most between two dates, and the size of each move matters more than where each one started.",
+   "use_instead": [
+    {
+     "when": "Where each item started and ended matters as much as how far it moved",
+     "rule": "14.25"
+    },
+    {
+     "when": "Some items gained and others lost, and the reader needs both sides of a baseline",
+     "rule": "14.27"
+    },
+    {
+     "when": "Both values for each item matter, and the change is one of several readings",
+     "rule": "14.19"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s24",
+    "caption": "Where did applications to start a business rise most since 2019?"
+   }
+  },
+  {
+   "id": "14.27",
+   "title": "Draw gains and losses as bars from one zero line, losses to the left.",
+   "rule": [
+    "Use a diverging bar when items moved both ways from a baseline: start every bar on one zero line, send losses left and gains right, order the bars by size, and print each figure with its sign. Pair B may repeat the direction in color, one side of it for losses and the other for gains, named in the reading guide or key, and the total sits apart above the bars in words."
+   ],
+   "why": {
+    "text": [
+     "Bars from one zero line let the eye compare every gain and loss by length (Rule 14.4), and the side of the line tells the direction before a reader reaches a figure. A figure set across zero from its bar lines up with every other figure, so the column reads as a list. Color repeats what position says, so the chart still reads in grayscale (Rule 14.5)."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [
+    "oa.chart.color.diverging.fill.step2.onNewsprint",
+    "oa.chart.color.diverging.fill.step4.onNewsprint",
+    "oa.chart.color.diverging.fill.step2.onCharcoal",
+    "oa.chart.color.diverging.fill.step4.onCharcoal"
+   ],
+   "related": [
+    "14.4",
+    "14.5"
+   ],
+   "builders": "Form diverging-bar: node work/build/chart-kit/oa-chart.mjs build s25; encode.include keeps small items in the table and out of the drawing.",
+   "entry": true,
+   "use_when": "The reader asks which items gained and which lost between two dates, and how much each moved.",
+   "use_instead": [
+    {
+     "when": "Every item moved the same way and the reader wants them ranked",
+     "rule": "14.26"
+    },
+    {
+     "when": "The gain or loss is measured election by election and the reader follows it over time",
+     "rule": "14.28"
+    },
+    {
+     "when": "Where each item started and ended matters as much as the change",
+     "rule": "14.25"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s25",
+    "caption": "Which federal agencies gained or lost civilian employees?"
+   }
+  },
+  {
+   "id": "14.28",
+   "title": "Show who held the advantage in each term as arrows from one center line.",
+   "rule": [
+    "Use a diverging bar with arrows to follow an advantage that can change sides, such as a House majority, one election or term at a time: one row per term in time order, an arrow from a center line toward the side that held the advantage, as long as the advantage, and the figure at its tip. Draw every arrow in one neutral ink, name each side over its half, and print the party’s name on the first row and wherever the advantage changed sides (Rule 14.7)."
+   ],
+   "why": {
+    "text": [
+     "An arrow’s direction answers who held the advantage and its length answers by how much, so a reader running down the rows sees both the size of each lead and every change of control. One ink for every arrow keeps color from taking a side (Rule 14.7); position and the printed names carry it."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.7"
+   ],
+   "builders": "Form diverging-bar-arrows: node work/build/chart-kit/oa-chart.mjs build s26; encode the two sides’ counts as left and right, and the form draws their difference.",
+   "entry": true,
+   "use_when": "The reader asks how big a lead was in each election or term, and when it passed from one side to the other.",
+   "use_instead": [
+    {
+     "when": "One change per item between two dates, ranked by size",
+     "rule": "14.26"
+    },
+    {
+     "when": "Many items gained or lost over one window, with no sequence of terms",
+     "rule": "14.27"
+    },
+    {
+     "when": "The seats in one chamber at one time, each seat counted",
+     "rule": "14.53"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s26",
+    "caption": "How large was the House majority's seat advantage in each Congress?"
+   }
+  },
+  {
+   "id": "14.29",
+   "title": "Mark the moments that explain a line on the line itself.",
+   "rule": [
+    "Use a line with event notes for one series and the events a reader needs to read it: the subject series as a heavy line from a scale that starts at zero, any comparison series thin and gray, each series named on its line, and short notes inside the plot with leaders to the points they explain. Break the line where the publisher changed its method, and never draw across the break (Rule 14.11)."
+   ],
+   "why": {
+    "text": [
+     "A note set at the point it explains lets the reader see the event and the change together, without a legend to match. The note says what happened and when, and leaves the cause to the evidence (Rule 13.2), so the timing of a rise is never offered as proof of what caused it."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.11",
+    "13.2"
+   ],
+   "builders": "Form line-event-notes: node work/build/chart-kit/oa-chart.mjs build s02; annotations place each note, and encode.break marks a method change.",
+   "entry": true,
+   "use_when": "The reader asks what happened to one measure and when, and a few dated events explain its turns.",
+   "use_instead": [
+    {
+     "when": "One group should be read against several others",
+     "rule": "14.30"
+    },
+    {
+     "when": "The series has a period with no figure",
+     "rule": "14.37"
+    },
+    {
+     "when": "An amount a law sets changes on dates",
+     "rule": "14.36"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s02",
+    "caption": "What happened to child poverty when the expanded child tax credit was paid, and after it lapsed?"
+   }
+  },
+  {
+   "id": "14.30",
+   "title": "Give each group its own panel, lit against the others in gray.",
+   "rule": [
+    "Use a multi-line with one highlighted when several groups share a measure and the reader compares each with the rest: one small panel per group on one shared scale, the group’s own line heavy in ink over the others in thin gray, its name and latest value over the panel. Past four groups the panels carry the comparison (Rule 14.8)."
+   ],
+   "why": {
+    "text": [
+     "Four lines on one plot tangle where they cross, and a key makes the reader match colors. A panel per group, with the others drawn gray in every panel, keeps each line readable and puts every gap in view, and one scale keeps the panels honest with each other."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.8"
+   ],
+   "builders": "Form multi-line-highlight: node work/build/chart-kit/oa-chart.mjs build s05; labels.panels sets each panel’s group and order.",
+   "entry": true,
+   "use_when": "The reader asks how far apart groups stand on one measure, and whether the gaps have closed.",
+   "use_instead": [
+    {
+     "when": "Dozens of series, with one the story follows",
+     "rule": "14.31"
+    },
+    {
+     "when": "The groups differ in size and the question is growth",
+     "rule": "14.40"
+    },
+    {
+     "when": "One series with the events behind it",
+     "rule": "14.29"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s05",
+    "caption": "How far apart are homeownership rates by race, and has the gap closed?"
+   }
+  },
+  {
+   "id": "14.31",
+   "title": "Draw every series thin and gray, and light the one the story follows.",
+   "rule": [
+    "Use a line field when dozens of series share one scale and the story follows one of them: draw every series as a thin gray line, so the reader sees the spread, and draw the subject in ink on top with its name and latest value at its end. Name one or two gray lines at the field’s edges where it helps, and carry every series in the table."
+   ],
+   "why": {
+    "text": [
+     "Fifty colored lines tangle into noise, and fifty gray ones read as one shape: the range every place moved within. One line in ink against that shape shows where the subject sits without a key, and the table gives every other series a reader may want to find (Rule 14.8)."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.8"
+   ],
+   "builders": "Form line-field: node work/build/chart-kit/oa-chart.mjs build s27; labels.lit names the series in ink and labels.named the gray lines named at the field’s edges.",
+   "entry": true,
+   "use_when": "The reader asks how one place or group moved against all the others, and the whole field matters as context.",
+   "use_instead": [
+    {
+     "when": "Four series or fewer, each to be followed",
+     "rule": "14.30"
+    },
+    {
+     "when": "The series differ greatly in size and the reader compares growth from one date",
+     "rule": "14.40"
+    },
+    {
+     "when": "Each series needs reading on its own",
+     "rule": "14.34"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s27",
+    "caption": "How did home prices move in every state, and where did they rise most?"
+   }
+  },
+  {
+   "id": "14.32",
+   "title": "Draw noisy monthly counts as columns, with an average line through them.",
+   "rule": [
+    "Use columns with a moving average for a monthly count that swings from month to month: each month a column from zero, the average a heavy line over them, preliminary months hatched and the average dashed where it includes one, and the latest month labeled with its status. Where the publisher gives a margin of error, say in a note which months pass it."
+   ],
+   "why": {
+    "text": [
+     "Each column shows one month as the survey counted it, and the average shows where the months are heading, so a single bad month reads as a dip, not a turn. A survey’s monthly figure carries error, and the note that says which drops pass the margin keeps a small swing from reading as news (Rule 14.9)."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.9",
+    "14.11"
+   ],
+   "builders": "Form columns-moving-average: node work/build/chart-kit/oa-chart.mjs build s14; encode.status marks preliminary months.",
+   "entry": true,
+   "use_when": "The reader asks how many were added or lost each month, and the trend matters more than any one month.",
+   "use_instead": [
+    {
+     "when": "A rate or a level that moves smoothly",
+     "rule": "14.29"
+    },
+    {
+     "when": "The same count across many industries or places",
+     "rule": "14.34"
+    },
+    {
+     "when": "A month has no figure at all",
+     "rule": "14.37"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s14",
+    "caption": "How many jobs did the economy add each month?"
+   }
+  },
+  {
+   "id": "14.33",
+   "title": "Set a word-sized line inside a sentence to show a trend’s shape.",
+   "rule": [
+    "Use a sparkline, a line as tall as the type and a few words wide, where a sentence or a table row names a trend. Print the first and last figures in the words beside it, put a dot on the last value, scale each line to its own lowest and highest values, and leave out axes and gridlines."
+   ],
+   "why": {
+    "text": [
+     "A sparkline gives the shape of a series in the space of a word, so the reader keeps reading. Each line takes its own scale, so its height says nothing about size, and the figures in the sentence carry the amounts."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form sparkline: node work/build/chart-kit/oa-chart.mjs build s28; each sentence in labels.sentences holds {spark} where the line sits and takes its figures from the data.",
+   "entry": true,
+   "use_when": "The reader is reading a sentence or scanning a row and needs the shape of a trend next to its figures, without leaving the line.",
+   "use_instead": [
+    {
+     "when": "The reader needs to read values off the line, or to compare lines on one scale",
+     "rule": "14.29"
+    },
+    {
+     "when": "The same trend runs down many rows of a table",
+     "rule": "14.128"
+    },
+    {
+     "when": "Many parts of one total need one shared scale",
+     "rule": "14.34"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s28",
+    "caption": "Has the number of civic and social organizations grown or shrunk?"
+   }
+  },
+  {
+   "id": "14.34",
+   "title": "Show one trend across many parts as small area panels on one scale.",
+   "rule": [
+    "Use small-multiple area sparklines when the same measure runs across many parts of a whole: one small panel per part on one shared vertical scale, the area from zero under the part’s line, the whole’s line in gray in every panel, and the change printed over each panel. Order the panels by the change the title names, and set the totals above them."
+   ],
+   "why": {
+    "text": [
+     "One shared scale lets a reader compare panels at a glance, and the gray line of the whole in every panel shows which parts ran ahead of it. Small panels give each part room that one plot of many lines cannot."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.8"
+   ],
+   "builders": "Form area-sparklines: node work/build/chart-kit/oa-chart.mjs build s13; labels.panels sets the order and labels.context the gray line in every panel.",
+   "entry": true,
+   "use_when": "The reader asks which parts of a total grew and which shrank over the same span.",
+   "use_instead": [
+    {
+     "when": "The parts should be looked up row by row with their figures",
+     "rule": "14.128"
+    },
+    {
+     "when": "The parts differ greatly in size and the question is growth since one date",
+     "rule": "14.40"
+    },
+    {
+     "when": "One total, where its size is the point",
+     "rule": "14.35"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s13",
+    "caption": "Which sectors added jobs since January 2022, and which lost them?"
+   }
+  },
+  {
+   "id": "14.35",
+   "title": "Fill the space under one total when its size is the point.",
+   "rule": [
+    "Use an area chart for one total over time, such as the people an industry employs: fill from zero up to the line, run the line along the top of the fill and set the scale from zero. Draw one series, and name what the fill counts inside it."
+   ],
+   "why": {
+    "text": [
+     "A filled area asks the eye to judge size, so it fits a count of people, dollars or places. Under a rate, the same fill shows a size the numbers never had. The scale starts at zero for the reason a bar does (Rule 14.4): a fill cut off above zero makes a small fall look like a collapse."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.4"
+   ],
+   "builders": "Form area: node work/build/chart-kit/oa-chart.mjs build s29, or copy specs/s29.json and point it at a new dataset.",
+   "entry": true,
+   "use_when": "The reader asks how big a total is and how far it has grown or shrunk, and the amount itself carries the story.",
+   "use_instead": [
+    {
+     "when": "The values are a rate or a share, where a fill would show an amount the figures do not hold",
+     "rule": "14.29"
+    },
+    {
+     "when": "Several groups make up the total and the reader needs each one",
+     "rule": "14.51"
+    },
+    {
+     "when": "The counts swing month to month and the trend needs an average",
+     "rule": "14.32"
+    },
+    {
+     "when": "The same total runs across many industries or places",
+     "rule": "14.34"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s29",
+    "caption": "How many people work for newspaper publishers?"
+   }
+  },
+  {
+   "id": "14.36",
+   "title": "Draw an amount a law fixes between dates as a step line.",
+   "rule": [
+    "Use a step line for an amount a law or rule holds until the next change, such as a tax credit per child: keep the line flat through each period, move it straight up or down in the period the change takes effect, and print each level’s amount on it. Name the law that made each change beside its step or in the notes."
+   ],
+   "why": {
+    "text": [
+     "A line that slopes from one date to the next tells the reader the amount crept up over the years, when the law moved it all at once. Flat runs and straight risers show what each tax year carried, and the law named at each riser tells the reader who made the change."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form step-line: node work/build/chart-kit/oa-chart.mjs build s30, with x the year or date each amount takes effect and y the amount.",
+   "entry": true,
+   "use_when": "The reader asks what a rule set at each date, and the value stays fixed between one change and the next.",
+   "use_instead": [
+    {
+     "when": "The values are measured and move between dates, such as a rate from a survey",
+     "rule": "14.29"
+    },
+    {
+     "when": "The reader needs the dates each part of one law takes effect more than an amount",
+     "rule": "14.39"
+    },
+    {
+     "when": "The dates of events matter and no amount changes",
+     "rule": "14.38"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s30",
+    "caption": "How has the law changed the child tax credit's top amount per child since 2017?"
+   }
+  },
+  {
+   "id": "14.37",
+   "title": "Stop the line at a missing month and name the gap where it falls.",
+   "rule": [
+    "When a series has no value for a period, end the line before it and start it again after it, shade the missing period and name it on the chart. The table keeps the row and prints Not published in its cell."
+   ],
+   "why": {
+    "text": [
+     "A line drawn across a missing month invents a figure the publisher never printed, and the reader cannot tell it from the measured months around it. A named gap shows where the record stops, and the table says the same in words (Rule 14.11)."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.11"
+   ],
+   "builders": "Form line-data-gap: node work/build/chart-kit/oa-chart.mjs build s31; leave the missing period’s cell empty in the data file and give the gap its words in labels.gap.",
+   "entry": true,
+   "use_when": "The reader follows a monthly or yearly series with a period the publisher left blank, such as a month a survey did not run.",
+   "use_instead": [
+    {
+     "when": "The method changed and the publisher prints two estimates for the year it changed",
+     "rule": "14.29"
+    },
+    {
+     "when": "No month is missing, and the latest months are preliminary and will be revised",
+     "rule": "14.32"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s31",
+    "caption": "What was the unemployment rate each month, and which month is missing?"
+   }
+  },
+  {
+   "id": "14.38",
+   "title": "Set dated events on lanes along one true scale of time.",
+   "rule": [
+    "Use a timeline for dated events that fall into a few threads: one lane per thread, each event placed at its date on one scale that keeps true spacing, with its date and name printed, and shaded bands for stretches the notes explain. On a phone each lane becomes a dated list under its thread’s name."
+   ],
+   "why": {
+    "text": [
+     "True spacing shows the reader that some decades held many changes and others few, which an evenly spaced list hides. Lanes sort events by kind without a key, and a phone list keeps every date and name readable where a lane would crowd (Rule 14.12)."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.12"
+   ],
+   "builders": "Form timeline: node work/build/chart-kit/oa-chart.mjs build s09; labels.lanes names each thread and its question.",
+   "entry": true,
+   "use_when": "The reader asks what happened when, and which kind of change each event was.",
+   "use_instead": [
+    {
+     "when": "When each part of one law takes effect",
+     "rule": "14.39"
+    },
+    {
+     "when": "Each event or period carries a count",
+     "rule": "14.41"
+    },
+    {
+     "when": "A measure moves between the events",
+     "rule": "14.29"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s09",
+    "caption": "Which rule changes since 1870 decided who counts, who governs, who owns and who checks?"
+   }
+  },
+  {
+   "id": "14.39",
+   "title": "Show when each part of a law starts as a bar from its date.",
+   "rule": [
+    "Use an implementation timeline when a law or rule starts in parts: one row per part in date order, with its date, section and a plain line on what starts, over a lane where a bar begins on the start date and runs on. Hatch the first year of a part that reaches each plan or program as its own year begins, mark a deadline with a dot, and mark the day the law was approved on every lane."
+   ],
+   "why": {
+    "text": [
+     "A law is approved on one day and starts on many, and a reader who hears it passed may expect the change at once. One lane per part, each starting on its own date, shows the wait for each part, and the hatched year keeps a plan-year date from reading as one day for everyone."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form implementation-timeline: node work/build/chart-kit/oa-chart.mjs build s32; labels.kinds maps each row’s kind to approved, deadline, phase or start.",
+   "entry": true,
+   "use_when": "The reader asks when a law they have heard about will touch them, and its parts start on different dates.",
+   "use_instead": [
+    {
+     "when": "Dated events from many sources, with no parts of one law",
+     "rule": "14.38"
+    },
+    {
+     "when": "An amount the law changes from period to period",
+     "rule": "14.36"
+    },
+    {
+     "when": "Where one bill stands on its way to becoming law",
+     "rule": "14.88"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s32",
+    "caption": "When does each part of the 2026 law on drug middlemen take effect?"
+   }
+  },
+  {
+   "id": "14.40",
+   "title": "Index many series to one start when the reader compares growth.",
+   "rule": [
+    "Use an indexed line when series of very different sizes should be compared by how fast they grew: divide each by its own value at one base date and multiply by 100, so every line starts at 100. Draw the base line heavier and name the base, give one series the ink and the rest gray when there are more than four (Rule 14.8), and name every line at its end with its latest index."
+   ],
+   "why": {
+    "text": [
+     "On a scale of dollars, a $35 billion source that quintuples lies flat beside a $3 trillion one. An index puts every series at 100 on the same date, so a line’s height shows growth alone. Growth is not size, so the notes give each highlighted series’ amount and share, and the reader does not take a fast-growing small source for a large one."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.8"
+   ],
+   "builders": "Form indexed-line: node work/build/chart-kit/oa-chart.mjs build s33; labels.base names the date that equals 100, and the form computes each index from the raw values.",
+   "entry": true,
+   "use_when": "The reader asks which of several measures grew fastest since a date, and their sizes are too far apart to share a scale in their own units.",
+   "use_instead": [
+    {
+     "when": "The reader needs the amounts themselves, or how big each part is",
+     "rule": "14.35"
+    },
+    {
+     "when": "Each series needs its own panel to be read closely",
+     "rule": "14.34"
+    },
+    {
+     "when": "Only one series matters and its moments need explaining",
+     "rule": "14.29"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s33",
+    "caption": "Which sources of federal revenue grew fastest since fiscal 2016?"
+   }
+  },
+  {
+   "id": "14.41",
+   "title": "Size each period’s circle by its count along one line of time.",
+   "rule": [
+    "Use a bubble timeline when each period or event carries one count and the reader looks for when the counts swelled: one circle per period on one line, its area in proportion to the count (Rule 14.4), with a key of round sizes above. Give every circle a light fill and an outline so overlaps stay readable, mark a period with nothing to count with a tick, and dash the outline of a period still under way."
+   ],
+   "why": {
+    "text": [
+     "A circle sized by area lets a reader see a count grow from a handful to hundreds without a scale that crushes the small years. The eye judges area loosely, so the key gives round sizes, the notes give the largest figure, and the table gives every one."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.4"
+   ],
+   "builders": "Form bubble-timeline: node work/build/chart-kit/oa-chart.mjs build s34; encode.complete false dashes a period still under way.",
+   "entry": true,
+   "use_when": "The reader asks when something became common across a long span, and the exact count for each period matters less than the change in scale.",
+   "use_instead": [
+    {
+     "when": "The reader needs to compare counts closely, period by period",
+     "rule": "14.16"
+    },
+    {
+     "when": "The events matter for what they were, not for a count",
+     "rule": "14.38"
+    },
+    {
+     "when": "One continuous measure over time, such as a rate",
+     "rule": "14.29"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s34",
+    "caption": "How often has the Senate voted on ending debate, Congress by Congress?"
+   }
+  },
+  {
+   "id": "14.42",
+   "title": "Show what a household keeps as its earnings rise, cliffs and all.",
+   "rule": [
+    "Use a benefit-cliff line to show what one household has after taxes and benefits at each level of earnings: the household’s resources as a heavy line, its earnings alone as a dashed diagonal, and a light band from any drop to the earnings where the household is back where it was. Name the drop in words with its size, and state the household and the rules the chart assumes. Built on invented rules, the chart carries “Illustrative data” beside its top edge (Rule 13.8)."
+   ],
+   "why": {
+    "text": [
+     "A raise that leaves a family with less is hard to believe until the reader sees the line fall. The diagonal of earnings alone shows what the benefits add, and the band shows how far the family must climb to get back, so the size of the trap reads before any figure. Real cliffs depend on the state, the family and the year, so the chart names the household it assumes."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "13.8"
+   ],
+   "builders": "Form benefit-cliff: node work/build/chart-kit/oa-chart.mjs build s35; the form finds the largest drop and the climb back from the rows.",
+   "entry": true,
+   "use_when": "The reader asks whether earning more leaves a family better off, and benefits that end at set earnings may say no.",
+   "use_instead": [
+    {
+     "when": "An amount the law sets for each year, with no earnings involved",
+     "rule": "14.36"
+    },
+    {
+     "when": "How one benefit’s value has changed over time",
+     "rule": "14.29"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s35",
+    "caption": "What does one family keep as its earnings rise and benefits phase out?"
+   }
+  },
+  {
+   "id": "14.43",
+   "title": "Use a run chart to watch a process against its own median.",
+   "rule": [
+    "Use a run chart, a reference form, for a measure an office tracks week by week, such as days to answer a request: the values as dots joined by a line, a dashed line at their median, and a shaded run where six or more points in a row sit on one side of it. Oath & Action draws one when a story follows how a public service performs over time."
+   ],
+   "why": {
+    "text": [
+     "Every process wobbles, and a single high week proves nothing. A run of points on one side of the median is a simple, standard sign that something changed, which keeps a reader from taking noise for news or missing a real shift."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: a run chart is drawn from line-event-notes or line-data-gap with the median added as a note, until a story needs its own form.",
+   "entry": true,
+   "use_when": "The reader asks whether a process has changed or is only wobbling, and the measure has no outside target to compare with.",
+   "use_instead": [
+    {
+     "when": "The measure is an official statistic and its moments need explaining",
+     "rule": "14.29"
+    },
+    {
+     "when": "The reader compares one value with a target or a range",
+     "rule": "14.90"
+    },
+    {
+     "when": "The values swing month to month and a moving average shows the trend",
+     "rule": "14.32"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-43-sketch",
+    "caption": "Run chart, drawn small with illustrative data."
+   }
+  },
+  {
+   "id": "14.44",
+   "title": "Lay each year over the same months to show a season’s pattern.",
+   "rule": [
+    "Use a cycle or seasonal chart, a reference form, when a measure repeats each year: months along the bottom, one thin gray line for each earlier year, and this year in ink, ending at its latest month. Name this year and the earlier years on the lines."
+   ],
+   "why": {
+    "text": [
+     "A measure that rises every winter looks like a crisis on a plain line each December. Laying the years over the same months shows the season as the shape every year shares, and puts this year’s difference from that shape in view."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw it from line-field, with the month as x and each year as a series, until a story needs its own form.",
+   "entry": true,
+   "use_when": "The reader asks whether this month is high or low for the time of year, as with claims that rise every winter.",
+   "use_instead": [
+    {
+     "when": "The publisher removes the seasonal swing, and the trend is the question",
+     "rule": "14.29"
+    },
+    {
+     "when": "Many years of one measure, with one the story follows",
+     "rule": "14.31"
+    },
+    {
+     "when": "Monthly counts with an average through them",
+     "rule": "14.32"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-44-sketch",
+    "caption": "Cycle or seasonal chart, drawn small with illustrative data."
+   }
+  },
+  {
+   "id": "14.45",
+   "title": "Avoid streamgraphs, whose layers float on a baseline no one can read.",
+   "rule": [
+    "Leave streamgraphs out of every Oath & Action piece. Show parts of a total over time as small multiples, one panel per part on one scale, or as a stacked area with a flat baseline when the total matters."
+   ],
+   "why": {
+    "text": [
+     "A streamgraph stacks its layers around a wavy center line, so no layer sits on a flat baseline and none can be measured against a scale. When one layer swells, every layer above and below it bends, and a reader takes that bend for a change in layers that never moved."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form, by design; draw the parts with area-sparklines (s13) or, from round 2, the stacked area form.",
+   "entry": true,
+   "use_when": "Never: a reader who asks how the parts of a total changed over time gets a truer answer from small multiples or a stacked area.",
+   "use_instead": [
+    {
+     "when": "Each part’s own trend matters",
+     "rule": "14.34"
+    },
+    {
+     "when": "The total and its parts both matter, with a few parts",
+     "rule": "14.51"
+    },
+    {
+     "when": "One part should be read against the rest",
+     "rule": "14.30"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-45-sketch",
+    "caption": "Streamgraph, drawn small with illustrative data."
+   }
+  },
+  {
+   "id": "14.125",
+   "title": "Set results as a table with each row’s margin drawn in it.",
+   "rule": [
+    "Give each place one row: the later margin with the leader named in words, a bar from the center line toward the leader’s side, the earlier margin in gray and the shift as an arrow, all in neutral inks (Rule 14.7). Set the national row above the places, apart and labeled, and tag each row whose leader changed.",
+    "On a phone, where a full row does not fit, each row becomes a card that names the leader and margin in each year and gives the shift beside its arrow (Rule 14.12)."
+   ],
+   "why": {
+    "text": [
+     "A table lets a reader find their own state by name and read its exact margin, which a map hides in its smallest places. The bar and arrow drawn in each row let the eye compare rows down the page without leaving the table."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.3",
+    "14.7",
+    "14.12"
+   ],
+   "builders": "Form results-table: node work/build/chart-kit/oa-chart.mjs build s15, or copy specs/s15.json and point it at a new dataset; labels.lead names each side’s party in words.",
+   "entry": true,
+   "use_when": "The reader looks up how one place voted and how far it moved since the last election, among every state.",
+   "use_instead": [
+    {
+     "when": "The reader asks which places moved and how far, more than how each one voted",
+     "rule": "14.25"
+    },
+    {
+     "when": "Where the places sit matters, so the shape of the country helps the reader",
+     "rule": "14.115"
+    },
+    {
+     "when": "The rows are names and amounts a reader scans by rank",
+     "rule": "14.126"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s15",
+    "caption": "How did each state vote in 2024, and how did that compare with 2020?"
+   }
+  },
+  {
+   "id": "14.126",
+   "title": "Rank a long list as a register a reader can scan.",
+   "rule": [
+    "Give each item a row with its rank, its name with a short second line such as its kind, and its amount right-aligned in figures of one width, under column heads that carry the unit. Add a thin bar from zero for each amount so the drop down the list shows, keep hairlines between rows, and print the item the title names bold.",
+    "Keep names as the source gives them in the table, and say in a note when the drawing sets them differently."
+   ],
+   "why": {
+    "text": [
+     "A register keeps the name and the number side by side, which is what a reader looking for one group needs, and the rank tells them where it stands without counting. The thin bars add the shape of the drop from first to last at little cost in ink."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.3",
+    "14.4"
+   ],
+   "builders": "Form ranked-register: node work/build/chart-kit/oa-chart.mjs build s36, or copy specs/s36.json and point it at a new dataset; labels.divide, prefix and suffix set how each amount prints.",
+   "entry": true,
+   "use_when": "The reader asks who leads a list of a dozen or more and wants to find a name and read its exact amount, such as the largest independent spenders in an election.",
+   "use_instead": [
+    {
+     "when": "The reader compares sizes more than reading names, among a dozen items or fewer",
+     "rule": "14.15"
+    },
+    {
+     "when": "A handful of values to look up, with no ranking",
+     "rule": "14.133"
+    },
+    {
+     "when": "The list is long enough that a reader needs to filter it",
+     "rule": "14.130"
+    },
+    {
+     "when": "Each row is a claim with its grade, source and limits",
+     "rule": "14.131"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s36",
+    "caption": "Which groups spent the most on their own in the 2024 federal elections?"
+   }
+  },
+  {
+   "id": "14.127",
+   "title": "Lay options against criteria in a matrix of the source’s own words.",
+   "rule": [
+    "Put each option in a row and each criterion in a column, and print the source’s own words in every cell, so a reader compares options one criterion at a time. Leave out totals, counts and badges, since cells written in words cannot be added. On a phone each row becomes a card that lists its columns (Rule 14.12).",
+    "The specimen also marks each cell with Oath & Action’s reading as a glyph and a tint, labeled as ours, the scenario view of Rule 14.76; a plain matrix prints the words alone."
+   ],
+   "why": {
+    "text": [
+     "A matrix holds every option against every criterion in one view, so a reader can read across a row or down a column. The source’s words keep its qualifiers, such as “slightly up in metro areas that reform housing rules”, which a score would throw away."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.12",
+    "14.76"
+   ],
+   "builders": "Form comparison-matrix: copy specs/s06.json, set form to comparison-matrix and point it at a new dataset; it prints the words alone, and scenario-directions adds the glyphs and tints.",
+   "entry": true,
+   "use_when": "The reader weighs a few options across the same criteria, and the source describes each cell in words that do not reduce to a number.",
+   "use_instead": [
+    {
+     "when": "Every cell is a number and its size matters",
+     "rule": "14.129"
+    },
+    {
+     "when": "The options are scenarios and each outcome has a direction",
+     "rule": "14.76"
+    },
+    {
+     "when": "Two or three options read best as cards side by side",
+     "rule": "14.137"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s06",
+    "caption": "If a reform path were followed, which way would each outcome move?"
+   }
+  },
+  {
+   "id": "14.128",
+   "title": "Put a small trend line beside each row’s latest figures.",
+   "rule": [
+    "Give each series one row: its name, a sparkline of its whole run with the end marked, and the latest figures in columns at the right. Draw every row’s sparkline on one shared scale, name the period once in the measure line, and print a peak the title or a note cites beside its point."
+   ],
+   "why": {
+    "text": [
+     "A sparkline gives a series’ path in the space of a word, so the table stays a table while the reader sees whether a figure came from a steady climb or a late turn. One shared scale keeps a flat line flat in every row."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.10",
+    "14.33",
+    "14.34"
+   ],
+   "builders": "Form sparkline-table: S13 draws it as its totals rows above the panels (node work/build/chart-kit/oa-chart.mjs build s13); for a table alone, copy specs/s13.json, set form to sparkline-table and list the printed columns in encode.columns.",
+   "entry": true,
+   "use_when": "The reader looks up a handful of series, such as all jobs and its parts, and wants each one’s latest figure with a sense of how it got there.",
+   "use_instead": [
+    {
+     "when": "The shape of each series matters more than its latest figure",
+     "rule": "14.34"
+    },
+    {
+     "when": "One series, where each month’s value matters",
+     "rule": "14.32"
+    },
+    {
+     "when": "The reader needs the figures alone, with no path",
+     "rule": "14.133"
+    }
+   ],
+   "specimen_at": "14.34"
+  },
+  {
+   "id": "14.129",
+   "title": "Tint a grid of many cells by step, and print each cell’s word.",
+   "rule": [
+    "Set rows down the left and columns across, tint each filled cell by its step on one ordered scale, light for the lowest and dark for the highest, and print the step’s word in every cell so the table reads in gray print and to a screen reader. Leave the cells unsummed, with no score or total, and mark a cell that carries a date or a caveat with a dot the key explains.",
+    "Where a cell’s word cannot fit its column, as on a phone, each row becomes its name with a run of tinted chips that name the column and the word (Rule 14.12)."
+   ],
+   "why": {
+    "text": [
+     "Tints let the eye find the dark and light patches across a grid of a hundred cells before reading any of them, and the printed word keeps every cell exact. One scale from light to dark reads as more and less in color, in gray print and for readers who see color differently."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "13.10",
+    "14.5",
+    "14.12"
+   ],
+   "builders": "Form heat-table: node work/build/chart-kit/oa-chart.mjs build s37, or copy specs/s37.json and point it at a new dataset; labels.steps orders the scale and labels.columns the columns.",
+   "entry": true,
+   "use_when": "The reader looks across dozens of rows and several columns for a pattern, such as which routes the atlas rates feasible for which reforms, and each cell holds one rating or a small number.",
+   "use_instead": [
+    {
+     "when": "The cells hold the source’s own words, which no scale can order",
+     "rule": "14.127"
+    },
+    {
+     "when": "Each cell is a value that changes over time and the trend matters",
+     "rule": "14.128"
+    },
+    {
+     "when": "The grid is a map of places",
+     "rule": "14.117"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s37",
+    "caption": "Which routes could carry each reform, and how feasible is each?"
+   }
+  },
+  {
+   "id": "14.130",
+   "title": "Let readers search and filter a long register, and count what matches.",
+   "rule": [
+    "Print the register as a live table (Rule 18.10) under a labeled search field (Rule 18.15) and a Filters button with chips for each facet (Rule 18.16). Every keystroke or chip updates the rows at once, and one status line under the controls gives the count, such as “8 of 17 issue records”, with advice when nothing matches. With scripts off, the controls stay hidden and the whole table prints.",
+    "For a post or an email, print a still image of the register with one filter on, under the count line the live table would show."
+   ],
+   "why": {
+    "text": [
+     "A register of a hundred records answers a hundred questions, and a reader with one question needs a way in. A search and a few filters cut the table to the rows that answer it, and the count tells every reader, screen reader users among them, how many rows remain."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "18.10",
+    "18.15",
+    "18.16",
+    "14.13"
+   ],
+   "builders": "Form filterable-lookup-table: node work/build/chart-kit/oa-chart.mjs build s38, or copy specs/s38.json and point it at a new dataset; the spec's lookup key names the searched columns and the filters, and labels.still the filter the still image shows.",
+   "entry": true,
+   "use_when": "The reader comes with a question of their own and needs to find the few records that answer it in a register of dozens or hundreds, on the atlas site or in a report.",
+   "use_instead": [
+    {
+     "when": "The list is short enough to scan by rank",
+     "rule": "14.126"
+    },
+    {
+     "when": "Each row is a claim the reader weighs, with its grade and limits",
+     "rule": "14.131"
+    },
+    {
+     "when": "The piece is a post, an email or a social card, where nothing can be clicked",
+     "rule": "14.133"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s38",
+    "caption": "Which issue records cover my question?"
+   }
+  },
+  {
+   "id": "14.131",
+   "title": "Set claims beside their grade, period, coverage and limits.",
+   "rule": [
+    "Give each claim one row in the source’s own words, with its grade in words and its period at the left, and who it covers, its source and its limits under it, each after a short head. Keep a claim’s limits in the same row as the claim, so no reader can quote one without the other, and say once in a note what each grade means (Rule 13.3)."
+   ],
+   "why": {
+    "text": [
+     "A claim read apart from its grade and limits can say more than its evidence does. Setting them in one row means the qualification travels with the claim when a reader scans, quotes or shares it."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "13.2",
+    "13.3",
+    "13.10"
+   ],
+   "builders": "Form evidence-table: node work/build/chart-kit/oa-chart.mjs build s39, or copy specs/s39.json and point it at a new dataset; labels.grades prints each grade’s word and labels.heads the short heads.",
+   "entry": true,
+   "use_when": "The reader asks what the evidence says on a subject and how far to trust each piece of it, as when weighing claims about drug prices.",
+   "use_instead": [
+    {
+     "when": "The reader asks how sure a whole body of evidence is, more than what each claim says",
+     "rule": "14.23"
+    },
+    {
+     "when": "A few figures from one source answer the question",
+     "rule": "14.133"
+    },
+    {
+     "when": "Options are weighed against the same criteria in words",
+     "rule": "14.127"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s39",
+    "caption": "What does the evidence say about drug middlemen and prices?"
+   }
+  },
+  {
+   "id": "14.132",
+   "title": "List tracked bills with their six steps, status and date.",
+   "rule": [
+    "Draw each bill as chapter 11 draws a list of bills (Rule 11.5): its number and name lead the row, its six numbered steps run across, and its status follows in words with the date of the latest action. A bill that became law fills all six steps and says so with its date and law number (Rule 11.3). Give the date the whole list was checked in the title or measure line, since a tracker shows one day."
+   ],
+   "why": {
+    "text": [
+     "A reader tracking bills wants the same answer for each one: how far it has come, what happened last and when. The six marks answer the first at a glance, in the same shapes the reader meets on every Oath & Action tracker, and the dated words answer the rest."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "11.1",
+    "11.2",
+    "11.3",
+    "11.5"
+   ],
+   "builders": "Form tracker-list: node work/build/chart-kit/oa-chart.mjs build s40, or copy specs/s40.json and point it at a new dataset; encode.step and encode.skipped give each bill’s steps, labels.steps their names.",
+   "entry": true,
+   "use_when": "The reader asks where a set of bills or rules stands today, and what has happened to each, for the Track pillar.",
+   "use_instead": [
+    {
+     "when": "One bill’s full path with every date, on its own page",
+     "rule": "11.6"
+    },
+    {
+     "when": "When each part of one law takes effect",
+     "rule": "14.39"
+    },
+    {
+     "when": "How many items sit at each stage, with no single bill named",
+     "rule": "14.93"
+    }
+   ]
+  },
+  {
+   "id": "14.133",
+   "title": "Set a handful of numbers as a plain table when a chart adds nothing.",
+   "rule": [
+    "Set the numbers in rows under short column heads, with each row’s name at the left and its values right-aligned in figures of one width, a hairline under the heads and a rule under the last row. Keep the table only as wide as its columns need, and print it with its title, measure line, notes and source line like any chart (Rule 14.2)."
+   ],
+   "why": {
+    "text": [
+     "Three numbers within two points of each other make bars of almost the same length, which tells the reader less than the figures do. A table puts the exact value where the eye lands, keeps live text for screen readers and copying, and costs the page almost nothing."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "14.2",
+    "14.13"
+   ],
+   "builders": "Form plain-table: node work/build/chart-kit/oa-chart.mjs build s41, or copy specs/s41.json and point it at a new dataset; encode.columns lists the value columns in order.",
+   "entry": true,
+   "use_when": "The reader wants to look up a few exact values, such as three survey shares, and their sizes are close enough that bars would only repeat the numbers.",
+   "use_instead": [
+    {
+     "when": "One finding answers the question and a sentence states it faster",
+     "rule": "14.134"
+    },
+    {
+     "when": "The reader compares sizes across a dozen or more rows",
+     "rule": "14.15"
+    },
+    {
+     "when": "A long list needs sorting and scanning by rank",
+     "rule": "14.126"
+    },
+    {
+     "when": "Each row also carries a trend the reader should see",
+     "rule": "14.128"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s41",
+    "caption": "Do Republicans and Democrats agree on a ban on stock trading by members of Congress?"
+   }
+  },
+  {
+   "id": "14.134",
+   "title": "Write one sourced sentence when it answers faster than a chart.",
+   "rule": [
+    "When one or two figures answer the reader’s question, state them in one sentence with the figures, the period, who was counted and the grade’s verb, and print the full source line under it (Rule 13.6). The sentence keeps its evidence label, and its figures stay in a table under it for anyone who wants them in rows (Rule 14.13)."
+   ],
+   "why": {
+    "text": [
+     "Two numbers of almost the same size make a chart of two equal shapes, which says less than the numbers do. A sentence names who was counted and when in the same breath as the figures, so a reader can quote it whole with its source."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+   },
+   "tokens": [],
+   "related": [
+    "13.2",
+    "13.6",
+    "14.13"
+   ],
+   "builders": "Form one-sentence: node work/build/chart-kit/oa-chart.mjs build s42; labels.sentence carries the sentence, and show leaves out the printed title so it appears once.",
+   "entry": true,
+   "use_when": "The answer is one finding of one or two figures, such as how many voters in each party favored a ban, and a reader would take longer to read a chart than the sentence.",
+   "use_instead": [
+    {
+     "when": "A reader will want to look up three or more exact values",
+     "rule": "14.133"
+    },
+    {
+     "when": "One figure leads and its context matters, such as a share with the votes that followed it",
+     "rule": "14.85"
+    },
+    {
+     "when": "The figures differ in size and the difference is the point",
+     "rule": "14.15"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s42",
+    "caption": "Same question, answered in one sourced sentence"
+   }
+  }
+ ],
+ "related_chapters": [
+  {
+   "chapter": "01",
+   "reason": "Rules 01.1 to 01.3 on parties and two-way scales, and Rule 01.9’s limits on examples."
+  },
+  {
+   "chapter": "05",
+   "reason": "Rules 05.3, 05.5 and 05.7: the one working red, marks at 3 to 1 and the chart palette."
+  },
+  {
+   "chapter": "06",
+   "reason": "Rules 06.3 and 06.5: no text under 13 px, and figures and minus signs in tables."
+  },
+  {
+   "chapter": "12",
+   "reason": "Rule 12.6, where labels and keys sit."
+  },
+  {
+   "chapter": "13",
+   "reason": "The evidence every chart carries: its label and grade, its source line, its period and Illustrative labels."
+  },
+  {
+   "chapter": "15",
+   "reason": "Systems drawings of the atlas, held to the same evidence rules."
+  },
+  {
+   "chapter": "18",
+   "reason": "Rules 18.10 and 18.14: tables and named downloads, and the components interactive charts use."
+  }
+ ],
+ "sources": [
+  "Source: U.S. Census Bureau, Business Formation Statistics, business applications, 2005 to 2025, 50 states and DC. Retrieved November 11, 2026. Applications for a tax ID that signal a new business; many never hire; annual totals summed by Oath & Action.",
+  "Source: U.S. Census Bureau, County Business Patterns, civic and social organizations (NAICS 813410), 1998 to 2023, United States. Retrieved November 11, 2026. Establishments with paid employees only; employees counted in mid-March.",
+  "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting, citizen voting-age population, November 1978 to 2024, United States. Retrieved November 6, 2026. Self-reported in a survey; citizenship data before 1996 are not fully comparable.",
+  "Source: Office of the Clerk, U.S. House of Representatives, party breakdown, as of November 11, 2026, United States House. Retrieved November 11, 2026. Two seats vacant; the count changes with each vacancy and special election.",
+  "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Annual Statistics 2025, Table 17, homeownership rate by age of householder, 1982 to 2025, United States. Retrieved November 11, 2026. Survey estimates; the 2025 average leaves out October, when no data were collected.",
+  "Source: U.S. Census Bureau, County Business Patterns, newspaper publishers (NAICS 511110), 1998 to 2023, United States. Retrieved November 11, 2026. Establishments with paid employees only; employees counted in mid-March.",
+  "Source: Federal Judicial Center, Biographical Directory of Article III Federal Judges, judges in active service, as of November 11, 2026, United States. Retrieved November 11, 2026. Judges on senior status are not counted; years computed by Oath & Action from commission dates.",
+  "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points.",
+  "Source: U.S. Census Bureau, Income in the United States: 2025, Table 2, median household income, 1967 to 2025, United States. Retrieved November 11, 2026. Survey estimates in 2025 dollars with 90 percent margins of error; methods changed in several years, marked in the table.",
+  "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2015 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation."
+ ],
+ "planned_rules": [
+  "14.46",
+  "14.47",
+  "14.48",
+  "14.49",
+  "14.50",
+  "14.51",
+  "14.52",
+  "14.53",
+  "14.54",
+  "14.55",
+  "14.56",
+  "14.57",
+  "14.58",
+  "14.59",
+  "14.60",
+  "14.61",
+  "14.62",
+  "14.63",
+  "14.64",
+  "14.65",
+  "14.66",
+  "14.67",
+  "14.68",
+  "14.69",
+  "14.70",
+  "14.71",
+  "14.72",
+  "14.73",
+  "14.74",
+  "14.75",
+  "14.76",
+  "14.77",
+  "14.78",
+  "14.79",
+  "14.80",
+  "14.81",
+  "14.82",
+  "14.83",
+  "14.84",
+  "14.85",
+  "14.86",
+  "14.87",
+  "14.88",
+  "14.89",
+  "14.90",
+  "14.91",
+  "14.92",
+  "14.93",
+  "14.94",
+  "14.95",
+  "14.96",
+  "14.97",
+  "14.98",
+  "14.99",
+  "14.100",
+  "14.101",
+  "14.102",
+  "14.103",
+  "14.104",
+  "14.105",
+  "14.106",
+  "14.107",
+  "14.108",
+  "14.109",
+  "14.110",
+  "14.111",
+  "14.112",
+  "14.113",
+  "14.114",
+  "14.115",
+  "14.116",
+  "14.117",
+  "14.118",
+  "14.119",
+  "14.120",
+  "14.121",
+  "14.122",
+  "14.123",
+  "14.124",
+  "14.135",
+  "14.136",
+  "14.137",
+  "14.138",
+  "14.139",
+  "14.140",
+  "14.141"
+ ]
+}

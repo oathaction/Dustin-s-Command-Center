@@ -108,6 +108,7 @@
     "Checked by script against treasury-mts-receipts-by-source.csv, fiscal 2016 = 100: highest 2026 index Customs Duties 497.2 ('almost five times'), peak 559.4 in 2025; Total 165.4 ('65 percent'); customs 34.8 and 173.2 billion, 3.2 percent of all receipts in 2026; Total 3266.7 and 5403.3 billion; Other Retirement 216, Individual 184, Estate and Gift 181, Miscellaneous 30.",
     "H09: fiscal years run October to September, so no line splits a period at an inauguration; the window is the last ten fiscal years, which the measure line says. Read from the left and the right: the title reports growth in nominal dollars and names no policy or party; note 1 gives customs duties' small share, which the sidecar's qualification asks for.",
     "The table prints whole dollars because the kit has no billions format; request R-B7. The rows run by source, then year.",
-    "The sidecar's printed line names fiscal 2015 to 2026, the file's span, while the chart draws 2016 to 2026; request R-B8 asks the research lead for a variant naming 2016 to 2026."
-  ]
+    "R-B8 and DL-R2 landed: the source line is the sidecar's fiscal_2016_to_2026 variant, the window the chart draws."
+  ],
+  "source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2016 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation."
 }

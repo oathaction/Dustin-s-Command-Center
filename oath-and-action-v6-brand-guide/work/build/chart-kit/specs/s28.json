@@ -83,7 +83,7 @@
     "Maker B, round 1. Data plan row 19, rule 14.33. Domain D10 from the sidecar (Taking part, trust and shared norms); no state named.",
     "Checked by script against census-cbp-civic-organizations.csv: establishments 32,054 in 1998 and 24,698 in 2023, a change of −22.9 percent, '23 percent fewer'; employees 314,723 and 201,423, low 166,962 in 2021. The sentences in the drawing take every figure from the data through the form, so they cannot drift from it.",
     "The title says 'locations' for CBP's establishments, and note 1 gives the Bureau's term (H02).",
-    "H09: the window's start and its reason, as in S29; request R-B1 asks the research lead for the sidecar line.",
+    "H09: the window's start and its reason, as in S29; the sidecar's breaks_in_series now states it (R-B1 landed).",
     "Each sparkline takes its own scale, the form's convention; the measure line says the heights do not compare."
   ]
 }

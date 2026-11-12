@@ -8,8 +8,8 @@ All of maker B's rows in the plan file are done: twelve new specimens (S24 to S3
 
 | Rule | Form | Spec | Form file | Entry | Build | Plate bytes (load-table) | Captures looked at |
 |---|---|---|---|---|---|---|---|
-| 14.26 | Change lollipop | S24 | `forms/change-lollipop.js` | `14-026.json` | PASS | 8,036 | 1440 and 390, both grounds |
-| 14.27 | Diverging bar | S25 | `forms/diverging-bar.js` | `14-027.json` | PASS | 23,365 | 1440 and 390, both grounds |
+| 14.26 | Change lollipop | S24 | `forms/change-lollipop.js` | `14-026.json` | PASS | 9,250 | 1440 and 390, both grounds |
+| 14.27 | Diverging bar | S25 | `forms/diverging-bar.js` | `14-027.json` | PASS | 23,329 | 1440 and 390, both grounds |
 | 14.28 | Diverging bar with arrows over time | S26 | `forms/diverging-bar-arrows.js` | `14-028.json` | PASS | 9,427 | 1440 and 390, both grounds |
 | 14.31 | Line field with highlight | S27 | `forms/line-field.js` | `14-031.json` | PASS | 13,633 | 1440 and 390, both grounds |
 | 14.33 | Sparkline | S28 | `forms/sparkline.js` | `14-033.json` | PASS | 5,849 | 1440 and 390, both grounds |
@@ -26,6 +26,7 @@ All of maker B's rows in the plan file are done: twelve new specimens (S24 to S3
 
 ## Routine calls
 
+- D3-xxx | S24 reads `census-bfs-business-applications-change-by-state`, the research lead's derived file from the planned dataset (R-B4), in place of the two-year rows | Same publisher, period and printed line; the table can now print each state's change, which the chart draws
 - D3-xxx | S24 adds no note on where an application is counted | The Census Bureau's Business Formation Statistics methodology and definitions pages, read November 12, 2026, do not say how an application is assigned to a state (data lead DL-B1)
 - D3-xxx | S25's table drops its "In the chart" column | The plate measured 26,172 bytes by the kit's load-table fragment, over three times the core average; note 2 states the size rule the column repeated, and the plate now measures 23,365
 - D3-xxx | The benefit cliff's invented family is a parent with two children in Alder County, with generic benefit names (food aid, child care help, tax credits) and round invented rules stated in the sidecar | Rule 13.8 and H03: no real program's amounts are implied; the rules reproduce the file exactly
@@ -49,7 +50,7 @@ All of maker B's rows in the plan file are done: twelve new specimens (S24 to S3
 
 ## Requests
 
-Open, by owner. The research lead: R-B1, R-B4, R-B5, R-B8 (the data lead's DL-R2 asks the same), R-B10; and the data lead's DL-R1 and DL-R3, which touch S31 and S30 (S31 takes DL-R1's variant when it lands). The engineer: R-B2, R-B3, R-B7. Done: R-B6.
+Open: the engineer's R-B2, R-B3 and R-B7. Done: R-B6 (engineer); R-B1, R-B4, R-B5, R-B8, R-B10 and the data lead's DL-R1 and DL-R3 (research lead), taken into the specs: S31 prints the `unemployment_rate_only` line, S33 the `fiscal_2016_to_2026` line, S24 reads the derived change file and its table prints each state's change, S25's table and labels read the readable `agency` column (plate 23,329 bytes), and S28 and S29 trace their 1998 start to the sidecars' `breaks_in_series`. R-B10 needs no spec change.
 
 - R-B10, to the research lead (for your information, as the brief asks): `work/build/data/illustrative-benefit-cliff.csv` and `.meta.json` are written, `kind: illustrative`, an invented parent with two children in Alder County, earnings $0 to $60,000 in $1,000 steps, every rule stated in the sidecar's qualification; `ledger_row` reads "none: invented data". Add a Part 7 row if the ledger lists invented files
 - R-B7, to the engineer: a `billions:N` number format (a value in dollars printed as 173.2 billion, or a table cell of 173.2), so S33's table can print receipts in billions where today it prints whole dollars
@@ -73,6 +74,8 @@ Open, by owner. The research lead: R-B1, R-B4, R-B5, R-B8 (the data lead's DL-R2
 - `make_benefit_cliff.py` (scratch `scripts/`) writes the data file and prints its drop and climb back, which S35's form finds again from the rows.
 - My files scanned for em dashes, U+2011, literal colors and font names: none.
 - Census BFS methodology and definitions pages fetched (200) for DL-B1; neither says how an application is assigned to a state.
+
+- After the research lead's sidecar changes: `oa-chart.mjs build` S24, S25, S28, S29, S31 and S33, PASS with 0 faults at every width on both grounds; `dataviz_check.js --kit` on S24, S25, S31 and S33, PASS.
 
 ## Not tested
 

@@ -67,7 +67,7 @@ NOT_PLATES = {"reference sketches (22 at 4 KB) and avoid entries (8 at 2 KB)": 2
               "shared map geometry": 250_000}
 # Chapters Phase 3 is still building: the projection counts each at no less than its allocation until its round ends
 IN_PROGRESS = ("14", "15")
-RULE_PLATE = re.compile(r"^s-14-\d+-(correct|failure)\b")   # a chapter-wide rule's plates (DR-240) count under NOT_PLATES
+ENTRY_PLATE = re.compile(r"^s-14-s\d+$")   # an entry's specimen (R1-C3); a chapter-wide rule's plates (s-14-1-line) count under NOT_PLATES
 KIT_SIZES = {}                   # set by expand(): the kit's parts as the page carries them, from oa-chart.mjs fragments
 METHODS = ("lean", "load", "load-trim", "load-table")
 DEFAULT_METHOD = "load-table"    # chosen by the round 0 pilot (engineer notes, "The drawing method")
@@ -215,7 +215,7 @@ def per_plate(ch14, kit, charts, sizes):
     forms_bytes = sum((sizes.get("forms") or {}).values())
     avg = forms_bytes / sizes["registered"]
     renderer = kit - sizes.get("geo", 0) + max(0, FORMS - sizes["registered"]) * avg
-    placed = sum(1 for cid, r in charts.items() if cid.startswith("s-14-") and not RULE_PLATE.match(cid)
+    placed = sum(1 for cid, r in charts.items() if ENTRY_PLATE.match(cid)
                  and (r.get("tier") or "core").split(",")[0] in ("core", "extended"))
     to_come = max(1, PLATES - placed)
     reserved = sum(NOT_PLATES.values())
@@ -305,7 +305,7 @@ def self_test():
     bad += not ok
     sz = {"registered": 10, "geo": 5_000, "forms": {"a.js": 30_000, "b.js": 10_000}}
     sh = per_plate(0, 105_000, {"s-14-s01": {"tier": "core"}, "s-14-s02": {"tier": "reference"}, "s-13-1-correct": {"tier": "core"},
-                                "s-14-3-correct": {"tier": "core"}}, sz)
+                                "s-14-3-correct": {"tier": "core"}, "s-14-1-line": {"tier": "core"}}, sz)
     want = (2_803_941 - (100_000 + 87 * 4_000) - sum(NOT_PLATES.values())) / 96
     ok = sh is not None and sh["plates_to_come"] == 96 and sh["renderer_grown"] == 448_000 and abs(sh["per_plate"] - want) < 1
     print(f"{'pass' if ok else 'FAIL'} the per-plate share: the stop less the grown renderer and the parts that are not plates, over the core and extended plates to come")

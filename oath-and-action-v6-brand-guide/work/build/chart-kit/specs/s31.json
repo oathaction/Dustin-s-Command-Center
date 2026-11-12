@@ -150,6 +150,8 @@
     "The gap's cause in note 2 rests on the Census Bureau's CPS/HVS footnote, as the sidecar's 'unconfirmed' list says; the note attributes it to the Census Bureau and says only that BLS published no rate, which the file shows.",
     "H09 and H12: the window starts in January 2022 with the jobs charts S13 and S14 and runs one month past their September 2026 end, to the latest month, which the sidecar's printed source line covers; 'lapse in federal funding' is the neutral name.",
     "where lists the 58 months because the kit's where takes values only; request R-B3 asks for a from-to range.",
-    "The scale starts at zero so the rise from 3.4 to 4.5 percent keeps its size against the whole rate."
-  ]
+    "The scale starts at zero so the rise from 3.4 to 4.5 percent keeps its size against the whole rate.",
+    "Data lead DL-R1 landed: the source line is the sidecar's unemployment_rate_only variant, which names the household survey alone and drops 'preliminary'."
+  ],
+  "source_line": "Source: U.S. Bureau of Labor Statistics, Current Population Survey, unemployment rate, seasonally adjusted, January 2022 to October 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 11, 2026. No rate was published for October 2025."
 }

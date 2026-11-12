@@ -96,7 +96,7 @@
     "Maker B, round 1. Data plan row 21, rule 14.35. Domain D01 from the sidecar (News, records and public information); no state named.",
     "Checked by script against census-cbp-newspaper-publishers.csv: 1998 401,373; 2023 91,350; 91,350 / 401,373 = 0.228, less than a quarter; peak 413,951 in 2001; no year from 2002 to 2023 rose over the year before, so 'fell in every year after that' holds.",
     "Grade line opens with H08's grade word, Documented (D3-83 pattern). County Business Patterns comes from the Census Bureau's Business Register, so the line says counts, not a survey.",
-    "H09: the measure line gives the window's start with its reason. The 1998 NAICS start is the Census Bureau's own break between the SIC and NAICS series; a request asks the research lead to add it to the sidecar's breaks_in_series.",
+    "H09: the measure line gives the window's start with its reason; the sidecar's breaks_in_series now states the 1998 NAICS start from the Bureau's methodology page (R-B1 landed).",
     "The source line is the sidecar's printed_source_line (left out of the spec, D3-102).",
     "Notes 2 and 3 restate the sidecar's qualification in plain words.",
     "Data lead DL-B6 applied: note 2 says online-only news sites sit in another industry (Internet publishing, 519130, under the 2017 code list the 2023 file uses), so the decline is not read as all news jobs. The code's scope rests on NAICS 2017's definitions, not read on census.gov today; request R-B1 asks the research lead to add it to the sidecar."

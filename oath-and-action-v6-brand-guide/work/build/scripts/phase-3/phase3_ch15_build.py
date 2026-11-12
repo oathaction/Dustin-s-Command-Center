@@ -123,7 +123,7 @@ def kind_word(code):
 
 def gl(lid):
     """A connection's typed chip with its grade word, the record square before Documented (Rule 13.4, SD-1)."""
-    return f'{chip("Connection", lid)} {grade_word(link(lid)["evidence"], gloss=False)}'
+    return f'{chip("Connection", lid)}&#160;{grade_word(link(lid)["evidence"], gloss=False)}'
 
 
 def label_for(ids, what="the grade of the least certain connection shown"):
@@ -463,6 +463,9 @@ CSS.update({
 })
 
 
+CSS["nt"] = CSS["nt"] + ".nt+.nt{margin-top:4px}"
+
+
 def styled(body):
     used = set()
     for cls in re.findall(r'class="([^"]+)"', body):
@@ -547,7 +550,7 @@ def opener(book):
              ("The loop’s number and kind", "15.6"), ("Authority, with no sign", "15.5"),
              ("A boundary between layers", "15.9"), ("A dashed line for a plausible step", "13.4")]
     lst = "".join(f"<li>{C13.mk(n)} {e(w)}, Rule {r}</li>" for n, (w, r) in enumerate(parts, 1))
-    steps = f'<p class="nt">{gl("L11")}. {gl("L12")}. {gl("LE02")}.</p>'
+    steps = "".join(f'<p class="nt">{gl(x)}</p>' for x in ("L11", "L12", "LE02"))
     body = (label_for(lp["links"], "the grade of the loop’s least certain step")
             + f'<div class="fx two"><div>{hed("Loop", "R13", lp["title"])}{fig(svg)}{steps}</div>'
             f'<div><p class="k">What each numbered part says</p><ol class="kw">{lst}</ol></div></div>'
@@ -1056,9 +1059,9 @@ def rule_15_6(book):
         need(minus_count(lp["links"]) == n and len(lp["links"]) == 2, f"Loop {lid} changed")
         codes = [c for c, _ in lp["chain"]]
         b, h, _ = two_loop(codes, lp["links"], inside=(lid, kind))
-        steps = " ".join(f"<b>{i}</b>&#160;{gl(x)}." for i, x in enumerate(lp["links"], 1))
+        steps = "".join(f'<p class="nt"><b>{i}</b>&#160;{gl(x)}</p>' for i, x in enumerate(lp["links"], 1))
         cols.append(f'<div>{label_for(lp["links"], "the grade of the loop’s least certain step")}{hed("Loop", lid, lp["title"])}'
-                    f'{fig(svg_wrap(b, h), read_aloud(codes, lp["links"]))}<p class="nt">{steps}</p>'
+                    f'{fig(svg_wrap(b, h), read_aloud(codes, lp["links"]))}{steps}'
                     f'<p class="nt"><b>{words_n(n).capitalize()} minus sign{"s" if n != 1 else ""}</b>: {kind}.</p></div>')
     body = f'<div class="fx two">{"".join(cols)}</div>' + src("loops R18 and B5 and their connections")
     book.add("s-15-6-correct", body, rule="15.6", readable=True,
@@ -1411,7 +1414,7 @@ def rule_15_10(book):
              f'<p class="nt">The atlas keeps {words_n(len(rej))} connections it reviewed and left off its map, each with its reason.</p>')
     body = (label_for(["LT01"], "the grade of the connection drawn")
             + f'<div class="fx two"><div>{hed("Connection", "LT01", link("LT01")["name"])}{fig(svg_wrap(b, h))}'
-            f'<p class="nt">{gl("LT01")}.</p></div><div>{panel}</div></div>'
+            f'<p class="nt">{gl("LT01")}</p></div><div>{panel}</div></div>'
             + src("connection LT01, rejected connection LTR1 and connection L47"))
     book.add("s-15-10-correct", body, rule="15.10", readable=True,
              alt=(f"Connection LT01 from our systems atlas, “{link('LT01')['name']}”, drawn from How platforms rank feeds and seek "

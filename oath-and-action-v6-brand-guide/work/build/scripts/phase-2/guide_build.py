@@ -181,7 +181,7 @@ OLD_08_REFS = [
     "The composer after Rule 08.9 builds only the combinations",
     "40 px, bottom right, inside the margin (Rule 08.2)",
 ]
-XREF_SKIP_KEYS = {"specimen", "id", "after_rule", "before_rule", "token", "tokens", "files", "number", "anchor", "part",
+XREF_SKIP_KEYS = {"specimen", "id", "after_rule", "before_rule", "token", "tokens", "files", "number", "anchor", "part", "planned_rules",
                   "chapter", "related", "_legacy_file", "notes", "opener", "set"}
 
 
@@ -243,6 +243,10 @@ def check_cross_refs(chapters, pconf, specs):
             if meta.get(k):
                 texts.append((f"{specs.origin.get(sid, 'manifest')} {sid}.{k}", str(meta[k])))
     held = {n: {str(r.get("id")) for r in (d.get("rules") or []) if isinstance(r, dict)} for n, d in chapters.items()}
+    # Phase 3, round 1: a chapter built over several rounds (14) lists the numbers its plan fixes for later rounds; a
+    # citation of one of them is no fault, and it prints unlinked until its rule is built
+    for n, d in chapters.items():
+        held[n] |= {str(x) for x in (d.get("planned_rules") or [])}
     renamed = "08" in chapters and not chapters["08"].get("_legacy_file")
     seen = set()
     for where, raw in texts:
@@ -1398,10 +1402,18 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
     title = str(r.get("title", "")).strip()
     if not title:
         R.warn(where, "the rule has no title")
+    # Phase 3, round 1 (DR-240): an entry is a form's rule in chapter 14; its specimen is its plate, it takes no failure
+    # plate, and it says when to use the form and what to use instead. One whose specimen another entry shows names it.
+    entry = bool(r.get("entry"))
     for k in ("rule", "why", "correct", "failure"):
         # round 1: a rule whose worked examples each carry a correct and a failure plate needs none of its own
-        if not r.get(k) and not (k in ("correct", "failure") and r.get("examples")):
+        if not r.get(k) and not (k in ("correct", "failure") and r.get("examples")) \
+                and not (entry and (k == "failure" or (k == "correct" and r.get("specimen_at")))):
             R.warn(where, f"the rule has no {k!r} block")
+    if entry and r.get("failure"):
+        R.warn(where, "an entry takes no failure plate of its own (DR-240)")
+    if entry and not r.get("use_when"):
+        R.warn(where, "the entry has no use_when: say when this form is the right choice")
     why = r.get("why") or {}
     if isinstance(why, str):
         why = {"text": why}
@@ -1413,7 +1425,16 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
     out.append('<p class="return" hidden></p>')
     out.append('<div class="rule-body">' + demo_tag)
     out.append(paras(r.get("rule"), ctx, "rule-text"))
-    if r.get("tokens"):
+    if entry:
+        if r.get("use_when"):
+            out.append('<div class="use-when"><p class="label">Use it when</p>' + paras(r.get("use_when"), ctx) + "</div>")
+        ui = [x for x in as_list(r.get("use_instead")) if isinstance(x, dict) and x.get("rule") and x.get("when")]
+        if ui:
+            out.append('<div class="use-instead"><p class="label">Use instead</p><ul class="use-list">'
+                       + "".join(f'<li>{inline(str(x["when"]).rstrip(". "), ctx)}: {inline("Rule " + str(x["rule"]), ctx)}</li>' for x in ui)
+                       + "</ul></div>")
+        if r.get("specimen_at"):
+            out.append(f'<p class="entry-shared">{inline("This form’s specimen is the one under Rule " + str(r["specimen_at"]) + ".", ctx)}</p>')
         out.append('<div class="tokens"><p class="label">Tokens</p><ul class="tok-list">'
                    + "".join(token_chip(t, tokens, where) for t in r["tokens"]) + "</ul></div>")
     if why:

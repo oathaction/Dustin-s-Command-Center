@@ -1,0 +1,41 @@
+{
+  "id": "14.130",
+  "title": "Let readers search and filter a long register, and count what matches.",
+  "rule": [
+    "Print the register as a live table (Rule 18.10) under a labeled search field (Rule 18.15) and a Filters button with chips for each facet (Rule 18.16). Every keystroke or chip updates the rows at once, and one status line under the controls gives the count, such as “8 of 17 issue records”, with advice when nothing matches. With scripts off, the controls stay hidden and the whole table prints.",
+    "For a post or an email, print a still image of the register with one filter on, under the count line the live table would show."
+  ],
+  "use_when": "The reader comes with a question of their own and needs to find the few records that answer it in a register of dozens or hundreds, on the atlas site or in a report.",
+  "use_instead": [
+    {
+      "when": "The list is short enough to scan by rank",
+      "rule": "14.126"
+    },
+    {
+      "when": "Each row is a claim the reader weighs, with its grade and limits",
+      "rule": "14.131"
+    },
+    {
+      "when": "The piece is a post, an email or a social card, where nothing can be clicked",
+      "rule": "14.133"
+    }
+  ],
+  "why": {
+    "text": [
+      "A register of a hundred records answers a hundred questions, and a reader with one question needs a way in. A search and a few filters cut the table to the rows that answer it, and the count tells every reader, screen reader users among them, how many rows remain."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S38",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "18.10",
+    "18.15",
+    "18.16",
+    "14.13"
+  ],
+  "builders": "Form filterable-lookup-table: node work/build/chart-kit/oa-chart.mjs build s38, or copy specs/s38.json and point it at a new dataset; the spec's lookup key names the searched columns and the filters, and labels.still the filter the still image shows.",
+  "correct": null,
+  "failure": null
+}

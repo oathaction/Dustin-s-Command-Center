@@ -391,6 +391,10 @@ a.toc-part-k:hover { text-decoration: underline }
 }
 .label { margin: var(--oa-space-400) 0 var(--oa-space-100); color: var(--ink-2) }
 .why p:not(.label):not(.basis) { margin: 0 0 var(--oa-space-200); max-width: var(--oa-layout-measure-body-max) }
+/* Phase 3, round 1 (DR-240): an entry's "Use it when" and "Use instead", in the rule's text column */
+.use-when p:not(.label), .entry-shared { margin: 0 0 var(--oa-space-200); max-width: var(--oa-layout-measure-body-max) }
+.use-list { margin: 0 0 var(--oa-space-200); padding-left: 1.2em; max-width: var(--oa-layout-measure-body-max) }
+.use-list li + li { margin-top: var(--oa-space-100) }
 .basis { display: inline-flex; flex-wrap: wrap; gap: .5em; align-items: baseline; margin: 0 0 var(--oa-space-150); padding: var(--oa-space-050) var(--oa-space-100);
   border: var(--oa-border-width-hairline) solid var(--rule-strong); font: var(--oa-type-ui) }
 .basis-k { color: var(--ink-2) }

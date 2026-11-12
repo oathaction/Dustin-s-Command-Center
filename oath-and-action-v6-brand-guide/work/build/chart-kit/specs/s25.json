@@ -31,8 +31,8 @@
     "caption": "Federal civilian employees by agency, January 2022 and August 2026",
     "columns": [
       {
-        "field": "department",
-        "label": "Agency, as the file names it",
+        "field": "agency",
+        "label": "Agency",
         "format": "text",
         "row_header": true
       },
@@ -68,7 +68,7 @@
   "states": [],
   "encode": {
     "key": "department_code",
-    "label": "department",
+    "label": "agency",
     "value": "change",
     "include": "size_1000_plus"
   },
@@ -124,7 +124,7 @@
     "Maker B, round 1. Data plan row 13, rule 14.27, with the data lead's change 1 (window from January 2022) and the fix pass S14 size rule (chart draws the 37 agencies of 1,000 or more, the table every agency). Domain D04 from the sidecar; no state named.",
     "Checked by script against opm-federal-employment-by-agency.csv: ALL 2,155,201 to 2,024,832, −130,369; 37 agencies with size_1000_plus, 33 with a loss and 4 with a gain; their January 2022 share 99.37 percent, '99.4 percent'; 129 agencies besides ALL; Defense −73,248, Veterans Affairs +21,956, Homeland Security +14,584, Interior +275, Government Publishing Office +88.",
     "H09: the window has no split at an inauguration and matches S13 and S14's start; the note says each bar nets the whole window, as the sidecar asks. Read from the left and the right: the title gives the net count and the number of agencies that shrank, names no administration and claims no cause.",
-    "Short names are labels.names; the table keeps the file's own names in capitals, labeled as such. Request R-B5 asks the research lead for a readable name column.",
+    "Short names are labels.names in the chart; R-B5 landed, so the table prints the file's readable agency column.",
     "Pair B's middle steps (div-2 for a loss, div-4 for a gain) repeat the direction that position and sign already carry, per the data lead's palette note for row 13.",
     "Weight (R1-C5): the table drops the 'In the chart' column, which note 2's size rule already states, to keep the plate under three times the core average (26,172 bytes before, by the kit's load-table fragment).",
     "Data lead DL-B2 and DL-B3 applied: chart note 1 no longer names a scale the form does not draw; note 4 drops 'still'."
