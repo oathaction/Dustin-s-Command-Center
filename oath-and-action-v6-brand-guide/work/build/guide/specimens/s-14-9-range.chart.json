@@ -2,7 +2,7 @@
  "kit": 1,
  "id": "s-14-9-range",
  "form": "range-bar",
- "measure_line": "Share of citizens 18 and over who reported voting, November 2024, the ten states with the most voting-age citizens, with each figure’s 90 percent margin of error",
+ "measure_line": "Share of citizens 18 and over who reported voting, November 2024, the ten states with the most voting-age citizens, with each figure’s 90 percent margin of error",
  "reading_guide": "Each line spans a state’s margin of error, and a gap counts only past the gap’s own margin. A filled dot differs from the nation by more than the margin; an open dot sits within it.",
  "encode": {
   "category": "name",
@@ -57,7 +57,7 @@
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: a Census Bureau survey",
- "title": "Five of the ten states with the most voting-age citizens differed from the nation’s 65.3 percent turnout by more than the margin of error.",
+ "title": "Five of the ten states with the most voting-age citizens differed from the nation’s 65.3 percent turnout by more than the margin of error.",
  "notes": [
   "Past the margin: Michigan, Pennsylvania, Florida, New York and Texas. Within it: Ohio, Illinois, California, North Carolina and Georgia."
  ],

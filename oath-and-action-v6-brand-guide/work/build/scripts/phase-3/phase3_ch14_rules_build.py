@@ -1062,7 +1062,7 @@ def rule_14_9(B):
     gm_top = math.sqrt(mi["m"] ** 2 + pa["m"] ** 2)
     gm_bot = math.sqrt(ny["m"] ** 2 + tx["m"] ** 2)
     need(mi["v"] - pa["v"] < gm_top and ny["v"] - tx["v"] < gm_bot, "the ranked ends now pass their margins")
-    title = "Five of the ten states with the most voting-age citizens differed from the nation’s 65.3 percent turnout by more than the margin of error"
+    title = "Five of the ten states with the most voting-age citizens differed from the nation’s 65.3\u00a0percent turnout by more than the margin of error"   # the figure keeps its unit on its line (CD BM1)
     g = "Documented: a Census Bureau survey"
     measure = "Share of citizens 18 and over who reported voting, November 2024, the ten states with the most voting-age citizens"
     guide_end = "and a gap counts only past the gap’s own margin. A filled dot differs from the nation by more than the margin; an open dot sits within it."
@@ -1085,7 +1085,7 @@ def rule_14_9(B):
         # ED-E4 (D3-657): maker B's range-bar draws the plate in the kit at every width. The kit's interval check asks the
         # measure line to name the interval's level, so the reading guide no longer repeats it
         B.spec("s-14-9-range", form="range-bar",
-               measure_line=f"{measure}, with each figure’s 90 percent margin of error",
+               measure_line=f"{measure}, with each figure’s 90\u00a0percent margin of error",   # ED-E17: "90 percent" stays on one line
                reading_guide="Each line spans a state’s margin of error, " + guide_end,
                encode={"category": "name", "value": "voted_pct", "margin": "moe_pct", "key": "code"},
                labels={"reference": "US", "reference_label": "Nation {value}%", "test": "reference", "value": "{value}%"},
