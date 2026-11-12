@@ -4554,3 +4554,15 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-628 | S37's note on Article V is our own sentence: "Under Article V, two-thirds of each house of Congress, or a convention called by two-thirds of the states, proposes an amendment, and three-quarters of the states must ratify it." | Statistics N4: the old words read as if a convention alone could amend the Constitution; the atlas's words stay where the drawing quotes them |
 | D3-629 | S37 sorts by `reform_group` with `values` in V7's group order, so the table and CSV follow the drawing's groups; its chart note says so; the desk phone drawing shows the whole first group (28 route rows, 10 reforms), labeled "the first reform group shown; a phone draws all 50 reforms" | A12 landed; the sort makes the first group contiguous |
 | D3-630 | National parks are the units named "NP" or "NP & PRES", less Wolf Trap National Park for the Performing Arts | That rule gives 63, the Service’s count of national parks |
+
+### Maker B, round 1 second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-631 | S25's note 2 prints the data lead's three dated totals ("In all, the files counted 2,155,201 employees on January 31, 2022, 2,304,585 on January 31, 2025 and 2,024,832 on August 31, 2026; the table gives each agency on all three dates.") | D3-619 and H09: the earlier note split the window at January 2025 and tied it to the inauguration |
+| D3-632 | S25's note 3 adds that the January 2025 rows sum to 2,304,166 and the total also counts 419 people under two codes with no row, 416 under "No Data Reported" and three in the Office of Pandemic Preparedness and Response Policy | Statistics N5; the sidecar records both codes, and the 2022 and 2026 columns sum to their totals exactly |
+| D3-633 | S34's 116th Congress, which the title names, is drawn solid in the subject ink and every other circle in the light fill with a thin context outline (`labels.named` on `bubble-timeline`); only its phone figure stays bold | The data lead's held item and brand N6, Rule 14.6's ink case under D3-489 |
+| D3-634 | S34's phone row wraps 6 px inside its column, with a no-break space only in "November 10," so the year may take its own line at 224 px | Access N2: the row ran 2 px past a 326 px column; the kit now checks 326, 294, 264 and 224 px too |
+| D3-635 | S34's year lines stay under the circles | Brand N6; the circles are opaque, and at 4x the lines show only in the gaps between them |
+| D3-636 | The reference sketches 14.43 and 14.44 take a 10 px inner margin through their viewBox (now 320 px wide) | Brand N3: the label sat 1 px from the frame; 14.44 takes the same margin for one look |
+| D3-637 | The streamgraph pair widens to 288 px a half, with an 8 px inner margin (3,408 bytes) | Brand N4: the plate's two labels wrapped over 196 px halves, where the radar pair's 280 and 300 px halves hold them on one line |
