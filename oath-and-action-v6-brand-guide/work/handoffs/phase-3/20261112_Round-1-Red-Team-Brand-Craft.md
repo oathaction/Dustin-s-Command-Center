@@ -96,3 +96,74 @@ The 26 new kit specimens sit with board 1's sixteen as one family, their words r
 - Pixel profiles of board 1's specimens, so S16 may hold for the whole kit.
 - Forced colors, print, reduced motion and scripts off (the access reviewer's lens).
 - Whether the chapter 14 rail follows the reader in a real browser with a person scrolling; the screenshot was taken after a scripted jump.
+
+## Second pass
+
+November 12, 2026, under DR-191, on the fix pass's strict build (9,986,588 bytes, 0 warnings). Read first: the fix brief and its addendum (D3-484 to D3-488), the decision log from D3-476 to D3-616, and the data lead's "Review fix pass" section. I rebuilt 17 changed specs with the kit into `.../brand-craft/p2/kit-out/` (17 of 17 PASS) and captured the build at 1440 and 1024 px.
+
+### Score for this lens: 4 of 5
+
+Every Must fix but one is closed and the family now reads as one system, with red kept off any mark a reader ties to a party; chapter 15's wide plates work at 1440 px but still fall back to the phone column at 1024 px, and the fix pass left five small craft faults.
+
+### The items
+
+| Item | Status | What I looked at |
+|---|---|---|
+| M1, chapter 15 at desktop | Narrowed | At 1440 px the opener, 15.6 (now Loop R10 beside Loop B5) and 15.13 sit on a 680 px stage with the drawing at 296 px and the words beside it, as chapter 13's opener does; the true-size line names both widths. At 1024 px the frame is 702 px wide, the stage measures under 680 px, and the opener falls back to the 328 px column with about 187 px of empty mat each side (captured). See N1. |
+| M2, hand-drawn rule plates | Closed | 14.6, 14.9, 14.11 and 14.12 captured at 1440 px: kit anatomy, titles with periods, bold "Source:", the credit, reading guides above the charts, 14.11 at full width. 14.11's 2017 break: see N2. 14.9's title still breaks "voting-" at a line end; minor. |
+| M3, S36's party committees | Closed | Kit capture: "Party committee, Democratic" (DCCC, DSCC), "Party committee, Republican" (NRCC), "Hybrid PAC, Republican" (SFA Fund); note 3 names the full committees and says the commission records no party for 21 of the 22 PACs. Read from either side this is the record, labeled the same way for everyone. |
+| M4, avoid sketches | Closed | 14.24 draws one set of values in two spoke orders beside grouped bars; 14.45 beside small multiples on flat baselines; the do-not-publish bar sits over the misleading half and "Use instead" over the other. See N4. |
+| S1, opener numerals | Closed | Callouts are letters A to F at 1440 and 1024 px. |
+| S2, executive power twice | Closed | Rule 15.6 draws Loop R10 (safe seats); executive power appears once, in the opener. |
+| S3, phone drawing at a desk | Closed | S17's entry at 1440 px shows "On a phone, 358 px" with its bars. |
+| S4, red or ink | Closed | Rule 14.6 now states both cases and the party tie (read from `14-006.json`). |
+| S5, title periods | Closed for chapter 14 | Every chapter 14 plate title ends with a period except `s-14-2-bare`, whose fault is a topic for a title. Chapter 13 waits on Dustin (D3-488). |
+| S6, chapter 14 opener | Closed | Sixteen drawn marks, family names under their questions, rows aligned (1440 px). |
+| S7, reference sketches | Closed, with N3 | 14.43 now takes a 300 px stage, centered. |
+| S8, S25's fills | Closed | End steps of pair B; the Veterans Affairs bar ends inside the drawing. |
+| S9, S38's two counts | Closed | In the guide the live lookup takes the still list's place; one count, "17 of 17 issue records". |
+| S10, S37's heads and dots | Closed | Heads on one row over their columns; checked marks at 6 px. Two heads break at a hyphen ("confir-mation"); acceptable. |
+| S11, S26's named row | Closed | "Republicans 5" bold on the 2025 row. |
+| S12, S18's labels | Closed | Every value after its bar. |
+| S13, row names | Closed | S24 and S25 set names flush left; S24's key is gone. |
+| S14, S27 and S33 base lines, S33's labels | Closed | Thin base lines; S27 names "1991 = 100"; S33's phone form lists the eight other sources under the plot. |
+| S15, S32, S34, S27 details | Closed by file and capture | S32's word map spells out the department and holds "other requirements" together; S34's dashed circle ends inside the edge. S27's phone year labels read from D3-504 only. |
+| S16, half-pixel strokes | Closed | Re-measured on the new 1x captures: S24 and S26 show no half, full, half rows (52 and 33 before). |
+| S17, straight quotes | Closed | The build prints "reader’s question"; S39 prints ‘big three’ and "Act, 2026". |
+| S18, basis box | Closed | The chapter basis prints once after the introduction; one rule's box still repeats the same words. |
+| S19, the rail | Closed | At Rule 14.31 the rail shows the groups, opens group 4 and marks 14.31. |
+| S20, S25's window | Closed | Note 2 gives OPM's January 31, 2025 count: 149,384 more than January 2022 and 279,753 more than August 2026. The record now shows when the change came, with no split in the drawing. |
+
+### The nine titles that name a mark, under D3-489
+
+Read from the left and the right, the red and the ink fall fairly. Red lands on S20 (householders under 35), S21 (the atlas answer on voting and public influence) and S23 (one hub's documented bar): an age group and the atlas's own records, which no reader owns for a party. Ink lands on S17 (the 118th Congress), S24 (Wyoming), S27 (Montana and Utah), S33 (customs duties, whose rise follows the sitting president's tariffs), S34 (the 116th Congress) and S36 (FF PAC). Each of those carries a party tie, and red on any of them would read as a party's color: on three Republican-leaning states as a pun, on a Democratic-aligned PAC as a mismatch, on the tariff line as a verdict. Ink keeps the emphasis without either reading, and every ink chart still names and weights its mark. Two things to weigh:
+
+- **Rule 14.6's own correct plate puts the red on the Ninth Circuit.** The data lead passes it because the court was chosen by its count of judges. Many readers do tie the Ninth Circuit to one side, and Rule 14.6's own reason ("red on them reads as a party’s color") covers it, though its list of five ties does not name courts. The one plate that teaches the red point should carry no doubt. See N5.
+- Across chapter 14's entries the red point now appears mostly on charts of the atlas's own records (S21, S23). That is fair, but it means a designer learns the red point from Oath & Action counting itself. A later round's specimen of public data with no party tie would show it better.
+
+### New faults from the fix pass
+
+**N1. Chapter 15's wide plates do not reach 1024 px.** Owners: Engineer and systems designer, with the creative director, who chose the 680 px switch (D3-485). Captured at 1024 px, the opener stays a 328 px column in a 702 px frame. Either let the stage's mat padding drop at frame widths under about 760 px so a 680 px stage fits, or switch at 600 px, which fits by arithmetic. Should fix.
+
+**N2. Rule 14.11's correct plate labels a 2017 break it does not show.** Owner: Editor. At 1440 px the line runs unbroken through 2017 under the label "New processing"; zoomed, the two 2017 estimates overlap within a few pixels. The plate teaches that each change year prints both estimates, and 2013 shows it, so 2017 should too: a visible gap, the two dots offset, or open and filled dots as 2013 has. Should fix.
+
+**N3. The reference sketch's stage has no inner margin.** Owner: Engineer (D3-543). In `s-14-43-sketch` at 1440 px, "Illustrative data" sits about 1 px from the frame's top and left edges. Give a sketch stage the 16 px gutter every other stage has. 14.44 not captured. Should fix.
+
+**N4. The streamgraph pair wraps its two labels.** Owner: Maker B. At 1440 px "Form to avoid: do not publish" and "Use instead: small multiples" each wrap to two lines over halves about 196 px wide, while the radar pair sets each on one line. Widen the halves to the radar's or shorten the second label to "Use instead". Should fix, small.
+
+**N5. Rule 14.6's correct plate.** Owners: Editor and data lead. Draw the red point on a mark no reader ties to a party, or add courts and offices whose members readers count by the appointing president's party to the rule's list and give the Ninth Circuit the subject ink. Should fix.
+
+**N6. S34's named circle looks like every other circle, and its year lines run over the circles.** Owner: Maker B. The 116th Congress, which the title names, is drawn in the same outline and fill as its neighbors, so only the label marks it; R3 asks for the others in the light fill. The gridline at 2020 shows through the circle below the line. Draw the gridlines under the circles. Should fix, small.
+
+### Second pass: tested
+
+- `node work/build/chart-kit/oa-chart.mjs build` for S17, S18, S20, S21, S23 to S28, S32 to S34 and S36 to S39 into this lens's scratch: 17 of 17 PASS, 0 faults; looked at the Newsprint 1440 px captures of S17, S20, S21, S23, S24, S27, S33, S34 and S36, S33 at 390 px, and zooms of S20's and S21's red marks and S34's circles.
+- From the second build at 1440 px: rule plates 14.6, 14.9, 14.11, 14.12; the three sketches 14.24, 14.43, 14.45; the chapter 14 opener; S17, S18, S25, S26, S37 and S38 in the guide; chapter 15's opener and the 15.6 and 15.13 plates looked at (15.3 and 15.14 captured, not read closely); viewport screenshots of chapter 14's opener and of the rail at Rule 14.31; chapter 15's opener at 1024 px.
+- By script: titles' periods on every chapter 14 plate spec; S36's note 3 and S32's word map; apostrophes, quotes and the basis line in the build; stroke profiles on the new 1x captures of S20, S21, S24, S25 and S26.
+
+### Second pass: not tested
+
+- Chapter 15's other plates at 1440 and 1024 px, and any chapter 15 plate at 390 px or on Charcoal in this pass.
+- Chapters 12 and 13 at 1024 px beside chapter 15 (compared at 1440 px only).
+- S24 and S27 at 390 px; 14.44's sketch; the S37 phone drawing at a desk (D3-534).
+- Charcoal captures of the changed specs.

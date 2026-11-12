@@ -349,3 +349,55 @@ The test: where a U.S. reader would tie the named mark to a party (a state, a Co
 ### Fix pass sign-offs
 
 None yet; each changed chart is signed off here as it lands.
+
+## Second pass sign-off
+
+November 12, 2026, on the fix pass's strict build (`round-1-second/build/guide.html`, 9,986,588 bytes), after reading each owner's "Review fix pass" section and the decision log from D3-476 to D3-616. I rebuilt 20 changed specs with captures into my scratch folder (`kit2`, all PASS, 0 faults) and captured 12 guide plates at 1440 and 390 px with Playwright. Read against DR-236's palettes and rule R3, DR-64, chapter 13 (Rules 13.1 to 13.4, 13.6, 13.10), H09 and my rulings (a) to (g).
+
+### Signed off
+
+| Item | What I checked |
+|---|---|
+| S17 | 118th Congress in the subject ink, the other nine light (Rule 14.6's party case); title and notes unchanged |
+| S20 | Red line and end dots with the keyline on Newsprint, the others light; ST S13's title; both grounds |
+| S21 | Red dot with keyline on PW15 alone; one-point title; note 1 gives the fewest; grade line (a) |
+| S23 | Red bar by panel and category, every other bar light with its value; one shared scale from zero; grade line (a); note 2's figures as ruled |
+| S24 | Wyoming in the subject ink, other states light, the nation set apart; names flush left; key dropped for the labeled +100 gridline; frozen figures printed with the "September 2026 monthly release (October 14, 2026)" (D3-476) |
+| S26 | "As first elected" throughout; one ink; the 119th row's figure bold with its party named, no red |
+| S27 | Title naming Montana and Utah, both heavy in the subject ink; the nation dashed in the text's ink, from the same August 25, 2026 release, base and adjustment (436 checked by script, 435.69); `states` MT, UT, CT; legible in grayscale at 390 px |
+| S33 | Customs duties in the subject ink, no red (D3-490); all receipts as ruled below |
+| S36 | FF PAC in the subject ink; party words exactly as the FEC records them on four committees, note 3 counting 21 of 22 PACs with none |
+| S37 | 36 of 38 federal statute routes low or very low, 24 of 29 state statute and 14 of 15 local medium or high, recounted from `v7-reform-routes`; the four scale steps quoted; the named column framed in ink, which Rule 14.6 allows since red on a column would code a group |
+| S38, S39 | Grade lines (a); S39's 11 claims each checked October 15, 2026 |
+| S18, S19, S28, S31, S32, S41, S42 | Words read; data unchanged; S19 takes ST S5's words; S31's note compares the rise with the one-month interval and says none is given for longer spans; S41 and S42 credit the margin to the Program's page |
+| Rules 14.1, 14.6, 14.9, 14.11, 14.12, 14.13 (kit plates) | Figures by script: 2.49 and 5.67 million applications; 29 Ninth Circuit judges; $87,460; $3.25 and $5.40 trillion; 80 and 2,062 super PACs (25.8 times). 14.6 and 14.13 take the red point; 14.12's 2026 column takes the ink (D3-589). ED-2, ED-3 and ED-4 hold at 390 px |
+| 14.24 and 14.45 avoid pairs | Radar in two spoke orders beside grouped bars of the same values; streamgraph beside small multiples on flat baselines; bar over the misleading half only; "Illustrative data" on both halves |
+| Chapter 15 wide plates | Values unchanged (the generator's V7 checks); the opener on Loop R13 rechecked by script: L11 minus, well supported; L12 minus, plausible, its least certain step; LE02 documented; letters A to F |
+| Rule 15.6 on Loop R10 | Every chain label, sign, grade, pattern and delay tick against V7: L08 plus, documented, one tick; L25 minus, well supported, one; L53 minus, plausible, dashed, two; L42 plus, documented, two; record squares on L08 and L42; label Plausible from L53; "Two minus signs: reinforcing" |
+| BC M2, M3, M4, S8, S13 | As above (14.6, 14.9, 14.11, 14.12; S36; both avoid pairs; S25's end steps and 8 px edge; flush-left names) |
+| Row 113 | Variant `panels_2010_2014_2019_2024` and the plan's notes landed as ruled |
+
+### Held
+
+- **S25, note 2 only.** It gives the change on each side of January 31, 2025 and says that day "falls 11 days after the inauguration", a sentence that splits the window at an inauguration, which H09 forbids ("No chart or sentence splits a period at an inauguration date"). Write: "In all, the files counted 2,155,201 employees on January 31, 2022, 2,304,585 on January 31, 2025 and 2,024,832 on August 31, 2026; the table gives each agency on all three dates." Three dated totals show when the change came, as BC S20 asks, with no split and no officeholder (figures from the file's ALL row). Owner: the editor (D3-615). The rest of S25 is signed off.
+- **S34, one drawing item.** The title names the 2019 and 2020 Congress, but its circle looks like every other one and only its label sets it apart. Rule 14.6's party case gives it Charcoal at the subject weight. Draw the 116th's outline in the subject ink at the subject weight through a `labels.named` in `bubble-timeline`, and take the bold off the 119th's phone figure, which the title no longer names. Owner: maker B, routed by the main session. Words and counts are signed off (295 votes through November 10, 2026).
+
+### Ruling on S33's all receipts line
+
+It keeps the context ink. All receipts is the sum of the other sources, the reference each is read against, and DR-64 sets that figure apart as it does a national one; in the light fill it would read as a ninth part of itself.
+
+### Requests
+
+- **Editor, optional now.** S24's chart note says "dark ink" where S17 says "the text’s ink"; use one. Rule 14.9's caption ends "and the chart ranks none of them", but its rows run in order of rate; drop the clause.
+- **Round 2.** One treatment for a total or national line across forms (S19 and S27 dash it, S33 draws it solid in the context ink). And a stated case in Rule 14.6 for a title that compares two marks: S19 draws both named ends in ink with the rest light, while S18 draws all five fifths in ink. Proposed: both named marks in the subject ink, the rest light, no red; S18 then names its two fifths.
+
+### Second pass decisions
+
+- D3-xxx | S33's all receipts line keeps the context ink | The total is the reference DR-64 sets apart, never one of the parts
+- D3-xxx | S25's note 2 prints three dated totals and no change split at January 2025 | H09 forbids a sentence that splits a period at an inauguration
+- D3-xxx | S34's named Congress takes the subject ink in the drawing | Rule 14.6's party case; a label alone does not set the mark apart
+
+### Second pass: tested and not tested
+
+- Tested: `oa-chart.mjs build` with captures for S17 to S21, S23 to S26, S28, S31 to S34, S36 to S39, S41 and S42 (all PASS), and S27; I looked at S20, S21, S23, S24, S25 (with grayscale), S26, S27 (with grayscale at 390), S33, S34 and S36, and S18 at 390. Every changed spec's words read from its file. Scripts: S27's national and state values, S25's totals from the file's ALL row, S37's route counts, the plates' figures for 14.1, 14.6, 14.12 and 14.13, the opener's and Loop R10's values against V7, row 113's variant. Playwright captures of 14.1, 14.6, 14.9, 14.11, 14.12, 14.13, 14.24, 14.45, 15.6 (both), the opener and 15.13 at 1440, and the six chapter 14 plates at 390; I looked at all but 14.1, 15.13 and the opener's drawing.
+- Not tested: the guide check and the kit's `--all` build (the main session's); chapter 15's plates other than 15.6 by eye; forced colors and the dark theme; S28, S31, S32, S37 to S39, S41 and S42 by eye; the 390 px plate captures have the sticky masthead over them, so a plate's top at 390 px was read in part.
