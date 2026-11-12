@@ -3,7 +3,7 @@
   "exit": 0,
   "page_bytes": 9957097,
   "warnings": 0,
-  "built": "2026-11-12T00:38:35",
+  "built": "2026-11-12T00:40:42",
   "report": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/board-1/guide/20261112_Board-1-Guide-Build-Report.json"
  },
  "engineer_options": {
@@ -38,7 +38,7 @@
   },
   "photos": 1.31
  },
- "built": "2026-11-12T00:38:30.791764+00:00",
+ "built": "2026-11-12T00:40:37.879117+00:00",
  "palette": {
   "new_tints": [
    [
@@ -109,33 +109,33 @@
   "S01": {
    "faults": 0,
    "rows": 8,
-   "svg_bytes_1440": 6432,
-   "svg_bytes_390": 6060,
+   "svg_bytes_1440": 6468,
+   "svg_bytes_390": 6493,
    "exports": {
     "20261111_S01-Big-Number-In-Context.csv": 733,
-    "20261111_S01-Big-Number-In-Context-Newsprint-1440.svg": 14811,
-    "20261111_S01-Big-Number-In-Context-Newsprint-1440.png": 132038
+    "20261111_S01-Big-Number-In-Context-Newsprint-1440.svg": 14988,
+    "20261111_S01-Big-Number-In-Context-Newsprint-1440.png": 140085
    }
   },
   "S02": {
    "faults": 0,
    "rows": 39,
-   "svg_bytes_1440": 10457,
-   "svg_bytes_390": 9864,
+   "svg_bytes_1440": 10368,
+   "svg_bytes_390": 9779,
    "exports": {
     "20261111_S02-Line-With-Event-Notes.csv": 4952,
-    "20261111_S02-Line-With-Event-Notes-Newsprint-1440.svg": 26874,
-    "20261111_S02-Line-With-Event-Notes-Newsprint-1440.png": 166622
+    "20261111_S02-Line-With-Event-Notes-Newsprint-1440.svg": 26751,
+    "20261111_S02-Line-With-Event-Notes-Newsprint-1440.png": 166554
    }
   },
   "S03": {
    "faults": 0,
    "rows": 7,
    "svg_bytes_1440": 8879,
-   "svg_bytes_390": 8679,
+   "svg_bytes_390": 9165,
    "exports": {
     "20261111_S03-Ranked-Bar.csv": 308,
-    "20261111_S03-Ranked-Bar-Newsprint-1440.svg": 22034,
+    "20261111_S03-Ranked-Bar-Newsprint-1440.svg": 22175,
     "20261111_S03-Ranked-Bar-Newsprint-1440.png": 79325
    }
   },
@@ -146,29 +146,29 @@
    "svg_bytes_390": 5095,
    "exports": {
     "20261111_S04-Dumbbell.csv": 641,
-    "20261111_S04-Dumbbell-Newsprint-1440.svg": 12285,
+    "20261111_S04-Dumbbell-Newsprint-1440.svg": 12426,
     "20261111_S04-Dumbbell-Newsprint-1440.png": 55471
    }
   },
   "S05": {
    "faults": 0,
    "rows": 132,
-   "svg_bytes_1440": 12160,
-   "svg_bytes_390": 12751,
+   "svg_bytes_1440": 20216,
+   "svg_bytes_390": 20787,
    "exports": {
     "20261111_S05-Small-Multiple-Lines.csv": 14728,
-    "20261111_S05-Small-Multiple-Lines-Newsprint-1440.svg": 24444,
-    "20261111_S05-Small-Multiple-Lines-Newsprint-1440.png": 71990
+    "20261111_S05-Small-Multiple-Lines-Newsprint-1440.svg": 57721,
+    "20261111_S05-Small-Multiple-Lines-Newsprint-1440.png": 78409
    }
   },
   "S06": {
    "faults": 0,
    "rows": 8,
-   "svg_bytes_1440": 21473,
-   "svg_bytes_390": 21568,
+   "svg_bytes_1440": 22224,
+   "svg_bytes_390": 22363,
    "exports": {
     "20261111_S06-Scenario-Directions.csv": 5282,
-    "20261111_S06-Scenario-Directions-Newsprint-1440.svg": 67598,
+    "20261111_S06-Scenario-Directions-Newsprint-1440.svg": 68995,
     "20261111_S06-Scenario-Directions-Newsprint-1440.png": 394227
    }
   },
@@ -176,10 +176,10 @@
    "faults": 0,
    "rows": 51,
    "svg_bytes_1440": 14149,
-   "svg_bytes_390": 12188,
+   "svg_bytes_390": 7512,
    "exports": {
     "20261111_S07-Tile-Grid-Map-Categorical.csv": 10539,
-    "20261111_S07-Tile-Grid-Map-Categorical-Newsprint-1440.svg": 36918,
+    "20261111_S07-Tile-Grid-Map-Categorical-Newsprint-1440.svg": 37059,
     "20261111_S07-Tile-Grid-Map-Categorical-Newsprint-1440.png": 83856
    }
   },
@@ -187,22 +187,22 @@
    "faults": 0,
    "rows": 64,
    "svg_bytes_1440": 17460,
-   "svg_bytes_390": 16447,
+   "svg_bytes_390": 16449,
    "exports": {
     "20261111_S08-Unit-Chart.csv": 40884,
-    "20261111_S08-Unit-Chart-Newsprint-1440.svg": 44102,
-    "20261111_S08-Unit-Chart-Newsprint-1440.png": 62343
+    "20261111_S08-Unit-Chart-Newsprint-1440.svg": 44243,
+    "20261111_S08-Unit-Chart-Newsprint-1440.png": 62482
    }
   },
   "S09": {
    "faults": 0,
    "rows": 24,
-   "svg_bytes_1440": 12577,
+   "svg_bytes_1440": 14993,
    "svg_bytes_390": 11262,
    "exports": {
     "20261111_S09-Timeline.csv": 9967,
-    "20261111_S09-Timeline-Newsprint-1440.svg": 36295,
-    "20261111_S09-Timeline-Newsprint-1440.png": 355764
+    "20261111_S09-Timeline-Newsprint-1440.svg": 44534,
+    "20261111_S09-Timeline-Newsprint-1440.png": 366145
    }
   },
   "S10": {
@@ -212,74 +212,74 @@
    "svg_bytes_390": 15536,
    "exports": {
     "20261111_S10-One-Hundred-Percent-Bar.csv": 2387,
-    "20261111_S10-One-Hundred-Percent-Bar-Newsprint-1440.svg": 36673,
+    "20261111_S10-One-Hundred-Percent-Bar-Newsprint-1440.svg": 36814,
     "20261111_S10-One-Hundred-Percent-Bar-Newsprint-1440.png": 202438
    }
   },
   "S11": {
    "faults": 0,
    "rows": 52,
-   "svg_bytes_1440": 25800,
-   "svg_bytes_390": 30006,
+   "svg_bytes_1440": 25883,
+   "svg_bytes_390": 30225,
    "exports": {
-    "20261111_S11-Shift-Arrows.csv": 2969,
-    "20261111_S11-Shift-Arrows-Newsprint-1440.svg": 71165,
-    "20261111_S11-Shift-Arrows-Newsprint-1440.png": 407254
+    "20261111_S11-Shift-Arrows.csv": 4010,
+    "20261111_S11-Shift-Arrows-Newsprint-1440.svg": 71026,
+    "20261111_S11-Shift-Arrows-Newsprint-1440.png": 408249
    }
   },
   "S12": {
    "faults": 0,
    "rows": 52,
-   "svg_bytes_1440": 30740,
-   "svg_bytes_390": 16063,
+   "svg_bytes_1440": 30312,
+   "svg_bytes_390": 21630,
    "exports": {
-    "20261111_S12-Tile-Grid-Map-With-Shift-Arrows.csv": 2969,
-    "20261111_S12-Tile-Grid-Map-With-Shift-Arrows-Newsprint-1440.svg": 90889,
-    "20261111_S12-Tile-Grid-Map-With-Shift-Arrows-Newsprint-1440.png": 151171
+    "20261111_S12-Tile-Grid-Map-With-Shift-Arrows.csv": 4010,
+    "20261111_S12-Tile-Grid-Map-With-Shift-Arrows-Newsprint-1440.svg": 88753,
+    "20261111_S12-Tile-Grid-Map-With-Shift-Arrows-Newsprint-1440.png": 150758
    }
   },
   "S13": {
    "faults": 0,
    "rows": 1026,
-   "svg_bytes_1440": 50284,
-   "svg_bytes_390": 52642,
+   "svg_bytes_1440": 50446,
+   "svg_bytes_390": 53033,
    "exports": {
-    "20261111_S13-Small-Multiple-Area-Sparklines.csv": 59515,
-    "20261111_S13-Small-Multiple-Area-Sparklines-Newsprint-1440.svg": 85725,
-    "20261111_S13-Small-Multiple-Area-Sparklines-Newsprint-1440.png": 250902
+    "20261111_S13-Small-Multiple-Area-Sparklines.csv": 63522,
+    "20261111_S13-Small-Multiple-Area-Sparklines-Newsprint-1440.svg": 86812,
+    "20261111_S13-Small-Multiple-Area-Sparklines-Newsprint-1440.png": 262996
    }
   },
   "S14": {
    "faults": 0,
    "rows": 57,
    "svg_bytes_1440": 15377,
-   "svg_bytes_390": 15254,
+   "svg_bytes_390": 15262,
    "exports": {
-    "20261111_S14-Columns-With-Moving-Average.csv": 1358,
-    "20261111_S14-Columns-With-Moving-Average-Newsprint-1440.svg": 33645,
+    "20261111_S14-Columns-With-Moving-Average.csv": 1568,
+    "20261111_S14-Columns-With-Moving-Average-Newsprint-1440.svg": 33786,
     "20261111_S14-Columns-With-Moving-Average-Newsprint-1440.png": 113660
    }
   },
   "S15": {
    "faults": 0,
    "rows": 52,
-   "svg_bytes_1440": 69113,
-   "svg_bytes_390": 55697,
+   "svg_bytes_1440": 69095,
+   "svg_bytes_390": 53496,
    "exports": {
-    "20261111_S15-Results-Table.csv": 2969,
-    "20261111_S15-Results-Table-Newsprint-1440.svg": 179878,
-    "20261111_S15-Results-Table-Newsprint-1440.png": 744802
+    "20261111_S15-Results-Table.csv": 4010,
+    "20261111_S15-Results-Table-Newsprint-1440.svg": 178135,
+    "20261111_S15-Results-Table-Newsprint-1440.png": 744022
    }
   },
   "S16": {
    "faults": 0,
    "rows": 52,
-   "svg_bytes_1440": 63361,
-   "svg_bytes_390": 64137,
+   "svg_bytes_1440": 64547,
+   "svg_bytes_390": 65188,
    "exports": {
     "20261111_S16-Bubble-Map.csv": 1685,
-    "20261111_S16-Bubble-Map-Newsprint-1440.svg": 95684,
-    "20261111_S16-Bubble-Map-Newsprint-1440.png": 326746
+    "20261111_S16-Bubble-Map-Newsprint-1440.svg": 96708,
+    "20261111_S16-Bubble-Map-Newsprint-1440.png": 409087
    }
   }
  },
@@ -433,8 +433,8 @@
  ],
  "tested": {
   "work/handoffs/phase-3/20261111_Round-0-Engineer-Notes.md": {
-   "tested": 28,
-   "not": 12
+   "tested": 40,
+   "not": 19
   },
   "work/handoffs/phase-3/20261111_Round-0-Palette-Notes.md": {
    "tested": 21,
@@ -470,9 +470,9 @@
   }
  },
  "board": "work/boards/phase-3/round-0/board-1/20261112_Board-1.html",
- "html_bytes": 351452,
+ "html_bytes": 355499,
  "images": 123,
- "folder_bytes_with_images": 56324598,
+ "folder_bytes_with_images": 56530631,
  "largest_image": [
   3423838,
   "20261112_Palette-Page-390.png"
@@ -695,29 +695,12 @@
   "DR-54",
   "DR-64",
   "DR-73",
-  "G2-01"
+  "G2-01",
+  "G2-02"
  ],
  "notes": [
-  "red team count differs from the fix brief: Accessibility and the production test, part all: reports 0 and 0, brief says 4 and 10",
-  "removed 20261112_Palette-Magnitude-1440-Protanopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Past-Four-Groups-1440-Tritanopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Past-Four-Groups-1440-Deuteranopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Red-On-Red-1440-Protanopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Magnitude-1440-Deuteranopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Red-On-Red-1440-Tritanopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Prussian-1440-Protanopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Line-Code-1440-Deuteranopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Sequential-1440-Deuteranopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Red-On-Red-1440-Deuteranopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Sequential-1440-Protanopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Magnitude-1440-Tritanopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Line-Code-1440-Tritanopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Line-Code-1440-Protanopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Prussian-1440-Deuteranopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Sequential-1440-Tritanopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Past-Four-Groups-1440-Protanopia.png, which the board no longer shows",
-  "removed 20261112_Palette-Prussian-1440-Tritanopia.png, which the board no longer shows"
+  "red team count differs from the fix brief: Accessibility and the production test, part all: reports 0 and 0, brief says 4 and 10"
  ],
  "warnings": [],
- "visible_text_sha1": "e1584d14d24aa83b988668fef1e4a6f7f4655bd2"
+ "visible_text_sha1": "a7a576e257040597f39757296942ed77cc97c4fd"
 }
