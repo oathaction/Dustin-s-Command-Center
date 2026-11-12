@@ -252,3 +252,12 @@ Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/65b3d20e-985e-5f
 - Tested: `oa-chart.mjs self-test`, exit 0, 40 planted faults caught, 28 passes, none missed, with the new case (a level written with no-break spaces passes; a measure line with no level is still caught); `build --all --no-png`, exit 0, 64 check files counted, 64 pass.
 - Not tested: the strict build after this change (the check changes no drawing).
 - Files: `work/build/chart-kit/checks.js` (the level check), `oa-chart.mjs` (the self-test case); this notes file.
+
+## Review fix pass
+
+The fix brief `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` (Engineer paragraph, calls 1, 9 and 11, and the access addendum, D3-903 to D3-905). Written as I go; the container can restart. Each part's call is written under "Contract changes" as it lands, so the makers can move onto it.
+
+### Contract changes (November 12, fix pass)
+
+Landed so far, newest last. A line marked **LANDED** is in the kit now.
+

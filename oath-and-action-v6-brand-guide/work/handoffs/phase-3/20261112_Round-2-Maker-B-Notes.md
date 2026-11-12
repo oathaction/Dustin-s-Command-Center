@@ -144,3 +144,27 @@ MB-1 (S49 note 2), MB-2 (S50 grade line), MB-3 and MB-4 (S51 title and notes), M
 - Tested (MB-19, MB-20): S56 and S57 build PASS, 0 faults, every width on both grounds; S56 drawn at 720, 358, 326, 296 and 256 px and looked at (ring and key at every width; all five quarters named at every width); `--figures` 0 faults; `phase3_ch14_build.py` 0 faults; `guide_build.py --strict` exit 0, 10,587,718 bytes.
 - `guide_check.js --quick --no-captures` on both builds (before and after the S56 and S57 changes): FAIL with 2 failures, both maker A's sketch 14.55 ("of the whole" under contrast at 1440 and 390 px); no failure names my sketch 14.66 or any other file of mine, and the chart-edges test reports no shape outside its drawing.
 
+
+## Review fix pass
+
+November 12, 2026, a fresh instance of maker B on `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` (the Maker B paragraph, calls 1, 10 and 11, and the AX addendum). Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/3ab6316c-6935-5f23-804c-cfaafd548447/scratchpad/phase-3/round-2-fix/maker-b/`. Written as I go; the container can restart.
+
+### Summary
+
+In progress. Order: items no ruling touches first (ST S3, ST S6's S58 note, ST S7's entry 14.60, ST S9, ST S10 with AX S5, BC S10, BC S13 with SK-S1, BC S14's 14.73, BC S17, CD B-S2, CD B-S3, AX S4's words), then the data lead's rulings (S58's band, S54 and S55's labels, S55's size, S57's gap test, S53's red share), then the engineer's new parts (band edges, halos, row names, red share).
+
+### Items
+
+(filled in as each lands)
+
+### Routine calls
+
+### Requests to the engineer
+
+### Requests to the data lead
+
+### Requests to the editor
+
+### Tested
+
+### Not tested
