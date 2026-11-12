@@ -6,14 +6,16 @@
  * the published total a column prints, which may differ from its parts' sum by rounding).
  * labels: parts ([{field, label}] in the same order), totals_at (x values whose totals print above their columns),
  * total_words ('{v}' words for a printed total), x_ticks (x values to label; the kit thins them otherwise), y_head
- * (words over the value scale). formats: y_tick (the scale), total (a printed total). */
+ * (words over the value scale), part_values ([{x, field}]: a part whose value prints beside the top of its segment, on
+ * the side clear of its neighbor, such as the part a title counts). formats: y_tick (the scale), total (a printed total
+ * and a part's value). */
 (function (K) {
   'use strict';
   var CAT = ['cat-1', 'cat-2', 'cat-3', 'cat-4'];
   K.register_chart({
     form: 'stacked-column', name: 'Stacked Column', family: 'composition',
     encode: { x: 'category', parts: 'list', total: 'number?' },
-    labels: ['parts', 'totals_at', 'total_words', 'x_ticks', 'y_head'],
+    labels: ['parts', 'totals_at', 'total_words', 'x_ticks', 'y_head', 'part_values'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, ex = c.field('x'), parts = c.field('parts'), L = c.labels, f = c.spec.formats || {}, W = c.width;
@@ -64,6 +66,24 @@
         }
       });
       P.zero_line(c, ys, x0, x1);
+      // a part the title counts prints its value beside the top of its segment, on the side whose neighbor stands lower
+      // than the words, left first (the data lead's RF-22 and MA-F1)
+      [].concat(L.part_values || []).forEach(function (pv) {
+        var i = -1; st.forEach(function (s2, k) { if (String(s2.row[ex]) === String(pv.x)) i = k; });
+        if (i < 0) { c.warn('labels.part_values names no column ' + pv.x); return; }
+        var g = st[i].segs.filter(function (q) { return q.field === pv.field; })[0];
+        if (!g || g.missing) return;
+        var cxp = x0 + step * i + step / 2, t = K.fmt(g.value, f.total || 'number:1'), tw = c.measure(t, 'label', 700, true);
+        var by = ys(g.end) + 2 + size * 0.86, top_y = by - size * 0.86 - 2;
+        var clear = function (dir) {
+          var xa = dir < 0 ? cxp - bw / 2 - 4 - tw : cxp + bw / 2 + 4, xb = xa + tw;
+          if (xa < (c.phone ? 0 : x0) || xb > (c.phone ? W : x1)) return false;
+          return st.every(function (o2, k) { var ox = x0 + step * k + step / 2; return k === i || ox + bw / 2 < xa - 2 || ox - bw / 2 > xb + 2 || ys(o2.total) > by + size * 0.14 + 2; });
+        };
+        var dir = clear(-1) ? -1 : clear(1) ? 1 : 0;
+        if (!dir) { c.warn('no room beside ' + pv.x + ' for its part value'); return; }
+        c.text(dir < 0 ? cxp - bw / 2 - 4 : cxp + bw / 2 + 4, by, t, { role: 'label', weight: 700, anchor: dir < 0 ? 'end' : 'start', tnum: true, data: { key: pv.x, field: pv.field, value: g.value } });
+      });
       // each part's name beside the last column, at its middle, moved apart where two would touch, with a hairline
       // back to its part when moved
       if (!c.phone) {
