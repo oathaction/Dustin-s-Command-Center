@@ -259,7 +259,7 @@ Tested:
 - `dataviz_check.js --kit` on the 16 pages: 16 of 16 pass; its self-test: every planted fault caught.
 - `oa-chart.mjs self-test`, including the words in `kit.js` equal to the editor's `words.json`: every fault caught.
 - `data_round0_build.py`: 61 tables, 0 faults; only `v7-scenarios-2030.meta.json` changed.
-- `guide_build.py --strict`: 0 warnings, 9,959,613 bytes, and 9,960,893 after the light fill's new description (the token table); `--self-test` 296 of 296; `v7_check.py` 0 failures; a fresh pilot and `weight_options.py` for the table above. The quick guide check on this page: GCHECK4.
+- `guide_build.py --strict`: 0 warnings, 9,959,613 bytes, and 9,960,893 after the light fill's new description (the token table); `--self-test` 296 of 296; `v7_check.py` 0 failures; a fresh pilot and `weight_options.py` for the table above. The quick guide check on this page (before the light fill's description): PASS, 0 failures at 1440 and 390 px.
 Not tested: the README read by someone who does not code; S06 with `directions_wording` and S13 with its peak, which wait on the Explainer maker's specs.
 
 ## Contracts
