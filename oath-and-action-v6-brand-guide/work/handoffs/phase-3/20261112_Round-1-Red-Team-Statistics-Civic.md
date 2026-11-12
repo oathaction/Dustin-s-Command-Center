@@ -1,29 +1,115 @@
 # Round 1 red team: statistics and civic education
 
-Oath & Action Edition 06, Phase 3, round 1 review, November 12, 2026. Reviewer lens: a statistician on a newspaper graphics desk holding the research lead's source standards, then a civic educator who teaches adults applying the editor's rules. Build reviewed: the strict build of November 12 (10,017,051 bytes, 0 warnings, 265 rules, 554 specimens).
-
-Status: in progress. This file grows as checks finish.
+Oath & Action Edition 06, Phase 3, round 1 review, November 12, 2026. I read first as a statistician on a newspaper graphics desk holding `oa-research-lead.md`'s source standards, then as a civic educator who teaches adults, applying `oa-editor.md`'s rules. The build reviewed is the strict build of November 12 (10,017,051 bytes, 0 warnings, 265 rules, 554 specimens). Paths are relative to `oath-and-action-v6-brand-guide/`. Scratch work is in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/256961f5-3911-5bd9-908d-f34ce0435ace/scratchpad/phase-3/round-1-review/statistics-civic/`.
 
 ## 1. Score
 
-Pending.
+**3 of 5.** The numbers underneath are sound: I rebuilt by script the values of 20 of the 26 new specimens and five round 3 tables, and all match Atlas V7 or the publisher except two, and Rule 01.9 holds with room to spare. Five faults keep the round from the bar: one chart went stale when its publisher revised the data today, one title states a fact the data does not measure, one note prints a count the Senate's own record does not support and gives it no date, four charts print "Documented" above records of mixed grades, and Rule 14.6 puts red on the named mark while all six new specimens that name one draw it in ink.
 
 ## 2. Must fix
 
-Pending.
+**M1. S24 went stale today: the Census Bureau revised the business applications it draws, and the chart names no vintage.**
+- Where: S24 (`work/build/chart-kit/specs/s24.json`, Rule 14.26), its datasets `census-bfs-business-applications-change-by-state` and `census-bfs-business-applications-by-state`.
+- What is wrong: the Bureau's file `bfs_monthly.csv` carries "last-modified: Thu, 12 Nov 2026 15:00:14 GMT". Summed by script as the sidecar describes (sa U, TOTAL, BA_BA), 2005 to 2021 still match the frozen file, but 2022 to 2025 changed for every state. The 2025 United States total is now 5,696,742, not 5,671,836, so the rise from 2019 is 62.8 percent, where the title prints "by 62 percent nationwide". Wyoming now has 81,688 applications, a 315 percent rise, where note 3 prints "79,023" and chart note 2 prints "+302%". Delaware (138.4 percent) now passes New Mexico (138.1), where the alt text reads "followed by New Mexico and Delaware at 133 and 132 percent". The District of Columbia stays the smallest, at 22 percent. Rule 13.7 says "Where a publisher revises its figures, the chart also names the vintage", and S24's measure line and source line name only "Retrieved November 11, 2026". The findings themselves hold: every state still rose, and Wyoming still rose most, also in the Bureau's high-propensity series (251 percent against 28 nationally).
+- Fix: the research lead refreezes both BFS files from the November 12 posting with its SHA-256 and names the vintage in the printed line, as in "Business Formation Statistics, monthly file as posted November 12, 2026". Maker B then reruns the figure checks and updates the title (63 percent), note 3, chart note 2 and the alt text. Rule 14.1's plate draws the same file: its words still hold (5.7 million in 2025), but its line and source line take the same refreeze.
+- Owner: Research lead, then maker B; the editor for Rule 14.1's plate.
+
+**M2. S26's title and measure line describe the House on opening day, but the chart draws the first election count.**
+- Where: S26 (`s26.json`, Rule 14.28): title, measure line and alt text.
+- What is wrong: the title reads "The House majority opened the 119th Congress in 2025 with five more seats than the minority", and the measure line says "at the opening of each Congress". The publisher's page, read today, says: "The figures presented are the House party divisions as of the initial election results for a particular Congress." Note 3 says the same. The two differ for the very Congress the title names: Representative-elect Matt Gaetz did not take his seat, so the House opened on January 3, 2025 with 219 Republicans and 215 Democrats, a lead of four (this last fact is from the public record as I know it; I did not fetch a source for it today). A fact-checker would catch the title on its first line. Every seat count the chart draws matches the House page (38 Congresses, checked by script).
+- Fix: "Republicans won five more House seats than Democrats in the 2024 election, the smallest lead in the first count for any Congress since 1951." Measure line: "as first elected for each Congress" in place of "at the opening of each Congress". The alt text takes the same words.
+- Owner: Maker B, with the editor's words.
+
+**M3. S34's count for the 119th Congress does not match the Senate's roll call record, and it carries no date.**
+- Where: S34 (`s34.json`, Rule 14.41): note 3, the alt text and the dashed circle; `senate-cloture-motions-by-congress.csv`, row 119.
+- What is wrong: note 3 reads "a dashed outline marks its 294 votes so far". The Senate's own vote lists (`vote_menu_119_1.xml` and `vote_menu_119_2.xml` on senate.gov) hold 289 votes whose question names cloture, through vote 258 of November 10, 2026, with 243 agreed to. The file says 294 votes and 247 invoked. My count method reproduces the cloture page exactly for the 116th Congress (298 votes, 270 invoked) and for the 118th (241 votes), so the gap is in the 119th row. That row also gives motions filed and votes on cloture as the same number, 294 and 294, which no other row in the file does. "So far" with no date breaks Rule 13.10 ("carries the date it was last checked, in words"). D3-421 keeps the count out of the title because "the note gives it with its date", but the note gives no date.
+- Fix: the research lead rereads the 119th row on the cloture counts page, which refused this container (HTTP 403), through a download if needed, and corrects it. Note 3 then reads, for example, "a dashed outline marks its 289 votes through November 10, 2026". The alt text takes the same count and date.
+- Owner: Research lead, then maker B.
+
+**M4. Four charts print "Documented" as the grade of records that carry other grades.**
+- Where: S21, S23, S39 ("Documented: the atlas’s own register of graded claims") and S38 ("Documented: the atlas’s own register of issue records"), maker A's specs.
+- What is wrong: in the built page S38 reads, line by line: "Finding", "Documented: the atlas’s own register of issue records", "Of the atlas’s 17 issue records on news, records and public information, two are documented, eight well supported, six plausible and one a hypothesis." A newcomer meets the same word as the grade of the whole and as the grade of two records in seventeen. S23's bars are Documented, Well supported, Plausible and Contested, under a grade line that says Documented. Rule 13.1 does not allow this line: it gives "the atlas’s grade for a figure from the atlas" and "Documented for a public agency’s own count or survey or a public record". A count of the atlas's own records is neither, and no ruling covers it (the data lead's ruling 4 covers S41 and S42 only).
+- Fix: Rule 13.1 takes one more line for a count of the atlas's own records, which names the count and no grade, since the chart's own marks carry the grades. For example: "Our count of the atlas’s records; each record keeps its own grade". The four specs then print that line.
+- Owner: Editor (Rule 13.1 and the words), the data lead's ruling, then maker A.
+
+**M5. Rule 14.6 puts the red on the point the title names, and none of the six new specimens that name a mark does.**
+- Where: Rule 14.6 (`work/build/guide/entries/14-006.json`); S17, S20, S21, S23, S27 and S36.
+- What is wrong: the rule reads "In a chart, the red goes to the one point, bar or line the title names", with one exception, when an error or a step already holds the view's red. Six new specimens name a mark in the title and draw it "in the text’s ink" with the others in light gray, and none holds a red elsewhere. S17's own internal note gives a reason the rule does not hold: "with no red: a count of laws carries no direction a reader on either side would agree is good or bad, and red would read as alarm." The rule's builders line also disagrees with its text: "Name the one point in the spec (labels.named for the subject ink)". A designer who follows the rule draws S17's 118th Congress in red; a designer who copies the specimen draws it in ink.
+- Fix: write the practice the specimens follow into Rule 14.6. For example: the named mark takes the subject ink against light gray; the red goes to it only when the title's point has a direction a reader would act on, and never on a count that carries none. Or redraw the six specimens. One of the two, so the rule and its demonstrations agree.
+- Owner: Editor, with the data lead; the brand reviewer may raise the same plates.
 
 ## 3. Should fix
 
-Pending.
+**S1. S31 prints no margin of error and singles out a low and a high (Rule 14.9).** Note 1 reads "The rate rose from a low of 3.4 percent in April 2023 to 4.5 percent in November 2025". The rate comes from a household survey, and Rule 14.9 says "Show the publisher’s uncertainty" and "a note says so". The rise passes the margin easily, but the rule asks for the margin in print, and S14 already prints its survey's. Add the margin and say the rise passes it, as in "about 0.2 point at 90 percent confidence for a change, by the Bureau of Labor Statistics". I could not open bls.gov to confirm that figure (it refuses automated readers), so the research lead takes it from the Employment Situation technical note. Owner: maker B; research lead for the figure.
+
+**S2. S27 names Montana the leader on a near tie and draws no national line.** Montana's index is 742.06 and Utah's 724.90, both on a base of the first quarter of 1991 = 100. Measured from the second quarter of 1991, the first point the chart draws, Utah grew 7.1943 times and Montana 7.1933 times. Both grew more than sevenfold, and FHFA revises earlier quarters with each release. Name both in the title, as in "most in Montana and Utah, each more than seven times their level in early 1991", and add the U.S. purchase-only index as a labeled line, as S19 and S24 set their national figure apart (DR-64). All 7,242 values in the frozen file match FHFA's file today. Owner: maker B.
+
+**S3. Four more charts from publishers that revise name no vintage (Rule 13.7).** S25 (the August 2026 file is OPM's version 1), S27 (FHFA revises earlier quarters each release), S31 (seasonally adjusted figures are revised each January) and S36 (FEC totals change with amended reports) print only "Retrieved" dates. Each sidecar already holds the vintage; print it, as S33 does with "the September 2026 statement". Owner: Research lead (printed lines), makers A and B.
+
+**S4. S25's title names a wider universe than the files hold.** "Federal agencies had 130,369 fewer civilian employees" reads as the whole federal civilian workforce, but note 3 says the files leave out the Postal Service and intelligence agencies. Write "Agencies that report to the Office of Personnel Management had 130,369 fewer civilian employees". On D3-420: it is right. The 37 drawn are the 37 largest in January 2022, and the August 2026 top 37 swaps the Agency for International Development (229 employees) for the Pension Benefit Guaranty Corporation (724). Selecting on the start date also avoids picking agencies by how they changed. Keep it. Owner: maker B, with the editor's words.
+
+**S5. S19's table turns one of BJS's caveats around.** BJS footnote c reads "Does not include persons held in federal or other state prisons in its sentenced jurisdiction count": Idaho and Missouri leave out their own prisoners held elsewhere. The table prints "Leaves out people it holds for other states or the federal system". Write "Leaves out its own prisoners held in federal or other states’ prisons". Owner: maker A.
+
+**S6. Two V7 notes claim a check date one claim lacks.** S39 note 2 reads "The atlas checked every claim on October 15, 2026". All 11 claims drawn carry that date, but claim CL1723 (pathway PW15) carries none, so "every claim" overstates. Write "The atlas checked each of these 11 claims on October 15, 2026". S21's measure line, "433 claims in all, checked through October 15, 2026", should say 432 carry that date and one carries none, or drop "checked". Owner: maker A.
+
+**S7. S37 is labeled an estimate but does not print its method.** Rule 13.1 asks an estimate for "its range or method". Note 2 says only "a four-step scale". V7 defines each step (`routes.feasibility_scale`), and a reader cannot tell "low" from "very low" without them: low means "The route exists, but it needs a coalition that does not exist now"; very low means "It needs a supermajority, a constitutional change or a reversal of court doctrine." Quote the four definitions in a note. Every count in the title and notes is right (36 of 38, 24 of 29, 14 of 15, 13 of 126). Owner: maker A.
+
+**S8. The entries' "use instead" lines send a newcomer in circles in three places.**
+- 14.19 Dumbbell sends "Many items at two points in time" to 14.20 Slope chart, whose own entry sends "More than about ten lines" back to 14.19. Give one threshold: slope for about ten items or fewer whose order changes, dumbbell beyond.
+- 14.133 Plain table sends "a dozen or more rows" to 14.15 Ranked bar, whose entry says "a dozen or fewer". Point it to 14.21 Lollipop or 14.126 Ranked register.
+- 14.37 Line with a data gap sends "No month is missing, and the latest months are preliminary" to 14.32 Columns with a moving average, which 14.32 itself reserves for noisy counts. Point it to 14.29, with the preliminary months marked as Rule 14.11 sets.
+- Smaller: 14.134 One sentence sends two figures that differ in size to 14.15 Ranked bar, a form for up to a dozen long-named categories.
+Owner: Editor, with makers A and B.
+
+**S9. Rule 14.10 lists three reasons for a window, and four specimens give a fourth.** The rule allows "the first year a series exists, the first year a method holds, or the span the question names". S17 ("the ten Congresses before the one now sitting"), S20 ("the latest year and the year ten years before"), S26 ("the 38 Congresses of the last 75 years") and S33 ("ten fiscal years before the latest") use a round span back from the latest figure. The data lead accepted that reason for S20, so add it to the rule: "or a round span back from the latest figure, when no earlier start has a reason of its own". Owner: Editor.
+
+**S10. Two places state a rule two ways.** The group line for 14.74, "Uncertainty and estimates: how sure is it?", uses "estimates" for survey ranges, while Rule 13.1 and the data lead's ruling 1 keep Estimate for a modeled figure. The family name is the approved coverage plan's, so let the group line separate the two: "a survey's margin of error for a finding, or a model's range for an estimate (Rule 13.1)". S34's note 1, "Until 1975, ending debate took two-thirds of senators voting", skips 1949 to 1959, when it took two-thirds of the whole Senate. Owner: Editor; maker B for S34.
+
+**S11. Two source lines are retyped or credit the wrong record.** S20's line merges its two sidecars ("Retrieved November 11 and 12, 2026") and matches neither word for word, which Rule 13.6's builders line asks to avoid; add it as a variant to the sidecar so the check compares it. S41 and S42 print the survey's "plus or minus 1.9 points" inside a line that credits the atlas's record, but the margin came from the Program for Public Consultation's own page, which the sidecar cites, not from V7; name the Program's page and the date it was read. Owner: Research lead.
+
+**S12. Round 3's data plan: two sign-off changes did not fully land.** Change 12 asks the decision tree to branch on whether a ban reaches city elections, but `ballotpedia-rcv-prohibitions-by-state.csv` holds only `scope` (all or some), which codes Tennessee "some" like Ohio; a tree drawn from that column sends a Tennessee city down Ohio's branch. Add a field such as `reaches_city_elections`. The plan's notes for row 113 still say "the four maps are 2009, 2014, 2019 and July 1, 2026", against change 10's 2010, 2015, 2020 and 2026 in its own table. Change 11's question on V7 I062's "more than 25 million" is written as a request in the research notes and is not yet in the open questions ledger, which is the main session's to add. Owner: Research lead; the main session for the ledger.
+
+**S13. S20's title is hard to say aloud.** "Householders under 35 owned their homes at 37.0 percent in 2025" reads as if the homes were owned at a rate. Write "The homeownership rate for householders under 35 stood at 37.0 percent in 2025, up 2.0 points from 2015 and still the lowest of five age groups." Owner: Editor.
 
 ## 4. Questions for Dustin
 
-Pending.
+None. Every fix above sits inside the approved phase.
 
-## 5. Tested
+## 5. On D3-420 and D3-421
 
-Pending.
+- **D3-420 (S25's title):** sound; keep it. See S4.
+- **D3-421 (S34's title):** keeping a count to date out of the title is sound, and I would not reopen the title. Its stated reason, that note 3 gives the figure with its date, does not hold today, and the figure itself needs checking (M3). Once note 3 is corrected and dated, the decision stands. If the 119th Congress passes 298 votes before the guide ships, the title should take the 119th's final count at the Phase 5 refresh.
 
-## 6. Not tested
+## 6. Tested
 
-Pending.
+- Built all 26 new specs with the kit into scratch (`oa-chart.mjs build s17 ... s42 --widths 1440 --grounds newsprint --no-png --out <scratch>/kit-out`): 26 pass, 0 faults; the drawn rows came from the CSV exports.
+- Rebuilt by script the plotted values of 20 of S17 to S42 (12 of maker A’s, 8 of maker B’s), every V7 one included:
+  - From `work/extract/atlas-v7-data.json`: S21 (16 pathway totals and grade counts), S23 (20 hub and grade shares), S37 (126 route entries, feasibility and check dates), S38 (17 issue records), S39 (11 claims, every field), S41 and S42 (86, 87 and 88 percent, 2,625, May 19 to 30, 2023). All match.
+  - From the publishers today: S17 (Congress.gov law counts, 109th to 119th), S18 (ACS B19082, all six shares and margins), S22 (ACS B23001, all 26 rows with margins), S36 (FEC totals, top 25 in order and the 9,688 count), S40 (Congress.gov, all eight bills' latest actions), S26 (House history page, 38 Congresses; Clerk's home page, 218, 214, 1 and 2), S27 (FHFA, 7,242 index values), S28 and S29 (CBP, 26 years each), S31 (FRED UNRATE, whole history), S33 (Treasury MTS Table 9, fiscal 2016, 2025 and 2026, all ten series). All match. S24 (BFS) differs after today's revision (M1). S34's 119th row differs from the Senate's vote lists (M3); the 116th and 118th match.
+- Checked every number in the titles, measure lines, notes, chart notes and alt text of all 26 specs against the frozen data by script. Apart from M1 to M3, all hold, including S22's gap margins (my own calculation with the Census Bureau's proportion formula), S20's change margins, S30's amounts and laws, S32's computed dates (18 and 30 months from February 3, 2026), S34's 49 votes in 27 Congresses before 1971, S35's invented budget and S36's $3.1 billion.
+- Compared each spec's source line with its sidecar's printed line and variants by script: 25 match their sidecar; S20 merges two (S11).
+- DR-64 and chapter 14's drawing rules on every new specimen: national rows (S19, S24; missing on S27), margins (S18, S20, S22, S41; missing on S31), windows and their reasons, no split at an inauguration, no red and blue (S26 draws one ink), bars from zero (column and grouped-bar code), circles by area (bubble-timeline code takes the square root), indexed bases named (S27, S33), step dates (S30).
+- Each title's evidence kind and verb against Rules 13.1 and 13.2 and H08, and Rule 13.3's glosses in S23, S38 and S39 (word for word) and their tables' display words.
+- Round 3's data plan: recounted Rule 01.9 by script for chapter 14 as a whole, rounds 0 to 4 with row 113 as planned and the editor's 13 rule plates from the generator's log: 108 examples; elections and taxes 17 each against a limit of 27; New York 4 against a limit of 21. Without the plates the count is 95, as the plan says. My count files S38 under news and records, as its spec does, where the plan counts it atlas-wide; the limits hold either way.
+- Checked the data lead's twelve sign-off changes against the frozen files: changes 1 to 9 and 11 landed (the region matrix holds 44 filled cells, 118 connections and seven with no sign; the funnel nests, 76,734,167 due = 71,882,535 decided + 4,851,632 pending; the courts file holds 94 district courts); change 10 waits for row 113; change 12 landed in part (S12).
+- Spot-checked five frozen round 3 tables against their publishers today, row 113 left out: `census-acs-broadband-by-state` (52 rows), `census-acs5-county-median-household-income` (3,144 counties; one blank where the Bureau publishes no median), `census-cbp-county-employment` (3,142 counties), `congress-hr5371-roll-calls-by-member` (100 senators and 433 representatives, vote by vote) and `fec-jfc-transfers-2024` (57 recipients). All match.
+- Read the 41 round 1 entries' "use it when" and "use instead" lines as a newcomer would, and Rules 14.1 to 14.14, chapter 14's introduction and group lines, and chapter 15's twelve rules.
+- Checked chapter 15's counted claims against V7 by script: the sign parity of all 20 numbered loops (none breaks it), closures 18, 2 and 3, the seven authority connections (all documented, none in a loop), Loop R1's grade (plausible) and the connection types.
+- Recomputed Rule 14.9's plates: five states past the margin and five within; Michigan over Pennsylvania (2.6 against 3.7) and New York over Texas (1.3 against 3.47) sit inside it, as the failure caption says.
+- Read the built page's text for the heads of S23, S26, S34 and S38 at 1440 px in Chromium, on a copy of the build.
+
+## 7. Not tested
+
+- OPM's employment files for S25 and BJS's tables for S19 were not fetched again; S20's HVS tables, S30's and S32's statute texts and S39's sources were not reread. Their values were checked against the frozen files only.
+- The Senate's cloture counts page refused this container (403); M3 rests on the Senate's roll call vote lists instead.
+- The Program for Public Consultation's page reset the connection, so S41's margin and its missing confidence level were not confirmed. bls.gov was not tried (it refuses automated readers), so S1's 0.2 point figure is not confirmed.
+- The House's opening-day count in M2 comes from the record as I know it, not from a page fetched today.
+- No visual review: no captures looked at, no 390 px, no Charcoal, no grayscale, no print. Chapter 15's drawings were not looked at.
+- Of the editor's rule plates, only 14.1 and 14.9 were checked by number; the other eleven were not.
+- The selection guidance was read by me as a newcomer would, not tested with a real newcomer.
+- Row 113 was left out of the spot checks, as instructed, while the research lead freezes it.
+
+## Change log
+
+- Created: `work/handoffs/phase-3/20261112_Round-1-Red-Team-Statistics-Civic.md` (this report).
+- Modified: nothing else in the repository. Scripts, downloads and kit outputs are in the scratch folder named above.
