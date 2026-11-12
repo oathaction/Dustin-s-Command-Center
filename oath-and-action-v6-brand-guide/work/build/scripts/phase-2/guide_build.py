@@ -3276,6 +3276,9 @@ def build(args):
     # board 1 apply (item 3): chapter 14's share per plate, printed with every build that carries the chart kit
     if projection.get("chapter_14_per_plate"):
         R.note(projection["chapter_14_per_plate"]["line"])
+    for cid, v in sorted((projection.get("far_over_approved") or {}).items()):
+        R.note(f"chart {cid} weighs {v['bytes']:,} bytes, over three times its tier's average of {v['tier_average']:,}; approved on board 1 "
+               f"at up to {v['board_1_bytes']:,} bytes, so listed here and not failed")
     weights["charts"] = charts
     weights["chart_method"] = (getattr(args, "chart_method", None) or guide_charts.DEFAULT_METHOD) if charts else None
     out_path.parent.mkdir(parents=True, exist_ok=True)

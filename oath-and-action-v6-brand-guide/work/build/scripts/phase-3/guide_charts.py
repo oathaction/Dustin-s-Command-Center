@@ -55,6 +55,10 @@ ALLOCATION = {"13": 0.25 * MB, "14": CHAPTER_14_STOP, "15": 0.60 * MB,
 # A chapter 14 specimen's average by tier (proposal section 3: words, table equivalent and data); "far over" is three times it
 TIER_AVERAGE = {"core": 8 * 1024, "extended": 8 * 1024, "reference": 4 * 1024, "avoid": 2 * 1024}
 FAR_OVER = 3.0
+# Round 0's specimens Dustin approved on board 1 at their measured bytes (DR-237's board, D3-190's projection, which set
+# chapter 14's stop with them in it): the far-over test lists them by name with their bytes instead of failing them, up to
+# the bytes board 1 measured (the pilot with JSON islands); every other specimen keeps the test
+BOARD_1_APPROVED = {"s-14-s05": 31_961, "s-14-s13": 47_212}
 # The per-plate share (item 3 of the board 1 apply brief). Chapter 14 holds 97 finished specimens (the proposal's core and
 # extended forms, section 3), and its renderer grows to one module per form at today's average. The parts of the chapter
 # that are not plates keep the proposal's allocation, as the pilot projects them (chart_pilot.py), until a round builds and
@@ -173,11 +177,14 @@ def gates(weights, charts, fonts_file_bytes, present, warn):
         if abs(fp - want) > want * FONT_TOLERANCE + 4096:
             warn("page weight", f"the fonts part weighs {fp:,} bytes; the font manifest's files come to {want:,.0f} as embedded data")
     # each chapter 14 specimen against its tier's average
+    approved = {}
     for cid, r in sorted(charts.items()):
         if not cid.startswith("s-14-"):
             continue
         avg = TIER_AVERAGE.get(r.get("tier") or "core", TIER_AVERAGE["core"])
-        if r["bytes"] > FAR_OVER * avg:
+        if r["bytes"] > FAR_OVER * avg and cid in BOARD_1_APPROVED and r["bytes"] <= BOARD_1_APPROVED[cid]:
+            approved[cid] = {"bytes": r["bytes"], "board_1_bytes": BOARD_1_APPROVED[cid], "tier_average": avg}
+        elif r["bytes"] > FAR_OVER * avg:
             warn(f"chart {cid}", f"weighs {r['bytes']:,} bytes, far over its tier's average of {avg:,} ({FAR_OVER:g} times is {FAR_OVER * avg:,.0f}); "
                                  "trim the table equivalent or the island, or move rows to a download")
     # the projection: today's bytes plus every unbuilt chapter's allocation
@@ -194,7 +201,8 @@ def gates(weights, charts, fonts_file_bytes, present, warn):
     proj = weights["bytes"] + sum(unbuilt.values()) - (kit if not built14 and kit else 0) + sum(held.values())
     rec = {"page_bytes": weights["bytes"], "unbuilt": {n: round(a) for n, a in sorted(unbuilt.items())},
            "held_to_allocation": {n: round(v) for n, v in sorted(held.items())},
-           "projected_bytes": round(proj), "budget": PAGE_BUDGET, "chapter_14_with_kit": c14, "chart_kit": kit}
+           "projected_bytes": round(proj), "budget": PAGE_BUDGET, "chapter_14_with_kit": c14, "chart_kit": kit,
+           "far_over_approved": approved}
     share = per_plate(ch.get("14", 0), kit, charts, KIT_SIZES)
     if share:
         rec["chapter_14_per_plate"] = share
@@ -289,6 +297,15 @@ def self_test():
     bad += not ok
     ok = kit_bytes('<style data-oa-chart-kit>abc</style><script data-oa-chart-kit>de</script>') == len('<style data-oa-chart-kit>abc</style>') + len('<script data-oa-chart-kit>de</script>')
     print(f"{'pass' if ok else 'FAIL'} the chart kit weighs as its own part")
+    bad += not ok
+    # board 1's approved specimens are listed, not failed, up to the bytes board 1 measured; a new one over keeps failing
+    _, rec, got = run(base, {"s-14-s05": {"tier": "core", "bytes": 30_524}, "s-14-s99": {"tier": "core", "bytes": 30_524}}, 300_000, set())
+    ok = "s-14-s05" in rec["far_over_approved"] and not any("s-14-s05" in g for g in got) and any("s-14-s99" in g for g in got)
+    print(f"{'pass' if ok else 'FAIL'} S05, approved on board 1, is listed with its bytes; a new specimen as heavy fails")
+    bad += not ok
+    _, rec, got = run(base, {"s-14-s13": {"tier": "core", "bytes": 47_213}}, 300_000, set())
+    ok = any("s-14-s13" in g for g in got) and not rec["far_over_approved"]
+    print(f"{'pass' if ok else 'FAIL'} S13 one byte over its board 1 weight fails again")
     bad += not ok
     # a chapter still being built counts at its allocation in the projection, and at its bytes once past it
     w = json.loads(json.dumps(base)); w["chapters"]["15"] = {"bytes": 200_000}

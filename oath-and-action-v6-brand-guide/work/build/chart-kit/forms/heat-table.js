@@ -4,7 +4,8 @@
  * phone each row becomes its name with a run of tinted chips, one per filled cell, naming the column and the word.
  * encode: row (category: the row's key), row_label (text), group (category, optional), column (category), value
  * (category: the step), flag (optional: a column whose non-empty value marks the cell). Column heads alternate between
- * two levels with a hairline to their column; where a cell's word cannot fit its column, the rows become chips.
+ * two levels with a hairline to their column. Row names sit in a column at the left where each cell's word fits on one
+ * line; above each row, with words on up to two lines, where only the longest single word fits; else the rows become chips.
  * labels: columns ([{value, label}]: the columns in order, with their heads), steps ([{value, label}]: the scale from the
  * lowest step to the highest, each with its printed word), flag_key (the key's words for the dot), key_title. */
 (function (K) {
@@ -46,9 +47,17 @@
       } else y += 8;
       var pad = 6, ch = Math.round(tick * 1.25) + 2 * pad - 2;
       // the grid needs each cell's word to fit its column; where it does not, the rows become chips, as on a phone
-      var nw = Math.floor(W * 0.28), cw = (W - nw) / Math.max(1, cols.length), wmax = 0;
-      steps.forEach(function (s2) { wmax = Math.max(wmax, c.measure(s2.label, 'tick', 600)); });
-      var chips = c.phone || cw < wmax + 10;
+      // three arrangements: names in a column at the left where every word fits its cell on one line; names above each
+      // row, cells across the full width and words on up to two lines, where the longest single word fits; else chips
+      var n = Math.max(1, cols.length), wmax = 0, wword = 0;
+      steps.forEach(function (s2) {
+        wmax = Math.max(wmax, c.measure(s2.label, 'tick', 600));
+        String(s2.label).split(' ').forEach(function (wd) { wword = Math.max(wword, c.measure(wd, 'tick', 600)); });
+      });
+      var left = !c.phone && (W - Math.floor(W * 0.28)) / n >= wmax + 10;
+      var above = !c.phone && !left && W / n >= wword + 8;
+      var chips = !left && !above;
+      var nw = left ? Math.floor(W * 0.28) : 0, cw = (W - nw) / n;
       if (chips) {
         // a row's name, then its chips
         var lastg = null;
@@ -102,16 +111,25 @@
           c.line(0, y, W, y, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
           lastg2 = R.group;
         }
-        var lines = c.wrap(String(R.label), 'tick', nw - 12, 400);
-        var h = Math.max(rh, lines.length * Math.round(tick * 1.3) + 8);
-        c.text(0, y + (h - (lines.length - 1) * Math.round(tick * 1.3)) / 2 + tick * 0.35, String(R.label), { role: 'tick', max: nw - 12, fill: 'label' });
+        var h, lh3 = Math.round(tick * 1.3);
+        if (left) {
+          var lines = c.wrap(String(R.label), 'tick', nw - 12, 400);
+          h = Math.max(rh, lines.length * lh3 + 8);
+          c.text(0, y + (h - (lines.length - 1) * lh3) / 2 + tick * 0.35, String(R.label), { role: 'tick', max: nw - 12, fill: 'label' });
+        } else {
+          var nb3 = c.text(0, y + 6 + tick, String(R.label), { role: 'tick', weight: 600, max: W, fill: 'label' });
+          y = nb3.bottom + 4;
+          var two = cols.some(function (col) { var r = R.cells[String(col.value)]; return r && c.wrap(word(r[ev]), 'tick', cw - 6, 600).length > 1; });
+          h = (two ? 2 : 1) * lh3 + 10;
+        }
         cols.forEach(function (col, i) {
           var r = R.cells[String(col.value)];
           if (!r) return;
           var f = tint(r[ev]), x = nw + cw * i + 1, top = y + 2;
           c.rect(x, top, cw - 2, h - 4, { fill: f, data: { key: k + '|' + col.value, field: ev, value: r[ev] } });
-          c.text(x + (cw - 2) / 2, top + (h - 4) / 2 + tick * 0.35, word(r[ev]), { role: 'tick', weight: 600, anchor: 'middle', fill: DARK[f] ? 'label-on-subject' : 'label' });
-          if (ef && r[ef]) c.circle(x + cw - 8, top + 5, 2.5, { fill: DARK[f] ? 'surface' : 'subject', mark: false });
+          var wl = c.wrap(word(r[ev]), 'tick', cw - 6, 600).length;
+          c.text(x + (cw - 2) / 2, top + (h - 4) / 2 + tick * 0.35 - (wl - 1) * lh3 / 2, word(r[ev]), { role: 'tick', weight: 600, anchor: 'middle', max: cw - 6, leading: lh3, fill: DARK[f] ? 'label-on-subject' : 'label' });
+          if (ef && r[ef]) c.circle(x + cw - 6, top + 3.5, 2, { fill: DARK[f] ? 'surface' : 'subject', mark: false });   // in the corner, above the word
         });
         y += h;
         c.line(0, y, W, y, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });

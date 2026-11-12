@@ -72,11 +72,11 @@
           var at = K.time(a.at.x), here = mine.filter(function (r) { return K.time(r[ex]) === at; }), there = (by[String(a.to_series)] || []).filter(function (r) { return K.time(r[ex]) === at; });
           if (!here.length || !there.length) { c.warn('annotation: no ' + (here.length ? a.to_series : pnl.value) + ' value at ' + a.at.x); return; }
           var y1 = ys(here[here.length - 1][ey]), y2 = ys(there[there.length - 1][ey]), left = a.place !== 'right';
-          // the words stay inside the panel and clear the panel's other bracket words: the unit drops, then the bracket changes
-          // side, then the words move along the bracket, in that order
+          // the words stay inside the panel and clear the panel's other bracket words: the bracket changes side, then the unit
+          // drops, and at each step the words may move along the bracket
           var full = String(a.text || '') + (a.unit ? ' ' + a.unit : ''), bare = String(a.text || ''), x0 = xs(at), th = c.size('tick');
           var lo = Math.min(y1, y2), hi = Math.max(y1, y2), pick = null;
-          [[full, left], [bare, left], [full, !left], [bare, !left]].some(function (cand) {
+          [[full, left], [full, !left], [bare, left], [bare, !left]].some(function (cand) {
             return [(y1 + y2) / 2, lo + th * 0.6, hi - th * 0.2, lo - 2, hi + th].some(function (ty) {
               var tw = c.measure(cand[0], 'tick'), tx = cand[1] ? x0 - 9 - tw : x0 + 9, box = { x: tx, y: ty - th, w: tw, h: th * 1.25 };
               if (tx < px || tx + tw > px + pw) return false;

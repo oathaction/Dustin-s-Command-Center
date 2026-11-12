@@ -35,7 +35,7 @@
     "18.16",
     "14.13"
   ],
-  "builders": "Form filterable-lookup-table: node work/build/chart-kit/oa-chart.mjs build s38, or copy specs/s38.json and point it at a new dataset; the spec's lookup key names the searched columns and the filters, and labels.still the filter the still image shows.",
+  "builders": "Form filterable-lookup-table: node work/build/chart-kit/oa-chart.mjs build s38, or copy specs/s38.json and point it at a new dataset; the spec’s lookup key names the searched columns and the filters, and labels.still the filter the still image shows.",
   "correct": null,
   "failure": null
 }

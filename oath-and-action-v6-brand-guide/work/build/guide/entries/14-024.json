@@ -11,7 +11,7 @@
       "rule": "14.18"
     },
     {
-      "when": "The reader compares each group's mix of measures, panel by panel",
+      "when": "The reader compares each group’s mix of measures, panel by panel",
       "rule": "14.23"
     },
     {
@@ -21,7 +21,7 @@
   ],
   "why": {
     "text": [
-      "A radar chart draws values as a shape, and a shape's area grows with the square of its values, so a group a little ahead on every spoke looks far bigger. Moving one spoke to another place changes every shape on the chart with no change in the data, and overlapping outlines hide each other."
+      "A radar chart draws values as a shape, and a shape’s area grows with the square of its values, so a group a little ahead on every spoke looks far bigger. Moving one spoke to another place changes every shape on the chart with no change in the data, and overlapping outlines hide each other."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
   },

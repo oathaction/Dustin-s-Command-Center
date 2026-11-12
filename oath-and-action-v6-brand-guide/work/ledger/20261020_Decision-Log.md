@@ -4084,3 +4084,12 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 |---|---|---|
 | D3-351 | The 2013 and 2017 cloture changes rest on the Senate's vote records and the 2013 Congressional Record | They are the chamber's own record of each precedent and the vote that applied it; the senate.gov overview page names only the 1917 and 1975 rules |
 | D3-352 | The issues table carries a source line variant for every domain, not only S38's | Any later one-domain table then names the rows it draws with no new request |
+
+### Maker A, round 1, later calls
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-353 | S40's form sets each bill's six steps from the record (hearing recorded, committee vote or a committee's own measure, the two chamber dates, the law date), and a step passed with nothing recorded takes Rule 11.2's slash | The research lead's facts (A6); a step number typed by hand could drift from the record, and note 1 says the slash on step 2 means no hearing is recorded on the bill |
+| D3-354 | S20's title claims the under-35 rise, 2.0 points past its margin of about 0.8, and note 1 prints the margins of each change | Request A2's margins file (HVS Table B-5); DR-64 and Rule 14.9; the data lead allowed the claim once the margin passed |
+| D3-355 | The heat table gains a middle arrangement: each reform's name above its row and the 11 cells across the full width, words on up to two lines, used where the names column leaves too little room; chips only below that | In the guide the chart column is 723 px at 1440, so S37 fell to its phone chips everywhere and no reader saw a grid; the grid now holds at 723 and 656 px |
+| D3-356 | S38 prints the research lead's `domain_d01` source line | DL-R5; the line names the one domain drawn (Rule 13.6) |

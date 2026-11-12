@@ -1173,7 +1173,7 @@
    ],
    "why": {
     "text": [
-     "A radar chart draws values as a shape, and a shape's area grows with the square of its values, so a group a little ahead on every spoke looks far bigger. Moving one spoke to another place changes every shape on the chart with no change in the data, and overlapping outlines hide each other."
+     "A radar chart draws values as a shape, and a shape’s area grows with the square of its values, so a group a little ahead on every spoke looks far bigger. Moving one spoke to another place changes every shape on the chart with no change in the data, and overlapping outlines hide each other."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
@@ -1191,7 +1191,7 @@
      "rule": "14.18"
     },
     {
-     "when": "The reader compares each group's mix of measures, panel by panel",
+     "when": "The reader compares each group’s mix of measures, panel by panel",
      "rule": "14.23"
     },
     {
@@ -2241,7 +2241,7 @@
    "related": [
     "18"
    ],
-   "builders": "Form filterable-lookup-table: node work/build/chart-kit/oa-chart.mjs build s38, or copy specs/s38.json and point it at a new dataset; the spec's lookup key names the searched columns and the filters, and labels.still the filter the still image shows.",
+   "builders": "Form filterable-lookup-table: node work/build/chart-kit/oa-chart.mjs build s38, or copy specs/s38.json and point it at a new dataset; the spec’s lookup key names the searched columns and the filters, and labels.still the filter the still image shows.",
    "related_rules": [
     "18.10",
     "18.15",

@@ -799,9 +799,11 @@
         var cells = t.cols.map(function (cn) {
           var r = t.cell[k + '\u0000' + cn];
           if (r && !first) first = r;
-          if (!r) return '<td data-x></td>';
-          var h = esc(K.fmt(r[pv.value], pv.format));
-          return '<td' + dv(r[pv.value], h, vcol) + '>' + h + '</td>';
+          // A8 (round 1): a pivot cell with no row is a bare <td></td>; a row whose value prints as nothing carries data-n,
+          // the rarer case, so the reader tells the two apart (pages written with data-x on empty cells still read)
+          if (!r) return '<td></td>';
+          var h = esc(K.fmt(r[pv.value], pv.format)), d = dv(r[pv.value], h, vcol);
+          return '<td' + d + (h === '' && !d ? ' data-n' : '') + '>' + h + '</td>';
         }).join('');
         var head_txt = first ? K.fmt(first[rows_by[0]], rc.format) : k;
         if (first && rows_by.length > 1) rows_by.slice(1).forEach(function (k2) { var w2 = (pv.row_words || {})[String(first[k2])]; if (w2) head_txt += ', ' + w2; });
@@ -955,7 +957,7 @@
         if (rows_by.length > 1) keyv = JSON.parse(th.getAttribute('data-v'));
         else keyv = [cell_raw(th, { field: rows_by[0], format: rc.format })];
         Array.prototype.forEach.call(tr.querySelectorAll('td'), function (td, j) {
-          if (td.hasAttribute('data-x')) return;
+          if (td.hasAttribute('data-x') || (td.textContent === '' && !td.hasAttribute('data-v') && !td.hasAttribute('data-n'))) return;
           var o = {};
           rows_by.forEach(function (k, i) { o[k] = keyv[i] === null ? null : String(keyv[i]); });
           o[pv.column] = heads[j];

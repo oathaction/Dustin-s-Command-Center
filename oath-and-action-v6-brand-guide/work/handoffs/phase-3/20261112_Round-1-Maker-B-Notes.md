@@ -26,6 +26,8 @@ All of maker B's rows in the plan file are done: twelve new specimens (S24 to S3
 
 ## Routine calls
 
+- D3-xxx | S13's federal peak figure is written into its label, so the island drops `employees_thousands` for all 1,026 rows; every export and capture is byte for byte the same | The strict build flags S13 far over a core plate; the plate falls from 37,471 to 33,423 bytes by the kit's fragment, 33,438 in the strict build. S05 carries no column its drawing and table do not use; its island's second dataset (gap margins, about 400 bytes) is the kit's to drop (R-B11)
+- D3-xxx | S34 changes form on a phone (`phone: differs`): the 27 Congresses before 1971 are summed in a sentence and each later Congress takes a row with its circle and count; the title names the 119th Congress's 294 votes so far | The data lead's DL-B12 (the circles merge at 358 px) and DL-B11; DR-64 and Rule 14.12 allow a phone form with the same data and finding
 - D3-xxx | S24 reads `census-bfs-business-applications-change-by-state`, the research lead's derived file from the planned dataset (R-B4), in place of the two-year rows | Same publisher, period and printed line; the table can now print each state's change, which the chart draws
 - D3-xxx | S24 adds no note on where an application is counted | The Census Bureau's Business Formation Statistics methodology and definitions pages, read November 12, 2026, do not say how an application is assigned to a state (data lead DL-B1)
 - D3-xxx | S25's table drops its "In the chart" column | The plate measured 26,172 bytes by the kit's load-table fragment, over three times the core average; note 2 states the size rule the column repeated, and the plate now measures 23,365
@@ -50,6 +52,7 @@ All of maker B's rows in the plan file are done: twelve new specimens (S24 to S3
 
 ## Requests
 
+- R-B11, to the engineer: `extra_island` carries every column of a spec's second dataset even when the form never reads `c.extra` (S05's gap-margin file, about 400 bytes compressed); carry it only for forms that read it. S05's table, 25,500 of its 30,509 bytes, could shrink by the pivot its notes describe once `checks.js` accepts a list for `pivot.row` (E14); that would change the table's layout, so it waits on the main session
 Open: the engineer's R-B2, R-B3 and R-B7. Done: R-B6 (engineer); R-B1, R-B4, R-B5, R-B8, R-B10 and the data lead's DL-R1 and DL-R3 (research lead), taken into the specs: S31 prints the `unemployment_rate_only` line, S33 the `fiscal_2016_to_2026` line, S24 reads the derived change file and its table prints each state's change, S25's table and labels read the readable `agency` column (plate 23,329 bytes), and S28 and S29 trace their 1998 start to the sidecars' `breaks_in_series`. R-B10 needs no spec change.
 
 - R-B10, to the research lead (for your information, as the brief asks): `work/build/data/illustrative-benefit-cliff.csv` and `.meta.json` are written, `kind: illustrative`, an invented parent with two children in Alder County, earnings $0 to $60,000 in $1,000 steps, every rule stated in the sidecar's qualification; `ledger_row` reads "none: invented data". Add a Part 7 row if the ledger lists invented files
@@ -76,6 +79,9 @@ Open: the engineer's R-B2, R-B3 and R-B7. Done: R-B6 (engineer); R-B1, R-B4, R-B
 - Census BFS methodology and definitions pages fetched (200) for DL-B1; neither says how an application is assigned to a state.
 
 - After the research lead's sidecar changes: `oa-chart.mjs build` S24, S25, S28, S29, S31 and S33, PASS with 0 faults at every width on both grounds; `dataviz_check.js --kit` on S24, S25, S31 and S33, PASS.
+
+- S05 and S13 islands decoded and sized by script; S13 rebuilt after the trim: every SVG, PNG and CSV export and capture compared with `cmp` against the build before it, all identical; `dataviz_check.js --kit` PASS. `phase3_ch14_build.py` ran (two faults, maker A's missing S23 and S40) and `guide_build.py --strict` wrote a scratch guide (10,019,732 bytes) whose only chart warnings are S05 and S13.
+- S34 after DL-B11 and DL-B12: build PASS at every width on both grounds, `dataviz_check.js --kit` PASS; the phone capture looked at on both grounds. Checked by script: 27 Congresses before 1971 held 49 votes, at most seven.
 
 ## Not tested
 
