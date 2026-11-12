@@ -14,7 +14,7 @@
  "unit": "dates",
  "date_retrieved": "2026-11-11",
  "vintage": "Public law text on govinfo.gov as read on November 11, 2026",
- "qualification": "Dates tied to \"plan years beginning on or after\" a date reach each plan only when its next plan year starts. Two dates are computed by the studio from the law's \"18 months\" and \"30 months after the date of enactment\" (February 3, 2026); they agree with V7's status text for issue I084 (checked October 15, 2026). The headings are the law's own; the effect lines are the studio's plain summaries of each section's opening rule, and the law has more requirements than each line names",
+ "qualification": "Dates tied to \"plan years beginning on or after\" a date reach each plan only when its next plan year starts. Two dates are computed by Oath & Action from the law's \"18 months\" and \"30 months after the date of enactment\" (February 3, 2026); they agree with V7's status text for issue I084 (checked October 15, 2026). The headings are the law's own; the effect lines are the studio's plain summaries of each section's opening rule, and the law has more requirements than each line names",
  "columns": {
   "date": {
    "type": "date",
@@ -38,7 +38,7 @@
   },
   "date_basis": {
    "type": "text",
-   "description": "how the law sets the date"
+   "description": "how the law sets the date; where Oath & Action computed a date from the law’s text, the cell says so (the wording is the studio’s, not the publisher’s)"
   }
  },
  "printed_source_line": "Source: U.S. Government Publishing Office, Public Law 119-75, Consolidated Appropriations Act, 2026, sections 6223, 6224, 6701 and 6702, February 3, 2026 to January 1, 2029, United States. Retrieved November 11, 2026. Two dates computed from “months after enactment”; plan-year dates apply as each plan year begins.",

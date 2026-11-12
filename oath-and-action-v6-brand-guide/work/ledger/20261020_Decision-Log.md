@@ -4266,3 +4266,9 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | # | Decision | Reason |
 |---|---|---|
 | D3-454 | S32's table prints "date computed by Oath & Action from the law’s text" where the data file's `date_basis` says "computed by the studio" (three rows), through the column's `words` | The guide check fails "the studio" in reader text; the data file is the research lead's, so R-B13 now also asks it to reword the three cells |
+
+### Research lead, round 1 fix pass 5
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-455 | The studio's own wording in a data file names Oath & Action, as reader text does | The cell reaches readers in the chart's CSV export; publisher cells stay as published |

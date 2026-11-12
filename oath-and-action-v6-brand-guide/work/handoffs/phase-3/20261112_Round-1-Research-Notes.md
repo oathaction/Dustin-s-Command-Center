@@ -146,3 +146,15 @@ From maker B's R-B13. The data check reads 91 tables with 0 faults.
 
 Tested: the scan of all 91 sidecars' printed lines and variants for straight quotes (none left); the two changed lines read; the data check.
 Not tested: S32 rebuilt with the new line (maker B's step).
+
+## Fix pass 5
+
+From the coordinator: the studio's own wording in `govinfo-pl-119-75-effective-dates.csv`. The data check reads 91 tables with 0 faults.
+
+- The three `date_basis` cells that ended "computed by the studio" now end "computed by Oath & Action from the law’s text" (curly apostrophe); no other cell changed (git shows three lines changed). The sidecar's `date_basis` description says the column's wording is the studio's, and its qualification now says "computed by Oath & Action". Script: `.../round-1/research/scripts/fix_pass5_date_basis.py`.
+- For maker B: S32's `words` map keys on the old cell text, so it no longer matches. Re-key it to "Not later than 18 months after enactment, computed by Oath & Action from the law’s text" and "Plan years beginning on or after 30 months after enactment, computed by Oath & Action from the law’s text", or drop those two entries, since the cells now carry reader wording.
+
+- D3-xxx | The studio's own wording in a data file names Oath & Action, as reader text does | The cell reaches readers in the chart's CSV export; publisher cells stay as published
+
+Tested: the data check; the diff (three cells in one column).
+Not tested: S32 rebuilt (maker B's step).
