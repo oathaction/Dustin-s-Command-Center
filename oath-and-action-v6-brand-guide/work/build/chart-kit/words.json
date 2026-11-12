@@ -1,11 +1,11 @@
 {
  "about": "The few words the chart kit's figure prints that are the same on every chart. A spec's \"words\" object may override any of them. The editor owns their wording; the engineer keeps the keys.",
  "source_label": "Source:",
- "table_summary": "Show the table and notes",
+ "table_summary": "The table and notes",
  "notes_in_chart": "Notes in the chart",
  "table_region": "{caption}, table",
  "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.",
  "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.",
- "scripts_off": "The drawing needs scripts to appear. Its figures are in the table below.",
- "export_fonts": "Set in Inter and Inter Tight. Without both fonts installed, the labels set in another font and change width."
+ "scripts_off": "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below.",
+ "export_fonts": "Set in Inter and Inter Tight. On a computer without both fonts, the labels fall back to another font and change width."
 }

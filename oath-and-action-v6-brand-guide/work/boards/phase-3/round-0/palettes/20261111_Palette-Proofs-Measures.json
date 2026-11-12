@@ -3061,5 +3061,80 @@
     "Information"
    ]
   }
+ },
+ "capture_verification": {
+  "date": "2026-11-11",
+  "tolerance_delta_e_ok": 0.01,
+  "worst": {
+   "normal": {
+    "samples": 255,
+    "largest_delta_e_ok": 0.0,
+    "at": {
+     "section": "sequential",
+     "kind": "fill",
+     "token_hex": "#C1C8C0",
+     "expected": "#C1C8C0",
+     "sampled": "#C1C8C0",
+     "delta_e_ok": 0.0
+    },
+    "all_within_tolerance": true
+   },
+   "grayscale": {
+    "samples": 51,
+    "largest_delta_e_ok": 0.0,
+    "at": {
+     "section": "sequential",
+     "kind": "fill",
+     "token_hex": "#C1C8C0",
+     "expected": "#C6C6C6",
+     "sampled": "#C6C6C6",
+     "delta_e_ok": 0.0,
+     "if_linear_light": "#C6C6C6",
+     "delta_e_linear": 0.0
+    },
+    "all_within_tolerance": true
+   },
+   "protanopia": {
+    "samples": 51,
+    "largest_delta_e_ok": 0.0,
+    "at": {
+     "section": "sequential",
+     "kind": "fill",
+     "token_hex": "#C1C8C0",
+     "expected": "#C9C6C0",
+     "sampled": "#C9C6C0",
+     "delta_e_ok": 0.0
+    },
+    "all_within_tolerance": true
+   },
+   "deuteranopia": {
+    "samples": 51,
+    "largest_delta_e_ok": 0.001,
+    "at": {
+     "section": "sequential",
+     "kind": "fill",
+     "token_hex": "#97ACA4",
+     "expected": "#A7A6A4",
+     "sampled": "#A7A6A5",
+     "delta_e_ok": 0.001
+    },
+    "all_within_tolerance": true
+   },
+   "tritanopia": {
+    "samples": 51,
+    "largest_delta_e_ok": 0.0,
+    "at": {
+     "section": "sequential",
+     "kind": "fill",
+     "token_hex": "#C1C8C0",
+     "expected": "#C1C7C6",
+     "sampled": "#C1C7C6",
+     "delta_e_ok": 0.0
+    },
+    "all_within_tolerance": true
+   }
+  },
+  "samples": 459,
+  "method": "Each probed swatch is sampled in its capture, 15 percent in from its left edge and a quarter down, and compared with the token color (normal), the luma grayscale of CSS filter grayscale(1) (grayscale), or this script's Machado simulation (the three color-vision captures)"
  }
 }

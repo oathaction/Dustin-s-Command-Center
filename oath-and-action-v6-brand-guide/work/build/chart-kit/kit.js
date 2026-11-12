@@ -584,7 +584,7 @@
   K.words = K.words || {};
   // words.json's words, carried inside the kit so a plain page opened from disk prints them too (access S8); the kit's
   // self-test fails when this copy and words.json differ
-  K.WORDS = {"source_label": "Source:", "table_summary": "Show the table and notes", "notes_in_chart": "Notes in the chart", "table_region": "{caption}, table", "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.", "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.", "scripts_off": "The drawing needs scripts to appear. Its figures are in the table below.", "export_fonts": "Set in Inter and Inter Tight. Without both fonts installed, the labels set in another font and change width."};
+  K.WORDS = {"source_label": "Source:", "table_summary": "The table and notes", "notes_in_chart": "Notes in the chart", "table_region": "{caption}, table", "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.", "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.", "scripts_off": "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below.", "export_fonts": "Set in Inter and Inter Tight. On a computer without both fonts, the labels fall back to another font and change width."};
   function word(opts, k) {
     var w = (opts && opts.words) || K.words;
     if (k in w) return w[k];
