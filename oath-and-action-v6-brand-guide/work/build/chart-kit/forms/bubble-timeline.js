@@ -89,15 +89,18 @@
         late.forEach(function (r) { yw = Math.max(yw, c.measure(K.fmt(r[ex], f.x || 'year'), 'tick', 400, true)); });
         var pcx = Math.ceil(yw + 12 + rmax);
         late.forEach(function (r) {
-          var v = r[es] || 0, rad = rs(v), h = Math.max(22, Math.ceil(2 * rad) + 6), pcy = y + h / 2, under = ec && r[ec] === false, big = v === lmax || under;
+          var v = r[es] || 0, rad = rs(v), under = ec && r[ec] === false, big = v === lmax || under;
+          // the count beside the circle wraps under itself where the column is narrow (a no-break space keeps a date whole)
+          var pw = String(under && L.phone_partial ? L.phone_partial : (L.phone_value || '{value}')).replace('{value}', K.fmt(v, f.size || 'integer'));
+          var ptx = pcx + rmax + 10, plh = Math.round(size * 1.25), pl = c.wrap(pw, 'label', W - ptx, big ? 700 : 400);
+          var h = Math.max(22, Math.ceil(2 * rad) + 6, pl.length * plh + 6), pcy = y + h / 2;
           c.text(0, pcy + c.size('tick') * 0.35, K.fmt(r[ex], f.x || 'year'), { role: 'tick', tnum: true });
           if (!v) c.line(pcx - 3, pcy, pcx + 3, pcy, { stroke: 'context', width: c.t('line-hairline'), data: { key: r[ek], field: es, value: 0 } });
           else {
             c.circle(pcx, pcy, rad, { fill: under ? 'surface' : 'band', data: { key: r[ek], field: es, value: v }, area_of: { value: v, max_value: vmax, max_radius: rmax } });
             if (under) ring(pcx, pcy, rad, '3 2'); else c.circle(pcx, pcy, rad, { stroke: 'subject', width: c.t('bubble-outline'), mark: false });
           }
-          var pw = String(under && L.phone_partial ? L.phone_partial : (L.phone_value || '{value}')).replace('{value}', K.fmt(v, f.size || 'integer'));
-          c.text(pcx + rmax + 10, pcy + size * 0.35, pw, { role: 'label', weight: big ? 700 : 400, tnum: true });
+          c.text(ptx, pcy + size * 0.35 - (pl.length - 1) * plh / 2, pw, { role: 'label', weight: big ? 700 : 400, tnum: true, max: W - ptx });
           y += h;
         });
         c.height(y + 4);

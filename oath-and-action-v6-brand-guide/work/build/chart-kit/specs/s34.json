@@ -96,7 +96,7 @@
     "phone_from": 1971,
     "phone_before": "Before {from_x}, {n} Congresses held {sum} votes on ending debate in all, no more than {max} in any one.",
     "phone_value": "{value}",
-    "phone_partial": "{value} through November 10, 2026"
+    "phone_partial": "{value} through November 10, 2026"
   },
   "annotations": [
     {

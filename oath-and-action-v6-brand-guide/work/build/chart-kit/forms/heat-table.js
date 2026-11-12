@@ -145,7 +145,7 @@
           y = nb3.bottom + 4;
           r0 = y;
           var two = cols.some(function (col) { var r = R.cells[String(col.value)]; return r && c.wrap(word(r[ev]), 'tick', cw - 6, 600).length > 1; });
-          h = (two ? 2 : 1) * lh3 + 10;
+          h = (two ? 2 : 1) * lh3 + 14;
         }
         cols.forEach(function (col, i) {
           var r = R.cells[String(col.value)];
@@ -155,14 +155,16 @@
           var wl = c.wrap(word(r[ev]), 'tick', cw - 6, 600).length;
           c.text(x + (cw - 2) / 2, tp + (h - 4) / 2 + tick * 0.35 - (wl - 1) * lh3 / 2, word(r[ev]), { role: 'tick', weight: 600, anchor: 'middle', max: cw - 6, leading: lh3, fill: DARK[f] ? 'label-on-subject' : 'label' });
           if (ef && r[ef]) dot(x + cw - 2 - 6, tp + 4.5);   // in the corner, above the word
+          // where each name crosses the grid, the named column's frame becomes an ink edge on each of its cells
+          if (i === ni && !left) c.rect(x - 0.5, tp - 0.5, cw - 1, h - 3, { stroke: 'label', width: c.t('line-hairline'), mark: false });
         });
         y += h;
         c.line(0, y, W, y, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
-        spans.push([r0, y]);
+        if (left) spans.push([r0, y]);
       });
       if (ni >= 0) {
-        // the frame: a hairline in ink down each side of the named column, broken only where a name or group head
-        // crosses it, with a cap at the top of the heads and at the foot of the grid
+        // the frame: a hairline in ink down each side of the named column, from the top of the heads to the foot of the
+        // grid where the names sit at the left, else around the heads alone (the cells take their own edge above)
         var runs = [];
         spans.forEach(function (s) { var l = runs[runs.length - 1]; if (l && s[0] <= l[1] + 0.5) l[1] = Math.max(l[1], s[1]); else runs.push(s.slice()); });
         var fx0 = nw + cw * ni + 0.5, fx1 = nw + cw * (ni + 1) - 0.5, fw = c.t('line-hairline');
@@ -171,7 +173,7 @@
           c.line(fx1, s[0], fx1, s[1], { stroke: 'label', width: fw, mark: false });
         });
         c.line(fx0, runs[0][0], fx1, runs[0][0], { stroke: 'label', width: fw, mark: false });
-        c.line(fx0, y, fx1, y, { stroke: 'label', width: fw, mark: false });
+        if (left) c.line(fx0, y, fx1, y, { stroke: 'label', width: fw, mark: false });
       }
       c.height(y + 2);
     }

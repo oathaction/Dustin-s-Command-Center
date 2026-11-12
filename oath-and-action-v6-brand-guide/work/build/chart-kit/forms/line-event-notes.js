@@ -1,7 +1,8 @@
 /* Line with event notes (coverage plan 3.3, core; S02). One subject series in Charcoal, others in Stone, each labeled on the
  * line; a break in the series is drawn as a gap, never bridged (R16); notes sit inside the plot with leaders.
  * encode: x (year, month or date), y (number), series (category, optional), break (category, optional: a row whose value is
- * labels.break_end ends a segment, labels.break_start starts one). labels: subject (the series value drawn in Charcoal),
+ * labels.break_end ends a segment, labels.break_start starts one; either may be one value or a list of values, and at one x
+ * a row that ends a segment sorts first and a row that starts one sorts last, ED-E8). labels: subject (the series value drawn in Charcoal),
  * series ({value: name}), series_place ({value: {x, dy}}), break_end, break_start, y_max (number). formats: y, y_tick.
  * annotations: [{at: {x, series}, text, place, dx, dy, max, dot, value}] — "value": true prints the point's value. */
 (function (K) {
@@ -44,18 +45,23 @@
       P.value_grid(c, ys, ticks, f.y_tick || 'number', x0, x1, gut);
       P.zero_line(c, ys, x0, x1);
       // segments: a break_end row closes the line; a break_start row opens a new one
-      var be = c.labels.break_end, bs = c.labels.break_start;
+      var as_set = function (v) { return v === undefined || v === null ? [] : [].concat(v).map(String); };
+      var be = as_set(c.labels.break_end), bs = as_set(c.labels.break_start);
+      var ends = function (r) { return !!eb && r[eb] !== null && r[eb] !== undefined && be.indexOf(String(r[eb])) >= 0; };
+      var starts = function (r) { return !!eb && r[eb] !== null && r[eb] !== undefined && bs.indexOf(String(r[eb])) >= 0; };
+      var rank = function (r) { return ends(r) ? 0 : starts(r) ? 2 : 1; };
       order.forEach(function (k) {
         var g = groups[k].slice().sort(function (a, b) {
           var d = K.time(a[ex]) - K.time(b[ex]);
           if (d) return d;
-          return (eb && a[eb] === be ? -1 : 0) - (eb && b[eb] === be ? -1 : 0);
+          // at one x, the row that closes a segment first and the row that opens the next last
+          return rank(a) - rank(b);
         });
         var segs = [[]];
         g.forEach(function (r) {
-          if (eb && r[eb] === bs && segs[segs.length - 1].length) segs.push([]);
+          if (starts(r) && segs[segs.length - 1].length) segs.push([]);
           segs[segs.length - 1].push(r);
-          if (eb && r[eb] === be) segs.push([]);
+          if (ends(r)) segs.push([]);
         });
         var is_subj = !es || k === String(subj);
         segs.filter(function (s) { return s.length; }).forEach(function (s) {
