@@ -4190,3 +4190,10 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-426 | Editor 53 to 55: `caption` keys on entries 14.28, 14.36 and 14.39 | The plan's reader questions print a straight apostrophe, and 14.39's caption takes the law's own term |
 | D3-427 | Editor 9: entry 14.29 now cites Rule 14.4 in `related` | The rule's new words cite it |
 | D3-428 | S05 takes the kit's gap brackets and 2003 tick (D3-191, E13); note 1 gives the two changes and their margins, and the brackets carry the four gaps | The note no longer repeats what the drawing shows; the chart note describes the brackets for the table |
+
+### Research lead, round 1 fix pass 4
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-429 | The printed-line writers set double quotes curly as well as apostrophes, an opening quote after a space, bracket or line start and a closing quote elsewhere | D3-175 covered apostrophes only, and a printed line is guide text under Rule 06's typography |
+| D3-430 | Data cells keep the text as written, straight quotes included | The coordinator's instruction: the file's values stay as they are, and the spec sets the cell's words |

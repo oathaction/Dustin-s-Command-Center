@@ -52,6 +52,13 @@ def col(t, d, unit=None):
     return o
 
 
+def curl(line):
+    """Set a printed line's apostrophes and double quotes curly (D3-175, extended in fix pass 4 to double quotes)."""
+    line = line.replace("'", '\u2019')
+    line = re.sub(r'(^|[\s(\[])"', '\\1\u201c', line)
+    return line.replace('"', '\u201d')
+
+
 def write(name, rows, columns, meta):
     for r in rows:
         assert list(r.keys()) == list(columns.keys()), (name, list(r.keys()))
@@ -63,7 +70,9 @@ def write(name, rows, columns, meta):
             'geography': 'United States', 'date_retrieved': SNAP, 'vintage': 'Atlas V7 snapshot of October 15, 2026',
             'snapshot': SNAP, 'ledger_row': LEDGER, 'columns': columns}
     base.update(meta)
-    base['printed_source_line'] = base['printed_source_line'].replace("'", '\u2019')
+    base['printed_source_line'] = curl(base['printed_source_line'])
+    if 'source_line_variants' in base:
+        base['source_line_variants'] = {k: curl(v) for k, v in base['source_line_variants'].items()}
     txt = json.dumps(base, ensure_ascii=False, indent=1)
     assert '—' not in txt and 'isclos' not in txt, name
     (OUT / f'{name}.meta.json').write_text(txt + '\n', encoding='utf-8')

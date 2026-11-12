@@ -133,3 +133,16 @@ From the data lead's DL-R4 and DL-R5. The data check reads 91 tables with 0 faul
 
 Tested: the four vote records read on senate.gov today (242 and 244 of 2013, 109 and 110 of 2017), each with its title, result and majority requirement; Reid's point of order read in the November 21, 2013 Congressional Record's text; the ten variants generated and D01's count (17) checked against the table; the other V7 tables unchanged.
 Not tested: the April 6, 2017 Congressional Record (govinfo's address for the day's Senate pages returned "Page Not Found"), so the 2017 point of order's exact words are not quoted.
+
+## Fix pass 4
+
+From maker B's R-B13. The data check reads 91 tables with 0 faults.
+
+- **S32.** `govinfo-pl-119-75-effective-dates.meta.json`'s printed source line now reads "Two dates computed from “months after enactment”; plan-year dates apply as each plan year begins." with curly quotes (script `.../round-1/research/scripts/fix_pass4_quotes.py`). The CSV's cells, "plans'" among them, are unchanged; S32 keeps its `words` maps for those two cells.
+- **The shared writers.** D3-175's writer curled apostrophes only. `research_v7_extract.py`'s line writer now curls double quotes too, in printed lines and variants, which corrected `v7-pathway-electric-decision-makers` ("Electric and utility bills" now in curly quotes); my round 3 helper got the same rule. A scan of every sidecar finds no other straight quote in a printed line or variant.
+
+- D3-xxx | The printed-line writers set double quotes curly as well as apostrophes, an opening quote after a space, bracket or line start and a closing quote elsewhere | D3-175 covered apostrophes only, and a printed line is guide text under Rule 06's typography
+- D3-xxx | Data cells keep the text as written, straight quotes included | The coordinator's instruction: the file's values stay as they are, and the spec sets the cell's words
+
+Tested: the scan of all 91 sidecars' printed lines and variants for straight quotes (none left); the two changed lines read; the data check.
+Not tested: S32 rebuilt with the new line (maker B's step).
