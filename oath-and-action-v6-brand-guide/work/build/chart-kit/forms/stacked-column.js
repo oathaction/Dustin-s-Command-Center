@@ -66,23 +66,33 @@
         }
       });
       P.zero_line(c, ys, x0, x1);
-      // a part the title counts prints its value beside the top of its segment, on the side whose neighbor stands lower
-      // than the words, left first (the data lead's RF-22 and MA-F1)
+      // a part the title counts prints its value near the top of its segment, set off to the side by at least 12 px, with a
+      // hairline leader that runs from the words into the part, so the value never reads as a neighbor's total; the words
+      // and the leader sit above every other column they pass (the data lead's RF-22, MA-F1 and MA-F4)
       [].concat(L.part_values || []).forEach(function (pv) {
         var i = -1; st.forEach(function (s2, k) { if (String(s2.row[ex]) === String(pv.x)) i = k; });
         if (i < 0) { c.warn('labels.part_values names no column ' + pv.x); return; }
         var g = st[i].segs.filter(function (q) { return q.field === pv.field; })[0];
         if (!g || g.missing) return;
         var cxp = x0 + step * i + step / 2, t = K.fmt(g.value, f.total || 'number:1'), tw = c.measure(t, 'label', 400, true);
-        var by = ys(g.end) + 2 + size * 0.86;
-        var clear = function (dir) {
-          var xa = dir < 0 ? cxp - bw / 2 - 4 - tw : cxp + bw / 2 + 4, xb = xa + tw;
-          if (xa < (c.phone ? 0 : x0) || xb > (c.phone ? W : x1)) return false;
-          return st.every(function (o2, k) { var ox = x0 + step * k + step / 2; return k === i || ox + bw / 2 < xa - 2 || ox - bw / 2 > xb + 2 || ys(o2.total) > by + size * 0.14 + 2; });
+        var by = ys(g.end) + 2 + size * 0.86, ly = Math.round(by - size * 0.32) + 0.5, lo = c.phone ? 0 : x0, hi = c.phone ? W : x1;
+        // columns other than this one whose span meets [xa, xb] must stand lower than y
+        var clear_of = function (xa, xb, y) {
+          return st.every(function (o2, k) { var ox = x0 + step * k + step / 2; return k === i || ox + bw / 2 < xa - 2 || ox - bw / 2 > xb + 2 || ys(o2.total) > y + 2; });
         };
-        var dir = clear(-1) ? -1 : clear(1) ? 1 : 0;
-        if (!dir) { c.warn('no room beside ' + pv.x + ' for its part value'); return; }
-        c.text(dir < 0 ? cxp - bw / 2 - 4 : cxp + bw / 2 + 4, by, t, { role: 'label', weight: 400, anchor: dir < 0 ? 'end' : 'start', tnum: true, data: { key: pv.x, field: pv.field, value: g.value } });
+        var got = null;
+        for (var off = 12; off <= 12 + 3 * step && !got; off += 2) [-1, 1].some(function (dir) {
+          var edge = dir < 0 ? cxp - bw / 2 - off : cxp + bw / 2 + off, xa = dir < 0 ? edge - tw : edge, xb = xa + tw;
+          if (xa < lo || xb > hi) return false;
+          // the words clear of every other column below their box, the leader clear of every column it passes over
+          var la = dir < 0 ? xb + 3 : cxp, lb = dir < 0 ? cxp : xa - 3;
+          if (!clear_of(xa, xb, by + size * 0.14) || !clear_of(la, lb, ly)) return false;
+          got = { dir: dir, edge: edge, la: la, lb: lb };
+          return true;
+        });
+        if (!got) { c.warn('no room beside ' + pv.x + ' for its part value'); return; }
+        c.line(got.la, ly, got.lb, ly, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+        c.text(got.edge, by, t, { role: 'label', weight: 400, anchor: got.dir < 0 ? 'end' : 'start', tnum: true, data: { key: pv.x, field: pv.field, value: g.value } });
       });
       // each part's name beside the last column, at its middle, moved apart where two would touch, with a hairline
       // back to its part when moved

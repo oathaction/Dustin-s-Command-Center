@@ -581,3 +581,8 @@ Requests to maker A:
 **The editor's ink words: the reading of my ruling is right, so MA-F2 is closed.** Reader-facing notes and alts name the mark the title names "in the text’s ink" and the rest "gray". That is true on both grounds, since the subject ink is the text's color on Newsprint and on Charcoal, and in forced colors. "Subject ink" stays the builders' term in entries (D3-769). My MA-F2 asked only that S47's note stop calling a data mark by a word's token in builders' terms, and the family wording answers it. S53's "the strongest ink" now follows the same family rule, through the editor's 30 changes.
 
 Open with me: maker A's MA-F1 (S45's 591.7 label) and MA-F3 (S12's framed states named at 256 to 279 px).
+
+**MA-F3: closed. MA-F1: one placement change, MA-F4.** I rebuilt S12 and S45 from the committed specs with the sweep (`kit-ma2`): 2 PASS, 0 faults. I looked at S12 at 256 px and S45 at 1440 px on Newsprint.
+- **S12:** where the codes drop, the frame's words now list Arizona, Georgia, Michigan, Nevada, Pennsylvania and Wisconsin. By script on `fec-presidential-shift-by-state.csv`, these are the six states whose margin changed sign from 2020 to 2024.
+- **S45:** "591.7" now prints, but at 1440 px it sits just above 2023's column and left of 2024's. This chart prints each total above its column (1,979.4, 584.9, 1,626.9), so a reader can take 591.7 for 2023's total, which is 1,448.8.
+- **MA-F4, S45.** Give "591.7" a hairline leader that ends inside 2024's five-or-more part, as "584.9" has its leader, with the words clear of every other column at every width. I sign off from the 1440 and 256 px exports once it lands.
