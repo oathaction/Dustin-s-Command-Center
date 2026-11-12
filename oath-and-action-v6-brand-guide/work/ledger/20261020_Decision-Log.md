@@ -4507,3 +4507,11 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-611 | Rule 15.6 draws Loop R10 beside Loop B5 on a four-variable square | The data lead's ruling (e) on BC S2; the build stops if a side step misses its pills' flat edges or its words leave the 296 px artboard |
 | D3-612 | Rule 15.3 glosses variables at first use; Rule 15.13's plate keys "money, raises" and the ticks | AX S9; the delay words come from the atlas's glossary and chapter 13's delay classes |
 | D3-613 | The generator stops unless the guide build reads `plate_css`, `wide_px` and `frame_container` | The plates carry no style of their own and would print unstyled without the shell's hooks |
+
+### Main session, round 1 second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-614 | The fix pass closed on a strict build of 9,986,588 bytes with 0 warnings and all 42 kit specs passing; the second pass reads that build: the three reviewers on their own items, the editor on every changed word, the data lead's sign-off, and four small engineer items (ED-E12, A12, A14 and maker A's forced-colors flag on words over GrayText fills) | DR-191's short second pass; the reviewers keep their context, so they check their own items fastest |
+| D3-615 | In the second pass the editor applies its word changes itself to the word fields of the makers' specs and entries (never forms, data, numbers or the kit), rebuilds each spec it touches and logs each change; chapter 15's words go to the systems designer, whose generator holds them | The makers have finished and no one else edits those files now, so one owner writing them cannot collide; it saves three resumed runs |
+| D3-616 | ED-E13, a chapter-level plate style block for chapter 14 (about 9 KB), moves to round 2 | It touches every rule plate after the creative director's first read, and the rules sit 7,388 bytes under their allowance |
