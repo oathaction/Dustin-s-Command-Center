@@ -4963,3 +4963,196 @@ The main session asked whether chapter 13's seven script-drawn chart heads take 
 | D3-912 | Board 2's V7.1 naming item widens to one question: whether every variable's loop chain label gives way to its own atlas title (D1, D2, D4 and D6, and also E1, B4 and B2 found by the data lead), settling chapters 10, 11 and 15 together; until Dustin answers, chapter 15 keeps loop names in loops and takes the four core titles under RF-16 | One question answers every double name; RF-16 fixed only the four where the brand review found a judgment |
 | D3-913 | Maker A's optional request R-A3 (a grade column in S63's issue file) waits for board 2's V7.1 list and takes no work this pass | V7 checks and dates issue records and gives them no grade (D3-680); a grade the atlas does not hold would be the studio's, not the record's |
 | D3-914 | Reader-facing chart notes follow the editor's one ink word (a named mark "in the text's ink", other marks "gray"), and the data lead's MA-F2 for S47 follows it; "subject ink" stays the builders' term in "For builders" lines (D3-769) | The editor owns the words (D3-900), and its word holds on both grounds and in forced colors, where "dark" and "light" swap |
+
+### Data visualization lead, round 2 review fix pass (rulings RF-1 to RF-24 and sign-offs)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-915 | The red point stays within 5 percent of the drawing alone at every export width; S47's Social Security tile and S53's band take the subject ink | Rule 05.1 (D3-890); measured 17.6 to 19.7 and 6.1 percent; replaces D3-676's red points |
+| D3-916 | Area forms (treemap, pie, donut, marimekko, stacked area, waffle, icon array, Euler, map regions) give the named area the subject ink, and unnamed areas the track ink with a 1 px context ink edge | Their red share follows the data; one drawing a builder can trust at every width |
+| D3-917 | Forms that can draw one long or large named mark keep the red point only while it stays within 5 percent at every width | Stacked share bar, box plot, pyramid band, bubbles and progress bar can pass it |
+| D3-918 | A band or light area that carries meaning takes 1 px edges in the context ink, its fill staying in Stone magnitude step 1 | Rule 05.5 on both grounds: steps 1 and 2 measure 1.16 to 1.81; the edge 4.29 and 5.41, 3.69 and 4.48 against the fill |
+| D3-919 | S63's title counts the statuses its chips show, decided one and two standing on interim orders; note 1 names the Court's interim orders in I068 and X18 | CASA counts as an interim order under note 1's standard (V7 Q539, Q545), and title and chips give one number (D3-896); corrects MA-5 |
+| D3-920 | S60's table prints V7's qualification for each figure, figure 5's cell replaced in print by "None of its own in the atlas; see the note", figure 7 with a note on H.R. 7008's two provisions, and a note dating the 2023 survey | Every figure keeps its qualification and none prints another's; replaces D3-742 and D3-687 |
+| D3-921 | Rule 14.9 prints two gap tests: two separate places, and a place against an area that contains it, with the independent formula allowed there only with a note | A state's sample is part of the nation's; the plate and S57 hold under both |
+| D3-922 | S54 and S55 drop North Dakota's label | Its low place sits within Wyoming's margin (entry 14.67) |
+| D3-923 | S48's note 1 says the 2024 election's result, and its source line joins the two sidecars' lines | Round 1's M2 on the same file |
+| D3-924 | S50's and S54's tables set the national row first | Ruling (b)'s listing case |
+| D3-925 | S51's table adds the lowest and highest county per region | Tukey's five numbers include the ends |
+| D3-926 | S47's fold takes only functions too small for their words and sits last | Entry 14.52's own test |
+| D3-927 | S43 prints the Bureau's published DP04 margin for the renter share, and broadband charts S2801's; the handbook formula is used only where the publisher prints no margin for the figure drawn | Rule 14.9 shows the publisher's uncertainty; RF-11a re-rules RF-11 |
+| D3-928 | S61 draws the 47 no votes as a segment in outline in the party-mark ink | Rule 01.2 (D3-891) |
+| D3-929 | S61 keeps its data, and entry 14.87 says it draws S01's vote a second way | No frozen record answers a count toward a threshold as well (D3-897) |
+| D3-930 | S63's issue titles print as stored in regular weight with the atlas's grade; the three that state an effect go to the V7.1 list | D3-349 and D3-893 |
+| D3-931 | Rule 15.17's pills print V7's node titles for D1, D2, D4 and D6; the chain labels stay with their loops; the double naming goes to the V7.1 list | Both names are the atlas's, and the node title carries no judgment (D3-893) |
+| D3-932 | Chapter 15 labels D1, D2, D4 and D6 by V7's node titles wherever it draws them outside a loop (15.17, 15.3's L16, 15.5's LT13 and LT14), and by the loop's chain labels where it draws a loop (the opener's R13) | RF-16a: one name for a variable drawn alone, the loop's own words for a loop |
+| D3-933 | A mark named only as the comparison for the finding keeps the light fill with its label; two roles means two findings; D3-665 stands | Rule 14.6's approved plate draws Zion so; corrects ruling (c)'s "then and now" |
+| D3-934 | S55's question and title turn on the four states with the most renter households, and size answers it | Entry 14.68; 17.1 of 46.6 million, by script |
+| D3-935 | S54's Florida label prints 35.5 percent | The named mark carries the title's value |
+| D3-936 | S59 draws the fourth-quarter unemployment rate for 2021 to 2024 before its fan | A fan starts from where the rate stood; 2025's quarter was not collected |
+| D3-937 | Rule 15.12's first two labels give the problem's and the remedy's grades | The first label must differ from the failure's |
+| D3-938 | S45's title gives the 2024 count of homes in buildings of five or more units, with the share and the long record in a note | A stack of counts shows counts (CD A-M1) |
+| D3-939 | S45's two-to-four part stays at true height with a note on why it is thin | No part is drawn taller than its value |
+| D3-940 | S48's independent seat and vacancies sit apart by the party gap with their own leaders | Rule 01.2 |
+
+### Engineer, round 2 review fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-941 | The sweep runs in `build` and `check` by default, over every whole width from 256 px (224 for a plate) to 723 px, on Newsprint, skipping the six columns already checked | AX S1 found faults at 329, 560 and 636 px; one fault prints once with its widths, so the output stays readable (41 s for all 64 specs) |
+| D3-942 | The guide build lists this pass's new kit faults (words crossed, red past its share) as notes, and the kit's `build` fails them | One owner's spec must not stop another owner's strict build while the faults are cleared; the sweep already lives in the kit alone |
+| D3-943 | Red's share is measured on the drawing, and in a 900 px (desk) or 844 px (phone) tall window where the drawing is taller | RF-1 sets the drawing alone as the view; a tall drawing on a screen shows only a screen of it |
+| D3-944 | A band is measured against what lies under it: the ground, or a wider band drawn before it that holds it | A fan's inner band sits on its outer band, not on the ground (D3-903: "against its ground") |
+| D3-945 | The interval plot-width test reads the middle row: its interval runs 5 px past a dot on each side (23 px for a 13 px dot) and 2 px past a line on each side (6 px for a 2 px line) | A small margin may hide inside its dot by right (S57's note says so); a plot where most do cannot pass. Rule 14.9's plate with its rows forced side by side fails at 294 px (19.7 px against 23), and S57 as drawn passes at every entry width (27.5 px at 256) |
+| D3-946 | The kit clears a word on the ground that a quiet line (gridline, baseline, total line, context, secondary) drawn before it crosses: a knockout 2 px wider than its box, or the halo where a knockout would touch another shape | BC S1 asks for every such word; a halo alone left a gridline between "1" and "." in "51.4", which read as "51:4"; quiet lines are never data |
+| D3-947 | A data line through a word, any stroke drawn after a word and a dot half under a word fail, and the form fixes them | Only the form knows whether to move the words or the mark; `strike: true` marks a stroke drawn through words on purpose |
+| D3-948 | "Half under" reads the band the letters stand in, from the cap height to the baseline | A bar that reaches only into a word's descent space is not over its letters (S14's fixture at 1440 px) |
+| D3-949 | `K.parts.band` draws its edges by default, and `edge: false` turns them off | RF-2 asks for the default |
+| D3-950 | Open tracking for a big figure is opt-in (`open: true`) | Made automatic, it changed S42's display sentence, which BC S12 does not name |
+| D3-951 | The fixture `fixtures/specs/s14.json` hides its "Three-month average" note on a phone, as live S14 does | The new half-under check found the fixture's note on its columns at 358 to 256 px; the self-test needs a clean fixture |
+| D3-952 | A sketch stage is a group named for its plate; its drawings stay images named by their titles; a drawing's `<desc>` that holds the caption's sentence leaves its name | AX S6: the bars are read as words in order, and the caption is heard once |
+| D3-953 | The avoid bars hold their words on two lines, with a hidden colon after the first line for screen readers | BC S14's fixed lines; a reader hears "Form to avoid: Do not publish" |
+| D3-954 | A plate taller than 860 px on screen breaks inside in print, through a class the shell sets at `beforeprint` | Chapter 13's first plate (1,622 px) left page 3 blank; CSS cannot select by height |
+| D3-955 | The AX S8 checks read the research lead's sidecar fields as named (`source_line_columns`, `margin_columns`, `check_only_columns`, `unit`) | They landed first; one shape for every sidecar that takes them |
+
+### Maker A, round 2 review fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-956 | S10's line for all 433 claims is `K.parts.total_line` at 1.5 px with its label in regular weight; on a phone the line breaks 3 px clear of each row name it would cross | Call 5 and ruling (b); the reference rule's weight, since the bars carry no stroke weight; a dashed line through "security" read badly at 358 px |
+| D3-957 | S18's table prints "Middle fifth" through its label column's words; the CSV keeps the Bureau's "Third fifth" | ST S11: one name for one fifth on the plate |
+| D3-958 | S48's independent and vacancies stand together under the aisle, two empty places from each end block in the innermost row and dropped 0.6 of a row into the hollow; each block is named with its own words and hairline, in the hollow where the line fits between the innermost feet, else on a line under the half circle above the end blocks' names | BC S2, CD A-S5, RF-24: with one empty place the independent sat under the Democrats' edge seat; at 296 and 256 px the hollow cannot hold the words |
+| D3-959 | S48's source line is the Clerk sidecar's `with_party_divisions_119th` variant and note 1 is RF-5's | ST M3; no line written in the spec |
+| D3-960 | S62's across arrangement sets each mark at its sixth's left edge with its words flush left, the names on a shared top and every state, date and note on shared lines; step 2's note is shorter now the research lead confirmed no hearing | BC S11; centered notes ran to eight lines |
+| D3-961 | S62's table takes a Step column through the action code's words, the discharge row naming steps 2 and 3 as never happened | AX S5; the kit's table prints the data's rows, so the two steps share that row |
+| D3-962 | S44's chart note names steps and totals by what they do and where they sit; values sit on `clear_label` knockouts; names and values take `row_name` and `row_value` | BC S17, AX S2, AX S3, BC S8: color words fail on Charcoal and in forced colors; a gridline through a minus reads as a plus |
+| D3-963 | S44's totals (all receipts and the deficit) take `fc: 'total'`, the ground with a CanvasText outline in forced colors | AX S3, the engineer's part: in forced colors the totals took the steps' inks |
+| D3-964 | S43's names and values take `row_name` and `row_value`; S18 and S10 keep their weights | BC S8 names S43, S44, S51 and S57; S10 is board 1's drawing and S18 was not named |
+| D3-965 | S46's "All other sources" sits on a plate of the ground 5 px clear of the words | BC S7; the hatch ran through the letters |
+| D3-966 | Maker A's six sketches take maker B's frames: reference sketches 320 px with a 10 px inset, avoid halves 288 px with an 8 px inset and both halves of a pair one height, "Illustrative data" in 13 px at the inset's corner; the two progress bars take the half's width | SK-S1, BC S13, D3-637 |
+| D3-967 | S43 prints the Bureau's DP04 margins, DC's 1.5 points in note 2, through `with_dp04_margin` | ST S5, RF-11a; the formula columns print nowhere |
+| D3-968 | S47's Social Security takes the subject ink with light words, every other tile the track ink with a 1 px context-ink edge, no red and no plate | BC M1, CD A-M2, RF-1: 21.7 percent red failed the kit's new check |
+| D3-969 | `treemap` folds by `labels.fold: "fit"`, the fewest smallest parts that let every tile hold its words at 256 px, and lays the fold tile last; S47 folds ten functions, each under 2 percent, $673.6 billion; Veterans keeps its tile | ST S1, RF-10; the phone drawings grew to 716 px at 358 to hold Veterans' words |
+| D3-970 | Area-form entries (14.52, 14.54, 14.55, 14.56) give the named area the subject ink "since a tile in red would pass Rule 05.1's 5 percent of the drawing (Rule 14.6)"; 14.47 and 14.87 keep the red point "while its red stays within 5 percent" | RF-1; written without "never" (W11) |
+| D3-971 | S61 draws the 47 no votes as their own segment in outline (1.2 px) and the 53 yes votes solid, both in the party-mark ink, through `progress-bar`'s new `labels.ink` and `labels.rest`; each side's parties under it, the counts held to their names | BC M2, D3-891, RF-12 |
+| D3-972 | S61's title: "The Senate fell seven votes short of the 60 needed to take up the House’s bill to limit members’ stock purchases and require photo ID to vote in federal elections." H.R. 7008 by number and name moves to the measure line | CD A-S2; both provisions at first mention (DR-98), 30 words |
+| D3-973 | Entry 14.87's why text says its specimen draws the vote Rule 14.85's specimen sets beside a survey | RF-13, CD A-S2; entries carry no specimen note key |
+| D3-974 | S45's title gives the 591,700 count; notes give the share, the 1972 to 1974 record and why two to four units is a seam; a total raised over a taller neighbor takes a hairline down to its column; the last total and year sit 2 px inside the edge | CD A-M1, RF-22, RF-23, AX S9, BC S17 |
+| D3-975 | `column` turns its columns into the phone's bars wherever the widest value plus 4 px would not fit its column, calling `c.arrange('phone')` | The editor's request (D3-904): Rule 14.12's plate failed the sweep at 480 to 502 px; S17 and the three column plates keep their 720 and 358 px drawings |
+| D3-976 | S63 takes RF-3's title, note 1 and X18 words as given; issue titles print in regular weight; the chart note says the titles are the atlas's names and all six are graded Documented; the table's Atlas grade column reads the ID through the column's words | ST M1, ST S8, CD A-S1, BC S3, RF-3, RF-15; the editor's notes left the words to me if set as given |
+| D3-977 | `status-chips` wraps titles, words and check lines 2 px inside the edge, measured as printed after the typography | AX S1: titles ran 0.7 to 1.9 px past the artboard at 17 widths |
+| D3-978 | S60's table prints V7's qualification as stored, figure 5's cell through one exact replace pair; note 1 gives the May 2023 survey and both provisions of H.R. 7008; note 2 says why figure 5's cell differs | ST M2, RF-4 |
+| D3-979 | `indicator-row` takes `labels.beside`: each figure beside its caption, one to a row, where the caption's column holds 240 px, else one column; S60 uses it; captions take the typography before their last two words are held, so the page and Node wrap alike | CD A-S3: V7's captions stay as stored, and the four-up grid ran them to 11 lines; a parity fault showed the order mattered |
+| D3-980 | S60 sets `typography.nbsp` and its figures that hold words in open tracking | BC S12, through the engineer's parts |
+| D3-981 | S64's two bands take a 1 px context-ink edge between them | RF-2 |
+| D3-982 | S01 takes its phone arrangement wherever "86%" would reach the bars beside it, and a party's words leave their segment for the row under the bar where the 60-vote line would cross them | AX S1, D3-904; placement only, 720 and 358 px SVGs unchanged byte for byte |
+| D3-983 | S16's size key drops under the shade key wherever its steps would run past the edge | D3-904, D3-909; placement only, 720 and 358 px unchanged |
+| D3-984 | S07's year line sits in from the left as its code does and only where the tile holds it with 2 px each side | D3-911; placement only, 720 and 358 px unchanged |
+| D3-985 | S12's shaded tiles draw no code where the widest code would not fit, with the kit's note that the table names every state | D3-911, D3-93 as S07 does; only 256 to 279 px change |
+| D3-986 | S15's "Leader changed" tag goes under the state's name on a phone where it would reach the shift column | D3-911; placement only, 720 and 358 px unchanged |
+| D3-987 | The never-happened slash in `step-tracker` and `tracker-list` takes `strike: true` | The engineer's crossing check; the slash crosses the number on purpose (Rule 11.2) |
+| D3-988 | Entries 14.46, 14.50, 14.53, 14.86 and 14.89 follow their redrawn specimens (the dashed total line, a part too thin to see, the independents set apart, figures beside long captions, titles in regular weight and "disputes") | One rule and its specimen say the same thing |
+| D3-989 | S45 prints 2024's five-or-more part, 591.7, beside the top of its segment in regular weight, on the side whose neighbor stands lower, through `stacked-column`'s new `labels.part_values`; the chart note says so | MA-F1, RF-22: the title counts that part, and the drawing printed only totals; regular weight keeps it apart from the bold totals |
+| D3-990 | S47's chart note keeps the editor's "takes the text’s ink" | MA-F2 as the main session relayed it: the editor's one ink word for chart notes; "subject ink" stays a builders' term |
+| D3-991 | Where S12's shaded tiles draw no codes (256 to 279 px), the framed states, where the leader changed, are named under the frame's words: Arizona, Georgia, Michigan, Nevada, Pennsylvania and Wisconsin | MA-F3: with no codes the frames named no state |
+| D3-992 | S45's 591.7 sits at least 12 px off its column's side, above every other column it passes, with a hairline leader from the words into 2024's five-or-more part | MA-F4: beside the column it sat over 2023's and could read as 2023's total (1,448.8) |
+
+### Maker B, round 2 review fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-993 | 14.73 drops its pointer to Rule 14.34 and 14.69 points to Rule 14.73, whose rule text draws the aligned panels | Chapter 14 has no rule for two measures in aligned panels on their own scales (ST S3); Rule 14.34's panels share one scale |
+| D3-994 | S53's band words name the ages ("Ages 55 to 64: 41.2 million"), and its alt, reading guide and chart note say "the strongest ink", never "dark" or "red" | RF-1 asked for "Dark bars"; the band is dark on Newsprint, light on Charcoal and the system highlight in forced colors (AX S4), so a color word is wrong on two of three grounds |
+| D3-995 | S54 prints Florida's figure as a second line in regular weight under its bold name, "35.5%" where "rent 35.5% of income" finds no place (256 px) | RF-19 asks name bold and figure regular; the kit sets one weight a text, so the form sets the two as one block (`labels.sub`, `sub_short`) |
+| D3-996 | S55 names the four states with the most renter households as blocks placed in the order that places the most, with leaders up to 124 px for a named state | With four large named circles a first-come order left New York unnamed at 358, 296 and 256 px |
+| D3-997 | S55 takes the Finding label, and entries 14.67 and 14.68 give a correlation chart Association where its title says the two move together and Finding where it states documented figures, with the note either way | The data lead's MB-F2: RF-18's title states documented counts and rents, as 14.69 already reads |
+| D3-998 | S59's history is a derived table of fourth-quarter averages, 2021 to 2025, with 2025 empty and its reason in the row | RF-20; the projections' own measure, and the second dataset rides in the island at five rows |
+| D3-999 | S59's missing 2025 quarter is an empty column edged by a dashed hairline, and its key swatch matches | A filled column read as the same gray as the band from past errors (the kit's key test, 0.0 apart), and an empty column says no value exists |
+| D3-1000 | S59's values print where they sit apart from each other and from every dot, the first and last median and the last actual value always | At 296 and 256 px nine periods leave 13 px a period, and the values overlapped |
+| D3-1001 | S56's latest quarter takes its year alone where its full words would cross the path, at every width, and the chart note says so | No place clear of the path held "July to September 2026" at 720 and 358 px; a halo over the path cut a gap in the line (BC S1) |
+| D3-1002 | S51's outliers take lanes above and below the row's line, three each way on a desk, where they would touch another dot or a whisker's cap | Tukey's outliers keep their values on the axis; lanes are the box plot's usual way to keep dense ones apart (BC S17) |
+| D3-1003 | On a phone S51's gridlines run only through each row's box and outliers | The names and counts sit over each box there, and a gridline ran through them (BC S1) |
+| D3-1004 | S52 keeps its axis to 74 percent and names the two far counties in the chart note | One county in each year lies past 56 percent (62 to 64 in 2019, 72 to 74 in 2024); ending at 56 would drop or fold a county the table counts (BC S17 asked for 56) |
+| D3-1005 | S58's break note "New questions" sets its words to the right of its point (`anchor: "start"`) | At 296 and 256 px the centered words crossed the line |
+| D3-1006 | S50 and S53 rely on the kit's knockout for words that a quiet line crosses; my own gridline gaps and split lines were removed | The engineer's part does it for every form ("makers move nothing") |
+| D3-1007 | Under 540 px S35's cliff words sit under the chart | No place beside the cliff stayed clear of its dots, the line and the line's own name at every width (D3-911) |
+| D3-1008 | S02's notes take a `mid` setting in `line-event-notes` (below 620 and 510 px, the phone's place under the chart) | Placement only; the words and the phone drawing are as board 1 approved them |
+
+### Editor, round 2 review fix pass and second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1009 | Rule 13.1's Finding head takes the period: "Child poverty stood at 13.4 percent in 2025 under the Supplemental Poverty Measure." | DR-247 (D3-898) |
+| D3-1010 | Rule 13.1's Association head takes the period: "Job postings offered 17 percent lower wages where a few employers did more of the hiring." | DR-247 |
+| D3-1011 | Rule 13.1's Estimate head takes the period: "Vehicle safety technologies saved an estimated 614,000 lives from 1960 to 2012." | DR-247 |
+| D3-1012 | Rule 13.1's Illustration head takes the period: "A ranked bar puts the town with the most library hours first." | DR-247 |
+| D3-1013 | Rule 13.6's correct plate head takes the period: "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure." | DR-247 |
+| D3-1014 | Rule 13.6's failure plate head takes the same period | DR-247; the plate fails on its source line alone |
+| D3-1015 | Rule 13.7's failure plate, left head, takes the period: "Child poverty fell from 9.7 percent in 2020 to 5.2 percent in 2021, then rose to 13.5 percent in 2024." | DR-247; its fault is the mixed releases and windows |
+| D3-1016 | The failure heads of Rules 13.1, 13.2 and 13.3 keep no period | DR-247 keeps their faults on purpose |
+| D3-1017 | The alts of Rules 13.1, 13.6 and 13.7 stay byte for byte; 13.6's alts print the title's words without the period | Each alt names the title inside its own sentence |
+| D3-1018 | The chapter 13 generator fails a rerun where any of the seven heads lacks its period, or where a plate holds a different count of script-drawn heads than DR-247's (four, one, one, one) | So a later rerun keeps DR-247 |
+| D3-1019 | Rule 14.6 states Rule 05.1's share once: a named mark that would pass 5 percent of the drawing at any width, such as a part of a treemap, pie or donut, or a tall column in a short run, takes Charcoal at the subject weight, with a spec row | RF-1 (D3-890), BC M1, CD A-M2; entries 14.52 and 14.55 cite it |
+| D3-1020 | Rule 14.6's second paragraph becomes three, one case to a paragraph | CD R-S1; it ran 15 lines at 1440 px |
+| D3-1021 | Rule 14.6 states D3-673's case: a line or a single bar is one mark, a run of columns a set of marks, and a chart of one line, bar or path takes the subject ink with the title's value labeled | RF-17; BC S5 found one measure treated two ways between Rule 14.12 and entry 14.75 |
+| D3-1022 | Rule 14.6 adds the comparison case: a mark the title names only to measure the finding against keeps the light fill with its label | RF-17; the rule's own plate draws Zion so |
+| D3-1023 | Rule 14.6's "Two marks in two roles" row becomes "Two findings" | RF-17 corrects ruling (c) |
+| D3-1024 | Rule 14.6's related rules add 05.1 and 14.12, and its builders line says the kit fails red past 5 percent | The rule now cites both; the engineer's red-share check landed |
+| D3-1025 | Rule 14.6's correct caption names Zion as the comparison | The rule points to the plate for that case |
+| D3-1026 | Rule 14.12's plate keeps 2026 red and 2015 in the light fill with its value; the spec's internal note gives the reason and the red's 2.8 to 4.1 percent | RF-17; D3-665 stands |
+| D3-1027 | Rule 14.13's 2024 column takes the subject ink through labels.named, and its failure plate's column the same; the alt calls it the column the title names, in the dark ink | The red-share check measured 6.2 percent at desk widths and 5.0 to 5.4 down to 296 px, past Rule 05.1's 5 (RF-1) |
+| D3-1028 | Rule 14.9 prints two gap tests: two separate places, and a place inside an area, which takes the first only with a note saying it treats the two as independent | RF-7, ST S4 |
+| D3-1029 | The rules generator computes the exact test for each of the ten states and fails a rerun where it and the independent test disagree; the plate's internal note gives w, 3.2 to 10.7 percent, and California's margin (1.68 to 1.50 against a gap of 0.6) and Ohio's (2.55 to 2.46 against 2.1) | RF-7: the drawing, caption and title stay |
+| D3-1030 | Rule 14.9's second gap-test row reads "its share of the units the area’s figure counts, such as people or households" | ED-F1 (the data lead): tenure and broadband count households and S57 counts workers |
+| D3-1031 | Rule 14.9's builders line opens "Take the margin the publisher prints for the figure drawn, and compute one only where it prints none, saying so in the sidecar." | ED-F2, RF-11a |
+| D3-1032 | Rule 14.9's plate stacks its rows under a 176 px plot, up from the form's 160 | Call 9's interval check (D3-899) found the middle interval at 24.3 to 25.2 px against 26 at 321 to 330 px drawings |
+| D3-1033 | Rule 14.11's reading guide opens "Half of households had more income than the median and half had less." | ST S7: the plate's title is chapter 14's first "median" |
+| D3-1034 | Rule 14.11's "New questions" note rises 36 px and wraps at 70 px under 480 px | AX S2's guard found it half over the 2007 dot at 225 to 328 px; unwrapped at 256 px it met the rising line |
+| D3-1035 | Group 8's line reads "A range, a band or a fan shows how sure a figure is, as its publisher states it, and an estimate’s note gives the method behind its range (Rule 13.1)." | CD R-S2: 44 words with stacked clauses |
+| D3-1036 | Rule 14.11's plate takes no band words | RF-2 names "Rule 14.11's plate on the same form", but the plate draws `line-event-notes` with no band; entry 14.75 alone takes them |
+| D3-1037 | The editor writes maker A's second pass straight into its word fields: S60's note 1, S45's note 1, S48's chart note, and entry 14.90's rule and builders | D3-669, D3-900; S60 named figures by numbers the plate never prints, S45 was passive, S48 called the independent an open ring |
+| D3-1038 | Entry 14.90 says a range can be a past target, such as an earlier limit | AX S10's reader asked why S64 draws the limit no longer in force |
+| D3-1039 | The editor writes maker B's second pass straight into its word fields: S55, S56, S57 and S59's notes, and entries 14.60, 14.62, 14.68, 14.74 and 14.75 | D3-669, D3-900; S59 called an empty column light, S56 printed a pixel width, 14.62 left two pronouns open |
+| D3-1040 | Entry 14.74 carries the research lead's order for a missing margin: the publisher's own from the same release, the formula only where it prints none, no interval where neither exists | AX S8, D3-905 |
+| D3-1041 | Entries 14.75 and 14.90 print no color-step name in their rules; their builders lines name the steps | AX S10: the simulated reader stopped at "Stone magnitude step 1" and "magnitude steps" |
+| D3-1042 | The family's notes and alts name the mark the title names "in the text’s ink" and the rest "gray"; bands are "shaded" and stepped inks run from "closest to the page color" to "the strongest"; no ink is called dark or light | Dark and light swap on Charcoal (D3-836) and the sequential steps reverse there; the subject ink is the text's color on both grounds and CanvasText in forced colors; one term with the rules (H02) |
+| D3-1043 | S53 takes "the text’s ink" in place of its own "the strongest ink" | One term for the family; "the text’s ink" holds on all three grounds as "strongest" does, and the rules already use it |
+| D3-1044 | A red mark's note drops "with a dark outline" (S20, S21, S23) | The keyline is drawn on Newsprint only |
+| D3-1045 | Rule 14.5's why says "a stronger green means more" | "darker" was false on Charcoal, where the sequential steps reverse |
+| D3-1046 | Sketch 14.66's `<desc>` takes its alt's new first sentence | The chapter build holds the two together (R2-3); words only |
+| D3-1047 | Chapter 15's second pass goes to the systems designer as a table of seven rows (15.10, 15.11, 15.12, 15.17), all applied | D3-900: the generator is the systems designer's; H11 for 15.10 and 15.11 |
+| D3-1048 | Rule 14.5 keeps "The Stone magnitude steps" | It is the rule that sets the palettes, so the name is its subject; AX S10's fault is the name in 14.75 and 14.90, read without that context |
+
+### Research lead, round 2 review fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1049 | The margins a chart prints are the publisher’s own where the same release prints them (DP04 for tenure, S2801 for broadband); the formula margins stay as check-only columns | RF-11a; Rule 14.9 prints the publisher’s uncertainty, and the formula differs from the published margins by up to 0.32 points |
+| D3-1050 | New margin columns carry the table in their names (`_dp04`, `_s2801`, `_formula`), and no column keeps the bare name `*_pct_moe` for a new margin | A designer meeting two margins for one value picks by name and by `margin_columns`, never by guess (AX S8) |
+| D3-1051 | Sidecars with more than one margin or measure gain `source_line_columns`, `margin_columns` and `check_only_columns` | They give the engineer’s check the data it needs to fail a line or margin the chart does not draw (AX S8) |
+| D3-1052 | New columns are appended after the frozen ones, and the scripts assert every frozen field unchanged in every row | D3-476 freezes figures; a column beside them adds without altering |
+| D3-1053 | S48’s joined line sits in the Clerk’s sidecar as `with_party_divisions_119th` | The Clerk’s count is drawn and comes first (RF-5); a two-dataset spec copies a line no sidecar would otherwise hold |
+| D3-1054 | S46’s variant names the NHE release by its data year, "release with data through 2024", with no date | CMS’s page names no release date, and the 2024 comprehensive revision came out with the 2023 data, so "2024 release" would mislead |
+| D3-1055 | S45 takes a template, not a variant, for its release | S45 prints its years through `source_line_template`, and the template keeps them fitted to what it draws |
+| D3-1056 | The stale lines in the round 3 plan stay, each marked superseded with a pointer | The plan is the record of round 3’s sign-off; the current count lives in the round 4 plan |
+| D3-1057 | `research_v7_extract.py` carries v7-numbers’ qualification verbatim, run first in a scratch mirror | D3-910; a rerun must write what the file holds, and the mirror proved it before the repository run |
+
+### Systems designer, round 2 review fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1058 | Rule 15.17's four core pills print the variables' own titles, and Rules 15.3 and 15.5 draw D4 and D6 under theirs; the opener and every loop drawing keep the loops' chain labels | RF-16 and RF-16a (D3-893, D3-906); the generator stops if 15.3, 15.5 or 15.17 prints a chain label for D1, D2, D4 or D6 |
+| D3-1059 | Rule 15.17's rule says each line runs from a variable that holds a body's power, and names each body beside the diagram as the atlas's connections name it | RF-16's words; the reader in production test 2 asked whether "Congressional capacity" is a body or a measure (AX S10) |
+| D3-1060 | Rule 15.17 lists the four bodies under its drawing, each with its variable's chip and title, the body's name read from the atlas's connection names (Congress, The executive, Antitrust enforcers, States and cities) | AX S10 asked for each body's plain name with its variable name; the columns stay balanced at 680 px |
+| D3-1061 | Rule 15.5's two pills take 148 and 132 px, each three rows | At 140 px "Ability to investigate and enforce the rules" set four rows with "rules" alone, and the two lines left their pills at different heights |
+| D3-1062 | Rule 15.12's plate leads with its two grades as its only labels; the connections' grades sit in a numbered list under the drawing, and the drawing carries no label of its own | BC S15 under RF-21; the correct plate's first label no longer matches the failure's one label. Rule 15.12's specs now say so ("Order"; "Connections") |
+| D3-1063 | Rule 15.12's note "It acts where the marks turn red" sits under the drawing, above its steps | Beside the drawing it read as part of the remedy's block |
+| D3-1064 | Rules 15.12 and 15.17 carry a short key built from the drawn connections' own types, signs and delays; 15.12's runs across both columns under them | AX S10; a reader who lands by a link needs the key on the plate, and set across both columns it keeps the columns balanced |
+| D3-1065 | Rule 15.12's rule glosses the line code at first use | AX S10: "line code" stopped the reader (H02) |
+| D3-1066 | No punctuation touches a typed chip: a variable's chip takes its title in quotation marks, a list of loops is a row of chips, and other lines are recast; the generator stops on a chip followed by punctuation | BC S16: the chip's 8 px padding and edge set a comma or a period apart ("Variable C1 , seats"); round 1's three cases change with round 2's |
+| D3-1067 | A four-variable loop's ID sits above its side steps' tags, centered between the top row's pills and the higher tag; the generator stops if the room is short | BC S16: "4 raises + Loop R10" in 15.15; 15.6 and 15.16 draw the same loop and change with it |
+| D3-1068 | Every plate's notes, labels, quotations, sources and list items set with `text-wrap: pretty`, and 15.18's label ties its last two words | BC S16: "point" stood alone; the tie holds where a browser ignores `pretty` |
+| D3-1069 | 15.18 spells out UI in the atlas's words for Loop B2 and keeps the chain label "Automatic support (UI, credits)" as stored | BC S16 and D3-349; the build holds the summary's sentence |
+| D3-1070 | A grade word with words after it ends with a period, and the generator stops on one that runs on | CD CH15-S1 |
+| D3-1071 | The editor's second-pass words for chapter 15 are applied in the generator | D3-900 and D3-615: the editor owns the words, the systems designer the file |
+| D3-1072 | Rule 15.12's plate sets its parts in the order head, drawing with its note, the two grades, the steps, the key, the source; at 680 px a grid places the steps under the drawing and the grades in the right column across both rows, and the alt follows the page order | SD-9 under RF-21; the wide composition is unchanged at 1440, 1024 and 768 px, and the generator stops if the steps or any label come before the two grades (tested by planting the old order) |

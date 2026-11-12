@@ -267,3 +267,4 @@ Done (23:3x), every item in the fix brief's maker A paragraph, calls 3, 5, 10 an
 - Not tested: the quick guide check after these three (no sketch changed); S12 in the guide at 320 px.
 - D3-xxx | S45's 591.7 sits at least 12 px off its column's side, above every other column it passes, with a hairline leader from the words into 2024's five-or-more part | MA-F4: beside the column it sat over 2023's and could read as 2023's total (1,448.8)
 - Tested (MA-F4): `oa-chart.mjs build s45` with the sweep: PASS, 0 faults; looked at 1440 px Newsprint and Charcoal, 390 px Newsprint, 296 px Charcoal and 256 px Newsprint at twice size (the words left of 2024, the leader over 2023's top into 2024's part); `dataviz_check.js --kit` on S45: pass; `phase3_ch14_build.py` 0 faults.
+- Sign-off: the data lead closed MA-F4 (looked at 1440 and 256 px) and signed off the fix pass whole; nothing is open between us.
