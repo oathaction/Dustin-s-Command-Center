@@ -448,7 +448,7 @@ After the weight pass and the data lead's fix pass (November 11, late):
 - The two photographs' lossless progressive encodings decoded to the same pixels as the files (Pillow), in scratch only.
 - `guide_build.py --self-test`: 27 of 27 scenarios, 296 of 296 expectations.
 - Token build and `run_token_tests.py` after the fix pass: all pass; `token_table_build.py` regenerated (544 tokens).
-- `guide_check.js --quick` on the weight-passed page: 2 failures, axe's svg-img-alt on chapter 13's five chart plates at 1440 and 390 px (the drawing named by a title id the plates do not print; present without the pass too, as the pixel proof's identical pages imply). Fixed in `kit.js`'s mount; the rebuilt page (9,936,915 bytes, 0 strict warnings): GCHECK2.
+- `guide_check.js --quick` on the weight-passed page: 2 failures, axe's svg-img-alt on chapter 13's five chart plates at 1440 and 390 px (the drawing named by a title id the plates do not print; present without the pass too, as the pixel proof's identical pages imply). Fixed in `kit.js`'s mount; the rebuilt page (9,936,915 bytes, 0 strict warnings): PASS, 0 failures at 1440 and 390 px over 198 rules and 516 specimens, axe-core included.
 - `oa-chart.mjs build --all`, run again after that fix: 16 of 16 pass; the 192 board files equal the fresh build byte for byte; `oa-chart.mjs self-test`: 25 of 25 planted faults caught, the clean pivot passes; `dataviz_check.js --kit-self-test`: every planted fault caught.
 - `v7_check.py --page` on the weight-passed page: 0 failures (chapter 13, 50 chips; 21 kit specs and the data folder); its self-test: every planted fault caught.
 - `data_round0_build.py --check` after ENG-5 to ENG-7: 61 tables, 0 faults.
@@ -476,7 +476,7 @@ Earlier in the round:
 - Chapter 14's real weight: the projection scales 16 measured charts to 97; reference sketches, avoid entries, the complex examples, the rules and plates, and map geometry beyond the states file are held at the proposal's allocation, unmeasured.
 - Sharing modules among forms at 97 forms: an estimate only. The minifier and the shared parts are wired in and proved.
 - The weight pass in Firefox and Safari, and in print: the pixel proof ran in Chromium on screen only. The CSS it removes is white space and comments, which no browser reads.
-- `guide_check.js` (quick or full) on the weight-passed page; it reads the page through the browser's own CSS rules, which the pass leaves the same.
+- The full guide check at four widths on the weight-passed page; the quick check (1440 and 390 px) passes.
 - The photo options (dedupe by CSS `content`, smaller renditions, lossless progressive files) beyond the measurements named; nothing of them is in the build.
 - (d) built: the compressed tables were measured, not built or rendered.
 - Keyboard order and focus through the charts' table disclosures beyond what the guide check covers; real screen readers and devices (DR-213); 200 percent text and 320 px reflow on chart figures.
