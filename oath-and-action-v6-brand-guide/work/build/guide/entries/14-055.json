@@ -35,5 +35,5 @@
   "builders": "No kit form: draw a donut only as a sketch; for a figure with its context, build big-number.",
   "correct": null,
   "failure": null,
-  "sketch_alt": "A donut of one illustrative whole in two parts, with the larger part’s share, 64 percent, printed in its center and the ring split at that share. The rest of the ring is light gray."
+  "sketch_alt": "A donut of one illustrative whole in two parts, with the larger part’s share, 64 percent, printed in its center and the ring split at that share. The rest of the ring is gray."
 }

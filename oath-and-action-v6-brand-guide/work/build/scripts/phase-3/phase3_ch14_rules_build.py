@@ -692,7 +692,7 @@ def rule_14_3(B):
         "14.3", "Label the data directly, and use a key only when labels cannot fit.",
         ["Rule 12.6 sets where a label sits. In a chart, each line takes its name beside it toward its last point, where the lines stand "
          "apart, each bar its value at its end, and each "
-         "group its name on or beside its marks, in the ink of the text. Units go once in the measure line, so a label carries its number "
+         "group its name on or beside its marks, in the text’s ink. Units go once in the measure line, so a label carries its number "
          "with at most a sign or a percent sign.",
          "A key earns its place only when a mark codes something a label cannot carry on every mark, such as an evidence grade, a pattern or a "
          "run of shades. Then it sits under the measure line, in the order the marks run, as Rule 12.6 sets."],
@@ -817,7 +817,7 @@ def rule_14_5(B):
          "Steps of one hue promise an order, so named groups take the group inks and a measure takes a scale. Rule 05.7 sets the subject, the "
          "context and the one red point inside any of them."],
         ["A reader takes a color’s meaning from the first chart and carries it to the next. When each palette keeps its one job across our "
-         "work, a reader who has learned that a darker green means more can trust it on every page."],
+         "work, a reader who has learned that a stronger green means more can trust it on every page."],
         [("Sequential", "Five steps of Verdigris, light to dark for low to high", "oa.chart.color.sequential.fill.step1.onNewsprint"),
          ("Diverging, pair B", "Five steps, Prussian through the page color to Verdigris (Rule 01.3)", "oa.chart.color.diverging.fill.step1.onNewsprint"),
          ("Groups", "Charcoal, Verdigris, Prussian, Stone with its hatch, in that order; four at most (Rule 14.8)",
@@ -928,7 +928,7 @@ def rule_14_7(B):
            where={"party": {"not": ["Vacancies"]}},
            title=title, measure_line="Seats in the U.S. House of Representatives, by party, as of November 11, 2026",
            notes=["Two seats were vacant."], source_line=src(ds),
-           alt="Three bars in one dark ink, each named: Republicans 218, Democrats 214, Independents 1. A note gives the two vacant seats.",
+           alt="Three bars, all in the text’s ink, each named: Republicans 218, Democrats 214, Independents 1. A note gives the two vacant seats.",
            table={"caption": "House seats by party, November 11, 2026",
                   "columns": [{"field": "party", "label": "Party", "format": "text", "row_header": True},
                               {"field": "seats", "label": "Seats", "format": "integer"}]},
@@ -1407,7 +1407,7 @@ def rule_14_13(B):
            title=title, measure_line=measure, source_line=src(ds),
            notes=["A late or amended filing can change a past cycle’s count; these are the commission’s totals on November 12, 2026."],
            alt=f"Eight columns of super PACs, one for each two-year cycle: {', '.join(f'{y} {comma(r[y])}' for y in cycles)}, the last, "
-               "the one the title names, in the dark ink and the rest in gray.",
+               "the one the title names, in the text’s ink and the rest in gray.",
            table={"caption": "Super PACs in the Federal Election Commission’s totals, by two-year cycle",
                   "columns": [{"field": "cycle", "label": "Cycle", "format": "year", "row_header": True},
                               {"field": "super_pacs", "label": "Super PACs", "format": "integer"}]},

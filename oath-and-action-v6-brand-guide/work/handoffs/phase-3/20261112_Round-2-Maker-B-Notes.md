@@ -151,7 +151,7 @@ November 12, 2026, a fresh instance of maker B on `work/handoffs/phase-3/2026111
 
 ### Summary
 
-Done. Every maker B item in the fix brief and its AX addendum is applied under the data lead's rulings RF-1, RF-2, RF-6 to RF-9 and RF-18 to RF-20, and the engineer's new parts (band edges, the kit's knockout, row names, the red-share check, RB-G5 and RB-G6) are in my forms. The width sweep and crossing check (D3-904, D3-911) found faults in ten of my specs: S09, S11, S13, S25 and S34 by the sweep, and S02, S05, S14, S29 and S35 by the crossing check; all ten now pass, by placement only, and the board 1 drawings that moved are listed under "For board 2". `oa-chart.mjs build` on all 29 of my specs (S02, S05, S09, S11, S13, S14, S24 to S35, S49 to S59): 29 PASS, 29 check files read, 0 faults, the sweep on. `--figures` and `--check`: 0 faults; `phase3_ch14_build.py`: 0 faults; strict build exit 0. The data lead signed the pass off but for MB-F1 to MB-F3, now applied (S54, S55 and S59 rebuilt with the sweep, PASS).
+Done. Every maker B item in the fix brief and its AX addendum is applied under the data lead's rulings RF-1, RF-2, RF-6 to RF-9 and RF-18 to RF-20, and the engineer's new parts (band edges, the kit's knockout, row names, the red-share check, RB-G5 and RB-G6) are in my forms. The width sweep and crossing check (D3-904, D3-911) found faults in ten of my specs: S09, S11, S13, S25 and S34 by the sweep, and S02, S05, S14, S29 and S35 by the crossing check; all ten now pass, by placement only, and the board 1 drawings that moved are listed under "For board 2". `oa-chart.mjs build` on all 29 of my specs (S02, S05, S09, S11, S13, S14, S24 to S35, S49 to S59): 29 PASS, 29 check files read, 0 faults, the sweep on. `--figures` and `--check`: 0 faults; `phase3_ch14_build.py`: 0 faults; strict build exit 0; quick guide check PASS, 0 failures. The data lead signed the pass off but for MB-F1 to MB-F3, now applied (S54, S55 and S59 rebuilt with the sweep, PASS).
 
 ### Items
 
@@ -239,6 +239,7 @@ Each built with the kit's width sweep on and looked at as listed under Tested:
 - `node work/build/scripts/phase-2/dataviz_check.js <page> --kit --no-captures` on the build pages of S02, S05, S09, S11, S13, S14, S25, S29, S33 to S35 and S49 to S59: 22 of 22 PASS, 2 figures each at 1440 and 390 px, 0 failures.
 - `python3 -I work/build/scripts/phase-3/maker_b_round2_derive.py --figures`: 0 faults, with new checks for S52's medians and far counties, S53's band in ink and title, S54's figure line, S55's four states, their households and rents against the nation, S56's 2009 reason, S57's title length and S59's history; `--check`: 0 faults (the new `fred-unemployment-fourth-quarter` written once, then checked).
 - `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py`: 96 rules, 82 entries, 61 chart plates, 0 faults, run again after MB-F2's entry words (0 faults).
+- `node work/build/scripts/phase-2/guide_check.js <scratch>/guide/guide.html --quick --no-captures` on that strict build (my sketches as delivered): PASS, 2 widths, 312 rules, 662 specimens, 3,062 same-page links, 0 failures.
 - `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide/guide.html`: exit 0, no warning, 10,632,079 bytes. Plate weights from its report (bytes): S49 5,527; S50 9,800; S51 6,613; S52 7,595; S53 11,458; S54 9,704; S55 10,940; S56 14,661; S57 11,135; S58 11,431; S59 6,655 (its history's five rows included); S33 16,583; S25 22,806; S34 11,322; S35 10,078; S29 5,210; S02 10,655; S14 11,368; S09 13,017; S11 14,248; S05 30,312 and S13 33,488 (both approved on board 1 above three times the tier's average, as before). All of round 2's under the 24,576-byte far-over limit.
 - My specs, entries and sketches carry no em dash or U+2011 (the edit helper refuses to save one), and a scan of their reader words found no straight apostrophe.
 - After the editor's second-pass words landed in S55, S56, S57 and S59: `build` on the four, PASS, 0 faults; `--figures`, 0 faults.
@@ -246,6 +247,6 @@ Each built with the kit's width sweep on and looked at as listed under Tested:
 ### Not tested
 
 - Grayscale captures, forced colors and print of the changed drawings beyond the kit's own emulated checks; no screen reader.
-- Entries 14.60, 14.62, 14.67 to 14.69 and 14.75 in the guide build at any width, and 14.73 at 390 px (read from the files only).
+- Entries 14.60, 14.62, 14.67 to 14.69 and 14.75 in the guide build at any width, and 14.73 at 390 px (read from the files only). The strict build and quick guide check ran before MB-F1 to MB-F3 and the editor's latest words; the specs were rebuilt with the kit after them, the guide was not.
 - The kit's PNG exports of S24 to S35 other than S25, S34 and S35 were not looked at after the run (their forms did not change but for S25 and S34).
 - S51, S56, S57 and S59 on Charcoal at the phone widths other than those listed under Tested.

@@ -189,7 +189,7 @@
    "id": "14.3",
    "title": "Label the data directly, and use a key only when labels cannot fit.",
    "rule": [
-    "Rule 12.6 sets where a label sits. In a chart, each line takes its name beside it toward its last point, where the lines stand apart, each bar its value at its end, and each group its name on or beside its marks, in the ink of the text. Units go once in the measure line, so a label carries its number with at most a sign or a percent sign.",
+    "Rule 12.6 sets where a label sits. In a chart, each line takes its name beside it toward its last point, where the lines stand apart, each bar its value at its end, and each group its name on or beside its marks, in the text’s ink. Units go once in the measure line, so a label carries its number with at most a sign or a percent sign.",
     "A key earns its place only when a mark codes something a label cannot carry on every mark, such as an evidence grade, a pattern or a run of shades. Then it sits under the measure line, in the order the marks run, as Rule 12.6 sets."
    ],
    "why": {
@@ -295,7 +295,7 @@
    ],
    "why": {
     "text": [
-     "A reader takes a color’s meaning from the first chart and carries it to the next. When each palette keeps its one job across our work, a reader who has learned that a darker green means more can trust it on every page."
+     "A reader takes a color’s meaning from the first chart and carries it to the next. When each palette keeps its one job across our work, a reader who has learned that a stronger green means more can trust it on every page."
     ]
    },
    "tokens": [
@@ -2439,7 +2439,7 @@
    "tokens": [],
    "related": [],
    "builders": "No kit form: draw a donut only as a sketch; for a figure with its context, build big-number.",
-   "sketch_alt": "A donut of one illustrative whole in two parts, with the larger part’s share, 64 percent, printed in its center and the ring split at that share. The rest of the ring is light gray.",
+   "sketch_alt": "A donut of one illustrative whole in two parts, with the larger part’s share, 64 percent, printed in its center and the ring split at that share. The rest of the ring is gray.",
    "related_rules": [
     "14.5",
     "14.85"
@@ -2876,7 +2876,7 @@
    "tokens": [],
    "related": [],
    "builders": "No kit form: draw density contours in a specialist piece, from a density the analyst states.",
-   "sketch_alt": "Three nested contour rings around the densest part of a point cloud, the inner ring darkest, with a few points outside the outer ring.",
+   "sketch_alt": "Three nested contour rings around the densest part of a point cloud, the inner ring the strongest, with a few points outside the outer ring.",
    "related_rules": [
     "14.65"
    ],
@@ -2894,7 +2894,7 @@
    ],
    "correct": {
     "specimen": "s-14-66-sketch",
-    "caption": "Three nested contour rings around the densest part of a point cloud, the inner ring darkest, with a few points outside the outer ring.",
+    "caption": "Three nested contour rings around the densest part of a point cloud, the inner ring the strongest, with a few points outside the outer ring.",
     "kind": "sketch",
     "label": "Contour or density, a sketch"
    }

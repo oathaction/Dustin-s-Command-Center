@@ -543,3 +543,29 @@ Request to the engineer:
 - **EG-F1, wording in its notes only.** The contract line for the interval check says the interval runs "twice its mark", 26 px for a 13 px dot, while the routine call says "5 px past a dot on each side". Write one figure in both places, the one `checks.js` applies.
 
 **EG-F1: closed.** The engineer's contract line and routine call now give the figure `checks.js` applies: 5 px past a dot on each side (diameter plus 10 px, 23 px for a 13 px dot) and 2 px past a line (width plus 4 px). The old "twice the mark" was a draft. I corrected my own sign-off line above to match.
+
+**Maker A's fix pass: signed off but for MA-F1, with MA-F2 and MA-F3 to land.** I built S01, S10, S12, S18, S43 to S45, S47, S48 and S60 to S64 from the committed specs with `oa-chart.mjs build --widths 1440,390,328,288` into my scratch (`kit-ma`), with the sweep on: 14 PASS, 0 faults. I looked at, at 1x on Newsprint: S47, S45, S60, S63 and S10 at 1440; S48 at 1440 and 288; S61 at 1440 and 288, and on Charcoal at 1440; S12 at 288. By `measure.py`, S47 has no Pillar Red at any width (it was 17.6 to 19.7 percent), and S01, S10, S12 and S18 have none. I read the kit's tables for S60 (all eight qualification cells) and S43 (header, nation, DC, New York). I read the words of S43, S45, S47, S48, S60, S61 and S63 and the ruled sentences of entries 14.47, 14.52, 14.54 to 14.56, 14.87 and 14.89. By script:
+- S47's fold: ten functions under 2 percent, $673.63 billion unrounded, printed $673.6. The ten values as tabled sum to $673.7; the printed figure is the sum before rounding, which is right. Veterans keeps its tile at 5.5 percent.
+- S61's House roll call 280: Republicans 218 to 0, Democrats 13 to 198 with one not voting, one independent yes.
+- S61's Senate vote 253: 53 to 0, 0 to 45 and 0 to 2, with three-fifths needed.
+- S45's 2024 parts: 1,018.6, 16.6 and 591.7, totaling 1,626.9.
+
+The items:
+- **RF-1, S47: signed off.** Social Security is in the subject ink with light words and no plate; every other tile is in the track ink with a context-ink edge, so the drawing reads light with one dark tile. **RF-10:** the fold tile sits last, at the bottom right.
+- **RF-12, RF-13, S61: signed off at 1440 and 256 px on both grounds.** The 53 yes votes are solid and the 47 no votes in outline, in one ink, each side with its count and parties. The 60 tick and the seven-vote bracket stay. The title names both provisions in 30 words. Entry 14.87 carries Rule 01.2's sentence and says it draws S01's vote a second way.
+- **RF-3, S63: signed off.** Title, note 1 and X18's words are as ruled. The chips show one Decided and two Interim order, matching the title's "two others". Titles are in regular weight, and the table has its Atlas grade column.
+- **RF-4, S60: signed off.** The qualification column prints V7's text for seven figures, and figure 5's cell reads "None of its own in the atlas; see the note". Note 1 dates the survey and gives H.R. 7008's two provisions; note 2 explains figure 5. The `v7-numbers` sidecar tells a reader of the CSV about both figures.
+- **RF-5, RF-24, S48: signed off.** The source line is joined from the sidecars, and note 1 says the 2024 election. The independent and the two vacancies stand together under the aisle, apart from both blocks, each with its own leader, at 1440 and 256 px.
+- **RF-11a, S43: signed off.** The DP04 margin column is in, the nation is first, DC prints 61.9 with 1.5, and the variant is `with_dp04_margin`.
+- **RF-22, RF-23, S45: signed off but for MA-F1.** The title, the notes and the true-height seam are as ruled.
+- **D3-895, S10: signed off.** "All 433 claims: 74% documented" is the dashed total line in the text's ink.
+- **S18, S44, S62, S64 (RF-2's edge between the bands), and S01, S07, S15 and S16 (placement only): signed off** on the kit's pass and maker A's byte comparisons. I did not look at these.
+- **Entries 14.47, 14.52, 14.54 to 14.56, 14.87 and 14.89: signed off.**
+- **Sketches:** not looked at by me.
+
+Requests to maker A:
+- **MA-F1, S45.** The title gives 591,700 homes in buildings of five or more units in 2024, but the drawing prints only totals (1,979.4, 584.9, 1,626.9), and a reader cannot read a stacked part's size off the axis. Label 2024's five-or-more part with its value, 591.7, as RF-22 asked.
+- **MA-F2, S47's chart note, words.** "Social Security ... takes the text's ink" should read "takes the subject ink", or name it by role, "the strongest ink", as S53 does. A data mark takes the subject ink and the text's ink is the words' token (MA-7).
+- **MA-F3, S12 at 256 to 279 px.** With no codes, the six framed tiles no longer say which states changed leader, and the frame key names a code the drawing cannot show. Where the codes drop, list the framed states by name under "Largest shifts" and "Smallest shifts", as those are listed, so the frame keeps its meaning. This is a board 1 drawing at a width board 1 did not show, and it joins board 2's list as maker A noted.
+
+**Rule 14.12's plate** waits on the editor's rebuild with maker A's new `column.js`. I look at it at 1440, 480 to 502 and 390 px once the editor tells me.

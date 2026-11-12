@@ -2,7 +2,7 @@
  "id": "14.3",
  "title": "Label the data directly, and use a key only when labels cannot fit.",
  "rule": [
-  "Rule 12.6 sets where a label sits. In a chart, each line takes its name beside it toward its last point, where the lines stand apart, each bar its value at its end, and each group its name on or beside its marks, in the ink of the text. Units go once in the measure line, so a label carries its number with at most a sign or a percent sign.",
+  "Rule 12.6 sets where a label sits. In a chart, each line takes its name beside it toward its last point, where the lines stand apart, each bar its value at its end, and each group its name on or beside its marks, in the text’s ink. Units go once in the measure line, so a label carries its number with at most a sign or a percent sign.",
   "A key earns its place only when a mark codes something a label cannot carry on every mark, such as an evidence grade, a pattern or a run of shades. Then it sits under the measure line, in the order the marks run, as Rule 12.6 sets."
  ],
  "use_when": null,

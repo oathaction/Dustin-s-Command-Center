@@ -30,5 +30,5 @@
  "builders": "No kit form: draw density contours in a specialist piece, from a density the analyst states.",
  "correct": null,
  "failure": null,
- "sketch_alt": "Three nested contour rings around the densest part of a point cloud, the inner ring darkest, with a few points outside the outer ring."
+ "sketch_alt": "Three nested contour rings around the densest part of a point cloud, the inner ring the strongest, with a few points outside the outer ring."
 }
