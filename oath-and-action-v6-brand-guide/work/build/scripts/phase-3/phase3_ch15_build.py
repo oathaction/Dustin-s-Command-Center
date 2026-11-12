@@ -1624,11 +1624,19 @@ def rule_15_13(book):
     svg = svg_wrap(b, h)
     steps = kw([f"<b>{i}</b>&#160;{say_link(x)}" + (" The atlas names it the weakest step." if x == "L02" else "")
                 for i, x in enumerate(lp["links"], 1)])
+    # AX S9: a reader who lands here by a link meets "money, raises" and the ticks with no gloss, so the plate says what
+    # each means, in the delay classes chapter 13 reads from the atlas (one tick per class, short to long, all three here)
+    need([DELAY[link(x)["delay"]][0] for x in lp["links"]] == [1, 2, 3], "Loop R1's steps no longer show one, two and three ticks")
+    ticks = ", ".join(f"{words_n(DELAY[k][0])} for {DELAY[k][1]}" for k in ("S", "M", "L"))
+    gloss = kw(["<b>money, raises</b>: money is what moves along the connection (Rule 15.4), and raises says the next "
+                "variable moves the same way as the one before it (Rule 15.3).",
+                f"<b>Ticks</b> near a line’s start count its delay, the time the effect takes: {ticks} (Rule 13.5)."])
     body = (diagram_label("plausible", "some evidence, the grade of the loop’s least certain step, Connection L02")
-            + f'<div class="fx"><div>{hed("Loop", "R1", lp["title"])}{fig(svg, read_aloud(codes, lp["links"]))}</div>'
-            f'<div><p class="k">Each step, and the weakest</p>{steps}<p class="nt">{said}</p></div></div>'
-            + src("loop R1 and connections L01, L02 and L03"))
-    book.add("s-15-13-correct", body, rule="15.13", readable=True,
+            + beside(hed("Loop", "R1", lp["title"]) + fig(svg),
+                     ra_p(read_aloud(codes, lp["links"])) + f'<p class="k">Each step, and the weakest</p>{steps}'
+                     f'<p class="nt">{said}</p><p class="k">Reading a step</p>{gloss}'
+                     + src("loop R1 and connections L01, L02 and L03")))
+    book.add("s-15-13-correct", body, rule="15.13", readable=True, wide=True,
              alt=(f"Loop R1 from our systems atlas, “{lp['title']}”, under a label reading Plausible, the grade of its least "
                   "certain step. Three pills: Wealth concentration at the top, Money in politics below right, Policy tilt to "
                   "insiders below left. Step 1, solid, money, raises; step 2, dashed, money, raises, marked weakest step; step 3, "
