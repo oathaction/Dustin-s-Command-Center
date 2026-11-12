@@ -756,18 +756,21 @@ def rule_14_6(B):
     return entry(
         "14.6", "Spend the view’s one red on the point the title names.",
         ["Rule 05.3 gives each view one working red and says which job claims it first. In a chart, the red goes to the one point, bar or "
-         "line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Every other mark keeps "
-         "the subject and context inks of Rule 05.7.",
-         "When an error or a step the reader can take already holds the view’s red, the named point gives it up and takes Charcoal at the "
-         "subject weight, with its label. Red never codes a series, a group or a step on a scale."],
+         "line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Every other mark takes "
+         "the light fill on Newsprint and the context ink on Charcoal (Rule 05.7).",
+         "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step "
+         "the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber "
+         "whose majority readers know, an election result, a campaign’s money and a policy readers link to one party all carry that tie, "
+         "and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7). Red never codes a series, a group or a step on a scale."],
         ["One red mark tells a reader where to look first, and the title tells them why. A second red mark splits their attention, and red "
          "that codes a group reads as a warning about that group."],
         [("The point", "Pillar Red with a 1 px Charcoal keyline", "oa.chart.color.point.onNewsprint"),
          ("Its label", "Beside the mark, in the text ink"),
-         ("When red is taken", "Charcoal at the subject weight, with the label", "oa.chart.color.subject.onNewsprint"),
+         ("An error, a step or a party tie", "Charcoal at the subject weight, with the label", "oa.chart.color.subject.onNewsprint"),
          ("Red never", "Codes a series, a group or a step on a scale")],
-        ["05.3", "05.5", "05.7", "01.1"],
-        "Name the one point in the spec (labels.named for the subject ink); the kit counts working reds and fails a view with two.",
+        ["05.3", "05.5", "05.7", "01.1", "01.2", "14.7"],
+        "Name the one point in the spec’s labels.point, which draws it in red with its keyline, or in labels.named where a party tie "
+        "gives it the subject ink; the kit counts working reds and fails a view with two.",
         B.plate("s-14-6-correct", "The title names the Ninth Circuit, and its bar alone takes the view’s red, inside its keyline, with every "
                                   "other court in gray."),
         B.plate("s-14-6-failure", fails("14.6", "Red falls on three courts while the title names one, so a reader cannot tell which bar the "
