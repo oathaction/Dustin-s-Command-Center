@@ -33,5 +33,8 @@
  "ledger_row": "P7-034",
  "domain": "D01",
  "domain_note": "The law requires online platforms to remove nonconsensual intimate images, including computer-made fakes, within 48 hours of a valid request; V7 places platforms and fake media under news, records and public information (issue I010)",
- "states": []
+ "states": [],
+ "notes": [
+  "Hearing check, read November 12, 2026 (maker A’s R-A1, for S62): Congress.gov’s full action list for S. 146 (23 actions, api.congress.gov v3 /bill/119/s/146/actions) and its committees record (/committees) show the Senate Committee on Commerce, Science, and Transportation with two activities only, Referred To (January 16, 2025) and Discharged From (February 13, 2025, by unanimous consent); no hearing or markup is recorded. The House received S. 146 and held it at the desk (February 14, 2025), then passed it under suspension of the rules on April 28, 2025, with no committee referral. The committee’s own hearings list (commerce.senate.gov/hearings, all 24 pages of the 240 most recent meetings, 99 of them in the 119th Congress from January 15, 2025) names no hearing on the bill or its subject. The House companion, H.R. 633, has its own record: House Energy and Commerce marked it up on April 8, 2025 and reported it on April 28, 2025 (House Report 119-82, as the public law’s legislative history lists it)"
+ ]
 }

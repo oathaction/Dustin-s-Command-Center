@@ -30,6 +30,8 @@ What the fetch found:
 
 **S53's program ages (maker B's RB-R3, 20:10 UTC).** Both ages hold, read November 12, 2026. 42 U.S.C. 402(a) (U.S. Code, 2024 edition, govinfo) entitles a fully insured individual who "has attained age 62" to old-age insurance benefits, and 416(l)(2) defines "early retirement age" as "age 62" for an old-age benefit. 42 U.S.C. 426(a) entitles to Medicare's hospital insurance an individual who "has attained age 65" and is entitled to Social Security or railroad retirement benefits; medicare.gov's "Get started with Medicare" reads "Medicare is health insurance for people 65 or older who meet citizenship or residency requirements", with earlier eligibility for a disability, End-Stage Renal Disease or ALS. ssa.gov refused this container (HTTP 403). The note's words hold: "can start at age 62" matches the law, and "covers most people from age 65" is a fair summary of the age-65 rule with its residency and disability qualifications. `census-pep-population-by-age-sex.meta.json` gains the variant `with_program_ages`, its printed line plus "Program ages from the Social Security Act, 42 U.S.C. 402(a) and 426(a), read November 12, 2026.", and a note quoting what was read. Data check: 111 tables, 0 faults.
 
+**S62's hearing step (maker A's R-A1, 20:20 UTC).** "None in the bill's record" holds, read November 12, 2026. Congress.gov's API (key injected) gives S. 146's full action list, 23 actions, and its committees record: Senate Commerce's only activities are Referred To (January 16, 2025) and Discharged From (February 13, 2025, by unanimous consent), with no hearing or markup. The House held the bill at the desk and passed it under suspension with no committee referral. The committee's own hearings list (commerce.senate.gov, 24 pages, the 240 most recent meetings, 99 of them in the 119th Congress from January 15, 2025) names no hearing on the bill or its subject. The House companion, H.R. 633, was marked up by House Energy and Commerce on April 8, 2025 and reported April 28; that is a different bill's record. `congress-gov-take-it-down-act-actions.meta.json` carries a note with all of this, and the ledger a line under P7-034. Data check: 111 tables, 0 faults.
+
 ## Routine calls
 
 - D3-xxx | Row 113's sentence reads V7 claim CL1516 and names source K1508, with the counts in the claim's own supporting text | DR-243 asks for the atlas's July 1, 2026 count as a sourced sentence; the claim holds the counts, and K1508 is the page it cites
@@ -68,6 +70,7 @@ What the fetch found:
 
 ## Not tested
 
+- A hearing on the subject held under another name or in a subcommittee; the committee's list was searched by title, and Congress.gov records no hearing activity on S. 146.
 - ssa.gov's own pages on claiming at 62 (HTTP 403); the age rests on the statute.
 - Any round 4 chart; round 4's maker draws them later.
 - Why the courts count 677 district positions against the 673 in 28 U.S.C. 133's table; temporary judgeships are the likely difference and were not traced seat by seat (ledger claim 28).
@@ -91,6 +94,7 @@ Modified:
 - `work/build/data/treasury-mspd-debt-subject-to-limit.meta.json` (qualification and one note)
 - `work/build/data/census-acs-earnings-ratio-by-state.meta.json` (the printed line's last clause, the editor's words)
 - `work/build/data/census-pep-population-by-age-sex.meta.json` (variant `with_program_ages` and one note, for S53)
+- `work/build/data/congress-gov-take-it-down-act-actions.meta.json` (one note, the hearing check for S62)
 - `work/research/20261021_Research-Ledger.md` (Part 7's "Round 2" section and "Round 4 datasets" section with P7-301 to P7-310; claims 27 to 30; change log lines)
 
 Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/65b3d20e-985e-5fe9-b272-d7d01bd821cd/scratchpad/phase-3/round-2/research/` (reach logs; downloads with fetch logs under `dl/`; scripts `fetch.sh`, `freeze_round4.py`, `fix_stc_r1.py`, `fix_mspd_r2.py`, `recount_ch14.py`, `plan4_v7_check.py`, `row113_v7_read.py`, `check_maker_b_derived.py`, `stc_read.py`, `html_text_grep.py`, `htmltext.py`, `ecfrtext.py`, `xl_dump.py`).
