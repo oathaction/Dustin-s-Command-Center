@@ -35,12 +35,16 @@
       fr.sort(function (p, q) { return q.f - p.f || q.ri - p.ri; });
       for (var q = 0; got < a.n; q++, got++) alloc[fr[q % Rr].ri][a.g]++;
       if (a !== b) room.forEach(function (m, ri) { alloc[ri][b.g] = m - alloc[ri][a.g]; });
-      // in each row, left to right: the blocks in order, one empty place between two blocks
+      // in each row, left to right: the blocks in order, one empty place between two blocks; in the innermost row the
+      // blocks between the ends stand two empty places from each end block and next to each other, so they sit under the
+      // aisle between the end blocks as a group of their own (BC S2, CD A-S5)
       var seats = [], gapa = [];
+      var gap = function (ri, p, n) { var pm = mids.indexOf(p) >= 0, nm = mids.indexOf(n) >= 0; return ri ? 1 : pm && nm ? 0 : pm || nm ? 2 : 1; };
       radii.forEach(function (rr, ri) {
-        var blocks = groups.filter(function (g) { return alloc[ri][g.g] > 0; }), slots = per[ri] + blocks.length - 1, k = 0;
+        var blocks = groups.filter(function (g) { return alloc[ri][g.g] > 0; }), k = 0, slots = per[ri];
+        blocks.forEach(function (g, bi) { if (bi) slots += gap(ri, blocks[bi - 1], g); });
         blocks.forEach(function (g, bi) {
-          if (bi) { if (g === b) gapa.push({ ri: ri, a: Math.PI - k * Math.PI / (slots - 1) }); k++; }
+          if (bi) { var gp = gap(ri, blocks[bi - 1], g); if (g === b) gapa.push({ ri: ri, a: Math.PI - (k + (gp - 1) / 2) * Math.PI / (slots - 1) }); k += gp; }
           for (var m = 0; m < alloc[ri][g.g]; m++, k++) {
             var an = Math.PI - k * Math.PI / (slots - 1);
             seats.push({ g: g, p: { a: an, r: rr, x: cx + rr * Math.cos(an), y: cy - rr * Math.sin(an) } });
@@ -57,19 +61,29 @@
         } else c.circle(s.p.x, s.p.y, rad, { fill: 'party', kind: 'seat', data: d });
       });
       var words = function (g) { return String((L.words || {})[g.g] || g.g + ' {n}').split('{n}').join(K.fmt(g.n, 'integer')); };
-      // the end blocks named under the feet, flush with the half circle's two ends
+      // the blocks between the ends, each named on one line under its own seats with its own hairline up to them: in the
+      // hollow, resting on the feet's line, where the line fits between the innermost feet; else on a line of its own under
+      // the half circle, above the end blocks' names (BC S2, CD A-S5, AX S2)
       var fy = cy + rad + 8 + size, n0 = groups[0], n1 = groups[groups.length - 1];
+      if (mids.length) {
+        var sp = 16, mg = mids.map(function (g) {
+          var ms = seats.filter(function (s) { return s.g === g; });
+          return { g: g, w: words(g), mw: c.measure(words(g), 'label', 600), x: ms.reduce(function (t, s) { return t + s.p.x; }, 0) / ms.length, y: Math.max.apply(null, ms.map(function (s) { return s.p.y; })) };
+        });
+        var tw = mg.reduce(function (t, m) { return t + m.mw; }, 0) + sp * (mg.length - 1), xc = (mg[0].x + mg[mg.length - 1].x) / 2;
+        var half = Ri - rad - 6, inside = tw <= 2 * half, yb = inside ? cy + rad : cy + rad + 8 + size;
+        var x0 = inside ? Math.max(cx - half, Math.min(cx + half - tw, xc - tw / 2)) : Math.max(0, Math.min(W - tw, xc - tw / 2));
+        if (!inside) fy = yb + Math.round(size * 1.25) + 4;
+        mg.forEach(function (m) {
+          c.text(x0, yb, m.w, { role: 'label', weight: 600 });
+          var lx = Math.max(x0 + 2, Math.min(x0 + m.mw - 2, m.x));
+          c.line(m.x, m.y + rad + 3, lx, yb - 0.864 * size - 3, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+          x0 += m.mw + sp;
+        });
+      }
+      // the end blocks named under the feet, flush with the half circle's two ends
       c.text(cx - Ro, fy, words(n0), { role: 'label', weight: 700 });
       if (groups.length > 1) c.text(cx + Ro, fy, words(n1), { role: 'label', weight: 700, anchor: 'end' });
-      // the blocks between, named together in the hollow, their words resting on the feet's line, with one hairline up to
-      // their seats in the innermost row
-      if (mids.length) {
-        var ms = seats.filter(function (s) { return mids.indexOf(s.g) >= 0; }), mx = ms.reduce(function (t, s) { return t + s.p.x; }, 0) / ms.length;
-        var my = Math.max.apply(null, ms.map(function (s) { return s.p.y; })), mw2 = 2 * (Ri - rad) - 8, lh2 = Math.round(size * 1.25);
-        var mtxt = mids.map(words).join(', '), nl = c.wrap(mtxt, 'label', mw2, 600).length;
-        var tb = c.text(cx, cy + rad - (nl - 1) * lh2, mtxt, { role: 'label', weight: 600, anchor: 'middle', max: mw2 + 1, leading: lh2 });
-        c.line(mx, my + rad + 3, mx, tb.y - 3, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
-      }
       // the majority tick in the text's ink, over the outer row's gap before the last block
       if (L.majority) {
         var ga = gapa.filter(function (gp) { return gp.ri === Rr - 1; })[0], am = ga ? ga.a : Math.PI / 2;

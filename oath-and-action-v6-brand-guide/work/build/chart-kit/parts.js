@@ -253,6 +253,11 @@
         if (p.high !== undefined) c.datum(p.x, Math.min(p.y0, p.y1), { data: { key: p.key, field: o.field_high || 'high', value: p.high } });
       }
     });
+    // D3-903 (round 2 fix pass): the band is recorded for the checks, which hold its fill, or its edges, to 3 to 1 against
+    // what lies under it, and its height to the line it carries (o.line_width, default the context line's 2 px)
+    (c.bands = c.bands || []).push({ fill: o.pattern ? null : (o.fill || 'band'), pattern: o.pattern || null, edge: o.edge || null,
+      edge_width: o.edge ? (o.edge_width || c.t('line-hairline')) : 0, line: o.line_width || c.t('line-context'), top: top, bottom: bottom,
+      heights: pts.filter(ok).map(function (p) { return Math.abs(p.y1 - p.y0); }), runs: runs.length });
     var R = K.round, edge = { stroke: o.edge, width: o.edge_width || c.t('line-hairline'), mark: false };
     runs.forEach(function (rn) {
       var seg = pts.slice(rn[0], rn[1] + 1);

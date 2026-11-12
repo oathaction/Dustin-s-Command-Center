@@ -39,6 +39,11 @@
         "format": "integer"
       },
       {
+        "field": "minimum",
+        "label": "Lowest county",
+        "format": "number:1"
+      },
+      {
         "field": "whisker_low",
         "label": "Lower whisker",
         "format": "number:1"
@@ -61,6 +66,11 @@
       {
         "field": "whisker_high",
         "label": "Upper whisker",
+        "format": "number:1"
+      },
+      {
+        "field": "maximum",
+        "label": "Highest county",
         "format": "number:1"
       },
       {
@@ -115,6 +125,7 @@
     "Ruling (a): the South in the subject ink through labels.named (a Census region counts as a set of states). Ruling (d): Estimate, the grade line and the Method note in the ruling’s words. Ruling (e): boxes light with a dark median, whiskers and outliers in the context ink; the South’s box in ink.",
     "Figures checked by maker_b_round2_derive.py --figures (check S51): medians 7.2, 8.8, 13.9 and 12.35, the South highest (the alt leaves the West’s 12.35 out, since the kit prints it 12.3: request RB-E1); South quartiles 11.0 and 17.875 (17.9); 62 outliers, all above their box; Gaines County, TX, 42.5 the highest; Kalawao County the one missing estimate.",
     "Read from the left and the right: the title gives a region’s median as the Bureau’s model estimates it and names no state or policy; the note says boxes describe counties, not people.",
-    "Data lead MB-3 to MB-5: the title names the South’s median county; note 2 says a county is named only past both margins, and note 3 gives Gaines County’s 42.5 (margin 2.6) 8.5 points over Presidio and Starr at 34.0 (margins 3.1 and 2.6), a combined margin of about 4.0, checked by maker_b_round2_derive.py --figures; the engineer’s rounding fix (RB-G1) prints the West’s 12.35 as 12.4, so the alt gives all four medians."
+    "Data lead MB-3 to MB-5: the title names the South’s median county; note 2 says a county is named only past both margins, and note 3 gives Gaines County’s 42.5 (margin 2.6) 8.5 points over Presidio and Starr at 34.0 (margins 3.1 and 2.6), a combined margin of about 4.0, checked by maker_b_round2_derive.py --figures; the engineer’s rounding fix (RB-G1) prints the West’s 12.35 as 12.4, so the alt gives all four medians.",
+    "Review fix pass (ST S10, AX S5, the data lead’s RF-9): the table adds each region’s lowest and highest county (2.7, 4.1, 4.5 and 3.5; 16.9, 30.0, 42.5 and 26.0, Northeast to West), so the five numbers are whole and note 3’s 42.5 percent is in the table; the 62 counties stay in the derived outliers file and its CSV."
   ]
 }

@@ -664,6 +664,7 @@
       ' role="img" data-oa-form="' + esc(spec.form) + '" data-oa-width="' + width + '"' + (opts.label_id ? ' aria-labelledby="' + esc(opts.label_id) + '"' : '') + '>' +
       title + desc + fc.style + defs + c._els.join('') + '</svg>';
     return { svg: svg, width: width, height: h, texts: c.texts, marks: c.marks, leaders: c.leaders, ink: c.ink, keys: c.keys || [], warnings: c.warnings, guard: guard, phone: c.phone,
+      bands: c.bands || [], interval: def.interval || false,
       arrangement: c._arr || (c.phone ? 'phone' : 'desk'),
       fc: K.FC, fc_on_dark: K.FC_ON_DARK };
   };

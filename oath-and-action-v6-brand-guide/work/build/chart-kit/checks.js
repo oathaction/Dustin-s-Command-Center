@@ -327,6 +327,100 @@ function role_color(role, tok) {
   return null;
 }
 
+// WCAG's contrast ratio between two hexes
+function contrast(a, b) {
+  const lum = hex => {
+    const m = /^#?([0-9a-f]{6})$/i.exec(String(hex || '').trim());
+    if (!m) return null;
+    const n = parseInt(m[1], 16), lin = c => { c /= 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); };
+    return 0.2126 * lin(n >> 16 & 255) + 0.7152 * lin(n >> 8 & 255) + 0.0722 * lin(n & 255);
+  };
+  const x = lum(a), y = lum(b);
+  if (x === null || y === null) return null;
+  return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
+}
+const median = xs => { const v = xs.filter(x => isFinite(x)).sort((a, b) => a - b); return v.length ? (v.length % 2 ? v[(v.length - 1) / 2] : (v[v.length / 2 - 1] + v[v.length / 2]) / 2) : null; };
+// D3-903 (AX M1, CD B-M1, BC S6): a band drawn through K.parts.band carries the form's meaning (an interval, a fan's
+// step), so its fill, or its edge, meets 3 to 1 against what lies under it: the ground, or a wider band drawn before it
+// that holds it (WCAG 1.4.11). A band under that with no edge fails; K.parts.band's edge: 'context' draws one.
+function band_faults(d, tok, at) {
+  const f = [], ground = tok['--oa-color-surface'] || tok['--oa-chart-color-surface'];
+  (d.bands || []).forEach((b, i) => {
+    if (!b.fill) return;   // a hatched band shows by its lines
+    const outer = (d.bands || []).slice(0, i).reverse().find(o => o.fill && o.top <= b.top + 0.5 && o.bottom >= b.bottom - 0.5);
+    const under = outer ? role_color(outer.fill, tok) : String(ground || '').trim().toUpperCase(), uname = outer ? `the ${outer.fill} band under it` : 'the ground';
+    const fc = contrast(role_color(b.fill, tok), under), ec = b.edge ? contrast(role_color(b.edge, tok), under) : null;
+    if (fc === null) { f.push(`band: its fill ${b.fill} has no resolved color${at}`); return; }
+    if (fc >= 3 || (ec !== null && ec >= 3)) return;
+    f.push(`band: a band in ${b.fill} measures ${fc.toFixed(2)} to 1 against ${uname}${b.edge ? `, and its ${b.edge} edge ${ec === null ? 'has no resolved color' : ec.toFixed(2) + ' to 1'}` : ' and has no edge'}, under 3 to 1; draw its edges in the context ink, K.parts.band(c, pts, {edge: 'context'}) (WCAG 1.4.11, D3-903)${at}`);
+  });
+  return f;
+}
+// D3-899 (call 9, V20 section 3; AX M1): an interval form's plot is wide enough for its marks. Each row's interval is read
+// from what the drawing records, its low and high ends (K.parts.whisker and K.parts.band record them), and its estimate's
+// mark (a dot's diameter; a line's width for a band, 2 px). Where the middle row's interval, in pixels, runs less than 2 px
+// past its estimate's mark on each side, most intervals cannot be seen at this width, and the drawing fails.
+function interval_faults(spec, d, def, at) {
+  if (!def || !def.interval) return [];
+  const enc = spec.encode || {}, vf = enc.value !== undefined ? enc.value : enc.y;
+  const fl = enc.low, fh = enc.high;
+  const by = new Map();
+  for (const m of d.marks) {
+    const k = m.data && m.data.key, fd = m.data && m.data.field;
+    if (k === undefined || k === null) continue;
+    const e = by.get(String(k)) || {};
+    const cx = m.x + m.w / 2, cy = m.y + m.h / 2;
+    if (fd === 'low' || (fl && fd === fl)) (e.lo = e.lo || []).push([cx, cy]);
+    else if (fd === 'high' || (fh && fd === fh)) (e.hi = e.hi || []).push([cx, cy]);
+    else if (fd === vf || fd === enc.y) e.est = Math.max(e.est || 0, m.kind === 'circle' ? 2 * (m.r || m.w / 2) : 0);
+    by.set(String(k), e);
+  }
+  const line = Math.max(0, ...(d.bands || []).map(b => b.line || 0)) || 2;
+  const runs = [], needs = [];
+  for (const e of by.values()) {
+    if (!e.lo || !e.hi) continue;
+    // a key that holds several bands (a fan's two steps) is read at its widest
+    let len = 0;
+    e.lo.forEach(a => e.hi.forEach(b => { len = Math.max(len, Math.hypot(b[0] - a[0], b[1] - a[1])); }));
+    runs.push(len);
+    needs.push((e.est || line) + 4);
+  }
+  if (!runs.length) return [];
+  const mr = median(runs), mn = median(needs);
+  if (mr + 1e-6 < mn) return [`interval: at this width the middle row's interval spans ${mr.toFixed(1)} px, under the ${mn.toFixed(1)} px its estimate's mark needs to show 2 px of it on each side, so the intervals cannot be seen; give the plot more width, or stack the rows (D3-899)${at}`];
+  return [];
+}
+// CD A-M2 (round 2 fix pass): Pillar Red's share of a view. Every shape's paint: its fill's area where the fill resolves to
+// Pillar Red, and its stroke's length times its width where the stroke does. The view is the drawing, or, where the
+// drawing is taller than a screen, the screen's height of it that holds the most red (900 px at a desk, 844 px on a phone).
+const RED_SHARE = 0.05;
+const VIEW_H = { desk: 900, phone: 844 };
+function red_share(d, tok) {
+  const items = [];
+  for (const b of d.ink || []) {
+    let a = 0;
+    if (b.fill && role_color(b.fill, tok) === RED) a += b.a || 0;
+    if (b.stroke && role_color(b.stroke, tok) === RED) a += (b.len || 0) * (b.sw || 1);
+    if (a > 0) items.push({ a, y0: b.y, y1: b.y + b.h });
+  }
+  const W = d.width, H = d.height, view = d.phone ? VIEW_H.phone : VIEW_H.desk;
+  const total = items.reduce((s, x) => s + x.a, 0);
+  if (!(W > 0 && H > 0)) return { share: 0, area: 0 };
+  if (H <= view) return { share: total / (W * H), area: total, window: false };
+  // a screen's height of the drawing, set at each red shape's top (and the drawing's foot), the one holding the most red
+  let best = 0;
+  const tops = items.map(x => Math.min(Math.max(0, x.y0), H - view)).concat([H - view]);
+  for (const t of tops) {
+    let a = 0;
+    for (const x of items) {
+      const lo = Math.max(t, x.y0), hi = Math.min(t + view, x.y1), span = x.y1 - x.y0;
+      a += span > 0 ? x.a * Math.max(0, hi - lo) / span : (x.y0 >= t && x.y0 <= t + view ? x.a : 0);
+    }
+    best = Math.max(best, a);
+  }
+  return { share: best / (W * view), area: best, window: true, view };
+}
+
 function check_drawing(spec, d, tok, where) {
   const f = [];
   const at = where ? ` (${where})` : '';
@@ -416,6 +510,13 @@ function check_drawing(spec, d, tok, where) {
   // count as one working red; a red mark with no job is a job of its own
   const jobs = new Set(reds.map((m, i) => m.job !== undefined && m.job !== null ? 'job:' + m.job : 'mark:' + i));
   if (jobs.size > 1) f.push(`chart: ${jobs.size} working reds in one view (Rule 05.3)${at}`);
+  // CD A-M2 (round 2 fix pass, D3-890): Rule 05.1 holds Pillar Red within 5 percent of every view. The kit measures the
+  // red's painted area (fills, and strokes as length times width, from every shape drawn, marks or not) against the drawing,
+  // and against a window of a screen's height (900 px at a desk, 844 on a phone) where the drawing is taller than one
+  f.push(...band_faults(d, tok, at));
+  f.push(...interval_faults(spec, d, { interval: d.interval }, at));
+  const share = red_share(d, tok);
+  if (share.share > RED_SHARE + 1e-9) f.push(`chart: Pillar Red covers ${(100 * share.share).toFixed(1)} percent of ${share.window ? `a ${share.view} px tall view of the drawing` : 'the drawing'}, over Rule 05.1's 5 percent; a named area past it takes the subject ink (D3-890)${at}`);
   for (const r of reds) {
     for (const m of d.marks) {
       if (m === r || color(m) !== PRUSSIAN) continue;
@@ -493,5 +594,5 @@ function id_types() {
   return out;
 }
 
-module.exports = { id_types, check_spec, check_drawing, check_csv, to_csv, load_dataset, rows_of, v7, role_color, hex_to_lab_l, strings,
+module.exports = { id_types, check_spec, check_drawing, check_csv, red_share, RED_SHARE, contrast, band_faults, interval_faults, to_csv, load_dataset, rows_of, v7, role_color, hex_to_lab_l, strings,
   FAMILIES, TIERS, EVIDENCE, DISCLOSURE, KEY_LIGHTNESS_MARGIN, ROOT, DATA };
