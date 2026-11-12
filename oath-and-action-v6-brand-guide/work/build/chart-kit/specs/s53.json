@@ -17,14 +17,14 @@
   "grade_line": "Documented: the Census Bureau’s Vintage 2025 population estimates",
   "title": "The Census Bureau estimated 41.2 million people aged 55 to 64 on July 1, 2025, the ten years before most people qualify for Medicare at 65.",
   "measure_line": "Resident population by single year of age and sex, July 1, 2025, United States; the top bar counts everyone 100 and over.",
-  "reading_guide": "Each bar is one year of age, men to the left and women to the right, and the bars in the strongest ink are ages 55 to 64.",
+  "reading_guide": "Each bar is one year of age, men to the left and women to the right, and the bars in the text’s ink are ages 55 to 64.",
   "notes": [
     "Social Security retirement benefits can start at age 62, and Medicare covers most people from age 65.",
     "Method: the Census Bureau starts from the 2020 Census and adds births, subtracts deaths and adds net migration for each year since; each new vintage revises the years before it."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "A population pyramid for July 1, 2025, one bar per year of age, men on the left and women on the right. The bars for ages 55 to 64, 41.2 million people, stand out on both sides in the strongest ink; the largest single ages sit in the 20s and 30s, and the bars narrow past the late 60s.",
+  "alt": "A population pyramid for July 1, 2025, one bar per year of age, men on the left and women on the right. The bars for ages 55 to 64, 41.2 million people, stand out on both sides in the text’s ink; the largest single ages sit in the 20s and 30s, and the bars narrow past the late 60s.",
   "table": {
     "caption": "Resident population by age and sex, July 1, 2025",
     "pivot": {
@@ -50,7 +50,7 @@
     ]
   },
   "chart_notes": [
-    "The bars for ages 55 to 64 take the strongest ink on both sides and are named at the upper left; every other age is muted. The scale is millions of people at each age."
+    "The bars for ages 55 to 64 take the text’s ink on both sides and are named at the upper left; every other age is gray. The scale is millions of people at each age."
   ],
   "phone": "same",
   "artboard": "reading",

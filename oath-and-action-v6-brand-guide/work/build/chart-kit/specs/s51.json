@@ -81,7 +81,7 @@
     ]
   },
   "chart_notes": [
-    "The South’s box takes the dark ink; the other regions’ boxes are light gray, each with its median as a dark line. Small open circles mark the counties past a whisker."
+    "The South’s box takes the text’s ink; the other regions’ boxes are gray, each with its median as a line in the text’s ink. Small open circles mark the counties past a whisker."
   ],
   "phone": "same",
   "artboard": "reading",

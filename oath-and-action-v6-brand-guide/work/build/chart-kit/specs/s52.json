@@ -11,14 +11,14 @@
   "grade_line": "Documented: the Census Bureau’s Small Area Income and Poverty Estimates",
   "title": "The median county’s child poverty rate fell from 18.7 percent in 2019 to 17.1 percent in 2024, by the Census Bureau’s estimates.",
   "measure_line": "Counties by the share of people under 18 in poverty, in two-point bins, 2019 and 2024, 50 states and DC. 2024 is the latest year, and 2019 the year five before it, the last before the pandemic.",
-  "reading_guide": "Each outline counts the counties in each two-point bin for one year. The dark outline is 2024 and the gray one 2019; where the dark outline sits to the left, more counties had lower rates.",
+  "reading_guide": "Each outline counts the counties in each two-point bin for one year. The outline in the text’s ink is 2024 and the gray one 2019; where the 2024 outline sits to the left, more counties had lower rates.",
   "notes": [
     "Each county counts once, whatever its population, so a small county weighs as much as a large one. The outlines hold 3,141 counties in 2019 and 3,143 in 2024, after Connecticut replaced its eight counties with nine planning regions and an Alaska census area split in two. Kalawao County, Hawaii, has no estimate in either year.",
     "Method: the Census Bureau’s model combines survey answers with administrative records under the official poverty measure, which counts pretax cash income and leaves out tax credits such as the child tax credit."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Two stepped outlines count counties by child poverty rate in two-point bins, 2019 in gray and 2024 in dark ink. The 2024 outline sits to the left of 2019’s: the most common bin moved from 18 to under 20 percent in 2019 to 14 to under 16 percent in 2024, and the median county fell from 18.7 to 17.1 percent.",
+  "alt": "Two stepped outlines count counties by child poverty rate in two-point bins, 2019 in gray and 2024 in the text’s ink. The 2024 outline sits to the left of 2019’s: the most common bin moved from 18 to under 20 percent in 2019 to 14 to under 16 percent in 2024, and the median county fell from 18.7 to 17.1 percent.",
   "table": {
     "caption": "Counties by share of people under 18 in poverty, 2019 and 2024",
     "pivot": {
@@ -41,7 +41,7 @@
     ]
   },
   "chart_notes": [
-    "The dark outline is 2024 and the gray outline 2019, each named at its peak with its median. A short tick under the baseline marks each median in its outline’s ink. Each step is two percentage points wide. The outlines reach past 56 percent for one county in each year, at 62 to 64 percent in 2019 and 72 to 74 percent in 2024."
+    "The outline in the text’s ink is 2024 and the gray outline 2019, each named at its peak with its median. A short tick under the baseline marks each median in its outline’s ink. Each step is two percentage points wide. The outlines reach past 56 percent for one county in each year, at 62 to 64 percent in 2019 and 72 to 74 percent in 2024."
   ],
   "phone": "same",
   "artboard": "reading",

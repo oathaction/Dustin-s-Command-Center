@@ -56,7 +56,7 @@
     ]
   },
   "chart_notes": [
-    "The documented bar for public services where you live, which the title names, is in red with a dark outline; every other bar is light gray, with its value printed."
+    "The documented bar for public services where you live, which the title names, is in red; every other bar is gray, with its value printed."
   ],
   "phone": "same",
   "artboard": "reading",

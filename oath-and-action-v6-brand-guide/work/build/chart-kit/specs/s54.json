@@ -30,7 +30,7 @@
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "A scatter plot of 50 states and DC: median gross rent against renter households’ median income in 2025. The dots climb from lower left to upper right, from West Virginia’s $921 rent to California’s $2,160. Florida, named in dark ink, sits above the cloud: its rent takes 35.5 percent of renters’ income, the largest share.",
+  "alt": "A scatter plot of 50 states and DC: median gross rent against renter households’ median income in 2025. The dots climb from lower left to upper right, from West Virginia’s $921 rent to California’s $2,160. Florida, named in the text’s ink, sits above the cloud: its rent takes 35.5 percent of renters’ income, the largest share.",
   "table": {
     "caption": "Rent and renter income by state, 2025",
     "columns": [
@@ -63,7 +63,7 @@
     ]
   },
   "chart_notes": [
-    "Florida takes the dark ink, its name in bold with its rent share under it; the other states are light gray, with California named. The open ring marks the United States."
+    "Florida takes the text’s ink, its name in bold with its rent share under it; the other states are gray, with California named. The open ring marks the United States."
   ],
   "phone": "same",
   "artboard": "reading",

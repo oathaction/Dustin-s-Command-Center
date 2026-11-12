@@ -24,7 +24,7 @@
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "A bubble chart of 50 states and DC: median gross rent against renter households’ median income in 2025, each circle sized by renter households. The circles climb from lower left to upper right. The four largest, California with 6.2 million renter households, Texas with 4.3 million, New York with 3.6 million and Florida with 3.0 million, are named in dark ink; three sit above the nation’s rent and Texas below it.",
+  "alt": "A bubble chart of 50 states and DC: median gross rent against renter households’ median income in 2025, each circle sized by renter households. The circles climb from lower left to upper right. The four largest, California with 6.2 million renter households, Texas with 4.3 million, New York with 3.6 million and Florida with 3.0 million, are named in the text’s ink; three sit above the nation’s rent and Texas below it.",
   "table": {
     "caption": "Rent, renter income and renter households by state, 2025",
     "columns": [
@@ -62,7 +62,7 @@
     ]
   },
   "chart_notes": [
-    "The four states with the most renter households take the dark ink, each named with its renter households; the other states are light gray circles with thin outlines. The open ring marks the United States. The key gives circles for 1 million and 6 million renter households."
+    "The four states with the most renter households take the text’s ink, each named with its renter households; the other states are gray circles with thin outlines. The open ring marks the United States. The key gives circles for 1 million and 6 million renter households."
   ],
   "phone": "same",
   "artboard": "reading",
