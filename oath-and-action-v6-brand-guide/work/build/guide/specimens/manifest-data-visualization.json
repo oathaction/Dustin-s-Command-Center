@@ -126,8 +126,7 @@
   "rule": "14.9",
   "alt": "Dots with margin of error lines for ten states against the nation. Five of the ten states with the most voting-age citizens differed from the nation’s 65.3 percent turnout by more than the margin of error.",
   "illustrative": false,
-  "notes": "The kit's own figure, from oa-chart.mjs figure, around the script's two drawings (desk and phone), until the kit's interval form lands (round 2).",
-  "interactive": true
+  "notes": ""
  },
  "s-14-9-failure": {
   "chapter": "14",
