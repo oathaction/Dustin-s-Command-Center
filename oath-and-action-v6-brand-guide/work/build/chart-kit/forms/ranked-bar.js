@@ -2,7 +2,8 @@
  * the total printed at the end; a bar may split into parts that read in grayscale by fill, outline, hatch and dash.
  * encode: category (text), value (number, the total), parts (list of number columns, optional).
  * labels: parts ([{field, label, style}] where style is solid, open, gray, hatch or dashed), total_suffix ({category: words}),
- * value_unit (words after each total, optional). formats: value. A negative value draws left of the zero line; a long
+ * value_unit (words after each total, optional), named (a category or list the title names: the rest take the light fill,
+ * K.parts.named_fill). formats: value. A negative value draws left of the zero line; a long
  * category name wraps. */
 (function (K) {
   'use strict';
@@ -12,11 +13,11 @@
     name: 'Ranked Bar',
     family: 'comparison',
     encode: { category: 'text', value: 'number', parts: 'list?' },
-    labels: ['parts', 'total_suffix', 'value_unit'],
+    labels: ['parts', 'total_suffix', 'value_unit', 'named'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, rows = c.rows, ek = c.field('category'), ev = c.field('value'), parts = c.field('parts', false) || [];
-      var f = c.spec.formats || {}, W = c.width, y = 0;
+      var f = c.spec.formats || {}, W = c.width, y = 0, fill = P.named_fill(c, c.labels.named, ek);
       var defs = (c.labels.parts || []).filter(function (p) { return parts.indexOf(p.field) >= 0; });
       parts.forEach(function (p) { if (!defs.some(function (d) { return d.field === p; })) c.warn('labels.parts names no style for ' + p); });
       if (defs.length) {
@@ -62,7 +63,7 @@
           });
         } else {
           var xe = xs(r[ev]);
-          c.rect(Math.min(zx, xe), by, Math.abs(xe - zx), bh, { fill: 'subject', kind: 'bar', axis: 'x', zero: zx, data: { key: r[ek], field: ev, value: r[ev] } });
+          c.rect(Math.min(zx, xe), by, Math.abs(xe - zx), bh, { fill: fill(r), kind: 'bar', axis: 'x', zero: zx, data: { key: r[ek], field: ev, value: r[ev] } });
           x = xe;
         }
         var neg = r[ev] < 0;

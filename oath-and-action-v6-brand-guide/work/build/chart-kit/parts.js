@@ -160,4 +160,17 @@
     var b = x2 - dir * Math.min(hl, Math.max(len, hl * 0.6));
     c.polygon([[x2, y], [b, y - hw], [b, y + hw]], { fill: 'subject', kind: 'arrow', data: o.data });
   };
+  // The light fill (palette rule R3, DR-236, D3-164): where a spec names some marks (labels.named: a value or a list of
+  // values of the given field), those take the subject ink and every other takes the light fill on Newsprint and the
+  // context ink on Charcoal, values still printed. With nothing named every mark takes the subject ink. Returns a
+  // function row -> color role, with .named (true when the spec names any) and .is_named(row).
+  P.named_fill = function (c, named, field, base) {
+    var list = named === undefined || named === null ? null : [].concat(named).map(String);
+    var other = c.ground === 'charcoal' ? 'context' : 'light-fill';
+    var is_named = function (r) { return !list || list.indexOf(String(r[field])) >= 0; };
+    var fn = function (r) { return is_named(r) ? (base || 'subject') : other; };
+    fn.named = !!list;
+    fn.is_named = is_named;
+    return fn;
+  };
 })(typeof globalThis !== 'undefined' ? globalThis : this);
