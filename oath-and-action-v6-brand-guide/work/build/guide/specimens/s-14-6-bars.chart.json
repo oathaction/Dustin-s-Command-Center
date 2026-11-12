@@ -4,50 +4,66 @@
  "form": "ranked-bar",
  "family": "comparison",
  "tier": "core",
- "dataset": "fjc-active-judges-by-court-of-appeals",
+ "dataset": "nps-national-park-recreation-visits-2025",
+ "where": {
+  "rank": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ]
+ },
  "sort": [
   {
-   "field": "judges",
+   "field": "recreation_visits",
    "order": "desc"
-  },
-  {
-   "field": "circuit_order",
-   "order": "asc"
   }
  ],
- "reader_question": "Which federal court of appeals has the most judges?",
+ "reader_question": "Which national park draws the most visits?",
  "evidence": "finding",
  "evidence_label": "Finding",
- "grade_line": "Documented: the Federal Judicial Center’s directory of judges",
- "title": "The Ninth Circuit has 29 judges in active service, the most of the 13 federal courts of appeals.",
- "measure_line": "Judges in active service on each federal court of appeals, as of November 11, 2026",
- "alt": "Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s 29 in red and the rest in gray, from 17 on the Fifth Circuit down to 6 on the First Circuit.",
+ "grade_line": "Documented: the National Park Service’s visitor counts",
+ "title": "Great Smoky Mountains National Park drew 11.5 million recreation visits in 2025, the most of the 63 national parks and more than twice Zion’s 5.0 million.",
+ "measure_line": "Recreation visits to the 12 most visited of the 63 national parks, in millions, 2025, United States",
+ "source_line": "Source: National Park Service, Visitor Use Statistics (IRMA), recreation visits, 2025, the 12 most visited of the 63 national parks, United States. Retrieved November 12, 2026. A count of visits, not of separate people; national parks only, not the Service’s other sites.",
+ "alt": "Bars of 2025 recreation visits to the 12 most visited national parks, Great Smoky Mountains’ 11.5 million in red and the rest in gray, from 5.0 million at Zion down to 2.9 million at Joshua Tree.",
  "table": {
-  "caption": "Judges in active service, by court of appeals",
+  "caption": "Recreation visits to the 12 most visited national parks, 2025",
   "columns": [
    {
     "field": "short_name",
-    "label": "Court",
+    "label": "Park",
     "format": "text",
     "row_header": true
    },
    {
-    "field": "judges",
-    "label": "Judges",
+    "field": "recreation_visits",
+    "label": "Recreation visits",
     "format": "integer"
    }
   ]
  },
  "encode": {
   "category": "short_name",
-  "value": "judges"
+  "value": "recreation_visits"
+ },
+ "formats": {
+  "value": "millions-value:1"
  },
  "labels": {
-  "point": "Ninth Circuit"
+  "point": "Great Smoky Mountains"
  },
- "domain": "D05",
+ "domain": "D04",
  "states": [],
- "notes_internal": "Rule 14.6's correct plate: the one red point by name, from the kit (BC M2).",
+ "notes_internal": "Rule 14.6's correct plate: the one red point by name, from the kit, on a count no reader ties to a party (D3-624).",
  "credit": "Chart: Oath & Action",
  "illustrative": false,
  "phone": "same"

@@ -813,37 +813,37 @@ def rule_14_5(B):
 # ===============================================================================================================
 # 14.6 The view's one red on the point the title names
 # ===============================================================================================================
-def circuits():
-    c = Counter(r["court_name"] for r in rows("fjc-article-iii-judges") if r["court_type"] == "U.S. Court of Appeals")
-    short = lambda n: n.replace("U.S. Court of Appeals for the ", "").replace("District of Columbia Circuit", "D.C. Circuit")
-    return sorted(((short(k), v) for k, v in c.items()), key=lambda t: (-t[1], t[0]))
-
-
 def rule_14_6(B):
-    ds = "fjc-active-judges-by-court-of-appeals"
-    data = [(r["short_name"], int(r["judges"])) for r in rows(ds)]
-    # the research lead's counts, checked against the directory they come from
-    need(sorted(data, key=lambda t: (-t[1], t[0])) == circuits(), "the counts file and the directory disagree")
-    need(len(data) == 13 and data[0] == ("Ninth Circuit", 29) and data[1][1] < 29, f"the circuit counts moved: {data[:2]}")
-    title = "The Ninth Circuit has 29 judges in active service, the most of the 13 federal courts of appeals"
-    B.spec("s-14-6-bars", form="ranked-bar", family="comparison", tier="core", dataset=ds,
-           sort=[{"field": "judges", "order": "desc"}, {"field": "circuit_order", "order": "asc"}],
-           reader_question="Which federal court of appeals has the most judges?",
-           evidence="finding", evidence_label="Finding", grade_line="Documented: the Federal Judicial Center’s directory of judges",
-           title=title, measure_line=f"Judges in active service on each federal court of appeals, as of {words_date('2026-11-11')}",
-           alt=f"Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s 29 in red and the rest in gray, from "
-               f"{data[1][1]} on the {data[1][0]} down to {data[-1][1]} on the {data[-1][0]}.",
-           table={"caption": "Judges in active service, by court of appeals",
-                  "columns": [{"field": "short_name", "label": "Court", "format": "text", "row_header": True},
-                              {"field": "judges", "label": "Judges", "format": "integer"}]},
-           encode={"category": "short_name", "value": "judges"}, labels={"point": "Ninth Circuit"},
-           domain="D05", states=[], notes_internal="Rule 14.6's correct plate: the one red point by name, from the kit (BC M2).")
-    B.add("s-14-6-correct", chart("s-14-6-bars"), alt=f"One red bar, the one the title names, and every other court in gray. {title}.",
-          notes="The kit draws it from the research lead's count of judges by court, made from the directory's rows.")
-    reds = ("Ninth Circuit", "Fifth Circuit", "Sixth Circuit")
+    # a count no reader ties to a party (D3-489, D3-624): recreation visits to the most visited national parks
+    ds = "nps-national-park-recreation-visits-2025"
+    rs = sorted(rows(ds), key=lambda r: int(r["rank"]))[:12]
+    data = [(r["short_name"], int(r["recreation_visits"])) for r in rs]
+    need([int(r["rank"]) for r in rs] == list(range(1, 13)) and data[0][0] == "Great Smoky Mountains" and data[1][0] == "Zion"
+         and data[0][1] == 11527939 and 2 < data[0][1] / data[1][1] < 2.5, f"the park counts moved: {data[:2]}")
+    m = lambda v: fmt1(v / 1e6)
+    title = (f"Great Smoky Mountains National Park drew {m(data[0][1])} million recreation visits in 2025, the most of the 63 national "
+             f"parks and more than twice Zion’s {m(data[1][1])} million")
+    B.spec("s-14-6-bars", form="ranked-bar", family="comparison", tier="core", dataset=ds, where={"rank": list(range(1, 13))},
+           sort=[{"field": "recreation_visits", "order": "desc"}],
+           reader_question="Which national park draws the most visits?",
+           evidence="finding", evidence_label="Finding", grade_line="Documented: the National Park Service’s visitor counts",
+           title=title, measure_line="Recreation visits to the 12 most visited of the 63 national parks, in millions, 2025, United States",
+           source_line=variant(ds, "top_12"),
+           alt=f"Bars of 2025 recreation visits to the 12 most visited national parks, Great Smoky Mountains’ {m(data[0][1])} million in "
+               f"red and the rest in gray, from {m(data[1][1])} million at {data[1][0]} down to {m(data[-1][1])} million at {data[-1][0]}.",
+           table={"caption": "Recreation visits to the 12 most visited national parks, 2025",
+                  "columns": [{"field": "short_name", "label": "Park", "format": "text", "row_header": True},
+                              {"field": "recreation_visits", "label": "Recreation visits", "format": "integer"}]},
+           encode={"category": "short_name", "value": "recreation_visits"}, formats={"value": "millions-value:1"},
+           labels={"point": "Great Smoky Mountains"},
+           domain="D04", states=[], notes_internal="Rule 14.6's correct plate: the one red point by name, from the kit, on a count no reader "
+                                                   "ties to a party (D3-624).")
+    B.add("s-14-6-correct", chart("s-14-6-bars"), alt=f"One red bar, the one the title names, and every other park in gray. {title}.",
+          notes="The kit draws it from the research lead's frozen National Park Service counts, the 12 most visited parks.")
+    reds = ("Great Smoky Mountains", "Zion", "Yellowstone")
     B.add("s-14-6-failure", dnp() + tl(title)
-          + f'<div class="art">{hbars(data, 30, str, point=reds, red=reds)}</div>',
-          alt=FC + "The same bars with three courts in red, the Ninth, Fifth and Sixth Circuits, under a title that names one.")
+          + f'<div class="art">{hbars(data, data[0][1] * 1.04, m, point=reds, red=reds)}</div>',
+          alt=FC + "The same bars with three parks in red, Great Smoky Mountains, Zion and Yellowstone, under a title that names one.")
     return entry(
         "14.6", "Spend the view’s one red on the point the title names.",
         ["Rule 05.3 gives each view one working red and says which job claims it first. In a chart, the red goes to the one point, bar or "
@@ -863,11 +863,11 @@ def rule_14_6(B):
         ["05.3", "05.5", "05.7", "01.1", "01.2", "14.7"],
         "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; "
         "where a party tie gives it the subject ink, labels.named does it instead. The kit counts working reds and fails a view with two.",
-        B.plate("s-14-6-correct", "The title names the Ninth Circuit, and its bar alone takes the view’s red, inside its keyline, with every "
-                                  "other court in gray."),
-        B.plate("s-14-6-failure", fails("14.6", "Red falls on three courts while the title names one, so a reader cannot tell which bar the "
+        B.plate("s-14-6-correct", "The title names Great Smoky Mountains, and its bar alone takes the view’s red, inside its keyline, with "
+                                  "every other park in gray."),
+        B.plate("s-14-6-failure", fails("14.6", "Red falls on three parks while the title names one, so a reader cannot tell which bar the "
                                                 "title means.")),
-        [ex("Active judges by federal court of appeals, November 11, 2026", "D05", where="14.6")],
+        [ex("Recreation visits, the 12 most visited national parks, 2025", "D04", where="14.6")],
         tokens=["oa.chart.color.point.onNewsprint", "oa.chart.color.subject.onNewsprint"])
 
 

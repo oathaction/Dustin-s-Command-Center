@@ -9,8 +9,8 @@
   "D01": 3,
   "D02": 5,
   "D03": 4,
-  "D04": 4,
-  "D05": 2,
+  "D04": 5,
+  "D05": 1,
   "D06": 4,
   "D07": 4,
   "D08": 7,
@@ -88,8 +88,8 @@
    "source": "14-005.json"
   },
   {
-   "example": "Active judges by federal court of appeals, November 11, 2026",
-   "domain": "D05",
+   "example": "Recreation visits, the 12 most visited national parks, 2025",
+   "domain": "D04",
    "states": [],
    "level": "federal",
    "where": "14.6",

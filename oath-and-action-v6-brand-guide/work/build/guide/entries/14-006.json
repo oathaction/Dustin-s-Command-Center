@@ -50,25 +50,25 @@
  ],
  "correct": {
   "specimen": "s-14-6-correct",
-  "caption": "The title names the Ninth Circuit, and its bar alone takes the view’s red, inside its keyline, with every other court in gray.",
-  "alt": "One red bar, the one the title names, and every other court in gray. The Ninth Circuit has 29 judges in active service, the most of the 13 federal courts of appeals.",
+  "caption": "The title names Great Smoky Mountains, and its bar alone takes the view’s red, inside its keyline, with every other park in gray.",
+  "alt": "One red bar, the one the title names, and every other park in gray. Great Smoky Mountains National Park drew 11.5 million recreation visits in 2025, the most of the 63 national parks and more than twice Zion’s 5.0 million.",
   "illustrative": false,
-  "notes": "The kit draws it from the research lead's count of judges by court, made from the directory's rows.",
+  "notes": "The kit draws it from the research lead's frozen National Park Service counts, the 12 most visited parks.",
   "charts": [
    "s-14-6-bars"
   ]
  },
  "failure": {
   "specimen": "s-14-6-failure",
-  "caption": "<strong>Fails Rule 14.6.</strong> Red falls on three courts while the title names one, so a reader cannot tell which bar the title means.",
-  "alt": "Failure case: do not publish. The same bars with three courts in red, the Ninth, Fifth and Sixth Circuits, under a title that names one.",
+  "caption": "<strong>Fails Rule 14.6.</strong> Red falls on three parks while the title names one, so a reader cannot tell which bar the title means.",
+  "alt": "Failure case: do not publish. The same bars with three parks in red, Great Smoky Mountains, Zion and Yellowstone, under a title that names one.",
   "illustrative": false,
   "notes": ""
  },
  "examples": [
   {
-   "example": "Active judges by federal court of appeals, November 11, 2026",
-   "domain": "D05",
+   "example": "Recreation visits, the 12 most visited national parks, 2025",
+   "domain": "D04",
    "states": [],
    "level": "federal",
    "where": "14.6"

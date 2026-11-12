@@ -82,14 +82,14 @@
  "s-14-6-correct": {
   "chapter": "14",
   "rule": "14.6",
-  "alt": "One red bar, the one the title names, and every other court in gray. The Ninth Circuit has 29 judges in active service, the most of the 13 federal courts of appeals.",
+  "alt": "One red bar, the one the title names, and every other park in gray. Great Smoky Mountains National Park drew 11.5 million recreation visits in 2025, the most of the 63 national parks and more than twice Zion’s 5.0 million.",
   "illustrative": false,
-  "notes": "The kit draws it from the research lead's count of judges by court, made from the directory's rows."
+  "notes": "The kit draws it from the research lead's frozen National Park Service counts, the 12 most visited parks."
  },
  "s-14-6-failure": {
   "chapter": "14",
   "rule": "14.6",
-  "alt": "Failure case: do not publish. The same bars with three courts in red, the Ninth, Fifth and Sixth Circuits, under a title that names one.",
+  "alt": "Failure case: do not publish. The same bars with three parks in red, Great Smoky Mountains, Zion and Yellowstone, under a title that names one.",
   "illustrative": false,
   "notes": ""
  },
