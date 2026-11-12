@@ -120,3 +120,16 @@ From maker A's A1, A2, A6 and A7. A6 first, since it blocks S40. Scripts: `.../r
 
 Tested: the data check, 90 tables, 0 faults; each bill's actions and committees read from the API (fetch log in `.../round-1/research/dl/housing-bills/`); the committee tallies checked against the action text; the two Table B-5 files read in full, with the United States column taken for the six rows; every drug-price claim has source words (11 of 11); the other V7 tables the script writes are byte for byte unchanged (git shows no change).
 Not tested: hearings held without a bill number (the API cannot show them); a House or Senate committee calendar for such hearings.
+
+## Fix pass 3
+
+From the data lead's DL-R4 and DL-R5. The data check reads 91 tables with 0 faults.
+
+- **DL-R4, S34.** Confirmed from the Senate's own record, so S34 keeps its clause. The Congressional Record of November 21, 2013 (govinfo) prints Senator Reid's point of order "that the vote on cloture under rule XXII for all nominations other than for the Supreme Court of the United States is by majority vote"; the Senate voted 48 to 52 not to sustain the chair (vote 242) and invoked cloture on Patricia Ann Millett's circuit nomination 55 to 43 with a majority requirement of one-half (vote 244). On April 6, 2017 it voted 48 to 52 not to sustain the chair (vote 109) and invoked cloture on Neil M. Gorsuch's Supreme Court nomination 55 to 45 with a majority requirement of one-half (vote 110). `senate-cloture-motions-by-congress.meta.json` moves the item out of `unconfirmed` into a note with these sources (script `.../round-1/research/scripts/fix_pass3_cloture.py`).
+- **DL-R5, S38.** `v7-issues.meta.json` gains `source_line_variants` for each domain, `domain_d01` to `domain_d10`, written by `research_v7_extract.py`. S38 takes `domain_d01`: "Source: Oath & Action’s systems atlas, Who Do They Answer To?, issue records in the domain of news, records and public information, 17 of 194 issues, as of October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own."
+
+- D3-xxx | The 2013 and 2017 cloture changes rest on the Senate's vote records and the 2013 Congressional Record | They are the chamber's own record of each precedent and the vote that applied it; the senate.gov overview page names only the 1917 and 1975 rules
+- D3-xxx | The issues table carries a source line variant for every domain, not only S38's | Any later one-domain table then names the rows it draws with no new request
+
+Tested: the four vote records read on senate.gov today (242 and 244 of 2013, 109 and 110 of 2017), each with its title, result and majority requirement; Reid's point of order read in the November 21, 2013 Congressional Record's text; the ten variants generated and D01's count (17) checked against the table; the other V7 tables unchanged.
+Not tested: the April 6, 2017 Congressional Record (govinfo's address for the day's Senate pages returned "Page Not Found"), so the 2017 point of order's exact words are not quoted.

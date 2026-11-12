@@ -38,19 +38,11 @@
   },
   {
    "label": "Title",
-   "value": "One full sentence in Inter Tight at the chart title size; its claim follows H08 and its verb Rule 13.2"
-  },
-  {
-   "label": "Reading guide",
-   "value": "One or two sentences, in the body style, only when the drawing needs one"
+   "value": "One full sentence in Inter Tight at the chart title size"
   },
   {
    "label": "Measure line",
-   "value": "What is counted, the unit, the period and the place, under the title"
-  },
-  {
-   "label": "Table",
-   "value": "Every row the chart draws, folded under the source line as “The table and notes”"
+   "value": "What is counted, the unit, the period and the place"
   }
  ],
  "correct": {

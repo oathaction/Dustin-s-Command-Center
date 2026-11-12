@@ -4,7 +4,10 @@
  * line; a period still under way takes a dashed outline. A key of round sizes sits above.
  * encode: key (id), x (year, month or date), size (number), complete (boolean, optional: false marks a period under way).
  * labels: key_title (words over the size key), key_values (round sizes for the key), key_unit (words after each key value,
- * with {value}), partial (words in the key for a period under way). formats: size (in the words), x.
+ * with {value}), partial (words in the key for a period under way), phone_from (on a phone, the x from which each period
+ * takes its own row, with its circle and count; the earlier periods are summed in words), phone_before (those words, with
+ * {first_x}, {last_x}, {from_x}, {n}, {sum} and {max}), phone_value and phone_partial (each row's count, with {value}).
+ * formats: size (in the words), x.
  * annotations: [{at: {x}, text, value, place, dx, dy, max, anchor, phone}]: a note with a leader to the top of that
  * circle; "value": true prints the count before the text. Maker B, round 1. */
 (function (K) {
@@ -14,8 +17,8 @@
     name: 'Bubble Timeline',
     family: 'change-over-time',
     encode: { key: 'id', x: 'time', size: 'number', complete: 'boolean?' },
-    labels: ['key_title', 'key_values', 'key_unit', 'partial'],
-    phone: 'same',
+    labels: ['key_title', 'key_values', 'key_unit', 'partial', 'phone_from', 'phone_before', 'phone_value', 'phone_partial'],
+    phone: 'differs',
     draw: function (c) {
       // an outline drawn as a path, so it can take a dash
       var ring = function (x, y, r, dash) { c.path('M' + K.round(x - r) + ',' + K.round(y) + 'a' + K.round(r) + ',' + K.round(r) + ' 0 1,0 ' + K.round(2 * r) + ',0a' + K.round(r) + ',' + K.round(r) + ' 0 1,0 ' + K.round(-2 * r) + ',0', { stroke: 'subject', width: c.t('bubble-outline'), dash: dash, mark: false }); };
@@ -47,6 +50,37 @@
           base = Math.max(base, pb.bottom);
         }
         y = base + 18;
+      }
+      // on a phone the circles of busy decades would merge into one mass, so the form changes (DR-64, Rule 14.12): the periods
+      // before labels.phone_from are summed in a line of words, and each later period takes its own row, its circle and count
+      if (c.phone && L.phone_from !== undefined) {
+        var from = K.time(L.phone_from), early = rows.filter(function (r) { return K.time(r[ex]) < from; }), late = rows.filter(function (r) { return K.time(r[ex]) >= from; });
+        if (early.length && L.phone_before) {
+          var sum = 0, emax = 0;
+          early.forEach(function (r) { sum += r[es] || 0; emax = Math.max(emax, r[es] || 0); });
+          var ew = String(L.phone_before).replace('{first_x}', K.fmt(early[0][ex], f.x || 'year')).replace('{last_x}', K.fmt(early[early.length - 1][ex], f.x || 'year'))
+            .replace('{from_x}', K.fmt(L.phone_from, f.x || 'year')).replace('{n}', K.fmt(early.length, 'integer')).replace('{sum}', K.fmt(sum, f.size || 'integer')).replace('{max}', K.fmt(emax, f.size || 'integer'));
+          var eb = c.text(0, y + size, ew, { role: 'label', max: W });
+          early.forEach(function (r) { c.datum(0, eb.y, { data: { key: r[ek], field: es, value: r[es] || 0 } }); });
+          y = eb.bottom + 14;
+        }
+        var lmax = Math.max.apply(null, late.map(function (r) { return r[es] || 0; })), yw = 0;
+        late.forEach(function (r) { yw = Math.max(yw, c.measure(K.fmt(r[ex], f.x || 'year'), 'tick', 400, true)); });
+        var pcx = Math.ceil(yw + 12 + rmax);
+        late.forEach(function (r) {
+          var v = r[es] || 0, rad = rs(v), h = Math.max(22, Math.ceil(2 * rad) + 6), pcy = y + h / 2, under = ec && r[ec] === false, big = v === lmax || under;
+          c.text(0, pcy + c.size('tick') * 0.35, K.fmt(r[ex], f.x || 'year'), { role: 'tick', tnum: true });
+          if (!v) c.line(pcx - 3, pcy, pcx + 3, pcy, { stroke: 'context', width: c.t('line-hairline'), data: { key: r[ek], field: es, value: 0 } });
+          else {
+            c.circle(pcx, pcy, rad, { fill: under ? 'surface' : 'band', data: { key: r[ek], field: es, value: v }, area_of: { value: v, max_value: vmax, max_radius: rmax } });
+            if (under) ring(pcx, pcy, rad, '3 2'); else c.circle(pcx, pcy, rad, { stroke: 'subject', width: c.t('bubble-outline'), mark: false });
+          }
+          var pw = String(under && L.phone_partial ? L.phone_partial : (L.phone_value || '{value}')).replace('{value}', K.fmt(v, f.size || 'integer'));
+          c.text(pcx + rmax + 10, pcy + size * 0.35, pw, { role: 'label', weight: big ? 700 : 400, tnum: true });
+          y += h;
+        });
+        c.height(y + 4);
+        return;
       }
       // the line the circles sit on, and the time axis under it
       var ts = rows.map(function (r) { return K.time(r[ex]); }), tlo = ts[0], thi = ts[ts.length - 1];

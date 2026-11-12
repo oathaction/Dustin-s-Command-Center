@@ -4077,3 +4077,10 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 
 | # | Decision | Reason |
 |---|---|---|
+
+### Research lead, round 1 fix pass 3
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-351 | The 2013 and 2017 cloture changes rest on the Senate's vote records and the 2013 Congressional Record | They are the chamber's own record of each precedent and the vote that applied it; the senate.gov overview page names only the 1917 and 1975 rules |
+| D3-352 | The issues table carries a source line variant for every domain, not only S38's | Any later one-domain table then names the rows it draws with no new request |

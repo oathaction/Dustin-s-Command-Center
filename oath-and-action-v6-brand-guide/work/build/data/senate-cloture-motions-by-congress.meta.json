@@ -51,8 +51,8 @@
  "ledger_row": "P7-016",
  "domain": "D04",
  "states": [],
- "unconfirmed": [
-  "The 1917 two-thirds rule and the 1975 change to three-fifths of senators duly chosen and sworn were read on senate.gov's Filibuster and Cloture page on November 11, 2026; the 2013 and 2017 changes for nominations were not read on a Senate page today"
- ],
- "url_threshold_history": "https://www.senate.gov/about/powers-procedures/filibusters-cloture.htm"
+ "url_threshold_history": "https://www.senate.gov/about/powers-procedures/filibusters-cloture.htm",
+ "notes": [
+  "The 2013 and 2017 changes, confirmed November 12, 2026 from the Senate’s own record: on November 21, 2013, Senator Reid raised \"a point of order that the vote on cloture under rule XXII for all nominations other than for the Supreme Court of the United States is by majority vote\" (Congressional Record, Senate, November 21, 2013); the Senate voted 48 to 52 not to sustain the chair’s ruling against it (vote 242), and then invoked cloture on Patricia Ann Millett’s nomination 55 to 43 with a majority requirement of one-half (vote 244). On April 6, 2017, the Senate voted 48 to 52 not to sustain the chair (vote 109) and invoked cloture on Neil M. Gorsuch’s Supreme Court nomination 55 to 45 with a majority requirement of one-half (vote 110). Sources: https://www.govinfo.gov/content/pkg/CREC-2013-11-21/pdf/CREC-2013-11-21-senate.pdf ; https://www.senate.gov/legislative/LIS/roll_call_votes/vote1131/vote_113_1_00242.xml (and 00244) ; https://www.senate.gov/legislative/LIS/roll_call_votes/vote1151/vote_115_1_00109.xml (and 00110)."
+ ]
 }

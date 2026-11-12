@@ -47,10 +47,6 @@
    "label": "Magnitude",
    "value": "Four steps of Stone",
    "token": "oa.chart.color.magnitude.fill.step1.onNewsprint"
-  },
-  {
-   "label": "One chart",
-   "value": "One palette for each thing its colors encode"
   }
  ],
  "correct": {

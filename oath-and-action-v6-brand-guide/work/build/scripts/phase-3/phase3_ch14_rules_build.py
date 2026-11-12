@@ -136,15 +136,20 @@ CSS = {
            f".di .hd i{{height:auto;padding:2px 0 2px calc(var(--n) + 6px);{CAP};color:var(--oa-color-text-secondary)}}"
            ".di .hd i::before,.di .hd i::after{content:none}"),
     "ky": f".ky{{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px;{CAP}}}.ky span{{display:inline-flex;align-items:center;gap:6px}}",
+    "qk": (".qk i{display:inline-block;width:14px;height:14px}"
+           ".q2 i{background:var(--oa-chart-color-sequential-fill-step2)}.q3 i{background:var(--oa-chart-color-sequential-fill-step3)}"
+           ".q4 i{background:var(--oa-chart-color-sequential-fill-step4)}.q5 i{background:var(--oa-chart-color-sequential-fill-step5)}"),
     "kd": (".kd{display:inline-block;width:14px;height:14px;border-radius:50%;border:2px solid var(--oa-chart-color-subject);background:var(--oa-chart-color-subject)}"
            ".kd.o{background:var(--oa-color-surface)}"),
     "sv": (".sv{display:block;max-width:100%;height:auto;overflow:visible}.sv text{font-family:var(--oa-font-family-reading);"
-           "font-size:var(--oa-chart-type-label);fill:var(--oa-chart-color-label)}.sv .tk{font-size:var(--oa-chart-type-tick);fill:var(--oa-color-text-secondary)}"
-           ".sv .b{font-weight:var(--oa-font-weight-bold)}.sv .ax{stroke:var(--oa-chart-color-baseline);stroke-width:var(--oa-chart-line-baseline)}"
-           ".sv .gl{stroke:var(--oa-chart-color-gridline);stroke-width:1}.sv .ln{fill:none;stroke:var(--oa-chart-color-subject);stroke-width:var(--oa-chart-line-subject);stroke-linejoin:round}"
-           ".sv .lc{fill:none;stroke:var(--oa-chart-color-context);stroke-width:var(--oa-chart-line-context)}"
-           ".sv .s{fill:var(--oa-chart-color-subject)}.sv .c{fill:var(--oa-chart-color-context)}.sv .o{fill:var(--oa-color-surface);stroke:var(--oa-chart-color-subject);stroke-width:2}"
-           ".sv .ld{stroke:var(--oa-chart-color-leader);stroke-width:1}"),
+           "font-size:var(--oa-chart-type-label);fill:var(--oa-chart-color-label)}.sv .tk{font-size:var(--oa-chart-type-tick);fill:var(--oa-color-text-secondary)}"),
+    "ax": ".sv .ax{stroke:var(--oa-chart-color-baseline);stroke-width:var(--oa-chart-line-baseline)}",
+    "gl": ".sv .gl{stroke:var(--oa-chart-color-gridline);stroke-width:1}",
+    "ln": ".sv .ln{fill:none;stroke:var(--oa-chart-color-subject);stroke-width:var(--oa-chart-line-subject);stroke-linejoin:round}",
+    "ld": ".sv .ld{stroke:var(--oa-chart-color-leader);stroke-width:1}",
+    "fs": ".sv .fs{fill:var(--oa-chart-color-subject)}",
+    "fc": ".sv .fc{fill:var(--oa-chart-color-context)}",
+    "fo": ".sv .fo{fill:var(--oa-color-surface);stroke:var(--oa-chart-color-subject);stroke-width:2}",
     "g1": ".sv .g1{stroke:var(--oa-chart-color-categorical-fill-group1)}.sv .g2{stroke:var(--oa-chart-color-categorical-fill-group2)}"
           ".sv .g3{stroke:var(--oa-chart-color-categorical-fill-group3)}.sv .g4{stroke:var(--oa-chart-color-categorical-fill-group4)}"
           ".sv .g5{stroke:var(--oa-chart-color-sequential-fill-step3)}.sv .kl{stroke-width:3}",
@@ -462,14 +467,11 @@ def rule_14_2(B):
                                  failure={"rule": "14.2", "caption_lead": "Fails Rule 14.2."},
                                  notes_internal="Rule 14.2's failure plate: a topic for a title, and only the chart under it."))
     # the numerals sit in the left margin at desktop and before each part on a phone, in the order of PARTS
-    sel = [".oac-ev", ".oac-title", ".oac-guide", ".oac-measure", ".oac-art", ".oac-notes", ".oac-src", ".oac-eq"]
-    marks = "".join(f".anat {s}::before{{content:'{i + 1}'}}" for i, s in enumerate(sel))
-    extra = (".anat{counter-reset:none}.anat .oac-fig>*{position:relative}"
-             + ",".join(f".anat {s}::before" for s in sel)
-             + "{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin:0 8px 4px 0;border-radius:50%;"
-               "background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);" + LBL + ";letter-spacing:0;vertical-align:middle}"
-             "@media (min-width:48em){.anat{padding-left:36px}" + ",".join(f".anat {s}::before" for s in sel)
-             + "{position:absolute;left:-36px;top:0;margin:0}}" + marks)
+    sel = ":is(.oac-ev,.oac-title,.oac-guide,.oac-measure,.oac-art,.oac-notes,.oac-src,.oac-eq)"
+    extra = (f".anat .oac-fig{{counter-reset:pt}}.anat .oac-fig>*{{position:relative}}.anat {sel}::before{{counter-increment:pt;content:counter(pt);"
+             "display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin:0 8px 4px 0;border-radius:50%;"
+             f"background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);{LBL};letter-spacing:0;vertical-align:middle}}"
+             f"@media (min-width:48em){{.anat{{padding-left:36px}}.anat {sel}::before{{position:absolute;left:-36px;top:0;margin:0}}}}")
     lst = "".join(f"<li>{e(p)}</li>" for p in PARTS)
     B.add("s-14-2-correct", f'<div class="anat">{chart("s-14-2-full")}</div><ol class="olp" aria-label="The parts in order">{lst}</ol>',
           alt=f"A finished chart with each of its eight parts numbered in reading order: {', '.join(PARTS)}. Its title: {title}.",
@@ -488,10 +490,8 @@ def rule_14_2(B):
          "figure in seconds, and a chart that lacks a part shows the gap."],
         [("Order", "Evidence label and grade line, title, reading guide, measure line, chart, notes, source line, table"),
          ("Evidence label", "On the chip fill, in the label style", "oa.chart.color.chip.fill.onNewsprint"),
-         ("Title", "One full sentence in Inter Tight at the chart title size; its claim follows H08 and its verb Rule 13.2"),
-         ("Reading guide", "One or two sentences, in the body style, only when the drawing needs one"),
-         ("Measure line", "What is counted, the unit, the period and the place, under the title"),
-         ("Table", "Every row the chart draws, folded under the source line as “The table and notes”")],
+         ("Title", "One full sentence in Inter Tight at the chart title size"),
+         ("Measure line", "What is counted, the unit, the period and the place")],
         ["13.1", "13.2", "13.6", "13.7", "14.13"],
         "Fill every word field of the spec under contract C2; the kit prints the parts in this order and leaves out an empty one.",
         B.plate("s-14-2-correct", "The eight parts in order, each numbered where the kit prints it. The table sits folded under the source line."),
@@ -616,7 +616,7 @@ def rule_14_4(B):
     n = len(years)
     step = (R - L) / n
     ys = scale(cut, 70, Bt, T)
-    bars = "".join(f'<rect class="{"s" if y == y_hi else "c"}" x="{L + i * step + 3:.1f}" y="{ys(pres[y]):.1f}" width="{step - 6:.1f}" '
+    bars = "".join(f'<rect class="{"fs" if y == y_hi else "fc"}" x="{L + i * step + 3:.1f}" y="{ys(pres[y]):.1f}" width="{step - 6:.1f}" '
                    f'height="{Bt - ys(pres[y]):.1f}"/>' for i, y in enumerate(years))
     lab = "".join(f'<text class="tk" x="{L + i * step + step / 2:.1f}" y="{Bt + 16}" text-anchor="middle">{"’" + str(y)[2:]}</text>'
                   for i, y in enumerate(years) if i % 2 == 0 or y == years[-1])
@@ -669,12 +669,11 @@ def rule_14_5(B):
           readable=True, notes="Swatches drawn from the chart tokens the stage's surface class sets, so the strip follows Newsprint and Charcoal.")
     # the failure: four channels with no order, in four steps of one hue, with a key that reads as a scale (invented values)
     chans = [("Phone", 4120), ("Email", 3310), ("At the counter", 1880), ("Online form", 2540)]
-    items = "".join(f'<li><span>{e(n)}</span><span class="bt"><i class="s{i + 2}" style="width:{100 * v / 4120:.1f}%"></i></span>'
-                    f'<span class="v">{comma(v)}</span></li>' for i, (n, v) in enumerate(chans))
-    keyw = "".join(f'<span><i class="kd s{i + 2}" style="border:0;border-radius:0"></i>{e(n)}</span>' for i, (n, _) in enumerate(chans))
-    B.add("s-14-5-failure", dnp() + head("Illustration", None, "Phone calls were the most common way residents reached Alder County in 2026",
-                                         illus="Illustrative data")
-          + f'<div class="art sw"><p class="ky">{keyw}</p><ul class="sb">{items}</ul></div>',
+    items = "".join(f'<li class="q{i + 2}"><span>{e(n)}</span><i style="width:{100 * v / 4120:.1f}%"></i><b>{comma(v)}</b></li>'
+                    for i, (n, v) in enumerate(chans))
+    keyw = "".join(f'<span class="q{i + 2}"><i></i>{e(n)}</span>' for i, (n, _) in enumerate(chans))
+    B.add("s-14-5-failure", dnp() + tl("Phone calls were the most common way residents reached Alder County in 2026") + ill()
+          + f'<div class="art"><p class="ky qk">{keyw}</p><ul class="hb">{items}</ul></div>',
           alt=FC + "An illustrative bar chart of four ways residents reached Alder County, each bar in a darker step of one green, with a key "
                    "that reads from light to dark as if the channels ran from less to more.",
           illustrative=True)
@@ -692,8 +691,7 @@ def rule_14_5(B):
          ("Diverging, pair B", "Five steps, Prussian through the page color to Verdigris (Rule 01.3)", "oa.chart.color.diverging.fill.step1.onNewsprint"),
          ("Groups", "Charcoal, Verdigris, Prussian, Stone with its hatch, in that order; four at most (Rule 14.8)",
           "oa.chart.color.categorical.fill.group1.onNewsprint"),
-         ("Magnitude", "Four steps of Stone", "oa.chart.color.magnitude.fill.step1.onNewsprint"),
-         ("One chart", "One palette for each thing its colors encode")],
+         ("Magnitude", "Four steps of Stone", "oa.chart.color.magnitude.fill.step1.onNewsprint")],
         ["01.3", "05.7", "14.8"],
         "Name a color role in the form (seq-1 to seq-5, div-1 to div-5, cat-1 to cat-4, mag-1 to mag-4); a spec never names a color.",
         B.plate("s-14-5-correct", "The four palettes, each beside its one job and the question it answers. The fourth group ink always "
@@ -726,8 +724,8 @@ def rule_14_6(B):
     tab = table("Judges in active service, by court of appeals", ["Court", "Judges"], [(n, v) for n, v in data])
     B.add("s-14-6-correct", head("Finding", g, title, measure=measure)
           + f'<div class="art">{hbars(data, 30, str, point=("Ninth Circuit",))}</div>' + foot([note], src(ds)) + tab,
-          alt=f"Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s in red with a dark edge and the rest in gray: "
-              f"{', '.join(f'{n} {v}' for n, v in data)}.",
+          alt=f"Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s 29 in red with a dark edge and the rest "
+              f"in gray, from {data[1][1]} on the {data[1][0]} down to {data[-1][1]} on the {data[-1][0]}.",
           notes="Drawn here from the directory's rows, counted by script, until the kit takes a red point by name (request ED-E1).")
     reds = ("Ninth Circuit", "Fifth Circuit", "Sixth Circuit")
     B.add("s-14-6-failure", dnp() + tl(title)
@@ -931,8 +929,7 @@ def rule_14_9(B):
                   f'<b>{fmt1(s["v"])}%</b></li>')
     keyw = ('<p class="ky"><span><i class="kd"></i>Differs from the nation by more than the margin</span>'
             '<span><i class="kd o"></i>Within the margin of error</span></p>')
-    notes = ["Each line spans a state’s margin of error at 90 percent confidence. A gap counts only past the margin of the gap itself, "
-             "the square root of the sum of the two squared margins."]
+    notes = ["Each line spans a state’s margin of error at 90 percent confidence; a gap counts only past the gap’s own margin."]
     tab = table("Reported voting, November 2024, percent", ["State", "Reported voting", "Margin of error", "Gap from the nation"],
                 [(s["name"], fmt1(s["v"]), "±" + fmt1(s["m"]), (fmt1(s["gap"]) if s["gap"] < 0 else "+" + fmt1(s["gap"]))
                   + (" past" if s["past"] else " within")) for s in by])
@@ -1062,7 +1059,7 @@ def rule_14_11(B):
     ys = scale(50000, 90000, Bt, T)
     lines = "".join(f'<path class="ln" d="{path([(xs(y), ys(v)) for y, v in s])}"/>' for s in segs)
     dots = "".join(f'<circle class="{c}" cx="{xs(y):.1f}" cy="{ys(v):.1f}" r="3.5"/>'
-                   for (y, v), c in [(segs[0][-1], "o"), (segs[1][0], "s"), (segs[1][-1], "o"), (segs[2][0], "s")])
+                   for (y, v), c in [(segs[0][-1], "fo"), (segs[1][0], "fs"), (segs[1][-1], "fo"), (segs[2][0], "fs")])
     notes_svg = (f'<line class="ld" x1="{xs(2013):.1f}" x2="{xs(2013):.1f}" y1="{ys(71670) - 6:.1f}" y2="{T + 46}"/>'
                  f'<text x="{xs(2013) - 4:.1f}" y="{T + 30}" text-anchor="end">2013: new</text>'
                  f'<text x="{xs(2013) - 4:.1f}" y="{T + 44}" text-anchor="end">questions</text>')
@@ -1198,7 +1195,7 @@ def rule_14_13(B):
     W, H, L, R, T, Bt = 320, 190, 10, 310, 12, 160
     step = (R - L) / len(NEWS_YEARS)
     ys = scale(0, 420000, Bt, T)
-    bars = "".join(f'<rect class="{"s" if y == 2023 else "c"}" x="{L + i * step + 6:.1f}" y="{ys(r[y]):.1f}" width="{step - 12:.1f}" '
+    bars = "".join(f'<rect class="{"fs" if y == 2023 else "fc"}" x="{L + i * step + 6:.1f}" y="{ys(r[y]):.1f}" width="{step - 12:.1f}" '
                    f'height="{Bt - ys(r[y]):.1f}"/><text class="tk" x="{L + i * step + step / 2:.1f}" y="{Bt + 18}" text-anchor="middle">{y}</text>'
                    for i, y in enumerate(NEWS_YEARS))
     inner = bars + f'<line class="ax" x1="{L}" x2="{R}" y1="{Bt}" y2="{Bt}"/>'

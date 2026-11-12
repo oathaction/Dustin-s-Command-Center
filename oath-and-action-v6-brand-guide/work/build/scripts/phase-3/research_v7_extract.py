@@ -115,6 +115,12 @@ write('v7-issues', rows, cols, {
     'unit': 'issue records',
     'qualification': 'Grade words are V7\'s stored values (for example well_supported and retired) and print through chapter 13\'s mapping table, never raw; the observed field is V7\'s own, and where V7 stores "n/a" the cell is left empty',
     'printed_source_line': f'Source: {PUB}, issue records, {len(rows)} issues across ten domains, as of October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas\'s own; retired records are marked.',
+    # Fix pass 3 (DL-R5): one variant per domain, so a table that draws one domain names the rows it draws (Rule 13.6); S38 takes domain_d01
+    'source_line_variants': {f'domain_{d.lower()}': (f'Source: {PUB}, issue records in the domain of {DOMAIN_TITLE[d][0].lower() + DOMAIN_TITLE[d][1:]}, '
+                                                     f'{sum(1 for r in rows if r["domain"] == d)} of {len(rows)} issues, as of October 15, 2026, United States. '
+                                                     'Snapshot of October 15, 2026. Grades are the atlas\u2019s own'
+                                                     + ('; retired records are marked.' if any(r['retired'] for r in rows if r['domain'] == d) else '.'))
+                             for d in sorted(DOMAIN_TITLE)},
     'domain': 'all', 'domain_note': 'The issue register spans all ten domains', 'states': []})
 
 # 3. Drug-price claims on pathway PW06 (evidence table)

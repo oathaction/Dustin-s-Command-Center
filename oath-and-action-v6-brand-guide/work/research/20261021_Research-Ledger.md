@@ -350,6 +350,10 @@ From maker A’s A1, A2, A6 and A7 (`work/handoffs/phase-3/20261112_Round-1-Make
 |---|---|---|---|---|---|---|---|---|---|---|
 | P7-222 | census-hvs-homeownership-by-age-moe | U.S. Census Bureau | HVS Annual Statistics 2015 and 2025, Table B-5 (United States column), with Table 17’s rates | Annual averages, 2015 and 2025 | United States | Primary, with computed change margins | 6 (S20) | Published margins are rounded to one decimal, and the change’s margin treats the two years as independent samples. The under-35 rate rose 2.0 points (35.0 to 37.0) against a margin of about 0.8, so the change passes; 45 to 54, 55 to 64 and 65 and over do not | https://www.census.gov/housing/hvs/files/annual15/ann15t_b5.xlsx ; https://www.census.gov/housing/hvs/files/annual25/ann25t_b5.xlsx | 2026-11-12 |
 
+### Fix pass 3, round 1, November 12, 2026
+
+From the data lead’s DL-R4 and DL-R5. P7-016 (Senate cloture motions): the 2013 and 2017 changes for nominations are confirmed from the Senate’s own record and moved out of the sidecar’s `unconfirmed` list: the Congressional Record of November 21, 2013 prints Senator Reid’s point of order "that the vote on cloture under rule XXII for all nominations other than for the Supreme Court of the United States is by majority vote", the Senate voted 48 to 52 not to sustain the chair (vote 242) and invoked cloture on a circuit nomination 55 to 43 with a majority requirement of one-half (vote 244); on April 6, 2017 it voted 48 to 52 not to sustain the chair (vote 109) and invoked cloture on a Supreme Court nomination 55 to 45 with a majority requirement of one-half (vote 110). The April 6, 2017 Congressional Record was not found at govinfo’s address for that day. `v7-issues` gains one source line variant per domain, `domain_d01` to `domain_d10`.
+
 ### Claims in Part 7 I could not verify
 
 1. Massachusetts Question 3's count on the Secretary of the Commonwealth's own site, which had not posted 2026 results; the figures rest on NBC Boston's page and WGBH's report of the Associated Press call.
@@ -397,3 +401,4 @@ Modified November 11, 2026 (Phase 3, round 0, research lead): added Part 7, Phas
 Modified November 12, 2026 (Phase 3, round 1, research lead): added "Round 3 datasets" to Part 7, rows P7-201 to P7-220, claims 10 to 15 of Part 7’s unverified list, and a settled note on claim 6.
 Modified November 12, 2026 (Phase 3, round 1 fix pass, research lead): Part 7’s "Fix pass, round 1" note.
 Modified November 12, 2026 (Phase 3, round 1 fix pass 2, research lead): Part 7’s "Fix pass 2" note and row P7-222.
+Modified November 12, 2026 (Phase 3, round 1 fix pass 3, research lead): Part 7’s "Fix pass 3" note.

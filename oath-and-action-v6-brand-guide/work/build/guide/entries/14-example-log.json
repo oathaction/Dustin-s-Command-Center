@@ -356,7 +356,7 @@
    "source": "s33.json"
   },
   {
-   "example": "The Senate held 298 votes on ending debate in the Congress of 2019 and 2020, after no more than seven in any Congress before 1971.",
+   "example": "The Senate held 298 votes on ending debate in 2019 and 2020 and 294 so far in 2025 and 2026, after no more than seven in any Congress before 1971.",
    "domain": "D04",
    "states": [],
    "rule": "14.41",
@@ -398,7 +398,7 @@
    "source": "s37.json"
   },
   {
-   "example": "Of the atlas’s 17 issue records on news, records and public information, ten are documented or well supported, six plausible and one a hypothesis.",
+   "example": "Of the atlas’s 17 issue records on news, records and public information, two are documented, eight well supported, six plausible and one a hypothesis.",
    "domain": "D01",
    "states": [],
    "rule": "14.130",

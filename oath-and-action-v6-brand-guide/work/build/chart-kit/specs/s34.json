@@ -15,8 +15,8 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Senate’s own count of cloture votes",
-  "title": "The Senate held 298 votes on ending debate in the Congress of 2019 and 2020, after no more than seven in any Congress before 1971.",
-  "reading_guide": "Each circle is one two-year Congress, placed at its first year, and its area is the number of votes on ending debate. Where circles overlap, every outline still shows; a short tick marks a Congress with none.",
+  "title": "The Senate held 298 votes on ending debate in 2019 and 2020 and 294 so far in 2025 and 2026, after no more than seven in any Congress before 1971.",
+  "reading_guide": "Each circle is one two-year Congress, and its area is the number of votes on ending debate; a short tick marks a Congress with none. On a wide screen the circles sit on one line of time, placed at each Congress’s first year, and overlap with every outline showing; on a phone each Congress since 1971 takes its own row.",
   "measure_line": "Senate votes on cloture, a motion to end debate, on bills and nominations together, by Congress, from the 65th Congress (1917 and 1918), the first under the Senate’s cloture rule, to the 119th Congress to date, United States Senate.",
   "notes": [
     "Until 1975, ending debate took two-thirds of senators voting. Since then it takes three-fifths of all senators for most matters, and changes in 2013 and 2017 lowered it to a simple majority for nominations.",
@@ -68,9 +68,10 @@
   },
   "chart_notes": [
     "Circle area is in proportion to votes on cloture; the key shows 10, 100 and 300 votes. A dashed outline marks the 119th Congress, still in session.",
-    "Labels: 298 votes in the Congress of 2019 and 2020."
+    "Labels: 298 votes in the Congress of 2019 and 2020.",
+    "On phones: one sentence sums the 27 Congresses from 1917 to 1970, 49 votes in all, and each Congress since 1971 takes its own row with its circle and count."
   ],
-  "phone": "same",
+  "phone": "differs",
   "artboard": "reading",
   "domain": "D04",
   "states": [],
@@ -91,7 +92,11 @@
       300
     ],
     "key_unit": "{value}",
-    "partial": "Congress still in session"
+    "partial": "Congress still in session",
+    "phone_from": 1971,
+    "phone_before": "Before {from_x}, {n} Congresses held {sum} votes on ending debate in all, no more than {max} in any one.",
+    "phone_value": "{value}",
+    "phone_partial": "{value} so far"
   },
   "annotations": [
     {
@@ -103,13 +108,18 @@
       "place": "above",
       "anchor": "end",
       "dx": 10,
-      "dy": -6
+      "dy": -6,
+      "phone": {
+        "hide": true
+      }
     }
   ],
   "notes_internal": [
     "Maker B, round 1. Data plan row 27, rule 14.41. Domain D04 from the sidecar; no state named.",
     "Checked by script against senate-cloture-motions-by-congress.csv: 55 Congresses; the most votes on cloture 298 in the 116th (2019); no Congress before the 92nd (1971) held more than 7 (the 69th and 89th); 11 Congresses held none; the 119th, still in session, 294.",
     "Rule history in note 1 comes from the sidecar's qualification and printed line; its 2013 and 2017 changes are on the sidecar's 'unconfirmed' list (not read on a Senate page on November 11), which the research lead may confirm.",
-    "H09: the window starts with the first Congress under the cloture rule and runs to today; Congresses are two-year terms, so no period splits at an inauguration. Read from the left and the right: the title counts votes and names no party or leader."
-  ]
+    "H09: the window starts with the first Congress under the cloture rule and runs to today; Congresses are two-year terms, so no period splits at an inauguration. Read from the left and the right: the title counts votes and names no party or leader.",
+    "Data lead DL-B11 applied: the title names the 119th Congress's 294 votes so far beside the 116th's 298. DL-B12 applied: phone 'differs' (DR-64, Rule 14.12); under 480 px the form sums the Congresses before 1971 in words and gives each later Congress its own row, same data and finding. Checked by script: 27 Congresses from 1917 to 1970 held 49 votes, at most 7. DL-R4 is with the research lead; note 1's 2013 and 2017 clause stays as written until it reports."
+  ],
+  "phone_note": "On phones, the 27 Congresses from 1917 to 1970 are summed in one sentence, and each Congress since 1971 takes its own row with its circle and count, since the circles of the busy decades merge on one line at that width."
 }

@@ -6,33 +6,33 @@ Oath & Action Edition 06, Phase 3, round 1, November 12, 2026. Maker A, briefed 
 
 Maker A's rows of the plan: 14 new specimens, one sketch and 20 entries. Each finished specimen has its form, spec and entry, passes `oa-chart.mjs build` at 1440 and 390 px on both grounds and at the five guide widths with page-to-Node parity, passes `dataviz_check.js --kit` on its build page, maker A's figure checks and words lint (scratch, `tools/figures.py`, `tools/words.py`), and has had its captures looked at.
 
-- **Done and passing (12 specimens):** S17 column, S18 bar with a benchmark tick, S19 dot plot, S20 slope, S21 lollipop, S22 grouped bar, S36 ranked register, S37 heat table, S38 filterable lookup table (as its still image and folded table), S39 evidence table, S41 plain table, S42 one sentence.
-- **Form and entry done, spec waiting on data (2):** S23 small-multiple bars (request A4, the engineer's derived hub file) and S40 tracker list (request A6, each bill's step from its actions). Both specs pass the build on scratch copies of the requested rows; both drafts are copied in full at the end of these notes.
-- **Sketch:** `s-14-24-sketch.html`, the radar chart (avoid), 1,071 bytes, in R1-C1's classes.
-- **Entries (20 of 20):** 14-015 to 14-024 and 14-125 to 14-134, checked by script against the plan (IDs, specimens, tiers, cross-references).
-- **Data lead's sign-off applied:** DL-A1 (light fill, R3), DL-A2 (phone zero lines), DL-A4 (S36's scale); DL-A3 met by A5; A3 answered (S20 keeps its window).
-- **Open:** A1 (S17 source line), A2 (S20 margins and line), A4, A6, A7 (S39 sources in words), A8 (optional, table weight), A9 (S38's live lookup), A10 (S38's Rule 01.9 domain).
+- **Done and passing, all 14 specimens:** S17 column, S18 bar with a benchmark tick, S19 dot plot, S20 slope, S21 lollipop, S22 grouped bar, S23 small-multiple bars, S36 ranked register, S37 heat table, S38 filterable lookup table (as its still image and folded table), S39 evidence table, S40 tracker list, S41 plain table, S42 one sentence.
+- **Sketch:** `s-14-24-sketch.html`, the radar chart (avoid), 1,071 bytes, in R1-C1's classes; signed off by the data lead.
+- **Entries (20 of 20):** 14-015 to 14-024 and 14-125 to 14-134, checked by script against the plan, and placed by chapter 14's generator in the guide build.
+- **Answers applied:** A1 (S17's `last_ten` line), A2 (S20's margins: the title now claims the 2.0-point rise past its margin of about 0.8, and note 1 prints the margins), A4 (S23 draws the engineer's hub table), A5 (S41, S42), A6 (S40 sets each bill's steps from the record; the hearing slash is explained in note 1), A7 and DL-A5 (S39 prints each claim's sources), A10 (S38 counts under D01), DL-A1 to DL-A4, DL-A6 (S38's title counts each grade).
+- **Open:** A9 (S38's live lookup, the engineer's next item); DL-R5 (S38's one-domain source line, research lead; S38 takes it when it lands); A8 (optional, table weight).
+- **Guide build:** `phase3_ch14_build.py` 0 faults; `guide_build.py --strict` exits 1 on two warnings, both maker B's (S05 and S13 over three times their tier's weight); none of my plates warns.
 
 | Rule | Spec | Form ID | Status |
 |---|---|---|---|
 | 14.15 | S03 (built) | ranked-bar | entry written (14-015.json); drawing unchanged, check passes |
-| 14.16 | S17 | column | done: form, spec, entry 14-016; build passes; light fill applied (DL-A1); source line waits on A1 |
+| 14.16 | S17 | column | done: form, spec, entry 14-016; build passes; light fill (DL-A1); `last_ten` source line (A1) |
 | 14.17 | S18 | bar-benchmark-tick | done: form, spec, entry 14-017; build passes |
 | 14.18 | S19 | dot-plot | done: form, spec, entry 14-018; build passes |
 | 14.19 | S04 (built) | dumbbell | entry written (14-019.json); drawing unchanged, check passes |
-| 14.20 | S20 | slope | done: form, spec, entry 14-020; build passes; window confirmed by the data lead (A3); a change claim and the source line variant wait on A2 |
+| 14.20 | S20 | slope | done: form, spec, entry 14-020; build passes; window confirmed (A3); margins and title claim from A2 |
 | 14.21 | S21 | lollipop | done: form, spec, entry 14-021; build passes |
 | 14.22 | S22 | grouped-bar | done: form, spec, entry 14-022; build passes |
-| 14.23 | S23 | small-multiple-bars | form, entry 14-023 and spec drafted; spec waits in scratch (`drafts/s23.json`) for request A4's derived file; the form passes the build on a scratch copy of those rows |
+| 14.23 | S23 | small-multiple-bars | done: form, spec, entry 14-023; build passes on the engineer’s hub table (A4) |
 | 14.24 | sketch | radar (avoid) | done: sketch `s-14-24-sketch.html` (1,071 bytes, under 2,048) and entry 14-024 |
 | 14.125 | S15 (built) | results-table | entry written (14-125.json); drawing unchanged, check passes |
 | 14.126 | S36 | ranked-register | done: form, spec, entry 14-126; build passes; light fill and scale end applied (DL-A1, DL-A4) |
 | 14.127 | S06 (built) | comparison-matrix | entry written (14-127.json); drawing unchanged, check passes |
 | 14.128 | S13 (built, maker B's spec) | sparkline-table | entry 14-128.json written; S13 is maker B's spec |
 | 14.129 | S37 | heat-table | done: form, spec, entry 14-129; build passes; 17.7 KB, over the per-figure share (see Tested) |
-| 14.130 | S38 | filterable-lookup-table | form, spec, entry 14-130; build passes as the still image with the folded table; the live search, filter and count wait on request A9; one domain's 17 records (A10) |
-| 14.131 | S39 | evidence-table | done: form, spec, entry 14-131; build passes; each claim's source in words waits on request A7 |
-| 14.132 | S40 | tracker-list | form, entry 14-132 and spec drafted; spec waits in scratch (`drafts/s40.json`) for request A6's step columns; the form passes the build on a scratch copy |
+| 14.130 | S38 | filterable-lookup-table | form, spec, entry 14-130; build passes as the still image with the folded table; title counts each grade (DL-A6); counts under D01 (A10); live lookup waits on A9; source line on DL-R5 |
+| 14.131 | S39 | evidence-table | done: form, spec, entry 14-131; build passes; prints each claim’s sources (A7, DL-A5) |
+| 14.132 | S40 | tracker-list | done: form, spec, entry 14-132; build passes; steps set from the record (A6) |
 | 14.133 | S41 | plain-table | done: form, spec, entry 14-133; build passes; prints the survey-only source line with its margin (A5 done) |
 | 14.134 | S42 | one-sentence | done: form, spec, entry 14-134; build passes; prints the survey-only source line with its margin (A5 done) |
 
@@ -74,6 +74,8 @@ Maker A's rows of the plan: 14 new specimens, one sketch and 20 entries. Each fi
 - D3-xxx | S36's scale ends 8 px short of the artboard's edge | Data lead DL-A4; the longest bar touched the frame
 - D3-xxx | S38's lookup holds the 17 issue records of one domain, news, records and public information, in place of all 194 | As live text the 194 rows weigh about 25 KB at the least and 51 KB with ID, domain and month, over three times the extended average (R1-C5, R6); the domain has the most room in chapter 14's count and all four grades; note 2 gives the whole count
 - D3-xxx | S38's drawing is the still image a post carries: the register with one filter on (well supported), under the count line the live table would show; the live search, filter and count belong to the figure's table | DR-49, still image first; the kit's forms draw SVG only, so live controls need the kit (request A9)
+- D3-xxx | S40's form sets each bill's six steps from the record (hearing recorded, committee vote or a committee's own measure, the two chamber dates, the law date), and a step passed with nothing recorded takes Rule 11.2's slash | The research lead's facts (A6); a step number typed by hand could drift from the record, and note 1 says the slash on step 2 means no hearing is recorded on the bill
+- D3-xxx | S20's title claims the under-35 rise, 2.0 points past its margin of about 0.8, and note 1 prints the margins of each change | Request A2's margins file (HVS Table B-5); DR-64 and Rule 14.9; the data lead allowed the claim once the margin passed
 
 ## Requests
 
@@ -109,244 +111,15 @@ Maker A's rows of the plan: 14 new specimens, one sketch and 20 entries. Each fi
 - S37: build passes, 0 faults, 126 rows, at every width and both grounds with parity (the 1440 drawing at the wide artboard, 1024 px); `dataviz_check.js --kit` passes. Captures looked at: Newsprint 1440 (top half), Charcoal 390. Contrast of each step's word against its tint computed from the tokens on both grounds: lowest 4.61:1. Figure check `figures.py s37`, 7 assertions pass. Weight 17,715 bytes (table 13,445, island 1,460). Words lint: two strings read by hand, both Rule 13.10's "not checked". S39 weighs 8,470 bytes.
 - Data lead's requests: DL-A1 (S17, S36), DL-A2 (S18, S21, S22) and DL-A4 (S36) applied in the forms; S17, S18, S21, S22 and S36 rebuilt, each PASS with 0 faults, and the S23 scratch test passes with R3 too. Looked at S17 and S36 on Newsprint at 1440 (the other bars light gray) and S18 and S21 at 390 (the zero line whole). DL-A3 met by the engineer's `survey_only` line, which carries the 1.9-point margin on S41 and S42. A3 answered: S20 keeps 2015 and 2025.
 - S38: build passes, 0 faults, 17 rows, at every width and both grounds with parity; `dataviz_check.js --kit` passes. Captures looked at: Newsprint 1440, Charcoal 390. Weight 7,551 bytes (the 194-row draft weighed 51,071). Figure check `figures.py s38`, 6 assertions pass. Words lint: one figure read by hand, inside a quoted status line. The live lookup is not built (A9), so no keyboard or screen reader test of it ran.
+- After the research lead's and engineer's answers: S17, S20, S23, S38, S39 and S40 rebuilt with `oa-chart.mjs build`, each PASS with 0 faults at every width on both grounds with parity. S40 looked at on Newsprint 1440 and Charcoal 390 (slashes on step 2 for all eight bills and on step 3 for H.R. 224 and H.R. 965). `figures.py`, all 14 specimens pass (S20's now test the margins file; S40's the hearing and committee records; S38's each grade's count). Words lint clean on the changed specs. `phase3_ch14_build.py`: 55 rules, 41 entries, 0 faults. `guide_build.py --strict --out` (scratch): 10,018,025 bytes, exit 1 on two warnings, both maker B's S05 and S13.
 
 ## Not tested
 
 - S38's live search, filter and count, by keyboard or screen reader: not built (request A9).
-- S23 and S40 against their real data files, which do not exist yet (A4, A6); tested only on scratch copies of the requested rows.
-- The guide build with my entries and specs: chapter 14's generator (`phase3_ch14_build.py`) and the guide's entry support are not written yet, so no entry has been placed or checked by the guide build, and the radar sketch has not met the guide's sketch check.
+- `guide_check.js` on the built page; the guide build's own sketch check (the build placed the sketch, and my in-page captures show it).
 - `guide_check.js` and axe-core on any page holding my figures.
 - Forced colors, 200 percent text, reduced motion and print emulation on my figures, beyond the kit's own forced-colors check inside the build.
 - Real screen readers and devices.
 - Grayscale captures were looked at for S17, S18, S20, S21, S22, S23 (scratch), S36, S37 (phone), S39 and the sketch; the other specimens' grayscale captures were made by the build and not looked at.
 - The words of every spec and entry read aloud against chapter 02, beyond my reading and the lint; the editor's words pass has not reached my files.
 - Margins of error for S20 (none in its file) and S41 and S42 by party (none published).
-
-## Draft specs waiting on data
-
-These sit in scratch (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/f15cd04b-21be-5dde-a467-804e951756a2/scratchpad/phase-3/round-1/maker-a/drafts/`) and go to `work/build/chart-kit/specs/` when their data lands. Each passed the build on a scratch copy of the requested rows.
-
-### S23 (waits on A4)
-
-```json
-{
- "kit": 1,
- "id": "S23",
- "form": "small-multiple-bars",
- "family": "comparison",
- "tier": "extended",
- "dataset": "v7-claims-by-hub-and-grade",
- "reader_question": "How sure is each of the five topic hubs’ evidence?",
- "evidence": "finding",
- "evidence_label": "Finding",
- "grade_line": "Documented: the atlas’s own register of graded claims",
- "v7": {
-  "grade": "documented",
-  "ids": [],
-  "snapshot": "2026-10-15"
- },
- "title": "Public services where you live has the largest share of documented claims of the atlas’s five hubs, 84.5 percent, and voice, power and information the smallest, 67.2.",
- "measure_line": "Claims behind the atlas’s 16 everyday answers, grouped by its five topic hubs, as a share of each hub’s claims by evidence grade, 433 claims checked through October 15, 2026, United States. Every panel shares one scale, and bars start at zero.",
- "notes": [
-  "Grades: documented means on the public record; well supported means strong research evidence; plausible means some evidence; contested means evidence disputed. A claim’s grade covers that claim alone.",
-  "Voice, power and information has the largest share of plausible claims, 18.8 percent, and work and financial security the largest share contested, 8.2 percent."
- ],
- "credit": "Chart: Oath & Action",
- "illustrative": false,
- "alt": "Five panels, one per topic hub, show the share of each hub’s claims at each evidence grade. Documented claims lead in every hub, from 84.5 percent in public services where you live and 77.9 in cost of living to 67.2 in voice, power and information.",
- "table": {
-  "caption": "Claims by topic hub and evidence grade",
-  "columns": [
-   {
-    "field": "hub_title",
-    "label": "Hub",
-    "format": "text",
-    "row_header": true
-   },
-   {
-    "field": "grade",
-    "label": "Grade",
-    "format": "text",
-    "words": {
-     "documented": "Documented",
-     "well_supported": "Well supported",
-     "plausible": "Plausible",
-     "contested": "Contested"
-    }
-   },
-   {
-    "field": "claims",
-    "label": "Claims",
-    "format": "integer"
-   },
-   {
-    "field": "share_pct",
-    "label": "Share of the hub’s claims",
-    "format": "percent:1"
-   }
-  ]
- },
- "chart_notes": [
-  "In each panel the documented bar is drawn in the text’s ink and the other three grades in light gray."
- ],
- "phone": "same",
- "artboard": "reading",
- "domain": "all",
- "states": [],
- "encode": {
-  "panel": "hub",
-  "category": "grade",
-  "value": "share_pct"
- },
- "labels": {
-  "panel_title": "{hub_title}, {hub_claims} claims",
-  "categories": {
-   "documented": "Documented",
-   "well_supported": "Well supported",
-   "plausible": "Plausible",
-   "contested": "Contested"
-  },
-  "named": "documented"
- },
- "formats": {
-  "value": "percent:1"
- },
- "scale": {
-  "x": [
-   0,
-   100
-  ]
- },
- "notes_internal": [
-  "Data plan row 9 (coverage plan: evidence mix by topic hub). Draws request A4's derived file v7-claims-by-hub-and-grade, the sums of v7-claims-by-grade over each hub; C1 keeps the grouping in its own file.",
-  "Figures checked by script (figures.py s23) against v7-claims-by-grade itself."
- ]
-}
-```
-
-### S40 (waits on A6)
-
-```json
-{
- "kit": 1,
- "id": "S40",
- "form": "tracker-list",
- "family": "tables-and-plain-words",
- "tier": "core",
- "dataset": "congress-gov-housing-bills-119",
- "sort": [
-  {
-   "field": "step_now",
-   "order": "desc"
-  },
-  {
-   "field": "latest_action_date",
-   "order": "desc"
-  }
- ],
- "reader_question": "Where do this Congress’s housing bills stand?",
- "evidence": "finding",
- "evidence_label": "Finding",
- "grade_line": "Documented: the record of each bill on Congress.gov",
- "title": "Of eight housing bills that moved past committee referral in the 119th Congress, two had become law by November 11, 2026.",
- "measure_line": "Housing bills of the 119th Congress that moved past referral to committee, each at its step toward law, of six, as of November 11, 2026, United States Congress.",
- "notes": [
-  "The list holds every housing bill in the bill lists of the Senate Committee on Banking, Housing, and Urban Affairs and the House Committee on Financial Services that moved past referral, leaving out one whose title concerns another subject. Housing provisions also ride in larger bills these lists do not catch.",
-  "The ideas in S. 2651 may have moved in H.R. 6644, which this record does not show.",
-  "Status words are Oath & Action’s, from each bill’s latest action on Congress.gov."
- ],
- "credit": "Chart: Oath & Action",
- "illustrative": false,
- "alt": "A list of eight housing bills with six steps toward law each. Two became law: H.R. 224, the Disabled Veterans Housing Support Act, on January 20, 2026, and H.R. 6644, the 21st Century ROAD to Housing Act, on July 11, 2026. Two passed the House and wait in a Senate committee; four wait for a vote in the chamber where they were filed.",
- "table": {
-  "caption": "Housing bills of the 119th Congress past committee referral, as of November 11, 2026",
-  "columns": [
-   {
-    "field": "bill",
-    "label": "Bill",
-    "format": "text",
-    "row_header": true
-   },
-   {
-    "field": "title",
-    "label": "Name",
-    "format": "text"
-   },
-   {
-    "field": "sponsor",
-    "label": "Sponsor",
-    "format": "text"
-   },
-   {
-    "field": "sponsor_party",
-    "label": "Party",
-    "format": "text"
-   },
-   {
-    "field": "step_now",
-    "label": "Step of six",
-    "format": "integer"
-   },
-   {
-    "field": "status",
-    "label": "Where it stands",
-    "format": "text"
-   },
-   {
-    "field": "latest_action_date",
-    "label": "Latest action",
-    "format": "date"
-   },
-   {
-    "field": "latest_action",
-    "label": "Latest action, as recorded",
-    "format": "text"
-   },
-   {
-    "field": "law_number",
-    "label": "Public law",
-    "format": "text",
-    "empty": "None"
-   }
-  ]
- },
- "chart_notes": [
-  "Each row’s six circles are the steps Filed, Hearing, Committee vote, First chamber, Second chamber and President: filled where done, a heavy ring on the step the bill is at, a fine ring ahead."
- ],
- "phone": "differs",
- "phone_note": "Below 552 px the circles start on the text edge and the step names move into a key after the list.",
- "artboard": "reading",
- "domain": "D09",
- "states": [],
- "encode": {
-  "key": "bill",
-  "name": "title",
-  "step": "step_now",
-  "law": "law_number",
-  "skipped": "steps_skipped",
-  "status": "status",
-  "date": "latest_action_date"
- },
- "labels": {
-  "steps": [
-   "Filed",
-   "Hearing",
-   "Committee vote",
-   "First chamber",
-   "Second chamber",
-   "President"
-  ],
-  "now": "Step {n} of 6: {step}.",
-  "detail": "{status}; latest action {date}.",
-  "became": "Became law on {date}, Public Law {law}.",
-  "sub": "Sponsor: {sponsor} ({sponsor_party}, {sponsor_state})",
-  "key_title": "Steps:"
- },
- "notes_internal": [
-  "Data plan row 39. The six steps and their marks follow Rules 11.1 to 11.5; a list row is drawn as Rule 11.5 sets it.",
-  "Waits on request A6: step_now and steps_skipped from each bill's actions, so a skipped hearing keeps its slash (Rule 11.2). The scratch test assumes no skipped step.",
-  "Parties named in words in the text's ink (H10); no party mark.",
-  "Figures checked by script (figures.py s40)."
- ]
-}
-```
