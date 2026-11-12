@@ -512,6 +512,7 @@ def figures():
     want('S55', t, 'held %.1f million of the nation’s %.1f million in 2025' % (sum(int(r['renter_households']) for r in four) / 1e6, int(U['renter_households']) / 1e6), 'title counts')
     for r in four:
         same('S55', sp['labels']['sub'][r['code']].replace('\u00a0', ' '), '%.1f million' % (int(r['renter_households']) / 1e6), r['code'] + ' households')
+        same('S55', sp['labels']['sub_under'].replace('{name}', r['name']).replace('{sub}', sp['labels']['sub'][r['code']]).replace('\u00a0', ' '), '%s holds %.1f million renter households.' % (r['name'], int(r['renter_households']) / 1e6), r['code'] + ' line under the chart')
         g = int(r['median_gross_rent']) - int(U['median_gross_rent']); m = (int(r['median_gross_rent_moe']) ** 2 + int(U['median_gross_rent_moe']) ** 2) ** 0.5
         same('S55', (r['code'], abs(g) > m, g > 0), (r['code'], True, r['code'] != 'TX'), 'rent against the nation past the margin')
     same('S55', sum(1 for r in four if int(r['median_gross_rent']) > int(U['median_gross_rent'])), 3, 'three of them above (title)')

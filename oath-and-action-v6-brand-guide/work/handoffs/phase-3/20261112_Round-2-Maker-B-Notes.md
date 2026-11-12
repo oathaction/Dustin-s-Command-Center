@@ -250,3 +250,15 @@ Each built with the kit's width sweep on and looked at as listed under Tested:
 - Entries 14.60, 14.62, 14.67 to 14.69 and 14.75 in the guide build at any width, and 14.73 at 390 px (read from the files only). The strict build and quick guide check ran before MB-F1 to MB-F3 and the editor's latest words; the specs were rebuilt with the kit after them, the guide was not.
 - The kit's PNG exports of S24 to S35 other than S25, S34 and S35 were not looked at after the run (their forms did not change but for S25 and S34).
 - S51, S56, S57 and S59 on Charcoal at the phone widths other than those listed under Tested.
+
+### After the second pass
+
+November 12, 2026, the main session's two items on S55 (D3-1075), from the brand reviewer's and the statistics reviewer's second-pass N2.
+
+- D3-xxx | S55's United States ring takes a 2 px halo of the ground outside its outline (was 1 px) | On Texas's dark circle the 1 px halo read as a hole in Texas's mark; at 2 px the ring reads as its own mark on both grounds (brand N2)
+- D3-xxx | A named state's figure that finds no place on two lines tries one line beside its bold name, and else prints under the chart as a sentence (`labels.sub_under`: "{name} holds {sub} renter households.") | New York lost its "3.6 million" at every phone width; the chart note promises each of the four states' figures (statistics N2)
+
+Tested: `oa-chart.mjs build s55 s54` at 1440, 390, 360, 328 and 288 px page widths on both grounds, the sweep on: both PASS, 0 faults. Looked at at twice size: S55 at 1440 px Newsprint (the ring on Texas) and at 390 Charcoal, 360 Newsprint, 328 Newsprint and 288 Charcoal (New York's figure under the chart at each phone width, the ring on Texas). `--figures` (a new check for each state's line under the chart) and `--check`: 0 faults.
+
+Not tested: the guide build after this change; S55 in forced colors and grayscale.
+
