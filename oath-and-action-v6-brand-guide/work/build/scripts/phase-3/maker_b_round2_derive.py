@@ -171,7 +171,7 @@ def uninsured():
     name = src + '-box-by-region'
     line = ('Source: U.S. Census Bureau, Small Area Health Insurance Estimates, people under 65 without health insurance, 2024, '
             'counties in the 50 states and DC. Retrieved November 11, 2026. Model-based estimates; small counties carry wide '
-            'margins of error; each region\'s quartiles, whiskers and outliers computed by Oath & Action.')
+            'margins of error; each region’s quartiles, whiskers and outliers computed by Oath & Action.')
     side = base_side(src, name,
         geography='Counties and county equivalents in the 50 states and DC with an estimate, by Census region',
         unit=('percent of people under 65 without health insurance; counties and outliers in counties. Quartiles by linear '
