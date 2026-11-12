@@ -18,7 +18,7 @@
   "notes": [
     "Method: the line is the median of officials’ projections, each under that official’s view of appropriate policy; the outer band adds and subtracts the average error of past forecasts, 2006 to 2025, which the Board says covers about 70 percent of outcomes under certain assumptions. The longer run has no error band.",
     "The officials are the members of the Board of Governors and the presidents of the 12 Reserve Banks.",
-    "The actual fourth-quarter averages were 4.2 percent in 2021, 3.6 in 2022, 3.8 in 2023 and 4.1 in 2024. The year 2025 has none, since no unemployment rate was published for October 2025."
+    "The actual fourth-quarter averages were 4.2 percent in 2021, 3.6 in 2022, 3.8 in 2023 and 4.1 in 2024. The year 2025 has none, since the Bureau of Labor Statistics published no unemployment rate for October 2025."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -75,7 +75,7 @@
     ]
   },
   "chart_notes": [
-    "The thin line at the left is the actual rate, and the light column at 2025 marks the year with no fourth-quarter average. The wide outer band is the median plus and minus past forecast errors; the narrow inner band is the range of all officials’ projections. Thin gray lines edge both bands. The longer run is drawn apart, at the right, with its range as a line."
+    "The thin line at the left is the actual rate, and the empty column at 2025, edged by a dashed line, marks the year with no fourth-quarter average. The wide outer band is the median plus and minus past forecast errors; the narrow inner band is the range of all officials’ projections. Thin gray lines edge both bands. The longer run is drawn apart, at the right, with its range as a line."
   ],
   "phone": "same",
   "artboard": "reading",

@@ -2059,7 +2059,7 @@
    "id": "14.46",
    "title": "Use a 100 percent bar to compare how wholes of different sizes divide into the same parts.",
    "rule": [
-    "Draw each whole as one bar of the same length, split into its parts in a fixed order, with the part the question is about first from the left and in the subject ink. Step the other parts toward the page color, hatch the last, and print the first part’s share with the whole’s count at the right of each bar. Sort the bars by that share, and draw a line across them where an overall share helps the reader place each one."
+    "Draw each whole as one bar of the same length, split into its parts in a fixed order, with the part the question is about first from the left and in the subject ink. Step the other parts toward the page color, hatch the last, and print the first part’s share with the whole’s count at the right of each bar. Sort the bars by that share, and draw a dashed line across them in the text’s ink, with its own label, where an overall share helps the reader place each one (Rule 14.6)."
    ],
    "why": {
     "text": [
@@ -2223,7 +2223,7 @@
    "id": "14.50",
    "title": "Use stacked columns for a total over time that splits into a few parts.",
    "rule": [
-    "Stack up to four parts in each column in one fixed order, the largest or the base part on the zero line, in the categorical inks in their order: Charcoal, Verdigris, Prussian, then Stone, always hatched (Rule 14.5). Leave a 1 px gap of the page color between parts, name each part beside the last column, or in a key on a phone, and print the total over the columns the title or notes discuss."
+    "Stack up to four parts in each column in one fixed order, the largest or the base part on the zero line, in the categorical inks in their order: Charcoal, Verdigris, Prussian, then Stone, always hatched (Rule 14.5). Leave a 1 px gap of the page color between parts, name each part beside the last column, or in a key on a phone, and print the total over the columns the title or notes discuss. Keep a part too thin to see at its true height, and say so in a note."
    ],
    "why": {
     "text": [
@@ -2347,7 +2347,7 @@
    "id": "14.53",
    "title": "Use a parliament chart for the seats in a chamber.",
    "rule": [
-    "Draw every seat as one dot on a half circle of rows, every party in the one party-mark ink, with each party’s block named with its count and set apart from the next by a narrow gap (Rule 14.7). Lay Democrats from the left, as the chart for Rule 14.28 orders the parties, Republicans from the right, and independents and vacancies between them, so every chamber we draw reads the same way. Draw an empty seat as an open ring, and mark the seat that makes a majority with a tick. Print the date of the count, since seats change with every vacancy."
+    "Draw every seat as one dot on a half circle of rows, every party in the one party-mark ink, with each party’s block named with its count and set apart from the next by a narrow gap (Rule 14.7). Lay Democrats from the left, as the chart for Rule 14.28 orders the parties, Republicans from the right, and independents and vacancies between them, set apart from both blocks and each named with its own leader, so every chamber we draw reads the same way. Draw an empty seat as an open ring, and mark the seat that makes a majority with a tick. Print the date of the count, since seats change with every vacancy."
    ],
    "why": {
     "text": [
@@ -2631,7 +2631,7 @@
    "id": "14.60",
    "title": "Use a box plot to compare the spread of a few groups.",
    "rule": [
-    "Draw one row a group, its name and count of units flush left: a box from the first to the third quartile, the values a quarter and three quarters of the way up the ranked units, so the box holds the middle half; a 2 px line at the median, the middle unit; whiskers to the last unit within one and a half times the box’s length, and each unit beyond them as a small open circle. Print each median, give the group the title names the view’s red point while that red stays within 5 percent of the drawing (Rule 05.1), or the subject ink where Rule 14.6 sets ink in its place, as for a region of states, and say in the measure line what the box and whiskers span.",
+    "Draw one row a group, its name and count of units flush left: a box from the first to the third quartile, the values a quarter and three quarters of the way up the ranked units, so the box holds the middle half; a 2 px line at the median, the middle unit; whiskers to the last unit within one and a half times the box’s length, and each unit beyond them as a small open circle. Print each median, give the group the title names the view’s red point while that red stays within 5 percent of the drawing at every width (Rule 05.1), or the subject ink where Rule 14.6 sets ink in its place, as for a region of states, and say in the measure line what the box and whiskers span.",
     "The chart draws from a table of each group’s quartiles, median and whiskers and a table of the units past the whiskers, so a chart of thousands of units stays light."
    ],
    "why": {
@@ -2713,7 +2713,7 @@
    "id": "14.62",
    "title": "Show a population’s age and sex in a pyramid, one bar a year of age.",
    "rule": [
-    "Draw one thin bar a year of age on each side, men to the left and women to the right on one scale, the youngest at the bottom and ages labeled down the center. Both sides take one ink, and position and the names over each half carry sex. A band of ages the title names takes the view’s red as one job (Rule 14.6) while that red stays within 5 percent of the drawing at every width (Rule 05.1), and the subject ink where it would pass it, as ages 55 to 64 do here. Every other age takes the light fill. Set the band’s words in the empty corner, naming its ages and never its color."
+    "Draw one thin bar a year of age on each side, men to the left and women to the right on one scale, the youngest at the bottom and ages labeled down the center. Both sides take one ink, and position and the names over each half carry sex. A band of ages the title names takes the view’s red as one job (Rule 14.6) while that red stays within 5 percent of the drawing at every width (Rule 05.1), and the subject ink where the red would pass that share, as ages 55 to 64 do here. Every other age takes the light fill. Set the band’s words in the empty corner and name the band by its ages, since its ink changes with the ground and in forced colors."
    ],
    "why": {
     "text": [
@@ -2946,7 +2946,7 @@
    "id": "14.68",
    "title": "Size each point by a third measure only when its size answers the question.",
    "rule": [
-    "Draw the scatter plot with each circle’s area set by a third measure (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circles the title names in the view’s red point while that red stays within 5 percent of the drawing (Rule 05.1), or in the subject ink where Rule 14.6 sets ink in its place, as for the four states here, each with the figure its size stands for, and keep the Association label and its note."
+    "Draw the scatter plot with each circle’s area set by a third measure (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circles the title names in the view’s red point while that red stays within 5 percent of the drawing at every width (Rule 05.1), or in the subject ink where Rule 14.6 sets ink in its place, as for the four states here, each with the figure its size stands for, and keep the Association label and its note."
    ],
    "why": {
     "text": [
@@ -3172,7 +3172,7 @@
    "id": "14.74",
    "title": "Draw a survey figure with its margin of error, and single out only what passes it.",
    "rule": [
-    "Draw each estimate as a dot on a thin line across its interval, the interval’s level named in the measure line, such as “90 percent margin of error”. Draw the nation as a dashed line in the text’s ink with its own label (Rule 14.6). A dot that differs from the nation by more than the gap’s own margin takes a solid fill; one within it takes an open dot (Rule 14.9). List rows by their figures and print each one, but never number them as ranks."
+    "Draw each estimate as a dot on a thin line across its interval, the interval’s level named in the measure line, such as “90 percent margin of error”. Print the margin the publisher gives for the figure drawn, from the same release where it gives one, as the Census Bureau does in its data profile and subject tables, and compute one by its published formula only where it gives none, saying so in the note. With no margin to print or compute, leave the intervals out, set no figure above another, and say in the note that the publisher gives none. Draw the nation as a dashed line in the text’s ink with its own label (Rule 14.6). A dot that differs from the nation by more than the gap’s own margin takes a solid fill; one within it takes an open dot (Rule 14.9). List rows by their figures and print each one, but never number them as ranks."
    ],
    "why": {
     "text": [
@@ -3183,7 +3183,7 @@
    "related": [
     "13"
    ],
-   "builders": "Form range-bar: node work/build/chart-kit/oa-chart.mjs build s57; encode category, value and margin (or low and high); labels.reference draws the dashed line, labels.test \"reference\" the open dots, labels.value the right column’s words.",
+   "builders": "Form range-bar: node work/build/chart-kit/oa-chart.mjs build s57; encode category, value and margin (or low and high); labels.reference draws the dashed line, labels.test \"reference\" the open dots, labels.value the right column’s words; encode.margin takes the column the sidecar’s margin_columns names for the value, and a column in check_only_columns serves the data check alone.",
    "related_rules": [
     "14.9",
     "13.5",
@@ -3214,7 +3214,7 @@
    "id": "14.75",
    "title": "Draw a band around a line to show each year’s margin of error.",
    "rule": [
-    "Draw the series as a 2 px line in the subject ink over a band from each year’s low to its high at the publisher’s stated confidence, which the measure line names. Fill the band in Stone magnitude step 1 and draw its two edges as 1 px lines in the context ink, since the fill alone is too pale to see. Where the publisher changed its method, break the line and the band and draw both estimates for that year (Rule 14.11). Label the latest figure with its margin at the line’s end."
+    "Draw the series as a 2 px line in the subject ink over a band from each year’s low to its high at the publisher’s stated confidence, which the measure line names. Fill the band in the palest gray and draw its two edges as 1 px lines in the context ink, since the fill alone is too pale to see. Where the publisher changed its method, break the line and the band and draw both estimates for that year (Rule 14.11). Label the latest figure with its margin at the line’s end."
    ],
    "why": {
     "text": [
@@ -3225,7 +3225,7 @@
    "related": [
     "13"
    ],
-   "builders": "Form line-confidence-band: node work/build/chart-kit/oa-chart.mjs build s58; encode x, y and margin (or low and high), with break and labels.break_end and labels.break_start for a change of method.",
+   "builders": "Form line-confidence-band: node work/build/chart-kit/oa-chart.mjs build s58; encode x, y and margin (or low and high), with break and labels.break_end and labels.break_start for a change of method. The form fills the band in magnitude step 1, the palest of the Stone steps in Rule 14.5, and draws its two edges in the context ink.",
    "related_rules": [
     "14.9",
     "14.11",
@@ -3582,7 +3582,7 @@
    "id": "14.90",
    "title": "Use a bullet graph to set one measure against its target and the ranges behind it.",
    "rule": [
-    "Draw the ranges as bands in the magnitude steps from zero, the measure as a narrow bar in the subject ink from zero, and the target as a tick in the text’s ink across the bands. Name every band edge and the target with its figure once over the rows, and print the measure and its distance to the target beside each bar."
+    "Draw the ranges as gray bands from zero, a shade apart, the measure as a narrow bar in the subject ink from zero, and the target as a tick in the text’s ink across the bands. A range can be a past target, such as an earlier limit, and its words say so. Name every band edge and the target with its figure once over the rows, and print the measure and its distance to the target beside each bar."
    ],
    "why": {
     "text": [
@@ -3591,7 +3591,7 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "Form bullet-graph: node work/build/chart-kit/oa-chart.mjs build s64; encode.target names the target column, labels.bands the bands with their steps and words, and labels.per divides the printed figures.",
+   "builders": "Form bullet-graph: node work/build/chart-kit/oa-chart.mjs build s64; encode.target names the target column, labels.bands the bands, each with its magnitude step (1 to 4, the Stone steps of Rule 14.5) and words, and labels.per divides the printed figures.",
    "related_rules": [
     "14.4",
     "14.5",

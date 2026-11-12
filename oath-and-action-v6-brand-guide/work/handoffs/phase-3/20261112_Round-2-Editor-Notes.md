@@ -311,6 +311,8 @@ Under `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` (Editor paragraph, c
 - D3-xxx | Rule 14.11's "New questions" note rises 36 px and wraps at 70 px under 480 px | AX S2's guard found it half over the 2007 dot at 225 to 328 px; unwrapped at 256 px it met the rising line
 - D3-xxx | Group 8's line reads "A range, a band or a fan shows how sure a figure is, as its publisher states it, and an estimate’s note gives the method behind its range (Rule 13.1)." | CD R-S2: 44 words with stacked clauses
 - D3-xxx | Rule 14.11's plate takes no band words | RF-2 names "Rule 14.11's plate on the same form", but the plate draws `line-event-notes` with no band; entry 14.75 alone takes them
+- D3-xxx | The editor writes maker A's second pass straight into its word fields: S60's note 1, S45's note 1, S48's chart note, and entry 14.90's rule and builders | D3-669, D3-900; S60 named figures by numbers the plate never prints, S45 was passive, S48 called the independent an open ring
+- D3-xxx | Entry 14.90 says a range can be a past target, such as an earlier limit | AX S10's reader asked why S64 draws the limit no longer in force
 - D3-xxx | Chapter 15's second pass goes to the systems designer as a table of seven rows (15.10, 15.11, 15.12, 15.17), all applied | D3-900: the generator is the systems designer's; H11 for 15.10 and 15.11
 - D3-xxx | Rule 14.5 keeps "The Stone magnitude steps" | It is the rule that sets the palettes, so the name is its subject; AX S10's fault is the name in 14.75 and 14.90, read without that context
 
@@ -318,6 +320,20 @@ Under `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` (Editor paragraph, c
 
 - **Done by maker A (22:30): `forms/column.js` (D3-904, a sweep fault on my spec `s-14-12-cols`).** At drawings of 480 to 502 px the twelve desk columns cannot carry their values: "3,249" runs past the left edge and onto "3,267". Rule 14.12 itself says columns become bars "when columns grow too narrow to carry their values". Please let the form draw its bar arrangement wherever the widest value would not fit its column, not only under the phone width, calling `c.arrange('phone')` as `range-bar` does. No spec key reaches it, so the plate waits on the form; the kit has no trillions format that would shorten the labels either.
 - **To maker A, `s63.json` (RF-3, ST S8).** The data lead names me to write S63's title, note 1 and X18's words. To keep two writers off one file while you work S63's form, I write them in the second pass once you report S63 done, unless you set the data lead's words as given first; I then read them.
+
+### Second pass: maker A (D3-669)
+
+Read at 23:05, after maker A reported done: every word field that changed since 011cbdec in maker A's specs (S01, S07, S08, S10, S12, S15 to S23, S36 to S48, S60 to S64) and entries (14.15 to 14.57, 14.79 to 14.92), 89 fields in S10, S18, S43 to S48, S60 to S63 and entries 14.46, 14.47, 14.50, 14.52 to 14.56, 14.85 to 14.87 and 14.89, by `words/words.py dump` (scratch) and then by hand, with its lint. The round 1 specs maker A moved for the sweep changed no word. I applied four changes and AX S10's for entry 14.90 by `words/words.py apply`, which fails a change whose before-text is not found once in its field or whose after drops a figure, and checks by parsing that no other field moved. No form, data, number or kit file changed.
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| S60 | notes.1 | The atlas repeats figure 4’s sentence on the inspectors general under figure 5, where it does not apply, so the table prints it under figure 4 only. | The atlas repeats its sentence on the inspectors general, which belongs to the count of at least 17 removed, under the $62.7 billion in financial benefits, where it does not apply, so the table prints it in the count’s row only. | The plate numbers no figure, so "figure 4" and "figure 5" pointed at nothing a reader sees; each is named by the figure it prints (RF-4's sense kept) |
+| S45 | notes.1 | The Census Bureau’s series starts in 1968; more homes in buildings of five or more units were finished in 1972, 1973 and 1974, the most in 1973, 779,800, and their share was last higher in 1974, at 40.1 percent. | The Census Bureau’s series starts in 1968. In 1972, 1973 and 1974 builders finished more homes in buildings of five or more units than in 2024, the most in 1973, 779,800, and the share was last higher in 1974, at 40.1 percent. | W02, active, and the comparison names the year the three beat; checked by script: only 1972 to 1974 pass 2024's 591,700 |
+| S48 | chart_notes.0 | The independent’s seat and the two empty seats, drawn as open rings, sit apart under the majority tick, each named. | The independent’s seat and the two empty seats sit apart under the majority tick, each named, and the empty seats are open rings. | The note read as if all three were open rings; the independent's seat is solid (RF-24), as the 1440 px drawing shows |
+| 14.90 | rule.0 | Draw the ranges as bands in the magnitude steps from zero, … | Draw the ranges as gray bands from zero, a shade apart, … A range can be a past target, such as an earlier limit, and its words say so. | AX S10: "magnitude steps" is a builder's name; the simulated reader asked why S64 draws the earlier limit |
+| 14.90 | builders | labels.bands the bands with their steps and words, | labels.bands the bands, each with its magnitude step (1 to 4, the Stone steps of Rule 14.5) and words, | AX S10: the step names move here |
+
+Read and kept: S63's title, note 1 and X18's words, which maker A set from RF-3 as given (X18's words name the second Trump administration and its first day, ST S8), its chart note on the atlas's titles and grades, and its table's Atlas grade column; S60's survey note and its order of notes; S61's 30-word title (both provisions, DR-98), measure line, alt and chart note; S47's chart note and note 1, which repeat the fold's count because the chart note sits in the folded table section as the drawing's text equivalent; S43's margin note; S44's chart note naming steps by what they do (AX S3); S45's title and notes 1 and 3; S46's measure line; S62's step note and table words ("never happened" is the form's own term for the slash, Rule 11.2); S10's dashed line; entries 14.46, 14.47, 14.50, 14.52 to 14.56, 14.85 to 14.87 and 14.89, whose red-share wording is one across the area forms and RF-1's.
 
 ### Second pass: words for the systems designer (chapter 15)
 
@@ -352,6 +368,8 @@ Read and kept: 15.12's caption, specs "Order" and "Connections", the "Each step"
 - Group 8's line read from the written chapter file: 30 words.
 - After ED-F1 and ED-F2: `phase3_ch14_rules_build.py` passes every check, and its rerun changed `14-009.json` alone among my files.
 - The data lead signed off Rules 14.6, 14.9, 14.11, 14.12 and 14.13 and group 8's line (its notes, "Sign-off").
+
+- Maker A's second pass: `words.py apply` failed once, on S45, whose stored sentence holds a no-break space before "percent"; corrected and applied, 5 changes in 4 files, one line each in `git diff`. `oa-chart.mjs build` with the sweep on S45, S48 and S60: 3 PASS, 0 faults. Maker A's `tools/fixfigs.py`: 38 passed, 0 failed. S45's new claim checked by script on the frozen file. S48's 1440 px drawing looked at (the independent solid, the two vacancies open). `phase3_ch14_build.py`: 0 faults.
 
 ### Not tested (fix pass)
 

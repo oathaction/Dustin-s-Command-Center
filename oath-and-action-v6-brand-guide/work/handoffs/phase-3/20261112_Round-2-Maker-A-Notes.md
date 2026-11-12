@@ -164,7 +164,7 @@ November 12, 2026, round 2's review fix pass (`work/handoffs/phase-3/20261112_Ro
 
 ### Summary
 
-In progress. Items: ST M1, M2, M3, S1, S5, S8, S11; BC M1, M2, M3, S2, S3, S7, S11, S12, S13 (mine), S17 (mine), S18; CD A-M1, A-M2, A-S1 to A-S5, SK-S1 (mine); call 5 (S10's dashed line); call 11 (one row-name weight). ST S9 touches maker B's S50 and S54 only. AX items wait on the brief's addendum; those on my specs (AX S1 S63, S2 S44 and S48, S3 S44's words, S4 S47's note, S5 S62's table, S9 S45) are listed below as I take them.
+Done (23:0x), every item in the fix brief's maker A paragraph, calls 3, 5, 10 and 11, the access addendum's maker A row, and the sweep and crossing-check faults the main session routed to me (S01, S07, S12, S15, S16, S63; D3-904, D3-909, D3-911), under the data lead's rulings RF-1 to RF-4, RF-10 to RF-13, RF-15 and RF-22 to RF-24. ST S9 touches maker B's S50 and S54 only. ST S6's maker A side (S45, S46, S47) is done with the research lead's variants. The editor's `column` request is done and the editor told. Every spec I touched builds PASS with the sweep; the strict build exits 0 with no kit fault listed; the quick guide check result is under Tested. Board 2 should list S10 (dashed line, call 5) and the placement-only changes to S01, S07, S12, S15 and S16 (S12 drops its codes at 256 to 279 px, where they cannot fit).
 
 ### Items
 
@@ -196,10 +196,61 @@ In progress. Items: ST M1, M2, M3, S1, S5, S8, S11; BC M1, M2, M3, S2, S3, S7, S
 
 ### Routine calls
 
+- D3-xxx | S10's line for all 433 claims is `K.parts.total_line` at 1.5 px with its label in regular weight; on a phone the line breaks 3 px clear of each row name it would cross | Call 5 and ruling (b); the reference rule's weight, since the bars carry no stroke weight; a dashed line through "security" read badly at 358 px
+- D3-xxx | S18's table prints "Middle fifth" through its label column's words; the CSV keeps the Bureau's "Third fifth" | ST S11: one name for one fifth on the plate
+- D3-xxx | S48's independent and vacancies stand together under the aisle, two empty places from each end block in the innermost row and dropped 0.6 of a row into the hollow; each block is named with its own words and hairline, in the hollow where the line fits between the innermost feet, else on a line under the half circle above the end blocks' names | BC S2, CD A-S5, RF-24: with one empty place the independent sat under the Democrats' edge seat; at 296 and 256 px the hollow cannot hold the words
+- D3-xxx | S48's source line is the Clerk sidecar's `with_party_divisions_119th` variant and note 1 is RF-5's | ST M3; no line written in the spec
+- D3-xxx | S62's across arrangement sets each mark at its sixth's left edge with its words flush left, the names on a shared top and every state, date and note on shared lines; step 2's note is shorter now the research lead confirmed no hearing | BC S11; centered notes ran to eight lines
+- D3-xxx | S62's table takes a Step column through the action code's words, the discharge row naming steps 2 and 3 as never happened | AX S5; the kit's table prints the data's rows, so the two steps share that row
+- D3-xxx | S44's chart note names steps and totals by what they do and where they sit; values sit on `clear_label` knockouts; names and values take `row_name` and `row_value` | BC S17, AX S2, AX S3, BC S8: color words fail on Charcoal and in forced colors; a gridline through a minus reads as a plus
+- D3-xxx | S43's names and values take `row_name` and `row_value`; S18 and S10 keep their weights | BC S8 names S43, S44, S51 and S57; S10 is board 1's drawing and S18 was not named
+- D3-xxx | S46's "All other sources" sits on a plate of the ground 5 px clear of the words | BC S7; the hatch ran through the letters
+- D3-xxx | Maker A's six sketches take maker B's frames: reference sketches 320 px with a 10 px inset, avoid halves 288 px with an 8 px inset and both halves of a pair one height, "Illustrative data" in 13 px at the inset's corner; the two progress bars take the half's width | SK-S1, BC S13, D3-637
+- D3-xxx | S43 prints the Bureau's DP04 margins, DC's 1.5 points in note 2, through `with_dp04_margin` | ST S5, RF-11a; the formula columns print nowhere
+- D3-xxx | S47's Social Security takes the subject ink with light words, every other tile the track ink with a 1 px context-ink edge, no red and no plate | BC M1, CD A-M2, RF-1: 21.7 percent red failed the kit's new check
+- D3-xxx | `treemap` folds by `labels.fold: "fit"`, the fewest smallest parts that let every tile hold its words at 256 px, and lays the fold tile last; S47 folds ten functions, each under 2 percent, $673.6 billion; Veterans keeps its tile | ST S1, RF-10; the phone drawings grew to 716 px at 358 to hold Veterans' words
+- D3-xxx | Area-form entries (14.52, 14.54, 14.55, 14.56) give the named area the subject ink "since a tile in red would pass Rule 05.1's 5 percent of the drawing (Rule 14.6)"; 14.47 and 14.87 keep the red point "while its red stays within 5 percent" | RF-1; written without "never" (W11)
+- D3-xxx | S61 draws the 47 no votes as their own segment in outline (1.2 px) and the 53 yes votes solid, both in the party-mark ink, through `progress-bar`'s new `labels.ink` and `labels.rest`; each side's parties under it, the counts held to their names | BC M2, D3-891, RF-12
+- D3-xxx | S61's title: "The Senate fell seven votes short of the 60 needed to take up the House’s bill to limit members’ stock purchases and require photo ID to vote in federal elections." H.R. 7008 by number and name moves to the measure line | CD A-S2; both provisions at first mention (DR-98), 30 words
+- D3-xxx | Entry 14.87's why text says its specimen draws the vote Rule 14.85's specimen sets beside a survey | RF-13, CD A-S2; entries carry no specimen note key
+- D3-xxx | S45's title gives the 591,700 count; notes give the share, the 1972 to 1974 record and why two to four units is a seam; a total raised over a taller neighbor takes a hairline down to its column; the last total and year sit 2 px inside the edge | CD A-M1, RF-22, RF-23, AX S9, BC S17
+- D3-xxx | `column` turns its columns into the phone's bars wherever the widest value plus 4 px would not fit its column, calling `c.arrange('phone')` | The editor's request (D3-904): Rule 14.12's plate failed the sweep at 480 to 502 px; S17 and the three column plates keep their 720 and 358 px drawings
+- D3-xxx | S63 takes RF-3's title, note 1 and X18 words as given; issue titles print in regular weight; the chart note says the titles are the atlas's names and all six are graded Documented; the table's Atlas grade column reads the ID through the column's words | ST M1, ST S8, CD A-S1, BC S3, RF-3, RF-15; the editor's notes left the words to me if set as given
+- D3-xxx | `status-chips` wraps titles, words and check lines 2 px inside the edge, measured as printed after the typography | AX S1: titles ran 0.7 to 1.9 px past the artboard at 17 widths
+- D3-xxx | S60's table prints V7's qualification as stored, figure 5's cell through one exact replace pair; note 1 gives the May 2023 survey and both provisions of H.R. 7008; note 2 says why figure 5's cell differs | ST M2, RF-4
+- D3-xxx | `indicator-row` takes `labels.beside`: each figure beside its caption, one to a row, where the caption's column holds 240 px, else one column; S60 uses it; captions take the typography before their last two words are held, so the page and Node wrap alike | CD A-S3: V7's captions stay as stored, and the four-up grid ran them to 11 lines; a parity fault showed the order mattered
+- D3-xxx | S60 sets `typography.nbsp` and its figures that hold words in open tracking | BC S12, through the engineer's parts
+- D3-xxx | S64's two bands take a 1 px context-ink edge between them | RF-2
+- D3-xxx | S01 takes its phone arrangement wherever "86%" would reach the bars beside it, and a party's words leave their segment for the row under the bar where the 60-vote line would cross them | AX S1, D3-904; placement only, 720 and 358 px SVGs unchanged byte for byte
+- D3-xxx | S16's size key drops under the shade key wherever its steps would run past the edge | D3-904, D3-909; placement only, 720 and 358 px unchanged
+- D3-xxx | S07's year line sits in from the left as its code does and only where the tile holds it with 2 px each side | D3-911; placement only, 720 and 358 px unchanged
+- D3-xxx | S12's shaded tiles draw no code where the widest code would not fit, with the kit's note that the table names every state | D3-911, D3-93 as S07 does; only 256 to 279 px change
+- D3-xxx | S15's "Leader changed" tag goes under the state's name on a phone where it would reach the shift column | D3-911; placement only, 720 and 358 px unchanged
+- D3-xxx | The never-happened slash in `step-tracker` and `tracker-list` takes `strike: true` | The engineer's crossing check; the slash crosses the number on purpose (Rule 11.2)
+- D3-xxx | Entries 14.46, 14.50, 14.53, 14.86 and 14.89 follow their redrawn specimens (the dashed total line, a part too thin to see, the independents set apart, figures beside long captions, titles in regular weight and "disputes") | One rule and its specimen say the same thing
+
 ### Requests to the engineer
+
+- None open. The kit's `MONTHS` clash in BC S12's block (every date printed one letter) was reported at 22:5x and fixed by the engineer (MONTH_ALT).
 
 ### Requests to others
 
+- **R-A3, research lead, optional:** a `grade` column in `v7-issue-status-checks-on-power` (V7's `grade`, "documented" for all six), so S63's Atlas grade column reads the data rather than the column's words; I switch the column's field when it lands.
+- **Main session, board 2's list:** S10 changed (call 5); S01, S07, S15 and S16 changed placement only at widths board 1 did not show; S12 drops its codes at 256 to 279 px; Rule 14.12's plate now draws bars at 480 to 502 px (the editor's plate).
+
 ### Tested
 
+- `oa-chart.mjs build` with the sweep and PNGs, one run after every last change (23:0x): S01, S07, S08, S10, S12, S15, S16, S17 to S23, S36 to S48, S60 to S64, and `s-14-12-cols`, `s-14-13-cols`, `s-14-4-cols`: 35 of 35 PASS, 0 faults, exit 0, 35 check files counted. Earlier, S40 and S62 failed the new crossing check until the slash took `strike: true`, and S60 failed parity until its captions took the typography first.
+- Byte comparison against a baseline kit from HEAD 202886e7 (`git archive` into scratch): S01, S07, S12, S15, S16 and S40's 1440 and 390 px SVG exports unchanged on both grounds; S12's 256 px drawing is the one that changes.
+- Captures looked at at twice size: S10 (1440 Newsprint and Charcoal, 390 Newsprint), S18's table rows read, S43 (1440 Newsprint, 256 Charcoal), S44 (1440 and 256 Newsprint, lower half), S45 (1440 and 256 Newsprint), S46 (1440 Newsprint right end, 256 Charcoal; Charcoal 1440 grayscale), S47 (1440 Newsprint, 358 Newsprint, 256 Charcoal; Charcoal 1440 grayscale), S48 (1440 hollow, 358 Newsprint, 296 Charcoal, 256 Newsprint), S60 (1440 Newsprint; 358 Newsprint and 256 Charcoal tops), S61 (1440 Newsprint, 296 Newsprint, 256 Newsprint and Charcoal), S62 (1440 Newsprint, 358 Newsprint, 256 Charcoal), S63 (1440 Newsprint top), S64 (1440 Newsprint, 256 Charcoal), S12 (256 Newsprint), S15 (256 Newsprint, a tagged row); the six sketches rendered on Newsprint and Charcoal with `tokens.css`, `kit.css` and the fonts.
+- `tools/fixfigs.py` (scratch, `python3 -I`): 38 assertions, 0 failed, on every figure the pass put in a title, note, alt or chart note: S43's DC share and DP04 margin and the states past their margins; S45's counts, shares, the 1972 to 1974 record and the thin part's range; S47's fold of ten at $673.6 billion and its shares; S48's counts and variant; S60's survey, figure 5's unique sentence and the sidecar's two provisions; S61's votes by party; S63's X18 and I068 facts, the chips' counts and all six grades from V7's extract.
+- Words lint by script on 15 specs and 9 entries: no em dash, U+2011, straight quote in reader text, banned word or studio code; every "not", "no" and "never" read (the ones left are earlier text).
+- `phase3_ch14_build.py`: 96 rules, 82 entries, 0 faults. Strict build (`guide2.html`, 22:53): exit 0, no warning, 10,632,075 bytes, no kit build fault listed; share per plate 14,781 bytes for 36 to come; my plates S01 6,927, S10 7,424, S18 4,215, S43 9,988, S44 8,313, S45 6,781, S46 11,096, S47 5,341, S48 3,846, S60 8,705, S61 3,896, S62 5,189, S63 10,346, S64 3,750 bytes (the earlier strict build of 22:4x).
+- In that build by Playwright at 1440 px: Rule 14.57's pair (both halves 288 px, the bar on two lines, "Illustrative data" aligned) and S60 in the 656 px column (each figure beside its caption, four lines at most), no page error.
+
 ### Not tested
+
+- Forced colors, screen readers, print and 200 percent text for the changed specimens.
+- The guide's own captures of S48 at 390 px (my clip caught the rule text, not the figure); the kit's 358 px drawing was looked at instead.
+- Rule 14.12's plate in the page after the editor rebuilds it.
+- Whether the data lead signs off the redrawn S47, S48, S61 and S45 (they land in its "Sign-off" section).

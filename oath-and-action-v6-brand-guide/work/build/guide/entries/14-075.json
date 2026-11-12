@@ -2,7 +2,7 @@
  "id": "14.75",
  "title": "Draw a band around a line to show each year’s margin of error.",
  "rule": [
-  "Draw the series as a 2 px line in the subject ink over a band from each year’s low to its high at the publisher’s stated confidence, which the measure line names. Fill the band in Stone magnitude step 1 and draw its two edges as 1 px lines in the context ink, since the fill alone is too pale to see. Where the publisher changed its method, break the line and the band and draw both estimates for that year (Rule 14.11). Label the latest figure with its margin at the line’s end."
+  "Draw the series as a 2 px line in the subject ink over a band from each year’s low to its high at the publisher’s stated confidence, which the measure line names. Fill the band in the palest gray and draw its two edges as 1 px lines in the context ink, since the fill alone is too pale to see. Where the publisher changed its method, break the line and the band and draw both estimates for that year (Rule 14.11). Label the latest figure with its margin at the line’s end."
  ],
  "use_when": "The reader asks how a survey figure changed over years and how sure each year’s figure is.",
  "use_instead": [
@@ -33,7 +33,7 @@
   "14.11",
   "13.5"
  ],
- "builders": "Form line-confidence-band: node work/build/chart-kit/oa-chart.mjs build s58; encode x, y and margin (or low and high), with break and labels.break_end and labels.break_start for a change of method.",
+ "builders": "Form line-confidence-band: node work/build/chart-kit/oa-chart.mjs build s58; encode x, y and margin (or low and high), with break and labels.break_end and labels.break_start for a change of method. The form fills the band in magnitude step 1, the palest of the Stone steps in Rule 14.5, and draws its two edges in the context ink.",
  "correct": null,
  "failure": null
 }

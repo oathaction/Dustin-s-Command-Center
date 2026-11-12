@@ -151,7 +151,7 @@ November 12, 2026, a fresh instance of maker B on `work/handoffs/phase-3/2026111
 
 ### Summary
 
-In progress. Order: items no ruling touches first (ST S3, ST S6's S58 note, ST S7's entry 14.60, ST S9, ST S10 with AX S5, BC S10, BC S13 with SK-S1, BC S14's 14.73, BC S17, CD B-S2, CD B-S3, AX S4's words), then the data lead's rulings (S58's band, S54 and S55's labels, S55's size, S57's gap test, S53's red share), then the engineer's new parts (band edges, halos, row names, red share).
+Done. Every maker B item in the fix brief and its AX addendum is applied under the data lead's rulings RF-1, RF-2, RF-6 to RF-9 and RF-18 to RF-20, and the engineer's new parts (band edges, the kit's knockout, row names, the red-share check, RB-G5 and RB-G6) are in my forms. The width sweep and crossing check (D3-904, D3-911) found faults in ten of my specs: S09, S11, S13, S25 and S34 by the sweep, and S02, S05, S14, S29 and S35 by the crossing check; all ten now pass, by placement only, and the board 1 drawings that moved are listed under "For board 2". `oa-chart.mjs build` on all 29 of my specs (S02, S05, S09, S11, S13, S14, S24 to S35, S49 to S59): 29 PASS, 29 check files read, 0 faults, the sweep on. `--figures` and `--check`: 0 faults; `phase3_ch14_build.py`: 0 faults; strict build exit 0.
 
 ### Items
 
@@ -175,18 +175,74 @@ Done so far (each built with the kit's width sweep on; looked at as listed under
 - **BC S17, CD B-S2**: S52 prints each median under its name and ticks it under the baseline; S51's outliers take lanes so none merge, and none sits on a whisker's cap; S49's "130" moves clear of the median line; S56's chart note says why it names the end of 2009 and what the larger dots mark; S55's key circles take the field's fill.
 - **BC S13, SK-S1**: 14.65's, 14.72's and 14.78's right-hand words now end 10 px inside the frame (x 300).
 - **BC S14 (14.73)**: the two aligned panels together take the dual-axis chart's height, 64 px each.
+- **D3-904, the width sweep**: S09 (`timeline` measures each label's box at the width it is drawn at and tries six more wrap widths), S11 (`shift-arrows` draws its center line before the rows, and the bottom scale drops a figure that would touch the one to its right), S13 (`area-sparklines` keeps a one-word panel name wider than its panel inside the drawing), S25 (`diverging-bar` draws its zero line before the names, redrawn over each bar, and wraps a stacked name one pixel inside the drawing), S34 (`bubble-timeline` wraps its phone words at the width the rows were measured at).
+- **D3-911, the crossing check**: S02 (`line-event-notes` takes a `mid` setting; the 2025 note sits under the chart below 620 px and the 2021 note below 510 px, as on a phone), S05 (`multi-line-highlight` draws gridlines before the panel words, and every bracket's words after every bracket's lines), S14 (the "Three-month average" note sits 50 px over the line, 40 before, and takes its phone setting under 490 px; under 300 px the latest month's second line wraps), S29 (`area` moves its words to a gap between gridlines where one would cross them), S35 (`benefit-cliff` sets the cliff's words under the chart below 540 px, "at" holding its figure).
+
+### For board 2 (board 1 drawings that moved, placement only)
+
+- S02: under 620 px the 2025 note, and under 510 px the 2021 note, print under the chart, as the phone drawing already sets them. 1440 and 390 px unchanged.
+- S09: at 558 px two labels wrap to three lines ("Shelby / County / v. Holder", "Fifteenth / Amendment / ratified"), the layout that keeps every leader clear; 1440 and 390 px unchanged (Node drawings compared with the committed forms).
+- S11: the center line is drawn under the arrows and cleared behind labels that cross it; the bottom scale drops a figure only where two would touch (480 to 503 px).
+- S13: unchanged at every width the kit checks; only 481 to 485 px move "Manufacturing" left by under 2 px.
+- S14: the "Three-month average" note sits 10 px higher at every desk width and is left to the key under 490 px.
 
 ### Routine calls
 
+- D3-xxx | 14.73 drops its pointer to Rule 14.34 and 14.69 points to Rule 14.73, whose rule text draws the aligned panels | Chapter 14 has no rule for two measures in aligned panels on their own scales (ST S3); Rule 14.34's panels share one scale
+- D3-xxx | S53's band words name the ages ("Ages 55 to 64: 41.2 million"), and its alt, reading guide and chart note say "the strongest ink", never "dark" or "red" | RF-1 asked for "Dark bars"; the band is dark on Newsprint, light on Charcoal and the system highlight in forced colors (AX S4), so a color word is wrong on two of three grounds
+- D3-xxx | S54 prints Florida's figure as a second line in regular weight under its bold name, "35.5%" where "rent 35.5% of income" finds no place (256 px) | RF-19 asks name bold and figure regular; the kit sets one weight a text, so the form sets the two as one block (`labels.sub`, `sub_short`)
+- D3-xxx | S55 names the four states with the most renter households as blocks placed in the order that places the most, with leaders up to 124 px for a named state | With four large named circles a first-come order left New York unnamed at 358, 296 and 256 px
+- D3-xxx | S55 keeps the Association label and note 1 though its title now states counts and rents | Entries 14.67 and 14.68 give every correlation chart that label and note; the title's figures are documented counts (flagged for the data lead's sign-off)
+- D3-xxx | S59's history is a derived table of fourth-quarter averages, 2021 to 2025, with 2025 empty and its reason in the row | RF-20; the projections' own measure, and the second dataset rides in the island at five rows
+- D3-xxx | S59's missing 2025 quarter is an empty column edged by a dashed hairline, and its key swatch matches | A filled column read as the same gray as the band from past errors (the kit's key test, 0.0 apart), and an empty column says no value exists
+- D3-xxx | S59's values print where they sit apart from each other and from every dot, the first and last median and the last actual value always | At 296 and 256 px nine periods leave 13 px a period, and the values overlapped
+- D3-xxx | S56's latest quarter takes its year alone where its full words would cross the path, at every width, and the chart note says so | No place clear of the path held "July to September 2026" at 720 and 358 px; a halo over the path cut a gap in the line (BC S1)
+- D3-xxx | S51's outliers take lanes above and below the row's line, three each way on a desk, where they would touch another dot or a whisker's cap | Tukey's outliers keep their values on the axis; lanes are the box plot's usual way to keep dense ones apart (BC S17)
+- D3-xxx | On a phone S51's gridlines run only through each row's box and outliers | The names and counts sit over each box there, and a gridline ran through them (BC S1)
+- D3-xxx | S52 keeps its axis to 74 percent and names the two far counties in the chart note | One county in each year lies past 56 percent (62 to 64 in 2019, 72 to 74 in 2024); ending at 56 would drop or fold a county the table counts (BC S17 asked for 56)
+- D3-xxx | S58's break note "New questions" sets its words to the right of its point (`anchor: "start"`) | At 296 and 256 px the centered words crossed the line
+- D3-xxx | S50 and S53 rely on the kit's knockout for words that a quiet line crosses; my own gridline gaps and split lines were removed | The engineer's part does it for every form ("makers move nothing")
+- D3-xxx | Under 540 px S35's cliff words sit under the chart | No place beside the cliff stayed clear of its dots, the line and the line's own name at every width (D3-911)
+- D3-xxx | S02's notes take a `mid` setting in `line-event-notes` (below 620 and 510 px, the phone's place under the chart) | Placement only; the words and the phone drawing are as board 1 approved them
+
 ### Requests to the engineer
 
+
 - **RB-G5, a pivot table's row header reads its column's `words`.** S53's table prints its top row as "100", and the sidecar says it counts everyone 100 and over (AX S5). In `K.table_html` and the lean table, the pivot's row header is `K.fmt(first[row], rc.format)`; let it print `rc.words[String(value)]` where the first column has `words` (S53 would set `{"100": "100 and over"}`), with `data-v` for the read-back as for any printed word. Until then S53's caption says the row for age 100 counts everyone 100 and over.
+- RB-G5 and RB-G6 landed during the pass (the engineer's message); S53 and S59 use them.
 - **RB-G6, a key swatch with an edge.** The data lead's RF-2 gives S59's two band swatches a 1 px edge in the context ink, as the bands themselves now take. `K.parts.key` draws a filled swatch with no edge; let an entry take `edge` (`{label, fill: 'mag-1', edge: 'context'}`) and draw the fill with a 1 px inset outline in that ink, as the hatched swatch does. `fan-chart` passes `edge: 'context'` on both band entries now, so the swatches take it as soon as the part reads it.
+
+- **For information:** `range-bar` now sets names and values in `K.parts.row_name` and `row_value`, so Rule 14.9's plate (the editor's `s-14-9-range.chart.json`) prints its values at 400 where they were 600; it builds PASS. `line-event-notes` gains an annotation `mid` setting (S02); the engineer's ED-E14 code is untouched.
 
 ### Requests to the data lead
 
+- **Sign-off** of S49 to S59, S33 and the ten specs the sweep and crossing check moved (S02, S05, S09, S11, S13, S14, S25, S29, S34, S35), and of entries 14.60, 14.62, 14.67, 14.68, 14.69, 14.73, 14.75 and sketches 14.65, 14.72, 14.73 and 14.78.
+- **RF-1's words on S53:** I printed "Ages 55 to 64: 41.2 million" with no color word (call above). Say if you want "Dark bars" back on Newsprint only.
+- **S55's evidence label:** with RF-18's title, the title states documented counts and rents and no association; I kept Association and note 1 as entries 14.67 and 14.68 set. Say if it should read Finding.
+- **S59's window and H09:** the history runs 2021 to 2024 as RF-20 set it, the four years before the projections with a full fourth quarter. Those are the four fourth quarters of one presidential term, and the projections start in the next; no value sits on either side of the January 2025 inauguration within a year, and the measure line prints the window's reason. Please confirm under H09.
+
 ### Requests to the editor
+
+- Words to read in the second pass (D3-669): S53's title ("the ten years before most people qualify for Medicare at 65"), band words, reading guide, alt and chart note; S55's question, title, reading guide, note 2, alt and chart note; S57's title (29 words) and note 2 (RF-7's words); S58's note 2 (the two price indexes), chart note and alt; S59's grade line, measure line, reading guide, note 3, alt, chart note and key words ("Actual rate", "No 2025 average"); S52's and S56's chart notes; S35's cliff words placement; entries 14.60 (the quartile and median glosses), 14.62, 14.67, 14.68, 14.69, 14.73 (use_instead and builders) and 14.75 (the band's edges).
+- Rule 14.11's plate shares `line-confidence-band`; S58's band now takes the context-ink edges by default through the form, so the plate's band takes them too where it draws through the form (RF-2 asks the plate's words to say so).
+- "Median" is glossed in 14.60; its first use in chapter 14 is earlier (Rule 14.11's plate and 14.43), yours to gloss (ST S7).
 
 ### Tested
 
+- `node work/build/chart-kit/oa-chart.mjs build` on all 29 of my specs (S02, S05, S09, S11, S13, S14, S24 to S35, S49 to S59) into scratch `kit-out`, with PNG exports and the kit's width sweep: 29 PASS, 29 check files read, every one with no faults. Rule 14.9's and Rule 14.11's plates (`s-14-9-range`, `s-14-11-line`) on my changed forms: PASS.
+- Exports at 1440, 390, 328 and 288 px page widths (720, 358, 296 and 256 px drawings) on both grounds, looked at at twice size: S49 (tops of three widths), S50 (four widths), S51 (1440 Newsprint and 256), S52 (three), S53 (the band corner at four widths and 1440 whole), S54 and S55 (four widths each, several rounds), S56 (four widths), S57 (1440 Newsprint top), S58 (1440 Newsprint, 296 Newsprint, 256 Charcoal), S59 (four widths, 1440 Newsprint whole). S09 at 558 px, S11 at 1440 px (crop), S02 at 558 px, S35 at 488, 358, 296 and 256 px, S14 at 1440 px (before its fix).
+- Node drawings compared byte for byte: S50 and S54 before and after the table sort (14 drawings each, same); S09, S11, S13, S25 and S34 with the committed forms against mine at 720, 656, 558, 358, 326, 296 and 256 px on both grounds (S13 and S34 the same; S09 differs at 558 px only; S11 differs in the order its lines and bottom scale are drawn, with the same figures at the same places, and S25 in its zero line's order and its short stretches over the bars, with no word moved).
+- From the final `kit-out` run, S51, S56, S57 and S59 at 1440 px on Charcoal, looked at. From the strict build, entry 14.73 at 1440 px (element capture): the two pointers, the rule text and the sketch with its two halves at one height, looked at; 14.75 captured.
+- Sketches 14.65, 14.72, 14.73 and 14.78 rendered in Chromium on both grounds at device scale 2 with `tokens.css` and `kit.css` and looked at; sizes 3,076, 1,678, 3,441 and 2,823 bytes.
+- `python3 -I work/build/scripts/phase-3/maker_b_round2_derive.py --figures`: 0 faults, with new checks for S52's medians and far counties, S53's band in ink and title, S54's figure line, S55's four states, their households and rents against the nation, S56's 2009 reason, S57's title length and S59's history; `--check`: 0 faults (the new `fred-unemployment-fourth-quarter` written once, then checked).
+- `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py`: 96 rules, 82 entries, 61 chart plates, 0 faults.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide/guide.html`: exit 0, no warning, 10,632,079 bytes.
+- My specs, entries and sketches carry no em dash or U+2011 (the edit helper refuses to save one), and a scan of their reader words found no straight apostrophe.
+- After the editor's second-pass words landed in S55, S56, S57 and S59: `build` on the four, PASS, 0 faults; `--figures`, 0 faults.
+
 ### Not tested
+
+- Grayscale captures, forced colors and print of the changed drawings beyond the kit's own emulated checks; no screen reader.
+- Entries 14.60, 14.62, 14.67 to 14.69 and 14.75 in the guide build at any width, and 14.73 at 390 px (read from the files only).
+- The kit's PNG exports of S24 to S35 other than S25, S34 and S35 were not looked at after the run (their forms did not change but for S25 and S34).
+- S51, S56, S57 and S59 on Charcoal at the phone widths other than those listed under Tested.

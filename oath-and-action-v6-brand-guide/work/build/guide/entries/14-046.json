@@ -2,7 +2,7 @@
   "id": "14.46",
   "title": "Use a 100 percent bar to compare how wholes of different sizes divide into the same parts.",
   "rule": [
-    "Draw each whole as one bar of the same length, split into its parts in a fixed order, with the part the question is about first from the left and in the subject ink. Step the other parts toward the page color, hatch the last, and print the first part’s share with the whole’s count at the right of each bar. Sort the bars by that share, and draw a line across them where an overall share helps the reader place each one."
+    "Draw each whole as one bar of the same length, split into its parts in a fixed order, with the part the question is about first from the left and in the subject ink. Step the other parts toward the page color, hatch the last, and print the first part’s share with the whole’s count at the right of each bar. Sort the bars by that share, and draw a dashed line across them in the text’s ink, with its own label, where an overall share helps the reader place each one (Rule 14.6)."
   ],
   "use_when": "The reader asks how the mix of parts compares across several wholes, such as how much of each answer rests on documented fact, and the wholes differ in size.",
   "use_instead": [

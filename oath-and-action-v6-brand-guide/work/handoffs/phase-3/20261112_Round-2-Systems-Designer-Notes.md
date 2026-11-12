@@ -121,7 +121,7 @@ All five items are done by code in `work/build/scripts/phase-3/phase3_ch15_build
   - Rule 15.17's plate lists "The four bodies, as the atlas’s connections name them" under the drawing, each body with its variable's chip and title: Congress, the executive, antitrust enforcers, states and cities. The names come from the atlas's own connection names, and the build stops if a connection from a variable stops naming its body.
   - Rule 15.17's key adds the ticks, drawn as a short authority line with two ticks: one for under 2 years and two for 2 to 10 years.
 
-The editor's second pass on these words is applied: seven rows, listed under "Words changed" below. Chapter 15 weighs 306,894 bytes in the final strict build, against its 600,000 ceiling (302,270 at the end of round 2).
+The editor's second pass on these words is applied: seven rows, listed under "Words changed" below. The data lead signed off every changed plate after one change, SD-9, also applied. Chapter 15 weighs 307,066 bytes in the final strict build, against its 600,000 ceiling (302,270 at the end of round 2).
 
 ### Routine calls
 
@@ -187,8 +187,16 @@ The editor's seven rows (`20261112_Round-2-Editor-Notes.md`, "Second pass: words
 
 - D3-xxx | The editor's second-pass words for chapter 15 are applied in the generator | D3-900 and D3-615: the editor owns the words, the systems designer the file
 
+### The data lead's sign-off and SD-9
+
+The data lead signed off the changed plates from my builds: 15.17 at 1440, 768 and 390 px; 15.3 and 15.5 at 1440 px, and 15.5 also at 390; 15.12 at 1440 and 1024 px. Every connection, grade, delay, node title and quoted sentence was matched to V7 by script. SD-9 asked that Rule 15.12's page order put "Two grades, apart" before "Each step", since at 390 px, and for a screen reader at every width, a reader met the connections' grade words first.
+
+- D3-xxx | Rule 15.12's plate sets its parts in the order head, drawing with its note, the two grades, the steps, the key, the source; at 680 px a grid places the steps under the drawing and the grades in the right column across both rows, and the alt follows the page order | SD-9 under RF-21; the wide composition is unchanged at 1440, 1024 and 768 px, and the generator stops if the steps or any label come before the two grades (tested by planting the old order)
+
+The data lead closed SD-9 on `guide4.html` and has nothing open on chapter 15.
+
 ### Requests
 
-1. **Data lead.** Sign-off, as offered: Rule 15.17's plate (node titles, the four bodies, the key's ticks); Rule 15.12's plate (RF-21's order, the step list, the key); the cards of 15.3 and 15.5 under RF-16a; and the moved loop ID in 15.6, 15.15 and 15.16. The final build is `/tmp/claude-0/-home-user-Dustin-s-Command-Center/3ab6316c-6935-5f23-804c-cfaafd548447/scratchpad/phase-3/round-2-fix/systems-designer/guide3.html`, with captures beside it in `cap/final3/` (all 37 plates on Newsprint at five widths) and in `cap/final-ch/` and `cap/final3-ch/` (Charcoal).
-2. **Editor. Done:** your second pass, applied as written (below).
+1. **Data lead. Done:** signed off, SD-9 closed. The final build is `/tmp/claude-0/-home-user-Dustin-s-Command-Center/3ab6316c-6935-5f23-804c-cfaafd548447/scratchpad/phase-3/round-2-fix/systems-designer/guide4.html`. Captures sit beside it: `cap/final3/` holds all 37 plates on Newsprint at five widths from `guide3.html`, which differs only in 15.12's order; `cap/final4/` and `cap/final4-ch/` hold 15.12 after SD-9; `cap/final-ch/` and `cap/final3-ch/` hold Charcoal.
+2. **Editor. Done:** your second pass, applied as written (above). SD-9 moved 15.12's alt sentences into the page's order with their words unchanged, which you may want to read.
 3. **Engineer. Landed:** the size line's no-break spaces in `guide_build.py` (BC S16's last point).

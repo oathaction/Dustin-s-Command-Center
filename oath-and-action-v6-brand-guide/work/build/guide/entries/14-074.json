@@ -2,7 +2,7 @@
  "id": "14.74",
  "title": "Draw a survey figure with its margin of error, and single out only what passes it.",
  "rule": [
-  "Draw each estimate as a dot on a thin line across its interval, the interval’s level named in the measure line, such as “90 percent margin of error”. Draw the nation as a dashed line in the text’s ink with its own label (Rule 14.6). A dot that differs from the nation by more than the gap’s own margin takes a solid fill; one within it takes an open dot (Rule 14.9). List rows by their figures and print each one, but never number them as ranks."
+  "Draw each estimate as a dot on a thin line across its interval, the interval’s level named in the measure line, such as “90 percent margin of error”. Print the margin the publisher gives for the figure drawn, from the same release where it gives one, as the Census Bureau does in its data profile and subject tables, and compute one by its published formula only where it gives none, saying so in the note. With no margin to print or compute, leave the intervals out, set no figure above another, and say in the note that the publisher gives none. Draw the nation as a dashed line in the text’s ink with its own label (Rule 14.6). A dot that differs from the nation by more than the gap’s own margin takes a solid fill; one within it takes an open dot (Rule 14.9). List rows by their figures and print each one, but never number them as ranks."
  ],
  "use_when": "The reader asks how places compare on a survey figure, and how sure each one is.",
  "use_instead": [
@@ -33,7 +33,7 @@
   "13.5",
   "13.1"
  ],
- "builders": "Form range-bar: node work/build/chart-kit/oa-chart.mjs build s57; encode category, value and margin (or low and high); labels.reference draws the dashed line, labels.test \"reference\" the open dots, labels.value the right column’s words.",
+ "builders": "Form range-bar: node work/build/chart-kit/oa-chart.mjs build s57; encode category, value and margin (or low and high); labels.reference draws the dashed line, labels.test \"reference\" the open dots, labels.value the right column’s words; encode.margin takes the column the sidecar’s margin_columns names for the value, and a column in check_only_columns serves the data check alone.",
  "correct": null,
  "failure": null
 }

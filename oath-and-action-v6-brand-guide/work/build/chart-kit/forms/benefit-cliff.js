@@ -82,20 +82,22 @@
                 if (!c.phone) P.note(c, xs(lr[ex]), py, L.line, { place: 'above', anchor: 'start', dx: -(xs(lr[ex]) - x0) + 4, dy: -(py - ys(vs.hi * 0.8)) + 20, max: Math.min(220, (x1 - x0) * 0.5), weight: 700 });
       }
       // the drop and the climb back, in words
+      var foot = null;
       if (ci > 0 && L.cliff) {
         var a = rows[ci - 1];
         c.circle(xs(a[ex]), ys(a[ey]), c.t('dot-vertex-radius'), { fill: 'subject', mark: false });
         c.circle(xs(rows[ci][ex]), ys(rows[ci][ey]), c.t('dot-vertex-radius'), { fill: 'subject', mark: false });
-        // on a phone the words sit up and to the left of the cliff's top, clear of its dot and of the line, which runs lower
-        // there, with no leader; in a narrow desk column (480 to 539 px) they keep the desk's place, lifted clear of the dot
-        // (D3-911: the crossing check found them half over the dot)
-        var nar = !c.phone && W < 540;
-        P.note(c, xs(a[ex]), ys(a[ey]), fill(L.cliff), { place: 'above', anchor: 'end', dx: c.phone ? -10 : 4, dy: c.phone ? -12 : nar ? -8 : 0, max: Math.min(250, W * (W < 300 ? 0.4 : nar ? 0.33 : 0.45)), weight: 600, leader: c.phone ? false : undefined });
+        // in a column under 540 px no place beside the cliff stays clear of its dots, the line and the line's own name at
+        // every width, so the words go under the chart, as a long note does on a phone, and the cliff keeps its two dots
+        // (D3-911: the crossing check found them half over the dot from 537 px down; placement only)
+        if (W < 540) foot = fill(L.cliff);
+        else P.note(c, xs(a[ex]), ys(a[ey]), fill(L.cliff), { place: 'above', anchor: 'end', dx: 4, dy: 0, max: Math.min(250, W * 0.45), weight: 600 });
       }
       if (ci > 0 && L.band) {
         var bx = xs(rows[ci][ex]) + 8, bw = (back ? xs(back[ex]) : x1) - bx - 6;
         c.text(bx, ys(rows[ci][ey]) + c.size('label') + 26, fill(L.band), { role: 'label', max: Math.max(90, bw), halo: true });
       }
+      if (foot) { var fb = c.text(0, hgt + c.size('label') + 10, foot, { role: 'label', weight: 600, max: W }); hgt = fb.bottom + 2; }
       c.height(hgt);
     }
   });
