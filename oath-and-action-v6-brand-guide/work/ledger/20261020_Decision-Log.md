@@ -4482,3 +4482,12 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-596 | The opener links a question where its group's first entry file exists | R-S5; D3-452 prints planned rules unlinked |
 | D3-597 | The opener's sixteen marks are drawn in the utility icons' manner and the secondary text ink, 2.3 KB | BC S6; they show each family's form without competing with the questions |
 | D3-598 | The generator's limit is 212,288 bytes | D3-479 |
+
+### Maker B, round 1 review fix pass (continued)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-599 | S25's two blank percent cells printed "Not defined: none in January 2022" until the weight call below dropped the column | Access S6 |
+| D3-600 | S34's note 1 said "Until 1975, ending debate took a two-thirds vote" (superseded by the editor's words below) | Statistics S10: the old words skipped 1949 to 1959, when the base was the whole Senate; the Senate's "About Filibusters and Cloture" page, read November 12, 2026, gives the 1917 two-thirds rule, the 1975 change and the 2010s precedents, and does not name 1949 or 1959, so the note states what holds across all of it |
+| D3-601 | S25's table drops its "Change, percent" column; note 2 drops "where a small agency can show a large percent change", and the caption names the change | The strict build failed S25 at 25,523 bytes, over 24,576 (three times the core average), after the January 2025 column; the percent column served no title, note or BC S20 need, and its unrounded values rode in the island. The kit's load-table fragment now measures 22,572 bytes; the two agencies with none in January 2022 print no blank cell, so access S6 needs no empty words |
+| D3-602 | S34's note 1 takes the editor's words: two-thirds of the senators present and voting from 1917 to 1975, except two-thirds of the whole Senate from 1949 to 1959 | Statistics S10 and the editor's request; the 1949 to 1959 base rests on the reviewer and the editor, since no Senate page read today names it |

@@ -21,7 +21,7 @@
   "notes": [
     "Each bar nets every hire and departure between January 31, 2022 and August 31, 2026, so it hides any rise and fall inside the window.",
     "The files counted 2,304,585 employees in all on January 31, 2025, 149,384 more than in January 2022 and 279,753 more than in August 2026. That day falls 11 days after the inauguration of January 20, 2025, so the change up to January 2025 includes those 11 days.",
-    "The 37 agencies drawn, those with 1,000 or more employees on either date, held 99.4 percent of employees in January 2022. The table lists all 129 agencies in the files, where a small agency can show a large percent change.",
+    "The 37 agencies drawn, those with 1,000 or more employees on either date, held 99.4 percent of employees in January 2022. The table lists all 129 agencies in the files.",
     "The files count people on the rolls on one day, full-time and part-time alike. They leave out intelligence agencies, the Postal Service and some others that do not report to the Office of Personnel Management.",
     "Agency names are shortened from the August 2026 file’s names; it names the largest the Department of Defense."
   ],
@@ -29,7 +29,7 @@
   "illustrative": false,
   "alt": "Diverging bar chart of the change in civilian employees at 37 federal agencies from January 2022 to August 2026. Defense lost 73,248, the most, followed by Health and Human Services, Treasury and the Social Security Administration. Four gained: Veterans Affairs 21,956, Homeland Security 14,584, Interior 275 and the Government Publishing Office 88. All agencies in the files together lost 130,369.",
   "table": {
-    "caption": "Federal civilian employees by agency, January 2022, January 2025 and August 2026",
+    "caption": "Federal civilian employees by agency, January 2022, January 2025 and August 2026, and the change from January 2022 to August 2026",
     "columns": [
       {
         "field": "agency",
@@ -56,12 +56,6 @@
         "field": "change",
         "label": "Change",
         "format": "signed:0"
-      },
-      {
-        "field": "change_pct",
-        "label": "Change, percent",
-        "format": "signed:1",
-        "empty": "Not defined: none in January 2022"
       }
     ]
   },
@@ -137,7 +131,8 @@
     "Data lead DL-B2 and DL-B3 applied: chart note 1 no longer names a scale the form does not draw; note 4 drops 'still'.",
     "Words pass (editor 6): the editor's title said '33 of the 37 largest shrank'. Checked by script: the 37 drawn are exactly the 37 largest in January 2022, but not in August 2026 (the Agency for International Development had 229 then, below agencies outside the 37 with up to 724), so the title says 'largest in January 2022'.",
     "Review fix pass: the title names the universe the files hold, agencies that report to the Office of Personnel Management (statistics S4, the reviewer’s words); the two blank percent cells print \"Not defined: none in January 2022\" (access S6); the names sit flush left, as the family’s long lists set them (brand S13); the scale ends 8 px inside the drawing, so the Veterans Affairs bar no longer meets the edge (brand S8). Figures checked again by script (maker_b_figure_checks.py, check S25): all agencies 2,155,201 to 2,024,832, a change of −130,369; 33 of the 37 drawn shrank; the 37 are the 37 largest in January 2022; two agencies had none in January 2022.",
-    "Review fix pass (brand S20, statistics S3): note 2 and a January 2025 table column give OPM’s January 31, 2025 count, so the record shows when the change came while the drawing stays whole across the window (H09, Rule 14.10); the note gives both spans as counts, with no verb of credit or blame, and says the count’s day falls 11 days after the inauguration. The source line is the sidecar’s with_january_2025 variant, which names each file’s version (the vintage). Checked by script (maker_b_figure_checks.py, check S25): all agencies 2,155,201, 2,304,585 and 2,024,832; +149,384 and −279,753, which sum to −130,369."
+    "Review fix pass (brand S20, statistics S3): note 2 and a January 2025 table column give OPM’s January 31, 2025 count, so the record shows when the change came while the drawing stays whole across the window (H09, Rule 14.10); the note gives both spans as counts, with no verb of credit or blame, and says the count’s day falls 11 days after the inauguration. The source line is the sidecar’s with_january_2025 variant, which names each file’s version (the vintage). Checked by script (maker_b_figure_checks.py, check S25): all agencies 2,155,201, 2,304,585 and 2,024,832; +149,384 and −279,753, which sum to −130,369.",
+    "Review fix pass, weight (strict build): with the January 2025 column the plate weighed 25,523 bytes, over three times the core average (24,576). The table drops its \"Change, percent\" column, which neither the drawing, the title, the notes nor BC S20 uses, and whose unrounded values the island had to carry; the plate measures 22,572 bytes by the kit's load-table fragment. The two agencies with no employees in January 2022 then print no blank cell (access S6 needs no empty words), and note 2 drops \"where a small agency can show a large percent change\"."
   ],
   "source_line": "Source: U.S. Office of Personnel Management, Federal Workforce Data, employment status files, January 2022 and January 2025 (version 4 of each, October 3, 2026) and August 2026 (version 1, October 4, 2026), federal civilian workforce. Retrieved November 11 and 12, 2026. People on the rolls on the last day of each month; some agencies, including intelligence agencies and the Postal Service, are not in the files."
 }
