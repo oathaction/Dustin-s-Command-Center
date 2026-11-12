@@ -316,7 +316,7 @@
    },
    "failure": {
     "specimen": "s-15-6-failure",
-    "caption": "<strong>Fails Rule 15.6.</strong> Loop R10 has no step numbers, no chip and no kind, and the words inside it judge the loop. Its two minus signs make it reinforcing."
+    "caption": "<strong>Fails Rule 15.6.</strong> Loop R10 lacks its step numbers, chip and kind, and the words inside it judge the loop. Its two minus signs make it reinforcing."
    },
    "specs": [
     {

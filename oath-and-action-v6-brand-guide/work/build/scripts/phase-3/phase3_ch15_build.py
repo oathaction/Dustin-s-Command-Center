@@ -1209,7 +1209,7 @@ def rule_15_6(book):
              alt=("Two loops from our systems atlas, each with its steps numbered in order, its number and kind inside it, a "
                   "sentence that reads it aloud and its count of minus signs. Loop R10 draws four variables on a square, its "
                   "steps marked plus, minus, minus and plus; Loop B5 draws two. "
-                  + " ".join(f"Loop {lid}, {LOOP[lid]['title']}: {read_aloud([c for c, _ in LOOP[lid]['chain']], LOOP[lid]['links'])} "
+                  + " ".join(f"Loop {lid}, “{LOOP[lid]['title']}”: {read_aloud([c for c, _ in LOOP[lid]['chain']], LOOP[lid]['links'])} "
                              f"{words_n(n).capitalize()} minus sign{'s' if n != 1 else ''}, {kind}." for lid, kind, n, _ in picks)),
              notes="Kinds checked against the count of minus signs on every numbered loop; read-aloud lines carry the signs "
                    "around. Loop R10 replaces Loop R18, so the chapter's first plates draw executive power once, in the opener.")
@@ -1219,7 +1219,7 @@ def rule_15_6(book):
     b, h = four_loop(codes, r10["links"], numbered=False, inside_rows=("A vicious", "cycle"))
     fail = dnp() + fig(svg_wrap(b, h))
     book.add("s-15-6-failure", fail, rule="15.6",
-             alt=(FC + "Loop R10 drawn with no step numbers, no chip and no kind, and the words A vicious cycle inside it."),
+             alt=(FC + "Loop R10 drawn without its step numbers, chip and kind, and the words “A vicious cycle” inside it."),
              notes="Labeled failure: a judgment for a kind, and no numbers to read the loop in order.")
     return {
         "id": "15.6",
@@ -1242,7 +1242,7 @@ def rule_15_6(book):
                     "caption": "Two loops from our systems atlas, each with numbered steps, its number and kind inside it, a "
                                "sentence that reads it aloud and its count of minus signs."},
         "failure": {"specimen": "s-15-6-failure",
-                    "caption": "<strong>Fails Rule 15.6.</strong> Loop R10 has no step numbers, no chip and no kind, and the "
+                    "caption": "<strong>Fails Rule 15.6.</strong> Loop R10 lacks its step numbers, chip and kind, and the "
                                "words inside it judge the loop. Its two minus signs make it reinforcing."},
         "specs": [
             {"label": "Step number", "value": "Bold, before the verb, from the atlas’s first connection: 1 raises"},

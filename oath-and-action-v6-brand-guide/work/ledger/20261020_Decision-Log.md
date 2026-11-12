@@ -4520,3 +4520,9 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 
 | # | Decision | Reason |
 |---|---|---|
+
+### Systems designer, round 1 second pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-617 | Rule 15.6's failure caption and both 15.6 alts take the editor's second-pass words | W11 (a run of negatives) and the alts' rule of quoting a loop's name, as the opener's and 15.13's do |

@@ -232,3 +232,13 @@ All five items are done by code in `work/build/scripts/phase-3/phase3_ch15_build
 - A screen reader on the changed alts, the lettered list and the new key.
 - The data lead's sign-off of Rule 15.6 on Loop R10 as drawn, and the editor's second pass on the changed words (Request 3).
 - On Charcoal, chapter 13's do-not-publish bar (surface Charcoal) loses its edge on a dark stage; seen on 15.4's failure, not changed here, and the guide page stays on Newsprint.
+
+## Second pass
+
+The editor's three exact lines (`work/handoffs/phase-3/20261112_Round-1-Editor-Notes.md`, "Second pass", Requests) are applied in the generator's data: Rule 15.6's failure caption ("lacks its step numbers, chip and kind"), the correct plate's alt (each loop's name in quotation marks) and the failure plate's alt ("without its step numbers, chip and kind", "“A vicious cycle”"). The editor read and kept the rest of Request 3.
+
+- D3-xxx | Rule 15.6's failure caption and both 15.6 alts take the editor's second-pass words | W11 (a run of negatives) and the alts' rule of quoting a loop's name, as the opener's and 15.13's do
+
+Tested: `python3 -I work/build/scripts/phase-3/phase3_ch15_build.py`, every check passes; `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/second.html`, exit 0 with 0 warnings, chapter 15 at 184,665 bytes; the three lines read back from the chapter file and the manifest by script.
+
+Not tested: captures after this change (words in a caption and two alts only; no plate's markup changed).
