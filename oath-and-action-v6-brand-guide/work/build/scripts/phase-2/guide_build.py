@@ -771,7 +771,10 @@ def scope_styles(s, sid):
 
 
 PLATE_LABEL = {"correct": ("Correct application", "✓"), "failure": ("Failure case", "×"),
-               "corrective": ("Corrective example", "→"), "extra": (None, None), "proof": (None, None), "opener": (None, None)}
+               "corrective": ("Corrective example", "→"), "extra": (None, None), "proof": (None, None), "opener": (None, None),
+               # Phase 3, round 1 (R-B12): chapter 14's sketches. An avoid entry's sketch draws the misleading form, so its
+               # plate names the form as one to avoid and carries the do-not-publish bar; a reference sketch reads as a sketch
+               "avoid": ("Form to avoid", "×"), "sketch": ("Sketch", None)}
 # D2-965, D2-1134 (stage C): a chapter from 09 on may open with one figure under its intro, named by "opener". It fits
 # the column at true size: a flowing specimen fits at every width, and a fixed one may be at most 328 px wide, the
 # column of a 360 px screen. Gate 2's fix pass (call 3, CD-S1): every chapter may open with one, 01 to 08 included, and
@@ -895,6 +898,8 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
         stage_attrs.append('data-pending="true"')
     else:
         body = frag
+        if kind == "avoid":
+            body = '<p class="plate-dnp"><span aria-hidden="true">×</span>Form to avoid: do not publish</p>' + body
         if interactive or readable:
             # D2-255, AX-S2: a group named by the plate, described once by the alt. The alt paragraph is hidden from
             # assistive technology, so it is heard only as the group's description.
@@ -920,7 +925,7 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
         cap_text = '<span class="illus">Illustrative</span> ' + cap_text
     if cap_text:
         cap = f'<figcaption class="plate-cap">{cap_text}</figcaption>'
-    elif kind in ("correct", "failure", "corrective"):
+    elif kind in ("correct", "failure", "corrective", "avoid", "sketch"):
         R.warn(where, f"{spec_id}: the {kind} specimen has no caption")
     fid = f' id="fig-{e(spec_id)}"' if spec_id else ""
     return (f'<figure class="plate plate--{kind}{" plate--fit" if fit else ""}"{fid}>'
@@ -1449,7 +1454,9 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
     for kind in ("correct", "failure", "corrective"):
         blk = r.get(kind)
         if blk:
-            out.append(plate(kind, blk.get("specimen"), blk.get("caption"), specs, ctx, where, rule_id=rid))
+            # an entry's sketch names its own plate kind and label (R-B12): "avoid" or "sketch"
+            pk = blk.get("kind") if entry and blk.get("kind") in ("avoid", "sketch") else kind
+            out.append(plate(pk, blk.get("specimen"), blk.get("caption"), specs, ctx, where, label=blk.get("label") if pk != kind else None, rule_id=rid))
     # DR-203: the rule's code to copy, live in both themes, then each file with its Copy button
     if r.get("code"):
         out.append(code_plate(rid, r.get("code"), ctx, where))

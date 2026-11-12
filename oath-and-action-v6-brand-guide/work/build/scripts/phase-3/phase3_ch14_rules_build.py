@@ -468,7 +468,9 @@ def rule_14_2(B):
                                  notes_internal="Rule 14.2's failure plate: a topic for a title, and only the chart under it."))
     # the numerals sit in the left margin at desktop and before each part on a phone, in the order of PARTS
     sel = ":is(.oac-ev,.oac-title,.oac-measure,.oac-guide,.oac-art,.oac-notes,.oac-src,.oac-eq)"
-    extra = (f".anat{{counter-reset:pt}}.anat {sel}{{position:relative}}.anat {sel}::before{{counter-increment:pt;content:counter(pt);"
+    # each part's numeral written out: the kit's figure is a size container, whose style containment scopes CSS counters
+    nums = "".join(f".anat .oac-{c}::before{{content:'{i + 1}'}}" for i, c in enumerate(("ev", "title", "measure", "guide", "art", "notes", "src", "eq")))
+    extra = (nums + f".anat {sel}{{position:relative}}.anat {sel}::before{{"
              "display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin:0 8px 4px 0;border-radius:50%;"
              f"background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);{LBL};letter-spacing:0;vertical-align:middle}}"
              f"@media (min-width:48em){{.anat{{padding-left:36px}}.anat {sel}::before{{position:absolute;left:-36px;top:0;margin:0}}}}")
@@ -541,7 +543,9 @@ def rule_14_3(B):
                               {"field": "voted_pct", "label": "Reported voting", "format": "percent:1"}]},
            encode={"x": "year", "y": "voted_pct", "series": "age_group"},
            labels={"subject": "18_to_24", "series": dict(AGES),
-                   "series_place": {a: {"x": 2016} for a, _ in AGES}},
+                   "series_place": {"65_and_over": {"x": 2008, "dy": -15}, "45_to_64": {"x": 2008, "dy": 20},
+                                    "25_to_44": {"x": 2008, "dy": 27}, "18_to_24": {"x": 2008, "dy": -8}}},
+           scale={"y": [30, 80]},
            domain="D10", states=[], notes_internal="Rule 14.3's correct plate. Checked by script: 18 to 24 more than 10 points below every other "
                                                    "group in each year (gaps 11.2 to 16.1).")
     # the failure: the same four lines in the four group inks, with a key under the chart and no names on the lines

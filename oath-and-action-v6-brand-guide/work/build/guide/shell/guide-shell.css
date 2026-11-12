@@ -395,6 +395,10 @@ a.toc-part-k:hover { text-decoration: underline }
 .use-when p:not(.label), .entry-shared { margin: 0 0 var(--oa-space-200); max-width: var(--oa-layout-measure-body-max) }
 .use-list { margin: 0 0 var(--oa-space-200); padding-left: 1.2em; max-width: var(--oa-layout-measure-body-max) }
 .use-list li + li { margin-top: var(--oa-space-100) }
+/* R-B12: an avoid entry's sketch carries the do-not-publish bar, as a failure plate's piece does */
+.plate-dnp { display: flex; align-items: center; gap: 8px; margin: 0 0 16px; padding: 6px 10px; background: var(--oa-color-surface-charcoal);
+  color: var(--oa-color-text-primary-on-charcoal); font: var(--oa-type-label); letter-spacing: var(--oa-type-label-letter-spacing);
+  text-transform: var(--oa-type-label-text-transform) }
 .basis { display: inline-flex; flex-wrap: wrap; gap: .5em; align-items: baseline; margin: 0 0 var(--oa-space-150); padding: var(--oa-space-050) var(--oa-space-100);
   border: var(--oa-border-width-hairline) solid var(--rule-strong); font: var(--oa-type-ui) }
 .basis-k { color: var(--ink-2) }

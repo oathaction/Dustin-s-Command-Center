@@ -142,7 +142,12 @@ def outputs(rounds):
             sk = p["sketch_id"]
             if not (SPECIMENS / f"{sk}.html").exists():
                 faults.append(f"Rule {rid}: the sketch {sk}.html is not in the specimens folder")
-            rule["correct"] = {"specimen": sk, "caption": f"{p['form']}, drawn small with illustrative data."}
+            # R-B12: an avoid sketch's plate names the form as misleading and carries the do-not-publish bar; a reference
+            # sketch's plate reads as a sketch
+            avoid = tier_of(p["tier"]) == "avoid"
+            rule["correct"] = {"specimen": sk, "caption": f"{p['form']}, drawn small with illustrative data.",
+                               "kind": "avoid" if avoid else "sketch",
+                               "label": f"{p['form']}, a form that misleads" if avoid else f"{p['form']}, a sketch"}
             limit = 4096 if tier_of(p["tier"]) == "reference" else 2048
             manifest[sk] = {"chapter": "14", "rule": rid, "width_px": None, "illustrative": True,
                             "alt": e.get("sketch_alt") or f"A sketch of a {p['form'].lower()}, with illustrative data.",

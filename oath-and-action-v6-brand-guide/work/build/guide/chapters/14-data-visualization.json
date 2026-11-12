@@ -1201,7 +1201,9 @@
    ],
    "correct": {
     "specimen": "s-14-24-sketch",
-    "caption": "Radar chart, drawn small with illustrative data."
+    "caption": "Radar chart, drawn small with illustrative data.",
+    "kind": "avoid",
+    "label": "Radar chart, a form that misleads"
    }
   },
   {
@@ -1939,7 +1941,9 @@
    ],
    "correct": {
     "specimen": "s-14-43-sketch",
-    "caption": "Run chart, drawn small with illustrative data."
+    "caption": "Run chart, drawn small with illustrative data.",
+    "kind": "sketch",
+    "label": "Run chart, a sketch"
    }
   },
   {
@@ -1975,7 +1979,9 @@
    ],
    "correct": {
     "specimen": "s-14-44-sketch",
-    "caption": "Cycle or seasonal chart, drawn small with illustrative data."
+    "caption": "Cycle or seasonal chart, drawn small with illustrative data.",
+    "kind": "sketch",
+    "label": "Cycle or seasonal chart, a sketch"
    }
   },
   {
@@ -2011,7 +2017,9 @@
    ],
    "correct": {
     "specimen": "s-14-45-sketch",
-    "caption": "Streamgraph, drawn small with illustrative data."
+    "caption": "Streamgraph, drawn small with illustrative data.",
+    "kind": "avoid",
+    "label": "Streamgraph, a form that misleads"
    }
   },
   {

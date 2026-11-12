@@ -85,8 +85,15 @@ export function extra_rows(chk) {
   (chk.datasets || []).slice(1).forEach(ds => { out[ds.file.replace(/\.(csv|json)$/, '')] = C.rows_of(K, ds); });
   return out;
 }
+// R-B11 (round 1): a spec's second and later datasets ride in the island only for a form that reads them (c.extra, or
+// extra: true in its registration); S05's gap-margin file went to the page for nothing
+export function reads_extra(form) {
+  const def = K.forms[form];
+  return !!def && (def.extra === true || /\bc\.extra\b/.test(String(def.draw)));
+}
 function extra_island(res) {
   const out = {};
+  if (!res.spec_form || !reads_extra(res.spec_form)) return out;
   (res.datasets || []).slice(1).forEach(ds => {
     const cols = Object.keys(ds.meta.columns), ct = {};
     cols.forEach(c => { ct[c] = { type: ds.meta.columns[c].type }; });
@@ -102,7 +109,7 @@ export function guide_widths(spec) {
 
 // One spec, checked and drawn in Node at every width and ground
 export function run_spec(spec, o) {
-  const res = { id: spec.id, faults: [], drawings: [], spec_path: o.spec_path };
+  const res = { id: spec.id, faults: [], drawings: [], spec_path: o.spec_path, spec_form: spec.form };
   let chk;
   try { chk = C.check_spec(K, spec, o); } catch (e) { res.faults.push('spec: ' + e.message); return res; }
   res.faults.push(...chk.faults);
