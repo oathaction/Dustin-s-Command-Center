@@ -28,7 +28,7 @@ In progress (19:55). All eleven forms are written and on the engineer's shared p
 - D3-xxx | S50 leaves DC out and draws the research lead's corrected "All 50 states" row, $4,526, as the dashed line | B4 and R1
 - D3-xxx | Entries follow round 1's shape; 14.76 (S06) describes the built specimen and sends a matrix of words alone to 14.127 | D3-651: `s06.json` stays maker A's; the entry only
 - D3-xxx | The nine sketches draw invented values in R1-C1's classes with "Illustrative data" inside; each first `<desc>` is its entry's one-sentence `sketch_alt`, so the visible caption and the description agree | R2-3, R2-C3
-- D3-xxx | The dual-axis pair draws one invented pair of series twice: on a left scale of 0 to 40 and a right scale of 200 to 280 the lines cross half-way; in two aligned panels, each from zero, they never meet (`data-label="Two aligned panels"`), 288 px a half as D3-637 set | D3-486; entry 14.73's `use_instead` names aligned panels (14.34) first
+- D3-xxx | The dual-axis pair draws one invented pair of series twice: on a left scale of 0 to 40 and a right scale of 200 to 280 the lines cross half-way; in two aligned panels, each from zero, they never meet (`data-label="Aligned panels"`, short enough that its plate label holds one line), 288 px a half as D3-637 set | D3-486; entry 14.73's `use_instead` names aligned panels (14.34) first
 - D3-xxx | The violin sketch marks each median as a dot of the ground's color on the quartile box | A 2 px bar split the small boxes into two marks at true size
 - D3-xxx | The round 2 figure checks live in `maker_b_round2_derive.py --figures` (checks S49 to S59), not in round 1's `maker_b_figure_checks.py` | The brief's ownership table gives maker B this script in round 2
 

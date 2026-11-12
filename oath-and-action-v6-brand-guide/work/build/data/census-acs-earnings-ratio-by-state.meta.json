@@ -56,7 +56,7 @@
    "unit": "percentage points"
   }
  },
- "printed_source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B20017, median earnings of full-time, year-round workers by sex, 2025, 50 states and DC. Retrieved November 11, 2026. Survey estimates; ratios and their margins computed by Oath & Action; medians for all such workers, not for the same jobs.",
+ "printed_source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B20017, median earnings of full-time, year-round workers by sex, 2025, 50 states and DC. Retrieved November 11, 2026. Survey estimates; ratios and their margins computed by Oath & Action; each median covers all such workers, whatever their jobs.",
  "ledger_row": "P7-031",
  "domain": "D07",
  "states": []
