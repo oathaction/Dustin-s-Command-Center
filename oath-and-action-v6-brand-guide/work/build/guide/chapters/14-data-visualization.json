@@ -1185,7 +1185,7 @@
    ],
    "correct": {
     "specimen": "s-14-24-sketch",
-    "caption": "Radar chart, drawn small with illustrative data.",
+    "caption": "Two radar charts draw the same illustrative values for two groups with their spokes in different orders, and the dark group’s shape is the larger in the first and the smaller in the second.",
     "kind": "avoid",
     "label": "Radar chart, a form that misleads"
    }
@@ -1907,7 +1907,7 @@
    ],
    "correct": {
     "specimen": "s-14-43-sketch",
-    "caption": "Run chart, drawn small with illustrative data.",
+    "caption": "A weekly measure of a process as a line of dots around a dashed median line, with a shaded stretch where six weeks in a row sit above the median, a run long enough to signal a shift in the process.",
     "kind": "sketch",
     "label": "Run chart, a sketch"
    }
@@ -1944,7 +1944,7 @@
    ],
    "correct": {
     "specimen": "s-14-44-sketch",
-    "caption": "Cycle or seasonal chart, drawn small with illustrative data.",
+    "caption": "Months from January to December along the bottom, one thin gray line for each earlier year and a heavy line for this year so far, so a reader compares each month with the same month in other years.",
     "kind": "sketch",
     "label": "Cycle or seasonal chart, a sketch"
    }
@@ -1982,7 +1982,7 @@
    ],
    "correct": {
     "specimen": "s-14-45-sketch",
-    "caption": "Streamgraph, drawn small with illustrative data.",
+    "caption": "A streamgraph beside small multiples of the same illustrative data: the middle part holds steady, and its band bends in the streamgraph and lies flat in the small multiples.",
     "kind": "avoid",
     "label": "Streamgraph, a form that misleads"
    }

@@ -14,8 +14,9 @@ Writes  work/build/guide/chapters/14-data-visualization.json
         work/build/guide/specimens/s-14-sNN.html (one fragment per entry specimen: the chart placeholder, contract R1-C3)
         work/build/guide/entries/14-example-log.json (Rule 01.12's log for chapter 14, checked against DR-229's limits)
 
-The chapter holds rules 14.1 to 14.14 and every entry of the rounds built (--rounds, default 1); the plan's other numbers
-go into "planned_rules", so a citation of a later round's rule is no fault and prints unlinked until it is built. An entry
+The chapter holds rules 14.1 to 14.14 and every entry of the rounds built (--rounds, default 1,2) whose entry file and
+spec or sketch have landed; the plan's other numbers go into "planned_rules", so a citation of a rule not yet built is no
+fault and prints unlinked until it is. A sketch entry's caption is the first sentence of its sketch_alt (R2-3). An entry
 is a rule with "entry": true: its plate is its specimen, it takes no failure plate (DR-240), and when a spec serves two
 entries the second names the first ("specimen_at") instead of drawing it again. Faults (a missing entry for a built round,
 a number, tier or specimen that disagrees with the plan, a missing spec or sketch, Rule 01.9's limits passed) are listed
@@ -100,7 +101,6 @@ def outputs(rounds):
     chap = json.loads((ENTRIES / "14-chapter.json").read_text())
     built = [dict(r, kind="rule", tier=None) for r in plan["chapter_rules"] if r.get("round", 1) in rounds]
     built += [dict(f, kind="form") for f in plan["forms"] if f["round"] in rounds]
-    built_ids = {r["rule"] for r in built}
     planned = sorted({r["rule"] for r in plan["chapter_rules"]} | {f["rule"] for f in plan["forms"]}, key=num_key)
     rules, manifest, fragments, log, placed_spec = [], {}, {}, [], {}
     opener = dict(chap.get("opener") or {})

@@ -32,11 +32,11 @@
       };
       var vw = 0;
       steps.forEach(function (s) { vw = Math.max(vw, c.measure(num(s), 'label', 700, true)); });
-      var lmax = c.phone ? W : Math.floor(W * 0.36), nw = 0;
+      var lmax = c.phone ? W - vw - 12 : Math.floor(W * 0.36), nw = 0;
       rows.forEach(function (r) { c.wrap(nm(r), 'label', lmax, 600).forEach(function (l) { nw = Math.max(nw, c.measure(l, 'label', 600)); }); });
       var x0 = c.phone ? 0 : Math.ceil(nw + 16);
       var st = K.nice(lo, hi, 4).step, dlo = lo, dhi = hi;
-      var xs = K.scale.linear([dlo, dhi], [x0 + 6, W - vw - 18]), ticks = K.ticks(Math.ceil(lo / st) * st, Math.floor(hi / st) * st, 0, st);
+      var xs = K.scale.linear([dlo, dhi], c.phone ? [2, W - 2] : [x0 + 6, W - vw - 18]), ticks = K.ticks(Math.ceil(lo / st) * st, Math.floor(hi / st) * st, 0, st);
       // the key, then the scale's labels over the plot
       var y = 0;
       if (L.up || L.down) {
@@ -65,8 +65,13 @@
         ys.push(by);
         bottom = by + bh;
       });
-      ticks.forEach(function (v) { if (v) c.line(xs(v), top - 4, xs(v), bottom + 4, { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); });
-      c.line(xs(0), top - 4, xs(0), bottom + 4, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
+      // the scale's lines run the plot's height; on a phone they run beside each bar only, never through the names
+      var vlines = function (y0, y1) {
+        ticks.forEach(function (v) { if (v) c.line(xs(v), y0, xs(v), y1, { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); });
+        c.line(xs(0), y0, xs(0), y1, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
+      };
+      if (c.phone) ys.forEach(function (yy) { vlines(yy - 3, yy + bh + 3); });
+      else vlines(top - 4, bottom + 4);
       steps.forEach(function (s, i) {
         var r = s.r, lines = nlines(r), isp = pt !== null && String(r[ek]) === pt, by = ys[i];
         var isn = isp || named.indexOf(String(r[ek])) >= 0;
@@ -83,12 +88,11 @@
           var up = r[ev] >= 0, fl = isp ? 'point' : isn || up ? 'subject' : other;
           c.rect(xa, by, Math.max(1, xb - xa), bh, Object.assign({ fill: fl, kind: 'segment', data: d }, kl));
         }
-        // the value in a column at the right, flush right in tabular figures
-        c.text(W, cy, num(s), { role: 'label', weight: s.total || isn ? 700 : 400, anchor: 'end', tnum: true });
-        // a hairline from the last step's end to this one's start
-        // (on a phone it stops over the name above the bar)
-        if (prev !== null && (!c.phone || by - lines * lh - 2 > prev.y + 2))
-          c.line(xs(prev.x), prev.y, xs(prev.x), c.phone ? by - lines * lh - 2 : by, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+        // the value in a column at the right, flush right in tabular figures (on a phone, on the name's first line)
+        c.text(W, c.phone ? by - 6 - (lines - 1) * lh : cy, num(s), { role: 'label', weight: s.total || isn ? 700 : 400, anchor: 'end', tnum: true });
+        // a hairline from the last step's end to this one's start; on a phone only where it clears the words between
+        var px = prev && xs(prev.x), nb = c.texts[c.texts.length - 2], clear = !c.phone || (prev && (px > nb.x + nb.w + 4 && px < W - vw - 6));
+        if (prev !== null && clear) c.line(px, prev.y, px, by, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
         prev = { x: s.b, y: by + bh };
       });
       c.height(bottom + 6);
