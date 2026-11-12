@@ -406,7 +406,8 @@ async function fragments(o) {
   const list = JSON.parse(fs.readFileSync(o.in, 'utf8'));
   const kp = kit_parts();
   const out = { kit_js: kit_scripts(), kit_css: kp.css, words: K.words, items: {},
-    kit_sizes: { core: Buffer.byteLength(kp.core), geo: Buffer.byteLength(kp.geo), css: Buffer.byteLength(kp.css), forms: Object.fromEntries(Object.entries(kp.forms).map(([k, v]) => [k, Buffer.byteLength(v)])) } };
+    kit_sizes: { core: Buffer.byteLength(kp.core), geo: Buffer.byteLength(kp.geo), css: Buffer.byteLength(kp.css), forms: Object.fromEntries(Object.entries(kp.forms).map(([k, v]) => [k, Buffer.byteLength(v)])),
+      registered: Object.keys(K.forms).length } };
   for (const it of list.items) {
     const spec = JSON.parse(fs.readFileSync(it.spec, 'utf8'));
     const res = run_spec(spec, { grounds: [it.ground || 'newsprint'], widths: it.widths || [1440, 390], spec_path: it.spec });

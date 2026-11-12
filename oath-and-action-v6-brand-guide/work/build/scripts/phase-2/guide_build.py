@@ -3245,6 +3245,9 @@ def build(args):
     weights["fonts_files"] = fonts.bytes
     stop, projection = guide_charts.gates(weights, charts, fonts.bytes if fonts.ok else 0, present, R.warn)
     weights["projection"] = projection
+    # board 1 apply (item 3): chapter 14's share per plate, printed with every build that carries the chart kit
+    if projection.get("chapter_14_per_plate"):
+        R.note(projection["chapter_14_per_plate"]["line"])
     weights["charts"] = charts
     weights["chart_method"] = (getattr(args, "chart_method", None) or guide_charts.DEFAULT_METHOD) if charts else None
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -3993,6 +3996,40 @@ def self_test():
                 ("three license disclosures, each with its copyright line", lambda pg: pg.count('<details class="lic"') == 3
                  and all(html.escape(f["copyright"]) in pg for f in man["families"].values())),
             ])
+    # Board 1 apply (DR-238): chapter 14's stop of 2,803,941 bytes in a real build, in every mode. A chapter 14 over it writes
+    # no page and exits 3 with --strict and without; one over the old 1.75 MB stop and under the new one is written.
+    print("Board 1 apply: chapter 14's hard stop in a real build (DR-238)")
+    with tempfile.TemporaryDirectory(prefix="oa-guide-build-ch14-") as tmp:
+        for name, size, strict, want_stop in (
+                ("chapter 14 over its 2,803,941 byte stop: no page, exit 3, without --strict", 2_900_000, False, True),
+                ("chapter 14 over its 2,803,941 byte stop: no page, exit 3, with --strict", 2_900_000, True, True),
+                ("chapter 14 over the old 1.75 MB stop and under the new one: the page is written", 2_000_000, False, False)):
+            base = Path(tmp) / f"c{len(results)}"
+            (base / "chapters").mkdir(parents=True)
+            (base / "specimens").mkdir()
+            ch14 = chapter("14", "data-visualization", "Data visualization", [rule("14.1", {"correct": {"specimen": "s-14-big", "caption": "A fixture."}})])
+            (base / "chapters" / "14-data-visualization.json").write_text(json.dumps(ch14))
+            (base / "specimens" / "s-14-big.html").write_text("<p>" + "words " * (size // 6) + "</p>")
+            (base / "specimens" / "manifest-test.json").write_text(json.dumps({"s-14-big": {"chapter": "14", "rule": "14.1", "alt": "A fixture of a given weight.", "notes": "fixture"}}))
+            R = Report()
+            out = base / "page.html"
+            code = build(argparse.Namespace(chapters=str(base / "chapters"), specimens=str(base / "specimens"), out=str(out),
+                                            code=str(base / "code"), demo=False, strict=strict, quiet=True))
+            rep = json.loads(out.with_name(out.stem + "-Build-Report.json").read_text())
+            c14 = rep["weight"]["projection"]["chapter_14_with_kit"]
+            checks = [(f"chapter 14 weighs {c14:,} bytes, on the intended side of 2,803,941", (c14 > 2_803_941) == want_stop)]
+            if want_stop:
+                checks += [("exits 3", code == 3), ("writes no page", not out.exists()),
+                           ("the warning names the stop", any("hard stop of 2,803,941 bytes" in w["message"] for w in R.warnings))]
+            else:
+                checks += [("writes the page", out.exists()), ("no stop", code != 3 and not any("hard stop" in w["message"] for w in R.warnings))]
+            ok = all(c for _, c in checks)
+            ok_all &= ok
+            results.append({"scenario": name, "pass": ok, "checks": [{"check": c, "pass": p} for c, p in checks]})
+            print(f"{'pass' if ok else 'FAIL'}  {name}")
+            for c, p in checks:
+                if not p:
+                    print(f"        missed: {c}")
     # Phase 3 (round 0): the weight gates and the chart hook, each planted fault caught
     print("Phase 3: the weight gates and the chart hook (guide_charts.self_test)")
     if guide_charts.self_test():

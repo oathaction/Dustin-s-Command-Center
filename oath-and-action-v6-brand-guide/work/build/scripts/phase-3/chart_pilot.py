@@ -1,5 +1,6 @@
 """The drawing-method pilot (Phase 3, round 0): S01 to S16 placed in a pilot chapter 14 of a real guide build, built once by
-each drawing method, measured, and projected to chapter 14's 97 finished specimens against its 1.75 MB stop (DR-227).
+each drawing method, measured, and projected to chapter 14's 97 finished specimens against its stop (DR-227; 2,803,941
+bytes since DR-238, read from guide_charts.CEILING).
 
 Usage:
     python3 -I work/build/scripts/phase-3/chart_pilot.py --out DIR [--methods lean,load,load-trim]
@@ -21,6 +22,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[4]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import guide_charts  # noqa: E402   the stop and the page budget live there
 KIT = ROOT / "work/build/chart-kit"
 MB = 1_000_000
 IDS = [f"s{n:02d}" for n in range(1, 17)]
@@ -32,7 +35,7 @@ SKETCHES, AVOID = 22, 8
 SKETCH_EACH, AVOID_EACH = 4 * 1024, 2 * 1024
 FINISHED = 97                  # core and extended specimens
 FORMS_TOTAL = 97               # forms with a drawing module (one per core and extended form, at most)
-STOP = 1.75 * MB
+STOP = guide_charts.CEILING[guide_charts.HARD_STOP]     # 2,803,941 bytes (DR-238); 1.75 MB until board 1
 
 
 def write_pilot(base, fallback):
@@ -139,7 +142,7 @@ def main():
                            "under_stop": proj <= STOP, "margin": round(STOP - proj)},
         }
         print(f"{m:10s} ch14 {ch14:>9,} + kit {kit:>7,} = {ch14 + kit:>9,} | {n} specimens avg {avg:>8,.0f} + frame {frame:>6,.0f} | "
-              f"projected chapter 14: {proj / MB:.3f} MB ({'under' if proj <= STOP else 'OVER'} 1.75) | warnings {len(rep['warnings'])}")
+              f"projected chapter 14: {proj / MB:.3f} MB ({'under' if proj <= STOP else 'OVER'} its {STOP:,.0f} byte stop) | warnings {len(rep['warnings'])}")
     (base / "20261111_Pilot-Results.json").write_text(json.dumps(results, indent=1))
     print(f"results: {base / '20261111_Pilot-Results.json'}")
 

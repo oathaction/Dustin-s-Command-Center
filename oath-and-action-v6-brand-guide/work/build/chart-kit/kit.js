@@ -807,12 +807,15 @@
   // inflater is synchronous and needs no browser feature (DecompressionStream is asynchronous, so print could outrun it).
   // An island written as JSON (data-oa-chart-data with no value, type application/json) still reads as before.
   // ------------------------------------------------------------------------------------------------------------
-  var LBASE = [3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 15, 17, 19, 23, 27, 31, 35, 43, 51, 59, 67, 83, 99, 115, 131, 163, 195, 227, 258];
-  var LEXT = [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 0];
-  var DBASE = [1, 2, 3, 4, 5, 7, 9, 13, 17, 25, 33, 49, 65, 97, 129, 193, 257, 385, 513, 769, 1025, 1537, 2049, 3073, 4097, 6145, 8193, 12289, 16385, 24577];
-  var DEXT = [0, 0, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13];
-  var CL_ORDER = [16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15];
-  var FIXED = null;
+  var LBASE = [], LEXT = [], DBASE = [], DEXT = [], FIXED = null;
+  (function () {
+    // RFC 1951's length and distance bases, and how many extra bits each code reads
+    var i, b;
+    for (i = 0, b = 3; i < 28; i++) { LEXT[i] = i < 8 ? 0 : (i >> 2) - 1; LBASE[i] = b; b += 1 << LEXT[i]; }
+    LBASE[28] = 258; LEXT[28] = 0;
+    for (i = 0, b = 1; i < 30; i++) { DEXT[i] = i < 4 ? 0 : (i >> 1) - 1; DBASE[i] = b; b += 1 << DEXT[i]; }
+  })();
+  function bad() { throw new Error('inflate: the data is not deflate'); }
   function huff(len, off, n) {
     // canonical Huffman decoding table: how many codes of each length, and the symbols in code order
     var count = [], sym = [], offs = [0, 0], i;
@@ -824,16 +827,12 @@
   }
   K.inflate = function (src) {
     // raw DEFLATE bytes in, the bytes they hold out (an array of numbers); throws on data that is not deflate
-    var pos = 0, bitbuf = 0, bitcnt = 0, out = [], last, type, i;
+    var pos = 0, buf = 0, cnt = 0, out = [], last, type, i;
     function bits(n) {
-      var v = bitbuf;
-      while (bitcnt < n) {
-        if (pos >= src.length) throw new Error('inflate: the data ends early');
-        v |= src[pos++] << bitcnt;
-        bitcnt += 8;
-      }
-      bitbuf = v >>> n;
-      bitcnt -= n;
+      var v = buf;
+      while (cnt < n) { if (pos >= src.length) bad(); v |= src[pos++] << cnt; cnt += 8; }
+      buf = v >>> n;
+      cnt -= n;
       return v & ((1 << n) - 1);
     }
     function decode(h) {
@@ -846,88 +845,68 @@
         first = (first + c) << 1;
         code <<= 1;
       }
-      throw new Error('inflate: a code that is not in its table');
+      bad();
     }
     function codes(lc, dc) {
       var sym, len, dist;
-      for (;;) {
-        sym = decode(lc);
-        if (sym < 256) out.push(sym);
-        else if (sym === 256) return;
-        else {
-          sym -= 257;
-          if (sym >= 29) throw new Error('inflate: a length code out of range');
-          len = LBASE[sym] + bits(LEXT[sym]);
-          sym = decode(dc);
-          if (sym >= 30) throw new Error('inflate: a distance code out of range');
-          dist = DBASE[sym] + bits(DEXT[sym]);
-          if (dist > out.length) throw new Error('inflate: a distance before the start');
-          while (len-- > 0) out.push(out[out.length - dist]);
-        }
+      while ((sym = decode(lc)) !== 256) {
+        if (sym < 256) { out.push(sym); continue; }
+        if ((sym -= 257) > 28) bad();
+        len = LBASE[sym] + bits(LEXT[sym]);
+        if ((sym = decode(dc)) > 29) bad();
+        dist = DBASE[sym] + bits(DEXT[sym]);
+        if (dist > out.length) bad();
+        while (len-- > 0) out.push(out[out.length - dist]);
       }
     }
-    function stored() {
-      bitbuf = 0;
-      bitcnt = 0;
-      if (pos + 4 > src.length) throw new Error('inflate: the data ends early');
-      var len = src[pos] | (src[pos + 1] << 8), nlen = src[pos + 2] | (src[pos + 3] << 8);
-      pos += 4;
-      if (len !== (~nlen & 0xffff)) throw new Error('inflate: a stored block whose length does not check');
-      if (pos + len > src.length) throw new Error('inflate: the data ends early');
-      while (len-- > 0) out.push(src[pos++]);
-    }
     function dynamic() {
-      var nlen = bits(5) + 257, ndist = bits(5) + 1, ncode = bits(4) + 4, cl = [], lens = [], j, sym, rep, prev;
-      if (nlen > 286 || ndist > 30) throw new Error('inflate: too many codes');
-      for (j = 0; j < 19; j++) cl[CL_ORDER[j]] = j < ncode ? bits(3) : 0;
-      var h = huff(cl, 0, 19);
-      for (j = 0; j < nlen + ndist;) {
+      var nlen = bits(5) + 257, nd = bits(5) + 1, nc = bits(4) + 4, cl = [], lens = [], j, sym, rep, prev, h;
+      var order = [16, 17, 18, 0, 8, 7, 9, 6, 10, 5, 11, 4, 12, 3, 13, 2, 14, 1, 15];
+      if (nlen > 286 || nd > 30) bad();
+      for (j = 0; j < 19; j++) cl[order[j]] = j < nc ? bits(3) : 0;
+      h = huff(cl, 0, 19);
+      for (j = 0; j < nlen + nd;) {
         sym = decode(h);
         if (sym < 16) { lens[j++] = sym; continue; }
         prev = 0;
-        if (sym === 16) {
-          if (!j) throw new Error('inflate: a repeat with nothing before it');
-          prev = lens[j - 1];
-          rep = 3 + bits(2);
-        } else if (sym === 17) rep = 3 + bits(3);
-        else rep = 11 + bits(7);
-        if (j + rep > nlen + ndist) throw new Error('inflate: too many code lengths');
+        if (sym === 16) { if (!j) bad(); prev = lens[j - 1]; rep = 3 + bits(2); }
+        else rep = sym === 17 ? 3 + bits(3) : 11 + bits(7);
+        if (j + rep > nlen + nd) bad();
         while (rep-- > 0) lens[j++] = prev;
       }
-      codes(huff(lens, 0, nlen), huff(lens, nlen, ndist));
+      codes(huff(lens, 0, nlen), huff(lens, nlen, nd));
     }
     do {
       last = bits(1);
       type = bits(2);
-      if (type === 0) stored();
-      else if (type === 1) {
+      if (type === 0) {
+        // a stored block: the rest of this byte is dropped, then its length, the length's complement and the bytes
+        buf = cnt = 0;
+        if (pos + 4 > src.length) bad();
+        var n = src[pos] | src[pos + 1] << 8;
+        if (n !== (~(src[pos + 2] | src[pos + 3] << 8) & 0xffff) || (pos += 4) + n > src.length) bad();
+        while (n-- > 0) out.push(src[pos++]);
+      } else if (type === 1) {
         if (!FIXED) {
-          var fl = [];
+          var fl = [], fd = [];
           for (i = 0; i < 288; i++) fl[i] = i < 144 ? 8 : i < 256 ? 9 : i < 280 ? 7 : 8;
-          var fd = [];
           for (i = 0; i < 30; i++) fd[i] = 5;
           FIXED = [huff(fl, 0, 288), huff(fd, 0, 30)];
         }
         codes(FIXED[0], FIXED[1]);
       } else if (type === 2) dynamic();
-      else throw new Error('inflate: a block of an unknown type');
+      else bad();
     } while (!last);
     return out;
   };
   function unbase64(s) {
-    var bin = root.atob ? root.atob(s.replace(/\s+/g, '')) : Buffer.from(s, 'base64').toString('binary'), b = [];
+    var bin = root.atob(s.replace(/\s+/g, '')), b = [];
     for (var i = 0; i < bin.length; i++) b.push(bin.charCodeAt(i));
     return b;
   }
-  function utf8(b) {
-    if (root.TextDecoder) return new root.TextDecoder('utf-8').decode(new Uint8Array(b));
-    var s = '';
-    for (var i = 0; i < b.length; i++) s += String.fromCharCode(b[i]);
-    return decodeURIComponent(escape(s));
-  }
   K.island_text = function (text, encoding) {
     // an island's text as JSON text: as written, or inflated from deflate and base64
-    return encoding === 'deflate' ? utf8(K.inflate(unbase64(text))) : text;
+    return encoding === 'deflate' ? new root.TextDecoder('utf-8').decode(new Uint8Array(K.inflate(unbase64(text)))) : text;
   };
   K.island = function (el) {
     // a figure's data island, read from its script element
