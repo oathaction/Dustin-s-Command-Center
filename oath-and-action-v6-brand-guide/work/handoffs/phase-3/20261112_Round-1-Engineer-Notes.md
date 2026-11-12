@@ -8,7 +8,7 @@ Oath & Action Edition 06, Phase 3, round 1, November 12, 2026. Written by the en
 
 - **Contracts R1-C1 to R1-C7 are written** (below): the sketch format and its role classes, the shared parts a form may call, the rules a form module follows beyond C4, how chapter 14 places a specimen (`s-14-sNN`), the weight each plate may take, and how a script reads a data island, and the shape of map geometry in the data folder (ENG-10).
 - **Done from the requests:** R-B6, the shared arrow moved into `parts.js` (S11, S12 and S15 rebuilt: every export and capture equal byte for byte); D3-219, the payroll file's `with_margin` source line, which maker B can now set as S14's `source_line`; A5, the `survey_only` line on `v7-stock-trading-ban` for S41 and S42.
-- **Also done:** R-B2 (`dollars` and `signed-dollars` formats) and R-B3 (a range in `where`).
+- **Also done:** R-B2 (`dollars` and `signed-dollars` formats), R-B7 (`billions` and `billions-value`), R-B3 (a range in `where`) and ENG-11 (the Ballotpedia re-read note).
 - **Not yet started:** entry support in the guide build, `phase3_ch14_build.py`, S05's gap brackets and the light fill, and the requests A4, the kit's side of ENG-10, and DL-E1. They follow in this order: the generator and entry support, A4, ENG-10 and DL-E1, then S05 and the light fill.
 
 ## Contracts
@@ -90,6 +90,7 @@ C1 gains one file kind, a boundary file, so the maps' data can freeze. The resea
 ### Contract changes
 
 - November 12 (R-B2): number formats `dollars` ($2,000, −$2,000; `dollars:2` keeps cents) and `signed-dollars` (+$2,000), for axis ticks, table cells and `{placeholder}` fills; a table cell in either format reads back to its value.
+- November 12 (R-B7): `billions:N` prints a value in dollars as “173.2 billion”; `billions-value:N` prints 173.2 for a column whose label says billions. A cell that does not give back its exact value carries it in `data-v`, as every lean table does.
 - November 12 (R-B3): `where` takes a range, `{"month": {"from": "2022-01", "to": "2026-10"}}`, both ends kept, compared as numbers when both sides are numbers and as text otherwise (months and dates sort as text); either end may be left out.
 
 ## Routine calls
@@ -112,6 +113,7 @@ Taken, in the order they arrived:
 | R-B6, the arrow in `parts.js` | maker B | Done |
 | R-B3, a range in `where` | maker B | Done (contract changes) |
 | R-B2, a `dollars` format | maker B | Done (contract changes) |
+| R-B7, a `billions` format | maker B | Done (contract changes) |
 | A4, `v7-claims-by-hub-and-grade` | maker A | Queued |
 | ENG-10, map geometry in the data folder | research lead | Shape posted (R1-C7); the kit's projection and the data check's `.geojson` reading queued |
 | DL-E1, one county map measured against the stop | data lead | Queued, after ENG-10 |

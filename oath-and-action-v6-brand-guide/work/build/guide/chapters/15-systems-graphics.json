@@ -115,7 +115,7 @@
     },
     {
      "label": "Kind",
-     "value": "Stock, flow, condition or outside driver, in words, from the variable’s record"
+     "value": "Stock, flow, condition or outside driver, in words, from the variable’s type and its plain description; where the two disagree, as for Variable D6, no kind, since the atlas lists the question for its next version"
     },
     {
      "label": "Higher value",
@@ -451,7 +451,7 @@
    "id": "15.9",
    "title": "Frame the atlas’s layers and clusters, and set outside drivers beyond the frames.",
    "rule": [
-    "Our systems atlas sorts its 51 variables into three layers: the core, “Power and accountability”, with 31 variables, five of them outside drivers and the rest in five clusters; the economy layer, with 12; and the technology layer, with eight. Where a drawing shows variables from more than one layer, frame each layer with a 1 px rule and its name, and name the cluster of a core variable.",
+    "Our systems atlas sorts its 51 variables into three layers: the core, “Power and accountability”, with 31 variables, five of them outside drivers and the rest in five clusters; the economy layer, with 12; and the technology layer, with eight. Where a drawing shows variables from more than one layer, name each layer and mark its edge with a 1 px rule: a frame around each, one rule between two layers that stack, with both names, or a box around a layer that sits inside a drawing of another. Name the cluster of a core variable where the drawing frames it.",
     "An outside driver is “a force that affects the model but whose own causes lie outside its boundary”, in the atlas’s words. Set it outside every frame, with its kind in words. Where a connection crosses a frame, break the frame around the line, so a reader sees where the effect comes in."
    ],
    "tokens": [
@@ -476,6 +476,10 @@
      "label": "Frame",
      "value": "1 px in the strong border color, its name at top right inside, 15 px",
      "token": "oa.color.border.strong"
+    },
+    {
+     "label": "Two layers",
+     "value": "One 1 px rule between them with both names at its right end, or a box around the smaller"
     },
     {
      "label": "Crossing",
@@ -550,7 +554,7 @@
    "title": "Let the least certain step set how far a reader trusts a loop.",
    "rule": [
     "Loop R1, “Wealth and political influence reinforce each other”, runs through three connections that carry money. Two are well supported. The middle one, connection L02, “Political spending can tilt policy toward donors”, is plausible, and our systems atlas names it the weakest step. The loop as a whole takes that grade: the atlas grades Loop R1 plausible.",
-    "Draw each step in its own line, mark the weakest in words, and give the diagram’s label the grade of the least certain step (Rule 13.1). Rule 11.14 runs the same loop on a live stepper, one connection at a time."
+    "Draw each step in its own line, mark the weakest in words, and give the diagram’s label the grade of the least certain step (Rule 13.1). The loop stepper of Rule 18.22 runs the same loop live, one connection at a time, in Rule 11.14’s plate."
    ],
    "tokens": [
     "oa.chart.grade.plausible"
@@ -584,7 +588,7 @@
     },
     {
      "label": "Live",
-     "value": "Rule 11.14’s stepper runs Loop R1"
+     "value": "The loop stepper of Rule 18.22 runs Loop R1 in Rule 11.14’s plate"
     }
    ],
    "related": [
@@ -652,7 +656,7 @@
   },
   {
    "chapter": "11",
-   "reason": "Rule 11.14, the live stepper that runs Loop R1."
+   "reason": "Rule 11.14’s plate, where the loop stepper of Rule 18.22 runs Loop R1 live."
   },
   {
    "chapter": "12",

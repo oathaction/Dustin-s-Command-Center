@@ -42,5 +42,6 @@
  "printed_source_line": "Source: U.S. Census Bureau, County Business Patterns, newspaper publishers (NAICS 511110), 1998 to 2023, United States. Retrieved November 11, 2026. Establishments with paid employees only; employees counted in mid-March.",
  "ledger_row": "P7-011",
  "domain": "D01",
- "states": []
+ "states": [],
+ "breaks_in_series": "County Business Patterns has been tabulated on the North American Industry Classification System (NAICS) since the 1998 data year; earlier years used the Standard Industrial Classification (SIC), so the series starts in 1998. The 2017 to 2023 data use 2017 NAICS, and earlier years earlier NAICS editions (U.S. Census Bureau, County Business Patterns, Methodology, https://www.census.gov/programs-surveys/cbp/technical-documentation/methodology.html, read November 12, 2026)."
 }

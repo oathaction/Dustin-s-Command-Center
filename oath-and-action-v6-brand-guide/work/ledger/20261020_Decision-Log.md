@@ -3990,3 +3990,13 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-291 | Every correct plate in chapter 15 that draws an atlas connection carries Rule 13.1's evidence label and Rule 13.4's grade words, with the record square on documented lines | A correct plate is the model a builder lifts; chapter 13 is approved as built (DR-237) |
 | D3-292 | Chapter 15 counts variable kinds by V7's `type` and prints no kind for Variable D6 until Dustin settles it | V7's `type` and `kind_plain` disagree on D6 alone, and the guide never changes V7 |
 | D3-293 | Chapter 15's worked example 1 cites the live stepper in Rule 11.14's plate and Rule 18.22 rather than drawing a second one | One live stepper in the guide; a citation by number keeps the rule unrestated and spends no bytes |
+
+### Research lead, round 1 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-294 | The round 0 data files are fixed in place by a recorded script, since their freeze scripts were lost with that session's scratch folder | Each change stays traceable, and a rerun gives the same files |
+| D3-295 | S31's unemployment-only source line keeps "seasonally adjusted", as the file's printed line does, with the sidecar's unconfirmed note on it unchanged | UNRATE is FRED's seasonally adjusted series ID; FRED's series page was not reachable today to confirm it |
+| D3-296 | OPM's agency names get a title-case column beside the publisher's capitals, with the official capitals kept for "From People Who Are" and acronyms (U.S., CHIP), one stray space in "SE VERELY" and doubled spaces removed | A reader's table needs readable names; the publisher's own column stays as published |
+| D3-297 | Business applications' change by state is a derived file stored to four decimals, the round 0 rule (D3-95) | The maker asked for unrounded values; four decimals let a chart round once, as every computed value in my files does |
+| D3-298 | Maker B's invented benefit-cliff file takes a Part 7 row (P7-221) | The ledger then accounts for every file in the data folder |

@@ -26,7 +26,7 @@
         c.wrap(name(r), 'label', lmax, ink(r) ? 700 : 400).forEach(function (l) { lw = Math.max(lw, c.measure(l, 'label', ink(r) ? 700 : 400)); });
         vw = Math.max(vw, c.measure(val(r), 'label', 700, true));
       });
-      var x0 = c.phone ? 0 : Math.ceil(lw + 24);
+      var x0 = c.phone ? Math.ceil(c.t('line-baseline')) + 1 : Math.ceil(lw + 24);   // on a phone the zero line shows whole (DL-A2)
       var max = Math.max(0, Math.max.apply(null, rows.map(function (r) { return r[ev]; })));
       var xs = K.scale.linear([0, max], [x0, Math.max(x0 + 60, W - vw - rdot - 14)]), zx = xs(0);
       var pitch = c.phone ? Math.round(size * 1.25 + 2 * rdot + 14) : Math.max(Math.round(size * 1.9), 2 * rdot + 12);
@@ -42,7 +42,7 @@
         c.rect(zx, cy - sw / 2, x - zx, sw, { fill: on ? 'subject' : 'context', kind: 'bar', axis: 'x', zero: zx, data: { key: r[ek], field: ev, value: r[ev] } });
         c.circle(x, cy, rdot, { fill: on ? 'subject' : 'context', mark: false });
         c.text(x + rdot + 8, cy + size * 0.35, val(r), { role: 'label', weight: on ? 700 : 600, tnum: true });
-        if (c.phone) c.line(zx, cy - rdot, zx, cy + rdot, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
+        if (c.phone) c.line(zx, cy - rdot - 3, zx, cy + rdot + 3, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
         last = y;
       });
       if (!c.phone) c.line(zx, top - rdot - 4, zx, last + rdot + 4, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });

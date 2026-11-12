@@ -1,0 +1,55 @@
+{
+ "file": "census-bfs-business-applications-change-by-state.csv",
+ "kind": "derived",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Business Formation Statistics, monthly business applications (series BA_BA), not seasonally adjusted, summed to calendar years",
+ "table_id": "BFS monthly file, sa=U, naics_sector=TOTAL, series=BA_BA",
+ "url": [
+  "https://www.census.gov/econ/bfs/csv/bfs_monthly.csv"
+ ],
+ "observation_period": "Calendar years 2019 and 2025",
+ "geography": "50 states and DC, with a United States row (code US)",
+ "universe_or_base": "Applications for an Employer Identification Number filed with the IRS that indicate a new business, as the Census Bureau classifies them",
+ "unit": "business applications; change_pct computed and stored to four decimals, so a chart rounds once",
+ "date_retrieved": "2026-11-11",
+ "vintage": "BFS monthly file as posted on November 11, 2026",
+ "qualification": "An application is a filing for a tax ID, not a business that opens or hires; many applications never become employers. Totals are the studio's sums of the unadjusted monthly figures",
+ "columns": {
+  "code": {
+   "type": "code",
+   "description": "USPS state code, US for the nation"
+  },
+  "name": {
+   "type": "text",
+   "description": "state name"
+  },
+  "applications_2019": {
+   "type": "integer",
+   "description": "business applications, calendar 2019",
+   "unit": "applications"
+  },
+  "applications_2025": {
+   "type": "integer",
+   "description": "business applications, calendar 2025",
+   "unit": "applications"
+  },
+  "change": {
+   "type": "integer",
+   "description": "2025 less 2019, computed",
+   "unit": "applications"
+  },
+  "change_pct": {
+   "type": "number",
+   "description": "percent change from 2019, computed",
+   "unit": "percent"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, Business Formation Statistics, business applications, 2019 and 2025, 50 states and DC. Retrieved November 11, 2026. Applications for a tax ID that signal a new business; many never hire; annual totals summed by Oath & Action.",
+ "ledger_row": "P7-006",
+ "domain": "D06",
+ "states": [],
+ "derived_from": [
+  "census-bfs-business-applications-by-state.csv"
+ ],
+ "derivation": "For each state, DC and the nation, the 2019 and 2025 annual totals from the frozen file, their difference and its percent of 2019"
+}

@@ -25,6 +25,10 @@
    "type": "text",
    "description": "department or agency as named in the August 2026 file"
   },
+  "agency": {
+   "type": "text",
+   "description": "the same name in title case for a reader, converted by the studio from OPM’s capitals; one stray space in OPM’s name for the AbilityOne committee (\"SE VERELY\") and doubled spaces removed"
+  },
   "employees_2022_01": {
    "type": "integer",
    "description": "employees, January 31, 2022",

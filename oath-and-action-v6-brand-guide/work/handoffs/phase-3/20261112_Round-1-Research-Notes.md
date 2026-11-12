@@ -83,3 +83,24 @@ Modified:
 - `work/build/scripts/phase-3/research_v7_extract.py`: five round 3 tables and their docstring lines; the five round 0 tables it writes are unchanged
 
 Scratch only, outside the repository: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/f15cd04b-21be-5dde-a467-804e951756a2/scratchpad/phase-3/round-1/research/` (downloads, fetch logs, freeze scripts, staged GeoJSON).
+
+## Fix pass
+
+From the data lead's DL-R1 to DL-R3 and maker B's R-B1, R-B4, R-B5, R-B8 and R-B10. All the files are mine from round 0; none belongs to the engineer's scripts (only the board builder and the editor's rules builder read two of them). The round 0 freeze scripts lived in that session's scratch folder, which is gone, so `.../round-1/research/scripts/fix_pass_round1.py` edits the frozen files in place, idempotently, and records each change. The data check reads 89 tables with 0 faults after it.
+
+- **DL-R1, S31.** `fred-unemployment-and-job-openings.meta.json` gains `source_line_variants.unemployment_rate_only`: "Source: U.S. Bureau of Labor Statistics, Current Population Survey, unemployment rate, seasonally adjusted, January 2022 to October 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 11, 2026. No rate was published for October 2025."
+- **DL-R2 and R-B8, S33.** `treasury-mts-receipts-by-source.meta.json` gains `source_line_variants.fiscal_2016_to_2026`, the printed line with "fiscal 2016 to 2026".
+- **DL-R3, S30.** `govinfo-child-tax-credit-by-law.meta.json` describes `max_credit_per_child` as "maximum credit per qualifying child 6 or older (every qualifying child outside 2021)"; `max_credit_young_child` already holds 2021's $3,600.
+- **R-B1, S29.** Both County Business Patterns sidecars gain `breaks_in_series`, from the Bureau's methodology page read today: CBP has been tabulated on NAICS since 1998, on SIC before.
+- **R-B4, S24.** New derived file `census-bfs-business-applications-change-by-state` (52 rows: the nation, 50 states and DC; 2019, 2025, change and percent change to four decimals).
+- **R-B5, S25.** `opm-federal-employment-by-agency.csv` gains an `agency` column in title case beside OPM's own `department`.
+- **R-B10.** The research ledger's Part 7 records `illustrative-benefit-cliff` as P7-221, with a "Fix pass, round 1" note for the rest.
+
+- D3-xxx | The round 0 data files are fixed in place by a recorded script, since their freeze scripts were lost with that session's scratch folder | Each change stays traceable, and a rerun gives the same files
+- D3-xxx | S31's unemployment-only source line keeps "seasonally adjusted", as the file's printed line does, with the sidecar's unconfirmed note on it unchanged | UNRATE is FRED's seasonally adjusted series ID; FRED's series page was not reachable today to confirm it
+- D3-xxx | OPM's agency names get a title-case column beside the publisher's capitals, with the official capitals kept for "From People Who Are" and acronyms (U.S., CHIP), one stray space in "SE VERELY" and doubled spaces removed | A reader's table needs readable names; the publisher's own column stays as published
+- D3-xxx | Business applications' change by state is a derived file stored to four decimals, the round 0 rule (D3-95) | The maker asked for unrounded values; four decimals let a chart round once, as every computed value in my files does
+- D3-xxx | Maker B's invented benefit-cliff file takes a Part 7 row (P7-221) | The ledger then accounts for every file in the data folder
+
+Tested: the data check, 89 tables, 0 faults; the 52 change rows recomputed by script from the frozen counts; the 130 agency names read in full; the CBP methodology passage read on census.gov today (fetch log in `.../round-1/research/dl/cbp-docs/`).
+Not tested: FRED's UNRATE page (unreachable today); any chart redrawn with these lines (the makers' work).

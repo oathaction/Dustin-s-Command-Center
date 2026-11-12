@@ -53,7 +53,7 @@
     ]
   },
   "chart_notes": [
-    "Each row’s bar shows its amount on one scale from zero; FF PAC’s, the one the title names first, is in the text’s ink."
+    "Each row’s bar shows its amount on one scale from zero; FF PAC’s, the one the title names, is in the text’s ink and the others are light gray."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -119,6 +119,7 @@
     "Names: the drawing recases the FEC's capitals (labels.names) and shortens one long filed name (AFP Action, its doing-business-as names dropped); the table keeps every name as filed, as the sidecar asks.",
     "No party is drawn or named for any PAC (sidecar; DR-48, DR-93); party committees keep their own names.",
     "Note 2 describes the two kinds as the FEC defines independent-expenditure-only and hybrid (Carey) committees.",
-    "Figures checked by script (figures.py s36)."
+    "Figures checked by script (figures.py s36).",
+    "Data lead DL-A1 and DL-A4: the other bars take the light fill on Newsprint (palette rule R3), and the scale ends 8 px short of the artboard's edge."
   ]
 }

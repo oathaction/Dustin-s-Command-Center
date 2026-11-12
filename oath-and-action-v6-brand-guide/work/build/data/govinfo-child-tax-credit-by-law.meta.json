@@ -24,7 +24,7 @@
   },
   "max_credit_per_child": {
    "type": "integer",
-   "description": "maximum credit per qualifying child",
+   "description": "maximum credit per qualifying child 6 or older (every qualifying child outside 2021)",
    "unit": "dollars"
   },
   "max_credit_young_child": {

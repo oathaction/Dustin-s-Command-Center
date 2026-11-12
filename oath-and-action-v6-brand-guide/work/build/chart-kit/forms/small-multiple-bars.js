@@ -1,7 +1,8 @@
 /* Small-multiple bars (coverage plan 3.1, extended; S23). The same bar comparison repeated in one panel per group, on one
  * shared scale, so a reader compares the groups panel to panel. Each panel has its title, then one bar per category from a
  * zero line with the category's name at the left and the value at the bar's end. Panels sit in a grid, as many across as
- * fit at the panel's least width, one across on a phone. Categories the title names are set in ink, the rest in gray.
+ * fit at the panel's least width, one across on a phone. Categories the title names are set in ink, the rest in the light
+ * fill on Newsprint and the context ink on Charcoal (palette rule R3).
  * encode: panel (category), category (category), value (number).
  * labels: panel_title (words with {column} placeholders, filled from the panel's first row), categories ({category:
  * printed name}), named (a category or list set in ink; with none, every bar is in ink). formats: value.
@@ -20,6 +21,7 @@
       var f = c.spec.formats || {}, W = c.width, L = c.labels, names = L.categories || {};
       var named = L.named === undefined ? null : [].concat(L.named).map(String);
       var ink = function (r) { return !named || named.indexOf(String(r[ek])) >= 0; };
+      var other = c.ground === 'charcoal' ? 'context' : 'light-fill';   // palette rule R3 (DR-236)
       var name = function (k) { return names[k] !== undefined ? names[k] : k; };
       var val = function (r) { return K.fmt(r[ev], f.value || 'number:1'); };
       var panels = [], by = {};
@@ -46,7 +48,7 @@
         pr.forEach(function (r, j) {
           var yy = top + j * pitch, cy = yy + bh / 2, on = ink(r), xe = xs(r[ev]);
           c.text(px, cy + size * 0.35, name(String(r[ek])), { role: 'label', weight: on ? 700 : 400 });
-          c.rect(zx, yy, xe - zx, bh, { fill: on ? 'subject' : 'context', kind: 'bar', axis: 'x', zero: zx, data: { key: p + '|' + r[ek], field: ev, value: r[ev] } });
+          c.rect(zx, yy, xe - zx, bh, { fill: on ? 'subject' : other, kind: 'bar', axis: 'x', zero: zx, data: { key: p + '|' + r[ek], field: ev, value: r[ev] } });
           c.text(xe + 6, cy + size * 0.35, val(r), { role: 'label', weight: on ? 700 : 600, tnum: true });
         });
         var bottom = top + (pr.length - 1) * pitch + bh;

@@ -36,7 +36,7 @@
       var lmax = c.phone ? W : Math.floor(W * 0.3), lw = 0, vw = 0;
       cats.forEach(function (k) { c.wrap(cname(k), 'label', lmax, 600).forEach(function (l) { lw = Math.max(lw, c.measure(l, 'label', 600)); }); });
       rows.forEach(function (r) { vw = Math.max(vw, c.measure(val(r), 'label', 600, true)); });
-      var x0 = c.phone ? 0 : Math.ceil(lw + 20);
+      var x0 = c.phone ? Math.ceil(c.t('line-baseline')) + 1 : Math.ceil(lw + 20);   // on a phone the zero line shows whole (DL-A2)
       var vals = rows.map(function (r) { return r[ev]; });
       var dom = (c.spec.scale || {}).x || [Math.min(0, Math.min.apply(null, vals)), Math.max(0, Math.max.apply(null, vals))];
       var xs = K.scale.linear(dom, [x0, Math.max(x0 + 60, W - vw - 10)]), zx = xs(0);

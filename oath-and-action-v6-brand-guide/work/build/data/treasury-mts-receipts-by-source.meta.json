@@ -32,5 +32,8 @@
  "printed_source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2015 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation.",
  "ledger_row": "P7-015",
  "domain": "D08",
- "states": []
+ "states": [],
+ "source_line_variants": {
+  "fiscal_2016_to_2026": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2016 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation."
+ }
 }

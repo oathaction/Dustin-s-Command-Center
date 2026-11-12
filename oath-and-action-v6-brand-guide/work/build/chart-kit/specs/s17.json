@@ -73,7 +73,7 @@
     ]
   },
   "chart_notes": [
-    "The 118th Congress, which the title names, is drawn in the text’s ink; the other nine are gray."
+    "The 118th Congress, which the title names, is drawn in the text’s ink; the other nine are light gray."
   ],
   "phone": "differs",
   "phone_note": "On a phone the ten columns turn into bars, read from top to bottom in order of Congress, so every count keeps its label.",
@@ -107,7 +107,7 @@
     "Data plan row 2: the chart shows the last ten complete Congresses, the 109th to the 118th; the 119th is partial (complete is false) and is left out, with its count in note 3.",
     "Figures checked by script against congress-gov-laws-by-congress.csv (maker A's check, s17 in the notes' Tested list): 274 is the 118th's public_laws and the minimum of the ten rows; 482 the 109th's; 283 the 112th's; 442 the 115th's; the 116th to 118th are each under 400; 138 is the 119th's.",
     "Note 1 restates the sidecar's own qualification (research lead).",
-    "Named column in ink against gray (DR-234's one-in-ink pattern), with no red: a count of laws carries no direction a reader on either side would agree is good or bad, and red would read as alarm.",
+    "Named column in ink, the others in the light fill on Newsprint and the context ink on Charcoal (palette rule R3, DR-236; data lead DL-A1), with no red: a count of laws carries no direction a reader on either side would agree is good or bad, and red would read as alarm.",
     "Source line: the sidecar's line names 93rd to 118th Congress, the dataset's span. Request A1 asks the research lead for a variant naming the charted span; when it lands, source_line takes it."
   ]
 }

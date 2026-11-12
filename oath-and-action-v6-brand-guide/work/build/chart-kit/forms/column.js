@@ -1,6 +1,6 @@
 /* Column (coverage plan 3.1, core; S17). One column per category or period from a zero line, in the data's order or
  * spec.sort, each value printed at the column's end and each category named under it. Columns the title names are set in
- * ink, the rest in gray. On a phone the columns turn into bars read from top to bottom, so every value keeps its label.
+ * ink, the rest in the light fill on Newsprint and the context ink on Charcoal (palette rule R3). On a phone the columns turn into bars read from top to bottom, so every value keeps its label.
  * encode: x (the column's key: a category, year or number), y (number), sub (text, optional: a second line under each
  * name, such as the years a Congress sat; printed under every column where it fits, else under the first and last).
  * labels: categories ({x value: printed name}; the x value itself otherwise), named (an x value or a list of them, set in
@@ -21,7 +21,10 @@
       var is_named = function (r) { return !named || named.indexOf(String(r[ex])) >= 0; };
       var name = function (r) { return names[String(r[ex])] !== undefined ? names[String(r[ex])] : String(r[ex]); };
       var val = function (r) { return K.fmt(r[ey], f.value || 'integer'); };
-      var fill = function (r) { return is_named(r) ? 'subject' : 'context'; };
+      // palette rule R3 (DR-236): where the title names a column, the others take the light fill on Newsprint and the
+      // context ink on Charcoal, with every value printed
+      var other = c.ground === 'charcoal' ? 'context' : 'light-fill';
+      var fill = function (r) { return is_named(r) ? 'subject' : (named ? other : 'subject'); };
       var vals = rows.map(function (r) { return r[ey]; });
       var max = Math.max(0, Math.max.apply(null, vals)), min = Math.min(0, Math.min.apply(null, vals));
       var size = c.size('label'), tick = c.size('tick'), n = rows.length;

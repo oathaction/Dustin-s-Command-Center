@@ -23,7 +23,7 @@
       var bh = c.t(c.phone ? 'bar-phone-height' : 'bar-height'), pitch = c.t(c.phone ? 'bar-phone-pitch' : 'bar-pitch');
       var lmax = c.phone ? W : Math.floor(W * 0.36), lw = 0;
       rows.forEach(function (r) { c.wrap(name(r), 'label', lmax, 600).forEach(function (l) { lw = Math.max(lw, c.measure(l, 'label', 600)); }); });
-      var x0 = c.phone ? 0 : Math.ceil(lw + 24);
+      var x0 = c.phone ? Math.ceil(c.t('line-baseline')) + 1 : Math.ceil(lw + 24);   // on a phone the zero line shows whole (DL-A2)
       var bvals = rows.map(function (r) { return r[eb]; });
       var one = bvals.every(function (b) { return b === bvals[0]; });
       var hi = Math.max.apply(null, rows.map(function (r) { return Math.max(r[ev], r[eb]); }));
@@ -60,7 +60,7 @@
         } else c.text(lx, cy + size * 0.35, val(r), { role: 'label', weight: 700, tnum: true });
         if (!one) c.text(tx, by - over - 4, K.fmt(r[eb], f.benchmark || f.value || 'number:1'), { role: 'tick', anchor: 'middle' });
         // on a phone the zero line runs beside each bar only, never through the names above them
-        if (c.phone) c.line(zx, by - 3, zx, by + bh + 3, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
+        if (c.phone) c.line(zx, by - over, zx, by + bh + over, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
         bottom = by + bh;
       });
       if (!c.phone) c.line(zx, top - over - 2, zx, bottom + over + 2, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
