@@ -16,6 +16,9 @@
 (function (K) {
   'use strict';
   var TINT = ['seq-2', 'seq-3', 'seq-4', 'seq-5'], DARK = { 'seq-4': 1, 'seq-5': 1 };
+  // forced colors fill this step with solid GrayText, so its words take a plate of the system ground there (the kit's
+  // oac-fc-plate, invisible in normal colors; CD KR1); the other steps take a hatch or the subject's own ink
+  var FC_GRAY = { 'seq-3': 1 };
   K.register_chart({
     form: 'heat-table',
     name: 'Heat Table',
@@ -47,6 +50,7 @@
         order = [].concat.apply([], gl.map(function (g) { return order.filter(function (k) { return String(by[k].group) === g; }); }));
       }
       // the checked mark: a 6 px dot in the subject ink on a keyline of the ground, the same in the key and every cell
+      var plate = function (f, x, y, w, h) { if (FC_GRAY[f]) c.rect(x, y, w, h, { fill: 'none', cls: 'oac-fc-plate', mark: false }); };
       var dot = function (x, y) {
         c.circle(x, y, 3 + c.t('keyline'), { fill: 'surface', mark: false });
         c.circle(x, y, 3, { fill: 'subject', mark: false });
@@ -99,6 +103,7 @@
             var f = tint(r[ev]);
             c.rect(x, y, w, ch, { fill: f, data: { key: k + '|' + col.value, field: ev, value: r[ev] } });
             if (on) c.rect(x + 0.5, y + 0.5, w - 1, ch - 1, { stroke: 'label', width: c.t('line-hairline'), mark: false });
+            plate(f, x + pad - 2, y + 3, c.measure(t, 'tick', on ? 700 : 600) + 4, ch - 6);
             c.text(x + pad, y + ch / 2 + tick * 0.35, t, { role: 'tick', weight: on ? 700 : 600, fill: DARK[f] ? 'label-on-subject' : 'label' });
             if (ef && r[ef]) dot(x + w - pad - 3, y + ch / 2);
             x += w + 4;
@@ -152,7 +157,9 @@
           if (!r) return;
           var f = tint(r[ev]), x = nw + cw * i + 1, tp = y + 2;
           c.rect(x, tp, cw - 2, h - 4, { fill: f, data: { key: k + '|' + col.value, field: ev, value: r[ev] } });
-          var wl = c.wrap(word(r[ev]), 'tick', cw - 6, 600).length;
+          var wls = c.wrap(word(r[ev]), 'tick', cw - 6, 600), wl = wls.length, by0 = tp + (h - 4) / 2 + tick * 0.35 - (wl - 1) * lh3 / 2;
+          var ww = Math.max.apply(null, wls.map(function (l) { return c.measure(l, 'tick', 600); }));
+          plate(f, x + (cw - 2) / 2 - ww / 2 - 2, by0 - tick * 0.85, ww + 4, tick * 1.12 + (wl - 1) * lh3);
           c.text(x + (cw - 2) / 2, tp + (h - 4) / 2 + tick * 0.35 - (wl - 1) * lh3 / 2, word(r[ev]), { role: 'tick', weight: 600, anchor: 'middle', max: cw - 6, leading: lh3, fill: DARK[f] ? 'label-on-subject' : 'label' });
           if (ef && r[ef]) dot(x + cw - 2 - 6, tp + 4.5);   // in the corner, above the word
           // where each name crosses the grid, the named column's frame becomes an ink edge on each of its cells

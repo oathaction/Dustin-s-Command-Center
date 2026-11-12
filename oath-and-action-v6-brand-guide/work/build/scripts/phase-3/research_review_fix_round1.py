@@ -699,8 +699,28 @@ def item_ax_s1(dl):
         save(name, meta, nl)
 
 
+# ---------------------------------------------------------------------------------------------------------------
+# s11: ST S11, S20's part. S20 draws the rates file and its margins file and prints one line that names both; it is
+# true to both (rates from Table 17 of Annual Statistics 2025, read November 11; margins from Table B-5 of 2015 and 2025,
+# read November 12), so it becomes a variant of each sidecar, word for word, for any check that compares it.
+# (S41 and S42's part is a request to the engineer, whose script writes v7-stock-trading-ban's sidecar.)
+# ---------------------------------------------------------------------------------------------------------------
+S20_LINE = ('Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Annual Statistics 2015 and 2025, Tables 17 and B-5, '
+            'homeownership rate by age of householder with margins of error, 2015 and 2025, United States. Retrieved November 11 and 12, 2026. '
+            'Survey estimates; the 2025 average leaves out October, when no data were collected; margins of the changes computed by Oath & Action.')
+
+
+def item_s11(dl):
+    for name in ('census-hvs-homeownership-by-age', 'census-hvs-homeownership-by-age-moe'):
+        meta, nl = load(name)
+        v = meta.get('source_line_variants') or {}
+        v['with_margins'] = S20_LINE
+        meta['source_line_variants'] = v
+        save(name, meta, nl)
+
+
 ITEMS = {'s24': item_s24, 's34': item_s34, 's31': item_s31, 's27': item_s27, 'bc_m3': item_bc_m3, 'bc_s20': item_bc_s20,
-         'ed_r1': item_ed_r1, 'ed_r2': item_ed_r2, 'ax_s1': item_ax_s1}
+         'ed_r1': item_ed_r1, 'ed_r2': item_ed_r2, 'ax_s1': item_ax_s1, 's11': item_s11}
 
 
 def main(argv):

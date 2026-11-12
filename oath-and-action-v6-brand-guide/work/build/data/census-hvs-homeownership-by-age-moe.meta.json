@@ -64,5 +64,8 @@
  "raw_files_sha256_prefix": {
   "ann15t_b5.xlsx": "2ee454bf51bd2820",
   "ann25t_b5.xlsx": "a957b6c47304ae7c"
+ },
+ "source_line_variants": {
+  "with_margins": "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Annual Statistics 2015 and 2025, Tables 17 and B-5, homeownership rate by age of householder with margins of error, 2015 and 2025, United States. Retrieved November 11 and 12, 2026. Survey estimates; the 2025 average leaves out October, when no data were collected; margins of the changes computed by Oath & Action."
  }
 }

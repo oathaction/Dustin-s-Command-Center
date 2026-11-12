@@ -2,8 +2,8 @@
  * on the left axis to its later value on the right, the earlier value printed at the left, the later value and the item's
  * name at the right. Items the title names are set in ink, the rest in gray; labels that would touch move apart and keep a
  * short leader to their line's end. An item the title names as its one point (labels.point) takes the working red, its
- * line and both end dots on the 1 px keyline of Rule 05.5 on Newsprint (Rule 14.6); the line is drawn as a thin band so
- * it takes the red fill role, and it counts as the view's one red mark. The other items then take the light fill on
+ * line and both end dots drawn as one shape on the 1 px keyline of Rule 05.5 on Newsprint (Rule 14.6), so it takes the red
+ * fill role and counts as the view's one red mark. The other items then take the light fill on
  * Newsprint and the context ink on Charcoal (palette rule R3).
  * encode: category (category), value (number), series (category: which of the two times a row is).
  * labels: from, to (the two series values), from_label, to_label (the axis heads; the series values otherwise),
@@ -77,16 +77,18 @@
       order.forEach(function (k) {
         var y0 = ys(pair[k].from), y1 = ys(pair[k].to), on = ink(k);
         if (k === pt) {
-          // the red line: a band of the subject line's width in the point's fill, over its keyline, with both dots
-          var lw = c.t('line-subject'), dx = xr - xl, dy = y1 - y0, len = Math.sqrt(dx * dx + dy * dy) || 1;
-          var nx = -dy / len * lw / 2, ny = dx / len * lw / 2;
-          if (kl) c.line(xl, y0, xr, y1, { stroke: 'point-keyline', width: lw + 2 * kl, mark: false });
-          c.polygon([[xl + nx, y0 + ny], [xr + nx, y1 + ny], [xr - nx, y1 - ny], [xl - nx, y0 - ny]], { fill: 'point', data: { key: k, field: ev } });
-          [[xl, y0, L.from, pair[k].from], [xr, y1, L.to, pair[k].to]].forEach(function (e) {
-            var d = { key: k + '|' + e[2], field: ev, value: e[3] };
-            c.circle(e[0], e[1], c.t('dot-vertex-radius') + 1, Object.assign({ fill: 'point', mark: false, data: d }, kl ? { stroke: 'point-keyline', width: kl } : {}));
-            c.datum(e[0], e[1], { data: d });
-          });
+          // the red line and its two end dots as one shape, so the view holds one working red (Rule 05.3): two dots joined
+          // by a band of the subject line's width, outlined by the 1 px keyline of Rule 05.5 on Newsprint
+          var lw = c.t('line-subject'), rd = c.t('dot-vertex-radius') + 1, hh = lw / 2 + kl / 2;
+          var dx = xr - xl, dy = y1 - y0, len = Math.sqrt(dx * dx + dy * dy) || 1, ux = dx / len, uy = dy / len, nx = -uy, ny = ux;
+          var a = Math.sqrt(Math.max(0, rd * rd - hh * hh)), P = function (x, y) { return K.r1 ? K.r1(x) + ' ' + K.r1(y) : x.toFixed(1) + ' ' + y.toFixed(1); };
+          var d = 'M' + P(xl + ux * a + nx * hh, y0 + uy * a + ny * hh) + 'L' + P(xr - ux * a + nx * hh, y1 - uy * a + ny * hh) +
+            'A' + rd + ' ' + rd + ' 0 1 0 ' + P(xr - ux * a - nx * hh, y1 - uy * a - ny * hh) + 'L' + P(xl + ux * a - nx * hh, y0 + uy * a - ny * hh) +
+            'A' + rd + ' ' + rd + ' 0 1 0 ' + P(xl + ux * a + nx * hh, y0 + uy * a + ny * hh) + 'Z';
+          var bx = Math.min(xl, xr) - rd, byy = Math.min(y0, y1) - rd;
+          c.path(d, Object.assign({ fill: 'point', data: { key: k, field: ev } }, kl ? { stroke: 'point-keyline', width: kl } : {}), [bx, byy, Math.abs(dx) + 2 * rd, Math.abs(dy) + 2 * rd]);
+          c.datum(xl, y0, { data: { key: k + '|' + L.from, field: ev, value: pair[k].from } });
+          c.datum(xr, y1, { data: { key: k + '|' + L.to, field: ev, value: pair[k].to } });
           return;
         }
         // beside a red point the other items take the light fill on Newsprint and the context ink on Charcoal (palette rule R3)

@@ -541,6 +541,7 @@ CSS.update({
            ".sv .sk{stroke:var(--oa-color-palette-stone)}.sv .pkf{fill:var(--oa-color-palette-prussian)}"
            ".sv .gkf{fill:var(--oa-color-palette-verdigris)}.sv .skf{fill:var(--oa-color-palette-stone)}"),
     "kb": ".kb{margin-top:16px}",
+    "hg": ".hg li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:6px;align-items:baseline}.hg .mk{margin:0}",
     "sw": (".sw{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:6px}"
            ".sw.gkf{background:var(--oa-color-palette-verdigris)}.sw.pkf{background:var(--oa-color-palette-prussian)}"
            ".sw.skf{background:var(--oa-color-palette-stone)}"),
@@ -663,7 +664,7 @@ def opener(book):
     steps = "".join(f'<p class="nt">{gl(x)}</p>' for x in (*lp["links"], "LE02"))
     body = (label_for(lp["links"], "the grade of the loop’s least certain step")
             + beside(hed("Loop", lid, lp["title"]) + fig(svg),
-                     f'{steps}<p class="k">What each lettered part says</p><ol class="kw">{lst}</ol>'
+                     f'{steps}<p class="k">What each lettered part says</p><ol class="kw hg">{lst}</ol>'
                      + src("loop R13 and connections L11, L12 and LE02")))
     book.add("s-15-opener", body, rule=None, readable=True, wide=True,
              alt=(f"Loop R13 from our systems atlas, “{lp['title']}”, drawn as two pills, Congressional capacity and Executive "
@@ -1549,8 +1550,8 @@ def rule_15_10(book):
              f'<p class="q">“{e(quote)}”</p><p class="nt">{tail}</p>'
              f'<p class="nt">The atlas keeps {words_n(len(rej))} connections it reviewed and left off its map, each with its reason.</p>')
     body = (label_for(["LT01"], "the grade of the connection drawn")
-            + beside(hed("Connection", "LT01", link("LT01")["name"]) + fig(svg_wrap(b, h)),
-                     f'<p class="nt">{gl("LT01")}</p>{panel}' + src("connection LT01, rejected connection LTR1 and connection L47")))
+            + beside(hed("Connection", "LT01", link("LT01")["name"]) + fig(svg_wrap(b, h)) + f'<p class="nt">{gl("LT01")}</p>',
+                     panel + src("connection LT01, rejected connection LTR1 and connection L47")))
     book.add("s-15-10-correct", body, rule="15.10", readable=True, wide=True,
              alt=(f"Connection LT01 from our systems atlas, “{link('LT01')['name']}”, drawn from How platforms rank feeds and seek "
                   "attention, in the technology layer, down to Hostile-content exposure, in the core layer, with the words "
@@ -1637,10 +1638,9 @@ def rule_15_13(book):
                 "variable moves the same way as the one before it (Rule 15.3).",
                 f"<b>Ticks</b> near a line’s start count its delay, {e(dg[0].lower() + dg[1:])}: {ticks} (Rule 13.5)."])
     body = (diagram_label("plausible", "some evidence, the grade of the loop’s least certain step, Connection L02")
-            + beside(hed("Loop", "R1", lp["title"]) + fig(svg),
+            + beside(hed("Loop", "R1", lp["title"]) + fig(svg) + f'<p class="k">Reading a step</p>{gloss}',
                      ra_p(read_aloud(codes, lp["links"])) + f'<p class="k">Each step, and the weakest</p>{steps}'
-                     f'<p class="nt">{said}</p><p class="k">Reading a step</p>{gloss}'
-                     + src("loop R1 and connections L01, L02 and L03")))
+                     f'<p class="nt">{said}</p>' + src("loop R1 and connections L01, L02 and L03")))
     book.add("s-15-13-correct", body, rule="15.13", readable=True, wide=True,
              alt=(f"Loop R1 from our systems atlas, “{lp['title']}”, under a label reading Plausible, the grade of its least "
                   "certain step. Three pills: Wealth concentration at the top, Money in politics below right, Policy tilt to "

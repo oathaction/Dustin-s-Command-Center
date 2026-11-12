@@ -70,6 +70,8 @@
 .oac-f-baseline { fill: var(--oa-chart-color-baseline); } .oac-s-baseline { stroke: var(--oa-chart-color-baseline); fill: none; }
 .oac-f-gridline { fill: var(--oa-chart-color-gridline); } .oac-s-gridline { stroke: var(--oa-chart-color-gridline); fill: none; }
 .oac-f-leader { fill: var(--oa-chart-color-leader); } .oac-s-leader { stroke: var(--oa-chart-color-leader); fill: none; }
+/* round 1 fix pass (call 2, D3-477): the red point as a line, for a named line or stem; Highlight in forced colors */
+.oac-s-point { stroke: var(--oa-chart-color-point); fill: none; }
 .oac-f-point { fill: var(--oa-chart-color-point); } .oac-s-point-keyline { stroke: var(--oa-chart-color-point-keyline, var(--oa-chart-color-subject)); fill: none; }
 /* A11 (round 1): a mark that is the red point and carries its keyline keeps its red fill (Rule 05.3): two classes outrank
    the keyline's fill: none, which stays for a keyline drawn as its own outline */
@@ -117,9 +119,10 @@
   .oac-svg [class*="oac-f-"]:not(.oac-t) { fill: CanvasText; }
   .oac-svg :is(.oac-f-context, .oac-f-secondary, .oac-f-gridline, .oac-f-seq-3, .oac-f-div-5, .oac-f-mag-3, .oac-f-cat-2):not(.oac-t) { fill: GrayText; }
   .oac-svg .oac-f-point:not(.oac-t) { fill: Highlight; }
+  .oac-svg .oac-s-point:not(.oac-t) { stroke: Highlight; }
   /* access S10: beside a red point, the other marks (context on Charcoal) take the ground with an outline, as the light fill
      does on Newsprint, so the point stands apart by more than hue */
-  .oac-svg:has(.oac-f-point) .oac-f-context:not(.oac-t) { fill: Canvas; stroke: CanvasText; stroke-width: 1px; }
+  .oac-svg:has(.oac-f-point, .oac-s-point) .oac-f-context:not(.oac-t) { fill: Canvas; stroke: CanvasText; stroke-width: 1px; }
   .oac-svg :is(.oac-f-band, .oac-f-track, .oac-f-land, .oac-f-light-fill, .oac-f-seq-1, .oac-f-div-3, .oac-f-mag-1):not(.oac-t) { fill: Canvas; stroke: CanvasText; stroke-width: 1px; }
   .oac-svg .oac-f-surface:not(.oac-t) { fill: Canvas; }
   .oac-svg .oac-f-none:not(.oac-t) { fill: none; }

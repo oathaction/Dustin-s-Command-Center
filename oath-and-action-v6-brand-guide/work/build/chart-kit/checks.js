@@ -318,7 +318,7 @@ function check_drawing(spec, d, tok, where) {
   if (d.fc) {
     const fills = d.marks.filter(m => m.fill && m.w > 0 && m.h > 0);
     // beside a red point the context marks take the ground with an outline (kit.css, access S10)
-    const pointed = d.marks.some(m => m.fill === 'point');
+    const pointed = d.marks.some(m => m.fill === 'point' || m.stroke === 'point');
     for (const t of d.texts || []) {
       const cx = t.x + t.w / 2, cy = t.y + t.h / 2;
       let ground = 'Canvas';

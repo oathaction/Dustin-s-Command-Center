@@ -4377,3 +4377,9 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-516 | The streamgraph sketch draws one invented set of three parts twice: a streamgraph whose steady middle part bends with its neighbors, and small multiples on flat baselines where it lies flat (3,206 bytes, `data-label="Small multiples"`, an entry `sketch_alt`) | BC M4, CD SK-M1, D3-486 |
 | D3-517 | Entry 14.37 sends "the latest months are preliminary" to Rule 14.29, marked as Rule 14.11 sets | Statistics S8 |
 | D3-518 | Entries 14.26, 14.27, 14.31, 14.40 and 14.41 describe the redrawn specimens (no key, flush-left names, end steps, the tie and the national line, the thin base line and the phone list, the staggered circles) | An entry's words and its specimen must agree; the editor reads them in the second pass |
+
+### Main session, round 1 fix pass (continued)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-519 | The studio's V7 extract files keep the atlas text as stored; the kit gains a spec setting that curls quotes and applies listed exact replacements in printed words drawn from data, the CSV export keeping the data as stored; the typos go to the V7.1 list | D3-349 copies atlas values and never edits them; the word maps S39 used carried each long string three times and put it over the share per plate (maker A's A13) |
