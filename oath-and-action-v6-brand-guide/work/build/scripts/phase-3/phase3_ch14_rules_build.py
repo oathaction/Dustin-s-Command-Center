@@ -225,9 +225,14 @@ def ill(words="Illustrative data"):
     return f'<span class="illus">{e(words)}</span>'
 
 
+def sent(title):
+    """A chart title is one full sentence (Rule 14.2), so it ends with a period, as every kit specimen's does."""
+    return title if title.endswith(".") else title + "."
+
+
 def head(label, grade, title, guide=None, measure=None, illus=None):
     out = [f'<div class="evr"><span class="ev">{e(label)}</span>' + (f'<span class="gr">{e(grade)}</span>' if grade else "")
-           + (ill(illus) if illus else "") + "</div>", f'<p class="ct">{e(title)}</p>']
+           + (ill(illus) if illus else "") + "</div>", f'<p class="ct">{e(sent(title))}</p>']
     if guide:
         out.append(f'<p class="gd">{e(guide)}</p>')
     if measure:
@@ -237,7 +242,7 @@ def head(label, grade, title, guide=None, measure=None, illus=None):
 
 def tl(title):
     """A failure plate's title alone: the caption names the fault, so the plate carries only what shows it."""
-    return f'<p class="ct">{e(title)}</p>'
+    return f'<p class="ct">{e(sent(title))}</p>'
 
 
 def foot(notes=(), source=None):
@@ -330,11 +335,14 @@ class Book:
         need(sid in self.plates, f"no plate {sid}")
         return dict({"specimen": sid, "caption": caption}, **self.plates[sid])
 
-    def spec(self, cid, **kw):
-        """A kit spec under contract C2, its id the chart's (C7)."""
+    def spec(self, cid, topic=False, **kw):
+        """A kit spec under contract C2, its id the chart's (C7). Its title ends with a period unless the plate's fault is
+        a topic for a title (Rule 14.2's failure)."""
         need(cid not in self.specs, f"duplicate chart {cid}")
         s = {"kit": 1, "id": cid}
         s.update(kw)
+        if s.get("title") and not topic:
+            s["title"] = sent(s["title"])
         s.setdefault("illustrative", False)
         s.setdefault("phone", "same")
         self.specs[cid] = s

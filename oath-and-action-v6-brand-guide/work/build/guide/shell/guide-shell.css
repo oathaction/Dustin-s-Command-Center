@@ -468,6 +468,12 @@ a.toc-part-k:hover { text-decoration: underline }
    and its keyline. A stage with a fixed width_px stays at its exact true size. */
 .plate-stage:not([data-width]):not([data-pending]) { padding: var(--oa-space-200) }
 @media (min-width: 48em) { .plate-stage:not([data-width]):not([data-pending]) { padding: var(--oa-space-300) } }
+/* D3-480 (Phase 3, round 1 fix pass): a plate with two true sizes (manifest wide_px). Its frame is the query container
+   oa-frame, so the stage switches by the room its frame gives it, never by the viewport: --w (328 px) in a narrower frame,
+   --w2 (680 px) once the frame's content box holds it. The fragment composes for each width with @container oa-frame;
+   nothing scales. data-width stays the narrow size, so the phone padding and the checks read it as before. */
+.plate-scroll[data-wide] { container: oa-frame / inline-size }
+@container oa-frame (min-width: 680px) { .plate-stage[data-wide] { width: var(--w2, var(--w)) } }
 .plate-pending { margin: 0; font: var(--oa-type-body-small) }
 .plate-fit { width: fit-content; margin: 0 auto }
 .plate-fit > .plate-stage { margin: 0 }

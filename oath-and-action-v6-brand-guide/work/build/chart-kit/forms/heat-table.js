@@ -47,7 +47,10 @@
         order = [].concat.apply([], gl.map(function (g) { return order.filter(function (k) { return String(by[k].group) === g; }); }));
       }
       // the checked mark: a 6 px dot in the subject ink on a keyline of the ground, the same in the key and every cell
-      var dot = function (x, y) { c.circle(x, y, 3, { fill: 'subject', stroke: 'surface', width: c.t('keyline'), mark: false }); };
+      var dot = function (x, y) {
+        c.circle(x, y, 3 + c.t('keyline'), { fill: 'surface', mark: false });
+        c.circle(x, y, 3, { fill: 'subject', mark: false });
+      };
       // the key: each step's tint and word in order, then the dot
       var y = size + 2;
       var ks = steps.map(function (s) { return { label: s.label, fill: tint(s.value), ordered: true, direct: true }; });
@@ -72,7 +75,7 @@
         return cols.map(function (col) { return col.lines ? col.lines.map(String) : c.wrap(col.label, 'tick', cw - 6, hw(col)); });
       };
       var fits = function (cw) {
-        return heads(cw).every(function (ls, i) { return ls.every(function (ln) { return c.measure(ln, 'tick', hw(cols[i])) <= cw - 6; }); });
+        return heads(cw).every(function (ls, i) { return ls.every(function (ln) { return c.measure(ln, 'tick', hw(cols[i])) <= cw - 4; }); });
       };
       var left = !c.phone && (W - Math.floor(W * 0.28)) / n >= wmax + 10 && fits((W - Math.floor(W * 0.28)) / n);
       var above = !c.phone && !left && W / n >= wword + 8 && fits(W / n);
@@ -112,8 +115,10 @@
       cols.forEach(function (col, i) {
         var on = String(col.value) === named, cx = nw + cw * i + cw / 2;
         if (on) ni = i;
-        // bottom-aligned, so every head's last line sits on one baseline over the grid
-        c.text(cx, top + tick + (hn - hl[i].length) * lh3, hl[i].join(' '), { role: 'tick', weight: hw(col), anchor: 'middle', fill: on ? 'label' : 'secondary', max: cw - 6, leading: lh3, guard_id: 'head-' + i });
+        // line by line, as set, and bottom-aligned, so every head's last line sits on one baseline over the grid
+        hl[i].forEach(function (ln, j) {
+          c.text(cx, top + tick + (hn - hl[i].length + j) * lh3, ln, { role: 'tick', weight: hw(col), anchor: 'middle', fill: on ? 'label' : 'secondary' });
+        });
       });
       y = hb + 4;
       c.line(0, y, W, y, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });

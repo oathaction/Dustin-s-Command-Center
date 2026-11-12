@@ -9,7 +9,11 @@
  * {first_x}, {last_x}, {from_x}, {n}, {sum} and {max}), phone_value and phone_partial (each row's count, with {value}).
  * formats: size (in the words), x.
  * annotations: [{at: {x}, text, value, place, dx, dy, max, anchor, phone}]: a note with a leader to the top of that
- * circle; "value": true prints the count before the text. Maker B, round 1. */
+ * circle; "value": true prints the count before the text.
+ * With labels.phone_from on a wide drawing (round 1 fix pass, CD B-S1): the earlier periods are summed in the same words
+ * as on a phone, and from phone_from on the circles sit alternately above and below the line, each touching it, with the
+ * largest radius set so no two circles on one side meet; on one line, the circles of busy decades merged into one mass.
+ * Maker B, round 1. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -26,7 +30,24 @@
       var ek = c.field('key'), ex = c.field('x'), es = c.field('size'), ec = c.field('complete', false);
       var rows = c.rows.slice().sort(function (a, b) { return K.time(a[ex]) - K.time(b[ex]); });
       var vmax = Math.max.apply(null, rows.map(function (r) { return r[es] || 0; }));
-      var rmax = c.t(c.phone ? 'bubble-radius-max-phone' : 'bubble-radius-max-mid'), rs = K.scale.sqrt(vmax, rmax);
+      var rmax = c.t(c.phone ? 'bubble-radius-max-phone' : 'bubble-radius-max-mid');
+      var from = L.phone_from !== undefined ? K.time(L.phone_from) : null;
+      var early = from === null ? [] : rows.filter(function (r) { return K.time(r[ex]) < from; });
+      var late = from === null ? rows : rows.filter(function (r) { return K.time(r[ex]) >= from; });
+      var stagger = !c.phone && from !== null && late.length > 2, sx = null, rgap = 3;
+      if (stagger) {
+        // the largest radius at which no two circles on one side of the line meet, and the line's ends inside the drawing
+        var lt = late.map(function (r) { return K.time(r[ex]); }), q = late.map(function (r) { return Math.sqrt((r[es] || 0) / vmax); });
+        var fit = function (R) {
+          var x0s = Math.max(4, q[0] * R + 1), x1s = W - Math.max(8, q[q.length - 1] * R + 8);
+          var xf = K.scale.linear([lt[0], lt[lt.length - 1]], [x0s, x1s]), best = R;
+          for (var i = 0; i + 2 < lt.length; i++) if (q[i] + q[i + 2] > 0) best = Math.min(best, (xf(lt[i + 2]) - xf(lt[i]) - rgap) / (q[i] + q[i + 2]));
+          return { R: best, xs: xf };
+        };
+        var ft = fit(rmax); ft = fit(Math.min(rmax, ft.R)); ft = fit(Math.min(rmax, ft.R));
+        rmax = Math.floor(Math.min(rmax, ft.R) * 10) / 10; sx = fit(rmax).xs;
+      }
+      var rs = K.scale.sqrt(vmax, rmax);
       var size = c.size('label'), y = 0;
       // the size key: round sizes side by side on one baseline, each with its figure
       var kv = (L.key_values || []).filter(function (v) { return v <= vmax * 1.2; });
@@ -53,9 +74,7 @@
       }
       // on a phone the circles of busy decades would merge into one mass, so the form changes (DR-64, Rule 14.12): the periods
       // before labels.phone_from are summed in a line of words, and each later period takes its own row, its circle and count
-      if (c.phone && L.phone_from !== undefined) {
-        var from = K.time(L.phone_from), early = rows.filter(function (r) { return K.time(r[ex]) < from; }), late = rows.filter(function (r) { return K.time(r[ex]) >= from; });
-        if (early.length && L.phone_before) {
+      if (from !== null && early.length && L.phone_before && (c.phone || stagger)) {
           var sum = 0, emax = 0;
           early.forEach(function (r) { sum += r[es] || 0; emax = Math.max(emax, r[es] || 0); });
           var ew = String(L.phone_before).replace('{first_x}', K.fmt(early[0][ex], f.x || 'year')).replace('{last_x}', K.fmt(early[early.length - 1][ex], f.x || 'year'))
@@ -63,7 +82,8 @@
           var eb = c.text(0, y + size, ew, { role: 'label', max: W });
           early.forEach(function (r) { c.datum(0, eb.y, { data: { key: r[ek], field: es, value: r[es] || 0 } }); });
           y = eb.bottom + 14;
-        }
+      }
+      if (c.phone && from !== null) {
         var lmax = Math.max.apply(null, late.map(function (r) { return r[es] || 0; })), yw = 0;
         late.forEach(function (r) { yw = Math.max(yw, c.measure(K.fmt(r[ex], f.x || 'year'), 'tick', 400, true)); });
         var pcx = Math.ceil(yw + 12 + rmax);
@@ -80,6 +100,39 @@
           y += h;
         });
         c.height(y + 4);
+        return;
+      }
+      if (stagger) {
+        // notes go above the upper circles, so the line sits low enough to leave them room
+        var scy = y + 2 * rmax + (c.annotations.length ? 2 * size + 24 : 8), sbot = scy + 2 * rmax;
+        var stl = K.time(late[0][ex]), sth = K.time(late[late.length - 1][ex]), dstep = 10;
+        while (sx(stl + dstep) - sx(stl) < c.measure('0000', 'tick') + 16) dstep *= 2;
+        var decades = [];
+        for (var dy0 = Math.ceil(stl / dstep) * dstep; dy0 <= sth; dy0 += dstep) decades.push(dy0);
+        // a hairline from the top of the upper circles to the axis at each round year, under the circles
+        decades.forEach(function (yr) { c.line(sx(yr), scy - 2 * rmax, sx(yr), sbot + 4, { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); });
+        c.line(0, scy, W, scy, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });
+        var tops = {};
+        late.forEach(function (r, i) {
+          var v = r[es] || 0, x = sx(K.time(r[ex])), rad = rs(v), up = i % 2 === 0;
+          if (!v) { c.line(x, scy - 3, x, scy + 3, { stroke: 'context', width: c.t('line-hairline'), data: { key: r[ek], field: es, value: 0 } }); tops[String(r[ex])] = scy; return; }
+          var ccy = up ? scy - rad : scy + rad, under = ec && r[ec] === false;
+          c.circle(x, ccy, rad, { fill: under ? 'surface' : 'band', data: { key: r[ek], field: es, value: v }, area_of: { value: v, max_value: vmax, max_radius: rmax } });
+          if (under) ring(x, ccy, rad, '3 2'); else c.circle(x, ccy, rad, { stroke: 'subject', width: c.t('bubble-outline'), mark: false });
+          tops[String(r[ex])] = ccy - rad;
+        });
+        var say = sbot + c.size('tick') + 10;
+        decades.forEach(function (yr) {
+          var hw = c.measure(String(yr), 'tick') / 2;
+          c.text(Math.max(hw, Math.min(W - hw, sx(yr))), say, String(yr), { role: 'tick', anchor: 'middle' });
+        });
+        c.annotations.forEach(function (a) {
+          if (tops[String(a.at.x)] === undefined) { c.warn('annotation at ' + JSON.stringify(a.at) + ' matches no row drawn on the line'); return; }
+          var r = late.filter(function (q2) { return String(q2[ex]) === String(a.at.x); })[0];
+          var words = a.value ? K.fmt(r[es], f.size || 'integer') + (a.text || '') : a.text;
+          P.note(c, sx(K.time(r[ex])), tops[String(a.at.x)], words, { place: a.place || 'above', dx: a.dx, dy: a.dy, max: a.max, anchor: a.anchor, weight: a.value ? 700 : 400 });
+        });
+        c.height(say + 4);
         return;
       }
       // the line the circles sit on, and the time axis under it

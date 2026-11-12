@@ -500,6 +500,10 @@ async function self_test() {
     ['a leader line through a label', d => { d.guard = K.guard({ texts: [{ x: 10, y: 10, w: 60, h: 16, size: 15, words: 'label' }], leaders: [{ x1: 0, y1: 18, x2: 100, y2: 18 }] }, d.width, d.height); }, 'leader line crosses'],
     ['a label in the ink of its mark in forced colors', d => { d.marks.push({ kind: 'rect', x: 0, y: 0, w: 200, h: 40, fill: 'subject', data: {} }); d.texts = (d.texts || []).concat([{ x: 10, y: 10, w: 60, h: 16, size: 15, words: 'Inked', fill: 'label' }]); }, 'forced colors'],
     ['ordered steps too close to their neighbors', d => { d.keys = [[{ fill: 'seq-2', ordered: true, outline: true }, { fill: 'seq-2', ordered: true, outline: true }]]; }, 'neighbors'],
+    // round 1 fix pass: a shape the reader reads no value from, drawn far under the drawing (CD RM1, K-S2)
+    ['a zero line drawn under its drawing', d => { d.ink.push({ kind: 'line', x: 30, y: d.height + 189, w: 600, h: 0, role: 'baseline' }); }, 'drawn outside its drawing'],
+    // access S2: a row's two dots on each other while its values differ by a third
+    ['two dots of one row drawn on each other', d => { d.marks.push({ kind: 'circle', x: 100, y: 50, w: 10, h: 10, r: 5, row: 'r1', data: { value: 60 } }, { kind: 'circle', x: 102, y: 50, w: 10, h: 10, r: 5, row: 'r1', data: { value: 90 } }); }, 'closer than a dot'],
   ];
   for (const [name, fn, want] of plant) {
     const d = JSON.parse(JSON.stringify(d0));
@@ -508,6 +512,24 @@ async function self_test() {
     const hit = f.some(x => x.indexOf(want) >= 0);
     console.log(`${hit ? 'caught' : 'MISSED'} ${name}${hit ? '' : ': ' + JSON.stringify(f.slice(0, 3))}`);
     if (!hit) bad++;
+  }
+  // round 1 fix pass (CD RM1): a line chart on a scale that starts above zero draws no zero line, and a dumbbell's small
+  // change (two dots touching on a value a hundredth apart) is no fault
+  {
+    const ln = { kit: 1, id: 'T01', form: 'line-event-notes', family: 'change-over-time', tier: 'core', reader_question: 'q', evidence: 'illustration', evidence_label: 'Illustration',
+      title: 'A line.', measure_line: 'm', source_line: 'Source: invented for the self-test.', illustrative: 'Illustrative data', alt: 'a', phone: 'same', domain: 'all', states: [], encode: { x: 'year', y: 'v' }, scale: { y: [30, 80] },
+      table: { caption: 'c', columns: [{ field: 'year', label: 'Year', format: 'year', row_header: true }, { field: 'v', label: 'Value', format: 'number:1' }] },
+      data: { columns: { year: { type: 'year', description: 'y' }, v: { type: 'number', description: 'v' } }, rows: [{ year: 2001, v: 40 }, { year: 2002, v: 55 }, { year: 2003, v: 70 }] } };
+    const rl = run_spec(ln, { grounds: ['newsprint'], widths: [1440, 390] });
+    const okl = rl.drawings.length === 2 && !rl.faults.length;   // the shape check would fail a zero line drawn under the plot
+    console.log(`${okl ? 'pass' : 'FAIL'} a line chart on a scale from 30 draws no zero line${okl ? '' : ': ' + JSON.stringify(rl.faults.slice(0, 2))}`);
+    if (!okl) bad++;
+    const d1 = JSON.parse(JSON.stringify(d0));
+    d1.marks.push({ kind: 'circle', x: 100, y: 50, w: 10, h: 10, r: 5, row: 'r2', data: { value: 74.5 } }, { kind: 'circle', x: 101, y: 50, w: 10, h: 10, r: 5, row: 'r2', data: { value: 74.7 } });
+    const f1 = C.check_drawing(s, d1, TOK.newsprint, 'self-test');
+    const okd = !f1.some(x => x.indexOf('closer than a dot') >= 0);
+    console.log(`${okd ? 'pass' : 'FAIL'} a dumbbell row whose small change draws its dots touching is left alone`);
+    if (!okd) bad++;
   }
   // the compressed island (DR-238): the kit's inflater gives back what zlib deflates, in every block type and level, and
   // refuses data that is not deflate

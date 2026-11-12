@@ -780,6 +780,7 @@ PLATE_LABEL = {"correct": ("Correct application", "✓"), "failure": ("Failure c
 # column of a 360 px screen. Gate 2's fix pass (call 3, CD-S1): every chapter may open with one, 01 to 08 included, and
 # an opener's fragment, as the page places it, stays under 16 KB (OPENER_MAX_BYTES); a drawing the sprite holds is
 # drawn by <use href="#oa-sym-...">, so the page carries it once.
+WIDE_SWITCH_PX = 680   # D3-480: guide-shell.css's @container oa-frame (min-width: 680px)
 OPENER_FROM = "01"
 OPENER_MAX_PX = 328
 OPENER_MAX_BYTES = 16 * 1024
@@ -814,13 +815,21 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
 
     Manifest keys the shell reads (shell notes, section 0): width_px, height_px, surface, alt, illustrative, readable,
     interactive, scale, fit_switch, check_exempt, breakout (round 2: a flowing stage that takes the room over the rail
-    from 80em, as a wide fixed stage does, such as chapter 26's token table)."""
+    from 80em, as a wide fixed stage does, such as chapter 26's token table), wide_px (Phase 3 round 1 fix pass, D3-480: a
+    fixed stage that widens from width_px to wide_px where its frame's content box holds wide_px; the frame is the query
+    container oa-frame, and the fragment's own @container oa-frame rules compose for each width; nothing scales)."""
     meta = specs.meta(spec_id) if spec_id else {}
     frag = specs.fragment(spec_id, where) if spec_id else None
     lab, glyph = PLATE_LABEL.get(kind, (None, None))
     lab = html.unescape(str(label or lab or "")) or None
     width = meta.get("width_px")
     height = meta.get("height_px")
+    wide = meta.get("wide_px")
+    if wide is not None and not (isinstance(wide, (int, float)) and not isinstance(wide, bool) and isinstance(width, (int, float)) and wide > width):
+        R.warn(where, f"{spec_id}: wide_px {wide!r} needs a number above width_px ({width!r}); ignored")
+        wide = None
+    elif wide is not None and wide != WIDE_SWITCH_PX:
+        R.warn(where, f"{spec_id}: wide_px is {wide:g}; the shell's container query switches at {WIDE_SWITCH_PX} px (D3-480)")
     alt = html.unescape(str(meta.get("alt", ""))).strip()
     illustrative = bool(meta.get("illustrative"))
     # Phase 3: a stage that holds a chart kit figure is a group, never an image: the figure carries its own title, drawing,
@@ -871,6 +880,10 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
         size_bits.append(f"{num(height)} px high")
     if sc is not None:
         head.append(f'<p class="plate-size">{e(scale_words(sc))}</p>')
+    elif wide and not height:
+        # D3-480, D3-485: a plate with two true sizes names both
+        words = f"True size, {num(wide)} px wide; {num(width)} px in a column under {num(wide)} px"
+        head.append(f'<p class="plate-size" data-true="{words}">{words}</p>')
     elif size_bits:
         head.append(f'<p class="plate-size" data-true="True size, {", ".join(size_bits)}">True size, {", ".join(size_bits)}</p>')
     if fit:
@@ -884,8 +897,10 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
         surf = "newsprint"
     stage_attrs = [f'class="plate-stage oa-surface-{surf}"', f'data-specimen="{e(spec_id or "pending")}"', 'data-red="specimen"']
     if isinstance(width, (int, float)):
-        stage_attrs.append(f'style="--w:{width:g}px"')
+        stage_attrs.append(f'style="--w:{width:g}px' + (f';--w2:{wide:g}px' if wide else '') + '"')
         stage_attrs.append(f'data-width="{width:g}"')
+        if wide:
+            stage_attrs.append(f'data-wide="{wide:g}"')
     if sc is not None:
         stage_attrs.append(f'data-scale="{sc:g}"')
     if exempt:
@@ -931,7 +946,7 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     return (f'<figure class="plate plate--{kind}{" plate--fit" if fit else ""}"{fid}>'
             + f'<div class="plate-head">{"".join(head)}</div>'
             + f'<div class="plate-scroll" data-plate-scroll data-frame-name="{e(frame_name)}"'
-            + (f' data-width="{width:g}" style="--w:{width:g}px"' if isinstance(width, (int, float)) else "")
+            + (f' data-width="{width:g}" style="--w:{width:g}px' + (f';--w2:{wide:g}px" data-wide="{wide:g}"' if wide else '"') if isinstance(width, (int, float)) else "")
             + (' data-breakout' if meta.get("breakout") and not isinstance(width, (int, float)) else "")
             + f'>{alt_html}{stage}</div>'
             + cap + "</figure>")
@@ -1694,6 +1709,30 @@ def group_id(num, g):
     return f"group-{num}-{g.get('number')}"
 
 
+def chapter_plate_css(data, cid, where):
+    """D3-480 (Phase 3, round 1 fix pass): "plate_css" in a chapter file is CSS every plate of the chapter shares, printed
+    once at the head of the chapter's section and scoped as each fragment's own style is (scope_styles), so :scope is each
+    stage of the chapter. The fragment checks read it: colors only through var(--oa-...), no em dash. The weight report
+    counts it with the chapter, since it sits in the chapter's section."""
+    css = (data or {}).get("plate_css")
+    if not css:
+        return ""
+    if not isinstance(css, str):
+        R.warn(where, "\"plate_css\" is not one CSS string; ignored")
+        return ""
+    if "</" in css:
+        R.warn(where, "\"plate_css\" holds markup; ignored")
+        return ""
+    if "\u2014" in css:
+        R.warn(where, "\"plate_css\" holds an em dash (DR-79)")
+    bare = re.sub(r"var\((?:[^()]|\([^()]*\))*\)", "", css)
+    bare = re.sub(r"data:[^\"')\s]+", "", bare)
+    lits = re.findall(r"(?<![\w&])#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b(?![\w-])|\brgba?\(|\bhsla?\(", bare)
+    if lits:
+        R.warn(where, f"\"plate_css\": {len(lits)} literal color value(s) ({', '.join(sorted(set(lits))[:4])}); use var(--oa-...) from tokens.css")
+    return f'<style data-plate-css>@scope (#{cid} [data-specimen]) {{\n{css}\n}}</style>'
+
+
 def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=False):
     _, cid, cname, part, line = CHAPTER[num]
     where = f"chapter {num}"
@@ -1717,6 +1756,8 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
     groups, member = chapter_groups(data, rules, num, where) if not placeholder else ([], {})
     out = [f'<section class="chapter{" chapter--placeholder" if placeholder else ""}{" chapter--grouped" if groups else ""}" id="{cid}" data-track="chapter" '
            f'data-part="{part}" data-label="{num} {plain(cname)}" data-chapter="{num}"{planned_attr(data)}>{alias}']
+    if not placeholder:
+        out.append(chapter_plate_css(data, cid, where))
     if placeholder:
         out.append(head + "</div>")
         out.append(f'<div class="pending-note"><p class="label">In progress</p><p>The {OWNER.get(num, "maker")} is writing this chapter. '
