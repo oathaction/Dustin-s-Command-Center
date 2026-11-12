@@ -501,7 +501,7 @@
   "chapter": "14",
   "rule": "14.51",
   "width_px": null,
-  "alt": "Stacked bands of the nation’s health spending by who paid, as shares of each year from 1960 to 2024. Private insurance paid 21 percent in 1960 and 31 percent in 2024; Medicare and Medicaid, which began in 1966, paid 21 and 18 percent in 2024; all other sources, out of pocket the largest, fell from 79 percent to 30.",
+  "alt": "Stacked bands of the nation’s health spending by who paid, as shares of each year from 1960 to 2024. Private insurance paid 21 percent in 1960 and 31 percent in 2024; Medicare and Medicaid, which began in 1966, paid 21 and 18 percent in 2024; all other sources, with out-of-pocket spending the largest of them, fell from 79 percent to 30.",
   "illustrative": false,
   "notes": "S46, stacked-area: the chart kit draws it from work/build/chart-kit/specs/s46.json (contract R1-C3)"
  },
@@ -652,7 +652,7 @@
   "chapter": "14",
   "rule": "14.69",
   "width_px": null,
-  "alt": "A connected scatter of quarterly unemployment rates against job openings from early 2001 to mid 2026. The path swings out to 13.0 percent unemployment in the spring of 2020 and up to 11.7 million openings in early 2022, then settles near 4.1 percent and 7.3 million in the latest quarter. It breaks at the end of 2025, when no rate was published for October.",
+  "alt": "A connected scatter of quarterly unemployment rates against job openings from early 2001 to the third quarter of 2026. The path swings out to 13.0 percent unemployment in the spring of 2020 and up to 11.7 million openings in early 2022, then settles near 4.1 percent and 7.3 million in the latest quarter. It breaks at the end of 2025, when no rate came out for October.",
   "illustrative": false,
   "notes": "S56, connected-scatter: the chart kit draws it from work/build/chart-kit/specs/s56.json (contract R1-C3)"
  },
@@ -752,7 +752,7 @@
   "chapter": "14",
   "rule": "14.87",
   "width_px": null,
-  "alt": "A bar of the Senate’s 100 votes filled to 53 yes votes, with a tick at the 60 needed to end debate and a bracket marking the 7-vote gap. All 53 yes votes were Republican; 45 Democrats and 2 independents voted no.",
+  "alt": "A bar of the Senate’s 100 votes filled to 53 yes votes, with a tick at the 60 needed to end debate and a bracket marking the seven-vote gap. All 53 yes votes were Republican; 45 Democrats and 2 independents voted no.",
   "illustrative": false,
   "notes": "S61, progress-bar: the chart kit draws it from work/build/chart-kit/specs/s61.json (contract R1-C3)"
  },
@@ -760,7 +760,7 @@
   "chapter": "14",
   "rule": "14.88",
   "width_px": null,
-  "alt": "Six numbered steps for S. 146, the TAKE IT DOWN Act. Filed in the Senate on January 16, 2025; the hearing and committee vote steps never happened, since the Senate Commerce Committee was discharged on February 13, 2025; the Senate passed it that day by unanimous consent, the House on April 28, 2025 by 409 to 2, and the President signed it on May 19, 2025, making it Public Law 119-12.",
+  "alt": "Six numbered steps for S. 146, the TAKE IT DOWN Act. Filed in the Senate on January 16, 2025; the hearing and committee vote steps never happened, since the Senate discharged its Commerce Committee on February 13, 2025; the Senate passed it that day by unanimous consent, the House on April 28, 2025 by 409 to 2, and the President signed it on May 19, 2025, making it Public Law 119-12.",
   "illustrative": false,
   "notes": "S62, step-tracker: the chart kit draws it from work/build/chart-kit/specs/s62.json (contract R1-C3)"
  },
@@ -776,7 +776,7 @@
   "chapter": "14",
   "rule": "14.90",
   "width_px": null,
-  "alt": "A bullet graph of federal debt subject to the limit on October 31, 2026: a bar to $40,327.1 billion against a tick at the $41,104.0 billion limit, over a darker band to the earlier limit of $36,104.0 billion. The debt sits $776.9 billion under the limit.",
+  "alt": "A bullet graph of federal debt subject to the limit on October 31, 2026: a bar to $40,327.1 billion against a tick at the $41,104.0 billion limit, over a band that runs to the earlier limit of $36,104.0 billion. The debt sits $776.9 billion under the limit.",
   "illustrative": false,
   "notes": "S64, bullet-graph: the chart kit draws it from work/build/chart-kit/specs/s64.json (contract R1-C3)"
  },

@@ -2,7 +2,7 @@
   "id": "14.48",
   "title": "Use a waterfall to show how steps add up to a total or a gap.",
   "rule": [
-    "Read the steps from top to bottom: each one floats from the running total before it to the one after, a step that adds in diverging pair B’s green and a step that takes away in its dark blue, with every value printed beside its bar with its sign. A total runs from the zero line in the context gray and starts the count again; the result the title names takes the text’s ink and never red, since red on a deficit or a loss reads as its sign (Rule 14.6). A thin line joins each step to the next. Keep every line the publisher prints, or fold small lines within one side only and list each in the table."
+    "Read the steps from top to bottom: each one floats from the running total before it to the one after, a step that adds in diverging pair B’s green and a step that takes away in its dark blue, with every value printed beside its bar with its sign. A total runs from the zero line in the context gray and starts the count again; the result the title names takes the text’s ink, never red (Rule 14.6). A thin line joins each step to the next. Keep every line the publisher prints, or fold small lines within one side only and list each in the table."
   ],
   "use_when": "The reader asks how a set of additions and subtractions arrive at a result, such as how a year’s receipts and outlays add up to the deficit.",
   "use_instead": [

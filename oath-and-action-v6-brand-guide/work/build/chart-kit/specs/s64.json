@@ -19,7 +19,7 @@
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "A bullet graph of federal debt subject to the limit on October 31, 2026: a bar to $40,327.1 billion against a tick at the $41,104.0 billion limit, over a darker band to the earlier limit of $36,104.0 billion. The debt sits $776.9 billion under the limit.",
+  "alt": "A bullet graph of federal debt subject to the limit on October 31, 2026: a bar to $40,327.1 billion against a tick at the $41,104.0 billion limit, over a band that runs to the earlier limit of $36,104.0 billion. The debt sits $776.9 billion under the limit.",
   "table": {
     "caption": "Federal debt subject to the limit and the limit, millions of dollars, October 31, 2026",
     "columns": [
@@ -47,7 +47,7 @@
     ]
   },
   "chart_notes": [
-    "The darker band runs to the limit in force from January to June 2025, $36,104.0 billion, and the lighter band on to the limit since July 2025, $41,104.0 billion, marked by a tick. The bar is the debt."
+    "The first band runs to the limit in force from January to June 2025, $36,104.0 billion, and the second on to the limit since July 2025, $41,104.0 billion, marked by a tick. The bar is the debt."
   ],
   "phone": "same",
   "artboard": "reading",

@@ -17,7 +17,7 @@
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Six numbered steps for S. 146, the TAKE IT DOWN Act. Filed in the Senate on January 16, 2025; the hearing and committee vote steps never happened, since the Senate Commerce Committee was discharged on February 13, 2025; the Senate passed it that day by unanimous consent, the House on April 28, 2025 by 409 to 2, and the President signed it on May 19, 2025, making it Public Law 119-12.",
+  "alt": "Six numbered steps for S. 146, the TAKE IT DOWN Act. Filed in the Senate on January 16, 2025; the hearing and committee vote steps never happened, since the Senate discharged its Commerce Committee on February 13, 2025; the Senate passed it that day by unanimous consent, the House on April 28, 2025 by 409 to 2, and the President signed it on May 19, 2025, making it Public Law 119-12.",
   "table": {
     "caption": "Actions on S. 146, the TAKE IT DOWN Act, January 16 to May 19, 2025",
     "columns": [
@@ -59,7 +59,7 @@
       {
         "name": "Hearing",
         "codes": [],
-        "note": "None in the bill’s record; the Commerce Committee was discharged by unanimous consent"
+        "note": "None in the bill’s record; the Senate discharged the Commerce Committee by unanimous consent"
       },
       {
         "name": "Committee vote",

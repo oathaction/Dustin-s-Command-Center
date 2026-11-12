@@ -4,7 +4,7 @@
  "rule": [
   "Set scenarios in rows and outcomes in columns, and print the source’s own words for each direction in every cell, with an arrow and a tint read from those words and labeled as Oath & Action’s reading. Print no number, total or odds the source does not give. Say in the grade line that the directions are conditional, with no forecast and no odds. On a phone each scenario becomes a card (Rule 14.12)."
  ],
- "use_when": "The reader asks which way each outcome would move if a reform path were followed, and the source states directions, not amounts.",
+ "use_when": "The reader asks which way each outcome would move if a reform path were followed, and the source states directions with no amounts.",
  "use_instead": [
   {
    "when": "The source gives numbers for each scenario and their range",

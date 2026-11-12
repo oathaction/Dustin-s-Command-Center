@@ -12,7 +12,7 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Senate’s record of roll call vote 253",
-  "title": "The Senate fell seven votes short of the 60 it needed to take up H.R. 7008, the Stop Insider Trading Act, which as the House passed it limits members’ stock purchases and requires photo ID to vote in federal elections.",
+  "title": "The Senate fell seven votes short of the 60 it needed to take up H.R. 7008, the Stop Insider Trading Act, which, as the House passed it, limits members’ stock purchases and requires photo ID to vote in federal elections.",
   "measure_line": "Senate roll call vote 253, September 30, 2026, on cloture on the motion to proceed to H.R. 7008, the vote to end debate on taking the bill up: yes and no votes of the 100 senators, by party as the Senate records it",
   "notes": [
     "Cloture on a motion to proceed ends debate on whether to take a bill up, and it needs three-fifths of the Senate, 60 votes.",
@@ -20,7 +20,7 @@
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "A bar of the Senate’s 100 votes filled to 53 yes votes, with a tick at the 60 needed to end debate and a bracket marking the 7-vote gap. All 53 yes votes were Republican; 45 Democrats and 2 independents voted no.",
+  "alt": "A bar of the Senate’s 100 votes filled to 53 yes votes, with a tick at the 60 needed to end debate and a bracket marking the seven-vote gap. All 53 yes votes were Republican; 45 Democrats and 2 independents voted no.",
   "table": {
     "caption": "Senate roll call vote 253 on H.R. 7008, September 30, 2026, by party",
     "columns": [
@@ -48,7 +48,7 @@
     ]
   },
   "chart_notes": [
-    "The bar runs to 100 senators; the 53 yes votes fill it in ink. A tick marks the 60 votes needed, and a bracket under the bar the 7 votes the yes side lacked."
+    "The bar runs to 100 senators; the 53 yes votes fill it in ink. A tick marks the 60 votes needed, and a bracket under the bar the seven votes the yes side lacked."
   ],
   "phone": "same",
   "artboard": "reading",

@@ -15,8 +15,8 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Treasury’s monthly statement of federal receipts and outlays",
-  "title": "Federal outlays of $7,395.8 billion in fiscal 2026 ran $1,992.5 billion past receipts of $5,403.3 billion, the year’s deficit.",
-  "reading_guide": "Read from the top. Each receipt adds to the running total, the bar for all receipts starts again from zero, and each outlay takes its amount away; the last bar is what is left, the deficit.",
+  "title": "Federal outlays of $7,395.8 billion in fiscal 2026 ran past receipts of $5,403.3 billion, leaving a deficit of $1,992.5 billion.",
+  "reading_guide": "Read from the top. Each receipt adds to the running total, the bar for all receipts starts again from zero, and each outlay takes its amount away; the last bar is the shortfall, the deficit.",
   "measure_line": "Federal receipts by source and net outlays by budget function, billions of dollars, nominal, fiscal year 2026 (October 1, 2025 to September 30, 2026), United States",
   "notes": [
     "Two outlay lines are negative in the Treasury’s statement, so they add to the running total: commerce and housing credit, $15.5 billion, and undistributed offsetting receipts, $155.0 billion, money agencies collect that counts against spending.",

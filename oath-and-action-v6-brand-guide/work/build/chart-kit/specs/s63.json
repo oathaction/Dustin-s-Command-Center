@@ -75,7 +75,7 @@
     ]
   },
   "chart_notes": [
-    "Every status chip is drawn the same way; its word gives the status. Each issue’s ID sits in its own chip before its title."
+    "Every status chip takes one style, and its word gives the status. Each issue’s ID sits in its own chip before its title."
   ],
   "phone": "same",
   "artboard": "reading",

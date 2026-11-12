@@ -15,6 +15,7 @@ Rulings (a) to (g) below are final for drawing. Makers and the editor read them 
 - **(g)** S49: two-year bins of years as a federal judge, 845 judges each counted once (corrected from 850 records in the second run); S52: two-point bins; S51: Tukey's box, 62 outliers.
 
 **Second run.** Round 4's data plan is signed off with two changes (section "Data lead sign-off" at the end of `work/handoffs/phase-3/20261112_Round-4-Data-Plan.md`): rows 123 and 125 move off election data, to the three kinds of federal trial judges and to a public law's first page, under round 3's test for DR-229. The count stays 108, the largest domain 16 against 27, California and Florida 5 each against 21. Conditions for the makers cover the Euler (no frame at true area), the icon array (2025 alone), proportional symbols and both social card crops. Ruling (g) for S49 now counts judges, 845, not service records.
+- **Third run: sign-offs.** Maker B: S33, S49, S50, S52, S53, S57 and S59 signed off (S49, S50 and S53 with one change of words or source); S51, S54, S55, S56 (leaders only) and S58 take changes MB-3 to MB-15; S56's quarters signed off and S58's band ruled Stone step 1. Entries signed off but for MB-16 and MB-17; sketches signed off but for 14.78's panel 2 (MB-18). Maker A: S18, S43, S44, S46, S48, S60 (one word), S61 and S62 signed off; S45, S47, S63 and S64 take changes MA-1 to MA-6; entries but for MA-7 and MA-8; all six sketches signed off.
 - Found: S50's file carries a DC row the sidecar says the survey lacks, and its U.S. row divides 50 states' taxes by a population that includes DC (research lead, R1).
 
 ## Rulings
@@ -175,6 +176,44 @@ November 12, 2026, third run. I built S33 and S49 to S59 with `oa-chart.mjs buil
 
 - **G3, optional.** The `band` token reads lighter than Newsprint and draws a halo around a line. If no form needs it as drawn, point `K.parts.band`'s default fill at Stone magnitude step 1, so every band in the family agrees with S58 and S59.
 
+## Sign-off, maker A
+
+November 12, 2026, third run. I built S18, S43 to S48 and S60 to S64 with `oa-chart.mjs build` into my scratch folder (`kit-out`): all 12 PASS with 0 faults. I looked at every capture at 1440 and 390 px on Newsprint and Charcoal, and in grayscale at 390 px, on contact sheets and at full size for S43, S44, S60 and S63. I read each spec's title from the left and the right, its grade line, measure line and notes, and checked every figure by script against the frozen files and V7's status texts. I read entries 14-046 to 14-057 and 14-085 to 14-092 and rendered the six sketches on both grounds with the kit's and tokens' styles.
+
+| Item | Verdict | What I checked, and what changes |
+|---|---|---|
+| S18 | Signed off | Highest and lowest fifths in the subject ink, the middle three light with values (ruling (c)); chart note says so |
+| S43 | Signed off | DC 62 percent in the subject ink, the nation first and apart, midline in the text's ink, owners in the track ink; note 1's claim that every state sits below half past its margin holds (New York 46.0, margin about 0.3) |
+| S44 | Signed off, one optional change | 30 lines, totals and the deficit by script; pair B by direction, all receipts in the context ink, the deficit in the subject ink, no red; note 2's five functions over $900 billion. MA-9 |
+| S45 | Changes | Parts in the categorical order with gaps; no red (a stack). MA-1, MA-2 |
+| S46 | Signed off | 70 percent in 2024 (69.97) and 21 in 1960 (20.79); four groups, Stone hatched on top |
+| S47 | Changes | Social Security, $1,667.1 billion, in red with its keyline; 11 folded functions sum to $1,089.8 billion. MA-3 |
+| S48 | Signed off | 218, 214, 1 and 2 vacant as the Clerk counted; the opening count 220 and 215 from the Historian's file; one ink, open rings for vacancies, Democrats from the left as S26 |
+| S60 | Signed off, one word change | Grade line as ruling (d); figure 5 with no qualification; first-published child poverty rates noted. MA-4 |
+| S61 | Signed off | 53 to 47 with 60 needed; party votes named in words in one ink; both provisions of H.R. 7008 in the title (DR-98) |
+| S62 | Signed off | Steps from the action codes; the research lead confirmed no hearing or markup on S. 146 (its notes, 20:20 UTC), so the slashes on steps 2 and 3 hold |
+| S63 | Changes | Chips in one style, typed IDs, V7's texts and dates. MA-5 |
+| S64 | Changes | $40,327.1, $776.9 and $41,104.0 billion by script; bands from the file. MA-6 |
+| Entries | Signed off but for MA-7 and MA-8 | 14.46, 14.49 and 14.85 describe the built S10, S08 and S01; each `use_instead` names a real rule |
+| Sketches 14.54 to 14.57, 14.91, 14.92 | Signed off | Each draws invented values in the kit's classes with "Illustrative data"; each avoid pair draws the same values both ways, the better choice named in `data-label` |
+
+### Requests to maker A (from the sign-off)
+
+- **MA-1, S45 totals.** The axis is in thousands of homes and the totals print homes ("1,979,400" against a 2,000 gridline). Print them in the axis's unit (1,979.4, 584.9 and 1,626.9), or set the axis in homes; one unit on the chart (Rule 14.3).
+- **MA-2, S45 long view.** The title's "largest share in any year from 2000 to 2025" holds, but the file runs from 1968 and the share was higher in 1969, 1970, 1973 and 1974 (40.1 percent, by script). Add a note: "The Bureau’s series starts in 1968; the share was last higher in 1974, 40.1 percent." This is S20's case: the window stays, and the longer record goes in a note.
+- **MA-3, S47 words on red.** I correct my ruling (e): Charcoal on Pillar Red measures 4.49 to 1 by the WCAG formula from the token hexes, just under the 4.5 that text below 18.66 px bold needs (white measures 4.17). Set the tile's name and figure on a small plate of the ground inside the tile, in the text's ink, or at 18.66 px bold or larger, where 3 to 1 holds.
+- **MA-4, S60 note 3.** "Alaska’s Ballot Measure 2, decided on November 3, 2026" becomes "voted on November 3, 2026": the count was unofficial on November 10 and the state's target to certify is November 25 (round 4 plan, row 123).
+- **MA-5, S63 title.** Two faults. "Removals, spending and watchdogs" leaves out X05 (troop deployments) and X18 (where a case is filed). And V7's text for I068 records the Supreme Court acting on an emergency application on September 26, 2025, an interim order, so "acted in two others by interim order" counts two of three. Suggested: "Of six disputes over checks on power, the Supreme Court had decided one by October 15, 2026, and had acted by interim order in three others." I068's chip may stay "Watchdog finding", its latest event.
+- **MA-6, S64.** Draw a scale with zero and a few ticks, so the reader sees the bar start at zero (Rule 14.4). The chart note's "darker band" and "lighter band" reverse on Charcoal, where step 2 reads lighter; name each band by what it holds, as S59 does.
+- **MA-7, entries 14.47, 14.55 and 14.87.** Each makes ink the default for the mark the title names ("takes the text’s ink, or the red point where Rule 14.6 allows it"). Lead with Rule 14.6's red point and give the subject ink as its party case, as 14.52 does (D3-572). In these and in 14.48 and 14.90, a data mark takes the subject ink; "the text’s ink" is the words' token.
+- **MA-8, entry 14.53.** "Lay the blocks in the chamber’s usual order" claims a seating order nobody checked. State the guide's order and its reason: Democrats from the left as S26 orders the parties, independents and vacancies between, Republicans from the right.
+- **MA-9, S44, optional.** At 1440 px "−694.2" sits on Income security's connector and "−1,667.1" crosses the zero line; move each value clear of the line.
+
+### Requests from the maker A sign-off to others
+
+- **Research lead.** `v7-numbers.meta.json`'s qualification says Alaska's Ballot Measure 2 was "decided on November 3, 2026"; write "voted on", as MA-4.
+- **Engineer, G4.** S47's words on Pillar Red passed the kit's checks at 4.49 to 1. Say whether the contrast check reads words on a red fill, and add it if not.
+
 ## Routine calls
 
 - D3-xxx | Rule 14.6's party test applies only the list the rule prints; DC and a set of states, such as a Census region, count as states | The creative director's risk 1 and D3-594: one test, read the same way in the rule and in the charts
@@ -201,6 +240,8 @@ November 12, 2026, third run. I built S33 and S49 to S59 with `oa-chart.mjs buil
 - D3-xxx | S56 draws quarterly averages | The monthly table is over the far-over limit; the derived file states its method and the table gives every quarter
 - D3-xxx | S58's confidence band takes Stone magnitude step 1, the ink of S59's band from past errors | The band token draws a halo on Newsprint; one ink for uncertainty across the family
 - D3-xxx | Entries for forms whose specimen names a state cite Rule 14.6's two cases | The subject ink is the party case, never the form's rule (D3-572)
+- D3-xxx | Words on a Pillar Red fill sit on a plate of the ground or at large-text size | Charcoal on Pillar Red measures 4.49 to 1, under 4.5 for small text; corrects ruling (e) for S47
+- D3-xxx | S45 keeps its 2000 window and gives 1974's higher share in a note | S20's case: the window shows the columns, the note keeps the longer record
 
 ## Requests
 
@@ -242,6 +283,7 @@ November 12, 2026, third run. I built S33 and S49 to S59 with `oa-chart.mjs buil
 ## Tested
 
 - Read: the brief in full; my round 1 notes' rulings, the fix pass, the second pass, "Ruling on S33's all receipts line" and "Requests"; the data plan's round 2 table, sign-off, palette notes and fix pass; the plan file's round 2 rows; D3-477, D3-489, D3-490, D3-572, D3-588, D3-589, D3-594, D3-619, D3-620, D3-638 and D3-650 to D3-663; RS-S4 and the creative director's risks; entries 14-003 and 14-006; Rules 13.1, 11.1, 11.2 and 14.7 from the chapter files; every round 2 sidecar; the round 1 specs S18, S19, S27, S31, S33 and S57's draft labels; the forms' code for `dot-plot`, `line-field`, `indexed-line` and `bar-benchmark-tick` keys; the engineer's R2-C2 parts table.
+- Third run: `oa-chart.mjs build` for S33, S49 to S59, S18, S43 to S48 and S60 to S64 into `kit-out` (24 PASS, 0 faults); contact sheets of every capture at 1440 and 390 px, both grounds, color and grayscale, looked at (full size where named in the sign-offs); the 15 sketches rendered with Playwright on both grounds with `tokens.css` and `kit.css` and looked at; scripts for S56's quarterly averages, S51's top counties and margins, S55's Florida renter count and DC's income, S58's 2019 test, S45's share since 1968, S47's fold sum, S48's opening count, V7's status texts for I068, X05 and X18, and contrast ratios from token hexes; entries 14-046 to 14-078 and 14-085 to 14-092 read for rule text and `use_instead`.
 - Second run, by script: S49's records grouped by `nid` (845 judges, the four with shared judgeships, identical years on each record, bins and median); the generator's example log (13 plates and their domains); the 22 round 2 specs' domains and states; V7 claim CL1514 and issues I013, I054, I063, I101, I133, I137, I143 and I165. Round 4's plan read in full against both earlier plans, my sign-offs of them and the coverage plan's rows.
 - Scripts (`python3 -I`, in my scratch folder: `side.py`, `q1.py` to `q5.py`): DC's renter share and margin; the waterfall's 30 lines; completions' parts 2000 to 2025; health spending shares; fiscal 2026 functions and the positive sum, $7,566.3 billion; judges' two-year bins on both measures, medians and inauguration offsets; taxes per resident, the U.S. row's denominator and the 50-state figure; SAHIE quartiles, fences, whiskers and outliers by region, and the missing county; SAIPE bins, medians and county list changes; population bands; rent share states past the margin of the nation and Florida past California; earnings ratios past the margin, and DC against New York; the job openings peak and the October 2025 gap; median income's top years; the debt and limit series; V7's headline figures 4 and 5 against the atlas extract; contrast ratios from the token hexes.
 
@@ -252,4 +294,5 @@ November 12, 2026, third run. I built S33 and S49 to S59 with `oa-chart.mjs buil
 - Whether the Senate Commerce Committee held a hearing on S. 146 before discharge: I read only the frozen action list.
 - Chapter 18's chip component and Rule 13.9 were not read for S63's inks; S63 follows them as the brief says.
 - The kit's contrast check on light-fill marks with no printed value (request G2).
+- Third run: the specimens inside the guide build (no strict build or guide capture of these entries); the captures at 1024 and 768 px and the guide widths; forced colors; S37's rebuilt phone drawing; S64 and S62 at 390 px in grayscale were seen only on contact sheets; screen reader text and the tables' live text were not read.
 - Round 4: no fetch and no publisher page read; the U.S. Code sections named in change 1 and the uninsured share behind the Euler condition (near 8 percent) rest on my knowledge, for the research lead to confirm at the fetch.

@@ -2120,7 +2120,7 @@
    "id": "14.48",
    "title": "Use a waterfall to show how steps add up to a total or a gap.",
    "rule": [
-    "Read the steps from top to bottom: each one floats from the running total before it to the one after, a step that adds in diverging pair B’s green and a step that takes away in its dark blue, with every value printed beside its bar with its sign. A total runs from the zero line in the context gray and starts the count again; the result the title names takes the text’s ink and never red, since red on a deficit or a loss reads as its sign (Rule 14.6). A thin line joins each step to the next. Keep every line the publisher prints, or fold small lines within one side only and list each in the table."
+    "Read the steps from top to bottom: each one floats from the running total before it to the one after, a step that adds in diverging pair B’s green and a step that takes away in its dark blue, with every value printed beside its bar with its sign. A total runs from the zero line in the context gray and starts the count again; the result the title names takes the text’s ink, never red (Rule 14.6). A thin line joins each step to the next. Keep every line the publisher prints, or fold small lines within one side only and list each in the table."
    ],
    "why": {
     "text": [
@@ -2248,7 +2248,7 @@
    ],
    "why": {
     "text": [
-     "Shares that add to 100 every year let a reader see one part grow at another’s expense across decades. Only the bottom band and the top edge are straight, so the bands between are read by their thickness, which is why each one is named where it ends and its last share is printed."
+     "Shares that add to 100 every year let a reader see one part grow at another’s expense across decades. Only the baseline and the line at 100 are straight, so the bands between them are read by their thickness, which is why each one is named where it ends and its last share is printed."
     ]
    },
    "tokens": [],
@@ -2568,12 +2568,12 @@
    "id": "14.59",
    "title": "Show every item as a dot on one scale when each one should stay visible.",
    "rule": [
-    "Place each item as one dot on a single value scale, packed up and down from a center line so no dot hides another; the packing follows the data alone, so it draws the same every time. Name the items the title names in the subject ink with their values, keep the rest in the light fill (Rule 14.6), and draw a total or national figure as a dashed line in the text’s ink with its own label.",
+    "Place each item as one dot on a single value scale, packed up and down from a center line so no dot hides another; the packing follows the data alone, so it draws the same every time. Name the items the title names in the subject ink with their values, keep the rest in the light fill, and draw a total or national figure as a dashed line in the text’s ink with its own label (Rule 14.6).",
     "A strip plot is the same form with the dots in one row; use it when the items rarely touch."
    ],
    "why": {
     "text": [
-     "Every dot is an item the reader can find, so the chart shows the spread and keeps the individual places in it. Packing the dots by value, never by chance, means two builds of the same data draw the same picture, and the table under the chart gives each item’s value."
+     "Every dot is an item the reader can find, so the chart shows the spread and keeps the individual places in it. Packing the dots by value alone means two builds of the same data draw the same picture, and the table under the chart gives each item’s value."
     ]
    },
    "tokens": [],
@@ -2613,7 +2613,7 @@
    ],
    "why": {
     "text": [
-     "Four numbers a group, the quartiles, the median and the reach, let a reader compare many units across groups at a glance. The rule for the whiskers is fixed and stated, so a dot past them always means the same thing, and no group’s spread depends on how the chart was drawn."
+     "Five numbers a group, the two quartiles, the median and the whiskers’ two ends, let a reader compare many units across groups at a glance. The rule for the whiskers is fixed and stated, so an open circle past them always means the same thing, and no group’s spread depends on how the chart was drawn."
     ]
    },
    "tokens": [],
@@ -2651,7 +2651,7 @@
    "id": "14.61",
    "title": "Overlay two distributions as stepped outlines on the same bins.",
    "rule": [
-    "Draw each year or group as a stepped outline over one baseline, with no fill, so each shape shows through the other. The series the title follows takes the subject ink at the subject weight and the other the context ink at the field weight, each named where its outline peaks. Use the same bins for both and count each unit once in each."
+    "Draw each year or group as a stepped outline over one baseline, with no fill, so each shape shows through the other. The series the title follows takes the subject ink at the subject weight and the other the context ink at the field weight, each named where its outline peaks. Use the same bins for both and count each unit once in each year or group."
    ],
    "why": {
     "text": [
@@ -2709,7 +2709,7 @@
    "use_when": "The reader asks how many people are at or near a given age, such as the ages of retirement programs, or how a population’s ages are shaped.",
    "use_instead": [
     {
-     "when": "The reader compares a few age groups, not single years",
+     "when": "The reader compares a few broad age groups",
      "rule": "14.15"
     },
     {
@@ -2847,7 +2847,7 @@
    ],
    "why": {
     "text": [
-     "Contours give the shape of a dense cloud with lines instead of ink, so points the story names can sit on top and stay readable. The smoothing changes the shape, so the reader needs to know it."
+     "Contours draw a dense cloud’s shape as lines, so points the story names can sit on top and stay readable. The smoothing changes the shape, so the reader needs to know it."
     ]
    },
    "tokens": [],
@@ -2923,11 +2923,11 @@
    "id": "14.68",
    "title": "Size each point by a third measure only when its size answers the question.",
    "rule": [
-    "Draw the scatter plot with each circle’s area set by a third measure, never its radius (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circle the title names in the subject ink, and keep the Association label and its note."
+    "Draw the scatter plot with each circle’s area set by a third measure (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circle the title names in the subject ink, and keep the Association label and its note."
    ],
    "why": {
     "text": [
-     "Size lets a large place weigh as much on the page as it does in the country, so a small state at an extreme does not read as the whole story. Area, not radius, keeps a circle twice as large in value from looking four times as large."
+     "Size lets a large place weigh as much on the page as it does in the country, so a small state at an extreme does not read as the whole story. Setting the area by the value keeps a circle that stands for twice as much at twice the size on the page."
     ]
    },
    "tokens": [],
@@ -3003,7 +3003,7 @@
    ],
    "why": {
     "text": [
-     "A grid of coefficients puts dozens of pairs in one view, but a coefficient hides the shape of each relationship. It suits a first scan by experts and never a general reader’s finding."
+     "A grid of coefficients puts dozens of pairs in one view, but a coefficient hides the shape of each relationship. It suits a first scan by experts, before the pairs that matter get charts of their own."
     ]
    },
    "tokens": [],
@@ -3089,7 +3089,7 @@
     "14.69"
    ],
    "entry": true,
-   "use_when": "A specialist asks not only where two measures went but how fast they got there.",
+   "use_when": "A specialist asks how fast two measures moved along their path, as well as where they went.",
    "use_instead": [
     {
      "when": "The relationship over time, without the pace",
@@ -3152,11 +3152,11 @@
    "id": "14.74",
    "title": "Draw a survey figure with its margin of error, and single out only what passes it.",
    "rule": [
-    "Draw each estimate as a dot on a thin line across its interval, the interval’s level named in the measure line, such as “90 percent margin of error”. Draw the nation as a dashed line in the text’s ink with its own label. A dot that differs from the nation by more than the gap’s own margin takes a solid fill; one within it takes an open dot (Rule 14.9). List rows by their figures and print each one, but never number them as ranks."
+    "Draw each estimate as a dot on a thin line across its interval, the interval’s level named in the measure line, such as “90 percent margin of error”. Draw the nation as a dashed line in the text’s ink with its own label (Rule 14.6). A dot that differs from the nation by more than the gap’s own margin takes a solid fill; one within it takes an open dot (Rule 14.9). List rows by their figures and print each one, but never number them as ranks."
    ],
    "why": {
     "text": [
-     "A survey figure is a range, not a point, and two places whose ranges overlap may stand in either order. Drawing the range and testing each gap keeps the chart from claiming more than the survey knows."
+     "A survey figure stands for a range of likely values, and two places whose ranges overlap may stand in either order. Drawing the range and testing each gap keeps the chart from claiming more than the survey knows."
     ]
    },
    "tokens": [],
@@ -3254,7 +3254,7 @@
     "14.127"
    ],
    "entry": true,
-   "use_when": "The reader asks which way each outcome would move if a reform path were followed, and the source states directions, not amounts.",
+   "use_when": "The reader asks which way each outcome would move if a reform path were followed, and the source states directions with no amounts.",
    "use_instead": [
     {
      "when": "The source gives numbers for each scenario and their range",
@@ -3278,7 +3278,7 @@
    ],
    "why": {
     "text": [
-     "A single projected line reads as a promise. The widening bands show how much less is known about later years, and drawing them from past errors grounds the range in the record rather than in opinion."
+     "A single projected line reads as a promise. The widening bands show how much less anyone knows about later years, and drawing them from past errors grounds the range in the record of past forecasts."
     ]
    },
    "tokens": [],
@@ -3309,7 +3309,7 @@
   },
   {
    "id": "14.78",
-   "title": "Show uncertainty as a run of possible outcomes only for experts, never as motion alone.",
+   "title": "Show uncertainty as a run of possible outcomes only for experts, with each draw as a still panel.",
    "rule": [
     "Use hypothetical outcomes, a reference form, to show uncertainty as several possible results drawn from the estimate’s range, set side by side as small panels or shown one after another. Label every draw as one possible outcome, and pair the form with a band or a range that a still image and a screen reader carry."
    ],
@@ -3353,7 +3353,7 @@
    ],
    "why": {
     "text": [
-     "A large figure is remembered and repeated. On its own it invites the reader to supply the comparison, so the context sits in the same view, in the same measure, and the figure keeps its source and its date."
+     "Readers remember and repeat a large figure. On its own it invites the reader to supply the comparison, so the context sits in the same view, in the same measure, and the figure keeps its source and its date."
     ]
    },
    "tokens": [],

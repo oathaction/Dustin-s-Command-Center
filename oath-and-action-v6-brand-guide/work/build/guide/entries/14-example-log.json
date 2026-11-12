@@ -390,7 +390,7 @@
    "source": "s43.json"
   },
   {
-   "example": "Federal outlays of $7,395.8 billion in fiscal 2026 ran $1,992.5 billion past receipts of $5,403.3 billion, the year’s deficit.",
+   "example": "Federal outlays of $7,395.8 billion in fiscal 2026 ran past receipts of $5,403.3 billion, leaving a deficit of $1,992.5 billion.",
    "domain": "D08",
    "states": [],
    "rule": "14.48",
@@ -463,7 +463,7 @@
    "source": "s52.json"
   },
   {
-   "example": "The Census Bureau estimated 41.2 million people aged 55 to 64 on July 1, 2025, the ten years of age just before 65.",
+   "example": "The Census Bureau estimated 41.2 million people aged 55 to 64 on July 1, 2025, the ten years of age before 65.",
    "domain": "D08",
    "states": [],
    "rule": "14.62",
@@ -541,7 +541,7 @@
    "source": "s60.json"
   },
   {
-   "example": "The Senate fell seven votes short of the 60 it needed to take up H.R. 7008, the Stop Insider Trading Act, which as the House passed it limits members’ stock purchases and requires photo ID to vote in federal elections.",
+   "example": "The Senate fell seven votes short of the 60 it needed to take up H.R. 7008, the Stop Insider Trading Act, which, as the House passed it, limits members’ stock purchases and requires photo ID to vote in federal elections.",
    "domain": "D04",
    "states": [],
    "rule": "14.87",

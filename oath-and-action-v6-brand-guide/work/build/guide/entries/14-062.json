@@ -7,7 +7,7 @@
  "use_when": "The reader asks how many people are at or near a given age, such as the ages of retirement programs, or how a population’s ages are shaped.",
  "use_instead": [
   {
-   "when": "The reader compares a few age groups, not single years",
+   "when": "The reader compares a few broad age groups",
    "rule": "14.15"
   },
   {
