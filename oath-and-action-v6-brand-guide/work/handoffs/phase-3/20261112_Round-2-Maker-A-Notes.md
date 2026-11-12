@@ -190,6 +190,8 @@ In progress. Items: ST M1, M2, M3, S1, S5, S8, S11; BC M1, M2, M3, S2, S3, S7, S
 | ST M2, RF-4, CD A-S3, BC S12 | S60, `indicator-row`, entry 14.86 | Done: qualification column with figure 5's exact replace pair; survey note; each figure beside its caption at the desk (`labels.beside`), one column narrower; typography nbsp; open tracking |
 | RF-2 | S64, `bullet-graph` | Done: a 1 px context-ink edge between the two bands |
 | AX S2, BC S1, BC S8, call 11 | S44 `waterfall`, S43 `stacked-share-bar` | Done: names and values on `row_name` and `row_value` (400, the named row 700); S44's values through `clear_label`, so no gridline crosses a minus sign |
+| AX S2's crossing check, D3-911 | S07 `tile-map-categorical`, S12 `tile-map-shift-arrows`, S15 `results-table` (board 1, placement only) | Done: S07's year line sits inside its tile with 2 px each side or is left out; S12's shaded tiles too small for their codes at 256 to 279 px draw none and print the kit's note that the table names every state (D3-93, as S07 does); S15's tag goes under the name on a phone where it would reach the arrows; 1440 and 390 px SVGs of all three byte for byte as before |
+| Crossing check on the never-happened slash | S40 `tracker-list`, S62 `step-tracker` | Done: the slash takes `strike: true`; S40's SVGs unchanged |
 | AX S1, D3-904 sweep | S01 `big-number`, S16 `bubble-map` (placement only) | Done: S01 takes the phone arrangement wherever "86%" would reach the bars, and words inside a vote segment move under it where the 60-vote line would cross them; S16's size key drops under the shade key where it would run past the edge; the 1440 and 390 px SVGs of both are byte for byte as before |
 
 ### Routine calls

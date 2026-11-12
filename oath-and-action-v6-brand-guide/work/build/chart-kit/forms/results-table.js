@@ -58,11 +58,15 @@
         var yy = y + pitch / 2 + 2;
         var tagged = L.tag && (r[ef] < 0) !== (r[et] < 0);
         var nb = c.text(0, narrow ? y + 18 : yy, r[el], { role: 'label', weight: 600, size: c.size('tick') + 1, max: narrow ? W - sw - 10 : nw - 6 });
+        // on a phone the tag sits beside the name, or under it where it would reach the shift column (D3-904's sweep found
+        // the arrow drawn through it at 256 to 261 px; placement only)
+        var dy = 0;
         if (tagged) {
           var tw = c.measure(L.tag, 'tick', 600) + 8, tgx = narrow ? nb.x + nb.w + 8 : 0, tgy = narrow ? y + 5 : yy + 5;
+          if (narrow && tgx + tw + 4 > W - sw) { tgx = 0; tgy = nb.bottom + 5; dy = 22; }
           c.rect(tgx + 0.5, tgy + 0.5, tw, 17, { stroke: 'label', mark: false }); c.text(tgx + 4, tgy + 13, L.tag, { role: 'tick', weight: 600 });
         }
-        var cy = narrow ? y + 40 : yy;
+        var cy = narrow ? y + 40 + dy : yy;
         cell(narrow ? 0 : nw, narrow ? W - sw : mw, r[et], cy, true, r[ek], et);
         if (!narrow) cell(nw + mw, mw, r[ef], yy, false, r[ek], ef);
         else if (L.phone_from) c.text(0, cy + 26, String(L.phone_from).replace('{from}', words(r[ef])), { role: 'tick', fill: 'secondary' });
@@ -70,7 +74,7 @@
         var al = (sw - 40) * Math.abs(r[esh]) / smax, ax = W - sw + 6;
         K.parts.arrow(c, ax, ax + Math.max(al, 4), sy - 4, { data: { key: r[ek], field: esh, value: r[esh] } });
         c.text(ax + Math.max(al, 4) + 6, sy, K.fmt(Math.abs(r[esh]), f.shift || 'number:1'), { role: 'tick' });
-        y += (narrow ? (L.phone_from ? 78 : 60) : pitch) + (tagged && !narrow ? 8 : 0);
+        y += (narrow ? (L.phone_from ? 78 : 60) + dy : pitch) + (tagged && !narrow ? 8 : 0);
         c.line(0, y, W, y, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
         if (apart) { y += 6; c.line(0, y, W, y, { stroke: 'baseline', width: c.t('line-baseline'), mark: false }); }
       });

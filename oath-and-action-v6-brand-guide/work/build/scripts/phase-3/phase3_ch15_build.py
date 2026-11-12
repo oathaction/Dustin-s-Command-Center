@@ -2000,6 +2000,8 @@ def rule_15_12(book):
             + f'<div class="fx g3"><div>{fig(svg)}{acts_note("R-32", r)}</div><div>{words}</div><div>{steps}</div></div>'
             + f'<div class="kb"><p class="k">Reading a step</p>{key}</div>'
             + src("reform R-32, its problem and remedy evidence, and connections LT03 and L26"))
+    need(body.index("Two grades, apart") < body.index("Each step") and body.index('class="ev"') > body.index("Two grades, apart"),
+         "Rule 15.12's plate must lead with its two grades in the page's order (RF-21, SD-9)")
     book.add("s-15-12-correct", body, rule="15.12", readable=True, wide=True,
              alt=(f"Reform R-32 from our systems atlas, “{r['title']}”, on a chain of three pills drawn downward: Concentration "
                   "of platforms and digital advertising, in the technology layer, then across a rule into the core layer, Local "

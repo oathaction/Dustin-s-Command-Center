@@ -86,7 +86,11 @@
         var a = rows[ci - 1];
         c.circle(xs(a[ex]), ys(a[ey]), c.t('dot-vertex-radius'), { fill: 'subject', mark: false });
         c.circle(xs(rows[ci][ex]), ys(rows[ci][ey]), c.t('dot-vertex-radius'), { fill: 'subject', mark: false });
-        P.note(c, xs(a[ex]), ys(a[ey]), fill(L.cliff), { place: 'above', anchor: 'end', dx: 4, dy: c.phone ? -(ys(a[ey]) - top) + 36 : 0, max: Math.min(250, W * 0.45), weight: 600 });
+        // on a phone the words sit up and to the left of the cliff's top, clear of its dot and of the line, which runs lower
+        // there, with no leader; in a narrow desk column (480 to 539 px) they keep the desk's place, lifted clear of the dot
+        // (D3-911: the crossing check found them half over the dot)
+        var nar = !c.phone && W < 540;
+        P.note(c, xs(a[ex]), ys(a[ey]), fill(L.cliff), { place: 'above', anchor: 'end', dx: c.phone ? -10 : 4, dy: c.phone ? -12 : nar ? -8 : 0, max: Math.min(250, W * (W < 300 ? 0.4 : nar ? 0.33 : 0.45)), weight: 600, leader: c.phone ? false : undefined });
       }
       if (ci > 0 && L.band) {
         var bx = xs(rows[ci][ex]) + 8, bw = (back ? xs(back[ex]) : x1) - bx - 6;

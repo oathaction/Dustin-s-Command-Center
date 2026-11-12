@@ -31,7 +31,10 @@
         else c.rect(x, y, size, size, Object.assign({ fill: 'track' }, o));
         var ink = st === 'solid' ? 'label-on-subject' : 'label';
         if (codes) c.text(x + Math.min(5, (size - c.measure(r[ec], 'tick', 600) * tsize / c.size('tick')) / 2), y + 5 + tsize * 0.8, r[ec], { role: 'tick', size: tsize, weight: 600, fill: ink });
-        if (codes && esub && r[esub] !== null && r[esub] !== '' && size >= 34) c.text(x + 5, y + 8 + tsize * 1.85, K.fmt(r[esub], f.sub || 'text'), { role: 'tick', size: tsize, fill: ink });
+        // the second line where the tile holds it with 2 px to spare each side, set in from the left as the code is
+        // (D3-904's sweep found a year past its tile's edge at 436 to 509 px; placement only)
+        var subw = esub && r[esub] !== null && r[esub] !== '' ? c.measure(K.fmt(r[esub], f.sub || 'text'), 'tick') * tsize / c.size('tick') : 0;
+        if (codes && subw && size >= 34 && size - subw >= 4) c.text(x + Math.min(5, (size - subw) / 2), y + 8 + tsize * 1.85, K.fmt(r[esub], f.sub || 'text'), { role: 'tick', size: tsize, fill: ink });
       });
       Object.keys(G.tiles).forEach(function (k) { if (!drawn[k]) c.warn('no row for ' + k + '; every state and DC is drawn'); });
       // the key, in the grid's empty upper middle, or under the map on a phone
