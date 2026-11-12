@@ -383,6 +383,10 @@ From the round 1 review (`work/handoffs/phase-3/20261112_Round-1-Fix-Brief.md`, 
 |---|---|---|---|---|---|---|---|---|---|---|
 | P7-224 | fec-super-pacs-by-cycle | Federal Election Commission | api.open.fec.gov v1 /totals/pac-party/?cycle=<cycle>&committee_type=O, pagination count, every cycle 2010 to 2024 | Two-year cycles 2009 to 2010 through 2023 to 2024 | United States (federal elections) | Primary | Rule 14.13’s plate (ED-R2) | A count of committees, not of money: 80 in 2010 and 2,062 in 2024. Hybrid PACs, which also make unlimited independent expenditures, are not counted, and a late or amended filing can change a past cycle. The FEC’s own PAC count page returned 404 today | https://api.open.fec.gov/v1/totals/pac-party/?cycle=2024&committee_type=O | 2026-11-12 |
 
+| # | Dataset | Publisher | Table or series | Period | Geography | Status | Serves | Qualification that matters | URL | Checked |
+|---|---|---|---|---|---|---|---|---|---|---|
+| P7-225 | nps-national-park-recreation-visits-2025 | National Park Service | IRMA Visitor Use Statistics, recreation visits by park and month (irmaservices.nps.gov v3 stats visitation), summed to 2025 | Calendar year 2025 | The 15 most visited of the 63 national parks | Primary | Rule 14.6’s correct plate (ED-R3, D3-624) | A count of visits, not of separate people; national parks only. Great Smoky Mountains 11,527,939, Zion 4,984,525. The units sum to the system’s monthly totals | https://irmaservices.nps.gov/v3/rest/stats/visitation?startMonth=1&startYear=2025&endMonth=12&endYear=2025 | 2026-11-12 |
+
 ### Phase 5 refresh list
 
 Kept from November 12, 2026 (D3-476). Each round’s data stays frozen and is refreshed once, at Phase 5; this list names what is already known to have changed, or what to check, so the refresh starts here.

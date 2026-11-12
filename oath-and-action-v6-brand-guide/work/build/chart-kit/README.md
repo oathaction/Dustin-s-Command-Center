@@ -56,7 +56,7 @@ C1 covers the data folder, C2 the spec, C3 the command, C4 a form module and C5 
    ```
 
    The command checks the spec. It then draws the chart at 1440 and 390 px on Newsprint and Charcoal, and checks every
-   column width the guide gives a chart: 656, 558, 358, 296 and 256 px. It saves the exports, with a page for each
+   column width the guide gives a chart: 656, 558, 358, 326, 296 and 256 px, and a rule plate's narrower ones. It saves the exports, with a page for each
    drawing, to one folder per spec, and its last line names the folder (`wrote: ...`); `--out FOLDER` picks another. A fault says what to change. Run `node work/build/chart-kit/oa-chart.mjs check
    specs/s17.json` to check without drawing.
 

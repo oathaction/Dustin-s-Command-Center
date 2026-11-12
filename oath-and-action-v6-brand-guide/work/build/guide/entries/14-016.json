@@ -43,7 +43,7 @@
     "14.12",
     "14.6"
   ],
-  "builders": "Form column: node work/build/chart-kit/oa-chart.mjs build s17, or copy specs/s17.json and point it at a new dataset; labels.named names the column the title names and sets the rest in light gray, and labels.point with the same value draws it in red (Rule 14.6).",
+  "builders": "Form column: node work/build/chart-kit/oa-chart.mjs build s17, or copy specs/s17.json and point it at a new dataset; labels.point draws the column the title names in red with the rest in light gray, and labels.named sets it in the text’s ink instead (Rule 14.6).",
   "correct": null,
   "failure": null
 }

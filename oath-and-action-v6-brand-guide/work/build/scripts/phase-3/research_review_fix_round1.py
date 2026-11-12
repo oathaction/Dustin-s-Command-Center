@@ -730,8 +730,104 @@ def item_s11(dl):
         save(name, meta, nl)
 
 
+# ---------------------------------------------------------------------------------------------------------------
+# ed_r3: the editor's ED-R3 (D3-624, Rule 14.6's correct plate). Recreation visits to the 15 most visited national parks
+# in 2025, from the National Park Service's IRMA visitation service. National parks are the units the service names
+# "NP" or "NP & PRES", less Wolf Trap National Park for the Performing Arts: 63 parks. --dl holds the service's 2025
+# answers: visitation-2025.json (every unit, every month) and total-2025.json (the system's monthly totals).
+# ---------------------------------------------------------------------------------------------------------------
+NPS = 'nps-national-park-recreation-visits-2025'
+NPS_LINE = ('Source: National Park Service, Visitor Use Statistics (IRMA), recreation visits, 2025, the {n} most visited of the 63 national '
+            'parks, United States. Retrieved November 12, 2026. A count of visits, not of separate people; national parks only, not the '
+            'Service’s other sites.')
+
+
+def item_ed_r3(dl):
+    import collections
+    import re
+    if dl is None:
+        raise SystemExit('ed_r3 needs --dl <folder with visitation-2025.json and total-2025.json>')
+    v = json.loads((dl / 'visitation-2025.json').read_text(encoding='utf-8'))
+    tot = json.loads((dl / 'total-2025.json').read_text(encoding='utf-8'))
+    by_month = collections.Counter()
+    visits, months, name = collections.Counter(), collections.Counter(), {}
+    for r in v:
+        if r['Year'] != 2025:
+            raise SystemExit('a row outside 2025; nothing written')
+        by_month[r['Month']] += r['RecreationVisitors']
+        visits[r['UnitCode']] += r['RecreationVisitors']
+        months[r['UnitCode']] += 1
+        name[r['UnitCode']] = r['UnitName']
+    if any(by_month[t['Month']] != t['RecreationVisitors'] for t in tot):
+        raise SystemExit('the units do not sum to the system totals; nothing written')
+    parks = [c for c in visits if re.search(r' NP( & PRES)?$', name[c])]
+    if len(parks) != 63 or any(months[c] != 12 for c in parks):
+        raise SystemExit(f'{len(parks)} national parks, or a park without 12 months; nothing written')
+    top = sorted(parks, key=lambda c: (-visits[c], c))[:15]
+    rows = []
+    for i, c in enumerate(top, 1):
+        short = re.sub(r' NP( & PRES)?$', '', name[c])
+        full = short + (' National Park and Preserve' if name[c].endswith('& PRES') else ' National Park')
+        rows.append({'rank': i, 'unit_code': c, 'name_as_published': name[c], 'name': full, 'short_name': short,
+                     'recreation_visits': visits[c]})
+    out = io.StringIO()
+    w = csv.DictWriter(out, fieldnames=list(rows[0].keys()), lineterminator='\n')
+    w.writeheader()
+    w.writerows(rows)
+    p = DATA / f'{NPS}.csv'
+    if not p.exists() or p.read_text(encoding='utf-8') != out.getvalue():
+        p.write_text(out.getvalue(), encoding='utf-8')
+        print(f'wrote {p.relative_to(ROOT)}')
+    print('; '.join(f'{r["short_name"]} {r["recreation_visits"]:,}' for r in rows))
+    meta = {
+        'file': f'{NPS}.csv',
+        'kind': 'public',
+        'publisher': 'National Park Service',
+        'title_or_table': 'Integrated Resource Management Applications (IRMA) Visitor Use Statistics, recreation visits by park and month, summed to 2025',
+        'table_id': 'irmaservices.nps.gov v3 rest stats visitation, startMonth=1, startYear=2025, endMonth=12, endYear=2025, RecreationVisitors',
+        'url': ['https://irmaservices.nps.gov/v3/rest/stats/visitation?startMonth=1&startYear=2025&endMonth=12&endYear=2025',
+                'https://irmaservices.nps.gov/v3/rest/stats/total/2025', 'https://irma.nps.gov/Stats/'],
+        'observation_period': 'Calendar year 2025, January to December',
+        'geography': 'The 15 most visited of the 63 national parks',
+        'universe_or_base': ('Recreation visits to the units the Service names "NP" or "NP & PRES" (63 national parks, Wolf Trap National Park '
+                             'for the Performing Arts left out), ranked by their 2025 total'),
+        'unit': 'recreation visits, summed by Oath & Action from the monthly counts',
+        'date_retrieved': '2026-11-12',
+        'vintage': 'IRMA visitation statistics as the service answered on November 12, 2026, every month of 2025 reported for every park',
+        'qualification': ('A count of visits, not of separate people, as each park counts them; non-recreation visits, which the Service counts '
+                          'apart, are left out. National parks only: the Service’s other sites, such as parkways and recreation areas, are not ranked'),
+        'columns': {
+            'rank': {'type': 'integer', 'description': 'rank by 2025 recreation visits among the 63 national parks'},
+            'unit_code': {'type': 'id', 'description': 'the Service’s four-letter park code'},
+            'name_as_published': {'type': 'text', 'description': 'the park as the visitation service names it'},
+            'name': {'type': 'text', 'description': 'the park’s name in full, the service’s "NP" written out'},
+            'short_name': {'type': 'text', 'description': 'the park’s name without "National Park", as a chart prints it'},
+            'recreation_visits': {'type': 'integer', 'description': 'recreation visits in 2025, the 12 monthly counts summed', 'unit': 'visits'},
+        },
+        'printed_source_line': NPS_LINE.format(n=15),
+        'source_line_variants': {'top_12': NPS_LINE.format(n=12)},
+        'ledger_row': 'P7-225',
+        'domain': 'D04',
+        'domain_note': 'Visits to national parks measure the use of a public service a federal agency runs, the public services side of V7 domain D04',
+        'states': [],
+        'notes': [('Made November 12, 2026 for Rule 14.6’s correct plate (the editor’s ED-R3, D3-624). The 400 units in the service’s answer sum '
+                   f'to its own system totals in every month of 2025 (323,014,305 recreation visits), and each of the 63 parks reports all 12 months. '
+                   f'Files read: visitation-2025.json (SHA-256 prefix {sha_prefix(dl / "visitation-2025.json")}) and total-2025.json '
+                   f'({sha_prefix(dl / "total-2025.json")}).'),
+                  ('states is empty: the chart names parks, not states, and the 15 parks lie in many states; Great Smoky Mountains, the largest, '
+                   'spans Tennessee and North Carolina.')],
+        'unconfirmed': ['The Service’s own definition of a recreation visit was not read (its definitions page was not found); the qualification '
+                        'says only what the counts are'],
+    }
+    pm = DATA / f'{NPS}.meta.json'
+    text = json.dumps(meta, indent=1, ensure_ascii=False) + '\n'
+    if not pm.exists() or pm.read_text(encoding='utf-8') != text:
+        pm.write_text(text, encoding='utf-8')
+        print(f'wrote {pm.relative_to(ROOT)}')
+
+
 ITEMS = {'s24': item_s24, 's34': item_s34, 's31': item_s31, 's27': item_s27, 'bc_m3': item_bc_m3, 'bc_s20': item_bc_s20,
-         'ed_r1': item_ed_r1, 'ed_r2': item_ed_r2, 'ax_s1': item_ax_s1, 's11': item_s11}
+         'ed_r1': item_ed_r1, 'ed_r2': item_ed_r2, 'ax_s1': item_ax_s1, 's11': item_s11, 'ed_r3': item_ed_r3}
 
 
 def main(argv):

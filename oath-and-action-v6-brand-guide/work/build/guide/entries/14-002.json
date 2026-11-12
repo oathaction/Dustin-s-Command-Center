@@ -35,6 +35,10 @@
    "label": "Evidence label",
    "value": "On the chip fill, in the label style",
    "token": "oa.chart.color.chip.fill.onNewsprint"
+  },
+  {
+   "label": "Grade line for a count of the atlas’s records",
+   "value": "“Graded by the atlas, claim by claim: our count of its register of claims”, or record by record for its issue records, since the atlas grades each record and never the count (Rule 13.1)"
   }
  ],
  "correct": {

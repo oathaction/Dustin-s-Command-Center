@@ -107,9 +107,13 @@ function extra_island(res) {
   return out;
 }
 
-export const GUIDE_WIDTHS = [656, 558, 358, 296, 256];
+// access N2 (second pass): every width the strict build draws a chart at, measured in Chromium at 1440, 1024, 390, 360 and
+// 320 px: an entry's chart at 720, 558, 326, 296 and 256 (326 was not checked); a rule plate's at 675, 639, 510, 474, 325,
+// 294, 264, 243 and 224, its stage padded inside the plate (chapters 13 and 14)
+export const GUIDE_WIDTHS = [656, 558, 358, 326, 296, 256];
+export const PLATE_WIDTHS = [675, 639, 510, 474, 325, 294, 264, 243, 224];
 export function guide_widths(spec) {
-  return /^s-13-/i.test(String(spec.id)) ? GUIDE_WIDTHS.concat([243, 224]) : GUIDE_WIDTHS;
+  return /^s-1[34]-(?!s\d)/i.test(String(spec.id)) ? GUIDE_WIDTHS.concat(PLATE_WIDTHS) : GUIDE_WIDTHS;
 }
 
 // One spec, checked and drawn in Node at every width and ground

@@ -127,6 +127,10 @@
      "label": "Evidence label",
      "value": "On the chip fill, in the label style",
      "token": "oa.chart.color.chip.fill.onNewsprint"
+    },
+    {
+     "label": "Grade line for a count of the atlas’s records",
+     "value": "“Graded by the atlas, claim by claim: our count of its register of claims”, or record by record for its issue records, since the atlas grades each record and never the count (Rule 13.1)"
     }
    ],
    "related_rules": [
@@ -325,7 +329,7 @@
     "01",
     "05"
    ],
-   "builders": "Name the one point in the spec’s labels.named, which sets every other mark in the light fill, and again in labels.point, which draws it in red with its keyline; where a party tie gives it the subject ink, labels.named alone does. The kit counts working reds and fails a view with two.",
+   "builders": "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; where a party tie gives it the subject ink, labels.named does it instead. The kit counts working reds and fails a view with two.",
    "specs": [
     {
      "label": "The point",
@@ -605,7 +609,7 @@
    ],
    "correct": {
     "specimen": "s-14-11-correct",
-    "caption": "The line breaks where the survey changed, and each of those years prints both its estimates, so a change of method never reads as a change in income."
+    "caption": "The line breaks in 2013 and draws both of that year’s estimates, so a change of method never reads as a change in income; the table gives both estimates for 2013 and for 2017."
    },
    "failure": {
     "specimen": "s-14-11-failure",
@@ -815,7 +819,7 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "Form column: node work/build/chart-kit/oa-chart.mjs build s17, or copy specs/s17.json and point it at a new dataset; labels.named names the column the title names and sets the rest in light gray, and labels.point with the same value draws it in red (Rule 14.6).",
+   "builders": "Form column: node work/build/chart-kit/oa-chart.mjs build s17, or copy specs/s17.json and point it at a new dataset; labels.point draws the column the title names in red with the rest in light gray, and labels.named sets it in the text’s ink instead (Rule 14.6).",
    "related_rules": [
     "14.3",
     "14.4",

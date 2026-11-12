@@ -1318,6 +1318,9 @@
     };
     for (var i = 0; i < figs.length; i++) {
       var f = figs[i];
+      // access N3: a static figure (oa-chart.mjs figure) has no island and no drawing to make, but its table's frame still
+      // takes its tab stop when it scrolls
+      if (f.hasAttribute('data-oa-static')) { K.frame(f); continue; }
       if (!f.querySelector('script[data-oa-chart-data]')) continue;
       f.setAttribute('data-oa-js', '');
       var eq = f.querySelector('details.oac-eq[open]');
@@ -1351,6 +1354,62 @@
     if (eq) eq.removeAttribute('open');
     return K.mount(fig, spec, rows, opts || {});
   };
+  // Access S4 (second pass): a drawing taller than a printed page (9 in, 864 px) is one unbreakable box, which Chromium moves
+  // whole to the next page, leaving its title alone. Before print, such a drawing prints as slices of up to SLICE_PX each,
+  // cut in a gap between its words, every slice a copy of the drawing that shows one band of it; the first slice stays
+  // under the title (kit.css), the drawing on screen is untouched, and after print the slices go.
+  var SLICE_PX = 640, TALL_PX = 864;
+  K.print_slices = function (doc) {
+    Array.prototype.forEach.call(doc.querySelectorAll('figure.oac-fig .oac-art'), function (a) {
+      var svg = a.querySelector(':scope > svg.oac-svg');
+      if (!svg || a.querySelector(':scope > .oac-slices') || a.getBoundingClientRect().height <= TALL_PX) return;
+      var vb = (svg.getAttribute('viewBox') || '').split(/[\s,]+/).map(Number), W = vb[2], H = vb[3];
+      if (!(W > 0 && H > TALL_PX)) return;
+      // the words' bands in the drawing's own units, so no cut runs through a line of words
+      var sm = svg.getScreenCTM(), inv = sm && sm.inverse(), bands = [];
+      Array.prototype.forEach.call(svg.querySelectorAll('text'), function (t) {
+        var r = t.getBoundingClientRect();
+        if (!r.height || !inv) return;
+        var p0 = new DOMPoint(r.left, r.top).matrixTransform(inv), p1 = new DOMPoint(r.right, r.bottom).matrixTransform(inv);
+        bands.push([Math.min(p0.y, p1.y) - 2, Math.max(p0.y, p1.y) + 2]);
+      });
+      var clear = function (y) { return !bands.some(function (b) { return y > b[0] && y < b[1]; }); };
+      var cuts = [0], y = 0;
+      while (H - y > SLICE_PX) {
+        var cut = y + SLICE_PX;
+        for (var c = y + SLICE_PX; c > y + SLICE_PX / 2; c--) if (clear(c)) { cut = c; break; }
+        cuts.push(Math.round(cut));
+        y = Math.round(cut);
+      }
+      cuts.push(H);
+      var html = svg.outerHTML, ids = [], m, re = /\sid="([^"]+)"/g;
+      while ((m = re.exec(html))) ids.push(m[1]);
+      var box = doc.createElement('div');
+      box.className = 'oac-slices';
+      box.setAttribute('aria-hidden', 'true');
+      for (var k = 0; k + 1 < cuts.length; k++) {
+        var s = html;
+        ids.forEach(function (id) { s = s.split('id="' + id + '"').join('id="' + id + '-p' + k + '"').split('#' + id + ')').join('#' + id + '-p' + k + ')').split('#' + id + '"').join('#' + id + '-p' + k + '"'); });
+        box.insertAdjacentHTML('beforeend', s);
+        var sl = box.lastElementChild, h = cuts[k + 1] - cuts[k];
+        sl.setAttribute('viewBox', vb[0] + ' ' + (vb[1] + cuts[k]) + ' ' + W + ' ' + h);
+        sl.setAttribute('height', String(h));
+        sl.removeAttribute('aria-labelledby');
+        sl.removeAttribute('role');
+        sl.setAttribute('class', (sl.getAttribute('class') || '') + ' oac-slice');
+        Array.prototype.forEach.call(sl.querySelectorAll('title, desc'), function (x) { x.remove(); });
+      }
+      a.appendChild(box);
+      a.setAttribute('data-oa-sliced', String(cuts.length - 1));
+    });
+  };
+  K.print_unslice = function (doc) {
+    Array.prototype.forEach.call(doc.querySelectorAll('.oac-art[data-oa-sliced]'), function (a) {
+      var box = a.querySelector(':scope > .oac-slices');
+      if (box) box.remove();
+      a.removeAttribute('data-oa-sliced');
+    });
+  };
   K.draw_all = function () {
     // every figure not yet drawn, at once: before print, and for checks that read every drawing
     (K._pending || []).forEach(function (f) { if (K._go) K._go(f); });
@@ -1362,14 +1421,11 @@
     if (root.addEventListener) {
       root.addEventListener('beforeprint', function () {
         K.draw_all();
-        // access S4: a drawing taller than a printed page (9 in, 864 px) may break under its title
-        Array.prototype.forEach.call(root.document.querySelectorAll('figure.oac-fig .oac-art'), function (a) {
-          if (a.getBoundingClientRect().height > 864) a.setAttribute('data-oa-tall', ''); else a.removeAttribute('data-oa-tall');
-        });
+        K.print_slices(root.document);
         opened = Array.prototype.slice.call(root.document.querySelectorAll('figure.oac-fig details.oac-eq:not([open])'));
         opened.forEach(function (d) { d.setAttribute('open', ''); });
       });
-      root.addEventListener('afterprint', function () { opened.forEach(function (d) { d.removeAttribute('open'); }); opened = []; });
+      root.addEventListener('afterprint', function () { opened.forEach(function (d) { d.removeAttribute('open'); }); opened = []; K.print_unslice(root.document); });
     }
     if (root.document.readyState === 'loading') root.document.addEventListener('DOMContentLoaded', go); else setTimeout(go, 0);
   }

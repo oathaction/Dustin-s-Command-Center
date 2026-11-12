@@ -67,7 +67,7 @@
     ]
   },
   "chart_notes": [
-    "Circle area is in proportion to votes on cloture; the key shows 10, 100 and 300 votes. A dashed outline marks the 119th Congress, still in session.",
+    "Circle area is in proportion to votes on cloture; the key shows 10, 100 and 300 votes. The 116th Congress, 2019 and 2020, which the title names, is drawn solid in dark ink; the others are light gray with a thin outline. A dashed outline marks the 119th Congress, still in session.",
     "Labels: 298 votes in the Congress of 2019 and 2020.",
     "One sentence sums the 27 Congresses from 1917 to 1970, 49 votes in all. From 1971 each Congress is a circle, alternately above and below the line on a wide screen and on its own row with its count on a phone."
   ],
@@ -96,7 +96,8 @@
     "phone_from": 1971,
     "phone_before": "Before {from_x}, {n} Congresses held {sum} votes on ending debate in all, no more than {max} in any one.",
     "phone_value": "{value}",
-    "phone_partial": "{value} through November 10, 2026"
+    "phone_partial": "{value} through November 10, 2026",
+    "named": 116
   },
   "annotations": [
     {
@@ -122,7 +123,8 @@
     "Data lead DL-B11 applied: the title names the 119th Congress's 294 votes so far beside the 116th's 298. DL-B12 applied: phone 'differs' (DR-64, Rule 14.12); under 480 px the form sums the Congresses before 1971 in words and gives each later Congress its own row, same data and finding. Checked by script: 27 Congresses from 1917 to 1970 held 49 votes, at most 7. DL-R4 is with the research lead; note 1's 2013 and 2017 clause stays as written until it reports.",
     "Words pass (editor 45): the title drops the 119th Congress's 294 votes so far, which the data lead's DL-B11 had put in; note 3 keeps the figure. The two requests disagree, and the editor owns the words; flagged to the main session.",
     "Review fix pass: the 119th row is the research lead’s recount (295 votes on cloture through November 10, 2026, 248 invoked; statistics M3), so note 3, the alt text and the phone row carry 295 with its date (Rule 13.10); the sidecar’s printed line now names the date. Note 1 says \"a two-thirds vote\" until 1975, which holds through 1949 to 1959 when the base was the whole Senate (statistics S10); the Senate’s \"About Filibusters and Cloture\" page, read November 12, 2026, gives the 1917 two-thirds rule, the 1975 change to three-fifths and \"new precedents in the 2010s\" for nominations. The wide drawing sums the Congresses before 1971 in the phone’s sentence and sets the later circles alternately above and below the line, each touching it, at the largest size where no two on one side meet (creative director B-S1; the busy decades had merged into one mass); the dashed circle ends 8 px inside the edge (brand S15). The 116th and 119th stay in the subject ink with no red (data lead ruling b, D3-489). Checked by script (maker_b_figure_checks.py, check S34): 298 the most, in the 116th; 119th 295, still in session; 27 Congresses before 1971 with 49 votes, at most seven.",
-    "Review fix pass, second words: note 1 takes the editor’s words (statistics S10), which name the 1949 to 1959 base of two-thirds of the whole Senate. That fact rests on the statistics reviewer’s report and the editor; the Senate pages read November 12, 2026 do not name it, so the research lead may confirm it on a Senate or Congressional Research Service page."
+    "Review fix pass, second words: note 1 takes the editor’s words (statistics S10), which name the 1949 to 1959 base of two-thirds of the whole Senate. That fact rests on the statistics reviewer’s report and the editor; the Senate pages read November 12, 2026 do not name it, so the research lead may confirm it on a Senate or Congressional Research Service page.",
+    "Second pass (data lead’s held item, brand N6, access N2): the 116th Congress, which the title names, is drawn solid in the subject ink and every other circle in the light fill with a thin context outline (labels.named, Rule 14.6’s ink case under D3-489, no red); the 119th’s phone figure drops its bold, which only the named row keeps; the phone row wraps 6 px inside the drawing, so \"295 through November 10, 2026\" no longer runs past a 326 px column. The year lines already run under the circles, which are opaque; at 4x they show only in the gaps between circles."
   ],
   "phone_note": "On a phone each Congress since 1971 takes its own row with its circle and count, since the circles cannot sit apart on one line at that width. The sentence for the Congresses before 1971 prints at every width."
 }

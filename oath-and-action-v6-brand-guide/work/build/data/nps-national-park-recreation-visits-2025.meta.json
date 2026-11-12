@@ -1,0 +1,61 @@
+{
+ "file": "nps-national-park-recreation-visits-2025.csv",
+ "kind": "public",
+ "publisher": "National Park Service",
+ "title_or_table": "Integrated Resource Management Applications (IRMA) Visitor Use Statistics, recreation visits by park and month, summed to 2025",
+ "table_id": "irmaservices.nps.gov v3 rest stats visitation, startMonth=1, startYear=2025, endMonth=12, endYear=2025, RecreationVisitors",
+ "url": [
+  "https://irmaservices.nps.gov/v3/rest/stats/visitation?startMonth=1&startYear=2025&endMonth=12&endYear=2025",
+  "https://irmaservices.nps.gov/v3/rest/stats/total/2025",
+  "https://irma.nps.gov/Stats/"
+ ],
+ "observation_period": "Calendar year 2025, January to December",
+ "geography": "The 15 most visited of the 63 national parks",
+ "universe_or_base": "Recreation visits to the units the Service names \"NP\" or \"NP & PRES\" (63 national parks, Wolf Trap National Park for the Performing Arts left out), ranked by their 2025 total",
+ "unit": "recreation visits, summed by Oath & Action from the monthly counts",
+ "date_retrieved": "2026-11-12",
+ "vintage": "IRMA visitation statistics as the service answered on November 12, 2026, every month of 2025 reported for every park",
+ "qualification": "A count of visits, not of separate people, as each park counts them; non-recreation visits, which the Service counts apart, are left out. National parks only: the Service’s other sites, such as parkways and recreation areas, are not ranked",
+ "columns": {
+  "rank": {
+   "type": "integer",
+   "description": "rank by 2025 recreation visits among the 63 national parks"
+  },
+  "unit_code": {
+   "type": "id",
+   "description": "the Service’s four-letter park code"
+  },
+  "name_as_published": {
+   "type": "text",
+   "description": "the park as the visitation service names it"
+  },
+  "name": {
+   "type": "text",
+   "description": "the park’s name in full, the service’s \"NP\" written out"
+  },
+  "short_name": {
+   "type": "text",
+   "description": "the park’s name without \"National Park\", as a chart prints it"
+  },
+  "recreation_visits": {
+   "type": "integer",
+   "description": "recreation visits in 2025, the 12 monthly counts summed",
+   "unit": "visits"
+  }
+ },
+ "printed_source_line": "Source: National Park Service, Visitor Use Statistics (IRMA), recreation visits, 2025, the 15 most visited of the 63 national parks, United States. Retrieved November 12, 2026. A count of visits, not of separate people; national parks only, not the Service’s other sites.",
+ "source_line_variants": {
+  "top_12": "Source: National Park Service, Visitor Use Statistics (IRMA), recreation visits, 2025, the 12 most visited of the 63 national parks, United States. Retrieved November 12, 2026. A count of visits, not of separate people; national parks only, not the Service’s other sites."
+ },
+ "ledger_row": "P7-225",
+ "domain": "D04",
+ "domain_note": "Visits to national parks measure the use of a public service a federal agency runs, the public services side of V7 domain D04",
+ "states": [],
+ "notes": [
+  "Made November 12, 2026 for Rule 14.6’s correct plate (the editor’s ED-R3, D3-624). The 400 units in the service’s answer sum to its own system totals in every month of 2025 (323,014,305 recreation visits), and each of the 63 parks reports all 12 months. Files read: visitation-2025.json (SHA-256 prefix a6808098cd86ca10) and total-2025.json (3bcabc096e76536e).",
+  "states is empty: the chart names parks, not states, and the 15 parks lie in many states; Great Smoky Mountains, the largest, spans Tennessee and North Carolina."
+ ],
+ "unconfirmed": [
+  "The Service’s own definition of a recreation visit was not read (its definitions page was not found); the qualification says only what the counts are"
+ ]
+}

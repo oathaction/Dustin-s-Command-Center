@@ -308,3 +308,12 @@ Tested: Riddick’s chapter fetched from govinfo (SHA-256 prefix 950f4ccc948db7d
 Not tested: S34’s captures; the Congressional Record pages Riddick cites for each change.
 
 Change log: modified `work/build/scripts/phase-3/research_review_fix_round1.py` (the `s34` item), `work/build/data/senate-cloture-motions-by-congress.meta.json`, `work/research/20261021_Research-Ledger.md` (one line), this file (this section).
+
+- **ED-R3, Rule 14.6’s correct plate (D3-624).** `nps-national-park-recreation-visits-2025` (P7-225): the 15 most visited of the 63 national parks in 2025, from the National Park Service’s IRMA visitation service, with `rank`, `unit_code`, `name`, `short_name` and `recreation_visits`. Great Smoky Mountains leads with 11,527,939, more than twice Zion’s 4,984,525. Variant `top_12` serves a 12-row plate. Domain D04, with a note.
+
+- D3-xxx | Rule 14.6’s new data is national park recreation visits, 2025, the 15 most visited | The editor’s first choice: one clear largest, no party tie, a publisher no plate uses; the Service’s visitation service answered this container
+- D3-xxx | National parks are the units named "NP" or "NP & PRES", less Wolf Trap National Park for the Performing Arts | That rule gives 63, the Service’s count of national parks
+
+Tested: the service’s 2025 answer for all 400 units sums to its system totals in every month (323,014,305 visits); all 63 parks report 12 months; a rerun wrote nothing; the data check, 96 tables, 0 faults.
+Not tested: the Service’s definition of a recreation visit (its definitions page was not found), so the qualification says only what the counts are; no kit spec built on the file.
+Change log: created `work/build/data/nps-national-park-recreation-visits-2025.csv` and `.meta.json`; modified the script (`ed_r3`), the research ledger (P7-225) and this section.

@@ -36,12 +36,12 @@
  "grade_line": "Documented: a Census Bureau survey",
  "title": "Median household income stood at $87,460 in 2025, in 2025 dollars.",
  "measure_line": "Median household income in 2025 dollars, adjusted by the chained consumer price index, each year from 2005 to 2025, the two decades around the survey’s changes in 2013 and 2017, United States",
- "reading_guide": "The line breaks where the survey changed: new income questions in 2013 and a new processing system in 2017. Each of those years prints both estimates.",
+ "reading_guide": "The line breaks in 2013, where new income questions put the year’s two estimates $2,200 apart. A new processing system in 2017 put them $300 apart, too close to show as a break; the table prints both.",
  "notes": [
   "The 2025 figure carries a margin of error of ±$1,040 at 90 percent confidence."
  ],
  "source_line": "Source: U.S. Census Bureau, Income in the United States: 2025, Table 2, median household income, 1967 to 2025, United States. Retrieved November 11, 2026. Survey estimates in 2025 dollars with 90 percent margins of error; methods changed in several years, marked in the table.",
- "alt": "A line of median household income from 2005 to 2025, broken where the survey changed in 2013 and 2017, with both of each year’s estimates printed, ending at $87,460.",
+ "alt": "A line of median household income from 2005 to 2025, ending at $87,460, broken in 2013, where new survey questions put the year’s two estimates $2,200 apart. In 2017 a new processing system put them $300 apart, too close to show as a break.",
  "table": {
   "caption": "Median household income, 2025 dollars",
   "columns": [
@@ -102,15 +102,6 @@
    },
    "text": "New questions",
    "place": "above"
-  },
-  {
-   "at": {
-    "x": 2017,
-    "break": "5"
-   },
-   "text": "New processing",
-   "place": "below",
-   "dx": 44
   }
  ],
  "domain": "D08",

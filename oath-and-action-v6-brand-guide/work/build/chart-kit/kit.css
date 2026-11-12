@@ -12,6 +12,10 @@
 .oac-measure { margin: 10px 0 0; font: var(--oa-font-weight-regular) var(--oa-chart-type-measure-size)/var(--oa-chart-type-measure-leading) var(--oa-font-family-reading); color: var(--oa-color-text-secondary); max-width: 42em; text-wrap: pretty; }
 .oac-art { position: relative; margin: 28px 0 0; }
 .oac-art > svg.oac-svg { display: block; max-width: 100%; height: auto; overflow: visible; }
+.oac-slices { display: none; }
+/* access N3: a static figure's drawing keeps its true size, so its words never fall under 13 px; a column narrower than it
+   scrolls in the plate's frame */
+.oac-fig[data-oa-static] .oac-art > svg.oac-svg { max-width: none; }
 .oac-illus { margin: 0 0 8px; font: var(--oa-font-weight-semibold) 14px/20px var(--oa-font-family-reading); }
 .oac-vh, .oac-fig[data-oa-js] .oac-alt, .oac-fig[data-oa-static] .oac-alt { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 /* With scripts off (no data-oa-js on the figure), the description shows as words with a line saying the drawing needs
@@ -146,9 +150,12 @@
   .oac-fig { break-inside: auto; }
   .oac-ev, .oac-title, .oac-measure, .oac-guide, .oac-art, .oac-src, .oac-notes li, .oac-table tr { break-inside: avoid; }
   .oac-title, .oac-measure, .oac-guide { break-after: avoid; }
-  /* access S4: a drawing taller than a page breaks under its title rather than leaving the title alone on a page; kit.js
-     marks it before print */
-  .oac-art[data-oa-tall] { break-inside: auto; }
+  /* access S4 (second pass): a drawing taller than a page prints as kit.js's slices, each kept whole, the first under the
+     title; the drawing itself, one unbreakable box, does not print */
+  .oac-art[data-oa-sliced] { break-inside: auto; }
+  .oac-art[data-oa-sliced] > svg.oac-svg { display: none; }
+  .oac-art[data-oa-sliced] > .oac-slices { display: block; }
+  .oac-slices > svg.oac-slice { display: block; max-width: 100%; height: auto; overflow: hidden; break-inside: avoid; }
   .oac-tw { overflow: visible; }
   .oac-eq > summary::before { content: none; }
 }

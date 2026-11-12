@@ -13,7 +13,9 @@
  * With labels.phone_from on a wide drawing (round 1 fix pass, CD B-S1): the earlier periods are summed in the same words
  * as on a phone, and from phone_from on the circles sit alternately above and below the line, each touching it, with the
  * largest radius set so no two circles on one side meet; on one line, the circles of busy decades merged into one mass.
- * Maker B, round 1. */
+ * labels.named (a key or a list, second pass): the period a title names is drawn solid in the subject ink, and every other
+ * circle in the light fill with a thin outline in the context ink (palette rule R3, Rule 14.6's ink case); its phone
+ * figure alone is set bold. Maker B, round 1. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -21,13 +23,22 @@
     name: 'Bubble Timeline',
     family: 'change-over-time',
     encode: { key: 'id', x: 'time', size: 'number', complete: 'boolean?' },
-    labels: ['key_title', 'key_values', 'key_unit', 'partial', 'phone_from', 'phone_before', 'phone_value', 'phone_partial'],
+    labels: ['key_title', 'key_values', 'key_unit', 'partial', 'phone_from', 'phone_before', 'phone_value', 'phone_partial', 'named'],
     phone: 'differs',
     draw: function (c) {
       // an outline drawn as a path, so it can take a dash
-      var ring = function (x, y, r, dash) { c.path('M' + K.round(x - r) + ',' + K.round(y) + 'a' + K.round(r) + ',' + K.round(r) + ' 0 1,0 ' + K.round(2 * r) + ',0a' + K.round(r) + ',' + K.round(r) + ' 0 1,0 ' + K.round(-2 * r) + ',0', { stroke: 'subject', width: c.t('bubble-outline'), dash: dash, mark: false }); };
       var P = K.parts, L = c.labels, f = c.spec.formats || {}, W = c.width;
       var ek = c.field('key'), ex = c.field('x'), es = c.field('size'), ec = c.field('complete', false);
+      // a named period in the subject ink and the rest in the light fill (R3); with none named, every circle as before
+      var named = L.named === undefined || L.named === null ? null : [].concat(L.named).map(String);
+      var is_named = function (r) { return named !== null && named.indexOf(String(r[ek])) >= 0; };
+      var other = named ? (c.ground === 'charcoal' ? 'context' : 'light-fill') : 'band', edge = named ? 'context' : 'subject';
+      var ring = function (x, y, r, dash) { c.path('M' + K.round(x - r) + ',' + K.round(y) + 'a' + K.round(r) + ',' + K.round(r) + ' 0 1,0 ' + K.round(2 * r) + ',0a' + K.round(r) + ',' + K.round(r) + ' 0 1,0 ' + K.round(-2 * r) + ',0', { stroke: edge, width: c.t('bubble-outline'), dash: dash, mark: false }); };
+      var bubble = function (x, y, rad, r, v) {
+        var under = ec && r[ec] === false, nm = is_named(r);
+        c.circle(x, y, rad, { fill: under ? 'surface' : nm ? 'subject' : other, data: { key: r[ek], field: es, value: v }, area_of: { value: v, max_value: vmax, max_radius: rmax } });
+        if (under) ring(x, y, rad, '3 2'); else if (!nm) c.circle(x, y, rad, { stroke: edge, width: c.t('bubble-outline'), mark: false });
+      };
       var rows = c.rows.slice().sort(function (a, b) { return K.time(a[ex]) - K.time(b[ex]); });
       var vmax = Math.max.apply(null, rows.map(function (r) { return r[es] || 0; }));
       var rmax = c.t(c.phone ? 'bubble-radius-max-phone' : 'bubble-radius-max-mid');
@@ -56,8 +67,8 @@
         var kr = Math.max.apply(null, kv.map(function (v) { return Math.sqrt(v / vmax) * rmax; })), kx = 0, base = y + 2 * kr;
         kv.forEach(function (v) {
           var r = Math.sqrt(v / vmax) * rmax;
-          c.circle(kx + r, base - r, r, { fill: 'band', mark: false });
-          c.circle(kx + r, base - r, r, { stroke: 'subject', width: c.t('bubble-outline'), mark: false });
+          c.circle(kx + r, base - r, r, { fill: other, mark: false });
+          c.circle(kx + r, base - r, r, { stroke: edge, width: c.t('bubble-outline'), mark: false });
           var words = String(L.key_unit || '{value}').replace('{value}', K.fmt(v, f.size || 'integer'));
           var tb = c.text(kx + 2 * r + 6, base - 2, words, { role: 'tick' });
           kx = tb.x + tb.w + 18;
@@ -89,16 +100,15 @@
         late.forEach(function (r) { yw = Math.max(yw, c.measure(K.fmt(r[ex], f.x || 'year'), 'tick', 400, true)); });
         var pcx = Math.ceil(yw + 12 + rmax);
         late.forEach(function (r) {
-          var v = r[es] || 0, rad = rs(v), under = ec && r[ec] === false, big = v === lmax || under;
+          var v = r[es] || 0, rad = rs(v), under = ec && r[ec] === false, big = named ? is_named(r) : v === lmax;
           // the count beside the circle wraps under itself where the column is narrow (a no-break space keeps a date whole)
           var pw = String(under && L.phone_partial ? L.phone_partial : (L.phone_value || '{value}')).replace('{value}', K.fmt(v, f.size || 'integer'));
-          var ptx = pcx + rmax + 10, plh = Math.round(size * 1.25), pl = c.wrap(pw, 'label', W - ptx, big ? 700 : 400);
+          var ptx = pcx + rmax + 10, plh = Math.round(size * 1.25), pl = c.wrap(pw, 'label', W - ptx - 6, big ? 700 : 400);
           var h = Math.max(22, Math.ceil(2 * rad) + 6, pl.length * plh + 6), pcy = y + h / 2;
           c.text(0, pcy + c.size('tick') * 0.35, K.fmt(r[ex], f.x || 'year'), { role: 'tick', tnum: true });
           if (!v) c.line(pcx - 3, pcy, pcx + 3, pcy, { stroke: 'context', width: c.t('line-hairline'), data: { key: r[ek], field: es, value: 0 } });
           else {
-            c.circle(pcx, pcy, rad, { fill: under ? 'surface' : 'band', data: { key: r[ek], field: es, value: v }, area_of: { value: v, max_value: vmax, max_radius: rmax } });
-            if (under) ring(pcx, pcy, rad, '3 2'); else c.circle(pcx, pcy, rad, { stroke: 'subject', width: c.t('bubble-outline'), mark: false });
+            bubble(pcx, pcy, rad, r, v);
           }
           c.text(ptx, pcy + size * 0.35 - (pl.length - 1) * plh / 2, pw, { role: 'label', weight: big ? 700 : 400, tnum: true, max: W - ptx });
           y += h;
@@ -121,8 +131,7 @@
           var v = r[es] || 0, x = sx(K.time(r[ex])), rad = rs(v), up = i % 2 === 0;
           if (!v) { c.line(x, scy - 3, x, scy + 3, { stroke: 'context', width: c.t('line-hairline'), data: { key: r[ek], field: es, value: 0 } }); tops[String(r[ex])] = scy; return; }
           var ccy = up ? scy - rad : scy + rad, under = ec && r[ec] === false;
-          c.circle(x, ccy, rad, { fill: under ? 'surface' : 'band', data: { key: r[ek], field: es, value: v }, area_of: { value: v, max_value: vmax, max_radius: rmax } });
-          if (under) ring(x, ccy, rad, '3 2'); else c.circle(x, ccy, rad, { stroke: 'subject', width: c.t('bubble-outline'), mark: false });
+          bubble(x, ccy, rad, r, v);
           tops[String(r[ex])] = ccy - rad;
         });
         var say = sbot + c.size('tick') + 10;
@@ -155,8 +164,7 @@
         var v = r[es] || 0, x = xs(K.time(r[ex])), rad = rs(v);
         if (!v) { c.line(x, cy - 3, x, cy + 3, { stroke: 'context', width: c.t('line-hairline'), data: { key: r[ek], field: es, value: 0 } }); return; }
         var under = ec && r[ec] === false;
-        c.circle(x, cy, rad, { fill: under ? 'surface' : 'band', data: { key: r[ek], field: es, value: v }, area_of: { value: v, max_value: vmax, max_radius: rmax } });
-        if (under) ring(x, cy, rad, '3 2'); else c.circle(x, cy, rad, { stroke: 'subject', width: c.t('bubble-outline'), mark: false });
+        bubble(x, cy, rad, r, v);
       });
       // the axis: a year at each round step, thinned to fit
       var ay = cy + rmax + c.size('tick') + 8, step = 10;

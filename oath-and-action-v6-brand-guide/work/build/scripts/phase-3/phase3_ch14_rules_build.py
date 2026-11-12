@@ -595,7 +595,8 @@ def rule_14_2(B):
          "figure in seconds, and a chart that lacks a part shows the gap."],
         [("Order", "Evidence label and grade line, title, measure line, reading guide, chart, notes, source line, table"),
          ("Evidence label", "On the chip fill, in the label style", "oa.chart.color.chip.fill.onNewsprint"),
-         ],
+         ("Grade line for a count of the atlas’s records", "“Graded by the atlas, claim by claim: our count of its register of claims”, "
+          "or record by record for its issue records, since the atlas grades each record and never the count (Rule 13.1)")],
         ["13.1", "13.2", "13.6", "13.7", "14.13"],
         "Fill every word field of the spec, as the kit’s README sets out under “The keys a spec takes”; the kit prints the parts in this "
         "order and leaves out an empty one.",
@@ -835,7 +836,7 @@ def rule_14_6(B):
            table={"caption": "Judges in active service, by court of appeals",
                   "columns": [{"field": "short_name", "label": "Court", "format": "text", "row_header": True},
                               {"field": "judges", "label": "Judges", "format": "integer"}]},
-           encode={"category": "short_name", "value": "judges"}, labels={"named": "Ninth Circuit", "point": "Ninth Circuit"},
+           encode={"category": "short_name", "value": "judges"}, labels={"point": "Ninth Circuit"},
            domain="D05", states=[], notes_internal="Rule 14.6's correct plate: the one red point by name, from the kit (BC M2).")
     B.add("s-14-6-correct", chart("s-14-6-bars"), alt=f"One red bar, the one the title names, and every other court in gray. {title}.",
           notes="The kit draws it from the research lead's count of judges by court, made from the directory's rows.")
@@ -860,9 +861,8 @@ def rule_14_6(B):
          ("An error, a step or a party tie", "Charcoal at the subject weight, with the label", "oa.chart.color.subject.onNewsprint"),
          ("Red never", "Codes a series, a group or a step on a scale")],
         ["05.3", "05.5", "05.7", "01.1", "01.2", "14.7"],
-        "Name the one point in the spec’s labels.named, which sets every other mark in the light fill, and again in labels.point, which "
-        "draws it in red with its keyline; where a party tie gives it the subject ink, labels.named alone does. The kit counts working "
-        "reds and fails a view with two.",
+        "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; "
+        "where a party tie gives it the subject ink, labels.named does it instead. The kit counts working reds and fails a view with two.",
         B.plate("s-14-6-correct", "The title names the Ninth Circuit, and its bar alone takes the view’s red, inside its keyline, with every "
                                   "other court in gray."),
         B.plate("s-14-6-failure", fails("14.6", "Red falls on three courts while the title names one, so a reader cannot tell which bar the "
@@ -1170,8 +1170,10 @@ def rule_14_11(B):
     measure = ("Median household income in 2025 dollars, adjusted by the chained consumer price index, each year from 2005 to 2025, "
                "the two decades around the survey’s changes in 2013 and 2017, United States")
     lo, hi = 60000, 90000
-    guide = ("The line breaks where the survey changed: new income questions in 2013 and a new processing system in 2017. Each of those "
-             "years prints both estimates.")
+    gap13, gap17 = segs[1][0][1] - segs[0][-1][1], segs[1][-1][1] - segs[2][0][1]
+    need(gap13 == 2200 and gap17 == 300, f"the two breaks' gaps moved: {gap13}, {gap17}")
+    guide = (f"The line breaks in 2013, where new income questions put the year’s two estimates ${comma(gap13)} apart. A new processing "
+             f"system in 2017 put them ${comma(gap17)} apart, too close to show as a break; the table prints both.")
     # the Census Bureau's footnotes say what changed in each marked year; the table prints them in words
     changes = {"7": "Earlier income questions", "6": "New income questions", "5": "New processing system", "9": "Wider top income range",
                "3": "New population weights", "4": "New population weights", "8": "New population weights"}
@@ -1180,20 +1182,20 @@ def rule_14_11(B):
            reader_question="How has median household income changed, and where did the survey change?",
            evidence="finding", evidence_label="Finding", grade_line=g, title=title, measure_line=measure, reading_guide=guide,
            notes=[f"The 2025 figure carries a margin of error of ±${comma(moe)} at 90 percent confidence."], source_line=src(ds),
-           alt=f"A line of median household income from 2005 to 2025, broken where the survey changed in 2013 and 2017, with both of "
-               f"each year’s estimates printed, ending at ${comma(last[1])}.",
+           alt=f"A line of median household income from 2005 to 2025, ending at ${comma(last[1])}, broken in 2013, where new survey "
+               f"questions put the year’s two estimates ${comma(gap13)} apart. In 2017 a new processing system put them ${comma(gap17)} "
+               f"apart, too close to show as a break.",
            table={"caption": "Median household income, 2025 dollars",
                   "columns": [{"field": "year", "label": "Year", "format": "year", "row_header": True},
                               {"field": "footnotes", "label": "Change in the survey", "format": "text", "words": changes},
                               {"field": "median_income", "label": "Median income", "format": "dollars"}]},
            encode={"x": "year", "y": "median_income", "break": "footnotes"}, labels={"break_end": "7", "break_start": ["6", "5"]},
            formats={"y": "dollars", "y_tick": "dollars"}, scale={"y": [lo, hi]},
-           annotations=[{"at": {"x": 2013, "break": "6"}, "text": "New questions", "place": "above"},
-                        {"at": {"x": 2017, "break": "5"}, "text": "New processing", "place": "below", "dx": 44}],
+           annotations=[{"at": {"x": 2013, "break": "6"}, "text": "New questions", "place": "above"}],
            domain="D08", states=[], notes_internal="Rule 14.11's correct plate (BC M2): the kit breaks the line at the Census Bureau's "
                                                    "footnotes 7 and 6 (2013) and at 5 (2017).")
     B.add("s-14-11-correct", chart("s-14-11-line"),
-          alt=f"A line broken where the survey changed, with both estimates printed at each break. {title}.")
+          alt=f"A line broken where the survey’s questions changed in 2013, with both of that year’s estimates drawn. {title}.")
     # the failure draws at its partner's width and scale
     gl, yt = grid([60000, 70000, 80000, 90000], lo, hi, lambda t: f"${t // 1000},000")
     xp, yp = (lambda y: pct(y, 2005, 2025)), (lambda v: 100 - pct(v, lo, hi))
@@ -1214,8 +1216,8 @@ def rule_14_11(B):
          ("Preliminary", "An open mark and the word preliminary; the qualification names it (Rule 13.7)")],
         ["13.7", "14.37", "14.32"],
         "Mark breaks in the data’s break column and preliminary rows in its status column; the kit leaves the gap and opens the mark.",
-        B.plate("s-14-11-correct", "The line breaks where the survey changed, and each of those years prints both its estimates, so a "
-                                   "change of method never reads as a change in income."),
+        B.plate("s-14-11-correct", "The line breaks in 2013 and draws both of that year’s estimates, so a change of method never reads "
+                                   "as a change in income; the table gives both estimates for 2013 and for 2017."),
         B.plate("s-14-11-failure", fails("14.11", "One line runs through both of 2013’s estimates and both of 2017’s, so a change in the "
                                                   "survey’s questions draws as a jump in income.")),
         [ex("Median household income, 1967 to 2025", "D08", where="14.11")],
@@ -1310,7 +1312,7 @@ def rule_14_13(B):
            table={"caption": "Super PACs in the Federal Election Commission’s totals, by two-year cycle",
                   "columns": [{"field": "cycle", "label": "Cycle", "format": "year", "row_header": True},
                               {"field": "super_pacs", "label": "Super PACs", "format": "integer"}]},
-           encode={"x": "cycle", "y": "super_pacs"}, labels={"named": last, "point": last}, domain="D03", states=[],
+           encode={"x": "cycle", "y": "super_pacs"}, labels={"point": last}, domain="D03", states=[],
            notes_internal="Rule 14.13's correct plate: a still chart with every value printed and its table as live text.")
     # the failure: the same columns, the named one in its red and keyline as the kit draws it, with no values printed
     top = 2200
