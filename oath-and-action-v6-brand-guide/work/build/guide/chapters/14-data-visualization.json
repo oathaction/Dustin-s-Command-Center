@@ -65,12 +65,7 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
-    "14.29",
-    "14.15",
-    "14.133",
-    "14.134"
-   ],
+   "related": [],
    "builders": "Write reader_question in the spec first, then pick the form from the group whose question matches; the kit draws it with node work/build/chart-kit/oa-chart.mjs build <spec>.",
    "specs": [
     {
@@ -89,6 +84,12 @@
      "label": "Values to look up",
      "value": "A table, Rule 14.133"
     }
+   ],
+   "related_rules": [
+    "14.29",
+    "14.15",
+    "14.133",
+    "14.134"
    ],
    "correct": {
     "specimen": "s-14-1-correct",
@@ -116,11 +117,7 @@
     "oa.chart.color.chip.fill.onNewsprint"
    ],
    "related": [
-    "13.1",
-    "13.2",
-    "13.6",
-    "13.7",
-    "14.13"
+    "13"
    ],
    "builders": "Fill every word field of the spec under contract C2; the kit prints the parts in this order and leaves out an empty one.",
    "specs": [
@@ -150,6 +147,13 @@
      "value": "Every row the chart draws, folded under the source line as “The table and notes”"
     }
    ],
+   "related_rules": [
+    "13.1",
+    "13.2",
+    "13.6",
+    "13.7",
+    "14.13"
+   ],
    "correct": {
     "specimen": "s-14-2-correct",
     "caption": "The eight parts in order, each numbered where the kit prints it. The table sits folded under the source line."
@@ -176,8 +180,8 @@
     "oa.chart.color.label.onNewsprint"
    ],
    "related": [
-    "12.6",
-    "13.7"
+    "12",
+    "13"
    ],
    "builders": "Name each series in the spec's labels.series; the kit sets the names at the line ends and warns when one cannot fit.",
    "specs": [
@@ -198,6 +202,10 @@
      "label": "A key",
      "value": "Only for a code no label can carry, under the measure line, in the order the marks run (Rule 12.6)"
     }
+   ],
+   "related_rules": [
+    "12.6",
+    "13.7"
    ],
    "correct": {
     "specimen": "s-14-3-correct",
@@ -224,10 +232,7 @@
    "tokens": [
     "oa.chart.line.baseline"
    ],
-   "related": [
-    "14.23",
-    "14.29"
-   ],
+   "related": [],
    "builders": "The kit draws every bar and column from zero and fails a circle not sized by area; scale may set a line’s range, never a bar’s.",
    "specs": [
     {
@@ -247,6 +252,10 @@
      "label": "Circles",
      "value": "Area in proportion to the value, so the radius follows its square root"
     }
+   ],
+   "related_rules": [
+    "14.23",
+    "14.29"
    ],
    "correct": {
     "specimen": "s-14-4-correct",
@@ -277,9 +286,8 @@
     "oa.chart.color.magnitude.fill.step1.onNewsprint"
    ],
    "related": [
-    "01.3",
-    "05.7",
-    "14.8"
+    "01",
+    "05"
    ],
    "builders": "Name a color role in the form (seq-1 to seq-5, div-1 to div-5, cat-1 to cat-4, mag-1 to mag-4); a spec never names a color.",
    "specs": [
@@ -308,6 +316,11 @@
      "value": "One palette for each thing its colors encode"
     }
    ],
+   "related_rules": [
+    "01.3",
+    "05.7",
+    "14.8"
+   ],
    "correct": {
     "specimen": "s-14-5-correct",
     "caption": "The four palettes, each beside its one job and the question it answers. The fourth group ink always carries its hatch, so it reads apart from the third in grayscale."
@@ -335,10 +348,8 @@
     "oa.chart.color.subject.onNewsprint"
    ],
    "related": [
-    "05.3",
-    "05.5",
-    "05.7",
-    "01.1"
+    "01",
+    "05"
    ],
    "builders": "Name the one point in the spec (labels.named for the subject ink); the kit counts working reds and fails a view with two.",
    "specs": [
@@ -360,6 +371,12 @@
      "label": "Red never",
      "value": "Codes a series, a group or a step on a scale"
     }
+   ],
+   "related_rules": [
+    "05.3",
+    "05.5",
+    "05.7",
+    "01.1"
    ],
    "correct": {
     "specimen": "s-14-6-correct",
@@ -387,9 +404,8 @@
     "oa.chart.color.party.mark.onNewsprint"
    ],
    "related": [
-    "01.1",
-    "01.2",
-    "05.7"
+    "01",
+    "05"
    ],
    "builders": "Party data takes the party role in any form; the kit fails a party mark in Pillar Red or Prussian.",
    "specs": [
@@ -410,6 +426,11 @@
      "label": "Never",
      "value": "Red against blue, or Prussian for a party"
     }
+   ],
+   "related_rules": [
+    "01.1",
+    "01.2",
+    "05.7"
    ],
    "correct": {
     "specimen": "s-14-7-correct",
@@ -436,12 +457,7 @@
    "tokens": [
     "oa.chart.color.context.onNewsprint"
    ],
-   "related": [
-    "14.5",
-    "14.23",
-    "14.30",
-    "14.31"
-   ],
+   "related": [],
    "builders": "Use multi-line-highlight or small-multiple-bars for five or more groups; the kit fails a key of more than four inks.",
    "specs": [
     {
@@ -457,6 +473,12 @@
      "label": "Names",
      "value": "Every group named on the chart, in its panel or at its line’s end"
     }
+   ],
+   "related_rules": [
+    "14.5",
+    "14.23",
+    "14.30",
+    "14.31"
    ],
    "correct": {
     "specimen": "s-14-8-correct",
@@ -484,8 +506,7 @@
     "oa.chart.color.context.onNewsprint"
    ],
    "related": [
-    "13.5",
-    "13.1"
+    "13"
    ],
    "builders": "Carry each figure’s margin in its own column of the data; a form draws the interval from it and the note names the confidence.",
    "specs": [
@@ -506,6 +527,10 @@
      "label": "Counts",
      "value": "No sampling margin; they rank as they stand"
     }
+   ],
+   "related_rules": [
+    "13.5",
+    "13.1"
    ],
    "correct": {
     "specimen": "s-14-9-correct",
@@ -533,8 +558,7 @@
     "oa.chart.color.leader.onNewsprint"
    ],
    "related": [
-    "13.7",
-    "14.29"
+    "13"
    ],
    "builders": "Put the window's reason in measure_line and any event in annotations; the kit draws one line with no band.",
    "specs": [
@@ -555,6 +579,10 @@
      "label": "An inauguration",
      "value": "No band, color change or break at the date (H09)"
     }
+   ],
+   "related_rules": [
+    "13.7",
+    "14.29"
    ],
    "correct": {
     "specimen": "s-14-10-correct",
@@ -581,9 +609,7 @@
     "oa.chart.color.leader.onNewsprint"
    ],
    "related": [
-    "13.7",
-    "14.37",
-    "14.32"
+    "13"
    ],
    "builders": "Mark breaks in the data's break column and preliminary rows in its status column; the kit leaves the gap and opens the mark.",
    "specs": [
@@ -600,6 +626,11 @@
      "label": "Preliminary",
      "value": "An open mark and the word preliminary; the qualification names it (Rule 13.7)"
     }
+   ],
+   "related_rules": [
+    "13.7",
+    "14.37",
+    "14.32"
    ],
    "correct": {
     "specimen": "s-14-11-correct",
@@ -627,9 +658,7 @@
     "oa.chart.artboard.phone"
    ],
    "related": [
-    "06.3",
-    "14.16",
-    "14.25"
+    "06"
    ],
    "builders": "Set phone to differs and write phone_note in the spec when the form changes; the kit draws both and checks each at 358 px.",
    "specs": [
@@ -650,6 +679,11 @@
      "label": "Kept",
      "value": "Every row, the title, the finding and the source line"
     }
+   ],
+   "related_rules": [
+    "06.3",
+    "14.16",
+    "14.25"
    ],
    "correct": {
     "specimen": "s-14-12-correct",
@@ -675,9 +709,8 @@
    },
    "tokens": [],
    "related": [
-    "18.10",
-    "19.2",
-    "14.130"
+    "18",
+    "19"
    ],
    "builders": "Fill the spec's table under contract C2; the kit writes the table, and its check fails one whose rows differ from the data.",
    "specs": [
@@ -697,6 +730,11 @@
      "label": "Interactive layer",
      "value": "Adds to the still chart on the website, and drops nothing from it"
     }
+   ],
+   "related_rules": [
+    "18.10",
+    "19.2",
+    "14.130"
    ],
    "correct": {
     "specimen": "s-14-13-correct",
@@ -722,8 +760,7 @@
    },
    "tokens": [],
    "related": [
-    "18.14",
-    "14.13"
+    "18"
    ],
    "builders": "Run node work/build/chart-kit/oa-chart.mjs build <spec> --out <folder>; never edit an exported file, edit the spec and run it again.",
    "specs": [
@@ -739,6 +776,10 @@
      "label": "Names",
      "value": "Date, chart and form, ground and width, as the kit writes them (Rule 18.14)"
     }
+   ],
+   "related_rules": [
+    "18.14",
+    "14.13"
    ],
    "correct": {
     "specimen": "s-14-14-correct",
@@ -762,11 +803,12 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form ranked-bar: node work/build/chart-kit/oa-chart.mjs build s03, or copy specs/s03.json and point it at a new dataset; labels.parts names each part and its style.",
+   "related_rules": [
     "14.3",
     "14.4"
    ],
-   "builders": "Form ranked-bar: node work/build/chart-kit/oa-chart.mjs build s03, or copy specs/s03.json and point it at a new dataset; labels.parts names each part and its style.",
    "entry": true,
    "use_when": "The reader asks which category is biggest and by how much, among a dozen or fewer whose names are too long to sit under columns.",
    "use_instead": [
@@ -806,12 +848,13 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form column: node work/build/chart-kit/oa-chart.mjs build s17, or copy specs/s17.json and point it at a new dataset; labels.named names the columns set in ink.",
+   "related_rules": [
     "14.3",
     "14.4",
     "14.12"
    ],
-   "builders": "Form column: node work/build/chart-kit/oa-chart.mjs build s17, or copy specs/s17.json and point it at a new dataset; labels.named names the columns set in ink.",
    "entry": true,
    "use_when": "The reader asks how a handful of counts compare, or how one count changed across a few years or terms of office, and each value matters on its own.",
    "use_instead": [
@@ -854,11 +897,12 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form bar-benchmark-tick: node work/build/chart-kit/oa-chart.mjs build s18, or copy specs/s18.json and point it at a new dataset; encode.benchmark names the column the tick draws.",
+   "related_rules": [
     "14.3",
     "14.4"
    ],
-   "builders": "Form bar-benchmark-tick: node work/build/chart-kit/oa-chart.mjs build s18, or copy specs/s18.json and point it at a new dataset; encode.benchmark names the column the tick draws.",
    "entry": true,
    "use_when": "The reader asks how a group’s share compares with its size, or how each result compares with a target or a national figure.",
    "use_instead": [
@@ -897,11 +941,12 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form dot-plot: node work/build/chart-kit/oa-chart.mjs build s19, or copy specs/s19.json and point it at a new dataset; labels.reference names the row drawn as the line, labels.open the status drawn as an open dot.",
+   "related_rules": [
     "14.3",
     "14.11"
    ],
-   "builders": "Form dot-plot: node work/build/chart-kit/oa-chart.mjs build s19, or copy specs/s19.json and point it at a new dataset; labels.reference names the row drawn as the line, labels.open the status drawn as an open dot.",
    "entry": true,
    "use_when": "The reader asks where one item stands among dozens, such as their own state among 50, and the values sit far from zero or close together.",
    "use_instead": [
@@ -940,12 +985,13 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form dumbbell: node work/build/chart-kit/oa-chart.mjs build s04, or copy specs/s04.json and point it at a new dataset; labels.from and labels.to name the two series values.",
+   "related_rules": [
     "14.3",
     "14.4",
     "14.9"
    ],
-   "builders": "Form dumbbell: node work/build/chart-kit/oa-chart.mjs build s04, or copy specs/s04.json and point it at a new dataset; labels.from and labels.to name the two series values.",
    "entry": true,
    "use_when": "The reader asks how far apart two values are for each group, such as the same age group in two elections, and which way each one moved.",
    "use_instead": [
@@ -981,12 +1027,13 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form slope: node work/build/chart-kit/oa-chart.mjs build s20, or copy specs/s20.json and point it at a new dataset; labels.from and labels.to name the two times.",
+   "related_rules": [
     "14.3",
     "14.9",
     "14.10"
    ],
-   "builders": "Form slope: node work/build/chart-kit/oa-chart.mjs build s20, or copy specs/s20.json and point it at a new dataset; labels.from and labels.to name the two times.",
    "entry": true,
    "use_when": "The reader asks which items rose and which fell between two dates, and how their order changed.",
    "use_instead": [
@@ -1021,11 +1068,12 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form lollipop: node work/build/chart-kit/oa-chart.mjs build s21, or copy specs/s21.json and point it at a new dataset; labels.named lists the rows set in ink.",
+   "related_rules": [
     "14.3",
     "14.4"
    ],
-   "builders": "Form lollipop: node work/build/chart-kit/oa-chart.mjs build s21, or copy specs/s21.json and point it at a new dataset; labels.named lists the rows set in ink.",
    "entry": true,
    "use_when": "The reader asks which items lead a ranking of a dozen or more, and the values sit close enough that solid bars would form one dark block.",
    "use_instead": [
@@ -1061,13 +1109,14 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form grouped-bar: node work/build/chart-kit/oa-chart.mjs build s22, or copy specs/s22.json and point it at a new dataset; labels.series sets each series’ name and the order its bars draw.",
+   "related_rules": [
     "14.3",
     "14.5",
     "14.8",
     "14.9"
    ],
-   "builders": "Form grouped-bar: node work/build/chart-kit/oa-chart.mjs build s22, or copy specs/s22.json and point it at a new dataset; labels.series sets each series’ name and the order its bars draw.",
    "entry": true,
    "use_when": "The reader compares two to four series within each category first, such as men and women at each age, and across categories second.",
    "use_instead": [
@@ -1102,11 +1151,12 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form small-multiple-bars: node work/build/chart-kit/oa-chart.mjs build s23, or copy specs/s23.json and point it at a new dataset; encode.panel names the column that splits the panels, scale.x the scale they share.",
+   "related_rules": [
     "14.4",
     "14.8"
    ],
-   "builders": "Form small-multiple-bars: node work/build/chart-kit/oa-chart.mjs build s23, or copy specs/s23.json and point it at a new dataset; encode.panel names the column that splits the panels, scale.x the scale they share.",
    "entry": true,
    "use_when": "The reader asks how the same mix or ranking differs from group to group, such as the evidence grades behind each topic, or there are more groups than four inks can carry (Rule 14.8).",
    "use_instead": [
@@ -1137,10 +1187,11 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "No form: the kit draws no radar chart. The sketch is work/build/guide/specimens/s-14-24-sketch.html, drawn small; build the better choice with the dot-plot or small-multiple-bars form.",
+   "related_rules": [
     "14.4"
    ],
-   "builders": "No form: the kit draws no radar chart. The sketch is work/build/guide/specimens/s-14-24-sketch.html, drawn small; build the better choice with the dot-plot or small-multiple-bars form.",
    "entry": true,
    "use_when": "Never: a reader who asks how several groups compare across the same measures gets a truer answer from a dot plot or small-multiple bars.",
    "use_instead": [
@@ -1175,11 +1226,12 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form shift-arrows: node work/build/chart-kit/oa-chart.mjs build s11; encode from, to and shift, and the form draws the phone ranking under 480 px.",
+   "related_rules": [
     "14.7",
     "14.12"
    ],
-   "builders": "Form shift-arrows: node work/build/chart-kit/oa-chart.mjs build s11; encode from, to and shift, and the form draws the phone ranking under 480 px.",
    "entry": true,
    "use_when": "The reader asks which places moved, which way and how far, between two elections or two years.",
    "use_instead": [
@@ -1214,10 +1266,11 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form change-lollipop: node work/build/chart-kit/oa-chart.mjs build s24; give it two rows per item with labels.from and labels.to, or one change column as encode.value.",
+   "related_rules": [
     "14.4"
    ],
-   "builders": "Form change-lollipop: node work/build/chart-kit/oa-chart.mjs build s24; give it two rows per item with labels.from and labels.to, or one change column as encode.value.",
    "entry": true,
    "use_when": "The reader asks which places or groups moved most between two dates, and the size of each move matters more than where each one started.",
    "use_instead": [
@@ -1257,11 +1310,12 @@
     "oa.chart.color.diverging.fill.step2.onCharcoal",
     "oa.chart.color.diverging.fill.step4.onCharcoal"
    ],
-   "related": [
+   "related": [],
+   "builders": "Form diverging-bar: node work/build/chart-kit/oa-chart.mjs build s25; encode.include keeps small items in the table and out of the drawing.",
+   "related_rules": [
     "14.4",
     "14.5"
    ],
-   "builders": "Form diverging-bar: node work/build/chart-kit/oa-chart.mjs build s25; encode.include keeps small items in the table and out of the drawing.",
    "entry": true,
    "use_when": "The reader asks which items gained and which lost between two dates, and how much each moved.",
    "use_instead": [
@@ -1296,10 +1350,11 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form diverging-bar-arrows: node work/build/chart-kit/oa-chart.mjs build s26; encode the two sides’ counts as left and right, and the form draws their difference.",
+   "related_rules": [
     "14.7"
    ],
-   "builders": "Form diverging-bar-arrows: node work/build/chart-kit/oa-chart.mjs build s26; encode the two sides’ counts as left and right, and the form draws their difference.",
    "entry": true,
    "use_when": "The reader asks how big a lead was in each election or term, and when it passed from one side to the other.",
    "use_instead": [
@@ -1335,10 +1390,13 @@
    },
    "tokens": [],
    "related": [
+    "13"
+   ],
+   "builders": "Form line-event-notes: node work/build/chart-kit/oa-chart.mjs build s02; annotations place each note, and encode.break marks a method change.",
+   "related_rules": [
     "14.11",
     "13.2"
    ],
-   "builders": "Form line-event-notes: node work/build/chart-kit/oa-chart.mjs build s02; annotations place each note, and encode.break marks a method change.",
    "entry": true,
    "use_when": "The reader asks what happened to one measure and when, and a few dated events explain its turns.",
    "use_instead": [
@@ -1373,10 +1431,11 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form multi-line-highlight: node work/build/chart-kit/oa-chart.mjs build s05; labels.panels sets each panel’s group and order.",
+   "related_rules": [
     "14.8"
    ],
-   "builders": "Form multi-line-highlight: node work/build/chart-kit/oa-chart.mjs build s05; labels.panels sets each panel’s group and order.",
    "entry": true,
    "use_when": "The reader asks how far apart groups stand on one measure, and whether the gaps have closed.",
    "use_instead": [
@@ -1411,10 +1470,11 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form line-field: node work/build/chart-kit/oa-chart.mjs build s27; labels.lit names the series in ink and labels.named the gray lines named at the field’s edges.",
+   "related_rules": [
     "14.8"
    ],
-   "builders": "Form line-field: node work/build/chart-kit/oa-chart.mjs build s27; labels.lit names the series in ink and labels.named the gray lines named at the field’s edges.",
    "entry": true,
    "use_when": "The reader asks how one place or group moved against all the others, and the whole field matters as context.",
    "use_instead": [
@@ -1449,11 +1509,12 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form columns-moving-average: node work/build/chart-kit/oa-chart.mjs build s14; encode.status marks preliminary months.",
+   "related_rules": [
     "14.9",
     "14.11"
    ],
-   "builders": "Form columns-moving-average: node work/build/chart-kit/oa-chart.mjs build s14; encode.status marks preliminary months.",
    "entry": true,
    "use_when": "The reader asks how many were added or lost each month, and the trend matters more than any one month.",
    "use_instead": [
@@ -1524,10 +1585,11 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form area-sparklines: node work/build/chart-kit/oa-chart.mjs build s13; labels.panels sets the order and labels.context the gray line in every panel.",
+   "related_rules": [
     "14.8"
    ],
-   "builders": "Form area-sparklines: node work/build/chart-kit/oa-chart.mjs build s13; labels.panels sets the order and labels.context the gray line in every panel.",
    "entry": true,
    "use_when": "The reader asks which parts of a total grew and which shrank over the same span.",
    "use_instead": [
@@ -1562,10 +1624,11 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form area: node work/build/chart-kit/oa-chart.mjs build s29, or copy specs/s29.json and point it at a new dataset.",
+   "related_rules": [
     "14.4"
    ],
-   "builders": "Form area: node work/build/chart-kit/oa-chart.mjs build s29, or copy specs/s29.json and point it at a new dataset.",
    "entry": true,
    "use_when": "The reader asks how big a total is and how far it has grown or shrunk, and the amount itself carries the story.",
    "use_instead": [
@@ -1640,10 +1703,11 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form line-data-gap: node work/build/chart-kit/oa-chart.mjs build s31; leave the missing period’s cell empty in the data file and give the gap its words in labels.gap.",
+   "related_rules": [
     "14.11"
    ],
-   "builders": "Form line-data-gap: node work/build/chart-kit/oa-chart.mjs build s31; leave the missing period’s cell empty in the data file and give the gap its words in labels.gap.",
    "entry": true,
    "use_when": "The reader follows a monthly or yearly series with a period the publisher left blank, such as a month a survey did not run.",
    "use_instead": [
@@ -1674,10 +1738,11 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form timeline: node work/build/chart-kit/oa-chart.mjs build s09; labels.lanes names each thread and its question.",
+   "related_rules": [
     "14.12"
    ],
-   "builders": "Form timeline: node work/build/chart-kit/oa-chart.mjs build s09; labels.lanes names each thread and its question.",
    "entry": true,
    "use_when": "The reader asks what happened when, and which kind of change each event was.",
    "use_instead": [
@@ -1748,10 +1813,11 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form indexed-line: node work/build/chart-kit/oa-chart.mjs build s33; labels.base names the date that equals 100, and the form computes each index from the raw values.",
+   "related_rules": [
     "14.8"
    ],
-   "builders": "Form indexed-line: node work/build/chart-kit/oa-chart.mjs build s33; labels.base names the date that equals 100, and the form computes each index from the raw values.",
    "entry": true,
    "use_when": "The reader asks which of several measures grew fastest since a date, and their sizes are too far apart to share a scale in their own units.",
    "use_instead": [
@@ -1786,10 +1852,11 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form bubble-timeline: node work/build/chart-kit/oa-chart.mjs build s34; encode.complete false dashes a period still under way.",
+   "related_rules": [
     "14.4"
    ],
-   "builders": "Form bubble-timeline: node work/build/chart-kit/oa-chart.mjs build s34; encode.complete false dashes a period still under way.",
    "entry": true,
    "use_when": "The reader asks when something became common across a long span, and the exact count for each period matters less than the change in scale.",
    "use_instead": [
@@ -1825,9 +1892,12 @@
    },
    "tokens": [],
    "related": [
-    "13.8"
+    "13"
    ],
    "builders": "Form benefit-cliff: node work/build/chart-kit/oa-chart.mjs build s35; the form finds the largest drop and the climb back from the rows.",
+   "related_rules": [
+    "13.8"
+   ],
    "entry": true,
    "use_when": "The reader asks whether earning more leaves a family better off, and benefits that end at set earnings may say no.",
    "use_instead": [
@@ -1967,12 +2037,13 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form results-table: node work/build/chart-kit/oa-chart.mjs build s15, or copy specs/s15.json and point it at a new dataset; labels.lead names each side’s party in words.",
+   "related_rules": [
     "14.3",
     "14.7",
     "14.12"
    ],
-   "builders": "Form results-table: node work/build/chart-kit/oa-chart.mjs build s15, or copy specs/s15.json and point it at a new dataset; labels.lead names each side’s party in words.",
    "entry": true,
    "use_when": "The reader looks up how one place voted and how far it moved since the last election, among every state.",
    "use_instead": [
@@ -2008,11 +2079,12 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form ranked-register: node work/build/chart-kit/oa-chart.mjs build s36, or copy specs/s36.json and point it at a new dataset; labels.divide, prefix and suffix set how each amount prints.",
+   "related_rules": [
     "14.3",
     "14.4"
    ],
-   "builders": "Form ranked-register: node work/build/chart-kit/oa-chart.mjs build s36, or copy specs/s36.json and point it at a new dataset; labels.divide, prefix and suffix set how each amount prints.",
    "entry": true,
    "use_when": "The reader asks who leads a list of a dozen or more and wants to find a name and read its exact amount, such as the largest independent spenders in an election.",
    "use_instead": [
@@ -2052,11 +2124,12 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form comparison-matrix: copy specs/s06.json, set form to comparison-matrix and point it at a new dataset; it prints the words alone, and scenario-directions adds the glyphs and tints.",
+   "related_rules": [
     "14.12",
     "14.76"
    ],
-   "builders": "Form comparison-matrix: copy specs/s06.json, set form to comparison-matrix and point it at a new dataset; it prints the words alone, and scenario-directions adds the glyphs and tints.",
    "entry": true,
    "use_when": "The reader weighs a few options across the same criteria, and the source describes each cell in words that do not reduce to a number.",
    "use_instead": [
@@ -2091,12 +2164,13 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form sparkline-table: S13 draws it as its totals rows above the panels (node work/build/chart-kit/oa-chart.mjs build s13); for a table alone, copy specs/s13.json, set form to sparkline-table and list the printed columns in encode.columns.",
+   "related_rules": [
     "14.10",
     "14.33",
     "14.34"
    ],
-   "builders": "Form sparkline-table: S13 draws it as its totals rows above the panels (node work/build/chart-kit/oa-chart.mjs build s13); for a table alone, copy specs/s13.json, set form to sparkline-table and list the printed columns in encode.columns.",
    "entry": true,
    "use_when": "The reader looks up a handful of series, such as all jobs and its parts, and wants each one’s latest figure with a sense of how it got there.",
    "use_instead": [
@@ -2130,11 +2204,14 @@
    },
    "tokens": [],
    "related": [
+    "13"
+   ],
+   "builders": "Form heat-table: node work/build/chart-kit/oa-chart.mjs build s37, or copy specs/s37.json and point it at a new dataset; labels.steps orders the scale and labels.columns the columns.",
+   "related_rules": [
     "13.10",
     "14.5",
     "14.12"
    ],
-   "builders": "Form heat-table: node work/build/chart-kit/oa-chart.mjs build s37, or copy specs/s37.json and point it at a new dataset; labels.steps orders the scale and labels.columns the columns.",
    "entry": true,
    "use_when": "The reader looks across dozens of rows and several columns for a pattern, such as which routes the atlas rates feasible for which reforms, and each cell holds one rating or a small number.",
    "use_instead": [
@@ -2171,12 +2248,15 @@
    },
    "tokens": [],
    "related": [
+    "18"
+   ],
+   "builders": "Form filterable-lookup-table: node work/build/chart-kit/oa-chart.mjs build s38, or copy specs/s38.json and point it at a new dataset; the spec's lookup key names the searched columns and the filters, and labels.still the filter the still image shows.",
+   "related_rules": [
     "18.10",
     "18.15",
     "18.16",
     "14.13"
    ],
-   "builders": "Form filterable-lookup-table: node work/build/chart-kit/oa-chart.mjs build s38, or copy specs/s38.json and point it at a new dataset; the spec's lookup key names the searched columns and the filters, and labels.still the filter the still image shows.",
    "entry": true,
    "use_when": "The reader comes with a question of their own and needs to find the few records that answer it in a register of dozens or hundreds, on the atlas site or in a report.",
    "use_instead": [
@@ -2212,11 +2292,14 @@
    },
    "tokens": [],
    "related": [
+    "13"
+   ],
+   "builders": "Form evidence-table: node work/build/chart-kit/oa-chart.mjs build s39, or copy specs/s39.json and point it at a new dataset; labels.grades prints each grade’s word and labels.heads the short heads.",
+   "related_rules": [
     "13.2",
     "13.3",
     "13.10"
    ],
-   "builders": "Form evidence-table: node work/build/chart-kit/oa-chart.mjs build s39, or copy specs/s39.json and point it at a new dataset; labels.grades prints each grade’s word and labels.heads the short heads.",
    "entry": true,
    "use_when": "The reader asks what the evidence says on a subject and how far to trust each piece of it, as when weighing claims about drug prices.",
    "use_instead": [
@@ -2252,12 +2335,15 @@
    },
    "tokens": [],
    "related": [
+    "11"
+   ],
+   "builders": "Form tracker-list: node work/build/chart-kit/oa-chart.mjs build s40, or copy specs/s40.json and point it at a new dataset; encode.step and encode.skipped give each bill’s steps, labels.steps their names.",
+   "related_rules": [
     "11.1",
     "11.2",
     "11.3",
     "11.5"
    ],
-   "builders": "Form tracker-list: node work/build/chart-kit/oa-chart.mjs build s40, or copy specs/s40.json and point it at a new dataset; encode.step and encode.skipped give each bill’s steps, labels.steps their names.",
    "entry": true,
    "use_when": "The reader asks where a set of bills or rules stands today, and what has happened to each, for the Track pillar.",
    "use_instead": [
@@ -2288,11 +2374,12 @@
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
    "tokens": [],
-   "related": [
+   "related": [],
+   "builders": "Form plain-table: node work/build/chart-kit/oa-chart.mjs build s41, or copy specs/s41.json and point it at a new dataset; encode.columns lists the value columns in order.",
+   "related_rules": [
     "14.2",
     "14.13"
    ],
-   "builders": "Form plain-table: node work/build/chart-kit/oa-chart.mjs build s41, or copy specs/s41.json and point it at a new dataset; encode.columns lists the value columns in order.",
    "entry": true,
    "use_when": "The reader wants to look up a few exact values, such as three survey shares, and their sizes are close enough that bars would only repeat the numbers.",
    "use_instead": [
@@ -2332,11 +2419,14 @@
    },
    "tokens": [],
    "related": [
+    "13"
+   ],
+   "builders": "Form one-sentence: node work/build/chart-kit/oa-chart.mjs build s42; labels.sentence carries the sentence, and show leaves out the printed title so it appears once.",
+   "related_rules": [
     "13.2",
     "13.6",
     "14.13"
    ],
-   "builders": "Form one-sentence: node work/build/chart-kit/oa-chart.mjs build s42; labels.sentence carries the sentence, and show leaves out the printed title so it appears once.",
    "entry": true,
    "use_when": "The answer is one finding of one or two figures, such as how many voters in each party favored a ban, and a reader would take longer to read a chart than the sentence.",
    "use_instead": [

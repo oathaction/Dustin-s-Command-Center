@@ -182,7 +182,7 @@ OLD_08_REFS = [
     "40 px, bottom right, inside the margin (Rule 08.2)",
 ]
 XREF_SKIP_KEYS = {"specimen", "id", "after_rule", "before_rule", "token", "tokens", "files", "number", "anchor", "part", "planned_rules",
-                  "chapter", "related", "_legacy_file", "notes", "opener", "set"}
+                  "chapter", "related", "related_rules", "_legacy_file", "notes", "opener", "set"}
 
 
 def cited_rules(text):
