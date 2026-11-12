@@ -4179,3 +4179,14 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-420 | S25's title follows the data, "33 of the 37 largest in January 2022 shrank", where the editor's wording would have named the 37 largest in August 2026 | By August 2026 one of the 37 ranked below agencies outside them; a title states what the data shows (Rule 13.1) |
 | D3-421 | S34's title takes the editor's wording without the 119th Congress's count, which stays in note 3 | The 119th Congress is still sitting, so a count to date in a title can read as a final figure; the note gives it with its date. The review may reopen it |
 | D3-422 | The last open item for the engineer was already done: "contract C2" left the builders lines of entries 14-002 and 14-013 in the editor's fix, so the V7 check passes on the current page | The engineer read an earlier build |
+
+### Maker B, round 1 words pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-423 | Editor 6, S25's title, reads "33 of the 37 largest in January 2022 shrank" in place of "33 of the 37 largest shrank" | Checked by script: the 37 drawn are the 37 largest in January 2022, not in August 2026, when the Agency for International Development had 229 employees and agencies outside the 37 had up to 724 |
+| D3-424 | Editor 45, S34's title, drops the 119th Congress's 294 votes so far that the data lead's DL-B11 put in; note 3 keeps the figure | The editor owns the words; the two requests disagree, so the main session may want the data lead to confirm |
+| D3-425 | Editor 39, S32's straight apostrophes: two summaries in `govinfo-pl-119-75-effective-dates.csv` print "plans'"; the spec prints them curled through `labels.words` (a new key on `implementation-timeline`) and the table column's `words` | The data file is the research lead's (R-B13); the sidecar's printed source line also carries straight double quotes around "months after enactment", which a spec cannot change under C2 |
+| D3-426 | Editor 53 to 55: `caption` keys on entries 14.28, 14.36 and 14.39 | The plan's reader questions print a straight apostrophe, and 14.39's caption takes the law's own term |
+| D3-427 | Editor 9: entry 14.29 now cites Rule 14.4 in `related` | The rule's new words cite it |
+| D3-428 | S05 takes the kit's gap brackets and 2003 tick (D3-191, E13); note 1 gives the two changes and their margins, and the brackets carry the four gaps | The note no longer repeats what the drawing shows; the chart note describes the brackets for the table |
