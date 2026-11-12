@@ -15,7 +15,7 @@
       "rule": "14.15"
     },
     {
-      "when": "The items are not seats and a grid reads better",
+      "when": "The items are things other than seats, counted one by one",
       "rule": "14.49"
     }
   ],

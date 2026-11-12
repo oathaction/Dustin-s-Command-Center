@@ -469,7 +469,7 @@
   "chapter": "14",
   "rule": "14.47",
   "width_px": null,
-  "alt": "Bars split each state’s households into renters and owners, sorted by the renter share, with a line at half. Only the District of Columbia’s renters, 62 percent, pass the line; New York, 46 percent, and California, 44 percent, come next, and the United States as a whole is 35 percent.",
+  "alt": "Bars split each state’s households into renters and owners, sorted by the renter share, with a line at half and the United States first, at 35 percent renters. Only the District of Columbia’s renters, 62 percent, pass the line; New York, 46 percent, and California, 44 percent, come next.",
   "illustrative": false,
   "notes": "S43, stacked-share-bar: the chart kit draws it from work/build/chart-kit/specs/s43.json (contract R1-C3)"
  },
@@ -501,7 +501,7 @@
   "chapter": "14",
   "rule": "14.51",
   "width_px": null,
-  "alt": "Stacked bands of the nation’s health spending by who paid, 1960 to 2024.",
+  "alt": "Stacked bands of the nation’s health spending by who paid, as shares of each year from 1960 to 2024. Private insurance paid 21 percent in 1960 and 31 percent in 2024; Medicare and Medicaid, which began in 1966, paid 21 and 18 percent in 2024; all other sources, out of pocket the largest, fell from 79 percent to 30.",
   "illustrative": false,
   "notes": "S46, stacked-area: the chart kit draws it from work/build/chart-kit/specs/s46.json (contract R1-C3)"
  },
@@ -509,7 +509,7 @@
   "chapter": "14",
   "rule": "14.52",
   "width_px": null,
-  "alt": "Tiles sized by fiscal 2026 outlays for each budget function.",
+  "alt": "Tiles sized by fiscal 2026 net outlays for each budget function with positive outlays. Social Security, $1,667.1 billion, is the largest, then Medicare, $1,072.6 billion, net interest, $1,051.8 billion, health, $1,025.6 billion, and national defense, $965.2 billion.",
   "illustrative": false,
   "notes": "S47, treemap: the chart kit draws it from work/build/chart-kit/specs/s47.json (contract R1-C3)"
  },
@@ -555,6 +555,182 @@
   "illustrative": true,
   "alt": "A tilted 3D pie draws two equal illustrative shares so the nearer one looks larger, and flat bars of the same values show them as equal lengths. The pie’s depth adds ink and no value.",
   "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
+ },
+ "s-14-s49": {
+  "chapter": "14",
+  "rule": "14.58",
+  "width_px": null,
+  "alt": "Columns count federal judges in active service by years since their first appointment, in two-year bins from 0 to 44 years. The tallest column, 6 to under 8 years, holds 130 of the 845 judges; counts thin out past 16 years, and the median is 8.0 years.",
+  "illustrative": false,
+  "notes": "S49, histogram: the chart kit draws it from work/build/chart-kit/specs/s49.json (contract R1-C3)"
+ },
+ "s-14-s50": {
+  "chapter": "14",
+  "rule": "14.59",
+  "width_px": null,
+  "alt": "Dots place the 50 states by state taxes collected per resident in fiscal 2025, around a dashed line for all 50 states at $4,526. Vermont collected the most, $8,052, and Alaska the least, $2,290; most states sit between about $2,700 and $5,000.",
+  "illustrative": false,
+  "notes": "S50, beeswarm: the chart kit draws it from work/build/chart-kit/specs/s50.json (contract R1-C3)"
+ },
+ "s-14-s51": {
+  "chapter": "14",
+  "rule": "14.60",
+  "width_px": null,
+  "alt": "Box plots of county uninsured rates for people under 65 in 2024, one row per Census region. The median county runs from 7.2 percent in the Northeast to 13.9 percent in the South, whose middle half spans 11.0 to 17.9 percent, the widest of the four; 62 counties sit above their region’s whiskers.",
+  "illustrative": false,
+  "notes": "S51, box-plot: the chart kit draws it from work/build/chart-kit/specs/s51.json (contract R1-C3)"
+ },
+ "s-14-s52": {
+  "chapter": "14",
+  "rule": "14.61",
+  "width_px": null,
+  "alt": "Two stepped outlines count counties by child poverty rate in two-point bins, 2019 in gray and 2024 in dark ink. The 2024 outline sits to the left of 2019’s: the most common bin moved from 18 to under 20 percent in 2019 to 14 to under 16 percent in 2024, and the median county fell from 18.7 to 17.1 percent.",
+  "illustrative": false,
+  "notes": "S52, line-histogram: the chart kit draws it from work/build/chart-kit/specs/s52.json (contract R1-C3)"
+ },
+ "s-14-s53": {
+  "chapter": "14",
+  "rule": "14.62",
+  "width_px": null,
+  "alt": "A population pyramid for July 1, 2025, one bar per year of age, men on the left and women on the right. The bars for ages 55 to 64, 41.2 million people, are red; the largest single ages sit in the 20s and 30s, and the bars narrow past the late 60s.",
+  "illustrative": false,
+  "notes": "S53, population-pyramid: the chart kit draws it from work/build/chart-kit/specs/s53.json (contract R1-C3)"
+ },
+ "s-14-63-sketch": {
+  "chapter": "14",
+  "rule": "14.63",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "Three violins, each a mirrored density shape with its quartile box and median inside, side by side on one scale; the middle group has two humps that a box plot alone would hide.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-64-sketch": {
+  "chapter": "14",
+  "rule": "14.64",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "Five filled curves on evenly spaced baselines, one row a year, whose peak drifts to the right from the top row to the bottom.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-65-sketch": {
+  "chapter": "14",
+  "rule": "14.65",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "A field of hexagons shaded from light to dark by how many points fall in each, densest along a rising diagonal, with a three-step key.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-66-sketch": {
+  "chapter": "14",
+  "rule": "14.66",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "Three nested contour rings around the densest part of a point cloud, the inner ring darkest, with a few points outside the outer ring.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-s54": {
+  "chapter": "14",
+  "rule": "14.67",
+  "width_px": null,
+  "alt": "A scatter plot of 50 states and DC: median gross rent against renter households’ median income in 2025. The dots climb from lower left to upper right, from West Virginia’s $921 rent to California’s $2,160. Florida, named in dark ink, sits above the cloud: its rent takes 35.5 percent of renters’ income, the largest share.",
+  "illustrative": false,
+  "notes": "S54, scatter-named: the chart kit draws it from work/build/chart-kit/specs/s54.json (contract R1-C3)"
+ },
+ "s-14-s55": {
+  "chapter": "14",
+  "rule": "14.68",
+  "width_px": null,
+  "alt": "A bubble chart of 50 states and DC: median gross rent against renter households’ median income in 2025, each circle sized by renter households. The circles climb from lower left to upper right; California’s 6.2 million renter households make the largest circle, at the top right. Florida, in dark ink, sits above the cloud with the largest rent share, 35.5 percent.",
+  "illustrative": false,
+  "notes": "S55, bubble-scatter: the chart kit draws it from work/build/chart-kit/specs/s55.json (contract R1-C3)"
+ },
+ "s-14-s56": {
+  "chapter": "14",
+  "rule": "14.69",
+  "width_px": null,
+  "alt": "A connected scatter of quarterly unemployment rates against job openings from early 2001 to mid 2026. The path swings out to 13.0 percent unemployment in the spring of 2020 and up to 11.7 million openings in early 2022, then settles near 4.1 percent and 7.3 million in the latest quarter. It breaks at the end of 2025, when no rate was published for October.",
+  "illustrative": false,
+  "notes": "S56, connected-scatter: the chart kit draws it from work/build/chart-kit/specs/s56.json (contract R1-C3)"
+ },
+ "s-14-70-sketch": {
+  "chapter": "14",
+  "rule": "14.70",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "A five-by-five grid of squares, each shaded on a diverging scale by the correlation between two variables, dark at the strongest pairs and pale near zero.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-71-sketch": {
+  "chapter": "14",
+  "rule": "14.71",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "A three-by-three grid: small scatter plots of each pair of three variables off the diagonal, and a small histogram of each variable on it.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-72-sketch": {
+  "chapter": "14",
+  "rule": "14.72",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "A curved path with dots at equal time steps, spaced wide where change ran fast and close together where it slowed, from a start dot to an end dot.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-73-sketch": {
+  "chapter": "14",
+  "rule": "14.73",
+  "width_px": null,
+  "illustrative": true,
+  "alt": "The same two invented series drawn twice: on two value scales the lines cross in the middle, and in two aligned panels, each on its own scale from zero, neither line crosses anything, so no false meeting point appears.",
+  "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
+ },
+ "s-14-s57": {
+  "chapter": "14",
+  "rule": "14.74",
+  "width_px": null,
+  "alt": "Dots with margin of error lines for the 50 states and DC around the nation’s 82.0 percent. Fourteen filled dots above the nation’s line and 12 below it differ from it by more than the margin of error; the open dots of the other 25 states sit within it.",
+  "illustrative": false,
+  "notes": "S57, range-bar: the chart kit draws it from work/build/chart-kit/specs/s57.json (contract R1-C3)"
+ },
+ "s-14-s58": {
+  "chapter": "14",
+  "rule": "14.75",
+  "width_px": null,
+  "alt": "A line of median household income from 1967 to 2025 in 2025 dollars, with a light band for each year’s margin of error. It rises from $56,230 in 1967 to $87,460 in 2025, the highest of the series, and breaks in 2013, where new survey questions put the year’s two estimates $2,200 apart. In 2017 a new processing system put them $300 apart, too close to show as a break.",
+  "illustrative": false,
+  "notes": "S58, line-confidence-band: the chart kit draws it from work/build/chart-kit/specs/s58.json (contract R1-C3)"
+ },
+ "s-14-s06": {
+  "chapter": "14",
+  "rule": "14.76",
+  "width_px": null,
+  "alt": "A table of eight scenarios for 2036 against four outcome families: quality of democracy, government efficacy, economic performance, and income and wealth equality. Each cell gives the atlas’s direction words with Oath & Action’s arrow. Five of the seven scenarios beyond the baseline would lift at least one family if their assumptions hold, and in the baseline each family stays flat or falls.",
+  "illustrative": false,
+  "notes": "S06, scenario-directions: the chart kit draws it from work/build/chart-kit/specs/s06.json (contract R1-C3)"
+ },
+ "s-14-s59": {
+  "chapter": "14",
+  "rule": "14.77",
+  "width_px": null,
+  "alt": "A fan chart of the unemployment rate projected for 2026 to 2029. The median holds at 4.1 percent each year, inside a narrow band for the range of all officials’ projections and a wide band from past forecast errors that grows to 2.0 to 6.2 percent by 2029. The longer run sits apart at 4.2 percent.",
+  "illustrative": false,
+  "notes": "S59, fan-chart: the chart kit draws it from work/build/chart-kit/specs/s59.json (contract R1-C3)"
+ },
+ "s-14-78-sketch": {
+  "chapter": "14",
+  "rule": "14.78",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "Six small panels, each one possible outcome drawn from the same estimate, with a dashed line marking the threshold; the bar lands above it in four panels and below it in two.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
  },
  "s-14-s01": {
   "chapter": "14",
@@ -635,14 +811,6 @@
   "alt": "A register of the 25 PACs and party committees that reported the most independent spending in the 2023 to 2024 cycle, from FF PAC at $503.3 million and Make America Great Again Inc. at $376.9 million to the NRCC at $36.5 million, each with a bar for its amount.",
   "illustrative": false,
   "notes": "S36, ranked-register: the chart kit draws it from work/build/chart-kit/specs/s36.json (contract R1-C3)"
- },
- "s-14-s06": {
-  "chapter": "14",
-  "rule": "14.127",
-  "width_px": null,
-  "alt": "A table of eight scenarios for 2036 against four outcome families: quality of democracy, government efficacy, economic performance, and income and wealth equality. Each cell gives the atlas’s direction words with Oath & Action’s arrow. Five of the seven scenarios beyond the baseline would lift at least one family if their assumptions hold, and in the baseline each family stays flat or falls.",
-  "illustrative": false,
-  "notes": "S06, comparison-matrix: the chart kit draws it from work/build/chart-kit/specs/s06.json (contract R1-C3)"
  },
  "s-14-s37": {
   "chapter": "14",

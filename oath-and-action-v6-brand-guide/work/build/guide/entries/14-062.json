@@ -1,0 +1,39 @@
+{
+ "id": "14.62",
+ "title": "Show a population’s age and sex in a pyramid, one bar a year of age.",
+ "rule": [
+  "Draw one thin bar a year of age on each side, men to the left and women to the right on one scale, the youngest at the bottom and ages labeled down the center. Both sides take one ink, and position and the names over each half carry sex. A band of ages the title names takes the view’s red as one job (Rule 14.6) with its words in the empty corner; every other age takes the light fill."
+ ],
+ "use_when": "The reader asks how many people are at or near a given age, such as the ages of retirement programs, or how a population’s ages are shaped.",
+ "use_instead": [
+  {
+   "when": "The reader compares a few age groups, not single years",
+   "rule": "14.15"
+  },
+  {
+   "when": "The reader follows one age group’s count over years",
+   "rule": "14.29"
+  },
+  {
+   "when": "Two populations’ age shapes need one picture",
+   "rule": "14.61"
+  }
+ ],
+ "why": {
+  "text": [
+   "Single years show the echoes of booms and slumps in births that five-year groups smooth away, and a mirrored scale lets the reader compare men and women at every age by length alone. One ink for both sides keeps color free for the band the story names."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S53",
+ "tier": "extended",
+ "tokens": [],
+ "related": [
+  "14.4",
+  "14.6",
+  "14.7"
+ ],
+ "builders": "Form population-pyramid: node work/build/chart-kit/oa-chart.mjs build s53; labels.left and labels.right name the two sides, labels.point a range of ages in red, labels.band_words its words.",
+ "correct": null,
+ "failure": null
+}

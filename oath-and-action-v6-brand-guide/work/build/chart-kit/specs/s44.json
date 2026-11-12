@@ -15,12 +15,12 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Treasury’s monthly statement of federal receipts and outlays",
-  "title": "Federal outlays of $7,395.8 billion in fiscal 2026 ran $1,992.5 billion past receipts of $5,403.3 billion, the year’s deficit.",
+  "title": "Federal outlays of $7,395.8 billion in fiscal 2026 ran $1,992.5 billion past receipts of $5,403.3 billion, the year’s deficit.",
   "reading_guide": "Read from the top. Each receipt adds to the running total, the bar for all receipts starts again from zero, and each outlay takes its amount away; the last bar is what is left, the deficit.",
   "measure_line": "Federal receipts by source and net outlays by budget function, billions of dollars, nominal, fiscal year 2026 (October 1, 2025 to September 30, 2026), United States",
   "notes": [
-    "Two outlay lines are negative in the Treasury’s statement, so they add to the running total: commerce and housing credit, $15.5 billion, and undistributed offsetting receipts, $155.0 billion, money agencies collect that counts against spending.",
-    "Social Security, Medicare, net interest, health and national defense each took more than $900 billion.",
+    "Two outlay lines are negative in the Treasury’s statement, so they add to the running total: commerce and housing credit, $15.5 billion, and undistributed offsetting receipts, $155.0 billion, money agencies collect that counts against spending.",
+    "Social Security, Medicare, net interest, health and national defense each took more than $900 billion.",
     "Fiscal 2026 figures come from the September 2026 statement and may change in the Treasury’s year-end report."
   ],
   "credit": "Chart: Oath & Action",
@@ -107,6 +107,9 @@
     "tick": "billions-value:0"
   },
   "notes_internal": [
-    "Draft."
+    "Maker A, round 2. Data plan row 44, rule 14.48. Domain D08.",
+    "Data lead ruling (e) and A3: adds in pair B's Verdigris end (div-5), takes away in its Prussian end (div-1), all receipts in the context ink, the deficit in the subject ink through labels.named (no red on a sign, ruling (c)), connectors in the secondary ink; all 30 lines kept, no folds.",
+    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): receipts 5,403.3, outlays 7,395.8, deficit 1,992.5 billion, the steps adding to both totals; commerce and housing credit 15.5 and undistributed offsetting receipts 155.0 positive; the five lines over 900 billion; the alt's 2,845.5, 1,754.3 and 1,667.1.",
+    "Line names in sentence case through labels.names, as S33 prints the receipts; the table keeps the Treasury's names."
   ]
 }

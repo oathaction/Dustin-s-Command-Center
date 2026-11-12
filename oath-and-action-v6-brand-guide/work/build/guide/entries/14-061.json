@@ -1,0 +1,38 @@
+{
+ "id": "14.61",
+ "title": "Overlay two distributions as stepped outlines on the same bins.",
+ "rule": [
+  "Draw each year or group as a stepped outline over one baseline, with no fill, so each shape shows through the other. The series the title follows takes the subject ink at the subject weight and the other the context ink at the field weight, each named where its outline peaks. Use the same bins for both and count each unit once in each."
+ ],
+ "use_when": "The reader asks whether a whole distribution moved between two years, or differs between two groups, on one measure.",
+ "use_instead": [
+  {
+   "when": "One year or group alone",
+   "rule": "14.58"
+  },
+  {
+   "when": "Three or more groups, each with its own spread",
+   "rule": "14.60"
+  },
+  {
+   "when": "The reader follows a few named units from one year to the next",
+   "rule": "14.19"
+  }
+ ],
+ "why": {
+  "text": [
+   "Two filled histograms hide each other where they overlap, and side-by-side columns halve every bin. Outlines on shared bins let the reader see at once whether the mass moved left or right, which is the question a shift asks."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S52",
+ "tier": "extended",
+ "tokens": [],
+ "related": [
+  "14.3",
+  "14.8"
+ ],
+ "builders": "Form line-histogram: node work/build/chart-kit/oa-chart.mjs build s52; encode start, end, value and series from a long bin table; labels.lit names the series in ink.",
+ "correct": null,
+ "failure": null
+}

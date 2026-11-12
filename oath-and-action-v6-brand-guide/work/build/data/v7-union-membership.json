@@ -1,0 +1,32 @@
+{
+ "rows": [
+  {
+   "year": 2025,
+   "group": "All wage and salary workers",
+   "members_pct": 10.0,
+   "members_millions": 14.7,
+   "note": "Averages 11 months: the October 2025 survey was not collected"
+  },
+  {
+   "year": 2025,
+   "group": "Private sector",
+   "members_pct": 5.9,
+   "members_millions": null,
+   "note": "Averages 11 months: the October 2025 survey was not collected"
+  },
+  {
+   "year": 2025,
+   "group": "Public sector",
+   "members_pct": 32.9,
+   "members_millions": null,
+   "note": "Averages 11 months: the October 2025 survey was not collected"
+  },
+  {
+   "year": 1983,
+   "group": "All wage and salary workers",
+   "members_pct": 20.1,
+   "members_millions": null,
+   "note": null
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+{
+ "id": "14.71",
+ "title": "Use a pair plot to show every pair of a few variables as small scatters.",
+ "rule": [
+  "Use a pair plot, a reference form, for three to five variables: a grid of small scatter plots, one for each pair, with each variable’s histogram on the diagonal. Keep one scale down each column and across each row."
+ ],
+ "use_when": "A specialist asks how a few measures relate to one another, pair by pair, before choosing which to chart.",
+ "use_instead": [
+  {
+   "when": "Many variables at once",
+   "rule": "14.70"
+  },
+  {
+   "when": "One pair the story turns on",
+   "rule": "14.67"
+  }
+ ],
+ "why": {
+  "text": [
+   "Small scatters show each relationship’s shape, which a coefficient cannot, and the shared scales let the eye run along a row. Past five variables the cells grow too small to read."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-71-sketch",
+ "tier": "reference",
+ "tokens": [],
+ "related": [
+  "14.67",
+  "14.58"
+ ],
+ "builders": "No kit form: draw a pair plot from small scatter-named panels with histogram panels on the diagonal.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "A three-by-three grid: small scatter plots of each pair of three variables off the diagonal, and a small histogram of each variable on it."
+}

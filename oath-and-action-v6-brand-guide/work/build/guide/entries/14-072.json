@@ -1,0 +1,34 @@
+{
+ "id": "14.72",
+ "title": "Draw a trajectory to show the pace of change along a path.",
+ "rule": [
+  "Use a trajectory or speed chart, a reference form, to show how fast something moved along a path: dots at equal time steps along a connected path, so wide spacing means fast change and close spacing slow. Mark the start and end and name the steps."
+ ],
+ "use_when": "A specialist asks not only where two measures went but how fast they got there.",
+ "use_instead": [
+  {
+   "when": "The relationship over time, without the pace",
+   "rule": "14.69"
+  },
+  {
+   "when": "One measure’s rate of change over time",
+   "rule": "14.29"
+  }
+ ],
+ "why": {
+  "text": [
+   "Equal time steps turn the spacing of the dots into speed, which a plain path hides. The reader sees where change raced and where it stalled."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-72-sketch",
+ "tier": "reference",
+ "tokens": [],
+ "related": [
+  "14.69"
+ ],
+ "builders": "No kit form: draw a trajectory from connected-scatter with dots at equal time steps.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "A curved path with dots at equal time steps, spaced wide where change ran fast and close together where it slowed, from a start dot to an end dot."
+}

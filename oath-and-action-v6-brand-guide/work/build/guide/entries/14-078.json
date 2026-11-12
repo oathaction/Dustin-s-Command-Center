@@ -1,0 +1,35 @@
+{
+ "id": "14.78",
+ "title": "Show uncertainty as a run of possible outcomes only for experts, never as motion alone.",
+ "rule": [
+  "Use hypothetical outcomes, a reference form, to show uncertainty as several possible results drawn from the estimate’s range, set side by side as small panels or shown one after another. Label every draw as one possible outcome, and pair the form with a band or a range that a still image and a screen reader carry."
+ ],
+ "use_when": "A specialist asks how often an outcome would land above or below a line, and a band alone hides how the draws vary together.",
+ "use_instead": [
+  {
+   "when": "A survey figure and its margin",
+   "rule": "14.74"
+  },
+  {
+   "when": "A projection and its range",
+   "rule": "14.77"
+  }
+ ],
+ "why": {
+  "text": [
+   "Seeing several possible results makes uncertainty concrete in a way a shaded band does not. Motion alone fails print, still images and readers who turn animation off, so each draw also stands as a still panel."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-78-sketch",
+ "tier": "reference",
+ "tokens": [],
+ "related": [
+  "14.13",
+  "14.77"
+ ],
+ "builders": "No kit form: draw hypothetical outcomes as small panels from small-multiple-bars, each one draw from the stated range.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "Six small panels, each one possible outcome drawn from the same estimate, with a dashed line marking the threshold; the bar lands above it in four panels and below it in two."
+}

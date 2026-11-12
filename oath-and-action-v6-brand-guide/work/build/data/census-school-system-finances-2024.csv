@@ -1,0 +1,10 @@
+order,fact,code,name,value,unit,table,note
+1,Revenue of public school systems,US,United States,994922042,thousands of dollars,Table 1,"Elementary-secondary revenue from federal, state and local sources"
+2,Share of revenue from state sources,US,United States,45.2341,percent,Table 5,
+3,Share of revenue from local sources,US,United States,43.1987,percent,Table 5,Mostly property taxes
+4,Share of revenue from federal sources,US,United States,11.5672,percent,Table 5,Includes COVID-19 relief funds (row 5)
+5,COVID-19 relief funds within federal revenue,US,United States,39177454,thousands of dollars,"All data items file, items AR1 to AR6A","Summed by Oath & Action over every school system; one-time federal relief (ESSER, GEER and other COVID-19 funds)"
+6,Current spending per pupil,US,United States,17619.389,dollars,Table 8,Excludes adult education and other programs outside elementary-secondary schooling
+7,Highest current spending per pupil,NY,New York,31917.5064,dollars,Table 11,Rank 1 of the 50 states and DC
+8,Lowest current spending per pupil,ID,Idaho,11060.4011,dollars,Table 11,Rank 51 of the 50 states and DC
+9,"Students enrolled, fall 2023",US,United States,46370928,students,Table 19,"Fall 2023 membership, the base for fiscal 2024’s per-pupil figures"

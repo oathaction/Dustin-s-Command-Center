@@ -9,14 +9,15 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the federal government’s National Health Expenditure Accounts",
-  "title": "Private insurance, Medicare and Medicaid together paid 70 percent of the nation’s health care bill in 2024, up from 21 percent in 1960.",
+  "title": "Private insurance, Medicare and Medicaid together paid 70 percent of the nation’s health care bill in 2024, up from 21 percent in 1960.",
   "measure_line": "National health spending by who paid, as a share of each year’s total, United States, 1960 to 2024",
   "notes": [
-    "Medicare and Medicaid began paying in 1966."
+    "Medicare and Medicaid began paying in 1966.",
+    "All other sources of funds adds up out-of-pocket spending, the Children’s Health Insurance Program, the Departments of Defense and Veterans Affairs, other third-party payers and programs, and public health activity and investment."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Stacked bands of the nation’s health spending by who paid, 1960 to 2024.",
+  "alt": "Stacked bands of the nation’s health spending by who paid, as shares of each year from 1960 to 2024. Private insurance paid 21 percent in 1960 and 31 percent in 2024; Medicare and Medicaid, which began in 1966, paid 21 and 18 percent in 2024; all other sources, out of pocket the largest, fell from 79 percent to 30.",
   "table": {
     "caption": "Shares of national health spending by who paid, 1960 to 2024",
     "columns": [
@@ -86,6 +87,11 @@
     "end": "percent:0"
   },
   "notes_internal": [
-    "Draft."
+    "Maker A, round 2. Data plan row 47, rule 14.51. Domain D09. Derived file from the research lead (four groups).",
+    "Data lead rulings (d) and (e): a Finding with Documented; private insurance, Medicare, Medicaid in cat-1 to cat-3 and all other sources hatched Stone; names inside the bands at the right end; no single named mark (a stack).",
+    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): the three named payers 70.0 percent in 2024 and 20.8 in 1960; Medicare and Medicaid empty before 1966; 2024 shares 31, 21, 18 and 30; all other sources 79 in 1960."
+  ],
+  "chart_notes": [
+    "Bands stack from the bottom: private insurance, Medicare, Medicaid, then all other sources, hatched. Each band is named at its right end with its 2024 share."
   ]
 }

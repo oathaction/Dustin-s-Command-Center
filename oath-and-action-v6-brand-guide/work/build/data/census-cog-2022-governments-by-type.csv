@@ -1,0 +1,8 @@
+order,level,government_type,governments,aggregate_code,source_table
+1,federal,Federal government,1,,"CG2200ORG01, footnote 2"
+2,state,State governments,50,,"CG2200ORG01, footnote 2"
+3,local,County governments,3031,GO0005,CG2200ORG02
+4,local,Municipal governments,19491,GO0007,CG2200ORG02
+5,local,Township governments,16214,GO0008,CG2200ORG02
+6,local,Special district governments,39555,GO0009,CG2200ORG02
+7,local,Independent school district governments,12546,GO0010,CG2200ORG02

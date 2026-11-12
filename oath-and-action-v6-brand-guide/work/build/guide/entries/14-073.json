@@ -1,0 +1,38 @@
+{
+ "id": "14.73",
+ "title": "Avoid two value scales on one chart, which can make any two lines cross.",
+ "rule": [
+  "Leave dual-axis line charts out of every Oath & Action piece. Draw two measures as two aligned panels, one above the other, each on its own scale from a stated base and sharing one time axis, or index both to one start date on one scale (Rule 14.4)."
+ ],
+ "use_when": "Never: a reader who asks how two measures moved over the same years gets a truer answer from two aligned panels.",
+ "use_instead": [
+  {
+   "when": "Each measure on its own scale, read side by side",
+   "rule": "14.34"
+  },
+  {
+   "when": "Growth compared from one start date",
+   "rule": "14.40"
+  },
+  {
+   "when": "The two measures plotted against each other over time",
+   "rule": "14.69"
+  }
+ ],
+ "why": {
+  "text": [
+   "With two scales the builder chooses where each line sits, so the same data can show the lines crossing, running together or far apart. Readers take the crossing for a finding, though it is only where two scales were placed."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-73-sketch",
+ "tier": "avoid",
+ "tokens": [],
+ "related": [
+  "14.4"
+ ],
+ "builders": "No kit form, by design; draw the two measures with area-sparklines (s13) as aligned panels, or with indexed-line (s33) on one index.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "The same two invented series drawn twice: on two value scales the lines cross in the middle, and in two aligned panels, each on its own scale from zero, neither line crosses anything, so no false meeting point appears."
+}

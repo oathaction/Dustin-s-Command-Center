@@ -14,7 +14,7 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: a Census Bureau survey of new construction",
-  "title": "Homes in buildings of five or more units made up 36 percent of the new homes finished in 2024, their largest share of any year since 2000.",
+  "title": "Homes in buildings of five or more units made up 36 percent of the new homes finished in 2024, their largest share in any year from 2000 to 2025.",
   "measure_line": "New privately owned housing units completed, thousands, by the number of units in the building, United States, 2000 to 2025. The chart starts in 2000 so each year’s column stays wide enough to read.",
   "notes": [
     "Builders finished 1,626,900 homes in 2024: 1,018,600 in one-unit buildings, 16,600 in buildings of two to four units and 591,700 in buildings of five or more."
@@ -54,7 +54,7 @@
     ]
   },
   "chart_notes": [
-    "The parts stack from the zero line: one-unit buildings, then two to four units, then five or more."
+    "The parts stack from the zero line: one-unit buildings, then two to four units, then five or more, each named beside the last column, or in a key on a phone. Totals print over 2006, 2011 and 2024."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -97,6 +97,9 @@
     "total": "thousands"
   },
   "notes_internal": [
-    "Draft."
+    "Maker A, round 2. Data plan row 46, rule 14.50. Domain D09. Window 2000 to 2025, the data plan's, with the reason in the measure line; it splits no period at an inauguration (H09).",
+    "Data lead ruling (e): one unit (cat-1), two to four (cat-2), five or more (cat-3) from the baseline, a 1 px gap of the ground between parts, each named at the last column; a stack has no single named mark (principle 3).",
+    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): five or more units' share largest in 2024 of 2000 to 2025, 36.4 percent; 2024's 1,626.9 thousand total and parts 1,018.6, 16.6 and 591.7; 26 columns.",
+    "encode.total prints the published total, since the parts' sum differs by rounding (2006: 1,979.5 against 1,979.4). Source line from the sidecar's span template, 2000 to 2025."
   ]
 }

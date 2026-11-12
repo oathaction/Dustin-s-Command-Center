@@ -15,8 +15,8 @@
   "title": "The Senate fell seven votes short of the 60 it needed to take up H.R. 7008, the Stop Insider Trading Act, which as the House passed it limits members’ stock purchases and requires photo ID to vote in federal elections.",
   "measure_line": "Senate roll call vote 253, September 30, 2026, on cloture on the motion to proceed to H.R. 7008, the vote to end debate on taking the bill up: yes and no votes of the 100 senators, by party as the Senate records it",
   "notes": [
-    "Cloture on a motion to proceed needs three-fifths of the Senate, 60 votes. The vote was on taking the bill up, not on the bill itself.",
-    "The House passed H.R. 7008 by 232 to 198 on July 22, 2026, in roll call 280: Republicans 218 to 0, Democrats 13 to 198 with one not voting, and the one independent yes."
+    "Cloture on a motion to proceed ends debate on whether to take a bill up, and it needs three-fifths of the Senate, 60 votes.",
+    "The House passed H.R. 7008 by 232 to 198 on July 22, 2026, in roll call 280: Republicans 218 to 0, Democrats 13 to 198 with one not voting, and the one independent yes."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -74,6 +74,8 @@
     "group_words": "{name} {v}"
   },
   "notes_internal": [
-    "Draft."
+    "Maker A, round 2. Data plan row 77, rule 14.87. Domain D04 per the data plan (the sidecar gives D03 with a note that the spec counts it under D04).",
+    "Data lead rulings (a), (e) and A6: the 53 yes votes in the subject ink, the 60 tick in the text's ink, the 7-vote gap named, parties in words under the bar; DR-98 and D2-406: the title is the first mention of H.R. 7008 and names both provisions as the House passed it; the measure line prints the question, cloture on the motion to proceed.",
+    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): Senate 53 to 47 by party (53 Republicans yes; 45 Democrats and 2 independents no), seven short of 60, roll call 253, September 30, 2026; House 232 to 198 with its party splits."
   ]
 }

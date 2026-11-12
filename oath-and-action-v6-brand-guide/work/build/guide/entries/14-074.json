@@ -1,0 +1,39 @@
+{
+ "id": "14.74",
+ "title": "Draw a survey figure with its margin of error, and single out only what passes it.",
+ "rule": [
+  "Draw each estimate as a dot on a thin line across its interval, the interval’s level named in the measure line, such as “90 percent margin of error”. Draw the nation as a dashed line in the text’s ink with its own label. A dot that differs from the nation by more than the gap’s own margin takes a solid fill; one within it takes an open dot (Rule 14.9). List rows by their figures and print each one, but never number them as ranks."
+ ],
+ "use_when": "The reader asks how places compare on a survey figure, and how sure each one is.",
+ "use_instead": [
+  {
+   "when": "A count with no sampling margin",
+   "rule": "14.18"
+  },
+  {
+   "when": "One figure over time with its margin each year",
+   "rule": "14.75"
+  },
+  {
+   "when": "A projection with a range that widens ahead",
+   "rule": "14.77"
+  }
+ ],
+ "why": {
+  "text": [
+   "A survey figure is a range, not a point, and two places whose ranges overlap may stand in either order. Drawing the range and testing each gap keeps the chart from claiming more than the survey knows."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S57",
+ "tier": "core",
+ "tokens": [],
+ "related": [
+  "14.9",
+  "13.5",
+  "13.1"
+ ],
+ "builders": "Form range-bar: node work/build/chart-kit/oa-chart.mjs build s57; encode category, value and margin (or low and high); labels.reference draws the dashed line, labels.test \"reference\" the open dots, labels.value the right column’s words.",
+ "correct": null,
+ "failure": null
+}

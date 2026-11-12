@@ -1,0 +1,35 @@
+{
+ "id": "14.64",
+ "title": "Stack several distributions as a ridgeline only when their order tells the story.",
+ "rule": [
+  "Use a ridgeline, a reference form, for many distributions of one measure in a meaningful order, such as years: each a filled curve on its own baseline, the baselines evenly spaced and the curves allowed to overlap the row above. Name each row at its left, keep one scale for every curve, and draw the subject in ink with the rest light."
+ ],
+ "use_when": "A specialist asks how a distribution’s shape drifted across many years or ranked groups.",
+ "use_instead": [
+  {
+   "when": "Two years or groups only",
+   "rule": "14.61"
+  },
+  {
+   "when": "A few groups and their quartiles",
+   "rule": "14.60"
+  }
+ ],
+ "why": {
+  "text": [
+   "Overlapping rows fit many shapes in the height of a few, and an order such as time lets the eye follow a drift down the page. Without a meaningful order the overlaps only hide parts of each curve."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-64-sketch",
+ "tier": "reference",
+ "tokens": [],
+ "related": [
+  "14.61",
+  "14.8"
+ ],
+ "builders": "No kit form: draw a ridgeline from line-histogram outlines on staggered baselines, until a story needs its own form.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "Five filled curves on evenly spaced baselines, one row a year, whose peak drifts to the right from the top row to the bottom."
+}

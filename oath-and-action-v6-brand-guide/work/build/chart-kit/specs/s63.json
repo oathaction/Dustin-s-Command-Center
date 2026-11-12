@@ -34,11 +34,11 @@
     ],
     "snapshot": "2026-10-15"
   },
-  "title": "Of six disputes over removals, spending and watchdogs, the Supreme Court had decided one by October 15, 2026, and acted in two others by interim order.",
+  "title": "Of six disputes over removals, spending and watchdogs, the Supreme Court had decided one by October 15, 2026, and acted in two others by interim order.",
   "measure_line": "The status of six issues in the atlas on checks on power, each as its record stood when the atlas checked it on October 15, 2026, United States",
   "notes": [
-    "Each chip is our reading of the atlas’s status text, and the words under it give the case or finding and its date. An interim order holds while a case continues and decides nothing for good.",
-    "Statuses may have changed since October 15, 2026."
+    "Each chip is our reading of the atlas’s status text, and the words under it give the case or finding and its date. An interim order holds while its case continues.",
+    "Statuses may have changed since October 15, 2026."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -123,6 +123,9 @@
     "check_words": "Atlas check: {result}, {date}"
   },
   "notes_internal": [
-    "Draft."
+    "Maker A, round 2. Data plan row 79, rule 14.89. Domain D05 and Illinois (X05) from the sidecar.",
+    "Data lead rulings (d) and (e): grade line 'Checked by the atlas, record by record'; one chip style for every status, no red; typed ID chips (Rule 13.9). Chip words are our reading of V7's status text; each status's words quote V7's case and date.",
+    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): each status's case, vote and date in V7's status text (Slaughter 6 to 3 and Cook 5 to 4 on June 29, 2026; Illinois December 23, 2025; the July 20, 2026 minute order; GAO October 7, 2026; 34, 16 and 50 cases around June 27, 2025); every record checked October 15, 2026.",
+    "Title: one decided (I163), two interim orders (X06, X05); X18 is a count, I070 in court, I068 a watchdog finding."
   ]
 }

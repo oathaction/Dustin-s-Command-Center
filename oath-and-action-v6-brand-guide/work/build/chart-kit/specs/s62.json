@@ -97,6 +97,8 @@
     "became": "Became law on {date}, Public Law 119-12."
   },
   "notes_internal": [
-    "Draft."
+    "Maker A, round 2. Data plan row 78, rule 14.88. Domain D01 from the sidecar.",
+    "Data lead ruling (e): chapter 11's marks, no red; steps 2 and 3 take the never-happened slash, since the Commerce Committee was discharged by unanimous consent (action 14500) and the record holds no hearing or committee report action. Request R-A1 asks the research lead to confirm no hearing was held; the title claims only the discharge.",
+    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): the four dated steps (January 16, February 13, April 28 and May 19, 2025), 409 to 2, unanimous consent, the discharge and Public Law 119-12, each from the action text."
   ]
 }

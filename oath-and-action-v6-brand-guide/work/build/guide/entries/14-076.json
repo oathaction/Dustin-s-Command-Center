@@ -1,0 +1,36 @@
+{
+ "id": "14.76",
+ "title": "Show where each outcome would move under each scenario, in words and arrows, with no numbers.",
+ "rule": [
+  "Set scenarios in rows and outcomes in columns, and print the source’s own words for each direction in every cell, with an arrow and a tint read from those words and labeled as Oath & Action’s reading. Print no number, total or odds the source does not give. Say in the grade line that the directions are conditional, with no forecast and no odds. On a phone each scenario becomes a card (Rule 14.12)."
+ ],
+ "use_when": "The reader asks which way each outcome would move if a reform path were followed, and the source states directions, not amounts.",
+ "use_instead": [
+  {
+   "when": "The source gives numbers for each scenario and their range",
+   "rule": "14.77"
+  },
+  {
+   "when": "Options against criteria, with words and no direction",
+   "rule": "14.127"
+  }
+ ],
+ "why": {
+  "text": [
+   "A direction stated in words is all a scenario claims, so the chart keeps the words and adds only an arrow a reader can check against them. Numbers or odds would claim a precision the scenarios never had."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S06",
+ "tier": "core",
+ "tokens": [],
+ "related": [
+  "13.1",
+  "14.12",
+  "14.127"
+ ],
+ "builders": "Form scenario-directions: node work/build/chart-kit/oa-chart.mjs build s06; encode row, columns and classes, with the arrows and tints read from the classes.",
+ "correct": null,
+ "failure": null,
+ "caption": "If a reform path were followed, which way would each outcome move?"
+}

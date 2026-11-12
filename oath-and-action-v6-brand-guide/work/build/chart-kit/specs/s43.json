@@ -21,14 +21,15 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: a Census Bureau survey",
-  "title": "Renters made up the larger share of households only in the District of Columbia in 2025, at 62 percent.",
-  "measure_line": "Households that rent and households that own their home, as a share of all households, 50 states and the District of Columbia, 2025",
+  "title": "In 2025 renters outnumbered owners only in the District of Columbia, where they made up 62 percent of households.",
+  "measure_line": "Households that rent and households that own their home, as a share of all households, 50 states, the District of Columbia and the United States, 2025",
   "notes": [
-    "New York, 46 percent, and California, 44 percent, come closest among the states; every state’s renter share sits below half by more than its margin of error."
+    "New York, at 46 percent, and California, at 44 percent, come closest among the states, and every state’s renter share sits below half by more than its margin of error.",
+    "Margins of error are at 90 percent confidence, from the survey’s counts of renter households."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Bars split each state’s households into renters and owners, sorted by the renter share, with a line at half. Only the District of Columbia’s renters, 62 percent, pass the line; New York, 46 percent, and California, 44 percent, come next, and the United States as a whole is 35 percent.",
+  "alt": "Bars split each state’s households into renters and owners, sorted by the renter share, with a line at half and the United States first, at 35 percent renters. Only the District of Columbia’s renters, 62 percent, pass the line; New York, 46 percent, and California, 44 percent, come next.",
   "table": {
     "caption": "Renters and owners as a share of households, 2025",
     "columns": [
@@ -56,7 +57,8 @@
     ]
   },
   "chart_notes": [
-    "The United States sits first, apart from the states. A line at the middle marks half of households; the District of Columbia’s renter share, the one past it, is set in ink and every other renter share in gray."
+    "The United States sits first, apart from the states. A line at the middle marks half of households; the District of Columbia’s renter share, the one past it, is set in ink and every other renter share in gray.",
+    "Where the drawing is narrow, each state is named by its two-letter code."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -72,7 +74,7 @@
     "left": "Renters",
     "right": "Owners",
     "midline": "Half of households",
-    "value_head": "Renters",
+    "value_head": "Renter share",
     "named": [
       "District of Columbia"
     ],
@@ -82,6 +84,9 @@
     "value": "percent:0"
   },
   "notes_internal": [
-    "Draft."
+    "Maker A, round 2. Data plan row 43, rule 14.47. Domain D09 from the sidecar; no state singled out under Rule 01.9 beyond the data (DC is named by the data).",
+    "Data lead rulings (a), (b), (e): DC's renter part in the subject ink through labels.named; every other renter part in the light fill, every owner part in the track ink; the nation as the first row, set apart (labels.apart); a 1 px midline in the text's ink.",
+    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): DC alone past half, 61.9 percent, past it by more than its margin (1.85 points from the counts); New York 46.0 and California 44.3 next; every state below half by more than its margin; the nation 34.7.",
+    "Sort: code with values [\"US\"] first, then renter share, so the table follows the drawing. Codes print where a full name would leave the bar under 60 percent of the row."
   ]
 }

@@ -1,0 +1,34 @@
+{
+ "id": "14.66",
+ "title": "Draw a contour or density only for experts, with its smoothing stated.",
+ "rule": [
+  "Use contours or a density surface, a reference form, to show where very many points concentrate on two measures: draw lines of equal density, like a map’s height lines, or shade bands between them, and state the smoothing. Draw the few points that matter on top."
+ ],
+ "use_when": "A specialist asks where the bulk of very many records lies on two measures, and the exact counts matter less than the shape.",
+ "use_instead": [
+  {
+   "when": "Counts a reader can check in each area",
+   "rule": "14.65"
+  },
+  {
+   "when": "A few dozen points the reader can name",
+   "rule": "14.67"
+  }
+ ],
+ "why": {
+  "text": [
+   "Contours give the shape of a dense cloud with lines instead of ink, so points the story names can sit on top and stay readable. The smoothing changes the shape, so the reader needs to know it."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-66-sketch",
+ "tier": "reference",
+ "tokens": [],
+ "related": [
+  "14.65"
+ ],
+ "builders": "No kit form: draw density contours in a specialist piece, from a density the analyst states.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "Three nested contour rings around the densest part of a point cloud, the inner ring darkest, with a few points outside the outer ring."
+}

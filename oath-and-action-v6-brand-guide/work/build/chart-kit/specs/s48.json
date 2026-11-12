@@ -12,11 +12,11 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the House Clerk’s count of its members",
-  "title": "Republicans held 218 of the House’s 435 seats on November 11, 2026, and Democrats 214, with one independent and two seats vacant.",
+  "title": "Republicans held 218 of the House’s 435 seats on November 11, 2026, and Democrats 214, with one independent and two seats vacant.",
   "measure_line": "Voting seats in the U.S. House of Representatives by the party of the member who holds each, as the Clerk of the House counted them on November 11, 2026",
   "notes": [
-    "At the opening of the 119th Congress in January 2025, Republicans held 220 seats and Democrats 215; deaths, resignations and special elections since then changed the count.",
-    "A majority of the full House is 218 seats. Members elected on November 3, 2026 take their seats on January 3, 2027."
+    "At the opening of the 119th Congress in January 2025, Republicans held 220 seats and Democrats 215; deaths, resignations and special elections since then changed the count.",
+    "A majority of the full House is 218 seats. Members elected on November 3, 2026 take their seats on January 3, 2027."
   ],
   "source_line": "Source: Office of the Clerk, U.S. House of Representatives, party breakdown, as of November 11, 2026; U.S. House of Representatives, Office of the Historian and Office of the Clerk (History, Art & Archives), Party Divisions of the House of Representatives, 119th Congress (2025 to 2027). Retrieved November 11, 2026. The count changes with each vacancy and special election.",
   "credit": "Chart: Oath & Action",
@@ -69,6 +69,8 @@
     }
   },
   "notes_internal": [
-    "Draft."
+    "Maker A, round 2. Data plan row 49, rule 14.53. Domain D02. Two datasets: the Clerk's count, which the chart draws, and the Historian's divisions for note 1.",
+    "Data lead rulings (a) and (e): every seat in the party-mark ink, Democrats from the left, Republicans from the right, the independent and two vacancies between, vacancies as open rings, each block named with its count, a tick at the 218th seat; no red, no blue, no Prussian (DR-48, DR-58, DR-64).",
+    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): 218, 214, 1 and 2 adding to 435; the 119th Congress's opening 220 and 215; 218 a majority of 435."
   ]
 }

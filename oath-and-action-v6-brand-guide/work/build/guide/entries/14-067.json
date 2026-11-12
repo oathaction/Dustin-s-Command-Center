@@ -1,0 +1,40 @@
+{
+ "id": "14.67",
+ "title": "Plot two measures as a scatter, and name only the points the story needs.",
+ "rule": [
+  "Draw one dot a place at its two values, with gridlines both ways and each axis named. Name the place the title names in the subject ink (Rule 14.6), label a few others in the light fill where the data single them out past the margin of error (Rule 14.9), and draw the nation as an open ring in the text’s ink. Draw no fitted line: the reader judges the pattern.",
+  "Every correlation chart takes the Association label and the note “This shows the two move together; it does not show one causes the other.” (Rule 13.1)."
+ ],
+ "use_when": "The reader asks whether two measures move together across places, and where one place sits against the rest.",
+ "use_instead": [
+  {
+   "when": "A third measure, such as size, matters",
+   "rule": "14.68"
+  },
+  {
+   "when": "The two measures move together over time for one place",
+   "rule": "14.69"
+  },
+  {
+   "when": "The reader compares one measure across places",
+   "rule": "14.18"
+  }
+ ],
+ "why": {
+  "text": [
+   "A scatter shows a relationship as a direction a reader can see without a statistic. Names on every dot turn it into a word cloud, so only the places the story needs carry a name, and the table under the chart names every one."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S54",
+ "tier": "core",
+ "tokens": [],
+ "related": [
+  "13.1",
+  "14.6",
+  "14.9"
+ ],
+ "builders": "Form scatter-named: node work/build/chart-kit/oa-chart.mjs build s54; labels.named names the points in ink, labels.labeled points named in the light fill, labels.reference the open ring.",
+ "correct": null,
+ "failure": null
+}

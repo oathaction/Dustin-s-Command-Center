@@ -1,0 +1,35 @@
+{
+ "id": "14.69",
+ "title": "Join a scatter’s points in time order to show two measures moving together.",
+ "rule": [
+  "Draw one dot a period at its two values and join them in time order with a thin path in the subject ink. Name the first and latest periods and the turns the story needs, with leaders where the path is dense. Break the path where a period lacks a value and name the gap (Rule 14.11). Keep the Association label when the title says the two moved together."
+ ],
+ "use_when": "The reader asks how two measures moved together over years, such as job openings and unemployment through a recession and a recovery.",
+ "use_instead": [
+  {
+   "when": "Each measure’s own trend matters more than their relationship",
+   "rule": "14.30"
+  },
+  {
+   "when": "Two measures across places at one time",
+   "rule": "14.67"
+  }
+ ],
+ "why": {
+  "text": [
+   "A connected scatter shows a relationship and its history in one line: loops, reversals and jumps that two separate lines would leave the reader to piece together. Naming a few periods gives the path its dates, and the table gives every one."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S56",
+ "tier": "extended",
+ "tokens": [],
+ "related": [
+  "13.1",
+  "14.11",
+  "14.3"
+ ],
+ "builders": "Form connected-scatter: node work/build/chart-kit/oa-chart.mjs build s56; encode time, x and y; labels.named names periods, labels.gap the missing one.",
+ "correct": null,
+ "failure": null
+}

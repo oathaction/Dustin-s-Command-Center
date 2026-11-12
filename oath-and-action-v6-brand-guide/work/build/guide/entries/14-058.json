@@ -1,0 +1,40 @@
+{
+ "id": "14.58",
+ "title": "Use a histogram to show how one measure spreads across many units.",
+ "rule": [
+  "Count the units in bins of equal width and draw one column a bin, side by side with a hairline between them, from zero. Print each count over its column where it fits, and mark the median as a dashed line in the text’s ink with its own label (Rule 14.6). Choose the bins once, before drawing, and say in a note that each unit counts once; where a story turns on dates, check that no bin edge falls on an inauguration day (Rule 14.10).",
+  "A chart of thousands of units draws from a table of its bins, so the table under the chart lists the bins, each with its count, and the page stays light."
+ ],
+ "use_when": "The reader asks how long, how much or how many across hundreds or thousands of people, places or records, and the shape of the spread is the answer.",
+ "use_instead": [
+  {
+   "when": "Each unit must stay visible and the units number fewer than about a hundred",
+   "rule": "14.59"
+  },
+  {
+   "when": "The reader compares the spread of a few groups",
+   "rule": "14.60"
+  },
+  {
+   "when": "Two years or two groups of the same measure need one picture",
+   "rule": "14.61"
+  }
+ ],
+ "why": {
+  "text": [
+   "A histogram turns a long list into a shape a reader can see at once: where most units sit, how far the tail runs and whether there are two humps. Equal bins keep every column comparable, and the median line gives the middle without the reader adding counts."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S49",
+ "tier": "core",
+ "tokens": [],
+ "related": [
+  "14.6",
+  "14.10",
+  "14.13"
+ ],
+ "builders": "Form histogram: node work/build/chart-kit/oa-chart.mjs build s49; encode start, end and count from a bin table; labels.marker draws the median line with its words, labels.x_axis and labels.y_axis name the axes.",
+ "correct": null,
+ "failure": null
+}

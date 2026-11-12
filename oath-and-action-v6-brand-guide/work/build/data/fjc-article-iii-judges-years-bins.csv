@@ -1,12 +1,12 @@
 bin_start,bin_end,label,judges
-0,2,0 to under 2 years,80
+0,2,0 to under 2 years,79
 2,4,2 to under 4 years,125
 4,6,4 to under 6 years,85
-6,8,6 to under 8 years,132
-8,10,8 to under 10 years,75
+6,8,6 to under 8 years,130
+8,10,8 to under 10 years,74
 10,12,10 to under 12 years,44
 12,14,12 to under 14 years,92
-14,16,14 to under 16 years,61
+14,16,14 to under 16 years,60
 16,18,16 to under 18 years,20
 18,20,18 to under 20 years,31
 20,22,20 to under 22 years,21

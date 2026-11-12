@@ -7,7 +7,7 @@
   "use_when": "The reader asks how a whole divides by two things at once, such as who answered each way within groups of very different size, and the area of each cell is the count that matters.",
   "use_instead": [
     {
-      "when": "The groups’ sizes do not matter, only their mix",
+      "when": "Only the mix within each group matters",
       "rule": "14.46"
     },
     {

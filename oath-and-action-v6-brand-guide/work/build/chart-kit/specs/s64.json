@@ -12,10 +12,10 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Treasury’s monthly statement of the public debt",
-  "title": "Federal debt subject to the limit stood at $40,327.1 billion on October 31, 2026, $776.9 billion under the $41,104.0 billion limit.",
+  "title": "Federal debt subject to the limit stood at $40,327.1 billion on October 31, 2026, $776.9 billion under the $41,104.0 billion limit.",
   "measure_line": "Federal debt subject to the limit set in law, held by the public and by government accounts, against the limit, billions of dollars, nominal, October 31, 2026, United States",
   "notes": [
-    "Public Law 119-21, signed July 4, 2025, raised the limit by $5,000 billion, from $36,104.0 billion to $41,104.0 billion."
+    "Public Law 119-21, the July 2025 tax law, raised the limit by $5,000 billion, from $36,104.0 billion to $41,104.0 billion."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -80,6 +80,9 @@
     "value": "number:1"
   },
   "notes_internal": [
-    "Draft."
+    "Maker A, round 2. Data plan row 80, rule 14.90. Domain D08.",
+    "Data lead rulings (a), (e) and A5: the debt as a bar in the subject ink from zero, bands in magnitude steps 2 (to 36,104.0) and 1 (to 41,104.0), the limit as a tick in the text's ink named with its figure. Public Law 119-21 cited after the research lead read it on govinfo.gov (R2, sidecar notes), named as H12 names it.",
+    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): debt 40,327.1, limit 41,104.0 and room 776.9 billion on October 31, 2026; the June 2025 limit 36,104.0 and the July 2025 step of exactly 5,000 billion; the first band's edge equal to the file's value.",
+    "One row, October 31, 2026, the month the sidecar's line names."
   ]
 }

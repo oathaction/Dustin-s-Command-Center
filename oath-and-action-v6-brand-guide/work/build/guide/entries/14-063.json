@@ -1,0 +1,34 @@
+{
+ "id": "14.63",
+ "title": "Use a violin only for experts, with its box plot drawn inside it.",
+ "rule": [
+  "Use a violin, a reference form, where a technical audience compares the shapes of several distributions. Draw each group’s smoothed density as a shape mirrored about its center line, with the quartiles and median inside it, and say how the shape was smoothed. Oath & Action draws one only in a methods note or a report for specialists."
+ ],
+ "use_when": "A specialist asks whether a group’s values bunch in one place or two, and the quartiles alone would hide a second hump.",
+ "use_instead": [
+  {
+   "when": "A general reader compares the spread of a few groups",
+   "rule": "14.60"
+  },
+  {
+   "when": "One group’s shape, with counts a reader can check",
+   "rule": "14.58"
+  }
+ ],
+ "why": {
+  "text": [
+   "A violin shows a second hump that a box plot hides, but its width comes from a smoothing choice the reader cannot see. Keeping the box inside it gives every reader the quartiles they can trust."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-63-sketch",
+ "tier": "reference",
+ "tokens": [],
+ "related": [
+  "14.60"
+ ],
+ "builders": "No kit form: draw a violin only in a specialist piece, from a density the analyst states, with the quartile box inside it as box-plot draws one.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "Three violins, each a mirrored density shape with its quartile box and median inside, side by side on one scale; the middle group has two humps that a box plot alone would hide."
+}

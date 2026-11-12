@@ -1,0 +1,11 @@
+order,part,printed_text,where_on_page,what_it_tells
+1,Running head,"PUBLIC LAW 119–12; MAY 19, 2025; 139 STAT. 55",Top line,"The law’s number, the date it was approved and its place in the Statutes at Large, repeated on every page"
+2,Public Law number,Public Law 119–12,Top center,"The law’s number: the Congress that passed it, then its number among that Congress’s public laws"
+3,Congress,119th Congress,Under the number,The Congress that passed it
+4,Statutes at Large citation,139 STAT. 55,Top right,"Where the law begins in the Statutes at Large: volume 139, page 55"
+5,Date approved,"May 19, 2025","Right margin, beside the title",The date the law was approved
+6,Bill number,[S. 146],"Right margin, under the date",The bill it began as: Senate bill 146
+7,Long title,"An Act To require covered platforms to remove nonconsensual intimate visual depictions, and for other purposes.","Center, under the number","What the law does, in its own formal words"
+8,Enacting clause,"Be it enacted by the Senate and House of Representatives of the United States of America in Congress assembled,",Before section 1,The words that make the text law
+9,Short title section,SECTION 1. SHORT TITLE. This Act may be cited as the ‘‘Tools to Address Known Exploitation by Immobilizing Technological Deepfakes on Websites and Networks Act’’ or the ‘‘TAKE IT DOWN Act’’.,Section 1,The names the law may be cited by
+10,Margin note,47 USC 609 note.,"Right margin, beside section 1",Where the section sits in the United States Code

@@ -1,0 +1,39 @@
+{
+ "id": "14.59",
+ "title": "Show every item as a dot on one scale when each one should stay visible.",
+ "rule": [
+  "Place each item as one dot on a single value scale, packed up and down from a center line so no dot hides another; the packing follows the data alone, so it draws the same every time. Name the items the title names in the subject ink with their values, keep the rest in the light fill (Rule 14.6), and draw a total or national figure as a dashed line in the text’s ink with its own label.",
+  "A strip plot is the same form with the dots in one row; use it when the items rarely touch."
+ ],
+ "use_when": "The reader asks how about 20 to 100 places compare on one measure, and both the spread and a few named places matter.",
+ "use_instead": [
+  {
+   "when": "The items number in the hundreds or more",
+   "rule": "14.58"
+  },
+  {
+   "when": "The reader needs each item’s exact rank and value in order",
+   "rule": "14.18"
+  },
+  {
+   "when": "Several groups of items share the scale and the reader compares groups",
+   "rule": "14.60"
+  }
+ ],
+ "why": {
+  "text": [
+   "Every dot is an item the reader can find, so the chart shows the spread and keeps the individual places in it. Packing the dots by value, never by chance, means two builds of the same data draw the same picture, and the table under the chart gives each item’s value."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S50",
+ "tier": "core",
+ "tokens": [],
+ "related": [
+  "14.6",
+  "14.13"
+ ],
+ "builders": "Form beeswarm: node work/build/chart-kit/oa-chart.mjs build s50; labels.named names the items in ink, labels.reference draws the dashed total line with labels.reference_label.",
+ "correct": null,
+ "failure": null
+}

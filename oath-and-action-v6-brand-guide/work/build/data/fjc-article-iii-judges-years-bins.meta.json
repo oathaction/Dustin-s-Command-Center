@@ -10,7 +10,7 @@
  ],
  "observation_period": "Judges in active service on the export's latest record (latest commission date 2026-10-22); years counted to November 11, 2026",
  "geography": "United States federal courts",
- "universe_or_base": "850 service records of Article III judges with no senior-status or termination date: Supreme Court, courts of appeals, district courts, and the Court of International Trade (the file's \"Other\")",
+ "universe_or_base": "Judges in active service, each counted once by FJC ID: 845 judges from the export's 850 service records of Article III judges with no senior-status or termination date",
  "unit": "judges in active service in each two-year bin of years as a federal judge; bin_start and bin_end in years",
  "date_retrieved": "2026-11-11",
  "vintage": "FJC export as posted on November 11, 2026; the file states no as-of date",
@@ -43,9 +43,10 @@
  "derived_from": [
   "fjc-article-iii-judges.csv"
  ],
- "derivation": "Each judge in active service counted once in the two-year bin, closed on the left, that holds the years since the first Article III commission, from 0 to 44 years (the data lead's ruling (g), round 2)",
+ "derivation": "Each judge in active service counted once by FJC ID (nid) in the two-year bin, closed on the left, that holds the years since the first Article III commission, from 0 to 44 years (the data lead's corrected ruling (g), round 2)",
  "notes": [
-  "850 judges in all; median 8.02 years as a federal judge (Python statistics.median of the unrounded years)",
+  "845 judges in all, from 850 service records; median 8.02 years as a federal judge (Python statistics.median of the unrounded years)",
+  "Judges with more than one service record, in shared judgeships across districts (FJC IDs): 13762033, 1393956, 4444651, 8307871",
   "Bin edges checked against inauguration dates: January 20 of 2001, 2009, 2017, 2021 and 2025 sit 25.81, 17.81, 9.81, 5.81 and 1.81 years before November 11, 2026, so no edge falls on one (H09)"
  ]
 }

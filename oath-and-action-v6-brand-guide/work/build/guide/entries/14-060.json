@@ -1,0 +1,40 @@
+{
+ "id": "14.60",
+ "title": "Use a box plot to compare the spread of a few groups.",
+ "rule": [
+  "Draw one row a group, its name and count of units flush left: a box from the first to the third quartile, a 2 px line at the median, whiskers to the last unit within one and a half times the box’s length, and each unit beyond them as a small open circle. Print each median, give the group the title names the subject ink (Rule 14.6), and say in the measure line what the box and whiskers span.",
+  "The chart draws from a table of each group’s quartiles, median and whiskers and a table of the units past the whiskers, so a chart of thousands of units stays light."
+ ],
+ "use_when": "A reader who knows the form asks how widely a measure varies within each of a few groups, such as regions, and where the middle of each group sits.",
+ "use_instead": [
+  {
+   "when": "One group, and its shape matters more than its quartiles",
+   "rule": "14.58"
+  },
+  {
+   "when": "Two groups or two years, and the reader compares their whole shapes",
+   "rule": "14.61"
+  },
+  {
+   "when": "Each unit in a small group must stay visible",
+   "rule": "14.59"
+  }
+ ],
+ "why": {
+  "text": [
+   "Four numbers a group, the quartiles, the median and the reach, let a reader compare many units across groups at a glance. The rule for the whiskers is fixed and stated, so a dot past them always means the same thing, and no group’s spread depends on how the chart was drawn."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S51",
+ "tier": "extended",
+ "tokens": [],
+ "related": [
+  "14.6",
+  "14.9",
+  "13.1"
+ ],
+ "builders": "Form box-plot: node work/build/chart-kit/oa-chart.mjs build s51; encode the five numbers and count; labels.outliers names the second dataset of units past the whiskers, labels.named the group in ink.",
+ "correct": null,
+ "failure": null
+}

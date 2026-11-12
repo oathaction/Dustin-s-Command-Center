@@ -1,0 +1,52 @@
+{
+ "file": "census-acs-health-coverage-overlap.csv",
+ "kind": "derived",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "American Community Survey, 2025 1-year estimates, Data Profile DP03, Selected Economic Characteristics: health insurance coverage",
+ "table_id": "DP03_0095 to DP03_0099 (estimates, margins and percents)",
+ "url": "https://api.census.gov/data/2025/acs/acs1/profile?get=NAME,DP03_0095E,DP03_0095M,DP03_0096E,DP03_0096M,DP03_0096PE,DP03_0096PM,DP03_0097E,DP03_0097M,DP03_0097PE,DP03_0097PM,DP03_0098E,DP03_0098M,DP03_0098PE,DP03_0098PM,DP03_0099E,DP03_0099M,DP03_0099PE,DP03_0099PM&for=us:1 (with the studio’s key, not stored)",
+ "observation_period": "Calendar year 2025",
+ "geography": "United States",
+ "universe_or_base": "Civilian noninstitutionalized population",
+ "date_retrieved": "2026-11-12",
+ "vintage": "ACS 2025 1-year estimates",
+ "domain": "D09",
+ "domain_note": "V7 I133, Health",
+ "states": [],
+ "unit": "people; pct in percent of the civilian noninstitutionalized population; margins approximate, at the 90 percent level",
+ "qualification": "Regions computed from the published counts: private only is the insured less those with public coverage, public only the insured less those with private coverage, both the private and public counts less the insured. Margins are the root of the summed squares of the published margins, an approximation the Bureau gives for sums and differences; the counts overlap, so the true margins differ.",
+ "columns": {
+  "order": {
+   "type": "integer",
+   "description": "display order"
+  },
+  "region": {
+   "type": "category",
+   "description": "region of the diagram"
+  },
+  "people": {
+   "type": "integer",
+   "description": "people in the region",
+   "unit": "people"
+  },
+  "people_moe_approx": {
+   "type": "integer",
+   "description": "approximate 90 percent margin of error",
+   "unit": "people"
+  },
+  "pct": {
+   "type": "number",
+   "description": "share of the civilian noninstitutionalized population, stored to four decimals",
+   "unit": "percent"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, 2025, Data Profile DP03, health insurance coverage, civilian noninstitutionalized population, United States. Retrieved November 12, 2026. Overlap computed by Oath & Action from the published counts; margins approximate.",
+ "ledger_row": "P7-304",
+ "derived_from": [
+  "census-acs-health-coverage-types.csv"
+ ],
+ "derivation": "Private only is the insured less those with public coverage, public only the insured less those with private coverage, both is private plus public less the insured, and none is the published uninsured count; the four regions sum to the population",
+ "notes": [
+  "The four regions sum to the population, 336,838,154, asserted by script"
+ ]
+}

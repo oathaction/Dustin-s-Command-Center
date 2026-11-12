@@ -19,12 +19,12 @@
     "ids": [],
     "snapshot": "2026-10-15"
   },
-  "title": "The atlas puts eight figures first, each checked against its sources on October 15, 2026.",
+  "title": "The atlas puts eight figures first, each checked against its sources on October 15, 2026.",
   "measure_line": "The atlas’s eight headline figures, in its order, each with the kind of figure the atlas calls it and its caption, United States, as of the atlas’s snapshot of October 15, 2026",
   "notes": [
     "The child poverty rates are as the Census Bureau first published them; it revised its Supplemental Poverty Measure estimates for 2019 to 2024 in August 2026.",
-    "Unite America, which built the 9.4 percent figure, is an advocacy group and defines “effectively decided” itself.",
-    "Each figure has its own source in the atlas, and several describe events that may have moved since the snapshot, such as Alaska’s Ballot Measure 2, decided on November 3, 2026."
+    "Unite America, which built the 9.4 percent figure, is an advocacy group and defines “effectively decided” itself.",
+    "Each figure has its own source in the atlas, and several describe events that may have moved since the snapshot, such as Alaska’s Ballot Measure 2, decided on November 3, 2026."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -81,6 +81,10 @@
     "columns": 4
   },
   "notes_internal": [
-    "Draft."
+    "Maker A, round 2. Data plan row 76, rule 14.86. Domain all (the eight figures span domains).",
+    "Data lead rulings (a), (d), (e) and A4: a Finding with the grade line 'Checked by the atlas, figure by figure'; every figure in the text's ink, V7's kind word over it and its caption under it, read from v7-numbers as stored; no fill, no red.",
+    "Figure 5's stored qualification is figure 4's Inspector General Act sentence (V7.1 list), so the table leaves the qualification column out; notes give figure 6's revision and figure 8's advocacy source from V7's own qualifications.",
+    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): eight figures, each checked October 15, 2026; figure 6's revision in August 2026; figure 8's advocacy group; Ballot Measure 2 on November 3, 2026.",
+    "typography curls the straight apostrophes stored in V7's captions."
   ]
 }

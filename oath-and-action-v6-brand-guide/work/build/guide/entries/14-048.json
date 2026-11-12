@@ -11,7 +11,7 @@
       "rule": "14.52"
     },
     {
-      "when": "The reader compares the parts’ sizes and the running total does not matter",
+      "when": "The reader compares the parts’ sizes alone",
       "rule": "14.15"
     },
     {

@@ -1,0 +1,34 @@
+{
+ "id": "14.77",
+ "title": "Draw a projection as a fan whose bands widen with the years ahead.",
+ "rule": [
+  "Draw the median projection as a line in the subject ink with a dot and its value at each period, over two nested bands: the outer from past forecast errors in Stone step 1, and the inner, such as the range of every forecaster’s projection, in Stone step 2. Name the bands in a key, print the outer band’s ends at the last period, and name its probability in the measure line. A period with no date, such as the longer run, sits apart past a thin rule."
+ ],
+ "use_when": "The reader asks where forecasters expect a measure to go and how wide the range of outcomes is.",
+ "use_instead": [
+  {
+   "when": "Survey margins around figures already measured",
+   "rule": "14.75"
+  },
+  {
+   "when": "Directions under scenarios, with no numbers",
+   "rule": "14.76"
+  }
+ ],
+ "why": {
+  "text": [
+   "A single projected line reads as a promise. The widening bands show how much less is known about later years, and drawing them from past errors grounds the range in the record rather than in opinion."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S59",
+ "tier": "extended",
+ "tokens": [],
+ "related": [
+  "13.1",
+  "14.75"
+ ],
+ "builders": "Form fan-chart: node work/build/chart-kit/oa-chart.mjs build s59; encode x, y and the outer and inner bands; labels.apart sets a period apart, labels.key_outer, key_inner and key_median name the key.",
+ "correct": null,
+ "failure": null
+}

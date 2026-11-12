@@ -20,7 +20,7 @@
   "reading_guide": "A filled dot differs from the nation’s 82.0 percent by more than the margin of error of the gap between them; an open dot sits within it.",
   "notes": [
     "The ratio sets the median of every woman who worked full time, year round against the median of every such man, whatever their jobs.",
-    "A state differs from the nation where the gap between them passes the gap’s own margin of error, the square root of the sum of the two margins squared, the Census Bureau’s test. By that test, 13 states and the District of Columbia sit above the nation and 12 states below it; no state’s lead over the next passes it, so the chart ranks none."
+    "A state differs from the nation where the gap between them passes the gap’s own margin of error, the square root of the sum of the two margins squared, the Census Bureau’s test. By that test, 13 states and the District of Columbia sit above the nation and 12 states below it. The states are listed by their figures; where two sit within each other’s margins, the order between them is not certain."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -92,7 +92,7 @@
     "Maker B, round 2. Data plan row 70, rule 14.74 (R2-4: the interval form; ED-E4 moves Rule 14.9’s plate onto it). Draws the frozen census-acs-earnings-ratio-by-state (P7-031).",
     "Ruling (a) and request B3: no named state; labels.named dropped; dots solid past the margin and open within it through labels.test, the nation as the (b) line. DC and New York: 94.7 (7.3) against 89.0 (1.0), a gap of 5.7 inside its margin of 7.4, so no state is first; Louisiana 75.6 (3.7) against Utah 76.7 (2.6), so none is last.",
     "R2-C1: the measure line names the 90 percent margin of error; the table prints the margin column; the past-the-margin test is the kit’s interval_of().differs.",
-    "Figures checked by maker_b_round2_derive.py --figures (check S57): the nation 82.04 (82.0); 26 of 51 past the margin by the Census Bureau’s test, 14 above (13 states and DC) and 12 below; 25 within; no adjacent pair in the sorted list differs past the margin.",
+    "Figures checked by maker_b_round2_derive.py --figures (check S57): the nation 82.04 (82.0); 26 of 51 past the margin by the Census Bureau’s test, 14 above (13 states and DC) and 12 below; 25 within. Note 2 does not claim that no neighbor pair differs: California over Connecticut passes the test, so the note says only that order inside the margins is not certain.",
     "Read from the left and the right: the title gives the national figure and the count past the margin; it names no state and no policy. The editor’s first look (title shape, grade line wording, note 1’s positive words) is applied, with “26 states” corrected to 25 states and DC."
   ]
 }

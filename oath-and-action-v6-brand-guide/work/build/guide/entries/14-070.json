@@ -1,0 +1,34 @@
+{
+ "id": "14.70",
+ "title": "Use a correlogram only to scan many variables for experts.",
+ "rule": [
+  "Use a correlogram, a reference form, to show the correlation between every pair of a set of variables as a grid: each cell shaded on a diverging scale from negative to positive, with the coefficient printed in it. Order the variables so related ones sit together, and say which coefficient the cells hold."
+ ],
+ "use_when": "A specialist asks which of many measures move together before choosing pairs to study.",
+ "use_instead": [
+  {
+   "when": "One pair of measures",
+   "rule": "14.67"
+  },
+  {
+   "when": "A few variables, each pair worth seeing as points",
+   "rule": "14.71"
+  }
+ ],
+ "why": {
+  "text": [
+   "A grid of coefficients puts dozens of pairs in one view, but a coefficient hides the shape of each relationship. It suits a first scan by experts and never a general reader’s finding."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-70-sketch",
+ "tier": "reference",
+ "tokens": [],
+ "related": [
+  "14.5"
+ ],
+ "builders": "No kit form: draw a correlogram with diverging pair B and the coefficient printed in each cell.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "A five-by-five grid of squares, each shaded on a diverging scale by the correlation between two variables, dark at the strongest pairs and pale near zero."
+}

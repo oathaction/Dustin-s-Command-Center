@@ -1,0 +1,53 @@
+{
+ "file": "census-acs-health-coverage-types.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "American Community Survey, 2025 1-year estimates, Data Profile DP03, Selected Economic Characteristics: health insurance coverage",
+ "table_id": "DP03_0095 to DP03_0099 (estimates, margins and percents)",
+ "url": "https://api.census.gov/data/2025/acs/acs1/profile?get=NAME,DP03_0095E,DP03_0095M,DP03_0096E,DP03_0096M,DP03_0096PE,DP03_0096PM,DP03_0097E,DP03_0097M,DP03_0097PE,DP03_0097PM,DP03_0098E,DP03_0098M,DP03_0098PE,DP03_0098PM,DP03_0099E,DP03_0099M,DP03_0099PE,DP03_0099PM&for=us:1 (with the studio’s key, not stored)",
+ "observation_period": "Calendar year 2025",
+ "geography": "United States",
+ "universe_or_base": "Civilian noninstitutionalized population",
+ "date_retrieved": "2026-11-12",
+ "vintage": "ACS 2025 1-year estimates",
+ "domain": "D09",
+ "domain_note": "V7 I133, Health",
+ "states": [],
+ "unit": "people; pct in percent of the civilian noninstitutionalized population; margins at the 90 percent level",
+ "qualification": "Survey estimates with 90 percent margins of error. A person may hold private and public coverage at once, so the two counts sum to more than the insured. The Bureau counts employer-based, direct-purchase and TRICARE coverage as private, and Medicare, Medicaid and other means-tested coverage and VA care as public.",
+ "columns": {
+  "measure_code": {
+   "type": "id",
+   "description": "the Data Profile line"
+  },
+  "coverage": {
+   "type": "text",
+   "description": "the line’s label, as the Bureau prints it"
+  },
+  "people": {
+   "type": "integer",
+   "description": "estimate",
+   "unit": "people"
+  },
+  "people_moe": {
+   "type": "integer",
+   "description": "90 percent margin of error",
+   "unit": "people"
+  },
+  "pct": {
+   "type": "number",
+   "description": "percent of the civilian noninstitutionalized population",
+   "unit": "percent"
+  },
+  "pct_moe": {
+   "type": "number",
+   "description": "90 percent margin of error",
+   "unit": "percentage points"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, 2025, Data Profile DP03, health insurance coverage, civilian noninstitutionalized population, United States. Retrieved November 12, 2026. Survey estimates; a person may hold private and public coverage at once.",
+ "ledger_row": "P7-303",
+ "notes": [
+  "The uninsured share is 8.4 percent (margin 0.1), so the data lead’s Euler at true area with no frame holds (sign-off condition for rows 117 and 118)"
+ ]
+}

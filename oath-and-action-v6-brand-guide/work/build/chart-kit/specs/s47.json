@@ -25,14 +25,15 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Treasury’s monthly statement of federal outlays",
-  "title": "Social Security took the largest share of federal spending in fiscal 2026, $1,667.1 billion.",
+  "title": "Social Security took the largest share of federal spending in fiscal 2026, $1,667.1 billion.",
   "measure_line": "Net federal outlays by budget function, billions of dollars, nominal, fiscal year 2026 (October 1, 2025 to September 30, 2026), United States; each tile’s share is of the functions with positive outlays, $7,566.3 billion",
   "notes": [
-    "Ten functions under 5 percent each are folded into one tile; the table lists each."
+    "Eleven functions under 6 percent each fold into one tile, $1,089.8 billion in all; the table lists each.",
+    "Shares are of the 17 functions with positive outlays, $7,566.3 billion; net outlays came to $7,395.8 billion after two negative lines."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Tiles sized by fiscal 2026 outlays for each budget function.",
+  "alt": "Tiles sized by fiscal 2026 net outlays for each budget function with positive outlays. Social Security, $1,667.1 billion, is the largest, then Medicare, $1,072.6 billion, net interest, $1,051.8 billion, health, $1,025.6 billion, and national defense, $965.2 billion.",
   "table": {
     "caption": "Net federal outlays by budget function, fiscal 2026",
     "columns": [
@@ -74,6 +75,12 @@
     "share": "percent:0"
   },
   "notes_internal": [
-    "Draft."
+    "Maker A, round 2. Data plan row 48, rule 14.52. Domain D08. Source line: the sidecar's treemap_fy2026 variant.",
+    "Data lead rulings (a) and (e): Social Security takes the red point with its keyline (labels.point), every other tile the light fill; words on red in Charcoal (the text ink on Newsprint, the ground's dark on Charcoal).",
+    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): 17 positive functions summing to 7,566.3 billion; Social Security the largest, 1,667.1, 22 percent of them; 11 functions under 6 percent folding to 1,089.8 billion.",
+    "fold_below 6 so every tile holds its words from 256 px up; at 5 percent Veterans' benefits and services (5.5) could not at 296 and 256 px."
+  ],
+  "chart_notes": [
+    "Every tile is light gray except Social Security, which the title names, in red. The last tile holds the 11 functions under 6 percent."
   ]
 }

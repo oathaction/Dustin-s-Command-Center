@@ -51,6 +51,27 @@
    "line": "Stacked bars, unit charts and treemaps show the parts of a whole and print the whole they add up to."
   },
   {
+   "number": 6,
+   "before_rule": "14.58",
+   "title": "Distribution and density: how are the values spread?",
+   "rules": "14.58 to 14.66",
+   "line": "Histograms, strip plots and box plots show how values spread, where they bunch and how far they run."
+  },
+  {
+   "number": 7,
+   "before_rule": "14.67",
+   "title": "Correlation: do two things move together?",
+   "rules": "14.67 to 14.73",
+   "line": "Scatter plots and their relatives show whether two measures move together, and an association’s note says what the pattern cannot show about cause."
+  },
+  {
+   "number": 8,
+   "before_rule": "14.74",
+   "title": "Uncertainty and estimates: how sure is it?",
+   "rules": "14.74 to 14.78",
+   "line": "A range, a band or a fan shows how sure a figure is, as its publisher states it, whether a survey’s margin of error around a finding or a range around an estimate, set by a model or by the errors of past forecasts (Rule 13.1)."
+  },
+  {
    "number": 10,
    "before_rule": "14.85",
    "title": "Gauges and indicators: where does it stand now?",
@@ -2122,7 +2143,7 @@
      "rule": "14.52"
     },
     {
-     "when": "The reader compares the parts’ sizes and the running total does not matter",
+     "when": "The reader compares the parts’ sizes alone",
      "rule": "14.15"
     },
     {
@@ -2330,7 +2351,7 @@
      "rule": "14.15"
     },
     {
-     "when": "The items are not seats and a grid reads better",
+     "when": "The items are things other than seats, counted one by one",
      "rule": "14.49"
     }
    ],
@@ -2446,7 +2467,7 @@
    "use_when": "The reader asks how a whole divides by two things at once, such as who answered each way within groups of very different size, and the area of each cell is the count that matters.",
    "use_instead": [
     {
-     "when": "The groups’ sizes do not matter, only their mix",
+     "when": "Only the mix within each group matters",
      "rule": "14.46"
     },
     {
@@ -2503,10 +2524,832 @@
    }
   },
   {
+   "id": "14.58",
+   "title": "Use a histogram to show how one measure spreads across many units.",
+   "rule": [
+    "Count the units in bins of equal width and draw one column a bin, side by side with a hairline between them, from zero. Print each count over its column where it fits, and mark the median as a dashed line in the text’s ink with its own label (Rule 14.6). Choose the bins once, before drawing, and say in a note that each unit counts once; where a story turns on dates, check that no bin edge falls on an inauguration day (Rule 14.10).",
+    "A chart of thousands of units draws from a table of its bins, so the table under the chart lists the bins, each with its count, and the page stays light."
+   ],
+   "why": {
+    "text": [
+     "A histogram turns a long list into a shape a reader can see at once: where most units sit, how far the tail runs and whether there are two humps. Equal bins keep every column comparable, and the median line gives the middle without the reader adding counts."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form histogram: node work/build/chart-kit/oa-chart.mjs build s49; encode start, end and count from a bin table; labels.marker draws the median line with its words, labels.x_axis and labels.y_axis name the axes.",
+   "related_rules": [
+    "14.6",
+    "14.10",
+    "14.13"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how long, how much or how many across hundreds or thousands of people, places or records, and the shape of the spread is the answer.",
+   "use_instead": [
+    {
+     "when": "Each unit must stay visible and the units number fewer than about a hundred",
+     "rule": "14.59"
+    },
+    {
+     "when": "The reader compares the spread of a few groups",
+     "rule": "14.60"
+    },
+    {
+     "when": "Two years or two groups of the same measure need one picture",
+     "rule": "14.61"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s49",
+    "caption": "How long have today’s federal judges served?"
+   }
+  },
+  {
+   "id": "14.59",
+   "title": "Show every item as a dot on one scale when each one should stay visible.",
+   "rule": [
+    "Place each item as one dot on a single value scale, packed up and down from a center line so no dot hides another; the packing follows the data alone, so it draws the same every time. Name the items the title names in the subject ink with their values, keep the rest in the light fill (Rule 14.6), and draw a total or national figure as a dashed line in the text’s ink with its own label.",
+    "A strip plot is the same form with the dots in one row; use it when the items rarely touch."
+   ],
+   "why": {
+    "text": [
+     "Every dot is an item the reader can find, so the chart shows the spread and keeps the individual places in it. Packing the dots by value, never by chance, means two builds of the same data draw the same picture, and the table under the chart gives each item’s value."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form beeswarm: node work/build/chart-kit/oa-chart.mjs build s50; labels.named names the items in ink, labels.reference draws the dashed total line with labels.reference_label.",
+   "related_rules": [
+    "14.6",
+    "14.13"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how about 20 to 100 places compare on one measure, and both the spread and a few named places matter.",
+   "use_instead": [
+    {
+     "when": "The items number in the hundreds or more",
+     "rule": "14.58"
+    },
+    {
+     "when": "The reader needs each item’s exact rank and value in order",
+     "rule": "14.18"
+    },
+    {
+     "when": "Several groups of items share the scale and the reader compares groups",
+     "rule": "14.60"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s50",
+    "caption": "How much does each state collect in taxes per resident?"
+   }
+  },
+  {
+   "id": "14.60",
+   "title": "Use a box plot to compare the spread of a few groups.",
+   "rule": [
+    "Draw one row a group, its name and count of units flush left: a box from the first to the third quartile, a 2 px line at the median, whiskers to the last unit within one and a half times the box’s length, and each unit beyond them as a small open circle. Print each median, give the group the title names the subject ink (Rule 14.6), and say in the measure line what the box and whiskers span.",
+    "The chart draws from a table of each group’s quartiles, median and whiskers and a table of the units past the whiskers, so a chart of thousands of units stays light."
+   ],
+   "why": {
+    "text": [
+     "Four numbers a group, the quartiles, the median and the reach, let a reader compare many units across groups at a glance. The rule for the whiskers is fixed and stated, so a dot past them always means the same thing, and no group’s spread depends on how the chart was drawn."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "13"
+   ],
+   "builders": "Form box-plot: node work/build/chart-kit/oa-chart.mjs build s51; encode the five numbers and count; labels.outliers names the second dataset of units past the whiskers, labels.named the group in ink.",
+   "related_rules": [
+    "14.6",
+    "14.9",
+    "13.1"
+   ],
+   "entry": true,
+   "use_when": "A reader who knows the form asks how widely a measure varies within each of a few groups, such as regions, and where the middle of each group sits.",
+   "use_instead": [
+    {
+     "when": "One group, and its shape matters more than its quartiles",
+     "rule": "14.58"
+    },
+    {
+     "when": "Two groups or two years, and the reader compares their whole shapes",
+     "rule": "14.61"
+    },
+    {
+     "when": "Each unit in a small group must stay visible",
+     "rule": "14.59"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s51",
+    "caption": "How widely do uninsured rates vary among counties in each region?"
+   }
+  },
+  {
+   "id": "14.61",
+   "title": "Overlay two distributions as stepped outlines on the same bins.",
+   "rule": [
+    "Draw each year or group as a stepped outline over one baseline, with no fill, so each shape shows through the other. The series the title follows takes the subject ink at the subject weight and the other the context ink at the field weight, each named where its outline peaks. Use the same bins for both and count each unit once in each."
+   ],
+   "why": {
+    "text": [
+     "Two filled histograms hide each other where they overlap, and side-by-side columns halve every bin. Outlines on shared bins let the reader see at once whether the mass moved left or right, which is the question a shift asks."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form line-histogram: node work/build/chart-kit/oa-chart.mjs build s52; encode start, end, value and series from a long bin table; labels.lit names the series in ink.",
+   "related_rules": [
+    "14.3",
+    "14.8"
+   ],
+   "entry": true,
+   "use_when": "The reader asks whether a whole distribution moved between two years, or differs between two groups, on one measure.",
+   "use_instead": [
+    {
+     "when": "One year or group alone",
+     "rule": "14.58"
+    },
+    {
+     "when": "Three or more groups, each with its own spread",
+     "rule": "14.60"
+    },
+    {
+     "when": "The reader follows a few named units from one year to the next",
+     "rule": "14.19"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s52",
+    "caption": "Did county child poverty rates shift between 2019 and the latest year?"
+   }
+  },
+  {
+   "id": "14.62",
+   "title": "Show a population’s age and sex in a pyramid, one bar a year of age.",
+   "rule": [
+    "Draw one thin bar a year of age on each side, men to the left and women to the right on one scale, the youngest at the bottom and ages labeled down the center. Both sides take one ink, and position and the names over each half carry sex. A band of ages the title names takes the view’s red as one job (Rule 14.6) with its words in the empty corner; every other age takes the light fill."
+   ],
+   "why": {
+    "text": [
+     "Single years show the echoes of booms and slumps in births that five-year groups smooth away, and a mirrored scale lets the reader compare men and women at every age by length alone. One ink for both sides keeps color free for the band the story names."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form population-pyramid: node work/build/chart-kit/oa-chart.mjs build s53; labels.left and labels.right name the two sides, labels.point a range of ages in red, labels.band_words its words.",
+   "related_rules": [
+    "14.4",
+    "14.6",
+    "14.7"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how many people are at or near a given age, such as the ages of retirement programs, or how a population’s ages are shaped.",
+   "use_instead": [
+    {
+     "when": "The reader compares a few age groups, not single years",
+     "rule": "14.15"
+    },
+    {
+     "when": "The reader follows one age group’s count over years",
+     "rule": "14.29"
+    },
+    {
+     "when": "Two populations’ age shapes need one picture",
+     "rule": "14.61"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s53",
+    "caption": "How many people are near the ages of Social Security and Medicare?"
+   }
+  },
+  {
+   "id": "14.63",
+   "title": "Use a violin only for experts, with its box plot drawn inside it.",
+   "rule": [
+    "Use a violin, a reference form, where a technical audience compares the shapes of several distributions. Draw each group’s smoothed density as a shape mirrored about its center line, with the quartiles and median inside it, and say how the shape was smoothed. Oath & Action draws one only in a methods note or a report for specialists."
+   ],
+   "why": {
+    "text": [
+     "A violin shows a second hump that a box plot hides, but its width comes from a smoothing choice the reader cannot see. Keeping the box inside it gives every reader the quartiles they can trust."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw a violin only in a specialist piece, from a density the analyst states, with the quartile box inside it as box-plot draws one.",
+   "sketch_alt": "Three violins, each a mirrored density shape with its quartile box and median inside, side by side on one scale; the middle group has two humps that a box plot alone would hide.",
+   "related_rules": [
+    "14.60"
+   ],
+   "entry": true,
+   "use_when": "A specialist asks whether a group’s values bunch in one place or two, and the quartiles alone would hide a second hump.",
+   "use_instead": [
+    {
+     "when": "A general reader compares the spread of a few groups",
+     "rule": "14.60"
+    },
+    {
+     "when": "One group’s shape, with counts a reader can check",
+     "rule": "14.58"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-63-sketch",
+    "caption": "Three violins, each a mirrored density shape with its quartile box and median inside, side by side on one scale; the middle group has two humps that a box plot alone would hide.",
+    "kind": "sketch",
+    "label": "Violin, a sketch"
+   }
+  },
+  {
+   "id": "14.64",
+   "title": "Stack several distributions as a ridgeline only when their order tells the story.",
+   "rule": [
+    "Use a ridgeline, a reference form, for many distributions of one measure in a meaningful order, such as years: each a filled curve on its own baseline, the baselines evenly spaced and the curves allowed to overlap the row above. Name each row at its left, keep one scale for every curve, and draw the subject in ink with the rest light."
+   ],
+   "why": {
+    "text": [
+     "Overlapping rows fit many shapes in the height of a few, and an order such as time lets the eye follow a drift down the page. Without a meaningful order the overlaps only hide parts of each curve."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw a ridgeline from line-histogram outlines on staggered baselines, until a story needs its own form.",
+   "sketch_alt": "Five filled curves on evenly spaced baselines, one row a year, whose peak drifts to the right from the top row to the bottom.",
+   "related_rules": [
+    "14.61",
+    "14.8"
+   ],
+   "entry": true,
+   "use_when": "A specialist asks how a distribution’s shape drifted across many years or ranked groups.",
+   "use_instead": [
+    {
+     "when": "Two years or groups only",
+     "rule": "14.61"
+    },
+    {
+     "when": "A few groups and their quartiles",
+     "rule": "14.60"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-64-sketch",
+    "caption": "Five filled curves on evenly spaced baselines, one row a year, whose peak drifts to the right from the top row to the bottom.",
+    "kind": "sketch",
+    "label": "Ridgeline, a sketch"
+   }
+  },
+  {
+   "id": "14.65",
+   "title": "Bin very many points into hexagons when a scatter turns to ink.",
+   "rule": [
+    "Use a hexbin, a reference form, when tens of thousands of points would bury each other in a scatter plot: tile the plot with hexagons of equal size and shade each by the count of points in it, on a sequential scale with its key. State the hexagon’s size and the count each step stands for."
+   ],
+   "why": {
+    "text": [
+     "Past a few thousand points a scatter plot becomes a solid shape whose dense center and sparse edge look alike. Counting the points in equal tiles restores the density, and a key makes each shade a number."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw hexbins with the sequential palette and a stated tile size, until a story needs its own form.",
+   "sketch_alt": "A field of hexagons shaded from light to dark by how many points fall in each, densest along a rising diagonal, with a three-step key.",
+   "related_rules": [
+    "14.5",
+    "14.67"
+   ],
+   "entry": true,
+   "use_when": "A specialist asks where very many records cluster on two measures, such as income and rent for every census tract.",
+   "use_instead": [
+    {
+     "when": "A few dozen points, some of them named",
+     "rule": "14.67"
+    },
+    {
+     "when": "A smooth surface for an expert audience",
+     "rule": "14.66"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-65-sketch",
+    "caption": "A field of hexagons shaded from light to dark by how many points fall in each, densest along a rising diagonal, with a three-step key.",
+    "kind": "sketch",
+    "label": "Hexbin, a sketch"
+   }
+  },
+  {
+   "id": "14.66",
+   "title": "Draw a contour or density only for experts, with its smoothing stated.",
+   "rule": [
+    "Use contours or a density surface, a reference form, to show where very many points concentrate on two measures: draw lines of equal density, like a map’s height lines, or shade bands between them, and state the smoothing. Draw the few points that matter on top."
+   ],
+   "why": {
+    "text": [
+     "Contours give the shape of a dense cloud with lines instead of ink, so points the story names can sit on top and stay readable. The smoothing changes the shape, so the reader needs to know it."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw density contours in a specialist piece, from a density the analyst states.",
+   "sketch_alt": "Three nested contour rings around the densest part of a point cloud, the inner ring darkest, with a few points outside the outer ring.",
+   "related_rules": [
+    "14.65"
+   ],
+   "entry": true,
+   "use_when": "A specialist asks where the bulk of very many records lies on two measures, and the exact counts matter less than the shape.",
+   "use_instead": [
+    {
+     "when": "Counts a reader can check in each area",
+     "rule": "14.65"
+    },
+    {
+     "when": "A few dozen points the reader can name",
+     "rule": "14.67"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-66-sketch",
+    "caption": "Three nested contour rings around the densest part of a point cloud, the inner ring darkest, with a few points outside the outer ring.",
+    "kind": "sketch",
+    "label": "Contour or density, a sketch"
+   }
+  },
+  {
+   "id": "14.67",
+   "title": "Plot two measures as a scatter, and name only the points the story needs.",
+   "rule": [
+    "Draw one dot a place at its two values, with gridlines both ways and each axis named. Name the place the title names in the subject ink (Rule 14.6), label a few others in the light fill where the data single them out past the margin of error (Rule 14.9), and draw the nation as an open ring in the text’s ink. Draw no fitted line: the reader judges the pattern.",
+    "Every correlation chart takes the Association label and the note “This shows the two move together; it does not show one causes the other.” (Rule 13.1)."
+   ],
+   "why": {
+    "text": [
+     "A scatter shows a relationship as a direction a reader can see without a statistic. Names on every dot turn it into a word cloud, so only the places the story needs carry a name, and the table under the chart names every one."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "13"
+   ],
+   "builders": "Form scatter-named: node work/build/chart-kit/oa-chart.mjs build s54; labels.named names the points in ink, labels.labeled points named in the light fill, labels.reference the open ring.",
+   "related_rules": [
+    "13.1",
+    "14.6",
+    "14.9"
+   ],
+   "entry": true,
+   "use_when": "The reader asks whether two measures move together across places, and where one place sits against the rest.",
+   "use_instead": [
+    {
+     "when": "A third measure, such as size, matters",
+     "rule": "14.68"
+    },
+    {
+     "when": "The two measures move together over time for one place",
+     "rule": "14.69"
+    },
+    {
+     "when": "The reader compares one measure across places",
+     "rule": "14.18"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s54",
+    "caption": "Do rents run higher where renters earn more, and where does rent take the largest share of renters’ income?"
+   }
+  },
+  {
+   "id": "14.68",
+   "title": "Size each point by a third measure only when its size answers the question.",
+   "rule": [
+    "Draw the scatter plot with each circle’s area set by a third measure, never its radius (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circle the title names in the subject ink, and keep the Association label and its note."
+   ],
+   "why": {
+    "text": [
+     "Size lets a large place weigh as much on the page as it does in the country, so a small state at an extreme does not read as the whole story. Area, not radius, keeps a circle twice as large in value from looking four times as large."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "13"
+   ],
+   "builders": "Form bubble-scatter: node work/build/chart-kit/oa-chart.mjs build s55; encode size for the area; labels.size_key gives the key’s sizes and labels.size_key_title its words.",
+   "related_rules": [
+    "14.4",
+    "14.67",
+    "13.1"
+   ],
+   "entry": true,
+   "use_when": "The reader asks whether two measures move together and also how many people each place holds.",
+   "use_instead": [
+    {
+     "when": "The circle sizes add nothing the question asks",
+     "rule": "14.67"
+    },
+    {
+     "when": "Size alone matters, on a map",
+     "rule": "14.116"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s55",
+    "caption": "Do rents run higher where renters earn more, with each state sized by its renter households?"
+   }
+  },
+  {
+   "id": "14.69",
+   "title": "Join a scatter’s points in time order to show two measures moving together.",
+   "rule": [
+    "Draw one dot a period at its two values and join them in time order with a thin path in the subject ink. Name the first and latest periods and the turns the story needs, with leaders where the path is dense. Break the path where a period lacks a value and name the gap (Rule 14.11). Keep the Association label when the title says the two moved together."
+   ],
+   "why": {
+    "text": [
+     "A connected scatter shows a relationship and its history in one line: loops, reversals and jumps that two separate lines would leave the reader to piece together. Naming a few periods gives the path its dates, and the table gives every one."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "13"
+   ],
+   "builders": "Form connected-scatter: node work/build/chart-kit/oa-chart.mjs build s56; encode time, x and y; labels.named names periods, labels.gap the missing one.",
+   "related_rules": [
+    "13.1",
+    "14.11",
+    "14.3"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how two measures moved together over years, such as job openings and unemployment through a recession and a recovery.",
+   "use_instead": [
+    {
+     "when": "Each measure’s own trend matters more than their relationship",
+     "rule": "14.30"
+    },
+    {
+     "when": "Two measures across places at one time",
+     "rule": "14.67"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s56",
+    "caption": "How have unemployment and job openings moved together?"
+   }
+  },
+  {
+   "id": "14.70",
+   "title": "Use a correlogram only to scan many variables for experts.",
+   "rule": [
+    "Use a correlogram, a reference form, to show the correlation between every pair of a set of variables as a grid: each cell shaded on a diverging scale from negative to positive, with the coefficient printed in it. Order the variables so related ones sit together, and say which coefficient the cells hold."
+   ],
+   "why": {
+    "text": [
+     "A grid of coefficients puts dozens of pairs in one view, but a coefficient hides the shape of each relationship. It suits a first scan by experts and never a general reader’s finding."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw a correlogram with diverging pair B and the coefficient printed in each cell.",
+   "sketch_alt": "A five-by-five grid of squares, each shaded on a diverging scale by the correlation between two variables, dark at the strongest pairs and pale near zero.",
+   "related_rules": [
+    "14.5"
+   ],
+   "entry": true,
+   "use_when": "A specialist asks which of many measures move together before choosing pairs to study.",
+   "use_instead": [
+    {
+     "when": "One pair of measures",
+     "rule": "14.67"
+    },
+    {
+     "when": "A few variables, each pair worth seeing as points",
+     "rule": "14.71"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-70-sketch",
+    "caption": "A five-by-five grid of squares, each shaded on a diverging scale by the correlation between two variables, dark at the strongest pairs and pale near zero.",
+    "kind": "sketch",
+    "label": "Correlogram, a sketch"
+   }
+  },
+  {
+   "id": "14.71",
+   "title": "Use a pair plot to show every pair of a few variables as small scatters.",
+   "rule": [
+    "Use a pair plot, a reference form, for three to five variables: a grid of small scatter plots, one for each pair, with each variable’s histogram on the diagonal. Keep one scale down each column and across each row."
+   ],
+   "why": {
+    "text": [
+     "Small scatters show each relationship’s shape, which a coefficient cannot, and the shared scales let the eye run along a row. Past five variables the cells grow too small to read."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw a pair plot from small scatter-named panels with histogram panels on the diagonal.",
+   "sketch_alt": "A three-by-three grid: small scatter plots of each pair of three variables off the diagonal, and a small histogram of each variable on it.",
+   "related_rules": [
+    "14.67",
+    "14.58"
+   ],
+   "entry": true,
+   "use_when": "A specialist asks how a few measures relate to one another, pair by pair, before choosing which to chart.",
+   "use_instead": [
+    {
+     "when": "Many variables at once",
+     "rule": "14.70"
+    },
+    {
+     "when": "One pair the story turns on",
+     "rule": "14.67"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-71-sketch",
+    "caption": "A three-by-three grid: small scatter plots of each pair of three variables off the diagonal, and a small histogram of each variable on it.",
+    "kind": "sketch",
+    "label": "Pair plot, a sketch"
+   }
+  },
+  {
+   "id": "14.72",
+   "title": "Draw a trajectory to show the pace of change along a path.",
+   "rule": [
+    "Use a trajectory or speed chart, a reference form, to show how fast something moved along a path: dots at equal time steps along a connected path, so wide spacing means fast change and close spacing slow. Mark the start and end and name the steps."
+   ],
+   "why": {
+    "text": [
+     "Equal time steps turn the spacing of the dots into speed, which a plain path hides. The reader sees where change raced and where it stalled."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw a trajectory from connected-scatter with dots at equal time steps.",
+   "sketch_alt": "A curved path with dots at equal time steps, spaced wide where change ran fast and close together where it slowed, from a start dot to an end dot.",
+   "related_rules": [
+    "14.69"
+   ],
+   "entry": true,
+   "use_when": "A specialist asks not only where two measures went but how fast they got there.",
+   "use_instead": [
+    {
+     "when": "The relationship over time, without the pace",
+     "rule": "14.69"
+    },
+    {
+     "when": "One measure’s rate of change over time",
+     "rule": "14.29"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-72-sketch",
+    "caption": "A curved path with dots at equal time steps, spaced wide where change ran fast and close together where it slowed, from a start dot to an end dot.",
+    "kind": "sketch",
+    "label": "Trajectory or speed chart, a sketch"
+   }
+  },
+  {
+   "id": "14.73",
+   "title": "Avoid two value scales on one chart, which can make any two lines cross.",
+   "rule": [
+    "Leave dual-axis line charts out of every Oath & Action piece. Draw two measures as two aligned panels, one above the other, each on its own scale from a stated base and sharing one time axis, or index both to one start date on one scale (Rule 14.4)."
+   ],
+   "why": {
+    "text": [
+     "With two scales the builder chooses where each line sits, so the same data can show the lines crossing, running together or far apart. Readers take the crossing for a finding, though it is only where two scales were placed."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form, by design; draw the two measures with area-sparklines (s13) as aligned panels, or with indexed-line (s33) on one index.",
+   "sketch_alt": "The same two invented series drawn twice: on two value scales the lines cross in the middle, and in two aligned panels, each on its own scale from zero, neither line crosses anything, so no false meeting point appears.",
+   "related_rules": [
+    "14.4"
+   ],
+   "entry": true,
+   "use_when": "Never: a reader who asks how two measures moved over the same years gets a truer answer from two aligned panels.",
+   "use_instead": [
+    {
+     "when": "Each measure on its own scale, read side by side",
+     "rule": "14.34"
+    },
+    {
+     "when": "Growth compared from one start date",
+     "rule": "14.40"
+    },
+    {
+     "when": "The two measures plotted against each other over time",
+     "rule": "14.69"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-73-sketch",
+    "caption": "The same two invented series drawn twice: on two value scales the lines cross in the middle, and in two aligned panels, each on its own scale from zero, neither line crosses anything, so no false meeting point appears.",
+    "kind": "avoid",
+    "label": "Dual-axis line, a form that misleads"
+   }
+  },
+  {
+   "id": "14.74",
+   "title": "Draw a survey figure with its margin of error, and single out only what passes it.",
+   "rule": [
+    "Draw each estimate as a dot on a thin line across its interval, the interval’s level named in the measure line, such as “90 percent margin of error”. Draw the nation as a dashed line in the text’s ink with its own label. A dot that differs from the nation by more than the gap’s own margin takes a solid fill; one within it takes an open dot (Rule 14.9). List rows by their figures and print each one, but never number them as ranks."
+   ],
+   "why": {
+    "text": [
+     "A survey figure is a range, not a point, and two places whose ranges overlap may stand in either order. Drawing the range and testing each gap keeps the chart from claiming more than the survey knows."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "13"
+   ],
+   "builders": "Form range-bar: node work/build/chart-kit/oa-chart.mjs build s57; encode category, value and margin (or low and high); labels.reference draws the dashed line, labels.test \"reference\" the open dots, labels.value the right column’s words.",
+   "related_rules": [
+    "14.9",
+    "13.5",
+    "13.1"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how places compare on a survey figure, and how sure each one is.",
+   "use_instead": [
+    {
+     "when": "A count with no sampling margin",
+     "rule": "14.18"
+    },
+    {
+     "when": "One figure over time with its margin each year",
+     "rule": "14.75"
+    },
+    {
+     "when": "A projection with a range that widens ahead",
+     "rule": "14.77"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s57",
+    "caption": "How do women’s earnings compare with men’s in each state, and how sure is each figure?"
+   }
+  },
+  {
+   "id": "14.75",
+   "title": "Draw a band around a line to show each year’s margin of error.",
+   "rule": [
+    "Draw the series as a 2 px line in the subject ink over a light band from each year’s low to its high, at the publisher’s stated confidence, named in the measure line. Where the publisher changed its method, break the line and the band and draw both estimates for that year (Rule 14.11). Label the latest figure with its margin at the line’s end."
+   ],
+   "why": {
+    "text": [
+     "A band shows at once which year-to-year moves are larger than the survey’s own uncertainty and which sit inside it. Breaking it where the method changed keeps a new questionnaire from reading as a change in people’s lives."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "13"
+   ],
+   "builders": "Form line-confidence-band: node work/build/chart-kit/oa-chart.mjs build s58; encode x, y and margin (or low and high), with break and labels.break_end and labels.break_start for a change of method.",
+   "related_rules": [
+    "14.9",
+    "14.11",
+    "13.5"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how a survey figure changed over years and how sure each year’s figure is.",
+   "use_instead": [
+    {
+     "when": "Places compared at one time",
+     "rule": "14.74"
+    },
+    {
+     "when": "A projection whose range widens ahead",
+     "rule": "14.77"
+    },
+    {
+     "when": "A count with no sampling margin",
+     "rule": "14.29"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s58",
+    "caption": "How has the typical household’s income changed, and how sure is each year’s figure?"
+   }
+  },
+  {
+   "id": "14.76",
+   "title": "Show where each outcome would move under each scenario, in words and arrows, with no numbers.",
+   "rule": [
+    "Set scenarios in rows and outcomes in columns, and print the source’s own words for each direction in every cell, with an arrow and a tint read from those words and labeled as Oath & Action’s reading. Print no number, total or odds the source does not give. Say in the grade line that the directions are conditional, with no forecast and no odds. On a phone each scenario becomes a card (Rule 14.12)."
+   ],
+   "why": {
+    "text": [
+     "A direction stated in words is all a scenario claims, so the chart keeps the words and adds only an arrow a reader can check against them. Numbers or odds would claim a precision the scenarios never had."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "13"
+   ],
+   "builders": "Form scenario-directions: node work/build/chart-kit/oa-chart.mjs build s06; encode row, columns and classes, with the arrows and tints read from the classes.",
+   "related_rules": [
+    "13.1",
+    "14.12",
+    "14.127"
+   ],
+   "entry": true,
+   "use_when": "The reader asks which way each outcome would move if a reform path were followed, and the source states directions, not amounts.",
+   "use_instead": [
+    {
+     "when": "The source gives numbers for each scenario and their range",
+     "rule": "14.77"
+    },
+    {
+     "when": "Options against criteria, with words and no direction",
+     "rule": "14.127"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s06",
+    "caption": "If a reform path were followed, which way would each outcome move?"
+   }
+  },
+  {
+   "id": "14.77",
+   "title": "Draw a projection as a fan whose bands widen with the years ahead.",
+   "rule": [
+    "Draw the median projection as a line in the subject ink with a dot and its value at each period, over two nested bands: the outer from past forecast errors in Stone step 1, and the inner, such as the range of every forecaster’s projection, in Stone step 2. Name the bands in a key, print the outer band’s ends at the last period, and name its probability in the measure line. A period with no date, such as the longer run, sits apart past a thin rule."
+   ],
+   "why": {
+    "text": [
+     "A single projected line reads as a promise. The widening bands show how much less is known about later years, and drawing them from past errors grounds the range in the record rather than in opinion."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "13"
+   ],
+   "builders": "Form fan-chart: node work/build/chart-kit/oa-chart.mjs build s59; encode x, y and the outer and inner bands; labels.apart sets a period apart, labels.key_outer, key_inner and key_median name the key.",
+   "related_rules": [
+    "13.1",
+    "14.75"
+   ],
+   "entry": true,
+   "use_when": "The reader asks where forecasters expect a measure to go and how wide the range of outcomes is.",
+   "use_instead": [
+    {
+     "when": "Survey margins around figures already measured",
+     "rule": "14.75"
+    },
+    {
+     "when": "Directions under scenarios, with no numbers",
+     "rule": "14.76"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s59",
+    "caption": "Where do Federal Reserve officials expect unemployment to go, and how wide is the range?"
+   }
+  },
+  {
+   "id": "14.78",
+   "title": "Show uncertainty as a run of possible outcomes only for experts, never as motion alone.",
+   "rule": [
+    "Use hypothetical outcomes, a reference form, to show uncertainty as several possible results drawn from the estimate’s range, set side by side as small panels or shown one after another. Label every draw as one possible outcome, and pair the form with a band or a range that a still image and a screen reader carry."
+   ],
+   "why": {
+    "text": [
+     "Seeing several possible results makes uncertainty concrete in a way a shaded band does not. Motion alone fails print, still images and readers who turn animation off, so each draw also stands as a still panel."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw hypothetical outcomes as small panels from small-multiple-bars, each one draw from the stated range.",
+   "sketch_alt": "Six small panels, each one possible outcome drawn from the same estimate, with a dashed line marking the threshold; the bar lands above it in four panels and below it in two.",
+   "related_rules": [
+    "14.13",
+    "14.77"
+   ],
+   "entry": true,
+   "use_when": "A specialist asks how often an outcome would land above or below a line, and a band alone hides how the draws vary together.",
+   "use_instead": [
+    {
+     "when": "A survey figure and its margin",
+     "rule": "14.74"
+    },
+    {
+     "when": "A projection and its range",
+     "rule": "14.77"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-78-sketch",
+    "caption": "Six small panels, each one possible outcome drawn from the same estimate, with a dashed line marking the threshold; the bar lands above it in four panels and below it in two.",
+    "kind": "sketch",
+    "label": "Hypothetical outcomes, a sketch"
+   }
+  },
+  {
    "id": "14.85",
    "title": "Set one figure large when a reader should remember it, with the context to judge it.",
    "rule": [
-    "Print the one figure the reader should carry away in the display face, with the words that say what it counts directly under it, and set beside it the context that makes it mean something: the groups it splits into, the vote it led to, or the figure it compares with. Name every group in words, in neutral inks where parties are concerned (Rule 14.7)."
+    "Print the one figure the reader should carry away in the display face, with the words that say what it counts directly under it, and set beside it the context that makes it mean something: the groups it splits into, a recorded vote on the same subject, or the figure it compares with. Name every group in words, in neutral inks where parties are concerned (Rule 14.7)."
    ],
    "why": {
     "text": [
@@ -2949,10 +3792,7 @@
      "rule": "14.137"
     }
    ],
-   "correct": {
-    "specimen": "s-14-s06",
-    "caption": "If the country took each path, which way would each outcome move?"
-   }
+   "specimen_at": "14.76"
   },
   {
    "id": "14.128",
@@ -3293,27 +4133,6 @@
   "Source: Federal Election Commission, financial totals for PACs and party committees, independent expenditure-only committees, known as super PACs, counted by two-year cycle, 2009 to 2010 through 2023 to 2024, United States. Retrieved November 12, 2026. Hybrid PACs, which also make independent expenditures, are not counted."
  ],
  "planned_rules": [
-  "14.58",
-  "14.59",
-  "14.60",
-  "14.61",
-  "14.62",
-  "14.63",
-  "14.64",
-  "14.65",
-  "14.66",
-  "14.67",
-  "14.68",
-  "14.69",
-  "14.70",
-  "14.71",
-  "14.72",
-  "14.73",
-  "14.74",
-  "14.75",
-  "14.76",
-  "14.77",
-  "14.78",
   "14.79",
   "14.80",
   "14.81",

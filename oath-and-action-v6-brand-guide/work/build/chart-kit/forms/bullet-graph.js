@@ -1,7 +1,7 @@
 /* Bullet graph (coverage plan 3.9, extended; S64). A measure against its target and the ranges behind it, one row a
  * reading: the ranges as bands in the magnitude steps from zero, the measure as a narrow bar in the subject ink from
  * zero, the target as a tick in the text's ink across the bands. Every band edge and the target are named once over
- * the rows; each row prints its measure and its distance to the target in a column at the right (over the bar on a
+ * the rows; each row prints its measure and its distance to the target in a column at the right (under the bar on a
  * phone). Bars start at zero (Rule 14.4).
  * encode: category (the row's name: a date, month or text), value (number), target (number, optional).
  * labels: bands ([{to, step, label}]: each band runs from the last one's end to `to`, in magnitude step 1 to 4, named
@@ -27,7 +27,7 @@
         vw = Math.max(vw, c.measure(fv(L.value_words, r[ev]), 'label', 700, true));
         if (et && r[et]) vw = Math.max(vw, c.measure(fv(L.rest_words, r[et] - r[ev]), 'tick'));
       });
-      var x0 = c.phone ? 0 : Math.ceil(nw + 16), x1 = c.phone ? W : Math.floor(W - vw - 14);
+      var x0 = c.phone ? 0 : Math.ceil(nw + 16), x1 = c.phone ? W - 2 : Math.floor(W - vw - 14);
       var xs = K.scale.linear([0, hi], [x0, x1]);
       // the names of the band edges and the target over the rows, each moved up a line where it would touch another
       var heads = [], put = function (x, words, weight) {
@@ -44,15 +44,13 @@
       heads.forEach(function (h) {
         var yy = top - 8 - h.line * lh - tick * 0.3;
         c.text(h.a, yy, h.words, { role: 'tick', weight: h.weight, fill: h.weight === 600 ? 'label' : 'secondary' });
-        c.line(h.x, yy + 4, h.x, top - 2, { stroke: h.weight === 600 ? 'label' : 'secondary', width: c.t('line-hairline'), mark: false });
+        c.line(Math.min(h.x, W - 1), yy + 4, Math.min(h.x, W - 1), top - 2, { stroke: h.weight === 600 ? 'label' : 'secondary', width: c.t('line-hairline'), mark: false });
       });
       var bh = c.t('bar-height') + 4, mh = Math.round(bh / 3), y = top;
       rows.forEach(function (r, i) {
-        var by = y + (c.phone ? size + 8 : 0), cy = by + bh / 2;
-        if (c.phone) {
-          c.text(0, by - 8, name(r), { role: 'label', weight: 600 });
-          c.text(W, by - 8, fv(L.value_words, r[ev]), { role: 'label', weight: 700, anchor: 'end', tnum: true });
-        } else c.text(0, cy + size * 0.35, name(r), { role: 'label', weight: 600 });
+        // on a phone the row's name and figures sit under its bar, so the heads' hairlines reach the bands clear of words
+        var by = y, cy = by + bh / 2;
+        if (!c.phone) c.text(0, cy + size * 0.35, name(r), { role: 'label', weight: 600 });
         var from = 0;
         bands.forEach(function (b) { c.rect(xs(from), by, xs(b.to) - xs(from), bh, { fill: 'mag-' + (b.step || 1), kind: 'band', data: { key: r[ek], field: 'band', value: b.to } }); from = b.to; });
         c.rect(x0, cy - mh / 2, xs(r[ev]) - x0, mh, { fill: 'subject', kind: 'bar', axis: 'x', zero: x0, data: { key: r[ek], field: ev, value: r[ev] } });
@@ -63,8 +61,11 @@
           if (rest) c.text(W, cy + tick + 1, rest, { role: 'tick', anchor: 'end' });
           y = by + bh + 16;
         } else {
-          if (rest) { c.text(W, by + bh + 5 + tick, rest, { role: 'tick', anchor: 'end' }); y = by + bh + 5 + tick + 18; }
-          else y = by + bh + 18;
+          var ny = by + bh + 8 + size;
+          c.text(0, ny, name(r), { role: 'label', weight: 600 });
+          c.text(W, ny, fv(L.value_words, r[ev]), { role: 'label', weight: 700, anchor: 'end', tnum: true });
+          if (rest) { c.text(W, ny + 4 + tick, rest, { role: 'tick', anchor: 'end' }); ny += 4 + tick; }
+          y = ny + 18;
         }
       });
       c.height(y - (c.phone ? 14 : 12));

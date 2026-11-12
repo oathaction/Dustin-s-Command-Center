@@ -5,24 +5,25 @@
   1,
   2
  ],
- "examples": 63,
+ "examples": 74,
  "by_domain": {
   "D01": 4,
   "D02": 7,
   "D03": 5,
   "D04": 6,
-  "D05": 2,
+  "D05": 3,
   "D06": 4,
-  "D07": 4,
-  "D08": 10,
-  "D09": 8,
+  "D07": 7,
+  "D08": 14,
+  "D09": 11,
   "D10": 6
  },
  "all_domains": 7,
  "by_state": {
-  "CA": 1,
+  "AK": 1,
+  "CA": 3,
   "CT": 1,
-  "FL": 1,
+  "FL": 3,
   "GA": 1,
   "IL": 2,
   "MA": 1,
@@ -30,11 +31,13 @@
   "MS": 1,
   "MT": 1,
   "NC": 1,
+  "ND": 2,
   "NY": 2,
   "OH": 1,
   "PA": 1,
   "TX": 1,
   "UT": 1,
+  "VT": 1,
   "WA": 1,
   "WY": 1
  },
@@ -380,14 +383,14 @@
    "source": "s10.json"
   },
   {
-   "example": "Renters made up the larger share of households only in the District of Columbia in 2025, at 62 percent.",
+   "example": "In 2025 renters outnumbered owners only in the District of Columbia, where they made up 62 percent of households.",
    "domain": "D09",
    "states": [],
    "rule": "14.47",
    "source": "s43.json"
   },
   {
-   "example": "Federal outlays of $7,395.8 billion in fiscal 2026 ran $1,992.5 billion past receipts of $5,403.3 billion, the year’s deficit.",
+   "example": "Federal outlays of $7,395.8 billion in fiscal 2026 ran $1,992.5 billion past receipts of $5,403.3 billion, the year’s deficit.",
    "domain": "D08",
    "states": [],
    "rule": "14.48",
@@ -401,32 +404,127 @@
    "source": "s08.json"
   },
   {
-   "example": "Homes in buildings of five or more units made up 36 percent of the new homes finished in 2024, their largest share of any year since 2000.",
+   "example": "Homes in buildings of five or more units made up 36 percent of the new homes finished in 2024, their largest share in any year from 2000 to 2025.",
    "domain": "D09",
    "states": [],
    "rule": "14.50",
    "source": "s45.json"
   },
   {
-   "example": "Private insurance, Medicare and Medicaid together paid 70 percent of the nation’s health care bill in 2024, up from 21 percent in 1960.",
+   "example": "Private insurance, Medicare and Medicaid together paid 70 percent of the nation’s health care bill in 2024, up from 21 percent in 1960.",
    "domain": "D09",
    "states": [],
    "rule": "14.51",
    "source": "s46.json"
   },
   {
-   "example": "Social Security took the largest share of federal spending in fiscal 2026, $1,667.1 billion.",
+   "example": "Social Security took the largest share of federal spending in fiscal 2026, $1,667.1 billion.",
    "domain": "D08",
    "states": [],
    "rule": "14.52",
    "source": "s47.json"
   },
   {
-   "example": "Republicans held 218 of the House’s 435 seats on November 11, 2026, and Democrats 214, with one independent and two seats vacant.",
+   "example": "Republicans held 218 of the House’s 435 seats on November 11, 2026, and Democrats 214, with one independent and two seats vacant.",
    "domain": "D02",
    "states": [],
    "rule": "14.53",
    "source": "s48.json"
+  },
+  {
+   "example": "The 845 federal judges in active service in November 2026 had served a median of 8.0 years.",
+   "domain": "D05",
+   "states": [],
+   "rule": "14.58",
+   "source": "s49.json"
+  },
+  {
+   "example": "Vermont collected $8,052 in state taxes per resident in fiscal 2025, the most of the 50 states, and Alaska $2,290, the least.",
+   "domain": "D08",
+   "states": [
+    "VT",
+    "AK"
+   ],
+   "rule": "14.59",
+   "source": "s50.json"
+  },
+  {
+   "example": "Counties in the South had the highest median uninsured rate of the four regions in 2024, 13.9 percent of people under 65, by the Census Bureau’s estimates.",
+   "domain": "D09",
+   "states": [],
+   "rule": "14.60",
+   "source": "s51.json"
+  },
+  {
+   "example": "The median county’s child poverty rate fell from 18.7 percent in 2019 to 17.1 percent in 2024, by the Census Bureau’s estimates.",
+   "domain": "D08",
+   "states": [],
+   "rule": "14.61",
+   "source": "s52.json"
+  },
+  {
+   "example": "The Census Bureau estimated 41.2 million people aged 55 to 64 on July 1, 2025, the ten years of age just before 65.",
+   "domain": "D08",
+   "states": [],
+   "rule": "14.62",
+   "source": "s53.json"
+  },
+  {
+   "example": "Higher rents went with higher renter incomes across the states in 2025, and rent took the largest share of renters’ income in Florida, 35.5 percent.",
+   "domain": "D09",
+   "states": [
+    "FL",
+    "CA",
+    "ND"
+   ],
+   "rule": "14.67",
+   "source": "s54.json"
+  },
+  {
+   "example": "Higher rents went with higher renter incomes across the states in 2025, and Florida’s 3.0 million renter households paid the largest share of income in rent, 35.5 percent.",
+   "domain": "D09",
+   "states": [
+    "FL",
+    "CA",
+    "ND"
+   ],
+   "rule": "14.68",
+   "source": "s55.json"
+  },
+  {
+   "example": "More job openings went with less unemployment from 2001 to 2026: openings averaged 11.7 million in early 2022, when the rate averaged 3.9 percent.",
+   "domain": "D07",
+   "states": [],
+   "rule": "14.69",
+   "source": "s56.json"
+  },
+  {
+   "example": "Women who worked full time, year round had median earnings 82.0 percent of men’s in 2025, and in 25 states and the District of Columbia the figure differed from the nation’s by more than the margin of error.",
+   "domain": "D07",
+   "states": [],
+   "rule": "14.74",
+   "source": "s57.json"
+  },
+  {
+   "example": "Median household income stood at $87,460 in 2025, in 2025 dollars, the highest since the survey’s first year, 1967.",
+   "domain": "D08",
+   "states": [],
+   "rule": "14.75",
+   "source": "s58.json"
+  },
+  {
+   "example": "If their assumptions hold, five of the seven scenarios beyond the baseline would lift at least one outcome family by 2036.",
+   "domain": "all",
+   "states": [],
+   "rule": "14.76",
+   "source": "s06.json"
+  },
+  {
+   "example": "Federal Reserve officials projected a median unemployment rate of 4.1 percent for each year through 2029, and past forecast errors put 2029’s range at 2.0 to 6.2 percent.",
+   "domain": "D07",
+   "states": [],
+   "rule": "14.77",
+   "source": "s59.json"
   },
   {
    "example": "Nearly nine in ten Republican and Democratic voters favored a ban on stock trading by members of Congress.",
@@ -436,7 +534,7 @@
    "source": "s01.json"
   },
   {
-   "example": "The atlas puts eight figures first, each checked against its sources on October 15, 2026.",
+   "example": "The atlas puts eight figures first, each checked against its sources on October 15, 2026.",
    "domain": "all",
    "states": [],
    "rule": "14.86",
@@ -457,7 +555,7 @@
    "source": "s62.json"
   },
   {
-   "example": "Of six disputes over removals, spending and watchdogs, the Supreme Court had decided one by October 15, 2026, and acted in two others by interim order.",
+   "example": "Of six disputes over removals, spending and watchdogs, the Supreme Court had decided one by October 15, 2026, and acted in two others by interim order.",
    "domain": "D05",
    "states": [
     "IL"
@@ -466,7 +564,7 @@
    "source": "s63.json"
   },
   {
-   "example": "Federal debt subject to the limit stood at $40,327.1 billion on October 31, 2026, $776.9 billion under the $41,104.0 billion limit.",
+   "example": "Federal debt subject to the limit stood at $40,327.1 billion on October 31, 2026, $776.9 billion under the $41,104.0 billion limit.",
    "domain": "D08",
    "states": [],
    "rule": "14.90",
@@ -485,13 +583,6 @@
    "states": [],
    "rule": "14.126",
    "source": "s36.json"
-  },
-  {
-   "example": "If their assumptions hold, five of the seven scenarios beyond the baseline would lift at least one outcome family by 2036.",
-   "domain": "all",
-   "states": [],
-   "rule": "14.127",
-   "source": "s06.json"
   },
   {
    "example": "For 36 of the 38 reforms that could pass as an act of Congress, the atlas rates that route’s feasibility for 2026 to 2030 low or very low.",

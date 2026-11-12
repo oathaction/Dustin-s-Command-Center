@@ -1,0 +1,45 @@
+{
+ "file": "govinfo-pl-119-12-first-page.csv",
+ "kind": "public",
+ "publisher": "U.S. Government Publishing Office (govinfo)",
+ "title_or_table": "Public Law 119-12, the TAKE IT DOWN Act, 139 Stat. 55, first page",
+ "table_id": "PLAW-119publ12 (PDF page 1, and the HTML text)",
+ "url": [
+  "https://www.govinfo.gov/content/pkg/PLAW-119publ12/pdf/PLAW-119publ12.pdf",
+  "https://www.govinfo.gov/content/pkg/PLAW-119publ12/html/PLAW-119publ12.htm"
+ ],
+ "observation_period": "Approved May 19, 2025",
+ "geography": "United States",
+ "universe_or_base": "The parts a reader meets on the first page of one public law",
+ "unit": "parts of the page",
+ "date_retrieved": "2026-11-12",
+ "vintage": "Public Law 119-12 as published on govinfo",
+ "qualification": "Printed text is as the law’s first page prints it, with line-end hyphens joined; the running head’s three parts are listed with semicolons in place of the page’s dashes. The legislative history on the law’s last page records Senate passage on February 13 and House passage on April 28, 2025.",
+ "columns": {
+  "order": {
+   "type": "integer",
+   "description": "display order"
+  },
+  "part": {
+   "type": "category",
+   "description": "the part of the page"
+  },
+  "printed_text": {
+   "type": "text",
+   "description": "the words as printed"
+  },
+  "where_on_page": {
+   "type": "text",
+   "description": "where the part sits"
+  },
+  "what_it_tells": {
+   "type": "text",
+   "description": "what the part tells a reader, the research lead’s plain words"
+  }
+ },
+ "printed_source_line": "Source: Public Law 119-12, the TAKE IT DOWN Act, 139 Stat. 55, approved May 19, 2025, first page, United States, from govinfo, U.S. Government Publishing Office. Retrieved November 12, 2026.",
+ "ledger_row": "P7-309",
+ "domain": "D04",
+ "domain_note": "How Congress writes a law; S62 follows the same bill, S. 146, to its signing (data lead change 2)",
+ "states": []
+}

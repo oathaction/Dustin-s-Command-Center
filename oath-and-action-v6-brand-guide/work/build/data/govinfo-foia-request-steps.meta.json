@@ -1,0 +1,57 @@
+{
+ "file": "govinfo-foia-request-steps.csv",
+ "kind": "public",
+ "publisher": "U.S. Government Publishing Office (United States Code on govinfo) and the U.S. Department of Justice (FOIA.gov)",
+ "title_or_table": "The Freedom of Information Act, 5 U.S.C. 552; FOIA.gov, How do I make a FOIA request?",
+ "table_id": "5 U.S.C. 552(a)(3)(A), (a)(4)(A) and (B), (a)(6)(A), (B), (C) and (E), (h)(3), 2024 edition",
+ "url": [
+  "https://www.govinfo.gov/link/uscode/5/552?link-type=html",
+  "https://www.foia.gov/how-to.html"
+ ],
+ "observation_period": "Law in force: the U.S. Code’s 2024 edition; FOIA.gov read November 12, 2026",
+ "geography": "United States, federal agencies",
+ "universe_or_base": "A request for federal agency records under the Freedom of Information Act",
+ "unit": "steps; working days",
+ "date_retrieved": "2026-11-12",
+ "vintage": "United States Code, 2024 edition",
+ "qualification": "The times are limits in law, not measured waits; V7 I013 records that agencies often take weeks or months. The steps cover federal agencies only; each state has its own public records law. Each step’s wording is the research lead’s plain summary; source_words quotes the provision.",
+ "columns": {
+  "order": {
+   "type": "integer",
+   "description": "display order"
+  },
+  "path": {
+   "type": "category",
+   "description": "main, or branch for an optional step"
+  },
+  "step": {
+   "type": "text",
+   "description": "step name, plain words"
+  },
+  "who_acts": {
+   "type": "text",
+   "description": "who acts at this step"
+  },
+  "what_happens": {
+   "type": "text",
+   "description": "what happens, the research lead’s plain summary"
+  },
+  "time_limit": {
+   "type": "text",
+   "description": "the longest time the law allows, not a measured wait"
+  },
+  "legal_basis": {
+   "type": "text",
+   "description": "the provision"
+  },
+  "source_words": {
+   "type": "text",
+   "description": "the provision’s own words"
+  }
+ },
+ "printed_source_line": "Source: Freedom of Information Act, 5 U.S.C. 552 (United States Code, 2024 edition), and the U.S. Department of Justice’s FOIA.gov, federal agencies, United States. Retrieved November 12, 2026. Times are limits in law, not measured waits; state records laws differ.",
+ "ledger_row": "P7-308",
+ "domain": "D01",
+ "domain_note": "V7 I013, Public records arrive too late to be useful",
+ "states": []
+}

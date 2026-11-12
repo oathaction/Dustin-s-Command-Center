@@ -1,0 +1,86 @@
+{
+ "file": "uscode-federal-trial-judges.csv",
+ "kind": "public",
+ "publisher": "U.S. Government Publishing Office (United States Code on govinfo) and the Administrative Office of the U.S. Courts",
+ "title_or_table": "28 U.S.C. 133, 134, 152, 631 and 633 (2024 edition); Types of Federal Judges; Judicial Business 2025, status of Article III judgeships, bankruptcy judgeships and magistrate judge positions",
+ "table_id": "28 U.S.C. 133(a), 134(a), 152(a), 631(a) and (e), 633(b); Judicial Business 2025 text and Table 12",
+ "url": [
+  "https://www.govinfo.gov/link/uscode/28/133?link-type=html",
+  "https://www.govinfo.gov/link/uscode/28/134?link-type=html",
+  "https://www.govinfo.gov/link/uscode/28/152?link-type=html",
+  "https://www.govinfo.gov/link/uscode/28/631?link-type=html",
+  "https://www.govinfo.gov/link/uscode/28/633?link-type=html",
+  "https://www.uscourts.gov/judges-judgeships/about-federal-judges",
+  "https://www.uscourts.gov/data-news/reports/statistical-reports/judicial-business-united-states-courts/judicial-business-2025/status-article-iii-judgeships-judicial-business-2025",
+  "https://www.uscourts.gov/data-news/reports/statistical-reports/judicial-business-united-states-courts/judicial-business-2025/status-bankruptcy-judgeships-judicial-business-2025",
+  "https://www.uscourts.gov/data-news/reports/statistical-reports/judicial-business-united-states-courts/judicial-business-2025/status-magistrate-judge-positions-and-appointments-judicial-business-2025"
+ ],
+ "observation_period": "Law in force (U.S. Code, 2024 edition); seats as of September 30, 2025",
+ "geography": "United States, the federal district courts",
+ "universe_or_base": "The three kinds of judges who hear cases at trial in the federal district courts",
+ "unit": "seats in judgeships or positions",
+ "date_retrieved": "2026-11-12",
+ "vintage": "United States Code, 2024 edition; Judicial Business 2025",
+ "qualification": "Seats are positions authorized, filled or vacant: 677 district positions (48 vacant), 345 bankruptcy judgeships authorized and funded (63 vacant), and 593 magistrate judge positions (567 full time, 24 part time, 2 combined with a clerk’s post), all as of September 30, 2025. The statute tables list 673 district and 316 bankruptcy judgeships; the courts’ counts also take in temporary judgeships, which the tables leave out. No appointing president or party is recorded.",
+ "columns": {
+  "order": {
+   "type": "integer",
+   "description": "display order"
+  },
+  "kind": {
+   "type": "category",
+   "description": "kind of judge"
+  },
+  "appointed_by": {
+   "type": "text",
+   "description": "who appoints"
+  },
+  "consent": {
+   "type": "text",
+   "description": "whose consent the appointment needs"
+  },
+  "term": {
+   "type": "text",
+   "description": "length of service"
+  },
+  "cases_heard": {
+   "type": "text",
+   "description": "what cases they hear, from the courts’ page"
+  },
+  "seats": {
+   "type": "integer",
+   "description": "positions authorized, as the courts count them",
+   "unit": "seats"
+  },
+  "seats_as_of": {
+   "type": "date",
+   "description": "the date of the courts’ count"
+  },
+  "seats_in_statute_table": {
+   "type": "integer",
+   "description": "judgeships the statute’s own table lists; empty where the law sets no number",
+   "unit": "seats"
+  },
+  "number_set_by": {
+   "type": "text",
+   "description": "who sets the number of seats"
+  },
+  "legal_basis": {
+   "type": "text",
+   "description": "the sections"
+  },
+  "source_words": {
+   "type": "text",
+   "description": "the statute’s own words"
+  }
+ },
+ "printed_source_line": "Source: U.S. Code, 2024 edition, 28 U.S.C. 133, 134, 152, 631 and 633; Administrative Office of the U.S. Courts, Judicial Business 2025, seats as of September 30, 2025, United States. Retrieved November 12, 2026. Seats include vacant ones and temporary judgeships.",
+ "ledger_row": "P7-307",
+ "domain": "D05",
+ "domain_note": "V7 domain D05, Courts subsystem (data lead change 1)",
+ "states": [],
+ "notes": [
+  "Statute tables summed by script: 28 U.S.C. 133(a) lists 673 district judgeships, four of them shared between districts; 152(a)(2) lists 316 bankruptcy judgeships, and its notes carry temporary judgeships",
+  "The courts’ 677 district positions against the table’s 673 is not traced seat by seat; temporary judgeships are the likely difference and are not confirmed here"
+ ]
+}

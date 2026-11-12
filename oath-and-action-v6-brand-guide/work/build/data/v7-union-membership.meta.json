@@ -1,0 +1,49 @@
+{
+ "file": "v7-union-membership.json",
+ "kind": "v7",
+ "publisher": "Oath & Action’s systems atlas, Who Do They Answer To?",
+ "title_or_table": "Claim CL1514, union membership, and its source S04, the Bureau of Labor Statistics release Union Members, 2025",
+ "table_id": "claims.CL1514 (claim and supports); sources.S04",
+ "url": "work/extract/atlas-v7-data.json",
+ "observation_period": "Annual averages, 2025 (11 months) and 1983",
+ "geography": "United States",
+ "universe_or_base": "Employed wage and salary workers",
+ "unit": "members_pct in percent of employed wage and salary workers; members_millions in millions",
+ "date_retrieved": "2026-10-15",
+ "vintage": "Atlas V7 snapshot of October 15, 2026; the Bureau’s release of February 18, 2026",
+ "qualification": "The 2025 figures average 11 months, since the October 2025 survey was not collected during the shutdown, and the Bureau’s note in V7 says 2025 is not strictly comparable with other annual averages. The Bureau’s release itself was not read: bls.gov refused this container (HTTP 403) on November 12, 2026.",
+ "columns": {
+  "year": {
+   "type": "year",
+   "description": "calendar year of the annual average"
+  },
+  "group": {
+   "type": "category",
+   "description": "workers counted"
+  },
+  "members_pct": {
+   "type": "number",
+   "description": "union members as a share of employed wage and salary workers",
+   "unit": "percent"
+  },
+  "members_millions": {
+   "type": "number",
+   "description": "union members, where V7 records the count",
+   "unit": "millions"
+  },
+  "note": {
+   "type": "text",
+   "description": "the limitation that travels with the figure"
+  }
+ },
+ "printed_source_line": "Source: U.S. Bureau of Labor Statistics, Union Members, 2025 (February 18, 2026), employed wage and salary workers, 2025, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. The 2025 average covers 11 months, since the October 2025 survey was not collected.",
+ "ledger_row": "P7-301",
+ "domain": "D07",
+ "domain_note": "V7 I101, Collective bargaining (data lead sign-off, round 4 plan point 4)",
+ "states": [],
+ "snapshot": "2026-10-15",
+ "notes": [
+  "Figures parsed by script from CL1514’s claim and supporting text, each asserted: 10.0 percent (2025), 5.9 private, 32.9 public, 14.7 million members, 20.1 percent in 1983",
+  "The data lead’s condition for row 115: the icon array draws 2025 alone (10 of 100); 1983 and the sector figures go in the note with the limitation"
+ ]
+}

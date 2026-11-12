@@ -129,8 +129,9 @@ def kind_word(code):
 
 
 def gl(lid):
-    """A connection's typed chip with its grade word, the record square before Documented (Rule 13.4, SD-1)."""
-    return f'{chip("Connection", lid)}&#160;{grade_word(link(lid)["evidence"], gloss=False)}'
+    """A connection's typed chip with its grade word, the record square before Documented (Rule 13.4, SD-1), held on one
+    line: a no-break space alone does not hold across the chip's inline box (round 2)."""
+    return f'<span class="nw2">{chip("Connection", lid)}&#160;{grade_word(link(lid)["evidence"], gloss=False)}</span>'
 
 
 def label_for(ids, what="the grade of the least certain connection shown"):
@@ -593,10 +594,11 @@ CSS.update({
            ".ef>li{padding:8px 0;border-top:1px solid var(--oa-color-border-hairline)}.ef>li:last-child{border-bottom:1px solid var(--oa-color-border-hairline)}"
            ".ef .fv{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-top:4px}"
            ".ef .fv b{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}"
-           ".ef .rd{display:flex;flex-wrap:wrap;gap:2px 16px;margin-top:2px}"),
+           ".ef>li>p{margin-top:2px}"),
     "gp": (".gp+.gp{margin-top:16px;padding-top:14px;border-top:1px solid var(--oa-color-border-hairline)}"
            ".gp .evr{margin-bottom:6px}"),
-    "two": ".two{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:20px}",
+    "two": ".two{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:20px}.two.tw{gap:12px;margin-top:0}"
+           ".two.tw>p{margin:0}",
     "kd2": (".kd2{display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:12px;font:var(--oa-type-body-small)}"
             ".kd2 .sv{margin-top:4px}.kd2 b{font-weight:var(--oa-font-weight-semibold)}"),
 })
@@ -1721,8 +1723,7 @@ def acts_note(rid, r):
     n_v = len(r["targets"]) - n_l
     parts = [f"{words_n(n_l)} connection{'s' if n_l != 1 else ''}" if n_l else "",
              f"{words_n(n_v)} variable{'s' if n_v != 1 else ''}" if n_v else ""]
-    return (f'<p class="nt">{chip("Reform", rid)} acts where the marks turn red: on '
-            f'{" and ".join(p for p in parts if p)}.</p>')
+    return (f'<p class="nt">It acts where the marks turn red: on {" and ".join(p for p in parts if p)}.</p>')
 
 
 def band_p(r):
@@ -1755,15 +1756,15 @@ def rule_15_11(book):
     tg = set(r["targets"])
     b, h = three_loop(codes, lp["links"], inside=("R4a", "reinforcing"), targets=tg)
     svg = svg_wrap(b, h)
-    items = kw(target_items(r, set(codes) | set(lp["links"]))
-               + [f'{chip("Variable", "C4")} shares {chip("Variable", "C1", "’s")} cluster, {e(cname.lower())}, and stays in ink.'])
+    items = kw(target_items(r, set(codes) | set(lp["links"])))
     words = (hed("Reform", "R-03", r["title"]) + acts_note("R-03", r)
              + f'<p class="k">Its targets, from the atlas</p>{items}'
              + f'<p class="k">Its band</p>{band_p(r)}'
-             + f'<p class="k">Its loops</p>{loops_p(r, "R4a")}'
              + src("reform R-03, loop R4a, connections L42, L55 and L56, and the bands of change"))
+    under = (f'<p class="nt">{chip("Variable", "C4")} sits in the same cluster as {chip("Variable", "C1", ",")} '
+             f'{e(cname.lower())}, and stays in ink.</p><p class="k">Its loops</p>{loops_p(r, "R4a")}')
     body = (label_for(lp["links"], "the grade of the loop’s least certain step")
-            + beside(hed("Loop", "R4a", lp["title"]) + fig(svg), words))
+            + beside(hed("Loop", "R4a", lp["title"]) + fig(svg) + under, words))
     book.add("s-15-11-correct", body, rule="15.11", readable=True, wide=True,
              alt=(f"Reform R-03 from our systems atlas, “{r['title']}”, on Loop R4a, “{lp['title']}”. Three pills: "
                   "Incumbent control of election rules at the top, Safe seats below right, Entrenched majority control below "
@@ -1771,9 +1772,9 @@ def rule_15_11(book):
                   "Entrenched majority control are red; step 2, dashed, and step 3 stay in ink, as does Incumbent control of "
                   "election rules. Beside it: the reform acts where the marks turn red, on one connection and two variables: "
                   f"Connection L42, {link('L42')['name']}, documented; Variable C1, {lc(node('C1')['title'])}; Variable D7, "
-                  f"{lc(node('D7')['title'])}. Variable C4 shares Variable C1’s cluster, electoral competition, and stays in "
-                  f"ink. Its band, rules: {BANDS['rules']} Its loops: Loop R4a, Loop R10 and Loop R12; the drawing shows Loop "
-                  "R4a, which holds every target."),
+                  f"{lc(node('D7')['title'])}. Its band, rules: {BANDS['rules']} Under the drawing: Variable C4 sits in the "
+                  "same cluster as Variable C1, electoral competition, and stays in ink; its loops are Loop R4a, Loop R10 and "
+                  "Loop R12, and the drawing shows Loop R4a, which holds every target."),
              notes="Targets read from the reform's record and drawn in Rule 12.5's red by wire_marks at the 6 px sizes; the band "
                    "quoted from the atlas's bands of change.")
     book.log("15.11 correct", "Reform R-03 on Loop R4a, district maps", "D02")
@@ -1803,9 +1804,9 @@ def rule_15_11(book):
             f"{words_n(bands['power to change the rules'])} the power to change the rules and {words_n(bands['goals'])} goals.",
         ],
         "tokens": ["oa.color.data.emphasisRed.onNewsprint", TOKEN_LINE],
-        "why": {"text": ["A reform moves a few marks, and the rest of the mechanism has to follow on its own. Red on the exact "
-                         "targets shows a reader what the reform changes and what it leaves to the loop, before any claim about "
-                         "results. Red on a whole cluster claims changes the atlas never lists."],
+        "why": {"text": ["A reform acts on a few connections and variables, and the rest of the mechanism has to respond on its "
+                         "own. Red on the exact targets shows a reader where the reform acts, before any claim about results. "
+                         "Red on a whole cluster says it acts on variables the atlas never lists."],
                 "basis": "Our systems atlas’s reform profiles and its bands of change; Rule 12.5"},
         "correct": {"specimen": "s-15-11-correct",
                     "caption": "Reform R-03 on Loop R4a, with red on its one connection and two variables and nothing else, "
@@ -1854,10 +1855,10 @@ def chain_down(codes, lids, pw=196, x=56, layers=None, targets=(), run=CARD_RUN)
     return svg_wrap("".join(out), pills[-1].bot + 4), pills
 
 
-def grade_block(grade, what, quote_html):
+def grade_block(grade, what, quote_html=None):
     """One of a reform's two grades, as its own label with Rule 13.3's word and gloss, and the atlas's words under it."""
     return (f'<div class="gp">{diagram_label(grade, f"{GRADE[grade][1]}, {what}")}'
-            f'<p class="nt">{quote_html}</p></div>')
+            + (f'<p class="nt">{quote_html}</p>' if quote_html else "") + '</div>')
 
 
 def rule_15_12(book):
@@ -1890,7 +1891,8 @@ def rule_15_12(book):
     words = (hed("Reform", "R-32", r["title"]) + acts_note("R-32", r)
              + f'<p class="k">Two grades, apart</p>{blocks}'
              + src("reform R-32, its problem and remedy evidence, and connections LT03 and L26"))
-    body = (label_for(["LT03", "L26"], "the grade of both connections drawn")
+    need(link("LT03")["evidence"] == link("L26")["evidence"], "the chain's two connections no longer share a grade")
+    body = (diagram_label("well-supported", f"{GRADE['well-supported'][1]}, the grade of both connections drawn")
             + beside(fig(svg) + f'<p class="nt">{gl("LT03")}</p><p class="nt">{gl("L26")}</p>', words))
     book.add("s-15-12-correct", body, rule="15.12", readable=True, wide=True,
              alt=(f"Reform R-32 from our systems atlas, “{r['title']}”, on a chain of three pills drawn downward: Concentration "
@@ -1913,8 +1915,8 @@ def rule_15_12(book):
         "id": "15.12",
         "title": "Grade the evidence for the problem and for the remedy apart.",
         "rule": [
-            "Our systems atlas grades each reform twice. Evidence of the problem is, in its glossary’s words, “"
-            + pg.split(". ")[0][0].lower() + pg.split(". ")[0][1:] + "”. Evidence for the remedy is “"
+            "Our systems atlas grades each reform twice. In its glossary’s words, evidence of the problem is “"
+            + pg.split(". ")[0][0].lower() + pg.split(". ")[0][1:] + "”, and evidence for the remedy is “"
             + rg.split(", with")[0][0].lower() + rg.split(", with")[0][1:] + "”. Print each as its own label with Rule "
             "13.3’s word and gloss, and quote the atlas’s words under it.",
             "A drawing of the reform carries a third grade, the line code on each connection (Rule 13.4), which says how sure "
@@ -1923,7 +1925,7 @@ def rule_15_12(book):
         ],
         "tokens": ["oa.chart.grade.documented", "oa.chart.grade.hypothesis"],
         "why": {"text": ["A problem on the record says nothing yet about whether a fix works. A reader shown one grade carries the "
-                         "stronger to both, and a well-documented harm then reads as proof of a remedy no one has tested."],
+                         "stronger to both, and a well-documented harm then reads as proof of an untested remedy."],
                 "basis": "Our systems atlas’s glossary and reform profiles; Rule 13.3"},
         "correct": {"specimen": "s-15-12-correct",
                     "caption": "Reform R-32 with its two grades apart: the evidence of the problem well supported, and the "
@@ -2129,6 +2131,9 @@ def rule_15_15(book):
     val = b4["valence"]
     need("Its strength depends on C1: Seats with little electoral competition, C2: How often the primary decides the winner," in val,
          "Loop B4's valence changed")
+    deps = re.findall(r"\b([A-E]\d): ", val.split("Its strength depends on ")[1].split(". ")[0])
+    need(deps == ["C1", "C2", "B2", "B4"], f"Loop B4's strength no longer depends on four variables: {deps}")
+    need((link("L08")["from"], link("L08")["to"]) == ("C1", "C2") and r10["links"][0] == "L08", "Loop R10's first step changed")
     # in and out of Variable C3 in each loop: the connection that arrives and the one that leaves
     ins = {"B4": ("L23", "L24"), "R10": ("L25", "L53")}
     for k, (a, b_) in ins.items():
@@ -2145,15 +2150,16 @@ def rule_15_15(book):
             b, h = four_loop(codes, lp["links"], inside=(lid, kind), shared={"C3"})
         a, b_ = ins[lid]
         steps = (f'<p class="k">Variable C3 in this loop</p>'
-                 + kw([f'<b>In</b>&#160;{gl(a)}: “{e(link(a)["sign_meaning"])}”',
-                       f'<b>Out</b>&#160;{gl(b_)}: “{e(link(b_)["sign_meaning"])}”']))
+                 + kw([f'<b>Into it</b>&#160;{gl(a)}. “{e(link(a)["sign_meaning"])}”',
+                       f'<b>Out of it</b>&#160;{gl(b_)}. “{e(link(b_)["sign_meaning"])}”']))
         cols.append(f'<div>{label_for(lp["links"], "the grade of the loop’s least certain step")}{hed("Loop", lid, lp["title"])}'
                     f'{fig(svg_wrap(b, h), read_aloud(codes, lp["links"]))}{steps}</div>')
     meet = (f'<p class="k">Where the two loops meet</p>'
             f'<p class="nt">{chip("Variable", "C3", ",")} {e(lc(c3["title"]))}, is the pill filled in ink in both drawings. '
             f'The atlas calls it electoral pressure: “{e(ep)}”</p>'
-            f'<p class="nt">Loop B4, in the atlas’s words, “{e(qual[len("The loop "):])}” Its strength depends on '
-            f'{chip("Variable", "C1")} and {chip("Variable", "C2", ",")} which Loop R10’s first step joins.</p>')
+            f'<p class="nt">Loop B4, in the atlas’s words, “{e(qual[len("The loop "):])}” The atlas names '
+            f'{words_n(len(deps))} variables its strength depends on; two of them, {chip("Variable", "C1")} and '
+            f'{chip("Variable", "C2", ",")} are the two ends of Loop R10’s first step.</p>')
     body = (f'<div class="fx pr">{"".join(cols)}</div><div class="kb">{meet}</div>'
             + src("loops B4 and R10, their connections, and the glossary entry for electoral pressure"))
     book.add("s-15-15-correct", body, rule="15.15", readable=True, wide=True,
@@ -2165,8 +2171,8 @@ def rule_15_15(book):
                   f"pressure and the one out of it, with the atlas’s sentences. In Loop B4: {link('L23')['sign_meaning']} "
                   f"{link('L24')['sign_meaning']} In Loop R10: {link('L25')['sign_meaning']} {link('L53')['sign_meaning']} "
                   f"A note says Variable C3, risk of losing office, is the shared variable, which the atlas defines: {ep} Loop "
-                  "B4 works only where seats are competitive, and its strength depends on Variable C1 and Variable C2, which "
-                  "Loop R10’s first step joins."),
+                  "B4 works only where seats are competitive, and two of the four variables the atlas says its strength depends "
+                  "on, Variable C1 and Variable C2, are the two ends of Loop R10’s first step."),
              notes="Both loops read by script; the shared variable found as the intersection of their chains; the in and out "
                    "connections of Variable C3 checked against each loop.")
     book.log("15.15 correct", "Loop B4, public services", "D04")
@@ -2194,8 +2200,8 @@ def rule_15_15(book):
             f"{lc(c3['title'])}. Draw the two loops side by side, give the shared variable the same short name in both, and "
             "fill its pill in ink in each drawing, the one place a pill takes a fill. Under each loop, print the connection "
             "that brings a change into the shared variable and the one that carries it on, with the atlas’s sentence on each sign.",
-            "Then say where the loops meet, in the atlas’s words. Loop R10 lowers the risk of losing office as primaries "
-            "decide more seats, and Loop B4 turns that same risk into defeats that improve public services. The atlas says "
+            "Then say where the loops meet, in the atlas’s words. In Loop R10 the risk of losing office falls as primaries "
+            "decide more seats; in Loop B4 the same risk turns into defeats that improve public services. The atlas says "
             f"Loop B4 “{qual[len('The loop '):][:-1]}”.",
         ],
         "tokens": [TOKEN_LINE],
@@ -2245,7 +2251,7 @@ def route_rows(r, dated=True):
         when = (f"Checked {C13.words_date(x['checked'])}" if x["checked"] else "Not checked") if dated else f"Checked {SNAP}"
         out.append(f'<li><span>{chip("Route", x["route"])} {e(C13.ROUTE_NAME[x["route"]])}</span>'
                    f'<p class="sub">{e(x["who"])}</p>'
-                   f'<span class="rd"><span><b>{e(x["feasibility"].capitalize())}</b> feasibility</span><span>{e(when)}</span></span></li>')
+                   f'<p><b>{e(x["feasibility"].capitalize())}</b> feasibility</p><p>{e(when)}</p></li>')
     return '<ul class="ef">' + "".join(out) + "</ul>"
 
 
@@ -2274,15 +2280,14 @@ def rule_15_16(book):
     pe, re_ = r["problem_evidence"]["grade"], r["remedy_evidence"]["grade"]
     words = (hed("Reform", "R-01", r["title"]) + acts_note("R-01", r)
              + f'<p class="k">Its targets</p>{kw(target_items(r, set(codes) | set(lp["links"])))}'
-             + f'<p class="k">Its loops</p>{loops_p(r, "R10")}'
-             + f'<p class="k">Its evidence</p>'
-             + f'<p class="nt">Of the problem: {grade_word(pe)}. For the remedy: {grade_word(re_)}.</p>')
+             + f'<p class="k">Its two grades, apart (Rule 15.12)</p>'
+             + grade_block(pe, "evidence of the problem") + grade_block(re_, "evidence for the remedy"))
     fx = (f'<div><p class="k">Effects by outcome family, as of {SNAP}</p>{effect_rows(r)}'
           f'<p class="nt">The atlas: “{e(q_note)}” Its confidence in these sizes: “{e(r["effects_confidence"])}”.</p></div>'
           f'<div><p class="k">Routes, with the date each was checked</p>{route_rows(r)}'
           f'<p class="nt">Feasibility is the atlas’s judgment for 2026 to 2030.</p></div>')
     body = (label_for(lp["links"], "the grade of the loop’s least certain step")
-            + beside(hed("Loop", "R10", lp["title"]) + fig(svg), words)
+            + beside(hed("Loop", "R10", lp["title"]) + fig(svg) + f'<p class="k">Its loops</p>{loops_p(r, "R10")}', words)
             + f'<div class="two">{fx}</div>'
             + src("reform R-01, its targets, effects and routes, and loop R10 with its connections"))
     fam_alt = "; ".join(f"{FAMILY[k]}, {r['effects'][k]}, {EFFECT_WORDS[r['effects'][k]]}" for k in ("DQ", "GE", "EP", "EQ"))
@@ -2295,7 +2300,8 @@ def rule_15_16(book):
                   "heavy in red, and the outline of Primary decisiveness is red; the other two steps and pills stay in ink. "
                   f"Beside it: Connection L08, {link('L08')['name']}, documented; Connection L25, {link('L25')['name']}, well "
                   f"supported; Variable C2, {lc(node('C2')['title'])}. Its loops: Loop R10, Loop B4 and Loop R11. Evidence of "
-                  f"the problem, plausible; for the remedy, contested. Effects by outcome family, as of {SNAP}, one row each: "
+                  f"the problem, plausible, some evidence; for the remedy, contested, evidence disputed, each as its own label. "
+                  f"Effects by outcome family, as of {SNAP}, one row each: "
                   f"{fam_alt}. {q_note} Routes: {rt_alt}."),
              notes="Targets, effects, confidence and routes read from the reform's record; each route's own check date or Not "
                    "checked; no row adds the families. No disclosure prints (DR-100).")
@@ -2324,7 +2330,7 @@ def rule_15_16(book):
         "why": {"text": ["A single score would hide what the atlas keeps apart: the families use different units, and a reform "
                          "can help one while it costs another. A route rated without a date reads as current, and a reader "
                          "deciding where to act needs to know which ratings the atlas checked."],
-                "basis": "Our systems atlas, Reform R-01’s profile and its note on effect codes; Rules 13.5 and 13.10"},
+                "basis": "Our systems atlas, the profile of Reform R-01 and the note on effect codes; Rules 13.5 and 13.10"},
         "correct": {"specimen": "s-15-16-correct",
                     "caption": f"Reform R-01 at its targets on Loop R10, with its four effects one family to a row and its "
                                f"four routes each dated or marked not checked, as of {SNAP}."},
@@ -2537,8 +2543,8 @@ def rule_15_17(book):
                                "four variables in the economy and technology layers, with each connection named beside it."},
         "failure": {"specimen": "s-15-17-failure",
                     "caption": "<strong>Fails Rule 15.17.</strong> One pill for the government stands in for four bodies, so the "
-                               "drawing cannot say who decides what. The atlas records Congress, the executive, enforcers and "
-                               "states and cities apart."},
+                               "drawing cannot say who decides what. The atlas records four apart: Congress, the executive, "
+                               "antitrust enforcers, and state and local governments."},
         "specs": [
             {"label": "Layers", "value": "Stacked, with one 1 px rule between each two and both names beside it (Rule 15.9)"},
             {"label": "Bodies", "value": "One pill each, in the core layer"},
@@ -2594,9 +2600,11 @@ def rule_15_18(book):
     words = (ra_p(ra)
              + f'<p class="k">The missing chain</p><p class="nt">The atlas: “{e(es[0])} {e(miss)}”</p>'
              + f'<p class="nt">Household hardship is “{e(rev)}”, {chip("Variable", "A4", ",")} read the other way.</p>'
-             + f'<p class="k">The atlas’s other conceptual loops</p>{kw(o_items)}'
-             + src("loops B2, B3 and R9"))
-    body = lab_ + beside(hed("Loop", "B2", b2["title"]) + fig(svg_wrap(b, h)), words)
+             )
+    others_html = (f'<p class="k">The atlas’s other conceptual loops</p>'
+                   f'<div class="two tw">{"".join(f"<p class={chr(34)}nt{chr(34)}>{x}</p>" for x in o_items)}</div>')
+    body = (lab_ + beside(hed("Loop", "B2", b2["title"]) + fig(svg_wrap(b, h)), words)
+            + f'<div class="kb">{others_html}</div>' + src("loops B2, B3 and R9"))
     book.add("s-15-18-correct", body, rule="15.18", readable=True, wide=True,
              alt=(f"Loop B2 from our systems atlas, “{b2['title']}”, under a label reading Well supported, the atlas’s grade "
                   "for the mechanism; no numbered chain, which the atlas calls the weakest point. Two thin pills, Household "
@@ -2630,7 +2638,7 @@ def rule_15_18(book):
         "why": {"text": ["A grade printed alone reads as the grade of each step. For a conceptual loop it belongs to the mechanism "
                          "as a whole, and no step carries a citation of its own, so a reader cannot check the loop one step "
                          "at a time."],
-                "basis": "Our systems atlas, Loop B2’s record and evidence summary"},
+                "basis": "Our systems atlas, the record and evidence summary of Loop B2"},
         "correct": {"specimen": "s-15-18-correct",
                     "caption": "Loop B2 with its missing chain in the label beside its grade, the atlas’s words on it, and the "
                                "atlas’s other two conceptual loops named with their grades."},
@@ -2814,6 +2822,35 @@ def check(data, book):
         for kind, rid in re.findall(r'<span class="chip">([A-Za-z ]+) <span class="id">([^<]+)</span>', frag):
             if rid not in kinds.get(kind, {}):
                 fails.append(f"{sid}: {kind} {rid} is not in the atlas")
+    # round 2: Rule 12.5's red sits on a reform's own targets and nowhere else on a correct plate; no correct plate or
+    # rule text adds effects; every route a correct plate prints carries its own check date or "Not checked" (Rule 13.10)
+    reform_of = {"s-15-11-correct": "R-03", "s-15-12-correct": "R-32", "s-15-16-correct": "R-01"}
+    for r in data["rules"]:
+        sid = r["correct"]["specimen"]
+        n_red = book.files[sid].count('data-red="working"')
+        want_red = len(REFORM[reform_of[sid]]["targets"]) if sid in reform_of else 0
+        if n_red != want_red:
+            fails.append(f"{sid}: {n_red} red marks, where its reform's targets call for {want_red}")
+    tally = re.compile(r"\b(?:overall|total|net effect|sum of|adds? up|added up)\b", re.I)
+    for k, t in texts.items():
+        if "failure" in k:
+            continue
+        for m in tally.finditer(t):
+            # a word that names the fault in order to forbid it ("Never: A total, an overall score") is the rule itself
+            if not re.search(r"\b(?:Never|never added)\b", t[max(0, m.start() - 40): m.end() + 40]):
+                fails.append(f"{k}: {m.group(0)!r}, a word that adds a reform's effects")
+    for sid, frag in book.files.items():
+        if "failure" in sid:
+            continue
+        for li in re.findall(r"<li>(.*?)</li>", frag):
+            mm = re.search(r'<span class="chip">Route <span class="id">([A-Z]+)</span>', li)
+            if not mm:
+                continue
+            rid = reform_of.get(sid)
+            entry = next(x for x in REFORM[rid]["routes"] if x["route"] == mm.group(1))
+            want = f"Checked {C13.words_date(entry['checked'])}" if entry["checked"] else "Not checked"
+            if want not in li or (not entry["checked"] and re.search(r"\bChecked\b", li)):
+                fails.append(f"{sid}: route {mm.group(1)} does not print {want!r}")
     # the model's own consistency, which every rule here leans on
     for k, p in LOOP.items():
         if p["links"] and ("R" if minus_count(p["links"]) % 2 == 0 else "B") != p["type"]:
@@ -2854,6 +2891,8 @@ def main():
     frag = sum(len(x.encode()) for x in book.files.values())
     js = len(json.dumps(data, indent=1, ensure_ascii=False).encode())
     print(f"chapter 15: {len(data['rules'])} rules, {len(book.files)} plates, {frag:,} bytes of fragments, {js:,} bytes of chapter file")
+    if frag + js > ROUND_STOP:
+        fails.append(f"chapter 15's fragments and file weigh {frag + js:,} bytes, over its {ROUND_STOP:,} byte ceiling")
     print("examples by domain:", dict(sorted(dom.items())), "| all examples:", len(book.examples))
     for sid, f_ in sorted(book.files.items(), key=lambda x: -len(x[1].encode()))[:6]:
         print(f"  {sid}: {len(f_.encode()):,} bytes")

@@ -1,0 +1,80 @@
+{
+ "file": "govinfo-budget-and-tax-deadlines-2027.csv",
+ "kind": "public",
+ "publisher": "U.S. Government Publishing Office (United States Code on govinfo), the Office of the Federal Register (eCFR) and the Internal Revenue Service",
+ "title_or_table": "Federal budget and tax dates in calendar 2027, from 2 U.S.C. 631; 31 U.S.C. 1102, 1105(a) and 1341; 26 U.S.C. 6072, 6081, 6651, 6654, 7503 and 7508A; 26 CFR 1.6081-4; with IRS Publication 509 (2026) for the weekend and holiday rule",
+ "table_id": "2 U.S.C. 631; 31 U.S.C. 1102, 1105(a), 1341(a); 26 U.S.C. 6072(a), 6081(a), 6651(a), 6654(a) and (c), 7503, 7508A(a); 5 U.S.C. 6103(a); 26 CFR 1.6081-4(a)",
+ "url": [
+  "https://www.govinfo.gov/link/uscode/2/631?link-type=html",
+  "https://www.govinfo.gov/link/uscode/31/1102?link-type=html",
+  "https://www.govinfo.gov/link/uscode/31/1105?link-type=html",
+  "https://www.govinfo.gov/link/uscode/31/1341?link-type=html",
+  "https://www.govinfo.gov/link/uscode/26/6072?link-type=html",
+  "https://www.govinfo.gov/link/uscode/26/6081?link-type=html",
+  "https://www.govinfo.gov/link/uscode/26/6651?link-type=html",
+  "https://www.govinfo.gov/link/uscode/26/6654?link-type=html",
+  "https://www.govinfo.gov/link/uscode/26/7503?link-type=html",
+  "https://www.govinfo.gov/link/uscode/26/7508A?link-type=html",
+  "https://www.govinfo.gov/link/uscode/5/6103?link-type=html",
+  "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-26?part=1&section=1.6081-4",
+  "https://www.irs.gov/pub/irs-pdf/p509.pdf"
+ ],
+ "observation_period": "Calendar 2027, under law in force on the retrieval date (U.S. Code, 2024 edition; eCFR title 26 up to date as of November 9, 2026)",
+ "geography": "United States",
+ "universe_or_base": "Dates the federal budget process and individual income tax law set",
+ "unit": "dates",
+ "date_retrieved": "2026-11-12",
+ "vintage": "United States Code, 2024 edition; eCFR title 26 up to date as of November 9, 2026; IRS Publication 509 (2026)",
+ "qualification": "The Budget Act’s timetable (2 U.S.C. 631) lists dates by which each step is to be done; that section attaches no consequence, and the rest of the Budget Act was not searched for one. Tax dates carry an addition to tax if missed, and move to the next business day when they fall on a weekend or a legal holiday in the District of Columbia (26 U.S.C. 7503); none does in 2027. The IRS may postpone tax dates for a federally declared disaster (26 U.S.C. 7508A). IRS Publication 509 for 2027 was not yet published; the rule was checked against the 2026 edition.",
+ "columns": {
+  "date": {
+   "type": "date",
+   "description": "the date"
+  },
+  "weekday": {
+   "type": "text",
+   "description": "day of the week"
+  },
+  "track": {
+   "type": "category",
+   "description": "budget or tax"
+  },
+  "event": {
+   "type": "text",
+   "description": "what falls due"
+  },
+  "who": {
+   "type": "text",
+   "description": "who acts"
+  },
+  "basis": {
+   "type": "text",
+   "description": "the provision"
+  },
+  "kind": {
+   "type": "category",
+   "description": "the kind of date the law sets"
+  },
+  "consequence": {
+   "type": "text",
+   "description": "what the law attaches to missing it, as the sections read state it"
+  },
+  "moved_to_next_business_day": {
+   "type": "boolean",
+   "description": "whether 26 U.S.C. 7503 moves a tax date in 2027; budget dates have no such rule"
+  },
+  "source_words": {
+   "type": "text",
+   "description": "the provision’s own words"
+  }
+ },
+ "printed_source_line": "Source: U.S. Code, 2024 edition, 2 U.S.C. 631, 31 U.S.C. 1102 and 1105, and 26 U.S.C. 6072, 6081, 6654 and 7503, with 26 CFR 1.6081-4, calendar 2027, United States. Retrieved November 12, 2026. Budget Act dates are a timetable; tax dates carry penalties if missed.",
+ "ledger_row": "P7-310",
+ "domain": "D08",
+ "domain_note": "V7 D08 names the federal budget and taxes; most dates are tax dates (data lead sign-off, point 4)",
+ "states": [],
+ "notes": [
+  "Committees’ views and estimates fall six weeks after the President’s budget of February 1, 2027: March 15, computed",
+  "May 15, 2027 is a Saturday; the timetable has no weekend rule, so the date stands"
+ ]
+}

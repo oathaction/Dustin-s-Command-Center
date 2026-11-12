@@ -1,6 +1,6 @@
 """Maker B, Phase 3 round 2: R2-2's derived summaries for S49, S51 and S52 (D3-652, contract C1).
 
-    python3 -I work/build/scripts/phase-3/maker_b_round2_derive.py [--check]
+    python3 -I work/build/scripts/phase-3/maker_b_round2_derive.py [--check] [--figures]
 
 Reads three frozen files in work/build/data/ and writes four derived tables with their sidecars, by the data lead's
 ruling (g) of November 12, 2026 (work/handoffs/phase-3/20261112_Round-2-Data-Lead-Notes.md):
@@ -16,7 +16,9 @@ ruling (g) of November 12, 2026 (work/handoffs/phase-3/20261112_Round-2-Data-Lea
 
 Each county or judge counts once. Quartiles are Python's statistics.quantiles(method="inclusive"), linear
 interpolation between ranked values. Prints every figure a title or note may use. --check writes nothing and fails
-when a written file differs from what the script computes now. Standard library only.
+when a written file differs from what the script computes now. --figures writes nothing and checks every figure in the
+titles, notes, alts and labels of specs S49 to S59 against the data files, each check named in the spec's notes_internal
+(check S49 to check S59). Standard library only.
 """
 import csv
 import io
@@ -112,7 +114,14 @@ def base_side(src, name, **over):
 def judges():
     src = 'fjc-article-iii-judges'
     rows = read(src)
-    yrs = [num(r['years_as_federal_judge']) for r in rows]
+    # the unit is the judge, counted once by FJC ID (nid): four judges in shared judgeships hold two or three service
+    # records, each with the same first commission and so the same years (the data lead's corrected ruling (g))
+    by = {}
+    for r in rows:
+        by.setdefault(r['nid'], []).append(num(r['years_as_federal_judge']))
+    assert all(len(set(v)) == 1 for v in by.values()), 'a judge with differing years on two records'
+    shared = sorted(k for k, v in by.items() if len(v) > 1)
+    yrs = [v[0] for v in by.values()]
     assert all(v is not None for v in yrs), 'a judge has no years'
     lo, hi, step = 0, 44, 2
     assert max(yrs) < hi, 'a judge past the last bin'
@@ -124,6 +133,8 @@ def judges():
     med = statistics.median(yrs)
     name = src + '-years-bins'
     side = base_side(src, name,
+        universe_or_base=('Judges in active service, each counted once by FJC ID: %d judges from the export\'s %d service records of '
+                          'Article III judges with no senior-status or termination date' % (len(yrs), len(rows))),
         unit='judges in active service in each two-year bin of years as a federal judge; bin_start and bin_end in years',
         columns={
             'bin_start': {'type': 'number', 'description': 'lower edge of the bin, in the bin', 'unit': 'years'},
@@ -135,13 +146,14 @@ def judges():
                              'service, as of November 11, 2026, United States. Retrieved November 11, 2026. Judges on senior status '
                              'are not counted; years as a federal judge computed from first commission dates and grouped in two-year '
                              'bins by Oath & Action.'),
-        derivation=('Each judge in active service counted once in the two-year bin, closed on the left, that holds the years '
-                    'since the first Article III commission, from 0 to 44 years (the data lead\'s ruling (g), round 2)'),
-        notes=['%d judges in all; median %.2f years as a federal judge (Python statistics.median of the unrounded years)' % (len(yrs), med),
+        derivation=('Each judge in active service counted once by FJC ID (nid) in the two-year bin, closed on the left, that holds '
+                    'the years since the first Article III commission, from 0 to 44 years (the data lead\'s corrected ruling (g), round 2)'),
+        notes=['%d judges in all, from %d service records; median %.2f years as a federal judge (Python statistics.median of the unrounded years)' % (len(yrs), len(rows), med),
+               'Judges with more than one service record, in shared judgeships across districts (FJC IDs): ' + ', '.join(shared),
                'Bin edges checked against inauguration dates: January 20 of 2001, 2009, 2017, 2021 and 2025 sit 25.81, 17.81, 9.81, '
                '5.81 and 1.81 years before November 11, 2026, so no edge falls on one (H09)'])
     write(name, ['bin_start', 'bin_end', 'label', 'judges'], bins, side)
-    print('  S49 judges %d, median %.4f, largest bin %s' % (len(yrs), med, max(bins, key=lambda b: b['judges'])))
+    print('  S49 judges %d from %d records (shared: %s), median %.4f, counts %s, largest bin %s' % (len(yrs), len(rows), shared, med, [b['judges'] for b in bins], max(bins, key=lambda b: b['judges'])))
     return med
 
 
@@ -312,7 +324,175 @@ def openings_quarterly():
     print('  S56 openings peak %s; rate peak %s; last %s' % (max(out, key=lambda o: o['job_openings_millions']), max(have, key=lambda o: o['unemployment_rate']), out[-1]))
 
 
+# ---------------------------------------------------------------------------------------------------------------
+# --figures: every figure maker B's round 2 specs print, read from the data
+# ---------------------------------------------------------------------------------------------------------------
+SPECS = os.path.normpath(os.path.join(HERE, '..', '..', 'chart-kit', 'specs'))
+
+
+def spec_words(sid):
+    with open(os.path.join(SPECS, sid + '.json'), encoding='utf-8') as fh:
+        sp = json.load(fh)
+    words = [sp.get('title', ''), sp.get('measure_line', ''), sp.get('reading_guide', ''), sp.get('alt', '')] + sp.get('notes', []) + sp.get('chart_notes', [])
+    return sp, ' '.join(words)
+
+
+def figures():
+    bad = []
+
+    def want(sid, text, piece, why):
+        if piece not in text:
+            bad.append('%s: "%s" missing (%s)' % (sid, piece, why))
+
+    def same(sid, a, b, why):
+        if a != b:
+            bad.append('%s: %r is not %r (%s)' % (sid, a, b, why))
+    # S49
+    sp, t = spec_words('s49')
+    bins = read('fjc-article-iii-judges-years-bins')
+    js = read('fjc-article-iii-judges')
+    by = {}
+    for r in js:
+        by.setdefault(r['nid'], num(r['years_as_federal_judge']))
+    med = statistics.median(by.values())
+    same('S49', sum(int(b['judges']) for b in bins), len(by), 'bins sum to the judges')
+    want('S49', t, '%d federal judges' % len(by), 'judges counted once')
+    want('S49', t, 'median of %.1f years' % med, 'median')
+    same('S49', round(sp['labels']['marker']['value'], 4), round(med, 4), 'the marker is the median')
+    top = max(bins, key=lambda b: int(b['judges']))
+    want('S49', t, '%s to under %s years, holds %s of the %d judges' % (top['bin_start'], top['bin_end'], top['judges'], len(by)), 'tallest bin')
+    want('S49', t, 'four who serve more than one district', 'shared judgeships')
+    same('S49', len(js) - len(by), 5, 'four judges hold five extra records')
+    # S50
+    sp, t = spec_words('s50')
+    stc = [r for r in read('census-stc-state-tax-collections') if r['code'] not in ('US', 'DC')]
+    hi = max(stc, key=lambda r: num(r['taxes_per_resident'])); lo = min(stc, key=lambda r: num(r['taxes_per_resident']))
+    us = [r for r in read('census-stc-state-tax-collections') if r['code'] == 'US'][0]
+    same('S50', (hi['code'], lo['code'], len(stc)), ('VT', 'AK', 50), 'the ends')
+    want('S50', t, 'Vermont collected ${:,.0f}'.format(num(hi['taxes_per_resident'])), 'Vermont')
+    want('S50', t, 'Alaska ${:,.0f}'.format(num(lo['taxes_per_resident'])), 'Alaska')
+    want('S50', t, '${:,.0f}'.format(num(us['taxes_per_resident'])), 'all 50 states')
+    same('S50', round(int(us['total_taxes_thousands']) * 1000 / int(us['population_july_2024']), 2), round(sum(int(r['total_taxes_thousands']) for r in stc) * 1000 / sum(int(r['population_july_2024']) for r in stc), 2), 'the US row sums the 50 states')
+    # S51
+    sp, t = spec_words('s51')
+    box = {r['region']: r for r in read('census-sahie-county-uninsured-box-by-region')}
+    outs = read('census-sahie-county-uninsured-outliers')
+    meds = {k: num(v['median']) for k, v in box.items()}
+    same('S51', max(meds, key=meds.get), 'South', 'highest median')
+    want('S51', t, '%.1f percent of people under 65' % meds['South'], 'South median')
+    want('S51', t, 'from 7.2 percent in the Northeast to 13.9 percent in the South', 'alt medians')
+    same('S51', ('%.1f' % meds['Northeast'], '%.1f' % meds['Midwest']), ('7.2', '8.8'), 'medians')
+    want('S51', t, 'from %.1f to %.1f percent' % (num(box['South']['q1']), num(box['South']['q3']) + 1e-9), 'South middle half')
+    want('S51', t, 'All %d counties past a whisker' % len(outs), 'outliers')
+    same('S51', all(num(o['uninsured_pct']) > num(box[o['region']]['q3']) for o in outs), True, 'every outlier above its box')
+    o1 = max(outs, key=lambda o: num(o['uninsured_pct']))
+    want('S51', t, 'Gaines County, Texas, at %.1f percent' % num(o1['uninsured_pct']), 'highest county')
+    same('S51', o1['county'], 'Gaines County, TX', 'highest county')
+    # S52
+    sp, t = spec_words('s52')
+    raw = read('census-saipe-county-child-poverty')
+    for y, m in (('2019', '18.7'), ('2024', '17.1')):
+        v = [num(r['child_poverty_pct']) for r in raw if r['year'] == y and num(r['child_poverty_pct']) is not None]
+        same('S52', '%.1f' % statistics.median(v), m, 'median ' + y)
+    want('S52', t, 'fell from 18.7 percent in 2019 to 17.1 percent in 2024', 'title')
+    b52 = read('census-saipe-county-child-poverty-bins')
+    for y, n in (('2019', 3141), ('2024', 3143)):
+        same('S52', sum(int(b['counties']) for b in b52 if b['year'] == y), n, 'counties ' + y)
+    want('S52', t, '3,141 counties in 2019 and 3,143 in 2024', 'counts')
+    for y, lo_ in (('2019', '18'), ('2024', '14')):
+        top = max([b for b in b52 if b['year'] == y], key=lambda b: int(b['counties']))
+        same('S52', top['bin_start'], lo_, 'modal bin ' + y)
+    want('S52', t, 'from 18 to under 20 percent in 2019 to 14 to under 16 percent in 2024', 'modal bins')
+    ct = {y: sum(1 for r in raw if r['year'] == y and r['code'] == 'CT') for y in ('2019', '2024')}
+    same('S52', (ct['2019'], ct['2024']), (8, 9), 'Connecticut')
+    # S53
+    sp, t = spec_words('s53')
+    pep = read('census-pep-population-by-age-sex')
+    band = sum(int(r['population_july_2025']) for r in pep if r['sex'] in ('male', 'female') and 55 <= int(r['age']) <= 64)
+    want('S53', t, '%.1f million people aged 55 to 64' % (band / 1e6), 'band')
+    same('S53', sp['labels']['band_words'], 'Red bars: ages 55 to %d, %.1f million' % (64, band / 1e6), 'band words')
+    # S54 and S55
+    rent = {r['code']: r for r in read('census-acs-rent-and-income-by-state')}
+    st = [r for k, r in rent.items() if k != 'US']
+    share = sorted(st, key=lambda r: -num(r['rent_pct_of_income']))
+    a, b = share[0], share[1]
+    gap = num(a['rent_pct_of_income']) - num(b['rent_pct_of_income'])
+    same('S54', (a['code'], b['code']), ('FL', 'CA'), 'largest share')
+    same('S54', gap > (num(a['rent_pct_of_income_moe']) ** 2 + num(b['rent_pct_of_income_moe']) ** 2) ** 0.5, True, 'Florida past California')
+    U = rent['US']
+    for k in ('CA', 'ND'):
+        r = rent[k]
+        same('S54', abs(num(r['rent_pct_of_income']) - num(U['rent_pct_of_income'])) > (num(r['rent_pct_of_income_moe']) ** 2 + num(U['rent_pct_of_income_moe']) ** 2) ** 0.5, True, k + ' past the nation')
+    for sid in ('s54', 's55'):
+        sp, t = spec_words(sid)
+        want(sid.upper(), t, 'Florida, 35.5 percent' if sid == 's54' else 'largest share of income in rent, 35.5 percent', 'title')
+        want(sid.upper(), t, 'Florida’s 35.5 percent carries a margin of error of 0.5 point', 'margin')
+        want(sid.upper(), t, 'California’s 32.9 percent, the next highest, 0.3 point', 'California')
+    sp, t = spec_words('s54')
+    lr = min(st, key=lambda r: num(r['median_gross_rent'])); hr = max(st, key=lambda r: num(r['median_gross_rent']))
+    want('S54', t, 'West Virginia’s ${:,}'.format(int(lr['median_gross_rent'])), 'lowest rent')
+    want('S54', t, 'California’s ${:,}'.format(int(hr['median_gross_rent'])), 'highest rent')
+    same('S54', (lr['code'], hr['code']), ('WV', 'CA'), 'rent ends')
+    sp, t = spec_words('s55')
+    want('S55', t, 'Florida’s %.1f million renter households' % (int(rent['FL']['renter_households']) / 1e6), 'Florida households')
+    want('S55', t, 'California’s %.1f million renter households' % (int(rent['CA']['renter_households']) / 1e6), 'California households')
+    same('S55', max(st, key=lambda r: int(r['renter_households']))['code'], 'CA', 'most renter households')
+    # S56
+    sp, t = spec_words('s56')
+    q = read('fred-unemployment-and-job-openings-quarterly')
+    pk = max(q, key=lambda r: num(r['job_openings_millions']))
+    same('S56', pk['quarter'], '2022-Q1', 'openings peak')
+    want('S56', t, 'openings averaged %.1f million in early 2022, when the rate averaged %.1f percent' % (num(pk['job_openings_millions']), num(pk['unemployment_rate'])), 'title')
+    hv = [r for r in q if r['unemployment_rate'] != '']
+    ur = max(hv, key=lambda r: num(r['unemployment_rate']))
+    want('S56', t, '%.1f percent unemployment in the spring of 2020' % num(ur['unemployment_rate']), 'rate peak')
+    same('S56', ur['quarter'], '2020-Q2', 'rate peak')
+    want('S56', t, 'near %.1f percent and %.1f million in the latest quarter' % (num(q[-1]['unemployment_rate']), num(q[-1]['job_openings_millions'])), 'latest')
+    same('S56', [r['quarter'] for r in q if r['unemployment_rate'] == ''], ['2025-Q4'], 'the gap')
+    # S57
+    sp, t = spec_words('s57')
+    er = read('census-acs-earnings-ratio-by-state')
+    us57 = [r for r in er if r['code'] == 'US'][0]
+    U, UM = num(us57['women_pct_of_men']), num(us57['women_pct_of_men_moe'])
+    past = [r for r in er if r['code'] != 'US' and abs(num(r['women_pct_of_men']) - U) > (num(r['women_pct_of_men_moe']) ** 2 + UM ** 2) ** 0.5]
+    above = [r for r in past if num(r['women_pct_of_men']) > U]
+    same('S57', (len(past), len(above), len(past) - len(above), 'DC' in [r['code'] for r in above]), (26, 14, 12, True), 'past the margin')
+    want('S57', t, '82.0 percent of men’s in 2025, and in 25 states and the District of Columbia', 'title')
+    want('S57', t, '13 states and the District of Columbia sit above the nation and 12 states below it', 'note 2')
+    want('S57', t, 'Fourteen filled dots above the nation’s line and 12 below it', 'alt')
+    want('S57', t, 'the open dots of the other %d states' % (51 - len(past)), 'alt within')
+    # S58
+    sp, t = spec_words('s58')
+    inc = read('census-cps-median-household-income')
+    y25 = [r for r in inc if r['year'] == '2025'][0]; y24 = [r for r in inc if r['year'] == '2024'][0]
+    same('S58', max(inc, key=lambda r: int(r['median_income']))['year'], '2025', 'highest')
+    want('S58', t, '${:,}'.format(int(y25['median_income'])), '2025')
+    want('S58', t, '${:,}'.format(int(y25['median_moe'])), '2025 margin')
+    g = int(y25['median_income']) - int(y24['median_income']); gm = (int(y25['median_moe']) ** 2 + int(y24['median_moe']) ** 2) ** 0.5
+    same('S58', g > gm, True, 'the rise past its margin')
+    want('S58', t, '2024’s ${:,}'.format(int(y24['median_income'])), '2024')
+    y13 = sorted(int(r['median_income']) for r in inc if r['year'] == '2013'); y17 = sorted(int(r['median_income']) for r in inc if r['year'] == '2017')
+    want('S58', t, '${:,} apart'.format(y13[1] - y13[0]), '2013 gap')
+    want('S58', t, '${:,} apart'.format(y17[1] - y17[0]), '2017 gap')
+    want('S58', t, '${:,} in 1967'.format(int([r for r in inc if r['year'] == '1967'][0]['median_income'])), '1967')
+    # S59
+    sp, t = spec_words('s59')
+    fo = {r['period']: r for r in read('frb-fomc-projections-unemployment')}
+    same('S59', [fo[y]['median'] for y in ('2026', '2027', '2028', '2029')], ['4.1'] * 4, 'medians')
+    want('S59', t, 'median unemployment rate of 4.1 percent for each year through 2029', 'title')
+    want('S59', t, 'range at %.1f to %.1f percent' % (num(fo['2029']['band_70_low']), num(fo['2029']['band_70_high'])), '2029 band')
+    want('S59', t, 'apart at %s percent' % fo['longer_run']['median'], 'longer run')
+    for y in ('2026', '2027', '2028', '2029'):
+        same('S59', round(num(fo[y]['median']) - num(fo[y]['historical_error']), 4), num(fo[y]['band_70_low']), 'band ' + y)
+    for f in bad:
+        print('FAULT ' + f)
+    print('figures: %d faults' % len(bad))
+    return len(bad)
+
+
 if __name__ == '__main__':
+    if '--figures' in sys.argv:
+        sys.exit(1 if figures() else 0)
     judges()
     uninsured()
     child_poverty()

@@ -1,0 +1,35 @@
+{
+ "id": "14.65",
+ "title": "Bin very many points into hexagons when a scatter turns to ink.",
+ "rule": [
+  "Use a hexbin, a reference form, when tens of thousands of points would bury each other in a scatter plot: tile the plot with hexagons of equal size and shade each by the count of points in it, on a sequential scale with its key. State the hexagon’s size and the count each step stands for."
+ ],
+ "use_when": "A specialist asks where very many records cluster on two measures, such as income and rent for every census tract.",
+ "use_instead": [
+  {
+   "when": "A few dozen points, some of them named",
+   "rule": "14.67"
+  },
+  {
+   "when": "A smooth surface for an expert audience",
+   "rule": "14.66"
+  }
+ ],
+ "why": {
+  "text": [
+   "Past a few thousand points a scatter plot becomes a solid shape whose dense center and sparse edge look alike. Counting the points in equal tiles restores the density, and a key makes each shade a number."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-65-sketch",
+ "tier": "reference",
+ "tokens": [],
+ "related": [
+  "14.5",
+  "14.67"
+ ],
+ "builders": "No kit form: draw hexbins with the sequential palette and a stated tile size, until a story needs its own form.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "A field of hexagons shaded from light to dark by how many points fall in each, densest along a rising diagonal, with a four-step key."
+}

@@ -11,14 +11,14 @@
   "grade_line": "Documented: the Federal Reserve’s Summary of Economic Projections, September 16, 2026",
   "title": "Federal Reserve officials projected a median unemployment rate of 4.1 percent for each year through 2029, and past forecast errors put 2029’s range at 2.0 to 6.2 percent.",
   "measure_line": "Unemployment rate, average for the fourth quarter of each year, projected in September 2026 for 2026 to 2029 and the longer run, United States. The outer band spans the median plus and minus the average error of past forecasts, which the Board says covers about a 70 percent probability.",
-  "reading_guide": "The dark line is the officials’ median. The darker band spans every official’s projection; the lighter band shows how far past forecasts have missed.",
+  "reading_guide": "The line is the officials’ median. The narrow inner band spans every official’s projection; the wide outer band shows how far past forecasts have missed.",
   "notes": [
     "Method: the line is the median of officials’ projections, each under that official’s view of appropriate policy; the outer band adds and subtracts the average error of past forecasts, 2006 to 2025, which the Board says covers about 70 percent of outcomes under certain assumptions. The longer run has no error band.",
     "The officials are the members of the Board of Governors and the presidents of the 12 Reserve Banks."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "A fan chart of the unemployment rate projected for 2026 to 2029. The median holds at 4.1 percent each year, inside a darker band for the range of all officials’ projections and a lighter band from past forecast errors that widens to 2.0 to 6.2 percent by 2029. The longer run sits apart at 4.2 percent.",
+  "alt": "A fan chart of the unemployment rate projected for 2026 to 2029. The median holds at 4.1 percent each year, inside a narrow band for the range of all officials’ projections and a wide band from past forecast errors that grows to 2.0 to 6.2 percent by 2029. The longer run sits apart at 4.2 percent.",
   "table": {
     "caption": "Projections of the unemployment rate, fourth quarter of each year, percent",
     "columns": [
@@ -71,7 +71,7 @@
     ]
   },
   "chart_notes": [
-    "The lighter band is the median plus and minus past forecast errors; the darker band is the range of all officials’ projections. The longer run is drawn apart, at the right, with its range as a line."
+    "The wide outer band is the median plus and minus past forecast errors; the narrow inner band is the range of all officials’ projections. The longer run is drawn apart, at the right, with its range as a line."
   ],
   "phone": "same",
   "artboard": "reading",

@@ -1481,7 +1481,7 @@ GROUP_LINES = {
     6: "Histograms, strip plots and box plots show how values spread, where they bunch and how far they run.",
     7: "Scatter plots and their relatives show whether two measures move together, and an association’s note says what the pattern cannot show about cause.",
     8: ("A range, a band or a fan shows how sure a figure is, as its publisher states it, whether a survey’s margin of error around "
-        "a finding or a model’s range around an estimate (Rule 13.1)."),
+        "a finding or a range around an estimate, set by a model or by the errors of past forecasts (Rule 13.1)."),
     9: "Icon arrays, proportional symbols and overlap diagrams make a share countable and show where groups overlap.",
     10: ("Big numbers give a figure with the context to judge it, and progress bars and bullet graphs set one measure against its "
          "target or limit. Step trackers and status chips show how far a bill or a dispute has come."),

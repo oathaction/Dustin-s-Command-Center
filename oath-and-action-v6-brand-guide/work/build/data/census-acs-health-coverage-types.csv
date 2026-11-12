@@ -1,0 +1,6 @@
+measure_code,coverage,people,people_moe,pct,pct_moe
+DP03_0095,Civilian noninstitutionalized population,336838154,21198,,
+DP03_0096,With health insurance coverage,308514848,191859,91.6,0.1
+DP03_0097,With private health insurance,213152333,473332,63.3,0.1
+DP03_0098,With public coverage,119137655,290553,35.4,0.1
+DP03_0099,No health insurance coverage,28323306,193992,8.4,0.1

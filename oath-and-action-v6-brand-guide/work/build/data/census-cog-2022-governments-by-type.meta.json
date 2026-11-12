@@ -1,0 +1,54 @@
+{
+ "file": "census-cog-2022-governments-by-type.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "2022 Census of Governments: Organization, Government Units by State (CG2200ORG01) and Local Governments by Type and State (CG2200ORG02)",
+ "table_id": "CG2200ORG01 (GO0001) and CG2200ORG02 (GO0002, GO0005, GO0007 to GO0010), United States rows",
+ "url": [
+  "https://www2.census.gov/programs-surveys/gus/tables/2022/cog2022_cg2200org01.zip",
+  "https://www2.census.gov/programs-surveys/gus/tables/2022/cog2022_cg2200org02.zip"
+ ],
+ "observation_period": "2022 (Census of Governments; released August 24, 2023)",
+ "geography": "United States",
+ "universe_or_base": "Every federal, state and local government unit the Census Bureau recognizes",
+ "unit": "governments",
+ "date_retrieved": "2026-11-12",
+ "vintage": "2022 Census of Governments: Organization, released August 24, 2023",
+ "qualification": "A count, not subject to sampling error. Independent school district counts leave out school districts run by a state, county, municipal or township government, which count with that government (table note 2). The U.S. total of 90,888 includes the federal government and the 50 state governments (CG2200ORG01, footnote 2).",
+ "columns": {
+  "order": {
+   "type": "integer",
+   "description": "display order"
+  },
+  "level": {
+   "type": "category",
+   "description": "federal, state or local"
+  },
+  "government_type": {
+   "type": "category",
+   "description": "type of government, in the Bureau’s terms"
+  },
+  "governments": {
+   "type": "integer",
+   "description": "governments of this type",
+   "unit": "governments"
+  },
+  "aggregate_code": {
+   "type": "code",
+   "description": "the Bureau’s aggregate code; empty for the federal and state rows, which the U.S. total’s note gives"
+  },
+  "source_table": {
+   "type": "text",
+   "description": "the table the count comes from"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, 2022 Census of Governments: Organization, tables CG2200ORG01 and CG2200ORG02, released August 24, 2023, United States. Retrieved November 12, 2026. School districts run by a state, county, city or township count with that government.",
+ "ledger_row": "P7-302",
+ "domain": "D04",
+ "domain_note": "V7 I165, State and local government",
+ "states": [],
+ "notes": [
+  "Local governments sum to 90,837 (GO0002), and with the federal government and 50 states to 90,888 (GO0001); both asserted by script",
+  "The data lead’s condition for row 116: circles at true area for the local kinds; the federal government (1) and the states (50) print as counts in words"
+ ]
+}

@@ -1,0 +1,39 @@
+{
+ "id": "14.75",
+ "title": "Draw a band around a line to show each year’s margin of error.",
+ "rule": [
+  "Draw the series as a 2 px line in the subject ink over a light band from each year’s low to its high, at the publisher’s stated confidence, named in the measure line. Where the publisher changed its method, break the line and the band and draw both estimates for that year (Rule 14.11). Label the latest figure with its margin at the line’s end."
+ ],
+ "use_when": "The reader asks how a survey figure changed over years and how sure each year’s figure is.",
+ "use_instead": [
+  {
+   "when": "Places compared at one time",
+   "rule": "14.74"
+  },
+  {
+   "when": "A projection whose range widens ahead",
+   "rule": "14.77"
+  },
+  {
+   "when": "A count with no sampling margin",
+   "rule": "14.29"
+  }
+ ],
+ "why": {
+  "text": [
+   "A band shows at once which year-to-year moves are larger than the survey’s own uncertainty and which sit inside it. Breaking it where the method changed keeps a new questionnaire from reading as a change in people’s lives."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S58",
+ "tier": "core",
+ "tokens": [],
+ "related": [
+  "14.9",
+  "14.11",
+  "13.5"
+ ],
+ "builders": "Form line-confidence-band: node work/build/chart-kit/oa-chart.mjs build s58; encode x, y and margin (or low and high), with break and labels.break_end and labels.break_start for a change of method.",
+ "correct": null,
+ "failure": null
+}
