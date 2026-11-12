@@ -218,3 +218,19 @@ Modified:
 - `work/handoffs/phase-3/20261112_Round-1-Maker-B-Notes.md` (this section)
 
 Created: none in the repository. Scratch scripts (`make_s45.py`, `render_sketch.cjs`, the spec edits) and captures are in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/256961f5-3911-5bd9-908d-f34ce0435ace/scratchpad/phase-3/round-1-fix/maker-b/`.
+
+## Second pass
+
+November 12, 2026: the items the second passes and the data lead's sign-off gave maker B, routed by the main session.
+
+- D3-xxx | S25's note 2 prints the data lead's three dated totals ("In all, the files counted 2,155,201 employees on January 31, 2022, 2,304,585 on January 31, 2025 and 2,024,832 on August 31, 2026; the table gives each agency on all three dates.") | D3-619 and H09: the earlier note split the window at January 2025 and tied it to the inauguration
+- D3-xxx | S25's note 3 adds that the January 2025 rows sum to 2,304,166 and the total also counts 419 people under two codes with no row, 416 under "No Data Reported" and three in the Office of Pandemic Preparedness and Response Policy | Statistics N5; the sidecar records both codes, and the 2022 and 2026 columns sum to their totals exactly
+- D3-xxx | S34's 116th Congress, which the title names, is drawn solid in the subject ink and every other circle in the light fill with a thin context outline (`labels.named` on `bubble-timeline`); only its phone figure stays bold | The data lead's held item and brand N6, Rule 14.6's ink case under D3-489
+- D3-xxx | S34's phone row wraps 6 px inside its column, with a no-break space only in "November 10," so the year may take its own line at 224 px | Access N2: the row ran 2 px past a 326 px column; the kit now checks 326, 294, 264 and 224 px too
+- D3-xxx | S34's year lines stay under the circles | Brand N6; the circles are opaque, and at 4x the lines show only in the gaps between them
+- D3-xxx | The reference sketches 14.43 and 14.44 take a 10 px inner margin through their viewBox (now 320 px wide) | Brand N3: the label sat 1 px from the frame; 14.44 takes the same margin for one look
+- D3-xxx | The streamgraph pair widens to 288 px a half, with an 8 px inner margin (3,408 bytes) | Brand N4: the plate's two labels wrapped over 196 px halves, where the radar pair's 280 and 300 px halves hold them on one line
+
+Tested: `oa-chart.mjs build s25 s34`, PASS with 0 faults at every width, the kit's new guide widths included; `maker_b_figure_checks.py`, 9 checks, 0 faults, S25's check rewritten for the new notes (three totals, the 2,304,166 sum and the sidecar's 416 and 3); the chapter 14 generator's checks in memory, 55 rules, 0 faults; the three sketches rendered in Chromium on both grounds and in grayscale and looked at; S34 looked at on both grounds at 1440 px and on Newsprint at 390 px.
+
+Not tested: the strict guide build after these changes, so the pair's labels on one line and the sketch stages were not seen in the guide; S34 at 224 px by eye (its guard passes).

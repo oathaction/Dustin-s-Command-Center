@@ -434,7 +434,7 @@
  "s-14-43-sketch": {
   "chapter": "14",
   "rule": "14.43",
-  "width_px": 300,
+  "width_px": 320,
   "illustrative": true,
   "alt": "A sketch of a run chart, with illustrative data.",
   "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
@@ -443,7 +443,7 @@
  "s-14-44-sketch": {
   "chapter": "14",
   "rule": "14.44",
-  "width_px": 300,
+  "width_px": 320,
   "illustrative": true,
   "alt": "A sketch of a cycle or seasonal chart, with illustrative data.",
   "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",

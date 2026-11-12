@@ -327,7 +327,7 @@ def lkey(items):
 
 def dots_svgs(by, nation, lo=50, hi=80):
     """Rule 14.9's drawing in the kit's role classes (ED-E9): a desk drawing at 480 px, the narrowest artboard the kit draws
-    as desk, so it never scales, and a phone drawing at 256 px, the guide's narrowest column. Each state's margin of error
+    as desk, so it never scales, and a phone drawing at 224 px, the guide's narrowest column (at 320 px). Each state's margin of error
     is a line, a dot sits at its value, filled past the margin from the nation and open within it, and the nation's figure
     is a line down the rows."""
     T = lambda x, y, w, cls="oac-f-label", a=None, size=15: (f'<text x="{x:.1f}" y="{y:.1f}" class="oac-t oac-t-label oac-w4 {cls}" '
@@ -354,7 +354,7 @@ def dots_svgs(by, nation, lo=50, hi=80):
         out += [T(xs(t), bot + 18, f"{t}%", "oac-f-secondary", "start" if phone and t == lo else "end" if phone else "middle", 13) for t in ticks]
         H = bot + 24
         return (f'<svg xmlns="http://www.w3.org/2000/svg" class="oac-svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">' + "".join(out) + "</svg>")
-    return draw(480, 128, 416, 32, 30, False), draw(256, 6, 250, 48, 26, True)
+    return draw(480, 128, 416, 32, 30, False), draw(224, 6, 218, 48, 26, True)
 
 
 def static_figure(B, cid, desk, phone):
