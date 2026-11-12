@@ -133,3 +133,9 @@ MB-1 (S49 note 2), MB-2 (S50 grade line), MB-3 and MB-4 (S51 title and notes), M
 ### Not tested
 
 - Rule 14.9's plate itself on the stacked form (the editor builds it); entry 14.74 at 390 px after the last threshold change; the other changed specs (S49 to S53, S58) were rebuilt and pass but were not looked at again at full size after these word and ink changes, except S58's band ink, which I chose against before (RB-D2).
+
+## Third run (sketch 14.66 inside its drawing)
+
+- D3-xxx | Sketch 14.66 draws its three contours as paths of 72 points on each turned ellipse, in place of `<ellipse>` elements turned by `transform` | A turned element's screen box is the turned box of its own box, so the outer contour's box ran 14 px past the drawing in the guide check's `chartEdges` (CD RM1, K-S2); a path's box is its own shape. 3,222 bytes, classes, title, description and label unchanged
+- Tested: every one of my nine sketches put through the guide check's own `chartEdges` test in Chromium (scratch `edges_sketches.cjs`): every shape inside its drawing, 0.0 px past; 14.66 rendered on both grounds and looked at at twice size; `phase3_ch14_build.py` 0 faults; `guide_build.py --strict` exit 0, 10,582,289 bytes; `guide_check.js --quick --no-captures` on that build: see the line below.
+

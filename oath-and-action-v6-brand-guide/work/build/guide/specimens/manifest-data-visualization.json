@@ -702,7 +702,7 @@
   "chapter": "14",
   "rule": "14.75",
   "width_px": null,
-  "alt": "A line of median household income from 1967 to 2025 in 2025 dollars, with a light band for each year’s margin of error. It rises from $56,230 in 1967 to $87,460 in 2025, the highest of the series, and breaks in 2013, where new survey questions put the year’s two estimates $2,200 apart. In 2017 a new processing system put them $300 apart, too close to show as a break.",
+  "alt": "A line of median household income from 1967 to 2025 in 2025 dollars, with a gray band for each year’s margin of error. It rises from $56,230 in 1967 to $87,460 in 2025, the highest of the series, and breaks in 2013, where new survey questions put the year’s two estimates $2,200 apart. In 2017 a new processing system put them $300 apart, close enough that the two dots overlap.",
   "illustrative": false,
   "notes": "S58, line-confidence-band: the chart kit draws it from work/build/chart-kit/specs/s58.json (contract R1-C3)"
  },
