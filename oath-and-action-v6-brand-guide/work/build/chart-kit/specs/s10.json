@@ -78,7 +78,7 @@
   },
   "chart_notes": [
     "Key: documented, on the public record, in the ink of the text; well supported, strong research evidence; plausible, some evidence; contested, evidence disputed, hatched.",
-    "A line marks all 433 claims at 74 percent documented. Each row prints its documented share and its number of claims."
+    "A dashed line marks all 433 claims at 74 percent documented. Each row prints its documented share and its number of claims."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -127,6 +127,7 @@
     "Grades never take Pillar Red; contested carries a hatch so the key survives grayscale.",
     "74 percent is 321 of 433 claims, counted by script from v7-claims-by-grade.json.",
     "X17: rows 35 px apart at desktop, as Phase 2 set them (E31).",
-    "Second pass (statistics N2, access N1): source_line left out, so S10 prints the sidecar's line, 432 of the 433 claims checked on October 15, 2026; the measure line gives the snapshot date in place of 'checked through', as S21 and S23 do (ST S6)."
+    "Second pass (statistics N2, access N1): source_line left out, so S10 prints the sidecar's line, 432 of the 433 claims checked on October 15, 2026; the measure line gives the snapshot date in place of 'checked through', as S21 and S23 do (ST S6).",
+    "Round 2 review fix pass, D3-895 (CD A-S4): the line for all 433 claims takes the shared dashed total line (K.parts.total_line, 5 and 3 px in the text's ink, 1.5 px, the reference rule's weight) with its label in regular weight, the data lead's ruling (b); chart note 2 says 'dashed'. Board 2 lists S10 among the board 1 drawings that changed."
   ]
 }

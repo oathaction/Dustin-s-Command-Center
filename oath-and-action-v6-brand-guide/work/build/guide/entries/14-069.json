@@ -7,8 +7,8 @@
  "use_when": "The reader asks how two measures moved together over years, such as job openings and unemployment through a recession and a recovery.",
  "use_instead": [
   {
-   "when": "Each measure’s own trend matters more than their relationship",
-   "rule": "14.30"
+   "when": "Each measure’s own trend matters more than their relationship, drawn as two aligned panels, each on its own scale",
+   "rule": "14.73"
   },
   {
    "when": "Two measures across places at one time",

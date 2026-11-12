@@ -5,6 +5,8 @@
 //   node work/build/chart-kit/oa-chart.mjs build <ID|spec path>... [--all] [--widths 1440,390] [--grounds newsprint,charcoal]
 //                                          [--out DIR] [--no-png] [--date YYYYMMDD] [--specs DIR]
 //   node work/build/chart-kit/oa-chart.mjs check <ID|spec path>... [--all]
+//   build and check also draw every whole width from 256 px (224 for a rule plate) to 723 px on Newsprint, the sweep
+//   (AX S1); --no-sweep leaves it out
 //   node work/build/chart-kit/oa-chart.mjs fragments --in LIST.json --out OUT.json     (guide_build.py's hook)
 //   node work/build/chart-kit/oa-chart.mjs figure <spec path> --svg DESK.svg [--phone-svg PHONE.svg] [--id FID] [--out FILE]
 //                                          a drawing made outside the kit, set in the kit's figure (ED-E9, round 1 fix pass)
@@ -50,7 +52,7 @@ export function container(page, spec) {
 }
 
 function args(argv) {
-  const o = { _: [], widths: [1440, 390], grounds: ['newsprint', 'charcoal'], out: SCRATCH, png: true, date: null, specs: path.join(KIT, 'specs') };
+  const o = { _: [], widths: [1440, 390], grounds: ['newsprint', 'charcoal'], out: SCRATCH, png: true, date: null, specs: path.join(KIT, 'specs'), sweep: true };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--all') o.all = true;
@@ -58,6 +60,8 @@ function args(argv) {
     else if (a === '--grounds') o.grounds = argv[++i].split(',');
     else if (a === '--out') o.out = path.resolve(argv[++i]);
     else if (a === '--no-png') o.png = false;
+    else if (a === '--no-sweep') o.sweep = false;
+    else if (a === '--sweep') o.sweep = true;
     else if (a === '--png') o.png = true;
     else if (a === '--date') o.date = argv[++i];
     else if (a === '--specs') o.specs = path.resolve(argv[++i]);
@@ -116,6 +120,46 @@ export function guide_widths(spec) {
   return /^s-1[34]-(?!s\d)/i.test(String(spec.id)) ? GUIDE_WIDTHS.concat(PLATE_WIDTHS) : GUIDE_WIDTHS;
 }
 
+// AX S1 (round 2 fix pass, D3-904): the guide draws an entry's chart at any whole width from 256 px (a 320 px screen at
+// 400 percent zoom) to 723 px, and a rule plate's from 224 px; the six columns above miss widths a phone or tablet gives
+// (329 px at a 393 px phone, 560 px at a 768 px tablet). The sweep draws every whole width in that range on Newsprint and
+// runs the drawing checks on each; one fault at many widths prints once, with the widths it holds at.
+export const SWEEP_MAX = 723;
+export function sweep_range(spec) {
+  const hi = Math.min(SWEEP_MAX, K.artboard(spec, K.token_reader(TOK.newsprint)));
+  return [Math.min(...guide_widths(spec)), hi];
+}
+function span_list(ws) {
+  // 329, 330, 331, 560 -> "329 to 331, 560"
+  const out = [];
+  for (let i = 0; i < ws.length; i++) {
+    let j = i;
+    while (j + 1 < ws.length && ws[j + 1] === ws[j] + 1) j++;
+    out.push(j > i ? `${ws[i]} to ${ws[j]}` : String(ws[i]));
+    i = j;
+  }
+  return out.join(', ');
+}
+export function sweep_faults(spec, rows, extra) {
+  const [lo, hi] = sweep_range(spec), seen = new Map(), skip = new Set(GUIDE_WIDTHS.concat(PLATE_WIDTHS));
+  for (let w = lo; w <= hi; w++) {
+    if (skip.has(w)) continue;   // checked already, with the guide's columns
+    let f;
+    try {
+      const d = K.draw(spec, rows, { width: w, ground: 'newsprint', tokens: TOK.newsprint, extra });
+      f = C.check_drawing(spec, d, TOK.newsprint, '');
+    } catch (e) { f = [`draw: ${e.message}`]; }
+    for (const x of f) {
+      // one fault at many widths is one fault: its words with the figures read as one
+      const k = x.replace(/-?\d+(?:\.\d+)?/g, '#');
+      if (!seen.has(k)) seen.set(k, { first: x, ws: [] });
+      const ws = seen.get(k).ws;
+      if (ws[ws.length - 1] !== w) ws.push(w);
+    }
+  }
+  return [...seen.values()].map(v => `sweep: ${v.first.replace(/ \(\)$/, '')} (at ${v.ws.length} of the widths from ${lo} to ${hi} px: ${span_list(v.ws)})`);
+}
+
 // One spec, checked and drawn in Node at every width and ground
 export function run_spec(spec, o) {
   const res = { id: spec.id, faults: [], drawings: [], spec_path: o.spec_path, spec_form: spec.form };
@@ -143,6 +187,8 @@ export function run_spec(spec, o) {
         res.faults.push(...C.check_drawing(spec, d, TOK.newsprint, `a ${w} px guide column`));
       } catch (e) { res.faults.push(`draw at a ${w} px guide column: ${e.message}`); }
     }
+    // the sweep (AX S1): every other whole width an entry or plate can draw at; build and check run it unless --no-sweep
+    if (o.sweep) res.faults.push(...sweep_faults(spec, chk.rows, extra_rows(chk)));
   }
   return res;
 }

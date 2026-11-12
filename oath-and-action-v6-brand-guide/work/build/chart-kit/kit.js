@@ -1326,7 +1326,9 @@
       fig.setAttribute('data-oa-drawn', String(w));
       // RS-S3: where this drawing is already the phone form, the desk's phone drawing beside it says nothing new
       if (result.arrangement === 'phone') fig.setAttribute('data-oa-phone-form', ''); else fig.removeAttribute('data-oa-phone-form');
+      // AX S1 (round 2 fix pass): a clean redraw clears the count a narrower or wider drawing left
       if (result.guard.length || result.warnings.length) fig.setAttribute('data-oa-warnings', String(result.guard.length + result.warnings.length));
+      else fig.removeAttribute('data-oa-warnings');
     }
     draw();
     // the phone drawing at its fixed width, once (D3-487); the figure's description and table carry its data, so it is

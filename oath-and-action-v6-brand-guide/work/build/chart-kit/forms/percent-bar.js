@@ -29,9 +29,11 @@
       var x0 = c.phone ? 0 : Math.ceil(lw + 20), x1 = W - sw - 14, bh = c.t(c.phone ? 'bar-phone-height' : 'bar-dense-height');
       // labels.pitch sets the desktop row pitch (E31; Phase 2 set S10's rows 35 px apart), at least the bar and 8 px
       var pitch = c.phone ? c.t('bar-phone-pitch') - 8 : Math.max(bh + 8, L.pitch || c.t('bar-dense-pitch') - 12);
+      var names = [];
       rows.forEach(function (r, i) {
         var s = share(r), by = y + i * pitch + (c.phone ? c.size('label') + 6 : 0), x = x0;
-        if (c.phone) c.text(0, by - 6, r[ek], { role: 'label', weight: 600 });
+        // on a phone the name sits over its bar, where the total line would cross it; the line breaks for it
+        if (c.phone) names.push([by - 6, r[ek]]);
         else c.text(0, by + bh / 2 + c.size('label') * 0.35, r[ek], { role: 'label', weight: 600 });
         parts.forEach(function (p, j) {
           var v = r[p] || 0, w = s.tot ? (x1 - x0) * v / s.tot : 0, d = byf[p] || {};
@@ -51,10 +53,20 @@
       });
       var bottom = y + (rows.length - 1) * pitch + bh + (c.phone ? c.size('label') + 6 : 0);
       if (L.mark_at !== undefined) {
-        var mx = x0 + (x1 - x0) * L.mark_at / 100;
-        c.line(mx, y - 8, mx, bottom + 4, { stroke: 'label', width: c.t('line-hairline'), mark: false });
-        if (L.mark_label) c.text(mx, y - 12, L.mark_label, { role: 'tick', anchor: 'middle', weight: 600 });
+        // the data lead's ruling (b), D3-895: a total line is the shared dashed line in the text's ink, at the reference
+        // rule's weight, with its own label in regular weight naming it and its value
+        // On a phone the line breaks for each row name it would cross, 3 px clear of the words (BC S1)
+        var mx = x0 + (x1 - x0) * L.mark_at / 100, top = y - 8, ls = c.size('label');
+        names.forEach(function (n) {
+          if (c.measure(n[1], 'label', 600) + 3 < mx) return;
+          var a = n[0] - 0.864 * ls - 3, b = n[0] + 0.136 * ls + 3;
+          if (a > top) P.total_line(c, mx, top, mx, a, { width: c.t('line-baseline') });
+          top = Math.max(top, b);
+        });
+        P.total_line(c, mx, top, mx, bottom + 4, { width: c.t('line-baseline') });
+        if (L.mark_label) c.text(mx, y - 12, L.mark_label, { role: 'tick', anchor: 'middle', weight: 400 });
       }
+      names.forEach(function (n) { c.text(0, n[0], n[1], { role: 'label', weight: 600 }); });
       c.height(bottom + 6);
     }
   });
