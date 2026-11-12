@@ -608,3 +608,25 @@ Reason: on a phone the reader still learns how sure each figure is, from a drawn
 ### Routine calls (after the second pass)
 
 - D3-xxx | Where a range bar's middle interval is too short to show past a 13 px dot, the form draws 7 px dots, and where it hides behind those too, it drops the lines and prints each margin beside its value with a note; the check passes either state, the second only with every margin printed | RF-25, the access reviewer's N2: tight published margins on a phone; the reader keeps the margin and the dot keeps Rule 14.9's test
+
+### Sign-off (after the second pass)
+
+**Signed off but for one draw-order change, RF-25a.** I built S57, Rule 14.9's `s-14-9-range`, the production test's `20261112_P02-Spec-V6.json`, S02, S45, S55 and S60 from the committed files with `oa-chart.mjs build --widths 1440,390,288` (and S45 at 328) into `kit-p2`, with the sweep on: 7 PASS, 0 faults. On Newsprint at 1x I looked at:
+- P02 at 1440, 390 and 256 px: the top, middle and bottom rows;
+- S57 at 256 (top rows) and Rule 14.9's plate at 256;
+- S55 at 256, S45 at 296 and S02 at 358.
+
+I read S60's note 1 and S55's chart note from the specs.
+- **RF-25 in `range-bar`, the check and the words: signed off.** P02 shows the three states as ruled:
+  - at 1440 px, 13 px dots with intervals;
+  - at 390 px, 7 px dots with intervals;
+  - at 256 px, 7 px dots with each margin printed beside its value ("77.4% ±0.8"), the nation's "76.6% ±0.1", and the note "At this width each margin of error is narrower than its dot, so each figure prints its margin beside it; the table gives every margin."
+  The kit passes all three, and S57 and Rule 14.9's plate keep their 13 px dots at 256 px. The engineer's README line and the editor's line in entry 14.74 are as ruled; I read them through the main session's relay and did not open the files.
+- **S02** (board 1, placement only): below 520 px the 2021 note sits under the chart with the other words, and nothing crosses the line. Signed off.
+- **S45 at 296 px:** the axis drops "2020" so "2025" stands clear, and 591.7's leader still ends in 2024's part. Signed off.
+- **S55:** the United States ring reads as an open ring on its halo inside Texas. At 256 px New York's figure moves under the chart ("New York holds 3.6 million renter households"), and the note says the United States is not labeled at that width. Signed off.
+- **S60's note 1:** "would limit ... and require" is right for a bill the Senate never took up. Signed off.
+
+**RF-25a, `range-bar` (maker B), draw order.** The nation's dashed line is drawn over the dots, so where an open dot sits on it the line runs through the hollow. At 7 px this makes Texas, South Dakota and Minnesota (P02 at 390 and 256 px) read as half-filled marks rather than open dots. The open dot is exactly what carries Rule 14.9's "within the margin". Draw every estimate dot after the nation's line, and fill an open dot with the ground inside its edge, so the dashed line passes behind each dot at every size. This changes S57's, Rule 14.9's and P02's drawings only where a dot meets the line. I sign off from P02 at 390 and 256 px once it lands.
+
+- D3-xxx | `range-bar` draws its estimate dots after the nation's dashed line, open dots filled with the ground | RF-25a: at 7 px the line through an open dot's hollow hides Rule 14.9's "within the margin"
