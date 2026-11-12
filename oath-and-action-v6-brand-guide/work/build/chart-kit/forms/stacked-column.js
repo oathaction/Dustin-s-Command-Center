@@ -109,12 +109,19 @@
       // the time axis: the spec's picks, or every year thinned to fit
       var ay = bot + tick + 10, picks = L.x_ticks ? [].concat(L.x_ticks).map(String) : null, wmax = c.measure('0000', 'tick') + 12, every = Math.max(1, Math.ceil(wmax / step));
       while (!picks && every < n && (n - 1) % every && every < 10) every++;
-      st.forEach(function (s, i) {
-        var v = String(s.row[ex]);
-        if (picks ? picks.indexOf(v) < 0 : (n - 1 - i) % every) return;
-        var cx = x0 + step * i + step / 2, w = c.measure(v, 'tick'), tx = Math.max(w / 2 + 1, Math.min(W - w / 2 - 2, cx));
-        c.line(cx, bot + 1, cx, bot + 5, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });
-        c.text(tx, ay, K.fmt(s.row[ex], 'year'), { role: 'tick', anchor: 'middle' });
+      // from the last year back, a label that would come within a word space of the one after it is left out, with its
+      // tick, so the last year keeps its place inside the edge (BC N1: "2020" met "2025" at 296 px)
+      var yl = [], sp = c.measure(' ', 'tick');
+      for (var j = st.length - 1; j >= 0; j--) {
+        var v = String(st[j].row[ex]);
+        if (picks ? picks.indexOf(v) < 0 : (n - 1 - j) % every) continue;
+        var cxj = x0 + step * j + step / 2, w = c.measure(v, 'tick'), tx = Math.max(w / 2 + 1, Math.min(W - w / 2 - 2, cxj));
+        if (yl.length && tx + w / 2 + sp > yl[yl.length - 1].tx - yl[yl.length - 1].w / 2) continue;
+        yl.push({ cx: cxj, tx: tx, w: w, row: st[j].row });
+      }
+      yl.forEach(function (l) {
+        c.line(l.cx, bot + 1, l.cx, bot + 5, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });
+        c.text(l.tx, ay, K.fmt(l.row[ex], 'year'), { role: 'tick', anchor: 'middle' });
       });
       c.height(ay + 4);
     }

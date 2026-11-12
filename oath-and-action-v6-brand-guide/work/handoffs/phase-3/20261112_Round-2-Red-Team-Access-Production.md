@@ -351,3 +351,114 @@ Scratch only, in the folder named at the top:
 - the panel's data copy and probe specs;
 - the PDF;
 - the captures.
+
+## Second pass
+
+November 12, 2026, under DR-191, after the fix pass.
+
+**What I reviewed.**
+- The fix brief, `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md`, and the "Review fix pass" sections of the engineer's, makers', editor's, systems designer's, research lead's and data lead's notes.
+- The fixed strict build, `/tmp/claude-0/-home-user-Dustin-s-Command-Center/3ab6316c-6935-5f23-804c-cfaafd548447/scratchpad/phase-3/round-2-final/build/guide.html` (10,635,461 bytes). I copied it into my scratch folder and left the original unchanged. Since that build, the only change in `work/build/` is two plate captions in chapter 14's file (S55 and S63), which none of my items touches.
+- As before, scripts off on the full page, and the rest on a copy holding chapters 13 to 15 (3,281,877 bytes).
+- My scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/3ab6316c-6935-5f23-804c-cfaafd548447/scratchpad/phase-3/round-2-second-pass/access-production/`.
+
+### Second score
+
+**4 of 5.** AX M1 is closed: S58's band now shows at every width, and the kit fails any band that does not. Of the eleven Should fix items, ten are closed and one is partly closed. Two faults hold the score at 4:
+- the width sweep skips nine widths for chapter 14's entries, and S02's notes print over each other at one of them;
+- the simulated designer still cannot reach a passing chart for a survey whose margins are narrower than the dot on a phone.
+
+### Status of each item
+
+| Item | Status | Why |
+|---|---|---|
+| AX M1, S58's band | **Closed** | The band takes 1 px edges in the context ink: 4.29 to 1 on Newsprint, 5.41 on Charcoal. I saw them in captures at 358 and 256 px. The kit's band check fails a band under 3 to 1 with no edge. S59's two bands take the same edges. The alt and chart note name the band by its edges, and Rule 14.75's text names no color step |
+| AX S1, widths between the checked ones | **Partly closed** | The kit sweeps in `build` and `check`; S63 and S01 pass, and S63 is clean in the guide at 393, 700 and 768 px. The sweep has a hole, below (N1) |
+| AX S2, lines through words | **Closed** | S44's minus signs sit on knockouts and read whole at 256 px. S48's "1 independent" and "2 vacant" stand below the arc on hairlines. S50's dashed line stops short of "$2,290". The kit's crossing check fails what it cannot clear |
+| AX S3, S44's totals in forced colors | **Closed** | In both themes, "All receipts" and "Deficit" draw as outlined bars apart from every step. The note names steps and totals by what they do |
+| AX S4, color as a mark's name | **Closed** | S53 reads "Ages 55 to 64: 41.2 million" in the text's ink, and its alt and note use no hue. S47's note names its tiles by role. The only color word left in round 2's alts and notes is "gray", a shade set beside "the text's ink" |
+| AX S5, tables | **Closed** | S53's last row reads "100 and over". S62 has a Step column ("2 and 3, Hearing and Committee vote: never happened"). S51 adds Lowest and Highest county (42.5 in the South). S58's empty cells read "None" |
+| AX S6, sketches for a screen reader | **Closed** | Every sketch stage is a group named for its plate. Chromium's snapshot of 14.91 reads in order: "Form to avoid: Do not publish", the drawing, "Use instead: Progress bar", the better drawing. The stage's description holds only the sentences after the caption's, so the caption is heard once, as the figure's name |
+| AX S7, the README | **Closed** | 65 form files, S01 to S64, a `range-bar` row, and a section on estimates and their intervals (fields, level, table column, `margin_columns`, units, `check_only_columns`, an interval that must show past its mark) |
+| AX S8, data and source checks | **Closed** | The file carries S2801's published margins and the sidecar maps each value to its margin and each line to its columns. The kit failed the designer's default line and named `fixed_with_s2801_margin`. No message in V4 to V6's output prints "undefined"; I did not rerun the no-margin variant that printed it |
+| AX S9, S45's middle stack | **Closed, by the data lead's call** | The part is still 0.8 to 1.1 px tall from 2009. The alt now says it "shows as a thin seam from 2009 on", and the note gives its 0.6 to 1.8 percent with the table for each year |
+| AX S10, the reader's stops | **Closed** | Entry 14.60 explains quartiles as the middle half. Entries 14.75 and 14.90 print no color-step name. Rule 15.12's plate carries a "Reading a step" key (step words, ticks, layers) and its rule explains the line code. Rule 15.17 lists its four bodies by their plain names with their variables, and its key shows the ticks |
+| AX S11, print | **Closed** | The Letter PDF of chapters 13 to 15 runs to 358 pages with no blank page; the one page under 2 percent ink, 351, ends a code block. "True size, 328 px wide" prints whole on all 15 plates that carry it |
+
+### New faults
+
+**N1. The sweep skips nine widths for chapter 14's entries, and S02's notes print over each other at one of them.**
+- **Where:** `oa-chart.mjs` `sweep_faults`; S02.
+- **What is wrong.**
+  - The sweep skips every width in `GUIDE_WIDTHS` and `PLATE_WIDTHS`, as already checked. An entry spec is checked only at `GUIDE_WIDTHS`, though. So 675, 639, 510, 474, 325, 294, 264 and 243 px are never drawn for an entry; 224 lies below an entry's range.
+  - My own sweep of S01 to S64 at every whole width found one fault in that gap. At 510 px, S02's two notes ("2021: the expanded child tax credit was in force ..." and "Both measures: 13.4% in 2025 ...") print on top of each other and neither can be read.
+  - A 510 px column is a 574 px window. The guide flags S02 there (`data-oa-warnings="1"`), and I saw the overlap in a capture.
+  - `oa-chart.mjs check s02` passes.
+- **Fix.** Skip only the widths the spec was already checked at (`guide_widths(spec)`), then fix S02's notes at 510 px.
+- **Owners:** the engineer, and S02's owner.
+
+**N2. A survey with tight margins cannot pass the interval check on a phone, and nothing says what to draw instead** (production test 1, second pass).
+- **Where:** `forms/range-bar.js`; entry 14.74; the README's section on intervals.
+- **What is wrong.**
+  - With the Census Bureau's published margins (0.3 to 1.7 points; Minnesota, the middle state, 0.5), the fixed broadband range bar fails the new interval check at 390 px and every guide column under it. The middle row's interval spans 18.6 px against the 23 px a 13 px dot needs.
+  - The fault's two fixes, more width and stacked rows, were both tried. The scale narrowed to 64–86 with every row stacked still fails from 256 to 438 px.
+  - `range-bar` takes no smaller mark.
+  - Entry 14.74 and the README do not say what to draw when margins are narrower than the dot on a phone.
+  - The check is right: on a phone those intervals cannot be seen. The designer is left with no documented path.
+- **Fix.** Give `range-bar` a smaller estimate mark for narrow plots, such as a short tick or a 7 px dot, which the check measures. Alternatively, have entry 14.74 and the README name the fallback: a dot plot with each margin in the table, and a note that the margins are too narrow to draw at that width.
+- **Owners:** the engineer and maker B (the form), the editor (entry 14.74's words), the data lead (which fallback).
+
+### The production test, second pass
+
+The panel is simulated and untested with real people. The full log is under "Second pass" in `round-2-production-test/20261112_Designer-Log.md`; specs V4 to V6, checks V4 and V6, and captures of V6 sit beside it.
+- **Without help, the designer reached:**
+  - the form;
+  - S2801's margin, through `margin_columns`;
+  - the right source line, which the kit's fault named;
+  - the count: 20 states and DC above the nation, 22 below, 8 within.
+- **They did not reach a chart that passes at every width (N2).** V6 passes at 1440 px and from 439 to 720 px, and fails at every phone width.
+
+### Tested in the second pass
+
+- **Scripts off,** full build at 1440 px: 79 kit figures, each with its title, alt, scripts-off line, source line and open table, with `scope` on every header. I read S51's, S53's, S58's and S62's tables row by row.
+- **Kit builds** of the 26 round 2 specs with the new checks and sweep: 26 PASS, 0 faults. `check s02 s15 s35`: 3 PASS.
+- **My own sweep:** `check_drawing` at every whole width from 256 to 723 px, for S01 to S64. One fault: S02 at 510 px (N1), confirmed in the browser.
+- **Narrow plots:** S01, S43 to S45, S47, S48, S50, S51, S53, S56 to S59, S62 and S63 at 656, 358, 296 and 256 px. A geometry probe found no text outside a drawing and no text on text. I looked at captures of S44, S48, S50, S53 and S58 at 2x.
+- **Guide widths:**
+  - 1440, 1024, 800, 768, 700, 574, 393, 390, 360 and 320 px, and 720 px at device scale 2.
+  - No page error and no sideways page scroll.
+  - Drawing text 13 px or more everywhere (12.99 at 1440 px, as before).
+  - The only guard flag: S02 at 574 px.
+  - Every scrolling frame has a tab stop: 92 at 320 px.
+- **320 px reflow:** chapter 14's changed specimens draw with no flag. In captures, S01, S45, S47 and S62 read whole at 256 px. Chapter 15's frames scroll 40 px with a tab stop. The only words past the frame's edge are 15.12's two layer labels inside its drawing; its new key below the drawing fits.
+- **Forced colors,** light and dark, 1440 and 390 px:
+  - every drawing text in the round 2 figures, sketches and changed rule plates (1,449 and 1,097): lowest 14.02 to 1 light and 13.98 dark;
+  - normal colors: lowest 4.74 at 1440 px and 4.73 at 390 px;
+  - captures of S44, S46, S47, S53 and S58 in both themes, and avoid sketch 14.91 at 390 px in the dark theme.
+- **Accessibility tree and aria snapshots:** sketches 14.91, 14.57, 14.73, 14.54 and 14.65, with each stage's role, name and description.
+- **Chapter 15's plates:** 15.12 and 15.17 at 1024 px.
+- **The words fixed for AX S10:** read from the entry and chapter files.
+- **axe-core** on chapters 13 to 15 at 1440 and 390 px, every table open: 0 violations.
+- **Reduced motion:** 0 transitions, 0 animations.
+- **Print:** Letter PDF of chapters 13 to 15, 358 pages. Blank-area and ink count per page, and the text layer for the plate heads, the six avoid bars and "100 and over".
+- **Production test 1:** V4 to V6 through `oa-chart.mjs check`, the count by my own script, and V6 drawn in a kit page at 1440 and 390 px (43 filled dots, 8 open).
+
+### Not tested in the second pass
+
+- **The main session's runs:** the four-width guide check and axe on the whole page.
+- **Real people and real tools:** real screen readers on the sketch groups (I read Chromium's tree and snapshots only), real devices, Windows' own contrast themes, and paper.
+- **The panel:** simulated and untested with real people. Production test 2, the reader, was not rerun; I checked the words that stopped them in the files and plates.
+- **Outside chapter 14's entries:** chapters 13 and 15's older plates in forced colors; the sweep on chapter 13's plate specs.
+
+### Change log, second pass
+
+Modified:
+- this report (this section);
+- `work/handoffs/phase-3/round-2-production-test/20261112_Designer-Log.md` (the addendum on AX S8's data and the "Second pass" section).
+
+Created in `work/handoffs/phase-3/round-2-production-test/`:
+- `20261112_P02-Spec-V4.json`, `20261112_P02-Spec-V5.json`, `20261112_P02-Spec-V6.json`;
+- `20261112_P02-Check-V4.txt`, `20261112_P02-Check-V6.txt`;
+- `20261112_P02-Capture-V6-Newsprint-1440.png`, `20261112_P02-Capture-V6-Newsprint-390.png`.
+
+Scratch only: the copies, kit builds, probes, sweep, PDF and captures, in the scratch folder named above.

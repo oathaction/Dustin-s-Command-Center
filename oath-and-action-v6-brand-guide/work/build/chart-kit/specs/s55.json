@@ -101,7 +101,8 @@
       "TX": "4.3 million",
       "NY": "3.6 million",
       "FL": "3.0 million"
-    }
+    },
+    "sub_under": "{name} holds {sub} renter households."
   },
   "formats": {
     "x": "dollars",
@@ -124,6 +125,7 @@
     "Read from the left and the right: as S54.",
     "Data lead MB-7 to MB-9 and MB-10, MB-11: California and North Dakota labeled in regular weight; note 2 tests Florida against California and Hawaii and a note gives North Dakota’s figure against Wyoming’s (checked by --figures); the income scale ends at $85,000 so DC’s dot at $79,741 sits inside the plot.",
     "Review fix pass: the data lead’s RF-18 (CD B-S1): the question and title turn on the four states with the most renter households, so circle size answers the question; the four take the subject ink as states (Rule 14.6’s list), each named with its renter households in regular weight (labels.sub). RF-6 drops North Dakota; note 2 now tests the four states’ rents against the nation’s, each past the gap’s margin. RF-19: the United States’ name keeps off every circle where it can. BC S17: the key’s circles take the field’s fill and outline. The Association label and note 1 stay, as entries 14.67 and 14.68 set for every correlation chart; the title states documented counts and rents. Checked by maker_b_round2_derive.py --figures (check S55).",
-    "Review fix pass, the data lead’s sign-off: MB-F2, the Finding label, since RF-18’s title states documented counts and rents, with note 1 in the data lead’s words; MB-F1, the United States ring takes a 1 px halo of the ground outside its outline, so it keeps its shape on Texas’s dark circle."
+    "Review fix pass, the data lead’s sign-off: MB-F2, the Finding label, since RF-18’s title states documented counts and rents, with note 1 in the data lead’s words; MB-F1, the United States ring takes a 1 px halo of the ground outside its outline, so it keeps its shape on Texas’s dark circle.",
+    "Second pass (D3-1075): the brand reviewer’s N2, the United States ring takes a 2 px halo of the ground, so it reads as its own mark on Texas’s circle; the statistics reviewer’s N2, a named state’s figure that finds no place on two lines tries one line beside its name, and else prints under the chart (labels.sub_under)."
   ]
 }

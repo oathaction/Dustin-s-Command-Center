@@ -14,7 +14,8 @@
  * words, with any column in braces), x_axis, y_axis (axis words), size_key ([values] for a key of circle sizes),
  * size_key_label (each one's words, with {value}), size_key_title (words over that key), sub ({key: words}: a second
  * line in regular weight under a named point's bold name, or over it, such as the figure the title gives; round 2 fix
- * pass, BC S9); sub_short ({key: words}: the shorter line where the first finds no place). The key's circles take the field's fill and outline, as the circles they stand for (BC S17); the
+ * pass, BC S9); sub_short ({key: words}: the shorter line where the first finds no place); sub_under (a sentence with
+ * {name} and {sub} under the chart for a figure that finds no place beside its mark, on two lines or on one). The key's circles take the field's fill and outline, as the circles they stand for (BC S17); the
  * reference's name keeps off every circle where it can (BC S9).
  * formats: x, y (ticks), size (the key). scale: x and y ([lo, hi]). On a phone the same arrangement draws narrower, with
  * smaller dots and circles. Maker B, round 2. */
@@ -25,7 +26,7 @@
     name: 'Scatter Named',
     family: 'correlation',
     encode: { key: 'code', label: 'text', x: 'number', y: 'number', size: 'number?' },
-    labels: ['named', 'point', 'labeled', 'names', 'reference', 'reference_label', 'x_axis', 'y_axis', 'size_key', 'size_key_label', 'size_key_title', 'sub', 'sub_short'],
+    labels: ['named', 'point', 'labeled', 'names', 'reference', 'reference_label', 'x_axis', 'y_axis', 'size_key', 'size_key_label', 'size_key_title', 'sub', 'sub_short', 'sub_under'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, L = c.labels, f = c.spec.formats || {}, W = c.width, ph = c.phone;
@@ -100,8 +101,9 @@
       // the nation as an open ring in the text's ink (the data lead's ruling (b))
       if (refrow) {
         var rx = xs(refrow[ex]), ry = ys(refrow[ey]);
-        // a 1 px halo of the ground outside the ring, so it holds its shape on a dark circle under it (the data lead's MB-F1)
-        c.circle(rx, ry, rdot + 1 + c.t('line-context') / 2 + 1, { fill: 'surface', mark: false });
+        // a 2 px halo of the ground outside the ring, so it reads as its own mark on a dark circle under it (the data lead's
+        // MB-F1; the brand reviewer's second-pass N2 found 1 px read as a hole in that circle)
+        c.circle(rx, ry, rdot + 1 + c.t('line-context') / 2 + 2, { fill: 'surface', mark: false });
         P.total_ring(c, rx, ry, rdot + 1, { data: { key: refrow[ek], field: ey, value: refrow[ey], x: refrow[ex] } });
         pts.push({ r: refrow, x: rx, y: ry, rad: rdot + 2, ref: true });
       }
@@ -121,8 +123,10 @@
       // a named point with a second line (labels.sub, BC S9 and RF-18): its bold name and the regular line under it set as one
       // block, beside its circle or further out on a leader, clear of every word, dot and circle (round 2 fix pass)
       var subs = L.sub || {}, lh = Math.round(size * 1.2), unplaced2 = [];
-      var plan2 = function (p, sb, taken) {
-        var nm = name(p.r), w = Math.max(c.measure(nm, 'label', 700), c.measure(sb, 'label', 400)), h = size + lh;
+      // a block on two lines (the bold name over its figure), or on one where two find no place: the name and its figure
+      // side by side (the statistics reviewer's second-pass N2: New York lost its figure at every phone width)
+      var plan2 = function (p, sb, taken, one) {
+        var nm = name(p.r), wn = c.measure(nm, 'label', 700), w = one ? wn + 5 + c.measure(sb, 'label', 400) : Math.max(wn, c.measure(sb, 'label', 400)), h = one ? size : size + lh;
         var dirs = [[1, 0], [-1, 0], [0, -1], [0, 1], [0.75, -0.75], [0.75, 0.75], [-0.75, -0.75], [-0.75, 0.75]];
         var near = function (bx2) { return function (t) { return bx2.x < t.x + t.w + 3 && t.x < bx2.x + bx2.w + 3 && bx2.y < t.y + t.h + 2 && t.y < bx2.y + bx2.h + 2; }; };
         for (var ri = 0; ri < reach2.length + 1; ri++) {
@@ -144,7 +148,7 @@
               if (circ.some(function (q) { return q.p !== p && K.seg_hits_box(L0[0], L0[1], L0[2], L0[3], q.x - q.r, q.y - q.r, q.x + q.r, q.y + q.r); })) continue;
             }
             if (taken.some(function (t) { return t.L && K.seg_hits_box(t.L[0], t.L[1], t.L[2], t.L[3], box.x - 1, box.y - 1, box.x + box.w + 1, box.y + box.h + 1); })) continue;
-            return { p: p, nm: nm, sb: sb, an: an, tx: an === 'start' ? bx : an === 'end' ? bx + w : bx + w / 2, t0: t0, L: L0, box: box };
+            return { p: p, nm: nm, sb: sb, an: an, tx: an === 'start' ? bx : an === 'end' ? bx + w : bx + w / 2, t0: t0, L: L0, box: box, one: !!one, wn: wn };
           }
         }
         return null;
@@ -155,14 +159,23 @@
       var perms = function (xs) { return xs.length < 2 ? [xs] : xs.reduce(function (acc, x, i) { return acc.concat(perms(xs.slice(0, i).concat(xs.slice(i + 1))).map(function (pp) { return [x].concat(pp); })); }, []); };
       var tryorder = function (ord) {
         var taken = [];
-        ord.forEach(function (p) { var k = String(p.r[ek]); var pl2 = plan2(p, subs[k], taken) || (subs_short[k] ? plan2(p, subs_short[k], taken) : null); if (pl2) taken.push(pl2); });
+        ord.forEach(function (p) {
+          var k = String(p.r[ek]), sh = subs_short[k];
+          var pl2 = plan2(p, subs[k], taken) || (sh ? plan2(p, sh, taken) : null) || plan2(p, subs[k], taken, true) || (sh ? plan2(p, sh, taken, true) : null);
+          if (pl2) taken.push(pl2);
+        });
         return taken;
       };
       var best = [];
       (withsub.length <= 5 ? perms(withsub) : [withsub]).some(function (ord) { var t = tryorder(ord); if (t.length > best.length) best = t; return best.length === withsub.length; });
       best.forEach(function (q) {
-        c.text(q.tx, q.t0 + 0.864 * size, q.nm, { role: 'label', weight: 700, anchor: q.an, halo: true });
-        c.text(q.tx, q.t0 + 0.864 * size + lh, q.sb, { role: 'label', weight: 400, anchor: q.an, halo: true });
+        if (q.one) {
+          c.text(q.box.x, q.t0 + 0.864 * size, q.nm, { role: 'label', weight: 700, halo: true });
+          c.text(q.box.x + q.wn + 5, q.t0 + 0.864 * size, q.sb, { role: 'label', weight: 400, halo: true });
+        } else {
+          c.text(q.tx, q.t0 + 0.864 * size, q.nm, { role: 'label', weight: 700, anchor: q.an, halo: true });
+          c.text(q.tx, q.t0 + 0.864 * size + lh, q.sb, { role: 'label', weight: 400, anchor: q.an, halo: true });
+        }
         if (q.L) c.line(q.L[0], q.L[1], q.L[2], q.L[3], { stroke: 'leader', width: c.t('line-hairline'), mark: false });
       });
       withsub.forEach(function (p) { if (!best.some(function (q) { return q.p === p; })) unplaced2.push(p); });
@@ -180,6 +193,13 @@
       if (pl.unplaced.length) {
         var ub = c.text(0, end + c.size('note') + 8, K.word('unlabeled_marks').replace('{codes}', pl.unplaced.map(function (it) { return it.words; }).join(', ')), { role: 'note', max: W, fill: 'secondary' });
         end = ub.bottom;
+      }
+      // a named point whose figure found no place beside it carries the figure in a line under the chart (labels.sub_under,
+      // with {name} and {sub}), so the drawing gives every figure its chart note promises
+      if (L.sub_under && unplaced2.length) {
+        var sw2 = unplaced2.map(function (p) { return String(L.sub_under).replace('{name}', name(p.r)).replace('{sub}', subs[String(p.r[ek])]); }).join(' ');
+        var sb2 = c.text(0, end + c.size('note') + 8, sw2, { role: 'note', max: W, fill: 'secondary' });
+        end = sb2.bottom;
       }
       c.height(end + 2);
     }
