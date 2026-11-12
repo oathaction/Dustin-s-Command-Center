@@ -11,7 +11,7 @@
       "rule": "14.26"
     },
     {
-      "when": "The gain or loss is measured election by election and the reader follows it over time",
+      "when": "The reader follows a gain or loss election by election",
       "rule": "14.28"
     },
     {

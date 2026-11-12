@@ -2,12 +2,12 @@
   "id": "14.34",
   "title": "Show one trend across many parts as small area panels on one scale.",
   "rule": [
-    "Use small-multiple area sparklines when the same measure runs across many parts of a whole: one small panel per part on one shared vertical scale, the area from zero under the part’s line, the whole’s line in gray in every panel, and the change printed over each panel. Order the panels by the change the title names, and set the totals above them."
+    "Use small-multiple area sparklines when the same measure runs across many parts of a whole. Give each part one small panel on one shared vertical scale, with the area from zero under the part’s line, the whole’s line in gray in every panel, and the change printed over the panel. Order the panels by the change the title names, and set the totals above them."
   ],
   "use_when": "The reader asks which parts of a total grew and which shrank over the same span.",
   "use_instead": [
     {
-      "when": "The parts should be looked up row by row with their figures",
+      "when": "The reader looks the parts up row by row, with their figures",
       "rule": "14.128"
     },
     {

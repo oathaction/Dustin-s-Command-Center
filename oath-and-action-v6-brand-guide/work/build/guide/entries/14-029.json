@@ -2,7 +2,7 @@
   "id": "14.29",
   "title": "Mark the moments that explain a line on the line itself.",
   "rule": [
-    "Use a line with event notes for one series and the events a reader needs to read it: the subject series as a heavy line from a scale that starts at zero, any comparison series thin and gray, each series named on its line, and short notes inside the plot with leaders to the points they explain. Break the line where the publisher changed its method, and never draw across the break (Rule 14.11)."
+    "Use a line with event notes for one series and the events a reader needs to read it. Draw the subject series as a heavy line on a scale that starts at zero unless the change is the point (Rule 14.4), any comparison series thin and gray, each series named on its line, and short notes inside the plot with leaders to the points they explain. Break the line where the publisher changed its method, and never draw across the break (Rule 14.11)."
   ],
   "use_when": "The reader asks what happened to one measure and when, and a few dated events explain its turns.",
   "use_instead": [
@@ -29,6 +29,7 @@
   "tier": "core",
   "tokens": [],
   "related": [
+    "14.4",
     "14.11",
     "13.2"
   ],

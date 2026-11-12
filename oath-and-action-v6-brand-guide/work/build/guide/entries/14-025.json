@@ -2,7 +2,7 @@
   "id": "14.25",
   "title": "Draw each item’s move between two dates as an arrow from start to end.",
   "rule": [
-    "Use shift arrows when the reader needs where each item started, where it ended and which way it moved: one row per item, an arrow from the earlier value to the later one on one scale with a labeled center, and the national row set apart above the states (Rule 14.7 for party data). On a phone, where the arrows crowd, the chart ranks the items by the size of the shift and draws each as a stem from zero, with the later value in words on its row."
+    "Use shift arrows when the reader needs where each item started, where it ended and which way it moved. Give each item one row, with an arrow from the earlier value to the later one on one scale with a labeled center, and set the national row apart above the states (Rule 14.7 for party data). On a phone, where the arrows crowd, the chart ranks the items by the size of the shift and draws each as a stem from zero, with the later value in words on its row."
   ],
   "use_when": "The reader asks which places moved, which way and how far, between two elections or two years.",
   "use_instead": [
@@ -21,7 +21,7 @@
   ],
   "why": {
     "text": [
-      "An arrow carries three facts at once: the start, the end and the direction, so a reader sees both that every state moved one way and how far apart they still stand. Party names in words and position carry the sides, never color (Rule 14.7)."
+      "An arrow carries three facts at once: the start, the end and the direction, so a reader sees both that every state moved one way and how far apart they still stand. Party names in words and position carry the sides (Rule 14.7)."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
   },

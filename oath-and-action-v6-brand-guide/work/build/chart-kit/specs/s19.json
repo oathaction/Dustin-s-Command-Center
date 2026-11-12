@@ -24,7 +24,7 @@
   "evidence_label": "Finding",
   "grade_line": "Documented: counts the states report to the Bureau of Justice Statistics",
   "title": "State imprisonment rates at the end of 2023 ran from 96 sentenced prisoners per 100,000 residents in Massachusetts to 652 in Mississippi.",
-  "measure_line": "Imprisonment rate: prisoners serving sentences of more than one year under each state’s authority, per 100,000 state residents, December 31, 2023, 50 states. The dashed line is all states together.",
+  "measure_line": "Imprisonment rate: prisoners serving sentences of more than one year under each state’s authority, per 100,000 state residents, December 31, 2023, 50 states.",
   "notes": [
     "A state counts the prisoners it has authority over, wherever they are held. All states together held 318 per 100,000 U.S. residents; with federal prisoners added, the national rate was 360.",
     "In six states, Alaska, Connecticut, Delaware, Hawaii, Rhode Island and Vermont, prisons and jails form one system, so their rates include jail populations.",
@@ -108,5 +108,6 @@
     "Footnote words condense BJS's footnotes a to g in the sidecar's notes; a/ belongs to the Federal row only, which is left out.",
     "States in the title are the data's two ends (Rule 01.9 counts them): MS and MA.",
     "Figures checked by script (figures.py s19): 652 the maximum and MS; 96 the minimum and MA; 318 STATE; 360 US; the six b states; 617 LA, 596 AR, 119 ME."
-  ]
+  ],
+  "reading_guide": "The dashed line is all states together."
 }

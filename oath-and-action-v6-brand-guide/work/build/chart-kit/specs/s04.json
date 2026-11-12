@@ -34,13 +34,13 @@
   "reader_question": "Which age groups vote, and did that change between two elections?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: a Census Bureau survey; the rates are what respondents reported",
+  "grade_line": "Documented: a Census Bureau survey",
   "title": "The gap in reported voting between citizens 18 to 24 and those 65 and over grew from 23 points in 2020 to 27 in 2024.",
   "measure_line": "Citizens who reported voting in November, percent, by age group, 2020 and 2024 presidential elections, United States; the scale runs from 40 to 80 percent",
   "notes": [
     "The gap between citizens 18 to 24 and those 65 and over: 23.1 points in 2020 (margin of error 1.4) and 27.0 in 2024 (margin of error 1.5). It grew 3.9 points, more than the change’s margin of error of about 2.0.",
     "These rates are what people told a Census survey, which runs higher than counted ballots. Margins are at 90 percent; Table A-1 prints none, so Oath & Action computed them from the constants the Bureau publishes for computing a margin of error.",
-    "Each label tests a group’s change against its own 90 percent margin of error: 18 to 24 fell 3.7 points (margin of error 1.7) and 25 to 44 fell 2.4 (margin of error 1.0), both past their margins of error; 45 to 64 fell 1.0 against a margin of error of about 1.0, too close to call because the published rates are rounded to a tenth; 65 and over rose 0.2 (margin of error 1.1), within its margin of error."
+    "Each label tests a group’s change against its own 90 percent margin of error. Citizens 18 to 24 fell 3.7 points (margin of error 1.7) and those 25 to 44 fell 2.4 (1.0), both past their margins. Citizens 45 to 64 fell 1.0 against a margin of about 1.0, too close to call because the published rates are rounded to a tenth. Those 65 and over rose 0.2 (1.1), within the margin."
   ],
   "source_line": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting by age, and Table 1 with the Source and Accuracy statements, November 2020 and 2024, United States. Retrieved November 6 and 11, 2026. Self-reported voting among citizens 18 and over; margins of error computed by Oath & Action from the constants the Bureau publishes for that purpose.",
   "credit": "Chart: Oath & Action",

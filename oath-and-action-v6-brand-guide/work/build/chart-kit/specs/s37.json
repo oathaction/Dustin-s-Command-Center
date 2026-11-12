@@ -14,16 +14,17 @@
     "ids": [],
     "snapshot": "2026-10-15"
   },
-  "title": "The atlas rates 36 of its 38 routes through an act of Congress low or very low in feasibility for 2026 to 2030, and 24 of its 29 routes through a state law medium or high.",
+  "title": "Of 38 routes through an act of Congress, the atlas rates 36 low or very low in feasibility for 2026 to 2030.",
   "measure_line": "Each of the atlas’s 50 reforms by the routes that could carry it, 126 routes in all, with the atlas’s rating of how feasible each is from 2026 to 2030, United States, as of October 15, 2026. Each reform shows only the routes the atlas names for it.",
   "notes": [
+    "Routes through a state law fare better: the atlas rates 24 of 29 medium or high.",
     "Feasibility is the atlas’s own judgment on a four-step scale. Each cell gives its word, and the cells add to no score or total.",
     "The atlas checked 13 of the 126 routes on October 15, 2026, each marked with a dot; every other route is not checked.",
-    "Local routes, 15 in all, are rated medium or high in 14 cases."
+    "The atlas rates 14 of the 15 local routes medium or high."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "A heat table of the atlas’s 50 reforms against 11 routes to change, each cell tinted and labeled with the atlas’s rating of feasibility for 2026 to 2030. Routes through an act of Congress are rated low or very low in 36 of 38 cases; routes through a state law are rated medium or high in 24 of 29.",
+  "alt": "A heat table of the atlas’s 50 reforms against 11 routes to change, each cell tinted and labeled with the atlas’s rating of feasibility for 2026 to 2030. The atlas rates routes through an act of Congress low or very low in 36 of 38 cases, and routes through a state law medium or high in 24 of 29.",
   "table": {
     "caption": "Feasibility of each reform’s routes, 2026 to 2030, as the atlas rates them",
     "pivot": {

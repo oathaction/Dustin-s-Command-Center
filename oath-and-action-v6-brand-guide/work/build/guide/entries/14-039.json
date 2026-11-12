@@ -2,7 +2,7 @@
   "id": "14.39",
   "title": "Show when each part of a law starts as a bar from its date.",
   "rule": [
-    "Use an implementation timeline when a law or rule starts in parts: one row per part in date order, with its date, section and a plain line on what starts, over a lane where a bar begins on the start date and runs on. Hatch the first year of a part that reaches each plan or program as its own year begins, mark a deadline with a dot, and mark the day the law was approved on every lane."
+    "Use an implementation timeline when a law or rule starts in parts: one row per part in date order, with its date, section and a plain line on what starts, over a lane where a bar begins on the start date and runs on. Hatch the first year of a part that reaches each plan or program as its own year begins, mark a deadline with a dot, and mark the day the President signed the law on every lane."
   ],
   "use_when": "The reader asks when a law they have heard about will touch them, and its parts start on different dates.",
   "use_instead": [
@@ -21,7 +21,7 @@
   ],
   "why": {
     "text": [
-      "A law is approved on one day and starts on many, and a reader who hears it passed may expect the change at once. One lane per part, each starting on its own date, shows the wait for each part, and the hatched year keeps a plan-year date from reading as one day for everyone."
+      "A President signs a law on one day, and its parts start on many, and a reader who hears it passed may expect the change at once. One lane per part, each starting on its own date, shows the wait for each part, and the hatched year keeps a plan-year date from reading as one day for everyone."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
   },
@@ -31,5 +31,6 @@
   "related": [],
   "builders": "Form implementation-timeline: node work/build/chart-kit/oa-chart.mjs build s32; labels.kinds maps each row’s kind to approved, deadline, phase or start.",
   "correct": null,
-  "failure": null
+  "failure": null,
+  "caption": "When does each part of the 2026 law on pharmacy benefit managers take effect?"
 }

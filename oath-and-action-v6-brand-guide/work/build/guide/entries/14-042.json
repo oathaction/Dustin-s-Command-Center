@@ -2,7 +2,7 @@
   "id": "14.42",
   "title": "Show what a household keeps as its earnings rise, cliffs and all.",
   "rule": [
-    "Use a benefit-cliff line to show what one household has after taxes and benefits at each level of earnings: the household’s resources as a heavy line, its earnings alone as a dashed diagonal, and a light band from any drop to the earnings where the household is back where it was. Name the drop in words with its size, and state the household and the rules the chart assumes. Built on invented rules, the chart carries “Illustrative data” beside its top edge (Rule 13.8)."
+    "Use a benefit-cliff line to show what one household has after taxes and benefits at each level of earnings. Draw the household’s resources as a heavy line, its earnings alone as a dashed diagonal, and a light band from any drop to the earnings where the household is back where it was. Name the drop in words with its size, and state the household and the rules the chart assumes. Built on invented rules, the chart carries “Illustrative data” beside its top edge (Rule 13.8)."
   ],
   "use_when": "The reader asks whether earning more leaves a family better off, and benefits that end at set earnings may say no.",
   "use_instead": [

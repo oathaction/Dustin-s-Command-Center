@@ -22,7 +22,7 @@
   ],
   "why": {
     "text": [
-      "Bars that touch are compared first, so grouping decides which comparison the reader makes. Grouping by category puts the two series of each category side by side, which suits a gap within each group, and the eye can still run down one series’ bars to compare across groups."
+      "A reader compares bars that touch first, so grouping decides which comparison the reader makes. Grouping by category puts the two series of each category side by side, which suits a gap within each group, and the eye can still run down one series’ bars to compare across groups."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
   },

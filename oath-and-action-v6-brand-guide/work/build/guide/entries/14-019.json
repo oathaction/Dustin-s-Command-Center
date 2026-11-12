@@ -15,7 +15,7 @@
       "rule": "14.25"
     },
     {
-      "when": "Two to four measures per category are compared as lengths from zero",
+      "when": "The reader compares two to four measures per category as lengths from zero",
       "rule": "14.22"
     }
   ],
@@ -35,5 +35,6 @@
   ],
   "builders": "Form dumbbell: node work/build/chart-kit/oa-chart.mjs build s04, or copy specs/s04.json and point it at a new dataset; labels.from and labels.to name the two series values.",
   "correct": null,
-  "failure": null
+  "failure": null,
+  "caption": "Which age groups report voting, and did that change between two elections?"
 }

@@ -8,11 +8,11 @@
   "reader_question": "How does taking part in the labor force differ by age for men and women?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: a Census Bureau survey; the rates are estimates",
-  "title": "In 2025, women were in the labor force at lower rates than men in every age group from 22 on, with the widest gap, 9.7 points, at ages 60 and 61.",
-  "measure_line": "Labor force participation, the share of people who are working or looking for work, by sex and age, 2025, United States, in the Census Bureau’s age groups. Bars start at zero.",
+  "grade_line": "Documented: a Census Bureau survey",
+  "title": "Women’s labor force participation trailed men’s in every age group from 22 on in 2025, by as much as 9.7 points at ages 60 and 61.",
+  "measure_line": "Labor force participation, the share of people who are working or looking for work, by sex and age, 2025, United States, in the Census Bureau’s age groups.",
   "notes": [
-    "Each gap is tested against its margin of error at 90 percent confidence, computed by Oath & Action from the table’s counts with the Census Bureau’s formula. Every gap from age 22 on passes its margin, and so does the gap at 60 and 61 against the next widest, at 62 to 64.",
+    "Oath & Action tested each gap against its margin of error at 90 percent confidence, with the Census Bureau’s formula and the table’s counts. Every gap from age 22 on passes its margin, and so does the gap at 60 and 61 against the next widest, at 62 to 64.",
     "Among people 16 to 19, women’s rate, 41.3 percent, was higher than men’s, 39.6, past the margin of error. At 20 and 21 the two rates, 71.5 and 71.2 percent, are within it.",
     "The age groups are the Census Bureau’s and vary in width, from two years to ten."
   ],

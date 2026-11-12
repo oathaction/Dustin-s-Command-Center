@@ -2,7 +2,7 @@
   "id": "14.30",
   "title": "Give each group its own panel, lit against the others in gray.",
   "rule": [
-    "Use a multi-line with one highlighted when several groups share a measure and the reader compares each with the rest: one small panel per group on one shared scale, the group’s own line heavy in ink over the others in thin gray, its name and latest value over the panel. Past four groups the panels carry the comparison (Rule 14.8)."
+    "Use a multi-line with one highlighted when several groups share a measure and the reader compares each with the rest. Give each group one small panel on one shared scale, with the group’s own line heavy in ink over the others in thin gray, and its name and latest value over the panel. Past four groups the panels carry the comparison (Rule 14.8)."
   ],
   "use_when": "The reader asks how far apart groups stand on one measure, and whether the gaps have closed.",
   "use_instead": [

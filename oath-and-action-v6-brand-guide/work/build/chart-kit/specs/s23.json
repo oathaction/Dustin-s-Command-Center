@@ -14,10 +14,10 @@
     "ids": [],
     "snapshot": "2026-10-15"
   },
-  "title": "Public services where you live has the largest share of documented claims of the atlas’s five hubs, 84.5 percent, and voice, power and information the smallest, 67.2.",
-  "measure_line": "Claims behind the atlas’s 16 everyday answers, grouped by its five topic hubs, as a share of each hub’s claims by evidence grade, 433 claims checked through October 15, 2026, United States. Every panel shares one scale, and bars start at zero.",
+  "title": "Of the atlas’s five topic hubs, “Public services where you live” has the largest share of documented claims, 84.5 percent, and “Voice, power and information” the smallest, 67.2.",
+  "measure_line": "Claims behind the atlas’s 16 everyday answers, grouped by its five topic hubs, as a share of each hub’s claims by evidence grade, 433 claims checked through October 15, 2026, United States.",
   "notes": [
-    "Grades: documented means on the public record; well supported means strong research evidence; plausible means some evidence; contested means evidence disputed. A claim’s grade covers that claim alone.",
+    "Grades, as the atlas sets them: Documented, on the public record; Well supported, strong research evidence; Plausible, some evidence; Contested, evidence disputed. A claim’s grade covers that claim alone.",
     "Voice, power and information has the largest share of plausible claims, 18.8 percent, and work and financial security the largest share contested, 8.2 percent."
   ],
   "credit": "Chart: Oath & Action",
@@ -89,5 +89,6 @@
   "notes_internal": [
     "Data plan row 9 (coverage plan: evidence mix by topic hub). Draws the engineer's derived file v7-claims-by-hub-and-grade (request A4), the sums of v7-claims-by-grade over each hub; C1 keeps the grouping in its own file. Its printed source line is the sidecar's.",
     "Figures checked by script (figures.py s23) against v7-claims-by-grade itself."
-  ]
+  ],
+  "reading_guide": "Every panel shares one scale."
 }

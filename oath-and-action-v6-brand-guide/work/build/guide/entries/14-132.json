@@ -2,7 +2,7 @@
   "id": "14.132",
   "title": "List tracked bills with their six steps, status and date.",
   "rule": [
-    "Draw each bill as chapter 11 draws a list of bills (Rule 11.5): its number and name lead the row, its six numbered steps run across, and its status follows in words with the date of the latest action. A bill that became law fills all six steps and says so with its date and law number (Rule 11.3). Give the date the whole list was checked in the title or measure line, since a tracker shows one day."
+    "Draw each bill as chapter 11 draws a list of bills (Rule 11.5): its number and name lead the row, its six numbered steps run across, and its status follows in words with the date of the latest action. A bill that became law fills all six steps and says so with its date and law number (Rule 11.3). Give the date Oath & Action checked the whole list in the title or measure line, since a tracker shows one day."
   ],
   "use_when": "The reader asks where a set of bills or rules stands today, and what has happened to each, for the Track pillar.",
   "use_instead": [
@@ -36,5 +36,6 @@
   ],
   "builders": "Form tracker-list: node work/build/chart-kit/oa-chart.mjs build s40, or copy specs/s40.json and point it at a new dataset; encode.step and encode.skipped give each bill’s steps, labels.steps their names.",
   "correct": null,
-  "failure": null
+  "failure": null,
+  "caption": "Where do the housing bills of this Congress stand?"
 }

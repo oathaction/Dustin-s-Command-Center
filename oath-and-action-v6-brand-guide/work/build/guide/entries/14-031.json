@@ -7,7 +7,7 @@
   "use_when": "The reader asks how one place or group moved against all the others, and the whole field matters as context.",
   "use_instead": [
     {
-      "when": "Four series or fewer, each to be followed",
+      "when": "Four series or fewer, each one the reader follows",
       "rule": "14.30"
     },
     {
@@ -21,7 +21,7 @@
   ],
   "why": {
     "text": [
-      "Fifty colored lines tangle into noise, and fifty gray ones read as one shape: the range every place moved within. One line in ink against that shape shows where the subject sits without a key, and the table gives every other series a reader may want to find (Rule 14.8)."
+      "Colored lines for 50 states tangle into noise, and the same lines in gray read as one shape: the range every place moved within. One line in ink against that shape shows where the subject sits without a key, and the table gives every other series a reader may want to find (Rule 14.8)."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
   },

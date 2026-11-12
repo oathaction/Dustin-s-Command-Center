@@ -2,7 +2,7 @@
   "id": "14.26",
   "title": "Rank one change per item as a stem from zero, with a key for its length.",
   "rule": [
-    "Use a change lollipop when each item has one change between two dates: draw a stem from zero to the change with a dot at its end, rank the items from the largest change, print each change beside its dot, and set the national figure apart at the top. A key above the stems shows the length of one round change. Position and the printed sign carry the direction."
+    "Use a change lollipop when each item has one change between two dates. Draw a stem from zero to the change with a dot at its end, rank the items from the largest change, print each change beside its dot, and set the national figure apart at the top. A key above the stems shows the length of one round change. Position and the printed sign carry the direction."
   ],
   "use_when": "The reader asks which places or groups moved most between two dates, and the size of each move matters more than where each one started.",
   "use_instead": [
@@ -21,7 +21,7 @@
   ],
   "why": {
     "text": [
-      "Ranking by the size of the change answers the reader’s question in the order they ask it. A stem from zero gives each change a length the eye can compare, as a bar does (Rule 14.4), and the key ties that length to a number. The dot marks where each change stops with less ink than a full bar, so fifty rows stay light."
+      "Ranking by the size of the change answers the reader’s question in the order they ask it. A stem from zero gives each change a length the eye can compare, as a bar does (Rule 14.4), and the key ties that length to a number. The dot marks where each change stops with less ink than a full bar, so 50 rows stay light."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
   },

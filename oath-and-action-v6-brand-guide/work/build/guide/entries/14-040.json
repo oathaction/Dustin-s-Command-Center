@@ -2,7 +2,7 @@
   "id": "14.40",
   "title": "Index many series to one start when the reader compares growth.",
   "rule": [
-    "Use an indexed line when series of very different sizes should be compared by how fast they grew: divide each by its own value at one base date and multiply by 100, so every line starts at 100. Draw the base line heavier and name the base, give one series the ink and the rest gray when there are more than four (Rule 14.8), and name every line at its end with its latest index."
+    "Use an indexed line when the reader compares series of far different sizes by how fast they grew: divide each by its own value at one base date and multiply by 100, so every line starts at 100. Draw the base line heavier and name the base, give one series the ink and the rest gray when there are more than four (Rule 14.8), and name every line at its end with its latest index."
   ],
   "use_when": "The reader asks which of several measures grew fastest since a date, and their sizes are too far apart to share a scale in their own units.",
   "use_instead": [
@@ -21,7 +21,7 @@
   ],
   "why": {
     "text": [
-      "On a scale of dollars, a $35 billion source that quintuples lies flat beside a $3 trillion one. An index puts every series at 100 on the same date, so a line’s height shows growth alone. Growth is not size, so the notes give each highlighted series’ amount and share, and the reader does not take a fast-growing small source for a large one."
+      "On a scale of dollars, a $35 billion source that quintuples lies flat beside a $3 trillion one. An index puts every series at 100 on the same date, so a line’s height shows growth alone. A fast-growing source can stay small, so the notes give each highlighted series’ amount and share, and the reader does not take a fast-growing small source for a large one."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
   },

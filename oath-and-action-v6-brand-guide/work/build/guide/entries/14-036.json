@@ -2,12 +2,12 @@
   "id": "14.36",
   "title": "Draw an amount a law fixes between dates as a step line.",
   "rule": [
-    "Use a step line for an amount a law or rule holds until the next change, such as a tax credit per child: keep the line flat through each period, move it straight up or down in the period the change takes effect, and print each level’s amount on it. Name the law that made each change beside its step or in the notes."
+    "Use a step line for an amount a law or rule holds until the next change, such as a tax credit per child. Keep the line flat through each period, move it straight up or down in the period the change takes effect, and print each level’s amount on it. Name the law that made each change beside its step or in the notes."
   ],
   "use_when": "The reader asks what a rule set at each date, and the value stays fixed between one change and the next.",
   "use_instead": [
     {
-      "when": "The values are measured and move between dates, such as a rate from a survey",
+      "when": "Survey figures that move between dates, such as a rate",
       "rule": "14.29"
     },
     {
@@ -31,5 +31,6 @@
   "related": [],
   "builders": "Form step-line: node work/build/chart-kit/oa-chart.mjs build s30, with x the year or date each amount takes effect and y the amount.",
   "correct": null,
-  "failure": null
+  "failure": null,
+  "caption": "How has the law changed the child tax credit’s top amount per child since 2017?"
 }

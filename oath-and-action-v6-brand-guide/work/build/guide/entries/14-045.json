@@ -15,13 +15,13 @@
       "rule": "14.51"
     },
     {
-      "when": "One part should be read against the rest",
+      "when": "The reader reads one part against the rest",
       "rule": "14.30"
     }
   ],
   "why": {
     "text": [
-      "A streamgraph stacks its layers around a wavy center line, so no layer sits on a flat baseline and none can be measured against a scale. When one layer swells, every layer above and below it bends, and a reader takes that bend for a change in layers that never moved."
+      "A streamgraph stacks its layers around a wavy center line, so no layer sits on a flat baseline and a reader can measure none of them against a scale. When one layer swells, every layer above and below it bends, and a reader takes that bend for a change in layers that never moved."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
   },

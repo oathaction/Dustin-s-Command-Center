@@ -16,7 +16,7 @@
       "rule": "14.131"
     },
     {
-      "when": "The piece is a post, an email or a social card, where nothing can be clicked",
+      "when": "The piece is a post, an email or a social card, where a reader cannot click anything",
       "rule": "14.133"
     }
   ],

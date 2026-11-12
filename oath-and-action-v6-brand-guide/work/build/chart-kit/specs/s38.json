@@ -33,9 +33,9 @@
     "snapshot": "2026-10-15"
   },
   "title": "Of the atlas’s 17 issue records on news, records and public information, two are documented, eight well supported, six plausible and one a hypothesis.",
-  "measure_line": "Issue records in the atlas’s domain of news, records and public information, each a problem it records with its grade and the month it was observed, as of October 15, 2026, United States. Search by words, or filter by grade.",
+  "measure_line": "Issue records in the atlas’s domain of news, records and public information, each a problem it records with its grade and the month the atlas observed it, as of October 15, 2026, United States.",
   "notes": [
-    "Grades: documented means on the public record; well supported means strong research evidence; plausible means some evidence; a hypothesis is a proposed link that needs stronger evidence.",
+    "Grades, as the atlas sets them: Documented, on the public record; Well supported, strong research evidence; Plausible, some evidence; Hypothesis, not yet tested.",
     "The atlas keeps 194 issue records across its ten domains; this lookup holds one domain’s 17.",
     "The still image shows one filter on: the eight records graded well supported."
   ],
@@ -132,5 +132,6 @@
   "where": {
     "domain": "D01"
   },
-  "source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, issue records in the domain of news, records and public information, 17 of 194 issues, as of October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own."
+  "source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, issue records in the domain of news, records and public information, 17 of 194 issues, as of October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own.",
+  "reading_guide": "Search by words, or filter by grade."
 }

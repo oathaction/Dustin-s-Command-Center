@@ -24,8 +24,8 @@
   "reader_question": "Did younger households lose ground on owning a home?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: a Census Bureau survey; the rates are estimates",
-  "title": "In 2025, 37.0 percent of householders under 35 owned their homes, up 2.0 points from 2015 and past the survey’s margin of error, still the lowest rate of the five age groups.",
+  "grade_line": "Documented: a Census Bureau survey",
+  "title": "Householders under 35 owned their homes at 37.0 percent in 2025, up 2.0 points from 2015 and still the lowest of five age groups.",
   "measure_line": "Homeownership rate, the share of households that own their home, by age of the householder, annual averages for 2015 and 2025, the latest year and the year ten years before, United States. The scale runs from 30 to 80 percent.",
   "notes": [
     "The rise for householders under 35 passes its margin of error of about 0.8 points at 90 percent confidence, and so does the rise for those 35 to 44 (2.3 points, margin 1.1). The changes for the three older groups are within their margins.",

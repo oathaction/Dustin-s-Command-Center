@@ -15,9 +15,9 @@
   "reader_question": "What share of all household income goes to each fifth of households?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: a Census Bureau survey; the shares are estimates",
+  "grade_line": "Documented: a Census Bureau survey",
   "title": "The highest-income fifth of households received 51.6 percent of all household income in 2025, and the lowest fifth received 3.0 percent.",
-  "measure_line": "Share of all household income received by each fifth of households, ranked by income, United States, 2025. Each fifth holds 20 percent of households, marked by the tick. Bars start at zero.",
+  "measure_line": "Share of all household income received by each fifth of households, ranked by income, United States, 2025.",
   "notes": [
     "The top 5 percent of households, part of the highest fifth, received 23.1 percent of all household income.",
     "The survey counts money income before taxes and leaves out noncash benefits such as food aid.",
@@ -81,5 +81,6 @@
     "The Census Bureau's 'Third fifth' prints as 'Middle fifth' in the drawing, the plain name; the table keeps the Bureau's label.",
     "Figures checked by script (figures.py s18): 51.58 and 2.96 round to 51.6 and 3.0; 8.53, 14.36, 22.57; 23.11; the highest fifth's share is over the other four together; the largest margin in the file is 0.08.",
     "Every row's benchmark is 20, so the tick's words print once over the first tick."
-  ]
+  ],
+  "reading_guide": "Each fifth holds 20 percent of households, marked by the tick."
 }

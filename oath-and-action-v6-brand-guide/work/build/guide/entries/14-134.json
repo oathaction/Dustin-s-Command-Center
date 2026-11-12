@@ -2,7 +2,7 @@
   "id": "14.134",
   "title": "Write one sourced sentence when it answers faster than a chart.",
   "rule": [
-    "When one or two figures answer the reader’s question, state them in one sentence with the figures, the period, who was counted and the grade’s verb, and print the full source line under it (Rule 13.6). The sentence keeps its evidence label, and its figures stay in a table under it for anyone who wants them in rows (Rule 14.13)."
+    "When one or two figures answer the reader’s question, state them in one sentence with the figures, the period, whom the survey counted and the grade’s verb, and print the full source line under it (Rule 13.6). The sentence keeps its evidence label, and its figures stay in a table under it for anyone who wants them in rows (Rule 14.13)."
   ],
   "use_when": "The answer is one finding of one or two figures, such as how many voters in each party favored a ban, and a reader would take longer to read a chart than the sentence.",
   "use_instead": [
@@ -21,7 +21,7 @@
   ],
   "why": {
     "text": [
-      "Two numbers of almost the same size make a chart of two equal shapes, which says less than the numbers do. A sentence names who was counted and when in the same breath as the figures, so a reader can quote it whole with its source."
+      "Two numbers of almost the same size make a chart of two equal shapes, which says less than the numbers do. A sentence names whom the survey counted and when in the same breath as the figures, so a reader can quote it whole with its source."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
   },
@@ -35,5 +35,6 @@
   ],
   "builders": "Form one-sentence: node work/build/chart-kit/oa-chart.mjs build s42; labels.sentence carries the sentence, and show leaves out the printed title so it appears once.",
   "correct": null,
-  "failure": null
+  "failure": null,
+  "caption": "Do Republicans and Democrats agree on a ban on stock trading by members of Congress? One sourced sentence answers."
 }
