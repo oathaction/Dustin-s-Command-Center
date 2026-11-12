@@ -3853,3 +3853,14 @@ Dustin, on board 1's four questions: "As recommended, and I approve the smaller 
 | # | Decision | Reason |
 |---|---|---|
 | D3-214 | The answers are applied in the next chat, in one short pass before round 1 starts, as handoff V17's section 2A sets out | This chat handed off after board 1 (D3-213); the pass needs four owners and a rebuild |
+
+## Applying the board 1 answers, November 12, 2026
+
+### Main session (`work/handoffs/phase-3/20261112_Board-1-Apply-Brief.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-215 | The fresh container was set up by V11's three steps; the api.data.gov key answered one request each at api.open.fec.gov (a 2024 House race) and api.congress.gov (H.R. 7008), and `CENSUS_API_KEY` answered one American Community Survey request, all with 200. No key value is written anywhere. The strict build passed as committed: 0 warnings, 198 rules, 460 specimens, 9,962,562 bytes | Dustin asked for each key to be tested before use; the build matches the record before anything changes |
+| D3-216 | DR-236 to DR-239 are applied in one pass by four owners (research lead, editor, engineer, Explainer maker) under one brief, each writing a "Board 1 apply" section in its own round 0 notes | V17 section 2A names the owners; one notes file per owner keeps its calls in one place for the logger |
+| D3-217 | Round 0's board captures in `work/boards/phase-3/round-0/specimens/` stay as they are; S14 with its new note is captured fresh for round 1's board | Those captures record what Dustin saw on board 1 |
+| D3-218 | Chapter 13 does not change for DR-239: its plates keep their level titles, which D3-87 set and DR-237 approved as built | DR-239 names chapter 02 and S14 only |
