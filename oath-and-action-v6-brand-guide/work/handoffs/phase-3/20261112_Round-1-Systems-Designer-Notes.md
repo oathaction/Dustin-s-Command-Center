@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 1, November 12, 2026. Written by the sy
 
 ## Summary
 
-Round 1's share of chapter 15 is built and passes its checks. The main session fixed the rule list as proposed (R7). The generator `work/build/scripts/phase-3/phase3_ch15_build.py` writes `work/build/guide/chapters/15-systems-graphics.json` (opener, intro, two groups, Rules 15.1 to 15.10, 15.13 and 15.14), 25 plates `work/build/guide/specimens/s-15-*.html` (the opener and a correct and a failure plate for each rule) and `work/build/guide/specimens/manifest-systems-graphics.json`. Every atlas value is read by script from `work/extract/atlas-v7-data.json`, held by a `need()` check, and printed with the snapshot date. Every line is the atlas build's `wire_marks` at 2 px, with the 28 px lead-in from `oa.chart.grade.leadIn` on patterned lines that carry ticks. Chapter 15 weighs 225,443 bytes in a strict guide build, under round 1's 250,000, with the page projected at 15.04 MB. The V7 check finds 0 failures in chapter 15's 49 chips. The guide's rendered check passed every test on chapter 15 but one, a false positive on the code R13, which I cleared by moving the opener from Loop R13 to Loop R18 (request 4). The data lead signed off 15.1, 15.2, 15.7 and 15.14, and 15.13 once SD-3 landed; SD-1 to SD-5 are applied (section below), which the data lead's sign-off of the other plates waits on.
+Round 1's share of chapter 15 is built and passes its checks. The main session fixed the rule list as proposed (R7). The generator `work/build/scripts/phase-3/phase3_ch15_build.py` writes `work/build/guide/chapters/15-systems-graphics.json` (opener, intro, two groups, Rules 15.1 to 15.10, 15.13 and 15.14), 25 plates `work/build/guide/specimens/s-15-*.html` (the opener and a correct and a failure plate for each rule) and `work/build/guide/specimens/manifest-systems-graphics.json`. Every atlas value is read by script from `work/extract/atlas-v7-data.json`, held by a `need()` check, and printed with the snapshot date. Every line is the atlas build's `wire_marks` at 2 px, with the 28 px lead-in from `oa.chart.grade.leadIn` on patterned lines that carry ticks. Chapter 15 weighs 225,432 bytes in a strict guide build, under round 1's 250,000, with the page projected at 15.04 MB. The V7 check finds 0 failures in chapter 15's 49 chips. The opener draws Loop R13 again after the fix pass (SD-6, below). The data lead signed off 15.1, 15.2, 15.7 and 15.14, and 15.13 once SD-3 landed; SD-1 to SD-5 are applied (section below), which the data lead's sign-off of the other plates waits on.
 
 ## Rule list
 
@@ -73,7 +73,7 @@ Rules 15.1 to 15.10 (the grammar), 15.13 (worked example 1, Loop R1) and 15.14 (
 
 | Plate | What it draws from the atlas | Example log domain |
 |---|---|---|
-| s-15-opener | Loop R18 with authority connection LT16 crossing into the technology layer, six numerals tied to Rules 15.2, 15.3, 15.6, 15.5, 15.9 and 13.4 | D05 |
+| s-15-opener | Loop R13 with authority connection LE02 crossing into the economy layer, six numerals tied to Rules 15.2, 15.3, 15.6, 15.5, 15.9 and 13.4 | D04 |
 | 15.1 | Loop B1a at one weight; failure: one step at 6 px and one pill enlarged, no key | D05 |
 | 15.2 | Variables B3 (stock), B1 (flow), C3 (condition) with kind and higher-value sentence; failure: B5 cut to "Turnout" under connection L44's minus | D10, D03, D02 |
 | 15.3 | Connections L46 (+, a harm) and L16 (minus), each with its sign sentence, and a key quoting "A positive sign does not mean a benefit."; failure: a key reading "Positive effect / Negative effect" | D10, D05 |
@@ -87,7 +87,7 @@ Rules 15.1 to 15.10 (the grammar), 15.13 (worked example 1, Loop R1) and 15.14 (
 | 15.13 | Loop R1 with L02 dashed and marked weakest, labeled Plausible; failure: every step solid, labeled Well supported | D03 |
 | 15.14 | Loop R8 with the atlas's revision quoted as exact fragments and its reason from the qualification and connection T12; failure: the loop routed through A1 with plus signs and no date | D09 |
 
-Example log (Rule 01.12), counted for Rule 01.9: 20 examples, D01 3, D02 1, D03 3, D05 4, D06 3, D08 2, D09 1, D10 3; no domain over one in four, no state named (the atlas runs at the national level).
+Example log (Rule 01.12), counted for Rule 01.9: 20 examples, D01 3, D02 1, D03 3, D04 1, D05 3, D06 3, D08 2, D09 1, D10 3; no domain over one in four, no state named (the atlas runs at the national level).
 
 ## Routine calls
 
@@ -109,7 +109,7 @@ Example log (Rule 01.12), counted for Rule 01.9: 20 examples, D01 3, D02 1, D03 
 - D3-xxx | Rule 15.14's failure routes Loop R8 through Variable A1 with a closing step the atlas does not hold, and its caption says so | It shows the dependency the atlas withdrew without presenting any earlier drawing as a record of what was published
 - D3-xxx | A chip and the grade word beside it are joined by a no-break space, and step lists run one connection a line | The plate minifier closes a space between two tags, which ran "Connection L11" into "Well supported"
 - D3-xxx | Rule 15.10 quotes the atlas's reason for LTR1 in exact sentences and fragments, with each ID in its chip outside the quotation marks (SD-2) | The atlas's sentence holds bare IDs; the V7 check's bare-ID test and Rule 13.9
-- D3-xxx | The opener draws Loop R18 with authority connection LT16 into the technology layer, in place of Loop R13 with LE02 | The guide check's codes test bars "R13" in a text node of its own, and the typed chip "Loop R13" holds the ID in its own node; the grammar the opener teaches is the same (request 4)
+- D3-xxx | (Superseded by SD-6 in the fix pass.) The opener drew Loop R18 with authority connection LT16 for a time, in place of Loop R13 with LE02 | The guide check's codes test bars "R13" in a text node of its own, and the typed chip "Loop R13" holds the ID in its own node; the grammar the opener teaches is the same (request 4)
 - D3-xxx | Every loop drawing prints its typed ID inside it, "Loop R18" over "reinforcing" in a two-variable loop and on one line in a three-variable one | House rule H11, and the codes test reads a bare loop ID
 - D3-xxx | Plates draw through theme tokens (graphic essential, surface, text, border strong), so they flip to Charcoal under `data-oa-theme="dark"` while the guide page stays light (D2-1133) | One drawing serves a product's dark mode (DR-204)
 
@@ -117,7 +117,7 @@ Example log (Rule 01.12), counted for Rule 01.9: 20 examples, D01 3, D02 1, D03 
 
 From `work/handoffs/phase-3/20261112_Round-1-Data-Lead-Notes.md`, relayed by the main session:
 
-- **SD-1.** Every correct plate that draws a connection now carries Rule 13.1's evidence label with the grade of its least certain connection and names that connection: the opener (L15), 15.3 (L46), 15.4, 15.5, 15.6 (one per loop: L15, L48), 15.8, 15.9 and 15.10. Each connection drawn prints its chip with its grade word, the record square before Documented: L14, L15 and LT16 on the opener; L46 and L16 on 15.3; L14, L15, L48 and L49 on 15.6; LE12, LE14 and L37 on 15.8; LX4 and LT01 on 15.9; LT01 on 15.10.
+- **SD-1.** Every correct plate that draws a connection now carries Rule 13.1's evidence label with the grade of its least certain connection and names that connection: the opener (L12), 15.3 (L46), 15.4, 15.5, 15.6 (one per loop: L15, L48), 15.8, 15.9 and 15.10. Each connection drawn prints its chip with its grade word, the record square before Documented: L11, L12 and LE02 on the opener; L46 and L16 on 15.3; L14, L15, L48 and L49 on 15.6; LE12, LE14 and L37 on 15.8; LX4 and LT01 on 15.9; LT01 on 15.10.
 - **SD-2.** Rule 15.10's correct plate quotes the atlas's reason for LTR1 through "and is small": the second and third sentences whole, the first and fourth as exact fragments, with Variables B6 and B4 and Connection L47 in their chips and L47's grade word, Contested. The failure caption is unchanged.
 - **SD-3.** Rule 15.13 now reads "The loop stepper of Rule 18.22 runs the same loop live, one connection at a time, in Rule 11.14’s plate", and its Live specification and the chapter's related-chapters line for 11 say the same.
 - **SD-4.** The chapter counts kinds by the atlas's `type` (31 stocks, nine flows, six conditions, five drivers). `kind_word()` prints a kind only where `type` and `kind_plain` agree, the build stops if any variable but D6 disagrees, and no plate prints D6's kind. Rule 15.2's Kind specification says that where the two disagree, as for Variable D6, the page prints no kind, since the atlas lists the question for its next version (item 8 of `work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md`, approved under Q-07, as the main session said). Not a new question for Dustin.
@@ -128,7 +128,7 @@ From `work/handoffs/phase-3/20261112_Round-1-Data-Lead-Notes.md`, relayed by the
 1. **Engineer, `work/build/scripts/phase-3/v7_check.py`.** The bare-ID pattern `L[ETR]?\d{2}` misses connections whose IDs start with T (T01, T02, T07, T12) or LX (LX4), so a bare T12 or LX4 in reader text passes. Chapter 15 now prints neither bare, so adding `T\d{2}` and `LX\d` would not fail it. Not blocking.
 2. **Data visualization lead, sign-off of the plates SD-1 and SD-5 changed** (the opener, 15.3 to 15.6, 15.8 to 15.10). Points still open from my side, if the data lead wants to rule on them: (a) raises and lowers on dotted and dashed lines in drawings (routine call above); (b) Rule 15.14's failure plate, which draws a closing step the atlas does not hold; (c) the three-variable loop drawn with one pill above two for the 296 px artboard, where System 1's card had two above one; (d) outside drivers marked by place and the words "Outside driver" in the same pill as a variable, since the glossary's pill is unconfirmed in the renderer; (e) Loop B3's conceptual stations in 1 px pills, with the signs the loop record lists on hollow lines.
 3. **Main session, for chapter 14's owner.** The V7 check on today's page finds two bare IDs in chapter 14 ("C2 prints with no type word before it"). Not chapter 15's; passed on for whoever owns the entry.
-4. **Engineer, `work/build/scripts/phase-2/guide_check.js`, codes test.** The pattern `(?<![Ll]oop )\b(?:R9|R13|...)\b` runs on each text node alone, so the ID node of a typed chip (`<span class="chip">Loop <span class="id">R13</span></span>`) fails although "Loop" stands before it. Chapter 15 now prints no R13, so nothing blocks; a later example (Rule 15.15 needs no R13, but the atlas's Loop R13 is a fair example for any chapter) would need the test to read a chip whole. Not blocking.
+4. **Engineer, `work/build/scripts/phase-2/guide_check.js`, codes test.** The pattern `(?<![Ll]oop )\b(?:R9|R13|...)\b` runs on each text node alone, so the ID node of a typed chip (`<span class="chip">Loop <span class="id">R13</span></span>`) fails although "Loop" stands before it. Done by the engineer before the fix pass (SD-6); this note stays as the record; a later example (Rule 15.15 needs no R13, but the atlas's Loop R13 is a fair example for any chapter) would need the test to read a chip whole. Not blocking.
 5. **Editor, optional.** A words pass on chapter 15's rule text and captions, if the round's words pass can take it; I own the file and will apply changes.
 
 ## Tested
@@ -147,3 +147,17 @@ From `work/handoffs/phase-3/20261112_Round-1-Data-Lead-Notes.md`, relayed by the
 - A screen reader reading the plates' alt text and the chapter.
 - The data lead's sign-off of the plates SD-1 and SD-5 changed and of the redrawn opener, and the editor's words pass.
 - The full rendered check on the final page (see Tested).
+
+## Fix pass
+
+- **SD-6, the opener back on Loop R13.** The engineer's guide check now reads a typed chip whole ("Loop R13" passes, a bare R13 still fails) and `v7_check.py` now catches bare T and LX IDs, so the opener returns to Loop R13 with authority connection LE02 crossing into the economy layer, as the data lead asked, since Rule 15.6 draws Loop R18. The loop's typed ID ("Loop R13" over "reinforcing") stays inside the drawing; the label names Connection L12, and L11, L12 and LE02 print with their grade words, the record square before LE02's Documented. The example log is back to D04 for the opener.
+- D3-xxx | The opener draws Loop R13 with LE02 again (SD-6) | The data lead's choice: Rule 15.6 already draws Loop R18, and the check that barred R13 now reads the chip whole
+
+Tested in the fix pass:
+- `python3 -I work/build/scripts/phase-3/phase3_ch15_build.py`: every check passes; 25 plates.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/final6.html`: exit 0, 0 warnings; chapter 15 at 225,432 bytes; the page at 10,012,920 bytes, projected 15,041,533.
+- `python3 -I work/build/scripts/phase-3/v7_check.py --page <scratch>/final6.html`: 0 failures (chapter 13, 50 chips; chapter 14, 42; chapter 15, 49).
+- The opener captured from the strict build at 1440 and 390 px on Newsprint, and in a scratch preview on Charcoal (`data-oa-theme="dark"`) at 1440 and 390 px, read by eye: no overlap, every mark and word flips through the tokens; no overflow and no text under 13 px in the build at either width.
+
+Not tested in the fix pass: the engineer's updated `guide_check.js` on the final page (a run takes about 25 minutes).
+

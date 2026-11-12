@@ -4213,3 +4213,9 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-439 | `column`, `ranked-register` and `small-multiple-bars` draw the light fill through `K.parts.named_fill` | One copy of palette rule R3 in the kit (engineer's request); every SVG export of S17, S23 and S36 is byte for byte the same before and after |
 | D3-440 | `column` takes `labels.point` (ED-E1), with the point's keyline drawn as its own outline over the red fill | `kit.css` gives `.oac-s-point-keyline` `fill: none` after `.oac-f-point`, so one element with both classes draws the point hollow on Newsprint (request A11) |
 | D3-441 | S38's grade filter offers four chips; "retired" leaves its word maps | No record in news, records and public information is retired, and Rule 13.3 keeps Retired out of every grade key; the live lookup showed a fifth chip that matched nothing |
+
+### Systems designer, round 1 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-442 | The opener draws Loop R13 with LE02 again (SD-6) | The data lead's choice: Rule 15.6 already draws Loop R18, and the check that barred R13 now reads the chip whole |

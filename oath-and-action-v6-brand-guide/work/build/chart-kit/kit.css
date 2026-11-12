@@ -69,6 +69,9 @@
 .oac-f-gridline { fill: var(--oa-chart-color-gridline); } .oac-s-gridline { stroke: var(--oa-chart-color-gridline); fill: none; }
 .oac-f-leader { fill: var(--oa-chart-color-leader); } .oac-s-leader { stroke: var(--oa-chart-color-leader); fill: none; }
 .oac-f-point { fill: var(--oa-chart-color-point); } .oac-s-point-keyline { stroke: var(--oa-chart-color-point-keyline, var(--oa-chart-color-subject)); fill: none; }
+/* A11 (round 1): a mark that is the red point and carries its keyline keeps its red fill (Rule 05.3): two classes outrank
+   the keyline's fill: none, which stays for a keyline drawn as its own outline */
+.oac-f-point.oac-s-point-keyline { fill: var(--oa-chart-color-point); }
 .oac-f-band { fill: var(--oa-chart-color-band); }
 .oac-f-track { fill: var(--oa-chart-color-track); } .oac-s-track { stroke: var(--oa-chart-color-track); fill: none; }
 .oac-f-light-fill { fill: var(--oa-chart-color-light-fill); }
