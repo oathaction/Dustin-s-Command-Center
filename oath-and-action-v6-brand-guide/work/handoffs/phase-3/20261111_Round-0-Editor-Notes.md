@@ -273,3 +273,38 @@ Counts: 46 faults. Chapter 13 (editor): 17. Kit specs S01 to S16 (Explainer make
 - The specs may change after this read: the Explainer maker was still working on items X12 to X18, so a later spec string needs its own read.
 - The proof sheet's chart labels beyond those two checks, and the kit's form names, which no reader sees as far as I found.
 - None of these faults is fixed yet; DR-191's second pass takes them.
+
+## Second pass
+
+DR-191's second pass, November 12, 2026: my 17 chapter 13 items and the three kit words I own, from the "Fix pass read" above.
+
+### Fixed
+
+- **C1 to C17**, all in `work/build/scripts/phase-3/phase3_ch13_build.py`, with the fixes the read gives. The generator's checks now also stop it if LE02's record loses its 75.7 percent obligated figure (C4). Each poverty chart's note names only the breaks inside its own window, read from the data (C17: 2017 and 2019 on the failure's chart). Rule 13.4's line code rows say "with flat ends" (C6), and S13's and S14's definition of seasonally adjusted now stands in 13.6 (C10).
+- **K2 to K4** in `work/build/chart-kit/words.json`: "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below."; "On a computer without both fonts, the labels fall back to another font and change width."; and "The table and notes" for the disclosure. The kit carries a copy of these words in `kit.js` (`K.WORDS`), and its self-test fails when the two differ. I changed only those three strings in that copy, an edit to the engineer's file, so the kit stays in step.
+
+### Routine calls
+
+D3-xxx | The disclosure under every kit chart reads "The table and notes" | It names what opens, so it holds open or closed, and the kit opens it when no drawing loads
+D3-xxx | Chapter 13's sources end "The association behind Rule 13.1." and "The estimate behind Rule 13.1.", as the quotation's line already did | One pattern, and no clause that reads as the agency's
+
+### Spec strings changed after the read
+
+`git diff 6bf4cc6f 339d8bf9 -- work/build/chart-kit/specs/` changes two reader strings: S11's reading aid head now reads "How to read an arrow" in sentence case, and S13 drops its federal peak label, "Peak: {value} in {x}", whose fact stays in its chart note. No new fault. Later commits (150633b3 and on) apply E1 to E13 but E8; this pass did not read them.
+
+### For the V7.1 list (data lead)
+
+The atlas glossary defines the Supplemental Poverty Measure as one "that counts taxes, tax credits and benefits", which reads as if taxes add to income. Chapter 13 now says what the Bureau does: it adds tax credits and benefits and subtracts taxes and costs.
+
+### Tested
+
+- The generator: exit 0, every check passing. The strict build gives exit 0 and 0 warnings, with chapter 13 at 248,530 bytes of 250,000; the 1,470 bytes left are thin.
+- The kit's own command on my five specs: `check` PASS, 0 faults each. `oa-chart.mjs self-test` passes, including "the words carried in kit.js equal words.json".
+- Playwright at 1440 and 390 px on the seven plates whose words changed (13.1, 13.2, 13.4, 13.6 and 13.7 correct, 13.7 failure, 13.13 correct), each captured whole from a full-page shot and looked at: the new note, source lines and disclosure words fit and wrap cleanly. The changes in rule text, specs and alts sit outside the plates, and the strict build checks them.
+- `ch13check.js` at both widths: 0 axe violations, 0 sizes off the list, 0 contrast faults, no sideways scroll.
+
+### Not tested
+
+- The kit words on a page with scripts off, which shows the new scripts-off line; I read it in the code only.
+- An export of an SVG to see the new fonts line in its description.
+- The full `guide_check.js` run, as before.
