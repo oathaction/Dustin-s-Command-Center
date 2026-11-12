@@ -638,7 +638,7 @@
   K.words = K.words || {};
   // words.json's words, carried inside the kit so a plain page opened from disk prints them too (access S8); the kit's
   // self-test fails when this copy and words.json differ
-  K.WORDS = {"source_label": "Source:", "table_summary": "The table and notes", "notes_in_chart": "Notes in the chart", "table_region": "{caption}, table", "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.", "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.", "scripts_off": "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below.", "export_fonts": "Set in Inter and Inter Tight. On a computer without both fonts, the labels fall back to another font and change width.", "lookup_clear_search": "Clear the search", "lookup_filters": "Filters, {n} on", "lookup_clear_filters": "Clear filters", "lookup_count": "{n} of {total} {noun}"};
+  K.WORDS = {"source_label": "Source:", "table_summary": "The table and notes", "notes_in_chart": "Notes in the chart", "table_region": "{caption}, table", "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.", "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.", "scripts_off": "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below.", "export_fonts": "Set in Inter and Inter Tight. On a computer without both fonts, the labels fall back to another font and change width.", "lookup_clear_search": "Clear the search", "lookup_filters": "Filters, {n} on", "lookup_clear_filters": "Clear filters", "lookup_count": "{n} of {total} {noun}", "phone_view": "On a phone, {w} px"};
   function word(opts, k) {
     var w = (opts && opts.words) || K.words;
     if (k in w) return w[k];
@@ -1026,6 +1026,7 @@
     }
     return K.type_rows(out, isl.columns);
   };
+  var PHONE_VIEW_PX = 358;
   K.figure = function (spec, rows, opts) {
     // the whole figure as HTML; opts.svg puts a drawing inside, opts.art_attrs adds attributes to the drawing's box
     opts = opts || {};
@@ -1044,6 +1045,10 @@
     if (has('chart')) {
       var illus = spec.illustrative ? '<p class="oac-illus" data-role="illustrative">' + esc(spec.illustrative) + '</p>' : '';
       p.push('<div class="oac-art" data-oa-art' + (opts.art_attrs || '') + '>' + illus + (opts.svg || '') + '</div>');
+      // D3-487 (BC S3, ED-E10): a form that changes on a phone also shows its phone drawing to a reader at a desk, drawn
+      // from the same rows at a fixed 358 px under the desktop drawing; hidden where the figure is itself phone width
+      if (spec.phone_view && !opts.svg) p.push('<div class="oac-art oac-art-phone" data-oa-art-phone="' + PHONE_VIEW_PX + '"><p class="oac-phone-k">' +
+        esc(word(opts, 'phone_view').replace('{w}', String(PHONE_VIEW_PX))) + '</p></div>');
       // with scripts off a reader sees the description as words and a line saying the drawing needs scripts; once the
       // script runs, the description names the drawing and leaves the reading order, so it is heard once (D3-97)
       if (spec.alt) p.push('<p class="oac-alt" id="' + id + '-alt" data-role="alt">' + K.chips(spec.alt, ids) + '</p>');
@@ -1140,6 +1145,23 @@
     });
     chips.forEach(function (c) { c.addEventListener('click', function () { c.setAttribute('aria-pressed', String(!on(c))); run(); }); });
     if (unfilter) unfilter.addEventListener('click', function () { chips.forEach(function (c) { c.setAttribute('aria-pressed', 'false'); }); run(); toggle.focus(); });
+    // access S7: Escape inside the filter sheet closes it and returns focus to Filters, as chapter 18's filter bar does
+    var sheet = toggle ? fig.ownerDocument.getElementById(toggle.getAttribute('aria-controls')) : null;
+    if (sheet) sheet.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape' || sheet.hidden) return;
+      e.preventDefault(); e.stopPropagation();
+      sheet.hidden = true; toggle.setAttribute('aria-expanded', 'false'); toggle.focus();
+    });
+    // CD AM1, BC S9: where the script runs, the live lookup takes the still list's place: the drawing (the export and the
+    // scripts-off view, Rule 14.13) hides, and the controls with the one table and its one count sit where it stood. Print
+    // shows the still list again, then every row.
+    var art = fig.querySelector('.oac-art[data-oa-art]'), eqd = fig.querySelector('details.oac-eq');
+    if (art && art.parentNode) {
+      art.parentNode.insertBefore(box, art.nextSibling);
+      if (eqd) { box.parentNode.insertBefore(eqd, box.nextSibling); eqd.setAttribute('open', ''); }
+      art.hidden = true;
+      fig.setAttribute('data-oa-live', '');
+    }
     box.hidden = false;
     run();
   };
@@ -1177,6 +1199,13 @@
       if (result.guard.length || result.warnings.length) fig.setAttribute('data-oa-warnings', String(result.guard.length + result.warnings.length));
     }
     draw();
+    // the phone drawing at its fixed width, once (D3-487); the figure's description and table carry its data, so it is
+    // hidden from assistive technology
+    var pv = fig.querySelector('[data-oa-art-phone]');
+    if (pv && !pv.querySelector('svg.oac-svg')) {
+      var pr = K.draw(spec, rows, { width: +pv.getAttribute('data-oa-art-phone') || PHONE_VIEW_PX, ground: ground, t: t, extra: extra, uid: (fig.id || 'oac') + '-phone' });
+      pv.insertAdjacentHTML('beforeend', pr.svg.replace('<svg ', '<svg aria-hidden="true" ').replace(/<title>[\s\S]*?<\/title>|<desc>[\s\S]*?<\/desc>/g, ''));
+    }
     if (root.ResizeObserver) new root.ResizeObserver(function () { draw(); }).observe(art);
     K.frame(fig);
     return { redraw: function () { last = -1; draw(); }, result: function () { return result; } };
@@ -1268,6 +1297,10 @@
     if (root.addEventListener) {
       root.addEventListener('beforeprint', function () {
         K.draw_all();
+        // access S4: a drawing taller than a printed page (9 in, 864 px) may break under its title
+        Array.prototype.forEach.call(root.document.querySelectorAll('figure.oac-fig .oac-art'), function (a) {
+          if (a.getBoundingClientRect().height > 864) a.setAttribute('data-oa-tall', ''); else a.removeAttribute('data-oa-tall');
+        });
         opened = Array.prototype.slice.call(root.document.querySelectorAll('figure.oac-fig details.oac-eq:not([open])'));
         opened.forEach(function (d) { d.setAttribute('open', ''); });
       });

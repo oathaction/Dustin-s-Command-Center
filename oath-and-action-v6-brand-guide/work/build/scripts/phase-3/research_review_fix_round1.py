@@ -409,7 +409,106 @@ def item_bc_m3(dl):
     save(FEC_IE, meta, nl)
 
 
-ITEMS = {'s24': item_s24, 's34': item_s34, 's31': item_s31, 's27': item_s27, 'bc_m3': item_bc_m3}
+# ---------------------------------------------------------------------------------------------------------------
+# bc_s20: BC S20, with ST S3 for S25. OPM's January 2025 status file (version 4, published October 3, 2026, the same
+# round as January 2022's), summed by department code from the record-level count field, as the frozen columns were.
+# The sums of the January 2022 and August 2026 files must reproduce the frozen columns in all 130 rows, or nothing is
+# written. --dl holds employment_202201_4.parquet, employment_202501_4.parquet and employment_202608_1.parquet; reading
+# them needs pyarrow, so this item runs under a Python that has it (the research lead's scratch environment).
+# ---------------------------------------------------------------------------------------------------------------
+OPM = 'opm-federal-employment-by-agency'
+OPM_FILES = {'2022_01': 'employment_202201_4', '2025_01': 'employment_202501_4', '2026_08': 'employment_202608_1'}
+
+
+def opm_sums(path):
+    import collections
+    import pyarrow.parquet as pq
+    t = pq.read_table(path, columns=['department_code', 'count'])
+    sums = collections.Counter()
+    for c, k in zip(t.column('department_code').to_pylist(), t.column('count').to_pylist()):
+        sums[c] += int(k)
+    return sums
+
+
+def opm_line(files, retrieved, days):
+    return (f'Source: U.S. Office of Personnel Management, Federal Workforce Data, employment status files, {files}, federal civilian '
+            f'workforce. Retrieved {retrieved}. People on the rolls on {days}; some agencies, including intelligence agencies and the '
+            'Postal Service, are not in the files.')
+
+
+def item_bc_s20(dl):
+    if dl is None:
+        raise SystemExit('bc_s20 needs --dl <folder with the three parquet files>')
+    sums = {k: opm_sums(dl / f'{v}.parquet') for k, v in OPM_FILES.items()}
+    shas = {f'{v}.parquet': sha_prefix(dl / f'{v}.parquet') for v in OPM_FILES.values()}
+    p = DATA / f'{OPM}.csv'
+    raw = p.read_text(encoding='utf-8')
+    rows = list(csv.DictReader(io.StringIO(raw)))
+    meta, nl = load(OPM)
+    for name, prefix in meta['raw_files_sha256_prefix'].items():
+        if shas.get(name) != prefix:
+            raise SystemExit(f'{name} is not the frozen file; nothing written')
+    for r in rows:
+        for when, col in (('2022_01', 'employees_2022_01'), ('2026_08', 'employees_2026_08')):
+            got = sum(sums[when].values()) if r['department_code'] == 'ALL' else sums[when].get(r['department_code'], 0)
+            if got != int(r[col]):
+                raise SystemExit(f'{r["department_code"]} {col}: {got} against {r[col]}; nothing written')
+    known = {r['department_code'] for r in rows}
+    unrowed = {k: v for k, v in sums['2025_01'].items() if k not in known}
+    for r in rows:
+        a = sum(sums['2025_01'].values()) if r['department_code'] == 'ALL' else sums['2025_01'].get(r['department_code'], 0)
+        r['employees_2025_01'] = str(a)
+        r['change_2022_01_to_2025_01'] = str(a - int(r['employees_2022_01']))
+        r['change_2025_01_to_2026_08'] = str(int(r['employees_2026_08']) - a)
+    old = [h for h in rows[0].keys() if h not in ('employees_2025_01', 'change_2022_01_to_2025_01', 'change_2025_01_to_2026_08')]
+    i = old.index('employees_2022_01') + 1
+    head = old[:i] + ['employees_2025_01'] + old[i:] + ['change_2022_01_to_2025_01', 'change_2025_01_to_2026_08']
+    out = io.StringIO()
+    w = csv.DictWriter(out, fieldnames=head, lineterminator='\n')
+    w.writeheader()
+    w.writerows(rows)
+    if out.getvalue() != raw:
+        p.write_text(out.getvalue(), encoding='utf-8')
+        print(f'wrote {p.relative_to(ROOT)}')
+    all_row = next(r for r in rows if r['department_code'] == 'ALL')
+    print('all agencies:', all_row['employees_2022_01'], all_row['employees_2025_01'], all_row['employees_2026_08'], 'unrowed', unrowed)
+    cols = {}
+    for k, v in meta['columns'].items():
+        if k in ('employees_2025_01', 'change_2022_01_to_2025_01', 'change_2025_01_to_2026_08'):
+            continue
+        cols[k] = v
+        if k == 'employees_2022_01':
+            cols['employees_2025_01'] = {'type': 'integer', 'description': 'employees, January 31, 2025', 'unit': 'people'}
+    cols['change_2022_01_to_2025_01'] = {'type': 'integer', 'description': 'change from January 31, 2022 to January 31, 2025, computed', 'unit': 'people'}
+    cols['change_2025_01_to_2026_08'] = {'type': 'integer', 'description': 'change from January 31, 2025 to August 31, 2026, computed', 'unit': 'people'}
+    meta['columns'] = cols
+    meta['title_or_table'] = ('Federal Workforce Data, Federal Employment Raw Data (EHRI status files), January 2022 (version 4), January 2025 '
+                              '(version 4) and August 2026 (version 1), employees counted by department or independent agency')
+    meta['table_id'] = 'data.opm.gov employment files employment_202201_4, employment_202501_4 and employment_202608_1'
+    meta['url'] = ['https://data.opm.gov/api/v1/files/employment/2022/01/4/download', 'https://data.opm.gov/api/v1/files/employment/2025/01/4/download',
+                   'https://data.opm.gov/api/v1/files/employment/2026/08/1/download', 'https://data.opm.gov/get-data/data-downloads']
+    meta['vintage'] = ('January 2022 version 4 (published October 3, 2026), January 2025 version 4 (published October 3, 2026) and August 2026 '
+                       'version 1 (published October 4, 2026), each the current version when read; OPM may publish later versions')
+    meta['raw_files_sha256_prefix'] = shas
+    meta['printed_source_line'] = opm_line('January 2022 (version 4, October 3, 2026) and August 2026 (version 1, October 4, 2026)',
+                                           'November 11, 2026', 'one day')
+    meta.setdefault('source_line_variants', {})['with_january_2025'] = opm_line(
+        'January 2022 and January 2025 (version 4 of each, October 3, 2026) and August 2026 (version 1, October 4, 2026)',
+        'November 11 and 12, 2026', 'the last day of each month')
+    named = ', '.join(f'{k} ({v} employees)' for k, v in sorted(unrowed.items()))
+    set_note(meta, 'January 2025 column (brand review S20)',
+             'January 2025 column (brand review S20), added November 12, 2026 from employment_202501_4, version 4, published October 3, 2026 '
+             '(OPM’s file list at https://data.opm.gov/api/v1/files/employment marks it current), summed by department code from the count '
+             f'field, the method that reproduces the January 2022 and August 2026 columns in all 130 rows. All agencies: {int(all_row["employees_2022_01"]):,} '
+             f'on January 31, 2022, {int(all_row["employees_2025_01"]):,} on January 31, 2025 and {int(all_row["employees_2026_08"]):,} on August 31, 2026. '
+             f'The January 2025 total includes {sum(unrowed.values())} people under codes with no row here: {named}; '
+             'OP is the Office of Pandemic Preparedness and Response Policy, as the file names it, and "No Data Reported" is OPM’s own code. January 31, 2025 is the file’s day, eleven days after the inauguration of January 20, 2025, '
+             'so changes made in those eleven days fall in the first span. OPM also publishes December 2024 (version 4, October 3, 2026), '
+             'not read here.')
+    save(OPM, meta, nl)
+
+
+ITEMS = {'s24': item_s24, 's34': item_s34, 's31': item_s31, 's27': item_s27, 'bc_m3': item_bc_m3, 'bc_s20': item_bc_s20}
 
 
 def main(argv):

@@ -2,10 +2,11 @@
  "file": "opm-federal-employment-by-agency.csv",
  "kind": "public",
  "publisher": "U.S. Office of Personnel Management",
- "title_or_table": "Federal Workforce Data, Federal Employment Raw Data (EHRI status files), January 2022 (version 4) and August 2026 (version 1), employees counted by department or independent agency",
- "table_id": "data.opm.gov employment files employment_202201_4 and employment_202608_1",
+ "title_or_table": "Federal Workforce Data, Federal Employment Raw Data (EHRI status files), January 2022 (version 4), January 2025 (version 4) and August 2026 (version 1), employees counted by department or independent agency",
+ "table_id": "data.opm.gov employment files employment_202201_4, employment_202501_4 and employment_202608_1",
  "url": [
   "https://data.opm.gov/api/v1/files/employment/2022/01/4/download",
+  "https://data.opm.gov/api/v1/files/employment/2025/01/4/download",
   "https://data.opm.gov/api/v1/files/employment/2026/08/1/download",
   "https://data.opm.gov/get-data/data-downloads"
  ],
@@ -14,7 +15,7 @@
  "universe_or_base": "Federal civilian employees in the files, in pay or non-pay status, by department or independent agency; the files leave out intelligence agencies and some others that do not report to OPM, and the U.S. Postal Service",
  "unit": "employees, summed by the studio from the record-level count field",
  "date_retrieved": "2026-11-11",
- "vintage": "January 2022 version 4 (published October 3, 2026) and August 2026 version 1 (published October 4, 2026)",
+ "vintage": "January 2022 version 4 (published October 3, 2026), January 2025 version 4 (published October 3, 2026) and August 2026 version 1 (published October 4, 2026), each the current version when read; OPM may publish later versions",
  "qualification": "Counts people on the rolls on one day, full-time and part-time alike. The window matches the jobs charts S13 and S14 and holds no split at an inauguration (H09); it ends in August because OPM's site warned on November 11, 2026 that a change in Department of War data processing left September 2026 data incomplete for some components. OPM may revise August 2026 in later versions. Department names are as the August 2026 file gives them",
  "columns": {
   "department_code": {
@@ -32,6 +33,11 @@
   "employees_2022_01": {
    "type": "integer",
    "description": "employees, January 31, 2022",
+   "unit": "people"
+  },
+  "employees_2025_01": {
+   "type": "integer",
+   "description": "employees, January 31, 2025",
    "unit": "people"
   },
   "employees_2026_08": {
@@ -52,22 +58,37 @@
   "size_1000_plus": {
    "type": "boolean",
    "description": "true when the agency had 1,000 or more employees on either date; the chart draws these and the table holds every row"
+  },
+  "change_2022_01_to_2025_01": {
+   "type": "integer",
+   "description": "change from January 31, 2022 to January 31, 2025, computed",
+   "unit": "people"
+  },
+  "change_2025_01_to_2026_08": {
+   "type": "integer",
+   "description": "change from January 31, 2025 to August 31, 2026, computed",
+   "unit": "people"
   }
  },
  "notes": [
   "Size rule (fix pass, statistics S14): the chart draws absolute change for the 37 agencies with 1,000 or more employees on either date, which held 99.4 percent of employees in January 2022; the other 92 sit in the table, where a small body can show a large percent change (one went from 7 employees to 0)",
-  "Note for the chart: each bar nets every hire and departure between January 31, 2022 and August 31, 2026, so it hides any rise and fall inside the window"
+  "Note for the chart: each bar nets every hire and departure between January 31, 2022 and August 31, 2026, so it hides any rise and fall inside the window",
+  "January 2025 column (brand review S20), added November 12, 2026 from employment_202501_4, version 4, published October 3, 2026 (OPM’s file list at https://data.opm.gov/api/v1/files/employment marks it current), summed by department code from the count field, the method that reproduces the January 2022 and August 2026 columns in all 130 rows. All agencies: 2,155,201 on January 31, 2022, 2,304,585 on January 31, 2025 and 2,024,832 on August 31, 2026. The January 2025 total includes 419 people under codes with no row here: No Data Reported (416 employees), OP (3 employees); OP is the Office of Pandemic Preparedness and Response Policy, as the file names it, and \"No Data Reported\" is OPM’s own code. January 31, 2025 is the file’s day, eleven days after the inauguration of January 20, 2025, so changes made in those eleven days fall in the first span. OPM also publishes December 2024 (version 4, October 3, 2026), not read here."
  ],
- "printed_source_line": "Source: U.S. Office of Personnel Management, Federal Workforce Data, employment status files, January 2022 and August 2026, federal civilian workforce. Retrieved November 11, 2026. People on the rolls on one day; some agencies, including intelligence agencies and the Postal Service, are not in the files.",
+ "printed_source_line": "Source: U.S. Office of Personnel Management, Federal Workforce Data, employment status files, January 2022 (version 4, October 3, 2026) and August 2026 (version 1, October 4, 2026), federal civilian workforce. Retrieved November 11, 2026. People on the rolls on one day; some agencies, including intelligence agencies and the Postal Service, are not in the files.",
  "ledger_row": "P7-007",
  "domain": "D04",
  "states": [],
  "raw_files_sha256_prefix": {
   "employment_202201_4.parquet": "5980689199670193",
+  "employment_202501_4.parquet": "c384f986d853cbec",
   "employment_202608_1.parquet": "b3518369a77bb86c"
  },
  "unconfirmed": [
   "The list of agencies outside the files is from OPM's general documentation and was not checked against the release notes",
   "Monthly files from February 2022 to July 2026 were not read; the chart draws two points"
- ]
+ ],
+ "source_line_variants": {
+  "with_january_2025": "Source: U.S. Office of Personnel Management, Federal Workforce Data, employment status files, January 2022 and January 2025 (version 4 of each, October 3, 2026) and August 2026 (version 1, October 4, 2026), federal civilian workforce. Retrieved November 11 and 12, 2026. People on the rolls on the last day of each month; some agencies, including intelligence agencies and the Postal Service, are not in the files."
+ }
 }

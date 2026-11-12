@@ -170,7 +170,7 @@ CSS = {
           ".g5{stroke:var(--oa-chart-color-sequential-fill-step3)}.kl{stroke-width:3}",
     "bd": ".bd{fill:var(--oa-chart-color-band)}",
     "rd": (".hb i.rd,.ky i.rd{background:var(--oa-color-palette-pillar-red)}.hb i.bl,.ky i.bl{background:var(--oa-color-palette-prussian)}"
-           ".ky i{display:inline-block;width:14px;height:14px}"),
+           ".ky i{display:inline-block;width:14px;height:14px}.hb+.ky{margin:16px 0 0}"),
     "pal": (f".pal{{display:grid;gap:14px}}.pal .row{{display:grid;grid-template-columns:minmax(0,1fr);gap:6px;padding-bottom:12px;border-bottom:1px solid var(--oa-color-border-hairline)}}"
             f"@media (min-width:48em){{.pal .row{{grid-template-columns:12rem minmax(0,15rem) minmax(0,1fr);gap:16px;align-items:center}}}}"
             f".pal .nm{{font-weight:var(--oa-font-weight-bold)}}.pal .sw{{display:flex;gap:3px}}.pal .sw i{{flex:1 1 0;height:28px;min-width:20px}}"
@@ -278,33 +278,43 @@ def chart(cid):
 
 
 # ---------------------------------------------------------------------------------------------------------------
-# Static drawings, written by this script from the data: lines in an SVG drawn at a phone's width (so no word falls
-# under 13 px at 390 px), bars and dots in HTML so their words keep their size at any width.
+# Static drawings, written by this script from the data. A plot draws at its partner's width at every width (CD RM2):
+# its marks sit in a 1000 by 1000 viewBox stretched to the plot's box, strokes keep their weight, and every word is HTML
+# placed in percent, so no word ever scales. Bars and dots are HTML too.
 # ---------------------------------------------------------------------------------------------------------------
-def scale(d0, d1, r0, r1):
-    return lambda v: r0 + (v - d0) * (r1 - r0) / (d1 - d0)
+def pct(v, lo, hi):
+    return 100 * (v - lo) / (hi - lo)
 
 
-def path(pts):
-    return "M" + "L".join(f"{x:.0f} {y:.0f}" for x, y in pts)
+def vpath(pts):
+    """A path through points given in percent of the plot (x from the left, y from the top)."""
+    return "M" + "L".join(f"{10 * x:.0f} {10 * y:.0f}" for x, y in pts)
 
 
-def svg(w, h, inner, cls="sv"):
-    return (f'<svg class="{cls}" viewBox="0 0 {w} {h}" width="{w}" height="{h}" aria-hidden="true" focusable="false">'
-            f"{inner}</svg>")
+def grid(ticks, lo, hi, fmt):
+    """Gridlines in the plot and their figures in the axis column, from lo at the plot's foot to hi at its top."""
+    lines = "".join(f'<line class="gl" x1="0" x2="1000" y1="{1000 - 10 * pct(t, lo, hi):.0f}" y2="{1000 - 10 * pct(t, lo, hi):.0f}"/>' for t in ticks)
+    return lines, [(fmt(t), 100 - pct(t, lo, hi)) for t in ticks]
 
 
-def axis_y(ys, ticks, x0, x1, fmt):
-    out = []
-    for t in ticks:
-        y = ys(t)
-        out.append(f'<line class="gl" x1="{x0}" x2="{x1}" y1="{y:.1f}" y2="{y:.1f}"/>'
-                   f'<text class="tk" x="{x0 - 5}" y="{y + 4:.1f}" text-anchor="end">{e(fmt(t))}</text>')
-    return "".join(out)
+def fluid(marks, yt=(), xt=(), over="", yw=48, key=""):
+    """The drawing: an axis column of yw px, the plot, the x figures under it and any key. xt holds (words, x in percent,
+    "w" for wide artboards only, "n" for phone only, "" for both); a figure at either end of the axis aligns inward."""
+    ys = "".join(f'<span class="tk" style="top:{t:.1f}%">{e(w)}</span>' for w, t in yt)
+    xs = "".join(f'<span class="tk{" s" if x < 4 else " e" if x > 96 else ""}{" " + v if v else ""}" style="left:{x:.1f}%">{e(w)}</span>'
+                 for w, x, v in xt)
+    return (f'<div class="art cq"><div class="fl" style="--yw:{yw}px"><div class="fy">{ys}</div><div class="fp">'
+            f'<svg viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true" focusable="false">{marks}</svg>{over}</div>'
+            f'<div class="fx">{xs}</div></div>{key}</div>')
 
 
-def axis_x(xs, ticks, y, fmt):
-    return "".join(f'<text class="tk" x="{xs(t):.1f}" y="{y}" text-anchor="middle">{e(fmt(t))}</text>' for t in ticks)
+def lkey(items):
+    """A key of short lines in the plot's inks, under the drawing: items are (classes, name)."""
+    return '<p class="ky">' + "".join(f'<span><svg width="22" height="6" aria-hidden="true"><line class="{c}" x1="0" x2="22" y1="3" y2="3"/>'
+                                      f'</svg>{e(n)}</span>' for c, n in items) + "</p>"
+
+
+BASE_LINE = '<line class="ax" x1="0" x2="1000" y1="1000" y2="1000"/>'
 
 
 def hbars(data, vmax, fmt, subject=(), point=(), red=()):
@@ -578,18 +588,16 @@ def rule_14_3(B):
            domain="D10", states=[], notes_internal="Rule 14.3's correct plate. Checked by script: 18 to 24 more than 10 points below every other "
                                                    "group in each year (gaps 11.2 to 16.1).")
     # the failure: the same four lines in the four group inks, with a key under the chart and no names on the lines
-    W, H, L, R, T, Bt = 256, 236, 36, 246, 14, 170
-    xs = scale(2004, 2024, L, R)
-    ys = scale(40, 80, Bt, T)
-    lines = "".join(f'<path class="ln g{i + 1} kl" d="{path([(xs(y), ys(v[a][y])) for y in years])}"/>' for i, (a, _) in enumerate(AGES))
-    key = "".join(f'<line class="g{i + 1} kl" x1="{L + (i % 2) * 110}" x2="{L + (i % 2) * 110 + 22}" y1="{204 + (i // 2) * 22}" '
-                  f'y2="{204 + (i // 2) * 22}"/><text x="{L + (i % 2) * 110 + 30}" y="{209 + (i // 2) * 22}">{e(n)}</text>'
-                  for i, (_, n) in enumerate(AGES))
-    inner = (axis_y(ys, [40, 60, 80], L, R, lambda t: f"{t}%") + axis_x(xs, [2004, 2014, 2024], Bt + 18, str) + lines + key)
+    lo, hi = 30, 80   # the correct plate's scale, so the pair reads as one chart drawn two ways
+    gl, yt = grid([30, 40, 50, 60, 70, 80], lo, hi, lambda t: f"{t}%")
+    xp = lambda y: pct(y, 2004, 2024)
+    lines = "".join(f'<path class="ln g{i + 1}" d="{vpath([(xp(y), 100 - pct(v[a][y], lo, hi)) for y in years])}"/>'
+                    for i, (a, _) in enumerate(AGES))
+    xt = [(str(y), xp(y), "" if y in (2004, 2024) else "w") for y in years] + [("2014", xp(2014), "n")]
     B.add("s-14-3-correct", chart("s-14-3-lines"),
           alt=f"Four lines of reported voting by age, each named beside it. {title}.")
     B.add("s-14-3-failure", dnp() + tl(title)
-          + f'<div class="art">{svg(W, H, inner, "sv g1")}</div>',
+          + fluid(gl + lines, yt, xt, key=lkey([(f"g{i + 1} kl", n) for i, (_, n) in enumerate(AGES)])),
           alt=FC + "The same four lines in four inks with no names on them, and a key under the chart that the reader must match.")
     return entry(
         "14.3", "Label the data directly, and use a key only when labels cannot fit.",
@@ -644,20 +652,18 @@ def rule_14_4(B):
            encode={"x": "year", "y": "voted_pct"}, formats={"value": "percent:0"},
            domain="D10", states=[], notes_internal=f"Rule 14.4's correct plate. Checked by script: lowest {lo} ({y_lo}), highest {hi} ({y_hi}).")
     # the failure: the same columns on an axis cut at 55, drawn here so the cut is the plate's own (the kit draws every bar from zero)
-    cut = 55
-    need(lo > cut + 2, "the cut axis no longer sits under every value")
+    cut, top = 55, 70
+    need(cut + 2 < lo and hi < top, "the cut axis no longer holds every value")
     ratio = (hi - cut) / (lo - cut)
-    W, H, L, R, T, Bt = 256, 210, 38, 250, 18, 178
+    # every column in the subject ink, as the correct plate draws them, so the cut axis is the plate's one fault
+    gl, yt = grid([55, 60, 65, 70], cut, top, lambda t: f"{t}%")
     n = len(years)
-    step = (R - L) / n
-    ys = scale(cut, 70, Bt, T)
-    bars = "".join(f'<rect class="{"fs" if y == y_hi else "fc"}" x="{L + i * step + 3:.1f}" y="{ys(pres[y]):.1f}" width="{step - 6:.1f}" '
-                   f'height="{Bt - ys(pres[y]):.1f}"/>' for i, y in enumerate(years))
-    lab = "".join(f'<text class="tk" x="{L + i * step + step / 2:.1f}" y="{Bt + 16}" text-anchor="middle">{"’" + str(y)[2:]}</text>'
-                  for i, y in enumerate(years) if i % 2 == 0 or y == years[-1])
-    inner = axis_y(ys, [55, 60, 65, 70], L, R, lambda t: f"{t}%") + bars + lab + f'<line class="ax" x1="{L}" x2="{R}" y1="{Bt}" y2="{Bt}"/>'
+    stp = 1000 / n
+    bars = "".join(f'<rect class="fs" x="{i * stp + stp * 0.15:.0f}" y="{1000 - 10 * pct(pres[y], cut, top):.0f}" width="{stp * 0.7:.0f}" '
+                   f'height="{10 * pct(pres[y], cut, top):.0f}"/>' for i, y in enumerate(years))
+    xt = [("’" + str(y)[2:], (i + 0.5) * 100 / n, "" if i % 2 == 0 else "w") for i, y in enumerate(years)]
     B.add("s-14-4-correct", chart("s-14-4-cols"), alt=f"Columns from a zero line. {title}.")
-    B.add("s-14-4-failure", dnp() + tl(title) + f'<div class="art">{svg(W, H, inner)}</div>',
+    B.add("s-14-4-failure", dnp() + tl(title) + fluid(gl + bars + BASE_LINE, yt, xt),
           alt=FC + f"The same columns on an axis that starts at {cut} percent, so {y_hi}’s column stands {ratio:.1f} times as tall as {y_lo}’s.")
     return entry(
         "14.4", "Start bars and columns at zero, keep one scale per axis, and size circles by area.",
@@ -813,19 +819,13 @@ def rule_14_7(B):
                               {"field": "seats", "label": "Seats", "format": "integer"}]},
            encode={"category": "party", "value": "seats"}, domain="D02", states=[],
            notes_internal="Rule 14.7's correct plate: every party in the subject ink, named on its bar (Rule 01.2).")
-    # the failure: red and blue, the names moved to a key
-    W, H = 256, 150
-    xs = scale(0, 230, 40, 220)
-    inner = (f'<rect class="rd" data-red="failure" x="40" y="14" width="{xs(218) - 40:.1f}" height="26"/>'
-             f'<rect class="bl" x="40" y="50" width="{xs(214) - 40:.1f}" height="26"/>'
-             f'<text x="34" y="32" text-anchor="end">R</text><text x="34" y="68" text-anchor="end">D</text>'
-             f'<text x="{xs(218) + 6:.1f}" y="32">218</text><text x="{xs(214) + 6:.1f}" y="68">214</text>'
-             f'<rect class="rd" data-red="failure" x="40" y="104" width="14" height="14"/><text x="60" y="116">R</text>'
-             f'<rect class="bl" x="100" y="104" width="14" height="14"/><text x="120" y="116">D</text>'
-             f'<line class="ax" x1="40" x2="40" y1="8" y2="84"/>')
+    # the failure: red and blue, the names moved to a key; HTML bars, so the drawing takes its partner's width
+    bars = "".join(f'<li><span>{p_}</span><i class="{c}"{rd} style="width:{100 * d[k] / 230:.1f}%"></i><b>{d[k]}</b></li>'
+                   for p_, k, c, rd in (("R", "Republicans", "rd", ' data-red="failure"'), ("D", "Democrats", "bl", "")))
+    key = '<p class="ky"><span><i class="rd" data-red="failure"></i>R</span><span><i class="bl"></i>D</span></p>'
     B.add("s-14-7-correct", chart("s-14-7-seats"), alt=f"Bars in one ink with each party named on its bar. {title}.")
     B.add("s-14-7-failure", dnp() + tl(title)
-          + f'<div class="art">{svg(W, H, inner, "sv rb")}</div>',
+          + f'<div class="art"><ul class="hb yr">{bars}</ul>{key}</div>',
           alt=FC + "Two bars, a red one marked R at 218 and a blue one marked D at 214, with a key of a red square for R and a blue square for D.")
     return entry(
         "14.7", "Tell parties apart by name, place and shape, with no red and blue.",
@@ -895,17 +895,14 @@ def rule_14_8(B):
            labels={"panels": [{"value": a, "label": OWN_NAMES[a]} for a in OWN_AGES], "columns": 5},
            domain="D09", states=[], notes_internal="Rule 14.8's correct plate. Checked by script: under 35 lowest by more than 15 points every year.")
     # the failure: five lines in five inks with a key, one ink borrowed from the sequential scale
-    W, H, L, R, T, Bt = 256, 272, 36, 246, 14, 170
-    xs = scale(y0, y1, L, R)
-    ys = scale(20, 90, Bt, T)
-    lines = "".join(f'<path class="ln g{i + 1}" d="{path([(xs(y), ys(o[a][y])) for y in years])}"/>' for i, a in enumerate(OWN_AGES))
-    key = "".join(f'<line class="g{i + 1} kl" x1="{L + (i % 2) * 110}" x2="{L + (i % 2) * 110 + 18}" y1="{204 + (i // 2) * 22}" '
-                  f'y2="{204 + (i // 2) * 22}"/><text x="{L + (i % 2) * 110 + 24}" y="{209 + (i // 2) * 22}">{e(OWN_NAMES[a])}</text>'
-                  for i, a in enumerate(OWN_AGES))
-    inner = axis_y(ys, [20, 50, 80], L, R, lambda t: f"{t}%") + axis_x(xs, [y0, y1], Bt + 18, str) + lines + key
+    lo, hi = 20, 90
+    gl, yt = grid([20, 40, 60, 80], lo, hi, lambda t: f"{t}%")
+    xp = lambda y: pct(y, y0, y1)
+    lines = "".join(f'<path class="ln g{i + 1}" d="{vpath([(xp(y), 100 - pct(o[a][y], lo, hi)) for y in years])}"/>' for i, a in enumerate(OWN_AGES))
+    xt = [(str(y), xp(y), "" if y in (y0, 2010, y1) else "w") for y in years]
     B.add("s-14-8-correct", chart("s-14-8-panels"), alt=f"Five small panels, one age group in ink in each over the rest in gray. {title}.")
     B.add("s-14-8-failure", dnp() + tl(title)
-          + f'<div class="art">{svg(W, H, inner, "sv g1")}</div>',
+          + fluid(gl + lines, yt, xt, key=lkey([(f"g{i + 1} kl", OWN_NAMES[a]) for i, a in enumerate(OWN_AGES)])),
           alt=FC + "The same five age groups as five lines in five inks on one plot, the fifth ink borrowed from a scale, with a key of five "
                    "short lines under the chart.")
     return entry(
@@ -1035,21 +1032,23 @@ def rule_14_10(B):
                               {"field": "establishments", "label": "Establishments", "format": "integer"}]},
            encode={"x": "year", "y": "establishments"}, domain="D01", states=[],
            notes_internal="Rule 14.10's correct plate: the window's reason in the measure line, one unbroken line.")
-    # the failure: bands at each inauguration, named for each president
-    W, H, L, R, T, Bt = 256, 210, 50, 246, 30, 178
-    xs = scale(1998, 2023, L, R)
-    ys = scale(0, 10000, Bt, T)
-    bands = "".join(f'<rect class="bd" x="{xs(a):.1f}" y="{T - 18}" width="{xs(b) - xs(a):.1f}" height="{Bt - T + 18}"/>'
-                    for i, ((a, _), b) in enumerate(zip(TERMS, [t for t, _ in TERMS[1:]] + [2023])) if i % 2 == 0)
-    names = "".join(f'<text class="tk" x="{xs(a) + 3:.1f}" y="{T - 6 - 13 * (i % 2)}">{e(nm)}</text>' for i, (a, nm) in enumerate(TERMS))
+    # the failure: bands at each inauguration, named for each president, the line cut at each one
+    lo, hi = 0, 10000
+    gl, yt = grid([0, 5000, 10000], lo, hi, comma)
+    xp = lambda y: pct(y, 1998, 2023)
+    starts = [t for t, _ in TERMS]
+    bands = "".join(f'<rect class="bd" x="{10 * xp(a):.0f}" y="0" width="{10 * (xp(b) - xp(a)):.0f}" height="1000"/>'
+                    for i, (a, b) in enumerate(zip(starts, starts[1:] + [2023])) if i % 2 == 0)
+    # each name at its band's start, on two alternating rows; one too near the right edge to fit sets its end there
+    names = "".join(f'<span class="lb{" e" if xp(a) > 85 else ""}" style="left:{"100%" if xp(a) > 85 else f"calc({xp(a):.1f}% + 4px)"};'
+                    f'top:{4 + 20 * (i % 2)}px">{e(nm)}</span>' for i, (a, nm) in enumerate(TERMS))
     pts = sorted(r.items())
-    line = "".join(f'<path class="ln" d="{path([(xs(y), ys(v)) for y, v in pts if a <= y <= b])}"/>'
-                   for a, b in zip([1998] + [t for t, _ in TERMS], [t for t, _ in TERMS] + [2023]))
-    inner = (bands + axis_y(ys, [0, 5000, 10000], L, R, comma) + axis_x(xs, [1998, 2023], Bt + 18, str) + names + line
-             + f'<line class="ax" x1="{L}" x2="{R}" y1="{Bt}" y2="{Bt}"/>')
+    line = "".join(f'<path class="ln" d="{vpath([(xp(y), 100 - pct(v, lo, hi)) for y, v in pts if a <= y <= b])}"/>'
+                   for a, b in zip([1998] + starts, starts + [2023]))
+    xt = [(str(y), xp(y), "" if y in (1998, 2023) else "w") for y in (1998, 2003, 2008, 2013, 2018, 2023)] + [("2010", xp(2010), "n")]
     B.add("s-14-10-correct", chart("s-14-10-line"), alt=f"An unbroken line with its window’s reason in the measure line. {title}.")
     B.add("s-14-10-failure", dnp() + tl(title)
-          + f'<div class="art">{svg(W, H, inner, "sv band")}</div>',
+          + fluid(bands + gl + line + BASE_LINE, yt, xt, over=names, yw=56),
           alt=FC + "The same line cut into four presidential terms by shaded bands at each inauguration, each band named for a president.")
     return entry(
         "14.10", "Choose the window from the question, and draw an inauguration only as a dated note.",
@@ -1095,32 +1094,29 @@ def rule_14_11(B):
     g = "Documented: a Census Bureau survey"
     measure = ("Median household income in 2025 dollars, adjusted by the chained consumer price index, each year from 2005 to 2025, "
                "the two decades around the survey’s changes in 2013 and 2017, United States")
-    W, H, L, R, T, Bt = 256, 220, 58, 246, 16, 184
-    xs = scale(2005, 2025, L, R)
-    ys = scale(60000, 90000, Bt, T)
-    lines = "".join(f'<path class="ln" d="{path([(xs(y), ys(v)) for y, v in s])}"/>' for s in segs)
-    dots = "".join(f'<circle class="{c}" cx="{xs(y):.1f}" cy="{ys(v):.1f}" r="3.5"/>'
-                   for (y, v), c in [(segs[0][-1], "fo"), (segs[1][0], "fs"), (segs[1][-1], "fo"), (segs[2][0], "fs")])
-    notes_svg = (f'<line class="ld" x1="{xs(2013):.1f}" x2="{xs(2013):.1f}" y1="{ys(71670) - 6:.1f}" y2="{T + 46}"/>'
-                 f'<text x="{xs(2013) - 4:.1f}" y="{T + 30}" text-anchor="end">2013: new</text>'
-                 f'<text x="{xs(2013) - 4:.1f}" y="{T + 44}" text-anchor="end">questions</text>')
-    inner = (axis_y(ys, [60000, 75000, 90000], L, R, lambda t: f"${t // 1000},000") + axis_x(xs, [2005, 2015, 2025], Bt + 18, str)
-             + lines + dots + notes_svg)
+    lo, hi = 60000, 90000
+    gl, yt = grid([60000, 75000, 90000], lo, hi, lambda t: f"${t // 1000},000")
+    xp, yp = (lambda y: pct(y, 2005, 2025)), (lambda v: 100 - pct(v, lo, hi))
+    xt = [(str(y), xp(y), "w" if y in (2010, 2020) else "") for y in (2005, 2010, 2015, 2020, 2025)]
+    lines = "".join(f'<path class="ln" d="{vpath([(xp(y), yp(v)) for y, v in sg])}"/>' for sg in segs)
+    dots = "".join(f'<i class="dt{c}" style="left:{xp(y):.1f}%;top:{yp(v):.1f}%"></i>'
+                   for (y, v), c in [(segs[0][-1], " o"), (segs[1][0], ""), (segs[1][-1], " o"), (segs[2][0], "")])
+    leader = f'<line class="ld" x1="{10 * xp(2013):.0f}" x2="{10 * xp(2013):.0f}" y1="150" y2="{10 * yp(71670) - 40:.0f}"/>'
+    note = f'<span class="lb e" style="left:calc({xp(2013):.1f}% - 6px);top:2%">2013: new<br>questions</span>'
     notes = ["The line breaks where the survey changed: new income questions in 2013 and a new processing system in 2017. Each of those "
              "years prints both estimates, the earlier method’s open and the new one’s filled.",
              f"The 2025 figure carries a margin of error of ±${comma(moe)} at 90 percent confidence."]
     method = {(2013, 0): ", earlier questions", (2013, 1): ", new questions", (2017, 1): ", earlier processing", (2017, 2): ", new processing"}
     tab = table("Median household income, 2025 dollars", ["Year", "Median income"],
                 [(f"{y}{method.get((y, k), '')}", f"${comma(v)}") for k, s in enumerate(segs) for y, v in s])
-    B.add("s-14-11-correct", head("Finding", g, title, measure=measure) + f'<div class="art">{svg(W, H, inner)}</div>'
+    B.add("s-14-11-correct", head("Finding", g, title, measure=measure) + fluid(gl + lines + leader, yt, xt, over=dots + note, yw=64)
           + foot(notes, src(ds)) + tab,
           alt=f"A line of median household income from 2005 to 2025, broken where the survey changed in 2013 and 2017, ending at "
               f"${comma(last[1])}.",
           readable=True, notes="Drawn here from the Census Bureau's table, segments split by its footnotes 6 and 7 (2013) and 5 (2017).")
     allpts = sorted(((int(r["year"]), int(r["median_income"]), seg_key(r)) for r in rs), key=lambda t: (t[0], t[2]))
-    bad = f'<path class="ln" d="{path([(xs(y), ys(v)) for y, v, _ in allpts])}"/>'
-    inner2 = axis_y(ys, [60000, 75000, 90000], L, R, lambda t: f"${t // 1000},000") + axis_x(xs, [2005, 2015, 2025], Bt + 18, str) + bad
-    B.add("s-14-11-failure", dnp() + tl(title) + f'<div class="art">{svg(W, H, inner2)}</div>',
+    bad = f'<path class="ln" d="{vpath([(xp(y), yp(v)) for y, v, _ in allpts])}"/>'
+    B.add("s-14-11-failure", dnp() + tl(title) + fluid(gl + bad, yt, xt, yw=64),
           alt=FC + "The same income line run through both estimates for 2013 and for 2017, so each change in the survey draws as a step.")
     return entry(
         "14.11", "Mark a gap, a break in a series or a preliminary value in the drawing.",
@@ -1228,17 +1224,20 @@ def rule_14_13(B):
                               {"field": "employees", "label": "Employees", "format": "integer"}]},
            encode={"x": "year", "y": "employees"}, labels={"named": [2008, 2013]}, domain="D01", states=[],
            notes_internal="Rule 14.13's correct plate: a still chart with every value printed and its table as live text.")
-    W, H, L, R, T, Bt = 256, 190, 10, 246, 12, 160
-    step = (R - L) / len(NEWS_YEARS)
-    ys = scale(0, 420000, Bt, T)
-    bars = "".join(f'<rect class="{"fs" if y in (2008, 2013) else "fc"}" x="{L + i * step + 6:.1f}" y="{ys(r[y]):.1f}" width="{step - 12:.1f}" '
-                   f'height="{Bt - ys(r[y]):.1f}"/><text class="tk" x="{L + i * step + step / 2:.1f}" y="{Bt + 18}" text-anchor="middle">{y}</text>'
-                   for i, y in enumerate(NEWS_YEARS))
-    inner = bars + f'<line class="ax" x1="{L}" x2="{R}" y1="{Bt}" y2="{Bt}"/>'
+    # the failure: the same columns, named ones in ink and the rest in the light fill as the kit draws them, with no values
+    top = 420000
+    need(max(r[y] for y in NEWS_YEARS) < top, "a column runs past the failure plate's scale")
+    n = len(NEWS_YEARS)
+    stp = 1000 / n
+    bars = "".join(f'<rect class="{"fs" if y in (2008, 2013) else "lf"}" x="{i * stp + stp * 0.15:.0f}" y="{1000 - 10 * pct(r[y], 0, top):.0f}" '
+                   f'width="{stp * 0.7:.0f}" height="{10 * pct(r[y], 0, top):.0f}"/>' for i, y in enumerate(NEWS_YEARS))
+    xt = [(str(y), (i + 0.5) * 100 / n, "") for i, y in enumerate(NEWS_YEARS)]
+    last = NEWS_YEARS[-1]
+    tip = f'<p class="tip" style="bottom:calc({pct(r[last], 0, top):.1f}% + 8px)">{last}: {comma(r[last])}</p>'
     B.add("s-14-13-correct", chart("s-14-13-cols"),
           alt=f"Columns with every value printed and the table open beneath them. {title}.")
-    B.add("s-14-13-failure", dnp() + tl(title)
-          + f'<div class="art">{svg(W, H, inner)}<p class="tip">2023: 91,350</p><p class="hov">Hover over a column to see its value.</p></div>',
+    B.add("s-14-13-failure", dnp() + tl(title) + fluid(bars + BASE_LINE, (), xt, over=tip, yw=0)
+          + '<p class="hov">Hover over a column to see its value.</p>',
           alt=FC + "The same columns with no values printed, a tooltip over the 2023 column, a line asking the reader to hover over a column, "
                    "and no table or source line.")
     return entry(

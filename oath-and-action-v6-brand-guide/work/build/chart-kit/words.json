@@ -11,5 +11,6 @@
  "lookup_clear_search": "Clear the search",
  "lookup_filters": "Filters, {n} on",
  "lookup_clear_filters": "Clear filters",
- "lookup_count": "{n} of {total} {noun}"
+ "lookup_count": "{n} of {total} {noun}",
+ "phone_view": "On a phone, {w} px"
 }

@@ -422,6 +422,7 @@ async function fragments(o) {
       registered: Object.keys(K.forms).length } };
   for (const it of list.items) {
     const spec = JSON.parse(fs.readFileSync(it.spec, 'utf8'));
+    if (it.phone_view) spec.phone_view = true;   // D3-487: the build asks for the phone drawing beside an entry's chart
     const res = run_spec(spec, { grounds: [it.ground || 'newsprint'], widths: it.widths || [1440, 390], spec_path: it.spec });
     const columns = res.datasets && res.datasets.length ? res.datasets[0].meta.columns : (spec.data || {}).columns || {};
     const fid = it.fid || ('oac-' + spec.id.toLowerCase());

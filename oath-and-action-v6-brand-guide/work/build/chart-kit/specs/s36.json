@@ -20,7 +20,7 @@
   "notes": [
     "The totals count spending for and against candidates together. Groups that file outside the political committee system, such as some nonprofits, are left out.",
     "A super PAC may raise unlimited sums but may not give to candidates or coordinate with them. A hybrid PAC keeps such spending in an account apart from the money it gives candidates.",
-    "The Federal Election Commission records no party for a PAC, so the register names each committee as the commission lists it, set here in capitals and lowercase. The table gives each name as filed.",
+    "The register prints the party the Federal Election Commission records for a committee: Democratic for the DCCC and the DSCC, and Republican for the NRCC and SFA Fund, Inc. Most PACs record none, 21 of the 22 here. Names are set in capitals and lowercase, and the table gives each name as filed.",
     "The 25 committees reported $3.1 billion together."
   ],
   "credit": "Chart: Oath & Action",
@@ -46,6 +46,12 @@
         "format": "text"
       },
       {
+        "field": "party_words",
+        "label": "Party on the commission’s record",
+        "format": "text",
+        "empty": "None recorded"
+      },
+      {
         "field": "independent_expenditures",
         "label": "Independent spending, dollars",
         "format": "integer"
@@ -63,7 +69,8 @@
     "rank": "rank",
     "name": "committee_name",
     "value": "independent_expenditures",
-    "sub": "committee_type_words"
+    "sub": "committee_type_words",
+    "qualifier": "party_words"
   },
   "labels": {
     "heads": {
@@ -117,9 +124,10 @@
   "notes_internal": [
     "Data plan row 33, re-picked under DR-229 (money and influence needed a register). Every row of the file is drawn.",
     "Names: the drawing recases the FEC's capitals (labels.names) and shortens one long filed name (AFP Action, its doing-business-as names dropped); the table keeps every name as filed, as the sidecar asks.",
-    "No party is drawn or named for any PAC (sidecar; DR-48, DR-93); party committees keep their own names.",
+    "BC M3 and the research lead's party columns: the second line adds the party the FEC records for a committee (encode.qualifier, party_words) on the four rows whose record names one (DCCC, DSCC, NRCC; SFA Fund, Inc., a hybrid PAC); 21 of 22 PACs record none. The party is printed in words in the second line's ink (H10, DR-48, DR-58); no party color anywhere. The table adds the column with 'None recorded' for an empty cell (access S4).",
     "Note 2 describes the two kinds as the FEC defines independent-expenditure-only and hybrid (Carey) committees.",
     "Figures checked by script (figures.py s36).",
-    "Data lead DL-A1 and DL-A4: the other bars take the light fill on Newsprint (palette rule R3), and the scale ends 8 px short of the artboard's edge."
+    "Data lead DL-A1 and DL-A4: the other bars take the light fill on Newsprint (palette rule R3), and the scale ends 8 px short of the artboard's edge.",
+    "Review fix pass: the named mark stays in the subject ink with the others in the light fill (data lead ruling b, D3-489). The source line is the sidecar's own, which now names the processed-report vintage (ST S3). Figures checked by script (round-1-fix tools/figs.py s36)."
   ]
 }

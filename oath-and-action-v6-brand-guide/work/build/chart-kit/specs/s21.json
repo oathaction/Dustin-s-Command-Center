@@ -18,16 +18,17 @@
   "reader_question": "Which everyday answers rest on the most claims?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: the atlas’s own register of graded claims",
+  "grade_line": "Graded by the atlas, claim by claim: our count of its register of claims",
   "v7": {
     "grade": "documented",
     "ids": [],
     "snapshot": "2026-10-15"
   },
-  "title": "Of the atlas’s 16 everyday answers, voting and public influence rests on the most claims, 42, and roads, bridges and transit on the fewest, 13.",
-  "measure_line": "Claims in the atlas’s register behind each of its 16 everyday answers, 433 claims in all, checked through October 15, 2026, United States.",
+  "title": "Of the atlas’s 16 everyday answers, voting and public influence rests on the most claims, 42.",
+  "measure_line": "Claims in the atlas’s register behind each of its 16 everyday answers, 433 claims in all, as of the atlas’s snapshot of October 15, 2026, United States.",
   "notes": [
-    "A count shows how many claims an answer cites. How sure each claim is depends on its own grade, which the atlas gives claim by claim.",
+    "Roads, bridges and transit rests on the fewest, 13.",
+    "A count shows how many claims an answer cites.",
     "The answer with the most claims takes the reader’s question “Which election decides who represents me, and how can I influence the people who decide?”; the one with the fewest, “Why is the repair on my street taking so long?”"
   ],
   "credit": "Chart: Oath & Action",
@@ -55,7 +56,7 @@
     ]
   },
   "chart_notes": [
-    "The two answers the title names are drawn in the text’s ink; the other 14 are gray."
+    "Voting and public influence, which the title names, ends in a red dot with a dark outline; the other 15 answers are light gray."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -67,18 +68,16 @@
     "key": "id"
   },
   "labels": {
-    "named": [
-      "PW15",
-      "PW13"
-    ]
+    "point": "PW15"
   },
   "formats": {
     "value": "integer"
   },
   "notes_internal": [
     "Data plan row 7, kept from the coverage plan (claims per everyday question); the engineer's v7-claims-by-grade, also S10's. Domain all, as the sidecar's domain_note gives.",
-    "No atlas ID prints, so v7.ids is empty, as in S10; labels.named matches the id column, which never prints.",
+    "No atlas ID prints, so v7.ids is empty, as in S10; labels.point matches the id column, which never prints.",
     "Ties (28: medical bills and drug prices, taxes and benefits; 24: home and auto insurance, clean drinking water) read in title order.",
-    "Figures checked by script (figures.py s21): 42 PW15 the unique maximum; 13 PW13 the unique minimum; 39 PW09 and 34 PW01 second and third; the 16 totals add to 433; the two questions quoted match the file."
+    "Figures checked by script (figures.py s21): 42 PW15 the unique maximum; 13 PW13 the unique minimum; 39 PW09 and 34 PW01 second and third; the 16 totals add to 433; the two questions quoted match the file.",
+    "Review fix pass: the data lead's rulings (a) and (b) under D3-489: the grade line names our count and the atlas's claim-by-claim grade (ST M4), and note 1's second sentence, which the grade line now carries, goes; the title names one point, PW15, which ends in the red dot with its keyline on a stem in ink (labels.point), the other rows in the light fill (D3-477, R3); the fewest moves to note 1 in the data lead's words. ST S6: 432 of the 433 claims carry October 15, 2026 and CL1723 carries none, so the measure line gives the snapshot date (Rule 13.10) in place of 'checked through'. Figures checked by script (round-1-fix tools/figs.py s21)."
   ]
 }

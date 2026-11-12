@@ -62,16 +62,16 @@
       },
       {
         "field": "receipts_dollars",
-        "label": "Receipts, dollars",
-        "format": "integer"
+        "label": "Receipts, billions of dollars",
+        "format": "billions-value:1"
       }
     ]
   },
   "chart_notes": [
-    "Each line is a source’s receipts as an index, fiscal 2016 = 100; the heavy base line marks 100. The scale runs from 0 to 600.",
-    "End labels give each source’s index in fiscal 2026."
+    "Each line is a source’s receipts as an index, fiscal 2016 = 100; the thin line at 100 marks the 2016 level. The scale runs from 0 to 600.",
+    "End labels give each source’s index in fiscal 2026. On a phone a key names customs duties and all receipts, and a list under the chart gives the other sources’ 2026 index, highest first."
   ],
-  "phone": "same",
+  "phone": "differs",
   "artboard": "reading",
   "domain": "D08",
   "states": [],
@@ -101,14 +101,17 @@
       "Miscellaneous Receipts": "Miscellaneous receipts",
       "Total": "All receipts"
     },
-    "end": "{name} {index}"
+    "end": "{name} {index}",
+    "list_title": "Other sources, index in fiscal 2026"
   },
   "notes_internal": [
     "Maker B, round 1. Data plan row 26, rule 14.40, with the data lead's change 2: past four groups, the fastest-growing source in ink and the rest in gray (DR-234), every series named at its end. Domain D08; no state named.",
     "Checked by script against treasury-mts-receipts-by-source.csv, fiscal 2016 = 100: highest 2026 index Customs Duties 497.2 ('almost five times'), peak 559.4 in 2025; Total 165.4 ('65 percent'); customs 34.8 and 173.2 billion, 3.2 percent of all receipts in 2026; Total 3266.7 and 5403.3 billion; Other Retirement 216, Individual 184, Estate and Gift 181, Miscellaneous 30.",
     "H09: fiscal years run October to September, so no line splits a period at an inauguration; the window is the last ten fiscal years, which the measure line says. Read from the left and the right: the title reports growth in nominal dollars and names no policy or party; note 1 gives customs duties' small share, which the sidecar's qualification asks for.",
-    "The table prints whole dollars because the kit has no billions format; request R-B7. The rows run by source, then year.",
-    "R-B8 and DL-R2 landed: the source line is the sidecar's fiscal_2016_to_2026 variant, the window the chart draws."
+    "The table prints receipts in billions to one decimal (billions-value:1, R-B7 landed); the rows run by source, then year.",
+    "R-B8 and DL-R2 landed: the source line is the sidecar's fiscal_2016_to_2026 variant, the window the chart draws.",
+    "Review fix pass (creative director BM1 and B-S2, brand S14, data lead ruling b and D3-490): no end label leaves its figure alone on a line; under 600 px the plot takes the full width, with a key for the two inked lines inside its empty upper left and the other eight sources listed under it, sorted (phone: differs); the line at 100 is a thin reference line in the secondary ink, named by the value axis’s head and its figure in the gutter; a name at its right end joined the crowded stack of end labels near 100 and read as one more series, so S33 leaves labels.base_end out (S27 prints it). Customs duties keep the subject ink with no red: its rise from fiscal 2025 comes from tariffs a reader ties to the sitting president’s party (D3-489, D3-490). All receipts keep the context ink as the reference total the reading guide and the key name; the other eight sources take the light gray. Figures checked again by script (maker_b_figure_checks.py, check S33): customs 497.2 in 2026, peak 559.4 in 2025, the highest index; all receipts 165.4; 34.8 and 173.2 billion; 3.2 percent of 5,403.3 billion."
   ],
-  "source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2016 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation."
+  "source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2016 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation.",
+  "phone_note": "Under 600 px the end labels leave the plot so it takes the full width: a key inside the plot names customs duties and all receipts, and the other eight sources are listed under the plot with their fiscal 2026 index, highest first."
 }

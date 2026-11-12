@@ -2,7 +2,8 @@
  * under it, the amount right-aligned in figures of one width, and a thin bar from zero for each amount, under a row of
  * column heads, with hairlines between rows. On a phone the bar runs under the name. Rows the title names print bold and
  * keep their bar in ink; the other bars take the light fill on Newsprint and the context ink on Charcoal (palette rule R3).
- * encode: rank (integer), name (text), value (number), sub (category, optional: the second line).
+ * encode: rank (integer), name (text), value (number), sub (category, optional: the second line), qualifier (text,
+ * optional: words the second line adds after a comma where the row has them, such as a committee's recorded party).
  * labels: heads ({rank, name, value}: the column heads), names ({name: printed name}), subs ({sub value: printed words}),
  * divide (a number each value is divided by before it prints, such as 1000000), prefix and suffix (words around each
  * printed value, such as "$" and " million"), named (names printed bold). formats: value (after divide). */
@@ -12,16 +13,17 @@
     form: 'ranked-register',
     name: 'Ranked Register',
     family: 'tables-and-plain-words',
-    encode: { rank: 'integer', name: 'text', value: 'number', sub: 'category?' },
+    encode: { rank: 'integer', name: 'text', value: 'number', sub: 'category?', qualifier: 'text?' },
     labels: ['heads', 'names', 'subs', 'divide', 'prefix', 'suffix', 'named'],
     phone: 'same',
     draw: function (c) {
-      var rows = c.rows, er = c.field('rank'), en = c.field('name'), ev = c.field('value'), es = c.field('sub', false);
+      var rows = c.rows, er = c.field('rank'), en = c.field('name'), ev = c.field('value'), es = c.field('sub', false), eq = c.field('qualifier', false);
       var f = c.spec.formats || {}, W = c.width, L = c.labels, H = L.heads || {}, names = L.names || {}, subs = L.subs || {};
       var named = [].concat(L.named || []).map(String);
       var bold = function (r) { return named.indexOf(String(r[en])) >= 0; };
       var name = function (r) { return names[String(r[en])] !== undefined ? names[String(r[en])] : String(r[en]); };
-      var sub = function (r) { if (!es || r[es] === null || r[es] === undefined) return ''; return subs[String(r[es])] !== undefined ? subs[String(r[es])] : String(r[es]); };
+      var sub0 = function (r) { if (!es || r[es] === null || r[es] === undefined) return ''; return subs[String(r[es])] !== undefined ? subs[String(r[es])] : String(r[es]); };
+      var sub = function (r) { var q = eq && r[eq] !== null && r[eq] !== undefined && r[eq] !== '' ? String(r[eq]) : ''; var s0 = sub0(r); return s0 && q ? s0 + ', ' + q : s0 || q; };
       var div = +L.divide || 1;
       var val = function (r) { return (L.prefix || '') + K.fmt(r[ev] / div, f.value || 'number:1') + (L.suffix || ''); };
       var size = c.size('label'), tick = c.size('tick'), lh = Math.round(size * 1.25), slh = Math.round(tick * 1.3);

@@ -1,131 +1,131 @@
-department_code,department,agency,employees_2022_01,employees_2026_08,change,change_pct,size_1000_plus
-ALL,All agencies in the files,All agencies in the files,2155201,2024832,-130369,-6.049,true
-DOD,DEPARTMENT OF DEFENSE,Department of Defense,753320,680072,-73248,-9.7234,true
-VA,DEPARTMENT OF VETERANS AFFAIRS,Department of Veterans Affairs,425269,447225,21956,5.1628,true
-HS,DEPARTMENT OF HOMELAND SECURITY,Department of Homeland Security,210990,225574,14584,6.9122,true
-DJ,DEPARTMENT OF JUSTICE,Department of Justice,115700,107516,-8184,-7.0735,true
-TR,DEPARTMENT OF THE TREASURY,Department of the Treasury,96435,83321,-13114,-13.5988,true
-HE,DEPARTMENT OF HEALTH AND HUMAN SERVICES,Department of Health and Human Services,88123,72783,-15340,-17.4075,true
-AG,DEPARTMENT OF AGRICULTURE,Department of Agriculture,83383,77496,-5887,-7.0602,true
-SZ,SOCIAL SECURITY ADMINISTRATION,Social Security Administration,59767,49457,-10310,-17.2503,true
-IN,DEPARTMENT OF THE INTERIOR,Department of the Interior,59501,59776,275,0.4622,true
-TD,DEPARTMENT OF TRANSPORTATION,Department of Transportation,52997,52791,-206,-0.3887,true
-CM,DEPARTMENT OF COMMERCE,Department of Commerce,47712,41256,-6456,-13.5312,true
-NN,NATIONAL AERONAUTICS AND SPACE ADMINISTRATION,National Aeronautics and Space Administration,17784,15387,-2397,-13.4784,true
-EP,ENVIRONMENTAL PROTECTION AGENCY,Environmental Protection Agency,14695,12397,-2298,-15.638,true
-DN,DEPARTMENT OF ENERGY,Department of Energy,14536,13413,-1123,-7.7256,true
-DL,DEPARTMENT OF LABOR,Department of Labor,14017,11112,-2905,-20.7248,true
-ST,DEPARTMENT OF STATE,Department of State,12543,11252,-1291,-10.2926,true
-GS,GENERAL SERVICES ADMINISTRATION,General Services Administration,11584,8236,-3348,-28.9019,true
-SB,SMALL BUSINESS ADMINISTRATION,Small Business Administration,10261,5032,-5229,-50.9599,true
-HU,DEPARTMENT OF HOUSING AND URBAN DEVELOPMENT,Department of Housing and Urban Development,8015,5841,-2174,-27.1241,true
-FD,FEDERAL DEPOSIT INSURANCE CORPORATION,Federal Deposit Insurance Corporation,5799,4959,-840,-14.4853,true
-SE,SECURITIES AND EXCHANGE COMMISSION,Securities and Exchange Commission,4524,3909,-615,-13.5942,true
-SM,SMITHSONIAN INSTITUTION,Smithsonian Institution,4470,4086,-384,-8.5906,true
-AM,U.S. AGENCY FOR INTERNATIONAL DEVELOPMENT,U.S. Agency for International Development,4261,229,-4032,-94.6257,true
-ED,DEPARTMENT OF EDUCATION,Department of Education,4192,2294,-1898,-45.2767,true
-NU,NUCLEAR REGULATORY COMMISSION,Nuclear Regulatory Commission,2728,2451,-277,-10.154,true
-NQ,NATIONAL ARCHIVES AND RECORDS ADMINISTRATION,National Archives and Records Administration,2548,2339,-209,-8.2025,true
-OM,OFFICE OF PERSONNEL MANAGEMENT,Office of Personnel Management,2539,2017,-522,-20.5593,true
-EE,EQUAL EMPLOYMENT OPPORTUNITY COMMISSION,Equal Employment Opportunity Commission,2086,1693,-393,-18.8399,true
-FR,FEDERAL RESERVE SYSTEM,Federal Reserve System,1593,1056,-537,-33.71,true
-NF,NATIONAL SCIENCE FOUNDATION,National Science Foundation,1570,1119,-451,-28.7261,true
-LP,GOVERNMENT PUBLISHING OFFICE,Government Publishing Office,1537,1625,88,5.7254,true
-FC,FEDERAL COMMUNICATIONS COMMISSION,Federal Communications Commission,1413,1182,-231,-16.3482,true
-IB,U.S. AGENCY FOR GLOBAL MEDIA,U.S. Agency for Global Media,1317,797,-520,-39.4837,true
-NL,NATIONAL LABOR RELATIONS BOARD,National Labor Relations Board,1212,1061,-151,-12.4587,true
-CU,NATIONAL CREDIT UNION ADMINISTRATION,National Credit Union Administration,1144,927,-217,-18.9685,true
-FT,FEDERAL TRADE COMMISSION,Federal Trade Commission,1105,1035,-70,-6.3348,true
-FQ,COURT SERVICES AND OFFENDER SUPERVISION AGENCY FOR THE DISTRICT OF COLUMBIA,Court Services and Offender Supervision Agency for the District of Columbia,1015,910,-105,-10.3448,true
-BG,PENSION BENEFIT GUARANTY CORPORATION,Pension Benefit Guaranty Corporation,948,724,-224,-23.6287,false
-PU,PEACE CORPS,Peace Corps,920,601,-319,-34.6739,false
-HF,FEDERAL HOUSING FINANCE AGENCY,Federal Housing Finance Agency,813,596,-217,-26.6913,false
-RR,RAILROAD RETIREMENT BOARD,Railroad Retirement Board,805,686,-119,-14.7826,false
-CT,COMMODITY FUTURES TRADING COMMISSION,Commodity Futures Trading Commission,683,571,-112,-16.3982,false
-BO,OFFICE OF MANAGEMENT AND BUDGET,Office of Management and Budget,668,513,-155,-23.2036,false
-KS,CORPORATION FOR NATIONAL AND COMMUNITY SERVICE,Corporation for National and Community Service,601,373,-228,-37.9368,false
-SK,CONSUMER PRODUCT SAFETY COMMISSION,Consumer Product Safety Commission,544,418,-126,-23.1618,false
-GB,DEVELOPMENT FINANCE CORPORATION,Development Finance Corporation,447,546,99,22.1477,false
-AH,NATIONAL FOUNDATION ON THE ARTS AND THE HUMANITIES,National Foundation on the Arts and the Humanities,440,223,-217,-49.3182,false
-TC,U.S. INTERNATIONAL TRADE COMMISSION,U.S. International Trade Commission,408,417,9,2.2059,false
-TB,NATIONAL TRANSPORTATION SAFETY BOARD,National Transportation Safety Board,399,418,19,4.7619,false
-EB,EXPORT-IMPORT BANK OF THE UNITED STATES,Export-Import Bank of the United States,396,340,-56,-14.1414,false
-FL,FARM CREDIT ADMINISTRATION,Farm Credit Administration,313,309,-4,-1.278,false
-MI,MILLENNIUM CHALLENGE CORPORATION,Millennium Challenge Corporation,309,229,-80,-25.89,false
-LF,FEDERAL ELECTION COMMISSION,Federal Election Commission,297,256,-41,-13.8047,false
-GJ,PRESIDIO TRUST,Presidio Trust,282,324,42,14.8936,false
-RH,ARMED FORCES RETIREMENT HOME,Armed Forces Retirement Home,274,279,5,1.8248,false
-TN,OFFICE OF THE U.S. TRADE REPRESENTATIVE,Office of the U.S. Trade Representative,272,223,-49,-18.0147,false
-RF,FEDERAL RETIREMENT THRIFT INVESTMENT BOARD,Federal Retirement Thrift Investment Board,264,232,-32,-12.1212,false
-GW,"INTERNATIONAL BOUNDARY AND WATER COMMISSION, U.S. SECTION","International Boundary and Water Commission, U.S. Section",238,247,9,3.7815,false
-EC,OFFICE OF ADMINISTRATION,Office of Administration,229,252,23,10.0437,false
-FM,FEDERAL MEDIATION AND CONCILIATION SERVICE,Federal Mediation and Conciliation Service,202,96,-106,-52.4752,false
-BD,MERIT SYSTEMS PROTECTION BOARD,Merit Systems Protection Board,195,156,-39,-20,false
-JL,JUDICIAL BRANCH,Judicial Branch,164,160,-4,-2.439,false
-SS,SELECTIVE SERVICE SYSTEM,Selective Service System,161,118,-43,-26.7081,false
-FW,OFFICE OF SPECIAL COUNSEL,Office of Special Counsel,139,121,-18,-12.9496,false
-AU,FEDERAL LABOR RELATIONS AUTHORITY,Federal Labor Relations Authority,128,84,-44,-34.375,false
-HD,U.S. HOLOCAUST MEMORIAL MUSEUM,U.S. Holocaust Memorial Museum,122,85,-37,-30.3279,false
-TW,SURFACE TRANSPORTATION BOARD,Surface Transportation Board,116,109,-7,-6.0345,false
-MC,FEDERAL MARITIME COMMISSION,Federal Maritime Commission,115,109,-6,-5.2174,false
-BF,DEFENSE NUCLEAR FACILITIES SAFETY BOARD,Defense Nuclear Facilities Safety Board,104,102,-2,-1.9231,false
-AB,AMERICAN BATTLE MONUMENTS COMMISSION,American Battle Monuments Commission,76,77,1,1.3158,false
-IG,COUNCIL OF THE INSPECTORS GENERAL ON INTEGRITY AND EFFICIENCY,Council of the Inspectors General on Integrity and Efficiency,75,24,-51,-68,false
-GG,OFFICE OF GOVERNMENT ETHICS,Office of Government Ethics,71,59,-12,-16.9014,false
-NS,NATIONAL SECURITY COUNCIL,National Security Council,68,28,-40,-58.8235,false
-RS,FEDERAL MINE SAFETY AND HEALTH REVIEW COMMISSION,Federal Mine Safety and Health Review Commission,60,23,-37,-61.6667,false
-QQ,OFFICE OF NATIONAL DRUG CONTROL POLICY,Office of National Drug Control Policy,58,63,5,8.6207,false
-CC,COMMISSION ON CIVIL RIGHTS,Commission on Civil Rights,58,50,-8,-13.7931,false
-EW,TRADE AND DEVELOPMENT AGENCY,Trade and Development Agency,56,50,-6,-10.7143,false
-IF,INTER-AMERICAN FOUNDATION,Inter-American Foundation,52,20,-32,-61.5385,false
-HP,ADVISORY COUNCIL ON HISTORIC PRESERVATION,Advisory Council on Historic Preservation,50,36,-14,-28,false
-OS,OCCUPATIONAL SAFETY AND HEALTH REVIEW COMMISSION,Occupational Safety and Health Review Commission,50,43,-7,-14,false
-GQ,ELECTION ASSISTANCE COMMISSION,Election Assistance Commission,47,62,15,31.9149,false
-RO,MEDICAID AND CHIP PAYMENT AND ACCESS COMMISSION,Medicaid and CHIP Payment and Access Commission,45,51,6,13.3333,false
-HB,COMMITTEE FOR PURCHASE FROM PEOPLE WHO ARE BLIND OR SE VERELY DISABLED,Committee for Purchase From People Who Are Blind or Severely Disabled,41,33,-8,-19.5122,false
-BT,ARCHITECTURAL AND TRANSPORTATION BARRIERS COMPLIANCE BOARD,Architectural and Transportation Barriers Compliance Board,38,32,-6,-15.7895,false
-NM,NATIONAL MEDIATION BOARD,National Mediation Board,37,33,-4,-10.8108,false
-EO,MORRIS K. UDALL AND STEWART L. UDALL FOUNDATION,Morris K. Udall and Stewart L. Udall Foundation,37,32,-5,-13.5135,false
-NP,NATIONAL CAPITAL PLANNING COMMISSION,National Capital Planning Commission,35,34,-1,-2.8571,false
-FJ,CHEMICAL SAFETY AND HAZARD INVESTIGATION BOARD,Chemical Safety and Hazard Investigation Board,32,43,11,34.375,false
-ZP,U.S. COMMISSION ON INTERNATIONAL RELIGIOUS FREEDOM,U.S. Commission on International Religious Freedom,30,29,-1,-3.3333,false
-AN,AFRICAN DEVELOPMENT FOUNDATION,African Development Foundation,30,21,-9,-30,false
-ZS,UNITED STATES-CHINA ECONOMIC AND SECURITY REVIEW COMMISSION,United States-China Economic and Security Review Commission,27,29,2,7.4074,false
-CE,COUNCIL OF ECONOMIC ADVISERS,Council of Economic Advisers,27,21,-6,-22.2222,false
-VD,PRIVACY AND CIVIL LIBERTIES OVERSIGHT BOARD,Privacy and Civil Liberties Oversight Board,27,24,-3,-11.1111,false
-TS,OFFICE OF SCIENCE AND TECHNOLOGY POLICY,Office of Science and Technology Policy,26,22,-4,-15.3846,false
-GC,GULF COAST ECOSYSTEM RESTORATION COUNCIL,Gulf Coast Ecosystem Restoration Council,24,20,-4,-16.6667,false
-BH,COMMISSION FOR THE PRESERVATION OF AMERICA'S HERITAGE ABROAD,Commission for the Preservation of America’s Heritage Abroad,23,18,-5,-21.7391,false
-MA,MARINE MAMMAL COMMISSION,Marine Mammal Commission,23,24,1,4.3478,false
-DQ,DENALI COMMISSION,Denali Commission,20,12,-8,-40,false
-NK,NATIONAL COUNCIL ON DISABILITY,National Council on Disability,19,20,1,5.2632,false
-RE,OFFICE OF NAVAJO AND HOPI INDIAN RELOCATION,Office of Navajo and Hopi Indian Relocation,18,0,-18,-100,false
-GY,INTERNATIONAL JOINT COMMISSION:  UNITED STATES AND CANADA,International Joint Commission: United States and Canada,18,15,-3,-16.6667,false
-CX,NATIONAL COMMISSION ON LIBRARIES AND INFORMATION SCIENCE,National Commission on Libraries and Information Science,17,17,0,0,false
-BW,NUCLEAR WASTE TECHNICAL REVIEW BOARD,Nuclear Waste Technical Review Board,17,11,-6,-35.2941,false
-EQ,COUNCIL ON ENVIRONMENTAL QUALITY/OFFICE OF ENVIRONMENTAL QUALITY,Council on Environmental Quality/Office of Environmental Quality,16,19,3,18.75,false
-HW,U.S. INTERAGENCY COUNCIL ON HOMELESSNESS,U.S. Interagency Council on Homelessness,15,9,-6,-40,false
-UJ,JAPAN-UNITED STATES FRIENDSHIP COMMISSION,Japan-United States Friendship Commission,13,7,-6,-46.1538,false
-FI,FEDERAL FINANCIAL INSTITUTIONS EXAMINATION COUNCIL,Federal Financial Institutions Examination Council,13,12,-1,-7.6923,false
-UT,UTAH RECLAMATION MITIGATION AND CONSERVATION COMMISSION,Utah Reclamation Mitigation and Conservation Commission,13,11,-2,-15.3846,false
-AA,ADMINISTRATIVE CONFERENCE OF THE UNITED STATES,Administrative Conference of the United States,12,10,-2,-16.6667,false
-CF,COMMISSION OF FINE ARTS,Commission of Fine Arts,12,8,-4,-33.3333,false
-FK,FARM CREDIT SYSTEM INSURANCE CORPORATION,Farm Credit System Insurance Corporation,11,10,-1,-9.0909,false
-WK,FEDERAL PERMITTING IMPROVEMENT STEERING COUNCIL,Federal Permitting Improvement Steering Council,9,20,11,122.2222,false
-AW,ARCTIC RESEARCH COMMISSION,Arctic Research Commission,9,2,-7,-77.7778,false
-DB,PUBLIC INTEREST DECLASSIFICATION BOARD,Public Interest Declassification Board,8,9,1,12.5,false
-GX,INTERNATIONAL BOUNDARY COMMISSION:  UNITED STATES AND CANADA,International Boundary Commission: United States and Canada,7,21,14,200,false
-WX,WORLD WAR 1 CENTENNIAL COMMISSION,World War 1 Centennial Commission,7,0,-7,-100,false
-GU,THE US SEMIQUINCENTENNIAL COMMISSION,The US Semiquincentennial Commission,7,8,1,14.2857,false
-KY,PUBLIC BUILDINGS REFORM BOARD,Public Buildings Reform Board,6,7,1,16.6667,false
-BK,JAMES MADISON MEMORIAL FELLOWSHIP FOUNDATION,James Madison Memorial Fellowship Foundation,6,5,-1,-16.6667,false
-DO,OFFICE OF THE CYBER DIRECTOR,Office of the Cyber Director,6,29,23,383.3333,false
-HT,HARRY S. TRUMAN SCHOLARSHIP FOUNDATION,Harry S. Truman Scholarship Foundation,4,5,1,25,false
-AP,APPALACHIAN REGIONAL COMMISSION,Appalachian Regional Commission,4,5,1,25,false
-DG,NORTHERN BORDER REGIONAL COMMISSION,Northern Border Regional Commission,3,2,-1,-33.3333,false
-IP,INTELLECTUAL PROPERTY ENFORCEMENT COORDINATOR,Intellectual Property Enforcement Coordinator,3,0,-3,-100,false
-GE,BARRY GOLDWATER SCHOLARSHIP AND EXCELLENCE IN EDUCATION FOUNDATION,Barry Goldwater Scholarship and Excellence in Education Foundation,2,2,0,0,false
-GZ,THE WOMEN'S SUFFRAGE CENTENNIAL COMMISSION,The Women’s Suffrage Centennial Commission,1,0,-1,-100,false
-DA,DELTA REGIONAL AUTHORITY,Delta Regional Authority,1,1,0,0,false
-RJ,CIVIL RIGHTS COLD CASE REVIEW BOARD (CRCCRB),Civil Rights Cold Case Review Board (CRCCRB),0,10,10,,false
-WU,SOUTHWEST BORDER REGIONAL COMMISSION,Southwest Border Regional Commission,0,1,1,,false
+department_code,department,agency,employees_2022_01,employees_2025_01,employees_2026_08,change,change_pct,size_1000_plus,change_2022_01_to_2025_01,change_2025_01_to_2026_08
+ALL,All agencies in the files,All agencies in the files,2155201,2304585,2024832,-130369,-6.049,true,149384,-279753
+DOD,DEPARTMENT OF DEFENSE,Department of Defense,753320,774572,680072,-73248,-9.7234,true,21252,-94500
+VA,DEPARTMENT OF VETERANS AFFAIRS,Department of Veterans Affairs,425269,479003,447225,21956,5.1628,true,53734,-31778
+HS,DEPARTMENT OF HOMELAND SECURITY,Department of Homeland Security,210990,231795,225574,14584,6.9122,true,20805,-6221
+DJ,DEPARTMENT OF JUSTICE,Department of Justice,115700,116718,107516,-8184,-7.0735,true,1018,-9202
+TR,DEPARTMENT OF THE TREASURY,Department of the Treasury,96435,116709,83321,-13114,-13.5988,true,20274,-33388
+HE,DEPARTMENT OF HEALTH AND HUMAN SERVICES,Department of Health and Human Services,88123,93397,72783,-15340,-17.4075,true,5274,-20614
+AG,DEPARTMENT OF AGRICULTURE,Department of Agriculture,83383,90314,77496,-5887,-7.0602,true,6931,-12818
+SZ,SOCIAL SECURITY ADMINISTRATION,Social Security Administration,59767,57384,49457,-10310,-17.2503,true,-2383,-7927
+IN,DEPARTMENT OF THE INTERIOR,Department of the Interior,59501,63774,59776,275,0.4622,true,4273,-3998
+TD,DEPARTMENT OF TRANSPORTATION,Department of Transportation,52997,57423,52791,-206,-0.3887,true,4426,-4632
+CM,DEPARTMENT OF COMMERCE,Department of Commerce,47712,48803,41256,-6456,-13.5312,true,1091,-7547
+NN,NATIONAL AERONAUTICS AND SPACE ADMINISTRATION,National Aeronautics and Space Administration,17784,18078,15387,-2397,-13.4784,true,294,-2691
+EP,ENVIRONMENTAL PROTECTION AGENCY,Environmental Protection Agency,14695,16931,12397,-2298,-15.638,true,2236,-4534
+DN,DEPARTMENT OF ENERGY,Department of Energy,14536,17592,13413,-1123,-7.7256,true,3056,-4179
+DL,DEPARTMENT OF LABOR,Department of Labor,14017,14237,11112,-2905,-20.7248,true,220,-3125
+ST,DEPARTMENT OF STATE,Department of State,12543,14478,11252,-1291,-10.2926,true,1935,-3226
+GS,GENERAL SERVICES ADMINISTRATION,General Services Administration,11584,13367,8236,-3348,-28.9019,true,1783,-5131
+SB,SMALL BUSINESS ADMINISTRATION,Small Business Administration,10261,8562,5032,-5229,-50.9599,true,-1699,-3530
+HU,DEPARTMENT OF HOUSING AND URBAN DEVELOPMENT,Department of Housing and Urban Development,8015,8375,5841,-2174,-27.1241,true,360,-2534
+FD,FEDERAL DEPOSIT INSURANCE CORPORATION,Federal Deposit Insurance Corporation,5799,6548,4959,-840,-14.4853,true,749,-1589
+SE,SECURITIES AND EXCHANGE COMMISSION,Securities and Exchange Commission,4524,4812,3909,-615,-13.5942,true,288,-903
+SM,SMITHSONIAN INSTITUTION,Smithsonian Institution,4470,4450,4086,-384,-8.5906,true,-20,-364
+AM,U.S. AGENCY FOR INTERNATIONAL DEVELOPMENT,U.S. Agency for International Development,4261,4969,229,-4032,-94.6257,true,708,-4740
+ED,DEPARTMENT OF EDUCATION,Department of Education,4192,4111,2294,-1898,-45.2767,true,-81,-1817
+NU,NUCLEAR REGULATORY COMMISSION,Nuclear Regulatory Commission,2728,2926,2451,-277,-10.154,true,198,-475
+NQ,NATIONAL ARCHIVES AND RECORDS ADMINISTRATION,National Archives and Records Administration,2548,2888,2339,-209,-8.2025,true,340,-549
+OM,OFFICE OF PERSONNEL MANAGEMENT,Office of Personnel Management,2539,3055,2017,-522,-20.5593,true,516,-1038
+EE,EQUAL EMPLOYMENT OPPORTUNITY COMMISSION,Equal Employment Opportunity Commission,2086,2075,1693,-393,-18.8399,true,-11,-382
+FR,FEDERAL RESERVE SYSTEM,Federal Reserve System,1593,1748,1056,-537,-33.71,true,155,-692
+NF,NATIONAL SCIENCE FOUNDATION,National Science Foundation,1570,1699,1119,-451,-28.7261,true,129,-580
+LP,GOVERNMENT PUBLISHING OFFICE,Government Publishing Office,1537,1640,1625,88,5.7254,true,103,-15
+FC,FEDERAL COMMUNICATIONS COMMISSION,Federal Communications Commission,1413,1488,1182,-231,-16.3482,true,75,-306
+IB,U.S. AGENCY FOR GLOBAL MEDIA,U.S. Agency for Global Media,1317,1186,797,-520,-39.4837,true,-131,-389
+NL,NATIONAL LABOR RELATIONS BOARD,National Labor Relations Board,1212,1248,1061,-151,-12.4587,true,36,-187
+CU,NATIONAL CREDIT UNION ADMINISTRATION,National Credit Union Administration,1144,1226,927,-217,-18.9685,true,82,-299
+FT,FEDERAL TRADE COMMISSION,Federal Trade Commission,1105,1278,1035,-70,-6.3348,true,173,-243
+FQ,COURT SERVICES AND OFFENDER SUPERVISION AGENCY FOR THE DISTRICT OF COLUMBIA,Court Services and Offender Supervision Agency for the District of Columbia,1015,1035,910,-105,-10.3448,true,20,-125
+BG,PENSION BENEFIT GUARANTY CORPORATION,Pension Benefit Guaranty Corporation,948,966,724,-224,-23.6287,false,18,-242
+PU,PEACE CORPS,Peace Corps,920,987,601,-319,-34.6739,false,67,-386
+HF,FEDERAL HOUSING FINANCE AGENCY,Federal Housing Finance Agency,813,883,596,-217,-26.6913,false,70,-287
+RR,RAILROAD RETIREMENT BOARD,Railroad Retirement Board,805,781,686,-119,-14.7826,false,-24,-95
+CT,COMMODITY FUTURES TRADING COMMISSION,Commodity Futures Trading Commission,683,699,571,-112,-16.3982,false,16,-128
+BO,OFFICE OF MANAGEMENT AND BUDGET,Office of Management and Budget,668,678,513,-155,-23.2036,false,10,-165
+KS,CORPORATION FOR NATIONAL AND COMMUNITY SERVICE,Corporation for National and Community Service,601,714,373,-228,-37.9368,false,113,-341
+SK,CONSUMER PRODUCT SAFETY COMMISSION,Consumer Product Safety Commission,544,512,418,-126,-23.1618,false,-32,-94
+GB,DEVELOPMENT FINANCE CORPORATION,Development Finance Corporation,447,717,546,99,22.1477,false,270,-171
+AH,NATIONAL FOUNDATION ON THE ARTS AND THE HUMANITIES,National Foundation on the Arts and the Humanities,440,470,223,-217,-49.3182,false,30,-247
+TC,U.S. INTERNATIONAL TRADE COMMISSION,U.S. International Trade Commission,408,444,417,9,2.2059,false,36,-27
+TB,NATIONAL TRANSPORTATION SAFETY BOARD,National Transportation Safety Board,399,435,418,19,4.7619,false,36,-17
+EB,EXPORT-IMPORT BANK OF THE UNITED STATES,Export-Import Bank of the United States,396,390,340,-56,-14.1414,false,-6,-50
+FL,FARM CREDIT ADMINISTRATION,Farm Credit Administration,313,329,309,-4,-1.278,false,16,-20
+MI,MILLENNIUM CHALLENGE CORPORATION,Millennium Challenge Corporation,309,346,229,-80,-25.89,false,37,-117
+LF,FEDERAL ELECTION COMMISSION,Federal Election Commission,297,287,256,-41,-13.8047,false,-10,-31
+GJ,PRESIDIO TRUST,Presidio Trust,282,337,324,42,14.8936,false,55,-13
+RH,ARMED FORCES RETIREMENT HOME,Armed Forces Retirement Home,274,320,279,5,1.8248,false,46,-41
+TN,OFFICE OF THE U.S. TRADE REPRESENTATIVE,Office of the U.S. Trade Representative,272,221,223,-49,-18.0147,false,-51,2
+RF,FEDERAL RETIREMENT THRIFT INVESTMENT BOARD,Federal Retirement Thrift Investment Board,264,239,232,-32,-12.1212,false,-25,-7
+GW,"INTERNATIONAL BOUNDARY AND WATER COMMISSION, U.S. SECTION","International Boundary and Water Commission, U.S. Section",238,279,247,9,3.7815,false,41,-32
+EC,OFFICE OF ADMINISTRATION,Office of Administration,229,252,252,23,10.0437,false,23,0
+FM,FEDERAL MEDIATION AND CONCILIATION SERVICE,Federal Mediation and Conciliation Service,202,207,96,-106,-52.4752,false,5,-111
+BD,MERIT SYSTEMS PROTECTION BOARD,Merit Systems Protection Board,195,182,156,-39,-20,false,-13,-26
+JL,JUDICIAL BRANCH,Judicial Branch,164,162,160,-4,-2.439,false,-2,-2
+SS,SELECTIVE SERVICE SYSTEM,Selective Service System,161,163,118,-43,-26.7081,false,2,-45
+FW,OFFICE OF SPECIAL COUNSEL,Office of Special Counsel,139,126,121,-18,-12.9496,false,-13,-5
+AU,FEDERAL LABOR RELATIONS AUTHORITY,Federal Labor Relations Authority,128,118,84,-44,-34.375,false,-10,-34
+HD,U.S. HOLOCAUST MEMORIAL MUSEUM,U.S. Holocaust Memorial Museum,122,109,85,-37,-30.3279,false,-13,-24
+TW,SURFACE TRANSPORTATION BOARD,Surface Transportation Board,116,124,109,-7,-6.0345,false,8,-15
+MC,FEDERAL MARITIME COMMISSION,Federal Maritime Commission,115,133,109,-6,-5.2174,false,18,-24
+BF,DEFENSE NUCLEAR FACILITIES SAFETY BOARD,Defense Nuclear Facilities Safety Board,104,115,102,-2,-1.9231,false,11,-13
+AB,AMERICAN BATTLE MONUMENTS COMMISSION,American Battle Monuments Commission,76,78,77,1,1.3158,false,2,-1
+IG,COUNCIL OF THE INSPECTORS GENERAL ON INTEGRITY AND EFFICIENCY,Council of the Inspectors General on Integrity and Efficiency,75,34,24,-51,-68,false,-41,-10
+GG,OFFICE OF GOVERNMENT ETHICS,Office of Government Ethics,71,75,59,-12,-16.9014,false,4,-16
+NS,NATIONAL SECURITY COUNCIL,National Security Council,68,49,28,-40,-58.8235,false,-19,-21
+RS,FEDERAL MINE SAFETY AND HEALTH REVIEW COMMISSION,Federal Mine Safety and Health Review Commission,60,55,23,-37,-61.6667,false,-5,-32
+QQ,OFFICE OF NATIONAL DRUG CONTROL POLICY,Office of National Drug Control Policy,58,56,63,5,8.6207,false,-2,7
+CC,COMMISSION ON CIVIL RIGHTS,Commission on Civil Rights,58,61,50,-8,-13.7931,false,3,-11
+EW,TRADE AND DEVELOPMENT AGENCY,Trade and Development Agency,56,60,50,-6,-10.7143,false,4,-10
+IF,INTER-AMERICAN FOUNDATION,Inter-American Foundation,52,40,20,-32,-61.5385,false,-12,-20
+HP,ADVISORY COUNCIL ON HISTORIC PRESERVATION,Advisory Council on Historic Preservation,50,56,36,-14,-28,false,6,-20
+OS,OCCUPATIONAL SAFETY AND HEALTH REVIEW COMMISSION,Occupational Safety and Health Review Commission,50,48,43,-7,-14,false,-2,-5
+GQ,ELECTION ASSISTANCE COMMISSION,Election Assistance Commission,47,84,62,15,31.9149,false,37,-22
+RO,MEDICAID AND CHIP PAYMENT AND ACCESS COMMISSION,Medicaid and CHIP Payment and Access Commission,45,46,51,6,13.3333,false,1,5
+HB,COMMITTEE FOR PURCHASE FROM PEOPLE WHO ARE BLIND OR SE VERELY DISABLED,Committee for Purchase From People Who Are Blind or Severely Disabled,41,43,33,-8,-19.5122,false,2,-10
+BT,ARCHITECTURAL AND TRANSPORTATION BARRIERS COMPLIANCE BOARD,Architectural and Transportation Barriers Compliance Board,38,36,32,-6,-15.7895,false,-2,-4
+NM,NATIONAL MEDIATION BOARD,National Mediation Board,37,38,33,-4,-10.8108,false,1,-5
+EO,MORRIS K. UDALL AND STEWART L. UDALL FOUNDATION,Morris K. Udall and Stewart L. Udall Foundation,37,44,32,-5,-13.5135,false,7,-12
+NP,NATIONAL CAPITAL PLANNING COMMISSION,National Capital Planning Commission,35,35,34,-1,-2.8571,false,0,-1
+FJ,CHEMICAL SAFETY AND HAZARD INVESTIGATION BOARD,Chemical Safety and Hazard Investigation Board,32,47,43,11,34.375,false,15,-4
+ZP,U.S. COMMISSION ON INTERNATIONAL RELIGIOUS FREEDOM,U.S. Commission on International Religious Freedom,30,20,29,-1,-3.3333,false,-10,9
+AN,AFRICAN DEVELOPMENT FOUNDATION,African Development Foundation,30,32,21,-9,-30,false,2,-11
+ZS,UNITED STATES-CHINA ECONOMIC AND SECURITY REVIEW COMMISSION,United States-China Economic and Security Review Commission,27,25,29,2,7.4074,false,-2,4
+CE,COUNCIL OF ECONOMIC ADVISERS,Council of Economic Advisers,27,16,21,-6,-22.2222,false,-11,5
+VD,PRIVACY AND CIVIL LIBERTIES OVERSIGHT BOARD,Privacy and Civil Liberties Oversight Board,27,37,24,-3,-11.1111,false,10,-13
+TS,OFFICE OF SCIENCE AND TECHNOLOGY POLICY,Office of Science and Technology Policy,26,19,22,-4,-15.3846,false,-7,3
+GC,GULF COAST ECOSYSTEM RESTORATION COUNCIL,Gulf Coast Ecosystem Restoration Council,24,23,20,-4,-16.6667,false,-1,-3
+BH,COMMISSION FOR THE PRESERVATION OF AMERICA'S HERITAGE ABROAD,Commission for the Preservation of America’s Heritage Abroad,23,18,18,-5,-21.7391,false,-5,0
+MA,MARINE MAMMAL COMMISSION,Marine Mammal Commission,23,23,24,1,4.3478,false,0,1
+DQ,DENALI COMMISSION,Denali Commission,20,17,12,-8,-40,false,-3,-5
+NK,NATIONAL COUNCIL ON DISABILITY,National Council on Disability,19,18,20,1,5.2632,false,-1,2
+RE,OFFICE OF NAVAJO AND HOPI INDIAN RELOCATION,Office of Navajo and Hopi Indian Relocation,18,17,0,-18,-100,false,-1,-17
+GY,INTERNATIONAL JOINT COMMISSION:  UNITED STATES AND CANADA,International Joint Commission: United States and Canada,18,19,15,-3,-16.6667,false,1,-4
+CX,NATIONAL COMMISSION ON LIBRARIES AND INFORMATION SCIENCE,National Commission on Libraries and Information Science,17,17,17,0,0,false,0,0
+BW,NUCLEAR WASTE TECHNICAL REVIEW BOARD,Nuclear Waste Technical Review Board,17,22,11,-6,-35.2941,false,5,-11
+EQ,COUNCIL ON ENVIRONMENTAL QUALITY/OFFICE OF ENVIRONMENTAL QUALITY,Council on Environmental Quality/Office of Environmental Quality,16,25,19,3,18.75,false,9,-6
+HW,U.S. INTERAGENCY COUNCIL ON HOMELESSNESS,U.S. Interagency Council on Homelessness,15,15,9,-6,-40,false,0,-6
+UJ,JAPAN-UNITED STATES FRIENDSHIP COMMISSION,Japan-United States Friendship Commission,13,12,7,-6,-46.1538,false,-1,-5
+FI,FEDERAL FINANCIAL INSTITUTIONS EXAMINATION COUNCIL,Federal Financial Institutions Examination Council,13,18,12,-1,-7.6923,false,5,-6
+UT,UTAH RECLAMATION MITIGATION AND CONSERVATION COMMISSION,Utah Reclamation Mitigation and Conservation Commission,13,13,11,-2,-15.3846,false,0,-2
+AA,ADMINISTRATIVE CONFERENCE OF THE UNITED STATES,Administrative Conference of the United States,12,11,10,-2,-16.6667,false,-1,-1
+CF,COMMISSION OF FINE ARTS,Commission of Fine Arts,12,12,8,-4,-33.3333,false,0,-4
+FK,FARM CREDIT SYSTEM INSURANCE CORPORATION,Farm Credit System Insurance Corporation,11,10,10,-1,-9.0909,false,-1,0
+WK,FEDERAL PERMITTING IMPROVEMENT STEERING COUNCIL,Federal Permitting Improvement Steering Council,9,20,20,11,122.2222,false,11,0
+AW,ARCTIC RESEARCH COMMISSION,Arctic Research Commission,9,2,2,-7,-77.7778,false,-7,0
+DB,PUBLIC INTEREST DECLASSIFICATION BOARD,Public Interest Declassification Board,8,5,9,1,12.5,false,-3,4
+GX,INTERNATIONAL BOUNDARY COMMISSION:  UNITED STATES AND CANADA,International Boundary Commission: United States and Canada,7,7,21,14,200,false,0,14
+WX,WORLD WAR 1 CENTENNIAL COMMISSION,World War 1 Centennial Commission,7,0,0,-7,-100,false,-7,0
+GU,THE US SEMIQUINCENTENNIAL COMMISSION,The US Semiquincentennial Commission,7,8,8,1,14.2857,false,1,0
+KY,PUBLIC BUILDINGS REFORM BOARD,Public Buildings Reform Board,6,7,7,1,16.6667,false,1,0
+BK,JAMES MADISON MEMORIAL FELLOWSHIP FOUNDATION,James Madison Memorial Fellowship Foundation,6,5,5,-1,-16.6667,false,-1,0
+DO,OFFICE OF THE CYBER DIRECTOR,Office of the Cyber Director,6,35,29,23,383.3333,false,29,-6
+HT,HARRY S. TRUMAN SCHOLARSHIP FOUNDATION,Harry S. Truman Scholarship Foundation,4,4,5,1,25,false,0,1
+AP,APPALACHIAN REGIONAL COMMISSION,Appalachian Regional Commission,4,6,5,1,25,false,2,-1
+DG,NORTHERN BORDER REGIONAL COMMISSION,Northern Border Regional Commission,3,3,2,-1,-33.3333,false,0,-1
+IP,INTELLECTUAL PROPERTY ENFORCEMENT COORDINATOR,Intellectual Property Enforcement Coordinator,3,2,0,-3,-100,false,-1,-2
+GE,BARRY GOLDWATER SCHOLARSHIP AND EXCELLENCE IN EDUCATION FOUNDATION,Barry Goldwater Scholarship and Excellence in Education Foundation,2,3,2,0,0,false,1,-1
+GZ,THE WOMEN'S SUFFRAGE CENTENNIAL COMMISSION,The Women’s Suffrage Centennial Commission,1,0,0,-1,-100,false,-1,0
+DA,DELTA REGIONAL AUTHORITY,Delta Regional Authority,1,2,1,0,0,false,1,-1
+RJ,CIVIL RIGHTS COLD CASE REVIEW BOARD (CRCCRB),Civil Rights Cold Case Review Board (CRCCRB),0,12,10,10,,false,12,-2
+WU,SOUTHWEST BORDER REGIONAL COMMISSION,Southwest Border Regional Commission,0,2,1,1,,false,2,-1

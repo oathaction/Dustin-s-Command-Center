@@ -115,7 +115,15 @@ def expand(page, method, spec_dirs, warn, where_of=None):
             seen[cid] = None
             continue
         seen[cid] = p
-        items.append({"key": cid, "spec": str(p), "ground": ground, "fid": f"oac-{cid}", "widths": [1440, 390]})
+        it = {"key": cid, "spec": str(p), "ground": ground, "fid": f"oac-{cid}", "widths": [1440, 390]}
+        # D3-487 (BC S3): a chapter 14 entry whose form changes on a phone also shows its phone drawing at a desk
+        if re.match(r"^s-14-s\d+$", cid):
+            try:
+                if json.loads(Path(p).read_text()).get("phone") == "differs":
+                    it["phone_view"] = True
+            except (OSError, ValueError):
+                pass
+        items.append(it)
     out = {}
     if items:
         with tempfile.TemporaryDirectory() as td:

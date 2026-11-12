@@ -19,7 +19,9 @@
 .oac-alt { margin: 20px 0 0; font: var(--oa-font-weight-regular) 15px/22px var(--oa-font-family-reading); max-width: 42em; }
 .oac-noscript { margin: 6px 0 0; font: var(--oa-font-weight-regular) 13px/18px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); }
 .oac-fig[data-oa-js] .oac-noscript { display: none; }
-.oac-notes { margin: 22px 0 0; padding: 14px 0 0 18px; border-top: 1px solid var(--oa-color-border-hairline); max-width: 38em; font: var(--oa-font-weight-regular) 15px/23px var(--oa-font-family-reading); }
+/* K-S1 (round 1 fix pass): the notes' rule runs the figure's width, as the source line's does; the notes keep their measure */
+.oac-notes { margin: 22px 0 0; padding: 14px 0 0 18px; border-top: 1px solid var(--oa-color-border-hairline); font: var(--oa-font-weight-regular) 15px/23px var(--oa-font-family-reading); }
+.oac-notes li { max-width: 38em; }
 .oac-notes li + li { margin-top: 8px; }
 .oac-src { display: flex; justify-content: space-between; align-items: flex-start; gap: 4px 24px; flex-wrap: wrap; margin-top: 20px; padding-top: 10px; border-top: 1px solid var(--oa-color-border-hairline); }
 .oac-source, .oac-credit { margin: 0; font: var(--oa-font-weight-regular) 13px/18px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); max-width: 42em; }
@@ -134,6 +136,9 @@
   .oac-fig { break-inside: auto; }
   .oac-ev, .oac-title, .oac-measure, .oac-guide, .oac-art, .oac-src, .oac-notes li, .oac-table tr { break-inside: avoid; }
   .oac-title, .oac-measure, .oac-guide { break-after: avoid; }
+  /* access S4: a drawing taller than a page breaks under its title rather than leaving the title alone on a page; kit.js
+     marks it before print */
+  .oac-art[data-oa-tall] { break-inside: auto; }
   .oac-tw { overflow: visible; }
   .oac-eq > summary::before { content: none; }
 }
@@ -163,6 +168,14 @@
 .oac-lk-btn:hover { text-decoration: underline; text-underline-offset: .2em; }
 .oac-lk-input:focus-visible, .oac-lk-btn:focus-visible { outline: var(--oa-border-width-focus-ring) solid var(--oa-color-focus-ring); outline-offset: 2px; }
 .oac-lk-chip[aria-pressed="true"] { font-weight: var(--oa-font-weight-semibold); box-shadow: inset 0 0 0 1px var(--oa-color-border-strong); }
-.oac-lk-chip[aria-pressed="true"]::before { content: "\2713"; margin-right: 6px; }
+/* access S7: the check mark takes no name; aria-pressed carries the state */
+.oac-lk-chip[aria-pressed="true"]::before { content: "\2713"; content: "\2713" / ""; margin-right: 6px; }
 .oac-lk-status { margin: 4px 0 0; font: var(--oa-font-weight-regular) 15px/22px var(--oa-font-family-reading); }
-@media print { .oac-lk { display: none; } .oac-fig[data-oa-lookup] .oac-table tr[hidden] { display: table-row; } }
+@media print { .oac-lk { display: none; } .oac-fig[data-oa-lookup] .oac-table tr[hidden] { display: table-row; } .oac-fig[data-oa-live] .oac-art[hidden] { display: block; } }
+
+/* D3-487 (BC S3): the phone drawing a reader at a desk sees under the desktop drawing, at its fixed 358 px; where the
+   figure is itself phone width the main drawing is already the phone form, so this one hides */
+.oac-art-phone { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--oa-color-border-hairline); }
+.oac-art-phone > svg.oac-svg { display: block; max-width: 100%; height: auto; overflow: visible; }
+.oac-phone-k { margin: 0 0 10px; font: var(--oa-font-weight-semibold) 14px/20px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); }
+@container (max-width: 479px) { .oac-art-phone { display: none; } }
