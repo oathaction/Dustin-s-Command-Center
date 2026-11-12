@@ -90,7 +90,7 @@ Oath & Action Edition 06, Phase 3, round 1. Editor (`oa-editor`), November 12, 2
 33. S40 note 1, 44 words: split, such as "Congress.gov records a hearing only when the hearing carries a bill’s number, and it records none on these eight bills, so step 2 keeps its slash on each. A hearing on the subject, or on a draft with no number, would not show."
 34. S40 note 4, "The ideas in S. 2651 may have moved in H.R. 6644, which this record does not show.": delete it, or give its source. "May" needs a grade behind it (W16, W20).
 35. S40 labels.committee_also: "Reported Original Measure" → "Reported an original measure" (sentence case, as note 2 words it); alt "where they were filed" → "where their sponsors filed them".
-36. S41 and S42 grade_line, "Documented: a published survey, as the atlas records it": Rule 13.1 gives Documented to a public agency's survey or to a figure the atlas grades so. If the grade is the atlas's, say so: "Documented, the atlas’s grade: a University of Maryland survey". If not, ask the data lead for the grade.
+36. S41 and S42 grade_line: replaced by the data lead's ruling 4. Write "Documented: a published survey by the University of Maryland’s Program for Public Consultation".
 37. 14.134 rule and why: "who was counted" (twice) → "whom the survey counted".
 38. Captions. The generator prints the plan's reader question under each entry's specimen unless the entry carries a `caption` key. Add one to 14.19: "Which age groups report voting, and did that change between two elections?" A survey counts reports.
 39. 14.23 caption: "How sure is the evidence behind each of the five topic hubs?" The plan's "hubs'" prints a straight apostrophe.
@@ -178,6 +178,39 @@ Oath & Action Edition 06, Phase 3, round 1. Editor (`oa-editor`), November 12, 2
 ### To the main session
 
 - The margin wording for S14 went to the engineer with D3-219 (done there as `with_margin`).
+
+## Fix pass
+
+November 12, 2026, from the data lead's third batch (`work/handoffs/phase-3/20261112_Round-1-Data-Lead-Notes.md`, "## Third batch"). Every change is in `phase3_ch14_rules_build.py`.
+
+| Item | Rule | What changed |
+|---|---|---|
+| ED-1 | 14.6, 14.12 | When a chart names one bar, the other bars and columns take the light fill, as the kit's column and ranked bar do; the named one keeps the red point (14.6) or the subject ink (14.12). The failure plates and 14.1's failure follow the same rule. |
+| ED-2 | 14.12 | The plate no longer takes a fixed 640 px width. Its title, measure line and source line stay in the column at every width, and only the full-width drawing scrolls, in a frame named "The drawing at full width" (Rule 18.11). |
+| ED-3 | 14.6 | On a phone each court's name sits above its bar, so the bars take the column's width. |
+| ED-4 | 14.9 | On a phone each state's value joins its name's line, and the margin of error line takes the full width beneath. |
+| ED-5 | 14.10 | The four band labels alternate between two heights, so Trump and Biden no longer touch. |
+| ED-7 | 14.7 | Vacancies leave the drawing (a vacant seat is no party); a note gives the two empty seats, and the title keeps them. |
+| ED-9 | Opener | The group numbers 2 to 17 are gone; each question carries its family's name alone. This also freed the bytes the fixes above needed. |
+| ED-6 | 14.4, 14.13 | Not moved. Rule 01.9 holds as the data lead found, and a new dataset for either plate costs more than the room left (189 bytes); the repetition is noted here for the creative director. |
+| ED-8 | 14.11 | Not taken: a drawing wider than 320 px would shrink its words under 13 px on a phone. |
+
+Data lead's ruling 4 replaces my request A36: S41 and S42's grade line reads "Documented: a published survey by the University of Maryland's Program for Public Consultation", since the atlas grades no figure in its headline list.
+
+### Routine calls
+
+- D3-xxx | The light fill goes on every other bar wherever a plate names one, failure plates included | One rule for the drawing, as the approved palette's R3 sets it, so a failure plate shows only its own fault
+- D3-xxx | Rule 14.12's full-width drawing scrolls inside a named frame while its words stay in the column | A plate that clipped its own title on a phone showed the fault Rule 14.12 forbids
+- D3-xxx | Rule 14.4 and 14.13 keep their data | The rules have 189 bytes left under 0.20 MB, and Rule 01.9 holds; the data lead marked the move as weight-dependent
+
+### Tested
+
+- `phase3_ch14_rules_build.py`, `phase3_ch14_build.py` (0 faults), the kit check on `s-14-7-seats` (PASS), and `guide_build.py --strict` (exit 0, 0 warnings). Rules 14.1 to 14.14 take 195,986 bytes and the opener 3,825: 199,811, under 0.20 MB by 189 bytes.
+- Playwright on the plates for 14.6 (both), 14.9, 14.10's failure, 14.12 (both) and 14.7 at 1440 and 390 px, each on Newsprint and with its stage switched to Charcoal: no text under 13 px and nothing past the plate's edge outside the named scroll frame. I looked at 14.6, 14.9 and 14.12 at 390 px and 14.6, 14.10's failure and 14.12 on Charcoal at 1440 px.
+
+### Not tested
+
+- 14.9 and 14.10 on Charcoal by eye (captured, not looked at); the four-width guide check.
 
 ## Words pass
 

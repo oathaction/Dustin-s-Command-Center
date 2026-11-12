@@ -4219,3 +4219,11 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | # | Decision | Reason |
 |---|---|---|
 | D3-442 | The opener draws Loop R13 with LE02 again (SD-6) | The data lead's choice: Rule 15.6 already draws Loop R18, and the check that barred R13 now reads the chip whole |
+
+### Editor, round 1 fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-443 | The light fill goes on every other bar wherever a plate names one, failure plates included | One rule for the drawing, as the approved palette's R3 sets it, so a failure plate shows only its own fault |
+| D3-444 | Rule 14.12's full-width drawing scrolls inside a named frame while its words stay in the column | A plate that clipped its own title on a phone showed the fault Rule 14.12 forbids |
+| D3-445 | Rule 14.4 and 14.13 keep their data | The rules have 189 bytes left under 0.20 MB, and Rule 01.9 holds; the data lead marked the move as weight-dependent |
