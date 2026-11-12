@@ -134,3 +134,81 @@ None. Every fix above sits with an owner and the data lead's rulings.
 
 - Created: `work/handoffs/phase-3/20261112_Round-2-Red-Team-Statistics-Civic.md` (this report).
 - Modified: none. Scripts, captures and downloads stay in the scratch folder named above.
+
+## Second pass
+
+November 12, 2026, second pass (DR-191), on the fixed strict build at `.../scratchpad/phase-3/round-2-final/build/guide.html` (10,635,461 bytes), copied into `/tmp/claude-0/-home-user-Dustin-s-Command-Center/3ab6316c-6935-5f23-804c-cfaafd548447/scratchpad/phase-3/round-2-second-pass/statistics-civic/` before rendering. I read the data lead's "Review fix pass" (RF-1 to RF-24, RF-11a, sign-offs), the main session's D3-888 to D3-919 and maker B's fix notes. I then rebuilt by script every figure a fix touched.
+
+### Score
+
+**4 of 5, rising to 5 when N1 and N2 land.** All three Must fix items and all eleven Should fix items are closed, and every changed figure I rebuilt holds. The fixes added two small faults, a tense that makes an unpassed bill read as law (N1) and a named state's figure lost on every phone width (N2). Neither blocks shipping.
+
+### Each item
+
+- **ST M1, closed.** The title now counts what the chips show: "had decided one by October 15, 2026, and two others stood on its interim orders". Those are X06 and X05. Note 1 names the other two interim orders with V7's dates: I068 on September 26, 2025 (V7 Q106, No. 25A269) and X18 on June 27, 2025 (V7 Q539 and Q545, No. 24A884). X18's chip no longer says "decided". One optional word remains: the new table column prints X18's status in the atlas's own words, "the day the Supreme Court decided Trump v. CASA". The title's "decided one on its merits" would stop a reader of that column from counting two.
+- **ST M2, closed.** The table has a fifth column, "Qualification, in the atlas's words". Every cell equals V7's stored text except figure 5, which prints "None of its own in the atlas; see the note". Figure 4's cell keeps the sentence. Note 1 dates the 2023 survey with its sponsor and size, matching V7's qualification. N1 below concerns that note's second sentence.
+- **ST M3, closed.** Note 1 now reads "In the 2024 election, Republicans won 220 seats and Democrats 215" (the file's 119th Congress row). The source line is the sidecar variant `with_party_divisions_119th`, in H04's order with both geographies and the Historian's qualification. The sidecar's `observation_period` and note now say "as first elected".
+- **ST S1, closed.** S47 folds the ten functions under 2 percent, $673.6 billion (673.63 by script, 8.9 percent). Veterans keeps its own tile, and the fold tile sits last at the bottom right, as the chart note says. Tile areas hold at 41.1 to 41.8 px² per billion.
+- **ST S2, closed.** North Dakota's label is gone from S54 and S55, and so are its note and chart-note words. California's label passes the margin.
+- **ST S3, closed.** Entry 14.73 drops its pointer to 14.34. Entry 14.69 points to 14.73 for "two aligned panels, each on its own scale", and 14.73's rule describes that drawing.
+- **ST S4, closed.** Rule 14.9 now has two gap-margin rows, two separate places and a place inside an area, √(a² + b² − 2wa²). Its builders line puts the publisher's margin first. S57's note 2 says the printed test treats the two as independent, and "by either test" holds by my script. With population share standing in for each state's share of workers, I get 14 above (DC among them), 12 below and 25 within. The closest state within, Mississippi, would need a share of 2.9 percent to cross; its population share is 0.9.
+- **ST S5, closed.** S43 prints DP04's published margin for each renter share. I fetched DP04 for all 52 rows from the Census API today (key from the environment, not printed). Every share and both margins equal the file. The claims hold under the published margins: DC is 61.9 ± 1.5, every state sits below half by more than its margin, and New York leads California by 1.7 against a gap margin of 0.42.
+- **ST S6, closed.** S47's source line names the September 2026 statement and carries S44's note on later revision. S46 names its release, says each release can revise every earlier year, and its measure line says "the whole series". S45 names the September 2026 release, and its sidecar records the Bureau's release page. S58's note 2 names both price indexes and the switch in 2000. Each changed line is a sidecar variant or template.
+- **ST S7, closed.** Rule 14.60 now defines quartile and median at first use. Rule 14.11's reading guide glosses median ("Half of households had more income than the median and half had less").
+- **ST S8, closed.** X18's words name "the second Trump administration", as V7 does.
+- **ST S9, closed.** S50's table opens with "All 50 states" and S54's with "United States".
+- **ST S10, closed.** S51's table adds the lowest and highest county per region. Note 3's 42.5 percent is now in the table, and the Northeast's third quartile prints 8.9.
+- **ST S11, closed.** S18's table now says "Middle fifth", as the drawing does.
+
+### Figures the fixes touched, rebuilt
+
+- **S63.** I recounted the chips (Decided 1, Interim order 2, In court 1, Watchdog finding 1, Counted 1) and checked note 1's dates and docket numbers against V7's source records.
+- **S60.** Each table cell matches V7's `qualification` field, and figure 5's replacement touches no other cell.
+- **S48.** I re-read 220 and 215 from `house-history-party-divisions`.
+- **S43.** The DP04 margins equal the API for all 52 rows.
+- **S54 and S55.** The four states with the most renter households are California, Texas, New York and Florida: 17,094,780 of 46,551,688, or 36.7 percent (the fifth, Pennsylvania, has 1.67 million). Three rents sit above the nation's past the margin and Texas sits below: CA +603 (margin 9.8), NY +147 (14.6), FL +309 (11.7), TX −42 (11.7). All 51 bubbles match their renter households within 0.11 percent of radius against the 1 million key. Florida's printed 35.5 percent holds.
+- **S57.** As under S4 above.
+- **`fred-unemployment-fourth-quarter`.** I rebuilt all five rows from the monthly file: 4.1667, 3.5667, 3.8 and 4.1333 for 2021 to 2024, and 2025 empty because October has no rate. The `derivation` sentence describes this, S59's note 3 prints 4.2, 3.6, 3.8 and 4.1, and the source line is the variant `with_unemployment_history`.
+- **S45.** The title's 591,700 is the most from 2000 to 2025; the next is 467,700 in 2025. Only 1972, 1973 and 1974 were higher (the most in 1973, 779,800). The two-to-four share from 2009 to 2025 runs 0.57 (2021) to 1.83 (2009). The drawing now prints 591.7.
+- **Red.** By computed color at 1440 and 320 px, no round 2 specimen draws Pillar Red now (RF-1). S47's tile and S53's band are in the subject ink, and S53's words read "Ages 55 to 64: 41.2 million".
+
+### New faults the fixes made
+
+**ST N1 (Should fix). S60's new note gives an unpassed bill's provisions in the past tense.**
+- Where: `s60.json`, note 1, second sentence, from RF-4's words.
+- What is wrong: it reads "The bill the House passed, H.R. 7008, limited members' stock purchases and required photo identification to vote in federal elections". The Senate never took the bill up, so "limited" and "required" read as law in force. The three plates that draw this bill now use three tenses: S01 says "would bar ... would require", S61 says "as the House passed it, limits ... requires", and S60 says "limited ... required".
+- Fix: "The bill the House passed, H.R. 7008, would limit members' stock purchases and require photo identification to vote in federal elections".
+- Owner: the editor writes the words; maker A rebuilds.
+
+**ST N2 (Should fix). S55 names New York but drops its figure at every phone width.**
+- Where: `s55.json` and `bubble-scatter`'s label placement.
+- What is wrong: at 1440 px all four named states print their renter households. At 390, 360 and 320 px viewports (326, 296 and 256 px drawings), New York prints its name without "3.6 million"; I looked at the 390 px capture. The chart note says each of the four is "named with its renter households", so the reader of a phone gets three of the four figures the chart says it gives.
+- Fix: place New York's figure with a leader where the cloud is dense, or print it beside the name on one line. If neither fits, carry it in a phone line under the plot, as the kit already does for the United States ring at 256 px.
+- Owner: maker B.
+
+### Seen and not counted
+
+- **S59's history window.** The window runs 2021 to 2024, exactly one presidential term's four fourth quarters, beside projections for 2026 to 2029. Between them the dashed 2025 column falls in the inauguration year. Maker B's notes record that this was raised and answered under H09: the split comes from the missing October 2025 survey and the projections' start, not from a chosen date, and the measure line prints the reason. I accept the answer. A reason that also says why four years ("as many years as the projections run") would make the choice plain.
+- **S59 at 256 px** drops the 2022 and 2023 history values, 3.6 and 3.8, from the drawing; note 3 prints all four.
+- **S57's "the finer test sets none apart here"** rests on population share as a stand-in for each state's share of full-time, year-round workers, which no file holds. The headroom is wide (above), so the sentence holds.
+
+### Tested in the second pass
+
+- `extract_figs.py` and `parse_figs.py` on the fixed build: every figure's words and tables.
+- Playwright on my copy of the build: all 22 round 2 specimens and the four built ones rendered at 1440 and 320 px, and S55 and S59 at 390 and 360 px. Checks covered computed red, the printed values across widths, and geometry for S47, S55 and S61. I looked at S55's 390 px capture.
+- `second_checks.py` (scratch): the fourth-quarter file, S55's four states and rent tests, and S57's exact test.
+- Census API for DP04 tenure margins for 50 states, DC and the nation.
+- Re-read from the files: source line variants for S43, S45, S46, S47, S48 and S59; the Historian and NRC sidecars; entries 14.60, 14.68, 14.69 and 14.73; Rule 14.9's specs and builders line; Rule 14.11's reading guide.
+
+### Not tested in the second pass
+
+- Charcoal ground, grayscale, forced colors and print.
+- The kit's own exports at 358, 296 and 256 px.
+- S48's new layout of the independent seat; S61's outline segment as a drawing (its geometry only).
+- The NRC release page the S45 sidecar quotes; Trump v. CASA on supremecourt.gov.
+- Workers' shares by state for S57's exact test.
+- The ten specs moved for placement only (D3-909, D3-911).
+
+### Change log, second pass
+
+- Modified: `work/handoffs/phase-3/20261112_Round-2-Red-Team-Statistics-Civic.md` (this section added).

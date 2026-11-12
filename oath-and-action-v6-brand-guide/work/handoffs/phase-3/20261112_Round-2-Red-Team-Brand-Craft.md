@@ -157,3 +157,61 @@ None. Every fix above sits inside the studio's standing decisions.
 - The rule plates' table equivalents, and chapter 14's other 41 entries from rounds 0 and 1 as changed by round 2's words.
 - Forced colors, print, reduced motion, 200 percent text and contrast by formula (the access lens); every figure against its source (the statistics lens).
 - Whether Rule 12.5's red variable outlines, with no Charcoal edge, meet 3 to 1 on Newsprint: an approved Phase 2 rule, outside round 2.
+
+## Second pass
+
+November 12, 2026, under DR-191, on the fix pass's strict build (`.../round-2-final/build/guide.html`, 10,635,461 bytes, 0 warnings), copied to `.../round-2-second-pass/brand-craft/`. Read first: the data lead's "Review fix pass" (RF-1 to RF-24), each owner's "Review fix pass" lines for BC items, and D3-888 to D3-914. I rebuilt S43 to S64, S01, S10 and Rule 14.12's chart with the kit at page widths 1440, 390, 328 and 288 on both grounds (25 of 25 PASS, 0 faults) and looked at the drawings at 2x, then captured the guide at 1440 px (1x) and 390 px (2x).
+
+### Score for this lens: 4 of 5
+
+Every Must fix is closed and so are 16 of 18 Should fix items: no round 2 specimen now carries Pillar Red past Rule 05.1, both sides of S61's vote have a mark, every changed title reads fairly from the left and the right, and chapter 15 names each body plainly; one small collision in S45's year labels remains, and the fix to S55 set the national ring inside Texas's dark circle.
+
+### The items
+
+| Item | Status | What I looked at |
+|---|---|---|
+| BC M1, S47's red | Closed | Social Security in the subject ink, the other tiles light with a context edge, no plate; 0.00 percent Pillar Red in all four Newsprint drawings by pixel count. Rule 14.6's fourth paragraph and entries 14.52 and 14.55 carry Rule 05.1's share (D3-890). S53's band also takes the ink ("Ages 55 to 64: 41.2 million"), 0.00 percent red. |
+| BC M2, S61's two sides | Closed | 53 yes solid and 47 no in outline in one ink, on both grounds and at 256 px, each with its parties named under it; entry 14.87 carries Rule 01.2's sentence (D3-891). |
+| BC M3, entry 14.85 | Closed | "a related recorded vote, with everything the bill held" (D3-892). |
+| BC S1, words crossed by lines | Closed | S53's and S51's gridlines stop at the words; S56's latest quarter finds a clear place at 720, 358, 296 and 256 px; S50's dashed line is knocked out behind "Alaska $2,290" at 256 px. The label still sits across the line's path there, so the eye can read the line through the "0"; acceptable as a newspaper knockout. |
+| BC S2, S48's independent | Closed | The independent (solid) and the two vacancies (open) sit together under the aisle, apart from both blocks, each with its own leader and words clear of every seat at 720, 358, 296 and 256 px. |
+| BC S3, S63's titles | Closed in the guide | Titles in regular weight after the typed chip, the chart note calls each "the atlas's own name for the issue", the table adds the atlas's grade, and the reader question and entry 14.89 say "disputes". The three titles that state an effect go to board 2 as V7.1 items (D3-908), which is the right place. |
+| BC S4, Rule 15.17's names | Closed for 15.17 | The core pills print the node titles ("Presidential action without new legislation", "Congress's ability to write and check policy"), and "The four bodies, as the atlas's connections name them" names Congress, the executive, antitrust enforcers and states and cities. "Executive unilateralism" stays in chapter 15's opener, where it quotes Loop R13's chain, and in chapters 10 and 11 as icon CL-026's approved name (D3-906); board 2 decides the double names (D3-912). |
+| BC S5, Rule 14.12's red | Closed by ruling | RF-17 reads 2015 as a comparison, and Rule 14.6 now says so in its own paragraph ("A line or a single bar is one mark, and a run of columns is a set of marks"), with Zion on its own plate as the example. The rule and the plate now agree, which was the fault. |
+| BC S6, S58's band | Closed | The band carries 1 px edges in the context ink on both grounds and reads at 2x at every width; S59's bands and key swatches take the same edge. |
+| BC S7, S46's hatch label | Closed | "All other sources" sits on a knockout of the ground at every width. |
+| BC S8, row-name weights | Closed | S43, S44, S51 and S57 set names and values at 400 with the named row at 700, by count of their SVG text. |
+| BC S9, Florida's figure | Closed | S54 prints "Florida / rent 35.5% of income"; S55's labels follow RF-18. See N2 for S55's ring. |
+| BC S10, S59's history | Closed | The actual rate for 2021 to 2024, a dashed empty column for 2025 named in the key, edged bands; at 256 px the two "4.1" labels sit close but apart. |
+| BC S11, S62's row | Closed | Flush left, state words and dates on shared baselines, notes at five lines or fewer, "Public Law 119-12" whole. |
+| BC S12, S60 | Closed | Each figure sits beside its caption in one column; "November 3, 2026" and "2017 to 2022" hold; "At least 17" and "87% and 88%" keep their word spaces. "(383 / of 435)" still breaks inside its parenthesis at 720 px; trivial. |
+| BC S13, sketch frames | Closed | Reference sketches 320 px with a 10 px inset, avoid halves 288 px with an 8 px inset (read from the files' viewBoxes); 14.55's and 14.57's words sit clear of the frame at 1440 px. |
+| BC S14, avoid bars and 14.73 | Closed | Every bar reads "Form to avoid / Do not publish" on two fixed lines and "Use instead / ..." beside it, at one height; 14.73's two panels together take the dual-axis chart's height. |
+| BC S15, Rule 15.12's first label | Closed | The first label is the problem's (Well supported), the second the remedy's (Hypothesis); each connection's grade sits in "Each step" under the drawing. |
+| BC S16, chapter 15's typography | Closed | No space before a comma after a chip in 15.15 or 15.18; "the weakest point" holds together; "UI is unemployment insurance" is spelled out; "Loop R10 reinforcing" sits on its own line above step 4's tag. |
+| BC S17, smaller faults | Partly closed | Closed: S52's medians printed and ticked, S51's outliers in lanes, S49's "130" clear of the median, S56's note says why 2009, S44's note names steps by role, S55's key circles filled, S45's "584.9" on a leader. Open: at 296 px S45's "2020" and "2025" now touch ("20202025" at 2x; x 245.2 and 278.1 in the SVG), see N1. S52's axis still runs to 72; the maker keeps it to hold a county the table counts, which I accept. |
+| BC S18, entry 14.55 | Closed | The donut's rule now gives the share the subject ink, as its sketch draws it. |
+
+### New faults from the fixes
+
+- **N1. S45's last two year labels collide at 296 px.** Owner: maker A. Moving the last year 2 px inside the edge brought "2025" against "2020" ("20202025"). Drop "2020" where the two would sit closer than one word space, or label 2000, 2010, 2020 and 2025 only at that width.
+- **N2. S55's national ring now sits inside Texas's dark circle.** Owner: maker B. With the four named states in the subject ink, the open ring for the United States lands on Texas's filled circle, so on Newsprint it reads as a hole in Texas's mark and on Charcoal as a dot on a light disc. The label clears every circle on its leader; give the ring a 2 px halo of the ground, or draw Texas's circle as an outline where the ring sits.
+
+### Every changed title, read from the left and the right
+
+S45 (591,700 homes in larger buildings), S53 (41.2 million aged 55 to 64, "the ten years before most people qualify for Medicare"), S55 (the four states with the most renter households, two that lean each way, three with rents above the nation's), S57 (82.0 percent, 25 states and DC past the margin), S61 ("the House's bill to limit members' stock purchases and require photo ID", both provisions, the sponsor's short title moved to the measure line) and S63 (one decided, two on interim orders) each read the same from both sides: no actor blamed or credited past the record, no word that judges. S60's new note 1 names both of H.R. 7008's provisions beside the 87 and 88 percent, which removes the gap BC M3 found in entry 14.85 from S60 as well. No red remains on any round 2 specimen; the red point now sits only on round 1's specimens and the rule plates, each within Rule 05.1.
+
+### Second pass: tested
+
+- `node work/build/chart-kit/oa-chart.mjs build` for S43 to S64, S01 and S10 at page widths 1440, 390, 328 and 288 on both grounds, and `s-14-12-cols` at 1440 and 390 on Newsprint: 25 of 25 PASS, 0 faults.
+- Looked at, at 2x: S44, S47, S54, S55, S60, S61, S62, S63 and S64 at 720 px; S47, S55, S44 and S61 on Charcoal at 720 px; S45, S46, S48, S50, S51, S53, S56, S58 and S59 at 358, 296 and 256 px on Newsprint; S61 at 256 px; 2x crops of S48's aisle, S50's Alaska label and S45's year labels.
+- By script: Pillar Red pixel share in S47's and S53's Newsprint drawings at four widths (0.00 percent); type weights in S43, S44, S51 and S57; the sketch files' viewBoxes and label insets; V7's grade field for the six S63 issues (each "documented").
+- From the fixed build at 1440 px, 1x: entries 14.55, 14.57, 14.73, 14.87 and 14.89 (and 14.85 captured); Rules 15.12, 15.15, 15.17 and 15.18, their correct plates read closely.
+- Read: every changed title, measure line, note, chart note and reader question in S43 to S64; entries 14.52, 14.55, 14.85, 14.87 and 14.89; Rule 14.6 in full.
+- At 390 px, 2x, in the guide: the plates of 14.52 (S47), 14.53 (S48), 14.87 (S61, both segments visible) and Rule 15.12 ("Two grades, apart" before "Each step"; the true-size line holds "under 680 px"); entry 14.91 captured. Viewport at 1440 px: the contents panel at Rule 14.88 starts on a whole line with 14.88 marked (BC S17's last point, closed).
+
+### Second pass: not tested
+
+- Charcoal at narrow widths beyond S61; S43, S49, S52, S57 and S64 at narrow widths in this pass.
+- Chapter 15's plates at 1024 and 768 px in this pass, 15.11 and 15.16 at any width, and every failure plate.
+- Forced colors, print and contrast by formula on the changed forms (the access lens).
