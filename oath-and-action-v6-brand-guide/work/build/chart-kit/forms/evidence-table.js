@@ -4,7 +4,8 @@
  * the claim. Hairlines part the rows.
  * encode: key (id: the claim's ID), claim (text), grade (category), period (text), covers (text, optional), limits (text),
  * source (text, optional). labels: grades ({grade value: printed word}), id_type (optional: the type word set before each ID,
- * for an ID the atlas types, such as "Reform"; with none, no ID prints), heads ({covers, limits, source, period}: the short heads before those lines; period's on a phone). */
+ * for an ID the atlas types, such as "Reform"; with none, no ID prints), heads ({covers, limits, source, period}: the short heads before those lines; period's on a phone),
+ * words ({stored value: printed words}: a whole value printed in other words, such as a straight quote set curled). */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -12,12 +13,13 @@
     name: 'Evidence Table',
     family: 'tables-and-plain-words',
     encode: { key: 'id', claim: 'text', grade: 'category', period: 'text', covers: 'text?', limits: 'text', source: 'text?' },
-    labels: ['grades', 'id_type', 'heads'],
+    labels: ['grades', 'id_type', 'heads', 'words'],
     phone: 'differs',
     draw: function (c) {
       var rows = c.rows, ek = c.field('key'), ec = c.field('claim'), eg = c.field('grade'), ep = c.field('period');
       var ecv = c.field('covers', false), el = c.field('limits'), es = c.field('source', false);
-      var W = c.width, L = c.labels, G = L.grades || {}, H = L.heads || {};
+      var W = c.width, L = c.labels, G = L.grades || {}, H = L.heads || {}, WD = L.words || {};
+      var say = function (v) { return v === null || v === undefined ? v : WD[String(v)] !== undefined ? WD[String(v)] : String(v); };
       var grade = function (r) { return G[String(r[eg])] !== undefined ? G[String(r[eg])] : String(r[eg]); };
       var idw = function (r) { return L.id_type ? L.id_type + ' ' + String(r[ek]) : ''; };
       var size = c.size('label'), tick = c.size('tick'), lh = Math.round(size * 1.3), tlh = Math.round(tick * 1.4);
@@ -39,17 +41,17 @@
           var gy = top + size;
           if (idw(r)) { c.text(0, top + tick, idw(r), { role: 'tick', fill: 'secondary' }); gy = top + tick + 6 + size; }
           var gb = c.text(0, gy, grade(r), { role: 'label', weight: 700, max: mw });
-          var pb = c.text(0, gb.bottom - size * 0.241 + tlh, String(r[ep]), { role: 'tick', fill: 'secondary', max: mw });
+          var pb = c.text(0, gb.bottom - size * 0.241 + tlh, say(r[ep]), { role: 'tick', fill: 'secondary', max: mw });
           my = pb.bottom;
           ly = top - 2;
         }
         c.datum(0, top, { data: { key: r[ek], field: eg, value: r[eg] } });
         // the claim, then its covers, source and limits lines
-        var cb = c.text(xr, ly + size, String(r[ec]), { role: 'label', weight: 600, max: rw });
+        var cb = c.text(xr, ly + size, say(r[ec]), { role: 'label', weight: 600, max: rw });
         var yy = cb.bottom - size * 0.241;
         var line = function (head, words) {
           if (words === null || words === undefined || words === '') return;
-          var tb = c.text(xr, yy + tlh + 2, (head ? head + ' ' : '') + String(words), { role: 'tick', max: rw, fill: 'secondary' });
+          var tb = c.text(xr, yy + tlh + 2, (head ? head + ' ' : '') + say(words), { role: 'tick', max: rw, fill: 'secondary' });
           yy = tb.bottom - tick * 0.241;
         };
         if (c.phone) line(H.period, r[ep]);

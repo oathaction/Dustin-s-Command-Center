@@ -33,7 +33,14 @@
       var endw = function (k) { var l = by[k][by[k].length - 1]; return String((k === apart && L.apart_end) || L.end || '{name}').replace('{name}', el ? l[el] : k).replace('{y}', K.fmt(l[ey], f.y || 'number:0')); };
       var maxw = Math.round(W * (c.phone ? 0.3 : 0.25)), lw = 0, lines = {};
       // a name and its figure never part: a line that would hold the figure alone takes the name's last word with it
-      var keep_with = function (ls) { if (ls.length > 1 && !/[A-Za-z]/.test(ls[ls.length - 1])) { var w = ls[ls.length - 2].split(' '); if (w.length > 1) { ls[ls.length - 1] = w.pop() + ' ' + ls[ls.length - 1]; ls[ls.length - 2] = w.join(' '); } } return ls; };
+      // (a one-word name keeps its figure on its own line, a little past the width)
+      var keep_with = function (ls) {
+        if (ls.length > 1 && !/[A-Za-z]/.test(ls[ls.length - 1])) {
+          var w = ls[ls.length - 2].split(' '), fig = ls.pop();
+          if (w.length > 1) { ls[ls.length - 1] = w.slice(0, -1).join(' '); ls.push(w[w.length - 1] + ' ' + fig); } else ls[ls.length - 1] += ' ' + fig;
+        }
+        return ls;
+      };
       named.forEach(function (k) { var wt = isLit(k) ? 700 : 400; lines[k] = keep_with(c.wrap(endw(k), 'label', maxw, wt)); lines[k].forEach(function (l) { lw = Math.max(lw, c.measure(l, 'label', wt)); }); });
       var bw = L.base !== undefined && L.base_end ? c.measure(L.base_end, 'tick') : 0;
       lw = Math.max(lw, bw - 6);
