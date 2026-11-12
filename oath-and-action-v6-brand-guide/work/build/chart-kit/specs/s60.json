@@ -1,0 +1,86 @@
+{
+  "kit": 1,
+  "id": "S60",
+  "form": "indicator-row",
+  "family": "gauges-and-indicators",
+  "tier": "core",
+  "dataset": "v7-numbers",
+  "sort": [
+    {
+      "field": "order",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "What are the atlas’s headline figures?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Checked by the atlas, figure by figure: its eight headline figures, as of October 15, 2026",
+  "v7": {
+    "ids": [],
+    "snapshot": "2026-10-15"
+  },
+  "title": "The atlas puts eight figures first, each checked against its sources on October 15, 2026.",
+  "measure_line": "The atlas’s eight headline figures, in its order, each with the kind of figure the atlas calls it and its caption, United States, as of the atlas’s snapshot of October 15, 2026",
+  "notes": [
+    "The child poverty rates are as the Census Bureau first published them; it revised its Supplemental Poverty Measure estimates for 2019 to 2024 in August 2026.",
+    "Unite America, which built the 9.4 percent figure, is an advocacy group and defines “effectively decided” itself.",
+    "Each figure has its own source in the atlas, and several describe events that may have moved since the snapshot, such as Alaska’s Ballot Measure 2, decided on November 3, 2026."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Eight figures, each with its kind and caption: 743 votes, the margin that kept Alaska’s top-four primary; $7.3 billion taken in by pharmacies of the three largest pharmacy benefit managers above their cost for 51 specialty generic drugs; a $35 monthly insulin cap under Medicare Part D; at least 17 inspectors general removed without notice; $62.7 billion in benefits the Government Accountability Office reported; a 5.2 percent child poverty rate in 2021; 87 and 88 percent of Republicans and Democrats backing a stock trading ban; and 9.4 percent of eligible voters deciding 88 percent of House seats.",
+  "table": {
+    "caption": "The atlas’s eight headline figures, as of October 15, 2026",
+    "columns": [
+      {
+        "field": "figure",
+        "label": "Figure",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "kind",
+        "label": "Kind, as the atlas calls it",
+        "format": "text"
+      },
+      {
+        "field": "caption",
+        "label": "Caption",
+        "format": "text"
+      },
+      {
+        "field": "verified_status",
+        "label": "Checked",
+        "format": "text"
+      }
+    ]
+  },
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "all",
+  "states": [],
+  "typography": {
+    "curl_quotes": true
+  },
+  "encode": {
+    "figure": "figure",
+    "caption": "caption",
+    "kind": "kind",
+    "key": "order"
+  },
+  "labels": {
+    "kinds": {
+      "vote count": "Vote count",
+      "problem measure": "Problem measure",
+      "rule in force": "Rule in force",
+      "agency-reported result": "Agency-reported result",
+      "evidence a rule changed an outcome": "Evidence a rule changed an outcome",
+      "shared view": "Shared view",
+      "advocacy count": "Advocacy count"
+    },
+    "columns": 4
+  },
+  "notes_internal": [
+    "Draft."
+  ]
+}

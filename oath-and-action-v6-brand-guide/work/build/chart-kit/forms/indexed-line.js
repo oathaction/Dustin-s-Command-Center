@@ -8,7 +8,7 @@
  * series are listed under the plot with their latest index, highest first (CD BM1, Rule 14.12).
  * encode: x (year, month or date), y (number: the raw values), series (category). labels: base (the x value that is 100),
  * base_label (words over the value axis, naming the base), base_end (words at the base line's right end, wide drawings),
- * subject (the series in ink), second (a series in the context ink, such as the total, optional), names ({series: words}),
+ * subject (the series in ink), second (a total, dashed in the text's ink, optional; round 2 ruling (b)), names ({series: words}),
  * end (words at each line's end, with {name} and {index}), list_title (words over the list under a narrow plot).
  * formats: index (the index in the words, "integer" by default), tick. Maker B, round 1. */
 (function (K) {
@@ -88,18 +88,19 @@
       var drawn = series.slice().sort(function (a, b) { return rank(a) - rank(b); });
       drawn.forEach(function (s) {
         var d = s.pts.map(function (p, i) { return (i ? 'L' : 'M') + K.round(xs(p.t)) + ',' + K.round(ys(p.v)); }).join('');
-        var rk = rank(s), stroke = rk === 2 ? 'subject' : rk === 1 ? 'context' : 'ghost', w = rk === 2 ? c.t('line-subject') : rk === 1 ? c.t('line-context') : c.t('spark-context');
+        // the second series, a total, is the data lead's round 2 ruling (b): dashed in the text's ink at the field's weight
+        var rk = rank(s), stroke = rk === 2 ? 'subject' : rk === 1 ? 'label' : 'ghost', w = rk === 2 ? c.t('line-subject') : c.t('spark-context');
         if (rk) c.path(d, { stroke: 'surface', width: w + 2 * c.t('keyline'), mark: false });
-        c.path(d, { stroke: stroke, width: w, data: { series: s.key } }, [x0, top, x1 - x0, plotH]);
+        c.path(d, { stroke: stroke, width: w, dash: rk === 1 ? '5 3' : undefined, data: { series: s.key } }, [x0, top, x1 - x0, plotH]);
         s.pts.forEach(function (p) { c.datum(xs(p.t), ys(p.v), { data: { key: s.key + '|' + p.r[ex], field: 'index', value: Math.round(p.v * 10) / 10 } }); });
         var last = s.pts[s.pts.length - 1];
-        c.circle(xs(last.t), ys(last.v), rk ? c.t('dot-vertex-radius') : c.t('dot-small-vertex-radius'), { fill: rk === 2 ? 'subject' : 'context', mark: false });
+        c.circle(xs(last.t), ys(last.v), rk ? c.t('dot-vertex-radius') : c.t('dot-small-vertex-radius'), { fill: rk === 2 ? 'subject' : rk === 1 ? 'label' : 'context', mark: false });
       });
       // narrow: the key, each entry a short line in its series' ink and weight, and its name and latest index
       if (kbox) keyed.forEach(function (s, i) {
         var rk = rank(s), ky = kbox.y + i * klh + klh / 2;
-        c.line(kbox.x, ky, kbox.x + ksw, ky, { stroke: rk === 2 ? 'subject' : 'context', width: rk === 2 ? c.t('line-subject') : c.t('line-context'), mark: false });
-        c.text(kbox.x + ksw + 8, ky + c.size('label') * 0.35, endw(s), { role: 'label', weight: 700, halo: true });
+        c.line(kbox.x, ky, kbox.x + ksw, ky, { stroke: rk === 2 ? 'subject' : 'label', width: rk === 2 ? c.t('line-subject') : c.t('spark-context'), dash: rk === 2 ? undefined : '5 3', mark: false });
+        c.text(kbox.x + ksw + 8, ky + c.size('label') * 0.35, endw(s), { role: 'label', weight: rk === 2 ? 700 : 400, halo: true });
       });
       // the end names, spread so none touches the next, each kept inside the plot's height (wide drawings)
       var lh = Math.round(c.size('label') * 1.2);
@@ -127,7 +128,7 @@
       labs.forEach(function (l) {
         if (l.base) { c.text(x1 + 8, l.y + c.size('label') * 0.75, L.base_end, { role: 'tick', fill: 'secondary' }); return; }
         var last = l.s.pts[l.s.pts.length - 1], ly = l.y + c.size('label') * 0.85;
-        l.lines.forEach(function (ln, k) { c.text(lx, ly + k * lh, ln, { role: 'label', weight: l.rk ? 700 : 400, fill: l.rk ? 'label' : 'secondary' }); });
+        l.lines.forEach(function (ln, k) { c.text(lx, ly + k * lh, ln, { role: 'label', weight: l.rk === 2 ? 700 : 400, fill: l.rk ? 'label' : 'secondary' }); });
         var cy = l.y + l.h / 2 - 2;
         if (Math.abs(cy - ys(last.v)) > 3) c.line(xs(last.t) + 4, ys(last.v), lx - 3, ly - c.size('label') * 0.32, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
       });

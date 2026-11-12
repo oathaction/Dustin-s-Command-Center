@@ -1,0 +1,79 @@
+{
+  "kit": 1,
+  "id": "S61",
+  "form": "progress-bar",
+  "family": "gauges-and-indicators",
+  "tier": "core",
+  "dataset": "congress-hr7008-roll-calls",
+  "where": {
+    "chamber": "Senate"
+  },
+  "reader_question": "How close did the Senate come to the 60 votes it needs to end debate on taking up H.R. 7008, the Stop Insider Trading Act?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the Senate’s record of roll call vote 253",
+  "title": "The Senate fell seven votes short of the 60 it needed to take up H.R. 7008, the Stop Insider Trading Act, which as the House passed it limits members’ stock purchases and requires photo ID to vote in federal elections.",
+  "measure_line": "Senate roll call vote 253, September 30, 2026, on cloture on the motion to proceed to H.R. 7008, the vote to end debate on taking the bill up: yes and no votes of the 100 senators, by party as the Senate records it",
+  "notes": [
+    "Cloture on a motion to proceed needs three-fifths of the Senate, 60 votes. The vote was on taking the bill up, not on the bill itself.",
+    "The House passed H.R. 7008 by 232 to 198 on July 22, 2026, in roll call 280: Republicans 218 to 0, Democrats 13 to 198 with one not voting, and the one independent yes."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A bar of the Senate’s 100 votes filled to 53 yes votes, with a tick at the 60 needed to end debate and a bracket marking the 7-vote gap. All 53 yes votes were Republican; 45 Democrats and 2 independents voted no.",
+  "table": {
+    "caption": "Senate roll call vote 253 on H.R. 7008, September 30, 2026, by party",
+    "columns": [
+      {
+        "field": "party",
+        "label": "Party",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "yea",
+        "label": "Yes",
+        "format": "integer"
+      },
+      {
+        "field": "nay",
+        "label": "No",
+        "format": "integer"
+      },
+      {
+        "field": "not_voting",
+        "label": "Not voting",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "The bar runs to 100 senators; the 53 yes votes fill it in ink. A tick marks the 60 votes needed, and a bracket under the bar the 7 votes the yes side lacked."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D04",
+  "states": [],
+  "encode": {
+    "group": "party",
+    "value": "yea",
+    "against": "nay"
+  },
+  "labels": {
+    "of": 100,
+    "needed": 60,
+    "needed_words": "60 votes needed to end debate",
+    "short_words": "{n} votes short",
+    "value_words": "{v} yes",
+    "against_words": "{v} no",
+    "groups": {
+      "Republican": "Republicans",
+      "Democratic": "Democrats",
+      "Independent": "independents"
+    },
+    "group_words": "{name} {v}"
+  },
+  "notes_internal": [
+    "Draft."
+  ]
+}

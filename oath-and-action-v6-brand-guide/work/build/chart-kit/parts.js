@@ -192,6 +192,10 @@
     fn.is_point = is_point;
     fn.keyline = function (r) { return is_point(r) && c.ground !== 'charcoal' ? { stroke: 'point-keyline', width: c.t('keyline') } : {}; };
     fn.job = function (r) { return is_point(r) ? { job: 'point' } : {}; };
+    // G2 (round 2, opt-in): a light-fill mark that prints no value of its own may take a 1 px edge in the context ink, so
+    // its edge reads at 4.29 to 1 on Newsprint where the fill alone reads at 1.81; on Charcoal those marks take the context
+    // ink (5.41 to 1) and need none. Merge fn.edge(row) into the mark's options.
+    fn.edge = function (r) { return fn(r) === 'light-fill' ? { stroke: 'context', width: 1 } : {}; };
     return fn;
   };
 

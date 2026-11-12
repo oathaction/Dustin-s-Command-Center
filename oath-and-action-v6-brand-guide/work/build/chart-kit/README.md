@@ -23,7 +23,7 @@ C1 covers the data folder, C2 the spec, C3 the command, C4 a form module and C5 
 | File | What it does |
 |---|---|
 | `kit.js` | The renderer, the code that turns a spec and its rows into a drawing. A page reaches it by one name, `OAChart`, and it carries the shared words |
-| `parts.js` | Drawing parts the forms share: keys, gridlines, notes, scales, styled fills and tile sizes |
+| `parts.js` | Drawing parts the forms share: keys, gridlines, notes, scales, styled fills and tile sizes; the light fill and the red point (`named_fill`); since round 2, an estimate's interval (`interval_of`, `whisker`), a band between two series (`band`), a stack's segments (`stack`, `wide`), the total line and point (`total_line`, `total_ring`), words inside a small area (`fit_label`) and labels beside points that keep clear of each other (`place_labels`). Each part's call is in the comment above it |
 | `forms/*.js` | One file per chart form, 45 forms in 43 files (November 12, 2026). Each file's header lists the `encode` and `labels` names it reads |
 | `metrics.js` | Widths of Inter and Inter Tight, so a chart lays out the same way in Node and in every browser |
 | `geo.js` | The state tiles and the map, for the map forms |

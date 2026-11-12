@@ -1943,7 +1943,7 @@ def rule_15_12(book):
 
 
 # ===============================================================================================================
-# Group 2. Worked examples from the atlas
+# Group 3. Worked examples from the atlas
 # ===============================================================================================================
 def rule_15_13(book):
     lp = LOOP["R1"]
@@ -2313,9 +2313,9 @@ def rule_15_16(book):
             "and R11. Draw it where it acts (Rule 15.11), then print its effects one outcome family to a row, each with the "
             "atlas’s code, its words and the pips of Rule 13.5, and no row that adds them. Its routes follow, each with who "
             "acts there, its feasibility and its own check date, or “Not checked” where the atlas gives none (Rule 13.10).",
-            f"As of {SNAP}, the atlas codes a moderate gain for the quality of democracy, a small one for government "
-            "efficacy and no expected effect on the other two. It checked the state ballot and local routes on that date, "
-            "and the state statute and federal statute routes carry no date.",
+            f"As of {SNAP}, the atlas codes its effect on the quality of democracy {EFFECT_WORDS['+M']}, on government "
+            f"efficacy {EFFECT_WORDS['+S']}, and on the other two families {EFFECT_WORDS['0']}. It checked the state ballot "
+            "and local routes on that date, and the state statute and federal statute routes carry no date.",
         ],
         "tokens": ["oa.color.data.emphasisRed.onNewsprint", TOKEN_LINE],
         "why": {"text": ["A single score would hide what the atlas keeps apart: the families use different units, and a reform "
@@ -2343,13 +2343,354 @@ def rule_15_16(book):
     }
 
 
+AUTH = ["LE02", "LE03", "LE19", "LT13", "LT14", "LT16", "LT17"]
+
+
+def min_pw(label, rows):
+    """The narrowest pill, from 120 px up, whose label wraps to the given rows."""
+    for pw in range(120, 240):
+        if len(wrap(label, pw - 2 * PAD)) <= rows:
+            return pw
+    raise SystemExit(f"{label!r} needs more than {rows} rows")
+
+
+def name_at(y, xs, rows, x_end=W):
+    """A layer's name beside a boundary, right-aligned at the right end of the drawing where no crossing line stands
+    within 8 px of it, else at the right end of the widest gap left between crossings. rows is the name on one or two
+    lines; returns (svg, x) or stops the build when no gap holds it."""
+    span = max(tw(r_) for r_ in rows) + 8
+    edges = sorted([0] + [x for x in xs] + [x_end + 8])
+    gaps = [(a + 8, b - 8) for a, b in zip(edges, edges[1:]) if b - 8 - (a + 8) >= span - 8]
+    need(gaps, f"no room for the layer name {' '.join(rows)!r}")
+    a, b = gaps[-1]
+    x = min(b, x_end)
+    return lines(x, y, rows, "fl", "end"), x
+
+
+def authority_plate(failure=False):
+    """The seven authority connections in one drawing: the economy layer above, the four deciding bodies in the core
+    layer, the technology layer below. Lines into the economy layer run up from the first core row; lines into the
+    technology layer run down, through the gap between the second row's pills or outside them, so no two lines cross.
+    Every line is drawn by wire_marks with its authority switch: the open diamond, no tag, its delay ticks. failure draws
+    one pill for the government in place of the four bodies (Rule 15.17's failure). Returns (svg, pills)."""
+    ec2 = Pill(short("EC2"), 0, 0, min_pw(short("EC2"), 3))
+    ec10 = Pill(short("EC10"), 0, 0, min_pw(short("EC10"), 3))
+    ec2.cx, ec10.cx = 2 + ec2.pw / 2, W - 2 - ec10.pw / 2
+    need(ec10.left - ec2.right >= 12, "the economy layer's pills touch")
+    h0 = max(ec2.h, ec10.h)
+    ec2.cy = ec10.cy = 2 + h0 / 2
+    out, crossing1, crossing2 = [], [], []
+    lab = []                                     # (x, y, anchor) for each "decides"
+    LB = 22                                      # a "decides" label sits 22 px under the economy row
+    div1 = 2 + h0 + 64
+    if failure:
+        gov = Pill("The government", W / 2, 0, 170)
+        gov.cy = div1 + 40 + gov.h / 2
+        core = [gov]
+        r_bot = gov.bot
+    else:
+        d1 = Pill(short("D1"), 0, 0, min_pw(short("D1"), 2))
+        d2 = Pill(short("D2"), 0, 0, min_pw(short("D2"), 2))
+        d4 = Pill(short("D4"), 0, 0, min_pw(short("D4"), 2))
+        d6 = Pill(short("D6"), 0, 0, min_pw(short("D6"), 2))
+        d1.cx, d2.cx = 2 + d1.pw / 2, W - 2 - d2.pw / 2
+        d4.cx, d6.cx = 2 + d4.pw / 2, W - 2 - d6.pw / 2
+        h1 = max(d1.h, d2.h)
+        d1.cy = d2.cy = div1 + 40 + h1 / 2
+        h2 = max(d4.h, d6.h)
+        d4.cy = d6.cy = d1.cy + h1 / 2 + 60 + h2 / 2
+        core = [d1, d2, d4, d6]
+        r_bot = d4.bot
+        corridor = (d4.right, d6.left)
+        need(corridor[1] - corridor[0] >= 20, f"the gap between the second core row's pills is {corridor[1] - corridor[0]:.0f} px")
+    div2 = r_bot + 40
+    tc5 = Pill(short("TC5"), W / 2, 0, min_pw(short("TC5"), 3))
+    tc5.cy = div2 + 44 + tc5.h / 2
+    tc7 = Pill(short("TC7"), W / 2, 0, min_pw(short("TC7"), 1))
+    tc7.cy = tc5.bot + 62 + tc7.h / 2
+
+    def flat(p, x):
+        need(p.left + p.h / 2 <= x <= p.right - p.h / 2, f"a line meets {p.rows} off its flat edge at x {x:.0f}")
+        return x
+
+    def draw(pts, lid):
+        l = link(lid)
+        need(l["type"] == "authority", f"connection {lid} is no authority connection")
+        m, _ = conn(pts, "documented", None, l["delay"], authority=True)
+        out.append(wr(m))
+
+    if failure:
+        g = core[0]
+        ups = [(ec2, g.left + g.h / 2 + 18), (ec10, g.right - g.h / 2 - 18)]
+        for p, x in ups:
+            xe = flat(p, min(max(x, p.left + p.h / 2), p.right - p.h / 2))
+            ym = div1 + 18
+            pts = [(x, g.top - 2), (x, ym), (xe, ym), (xe, p.bot + 2)] if abs(xe - x) > 1 else [(x, g.top - 2), (x, p.bot + 2)]
+            m, _ = conn(pts, "documented", None, "S", authority=True)
+            out.append(wr(m))
+            crossing1.append(xe)
+            lab.append((xe + (12 if xe > W / 2 else -12), p.bot + LB, "start" if xe > W / 2 else "end"))
+        x5a, x7a = W / 2 - 14, W / 2 + 14
+        m, _ = conn([(x5a, g.bot + 2), (x5a, tc5.top - 2)], "documented", None, "S", authority=True)
+        out.append(wr(m))
+        crossing2.append(x5a)
+        lane = tc5.right + 14
+        m, _ = conn([(x7a + 40, g.bot + 2), (x7a + 40, g.bot + 18), (lane, g.bot + 18), (lane, tc7.cy - 30),
+                     (W / 2 + 40, tc7.cy - 30), (W / 2 + 40, tc7.top - 2)], "documented", None, "S", authority=True)
+        out.append(wr(m))
+        crossing2.append(lane)
+        lab.append((x5a - 12, tc5.top - 14, "end"))
+        lab.append((lane - 12, tc7.cy - 40, "end"))
+    else:
+        # up into the economy layer: LE02 and LE19 straight, LE03 with one jog under the boundary
+        x02 = flat(d1, flat(ec2, min(d1.right - d1.h / 2, ec2.right - ec2.h / 2) - 24))
+        draw([(x02, d1.top - 2), (x02, ec2.bot + 2)], "LE02")
+        x03e = flat(ec2, min(d1.right - d1.h / 2, ec2.right - ec2.h / 2) + 0)
+        x03e = min(x03e + 26, ec2.right - ec2.h / 2)
+        x03s = flat(d2, d2.left + d2.h / 2 + 6)
+        ym = d1.top - 18
+        draw([(x03s, d2.top - 2), (x03s, ym), (x03e, ym), (x03e, ec2.bot + 2)], "LE03")
+        x19 = flat(d2, flat(ec10, max(d2.left + d2.h / 2, ec10.left + ec10.h / 2) + 0))
+        x19 = max(x19, x03s + 24)
+        flat(ec10, x19)
+        draw([(x19, d2.top - 2), (x19, ec10.bot + 2)], "LE19")
+        crossing1 += [x02, x03e, x19]
+        lab += [(x02 - 12, ec2.bot + LB, "end"), (x03e + 12, ec2.bot + LB, "start"), (x19 + 12, ec10.bot + LB, "start")]
+        # down into the technology layer: LT17 and LT16 through the gap between D4 and D6, then into TC5
+        mid = (corridor[0] + corridor[1]) / 2
+        xa, xb = mid - 7, mid + 7
+        y17 = d1.bot + 22
+        y16 = d1.bot + 38
+        s17 = flat(d1, d1.right - d1.h / 2 - 4)
+        s16 = flat(d2, d2.left + d2.h / 2 + 30)
+        need(s16 > xb + 8 and s17 < xa - 8, "the lines into the gap would cross")
+        flat(tc5, xa), flat(tc5, xb)
+        draw([(s17, d1.bot + 2), (s17, y17), (xa, y17), (xa, tc5.top - 2)], "LT17")
+        draw([(s16, d2.bot + 2), (s16, y16), (xb, y16), (xb, tc5.top - 2)], "LT16")
+        # LT13 and LT14 down the outsides of TC5, then into TC7
+        x13 = flat(d4, d4.left + d4.h / 2 + 4)
+        x14 = flat(d6, d6.right - d6.h / 2 - 4)
+        need(x13 < tc5.left - 8 and x14 > tc5.right + 8, "the outer lines touch Technology's first pill")
+        yt = tc5.bot + 30
+        e13, e14 = flat(tc7, tc7.left + tc7.h / 2 + 30), flat(tc7, tc7.right - tc7.h / 2 - 30)
+        draw([(x13, d4.bot + 2), (x13, yt), (e13, yt), (e13, tc7.top - 2)], "LT13")
+        draw([(x14, d6.bot + 2), (x14, yt), (e14, yt), (e14, tc7.top - 2)], "LT14")
+        crossing2 += [x13, xa, xb, x14]
+        lab += [(xa - 12, tc5.top - 14, "end"), (xb + 12, tc5.top - 14, "start"),
+                (e13 - 12, yt - 10, "end"), (e14 + 12, yt - 10, "start")]
+    for x, y, anc in lab:
+        out.append(text(x, y, "decides", "v", anc))
+    out.append(boundary(div1, crossing1))
+    out.append(boundary(div2, crossing2))
+    n1, _ = name_at(div1 - 8 - LH, crossing1, ["Economy", "layer"])
+    n2, _ = name_at(div1 + 20, crossing1, ["Core", "layer"])
+    n3, _ = name_at(div2 - 8 - LH, crossing2, ["Core", "layer"])
+    n4, _ = name_at(div2 + 20, crossing2, ["Technology", "layer"])
+    out.append(n1 + n2 + n3 + n4)
+    out.append("".join(p.svg() for p in [ec2, ec10, *core, tc5, tc7]))
+    return svg_wrap("".join(out), tc7.bot + 4), [ec2, ec10, *core, tc5, tc7]
+
+
+def rule_15_17(book):
+    """Worked example 5: the atlas's seven authority connections in one drawing (Master Brief section 14)."""
+    auth = sorted(k for k, l in LINK.items() if l["type"] == "authority")
+    need(auth == sorted(AUTH), f"the authority connections changed: {auth}")
+    want = {"LE02": ("D1", "EC2"), "LE03": ("D2", "EC2"), "LE19": ("D2", "EC10"), "LT13": ("D4", "TC7"),
+            "LT14": ("D6", "TC7"), "LT16": ("D2", "TC5"), "LT17": ("D1", "TC5")}
+    for k, (a, b) in want.items():
+        l = link(k)
+        need((l["from"], l["to"], l["polarity"], l["evidence"], l["loops"]) == (a, b, None, "documented", []),
+             f"authority connection {k} changed")
+    need(all(node(a)["layer"] == "core" for a, _ in want.values()), "a deciding body left the core layer")
+    lay = {b: node(b)["layer"] for _, b in want.values()}
+    need(lay == {"EC2": "economy", "EC10": "economy", "TC7": "technology", "TC5": "technology"}, "a decided variable changed layer")
+    sm = {link(k)["sign_meaning"] for k in AUTH}
+    need(sm == {"This line shows who has the power to decide. It does not say which way they will decide."},
+         "the atlas's sentence on authority lines changed")
+    by_target = Counter(b for _, b in want.values())
+    two = sorted(b for b, n in by_target.items() if n == 2)
+    need(two == ["EC2", "TC5", "TC7"] and by_target["EC10"] == 1, "the count of bodies over each variable changed")
+    reach = {a: {lay_ for k_, (a_, b_) in want.items() if a_ == a for lay_ in [node(b_)["layer"]]} for a, _ in want.values()}
+    need(sorted(a for a, s_ in reach.items() if len(s_) == 2) == ["D1", "D2"], "the bodies that reach both layers changed")
+    svg, _ = authority_plate()
+
+    def li(k):
+        l = link(k)
+        return f'{chip("Connection", k)} “{e(l["name"])}”.&#160;{grade_word(l["evidence"], gloss=False)}'
+
+    econ = [k for k in AUTH if lay[want[k][1]] == "economy"]
+    tech = [k for k in AUTH if lay[want[k][1]] == "technology"]
+    words = (f'<p class="k">Into the economy layer</p>{kw([li(k) for k in econ])}'
+             f'<p class="k">Into the technology layer</p>{kw([li(k) for k in tech])}'
+             f'<p class="nt">Two bodies decide each of {chip("Variable", "EC2", ",")} {chip("Variable", "TC5")} and '
+             f'{chip("Variable", "TC7", ";")} one decides {chip("Variable", "EC10", ".")} Of each line, the atlas says: '
+             f'“{e(next(iter(sm)))}”</p>'
+             + src("its seven authority connections and the variables they reach"))
+    body = (diagram_label("documented", "on the public record, the grade of all seven connections")
+            + beside(fig(svg), words))
+    book.add("s-15-17-correct", body, rule="15.17", readable=True, wide=True,
+             alt=("The seven authority connections in our systems atlas, in one drawing of three layers. At the top, the "
+                  "economy layer: Public investment in research and infrastructure, and Costs of tariffs and trade rules. In the "
+                  "core layer, four deciding bodies: Congressional capacity and Executive unilateralism, then Oversight and "
+                  "enforcement and State and local experimentation. At the bottom, the technology layer: Government’s ability to "
+                  "build and run digital services, and Use of pricing algorithms. Seven solid lines, each ending in an open "
+                  "diamond with the word decides and no sign, run from the bodies to what they decide, and none crosses another. "
+                  "Beside it, each connection with its name, all documented: "
+                  + "; ".join(f"Connection {k}, {link(k)['name']}" for k in AUTH)
+                  + ". Two bodies decide each of three variables, and one decides tariff costs. Of each line the atlas says: "
+                  + next(iter(sm))),
+             notes="All seven authority connections read by script, with their ends, layers and grades; drawn by wire_marks "
+                   "with its authority switch, routed so no two lines cross.")
+    book.log("15.17 correct", "Seven authority connections, who decides", "D05")
+    fsvg, _ = authority_plate(failure=True)
+    fail = dnp() + fig(fsvg)
+    book.add("s-15-17-failure", fail, rule="15.17",
+             alt=(FC + "One pill named The government, in place of the four bodies, with lines that end in open diamonds to "
+                  "the four variables the atlas’s authority connections reach, in the economy and technology layers."),
+             notes="Labeled failure: the four deciding bodies folded into one, so the drawing cannot show who decides what.")
+    return {
+        "id": "15.17",
+        "title": "Draw who holds power over each level in one authority diagram.",
+        "rule": [
+            f"Our systems atlas records {words_n(len(AUTH))} authority connections. Each runs from a body in the core layer, "
+            "such as Congress or the state and local governments that test reforms, to a variable in the economy or technology "
+            "layer that the body has the legal power to set. Draw all seven in one diagram: the layers stacked with a rule "
+            "between each and its name, one pill for each body and each variable, and every line in the authority mark of "
+            "Rule 15.5.",
+            "Route the lines so that none crosses another, and list each connection beside the diagram with its name. Then "
+            f"a reader sees what no single line shows: two bodies hold power over {words_n(len(two))} of the four variables, "
+            "and Congress and the executive each reach both layers.",
+        ],
+        "tokens": [TOKEN_LINE, "oa.color.border.strong"],
+        "why": {"text": ["Power in the atlas is shared. Congress appropriates public investment and the executive administers it; "
+                         "antitrust enforcers and state governments both set rules for pricing software. One diagram keeps every "
+                         "body apart and shows where their powers meet."],
+                "basis": "Our systems atlas’s authority connections and model conventions"},
+        "correct": {"specimen": "s-15-17-correct",
+                    "caption": "The atlas’s seven authority connections in one diagram, from four bodies in the core layer to "
+                               "four variables in the economy and technology layers, with each connection named beside it."},
+        "failure": {"specimen": "s-15-17-failure",
+                    "caption": "<strong>Fails Rule 15.17.</strong> One pill for the government stands in for four bodies, so the "
+                               "drawing cannot say who decides what. The atlas records Congress, the executive, enforcers and "
+                               "states and cities apart."},
+        "specs": [
+            {"label": "Layers", "value": "Stacked, with one 1 px rule between each two and both names beside it (Rule 15.9)"},
+            {"label": "Bodies", "value": "One pill each, in the core layer"},
+            {"label": "Lines", "value": "The authority mark of Rule 15.5: solid, an open diamond, “decides”, no sign"},
+            {"label": "Crossings", "value": "None; the build stops if a line meets a pill off its flat edge or two lines touch"},
+            {"label": "Beside it", "value": "Each connection’s chip, name and grade word, grouped by the layer it reaches"},
+        ],
+        "related": ["13"],
+        "builders": ["Read every authority connection from the atlas, check that each runs from the core layer and sits in no "
+                     "loop, and stop the build if the count or any end changes."],
+    }
+
+
+def rule_15_18(book):
+    """Worked example 6: Loop B2, a conceptual loop, with its missing chain printed beside its grade, and the atlas's
+    other two conceptual loops named beside it (Master Brief section 14)."""
+    b2, b3, r9 = LOOP["B2"], LOOP["B3"], LOOP["R9"]
+    con = sorted(k for k, p in LOOP.items() if p["closure"].startswith("conceptual"))
+    need(con == ["B2", "B3", "R9"], f"the atlas's conceptual loops changed: {con}")
+    need(b2["closure"] == "conceptual: no complete numbered chain" and not b2["links"] and b2["type"] == "B"
+         and b2["evidence"] == "well-supported", "Loop B2 changed")
+    st = [lab for lab, _ in b2["chain_labels"]]
+    sg = [s_ for _, s_ in b2["chain"]]
+    need(st == ["Household hardship", "Automatic support (UI, credits)"] and sg == ["+", "-"], "Loop B2's stations changed")
+    es = C13_sentences(b2["evidence_summary"])
+    need(es == ["The model grades the mechanism well supported.",
+                "Neither step is a numbered connection with its own citation, so the evidence cannot be inspected step by "
+                "step, and that missing chain is the weakest point."], "Loop B2's evidence summary changed")
+    how = b2["how_to_read"]
+    rev = "the reverse of households' financial security"
+    need(rev in how and how.endswith("neither arrow is a numbered connection."), "Loop B2's reading changed")
+    need(node("A4")["title"] == "Households' financial security", "Variable A4 changed its title")
+    others = {"B3": ("well-supported where entry is possible", "Its three variables sit outside the model's numbered variables "
+                     "and none of its steps is a numbered connection, so the weakest point is the missing chain."),
+              "R9": ("hypothesis", "The complete loop is a design hypothesis.")}
+    for k, (g, s_) in others.items():
+        need(LOOP[k]["evidence"] == g and s_ in LOOP[k]["evidence_summary"], f"Loop {k}'s grade or summary changed")
+    b, h = drawn_loop(2, st, [{"sign": x, "hollow": True} for x in sg], numbered=False, inside=("B2", "balancing"), thin=True)
+    miss = es[1]
+    lab_ = (f'<div class="evr"><span class="ev">{e(GRADE["well-supported"][0])}</span><span class="gr">the atlas’s grade for '
+            f'the mechanism; no numbered chain, which the atlas calls the weakest point</span></div>')
+    o_items = [f'{chip("Loop", "B3")} “{e(b3["title"])}”. {grade_word("well-supported")}, where entry is possible. '
+               f'No numbered chain: “{e(others["B3"][1])}”',
+               f'{chip("Loop", "R9")} “{e(r9["title"])}”. {grade_word("hypothesis")}. “{e(others["R9"][1])}”']
+    up, parts = True, []
+    for lab, s_ in zip(st, sg):
+        parts.append(("more " if up else "less ") + lab.split(" (")[0].lower())
+        up = up if s_ == "+" else not up
+    ra = ", ".join(parts) + ", and back to " + ("more " if up else "less ") + st[0].lower() + "."
+    ra = ra[0].upper() + ra[1:]
+    need(ra == "More household hardship, more automatic support, and back to less household hardship.", f"Loop B2 reads {ra!r}")
+    words = (ra_p(ra)
+             + f'<p class="k">The missing chain</p><p class="nt">The atlas: “{e(es[0])} {e(miss)}”</p>'
+             + f'<p class="nt">Household hardship is “{e(rev)}”, {chip("Variable", "A4", ",")} read the other way.</p>'
+             + f'<p class="k">The atlas’s other conceptual loops</p>{kw(o_items)}'
+             + src("loops B2, B3 and R9"))
+    body = lab_ + beside(hed("Loop", "B2", b2["title"]) + fig(svg_wrap(b, h)), words)
+    book.add("s-15-18-correct", body, rule="15.18", readable=True, wide=True,
+             alt=(f"Loop B2 from our systems atlas, “{b2['title']}”, under a label reading Well supported, the atlas’s grade "
+                  "for the mechanism; no numbered chain, which the atlas calls the weakest point. Two thin pills, Household "
+                  "hardship and Automatic support (UI, credits), joined by hollow lines: plus, raises, over the top, and minus, "
+                  "lowers, under the bottom, with no step numbers. The loop reads: more household hardship, more automatic "
+                  f"support, and back to less household hardship. Beside it, the atlas’s words: {es[0]} {miss} Household "
+                  f"hardship is {rev}, Variable A4, read the other way. Then the atlas’s other conceptual loops: Loop B3, "
+                  f"{b3['title']}, well supported where entry is possible, with no numbered chain; Loop R9, {r9['title']}, "
+                  f"hypothesis: {others['R9'][1]}"),
+             notes="Stations, signs, grade and the missing chain read from the loop's record; hollow lines and thin pills as "
+                   "Rules 13.4 and 15.7 set.")
+    book.log("15.18 correct", "Loop B2, automatic benefits", "D08")
+    fail = (dnp() + diagram_label("well-supported", "strong research evidence") + hed("Loop", "B2", b2["title"])
+            + fig(svg_wrap(b, h)))
+    book.add("s-15-18-failure", fail, rule="15.18",
+             alt=(FC + "Loop B2 drawn as before, hollow and thin, under a label that reads only Well supported, strong research "
+                  "evidence, with no word that the loop has no numbered chain."),
+             notes="Labeled failure: the grade printed alone, so it reads as the grade of steps that were never numbered.")
+    return {
+        "id": "15.18",
+        "title": "Print a conceptual loop’s missing chain beside its grade.",
+        "rule": [
+            f"Loop B2, “{b2['title']}”, is one of our systems atlas’s {words_n(len(con))} conceptual loops. The atlas grades "
+            "its mechanism well supported, and none of its steps is a numbered connection. Draw it as Rule 15.7 sets, with "
+            "hollow lines between thin pills, and print in the label, right after the grade, that the loop has no numbered "
+            "chain and that the atlas calls this its weakest point.",
+            "Quote the atlas’s words on the missing chain beside the drawing, tie each station to a numbered variable where "
+            "the atlas does, and name the atlas’s other conceptual loops, Loop B3 and Loop R9, with their grades.",
+        ],
+        "tokens": ["oa.chart.grade.conceptual.rail"],
+        "why": {"text": ["A grade printed alone reads as the grade of each step. For a conceptual loop it belongs to the mechanism "
+                         "as a whole, and no step carries a citation of its own, so a reader cannot check the loop one step "
+                         "at a time."],
+                "basis": "Our systems atlas, Loop B2’s record and evidence summary"},
+        "correct": {"specimen": "s-15-18-correct",
+                    "caption": "Loop B2 with its missing chain in the label beside its grade, the atlas’s words on it, and the "
+                               "atlas’s other two conceptual loops named with their grades."},
+        "failure": {"specimen": "s-15-18-failure",
+                    "caption": "<strong>Fails Rule 15.18.</strong> The label gives the grade alone, so Well supported reads as "
+                               "a checked chain of steps. The atlas grades the mechanism and calls the missing chain its "
+                               "weakest point."},
+        "specs": [
+            {"label": "Label", "value": "The grade word, then “no numbered chain”, in one line"},
+            {"label": "Drawing", "value": "Hollow lines with their signs, 1 px pills, no step numbers (Rule 15.7)"},
+            {"label": "Beside it", "value": "The atlas’s words on the missing chain, quoted; a station tied to a numbered variable in its chip"},
+            {"label": "The others", "value": f"Each conceptual loop named in its chip with its grade; {words_n(len(con))} as of the snapshot"},
+        ],
+        "related": ["13"],
+        "builders": ["Read the closure and the evidence summary from the loop’s record, and stop the build if a conceptual "
+                     "loop gains numbered connections or the summary changes."],
+    }
+
+
 # ===============================================================================================================
 # The chapter
 # ===============================================================================================================
 def chapter(book):
     op = opener(book)
     rules = [rule_15_1(book), rule_15_2(book), rule_15_3(book), rule_15_4(book), rule_15_5(book), rule_15_6(book),
-             rule_15_7(book), rule_15_8(book), rule_15_9(book), rule_15_10(book), rule_15_13(book), rule_15_14(book)]
+             rule_15_7(book), rule_15_8(book), rule_15_9(book), rule_15_10(book), rule_15_11(book), rule_15_12(book),
+             rule_15_13(book), rule_15_14(book), rule_15_15(book), rule_15_16(book), rule_15_17(book), rule_15_18(book)]
     need([r["id"] for r in rules] == BUILT, "the chapter's rules differ from the round's list")
     need(not set(BUILT) & set(PLANNED), "a rule is both built and planned")
     data = {
@@ -2365,13 +2706,16 @@ def chapter(book):
             "rise or fall, connections are the arrows between them, and loops are chains of connections that come back to "
             "where they started.",
             "Chapter 13 sets how a connection carries its grade, its delay and its source. The rules here show how to read and "
-            "combine those marks, then work through mechanisms from the atlas as it records them.",
+            "combine those marks and how to place a reform on them, then work through mechanisms from the atlas as it "
+            "records them.",
         ],
         "groups": [
             {"before_rule": "15.1", "number": 1, "title": "Reading a systems drawing",
              "line": "Each mark in a systems drawing answers one question about the mechanism, and a reader can name every "
                      "answer without color."},
-            {"before_rule": "15.13", "number": 2, "title": "Worked examples from the atlas",
+            {"before_rule": "15.11", "number": 2, "title": "Reforms on the drawing",
+             "line": "A reform turns red only where the atlas says it acts, and its two grades stay apart."},
+            {"before_rule": "15.13", "number": 3, "title": "Worked examples from the atlas",
              "line": "Each example draws one mechanism from our systems atlas as the atlas records it, and shows what a reader "
                      "can take from it."},
         ],
@@ -2478,7 +2822,7 @@ def check(data, book):
     # plates that hold one drawing alone keep one true size
     wide = sorted(k for k, m_ in book.manifest.items() if m_.get("wide_px"))
     want = sorted([data["opener"]["specimen"]] + [r["correct"]["specimen"] for r in data["rules"]]
-                  + ["s-15-3-failure", "s-15-4-failure"])
+                  + ["s-15-3-failure", "s-15-4-failure", "s-15-15-failure"])
     if wide != want:
         fails.append(f"the wide plates are {wide}, where D3-480 wants {want}")
     css = data["plate_css"]

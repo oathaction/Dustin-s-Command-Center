@@ -80,6 +80,7 @@
 /* A11 (round 1): a mark that is the red point and carries its keyline keeps its red fill (Rule 05.3): two classes outrank
    the keyline's fill: none, which stays for a keyline drawn as its own outline */
 .oac-f-point.oac-s-point-keyline { fill: var(--oa-chart-color-point); }
+.oac-f-light-fill.oac-s-context { fill: var(--oa-chart-color-light-fill); }   /* G2: a light-fill mark with its edge keeps its fill */
 .oac-f-band { fill: var(--oa-chart-color-band); }
 .oac-f-track { fill: var(--oa-chart-color-track); } .oac-s-track { stroke: var(--oa-chart-color-track); fill: none; }
 .oac-f-light-fill { fill: var(--oa-chart-color-light-fill); }

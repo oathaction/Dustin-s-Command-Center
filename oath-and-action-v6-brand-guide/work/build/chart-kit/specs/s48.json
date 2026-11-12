@@ -57,10 +57,10 @@
       "Republicans"
     ],
     "words": {
-      "Democrats": "Democrats, {n}",
-      "Independents": "{n} independent",
-      "Vacancies": "{n} vacant",
-      "Republicans": "Republicans, {n}"
+      "Democrats": "Democrats, {n}",
+      "Independents": "{n} independent",
+      "Vacancies": "{n} vacant",
+      "Republicans": "Republicans, {n}"
     },
     "open": "Vacancies",
     "majority": {

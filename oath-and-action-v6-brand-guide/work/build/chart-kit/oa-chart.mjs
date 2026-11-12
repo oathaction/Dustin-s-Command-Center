@@ -735,6 +735,20 @@ async function self_test() {
       if (!okd) bad++; if (!c2) bad++; if (!c3) bad++;
       fs.rmSync(td, { recursive: true, force: true });
     }
+    // ED-E15 and ruling (c): marks the title names together share the red as one job; two jobs still fail. G2: the opt-in edge
+    {
+      const nf = P.named_fill({ ground: 'newsprint', t: () => 1 }, undefined, 'k', null, ['62', '65']);
+      const okn = nf({ k: '62' }) === 'point' && nf({ k: '65' }) === 'point' && nf({ k: '40' }) === 'light-fill' && nf.job({ k: '65' }).job === 'point' && !nf.job({ k: '40' }).job &&
+        nf.edge({ k: '40' }).stroke === 'context' && !nf.edge({ k: '62' }).stroke;
+      const d1 = JSON.parse(JSON.stringify(d0)), d2 = JSON.parse(JSON.stringify(d0));
+      d1.marks.push({ kind: 'rect', x: 1, y: 1, w: 2, h: 2, fill: 'point', data: {}, job: 'point' }, { kind: 'rect', x: 50, y: 50, w: 2, h: 2, fill: 'point', data: {}, job: 'point' });
+      d2.marks.push({ kind: 'rect', x: 1, y: 1, w: 2, h: 2, fill: 'point', data: {}, job: 'point' }, { kind: 'rect', x: 50, y: 50, w: 2, h: 2, fill: 'point', data: {}, job: 'other' });
+      const f1 = C.check_drawing(s, d1, TOK.newsprint, 'self-test'), f2 = C.check_drawing(s, d2, TOK.newsprint, 'self-test');
+      const cj = mk({}); const gj = cj.group({ job: 'point' }); cj.circle(5, 5, 2, { fill: 'point' }); gj.end(); cj.circle(9, 9, 2, { fill: 'point', job: 'point' });
+      const okj = !f1.some(x => /working reds/.test(x)) && f2.some(x => /2 working reds/.test(x)) && cj.marks.every(m => m.job === 'point') && /<g data-oa-job="point">/.test(cj._els[0]) && /data-oa-job="point"/.test(cj._els[1]);
+      console.log(`${okn && okj ? 'pass' : 'FAIL'} a list of points shares the red as one job (marks in a job group or with job count once); two jobs still fail; the light fill's opt-in edge`);
+      if (!(okn && okj)) bad++;
+    }
     // RS-S3: a drawing reports its arrangement, the phone one under 480 px or where the form says so
     const da = K.draw(s, r.rows, { width: 720, ground: 'newsprint', tokens: TOK.newsprint }), dp = K.draw(s, r.rows, { width: 358, ground: 'newsprint', tokens: TOK.newsprint });
     const ca = mk({}); ca.arrange('phone');
