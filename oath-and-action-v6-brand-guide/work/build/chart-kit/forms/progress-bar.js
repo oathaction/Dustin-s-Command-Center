@@ -2,16 +2,19 @@
  * in the subject ink from zero, the rest in the track ink, the threshold as a tick in the text's ink with its words over
  * it, and the gap between count and threshold marked under the bar with its words. Under the bar the count and the rest
  * are named, with each group's share of them in words (a vote by party in one ink, each party named: DR-48, DR-58).
+ * Where the count is a vote, labels.rest "outline" draws the other side as a segment of its own in outline in the same
+ * ink, and labels.ink "party" sets both sides in the party-mark ink (Rule 01.2, the data lead's RF-12).
  * encode: group (category), value (number: each group's part of the count), against (number, optional: each group's
  * part of the rest).
  * labels: of (the whole, such as 100 senators), needed (the threshold), needed_words, short_words ('{n} short'),
- * value_words ('{v} yes'), against_words ('{v} no'), groups ({group: printed name}), group_words ('{name} {v}'). */
+ * value_words ('{v} yes'), against_words ('{v} no'), groups ({group: printed name}), group_words ('{name} {v}'), ink
+ * (the count's ink role, default subject), rest ("track", default, or "outline"). */
 (function (K) {
   'use strict';
   K.register_chart({
     form: 'progress-bar', name: 'Progress Bar', family: 'gauges-and-indicators',
     encode: { group: 'category', value: 'number', against: 'number?' },
-    labels: ['of', 'needed', 'needed_words', 'short_words', 'value_words', 'against_words', 'groups', 'group_words'],
+    labels: ['of', 'needed', 'needed_words', 'short_words', 'value_words', 'against_words', 'groups', 'group_words', 'ink', 'rest'],
     phone: 'same',
     draw: function (c) {
       var rows = c.rows, eg = c.field('group'), ev = c.field('value'), ea = c.field('against', false), L = c.labels, W = c.width;
@@ -27,8 +30,13 @@
         y = size + 10;
       }
       var by = y;
-      c.rect(0, by, xs(v), bh, { fill: 'subject', kind: 'bar', axis: 'x', zero: 0, data: { key: 'count', field: ev, value: v } });
-      c.rect(xs(v), by, W - xs(v), bh, { fill: 'track', kind: 'segment', data: { key: 'rest', field: ea || 'rest', value: of - v } });
+      var ink = L.ink || 'subject';
+      c.rect(0, by, xs(v), bh, { fill: ink, kind: 'bar', axis: 'x', zero: 0, data: { key: 'count', field: ev, value: v } });
+      if (L.rest === 'outline') {
+        // the other side of a vote, its own segment in outline in the same ink, inside its length (Rule 01.2)
+        c.rect(xs(v) + 1, by, W - xs(v) - 1, bh, { fill: 'surface', kind: 'segment', data: { key: 'rest', field: ea || 'rest', value: of - v } });
+        c.rect(xs(v) + 1.6, by + 0.6, W - xs(v) - 2.2, bh - 1.2, { stroke: ink, width: 1.2, mark: false });
+      } else c.rect(xs(v), by, W - xs(v), bh, { fill: 'track', kind: 'segment', data: { key: 'rest', field: ea || 'rest', value: of - v } });
       // count each group's part for the checks
       rows.forEach(function (r) { c.datum(xs(v) / 2, by + bh / 2, { data: { key: r[eg], field: ev, value: r[ev] } }); if (ea) c.datum(xs(v) + 2, by + bh / 2, { data: { key: r[eg], field: ea, value: r[ea] } }); });
       var yy = by + bh;
@@ -49,7 +57,8 @@
       var names = L.groups || {}, gw = function (r, f) { var nm = names[r[eg]] !== undefined ? names[r[eg]] : String(r[eg]); return String(L.group_words || '{name} {v}').split('{name}').join(nm).split('{v}').join(K.fmt(r[f], 'integer')); };
       var side = function (x, anchor, head, f, top) {
         var hb = c.text(x, top + size, head, { role: 'label', weight: 700, anchor: anchor });
-        var list = rows.filter(function (r) { return r[f] > 0; }).map(function (r) { return gw(r, f); }).join(', ');
+        var its = rows.filter(function (r) { return r[f] > 0; }).map(function (r) { return gw(r, f); });
+        var list = its.length > 1 ? its.slice(0, -1).join(', ') + ' and ' + its[its.length - 1] : its.join('');
         if (!list) return hb.bottom;
         var lb = c.text(x, hb.bottom + 2 + size * 0.95, list, { role: 'label', anchor: anchor, max: W / 2 - 12 });
         return lb.bottom;
