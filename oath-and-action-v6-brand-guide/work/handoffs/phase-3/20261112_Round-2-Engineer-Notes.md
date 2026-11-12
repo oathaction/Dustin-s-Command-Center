@@ -378,3 +378,36 @@ To others:
 
 Modified (mine): `work/build/chart-kit/kit.js` (ink geometry and draw order; the knockout and halo for crossed words; `text_box`; `K.stroke_crosses`, `K.covers`, `K.crossed_by`; `typography.nbsp`; open tracking; `fc: 'total'`; `strike`; RB-G5's row header; `data-oa-warnings` cleared; bands and interval flag in the draw result), `parts.js` (`clear_label`, `row_name`, `row_value`, `row_weight`; `band`'s default edges and its record; `key`'s `edge`; `place_labels`' `paths` and `clear_paths`), `checks.js` (red share, band contrast, interval plot width, crossings, AX S8's source-line, margin, unit and check-only checks, `typography.nbsp`, the total's forced-colors ground), `oa-chart.mjs` (the sweep, `--no-sweep`, the guide build's notes, self-test cases), `kit.css` (`.oac-t-open`, `.oac-fc-total`), `README.md` (round 2), `fixtures/specs/s14.json` (its note hidden on a phone); `work/build/scripts/phase-2/guide_build.py` (two-line bars, the sketch stage as a group, `sketch_names`, the wide plate's size line, notes from the kit, self-test expectations), `guide_check.js` (a named sketch group passes the alt test); `work/build/scripts/phase-3/guide_charts.py` (kit notes); `work/build/guide/shell/guide-shell.css` (two-line bars; print: plate head, tall plates), `guide-shell.js` (contents panel snap; `is-print-tall` at `beforeprint`); this notes file.
 Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/3ab6316c-6935-5f23-804c-cfaafd548447/scratchpad/phase-3/round-2-fix/engineer/` (`head/`, `mine/`, `snap-*.json`, `snapdiff.js`; `b1/` to `b3/` strict builds; `kit-all/`, `kit-all2/`, `kit-png/`; `print/`, `ui/`, `shots/`; `gcst/`; scripts `shot.mjs`, `cross.mjs`, `redshare.mjs`, `ivstat.mjs`, `ivnarrow.mjs`).
+
+## After the second pass
+
+The access reviewer's N1 and N2 (`20261112_Round-2-Red-Team-Access-Production.md`, "Second pass"), the data lead's RF-25.
+
+### Contract changes
+
+- **N1, the sweep's widths.** The sweep skips only the widths this spec was already checked at (`guide_widths(spec)`), so an entry is now drawn at a plate's columns too (510 px is a 574 px window). It runs to the widest drawing the guide gives the chart, `SWEEP_MAX` 869 px, capped by the artboard: 720 px for a reading chart, 869 for the eight wide ones (S05, S06, S08, S09, S11, S13, S15, S37), which before stopped at 723.
+- **RF-25, an interval narrower than its mark.** State 1 needs nothing new: a form that draws 7 px dots records them as its estimate marks, and the check measures them (7 + 10 = 17 px). State 2: the form calls `c.margins_in_words()` at that width, sets each row's margin with `c.text(..., {margin_of: <the row's data key>})` and the note in the drawing with `c.text(..., {margin_note: true})`. The check passes that state only when every estimate's key has its margin printed and the note is drawn. An `interval: true` form that draws no interval ends and does not say so now fails ("draw the intervals, or print every margin in words"). These names are proposed to maker B; a different name goes under maker B's "Requests to the engineer" and I rename. The README carries RF-25's line word for word, with the call.
+
+### Routine calls
+
+- D3-xxx | The sweep skips only the spec's own checked widths, and reaches 869 px for a wide chart | N1: 675 to 243 px were never drawn for an entry, and S02 overlapped at 510; the guide's own layout gives wide entries up to 869 px
+- D3-xxx | `SWEEP_MAX` is the widest drawing measured on the strict page in Chromium, 869 px | Measured, not assumed: every whole window from 320 to 1,920 px and eight from 1,600 to 3,840
+- D3-xxx | RF-25's second state is declared by the form (`c.margins_in_words()`) and checked against each estimate's key | Only the form knows it dropped the lines on purpose; matching keys proves every row prints its margin
+- D3-xxx | An `interval: true` form that records no interval ends and prints no margins fails | Before, a form that drew no intervals passed the width check by default, the gap N2's state 2 would otherwise open
+
+### Tested
+
+- `oa-chart.mjs self-test`: exit 0, every planted fault caught (52 caught, 46 passes). New cases: an 18 px interval past a 7 px dot passes (needs 17); margins in words pass with every margin and the note; one margin missing caught; no note caught; an interval form drawing no interval and no words caught.
+- `oa-chart.mjs check s02` with the N1 sweep: caught the overlap at 510 px alone, the reviewer's finding.
+- Coverage proof (Chromium, strict build b4, `n1/widths.js`): 79 kit figures in chapters 13 and 14, every whole window width from 320 to 1,920 px plus eight from 1,600 to 3,840. Every width the shell gives a figure, 37,579 figure-and-width pairs (entries 256 to 869 px, plates 224 to 720), lies in the figure's sweep or its checked columns: 0 outside.
+- `build --all --no-png` after N1's skip fix (sweep to 723): 64 check files, 63 pass, S02 at 510 px (sent to the main session for maker B). After `SWEEP_MAX` 869 and RF-25: 64 check files, 64 pass (S02's placement fixed by then).
+
+### Not tested
+
+- Maker B's `range-bar` in its two narrow states: the form was in progress; the check's states are tested on self-test forms only.
+- A strict build and the quick guide check after these two changes (neither changes a drawing).
+- Text-only zoom (a browser's font size setting, as against page zoom), which can narrow a column at a given window; the measure covers page widths 320 to 3,840 px.
+
+### Files
+
+Modified: `work/build/chart-kit/oa-chart.mjs` (the sweep's skip set and `SWEEP_MAX`; RF-25 self-test cases), `checks.js` (RF-25's two states, an interval form that draws no interval), `kit.js` (`c.margins_in_words()`, a text's `margin_of` and `margin_note`), `README.md` (the sweep's range; RF-25's line); this notes file. Scratch: `.../round-2-fix/engineer/b4/`, `n1/`, `kit-all3/`, `kit-all4/`.

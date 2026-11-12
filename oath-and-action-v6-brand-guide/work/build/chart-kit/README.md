@@ -58,8 +58,9 @@ R2-C6, and the fix pass's "Contract changes") are in `work/handoffs/phase-3/2026
 
    The command checks the spec. It then draws the chart at 1440 and 390 px on Newsprint and Charcoal, and checks every
    column width the guide gives a chart: 656, 558, 358, 326, 296 and 256 px, and a rule plate's narrower ones. Then it
-   **sweeps** every whole width from 256 px (224 for a rule plate) to 723 px on Newsprint, since the guide can give a chart
-   any of them (329 px on a 393 px phone, 560 px on a 768 px tablet); a fault found there prints once with the widths it
+   **sweeps** every whole width from 256 px (224 for a rule plate) to the widest the guide gives the chart (720 px for a
+   reading chart, 869 px for a wide one) on Newsprint, since the guide can give a chart any of them (329 px on a 393 px
+   phone, 510 px in a 574 px window, 560 px on a 768 px tablet); a fault found there prints once with the widths it
    holds at. `--no-sweep` leaves the sweep out while you work; run it before you report. It saves the exports, with a page for each
    drawing, to one folder per spec, and its last line names the folder (`wrote: ...`); `--out FOLDER` picks another. A fault says what to change. Run `node work/build/chart-kit/oa-chart.mjs check
    specs/s17.json` to check without drawing.

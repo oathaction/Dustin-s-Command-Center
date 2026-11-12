@@ -5,8 +5,8 @@
 //   node work/build/chart-kit/oa-chart.mjs build <ID|spec path>... [--all] [--widths 1440,390] [--grounds newsprint,charcoal]
 //                                          [--out DIR] [--no-png] [--date YYYYMMDD] [--specs DIR]
 //   node work/build/chart-kit/oa-chart.mjs check <ID|spec path>... [--all]
-//   build and check also draw every whole width from 256 px (224 for a rule plate) to 723 px on Newsprint, the sweep
-//   (AX S1); --no-sweep leaves it out
+//   build and check also draw every whole width from 256 px (224 for a rule plate) to the widest the guide gives the chart
+//   (720 px for a reading chart, 869 for a wide one) on Newsprint, the sweep (AX S1, N1); --no-sweep leaves it out
 //   node work/build/chart-kit/oa-chart.mjs fragments --in LIST.json --out OUT.json     (guide_build.py's hook)
 //   node work/build/chart-kit/oa-chart.mjs figure <spec path> --svg DESK.svg [--phone-svg PHONE.svg] [--id FID] [--out FILE]
 //                                          a drawing made outside the kit, set in the kit's figure (ED-E9, round 1 fix pass)
@@ -121,10 +121,13 @@ export function guide_widths(spec) {
 }
 
 // AX S1 (round 2 fix pass, D3-904): the guide draws an entry's chart at any whole width from 256 px (a 320 px screen at
-// 400 percent zoom) to 723 px, and a rule plate's from 224 px; the six columns above miss widths a phone or tablet gives
+// 400 percent zoom) to 869 px (SWEEP_MAX below), and a rule plate's from 224 px; the six columns above miss widths a phone or tablet gives
 // (329 px at a 393 px phone, 560 px at a 768 px tablet). The sweep draws every whole width in that range on Newsprint and
 // runs the drawing checks on each; one fault at many widths prints once, with the widths it holds at.
-export const SWEEP_MAX = 723;
+// N1 (access second pass): the widest drawing the guide's own layout gives a chart, measured in Chromium on the strict
+// page at every whole window width from 320 to 1920 px and at 2,200 to 3,840: 869 px for a wide chart (720 for a reading
+// one, its artboard); the narrowest is 256 for an entry and 224 for a rule plate
+export const SWEEP_MAX = 869;
 export function sweep_range(spec) {
   const hi = Math.min(SWEEP_MAX, K.artboard(spec, K.token_reader(TOK.newsprint)));
   return [Math.min(...guide_widths(spec)), hi];
