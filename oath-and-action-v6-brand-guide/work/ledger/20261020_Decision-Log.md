@@ -4383,3 +4383,22 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | # | Decision | Reason |
 |---|---|---|
 | D3-519 | The studio's V7 extract files keep the atlas text as stored; the kit gains a spec setting that curls quotes and applies listed exact replacements in printed words drawn from data, the CSV export keeping the data as stored; the typos go to the V7.1 list | D3-349 copies atlas values and never edits them; the word maps S39 used carried each long string three times and put it over the share per plate (maker A's A13) |
+
+### Research lead, round 1 review fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-520 | Frozen files whose publisher revised them keep their figures and print the frozen release by name and date; only S34’s 119th row changes, because it never matched the Senate’s record | D3-476 freezes a revision, not an error |
+| D3-521 | A vintage clause goes into the printed line itself (and every variant), so no line without it stays valid; a spec that set a variant by hand takes the new words | Access S1’s point: the default line has to be the honest one |
+| D3-522 | Vintage clauses keep the wording makers were already copying, though the kit’s line check reads their 2026 dates | Every file’s period already reaches 2026 except Business Formation Statistics, which holds no 2026 rows, so no check weakens in practice |
+| D3-523 | The BFS release is named "September 2026 monthly release (October 14, 2026)" | The Bureau names its releases by data month and posts each on a scheduled day; both identify the numbers a reader can find |
+| D3-524 | The cloture recount counts a vote whose own record reads "On the Cloture Motion" when the Senate’s list leaves its question blank | The vote list is a summary; each vote’s record is the Senate’s fuller account, and with it the count equals the Senate’s cloture page |
+| D3-525 | S31’s margin is the note’s interval for one month’s change, named as such | It is the only interval the Bureau publishes for the rate; a longer span has none, and the sidecar says so |
+| D3-526 | The nation’s house price index joins the state file as code US, first, as the BFS files carry it | The engineer’s set-apart line reads the nation from the chart’s own file, and contract C1 names the nation US |
+| D3-527 | The party columns copy the party affiliation each FEC committee record names, for every committee that has one, with the record’s spelling and a reader’s word | One standard for all 25 rows (DR-93, the main session’s ruling); the record is the commission’s own |
+| D3-528 | Committee names stay as the 2024 totals print them; newer names on four records go in a note | The chart shows the 2024 cycle |
+| D3-529 | OPM’s January 2025 column comes from the version published the same day as the January 2022 file’s | One publishing round for both early dates, so a later revision cannot fall between them |
+| D3-530 | Rule 14.13’s new data is the FEC’s count of super PACs by cycle | A documented count with no sampling margin, from a publisher no rule plate draws, in money in politics (D03), eight values; the PAC count page is gone, ssa.gov refused in round 1, and the NLRB’s counts load only in a reporting service |
+| D3-531 | Span templates go on annual files only, built from each printed line by swapping its period words | The kit fills years; monthly and quarterly files need month or quarter words a year cannot give |
+| D3-532 | The DOL lines say "January 1 rates" | The kit’s line check reads "as of January 1, 2010" as a vintage and would drop the panel’s first year |
+| D3-533 | Ohio’s ban is "partly" for city elections and Tennessee’s "yes" | Ohio leaves home-rule cities an opening at a cost (Ballotpedia); Tennessee’s act names city offices that county commissions conduct (Public Chapter 621) |
