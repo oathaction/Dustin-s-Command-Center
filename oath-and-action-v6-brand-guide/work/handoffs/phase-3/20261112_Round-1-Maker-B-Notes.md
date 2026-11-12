@@ -69,6 +69,10 @@ Rebuilt: S02, S05, S09, S13, S14, S25 to S34, every width and both grounds, PASS
 - D3-xxx | S32's table prints "date computed by Oath & Action from the law’s text" where the data file's `date_basis` says "computed by the studio" (three rows), through the column's `words` | The guide check fails "the studio" in reader text; the data file is the research lead's, so R-B13 now also asks it to reword the three cells
 - Tested: `oa-chart.mjs build s32` PASS at every width on both grounds; `dataviz_check.js --kit` PASS; the build page's visible text holds "computed by Oath & Action" six times and "studio" nowhere; `phase3_ch14_build.py` 0 faults; `guide_build.py --strict` exit 0, 0 warnings, 10,012,898 bytes; chapter 14's rule 14.39 section of that page holds no "computed by the studio" outside the compressed island.
 
+- D3-xxx | S32's `date_basis` words map is dropped now that the research lead reworded the three cells ("computed by Oath & Action from the law’s text"); the `what_takes_effect` map stays, since the file still holds two straight apostrophes ("plans'") | A words entry keyed on text the file no longer holds does nothing; R-B13's apostrophes remain open
+- Tested: `oa-chart.mjs build s32` PASS at every width on both grounds; `dataviz_check.js --kit` PASS; the build page holds "studio" nowhere, the reworded basis six times and "plans’" curled.
+- Not tested: the quick guide check (`guide_check.js --quick`) on the rebuilt guide; my run stopped at its 15-minute limit before a result.
+
 ## Requests
 
 - R-B13, to the research lead (through the main session): curl the straight apostrophes in two `what_takes_effect` cells of `govinfo-pl-119-75-effective-dates.csv` ("plans'") and the straight double quotes in its sidecar's `printed_source_line` ("months after enactment"), and reword the three `date_basis` cells that say "computed by the studio"; S32 then drops its `words` maps

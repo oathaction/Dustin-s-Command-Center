@@ -57,11 +57,7 @@
       {
         "field": "date_basis",
         "label": "How the law sets the date",
-        "format": "text",
-        "words": {
-          "Not later than 18 months after enactment, computed by the studio": "Not later than 18 months after enactment; date computed by Oath & Action from the law’s text",
-          "Plan years beginning on or after 30 months after enactment, computed by the studio": "Plan years beginning on or after 30 months after enactment; date computed by Oath & Action from the law’s text"
-        }
+        "format": "text"
       }
     ]
   },
@@ -106,6 +102,7 @@
     "Every 'plan years beginning on or after' part takes the hatched first year, the sidecar's qualification; the chart does not claim when any plan's year begins.",
     "H12: 'pharmacy benefit managers' in the title, the law's own term, with note 1's gloss (H02); the plan's 'drug middlemen' stays in the reader question. Read from the left and the right: the title gives the dates Congress set and no judgment of the rules.",
     "Words pass (editor 39): two summaries in the data file print a straight apostrophe (plans'); labels.words and the table column's words print them curled until the research lead curls the file (R-B13), which also covers the straight double quotes in the sidecar's printed source line.",
-    "Last fix: the data file's date_basis says 'computed by the studio' in three rows; the table column's words print 'date computed by Oath & Action from the law’s text' until the research lead rewords the file (R-B13)."
+    "Last fix: the data file's date_basis says 'computed by the studio' in three rows; the table column's words print 'date computed by Oath & Action from the law’s text' until the research lead rewords the file (R-B13).",
+    "Last fix, after the research lead reworded the file's date_basis cells: the date_basis words map is gone, since the cells print as they are; any words entry whose key no longer occurs in the data is dropped."
   ]
 }

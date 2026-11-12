@@ -4272,3 +4272,9 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | # | Decision | Reason |
 |---|---|---|
 | D3-455 | The studio's own wording in a data file names Oath & Action, as reader text does | The cell reaches readers in the chart's CSV export; publisher cells stay as published |
+
+### Maker B, round 1 last fix (continued)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-456 | S32's `date_basis` words map is dropped now that the research lead reworded the three cells ("computed by Oath & Action from the law’s text"); the `what_takes_effect` map stays, since the file still holds two straight apostrophes ("plans'") | A words entry keyed on text the file no longer holds does nothing; R-B13's apostrophes remain open |
