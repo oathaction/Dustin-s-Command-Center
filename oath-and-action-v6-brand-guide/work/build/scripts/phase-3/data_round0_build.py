@@ -126,6 +126,20 @@ LINE_FIXES = {
     },
 }
 # Rows the research lead read after Phase 2 and asked to add (ENG-7, statistics S18): the nation, from Table 4a's United States rows
+# ENG-13 (round 1 fix pass, ST S12): columns the research lead read and asked to add, by state code; empty where there is no ban
+CITY_REACH_YES = ('AL', 'AR', 'FL', 'ID', 'IN', 'IA', 'KS', 'KY', 'LA', 'MS', 'MO', 'MT', 'ND', 'OK', 'SD', 'WV', 'WY', 'TN')
+ADDED_COLUMNS = {
+    'ballotpedia-rcv-prohibitions-by-state': {
+        'reaches_city_elections': {'type': 'category', 'description': 'whether the ban reaches a city’s own elections',
+                                   'values': dict({c: 'yes' for c in CITY_REACH_YES}, OH='partly')},
+        'city_reach_note': {'type': 'text', 'description': 'the source of that reading where it needs one',
+                            'values': {'TN': ('Public Chapter 621 bars a county election commission from ranked-choice voting for a statewide or local '
+                                              'government office, and defines local government to include an incorporated city or town (read November 12, 2026)'),
+                                       'OH': ('Home-rule cities may still adopt it, but lose state local government fund distributions while it is in effect '
+                                              '(Ballotpedia; the act’s text not read)'),
+                                       'MO': 'Ballotpedia says the amendment prohibits ranked-choice voting; the amendment’s text was not read'}},
+    },
+}
 ADDED_ROWS = {
     'census-cps-2024-turnout-by-state': {
         'rows': ['US,United States,2020,231593,66.8,0.4', 'US,United States,2024,236138,65.3,0.5'],
@@ -137,7 +151,7 @@ ADDED_ROWS = {
 # Notes the research lead asked to add (ENG-2, ENG-3; ENG-9 for the payroll sampling errors and the survey's margin)
 V7_NOTES = {
     'v7-stock-trading-ban': ('The Program for Public Consultation gives the full sample’s margin of error as plus or minus 1.9 percent '
-                             '(https://publicconsultation.org/united-states/stock-trading-by-members-of-congress/, read November 11, 2026); '
+                             '(https://publicconsultation.org/united-states/stock-trading-by-members-of-congress/, read November 11 and 12, 2026); '
                              'it gives none for each party’s voters and states no confidence level.'),
 }
 EXTRA_NOTES = {
@@ -283,6 +297,25 @@ def copy_public():
             raw = raw.rstrip(b'\n') + b'\n' + '\n'.join(add['rows']).encode() + b'\n'
             meta['added_rows'] = add['rows']
             meta['notes'] = list(meta.get('notes') or []) + [add['note']]
+        cols = ADDED_COLUMNS.get(name)
+        if cols:
+            # the Phase 2 file's rows and columns as they were, each row extended by the columns read since (ENG-13)
+            rows = list(csv.reader(io.StringIO(raw.decode('utf-8'))))
+            head, body = rows[0], rows[1:]
+            ci = head.index('code')
+            bans = {r[ci] for r in body if r[head.index('prohibits_rcv')] == '1'}
+            if not set(cols['reaches_city_elections']['values']) <= bans:
+                raise SystemExit(f'ENG-13: {sorted(set(cols["reaches_city_elections"]["values"]) - bans)} carry a city reading but no ban')
+            if bans - set(cols['reaches_city_elections']['values']):
+                raise SystemExit(f'ENG-13: {sorted(bans - set(cols["reaches_city_elections"]["values"]))} ban ranked-choice voting with no city reading')
+            out = io.StringIO()
+            w = csv.writer(out, lineterminator='\n')
+            w.writerow(head + list(cols))
+            for r in body:
+                w.writerow(r + [cols[k]['values'].get(r[ci], '') for k in cols])
+            raw = out.getvalue().encode('utf-8')
+            for k, v in cols.items():
+                meta['columns'][k] = {'type': v['type'], 'description': v['description']}
         (OUT / f'{name}.csv').write_bytes(raw)
         write_meta(name, meta)
 
@@ -514,7 +547,11 @@ def v7_tables():
                                   # maker A's A5 (round 1): S41 and S42 show the survey rows alone (D3-89)
                                   'survey_only': ('Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, '
                                                   'United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. '
-                                                  'A margin of error of plus or minus 1.9 points for the whole sample, with none by party.')},
+                                                  'A margin of error of plus or minus 1.9 points for the whole sample, with none by party.'),
+                                  # ENG-12 (round 1 fix pass, ST S11): the margin credited to the Program's page, reread November 12
+                                  'survey_only_margin_credited': ('Source: Program for Public Consultation, University of Maryland, survey of 2,625 registered voters, fielded May 19 to 30, 2023, '
+                                                                  'United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To?, snapshot of October 15, 2026. '
+                                                                  'A margin of error of plus or minus 1.9 points for the whole sample, with none by party, from the Program’s survey page, read November 12, 2026.')},
             v7_figure=n7, notes=['The 86 percent overall figure is in the survey source note (N40), not in the headline figure caption.',
                                  'DR-98: a chart names "H.R. 7008, the Stop Insider Trading Act" with both provisions at first mention; the spec carries those words.'])
 
@@ -639,15 +676,20 @@ def v7_tables():
     if sum(r['total'] for r in crow) != len(V7['claims']):
         raise SystemExit('S10: claims by pathway do not add to the register')
     write_v7('v7-claims-by-grade', ['id', 'title', 'question', 'hub', 'hub_title', 'documented', 'well_supported', 'plausible', 'contested', 'total', 'documented_share'], crow)
+    # ST S6 (D3-519): 432 of the 433 claims carry the October 15, 2026 check date and one carries none, so the line counts them
+    claims = list(V7['claims'].values()) if isinstance(V7['claims'], dict) else list(V7['claims'])
+    on_snap = sum(1 for x in claims if x.get('verified_on') == SNAP)
+    checked = (f'{on_snap} of the {len(claims)} claims checked on {SNAP_WORDS}' if on_snap < len(claims)
+               else f'claims checked on {SNAP_WORDS}')
     v7_meta('v7-claims-by-grade', 'claims register, 433 claims across 16 everyday questions, by evidence grade', 'claims, counted by pathway and confidence',
-            'Claims checked through October 15, 2026', 'United States', 'The 433 claims behind the atlas’s 16 everyday answers', 'Claims',
+            checked[0].upper() + checked[1:], 'United States', 'The 433 claims behind the atlas’s 16 everyday answers', 'Claims',
             'Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.',
             {'id': col('id', 'V7 pathway ID, PW01 to PW16'), 'title': col('text', 'pathway title'), 'question': col('text', 'its everyday question'),
              'hub': col('id', 'V7 hub ID'), 'hub_title': col('category', 'hub title'), 'documented': col('integer', 'claims graded documented'),
              'well_supported': col('integer', 'claims graded well-supported'), 'plausible': col('integer', 'claims graded plausible'),
              'contested': col('integer', 'claims graded contested'), 'total': col('integer', 'all claims on the pathway'),
              'documented_share': col('number', 'documented claims as a share of all claims on the pathway, one decimal; the studio\u2019s arithmetic on V7\u2019s counts (request E4)', 'percent')},
-            (f'{ATLAS_LINE}, claims register, 433 claims across 16 everyday questions, claims checked through October 15, 2026, United States. '
+            (f'{ATLAS_LINE}, claims register, 433 claims across 16 everyday questions, {checked}, United States. '
              f'Snapshot of {SNAP_WORDS}. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.'),
             'all', ['S10'], grade_meaning={'documented': 'on the public record', 'well-supported': 'strong research evidence', 'plausible': 'some evidence', 'contested': 'evidence disputed'},
             domain_note='The 16 everyday questions span the atlas’s five hubs and every domain')
@@ -669,14 +711,14 @@ def v7_tables():
     write_v7('v7-claims-by-hub-and-grade', ['hub', 'hub_title', 'grade', 'claims', 'hub_claims', 'share_pct', 'answers'], hrow)
     v7_meta('v7-claims-by-hub-and-grade', 'claims register, 433 claims across 16 everyday questions, grouped by its five topic hubs, by evidence grade',
             'claims, counted by pathway and confidence, summed by hub',
-            'Claims checked through October 15, 2026', 'United States', 'The 433 claims behind the atlas’s 16 everyday answers', 'Claims',
+            checked[0].upper() + checked[1:], 'United States', 'The 433 claims behind the atlas’s 16 everyday answers', 'Claims',
             'Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.',
             {'hub': col('id', 'V7 hub ID'), 'hub_title': col('category', 'hub title'),
              'grade': col('category', 'evidence grade: documented, well_supported, plausible or contested'),
              'claims': col('integer', 'claims of this grade on the hub’s pathways'), 'hub_claims': col('integer', 'all claims on the hub’s pathways'),
              'share_pct': col('number', 'claims of this grade as a share of the hub’s claims, one decimal; the studio’s arithmetic on V7’s counts', 'percent'),
              'answers': col('integer', 'everyday questions (pathways) in the hub')},
-            (f'{ATLAS_LINE}, claims register, 433 claims across 16 everyday questions grouped by its five topic hubs, claims checked through October 15, 2026, '
+            (f'{ATLAS_LINE}, claims register, 433 claims across 16 everyday questions grouped by its five topic hubs, {checked}, '
              f'United States. Snapshot of {SNAP_WORDS}. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.'),
             'all', ['S23'], kind='derived', derived_from=['v7-claims-by-grade.json'],
             derivation='The rows of v7-claims-by-grade summed by hub, in that file’s hub order, grades in the order documented, well-supported, plausible, contested; share_pct is claims over hub_claims (request A4).',

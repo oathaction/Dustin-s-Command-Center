@@ -4,7 +4,7 @@
   "rule": [
     "Leave radar charts out of every Oath & Action piece. Draw the same measures as grouped bars from one zero line, a dot plot on one scale, or small-multiple bars with one panel per group, so each value is read as a length from zero or a position."
   ],
-  "use_when": "Never: a reader who asks how several groups compare across the same measures gets a truer answer from a dot plot or small-multiple bars.",
+  "use_when": "Never: a reader who asks how several groups compare across the same measures gets a truer answer from grouped bars, a dot plot or small-multiple bars.",
   "use_instead": [
     {
       "when": "Each group has one value on each of several measures and the reader compares positions",

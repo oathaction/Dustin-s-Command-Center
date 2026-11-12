@@ -5,7 +5,7 @@
  "title_or_table": "claims register, 433 claims across 16 everyday questions, by evidence grade",
  "table_id": "claims, counted by pathway and confidence",
  "url": "work/extract/atlas-v7-data.json",
- "observation_period": "Claims checked through October 15, 2026",
+ "observation_period": "432 of the 433 claims checked on October 15, 2026",
  "geography": "United States",
  "universe_or_base": "The 433 claims behind the atlas’s 16 everyday answers",
  "unit": "Claims",
@@ -59,7 +59,7 @@
    "unit": "percent"
   }
  },
- "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, claims register, 433 claims across 16 everyday questions, claims checked through October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, claims register, 433 claims across 16 everyday questions, 432 of the 433 claims checked on October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.",
  "ledger_row": "not needed: Atlas V7, read by script",
  "domain": "all",
  "states": [],
@@ -76,6 +76,6 @@
  },
  "domain_note": "The 16 everyday questions span the atlas’s five hubs and every domain",
  "source_line_variants": {
-  "phase_2_wording": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, claims register, 433 claims across 16 everyday questions, claims checked through October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone."
+  "phase_2_wording": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, claims register, 433 claims across 16 everyday questions, 432 of the 433 claims checked on October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone."
  }
 }

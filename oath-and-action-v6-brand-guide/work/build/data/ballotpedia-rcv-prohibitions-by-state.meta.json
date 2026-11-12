@@ -59,6 +59,14 @@
   "checked_against": {
    "type": "text",
    "description": "the page and revision read"
+  },
+  "reaches_city_elections": {
+   "type": "category",
+   "description": "whether the ban reaches a city’s own elections"
+  },
+  "city_reach_note": {
+   "type": "text",
+   "description": "the source of that reading where it needs one"
   }
  },
  "printed_source_line": "Source: Ballotpedia, a secondary source, Ranked-choice voting (RCV), state laws prohibiting RCV, as of November 2026, 50 states and DC. Retrieved November 6, 2026. Ohio’s and Tennessee’s bans cover some elections; the other 17 cover all.",
