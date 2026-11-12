@@ -4066,3 +4066,9 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-347 | The housing bills file carries the committee and floor facts Congress.gov records, and maker A sets the Rule 11.1 steps from them | The API records no hearing on any of the eight bills but cannot show a hearing held on the subject without a bill number, so a step number would claim more than the record holds |
 | D3-348 | The margin of a change between two HVS years is the root of the summed squares of the two published margins | The two years are separate samples, and the published tables give no covariance; the sidecar says the margin is approximate |
 | D3-349 | V7 source titles print as V7 stores them, straight apostrophes included | Atlas values are copied, never edited; the words pass sets the guide's apostrophes |
+
+### Main session, round 1 (continued)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-350 | Round 0's approved specimens over three times their tier's average (S05 and S13) are listed by name with their bytes in the build report rather than failing the far-over test, once maker B confirms they carry no unused column; every new specimen keeps the test | Dustin approved them on board 1 at their measured bytes, and the 2.804 MB stop he approved was projected from them (DR-238) |
