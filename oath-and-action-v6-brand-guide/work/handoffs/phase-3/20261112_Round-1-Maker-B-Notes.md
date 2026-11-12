@@ -52,6 +52,7 @@ All of maker B's rows in the plan file are done: twelve new specimens (S24 to S3
 
 ## Requests
 
+- R-B12, to the engineer (chapter 14's generator): the avoid entries' sketches (14.45 here, maker A's 14.24) print under the plate head "Correct application", which tells a reader the misleading form is the right one. An avoid sketch needs its own head, such as the failure plates' "Do not publish" treatment or a plain "Sketch of the form to avoid"; the reference sketches (14.43, 14.44) may keep a neutral head
 - R-B11, to the engineer: `extra_island` carries every column of a spec's second dataset even when the form never reads `c.extra` (S05's gap-margin file, about 400 bytes compressed); carry it only for forms that read it. S05's table, 25,500 of its 30,509 bytes, could shrink by the pivot its notes describe once `checks.js` accepts a list for `pivot.row` (E14); that would change the table's layout, so it waits on the main session
 Open: the engineer's R-B2, R-B3 and R-B7. Done: R-B6 (engineer); R-B1, R-B4, R-B5, R-B8, R-B10 and the data lead's DL-R1 and DL-R3 (research lead), taken into the specs: S31 prints the `unemployment_rate_only` line, S33 the `fiscal_2016_to_2026` line, S24 reads the derived change file and its table prints each state's change, S25's table and labels read the readable `agency` column (plate 23,329 bytes), and S28 and S29 trace their 1998 start to the sidecars' `breaks_in_series`. R-B10 needs no spec change.
 
@@ -82,6 +83,8 @@ Open: the engineer's R-B2, R-B3 and R-B7. Done: R-B6 (engineer); R-B1, R-B4, R-B
 
 - S05 and S13 islands decoded and sized by script; S13 rebuilt after the trim: every SVG, PNG and CSV export and capture compared with `cmp` against the build before it, all identical; `dataviz_check.js --kit` PASS. `phase3_ch14_build.py` ran (two faults, maker A's missing S23 and S40) and `guide_build.py --strict` wrote a scratch guide (10,019,732 bytes) whose only chart warnings are S05 and S13.
 - S34 after DL-B11 and DL-B12: build PASS at every width on both grounds, `dataviz_check.js --kit` PASS; the phone capture looked at on both grounds. Checked by script: 27 Congresses before 1971 held 49 votes, at most seven.
+
+- My 21 entries (14.25 to 14.45) captured in the strict scratch guide at 1440 and 390 px (Playwright, element captures) and looked at: words, use-instead links, builders lines and specimens read well at both widths; the one fault found is the avoid sketch's plate head (R-B12). The captures predate S34's phone change.
 
 ## Not tested
 

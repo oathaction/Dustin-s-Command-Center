@@ -103,7 +103,7 @@
    "id": "14.2",
    "title": "Build every chart in one anatomy, from evidence label to table.",
    "rule": [
-    "Every chart prints the same eight parts in the same order, so a reader always knows where to look: the evidence label and grade line (Rules 13.1 and 13.2), the title, the reading guide, the measure line (Rule 13.7), the chart, its notes, the source line (Rule 13.6) and the table (Rule 14.13).",
+    "Every chart prints the same eight parts in the same order, so a reader always knows where to look: the evidence label and grade line (Rules 13.1 and 13.2), the title, the measure line (Rule 13.7), the reading guide, the chart, its notes, the source line (Rule 13.6) and the table (Rule 14.13).",
     "The title is one full sentence, and house rule H08 sizes its claim. The reading guide says in a sentence or two how to read the drawing. Notes carry what the drawing cannot. A part with nothing to say is left out, and the rest keep their order."
    ],
    "why": {
@@ -122,7 +122,7 @@
    "specs": [
     {
      "label": "Order",
-     "value": "Evidence label and grade line, title, reading guide, measure line, chart, notes, source line, table"
+     "value": "Evidence label and grade line, title, measure line, reading guide, chart, notes, source line, table"
     },
     {
      "label": "Evidence label",
@@ -158,12 +158,12 @@
    "id": "14.3",
    "title": "Label the data directly, and use a key only when labels cannot fit.",
    "rule": [
-    "Rule 12.6 sets where a label sits. In a chart, each line takes its name at its last point, each bar its value at its end, and each group its name on or beside its marks, in the ink of the text. Units go once in the measure line, so the labels carry numbers alone.",
+    "Rule 12.6 sets where a label sits. In a chart, each line takes its name beside it toward its last point, where the lines stand apart, each bar its value at its end, and each group its name on or beside its marks, in the ink of the text. Units go once in the measure line, so the labels carry numbers alone.",
     "A key earns its place only when a mark codes something a label cannot carry on every mark, such as an evidence grade, a pattern or a run of shades. Then it sits under the measure line, in the order the marks run, as Rule 12.6 sets."
    ],
    "why": {
     "text": [
-     "A reader matching inks between a key and the lines looks away from the data at every step, and close inks are hard to match at all in grayscale or with a color vision deficiency. A name at the end of each line is read in place."
+     "A reader matching inks between a key and the lines looks away from the data at every step, and close inks are hard to match at all in grayscale or with a color vision deficiency. A name beside each line is read in place."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
    },
@@ -178,7 +178,7 @@
    "specs": [
     {
      "label": "A line",
-     "value": "Its name at its last point, in the label ink",
+     "value": "Its name beside it, toward its last point, in the label ink",
      "token": "oa.chart.color.label.onNewsprint"
     },
     {
@@ -200,11 +200,11 @@
    ],
    "correct": {
     "specimen": "s-14-3-correct",
-    "caption": "Each line carries its own name where it ends, so a reader reads the age group in place and the youngest group, which the title names, stands out in ink."
+    "caption": "Each line carries its own name beside it, so a reader reads the age group in place, and the youngest group, which the title names, stands out in ink."
    },
    "failure": {
     "specimen": "s-14-3-failure",
-    "caption": "<strong>Fails Rule 14.3.</strong> Four lines in four inks send the reader down to a key and back for every line, where a name at each line’s end would be read in place."
+    "caption": "<strong>Fails Rule 14.3.</strong> Four lines in four inks send the reader down to a key and back for every line, where a name beside each line would be read in place."
    }
   },
   {
@@ -458,7 +458,7 @@
     },
     {
      "label": "Names",
-     "value": "Every group named on the chart, in its panel or at its line’s end"
+     "value": "Every group named on the chart, in its panel or beside its line"
     }
    ],
    "related_rules": [

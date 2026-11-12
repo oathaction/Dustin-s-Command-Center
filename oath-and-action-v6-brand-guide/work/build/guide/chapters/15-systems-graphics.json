@@ -325,7 +325,7 @@
     },
     {
      "label": "Inside the loop",
-     "value": "The loop’s ID in bold, then reinforcing or balancing"
+     "value": "The loop’s typed ID in bold, such as Loop R18, then reinforcing or balancing"
     },
     {
      "label": "Kind check",

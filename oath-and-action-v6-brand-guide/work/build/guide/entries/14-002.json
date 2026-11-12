@@ -2,7 +2,7 @@
  "id": "14.2",
  "title": "Build every chart in one anatomy, from evidence label to table.",
  "rule": [
-  "Every chart prints the same eight parts in the same order, so a reader always knows where to look: the evidence label and grade line (Rules 13.1 and 13.2), the title, the reading guide, the measure line (Rule 13.7), the chart, its notes, the source line (Rule 13.6) and the table (Rule 14.13).",
+  "Every chart prints the same eight parts in the same order, so a reader always knows where to look: the evidence label and grade line (Rules 13.1 and 13.2), the title, the measure line (Rule 13.7), the reading guide, the chart, its notes, the source line (Rule 13.6) and the table (Rule 14.13).",
   "The title is one full sentence, and house rule H08 sizes its claim. The reading guide says in a sentence or two how to read the drawing. Notes carry what the drawing cannot. A part with nothing to say is left out, and the rest keep their order."
  ],
  "use_when": null,
@@ -29,7 +29,7 @@
  "specs": [
   {
    "label": "Order",
-   "value": "Evidence label and grade line, title, reading guide, measure line, chart, notes, source line, table"
+   "value": "Evidence label and grade line, title, measure line, reading guide, chart, notes, source line, table"
   },
   {
    "label": "Evidence label",
@@ -48,7 +48,7 @@
  "correct": {
   "specimen": "s-14-2-correct",
   "caption": "The eight parts in order, each numbered where the kit prints it. The table sits folded under the source line.",
-  "alt": "A finished chart with each of its eight parts numbered in reading order: Evidence label and grade line, Title, Reading guide, Measure line, Chart, Notes, Source line, Table. Its title: Civic and social organizations employed 201,423 people in March 2023, about 113,300 fewer than in 1998.",
+  "alt": "A finished chart with each of its eight parts numbered in reading order: Evidence label and grade line, Title, Measure line, Reading guide, Chart, Notes, Source line, Table. Its title: Civic and social organizations employed 201,423 people in March 2023, about 113,300 fewer than in 1998.",
   "illustrative": false,
   "notes": "The numerals are drawn by the plate's style on the kit's own parts, so they follow the figure as the kit prints it.",
   "charts": [

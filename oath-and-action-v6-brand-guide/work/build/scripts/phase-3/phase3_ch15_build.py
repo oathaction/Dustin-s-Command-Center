@@ -271,9 +271,15 @@ def lines(x, y, rows, cls, anchor="middle", lh=LH):
     return f'<text class="{cls}" x="{F(x)}" y="{F(y)}"{a}>{spans}</text>'
 
 
-def loop_id(x, y, lid, kind):
-    """The loop's number in bold and its kind, on one line, inside the loop."""
-    return (f'<text class="id" x="{F(x)}" y="{F(y)}" text-anchor="middle">{e(lid)}'
+def loop_id(x, y, lid, kind, two=False):
+    """The loop's typed ID in bold and its kind, inside the loop: "Loop R13" then "reinforcing" (house rule H11). Two
+    lines inside a two-variable loop, where one would crowd the arch. A failure plate's own words pass with lid None."""
+    if lid is None:
+        return f'<text class="id" x="{F(x)}" y="{F(y)}" text-anchor="middle">{e(kind)}</text>'
+    if two:
+        return (f'<text class="id" x="{F(x)}" y="{F(y - 6)}" text-anchor="middle">Loop {e(lid)}'
+                f'<tspan class="kd" x="{F(x)}" dy="{LH}">{e(kind)}</tspan></text>')
+    return (f'<text class="id" x="{F(x)}" y="{F(y)}" text-anchor="middle">Loop {e(lid)}'
             f'<tspan class="kd"> {e(kind)}</tspan></text>')
 
 
@@ -371,7 +377,7 @@ def two_loop(codes, lids, numbered=True, weakest=None, inside=None, labels=None,
             out.append(verb_at(pts, l["polarity"], step_words(i + 1 if numbered else 0, lid, extra), side))
     out.append(a.svg() + b.svg())
     if inside:
-        out.append(loop_id(W / 2, run_y + 28, *inside))
+        out.append(loop_id(W / 2, run_y + 28, *inside, two=True))
     h = bot_y + 34 + (wrows[1] - 1) * LH
     return "".join(out), h, (a, b)
 
@@ -1074,7 +1080,7 @@ def rule_15_6(book):
     book.log("15.6 correct", "Loop B5, state experiments", "D03")
     lp = LOOP["R18"]
     codes = [c for c, _ in lp["chain"]]
-    b, h, _ = two_loop(codes, lp["links"], numbered=False, inside=("A vicious", "cycle"))
+    b, h, _ = two_loop(codes, lp["links"], numbered=False, inside=(None, "A vicious cycle"))
     fail = dnp() + fig(svg_wrap(b, h))
     book.add("s-15-6-failure", fail, rule="15.6",
              alt=(FC + "Loop R18 drawn with no step numbers, no chip and no kind, and the words A vicious cycle inside it."),
@@ -1104,7 +1110,7 @@ def rule_15_6(book):
                                "words inside it judge the loop. Its two minus signs make it reinforcing."},
         "specs": [
             {"label": "Step number", "value": "Bold, before the verb, from the atlas’s first connection: 1 raises"},
-            {"label": "Inside the loop", "value": "The loop’s ID in bold, then reinforcing or balancing"},
+            {"label": "Inside the loop", "value": "The loop’s typed ID in bold, such as Loop R18, then reinforcing or balancing"},
             {"label": "Kind check", "value": "An even count of minus signs for reinforcing, odd for balancing; the build checks every numbered loop"},
             {"label": "Read aloud", "value": "One sentence that carries more or less around the loop and back to the start"},
         ],

@@ -37,7 +37,7 @@
   },
   {
    "label": "Names",
-   "value": "Every group named on the chart, in its panel or at its line’s end"
+   "value": "Every group named on the chart, in its panel or beside its line"
   }
  ],
  "correct": {

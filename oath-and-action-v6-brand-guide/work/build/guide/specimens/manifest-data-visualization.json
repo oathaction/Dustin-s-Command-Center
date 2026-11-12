@@ -24,7 +24,7 @@
  "s-14-2-correct": {
   "chapter": "14",
   "rule": "14.2",
-  "alt": "A finished chart with each of its eight parts numbered in reading order: Evidence label and grade line, Title, Reading guide, Measure line, Chart, Notes, Source line, Table. Its title: Civic and social organizations employed 201,423 people in March 2023, about 113,300 fewer than in 1998.",
+  "alt": "A finished chart with each of its eight parts numbered in reading order: Evidence label and grade line, Title, Measure line, Reading guide, Chart, Notes, Source line, Table. Its title: Civic and social organizations employed 201,423 people in March 2023, about 113,300 fewer than in 1998.",
   "illustrative": false,
   "notes": "The numerals are drawn by the plate's style on the kit's own parts, so they follow the figure as the kit prints it."
  },
@@ -38,7 +38,7 @@
  "s-14-3-correct": {
   "chapter": "14",
   "rule": "14.3",
-  "alt": "Four lines of reported voting by age, each named at its last point. Citizens 18 to 24 reported voting at the lowest rate of four age groups in every presidential year from 2004 to 2024.",
+  "alt": "Four lines of reported voting by age, each named beside it. Citizens 18 to 24 reported voting at the lowest rate of four age groups in every presidential year from 2004 to 2024.",
   "illustrative": false,
   "notes": ""
  },

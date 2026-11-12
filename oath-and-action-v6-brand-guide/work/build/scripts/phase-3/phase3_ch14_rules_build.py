@@ -437,7 +437,7 @@ def rule_14_1(B):
 # ===============================================================================================================
 # 14.2 Build every chart in one anatomy
 # ===============================================================================================================
-PARTS = ["Evidence label and grade line", "Title", "Reading guide", "Measure line", "Chart", "Notes", "Source line", "Table"]
+PARTS = ["Evidence label and grade line", "Title", "Measure line", "Reading guide", "Chart", "Notes", "Source line", "Table"]
 
 
 def rule_14_2(B):
@@ -467,8 +467,8 @@ def rule_14_2(B):
                                  failure={"rule": "14.2", "caption_lead": "Fails Rule 14.2."},
                                  notes_internal="Rule 14.2's failure plate: a topic for a title, and only the chart under it."))
     # the numerals sit in the left margin at desktop and before each part on a phone, in the order of PARTS
-    sel = ":is(.oac-ev,.oac-title,.oac-guide,.oac-measure,.oac-art,.oac-notes,.oac-src,.oac-eq)"
-    extra = (f".anat .oac-fig{{counter-reset:pt}}.anat .oac-fig>*{{position:relative}}.anat {sel}::before{{counter-increment:pt;content:counter(pt);"
+    sel = ":is(.oac-ev,.oac-title,.oac-measure,.oac-guide,.oac-art,.oac-notes,.oac-src,.oac-eq)"
+    extra = (f".anat{{counter-reset:pt}}.anat {sel}{{position:relative}}.anat {sel}::before{{counter-increment:pt;content:counter(pt);"
              "display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;margin:0 8px 4px 0;border-radius:50%;"
              f"background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);{LBL};letter-spacing:0;vertical-align:middle}}"
              f"@media (min-width:48em){{.anat{{padding-left:36px}}.anat {sel}::before{{position:absolute;left:-36px;top:0;margin:0}}}}")
@@ -482,13 +482,13 @@ def rule_14_2(B):
     return entry(
         "14.2", "Build every chart in one anatomy, from evidence label to table.",
         ["Every chart prints the same eight parts in the same order, so a reader always knows where to look: the evidence label and grade "
-         "line (Rules 13.1 and 13.2), the title, the reading guide, the measure line (Rule 13.7), the chart, its notes, the source line "
+         "line (Rules 13.1 and 13.2), the title, the measure line (Rule 13.7), the reading guide, the chart, its notes, the source line "
          "(Rule 13.6) and the table (Rule 14.13).",
          "The title is one full sentence, and house rule H08 sizes its claim. The reading guide says in a sentence or two how to read the "
          "drawing. Notes carry what the drawing cannot. A part with nothing to say is left out, and the rest keep their order."],
         ["Readers learn where things are after a few charts. When every chart puts its source in the same place, a reader can check any "
          "figure in seconds, and a chart that lacks a part shows the gap."],
-        [("Order", "Evidence label and grade line, title, reading guide, measure line, chart, notes, source line, table"),
+        [("Order", "Evidence label and grade line, title, measure line, reading guide, chart, notes, source line, table"),
          ("Evidence label", "On the chip fill, in the label style", "oa.chart.color.chip.fill.onNewsprint"),
          ("Title", "One full sentence in Inter Tight at the chart title size"),
          ("Measure line", "What is counted, the unit, the period and the place")],
@@ -541,7 +541,7 @@ def rule_14_3(B):
                               {"field": "voted_pct", "label": "Reported voting", "format": "percent:1"}]},
            encode={"x": "year", "y": "voted_pct", "series": "age_group"},
            labels={"subject": "18_to_24", "series": dict(AGES),
-                   "series_place": {"65_and_over": {"dy": -9}, "45_to_64": {"dy": 9}}},
+                   "series_place": {a: {"x": 2016} for a, _ in AGES}},
            domain="D10", states=[], notes_internal="Rule 14.3's correct plate. Checked by script: 18 to 24 more than 10 points below every other "
                                                    "group in each year (gaps 11.2 to 16.1).")
     # the failure: the same four lines in the four group inks, with a key under the chart and no names on the lines
@@ -554,28 +554,29 @@ def rule_14_3(B):
                   for i, (_, n) in enumerate(AGES))
     inner = (axis_y(ys, [40, 60, 80], L, R, lambda t: f"{t}%") + axis_x(xs, [2004, 2014, 2024], Bt + 18, str) + lines + key)
     B.add("s-14-3-correct", chart("s-14-3-lines"),
-          alt=f"Four lines of reported voting by age, each named at its last point. {title}.")
+          alt=f"Four lines of reported voting by age, each named beside it. {title}.")
     B.add("s-14-3-failure", dnp() + tl(title)
           + f'<div class="art">{svg(W, H, inner, "sv g1")}</div>',
           alt=FC + "The same four lines in four inks with no names on them, and a key under the chart that the reader must match.")
     return entry(
         "14.3", "Label the data directly, and use a key only when labels cannot fit.",
-        ["Rule 12.6 sets where a label sits. In a chart, each line takes its name at its last point, each bar its value at its end, and each "
+        ["Rule 12.6 sets where a label sits. In a chart, each line takes its name beside it toward its last point, where the lines stand "
+         "apart, each bar its value at its end, and each "
          "group its name on or beside its marks, in the ink of the text. Units go once in the measure line, so the labels carry numbers alone.",
          "A key earns its place only when a mark codes something a label cannot carry on every mark, such as an evidence grade, a pattern or a "
          "run of shades. Then it sits under the measure line, in the order the marks run, as Rule 12.6 sets."],
         ["A reader matching inks between a key and the lines looks away from the data at every step, and close inks are hard to match at "
-         "all in grayscale or with a color vision deficiency. A name at the end of each line is read in place."],
-        [("A line", "Its name at its last point, in the label ink", "oa.chart.color.label.onNewsprint"),
+         "all in grayscale or with a color vision deficiency. A name beside each line is read in place."],
+        [("A line", "Its name beside it, toward its last point, in the label ink", "oa.chart.color.label.onNewsprint"),
          ("A bar", "Its value at its end, its name beside it"),
          ("Units", "Once, in the measure line"),
          ("A key", "Only for a code no label can carry, under the measure line, in the order the marks run (Rule 12.6)")],
         ["12.6", "13.7"],
         "Name each series in the spec's labels.series; the kit sets the names at the line ends and warns when one cannot fit.",
-        B.plate("s-14-3-correct", "Each line carries its own name where it ends, so a reader reads the age group in place and the youngest "
+        B.plate("s-14-3-correct", "Each line carries its own name beside it, so a reader reads the age group in place, and the youngest "
                                   "group, which the title names, stands out in ink."),
         B.plate("s-14-3-failure", fails("14.3", "Four lines in four inks send the reader down to a key and back for every line, where a name "
-                                                "at each line’s end would be read in place.")),
+                                                "beside each line would be read in place.")),
         [ex("Reported voting by age, presidential years 2004 to 2024", "D10", where="14.3")],
         tokens=["oa.chart.color.label.onNewsprint"])
 
@@ -879,7 +880,7 @@ def rule_14_8(B):
         [("Groups in color", "Four at most, in Rule 14.5’s order"),
          ("Five or more", "Small multiples on one shared scale, or one group in ink and the rest in gray",
           "oa.chart.color.context.onNewsprint"),
-         ("Names", "Every group named on the chart, in its panel or at its line’s end")],
+         ("Names", "Every group named on the chart, in its panel or beside its line")],
         ["14.5", "14.23", "14.30", "14.31"],
         "Use multi-line-highlight or small-multiple-bars for five or more groups; the kit fails a key of more than four inks.",
         B.plate("s-14-8-correct", "Each panel sets one age group in ink against the other four in gray, on one scale, so a reader compares "
