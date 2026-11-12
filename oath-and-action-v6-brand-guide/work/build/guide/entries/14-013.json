@@ -21,7 +21,7 @@
   "19.2",
   "14.130"
  ],
- "builders": "Fill the spec's table under contract C2; the kit writes the table, and its check fails one whose rows differ from the data.",
+ "builders": "Fill the spec’s table, as the kit’s README sets out under “The keys a spec takes”; the kit writes the table, and its check fails one whose rows differ from the data.",
  "specs": [
   {
    "label": "Table",

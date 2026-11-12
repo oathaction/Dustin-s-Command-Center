@@ -152,7 +152,7 @@
    "source": "14-011.json"
   },
   {
-   "example": "Federal receipts by source, fiscal year 2026",
+   "example": "Federal receipts, fiscal years 2015 to 2026",
    "domain": "D08",
    "states": [],
    "level": "federal",

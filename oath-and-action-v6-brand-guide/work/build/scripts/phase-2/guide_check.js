@@ -339,12 +339,24 @@ function audit(page) {
     // ---------------- D2-253: no codes or studio words in reader text, alt text or accessible names
     const codeRes = CODE_PATTERNS.map(([src, flags, kind]) => [new RegExp(src, flags), kind]);
     const hits = [];
-    const scan = (txt, w, how) => {
-      for (const [re, kind] of codeRes) { re.lastIndex = 0; let m; while ((m = re.exec(txt))) { hits.push({ found: m[0], kind, how, where: w, text: norm(txt.slice(Math.max(0, m.index - 30), m.index + m[0].length + 30)) }); } }
+    // lead: text read just before this node in the same block, so a typed chip reads whole ("Loop " + "R13"; the
+    // systems designer's request, round 1); a match counts only where it ends inside the node itself
+    const scan = (txt, w, how, lead) => {
+      lead = lead || '';
+      const all = lead + txt;
+      for (const [re, kind] of codeRes) { re.lastIndex = 0; let m; while ((m = re.exec(all))) { if (m.index + m[0].length <= lead.length) continue; hits.push({ found: m[0], kind, how, where: w, text: norm(all.slice(Math.max(0, m.index - 30), m.index + m[0].length + 30)) }); } }
     };
     {
       const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
-      for (let n = tw.nextNode(); n; n = tw.nextNode()) { const p = n.parentElement; if (!p || p.closest('script,style')) continue; scan(n.textContent, where(p), 'text'); }
+      const BLOCK = 'p,li,td,th,dt,dd,figcaption,caption,h1,h2,h3,h4,h5,h6,summary,label,button,div,section,figure,blockquote';
+      let lastBlock = null, tail = '';
+      for (let n = tw.nextNode(); n; n = tw.nextNode()) {
+        const p = n.parentElement; if (!p || p.closest('script,style')) continue;
+        const blk = p.closest(BLOCK);
+        if (blk !== lastBlock) { lastBlock = blk; tail = ''; }
+        scan(n.textContent, where(p), 'text', tail);
+        tail = (tail + n.textContent).slice(-24);
+      }
     }
     scan(document.title, 'document title', 'title');
     document.querySelectorAll(NAME_ATTRS.map((a) => `[${a}]`).join(',')).forEach((el) => { for (const a of NAME_ATTRS) { const v = el.getAttribute(a); if (v) scan(v, where(el), a); } });
@@ -2373,6 +2385,8 @@ const PLANTS = [
   { key: 'typeScale', fault: '21 px text in a specimen, off the scale', js: () => { document.querySelector('[data-specimen]:not([data-pending]):not([data-check-exempt~="scale"])').insertAdjacentHTML('beforeend', '<p style="font:700 21px/1.2 Inter;margin:0">Off-scale deck</p>'); } },
   { key: 'codes', fault: 'a decision code and "Gate" in rule text', js: () => { document.querySelector('.rule-text').append(' Approved at Gate 1 (DR-55).'); } },
   { key: 'codes', fault: 'a decision code in an alt text', js: () => { document.querySelector('[data-specimen][role="img"]').setAttribute('aria-label', 'A notice card at true size, as decided in D2-30.'); } },
+  { key: 'codes', fault: 'a typed chip whose ID sits in its own span, "Loop R13" (allowed: must not be flagged)', expect: false, js: () => { document.querySelector('.rule-text').insertAdjacentHTML('beforeend', ' <span class="chip">Loop <span class="id">R13</span></span>'); } },
+  { key: 'codes', fault: 'a bare R13 in rule text', js: () => { document.querySelector('.rule-text').append(' As R13 shows.'); } },
   { key: 'codes', fault: '"the studio" in a caption', js: () => { document.querySelector('.plate-cap').append(' The studio drew it.'); } },
   // apply pass, November 7, 2026
   { key: 'codes', fault: 'a lowercase "gate" in rule text', js: () => { document.querySelector('.rule-text').append(' Shown to the editor at the next gate.'); } },

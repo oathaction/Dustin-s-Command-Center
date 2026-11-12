@@ -40,7 +40,7 @@
   "caption": "One command writes the three files from the spec the page uses, each named for its date, chart, ground and width.",
   "alt": "One kit command, node work/build/chart-kit/oa-chart.mjs build s14, and the three files it writes for the payroll chart: an SVG, a PNG and a CSV, each with a dated name that says what the chart is, its ground and its width.",
   "illustrative": false,
-  "notes": "File names as the kit writes them for S14 on November 12, 2026 (contract C3).",
+  "notes": "File names as the kit writes them for the payroll chart on November 12, 2026.",
   "readable": true
  },
  "failure": {

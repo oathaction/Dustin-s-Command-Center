@@ -25,7 +25,7 @@
   "13.7",
   "14.13"
  ],
- "builders": "Fill every word field of the spec under contract C2; the kit prints the parts in this order and leaves out an empty one.",
+ "builders": "Fill every word field of the spec, as the kit’s README sets out under “The keys a spec takes”; the kit prints the parts in this order and leaves out an empty one.",
  "specs": [
   {
    "label": "Order",

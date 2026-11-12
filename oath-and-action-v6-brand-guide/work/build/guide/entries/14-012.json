@@ -2,7 +2,7 @@
  "id": "14.12",
  "title": "Redraw for a phone only when the form must change, and keep the data and finding.",
  "rule": [
-  "Draw a chart once for every width when its form still reads at 358 px. Change the form for a phone only when it must: when labels would fall under 13 px (Rule 06.3), when columns grow too narrow to carry their names, or when arrows grow too short to read. Columns then become bars, and a map of arrows becomes a list.",
+  "Draw a chart once for every width when its form still reads at 358 px. Change the form for a phone only when it must: when labels would fall under 13 px (Rule 06.3), when columns grow too narrow to carry their values, or when arrows grow too short to read. Columns then become bars, and a map of arrows becomes a list.",
   "The phone drawing keeps every row, the title, the finding and the source line, and a note under the drawing carries any words that leave the plot."
  ],
  "use_when": null,
@@ -45,21 +45,22 @@
  ],
  "correct": {
   "specimen": "s-14-12-correct",
-  "caption": "At full width the nine sources stand as columns. On a phone their names would not fit under them, so they become bars, with the same rows, title and finding.",
-  "alt": "The same nine sources of federal receipts drawn twice: as columns at full width, with names under each column, and as bars on a phone, with each name beside its bar. Both show individual income taxes largest at 2,846 billion dollars of 5,403 billion.",
+  "caption": "At full width the twelve years stand as columns with their values above them. On a phone those values would not fit over columns that narrow, so the columns become bars, with the same rows, title and finding.",
+  "alt": "The same twelve years of federal receipts drawn twice: as columns at full width, each value above its column, and as bars on a phone, each value beside its bar. Both rise from 3,249 billion dollars in 2015 to 5,403 billion in 2026, with a fall in 2023.",
   "illustrative": false,
-  "notes": "The two drawings side by side, drawn here from the Treasury file, so the plate shows both widths at once."
+  "notes": "The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; the plate is 640 px wide, so its full-width drawing keeps its size on a phone, inside the guide's scrolling frame.",
+  "width_px": 640
  },
  "failure": {
   "specimen": "s-14-12-failure",
-  "caption": "<strong>Fails Rule 14.12.</strong> The phone drawing keeps three of the nine sources and takes a new title, so a reader on a phone meets a different finding from a reader at a desk.",
-  "alt": "Failure case: do not publish. A phone version of the receipts chart that keeps three of nine sources and gives them a new title, “Income and payroll taxes pay for the federal government”.",
+  "caption": "<strong>Fails Rule 14.12.</strong> The phone drawing keeps three of the twelve years and takes a new title, so a reader on a phone meets a different finding from a reader at a desk.",
+  "alt": "Failure case: do not publish. A phone version of the receipts chart that keeps the last three of twelve years and takes a new title, “Federal receipts rose in each of the last two years”.",
   "illustrative": false,
   "notes": ""
  },
  "examples": [
   {
-   "example": "Federal receipts by source, fiscal year 2026",
+   "example": "Federal receipts, fiscal years 2015 to 2026",
    "domain": "D08",
    "states": [],
    "level": "federal",

@@ -110,7 +110,7 @@ CSS = {
     "art": ".art{margin-top:20px}",
     "nt": f".nt{{{CAP};margin-top:12px;max-width:40em}}",
     "src": f".src{{{CAP};color:var(--oa-color-text-secondary);margin-top:12px;padding-top:8px;border-top:1px solid var(--oa-color-border-hairline);max-width:44em}}",
-    "eq": (f".eq{{margin-top:10px}}.eq>summary{{cursor:pointer;font:var(--oa-font-weight-semibold) var(--oa-type-body-small-font-size)/1.5 var(--oa-font-family-reading)}}"
+    "eq": (f".eq{{margin-top:10px}}.eq>summary{{list-style:none}}.eq>summary::before{{content:'+';display:inline-block;width:1.1em}}.eq>summary{{cursor:pointer;font:var(--oa-font-weight-semibold) var(--oa-type-body-small-font-size)/1.5 var(--oa-font-family-reading)}}"
            f".eq table{{border-collapse:collapse;margin-top:8px;{SMALL}}}.eq caption{{{CAP};text-align:left;color:var(--oa-color-text-secondary);padding-bottom:4px}}"
            f".eq th,.eq td{{text-align:left;padding:4px 16px 4px 0;border-bottom:1px solid var(--oa-color-border-hairline)}}"
            f".eq thead th{{{LBL};color:var(--oa-color-text-secondary)}}.eq tbody th{{font-weight:var(--oa-font-weight-regular)}}"
@@ -174,16 +174,18 @@ CSS = {
     "sb": (f".sb{{list-style:none;margin:0;padding:0;display:grid;gap:6px;{SMALL}}}.sb li{{display:grid;grid-template-columns:minmax(0,9rem) minmax(0,1fr) 3rem;gap:10px;align-items:center}}"
            ".sb .bt{height:var(--oa-chart-bar-phone-height)}.sb .v{text-align:right;font-variant-numeric:tabular-nums}"
            ".sb i{display:block;height:100%}"),
+    "st2": ".st2 .fr+.fr{margin-top:20px}",
+    "yr": ".hb.yr li{grid-template-columns:3.2rem minmax(0,1fr) 3.4rem}",
     "two": ".two{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}@media (min-width:60em){.two{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);align-items:start}}",
     "fr": (f".fr{{border:1px solid var(--oa-color-border-strong);padding:14px}}.fr .fh{{{LBL};color:var(--oa-color-text-secondary);margin:0 0 10px}}"
            ".fr.ph{max-width:358px}"),
     "cl": (".cl{display:flex;align-items:flex-end;gap:6px;height:180px;border-bottom:var(--oa-chart-line-baseline) solid var(--oa-chart-color-baseline);margin-top:8px}"
            ".cl .c{flex:1 1 0;display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;height:100%;min-width:0}"
-           ".cl .c i{display:block;background:var(--oa-chart-color-context)}.cl .c.s i{background:var(--oa-chart-color-subject)}"
+           ".cl .c i{display:block;background:var(--oa-chart-color-context);margin:0 6px}.cl .c.s i{background:var(--oa-chart-color-subject)}"
            f".cl .c b{{display:block;text-align:center;font-variant-numeric:tabular-nums;{CAP};margin-bottom:4px}}"
            f".cn{{display:flex;gap:6px;{CAP}}}.cn span{{flex:1 1 0;min-width:0;text-align:center;overflow-wrap:anywhere;padding-top:6px}}"),
     "files": (f".files{{list-style:none;margin:0;padding:0;{SMALL}}}.files li{{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding:10px 0;border-bottom:1px solid var(--oa-color-border-hairline)}}"
-              f"@media (min-width:48em){{.files li{{grid-template-columns:minmax(0,1fr) 5rem minmax(0,16rem);gap:16px;align-items:baseline}}}}"
+              f"@media (min-width:48em){{.files li{{grid-template-columns:minmax(0,1fr) 6.8rem minmax(0,16rem);gap:16px;align-items:baseline}}}}"
               ".files .fn{font-weight:var(--oa-font-weight-semibold);overflow-wrap:anywhere}.files .ty{font-weight:var(--oa-font-weight-semibold)}"
               f".files .what{{{CAP};color:var(--oa-color-text-secondary)}}"),
     "cmd": (f".cmd{{margin:0 0 14px;padding:10px 12px;background:var(--oa-color-surface-white);border:1px solid var(--oa-color-border-hairline);"
@@ -277,7 +279,7 @@ def axis_y(ys, ticks, x0, x1, fmt):
     for t in ticks:
         y = ys(t)
         out.append(f'<line class="gl" x1="{x0}" x2="{x1}" y1="{y:.1f}" y2="{y:.1f}"/>'
-                   f'<text class="tk" x="{x0}" y="{y - 4:.1f}">{e(fmt(t))}</text>')
+                   f'<text class="tk" x="{x0 - 5}" y="{y + 4:.1f}" text-anchor="end">{e(fmt(t))}</text>')
     return "".join(out)
 
 
@@ -302,7 +304,7 @@ class Book:
     def __init__(self):
         self.files, self.specs, self.plates = {}, {}, {}
 
-    def add(self, sid, body, *, alt, illustrative=False, readable=False, notes="", extra_css=""):
+    def add(self, sid, body, *, alt, illustrative=False, readable=False, notes="", extra_css="", width=None):
         need(sid not in self.files, f"duplicate specimen {sid}")
         body = re.sub(r">\s+<", "><", body.strip())
         self.files[sid] = (f"<!-- {sid}: Oath & Action guide, Edition 06, chapter 14. Editor, {WRITTEN}. Written by "
@@ -312,6 +314,8 @@ class Book:
         for c in charts:
             need(c in self.specs, f"{sid} places chart {c}, which has no spec")
         m = {"alt": " ".join(alt.split()), "illustrative": bool(illustrative), "notes": notes}
+        if width:
+            m["width_px"] = width   # drawn at this true width; the guide's frame scrolls it on a narrower screen
         if readable:
             m["readable"] = True
         if charts:
@@ -495,7 +499,8 @@ def rule_14_2(B):
          ("Title", "One full sentence in Inter Tight at the chart title size"),
          ("Measure line", "What is counted, the unit, the period and the place")],
         ["13.1", "13.2", "13.6", "13.7", "14.13"],
-        "Fill every word field of the spec under contract C2; the kit prints the parts in this order and leaves out an empty one.",
+        "Fill every word field of the spec, as the kit’s README sets out under “The keys a spec takes”; the kit prints the parts in this "
+        "order and leaves out an empty one.",
         B.plate("s-14-2-correct", "The eight parts in order, each numbered where the kit prints it. The table sits folded under the source line."),
         B.plate("s-14-2-failure", fails("14.2", "The title names a topic and states no finding, and the chart drops its label, measure line, "
                                                 "notes and source line, so a reader cannot tell what was counted or who counted it.")),
@@ -549,7 +554,7 @@ def rule_14_3(B):
            domain="D10", states=[], notes_internal="Rule 14.3's correct plate. Checked by script: 18 to 24 more than 10 points below every other "
                                                    "group in each year (gaps 11.2 to 16.1).")
     # the failure: the same four lines in the four group inks, with a key under the chart and no names on the lines
-    W, H, L, R, T, Bt = 320, 236, 30, 312, 14, 170
+    W, H, L, R, T, Bt = 320, 236, 36, 306, 14, 170
     xs = scale(2004, 2024, L, R)
     ys = scale(40, 80, Bt, T)
     lines = "".join(f'<path class="ln g{i + 1} kl" d="{path([(xs(y), ys(v[a][y])) for y in years])}"/>' for i, (a, _) in enumerate(AGES))
@@ -617,7 +622,7 @@ def rule_14_4(B):
     cut = 55
     need(lo > cut + 2, "the cut axis no longer sits under every value")
     ratio = (hi - cut) / (lo - cut)
-    W, H, L, R, T, Bt = 320, 210, 28, 314, 18, 178
+    W, H, L, R, T, Bt = 320, 210, 38, 314, 18, 178
     n = len(years)
     step = (R - L) / n
     ys = scale(cut, 70, Bt, T)
@@ -643,7 +648,8 @@ def rule_14_4(B):
          ("Circles", "Area in proportion to the value, so the radius follows its square root")],
         ["14.23", "14.29"],
         "The kit draws every bar and column from zero and fails a circle not sized by area; scale may set a line’s range, never a bar’s.",
-        B.plate("s-14-4-correct", "From zero, the columns stand close in height, as the shares do: a few points apart in every presidential year."),
+        B.plate("s-14-4-correct", f"From zero, each column keeps its true size: the highest share, {fmt1(hi)} percent in {y_hi}, stands about "
+                                  f"{round(100 * (hi / lo - 1))} percent taller than the lowest, {fmt1(lo)} percent in {y_lo}."),
         B.plate("s-14-4-failure", fails("14.4", f"The axis starts at {cut} percent, so {y_hi}’s column stands {ratio:.1f} times as tall as "
                                                 f"{y_lo}’s for a gap of {fmt1(hi - lo)} points.")),
         [ex("Reported voting, citizens 18 and over, presidential years", "D10", where="14.4")],
@@ -860,7 +866,7 @@ def rule_14_8(B):
            labels={"panels": [{"value": a, "label": OWN_NAMES[a]} for a in OWN_AGES], "columns": 5},
            domain="D09", states=[], notes_internal="Rule 14.8's correct plate. Checked by script: under 35 lowest by more than 15 points every year.")
     # the failure: five lines in five inks with a key, one ink borrowed from the sequential scale
-    W, H, L, R, T, Bt = 320, 250, 30, 312, 14, 170
+    W, H, L, R, T, Bt = 320, 250, 36, 306, 14, 170
     xs = scale(y0, y1, L, R)
     ys = scale(20, 90, Bt, T)
     lines = "".join(f'<path class="ln g{i + 1}" d="{path([(xs(y), ys(o[a][y])) for y in years])}"/>' for i, a in enumerate(OWN_AGES))
@@ -1002,7 +1008,7 @@ def rule_14_10(B):
            encode={"x": "year", "y": "establishments"}, domain="D01", states=[],
            notes_internal="Rule 14.10's correct plate: the window's reason in the measure line, one unbroken line.")
     # the failure: bands at each inauguration, named for each president
-    W, H, L, R, T, Bt = 320, 210, 34, 312, 30, 178
+    W, H, L, R, T, Bt = 320, 210, 50, 306, 30, 178
     xs = scale(1998, 2023, L, R)
     ys = scale(0, 10000, Bt, T)
     bands = "".join(f'<rect class="bd" x="{xs(a):.1f}" y="{T - 18}" width="{xs(b) - xs(a):.1f}" height="{Bt - T + 18}"/>'
@@ -1030,7 +1036,7 @@ def rule_14_10(B):
         [("Window", "From the question, its reason printed in the measure line"),
          ("Charts shown together", "One window, printed once (Rule 13.7)"),
          ("An event", "A dated note with a leader, on an unbroken line", "oa.chart.color.leader.onNewsprint"),
-         ("An inauguration", "No band, color change or break at the date (H09)")],
+         ("An inauguration", "No band, color change or break at the date (house rule H09)")],
         ["13.7", "14.29"],
         "Put the window's reason in measure_line and any event in annotations; the kit draws one line with no band.",
         B.plate("s-14-10-correct", "The window runs from the first year these industry codes allow to the latest count, and the measure line "
@@ -1050,6 +1056,7 @@ def rule_14_11(B):
     m = sidecar(ds)
     seg_key = lambda r: (0 if int(r["year"]) < 2013 or (r["year"] == "2013" and "7" in r["footnotes"].split()) else
                          1 if int(r["year"]) < 2017 or (r["year"] == "2017" and not r["footnotes"].strip()) else 2)
+    rs = [r for r in rs if int(r["year"]) >= 2005]
     segs = [sorted(((int(r["year"]), int(r["median_income"])) for r in rs if seg_key(r) == k)) for k in range(3)]
     need(segs[0][-1] == (2013, 69470) and segs[1][0] == (2013, 71670) and segs[1][-1] == (2017, 78900) and segs[2][0] == (2017, 78600),
          "the two breaks moved")
@@ -1058,33 +1065,33 @@ def rule_14_11(B):
     moe = [int(r["median_moe"]) for r in rs if r["year"] == "2025"][0]
     title = f"Median household income stood at ${comma(last[1])} in 2025, in 2025 dollars"
     g = "Documented: a Census Bureau survey"
-    measure = "Median household income in 2025 dollars, each year from 1967, the first in the Census Bureau’s series, to 2025, United States"
-    W, H, L, R, T, Bt = 320, 220, 46, 312, 16, 184
-    xs = scale(1967, 2025, L, R)
-    ys = scale(50000, 90000, Bt, T)
+    measure = ("Median household income in 2025 dollars, each year from 2005 to 2025, the two decades around the survey’s changes in "
+               "2013 and 2017, United States")
+    W, H, L, R, T, Bt = 320, 220, 58, 306, 16, 184
+    xs = scale(2005, 2025, L, R)
+    ys = scale(60000, 90000, Bt, T)
     lines = "".join(f'<path class="ln" d="{path([(xs(y), ys(v)) for y, v in s])}"/>' for s in segs)
     dots = "".join(f'<circle class="{c}" cx="{xs(y):.1f}" cy="{ys(v):.1f}" r="3.5"/>'
                    for (y, v), c in [(segs[0][-1], "fo"), (segs[1][0], "fs"), (segs[1][-1], "fo"), (segs[2][0], "fs")])
     notes_svg = (f'<line class="ld" x1="{xs(2013):.1f}" x2="{xs(2013):.1f}" y1="{ys(71670) - 6:.1f}" y2="{T + 46}"/>'
                  f'<text x="{xs(2013) - 4:.1f}" y="{T + 30}" text-anchor="end">2013: new</text>'
                  f'<text x="{xs(2013) - 4:.1f}" y="{T + 44}" text-anchor="end">questions</text>')
-    inner = (axis_y(ys, [50000, 70000, 90000], L, R, lambda t: f"${t // 1000},000") + axis_x(xs, [1967, 1995, 2025], Bt + 18, str)
+    inner = (axis_y(ys, [60000, 75000, 90000], L, R, lambda t: f"${t // 1000},000") + axis_x(xs, [2005, 2015, 2025], Bt + 18, str)
              + lines + dots + notes_svg)
     notes = ["The line breaks twice where the survey changed. In 2013 it asked new income questions, and in 2017 it moved to a new "
              "processing system; each year prints both its estimates, the old method’s as an open dot and the new one’s filled.",
              f"The 2025 figure carries a margin of error of ±${comma(moe)} at 90 percent confidence."]
-    tab = table("Median household income, 2025 dollars, the years with two estimates", ["Year and method", "Median income"],
-                [("2013, earlier questions", f"${comma(69470)}"), ("2013, new questions", f"${comma(71670)}"),
-                 ("2017, earlier processing", f"${comma(78900)}"), ("2017, new processing", f"${comma(78600)}"),
-                 ("2025", f"${comma(last[1])}")])
+    method = {(2013, 0): ", earlier questions", (2013, 1): ", new questions", (2017, 1): ", earlier processing", (2017, 2): ", new processing"}
+    tab = table("Median household income, 2025 dollars", ["Year", "Median income"],
+                [(f"{y}{method.get((y, k), '')}", f"${comma(v)}") for k, s in enumerate(segs) for y, v in s])
     B.add("s-14-11-correct", head("Finding", g, title, measure=measure) + f'<div class="art">{svg(W, H, inner)}</div>'
           + foot(notes, src(ds)) + tab,
-          alt=f"A line of median household income from 1967 to 2025 in 2025 dollars, broken at 2013 and 2017 where the survey changed, with "
+          alt=f"A line of median household income from 2005 to 2025 in 2025 dollars, broken at 2013 and 2017 where the survey changed, with "
               f"both estimates printed in each of those years; it ends at ${comma(last[1])} in 2025.",
           notes="Drawn here from the Census Bureau's table, segments split by its footnotes 6 and 7 (2013) and 5 (2017).")
     allpts = sorted(((int(r["year"]), int(r["median_income"]), seg_key(r)) for r in rs), key=lambda t: (t[0], t[2]))
     bad = f'<path class="ln" d="{path([(xs(y), ys(v)) for y, v, _ in allpts])}"/>'
-    inner2 = axis_y(ys, [50000, 70000, 90000], L, R, lambda t: f"${t // 1000},000") + axis_x(xs, [1967, 1995, 2025], Bt + 18, str) + bad
+    inner2 = axis_y(ys, [60000, 75000, 90000], L, R, lambda t: f"${t // 1000},000") + axis_x(xs, [2005, 2015, 2025], Bt + 18, str) + bad
     B.add("s-14-11-failure", dnp() + tl(title) + f'<div class="art">{svg(W, H, inner2)}</div>',
           alt=FC + "The same income series as one line run through both estimates for 2013 and both for 2017, so each change in the survey "
                    "draws as a sudden step in income.")
@@ -1111,51 +1118,45 @@ def rule_14_11(B):
 # ===============================================================================================================
 # 14.12 The phone drawing
 # ===============================================================================================================
-SOURCE_NAMES = {"Individual Income Taxes": "Individual income taxes", "Employment and General Retirement": "Payroll taxes for Social Security and Medicare",
-                "Corporation Income Taxes": "Corporate income taxes", "Customs Duties": "Customs duties", "Excise Taxes": "Excise taxes",
-                "Unemployment Insurance": "Unemployment insurance", "Miscellaneous Receipts": "Other receipts", "Estate and Gift Taxes": "Estate and gift taxes",
-                "Other Retirement": "Other retirement"}
-
-
 def receipts():
-    rs = [r for r in rows("treasury-mts-receipts-by-source") if r["fiscal_year"] == "2026"]
-    tot = [float(r["receipts_dollars"]) for r in rs if r["source"] == "Total"][0]
-    parts = sorted(((SOURCE_NAMES[r["source"]], float(r["receipts_dollars"]) / 1e9) for r in rs if r["source"] != "Total"), key=lambda t: -t[1])
-    need(abs(sum(v for _, v in parts) - tot / 1e9) < 1, "the receipts no longer add up to the total")
-    return parts, tot / 1e9
+    out = sorted((int(r["fiscal_year"]), float(r["receipts_dollars"]) / 1e9) for r in rows("treasury-mts-receipts-by-source") if r["source"] == "Total")
+    need([y for y, _ in out] == list(range(2015, 2027)), "the receipts file no longer runs fiscal 2015 to 2026")
+    return out
 
 
 def rule_14_12(B):
     ds = "treasury-mts-receipts-by-source"
-    parts, tot = receipts()
-    need(parts[0][0] == "Individual income taxes" and round(parts[0][1] / 1000, 2) == 2.85 and round(tot / 1000, 2) == 5.40, "the receipts moved")
-    title = "Individual income taxes brought in $2.85 trillion of the $5.40 trillion the federal government collected in fiscal year 2026"
+    data = receipts()
+    d = dict(data)
+    need(round(d[2026] / 1000, 2) == 5.40 and round(d[2015] / 1000, 2) == 3.25 and d[2024] < d[2025] < d[2026] and d[2023] < d[2022],
+         "the receipts totals moved")
+    title = "Federal receipts reached $5.40 trillion in fiscal year 2026, up from $3.25 trillion in 2015"
     g = "Documented: the Treasury’s monthly statement"
-    measure = "Federal receipts by source, billions of dollars, fiscal year 2026, October 1, 2025 to September 30, 2026"
-    vmax = parts[0][1]
-    cols = "".join(f'<div class="c{" s" if i == 0 else ""}"><b>{comma(v)}</b><i style="height:{max(1.0, 100 * v / vmax * 0.82):.1f}%"></i></div>'
-                   for i, (_, v) in enumerate(parts))
-    names = "".join(f"<span>{e(n)}</span>" for n, _ in parts)
+    measure = ("Federal receipts, billions of dollars not adjusted for inflation, fiscal years 2015 to 2026, the years the Treasury table "
+               "we drew holds; each fiscal year ends September 30")
+    vmax = max(d.values())
+    cols = "".join(f'<div class="c{" s" if y == 2026 else ""}"><b>{comma(v)}</b><i style="height:{80 * v / vmax:.1f}%"></i></div>' for y, v in data)
+    names = "".join(f"<span>{y}</span>" for y, _ in data)
     desk = f'<div class="fr"><p class="fh">At full width</p><div class="cl">{cols}</div><div class="cn">{names}</div></div>'
     phone = (f'<div class="fr ph"><p class="fh">On a phone, 358 px</p>'
-             + hbars([(n, v) for n, v in parts], vmax * 1.02, comma, subject=("Individual income taxes",)) + "</div>")
-    tab = table("Federal receipts by source, fiscal year 2026, billions of dollars", ["Source", "Billions of dollars"],
-                [(n, comma(v)) for n, v in parts] + [("Total", comma(tot))])
-    B.add("s-14-12-correct", head("Finding", g, title, measure=measure) + f'<div class="art two">{desk}{phone}</div>' + foot([], src(ds)) + tab,
-          alt=f"The same nine sources of federal receipts drawn twice: as columns at full width, with names under each column, and as bars on a "
-              f"phone, with each name beside its bar. Both show individual income taxes largest at {comma(parts[0][1])} billion dollars of "
-              f"{comma(tot)} billion.",
-          notes="The two drawings side by side, drawn here from the Treasury file, so the plate shows both widths at once.")
-    top3 = parts[:3]
+             + hbars([(str(y), v) for y, v in data], vmax * 1.02, comma, subject=("2026",)).replace('class="hb"', 'class="hb yr"') + "</div>")
+    tab = table("Federal receipts by fiscal year, billions of dollars", ["Fiscal year", "Billions of dollars"], [(y, comma(v)) for y, v in data])
+    B.add("s-14-12-correct", head("Finding", g, title, measure=measure) + f'<div class="art st2">{desk}{phone}</div>' + foot([], src(ds)) + tab,
+          alt=f"The same twelve years of federal receipts drawn twice: as columns at full width, each value above its column, and as bars on a "
+              f"phone, each value beside its bar. Both rise from {comma(d[2015])} billion dollars in 2015 to {comma(d[2026])} billion in 2026, "
+              f"with a fall in 2023.",
+          notes="The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; the plate is "
+                "640 px wide, so its full-width drawing keeps its size on a phone, inside the guide's scrolling frame.", width=640)
+    last3 = data[-3:]
     B.add("s-14-12-failure", dnp() + f'<div class="fr ph"><p class="fh">On a phone, 358 px</p>'
-          + head("Finding", g, "Income and payroll taxes pay for the federal government", measure=measure)
-          + f'<div class="art">{hbars(top3, vmax * 1.02, comma, subject=("Individual income taxes",))}</div></div>',
-          alt=FC + "A phone version of the receipts chart that keeps three of nine sources and gives them a new title, “Income and payroll taxes "
-                   "pay for the federal government”.")
+          + tl("Federal receipts rose in each of the last two years")
+          + f'<div class="art">{hbars([(str(y), v) for y, v in last3], vmax * 1.02, comma, subject=("2026",)).replace(chr(34) + "hb" + chr(34), chr(34) + "hb yr" + chr(34))}</div></div>',
+          alt=FC + "A phone version of the receipts chart that keeps the last three of twelve years and takes a new title, “Federal receipts rose "
+                   "in each of the last two years”.")
     return entry(
         "14.12", "Redraw for a phone only when the form must change, and keep the data and finding.",
         ["Draw a chart once for every width when its form still reads at 358 px. Change the form for a phone only when it must: when labels "
-         "would fall under 13 px (Rule 06.3), when columns grow too narrow to carry their names, or when arrows grow too short to read. "
+         "would fall under 13 px (Rule 06.3), when columns grow too narrow to carry their values, or when arrows grow too short to read. "
          "Columns then become bars, and a map of arrows becomes a list.",
          "The phone drawing keeps every row, the title, the finding and the source line, and a note under the drawing carries any words that "
          "leave the plot."],
@@ -1167,11 +1168,11 @@ def rule_14_12(B):
          ("Kept", "Every row, the title, the finding and the source line")],
         ["06.3", "14.16", "14.25"],
         "Set phone to differs and write phone_note in the spec when the form changes; the kit draws both and checks each at 358 px.",
-        B.plate("s-14-12-correct", "At full width the nine sources stand as columns. On a phone their names would not fit under them, so they "
-                                   "become bars, with the same rows, title and finding."),
-        B.plate("s-14-12-failure", fails("14.12", "The phone drawing keeps three of the nine sources and takes a new title, so a reader on a "
+        B.plate("s-14-12-correct", "At full width the twelve years stand as columns with their values above them. On a phone those values "
+                                   "would not fit over columns that narrow, so the columns become bars, with the same rows, title and finding."),
+        B.plate("s-14-12-failure", fails("14.12", "The phone drawing keeps three of the twelve years and takes a new title, so a reader on a "
                                                   "phone meets a different finding from a reader at a desk.")),
-        [ex("Federal receipts by source, fiscal year 2026", "D08", where="14.12")],
+        [ex("Federal receipts, fiscal years 2015 to 2026", "D08", where="14.12")],
         tokens=["oa.chart.artboard.phone"])
 
 
@@ -1225,7 +1226,8 @@ def rule_14_13(B):
          ("Still image", "Designed first; every value a reader needs printed"),
          ("Interactive layer", "Adds to the still chart on the website, and drops nothing from it")],
         ["18.10", "19.2", "14.130"],
-        "Fill the spec's table under contract C2; the kit writes the table, and its check fails one whose rows differ from the data.",
+        "Fill the spec’s table, as the kit’s README sets out under “The keys a spec takes”; the kit writes the table, and its check fails "
+        "one whose rows differ from the data.",
         B.plate("s-14-13-correct", "Each column prints its value, so the still image needs no pointer, and the table under the source line "
                                    "gives the same rows as live text."),
         B.plate("s-14-13-failure", fails("14.13", "The values show only in a tooltip, which a newsletter, an email and a screen reader never "
@@ -1247,7 +1249,7 @@ def rule_14_14(B):
           '<p class="cmd">node work/build/chart-kit/oa-chart.mjs build s14</p><ul class="files">' + li + "</ul>",
           alt="One kit command, node work/build/chart-kit/oa-chart.mjs build s14, and the three files it writes for the payroll chart: an SVG, a "
               "PNG and a CSV, each with a dated name that says what the chart is, its ground and its width.",
-          readable=True, notes="File names as the kit writes them for S14 on November 12, 2026 (contract C3).")
+          readable=True, notes="File names as the kit writes them for the payroll chart on November 12, 2026.")
     bad = [("chart final v2.png", "PNG", "A screenshot, cropped above the source line"),
            ("payrolls numbers.xlsx", "Spreadsheet", "The values typed in again and rounded to the thousand"),
            ("chart.svg", "SVG", "Redrawn by hand, with its title edited after the page went live")]
@@ -1380,7 +1382,7 @@ def token_names():
 
 
 def reader_strings(entry_or_chapter):
-    skip = {"notes", "builders", "specimen", "charts", "examples", "token", "tokens", "related", "id", "illustrative", "readable"}
+    skip = {"notes", "specimen", "charts", "examples", "token", "tokens", "related", "id", "illustrative", "readable"}
 
     def walk(o, k=None):
         if isinstance(o, str):
@@ -1427,13 +1429,17 @@ def check(entries, chap, B):
     texts = [(f"{en['id']} {k}", s) for en in entries for k, s in reader_strings(en)]
     texts += [(f"chapter {k}", s) for k, s in reader_strings(chap)]
     texts += [(f"{sid} visible", visible(t)) for sid, t in B.files.items()]
-    texts += [(f"{cid} {k}", s) for cid, sp in B.specs.items() for k, s in reader_strings(sp) if k not in ("notes_internal", "failure")]
+    quiet = ("notes_internal", "failure", "domain", "states", "dataset", "form", "family", "tier", "evidence", "where", "sort", "encode",
+             "scale", "phone", "show", "kit", "field", "format", "subject", "x")
+    texts += [(f"{cid} {k}", s) for cid, sp in B.specs.items() for k, s in reader_strings(sp) if k not in quiet]
     for where, s in texts:
         if "—" in s or "‑" in s:
             fails.append(f"an em dash or U+2011 in {where}")
         for w in FILLERS:
             if re.search(rf"\b{w}\b", s, re.I):
                 fails.append(f"listed word {w!r} in {where}")
+        for m in re.finditer(r"(?<![\w-])(?<!Table )(?<!house rule )(?<!house rules )[A-Z]{1,2}-?\d{1,3}(?![\w-])", s):
+            fails.append(f"a bare code {m.group(0)!r} in {where}")
         if re.search(STUDIO, s):
             fails.append(f"a studio word or decision code in {where}: {re.search(STUDIO, s).group(0)}")
         for m in re.finditer(r"\bRules? (\d\d\.\d+)", s):

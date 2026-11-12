@@ -150,7 +150,7 @@
  "s-14-11-correct": {
   "chapter": "14",
   "rule": "14.11",
-  "alt": "A line of median household income from 1967 to 2025 in 2025 dollars, broken at 2013 and 2017 where the survey changed, with both estimates printed in each of those years; it ends at $87,460 in 2025.",
+  "alt": "A line of median household income from 2005 to 2025 in 2025 dollars, broken at 2013 and 2017 where the survey changed, with both estimates printed in each of those years; it ends at $87,460 in 2025.",
   "illustrative": false,
   "notes": "Drawn here from the Census Bureau's table, segments split by its footnotes 6 and 7 (2013) and 5 (2017)."
  },
@@ -164,14 +164,15 @@
  "s-14-12-correct": {
   "chapter": "14",
   "rule": "14.12",
-  "alt": "The same nine sources of federal receipts drawn twice: as columns at full width, with names under each column, and as bars on a phone, with each name beside its bar. Both show individual income taxes largest at 2,846 billion dollars of 5,403 billion.",
+  "alt": "The same twelve years of federal receipts drawn twice: as columns at full width, each value above its column, and as bars on a phone, each value beside its bar. Both rise from 3,249 billion dollars in 2015 to 5,403 billion in 2026, with a fall in 2023.",
+  "width_px": 640,
   "illustrative": false,
-  "notes": "The two drawings side by side, drawn here from the Treasury file, so the plate shows both widths at once."
+  "notes": "The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; the plate is 640 px wide, so its full-width drawing keeps its size on a phone, inside the guide's scrolling frame."
  },
  "s-14-12-failure": {
   "chapter": "14",
   "rule": "14.12",
-  "alt": "Failure case: do not publish. A phone version of the receipts chart that keeps three of nine sources and gives them a new title, “Income and payroll taxes pay for the federal government”.",
+  "alt": "Failure case: do not publish. A phone version of the receipts chart that keeps the last three of twelve years and takes a new title, “Federal receipts rose in each of the last two years”.",
   "illustrative": false,
   "notes": ""
  },
@@ -194,7 +195,7 @@
   "rule": "14.14",
   "alt": "One kit command, node work/build/chart-kit/oa-chart.mjs build s14, and the three files it writes for the payroll chart: an SVG, a PNG and a CSV, each with a dated name that says what the chart is, its ground and its width.",
   "illustrative": false,
-  "notes": "File names as the kit writes them for S14 on November 12, 2026 (contract C3)."
+  "notes": "File names as the kit writes them for the payroll chart on November 12, 2026."
  },
  "s-14-14-failure": {
   "chapter": "14",

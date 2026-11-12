@@ -118,7 +118,7 @@
    "related": [
     "13"
    ],
-   "builders": "Fill every word field of the spec under contract C2; the kit prints the parts in this order and leaves out an empty one.",
+   "builders": "Fill every word field of the spec, as the kit’s README sets out under “The keys a spec takes”; the kit prints the parts in this order and leaves out an empty one.",
    "specs": [
     {
      "label": "Order",
@@ -250,7 +250,7 @@
    ],
    "correct": {
     "specimen": "s-14-4-correct",
-    "caption": "From zero, the columns stand close in height, as the shares do: a few points apart in every presidential year."
+    "caption": "From zero, each column keeps its true size: the highest share, 67.7 percent in 1992, stands about 16 percent taller than the lowest, 58.4 percent in 1996."
    },
    "failure": {
     "specimen": "s-14-4-failure",
@@ -564,7 +564,7 @@
     },
     {
      "label": "An inauguration",
-     "value": "No band, color change or break at the date (H09)"
+     "value": "No band, color change or break at the date (house rule H09)"
     }
    ],
    "related_rules": [
@@ -632,7 +632,7 @@
    "id": "14.12",
    "title": "Redraw for a phone only when the form must change, and keep the data and finding.",
    "rule": [
-    "Draw a chart once for every width when its form still reads at 358 px. Change the form for a phone only when it must: when labels would fall under 13 px (Rule 06.3), when columns grow too narrow to carry their names, or when arrows grow too short to read. Columns then become bars, and a map of arrows becomes a list.",
+    "Draw a chart once for every width when its form still reads at 358 px. Change the form for a phone only when it must: when labels would fall under 13 px (Rule 06.3), when columns grow too narrow to carry their values, or when arrows grow too short to read. Columns then become bars, and a map of arrows becomes a list.",
     "The phone drawing keeps every row, the title, the finding and the source line, and a note under the drawing carries any words that leave the plot."
    ],
    "why": {
@@ -674,11 +674,11 @@
    ],
    "correct": {
     "specimen": "s-14-12-correct",
-    "caption": "At full width the nine sources stand as columns. On a phone their names would not fit under them, so they become bars, with the same rows, title and finding."
+    "caption": "At full width the twelve years stand as columns with their values above them. On a phone those values would not fit over columns that narrow, so the columns become bars, with the same rows, title and finding."
    },
    "failure": {
     "specimen": "s-14-12-failure",
-    "caption": "<strong>Fails Rule 14.12.</strong> The phone drawing keeps three of the nine sources and takes a new title, so a reader on a phone meets a different finding from a reader at a desk."
+    "caption": "<strong>Fails Rule 14.12.</strong> The phone drawing keeps three of the twelve years and takes a new title, so a reader on a phone meets a different finding from a reader at a desk."
    }
   },
   {
@@ -699,7 +699,7 @@
     "18",
     "19"
    ],
-   "builders": "Fill the spec's table under contract C2; the kit writes the table, and its check fails one whose rows differ from the data.",
+   "builders": "Fill the spec’s table, as the kit’s README sets out under “The keys a spec takes”; the kit writes the table, and its check fails one whose rows differ from the data.",
    "specs": [
     {
      "label": "Table",

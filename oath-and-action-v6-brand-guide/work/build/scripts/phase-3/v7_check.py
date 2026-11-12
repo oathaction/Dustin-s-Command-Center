@@ -113,7 +113,7 @@ def check_html(h, d, ids, routes, where):
     # bare IDs: atlas IDs in reader text outside any chip
     text = visible(chip_re.sub(" ", h))
     # an ID is bare when its sentence, up to the ID, never names its type ("Loop R10", "Loops R1 and R10", "Connections L01 to L03")
-    for m in re.finditer(r"(?<![\w-])((?:RL|PW|DL)\d{2}|R-\d{2}|L[ETR]?\d{2}|I\d{3}|[A-E]\d{1,2}|[RB]\d{1,2}[ab]?)(?![\w-])", text):
+    for m in re.finditer(r"(?<![\w-])((?:RL|PW|DL)\d{2}|R-\d{2}|L[ETR]?\d{2}|LX\d{1,2}|T\d{2}|I\d{3}|[A-E]\d{1,2}|[RB]\d{1,2}[ab]?)(?![\w-])", text):
         code = m.group(1)
         kinds = [k for k in ids.get(code, ()) if k in TYPE_WORD]
         if kinds:
@@ -228,6 +228,9 @@ def self_test():
         ("a chip that names no atlas ID", f"<p>{chip('L99x', 'Connection')}</p>", "ids:"),
         ("a chip without its type word", '<p><span class="id">R10</span> is a loop.</p>', "typed:"),
         ("a bare atlas ID", "<p>R10 shifts accountability.</p>", "bare:"),
+        # the systems designer's request (round 1): connections whose IDs start with T or LX
+        ("a bare T connection", "<p>T12 carries the delay.</p>", "bare:"),
+        ("a bare LX connection", "<p>LX4 closes the loop.</p>", "bare:"),
         ("a connection given the wrong grade", f"<p>{chip('L25', 'Connection')} <b>{other.capitalize()}</b>.</p>", "grade:"),
         ("a connection given the wrong sign", f"<p>{chip('L25', 'Connection')} {sign_bad} </p>", "sign:"),
         ("an authority connection given a sign", f"<p>{chip(auth, 'Connection')} + </p>", "sign:"),

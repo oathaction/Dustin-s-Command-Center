@@ -4119,3 +4119,25 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-375 | The opener draws Loop R18 with authority connection LT16 into the technology layer, in place of Loop R13 with LE02 | The guide check's codes test bars "R13" in a text node of its own, and the typed chip "Loop R13" holds the ID in its own node; the grammar the opener teaches is the same (request 4) |
 | D3-376 | Every loop drawing prints its typed ID inside it, "Loop R18" over "reinforcing" in a two-variable loop and on one line in a three-variable one | House rule H11, and the codes test reads a bare loop ID |
 | D3-377 | Plates draw through theme tokens (graphic essential, surface, text, border strong), so they flip to Charcoal under `data-oa-theme="dark"` while the guide page stays light (D2-1133) | One drawing serves a product's dark mode (DR-204) |
+
+### Editor, round 1 (`work/handoffs/phase-3/20261112_Round-1-Editor-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-378 | Rules 14.3, 14.5, 14.6, 14.7 and 14.10 cite Rules 12.6, 05.7, 05.3, 01.2 and 13.7 and add only what a chart needs | Those rules already state labels, the chart palette, the one red, party inks and one window; chapter 14 restating them would state one rule two ways |
+| D3-379 | Rule 14.2 lists the parts in the order the kit prints them: evidence label and grade line, title, measure line, reading guide, chart, notes, source line, table | The kit and the approved Explainer print the measure line before the reading guide; contract C5's list gives the reverse, and the rule follows what readers see |
+| D3-380 | Rule 14.3 names each line beside it toward its last point, and its plate sets the names at 2008 on a 30 to 80 percent scale | At the first point the four lines sit within a point of each other, and at the last the names run past the edge at 358 px; at 2008 every name clears its line at 1440 and 390 px, and Rule 14.4 lets a line start above zero |
+| D3-381 | Rule 14.6's plate counts judges by court of appeals from the Federal Judicial Center's list, with a note that says Oath & Action counted them | The directory lists judges, not counts; the Ninth Circuit's 29 is the one point the title names |
+| D3-382 | Rule 14.9's gap test uses the square root of the sum of the two squared margins | The publisher's method for two independent estimates; the state and the nation are not independent, so the test is conservative, and the five states past it pass by at least 2.5 points |
+| D3-383 | Rule 14.10's failure names four presidents on its bands, two from each party | The fault is the split, and naming each president shows what a reader is invited to infer; the newspaper count falls across every term, which the script checks |
+| D3-384 | Rule 14.11's correct plate prints both estimates for 2013 and 2017, the earlier method's open and the new one's filled, and its table lists every year the line draws | The Census Bureau's own table carries both rows, and Rule 14.13 asks every row a chart draws in its table |
+| D3-385 | Rule 14.8 draws every fifth year from 1995 to 2025 | Every year made a 160-row table of 23 KB; seven points a panel keep each group's shape at 7 KB |
+| D3-386 | Rule 14.1's failure is drawn as compact bars by the script | The kit's ranked bar drew the 21 years 1,690 px tall, and its columns could not print 21 seven-digit values |
+| D3-387 | Static plates carry only the style rules their markup uses, with SVG classes split by job and bars and dots drawn by one element each | It took the rules block from 243,086 to 198,359 bytes with no change a reader sees |
+| D3-388 | The chapter's introduction is two paragraphs | The guide's content contract allows two; the third paragraph's point, that the kit draws each entry with its table, joins the first |
+| D3-389 | The opener lists the sixteen reader questions with their families, without rule ranges | Ranges name rules later rounds build, which would warn in every strict build until round 4 |
+| D3-390 | File names and the kit command set in the reading face | The token set has no code face, and Rule 06.10 lets no other face stand in |
+| D3-391 | Builders lines name the kit's README section "The keys a spec takes" in place of a contract code | A code such as C2 prints to readers and reads as an atlas variable (H11); the generator now fails any bare code in reader text, builders lines included |
+| D3-392 | Rule 14.11's plate shows 2005 to 2025, the two decades around the survey's changes, with its reason in the measure line | Over 58 years each break was a few pixels wide; the shorter window is the span the question names (Rule 14.10) |
+| D3-393 | Rule 14.12's plate draws total federal receipts for fiscal years 2015 to 2026 at a true 640 px, which the guide's frame scrolls on a phone | Nine source names broke mid-word under columns, and squeezed to a phone's width the full-width drawing broke as the rule's own fault does |
+| D3-394 | The script-drawn charts set their axis figures in a left margin, right-aligned to their gridlines | Figures set inside the plot sat under bars and band labels |
