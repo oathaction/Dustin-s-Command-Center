@@ -257,3 +257,11 @@ Done (23:3x), every item in the fix brief's maker A paragraph, calls 3, 5, 10 an
 - The guide's own captures of S48 at 390 px (my clip caught the rule text, not the figure); the kit's 358 px drawing was looked at instead.
 - Rule 14.12's plate in the page after the editor rebuilds it.
 - Whether the data lead signs off the redrawn S47, S48, S61 and S45 (they land in its "Sign-off" section).
+
+### After the data lead's sign-off (MA-F1 to MA-F3)
+
+- D3-xxx | S45 prints 2024's five-or-more part, 591.7, beside the top of its segment in regular weight, on the side whose neighbor stands lower, through `stacked-column`'s new `labels.part_values`; the chart note says so | MA-F1, RF-22: the title counts that part, and the drawing printed only totals; regular weight keeps it apart from the bold totals
+- D3-xxx | S47's chart note keeps the editor's "takes the text’s ink" | MA-F2 as the main session relayed it: the editor's one ink word for chart notes; "subject ink" stays a builders' term
+- D3-xxx | Where S12's shaded tiles draw no codes (256 to 279 px), the framed states, where the leader changed, are named under the frame's words: Arizona, Georgia, Michigan, Nevada, Pennsylvania and Wisconsin | MA-F3: with no codes the frames named no state
+- Tested: `oa-chart.mjs build` with the sweep on S12, S45 and S47: 3 of 3 PASS, 0 faults; S12's 1440 and 390 px SVGs still byte for byte as the baseline, its 256 px drawing looked at at twice size (the six names under the frame's words, the note after them); S45 at 1440 and 256 px Newsprint and 390 px Charcoal looked at; `dataviz_check.js --kit` on S45 and S47: 2 of 2 pass; `fixfigs.py` 38 of 38, and the six framed states read by script from the data (margins of opposite sign in 2020 and 2024: AZ, GA, MI, NV, PA, WI); `phase3_ch14_build.py` 0 faults; strict build (`guide3.html`) exit 0, no warning, no kit fault listed, 10,635,124 bytes, S45 6,884 and S47 5,338 bytes.
+- Not tested: the quick guide check after these three (no sketch changed); S12 in the guide at 320 px.
