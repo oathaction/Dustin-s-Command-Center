@@ -1,12 +1,12 @@
 {
- "built": "2026-11-12T22:29:12.675195+00:00",
+ "built": "2026-11-12T22:33:30.388068+00:00",
  "guide_build": {
   "exit": 1,
-  "bytes": 10619415,
+  "bytes": 10618153,
   "rules": 312,
   "specimens": 606,
-  "warnings": 95,
-  "built": "2026-11-12T22:29:19",
+  "warnings": 89,
+  "built": "2026-11-12T22:33:36",
   "pictures_from_failed_build": true
  },
  "kit_builds": {
@@ -552,7 +552,7 @@
    "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 6137,
-   "faults": 0,
+   "faults": 4,
    "drawings": 4,
    "rows": 8
   },
@@ -577,7 +577,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 5299,
+   "bytes_in_guide": 5189,
    "faults": 21,
    "drawings": 4,
    "rows": 7
@@ -586,12 +586,12 @@
    "rule": "14.89",
    "form": "Status chips",
    "maker": "A",
-   "title": "Of six disputes over checks on power, the Supreme Court had decided one by October 15, 2026, and had acted by interim order in three others.",
+   "title": "Of six disputes over checks on power, the Supreme Court had decided one by October 15, 2026, and two others stood on its interim orders.",
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 9812,
-   "faults": 6,
+   "bytes_in_guide": 10346,
+   "faults": 0,
    "drawings": 4,
    "rows": 6
   },
@@ -603,7 +603,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 3764,
+   "bytes_in_guide": 3750,
    "faults": 0,
    "drawings": 4,
    "rows": 1
@@ -923,18 +923,18 @@
   }
  ],
  "weight": {
-  "chapter_14": 1181810,
+  "chapter_14": 1177885,
   "stop": 2803941,
-  "per_plate": 15093,
+  "per_plate": 15154,
   "plates_to_come": 36,
-  "chapter_15": 306502,
+  "chapter_15": 306678,
   "chapter_15_ceiling": 600000.0,
-  "page": 10619415,
-  "projected": 15042495,
+  "page": 10618153,
+  "projected": 15043771,
   "budget": 15500000.0
  },
  "tested": {
-  "The strict build of the guide": "did not pass today: 95 warnings on a build of 10,619,415 bytes",
+  "The strict build of the guide": "did not pass today: 89 warnings on a build of 10,618,153 bytes",
   "The quick guide check": "Not found in its file at this build.",
   "The four-width guide check": "at 1440, 1024, 390 and 360 px, on a build of 10,587,775 bytes: no failures",
   "The chart kit’s build of every chart": "64 of 64 charts pass, checked without pictures",
@@ -952,11 +952,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-2/progress/20261112_Round-2-Progress.html",
- "html_bytes": 129892,
+ "html_bytes": 129947,
  "images": 84,
- "image_bytes": 24339069,
+ "image_bytes": 24632809,
  "folder_files": 88,
- "folder_bytes": 24525350,
+ "folder_bytes": 24819050,
  "largest_image": [
   672614,
   "20261112_Chart-14-74-Newsprint.png"
@@ -1111,11 +1111,11 @@
  "warnings": [
   "the strict guide build failed (exit 1); the guide pictures wait for a passing build",
   "the page’s pictures come from a strict build that failed; a method run only, never one to publish",
-  "the quick guide check ran on 10,587,775 bytes and today’s strict build is 10,619,415",
+  "the quick guide check ran on 10,587,775 bytes and today’s strict build is 10,618,153",
   "Tested lines without their figure: The strict build of the guide, The quick guide check"
  ],
- "seconds": 215,
- "words": 4563,
+ "seconds": 216,
+ "words": 4517,
  "words_tested_part": 241,
  "check": {
   "page": {

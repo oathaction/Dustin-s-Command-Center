@@ -3390,7 +3390,7 @@ def build(args):
         page = resolve_start(page, start, ctx)   # stops the build on an href that matches no id (Gate 2 brief)
     # Phase 3: every chart placeholder becomes the kit's figure, by the chosen drawing method (contract C7)
     chart_dirs = [spec_dir] + ([pilot / "specimens"] if pilot else [])
-    page, charts = guide_charts.expand(page, getattr(args, "chart_method", None) or guide_charts.DEFAULT_METHOD, chart_dirs, R.warn)
+    page, charts = guide_charts.expand(page, getattr(args, "chart_method", None) or guide_charts.DEFAULT_METHOD, chart_dirs, R.warn, note=R.note)
     sprites.check_res(page)
     page, sprite_bytes, sprite_counts = sprites.inject(page)
     page, n_whole = keep_ids_whole(page)   # D2-975

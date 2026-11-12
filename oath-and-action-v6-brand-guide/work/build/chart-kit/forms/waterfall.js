@@ -33,7 +33,9 @@
       var vw = 0;
       steps.forEach(function (s) { vw = Math.max(vw, c.measure(num(s), 'label', 700, true)); });
       var lmax = c.phone ? W : Math.floor(W * 0.36), nw = 0;
-      rows.forEach(function (r) { c.wrap(nm(r), 'label', lmax, 600).forEach(function (l) { nw = Math.max(nw, c.measure(l, 'label', 600)); }); });
+      // one weight for row names and values (BC S8, D3-901): 400, and 700 for the row the title names
+      var isnm = function (r) { return named.indexOf(String(r[ek])) >= 0; }, rw = function (r) { return P.row_weight(isnm(r)); };
+      rows.forEach(function (r) { c.wrap(nm(r), 'label', lmax, rw(r)).forEach(function (l) { nw = Math.max(nw, c.measure(l, 'label', rw(r))); }); });
       var x0 = c.phone ? 0 : Math.ceil(nw + 16), st = K.nice(lo, hi, 4).step;
       var xs = K.scale.linear([lo, hi], [x0 + vw + 6, W - vw - 6]), ticks = K.ticks(Math.ceil(lo / st) * st, Math.floor(hi / st) * st, 0, st);
       // the key, then the scale's labels over the plot
@@ -52,7 +54,7 @@
         lastx = tx + tw / 2;
       });
       var top = y + 8, bh = c.t('bar-dense-height') - 2, by = top, prev = null, bottom = top, ys = [], pn = 1;
-      var nlines = function (r) { return c.wrap(nm(r), 'label', lmax, 600).length; };
+      var nlines = function (r) { return c.wrap(nm(r), 'label', lmax, rw(r)).length; };
       // each row's place first, so the scale's lines draw under the bars
       steps.forEach(function (s, i) {
         var n = nlines(s.r);
@@ -71,8 +73,8 @@
       else vlines(top - 4, bottom + 4);
       steps.forEach(function (s, i) {
         var r = s.r, lines = nlines(r), by = ys[i], isn = named.indexOf(String(r[ek])) >= 0, cy = by + bh / 2 + size * 0.35;
-        if (c.phone) c.text(0, by - 6 - (lines - 1) * lh, nm(r), { role: 'label', weight: isn ? 700 : 600, max: lmax });
-        else c.text(0, cy - (lines - 1) * lh / 2, nm(r), { role: 'label', weight: isn ? 700 : 600, max: lmax });
+        if (c.phone) P.row_name(c, 0, by - 6 - (lines - 1) * lh, nm(r), { named: isn, max: lmax });
+        else P.row_name(c, 0, cy - (lines - 1) * lh / 2, nm(r), { named: isn, max: lmax });
         var xa = xs(Math.min(s.a, s.b)), xb = xs(Math.max(s.a, s.b)), d = { key: r[ek], field: ev, value: r[ev] };
         var fl = isn ? 'subject' : s.total ? 'context' : r[ev] >= 0 ? 'div-5' : 'div-1';
         c.rect(xa, by, Math.max(1, xb - xa), bh, s.total ? { fill: fl, kind: 'bar', axis: 'x', zero: xs(0), data: d } : { fill: fl, kind: 'segment', data: d });
@@ -84,7 +86,8 @@
         // a value that would sit across the zero line moves to the bar's other side where that side is clear (MA-9)
         var zx = xs(0), spans = function (r_) { var a = r_ ? xb + 3.5 : xa - 3.5 - tw; return zx > a - 2 && zx < a + tw + 2; };
         if (spans(right) && !spans(!right) && (right ? xa - 4 - tw >= (c.phone ? 0 : x0) : xb + 4 + tw <= W)) right = !right;
-        c.text(right ? xb + 3.5 : xa - 3.5, cy, t, { role: 'label', weight: s.total || isn ? 700 : 400, anchor: right ? 'start' : 'end', tnum: true, halo: true });
+        // on a knockout of the ground, so a gridline or connector never runs through a minus sign (AX S2, BC S1)
+        P.row_value(c, right ? xb + 3.5 : xa - 3.5, cy, t, { named: isn, anchor: right ? 'start' : 'end', clear: true });
         // a hairline from the last step's end to this one's start; on a phone only where it clears the name between
         var px = prev && xs(prev.x), nb = c.texts[c.texts.length - 2];
         if (prev && (!c.phone || px > nb.x + nb.w + 4)) c.line(px, prev.y, px, by, { stroke: 'secondary', width: c.t('line-hairline'), mark: false });

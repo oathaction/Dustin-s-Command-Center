@@ -46,7 +46,7 @@
       var cnt = function (r) { return L.count ? String(L.count).replace('{count}', K.fmt(r[en], 'integer')) : ''; };
       // the names: a column at the left on a desk, over each box on a phone
       var lw = 0;
-      c.rows.forEach(function (r) { lw = Math.max(lw, c.measure(name(r), 'label', 700), L.count ? c.measure(cnt(r), 'tick') : 0); });
+      c.rows.forEach(function (r) { lw = Math.max(lw, c.measure(name(r), 'label', P.row_weight(true)), L.count ? c.measure(cnt(r), 'tick') : 0); });
       var x0 = ph ? 0 : Math.ceil(lw + 24), x1 = W - 8, pad = 4;
       var xs = K.scale.linear([dom[0], dom[1]], [x0 + pad, x1 - pad]);
       var bh = ph ? 26 : 30, head = ph ? size + tick + 14 : 0;
@@ -84,10 +84,11 @@
         var role = ink(r), b = ink.named && ink.is_named(r) || ink.is_point(r), y0 = top + i * pitch + head, cy = y0 + bh / 2, k = r[ek];
         // the group's name and its count of units
         if (ph) {
-          var nb = c.text(0, top + i * pitch + size, name(r), { role: 'label', weight: b ? 700 : 600 });
+          var nb = P.row_name(c, 0, top + i * pitch + size, name(r), { named: b });
           if (L.count) c.text(nb.x + nb.w + 8, top + i * pitch + size, cnt(r), { role: 'tick' });
         } else {
-          c.text(0, cy + (L.count ? -2 : size * 0.35), name(r), { role: 'label', weight: b ? 700 : 600 });
+          // the name in the listing forms' one weight, 400, and 700 for the group the title names (BC S8, call 11)
+          P.row_name(c, 0, cy + (L.count ? -2 : size * 0.35), name(r), { named: b });
           if (L.count) c.text(0, cy + tick + 2, cnt(r), { role: 'tick' });
         }
         // the named group's box in the subject ink, its median, whiskers and outliers in ink with it; every other box in the

@@ -573,6 +573,13 @@ def figures():
     want('S59', t, 'apart at %s percent' % fo['longer_run']['median'], 'longer run')
     for y in ('2026', '2027', '2028', '2029'):
         same('S59', round(num(fo[y]['median']) - num(fo[y]['historical_error']), 4), num(fo[y]['band_70_low']), 'band ' + y)
+    q4 = {r['year']: r for r in read('fred-unemployment-fourth-quarter')}
+    mon = {r['month']: num(r['unemployment_rate']) for r in read('fred-unemployment-and-job-openings')}
+    for y in ('2021', '2022', '2023', '2024'):
+        same('S59', round(num(q4[y]['unemployment_rate']), 4), round(sum(mon['%s-%02d' % (y, m)] for m in (10, 11, 12)) / 3, 4), 'fourth quarter ' + y)
+    same('S59', (q4['2025']['unemployment_rate'], mon['2025-10']), ('', None), 'no 2025 average')
+    want('S59', t, 'The actual fourth-quarter averages were %.1f percent in 2021, %.1f in 2022, %.1f in 2023 and %.1f in 2024' % tuple(num(q4[y]['unemployment_rate']) for y in ('2021', '2022', '2023', '2024')), 'history note')
+    want('S59', t, '4.2 percent in 2021, 3.6 in 2022, 3.8 in 2023 and 4.1 in 2024, with no figure for 2025', 'history alt')
     for f in bad:
         print('FAULT ' + f)
     print('figures: %d faults' % len(bad))

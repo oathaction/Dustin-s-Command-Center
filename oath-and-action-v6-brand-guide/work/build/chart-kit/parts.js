@@ -5,7 +5,8 @@
   var K = root.OAChart;
   var P = K.parts = {};
 
-  // A key in one row that wraps: [{label, fill, stroke, pattern, shape: 'square'|'line'|'dot', direct}]. Returns its height.
+  // A key in one row that wraps: [{label, fill, stroke, pattern, shape: 'square'|'line'|'dot', direct, edge}]; edge (a stroke
+  // role, or true for the context ink) draws a filled square's 1 px inset edge, as a band with edges is drawn. Returns its height.
   P.key = function (c, entries, x, y, maxw) {
     var size = c.size('label'), sw = Math.round(size * 0.9), gap = 24, lh = Math.round(size * 1.5);
     var cx = x, cy = y, first = true;
@@ -20,7 +21,11 @@
       else {
         if (e.pattern) { c.pattern(e.pattern, e.stroke || 'subject'); c.rect(cx, top, sw, sw, { pattern: e.pattern, mark: false }); c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { stroke: e.stroke || 'subject', mark: false }); }
         else if (!e.fill && e.stroke) { c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { fill: e.open ? 'surface' : 'none', mark: false }); c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { stroke: e.stroke, dash: e.dash, mark: false }); }
-        else c.rect(cx, top, sw, sw, { fill: e.fill, mark: false });
+        else {
+          c.rect(cx, top, sw, sw, { fill: e.fill, mark: false });
+          // RB-G6 (round 2 fix pass): a swatch for a band with edges takes the same 1 px edge, inset, in e.edge's ink
+          if (e.edge) c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { stroke: e.edge === true ? 'context' : e.edge, width: 1, mark: false });
+        }
       }
       var tb = c.text(cx + sw + 8, cy, e.label, { role: 'label', max: wrapmax || undefined });
       if (wrapmax) cy = tb.bottom - size * 0.241;   // the last line's baseline

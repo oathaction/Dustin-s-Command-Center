@@ -184,6 +184,10 @@ In progress. Items: ST M1, M2, M3, S1, S5, S8, S11; BC M1, M2, M3, S2, S3, S7, S
 | BC M1, CD A-M2, RF-1, AX S4 | S47, `treemap`; entries 14.47, 14.52, 14.54 to 14.56, 14.87 | Done: Social Security in the subject ink, other tiles in the track ink with a context edge, no red, no plate; chart note names marks by role |
 | ST S1, RF-10 | S47, `treemap` | Done: `labels.fold: "fit"` folds the ten functions too small at 256 px; Veterans keeps its tile; the fold tile last |
 | BC M2, RF-12, CD A-S2, RF-13 | S61, `progress-bar`, entry 14.87 | Done: 47 no votes in outline, both in the party-mark ink; 30-word title; entry says it draws S01's vote a second way |
+| CD A-M1, RF-22, AX S9, RF-23, BC S17 (S45) | S45, `stacked-column` | Done: title on the 591,700 count; notes for the share, the long record and the thin part; raised totals take a hairline to their column; last total and year 2 px inside the edge |
+| Editor's request (D3-904 sweep) | `column` (Rule 14.12's plate) | Done: columns turn into bars wherever the widest value would not fit; editor told |
+| ST M1, CD A-S1, RF-3, ST S8, BC S3, RF-15, AX S1 | S63, `status-chips`, entry 14.89 | Done: RF-3's title, note 1 and X18 words as given; titles regular weight; Atlas grade column; "disputes"; wraps 2 px inside the edge, measured as printed; sweep passes |
+| ST M2, RF-4, CD A-S3, BC S12 | S60, `indicator-row`, entry 14.86 | Done: qualification column with figure 5's exact replace pair; survey note; each figure beside its caption at the desk (`labels.beside`), one column narrower; typography nbsp; open tracking |
 
 ### Routine calls
 

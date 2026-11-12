@@ -988,6 +988,12 @@
     return ty.curl_quotes ? curl(t) : t;
   };
   function text_col(col) { return !col.format || col.format === 'text'; }
+  // RB-G5 (round 2 fix pass): a pivot's row header prints its column's words where the column gives them ("100" as "100
+  // and over"), as any cell does; the lean table carries the stored value in data-v for the read-back
+  function pivot_head(rc, v) {
+    if (rc.words && v !== null && v !== undefined && rc.words[String(v)] !== undefined) return String(rc.words[String(v)]);
+    return K.fmt(v, rc.format);
+  }
   K.cell_text = function (col, r, spec) {
     if (spec && spec.typography && text_col(col)) return K.typeset(spec, K.cell_text(col, r));
     var v = r[col.field];
@@ -1017,7 +1023,7 @@
           if (r && !first) first = r;
           return '<td class="oac-num"' + (r ? ' data-oa-row="1"' : '') + '>' + (r ? esc(K.fmt(r[pv.value], pv.format)) : '') + '</td>';
         }).join('');
-        var rows_by = [].concat(pv.row), head_txt = first ? K.fmt(first[rows_by[0]], rc.format) : k;
+        var rows_by = [].concat(pv.row), head_txt = first ? pivot_head(rc, first[rows_by[0]]) : k;
         if (first && rows_by.length > 1) rows_by.slice(1).forEach(function (k2) {
           var v2 = first[k2], w2 = (pv.row_words || {})[String(v2)];
           if (w2) head_txt += ', ' + w2;
@@ -1101,7 +1107,7 @@
           var h = esc(K.fmt(r[pv.value], pv.format)), d = dv(r[pv.value], h, vcol);
           return '<td' + d + (h === '' && !d ? ' data-n' : '') + '>' + h + '</td>';
         }).join('');
-        var head_txt = first ? K.fmt(first[rows_by[0]], rc.format) : k;
+        var head_txt = first ? pivot_head(rc, first[rows_by[0]]) : k;
         if (first && rows_by.length > 1) rows_by.slice(1).forEach(function (k2) { var w2 = (pv.row_words || {})[String(first[k2])]; if (w2) head_txt += ', ' + w2; });
         var keyv = rows_by.length > 1 ? JSON.stringify(rows_by.map(function (k2) { return first ? first[k2] : null; })) : null;
         var hv = keyv !== null ? ' data-v="' + esc(keyv) + '"' : dv(first ? first[rows_by[0]] : k, esc(head_txt), { field: rows_by[0], format: rc.format });

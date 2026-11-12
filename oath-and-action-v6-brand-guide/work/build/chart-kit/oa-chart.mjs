@@ -464,6 +464,7 @@ async function build(o, check_only) {
   return bad ? 1 : 0;
 }
 
+export const GUIDE_NOTE_FAULTS = [/^layout: a /, /^chart: Pillar Red covers /];
 // guide_build.py's hook: draw each listed spec for the page, by the chosen method, and return the fragments and faults
 async function fragments(o) {
   const list = JSON.parse(fs.readFileSync(o.in, 'utf8'));
@@ -493,7 +494,11 @@ async function fragments(o) {
       html = K.figure(spec, res.rows, { id: fid, guide: true });
       html = html.slice(0, html.lastIndexOf('</figure>')) + isl + '</figure>';
     }
-    out.items[it.key || spec.id] = { html, faults: res.faults, id: spec.id, form: spec.form, tier: spec.tier,
+    // round 2 fix pass: the drawing checks this pass added (words crossed or half covered, AX S2; red past Rule 05.1's
+    // share, CD A-M2) fail the kit's build and check, the gate every owner runs on a spec; the guide build lists them as
+    // notes, so one owner's spec does not stop another's strict build while the owners clear them (the sweep's way too)
+    const kit_gate = f => GUIDE_NOTE_FAULTS.some(re => re.test(f));
+    out.items[it.key || spec.id] = { html, faults: res.faults.filter(f => !kit_gate(f)), notes: res.faults.filter(kit_gate), id: spec.id, form: spec.form, tier: spec.tier,
       svg_bytes: res.drawings.map(d => d.bytes), rows: res.rows ? res.rows.length : 0 };
   }
   fs.writeFileSync(o.out, JSON.stringify(out));

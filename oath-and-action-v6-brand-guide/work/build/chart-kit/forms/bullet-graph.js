@@ -54,6 +54,9 @@
         if (!c.phone) c.text(0, cy + size * 0.35, name(r), { role: 'label', weight: 600 });
         var from = 0;
         bands.forEach(function (b) { c.rect(xs(from), by, xs(b.to) - xs(from), bh, { fill: 'mag-' + (b.step || 1), kind: 'band', data: { key: r[ek], field: 'band', value: b.to } }); from = b.to; });
+        // the edge between two bands, a 1 px line in the context ink, so it reads at 3 to 1 where the two steps do not
+        // (the data lead's RF-2, Rule 05.5)
+        bands.slice(0, -1).forEach(function (b) { var bx = Math.round(xs(b.to)) + 0.5; c.line(bx, by, bx, by + bh, { stroke: 'context', width: 1, mark: false }); });
         c.rect(x0, cy - mh / 2, xs(r[ev]) - x0, mh, { fill: 'subject', kind: 'bar', axis: 'x', zero: x0, data: { key: r[ek], field: ev, value: r[ev] } });
         if (et && r[et]) c.line(xs(r[et]), by - 3, xs(r[et]), by + bh + 3, { stroke: 'label', width: 2, data: { key: r[ek], field: et, value: r[et] } });
         var rest = et && r[et] ? fv(L.rest_words, r[et] - r[ev]) : '';

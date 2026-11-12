@@ -86,6 +86,7 @@
     "Data lead rulings (a), (e) and A5: the debt as a bar in the subject ink from zero, bands in magnitude steps 2 (to 36,104.0) and 1 (to 41,104.0), the limit as a tick in the text's ink named with its figure. Public Law 119-21 cited after the research lead read it on govinfo.gov (R2, sidecar notes), named as H12 names it.",
     "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): debt 40,327.1, limit 41,104.0 and room 776.9 billion on October 31, 2026; the June 2025 limit 36,104.0 and the July 2025 step of exactly 5,000 billion; the first band's edge equal to the file's value.",
     "One row, October 31, 2026, the month the sidecar's line names.",
-    "Second run, data lead MA-6: a scale from zero under the bar (0 to 40,000 billion), so the reader sees the bar start at zero (Rule 14.4); the editor's chart note names the bands first and second, which holds on both grounds."
+    "Second run, data lead MA-6: a scale from zero under the bar (0 to 40,000 billion), so the reader sees the bar start at zero (Rule 14.4); the editor's chart note names the bands first and second, which holds on both grounds.",
+    "Round 2 review fix pass, RF-2: the edge between the two bands, at $36,104.0 billion, takes a 1 px line in the context ink, since the two magnitude steps differ by under 3 to 1 (Rule 05.5)."
   ]
 }

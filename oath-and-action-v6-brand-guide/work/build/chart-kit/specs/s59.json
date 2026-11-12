@@ -4,21 +4,25 @@
   "form": "fan-chart",
   "family": "uncertainty-and-estimates",
   "tier": "extended",
-  "dataset": "frb-fomc-projections-unemployment",
+  "dataset": [
+    "frb-fomc-projections-unemployment",
+    "fred-unemployment-fourth-quarter"
+  ],
   "reader_question": "Where do Federal Reserve officials expect unemployment to go, and how wide is the range?",
   "evidence": "estimate",
   "evidence_label": "Estimate",
-  "grade_line": "Documented: the Federal Reserve’s Summary of Economic Projections, September 16, 2026",
+  "grade_line": "Documented: the Federal Reserve’s Summary of Economic Projections, September 16, 2026, and the Bureau of Labor Statistics’ unemployment rate",
   "title": "Federal Reserve officials projected a median unemployment rate of 4.1 percent for each year through 2029, and past forecast errors put 2029’s range at 2.0 to 6.2 percent.",
-  "measure_line": "Unemployment rate, average for the fourth quarter of each year, projected in September 2026 for 2026 to 2029 and the longer run, United States. The outer band spans the median plus and minus the average error of past forecasts, a range the Board says holds the outcome with about a 70 percent probability.",
-  "reading_guide": "The line is the officials’ median. The narrow inner band spans every official’s projection; the wide outer band shows how far past forecasts have missed.",
+  "measure_line": "Unemployment rate, average for the fourth quarter of each year, United States: actual for 2021 to 2024, the four years before the projections with a full fourth quarter, and projected in September 2026 for 2026 to 2029 and the longer run. The outer band spans the median plus and minus the average error of past forecasts, a range the Board says holds the outcome with about a 70 percent probability.",
+  "reading_guide": "The thin line at the left is where the rate stood. The thick line is the officials’ median; the narrow inner band spans every official’s projection, and the wide outer band shows how far past forecasts have missed.",
   "notes": [
     "Method: the line is the median of officials’ projections, each under that official’s view of appropriate policy; the outer band adds and subtracts the average error of past forecasts, 2006 to 2025, which the Board says covers about 70 percent of outcomes under certain assumptions. The longer run has no error band.",
-    "The officials are the members of the Board of Governors and the presidents of the 12 Reserve Banks."
+    "The officials are the members of the Board of Governors and the presidents of the 12 Reserve Banks.",
+    "The actual fourth-quarter averages were 4.2 percent in 2021, 3.6 in 2022, 3.8 in 2023 and 4.1 in 2024. The year 2025 has none, since no unemployment rate was published for October 2025."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "A fan chart of the unemployment rate projected for 2026 to 2029. The median holds at 4.1 percent each year, inside a narrow band for the range of all officials’ projections and a wide band from past forecast errors that grows to 2.0 to 6.2 percent by 2029. The longer run sits apart at 4.2 percent.",
+  "alt": "A fan chart of the unemployment rate projected for 2026 to 2029. The median holds at 4.1 percent each year, inside a narrow band for the range of all officials’ projections and a wide band from past forecast errors that grows to 2.0 to 6.2 percent by 2029. The longer run sits apart at 4.2 percent. At the left, a thinner line shows the actual rate’s fourth-quarter average: 4.2 percent in 2021, 3.6 in 2022, 3.8 in 2023 and 4.1 in 2024, with no figure for 2025.",
   "table": {
     "caption": "Projections of the unemployment rate, fourth quarter of each year, percent",
     "columns": [
@@ -71,7 +75,7 @@
     ]
   },
   "chart_notes": [
-    "The wide outer band is the median plus and minus past forecast errors; the narrow inner band is the range of all officials’ projections. The longer run is drawn apart, at the right, with its range as a line."
+    "The thin line at the left is the actual rate, and the light column at 2025 marks the year with no fourth-quarter average. The wide outer band is the median plus and minus past forecast errors; the narrow inner band is the range of all officials’ projections. Thin gray lines edge both bands. The longer run is drawn apart, at the right, with its range as a line."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -91,7 +95,14 @@
     "key_outer": "Band from past forecast errors",
     "key_inner": "Range of all officials’ projections",
     "key_median": "Median projection",
-    "y_axis": "Unemployment rate, percent"
+    "y_axis": "Unemployment rate, percent",
+    "history": {
+      "dataset": "fred-unemployment-fourth-quarter",
+      "x": "year",
+      "y": "unemployment_rate"
+    },
+    "key_history": "Actual rate",
+    "key_gap": "No 2025 average"
   },
   "formats": {
     "y": "number:1",
@@ -108,6 +119,8 @@
     "Ruling (a): no single named mark; the median in the subject ink with a dot each year. Ruling (e): the range of all officials’ projections in Stone magnitude step 2 inside the band from past errors in step 1; the longer run apart with its range and no band; the central tendency stays in the table. Ruling (d): Estimate, the grade line and the Method note in the ruling’s words.",
     "R2-C1: the fan registers interval: \"level\"; the measure line names \"a 70 percent probability\".",
     "Figures checked by maker_b_round2_derive.py --figures (check S59): medians 4.1 for 2026 to 2029 and 4.2 for the longer run; the 2029 band 2.0 to 6.2; errors 0.5, 1.3, 1.9 and 2.1.",
-    "Read from the left and the right: the title reports the officials’ own projection and its error range, and names no official or party."
-  ]
+    "Read from the left and the right: the title reports the officials’ own projection and its error range, and names no official or party.",
+    "Review fix pass: the data lead’s RF-20 (BC S10): the actual rate’s fourth-quarter average, the projections’ own measure, for 2021 to 2024 from the derived fred-unemployment-fourth-quarter (maker_b_round2_derive.py, from P7-030’s monthly file), one dot a year in the subject ink at the field weight, the line ending at 2024 and 2025’s missing quarter a light column named in the key; the source line is the research lead’s with_unemployment_history variant and the grade line names both publishers. H09: the window runs from the data’s reach back four years, the projections’ own span; no value sits on either side of the January 2025 inauguration within a year, and the note gives every value. RF-2: both bands take 1 px edges in the context ink, and their key swatches ask for the same (request RB-G6). Checked by maker_b_round2_derive.py --figures (check S59)."
+  ],
+  "source_line": "Source: Board of Governors of the Federal Reserve System, Summary of Economic Projections, September 16, 2026, Tables 1 and 2, unemployment rate projections for 2026 to 2029, United States; U.S. Bureau of Labor Statistics, Current Population Survey, Employment Situation for October 2026 (November 6, 2026), unemployment rate, seasonally adjusted, fourth-quarter averages, 2021 to 2024, United States, as copied by the Federal Reserve Bank of St. Louis (FRED). Retrieved November 11, 2026. Officials’ projections; the band applies the average error of past forecasts. Fourth-quarter averages of the monthly rate computed by Oath & Action; no rate was published for October 2025, so 2025 has no fourth-quarter average."
 }

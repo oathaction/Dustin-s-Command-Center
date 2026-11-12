@@ -86,7 +86,8 @@
       // default), the rows stack: each row's name and value on one line and its interval across the full width on the line
       // beneath, on one shared scale (ED-E16), and the drawing reports its phone arrangement (R2-C4)
       var lw = 0, vw = 0;
-      rows.forEach(function (r) { var b = bold(r) ? 700 : 400; lw = Math.max(lw, c.measure(name(r), 'label', b)); vw = Math.max(vw, c.measure(fill(r), 'label', b === 700 ? 700 : 600, true)); });
+      // names and values in one weight, 400, and 700 for a row the title names (K.parts.row_name, BC S8, call 11)
+      rows.forEach(function (r) { var b = P.row_weight(bold(r)); lw = Math.max(lw, c.measure(name(r), 'label', b)); vw = Math.max(vw, c.measure(fill(r), 'label', b, true)); });
       var x0 = Math.ceil(lw + (ph ? 10 : 20)), x1 = W - Math.ceil(vw + (ph ? 10 : 20));
       var stack = x1 - x0 < (L.stack_below || 160);
       if (stack) { x0 = 0; x1 = W; c.arrange('phone'); }
@@ -128,7 +129,7 @@
       }
       rows.forEach(function (r, i) {
         var cy = dot_y(i), ty = stack ? top + i * spitch + size : cy + size * 0.35, b = bold(r), role = ink(r), k = r[ek];
-        c.text(0, ty, name(r), { role: 'label', weight: b ? 700 : 400 });
+        P.row_name(c, 0, ty, name(r), { named: b });
         var a = xs(lo(r)), z = xs(hi(r)), x = xs(r[ev]);
         var wst = role === 'subject' || role === 'point' ? 'context' : role;
         P.whisker(c, a, z, cy, { dir: 'h', stroke: wst, key: k, low: lo(r), high: hi(r) });
@@ -136,7 +137,7 @@
           c.circle(x, cy, rd, { fill: 'surface', data: { key: k, field: ev, value: r[ev] } });
           c.circle(x, cy, rd, { stroke: role, width: c.t('line-context'), mark: false });
         } else c.circle(x, cy, rd, Object.assign({ fill: role, data: { key: k, field: ev, value: r[ev] } }, ink.keyline(r)));
-        c.text(W, ty, fill(r), { role: 'label', weight: b ? 700 : 600, anchor: 'end', tnum: true });
+        P.row_value(c, W, ty, fill(r), { named: b });
       });
       // the scale along the bottom
       var ay = bottom + tick + 8;

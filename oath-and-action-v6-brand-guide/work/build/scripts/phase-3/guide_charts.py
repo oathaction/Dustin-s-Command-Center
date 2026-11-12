@@ -135,7 +135,7 @@ def spec_for(cid, spec_dirs):
     return p if p.exists() else None
 
 
-def expand(page, method, spec_dirs, warn, where_of=None):
+def expand(page, method, spec_dirs, warn, where_of=None, note=None):
     """Replace every chart placeholder in the page with the kit's figure; return the page and a record of each chart."""
     hits = list(CHART_RE.finditer(page))
     if not hits:
@@ -187,6 +187,10 @@ def expand(page, method, spec_dirs, warn, where_of=None):
             return m.group(0)
         for f in it.get("faults", []):
             warn(f"chart {cid}", f)
+        # round 2 fix pass: the kit's own gate faults (words crossed, red past its share) print as notes here; the kit's
+        # build fails them
+        for f in it.get("notes", []):
+            (note or (lambda m: None))(f"chart {cid}: kit build fault, listed here: {f}")
         rec[cid] = {"id": it.get("id"), "form": it.get("form"), "tier": it.get("tier"), "rows": it.get("rows"),
                     "bytes": len(it["html"].encode()), "spec": (str(Path(seen[cid]).relative_to(ROOT)) if ROOT in Path(seen[cid]).parents else str(seen[cid])) if seen.get(cid) else None}
         return it["html"]
