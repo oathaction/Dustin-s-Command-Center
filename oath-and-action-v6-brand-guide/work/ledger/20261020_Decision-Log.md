@@ -4291,3 +4291,14 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 |---|---|---|
 | D3-458 | Round 1's build stage is closed on a strict build of 10,017,051 bytes with 0 warnings and a four-width guide check that passes with 0 failures (265 rules, 610 specimens); the chat hands off with handoff V18 before the review, so the review, fix pass, second pass, rescore and progress page run in one new chat | The six faults the first four-width run found are fixed and rechecked; agents in this chat cannot be resumed from a new one, and the review needs a chat with room for four reviewers and a fix pass |
 | D3-459 | Dustin's download item 2, the Department of Labor's state minimum wage history page (selected years 1968 to 2024), is saved unchanged in `work/research/downloads/` with a record of its source, bytes and SHA-256; the research lead parses and freezes it for round 3's row 113 in the next chat | DR-230; the upload lives only in this container, so it is kept in the repository at once, as Dustin's FRED file was (D3-08) |
+
+## Phase 3 round 1 review, November 12, 2026
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-460 | The new chat's local copy of the branch was an older Gate 2 state; it was fast-forwarded to the remote branch, which holds it as an ancestor, so nothing was discarded. The fresh container was set up by V11's three steps; the api.data.gov key answered one request each at api.open.fec.gov (a 2024 House race) and api.congress.gov (H.R. 7008), and `CENSUS_API_KEY` answered one American Community Survey request, all with 200; no key value is written anywhere. The strict build passed as committed: 0 warnings, 265 rules, 554 specimens, 10,017,051 bytes, the size D3-458 recorded | Dustin asked for the committed state confirmed and each key tested before use |
+| D3-461 | The four reviewers start on the fresh strict build while the quick guide check runs on the same file; any fault the check finds goes to them as an addendum | The build matches D3-458's record to the byte, so the check and the review read one page, and the review gains about fifteen minutes |
+| D3-462 | The research lead freezes Dustin's Department of Labor download in parallel with the review, and the statistics reviewer leaves row 113 out of its five spot checks | The freeze writes only new data files, the ledger row and the research lead's notes, none of which the review reads as round 1 work |
+| D3-463 | The engineer's print and forced-colors comparison after its A11 fix, which its notes do not record, goes to the accessibility reviewer as a named check on S17 | V18 section 2A asked the new chat to confirm it; the reviewer already checks forced colors and print, so no second agent opens the kit |
