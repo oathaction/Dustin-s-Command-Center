@@ -99,6 +99,8 @@
    "legend_both": "Each cell shows the first score in small type, then the second score after the fix pass. A shaded cell moved. A cell with a frame is under 4.",
    "cd_wait": "The creative director’s first scores join this table when their file lands.",
    "cd_re_wait": "The second scores, after the fix pass, join this table when their file lands; each cell then shows both.",
+   "short_names": {"ch14_rules": "the rules for every chart", "maker_a": "maker A’s charts", "maker_b": "maker B’s charts", "sketches": "the sketches", "ch15": "chapter 15’s plates"},
+   "none_ready": "The first scores find none of the {n} parts ready yet: each has a score under 4 or a Must fix open.",
    "rt_h": "The {n_rt_w} reviews",
    "rt_lede": "{n_rt_cap} reviewers read round 1 beside the creative director, each from one side. Each gives a score from 1 to 5 and numbers what it found.",
    "rt_cols": ["Review", "Score", "Must fix", "Should fix"],

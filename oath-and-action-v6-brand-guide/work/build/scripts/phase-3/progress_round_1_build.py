@@ -757,6 +757,13 @@ def red_team(rt):
     return {'name': rt['name'], 'state': state, 'score': score, 'must_fix': mf, 'should_fix': sf, 'file': rt['file']}
 
 
+def drop_ids(s):
+    """A review's finding IDs in a parenthesis, such as "(RM1, RM2)", leave the quoted reason: a reader would not know them
+    (D3-206); decision codes still move to the reference line by board 1's rule."""
+    rid = r'[A-Z]{1,4}\d{0,3}(?:-[A-Z]{1,3})?-?\d{1,3}'     # M1, RM2, SC-M1, CH15-S1
+    return re.sub(r'\s*\((?:' + rid + r'(?:,\s*|\s+and\s+|;\s*)?)+\)', '', s or '')
+
+
 def cd_files():
     p = ROOT / C['slots']['cd_scores']
     first = json.loads(p.read_text()) if p.exists() else None
@@ -791,21 +798,24 @@ def cd_table(first, rescore):
                     f'<span class="r2{" lo" if lo else ""}">{esc(v)}</span></td>')
         rows.append(f'<tr><th scope="row">{esc(it.get("name", it.get("key")))}</th>{"".join(cell(c) for c in crit)}<td>{"Yes" if it.get("ready") else "<b>Not yet</b>"}</td></tr>')
     nr = [i for i in items if not i.get('ready')]
+    short = lambda i: S.get('short_names', {}).get(i.get('key'), i.get('name', i.get('key')))
     if both:
         fi = (first or {}).get('items', [])
         summ = (f'The first scores found {nw(sum(1 for i in fi if i.get("ready")), "none")} of the {nw(len(fi))} parts ready. After the fix pass, the second scores find '
-                + (f'all {nw(len(items))} ready.' if not nr else f'{nw(len(items) - len(nr), "none")} of the {nw(len(items))} ready, with {join_words([i.get("name", i.get("key")) for i in nr])} still short.'))
+                + (f'all {nw(len(items))} ready.' if not nr else f'{nw(len(items) - len(nr), "none")} of the {nw(len(items))} ready, with {join_words([short(i) for i in nr])} still short.'))
+    elif len(nr) == len(items):
+        summ = fill(S['none_ready'], {'n': nw(len(items))})
     else:
         summ = (f'The first scores find {nw(len(items) - len(nr), "none")} of the {nw(len(items))} parts ready'
-                + (f'; {join_words([i.get("name", i.get("key")) for i in nr])} each had a score under 4 or a Must fix open.' if nr else '.'))
+                + (f'; {join_words([short(i) for i in nr])} each had a score under 4 or a Must fix open.' if nr else '.'))
     under = []
     for i in items:
         for c in crit:
             v = i.get('scores', {}).get(c['key'])
             if isinstance(v, (int, float)) and v < 4:
-                rs = (i.get('reasons') or {}).get(c['key'], '')
+                rs = drop_ids((i.get('reasons') or {}).get(c['key'], ''))
                 QUOTED.append(rs)
-                under.append(f'<li><b>{esc(i.get("name", i.get("key")))}, {esc(c["name"].lower())}, {v}.</b> {B1.md_inline(rs)}</li>')
+                under.append(f'<li><b>{esc(cap(short(i)))}, {esc(c["name"].lower())}, {v}.</b> {B1.md_inline(rs)}</li>')
     FIG['cd_scores'] = {'items': len(items), 'ready': len(items) - len(nr), 'both': both,
                         'scores': {i.get('key'): {'first': (f_items.get(i.get('key'), {}) or {}).get('scores'), 'now': i.get('scores')} for i in items}}
     return (f'<p>{esc(summ)}</p>' + (f'<ul class="findings">{"".join(under)}</ul>' if under else '')

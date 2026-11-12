@@ -1,12 +1,12 @@
 {
- "built": "2026-11-12T16:15:13.354156+00:00",
+ "built": "2026-11-12T16:18:56.572719+00:00",
  "guide_build": {
   "exit": 0,
   "bytes": 10017051,
   "rules": 265,
   "specimens": 554,
   "warnings": 0,
-  "built": "2026-11-12T16:15:19"
+  "built": "2026-11-12T16:19:02"
  },
  "kit_builds": {
   "rebuilt": [],
@@ -697,8 +697,105 @@
   }
  },
  "cd": {
-  "first": null,
+  "first": "work/handoffs/phase-3/20261112_Round-1-CD-Scores.json",
   "rescore": null
+ },
+ "cd_scores": {
+  "items": 5,
+  "ready": 0,
+  "both": false,
+  "scores": {
+   "ch14_rules": {
+    "first": {
+     "craft": 3,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "now": {
+     "craft": 3,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    }
+   },
+   "maker_a": {
+    "first": {
+     "craft": 4,
+     "clarity": 3,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "now": {
+     "craft": 4,
+     "clarity": 3,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    }
+   },
+   "maker_b": {
+    "first": {
+     "craft": 3,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "now": {
+     "craft": 3,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    }
+   },
+   "sketches": {
+    "first": {
+     "craft": 3,
+     "clarity": 3,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "now": {
+     "craft": 3,
+     "clarity": 3,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    }
+   },
+   "ch15": {
+    "first": {
+     "craft": 3,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    },
+    "now": {
+     "craft": 3,
+     "clarity": 4,
+     "brand_fidelity": 4,
+     "usefulness": 4,
+     "evidence_honesty": 4,
+     "accessibility": 4
+    }
+   }
+  }
  },
  "red_teams": [
   {
@@ -719,10 +816,10 @@
   },
   {
    "name": "Access and the test with simulated users",
-   "state": "waiting",
-   "score": null,
-   "must_fix": null,
-   "should_fix": null,
+   "state": "ready",
+   "score": 4,
+   "must_fix": 1,
+   "should_fix": 10,
    "file": "work/handoffs/phase-3/20261112_Round-1-Red-Team-Access-Production.md"
   }
  ],
@@ -770,6 +867,10 @@
    "tested": 13,
    "not": 8
   },
+  "work/handoffs/phase-3/20261112_Round-1-Red-Team-Access-Production.md": {
+   "tested": 46,
+   "not": 9
+  },
   "work/handoffs/phase-3/20261112_CD-Review-Of-Round-1.md": {
    "tested": 12,
    "not": 6
@@ -777,11 +878,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-1/progress/20261112_Round-1-Progress.html",
- "html_bytes": 184685,
+ "html_bytes": 196536,
  "images": 98,
  "image_bytes": 32463562,
  "folder_files": 102,
- "folder_bytes": 32692880,
+ "folder_bytes": 32708268,
  "largest_image": [
   1261899,
   "20261112_Chart-14-129-Newsprint.png"
@@ -794,8 +895,8 @@
   "rules": "ready",
   "ch15": "ready",
   "scores": [
-   "waiting",
-   "cd"
+   "partial",
+   "cd_re"
   ],
   "weight": "ready",
   "tested": [
@@ -916,6 +1017,7 @@
   "D3-459",
   "D3-462",
   "DR-191",
+  "DR-202",
   "DR-204",
   "DR-238",
   "DR-240",
