@@ -19,7 +19,7 @@
   },
   "title": "Nearly nine in ten Republican and Democratic voters favored a ban on stock trading by members of Congress.",
   "reading_guide": "The May 2023 survey asked about a stock-trading ban alone, three years before either vote on H.R. 7008, the Stop Insider Trading Act. As the House passed it, the bill would bar members of Congress, their spouses and dependent children from buying individual stocks, and it would require photo ID to vote in federal elections.",
-  "measure_line": "Registered voters who favor a ban, percent, by party, survey of May 2023, United States; the votes on H.R. 7008, which pairs a limit on members’ stock purchases with a photo ID requirement to vote in federal elections, in the House (July 22, 2026) and the Senate (September 30, 2026), by party, each bar running from the votes for to the votes against",
+  "measure_line": "Registered voters who favor a ban, percent, by party, survey of May 2023, United States; the votes on H.R. 7008 in the House (July 22, 2026) and the Senate (September 30, 2026), by party",
   "notes": [
     "Survey of 2,625 registered voters, May 19 to 30, 2023, three years before either vote. The Program for Public Consultation gives a margin of error of plus or minus 1.9 percent for the whole sample, with no confidence level stated and none by party.",
     "The two parties sit one point apart; the bars run from 0 to 100 percent.",
@@ -65,7 +65,7 @@
   "labels": {
     "big_key": "support-all",
     "big_caption": "of registered voters favored a ban on stock trading by members of Congress",
-    "bars_title": "BY PARTY",
+    "bars_title": "By party",
     "bars": [
       {
         "key": "support-democrats",
@@ -79,10 +79,10 @@
       }
     ],
     "bars_max": 100,
-    "votes_title": "THE VOTES ON H.R. 7008, 2026",
+    "votes_title": "The votes on H.R. 7008, 2026",
     "votes": [
       {
-        "label": "The House passed H.R. 7008",
+        "label": "The House passed H.R. 7008, which pairs a limit on members’ stock purchases with a photo ID requirement to vote in federal elections",
         "date": "July 22, 2026",
         "tally": "232 to 198",
         "yes": "house-yes",
@@ -135,8 +135,8 @@
     "D3-83: a survey finding carries the publisher's margin where one exists; the Program for Public Consultation's margin is not in the data (request R5 to the research lead).",
     "No disclosure (DR-100).",
     "D3-99: the votes' heading names the bill and the year with no word that ties the votes to the survey; the House label names both provisions where the votes are drawn (DR-98's words); the alt text names both. 'For' and 'against' in every segment wait on E27: each vote carries party_words_yes and party_words_no, ready, and the measure line says until then which end of each bar holds the votes for.",
-    "E30 pending: when the big-number form steps a vote's bar below a wrapped label at desktop, set the House label to 'The House passed H.R. 7008, which pairs a limit on members’ stock purchases with a photo ID requirement to vote in federal elections', so both provisions sit in the vote block itself (D3-99). Until then the measure line, directly above the drawing, names both.",
-    "R5, statistics P2-S2: the survey's margin as its publisher states it, from the research lead (ENG-9 adds it to the sidecar)."
+    "R5, statistics P2-S2: the survey's margin as its publisher states it, from the research lead (ENG-9 adds it to the sidecar).",
+    "X18 and X15: E30 and E27 have landed, so the House label names both provisions in the vote block, each segment says 'for' or 'against', and the measure line drops its interim words; the heads inside the drawing are in sentence case."
   ],
   "formats": {
     "big": "percent:0",

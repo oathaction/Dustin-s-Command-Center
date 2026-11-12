@@ -120,11 +120,13 @@
     ],
     "share": "{p}% of {total}",
     "mark_at": 74.1,
-    "mark_label": "All 433 claims: 74% documented"
+    "mark_label": "All 433 claims: 74% documented",
+    "pitch": 35
   },
   "notes_internal": [
     "Sorted by documented share as Phase 2 was; the sort needs a documented_share column in v7-claims-by-grade (request to the engineer).",
     "Grades never take Pillar Red; contested carries a hatch so the key survives grayscale.",
-    "74 percent is 321 of 433 claims, counted by script from v7-claims-by-grade.json."
+    "74 percent is 321 of 433 claims, counted by script from v7-claims-by-grade.json.",
+    "X17: rows 35 px apart at desktop, as Phase 2 set them (E31)."
   ]
 }

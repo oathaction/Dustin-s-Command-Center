@@ -718,12 +718,48 @@
     }
     return '<table class="oac-table">' + cap + '<thead>' + head + '</thead><tbody>' + body + '</tbody></table>';
   };
+  // The compact carrier (fix pass 2): a number column whose printed figures do not give back the stored value (an
+  // unrounded value printed rounded once, D3-95) carries its values in the island as one comma-separated list in the
+  // table's cell order, so no cell repeats its value in an attribute. K.lean_carry gives the lists; lean_table leaves those
+  // cells bare; K.rows_from_table reads them back.
+  function carried_fields(spec, rows, types) {
+    var tb = spec.table || {}, t = K.table_rows(spec, rows), out = {};
+    var numeric = function (f) { var ty = types[f] && types[f].type; return ty === 'number' || ty === 'integer'; };
+    var lossy = function (raw, col) {
+      if (raw === null || raw === undefined || raw === '') return false;
+      var back = K.unformat(visible_text(esc(K.cell_text(col, (function () { var o = {}; o[col.field] = raw; return o; })()))), col);
+      return !same_value(back, raw, types[col.field] && types[col.field].type);
+    };
+    if (t.pivot) {
+      var pv = tb.pivot, vcol = { field: pv.value, format: pv.format };
+      if (numeric(pv.value) && t.keys.some(function (k) { return t.cols.some(function (cn) { var r = t.cell[k + '\u0000' + cn]; return r && lossy(r[pv.value], vcol); }); })) out[pv.value] = true;
+    } else {
+      (tb.columns || []).forEach(function (col) {
+        if (col.row_header || !numeric(col.field) || col.words || /^lead/.test(String(col.format || ''))) return;
+        if (t.rows.some(function (r) { return lossy(r[col.field], col); })) out[col.field] = true;
+      });
+    }
+    return out;
+  }
+  K.lean_carry = function (spec, rows, types) {
+    var fields = carried_fields(spec, rows, types || {}), t = K.table_rows(spec, rows), out = {};
+    var ser = function (v) { return v === null || v === undefined || v === '' ? '' : String(v); };
+    Object.keys(fields).forEach(function (f) {
+      var vals = [];
+      if (t.pivot) t.keys.forEach(function (k) { t.cols.forEach(function (cn) { var r = t.cell[k + '\u0000' + cn]; if (r) vals.push(ser(r[f])); }); });
+      else t.rows.forEach(function (r) { vals.push(ser(r[f])); });
+      out[f] = vals.join(',');
+    });
+    return out;
+  };
   function lean_table(spec, rows, opts) {
     var tb = spec.table || {}, ids = (spec.v7 && spec.v7.ids) || [], types = opts.types || {};
+    var carried = opts.carry === false ? {} : carried_fields(spec, rows, types);
     var cap = tb.caption ? '<caption>' + K.chips(tb.caption, ids) + '</caption>' : '';
     var t = K.table_rows(spec, rows), head = '', body = '';
     var num_col = function (col) { return /^(integer|number|percent|signed|points|thousands|signed-thousands|lead|compact-thousands|signed-compact-thousands)/.test(String(col.format || '')); };
     var dv = function (raw, html, col) {
+      if (carried[col.field]) return '';
       var back = K.unformat(visible_text(html), col);
       return same_value(back, raw, types[col.field] && types[col.field].type) ? '' : ' data-v="' + esc(raw === null || raw === undefined ? '' : raw) + '"';
     };
@@ -793,6 +829,13 @@
         var o = {}, cells = tr.children;
         cols.forEach(function (col, i) { o[col.field] = cell_raw(cells[i], col); });
         out.push(o);
+      });
+    }
+    if (isl.carry) {
+      // the compact carrier: each carried field's values, in the table's cell order
+      Object.keys(isl.carry).forEach(function (f) {
+        var vals = isl.carry[f].split(',');
+        out.forEach(function (o, i) { o[f] = vals[i] === '' || vals[i] === undefined ? null : vals[i]; });
       });
     }
     if (isl.csv) {

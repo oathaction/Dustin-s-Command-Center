@@ -82,7 +82,8 @@
     "change_since_2022_01_thousands": "signed-compact-thousands",
     "pct_change_since_2022_01": "signed:1",
     "tick": "signed",
-    "y_tick_top": "percent:0"
+    "y_tick_top": "percent:0",
+    "employees_thousands": "thousands"
   },
   "labels": {
     "panels": [
@@ -169,11 +170,13 @@
       {
         "value": "CES9091000001",
         "label": "Federal government",
-        "indent": 2
+        "indent": 2,
+        "peak": "Peak: {value} in {x}",
+        "peak_field": "employees_thousands"
       }
     ],
-    "totals_title": "THE TOTAL, ITS TWO PARTS AND FEDERAL JOBS",
-    "panels_title": "PRIVATE INDUSTRIES, BY PERCENT GAIN",
+    "totals_title": "The total, its two parts and federal jobs",
+    "panels_title": "Private industries, by percent gain",
     "columns_titles": {
       "change_since_2022_01_thousands": "Change in jobs",
       "pct_change_since_2022_01": "Percent"
@@ -185,6 +188,7 @@
     "H09: the last note gives the reason both jobs charts share one window, in chapter 02's words.",
     "D3-83: the grade line prints 'Documented' with its source after the colon; 'Official statistic' leaves every spec.",
     "Statistics P2-S10: 'seasonally adjusted' glossed. P2-S2 (the industry estimates' sampling errors) waits on the research lead's sidecar (R8).",
-    "R8, statistics P2-S2: the research lead's sentence on sampling error, with its source in the note until ENG-9 adds it to the sidecar."
+    "R8, statistics P2-S2: the research lead's sentence on sampling error, with its source in the note until ENG-9 adds it to the sidecar.",
+    "X13 and X15: the federal row marks its peak, 'Peak: 3,013,000 in October 2024', as Phase 2 did; the heads are in sentence case."
   ]
 }

@@ -79,7 +79,8 @@
     "latest": [
       "{y} jobs",
       "in {x}, preliminary"
-    ]
+    ],
+    "key_average": "Three-month average"
   },
   "annotations": [
     {
@@ -89,7 +90,10 @@
       "text": "Three-month average",
       "target": "average",
       "place": "above",
-      "dy": -40
+      "dy": -40,
+      "phone": {
+        "hide": true
+      }
     },
     {
       "at": {
@@ -109,6 +113,13 @@
     "Phase 2's measure line named the scale, −200,000 to +850,000; the kit's scale is set by its ticks, so the line now says only that columns start at zero, and the axis prints its own range.",
     "Checked by script: 57 months; seven with a loss; September 2026 average 50.67 thousand, 51,000 to the thousand.",
     "D3-83: the grade line prints 'Documented' with its source after the colon; 'Official statistic' leaves every spec.",
-    "Statistics P2-S9 and P2-S10: the first note names the two months outside the window, and a note glosses 'seasonally adjusted'. Access S4: the Status column prints 'Final'. D3-87 still holds the title and the count of drops for Dustin."
-  ]
+    "Statistics P2-S9 and P2-S10: the first note names the two months outside the window, and a note glosses 'seasonally adjusted'. Access S4: the Status column prints 'Final'. D3-87 still holds the title and the count of drops for Dustin.",
+    "X14: the scale runs to +850,000, as Phase 2's did (E6); on phones the in-plot 'Three-month average' hides and the key names the line."
+  ],
+  "scale": {
+    "y": [
+      -200,
+      850
+    ]
+  }
 }

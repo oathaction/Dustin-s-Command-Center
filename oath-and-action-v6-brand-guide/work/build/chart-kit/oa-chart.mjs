@@ -173,6 +173,8 @@ export function island_table(spec, rows, columns, extra) {
   const payload = { mode: 'table', spec: draw_spec(spec), columns: ctypes };
   if (extra && Object.keys(extra).length) payload.extra = extra;
   if (missing.length) payload.csv = C.to_csv(rows, missing);
+  const carry = K.lean_carry(spec, rows, columns);
+  if (Object.keys(carry).length) payload.carry = carry;
   return '<script type="application/json" data-oa-chart-data>' + JSON.stringify(payload).replace(/</g, '\\u003c') + '</script>';
 }
 
