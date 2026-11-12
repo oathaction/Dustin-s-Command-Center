@@ -4233,3 +4233,9 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | # | Decision | Reason |
 |---|---|---|
 | D3-446 | `column` drops its keyline workaround and merges `fill.keyline(row)` into the mark, as the shared part's recipe says | The engineer fixed A11 in `kit.css` (`.oac-f-point.oac-s-point-keyline` keeps the red fill) |
+
+### Main session, the four-width guide check
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-447 | The four-width guide check on the final strict build (10,012,720 bytes) failed on six faults; each goes to its owner before the review rather than into it: type under 13 px (systems designer at 1024 px; editor at 390 and 360 px), later-round rule citations (engineer: how they print until built), the studio word in S32 (maker B), the region in 14.12's stage and four nested controls (editor, with the engineer naming any from the kit), and the kit's table frame without a tab stop (engineer) | Each is a rule the guide already holds (Rule 06's 13 px floor, the shell's stage rules, chapter 19's keyboard criteria, reader words without studio terms); fixing known faults first lets the reviewers find what scripts cannot |
