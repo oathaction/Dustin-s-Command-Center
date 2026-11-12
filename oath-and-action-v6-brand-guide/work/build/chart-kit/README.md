@@ -1,8 +1,19 @@
 # The Oath & Action chart kit
 
-This folder draws every chart in the guide from three things: a data file, its sidecar, and a spec. You don't need a
-library or a build step. One command draws, checks and exports a chart. The same code draws the chart in the guide page
-and in a plain page opened from disk.
+This folder draws every chart in the guide from three things:
+
+- a **data file**, a table of figures from one publisher;
+- its **sidecar**, a short file beside it that says what each column holds and gives the source line to print;
+- a **spec**, the short file that says which data a chart draws, in which **form** (the kind of chart, such as a ranked
+  bar or a tile map), and every word it prints.
+
+You don't need a library or a build step. One command draws a chart, checks it and saves copies of it to use elsewhere.
+Those copies are **exports**: an SVG (a drawing that scales to any size and opens in design tools), a PNG (a picture)
+and a CSV (the rows as a table any spreadsheet opens). The same code draws the chart in the guide page and in a plain page
+opened from disk.
+
+The command runs in **Node**, a program that runs JavaScript outside a browser, from a terminal:
+`node work/build/chart-kit/oa-chart.mjs ...`.
 
 The contracts behind this recipe are in `work/handoffs/phase-3/20261111_Round-0-Engineer-Notes.md`, under "Contracts":
 C1 covers the data folder, C2 the spec, C3 the command, C4 a form module and C5 the words.
@@ -11,7 +22,7 @@ C1 covers the data folder, C2 the spec, C3 the command, C4 a form module and C5 
 
 | File | What it does |
 |---|---|
-| `kit.js` | The renderer. It defines one global, `OAChart`, and carries the shared words |
+| `kit.js` | The renderer, the code that turns a spec and its rows into a drawing. A page reaches it by one name, `OAChart`, and it carries the shared words |
 | `parts.js` | Drawing parts the forms share: keys, gridlines, notes, scales, styled fills and tile sizes |
 | `forms/*.js` | One file per chart form, 19 forms in 17 files. Each file's header lists the `encode` and `labels` names it reads |
 | `metrics.js` | Widths of Inter and Inter Tight, so a chart lays out the same way in Node and in every browser |
@@ -27,12 +38,15 @@ C1 covers the data folder, C2 the spec, C3 the command, C4 a form module and C5 
    `.meta.json` sidecar beside it. The sidecar names the columns, their types and the printed source line.
 2. **Copy a starter spec** for the form you want, from the table below, into a new file such as `specs/s17.json`. Give
    it a new `id`.
-3. **Point it at the data.** Set `dataset` to the table's name without its extension. Set `encode` to the column names
-   the form reads. Use `where` to keep rows, for example `{"year": 2024}` or `{"year": [2020, 2024]}`, and
+3. **Point it at the data.** Set `dataset` to the table's name without its extension. Set `encode`, the spec's map of
+   which column draws which part of the chart, to the column names the form reads. Use `where` to keep rows, for example `{"year": 2024}` or `{"year": [2020, 2024]}`, and
    `{"function": {"not": ["Total"]}}` to leave rows out. Use `sort` to order them, for example
    `[{"field": "value", "order": "desc"}]`.
-4. **Write the words.** These are `title` (a finding, a full sentence), `measure_line`, `alt`, `notes` and
-   `table.caption`, plus the form's `labels`. Every word the chart prints comes from the spec.
+4. **Write the words.** Every word the chart prints comes from the spec:
+   - `evidence_label` and `grade_line`, which every chart prints above its title (Rule 13.1);
+   - `title`, a full sentence in the verb its evidence grade allows (Rule 13.2);
+   - `measure_line`, `alt` (the description a screen reader hears), `notes` and `table.caption`;
+   - the form's `labels`.
 5. **Leave out `source_line`** to print the sidecar's own line. If you need different words, copy one of the sidecar's
    `source_line_variants`. If none fits, ask the research lead to add a variant to the sidecar.
 6. **Run it:**
@@ -42,8 +56,8 @@ C1 covers the data folder, C2 the spec, C3 the command, C4 a form module and C5 
    ```
 
    The command checks the spec. It then draws the chart at 1440 and 390 px on Newsprint and Charcoal, and checks every
-   column width the guide gives a chart: 656, 558, 358, 296 and 256 px. It writes SVG, PNG and CSV exports with a page
-   for each drawing to the scratch folder. A fault says what to change. Run `node work/build/chart-kit/oa-chart.mjs check
+   column width the guide gives a chart: 656, 558, 358, 296 and 256 px. It saves the exports, with a page for each
+   drawing, to one folder per spec, and its last line names the folder (`wrote: ...`); `--out FOLDER` picks another. A fault says what to change. Run `node work/build/chart-kit/oa-chart.mjs check
    specs/s17.json` to check without drawing.
 
 | Form | Starter spec | Form | Starter spec |
@@ -60,7 +74,8 @@ C1 covers the data folder, C2 the spec, C3 the command, C4 a form module and C5 
 
 ## The keys a spec takes
 
-These keys are required:
+`family` (the chart's family in the coverage plan, such as `comparison`) and `tier` (`core`, `extended`, `reference`
+or `avoid`) sort the chart in chapter 14. These keys are required:
 
 - `kit` (always 1), `id`, `form`, `family`, `tier`
 - `reader_question`, `evidence`, `evidence_label`, `title`, `measure_line`
@@ -135,5 +150,7 @@ editing an export. Embedding the fonts in each export waits for Phase 5's packag
 - **`layout guard: ...`**: a label touches another, runs past the edge or is crossed by a leader at one of the guide's
   widths. Shorten the words, or set the form's placement keys (see the form's header). If neither helps, tell the
   engineer which width fails.
-- **`forced colors: ...`**: a label would print in the same system color as the mark under it. This needs the engineer.
+- **`forced colors: ...`**: some readers set their computer to show every page in a few colors of their own choosing,
+  its **system colors**, for contrast. In that mode this label would print in the same color as the mark under it. This
+  needs the engineer.
 - **`data: a bar reads "Total"`**: a chart of the parts leaves the total out with `where` and `not`.

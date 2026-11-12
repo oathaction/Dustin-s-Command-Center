@@ -591,6 +591,8 @@
     if (k in K.WORDS) return K.WORDS[k];
     throw new Error('OAChart: words.json has no "' + k + '"; add it there and to K.WORDS in kit.js');
   }
+  // the shared words for a form: words.json's, through the same fallback the figure uses (editor's read, K1)
+  K.word = function (k) { return word(null, k); };
   K.chips = function (text, ids) {
     // set each atlas ID the spec names (spec.v7.ids) in its typed chip; an ASCII hyphen, never U+2011, in a no-wrap span
     var s = esc(text);

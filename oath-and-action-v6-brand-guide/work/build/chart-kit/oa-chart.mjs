@@ -384,6 +384,8 @@ async function build(o, check_only) {
     res.faults.slice(0, 40).forEach(f => console.log('  - ' + f));
     if (res.faults.length) bad++;
   }
+  // say where the files went, so a reader who does not code can find them (editor's read, K7)
+  if (!check_only) console.log(`wrote: ${o.out}, one folder per spec (its pages, SVG, PNG and CSV exports, captures and check file)`);
   return bad ? 1 : 0;
 }
 

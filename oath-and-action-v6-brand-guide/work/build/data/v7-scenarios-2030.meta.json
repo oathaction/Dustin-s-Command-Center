@@ -84,6 +84,10 @@
  ],
  "extract_script": "work/build/scripts/phase-3/data_round0_build.py",
  "intro": "Each scenario states a set of assumptions and gives the direction each outcome family would take if those assumptions hold. These are conditional directions. They make no forecast of what will happen and give no odds that any assumption comes true. The four outcome families are read separately and never added together. A scenario shows a number only when it names the method and the inputs behind it.",
+ "source_line_variants": {
+  "directions_wording": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, reform outcomes, eight scenarios, conditional directions to 2036 from a 2026 baseline, United States. Snapshot of October 15, 2026. Each scenario gives a direction, with no odds, that holds only if its assumptions do, and the atlas keeps the four families apart.",
+  "phase_2_wording": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, reform outcomes, eight scenarios, conditional directions to 2036 from a 2026 baseline, United States. Snapshot of October 15, 2026. Each scenario gives a direction only if its assumptions hold. It is no forecast, gives no odds, and the four families are never added together."
+ },
  "domain_note": "The scenarios cover four outcome families across every domain of the atlas",
  "class_method": "The studio’s coarse reading of V7’s direction words, for a glyph or tint only. The words are V7’s and always print beside any glyph. Words that start ‘up’ read up, except ‘up modestly’; ‘slightly up’, ‘up modestly’ and ‘small and slow’ read slightly up; ‘flat’, ‘near trend’ and ‘flat through 2036’ read flat; ‘down or flat’ and ‘flat, or down if ...’ read flat or down; ‘down’ reads down; ‘mixed’ and ‘prices down ...; employment effects mixed’ read mixed; ‘same as scenario ii’ points to scenario ii.",
  "class_rules": [
@@ -95,8 +99,5 @@
   "GE": "Government efficacy",
   "EP": "Economic performance",
   "EQ": "Income and wealth equality"
- },
- "source_line_variants": {
-  "phase_2_wording": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, reform outcomes, eight scenarios, conditional directions to 2036 from a 2026 baseline, United States. Snapshot of October 15, 2026. Each scenario gives a direction only if its assumptions hold. It is no forecast, gives no odds, and the four families are never added together."
  }
 }

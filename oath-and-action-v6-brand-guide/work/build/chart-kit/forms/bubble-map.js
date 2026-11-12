@@ -134,7 +134,7 @@
       });
       c.height(top + mh + 4);
       if (unlabeled.length) {
-        var uw = (K.words && K.words.unlabeled_marks) || 'Not labeled at this width: {codes}.';
+        var uw = K.word('unlabeled_marks');
         var low = top + mh;
         c.texts.forEach(function (t) { low = Math.max(low, t.y + t.h); });
         pts.forEach(function (q) { low = Math.max(low, q.y + q.rad); });

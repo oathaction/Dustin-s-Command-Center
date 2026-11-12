@@ -57,7 +57,7 @@
       });
       c.key(cats.map(function (x) { return { fill: x.style === 'solid' ? 'subject' : x.style === 'open' ? 'surface' : 'track', pattern: x.style === 'open' }; }));   // an open tile reads by its frame
       if (!codes) {
-        var nb = c.text(0, ly + 6, (K.words && K.words.unlabeled_tiles) || 'State codes are in the table at this width.', { role: 'note', max: W, fill: 'secondary' });
+        var nb = c.text(0, ly + 6, K.word('unlabeled_tiles'), { role: 'note', max: W, fill: 'secondary' });
         ly = nb.y + nb.h + 4;
       }
       c.height(Math.max(top + 8 * pitch - gap, ly));

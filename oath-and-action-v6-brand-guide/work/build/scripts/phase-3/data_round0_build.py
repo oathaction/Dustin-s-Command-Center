@@ -578,6 +578,10 @@ def v7_tables():
             (f'{ATLAS_LINE}, reform outcomes, eight scenarios, conditional directions to 2036 from a 2026 baseline, United States. Snapshot of {SNAP_WORDS}. '
              'Each scenario gives a direction only if its assumptions hold. It is no forecast, gives no odds, and the four families are never added together.'),
             'all', ['S06'], intro=V7['scenarios']['intro'],
+            # the editor's wording for the line's close (DR-191 read, E8), as a variant S06 can print
+            source_line_variants={'directions_wording': (
+                f'{ATLAS_LINE}, reform outcomes, eight scenarios, conditional directions to 2036 from a 2026 baseline, United States. Snapshot of {SNAP_WORDS}. '
+                'Each scenario gives a direction, with no odds, that holds only if its assumptions do, and the atlas keeps the four families apart.')},
             domain_note='The scenarios cover four outcome families across every domain of the atlas',
             class_method=("The studio’s coarse reading of V7’s direction words, for a glyph or tint only. The words are V7’s and always print beside any glyph. "
                           "Words that start ‘up’ read up, except ‘up modestly’; ‘slightly up’, ‘up modestly’ and ‘small and slow’ read slightly up; "

@@ -233,6 +233,26 @@ What each row measures: chart data compressed deflates each chart's data island 
 
 The compact carrier, built for this (fix pass 2): a number column whose printed figures do not give back the stored value now carries its values in the chart's island as one comma-separated list, and its cells carry no attribute (`K.lean_carry`, `K.rows_from_table`). Proof: `oa-chart.mjs build --all` passes 16 of 16 with page-to-Node parity, the 192 board files (captures, exports, CSV) are byte for byte what they were before it, and `dataviz_check.js --kit` passes all 16 pages. On the pilot it took S13 from 49,769 to 47,145 bytes, S15 from 19,463 to 18,117, and S11 and S12 down 444 each; the estimate of half was high, because S13's island also carries an unrounded column the table does not show.
 
+## Second pass
+
+DR-191's read of fix pass 2 gave the engineer four kit faults (the editor's "Fix pass read", K1 and K5 to K7), and the Explainer maker two requests, E32 and E8. The editor's second pass changed three kit words in `words.json` and their copy in `kit.js` (`K.WORDS`); they are kept.
+
+| Code | Fix | Where |
+|---|---|---|
+| K1 | The bubble map and the tile map print `words.json`'s words through the kit's own word lookup (`OAChart.word`), which falls back to the copy in `kit.js`, so no form carries words of its own | `kit.js`, `forms/bubble-map.js`, `forms/tile-map-categorical.js` |
+| K5 | The README defines spec, sidecar, form, export, SVG, PNG, CSV, Node, renderer, `encode`, `family`, `tier`, forced colors and system colors at first use | `README.md` |
+| K6 | The README asks for `evidence_label` and `grade_line` (Rule 13.1) and a title "in the verb its evidence grade allows (Rule 13.2)" | `README.md` |
+| K7 | The build's last line names the folder it wrote (`wrote: ...`), and the README says so | `oa-chart.mjs`, `README.md` |
+| E32 | On a phone the totals row's peak words sit right of the row's name where they fit, else under the sparkline; on a copy of S13 with the held setting (`"peak": "Peak: {value} in {x}"`, `peak_field: "employees_thousands"`) every width passes, printing "Peak: 3,013,000 in October 2024" | `forms/area-sparklines.js` |
+| E8 | `v7-scenarios-2030.meta.json` gains the variant `directions_wording`, ending "Each scenario gives a direction, with no odds, that holds only if its assumptions do, and the atlas keeps the four families apart." | `data_round0_build.py` |
+
+Requests back: the Explainer maker can now set S13's peak (X13, E32) and switch S06 to `directions_wording` (E8).
+
+D3-xxx | A form prints shared words only through `OAChart.word` | One source for the words, with the editor's wording on a page and in Node alike
+D3-xxx | On a phone a totals row's peak words go right of its name, else under its sparkline | The name holds the line above the sparkline at that width (E32)
+
+Tested: SECOND_TESTED
+
 ## Contracts
 
 These are the formats every agent follows in round 0. The brief's contract points 1 to 7 stand; this section makes them exact.
@@ -608,7 +628,7 @@ Earlier in the round:
 
 ## Files
 
-Created in fix pass 2: `work/build/chart-kit/README.md`, `work/build/scripts/phase-3/weight_options.py`.
+Created in fix pass 2: `work/build/chart-kit/README.md`, `work/build/scripts/phase-3/weight_options.py`. Modified in the second pass: `kit.js`, `oa-chart.mjs`, `README.md`, three forms, `data_round0_build.py` and `work/build/data/v7-scenarios-2030.meta.json`.
 Created: `work/build/chart-kit/` (kit.js, parts.js, kit.css, metrics.js, geo.js, geo-LICENSE.txt, words.json, checks.js, oa-chart.mjs, forms/ with 17 modules, tools/metrics_build.js, tools/geo_build.py, tools/minify.mjs, tools/kit_snapshot.mjs, fixtures/specs/s14.json); `work/build/scripts/phase-3/weight_pass.py` and `weight_pass_proof.js`; `work/build/data/` (18 tables and sidecars, by `work/build/scripts/phase-3/data_round0_build.py`); `work/build/scripts/phase-3/` (data_round0_build.py, guide_charts.py, chart_pilot.py, chart_pilot_check.js, v7_check.py); this notes file.
 Modified in fix pass 2: the kit (`kit.js`, `kit.css`, `parts.js`, `checks.js`, `oa-chart.mjs`, `words.json`, 13 forms), `work/build/scripts/phase-3/data_round0_build.py` and the files it writes in `work/build/data/` (the two derived tables, `v7-stock-trading-ban.meta.json`, `fred-payrolls-by-sector.meta.json`), `work/build/scripts/phase-2/dataviz_check.js`, `work/build/scripts/phase-3/chart_pilot_check.js`, `work/build/guide/shell/guide-shell.css` (the rail rule and chart plates in print), `work/build/tokens/src/oa-tokens.src.mjs` with `tokens.css`, `tokens.json`, the token test results and `s-26-token-table.html` (`leadIn`), and `work/boards/phase-3/round-0/specimens/` (refreshed).
 Modified: `work/build/scripts/phase-2/guide_build.py` (the hook, gates, `--pilot`, `--chart-method`, two budgets, the weight pass and `--no-weight-pass`, the self-test's CSS reading and its front-page expectation), `work/build/scripts/phase-3/chart_pilot.py` (chapter 14's plates only), `work/build/scripts/phase-2/dataviz_check.js` (`--kit`, `--kit-self-test`), `work/build/scripts/phase-2/tokens_build.mjs` (stroke styles), `work/build/tokens/src/oa-tokens.src.mjs`, `work/build/tokens/tokens.css`, `work/build/tokens/tokens.json`, `work/build/tests/tokens/test_token_rules.py`, `test_token_parity.py`, `sd_crosscheck.mjs`, `20261106_Token-Test-Results.json`, `work/build/guide/specimens/s-26-token-table.html` (regenerated), `work/boards/phase-3/round-0/specimens/` (refreshed captures and exports, at the coordinator's request).

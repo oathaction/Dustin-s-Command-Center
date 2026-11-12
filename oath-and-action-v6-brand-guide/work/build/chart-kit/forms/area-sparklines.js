@@ -41,7 +41,7 @@
       var list = by[String(p.value)] || [];
       if (!list.length) { c.warn('no rows for the totals row ' + p.value); return; }
       var ry = y + (c.phone ? c.size('tick') + 4 : 0), ind = (p.indent || 0) * 14;
-      c.text(ind, c.phone ? y + c.size('tick') : ry + rh / 2 + 4, p.label, { role: 'tick', weight: 600 });
+      var lb = c.text(ind, c.phone ? y + c.size('tick') : ry + rh / 2 + 4, p.label, { role: 'tick', weight: 600 }), under = 0;
       if (ind) c.line(ind - 9, y + (c.phone ? 2 : 4), ind - 9, (c.phone ? y + c.size('tick') : ry + rh / 2), { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
       var xs = K.scale.linear([K.time(list[0][c.field('x')]), K.time(list[list.length - 1][c.field('x')])], [sx0, sx0 + sw]);
       var ys = K.scale.linear([dom[0], dom[1]], [ry + rh - 4, ry + 4]);
@@ -54,10 +54,14 @@
         c.circle(pkx, pky, c.t('spark-end-radius'), { fill: 'subject', mark: false });
         var pw0 = String(p.peak).replace('{value}', K.fmt(pk[p.peak_field || ey], (c.spec.formats || {})[p.peak_field || ey] || 'integer')).replace('{x}', K.fmt(pk[c.field('x')], 'month'));
         var pkw = c.measure(pw0, 'tick');
-        c.text(Math.max(sx0, Math.min(pkx - pkw / 2, sx0 + sw - pkw)), ry - 2, pw0, { role: 'tick' });
+        if (!c.phone) c.text(Math.max(sx0, Math.min(pkx - pkw / 2, sx0 + sw - pkw)), ry - 2, pw0, { role: 'tick' });
+        // on a phone the row's name shares the line above the sparkline: the peak's words go right of the name where they
+        // fit, else under the sparkline (E32)
+        else if (lb.x + lb.w + 12 + pkw <= W) c.text(W - pkw, y + c.size('tick'), pw0, { role: 'tick' });
+        else { under = c.size('tick') + 8; c.text(Math.max(0, Math.min(pkx - pkw / 2, W - pkw)), ry + rh + c.size('tick') + 2, pw0, { role: 'tick' }); }
       }
       cols.forEach(function (k, j) { c.text(colx(j), ry + rh / 2 + 4, K.fmt(list[list.length - 1][k], f[k] || 'number'), { role: 'tick', weight: j ? 400 : 700, anchor: 'end', fill: j ? 'secondary' : 'label' }); });
-      y = ry + rh + 4;
+      y = ry + rh + 4 + under;
     });
     return y;
   }
