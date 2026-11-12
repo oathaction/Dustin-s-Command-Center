@@ -4576,3 +4576,11 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-640 | Rule 14.11 labels only the 2013 break; its reading guide, alt and caption say the 2017 estimates sit $300 apart, too close to show as a break, and the table prints both (the gaps, $2,200 and $300, computed from the data and checked) | Brand: the "New processing" label pointed at a break the line cannot show |
 | D3-641 | Rule 14.9's phone drawing is 224 px wide, the guide's narrowest column at 320 px, so it fits its column with its words at 13 px; the engineer's N3 rule keeps a static drawing at true size in any case | Access N3: at 320 px the 256 px drawing scaled to 11.4 px |
 | D3-642 | `labels.point` alone now names the red point on my two plates (s-14-6-bars, s-14-13-cols), and Rule 14.6's builders line and entry 14.16's say so | ED-E12 landed: one key gives the red point and the light fill on every other mark |
+
+### Engineer, round 1 second pass (continued)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-643 | A drawing taller than a page prints as slices cut between its words | An SVG is one unbreakable box, so Chromium moved it whole and left its title (access S4); slices of 360 px leave at most a slice's height blank |
+| D3-644 | The kit checks every width the guide draws a chart at, an entry's and a rule plate's apart | A 326 px column went unchecked and S34 ran past its edge there (N2) |
+| D3-645 | A static figure's drawing never scales; a narrower column scrolls | Scaling took its words under 13 px (N3) |
