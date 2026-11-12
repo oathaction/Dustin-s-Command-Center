@@ -18,14 +18,14 @@ Phase 3 is the active phase. Round 1 is built, reviewed, fixed, second-passed an
 - D3-619: no note gives counts on both sides of an inauguration (H09); S25 keeps the January 2025 count as a table column.
 - D3-618 corrects D3-614: read a whole build output before recording a pass count.
 
-**Checks at the close:** strict build 9,991,740 bytes, 0 warnings, 265 rules, 554 specimens; `oa-chart.mjs build --all` 42 of 42 (engineer); the quick guide check (see section 2A for its final result); data check 96 tables, 0 faults. Chapter 14's share per plate: 14,337 bytes for each of the 61 specimens still to come; rules 14.1 to 14.14 with the opener 205,380 bytes against 212,288 (D3-479); chapter 15 184,665 of 600,000.
+**Checks at the close:** strict build 9,991,740 bytes, 0 warnings, 265 rules, 554 specimens; `oa-chart.mjs build --all` 42 of 42 (engineer); the quick guide check at 1440 and 390 px, 0 failures (D3-647); data check 96 tables, 0 faults. Chapter 14's share per plate: 14,337 bytes for each of the 61 specimens still to come; rules 14.1 to 14.14 with the opener 205,380 bytes against 212,288 (D3-479); chapter 15 184,665 of 600,000.
 
 **New data this chat:** Dustin's Department of Labor page frozen (`dol-state-minimum-wage-history`, `dol-state-minimum-wage-classes`, P7-223; January 1 rates 1968 to 2024; panels 2010, 2014, 2019, 2024); `fjc-active-judges-by-court-of-appeals`; `fec-super-pacs-by-cycle` (P7-224, Rule 14.13); `nps-national-park-recreation-visits-2025` (P7-225, Rule 14.6); S27's U.S. series; S25's January 2025 column; S36's recorded party column; S34's 119th row (295 votes through November 10, 2026).
 
 ## 2. Next, in order
 
 ### A. The progress page
-See this chat's final reply for the address and the rescore. Rebuild with `python3 -I work/build/scripts/phase-3/progress_round_1_build.py --reuse --check` (builder notes `20261112_Round-1-Progress-Page-Builder-Notes.md`). The board check's only fault is axe html-has-lang, which the host's wrapper supplies.
+Published privately at https://claude.ai/artifact/AUM5CtTDVPvPARKM5B3Hu6 (D3-648). The rescore ships all five items (D3-646); its four new Should fix items, chapter 15's wide stage at 1024 px first (its 702 px frame fits the stage if the margin narrows; D3-625 reopened), join round 2. Rebuild with `python3 -I work/build/scripts/phase-3/progress_round_1_build.py --reuse --check` (builder notes `20261112_Round-1-Progress-Page-Builder-Notes.md`). The board check's only fault is axe html-has-lang, which the host's wrapper supplies.
 
 ### B. Dustin's answers on the round 2 plan
 The plan and its four questions are in this chat's reply (chapter 13's five title periods, BC Q1 and D3-488; the minimum wage maps ending at January 1, 2024 with no new download; all six of chapter 15's middle rules in round 2; a new chat for round 2). Log his answers as DR-242 on. Then write the round 2 brief on round 1's model (`20261112_Phase-3-Round-1-Brief.md`), carrying section 1's calls as rules for makers.

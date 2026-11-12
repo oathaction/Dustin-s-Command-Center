@@ -4,11 +4,12 @@ Oath & Action Edition 06, Phase 3, round 1, November 12, 2026. The page builder 
 
 ## Status
 
-- **Method proven; waiting for the fix pass and the rescore.** The script and content file are written and ran on the current files (November 12, about 16:20 UTC). The main session reruns it when the rescore lands (see "How to rerun").
-- Built: `work/boards/phase-3/round-1/progress/20261112_Round-1-Progress.html` with `img/` beside it, by `work/build/scripts/phase-3/progress_round_1_build.py` and `progress_round_1_render.js`, from the words in `20261112_Round-1-Progress-Content.json`. Every figure the page prints, with its source, goes to `20261112_Round-1-Progress-Figures.json`; the check writes `20261112_Round-1-Progress-Check-Results.json`.
-- The folder holds 102 files, 32,708,268 bytes: the page (about 197 kB), the content, figures and check results files, and 98 composed PNGs (largest 1,261,899 bytes, the heat table's Newsprint pair). Limits: under 200 files and 50 MB; the build warns past either.
-- Parts at the last run: 1 to 6, 8 and 10 Ready. Part 7, Scores, shows the creative director's first scores (`20261112_Round-1-CD-Scores.json`, which landed during this task: none of the five parts ready yet) and waits for the rescore; of the red team reports, statistics reads 3 of 5 with 5 Must fix and 13 Should fix, access reads 4 of 5 with 1 Must fix and 10 Should fix, and brand and craft is still pending. Part 9 waits on the brand and craft report and any list a file still marks pending. Each fills in on the next run once its file lands.
-- At this run the research lead had frozen the Department of Labor table (`dol-state-minimum-wage-history`, ledger row P7-223) and its notes record it, so part 1 prints it frozen. Round 3's map geometry is still waiting: 14 of 20 data rows have every file frozen, 24 of the 27 files the plan names.
+- **Ready to publish after the rescore.** On the main session's request after the rescore landed: part 9 is now a short summary (222 words) and part 7 reads the rescore and each red team report's second score. The rerun, `--reuse --check`, exits 0 with 0 warnings and every part Ready; the page reads 3,340 words of visible text (it read about 24,000 before, 16,506 of them in part 9).
+- Built: `work/boards/phase-3/round-1/progress/20261112_Round-1-Progress.html` with `img/` beside it, by `work/build/scripts/phase-3/progress_round_1_build.py` and `progress_round_1_render.js`, from the words in `20261112_Round-1-Progress-Content.json`. Every figure the page prints, with its source, goes to `20261112_Round-1-Progress-Figures.json` (its `words` key holds the count); the check writes `20261112_Round-1-Progress-Check-Results.json`.
+- The folder holds 102 files, 34,345,137 bytes: the page (133 kB), the content, figures and check results files, and 98 composed PNGs. Limits: under 200 files and 50 MB; the build warns past either.
+- Part 7: the creative director's first scores found none of the five parts ready; the rescore (`20261112_Round-1-CD-Rescores.json`) finds all five ready. Red teams, first score, Must fix, Should fix, second score: statistics 3 of 5, 5, 13, 4 of 5; brand and craft 3 of 5, 4, 20, 4 of 5; access 4 of 5, 1, 10, 4 of 5.
+- Part 9's figures, each read from its file: strict build 9,991,740 bytes, no warnings (today's build); the quick guide check at 1440 and 390 px on a 9,991,740 byte build, no failures (the main session's results file in scratch, `phase-3/round-1-final/build/`); the kit's `build --all` with pictures 42 of 42 (engineer's notes); the data check 96 tables, 0 faults (research notes); figure checks, maker A 109 assertions with 0 failed and maker B 9 checks with 0 faults (their notes); the three second passes at 4 of 5; the rescore. Each Not tested line is checked against the report that names it, and the build warns when the report stops naming it.
+- Part 1 still reads the Department of Labor table frozen (P7-223) and round 3's map geometry waiting.
 
 ## How to rerun
 
@@ -32,9 +33,9 @@ python3 -I work/build/scripts/phase-3/progress_round_1_build.py --reuse --check
 | 4, sketches | the plan's sketch forms; the heading each plate prints, read from the strict build; each photographed at 1440 px |
 | 5, rules 14.1 to 14.14 | chapter 14's opener and each rule's correct and failure plates, photographed at 1440 px |
 | 6, chapter 15 | the opener and every plate in chapter 15's JSON, photographed at 1440 and 390 px |
-| 7, scores | `20261112_Round-1-CD-Scores.json`, the newest rescore, the three red team reports |
+| 7, scores | `20261112_Round-1-CD-Scores.json`, the newest `*Round-1-CD-Rescore*.json`, the three red team reports: first score, Must fix and Should fix from the part before "Second pass", the second score from that section |
 | 8, weight | the build report: chapter 14 against its stop and the share per plate still to come, chapter 15 against its ceiling, the page projection against the budget |
-| 9, tested | every Tested and Not tested list in the eleven files the content file names |
+| 9, tested | a short summary: each Tested line's figure read from today's build report, the quick guide check's results file in scratch, the engineer's, research lead's and makers' notes, the red team reports and the rescore; each Not tested line checked against the report that names it |
 
 ## Routine calls
 
@@ -58,7 +59,13 @@ python3 -I work/build/scripts/phase-3/progress_round_1_build.py --reuse --check
 - D3-xxx | The check runs with `--no-captures`, on the page and on a scratch copy wrapped as the host wraps it; the page itself may fail only axe's html-has-lang | Captures would land in a folder beside the page; the page carries no `<html>` tag by its contract, so the language comes from the host's wrapper
 - D3-xxx | Images the page no longer names are removed from `img/` on every run, and each picture is a PNG saved with lossless compression | The folder publishes as it stands
 
+- D3-xxx | Part 9 is a summary of about 220 words in place of every pasted list: seven Tested lines, each figure read from its file by a pattern the content file holds, four Not tested lines checked against the reports that name them, and one line naming where the full lists are | The page must stay short (DR-241); part 9 was 16,506 of its 24,000 words
+- D3-xxx | A red team's score is read from the first heading that names a score, its own words included, and its counts from the part before "Second pass"; the second score from that section | The brand and craft report puts its score in the heading itself, which the first reader missed, and each report now carries a second pass
+- D3-xxx | The quick guide check's figure comes from the main session's results file in scratch, with the build it checked; the build warns when that build's bytes differ from today's strict build | The check writes no file in the repository, and its figure must be of the same build the page shows
+
 ## Tested
+
+- After the rescore, `--reuse --check`: exit 0, 0 warnings, every part Ready; the page itself fails only axe html-has-lang at 1440, 390 and 360 px, and the wrapped copy passes at all three. Parts 7 and 9 read by script from the page's text: every figure above, and the kit line reading 42 of 42 from the engineer's last `build --all` line (an earlier pattern caught an older 41 of 42 line and was corrected).
 
 - First run, without `--reuse`: strict guide build exit 0, 0 warnings, 10,017,051 bytes, 265 rules, 554 specimens; the kit built all 26 new charts, 26 PASS with 0 faults each; 81 of 85 guide photographs taken and four plates timed out (chapter 14's opener and the correct plates of 14.1, 14.4 and 14.8). That run took 18 minutes.
 - The renderer after the change: on six elements, the new clip pictures match the first run's in width (868 and 350 px) and within a pixel in height; pixel differences come from the element's fractional position on the page. Chapter 14's opener and 14.1's correct plate, which timed out before, were taken in under a second each; 14.1's correct plate viewed whole.

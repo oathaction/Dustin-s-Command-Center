@@ -742,19 +742,36 @@ def findings(body):
     return n if n else len(re.findall(r'^[-*]\s+\S', b, flags=re.M))
 
 
+def score_in(part):
+    """The first "N of 5" under a heading that names a score, the heading's own words included (one report writes
+    "## Score for this lens: 3 of 5", another "## 1. Score" over "**3 of 5.**", the second passes "### New score")."""
+    for m in re.finditer(r'^(#+)\s*(?:\d+\.\s*)?(.*\bscore\b.*)$', part, flags=re.M | re.I):
+        nxt = re.search(r'^#+\s', part[m.end():], flags=re.M)
+        block = m.group(2) + '\n' + part[m.end():m.end() + (nxt.start() if nxt else len(part))]
+        s = re.search(r'\b([1-5])(?:\.\d)?\s*(?:out\s+)?of\s+5\b|\b([1-5])\s*/\s*5\b', block)
+        if s:
+            return int(s.group(1) or s.group(2))
+    return None
+
+
 def red_team(rt):
+    """A red team report: its first score and Must fix and Should fix counts, from the part before its "Second pass"
+    heading, and its second score from that section."""
     t = read(rt['file'])
     if t is None:
         return {'name': rt['name'], 'state': 'missing'}
-    sc_body = B1.md_section(t, [r'score.*'])
-    m = re.search(r'\b([1-5])(?:\.\d)?\s*(?:out\s+)?of\s+5\b|\b([1-5])\s*/\s*5\b', sc_body or '')
-    score = int(m.group(1) or m.group(2)) if m else None
-    mf = findings(B1.md_section(t, [r'must fix']))
-    sf = findings(B1.md_section(t, [r'should fix']))
+    m = re.search(r'^##\s+(?:\d+\.\s*)?Second pass\b.*$', t, flags=re.M | re.I)
+    first_part, second_part = (t[:m.start()], t[m.start():]) if m else (t, '')
+    score = score_in(first_part)
+    score2 = score_in(second_part) if second_part else None
+    mf = findings(B1.md_section(first_part, [r'must fix']))
+    sf = findings(B1.md_section(first_part, [r'should fix']))
     state = 'ready' if score is not None and mf is not None and sf is not None else 'waiting'
-    if state == 'ready' and (mf == 0 and (B1.md_section(t, [r'must fix']) or '').strip().lower() not in ('none', 'none.')):
+    if state == 'ready' and (mf == 0 and (B1.md_section(first_part, [r'must fix']) or '').strip().lower() not in ('none', 'none.')):
         warn(f'{rt["name"]}: its Must fix section has text but no numbered finding was found')
-    return {'name': rt['name'], 'state': state, 'score': score, 'must_fix': mf, 'should_fix': sf, 'file': rt['file']}
+    if second_part and score2 is None:
+        warn(f'{rt["name"]}: its second pass gives no score')
+    return {'name': rt['name'], 'state': state, 'score': score, 'must_fix': mf, 'should_fix': sf, 'second_score': score2, 'file': rt['file']}
 
 
 def drop_ids(s):
@@ -846,10 +863,13 @@ def scores_section():
     trs = []
     for r in rts:
         if r['state'] != 'ready':
-            trs.append(f'<tr><th scope="row">{esc(r["name"])}</th><td colspan="3">{esc(S["rt_wait"])}</td></tr>')
+            trs.append(f'<tr><th scope="row">{esc(r["name"])}</th><td colspan="4">{esc(S["rt_wait"])}</td></tr>')
             continue
-        trs.append(f'<tr><th scope="row">{esc(r["name"])}</th><td class="num">{r["score"]} of 5</td><td class="num">{r["must_fix"]}</td><td class="num">{r["should_fix"]}</td></tr>')
-    n_rt = sum(1 for r in rts if r['state'] == 'ready')
+        s2 = f'{r["second_score"]} of 5' if r.get('second_score') else esc(S['rt_wait2'])
+        trs.append(f'<tr><th scope="row">{esc(r["name"])}</th><td class="num">{r["score"]} of 5</td><td class="num">{r["must_fix"]}</td>'
+                   f'<td class="num">{r["should_fix"]}</td><td class="num">{s2}</td></tr>')
+    n_rt = sum(1 for r in rts if r['state'] == 'ready' and r.get('second_score'))
+    FILL['second_scores'] = rts
     if not first and not n_rt:
         status = ('waiting', 'cd')
     elif not first or not rescore:
@@ -903,36 +923,71 @@ def weight_section(G):
 
 
 # ------------------------------------------------------------------------------------------------------- tested
-def tested_section():
+def tested_section(G):
+    """A short summary: each Tested line with its figure read from the file that records it, each Not tested line
+    checked against the file that names it, and one line on where the full lists are."""
     S = C['sections']['tested']
-    cols, waiting = [], []
-    for s in C['slots']['tested']:
-        p = ROOT / s['file']
-        if not p.exists():
-            waiting.append(s['label'])
-            continue
-        items = [(k, w, x) for k, w, x in B1.tested_lists(p.read_text()) if not re.fullmatch(r'(?i)pending\.?', x.strip())]
-        ti = [(w, x) for k, w, x in items if k == 'tested']
-        ni = [(w, x) for k, w, x in items if k == 'not']
-        if not ti and not ni:
-            waiting.append(s['label'])
-            continue
-        QUOTED.extend(x for _, x in ti + ni)
-
-        def lst(xs):
-            out, cur = '', None
-            for w, x in xs:
-                if w != cur:
-                    out += ('</ul>' if cur is not None else '') + (f'<p class="where">{esc(B1.strip_codes(w))}</p>' if w else '') + '<ul>'
-                    cur = w
-                out += f'<li>{B1.md_inline(x)}</li>'
-            return out + ('</ul>' if xs else '')
-        cols.append(f'<div class="tcol"><h3 class="tcol-h">{esc(s["label"])}</h3><p class="label">Not tested</p>{lst(ni) or "<p>Nothing listed.</p>"}'
-                    f'<details class="more"><summary>Tested, {len(ti)} items</summary>{lst(ti) or "<p>Nothing listed yet.</p>"}</details></div>')
-        FIG.setdefault('tested', {})[s['file']] = {'tested': len(ti), 'not': len(ni)}
-    body = f'<p class="intro">{esc(S["lede"])}</p><p class="small">{esc(S["path_note"])}</p><div class="tcols">{"".join(cols)}</div>'
-    if waiting:
-        body += pending('Waiting for Tested and Not tested lists from ' + join_words([w[:1].lower() + w[1:] for w in waiting]) + '. Each joins this part when its file carries them.')
+    rows, missing = [], []
+    for it in S['tested']:
+        kind, words = it.get('kind'), None
+        if kind == 'build':
+            rep = G['report']
+            if G['ok']:
+                words = fill(it['words'], {'bytes': f'{rep.get("bytes", 0):,}', 'warnings': nw(len(rep.get('warnings', [])))})
+        elif kind == 'guide_check':
+            cands = sorted(SCRATCH.parents[2].glob(it['scratch_glob']), key=os.path.getmtime)
+            if cands:
+                J = json.loads(cands[-1].read_text())
+                pg = cands[-1].with_name(re.sub(r'-Guide-Check-Results\.json$', '.html', cands[-1].name))
+                widths = [str(r.get('width')) for r in J.get('runs', []) if r.get('width')]
+                words = fill(it['words'], {'widths': join_words(widths), 'failures': nw(len(J.get('failures', []))),
+                                           'page_bytes': f'{pg.stat().st_size:,}' if pg.exists() else '?'})
+                FIG['guide_check'] = {'file': '[scratch]/' + str(cands[-1].relative_to(SCRATCH.parents[2])), 'checked': J.get('checked'),
+                                      'failures': J.get('failures'), 'pass': J.get('pass'), 'page_bytes': pg.stat().st_size if pg.exists() else None}
+                if pg.exists() and G['report'].get('bytes') and pg.stat().st_size != G['report']['bytes']:
+                    warn(f'the quick guide check ran on {pg.stat().st_size:,} bytes and today’s strict build is {G["report"]["bytes"]:,}')
+        elif kind == 'second_pass':
+            rts = FILL.get('second_scores') or []
+            got = [r for r in rts if r.get('second_score')]
+            if got and len(got) == len(rts):
+                sc = {r['second_score'] for r in got}
+                words = (f'all {nw(len(got))} at {got[0]["second_score"]} of 5' if len(sc) == 1
+                         else join_words([f'{r["name"].lower()} {r["second_score"]} of 5' for r in got]))
+        elif kind == 'rescore':
+            _, rs = cd_files()
+            if rs:
+                items = rs.get('items', [])
+                k = sum(1 for x in items if x.get('ready'))
+                words = fill(it['words'], {'ready': f'all {nw(k)}' if k == len(items) else f'{nw(k, "none")} of the {nw(len(items))}',
+                                           'crit': nw(len(rs.get('criteria', [])))})
+        else:
+            parts = []
+            for s in it['sources']:
+                txt = read(s['file']) or ''
+                ms = list(re.finditer(s['pattern'], txt))
+                if ms:
+                    g = ms[-1].groups()
+                    parts.append(re.sub(r'\{(\d)\}', lambda m: f'{int(g[int(m.group(1)) - 1]):,}', s['words']))
+                else:
+                    warn(f'“{it["label"]}”: its figure was not found in {s["file"]}')
+            words = '; '.join(parts) if len(parts) == len(it['sources']) else None
+        if words is None:
+            missing.append(it['label'])
+            words = 'Not found in its file at this build.'
+        rows.append(f'<li><b>{esc(it["label"])}:</b> {esc(words)}.</li>' if not words.endswith('.') else f'<li><b>{esc(it["label"])}:</b> {esc(words)}</li>')
+        FIG.setdefault('tested', {})[it['label']] = words
+    nots = []
+    for it in S['not_tested']:
+        txt = read(it['file']) or ''
+        if not re.search(it['pattern'], txt, flags=re.I):
+            warn(f'the Not tested line “{it["words"][:40]}” is no longer named in {it["file"]}')
+        nots.append(f'<li>{esc(it["words"])}</li>')
+    body = (f'<p class="intro">{esc(S["lede"])}</p><div class="tcols">'
+            f'<div class="tcol"><h3 class="tcol-h">{esc(S["tested_h"])}</h3><ul>{"".join(rows)}</ul></div>'
+            f'<div class="tcol"><h3 class="tcol-h">{esc(S["not_h"])}</h3><ul>{"".join(nots)}</ul></div></div>'
+            f'<p class="small">{esc(S["full_lists"])}</p>')
+    if missing:
+        warn('Tested lines without their figure: ' + ', '.join(missing))
         return section('tested', body, ('partial', 'notes'))
     return section('tested', body, 'ready')
 
@@ -1250,7 +1305,7 @@ def main():
                     items += [(f'ch15-{r["id"]}-{k}-{w}', f'fig-{r[k]["specimen"]}', w) for w in (1440, 390)]
         shots = run_shots(G, items, a.reuse)
     parts = [round_section(G, P, r1), charts_section(G, P, r1, kit_out), entry_section(G, shots), sketches_section(G, r1, shots),
-             rules_section(G, P, shots), ch15_section(G, shots), scores_section(), weight_section(G), tested_section(), next_section()]
+             rules_section(G, P, shots), ch15_section(G, shots), scores_section(), weight_section(G), tested_section(G), next_section()]
     cache_file.write_text(json.dumps(CACHE))
     keep = set(IMAGES)
     for p in [q for q in IMG.iterdir() if q.suffix.lower() in IMG_EXT]:
@@ -1282,7 +1337,11 @@ def main():
                 'image_sources': {r['src']: r.get('source') for r in IMAGES.values()}, 'codes_in_reference_lines': sorted(LINKED),
                 'notes': NOTES, 'warnings': WARN, 'seconds': round((datetime.datetime.now() - t0).total_seconds())})
     FIGURES.write_text(json.dumps(FIG, indent=1, ensure_ascii=False, default=str))
-    print(f'wrote {rel(a.out)} ({len(page.encode()) / 1e3:.0f} kB) and {len(imgs)} images; the folder holds {len(files)} files, {total:,} bytes')
+    words = len(re.findall(r"[A-Za-z0-9][A-Za-z0-9’'.,-]*", visible_text(page)))
+    tested_words = len(re.findall(r"[A-Za-z0-9][A-Za-z0-9’'.,-]*", visible_text(page[page.find('id="p-tested"'):page.find('id="p-next"')])))
+    FIG.update({'words': words, 'words_tested_part': tested_words})
+    FIGURES.write_text(json.dumps(FIG, indent=1, ensure_ascii=False, default=str))
+    print(f'wrote {rel(a.out)} ({len(page.encode()) / 1e3:.0f} kB, {words:,} words, part 9 {tested_words}) and {len(imgs)} images; the folder holds {len(files)} files, {total:,} bytes')
     print('parts: ' + ', '.join(f'{k} {status_words(v)}' for k, v in STATUS.items()))
     print(f'{len(WARN)} warnings')
     if a.check:

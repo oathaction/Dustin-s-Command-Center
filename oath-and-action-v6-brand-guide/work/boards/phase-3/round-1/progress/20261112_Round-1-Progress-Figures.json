@@ -1,15 +1,16 @@
 {
- "built": "2026-11-12T18:05:38.581049+00:00",
+ "built": "2026-11-12T18:17:24.168408+00:00",
  "guide_build": {
   "exit": 0,
   "bytes": 9991740,
   "rules": 265,
   "specimens": 554,
   "warnings": 0,
-  "built": "2026-11-12T18:05:44"
+  "built": "2026-11-12T18:17:29"
  },
  "kit_builds": {
-  "rebuilt": [
+  "rebuilt": [],
+  "reused": [
    "S17",
    "S18",
    "S19",
@@ -36,11 +37,11 @@
    "S40",
    "S41",
    "S42"
-  ],
-  "reused": []
+  ]
  },
  "shots": {
-  "taken": [
+  "taken": [],
+  "reused": [
    "ch14-opener",
    "ch15-15.1-correct-1440",
    "ch15-15.1-correct-390",
@@ -126,8 +127,7 @@
    "sketch-14.43",
    "sketch-14.44",
    "sketch-14.45"
-  ],
-  "reused": []
+  ]
  },
  "round3": {
   "data_rows": 20,
@@ -804,14 +804,16 @@
    "score": 3,
    "must_fix": 5,
    "should_fix": 13,
+   "second_score": 4,
    "file": "work/handoffs/phase-3/20261112_Round-1-Red-Team-Statistics-Civic.md"
   },
   {
    "name": "Fairness, brand and craft",
-   "state": "waiting",
-   "score": null,
+   "state": "ready",
+   "score": 3,
    "must_fix": 4,
    "should_fix": 20,
+   "second_score": 4,
    "file": "work/handoffs/phase-3/20261112_Round-1-Red-Team-Brand-Craft.md"
   },
   {
@@ -820,6 +822,7 @@
    "score": 4,
    "must_fix": 1,
    "should_fix": 10,
+   "second_score": 4,
    "file": "work/handoffs/phase-3/20261112_Round-1-Red-Team-Access-Production.md"
   }
  ],
@@ -835,58 +838,28 @@
   "budget": 15500000.0
  },
  "tested": {
-  "work/handoffs/phase-3/20261112_Round-1-Maker-A-Notes.md": {
-   "tested": 33,
-   "not": 17
-  },
-  "work/handoffs/phase-3/20261112_Round-1-Maker-B-Notes.md": {
-   "tested": 24,
-   "not": 13
-  },
-  "work/handoffs/phase-3/20261112_Round-1-Editor-Notes.md": {
-   "tested": 27,
-   "not": 17
-  },
-  "work/handoffs/phase-3/20261112_Round-1-Engineer-Notes.md": {
-   "tested": 30,
-   "not": 13
-  },
-  "work/handoffs/phase-3/20261112_Round-1-Systems-Designer-Notes.md": {
-   "tested": 21,
-   "not": 13
-  },
-  "work/handoffs/phase-3/20261112_Round-1-Research-Notes.md": {
-   "tested": 37,
-   "not": 28
-  },
-  "work/handoffs/phase-3/20261112_Round-1-Data-Lead-Notes.md": {
-   "tested": 7,
-   "not": 14
-  },
-  "work/handoffs/phase-3/20261112_Round-1-Red-Team-Statistics-Civic.md": {
-   "tested": 22,
-   "not": 12
-  },
-  "work/handoffs/phase-3/20261112_Round-1-Red-Team-Brand-Craft.md": {
-   "tested": 11,
-   "not": 11
-  },
-  "work/handoffs/phase-3/20261112_Round-1-Red-Team-Access-Production.md": {
-   "tested": 56,
-   "not": 14
-  },
-  "work/handoffs/phase-3/20261112_CD-Review-Of-Round-1.md": {
-   "tested": 15,
-   "not": 9
-  }
+  "The strict build of the guide": "9,991,740 bytes, no warnings",
+  "The quick guide check": "at 1440 and 390 px, on a build of 9,991,740 bytes: no failures",
+  "The chart kit’s build of every chart": "42 of 42 charts pass, with their pictures",
+  "The data check": "96 tables, 0 faults",
+  "The figure checks": "maker A’s charts, 109 figures recomputed, 0 wrong; maker B’s, 9 checks, 0 faults",
+  "The three reviewers’ second passes": "all three at 4 of 5",
+  "The creative director’s rescore at true size": "all five parts ship, each at 4 or more on all six counts"
+ },
+ "guide_check": {
+  "file": "[scratch]/phase-3/round-1-final/build/guide-Guide-Check-Results.json",
+  "checked": "2026-11-12T17:51:55.274Z",
+  "failures": [],
+  "pass": true,
+  "page_bytes": 9991740
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-1/progress/20261112_Round-1-Progress.html",
- "html_bytes": 241649,
+ "html_bytes": 132977,
  "images": 98,
  "image_bytes": 34162010,
  "folder_files": 102,
- "folder_bytes": 34451829,
+ "folder_bytes": 34345137,
  "largest_image": [
   1321423,
   "20261112_Chart-14-129-Newsprint.png"
@@ -898,10 +871,7 @@
   "sketches": "ready",
   "rules": "ready",
   "ch15": "ready",
-  "scores": [
-   "partial",
-   "red"
-  ],
+  "scores": "ready",
   "weight": "ready",
   "tested": "ready",
   "next": "ready"
@@ -1011,35 +981,23 @@
   "D3-196",
   "D3-200",
   "D3-205",
-  "D3-219",
   "D3-228",
   "D3-350",
-  "D3-440",
   "D3-458",
   "D3-459",
   "D3-462",
-  "D3-463",
-  "D3-487",
-  "D3-534",
-  "DR-100",
-  "DR-124",
-  "DR-151",
   "DR-191",
   "DR-202",
-  "DR-204",
-  "DR-225",
+  "DR-213",
   "DR-238",
   "DR-240",
-  "DR-241",
-  "DR-44",
-  "DR-64",
-  "DR-72",
-  "DR-93",
-  "DR-98"
+  "DR-241"
  ],
  "notes": [],
  "warnings": [],
- "seconds": 439,
+ "seconds": 7,
+ "words": 3340,
+ "words_tested_part": 222,
  "check": {
   "page": {
    "failures": [
