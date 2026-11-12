@@ -4246,3 +4246,9 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 |---|---|---|
 | D3-448 | The script's drawings are 256 px wide at every width | The guide's narrowest column is about 264 px at 360; a drawing that fits it never scales, and a true-size stage would cost each plate the shell's scroll note, about 150 bytes the limit lacks |
 | D3-449 | Plates with a table are readable plates | D3-126: a stage that holds a chart and its table is a group, so the toggle is never nested in an image |
+
+### Systems designer, round 1 fix pass 2
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-450 | Every chapter 15 plate is a 328 px true-size stage, words under the drawing | The guide check accepts only the guide's type sizes, and a drawing that scales with its column sets 15 px words at 12.31 to 14.9 px; chapters 11 and 12 hold their plates at true size the same way |

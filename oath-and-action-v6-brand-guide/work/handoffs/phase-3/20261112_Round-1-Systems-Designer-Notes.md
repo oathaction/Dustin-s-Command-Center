@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 1, November 12, 2026. Written by the sy
 
 ## Summary
 
-Round 1's share of chapter 15 is built and passes its checks. The main session fixed the rule list as proposed (R7). The generator `work/build/scripts/phase-3/phase3_ch15_build.py` writes `work/build/guide/chapters/15-systems-graphics.json` (opener, intro, two groups, Rules 15.1 to 15.10, 15.13 and 15.14), 25 plates `work/build/guide/specimens/s-15-*.html` (the opener and a correct and a failure plate for each rule) and `work/build/guide/specimens/manifest-systems-graphics.json`. Every atlas value is read by script from `work/extract/atlas-v7-data.json`, held by a `need()` check, and printed with the snapshot date. Every line is the atlas build's `wire_marks` at 2 px, with the 28 px lead-in from `oa.chart.grade.leadIn` on patterned lines that carry ticks. Chapter 15 weighs 225,432 bytes in a strict guide build, under round 1's 250,000, with the page projected at 15.04 MB. The V7 check finds 0 failures in chapter 15's 49 chips. The opener draws Loop R13 again after the fix pass (SD-6, below). The data lead signed off 15.1, 15.2, 15.7 and 15.14, and 15.13 once SD-3 landed; SD-1 to SD-5 are applied (section below), which the data lead's sign-off of the other plates waits on.
+Round 1's share of chapter 15 is built and passes its checks. The main session fixed the rule list as proposed (R7). The generator `work/build/scripts/phase-3/phase3_ch15_build.py` writes `work/build/guide/chapters/15-systems-graphics.json` (opener, intro, two groups, Rules 15.1 to 15.10, 15.13 and 15.14), 25 plates `work/build/guide/specimens/s-15-*.html` (the opener and a correct and a failure plate for each rule) and `work/build/guide/specimens/manifest-systems-graphics.json`. Every atlas value is read by script from `work/extract/atlas-v7-data.json`, held by a `need()` check, and printed with the snapshot date. Every line is the atlas build's `wire_marks` at 2 px, with the 28 px lead-in from `oa.chart.grade.leadIn` on patterned lines that carry ticks. Chapter 15 weighs 229,072 bytes in a strict guide build (after fix pass 2), under round 1's 250,000, with the page projected at 15.04 MB. The V7 check finds 0 failures in chapter 15's 49 chips. The opener draws Loop R13 again after the fix pass (SD-6, below). The data lead signed off 15.1, 15.2, 15.7 and 15.14, and 15.13 once SD-3 landed; SD-1 to SD-5 are applied (section below), which the data lead's sign-off of the other plates waits on.
 
 ## Rule list
 
@@ -96,7 +96,7 @@ Example log (Rule 01.12), counted for Rule 01.9: 20 examples, D01 3, D02 1, D03 
 - D3-xxx | The 11 workflows sit under one rule (15.24) as a reference set, not one rule each | Eleven failure plates would repeat one lesson and spend the chapter's 0.60 MB
 - D3-xxx | Rules 15.1 and 15.8 take shorter titles (15 and 13 words), same numbers and subjects | Chapter 13's title check holds every rule title at fifteen words or fewer
 - D3-xxx | Rule 15.13 draws Loop R1 as a still systems drawing and sends the reader to the loop stepper of Rule 18.22, live in Rule 11.14's plate (SD-3), with no second copy of the stepper | The guide build places each specimen once, and D2-1753 keeps one live drawing of one loop; the still drawing is the systems graphic the rule teaches
-- D3-xxx | Every drawing sits on one 296 px artboard with no word under 15 px, two columns with its words from 48em | A 360 px phone shows it at true size and a 320 px phone shrinks it to 13 px, System 1's phone rule (DR-36); one drawing per plate keeps the bytes down
+- D3-xxx | (Changed in fix pass 2: every plate is now a 328 px true-size stage.) Every drawing sits on one 296 px artboard with no word under 15 px, two columns with its words from 48em | A 360 px phone shows it at true size and a 320 px phone shrinks it to 13 px, System 1's phone rule (DR-36); one drawing per plate keeps the bytes down
 - D3-xxx | On a bent line the lead-in is cut from the first straight run, and the build stops if that run is under 28 px plus the pattern's gap | D3-105 and D3-165 set the lead-in for straight lines; loops bend, and the ticks sit on the first run
 - D3-xxx | Patterns are fitted to the measured length of the rounded path, corners included | `wire_marks` fits to the polyline's length, which leaves a pattern a few pixels off ink after a corner
 - D3-xxx | Drawings print raises and lowers on every grade, and the grade lives in the line and the grade word; "can" stays with titles and sentences (Rule 13.2) | System 1 and Rule 10.10 draw the verb as the sign's word; a step's grade already shows twice
@@ -160,4 +160,17 @@ Tested in the fix pass:
 - The opener captured from the strict build at 1440 and 390 px on Newsprint, and in a scratch preview on Charcoal (`data-oa-theme="dark"`) at 1440 and 390 px, read by eye: no overlap, every mark and word flips through the tokens; no overflow and no text under 13 px in the build at either width.
 
 Not tested in the fix pass: the engineer's updated `guide_check.js` on the final page (a run takes about 25 minutes).
+
+## Fix pass 2
+
+- **Type held at its token sizes at every width.** The four-width guide check found 14 plates setting type at 12.31 px at 1024 px, and every plate at 13.38 px at 360 px: the 296 px drawings shrank with their column (243 px wide in the 1024 px two-column layout, 264 px at 360). Every chapter 15 plate is now a fixed stage of 328 px (the 296 px drawing and a 16 px gutter each side, the opener's limit on a 360 px screen), held at true size with no fit switch, as chapter 11's phone plates are (`width_px` 328, `fit_switch` false, the `p0` gutter at every width). The drawings no longer scale (`max-width` dropped), and each plate's words stack under its drawing in one column. The generator stops if a plate's stage is any other width.
+- D3-xxx | Every chapter 15 plate is a 328 px true-size stage, words under the drawing | The guide check accepts only the guide's type sizes, and a drawing that scales with its column sets 15 px words at 12.31 to 14.9 px; chapters 11 and 12 hold their plates at true size the same way
+
+Tested in fix pass 2:
+- `python3 -I work/build/scripts/phase-3/phase3_ch15_build.py`: every check passes, including the new stage-width check; 25 plates.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/final7.html`: exit 0, 0 warnings; chapter 15 at 229,072 bytes; the page at 10,017,240 bytes, projected 15,041,533.
+- `python3 -I work/build/scripts/phase-3/v7_check.py --page <scratch>/final7.html`: 0 failures (chapter 15, 49 chips).
+- In Chromium at 1440, 1024, 390 and 360 px, every text node in chapter 15's 25 stages: rendered sizes 13, 14 and 15 px only, none under 13; no drawing scaled; no stage wider than its frame. The plates read by eye at 1440 (15.3, 15.6) and 360 px (the opener, 15.2, 15.6, 15.7, 15.10).
+
+Not tested in fix pass 2: the guide check itself (its zoom runs included) on the final page; a 320 px window, where the 328 px stage scrolls in its frame as chapter 11's 360 px plates do.
 
