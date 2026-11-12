@@ -158,3 +158,67 @@ From the coordinator: the studio's own wording in `govinfo-pl-119-75-effective-d
 
 Tested: the data check; the diff (three cells in one column).
 Not tested: S32 rebuilt (maker B's step).
+
+## Download item 2
+
+Row 113, from Dustin's saved Department of Labor page (D3-459), done in parallel with the review (D3-462). Script: `work/build/scripts/phase-3/research_dol_freeze.py`, run as `python3 -I work/build/scripts/phase-3/research_dol_freeze.py <saved page> --freeze`. It checks the file's bytes and SHA-256 against its record first and stops on a mismatch, then reads the page only with Python's own HTML parser. The data check reads 93 tables with 0 faults.
+
+**What the page holds.** Six tables on one page, the federal rate and 54 jurisdictions (50 states, DC, Guam, Puerto Rico and the U.S. Virgin Islands) in the same order in each, 39 columns: selected years 1968 to 1998 and every year 2000 to 2024. The page's note sets the as-of day: "Wage rates are for January 1 of each year except 1968 and 1972, which show rates as of February." The federal row reads $6.55 in 2009 and $7.25 from 2010, as the January 1 day implies. The page's title reads "Selected Years 1968 to 2024", and its latest column is January 1, 2024. The "2025" the plan and the download record expected is the page's last line, "This document was last revised in January 2025."; the record's "1961" is from note (a). There is no 2025 or 2026 column.
+
+**Frozen** (ledger P7-223; P7-220's placeholder now points to it):
+- `work/build/data/dol-state-minimum-wage-history.csv` and `.meta.json`: the table as published, 2,145 rows (55 a year by 39 years). Each cell keeps its text and footnote marks as the page prints them, with the hourly rates read beside it, the marks as letters, the page's bold, and the cell's status. The sidecar quotes the page's note, sources and every key line.
+- `work/build/data/dol-state-minimum-wage-classes.csv` and `.meta.json` (derived): 50 states and DC for every January 1 from 2010 to 2024, 765 rows, in change 10's three classes, with flags for a lower tier and an employer-size limit and the page's words for each mark on each row.
+
+**What a maker needs to know.**
+- Panels after July 24, 2009 at one as-of day: any January 1 from 2010 to 2024. Above $7.25 (of 51): 15 in 2010, 20 in 2013, 30 in 2015, 30 in 2020, 31 in 2024.
+- **2015 and 2020 are the same, class for class.** Every change after 2010 falls in 2011 to 2015 (15 states), plus Virginia in 2021.
+- Below $7.25 with a state rate: Georgia ($5.15, employers of six or more) and Wyoming ($5.15) in every year; Arkansas 2010 to 2014 ($6.25, employers of four or more); Minnesota 2010 to 2013 ($5.25 to $6.15); Colorado 2010 ($7.24). Marked "..." in every year: Alabama, Louisiana, Mississippi, South Carolina and Tennessee. The page's key says "not applicable", not "no law".
+- Qualifications kept per row: employer size, [c] four or more (Arkansas, Illinois, Nebraska, Virginia), (d) six or more (Georgia), (e) two or more (Indiana, Michigan, Vermont); lower rates for smaller employers, (g) (Minnesota, Montana, Oklahoma; Oklahoma's $2.00 to $7.25 is classed at $7.25); and two rates with no footnote, Nevada 2010 to 2023 and Ohio 2014 to 2016. The page lists no tipped, youth, farm or city rates.
+- The page's bold, which its note says marks an increase, is missing from most columns before 2001 and all of 2014, so read change from the rates.
+
+**The 2026 panel.** No frozen copy of the July 1, 2026 state table exists. `work/build/data/` has none. Chapter 01 cites it only through Atlas V7 (source K1508, accessed October 15, 2026), for Ohio and Pennsylvania in words, and V7 keeps only its counts (claim CL1516: 30 states and DC above $7.25, 13 at, Georgia and Wyoming at $5.15, five with no law). Those counts equal January 1, 2024's here, but equal counts do not show the same states. A route with no new download: make the last panel January 1, 2024, so all four panels come from one table at one as-of day, and print V7's July 1, 2026 count as a sourced sentence beside the panels, not as a map. A July 1, 2026 map needs the Department's "State Minimum Wage Laws" page (https://www.dol.gov/agencies/whd/minimum-wage/state) saved as a new download, and would mix two as-of days.
+
+- D3-xxx | The history file keeps all 55 rows and 39 columns the page prints, the federal rate and three territories included | C1 freezes the publisher's table as published; row 113 reads its 50 states and DC from the derived file
+- D3-xxx | Each cell keeps its printed text and marks, with the hourly rates and the marks as letters in their own columns | A maker filters by mark without rereading the page, and the cell still reads as published
+- D3-xxx | Rates are read as numbers only where a cell plainly reads as dollars an hour; weekly and daily rates and the typing slips "4..65" and "1.25`" keep their text with no number | Reading a slip as a number would put the studio's guess in the publisher's column
+- D3-xxx | The page's four NA cells (U.S. Virgin Islands, 1968 to 1976) are left empty, with the status "not available" | C1 keeps a missing value as an empty cell, and the data check refuses NA
+- D3-xxx | The page's bold is kept as a column, and the sidecar says to read change from the rates | The page's note says bold marks an increase, but bold is missing from most columns before 2001 and all of 2014, and 15 cells of 2020 do not match it
+- D3-xxx | The classes file covers every January 1 from 2010 to 2024, not only four panel years | The data lead picks panels from one file; 2010 is the first January 1 after July 24, 2009
+- D3-xxx | A state's class reads the highest rate its cell prints, with flags for a lower tier and for employer-size limits and the page's words for each mark | Change 10's three classes need one rule, and the flags let a maker draw a lower tier or a size limit honestly
+- D3-xxx | A state marked "..." goes in "below $7.25 or no state minimum", and the sidecar says the page's key reads only "not applicable" | Change 10 puts "no state minimum" in that class; the page itself does not say "no law"
+- D3-xxx | Colorado's 2010 rate of $7.24 is classed below $7.25 and named in the sidecar | The page prints 7.24; the maker can say why one state sits a cent below
+- D3-xxx | The classes file's printed line says covered employers pay the federal rate where a state is below $7.25 or has none, with V7 claim CL1516 in the sidecar | A map with "below" states should not suggest workers there earn $5.15; the Department's own state page, as V7 records it, says so
+- D3-xxx | The frozen files take a new ledger row, P7-223, and P7-220 points to it | P7-220 was a placeholder; a new row keeps the ledger's dated history, as P7-221 and P7-222 did
+
+The two printed lines:
+- History: "Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under State Law: Selected Years 1968 to 2024, rates as of January 1 (February in 1968 and 1972), federal, 50 states, DC, Guam, Puerto Rico and the U.S. Virgin Islands. Retrieved November 12, 2026. State law only; some rates apply only to larger employers." Variant `states_and_dc_2010_to_2024`.
+- Classes: "Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under State Law, rates as of January 1, 2010 to 2024, 50 states and DC. Retrieved November 12, 2026. Classes by Oath & Action from each state’s highest listed rate; some rates apply only to larger employers, and where a state is below $7.25 or has none, covered employers pay the federal rate." Variant `panels_2010_2015_2020_2024`.
+
+**Requests.**
+- **To the data lead, change 10's panels.** Please pick the panels from the classes file. Since 2015 and 2020 match, 2010, 2013, 2015 and 2024 would show each step; 2010, 2015, 2020 and 2024 would show the five flat years. Either way the last panel is January 1, 2024 unless Dustin saves the July 1, 2026 page.
+- **To the main session.** Round 3's plan (row 113's publisher cell and the download list) names the page "Selected Years 1968 to 2025"; the page reads 1968 to 2024. I left the plan alone, since this task named the files I may write. If you agree, I correct those two cells in a later pass.
+
+Tested:
+- The saved page's bytes and SHA-256 against its record, before parsing: 124,921 bytes, d16798c7...ccc0, equal. The hash is unchanged after the freeze.
+- The page read only by my script with `html.parser`, run with `python3 -I` and the path as an argument; no browser opened it.
+- The script's own assertions: the title; six tables, each with one heading row; the same 55 rows in the same order in every table; 39 years in order; every mark in a cell defined in the key; the federal row at $6.55 in 2009 and $7.25 from 2010 to 2024; the note's January 1 sentence; no em dash or U+2011 in any file written.
+- Read-back: all 2,145 frozen cells equal the parsed cells (the four NA cells empty by rule), and every class recomputed from the frozen history file equals the classes file.
+- A second comparison from the structure dump's grid, column by column: 2,145 of 2,145 cells and their bold equal the CSV.
+- A rerun writes all four files byte for byte the same.
+- Both CSV files: UTF-8 without a byte-order mark, LF line ends, snake_case headers. Every printed line and variant starts "Source: " and holds no straight quote or apostrophe.
+- The data check, `data_round0_build.py --check`: 91 tables, 0 faults before (not 90: fix pass 3 added one); 93 tables and 1 fault after the first freeze (the NA cells); 93 tables, 0 faults after the fix.
+- The class counts by year, every change of class, the bold against the rates, and the 2024 counts against V7 CL1516, all computed by script.
+- Chapter 01's source, the data folder and V7 searched for the July 1, 2026 table: none frozen; V7 holds counts only.
+- The Census key: in none of the files I wrote, my scratch files, the ledger or this file (fixed-string search; nothing printed).
+
+Not tested:
+- dol.gov was not retried, and the July 1, 2026 state page was not read.
+- Nevada's and Ohio's laws behind their unmarked two rates; the five "..." states' laws; whether note (g)'s lower rates still applied after 2005, where its dates end.
+- The 1968 to 1998 values against the Book of the States; no cell was compared with a second source.
+- Dustin's save against the live page; the file is taken as the page dol.gov served him.
+- Any map drawn from these files (the maker's step), and the kit's reading of them beyond the data check.
+
+Change log:
+- Created: `work/build/scripts/phase-3/research_dol_freeze.py`; in `work/build/data/`, `dol-state-minimum-wage-history.csv`, `dol-state-minimum-wage-history.meta.json`, `dol-state-minimum-wage-classes.csv` and `dol-state-minimum-wage-classes.meta.json`.
+- Modified: `work/research/20261021_Research-Ledger.md` (Part 7's "Download item 2" section with P7-223, P7-220's status and checked cells, claims 16 to 19, a change log line); `work/research/downloads/20261112_DOL-State-Minimum-Wage-History-1968-To-2024.json` (`status` only); this file (this section).
+- Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/256961f5-3911-5bd9-908d-f34ce0435ace/scratchpad/phase-3/round-1/research/` (the structure dump and the rerun hashes).

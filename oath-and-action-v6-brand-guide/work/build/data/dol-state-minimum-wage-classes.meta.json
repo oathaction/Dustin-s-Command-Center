@@ -1,0 +1,101 @@
+{
+ "file": "dol-state-minimum-wage-classes.csv",
+ "kind": "derived",
+ "publisher": "U.S. Department of Labor, Wage and Hour Division",
+ "title_or_table": "Changes in Basic Minimum Wages in Non-Farm Employment Under State Law: Selected Years 1968 to 2024, columns 2010 to 2024, each state classed against the federal $7.25",
+ "table_id": "WHD state minimum wage history table, tables for 2007 to 2013, 2014 to 2019 and 2020 to 2024",
+ "url": [
+  "https://www.dol.gov/agencies/whd/state/minimum-wage/history"
+ ],
+ "observation_period": "January 1 of each year, 2010 to 2024 (the first January 1 after the federal $7.25 took effect on July 24, 2009, to the page's latest column)",
+ "geography": "50 states and the District of Columbia (51 rows a year)",
+ "universe_or_base": "Each state's basic minimum wage under state law for non-farm employment, as the page lists it",
+ "unit": "dollars per hour; class is a category",
+ "date_retrieved": "2026-11-12",
+ "vintage": "The page as Dustin Cathcart saved it from dol.gov and attached it on November 12, 2026 (download item 2, D3-459), 124921 bytes, SHA-256 d16798c732ffc3fc6dbd0321858f6d477907e71d1adaa6df1689a2748bb6ccc0. The page says \"This document was last revised in January 2025.\"",
+ "qualification": "Classes by Oath & Action from the highest rate each cell prints: above $7.25, at $7.25, or below $7.25 or no state minimum (the page's \"...\"). A state whose cell prints two rates has a lower rate for some employers or workers (lower_rate_noted), and some rates apply only to employers above a size (employer_size_limit); each row quotes the page's note for its marks. Wherever a state rate is below the federal rate, or a state has none, employers the federal law covers pay the federal rate; Atlas V7 claim CL1516, from the Department of Labor's state page of July 1, 2026, says the same (\"where the federal rate applies to covered employers\") and that federal coverage \"depends on employer size and interstate commerce\". The page gives each state's basic rate under state law for non-farm employment. It lists no tipped, youth, training or farm rates and no city or county minimums, so none is in these files.",
+ "columns": {
+  "code": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "name": {
+   "type": "text",
+   "description": "state name as the page prints it"
+  },
+  "year": {
+   "type": "year",
+   "description": "the column's year"
+  },
+  "as_of": {
+   "type": "date",
+   "description": "January 1 of the year, the page's as-of day for every column from 1976 on"
+  },
+  "rate_as_published": {
+   "type": "text",
+   "description": "the cell exactly as the page displays it, footnote marks included"
+  },
+  "rate_low": {
+   "type": "number",
+   "description": "the lower (or only) hourly rate in the cell",
+   "unit": "dollars per hour"
+  },
+  "rate_high": {
+   "type": "number",
+   "description": "the higher (or only) hourly rate in the cell; the class is read from it",
+   "unit": "dollars per hour"
+  },
+  "marks": {
+   "type": "text",
+   "description": "the cell's footnote marks, letters only, joined by \"; \""
+  },
+  "class": {
+   "type": "category",
+   "description": "data lead change 10's three classes: above $7.25; at $7.25; below $7.25 or no state minimum"
+  },
+  "class_basis": {
+   "type": "category",
+   "description": "one rate; highest rate of the range; no state rate on the page"
+  },
+  "lower_rate_noted": {
+   "type": "boolean",
+   "description": "true where the cell prints two rates or carries note (g), which names a lower rate for smaller employers"
+  },
+  "employer_size_limit": {
+   "type": "boolean",
+   "description": "true where the cell carries note (c), (d) or (e): the rate applies only to employers of four, six or two or more"
+  },
+  "qualification": {
+   "type": "text",
+   "description": "the page's words for each mark in the cell, quoted, and the range or \"...\" reading; empty where the cell carries none"
+  }
+ },
+ "printed_source_line": "Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under State Law, rates as of January 1, 2010 to 2024, 50 states and DC. Retrieved November 12, 2026. Classes by Oath & Action from each state’s highest listed rate; some rates apply only to larger employers, and where a state is below $7.25 or has none, covered employers pay the federal rate.",
+ "source_line_variants": {
+  "panels_2010_2015_2020_2024": "Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under State Law, rates as of January 1, 2010, 2015, 2020 and 2024, 50 states and DC. Retrieved November 12, 2026. Classes by Oath & Action from each state’s highest listed rate; some rates apply only to larger employers, and where a state is below $7.25 or has none, covered employers pay the federal rate."
+ },
+ "ledger_row": "P7-223",
+ "domain": "D07",
+ "domain_note": "V7 I104, \"A fixed minimum wage buys less every year\", in work, pay and bargaining power",
+ "states": [],
+ "derived_from": [
+  "dol-state-minimum-wage-history.csv"
+ ],
+ "derivation": "For each state and DC in each January 1 column from 2010 to 2024, the class of the highest hourly rate the cell prints against the federal $7.25 (a cell marked \"...\" classed with below), with flags and the page's note words for every footnote mark and range.",
+ "which_vintage_to_chart": "Panels at one as-of day after July 24, 2009 (data lead change 10): any January 1 from 2010 to 2024. The page has no 2025 or 2026 column; its latest is January 1, 2024.",
+ "raw_files_sha256_prefix": {
+  "20261112_DOL-State-Minimum-Wage-History-1968-To-2024.htm": "d16798c732ffc3fc"
+ },
+ "notes": [
+  "Counts by class, January 1, of 51: 2010: 15 above, 26 at, 10 below or none; 2011: 18 above, 24 at, 9 below or none; 2012: 19 above, 23 at, 9 below or none; 2013: 20 above, 22 at, 9 below or none; 2014: 24 above, 19 at, 8 below or none; 2015: 30 above, 14 at, 7 below or none; 2016: 30 above, 14 at, 7 below or none; 2017: 30 above, 14 at, 7 below or none; 2018: 30 above, 14 at, 7 below or none; 2019: 30 above, 14 at, 7 below or none; 2020: 30 above, 14 at, 7 below or none; 2021: 31 above, 13 at, 7 below or none; 2022: 31 above, 13 at, 7 below or none; 2023: 31 above, 13 at, 7 below or none; 2024: 31 above, 13 at, 7 below or none.",
+  "Every change of class from one January 1 to the next (above, at, or below or none): 2011 AZ, at to above; 2011 CO, below or none to above; 2011 MT, at to above; 2012 FL, at to above; 2013 MO, at to above; 2014 DE, at to above; 2014 MN, below or none to above; 2014 NJ, at to above; 2014 NY, at to above; 2015 AR, below or none to above; 2015 HI, at to above; 2015 MD, at to above; 2015 NE, at to above; 2015 SD, at to above; 2015 WV, at to above; 2021 VA, at to above. No state changes class between 2015 and 2020, so panels for those two years look the same.",
+  "Below $7.25 with a state rate: Arkansas 2010 to 2014 (6.25[c]); Colorado 2010 (7.24); Georgia 2010 to 2024 (5.15(d)); Minnesota 2010 to 2013 (5.25-6.15(g)); Wyoming 2010 to 2024 (5.15).",
+  "Marked \"...\" in every column from 2010 to 2024: Alabama, Louisiana, Mississippi, South Carolina, Tennessee. The page's key reads \"... - not applicable\"; it does not say \"no law\". Atlas V7 claim CL1516 counts five states with no minimum wage law on the Department of Labor's state page of July 1, 2026, without naming them in the claim.",
+  "Cells with note (g), a lower rate for smaller employers: Minnesota, Montana, Oklahoma.",
+  "Two rates with no footnote: Nevada 2010 to 2023; Ohio 2014 to 2016. The page gives no reason for these; its note says a range reflects rates that differ by industry, occupation or other factors.",
+  "Employer-size limits: Arkansas [c], 2010 to 2020; Georgia (d), 2010 to 2024; Illinois [c], 2010 to 2024; Indiana (e), 2010 to 2024; Michigan (e), 2010 to 2024; Nebraska [c], 2010 to 2024; Vermont (e), 2010 to 2020; Virginia [c], 2010 to 2020. Their words: [c] Rates applicable to employers of four or more; (d) Rates applicable to employers of six or more. In West Virginia, applicable to employers of six or more in one location; (e) Rates applicable to employers of two or more.",
+  "The class reads the highest rate a cell prints. For a cell with note (g), that is the rate for employers above the size the note names; for Nevada's and Ohio's unmarked pairs the page gives no reason. A maker who shows the lower tier reads rate_low and lower_rate_noted.",
+  "January 1, 2024's counts equal Atlas V7 claim CL1516's for July 1, 2026: 30 states and DC above $7.25, 13 at $7.25, Georgia and Wyoming at $5.15 and five with no state rate. Equal counts do not show that the same states sit in each class.",
+  "No July 1, 2026 column: the July 1, 2026 state table that chapter 01 cites (Atlas V7 source K1508, \"State Minimum Wage Laws\", accessed October 15, 2026) is not frozen in the data folder; V7 keeps only its counts (claim CL1516: 30 states and DC above $7.25, 13 at $7.25, Georgia and Wyoming at $5.15, five with no minimum wage law)."
+ ]
+}

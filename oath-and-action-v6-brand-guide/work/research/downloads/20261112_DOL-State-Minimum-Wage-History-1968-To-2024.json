@@ -8,7 +8,7 @@
  "bytes": 124921,
  "sha256": "d16798c732ffc3fc6dbd0321858f6d477907e71d1adaa6df1689a2748bb6ccc0",
  "serves": "Round 3 data plan row 113 only",
- "status": "Saved unchanged; not yet parsed or frozen as a data table. The research lead freezes it under contract C1 with a ledger row in round 3's fetch.",
+ "status": "Saved unchanged (SHA-256 checked November 12, 2026). Frozen November 12, 2026 under contract C1 by work/build/scripts/phase-3/research_dol_freeze.py as work/build/data/dol-state-minimum-wage-history.csv with its sidecar dol-state-minimum-wage-history.meta.json (the table as published) and the derived work/build/data/dol-state-minimum-wage-classes.csv with dol-state-minimum-wage-classes.meta.json (three classes, 50 states and DC, January 1, 2010 to 2024); research ledger row P7-223.",
  "years_seen_in_file": [
   "1961",
   "2025"

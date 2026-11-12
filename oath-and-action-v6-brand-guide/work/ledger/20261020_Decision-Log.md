@@ -4302,3 +4302,19 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-461 | The four reviewers start on the fresh strict build while the quick guide check runs on the same file; any fault the check finds goes to them as an addendum | The build matches D3-458's record to the byte, so the check and the review read one page, and the review gains about fifteen minutes |
 | D3-462 | The research lead freezes Dustin's Department of Labor download in parallel with the review, and the statistics reviewer leaves row 113 out of its five spot checks | The freeze writes only new data files, the ledger row and the research lead's notes, none of which the review reads as round 1 work |
 | D3-463 | The engineer's print and forced-colors comparison after its A11 fix, which its notes do not record, goes to the accessibility reviewer as a named check on S17 | V18 section 2A asked the new chat to confirm it; the reviewer already checks forced colors and print, so no second agent opens the kit |
+
+### Research lead, download item 2 (the Department of Labor page)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-464 | The history file keeps all 55 rows and 39 columns the page prints, the federal rate and three territories included | C1 freezes the publisher's table as published; row 113 reads its 50 states and DC from the derived file |
+| D3-465 | Each cell keeps its printed text and marks, with the hourly rates and the marks as letters in their own columns | A maker filters by mark without rereading the page, and the cell still reads as published |
+| D3-466 | Rates are read as numbers only where a cell plainly reads as dollars an hour; weekly and daily rates and the typing slips "4..65" and "1.25`" keep their text with no number | Reading a slip as a number would put the studio's guess in the publisher's column |
+| D3-467 | The page's four NA cells (U.S. Virgin Islands, 1968 to 1976) are left empty, with the status "not available" | C1 keeps a missing value as an empty cell, and the data check refuses NA |
+| D3-468 | The page's bold is kept as a column, and the sidecar says to read change from the rates | The page's note says bold marks an increase, but bold is missing from most columns before 2001 and all of 2014, and 15 cells of 2020 do not match it |
+| D3-469 | The classes file covers every January 1 from 2010 to 2024, not only four panel years | The data lead picks panels from one file; 2010 is the first January 1 after July 24, 2009 |
+| D3-470 | A state's class reads the highest rate its cell prints, with flags for a lower tier and for employer-size limits and the page's words for each mark | Change 10's three classes need one rule, and the flags let a maker draw a lower tier or a size limit honestly |
+| D3-471 | A state marked "..." goes in "below $7.25 or no state minimum", and the sidecar says the page's key reads only "not applicable" | Change 10 puts "no state minimum" in that class; the page itself does not say "no law" |
+| D3-472 | Colorado's 2010 rate of $7.24 is classed below $7.25 and named in the sidecar | The page prints 7.24; the maker can say why one state sits a cent below |
+| D3-473 | The classes file's printed line says covered employers pay the federal rate where a state is below $7.25 or has none, with V7 claim CL1516 in the sidecar | A map with "below" states should not suggest workers there earn $5.15; the Department's own state page, as V7 records it, says so |
+| D3-474 | The frozen files take a new ledger row, P7-223, and P7-220 points to it | P7-220 was a placeholder; a new row keeps the ledger's dated history, as P7-221 and P7-222 did |

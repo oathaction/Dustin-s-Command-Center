@@ -1,0 +1,766 @@
+code,name,year,as_of,rate_as_published,rate_low,rate_high,marks,class,class_basis,lower_rate_noted,employer_size_limit,qualification
+AL,Alabama,2010,2010-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AL,Alabama,2011,2011-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AL,Alabama,2012,2012-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AL,Alabama,2013,2013-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AL,Alabama,2014,2014-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AL,Alabama,2015,2015-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AL,Alabama,2016,2016-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AL,Alabama,2017,2017-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AL,Alabama,2018,2018-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AL,Alabama,2019,2019-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AL,Alabama,2020,2020-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AL,Alabama,2021,2021-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AL,Alabama,2022,2022-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AL,Alabama,2023,2023-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AL,Alabama,2024,2024-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+AK,Alaska,2010,2010-01-01,7.75,7.75,7.75,,above $7.25,one rate,false,false,
+AK,Alaska,2011,2011-01-01,7.75,7.75,7.75,,above $7.25,one rate,false,false,
+AK,Alaska,2012,2012-01-01,7.75,7.75,7.75,,above $7.25,one rate,false,false,
+AK,Alaska,2013,2013-01-01,7.75,7.75,7.75,,above $7.25,one rate,false,false,
+AK,Alaska,2014,2014-01-01,7.75,7.75,7.75,,above $7.25,one rate,false,false,
+AK,Alaska,2015,2015-01-01,8.75,8.75,8.75,,above $7.25,one rate,false,false,
+AK,Alaska,2016,2016-01-01,9.75,9.75,9.75,,above $7.25,one rate,false,false,
+AK,Alaska,2017,2017-01-01,9.80,9.80,9.80,,above $7.25,one rate,false,false,
+AK,Alaska,2018,2018-01-01,9.84,9.84,9.84,,above $7.25,one rate,false,false,
+AK,Alaska,2019,2019-01-01,10.19,10.19,10.19,,above $7.25,one rate,false,false,
+AK,Alaska,2020,2020-01-01,10.19,10.19,10.19,,above $7.25,one rate,false,false,
+AK,Alaska,2021,2021-01-01,10.34,10.34,10.34,,above $7.25,one rate,false,false,
+AK,Alaska,2022,2022-01-01,10.34,10.34,10.34,,above $7.25,one rate,false,false,
+AK,Alaska,2023,2023-01-01,10.85,10.85,10.85,,above $7.25,one rate,false,false,
+AK,Alaska,2024,2024-01-01,11.73,11.73,11.73,,above $7.25,one rate,false,false,
+AZ,Arizona,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+AZ,Arizona,2011,2011-01-01,7.35,7.35,7.35,,above $7.25,one rate,false,false,
+AZ,Arizona,2012,2012-01-01,7.65,7.65,7.65,,above $7.25,one rate,false,false,
+AZ,Arizona,2013,2013-01-01,7.80,7.80,7.80,,above $7.25,one rate,false,false,
+AZ,Arizona,2014,2014-01-01,7.90,7.90,7.90,,above $7.25,one rate,false,false,
+AZ,Arizona,2015,2015-01-01,8.05,8.05,8.05,,above $7.25,one rate,false,false,
+AZ,Arizona,2016,2016-01-01,8.05,8.05,8.05,,above $7.25,one rate,false,false,
+AZ,Arizona,2017,2017-01-01,10.00,10.00,10.00,,above $7.25,one rate,false,false,
+AZ,Arizona,2018,2018-01-01,10.50,10.50,10.50,,above $7.25,one rate,false,false,
+AZ,Arizona,2019,2019-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+AZ,Arizona,2020,2020-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+AZ,Arizona,2021,2021-01-01,12.15,12.15,12.15,,above $7.25,one rate,false,false,
+AZ,Arizona,2022,2022-01-01,12.80,12.80,12.80,,above $7.25,one rate,false,false,
+AZ,Arizona,2023,2023-01-01,13.85,13.85,13.85,,above $7.25,one rate,false,false,
+AZ,Arizona,2024,2024-01-01,14.35,14.35,14.35,,above $7.25,one rate,false,false,
+AR,Arkansas,2010,2010-01-01,6.25[c],6.25,6.25,c,below $7.25 or no state minimum,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+AR,Arkansas,2011,2011-01-01,6.25[c],6.25,6.25,c,below $7.25 or no state minimum,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+AR,Arkansas,2012,2012-01-01,6.25[c],6.25,6.25,c,below $7.25 or no state minimum,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+AR,Arkansas,2013,2013-01-01,6.25[c],6.25,6.25,c,below $7.25 or no state minimum,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+AR,Arkansas,2014,2014-01-01,6.25[c],6.25,6.25,c,below $7.25 or no state minimum,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+AR,Arkansas,2015,2015-01-01,7.50[c],7.50,7.50,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+AR,Arkansas,2016,2016-01-01,8.00[c],8.00,8.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+AR,Arkansas,2017,2017-01-01,8.50[c],8.50,8.50,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+AR,Arkansas,2018,2018-01-01,8.50[c],8.50,8.50,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+AR,Arkansas,2019,2019-01-01,9.25[c],9.25,9.25,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+AR,Arkansas,2020,2020-01-01,10.00[c],10.00,10.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+AR,Arkansas,2021,2021-01-01,11.00,11.00,11.00,,above $7.25,one rate,false,false,
+AR,Arkansas,2022,2022-01-01,11.00,11.00,11.00,,above $7.25,one rate,false,false,
+AR,Arkansas,2023,2023-01-01,11.00,11.00,11.00,,above $7.25,one rate,false,false,
+AR,Arkansas,2024,2024-01-01,11.00,11.00,11.00,,above $7.25,one rate,false,false,
+CA,California,2010,2010-01-01,8.00,8.00,8.00,,above $7.25,one rate,false,false,
+CA,California,2011,2011-01-01,8.00,8.00,8.00,,above $7.25,one rate,false,false,
+CA,California,2012,2012-01-01,8.00,8.00,8.00,,above $7.25,one rate,false,false,
+CA,California,2013,2013-01-01,8.00,8.00,8.00,,above $7.25,one rate,false,false,
+CA,California,2014,2014-01-01,9.00,9.00,9.00,,above $7.25,one rate,false,false,
+CA,California,2015,2015-01-01,9.00,9.00,9.00,,above $7.25,one rate,false,false,
+CA,California,2016,2016-01-01,10.00,10.00,10.00,,above $7.25,one rate,false,false,
+CA,California,2017,2017-01-01,10.00,10.00,10.00,,above $7.25,one rate,false,false,
+CA,California,2018,2018-01-01,11.00,11.00,11.00,,above $7.25,one rate,false,false,
+CA,California,2019,2019-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+CA,California,2020,2020-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+CA,California,2021,2021-01-01,13.00,13.00,13.00,,above $7.25,one rate,false,false,
+CA,California,2022,2022-01-01,14.00,14.00,14.00,,above $7.25,one rate,false,false,
+CA,California,2023,2023-01-01,15.50,15.50,15.50,,above $7.25,one rate,false,false,
+CA,California,2024,2024-01-01,16.00,16.00,16.00,,above $7.25,one rate,false,false,
+CO,Colorado,2010,2010-01-01,7.24,7.24,7.24,,below $7.25 or no state minimum,one rate,false,false,
+CO,Colorado,2011,2011-01-01,7.36,7.36,7.36,,above $7.25,one rate,false,false,
+CO,Colorado,2012,2012-01-01,7.64,7.64,7.64,,above $7.25,one rate,false,false,
+CO,Colorado,2013,2013-01-01,7.78,7.78,7.78,,above $7.25,one rate,false,false,
+CO,Colorado,2014,2014-01-01,8.00,8.00,8.00,,above $7.25,one rate,false,false,
+CO,Colorado,2015,2015-01-01,8.23,8.23,8.23,,above $7.25,one rate,false,false,
+CO,Colorado,2016,2016-01-01,8.31,8.31,8.31,,above $7.25,one rate,false,false,
+CO,Colorado,2017,2017-01-01,9.30,9.30,9.30,,above $7.25,one rate,false,false,
+CO,Colorado,2018,2018-01-01,10.20,10.20,10.20,,above $7.25,one rate,false,false,
+CO,Colorado,2019,2019-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+CO,Colorado,2020,2020-01-01,12.02,12.02,12.02,,above $7.25,one rate,false,false,
+CO,Colorado,2021,2021-01-01,12.32,12.32,12.32,,above $7.25,one rate,false,false,
+CO,Colorado,2022,2022-01-01,12.56,12.56,12.56,,above $7.25,one rate,false,false,
+CO,Colorado,2023,2023-01-01,13.65,13.65,13.65,,above $7.25,one rate,false,false,
+CO,Colorado,2024,2024-01-01,14.42,14.42,14.42,,above $7.25,one rate,false,false,
+CT,Connecticut,2010,2010-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+CT,Connecticut,2011,2011-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+CT,Connecticut,2012,2012-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+CT,Connecticut,2013,2013-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+CT,Connecticut,2014,2014-01-01,8.70,8.70,8.70,,above $7.25,one rate,false,false,
+CT,Connecticut,2015,2015-01-01,9.15,9.15,9.15,,above $7.25,one rate,false,false,
+CT,Connecticut,2016,2016-01-01,9.60,9.60,9.60,,above $7.25,one rate,false,false,
+CT,Connecticut,2017,2017-01-01,10.10,10.10,10.10,,above $7.25,one rate,false,false,
+CT,Connecticut,2018,2018-01-01,10.10,10.10,10.10,,above $7.25,one rate,false,false,
+CT,Connecticut,2019,2019-01-01,11.00,11.00,11.00,,above $7.25,one rate,false,false,
+CT,Connecticut,2020,2020-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+CT,Connecticut,2021,2021-01-01,13.00,13.00,13.00,,above $7.25,one rate,false,false,
+CT,Connecticut,2022,2022-01-01,14.00,14.00,14.00,,above $7.25,one rate,false,false,
+CT,Connecticut,2023,2023-01-01,15.00,15.00,15.00,,above $7.25,one rate,false,false,
+CT,Connecticut,2024,2024-01-01,15.69,15.69,15.69,,above $7.25,one rate,false,false,
+DE,Delaware,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+DE,Delaware,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+DE,Delaware,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+DE,Delaware,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+DE,Delaware,2014,2014-01-01,7.75,7.75,7.75,,above $7.25,one rate,false,false,
+DE,Delaware,2015,2015-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+DE,Delaware,2016,2016-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+DE,Delaware,2017,2017-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+DE,Delaware,2018,2018-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+DE,Delaware,2019,2019-01-01,9.25,9.25,9.25,,above $7.25,one rate,false,false,
+DE,Delaware,2020,2020-01-01,9.25,9.25,9.25,,above $7.25,one rate,false,false,
+DE,Delaware,2021,2021-01-01,9.25,9.25,9.25,,above $7.25,one rate,false,false,
+DE,Delaware,2022,2022-01-01,10.50,10.50,10.50,,above $7.25,one rate,false,false,
+DE,Delaware,2023,2023-01-01,11.75,11.75,11.75,,above $7.25,one rate,false,false,
+DE,Delaware,2024,2024-01-01,13.25,13.25,13.25,,above $7.25,one rate,false,false,
+FL,Florida,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+FL,Florida,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+FL,Florida,2012,2012-01-01,7.67,7.67,7.67,,above $7.25,one rate,false,false,
+FL,Florida,2013,2013-01-01,7.79,7.79,7.79,,above $7.25,one rate,false,false,
+FL,Florida,2014,2014-01-01,7.93,7.93,7.93,,above $7.25,one rate,false,false,
+FL,Florida,2015,2015-01-01,8.05,8.05,8.05,,above $7.25,one rate,false,false,
+FL,Florida,2016,2016-01-01,8.05,8.05,8.05,,above $7.25,one rate,false,false,
+FL,Florida,2017,2017-01-01,8.10,8.10,8.10,,above $7.25,one rate,false,false,
+FL,Florida,2018,2018-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+FL,Florida,2019,2019-01-01,8.56,8.56,8.56,,above $7.25,one rate,false,false,
+FL,Florida,2020,2020-01-01,8.56,8.56,8.56,,above $7.25,one rate,false,false,
+FL,Florida,2021,2021-01-01,10.00,10.00,10.00,,above $7.25,one rate,false,false,
+FL,Florida,2022,2022-01-01,10.00,10.00,10.00,,above $7.25,one rate,false,false,
+FL,Florida,2023,2023-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+FL,Florida,2024,2024-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+GA,Georgia,2010,2010-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+GA,Georgia,2011,2011-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+GA,Georgia,2012,2012-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+GA,Georgia,2013,2013-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+GA,Georgia,2014,2014-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+GA,Georgia,2015,2015-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+GA,Georgia,2016,2016-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+GA,Georgia,2017,2017-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+GA,Georgia,2018,2018-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+GA,Georgia,2019,2019-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+GA,Georgia,2020,2020-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+GA,Georgia,2021,2021-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+GA,Georgia,2022,2022-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+GA,Georgia,2023,2023-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+GA,Georgia,2024,2024-01-01,5.15(d),5.15,5.15,d,below $7.25 or no state minimum,one rate,false,true,Note (d): Rates applicable to employers of six or more.
+HI,Hawaii,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+HI,Hawaii,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+HI,Hawaii,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+HI,Hawaii,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+HI,Hawaii,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+HI,Hawaii,2015,2015-01-01,7.75,7.75,7.75,,above $7.25,one rate,false,false,
+HI,Hawaii,2016,2016-01-01,8.50,8.50,8.50,,above $7.25,one rate,false,false,
+HI,Hawaii,2017,2017-01-01,9.25,9.25,9.25,,above $7.25,one rate,false,false,
+HI,Hawaii,2018,2018-01-01,10.10,10.10,10.10,,above $7.25,one rate,false,false,
+HI,Hawaii,2019,2019-01-01,10.10,10.10,10.10,,above $7.25,one rate,false,false,
+HI,Hawaii,2020,2020-01-01,10.10,10.10,10.10,,above $7.25,one rate,false,false,
+HI,Hawaii,2021,2021-01-01,10.10,10.10,10.10,,above $7.25,one rate,false,false,
+HI,Hawaii,2022,2022-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+HI,Hawaii,2023,2023-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+HI,Hawaii,2024,2024-01-01,14.00,14.00,14.00,,above $7.25,one rate,false,false,
+ID,Idaho,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ID,Idaho,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ID,Idaho,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ID,Idaho,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ID,Idaho,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ID,Idaho,2015,2015-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ID,Idaho,2016,2016-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ID,Idaho,2017,2017-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ID,Idaho,2018,2018-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ID,Idaho,2019,2019-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ID,Idaho,2020,2020-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ID,Idaho,2021,2021-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ID,Idaho,2022,2022-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ID,Idaho,2023,2023-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ID,Idaho,2024,2024-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IL,Illinois,2010,2010-01-01,8.25[c],8.25,8.25,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IL,Illinois,2011,2011-01-01,8.25[c],8.25,8.25,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IL,Illinois,2012,2012-01-01,8.25[c],8.25,8.25,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IL,Illinois,2013,2013-01-01,8.25[c],8.25,8.25,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IL,Illinois,2014,2014-01-01,8.25[c],8.25,8.25,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IL,Illinois,2015,2015-01-01,8.25[c],8.25,8.25,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IL,Illinois,2016,2016-01-01,8.25[c],8.25,8.25,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IL,Illinois,2017,2017-01-01,8.25[c],8.25,8.25,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IL,Illinois,2018,2018-01-01,8.25[c],8.25,8.25,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IL,Illinois,2019,2019-01-01,9.25[c],9.25,9.25,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IL,Illinois,2020,2020-01-01,10.00[c],10.00,10.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IL,Illinois,2021,2021-01-01,11.00[c],11.00,11.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IL,Illinois,2022,2022-01-01,12.00[c],12.00,12.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IL,Illinois,2023,2023-01-01,13.00[c],13.00,13.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IL,Illinois,2024,2024-01-01,14.00[c],14.00,14.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+IN,Indiana,2010,2010-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IN,Indiana,2011,2011-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IN,Indiana,2012,2012-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IN,Indiana,2013,2013-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IN,Indiana,2014,2014-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IN,Indiana,2015,2015-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IN,Indiana,2016,2016-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IN,Indiana,2017,2017-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IN,Indiana,2018,2018-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IN,Indiana,2019,2019-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IN,Indiana,2020,2020-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IN,Indiana,2021,2021-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IN,Indiana,2022,2022-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IN,Indiana,2023,2023-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IN,Indiana,2024,2024-01-01,7.25(e),7.25,7.25,e,at $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+IA,Iowa,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IA,Iowa,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IA,Iowa,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IA,Iowa,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IA,Iowa,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IA,Iowa,2015,2015-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IA,Iowa,2016,2016-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IA,Iowa,2017,2017-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IA,Iowa,2018,2018-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IA,Iowa,2019,2019-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IA,Iowa,2020,2020-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IA,Iowa,2021,2021-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IA,Iowa,2022,2022-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IA,Iowa,2023,2023-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+IA,Iowa,2024,2024-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2015,2015-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2016,2016-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2017,2017-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2018,2018-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2019,2019-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2020,2020-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2021,2021-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2022,2022-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2023,2023-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KS,Kansas,2024,2024-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2015,2015-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2016,2016-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2017,2017-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2018,2018-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2019,2019-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2020,2020-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2021,2021-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2022,2022-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2023,2023-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+KY,Kentucky,2024,2024-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+LA,Louisiana,2010,2010-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+LA,Louisiana,2011,2011-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+LA,Louisiana,2012,2012-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+LA,Louisiana,2013,2013-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+LA,Louisiana,2014,2014-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+LA,Louisiana,2015,2015-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+LA,Louisiana,2016,2016-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+LA,Louisiana,2017,2017-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+LA,Louisiana,2018,2018-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+LA,Louisiana,2019,2019-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+LA,Louisiana,2020,2020-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+LA,Louisiana,2021,2021-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+LA,Louisiana,2022,2022-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+LA,Louisiana,2023,2023-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+LA,Louisiana,2024,2024-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+ME,Maine,2010,2010-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+ME,Maine,2011,2011-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+ME,Maine,2012,2012-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+ME,Maine,2013,2013-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+ME,Maine,2014,2014-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+ME,Maine,2015,2015-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+ME,Maine,2016,2016-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+ME,Maine,2017,2017-01-01,9.00,9.00,9.00,,above $7.25,one rate,false,false,
+ME,Maine,2018,2018-01-01,10.00,10.00,10.00,,above $7.25,one rate,false,false,
+ME,Maine,2019,2019-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+ME,Maine,2020,2020-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+ME,Maine,2021,2021-01-01,12.15,12.15,12.15,,above $7.25,one rate,false,false,
+ME,Maine,2022,2022-01-01,12.75,12.75,12.75,,above $7.25,one rate,false,false,
+ME,Maine,2023,2023-01-01,13.80,13.80,13.80,,above $7.25,one rate,false,false,
+ME,Maine,2024,2024-01-01,14.15,14.15,14.15,,above $7.25,one rate,false,false,
+MD,Maryland,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+MD,Maryland,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+MD,Maryland,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+MD,Maryland,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+MD,Maryland,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+MD,Maryland,2015,2015-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+MD,Maryland,2016,2016-01-01,8.75,8.75,8.75,,above $7.25,one rate,false,false,
+MD,Maryland,2017,2017-01-01,8.75,8.75,8.75,,above $7.25,one rate,false,false,
+MD,Maryland,2018,2018-01-01,10.10,10.10,10.10,,above $7.25,one rate,false,false,
+MD,Maryland,2019,2019-01-01,11.00,11.00,11.00,,above $7.25,one rate,false,false,
+MD,Maryland,2020,2020-01-01,11.00,11.00,11.00,,above $7.25,one rate,false,false,
+MD,Maryland,2021,2021-01-01,11.75,11.75,11.75,,above $7.25,one rate,false,false,
+MD,Maryland,2022,2022-01-01,12.50,12.50,12.50,,above $7.25,one rate,false,false,
+MD,Maryland,2023,2023-01-01,13.25,13.25,13.25,,above $7.25,one rate,false,false,
+MD,Maryland,2024,2024-01-01,15.00,15.00,15.00,,above $7.25,one rate,false,false,
+MA,Massachusetts,2010,2010-01-01,8.00,8.00,8.00,,above $7.25,one rate,false,false,
+MA,Massachusetts,2011,2011-01-01,8.00,8.00,8.00,,above $7.25,one rate,false,false,
+MA,Massachusetts,2012,2012-01-01,8.00,8.00,8.00,,above $7.25,one rate,false,false,
+MA,Massachusetts,2013,2013-01-01,8.00,8.00,8.00,,above $7.25,one rate,false,false,
+MA,Massachusetts,2014,2014-01-01,8.00,8.00,8.00,,above $7.25,one rate,false,false,
+MA,Massachusetts,2015,2015-01-01,9.00,9.00,9.00,,above $7.25,one rate,false,false,
+MA,Massachusetts,2016,2016-01-01,10.00,10.00,10.00,,above $7.25,one rate,false,false,
+MA,Massachusetts,2017,2017-01-01,11.00,11.00,11.00,,above $7.25,one rate,false,false,
+MA,Massachusetts,2018,2018-01-01,11.00,11.00,11.00,,above $7.25,one rate,false,false,
+MA,Massachusetts,2019,2019-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+MA,Massachusetts,2020,2020-01-01,12.75,12.75,12.75,,above $7.25,one rate,false,false,
+MA,Massachusetts,2021,2021-01-01,13.50,13.50,13.50,,above $7.25,one rate,false,false,
+MA,Massachusetts,2022,2022-01-01,14.25,14.25,14.25,,above $7.25,one rate,false,false,
+MA,Massachusetts,2023,2023-01-01,15.00,15.00,15.00,,above $7.25,one rate,false,false,
+MA,Massachusetts,2024,2024-01-01,15.00,15.00,15.00,,above $7.25,one rate,false,false,
+MI,Michigan,2010,2010-01-01,7.40(e),7.40,7.40,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MI,Michigan,2011,2011-01-01,7.40(e),7.40,7.40,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MI,Michigan,2012,2012-01-01,7.40(e),7.40,7.40,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MI,Michigan,2013,2013-01-01,7.40(e),7.40,7.40,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MI,Michigan,2014,2014-01-01,8.15(e),8.15,8.15,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MI,Michigan,2015,2015-01-01,8.15(e),8.15,8.15,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MI,Michigan,2016,2016-01-01,8.50(e),8.50,8.50,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MI,Michigan,2017,2017-01-01,8.90(e),8.90,8.90,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MI,Michigan,2018,2018-01-01,9.25(e),9.25,9.25,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MI,Michigan,2019,2019-01-01,9.65(e),9.65,9.65,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MI,Michigan,2020,2020-01-01,9.65(e),9.65,9.65,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MI,Michigan,2021,2021-01-01,9.65(e),9.65,9.65,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MI,Michigan,2022,2022-01-01,9.87(e),9.87,9.87,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MI,Michigan,2023,2023-01-01,10.10(e),10.10,10.10,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MI,Michigan,2024,2024-01-01,10.33(e),10.33,10.33,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+MN,Minnesota,2010,2010-01-01,5.25-6.15(g),5.25,6.15,g,below $7.25 or no state minimum,highest rate of the range,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MN,Minnesota,2011,2011-01-01,5.25-6.15(g),5.25,6.15,g,below $7.25 or no state minimum,highest rate of the range,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MN,Minnesota,2012,2012-01-01,5.25-6.15(g),5.25,6.15,g,below $7.25 or no state minimum,highest rate of the range,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MN,Minnesota,2013,2013-01-01,5.25-6.15(g),5.25,6.15,g,below $7.25 or no state minimum,highest rate of the range,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MN,Minnesota,2014,2014-01-01,6.50-8.00(g),6.50,8.00,g,above $7.25,highest rate of the range,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MN,Minnesota,2015,2015-01-01,7.25-9.00(g),7.25,9.00,g,above $7.25,highest rate of the range,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MN,Minnesota,2016,2016-01-01,7.25-9.50(g),7.25,9.50,g,above $7.25,highest rate of the range,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MN,Minnesota,2017,2017-01-01,7.75-9.50(g),7.75,9.50,g,above $7.25,highest rate of the range,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MN,Minnesota,2018,2018-01-01,8.04-9.86(g),8.04,9.86,g,above $7.25,highest rate of the range,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MN,Minnesota,2019,2019-01-01,8.15-10.00(g),8.15,10.00,g,above $7.25,highest rate of the range,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MN,Minnesota,2020,2020-01-01,10.00(g),10.00,10.00,g,above $7.25,one rate,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MN,Minnesota,2021,2021-01-01,10.08(g),10.08,10.08,g,above $7.25,one rate,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MN,Minnesota,2022,2022-01-01,10.33(g),10.33,10.33,g,above $7.25,one rate,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MN,Minnesota,2023,2023-01-01,10.59(g),10.59,10.59,g,above $7.25,one rate,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MN,Minnesota,2024,2024-01-01,10.85(g),10.85,10.85,g,above $7.25,one rate,true,false,"Note (g): Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997)."
+MS,Mississippi,2010,2010-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MS,Mississippi,2011,2011-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MS,Mississippi,2012,2012-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MS,Mississippi,2013,2013-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MS,Mississippi,2014,2014-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MS,Mississippi,2015,2015-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MS,Mississippi,2016,2016-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MS,Mississippi,2017,2017-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MS,Mississippi,2018,2018-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MS,Mississippi,2019,2019-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MS,Mississippi,2020,2020-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MS,Mississippi,2021,2021-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MS,Mississippi,2022,2022-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MS,Mississippi,2023,2023-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MS,Mississippi,2024,2024-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+MO,Missouri,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+MO,Missouri,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+MO,Missouri,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+MO,Missouri,2013,2013-01-01,7.35,7.35,7.35,,above $7.25,one rate,false,false,
+MO,Missouri,2014,2014-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+MO,Missouri,2015,2015-01-01,7.65,7.65,7.65,,above $7.25,one rate,false,false,
+MO,Missouri,2016,2016-01-01,7.65,7.65,7.65,,above $7.25,one rate,false,false,
+MO,Missouri,2017,2017-01-01,7.70,7.70,7.70,,above $7.25,one rate,false,false,
+MO,Missouri,2018,2018-01-01,7.85,7.85,7.85,,above $7.25,one rate,false,false,
+MO,Missouri,2019,2019-01-01,9.45,9.45,9.45,,above $7.25,one rate,false,false,
+MO,Missouri,2020,2020-01-01,9.45,9.45,9.45,,above $7.25,one rate,false,false,
+MO,Missouri,2021,2021-01-01,10.30,10.30,10.30,,above $7.25,one rate,false,false,
+MO,Missouri,2022,2022-01-01,11.15,11.15,11.15,,above $7.25,one rate,false,false,
+MO,Missouri,2023,2023-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+MO,Missouri,2024,2024-01-01,12.30,12.30,12.30,,above $7.25,one rate,false,false,
+MT,Montana,2010,2010-01-01,4.00-7.25(g),4.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+MT,Montana,2011,2011-01-01,4.00-7.35(g),4.00,7.35,g,above $7.25,highest rate of the range,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+MT,Montana,2012,2012-01-01,4.00-7.65(g),4.00,7.65,g,above $7.25,highest rate of the range,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+MT,Montana,2013,2013-01-01,4.00-7.80(g),4.00,7.80,g,above $7.25,highest rate of the range,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+MT,Montana,2014,2014-01-01,7.90(g),7.90,7.90,g,above $7.25,one rate,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+MT,Montana,2015,2015-01-01,8.05(g),8.05,8.05,g,above $7.25,one rate,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+MT,Montana,2016,2016-01-01,8.05(g),8.05,8.05,g,above $7.25,one rate,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+MT,Montana,2017,2017-01-01,8.15(g),8.15,8.15,g,above $7.25,one rate,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+MT,Montana,2018,2018-01-01,8.30(g),8.30,8.30,g,above $7.25,one rate,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+MT,Montana,2019,2019-01-01,8.65(g),8.65,8.65,g,above $7.25,one rate,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+MT,Montana,2020,2020-01-01,8.65(g),8.65,8.65,g,above $7.25,one rate,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+MT,Montana,2021,2021-01-01,8.75(g),8.75,8.75,g,above $7.25,one rate,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+MT,Montana,2022,2022-01-01,9.20(g),9.20,9.20,g,above $7.25,one rate,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+MT,Montana,2023,2023-01-01,9.95(g),9.95,9.95,g,above $7.25,one rate,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+MT,Montana,2024,2024-01-01,10.30(g),10.30,10.30,g,above $7.25,one rate,true,false,"Note (g): Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005)."
+NE,Nebraska,2010,2010-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NE,Nebraska,2011,2011-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NE,Nebraska,2012,2012-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NE,Nebraska,2013,2013-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NE,Nebraska,2014,2014-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NE,Nebraska,2015,2015-01-01,8.00[c],8.00,8.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NE,Nebraska,2016,2016-01-01,9.00[c],9.00,9.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NE,Nebraska,2017,2017-01-01,9.00[c],9.00,9.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NE,Nebraska,2018,2018-01-01,9.00[c],9.00,9.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NE,Nebraska,2019,2019-01-01,9.00[c],9.00,9.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NE,Nebraska,2020,2020-01-01,9.00[c],9.00,9.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NE,Nebraska,2021,2021-01-01,9.00[c],9.00,9.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NE,Nebraska,2022,2022-01-01,9.00[c],9.00,9.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NE,Nebraska,2023,2023-01-01,10.50[c],10.50,10.50,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NE,Nebraska,2024,2024-01-01,12.00[c],12.00,12.00,c,above $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+NV,Nevada,2010,2010-01-01,6.55-7.55,6.55,7.55,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+NV,Nevada,2011,2011-01-01,7.25-8.25,7.25,8.25,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+NV,Nevada,2012,2012-01-01,7.25-8.25,7.25,8.25,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+NV,Nevada,2013,2013-01-01,7.25-8.25,7.25,8.25,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+NV,Nevada,2014,2014-01-01,7.25-8.25,7.25,8.25,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+NV,Nevada,2015,2015-01-01,7.25-8.25,7.25,8.25,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+NV,Nevada,2016,2016-01-01,7.25-8.25,7.25,8.25,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+NV,Nevada,2017,2017-01-01,7.25-8.25,7.25,8.25,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+NV,Nevada,2018,2018-01-01,7.25-8.25,7.25,8.25,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+NV,Nevada,2019,2019-01-01,7.25-8.25,7.25,8.25,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+NV,Nevada,2020,2020-01-01,8.00-9.00,8.00,9.00,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+NV,Nevada,2021,2021-01-01,8.75-9.75,8.75,9.75,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+NV,Nevada,2022,2022-01-01,9.50/10.50,9.50,10.50,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+NV,Nevada,2023,2023-01-01,10.25/11.25,10.25,11.25,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+NV,Nevada,2024,2024-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+NH,New Hampshire,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NH,New Hampshire,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NH,New Hampshire,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NH,New Hampshire,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NH,New Hampshire,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NH,New Hampshire,2015,2015-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NH,New Hampshire,2016,2016-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NH,New Hampshire,2017,2017-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NH,New Hampshire,2018,2018-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NH,New Hampshire,2019,2019-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NH,New Hampshire,2020,2020-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NH,New Hampshire,2021,2021-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NH,New Hampshire,2022,2022-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NH,New Hampshire,2023,2023-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NH,New Hampshire,2024,2024-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NJ,New Jersey,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NJ,New Jersey,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NJ,New Jersey,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NJ,New Jersey,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NJ,New Jersey,2014,2014-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+NJ,New Jersey,2015,2015-01-01,8.38,8.38,8.38,,above $7.25,one rate,false,false,
+NJ,New Jersey,2016,2016-01-01,8.38,8.38,8.38,,above $7.25,one rate,false,false,
+NJ,New Jersey,2017,2017-01-01,8.44,8.44,8.44,,above $7.25,one rate,false,false,
+NJ,New Jersey,2018,2018-01-01,8.60,8.60,8.60,,above $7.25,one rate,false,false,
+NJ,New Jersey,2019,2019-01-01,11.00,11.00,11.00,,above $7.25,one rate,false,false,
+NJ,New Jersey,2020,2020-01-01,11.00,11.00,11.00,,above $7.25,one rate,false,false,
+NJ,New Jersey,2021,2021-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+NJ,New Jersey,2022,2022-01-01,13.00,13.00,13.00,,above $7.25,one rate,false,false,
+NJ,New Jersey,2023,2023-01-01,14.13,14.13,14.13,,above $7.25,one rate,false,false,
+NJ,New Jersey,2024,2024-01-01,15.13,15.13,15.13,,above $7.25,one rate,false,false,
+NM,New Mexico,2010,2010-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+NM,New Mexico,2011,2011-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+NM,New Mexico,2012,2012-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+NM,New Mexico,2013,2013-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+NM,New Mexico,2014,2014-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+NM,New Mexico,2015,2015-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+NM,New Mexico,2016,2016-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+NM,New Mexico,2017,2017-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+NM,New Mexico,2018,2018-01-01,7.50,7.50,7.50,,above $7.25,one rate,false,false,
+NM,New Mexico,2019,2019-01-01,9.00,9.00,9.00,,above $7.25,one rate,false,false,
+NM,New Mexico,2020,2020-01-01,9.00,9.00,9.00,,above $7.25,one rate,false,false,
+NM,New Mexico,2021,2021-01-01,10.50,10.50,10.50,,above $7.25,one rate,false,false,
+NM,New Mexico,2022,2022-01-01,11.50,11.50,11.50,,above $7.25,one rate,false,false,
+NM,New Mexico,2023,2023-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+NM,New Mexico,2024,2024-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+NY,New York,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NY,New York,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NY,New York,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NY,New York,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NY,New York,2014,2014-01-01,8.00,8.00,8.00,,above $7.25,one rate,false,false,
+NY,New York,2015,2015-01-01,8.75,8.75,8.75,,above $7.25,one rate,false,false,
+NY,New York,2016,2016-01-01,9.00,9.00,9.00,,above $7.25,one rate,false,false,
+NY,New York,2017,2017-01-01,9.70,9.70,9.70,,above $7.25,one rate,false,false,
+NY,New York,2018,2018-01-01,10.40,10.40,10.40,,above $7.25,one rate,false,false,
+NY,New York,2019,2019-01-01,11.80,11.80,11.80,,above $7.25,one rate,false,false,
+NY,New York,2020,2020-01-01,11.80,11.80,11.80,,above $7.25,one rate,false,false,
+NY,New York,2021,2021-01-01,12.50,12.50,12.50,,above $7.25,one rate,false,false,
+NY,New York,2022,2022-01-01,13.20,13.20,13.20,,above $7.25,one rate,false,false,
+NY,New York,2023,2023-01-01,14.20,14.20,14.20,,above $7.25,one rate,false,false,
+NY,New York,2024,2024-01-01,15.00,15.00,15.00,,above $7.25,one rate,false,false,
+NC,North Carolina,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NC,North Carolina,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NC,North Carolina,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NC,North Carolina,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NC,North Carolina,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NC,North Carolina,2015,2015-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NC,North Carolina,2016,2016-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NC,North Carolina,2017,2017-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NC,North Carolina,2018,2018-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NC,North Carolina,2019,2019-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NC,North Carolina,2020,2020-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NC,North Carolina,2021,2021-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NC,North Carolina,2022,2022-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NC,North Carolina,2023,2023-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+NC,North Carolina,2024,2024-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2015,2015-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2016,2016-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2017,2017-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2018,2018-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2019,2019-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2020,2020-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2021,2021-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2022,2022-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2023,2023-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+ND,North Dakota,2024,2024-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+OH,Ohio,2010,2010-01-01,7.30,7.30,7.30,,above $7.25,one rate,false,false,
+OH,Ohio,2011,2011-01-01,7.40,7.40,7.40,,above $7.25,one rate,false,false,
+OH,Ohio,2012,2012-01-01,7.70,7.70,7.70,,above $7.25,one rate,false,false,
+OH,Ohio,2013,2013-01-01,7.85,7.85,7.85,,above $7.25,one rate,false,false,
+OH,Ohio,2014,2014-01-01,7.25-7.95,7.25,7.95,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+OH,Ohio,2015,2015-01-01,7.25-8.10,7.25,8.10,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+OH,Ohio,2016,2016-01-01,7.25-8.10,7.25,8.10,,above $7.25,highest rate of the range,true,false,"The page prints two rates with no footnote; its note says a range reflects rates that differ by industry, occupation or other factors."
+OH,Ohio,2017,2017-01-01,8.15,8.15,8.15,,above $7.25,one rate,false,false,
+OH,Ohio,2018,2018-01-01,8.30,8.30,8.30,,above $7.25,one rate,false,false,
+OH,Ohio,2019,2019-01-01,8.70,8.70,8.70,,above $7.25,one rate,false,false,
+OH,Ohio,2020,2020-01-01,8.70,8.70,8.70,,above $7.25,one rate,false,false,
+OH,Ohio,2021,2021-01-01,8.80,8.80,8.80,,above $7.25,one rate,false,false,
+OH,Ohio,2022,2022-01-01,9.30,9.30,9.30,,above $7.25,one rate,false,false,
+OH,Ohio,2023,2023-01-01,10.10,10.10,10.10,,above $7.25,one rate,false,false,
+OH,Ohio,2024,2024-01-01,10.45,10.45,10.45,,above $7.25,one rate,false,false,
+OK,Oklahoma,2010,2010-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OK,Oklahoma,2011,2011-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OK,Oklahoma,2012,2012-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OK,Oklahoma,2013,2013-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OK,Oklahoma,2014,2014-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OK,Oklahoma,2015,2015-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OK,Oklahoma,2016,2016-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OK,Oklahoma,2017,2017-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OK,Oklahoma,2018,2018-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OK,Oklahoma,2019,2019-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OK,Oklahoma,2020,2020-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OK,Oklahoma,2021,2021-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OK,Oklahoma,2022,2022-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OK,Oklahoma,2023,2023-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OK,Oklahoma,2024,2024-01-01,2.00-7.25(g),2.00,7.25,g,at $7.25,highest rate of the range,true,false,"Note (g): Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005)."
+OR,Oregon,2010,2010-01-01,8.40,8.40,8.40,,above $7.25,one rate,false,false,
+OR,Oregon,2011,2011-01-01,8.50,8.50,8.50,,above $7.25,one rate,false,false,
+OR,Oregon,2012,2012-01-01,8.80,8.80,8.80,,above $7.25,one rate,false,false,
+OR,Oregon,2013,2013-01-01,8.95,8.95,8.95,,above $7.25,one rate,false,false,
+OR,Oregon,2014,2014-01-01,9.10,9.10,9.10,,above $7.25,one rate,false,false,
+OR,Oregon,2015,2015-01-01,9.25,9.25,9.25,,above $7.25,one rate,false,false,
+OR,Oregon,2016,2016-01-01,9.75,9.75,9.75,,above $7.25,one rate,false,false,
+OR,Oregon,2017,2017-01-01,9.75,9.75,9.75,,above $7.25,one rate,false,false,
+OR,Oregon,2018,2018-01-01,10.75,10.75,10.75,,above $7.25,one rate,false,false,
+OR,Oregon,2019,2019-01-01,11.25,11.25,11.25,,above $7.25,one rate,false,false,
+OR,Oregon,2020,2020-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+OR,Oregon,2021,2021-01-01,12.75,12.75,12.75,,above $7.25,one rate,false,false,
+OR,Oregon,2022,2022-01-01,13.50,13.50,13.50,,above $7.25,one rate,false,false,
+OR,Oregon,2023,2023-01-01,14.20,14.20,14.20,,above $7.25,one rate,false,false,
+OR,Oregon,2024,2024-01-01,14.70,14.70,14.70,,above $7.25,one rate,false,false,
+PA,Pennsylvania,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+PA,Pennsylvania,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+PA,Pennsylvania,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+PA,Pennsylvania,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+PA,Pennsylvania,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+PA,Pennsylvania,2015,2015-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+PA,Pennsylvania,2016,2016-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+PA,Pennsylvania,2017,2017-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+PA,Pennsylvania,2018,2018-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+PA,Pennsylvania,2019,2019-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+PA,Pennsylvania,2020,2020-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+PA,Pennsylvania,2021,2021-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+PA,Pennsylvania,2022,2022-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+PA,Pennsylvania,2023,2023-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+PA,Pennsylvania,2024,2024-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+RI,Rhode Island,2010,2010-01-01,7.40,7.40,7.40,,above $7.25,one rate,false,false,
+RI,Rhode Island,2011,2011-01-01,7.40,7.40,7.40,,above $7.25,one rate,false,false,
+RI,Rhode Island,2012,2012-01-01,7.40,7.40,7.40,,above $7.25,one rate,false,false,
+RI,Rhode Island,2013,2013-01-01,7.75,7.75,7.75,,above $7.25,one rate,false,false,
+RI,Rhode Island,2014,2014-01-01,8.00,8.00,8.00,,above $7.25,one rate,false,false,
+RI,Rhode Island,2015,2015-01-01,9.00,9.00,9.00,,above $7.25,one rate,false,false,
+RI,Rhode Island,2016,2016-01-01,9.60,9.60,9.60,,above $7.25,one rate,false,false,
+RI,Rhode Island,2017,2017-01-01,9.60,9.60,9.60,,above $7.25,one rate,false,false,
+RI,Rhode Island,2018,2018-01-01,10.10,10.10,10.10,,above $7.25,one rate,false,false,
+RI,Rhode Island,2019,2019-01-01,10.50,10.50,10.50,,above $7.25,one rate,false,false,
+RI,Rhode Island,2020,2020-01-01,11.50,11.50,11.50,,above $7.25,one rate,false,false,
+RI,Rhode Island,2021,2021-01-01,11.50,11.50,11.50,,above $7.25,one rate,false,false,
+RI,Rhode Island,2022,2022-01-01,12.25,12.25,12.25,,above $7.25,one rate,false,false,
+RI,Rhode Island,2023,2023-01-01,13.00,13.00,13.00,,above $7.25,one rate,false,false,
+RI,Rhode Island,2024,2024-01-01,14.00,14.00,14.00,,above $7.25,one rate,false,false,
+SC,South Carolina,2010,2010-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SC,South Carolina,2011,2011-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SC,South Carolina,2012,2012-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SC,South Carolina,2013,2013-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SC,South Carolina,2014,2014-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SC,South Carolina,2015,2015-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SC,South Carolina,2016,2016-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SC,South Carolina,2017,2017-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SC,South Carolina,2018,2018-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SC,South Carolina,2019,2019-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SC,South Carolina,2020,2020-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SC,South Carolina,2021,2021-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SC,South Carolina,2022,2022-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SC,South Carolina,2023,2023-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SC,South Carolina,2024,2024-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+SD,South Dakota,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+SD,South Dakota,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+SD,South Dakota,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+SD,South Dakota,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+SD,South Dakota,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+SD,South Dakota,2015,2015-01-01,8.50,8.50,8.50,,above $7.25,one rate,false,false,
+SD,South Dakota,2016,2016-01-01,8.55,8.55,8.55,,above $7.25,one rate,false,false,
+SD,South Dakota,2017,2017-01-01,8.65,8.65,8.65,,above $7.25,one rate,false,false,
+SD,South Dakota,2018,2018-01-01,8.85,8.85,8.85,,above $7.25,one rate,false,false,
+SD,South Dakota,2019,2019-01-01,9.30,9.30,9.30,,above $7.25,one rate,false,false,
+SD,South Dakota,2020,2020-01-01,9.30,9.30,9.30,,above $7.25,one rate,false,false,
+SD,South Dakota,2021,2021-01-01,9.45,9.45,9.45,,above $7.25,one rate,false,false,
+SD,South Dakota,2022,2022-01-01,9.95,9.95,9.95,,above $7.25,one rate,false,false,
+SD,South Dakota,2023,2023-01-01,10.80,10.80,10.80,,above $7.25,one rate,false,false,
+SD,South Dakota,2024,2024-01-01,11.20,11.20,11.20,,above $7.25,one rate,false,false,
+TN,Tennessee,2010,2010-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TN,Tennessee,2011,2011-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TN,Tennessee,2012,2012-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TN,Tennessee,2013,2013-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TN,Tennessee,2014,2014-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TN,Tennessee,2015,2015-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TN,Tennessee,2016,2016-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TN,Tennessee,2017,2017-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TN,Tennessee,2018,2018-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TN,Tennessee,2019,2019-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TN,Tennessee,2020,2020-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TN,Tennessee,2021,2021-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TN,Tennessee,2022,2022-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TN,Tennessee,2023,2023-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TN,Tennessee,2024,2024-01-01,...,,,,below $7.25 or no state minimum,no state rate on the page,false,false,"The page marks the state ""..."" (not applicable) and lists no state rate."
+TX,Texas,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+TX,Texas,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+TX,Texas,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+TX,Texas,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+TX,Texas,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+TX,Texas,2015,2015-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+TX,Texas,2016,2016-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+TX,Texas,2017,2017-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+TX,Texas,2018,2018-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+TX,Texas,2019,2019-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+TX,Texas,2020,2020-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+TX,Texas,2021,2021-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+TX,Texas,2022,2022-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+TX,Texas,2023,2023-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+TX,Texas,2024,2024-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2015,2015-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2016,2016-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2017,2017-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2018,2018-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2019,2019-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2020,2020-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2021,2021-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2022,2022-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2023,2023-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+UT,Utah,2024,2024-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+VT,Vermont,2010,2010-01-01,8.06(e),8.06,8.06,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+VT,Vermont,2011,2011-01-01,8.15(e),8.15,8.15,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+VT,Vermont,2012,2012-01-01,8.46(e),8.46,8.46,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+VT,Vermont,2013,2013-01-01,8.60(e),8.60,8.60,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+VT,Vermont,2014,2014-01-01,8.73(e),8.73,8.73,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+VT,Vermont,2015,2015-01-01,9.15(e),9.15,9.15,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+VT,Vermont,2016,2016-01-01,9.60(e),9.60,9.60,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+VT,Vermont,2017,2017-01-01,10.00(e),10.00,10.00,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+VT,Vermont,2018,2018-01-01,10.50(e),10.50,10.50,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+VT,Vermont,2019,2019-01-01,10.96(e),10.96,10.96,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+VT,Vermont,2020,2020-01-01,10.96(e),10.96,10.96,e,above $7.25,one rate,false,true,Note (e): Rates applicable to employers of two or more.
+VT,Vermont,2021,2021-01-01,11.75,11.75,11.75,,above $7.25,one rate,false,false,
+VT,Vermont,2022,2022-01-01,12.55,12.55,12.55,,above $7.25,one rate,false,false,
+VT,Vermont,2023,2023-01-01,13.18,13.18,13.18,,above $7.25,one rate,false,false,
+VT,Vermont,2024,2024-01-01,13.67,13.67,13.67,,above $7.25,one rate,false,false,
+VA,Virginia,2010,2010-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+VA,Virginia,2011,2011-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+VA,Virginia,2012,2012-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+VA,Virginia,2013,2013-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+VA,Virginia,2014,2014-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+VA,Virginia,2015,2015-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+VA,Virginia,2016,2016-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+VA,Virginia,2017,2017-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+VA,Virginia,2018,2018-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+VA,Virginia,2019,2019-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+VA,Virginia,2020,2020-01-01,7.25[c],7.25,7.25,c,at $7.25,one rate,false,true,Note [c]: Rates applicable to employers of four or more.
+VA,Virginia,2021,2021-01-01,9.50,9.50,9.50,,above $7.25,one rate,false,false,
+VA,Virginia,2022,2022-01-01,11.00,11.00,11.00,,above $7.25,one rate,false,false,
+VA,Virginia,2023,2023-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+VA,Virginia,2024,2024-01-01,12.00,12.00,12.00,,above $7.25,one rate,false,false,
+WA,Washington,2010,2010-01-01,8.55,8.55,8.55,,above $7.25,one rate,false,false,
+WA,Washington,2011,2011-01-01,8.67,8.67,8.67,,above $7.25,one rate,false,false,
+WA,Washington,2012,2012-01-01,9.04,9.04,9.04,,above $7.25,one rate,false,false,
+WA,Washington,2013,2013-01-01,9.19,9.19,9.19,,above $7.25,one rate,false,false,
+WA,Washington,2014,2014-01-01,9.32,9.32,9.32,,above $7.25,one rate,false,false,
+WA,Washington,2015,2015-01-01,9.47,9.47,9.47,,above $7.25,one rate,false,false,
+WA,Washington,2016,2016-01-01,9.47,9.47,9.47,,above $7.25,one rate,false,false,
+WA,Washington,2017,2017-01-01,11.00,11.00,11.00,,above $7.25,one rate,false,false,
+WA,Washington,2018,2018-01-01,11.50,11.50,11.50,,above $7.25,one rate,false,false,
+WA,Washington,2019,2019-01-01,13.50,13.50,13.50,,above $7.25,one rate,false,false,
+WA,Washington,2020,2020-01-01,13.50,13.50,13.50,,above $7.25,one rate,false,false,
+WA,Washington,2021,2021-01-01,13.69,13.69,13.69,,above $7.25,one rate,false,false,
+WA,Washington,2022,2022-01-01,14.49,14.49,14.49,,above $7.25,one rate,false,false,
+WA,Washington,2023,2023-01-01,15.74,15.74,15.74,,above $7.25,one rate,false,false,
+WA,Washington,2024,2024-01-01,16.28,16.28,16.28,,above $7.25,one rate,false,false,
+WV,West Virginia,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WV,West Virginia,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WV,West Virginia,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WV,West Virginia,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WV,West Virginia,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WV,West Virginia,2015,2015-01-01,8.00,8.00,8.00,,above $7.25,one rate,false,false,
+WV,West Virginia,2016,2016-01-01,8.75,8.75,8.75,,above $7.25,one rate,false,false,
+WV,West Virginia,2017,2017-01-01,8.75,8.75,8.75,,above $7.25,one rate,false,false,
+WV,West Virginia,2018,2018-01-01,8.75,8.75,8.75,,above $7.25,one rate,false,false,
+WV,West Virginia,2019,2019-01-01,8.75,8.75,8.75,,above $7.25,one rate,false,false,
+WV,West Virginia,2020,2020-01-01,8.75,8.75,8.75,,above $7.25,one rate,false,false,
+WV,West Virginia,2021,2021-01-01,8.75,8.75,8.75,,above $7.25,one rate,false,false,
+WV,West Virginia,2022,2022-01-01,8.75,8.75,8.75,,above $7.25,one rate,false,false,
+WV,West Virginia,2023,2023-01-01,8.75,8.75,8.75,,above $7.25,one rate,false,false,
+WV,West Virginia,2024,2024-01-01,8.75,8.75,8.75,,above $7.25,one rate,false,false,
+WI,Wisconsin,2010,2010-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WI,Wisconsin,2011,2011-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WI,Wisconsin,2012,2012-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WI,Wisconsin,2013,2013-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WI,Wisconsin,2014,2014-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WI,Wisconsin,2015,2015-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WI,Wisconsin,2016,2016-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WI,Wisconsin,2017,2017-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WI,Wisconsin,2018,2018-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WI,Wisconsin,2019,2019-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WI,Wisconsin,2020,2020-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WI,Wisconsin,2021,2021-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WI,Wisconsin,2022,2022-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WI,Wisconsin,2023,2023-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WI,Wisconsin,2024,2024-01-01,7.25,7.25,7.25,,at $7.25,one rate,false,false,
+WY,Wyoming,2010,2010-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+WY,Wyoming,2011,2011-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+WY,Wyoming,2012,2012-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+WY,Wyoming,2013,2013-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+WY,Wyoming,2014,2014-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+WY,Wyoming,2015,2015-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+WY,Wyoming,2016,2016-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+WY,Wyoming,2017,2017-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+WY,Wyoming,2018,2018-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+WY,Wyoming,2019,2019-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+WY,Wyoming,2020,2020-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+WY,Wyoming,2021,2021-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+WY,Wyoming,2022,2022-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+WY,Wyoming,2023,2023-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+WY,Wyoming,2024,2024-01-01,5.15,5.15,5.15,,below $7.25 or no state minimum,one rate,false,false,
+DC,District of Columbia,2010,2010-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+DC,District of Columbia,2011,2011-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+DC,District of Columbia,2012,2012-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+DC,District of Columbia,2013,2013-01-01,8.25,8.25,8.25,,above $7.25,one rate,false,false,
+DC,District of Columbia,2014,2014-01-01,9.50,9.50,9.50,,above $7.25,one rate,false,false,
+DC,District of Columbia,2015,2015-01-01,10.50,10.50,10.50,,above $7.25,one rate,false,false,
+DC,District of Columbia,2016,2016-01-01,11.50,11.50,11.50,,above $7.25,one rate,false,false,
+DC,District of Columbia,2017,2017-01-01,11.50,11.50,11.50,,above $7.25,one rate,false,false,
+DC,District of Columbia,2018,2018-01-01,13.25,13.25,13.25,,above $7.25,one rate,false,false,
+DC,District of Columbia,2019,2019-01-01,14.00,14.00,14.00,,above $7.25,one rate,false,false,
+DC,District of Columbia,2020,2020-01-01,15.00,15.00,15.00,,above $7.25,one rate,false,false,
+DC,District of Columbia,2021,2021-01-01,15.20,15.20,15.20,,above $7.25,one rate,false,false,
+DC,District of Columbia,2022,2022-01-01,$16.10,16.10,16.10,,above $7.25,one rate,false,false,
+DC,District of Columbia,2023,2023-01-01,17.00,17.00,17.00,,above $7.25,one rate,false,false,
+DC,District of Columbia,2024,2024-01-01,$17.50,17.50,17.50,,above $7.25,one rate,false,false,

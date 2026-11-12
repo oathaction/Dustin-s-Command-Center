@@ -1,0 +1,102 @@
+{
+ "file": "dol-state-minimum-wage-history.csv",
+ "kind": "public",
+ "publisher": "U.S. Department of Labor, Wage and Hour Division",
+ "title_or_table": "Changes in Basic Minimum Wages in Non-Farm Employment Under State Law: Selected Years 1968 to 2024",
+ "table_id": "WHD state minimum wage history table (six tables on one page: 1968 to 1981, 1988 to 1998, 2000 to 2006, 2007 to 2013, 2014 to 2019, 2020 to 2024)",
+ "url": [
+  "https://www.dol.gov/agencies/whd/state/minimum-wage/history"
+ ],
+ "observation_period": "Selected years 1968 to 1998 and every year 2000 to 2024 (39 columns), each as of January 1 except 1968 and 1972 (February)",
+ "geography": "The federal rate (code US), 50 states, the District of Columbia, Guam, Puerto Rico and the U.S. Virgin Islands (55 rows a year)",
+ "universe_or_base": "Basic minimum wage rates in non-farm employment under each state's law, and the federal rate under the Fair Labor Standards Act",
+ "unit": "dollars per hour (rate_low and rate_high); the published cell text kept beside them",
+ "date_retrieved": "2026-11-12",
+ "vintage": "The page as Dustin Cathcart saved it from dol.gov and attached it on November 12, 2026 (download item 2, D3-459), 124921 bytes, SHA-256 d16798c732ffc3fc6dbd0321858f6d477907e71d1adaa6df1689a2748bb6ccc0. The page says \"This document was last revised in January 2025.\"",
+ "qualification": "The page's note: \"Wage rates are for January 1 of each year except 1968 and 1972, which show rates as of February. A range of rates, as in Puerto Rico, reflects which rates differ by industry, occupation or other factors, as established under a wage-board type law. Wage rates in bold indicate an increase over the previous year's rate.\" The page's sources: 1) Wage data for the years 1968 through 1998 was obtained from the Book of the States, 1968 - 1999 edition, volume 32 which was published by the Council of State Governments. 2) Wage data for the years 2000 through the present was obtained from the U.S. Department of Labor, Office of State Standards Programs Wage and Hour Division web site Minimum Wage and Overtime Pay Standards Applicable to Nonsupervisory NONFARM Private Sector Employment Under State and Federal Laws. The page gives each state's basic rate under state law for non-farm employment. It lists no tipped, youth, training or farm rates and no city or county minimums, so none is in these files. Some rates apply only to employers above a size, and a range means rates that differ by employer, industry or occupation; the key gives each mark's words.",
+ "columns": {
+  "code": {
+   "type": "code",
+   "description": "USPS code of the jurisdiction; US for the federal row"
+  },
+  "name": {
+   "type": "text",
+   "description": "the jurisdiction as the page names it (\"Federal (FLSA)\" for the federal rate)"
+  },
+  "year": {
+   "type": "year",
+   "description": "the column's year"
+  },
+  "year_heading": {
+   "type": "text",
+   "description": "the column heading as printed, footnote mark included (\"1968 (a)\")"
+  },
+  "as_of": {
+   "type": "text",
+   "description": "the column's as-of day per the page's note: YYYY-MM-DD for January 1; YYYY-MM for 1968 and 1972, which the page dates to February only"
+  },
+  "rate_as_published": {
+   "type": "text",
+   "description": "the cell exactly as the page displays it, footnote marks included, runs of white space as one space; empty where the page prints NA (see cell_status)"
+  },
+  "rate_low": {
+   "type": "number",
+   "description": "the lower (or only) hourly rate read from the cell; empty where the page prints no hourly rate (see cell_status and reading_note)",
+   "unit": "dollars per hour"
+  },
+  "rate_high": {
+   "type": "number",
+   "description": "the higher (or only) hourly rate read from the cell",
+   "unit": "dollars per hour"
+  },
+  "marks": {
+   "type": "text",
+   "description": "the cell's footnote marks, letters only, joined by \"; \" (the key is in the sidecar's qualification)"
+  },
+  "bold": {
+   "type": "boolean",
+   "description": "true where the page sets the rate in bold, which its note says marks an increase over the previous year's rate"
+  },
+  "cell_status": {
+   "type": "category",
+   "description": "one rate; range or two rates (a dash, en dash, slash or ampersand between two rates); not applicable (the page's \"...\"); not available (the page prints NA)"
+  },
+  "reading_note": {
+   "type": "text",
+   "description": "why a cell has no number: a weekly or daily rate, characters the script does not read as a number, or the page's NA"
+  }
+ },
+ "printed_source_line": "Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under State Law: Selected Years 1968 to 2024, rates as of January 1 (February in 1968 and 1972), federal, 50 states, DC, Guam, Puerto Rico and the U.S. Virgin Islands. Retrieved November 12, 2026. State law only; some rates apply only to larger employers.",
+ "source_line_variants": {
+  "states_and_dc_2010_to_2024": "Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under State Law, rates as of January 1, 2010 to 2024, 50 states and DC. Retrieved November 12, 2026. State law only; some rates apply only to larger employers."
+ },
+ "ledger_row": "P7-223",
+ "domain": "D07",
+ "domain_note": "V7 I104, \"A fixed minimum wage buys less every year\", in work, pay and bargaining power",
+ "states": [],
+ "breaks_in_series": "The page's sources change in 2000: 1) Wage data for the years 1968 through 1998 was obtained from the Book of the States, 1968 - 1999 edition, volume 32 which was published by the Council of State Governments. 2) Wage data for the years 2000 through the present was obtained from the U.S. Department of Labor, Office of State Standards Programs Wage and Hour Division web site Minimum Wage and Overtime Pay Standards Applicable to Nonsupervisory NONFARM Private Sector Employment Under State and Federal Laws.",
+ "raw_files_sha256_prefix": {
+  "20261112_DOL-State-Minimum-Wage-History-1968-To-2024.htm": "d16798c732ffc3fc"
+ },
+ "notes": [
+  "The page's key, as printed: ... - not applicable",
+  "The page's key, as printed: N.A. - not available",
+  "The page's key, as printed: (a) - under the Federal Fair Labor Standards Act (FLSA), the two rates shown in 1968, 1970, and 1976 reflect the former multiple-track minimum-wage system in effect from 1961 to 1978. The lower rate applied to newly covered persons brought under the act by amendments, whose rates were gradually phased in. A similar dual-track system was also in effect in certain years under the laws in Connecticut, Maryland, and Nevada.",
+  "The page's key, as printed: (b) - For the years indicated, the laws in Arizona, Arkansas, California, Colorado, Kentucky, Minnesota, Ohio, Utah, and Wisconsin applied only to women and minors.",
+  "The page's key, as printed: [c] - Rates applicable to employers of four or more.",
+  "The page's key, as printed: (d) - Rates applicable to employers of six or more. In West Virginia, applicable to employers of six or more in one location.",
+  "The page's key, as printed: (e) - Rates applicable to employers of two or more.",
+  "The page's key, as printed: (f) - For the years 1988 to 1990, Minnesota had a two tier schedule with the higher rate applicable to employers covered by the FLSA and the lower rate to employers not covered by the FLSA.",
+  "The page's key, as printed: (g) - Minnesota sets a lower rate for enterprises with annual receipts of less than $500,000 ($4.90, January 1, 1998-January 1, 2005). The dollar amount prior to September 1, 1997 was $362,500 ($4.00 - January 1, 1991-January 1, 1997); Montana sets a lower rate for businesses with gross annual sales of $110,000 or less ($4.00 - January 1, 1992-January 1, 2005); Ohio sets a lower rate for employers with gross annual sales from $150,000 to $500,000 ($3.35 - January 1, 1991-January 1, 2005) and for employers with gross annual sales under $150,000 ($2.50 - January 1, 1991-January 1, 2005); Oklahoma sets a lower rate for employers of fewer than 10 full-time employees at any one location and for those with annual gross sales of less than $100,000 ($2.00, January 1, 1991-January 1, 2005); and the U.S. Virgin Islands sets a lower rate for businesses with gross annual receipts of less than $150,000 ($4.30, January 1, 1991-January 1, 2005).",
+  "The page's key, as printed: (h) - In the District of Columbia, wage orders were replaced by a statutory minimum wage on October 1, 1993. A $5.45 minimum rate remained in effect for the laundry and dry cleaning industry as the result of the grandfather clause.",
+  "The page's key, as printed: (i) - In Puerto Rico, separate minimum rates are in effect for almost 350 non-farm occupations by industry Mandatory Decrees. Rates are higher than those in the range listed in effect in a few specific occupations.",
+  "The page's key, as printed: (i2) - The rate is 5.08/hour for those employees not covered by the Fair Labor Standards Act.",
+  "The page's key, as printed: (j) - In the U.S. Virgin Islands, implementation of an indexed rate, which was to have started January 1, 1991, was delayed.",
+  "Every footnote mark in a cell is one the key defines (asserted by the script). Marks as used: (b) 30 cells, [c] 104 cells, (d) 38 cells, (e) 79 cells, (f) 1 cell, (g) 117 cells, (h) 1 cell, (i) 25 cells, (i2) 4 cells, (j) 29 cells; the 1968, 1970 and 1976 headings carry (a).",
+  "The latest column is 2024 (January 1, 2024), and the page has no 2025 or 2026 column. Its title reads \"Selected Years 1968 to 2024\", and its last line reads \"This document was last revised in January 2025.\" The download record's \"1961\" and \"2025\" come from note (a) and that line.",
+  "Cells kept as the page prints them. Not read as a number (rate_low and rate_high empty): Oregon 1972, '1.25`'; U.S. Virgin Islands 1991, '4..65(g,,j)'; U.S. Virgin Islands 1992, '4..65(g,,j)'; U.S. Virgin Islands 1994, '4..65(g,,j)'. Weekly or daily rates, kept as text with no hourly number: Arizona 1968, '18.72 - 26.40/wk(b)'; Arizona 1970, '18.72 - 26.40/wk(b)'; Arizona 1972, '18.72-26.40/wk(b)'; Arkansas 1968, '1.25/day(b)'; South Dakota 1968, '17.00 - 20.00/wk'. Ranges printed with an en dash: Puerto Rico. The page prints NA (not available) in U.S. Virgin Islands 1968; U.S. Virgin Islands 1970; U.S. Virgin Islands 1972; U.S. Virgin Islands 1976; contract C1 keeps a missing value as an empty cell, so rate_as_published is empty there and cell_status reads \"not available\".",
+  "Bold, kept as published, against the page's note: compared with the previous column the page lists, 1418 cells agree (bold where a rate rose, plain where none did) and 398 do not. The page sets bold only in 1981, 2001 to 2013, 2015 to 2024 (2 cells before 2001), so nearly every rise before 2001, and every rise in 2014, is plain; cells that disagree, by column: 1970: 20; 1972: 23; 1976: 38; 1979: 37; 1980: 27; 1981: 30; 1988: 26; 1991: 34; 1992: 32; 1994: 9; 1996: 6; 1997: 26; 1998: 33; 2000: 13; 2006: 1; 2007: 2; 2009: 2; 2014: 18; 2018: 2; 2019: 1; 2020: 15; 2022: 2; 2023: 1. Read a change from the rates, not the bold.",
+  "Note (g)'s dollar amounts and dates end at January 1, 2005, but the page still marks later cells (g) for Minnesota, Montana and Oklahoma, and those cells print their own lower rate where they print a range.",
+  "Note (d) names West Virginia, but no West Virginia cell from 2010 to 2024 carries a mark."
+ ]
+}
