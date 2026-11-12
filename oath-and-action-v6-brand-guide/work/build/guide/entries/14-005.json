@@ -60,7 +60,7 @@
  "failure": {
   "specimen": "s-14-5-failure",
   "caption": "<strong>Fails Rule 14.5.</strong> Four ways to reach the county take four steps of one green, so the key reads as a scale from less to more, though the channels have no order.",
-  "alt": "Failure case: do not publish. An illustrative bar chart of four ways residents reached Alder County, each bar in a darker step of one green, with a key that reads from light to dark as if the channels ran from less to more.",
+  "alt": "Failure case: do not publish. Illustrative bars of four ways residents reached Alder County, in four steps of one green, with a key that reads as a scale from less to more.",
   "illustrative": true,
   "notes": ""
  },

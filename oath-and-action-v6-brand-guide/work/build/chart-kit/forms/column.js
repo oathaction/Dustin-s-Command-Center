@@ -4,7 +4,8 @@
  * encode: x (the column's key: a category, year or number), y (number), sub (text, optional: a second line under each
  * name, such as the years a Congress sat; printed under every column where it fits, else under the first and last).
  * labels: categories ({x value: printed name}; the x value itself otherwise), named (an x value or a list of them, set in
- * ink; with none, every column is in ink). formats: value (the printed values). A negative value draws below the zero line. */
+ * ink; with none, every column is in ink), point (the one x value a title names in working red, with its keyline on
+ * Newsprint; ED-E1). The fills come from K.parts.named_fill. formats: value (the printed values). A negative value draws below the zero line. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -12,19 +13,19 @@
     name: 'Column',
     family: 'comparison',
     encode: { x: 'category', y: 'number', sub: 'text?' },
-    labels: ['categories', 'named'],
+    labels: ['categories', 'named', 'point'],
     phone: 'differs',
     draw: function (c) {
       var rows = c.rows, ex = c.field('x'), ey = c.field('y'), es = c.field('sub', false);
       var f = c.spec.formats || {}, W = c.width, L = c.labels, names = L.categories || {};
-      var named = L.named === undefined || L.named === null ? null : [].concat(L.named).map(String);
-      var is_named = function (r) { return !named || named.indexOf(String(r[ex])) >= 0; };
+      // palette rule R3 and the red point by name (ED-E1), through the kit's shared part
+      var fill = K.parts.named_fill(c, L.named, ex, null, L.point);
+      var is_named = function (r) { return fill.is_named(r) || fill.is_point(r); };
+      // the red point's keyline is its own outline over the fill: kit.css's keyline class sets fill none, so the two on
+      // one element would leave the point hollow on Newsprint
+      var keyline = function (r, x, y, w, h) { var k = fill.keyline(r); if (k.stroke) c.rect(x + 0.5, y + 0.5, Math.max(0, w - 1), Math.max(0, h - 1), { stroke: k.stroke, width: k.width, mark: false }); };
       var name = function (r) { return names[String(r[ex])] !== undefined ? names[String(r[ex])] : String(r[ex]); };
       var val = function (r) { return K.fmt(r[ey], f.value || 'integer'); };
-      // palette rule R3 (DR-236): where the title names a column, the others take the light fill on Newsprint and the
-      // context ink on Charcoal, with every value printed
-      var other = c.ground === 'charcoal' ? 'context' : 'light-fill';
-      var fill = function (r) { return is_named(r) ? 'subject' : (named ? other : 'subject'); };
       var vals = rows.map(function (r) { return r[ey]; });
       var max = Math.max(0, Math.max.apply(null, vals)), min = Math.min(0, Math.min.apply(null, vals));
       var size = c.size('label'), tick = c.size('tick'), n = rows.length;
@@ -48,6 +49,7 @@
           if (two) c.text(0, ny + lh2, String(r[es]), { role: 'tick', fill: 'secondary' });
           var xe = xs(r[ey]);
           c.rect(Math.min(zx, xe), by, Math.abs(xe - zx), bh, { fill: fill(r), kind: 'bar', axis: 'x', zero: zx, data: { key: r[ex], field: ey, value: r[ey] } });
+          keyline(r, Math.min(zx, xe), by, Math.abs(xe - zx), bh);
           var neg = r[ey] < 0;
           c.text(neg ? xe - 6 : xe + 6, cy + size * 0.35, val(r), { role: 'label', weight: is_named(r) ? 700 : 600, anchor: neg ? 'end' : 'start', tnum: true });
         });
@@ -69,6 +71,7 @@
       rows.forEach(function (r, i) {
         var v = r[ey], yv = ys(v), x = xc(i);
         c.rect(x - bw / 2, Math.min(zy, yv), bw, Math.abs(yv - zy), { fill: fill(r), kind: 'bar', axis: 'y', zero: zy, data: { key: r[ex], field: ey, value: v } });
+        keyline(r, x - bw / 2, Math.min(zy, yv), bw, Math.abs(yv - zy));
         var neg = v < 0;
         c.text(x, neg ? yv + size + 4 : yv - 7, val(r), { role: 'label', weight: is_named(r) ? 700 : 600, anchor: 'middle', tnum: true });
       });

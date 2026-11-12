@@ -4171,3 +4171,11 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-417 | A second dataset rides in the island only for a form that reads it | S05 carried 400 bytes it never drew (R-B11) |
 | D3-418 | A pivot's absent cell is a bare `<td></td>` and a present empty one carries `data-n` | About 7 bytes a cell (A8); absent cells outnumber empty values |
 | D3-419 | A sketch is one inline SVG classed `oac-svg oac-sketch`, colored only by the kit's role classes, at most 4 KB (reference) or 2 KB (avoid) | The kit's classes carry the approved tokens on both grounds and the forced-colors rules; one format lets the build check every sketch |
+
+### Main session, round 1 build stage close
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-420 | S25's title follows the data, "33 of the 37 largest in January 2022 shrank", where the editor's wording would have named the 37 largest in August 2026 | By August 2026 one of the 37 ranked below agencies outside them; a title states what the data shows (Rule 13.1) |
+| D3-421 | S34's title takes the editor's wording without the 119th Congress's count, which stays in note 3 | The 119th Congress is still sitting, so a count to date in a title can read as a final figure; the note gives it with its date. The review may reopen it |
+| D3-422 | The last open item for the engineer was already done: "contract C2" left the builders lines of entries 14-002 and 14-013 in the editor's fix, so the V7 check passes on the current page | The engineer read an earlier build |

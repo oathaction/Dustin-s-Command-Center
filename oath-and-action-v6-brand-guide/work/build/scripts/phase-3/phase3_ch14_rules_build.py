@@ -688,8 +688,8 @@ def rule_14_5(B):
     keyw = "".join(f'<span class="q{i + 2}"><i></i>{e(n)}</span>' for i, (n, _) in enumerate(chans))
     B.add("s-14-5-failure", dnp() + tl("Phone calls were the most common way residents reached Alder County in 2026") + ill()
           + f'<div class="art"><p class="ky qk">{keyw}</p><ul class="hb">{items}</ul></div>',
-          alt=FC + "An illustrative bar chart of four ways residents reached Alder County, each bar in a darker step of one green, with a key "
-                   "that reads from light to dark as if the channels ran from less to more.",
+          alt=FC + "Illustrative bars of four ways residents reached Alder County, in four steps of one green, with a key that reads as a "
+                   "scale from less to more.",
           illustrative=True)
     return entry(
         "14.5", "Give each color in a chart one job from the four data palettes.",
@@ -1097,8 +1097,7 @@ def rule_14_11(B):
     bad = f'<path class="ln" d="{path([(xs(y), ys(v)) for y, v, _ in allpts])}"/>'
     inner2 = axis_y(ys, [60000, 75000, 90000], L, R, lambda t: f"${t // 1000},000") + axis_x(xs, [2005, 2015, 2025], Bt + 18, str) + bad
     B.add("s-14-11-failure", dnp() + tl(title) + f'<div class="art">{svg(W, H, inner2)}</div>',
-          alt=FC + "The same income series as one line run through both estimates for 2013 and both for 2017, so each change in the survey "
-                   "draws as a sudden step in income.")
+          alt=FC + "The same income line run through both estimates for 2013 and for 2017, so each change in the survey draws as a step.")
     return entry(
         "14.11", "Mark a gap, a break in a series or a preliminary value in the drawing.",
         ["Draw what the data lacks or changes where it happens. A month or year with no figure leaves a gap in the line, and the line never "
@@ -1141,7 +1140,7 @@ def rule_14_12(B):
     vmax = max(d.values())
     cols = "".join(f'<div class="c{" s" if y == 2026 else ""}"><b>{comma(v)}</b><i style="height:{80 * v / vmax:.1f}%"></i></div>' for y, v in data)
     names = "".join(f"<span>{y}</span>" for y, _ in data)
-    desk = (f'<div class="sc" role="region" tabindex="0" aria-label="The chart at full width, which scrolls sideways on a narrow screen">'
+    desk = (f'<div class="sc" role="region" tabindex="0" aria-label="The drawing at full width">'
             f'<div class="fr"><p class="fh">At full width</p><div class="cl">{cols}</div><div class="cn">{names}</div></div></div>')
     phone = (f'<div class="fr ph"><p class="fh">On a phone, 358 px</p>'
              + hbars([(str(y), v) for y, v in data], vmax * 1.02, comma, subject=("2026",)).replace('class="hb ', 'class="hb yr ') + "</div>")
@@ -1173,8 +1172,8 @@ def rule_14_12(B):
          ("Kept", "Every row, the title, the finding and the source line")],
         ["06.3", "14.16", "14.25"],
         "Set phone to differs and write phone_note in the spec when the form changes; the kit draws both and checks each at 358 px.",
-        B.plate("s-14-12-correct", "At full width the twelve years stand as columns with their values above them. On a phone those values "
-                                   "would not fit over columns that narrow, so the columns become bars, with the same rows, title and finding."),
+        B.plate("s-14-12-correct", "At full width the twelve years stand as columns, each value above its column. On a phone the values would "
+                                   "not fit, so the columns become bars, with the same rows, title and finding."),
         B.plate("s-14-12-failure", fails("14.12", "The phone drawing keeps three of the twelve years and takes a new title, so a reader on a "
                                                   "phone meets a different finding from a reader at a desk.")),
         [ex("Federal receipts, fiscal years 2015 to 2026", "D08", where="14.12")],
@@ -1253,16 +1252,16 @@ def rule_14_14(B):
     li = "".join(f'<li><span class="fn">{e(f)}</span><span class="ty">{t}</span><span class="what">{e(w)}</span></li>' for f, t, w in files)
     B.add("s-14-14-correct", '<p class="k" style="margin:0 0 6px">One command</p>'
           '<p class="cmd">node work/build/chart-kit/oa-chart.mjs build s14</p><ul class="files">' + li + "</ul>",
-          alt="One kit command, node work/build/chart-kit/oa-chart.mjs build s14, and the three files it writes for the payroll chart: an SVG, a "
-              "PNG and a CSV, each with a dated name that says what the chart is, its ground and its width.",
+          alt="One kit command and the three files it writes for the payroll chart, an SVG, a PNG and a CSV, each named for its date, chart, "
+              "ground and width.",
           readable=True, notes="File names as the kit writes them for the payroll chart on November 12, 2026.")
     bad = [("chart final v2.png", "PNG", "A screenshot, cropped above the source line"),
            ("payrolls numbers.xlsx", "Spreadsheet", "The values typed in again and rounded to the thousand"),
            ("chart.svg", "SVG", "Redrawn by hand, with its title edited after the page went live")]
     li2 = "".join(f'<li><span class="fn">{e(f)}</span><span class="ty">{t}</span><span class="what">{e(w)}</span></li>' for f, t, w in bad)
     B.add("s-14-14-failure", dnp() + '<ul class="files">' + li2 + "</ul>",
-          alt=FC + "Three files made by hand for the payroll chart: a screenshot cropped above its source line, a spreadsheet of retyped and "
-                   "rounded values, and a redrawn SVG whose title no longer matches the page.")
+          alt=FC + "Three hand-made files for the payroll chart: a screenshot cropped above its source line, a spreadsheet of retyped, "
+                   "rounded values and a redrawn SVG whose title no longer matches the page.")
     return entry(
         "14.14", "Export every chart from the kit, so its files match the page.",
         ["Make every file of a chart with the chart kit’s one command, from the same spec and data file the page draws. The kit writes three "

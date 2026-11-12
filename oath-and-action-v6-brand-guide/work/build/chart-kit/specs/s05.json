@@ -30,7 +30,7 @@
   "reading_guide": "Each panel draws one group as a heavy line over the other three as thin gray lines, on one scale, so the gaps read across panels.",
   "measure_line": "Households that own their home, percent, by race and ethnicity of householder, annual averages, United States, 1994 to 2025. Every panel runs from 40 to 80 percent.",
   "notes": [
-    "The gap between non-Hispanic White and Black households widened from 27.3 points in 2003 to 29.6 in 2025, by 2.3 points, more than the change’s margin of error of about 0.7. The gap to Hispanic households narrowed from 28.7 points to 25.8, also by more than its margin.",
+    "The brackets give each gap to non-Hispanic White households in 2003 and 2025. The gap for Black households widened by 2.3 points, more than the change’s margin of error of about 0.7, and the gap for Hispanic households narrowed by 2.9 points, also more than its margin.",
     "The lines break where the Census changed its method: in 2002 it reweighted its estimates to the 2000 Census, so that year shows two values, and in 2003 it changed its race categories, so the Black and non-Hispanic White lines start again.",
     "The Census Bureau asks readers to use caution comparing 2020 with other years, after interviews moved to the phone.",
     "Margins of error, at 90 percent, run from 0.2 to 0.5 points for each group’s rate in 2003 and 2025, from the Bureau’s Table B-7; Oath & Action computed the gaps’ margins from them."
@@ -94,7 +94,7 @@
   },
   "chart_notes": [
     "Gray lines: the other three groups. Each panel heads with the group and its 2025 rate.",
-    "Gaps to non-Hispanic White households: Hispanic, 28.7 points in 2003 and 25.8 in 2025; Black, 27.3 points in 2003 and 29.6 in 2025."
+    "Brackets: the gap to non-Hispanic White households in 2003 and 2025, Hispanic 28.7 and 25.8 points, Black 27.3 and 29.6 points. The time axis marks 2003, when the race categories changed."
   ],
   "phone": "same",
   "artboard": "wide",
@@ -136,15 +136,60 @@
       40,
       80
     ],
-    "columns": 4
+    "columns": 4,
+    "ticks_x": [
+      2003
+    ]
   },
   "notes_internal": [
     "Breaks: the form starts a segment where two rows share a year (2002's two weightings) and where race_definition changes (2003, Black and non-Hispanic White), the two breaks Phase 2 drew. The sort puts 2002's original row before its revised one.",
-    "Phase 2 drew brackets for the 2003 and 2025 gaps in the Hispanic and Black panels; the form has no bracket yet (request E13), so the first note and the chart notes carry the four gaps in words.",
     "Checked by script: 2003 NHW 75.4, Black 48.1, Hispanic 46.7; 2025 NHW 74.3, Black 44.7, Hispanic 48.5, all households 65.2.",
     "The table is the full 132-row list. The kit can now pivot it to 33 rows a year by group, with 2002's two weightings as two rows, as Phase 2's table did; the pivot spec is ready, but checks.js still reads pivot.row as one column and fails it (E14). Switch when the check accepts a list.",
     "D3-83: the grade line prints 'Documented' with its source after the colon; 'Official statistic' leaves every spec.",
     "R4 and DR-64: the research lead's census-hvs-homeownership-gap-moe gives 2003's published standard errors and 2025's margins; both changes in the gap pass, and the first note says so.",
-    "Access S4: blank margins read 'Not published' once the kit prints `empty`; the race-categories column names its 'not applicable' rows."
+    "Access S4: blank margins read 'Not published' once the kit prints `empty`; the race-categories column names its 'not applicable' rows.",
+    "Round 1 (D3-191, E13): the four gap brackets and the 2003 tick draw in the kit; note 1 now gives the changes and their margins and lets the brackets carry the four gaps. Checked by work/build/scripts/phase-3/maker_b_figure_checks.py (check 2): each bracket's figure is non-Hispanic White less the group's rate_pct (standard rows) in that year; the changes 2.3 and 2.9 points against margins of 0.75, from census-hvs-homeownership-gap-moe's 90 percent margins combined."
+  ],
+  "annotations": [
+    {
+      "panel": "hispanic",
+      "at": {
+        "x": 2003
+      },
+      "to_series": "non_hispanic_white",
+      "text": "28.7",
+      "unit": "points",
+      "place": "left"
+    },
+    {
+      "panel": "hispanic",
+      "at": {
+        "x": 2025
+      },
+      "to_series": "non_hispanic_white",
+      "text": "25.8",
+      "unit": "points",
+      "place": "left"
+    },
+    {
+      "panel": "black",
+      "at": {
+        "x": 2003
+      },
+      "to_series": "non_hispanic_white",
+      "text": "27.3",
+      "unit": "points",
+      "place": "left"
+    },
+    {
+      "panel": "black",
+      "at": {
+        "x": 2025
+      },
+      "to_series": "non_hispanic_white",
+      "text": "29.6",
+      "unit": "points",
+      "place": "left"
+    }
   ]
 }

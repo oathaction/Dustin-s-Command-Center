@@ -34,7 +34,7 @@
       var namew = xv - vw - 16 - xr;
       var max = Math.max.apply(null, rows.map(function (r) { return r[ev]; }));
       var xb0 = c.phone ? xr : W - barw, xs = K.scale.linear([0, max], [xb0, (c.phone ? xr + namew : W) - 8]);
-      var other = c.ground === 'charcoal' ? 'context' : 'light-fill';   // palette rule R3 (DR-236)
+      var fill = K.parts.named_fill(c, L.named, en);   // palette rule R3 (DR-236), the kit's shared part
       // the heads
       var y = tick + 2;
       if (H.rank) c.text(xr - 12, y, H.rank, { role: 'tick', weight: 600, anchor: 'end', fill: 'label' });
@@ -53,10 +53,10 @@
         if (sub(r)) { last += slh; c.text(xr, last, sub(r), { role: 'tick', fill: 'secondary' }); }
         if (c.phone) {
           var byy = last + 8;
-          c.rect(xs(0), byy, xs(r[ev]) - xs(0), bh, { fill: b || !named.length ? 'subject' : other, kind: 'bar', axis: 'x', zero: xs(0), data: { key: r[en], field: ev, value: r[ev] } });
+          c.rect(xs(0), byy, xs(r[ev]) - xs(0), bh, { fill: fill(r), kind: 'bar', axis: 'x', zero: xs(0), data: { key: r[en], field: ev, value: r[ev] } });
           last = byy + bh;
         } else {
-          c.rect(xs(0), base - size * 0.35 - bh / 2 - 2, xs(r[ev]) - xs(0), bh + 4, { fill: b || !named.length ? 'subject' : other, kind: 'bar', axis: 'x', zero: xs(0), data: { key: r[en], field: ev, value: r[ev] } });
+          c.rect(xs(0), base - size * 0.35 - bh / 2 - 2, xs(r[ev]) - xs(0), bh + 4, { fill: fill(r), kind: 'bar', axis: 'x', zero: xs(0), data: { key: r[en], field: ev, value: r[ev] } });
         }
         y = last + pad;
         c.line(0, y, W, y, { stroke: i === rows.length - 1 ? 'baseline' : 'gridline', width: c.t(i === rows.length - 1 ? 'line-baseline' : 'line-hairline'), mark: false });

@@ -48,7 +48,7 @@
  "failure": {
   "specimen": "s-14-11-failure",
   "caption": "<strong>Fails Rule 14.11.</strong> One line runs through both of 2013’s estimates and both of 2017’s, so a change in the survey’s questions draws as a jump in income.",
-  "alt": "Failure case: do not publish. The same income series as one line run through both estimates for 2013 and both for 2017, so each change in the survey draws as a sudden step in income.",
+  "alt": "Failure case: do not publish. The same income line run through both estimates for 2013 and for 2017, so each change in the survey draws as a step.",
   "illustrative": false,
   "notes": ""
  },

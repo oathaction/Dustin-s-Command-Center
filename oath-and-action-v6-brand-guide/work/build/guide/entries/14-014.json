@@ -38,7 +38,7 @@
  "correct": {
   "specimen": "s-14-14-correct",
   "caption": "One command writes the three files from the spec the page uses, each named for its date, chart, ground and width.",
-  "alt": "One kit command, node work/build/chart-kit/oa-chart.mjs build s14, and the three files it writes for the payroll chart: an SVG, a PNG and a CSV, each with a dated name that says what the chart is, its ground and its width.",
+  "alt": "One kit command and the three files it writes for the payroll chart, an SVG, a PNG and a CSV, each named for its date, chart, ground and width.",
   "illustrative": false,
   "notes": "File names as the kit writes them for the payroll chart on November 12, 2026.",
   "readable": true
@@ -46,7 +46,7 @@
  "failure": {
   "specimen": "s-14-14-failure",
   "caption": "<strong>Fails Rule 14.14.</strong> Each file was made by hand: the screenshot drops the source line, the retyped numbers round away the table’s values, and the redrawn picture no longer matches the page.",
-  "alt": "Failure case: do not publish. Three files made by hand for the payroll chart: a screenshot cropped above its source line, a spreadsheet of retyped and rounded values, and a redrawn SVG whose title no longer matches the page.",
+  "alt": "Failure case: do not publish. Three hand-made files for the payroll chart: a screenshot cropped above its source line, a spreadsheet of retyped, rounded values and a redrawn SVG whose title no longer matches the page.",
   "illustrative": false,
   "notes": ""
  },

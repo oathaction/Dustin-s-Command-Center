@@ -674,7 +674,7 @@
    ],
    "correct": {
     "specimen": "s-14-12-correct",
-    "caption": "At full width the twelve years stand as columns with their values above them. On a phone those values would not fit over columns that narrow, so the columns become bars, with the same rows, title and finding."
+    "caption": "At full width the twelve years stand as columns, each value above its column. On a phone the values would not fit, so the columns become bars, with the same rows, title and finding."
    },
    "failure": {
     "specimen": "s-14-12-failure",

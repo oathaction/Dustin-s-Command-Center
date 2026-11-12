@@ -19,9 +19,8 @@
     draw: function (c) {
       var P = K.parts, rows = c.rows, ep = c.field('panel'), ek = c.field('category'), ev = c.field('value');
       var f = c.spec.formats || {}, W = c.width, L = c.labels, names = L.categories || {};
-      var named = L.named === undefined ? null : [].concat(L.named).map(String);
-      var ink = function (r) { return !named || named.indexOf(String(r[ek])) >= 0; };
-      var other = c.ground === 'charcoal' ? 'context' : 'light-fill';   // palette rule R3 (DR-236)
+      var fill = K.parts.named_fill(c, L.named, ek);   // palette rule R3 (DR-236), the kit's shared part
+      var ink = fill.is_named;
       var name = function (k) { return names[k] !== undefined ? names[k] : k; };
       var val = function (r) { return K.fmt(r[ev], f.value || 'number:1'); };
       var panels = [], by = {};
@@ -48,7 +47,7 @@
         pr.forEach(function (r, j) {
           var yy = top + j * pitch, cy = yy + bh / 2, on = ink(r), xe = xs(r[ev]);
           c.text(px, cy + size * 0.35, name(String(r[ek])), { role: 'label', weight: on ? 700 : 400 });
-          c.rect(zx, yy, xe - zx, bh, { fill: on ? 'subject' : other, kind: 'bar', axis: 'x', zero: zx, data: { key: p + '|' + r[ek], field: ev, value: r[ev] } });
+          c.rect(zx, yy, xe - zx, bh, { fill: fill(r), kind: 'bar', axis: 'x', zero: zx, data: { key: p + '|' + r[ek], field: ev, value: r[ev] } });
           c.text(xe + 6, cy + size * 0.35, val(r), { role: 'label', weight: on ? 700 : 600, tnum: true });
         });
         var bottom = top + (pr.length - 1) * pitch + bh;

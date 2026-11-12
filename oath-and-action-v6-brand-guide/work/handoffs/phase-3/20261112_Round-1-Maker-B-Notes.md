@@ -50,7 +50,23 @@ All of maker B's rows in the plan file are done: twelve new specimens (S24 to S3
 - D3-xxx | S29's area takes the band fill, the role S13's approved panels give an area, with the line in the subject ink on top | The light fill read as a heavy gray block at 720 px; the band keeps the gridlines readable through the fill on both grounds
 - D3-xxx | Entry files follow chapter 13's built rule shape where R2 leaves it open: `title` a clause ending in a period, `rule` a list of paragraphs, `why` an object with `text` and `basis` | R2 says the keys are a built chapter's rule plus three; the generator can then read both chapters alike
 
+## Words pass
+
+November 12, 2026. The editor's 55 changes to maker B (`20261112_Round-1-Editor-Notes.md`, "To maker B") are applied, all 55, with one wording changed for the data:
+
+- D3-xxx | Editor 6, S25's title, reads "33 of the 37 largest in January 2022 shrank" in place of "33 of the 37 largest shrank" | Checked by script: the 37 drawn are the 37 largest in January 2022, not in August 2026, when the Agency for International Development had 229 employees and agencies outside the 37 had up to 724
+- D3-xxx | Editor 45, S34's title, drops the 119th Congress's 294 votes so far that the data lead's DL-B11 put in; note 3 keeps the figure | The editor owns the words; the two requests disagree, so the main session may want the data lead to confirm
+- D3-xxx | Editor 39, S32's straight apostrophes: two summaries in `govinfo-pl-119-75-effective-dates.csv` print "plans'"; the spec prints them curled through `labels.words` (a new key on `implementation-timeline`) and the table column's `words` | The data file is the research lead's (R-B13); the sidecar's printed source line also carries straight double quotes around "months after enactment", which a spec cannot change under C2
+- D3-xxx | Editor 53 to 55: `caption` keys on entries 14.28, 14.36 and 14.39 | The plan's reader questions print a straight apostrophe, and 14.39's caption takes the law's own term
+- D3-xxx | Editor 9: entry 14.29 now cites Rule 14.4 in `related` | The rule's new words cite it
+- D3-xxx | S05 takes the kit's gap brackets and 2003 tick (D3-191, E13); note 1 gives the two changes and their margins, and the brackets carry the four gaps | The note no longer repeats what the drawing shows; the chart note describes the brackets for the table
+- Grade words (data lead, third batch): no grade line of mine calls a survey figure an estimate, and no note glosses a grade; "estimate" appears only as the publishers' own term for a method break (S02, S05, entry 14.37) and the payroll survey's first estimate (S13, S14)
+
+Rebuilt: S02, S05, S09, S13, S14, S25 to S34, every width and both grounds, PASS, and `dataviz_check.js --kit` on each build page, PASS; `maker_b_figure_checks.py`, now two checks (S13's peak, S05's brackets and changes), 0 faults; `phase3_ch14_build.py`, 0 faults; `guide_build.py --strict`, exit 0, 0 warnings, 10,012,578 bytes. S05's phone drawing sets "25.8 points" close against the bracket's cap; the guard passes it.
+
 ## Requests
+
+- R-B13, to the research lead (through the main session): curl the straight apostrophes in two `what_takes_effect` cells of `govinfo-pl-119-75-effective-dates.csv` ("plans'") and the straight double quotes in its sidecar's `printed_source_line` ("months after enactment"); S32 then drops its `words` maps
 
 - R-B12, to the engineer (chapter 14's generator): the avoid entries' sketches (14.45 here, maker A's 14.24) print under the plate head "Correct application", which tells a reader the misleading form is the right one. An avoid sketch needs its own head, such as the failure plates' "Do not publish" treatment or a plain "Sketch of the form to avoid"; the reference sketches (14.43, 14.44) may keep a neutral head
 - R-B11, to the engineer: `extra_island` carries every column of a spec's second dataset even when the form never reads `c.extra` (S05's gap-margin file, about 400 bytes compressed); carry it only for forms that read it. S05's table, 25,500 of its 30,509 bytes, could shrink by the pivot its notes describe once `checks.js` accepts a list for `pivot.row` (E14); that would change the table's layout, so it waits on the main session
