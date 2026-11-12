@@ -21,9 +21,6 @@
       // palette rule R3 and the red point by name (ED-E1), through the kit's shared part
       var fill = K.parts.named_fill(c, L.named, ex, null, L.point);
       var is_named = function (r) { return fill.is_named(r) || fill.is_point(r); };
-      // the red point's keyline is its own outline over the fill: kit.css's keyline class sets fill none, so the two on
-      // one element would leave the point hollow on Newsprint
-      var keyline = function (r, x, y, w, h) { var k = fill.keyline(r); if (k.stroke) c.rect(x + 0.5, y + 0.5, Math.max(0, w - 1), Math.max(0, h - 1), { stroke: k.stroke, width: k.width, mark: false }); };
       var name = function (r) { return names[String(r[ex])] !== undefined ? names[String(r[ex])] : String(r[ex]); };
       var val = function (r) { return K.fmt(r[ey], f.value || 'integer'); };
       var vals = rows.map(function (r) { return r[ey]; });
@@ -48,8 +45,7 @@
           c.text(0, ny, name(r), { role: 'label', weight: is_named(r) ? 700 : 600 });
           if (two) c.text(0, ny + lh2, String(r[es]), { role: 'tick', fill: 'secondary' });
           var xe = xs(r[ey]);
-          c.rect(Math.min(zx, xe), by, Math.abs(xe - zx), bh, { fill: fill(r), kind: 'bar', axis: 'x', zero: zx, data: { key: r[ex], field: ey, value: r[ey] } });
-          keyline(r, Math.min(zx, xe), by, Math.abs(xe - zx), bh);
+          c.rect(Math.min(zx, xe), by, Math.abs(xe - zx), bh, Object.assign({ fill: fill(r), kind: 'bar', axis: 'x', zero: zx, data: { key: r[ex], field: ey, value: r[ey] } }, fill.keyline(r)));
           var neg = r[ey] < 0;
           c.text(neg ? xe - 6 : xe + 6, cy + size * 0.35, val(r), { role: 'label', weight: is_named(r) ? 700 : 600, anchor: neg ? 'end' : 'start', tnum: true });
         });
@@ -70,8 +66,7 @@
       var xc = function (i) { return step * i + step / 2; };
       rows.forEach(function (r, i) {
         var v = r[ey], yv = ys(v), x = xc(i);
-        c.rect(x - bw / 2, Math.min(zy, yv), bw, Math.abs(yv - zy), { fill: fill(r), kind: 'bar', axis: 'y', zero: zy, data: { key: r[ex], field: ey, value: v } });
-        keyline(r, x - bw / 2, Math.min(zy, yv), bw, Math.abs(yv - zy));
+        c.rect(x - bw / 2, Math.min(zy, yv), bw, Math.abs(yv - zy), Object.assign({ fill: fill(r), kind: 'bar', axis: 'y', zero: zy, data: { key: r[ex], field: ey, value: v } }, fill.keyline(r)));
         var neg = v < 0;
         c.text(x, neg ? yv + size + 4 : yv - 7, val(r), { role: 'label', weight: is_named(r) ? 700 : 600, anchor: 'middle', tnum: true });
       });

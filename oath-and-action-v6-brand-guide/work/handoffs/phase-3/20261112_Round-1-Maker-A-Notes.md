@@ -110,6 +110,11 @@ November 12, 2026. The editor's 42 changes (its notes, "Requests", "To maker A")
 - D3-xxx | `column` takes `labels.point` (ED-E1), with the point's keyline drawn as its own outline over the red fill | `kit.css` gives `.oac-s-point-keyline` `fill: none` after `.oac-f-point`, so one element with both classes draws the point hollow on Newsprint (request A11)
 - D3-xxx | S38's grade filter offers four chips; "retired" leaves its word maps | No record in news, records and public information is retired, and Rule 13.3 keeps Retired out of every grade key; the live lookup showed a fifth chip that matched nothing
 
+## Last fix
+
+- D3-xxx | `column` drops its keyline workaround and merges `fill.keyline(row)` into the mark, as the shared part's recipe says | The engineer fixed A11 in `kit.css` (`.oac-f-point.oac-s-point-keyline` keeps the red fill)
+- Tested: S17 and the editor's two plates on `column` (`s-14-13-cols`, `s-14-4-cols`) rebuilt with `oa-chart.mjs build` at every width on both grounds with parity, 3 of 3 PASS; S17's four SVG exports byte for byte equal to the baseline; the scratch copy of S17 with `labels.point` looked at on Newsprint 1440 (red, 1 px keyline) and Charcoal 390 (red, no keyline).
+
 ## Tested
 
 - S17: `node work/build/chart-kit/oa-chart.mjs build s17` passes, 0 faults: spec, data, table rows, source line, layout guard and chart check at 1440 and 390 px on Newsprint and Charcoal, the five guide widths (656, 558, 358, 296, 256) on Newsprint, and page-to-Node parity. Captures looked at: both grounds at 1440 and 390 px, and grayscale at Charcoal 1440 and Newsprint 390. Figure check `figures.py s17`, 8 assertions pass (274 the unique fewest of the ten; 482, 283, 442; under 400 since the 115th; the 119th's 138; the `where` rows). Words lint clean on `s17.json` and `14-016.json`.

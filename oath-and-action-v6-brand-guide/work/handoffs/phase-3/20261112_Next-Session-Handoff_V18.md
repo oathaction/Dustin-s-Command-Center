@@ -25,16 +25,14 @@ Phase 3 is the active phase. Board 1's four answers (DR-236 to DR-239) are appli
 
 ## 2. Next, in order
 
-### A. Close the build stage (check each owner's notes; agents from this chat cannot be resumed)
-Open at the time of writing, each in its owner's notes under "Requests":
-1. Makers A and B apply the editor's words pass (42 and 55 changes, `20261112_Round-1-Editor-Notes.md`) and the data lead's grade-word rulings (third batch). Check their "Words pass" sections.
-2. Editor fixes plates 14.6, 14.9, 14.10 and 14.12 (data lead third batch).
-3. Engineer's queue, in order: R-B12 (avoid sketches must not sit under "Correct application"); A9 (S38's live search, filters, count); ED-E3 (reading guide before or after the measure line: the approved Explainer page governs, and Rule 14.2 and the kit must agree); the light fill as a shared part (maker A then switches from its own); the two check fixes (`v7_check.py` T- and LX- IDs; `guide_check.js` reading a typed chip whole); ED-E1, ED-E2, ED-E5, ED-E6; S05's gap brackets; R-B11; A8. ED-E4 (an interval form) goes to round 2's uncertainty maker. DL-E1 and the kit side of ENG-10 wait for round 3.
-4. Systems designer: SD-6, chapter 15's opener back to Loop R13 once the chip test reads a chip whole (Rule 15.6 already draws Loop R18).
-Any item still open goes to the review as known, or to a fresh owner agent briefed from the notes.
+### A. The build stage is closed
+Every owner reported and every request this round raised is done, except two deferred by plan: ED-E4 (an interval form) goes to round 2's uncertainty maker, and DL-E1 (county map weight) with the kit side of ENG-10 (map geometry) wait for round 3. Done at the close: both makers' words passes (42 and 55 changes, three of maker A's applied differently with reasons), the data lead's grade-word rulings, the editor's plate fixes, the engineer's queue (A9's live lookup, the shared light fill, S05's gap brackets, sketch headings under R-B12, the chip-reading check, the red point's fill under A11), SD-6 (chapter 15's opener on Loop R13), and the research lead's four fix passes. Maker A removed its column workaround after A11 (S17 byte-identical; the red point solid with its keyline on Newsprint). One small item was finishing as this note was written; confirm it in the engineer's notes: its print and forced-colors before-and-after comparison (its log is in this chat's scratch, which a new container does not have, so rerun it if the notes show no result).
 
-### B. Checks before the review
-`phase3_ch14_build.py`, `phase3_ch15_build.py`, then `guide_build.py --strict` (0 warnings); `oa-chart.mjs build --all`; `v7_check.py`; the kit's self-test; the four-width guide check in the background (about 25 to 40 minutes; carried since round 0 and needed before board 2).
+### B. Checks on the final build (run by the main session at the close)
+`phase3_ch14_build.py` 0 faults, 0 files written (55 rules: 41 entries, 36 chart plates; 49 examples logged); `phase3_ch15_build.py` unchanged output; `guide_build.py --strict` exit 0, 0 warnings, 10,012,720 bytes, 19 chapter files, 265 rules, 554 specimens; `oa-chart.mjs build --all --no-png` 42 of 42 pass; `v7_check.py --page` 0 failures (chapter 15, 49 chips) and its self-test catches every planted fault; the kit's self-test catches every planted fault. The four-width guide check result is in section 2B2. Rerun the strict build and the quick guide check at the new chat's start to confirm the committed state.
+
+### B2. The four-width guide check
+See the line added below at the close of this chat.
 
 ### C. Review, fix pass, second pass, rescore (brief `work/handoffs/phase-3/20261112_Phase-3-Round-1-Review-Brief.md`)
 Four reviewers in parallel on a fresh strict build: statistics and civic education; nonpartisanship, brand and craft; accessibility with the simulated designer and reader; the creative director's first pass with scores on five items. Then one fix brief from the reports (codes kept), owners resumed or briefed fresh, DR-191's short second pass, and the rescore. An item ships at 4 or more on all six criteria.

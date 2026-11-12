@@ -4227,3 +4227,9 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-443 | The light fill goes on every other bar wherever a plate names one, failure plates included | One rule for the drawing, as the approved palette's R3 sets it, so a failure plate shows only its own fault |
 | D3-444 | Rule 14.12's full-width drawing scrolls inside a named frame while its words stay in the column | A plate that clipped its own title on a phone showed the fault Rule 14.12 forbids |
 | D3-445 | Rule 14.4 and 14.13 keep their data | The rules have 189 bytes left under 0.20 MB, and Rule 01.9 holds; the data lead marked the move as weight-dependent |
+
+### Maker A, round 1 last fix
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-446 | `column` drops its keyline workaround and merges `fill.keyline(row)` into the mark, as the shared part's recipe says | The engineer fixed A11 in `kit.css` (`.oac-f-point.oac-s-point-keyline` keeps the red fill) |
