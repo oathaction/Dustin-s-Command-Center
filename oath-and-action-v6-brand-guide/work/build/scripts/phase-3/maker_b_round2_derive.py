@@ -487,7 +487,8 @@ def figures():
     past = [r for r in er if r['code'] != 'US' and abs(num(r['women_pct_of_men']) - U) > (num(r['women_pct_of_men_moe']) ** 2 + UM ** 2) ** 0.5]
     above = [r for r in past if num(r['women_pct_of_men']) > U]
     same('S57', (len(past), len(above), len(past) - len(above), 'DC' in [r['code'] for r in above]), (26, 14, 12, True), 'past the margin')
-    want('S57', t, '82.0 percent of men’s in 2025, and in 25 states and the District of Columbia', 'title')
+    want('S57', t, '82.0 percent of men’s in 2025; 25 states and the District of Columbia differed from that past the margin of error', 'title')
+    same('S57', len(sp['title'].split()) < 30, True, 'title under 30 words (CD B-S3)')
     want('S57', t, '13 states and the District of Columbia sit above the nation and 12 states below it', 'note 2')
     want('S57', t, 'Fourteen filled dots above the nation’s line and 12 below it', 'alt')
     want('S57', t, 'the open dots of the other %d states' % (51 - len(past)), 'alt within')

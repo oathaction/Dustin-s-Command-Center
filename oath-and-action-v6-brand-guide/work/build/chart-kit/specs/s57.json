@@ -21,12 +21,12 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: a Census Bureau survey, with ratios and their margins computed by Oath & Action",
-  "title": "Women who worked full time, year round had median earnings 82.0 percent of men’s in 2025, and in 25 states and the District of Columbia the figure differed from the nation’s by more than the margin of error.",
+  "title": "Among full-time, year-round workers, women’s median earnings were 82.0 percent of men’s in 2025; 25 states and the District of Columbia differed from that past the margin of error.",
   "measure_line": "Women’s median earnings as a percent of men’s, people 16 and over with earnings who worked full time, year round, 2025, 50 states and DC. Each line spans a figure’s 90 percent margin of error.",
   "reading_guide": "A filled dot differs from the nation’s 82.0 percent by more than the margin of error of the gap between them; an open dot sits within it.",
   "notes": [
     "The ratio sets the median of every woman who worked full time, year round against the median of every such man, whatever their jobs.",
-    "A state differs from the nation where the gap between them passes the gap’s own margin of error, the square root of the sum of the two margins squared, the Census Bureau’s test. By that test, 13 states and the District of Columbia sit above the nation and 12 states below it. The chart lists the states by their figures; where two sit within each other’s margins, the order between them is not certain."
+    "A state differs from the nation where the gap between them passes the gap’s own margin of error, the square root of the sum of the two margins squared, the Census Bureau’s test for two estimates. That test treats each state and the nation as independent, though each state is part of the nation, so it can only leave a state within the margin that a finer test would set apart; the finer test sets none apart here. By that test, 13 states and the District of Columbia sit above the nation and 12 states below it. The chart lists the states by their figures; where two sit within each other’s margins, the order between them is not certain."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -103,7 +103,8 @@
     "Read from the left and the right: the title gives the national figure and the count past the margin; it names no state and no policy. The editor’s first look (title shape, grade line wording, note 1’s positive words) is applied, with “26 states” corrected to 25 states and DC.",
     "ED-E16 (second run): range-bar stacks its rows where the name and value columns would leave the plot under labels.stack_below px; S57 sets 240, so it stacks at the 358 px phone and every narrower column (its side-by-side plot measured about 193 px at 358 and 90 px at 256), and phone is differs with a phone_note; desk_phone shows the nation and the first 12 places at a desk, since the stacked phone drawing of 51 rows runs about 2,000 px.",
     "The nation’s row sorts first (sort by values), so the desk’s phone drawing of the first 12 rows still holds the reference line and the margin test, and the table sets the nation apart as its first row (ruling (b)).",
-    "Data lead MB-20 (optional, taken): the chart note says a margin narrower than its dot shows no line."
+    "Data lead MB-20 (optional, taken): the chart note says a margin narrower than its dot shows no line.",
+    "Review fix pass: CD B-S3, the title holds 29 words (was 38) and keeps its two figures, 82.0 percent and 25 states and the District of Columbia; ST S4 and the data lead’s RF-7, note 2 in the ruling’s words (the independent test, and that the finer test for a place inside an area sets no state apart here, by the data lead’s script with each state’s share of the nation’s people). Checked by maker_b_round2_derive.py --figures (check S57)."
   ],
   "phone_note": "On a phone each state’s name and figure share one line, and its interval runs the full width on the line beneath, on one scale.",
   "desk_phone": {
