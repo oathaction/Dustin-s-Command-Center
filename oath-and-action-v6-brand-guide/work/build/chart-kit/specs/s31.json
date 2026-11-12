@@ -78,7 +78,7 @@
   "evidence_label": "Finding",
   "grade_line": "Documented: a Bureau of Labor Statistics survey of households, as copied by FRED",
   "title": "The unemployment rate stood at 4.1 percent in October 2026, and the government published no rate for October 2025.",
-  "reading_guide": "The line stops at September 2025 and starts again at November 2025. The gray column marks the month with no figure, so nothing is drawn across it.",
+  "reading_guide": "The line stops at September 2025 and starts again at November 2025. The gray column marks the month with no figure, so no line crosses it.",
   "measure_line": "Unemployment rate, people 16 and over without a job and looking for one as a percent of the labor force, seasonally adjusted, monthly, United States, January 2022 to October 2026: from the month the guide’s jobs charts start to the latest month published. The scale starts at zero.",
   "notes": [
     "The rate rose from a low of 3.4 percent in April 2023 to 4.5 percent in November 2025, the first month after the gap.",

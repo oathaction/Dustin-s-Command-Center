@@ -15,7 +15,7 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Office of Personnel Management’s records of federal employees",
-  "title": "Federal agencies in the personnel files had 130,369 fewer civilian employees in August 2026 than in January 2022, and 33 of the 37 with 1,000 or more shrank.",
+  "title": "Federal agencies had 130,369 fewer civilian employees in August 2026 than in January 2022, and 33 of the 37 largest in January 2022 shrank.",
   "reading_guide": "A bar to the left of zero is an agency that lost employees, and a bar to the right one that gained. Each figure sits across the zero line from its bar.",
   "measure_line": "Change in federal civilian employees by department or agency, January 31, 2022 to August 31, 2026, people, for the 37 agencies with 1,000 or more employees on either date. The window starts in January 2022, as the guide’s jobs charts do, and ends in August 2026, the latest month the Office of Personnel Management did not flag as incomplete.",
   "notes": [
@@ -127,6 +127,7 @@
     "Short names are labels.names in the chart; R-B5 landed, so the table prints the file's readable agency column.",
     "Pair B's middle steps (div-2 for a loss, div-4 for a gain) repeat the direction that position and sign already carry, per the data lead's palette note for row 13.",
     "Weight (R1-C5): the table drops the 'In the chart' column, which note 2's size rule already states, to keep the plate under three times the core average (26,172 bytes before, by the kit's load-table fragment).",
-    "Data lead DL-B2 and DL-B3 applied: chart note 1 no longer names a scale the form does not draw; note 4 drops 'still'."
+    "Data lead DL-B2 and DL-B3 applied: chart note 1 no longer names a scale the form does not draw; note 4 drops 'still'.",
+    "Words pass (editor 6): the editor's title said '33 of the 37 largest shrank'. Checked by script: the 37 drawn are exactly the 37 largest in January 2022, but not in August 2026 (the Agency for International Development had 229 then, below agencies outside the 37 with up to 724), so the title says 'largest in January 2022'."
   ]
 }

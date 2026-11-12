@@ -32,8 +32,8 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Federal Housing Finance Agency’s index of repeat home sales",
-  "title": "Home prices rose in every state and DC from 1991 to 2026 by the Federal Housing Finance Agency’s index, and most in Montana, to more than seven times their early-1991 level.",
-  "reading_guide": "Each thin gray line is one state or DC; Montana is the heavy line. Every line starts near 100 in 1991, so a line at 400 means prices four times their 1991 level in that state. Heights compare growth, not prices.",
+  "title": "Home prices rose in every state and DC from 1991 to 2026, most in Montana, where they grew more than sevenfold.",
+  "reading_guide": "Each thin gray line is one state or DC; Montana is the heavy line. Every line starts near 100 in 1991, so a line at 400 means prices four times their 1991 level in that state. A line’s height shows growth from that state’s own 1991 level.",
   "measure_line": "House price index, purchase-only, seasonally adjusted, not adjusted for inflation, first quarter 1991 = 100, second quarter of every fifth year from 1991 to 2026, 50 states and DC. The index starts in 1991, its first year for states, and the latest quarter is the second of 2026.",
   "notes": [
     "Each line joins the second quarter of 1991, 1996, 2001, 2006, 2011, 2016, 2021 and 2026, and skips the quarters between them.",
@@ -42,7 +42,7 @@
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Fifty-one thin lines show the house price index for every state and DC from 1991 to 2026, all starting near 100. Montana, drawn heavy, rose most, to 742 in the second quarter of 2026. Connecticut, the lowest, reached 319. Many lines peak in 2006 and dip by 2011 before climbing again.",
+  "alt": "Thin lines for the 50 states and DC show the house price index for every state and DC from 1991 to 2026, all starting near 100. Montana, drawn heavy, rose most, to 742 in the second quarter of 2026. Connecticut, the lowest, reached 319. Many lines peak in 2006 and dip by 2011 before climbing again.",
   "table": {
     "caption": "House price index by state, second quarter of each year shown, first quarter 1991 = 100",
     "pivot": {

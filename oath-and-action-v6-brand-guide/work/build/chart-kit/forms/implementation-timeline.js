@@ -7,7 +7,7 @@
  * (category). labels: kinds ({kind value: "approved" | "deadline" | "phase" | "start"}; "start" by default), approved
  * (words at the approval line, with {date}), phase_months (12 by default), end (the date the axis ends), phase_key,
  * start_key, deadline_key (the key's words), row_title, row_text (each row's words from a template with {date} and any
- * encode or column name, in place of the title and text columns). formats: date (in the words, "date" by default).
+ * encode or column name, in place of the title and text columns), words ({stored value: printed words}). formats: date (in the words, "date" by default).
  * Maker B, round 1. */
 (function (K) {
   'use strict';
@@ -16,13 +16,15 @@
     name: 'Implementation Timeline',
     family: 'change-over-time',
     encode: { date: 'date', title: 'text', text: 'text?', kind: 'category' },
-    labels: ['kinds', 'approved', 'phase_months', 'end', 'phase_key', 'start_key', 'deadline_key', 'row_title', 'row_text'],
+    labels: ['kinds', 'approved', 'phase_months', 'end', 'phase_key', 'start_key', 'deadline_key', 'row_title', 'row_text', 'words'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, L = c.labels, f = c.spec.formats || {}, W = c.width;
       var ed = c.field('date'), et = c.field('title'), ex = c.field('text', false), ek = c.field('kind');
-      var tw = function (r) { return L.row_title ? P.fill(c, L.row_title, r) : String(r[et]); };
-      var xw = function (r) { return L.row_text ? P.fill(c, L.row_text, r) : ex ? String(r[ex] || '') : ''; };
+      // labels.words prints a stored value in other words (such as a curled apostrophe) before it fills a row's template
+      var wr = function (r) { var o = {}, W2 = L.words || {}; for (var k in r) o[k] = typeof r[k] === 'string' && W2[r[k]] !== undefined ? W2[r[k]] : r[k]; return o; };
+      var tw = function (r) { return L.row_title ? P.fill(c, L.row_title, wr(r)) : String(wr(r)[et]); };
+      var xw = function (r) { return L.row_text ? P.fill(c, L.row_text, wr(r)) : ex ? String(wr(r)[ex] || '') : ''; };
       var kind = function (r) { return (L.kinds || {})[String(r[ek])] || 'start'; };
       var rows = c.rows.slice().sort(function (a, b) { return K.time(a[ed]) - K.time(b[ed]); });
       var appr = rows.filter(function (r) { return kind(r) === 'approved'; })[0];

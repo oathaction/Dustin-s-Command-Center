@@ -16,11 +16,11 @@
   "evidence_label": "Finding",
   "grade_line": "Documented: Census Bureau counts of employers and their payrolls",
   "title": "Civic and social organizations with paid staff ran 24,698 locations in 2023, 23 percent fewer than in 1998.",
-  "reading_guide": "Each small line runs from 1998 at its left end to 2023 at its right, with a large dot on 2023. The words around it give the figures.",
-  "measure_line": "Locations of civic and social organizations with paid employees, and the people they paid in mid-March, United States, 1998 to 2023. The count starts in 1998, the first year County Business Patterns sorted businesses by the North American Industry Classification System. Each line is scaled to its own lowest and highest year, so the two lines’ heights do not compare.",
+  "reading_guide": "Each small line runs from 1998 at its left end to 2023 at its right, with a large dot on 2023. The words around it give the figures. Each line takes its own scale, from its lowest year to its highest, so the two heights do not compare.",
+  "measure_line": "Locations of civic and social organizations with paid employees, and the people they paid in mid-March, United States, 1998 to 2023. The count starts in 1998, the first year County Business Patterns sorted businesses by the North American Industry Classification System.",
   "notes": [
     "A location, which the Census Bureau calls an establishment, is one place where an organization does business with paid employees. One organization can run several.",
-    "County Business Patterns counts only places with paid employees, so groups run by volunteers alone are left out. The series tracks paid organizations, not membership or volunteering.",
+    "County Business Patterns counts only places with paid employees, so groups run by volunteers alone are left out. Membership and volunteering lie outside the series.",
     "The industry kept its code, 813410, and its title through the code revisions of 2002, 2007, 2012 and 2017."
   ],
   "credit": "Chart: Oath & Action",

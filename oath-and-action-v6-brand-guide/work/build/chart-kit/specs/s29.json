@@ -17,10 +17,10 @@
   "grade_line": "Documented: Census Bureau counts of employers and their payrolls",
   "title": "Newspaper publishers employed 91,350 people in 2023, less than a quarter of the 401,373 they employed in 1998.",
   "reading_guide": "The shaded area is the count itself: its height in any year is the number of people on newspaper publishers’ payrolls that March.",
-  "measure_line": "Paid employees of newspaper publishers, print and online, each March, United States, 1998 to 2023. The count starts in 1998, the first year County Business Patterns sorted businesses by the North American Industry Classification System. The scale starts at zero.",
+  "measure_line": "Paid employees of newspaper publishers, print and online, each March, United States, 1998 to 2023. The count starts in 1998, the first year County Business Patterns sorted businesses by the North American Industry Classification System.",
   "notes": [
     "Employment peaked at 413,951 in 2001 and fell in every year after that.",
-    "County Business Patterns counts paid employees in the pay period that includes March 12 at businesses classed as newspaper publishers. Freelancers, the self-employed and newsrooms classed in other industries are left out, and news sites that publish only online are classed in another industry and are not counted.",
+    "County Business Patterns counts paid employees in the pay period that includes March 12 at businesses classed as newspaper publishers. The count leaves out freelancers, the self-employed and newsrooms in other industries, among them news sites that publish only online, which the Census Bureau classes in another industry.",
     "The industry kept its code, 511110, and its title through the code revisions of 2002, 2007, 2012 and 2017."
   ],
   "credit": "Chart: Oath & Action",

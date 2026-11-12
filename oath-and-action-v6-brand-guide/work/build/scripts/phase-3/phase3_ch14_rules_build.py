@@ -120,8 +120,10 @@ CSS = {
            ".hb li{display:grid;grid-template-columns:minmax(0,9.5rem) minmax(0,1fr) 4.8rem;align-items:center;gap:10px}"
            ".hb i{display:block;height:var(--oa-chart-bar-phone-height);background:var(--oa-chart-color-context);"
            "border-left:var(--oa-chart-line-baseline) solid var(--oa-chart-color-baseline)}"
+           ".hb.lt i{background:var(--oa-chart-color-light-fill)}"
            ".hb .s i{background:var(--oa-chart-color-subject)}.hb .pt i{background:var(--oa-chart-color-point);box-shadow:inset 0 0 0 1px var(--oa-chart-color-point-keyline)}"
-           ".hb b{font-weight:inherit;text-align:right;font-variant-numeric:tabular-nums}.hb .s,.hb .pt{font-weight:var(--oa-font-weight-bold)}"),
+           ".hb b{font-weight:inherit;text-align:right;font-variant-numeric:tabular-nums}.hb .s,.hb .pt{font-weight:var(--oa-font-weight-bold)}"
+           "@media (max-width:30em){.hb li{grid-template-columns:minmax(0,1fr) auto;row-gap:2px}.hb li>span{grid-column:1/-1}}"),
     "rk": (f".rk{{list-style:none;margin:0;padding:0;{SMALL}}}.rk li{{display:grid;grid-template-columns:2.2rem minmax(0,1fr) 4rem;gap:8px;padding:5px 0;"
            f"border-bottom:1px solid var(--oa-color-border-hairline)}}.rk .r{{font-weight:var(--oa-font-weight-bold)}}.rk .v{{text-align:right;font-variant-numeric:tabular-nums}}"),
     # a dot with its interval per row, positioned in percent of the track
@@ -134,7 +136,8 @@ CSS = {
            "background:var(--oa-chart-color-subject);border:2px solid var(--oa-chart-color-subject)}"
            ".di .o i::after{background:var(--oa-color-surface)}.di b{font-weight:inherit;text-align:right;font-variant-numeric:tabular-nums}"
            f".di .hd i{{height:auto;padding:2px 0 2px calc(var(--n) + 6px);{CAP};color:var(--oa-color-text-secondary)}}"
-           ".di .hd i::before,.di .hd i::after{content:none}"),
+           ".di .hd i::before,.di .hd i::after{content:none}"
+           "@media (max-width:30em){.di li{grid-template-columns:minmax(0,1fr) auto;row-gap:0}.di i{grid-column:1/-1;grid-row:2}}"),
     "ky": f".ky{{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 12px;{CAP}}}.ky span{{display:inline-flex;align-items:center;gap:6px}}",
     "qk": (".qk i{display:inline-block;width:14px;height:14px}"
            ".q2 i{background:var(--oa-chart-color-sequential-fill-step2)}.q3 i{background:var(--oa-chart-color-sequential-fill-step3)}"
@@ -174,14 +177,14 @@ CSS = {
     "sb": (f".sb{{list-style:none;margin:0;padding:0;display:grid;gap:6px;{SMALL}}}.sb li{{display:grid;grid-template-columns:minmax(0,9rem) minmax(0,1fr) 3rem;gap:10px;align-items:center}}"
            ".sb .bt{height:var(--oa-chart-bar-phone-height)}.sb .v{text-align:right;font-variant-numeric:tabular-nums}"
            ".sb i{display:block;height:100%}"),
-    "st2": ".st2 .fr+.fr{margin-top:20px}",
-    "yr": ".hb.yr li{grid-template-columns:3.2rem minmax(0,1fr) 3.4rem}",
+    "st2": ".st2 .fr.ph{margin-top:20px}.st2 .sc{overflow-x:auto}.st2 .sc .fr{min-width:600px}",
+    "yr": ".hb.yr li{grid-template-columns:3.2rem minmax(0,1fr) 4.8rem}.hb.yr li>span{grid-column:auto}",
     "two": ".two{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}@media (min-width:60em){.two{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);align-items:start}}",
     "fr": (f".fr{{border:1px solid var(--oa-color-border-strong);padding:14px}}.fr .fh{{{LBL};color:var(--oa-color-text-secondary);margin:0 0 10px}}"
            ".fr.ph{max-width:358px}"),
     "cl": (".cl{display:flex;align-items:flex-end;gap:6px;height:180px;border-bottom:var(--oa-chart-line-baseline) solid var(--oa-chart-color-baseline);margin-top:8px}"
            ".cl .c{flex:1 1 0;display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;height:100%;min-width:0}"
-           ".cl .c i{display:block;background:var(--oa-chart-color-context);margin:0 6px}.cl .c.s i{background:var(--oa-chart-color-subject)}"
+           ".cl .c i{display:block;background:var(--oa-chart-color-light-fill);margin:0 6px}.cl .c.s i{background:var(--oa-chart-color-subject)}"
            f".cl .c b{{display:block;text-align:center;font-variant-numeric:tabular-nums;{CAP};margin-bottom:4px}}"
            f".cn{{display:flex;gap:6px;{CAP}}}.cn span{{flex:1 1 0;min-width:0;text-align:center;overflow-wrap:anywhere;padding-top:6px}}"),
     "files": (f".files{{list-style:none;margin:0;padding:0;{SMALL}}}.files li{{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding:10px 0;border-bottom:1px solid var(--oa-color-border-hairline)}}"
@@ -195,10 +198,9 @@ CSS = {
     "tip": (f".tip{{display:inline-block;margin-top:10px;padding:6px 10px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);{SMALL}}}"),
     "opq": (".opq{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:0}"
             "@media (min-width:48em){.opq{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}}"
-            ".opq li{display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:4px 10px;padding:10px 0;border-top:1px solid var(--oa-color-border-hairline)}"
-            f".opq .n{{{LBL};color:var(--oa-color-text-secondary);padding-top:4px}}"
+            ".opq li{display:grid;gap:4px;padding:10px 0;border-top:1px solid var(--oa-color-border-hairline)}"
             ".opq .qq{font:var(--oa-font-weight-bold) var(--oa-type-h4-font-size)/var(--oa-type-h4-line-height) var(--oa-font-family-display);letter-spacing:-0.01em}"
-            f".opq .fm{{{CAP};color:var(--oa-color-text-secondary);grid-column:2}}"),
+            f".opq .fm{{{CAP};color:var(--oa-color-text-secondary)}}"),
     "olp": (f".olp{{margin:16px 0 0;padding:0;list-style:none;counter-reset:pt;display:grid;gap:4px;{SMALL}}}"
             ".olp li{counter-increment:pt;display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:center}"
             f".olp li::before,.anat .mk::before{{content:counter(pt);display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;"
@@ -294,7 +296,7 @@ def hbars(data, vmax, fmt, subject=(), point=(), red=()):
         cls = "pt" if name in point else ("s" if name in subject else "")
         out.append(f'<li{f" class={chr(34)}{cls}{chr(34)}" if cls else ""}><span>{e(name)}</span><i{" data-red=" + chr(34) + "failure" + chr(34) if name in red else ""} '
                    f'style="width:{100 * v / vmax:.1f}%"></i><b>{e(fmt(v))}</b></li>')
-    return '<ul class="hb">' + "".join(out) + "</ul>"
+    return f'<ul class="hb{" lt" if subject or point else ""}">' + "".join(out) + "</ul>"
 
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -414,7 +416,7 @@ def rule_14_1(B):
           notes="A line answers a question about change over time; the kit draws it from the US rows of the business formation file.")
     B.specs.pop("s-14-1-sorted")
     B.add("s-14-1-failure", dnp() + tl(title) + '<div class="art">'
-          + hbars([(str(y), v) for y, v in by_size], by_size[0][1] * 1.02, comma, subject=("2025",)) + "</div>",
+          + hbars([(str(y), v) for y, v in by_size], by_size[0][1] * 1.02, comma, subject=("2025",)).replace('class="hb ', 'class="hb yr ') + "</div>",
           alt=FC + "The same applications drawn as bars sorted by size, 2025 first and 2009 last, so the years fall out of order.")
     return entry(
         "14.1", "Start from the reader’s question, then choose the form.",
@@ -777,9 +779,10 @@ def rule_14_7(B):
     B.spec("s-14-7-seats", form="ranked-bar", family="comparison", tier="core", dataset=ds,
            reader_question="How many House seats does each party hold?",
            evidence="finding", evidence_label="Finding", grade_line="Documented: the House Clerk’s record",
+           where={"party": {"not": ["Vacancies"]}},
            title=title, measure_line="Seats in the U.S. House of Representatives, by party, as of November 11, 2026",
-           source_line=src(ds),
-           alt="Four bars in one dark ink, each named: Republicans 218, Democrats 214, Independents 1, Vacancies 2.",
+           notes=["Two seats were vacant."], source_line=src(ds),
+           alt="Three bars in one dark ink, each named: Republicans 218, Democrats 214, Independents 1. A note gives the two vacant seats.",
            table={"caption": "House seats by party, November 11, 2026",
                   "columns": [{"field": "party", "label": "Party", "format": "text", "row_header": True},
                               {"field": "seats", "label": "Seats", "format": "integer"}]},
@@ -1014,7 +1017,7 @@ def rule_14_10(B):
     ys = scale(0, 10000, Bt, T)
     bands = "".join(f'<rect class="bd" x="{xs(a):.1f}" y="{T - 18}" width="{xs(b) - xs(a):.1f}" height="{Bt - T + 18}"/>'
                     for i, ((a, _), b) in enumerate(zip(TERMS, [t for t, _ in TERMS[1:]] + [2023])) if i % 2 == 0)
-    names = "".join(f'<text class="tk" x="{xs(a) + 3:.1f}" y="{T - 6}">{e(nm)}</text>' for a, nm in TERMS)
+    names = "".join(f'<text class="tk" x="{xs(a) + 3:.1f}" y="{T - 6 - 13 * (i % 2)}">{e(nm)}</text>' for i, (a, nm) in enumerate(TERMS))
     pts = sorted(r.items())
     line = "".join(f'<path class="ln" d="{path([(xs(y), ys(v)) for y, v in pts if a <= y <= b])}"/>'
                    for a, b in zip([1998] + [t for t, _ in TERMS], [t for t, _ in TERMS] + [2023]))
@@ -1138,20 +1141,21 @@ def rule_14_12(B):
     vmax = max(d.values())
     cols = "".join(f'<div class="c{" s" if y == 2026 else ""}"><b>{comma(v)}</b><i style="height:{80 * v / vmax:.1f}%"></i></div>' for y, v in data)
     names = "".join(f"<span>{y}</span>" for y, _ in data)
-    desk = f'<div class="fr"><p class="fh">At full width</p><div class="cl">{cols}</div><div class="cn">{names}</div></div>'
+    desk = (f'<div class="sc" role="region" tabindex="0" aria-label="The chart at full width, which scrolls sideways on a narrow screen">'
+            f'<div class="fr"><p class="fh">At full width</p><div class="cl">{cols}</div><div class="cn">{names}</div></div></div>')
     phone = (f'<div class="fr ph"><p class="fh">On a phone, 358 px</p>'
-             + hbars([(str(y), v) for y, v in data], vmax * 1.02, comma, subject=("2026",)).replace('class="hb"', 'class="hb yr"') + "</div>")
+             + hbars([(str(y), v) for y, v in data], vmax * 1.02, comma, subject=("2026",)).replace('class="hb ', 'class="hb yr ') + "</div>")
     tab = table("Federal receipts by fiscal year, billions of dollars", ["Fiscal year", "Billions of dollars"], [(y, comma(v)) for y, v in data])
     B.add("s-14-12-correct", head("Finding", g, title, measure=measure) + f'<div class="art st2">{desk}{phone}</div>' + foot([], src(ds)) + tab,
           alt=f"The same twelve years of federal receipts drawn twice, as columns at full width and as bars on a phone, each value "
               f"printed. Both rise from {comma(d[2015])} billion dollars in 2015 to {comma(d[2026])} billion in 2026, "
               f"with a fall in 2023.",
-          notes="The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; the plate is "
-                "640 px wide, so its full-width drawing keeps its size on a phone, inside the guide's scrolling frame.", width=640)
+          notes="The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; on a phone the "
+                "full-width drawing keeps its size in a named frame that scrolls sideways, and the words stay in the column.")
     last3 = data[-3:]
     B.add("s-14-12-failure", dnp() + f'<div class="fr ph"><p class="fh">On a phone, 358 px</p>'
           + tl("Federal receipts rose in each of the last two years")
-          + f'<div class="art">{hbars([(str(y), v) for y, v in last3], vmax * 1.02, comma, subject=("2026",)).replace(chr(34) + "hb" + chr(34), chr(34) + "hb yr" + chr(34))}</div></div>',
+          + f'<div class="art">{hbars([(str(y), v) for y, v in last3], vmax * 1.02, comma, subject=("2026",)).replace('class="hb ', 'class="hb yr ')}</div></div>',
           alt=FC + "A phone version of the receipts chart that keeps the last three of twelve years and takes a new title, “Federal receipts rose "
                    "in each of the last two years”.")
     return entry(
@@ -1286,7 +1290,7 @@ def opener(B):
     lis = []
     for gp in PLAN["groups"][1:]:
         fam, q = gp["title"].split(": ", 1)
-        lis.append(f'<li><span class="n">{gp["group"]}</span><span class="qq">{e(q[0].upper() + q[1:])}</span>'
+        lis.append(f'<li><span class="qq">{e(q[0].upper() + q[1:])}</span>'
                    f'<span class="fm">{e(fam)}</span></li>')
     body = ('<p class="k" style="margin:0 0 12px">Every chart answers one question</p><ol class="opq">' + "".join(lis) + "</ol>")
     B.add("s-14-opener", body, readable=True,

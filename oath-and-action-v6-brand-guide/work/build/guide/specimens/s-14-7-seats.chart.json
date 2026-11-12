@@ -9,10 +9,20 @@
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: the House Clerk’s record",
+ "where": {
+  "party": {
+   "not": [
+    "Vacancies"
+   ]
+  }
+ },
  "title": "Republicans held 218 House seats and Democrats 214 on November 11, 2026, with one independent and two seats empty",
  "measure_line": "Seats in the U.S. House of Representatives, by party, as of November 11, 2026",
+ "notes": [
+  "Two seats were vacant."
+ ],
  "source_line": "Source: Office of the Clerk, U.S. House of Representatives, party breakdown, as of November 11, 2026, United States House. Retrieved November 11, 2026. Two seats vacant; the count changes with each vacancy and special election.",
- "alt": "Four bars in one dark ink, each named: Republicans 218, Democrats 214, Independents 1, Vacancies 2.",
+ "alt": "Three bars in one dark ink, each named: Republicans 218, Democrats 214, Independents 1. A note gives the two vacant seats.",
  "table": {
   "caption": "House seats by party, November 11, 2026",
   "columns": [

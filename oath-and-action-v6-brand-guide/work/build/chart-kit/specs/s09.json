@@ -32,7 +32,7 @@
   "illustrative": false,
   "alt": "A timeline of 24 changes in the rules from 1870 to 2026 on four lanes: who counts, who governs, who owns and who checks. The atlas’s picks bunch in two stretches, seven from 1964 to 1978 and eight from 2010 to 2026, from the Fifteenth Amendment in 1870 to Louisiana v. Callais and Trump v. Slaughter in 2026.",
   "table": {
-    "caption": "Twenty-four rule changes since 1870",
+    "caption": "Rule changes since 1870, 24 in all",
     "columns": [
       {
         "field": "date",
@@ -62,7 +62,7 @@
     "Shaded bands: 1964 to 1978, seven of the 24 picks; 2010 to 2026, eight of the 24 picks."
   ],
   "phone": "differs",
-  "phone_note": "On phones the four lanes become four dated lists, each under its thread's name and question.",
+  "phone_note": "On phones the four lanes become four dated lists, each under its thread’s name and question.",
   "artboard": "wide",
   "domain": "all",
   "states": [],

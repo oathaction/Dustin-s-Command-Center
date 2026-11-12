@@ -10,11 +10,11 @@
   "evidence_label": "Finding",
   "grade_line": "Documented: a Bureau of Labor Statistics survey of employers, as copied by FRED",
   "title": "Health care and social assistance added 3.8 million jobs from January 2022 to September 2026, the most of any industry; information and the federal government lost jobs.",
-  "measure_line": "Payroll jobs by industry, seasonally adjusted, change since January 2022 in percent, United States, January 2022 to September 2026, the span both jobs charts share. Every panel shares one vertical scale; labels give the change in jobs and in percent.",
+  "measure_line": "Payroll jobs by industry, seasonally adjusted, change since January 2022 in percent, United States, January 2022 to September 2026, the span both jobs charts share.",
   "notes": [
     "The first rows hold the totals: all nonfarm jobs, its two parts, private industries and government, and federal jobs, which are part of government. The 14 panels below add up to private industries.",
     "Seasonally adjusted: the Bureau removes the swings that recur each year, such as summer hiring and holiday layoffs, so one month compares with the next.",
-    "The Bureau publishes no sampling error for a change over this many months; for employment levels it gives standard errors of 0.1 to 0.9 percent in these industries, smaller than a 90 percent margin of error, and none for government (Bureau of Labor Statistics, All Employees Standard Error Tables. Retrieved November 11, 2026).",
+    "The Bureau publishes no sampling error for a change over this many months. For employment levels it gives standard errors of 0.1 to 0.9 percent in these industries, smaller than a 90 percent margin of error, and none for government (Bureau of Labor Statistics, All Employees Standard Error Tables. Retrieved November 11, 2026).",
     "Government, all levels, gained 1.3 million jobs and federal jobs fell by 197,000, so state and local payrolls, which this dataset does not carry on their own, grew by about 1.5 million.",
     "Federal government jobs peaked at 3,013,000 in October 2024 and stood at 2,682,000 in September 2026.",
     "August and September 2026 are preliminary: the Bureau of Labor Statistics revises each month’s first estimate in the next two monthly reports, and a yearly benchmark revision can move earlier months.",
@@ -190,5 +190,6 @@
     "X15: the heads are in sentence case. X13 is held: the federal row's peak label ('Peak: {value} in {x}', peak_field employees_thousands) overlaps its row label at 390 px and narrower, where the form sets both on one line (E32); the third note gives the peak in words.",
     "X13: the federal row's peak label is set, now that E32 places it at every width.",
     "Round 1 weight trim (maker B): the federal peak's figure is written into labels.totals[3].peak, so the island no longer carries employees_thousands for all 1,026 rows (about 4,000 bytes); the form still finds the peak's month and place from the data. Checked by script: the federal government's highest pct_change_since_2022_01 and highest employees_thousands both fall in October 2024, at 3,013.0 thousand; the drawing is byte for byte as before. The typed figure is checked against fred-payrolls-by-sector-change.csv by work/build/scripts/phase-3/maker_b_figure_checks.py (check 1), which fails if a data refresh moves the peak's month or level."
-  ]
+  ],
+  "reading_guide": "Every panel shares one vertical scale; labels give the change in jobs and in percent."
 }

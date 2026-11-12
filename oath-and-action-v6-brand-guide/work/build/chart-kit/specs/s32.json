@@ -25,7 +25,7 @@
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Timeline of when the parts of Public Law 119-75 on pharmacy benefit managers take effect, after the law’s approval on February 3, 2026: a deadline for federal reporting rules on August 3, 2027; Medicare drug plan rules on January 1, 2028; reporting and full rebate pass-through for employer plans for plan years from August 3, 2028; and Medicare pharmacy contract standards on January 1, 2029.",
+  "alt": "Timeline of when the parts of Public Law 119-75 on pharmacy benefit managers take effect, after the law’s approval on February 3, 2026. Then come a deadline for federal reporting rules on August 3, 2027; Medicare drug plan rules on January 1, 2028; reporting and full rebate pass-through for employer plans for plan years from August 3, 2028; and Medicare pharmacy contract standards on January 1, 2029.",
   "table": {
     "caption": "Effective dates in Public Law 119-75’s pharmacy benefit manager sections",
     "columns": [
@@ -48,7 +48,11 @@
       {
         "field": "what_takes_effect",
         "label": "What starts",
-        "format": "text"
+        "format": "text",
+        "words": {
+          "Medicare drug plans' pharmacy benefit managers may take bona fide service fees only, among other requirements": "Medicare drug plans’ pharmacy benefit managers may take bona fide service fees only, among other requirements",
+          "Standards for Medicare drug plans' contract terms with pharmacies, with accountability for pharmacy benefit managers": "Standards for Medicare drug plans’ contract terms with pharmacies, with accountability for pharmacy benefit managers"
+        }
       },
       {
         "field": "date_basis",
@@ -86,12 +90,17 @@
     "row_text": "{what_takes_effect}",
     "start_key": "In effect",
     "phase_key": "Reaching each plan as its plan year begins",
-    "deadline_key": "Deadline"
+    "deadline_key": "Deadline",
+    "words": {
+      "Medicare drug plans' pharmacy benefit managers may take bona fide service fees only, among other requirements": "Medicare drug plans’ pharmacy benefit managers may take bona fide service fees only, among other requirements",
+      "Standards for Medicare drug plans' contract terms with pharmacies, with accountability for pharmacy benefit managers": "Standards for Medicare drug plans’ contract terms with pharmacies, with accountability for pharmacy benefit managers"
+    }
   },
   "notes_internal": [
     "Maker B, round 1. Data plan row 25, rule 14.39. Domain D06 from the sidecar (Competition and market power); no state named.",
     "Checked against govinfo-pl-119-75-effective-dates.csv: approval February 3, 2026; four later dates, August 3, 2027 (deadline), January 1, 2028, August 3, 2028 (two sections) and January 1, 2029, so 'four dates, from an August 2027 deadline ... to January 2029'. The 18- and 30-month dates are the sidecar's computed dates, which agree with V7 issue I084's status text (sidecar notes).",
     "Every 'plan years beginning on or after' part takes the hatched first year, the sidecar's qualification; the chart does not claim when any plan's year begins.",
-    "H12: 'pharmacy benefit managers' in the title, the law's own term, with note 1's gloss (H02); the plan's 'drug middlemen' stays in the reader question. Read from the left and the right: the title gives the dates Congress set and no judgment of the rules."
+    "H12: 'pharmacy benefit managers' in the title, the law's own term, with note 1's gloss (H02); the plan's 'drug middlemen' stays in the reader question. Read from the left and the right: the title gives the dates Congress set and no judgment of the rules.",
+    "Words pass (editor 39): two summaries in the data file print a straight apostrophe (plans'); labels.words and the table column's words print them curled until the research lead curls the file (R-B13), which also covers the straight double quotes in the sidecar's printed source line."
   ]
 }

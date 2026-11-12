@@ -4141,3 +4141,33 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-392 | Rule 14.11's plate shows 2005 to 2025, the two decades around the survey's changes, with its reason in the measure line | Over 58 years each break was a few pixels wide; the shorter window is the span the question names (Rule 14.10) |
 | D3-393 | Rule 14.12's plate draws total federal receipts for fiscal years 2015 to 2026 at a true 640 px, which the guide's frame scrolls on a phone | Nine source names broke mid-word under columns, and squeezed to a phone's width the full-width drawing broke as the rule's own fault does |
 | D3-394 | The script-drawn charts set their axis figures in a left margin, right-aligned to their gridlines | Figures set inside the plot sat under bars and band labels |
+
+### Engineer, round 1 (`work/handoffs/phase-3/20261112_Round-1-Engineer-Notes.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-395 | Chapter 14 places a maker's spec sNN as `s-14-sNN`, resolved to `specs/sNN.json` | The weight gates and the per-plate share count chapter 14's plates by that prefix, as the pilot placed them |
+| D3-396 | The shift arrow moves from `shift-arrows.js` into `parts.js` as `K.parts.arrow` (R-B6) | Four forms draw it; a page that loads one of them alone must have it; S11, S12 and S15 draw byte for byte as before |
+| D3-397 | The payroll margin's line is a source line variant of the payroll file (`with_margin`), written by `data_round0_build.py` | C2 lets a spec's line equal a sidecar variant, so the kit's source check holds S14 to it (D3-219) |
+| D3-398 | A `where` range compares numbers as numbers and anything else as text | Months (`2022-01`) and dates sort correctly as text, years and counts as numbers (R-B3) |
+| D3-399 | Map geometry joins C1 as unprojected, unsimplified GeoJSON with properties limited to IDs and names; the kit projects and simplifies at build | The research lead's proposal: the data stays as the Bureau published it, projection is a drawing choice, and the page carries only drawn paths |
+| D3-400 | `v7-claims-by-hub-and-grade` is written by `data_round0_build.py` beside the table it sums, as `kind: derived` | C1 keeps derived tables in their own files, written by script; one script then checks both against the register |
+| D3-401 | `phase3_ch14_build.py` writes what it can and exits 1 on any fault | The makers' 26 specs and entries can be seen in a build while one is still missing; the strict build still fails on the missing plate |
+| D3-402 | A spec that serves two entries is drawn once; the second entry names the first's specimen | S13 would weigh 37 KB twice (its table is the sparkline table 14.128 describes) |
+| D3-403 | Chapter 14 keeps the plan's group numbers while partial | Printed group numbers stay the ones later rounds will print |
+| D3-404 | The guide reads rule numbers of up to three digits | Chapter 14 runs to 14.141 (DR-240) |
+| D3-405 | The per-plate reserve for chapter 14's rules falls to the selection guide's and palette specification's 0.10 MB once rules 14.1 to 14.14 are built | Their bytes now sit in the chapter as built; counting both would halve the share |
+| D3-406 | The far-over test lists round 0's specimens approved on board 1 (S05, S13) by name with their bytes, up to the bytes board 1 measured, instead of failing them; every new specimen keeps the test | They were approved at their measured bytes, which sit inside the projection that set the 2.804 MB stop (the coordinator's call); maker B first checks they carry no column their drawing and table do not use |
+| D3-407 | A lookup draws in the kit's own classes, with chapter 18's words and keys and no utility icons | A plain page has no sprite; the kit's figure keeps one stylesheet; the words and keyboard behavior are chapter 18's |
+| D3-408 | A lookup's search also reads the spec's search fields the table does not print, carried on each row | S38 searches subsystem and actor, which its four-column table leaves out |
+| D3-409 | `K.parts.named_fill` carries the light fill rule; `ranked-bar` takes `labels.named` | One copy of palette rule R3 in the kit (D3-164) |
+| D3-410 | Gap bracket words keep inside their panel and clear its other bracket: other side first, then without the unit | The four gaps fit at every guide width with their unit where there is room |
+| D3-411 | An entry plate's caption is the entry's `caption`, else the plan's question curled | The guide sets curly apostrophes, and the makers' words come first (ED-E5) |
+| D3-412 | Contract C5 is corrected to the kit's order (title, measure line, reading guide); the kit does not change | The approved Explainer sets the measure line directly under the title, and board 1's captures show the kit's order (ED-E3) |
+| D3-413 | A red point by name is a role of the shared light-fill part, with its keyline on Newsprint only | One rule for the named marks of a chart; the keyline token exists for Newsprint, where Pillar Red falls under 3 to 1 (ED-E1) |
+| D3-414 | The codes test reads a text node with the text before it in its block | A check that made a maker change a correct typed chip was the check's fault (the systems designer's request) |
+| D3-415 | `v7_check.py` counts T and LX connections among the IDs that may not print bare | V7 names connections T01 to T12 and LX1 to LX5 beside L01 to L99 |
+| D3-416 | An avoid entry's sketch takes a plate of its own, headed with the form's name as one that misleads and carrying the do-not-publish bar; a reference sketch's plate reads "a sketch" | Under "Correct application" the misleading form read as the right one (R-B12); a sketch a reader could lift must say it is not for publishing |
+| D3-417 | A second dataset rides in the island only for a form that reads it | S05 carried 400 bytes it never drew (R-B11) |
+| D3-418 | A pivot's absent cell is a bare `<td></td>` and a present empty one carries `data-n` | About 7 bytes a cell (A8); absent cells outnumber empty values |
+| D3-419 | A sketch is one inline SVG classed `oac-svg oac-sketch`, colored only by the kit's role classes, at most 4 KB (reference) or 2 KB (avoid) | The kit's classes carry the approved tokens on both grounds and the forced-colors rules; one format lets the build check every sketch |

@@ -34,9 +34,9 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Treasury’s monthly statement of federal receipts",
-  "title": "Customs duties grew fastest of the federal government’s sources of revenue from fiscal 2016 to 2026, to almost five times their 2016 level, while all receipts grew 65 percent.",
-  "reading_guide": "Each line divides a source’s receipts by its own fiscal 2016 total and multiplies by 100, so every line starts at 100. A line at 200 has doubled; the lines compare growth, never size.",
-  "measure_line": "Federal receipts by source, indexed to fiscal 2016 = 100, nominal dollars, fiscal years 2016 to 2026 (October 1 to September 30), United States. The chart starts ten fiscal years before the latest. Customs duties take the heavy line, all receipts the medium gray line and the other sources thin gray lines.",
+  "title": "Customs duties grew fastest of the federal government’s revenue sources from fiscal 2016 to 2026, to almost five times their 2016 level.",
+  "reading_guide": "Each line divides a source’s receipts by its own fiscal 2016 total and multiplies by 100, so every line starts at 100. A line at 200 has doubled; the lines compare growth, never size. Customs duties take the heavy line, all receipts the medium gray line and the other sources thin gray lines.",
+  "measure_line": "Federal receipts by source, indexed to fiscal 2016 = 100, nominal dollars, fiscal years 2016 to 2026 (October 1 to September 30), United States. The chart starts ten fiscal years before the latest.",
   "notes": [
     "Customs duties brought in $34.8 billion in fiscal 2016 and $173.2 billion in fiscal 2026, 3.2 percent of all receipts that year. A source that starts small can grow fast in percent and stay a small share of the total.",
     "All receipts rose from $3,266.7 billion to $5,403.3 billion. The figures are not adjusted for inflation.",
