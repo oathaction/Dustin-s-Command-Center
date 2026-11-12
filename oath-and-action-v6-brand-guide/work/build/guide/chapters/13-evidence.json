@@ -37,7 +37,7 @@
    "id": "13.1",
    "title": "Title each chart or diagram as a finding, an association, an estimate or an illustration.",
    "rule": [
-    "An evidence label, a chip in the chart chip colors, sits above every chart title and names the kind of evidence in one of four words. A finding is a measured result with a source and a period, such as a count or a survey figure. An association is what our systems atlas defines as “Two measures that move together without an established causal path.” An estimate rests on a model’s assumptions, such as a projection. An illustration shows how a design works with invented values.",
+    "An evidence label, a chip in the colors our charts give their chips, sits above every chart title and names the kind of evidence in one of four words. A finding is a measured result with a source and a period, such as a count or a survey figure. An association is what our systems atlas defines as “Two measures that move together without an established causal path.” An estimate rests on a model’s assumptions, such as a projection. An illustration shows how a design works with invented values.",
     "The grade follows the label in words: the atlas’s grade for a figure from the atlas (Rule 13.2), and Documented for a public agency’s own count or survey or a public record, with its source after the colon. A diagram of atlas connections prints the grade word of its least certain step in the label’s place."
    ],
    "tokens": [
@@ -63,7 +63,7 @@
    "specs": [
     {
      "label": "Evidence label",
-     "value": "Finding, Association, Estimate or Illustration, in the label style on the chart chip fill, which turns with the theme",
+     "value": "Finding, Association, Estimate or Illustration, in the label style on the chip fill, which changes between Newsprint and Charcoal",
      "token": "oa.chart.color.chip.fill.onNewsprint"
     },
     {
@@ -77,7 +77,7 @@
     },
     {
      "label": "An estimate",
-     "value": "A figure that rests on a model’s assumptions, such as a projection, a small-area model or a with-and-without calculation, with its range or method"
+     "value": "A figure that rests on a model’s assumptions, such as a projection, a small-area model, which estimates small places from a larger sample, or a with-and-without calculation, a count of what would have happened without a program, with its range or method"
     },
     {
      "label": "An association",
@@ -224,7 +224,7 @@
    "id": "13.4",
    "title": "Draw a connection’s grade in the atlas’s line code.",
    "rule": [
-    "A connection, the arrow from one variable to another in our systems atlas, takes the line of its own grade, drawn by the atlas build’s own function as Rule 10.10 sets out: solid for documented and well supported, dashed for plausible, dash and dot for contested, and dots for a hypothesis. Its grade word prints beside it, and a documented connection’s label starts with the record square, a filled square that says the public record itself shows the link.",
+    "A connection, the arrow from one variable to another in our systems atlas, takes the line of its own grade, drawn by the same code that draws our systems atlas, as Rule 10.10 sets out: solid for documented and well supported, dashed for plausible, dash and dot for contested, and dots for a hypothesis. Its grade word prints beside it, and a documented connection’s label starts with the record square, a filled square that says the public record itself shows the link.",
     "A loop, a chain of connections that returns to where it started, draws each step in its own line, so its least certain step stands out, and each step of a conceptual loop, one with no complete chain of numbered connections, draws as a hollow line. The oa.chart.grade tokens hold every number, listed in the Specifications."
    ],
    "tokens": [
@@ -261,7 +261,7 @@
     },
     {
      "label": "Plausible",
-     "value": "Dashed, 4 and 2 line widths, butt caps: 8 and 4 px on a 2 px line",
+     "value": "Dashed, 4 and 2 line widths, with flat ends: 8 and 4 px on a 2 px line",
      "token": "oa.chart.grade.plausible"
     },
     {
@@ -316,8 +316,8 @@
    "id": "13.5",
    "title": "Keep grade, effect size, uncertainty and delay apart, each with its own mark.",
    "rule": [
-    "Four properties of a claim keep their own marks and words. The evidence grade takes the line of Rule 13.4 or the grade word. A reform’s effect size prints as the atlas’s ordinal code, a rank of small, moderate or large with no measured amount, in one row for each outcome family, one of the four groups of results the atlas judges reforms by. Uncertainty prints in the atlas’s own words, or for a survey figure as its margin of error, the range around the figure that sampling allows. Delay, the time an effect takes, draws as ticks on the connection.",
-    "No mark carries two properties, and the four outcome families never add into one score. Our systems atlas gives the reason: “The four outcome families use different units. A reform can improve one while imposing a cost on another, and the evidence behind each estimate differs in quality.”"
+    "Four properties of a claim keep their own marks and words. Two sit on the connection itself: the evidence grade, as the line of Rule 13.4 or the grade word, and delay, the time an effect takes, as ticks. A reform’s effect size prints as the atlas’s ordinal code, a rank of small, moderate or large with no measured amount, in one row for each outcome family, one of the four groups of results the atlas judges reforms by. For uncertainty we quote the atlas’s own words, or give a survey figure’s margin of error, the range around the figure that sampling allows.",
+    "Each mark carries one property, and each outcome family keeps its own row, as our systems atlas explains: “The four outcome families use different units. A reform can improve one while imposing a cost on another, and the evidence behind each estimate differs in quality.”"
    ],
    "tokens": [
     "oa.color.graphic.essential.onNewsprint",
@@ -331,7 +331,7 @@
    },
    "correct": {
     "specimen": "s-13-5-correct",
-    "caption": "Reform R-30 with each property in its own place: the grade of the evidence that it works in the label, its effect on each outcome family with the atlas’s qualifiers kept, the atlas’s confidence in its own words, and the delay of each connection it targets, marked in Rule 12.5’s red."
+    "caption": "Reform R-30 with each property in its own place: the label giving the grade of the evidence that it works, its effect on each outcome family with the atlas’s qualifiers kept, the atlas’s confidence in its own words, and the delay of each connection it targets, marked in Rule 12.5’s red."
    },
    "failure": {
     "specimen": "s-13-5-failure",
@@ -441,7 +441,7 @@
    "id": "13.7",
    "title": "Print the period and the vintage, and give charts shown together one window.",
    "rule": [
-    "The measure line names the observation period, such as 2009 to 2025. Where a publisher revises its figures, the chart also names the vintage, the release its figures come from, and marks any figure the publisher calls preliminary. The Census Bureau’s release of September 15, 2026 carries corrected poverty thresholds for 2019 to 2024 and new weights for 2024, so a chart of those years names that release.",
+    "The measure line names the observation period, such as 2009 to 2025. Where a publisher revises its figures, the chart also names the vintage, the release its figures come from, and marks any figure the publisher calls preliminary. The Census Bureau’s release of September 15, 2026 carries corrected poverty thresholds for 2019 to 2024 and new population weights for 2024, the counts that scale the survey’s sample to the country, so a chart of those years names that release.",
     "Charts shown together share one time window, printed once with its reason, and house rule H09 holds: “No chart or sentence splits a period at an inauguration date.” When a publisher revises a figure a published chart shows, the chart takes the new release and a dated update line that names it; a correction note (Rule 13.13) is for our own errors."
    ],
    "why": {
@@ -663,8 +663,8 @@
    "id": "13.11",
    "title": "Draw documented events apart from causal claims.",
    "rule": [
-    "Our systems atlas keeps two logs of dated events. The repair log records 64 changes to the rules that decide who officials answer to, and the delivery log records 24 times government did something hard at scale with a measured result. An event records what happened on a date. A causal claim says that one thing moves another, and the atlas grades it.",
-    "On a chart or diagram, an event takes a mark of its own, a shape for its instrument with an outline for one still pending, and no arrowhead, line pattern or sign. Where the atlas codes an event’s direction, such as toward voters, the page prints the atlas’s words as the atlas’s assessment, with the atlas named, apart from the event’s date, place and text. A causal claim keeps the arrow, the sign and the line of Rule 13.4."
+    "Our systems atlas keeps two logs of dated events. The repair log records 64 changes to the rules that decide who officials answer to, and the delivery log records 24 times government did something hard at scale with a measured result. An event records what happened on a date; a causal claim, which the atlas grades, says that one thing moves another.",
+    "On a chart or diagram, an event takes a mark of its own, a shape for its instrument with an outline for one still pending, and no arrowhead, line pattern or sign. Where the atlas codes an event’s direction, such as toward voters, the page prints the atlas’s words and names the atlas as their source, apart from the event’s date, place and text. A causal claim keeps the arrow, the sign and the line of Rule 13.4."
    ],
    "tokens": [
     "oa.color.graphic.essential.onNewsprint"
@@ -881,8 +881,8 @@
   "Source: U.S. Census Bureau, Poverty in the United States: 2024 (P60-287), Table B-2, Supplemental Poverty Measure, children under 18, 2020, 2021 and 2024, United States. Retrieved November 6, 2026. Rates as published before the Bureau’s August 2026 correction; P60-277 (September 13, 2022) printed the same 2020 and 2021 rates.",
   "Source: U.S. Bureau of Labor Statistics, Current Employment Statistics, all nonfarm employees, monthly change, seasonally adjusted, January 2022 to September 2026, United States, via FRED, Federal Reserve Bank of St. Louis. Retrieved November 6, 2026. August and September 2026 are preliminary and will be revised.",
   "Source: Oath & Action’s systems atlas, Who Do They Answer To?, the records each rule names (connections, loops, reforms, claims, the repair log, the delivery log, the headline figures and the glossary), snapshot of October 15, 2026, United States. Retrieved November 11, 2026. Facts the atlas rechecked carry their own check dates; inclusion in the snapshot alone does not mean a fact was rechecked on that date.",
-  "Source: José Azar, Ioana Marinescu and Marshall I. Steinbaum, “Labor Market Concentration,” Journal of Human Resources, 2022, online job postings, 2010 to 2013, United States, as recorded in our systems atlas, claim CL1507, snapshot of October 15, 2026. Online postings leave out some jobs, behind Rule 13.1.",
-  "Source: National Highway Traffic Safety Administration, Lives Saved by Vehicle Safety Technologies and Associated Federal Motor Vehicle Safety Standards, 1960 to 2012 (DOT HS 812 069), United States, as recorded in our systems atlas’s delivery log, delivery case DL06, snapshot of October 15, 2026. The agency calls its figure “a hypothetical estimate”, behind Rule 13.1.",
+  "Source: José Azar, Ioana Marinescu and Marshall I. Steinbaum, “Labor Market Concentration,” Journal of Human Resources, 2022, online job postings, 2010 to 2013, United States, as recorded in our systems atlas, claim CL1507, snapshot of October 15, 2026. Online postings leave out some jobs. The association behind Rule 13.1.",
+  "Source: National Highway Traffic Safety Administration, Lives Saved by Vehicle Safety Technologies and Associated Federal Motor Vehicle Safety Standards, 1960 to 2012 (DOT HS 812 069), United States, as recorded in our systems atlas’s delivery log, delivery case DL06, snapshot of October 15, 2026. The agency calls its figure “a hypothetical estimate”. The estimate behind Rule 13.1.",
   "Source: New State Ice Co. v. Liebmann, 285 U.S. 262, 311 (1932), Brandeis, J., dissenting, decided March 21, 1932, United States Reports, via the Library of Congress. Retrieved November 11, 2026. The quotation behind Rule 13.12."
  ]
 }

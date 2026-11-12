@@ -74,7 +74,7 @@
     ]
   },
   "chart_notes": [
-    "Each row runs from its 2020 rate, an open dot, to its 2024 rate, a solid dot. Labels at the right test each change against its own margin of error: down 3.7 points for citizens 18 to 24 and down 2.4 for 25 to 44, both past their margins of error; too close to call for 45 to 64 (−1.0); within the margin of error for 65 and over (+0.2)."
+    "Each row runs from its 2020 rate, an open dot, to its 2024 rate, a solid dot. Labels at the right test each change against its own margin of error: down 3.7 points for citizens 18 to 24 and down 2.4 for 25 to 44, both past their margins of error; too close to call for 45 to 64 (−1.0); no clear change for 65 and over (+0.2), within its margin of error."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -100,7 +100,7 @@
       "18_to_24": "Down 3.7 points",
       "25_to_44": "Down 2.4 points",
       "45_to_64": "Too close to call (−1.0)",
-      "65_and_over": "Within the margin of error (+0.2)"
+      "65_and_over": "No clear change (+0.2)"
     },
     "domain": [
       40,

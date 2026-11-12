@@ -206,3 +206,28 @@ D3-xxx | A scroll frame on the proof sheet is a named, focusable region only whi
 
 - A screen reader on the sheet; the names and roles were read from the DOM and axe only.
 - The lead-in in the kit and in chapter 13's plates, which the engineer and the editor draw.
+
+## Second pass
+
+DR-191's second pass: the editor's "Fix pass read" in `work/handoffs/phase-3/20261111_Round-0-Editor-Notes.md` found seven faults in the proof sheet's words, P1 to P7. Each fix is in `build_palette_proofs.py`, and the sheet, its measures and its 43 captures were rebuilt from it.
+
+| # | Fault | Fix |
+|---|---|---|
+| P1 | Straight apostrophes in the new text | A new function, `curly()`, sets every apostrophe a reader meets as U+2019. It covers the words on the page and the names and alt texts screen readers speak; style, script and code stay as written. The build now stops if a straight apostrophe is left in the words, and none is |
+| P2 | "Closest pair, Group 2 and 4" | "Closest pair, Groups 2 and 4" |
+| P3 | "margin 0.5 points" | "margin of error 0.5 points at 90 percent confidence" in the map's note. The label beside the national tile reads "United States, margin of error 0.5 points" |
+| P4 | Two sentences on one frame ("Swatches marked…") | "Swatches marked In tokens come from release 6.0.0-gate3.1; those marked Proposed come from the palette proposal and wait for board 1." |
+| P5 | "the 2 new colors" | "the two new colors", through a small `nw()` helper for numbers under ten in prose (H06) |
+| P6 | "V7's renderer's dash arrays" | "the dash arrays in V7's drawing code" |
+| P7 | The shortest-run sentence | "A run shorter than 20 line widths (40 px on a 2 px line), counted after any lead-in, prints its grade in words beside it, and a sample in a key runs at least that long." |
+
+### Second pass tested
+
+- Each new wording found in the rebuilt page by script. No straight apostrophe is left in its words or in any `aria-label`, `data-label`, `alt` or `title`, and no em dash.
+- 46 of 46 checks. 43 captures with 0 px of page overflow at 390 px. 459 samples match tokens and simulations within 0.001.
+- axe-core at 1440 and 390 px, with the measured-value tables closed and open: 0 violations. Every scrolling frame keeps its tab stop, role and name.
+- The national tile's three-line label at 1440 px, clear of the map.
+
+### Second pass not tested
+
+- A screen reader on the curly apostrophes in names; axe and the DOM only.
