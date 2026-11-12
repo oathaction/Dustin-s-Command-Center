@@ -358,9 +358,10 @@ function band_faults(d, tok, at) {
 }
 // D3-899 (call 9, V20 section 3; AX M1): an interval form's plot is wide enough for its marks. Each row's interval is read
 // from what the drawing records, its low and high ends (K.parts.whisker and K.parts.band record them), and its estimate's
-// mark (a dot's diameter; a line's width for a band, 2 px). The middle row's interval, in pixels, must be at least twice
-// its estimate's mark and run at least 2 px past it on each side; under that, most intervals hide behind their marks at
-// this width (Rule 14.9's plate at 294 px with its rows side by side: 19.7 px against a 13 px dot), and the drawing fails.
+// mark (a dot's diameter; a line's width for a band, 2 px). The middle row's interval, in pixels, must run 5 px past a dot
+// on each side (23 px for a 13 px dot) and 2 px past a line (6 px for a 2 px line); under that, most intervals hide behind
+// their marks at this width (Rule 14.9's plate at 294 px with its rows side by side: 19.7 px against a 13 px dot), and the
+// drawing fails.
 function interval_faults(spec, d, def, at) {
   if (!def || !def.interval) return [];
   const enc = spec.encode || {}, vf = enc.value !== undefined ? enc.value : enc.y;
@@ -384,12 +385,12 @@ function interval_faults(spec, d, def, at) {
     let len = 0;
     e.lo.forEach(a => e.hi.forEach(b => { len = Math.max(len, Math.hypot(b[0] - a[0], b[1] - a[1])); }));
     runs.push(len);
-    const mk = e.est || line;
-    needs.push(Math.max(2 * mk, mk + 4));
+    // 5 px past a dot on each side, 2 px past a line (a dot hides the ends of a short line; a band shows past a thin one)
+    needs.push(e.est ? e.est + 10 : line + 4);
   }
   if (!runs.length) return [];
   const mr = median(runs), mn = median(needs);
-  if (mr + 1e-6 < mn) return [`interval: at this width the middle row's interval spans ${mr.toFixed(1)} px, under the ${mn.toFixed(1)} px its estimate's mark needs (twice the mark, and 2 px past it each side), so the intervals cannot be seen; give the plot more width, or stack the rows (D3-899)${at}`];
+  if (mr + 1e-6 < mn) return [`interval: at this width the middle row's interval spans ${mr.toFixed(1)} px, under the ${mn.toFixed(1)} px its estimate's mark needs (5 px past a dot, 2 px past a line, on each side), so the intervals cannot be seen; give the plot more width, or stack the rows (D3-899)${at}`];
   return [];
 }
 // AX S2 and BC S1 (round 2 fix pass): no line, path or outline runs through a word. The kit gives a word on the ground the

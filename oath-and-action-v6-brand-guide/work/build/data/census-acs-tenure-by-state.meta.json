@@ -3,15 +3,16 @@
  "kind": "public",
  "publisher": "U.S. Census Bureau",
  "title_or_table": "American Community Survey 1-year estimates, Table B25003, Tenure",
- "table_id": "ACS 2025 1-year, B25003",
+ "table_id": "ACS 2025 1-year, B25003; percent margins from Data Profile DP04 (lines DP04_0046P and DP04_0047P)",
  "url": [
   "https://api.census.gov/data/2025/acs/acs1?get=NAME,group(B25003)&for=state:*",
-  "https://api.census.gov/data/2025/acs/acs1?get=NAME,group(B25003)&for=us:1"
+  "https://api.census.gov/data/2025/acs/acs1?get=NAME,group(B25003)&for=us:1",
+  "https://api.census.gov/data/2025/acs/acs1/profile?get=NAME,DP04_0045E,DP04_0045M,DP04_0046E,DP04_0046M,DP04_0046PE,DP04_0046PM,DP04_0047E,DP04_0047M,DP04_0047PE,DP04_0047PM&for=state:*"
  ],
  "observation_period": "Calendar year 2025",
  "geography": "50 states and DC, with a United States row (code US)",
  "universe_or_base": "Occupied housing units (households), by whether the household owns or rents its home",
- "unit": "households in housing units, with 90 percent margins of error; owner_pct and renter_pct are computed by the studio from the counts and stored to four decimals, so a chart rounds once; households_moe is the published margin of the households total, and owner_pct_moe and renter_pct_moe are the shares’ 90 percent margins in percentage points, computed by the studio by the Census Bureau’s formula for a proportion and stored to four decimals",
+ "unit": "households in housing units, with 90 percent margins of error; owner_pct and renter_pct are computed by the studio from the counts and stored to four decimals, so a chart rounds once; households_moe is the published margin of the households total (B25003_001M); owner_pct_moe_dp04 and renter_pct_moe_dp04 are the shares’ 90 percent margins in percentage points as the Bureau publishes them in DP04, to one decimal; owner_pct_moe_formula and renter_pct_moe_formula are the studio’s check, computed by the Bureau’s formula for a proportion and stored to four decimals",
  "date_retrieved": "2026-11-11",
  "vintage": "ACS 2025 1-year release",
  "qualification": "Survey estimates; shares near 50 percent should be compared using the margins of error before a chart calls a state mostly renters or mostly owners",
@@ -64,14 +65,24 @@
    "description": "90 percent margin of error of the households total (B25003_001M), as published",
    "unit": "households"
   },
-  "owner_pct_moe": {
+  "owner_pct_moe_formula": {
    "type": "number",
-   "description": "90 percent margin of error of owner_pct, computed from the published counts and margins by the Census Bureau’s formula for a proportion",
+   "description": "the studio’s check, printed nowhere (data lead ruling RF-11a): 90 percent margin of error of owner_pct by the Census Bureau’s formula for a proportion",
    "unit": "percentage points"
   },
-  "renter_pct_moe": {
+  "renter_pct_moe_formula": {
    "type": "number",
-   "description": "90 percent margin of error of renter_pct, computed from the published counts and margins by the Census Bureau’s formula for a proportion",
+   "description": "the studio’s check, printed nowhere (data lead ruling RF-11a): 90 percent margin of error of renter_pct by the Census Bureau’s formula for a proportion",
+   "unit": "percentage points"
+  },
+  "owner_pct_moe_dp04": {
+   "type": "number",
+   "description": "90 percent margin of error of the owner share as the Census Bureau publishes it in Data Profile DP04 (DP04_0046PM); the margin a chart prints",
+   "unit": "percentage points"
+  },
+  "renter_pct_moe_dp04": {
+   "type": "number",
+   "description": "90 percent margin of error of the renter share as the Census Bureau publishes it in Data Profile DP04 (DP04_0047PM); the margin a chart prints",
    "unit": "percentage points"
   }
  },
@@ -80,7 +91,7 @@
  "domain": "D09",
  "states": [],
  "source_line_variants": {
-  "with_margin": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B25003, tenure, 2025, 50 states and DC. Retrieved November 11 and 12, 2026. Survey estimates; shares and their 90 percent margins of error computed by Oath & Action from the table’s counts and margins."
+  "with_dp04_margin": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B25003, tenure, with margins of error from Data Profile DP04, 2025, 50 states and DC. Retrieved November 11 and 12, 2026. Survey estimates; shares computed by Oath & Action from the table’s counts; margins of error at 90 percent as the Bureau publishes them in DP04."
  },
  "source_line_columns": {
   "printed_source_line": [
@@ -92,21 +103,27 @@
    "owner_pct",
    "renter_pct"
   ],
-  "with_margin": [
+  "with_dp04_margin": [
    "households",
-   "households_moe",
    "owner_households",
    "owner_moe",
    "renter_households",
    "renter_moe",
    "owner_pct",
    "renter_pct",
-   "owner_pct_moe",
-   "renter_pct_moe"
+   "owner_pct_moe_dp04",
+   "renter_pct_moe_dp04"
   ]
  },
  "notes": [
-  "Margins of the shares (statistics review S5; data lead ruling RF-11), November 12, 2026: households_moe is B25003_001M from the same ACS 2025 1-year table, read from the Census Bureau’s API (https://api.census.gov/data/2025/acs/acs1?get=NAME,group(B25003)&for=state:* and &for=us:1); the same call returned every count and count margin in this file unchanged. owner_pct_moe and renter_pct_moe follow formula (6) for a proportion in the Census Bureau's \"Understanding and Using American Community Survey Data: What All Data Users Need to Know\" (2020), chapter 8: the share's margin is the square root of (the part's margin squared minus the share squared times the total's margin squared), over the total; \"if the value under the square root is negative, then substitute a “plus” for the “minus” sign\". The ratio form was needed for 0 of the 104 shares. The District of Columbia’s renter share carries a margin of 1.68 points, New York’s 0.32, California’s 0.30 and the nation’s 0.14.",
-  "The Bureau’s Data Profile DP04 (ACS 2025 1-year, lines DP04_0046P and DP04_0047P, read November 12, 2026) prints the same shares to one decimal with margins it computes itself, 0.2 to 1.7 points; every DP04 share equals this file’s share rounded to one decimal, and the largest gap between a DP04 margin and the formula’s is 0.32 points (ME, 0.68 against 1.0). This file keeps the formula’s margins, so each share and its margin come from one table (RF-11)."
+  "Margins of the shares (statistics review S5; data lead rulings RF-11 and RF-11a), November 12, 2026. The Bureau publishes the shares’ margins in Data Profile DP04 of the same ACS 2025 1-year release (DP04_0046PM and DP04_0047PM, read from its API; 0.2 to 1.7 points for renters), and a chart prints those: the District of Columbia’s renter share, 61.9 percent, carries 1.5 points. Every DP04 share equals this file’s share rounded to one decimal. households_moe is B25003_001M, read from the same API call that returned every count and count margin in this file unchanged. The *_formula columns follow formula (6) for a proportion in the Census Bureau’s \"Understanding and Using American Community Survey Data: What All Data Users Need to Know\" (2020), chapter 8, with its ratio form only where the term under the root is negative; they run up to 0.32 points from DP04’s (Maine’s owners, 0.68 against 1.0) and are the studio’s check, printed nowhere (RF-11a)."
+ ],
+ "margin_columns": {
+  "owner_pct": "owner_pct_moe_dp04",
+  "renter_pct": "renter_pct_moe_dp04"
+ },
+ "check_only_columns": [
+  "owner_pct_moe_formula",
+  "renter_pct_moe_formula"
  ]
 }

@@ -4,8 +4,8 @@
  * at the middle of the break by a small open ring, which a one-line key over the plot names with labels.gap's words
  * (MB-19: marked and named at every width). Periods the
  * spec names carry their words beside their dot, or further out on a hairline leader that crosses no stretch of the path
- * and passes no other dot (the data lead's MB-12); the latest period always sits beside its dot, on a halo over the path
- * if it must; a name with no place is listed under the chart. The first and last periods take a larger dot, so the path's direction reads without arrows.
+ * and passes no other dot (the data lead's MB-12); the latest period takes a place clear of the path first, then a
+ * leader that crosses it, and only then a place beside its dot on a halo over the path; a name with no place is listed under the chart. The first and last periods take a larger dot, so the path's direction reads without arrows.
  * Gridlines both ways, the y values in a left gutter and the x values along the bottom.
  * encode: time (month or year: each period's first month for a quarter), x (number), y (number).
  * labels: named ({time: words}: periods named on the drawing; the latest claims room first, then the rest in the spec's
@@ -83,7 +83,7 @@
         if (!r || !ok(r)) { c.warn('labels.named names no period with both values: ' + k); return; }
         var p = pt(r), big = r === first || r === last;
         var words = W < 330 && L.short && L.short[k] !== undefined ? L.short[k] : named[k];   // a narrow column takes the short words
-        items.push({ x: p[0], y: p[1], r: big ? c.t('dot-vertex-radius') + 1 : rs, words: words, weight: 600, last: r === last });
+        items.push({ x: p[0], y: p[1], r: big ? c.t('dot-vertex-radius') + 1 : rs, words: words, short: L.short && L.short[k] !== undefined ? L.short[k] : null, weight: 600, last: r === last });
       });
       if (L.gap) {
         rows.forEach(function (r, i) {
@@ -168,7 +168,12 @@
         // the path, never over a dot or a name
         var far = [12, 26, 44, 66, 92, 124, 160];
         var dots_only = dotbox.filter(mine);
-        if (it.last) { if (!place(it, dots_only, [0, 4, 8]) && !place(it, avoid.filter(mine), far, { loose: true }) && !place(it, dots_only, far, { loose: true })) unplaced.push(it); return; }
+        // round 2 fix pass (BC S1): the latest period first takes a place clear of the path, beside its dot or on a leader that
+        // crosses no path, then a leader that may cross it; only then does it sit over the path on a halo, which would cut a
+        // gap out of the path's line
+        // where its full words find no such place, it takes its short words (labels.short) clear of the path first
+        var sh = it.short && it.short !== it.words ? Object.assign({}, it, { words: it.short }) : null;
+        if (it.last) { if (!place(it, avoid.filter(mine), [0, 4, 8].concat(far)) && !(sh && place(sh, avoid.filter(mine), [0, 4, 8].concat(far))) && !place(it, avoid.filter(mine), far, { loose: true }) && !place(it, dots_only, [0, 4, 8]) && !place(it, dots_only, far, { loose: true })) unplaced.push(it); return; }
         // the gap: a small open ring at the middle of the break, which the key over the plot names (MB-19)
         if (it.gap) {
           c.circle(it.x, it.y, 3.5, { fill: 'surface', mark: false });

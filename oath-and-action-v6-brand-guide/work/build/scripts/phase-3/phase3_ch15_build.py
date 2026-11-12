@@ -624,7 +624,8 @@ GAP_A, GAP_PR, GAP_TRI = 32, 40, 16       # the column gaps of the wide composit
 TRI = (WIDE - 48 - 2 * GAP_TRI) // 3      # 200 px: a column of a three-across plate
 INK = "var(--oa-color-graphic-essential)"
 BASE = (":scope{color:var(--oa-color-text-primary)}.p{box-sizing:border-box;padding:16px;font:var(--oa-type-body);max-width:100%}"
-        ".p *{box-sizing:border-box}:where(.p) :where(p){margin:0}")
+        ".p *{box-sizing:border-box}:where(.p) :where(p){margin:0}"
+        ".p :is(.gr,.nt,.ra,.q,.src,li){text-wrap:pretty}")      # no word left alone at the end of a line (BC S16)
 LAYOUT = (".fx{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.fx.pr{gap:24px}.fx.tri{gap:0}.fx>div{min-width:0}"
           ".fx>div>:first-child{margin-top:0}.fx>div>*+.k{margin-top:16px}"
           "@container oa-frame (min-width:680px){.p.wd{padding:24px}"
@@ -683,7 +684,9 @@ CSS.update({
     "two": ".two{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:20px}.two.tw{gap:12px;margin-top:0}"
            ".two.tw>p{margin:0}",
     "kd2": (".kd2{display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:12px;font:var(--oa-type-body-small)}"
-            ".kd2 .sv{margin-top:4px}.kd2 b{font-weight:var(--oa-font-weight-semibold)}"),
+            ".kd2 .sv{margin-top:4px}.kd2 b{font-weight:var(--oa-font-weight-semibold)}.kd2+.kd2{margin-top:8px}"),
+    # a row of typed chips, a list with no punctuation to touch a chip's edge (BC S16)
+    "cr": ".cr{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 8px}",
 })
 
 
@@ -2604,8 +2607,6 @@ def rule_15_17(book):
     need(titles == {"EC2": "Public investment in research and infrastructure", "EC10": "Costs of tariffs and trade rules",
                     "TC5": "Government's ability to build and run digital services", "TC7": "Use of pricing algorithms"},
          "the titles of the decided variables changed")
-    vname = {c: lc(t) for c, t in titles.items()}
-    vname["TC5"] = "the " + vname["TC5"]          # "the government’s ability", as a phrase in a sentence
     need(sorted(ed[4] for ed in edges) == sorted(AUTH), "the diagram leaves out an authority connection")
 
     def li(k):
@@ -2724,8 +2725,13 @@ def rule_15_18(book):
         need(LOOP[k]["evidence"] == g and s_ in LOOP[k]["evidence_summary"], f"Loop {k}'s grade or summary changed")
     b, h = drawn_loop(2, st, [{"sign": x, "hollow": True} for x in sg], numbered=False, inside=("B2", "balancing"), thin=True)
     miss = es[1]
-    lab_ = (f'<div class="evr"><span class="ev">{e(GRADE["well-supported"][0])}</span><span class="gr">the atlas’s grade for '
-            f'the mechanism; no numbered chain, which the atlas calls the weakest point</span></div>')
+    lab_ = (f'<div class="evr"><span class="ev">{e(GRADE["well-supported"][0])}</span><span class="gr">'
+            f'{e(tie("the atlas’s grade for the mechanism; no numbered chain, which the atlas calls the weakest point"))}'
+            f'</span></div>')
+    # BC S16: the pill's "UI", spelled out in the atlas's own summary of the loop
+    ui = ("benefits written into law", "expand without a new vote")
+    need(b2["summary"].startswith(f"When a recession cuts earnings, {ui[0]}, such as unemployment insurance, {ui[1]}."),
+         "Loop B2's summary no longer names unemployment insurance")
     o_items = [f'{chip("Loop", "B3")} “{e(b3["title"])}”. {grade_word("well-supported")}, where entry is possible. '
                f'No numbered chain: “{e(others["B3"][1])}”',
                f'{chip("Loop", "R9")} “{e(r9["title"])}”. {grade_word("hypothesis")}. “{e(others["R9"][1])}”']
@@ -2738,7 +2744,9 @@ def rule_15_18(book):
     need(ra == "More household hardship, more automatic support, and back to less household hardship.", f"Loop B2 reads {ra!r}")
     words = (ra_p(ra)
              + f'<p class="k">The missing chain</p><p class="nt">The atlas: “{e(es[0])} {e(miss)}”</p>'
-             + f'<p class="nt">Household hardship is “{e(rev)}”, {chip("Variable", "A4", ".")}</p>'
+             + f'<p class="nt">Household hardship is “{e(rev)}”, which is {chip("Variable", "A4")} in the atlas’s model.</p>'
+             + f'<p class="nt">In the pill, UI is unemployment insurance, which the atlas gives as its example of “{e(ui[0])}” '
+               f'that “{e(ui[1])}”.</p>'
              )
     others_html = (f'<p class="k">The atlas’s other conceptual loops</p>'
                    f'<div class="two tw">{"".join(f"<p class={chr(34)}nt{chr(34)}>{x}</p>" for x in o_items)}</div>')
@@ -2750,7 +2758,8 @@ def rule_15_18(book):
                   "hardship and Automatic support (UI, credits), joined by hollow lines: plus, raises, over the top, and minus, "
                   "lowers, under the bottom, with no step numbers. The loop reads: more household hardship, more automatic "
                   f"support, and back to less household hardship. Beside it, the atlas’s words: {es[0]} {miss} Household "
-                  f"hardship is {rev}, Variable A4. Then the atlas’s other conceptual loops: Loop B3, "
+                  f"hardship is {rev}, which is Variable A4 in the atlas’s model. In the pill, UI is unemployment insurance, "
+                  f"the atlas’s example of {ui[0]} that {ui[1]}. Then the atlas’s other conceptual loops: Loop B3, "
                   f"{b3['title']}, well supported where entry is possible, with no numbered chain; Loop R9, {r9['title']}, "
                   f"hypothesis: {others['R9'][1]}"),
              notes="Stations, signs, grade and the missing chain read from the loop's record; hollow lines and thin pills as "
@@ -2958,6 +2967,10 @@ def check(data, book):
     op = book.files[data["opener"]["specimen"]]
     if len(op.encode()) > 12 * 1024:
         fails.append(f"the opener's fragment weighs {len(op.encode()):,} bytes; it must stay well under 16 KB as placed")
+    # BC S16: punctuation never touches a typed chip, whose padding and edge would set it apart ("Variable C1 , seats")
+    for sid, frag in book.files.items():
+        for m in re.finditer(r'<span class="chip">([^<]*)<span class="id">([^<]*)</span></span>([,.;:!?)])', frag):
+            fails.append(f"{sid}: {m.group(1)}{m.group(2)} is followed by {m.group(3)!r}; let words follow a chip")
     kinds = {"Variable": NODE, "Connection": LINK, "Loop": LOOP, "Reform": REFORM,
              "Route": {r["code"] for r in V7["routes"]["items"]}}
     for sid, frag in book.files.items():

@@ -66,10 +66,12 @@
       "Income Security": "Income security",
       "Net Interest": "Net interest"
     },
-    "fold_below": 6,
-    "fold_label": "All other functions, 11 in all",
+    "fold_label": "All other functions, {n} in all",
     "value_words": "${v}, {p}",
-    "point": "Social Security"
+    "fold": "fit",
+    "named": [
+      "Social Security"
+    ]
   },
   "formats": {
     "value": "billions:1",

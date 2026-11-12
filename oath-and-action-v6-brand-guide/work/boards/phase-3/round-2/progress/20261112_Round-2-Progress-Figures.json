@@ -1,12 +1,13 @@
 {
- "built": "2026-11-12T22:16:31.651387+00:00",
+ "built": "2026-11-12T22:19:25.793063+00:00",
  "guide_build": {
   "exit": 1,
-  "bytes": 10596592,
+  "bytes": 10600720,
   "rules": 312,
   "specimens": 606,
-  "warnings": 388,
-  "built": "2026-11-12T22:16:38"
+  "warnings": 121,
+  "built": "2026-11-12T22:19:32",
+  "pictures_from_failed_build": true
  },
  "kit_builds": {
   "rebuilt": [
@@ -47,6 +48,106 @@
    "14.11",
    "14.12"
   ]
+ },
+ "shots": {
+  "taken": [
+   "ch14-opener",
+   "ch15-15.11-correct-1024",
+   "ch15-15.11-correct-1440",
+   "ch15-15.11-correct-390",
+   "ch15-15.11-failure-1440",
+   "ch15-15.11-failure-390",
+   "ch15-15.12-correct-1440",
+   "ch15-15.12-correct-390",
+   "ch15-15.12-failure-1440",
+   "ch15-15.12-failure-390",
+   "ch15-15.15-correct-1440",
+   "ch15-15.15-correct-390",
+   "ch15-15.15-failure-1440",
+   "ch15-15.15-failure-390",
+   "ch15-15.16-correct-1440",
+   "ch15-15.16-correct-390",
+   "ch15-15.16-failure-1440",
+   "ch15-15.16-failure-390",
+   "ch15-15.17-correct-1440",
+   "ch15-15.17-correct-390",
+   "ch15-15.17-failure-1440",
+   "ch15-15.17-failure-390",
+   "ch15-15.18-correct-1440",
+   "ch15-15.18-correct-390",
+   "ch15-15.18-failure-1440",
+   "ch15-15.18-failure-390",
+   "entry-14.74-1440",
+   "entry-14.74-390",
+   "plate-14.11-correct",
+   "plate-14.11-failure",
+   "plate-14.12-correct",
+   "plate-14.12-failure",
+   "plate-14.3-correct",
+   "plate-14.3-failure",
+   "plate-14.6-correct",
+   "plate-14.6-failure",
+   "plate-14.9-correct",
+   "plate-14.9-failure",
+   "sketch-14.54",
+   "sketch-14.55",
+   "sketch-14.56",
+   "sketch-14.57",
+   "sketch-14.63",
+   "sketch-14.64",
+   "sketch-14.65",
+   "sketch-14.66",
+   "sketch-14.70",
+   "sketch-14.71",
+   "sketch-14.72",
+   "sketch-14.73",
+   "sketch-14.78",
+   "sketch-14.91",
+   "sketch-14.92",
+   "wide-s-15-1-correct-1024",
+   "wide-s-15-1-correct-768",
+   "wide-s-15-10-correct-1024",
+   "wide-s-15-10-correct-768",
+   "wide-s-15-11-correct-1024",
+   "wide-s-15-11-correct-768",
+   "wide-s-15-12-correct-1024",
+   "wide-s-15-12-correct-768",
+   "wide-s-15-13-correct-1024",
+   "wide-s-15-13-correct-768",
+   "wide-s-15-14-correct-1024",
+   "wide-s-15-14-correct-768",
+   "wide-s-15-15-correct-1024",
+   "wide-s-15-15-correct-768",
+   "wide-s-15-15-failure-1024",
+   "wide-s-15-15-failure-768",
+   "wide-s-15-16-correct-1024",
+   "wide-s-15-16-correct-768",
+   "wide-s-15-17-correct-1024",
+   "wide-s-15-17-correct-768",
+   "wide-s-15-18-correct-1024",
+   "wide-s-15-18-correct-768",
+   "wide-s-15-2-correct-1024",
+   "wide-s-15-2-correct-768",
+   "wide-s-15-3-correct-1024",
+   "wide-s-15-3-correct-768",
+   "wide-s-15-3-failure-1024",
+   "wide-s-15-3-failure-768",
+   "wide-s-15-4-correct-1024",
+   "wide-s-15-4-correct-768",
+   "wide-s-15-4-failure-1024",
+   "wide-s-15-4-failure-768",
+   "wide-s-15-5-correct-1024",
+   "wide-s-15-5-correct-768",
+   "wide-s-15-6-correct-1024",
+   "wide-s-15-6-correct-768",
+   "wide-s-15-7-correct-1024",
+   "wide-s-15-7-correct-768",
+   "wide-s-15-8-correct-1024",
+   "wide-s-15-8-correct-768",
+   "wide-s-15-9-correct-1024",
+   "wide-s-15-9-correct-768"
+  ],
+  "reused": []
  },
  "round4": {
   "data_rows": 11,
@@ -116,7 +217,7 @@
   ],
   "plate_css": {
    "bytes": 4440,
-   "rules_and_opener": 169784,
+   "rules_and_opener": 169804,
    "allowance": 212288
   },
   "ch13_titles": {
@@ -155,12 +256,12 @@
    ],
    "widths": {
     "1024": [
-     0,
-     0
+     21,
+     21
     ],
     "768": [
-     0,
-     0
+     21,
+     21
     ]
    }
   }
@@ -222,9 +323,9 @@
    "rule": "14.47",
    "form": "Stacked share bar with a midline",
    "maker": "A",
-   "title": "In 2025 renters outnumbered owners only in the District of Columbia, where they made up 62 percent of households.",
-   "title_from": "spec",
-   "evidence": null,
+   "title": "In 2025 renters outnumbered owners only in the District of Columbia, where they made up 62 percent of households.",
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 9050,
    "faults": 0,
@@ -235,11 +336,11 @@
    "rule": "14.48",
    "form": "Waterfall",
    "maker": "A",
-   "title": "Federal outlays of $7,395.8 billion in fiscal 2026 ran past receipts of $5,403.3 billion, leaving a deficit of $1,992.5 billion.",
-   "title_from": "spec",
-   "evidence": null,
+   "title": "Federal outlays of $7,395.8 billion in fiscal 2026 ran past receipts of $5,403.3 billion, leaving a deficit of $1,992.5 billion.",
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 8259,
+   "bytes_in_guide": 8313,
    "faults": 0,
    "drawings": 4,
    "rows": 30
@@ -248,9 +349,9 @@
    "rule": "14.50",
    "form": "Stacked column",
    "maker": "A",
-   "title": "Homes in buildings of five or more units made up 36 percent of the new homes finished in 2024, their largest share in any year from 2000 to 2025.",
-   "title_from": "spec",
-   "evidence": null,
+   "title": "Homes in buildings of five or more units made up 36 percent of the new homes finished in 2024, their largest share in any year from 2000 to 2025.",
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 6316,
    "faults": 0,
@@ -261,9 +362,9 @@
    "rule": "14.51",
    "form": "Stacked area",
    "maker": "A",
-   "title": "Private insurance, Medicare and Medicaid together paid 70 percent of the nation’s health care bill in 2024, up from 21 percent in 1960.",
-   "title_from": "spec",
-   "evidence": null,
+   "title": "Private insurance, Medicare and Medicaid together paid 70 percent of the nation’s health care bill in 2024, up from 21 percent in 1960.",
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 11002,
    "faults": 0,
@@ -274,9 +375,9 @@
    "rule": "14.52",
    "form": "Treemap",
    "maker": "A",
-   "title": "Social Security took the largest share of federal spending in fiscal 2026, $1,667.1 billion.",
-   "title_from": "spec",
-   "evidence": null,
+   "title": "Social Security took the largest share of federal spending in fiscal 2026, $1,667.1 billion.",
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 5009,
    "faults": 11,
@@ -287,9 +388,9 @@
    "rule": "14.53",
    "form": "Parliament chart",
    "maker": "A",
-   "title": "Republicans held 218 of the House’s 435 seats on November 11, 2026, and Democrats 214, with one independent and two seats vacant.",
-   "title_from": "spec",
-   "evidence": null,
+   "title": "Republicans held 218 of the House’s 435 seats on November 11, 2026, and Democrats 214, with one independent and two seats vacant.",
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 3842,
    "faults": 0,
@@ -301,8 +402,8 @@
    "form": "Histogram",
    "maker": "B",
    "title": "The 845 federal judges in active service in November 2026 had served a median of 8.0 years.",
-   "title_from": "spec",
-   "evidence": null,
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 5527,
    "faults": 0,
@@ -314,11 +415,11 @@
    "form": "Beeswarm or strip plot",
    "maker": "B",
    "title": "Vermont collected $8,052 in state taxes per resident in fiscal 2025, the most of the 50 states, and Alaska $2,290, the least.",
-   "title_from": "spec",
-   "evidence": null,
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 9800,
-   "faults": 2,
+   "faults": 0,
    "drawings": 4,
    "rows": 51
   },
@@ -327,9 +428,9 @@
    "form": "Box plot",
    "maker": "B",
    "title": "The South’s median county had 13.9 percent of people under 65 without health insurance in 2024, the highest of the four regions, by the Census Bureau’s estimates.",
-   "title_from": "spec",
-   "evidence": null,
-   "marked": false,
+   "title_from": "guide",
+   "evidence": "Estimate",
+   "marked": true,
    "bytes_in_guide": 6613,
    "faults": 0,
    "drawings": 4,
@@ -340,9 +441,9 @@
    "form": "Line histogram",
    "maker": "B",
    "title": "The median county’s child poverty rate fell from 18.7 percent in 2019 to 17.1 percent in 2024, by the Census Bureau’s estimates.",
-   "title_from": "spec",
-   "evidence": null,
-   "marked": false,
+   "title_from": "guide",
+   "evidence": "Estimate",
+   "marked": true,
    "bytes_in_guide": 7323,
    "faults": 0,
    "drawings": 4,
@@ -353,10 +454,10 @@
    "form": "Population pyramid",
    "maker": "B",
    "title": "The Census Bureau estimated 41.2 million people aged 55 to 64 on July 1, 2025, the ten years before most people qualify for Medicare at 65.",
-   "title_from": "spec",
-   "evidence": null,
-   "marked": false,
-   "bytes_in_guide": 11562,
+   "title_from": "guide",
+   "evidence": "Estimate",
+   "marked": true,
+   "bytes_in_guide": 11566,
    "faults": 0,
    "drawings": 4,
    "rows": 202
@@ -366,8 +467,8 @@
    "form": "Scatter plot with named points",
    "maker": "B",
    "title": "Higher rents went with higher renter incomes across the states in 2025, and rent took the largest share of renters’ income in Florida, 35.5 percent.",
-   "title_from": "spec",
-   "evidence": null,
+   "title_from": "guide",
+   "evidence": "Association",
    "marked": false,
    "bytes_in_guide": 9790,
    "faults": 0,
@@ -379,8 +480,8 @@
    "form": "Bubble chart",
    "maker": "B",
    "title": "Higher rents went with higher renter incomes across the states in 2025, and in Florida, home to 3.0 million renter households, the median renter paid the largest share of income in rent, 35.5 percent.",
-   "title_from": "spec",
-   "evidence": null,
+   "title_from": "guide",
+   "evidence": "Association",
    "marked": false,
    "bytes_in_guide": 11058,
    "faults": 2,
@@ -392,8 +493,8 @@
    "form": "Connected scatter",
    "maker": "B",
    "title": "More job openings went with less unemployment from 2001 to 2026: openings averaged 11.7 million in early 2022, when the rate averaged 3.9 percent.",
-   "title_from": "spec",
-   "evidence": null,
+   "title_from": "guide",
+   "evidence": "Association",
    "marked": false,
    "bytes_in_guide": 14479,
    "faults": 0,
@@ -405,8 +506,8 @@
    "form": "Range bar or error bar",
    "maker": "B",
    "title": "Women who worked full time, year round had median earnings 82.0 percent of men’s in 2025, and in 25 states and the District of Columbia the figure differed from the nation’s by more than the margin of error.",
-   "title_from": "spec",
-   "evidence": null,
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 10925,
    "faults": 1,
@@ -418,10 +519,10 @@
    "form": "Confidence band on a line",
    "maker": "B",
    "title": "Median household income stood at $87,460 in 2025, in 2025 dollars, the highest since the survey’s first year, 1967.",
-   "title_from": "spec",
-   "evidence": null,
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 11438,
+   "bytes_in_guide": 11431,
    "faults": 0,
    "drawings": 4,
    "rows": 61
@@ -431,11 +532,11 @@
    "form": "Fan chart",
    "maker": "B",
    "title": "Federal Reserve officials projected a median unemployment rate of 4.1 percent for each year through 2029, and past forecast errors put 2029’s range at 2.0 to 6.2 percent.",
-   "title_from": "spec",
-   "evidence": null,
-   "marked": false,
+   "title_from": "guide",
+   "evidence": "Estimate",
+   "marked": true,
    "bytes_in_guide": 5258,
-   "faults": 33,
+   "faults": 22,
    "drawings": 4,
    "rows": 5
   },
@@ -443,9 +544,9 @@
    "rule": "14.86",
    "form": "Indicator row",
    "maker": "A",
-   "title": "The atlas puts eight figures first, each checked against its sources on October 15, 2026.",
-   "title_from": "spec",
-   "evidence": null,
+   "title": "The atlas puts eight figures first, each checked against its sources on October 15, 2026.",
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 6137,
    "faults": 0,
@@ -457,8 +558,8 @@
    "form": "Progress bar",
    "maker": "A",
    "title": "The Senate fell seven votes short of the 60 it needed to take up H.R. 7008, the Stop Insider Trading Act, which, as the House passed it, limits members’ stock purchases and requires photo ID to vote in federal elections.",
-   "title_from": "spec",
-   "evidence": null,
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 3835,
    "faults": 0,
@@ -470,8 +571,8 @@
    "form": "Step tracker",
    "maker": "A",
    "title": "The TAKE IT DOWN Act went from introduction to law in four months, after the Senate took it from committee and passed it by unanimous consent.",
-   "title_from": "spec",
-   "evidence": null,
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 5189,
    "faults": 21,
@@ -482,9 +583,9 @@
    "rule": "14.89",
    "form": "Status chips",
    "maker": "A",
-   "title": "Of six disputes over checks on power, the Supreme Court had decided one by October 15, 2026, and had acted by interim order in three others.",
-   "title_from": "spec",
-   "evidence": null,
+   "title": "Of six disputes over checks on power, the Supreme Court had decided one by October 15, 2026, and had acted by interim order in three others.",
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 9728,
    "faults": 6,
@@ -495,9 +596,9 @@
    "rule": "14.90",
    "form": "Bullet graph",
    "maker": "A",
-   "title": "Federal debt subject to the limit stood at $40,327.1 billion on October 31, 2026, $776.9 billion under the $41,104.0 billion limit.",
-   "title_from": "spec",
-   "evidence": null,
+   "title": "Federal debt subject to the limit stood at $40,327.1 billion on October 31, 2026, $776.9 billion under the $41,104.0 billion limit.",
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 3750,
    "faults": 0,
@@ -505,15 +606,20 @@
    "rows": 1
   }
  },
- "estimate_charts": [],
+ "estimate_charts": [
+  "S51",
+  "S52",
+  "S53",
+  "S59"
+ ],
  "changed": {
   "S18": {
    "rule": "14.17",
    "form": "Bar with a benchmark tick",
    "maker": "A",
    "title": "The highest-income fifth of households received 51.6 percent of all household income in 2025, and the lowest fifth received 3.0 percent.",
-   "title_from": "spec",
-   "evidence": null,
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 4215,
    "faults": 0,
@@ -525,8 +631,8 @@
    "form": "Indexed line",
    "maker": "B",
    "title": "Customs duties grew fastest of the federal government’s revenue sources from fiscal 2016 to 2026, to almost five times their 2016 level.",
-   "title_from": "spec",
-   "evidence": null,
+   "title_from": "guide",
+   "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 16583,
    "faults": 0,
@@ -537,93 +643,135 @@
  "sketches": {
   "14.57": {
    "specimen": "s-14-57-sketch",
-   "heading": null,
+   "heading": "3D pie or bar, a form that misleads",
    "kind": "avoid",
-   "caption": ""
+   "caption": "A tilted 3D pie draws two equal illustrative shares so the nearer one looks larger, and flat bars of the same values show them as equal lengths."
   },
   "14.73": {
    "specimen": "s-14-73-sketch",
-   "heading": null,
+   "heading": "Dual-axis line, a form that misleads",
    "kind": "avoid",
-   "caption": ""
+   "caption": "The same two invented series drawn twice: on two value scales the lines cross in the middle, and in two aligned panels, each on its own scale from zero, neither line crosses anything, so no false meeting point appears."
   },
   "14.91": {
    "specimen": "s-14-91-sketch",
-   "heading": null,
+   "heading": "Gauge, a form that misleads",
    "kind": "avoid",
-   "caption": ""
+   "caption": "A gauge sets an illustrative 70 of 100 as a needle’s angle on a dial, and a progress bar of the same values shows it as a length a reader can measure against the mark at 80."
   },
   "14.92": {
    "specimen": "s-14-92-sketch",
-   "heading": null,
+   "heading": "Thermometer, a form that misleads",
    "kind": "avoid",
-   "caption": ""
+   "caption": "A thermometer fills an illustrative 70 percent of a goal inside a tube with a bulb, and a progress bar of the same values shows the share with the goal marked and less ink."
   },
   "14.54": {
    "specimen": "s-14-54-sketch",
-   "heading": null,
+   "heading": "Pie, a sketch",
    "kind": "sketch",
-   "caption": ""
+   "caption": "A pie of one illustrative whole in three parts, each slice named with its share printed beside it, the largest starting at the top."
   },
   "14.55": {
    "specimen": "s-14-55-sketch",
-   "heading": null,
+   "heading": "Donut with a center number, a sketch",
    "kind": "sketch",
-   "caption": ""
+   "caption": "A donut of one illustrative whole in two parts, with the larger part’s share, 64 percent, printed in its center and the ring split at that share."
   },
   "14.56": {
    "specimen": "s-14-56-sketch",
-   "heading": null,
+   "heading": "Marimekko, a sketch",
    "kind": "sketch",
-   "caption": ""
+   "caption": "A marimekko of three illustrative groups, each column as wide as its group’s share of the whole and split by the shares of two answers, so each cell’s area is its share of everyone."
   },
   "14.63": {
    "specimen": "s-14-63-sketch",
-   "heading": null,
+   "heading": "Violin, a sketch",
    "kind": "sketch",
-   "caption": ""
+   "caption": "Three violins, each a mirrored density shape with its quartile box and median inside, side by side on one scale; the middle group has two humps that a box plot alone would hide."
   },
   "14.64": {
    "specimen": "s-14-64-sketch",
-   "heading": null,
+   "heading": "Ridgeline, a sketch",
    "kind": "sketch",
-   "caption": ""
+   "caption": "Five filled curves on evenly spaced baselines, one row a year, whose peak drifts to the right from the top row to the bottom."
   },
   "14.65": {
    "specimen": "s-14-65-sketch",
-   "heading": null,
+   "heading": "Hexbin, a sketch",
    "kind": "sketch",
-   "caption": ""
+   "caption": "A field of hexagons shaded from light to dark by how many points fall in each, densest along a rising diagonal, with a four-step key."
   },
   "14.66": {
    "specimen": "s-14-66-sketch",
-   "heading": null,
+   "heading": "Contour or density, a sketch",
    "kind": "sketch",
-   "caption": ""
+   "caption": "Three nested contour rings around the densest part of a point cloud, the inner ring darkest, with a few points outside the outer ring."
   },
   "14.70": {
    "specimen": "s-14-70-sketch",
-   "heading": null,
+   "heading": "Correlogram, a sketch",
    "kind": "sketch",
-   "caption": ""
+   "caption": "A five-by-five grid of squares, each shaded on a diverging scale by the correlation between two variables, dark at the strongest pairs and pale near zero."
   },
   "14.71": {
    "specimen": "s-14-71-sketch",
-   "heading": null,
+   "heading": "Pair plot, a sketch",
    "kind": "sketch",
-   "caption": ""
+   "caption": "A three-by-three grid: small scatter plots of each pair of three variables off the diagonal, and a small histogram of each variable on it."
   },
   "14.72": {
    "specimen": "s-14-72-sketch",
-   "heading": null,
+   "heading": "Trajectory or speed chart, a sketch",
    "kind": "sketch",
-   "caption": ""
+   "caption": "A curved path with dots at equal time steps, spaced wide where change ran fast and close together where it slowed, from a start dot to an end dot."
   },
   "14.78": {
    "specimen": "s-14-78-sketch",
-   "heading": null,
+   "heading": "Hypothetical outcomes, a sketch",
    "kind": "sketch",
-   "caption": ""
+   "caption": "Six small panels, each one possible outcome drawn from the same estimate, with a dashed line marking the threshold; the bar lands above it in four panels and below it in two."
+  }
+ },
+ "rules": {
+  "14.3": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2146
+   ]
+  },
+  "14.6": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2125
+   ]
+  },
+  "14.9": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2035
+   ]
+  },
+  "14.11": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2167
+   ]
+  },
+  "14.12": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2280
+   ]
   }
  },
  "ch15": {
@@ -635,7 +783,11 @@
    "15.17",
    "15.18"
   ],
-  "wide_at_1024": null
+  "wide_at_1024": [
+   "15.11",
+   "correct",
+   "s-15-11-correct"
+  ]
  },
  "cd": {
   "first": "work/handoffs/phase-3/20261112_Round-2-CD-Scores.json",
@@ -768,13 +920,13 @@
   }
  ],
  "weight": {
-  "chapter_14": 1171902,
+  "chapter_14": 1172335,
   "stop": 2803941,
-  "per_plate": 15596,
+  "per_plate": 15462,
   "plates_to_come": 36,
   "chapter_15": 302270,
   "chapter_15_ceiling": 600000.0,
-  "page": 10596592,
+  "page": 10600720,
   "projected": 15042495,
   "budget": 15500000.0
  },
@@ -797,11 +949,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-2/progress/20261112_Round-2-Progress.html",
- "html_bytes": 99043,
- "images": 48,
- "image_bytes": 17545719,
- "folder_files": 50,
- "folder_bytes": 17661368,
+ "html_bytes": 131500,
+ "images": 84,
+ "image_bytes": 23859342,
+ "folder_files": 88,
+ "folder_bytes": 24037732,
  "largest_image": [
   638394,
   "20261112_Chart-14-74-Newsprint.png"
@@ -811,23 +963,29 @@
    "partial",
    "build"
   ],
-  "charts": "ready",
-  "changed": "ready",
+  "charts": [
+   "partial",
+   "build"
+  ],
+  "changed": [
+   "partial",
+   "build"
+  ],
   "entry": [
-   "waiting",
+   "partial",
    "build"
   ],
   "sketches": [
    "partial",
-   "render"
+   "build"
   ],
   "rules": [
    "partial",
-   "render"
+   "build"
   ],
   "ch15": [
    "partial",
-   "render"
+   "build"
   ],
   "scores": [
    "partial",
@@ -891,7 +1049,43 @@
   "img/20261112_Chart-14-17-Newsprint.png": "[scratch]/kit-out/s18/s18-newsprint-1440.png, [scratch]/kit-out/s18/s18-newsprint-390.png",
   "img/20261112_Chart-14-17-Charcoal.png": "[scratch]/kit-out/s18/s18-charcoal-1440.png, [scratch]/kit-out/s18/s18-charcoal-390.png",
   "img/20261112_Chart-14-40-Newsprint.png": "[scratch]/kit-out/s33/s33-newsprint-1440.png, [scratch]/kit-out/s33/s33-newsprint-390.png",
-  "img/20261112_Chart-14-40-Charcoal.png": "[scratch]/kit-out/s33/s33-charcoal-1440.png, [scratch]/kit-out/s33/s33-charcoal-390.png"
+  "img/20261112_Chart-14-40-Charcoal.png": "[scratch]/kit-out/s33/s33-charcoal-1440.png, [scratch]/kit-out/s33/s33-charcoal-390.png",
+  "img/20261112_Entry-14-74-1440.png": "[scratch]/shots/entry-14.74-1440.png",
+  "img/20261112_Entry-14-74-390.png": "[scratch]/shots/entry-14.74-390.png",
+  "img/20261112_Sketch-14-57.png": "[scratch]/shots/sketch-14.57.png",
+  "img/20261112_Sketch-14-73.png": "[scratch]/shots/sketch-14.73.png",
+  "img/20261112_Sketch-14-91.png": "[scratch]/shots/sketch-14.91.png",
+  "img/20261112_Sketch-14-92.png": "[scratch]/shots/sketch-14.92.png",
+  "img/20261112_Sketch-14-54.png": "[scratch]/shots/sketch-14.54.png",
+  "img/20261112_Sketch-14-55.png": "[scratch]/shots/sketch-14.55.png",
+  "img/20261112_Sketch-14-56.png": "[scratch]/shots/sketch-14.56.png",
+  "img/20261112_Sketch-14-63.png": "[scratch]/shots/sketch-14.63.png",
+  "img/20261112_Sketch-14-64.png": "[scratch]/shots/sketch-14.64.png",
+  "img/20261112_Sketch-14-65.png": "[scratch]/shots/sketch-14.65.png",
+  "img/20261112_Sketch-14-66.png": "[scratch]/shots/sketch-14.66.png",
+  "img/20261112_Sketch-14-70.png": "[scratch]/shots/sketch-14.70.png",
+  "img/20261112_Sketch-14-71.png": "[scratch]/shots/sketch-14.71.png",
+  "img/20261112_Sketch-14-72.png": "[scratch]/shots/sketch-14.72.png",
+  "img/20261112_Sketch-14-78.png": "[scratch]/shots/sketch-14.78.png",
+  "img/20261112_Ch14-Opener.png": "[scratch]/shots/ch14-opener.png",
+  "img/20261112_Rule-14-3-Plates.png": "[scratch]/shots/plate-14.3-correct.png, [scratch]/shots/plate-14.3-failure.png",
+  "img/20261112_Rule-14-6-Plates.png": "[scratch]/shots/plate-14.6-correct.png, [scratch]/shots/plate-14.6-failure.png",
+  "img/20261112_Rule-14-9-Plates.png": "[scratch]/shots/plate-14.9-correct.png, [scratch]/shots/plate-14.9-failure.png",
+  "img/20261112_Rule-14-11-Plates.png": "[scratch]/shots/plate-14.11-correct.png, [scratch]/shots/plate-14.11-failure.png",
+  "img/20261112_Rule-14-12-Plates.png": "[scratch]/shots/plate-14.12-correct.png, [scratch]/shots/plate-14.12-failure.png",
+  "img/20261112_Ch15-15-11-Correct.png": "[scratch]/shots/ch15-15.11-correct-1440.png, [scratch]/shots/ch15-15.11-correct-390.png",
+  "img/20261112_Ch15-15-11-Correct-1024.png": "[scratch]/shots/ch15-15.11-correct-1024.png",
+  "img/20261112_Ch15-15-11-Failure.png": "[scratch]/shots/ch15-15.11-failure-1440.png, [scratch]/shots/ch15-15.11-failure-390.png",
+  "img/20261112_Ch15-15-12-Correct.png": "[scratch]/shots/ch15-15.12-correct-1440.png, [scratch]/shots/ch15-15.12-correct-390.png",
+  "img/20261112_Ch15-15-12-Failure.png": "[scratch]/shots/ch15-15.12-failure-1440.png, [scratch]/shots/ch15-15.12-failure-390.png",
+  "img/20261112_Ch15-15-15-Correct.png": "[scratch]/shots/ch15-15.15-correct-1440.png, [scratch]/shots/ch15-15.15-correct-390.png",
+  "img/20261112_Ch15-15-15-Failure.png": "[scratch]/shots/ch15-15.15-failure-1440.png, [scratch]/shots/ch15-15.15-failure-390.png",
+  "img/20261112_Ch15-15-16-Correct.png": "[scratch]/shots/ch15-15.16-correct-1440.png, [scratch]/shots/ch15-15.16-correct-390.png",
+  "img/20261112_Ch15-15-16-Failure.png": "[scratch]/shots/ch15-15.16-failure-1440.png, [scratch]/shots/ch15-15.16-failure-390.png",
+  "img/20261112_Ch15-15-17-Correct.png": "[scratch]/shots/ch15-15.17-correct-1440.png, [scratch]/shots/ch15-15.17-correct-390.png",
+  "img/20261112_Ch15-15-17-Failure.png": "[scratch]/shots/ch15-15.17-failure-1440.png, [scratch]/shots/ch15-15.17-failure-390.png",
+  "img/20261112_Ch15-15-18-Correct.png": "[scratch]/shots/ch15-15.18-correct-1440.png, [scratch]/shots/ch15-15.18-correct-390.png",
+  "img/20261112_Ch15-15-18-Failure.png": "[scratch]/shots/ch15-15.18-failure-1440.png, [scratch]/shots/ch15-15.18-failure-390.png"
  },
  "codes_in_reference_lines": [
   "D3-195",
@@ -899,7 +1093,10 @@
   "D3-200",
   "D3-205",
   "D3-350",
+  "D3-890",
   "D3-894",
+  "D3-899",
+  "D3-903",
   "DR-191",
   "DR-202",
   "DR-213",
@@ -913,39 +1110,11 @@
  "notes": [],
  "warnings": [
   "the strict guide build failed (exit 1); the guide pictures wait for a passing build",
-  "round 1’s carried item “Chapter 15’s wide stage” is not shown done in its files",
-  "plates not photographed: the opening plate, Rule 14.3, Rule 14.6, Rule 14.9, Rule 14.11, Rule 14.12",
-  "chapter 15 plates not photographed: 15-11-Correct, 15-11-Failure, 15-12-Correct, 15-12-Failure, 15-15-Correct, 15-15-Failure, 15-16-Correct, 15-16-Failure, 15-17-Correct, 15-17-Failure, 15-18-Correct, 15-18-Failure",
-  "the quick guide check ran on 10,587,775 bytes and today’s strict build is 10,596,592",
-  "Tested lines without their figure: The strict build of the guide, The quick guide check",
-  "decision codes on the page’s face: D3-890, D3-899, D3-903"
+  "the page’s pictures come from a strict build that failed; a method run only, never one to publish",
+  "the quick guide check ran on 10,587,775 bytes and today’s strict build is 10,600,720",
+  "Tested lines without their figure: The strict build of the guide, The quick guide check"
  ],
- "seconds": 107,
- "words": 4543,
- "words_tested_part": 237,
- "check": {
-  "page": {
-   "failures": [
-    "1440 overview: axe html-has-langx1",
-    "390 overview: axe html-has-langx1",
-    "360 overview: axe html-has-langx1"
-   ],
-   "allowed": [
-    "1440 overview: axe html-has-langx1",
-    "390 overview: axe html-has-langx1",
-    "360 overview: axe html-has-langx1"
-   ],
-   "results": "work/boards/phase-3/round-2/progress/20261112_Round-2-Progress-Check-Results.json"
-  },
-  "wrapped": {
-   "failures": [],
-   "pass": true,
-   "results": "[scratch]/publish-view/20261112_Round-2-Progress-Check-Results.json"
-  },
-  "widths": [
-   1440,
-   390,
-   360
-  ]
- }
+ "seconds": 212,
+ "words": 4890,
+ "words_tested_part": 237
 }

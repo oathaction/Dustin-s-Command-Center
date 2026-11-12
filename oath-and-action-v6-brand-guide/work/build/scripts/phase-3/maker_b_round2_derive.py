@@ -476,6 +476,9 @@ def figures():
     same('S56', ur['quarter'], '2020-Q2', 'rate peak')
     want('S56', t, 'near %.1f percent and %.1f million in the latest quarter' % (num(q[-1]['unemployment_rate']), num(q[-1]['job_openings_millions'])), 'latest')
     same('S56', [r['quarter'] for r in q if r['unemployment_rate'] == ''], ['2025-Q4'], 'the gap')
+    pre = max([r for r in hv if r['quarter'] < '2020'], key=lambda r: num(r['unemployment_rate']))
+    same('S56', pre['quarter'], '2009-Q4', 'the end of 2009, the highest unemployment before 2020')
+    want('S56', t, 'the end of 2009, the highest unemployment before 2020', 'chart note reason')
     # S57
     sp, t = spec_words('s57')
     er = read('census-acs-earnings-ratio-by-state')
