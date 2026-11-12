@@ -663,6 +663,12 @@ async function self_test() {
         rows: [{ k: 'A', v: 82, m: 0.4, lo: 81.6, hi: 82.4 }, { k: 'B', v: 77, m: 2.5, lo: 74.5, hi: 79.5 }] } };
     const ri = run_spec(JSON.parse(JSON.stringify(iv)), { grounds: ['newsprint'], widths: [1440], no_narrow: true });
     const ok5 = !ri.faults.some(x => /^interval:/.test(x));
+    // ED-E17: the level's words held together by no-break spaces read as the level
+    const nb = JSON.parse(JSON.stringify(iv)); nb.measure_line = 'A share, with its 90\u00a0percent margin\u00a0of\u00a0error';
+    const rn = run_spec(nb, { grounds: ['newsprint'], widths: [1440], no_narrow: true });
+    const ok5b = !rn.faults.some(x => /^interval:/.test(x));
+    console.log(`${ok5b ? 'pass' : 'FAIL'} a level held together by no-break spaces ("90\u00a0percent margin\u00a0of\u00a0error") passes the level check${ok5b ? '' : ': ' + JSON.stringify(rn.faults.slice(0, 3))}`);
+    if (!ok5b) bad++;
     console.log(`${ok5 ? 'pass' : 'FAIL'} an interval spec with its names, level and table passes the interval checks${ok5 ? '' : ': ' + JSON.stringify(ri.faults.slice(0, 3))}`);
     if (!ok5) bad++;
     const icases = [

@@ -262,7 +262,8 @@ function check_spec(K, spec, opts) {
   const idef = spec.form && K.forms[spec.form];
   if (idef && idef.interval && sel.length) {
     const enc = spec.encode || {}, tb = spec.table || {};
-    const ml = String(spec.measure_line || '');
+    // ED-E17 (round 2): a no-break space (or a narrow one) may hold the level's words together, "90 percent" at a line end
+    const ml = String(spec.measure_line || '').replace(/[\u00a0\u202f]/g, ' ');
     if (!(/\b\d{2}(?:\.\d+)? percent\b/.test(ml) && /margin of error|confidence|interval|probability/i.test(ml))) f.push('interval: the measure line names the interval\'s level, such as "90 percent margin of error" (R2-4)');
     if (idef.interval === true) {
       const lh = enc.low !== undefined || enc.high !== undefined, mg = enc.margin !== undefined;

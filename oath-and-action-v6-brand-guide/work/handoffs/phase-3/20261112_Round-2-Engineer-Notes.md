@@ -244,3 +244,11 @@ To others:
 
 Modified: `work/build/chart-kit/kit.js` (`dround`, the formats, path outlines and `fill_under`, `K.in_poly`, `K.leader_crosses`), `parts.js` (`place_labels` reaches and leader test, `fit_label` `sub` and pads), `checks.js` (the forced-colors ground by outline), `oa-chart.mjs` (self-test cases), `README.md` (load order); this notes file.
 Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/65b3d20e-985e-5fe9-b272-d7d01bd821cd/scratchpad/phase-3/round-2/engineer/` (`h2/`, `h2new/`, `h2new2/`, `snap-h2*.json`, `tools/patch_rbg1.py`, `kit-all3/`, `b5/`).
+
+## Third run
+
+- **ED-E17, done (editor).** The interval form's level check reads a no-break space (U+00A0) or a narrow no-break space (U+202F) as a space anywhere in the measure line, so "90 percent margin of error" may hold its words together at a line end. Contract change, November 12: R2-C1's check 3 accepts either space. The editor can set the no-break space in Rule 14.9's measure line now.
+- D3-xxx | The level check reads a no-break space as a space | A no-break space keeps "90" with "percent" at 320 px (CD BM1) and says the same words (ED-E17)
+- Tested: `oa-chart.mjs self-test`, exit 0, 40 planted faults caught, 28 passes, none missed, with the new case (a level written with no-break spaces passes; a measure line with no level is still caught); `build --all --no-png`, exit 0, 64 check files counted, 64 pass.
+- Not tested: the strict build after this change (the check changes no drawing).
+- Files: `work/build/chart-kit/checks.js` (the level check), `oa-chart.mjs` (the self-test case); this notes file.
