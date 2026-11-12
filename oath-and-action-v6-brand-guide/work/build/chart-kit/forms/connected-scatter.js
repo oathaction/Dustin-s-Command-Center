@@ -9,7 +9,8 @@
  * Gridlines both ways, the y values in a left gutter and the x values along the bottom.
  * encode: time (month or year: each period's first month for a quarter), x (number), y (number).
  * labels: named ({time: words}: periods named on the drawing; the latest claims room first, then the rest in the spec's
- * order), gap (words naming a missing period, in the key over the plot), x_axis, y_axis (axis words).
+ * order), short ({time: words} for a column under 330 px), gap (words naming a missing period, in the key over the
+ * plot), x_axis, y_axis (axis words).
  * formats: x, y (ticks). scale: x and y ([lo, hi]), x_step, y_step and x_step_phone (the ticks' steps). On a phone the
  * same arrangement draws narrower.
  * Maker B, round 2. */
@@ -20,7 +21,7 @@
     name: 'Connected Scatter',
     family: 'correlation',
     encode: { time: 'time', x: 'number?', y: 'number?' },
-    labels: ['named', 'gap', 'x_axis', 'y_axis'],
+    labels: ['named', 'short', 'gap', 'x_axis', 'y_axis'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, L = c.labels, f = c.spec.formats || {}, W = c.width, ph = c.phone;
@@ -81,7 +82,8 @@
         var r = rows.filter(function (q) { return String(q[et]) === k; })[0];
         if (!r || !ok(r)) { c.warn('labels.named names no period with both values: ' + k); return; }
         var p = pt(r), big = r === first || r === last;
-        items.push({ x: p[0], y: p[1], r: big ? c.t('dot-vertex-radius') + 1 : rs, words: named[k], weight: 600, last: r === last });
+        var words = W < 330 && L.short && L.short[k] !== undefined ? L.short[k] : named[k];   // a narrow column takes the short words
+        items.push({ x: p[0], y: p[1], r: big ? c.t('dot-vertex-radius') + 1 : rs, words: words, weight: 600, last: r === last });
       });
       if (L.gap) {
         rows.forEach(function (r, i) {
@@ -162,16 +164,18 @@
         var mine = function (b) { return !(Math.abs(b.x + b.w / 2 - it.x) < 0.5 && Math.abs(b.y + b.h / 2 - it.y) < 0.5); };
         // the latest period sits beside its dot, over the path on a halo if it must; the others reach out on leaders that
         // cross no path
-        // where a narrow column leaves no such place, a leader may cross the path, never a dot or a name
+        // where a narrow column leaves no such place, a leader may cross the path, and last a name may lie on a halo over
+        // the path, never over a dot or a name
         var far = [12, 26, 44, 66, 92, 124, 160];
-        if (it.last) { if (!place(it, dotbox.filter(mine), [0, 4, 8]) && !place(it, avoid.filter(mine), far, { loose: true })) unplaced.push(it); return; }
+        var dots_only = dotbox.filter(mine);
+        if (it.last) { if (!place(it, dots_only, [0, 4, 8]) && !place(it, avoid.filter(mine), far, { loose: true }) && !place(it, dots_only, far, { loose: true })) unplaced.push(it); return; }
         // the gap: a small open ring at the middle of the break, which the key over the plot names (MB-19)
         if (it.gap) {
           c.circle(it.x, it.y, 3.5, { fill: 'surface', mark: false });
           c.circle(it.x, it.y, 3.5, { stroke: 'subject', width: c.t('line-context') - 0.5, mark: false });
           return;
         }
-        if (!place(it, avoid.filter(mine), [0].concat(far)) && !place(it, avoid.filter(mine), far, { loose: true })) unplaced.push(it);
+        if (!place(it, avoid.filter(mine), [0].concat(far)) && !place(it, avoid.filter(mine), far, { loose: true }) && !place(it, dots_only, [0].concat(far), { loose: true })) unplaced.push(it);
       });
       var pl = { unplaced: unplaced };
       var end = ay + 4;

@@ -146,3 +146,13 @@ November 12, 2026, the main session's second run: the data lead's sign-off ("Sig
 
 Modified: `work/build/chart-kit/forms/treemap.js`, `bullet-graph.js`, `waterfall.js`, `stacked-column.js`, `stacked-area.js`; `work/build/chart-kit/specs/s45.json`, `s63.json`, `s64.json`; `work/build/guide/entries/14-046.json`, `14-047.json`, `14-048.json`, `14-052.json`, `14-053.json`, `14-055.json`, `14-087.json`, `14-090.json`; this notes file. By the generator: chapter 14's file and manifest.
 
+
+## Third run
+
+November 12, 2026: the quick guide check failed `s-14-55-sketch.html` on type off the D2-254 sizes (the center number at 32 px) and on contrast ("of the whole" at 13 px, 2.42 to 1, its box over the ring's light fill).
+
+- D3-xxx | The donut sketch's center number takes 28 px, the chart title's size in the allowed set, and "of the whole" takes the label ink; the ring widens to an outer radius of 76 and an inner of 54, so both lines sit clear of the ring | D2-254 lists no 32 px size at a 300 px stage; the words' box reached the light-fill ring, where the secondary ink measured 2.42 to 1
+- D3-xxx | The donut sketch fills its hollow with a circle of the ground (`oac-f-surface`) under the two lines of words | The guide check reads the background under a word from the bounding box of the last filled shape before it, and the ring's box covers the hollow; on the first fix it still read the label ink on the ring's own ink (1 to 1)
+- Tested: the sketch rendered on Newsprint and Charcoal and looked at (both lines inside the hollow, the drawing unchanged to the eye); 1,034 bytes, under 4,096; its first `<desc>` unchanged; the other five sketches byte for byte as before; a replica of the guide check's background test on the rendered sketch gives 13.29 to 1 for all three words on both grounds; `phase3_ch14_build.py` 0 faults; strict build exit 0, no warning, 10,587,775 bytes.
+- Quick guide check, first fix (28 px, label ink, no hollow): the type scale passed for this sketch, and contrast still failed, "of the whole" at 1 to 1 at 1440 and 390 px. The result after the hollow is below.
+- Files: `work/build/guide/specimens/s-14-55-sketch.html`; this notes file.
