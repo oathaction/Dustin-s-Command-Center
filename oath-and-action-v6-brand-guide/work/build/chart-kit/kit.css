@@ -93,14 +93,24 @@
 .oac-f-none { fill: none; }
 .oac-svg line, .oac-svg path, .oac-svg polyline { vector-effect: non-scaling-stroke; }
 
-/* Forced colors: keep the drawing readable in the system's own colors */
+/* Forced colors (D3-94): each data mark keeps a paint a reader can tell from the ground and from its label, in the
+   reader's system colors. Solid roles below; the steps between take a hatch each drawing carries (kit.js, K.FC). A
+   mark in Canvas takes a CanvasText outline. Text is CanvasText on a Canvas halo; text set on a dark fill is Canvas on
+   a CanvasText halo. checks.js fails a label in the ink of its ground. */
 @media (forced-colors: active) {
+  .oac-svg { forced-color-adjust: none; }
   .oac-svg [class*="oac-f-"]:not(.oac-t) { fill: CanvasText; }
-  .oac-svg .oac-f-surface, .oac-svg .oac-f-band, .oac-svg .oac-f-track, .oac-svg .oac-f-land, .oac-svg .oac-f-light-fill { fill: Canvas; }
+  .oac-svg :is(.oac-f-context, .oac-f-secondary, .oac-f-gridline, .oac-f-seq-3, .oac-f-div-5, .oac-f-mag-3, .oac-f-cat-2):not(.oac-t) { fill: GrayText; }
+  .oac-svg .oac-f-point:not(.oac-t) { fill: Highlight; }
+  .oac-svg :is(.oac-f-band, .oac-f-track, .oac-f-land, .oac-f-light-fill, .oac-f-seq-1, .oac-f-div-3, .oac-f-mag-1):not(.oac-t) { fill: Canvas; stroke: CanvasText; stroke-width: 1px; }
+  .oac-svg .oac-f-surface:not(.oac-t) { fill: Canvas; }
+  .oac-svg :is(.oac-f-seq-2, .oac-f-seq-4, .oac-f-div-2, .oac-f-div-4, .oac-f-mag-2, .oac-f-cat-3, .oac-f-cat-4):not(.oac-t) { stroke: CanvasText; stroke-width: 1px; }
   .oac-svg [class*="oac-s-"] { stroke: CanvasText; }
+  .oac-svg :is(.oac-s-context, .oac-s-secondary, .oac-s-gridline, .oac-s-ghost, .oac-s-leader, .oac-s-track) { stroke: GrayText; }
   .oac-svg .oac-s-surface { stroke: Canvas; }
-  .oac-svg .oac-t { fill: CanvasText; }
-  .oac-halo { stroke: Canvas; }
+  .oac-svg .oac-fc-bg { fill: Canvas; } .oac-svg .oac-fc-ink { stroke: CanvasText; } .oac-svg .oac-fc-gray { stroke: GrayText; }
+  .oac-svg .oac-t { fill: CanvasText; paint-order: stroke; stroke: Canvas; stroke-width: 3px; stroke-linejoin: round; }
+  .oac-svg .oac-t:is(.oac-f-label-on-subject, .oac-f-on-cat-1, .oac-f-on-cat-2, .oac-f-on-cat-3, .oac-f-chip-label) { fill: Canvas; stroke: CanvasText; }
   .oac-ev-k { forced-color-adjust: none; background: CanvasText; color: Canvas; }
 }
 @media print {
