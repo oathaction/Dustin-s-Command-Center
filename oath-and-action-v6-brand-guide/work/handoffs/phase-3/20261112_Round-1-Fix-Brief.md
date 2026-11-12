@@ -67,6 +67,25 @@ Each owner writes a section "Review fix pass" at the end of its round 1 notes fi
 - Report what you tested and what you did not as separate lists. Never describe a check you did not run.
 - Final message to the main session: under 200 words, the items done by code, any not done with the reason, the paths you wrote, and anything blocking.
 
-## Addendum: brand and craft items
+## Addendum: brand and craft items (BC)
 
-Added when the report lands.
+The report scores 3 of 5, with 4 Must fix and 20 Should fix: `work/handoffs/phase-3/20261112_Round-1-Red-Team-Brand-Craft.md`. Calls D3-484 to D3-488 settle where it meets the first three reports.
+
+**Calls on the brand and craft report**
+- **D3-484. BC S4 is answered by D3-477.** The named mark takes the red, as Rule 05.3 sets it; S33's customs duties line joins the list (maker B), and entry 14.16's words "set the column the title names in ink" change to the red point (maker A). Rule 14.6 is not split into red and ink cases, since that would make chapter 14 state Rule 05.3 a second way.
+- **D3-485. BC M1 is done as D3-480 sets it**, with two of BC's details: the stage's true-size line names both widths ("True size, 600 px wide; 328 px on a phone", with the wide figure as built), and if bytes remain after round 2, the opener, 15.13 and 15.14 get a desktop composition first. Where BC and the creative director differ (the switch at 600 or 680 px; two loops side by side or stacked pairs), follow the creative director, who scores the item.
+- **D3-486. Avoid sketches may take up to 4,096 bytes** (BC M4 with CD SK-M1), replacing D3-481's 3,072: the misleading form and the better choice drawn small, side by side from the same illustrative data, the do-not-publish bar over the misleading half only, and a "Use instead" label over the other.
+- **D3-487. Entries whose form changes on a phone show the phone drawing at a desk** (BC S3; DR-240 names "its phone drawing where the form changes"): the same spec drawn a second time at a fixed 358 px artboard under the desktop drawing, labeled "On a phone, 358 px".
+- **D3-488. BC Q1 goes to Dustin with the round 2 plan:** whether chapter 13's five chart titles take a closing period as a typographic correction. Until he answers, chapter 13 does not change.
+
+**Items by owner**
+
+| Owner | Items |
+|---|---|
+| Systems designer | BC M1 (with D3-485); BC S1 (= CD CH15-S1); BC S2 with the data lead (optional: 15.6 may move to a loop outside executive power; the data lead decides, and no finding is dropped) |
+| Editor | BC M2 (rules 14.6, 14.9, 14.11 and 14.12's correct plates drawn from the kit: 14.6 from `ranked-bar` with `labels.point`, 14.12 as two kit renders of one spec, 14.11 from `line-data-gap` or a small kit extension; 14.9 matches the kit's anatomy exactly until round 2's interval form lands; the engineer names the parts your script may call); BC S5 (= CD R-S4, chapter 14 only); BC S6 (the opener's grid, and a small drawn mark per family if it fits 16 KB); BC S17 (the chapter instruction's apostrophe); BC S18 with the engineer (the basis stated once in the introduction; an entry's own box only where its basis differs, naming the research) |
+| Engineer | BC M4's limit under D3-486; BC S3 under D3-487; BC S7's stage sizing (with CD SK-M2); BC S9 (= CD AM1); BC S16 (2 px strokes on whole pixels and 1 px strokes on half pixels in `parts.js`, proved on the board 1 specimens too); BC S18's generator side; BC S19 (= CD ST-S1); the kit parts the editor's script may call for BC M2 |
+| Research lead | BC M3 (the FEC's party for the DCCC, DSCC and NRCC rows in `fec-independent-expenditures-2024.csv` and its sidecar); BC S20 (OPM's January 31, 2025 count for S25's agencies, frozen with its date) |
+| Maker A | BC M3's drawing and note 3 once the party column lands; BC M4 (the radar beside a dot plot or grouped bars from the same values); BC S10 (S37's heads on one row; the checked mark at 6 px with a keyline); BC S12 (S18's values all after their bars, the tick behind the labels on a halo); BC S17 (S39's quotes and the missing space through the spec's word map; the atlas text goes to the V7.1 list as a request); entry 14.16's words under D3-484 |
+| Maker B | BC M4 (the streamgraph beside small multiples or a stacked area on a flat baseline); BC S7 (the reference sketches sized to the stage); BC S8 (S25's fills: the end steps of pair B or a reason with the data lead; the Veterans Affairs bar ends 8 px short); BC S11 (S26's figure bold with the party named); BC S13 (row names flush left for long lists, as maker A's forms set them; drop S24's key or its labeled gridline); BC S14 (= CD B-S2 and BM1); BC S15 (S32, S34, S27's year labels); BC S20 (S25's January 2025 note and column once the research lead's count lands); S33's customs duties line under D3-484 |
+| Data lead | Sign-off of BC M2, M3, M4, S8 and S13 as they land; BC S2's call |
