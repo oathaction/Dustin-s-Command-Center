@@ -4906,3 +4906,9 @@ The main session posted the round 2 plan with four questions. Dustin: "I approve
 | D3-878 | The editor's run 3 words are applied in the generator: nine lines on the six new rules and the round 1 "Basis" lines of 15.13 and 15.14; titles 15.16 and 15.17 as D3-670 rules them | D3-615: the editor owns the words, the systems designer the file |
 | D3-879 | Rule 15.18's source line reads "loop B2, loop B3 and loop R9", and the generator now stops on an R9 or R13 that "Loop" does not directly precede | The guide check's codes test reads a bare R9 or R13 as a decision code; "loops B2, B3 and R9" would have failed it (tested by planting it back) |
 | D3-880 | My two "Basis" lines name the record after the ID ("the profile of Reform R-01", "the record and evidence summary of Loop B2") | The shell holds an ID whole, and a possessive after it ("R-01’s") wrapped alone to the next line at 390 px |
+
+### Main session, round 2 close
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-881 | Dustin's work tracker is published privately at https://claude.ai/artifact/57na3V5WrhNayPNYxXLaHA from `work/boards/tracker/20261112_Remaining-Work-Tracker.html`, with each remaining chat as a row in its database (`items` c00 to c18, `phases`, `meta/page`); each chat sets its own row active at its start and done at its close, and Dustin may tick rows himself | Dustin asked for one interactive view of the remaining work that the studio keeps current, so he need not ask for status |

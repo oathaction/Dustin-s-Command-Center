@@ -21,14 +21,16 @@ Phase 3 is the active phase. Round 2 is built and signed off by the data lead; i
 - `phase3_ch14_build.py`: 96 rules (82 entries, 61 chart plates), 74 examples, 0 faults; Rule 01.9 holds (largest domain D08, 14 of 74; California and Florida 3 each).
 - `oa-chart.mjs build --all --no-png`: 64 of 64 specs pass, 0 faults, counted from every check file (D3-618).
 - Data check: 111 tables, 0 faults. V7 check: 0 failures (chapter 13, 50 chips; chapter 14, 123; chapter 15, 112).
-- Quick guide check at 1440 and 390 px: see D3-881 in the log for the result on this build.
+- Quick guide check at 1440 and 390 px: see D3-882 in the log for the result on this build.
+
+**The work tracker (D3-881).** Dustin's private tracker of every remaining chat is at https://claude.ai/artifact/57na3V5WrhNayPNYxXLaHA (source `work/boards/tracker/20261112_Remaining-Work-Tracker.html`). Its rows live in the page's database, collection `items` (docs `c00` to `c18`, fields `status` of `todo`, `active` or `done`, `done_on`, `note`), with `phases` (`p3` to `p5`) and `meta/page` (`updated_on`, `updated_note`). Every chat updates it with the `ArtifactData` tool, pinning each write to the version it read: at its start, set its own row `active`; at its close, set it `done` with the date, set the next row `active`, and update `meta/page`. When a chat splits or the plan changes, add or renumber rows by `order` and say so in the row's `note`. Dustin may tick rows himself on the page. This chat is row `c00`.
 
 **Weight:** chapter 14 1,169,236 bytes as built (1,586,958 with the kit) against its 2,803,941-byte stop; share per plate 15,872 bytes for each of the 36 specimens still to come; rules 14.1 to 14.14 with the opener 169,755 of 212,288; chapter 15 302,270 of 600,000; the page projects to 15,042,488 of 15,500,000.
 
 ## 2. Next, in order
 
 ### A. Confirm the committed state
-V11's three setup steps, the three key tests, a strict build and the quick guide check. Then the four-width guide check (`guide_check.js` without `--quick`), which round 1 deferred to this review (D3-647); run it in the background with `run_in_background`, never with `&` inside a call (section 3).
+Set row `c01` of the work tracker to `active` (section 1). Then V11's three setup steps, the three key tests, a strict build and the quick guide check. Then the four-width guide check (`guide_check.js` without `--quick`), which round 1 deferred to this review (D3-647); run it in the background with `run_in_background`, never with `&` inside a call (section 3).
 
 ### B. Round 2's review
 Write the review brief on round 1's model (`work/handoffs/phase-3/20261112_Phase-3-Round-1-Review-Brief.md`): the same four reviewers (statistics and civic; nonpartisanship, brand and craft; accessibility and the production test with a simulated panel, reported as simulated; the creative director's first pass with scores), reading the work in section 1 on a fresh strict build. Name for them: the range bar's phone rows (S57, Rule 14.9) and every form's narrow plot; the derived summaries against their frozen files; the party test across all 22 new titles; S63's X18 window under H09 (the data lead's ruling); the four Estimate labels; chapter 15's six rules against V7; the sketches at true size. Start the fix pass when three reports are in (V15, V19).
@@ -104,7 +106,7 @@ Created, all under `work/` unless named:
 - **Data:** `build/scripts/phase-3/maker_b_round2_derive.py` and its five derived files; round 4's ten frozen files with sidecars in `build/data/`.
 
 Modified:
-- `ledger/20261020_Decision-Log.md` (D3-649 to D3-881); `handoffs/phase-3/20261112_Chapter-14-Plan.json` (round 2 rows); `handoffs/phase-3/20261112_Round-3-Data-Plan.md` (row 113); `research/20261021_Research-Ledger.md` (P7-301 to P7-310 and notes).
+- `ledger/20261020_Decision-Log.md` (D3-649 to D3-882); `handoffs/phase-3/20261112_Chapter-14-Plan.json` (round 2 rows); `handoffs/phase-3/20261112_Round-3-Data-Plan.md` (row 113); `research/20261021_Research-Ledger.md` (P7-301 to P7-310 and notes).
 - The kit's shared files (`kit.js`, `parts.js`, `kit.css`, `checks.js`, `oa-chart.mjs`, `README.md`), round 1 forms `line-event-notes.js`, `bar-benchmark-tick.js`, `heat-table.js`, `indexed-line.js`, specs `s18.json` and `s33.json`; `phase3_ch13_build.py` and five `s-13-*.chart.json` files (DR-242); `phase3_ch14_rules_build.py`, entries `14-001.json` to `14-014.json`, `14-chapter.json` and the rule plates; `phase3_ch14_build.py`, `guide_charts.py`, `guide_build.py`, `dataviz_check.js`, `guide-shell.css`; `phase3_ch15_build.py`, chapter 15's file, plates and manifest; chapter 14's generated file, manifest and example log; data files and sidecars for S50, S53, S57, S62 and S64.
 
-Not touched: `source/`, `deliverables/`, Atlas V7. Nothing published this chat.
+Published: the work tracker, private (`boards/tracker/20261112_Remaining-Work-Tracker.html`, https://claude.ai/artifact/57na3V5WrhNayPNYxXLaHA). Not touched: `source/`, `deliverables/`, Atlas V7.

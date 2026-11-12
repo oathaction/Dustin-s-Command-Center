@@ -1,0 +1,206 @@
+<title>Edition 06 Work Tracker</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: one reading column; a summary band, then the chats in build order, grouped by phase. */
+:root {
+  --ground: #DCD9D2;      /* Newsprint */
+  --surface: #E8E6E0;
+  --ink: #121212;         /* Charcoal */
+  --ink-2: #4E535B;       /* deep Stone */
+  --rule: #B4B4B3;
+  --done: #1F2D5A;        /* Prussian */
+  --active: #4A7C74;      /* Verdigris */
+  --decide: #E63946;      /* Pillar Red, marks only */
+  --track: #C8C6C2;
+  --focus: #1F2D5A;
+  --display: "Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --text: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #121212; --surface: #202122; --ink: #DCD9D2; --ink-2: #A3A19C; --rule: #3D4046;
+    --done: #828A9D; --active: #6FA39A; --decide: #E63946; --track: #323438; --focus: #DCD9D2;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #121212; --surface: #202122; --ink: #DCD9D2; --ink-2: #A3A19C; --rule: #3D4046;
+  --done: #828A9D; --active: #6FA39A; --decide: #E63946; --track: #323438; --focus: #DCD9D2;
+  color-scheme: dark;
+}
+body { background: var(--ground); color: var(--ink); font: 400 15px/1.5 var(--text); }
+.page { max-width: 860px; margin: 0 auto; padding-block: 32px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.kicker { font: 600 12px/1.2 var(--text); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 8px; }
+h1 { font: 800 clamp(28px, 6vw, 40px)/1.05 var(--display); letter-spacing: -.01em; margin: 0 0 10px; text-wrap: balance; }
+.lede { margin: 0; max-width: 60ch; color: var(--ink-2); }
+.summary { margin-top: 28px; padding: 20px; background: var(--surface); border-radius: 6px; display: grid; gap: 16px; }
+.counts { display: flex; flex-wrap: wrap; gap: 8px 28px; align-items: baseline; }
+.big { font: 800 34px/1 var(--display); font-variant-numeric: tabular-nums; }
+.big small { font: 600 15px/1 var(--text); color: var(--ink-2); margin-left: 6px; }
+.stat { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.stat b { font: 600 13px/1.3 var(--text); color: var(--ink-2); text-transform: uppercase; letter-spacing: .06em; }
+.stat span { font-weight: 500; }
+.bar { display: grid; gap: 3px; grid-template-columns: repeat(var(--n, 19), 1fr); height: 12px; }
+.seg { background: var(--track); border-radius: 2px; }
+.seg.done { background: var(--done); }
+.seg.active { background: var(--active); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--ink-2); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.next { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px 24px; }
+.phase { margin-top: 36px; }
+.phase-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px;
+  border-bottom: 2px solid var(--ink); padding-bottom: 6px; }
+.phase-head h2 { font: 800 20px/1.2 var(--display); margin: 0; }
+.phase-head p { margin: 0; color: var(--ink-2); font-size: 13px; font-variant-numeric: tabular-nums; }
+ol.items { list-style: none; margin: 0; padding: 0; }
+.item { display: grid; grid-template-columns: 28px 1fr; gap: 4px 12px; padding: 14px 0 14px 10px; border-bottom: 1px solid var(--rule);
+  border-left: 3px solid transparent; }
+.item.active { border-left-color: var(--active); }
+.item .box { grid-row: 1 / span 3; padding-top: 2px; }
+.item input { width: 20px; height: 20px; margin: 0; accent-color: var(--done); cursor: pointer; }
+.item input:disabled { cursor: default; }
+.item input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.line1 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; min-width: 0; }
+.chat { font: 600 13px/1.3 var(--text); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap; }
+.pill { font: 600 12px/1 var(--text); padding: 4px 7px; border-radius: 999px; white-space: nowrap; }
+.pill.active { background: var(--active); color: #FFFFFF; }
+.pill.done { border: 1px solid var(--done); color: var(--done); }
+.work { margin: 0; min-width: 0; }
+.ends { margin: 0; font-size: 14px; color: var(--ink-2); min-width: 0; }
+.ends.decide::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--decide);
+  margin-right: 8px; vertical-align: 1px; }
+.ends.decide strong { color: var(--ink); font-weight: 600; }
+.note { margin: 2px 0 0; font-size: 13px; color: var(--ink-2); font-style: italic; }
+.item.done .work { color: var(--ink-2); }
+.status-msg { margin-top: 28px; padding: 16px; border: 1px dashed var(--rule); border-radius: 6px; color: var(--ink-2); }
+.foot { margin-top: 32px; font-size: 13px; color: var(--ink-2); }
+.toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  background: var(--ink); color: var(--ground); padding: 8px 14px; border-radius: 4px; font-size: 14px; }
+@media (max-width: 480px) { .summary { padding: 16px; } .big { font-size: 28px; } }
+@media (prefers-reduced-motion: no-preference) { .seg { transition: background-color .2s; } }
+</style>
+
+<main class="page">
+  <p class="kicker">Oath &amp; Action · Edition 06 brand guide</p>
+  <h1>Edition 06 Work Tracker</h1>
+  <p class="lede">Every chat left in the rebuild, in the order the studio runs them. Tick a chat when it is done; each chat's closing step also updates this page.</p>
+
+  <section class="summary" aria-label="Progress">
+    <div class="counts">
+      <div class="big" id="done-count">0<small id="done-of">of 0 chats done</small></div>
+    </div>
+    <div class="bar" id="bar" role="img" aria-label="Progress by chat"></div>
+    <div class="legend" aria-hidden="true">
+      <span><i style="background:var(--done)"></i>Done</span>
+      <span><i style="background:var(--active)"></i>In progress</span>
+      <span><i style="background:var(--track)"></i>Not started</span>
+      <span><i style="background:var(--decide);border-radius:50%"></i>Your decision</span>
+    </div>
+    <div class="next">
+      <div class="stat"><b>Up next</b><span id="next-up">Loading</span></div>
+      <div class="stat"><b>Your next decision</b><span id="next-decision">Loading</span></div>
+    </div>
+  </section>
+
+  <div id="status" class="status-msg">The plan loads from the tracker's store. It lists each remaining chat by phase, with what the chat ends with.</div>
+  <div id="phases"></div>
+  <p class="foot" id="foot"></p>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function () {
+  var items = [], phases = [], meta = null, canWrite = true, db = null;
+  var $ = function (id) { return document.getElementById(id); };
+
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]; }); }
+  function fmtDate(d) {
+    if (!d) return '';
+    var p = String(d).split('-'); if (p.length !== 3) return d;
+    var m = ['January','February','March','April','May','June','July','August','September','October','November','December'][+p[1] - 1];
+    return m + ' ' + (+p[2]) + ', ' + p[0];
+  }
+  function today() { var n = new Date(); return n.getFullYear() + '-' + String(n.getMonth() + 1).padStart(2, '0') + '-' + String(n.getDate()).padStart(2, '0'); }
+  function toast(t) { var el = $('toast'); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(function () { el.hidden = true; }, 2600); }
+
+  function render() {
+    var list = items.slice().sort(function (a, b) { return a.order - b.order; });
+    var n = list.length, done = list.filter(function (i) { return i.status === 'done'; }).length;
+    $('done-count').firstChild.nodeValue = done;
+    $('done-of').textContent = 'of ' + n + ' chats done';
+    var bar = $('bar'); bar.style.setProperty('--n', Math.max(n, 1)); bar.innerHTML = '';
+    bar.setAttribute('aria-label', done + ' of ' + n + ' chats done');
+    list.forEach(function (i) { var s = document.createElement('span'); s.className = 'seg ' + (i.status || 'todo'); s.title = i.chat + ': ' + (i.status === 'done' ? 'done' : i.status === 'active' ? 'in progress' : 'not started'); bar.appendChild(s); });
+    var nx = list.filter(function (i) { return i.status !== 'done'; })[0];
+    $('next-up').textContent = nx ? nx.chat + ': ' + nx.work : 'Every chat is done.';
+    var nd = list.filter(function (i) { return i.status !== 'done' && i.decision; })[0];
+    $('next-decision').textContent = nd ? nd.chat + ': ' + nd.ends_with : 'None left.';
+
+    var host = $('phases'); host.innerHTML = '';
+    var ph = phases.slice().sort(function (a, b) { return a.order - b.order; });
+    ph.forEach(function (p) {
+      var rows = list.filter(function (i) { return String(i.phase) === String(p.key); });
+      if (!rows.length) return;
+      var pd = rows.filter(function (i) { return i.status === 'done'; }).length;
+      var sec = document.createElement('section'); sec.className = 'phase';
+      sec.innerHTML = '<div class="phase-head"><h2>' + esc(p.name) + '</h2><p>' + pd + ' of ' + rows.length + ' done · estimate ' + esc(p.estimate) + '</p></div>';
+      var ol = document.createElement('ol'); ol.className = 'items';
+      rows.forEach(function (i) {
+        var li = document.createElement('li'); li.className = 'item ' + (i.status || 'todo');
+        var id = 'chk-' + i.id;
+        var pill = i.status === 'active' ? '<span class="pill active">In progress</span>' : i.status === 'done' ? '<span class="pill done">Done' + (i.done_on ? ' ' + esc(fmtDate(i.done_on)) : '') + '</span>' : '';
+        li.innerHTML =
+          '<div class="box"><input type="checkbox" id="' + id + '"' + (i.status === 'done' ? ' checked' : '') + (canWrite ? '' : ' disabled') + ' aria-label="Mark ' + esc(i.chat) + ' done"></div>' +
+          '<div class="line1"><label class="chat" for="' + id + '">' + esc(i.chat) + '</label>' + pill + '</div>' +
+          '<p class="work">' + esc(i.work) + '</p>' +
+          '<p class="ends' + (i.decision ? ' decide' : '') + '">' + (i.decision ? '<strong>Your decision:</strong> ' : 'Ends with: ') + esc(i.ends_with) + '</p>' +
+          (i.note ? '<p class="note">' + esc(i.note) + '</p>' : '');
+        li.querySelector('input').addEventListener('change', function (e) { setDone(i, e.target.checked, e.target); });
+        ol.appendChild(li);
+      });
+      sec.appendChild(ol); host.appendChild(sec);
+    });
+    $('foot').textContent = meta && meta.updated_on ? 'Last updated ' + fmtDate(meta.updated_on) + (meta.updated_note ? '. ' + meta.updated_note : '.') : '';
+  }
+
+  var busy = {};
+  function setDone(i, on, el) {
+    if (!db || busy[i.id]) return;
+    busy[i.id] = true; el.disabled = true;
+    var body = on ? { status: 'done', done_on: today() } : { status: 'todo', done_on: '' };
+    db.doc('items/' + i.id).update(body).then(function () {
+      toast(on ? i.chat + ' marked done' : i.chat + ' marked not done');
+    }).catch(function (e) {
+      el.checked = !on;
+      if (e && e.code === 'invalid_argument') { canWrite = false; toast('This view can read the tracker but not change it.'); render(); }
+      else toast('Could not save. Try again in a moment.');
+    }).then(function () { busy[i.id] = false; if (canWrite) el.disabled = false; });
+  }
+
+  function start() {
+    var c = window.claude;
+    if (!c || !c.use) { $('status').textContent = "This copy of the page has no tracker store. Open it on claude.ai to see the plan."; return; }
+    c.use('user').then(function (u) {
+      if (!u || !u.can) return;
+      return Promise.resolve(u.can('data.write')).then(function (v) { if (v === false) { canWrite = false; if (items.length) render(); } });
+    }).catch(function () {});
+    c.use('db').then(function (d) {
+      if (!d) { $('status').textContent = "This view can't reach the tracker's store. Open the page on claude.ai while signed in."; return; }
+      db = d;
+      var timer = setTimeout(function () { $('status').hidden = false; $('status').textContent = items.length ? 'The tracker may be out of date; its store has not answered yet.' : "The tracker's store has not answered yet. The plan appears here when it does."; }, 10000);
+      var got = { items: false, phases: false };
+      function settle(snap) { if (!snap.metadata.fromCache) { clearTimeout(timer); } }
+      function show() { if (got.items && got.phases) { if (items.length) $('status').hidden = true; else $('status').textContent = 'No chats are listed yet. Claude adds them to the store after publishing.'; render(); } }
+      d.collection('items').onSnapshot(function (s) { items = s.docs.map(function (x) { var o = Object.assign({}, x.data()); o.id = x.id; return o; }); got.items = true; settle(s); show(); },
+        function () { clearTimeout(timer); $('status').hidden = false; $('status').textContent = "The tracker's store stopped answering. Reopen the page to try again."; });
+      d.collection('phases').onSnapshot(function (s) { phases = s.docs.map(function (x) { var o = Object.assign({}, x.data()); o.key = x.data().key || x.id; return o; }); got.phases = true; settle(s); show(); }, function () {});
+      d.doc('meta/page').onSnapshot(function (s) { meta = s.exists ? s.data() : null; if (got.items && got.phases) render(); }, function () {});
+    });
+  }
+  start();
+})();
+</script>
