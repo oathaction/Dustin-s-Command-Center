@@ -1167,7 +1167,8 @@
     // scripts-off view, Rule 14.13) hides, and the controls with the one table and its one count sit where it stood. Print
     // shows the still list again, then every row.
     var art = fig.querySelector('.oac-art[data-oa-art]'), eqd = fig.querySelector('details.oac-eq');
-    if (art && art.parentNode) {
+    // a page that exports the still drawing (the kit's build page) sets OAChart.lookup_in_place = false before the figures wire
+    if (K.lookup_in_place !== false && art && art.parentNode) {
       art.parentNode.insertBefore(box, art.nextSibling);
       if (eqd) { box.parentNode.insertBefore(eqd, box.nextSibling); eqd.setAttribute('open', ''); }
       art.hidden = true;

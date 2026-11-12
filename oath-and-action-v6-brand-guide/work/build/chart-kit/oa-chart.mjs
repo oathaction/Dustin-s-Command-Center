@@ -248,7 +248,8 @@ ${(f => f.slice(0, f.lastIndexOf('</figure>')) + island_table(spec, rows, column
 ${body}
 <script>OAChart_words=${JSON.stringify(K.words)};</script>
 <script>${kit_scripts()}
-OAChart.words = OAChart_words;</script>
+OAChart.words = OAChart_words;
+OAChart.lookup_in_place = false;   // the build page shows each lookup's still drawing, which its PNG export and captures are made from</script>
 </body></html>`;
 }
 

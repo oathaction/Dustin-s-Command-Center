@@ -213,7 +213,9 @@ CSS = {
     "tip": (f".tip{{position:absolute;right:0;padding:6px 10px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);{SMALL}}}"),
     "opq": (".opq{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:0}"
             "@media (min-width:48em){.opq{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}}"
-            ".opq li{display:grid;align-content:start;gap:4px;padding:10px 0;border-top:1px solid var(--oa-color-border-hairline)}"
+            ".opq li{display:grid;grid-template-columns:24px minmax(0,1fr);align-content:start;gap:4px 12px;padding:10px 0;border-top:1px solid var(--oa-color-border-hairline)}"
+            ".opq svg{grid-row:1/3;margin-top:2px;fill:none;stroke:var(--oa-color-text-secondary);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}"
+            ".opq li>:not(svg){grid-column:2}.opq .dd{stroke-width:4}"
             ".opq a{color:inherit;text-underline-offset:3px}"
             ".opq .qq{font:var(--oa-font-weight-bold) var(--oa-type-h4-font-size)/var(--oa-type-h4-line-height) var(--oa-font-family-display);letter-spacing:-0.01em}"
             f".opq .fm{{{CAP};color:var(--oa-color-text-secondary)}}"),
@@ -1388,6 +1390,28 @@ def rule_14_14(B):
 # ===============================================================================================================
 # The opener and the chapter's own words
 # ===============================================================================================================
+# One small drawn mark per family for the opener (BC S6), in the utility icons' manner: a 24-unit grid, a 2 px line,
+# round caps and joins, the text's own color. Each shows the family's typical form.
+MARKS = {
+    2: "M4 6h14M4 12h9M4 18h16",                                          # bars of three lengths
+    3: "M4 8h12m-3-3 3 3-3 3M20 16H8m3-3-3 3 3 3",                        # two arrows, each way
+    4: "M3 18l5-6 4 3 8-9",                                                # a line over time
+    5: "M3 9h18v6H3zM10 9v6M16 9v6",                                       # a bar split in parts
+    6: "M3 20h18M6 20v-5M10 20V9M14 20V6M18 20v-8",                        # a histogram
+    7: "M6 18h.01M10 13h.01M14 15h.01M17 9h.01M20 6h.01M8 15h.01",         # a rising cloud of dots
+    8: "M4 12h16M4 9v6M20 9v6M12 10v4",                                    # an interval
+    9: "M15 12a6 6 0 1 1-12 0a6 6 0 1 1 12 0M21 12a6 6 0 1 1-12 0a6 6 0 1 1 12 0",   # two circles overlapping
+    10: "M4 17a8 8 0 0 1 16 0M12 17l4-5",                                  # a gauge
+    11: "M3 5h18l-7 7v6l-4 2v-8z",                                         # a funnel
+    12: "M10 3h4v4h-4zM3 17h4v4H3zM17 17h4v4h-4zM12 7v5M5 17v-5h14v5",    # who decides, top to bottom
+    13: "M7 7h10M6 9l5 7M18 9l-5 7M7 7a2 2 0 1 1-4 0a2 2 0 1 1 4 0M21 7a2 2 0 1 1-4 0a2 2 0 1 1 4 0M14 18a2 2 0 1 1-4 0a2 2 0 1 1 4 0",  # three nodes joined
+    14: "M3 7c9 0 9 10 18 10M3 17c9 0 9-10 18-10",                         # two flows crossing
+    15: "M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z",             # a tile map
+    16: "M3 5h18v14H3zM3 10h18M3 15h18M10 5v14",                           # a table
+    17: "M3 9h5v6H3zM16 9h5v6h-5zM8 12h8m-3-3 3 3-3 3",                    # a process in steps
+}
+
+
 def opener(B):
     lis = []
     for gp in PLAN["groups"][1:]:
@@ -1396,12 +1420,14 @@ def opener(B):
         # a group whose first entry is written links to its heading; a later round's group prints unlinked (D3-452)
         first = int(gp["rules"].split(" to ")[0].split(".")[1])
         built = (ENTRIES / f"14-{first:03d}.json").exists()
-        lis.append((f'<li><a class="qq" href="#group-14-{gp["group"]}">{q}</a>' if built else f'<li><span class="qq">{q}</span>')
+        dots = ' class="dd"' if gp["group"] == 7 else ""   # a scatter's dots draw at twice the line's weight
+        mark = f'<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path{dots} d="{MARKS[gp["group"]]}"/></svg>'
+        lis.append(f"<li>{mark}" + (f'<a class="qq" href="#group-14-{gp["group"]}">{q}</a>' if built else f'<span class="qq">{q}</span>')
                    + f'<span class="fm">{e(fam)}</span></li>')
     body = ('<p class="k" style="margin:0 0 12px">Every chart answers one question</p><ol class="opq">' + "".join(lis) + "</ol>")
     B.add("s-14-opener", body, readable=True,
           alt="The sixteen reader questions that open chapter 14’s groups, from which is bigger and how they rank to how something works "
-              "in one look, each with the family of forms that answers it.",
+              "in one look, each with a small drawing of its typical form and the family of forms that answers it.",
           notes="The chapter's opener: the reader's questions that open groups 2 to 17, read from the plan file.")
     return {"specimen": "s-14-opener", "caption": "Each group of this chapter opens with the question a reader brings, and its forms answer it.",
             **{k: v for k, v in B.plates["s-14-opener"].items()}}
