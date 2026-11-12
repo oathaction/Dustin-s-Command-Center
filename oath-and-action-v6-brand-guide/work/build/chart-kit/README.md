@@ -154,7 +154,7 @@ A page opened from disk can't read a file by itself, so paste the data file's te
 <script src="kit.js"></script>
 <script src="parts.js"></script>
 <script src="geo.js"></script>                            <!-- only for the map forms -->
-<script src="forms/ranked-bar.js"></script>               <!-- the form your spec names -->
+<script src="forms/ranked-bar.js"></script>               <!-- the form your spec names; bubble-scatter.js also needs scatter-named.js first -->
 <div class="oa-surface-newsprint" id="chart"></div>
 <script>
   var spec = { /* the spec */ };

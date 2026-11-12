@@ -45,7 +45,18 @@
     p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     return p.join('.');
   }
-  function fixed(v, nd) { var p = Math.abs(v).toFixed(nd || 0).split('.'); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ','); return p.join('.'); }
+  // RB-G1 (round 2): numbers round half away from zero on their decimal value, not the binary one: 12.35 to one place is
+  // 12.4, though the double nearest 12.35 sits just under it. A value is read as its 15 significant digits, the most a
+  // double holds exactly, so one computed by a division (dollars over 1e9) rounds as its decimal does.
+  function dround(a, nd) {
+    nd = nd || 0;
+    if (!isFinite(a)) return a;
+    var s = a.toPrecision(15);
+    if (/e/i.test(s)) return Math.round(a * Math.pow(10, nd)) / Math.pow(10, nd);
+    return Math.round(Number(s + 'e' + nd)) / Math.pow(10, nd);
+  }
+  K.dround = dround;
+  function fixed(v, nd) { var p = dround(Math.abs(v), nd).toFixed(nd || 0).split('.'); p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, ','); return p.join('.'); }
   function signed(v, txt) { return (v > 0 ? '+' : v < 0 ? MINUS : '') + txt; }
   K.fmt = function (v, format) {
     if (v === null || v === undefined || v === '') return '';
@@ -53,7 +64,7 @@
     if (m) { f = m[1]; nd = +m[2]; }
     switch (f) {
       case 'text': return String(v);
-      case 'integer': return (v < 0 ? MINUS : '') + group(Math.round(Math.abs(v)));
+      case 'integer': return (v < 0 ? MINUS : '') + group(dround(Math.abs(v), 0));
       case 'number': return (v < 0 ? MINUS : '') + fixed(v, nd);
       case 'percent': return (v < 0 ? MINUS : '') + fixed(v, nd) + '%';
       case 'signed': return signed(v, fixed(v, nd));
@@ -68,14 +79,17 @@
       // headed in millions
       case 'millions': return (v < 0 ? MINUS : '') + fixed(v / 1e6, nd) + ' million';
       case 'millions-value': return (v < 0 ? MINUS : '') + fixed(v / 1e6, nd);
+      // A-E2 (round 2): a column held in millions printed in billions, 36,104,000 as 36,104.0 billion; the -value form bare
+      case 'billions-from-millions': return (v < 0 ? MINUS : '') + fixed(v / 1e3, nd) + ' billion';
+      case 'billions-value-from-millions': return (v < 0 ? MINUS : '') + fixed(v / 1e3, nd);
       case 'compact-thousands':
       case 'signed-compact-thousands': {
         var a = Math.abs(v) * 1000, sg = f === 'signed-compact-thousands' ? (v > 0 ? '+' : v < 0 ? MINUS : '') : (v < 0 ? MINUS : '');
-        if (a >= 1e6) return sg + (a / 1e6).toFixed(a >= 1e7 ? 0 : 1) + ' million';
-        return sg + group(Math.round(a / 1000) * 1000);
+        if (a >= 1e6) return sg + dround(a / 1e6, a >= 1e7 ? 0 : 1).toFixed(a >= 1e7 ? 0 : 1) + ' million';
+        return sg + group(dround(a / 1000, 0) * 1000);
       }
-      case 'thousands': return (v < 0 ? MINUS : '') + group(m ? Math.round(Math.abs(v)) * 1000 : Math.round(Math.abs(v) * 1000));
-      case 'signed-thousands': return m ? signed(Math.round(v) === 0 ? 0 : v, group(Math.round(Math.abs(v)) * 1000)) : signed(v, group(Math.round(Math.abs(v) * 1000)));
+      case 'thousands': return (v < 0 ? MINUS : '') + group(m ? dround(Math.abs(v), 0) * 1000 : dround(Math.abs(v) * 1000, 0));
+      case 'signed-thousands': return m ? signed(dround(Math.abs(v), 0) === 0 ? 0 : v, group(dround(Math.abs(v), 0) * 1000)) : signed(v, group(dround(Math.abs(v) * 1000, 0)));
       case 'month': { var mm = String(v).match(/^(\d{4})-(\d{2})/); return mm ? MONTHS[+mm[2] - 1] + ' ' + mm[1] : String(v); }
       case 'month-short': { var ms = String(v).match(/^(\d{4})-(\d{2})/); return ms ? MONTHS[+ms[2] - 1].slice(0, 3) + ' ' + ms[1] : String(v); }
       case 'date': { var d = String(v).match(/^(\d{4})-(\d{2})-(\d{2})/); return d ? MONTHS[+d[2] - 1] + ' ' + (+d[3]) + ', ' + d[1] : String(v); }
@@ -338,7 +352,7 @@
   // a shape's box for the drawing-edge check; shapes inside a moved group (a map's projection) are left out
   Ctx.prototype._ink = function (kind, x, y, w, h, o) {
     if (this._tf) return;
-    this.ink.push({ kind: kind, x: x, y: y, w: w, h: h, role: (o && (o.fill || o.stroke)) || '', fill: o && o.fill, plate: !!(o && o.cls && /\boac-fc-plate\b/.test(o.cls)) });
+    this.ink.push({ kind: kind, x: x, y: y, w: w, h: h, role: (o && (o.fill || o.stroke)) || '', fill: o && o.fill, plate: !!(o && o.cls && /\boac-fc-plate\b/.test(o.cls)), poly: o && o._poly });
   };
   // the box of a path drawn with absolute M, L, H and V commands only (lines and areas); null for curves
   function path_box(d) {
@@ -352,6 +366,33 @@
     }
     return x0 <= x1 ? [x0, y0, x1 - x0, y1 - y0] : null;
   }
+  // A-E1 (round 2): the outline of a filled path of absolute M, L, H, V and Z commands, as subpaths of [x, y], so the fill
+  // under a word is read from a band or an area as it is from a rect; null for curves
+  function path_poly(d) {
+    if (/[^MLHVZ0-9.,\s+eE-]/.test(d)) return null;
+    var re = /([MLHVZ])([^MLHVZ]*)/g, m, x = 0, y = 0, subs = [], cur = null;
+    var at = function () { if (!cur) { cur = []; subs.push(cur); } cur.push([x, y]); };
+    while ((m = re.exec(d))) {
+      var n = (m[2].match(/-?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?/gi) || []).map(Number);
+      if (m[1] === 'Z') { cur = null; continue; }
+      if (m[1] === 'M') cur = null;
+      if (m[1] === 'H') n.forEach(function (v) { x = v; at(); });
+      else if (m[1] === 'V') n.forEach(function (v) { y = v; at(); });
+      else for (var i = 0; i + 1 < n.length; i += 2) { x = n[i]; y = n[i + 1]; at(); }
+    }
+    return subs.length ? subs : null;
+  }
+  // even-odd across every subpath, as SVG fills a path by default (nonzero gives the same for the simple bands a form draws)
+  K.in_poly = function (subs, px, py) {
+    var inside = false;
+    (subs || []).forEach(function (pts) {
+      for (var i = 0, j = pts.length - 1; i < pts.length; j = i++) {
+        var a = pts[i], b = pts[j];
+        if ((a[1] > py) !== (b[1] > py) && px < (b[0] - a[0]) * (py - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+      }
+    });
+    return inside;
+  };
   function attrs(o) {
     var s = '';
     for (var k in o) if (o[k] !== undefined && o[k] !== null && o[k] !== false) s += ' ' + k + '="' + esc(o[k]) + '"';
@@ -436,8 +477,10 @@
     if (o.pattern) a.fill = 'url(#' + this.uid + '-' + o.pattern + ')';
     this._push('<path' + attrs(a) + '/>');
     var pb = path_box(String(d)) || box;
-    if (pb) this._ink('path', pb[0], pb[1], pb[2], pb[3], o);
-    if (box && o.mark !== false) this.mark({ kind: o.kind || 'path', x: box[0], y: box[1], w: box[2], h: box[3], fill: o.fill, stroke: o.stroke, data: o.data || {}, job: o.job });
+    // A-E1: a filled path keeps its outline, so a word set on it reads its fill (fill_under, the forced-colors check)
+    var poly = o.fill && o.fill !== 'none' ? path_poly(String(d)) : null;
+    if (pb) this._ink('path', pb[0], pb[1], pb[2], pb[3], poly ? Object.assign({}, o, { _poly: poly }) : o);
+    if (box && o.mark !== false) this.mark({ kind: o.kind || 'path', x: box[0], y: box[1], w: box[2], h: box[3], fill: o.fill, stroke: o.stroke, data: o.data || {}, job: o.job, poly: poly || undefined });
   };
   Ctx.prototype.datum = function (x, y, o) {
     // a record for the checks at a point the drawing already inks (a line's vertex): no element, no bytes
@@ -496,9 +539,9 @@
   Ctx.prototype.fill_under = function (px, py) {
     for (var i = this.ink.length - 1; i >= 0; i--) {
       var m = this.ink[i];
-      if ((m.kind !== 'rect' && m.kind !== 'circle') || !(m.w > 0) || !(m.h > 0)) continue;
+      if ((m.kind !== 'rect' && m.kind !== 'circle' && !(m.kind === 'path' && m.poly)) || !(m.w > 0) || !(m.h > 0)) continue;
       var inside = m.kind === 'circle' ? Math.pow(px - (m.x + m.w / 2), 2) + Math.pow(py - (m.y + m.h / 2), 2) < Math.pow(m.w / 2, 2)
-        : px > m.x && px < m.x + m.w && py > m.y && py < m.y + m.h;
+        : m.kind === 'path' ? K.in_poly(m.poly, px, py) : px > m.x && px < m.x + m.w && py > m.y && py < m.y + m.h;
       if (!inside) continue;
       if (m.plate) return 'plate';
       if (m.fill && m.fill !== 'none') return m.fill;
@@ -662,14 +705,20 @@
       tx.forEach(function (b) {
         var x0 = b.x + 1.5, x1 = b.x + b.w - 1.5, y0 = b.y + 1.5, y1 = b.y + b.h - 1.5;
         if (x1 <= x0 || y1 <= y0) return;
-        var near = function (x, y) { return x > b.x - 4 && x < b.x + b.w + 4 && y > b.y - 4 && y < b.y + b.h + 4; };
-        if (near(l.x1, l.y1) || near(l.x2, l.y2)) return;
-        if (seg_hits_box(l.x1, l.y1, l.x2, l.y2, x0, y0, x1, y1)) out.push('a leader line crosses "' + b.words.slice(0, 30) + '"');
+        if (K.leader_crosses(l, b)) out.push('a leader line crosses "' + b.words.slice(0, 30) + '"');
       });
     });
     return out;
   };
   K.seg_hits_box = seg_hits_box;
+  // the guard's own test of a leader through a label, which K.parts.place_labels asks before it picks a place (RB-G3)
+  K.leader_crosses = function (l, b) {
+    var x0 = b.x + 1.5, x1 = b.x + b.w - 1.5, y0 = b.y + 1.5, y1 = b.y + b.h - 1.5;
+    if (x1 <= x0 || y1 <= y0) return false;
+    var near = function (x, y) { return x > b.x - 4 && x < b.x + b.w + 4 && y > b.y - 4 && y < b.y + b.h + 4; };
+    if (near(l.x1, l.y1) || near(l.x2, l.y2)) return false;
+    return seg_hits_box(l.x1, l.y1, l.x2, l.y2, x0, y0, x1, y1);
+  };
   function seg_hits_box(ax, ay, bx, by, x0, y0, x1, y1) {
     // Liang-Barsky: does the segment from (ax, ay) to (bx, by) enter the box?
     var t0 = 0, t1 = 1, dx = bx - ax, dy = by - ay, p = [-dx, dx, -dy, dy], q = [ax - x0, x1 - ax, ay - y0, y1 - ay];
@@ -759,6 +808,10 @@
     if (base === 'billions' || base === 'billions-value') {
       var nb = t.replace(/ billion$/, '').replace(/[,\s]/g, '').replace(MINUS, '-');
       return /^-?\d+(\.\d+)?$/.test(nb) ? String(parseFloat(nb) * 1e9) : undefined;
+    }
+    if (base === 'billions-from-millions' || base === 'billions-value-from-millions') {
+      var nf = t.replace(/ billion$/, '').replace(/[,\s]/g, '').replace(MINUS, '-');
+      return /^-?\d+(\.\d+)?$/.test(nf) ? String(Math.round(parseFloat(nf) * 1e3 * 1e6) / 1e6) : undefined;
     }
     if (base === 'millions' || base === 'millions-value') {
       var nm = t.replace(/ million$/, '').replace(/[,\s]/g, '').replace(MINUS, '-');

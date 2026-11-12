@@ -319,44 +319,64 @@
   };
   var overlaps = function (b, t, pad) { return b.x < t.x + t.w + pad && t.x < b.x + b.w + pad && b.y < t.y + t.h + pad && t.y < b.y + b.h + pad; };
   // Words set inside a rectangle (a treemap's tile, a block of seats): fit_label(c, box, words, o) tries each role in
-  // o.roles (default label, then tick) on one line, then up to o.lines lines (default 2), inside o.pad px (default 4);
+  // o.roles (default label, then tick) on one line, then up to o.lines lines (default 2), inside o.pad px (default 4; a list
+  // of pads is tried in order, each with every role, A-E3); o.sub is a second block under the words, in the tick size and
+  // weight 400 on up to o.sub_lines lines (default 1), which must fit with them (a figure and its share);
   // o.align 'start' (top left, default) or 'middle'; o.fill the text role for the ground under it (label-on-subject on the
   // subject ink, on-cat-1 to on-cat-3 on a group's fill); o.weight (default 600). Returns the text's box, or null and draws
   // nothing where the words do not fit, so the form sets them outside or folds the area into "All other".
   P.fit_label = function (c, box, words, o) {
     o = o || {};
-    var pad = o.pad === undefined ? 4 : o.pad, wgt = o.weight || 600, roles = o.roles || ['label', 'tick'], maxl = o.lines || 2;
-    var aw = box.w - 2 * pad, ah = box.h - 2 * pad;
-    for (var i = 0; i < roles.length; i++) {
-      var role = roles[i], size = c.size(role), lh = Math.round(size * 1.25);
-      if (aw <= 0) break;
-      var lines = K.wrap(words, size, aw, wgt, 'reading'), wide = 0;
-      lines.forEach(function (ln) { wide = Math.max(wide, c.measure(ln, size, wgt)); });
-      var th = size + (lines.length - 1) * lh;
-      if (lines.length > maxl || wide > aw || th > ah) continue;
-      var mid = o.align === 'middle', x = mid ? box.x + box.w / 2 : box.x + pad;
-      var y = (mid ? box.y + (box.h - th) / 2 : box.y + pad) + ABOVE * size;
-      return c.text(x, y, String(words), { role: role, weight: wgt, anchor: mid ? 'middle' : 'start', max: aw + 0.5, leading: lh, fill: o.fill });
+    var pads = [].concat(o.pad === undefined ? 4 : o.pad), wgt = o.weight || 600, roles = o.roles || ['label', 'tick'], maxl = o.lines || 2;
+    var ss = c.size('tick'), slh = Math.round(ss * 1.25), sgap = 3;
+    for (var k = 0; k < pads.length; k++) {
+      var pad = pads[k], aw = box.w - 2 * pad, ah = box.h - 2 * pad;
+      if (aw <= 0) continue;
+      var sub = o.sub === undefined || o.sub === null || o.sub === '' ? null : K.wrap(o.sub, ss, aw, 400, 'reading'), sw = 0;
+      if (sub) sub.forEach(function (ln) { sw = Math.max(sw, c.measure(ln, ss, 400)); });
+      if (sub && (sub.length > (o.sub_lines || 1) || sw > aw)) continue;
+      var sh = sub ? sgap + ss + (sub.length - 1) * slh : 0;
+      for (var i = 0; i < roles.length; i++) {
+        var role = roles[i], size = c.size(role), lh = Math.round(size * 1.25);
+        var lines = K.wrap(words, size, aw, wgt, 'reading'), wide = 0;
+        lines.forEach(function (ln) { wide = Math.max(wide, c.measure(ln, size, wgt)); });
+        var th = size + (lines.length - 1) * lh;
+        if (lines.length > maxl || wide > aw || th + sh > ah) continue;
+        var mid = o.align === 'middle', x = mid ? box.x + box.w / 2 : box.x + pad;
+        var y = (mid ? box.y + (box.h - th - sh) / 2 : box.y + pad) + ABOVE * size;
+        var tb = c.text(x, y, String(words), { role: role, weight: wgt, anchor: mid ? 'middle' : 'start', max: aw + 0.5, leading: lh, fill: o.fill });
+        if (sub) tb.sub = c.text(x, y + BELOW * size + (lines.length - 1) * lh + sgap + ABOVE * ss, String(o.sub), { role: 'tick', weight: 400, anchor: mid ? 'middle' : 'start', max: aw + 0.5, leading: slh, fill: o.fill });
+        return tb;
+      }
     }
     return null;
   };
   // Labels beside points that keep clear of each other: place_labels(c, items, o), items [{x, y, r, words, key, weight,
   // fill}] in the order they claim room (the named point first). Each label tries eight places around its point, right,
   // left, above, below, then the four corners, r + o.gap px out (default 4); then, with o.leaders (default true), the same
-  // places o.reach px further (default 14) with a hairline leader. A place must sit inside the drawing (0 to c.width, o.top
+  // places o.reach px further (default 14) with a hairline leader; o.reach may be a list of reaches, tried in order (RB-G3). A place must sit inside the drawing (0 to c.width, o.top
   // to o.bottom), clear of every label placed, every text already drawn, every point's dot and o.avoid boxes. Returns
   // {placed: [{item, box}], unplaced: [items]}; name the unplaced in a note (K.word('unlabeled_marks')) or the table.
   P.place_labels = function (c, items, o) {
     o = o || {};
-    var role = o.role || 'label', size = c.size(role), gap = o.gap === undefined ? 4 : o.gap, reach = o.reach || 14, pad = 2;
+    var role = o.role || 'label', size = c.size(role), gap = o.gap === undefined ? 4 : o.gap, pad = 2;
+    var rings = o.leaders === false ? [0] : [0].concat(o.reach === undefined ? [14] : [].concat(o.reach));
     var top = o.top || 0, bottom = o.bottom === undefined ? Infinity : o.bottom;
     var dots = items.map(function (it) { var r = it.r || 0; return { x: it.x - r, y: it.y - r, w: 2 * r, h: 2 * r }; });
     var taken = (o.avoid || []).slice(), placed = [], unplaced = [];
+    // a leader from the dot's edge to the label box's nearest point; a place whose leader would cross a word already drawn,
+    // or whose label would sit on a leader already drawn, is not clear: the layout guard's own test (K.leader_crosses)
+    var leader_of = function (it, b) {
+      var r0 = it.r || 0, bx = Math.max(b.x, Math.min(it.x, b.x + b.w)), by = Math.max(b.y, Math.min(it.y, b.y + b.h));
+      var dx = bx - it.x, dy = by - it.y, len = Math.sqrt(dx * dx + dy * dy) || 1;
+      return [it.x + dx / len * (r0 + 1), it.y + dy / len * (r0 + 1), bx - dx / len * 2, by - dy / len * 2];
+    };
+    var crosses = function (L, t) { return K.leader_crosses({ x1: L[0], y1: L[1], x2: L[2], y2: L[3] }, t); };
     var places = [['right', 1, 0], ['left', -1, 0], ['above', 0, -1], ['below', 0, 1], ['upper right', 0.75, -0.75], ['lower right', 0.75, 0.75], ['upper left', -0.75, -0.75], ['lower left', -0.75, 0.75]];
     items.forEach(function (it, n) {
       var wgt = it.weight || 400, w = c.measure(it.words, role, wgt), r = it.r || 0, done = null;
-      for (var ring = 0; ring < (o.leaders === false ? 1 : 2) && !done; ring++) {
-        var d = r + gap + ring * reach;
+      for (var ring = 0; ring < rings.length && !done; ring++) {
+        var d = r + gap + rings[ring];
         for (var k = 0; k < places.length && !done; k++) {
           var ax = places[k][1], ay = places[k][2];
           var anchor = ax > 0 ? 'start' : ax < 0 ? 'end' : 'middle';
@@ -365,6 +385,11 @@
           if (b.x < 0 || b.x + b.w > c.width || b.y < top || b.y + b.h > bottom) continue;
           if (taken.some(function (t) { return overlaps(b, t, pad); }) || c.texts.some(function (t) { return overlaps(b, t, pad); })) continue;
           if (dots.some(function (t, j) { return j !== n && t.w > 0 && overlaps(b, t, 1); })) continue;
+          if ((c.leaders || []).some(function (l) { return K.leader_crosses(l, b); })) continue;
+          if (ring) {
+            var L = leader_of(it, b);
+            if (c.texts.some(function (t) { return crosses(L, t); })) continue;
+          }
           done = { x: x, y: y, anchor: anchor, box: b, ring: ring };
         }
       }
@@ -373,9 +398,8 @@
       taken.push(tb);
       if (done.ring) {
         // the leader from the dot's edge to the label's nearest edge
-        var bx = Math.max(tb.x, Math.min(it.x, tb.x + tb.w)), by = Math.max(tb.y, Math.min(it.y, tb.y + tb.h));
-        var dx = bx - it.x, dy = by - it.y, len = Math.sqrt(dx * dx + dy * dy) || 1;
-        c.line(it.x + dx / len * (r + 1), it.y + dy / len * (r + 1), bx - dx / len * 2, by - dy / len * 2, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+        var LL = leader_of(it, tb);
+        c.line(LL[0], LL[1], LL[2], LL[3], { stroke: 'leader', width: c.t('line-hairline'), mark: false });
       }
       placed.push({ item: it, box: tb });
     });

@@ -749,6 +749,44 @@ async function self_test() {
       console.log(`${okn && okj ? 'pass' : 'FAIL'} a list of points shares the red as one job (marks in a job group or with job count once); two jobs still fail; the light fill's opt-in edge`);
       if (!(okn && okj)) bad++;
     }
+    // second run: RB-G1 (decimal rounding), A-E2 (billions from millions), RB-G3 (a list of reaches), A-E3 (a second block in
+    // fit_label), A-E1 (the fill under a word on a filled path)
+    {
+      const F = K.fmt, M = K.minus;
+      const ok1 = F(12.35, 'number:1') === '12.4' && F(-12.35, 'number:1') === M + '12.4' && F(12.34999, 'number:1') === '12.3' && F(1.005, 'number:2') === '1.01' &&
+        F(2.5, 'integer') === '3' && F(0.05, 'signed:1') === '+0.1' && F(173250000000, 'billions:1') === '173.3 billion' && F(1.0005, 'thousands') === '1,001' &&
+        F(12.25, 'percent:1') === '12.3%' && F(0.1 + 0.2, 'number:16') === F(0.30000000000000004, 'number:16') && F(51.2, 'thousands') === '51,200';
+      console.log(`${ok1 ? 'pass' : 'FAIL'} numbers round half away from zero on their decimal value (12.35 to 12.4, 1.005 to 1.01, 2.5 to 3)`);
+      if (!ok1) bad++;
+      const ok2 = F(36104000, 'billions-from-millions:1') === '36,104.0 billion' && F(36104000, 'billions-value-from-millions:1') === '36,104.0' &&
+        K.unformat('36,104.0 billion', { format: 'billions-from-millions:1' }) === '36104000' && K.unformat('36,104.0', { format: 'billions-value-from-millions:1' }) === '36104000';
+      console.log(`${ok2 ? 'pass' : 'FAIL'} billions-from-millions prints a column held in millions in billions and reads back`);
+      if (!ok2) bad++;
+      const crowd = [{ x: 200, y: 100, r: 6.5, words: 'Alpha' }, { x: 204, y: 100, r: 6.5, words: 'Bravo' }, { x: 208, y: 100, r: 6.5, words: 'Charlie' }, { x: 202, y: 104, r: 6.5, words: 'Delta' },
+        { x: 206, y: 96, r: 6.5, words: 'Echo' }, { x: 210, y: 102, r: 6.5, words: 'Foxtrot' }, { x: 198, y: 98, r: 6.5, words: 'Golf' }, { x: 204, y: 106, r: 6.5, words: 'Hotel' },
+        { x: 207, y: 94, r: 6.5, words: 'India' }, { x: 201, y: 101, r: 6.5, words: 'Juliet' }];
+      const ra = mk({}); crowd.forEach(p => ra.circle(p.x, p.y, p.r, { fill: 'subject' })); const one = P.place_labels(ra, crowd, { top: 0, bottom: 300 });
+      const rb = mk({}); crowd.forEach(p => rb.circle(p.x, p.y, p.r, { fill: 'subject' })); const many = P.place_labels(rb, crowd, { top: 0, bottom: 300, reach: [14, 40, 80] });
+      const ok3 = many.placed.length > one.placed.length && !K.guard(rb, 400, 300).length;
+      console.log(`${ok3 ? 'pass' : 'FAIL'} place_labels tries a list of reaches in order (${one.placed.length} placed with one, ${many.placed.length} with three)`);
+      if (!ok3) bad++;
+      const cs = mk({}), tile = { x: 0, y: 0, w: 150, h: 46 };
+      const ts = P.fit_label(cs, tile, 'Social Security', { sub: '$1.6 trillion, 22 percent', pad: [5, 3] });
+      const tn = P.fit_label(mk({}), { x: 0, y: 0, w: 150, h: 26 }, 'Social Security', { sub: '$1.6 trillion, 22 percent', pad: [5, 3] });
+      const ok4 = ts && ts.sub && ts.sub.size === 13 && ts.sub.y >= ts.y + ts.h && ts.sub.y + ts.sub.h <= tile.y + tile.h + 0.01 && !K.guard(cs, 400, 100).length && tn === null;
+      console.log(`${ok4 ? 'pass' : 'FAIL'} fit_label sets a second, smaller block under the words where both fit, and nothing where they do not`);
+      if (!ok4) bad++;
+      const cfp = mk({});
+      cfp.path('M0,0L200,0L200,40L0,40Z', { fill: 'seq-3', mark: false });
+      const wt = cfp.text(100, 25, 'On the band', { anchor: 'middle' });
+      const ok5 = cfp.fill_under(100, 20) === 'seq-3' && wt.on_gray && cfp.fill_under(100, 60) === null;
+      const dp = { marks: [], ink: [{ kind: 'path', x: 0, y: 0, w: 200, h: 40, fill: 'cat-1', poly: [[[0, 0], [200, 0], [200, 40], [0, 40]]] }], texts: [{ x: 60, y: 10, w: 80, h: 15, words: 'Inked', fill: 'label' }], fc: K.FC, fc_on_dark: K.FC_ON_DARK, keys: [], width: 400, height: 100 };
+      const dq = JSON.parse(JSON.stringify(dp)); dq.texts[0].fill = 'on-cat-1';
+      const fa = C.check_drawing(s, Object.assign({}, d0, dp, { guard: [] }), TOK.newsprint, 'self-test'), fb = C.check_drawing(s, Object.assign({}, d0, dq, { guard: [] }), TOK.newsprint, 'self-test');
+      const ok6 = fa.some(x => /prints in CanvasText on a mark in CanvasText/.test(x)) && !fb.some(x => /forced colors/.test(x));
+      console.log(`${ok5 && ok6 ? 'pass' : 'FAIL'} a word on a filled path reads that path's fill, in the kit and in the forced-colors check`);
+      if (!(ok5 && ok6)) bad++;
+    }
     // RS-S3: a drawing reports its arrangement, the phone one under 480 px or where the form says so
     const da = K.draw(s, r.rows, { width: 720, ground: 'newsprint', tokens: TOK.newsprint }), dp = K.draw(s, r.rows, { width: 358, ground: 'newsprint', tokens: TOK.newsprint });
     const ca = mk({}); ca.arrange('phone');

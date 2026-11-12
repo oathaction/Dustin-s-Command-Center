@@ -375,10 +375,22 @@ function check_drawing(spec, d, tok, where) {
     const fills = d.marks.filter(m => m.fill && m.w > 0 && m.h > 0);
     // beside a red point the context marks take the ground with an outline (kit.css, access S10)
     const pointed = d.marks.some(m => m.fill === 'point' || m.stroke === 'point');
+    // A-E1 (round 2): a filled path is read by its outline, not its box; a word on a filled path drawn as no mark (a band
+    // under a stacked area's name) takes that path's fill when no mark lies under it
+    const in_poly = (subs, px, py) => {
+      let inside = false;
+      for (const pts of subs || []) for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) {
+        const a = pts[i], b = pts[j];
+        if ((a[1] > py) !== (b[1] > py) && px < (b[0] - a[0]) * (py - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+      }
+      return inside;
+    };
+    const paths = (d.ink || []).filter(m => m.kind === 'path' && m.poly && m.fill && m.fill !== 'none');
     for (const t of d.texts || []) {
       const cx = t.x + t.w / 2, cy = t.y + t.h / 2;
-      let ground = 'Canvas';
-      for (const m of fills) if (cx > m.x && cx < m.x + m.w && cy > m.y && cy < m.y + m.h) ground = pointed && m.fill === 'context' ? 'Canvas' : d.fc[m.fill] || 'CanvasText';
+      let ground = 'Canvas', hit = false;
+      for (const m of fills) if (m.poly ? in_poly(m.poly, cx, cy) : (cx > m.x && cx < m.x + m.w && cy > m.y && cy < m.y + m.h)) { hit = true; ground = pointed && m.fill === 'context' ? 'Canvas' : d.fc[m.fill] || 'CanvasText'; }
+      if (!hit) for (const m of paths) if (in_poly(m.poly, cx, cy)) ground = pointed && m.fill === 'context' ? 'Canvas' : d.fc[m.fill] || 'CanvasText';
       // a word on a GrayText mark takes Canvas (second pass), except on context beside a red point (kit.css)
       const ink = (d.fc_on_dark || []).indexOf(t.fill) >= 0 || (t.on_gray && !(pointed && t.on_context)) ? 'Canvas' : 'CanvasText';
       if (ink === ground) f.push(`forced colors: "${String(t.words).slice(0, 30)}" prints in ${ink} on a mark in ${ground}${at}`);

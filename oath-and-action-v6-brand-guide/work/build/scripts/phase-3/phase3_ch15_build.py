@@ -2606,7 +2606,7 @@ def rule_15_18(book):
     others_html = (f'<p class="k">The atlas’s other conceptual loops</p>'
                    f'<div class="two tw">{"".join(f"<p class={chr(34)}nt{chr(34)}>{x}</p>" for x in o_items)}</div>')
     body = (lab_ + beside(hed("Loop", "B2", b2["title"]) + fig(svg_wrap(b, h)), words)
-            + f'<div class="kb">{others_html}</div>' + src("loops B2, B3 and R9"))
+            + f'<div class="kb">{others_html}</div>' + src("loop B2, loop B3 and loop R9"))
     book.add("s-15-18-correct", body, rule="15.18", readable=True, wide=True,
              alt=(f"Loop B2 from our systems atlas, “{b2['title']}”, under a label reading Well supported, the atlas’s grade "
                   "for the mechanism; no numbered chain, which the atlas calls the weakest point. Two thin pills, Household "
@@ -2748,6 +2748,9 @@ def check(data, book):
             fails.append(f"studio word or code {m.group(0)!r} in {k}")
         if re.search(r"\bnot only\b|\bnot just\b", t):
             fails.append(f"a corrective-negation shape in {k}")
+        # the guide check's codes test reads R9 and R13 as decision codes unless "Loop " stands right before them
+        for m in re.finditer(r"(?<![Ll]oop )\b(?:R9|R13)\b", re.sub(r"\s+", " ", t)):
+            fails.append(f"{k}: a bare {m.group(0)}, which the guide check reads as a decision code; write Loop {m.group(0)}")
         for m in re.finditer(r"\bRules? (15\.\d+)", t):
             if m.group(1) not in BUILT:
                 fails.append(f"{k} cites Rule {m.group(1)}, which this round does not build")

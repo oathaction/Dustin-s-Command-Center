@@ -1,7 +1,15 @@
 {
  "kit": 1,
- "id": "s-14-9-range",
- "form": "range-bar",
+ "id": "s-14-9-dots",
+ "form": "dot-plot",
+ "measure_line": "Share of citizens 18 and over who reported voting, November 2024, the ten states with the most voting-age citizens",
+ "reading_guide": "Each line spans a state’s margin of error at 90 percent confidence, and a gap counts only past the gap’s own margin. A filled dot differs from the nation by more than the margin; an open dot sits within it.",
+ "encode": {
+  "key": "code",
+  "label": "name",
+  "value": "voted_pct"
+ },
+ "notes_internal": "Rule 14.9's correct plate: the script's drawing inside the kit's own figure (ED-E9) until round 2's interval form.",
  "family": "uncertainty-and-estimates",
  "tier": "core",
  "dataset": "census-cps-2024-turnout-by-state",
@@ -32,8 +40,6 @@
  "evidence_label": "Finding",
  "grade_line": "Documented: a Census Bureau survey",
  "title": "Five of the ten states with the most voting-age citizens differed from the nation’s 65.3 percent turnout by more than the margin of error.",
- "measure_line": "Share of citizens 18 and over who reported voting, November 2024, the ten states with the most voting-age citizens, with each figure’s 90 percent margin of error",
- "reading_guide": "Each line spans a state’s margin of error, and a gap counts only past the gap’s own margin. A filled dot differs from the nation by more than the margin; an open dot sits within it.",
  "notes": [
   "Past the margin: Michigan, Pennsylvania, Florida, New York and Texas. Within it: Ohio, Illinois, California, North Carolina and Georgia."
  ],
@@ -60,29 +66,6 @@
    }
   ]
  },
- "encode": {
-  "category": "name",
-  "value": "voted_pct",
-  "margin": "moe_pct",
-  "key": "code"
- },
- "labels": {
-  "reference": "US",
-  "reference_label": "Nation {value}%",
-  "test": "reference",
-  "value": "{value}%"
- },
- "formats": {
-  "value": "number:1",
-  "tick": "integer"
- },
- "scale": {
-  "x": [
-   50,
-   80
-  ]
- },
- "phone": "same",
  "domain": "D10",
  "states": [
   "CA",
@@ -96,7 +79,7 @@
   "GA",
   "MI"
  ],
- "notes_internal": "Rule 14.9's correct plate on the kit's range-bar form (ED-E4). Checked by script: five states past the gap's margin from the nation (the form's labels.test reads the same margins), five within it; the ranked ends inside their own margins.",
  "credit": "Chart: Oath & Action",
- "illustrative": false
+ "illustrative": false,
+ "phone": "same"
 }

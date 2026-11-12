@@ -4,9 +4,9 @@ Oath & Action Edition 06, Phase 3, round 2, November 12, 2026. Maker A, briefed 
 
 ## Summary
 
-In progress (19:45). All 11 forms written; all 11 specs drafted and passing `oa-chart.mjs build` at 1440 and 390 px on both grounds and the guide widths; all 20 entries written (14-046 to 14-057, 14-085 to 14-092); all six sketches drawn. `phase3_ch14_build.py` reports no fault on maker A's rules (its remaining faults are maker B's entries still to come). The data lead's rulings (a) to (g) and requests A1 to A6 are applied; S18 changed under ruling (c) and A2; S37's heat table calls `c.arrange('phone')` (D3-666). Next: the editor's words pass, every figure checked by script, captures looked at, the strict guide build.
+Done (19:50), waiting only on the editor's words pass. All 11 forms written on the engineer's shared parts (`K.parts.stack`, `named_fill`, `key`, `value_grid`); all 11 specs pass `oa-chart.mjs build` at 1440 and 390 px on both grounds and the guide widths, and `dataviz_check.js --kit`; all 20 entries written (14-046 to 14-057, 14-085 to 14-092); all six sketches drawn. `phase3_ch14_build.py`: 0 faults; the strict guide build: exit 0, no warning, every plate of mine under the 14,337-byte share. The data lead's rulings (a) to (g) and requests A1 to A6 are applied; S18 changed under ruling (c) and A2; S37's heat table calls `c.arrange('phone')` (D3-666); S64 cites Public Law 119-21 after the research lead's R2.
 
-**For the editor:** every spec and entry below is ready for the words pass. Titles I would most like read: S61 (both provisions of H.R. 7008 at first mention, D2-406's "as the House passed it", 220 characters), S62 and S63 (chip words are our reading of V7's status text).
+**For the editor:** the editor's "Words for maker A" still read "Nothing to read yet" at 19:48 (its summary puts the pass in a later run); I read the section before reporting and will apply its changes when they land. Titles I would most like read: S61 (both provisions of H.R. 7008 at first mention with D2-406's "as the House passed it", 220 characters), S62, and S63 (its chip words are our reading of V7's status text).
 
 | Rule | Spec | Form ID | Status |
 |---|---|---|---|
