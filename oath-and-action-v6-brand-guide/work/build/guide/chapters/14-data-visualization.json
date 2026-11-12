@@ -325,7 +325,7 @@
     "01",
     "05"
    ],
-   "builders": "Name the one point in the spec’s labels.point, which draws it in red with its keyline, or in labels.named where a party tie gives it the subject ink; the kit counts working reds and fails a view with two.",
+   "builders": "Name the one point in the spec’s labels.named, which sets every other mark in the light fill, and again in labels.point, which draws it in red with its keyline; where a party tie gives it the subject ink, labels.named alone does. The kit counts working reds and fails a view with two.",
    "specs": [
     {
      "label": "The point",

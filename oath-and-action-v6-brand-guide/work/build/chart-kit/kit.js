@@ -650,7 +650,7 @@
   K.words = K.words || {};
   // words.json's words, carried inside the kit so a plain page opened from disk prints them too (access S8); the kit's
   // self-test fails when this copy and words.json differ
-  K.WORDS = {"source_label": "Source:", "table_summary": "The table and notes", "notes_in_chart": "Notes in the chart", "table_region": "{caption}, table", "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.", "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.", "scripts_off": "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below.", "export_fonts": "Set in Inter and Inter Tight. On a computer without both fonts, the labels fall back to another font and change width.", "lookup_clear_search": "Clear the search", "lookup_filters": "Filters, {n} on", "lookup_clear_filters": "Clear filters", "lookup_count": "{n} of {total} {noun}", "phone_view": "On a phone, {w} px"};
+  K.WORDS = {"source_label": "Source:", "table_summary": "The table and notes", "notes_in_chart": "Notes in the chart", "table_region": "{caption}, table", "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.", "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.", "scripts_off": "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below.", "export_fonts": "Set in Inter and Inter Tight. On a computer without both fonts, the labels fall back to another font and change width.", "lookup_clear_search": "Clear the search", "lookup_filters": "Filters, {n} on", "lookup_clear_filters": "Clear filters", "lookup_count": "{n} of {total} {noun}", "phone_view": "On a phone, {w} px", "phone_view_part": "On a phone, {w} px: {part}", "phone_view_rows": "the first {n} of {total} rows; a phone draws them all"};
   function word(opts, k) {
     var w = (opts && opts.words) || K.words;
     if (k in w) return w[k];
@@ -1079,8 +1079,13 @@
       p.push('<div class="oac-art" data-oa-art' + (opts.art_attrs || '') + '>' + illus + (opts.svg || '') + '</div>');
       // D3-487 (BC S3, ED-E10): a form that changes on a phone also shows its phone drawing to a reader at a desk, drawn
       // from the same rows at a fixed 358 px under the desktop drawing; hidden where the figure is itself phone width
-      if (spec.phone_view && !opts.svg) p.push('<div class="oac-art oac-art-phone" data-oa-art-phone="' + PHONE_VIEW_PX + '"><p class="oac-phone-k">' +
-        esc(word(opts, 'phone_view').replace('{w}', String(PHONE_VIEW_PX))) + '</p></div>');
+      // A17 (D3-534): desk_phone {rows, part} draws it from the first rows only, where the whole phone drawing would run far
+      // longer than the desktop one, and says so; a phone still draws every row
+      var dp = spec.desk_phone && +spec.desk_phone.rows > 0 ? spec.desk_phone : null;
+      var pk = dp ? word(opts, 'phone_view_part').replace('{part}', dp.part || word(opts, 'phone_view_rows').replace('{n}', String(+dp.rows)).replace('{total}', String((rows || []).length)))
+        : word(opts, 'phone_view');
+      if (spec.phone_view && !opts.svg) p.push('<div class="oac-art oac-art-phone" data-oa-art-phone="' + PHONE_VIEW_PX + '"' + (dp ? ' data-oa-rows="' + (+dp.rows) + '"' : '') + '><p class="oac-phone-k">' +
+        esc(pk.replace('{w}', String(PHONE_VIEW_PX))) + '</p></div>');
       // with scripts off a reader sees the description as words and a line saying the drawing needs scripts; once the
       // script runs, the description names the drawing and leaves the reading order, so it is heard once (D3-97)
       if (spec.alt) p.push('<p class="oac-alt" id="' + id + '-alt" data-role="alt">' + K.chips(spec.alt, ids) + '</p>');
@@ -1236,7 +1241,8 @@
     // hidden from assistive technology
     var pv = fig.querySelector('[data-oa-art-phone]');
     if (pv && !pv.querySelector('svg.oac-svg')) {
-      var pr = K.draw(spec, rows, { width: +pv.getAttribute('data-oa-art-phone') || PHONE_VIEW_PX, ground: ground, t: t, extra: extra, uid: (fig.id || 'oac') + '-phone' });
+      var pn = +pv.getAttribute('data-oa-rows') || 0;
+      var pr = K.draw(spec, pn ? rows.slice(0, pn) : rows, { width: +pv.getAttribute('data-oa-art-phone') || PHONE_VIEW_PX, ground: ground, t: t, extra: extra, uid: (fig.id || 'oac') + '-phone' });
       pv.insertAdjacentHTML('beforeend', pr.svg.replace('<svg ', '<svg aria-hidden="true" ').replace(/<title>[\s\S]*?<\/title>|<desc>[\s\S]*?<\/desc>/g, ''));
     }
     if (root.ResizeObserver) new root.ResizeObserver(function () { draw(); }).observe(art);

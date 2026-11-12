@@ -12,5 +12,7 @@
  "lookup_filters": "Filters, {n} on",
  "lookup_clear_filters": "Clear filters",
  "lookup_count": "{n} of {total} {noun}",
- "phone_view": "On a phone, {w} px"
+ "phone_view": "On a phone, {w} px",
+ "phone_view_part": "On a phone, {w} px: {part}",
+ "phone_view_rows": "the first {n} of {total} rows; a phone draws them all"
 }
