@@ -586,8 +586,85 @@ def item_ed_r1(dl):
     print('; '.join(f'{r["short_name"]} {r["judges"]}' for r in out_rows))
 
 
+# ---------------------------------------------------------------------------------------------------------------
+# ed_r2: the editor's ED-R2 (CD R-S3, Rule 14.13's plate). Super PACs (FEC committee type O) in the commission's
+# financial totals, counted per two-year cycle from 2010 to 2024: a documented count with no sampling margin, from a
+# publisher no rule plate draws. --dl holds totals-O-<cycle>.json (the API's pagination count) and pages/O-<cycle>-p*.json
+# (every row for 2012 and 2024, counted to confirm the pagination count).
+# ---------------------------------------------------------------------------------------------------------------
+SPAC = 'fec-super-pacs-by-cycle'
+SPAC_CYCLES = [2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024]
+
+
+def item_ed_r2(dl):
+    if dl is None:
+        raise SystemExit('ed_r2 needs --dl <folder with totals-O-<cycle>.json>')
+    counts = {}
+    for cy in SPAC_CYCLES:
+        d = json.loads((dl / f'totals-O-{cy}.json').read_text(encoding='utf-8'))
+        if any(r['committee_type'] != 'O' or r['cycle'] != cy for r in d['results']):
+            raise SystemExit(f'{cy}: a row of another type or cycle; nothing written')
+        counts[cy] = d['pagination']['count']
+    for cy in (2012, 2024):
+        ids = set()
+        for f in sorted((dl / 'pages').glob(f'O-{cy}-p*.json')):
+            ids |= {r['committee_id'] for r in json.loads(f.read_text(encoding='utf-8'))['results']}
+        if len(ids) != counts[cy]:
+            raise SystemExit(f'{cy}: {len(ids)} committees paged against a count of {counts[cy]}; nothing written')
+    out = io.StringIO()
+    w = csv.writer(out, lineterminator='\n')
+    w.writerow(['cycle', 'first_year', 'super_pacs'])
+    for cy in SPAC_CYCLES:
+        w.writerow([cy, cy - 1, counts[cy]])
+    p = DATA / f'{SPAC}.csv'
+    if not p.exists() or p.read_text(encoding='utf-8') != out.getvalue():
+        p.write_text(out.getvalue(), encoding='utf-8')
+        print(f'wrote {p.relative_to(ROOT)}')
+    print('super PACs by cycle:', counts)
+    meta = {
+        'file': f'{SPAC}.csv',
+        'kind': 'public',
+        'publisher': 'Federal Election Commission',
+        'title_or_table': 'OpenFEC API, financial totals for PACs and party committees, committee type O (independent expenditure-only political committees), counted per two-year cycle',
+        'table_id': 'api.open.fec.gov v1 /totals/pac-party/?cycle=<cycle>&committee_type=O, pagination count',
+        'url': ['https://api.open.fec.gov/v1/totals/pac-party/?cycle=<cycle>&committee_type=O&per_page=100&sort=committee_id'],
+        'observation_period': 'Two-year election cycles 2009 to 2010 through 2023 to 2024, every cycle',
+        'geography': 'United States (federal elections)',
+        'universe_or_base': ('Committees the FEC classes as independent expenditure-only political committees (type O, known as super PACs) '
+                             'and lists in its financial totals for the cycle'),
+        'unit': 'committees',
+        'date_retrieved': '2026-11-12',
+        'vintage': 'FEC processed data as served on November 12, 2026; a late or amended filing can change a past cycle’s count',
+        'qualification': ('A count of committees, not of money. Hybrid PACs (types V and W), which also make unlimited independent expenditures '
+                          'through a separate account, are not counted, and each committee counts under the type its totals carry for the cycle'),
+        'columns': {
+            'cycle': {'type': 'year', 'description': 'the two-year election cycle, named by its second year'},
+            'first_year': {'type': 'year', 'description': 'the cycle’s first year'},
+            'super_pacs': {'type': 'integer', 'description': 'type O committees in the FEC’s financial totals for the cycle', 'unit': 'committees'},
+        },
+        'printed_source_line': ('Source: Federal Election Commission, financial totals for PACs and party committees, independent expenditure-only '
+                                'committees, known as super PACs, counted by two-year cycle, 2009 to 2010 through 2023 to 2024, United States. '
+                                'Retrieved November 12, 2026. Hybrid PACs, which also make independent expenditures, are not counted.'),
+        'ledger_row': 'P7-224',
+        'domain': 'D03',
+        'states': [],
+        'notes': [('Made November 12, 2026 for Rule 14.13’s plate (the editor’s request ED-R2), from a publisher no rule plate draws. '
+                   'Each count is the API’s pagination count for the cycle with committee_type=O; every row returned for 2012 and 2024 was '
+                   'paged and counted, 857 and 2,062 distinct committees, equal to the counts. Every row on each cycle’s first page carries '
+                   'type O and that cycle. The 2024 count of all PACs and party committees, 9,688, is the one S36 prints; this file counts '
+                   'type O alone.')],
+        'unconfirmed': ['Whether a committee that registered but filed no report of receipts and spending appears in the totals; the count is '
+                        'the commission’s listing either way'],
+    }
+    pm = DATA / f'{SPAC}.meta.json'
+    text = json.dumps(meta, indent=1, ensure_ascii=False) + '\n'
+    if not pm.exists() or pm.read_text(encoding='utf-8') != text:
+        pm.write_text(text, encoding='utf-8')
+        print(f'wrote {pm.relative_to(ROOT)}')
+
+
 ITEMS = {'s24': item_s24, 's34': item_s34, 's31': item_s31, 's27': item_s27, 'bc_m3': item_bc_m3, 'bc_s20': item_bc_s20,
-         'ed_r1': item_ed_r1}
+         'ed_r1': item_ed_r1, 'ed_r2': item_ed_r2}
 
 
 def main(argv):
