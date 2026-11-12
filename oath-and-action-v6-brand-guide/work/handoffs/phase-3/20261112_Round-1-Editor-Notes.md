@@ -186,7 +186,7 @@ November 12, 2026, from the main session's four-width guide check on the final b
 | Fault | Plates | What changed |
 |---|---|---|
 | Type under 13 px at 390 and 360 px (11.94 and 10.72 px) | 14.3, 14.4, 14.7, 14.8, 14.10, 14.13 failure plates; 14.11 both | Every drawing the script makes is now 256 px wide, the narrowest column the guide sets, so it never scales below its true size; keys run two to a row. |
-| A `div[role=region]` inside a stage | 14.12 correct | The full-width drawing scrolls in the shell's own frame, `data-plate-scroll` with `data-frame-name="The drawing at full width"` (D3-126). |
+| A `div[role=region]` inside a stage | 14.12 correct | First moved to the shell's `data-plate-scroll`; the rerun then found the plate's hint showing while its own frame held the stage whole, since the shell takes the hint from any frame in the plate. Now nothing scrolls inside the stage: the stage measures itself (a container query), and below 600 px it shows the phone drawing with one line, "At full width the same twelve years stand as columns; this screen shows the phone drawing." Chapters 11 and 12 keep frames at the plate level too. |
 | axe nested-interactive, four | 14.6, 14.9, 14.11 and 14.12 correct | These four plates carry a table's toggle, so they are now readable plates: the shell gives their stage the group role, never the image role over a control. |
 
 Weight: the readable plates carry their alt as a hidden paragraph, so I shortened those four alts (the plates print what they listed), dropped two spec rows from Rule 14.2 that its rule text states, and dropped Rule 14.14's second paragraph, which its builders line repeats. Rules 14.1 to 14.14 take 195,970 bytes and the opener 3,825: 199,795, 205 under 0.20 MB.
@@ -194,10 +194,12 @@ Weight: the readable plates carry their alt as a hidden paragraph, so I shortene
 ### Routine calls
 
 - D3-xxx | The script's drawings are 256 px wide at every width | The guide's narrowest column is about 264 px at 360; a drawing that fits it never scales, and a true-size stage would cost each plate the shell's scroll note, about 150 bytes the limit lacks
+- D3-xxx | Rule 14.12's full-width drawing gives way to a line and the phone drawing where its stage is under 600 px, with nothing scrolling inside the stage | The shell names and hints at a plate's own frame; a second frame inside the stage set its hint without a frame to scroll
 - D3-xxx | Plates with a table are readable plates | D3-126: a stage that holds a chart and its table is a group, so the toggle is never nested in an image
 
 ### Tested
 
+- After the rerun: strict build exit 0, 0 warnings, rules and opener 199,900 bytes (100 under 0.20 MB). `hint.js` on 14.12's plate at 1440, 1024, 390 and 360 px: one frame, never wider than its stage, no hint and no tab stop at any width; the full-width drawing shows at 1440 and the line with the phone drawing at the other three; no text under 13 px.
 - `phase3_ch14_rules_build.py`, `phase3_ch14_build.py` (0 faults) and `guide_build.py --strict` (exit 0, 0 warnings).
 - `check2.js` (scratch, `phase-3/round-1/editor/fix/`) on all 29 plates in the strict page at 1440, 390 and 360 px: no text under 13 px as drawn (SVG text measured at its scale), no landmark or region role inside a stage, and axe-core 4.10.2's nested-interactive, scrollable-region-focusable, aria-allowed-role and region rules with no violation. 14.6 and 14.12's stages read role="group".
 - I looked at 14.3's, 14.8's and 14.10's failure plates and 14.11's and 14.12's correct plates at 360 px.

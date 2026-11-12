@@ -177,7 +177,8 @@ CSS = {
     "sb": (f".sb{{list-style:none;margin:0;padding:0;display:grid;gap:6px;{SMALL}}}.sb li{{display:grid;grid-template-columns:minmax(0,9rem) minmax(0,1fr) 3rem;gap:10px;align-items:center}}"
            ".sb .bt{height:var(--oa-chart-bar-phone-height)}.sb .v{text-align:right;font-variant-numeric:tabular-nums}"
            ".sb i{display:block;height:100%}"),
-    "st2": ".st2 .fr.ph{margin-top:20px}.st2 .sc{overflow-x:auto}.st2 .sc .fr{min-width:600px}",
+    "st2": (".st2{container-type:inline-size}.st2 .fr.ph{margin-top:20px}.st2 .dkw{display:none}"
+            "@container (max-width:599px){.st2 .dk{display:none}.st2 .dkw{display:block}}"),
     "yr": ".hb.yr li{grid-template-columns:3.2rem minmax(0,1fr) 4.8rem}.hb.yr li>span{grid-column:auto}",
     "two": ".two{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}@media (min-width:60em){.two{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);align-items:start}}",
     "fr": (f".fr{{border:1px solid var(--oa-color-border-strong);padding:14px}}.fr .fh{{{LBL};color:var(--oa-color-text-secondary);margin:0 0 10px}}"
@@ -1138,16 +1139,18 @@ def rule_14_12(B):
     vmax = max(d.values())
     cols = "".join(f'<div class="c{" s" if y == 2026 else ""}"><b>{comma(v)}</b><i style="height:{80 * v / vmax:.1f}%"></i></div>' for y, v in data)
     names = "".join(f"<span>{y}</span>" for y, _ in data)
-    desk = (f'<div class="sc" data-plate-scroll data-frame-name="The drawing at full width">'
-            f'<div class="fr"><p class="fh">At full width</p><div class="cl">{cols}</div><div class="cn">{names}</div></div></div>')
+    # where the stage is too narrow for the full-width drawing, it shows the phone drawing with a line naming the columns,
+    # so nothing scrolls inside the stage and the shell's own frame never hints at a scroll it does not hold
+    desk = (f'<div class="fr dk"><p class="fh">At full width</p><div class="cl">{cols}</div><div class="cn">{names}</div></div>'
+            '<p class="dkw">At full width the same twelve years stand as columns; this screen shows the phone drawing.</p>')
     phone = (f'<div class="fr ph"><p class="fh">On a phone, 358 px</p>'
              + hbars([(str(y), v) for y, v in data], vmax * 1.02, comma, subject=("2026",)).replace('class="hb ', 'class="hb yr ') + "</div>")
     tab = table("Federal receipts by fiscal year, billions of dollars", ["Fiscal year", "Billions of dollars"], [(y, comma(v)) for y, v in data])
     B.add("s-14-12-correct", head("Finding", g, title, measure=measure) + f'<div class="art st2">{desk}{phone}</div>' + foot([], src(ds)) + tab,
           alt=f"Twelve years of federal receipts as columns at full width and as bars on a phone. Both rise from {comma(d[2015])} billion dollars in 2015 to {comma(d[2026])} billion in 2026, "
               f"with a fall in 2023.",
-          readable=True, notes="The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; on a phone the "
-                "full-width drawing keeps its size in a named frame that scrolls sideways, and the words stay in the column.")
+          readable=True, notes="The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; where the stage is narrower than the "
+                "full-width drawing, the plate shows the phone drawing and one line naming the columns.")
     last3 = data[-3:]
     B.add("s-14-12-failure", dnp() + f'<div class="fr ph"><p class="fh">On a phone, 358 px</p>'
           + tl("Federal receipts rose in each of the last two years")

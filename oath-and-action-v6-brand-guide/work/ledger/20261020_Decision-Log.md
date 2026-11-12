@@ -4278,3 +4278,9 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | # | Decision | Reason |
 |---|---|---|
 | D3-456 | S32's `date_basis` words map is dropped now that the research lead reworded the three cells ("computed by Oath & Action from the law’s text"); the `what_takes_effect` map stays, since the file still holds two straight apostrophes ("plans'") | A words entry keyed on text the file no longer holds does nothing; R-B13's apostrophes remain open |
+
+### Editor, round 1 fix pass 2 (continued)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-457 | Rule 14.12's full-width drawing gives way to a line and the phone drawing where its stage is under 600 px, with nothing scrolling inside the stage | The shell names and hints at a plate's own frame; a second frame inside the stage set its hint without a frame to scroll |
