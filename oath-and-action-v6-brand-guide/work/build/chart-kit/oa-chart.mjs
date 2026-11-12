@@ -141,9 +141,11 @@ function span_list(ws) {
   return out.join(', ');
 }
 export function sweep_faults(spec, rows, extra) {
-  const [lo, hi] = sweep_range(spec), seen = new Map(), skip = new Set(GUIDE_WIDTHS.concat(PLATE_WIDTHS));
+  // N1 (access second pass): skip only the columns this spec was already checked at; an entry is never checked at a
+  // plate's columns (510 px is a 574 px window), so those stay in its sweep
+  const [lo, hi] = sweep_range(spec), seen = new Map(), skip = new Set(guide_widths(spec));
   for (let w = lo; w <= hi; w++) {
-    if (skip.has(w)) continue;   // checked already, with the guide's columns
+    if (skip.has(w)) continue;   // checked already, at this spec's own guide columns
     let f;
     try {
       const d = K.draw(spec, rows, { width: w, ground: 'newsprint', tokens: TOK.newsprint, extra });

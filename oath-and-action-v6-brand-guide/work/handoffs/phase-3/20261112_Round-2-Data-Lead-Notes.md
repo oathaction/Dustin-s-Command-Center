@@ -590,3 +590,21 @@ Open with me: maker A's MA-F1 (S45's 591.7 label) and MA-F3 (S12's framed states
 **MA-F4: closed. S45 is signed off, and maker A's fix pass is signed off whole.** I rebuilt S45 from the committed spec with the sweep (`kit-ma3`): PASS, 0 faults. At 1440 and 256 px on Newsprint, "591.7" sits to the left of 2024's column in regular weight, below the bold total. Its hairline leader ends inside 2024's five-or-more part, so the figure reads as that part's value and never as 2023's total.
 
 Every item in this review fix pass is now signed off. That covers the rulings RF-1 to RF-24 (with RF-11a and RF-16a) and the follow-ups ED-F1, ED-F2, SD-9, MB-F1 to MB-F3, MA-F1 to MA-F4 and EG-F1. ED-F1 and ED-F2 are closed: I read entry 14-009's second gap-test row ("its share of the units the area’s figure counts, such as people or households") and its builders line ("Take the margin the publisher prints for the figure drawn ...") from the entry file. I did not look at them in a page build.
+
+## After the second pass
+
+**RF-25. An interval narrower than its mark at a given width (the access reviewer's N2).** The case is the production test's fixed broadband range bar on `fixed_with_s2801_margin`. Its published margins run 0.3 to 1.7 points (the middle state, Minnesota, 0.5), and on phones the middle row's interval spans about 18.6 px against the 23 px a 13 px dot needs (5 px past it on each side), even with the rows stacked and the scale at 64 to 86. The check is right: those intervals cannot be seen there. What the builder draws, in order:
+1. **A smaller dot first.** Where, at a given width, the middle row's interval would not run 5 px past a 13 px dot on each side, `range-bar` draws every row's estimate as a 7 px dot at that width. Filled or open stays as Rule 14.9 sets it, and the open dot takes a 1.5 px edge, so its center still reads. One dot size serves every row at a width. The kit's check measures the 7 px dot, which needs 17 px.
+2. **Then the margins in words.** Where the middle row's interval would not run 5 px past even a 7 px dot, the form keeps the 7 px dots and draws no interval lines. It prints each row's margin beside its value ("77.4% ±0.8"), and a note under the drawing says: "At this width each margin of error is narrower than its dot, so each figure prints its margin beside it; the table gives every margin." The measure line still names the 90 percent margin. The check passes this state only when every row's margin prints in the drawing and the note is present; otherwise it fails as now.
+3. **Single rows narrower than the dot** while the middle row's interval clears it keep S57's chart note (D3-807): "Where a margin is narrower than its dot, no line shows past the dot; the table gives every margin."
+4. **Never a tick in place of the dot,** since the filled and open dot carries Rule 14.9's test and a tick cannot. Never widen an interval, and never set a scale to make one look wider. The scale may tighten to the data's range with its ends named, as the designer tried.
+
+Owners: maker B (`range-bar`'s two narrow states), the engineer (the check reads states 1 and 2 as above; the README line), the editor (entry 14.74's line).
+- **Entry 14.74, one line:** "Where a narrow plot leaves the middle row’s interval too short to show past its dot, draw smaller dots, and where even those hide it, drop the lines, print each figure’s margin beside it and say so in a note."
+- **README, one line under intervals:** "When `range-bar` fails the interval check with its rows stacked, it draws 7 px dots at that width, and where those still hide the middle interval it prints each margin beside its value with a note; the check passes that state only with every margin printed."
+
+Reason: on a phone the reader still learns how sure each figure is, from a drawn line or from printed words, and the dot keeps Rule 14.9's test.
+
+### Routine calls (after the second pass)
+
+- D3-xxx | Where a range bar's middle interval is too short to show past a 13 px dot, the form draws 7 px dots, and where it hides behind those too, it drops the lines and prints each margin beside its value with a note; the check passes either state, the second only with every margin printed | RF-25, the access reviewer's N2: tight published margins on a phone; the reader keeps the margin and the dot keeps Rule 14.9's test
