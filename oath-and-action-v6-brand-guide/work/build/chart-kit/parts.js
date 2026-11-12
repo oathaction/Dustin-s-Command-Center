@@ -199,6 +199,40 @@
     return fn;
   };
 
+  // ---- Round 2 fix pass: words clear of lines, and one weight for row names ------------------------------------------
+  // BC S1, AX S2, BC S7: words that a gridline, a total line, a data line or a hatch would run through. clear_label sets a
+  // knockout of the ground o.gap px (default 2) round the words' box, then the words on the ground's halo, so nothing drawn
+  // before them shows through, a minus sign keeps its shape and a hatch stops at the words. o.knock: 'halo' sets the halo
+  // alone (lighter, for words beside a line that only grazes them). Draw it after the lines it must clear; every c.text
+  // option passes through. Returns the text's box, with .knock the knockout's box.
+  P.clear_label = function (c, x, y, words, o) {
+    o = o || {};
+    var t = Object.assign({}, o, { halo: true }), kb = null;
+    delete t.knock; delete t.gap;
+    if (o.knock !== 'halo') {
+      var b = c.text_box(x, y, words, t), g = o.gap === undefined ? 2 : o.gap;
+      kb = { x: b.x - g, y: b.y - g, w: b.w + 2 * g, h: b.h + 2 * g };
+      c.rect(kb.x, kb.y, kb.w, kb.h, { fill: 'surface', mark: false });
+    }
+    var tb = c.text(x, y, words, t);
+    tb.knock = kb;
+    return tb;
+  };
+  // BC S8, call 11 (D3-901): a listing form's row names and values in one weight, round 1's rule: 400, and 700 for the row
+  // the title names (o.named). row_name(c, x, y, words, {named, max, anchor, leading, fill, halo, clear}) sets a name flush
+  // left by default; row_value(c, x, y, words, {named, anchor ('end' by default), fill, halo, clear}) sets a value in tabular
+  // figures. clear: true sets either through clear_label. row_weight(named) gives the weight, for a form that measures first.
+  P.ROW_WEIGHT = { plain: 400, named: 700 };
+  P.row_weight = function (named) { return named ? P.ROW_WEIGHT.named : P.ROW_WEIGHT.plain; };
+  var row_text = function (c, x, y, words, o, base) {
+    o = o || {};
+    var t = Object.assign({ role: 'label' }, base, o, { weight: P.row_weight(o.named) });
+    delete t.named; delete t.clear;
+    return o.clear ? P.clear_label(c, x, y, words, t) : c.text(x, y, words, t);
+  };
+  P.row_name = function (c, x, y, words, o) { return row_text(c, x, y, words, o, { anchor: 'start' }); };
+  P.row_value = function (c, x, y, words, o) { return row_text(c, x, y, words, o, { anchor: 'end', tnum: true }); };
+
   // ---- Round 2 (R2-5, contract R2-C2): intervals, bands and stacks ------------------------------------------------
   // An estimate and its interval, read by the spec's encode: the estimate is encode.value (else encode.y); the interval is
   // encode.low and encode.high, or encode.margin (low = value - margin, high = value + margin). iv(row) gives

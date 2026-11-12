@@ -1131,7 +1131,7 @@ def tested_section(G):
     """A short summary: each Tested line with its figure read from the file that records it, each Not tested line
     checked against the file that names it, and one line on where the full lists are."""
     S = C['sections']['tested']
-    rows, missing = [], []
+    rows, missing, waits = [], [], []
     for it in S['tested']:
         kind, words = it.get('kind'), None
         if kind == 'build':
@@ -1143,7 +1143,8 @@ def tested_section(G):
             if cands:
                 J = json.loads(cands[-1].read_text())
                 pg = cands[-1].with_name(re.sub(r'-Guide-Check-Results\.json$', '.html', cands[-1].name))
-                widths = [str(r.get('width')) for r in J.get('runs', []) if r.get('width')]
+                runs = J.get('runs') if isinstance(J.get('runs'), list) else []
+                widths = [str(r.get('width')) for r in runs if r.get('width')]
                 words = fill(it['words'], {'widths': join_words(widths), 'failures': nw(len(J.get('failures', []))),
                                            'page_bytes': f'{pg.stat().st_size:,}' if pg.exists() else '?'})
                 FIG['guide_check'] = {'file': '[scratch]/' + str(cands[-1].relative_to(SCRATCH.parents[2])), 'checked': J.get('checked'),
@@ -1175,7 +1176,10 @@ def tested_section(G):
                 else:
                     warn(f'“{it["label"]}”: its figure was not found in {s["file"]}')
             words = '; '.join(parts) if len(parts) == len(it['sources']) else None
-        if words is None:
+        if words is None and kind in ('second_pass', 'rescore'):
+            waits.append(it['label'])
+            words = S['wait_words']
+        elif words is None:
             missing.append(it['label'])
             words = 'Not found in its file at this build.'
         rows.append(f'<li><b>{esc(it["label"])}:</b> {esc(words)}.</li>' if not words.endswith('.') else f'<li><b>{esc(it["label"])}:</b> {esc(words)}</li>')
@@ -1193,6 +1197,8 @@ def tested_section(G):
     if missing:
         warn('Tested lines without their figure: ' + ', '.join(missing))
         return section('tested', body, ('partial', 'notes'))
+    if waits:
+        return section('tested', body, ('partial', 'red' if any('second' in w for w in waits) else 'cd_re'))
     return section('tested', body, 'ready')
 
 

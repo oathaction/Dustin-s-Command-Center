@@ -170,6 +170,14 @@ In progress. Items: ST M1, M2, M3, S1, S5, S8, S11; BC M1, M2, M3, S2, S3, S7, S
 
 | Item | Spec or file | Status |
 |---|---|---|
+| ST S11 | S18 | Done: the table prints "Middle fifth" through the label column's words |
+| Call 5, CD A-S4 | S10, `percent-bar` | Done: `K.parts.total_line` at 1.5 px, label in regular weight; on a phone the line breaks for each row name it would cross |
+| ST M3 | S48 | Done in the spec (note 1, source line); sidecar is the research lead's; source line to move onto its variant `with_party_divisions_119th` |
+| BC S2, CD A-S5, AX S2 | S48, `parliament` | Done: the independent and vacancies set apart under the aisle, each named with its own hairline, words below the arc where the hollow is too small |
+| BC M3, call 3 | entry 14.85 | Done |
+| BC S11, AX S5 | S62, `step-tracker` | Done: across, flush left, shared lines; Step column in the table; "Public Law 119-12" held whole |
+| BC S17 (S44), AX S3 | S44 | Done: chart note names steps and totals by role and place |
+| BC S7 | S46, `stacked-area` | Done: a plate of the ground behind "All other sources" on the hatch |
 
 ### Routine calls
 

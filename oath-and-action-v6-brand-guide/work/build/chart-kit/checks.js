@@ -394,7 +394,9 @@ function interval_faults(spec, d, def, at) {
 }
 // AX S2 and BC S1 (round 2 fix pass): no line, path or outline crosses a word unless the word carries the ground's halo
 // and was drawn after it, so the halo knocks the line out under its letters; and no dot or bar sits half under a word.
-// A word is read by its box less 1.5 px a side, as the guard reads a leader through a label. Leaders are the guard's own.
+// A word is read by its box less 1.5 px a side, as the guard reads a leader through a label. Leaders are the guard's own;
+// a stroke drawn through words on purpose (a step struck out) says so with strike: true; a filled shape drawn after a line
+// that covers the word (a dot over its connector, a knockout) hides the line there.
 const CROSS_SKIP = ['surface', 'none', 'leader'];
 const FILL_SKIP = ['surface', 'none', 'band', 'track', 'land', 'mag-1', 'mag-2', 'light-fill', 'seq-1', 'div-3'];
 function seg_box(ax, ay, bx, by, x0, y0, x1, y1) {
@@ -441,7 +443,7 @@ function crossing_faults(d, at) {
     for (const b of d.ink || []) {
       if (b.x > x1 || b.x + b.w < x0 || b.y > y1 || b.y + b.h < y0) continue;
       // a stroke across the word, unless the word's halo knocks it out or a shape drawn after it covers the word
-      if (b.stroke && CROSS_SKIP.indexOf(b.stroke) < 0 && !(t.halo && b.seq < t.seq) && !solids.some(s => s.seq > b.seq && s.seq < t.seq && covers(s, x0, y0, x1, y1))) {
+      if (b.stroke && !b.strike && CROSS_SKIP.indexOf(b.stroke) < 0 && !(t.halo && b.seq < t.seq) && !solids.some(s => s.seq > b.seq && s.seq < t.seq && covers(s, x0, y0, x1, y1))) {
         let hit = false;
         if (b.ring) {
           const [ccx, ccy, r] = b.ring, nx = Math.max(x0, Math.min(ccx, x1)), ny = Math.max(y0, Math.min(ccy, y1));
@@ -590,6 +592,7 @@ function check_drawing(spec, d, tok, where) {
   // CD A-M2 (round 2 fix pass, D3-890): Rule 05.1 holds Pillar Red within 5 percent of every view. The kit measures the
   // red's painted area (fills, and strokes as length times width, from every shape drawn, marks or not) against the drawing,
   // and against a window of a screen's height (900 px at a desk, 844 on a phone) where the drawing is taller than one
+  f.push(...crossing_faults(d, at));
   f.push(...band_faults(d, tok, at));
   f.push(...interval_faults(spec, d, { interval: d.interval }, at));
   const share = red_share(d, tok);

@@ -12,10 +12,10 @@
  "observation_period": "Calendar year 2025",
  "geography": "50 states and DC, with a United States row (code US) to set apart",
  "universe_or_base": "Households",
- "unit": "households, with 90 percent margins of error; percentages computed by the studio and stored to four decimals",
+ "unit": "households, with 90 percent margins of error; percentages computed by the studio and stored to four decimals; households_moe is the published margin of the households total; broadband_fixed_pct_moe is the fixed share’s 90 percent margin in percentage points, by the Census Bureau’s formula for a proportion",
  "date_retrieved": "2026-11-12",
  "vintage": "ACS 2025 1-year release",
- "qualification": "\"Broadband of any type\" (line 004) counts a household with a cellular data plan alone; \"broadband such as cable, fiber optic or DSL\" (line 007) counts fixed service. The percent margin is the count’s margin over all households, an approximation that treats the household total as fixed. Compare states only where intervals do not overlap.",
+ "qualification": "\"Broadband of any type\" (line 004) counts a household with a cellular data plan alone; \"broadband such as cable, fiber optic or DSL\" (line 007) counts fixed service. broadband_any_pct_moe is the count’s margin over all households, an approximation that treats the household total as fixed and runs wider than the proportion formula; broadband_fixed_pct_moe uses the Census Bureau’s formula for a proportion with the household total’s own margin. Compare states only where intervals do not overlap.",
  "columns": {
   "code": {
    "type": "code",
@@ -64,14 +64,52 @@
    "type": "number",
    "description": "fixed broadband as a percent of households, computed",
    "unit": "percent"
+  },
+  "households_moe": {
+   "type": "integer",
+   "description": "90 percent margin of error of the households total (B28002_001M), as published",
+   "unit": "households"
+  },
+  "broadband_fixed_pct_moe": {
+   "type": "number",
+   "description": "90 percent margin of error of broadband_fixed_pct, computed from the published counts and margins by the Census Bureau’s formula for a proportion",
+   "unit": "percentage points"
   }
  },
  "printed_source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B28002, broadband of any type, 2025, 50 states and DC. Retrieved November 12, 2026. Survey estimates; a cellular data plan alone counts as broadband.",
  "source_line_variants": {
-  "fixed": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B28002, broadband such as cable, fiber optic or DSL, 2025, 50 states and DC. Retrieved November 12, 2026. Survey estimates."
+  "fixed": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B28002, broadband such as cable, fiber optic or DSL, 2025, 50 states and DC. Retrieved November 12, 2026. Survey estimates.",
+  "fixed_with_margin": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B28002, broadband such as cable, fiber optic or DSL, 2025, 50 states and DC. Retrieved November 12, 2026. Survey estimates; shares and their 90 percent margins of error computed by Oath & Action from the table’s counts and margins."
  },
  "ledger_row": "P7-210",
  "domain": "D01",
  "domain_note": "V7 I015, \"Public information is out of reach for some residents\", names slow or missing internet service",
- "states": []
+ "states": [],
+ "source_line_columns": {
+  "printed_source_line": [
+   "households",
+   "broadband_any",
+   "broadband_any_moe",
+   "broadband_any_pct",
+   "broadband_any_pct_moe"
+  ],
+  "fixed": [
+   "households",
+   "broadband_fixed",
+   "broadband_fixed_moe",
+   "broadband_fixed_pct"
+  ],
+  "fixed_with_margin": [
+   "households",
+   "households_moe",
+   "broadband_fixed",
+   "broadband_fixed_moe",
+   "broadband_fixed_pct",
+   "broadband_fixed_pct_moe"
+  ]
+ },
+ "notes": [
+  "Margin of the fixed broadband share (access review S8; D3-905), November 12, 2026: Table B28002 publishes counts and their margins only, no percent and no percent margin. households_moe is B28002_001M from the same table and vintage, read from the Census Bureau’s API (https://api.census.gov/data/2025/acs/acs1?get=NAME,B28002_001E,B28002_001M,B28002_004E,B28002_004M,B28002_007E,B28002_007M&for=state:* and &for=us:1); the same call returned every count and count margin in this file unchanged. broadband_fixed_pct_moe follows formula (6) for a proportion in the Census Bureau's \"Understanding and Using American Community Survey Data: What All Data Users Need to Know\" (2020), chapter 8: the share's margin is the square root of (the part's margin squared minus the share squared times the total's margin squared), over the total; \"if the value under the square root is negative, then substitute a “plus” for the “minus” sign\". It runs from 0.11 points (the nation) to 1.70; the District of Columbia’s is 1.35.",
+  "The same release’s subject table S2801 (lines S2801_C02_014 and S2801_C02_017, read November 12, 2026) prints both shares to one decimal with margins the Bureau computes itself, 0.1 to 1.9 points for the fixed share; every S2801 share equals this file’s share rounded to one decimal, and the largest gap between an S2801 fixed margin and the formula’s is 0.25 points (WY, 1.65 against 1.9). broadband_any_pct_moe keeps its round 3 method, the count’s margin over households, which runs wider than both; a chart that draws both shares on one scale says which margin each line uses."
+ ]
 }

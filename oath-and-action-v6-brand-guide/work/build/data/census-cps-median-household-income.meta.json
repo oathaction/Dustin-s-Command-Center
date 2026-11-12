@@ -78,7 +78,8 @@
   "Footnote 23: Implementation of a new CPS ASEC processing system. Questionnaire expanded to ask 11 income questions.",
   "Footnote 24: Full implementation of 1970 Census-based sample design.",
   "Footnote 25: Introduction of 1970 Census-based sample design and population controls.",
-  "Footnote 26: Implementation of a new CPS ASEC processing system."
+  "Footnote 26: Implementation of a new CPS ASEC processing system.",
+  "Inflation adjustment, read November 12, 2026 from Table 2 itself (statistics review S6): \"Income in 2025 dollars, adjusted using the Chained Consumer Price Index for All Urban Consumers (C-CPI-U) (2000 to 2025) and Consumer Price Index for All Urban Consumers Retroactive Series (R-CPI-U-RS) (before 2000)\". The chained index (C-CPI-U) adjusts 2000 to 2025 and the retroactive series (R-CPI-U-RS) the years before 2000, so a chart of 1967 to 2025 names both and the switch in 2000; a window from 2000 on names the chained index alone. The table read again equals this file’s 61 rows"
  ],
  "source_line_templates": {
   "span": "Source: U.S. Census Bureau, Income in the United States: 2025, Table 2, median household income, {from} to {to}, United States. Retrieved November 11, 2026. Survey estimates in 2025 dollars with 90 percent margins of error; methods changed in several years, marked in the table."

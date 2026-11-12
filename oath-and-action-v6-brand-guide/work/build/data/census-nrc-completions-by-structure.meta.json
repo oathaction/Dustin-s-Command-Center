@@ -49,12 +49,14 @@
   "New Privately-Owned Housing Units Completed",
   "(Thousands of units.  Detail may not add to total because of rounding.)",
   "Source:  U.S. Census Bureau and U.S. Department of Housing and Urban Development, Survey of Construction",
-  "Additional information on the survey methodology may be found at <www.census.gov/construction/soc/methodology.html>."
+  "Additional information on the survey methodology may be found at <www.census.gov/construction/soc/methodology.html>.",
+  "Release, read November 12, 2026 (statistics review S6): the Bureau’s current release page reads \"MONTHLY NEW RESIDENTIAL CONSTRUCTION, SEPTEMBER 2026\", \"FOR IMMEDIATE RELEASE: Tuesday, October 20, 2026\" (CB26-162), and comps_cust.xlsx, fetched again, has the same SHA-256 prefix as the frozen file (81370bd2c6bc139b) and ends with September 2026. Template span_september_2026_release names the release; the latest year can change with later releases"
  ],
  "raw_files_sha256_prefix": {
   "comps_cust.xlsx": "81370bd2c6bc139b"
  },
  "source_line_templates": {
-  "span": "Source: U.S. Census Bureau and U.S. Department of Housing and Urban Development, New Residential Construction, new privately owned housing units completed by units in structure, {from} to {to}, United States. Retrieved November 11, 2026. Survey estimates in thousands of units; parts may not add to totals because of rounding."
+  "span": "Source: U.S. Census Bureau and U.S. Department of Housing and Urban Development, New Residential Construction, new privately owned housing units completed by units in structure, {from} to {to}, United States. Retrieved November 11, 2026. Survey estimates in thousands of units; parts may not add to totals because of rounding.",
+  "span_september_2026_release": "Source: U.S. Census Bureau and U.S. Department of Housing and Urban Development, New Residential Construction, September 2026 release, new privately owned housing units completed by units in structure, {from} to {to}, United States. Retrieved November 11, 2026. Survey estimates in thousands of units; parts may not add to totals because of rounding."
  }
 }

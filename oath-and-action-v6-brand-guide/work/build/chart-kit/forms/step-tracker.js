@@ -56,7 +56,7 @@
         }
         var nlh2 = Math.round(size * 1.25), nlines = 1;
         steps.forEach(function (st) { nlines = Math.max(nlines, c.wrap(st.name, 'label', mw, 700).length); });
-        var ny = cy + r + 8 + size, sy = ny + (nlines - 1) * nlh2 + c.size('label') * 0.136 + 2 + tick * 0.95;
+        var ny = cy + r + 8 + size, sy = ny + (nlines - 1) * nlh2 + c.size('label') * 0.136 + 5 + tick * 0.95;
         var dy = sy + tick * 0.136 + 1 + tick * 0.95, ny2 = dy + tick * 0.136 + 4 + note * 0.95;
         steps.forEach(function (st, i) {
           var x0 = col(i);

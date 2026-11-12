@@ -64,5 +64,11 @@
  "printed_source_line": "Source: Board of Governors of the Federal Reserve System, Summary of Economic Projections, September 16, 2026, Tables 1 and 2, unemployment rate projections for 2026 to 2029, United States. Retrieved November 11, 2026. Officials’ projections; the band applies the average error of past forecasts.",
  "ledger_row": "P7-033",
  "domain": "D07",
- "states": []
+ "states": [],
+ "source_line_variants": {
+  "with_unemployment_history": "Source: Board of Governors of the Federal Reserve System, Summary of Economic Projections, September 16, 2026, Tables 1 and 2, unemployment rate projections for 2026 to 2029, United States; U.S. Bureau of Labor Statistics, Current Population Survey, Employment Situation for October 2026 (November 6, 2026), unemployment rate, seasonally adjusted, fourth-quarter averages, 2021 to 2024, United States, as copied by the Federal Reserve Bank of St. Louis (FRED). Retrieved November 11, 2026. Officials’ projections; the band applies the average error of past forecasts. Fourth-quarter averages of the monthly rate computed by Oath & Action; no rate was published for October 2025, so 2025 has no fourth-quarter average."
+ },
+ "notes": [
+  "Variant with_unemployment_history (data lead ruling RF-20) adds the Bureau of Labor Statistics’ rate for the fourth quarters of 2021 to 2024 from fred-unemployment-and-job-openings-quarterly (ledger row P7-013), the projections’ own measure, and names both publishers so it holds for a spec of one dataset or two"
+ ]
 }

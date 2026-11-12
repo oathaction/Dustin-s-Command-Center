@@ -72,5 +72,11 @@
  "printed_source_line": "Source: Centers for Medicare & Medicaid Services, National Health Expenditure Accounts, spending by source of funds, 1960 to 2024, United States. Retrieved November 11, 2026. Shares of each year’s total; all other sources of funds, out of pocket the largest, folded into one group by Oath & Action.",
  "ledger_row": "P7-023",
  "domain": "D09",
- "states": []
+ "states": [],
+ "source_line_variants": {
+  "release_named": "Source: Centers for Medicare & Medicaid Services, National Health Expenditure Accounts, release with data through 2024, spending by source of funds, 1960 to 2024, United States. Retrieved November 11, 2026. Shares of each year’s total; all other sources of funds, out of pocket the largest, folded into one group by Oath & Action. Each release can revise every earlier year."
+ },
+ "notes": [
+  "Release, read November 12, 2026 (statistics review S6): CMS’s historical page (https://www.cms.gov/data-research/statistics-trends-and-reports/national-health-expenditure-data/historical, \"Page Last Modified: 01/14/2026\") posts the release with data through 2024 (\"National Health Expenditures 2024 Highlights\") and names no release date; its zip file, read again, equals cms-nhe-by-source-of-funds.csv in all 715 cells. CMS’s \"Summary of the 2024 Comprehensive Revision\" says that in a comprehensive revision \"the entire NHEA time series is opened for revision\", so variant release_named names the release and says earlier years can change"
+ ]
 }

@@ -7,7 +7,7 @@
  "url": [
   "https://history.house.gov/Institution/Party-Divisions/Party-Divisions/"
  ],
- "observation_period": "82nd Congress (1951 to 1953) to 119th Congress (2025 to 2027), at the start of each Congress",
+ "observation_period": "82nd Congress (1951 to 1953) to 119th Congress (2025 to 2027), as first elected for each Congress",
  "geography": "United States House of Representatives",
  "universe_or_base": "Voting House seats, by the party of the members elected; delegates and the resident commissioner are not counted",
  "unit": "seats; majority_advantage_seats is the majority's seats minus the other major party's, computed by the studio",
@@ -70,6 +70,6 @@
  "domain": "D02",
  "states": [],
  "notes": [
-  "Current House as the Clerk of the House's home page showed it on November 11, 2026: Republicans 218, Democrats 214, Independents 1, Vacancies 2 (https://clerk.house.gov/). A parliament chart of the House today uses these figures with their date; the table above is the opening count of each Congress"
+  "Current House as the Clerk of the House's home page showed it on November 11, 2026: Republicans 218, Democrats 214, Independents 1, Vacancies 2 (https://clerk.house.gov/). A parliament chart of the House today uses these figures with their date; the table above is the count as first elected for each Congress, from the first election results, not a count on the opening day"
  ]
 }

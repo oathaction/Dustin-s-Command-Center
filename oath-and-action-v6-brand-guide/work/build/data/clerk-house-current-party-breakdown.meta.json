@@ -28,5 +28,8 @@
  "printed_source_line": "Source: Office of the Clerk, U.S. House of Representatives, party breakdown, as of November 11, 2026, United States House. Retrieved November 11, 2026. Two seats vacant; the count changes with each vacancy and special election.",
  "ledger_row": "P7-039",
  "domain": "D02",
- "states": []
+ "states": [],
+ "source_line_variants": {
+  "with_party_divisions_119th": "Source: Office of the Clerk, U.S. House of Representatives, party breakdown, as of November 11, 2026, United States House; U.S. House of Representatives, Office of the Historian and Office of the Clerk (History, Art & Archives), Party Divisions of the House of Representatives, 119th Congress (2025 to 2027), United States. Retrieved November 11, 2026. Two seats vacant; the count changes with each vacancy and special election. The party divisions are seats as first elected for each Congress; later vacancies and special elections are not counted."
+ }
 }

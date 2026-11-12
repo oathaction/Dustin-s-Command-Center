@@ -48,10 +48,17 @@
       y = size + 10;
       var n = amax - amin + 1, bh = ph ? 3 : 4, top = y, bot = top + n * bh;
       var ay = function (a) { return bot - (a - amin + 1) * bh; };
+      // the band's words, set in the empty corner over the left half's oldest ages; measured first, so a gridline stops short
+      // of them and never runs through a word (BC S1)
+      var lh2 = Math.round(size * 1.2), blines = band && band.words ? c.wrap(band.words, 'label', Math.max(60, half - 24), 700) : [], bw = 0;
+      blines.forEach(function (ln) { bw = Math.max(bw, c.measure(ln, 'label', 700)); });
+      var wb = blines.length ? { x: 0, w: bw, top: top + size - size * 0.969 - 3, bottom: top + size + (blines.length - 1) * lh2 + size * 0.25 + 3 } : null;
       // gridlines at the scale's ticks, on both halves
       ticks.forEach(function (t) {
         if (!t) return;
-        c.line(cx - aw / 2 - sc(t), top, cx - aw / 2 - sc(t), bot, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
+        var gx = cx - aw / 2 - sc(t);
+        if (wb && gx >= wb.x - 3 && gx <= wb.x + wb.w + 3) c.line(gx, wb.bottom, gx, bot, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
+        else c.line(gx, top, gx, bot, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
         c.line(cx + aw / 2 + sc(t), top, cx + aw / 2 + sc(t), bot, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
       });
       // the bars: the left side grows left from the center column's edge, the right side right
@@ -90,10 +97,7 @@
         });
       }
       // the band's words in the empty corner over the left half's oldest ages, where every width has room
-      if (band && band.words) {
-        var lh2 = Math.round(size * 1.2), lines = c.wrap(band.words, 'label', Math.max(60, half - 24), 700), ly = top + size;
-        lines.forEach(function (ln, i) { c.text(0, ly + i * lh2, ln, { role: 'label', weight: 700, halo: true }); });
-      }
+      blines.forEach(function (ln, i) { c.text(0, top + size + i * lh2, ln, { role: 'label', weight: 700, halo: true }); });
       mtexts.forEach(function (m) {
         var mw = c.measure(m.words, 'tick'), x = W;
         if (mprev && Math.abs(mprev.y - m.y) < tick + 2) x = mprev.x - mprev.w - 8;

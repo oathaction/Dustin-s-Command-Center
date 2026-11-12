@@ -1,0 +1,340 @@
+{
+ "about": "The round 2 progress page's own words and the files each section reads. work/build/scripts/phase-3/progress_round_2_build.py reads this file on every run; every number and picture on the page comes from the files named under slots, read at build time. A {name} in a sentence is filled from those files. Codes in a 'refs' field print only in the small reference lines. The rule numbers under carried, sections.entry.rule and sections.changed.charts only choose what the page shows, as the brief names it; the build reads every fact about them from their files.",
+ "title": "Edition 06 Round 2 Progress",
+ "round": 2,
+ "cover": {
+  "kicker": "Edition 06 · Phase 3 · Round 2 progress",
+  "title": "Round 2, as it stands",
+  "for_line": "For Dustin Cathcart · {built_date}",
+  "deck_rescored": "Round 2 drew {n_fam_w} more families of charts for chapter 14, set each of their forms in as an entry, and built {n15_w} more rules for chapter 15. This page shows that work after the review, the fix pass and the creative director’s second scores.",
+  "deck_building": "Round 2 drew {n_fam_w} more families of charts for chapter 14, set each of their forms in as an entry, and built {n15_w} more rules for chapter 15. This page shows that work as it stands while the fix pass runs. It fills in again once the creative director’s second scores land.",
+  "no_decision": "This page asks you nothing. Board 2 follows round 3, and that is where you decide.",
+  "toc_h": "On this page",
+  "minutes": "Pictures show at true size. Where one is wider than your window, its frame scrolls sideways."
+ },
+ "status_words": {
+  "ready": "Ready",
+  "waiting": "Waiting for {who}",
+  "partial": "Part waiting for {who}"
+ },
+ "status_short": {
+  "ready": "Ready",
+  "waiting": "Waiting",
+  "partial": "Part waiting"
+ },
+ "owners": {
+  "build": "a passing guide build",
+  "render": "the page’s pictures",
+  "kit": "the kit’s captures",
+  "cd": "the creative director’s scores",
+  "cd_re": "the creative director’s second scores",
+  "red": "the reviewers’ second passes",
+  "notes": "the notes files"
+ },
+ "carried": {
+  "interval_rule": "14.9",
+  "point_rule": "14.3",
+  "wide_widths": [
+   1024,
+   768
+  ]
+ },
+ "sections": {
+  "round": {
+   "n": 1,
+   "nav": "Round 2 in one screen",
+   "title": "Round 2 in one screen",
+   "facts": {
+    "entries": "Chapter 14 entries",
+    "ch15": "Chapter 15",
+    "data": "Round 4’s data",
+    "build": "The guide today"
+   },
+   "carried": {
+    "interval_h": "Rule {r} on the interval form",
+    "interval": "Its correct plate is now drawn by the chart kit’s {form}, the form of Rule {form_rule}.",
+    "point_h": "Rule {r}’s red point",
+    "point": "Its correct plate puts the view’s one red on the line for {name}",
+    "point_named": ", the group its title names.",
+    "style_h": "Chapter 14’s plate style",
+    "style": "Printed once for every rule plate, in one shared block of {b} bytes. The rules for every chart, with the opener, weigh {ro} bytes against their allowance of {al}.",
+    "ch13_h": "Chapter 13’s chart titles",
+    "ch13_all": "All {n} of its chart titles now end with a period.",
+    "ch13_some": "{k} of its {n} chart titles end with a period.",
+    "wide_h": "Chapter 15’s wide stage",
+    "wide": "At a {w1} px and a {w2} px window, {k} of the chapter’s wide plates draw their full {px} px stage.",
+    "not_found": "Not shown done in its files at this build."
+   },
+   "refs": "DR-241 · DR-242 · DR-244 · DR-246"
+  },
+  "charts": {
+   "n": 2,
+   "nav": "The {n_new} new charts",
+   "title": "The {n_new} new charts",
+   "lede": "Each chart as the chart kit draws it, from the kit’s own pictures. The first pair is on Newsprint and the second on Charcoal; in each, the drawing for a 1440 px page sits beside the drawing for a 390 px phone page. The line under each pair gives the chart’s size in the guide and the result of the kit’s own check.",
+   "lede_mark": "{n_marked_cap} of them, {marked_ids}, draw a publisher’s modeled or projected figures. The guide labels each one “{mark_label}” beside the publisher’s product, and their headers below carry the same label.",
+   "mark_label": "Estimate",
+   "maker": "Maker {m}",
+   "row_newsprint": "On Newsprint",
+   "row_charcoal": "On Charcoal",
+   "label_1440": "At a 1440 px page",
+   "label_390": "At a 390 px page",
+   "refs": "D3-195 · D3-196 · DR-246"
+  },
+  "changed": {
+   "n": 3,
+   "nav": "Two round 1 charts, changed",
+   "title": "Two round 1 charts the round changed",
+   "lede": "Round 2’s rulings on how a chart marks what its title names reached two charts from round 1. Each is shown as the new charts are, with a line on what changed.",
+   "charts": [
+    {
+     "spec": "S18",
+     "what": "What changed: the two fifths its title names, the highest and the lowest, now take the subject ink with no red, and the middle three stay light with their values printed."
+    },
+    {
+     "spec": "S33",
+     "what": "What changed: the all receipts line is dashed in the text’s ink, the one treatment every total or national line now takes."
+    }
+   ],
+   "refs": "DR-241"
+  },
+  "entry": {
+   "n": 4,
+   "nav": "How an entry reads",
+   "title": "How an entry reads in the guide",
+   "rule": "14.74",
+   "lede": "Every form in chapter 14 gets one numbered entry in the same order: the rule, when to use the form, what to use instead, why it works, then its example chart with the chart’s table. Here is Rule {entry_rule}, “{entry_title}”, photographed from today’s guide at a 1440 px window and at a 390 px window.",
+   "phone_line": "Where a chart draws a different form on a phone, the entry sets the phone drawing beside the desk one. This one is headed “{entry_phone}”.",
+   "cap_1440": "At a 1440 px window",
+   "cap_390": "At a 390 px window",
+   "refs": "DR-240 · D3-200"
+  },
+  "sketches": {
+   "n": 5,
+   "nav": "The {n_sketch_w} sketches",
+   "title": "The {n_sketch_w} sketches",
+   "lede": "{n_sketch_cap} forms get a small sketch with invented, labeled data in place of a finished chart: {n_avoid_w} the guide tells builders to avoid, each drawn beside the better choice, and {n_ref_w} it keeps for reference. Each is photographed at a 1440 px window, with its heading and caption printed under it as the guide prints them. The forms to avoid come first.",
+   "h_avoid": "Forms to avoid, each beside the better choice",
+   "h_reference": "Forms kept for reference",
+   "kind_avoid": "A form to avoid",
+   "kind_reference": "A reference form",
+   "heading_k": "Heading:",
+   "caption_k": "Caption:",
+   "refs": "DR-240 · DR-246"
+  },
+  "rules": {
+   "n": 6,
+   "nav": "The rules for every chart",
+   "title": "The rules for every chart, as round 2 changed them",
+   "score_key": "ch14_rules",
+   "lede": "Round 2 changed {n_changed_w} of the rules that hold for every chart: {changed_list}. Each rule has two plates, the framed examples under it: a correct one and a failure. Both are photographed from today’s guide at a 1440 px window, one above the other where they do not fit side by side. The chapter’s opening plate comes first.",
+   "opener_h": "The chapter’s opening plate",
+   "refs": "DR-240 · D3-200"
+  },
+  "ch15": {
+   "n": 7,
+   "nav": "Chapter 15’s new rules",
+   "title": "Chapter 15’s {n15_w} new rules",
+   "lede": "Round 2 built {n15_w} more of chapter 15’s rules, {n15_plates} plates in all. Each plate is photographed from today’s guide at a 1440 px window and at a 390 px window, side by side. Rule {wide_rule}’s {wide_kind} also shows at a 1024 px window, where the chapter’s wide stage now holds.",
+   "kind_correct": "Correct plate",
+   "kind_failure": "Failure plate",
+   "label_1440": "At a 1440 px window",
+   "label_390": "At a 390 px window",
+   "label_1024": "At a 1024 px window",
+   "wide_h": "The same plate at a 1024 px window",
+   "wide_cap": "At a 1024 px window the plate keeps its {wide_px} px stage.",
+   "refs": "DR-244 · D3-200"
+  },
+  "scores": {
+   "n": 8,
+   "nav": "Scores",
+   "title": "Scores",
+   "cd_h": "The creative director’s scores",
+   "cd_lede": "The creative director scores {cd_items_w} parts of round 2 from 1 to 5 on {cd_crit_w} counts: {cd_crit}. A part ships at 4 or more on every count.",
+   "cd_lede_wait": "The creative director scores each part of round 2 from 1 to 5 on each count of the studio’s rubric. A part ships at 4 or more on every count.",
+   "legend_first": "Each cell shows the first score. A cell with a frame is under 4.",
+   "legend_both": "Each cell shows the first score in small type, then the second score after the fix pass. A shaded cell moved. A cell with a frame is under 4.",
+   "cd_wait": "The creative director’s first scores join this table when their file lands.",
+   "cd_re_wait": "The second scores, after the fix pass, join this table when their file lands; each cell then shows both.",
+   "short_names": {
+    "maker_a": "maker A’s charts",
+    "maker_b": "maker B’s charts",
+    "sketches": "the sketches",
+    "ch14_rules": "the rules for every chart",
+    "ch15": "chapter 15’s new rules"
+   },
+   "none_ready": "The first scores find none of the {n} parts ready yet: each has a score under 4 or a Must fix open.",
+   "rt_h": "The {n_rt_w} reviews",
+   "rt_lede": "{n_rt_cap} reviewers read round 2 beside the creative director, each from one side. Each gave a score from 1 to 5 and numbered what it found. After the fix pass, each reads its own findings again and gives a second score.",
+   "rt_cols": [
+    "Review",
+    "First score",
+    "Must fix",
+    "Should fix",
+    "Second score"
+   ],
+   "rt_note": "Must fix means a fault that breaks a rule, misleads or blocks a task. Should fix means a fault that weakens the work. Each count is read from the report’s own numbered findings, and the second score from its section on the second pass.",
+   "rt_wait": "Waiting for the report",
+   "rt_wait2": "Waiting for the second pass",
+   "refs": "DR-191 · D3-205"
+  },
+  "weight": {
+   "n": 9,
+   "nav": "Weight",
+   "title": "Weight",
+   "lede": "The guide is one file, so every chart adds to what a reader downloads. These figures come from the build report of today’s strict build.",
+   "fig_caption": "Each bar shows how much of its limit a part uses today.",
+   "rows": {
+    "ch14": "Chapter 14 against its stop",
+    "ch15": "Chapter 15 against its ceiling",
+    "page": "The whole guide, projected, against {budget_mb} MB"
+   },
+   "cols": [
+    "Part",
+    "Share of its limit",
+    "Bytes",
+    "Limit"
+   ],
+   "per_plate": "Chapter 14 weighs {ch14_bytes} bytes against its stop of {ch14_stop} bytes. That leaves {per_plate} bytes for each of the {plates_to_come} finished charts still to come, after the room the kit and the chapter’s other parts still need.",
+   "ch15_line": "Chapter 15 weighs {ch15_bytes} bytes against its ceiling of {ch15_ceiling}.",
+   "page_line": "The guide weighs {page_bytes} bytes today. With every chapter still to come counted at its full allocation, it projects to {proj_bytes} bytes, {proj_room} bytes under the {budget_mb} MB the page may reach.",
+   "refs": "DR-238 · D3-350"
+  },
+  "tested": {
+   "n": 10,
+   "nav": "Tested and not tested",
+   "title": "Tested and not tested",
+   "lede": "What the studio checked on round 2, kept apart from what it did not. Each figure is read from the file that records it.",
+   "tested_h": "Tested",
+   "not_h": "Not tested",
+   "tested": [
+    {
+     "label": "The strict build of the guide",
+     "kind": "build",
+     "words": "{bytes} bytes, {warnings} warnings"
+    },
+    {
+     "label": "The quick guide check",
+     "kind": "guide_check",
+     "scratch_glob": "phase-3/round-2-review/main/quick/*Guide-Check-Results.json",
+     "words": "at {widths} px, on a build of {page_bytes} bytes: {failures} failures"
+    },
+    {
+     "label": "The four-width guide check",
+     "kind": "guide_check",
+     "scratch_glob": "phase-3/round-2-review/main/full/*Guide-Check-Results.json",
+     "words": "at {widths} px, on a build of {page_bytes} bytes: {failures} failures"
+    },
+    {
+     "label": "The chart kit’s build of every chart",
+     "sources": [
+      {
+       "file": "work/handoffs/phase-3/20261112_Round-2-Engineer-Notes.md",
+       "pattern": "`build --all --no-png`[^\\n]{0,60}?(\\d+) check files counted, (\\d+) pass",
+       "words": "{2} of {1} charts pass, checked without pictures"
+      }
+     ]
+    },
+    {
+     "label": "The data check",
+     "sources": [
+      {
+       "file": "work/handoffs/phase-3/20261112_Round-2-Research-Notes.md",
+       "pattern": "data check reads (\\d+) tables with (\\d+) faults",
+       "words": "{1} tables, {2} faults"
+      }
+     ]
+    },
+    {
+     "label": "The figure checks",
+     "sources": [
+      {
+       "file": "work/handoffs/phase-3/20261112_Round-2-Maker-A-Notes.md",
+       "pattern": "figs\\.py`?\\)?[^\\n]{0,30}?(\\d+) assertions, (\\d+) failed",
+       "words": "maker A’s charts, {1} figures recomputed, {2} wrong"
+      },
+      {
+       "file": "work/handoffs/phase-3/20261112_Round-2-Maker-B-Notes.md",
+       "pattern": "--figures`?:?\\s*(?:checks S\\d+ to S\\d+, )?(\\d+) faults",
+       "words": "maker B’s, {1} faults"
+      }
+     ]
+    },
+    {
+     "label": "The three reviewers’ second passes",
+     "kind": "second_pass",
+     "words": "{scores}"
+    },
+    {
+     "label": "The creative director’s rescore at true size",
+     "kind": "rescore",
+     "words": "{ready} parts ship, each at 4 or more on all {crit} counts"
+    }
+   ],
+   "not_tested": [
+    {
+     "words": "Real readers and real devices: screen readers, phones, paper and Windows’ contrast themes.",
+     "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Access-Production.md",
+     "pattern": "Real screen readers"
+    },
+    {
+     "words": "Simulations of color vision deficiency.",
+     "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Access-Production.md",
+     "pattern": "Color-vision simulations were not run"
+    },
+    {
+     "words": "Round 2’s figures against their publishers’ own pages; the reviewers rebuilt each one from the frozen files.",
+     "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Statistics-Civic.md",
+     "pattern": "No publisher page for any round 2 dataset"
+    },
+    {
+     "words": "Chapter 15’s new plates on Charcoal, read closely by the brand reviewer.",
+     "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Brand-Craft.md",
+     "pattern": "Chapter 15's six plates on Charcoal"
+    }
+   ],
+   "full_lists": "The full lists are in each owner’s round 2 notes, the three reviews and the creative director’s review.",
+   "refs": "DR-202 · DR-213 · D3-894 · files: work/handoffs/phase-3/20261112_Round-2-*-Notes.md, 20261112_Round-2-Red-Team-*.md, 20261112_CD-Review-Of-Round-2.md",
+   "wait_words": "Waits for the end of the fix pass."
+  },
+  "next": {
+   "n": 11,
+   "nav": "Next",
+   "title": "Next",
+   "line": "Round 3 builds maps, structure, relationships, flow and behavior, with a cartographer.",
+   "refs": "DR-241"
+  }
+ },
+ "foot": "Built {built_date} from the studio’s files. Every number and picture on this page is read from them at build time.",
+ "slots": {
+  "plan": "work/handoffs/phase-3/20261112_Chapter-14-Plan.json",
+  "chapter14": "work/build/guide/chapters/14-data-visualization.json",
+  "chapter15": "work/build/guide/chapters/15-systems-graphics.json",
+  "specs_dir": "work/build/chart-kit/specs",
+  "plate_specs_dir": "work/build/guide/specimens",
+  "kit_dir": "work/build/chart-kit",
+  "kit_command": "work/build/chart-kit/oa-chart.mjs",
+  "data_dir": "work/build/data",
+  "guide_build": "work/build/scripts/phase-2/guide_build.py",
+  "tokens_css": "work/build/tokens/tokens.css",
+  "data_plan": "work/handoffs/phase-3/20261112_Round-4-Data-Plan.md",
+  "research_ledger": "work/research/20261021_Research-Ledger.md",
+  "round1_figures": "work/boards/phase-3/round-1/progress/20261112_Round-1-Progress-Figures.json",
+  "cd_scores": "work/handoffs/phase-3/20261112_Round-2-CD-Scores.json",
+  "cd_rescores_glob": "work/handoffs/phase-3/*Round-2-CD-Rescore*.json",
+  "red_teams": [
+   {
+    "name": "Statistics and civic education",
+    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Statistics-Civic.md"
+   },
+   {
+    "name": "Fairness, brand and craft",
+    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Brand-Craft.md"
+   },
+   {
+    "name": "Access and the test with simulated users",
+    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Access-Production.md"
+   }
+  ]
+ }
+}

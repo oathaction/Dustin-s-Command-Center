@@ -15,7 +15,7 @@
  "notes": [
   "A late or amended filing can change a past cycle’s count; these are the commission’s totals on November 12, 2026."
  ],
- "alt": "Eight columns of super PACs, one for each two-year cycle: 2010 80, 2012 857, 2014 956, 2016 1,377, 2018 1,454, 2020 1,800, 2022 1,884, 2024 2,062, the last in red.",
+ "alt": "Eight columns of super PACs, one for each two-year cycle: 2010 80, 2012 857, 2014 956, 2016 1,377, 2018 1,454, 2020 1,800, 2022 1,884, 2024 2,062, the last, the one the title names, in the dark ink and the rest in gray.",
  "table": {
   "caption": "Super PACs in the Federal Election Commission’s totals, by two-year cycle",
   "columns": [
@@ -37,11 +37,11 @@
   "y": "super_pacs"
  },
  "labels": {
-  "point": 2024
+  "named": 2024
  },
  "domain": "D03",
  "states": [],
- "notes_internal": "Rule 14.13's correct plate: a still chart with every value printed and its table as live text.",
+ "notes_internal": "Rule 14.13's correct plate: a still chart with every value printed and its table as live text. The 2024 column the title names takes the subject ink: in red it covered 6.2 percent of the drawing at desk widths and 5.0 to 5.4 down to 296 px, past Rule 05.1's 5 (the engineer's red-share check; the data lead's RF-1, Rule 14.6's tall column in a short run).",
  "credit": "Chart: Oath & Action",
  "illustrative": false,
  "phone": "same"

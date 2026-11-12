@@ -56,7 +56,13 @@
       }
       // the counts over their columns, after the marker, on a halo of the ground where the marker crosses them
       if (fits) rows.forEach(function (r) {
-        c.text((xs(r[es]) + xs(r[ee])) / 2, ys(r[en]) - 5, vw(r), { role: 'tick', weight: ink.named && ink.is_named(r) || ink.is_point(r) ? 700 : 400, anchor: 'middle', tnum: true, fill: 'label', halo: true });
+        // a count whose words would sit within 6 px of the marker's line moves to the side of its column away from it (BC S17)
+        var wt = ink.named && ink.is_named(r) || ink.is_point(r) ? 700 : 400, tw = c.measure(vw(r), 'tick', wt), tx = (xs(r[es]) + xs(r[ee])) / 2;
+        if (mk) {
+          var lx = xs(mk.value), cl = 6;
+          if (tx + tw / 2 + cl > lx && tx - tw / 2 - cl < lx) tx = tx < lx ? Math.max(xs(r[es]) + tw / 2, lx - cl - tw / 2) : Math.min(xs(r[ee]) - tw / 2, lx + cl + tw / 2);
+        }
+        c.text(tx, ys(r[en]) - 5, vw(r), { role: 'tick', weight: wt, anchor: 'middle', tnum: true, fill: 'label', halo: true });
       });
       // the bins' edges along the bottom, thinned so the labels sit apart; an open last bin takes its own words
       var ay = bot + tick + 8, edges = rows.map(function (r) { return r[es]; });

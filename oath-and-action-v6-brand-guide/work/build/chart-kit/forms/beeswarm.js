@@ -84,7 +84,19 @@
       if (refrow) {
         var rx = xs(refrow[ev]);
         if (L.reference_label) { var rw = P.fill(c, L.reference_label, refrow), rww = c.measure(rw, 'tick'); c.text(Math.min(Math.max(rx, rww / 2), W - rww / 2), tick, rw, { role: 'tick', anchor: 'middle', fill: 'label' }); }
-        P.total_line(c, rx, y, rx, bottom + (lab.below.length ? lead : 0), { width: c.t('line-baseline'), data: { key: refrow[ek], field: ev, value: refrow[ev] } });
+        // the line stops short of any named item's words it would cross, and starts again past them (BC S1, AX S2)
+        var ya = y, yb = bottom + (lab.below.length ? lead : 0), gaps = [];
+        [['above', y + size], ['below', bottom + lead + size * 0.75]].forEach(function (sd) {
+          var s = sd[0], base = sd[1], hh = s === 'above' ? (two.above ? lh : 0) : (two.below ? lh : 0);
+          lab[s].forEach(function (l) { if (rx >= l.x - l.w / 2 - 3 && rx <= l.x + l.w / 2 + 3) gaps.push([base - size * 0.969 - 3, base + hh + size * 0.25 + 3]); });
+        });
+        gaps.sort(function (a, b) { return a[0] - b[0]; });
+        var segs = [], at = ya;
+        gaps.forEach(function (g) { if (g[0] > at) segs.push([at, Math.min(g[0], yb)]); at = Math.max(at, g[1]); });
+        if (yb > at) segs.push([at, yb]);
+        segs.sort(function (a, b) { return (b[1] - b[0]) - (a[1] - a[0]); }).forEach(function (sg, i) {
+          P.total_line(c, rx, sg[0], rx, sg[1], i ? { width: c.t('line-baseline') } : { width: c.t('line-baseline'), data: { key: refrow[ek], field: ev, value: refrow[ev] } });
+        });
       }
       // leaders first, so the dots sit over them
       var ly = { above: y + size, below: bottom + lead + size * 0.75 };

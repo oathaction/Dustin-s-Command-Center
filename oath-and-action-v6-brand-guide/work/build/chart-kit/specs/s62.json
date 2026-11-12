@@ -28,6 +28,19 @@
         "row_header": true
       },
       {
+        "field": "action_code",
+        "label": "Step",
+        "format": "text",
+        "words": {
+          "10000": "1, Filed",
+          "14500": "2 and 3, Hearing and Committee vote: never happened",
+          "17000": "4, First chamber",
+          "8000": "5, Second chamber",
+          "28000": "6, President",
+          "36000": "6, President"
+        }
+      },
+      {
         "field": "action",
         "label": "Action, as Congress.gov records it",
         "format": "text"
@@ -59,7 +72,7 @@
       {
         "name": "Hearing",
         "codes": [],
-        "note": "None in the bill’s record; the Senate discharged the Commerce Committee by unanimous consent"
+        "note": "None: the Senate discharged its Commerce Committee"
       },
       {
         "name": "Committee vote",
@@ -94,11 +107,13 @@
       "ahead": "Not yet",
       "never": "Never happened"
     },
-    "became": "Became law on {date}, Public Law 119-12."
+    "became": "Became law on {date}, Public Law 119-12."
   },
   "notes_internal": [
     "Maker A, round 2. Data plan row 78, rule 14.88. Domain D01 from the sidecar.",
     "Data lead ruling (e): chapter 11's marks, no red; steps 2 and 3 take the never-happened slash, since the Commerce Committee was discharged by unanimous consent (action 14500) and the record holds no hearing or committee report action. Request R-A1 asks the research lead to confirm no hearing was held; the title claims only the discharge.",
-    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): the four dated steps (January 16, February 13, April 28 and May 19, 2025), 409 to 2, unanimous consent, the discharge and Public Law 119-12, each from the action text."
+    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): the four dated steps (January 16, February 13, April 28 and May 19, 2025), 409 to 2, unanimous consent, the discharge and Public Law 119-12, each from the action text.",
+    "Round 2 review fix pass, BC S11: across, each mark sits at its sixth's left edge with the words flush left beneath it; the names share a top and every state, date and note starts on one line across the row; step 2's note is shorter now that the research lead has confirmed no hearing or markup (R-A1); 'Public Law 119-12' holds together with no-break spaces in the end words.",
+    "Round 2 review fix pass, AX S5: the table's Step column maps each action's code to the tracker's step through the column's words, and the discharge row names steps 2 and 3 as never happened; the table keeps the record's seven actions as its rows, since the kit's table prints the data's rows, so the two steps that never happened share that row in place of rows of their own."
   ]
 }

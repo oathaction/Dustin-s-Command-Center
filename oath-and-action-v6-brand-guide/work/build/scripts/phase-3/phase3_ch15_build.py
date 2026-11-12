@@ -107,6 +107,26 @@ def short(code):
     return LOOP_NAME.get(code) or node(code)["title"]
 
 
+# The data lead's RF-16 and RF-16a (BC S4, D3-893): the atlas names these four core variables two ways, a chain label inside
+# its loop records ("Executive unilateralism", "Congressional capacity") and its own title on the variable's record
+# ("Presidential action without new legislation"). A loop drawing quotes the loop's chain and keeps the chain label; a
+# drawing outside any loop (an authority diagram, a single connection) prints the variable's own title.
+TWO_NAMES = {"D1", "D2", "D4", "D6"}
+need(all(LOOP_NAME.get(c) and LOOP_NAME[c] != node(c)["title"] for c in TWO_NAMES), "the atlas no longer names D1, D2, D4 and D6 two ways")
+
+
+def own(code):
+    """A variable's label in a drawing outside any loop: its own title for the four the atlas names two ways (RF-16),
+    else DR-185's short name."""
+    return node(code)["title"] if code in TWO_NAMES else short(code)
+
+
+def tie(s):
+    """Hold a label's last two words on one line, so no word stands alone at the end of it (BC S16)."""
+    head, _, last = s.rpartition(" ")
+    return f"{head} {last}" if head else s
+
+
 def minus_count(ids):
     return sum(1 for i in ids if link(i)["polarity"] == "-")
 
@@ -134,10 +154,18 @@ def gl(lid):
     return f'<span class="nw2">{chip("Connection", lid)}&#160;{grade_word(link(lid)["evidence"], gloss=False)}</span>'
 
 
+def vt(code):
+    """A variable's typed chip with its title in quotation marks, as a connection's chip takes its name. Words follow a
+    chip and punctuation never touches it, since the chip's padding and edge would set a comma or a period apart (BC S16)."""
+    return f'{chip("Variable", code)} “{e(node(code)["title"])}”'
+
+
 def step_lines(lids, skip=(), head="Each step", extra=None):
     """A loop's steps, numbered in the atlas's order, each connection's chip with its grade word (Rule 13.4, the data
-    lead's SD-7): every connection a drawing shows prints its grade somewhere on the plate."""
-    rows = [f'<p class="nt"><b>{i}</b>&#160;{gl(x)}{(extra or {}).get(x, "")}</p>'
+    lead's SD-7): every connection a drawing shows prints its grade somewhere on the plate. A step with words added after
+    its grade ends the grade word with a period first (CD CH15-S1)."""
+    ex = extra or {}
+    rows = [f'<p class="nt"><b>{i}</b>&#160;{gl(x)}{"." + ex[x] if x in ex else ""}</p>'
             for i, x in enumerate(lids, 1) if x not in skip]
     return f'<p class="k">{e(head)}</p>' + "".join(rows) if rows else ""
 
@@ -460,6 +488,8 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
 
 GAP4 = 112                # the rise between a four-variable loop's two rows: the tick, the tag and the arrowhead
 INNER = 8                 # a side step's line stands 8 px in from where the pill's rounded end meets its flat edge
+TAG_HALF = 8              # half a sign tag's height at 2 px (16 px tall; a red target's 6 px tag is 22, so 3 more)
+ID_UP, ID_DOWN = 17, 16   # a two-row loop ID's ink above and below its middle: 15 px type, rows 18 px apart at -6 and +12
 
 
 def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None, targets=(), shared=(), labels=None):
@@ -490,7 +520,7 @@ def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None, targets
              ([(xr, b.bot + 2), (xr, c.top - 2)], "right"),
              ([(c.cx, c.bot + 2), (c.cx, bot_y), (d.cx, bot_y), (d.cx, d.bot + 2)], "below"),
              ([(xl, d.top - 2), (xl, a.bot + 2)], "left")]
-    out = []
+    out, tag_tops = [], []
     for i, ((pts, side), lid) in enumerate(zip(paths, lids)):
         l = link(lid)
         tg = lid in targets
@@ -499,20 +529,30 @@ def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None, targets
         words = step_words(i + 1 if numbered else 0, lid)
         out.append(verb_at(pts, l["polarity"], words, side, big=tg))
         if side in ("left", "right"):
-            x, _, _, _ = anchor_at(pts, l["polarity"])
+            x, ty, _, _ = anchor_at(pts, l["polarity"])
+            tag_tops.append(ty - (TAG_HALF + 3 if tg else TAG_HALF))
             span = max(tw(w_, 600 if re.match(r"\d+ ", w_) else 400) for w_ in words) + (3 if tg else 0)
             need((x - 15 - span >= 2) if side == "left" else (x + 15 + span <= W - 2),
                  f"step {i + 1}'s words of a four-variable loop leave the {W} px artboard")
     out.append(a.svg() + b.svg() + c.svg() + d.svg())
-    mid_x, mid_y = (xl + xr) / 2, (max(a.bot, b.bot) + min(c.top, d.top)) / 2
+    mid_x = (xl + xr) / 2
     room = xr - xl - 2 * 12
+    # BC S16: the loop's two rows sit above the side steps' tags, centered in the room between the top row's pills and
+    # the higher tag, so neither row reads on one line with a side step's words and tag ("4 raises + Loop R10"). y is
+    # the block's middle; its rows' baselines fall 6 px above it and 12 px below it, and its ink runs from ID_UP above to
+    # ID_DOWN below
+    ceil_, floor_ = max(a.bot, b.bot), min(tag_tops)
+    y = (ceil_ + floor_ - ID_DOWN + ID_UP) / 2
+    if inside or inside_rows:
+        need(y - ID_UP >= ceil_ + 4 and y + ID_DOWN <= floor_ - 4,
+             f"the loop's ID has no room above its side steps' tags ({floor_ - ceil_:.0f} px)")
     if inside:
         lid_, kind = inside
         need(max(tw(f"Loop {lid_}", 700), tw(kind)) <= room, "the loop's ID crowds its side steps")
-        out.append(loop_id(mid_x, mid_y - 3, lid_, kind, two=True))
+        out.append(loop_id(mid_x, y, lid_, kind, two=True))
     if inside_rows:
         need(max(tw(r_, 700) for r_ in inside_rows) <= room, "the words inside the loop crowd its side steps")
-        out.append(f'<text class="id" x="{F(mid_x)}" y="{F(mid_y - 9)}" text-anchor="middle">{e(inside_rows[0])}'
+        out.append(f'<text class="id" x="{F(mid_x)}" y="{F(y - 6)}" text-anchor="middle">{e(inside_rows[0])}'
                    f'<tspan x="{F(mid_x)}" dy="{LH}">{e(inside_rows[1])}</tspan></text>')
     h = bot_y + 34 + (rows[2] - 1) * LH
     return "".join(out), h
@@ -791,7 +831,7 @@ def card(a_code, b_code, lid, layers=None, words=None, sign=None, authority=None
     l = link(lid) if lid else {}
     sign = l.get("polarity") if sign is None else (sign or None)
     authority = (l.get("type") == "authority") if authority is None else authority
-    la, lb = labels or (short(a_code), short(b_code))
+    la, lb = labels or (own(a_code), own(b_code))
     pw = max(pill_w(la, pw), pill_w(lb, pw))
     a = Pill(la, 2 + pw / 2, 0, pw)
     a.cy = head + a.h / 2 + 2
@@ -815,7 +855,7 @@ def card(a_code, b_code, lid, layers=None, words=None, sign=None, authority=None
 def card_width(a_code, b_code, lid, words=None, pw=CARD_PW):
     """The width a card's drawing takes, for an artboard sized to it: the wider pill, or the line's words to its right,
     with the sign tag between (card() sets the words 15 px right of the line)."""
-    la, lb = short(a_code), short(b_code)
+    la, lb = own(a_code), own(b_code)
     pw = max(pill_w(la, pw), pill_w(lb, pw))
     words = words or step_words(0, lid)
     return math.ceil(max(2 + pw, 2 + pw / 2 + 15 + max(tw(w_) for w_ in words)) + 2)
@@ -1055,7 +1095,7 @@ def rule_15_3(book):
     book.add("s-15-3-correct", body, rule="15.3", readable=True, wide=True,
              alt=(f"Two connections from our systems atlas. Connection L46 runs from Hostility toward the other party to Exposure "
                   f"to hostile political content, with a plus tag and the words information, raises; its sentence reads: "
-                  f"{l46['sign_meaning']} Connection L16 runs from Oversight and enforcement to Policy tilt to insiders, with a "
+                  f"{l46['sign_meaning']} Connection L16 runs from {own('D4')} to Policy tilt to insiders, with a "
                   f"minus tag and the word lowers; its sentence reads: {l16['sign_meaning']} A key says plus raises, the two move "
                   "the same way; minus lowers, they move in opposite directions; and quotes the atlas: a positive sign does not mean a benefit."),
              notes="Sentences on each sign from the connections' own records; the key's last line from the atlas glossary.")
@@ -1188,8 +1228,8 @@ def rule_15_5(book):
     need((l13["from"], l13["to"], l14["from"], l14["to"]) == ("D4", "TC7", "D6", "TC7"), "connection LT13 or LT14 changed")
     need(node("TC7")["layer"] == "technology" and node("D4")["layer"] == node("D6")["layer"] == "core", "the layers changed")
     # two bodies, one decision: two authority lines into one variable across the core and technology boundary
-    a = Pill(short("D4"), 0, 0, 140)
-    b = Pill(short("D6"), 0, 0, 140)
+    a = Pill(own("D4"), 0, 0, 140)
+    b = Pill(own("D6"), 0, 0, 140)
     a.cx, b.cx = 2 + a.pw / 2, W - 2 - b.pw / 2
     top = max(a.h, b.h)
     a.cy = b.cy = top / 2 + 2
@@ -1212,8 +1252,8 @@ def rule_15_5(book):
     body = (label_for(["LT13", "LT14"])
             + beside(fig(svg), f'<p class="k">Two bodies, one decision</p>{words}' + src("connections LT13 and LT14")))
     book.add("s-15-5-correct", body, rule="15.5", readable=True, wide=True,
-             alt=(f"Two authority connections from our systems atlas. Lines from Oversight and enforcement and from State and local "
-                  f"experimentation run down across the boundary between the core and technology layers into Use of pricing "
+             alt=(f"Two authority connections from our systems atlas. Lines from {own('D4')} and from {own('D6')} "
+                  f"run down across the boundary between the core and technology layers into Use of pricing "
                   f"algorithms. Each is solid, ends in an open diamond, carries the word decides and no sign. Beside them: "
                   f"Connection LT13, {l13['name']}, documented; Connection LT14, {l14['name']}, documented; and the atlas’s "
                   f"words, {l13['sign_meaning']}"),
@@ -1222,7 +1262,7 @@ def rule_15_5(book):
     fb, fh, _ = card("D4", "TC7", "LT13", layers=("Core layer", "Technology layer"), sign="-", authority=False, words=["lowers"])
     fail = dnp() + fig(svg_wrap(fb, fh))
     book.add("s-15-5-failure", fail, rule="15.5",
-             alt=(FC + "The line from Oversight and enforcement to Use of pricing algorithms drawn as a causal arrow, with an "
+             alt=(FC + f"The line from {own('D4')} to Use of pricing algorithms drawn as a causal arrow, with an "
                   "arrowhead, a minus tag and the word lowers."),
              notes="Labeled failure: an authority connection given a sign and an arrowhead, as if the atlas knew which way the enforcers will decide.")
     return {
@@ -1628,13 +1668,14 @@ def rule_15_10(book):
             f'{chip("Variable", "B4")} along {gl("L47")}, “{e(a2)}”')
     tail_txt = (f"The atlas adds that any effect “{a1[len('Any effect '):]}”, from Variable B6 to Variable B4 along connection "
                 f"L47, graded {GRADE[link('L47')['evidence']][0]}, “{a2}”")
-    lead = (f'Its reason opens on the drawn connection, {chip("Connection", "LT01", ":")} feed ranking “changes what people see”.')
+    lead = (f'Its reason opens on the drawn connection: feed ranking “changes what people see”, as {chip("Connection", "LT01")} '
+            f'records.')
     need(reason[0].startswith("Feed ranking changes what people see"), "LTR1's first sentence changed")
     gls = GLOSS["Rejected connection"]
     need(gls.startswith("A relationship that was reviewed against the evidence and left off the map"), "the atlas's rejected connection entry changed")
     b, h, _ = card("TC1", "B6", "LT01", layers=("Technology layer", "Core layer"))
     panel = (f'<p class="k">Reviewed and not drawn</p><p class="hed"><span>From {chip("Variable", "TC1")} to '
-             f'{chip("Variable", "B4", ",")} {e(lc(node("B4")["title"]))}</span></p><p class="nt">{lead}</p>'
+             f'{vt("B4")}</span></p><p class="nt">{lead}</p>'
              f'<p class="q">“{e(quote)}”</p><p class="nt">{tail}</p>'
              f'<p class="nt">The atlas keeps {words_n(len(rej))} connections it reviewed and left off its map, each with its reason.</p>')
     body = (label_for(["LT01"], "the grade of the connection drawn")
@@ -1723,7 +1764,7 @@ def target_items(r, drawn):
         if t in LINK:
             out.append(f'{chip("Connection", t)} “{e(link(t)["name"])}”.&#160;{grade_word(link(t)["evidence"], gloss=False)}')
         else:
-            out.append(f'{chip("Variable", t, ",")} {e(lc(node(t)["title"]))}')
+            out.append(vt(t))
     return out
 
 
@@ -1741,11 +1782,12 @@ def band_p(r):
 
 
 def loops_p(r, shown):
-    """The loops a reform sits on, in typed chips, and the one the drawing shows."""
+    """The loops a reform sits on, as a row of typed chips (a list, so no comma or period touches a chip, BC S16), and the
+    one the drawing shows."""
     need(shown in r["loops"], f"reform {r['id']} does not sit on Loop {shown}")
-    cs = [chip("Loop", k) for k in r["loops"]]
-    lst = cs[0] if len(cs) == 1 else ", ".join(cs[:-1]) + " and " + cs[-1]
-    return f'<p class="nt">{lst}. The drawing shows {chip("Loop", shown, ",")} which holds every target.</p>'
+    row = "".join(f"<li>{chip('Loop', k)}</li>" for k in r["loops"])
+    return (f'<ul class="cr">{row}</ul>'
+            f'<p class="nt">The drawing shows {chip("Loop", shown)} because it holds every target.</p>')
 
 
 def rule_15_11(book):
@@ -1770,8 +1812,8 @@ def rule_15_11(book):
              + f'<p class="k">Its targets, from the atlas</p>{items}'
              + f'<p class="k">Its band</p>{band_p(r)}'
              + src("reform R-03, loop R4a, connections L42, L55 and L56, and the bands of change"))
-    under = (step_lines(lp["links"]) + f'<p class="nt">{chip("Variable", "C4")} sits in the same cluster as '
-             f'{chip("Variable", "C1", ",")} {e(cname.lower())}, and stays in ink.</p><p class="k">Its loops</p>{loops_p(r, "R4a")}')
+    under = (step_lines(lp["links"]) + f'<p class="nt">{chip("Variable", "C4")} sits in the {e(cname.lower())} cluster with '
+             f'{chip("Variable", "C1")} and stays in ink.</p><p class="k">Its loops</p>{loops_p(r, "R4a")}')
     body = (hed("Reform", "R-03", r["title"]) + label_for(lp["links"], "the grade of the loop’s least certain step")
             + beside(hed("Loop", "R4a", lp["title"]) + fig(svg) + under, words))
     book.add("s-15-11-correct", body, rule="15.11", readable=True, wide=True,
@@ -1782,8 +1824,8 @@ def rule_15_11(book):
                   "election rules. Beside it: the reform acts where the marks turn red, on one connection and two variables: "
                   f"Connection L42, {link('L42')['name']}, documented; Variable C1, {lc(node('C1')['title'])}; Variable D7, "
                   f"{lc(node('D7')['title'])}. Its band, rules: {BANDS['rules']} Under the drawing: Variable C4 sits in the "
-                  "same cluster as Variable C1, electoral competition, and stays in ink; its loops are Loop R4a, Loop R10 and "
-                  "Loop R12, and the drawing shows Loop R4a, which holds every target. Each step with its grade: "
+                  "electoral competition cluster with Variable C1 and stays in ink; its loops are Loop R4a, Loop R10 and "
+                  "Loop R12, and the drawing shows Loop R4a because it holds every target. Each step with its grade: "
                   + "; ".join(f"step {i}, Connection {x}, {GRADE[link(x)['evidence']][0].lower()}" for i, x in enumerate(lp["links"], 1))
                   + "."),
              notes="Targets read from the reform's record and drawn in Rule 12.5's red by wire_marks at the 6 px sizes; the band "

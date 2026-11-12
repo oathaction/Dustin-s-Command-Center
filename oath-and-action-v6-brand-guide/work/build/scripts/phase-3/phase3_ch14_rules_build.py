@@ -1107,7 +1107,10 @@ def rule_14_9(B):
                measure_line=f"{measure}, with each figure’s 90\u00a0percent margin of error",   # ED-E17: "90 percent" stays on one line
                reading_guide="Each line spans a state’s margin of error, " + guide_end,
                encode={"category": "name", "value": "voted_pct", "margin": "moe_pct", "key": "code"},
-               labels={"reference": "US", "reference_label": "Nation {value}%", "test": "reference", "value": "{value}%"},
+               # the rows stack a little sooner than the form's default 160 px plot, since at 321 to 330 px drawings the middle
+               # row's interval fell to 24.3 to 25.2 px against the 26 px a 13 px dot needs (call 9's check, D3-899)
+               labels={"reference": "US", "reference_label": "Nation {value}%", "test": "reference", "value": "{value}%",
+                       "stack_below": 176},
                formats={"value": "number:1", "tick": "integer"}, scale={"x": [50, 80]}, phone="same",
                notes_internal="Rule 14.9's correct plate on the kit's range-bar form (ED-E4). Checked by script: five states past the "
                               "gap's margin from the nation (the form's labels.test reads the same margins), five within it; the ranked "
@@ -1254,7 +1257,9 @@ def rule_14_11(B):
     lo, hi = 60000, 90000
     gap13, gap17 = segs[1][0][1] - segs[0][-1][1], segs[1][-1][1] - segs[2][0][1]
     need(gap13 == 2200 and gap17 == 300, f"the two breaks' gaps moved: {gap13}, {gap17}")
-    guide = (f"The line breaks in 2013, where new income questions put the year’s two estimates ${comma(gap13)} apart. A new processing "
+    # ST S7: the chapter's first "median" is this plate's title, so the reading guide glosses it before anything else
+    guide = (f"Half of households had more income than the median and half had less. "
+             f"The line breaks in 2013, where new income questions put the year’s two estimates ${comma(gap13)} apart. A new processing "
              f"system in 2017 put them ${comma(gap17)} apart, close enough that the two dots overlap; the table prints both.")
     # the Census Bureau's footnotes say what changed in each marked year; the table prints them in words
     changes = {"7": "Earlier income questions", "6": "New income questions", "5": "New processing system", "9": "Wider top income range",
@@ -1539,8 +1544,8 @@ GROUP_LINES = {
     5: "Stacked bars, unit charts and treemaps show the parts of a whole and print the whole they add up to.",
     6: "Histograms, strip plots and box plots show how values spread, where they bunch and how far they run.",
     7: "Scatter plots and their relatives show whether two measures move together, and an association’s note says what the pattern cannot show about cause.",
-    8: ("A range, a band or a fan shows how sure a figure is, as its publisher states it, whether a survey’s margin of error around "
-        "a finding or a range around an estimate, set by a model or by the errors of past forecasts (Rule 13.1)."),
+    8: ("A range, a band or a fan shows how sure a figure is, as its publisher states it, and an estimate’s note gives the method "
+        "behind its range (Rule 13.1)."),
     9: "Icon arrays, proportional symbols and overlap diagrams make a share countable and show where groups overlap.",
     10: ("Big numbers give a figure with the context to judge it, and progress bars and bullet graphs set one measure against its "
          "target or limit. Step trackers and status chips show how far a bill or a dispute has come."),

@@ -43,7 +43,7 @@
       P.value_grid(c, ys, vs.ticks, fmt, x0 - 4, x0, gut);
       P.zero_line(c, ys, x0, x1);
       // the band names inside each band at its right end, flush right (or centered over labels.parts[].at); group 4's on a
-      // halo of the ground over its hatch
+      // plate of the ground over its hatch
       parts.forEach(function (p, j) {
         var dfn = defs[p] || {}, lab = dfn.label || p, at = dfn.at !== undefined ? st.filter(function (s) { return String(s.row[ex]) === String(dfn.at); })[0] : last;
         if (!at) { c.warn('labels.parts.at matches no row for ' + p); return; }
@@ -51,8 +51,14 @@
         var hatch = CAT[Math.min(j, 3)] === 'cat-4', end = dfn.at === undefined, ax = end ? x1 - 8 : X(at);
         var cy = (ys(g.start) + ys(g.end)) / 2 - (lines.length - 1) * lh / 2 + size * 0.35;
         if (hgt < lines.length * lh + 4) c.warn('the band ' + p + ' is too thin for its name');
+        // on the hatch, a plate of the ground knocks the strokes out from behind the words, 5 px clear of them (BC S7)
+        if (hatch) {
+          var tw = 0; lines.forEach(function (ln) { tw = Math.max(tw, c.measure(ln, 'label', 600)); });
+          var bx = end ? ax - tw : ax - tw / 2, bt = cy - 0.864 * size, bb = cy + (lines.length - 1) * lh + 0.136 * size;
+          c.rect(bx - 5, bt - 5, tw + 10, bb - bt + 10, { fill: 'surface', mark: false });
+        }
         c.text(ax, cy, lab, { role: 'label', weight: 600, anchor: end ? 'end' : 'middle', max: mw + 1, leading: lh,
-          fill: hatch ? 'beside-cat-4' : 'on-' + CAT[j], halo: hatch });
+          fill: hatch ? 'beside-cat-4' : 'on-' + CAT[j] });
       });
       // each band's last share at the right edge, at its middle, moved apart where two would touch
       var ends = last.segs.map(function (g, j) { return { y: ys((g.start + g.end) / 2) + size * 0.35, g: g, j: j }; }).sort(function (a, b) { return a.y - b.y; });

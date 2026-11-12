@@ -54,7 +54,7 @@
     ]
   },
   "chart_notes": [
-    "Steps that add are green and steps that take away are dark blue, each with its value beside it. The bar for all receipts, in gray, and the deficit, in ink, run from zero. A thin line joins each step to the next."
+    "Each step starts where the last one ended, and the value beside it carries a plus where it adds to the running total and a minus where it takes away. The bar for all receipts and the deficit’s bar, the last, run from zero. A thin line joins each step to the next."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -110,6 +110,7 @@
     "Maker A, round 2. Data plan row 44, rule 14.48. Domain D08.",
     "Data lead ruling (e) and A3: adds in pair B's Verdigris end (div-5), takes away in its Prussian end (div-1), all receipts in the context ink, the deficit in the subject ink through labels.named (no red on a sign, ruling (c)), connectors in the secondary ink; all 30 lines kept, no folds.",
     "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): receipts 5,403.3, outlays 7,395.8, deficit 1,992.5 billion, the steps adding to both totals; commerce and housing credit 15.5 and undistributed offsetting receipts 155.0 positive; the five lines over 900 billion; the alt's 2,845.5, 1,754.3 and 1,667.1.",
-    "Line names in sentence case through labels.names, as S33 prints the receipts; the table keeps the Treasury's names."
+    "Line names in sentence case through labels.names, as S33 prints the receipts; the table keeps the Treasury's names.",
+    "Round 2 review fix pass, BC S17 and AX S3: the chart note names the steps and the two totals by what they do and where they sit, with no color word, since the inks differ on Charcoal and in forced colors."
   ]
 }

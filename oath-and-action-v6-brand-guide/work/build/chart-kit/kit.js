@@ -358,7 +358,7 @@
     var g = geo || {};
     this.ink.push({ kind: kind, x: x, y: y, w: w, h: h, role: (o && (o.fill || o.stroke)) || '', fill: o && o.fill, plate: !!(o && o.cls && /\boac-fc-plate\b/.test(o.cls)), poly: o && o._poly,
       stroke: o && o.stroke, sw: o && o.stroke ? (+o.width || 1) : 0, a: g.a === undefined ? w * h : g.a, len: g.len === undefined ? 2 * (w + h) : g.len,
-      seq: this._seq++, seg: g.seg, subs: g.subs, ring: g.ring, dash: !!(o && o.dash) });
+      seq: this._seq++, seg: g.seg, subs: g.subs, ring: g.ring, dash: !!(o && o.dash), strike: !!(o && o.strike) });
   };
   // the area inside each subpath (shoelace) and the length along them, for a path's paint
   function poly_geo(subs, closed) {
@@ -527,6 +527,20 @@
     var pgeo = poly_geo([pts], true); pgeo.subs = [pts]; pgeo.closed = true;
     this._ink('polygon', Math.min.apply(null, xs), Math.min.apply(null, ys), Math.max.apply(null, xs) - Math.min.apply(null, xs), Math.max.apply(null, ys) - Math.min.apply(null, ys), o, pgeo);
     if (o.mark !== false) this.mark({ kind: o.kind || 'polygon', x: Math.min.apply(null, xs), y: Math.min.apply(null, ys), w: Math.max.apply(null, xs) - Math.min.apply(null, xs), h: Math.max.apply(null, ys) - Math.min.apply(null, ys), fill: o.fill, data: o.data || {}, job: o.job });
+  };
+  // BC S1 (round 2 fix pass): the box c.text would give these words, drawn nothing, so a part can set a knockout under them
+  Ctx.prototype.text_box = function (x, y, words, o) {
+    o = o || {};
+    if (this.spec.typography) words = K.typeset(this.spec, words);
+    var role = o.role || 'label', size = o.size || this.size(role), weight = o.weight || 400, anchor = o.anchor || 'start';
+    var face = o.face || (role === 'big' ? 'display' : 'reading');
+    var lines = o.max ? K.wrap(words, size, o.max, weight, face) : [String(words)];
+    var lh = o.leading || Math.round(size * (role === 'note' ? 1.36 : 1.25)), w = 0;
+    lines.forEach(function (ln) { w = Math.max(w, K.measure(ln, size, weight, face, o.tnum)); });
+    var x0 = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x;
+    var vm = metrics().vertical[face === 'display' ? 'Inter Tight|800' : 'Inter|400'] || { ascent: 969, descent: 241 };
+    var asc = size * vm.ascent / 1000, desc = size * vm.descent / 1000, half = (asc + desc - size) / 2;
+    return { x: x0, y: y - asc + half, w: w, h: asc + desc - 2 * half + lh * (lines.length - 1), lines: lines.length, size: size };
   };
   Ctx.prototype.text = function (x, y, words, o) {
     // y is the baseline. o: role (tick, label, note, big, eyebrow), weight, anchor, fill, halo, tnum, max (wrap width)

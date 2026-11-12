@@ -30,8 +30,12 @@
    "token": "oa.chart.color.context.onNewsprint"
   },
   {
-   "label": "A gap’s margin",
-   "value": "For two independent survey figures, the square root of the sum of their squared margins"
+   "label": "A gap’s margin, two separate places",
+   "value": "The square root of the sum of their squared margins"
+  },
+  {
+   "label": "A gap’s margin, a place inside an area",
+   "value": "The square root of the sum of the two squared margins less twice the place’s squared margin times its share of the people the area counts; where the data hold no share, the first test, and the note says it treats the two as independent"
   },
   {
    "label": "Within the margin",

@@ -14,7 +14,8 @@
   "reference": "US",
   "reference_label": "Nation {value}%",
   "test": "reference",
-  "value": "{value}%"
+  "value": "{value}%",
+  "stack_below": 176
  },
  "formats": {
   "value": "number:1",
@@ -27,7 +28,7 @@
   ]
  },
  "phone": "same",
- "notes_internal": "Rule 14.9's correct plate on the kit's range-bar form (ED-E4). Checked by script: five states past the gap's margin from the nation (the form's labels.test reads the same margins), five within it; the ranked ends inside their own margins.",
+ "notes_internal": "Rule 14.9's correct plate on the kit's range-bar form (ED-E4). Checked by script: five states past the gap's margin from the nation (the form's labels.test reads the same margins), five within it; the ranked ends inside their own margins. Each state is part of the nation, so the exact test (the data lead's RF-7, ST S4) is the square root of a²(1 − 2w) + b², with w the state's share of the nation's citizens of voting age (3.2 to 10.7 percent here); the generator checks that it sets apart the same five states as the independent test the kit draws (California 1.68 falls to 1.50 against a gap of 0.6; Ohio 2.55 to 2.46 against 2.1).",
  "family": "uncertainty-and-estimates",
  "tier": "core",
  "dataset": "census-cps-2024-turnout-by-state",

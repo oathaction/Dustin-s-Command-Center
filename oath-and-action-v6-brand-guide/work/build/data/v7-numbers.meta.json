@@ -43,7 +43,7 @@
  "observation_period": "Each figure states its own period; all checked October 15, 2026",
  "universe_or_base": "The atlas's headline figures",
  "unit": "figures, each in its own unit",
- "qualification": "Each figure carries its own qualification, printed with it; several describe events that may have moved since the snapshot, such as Alaska's Ballot Measure 2, decided on November 3, 2026",
+ "qualification": "Each figure carries its own qualification, printed with it; several describe events that may have moved since the snapshot, such as Alaska's Ballot Measure 2, decided on November 3, 2026. V7 stores figure 4’s sentence on the inspectors general under figure 5 as well, with a different docket clause (\"a July 20, 2026 minute order\" against \"dated July 22, 2026\"), where it does not apply to figure 5. Figure 7’s qualification calls H.R. 7008 \"a ban\" by its stock provision alone; the bill as the House passed it (engrossed text of July 22, 2026, read on govinfo.gov November 12, 2026) has two parts, section 2, \"Restrictions on covered investments\", and section 3, \"Requiring voters to provide photo identification\" to vote in person in an election for federal office. The table keeps V7’s words as stored (data lead ruling RF-4)",
  "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, headline figures, eight figures, checked October 15, 2026, United States. Snapshot of October 15, 2026. Each figure carries its own source and qualification.",
  "domain": "all",
  "domain_note": "The eight figures come from several domains",
