@@ -4324,3 +4324,16 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | # | Decision | Reason |
 |---|---|---|
 | D3-475 | The quick guide check passed on the fresh strict build: 2 widths (1440 and 390 px), 265 rules, 610 specimens, 2,725 same-page links, 0 failures. With the strict build (D3-460), the committed state matches D3-458's close | Dustin asked for the committed state confirmed by a strict build and the quick guide check before the review |
+
+### Main session, the round 1 fix brief (`work/handoffs/phase-3/20261112_Round-1-Fix-Brief.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-476 | S24 keeps its frozen Business Formation Statistics files and figures and prints the frozen file's vintage; the Bureau's November 12 revision joins the Phase 5 refresh list, and Rule 14.1's plate, S25, S27, S31 and S36 print their vintages the same way | The approved proposal freezes each round's data with one refresh at Phase 5; Rule 13.7 asks a revised series to name its vintage, which makes the frozen figure true as printed (ST M1, ST S3) |
+| D3-477 | S17, S20, S21, S23, S27 and S36 draw their named mark as the red point with its keyline, the other marks in the light fill on Newsprint; the data lead reads each title from the left and the right before sign-off; Rule 14.6's builders line names the red point's spec key | Rule 05.3, approved at Gate 2, gives the point the headline names the third claim on a view's one working red, and Rule 14.6 says the same for charts; D3-300's reason cannot stand against an approved rule (ST M5) |
+| D3-478 | The four charts that count the atlas's own records (S21, S23, S38, S39) take a grade line the data lead rules on inside chapter 14 and the specs; if no honest line works without changing Rule 13.1, the question goes to Dustin on board 2 | Chapter 13 is approved as built (DR-237) (ST M4) |
+| D3-479 | 12,288 bytes of chapter 14's room move into the allowance for rules 14.1 to 14.14 with the opener, and the weight report counts sketch entries whole | The eight narrow plates draw at their partner's width at 600 px and wider (CD RM2); chapter 14 had 1,008,770 bytes of room, and the share per plate falls by about 200 bytes |
+| D3-480 | Chapter 15's drawings stay at their true 296 px; a container query on the stage sets one 328 px column under 680 px and, at 680 px or wider, words beside the drawing and two-loop plates side by side; below 328 px the prose leaves the fixed drawing; shared plate CSS moves to one chapter-level block | The creative director's CH15-M1 and the accessibility reviewer's S5; the shared block pays for the switch (49,860 bytes of plate CSS repeat across 25 plates) |
+| D3-481 | An avoid sketch may take up to 3,072 bytes if the fault and the better choice cannot share 2 KB | DR-240 asks for the misleading drawing beside the better choice (CD SK-M1) |
+| D3-482 | The statistics reviewer's request to add the Medicaid renewal figure to the open questions is answered by D3-260 | D3-260 sent it to the V7.1 list and board 2 |
+| D3-483 | In this fix pass the makers apply the reviewers' words where a report gives them, and the editor reads every changed word in the second pass and sends changes | One round trip fewer; the editor still owns the words, as in round 1 |
