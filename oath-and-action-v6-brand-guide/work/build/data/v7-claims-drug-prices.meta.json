@@ -41,6 +41,10 @@
    "type": "text",
    "description": "V7 source IDs, joined by \"; \""
   },
+  "source_words": {
+   "type": "text",
+   "description": "each source as V7's sources record names it, publisher and title, joined by \"; \" (fix pass 2, A7)"
+  },
   "verified_on": {
    "type": "text",
    "description": "V7's verification date as stored"

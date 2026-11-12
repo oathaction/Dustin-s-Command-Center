@@ -62,7 +62,9 @@ FAR_OVER = 3.0
 PLATES = 97
 FORMS = 97
 NOT_PLATES = {"reference sketches (22 at 4 KB) and avoid entries (8 at 2 KB)": 22 * 4096 + 8 * 2048,
-              "rules, selection guide and palette specification": 300_000,
+              # round 1 built rules 14.1 to 14.14 with their plates and the opener, now measured in chapter 14's section;
+              # round 5's selection guide and palette specification keep their 0.10 MB (round 1 brief, Editor)
+              "selection guide and palette specification": 100_000,
               "three complex examples": 90_000,
               "shared map geometry": 250_000}
 # Chapters Phase 3 is still building: the projection counts each at no less than its allocation until its round ends

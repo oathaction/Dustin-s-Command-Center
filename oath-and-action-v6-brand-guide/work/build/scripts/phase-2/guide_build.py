@@ -1435,6 +1435,7 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
                        + "</ul></div>")
         if r.get("specimen_at"):
             out.append(f'<p class="entry-shared">{inline("This form’s specimen is the one under Rule " + str(r["specimen_at"]) + ".", ctx)}</p>')
+    if r.get("tokens"):
         out.append('<div class="tokens"><p class="label">Tokens</p><ul class="tok-list">'
                    + "".join(token_chip(t, tokens, where) for t in r["tokens"]) + "</ul></div>")
     if why:

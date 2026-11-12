@@ -7,7 +7,23 @@
  "url": [
   "https://api.congress.gov/v3/committee/senate/ssbk00/bills?format=json",
   "https://api.congress.gov/v3/committee/house/hsba00/bills?format=json",
-  "https://api.congress.gov/v3/bill/119/hr/6644?format=json"
+  "https://api.congress.gov/v3/bill/119/hr/6644?format=json",
+  "https://api.congress.gov/v3/bill/119/hr/6644/actions?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/hr/6644/committees?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/hr/224/actions?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/hr/224/committees?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/s/2651/actions?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/s/2651/committees?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/hr/225/actions?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/hr/225/committees?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/hr/965/actions?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/hr/965/committees?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/hr/1078/actions?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/hr/1078/committees?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/hr/1640/actions?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/hr/1640/committees?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/hr/5889/actions?format=json&limit=250",
+  "https://api.congress.gov/v3/bill/119/hr/5889/committees?format=json&limit=250"
  ],
  "observation_period": "119th Congress, January 3, 2025 to November 11, 2026",
  "geography": "United States Congress",
@@ -56,10 +72,37 @@
   "law_number": {
    "type": "text",
    "description": "public law number, if any"
+  },
+  "hearing_recorded": {
+   "type": "boolean",
+   "description": "whether Congress.gov records a committee or subcommittee hearing on this bill (a \"Hearings By\" activity); false means none is recorded on the bill, not that no hearing on the subject was held"
+  },
+  "committee_record": {
+   "type": "text",
+   "description": "each committee activity Congress.gov records for the bill, with its date (referred, markup, reported, discharged, reported as an original measure)"
+  },
+  "committee_vote": {
+   "type": "text",
+   "description": "date and tally of the committee vote to report the bill, from its actions; empty where none is recorded"
+  },
+  "first_chamber_passed": {
+   "type": "date",
+   "description": "date the chamber where the bill began passed it"
+  },
+  "second_chamber_passed": {
+   "type": "date",
+   "description": "date the other chamber first passed it (later votes resolving differences are in the actions)"
+  },
+  "became_law_date": {
+   "type": "date",
+   "description": "date it became public law"
   }
  },
  "printed_source_line": "Source: Library of Congress, Congress.gov, housing bills in the 119th Congress, status as of November 11, 2026, United States Congress. Retrieved November 11, 2026. Eight bills that moved past committee referral; status words are Oath & Action’s.",
  "ledger_row": "P7-018",
  "domain": "D09",
- "states": []
+ "states": [],
+ "notes": [
+  "Committee steps added November 12, 2026 (fix pass 2, maker A’s A6) from each bill’s actions and committee activities on the Congress.gov API. Congress.gov records no hearing on any of the eight bills; a hearing on a subject or a draft, with no bill number, would not show."
+ ]
 }

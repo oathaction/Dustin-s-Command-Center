@@ -9,6 +9,7 @@
    "period": "2023",
    "limitation": "These are interim staff findings, not a Commission ruling, and PBM market shares vary by market segment.",
    "sources": "Q208",
+   "source_words": "Federal Trade Commission, Pharmacy Benefit Managers: The Powerful Middlemen Inflating Drug Costs (first interim staff report)",
    "verified_on": "2026-10-15"
   },
   {
@@ -20,6 +21,7 @@
    "period": "2017 to 2022",
    "limitation": "Revenue above drug acquisition cost, not profit; other pharmacy costs are not subtracted, and it is not a judicial finding.",
    "sources": "S10",
+   "source_words": "Federal Trade Commission, FTC second interim PBM staff report release",
    "verified_on": "2026-10-15"
   },
   {
@@ -31,6 +33,7 @@
    "period": "Complaint filed September 2024",
    "limitation": "These are allegations; no court or administrative judge found the companies liable, and the case moved to settlements.",
    "sources": "N37",
+   "source_words": "Federal Trade Commission, FTC sues prescription drug middlemen for artificially inflating insulin drug prices (administrative complaint)",
    "verified_on": "2026-10-15"
   },
   {
@@ -42,6 +45,7 @@
    "period": "February to October 2026",
    "limitation": "Proposed orders can change before the Commission makes them final, and no data on outcomes for patients exist yet.",
    "sources": "W032; N13; K1347",
+   "source_words": "Federal Trade Commission, Caremark and Zinc Health Services: proposed consent order (Federal Register); Federal Trade Commission, FTC, Caremark settlement resolving the insulin case; HealthExec, FTC settles lawsuit with Optum Rx, ending its campaign against the 'big three' PBMs",
    "verified_on": "2026-10-15"
   },
   {
@@ -53,6 +57,7 @@
    "period": "Enacted February 3, 2026; effective 2028",
    "limitation": "Dates come from a law firm summary of Public Law 119-75, and implementing rules are pending.",
    "sources": "W033; S53",
+   "source_words": "Sidley Austin, Congress passes significant federal PBM reform (P.L. 119-75); U.S. Government Publishing Office, Consolidated Appropriations Act,2026, Public Law 119-75",
    "verified_on": "2026-10-15"
   },
   {
@@ -64,6 +69,7 @@
    "period": "In force, checked October 15, 2026",
    "limitation": "Applies to Medicare only; private plans set their own insulin cost sharing unless a state law or settlement applies.",
    "sources": "K1343",
+   "source_words": "Centers for Medicare & Medicaid Services (Medicare.gov), Insulin (Medicare coverage)",
    "verified_on": "2026-10-15"
   },
   {
@@ -75,6 +81,7 @@
    "period": "Calendar years 2026 and 2027",
    "limitation": "The cap covers drugs on the plan's formulary only; monthly premiums and drugs outside the formulary are separate.",
    "sources": "K1344",
+   "source_words": "Centers for Medicare & Medicaid Services (Medicare.gov), Costs for Medicare drug coverage",
    "verified_on": "2026-10-15"
   },
   {
@@ -86,6 +93,7 @@
    "period": "Prices effective January 1, 2026",
    "limitation": "Savings are CMS estimates against prior net prices; the sources do not measure effects on drug development.",
    "sources": "K1330",
+   "source_words": "KFF (independent health policy research organization), Key Facts About Medicare Drug Price Negotiation",
    "verified_on": "2026-10-15"
   },
   {
@@ -97,6 +105,7 @@
    "period": "Announced November 2025 and January 2026",
    "limitation": "Savings are estimates measured against prior net prices, and third-cycle prices were not final as of October 15, 2026.",
    "sources": "K1331; K1330",
+   "source_words": "Centers for Medicare & Medicaid Services, CMS Delivers Savings for Seniors on 15 Major Drugs for Cancer and Chronic Disease (press release); KFF (independent health policy research organization), Key Facts About Medicare Drug Price Negotiation",
    "verified_on": "2026-10-15"
   },
   {
@@ -108,6 +117,7 @@
    "period": "2005 to 2015",
    "limitation": "A new patent listing does not always delay generic entry; the study counts listings and does not measure price effects.",
    "sources": "Q227",
+   "source_words": "Journal of Law and the Biosciences, May Your Drug Price Be Evergreen (Feldman)",
    "verified_on": "2026-10-15"
   },
   {
@@ -119,6 +129,7 @@
    "period": "Content current as of November 1, 2021",
    "limitation": "Agency summary of its own analyses; effects for biosimilars, which are copies of biologic drugs, are smaller and slower.",
    "sources": "K1345",
+   "source_words": "U.S. Food and Drug Administration, Generic Drug Facts",
    "verified_on": "2026-10-15"
   }
  ]

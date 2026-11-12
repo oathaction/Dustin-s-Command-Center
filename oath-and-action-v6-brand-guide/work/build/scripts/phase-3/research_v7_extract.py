@@ -123,10 +123,14 @@ rows = []
 for cid, c in sorted(V7['claims'].items()):
     if c.get('pathway') == 'PW06' and pat.search(c['claim']):
         rows.append({'id': cid, 'claim': c['claim'], 'confidence': c['confidence'], 'population': c.get('population'), 'jurisdiction': c.get('jurisdiction'),
-                     'period': c.get('period'), 'limitation': c.get('limitation'), 'sources': flat(c.get('sources') or []), 'verified_on': c.get('verified_on')})
+                     'period': c.get('period'), 'limitation': c.get('limitation'), 'sources': flat(c.get('sources') or []),
+                     'source_words': '; '.join(', '.join(x for x in (V7['sources'][sid].get('publisher'), V7['sources'][sid].get('title')) if x)
+                                               for sid in (c.get('sources') or []) if sid in V7['sources']),
+                     'verified_on': c.get('verified_on')})
 cols = {'id': col('id', 'V7 claim ID'), 'claim': col('text', 'the claim as V7 words it'), 'confidence': col('category', 'V7 grade word as stored'),
         'population': col('text', 'who the claim covers'), 'jurisdiction': col('text', 'where'), 'period': col('text', 'when'), 'limitation': col('text', 'V7\'s stated limitation'),
-        'sources': col('text', 'V7 source IDs, joined by "; "'), 'verified_on': col('text', 'V7\'s verification date as stored')}
+        'sources': col('text', 'V7 source IDs, joined by "; "'), 'source_words': col('text', 'each source as V7\'s sources record names it, publisher and title, joined by "; " (fix pass 2, A7)'),
+        'verified_on': col('text', 'V7\'s verification date as stored')}
 write('v7-claims-drug-prices', rows, cols, {
     'title_or_table': f'claims register, pathway PW06 (Medical bills and drug prices), the {len(rows)} claims about drug prices', 'table_id': 'claims, pathway PW06, filtered by the studio on drug, insulin, pharmacy, PBM, rebate, patent, generic or prescription in the claim text',
     'observation_period': 'Claims as verified through October 15, 2026; each claim states its own period',
