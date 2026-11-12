@@ -598,12 +598,13 @@
     var under = K.FC_ON_DARK.indexOf(o.fill) < 0 ? this.fill_under(x0 + w / 2, y - size * 0.35) : null;
     var on_gray = !!under && K.FC[under] === 'GrayText';
     if (on_gray) { cls.push('oac-fc-on-gray'); if (under === 'context') cls.push('oac-fc-on-context'); }
-    // BC S1 (round 2 fix pass): a word on the ground with no halo carries a marker the draw resolves once every shape is
-    // drawn: the ground's halo where a quiet line drawn before it (a gridline, an axis, a total line) runs through it
+    // BC S1 (round 2 fix pass): a word on the ground with no halo carries two markers the draw resolves once every shape is
+    // drawn: where a quiet line drawn before it (a gridline, an axis, a total line) runs through it, a knockout of the
+    // ground behind it, or the ground's halo where a knockout would touch another shape
     var hm = !o.halo && !under ? ++HALO_SEQ : 0;
-    var a = data_of(o, { x: r1(x), y: r1(y), 'class': cls.join(' ') + (hm ? '\u0001' + hm + '\u0001' : ''), 'font-size': size, 'text-anchor': anchor === 'start' ? undefined : anchor });
+    var a = data_of(o, { x: r1(x), y: r1(y), 'class': cls.join(' ') + (hm ? '\u0002' + hm + '\u0002' : ''), 'font-size': size, 'text-anchor': anchor === 'start' ? undefined : anchor });
     var body = lines.length === 1 ? esc(lines[0]) : lines.map(function (ln, i) { return '<tspan x="' + r1(x) + '"' + (i ? ' dy="' + lh + '"' : '') + '>' + esc(ln) + '</tspan>'; }).join('');
-    this._push('<text' + attrs(a) + '>' + body + '</text>');
+    this._push((hm ? '\u0003' + hm + '\u0003' : '') + '<text' + attrs(a) + '>' + body + '</text>');
     // the box the browser gives this text: its line box (ascent 0.969 em, descent 0.241 em, from the metrics) for the edges,
     // and that box less the half-leading for overlaps, as dataviz_check.js --kit measures a rendered drawing
     var vm = metrics().vertical[face === 'display' ? 'Inter Tight|800' : 'Inter|400'] || { ascent: 969, descent: 241 };
@@ -696,11 +697,12 @@
     // a text whose line box rises above the top edge moves the whole drawing down by that much, so nothing is cut; so does
     // a shape's short stub (an axis line run past its first bar, up to SHAPE_LIFT px: K-S2); a shape further out is a fault
     // the check reports
-    var lift = 0;
+    var lift = 0, lift_dy = 0;
     c.texts.forEach(function (b) { lift = Math.max(lift, -(b.top !== undefined ? b.top : b.y)); });
     c.ink.forEach(function (b) { if (-b.y <= SHAPE_LIFT) lift = Math.max(lift, -b.y); });
     if (lift > 0.25) {
       var dy = Math.ceil(lift);
+      lift_dy = dy;
       c._els = ['<g transform="translate(0,' + dy + ')">' + c._els.join('') + '</g>'];
       c.texts.forEach(function (b) { b.y += dy; if (b.top !== undefined) { b.top += dy; b.bottom += dy; } });
       c.marks.forEach(function (m) { m.y += dy; if (m.zero !== undefined && m.axis !== 'x') m.zero += dy; });
@@ -723,13 +725,29 @@
     c.texts.forEach(function (b) { h = Math.max(h, Math.ceil((b.bottom !== undefined ? b.bottom : b.y + b.h) + 2)); });
     c.marks.forEach(function (m) { h = Math.max(h, Math.ceil(m.y + m.h + 1)); });
     h = Math.max(1, h);
-    // BC S1: words on the ground that a quiet line drawn before them crosses take the ground's halo; every other marker goes
-    var halo_on = {};
+    // BC S1: words on the ground that a quiet line drawn before them crosses are cleared: a knockout of the ground behind
+    // their box, 2 px wider each side, which cuts the line cleanly (a minus sign or a decimal point keeps its shape); where
+    // that box would touch any other shape or word drawn before them, the ground's halo round their letters. Every other
+    // marker goes, so a drawing with nothing to clear is the string it was.
+    var halo_on = {}, knock_on = {};
+    var quiet = function (b) { return b.stroke && !b.fill && K.QUIET_STROKES.indexOf(b.stroke) >= 0; };
+    var hits = function (b, k) { return b.x < k.x + k.w && k.x < b.x + b.w && b.y < k.y + k.h && k.y < b.y + b.h; };
     c.texts.forEach(function (t) {
       if (!t.hm) return;
-      if (K.crossed_by(c.ink, t, function (b) { return b.seq < t.seq && K.QUIET_STROKES.indexOf(b.stroke) >= 0; }).length) { halo_on[t.hm] = true; t.halo = true; t.auto_halo = true; }
+      if (!K.crossed_by(c.ink, t, function (b) { return b.seq < t.seq && K.QUIET_STROKES.indexOf(b.stroke) >= 0; }).length) return;
+      var k = { x: Math.max(0, t.x - 2), y: t.y, w: Math.min(width, t.x + t.w + 2) - Math.max(0, t.x - 2), h: t.h };
+      var touch = c.ink.some(function (b) { return b.seq < t.seq && !quiet(b) && !(b.fill === 'surface' || (b.fill === 'none' && !b.stroke)) && hits({ x: b.x - 0.5, y: b.y - 0.5, w: b.w + 1, h: b.h + 1 }, k); }) ||
+        c.texts.some(function (o2) { return o2 !== t && o2.seq < t.seq && hits(o2, k); });
+      if (touch) halo_on[t.hm] = true;
+      else knock_on[t.hm] = '<rect x="' + r1(k.x) + '" y="' + r1(k.y - lift_dy) + '" width="' + r1(k.w) + '" height="' + r1(k.h) + '" class="oac-f-surface"/>';
+      t.halo = true;
+      t.cleared = touch ? 'halo' : 'knockout';
     });
-    c._els = c._els.map(function (e) { return e.indexOf('\u0001') < 0 ? e : e.replace(/\u0001(\d+)\u0001/g, function (_, n) { return halo_on[n] ? ' oac-halo' : ''; }); });
+    c._els = c._els.map(function (e) {
+      if (e.indexOf('\u0002') < 0 && e.indexOf('\u0003') < 0) return e;
+      return e.replace(/\u0002(\d+)\u0002/g, function (_, n) { return halo_on[n] ? ' oac-halo' : ''; })
+        .replace(/\u0003(\d+)\u0003/g, function (_, n) { return knock_on[n] || ''; });
+    });
     var guard = K.guard(c, width, h);
     var title = spec.title ? '<title>' + esc(spec.title) + '</title>' : '';   // a table-mode island leaves both out; the figure names the drawing
     var desc = spec.alt ? '<desc>' + esc(spec.alt) + '</desc>' : '';

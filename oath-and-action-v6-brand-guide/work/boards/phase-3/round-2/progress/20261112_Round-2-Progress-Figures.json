@@ -1116,5 +1116,30 @@
  ],
  "seconds": 212,
  "words": 4890,
- "words_tested_part": 237
+ "words_tested_part": 237,
+ "check": {
+  "page": {
+   "failures": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "allowed": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "results": "work/boards/phase-3/round-2/progress/20261112_Round-2-Progress-Check-Results.json"
+  },
+  "wrapped": {
+   "failures": [],
+   "pass": true,
+   "results": "[scratch]/publish-view/20261112_Round-2-Progress-Check-Results.json"
+  },
+  "widths": [
+   1440,
+   390,
+   360
+  ]
+ }
 }

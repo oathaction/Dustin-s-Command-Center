@@ -140,6 +140,7 @@ One fault takes away the very thing a specimen exists to show. S58's margin-of-e
   - The check fails a margin whose unit differs from its value's.
   - The message names the missing fields.
 - **Owners:** the research lead, the engineer.
+- **Since the report** (research lead, D3-905, checked by my script): the file now carries S2801's published percent margins and the sidecar maps each value to its margin and each source line to its columns. With those margins, 20 states and DC sit above the nation, 22 below and 8 within. The check side (units, line columns, the message) remains the engineer's.
 
 **AX S9. S45's middle stack cannot be seen for 17 of its 26 years.**
 - **Where:** S45, `forms/stacked-column.js`.

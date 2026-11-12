@@ -25,7 +25,7 @@
   "measure_line": "Households that rent and households that own their home, as a share of all households, 50 states, the District of Columbia and the United States, 2025",
   "notes": [
     "New York, at 46 percent, and California, at 44 percent, come closest among the states, and every state’s renter share sits below half by more than its margin of error.",
-    "The District of Columbia’s 61.9 percent has a margin of error of 1.7 points. Margins are at 90 percent confidence, computed by Oath & Action from the survey’s counts and their margins, and the table gives each one."
+    "The District of Columbia’s 61.9 percent has a margin of error of 1.5 points. Margins are at 90 percent confidence, as the Census Bureau publishes them, and the table gives each one."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -45,7 +45,7 @@
         "format": "number:1"
       },
       {
-        "field": "renter_pct_moe",
+        "field": "renter_pct_moe_dp04",
         "label": "Renters, margin of error, points",
         "format": "number:1"
       },
@@ -91,9 +91,9 @@
   "notes_internal": [
     "Maker A, round 2. Data plan row 43, rule 14.47. Domain D09 from the sidecar; no state singled out under Rule 01.9 beyond the data (DC is named by the data).",
     "Data lead rulings (a), (b), (e): DC's renter part in the subject ink through labels.named; every other renter part in the light fill, every owner part in the track ink; the nation as the first row, set apart (labels.apart); a 1 px midline in the text's ink.",
-    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): DC alone past half, 61.9 percent, past it by more than its margin (1.7 points, the research lead's renter_pct_moe, by the Bureau's formula for a proportion); New York 46.0 and California 44.3 next; every state below half by more than its margin; the nation 34.7.",
+    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): DC alone past half, 61.9 percent, past it by more than its margin (1.5 points, the Bureau's DP04 margin); New York 46.0 and California 44.3 next; every state below half by more than its margin; the nation 34.7.",
     "Sort: code with values [\"US\"] first, then renter share, so the table follows the drawing. Codes print where a full name would leave the bar under 60 percent of the row.",
-    "Round 2 review fix pass, ST S5: the table prints each renter share's margin (renter_pct_moe, the research lead's RF-11) and note 2 gives DC's, 1.7 points; the source line is the sidecar's with_margin variant. Checked by script (fixfigs.py): DC 61.9 with 1.6789, past half by 11.9; every state below half by more than its margin; New York 46.0 (0.32), California 44.3 (0.31)."
+    "Round 2 review fix pass, ST S5 with the data lead's RF-11a: the table prints each renter share's margin as the Bureau publishes it in DP04 (renter_pct_moe_dp04, the research lead's column) and note 2 gives DC's, 1.5 points; the source line is the sidecar's with_dp04_margin variant; the formula columns print nowhere. Checked by script (fixfigs.py): DC 61.9 with 1.5, past half by 11.9; every state below half by more than its DP04 margin; New York 46.0 (0.3), California 44.3 (0.3)."
   ],
-  "source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B25003, tenure, 2025, 50 states and DC. Retrieved November 11 and 12, 2026. Survey estimates; shares and their 90 percent margins of error computed by Oath & Action from the table’s counts and margins."
+  "source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B25003, tenure, with margins of error from Data Profile DP04, 2025, 50 states and DC. Retrieved November 11 and 12, 2026. Survey estimates; shares computed by Oath & Action from the table’s counts; margins of error at 90 percent as the Bureau publishes them in DP04."
 }

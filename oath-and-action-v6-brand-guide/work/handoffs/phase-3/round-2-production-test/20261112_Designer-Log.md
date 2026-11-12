@@ -86,3 +86,14 @@ Oath & Action Edition 06, Phase 3, round 2 review, November 12, 2026. **Simulate
 - A margin column in points for every percent the research lead stores with a count margin.
 - A check that a margin and its value share one unit, by the sidecar's `unit`.
 - Source line variants that name the columns they cover, so the check fails a default line for a measure the chart does not draw.
+
+## Addendum: the data side of AX S8 (after the review)
+
+Added after the research lead's change under D3-905. I checked it by script against the data folder.
+- `census-acs-broadband-by-state` now carries the Census Bureau's published percent margins from Subject Table S2801, from the same ACS 2025 1-year release: `broadband_fixed_pct_moe_s2801` and `broadband_any_pct_moe_s2801`, in percentage points.
+- The sidecar adds three fields:
+  - `margin_columns`, which names each value's printable margin;
+  - `check_only_columns`, the studio's formula and approximation margins, which print nowhere;
+  - `source_line_columns`, the columns each source line covers.
+- A fixed broadband chart prints the `fixed_with_s2801_margin` line.
+- With the published margins (the nation at 76.6, margin 0.1), 20 states and the District of Columbia sit above the nation, 22 states below and 8 within. Version 3's title above ("40 states and the District of Columbia") used the approximated margin of step 5. A chart built today should draw S2801's margin and count 42 states and DC.
