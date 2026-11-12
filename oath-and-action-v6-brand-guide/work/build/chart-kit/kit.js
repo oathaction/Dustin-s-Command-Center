@@ -350,10 +350,29 @@
   K.Ctx = Ctx;
   var SHAPE_LIFT = 12;
   // a shape's box for the drawing-edge check; shapes inside a moved group (a map's projection) are left out
-  Ctx.prototype._ink = function (kind, x, y, w, h, o) {
+  // CD A-M2 (round 2 fix pass): with its painted area (a, the fill's) and stroke length (len), so the checks measure the
+  // share of a view a color covers; o.stroke and o.width ride along
+  Ctx.prototype._ink = function (kind, x, y, w, h, o, geo) {
     if (this._tf) return;
-    this.ink.push({ kind: kind, x: x, y: y, w: w, h: h, role: (o && (o.fill || o.stroke)) || '', fill: o && o.fill, plate: !!(o && o.cls && /\boac-fc-plate\b/.test(o.cls)), poly: o && o._poly });
+    var g = geo || {};
+    this.ink.push({ kind: kind, x: x, y: y, w: w, h: h, role: (o && (o.fill || o.stroke)) || '', fill: o && o.fill, plate: !!(o && o.cls && /\boac-fc-plate\b/.test(o.cls)), poly: o && o._poly,
+      stroke: o && o.stroke, sw: o && o.stroke ? (+o.width || 1) : 0, a: g.a === undefined ? w * h : g.a, len: g.len === undefined ? 2 * (w + h) : g.len });
   };
+  // the area inside each subpath (shoelace) and the length along them, for a path's paint
+  function poly_geo(subs, closed) {
+    var a = 0, len = 0;
+    (subs || []).forEach(function (pts) {
+      var s = 0;
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i], q = pts[(i + 1) % pts.length];
+        s += p[0] * q[1] - q[0] * p[1];
+        if (i + 1 < pts.length || closed) len += Math.sqrt((q[0] - p[0]) * (q[0] - p[0]) + (q[1] - p[1]) * (q[1] - p[1]));
+      }
+      a += Math.abs(s) / 2;
+    });
+    return { a: a, len: len };
+  }
+  K.poly_geo = poly_geo;
   // the box of a path drawn with absolute M, L, H and V commands only (lines and areas); null for curves
   function path_box(d) {
     if (/[^MLHVZ0-9.,\s+eE-]/.test(d)) return null;
@@ -448,7 +467,7 @@
     var a = data_of(o, { x: r1(x), y: r1(y), width: r1(w), height: r1(h), 'class': cls_of(o), rx: o.rx, 'stroke-width': o.width, 'stroke-dasharray': o.dash });
     if (o.pattern) a.fill = 'url(#' + this.uid + '-' + o.pattern + ')';
     this._push('<rect' + attrs(a) + '/>');
-    this._ink('rect', x, y, w, h, o);
+    this._ink('rect', x, y, w, h, o, { a: w * h, len: 2 * (w + h) });
     if (o.mark !== false) this.mark({ kind: o.kind || 'rect', x: x, y: y, w: w, h: h, fill: o.fill, stroke: o.stroke, data: o.data || {}, zero: o.zero, axis: o.axis, job: o.job });
   };
   // BC S16 (round 1 fix pass): a straight line of a whole-pixel width lands on the pixel grid, so it draws crisp at 1x: an
@@ -466,7 +485,7 @@
     }
     var a = data_of(o, { x1: r1(x1), y1: r1(y1), x2: r1(x2), y2: r1(y2), 'class': cls_of(o), 'stroke-width': o.width, 'stroke-dasharray': o.dash });
     this._push('<line' + attrs(a) + '/>');
-    this._ink('line', Math.min(x1, x2), Math.min(y1, y2), Math.abs(x2 - x1), Math.abs(y2 - y1), o);
+    this._ink('line', Math.min(x1, x2), Math.min(y1, y2), Math.abs(x2 - x1), Math.abs(y2 - y1), o, { a: 0, len: Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)) });
     // a leader is kept for the guard, which fails one that runs through a label (D3-93)
     if (o.stroke === 'leader' && !this._grp_t) this.leaders.push({ x1: x1, y1: y1, x2: x2, y2: y2 });
     if (o.mark !== false) this.mark({ kind: o.kind || 'line', x: Math.min(x1, x2), y: Math.min(y1, y2), w: Math.abs(x2 - x1), h: Math.abs(y2 - y1), stroke: o.stroke, data: o.data || {}, job: o.job });
@@ -479,7 +498,10 @@
     var pb = path_box(String(d)) || box;
     // A-E1: a filled path keeps its outline, so a word set on it reads its fill (fill_under, the forced-colors check)
     var poly = o.fill && o.fill !== 'none' ? path_poly(String(d)) : null;
-    if (pb) this._ink('path', pb[0], pb[1], pb[2], pb[3], poly ? Object.assign({}, o, { _poly: poly }) : o);
+    // its paint: the area inside its outline and the length along it, read from its points (a curve: from its box)
+    var pg = poly ? poly_geo(poly, true) : null;
+    if (!pg) { var pts = path_poly(String(d)); pg = pts ? poly_geo(pts, /Z/i.test(String(d))) : null; if (pg && !(o.fill && o.fill !== 'none')) pg.a = 0; }
+    if (pb) this._ink('path', pb[0], pb[1], pb[2], pb[3], poly ? Object.assign({}, o, { _poly: poly }) : o, pg || { a: pb[2] * pb[3], len: pb[2] + pb[3] });
     if (box && o.mark !== false) this.mark({ kind: o.kind || 'path', x: box[0], y: box[1], w: box[2], h: box[3], fill: o.fill, stroke: o.stroke, data: o.data || {}, job: o.job, poly: poly || undefined });
   };
   Ctx.prototype.datum = function (x, y, o) {
@@ -490,7 +512,7 @@
     o = o || {};
     var a = data_of(o, { cx: r1(cx), cy: r1(cy), r: r2(r), 'class': cls_of(o), 'stroke-width': o.width });
     this._push('<circle' + attrs(a) + '/>');
-    this._ink('circle', cx - r, cy - r, 2 * r, 2 * r, o);
+    this._ink('circle', cx - r, cy - r, 2 * r, 2 * r, o, { a: Math.PI * r * r, len: 2 * Math.PI * r });
     if (o.mark !== false) this.mark({ kind: o.kind || 'circle', x: cx - r, y: cy - r, w: 2 * r, h: 2 * r, r: r, fill: o.fill, stroke: o.stroke, data: o.data || {}, area_of: o.area_of, row: o.row, job: o.job });
   };
   Ctx.prototype.polygon = function (pts, o) {
@@ -498,7 +520,7 @@
     var xs = pts.map(function (p) { return p[0]; }), ys = pts.map(function (p) { return p[1]; });
     var a = data_of(o, { points: pts.map(function (p) { return r1(p[0]) + ',' + r1(p[1]); }).join(' '), 'class': cls_of(o) });
     this._push('<polygon' + attrs(a) + '/>');
-    this._ink('polygon', Math.min.apply(null, xs), Math.min.apply(null, ys), Math.max.apply(null, xs) - Math.min.apply(null, xs), Math.max.apply(null, ys) - Math.min.apply(null, ys), o);
+    this._ink('polygon', Math.min.apply(null, xs), Math.min.apply(null, ys), Math.max.apply(null, xs) - Math.min.apply(null, xs), Math.max.apply(null, ys) - Math.min.apply(null, ys), o, poly_geo([pts], true));
     if (o.mark !== false) this.mark({ kind: o.kind || 'polygon', x: Math.min.apply(null, xs), y: Math.min.apply(null, ys), w: Math.max.apply(null, xs) - Math.min.apply(null, xs), h: Math.max.apply(null, ys) - Math.min.apply(null, ys), fill: o.fill, data: o.data || {}, job: o.job });
   };
   Ctx.prototype.text = function (x, y, words, o) {
