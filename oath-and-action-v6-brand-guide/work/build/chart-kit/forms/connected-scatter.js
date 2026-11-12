@@ -162,14 +162,16 @@
         var mine = function (b) { return !(Math.abs(b.x + b.w / 2 - it.x) < 0.5 && Math.abs(b.y + b.h / 2 - it.y) < 0.5); };
         // the latest period sits beside its dot, over the path on a halo if it must; the others reach out on leaders that
         // cross no path
-        if (it.last) { if (!place(it, dotbox.filter(mine), [0, 4, 8])) unplaced.push(it); return; }
+        // where a narrow column leaves no such place, a leader may cross the path, never a dot or a name
+        var far = [12, 26, 44, 66, 92, 124, 160];
+        if (it.last) { if (!place(it, dotbox.filter(mine), [0, 4, 8]) && !place(it, avoid.filter(mine), far, { loose: true })) unplaced.push(it); return; }
         // the gap: a small open ring at the middle of the break, which the key over the plot names (MB-19)
         if (it.gap) {
           c.circle(it.x, it.y, 3.5, { fill: 'surface', mark: false });
           c.circle(it.x, it.y, 3.5, { stroke: 'subject', width: c.t('line-context') - 0.5, mark: false });
           return;
         }
-        if (!place(it, avoid.filter(mine), [0, 12, 26, 44, 66, 92, 124, 160])) unplaced.push(it);
+        if (!place(it, avoid.filter(mine), [0].concat(far)) && !place(it, avoid.filter(mine), far, { loose: true })) unplaced.push(it);
       });
       var pl = { unplaced: unplaced };
       var end = ay + 4;
