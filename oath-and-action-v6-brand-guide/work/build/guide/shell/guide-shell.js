@@ -553,6 +553,14 @@
     }).observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: NAMES });
   }
 
+  // AX S11 (round 2 fix pass): a plate taller than a printed page may break inside, so print never pushes it whole to a
+  // fresh page and leaves the page before it blank (chapter 13's first plate, 1,622 px tall). 860 px is a Letter page's
+  // text height less a margin, on the screen's layout; a shorter plate keeps whole.
+  var PRINT_TALL = 860;
+  window.addEventListener('beforeprint', function () {
+    $$('.plate').forEach(function (p) { p.classList.toggle('is-print-tall', p.getBoundingClientRect().height > PRINT_TALL); });
+  });
+
   function start() {
     sizeFrames();
     offerFit();

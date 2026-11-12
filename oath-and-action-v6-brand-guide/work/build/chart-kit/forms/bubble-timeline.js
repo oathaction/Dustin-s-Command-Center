@@ -110,7 +110,7 @@
           else {
             bubble(pcx, pcy, rad, r, v);
           }
-          c.text(ptx, pcy + size * 0.35 - (pl.length - 1) * plh / 2, pw, { role: 'label', weight: big ? 700 : 400, tnum: true, max: W - ptx });
+          c.text(ptx, pcy + size * 0.35 - (pl.length - 1) * plh / 2, pw, { role: 'label', weight: big ? 700 : 400, tnum: true, max: W - ptx - 6 });   // the same width the rows were measured at, with room for tabular figures (D3-904's sweep)
           y += h;
         });
         c.height(y + 4);

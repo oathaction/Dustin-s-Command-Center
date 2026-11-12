@@ -926,15 +926,15 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
         if kind == "avoid":
             # BC S14 (round 2 fix pass): each bar on two fixed lines, "Form to avoid" over "Do not publish" and "Use instead"
             # over the better choice's name, so the two heads of a pair stand at one height at every width
-            dnp = ('<p class="plate-dnp"><span aria-hidden="true">×</span><span class="plate-bar-l"><span>Form to avoid</span>'
-                   '<span class="vh">: </span><span>Do not publish</span></span></p>')
+            dnp = ('<p class="plate-dnp"><span aria-hidden="true">×</span><span class="plate-bar-l"><span>Form to avoid<span class="vh">:</span></span>'
+                   '<span>Do not publish</span></span></p>')
             pair = re.findall(r"<svg\b.*?</svg>", body, re.S)
             if len(pair) == 2:
                 # D3-486 (BC M4, CD SK-M1): the misleading form beside the better choice from the same data, the bar over
                 # the misleading half only and "Use instead" over the other; each half at its drawing's true width
                 m = re.search(r'\sdata-label="([^"]*)"', pair[1][:pair[1].find(">")])
-                use = ('<span class="plate-bar-l"><span>Use instead</span>'
-                       + (f'<span class="vh">: </span><span>{m.group(1)}</span>' if m and m.group(1).strip() else "") + '</span>')
+                use = ('<span class="plate-bar-l"><span>Use instead' + ('<span class="vh">:</span>' if m and m.group(1).strip() else "") + '</span>'
+                       + (f'<span>{m.group(1)}</span>' if m and m.group(1).strip() else "") + '</span>')
                 body = ('<div class="sk-pair"><div class="sk-half sk-avoid">' + dnp + pair[0] + '</div>'
                         f'<div class="sk-half sk-use"><p class="plate-use"><span aria-hidden="true">✓</span>{use}</p>' + pair[1] + '</div></div>')
             else:
@@ -4060,8 +4060,8 @@ def self_test():
          {"26-tokens.json": sk}, {"specimens": sk_specs, "manifest": sk_man},
          {"absent": ["why.basis is empty"],
           "html": ['<div class="sk-pair"><div class="sk-half sk-avoid"><p class="plate-dnp">',
-                   '<p class="plate-use"><span aria-hidden="true">✓</span><span class="plate-bar-l"><span>Use instead</span><span class="vh">: </span><span>Grouped bars</span></span></p>',
-                   '<span class="plate-bar-l"><span>Form to avoid</span><span class="vh">: </span><span>Do not publish</span></span>',
+                   '<p class="plate-use"><span aria-hidden="true">✓</span><span class="plate-bar-l"><span>Use instead<span class="vh">:</span></span><span>Grouped bars</span></span></p>',
+                   '<span class="plate-bar-l"><span>Form to avoid<span class="vh">:</span></span><span>Do not publish</span></span>',
                    'role="group" aria-label="Radar chart, a form that misleads, Rule 26.1"',
                    'class="basis basis--chapter basis--judgment"><span class="basis-k">Basis</span> Design judgment, from a fixture',
                    '<span class="basis-k">Basis</span> WCAG 2.2'],

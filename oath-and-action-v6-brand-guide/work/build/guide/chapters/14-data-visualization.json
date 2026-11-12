@@ -549,7 +549,7 @@
    "related": [
     "13"
    ],
-   "builders": "Carry each figure’s margin in its own column of the data; a form draws the interval from it and the note names the confidence.",
+   "builders": "Take the margin the publisher prints for the figure drawn, and compute one only where it prints none, saying so in the sidecar. Carry each figure’s margin in its own column of the data; a form draws the interval from it and the note names the confidence.",
    "specs": [
     {
      "label": "Interval",
@@ -562,7 +562,7 @@
     },
     {
      "label": "A gap’s margin, a place inside an area",
-     "value": "The square root of the sum of the two squared margins less twice the place’s squared margin times its share of the people the area counts; where the data hold no share, the first test, and the note says it treats the two as independent"
+     "value": "The square root of the sum of the two squared margins less twice the place’s squared margin times its share of the units the area’s figure counts, such as people or households; where the data hold no share, the first test, and the note says it treats the two as independent"
     },
     {
      "label": "Within the margin",
@@ -2103,7 +2103,7 @@
    "id": "14.47",
    "title": "Use a stacked share bar with a midline when the question is which of two parts is the larger.",
    "rule": [
-    "Split each bar into its two parts as shares of the whole, the part the question asks about from the left and the other in the track gray, with a 1 px line in the text’s ink at half. Sort the bars by the first part’s share, print it at the right of each bar, and set a national or total row first, apart from the rest. The row the title names takes the red point, or the subject ink where Rule 14.6 sets ink in its place, as for a state, and every other first part takes light gray."
+    "Split each bar into its two parts as shares of the whole, the part the question asks about from the left and the other in the track gray, with a 1 px line in the text’s ink at half. Sort the bars by the first part’s share, print it at the right of each bar, and set a national or total row first, apart from the rest. The row the title names takes the red point while its red stays within 5 percent of the drawing at every width (Rule 05.1), or the subject ink where Rule 14.6 sets ink in its place, as for a state, and every other first part takes light gray."
    ],
    "why": {
     "text": [
@@ -2307,7 +2307,7 @@
    "id": "14.52",
    "title": "Use a treemap for a budget with many parts in one year.",
    "rule": [
-    "Draw each part as a rectangle whose area is its amount, largest first, every tile in one light gray with a gap of the page color between tiles, and print each tile’s name, amount and share inside it. The part the title names takes the red point, or the subject ink where Rule 14.6 sets ink in its place, and its words sit on a small plate of the page color. Fold parts too small to hold their words into one last tile, list each in the table, and say what a negative line the treemap cannot draw leaves out."
+    "Draw each part as a rectangle whose area is its amount, largest first, every tile in light gray with a thin darker edge and a gap of the page color between tiles, and print each tile’s name, amount and share inside it. The part the title names takes the subject ink with its words in the light ink, since a tile in red would pass Rule 05.1’s 5 percent of the drawing (Rule 14.6). Fold the parts too small to hold their words at the narrowest drawing into one tile laid out last, list each in the table, and say what a negative line the treemap cannot draw leaves out."
    ],
    "why": {
     "text": [
@@ -2316,7 +2316,7 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "Form treemap: node work/build/chart-kit/oa-chart.mjs build s47; labels.fold_below sets the share under which parts fold, labels.fold_label the folded tile’s name, and labels.point the tile the title names.",
+   "builders": "Form treemap: node work/build/chart-kit/oa-chart.mjs build s47; labels.fold “fit” folds the fewest smallest parts that let every tile hold its words at 256 px (labels.fold_below sets a share instead), labels.fold_label names the folded tile, with {n} for its count of parts, and labels.named the tile the title names.",
    "related_rules": [
     "14.4",
     "14.6",
@@ -2387,7 +2387,7 @@
    "id": "14.54",
    "title": "Use a pie only for two or three parts of one whole, with each share printed.",
    "rule": [
-    "Use a pie, a reference form, when one whole splits into two or three parts and the reader needs only a rough sense of each part’s share. Start the largest slice at the top and run clockwise, name each slice with its share printed beside it, and keep the slices flat and in the inks of Rule 14.5. Past three parts, or where the shares sit close together, draw bars."
+    "Use a pie, a reference form, when one whole splits into two or three parts and the reader needs only a rough sense of each part’s share. Start the largest slice at the top and run clockwise, name each slice with its share printed beside it, and keep the slices flat and in the inks of Rule 14.5. A slice the title names takes the subject ink, since a slice in red would pass Rule 05.1’s 5 percent of the drawing (Rule 14.6). Past three parts, or where the shares sit close together, draw bars."
    ],
    "why": {
     "text": [
@@ -2429,7 +2429,7 @@
    "id": "14.55",
    "title": "Use a donut with a number in its center only when that one number is the point.",
    "rule": [
-    "Use a donut, a reference form, for one share of a whole that a reader should remember, printed large in the center with its words under it. Give the share the red point, or the subject ink where Rule 14.6 sets ink in its place, and the rest of the ring light gray, keep the ring to two parts, and print the whole the share is of."
+    "Use a donut, a reference form, for one share of a whole that a reader should remember, printed large in the center with its words under it. Give the share the subject ink, since a ring in red would pass Rule 05.1’s 5 percent of the drawing (Rule 14.6), and the rest of the ring light gray; keep the ring to two parts, and print the whole the share is of."
    ],
    "why": {
     "text": [
@@ -2471,7 +2471,7 @@
    "id": "14.56",
    "title": "Use a marimekko when the groups differ in size and each splits into the same parts.",
    "rule": [
-    "Use a marimekko, a reference form, to show two ways of dividing one whole at once: each column is as wide as its group’s share of the whole, and each column splits by the same parts as a 100 percent bar does. Name every column and part, and print each column’s width as a share, since width is the measure a reader cannot read from a scale."
+    "Use a marimekko, a reference form, to show two ways of dividing one whole at once: each column is as wide as its group’s share of the whole, and each column splits by the same parts as a 100 percent bar does. Name every column and part, and print each column’s width as a share, since width is the measure a reader cannot read from a scale. A cell the title names takes the subject ink, since a cell in red would pass Rule 05.1’s 5 percent of the drawing (Rule 14.6)."
    ],
    "why": {
     "text": [
@@ -2915,7 +2915,7 @@
    "related": [
     "13"
    ],
-   "builders": "Form scatter-named: node work/build/chart-kit/oa-chart.mjs build s54; labels.named names the points in ink, labels.labeled points named in the light fill, labels.reference the open ring.",
+   "builders": "Form scatter-named: node work/build/chart-kit/oa-chart.mjs build s54; labels.named names the points in ink, labels.labeled points named in the light fill, labels.reference the open ring, labels.sub a named point’s figure under its name.",
    "related_rules": [
     "13.1",
     "14.6",
@@ -2946,7 +2946,7 @@
    "id": "14.68",
    "title": "Size each point by a third measure only when its size answers the question.",
    "rule": [
-    "Draw the scatter plot with each circle’s area set by a third measure (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circle the title names in the view’s red point, or in the subject ink where Rule 14.6 sets ink in its place, as for a state, and keep the Association label and its note."
+    "Draw the scatter plot with each circle’s area set by a third measure (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circles the title names in the view’s red point while that red stays within 5 percent of the drawing (Rule 05.1), or in the subject ink where Rule 14.6 sets ink in its place, as for the four states here, each with the figure its size stands for, and keep the Association label and its note."
    ],
    "why": {
     "text": [
@@ -2957,7 +2957,7 @@
    "related": [
     "13"
    ],
-   "builders": "Form bubble-scatter: node work/build/chart-kit/oa-chart.mjs build s55; encode size for the area; labels.size_key gives the key’s sizes and labels.size_key_title its words.",
+   "builders": "Form bubble-scatter: node work/build/chart-kit/oa-chart.mjs build s55; encode size for the area; labels.size_key gives the key’s sizes and labels.size_key_title its words; labels.sub sets a named circle’s figure under its name.",
    "related_rules": [
     "14.4",
     "14.67",
@@ -2965,7 +2965,7 @@
     "14.6"
    ],
    "entry": true,
-   "use_when": "The reader asks whether two measures move together and also how many people each place holds.",
+   "use_when": "The reader asks whether two measures move together and where the largest places, by a third measure such as renter households, sit among them.",
    "use_instead": [
     {
      "when": "The circle sizes add nothing the question asks",
@@ -3415,7 +3415,7 @@
    "id": "14.86",
    "title": "Use an indicator row for a small set of headline figures read together.",
    "rule": [
-    "Set four to six figures side by side, each under a hairline with its kind in small words, the figure in the display face in the text’s ink and its caption under it; past six, run on into a second row. Print each figure exactly as its source stores it and keep its qualification in the notes or the table. An indicator row reports a set, so it takes no fill and no red."
+    "Set four to six figures side by side, each under a hairline with its kind in small words, the figure in the display face in the text’s ink and its caption under it; past six, run on into a second row. Where the captions run long, as the atlas’s do, set each figure beside its caption, one to a row, so a caption keeps to three or four lines. Print each figure exactly as its source stores it and keep its qualification in the notes or the table. An indicator row reports a set, so it takes no fill and no red."
    ],
    "why": {
     "text": [
@@ -3426,7 +3426,7 @@
    "related": [
     "13"
    ],
-   "builders": "Form indicator-row: node work/build/chart-kit/oa-chart.mjs build s60; encode.figure, encode.caption and encode.kind name the columns, labels.kinds the printed kind words and labels.columns the most in a row.",
+   "builders": "Form indicator-row: node work/build/chart-kit/oa-chart.mjs build s60; encode.figure, encode.caption and encode.kind name the columns, labels.kinds the printed kind words and labels.columns the most in a row, and labels.beside sets each figure beside its caption, one to a row, wherever the caption’s column holds 240 px.",
    "related_rules": [
     "14.2",
     "14.6",
@@ -3457,16 +3457,17 @@
    "id": "14.87",
    "title": "Use a progress bar for a count toward a threshold.",
    "rule": [
-    "Draw one bar that runs to the whole, such as the 100 senators, with the count from zero in the red point, or in the subject ink where Rule 14.6 sets ink in its place, as for a vote, and the rest in the track gray. Mark the threshold with a tick in the text’s ink and its words over it, bracket the gap between the count and the threshold under the bar with its words, and name what fills the count and the rest under the bar, each party by name where the count is a vote (Rule 14.7)."
+    "Draw one bar that runs to the whole, such as the 100 senators, with the count from zero in the red point while its red stays within 5 percent of the drawing at every width (Rule 05.1), or in the subject ink where Rule 14.6 sets ink in its place, as for a vote, and the rest in the track gray. Where the count is a vote, draw the other side as a segment of its own in outline in the same ink (Rule 01.2), so each side of the vote has a mark. Mark the threshold with a tick in the text’s ink and its words over it, bracket the gap between the count and the threshold under the bar with its words, and name what fills the count and the rest under the bar, each party by name where the count is a vote (Rule 14.7)."
    ],
    "why": {
     "text": [
-     "A bar that runs to the whole shows the count, the threshold and the distance between them as lengths on one scale. The bracket and its words say the shortfall outright, so no reader has to subtract."
+     "A bar that runs to the whole shows the count, the threshold and the distance between them as lengths on one scale. The bracket and its words say the shortfall outright, so no reader has to subtract.",
+     "The specimen draws the Senate vote that Rule 14.85’s specimen sets beside a survey, here as a count toward the 60 votes that end debate."
     ]
    },
    "tokens": [],
    "related": [],
-   "builders": "Form progress-bar: node work/build/chart-kit/oa-chart.mjs build s61; encode.value and encode.against name each group’s count and rest, and labels.of, labels.needed and their words set the whole and the threshold.",
+   "builders": "Form progress-bar: node work/build/chart-kit/oa-chart.mjs build s61; encode.value and encode.against name each group’s count and rest, and labels.of, labels.needed and their words set the whole and the threshold; labels.ink “party” and labels.rest “outline” draw a vote’s two sides in the party-mark ink, one solid and one in outline.",
    "related_rules": [
     "14.4",
     "14.6",
@@ -3539,7 +3540,7 @@
    "id": "14.89",
    "title": "Use status chips to give each record’s status in a word.",
    "rule": [
-    "Give each record its status in a chip as chapter 18 draws one: the word in the label style on a hairline edge in the text’s ink, one style for every status, so the word carries the status. Lead each record with its typed ID in its own chip (Rule 13.9) and its title, then the words that give the status its case or finding and its date, then the date the record was checked."
+    "Give each record its status in a chip as chapter 18 draws one: the word in the label style on a hairline edge in the text’s ink, one style for every status, so the word carries the status. Lead each record with its typed ID in its own chip (Rule 13.9) and its title as the record stores it, in regular weight, then the words that give the status its case or finding and its date, then the date the record was checked."
    ],
    "why": {
     "text": [
@@ -3557,7 +3558,7 @@
     "14.6"
    ],
    "entry": true,
-   "use_when": "The reader asks where a set of disputes or measures stands now, such as the fights over removals, spending and watchdogs.",
+   "use_when": "The reader asks where a set of disputes or measures stands now, such as six disputes over checks on power.",
    "use_instead": [
     {
      "when": "A record moves through set steps",

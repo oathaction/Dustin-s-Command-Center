@@ -106,6 +106,9 @@
       apart.forEach(function (r) { row(r, y); y += pitch; });
       if (apart.length) { c.line(0, y - 6, W, y - 6, { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); y += 10; }
       var ztop = y - 12, firstRow = y, rowY = {};
+      // the center line before the rows, so the kit clears it behind any label that crosses it (D3-904's sweep; round 2
+      // fix pass, BC S1 and AX S2: placement only, the same line at the same place)
+      c.line(xs2(0), ztop, xs2(0), y + (rest.length - 1) * pitch + 10, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
       rest.forEach(function (r) { rowY[r[ek]] = y; row(r, y); y += pitch; });
       // the reading aid in the empty upper right (E19): a sample arrow at the chart's own scale, its years and its words
       var hw = L.how;
@@ -139,12 +142,18 @@
         if (sn.title) { var st = c.text(sx0, sy, sn.title, { role: 'tick', weight: 700, max: swid }); sy = st.y + st.h + 4 + c.size('tick') * 0.77; }
         [].concat(sn.text || []).forEach(function (t) { var b = c.text(sx0, sy, t, { role: 'tick', fill: 'secondary', max: swid }); sy = b.y + b.h + 6 + c.size('tick') * 0.77; });
       }
-      c.line(xs2(0), ztop, xs2(0), y - pitch + 10, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
       y += 8;
-      ticks.forEach(function (t, i) {
+      // the scale again under the rows, from the right, so the last figure keeps its unit and a figure that would touch the
+      // one to its right is left out (D3-904's sweep: "40" met "50 points" at 480 to 503 px)
+      var leftmost = Infinity;
+      ticks.map(function (t, i) { return [t, i]; }).reverse().forEach(function (ti) {
+        var t = ti[0], i = ti[1];
         var w = t === 0 ? (L.center || '0') : K.fmt(Math.abs(t), 'integer') + (i === ticks.length - 1 && L.axis_unit ? ' ' + L.axis_unit : '');
         var tw = c.measure(w, 'tick'), xx = xs2(t), an = xx + tw / 2 > W ? 'end' : xx - tw / 2 < 0 ? 'start' : 'middle';
+        var l = an === 'end' ? W - tw : an === 'start' ? 0 : xx - tw / 2;
+        if (l + tw + 8 > leftmost) return;
         c.text(an === 'end' ? W : an === 'start' ? 0 : xx, y, w, { role: 'tick', anchor: an });
+        leftmost = l;
       });
       c.height(y + 4);
     }

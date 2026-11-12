@@ -155,7 +155,26 @@ In progress. Order: items no ruling touches first (ST S3, ST S6's S58 note, ST S
 
 ### Items
 
-(filled in as each lands)
+Done so far (each built with the kit's width sweep on; looked at as listed under Tested):
+- **ST S3**: 14.73 drops its pointer to Rule 14.34 and its builders line names `line-data-gap` panels; 14.69 points to Rule 14.73's aligned panels in place of Rule 14.30.
+- **ST S7**: 14.60 glosses the quartile (and the median) at first use.
+- **ST S9 / RF-8**: S50's and S54's tables set the national row first; drawings unchanged (Node drawings compared byte for byte).
+- **ST S10, AX S5 / RF-9**: S51's table adds Lowest county and Highest county.
+- **AX S5**: S53's top row prints "100 and over" (the engineer's RB-G5); S58's survey column prints "None" in an empty cell and words for every footnote number (3 to 26).
+- **ST S6**: S58's note 2 names both price indexes and the switch in 2000, in the words of the research lead's quote from Table 2.
+- **CD B-M1, BC S6, AX M1 / RF-2**: S58's band takes 1 px edges in the context ink; chart note and alt name the band by its edges; entry 14.75 says so. S59's two bands and both key swatches take the same edge.
+- **RF-1, CD B-S4, AX S4**: S53's band takes the subject ink (no red); its words name the ages, never a color; entries 14.60, 14.62 and 14.68 add Rule 05.1's 5 percent.
+- **CD B-S3**: S53's title gives Medicare at 65; S57's title holds 29 words.
+- **ST S4 / RF-7**: S57's note 2 in the ruling's words.
+- **ST S2 / RF-6**: S54 and S55 drop North Dakota's label and note.
+- **BC S9 / RF-19**: S54 prints "rent 35.5% of income" under Florida's bold name ("35.5%" where the longer line finds no place); S55's "United States" keeps off every circle.
+- **CD B-S1 / RF-18**: S55's question, title, notes, alt and labels turn on the four states with the most renter households, each named with its households.
+- **BC S10 / RF-20**: S59 draws the actual rate's fourth-quarter average for 2021 to 2024 from a new derived file, `fred-unemployment-fourth-quarter`, with 2025's missing quarter a dashed column named in the key.
+- **BC S1, AX S2**: S50's dashed line, S53's gridlines and S51's gridlines no longer run through words (S50 and S53 by the kit's knockout; S51's phone gridlines run only through each row's box); S56's latest quarter takes a clear place first, its year alone where its full words would cross the path.
+- **BC S8, call 11**: `range-bar` (S57, and Rule 14.9's plate) and `box-plot` (S51) set names and values through `K.parts.row_name` and `row_value`.
+- **BC S17, CD B-S2**: S52 prints each median under its name and ticks it under the baseline; S51's outliers take lanes so none merge, and none sits on a whisker's cap; S49's "130" moves clear of the median line; S56's chart note says why it names the end of 2009 and what the larger dots mark; S55's key circles take the field's fill.
+- **BC S13, SK-S1**: 14.65's, 14.72's and 14.78's right-hand words now end 10 px inside the frame (x 300).
+- **BC S14 (14.73)**: the two aligned panels together take the dual-axis chart's height, 64 px each.
 
 ### Routine calls
 

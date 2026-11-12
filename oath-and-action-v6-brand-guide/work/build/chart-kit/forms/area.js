@@ -46,6 +46,16 @@
           var lines = c.wrap(c.labels.area, 'label', maxw, 600);
           var lh = Math.round(c.size('label') * 1.25), hgt = c.size('label') + lh * (lines.length - 1);
           var by = Math.min(yz - 12 - lh * (lines.length - 1), ay + (yz - ay) / 2 + hgt / 2 - lh * (lines.length - 1));
+          // words on the fill take no knockout, so where a gridline would run through them they move to the middle of a gap
+          // between gridlines, still under the line and over the zero line (D3-904's sweep: 256 to 261 px)
+          var sz = c.size('label'), hits = function (b) { return ticks.some(function (t) { var gy = ys(t); return gy > b - sz * 0.97 - 2 && gy < b + sz * 0.25 + lh * (lines.length - 1) + 2; }); };
+          if (hits(by)) {
+            var gys = ticks.map(function (t) { return ys(t); }).filter(function (g) { return g > ay && g <= yz; }).sort(function (a, b) { return b - a; });
+            var alt = [];
+            for (var gi = 1; gi < gys.length; gi++) alt.push((gys[gi - 1] + gys[gi]) / 2 + sz * 0.35 - lh * (lines.length - 1) / 2);
+            alt = alt.filter(function (b) { return !hits(b) && b - sz > ay + 4 && b + lh * (lines.length - 1) < yz - 4; });
+            if (alt.length) by = alt.reduce(function (m, b) { return Math.abs(b - by) < Math.abs(m - by) ? b : m; });
+          }
           c.text(ax, by, c.labels.area, { role: 'label', weight: 600, anchor: 'middle', max: maxw + 1 });
         }
       }

@@ -16,21 +16,22 @@ The command runs in **Node**, a program that runs JavaScript outside a browser, 
 `node work/build/chart-kit/oa-chart.mjs ...`.
 
 The contracts behind this recipe are in `work/handoffs/phase-3/20261111_Round-0-Engineer-Notes.md`, under "Contracts":
-C1 covers the data folder, C2 the spec, C3 the command, C4 a form module and C5 the words.
+C1 covers the data folder, C2 the spec, C3 the command, C4 a form module and C5 the words. Round 2's contracts (R2-C1 to
+R2-C6, and the fix pass's "Contract changes") are in `work/handoffs/phase-3/20261112_Round-2-Engineer-Notes.md`.
 
 ## What is here
 
 | File | What it does |
 |---|---|
 | `kit.js` | The renderer, the code that turns a spec and its rows into a drawing. A page reaches it by one name, `OAChart`, and it carries the shared words |
-| `parts.js` | Drawing parts the forms share: keys, gridlines, notes, scales, styled fills and tile sizes; the light fill and the red point (`named_fill`); since round 2, an estimate's interval (`interval_of`, `whisker`), a band between two series (`band`), a stack's segments (`stack`, `wide`), the total line and point (`total_line`, `total_ring`), words inside a small area (`fit_label`) and labels beside points that keep clear of each other (`place_labels`). Each part's call is in the comment above it |
-| `forms/*.js` | One file per chart form, 45 forms in 43 files (November 12, 2026). Each file's header lists the `encode` and `labels` names it reads |
+| `parts.js` | Drawing parts the forms share: keys, gridlines, notes, scales, styled fills and tile sizes; the light fill and the red point (`named_fill`); since round 2, an estimate's interval (`interval_of`, `whisker`), a band between two series (`band`), a stack's segments (`stack`, `wide`), the total line and point (`total_line`, `total_ring`), words inside a small area (`fit_label`) and labels beside points that keep clear of each other (`place_labels`); since round 2's fix pass, words set clear of a line (`clear_label`) and a listing's row names and values in one weight (`row_name`, `row_value`). Each part's call is in the comment above it |
+| `forms/*.js` | One file per chart form, 65 files (November 12, 2026, round 2). Each file's header lists the `encode` and `labels` names it reads |
 | `metrics.js` | Widths of Inter and Inter Tight, so a chart lays out the same way in Node and in every browser |
 | `geo.js` | The state tiles and the map, for the map forms |
 | `kit.css` | The figure's style. It uses only `var(--oa-...)` tokens from `tokens.css` |
 | `words.json` | The words every figure prints the same way, such as "Source:". The editor owns them |
 | `checks.js`, `oa-chart.mjs` | The checks and the command |
-| `specs/` | The specs for S01 to S42, the charts in chapter 14. Each one is a starter for its form |
+| `specs/` | The specs for S01 to S64, the charts in chapter 14. Each one is a starter for its form |
 
 ## Make a chart from an existing dataset
 
@@ -56,7 +57,10 @@ C1 covers the data folder, C2 the spec, C3 the command, C4 a form module and C5 
    ```
 
    The command checks the spec. It then draws the chart at 1440 and 390 px on Newsprint and Charcoal, and checks every
-   column width the guide gives a chart: 656, 558, 358, 326, 296 and 256 px, and a rule plate's narrower ones. It saves the exports, with a page for each
+   column width the guide gives a chart: 656, 558, 358, 326, 296 and 256 px, and a rule plate's narrower ones. Then it
+   **sweeps** every whole width from 256 px (224 for a rule plate) to 723 px on Newsprint, since the guide can give a chart
+   any of them (329 px on a 393 px phone, 560 px on a 768 px tablet); a fault found there prints once with the widths it
+   holds at. `--no-sweep` leaves the sweep out while you work; run it before you report. It saves the exports, with a page for each
    drawing, to one folder per spec, and its last line names the folder (`wrote: ...`); `--out FOLDER` picks another. A fault says what to change. Run `node work/build/chart-kit/oa-chart.mjs check
    specs/s17.json` to check without drawing.
 
@@ -84,6 +88,55 @@ C1 covers the data folder, C2 the spec, C3 the command, C4 a form module and C5 
 | `implementation-timeline` | `specs/s32.json` | `tracker-list` | `specs/s40.json` |
 | `indexed-line` | `specs/s33.json` | `unit-chart` | `specs/s08.json` |
 | `line-data-gap` | `specs/s31.json` | `sparkline-table`, `social-data-card` | Read the form's header in `forms/` |
+| `stacked-share-bar` | `specs/s43.json` | `scatter-named` | `specs/s54.json` |
+| `waterfall` | `specs/s44.json` | `bubble-scatter` | `specs/s55.json` |
+| `stacked-column` | `specs/s45.json` | `connected-scatter` | `specs/s56.json` |
+| `stacked-area` | `specs/s46.json` | `range-bar` | `specs/s57.json` |
+| `treemap` | `specs/s47.json` | `line-confidence-band` | `specs/s58.json` |
+| `parliament` | `specs/s48.json` | `fan-chart` | `specs/s59.json` |
+| `histogram` | `specs/s49.json` | `indicator-row` | `specs/s60.json` |
+| `beeswarm` | `specs/s50.json` | `progress-bar` | `specs/s61.json` |
+| `box-plot` | `specs/s51.json` | `step-tracker` | `specs/s62.json` |
+| `line-histogram` | `specs/s52.json` | `status-chips` | `specs/s63.json` |
+| `population-pyramid` | `specs/s53.json` | `bullet-graph` | `specs/s64.json` |
+
+## Estimates with their intervals, stacks, bands and summaries (round 2)
+
+**An estimate and its interval** (contract R2-C1). A form that draws an interval registers `interval: true`
+(`range-bar`, `line-confidence-band`) or `interval: 'level'` (`fan-chart`, several bands a row). Its spec's `encode`
+gives the estimate as `value` (or `y` on a line) and the interval as `low` and `high` together, or `margin` alone (the kit
+derives both ends). The kit then checks four things and fails the spec on each:
+
+- the measure line names the interval's level: a figure in percent and "margin of error", "confidence", "interval" or
+  "probability", as "90 percent margin of error";
+- every row's interval holds its estimate;
+- the table equivalent prints the interval: the margin column, or both ends;
+- at every width, the middle row's interval shows past its mark: 5 px past a dot on each side, 2 px past a line, so
+  the intervals never vanish on a narrow plot. A form that would fail stacks its rows (`range-bar` does under 160 px).
+
+Where the sidecar names a margin for the value (`margin_columns`), the spec prints that one; a margin must be in its
+value's unit (percentage points for a percent), and a column the sidecar lists in `check_only_columns` prints nowhere.
+Where the publisher prints no margin for the figure you draw, ask the research lead before you compute one.
+
+**Differs from another.** Two estimates differ when the gap between them passes the gap's own margin, the square root
+of the sum of the two margins squared (`K.parts.interval_of(c).differs(a, b)`, the Census Bureau's test, Rule 14.9). A
+place against an area that contains it (a state and the nation) shares its sample; the exact test is in Rule 14.9.
+
+**Bands.** `K.parts.band` draws a band between two series and its two edges, 1 px lines in the context ink, by default
+(a light band alone measures under 3 to 1 against the ground; the kit fails a band whose fill and edge both do).
+**Stacks.** `K.parts.stack` gives each segment's start and end; the form draws them. **Summaries.** A chart of thousands of
+units draws a derived table its maker's script writes (the sidecar's `kind: "derived"`, `derived_from` and
+`derivation`); its printed source line names each source file's publisher.
+
+**Sketches.** A sketch is a drawing at true size with invented values, at most 4,096 bytes. An avoid entry's sketch draws
+the misleading form beside the better choice, as two `<svg>` elements, the second with `data-label` naming the better
+choice. The entry's `sketch_alt` is one or two sentences; the first prints as the caption and is the first `<desc>`.
+
+**Words and lines.** The kit clears a word on the ground that a gridline, an axis or the dashed total line drawn before it
+runs through: a knockout of the ground behind the word. Any other line through a word fails (draw the words after it,
+with `K.parts.clear_label` where they must sit on it), and so does a dot or bar half under a word. A stroke drawn
+through words on purpose, such as a step struck out, takes `strike: true`. **Red.** Pillar Red stays within 5 percent
+of a drawing (Rule 05.1); the kit measures it at every width and fails a drawing past it.
 
 ## The keys a spec takes
 
@@ -123,6 +176,10 @@ lollipop) or split the rows into panels by size.
 - `words` maps stored values to printed words.
 - `empty` gives a word to print where a cell has no value, such as "Not published". A reader can then tell "none" from
   "missing".
+
+`typography` (optional): `{"curl_quotes": true, "nbsp": true, "replace": [["find", "put"]]}` sets curly quotes, holds a
+date ("November 3") and a span of years ("2017 to 2022") together with no-break spaces, and makes exact replacements, in
+the printed words only; the data keeps its words.
 
 ## The commands
 
@@ -193,3 +250,10 @@ editing an export. Embedding the fonts in each export waits for Phase 5's packag
   would paint over the figure's words. A zero line draws only where the scale holds zero; for anything else, tell the
   engineer.
 - **`chart: ... row(s) draw their two dots closer than a dot's radius`**: see "Two values far apart in size" above.
+- **`sweep: ...`**: a fault at a width between the guide's columns; the widths follow it. Fix it as you would at a column.
+- **`layout: a line in ... runs through "..."`** or **`sits half under`**: see "Words and lines" above.
+- **`chart: Pillar Red covers ... percent`**: a named mark too large for the red point takes the subject ink (Rule 14.6).
+- **`band: a band in ... measures ... to 1`**: draw its edges, `K.parts.band(c, pts, {edge: 'context'})`, the default.
+- **`interval: ...`**: see "Estimates with their intervals" above; the message names the field or width.
+- **`source: the source line printed (...) covers ...`**: the line is for another measure than the chart draws; print the
+  variant the message names.

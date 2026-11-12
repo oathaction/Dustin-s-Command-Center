@@ -59,10 +59,11 @@
       K.parts.stack(rows, [el, er], { offset: 'expand' }).forEach(function (st, i) {
         var r = st.row, a = st.segs[0], b = st.segs[1], by = yrow(i), cy = by + bh / 2 + size * 0.35;
         var nm = fill.named && fill.is_named(r) || fill.is_point(r);
-        c.text(0, cy, String(short ? r[ec] : r[ek]), { role: 'label', weight: nm ? 700 : 600 });
+        // one weight for row names and values (BC S8, D3-901): 400, and 700 for the row the title names
+        K.parts.row_name(c, 0, cy, String(short ? r[ec] : r[ek]), { named: nm });
         c.rect(xs(a.start), by, xs(a.end) - xs(a.start), bh, Object.assign({ fill: fill(r), kind: 'bar', axis: 'x', zero: x0, data: { key: r[ek], field: el, value: r[el] } }, fill.keyline(r)));
         c.rect(xs(b.start), by, xs(b.end) - xs(b.start), bh, { fill: 'track', kind: 'segment', data: { key: r[ek], field: er, value: r[er] } });
-        c.text(W, cy, val(r), { role: 'label', weight: nm ? 700 : 400, anchor: 'end', tnum: true });
+        K.parts.row_value(c, W, cy, val(r), { named: nm });
       });
       // the midline, 1 px in the text's ink, through every bar
       c.line(xs(50), top - 4, xs(50), bottom + 4, { stroke: 'label', width: c.t('line-hairline'), mark: false });

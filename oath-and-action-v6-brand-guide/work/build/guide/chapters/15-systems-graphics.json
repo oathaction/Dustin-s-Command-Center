@@ -616,7 +616,7 @@
    "title": "Grade the evidence for the problem and for the remedy apart.",
    "rule": [
     "Our systems atlas grades each reform twice. In its glossary’s words, evidence of the problem is “evidence that the condition or mechanism a reform addresses exists”, and evidence for the remedy is “evidence that an intervention changes the condition it targets”. Print each as its own label with Rule 13.3’s word and gloss, and quote the atlas’s words under it.",
-    "A drawing of the reform carries a third grade in the line code of each connection, the solid, dashed or dotted line Rule 13.4 sets by grade, which says how sure the atlas is of the mechanism. Print each connection’s grade word in the list of steps under the drawing, and keep all three grades apart. Of the atlas’s 50 reforms, 49 carry two different grades, and in 48 of them the remedy’s grade is the lower."
+    "A drawing of the reform carries a third grade, how sure the atlas is of the mechanism. Each connection shows it in its line code, the solid, dashed or dotted line Rule 13.4 sets by grade. Print each connection’s grade word in the list of steps under the drawing, and keep all three grades apart. Of the atlas’s 50 reforms, 49 carry two different grades, and in 48 of them the remedy’s grade is the lower."
    ],
    "tokens": [
     "oa.chart.grade.documented",
@@ -876,7 +876,7 @@
    "id": "15.17",
    "title": "Draw who holds power over each layer in one authority diagram.",
    "rule": [
-    "Our systems atlas records seven authority connections. Each runs from a variable in the core layer that holds a body’s power, such as Congress’s ability to write and check policy, to a variable in the economy or technology layer that the body has the legal power to set. Draw all seven in one diagram: the layers stacked with a rule between each and its name, one pill for each variable under the variable’s own title, and every line in the authority mark of Rule 15.5. Name each body beside the diagram as the atlas’s connections name it. Every line in it means the same verb, decides, so print the word once, in a key beside the diagram.",
+    "Our systems atlas records seven authority connections. Each runs from a variable in the core layer that holds a body’s power, such as Congress’s ability to write and check policy, to a variable in the economy or technology layer that the body has the legal power to set. Draw all seven in one diagram: the layers stacked with a rule between each and its name, one pill for each variable, carrying the variable’s own title, and every line in the authority mark of Rule 15.5. Name each body beside the diagram as the atlas’s connections name it. Every line in it means the same verb, decides, so print the word once, in a key beside the diagram.",
     "Run the lines into each layer in lanes on one side of the column, nested so that none crosses another, and list each connection beside the diagram with its name. Then a reader sees what no single line shows: three of the four variables each answer to two bodies, and Congress and the executive each reach both layers."
    ],
    "tokens": [
@@ -904,7 +904,7 @@
     },
     {
      "label": "Bodies",
-     "value": "One pill for the variable that holds each body’s power, in the core layer, under the variable’s own title; the body’s plain name beside the diagram, as the atlas’s connections give it"
+     "value": "One pill for the variable that holds each body’s power, in the core layer, carrying the variable’s own title; the body’s plain name beside the diagram, as the atlas’s connections give it"
     },
     {
      "label": "Lines",
@@ -912,7 +912,7 @@
     },
     {
      "label": "Key",
-     "value": "Decides, once, since every line in the diagram means the same, and the delay ticks (Rule 13.5); each connection’s name beside the diagram says who decides what"
+     "value": "Two entries: decides, printed once because every line in the diagram means the same, and the delay ticks (Rule 13.5); each connection’s name beside the diagram says who decides what"
     },
     {
      "label": "Lanes",

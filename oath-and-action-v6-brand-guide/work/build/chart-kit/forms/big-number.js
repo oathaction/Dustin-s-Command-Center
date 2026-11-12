@@ -20,14 +20,19 @@
       var get = function (k) { if (!by[k]) { c.warn('no row with key ' + k); return null; } return by[k]; };
       var big = get(c.label('big_key'));
       var bigsize = c.size('big'), y = 0;
-      var colw = c.phone ? W : Math.round(W * 0.42);
+      // the phone's arrangement (the bars under the figure) wherever the figure would reach the bars beside it, at any
+      // width (D3-904's sweep; placement only, the drawing board 1 approved keeps its marks and inks)
+      var bigw = big ? c.measure(K.fmt(big[ev], f.big || 'number'), 'big', 800) : 0;
+      var ph = c.phone || bigw + 24 > Math.round(W * 0.47);
+      if (ph && !c.phone) c.arrange('phone');
+      var colw = ph ? W : Math.round(W * 0.42);
       if (big) {
         var bt = c.text(0, bigsize * 0.97, K.fmt(big[ev], f.big || 'number'), { role: 'big', weight: 800, data: { key: big[ek], field: ev, value: big[ev] } });
         var cap = c.text(0, bt.y + bt.h + 10 + c.size('label'), c.label('big_caption'), { role: 'label', weight: 600, max: Math.min(colw - 8, 260) });
         y = cap.y + cap.h;
       }
       // the bars beside the figure (below it on a phone)
-      var bx = c.phone ? 0 : Math.round(W * 0.47), bw = W - bx, top = c.phone ? y + 34 : 4;
+      var bx = ph ? 0 : Math.round(W * 0.47), bw = W - bx, top = ph ? y + 34 : 4;
       var bars = c.labels.bars || [];
       var max = c.labels.bars_max || 100;
       if (bars.length) {
@@ -62,15 +67,15 @@
           if (!yes || !no) return;
           var tot = yes[ev] + no[ev], xs = K.scale.linear([0, tot], [0, W]);
           var ly = y + c.size('label') + 6;
-          var lb = c.text(0, ly, v.label, { role: 'label', weight: 600, max: c.phone ? W - 8 : W * 0.6 });
-          if (v.tally) c.text(W, c.phone ? lb.y + lb.h + c.size('label') + 2 : ly, v.tally, { role: 'label', weight: 700, anchor: 'end' });
+          var lb = c.text(0, ly, v.label, { role: 'label', weight: 600, max: ph ? W - 8 : W * 0.6 });
+          if (v.tally) c.text(W, ph ? lb.y + lb.h + c.size('label') + 2 : ly, v.tally, { role: 'label', weight: 700, anchor: 'end' });
           // the bar steps under the label's last line (E30); the date moves under the label when the label runs past it
           var dw = v.date ? c.measure(v.date, 'tick') : 0, under = 0;
-          if (v.date && !c.phone) {
+          if (v.date && !ph) {
             if (lb.x + lb.w + 12 > W * 0.62 - dw / 2) { under = c.size('tick') + 6; c.text(0, lb.y + lb.h + c.size('tick') + 2, v.date, { role: 'tick' }); }
             else c.text(W * 0.62, ly, v.date, { role: 'tick', anchor: 'middle' });
           }
-          var y0 = (c.phone ? lb.y + lb.h + c.size('label') + 10 : lb.y + lb.h + 8 + under);
+          var y0 = (ph ? lb.y + lb.h + c.size('label') + 10 : lb.y + lb.h + 8 + under);
           var mid = y0 + vh / 2 + c.size('label') * 0.35;
           var sp = v.split, parts = null;
           if (sp && c.extra[sp.dataset]) {
@@ -89,7 +94,9 @@
                 var w = xs(n), words = String(side[3] || v.party_words || '{party} {v}').replace('{party}', r[sp.party]).replace('{v}', K.fmt(n, 'integer'));
                 c.rect(x, y0, w, vh, { fill: side[1], kind: x === 0 ? 'bar' : 'segment', axis: 'x', zero: 0, data: { key: (si ? no : yes)[ek] + '|' + r[sp.party], field: side[0], value: n, party: r[sp.party] } });
                 if (x > 0) c.line(x, y0, x, y0 + vh, { stroke: 'surface', width: 2, mark: false });
-                if (c.measure(words, 'label', 700) + 14 < w) c.text(si ? x + w - 7 : x + 7, mid, words, { role: 'label', weight: 700, fill: side[2], anchor: si ? 'end' : 'start' });
+                // words inside their segment where they fit and the line at the votes needed passes clear of them
+                var ww = c.measure(words, 'label', 700), wx0 = si ? x + w - 7 - ww : x + 7, nxl = need ? xs(need[ev]) : null;
+                if (ww + 14 < w && (nxl === null || nxl < wx0 - 4 || nxl > wx0 + ww + 4)) c.text(si ? x + w - 7 : x + 7, mid, words, { role: 'label', weight: 700, fill: side[2], anchor: si ? 'end' : 'start' });
                 else small.push([x + w / 2, words]);
                 x += w;
               });

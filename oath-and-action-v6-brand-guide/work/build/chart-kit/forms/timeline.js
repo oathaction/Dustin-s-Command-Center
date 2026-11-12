@@ -58,7 +58,8 @@
       function place_lane(evs, maxw, end_first) {
         var slots = [];
         var fit = function (it, mw) {
-          var lines = K.wrap(it.nm, small, mw - it.yw, 400), nw = 0;
+          // the words wrap at the width they are drawn at (c.text's max below), so the box holds the lines drawn (D3-904)
+          var lines = K.wrap(it.nm, small, mw - it.yw + 1, 400), nw = 0;
           lines.forEach(function (l) { nw = Math.max(nw, c.measure(l, 'tick', 400) + 4); });
           it.mw = mw; it.lines = lines.length; it.w = it.yw + nw;
           var right = it.x + 3 + it.w <= x1, leftok = it.x - it.w >= x0;
@@ -115,7 +116,7 @@
         // layouts are tried (labels right of their event where they fit, or left first; three wrap widths) and the first
         // with no leader through a label is kept, else the one with fewest
         var lh = small + 6, llh = Math.round(small * 1.25), best = null;
-        [[0.45, false], [0.45, true], [0.35, false], [0.35, true], [0.28, false], [0.28, true]].some(function (v) {
+        [[0.45, false], [0.45, true], [0.35, false], [0.35, true], [0.28, false], [0.28, true], [0.4, false], [0.4, true], [0.32, false], [0.32, true], [0.24, false], [0.24, true]].some(function (v) {
           var r = place_lane(evs, Math.min(260, (x1 - x0) * v[0]), v[1]);
           if (!best || r.bad < best.bad || (r.bad === best.bad && r.slots.length < best.slots.length)) best = r;
           return r.bad === 0;

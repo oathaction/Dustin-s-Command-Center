@@ -62,7 +62,7 @@
             c.circle(cx, cy, r - 0.75, Object.assign({ fill: 'surface' }, data));
             c.circle(cx, cy, r - 0.75, { stroke: 'context', width: 1.5, mark: false });
             c.text(cx, ty, String(n), { role: 'tick', size: nsize, weight: 600, anchor: 'middle', fill: 'secondary' });
-            c.line(cx - r * 0.6, cy + r * 0.6, cx + r * 0.6, cy - r * 0.6, { stroke: 'subject', width: 2, mark: false });
+            c.line(cx - r * 0.6, cy + r * 0.6, cx + r * 0.6, cy - r * 0.6, { stroke: 'subject', width: 2, mark: false, strike: true });
           } else if (n < now) {
             c.circle(cx, cy, r, Object.assign({ fill: 'subject' }, data));
             c.text(cx, ty, String(n), { role: 'tick', size: nsize, weight: 700, anchor: 'middle', fill: 'label-on-subject' });

@@ -783,6 +783,9 @@ a.toc-part-k:hover { text-decoration: underline }
   .plate, .rule-h, .hinge { break-inside: avoid }
   /* a chart plate may run past a page: it breaks between its parts (kit.css) and its frame never clips it (D3-100) */
   .plate:has(.oac-fig), .plate:has(.oac-fig) .plate-stage { break-inside: auto }
+  /* AX S11 (round 2 fix pass): a plate taller than a page (the script marks it at beforeprint) breaks inside, so no page
+     before it is left blank */
+  .plate.is-print-tall, .plate.is-print-tall .plate-stage { break-inside: auto }
   .plate-scroll:has(.oac-fig) { overflow: visible !important; max-height: none }
   .local-toc { position: static }
   /* AX S11 (round 2 fix pass): a plate's head keeps to the page, its size note wrapping under the label where the line is

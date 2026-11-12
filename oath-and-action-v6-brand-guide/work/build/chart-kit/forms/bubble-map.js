@@ -20,6 +20,13 @@
       var maxv = Math.max.apply(null, drawn.map(function (r) { return r[ez]; })), area = K.scale.sqrt(maxv, R);
       // the key: above the map, or under it at the narrowest widths, where the map takes the full width first (CD KR2)
       var narrow = W < 340, ring = L.ring || [];
+      // the size key beside the shade key, or under it as on a phone wherever its steps would run past the drawing's
+      // edge (D3-904's sweep; placement only)
+      var ksteps = L.size_steps || [], kwid = ksteps.reduce(function (t, s, si) {
+        var lab = (L.size_step_words || [])[si] || (K.fmt(s, f.size_step || 'integer') + (L.size_unit ? ' ' + L.size_unit : ''));
+        return t + 2 * Math.max(area(s), c.measure(lab, 'tick') / 2) + (si ? 14 : 0);
+      }, 0);
+      var kph = c.phone || W * 0.62 + kwid > W - 1;
       var drawKey = function (oy) {
         var y = oy, kw = c.phone ? W : W * 0.55;
         if (L.shade_title) { c.text(0, oy + 12, L.shade_title, { role: 'eyebrow', weight: 700, fill: 'secondary', max: kw }); }
@@ -35,7 +42,7 @@
         }
         c.key([1, 2, 3, 4, 5].map(function (i) { return { fill: 'seq-' + i, ordered: true, outline: true }; }));   // circles carry an outline
         var steps = L.size_steps || [];
-        var szx = c.phone ? 0 : W * 0.62, szy = c.phone ? sy + 48 : oy + 12;
+        var szx = kph ? 0 : W * 0.62, szy = kph ? sy + 48 : oy + 12;
         if (L.size_title) c.text(szx, szy, L.size_title, { role: 'eyebrow', weight: 700, fill: 'secondary' });
         var cx = szx, base = szy + 14 + 2 * area(steps.length ? steps[steps.length - 1] : maxv);
         steps.forEach(function (s, si) {
@@ -46,7 +53,7 @@
           cx = mid + Math.max(r, lw / 2) + 14;
         });
         if (L.ring_label) {
-          var ry = c.phone ? base + 34 : sy + 50;
+          var ry = kph ? base + 34 : sy + 50;
           c.circle(7, ry - 4, 6, { stroke: 'label', width: c.t('bubble-ring'), mark: false });
           var rt = c.text(20, ry, L.ring_label, { role: 'tick', max: c.phone ? W - 24 : kw - 24 });
           y = rt.bottom + 14;   // under the ring key's last line, however many it wraps to (KR2)

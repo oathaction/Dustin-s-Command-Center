@@ -105,7 +105,9 @@
         var xs = K.scale.linear([K.time(list[0][c.field('x')]), K.time(list[list.length - 1][c.field('x')])], [px, px + pw]);
         var ys = K.scale.linear(dom, [py + head + ph, py + head]);
         xs0 = xs;
-        c.text(px, py + c.size('tick'), p.label, { role: 'tick', weight: 600, max: pw });
+        // a one-word name wider than its panel keeps inside the drawing (D3-904's width sweep, placement only)
+        var plw = c.measure(p.label, 'tick', 600);
+        c.text(plw > pw && p.label.indexOf(' ') < 0 ? Math.min(px, W - plw - 1) : px, py + c.size('tick'), p.label, { role: 'tick', weight: 600, max: pw });
         if (L.end) c.text(px + pw, py + head - 10 - (el - 1) * tlh, K.parts.fill(c, L.end, list[list.length - 1]), { role: 'tick', weight: 700, anchor: 'end', max: pw });
         ticks.forEach(function (t) {
           c.line(px, ys(t), px + pw, ys(t), { stroke: t === 0 ? 'baseline' : 'gridline', width: c.t(t === 0 ? 'line-baseline' : 'line-hairline'), mark: false });

@@ -1714,7 +1714,7 @@ def rule_15_10(book):
     gls = GLOSS["Rejected connection"]
     need(gls.startswith("A relationship that was reviewed against the evidence and left off the map"), "the atlas's rejected connection entry changed")
     b, h, _ = card("TC1", "B6", "LT01", layers=("Technology layer", "Core layer"))
-    panel = (f'<p class="k">Reviewed and not drawn</p><p class="hed"><span>From {chip("Variable", "TC1")} to '
+    panel = (f'<p class="k">Reviewed and not drawn</p><p class="hed"><span>From {vt("TC1")} to '
              f'{vt("B4")}</span></p><p class="nt">{lead}</p>'
              f'<p class="q">“{e(quote)}”</p><p class="nt">{tail}</p>'
              f'<p class="nt">The atlas keeps {words_n(len(rej))} connections it reviewed and left off its map, each with its reason.</p>')
@@ -1852,8 +1852,8 @@ def rule_15_11(book):
              + f'<p class="k">Its targets, from the atlas</p>{items}'
              + f'<p class="k">Its band</p>{band_p(r)}'
              + src("reform R-03, loop R4a, connections L42, L55 and L56, and the bands of change"))
-    under = (step_lines(lp["links"]) + f'<p class="nt">{chip("Variable", "C4")} sits in the {e(cname.lower())} cluster with '
-             f'{chip("Variable", "C1")} and stays in ink.</p><p class="k">Its loops</p>{loops_p(r, "R4a")}')
+    under = (step_lines(lp["links"]) + f'<p class="nt">{vt("C4")}, the pill at the top, sits in the {e(cname.lower())} '
+             f'cluster with {chip("Variable", "C1")} and stays in ink.</p><p class="k">Its loops</p>{loops_p(r, "R4a")}')
     body = (hed("Reform", "R-03", r["title"]) + label_for(lp["links"], "the grade of the loop’s least certain step")
             + beside(hed("Loop", "R4a", lp["title"]) + fig(svg) + under, words))
     book.add("s-15-11-correct", body, rule="15.11", readable=True, wide=True,
@@ -1863,8 +1863,9 @@ def rule_15_11(book):
                   "Entrenched majority control are red; step 2, dashed, and step 3 stay in ink, as does Incumbent control of "
                   "election rules. Beside it: the reform acts where the marks turn red, on one connection and two variables: "
                   f"Connection L42, {link('L42')['name']}, documented; Variable C1, {lc(node('C1')['title'])}; Variable D7, "
-                  f"{lc(node('D7')['title'])}. Its band, rules: {BANDS['rules']} Under the drawing: Variable C4 sits in the "
-                  "electoral competition cluster with Variable C1 and stays in ink; its loops are Loop R4a, Loop R10 and "
+                  f"{lc(node('D7')['title'])}. Its band, rules: {BANDS['rules']} Under the drawing: Variable C4, "
+                  f"{lc(node('C4')['title'])}, the pill at the top, sits in the electoral competition cluster with Variable C1 "
+                  "and stays in ink; its loops are Loop R4a, Loop R10 and "
                   "Loop R12, and the drawing shows Loop R4a because it holds every target. Each step with its grade: "
                   + "; ".join(f"step {i}, Connection {x}, {GRADE[link(x)['evidence']][0].lower()}" for i, x in enumerate(lp["links"], 1))
                   + "."),
@@ -2023,8 +2024,8 @@ def rule_15_12(book):
             + pg.split(". ")[0][0].lower() + pg.split(". ")[0][1:] + "”, and evidence for the remedy is “"
             + rg.split(", with")[0][0].lower() + rg.split(", with")[0][1:] + "”. Print each as its own label with Rule "
             "13.3’s word and gloss, and quote the atlas’s words under it.",
-            "A drawing of the reform carries a third grade in the line code of each connection, the solid, dashed or dotted "
-            "line Rule 13.4 sets by grade, which says how sure the atlas is of the mechanism. Print each connection’s grade "
+            "A drawing of the reform carries a third grade, how sure the atlas is of the mechanism. Each connection shows it "
+            "in its line code, the solid, dashed or dotted line Rule 13.4 sets by grade. Print each connection’s grade "
             "word in the list of steps under the drawing, and keep all three grades apart. Of the atlas’s "
             f"{len(REFORM)} reforms, {two} carry two different grades, and in {lower} of them the remedy’s grade is the lower.",
         ],
@@ -2663,7 +2664,7 @@ def rule_15_17(book):
             f"Our systems atlas records {words_n(len(AUTH))} authority connections. Each runs from a variable in the core layer "
             "that holds a body’s power, such as Congress’s ability to write and check policy, to a variable in the economy or "
             "technology layer that the body has the legal power to set. Draw all seven in one diagram: the layers stacked with "
-            "a rule between each and its name, one pill for each variable under the variable’s own title, and every line in "
+            "a rule between each and its name, one pill for each variable, carrying the variable’s own title, and every line in "
             "the authority mark of Rule 15.5. Name each body beside the diagram as the atlas’s connections name it. Every "
             "line in it means the same verb, decides, so print the word once, in a key beside the diagram.",
             "Run the lines into each layer in lanes on one side of the column, nested so that none crosses another, and list "
@@ -2686,12 +2687,13 @@ def rule_15_17(book):
                                "antitrust enforcers, and state and local governments."},
         "specs": [
             {"label": "Layers", "value": "Stacked, with one 1 px rule between each two and both names beside it (Rule 15.9)"},
-            {"label": "Bodies", "value": "One pill for the variable that holds each body’s power, in the core layer, under "
+            {"label": "Bodies", "value": "One pill for the variable that holds each body’s power, in the core layer, carrying "
                                          "the variable’s own title; the body’s plain name beside the diagram, as the atlas’s "
                                          "connections give it"},
             {"label": "Lines", "value": "The authority mark of Rule 15.5: solid, an open diamond, no sign, with its delay ticks"},
-            {"label": "Key", "value": "Decides, once, since every line in the diagram means the same, and the delay ticks "
-                                      "(Rule 13.5); each connection’s name beside the diagram says who decides what"},
+            {"label": "Key", "value": "Two entries: decides, printed once because every line in the diagram means the same, "
+                                      "and the delay ticks (Rule 13.5); each connection’s name beside the diagram says who "
+                                      "decides what"},
             {"label": "Lanes", "value": f"Lines into the economy layer on the right and into the technology layer on the left, {LANE} px apart, nested so none crosses"},
             {"label": "Beside it", "value": "Each connection’s chip, name and grade word, grouped by the layer it reaches"},
         ],

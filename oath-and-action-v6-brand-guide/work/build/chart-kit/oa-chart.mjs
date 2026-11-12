@@ -865,6 +865,100 @@ async function self_test() {
     console.log(`${okt ? 'pass' : 'FAIL'} typography curls quotes and replaces once, and a second pass changes nothing`);
     if (!okt) bad++;
   }
+  // round 2 fix pass: the checks and parts this pass added, each planted or tried on a form registered for the test only
+  {
+    const T2 = K.token_reader(TOK.newsprint);
+    const mk = enc => new K.Ctx({ id: 'T', labels: {}, encode: enc }, [], { width: 400, ground: 'newsprint', t: T2, uid: 't3' });
+    const iv = { kit: 1, id: 'T08', form: 't-interval', family: 'uncertainty-and-estimates', tier: 'core', reader_question: 'q', evidence: 'estimate', evidence_label: 'Estimate',
+      title: 'Two estimates.', measure_line: 'A share, with its 90 percent margin of error', source_line: 'Source: invented for the self-test.', illustrative: 'Illustrative data', alt: 'a', phone: 'same', domain: 'all', states: [],
+      encode: { category: 'k', value: 'v', margin: 'm' },
+      table: { caption: 'c', columns: [{ field: 'k', label: 'Name', format: 'text' }, { field: 'v', label: 'Share', format: 'number:1' }, { field: 'm', label: 'Margin', format: 'number:1' }] },
+      data: { columns: { k: { type: 'text', description: 'k' }, v: { type: 'number', description: 'v' }, m: { type: 'number', description: 'm' } }, rows: [{ k: 'A', v: 82, m: 0.4 }, { k: 'B', v: 77, m: 2.5 }] } };
+    if (!K.forms['t-interval']) K.register_chart({ form: 't-interval', family: 'uncertainty-and-estimates', interval: true,
+      encode: { category: 'text', value: 'number', low: 'number?', high: 'number?', margin: 'number?' }, draw: c => { c.height(10); } });
+    const say = (ok, words) => { console.log(`${ok ? 'caught' : 'MISSED'} ${words}`); if (!ok) bad++; };
+    const pass = (ok, words) => { console.log(`${ok ? 'pass' : 'FAIL'} ${words}`); if (!ok) bad++; };
+    const base2 = { kit: 1, id: 'T09', family: 'comparison', tier: 'core', reader_question: 'q', evidence: 'illustration', evidence_label: 'Illustration',
+      title: 'A test.', measure_line: 'Invented values', source_line: 'Source: invented for the self-test.', illustrative: 'Illustrative data', alt: 'a', phone: 'same', domain: 'all', states: [],
+      encode: { category: 'k', value: 'v' }, table: { caption: 'c', columns: [{ field: 'k', label: 'Name', format: 'text' }, { field: 'v', label: 'Value', format: 'number:1' }] },
+      data: { columns: { k: { type: 'text', description: 'k' }, v: { type: 'number', description: 'v' } }, rows: [{ k: 'A', v: 1 }, { k: 'B', v: 2 }] } };
+    const reg = (form, draw, extra) => { K.forms[form] = undefined; K.register_chart(Object.assign({ form, family: 'comparison', encode: { category: 'text', value: 'number' }, draw }, extra || {})); };
+    const faults = (form, w) => C.check_drawing(base2, K.draw(Object.assign({}, base2, { form }), base2.data.rows, { width: w || 720, ground: 'newsprint', tokens: TOK.newsprint }), TOK.newsprint, 't');
+    // CD A-M2: red past 5 percent of the drawing
+    reg('t-red', c => { c.rect(0, 0, 200, 100, { fill: 'point', data: { key: 'A' } }); c.rect(0, 100, 720, 100, { fill: 'light-fill', data: { key: 'B' } }); c.height(200); });
+    reg('t-red-ok', c => { c.rect(0, 0, 40, 100, { fill: 'point', data: { key: 'A' } }); c.rect(0, 100, 720, 100, { fill: 'light-fill', data: { key: 'B' } }); c.height(200); });
+    say(faults('t-red').some(f => /Pillar Red covers 13\.8 percent/.test(f)), 'red over 5 percent of a drawing (13.8 percent, CD A-M2)');
+    pass(!faults('t-red-ok').some(f => /Pillar Red/.test(f)), 'red under 5 percent passes (2.8 percent)');
+    // AX M1: a band under 3 to 1 with no edge, and with its default edge
+    reg('t-band', c => { K.parts.band(c, [{ x: 10, y0: 40, y1: 60 }, { x: 300, y0: 30, y1: 70 }], { fill: 'mag-1', edge: false }); c.height(100); });
+    reg('t-band-ok', c => { K.parts.band(c, [{ x: 10, y0: 40, y1: 60 }, { x: 300, y0: 30, y1: 70 }], { fill: 'mag-1' }); c.height(100); });
+    say(faults('t-band').some(f => /band: a band in mag-1 measures 1\.1\d to 1/.test(f)), 'a band at 1.16 to 1 with no edge (AX M1, D3-903)');
+    pass(!faults('t-band-ok').some(f => /^band:/.test(f)), 'a band with its default context edge passes (RF-2)');
+    // call 9: an interval form whose intervals hide behind their dots at this width
+    reg('t-ivw', c => { [0, 1, 2].forEach(i => { K.parts.whisker(c, 100, 100 + (c.width < 400 ? 12 : 60), 20 + 30 * i, { key: 'k' + i, low: 1, high: 2 }); c.circle(100 + (c.width < 400 ? 6 : 30), 20 + 30 * i, 6.5, { fill: 'subject', data: { key: 'k' + i, field: 'v', value: 1.5 } }); }); c.height(100); }, { interval: true });
+    say(faults('t-ivw', 358).some(f => /middle row's interval spans 12\.0 px, under the 23\.0 px/.test(f)), 'an interval form whose plot hides its intervals behind their dots (call 9, D3-899)');
+    pass(!faults('t-ivw', 720).some(f => /^interval:/.test(f)), 'the same form with room for its intervals passes');
+    // AX S2, BC S1: a data line drawn after a word, a dot half under a word, a quiet line cleared by a knockout, a strike
+    reg('t-cross', c => { c.text(100, 50, 'Crossed words', { role: 'label' }); c.line(80, 45, 300, 45, { stroke: 'subject', width: 2, mark: false }); c.height(100); });
+    reg('t-under', c => { c.circle(100, 50, 8, { fill: 'subject', data: { key: 'A' } }); c.text(104, 54, 'Covered words', { role: 'label' }); c.height(100); });
+    reg('t-quiet', c => { c.line(0, 45, 400, 45, { stroke: 'gridline', width: 1, mark: false }); c.text(100, 50, '-48.0', { role: 'label' }); c.height(100); });
+    reg('t-strike', c => { c.text(100, 50, '2', { role: 'label' }); c.line(96, 54, 112, 38, { stroke: 'subject', width: 2, mark: false, strike: true }); c.height(100); });
+    say(faults('t-cross').some(f => /a line in subject runs through "Crossed words", drawn after the words/.test(f)), 'a data line drawn through a word (AX S2)');
+    say(faults('t-under').some(f => /a circle in subject sits half under "Covered words"/.test(f)), 'a dot half under a word (AX S2)');
+    const dq = K.draw(Object.assign({}, base2, { form: 't-quiet' }), base2.data.rows, { width: 720, ground: 'newsprint', tokens: TOK.newsprint });
+    pass(/<rect x="[\d.]+" y="[\d.]+" width="[\d.]+" height="[\d.]+" class="oac-f-surface"\/><text/.test(dq.svg) && dq.svg.indexOf('\u0002') < 0 && dq.svg.indexOf('\u0003') < 0 && !C.check_drawing(base2, dq, TOK.newsprint, 't').some(f => /^layout:/.test(f)),
+      'a gridline through a word is cut by a knockout of the ground behind it, and the drawing passes (BC S1)');
+    const dn = K.draw(Object.assign({}, base2, { form: 't-red-ok' }), base2.data.rows, { width: 720, ground: 'newsprint', tokens: TOK.newsprint });
+    pass(dn.svg.indexOf('oac-f-surface') < 0 && dn.svg.indexOf('\u0002') < 0, 'a drawing with nothing to clear draws no knockout and keeps no marker');
+    pass(!faults('t-strike').some(f => /^layout:/.test(f)), 'a stroke marked strike: true runs through its word and passes');
+    // clear_label, row_name, row_value
+    { const c = mk({}); c.line(0, 45, 400, 45, { stroke: 'subject', width: 2, mark: false }); const tb = K.parts.clear_label(c, 100, 50, 'On a line', { role: 'label' });
+      pass(!!tb.knock && /class="oac-f-surface"/.test(c._els[c._els.length - 2]) && /oac-halo/.test(c._els[c._els.length - 1]), 'clear_label sets a knockout of the ground and the words on its halo (BC S1, BC S7)'); }
+    { const c = mk({}); const a = K.parts.row_name(c, 0, 20, 'Alaska', {}), b = K.parts.row_name(c, 0, 40, 'Florida', { named: true }), v = K.parts.row_value(c, 300, 40, '35.5%', { named: true });
+      pass(/oac-w4/.test(c._els[0]) && /oac-w7/.test(c._els[1]) && /oac-w7/.test(c._els[2]) && /text-anchor="end"/.test(c._els[2]) && /oac-tnum/.test(c._els[2]), 'row names and values set at 400, the named row at 700 (BC S8, call 11)'); }
+    // the sweep: a fault at one off-column width is found and printed once with its widths
+    reg('t-sweep', c => { c.text(c.width === 333 || c.width === 334 ? c.width - 10 : 0, 20, 'Spill', { role: 'label' }); c.height(40); });
+    const sf = sweep_faults(Object.assign({}, base2, { form: 't-sweep' }), base2.data.rows, {});
+    say(sf.length === 1 && /sweep: layout guard: text outside the artboard: "Spill".*at 2 of the widths from 256 to 720 px: 333 to 334\)$/.test(sf[0]), 'a fault at 333 and 334 px only, which the six guide columns miss (the sweep, AX S1)');
+    // AX S8: a margin in another unit, a check-only column, a line for another measure
+    { const s8 = JSON.parse(JSON.stringify(iv));
+      s8.data.columns.v.unit = 'percent'; s8.data.columns.m.unit = 'households'; s8.data.columns.m2 = { type: 'number', description: 'm2', unit: 'percentage points' };
+      s8.data.rows.forEach(r => { r.m2 = 0.5; });
+      const f8 = C.check_spec(K, JSON.parse(JSON.stringify(s8)), {}).faults;
+      say(f8.some(x => /the margin "m" is in households and the value "v" in percent/.test(x)), 'a margin in households beside a value in percent (AX S8)');
+      s8.encode.margin = 'm2'; s8.table.columns[2].field = 'm2';
+      pass(!C.check_spec(K, JSON.parse(JSON.stringify(s8)), {}).faults.some(x => /AX S8/.test(x)), 'a margin in percentage points beside a percent passes');
+      const s9 = JSON.parse(JSON.stringify(base2)); s9.data.columns.v.unit = 'percent';
+      const td9 = fs.mkdtempSync(path.join(process.env.TMPDIR || '/tmp', 'oa-s8-'));
+      fs.writeFileSync(path.join(td9, 't9.csv'), 'k,v,w,x\nA,1,2,3\nB,2,3,4\n');
+      fs.writeFileSync(path.join(td9, 't9.meta.json'), JSON.stringify({ file: 't9.csv', kind: 'public', publisher: 'Test', printed_source_line: 'Source: Test, the v measure.', source_line_variants: { w: 'Source: Test, the w measure.' },
+        source_line_columns: { printed_source_line: ['v'], w: ['w'] }, check_only_columns: ['x'], columns: { k: { type: 'text' }, v: { type: 'number' }, w: { type: 'number' }, x: { type: 'number' } } }));
+      const s10 = Object.assign({}, base2, { dataset: 't9', encode: { category: 'k', value: 'w' }, table: { caption: 'c', columns: [{ field: 'k', label: 'Name' }, { field: 'w', label: 'W' }] } }); delete s10.data; delete s10.source_line; s10.illustrative = false;
+      const f10 = C.check_spec(K, JSON.parse(JSON.stringify(s10)), { data_dir: td9 }).faults;
+      say(f10.some(x => /source line printed \(the sidecar's printed_source_line\) covers v, and the chart prints w; print its source_line_variants "w"/.test(x)), 'a source line for another measure than the chart draws (AX S8)');
+      const s11 = Object.assign({}, s10, { source_line: 'Source: Test, the w measure.', table: { caption: 'c', columns: [{ field: 'k', label: 'Name' }, { field: 'w', label: 'W' }, { field: 'x', label: 'X' }] } });
+      say(C.check_spec(K, JSON.parse(JSON.stringify(s11)), { data_dir: td9 }).faults.some(x => /"x" is in its sidecar's check_only_columns/.test(x)), 'a check-only column printed in the table (AX S8)');
+      fs.rmSync(td9, { recursive: true, force: true }); }
+    // BC S12, RB-G5, RB-G6, AX S3, RB-G4
+    { const t = K.typeset({ typography: { nbsp: true } }, 'On November 3, 2026, from 2017 to 2022.');
+      pass(t === 'On November\u00a03, 2026, from 2017\u00a0to\u00a02022.' && K.typeset({ typography: { nbsp: true } }, t) === t && K.fmt('2026-10-15', 'date') === 'October 15, 2026', 'typography.nbsp holds a date and a span of years together, a second pass changes nothing, and dates still format (BC S12)'); }
+    { const c = mk({}); const a = c.text(0, 30, 'At least 17', { role: 'big', weight: 800, open: true }), b = c.text(0, 80, 'At least 17', { role: 'big', weight: 800 });
+      pass(/oac-t-open/.test(c._els[0]) && !/oac-t-open/.test(c._els[1]) && Math.abs(a.w - b.w - 2 * K.OPEN_WORD_SPACE * a.size) < 1e-6, 'a big figure that holds words opens its tracking where asked, and is measured so (BC S12)'); }
+    { const sp = { id: 'T', table: { columns: [{ field: 'age', label: 'Age', format: 'integer', words: { '100': '100 and over' } }], pivot: { row: 'age', column: 's', value: 'n', format: 'integer' } } };
+      const rows = [{ age: 99, s: 'M', n: 5 }, { age: 100, s: 'M', n: 7 }];
+      const h = K.table_html(sp, rows, { lean: true, types: { age: { type: 'integer' }, s: { type: 'text' }, n: { type: 'integer' } } });
+      pass(/<th scope="row" class="t" data-v="100">100 and over<\/th>/.test(h) && />99<\/th>/.test(h), "a pivot's row header prints its column's words and keeps the stored value for the read-back (RB-G5)"); }
+    { const c = mk({}); K.parts.key(c, [{ label: 'Band', fill: 'mag-1', edge: 'context' }], 0, 20, 300);
+      pass(c._els.some(e => /oac-f-mag-1/.test(e)) && c._els.some(e => /oac-s-context/.test(e) && /stroke-width="1"/.test(e)), 'a key swatch takes a 1 px edge (RB-G6)'); }
+    { const c = mk({}); c.rect(0, 0, 50, 20, { fill: 'context', fc: 'total', data: { key: 'All' } });
+      pass(/class="oac-f-context oac-fc-total"/.test(c._els[0]) && c.marks[0].fc === 'total', "a total takes its own forced-colors class (AX S3)"); }
+    { // every place beside the point is taken, so the label needs a leader; a square path round the point at 20 px stops each
+      const items = [{ x: 200, y: 100, r: 4, words: 'Named' }], avoid = [{ x: 170, y: 70, w: 60, h: 60 }];
+      const sq = [[[180, 80], [220, 80], [220, 120], [180, 120], [180, 80]]];
+      const c1 = mk({}), free = K.parts.place_labels(c1, items, { avoid, reach: [40] });
+      const c2 = mk({}), blocked = K.parts.place_labels(c2, items, { avoid, reach: [40], paths: sq });
+      pass(free.placed.length === 1 && blocked.unplaced.length === 1, 'place_labels draws a leader where it may and none across a path it is given (RB-G4)'); }
+  }
   // the words inside kit.js equal words.json
   const wj = Object.assign({}, K.words); delete wj.about;
   const same = JSON.stringify(wj) === JSON.stringify(K.WORDS);

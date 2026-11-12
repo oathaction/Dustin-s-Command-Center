@@ -492,7 +492,7 @@
   "chapter": "14",
   "rule": "14.50",
   "width_px": null,
-  "alt": "Stacked columns of new homes finished each year from 2000 to 2025, split into one-unit buildings, buildings of two to four units and buildings of five or more. One-unit homes make up most of every year; homes in buildings of five or more units reached 591,700 in 2024, 36 percent of the year’s 1,626,900.",
+  "alt": "Stacked columns of new homes finished each year from 2000 to 2025, split into one-unit buildings, buildings of two to four units and buildings of five or more. One-unit homes make up most of every year; homes in buildings of five or more units reached 591,700 in 2024, the most of any year in the chart and 36 percent of the year’s 1,626,900. Two to four units shows as a thin seam from 2009 on.",
   "illustrative": false,
   "notes": "S45, stacked-column: the chart kit draws it from work/build/chart-kit/specs/s45.json (contract R1-C3)"
  },
@@ -508,7 +508,7 @@
   "chapter": "14",
   "rule": "14.52",
   "width_px": null,
-  "alt": "Tiles sized by fiscal 2026 net outlays for each budget function with positive outlays. Social Security, $1,667.1 billion, is the largest, then Medicare, $1,072.6 billion, net interest, $1,051.8 billion, health, $1,025.6 billion, and national defense, $965.2 billion.",
+  "alt": "Tiles sized by fiscal 2026 net outlays for each budget function with positive outlays. Social Security, $1,667.1 billion, is the largest, then Medicare, $1,072.6 billion, net interest, $1,051.8 billion, health, $1,025.6 billion, and national defense, $965.2 billion; the ten smallest functions share the last tile, $673.6 billion.",
   "illustrative": false,
   "notes": "S47, treemap: the chart kit draws it from work/build/chart-kit/specs/s47.json (contract R1-C3)"
  },
@@ -643,7 +643,7 @@
   "chapter": "14",
   "rule": "14.68",
   "width_px": null,
-  "alt": "A bubble chart of 50 states and DC: median gross rent against renter households’ median income in 2025, each circle sized by renter households. The circles climb from lower left to upper right; California’s 6.2 million renter households make the largest circle, at the top right. Florida, in dark ink, sits above the cloud with the largest rent share, 35.5 percent.",
+  "alt": "A bubble chart of 50 states and DC: median gross rent against renter households’ median income in 2025, each circle sized by renter households. The circles climb from lower left to upper right. The four largest, California with 6.2 million renter households, Texas with 4.3 million, New York with 3.6 million and Florida with 3.0 million, are named in dark ink; three sit above the nation’s rent and Texas below it.",
   "illustrative": false,
   "notes": "S55, bubble-scatter: the chart kit draws it from work/build/chart-kit/specs/s55.json (contract R1-C3)"
  },
@@ -718,7 +718,7 @@
   "chapter": "14",
   "rule": "14.77",
   "width_px": null,
-  "alt": "A fan chart of the unemployment rate projected for 2026 to 2029. The median holds at 4.1 percent each year, inside a narrow band for the range of all officials’ projections and a wide band from past forecast errors that grows to 2.0 to 6.2 percent by 2029. The longer run sits apart at 4.2 percent.",
+  "alt": "A fan chart of the unemployment rate projected for 2026 to 2029. The median holds at 4.1 percent each year, inside a narrow band for the range of all officials’ projections and a wide band from past forecast errors that grows to 2.0 to 6.2 percent by 2029. The longer run sits apart at 4.2 percent. At the left, a thinner line shows the actual rate’s fourth-quarter average: 4.2 percent in 2021, 3.6 in 2022, 3.8 in 2023 and 4.1 in 2024, with no figure for 2025.",
   "illustrative": false,
   "notes": "S59, fan-chart: the chart kit draws it from work/build/chart-kit/specs/s59.json (contract R1-C3)"
  },
@@ -751,7 +751,7 @@
   "chapter": "14",
   "rule": "14.87",
   "width_px": null,
-  "alt": "A bar of the Senate’s 100 votes filled to 53 yes votes, with a tick at the 60 needed to end debate and a bracket marking the seven-vote gap. All 53 yes votes were Republican; 45 Democrats and 2 independents voted no.",
+  "alt": "A bar of the Senate’s 100 votes, its 53 yes votes solid and its 47 no votes in outline, with a tick at the 60 needed to end debate and a bracket marking the seven-vote gap. All 53 yes votes were Republican; 45 Democrats and 2 independents voted no.",
   "illustrative": false,
   "notes": "S61, progress-bar: the chart kit draws it from work/build/chart-kit/specs/s61.json (contract R1-C3)"
  },

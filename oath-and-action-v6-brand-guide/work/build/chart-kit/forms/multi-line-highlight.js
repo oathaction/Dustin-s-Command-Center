@@ -46,12 +46,13 @@
         var px = gut + col * (pw + gapx), py = y0 + row * (ph + head + 34);
         var ys = K.scale.linear(dom, [py + head + ph, py + head]), xs = K.scale.linear([tlo, thi], [px, px + pw]);
         var mine = by[String(pnl.value)] || [];
-        var lb = c.text(px, py + c.size('label'), pnl.label, { role: 'label', weight: 600, max: pw });
-        if (L.panel_value && mine.length) c.text(px, lb.y + lb.h + c.size('tick') + 2, P.fill(c, L.panel_value, mine[mine.length - 1]), { role: 'tick' });
+        // the gridlines first, so the kit clears them behind the panel's words (D3-904's sweep, AX S2; placement only)
         ticks.forEach(function (t) {
           c.line(px, ys(t), px + pw, ys(t), { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
           if (col === 0) c.text(gut - 8, ys(t) + c.size('tick') * 0.35, K.fmt(t, (t === ticks[ticks.length - 1] && f.tick_last) || f.tick || 'integer'), { role: 'tick', anchor: 'end' });
         });
+        var lb = c.text(px, py + c.size('label'), pnl.label, { role: 'label', weight: 600, max: pw });
+        if (L.panel_value && mine.length) c.text(px, lb.y + lb.h + c.size('tick') + 2, P.fill(c, L.panel_value, mine[mine.length - 1]), { role: 'tick' });
         panels.forEach(function (o) {
           if (o.value === pnl.value) return;
           segs(by[String(o.value)] || []).forEach(function (s) {
@@ -67,7 +68,7 @@
           c.datum(xs(K.time(r[ex])), ys(r[ey]), { data: { key: pnl.value + '|' + r[ex] + (eb ? '|' + r[eb] : ''), field: ey, value: r[ey] } });
         });
         // gap brackets (E13): from this panel's point to another series' point in the same year
-        var placed = [];
+        var placed = [], bwords = [];
         (c.spec.annotations || []).filter(function (a) { return String(a.panel) === String(pnl.value) && a.at && a.to_series !== undefined; }).forEach(function (a) {
           var at = K.time(a.at.x), here = mine.filter(function (r) { return K.time(r[ex]) === at; }), there = (by[String(a.to_series)] || []).filter(function (r) { return K.time(r[ex]) === at; });
           if (!here.length || !there.length) { c.warn('annotation: no ' + (here.length ? a.to_series : pnl.value) + ' value at ' + a.at.x); return; }
@@ -91,8 +92,10 @@
           c.line(bx, y1, bx, y2, { stroke: 'secondary', width: w, mark: false });
           c.line(bx, y1, bx + arm, y1, { stroke: 'secondary', width: w, mark: false });
           c.line(bx, y2, bx + arm, y2, { stroke: 'secondary', width: w, mark: false });
-          c.text(bx + (pick.left ? -4 : 4), pick.y, pick.words, { role: 'tick', anchor: pick.left ? 'end' : 'start', halo: true });
+          bwords.push([bx + (pick.left ? -4 : 4), pick.y, pick.words, pick.left]);
         });
+        // every bracket's words after every bracket's lines, so no bracket is drawn through another's words (D3-904's sweep)
+        bwords.forEach(function (b) { c.text(b[0], b[1], b[2], { role: 'tick', anchor: b[3] ? 'end' : 'start', halo: true }); });
         var ay = py + head + ph + c.size('tick') + 6;
         var e0 = c.text(px, ay, K.fmt(tlo, 'year'), { role: 'tick' });
         var e1 = c.text(px + pw, ay, K.fmt(Math.round(thi), 'year'), { role: 'tick', anchor: 'end' });

@@ -96,3 +96,99 @@ None blocking. For the makers, from my quick guide check: s-14-55-sketch sets ty
 - `work/build/guide/specimens/s-15-11-correct.html` to `s-15-18-failure.html`, 12 new plates, and six round 1 plates rewritten with the chip-and-grade span (written by the generator)
 - `work/build/guide/specimens/manifest-systems-graphics.json` (written by the generator)
 - `work/handoffs/phase-3/20261112_Round-2-Systems-Designer-Notes.md` (this file)
+
+## Review fix pass
+
+Written for `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` and the coordinator's addendum (AX S10). Items: BC S4 (under the data lead's RF-16 and RF-16a), BC S15 (under RF-21), BC S16, CD CH15-S1 and AX S10's chapter 15 half. Every atlas value is still read by script from `work/extract/atlas-v7-data.json` and held by `need()`; the atlas's text stays as stored (D3-349).
+
+### Summary
+
+All five items are done by code in `work/build/scripts/phase-3/phase3_ch15_build.py`, which rewrote `work/build/guide/chapters/15-systems-graphics.json`, 18 plates and `work/build/guide/specimens/manifest-systems-graphics.json`. The main session's snapshot commits took in the work as it went, so my files now match HEAD; the changes below run from 011cbdec, where the pass started.
+
+- **BC S4 (RF-16, RF-16a, D3-906).** Rule 15.17's four core pills print the variables' own titles: Presidential action without new legislation (D2), Congress’s ability to write and check policy (D1), Ability to investigate and enforce the rules (D4) and State and local testing of reforms (D6). The rule's first paragraph takes RF-16's words ("from a variable in the core layer that holds a body’s power, such as Congress’s ability to write and check policy"). By RF-16a, 15.3's card for L16 and 15.5's two cards draw D4 and D6 under their titles too; 15.5's pills take 148 and 132 px so each sets in three rows. The opener and every loop drawing keep the loops' chain labels.
+- **BC S15 (RF-21).** Rule 15.12's plate drops the label over its drawing. Its first label is the problem's, Well supported, and its second the remedy's, Hypothesis; each connection's grade sits in a numbered "Each step" list under the drawing. The note "It acts where the marks turn red" moved under the drawing, where it explains the red.
+- **BC S16.**
+  - No punctuation touches a typed chip on any plate. A variable's chip takes its title in quotation marks, as a connection's takes its name; the loops a reform sits on print as a row of chips; the other lines are recast so words follow a chip. That covers 19 places in nine plates, round 1's 15.10, 15.13 and 15.14 among them.
+  - 15.18's label holds "weakest point" together, and every plate's notes, labels, quotations, sources and list items set with `text-wrap: pretty`.
+  - 15.18's line on Variable A4 now ends "which is Variable A4 in the atlas’s model."
+  - 15.18 spells out UI from the atlas's own summary of Loop B2: unemployment insurance, the atlas's example of “benefits written into law” that “expand without a new vote”.
+  - A four-variable loop's ID now sits above its side steps' tags, so "Loop R10 reinforcing" no longer reads on one line with step 4's words. The same drawing moves in 15.6 (both plates) and 15.16, and the drawings keep their heights.
+  - The size line is the shell's. I asked the engineer, who held "under 680 px" together with no-break spaces in `guide_build.py`; at 390 and 360 px its last line now reads "under 680 px".
+- **CD CH15-S1.** 15.15's L54 line reads "Connection L54 Well supported. The atlas calls it the weakest for U.S. services, …"; any step with words after its grade word takes the period.
+- **AX S10.**
+  - Rule 15.12's plate carries a short key, "Reading a step", across both columns under the drawing. It covers the step words (money, lowers and information, raises), the ticks (two for 2 to 10 years and three for over 10 years) and the two layers, all read from the connections' own records.
+  - Rule 15.12's rule glosses "line code" at first use: "the solid, dashed or dotted line Rule 13.4 sets by grade".
+  - Rule 15.17's plate lists "The four bodies, as the atlas’s connections name them" under the drawing, each body with its variable's chip and title: Congress, the executive, antitrust enforcers, states and cities. The names come from the atlas's own connection names, and the build stops if a connection from a variable stops naming its body.
+  - Rule 15.17's key adds the ticks, drawn as a short authority line with two ticks: one for under 2 years and two for 2 to 10 years.
+
+The editor's second pass on these words is applied: seven rows, listed under "Words changed" below. Chapter 15 weighs 306,894 bytes in the final strict build, against its 600,000 ceiling (302,270 at the end of round 2).
+
+### Routine calls
+
+- D3-xxx | Rule 15.17's four core pills print the variables' own titles, and Rules 15.3 and 15.5 draw D4 and D6 under theirs; the opener and every loop drawing keep the loops' chain labels | RF-16 and RF-16a (D3-893, D3-906); the generator stops if 15.3, 15.5 or 15.17 prints a chain label for D1, D2, D4 or D6
+- D3-xxx | Rule 15.17's rule says each line runs from a variable that holds a body's power, and names each body beside the diagram as the atlas's connections name it | RF-16's words; the reader in production test 2 asked whether "Congressional capacity" is a body or a measure (AX S10)
+- D3-xxx | Rule 15.17 lists the four bodies under its drawing, each with its variable's chip and title, the body's name read from the atlas's connection names (Congress, The executive, Antitrust enforcers, States and cities) | AX S10 asked for each body's plain name with its variable name; the columns stay balanced at 680 px
+- D3-xxx | Rule 15.5's two pills take 148 and 132 px, each three rows | At 140 px "Ability to investigate and enforce the rules" set four rows with "rules" alone, and the two lines left their pills at different heights
+- D3-xxx | Rule 15.12's plate leads with its two grades as its only labels; the connections' grades sit in a numbered list under the drawing, and the drawing carries no label of its own | BC S15 under RF-21; the correct plate's first label no longer matches the failure's one label. Rule 15.12's specs now say so ("Order"; "Connections")
+- D3-xxx | Rule 15.12's note "It acts where the marks turn red" sits under the drawing, above its steps | Beside the drawing it read as part of the remedy's block
+- D3-xxx | Rules 15.12 and 15.17 carry a short key built from the drawn connections' own types, signs and delays; 15.12's runs across both columns under them | AX S10; a reader who lands by a link needs the key on the plate, and set across both columns it keeps the columns balanced
+- D3-xxx | Rule 15.12's rule glosses the line code at first use | AX S10: "line code" stopped the reader (H02)
+- D3-xxx | No punctuation touches a typed chip: a variable's chip takes its title in quotation marks, a list of loops is a row of chips, and other lines are recast; the generator stops on a chip followed by punctuation | BC S16: the chip's 8 px padding and edge set a comma or a period apart ("Variable C1 , seats"); round 1's three cases change with round 2's
+- D3-xxx | A four-variable loop's ID sits above its side steps' tags, centered between the top row's pills and the higher tag; the generator stops if the room is short | BC S16: "4 raises + Loop R10" in 15.15; 15.6 and 15.16 draw the same loop and change with it
+- D3-xxx | Every plate's notes, labels, quotations, sources and list items set with `text-wrap: pretty`, and 15.18's label ties its last two words | BC S16: "point" stood alone; the tie holds where a browser ignores `pretty`
+- D3-xxx | 15.18 spells out UI in the atlas's words for Loop B2 and keeps the chain label "Automatic support (UI, credits)" as stored | BC S16 and D3-349; the build holds the summary's sentence
+- D3-xxx | A grade word with words after it ends with a period, and the generator stops on one that runs on | CD CH15-S1
+
+### Words changed, for the editor's second pass
+
+Each line is in the generator's data; I own the file and will apply any change (D3-900).
+
+- **15.10 correct (round 1).** The heading reads "From Variable TC1 to Variable B4 “Hostility toward the other political party”". The note reads "Its reason opens on the drawn connection: feed ranking “changes what people see”, as Connection LT01 records."
+- **15.11 correct.**
+  - The targets read "Variable C1 “Seats with little electoral competition”" and "Variable D7 “Entrenched control of rule-setting institutions”".
+  - The cluster note reads "Variable C4 sits in the electoral competition cluster with Variable C1 and stays in ink."
+  - Its loops print as a row of chips, then "The drawing shows Loop R4a because it holds every target." 15.16 shows the same with Loop R10.
+  - The alt says the same.
+- **15.12.**
+  - Rule, second paragraph: "A drawing of the reform carries a third grade in the line code of each connection, the solid, dashed or dotted line Rule 13.4 sets by grade, which says how sure the atlas is of the mechanism. Print each connection’s grade word in the list of steps under the drawing, and keep all three grades apart. …"
+  - Caption: "… each in the atlas’s words, with each connection’s grade in the list of steps under the drawing."
+  - Specs: "Order", "The problem’s label first and the remedy’s second, as the first two labels on the plate"; "Connections", "Their own line code (Rule 13.4), and each one’s grade word in the list of steps under the drawing".
+  - Plate: the head "Each step"; the key "Reading a step" with its three items.
+  - The alt.
+- **15.13 correct (round 1).** "The atlas’s evidence summary names Connection L02 as the middle step, which “is plausible and the weakest.”" The alt says the same.
+- **15.14 correct (round 1).** "… says the loop “no longer depends on” Variable A1 “Concentration of household wealth”." The alt says the same.
+- **15.15 correct.**
+  - "Variable C3 “Risk of losing office” is the pill filled in ink in both drawings."
+  - "Of the four variables the atlas says its strength depends on, Variable C1 and Variable C2 sit at the two ends of Loop R10’s first step."
+  - L54's period.
+  - The alt.
+- **15.16 correct.** The target "Variable C2 “How often the primary decides the winner”" and the loops row.
+- **15.17.**
+  - Rule, first paragraph, as above.
+  - Caption: "… from the powers of four bodies in the core layer to four variables in the economy and technology layers, with each body and each connection named beside it."
+  - Specs: "Bodies" and "Key" (which replaces "Decides").
+  - Plate: the list head "The four bodies, as the atlas’s connections name them" and its four rows; the key's ticks line; "Two bodies decide each of Variable EC2 “Public investment in research and infrastructure”, Variable TC5 “Government’s ability to build and run digital services” and Variable TC7 “Use of pricing algorithms”; one decides Variable EC10 “Costs of tariffs and trade rules”."
+  - The alt.
+- **15.18 correct.**
+  - "Household hardship is “the reverse of households’ financial security”, which is Variable A4 in the atlas’s model." This replaces your run 3 line, which ended on the chip and its period.
+  - "In the pill, UI is unemployment insurance, which the atlas gives as its example of “benefits written into law” that “expand without a new vote”."
+  - The alt.
+- **15.3 and 15.5 (round 1).** Their alts name D4 and D6 by their titles.
+
+### The editor's second pass, applied
+
+The editor's seven rows (`20261112_Round-2-Editor-Notes.md`, "Second pass: words for the systems designer (chapter 15)") are applied as written:
+
+- 15.12's rule, second paragraph, opens "A drawing of the reform carries a third grade, how sure the atlas is of the mechanism. Each connection shows it in its line code, the solid, dashed or dotted line Rule 13.4 sets by grade."
+- 15.17's rule and its "Bodies" spec read "carrying the variable’s own title".
+- 15.17's "Key" spec reads "Two entries: decides, printed once because every line in the diagram means the same, and the delay ticks (Rule 13.5); …".
+- 15.11's note and alt name Variable C4 with its title and "the pill at the top".
+- 15.10's heading names Variable TC1 with its title. It holds three lines at 1440, 1024, 768, 390 and 360 px, measured in Chromium, so the editor's fallback was not needed.
+
+- D3-xxx | The editor's second-pass words for chapter 15 are applied in the generator | D3-900 and D3-615: the editor owns the words, the systems designer the file
+
+### Requests
+
+1. **Data lead.** Sign-off, as offered: Rule 15.17's plate (node titles, the four bodies, the key's ticks); Rule 15.12's plate (RF-21's order, the step list, the key); the cards of 15.3 and 15.5 under RF-16a; and the moved loop ID in 15.6, 15.15 and 15.16. The final build is `/tmp/claude-0/-home-user-Dustin-s-Command-Center/3ab6316c-6935-5f23-804c-cfaafd548447/scratchpad/phase-3/round-2-fix/systems-designer/guide3.html`, with captures beside it in `cap/final3/` (all 37 plates on Newsprint at five widths) and in `cap/final-ch/` and `cap/final3-ch/` (Charcoal).
+2. **Editor. Done:** your second pass, applied as written (below).
+3. **Engineer. Landed:** the size line's no-break spaces in `guide_build.py` (BC S16's last point).

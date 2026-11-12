@@ -70,17 +70,20 @@
       });
       var end = cy;
       ticks.forEach(function (t) { if (t !== 0) c.line(xs(t), top, xs(t), end, { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); });
+      // the zero line before the names, so the kit clears it behind any name it crosses (round 2 fix pass, BC S1 and AX S2);
+      // a short stretch of it is drawn again over each bar, after the bar, so the zero stays crisp where the bars meet it
+      c.line(xz, top - 4, xz, end, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
       rows.forEach(function (r, i) {
         var v = r[ev], by = pos[i].by;
-        if (stacked) c.text(0, pos[i].ny, name(r), { role: 'label', weight: 600, max: W + 1 });
+        if (stacked) c.text(0, pos[i].ny, name(r), { role: 'label', weight: 600, max: W - 1 });
         else c.text(0, by + bh / 2 + size * 0.35, name(r), { role: 'label' });
         var xv = xs(v);
         c.rect(Math.min(xz, xv), by, Math.max(Math.abs(xv - xz), 1), bh, { fill: v < 0 ? 'div-1' : 'div-5', kind: 'bar', axis: 'x', zero: xz, data: { key: r[ek], field: ev, value: v } });
+        c.line(xz, by - 2, xz, by + bh + 2, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
         // the figure across zero from its bar
         var tx = v < 0 ? xz + 6 : xz - 6;
         c.text(tx, by + bh / 2 + size * 0.35, words(v), { role: 'label', anchor: v < 0 ? 'start' : 'end', tnum: true, halo: true });
       });
-      c.line(xz, top - 4, xz, end, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });
       c.height(end + 4);
     }
   });

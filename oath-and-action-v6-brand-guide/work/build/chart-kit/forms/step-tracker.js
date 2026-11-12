@@ -39,7 +39,7 @@
           c.circle(cx, cy, r - (stt === 'now' ? 1.5 : 0.75), Object.assign({ fill: 'surface' }, data));
           c.circle(cx, cy, r - (stt === 'now' ? 1.5 : 0.75), { stroke: stt === 'now' ? 'subject' : 'context', width: stt === 'now' ? 3 : 1.5, mark: false });
           c.text(cx, ty, n, { role: 'tick', size: nsize, weight: stt === 'now' ? 700 : 600, anchor: 'middle', fill: stt === 'now' ? 'label' : 'secondary' });
-          if (stt === 'never') c.line(cx - r * 0.6, cy + r * 0.6, cx + r * 0.6, cy - r * 0.6, { stroke: 'subject', width: 2, mark: false });
+          if (stt === 'never') c.line(cx - r * 0.6, cy + r * 0.6, cx + r * 0.6, cy - r * 0.6, { stroke: 'subject', width: 2, mark: false, strike: true });
         }
       };
       var sword = function (i) { var w = S[state(i)] || state(i); return hits[i] ? w + ', ' + K.fmt(hits[i][ed], 'date') : w; };

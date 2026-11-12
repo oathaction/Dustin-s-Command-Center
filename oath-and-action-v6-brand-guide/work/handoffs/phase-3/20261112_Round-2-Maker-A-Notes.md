@@ -188,6 +188,9 @@ In progress. Items: ST M1, M2, M3, S1, S5, S8, S11; BC M1, M2, M3, S2, S3, S7, S
 | Editor's request (D3-904 sweep) | `column` (Rule 14.12's plate) | Done: columns turn into bars wherever the widest value would not fit; editor told |
 | ST M1, CD A-S1, RF-3, ST S8, BC S3, RF-15, AX S1 | S63, `status-chips`, entry 14.89 | Done: RF-3's title, note 1 and X18 words as given; titles regular weight; Atlas grade column; "disputes"; wraps 2 px inside the edge, measured as printed; sweep passes |
 | ST M2, RF-4, CD A-S3, BC S12 | S60, `indicator-row`, entry 14.86 | Done: qualification column with figure 5's exact replace pair; survey note; each figure beside its caption at the desk (`labels.beside`), one column narrower; typography nbsp; open tracking |
+| RF-2 | S64, `bullet-graph` | Done: a 1 px context-ink edge between the two bands |
+| AX S2, BC S1, BC S8, call 11 | S44 `waterfall`, S43 `stacked-share-bar` | Done: names and values on `row_name` and `row_value` (400, the named row 700); S44's values through `clear_label`, so no gridline crosses a minus sign |
+| AX S1, D3-904 sweep | S01 `big-number`, S16 `bubble-map` (placement only) | Done: S01 takes the phone arrangement wherever "86%" would reach the bars, and words inside a vote segment move under it where the 60-vote line would cross them; S16's size key drops under the shade key where it would run past the edge; the 1440 and 390 px SVGs of both are byte for byte as before |
 
 ### Routine calls
 

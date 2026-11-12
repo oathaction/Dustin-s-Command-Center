@@ -404,7 +404,7 @@
    "source": "s08.json"
   },
   {
-   "example": "Homes in buildings of five or more units made up 36 percent of the new homes finished in 2024, their largest share in any year from 2000 to 2025.",
+   "example": "Builders finished 591,700 homes in buildings of five or more units in 2024, more than in any other year from 2000 to 2025.",
    "domain": "D09",
    "states": [],
    "rule": "14.50",
@@ -481,7 +481,7 @@
    "source": "s54.json"
   },
   {
-   "example": "Higher rents went with higher renter incomes across the states in 2025, and in Florida, home to 3.0 million renter households, the median renter paid the largest share of income in rent, 35.5 percent.",
+   "example": "The four states with the most renter households held 17.1 million of the nation’s 46.6 million in 2025, and three of them had median rents above the nation’s.",
    "domain": "D09",
    "states": [
     "FL",
@@ -499,7 +499,7 @@
    "source": "s56.json"
   },
   {
-   "example": "Women who worked full time, year round had median earnings 82.0 percent of men’s in 2025, and in 25 states and the District of Columbia the figure differed from the nation’s by more than the margin of error.",
+   "example": "Among full-time, year-round workers, women’s median earnings were 82.0 percent of men’s in 2025; 25 states and the District of Columbia differed from that past the margin of error.",
    "domain": "D07",
    "states": [],
    "rule": "14.74",
@@ -541,7 +541,7 @@
    "source": "s60.json"
   },
   {
-   "example": "The Senate fell seven votes short of the 60 it needed to take up H.R. 7008, the Stop Insider Trading Act, which, as the House passed it, limits members’ stock purchases and requires photo ID to vote in federal elections.",
+   "example": "The Senate fell seven votes short of the 60 needed to take up the House’s bill to limit members’ stock purchases and require photo ID to vote in federal elections.",
    "domain": "D04",
    "states": [],
    "rule": "14.87",
@@ -555,7 +555,7 @@
    "source": "s62.json"
   },
   {
-   "example": "Of six disputes over checks on power, the Supreme Court had decided one by October 15, 2026, and had acted by interim order in three others.",
+   "example": "Of six disputes over checks on power, the Supreme Court had decided one by October 15, 2026, and two others stood on its interim orders.",
    "domain": "D05",
    "states": [
     "IL"
