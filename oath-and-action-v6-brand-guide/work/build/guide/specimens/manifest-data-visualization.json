@@ -82,10 +82,9 @@
  "s-14-6-correct": {
   "chapter": "14",
   "rule": "14.6",
-  "alt": "Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s 29 in red and the rest in gray, from 17 on the Fifth Circuit down to 6 on the First Circuit.",
+  "alt": "One red bar, the one the title names, and every other court in gray. The Ninth Circuit has 29 judges in active service, the most of the 13 federal courts of appeals.",
   "illustrative": false,
-  "notes": "Drawn here from the directory's rows, counted by script, until the kit takes a red point by name (request ED-E1).",
-  "readable": true
+  "notes": "The kit draws it from the research lead's count of judges by court, made from the directory's rows."
  },
  "s-14-6-failure": {
   "chapter": "14",
@@ -125,10 +124,10 @@
  "s-14-9-correct": {
   "chapter": "14",
   "rule": "14.9",
-  "alt": "Dots with margin of error lines for ten states’ reported turnout in 2024 against the nation’s 65.3 percent: five past the margin, five within it.",
+  "alt": "Dots with margin of error lines for ten states against the nation. Five of the ten states with the most voting-age citizens differed from the nation’s 65.3 percent turnout by more than the margin of error.",
   "illustrative": false,
-  "notes": "Drawn here from the turnout file with each gap's margin computed by script, until the kit's interval form lands (round 2).",
-  "readable": true
+  "notes": "The kit's own figure, from oa-chart.mjs figure, around the script's two drawings (desk and phone), until the kit's interval form lands (round 2).",
+  "interactive": true
  },
  "s-14-9-failure": {
   "chapter": "14",
@@ -154,10 +153,9 @@
  "s-14-11-correct": {
   "chapter": "14",
   "rule": "14.11",
-  "alt": "A line of median household income from 2005 to 2025, broken where the survey changed in 2013 and 2017, ending at $87,460.",
+  "alt": "A line broken where the survey changed, with both estimates printed at each break. Median household income stood at $87,460 in 2025, in 2025 dollars.",
   "illustrative": false,
-  "notes": "Drawn here from the Census Bureau's table, segments split by its footnotes 6 and 7 (2013) and 5 (2017).",
-  "readable": true
+  "notes": ""
  },
  "s-14-11-failure": {
   "chapter": "14",
@@ -169,10 +167,9 @@
  "s-14-12-correct": {
   "chapter": "14",
   "rule": "14.12",
-  "alt": "Twelve years of federal receipts as columns at full width and as bars on a phone. Both rise from 3,249 billion dollars in 2015 to 5,403 billion in 2026, with a fall in 2023.",
+  "alt": "The same twelve years drawn twice, as columns at full width and as bars on a phone. Federal receipts reached $5.40 trillion in fiscal year 2026, up from $3.25 trillion in 2015.",
   "illustrative": false,
-  "notes": "The two drawings, stacked, drawn here from the Treasury file, so the plate shows both widths at once; where the stage is narrower than the full-width drawing, the plate shows the phone drawing and one line naming the columns.",
-  "readable": true
+  "notes": ""
  },
  "s-14-12-failure": {
   "chapter": "14",
@@ -285,11 +282,10 @@
  "s-14-24-sketch": {
   "chapter": "14",
   "rule": "14.24",
-  "width_px": 300,
+  "width_px": null,
   "illustrative": true,
-  "alt": "A sketch of a radar chart, with illustrative data.",
-  "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
-  "fit_switch": false
+  "alt": "Two radar charts draw the same illustrative values for two groups with their spokes in different orders, and the dark group’s shape is the larger in the first and the smaller in the second. Beside them, grouped bars of the same values show the dark group ahead on two measures and behind on three.",
+  "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
  },
  "s-14-s11": {
   "chapter": "14",
@@ -456,11 +452,10 @@
  "s-14-45-sketch": {
   "chapter": "14",
   "rule": "14.45",
-  "width_px": 180,
+  "width_px": null,
   "illustrative": true,
-  "alt": "A sketch of a streamgraph, with illustrative data.",
-  "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
-  "fit_switch": false
+  "alt": "A streamgraph beside small multiples of the same illustrative data: the middle part never changes, yet its band bends in the streamgraph and lies flat in the small multiples.",
+  "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
  },
  "s-14-s15": {
   "chapter": "14",
@@ -500,7 +495,8 @@
   "width_px": null,
   "alt": "A lookup table of the atlas’s 17 issue records on news, records and public information, with a search field and a filter by grade. The still image shows the eight records graded well supported.",
   "illustrative": false,
-  "notes": "S38, filterable-lookup-table: the chart kit draws it from work/build/chart-kit/specs/s38.json (contract R1-C3)"
+  "notes": "S38, filterable-lookup-table: the chart kit draws it from work/build/chart-kit/specs/s38.json (contract R1-C3)",
+  "interactive": true
  },
  "s-14-s39": {
   "chapter": "14",

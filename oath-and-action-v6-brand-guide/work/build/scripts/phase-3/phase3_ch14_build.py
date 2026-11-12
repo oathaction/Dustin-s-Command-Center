@@ -164,6 +164,8 @@ def outputs(rounds):
             manifest[frag] = {"chapter": "14", "rule": rid, "width_px": None, "alt": spec.get("alt", ""),
                               "illustrative": bool(spec.get("illustrative")),
                               "notes": f"{p['spec_id']}, {p['form_id']}: the chart kit draws it from {sp.relative_to(ROOT)} (contract R1-C3)"}
+            if spec.get("lookup"):
+                manifest[frag]["interactive"] = True   # access S3: a lookup is a control besides the table's disclosure
             log.append({"example": spec.get("title", p["spec_id"]), "domain": spec.get("domain"), "states": spec.get("states") or [],
                         "rule": rid, "source": f"{sid}.json"})
         else:

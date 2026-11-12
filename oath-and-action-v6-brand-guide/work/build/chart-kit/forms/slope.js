@@ -3,7 +3,8 @@
  * name at the right. Items the title names are set in ink, the rest in gray; labels that would touch move apart and keep a
  * short leader to their line's end. An item the title names as its one point (labels.point) takes the working red, its
  * line and both end dots on the 1 px keyline of Rule 05.5 on Newsprint (Rule 14.6); the line is drawn as a thin band so
- * it takes the red fill role, and it counts as the view's one red mark.
+ * it takes the red fill role, and it counts as the view's one red mark. The other items then take the light fill on
+ * Newsprint and the context ink on Charcoal (palette rule R3).
  * encode: category (category), value (number), series (category: which of the two times a row is).
  * labels: from, to (the two series values), from_label, to_label (the axis heads; the series values otherwise),
  * categories ({category: printed name}), named (a category or list set in ink), point (the one category in red).
@@ -88,9 +89,11 @@
           });
           return;
         }
-        c.line(xl, y0, xr, y1, { stroke: on ? 'subject' : 'context', width: c.t(on ? 'line-subject' : 'line-context'), data: { key: k, field: ev } });
-        c.circle(xl, y0, c.t('dot-vertex-radius'), { fill: on ? 'subject' : 'context', data: { key: k + '|' + L.from, field: ev, value: pair[k].from } });
-        c.circle(xr, y1, c.t('dot-vertex-radius'), { fill: on ? 'subject' : 'context', data: { key: k + '|' + L.to, field: ev, value: pair[k].to } });
+        // beside a red point the other items take the light fill on Newsprint and the context ink on Charcoal (palette rule R3)
+        var gray = pt !== null && c.ground !== 'charcoal' ? 'light-fill' : 'context';
+        c.line(xl, y0, xr, y1, { stroke: on ? 'subject' : gray, width: c.t(on ? 'line-subject' : 'line-context'), data: { key: k, field: ev } });
+        c.circle(xl, y0, c.t('dot-vertex-radius'), { fill: on ? 'subject' : gray, data: { key: k + '|' + L.from, field: ev, value: pair[k].from } });
+        c.circle(xr, y1, c.t('dot-vertex-radius'), { fill: on ? 'subject' : gray, data: { key: k + '|' + L.to, field: ev, value: pair[k].to } });
       });
       left.forEach(function (it) {
         var on = ink(it.k);

@@ -2,7 +2,7 @@
   "id": "14.31",
   "title": "Draw every series thin and gray, and light the one the story follows.",
   "rule": [
-    "Use a line field when dozens of series share one scale and the story follows one of them: draw every series as a thin gray line, so the reader sees the spread, and draw the subject in ink on top with its name and latest value at its end. Name one or two gray lines at the field’s edges where it helps, and carry every series in the table."
+    "Use a line field when dozens of series share one scale and the story follows one of them: draw every series as a thin gray line, so the reader sees the spread, and draw the subject in ink on top with its name and latest value at its end. Where two series tie for the title’s point, draw both in ink. Set the national series apart as a dashed line in the text’s ink with its own end label, name one or two gray lines at the field’s edges where it helps, and carry every series in the table."
   ],
   "use_when": "The reader asks how one place or group moved against all the others, and the whole field matters as context.",
   "use_instead": [
@@ -31,7 +31,7 @@
   "related": [
     "14.8"
   ],
-  "builders": "Form line-field: node work/build/chart-kit/oa-chart.mjs build s27; labels.lit names the series in ink and labels.named the gray lines named at the field’s edges.",
+  "builders": "Form line-field: node work/build/chart-kit/oa-chart.mjs build s27; labels.lit names the series in ink (a list for a tie), labels.apart the dashed national line and labels.named the gray lines named at the field’s edges.",
   "correct": null,
   "failure": null
 }

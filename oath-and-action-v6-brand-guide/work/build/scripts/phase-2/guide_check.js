@@ -266,7 +266,13 @@ function audit(page) {
       const ex = s.getAttribute('data-check-exempt'); if (ex) sp.exemptions.push({ specimen: id, skips: ex });
       const role = s.getAttribute('role');
       if (role === 'img') { const l = norm(s.getAttribute('aria-label')); if (l.length < 15) sp.noAlt.push({ specimen: id, label: l }); }
-      else { const d = (s.getAttribute('aria-describedby') || '').split(/\s+/).map((x) => document.getElementById(x)).filter(Boolean).map((x) => norm(x.textContent)).join(' '); if (d.length < 15) sp.noAlt.push({ specimen: id, label: d, role }); }
+      else {
+        // access S3 (Phase 3 round 1 fix pass): a stage that holds a kit figure is described by the figure's own alt, which
+        // names its drawing, so the stage carries no description of its own
+        const kitAlt = norm(((s.querySelector('figure.oac-fig .oac-alt') || {}).textContent) || '');
+        const d = (s.getAttribute('aria-describedby') || '').split(/\s+/).map((x) => document.getElementById(x)).filter(Boolean).map((x) => norm(x.textContent)).join(' ');
+        if (d.length < 15 && kitAlt.length < 15) sp.noAlt.push({ specimen: id, label: d, role });
+      }
     });
     document.querySelectorAll('img').forEach((im) => { if (!im.hasAttribute('alt')) sp.imgNoAlt.push({ src: (im.getAttribute('src') || '').slice(0, 60), where: where(im) }); });
     document.querySelectorAll('svg').forEach((s) => {

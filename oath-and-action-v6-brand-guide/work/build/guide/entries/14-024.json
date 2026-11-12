@@ -2,7 +2,7 @@
   "id": "14.24",
   "title": "Avoid radar charts, whose shapes change with the order of their spokes.",
   "rule": [
-    "Leave radar charts out of every Oath & Action piece. Draw the same measures as a dot plot on one scale, or as small-multiple bars with one panel per group, so each value is read as a position or a length from zero."
+    "Leave radar charts out of every Oath & Action piece. Draw the same measures as grouped bars from one zero line, a dot plot on one scale, or small-multiple bars with one panel per group, so each value is read as a length from zero or a position."
   ],
   "use_when": "Never: a reader who asks how several groups compare across the same measures gets a truer answer from a dot plot or small-multiple bars.",
   "use_instead": [
@@ -31,7 +31,8 @@
   "related": [
     "14.4"
   ],
-  "builders": "No form: the kit draws no radar chart. The sketch is work/build/guide/specimens/s-14-24-sketch.html, drawn small; build the better choice with the dot-plot or small-multiple-bars form.",
+  "builders": "No form: the kit draws no radar chart. The sketch, work/build/guide/specimens/s-14-24-sketch.html, draws the radar twice with its spokes in two orders beside grouped bars of the same values; build the better choice with the grouped-bar, dot-plot or small-multiple-bars form.",
   "correct": null,
-  "failure": null
+  "failure": null,
+  "sketch_alt": "Two radar charts draw the same illustrative values for two groups with their spokes in different orders, and the dark group’s shape is the larger in the first and the smaller in the second. Beside them, grouped bars of the same values show the dark group ahead on two measures and behind on three."
 }

@@ -53,6 +53,7 @@
     ]
   },
   "chart_notes": [
+    "Wyoming, which the title names, is drawn in dark ink; the other states are light gray, each with its rise printed.",
     "Each state’s rise in percent is printed beside its dot, from Wyoming’s +302% to the District of Columbia’s +22%; the United States, set apart at the top, rose 62%."
   ],
   "phone": "same",
@@ -73,7 +74,8 @@
   },
   "labels": {
     "apart": "US",
-    "value": "{value}%"
+    "value": "{value}%",
+    "named": "WY"
   },
   "notes_internal": [
     "Maker B, round 1. Data plan row 12, rule 14.26. Domain D06 from the sidecar (Competition and market power). states: WY, named in the title (Rule 01.12's count; the plan said 'top states named by the data').",
@@ -82,6 +84,6 @@
     "H09: the window 2019 to 2025 compares two whole calendar years and splits no period at an inauguration; the measure line gives both ends' reasons. Read from the left and the right: the title reports a rise everywhere and names no party or official.",
     "Palette note from the data lead: direction by position, every stem in the subject ink, no fill.",
     "Data lead DL-B1: the Census Bureau's Business Formation Statistics methodology and definitions pages (census.gov/econ/bfs/methodology.html and definitions.html, read November 12, 2026) do not say how an application is assigned to a state, so the chart adds no note and claims no cause for Wyoming's rise.",
-    "Review fix pass: the source line is the sidecar’s, which now names the frozen file’s vintage, the September 2026 monthly release of October 14, 2026 (statistics M1 under D3-476: the figures stay as frozen, and the Bureau’s November 12 revision waits for the Phase 5 refresh). The key is dropped, since the labeled +100% gridline shows a doubling, and the names sit flush left (brand S13). Wyoming stays in the subject ink until the data lead rules under D3-489. Figures checked again by script (maker_b_figure_checks.py, check S24)."
+    "Review fix pass: the source line is the sidecar’s, which now names the frozen file’s vintage, the September 2026 monthly release of October 14, 2026 (statistics M1 under D3-476: the figures stay as frozen, and the Bureau’s November 12 revision waits for the Phase 5 refresh). The key is dropped, since the labeled +100% gridline shows a doubling, and the names sit flush left (brand S13). Wyoming takes the subject ink and the other states the light fill, with no red: a state ties to a party for a U.S. reader (data lead ruling b, D3-489); the United States row keeps the subject ink, set apart. Figures checked again by script (maker_b_figure_checks.py, check S24)."
   ]
 }

@@ -63,7 +63,18 @@
     if (cur === currentRule) return;
     if (currentRule) $$('.local-toc a[aria-current]').forEach(function (a) { a.removeAttribute('aria-current'); });
     currentRule = cur;
-    if (cur && chapter) { var a = $('.local-toc a[href="#' + cur.id + '"]', chapter); if (a) a.setAttribute('aria-current', 'true'); }
+    var toc = chapter ? $('.local-toc', chapter) : null;
+    var a = cur && toc ? $('a[href="#' + cur.id + '"]', toc) : null;
+    if (a) a.setAttribute('aria-current', 'true');
+    // CD ST-S1, BC S19 (Phase 3 round 1 fix pass): a chapter with groups shows its groups, the one in view open, and the
+    // list scrolls to keep the current rule in sight
+    if (toc && toc.hasAttribute('data-groups')) {
+      toc.setAttribute('data-collapse', '');
+      var g = a ? a.closest('.toc-group') : null;
+      $$('.toc-group.is-open', toc).forEach(function (x) { if (x !== g) x.classList.toggle('is-open', false); });
+      if (g) g.classList.add('is-open');
+    }
+    if (a && toc && toc.scrollHeight > toc.clientHeight + 1) keepInView(a, toc, 16);
   }
 
   // From 90em the appendix spans the whole page and slides over the rail; once it reaches the rail, the rail is hidden,

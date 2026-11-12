@@ -12,7 +12,7 @@
     },
     {
       "when": "The reader compares sizes across a dozen or more rows",
-      "rule": "14.15"
+      "rule": "14.21"
     },
     {
       "when": "A long list needs sorting and scanning by rank",

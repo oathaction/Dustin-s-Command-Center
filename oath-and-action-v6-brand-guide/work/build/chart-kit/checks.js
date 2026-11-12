@@ -83,10 +83,32 @@ function rows_of(K, ds) {
 // ---------------------------------------------------------------------------------------------------------------
 // The spec against the contract, its data, its words and V7
 // ---------------------------------------------------------------------------------------------------------------
+// access S1 (round 1 fix pass): the years a chart draws, read from the time columns it draws (its encode and its table's
+// pivot), and the years a source line names as its period, leaving out when it was retrieved, released or revised
+function drawn_years(spec, cols, rows) {
+  const enc = [];
+  Object.values(spec.encode || {}).forEach(v => [].concat(v).forEach(x => { if (typeof x === 'string') enc.push(x); }));
+  if (spec.table && spec.table.pivot) enc.push(spec.table.pivot.column, spec.table.pivot.row);
+  const tcols = [...new Set(enc)].filter(k => cols[k] && ['year', 'month', 'date'].indexOf(cols[k].type) >= 0);
+  const ys = new Set();
+  for (const r of rows) for (const k of tcols) { const m = /^(\d{4})/.exec(String(r[k] === null || r[k] === undefined ? '' : r[k])); if (m) ys.add(+m[1]); }
+  return ys.size ? { from: Math.min(...ys), to: Math.max(...ys), cols: tcols } : null;
+}
+function line_years(line) {
+  const s = String(line || '')
+    .replace(/\b[Rr]etrieved (?:on )?(?:[A-Z][a-z]+ \d{1,2}, )?\d{4}/g, ' ')
+    .replace(/\b(?:[A-Z][a-z]+ (?:\d{1,2}, )?)?\d{4},? (?:release|revision|vintage|edition|snapshot)\b/g, ' ')
+    .replace(/\b(?:[Rr]elease|[Vv]intage|[Ss]napshot|[Ee]dition|[Rr]evision|[Rr]evised|[Uu]pdated|[Pp]ublished|[Ii]ssued)(?: of| on| dated)? (?:[A-Z][a-z]+ )?(?:\d{1,2}, )?\d{4}/g, ' ')
+    .replace(/\bas of (?:[A-Z][a-z]+ )?(?:\d{1,2}, )?\d{4}/g, ' ');
+  return [...s.matchAll(/(?<![\d$.,-])(?:1[89]|20)\d{2}(?![\d-])/g)].map(m => +m[0]);
+}
+function fill_template(t, span) { return String(t).replace(/\{from\}/g, String(span.from)).replace(/\{to\}/g, String(span.to)); }
+
 function check_spec(K, spec, opts) {
   opts = opts || {};
   const f = [];
   const datasets = [];
+  const own_line = !!spec.source_line;
   // a chart of one dataset may leave source_line out and print its sidecar's line (D3-102)
   const single = typeof spec.dataset === 'string';
   for (const k of REQUIRED) if ((spec[k] === undefined || spec[k] === null || spec[k] === '') && !(k === 'source_line' && single)) f.push(`spec: "${k}" is missing; contract C2 in work/build/chart-kit/README.md lists every key`);
@@ -149,8 +171,23 @@ function check_spec(K, spec, opts) {
     // the source line against the sidecar (H04)
     if (datasets.length === 1) {
       const m = datasets[0].meta;
-      const ok = [m.printed_source_line].concat(Object.values(m.source_line_variants || {}));
-      if (ok.indexOf(spec.source_line) < 0) f.push(`source: the source line differs from ${datasets[0].file}'s printed_source_line and its variants. Leave source_line out to print the sidecar's line, copy one of its variants, or ask the research lead to add a variant to work/build/data/${datasets[0].file.replace(/\.(csv|json)$/, '')}.meta.json`);
+      // access S1: a sidecar's templates ({from} and {to}) fit the line to the years this chart draws; a spec names one
+      // with source_line_template and leaves source_line out, or writes the filled line itself
+      const span = drawn_years(spec, cols, sel);
+      const tpl = m.source_line_templates || {};
+      if (spec.source_line_template !== undefined) {
+        if (!tpl[spec.source_line_template]) f.push(`source: source_line_template "${spec.source_line_template}" is not one of ${datasets[0].file}'s source_line_templates (${Object.keys(tpl).join(', ') || 'none'})`);
+        else if (!span) f.push('source: source_line_template needs a year, month or date column the chart draws, to fill {from} and {to}');
+        else if (!own_line) spec.source_line = fill_template(tpl[spec.source_line_template], span);
+      }
+      const ok = [m.printed_source_line].concat(Object.values(m.source_line_variants || {}), span ? Object.values(tpl).map(t => fill_template(t, span)) : []);
+      if (ok.indexOf(spec.source_line) < 0) f.push(`source: the source line differs from ${datasets[0].file}'s printed_source_line and its variants${Object.keys(tpl).length ? ' and templates' : ''}. Leave source_line out to print the sidecar's line, copy one of its variants, name a template with source_line_template, or ask the research lead to add a variant to work/build/data/${datasets[0].file.replace(/\.(csv|json)$/, '')}.meta.json`);
+      // access S1: the period the line names holds every year the chart draws (a line for fiscal 2026 under a chart of
+      // 2016 and 2026 fails); a line that names no year is not read
+      const ly = line_years(spec.source_line);
+      if (span && ly.length && (span.from < Math.min(...ly) || span.to > Math.max(...ly))) {
+        f.push(`source: the source line names ${Math.min(...ly) === Math.max(...ly) ? Math.min(...ly) : Math.min(...ly) + ' to ' + Math.max(...ly)}, but the chart draws ${span.from === span.to ? span.from : span.from + ' to ' + span.to} (${span.cols.join(', ')}); print a line for the years drawn${Object.keys(tpl).length ? ', such as one of the sidecar\'s source_line_templates' : ': ask the research lead for a variant or a template'}`);
+      }
     } else if (datasets.length > 1) {
       // each dataset's publisher appears: any one of its "; " parts, whole or after its last comma, with "United States" read as "U.S."
       const norm = x => String(x).replace(/United States/g, 'U.S.').trim();

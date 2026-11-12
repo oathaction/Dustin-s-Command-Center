@@ -333,6 +333,11 @@ a.toc-part-k:hover { text-decoration: underline }
 .local-toc a[aria-current] { background: var(--oa-color-state-selected-band-on-newsprint); border-left-color: var(--oa-color-state-selected-bar-on-newsprint); font-weight: var(--oa-font-weight-bold) }
 .local-toc .toc-group a { margin-top: var(--oa-space-200); font-weight: var(--oa-font-weight-semibold) }
 .local-toc .toc-group:first-child a { margin-top: 0 }
+/* CD ST-S1, BC S19: a group's rules sit under it; once the script runs, only the group in view stays open */
+.local-toc ul.toc-rules { columns: auto; margin: 0 0 0 var(--oa-space-150) }
+.local-toc .toc-rules a { margin-top: 0; font-weight: var(--oa-font-weight-regular) }
+.local-toc .toc-rules a[aria-current] { font-weight: var(--oa-font-weight-bold) }
+.local-toc[data-collapse] .toc-group:not(.is-open) > .toc-rules { display: none }
 .toc-rid { color: var(--ink-2); margin-right: .25em }
 /* In a chapter with groups the rule index after the intro does this job until the side column appears */
 .chapter--grouped > .local-toc { display: none }

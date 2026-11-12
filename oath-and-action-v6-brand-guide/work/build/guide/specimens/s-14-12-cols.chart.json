@@ -1,0 +1,59 @@
+{
+ "kit": 1,
+ "id": "s-14-12-cols",
+ "form": "column",
+ "family": "comparison",
+ "tier": "core",
+ "dataset": "treasury-mts-receipts-by-source",
+ "where": {
+  "source": "Total"
+ },
+ "sort": [
+  {
+   "field": "fiscal_year",
+   "order": "asc"
+  }
+ ],
+ "reader_question": "How much does the federal government collect each year?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: the Treasury’s monthly statement",
+ "title": "Federal receipts reached $5.40 trillion in fiscal year 2026, up from $3.25 trillion in 2015.",
+ "measure_line": "Federal receipts, billions of dollars not adjusted for inflation, fiscal years 2015 to 2026, the years the Treasury table we drew holds; each fiscal year ends September 30",
+ "source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2015 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation.",
+ "alt": "Twelve years of federal receipts as columns at full width and as bars on a phone. Both rise from 3,249 billion dollars in 2015 to 5,403 billion in 2026, with a fall in 2023.",
+ "table": {
+  "caption": "Federal receipts by fiscal year, billions of dollars",
+  "columns": [
+   {
+    "field": "fiscal_year",
+    "label": "Fiscal year",
+    "format": "year",
+    "row_header": true
+   },
+   {
+    "field": "receipts_dollars",
+    "label": "Billions of dollars",
+    "format": "billions-value:0"
+   }
+  ]
+ },
+ "encode": {
+  "x": "fiscal_year",
+  "y": "receipts_dollars"
+ },
+ "labels": {
+  "named": 2026
+ },
+ "formats": {
+  "value": "billions-value:0"
+ },
+ "phone": "differs",
+ "phone_note": "On a phone the twelve columns turn into bars, so every value keeps its label.",
+ "phone_view": true,
+ "domain": "D08",
+ "states": [],
+ "notes_internal": "Rule 14.12's correct plate: the kit's column form and its phone drawing, one spec.",
+ "credit": "Chart: Oath & Action",
+ "illustrative": false
+}

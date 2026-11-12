@@ -64,7 +64,7 @@
     ]
   },
   "chart_notes": [
-    "Householders under 35, the group the title names, are drawn in red with a dark outline; the other four groups are gray."
+    "Householders under 35, the group the title names, are drawn in red with a dark outline; the other four groups are light gray."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -102,7 +102,7 @@
     "Two datasets, so the source line names both tables with each retrieval date (C2).",
     "Note 2 gives the longer record so a reader on either side sees where 2015 sits (DR-93, DR-124).",
     "Figures checked by script (figures.py s20).",
-    "Review fix pass: the title in ST S13's and the data lead's words; the under-35 line and its two dots take the red with the 1 px keyline on Newsprint (labels.point; data lead ruling b, D3-489, an age group no party owns); the other lines keep the context gray, since the kit has no light-fill stroke role (asked of the engineer). AX S9: householder glossed in the Census Bureau's sense and margin of error in chapter 13's words. The source line waits on the research lead's variant for the two tables (ST S11). Figures checked by script (round-1-fix tools/figs.py s20)."
+    "Review fix pass: the title in ST S13's and the data lead's words; the under-35 line and its two dots take the red with the 1 px keyline on Newsprint (labels.point; data lead ruling b, D3-489, an age group no party owns); the other lines take the light fill on Newsprint and the context ink on Charcoal through the engineer's light-fill stroke role (R3). AX S9: householder glossed in the Census Bureau's sense and margin of error in chapter 13's words. The source line waits on the research lead's variant for the two tables (ST S11). Figures checked by script (round-1-fix tools/figs.py s20)."
   ],
   "source_line": "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Annual Statistics 2015 and 2025, Tables 17 and B-5, homeownership rate by age of householder with margins of error, 2015 and 2025, United States. Retrieved November 11 and 12, 2026. Survey estimates; the 2025 average leaves out October, when no data were collected; margins of the changes computed by Oath & Action."
 }

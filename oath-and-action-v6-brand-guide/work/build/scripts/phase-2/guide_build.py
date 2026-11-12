@@ -836,7 +836,8 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     illustrative = bool(meta.get("illustrative"))
     # Phase 3: a stage that holds a chart kit figure is a group, never an image: the figure carries its own title, drawing,
     # notes and a table a reader opens (contract C7)
-    interactive = bool(meta.get("interactive")) or bool(frag and "data-oa-chart=" in frag)
+    kit_fig = bool(frag and ("data-oa-chart=" in frag or "data-oa-static" in frag))
+    interactive = bool(meta.get("interactive")) or kit_fig
     readable = bool(meta.get("readable")) and not interactive
     # CA-N9 and CA-M1 (fix pass): every plate with a fixed width carries the True size / Fit to window switch, hidden
     # until the shell's script finds the stage wider than its frame and finds that fitting keeps every text at 13 px or
@@ -931,11 +932,17 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
             # D2-255, AX-S2: a group named by the plate, described once by the alt. The alt paragraph is hidden from
             # assistive technology, so it is heard only as the group's description.
             aid = f"{spec_id}--alt"
-            alt_html = f'<p class="vh" id="{aid}" aria-hidden="true">{e(alt)}</p>' if alt else ""
             stage_attrs.append('role="group"')
-            stage_attrs.append(f'aria-label="{e(frame_name)}, {"interactive specimen" if interactive else "specimen"}"')
-            if alt:
-                stage_attrs.append(f'aria-describedby="{aid}"')
+            if kit_fig:
+                # access S3 (round 1 fix pass): a kit figure's drawing carries the alt as its own name, so the stage adds no
+                # description and a reader hears it once; the stage is "interactive" only where the manifest says it holds
+                # a control besides the table's disclosure (a lookup)
+                stage_attrs.append(f'aria-label="{e(frame_name)}, {"interactive specimen" if meta.get("interactive") else "specimen"}"')
+            else:
+                alt_html = f'<p class="vh" id="{aid}" aria-hidden="true">{e(alt)}</p>' if alt else ""
+                stage_attrs.append(f'aria-label="{e(frame_name)}, {"interactive specimen" if interactive else "specimen"}"')
+                if alt:
+                    stage_attrs.append(f'aria-describedby="{aid}"')
             stage_attrs.append(f'data-mode="{"interactive" if interactive else "readable"}"')
         else:
             stage_attrs.append('role="img"')
@@ -1976,12 +1983,27 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         out.append(head + intro_html + opener_html + index_html + "</div>")
     if toc:
         items = []
+        # CD ST-S1, BC S19 (Phase 3 round 1 fix pass): in a chapter with groups, each group holds its own rules in a list
+        # under it; the shell's script closes every group but the one in view and keeps the current rule in view. With
+        # scripts off every group stays open.
+        open_group = None
         for a, lbl, t in toc:
+            item = f'<li><a href="#{a}">' + (f'<span class="toc-rid">{e(lbl)}</span> ' if lbl else "") + f"{inline(t)}</a></li>"
             if lbl == "group":
-                items.append(f'<li class="toc-group"><a href="#{a}">{inline(t)}</a></li>')
+                if open_group is not None:
+                    items.append("</ul></li>")
+                items.append(f'<li class="toc-group"><a href="#{a}">{inline(t)}</a><ul class="toc-rules">')
+                open_group = a
+            elif open_group is not None and lbl and lbl.startswith("Rule ") and member.get(lbl[5:]) is not None:
+                items.append(item)
             else:
-                items.append(f'<li><a href="#{a}">' + (f'<span class="toc-rid">{e(lbl)}</span> ' if lbl else "") + f"{inline(t)}</a></li>")
-        out.append(f'<div class="local-toc"><p class="local-toc-title" id="{cid}-toc-t">In this chapter</p>'
+                if open_group is not None:
+                    items.append("</ul></li>")
+                    open_group = None
+                items.append(item)
+        if open_group is not None:
+            items.append("</ul></li>")
+        out.append(f'<div class="local-toc"{" data-groups" if groups else ""}><p class="local-toc-title" id="{cid}-toc-t">In this chapter</p>'
                    f'<ul aria-labelledby="{cid}-toc-t">{"".join(items)}</ul></div>')
     out.append('<div class="ch-body">' + "".join(body) + "".join(closers) + "</div>")
     out.append(chapnav(idx, order, ctx) + "</section>")

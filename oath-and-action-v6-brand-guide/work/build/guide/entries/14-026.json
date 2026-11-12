@@ -1,8 +1,8 @@
 {
   "id": "14.26",
-  "title": "Rank one change per item as a stem from zero, with a key for its length.",
+  "title": "Rank one change per item as a stem from zero, longest first.",
   "rule": [
-    "Use a change lollipop when each item has one change between two dates. Draw a stem from zero to the change with a dot at its end, rank the items from the largest change, print each change beside its dot, and set the national figure apart at the top. A key above the stems shows the length of one round change. Position and the printed sign carry the direction."
+    "Use a change lollipop when each item has one change between two dates. Draw a stem from zero to the change with a dot at its end, rank the items from the largest change, print each change beside its dot, and set the national figure apart at the top. Set the names flush left at the drawing’s edge, and label a gridline at a round change, such as +100 for a doubling, so the reader can judge a stem’s length. Position and the printed sign carry the direction."
   ],
   "use_when": "The reader asks which places or groups moved most between two dates, and the size of each move matters more than where each one started.",
   "use_instead": [

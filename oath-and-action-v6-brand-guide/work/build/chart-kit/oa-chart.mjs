@@ -519,6 +519,30 @@ async function self_test() {
     console.log(`${hit ? 'caught' : 'MISSED'} ${name}${hit ? '' : ': ' + JSON.stringify(f.slice(0, 3))}`);
     if (!hit) bad++;
   }
+  // access S1 (round 1 fix pass): a source line whose period leaves out a year the chart draws fails, and a sidecar's
+  // template, filled with the years drawn, prints and passes. A copy of the fixture's data in a scratch folder carries a
+  // line for 2026 alone and a template.
+  {
+    const td = fs.mkdtempSync(path.join(process.env.TMPDIR || '/tmp', 'oa-kit-span-'));
+    const DATA = path.join(ROOT, 'work/build/data');
+    const meta = JSON.parse(fs.readFileSync(path.join(DATA, base.dataset + '.meta.json'), 'utf8'));
+    fs.copyFileSync(path.join(DATA, meta.file), path.join(td, meta.file));
+    const one = 'Source: a fixture publisher, all nonfarm employees, 2026, United States. Retrieved November 6, 2026.';
+    meta.printed_source_line = one; meta.source_line_variants = {};
+    meta.source_line_templates = { span: 'Source: a fixture publisher, all nonfarm employees, {from} to {to}, United States. Retrieved November 6, 2026.' };
+    fs.writeFileSync(path.join(td, base.dataset + '.meta.json'), JSON.stringify(meta));
+    const s1 = JSON.parse(JSON.stringify(base)); delete s1.source_line;
+    const r1 = run_spec(s1, { grounds: ['newsprint'], widths: [1440], data_dir: td, no_narrow: true });
+    const c1 = r1.faults.some(x => x.indexOf('but the chart draws 2022 to 2026') >= 0);
+    console.log(`${c1 ? 'caught' : 'MISSED'} a source line for 2026 under a chart of 2022 to 2026${c1 ? '' : ': ' + JSON.stringify(r1.faults.slice(0, 2))}`);
+    if (!c1) bad++;
+    const s2 = JSON.parse(JSON.stringify(base)); delete s2.source_line; s2.source_line_template = 'span';
+    const r2 = run_spec(s2, { grounds: ['newsprint'], widths: [1440], data_dir: td, no_narrow: true });
+    const ok2 = !r2.faults.some(x => /^source:/.test(x)) && s2.source_line === 'Source: a fixture publisher, all nonfarm employees, 2022 to 2026, United States. Retrieved November 6, 2026.';
+    console.log(`${ok2 ? 'pass' : 'FAIL'} a template filled with the years drawn prints and passes${ok2 ? '' : ': ' + JSON.stringify([s2.source_line].concat(r2.faults.slice(0, 2)))}`);
+    if (!ok2) bad++;
+    fs.rmSync(td, { recursive: true, force: true });
+  }
   // round 1 fix pass (CD RM1): a line chart on a scale that starts above zero draws no zero line, and a dumbbell's small
   // change (two dots touching on a value a hundredth apart) is no fault
   {

@@ -7,8 +7,12 @@
   "use_when": "The reader asks how far apart two values are for each group, such as the same age group in two elections, and which way each one moved.",
   "use_instead": [
     {
-      "when": "Many items at two points in time, where a change in their order matters",
+      "when": "About ten items or fewer at two points in time, where a change in their order matters",
       "rule": "14.20"
+    },
+    {
+      "when": "The rows differ so much in size that a small row’s two dots would sit on top of each other, so each row’s change reads better as a percent",
+      "rule": "14.26"
     },
     {
       "when": "The direction and size of each shift matter more than the two values",

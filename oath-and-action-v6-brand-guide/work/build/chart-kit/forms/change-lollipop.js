@@ -6,7 +6,9 @@
  * x values), or from a column that holds it (encode value).
  * encode: key (code), label (text), x (year or category, optional), y (number, optional), value (number, optional).
  * labels: from, to (the two x values compared), measure ("percent", the default, or "difference"), apart (the key value
- * set apart above the rest, such as "US"), key (words for the key, with {value}), key_value (the key's shift), value
+ * set apart above the rest, such as "US"), named (a key or a list of keys the title names: those stems take the subject
+ * ink and the others the light fill, palette rule R3; the item set apart keeps the subject ink), key (words for the key,
+ * with {value}), key_value (the key's shift), value
  * (words beside each dot, with {value}, such as "{value}%"). formats: value (the shift in the words), key (the key's
  * shift), tick (the axis). Maker B, round 1. */
 (function (K) {
@@ -16,7 +18,7 @@
     name: 'Change Lollipop',
     family: 'shift-and-swing',
     encode: { key: 'code', label: 'text', x: 'category?', y: 'number?', value: 'number?' },
-    labels: ['from', 'to', 'measure', 'apart', 'key', 'key_value', 'value'],
+    labels: ['from', 'to', 'measure', 'apart', 'named', 'key', 'key_value', 'value'],
     phone: 'same',
     draw: function (c) {
       var L = c.labels, f = c.spec.formats || {}, W = c.width, ek = c.field('key'), el = c.field('label');
@@ -86,15 +88,17 @@
       ticks.forEach(function (t) {
         c.line(xs(t), grid_top, xs(t), grid_end, { stroke: t === 0 ? 'baseline' : 'gridline', width: c.t(t === 0 ? 'line-baseline' : 'line-hairline'), mark: false });
       });
+      var ink = K.parts.named_fill(c, L.named, ek);
       var row = function (it, bold) {
+        var role = bold ? 'subject' : ink(it.row);
         var ny = stacked ? y + size : y + pitch / 2 + size * 0.35, ly = stacked ? y + size + 10 : y + pitch / 2;
         // names flush left at the drawing's edge, as the family's long ranked lists set them (brand S13, round 1 fix pass)
-        c.text(0, ny, it.label, { role: 'label', weight: bold ? 700 : 400, halo: true });
+        c.text(0, ny, it.label, { role: 'label', weight: bold || (ink.named && ink.is_named(it.row)) ? 700 : 400, halo: true });
         var xe = xs(it.value);
-        c.line(xs(0), ly, xe, ly, { stroke: 'subject', width: c.t('arrow-shaft'), mark: false });
-        c.circle(xe, ly, c.t('dot-vertex-radius'), { fill: 'subject', data: { key: it.key, field: ev || 'change', value: Math.round(it.value * 10) / 10 } });
+        c.line(xs(0), ly, xe, ly, { stroke: role, width: c.t('arrow-shaft'), mark: false });
+        c.circle(xe, ly, c.t('dot-vertex-radius'), { fill: role, data: { key: it.key, field: ev || 'change', value: Math.round(it.value * 10) / 10 } });
         var vx = it.value >= 0 ? xe + 8 : xe - 8;
-        c.text(vx, ly + size * 0.35, words(it.value), { role: 'label', weight: bold ? 700 : 400, anchor: it.value >= 0 ? 'start' : 'end', tnum: true, halo: true });
+        c.text(vx, ly + size * 0.35, words(it.value), { role: 'label', weight: bold || (ink.named && ink.is_named(it.row)) ? 700 : 400, anchor: it.value >= 0 ? 'start' : 'end', tnum: true, halo: true });
         y += step;
       };
       apart.forEach(function (it) { row(it, true); });

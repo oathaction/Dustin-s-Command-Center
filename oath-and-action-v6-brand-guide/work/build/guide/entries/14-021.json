@@ -2,7 +2,7 @@
   "id": "14.21",
   "title": "Use lollipops when a long ranked list would look heavy as bars.",
   "rule": [
-    "Draw each row as a thin stem from the zero line to a dot at its value, print the value past the dot and the name at the left, and sort the rows so the order answers the question. Set the rows the title names in ink and the rest in gray."
+    "Draw each row as a thin stem from the zero line to a dot at its value, print the value past the dot and the name at the left, and sort the rows so the order answers the question. Give the row the title names the red point, or the text’s ink where Rule 14.6 sets ink in its place, with the rest in light gray."
   ],
   "use_when": "The reader asks which items lead a ranking of a dozen or more, and the values sit close enough that solid bars would form one dark block.",
   "use_instead": [
@@ -30,9 +30,10 @@
   "tokens": [],
   "related": [
     "14.3",
-    "14.4"
+    "14.4",
+    "14.6"
   ],
-  "builders": "Form lollipop: node work/build/chart-kit/oa-chart.mjs build s21, or copy specs/s21.json and point it at a new dataset; labels.named lists the rows set in ink.",
+  "builders": "Form lollipop: node work/build/chart-kit/oa-chart.mjs build s21, or copy specs/s21.json and point it at a new dataset; labels.point names the row in red, and labels.named lists rows set in the text’s ink.",
   "correct": null,
   "failure": null
 }

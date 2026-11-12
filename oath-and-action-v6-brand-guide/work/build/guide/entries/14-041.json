@@ -2,7 +2,7 @@
   "id": "14.41",
   "title": "Size each period’s circle by its count along one line of time.",
   "rule": [
-    "Use a bubble timeline when each period or event carries one count and the reader looks for when the counts swelled: one circle per period on one line, its area in proportion to the count (Rule 14.4), with a key of round sizes above. Give every circle a light fill and an outline so overlaps stay readable, mark a period with nothing to count with a tick, and dash the outline of a period still under way."
+    "Use a bubble timeline when each period or event carries one count and the reader looks for when the counts swelled: one circle per period along one line, its area in proportion to the count (Rule 14.4), with a key of round sizes above. Give every circle a light fill and an outline, mark a period with nothing to count with a tick, and dash the outline of a period still under way. Where neighbors would merge, set them alternately above and below the line, each touching it, and sum a long run of small counts in one sentence."
   ],
   "use_when": "The reader asks when something became common across a long span, and the exact count for each period matters less than the change in scale.",
   "use_instead": [
@@ -31,7 +31,7 @@
   "related": [
     "14.4"
   ],
-  "builders": "Form bubble-timeline: node work/build/chart-kit/oa-chart.mjs build s34; encode.complete false dashes a period still under way.",
+  "builders": "Form bubble-timeline: node work/build/chart-kit/oa-chart.mjs build s34; encode.complete false dashes a period still under way, and labels.phone_from sums the periods before it in words and staggers the rest.",
   "correct": null,
   "failure": null
 }

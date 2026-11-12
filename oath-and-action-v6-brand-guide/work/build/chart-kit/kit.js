@@ -399,8 +399,19 @@
     this._ink('rect', x, y, w, h, o);
     if (o.mark !== false) this.mark({ kind: o.kind || 'rect', x: x, y: y, w: w, h: h, fill: o.fill, stroke: o.stroke, data: o.data || {}, zero: o.zero, axis: o.axis });
   };
+  // BC S16 (round 1 fix pass): a straight line of a whole-pixel width lands on the pixel grid, so it draws crisp at 1x: an
+  // even width (2 px) on a whole pixel, an odd width (1 or 3 px) on a half pixel. Other widths (1.5 px) are left as drawn.
+  K.snap = function (v, w) {
+    w = +w;
+    if (!(w > 0) || Math.abs(w - Math.round(w)) > 1e-9) return v;
+    return Math.round(w) % 2 ? Math.round(v - 0.5) + 0.5 : Math.round(v);
+  };
   Ctx.prototype.line = function (x1, y1, x2, y2, o) {
     o = o || {};
+    if (o.width) {
+      if (x1 === x2) x1 = x2 = K.snap(x1, o.width);
+      else if (y1 === y2) y1 = y2 = K.snap(y1, o.width);
+    }
     var a = data_of(o, { x1: r1(x1), y1: r1(y1), x2: r1(x2), y2: r1(y2), 'class': cls_of(o), 'stroke-width': o.width, 'stroke-dasharray': o.dash });
     this._push('<line' + attrs(a) + '/>');
     this._ink('line', Math.min(x1, x2), Math.min(y1, y2), Math.abs(x2 - x1), Math.abs(y2 - y1), o);

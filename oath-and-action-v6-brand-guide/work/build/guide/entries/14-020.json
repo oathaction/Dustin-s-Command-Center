@@ -1,8 +1,8 @@
 {
   "id": "14.20",
-  "title": "Use a slope chart to compare many items at two points in time.",
+  "title": "Use a slope chart to compare about ten items at two points in time.",
   "rule": [
-    "Draw each item as a straight line from its earlier value on the left axis to its later value on the right, printing the earlier value at the left and the later value with the item’s name at the right. Set the item the title names in ink and the rest in gray, and print both years over the axes.",
+    "Draw each item as a straight line from its earlier value on the left axis to its later value on the right, printing the earlier value at the left and the later value with the item’s name at the right. Give the item the title names the red point, or the text’s ink where Rule 14.6 sets ink in its place, with the rest in light gray, and print both years over the axes.",
     "Choose the two years for a reason the measure line states, and when a longer record would change how a reader sees the move, give that record in a note (Rule 14.10)."
   ],
   "use_when": "The reader asks which items rose and which fell between two dates, and how their order changed.",
@@ -12,7 +12,7 @@
       "rule": "14.30"
     },
     {
-      "when": "More than about ten lines would cross into a tangle, so each item needs a row of its own",
+      "when": "More than about ten items, whose lines would cross into a tangle, so each needs a row of its own",
       "rule": "14.19"
     },
     {
@@ -32,9 +32,10 @@
   "related": [
     "14.3",
     "14.9",
-    "14.10"
+    "14.10",
+    "14.6"
   ],
-  "builders": "Form slope: node work/build/chart-kit/oa-chart.mjs build s20, or copy specs/s20.json and point it at a new dataset; labels.from and labels.to name the two times.",
+  "builders": "Form slope: node work/build/chart-kit/oa-chart.mjs build s20, or copy specs/s20.json and point it at a new dataset; labels.from and labels.to name the two times, and labels.point the item in red.",
   "correct": null,
   "failure": null
 }

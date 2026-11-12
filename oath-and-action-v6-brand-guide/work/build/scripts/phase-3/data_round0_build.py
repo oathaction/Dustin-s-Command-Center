@@ -755,6 +755,10 @@ def check_folder(out=OUT):
         line = m.get('printed_source_line') or ''
         if not line.startswith('Source: '):
             faults.append(f'{mp.name}: printed_source_line must start "Source: "')
+        # access S1 (round 1 fix pass): a template the kit fills with the years a chart draws
+        tpl = m.get('source_line_templates')
+        if tpl is not None and (not isinstance(tpl, dict) or any(not isinstance(t, str) or not t.startswith('Source: ') or '{from}' not in t or '{to}' not in t for t in tpl.values())):
+            faults.append(f'{mp.name}: source_line_templates is an object of lines that start "Source: " and hold {{from}} and {{to}}')
         if '—' in json.dumps(m, ensure_ascii=False) or '‑' in json.dumps(m, ensure_ascii=False):
             faults.append(f'{mp.name}: an em dash or U+2011 in the sidecar')
         if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', str(m.get('date_retrieved', ''))):

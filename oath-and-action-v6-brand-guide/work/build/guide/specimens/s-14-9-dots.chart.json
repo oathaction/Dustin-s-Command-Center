@@ -1,0 +1,85 @@
+{
+ "kit": 1,
+ "id": "s-14-9-dots",
+ "form": "dot-plot",
+ "family": "uncertainty-and-estimates",
+ "tier": "core",
+ "dataset": "census-cps-2024-turnout-by-state",
+ "where": {
+  "year": 2024,
+  "code": [
+   "CA",
+   "TX",
+   "FL",
+   "NY",
+   "PA",
+   "IL",
+   "OH",
+   "NC",
+   "GA",
+   "MI",
+   "US"
+  ]
+ },
+ "sort": [
+  {
+   "field": "voted_pct",
+   "order": "desc"
+  }
+ ],
+ "reader_question": "Which of the largest states differ from the nation in reported turnout, past the margin of error?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: a Census Bureau survey",
+ "title": "Five of the ten states with the most voting-age citizens differed from the nation’s 65.3 percent turnout by more than the margin of error.",
+ "measure_line": "Share of citizens 18 and over who reported voting, November 2024, the ten states with the most voting-age citizens",
+ "reading_guide": "Each line spans a state’s margin of error at 90 percent confidence, and a gap counts only past the gap’s own margin. A filled dot differs from the nation by more than the margin; an open dot sits within it.",
+ "notes": [
+  "Past the margin: Michigan, Pennsylvania, Florida, New York and Texas. Within it: Ohio, Illinois, California, North Carolina and Georgia."
+ ],
+ "source_line": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points.",
+ "alt": "Dots with margin of error lines for ten states’ reported turnout in 2024 against the nation’s 65.3 percent: five past the margin, five within it.",
+ "table": {
+  "caption": "Reported voting, November 2024, percent",
+  "columns": [
+   {
+    "field": "name",
+    "label": "State",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "voted_pct",
+    "label": "Reported voting",
+    "format": "number:1"
+   },
+   {
+    "field": "moe_pct",
+    "label": "Margin of error",
+    "format": "number:1"
+   }
+  ]
+ },
+ "encode": {
+  "key": "code",
+  "label": "name",
+  "value": "voted_pct"
+ },
+ "domain": "D10",
+ "states": [
+  "CA",
+  "TX",
+  "FL",
+  "NY",
+  "PA",
+  "IL",
+  "OH",
+  "NC",
+  "GA",
+  "MI"
+ ],
+ "notes_internal": "Rule 14.9's correct plate: the script's drawing inside the kit's own figure (ED-E9) until round 2's interval form.",
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "phone": "same"
+}

@@ -11,7 +11,7 @@
  },
  "intro": [
   "This chapter sets how Oath & Action shows numbers. Fourteen rules come first and hold for every chart. Each form a chart can take then has its own entry, grouped by the question it answers, with when to use it, what to use instead, and a finished example that our chart kit draws from frozen data, with its table as live text.",
-  "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files. Each rule and entry rests on design judgment, from the chart system our founder and editor approved in November 2026, unless it names a basis of its own."
+  "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files."
  ],
  "groups": [
   {
@@ -805,7 +805,7 @@
    "id": "14.16",
    "title": "Use columns for a few categories or a short run of years.",
    "rule": [
-    "Use columns to compare a few counts side by side, or one count over a short run of years read from left to right, such as the laws each Congress enacted. Start every column at zero (Rule 14.4), print each value at the column’s end and its name below it, and set the column the title names in ink with the rest in gray.",
+    "Use columns to compare a few counts side by side, or one count over a short run of years read from left to right, such as the laws each Congress enacted. Start every column at zero (Rule 14.4), print each value at the column’s end and its name below it, and give the column the title names the red point, or the text’s ink where Rule 14.6 sets ink in its place, with the rest in light gray.",
     "When a phone leaves too little room to print every name and value, the columns turn into bars read from top to bottom in the same order (Rule 14.12)."
    ],
    "why": {
@@ -815,11 +815,12 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "Form column: node work/build/chart-kit/oa-chart.mjs build s17, or copy specs/s17.json and point it at a new dataset; labels.named names the columns set in ink.",
+   "builders": "Form column: node work/build/chart-kit/oa-chart.mjs build s17, or copy specs/s17.json and point it at a new dataset; labels.point names the column in red and labels.named a column in the text’s ink (Rule 14.6).",
    "related_rules": [
     "14.3",
     "14.4",
-    "14.12"
+    "14.12",
+    "14.6"
    ],
    "entry": true,
    "use_when": "The reader asks how a handful of counts compare, or how one count changed across a few years or terms of office, and each value matters on its own.",
@@ -959,8 +960,12 @@
    "use_when": "The reader asks how far apart two values are for each group, such as the same age group in two elections, and which way each one moved.",
    "use_instead": [
     {
-     "when": "Many items at two points in time, where a change in their order matters",
+     "when": "About ten items or fewer at two points in time, where a change in their order matters",
      "rule": "14.20"
+    },
+    {
+     "when": "The rows differ so much in size that a small row’s two dots would sit on top of each other, so each row’s change reads better as a percent",
+     "rule": "14.26"
     },
     {
      "when": "The direction and size of each shift matter more than the two values",
@@ -978,9 +983,9 @@
   },
   {
    "id": "14.20",
-   "title": "Use a slope chart to compare many items at two points in time.",
+   "title": "Use a slope chart to compare about ten items at two points in time.",
    "rule": [
-    "Draw each item as a straight line from its earlier value on the left axis to its later value on the right, printing the earlier value at the left and the later value with the item’s name at the right. Set the item the title names in ink and the rest in gray, and print both years over the axes.",
+    "Draw each item as a straight line from its earlier value on the left axis to its later value on the right, printing the earlier value at the left and the later value with the item’s name at the right. Give the item the title names the red point, or the text’s ink where Rule 14.6 sets ink in its place, with the rest in light gray, and print both years over the axes.",
     "Choose the two years for a reason the measure line states, and when a longer record would change how a reader sees the move, give that record in a note (Rule 14.10)."
    ],
    "why": {
@@ -990,11 +995,12 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "Form slope: node work/build/chart-kit/oa-chart.mjs build s20, or copy specs/s20.json and point it at a new dataset; labels.from and labels.to name the two times.",
+   "builders": "Form slope: node work/build/chart-kit/oa-chart.mjs build s20, or copy specs/s20.json and point it at a new dataset; labels.from and labels.to name the two times, and labels.point the item in red.",
    "related_rules": [
     "14.3",
     "14.9",
-    "14.10"
+    "14.10",
+    "14.6"
    ],
    "entry": true,
    "use_when": "The reader asks which items rose and which fell between two dates, and how their order changed.",
@@ -1004,7 +1010,7 @@
      "rule": "14.30"
     },
     {
-     "when": "More than about ten lines would cross into a tangle, so each item needs a row of its own",
+     "when": "More than about ten items, whose lines would cross into a tangle, so each needs a row of its own",
      "rule": "14.19"
     },
     {
@@ -1021,7 +1027,7 @@
    "id": "14.21",
    "title": "Use lollipops when a long ranked list would look heavy as bars.",
    "rule": [
-    "Draw each row as a thin stem from the zero line to a dot at its value, print the value past the dot and the name at the left, and sort the rows so the order answers the question. Set the rows the title names in ink and the rest in gray."
+    "Draw each row as a thin stem from the zero line to a dot at its value, print the value past the dot and the name at the left, and sort the rows so the order answers the question. Give the row the title names the red point, or the text’s ink where Rule 14.6 sets ink in its place, with the rest in light gray."
    ],
    "why": {
     "text": [
@@ -1030,10 +1036,11 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "Form lollipop: node work/build/chart-kit/oa-chart.mjs build s21, or copy specs/s21.json and point it at a new dataset; labels.named lists the rows set in ink.",
+   "builders": "Form lollipop: node work/build/chart-kit/oa-chart.mjs build s21, or copy specs/s21.json and point it at a new dataset; labels.point names the row in red, and labels.named lists rows set in the text’s ink.",
    "related_rules": [
     "14.3",
-    "14.4"
+    "14.4",
+    "14.6"
    ],
    "entry": true,
    "use_when": "The reader asks which items lead a ranking of a dozen or more, and the values sit close enough that solid bars would form one dark block.",
@@ -1102,7 +1109,7 @@
    "id": "14.23",
    "title": "Repeat one small bar chart per group when groups need comparing.",
    "rule": [
-    "Draw the same bars in one panel per group, on one scale shared by every panel, with the categories in the same order in each, so the eye compares a bar with the bar in the same place next door. Give each panel a title with its group and its size, set the category the title names in ink, and place as many panels across as fit, one across on a phone."
+    "Draw the same bars in one panel per group, on one scale shared by every panel, with the categories in the same order in each, so the eye compares a bar with the bar in the same place next door. Give each panel a title with its group and its size, give the one bar the title names the red point, or the text’s ink where Rule 14.6 sets ink in its place, with every other bar in light gray, and place as many panels across as fit, one across on a phone."
    ],
    "why": {
     "text": [
@@ -1111,10 +1118,11 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "Form small-multiple-bars: node work/build/chart-kit/oa-chart.mjs build s23, or copy specs/s23.json and point it at a new dataset; encode.panel names the column that splits the panels, scale.x the scale they share.",
+   "builders": "Form small-multiple-bars: node work/build/chart-kit/oa-chart.mjs build s23, or copy specs/s23.json and point it at a new dataset; encode.panel names the column that splits the panels, labels.point the one bar in red by panel and category, and scale.x the scale they share, from zero to the largest value when it is left out.",
    "related_rules": [
     "14.4",
-    "14.8"
+    "14.8",
+    "14.6"
    ],
    "entry": true,
    "use_when": "The reader asks how the same mix or ranking differs from group to group, such as the evidence grades behind each topic, or there are more groups than four inks can carry (Rule 14.8).",
@@ -1141,7 +1149,7 @@
    "id": "14.24",
    "title": "Avoid radar charts, whose shapes change with the order of their spokes.",
    "rule": [
-    "Leave radar charts out of every Oath & Action piece. Draw the same measures as a dot plot on one scale, or as small-multiple bars with one panel per group, so each value is read as a position or a length from zero."
+    "Leave radar charts out of every Oath & Action piece. Draw the same measures as grouped bars from one zero line, a dot plot on one scale, or small-multiple bars with one panel per group, so each value is read as a length from zero or a position."
    ],
    "why": {
     "text": [
@@ -1150,7 +1158,8 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "No form: the kit draws no radar chart. The sketch is work/build/guide/specimens/s-14-24-sketch.html, drawn small; build the better choice with the dot-plot or small-multiple-bars form.",
+   "builders": "No form: the kit draws no radar chart. The sketch, work/build/guide/specimens/s-14-24-sketch.html, draws the radar twice with its spokes in two orders beside grouped bars of the same values; build the better choice with the grouped-bar, dot-plot or small-multiple-bars form.",
+   "sketch_alt": "Two radar charts draw the same illustrative values for two groups with their spokes in different orders, and the dark group’s shape is the larger in the first and the smaller in the second. Beside them, grouped bars of the same values show the dark group ahead on two measures and behind on three.",
    "related_rules": [
     "14.4"
    ],
@@ -1218,9 +1227,9 @@
   },
   {
    "id": "14.26",
-   "title": "Rank one change per item as a stem from zero, with a key for its length.",
+   "title": "Rank one change per item as a stem from zero, longest first.",
    "rule": [
-    "Use a change lollipop when each item has one change between two dates. Draw a stem from zero to the change with a dot at its end, rank the items from the largest change, print each change beside its dot, and set the national figure apart at the top. A key above the stems shows the length of one round change. Position and the printed sign carry the direction."
+    "Use a change lollipop when each item has one change between two dates. Draw a stem from zero to the change with a dot at its end, rank the items from the largest change, print each change beside its dot, and set the national figure apart at the top. Set the names flush left at the drawing’s edge, and label a gridline at a round change, such as +100 for a doubling, so the reader can judge a stem’s length. Position and the printed sign carry the direction."
    ],
    "why": {
     "text": [
@@ -1258,7 +1267,7 @@
    "id": "14.27",
    "title": "Draw gains and losses as bars from one zero line, losses to the left.",
    "rule": [
-    "Use a diverging bar when items moved both ways from a baseline: start every bar on one zero line, send losses left and gains right, order the bars by size, and print each figure with its sign. Pair B may repeat the direction in color, one side of it for losses and the other for gains, named in the reading guide or key, and the total sits apart above the bars in words."
+    "Use a diverging bar when items moved both ways from a baseline: start every bar on one zero line, send losses left and gains right, order the bars by size, and print each figure with its sign. Pair B’s two end steps may repeat the direction in color, one for losses and the other for gains, named in the chart’s notes, and the total sits apart above the bars in words. Set the names flush left at the drawing’s edge."
    ],
    "why": {
     "text": [
@@ -1420,7 +1429,7 @@
    "id": "14.31",
    "title": "Draw every series thin and gray, and light the one the story follows.",
    "rule": [
-    "Use a line field when dozens of series share one scale and the story follows one of them: draw every series as a thin gray line, so the reader sees the spread, and draw the subject in ink on top with its name and latest value at its end. Name one or two gray lines at the field’s edges where it helps, and carry every series in the table."
+    "Use a line field when dozens of series share one scale and the story follows one of them: draw every series as a thin gray line, so the reader sees the spread, and draw the subject in ink on top with its name and latest value at its end. Where two series tie for the title’s point, draw both in ink. Set the national series apart as a dashed line in the text’s ink with its own end label, name one or two gray lines at the field’s edges where it helps, and carry every series in the table."
    ],
    "why": {
     "text": [
@@ -1429,7 +1438,7 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "Form line-field: node work/build/chart-kit/oa-chart.mjs build s27; labels.lit names the series in ink and labels.named the gray lines named at the field’s edges.",
+   "builders": "Form line-field: node work/build/chart-kit/oa-chart.mjs build s27; labels.lit names the series in ink (a list for a tie), labels.apart the dashed national line and labels.named the gray lines named at the field’s edges.",
    "related_rules": [
     "14.8"
    ],
@@ -1668,7 +1677,7 @@
      "rule": "14.29"
     },
     {
-     "when": "No month is missing, and the latest months are preliminary: mark them as Rule 14.11 sets",
+     "when": "No month is missing, and the latest months are preliminary, marked as Rule 14.11 sets",
      "rule": "14.29"
     }
    ],
@@ -1754,7 +1763,7 @@
    "id": "14.40",
    "title": "Index many series to one start when the reader compares growth.",
    "rule": [
-    "Use an indexed line when the reader compares series of far different sizes by how fast they grew: divide each by its own value at one base date and multiply by 100, so every line starts at 100. Draw the base line heavier and name the base, give one series the ink and the rest gray when there are more than four (Rule 14.8), and name every line at its end with its latest index."
+    "Use an indexed line when the reader compares series of far different sizes by how fast they grew: divide each by its own value at one base date and multiply by 100, so every line starts at 100. Draw the line at 100 thin in the secondary ink so it never reads as a series, name the base over the value axis, give one series the ink and the rest gray when there are more than four (Rule 14.8), and name every line at its end with its latest index, the figure always on the line of its name. Under 600 px, name the inked lines in a key inside the plot and list the others under it with their latest index, highest first."
    ],
    "why": {
     "text": [
@@ -1763,7 +1772,7 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "Form indexed-line: node work/build/chart-kit/oa-chart.mjs build s33; labels.base names the date that equals 100, and the form computes each index from the raw values.",
+   "builders": "Form indexed-line: node work/build/chart-kit/oa-chart.mjs build s33; labels.base names the date that equals 100, the form computes each index from the raw values, and labels.list_title heads the list under a narrow plot.",
    "related_rules": [
     "14.8"
    ],
@@ -1792,7 +1801,7 @@
    "id": "14.41",
    "title": "Size each period’s circle by its count along one line of time.",
    "rule": [
-    "Use a bubble timeline when each period or event carries one count and the reader looks for when the counts swelled: one circle per period on one line, its area in proportion to the count (Rule 14.4), with a key of round sizes above. Give every circle a light fill and an outline so overlaps stay readable, mark a period with nothing to count with a tick, and dash the outline of a period still under way."
+    "Use a bubble timeline when each period or event carries one count and the reader looks for when the counts swelled: one circle per period along one line, its area in proportion to the count (Rule 14.4), with a key of round sizes above. Give every circle a light fill and an outline, mark a period with nothing to count with a tick, and dash the outline of a period still under way. Where neighbors would merge, set them alternately above and below the line, each touching it, and sum a long run of small counts in one sentence."
    ],
    "why": {
     "text": [
@@ -1801,7 +1810,7 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "Form bubble-timeline: node work/build/chart-kit/oa-chart.mjs build s34; encode.complete false dashes a period still under way.",
+   "builders": "Form bubble-timeline: node work/build/chart-kit/oa-chart.mjs build s34; encode.complete false dashes a period still under way, and labels.phone_from sums the periods before it in words and staggers the rest.",
    "related_rules": [
     "14.4"
    ],
@@ -1950,6 +1959,7 @@
    "tokens": [],
    "related": [],
    "builders": "No kit form, by design; draw the parts with area-sparklines (s13) or, from round 2, the stacked area form.",
+   "sketch_alt": "A streamgraph beside small multiples of the same illustrative data: the middle part never changes, yet its band bends in the streamgraph and lies flat in the small multiples.",
    "entry": true,
    "use_when": "Never: a reader who asks how the parts of a total changed over time gets a truer answer from small multiples or a stacked area.",
    "use_instead": [
@@ -2139,7 +2149,7 @@
    "id": "14.129",
    "title": "Tint a grid of many cells by step, and print each cell’s word.",
    "rule": [
-    "Set rows down the left and columns across, tint each filled cell by its step on one ordered scale, light for the lowest and dark for the highest, and print the step’s word in every cell so the table reads in gray print and to a screen reader. Leave the cells unsummed, with no score or total, and mark a cell that carries a date or a caveat with a dot the key explains.",
+    "Set rows down the left and columns across, tint each filled cell by its step on one ordered scale, light for the lowest and dark for the highest, and print the step’s word in every cell so the table reads in gray print and to a screen reader. Leave the cells unsummed, with no score or total, and mark a cell that carries a date or a caveat with a dot the key explains. Gather the rows under each group once, set every column’s head on one row over its own column, and frame the column the title names with its head in bold. Say in the table’s notes what a blank cell means.",
     "Where a cell’s word cannot fit its column, as on a phone, each row becomes its name with a run of tinted chips that name the column and the word (Rule 14.12)."
    ],
    "why": {
@@ -2151,7 +2161,7 @@
    "related": [
     "13"
    ],
-   "builders": "Form heat-table: node work/build/chart-kit/oa-chart.mjs build s37, or copy specs/s37.json and point it at a new dataset; labels.steps orders the scale and labels.columns the columns.",
+   "builders": "Form heat-table: node work/build/chart-kit/oa-chart.mjs build s37, or copy specs/s37.json and point it at a new dataset; labels.steps orders the scale, labels.columns the columns and their heads’ lines, labels.groups the groups and labels.named the framed column.",
    "related_rules": [
     "13.10",
     "14.5",
@@ -2334,7 +2344,7 @@
     },
     {
      "when": "The reader compares sizes across a dozen or more rows",
-     "rule": "14.15"
+     "rule": "14.21"
     },
     {
      "when": "A long list needs sorting and scanning by rank",
@@ -2384,7 +2394,7 @@
     },
     {
      "when": "The figures differ in size and the difference is the point",
-     "rule": "14.15"
+     "rule": "14.16"
     }
    ],
    "correct": {
@@ -2429,9 +2439,8 @@
   "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting, citizen voting-age population, November 1978 to 2024, United States. Retrieved November 6, 2026. Self-reported in a survey; citizenship data before 1996 are not fully comparable.",
   "Source: Office of the Clerk, U.S. House of Representatives, party breakdown, as of November 11, 2026, United States House. Retrieved November 11, 2026. Two seats vacant; the count changes with each vacancy and special election.",
   "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Annual Statistics 2025, Table 17, homeownership rate by age of householder, 1982 to 2025, United States. Retrieved November 11, 2026. Survey estimates; the 2025 average leaves out October, when no data were collected.",
-  "Source: U.S. Census Bureau, County Business Patterns, newspaper publishers (NAICS 511110), 1998 to 2023, United States. Retrieved November 11, 2026. Establishments with paid employees only; employees counted in mid-March.",
-  "Source: Federal Judicial Center, Biographical Directory of Article III Federal Judges, judges in active service, as of November 11, 2026, United States. Retrieved November 11, 2026. Judges on senior status are not counted; years computed by Oath & Action from commission dates.",
   "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table 4a, reported voting for states, November 2024, 50 states and DC. Retrieved November 6, 2026. Self-reported voting among citizens 18 and over; state margins of error reach 5.6 points.",
+  "Source: U.S. Census Bureau, County Business Patterns, newspaper publishers (NAICS 511110), 1998 to 2023, United States. Retrieved November 11, 2026. Establishments with paid employees only; employees counted in mid-March.",
   "Source: U.S. Census Bureau, Income in the United States: 2025, Table 2, median household income, 1967 to 2025, United States. Retrieved November 11, 2026. Survey estimates in 2025 dollars with 90 percent margins of error; methods changed in several years, marked in the table.",
   "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, receipts by source, fiscal 2015 to 2026, United States. Retrieved November 11, 2026. Nominal dollars, not adjusted for inflation."
  ],

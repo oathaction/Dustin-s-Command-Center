@@ -37,7 +37,7 @@
   "notes": [
     "Grades: Documented, on the public record; Well supported, strong research evidence; Plausible, some evidence; Hypothesis, not yet tested.",
     "The atlas keeps 194 issue records across its ten domains; this lookup holds one domain’s 17.",
-    "The still image shows one filter on: the eight records graded well supported."
+    "In print, in a post and with scripts off, the figure shows a still list with one filter on, the eight records graded well supported, above the whole table."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -126,7 +126,7 @@
     "Figures checked by script (figures.py s38).",
     "Data lead DL-A6: the title gives each grade its own count. DL-R5: S38 prints the sidecar's domain_d01 variant, which names the one domain drawn.",
     "No record in D01 is retired, and Rule 13.3 keeps Retired out of every grade key, so the grade filter offers four chips.",
-    "Review fix pass: the grade line by the data lead's ruling (a) (ST M4). CD AM1 and BC S9 (the live lookup in the still's place where scripts run) wait on the engineer's kit side; the spec keeps its lookup and still keys."
+    "Review fix pass: the grade line by the data lead's ruling (a) (ST M4). CD AM1 and BC S9: the engineer's kit now sets the live lookup, its one count and the one table in the still's place where scripts run; note 3 says where the still list still shows (print, a post, scripts off)."
   ],
   "where": {
     "domain": "D01"

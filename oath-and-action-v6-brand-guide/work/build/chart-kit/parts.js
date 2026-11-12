@@ -159,6 +159,8 @@
   // Shared by shift-arrows, results-table, tile-map-shift-arrows and diverging-bar-arrows (moved from shift-arrows.js, R-B6).
   P.arrow = function (c, x1, x2, y, o) {
     var hl = c.t(c.phone ? 'arrow-phone-head-length' : 'arrow-head-length'), hw = c.t(c.phone ? 'arrow-phone-head-half-width' : 'arrow-head-half-width');
+    // BC S16: the shaft lands on the pixel grid (K.snap), and its tail dot and head follow it, so the three stay on one line
+    y = K.snap(y, c.t('arrow-shaft'));
     var dir = x2 >= x1 ? 1 : -1, len = Math.abs(x2 - x1);
     // an arrow shorter than its head draws the head alone, never a tail dot under it, which reads as a diamond (brand KS4)
     if (len < hl + 2) { c.polygon([[x2, y], [x2 - dir * hl, y - hw], [x2 - dir * hl, y + hw]], { fill: 'subject', kind: 'arrow', data: o.data }); return; }
