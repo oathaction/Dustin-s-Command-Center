@@ -213,7 +213,7 @@ function audit(page) {
       sec.querySelectorAll('h3').forEach((h) => {
         if (h.closest('[data-specimen]')) return;
         const t = norm(h.textContent);
-        const m = t.match(/^Rule (\d{2})\.(\d{1,2})(?=\s|$)/);
+        const m = t.match(/^Rule (\d{2})\.(\d{1,3})(?=\s|$)/);
         if (m) {
           st.rules++;
           if (m[1] !== num) st.ruleIds.push({ chapter: num, text: t.slice(0, 50), problem: `Rule ${m[1]}.${m[2]} sits in chapter ${num}` });
@@ -230,7 +230,7 @@ function audit(page) {
         if (/^Rule\b/.test(t)) st.ruleIds.push({ chapter: num, text: t.slice(0, 50), problem: 'starts with "Rule" but not with an ID of the form NN.n' });
         else st.badH3.push({ chapter: num, text: t.slice(0, 50), problem: 'an h3 that is neither a rule (Rule NN.n) nor a closer' });
       });
-      sec.querySelectorAll('.rule').forEach((r) => { const h = r.querySelector('h3'); if (!h || !/^Rule \d{2}\.\d{1,2}(?=\s|$)/.test(norm(h.textContent))) st.rulesWithoutH3.push(r.id || '(no id)'); });
+      sec.querySelectorAll('.rule').forEach((r) => { const h = r.querySelector('h3'); if (!h || !/^Rule \d{2}\.\d{1,3}(?=\s|$)/.test(norm(h.textContent))) st.rulesWithoutH3.push(r.id || '(no id)'); });
     });
     out.structure = st;
 
@@ -388,12 +388,12 @@ function audit(page) {
         const ids = [...sec.querySelectorAll('.rule[id^="rule-"]')].map((r) => r.id);
         if (ids.length) held.set(sec.getAttribute('data-chapter'), new Set(ids));
       });
-      const XREF = /\bRules?(?:\s|\u00a0)+\d{2}\.\d{1,2}\b(?:\s*(?:,|and|or|to|through)\s*\d{2}\.\d{1,2}\b)*/g;
+      const XREF = /\bRules?(?:\s|\u00a0)+\d{2}\.\d{1,3}\b(?:\s*(?:,|and|or|to|through)\s*\d{2}\.\d{1,3}\b)*/g;
       const refs = []; const seen = new Set();
       const cite = (txt, w, how) => {
         XREF.lastIndex = 0; let m;
         while ((m = XREF.exec(txt))) {
-          const toks = [...m[0].matchAll(/(\d{2})\.(\d{1,2})|\b(to|through)\b/g)];
+          const toks = [...m[0].matchAll(/(\d{2})\.(\d{1,3})|\b(to|through)\b/g)];
           let prev = null, rng = false; const got = [];
           for (const t of toks) {
             if (t[3]) { rng = true; continue; }
@@ -2020,7 +2020,7 @@ async function checkPage(browser, file, widths, opts = {}) {
           const kids = c ? [...c.children].filter((k) => !k.classList.contains('illus')) : [];
           const lead = kids[0] && /^(STRONG|B)$/.test(kids[0].tagName) ? kids[0] : null;
           const words = c ? [...c.childNodes].filter((n) => !(n.nodeType === 1 && n.classList.contains('illus'))).map((n) => n.textContent).join('').trim() : '';
-          const ok = !!(c && lead && /^Fails Rules? \d{2}\.\d{1,2}\b/.test(lead.textContent.trim()) && words.startsWith(lead.textContent.trim()));
+          const ok = !!(c && lead && /^Fails Rules? \d{2}\.\d{1,3}\b/.test(lead.textContent.trim()) && words.startsWith(lead.textContent.trim()));
           return { sid, ok, text: c ? c.textContent.trim().slice(0, 60) : '(no caption)' };
         });
         const files = [...document.querySelectorAll('.file-list li')].map((li) => li.textContent.replace(/\s+/g, ' ').trim()).filter((t) => /(?:^|[\s(])(?:work|brief|source|deliverables)\/|\.(?:py|mjs|js|md)\b/.test(t));

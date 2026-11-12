@@ -245,7 +245,7 @@ def table(caption, cols, data):
 
 
 def chart(cid):
-    return f'<div class="art" data-oa-chart="{cid}"></div>'
+    return f'<div class="art"><div data-oa-chart="{cid}"></div></div>'
 
 
 # ---------------------------------------------------------------------------------------------------------------

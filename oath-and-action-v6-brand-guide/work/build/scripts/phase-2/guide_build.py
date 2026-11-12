@@ -166,14 +166,14 @@ LOCKED = {
     "pillars": ["Explain", "Track", "Connect", "Act"],
 }
 
-RULE_ID = re.compile(r"^(\d{2})\.(\d{1,2})$")
+RULE_ID = re.compile(r"^(\d{2})\.(\d{1,3})$")
 
 # ---------------------------------------------------------------------------------------------------------------
 # Cross-references (apply pass, D2-325). A citation is "Rule 05.2", "Rules 05.3 and 05.5", "Rules 08.4 to 08.8" or a
 # link to "#rule-05-2". When chapter NN is in the page, every rule it cites must exist there.
 # ---------------------------------------------------------------------------------------------------------------
-XREF = re.compile(r"\bRules?(?:\s| )+\d{2}\.\d{1,2}\b(?:\s*(?:,|and|or|to|through)\s*\d{2}\.\d{1,2}\b)*")
-XREF_HREF = re.compile(r"#rule-(\d{2})-(\d{1,2})\b")
+XREF = re.compile(r"\bRules?(?:\s| )+\d{2}\.\d{1,3}\b(?:\s*(?:,|and|or|to|through)\s*\d{2}\.\d{1,3}\b)*")
+XREF_HREF = re.compile(r"#rule-(\d{2})-(\d{1,3})\b")
 # Sentences that carried chapter 08's numbers before it became The lockmark, read from commit 3130c5b (the page before
 # the apply pass). Each points at a rule that moved, changed or retired, so the build warns while one survives as written.
 OLD_08_REFS = [
@@ -189,7 +189,7 @@ def cited_rules(text):
     """Every (chapter, rule) a string cites, with ranges expanded: "Rules 08.4 to 08.6" gives 08.4, 08.5 and 08.6."""
     out = []
     for m in XREF.finditer(text):
-        toks = re.findall(r"(\d{2})\.(\d{1,2})|\b(to|through)\b", m.group(0))
+        toks = re.findall(r"(\d{2})\.(\d{1,3})|\b(to|through)\b", m.group(0))
         prev, rng = None, False
         for a, b, word in toks:
             if word:
@@ -207,7 +207,7 @@ def cited_rules(text):
 def reader_text(s):
     """Markup as a reader meets it: styles, scripts and comments gone, tags as spaces, entities decoded, one space."""
     s = re.sub(r"<style\b.*?</style>|<script\b.*?</script>|<!--.*?-->", " ", str(s), flags=re.S | re.I)
-    hrefs = " ".join(re.findall(r"#rule-\d{2}-\d{1,2}\b", s))   # links keep their targets, which tags would lose
+    hrefs = " ".join(re.findall(r"#rule-\d{2}-\d{1,3}\b", s))   # links keep their targets, which tags would lose
     s = re.sub(r"<[^>]+>", " ", s)
     return re.sub(r"\s+", " ", html.unescape(s)).strip() + (" " + hrefs if hrefs else "")
 
@@ -528,7 +528,7 @@ def autolink(s, ctx):
                 return f'<a class="xref" href="#{rid}">{m.group(0)}</a>'
             return m.group(0)
 
-        p = re.sub(r"Rule (\d{2})\.(\d{1,2})\b", rule_link, p)
+        p = re.sub(r"Rule (\d{2})\.(\d{1,3})\b", rule_link, p)
 
         def ch_link(m):
             num = m.group(2)
@@ -2166,7 +2166,7 @@ def resolve_start(page, d, ctx):
                 name = e(ctx["names"].get(num, CHAPTER[num][2]))
                 blocks = [m for m in BLOCK_OPEN.finditer(page, secs[-1].start(), end) if m.start() <= pos]
                 rule = blocks[-1] if blocks and blocks[-1].group(1) == "rule" else None
-                m = rule and re.fullmatch(r"rule-(\d{2})-(\d{1,2})", rule.group(2))
+                m = rule and re.fullmatch(r"rule-(\d{2})-(\d{1,3})", rule.group(2))
                 words = (f"Rule {m.group(1)}.{m.group(2)}" if m else f"Chapter {num}", name)
             elif kind == "appendix":
                 words = ("Appendix", e(ctx.get("appendix_title", APPENDIX_TITLE)))
