@@ -296,6 +296,7 @@
     this._defs = [];
     this.texts = [];
     this.marks = [];
+    this.leaders = [];
     this.warnings = [];
     this._h = 0;
   }
@@ -355,6 +356,8 @@
     o = o || {};
     var a = data_of(o, { x1: r1(x1), y1: r1(y1), x2: r1(x2), y2: r1(y2), 'class': cls_of(o), 'stroke-width': o.width, 'stroke-dasharray': o.dash });
     this._push('<line' + attrs(a) + '/>');
+    // a leader is kept for the guard, which fails one that runs through a label (D3-93)
+    if (o.stroke === 'leader' && !this._grp_t) this.leaders.push({ x1: x1, y1: y1, x2: x2, y2: y2 });
     if (o.mark !== false) this.mark({ kind: o.kind || 'line', x: Math.min(x1, x2), y: Math.min(y1, y2), w: Math.abs(x2 - x1), h: Math.abs(y2 - y1), stroke: o.stroke, data: o.data || {} });
   };
   Ctx.prototype.path = function (d, o, box) {
@@ -475,6 +478,7 @@
       c._els = ['<g transform="translate(0,' + dy + ')">' + c._els.join('') + '</g>'];
       c.texts.forEach(function (b) { b.y += dy; if (b.top !== undefined) { b.top += dy; b.bottom += dy; } });
       c.marks.forEach(function (m) { m.y += dy; if (m.zero !== undefined && m.axis !== 'x') m.zero += dy; });
+      c.leaders.forEach(function (l) { l.y1 += dy; l.y2 += dy; });
       c._h += dy;
     }
     // the drawing is as tall as its tallest part: the form's height, every text and every mark
@@ -485,12 +489,47 @@
     var guard = K.guard(c, width, h);
     var title = spec.title ? '<title>' + esc(spec.title) + '</title>' : '';   // a table-mode island leaves both out; the figure names the drawing
     var desc = spec.alt ? '<desc>' + esc(spec.alt) + '</desc>' : '';
-    var defs = c._defs.length ? '<defs>' + c._defs.join('') + '</defs>' : '';
-    var svg = '<svg xmlns="http://www.w3.org/2000/svg" class="oac-svg" viewBox="0 0 ' + width + ' ' + h + '" width="' + width + '" height="' + h + '"' +
+    var fc = forced_patterns(c);
+    var defs = c._defs.length || fc.defs ? '<defs>' + c._defs.join('') + fc.defs + '</defs>' : '';
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" class="oac-svg' + (fc.defs ? ' oac-u-' + c.uid : '') + '" viewBox="0 0 ' + width + ' ' + h + '" width="' + width + '" height="' + h + '"' +
       ' role="img" data-oa-form="' + esc(spec.form) + '" data-oa-width="' + width + '"' + (opts.label_id ? ' aria-labelledby="' + esc(opts.label_id) + '"' : '') + '>' +
-      title + desc + defs + c._els.join('') + '</svg>';
-    return { svg: svg, width: width, height: h, texts: c.texts, marks: c.marks, keys: c.keys || [], warnings: c.warnings, guard: guard, phone: c.phone };
+      title + desc + fc.style + defs + c._els.join('') + '</svg>';
+    return { svg: svg, width: width, height: h, texts: c.texts, marks: c.marks, leaders: c.leaders, keys: c.keys || [], warnings: c.warnings, guard: guard, phone: c.phone };
   };
+
+  // ------------------------------------------------------------------------------------------------------------
+  // Forced colors (D3-94): each color role's paint in the reader's system colors. Solid roles take CanvasText, GrayText,
+  // Canvas (with a CanvasText outline) or Highlight in kit.css; the steps between take a hatch in one of them, which each
+  // drawing carries in its own defs, so a scale's steps stay apart. Text takes CanvasText on a Canvas halo, and text set on
+  // a dark fill takes Canvas on a CanvasText halo. checks.js reads this table to fail any label in the ink of its ground.
+  // ------------------------------------------------------------------------------------------------------------
+  K.FC = {
+    subject: 'CanvasText', party: 'CanvasText', 'chip-fill': 'CanvasText', baseline: 'CanvasText', label: 'CanvasText', leader: 'GrayText',
+    point: 'Highlight', context: 'GrayText', secondary: 'GrayText', gridline: 'GrayText', ghost: 'GrayText',
+    surface: 'Canvas', band: 'Canvas', track: 'Canvas', land: 'Canvas', 'light-fill': 'Canvas', 'sequential-outline': 'CanvasText',
+    'seq-1': 'Canvas', 'seq-2': 'hatch', 'seq-3': 'GrayText', 'seq-4': 'dense', 'seq-5': 'CanvasText',
+    'div-1': 'CanvasText', 'div-2': 'hatch', 'div-3': 'Canvas', 'div-4': 'hatch-gray', 'div-5': 'GrayText',
+    'mag-1': 'Canvas', 'mag-2': 'hatch', 'mag-3': 'GrayText', 'mag-4': 'CanvasText',
+    'cat-1': 'CanvasText', 'cat-2': 'GrayText', 'cat-3': 'dense', 'cat-4': 'hatch'
+  };
+  // text inks: these set text on a dark fill, so they take Canvas in forced colors
+  K.FC_ON_DARK = ['label-on-subject', 'on-cat-1', 'on-cat-2', 'on-cat-3', 'chip-label'];
+  var FC_PATTERN = { hatch: [6, 1, 'CanvasText'], dense: [3, 1.5, 'CanvasText'], 'hatch-gray': [6, 1.5, 'GrayText'] };
+  function forced_patterns(c) {
+    var body = c._els.join(''), used = {}, rules = [], defs = '';
+    Object.keys(K.FC).forEach(function (role) {
+      var kind = K.FC[role];
+      if (!FC_PATTERN[kind] || body.indexOf('oac-f-' + role + '"') < 0 && body.indexOf('oac-f-' + role + ' ') < 0) return;
+      used[kind] = true;
+      rules.push('.oac-u-' + c.uid + ' .oac-f-' + role + ':not(.oac-t){fill:url(#' + c.uid + '-fc-' + kind + ')}');
+    });
+    Object.keys(used).forEach(function (kind) {
+      var p = FC_PATTERN[kind];
+      defs += '<pattern id="' + c.uid + '-fc-' + kind + '" width="' + p[0] + '" height="' + p[0] + '" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">' +
+        '<rect width="' + p[0] + '" height="' + p[0] + '" class="oac-fc-bg"/><line x1="0" y1="0" x2="0" y2="' + p[0] + '" class="oac-fc-' + (p[2] === 'GrayText' ? 'gray' : 'ink') + '" stroke-width="' + p[1] + '"/></pattern>';
+    });
+    return { defs: defs, style: rules.length ? '<style>@media (forced-colors:active){' + rules.join('') + '}</style>' : '' };
+  }
 
   // ------------------------------------------------------------------------------------------------------------
   // The layout guard: every text inside the artboard, no two texts overlapping, nothing under 13 px
@@ -512,8 +551,28 @@
           out.push('texts overlap: "' + a.words.slice(0, 30) + '" and "' + b.words.slice(0, 30) + '"');
       }
     }
+    // a leader may end at its own label but never run through one (D3-93)
+    (c.leaders || []).forEach(function (l) {
+      tx.forEach(function (b) {
+        var x0 = b.x + 1.5, x1 = b.x + b.w - 1.5, y0 = b.y + 1.5, y1 = b.y + b.h - 1.5;
+        if (x1 <= x0 || y1 <= y0) return;
+        var near = function (x, y) { return x > b.x - 4 && x < b.x + b.w + 4 && y > b.y - 4 && y < b.y + b.h + 4; };
+        if (near(l.x1, l.y1) || near(l.x2, l.y2)) return;
+        if (seg_hits_box(l.x1, l.y1, l.x2, l.y2, x0, y0, x1, y1)) out.push('a leader line crosses "' + b.words.slice(0, 30) + '"');
+      });
+    });
     return out;
   };
+  function seg_hits_box(ax, ay, bx, by, x0, y0, x1, y1) {
+    // Liang-Barsky: does the segment from (ax, ay) to (bx, by) enter the box?
+    var t0 = 0, t1 = 1, dx = bx - ax, dy = by - ay, p = [-dx, dx, -dy, dy], q = [ax - x0, x1 - ax, ay - y0, y1 - ay];
+    for (var i = 0; i < 4; i++) {
+      if (p[i] === 0) { if (q[i] < 0) return false; continue; }
+      var r = q[i] / p[i];
+      if (p[i] < 0) { if (r > t1) return false; if (r > t0) t0 = r; } else { if (r < t0) return false; if (r < t1) t1 = r; }
+    }
+    return t0 <= t1;
+  }
 
   // ------------------------------------------------------------------------------------------------------------
   // Words: atlas IDs in chips, the figure, the table equivalent
