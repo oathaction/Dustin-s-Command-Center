@@ -4197,3 +4197,19 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 |---|---|---|
 | D3-429 | The printed-line writers set double quotes curly as well as apostrophes, an opening quote after a space, bracket or line start and a closing quote elsewhere | D3-175 covered apostrophes only, and a printed line is guide text under Rule 06's typography |
 | D3-430 | Data cells keep the text as written, straight quotes included | The coordinator's instruction: the file's values stay as they are, and the spec sets the cell's words |
+
+### Maker A, round 1 words pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-431 | Applied as the editor wrote them: 1 to 22, 24 to 34, 37 to 42 | The editor owns the words; each figure the new words cite was rechecked by `figures.py` (all 14 pass) and each spec rebuilt |
+| D3-432 | 23 applied as "FF PAC, a hybrid PAC, reported ..." | The register's own line for FF PAC is "Hybrid PAC, nonqualified"; "a super PAC" would misstate it (H02's first-mention gloss is kept) |
+| D3-433 | 35 applied to the alt only; `labels.committee_also` stays "Reported Original Measure" | It is never printed: it is the string matched against Congress.gov's committee record, and changing it would drop S. 2651's committee vote (step 3) |
+| D3-434 | 36 replaced by the data lead's ruling: S41 and S42 read "Documented: a published survey by the University of Maryland’s Program for Public Consultation" | V7 grades no headline figure (figure 7 is a "shared view", checked October 15, 2026), so "the atlas’s grade" would claim a grade the atlas never gave |
+| D3-435 | 18 to 20 by the data lead's ruling: "Grades: Documented, on the public record; Well supported, strong research evidence; …" with only the grades each chart shows (S23 four, S38 four with Hypothesis, not yet tested, S39 two) | Rule 13.3's key glosses word for word, in chapter 15's form |
+| D3-436 | S10's gloss note fixed in the same form | Same fault; S10 is a round 0 spec with no round 1 owner, so the coordinator gave it to me |
+| D3-437 | 6, 10 and 13 by the ruling: S18, S20 and S22 drop "estimates" from their grade lines | Beside the label Finding, "estimates" reads as a second label (Rule 13.1); margins stay in the notes (Rule 14.9) |
+| D3-438 | `caption` keys added to 14.19, 14.23, 14.127, 14.132 and 14.134 | The generator prints the plan's reader question otherwise; two carry straight apostrophes and two read badly as captions |
+| D3-439 | `column`, `ranked-register` and `small-multiple-bars` draw the light fill through `K.parts.named_fill` | One copy of palette rule R3 in the kit (engineer's request); every SVG export of S17, S23 and S36 is byte for byte the same before and after |
+| D3-440 | `column` takes `labels.point` (ED-E1), with the point's keyline drawn as its own outline over the red fill | `kit.css` gives `.oac-s-point-keyline` `fill: none` after `.oac-f-point`, so one element with both classes draws the point hollow on Newsprint (request A11) |
+| D3-441 | S38's grade filter offers four chips; "retired" leaves its word maps | No record in news, records and public information is retired, and Rule 13.3 keeps Retired out of every grade key; the live lookup showed a fifth chip that matched nothing |
