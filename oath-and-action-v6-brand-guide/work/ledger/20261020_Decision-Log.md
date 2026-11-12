@@ -4058,3 +4058,11 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-344 | The pilot check's scripts-off condition also requires the description as words, the needs-scripts line and the table open | The brief's scripts-off proof names all three |
 | D3-345 | The chart kit's own part budget rises from 0.22 to 0.55 MB | DR-238's stop was measured with the renderer grown to 97 forms (about 0.50 MB) beside the map geometry (45 KB), all inside chapter 14's hard stop; round 1's forms took the kit to 0.25 MB at 35 forms, as that projection expects |
 | D3-346 | Chapters 14 and 15, while Phase 3 builds them, count in the page's projection at no less than their allocations | A chapter built in part would otherwise hand the rest of its allocation to the page's room (385,719 bytes for chapter 15 on November 12) |
+
+### Research lead, round 1 fix pass 2
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-347 | The housing bills file carries the committee and floor facts Congress.gov records, and maker A sets the Rule 11.1 steps from them | The API records no hearing on any of the eight bills but cannot show a hearing held on the subject without a bill number, so a step number would claim more than the record holds |
+| D3-348 | The margin of a change between two HVS years is the root of the summed squares of the two published margins | The two years are separate samples, and the published tables give no covariance; the sidecar says the margin is approximate |
+| D3-349 | V7 source titles print as V7 stores them, straight apostrophes included | Atlas values are copied, never edited; the words pass sets the guide's apostrophes |

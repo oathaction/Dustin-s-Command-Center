@@ -104,3 +104,19 @@ From the data lead's DL-R1 to DL-R3 and maker B's R-B1, R-B4, R-B5, R-B8 and R-B
 
 Tested: the data check, 89 tables, 0 faults; the 52 change rows recomputed by script from the frozen counts; the 130 agency names read in full; the CBP methodology passage read on census.gov today (fetch log in `.../round-1/research/dl/cbp-docs/`).
 Not tested: FRED's UNRATE page (unreachable today); any chart redrawn with these lines (the makers' work).
+
+## Fix pass 2
+
+From maker A's A1, A2, A6 and A7. A6 first, since it blocks S40. Scripts: `.../round-1/research/scripts/fix_pass2_housing.py` and `fix_pass2_more.py`; A7 is in `work/build/scripts/phase-3/research_v7_extract.py`. The data check reads 90 tables with 0 faults.
+
+- **A6, S40.** Congress.gov's API answers the committee steps but not the hearing question in full. It records a hearing on a bill only as a "Hearings By" committee activity, and none of the eight bills has one; a hearing on the subject or on a draft with no bill number would not show. So I did not set step numbers. `congress-gov-housing-bills-119` gains facts maker A sets the Rule 11.1 steps from: `hearing_recorded` (false for all eight), `committee_record` (every activity with its date), `committee_vote` (H.R. 6644, December 17, 2025, 50 to 1; H.R. 225, June 10, 2025, 50 to 1; H.R. 1078, December 17, 2025, 29 to 22; H.R. 1640, June 30, 2026, 51 to 0; H.R. 5889, September 16, 2026, 47 to 2), `first_chamber_passed`, `second_chamber_passed` and `became_law_date`. H.R. 224 and H.R. 965 passed the House under suspension with no committee action; S. 2651 was reported by Senate Banking as an original measure; H.R. 224 was discharged from Senate Banking.
+- **A1, S17.** `congress-gov-laws-by-congress` gains the variant `last_ten` in maker A's words.
+- **A2, S20.** `census-hvs-homeownership-by-age` gains the variant `two_years` in maker A's words; the new file `census-hvs-homeownership-by-age-moe` (P7-222) gives each summary age group's 2015 and 2025 margins from HVS Table B-5 and the change's margin. The under-35 rise of 2.0 points passes its margin of about 0.8; so do all householders (1.5) and 35 to 44 (2.3); 45 to 54, 55 to 64 and 65 and over do not.
+- **A7, S39.** `v7-claims-drug-prices` gains `source_words`: each source as V7's sources record names it, publisher and title, joined by "; " (CL1358: "Federal Trade Commission, FTC second interim PBM staff report release").
+
+- D3-xxx | The housing bills file carries the committee and floor facts Congress.gov records, and maker A sets the Rule 11.1 steps from them | The API records no hearing on any of the eight bills but cannot show a hearing held on the subject without a bill number, so a step number would claim more than the record holds
+- D3-xxx | The margin of a change between two HVS years is the root of the summed squares of the two published margins | The two years are separate samples, and the published tables give no covariance; the sidecar says the margin is approximate
+- D3-xxx | V7 source titles print as V7 stores them, straight apostrophes included | Atlas values are copied, never edited; the words pass sets the guide's apostrophes
+
+Tested: the data check, 90 tables, 0 faults; each bill's actions and committees read from the API (fetch log in `.../round-1/research/dl/housing-bills/`); the committee tallies checked against the action text; the two Table B-5 files read in full, with the United States column taken for the six rows; every drug-price claim has source words (11 of 11); the other V7 tables the script writes are byte for byte unchanged (git shows no change).
+Not tested: hearings held without a bill number (the API cannot show them); a House or Senate committee calendar for such hearings.

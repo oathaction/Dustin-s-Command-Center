@@ -9,7 +9,8 @@ Oath & Action Edition 06, Phase 3, round 1, November 12, 2026. Written by the en
 - **Contracts R1-C1 to R1-C7 are written** (below): the sketch format and its role classes, the shared parts a form may call, the rules a form module follows beyond C4, how chapter 14 places a specimen (`s-14-sNN`), the weight each plate may take, and how a script reads a data island, and the shape of map geometry in the data folder (ENG-10).
 - **Done from the requests:** R-B6, the shared arrow moved into `parts.js` (S11, S12 and S15 rebuilt: every export and capture equal byte for byte); D3-219, the payroll file's `with_margin` source line, which maker B can now set as S14's `source_line`; A5, the `survey_only` line on `v7-stock-trading-ban` for S41 and S42.
 - **Also done:** R-B2 (`dollars` and `signed-dollars` formats), R-B7 (`billions` and `billions-value`), R-B3 (a range in `where`) and ENG-11 (the Ballotpedia re-read note).
-- **Not yet started:** entry support in the guide build, `phase3_ch14_build.py`, S05's gap brackets and the light fill, and the requests A4, the kit's side of ENG-10, and DL-E1. They follow in this order: the generator and entry support, A4, ENG-10 and DL-E1, then S05 and the light fill.
+- **Chapter 14 is in the guide.** `work/build/scripts/phase-3/phase3_ch14_build.py` assembles `14-data-visualization.json`, `manifest-data-visualization.json`, one fragment per entry specimen and the example log from the plan, the editor's `14-chapter.json` and the 55 entry files: 55 rules (14.1 to 14.14 and 41 entries), 34 chart plates, 4 sketches, 47 examples logged, 86 numbers planned for later rounds. The guide build learned an entry (below). A strict build with it: 10,011,884 bytes, 265 rules, 552 specimens, chapter 14 with the kit 1,089,319 bytes, projected page 15,041,230 (458,770 bytes of room), share per plate 16,117 bytes for each of 63 plates still to come; 5 warnings, none the engineer's (see Requests).
+- **Not yet started:** A9 (next), A8, the kit's side of ENG-10 and DL-E1, the light fill as a shared part (maker A then switches to it), S05's gap brackets, a check of sketches in the build (R1-C1), and the four-width guide check on a page with chapter 14.
 
 ## Contracts
 
@@ -70,7 +71,7 @@ Chapter 14's generator places an entry's chart as `<div data-oa-chart="s-14-s17"
 
 ### R1-C5. Weight
 
-- Chapter 14's hard stop is 2,803,941 bytes (DR-238), with the kit in it. The build report's note "chapter 14's share per plate" gives what one plate may weigh: its figure, words, table, compressed data and plate frame. On November 12's strict build it is **16,642 bytes** for each of 97 plates; a plate frame takes about 1,300 of it, so a figure has about 15,300.
+- Chapter 14's hard stop is 2,803,941 bytes (DR-238), with the kit in it. The build report's note "chapter 14's share per plate" gives what one plate may weigh: its figure, words, table, compressed data and plate frame. With chapter 14's first 34 plates built (November 12, the strict build under "Chapter 14's generator") it is **16,117 bytes** for each of the 63 plates still to come; a plate frame takes about 1,300 of it, so a figure has about 14,800. Each build prints the current figure.
 - A specimen far over three times its tier's average (core and extended 8 KB, reference 4 KB, avoid 2 KB) is a strict build warning. Keep a spec's data to the rows its chart and table draw (R6).
 
 ### R1-C6. The data island
@@ -93,6 +94,15 @@ C1 gains one file kind, a boundary file, so the maps' data can freeze. The resea
 - November 12 (R-B7): `billions:N` prints a value in dollars as “173.2 billion”; `billions-value:N` prints 173.2 for a column whose label says billions. A cell that does not give back its exact value carries it in `data-v`, as every lean table does.
 - November 12 (R-B3): `where` takes a range, `{"month": {"from": "2022-01", "to": "2026-10"}}`, both ends kept, compared as numbers when both sides are numbers and as text otherwise (months and dates sort as text); either end may be left out.
 
+## Chapter 14's generator and entries in the guide
+
+- `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py [--rounds 1]` writes the chapter, the manifest, the fragments `s-14-sNN.html` (each one placeholder, R1-C3) and `work/build/guide/entries/14-example-log.json`; `--check` fails when a file on disk differs. It lists each fault and exits 1 after writing what it can, so makers see their work in a build: a missing entry for a built round, an id, tier or specimen that disagrees with the plan, a missing spec or sketch, a sketch over its bytes, a `use_instead` naming a chapter 14 number the plan lacks, and Rule 01.9 past DR-229's shares (no domain over one example in four, no state over one in five; atlas-wide tables counted apart). Today: 2 faults, S23's and S40's specs not yet written.
+- The plan's numbers not yet built go in the chapter's `planned_rules`: a citation of one is no fault and prints unlinked until its round builds it. Groups keep the plan's numbers (1, 2, 3, 4 and 16 today) and need only rise while the chapter is partial.
+- An entry is a rule with `"entry": true`: its specimen is its `correct` plate, its caption the plan's reader question until the editor's words pass, it takes no failure plate (a warning if it has one), and the build prints "Use it when" and "Use instead", each choice a live link to its rule. When a spec serves two entries (S13: 14.34 and 14.128), the second carries `specimen_at` and prints "This form’s specimen is the one under Rule 14.34." instead of drawing the chart twice.
+- R2's `related` holds rule numbers; the guide prints related chapters, so the generator writes the cited chapters other than 14 as `related` and keeps the rule numbers as `related_rules`. The editor's `examples` (its rule plates' examples) go to the example log, not the rule.
+- Rule numbers with three digits (14.100 to 14.141) now parse everywhere the build and the guide check read a rule number or link one (`guide_build.py`, `guide_check.js`).
+- The per-plate share's reserve for "rules, selection guide and palette specification" falls from 0.30 to 0.10 MB, since rules 14.1 to 14.14 and the opener are built and measured in the chapter; round 5's selection guide and palette specification keep their 0.10 MB.
+
 ## Routine calls
 
 - D3-xxx | Chapter 14 places a maker's spec sNN as `s-14-sNN`, resolved to `specs/sNN.json` | The weight gates and the per-plate share count chapter 14's plates by that prefix, as the pilot placed them
@@ -100,9 +110,22 @@ C1 gains one file kind, a boundary file, so the maps' data can freeze. The resea
 - D3-xxx | The payroll margin's line is a source line variant of the payroll file (`with_margin`), written by `data_round0_build.py` | C2 lets a spec's line equal a sidecar variant, so the kit's source check holds S14 to it (D3-219)
 - D3-xxx | A `where` range compares numbers as numbers and anything else as text | Months (`2022-01`) and dates sort correctly as text, years and counts as numbers (R-B3)
 - D3-xxx | Map geometry joins C1 as unprojected, unsimplified GeoJSON with properties limited to IDs and names; the kit projects and simplifies at build | The research lead's proposal: the data stays as the Bureau published it, projection is a drawing choice, and the page carries only drawn paths
+- D3-xxx | `v7-claims-by-hub-and-grade` is written by `data_round0_build.py` beside the table it sums, as `kind: derived` | C1 keeps derived tables in their own files, written by script; one script then checks both against the register
+- D3-xxx | `phase3_ch14_build.py` writes what it can and exits 1 on any fault | The makers' 26 specs and entries can be seen in a build while one is still missing; the strict build still fails on the missing plate
+- D3-xxx | A spec that serves two entries is drawn once; the second entry names the first's specimen | S13 would weigh 37 KB twice (its table is the sparkline table 14.128 describes)
+- D3-xxx | Chapter 14 keeps the plan's group numbers while partial | Printed group numbers stay the ones later rounds will print
+- D3-xxx | The guide reads rule numbers of up to three digits | Chapter 14 runs to 14.141 (DR-240)
+- D3-xxx | The per-plate reserve for chapter 14's rules falls to the selection guide's and palette specification's 0.10 MB once rules 14.1 to 14.14 are built | Their bytes now sit in the chapter as built; counting both would halve the share
 - D3-xxx | A sketch is one inline SVG classed `oac-svg oac-sketch`, colored only by the kit's role classes, at most 4 KB (reference) or 2 KB (avoid) | The kit's classes carry the approved tokens on both grounds and the forced-colors rules; one format lets the build check every sketch
 
 ## Requests
+
+To others, from the strict build with chapter 14 in (it fails on these five; none is in the engineer's files):
+- **Editor:** `14-chapter.json`'s intro has three paragraphs; the guide's content contract allows two. Also the words of each entry plate's caption, which the generator takes from the plan's reader question until you give one (an entry key `caption` would be read first, if you want it; say so and I add it).
+- **Maker A:** S23's spec (`specs/s23.json`; A4's table has landed) and S40's (`specs/s40.json`). When the kit has the light fill as a shared part, switch S-forms that draw it by ground to the shared part (the coordinator's note); I will say when it lands.
+- **Maker B:** S05 (30,524 bytes) and S13 (37,486) are far over three times the core average (24,576), which fails `--strict` (R6); trim their tables or islands, or say which rows can move to a download. 
+
+From the makers and leads, to the engineer:
 
 Taken, in the order they arrived:
 
@@ -114,7 +137,9 @@ Taken, in the order they arrived:
 | R-B3, a range in `where` | maker B | Done (contract changes) |
 | R-B2, a `dollars` format | maker B | Done (contract changes) |
 | R-B7, a `billions` format | maker B | Done (contract changes) |
-| A4, `v7-claims-by-hub-and-grade` | maker A | Queued |
+| A4, `v7-claims-by-hub-and-grade` | maker A | Done: 20 rows (five hubs by four grades, in the source file's hub order), columns as asked, `kind: derived` from `v7-claims-by-grade.json`, domain `all`, its own printed line naming the five hubs; written by `data_round0_build.py`, which stops if the claims do not add to the register's 433. S23 can now name `dataset: v7-claims-by-hub-and-grade` |
+| A9, S38's live search, filters and result count | maker A | Next |
+| A8, a bare empty pivot cell in the lean table (optional) | maker A | Queued |
 | ENG-10, map geometry in the data folder | research lead | Shape posted (R1-C7); the kit's projection and the data check's `.geojson` reading queued |
 | DL-E1, one county map measured against the stop | data lead | Queued, after ENG-10 |
 | ENG-11, the Ballotpedia bans re-read note | research lead | Done: the note in `ballotpedia-rcv-prohibitions-by-state.meta.json`'s `notes`, in the research lead's words, written by `data_round0_build.py` (88 tables, 0 faults) |
@@ -122,10 +147,20 @@ Taken, in the order they arrived:
 ## Tested
 
 - `guide_charts.py --self-test`: every case passes, including chapter 14's `s-14-sNN` finding the maker's spec.
+- `phase3_ch14_build.py` and `--check` (37 of 37 current); `guide_build.py --self-test` 30 of 30 scenarios, 307 of 307 expectations, after a fault found and fixed in the entry support (a dropped line that hid every rule's token chips for a few minutes; the test caught it); `guide_charts.py --self-test`; a strict build with chapter 14 in (above), 5 warnings, all listed under Requests.
+- `data_round0_build.py` after A4 and ENG-11: 91 tables, 0 faults, `--check` current; `v7_check.py --self-test` passes.
 - `data_round0_build.py` after D3-219 and A5: 69 tables, 0 faults; only the two sidecars changed; `--check` current.
 - R-B6: `oa-chart.mjs build` of S11, S12 and S15 (frozen copies of the specs) after the move: 3 of 3 pass every check with page-to-Node parity; every export, capture, CSV and check file equal byte for byte to the build before the move; only the build pages differ, since they carry the kit.
 
 ## Not tested
 
-- The sketch format in a guide build: no sketch exists yet, and the build's sketch check is not written.
+- The build's sketch check (R1-C1) is not written; the generator checks only each sketch's bytes.
+- `guide_check.js` on a page with chapter 14: not run yet.
+- A9 and A4 and the rest under "Not yet started".
 - Everything under "Not yet started" in the summary.
+
+## Files
+
+Created: `work/build/scripts/phase-3/phase3_ch14_build.py`; by it, `work/build/guide/chapters/14-data-visualization.json`, `work/build/guide/specimens/manifest-data-visualization.json`, `work/build/guide/specimens/s-14-sNN.html` (34 fragments) and `work/build/guide/entries/14-example-log.json`; `work/build/data/v7-claims-by-hub-and-grade.json` and its sidecar; this notes file.
+Modified: `work/build/chart-kit/parts.js` (`arrow`), `forms/shift-arrows.js` (reads the shared arrow), `kit.js` (`dollars`, `signed-dollars`, `billions`, `billions-value`, a `where` range), `kit.css` (a comment); `work/build/scripts/phase-3/guide_charts.py` (`s-14-sNN` resolves to `sNN.json`, the entry-plate count, the rules reserve), `data_round0_build.py` (D3-219, A5, ENG-11, A4) and the sidecars it writes (`fred-payrolls-monthly-change`, `v7-stock-trading-ban`, `ballotpedia-rcv-prohibitions-by-state`); `work/build/scripts/phase-2/guide_build.py` (entries, planned rules, three-digit rule numbers, partial groups) and `guide_check.js` (three-digit rule numbers); `work/build/guide/shell/guide-shell.css` (the entry blocks).
+Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/f15cd04b-21be-5dde-a467-804e951756a2/scratchpad/phase-3/round-1/engineer/` (the strict build with chapter 14 and its report).

@@ -342,6 +342,14 @@ Added by the research lead in Phase 3, round 1, for round 3's forms (`work/hando
 
 From the data lead’s DL-R1 to DL-R3 and maker B’s R-B1, R-B4, R-B5, R-B8 and R-B10 (`work/handoffs/phase-3/20261112_Round-1-Data-Lead-Notes.md`, `...-Maker-B-Notes.md`). P7-013 gains a source line variant for the unemployment rate alone; P7-015 (Treasury receipts) a variant for fiscal 2016 to 2026; the child tax credit file’s (P7-012) `max_credit_per_child` column is described as the amount for a child 6 or older; both County Business Patterns files (P7-010, P7-011) gain a `breaks_in_series` line from the Bureau’s methodology page, read November 12, 2026: "Since 1998, County Business Patterns (CBP) has been tabulated based on the North American Industry Classification System (NAICS). For prior periods, data were tabulated according to the Standard Industrial Classification (SIC) System."; P7-007 (OPM) gains a readable `agency` column; and P7-006 gains a derived file, `census-bfs-business-applications-change-by-state`. Maker B’s `illustrative-benefit-cliff` (invented values, `kind: illustrative`, plan row 28) is recorded here as P7-221 so the ledger accounts for every file in the data folder; it has no publisher and needs no URL.
 
+### Fix pass 2, round 1, November 12, 2026
+
+From maker A’s A1, A2, A6 and A7 (`work/handoffs/phase-3/20261112_Round-1-Maker-A-Notes.md`). P7-018 (housing bills) gains six columns read from each bill’s actions and committee activities on the Congress.gov API (fetched 04:44 UTC): whether Congress.gov records a hearing on the bill, every committee activity with its date, the committee vote’s date and tally, and the dates each chamber passed it and it became law. Congress.gov records no hearing on any of the eight bills; it ties a hearing to a bill only through a "Hearings By" activity, so a hearing on a subject or a draft with no bill number would not show. P7-001 gains a source line variant for the 109th to 118th Congress; P7-004 a variant for 2015 and 2025; `v7-claims-drug-prices` a column naming each source by publisher and title from V7’s sources record.
+
+| # | Dataset | Publisher | Table or series | Period | Geography | Status | Serves | Qualification that matters | URL | Checked |
+|---|---|---|---|---|---|---|---|---|---|---|
+| P7-222 | census-hvs-homeownership-by-age-moe | U.S. Census Bureau | HVS Annual Statistics 2015 and 2025, Table B-5 (United States column), with Table 17’s rates | Annual averages, 2015 and 2025 | United States | Primary, with computed change margins | 6 (S20) | Published margins are rounded to one decimal, and the change’s margin treats the two years as independent samples. The under-35 rate rose 2.0 points (35.0 to 37.0) against a margin of about 0.8, so the change passes; 45 to 54, 55 to 64 and 65 and over do not | https://www.census.gov/housing/hvs/files/annual15/ann15t_b5.xlsx ; https://www.census.gov/housing/hvs/files/annual25/ann25t_b5.xlsx | 2026-11-12 |
+
 ### Claims in Part 7 I could not verify
 
 1. Massachusetts Question 3's count on the Secretary of the Commonwealth's own site, which had not posted 2026 results; the figures rest on NBC Boston's page and WGBH's report of the Associated Press call.
@@ -388,3 +396,4 @@ Modified November 11, 2026 (Phase 3, round 0, research lead): added Part 7, Phas
 
 Modified November 12, 2026 (Phase 3, round 1, research lead): added "Round 3 datasets" to Part 7, rows P7-201 to P7-220, claims 10 to 15 of Part 7’s unverified list, and a settled note on claim 6.
 Modified November 12, 2026 (Phase 3, round 1 fix pass, research lead): Part 7’s "Fix pass, round 1" note.
+Modified November 12, 2026 (Phase 3, round 1 fix pass 2, research lead): Part 7’s "Fix pass 2" note and row P7-222.

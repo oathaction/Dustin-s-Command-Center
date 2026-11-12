@@ -1,0 +1,184 @@
+{
+ "rows": [
+  {
+   "hub": "cost-of-living",
+   "hub_title": "Cost of living",
+   "grade": "documented",
+   "claims": 81,
+   "hub_claims": 104,
+   "share_pct": 77.9,
+   "answers": 4
+  },
+  {
+   "hub": "cost-of-living",
+   "hub_title": "Cost of living",
+   "grade": "well_supported",
+   "claims": 8,
+   "hub_claims": 104,
+   "share_pct": 7.7,
+   "answers": 4
+  },
+  {
+   "hub": "cost-of-living",
+   "hub_title": "Cost of living",
+   "grade": "plausible",
+   "claims": 10,
+   "hub_claims": 104,
+   "share_pct": 9.6,
+   "answers": 4
+  },
+  {
+   "hub": "cost-of-living",
+   "hub_title": "Cost of living",
+   "grade": "contested",
+   "claims": 5,
+   "hub_claims": 104,
+   "share_pct": 4.8,
+   "answers": 4
+  },
+  {
+   "hub": "health-and-care",
+   "hub_title": "Health and care",
+   "grade": "documented",
+   "claims": 80,
+   "hub_claims": 110,
+   "share_pct": 72.7,
+   "answers": 4
+  },
+  {
+   "hub": "health-and-care",
+   "hub_title": "Health and care",
+   "grade": "well_supported",
+   "claims": 19,
+   "hub_claims": 110,
+   "share_pct": 17.3,
+   "answers": 4
+  },
+  {
+   "hub": "health-and-care",
+   "hub_title": "Health and care",
+   "grade": "plausible",
+   "claims": 9,
+   "hub_claims": 110,
+   "share_pct": 8.2,
+   "answers": 4
+  },
+  {
+   "hub": "health-and-care",
+   "hub_title": "Health and care",
+   "grade": "contested",
+   "claims": 2,
+   "hub_claims": 110,
+   "share_pct": 1.8,
+   "answers": 4
+  },
+  {
+   "hub": "work-and-security",
+   "hub_title": "Work and financial security",
+   "grade": "documented",
+   "claims": 68,
+   "hub_claims": 97,
+   "share_pct": 70.1,
+   "answers": 3
+  },
+  {
+   "hub": "work-and-security",
+   "hub_title": "Work and financial security",
+   "grade": "well_supported",
+   "claims": 16,
+   "hub_claims": 97,
+   "share_pct": 16.5,
+   "answers": 3
+  },
+  {
+   "hub": "work-and-security",
+   "hub_title": "Work and financial security",
+   "grade": "plausible",
+   "claims": 5,
+   "hub_claims": 97,
+   "share_pct": 5.2,
+   "answers": 3
+  },
+  {
+   "hub": "work-and-security",
+   "hub_title": "Work and financial security",
+   "grade": "contested",
+   "claims": 8,
+   "hub_claims": 97,
+   "share_pct": 8.2,
+   "answers": 3
+  },
+  {
+   "hub": "community-services",
+   "hub_title": "Public services where you live",
+   "grade": "documented",
+   "claims": 49,
+   "hub_claims": 58,
+   "share_pct": 84.5,
+   "answers": 3
+  },
+  {
+   "hub": "community-services",
+   "hub_title": "Public services where you live",
+   "grade": "well_supported",
+   "claims": 6,
+   "hub_claims": 58,
+   "share_pct": 10.3,
+   "answers": 3
+  },
+  {
+   "hub": "community-services",
+   "hub_title": "Public services where you live",
+   "grade": "plausible",
+   "claims": 2,
+   "hub_claims": 58,
+   "share_pct": 3.4,
+   "answers": 3
+  },
+  {
+   "hub": "community-services",
+   "hub_title": "Public services where you live",
+   "grade": "contested",
+   "claims": 1,
+   "hub_claims": 58,
+   "share_pct": 1.7,
+   "answers": 3
+  },
+  {
+   "hub": "voice-and-power",
+   "hub_title": "Voice, power and information",
+   "grade": "documented",
+   "claims": 43,
+   "hub_claims": 64,
+   "share_pct": 67.2,
+   "answers": 2
+  },
+  {
+   "hub": "voice-and-power",
+   "hub_title": "Voice, power and information",
+   "grade": "well_supported",
+   "claims": 7,
+   "hub_claims": 64,
+   "share_pct": 10.9,
+   "answers": 2
+  },
+  {
+   "hub": "voice-and-power",
+   "hub_title": "Voice, power and information",
+   "grade": "plausible",
+   "claims": 12,
+   "hub_claims": 64,
+   "share_pct": 18.8,
+   "answers": 2
+  },
+  {
+   "hub": "voice-and-power",
+   "hub_title": "Voice, power and information",
+   "grade": "contested",
+   "claims": 2,
+   "hub_claims": 64,
+   "share_pct": 3.1,
+   "answers": 2
+  }
+ ]
+}

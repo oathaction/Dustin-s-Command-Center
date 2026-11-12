@@ -651,6 +651,37 @@ def v7_tables():
              f'Snapshot of {SNAP_WORDS}. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.'),
             'all', ['S10'], grade_meaning={'documented': 'on the public record', 'well-supported': 'strong research evidence', 'plausible': 'some evidence', 'contested': 'evidence disputed'},
             domain_note='The 16 everyday questions span the atlas’s five hubs and every domain')
+    # maker A's A4 (round 1, S23): the same claims grouped by the atlas's five hubs, one row per hub and grade (C1, derived)
+    hubs = []
+    for r in crow:
+        if r['hub'] not in hubs:
+            hubs.append(r['hub'])
+    hrow = []
+    for h in hubs:
+        rs = [r for r in crow if r['hub'] == h]
+        hub_claims = sum(r['total'] for r in rs)
+        for g in ('documented', 'well_supported', 'plausible', 'contested'):
+            n = sum(r[g] for r in rs)
+            hrow.append({'hub': h, 'hub_title': HUB[h], 'grade': g, 'claims': n, 'hub_claims': hub_claims,
+                         'share_pct': round(100 * n / hub_claims, 1) if hub_claims else None, 'answers': len(rs)})
+    if sum(r['claims'] for r in hrow) != len(V7['claims']) or len(hrow) != 4 * len(hubs):
+        raise SystemExit('A4: claims by hub and grade do not add to the register')
+    write_v7('v7-claims-by-hub-and-grade', ['hub', 'hub_title', 'grade', 'claims', 'hub_claims', 'share_pct', 'answers'], hrow)
+    v7_meta('v7-claims-by-hub-and-grade', 'claims register, 433 claims across 16 everyday questions, grouped by its five topic hubs, by evidence grade',
+            'claims, counted by pathway and confidence, summed by hub',
+            'Claims checked through October 15, 2026', 'United States', 'The 433 claims behind the atlas’s 16 everyday answers', 'Claims',
+            'Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.',
+            {'hub': col('id', 'V7 hub ID'), 'hub_title': col('category', 'hub title'),
+             'grade': col('category', 'evidence grade: documented, well_supported, plausible or contested'),
+             'claims': col('integer', 'claims of this grade on the hub’s pathways'), 'hub_claims': col('integer', 'all claims on the hub’s pathways'),
+             'share_pct': col('number', 'claims of this grade as a share of the hub’s claims, one decimal; the studio’s arithmetic on V7’s counts', 'percent'),
+             'answers': col('integer', 'everyday questions (pathways) in the hub')},
+            (f'{ATLAS_LINE}, claims register, 433 claims across 16 everyday questions grouped by its five topic hubs, claims checked through October 15, 2026, '
+             f'United States. Snapshot of {SNAP_WORDS}. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.'),
+            'all', ['S23'], kind='derived', derived_from=['v7-claims-by-grade.json'],
+            derivation='The rows of v7-claims-by-grade summed by hub, in that file’s hub order, grades in the order documented, well-supported, plausible, contested; share_pct is claims over hub_claims (request A4).',
+            grade_meaning={'documented': 'on the public record', 'well-supported': 'strong research evidence', 'plausible': 'some evidence', 'contested': 'evidence disputed'},
+            domain_note='The five hubs span every domain, as the 16 everyday questions do')
 
 
 # ---------------------------------------------------------------------------------------------------------------

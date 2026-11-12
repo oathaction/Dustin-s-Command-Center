@@ -42,5 +42,8 @@
  "printed_source_line": "Source: Library of Congress, Congress.gov, laws by Congress, 93rd to 118th Congress (1973 to 2024), United States. Retrieved November 11, 2026. A count of laws, short or long; the 119th Congress is still in session.",
  "ledger_row": "P7-001",
  "domain": "D04",
- "states": []
+ "states": [],
+ "source_line_variants": {
+  "last_ten": "Source: Library of Congress, Congress.gov, laws by Congress, 109th to 118th Congress (2005 to 2024), United States. Retrieved November 11, 2026. A count of laws, short or long; the 119th Congress is still in session."
+ }
 }

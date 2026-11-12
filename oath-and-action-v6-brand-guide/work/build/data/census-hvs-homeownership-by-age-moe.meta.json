@@ -1,0 +1,68 @@
+{
+ "file": "census-hvs-homeownership-by-age-moe.csv",
+ "kind": "public",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Current Population Survey/Housing Vacancy Survey, Annual Statistics 2015 and 2025, Table B-5, margins of error of homeownership rates by age of householder, with the rates of Table 17",
+ "table_id": "HVS ann15t_b5 and ann25t_b5 (United States column); ann25t_17",
+ "url": [
+  "https://www.census.gov/housing/hvs/files/annual15/ann15t_b5.xlsx",
+  "https://www.census.gov/housing/hvs/files/annual25/ann25t_b5.xlsx",
+  "https://www.census.gov/housing/hvs/data/ann15ind.html",
+  "https://www.census.gov/housing/hvs/files/annual25/ann25t_17.xlsx"
+ ],
+ "observation_period": "Annual averages, 2015 and 2025",
+ "geography": "United States",
+ "universe_or_base": "Households, by age of householder: all householders and the five summary age groups",
+ "unit": "percent; margins are 90 percent margins in percentage points; change and its margin computed and stored to four decimals",
+ "date_retrieved": "2026-11-12",
+ "vintage": "HVS Annual Statistics 2015 and 2025",
+ "qualification": "Published margins are rounded to one decimal, so the computed margin of each change is approximate; it treats the two years as independent samples (the root of the summed squares). The 2025 average leaves out October 2025, when no data were collected. A change that does not pass its margin is not a measured change (DR-64).",
+ "columns": {
+  "age_group": {
+   "type": "category",
+   "description": "age of householder, as the tables name the summary groups"
+  },
+  "rate_2015": {
+   "type": "number",
+   "description": "homeownership rate, 2015",
+   "unit": "percent"
+  },
+  "moe_2015": {
+   "type": "number",
+   "description": "90 percent margin of error, 2015 (Table B-5)",
+   "unit": "percentage points"
+  },
+  "rate_2025": {
+   "type": "number",
+   "description": "homeownership rate, 2025",
+   "unit": "percent"
+  },
+  "moe_2025": {
+   "type": "number",
+   "description": "90 percent margin of error, 2025 (Table B-5)",
+   "unit": "percentage points"
+  },
+  "change": {
+   "type": "number",
+   "description": "2025 less 2015, computed",
+   "unit": "percentage points"
+  },
+  "change_moe": {
+   "type": "number",
+   "description": "approximate 90 percent margin of the change, computed",
+   "unit": "percentage points"
+  },
+  "change_passes_moe": {
+   "type": "boolean",
+   "description": "true when the change is larger than its margin"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, Current Population Survey/Housing Vacancy Survey, Annual Statistics 2015 and 2025, Tables 17 and B-5, homeownership rate by age of householder with margins of error, 2015 and 2025, United States. Retrieved November 12, 2026. Margins of the changes computed by Oath & Action.",
+ "ledger_row": "P7-222",
+ "domain": "D09",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "ann15t_b5.xlsx": "2ee454bf51bd2820",
+  "ann25t_b5.xlsx": "a957b6c47304ae7c"
+ }
+}

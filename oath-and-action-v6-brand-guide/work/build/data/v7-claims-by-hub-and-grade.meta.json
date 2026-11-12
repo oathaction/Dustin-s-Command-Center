@@ -1,0 +1,69 @@
+{
+ "file": "v7-claims-by-hub-and-grade.json",
+ "kind": "derived",
+ "publisher": "Oath & Action’s systems atlas, Who Do They Answer To?",
+ "title_or_table": "claims register, 433 claims across 16 everyday questions, grouped by its five topic hubs, by evidence grade",
+ "table_id": "claims, counted by pathway and confidence, summed by hub",
+ "url": "work/extract/atlas-v7-data.json",
+ "observation_period": "Claims checked through October 15, 2026",
+ "geography": "United States",
+ "universe_or_base": "The 433 claims behind the atlas’s 16 everyday answers",
+ "unit": "Claims",
+ "date_retrieved": "2026-10-15",
+ "vintage": "Atlas V7 snapshot of October 15, 2026",
+ "qualification": "Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.",
+ "columns": {
+  "hub": {
+   "type": "id",
+   "description": "V7 hub ID"
+  },
+  "hub_title": {
+   "type": "category",
+   "description": "hub title"
+  },
+  "grade": {
+   "type": "category",
+   "description": "evidence grade: documented, well_supported, plausible or contested"
+  },
+  "claims": {
+   "type": "integer",
+   "description": "claims of this grade on the hub’s pathways"
+  },
+  "hub_claims": {
+   "type": "integer",
+   "description": "all claims on the hub’s pathways"
+  },
+  "share_pct": {
+   "type": "number",
+   "description": "claims of this grade as a share of the hub’s claims, one decimal; the studio’s arithmetic on V7’s counts",
+   "unit": "percent"
+  },
+  "answers": {
+   "type": "integer",
+   "description": "everyday questions (pathways) in the hub"
+  }
+ },
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, claims register, 433 claims across 16 everyday questions grouped by its five topic hubs, claims checked through October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.",
+ "ledger_row": "not needed: Atlas V7, read by script",
+ "domain": "all",
+ "states": [],
+ "snapshot": "2026-10-15",
+ "specimens": [
+  "S23"
+ ],
+ "extract_script": "work/build/scripts/phase-3/data_round0_build.py",
+ "derived_from": [
+  "v7-claims-by-grade.json"
+ ],
+ "derivation": "The rows of v7-claims-by-grade summed by hub, in that file’s hub order, grades in the order documented, well-supported, plausible, contested; share_pct is claims over hub_claims (request A4).",
+ "grade_meaning": {
+  "documented": "on the public record",
+  "well-supported": "strong research evidence",
+  "plausible": "some evidence",
+  "contested": "evidence disputed"
+ },
+ "domain_note": "The five hubs span every domain, as the 16 everyday questions do",
+ "source_line_variants": {
+  "phase_2_wording": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, claims register, 433 claims across 16 everyday questions grouped by its five topic hubs, claims checked through October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone."
+ }
+}
