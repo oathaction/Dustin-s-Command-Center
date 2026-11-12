@@ -1,10 +1,10 @@
 # Handoff for the next session: Oath & Action Edition 06 (seventeenth handoff, November 12)
 
-Written November 12, 2026, after Phase 3's round 0 and board 1. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-2/20261111_Next-Session-Handoff_V16.md`. V5's sections 3 to 5 and section 3 of V8 to V16 still hold, with the additions below. Decision log entries for this chat run from G2-01 to G2-04, DR-233 to DR-235 and D3-01 to D3-213. The change ledger runs to C-098.
+Written November 12, 2026, after Phase 3's round 0 and board 1. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-2/20261111_Next-Session-Handoff_V16.md`. V5's sections 3 to 5 and section 3 of V8 to V16 still hold, with the additions below. Decision log entries for this chat run from G2-01 to G2-04, DR-233 to DR-239 and D3-01 to D3-214. The change ledger runs to C-098.
 
 ## 1. Where things stand
 
-Gate 2 was approved as proposed on November 11 (G2-01 to G2-04). Phase 3 is the active phase. Round 0 is built, reviewed, fixed, rescored and shown on board 1. Dustin's board 1 answers are the next input.
+Gate 2 was approved as proposed on November 11 (G2-01 to G2-04). Phase 3 is the active phase. Round 0 is built, reviewed, fixed, rescored and shown on board 1. Dustin answered board 1 on November 12, "As recommended, and I approve the smaller photographs", logged as DR-236 to DR-239; the next chat applies the answers, then plans round 1.
 
 | Page | Address | Status |
 |---|---|---|
@@ -25,14 +25,14 @@ Gate 2 was approved as proposed on November 11 (G2-01 to G2-04). Phase 3 is the 
 
 ## 2. Next, in order
 
-### A. Dustin's board 1 answers
-Board 1 asks four things, each with a recommendation; he replies "As recommended, and I approve the smaller photographs", or names his answers:
+### A. Apply Dustin's board 1 answers (DR-236 to DR-239)
+He answered all four as recommended and approved the smaller photographs by name. Apply each in one short pass before round 1:
 1. **Palette:** the two new colors #828A9D and #505C7D and the ink order Charcoal, Verdigris, Prussian, Stone. If yes: the engineer drops "proposed" from those token descriptions in the next pre-release.
 2. **Chapter 13** as built.
 3. **Page weight:** the combined option (D3-193): chapter 01's three photographs at 1,200 px wide, chart data carried compressed, tables live, chapter 14's stop raised to 2.804 MB, nothing from Phase 4. Needs his named approval of the smaller photographs. If yes: the research lead makes the renditions from the originals and updates their rights and research records (keep the originals); the identity or editor build that places chapter 01's photographs takes the new files; the engineer adopts compressed chart data, sets chapter 14's ceiling to 2.804 MB, and reports a per-plate budget of about 15 KB each round (the creative director's advice). Otherwise the option he picks, from D3-190's table.
 4. **Payroll sentence (D3-87):** if yes, the editor adds "Only the October 2025 and February 2026 drops pass the survey's margin of error." to chapter 02's H08 after line and the H06 example (through the chapter 02 generator), and the Explainer maker adds it to S14's note. Dustin was also asked this in chat before board 1 and had not answered.
 
-Log his answers as DR-236 on, then apply them in one short pass before round 1 starts.
+His answers are logged (DR-236 to DR-239). Apply them in one short pass, with the owners named above, then rebuild strict, run the quick guide check and the kit build, and log each owner's calls; republish nothing until round 1's board unless Dustin asks.
 
 ### B. Round 1
 Under the proposal (`work/handoffs/phase-2/20261111_Phase-3-Proposal-Draft.md`): comparison, shift and swing, change over time, tables and plain words; 41 forms (26 core, 11 extended, 2 reference, 2 avoid), two makers on the kit, the data already frozen in the plan's rows. Write a round 1 brief in `work/handoffs/phase-3/` modeled on the round 0 brief, with each maker's forms, spec IDs and file ownership fixed ahead, and chapter 14's file and rule numbers set before makers start. Chapter 15 starts in round 1 (the systems designer); the research lead fetches round 3's data a round ahead. Then the same review shape: three red team agents covering six lenses, the creative director, one fix pass, DR-191's read and second pass, the rescore, and board 2 after round 3.
@@ -61,7 +61,7 @@ Under the proposal (`work/handoffs/phase-2/20261111_Phase-3-Proposal-Draft.md`):
 ```
 I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on the branch claude/friendly-brahmagupta-tonmfa in the oathaction/Dustin-s-Command-Center repo, in the folder oath-and-action-v6-brand-guide/. Fetch that branch and work from it. Keep committing and pushing to it unless I say otherwise.
 
-Board 1: [paste "As recommended, and I approve the smaller photographs", or write your four answers]. Record my answers in the decision log, apply them, then start Phase 3's round 1.
+Board 1 is answered: "As recommended, and I approve the smaller photographs", already logged as DR-236 to DR-239. Apply those answers, then start Phase 3's round 1.
 
 Before you do anything else, read these in order:
 1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from G2-01 to the end), the change ledger (to C-098), the open questions, and the Gate 2 report (work/ledger/20261111_Gate-2-Report.md), section 9.
@@ -71,7 +71,7 @@ Data keys are already saved in this environment: the api.data.gov key for api.op
 
 Nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them, even when they fall more on one side (DR-93). Never manufacture balance.
 
-Settled and not to be changed: the Civic Line icons (DR-144) with the redraws and new drawings I approved (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 like every other reform (DR-223); the atlas visual system (DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on, including DR-225 to DR-235 and my board 1 answers.
+Settled and not to be changed: the Civic Line icons (DR-144) with the redraws and new drawings I approved (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 like every other reform (DR-223); the atlas visual system (DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on, including DR-225 to DR-239.
 
 Phase 3 runs as the proposal sets it: form rounds 1 to 3 ending at board 2, rounds 4 and 5 with chapter 15 ending at board 3, then Gate 3. The guide stays one file.
 
@@ -97,7 +97,7 @@ Created, all under `work/` unless named:
 - **Boards:** `boards/phase-3/round-0/palettes/`, `boards/phase-3/round-0/specimens/`, `boards/phase-3/round-0/board-1/`.
 
 Modified:
-- `ledger/20261020_Decision-Log.md` (G2-01 to G2-04, DR-233 to DR-235, D3-01 to D3-213), `ledger/20261020_Change-Ledger.md` (C-092 to C-098), `research/20261021_Research-Ledger.md` (Part 7).
+- `ledger/20261020_Decision-Log.md` (G2-01 to G2-04, DR-233 to DR-239, D3-01 to D3-214), `ledger/20261020_Change-Ledger.md` (C-092 to C-098), `research/20261021_Research-Ledger.md` (Part 7).
 - `build/scripts/phase-2/guide_build.py`, `dataviz_check.js`, `tokens_build.mjs`; the token source and outputs (6.0.0-gate3.1) and the token tests; `build/guide/specimens/s-26-token-table.html`.
 
 Published: board 1, privately. Not touched: `source/`, `deliverables/`, Atlas V7.

@@ -3836,3 +3836,20 @@ The main session asked four questions with its round 0 plan. Dustin: "Yeah, I ag
 |---|---|---|
 | D3-212 | Board 1 is published privately at https://claude.ai/artifact/5ncsC9iTiQ2Kyu3yqbZ4P1 (version 1794449500-119f): `work/boards/phase-3/round-0/board-1/20261112_Board-1.html` and its 121 images, all referenced, 59,970,826 bytes. Before it the main session scanned the HTML (no scripts or handlers, outside requests only to Google Fonts, no em dashes, no private paths or key names, 121 alt texts), read panel 1's words in full and scanned the rest for banned words, and looked at contact sheets of all 121 images | Dustin reviews a board at each stage; every file is seen before it is published |
 | D3-213 | This chat hands off after board 1, with Dustin's four board 1 answers still to come: the palette (two new colors and the ink order), chapter 13, page weight (the combined option needs his named approval of the smaller photographs) and the payroll sentence | The handoffs' rule: hand off after each board; round 1 is a new stage |
+
+## Answers on board 1, November 12, 2026
+
+Dustin, on board 1's four questions: "As recommended, and I approve the smaller photographs".
+
+| # | Decision | Source |
+|---|---|---|
+| DR-236 | The data palettes are approved: the two new color values #828A9D and #505C7D (Prussian mixed toward Newsprint) for diverging pair B on Charcoal, and the four-ink group order Charcoal, Verdigris, Prussian, Stone, with Stone always hatched. The tokens drop "proposed" from their descriptions in the next pre-release | Dustin, November 12, as recommended (board 1, question 1a) |
+| DR-237 | Chapter 13, Evidence and sourcing, is approved as built: 13 rules in three groups, each with its correct and failure plate | Dustin, November 12, as recommended (board 1, question 1b) |
+| DR-238 | Page weight takes the combined option, with Dustin's named approval of the smaller photographs: chapter 01's three photographs (Rule 01.6's by the Architect of the Capitol, and Rule 01.8's by the U.S. Army Corps of Engineers, Sacramento District, shown twice) go to 1,200 px wide; each chart's drawing data is carried compressed; every table stays live text; chapter 14's stop rises to 2.804 MB; nothing comes from Phase 4's share. The research lead keeps every original and its record | Dustin, November 12: "I approve the smaller photographs" (board 1, question 1c; D3-193) |
+| DR-239 | Chapter 02's approved "shrank in seven of the 57 months charted" stays, and the sentence "Only the October 2025 and February 2026 drops pass the survey's margin of error." joins it in H08's after line, the H06 example and S14's note | Dustin, November 12, as recommended (board 1, question 1d; D3-87) |
+
+### Main session
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-214 | The answers are applied in the next chat, in one short pass before round 1 starts, as handoff V17's section 2A sets out | This chat handed off after board 1 (D3-213); the pass needs four owners and a rebuild |
