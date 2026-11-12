@@ -1241,7 +1241,8 @@ def rule_13_7(book):
     old_b = "Rates as first published; the Bureau revised 2019 to 2024 in August 2026."
     if old_b in before_line:
         before_line = before_line.replace(old_b, "Rates before the Bureau’s August 2026 correction to the poverty thresholds.")
-    ch_title, all_title = "Child poverty stood at 13.4 percent in 2025", f"Poverty among all people stood at {all25} percent in 2025"
+    # DR-242 (D3-656): the kit prints these two chart titles, which end with a period like every chart title in the guide
+    ch_title, all_title = "Child poverty stood at 13.4 percent in 2025.", f"Poverty among all people stood at {all25} percent in 2025."
     # the kit prints each chart's head from its spec (label, grade line, title, measure line), so its drawing is named by the
     # title above it; a head written here beside a chart-only figure left the drawing's label pointing at nothing
     a = cp_spec("s-13-7-children", "under_18", ch_title,
@@ -1262,7 +1263,7 @@ def rule_13_7(book):
             f'<p class="src">{e(before_line)}</p>')
     book.add("s-13-7-correct", body, rule="13.7", readable=True,
              alt=(f"Two charts shown together, each a chart head over a small line chart in one window, 2009 to 2025, on one scale: "
-                  f"{ch_title}, and {all_title}. A note gives the shared window and its reason and says that tying a change to a "
+                  f"{ch_title.removesuffix('.')}, and {all_title} A note gives the shared window and its reason and says that tying a change to a "
                   "policy takes a study of its own. The source line names children under 18 and all people and the current "
                   "release. A table sets the two releases side by side for children: 2020, 9.7 before the revision and 9.6 now; "
                   "2021, 5.2 and 5.1; 2024, 13.4 and 13.5."),
@@ -1756,7 +1757,8 @@ def kit_hook():
             and notes.exists() and "GUIDE HOOK READY" in notes.read_text())
 
 
-LIB_TITLE = "The Main Library will be open the most hours of the three branches"
+# DR-242 (D3-656): the chart title ends with a period like every chart title in the guide
+LIB_TITLE = "The Main Library will be open the most hours of the three branches."
 LIB_MEASURE = "Hours open each week from January 4, Alder County’s three library branches"
 
 
@@ -1967,6 +1969,9 @@ def visible(fragment):
 
 def check(data, book, spec):
     fails = []
+    for cid in ("s-13-7-all", "s-13-7-children", "s-13-7-fail-all", "s-13-13-correct", "s-13-13-fail-chart"):
+        if not KIT_SPECS.get(cid, {}).get("title", "").endswith("."):
+            fails.append(f"{cid}: its chart title lacks the closing period DR-242 gives it")
     texts = {"chapter": " ".join(strings({k: v for k, v in data.items() if k not in ("sources",)}))}
     for sid, frag in book.files.items():
         texts[sid] = visible(frag)

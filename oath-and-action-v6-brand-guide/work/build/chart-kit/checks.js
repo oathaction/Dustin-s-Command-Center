@@ -237,6 +237,49 @@ function check_spec(K, spec, opts) {
       void type;   // the kit's chip adds the type word where the words before the ID lack it (E7, H11)
     }
   }
+  // R2-2 (contract R2-C4): a derived table names what it was derived from and how, and the line a chart prints names the
+  // publisher of each public or secondary file it was derived from
+  datasets.forEach(ds => {
+    const m = ds.meta;
+    if (m.kind !== 'derived') return;
+    const from = Array.isArray(m.derived_from) ? m.derived_from : (m.derived_from ? [m.derived_from] : []);
+    if (!from.length || !m.derivation) { f.push(`dataset ${ds.file}: a derived table's sidecar names derived_from and derivation (C1, R2-2)`); return; }
+    const norm = x => String(x).replace(/United States/g, 'U.S.').trim();
+    from.forEach(fn => {
+      const src = load_dataset(String(fn).replace(/\.(csv|json)$/, ''), opts.data_dir);
+      if (src.fault) { f.push(`dataset ${ds.file}: derived_from names ${fn}, which is not in the data folder`); return; }
+      if (['public', 'secondary'].indexOf(src.meta.kind) < 0 || !spec.source_line) return;
+      const line = norm(spec.source_line);
+      // each "; " part of the publisher, whole, or its first comma part with or without a parenthesis, or its last
+      const ok = String(src.meta.publisher || '').split(';').map(norm).every(p => {
+        const first = p.split(',')[0].trim();
+        return [p, first, first.replace(/\s*\([^)]*\)\s*/g, ' ').trim(), p.split(',').slice(-1)[0].trim()].some(x => x && line.indexOf(x) >= 0);
+      });
+      if (!ok) f.push(`source: the source line does not name ${src.meta.publisher}, whose ${fn} the table ${ds.file} was derived from (R2-2)`);
+    });
+  });
+  // R2-4 (contract R2-C1): a form that draws an estimate with its interval
+  const idef = spec.form && K.forms[spec.form];
+  if (idef && idef.interval && sel.length) {
+    const enc = spec.encode || {}, tb = spec.table || {};
+    const ml = String(spec.measure_line || '');
+    if (!(/\b\d{2}(?:\.\d+)? percent\b/.test(ml) && /margin of error|confidence|interval|probability/i.test(ml))) f.push('interval: the measure line names the interval\'s level, such as "90 percent margin of error" (R2-4)');
+    if (idef.interval === true) {
+      const lh = enc.low !== undefined || enc.high !== undefined, mg = enc.margin !== undefined;
+      if ((enc.low === undefined) !== (enc.high === undefined) || lh === mg) f.push('interval: encode gives "low" and "high" together, or "margin" alone (contract R2-C1)');
+      else if (K.parts && K.parts.interval_of) {
+        const iv = K.parts.interval_of({ encode: enc }), kf = enc.category || enc.x || enc.key;
+        let bad = 0, first = null;
+        sel.forEach(r => {
+          const x = iv(r);
+          if (!(isFinite(x.v) && isFinite(x.lo) && isFinite(x.hi) && x.lo <= x.v + 1e-9 && x.v <= x.hi + 1e-9)) { bad++; if (!first) first = `${kf ? r[kf] : '?'}: ${x.lo} to ${x.hi} around ${x.v}`; }
+        });
+        if (bad) f.push(`interval: ${bad} row(s) whose interval does not hold its estimate, or lacks an end (${first})`);
+      }
+      const tf = new Set((tb.columns || []).map(c => c.field).concat(tb.pivot ? [tb.pivot.value] : []));
+      if (!(mg ? tf.has(enc.margin) : (tf.has(enc.low) && tf.has(enc.high)))) f.push(`interval: the table equivalent prints the interval: ${mg ? `the margin column "${enc.margin}"` : `both "${enc.low}" and "${enc.high}"`} (contract R2-C1)`);
+    }
+  }
   // the table equivalent's rows against the data rows
   if (rows && spec.table) {
     const t = K.table_rows(spec, sel);

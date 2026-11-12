@@ -1,0 +1,110 @@
+{
+  "kit": 1,
+  "id": "S44",
+  "form": "waterfall",
+  "family": "composition",
+  "tier": "core",
+  "dataset": "treasury-mts-fy2026-budget-results",
+  "sort": [
+    {
+      "field": "step",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "How did fiscal 2026’s receipts and outlays add up to the deficit?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the Treasury’s monthly statement of federal receipts and outlays",
+  "title": "Federal outlays of $7,395.8 billion in fiscal 2026 ran $1,992.5 billion past receipts of $5,403.3 billion, the year’s deficit.",
+  "reading_guide": "Read from the top. Each receipt adds to the running total, the bar for all receipts starts again from zero, and each outlay takes its amount away; the last bar is what is left, the deficit.",
+  "measure_line": "Federal receipts by source and net outlays by budget function, billions of dollars, nominal, fiscal year 2026 (October 1, 2025 to September 30, 2026), United States",
+  "notes": [
+    "Two outlay lines are negative in the Treasury’s statement, so they add to the running total: commerce and housing credit, $15.5 billion, and undistributed offsetting receipts, $155.0 billion, money agencies collect that counts against spending.",
+    "Social Security, Medicare, net interest, health and national defense each took more than $900 billion.",
+    "Fiscal 2026 figures come from the September 2026 statement and may change in the Treasury’s year-end report."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A waterfall from fiscal 2026’s nine receipt sources, which add to $5,403.3 billion, through 19 outlay functions to a deficit of $1,992.5 billion. Individual income taxes, $2,845.5 billion, and payroll taxes, $1,754.3 billion, bring in most receipts; Social Security, $1,667.1 billion, is the largest outlay.",
+  "table": {
+    "caption": "Federal receipts, outlays and the deficit, fiscal 2026",
+    "columns": [
+      {
+        "field": "label",
+        "label": "Line, as the Treasury names it",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "kind",
+        "label": "Kind",
+        "format": "text",
+        "words": {
+          "receipt": "Receipt",
+          "subtotal": "All receipts",
+          "outlay": "Outlay",
+          "total": "Deficit"
+        }
+      },
+      {
+        "field": "amount_dollars",
+        "label": "Billions of dollars",
+        "format": "billions-value:1"
+      }
+    ]
+  },
+  "chart_notes": [
+    "A step up is set in ink and a step down in gray; the bar for all receipts and the deficit run from zero as outlined bars. A thin line joins each step to the next."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D08",
+  "states": [],
+  "encode": {
+    "category": "label",
+    "value": "amount_dollars",
+    "kind": "kind"
+  },
+  "labels": {
+    "names": {
+      "Individual Income Taxes": "Individual income taxes",
+      "Corporation Income Taxes": "Corporate income taxes",
+      "Employment and General Retirement": "Payroll taxes",
+      "Unemployment Insurance": "Unemployment insurance taxes",
+      "Other Retirement": "Other retirement contributions",
+      "Excise Taxes": "Excise taxes",
+      "Estate and Gift Taxes": "Estate and gift taxes",
+      "Customs Duties": "Customs duties",
+      "Miscellaneous Receipts": "Miscellaneous receipts",
+      "Total receipts": "All receipts",
+      "National Defense": "National defense",
+      "International Affairs": "International affairs",
+      "General Science, Space, and Technology": "General science, space and technology",
+      "Natural Resources and Environment": "Natural resources and environment",
+      "Commerce and Housing Credit": "Commerce and housing credit",
+      "Community and Regional Development": "Community and regional development",
+      "Education, Training, Employment, and Social Services": "Education, training, employment and social services",
+      "Income Security": "Income security",
+      "Veterans Benefits and Services": "Veterans’ benefits and services",
+      "Administration of Justice": "Administration of justice",
+      "General Government": "General government",
+      "Net Interest": "Net interest",
+      "Undistributed Offsetting Receipts": "Undistributed offsetting receipts"
+    },
+    "totals": [
+      "subtotal",
+      "total"
+    ],
+    "up": "Adds to the running total",
+    "down": "Takes away from it",
+    "scale_head": "Billions of dollars",
+    "point": "Deficit"
+  },
+  "formats": {
+    "value": "billions-value:1",
+    "tick": "billions-value:0"
+  },
+  "notes_internal": [
+    "Draft."
+  ]
+}

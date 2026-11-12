@@ -330,6 +330,7 @@
     this.ink = [];   // K-S2 (round 1 fix pass): the box of every shape drawn, marks or not, so the check finds one outside the drawing
     this._tf = 0;
     this._h = 0;
+    this._arr = null;
   }
   K.Ctx = Ctx;
   var SHAPE_LIFT = 12;
@@ -512,6 +513,10 @@
     this.keys.push(entries);
   };
   Ctx.prototype.height = function (h) { this._h = Math.max(this._h, Math.ceil(h)); };
+  // RS-S3 (round 2, contract R2-C4): a form that draws its phone arrangement at a desk width (heat-table's chips at 558 px)
+  // says so, c.arrange('phone'); under 480 px the kit says it. The guide hides the desk's phone drawing beside a figure that
+  // already draws the phone form.
+  Ctx.prototype.arrange = function (name) { this._arr = String(name); };
   Ctx.prototype.warn = function (w) { this.warnings.push(w); };
   Ctx.prototype.label = function (name, fallback) {
     var v = this.labels[name];
@@ -589,6 +594,7 @@
       ' role="img" data-oa-form="' + esc(spec.form) + '" data-oa-width="' + width + '"' + (opts.label_id ? ' aria-labelledby="' + esc(opts.label_id) + '"' : '') + '>' +
       title + desc + fc.style + defs + c._els.join('') + '</svg>';
     return { svg: svg, width: width, height: h, texts: c.texts, marks: c.marks, leaders: c.leaders, ink: c.ink, keys: c.keys || [], warnings: c.warnings, guard: guard, phone: c.phone,
+      arrangement: c._arr || (c.phone ? 'phone' : 'desk'),
       fc: K.FC, fc_on_dark: K.FC_ON_DARK };
   };
 
@@ -1260,6 +1266,8 @@
       if (svg && !lid) svg.setAttribute('aria-label', String(spec.alt || spec.title || ''));
       if (has_alt) has_alt.hidden = true;
       fig.setAttribute('data-oa-drawn', String(w));
+      // RS-S3: where this drawing is already the phone form, the desk's phone drawing beside it says nothing new
+      if (result.arrangement === 'phone') fig.setAttribute('data-oa-phone-form', ''); else fig.removeAttribute('data-oa-phone-form');
       if (result.guard.length || result.warnings.length) fig.setAttribute('data-oa-warnings', String(result.guard.length + result.warnings.length));
     }
     draw();

@@ -196,3 +196,4 @@
 .oac-art-phone > svg.oac-svg { display: block; max-width: 100%; height: auto; overflow: visible; }
 .oac-phone-k { margin: 0 0 10px; font: var(--oa-font-weight-semibold) 14px/20px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); }
 @container (max-width: 479px) { .oac-art-phone { display: none; } }
+.oac-fig[data-oa-phone-form] .oac-art-phone { display: none; }   /* RS-S3: the figure already draws its phone form */

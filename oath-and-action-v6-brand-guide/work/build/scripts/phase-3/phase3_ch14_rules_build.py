@@ -1408,7 +1408,7 @@ MARKS = {
     7: "M6 18h.01M10 13h.01M14 15h.01M17 9h.01M20 6h.01M8 15h.01",         # a rising cloud of dots
     8: "M4 12h16M4 9v6M20 9v6M12 10v4",                                    # an interval
     9: "M15 12a6 6 0 1 1-12 0a6 6 0 1 1 12 0M21 12a6 6 0 1 1-12 0a6 6 0 1 1 12 0",   # two circles overlapping
-    10: "M4 17a8 8 0 0 1 16 0M12 17l4-5",                                  # a gauge
+    10: "M3 8h18v8H3zM3 12h11M17 6v12",                                    # a bullet graph: a range, a measure and a target
     11: "M3 5h18l-7 7v6l-4 2v-8z",                                         # a funnel
     12: "M10 3h4v4h-4zM3 17h4v4H3zM17 17h4v4h-4zM12 7v5M5 17v-5h14v5",    # who decides, top to bottom
     13: "M7 7h10M6 9l5 7M18 9l-5 7M7 7a2 2 0 1 1-4 0a2 2 0 1 1 4 0M21 7a2 2 0 1 1-4 0a2 2 0 1 1 4 0M14 18a2 2 0 1 1-4 0a2 2 0 1 1 4 0",  # three nodes joined
@@ -1445,13 +1445,14 @@ GROUP_LINES = {
     2: "Bars, dots and slopes set values side by side on one scale, so a reader sees which is bigger and by how much.",
     3: "Arrows, lollipops and diverging bars show which way each value moved and how far, with the direction in a word as well as a mark.",
     4: "Time runs from left to right in lines, columns and timelines, with each gap, break and preliminary value marked where it falls.",
-    5: "Split bars, unit charts and treemaps show the parts of a whole and print the whole they add up to.",
+    5: "Stacked bars, unit charts and treemaps show the parts of a whole and print the whole they add up to.",
     6: "Histograms, strip plots and box plots show how values spread, where they bunch and how far they run.",
     7: "Scatter plots and their relatives show whether two measures move together, and an association’s note says what the pattern cannot show about cause.",
     8: ("A range, a band or a fan shows how sure a figure is, as its publisher states it, whether a survey’s margin of error around "
         "a finding or a model’s range around an estimate (Rule 13.1)."),
     9: "Icon arrays, proportional symbols and overlap diagrams make a share countable and show where groups overlap.",
-    10: "Big numbers, bullet graphs and progress bars show where one measure stands now against a target or a range.",
+    10: ("Big numbers give a figure with the context to judge it, and progress bars and bullet graphs set one measure against its "
+         "target or limit. Step trackers and status chips show how far a bill or a dispute has come."),
     11: "People move through a process in funnels, cohort charts and survival curves, which show where they leave it.",
     12: "Process diagrams, decision trees and who-decides diagrams show who decides and how a decision moves.",
     13: "Networks, matrices and arc diagrams show who is connected to whom, and how strongly.",

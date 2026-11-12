@@ -190,4 +190,118 @@
     fn.keyline = function (r) { return is_point(r) && c.ground !== 'charcoal' ? { stroke: 'point-keyline', width: c.t('keyline') } : {}; };
     return fn;
   };
+
+  // ---- Round 2 (R2-5, contract R2-C2): intervals, bands and stacks ------------------------------------------------
+  // An estimate and its interval, read by the spec's encode: the estimate is encode.value (else encode.y); the interval is
+  // encode.low and encode.high, or encode.margin (low = value - margin, high = value + margin). iv(row) gives
+  // {v, lo, hi, m}, m the margin (or half of high - low); iv.differs(a, b) tells whether two rows differ by more than the
+  // margin of their difference, the square root of the sum of the margins squared (the Census Bureau's test, Rule 14.9).
+  var num = function (x) { return x === null || x === undefined || x === '' ? NaN : +x; };
+  P.interval_of = function (c) {
+    var e = c.encode || {}, fv = e.value !== undefined ? e.value : e.y, fl = e.low, fh = e.high, fm = e.margin;
+    var iv = function (r) {
+      var v = num(r[fv]), lo, hi, m;
+      if (fm !== undefined && fm !== null) { m = num(r[fm]); lo = v - m; hi = v + m; }
+      else { lo = num(r[fl]); hi = num(r[fh]); m = (hi - lo) / 2; }
+      return { v: v, lo: lo, hi: hi, m: m };
+    };
+    iv.differs = function (a, b) {
+      var x = iv(a), y = iv(b);
+      return Math.abs(x.v - y.v) > Math.sqrt(x.m * x.m + y.m * y.m);
+    };
+    iv.fields = { value: fv, low: fl, high: fh, margin: fm };
+    return iv;
+  };
+  // An interval's thin line from p0 to p1 (pixels along the value axis) at the cross position at: dir 'h' (a row's
+  // whisker, the default) or 'v' (a column's). The context ink at 2 px with no caps, as Rule 14.9's plate draws it; o.cap
+  // is a cap's half-length in px. With o.key and o.low / o.high each end is recorded for the checks (no element).
+  P.whisker = function (c, p0, p1, at, o) {
+    o = o || {};
+    var a = Math.min(p0, p1), b = Math.max(p0, p1), h = o.dir !== 'v';
+    var st = { stroke: o.stroke || 'context', width: o.width || c.t('line-context'), mark: false };
+    if (h) c.line(a, at, b, at, st); else c.line(at, a, at, b, st);
+    if (o.cap) [a, b].forEach(function (p) { if (h) c.line(p, at - o.cap, p, at + o.cap, st); else c.line(at - o.cap, p, at + o.cap, p, st); });
+    if (o.key !== undefined) {
+      var fl = o.field_low || 'low', fh = o.field_high || 'high';
+      if (o.low !== undefined) c.datum(h ? (p0 <= p1 ? p0 : p1) : at, h ? at : (p0 <= p1 ? p0 : p1), { data: { key: o.key, field: fl, value: o.low } });
+      if (o.high !== undefined) c.datum(h ? (p0 <= p1 ? p1 : p0) : at, h ? at : (p0 <= p1 ? p1 : p0), { data: { key: o.key, field: fh, value: o.high } });
+    }
+    return h ? { x: a, y: at - (o.cap || 0), w: b - a, h: 2 * (o.cap || 0) } : { x: at - (o.cap || 0), y: a, w: 2 * (o.cap || 0), h: b - a };
+  };
+  // A filled band between two series: pts [{x, y0, y1, key, low, high, break}] in drawing order, pixels. A point with y0 or
+  // y1 missing ends the run before it; break: true starts a new run at that point (a break in the series, which the band
+  // never bridges). Each run is one closed path in o.fill ('band' by default, or o.pattern); o.edge draws each edge as a
+  // line in that stroke role. A run of one point draws a short whisker. Returns {runs: [[first, last]], top, bottom}.
+  P.band = function (c, pts, o) {
+    o = o || {};
+    var runs = [], cur = null, top = Infinity, bottom = -Infinity;
+    var ok = function (p) { return p && isFinite(p.x) && isFinite(p.y0) && isFinite(p.y1) && p.y0 !== null && p.y1 !== null; };
+    pts.forEach(function (p, i) {
+      if (!ok(p)) { cur = null; return; }
+      if (!cur || p.break) { cur = [i, i]; runs.push(cur); } else cur[1] = i;
+      top = Math.min(top, p.y0, p.y1); bottom = Math.max(bottom, p.y0, p.y1);
+      if (p.key !== undefined) {
+        if (p.low !== undefined) c.datum(p.x, Math.max(p.y0, p.y1), { data: { key: p.key, field: o.field_low || 'low', value: p.low } });
+        if (p.high !== undefined) c.datum(p.x, Math.min(p.y0, p.y1), { data: { key: p.key, field: o.field_high || 'high', value: p.high } });
+      }
+    });
+    var R = K.round, edge = { stroke: o.edge, width: o.edge_width || c.t('line-hairline'), mark: false };
+    runs.forEach(function (rn) {
+      var seg = pts.slice(rn[0], rn[1] + 1);
+      if (seg.length === 1) { P.whisker(c, seg[0].y0, seg[0].y1, seg[0].x, { dir: 'v', stroke: o.edge || 'context', width: c.t('line-context') }); return; }
+      var up = seg.map(function (p) { return R(p.x) + ',' + R(Math.min(p.y0, p.y1)); });
+      var dn = seg.slice().reverse().map(function (p) { return R(p.x) + ',' + R(Math.max(p.y0, p.y1)); });
+      c.path('M' + up.join('L') + 'L' + dn.join('L') + 'Z', { fill: o.pattern ? undefined : (o.fill || 'band'), pattern: o.pattern, mark: false });
+      if (o.edge) {
+        c.path('M' + up.join('L'), Object.assign({ fill: 'none' }, edge));
+        c.path('M' + seg.map(function (p) { return R(p.x) + ',' + R(Math.max(p.y0, p.y1)); }).join('L'), Object.assign({ fill: 'none' }, edge));
+      }
+    });
+    return { runs: runs, top: top, bottom: bottom };
+  };
+  // A stack layout (draws nothing): rows, and parts the value columns in stacking order, the first on the baseline.
+  // o.offset 'zero' (default): positives stack up from 0 and negatives down from 0, the parts in o.negative counted as
+  // negative (a pyramid's left side); 'expand': each row's parts as shares of its total (o.total, a column, else the parts'
+  // sum), 0 to 100; 'center': expand, moved so the boundary before part o.center_at sits at 0 (a share bar's midline).
+  // Returns one item a row, {row, total, segs: [{field, value, start, end, share, missing}]}, start <= end; .lo and .hi
+  // are the extent over every row.
+  P.stack = function (rows, parts, o) {
+    o = o || {};
+    var off = o.offset || 'zero', neg = [].concat(o.negative || []), lo = 0, hi = 0;
+    var out = rows.map(function (r) {
+      var vals = parts.map(function (p) { var v = num(r[p]); return { field: p, raw: v, missing: !isFinite(v) }; });
+      var sum = vals.reduce(function (s, x) { return s + (x.missing ? 0 : Math.abs(x.raw)); }, 0);
+      var total = o.total ? num(r[o.total]) : sum;
+      var pos = 0, ng = 0, segs = vals.map(function (x) {
+        var v = x.missing ? 0 : x.raw, share = total ? 100 * Math.abs(v) / total : 0, s, e;
+        if (off === 'zero') {
+          var d = neg.indexOf(x.field) >= 0 ? -Math.abs(v) : v;
+          if (d >= 0) { s = pos; e = pos + d; pos = e; } else { e = ng; s = ng + d; ng = s; }
+        } else { s = pos; e = pos + share; pos = e; }
+        return { field: x.field, value: x.missing ? null : x.raw, start: s, end: e, share: share, missing: x.missing };
+      });
+      if (off === 'center') {
+        var at = o.center_at !== undefined ? parts.indexOf(o.center_at) : -1, shift = at > 0 ? segs[at].start : 0;
+        segs.forEach(function (sg) { sg.start -= shift; sg.end -= shift; });
+      }
+      segs.forEach(function (sg) { lo = Math.min(lo, sg.start); hi = Math.max(hi, sg.end); });
+      return { row: r, total: total, segs: segs };
+    });
+    out.lo = lo; out.hi = hi;
+    return out;
+  };
+  // Long rows to one row a key, for stack: wide(rows, key, series, value) gives one row per key value with a column per
+  // series value, in first-seen order; .series lists the series values
+  P.wide = function (rows, key, series, value) {
+    var by = {}, order = [], ser = [];
+    rows.forEach(function (r) {
+      var k = String(r[key]), s = String(r[series]);
+      if (!(k in by)) { by[k] = {}; by[k][key] = r[key]; order.push(k); }
+      if (ser.indexOf(s) < 0) ser.push(s);
+      by[k][s] = r[value];
+    });
+    var out = order.map(function (k) { return by[k]; });
+    out.series = ser;
+    return out;
+  };
 })(typeof globalThis !== 'undefined' ? globalThis : this);

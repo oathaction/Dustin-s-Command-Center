@@ -51,7 +51,7 @@
    "before_rule": "14.46",
    "title": "Composition: what is it made of?",
    "rules": "14.46 to 14.57",
-   "line": "Split bars, unit charts and treemaps show the parts of a whole and print the whole they add up to."
+   "line": "Stacked bars, unit charts and treemaps show the parts of a whole and print the whole they add up to."
   },
   {
    "number": 6,
@@ -86,7 +86,7 @@
    "before_rule": "14.85",
    "title": "Gauges and indicators: where does it stand now?",
    "rules": "14.85 to 14.92",
-   "line": "Big numbers, bullet graphs and progress bars show where one measure stands now against a target or a range."
+   "line": "Big numbers give a figure with the context to judge it, and progress bars and bullet graphs set one measure against its target or limit. Step trackers and status chips show how far a bill or a dispute has come."
   },
   {
    "number": 11,

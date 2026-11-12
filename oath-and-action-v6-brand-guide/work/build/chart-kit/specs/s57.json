@@ -1,0 +1,112 @@
+{
+ "kit": 1,
+ "id": "S57",
+ "form": "range-bar",
+ "family": "uncertainty-and-estimates",
+ "tier": "core",
+ "dataset": "census-acs-earnings-ratio-by-state",
+ "sort": [
+  {
+   "field": "women_pct_of_men",
+   "order": "desc"
+  }
+ ],
+ "reader_question": "How do women’s earnings compare with men’s in each state, and how sure is each figure?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: a Census Bureau survey, with ratios and margins computed by Oath & Action",
+ "title": "DRAFT",
+ "measure_line": "DRAFT",
+ "notes": [],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "DRAFT",
+ "table": {
+  "caption": "Women’s median earnings as a percent of men’s, full-time, year-round workers, 2025",
+  "columns": [
+   {
+    "field": "name",
+    "label": "State",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "women_pct_of_men",
+    "label": "Women’s median as a percent of men’s",
+    "format": "number:1"
+   },
+   {
+    "field": "women_pct_of_men_moe",
+    "label": "Margin of error, points",
+    "format": "number:1"
+   },
+   {
+    "field": "women_median_earnings",
+    "label": "Women’s median",
+    "format": "dollars"
+   },
+   {
+    "field": "men_median_earnings",
+    "label": "Men’s median",
+    "format": "dollars"
+   }
+  ]
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D07",
+ "states": [],
+ "encode": {
+  "category": "name",
+  "value": "women_pct_of_men",
+  "margin": "women_pct_of_men_moe",
+  "key": "code"
+ },
+ "labels": {
+  "reference": "US",
+  "reference_label": "United States: {value}%",
+  "test": "reference",
+  "named": [
+   "AL",
+   "CA",
+   "CO",
+   "CT",
+   "DC",
+   "FL",
+   "IA",
+   "ID",
+   "IN",
+   "LA",
+   "MA",
+   "MD",
+   "MI",
+   "MT",
+   "NE",
+   "NJ",
+   "NM",
+   "NV",
+   "NY",
+   "OK",
+   "OR",
+   "SC",
+   "TX",
+   "UT",
+   "VT",
+   "WY"
+  ],
+  "names": {
+   "DC": "District of Columbia"
+  },
+  "value": "{value}%"
+ },
+ "formats": {
+  "value": "number:1",
+  "tick": "integer"
+ },
+ "scale": {
+  "x": [
+   65,
+   105
+  ]
+ }
+}

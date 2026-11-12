@@ -1,0 +1,82 @@
+{
+  "kit": 1,
+  "id": "S43",
+  "form": "stacked-share-bar",
+  "family": "composition",
+  "tier": "core",
+  "dataset": "census-acs-tenure-by-state",
+  "sort": [
+    {
+      "field": "renter_pct",
+      "order": "desc"
+    }
+  ],
+  "reader_question": "In which states do renters make up the larger share of households?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: a Census Bureau survey",
+  "title": "Renters made up the larger share of households only in the District of Columbia in 2025, at 62 percent.",
+  "measure_line": "Households that rent and households that own their home, as a share of all households, 50 states and the District of Columbia, 2025",
+  "notes": [
+    "New York, 46 percent, and California, 44 percent, come closest among the states; every state’s renter share sits below half by more than its margin of error."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Bars split each state’s households into renters and owners, sorted by the renter share, with a line at half. Only the District of Columbia’s renters, 62 percent, pass the line; New York, 46 percent, and California, 44 percent, come next, and the United States as a whole is 35 percent.",
+  "table": {
+    "caption": "Renters and owners as a share of households, 2025",
+    "columns": [
+      {
+        "field": "name",
+        "label": "State",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "renter_pct",
+        "label": "Renters, percent",
+        "format": "number:1"
+      },
+      {
+        "field": "owner_pct",
+        "label": "Owners, percent",
+        "format": "number:1"
+      },
+      {
+        "field": "households",
+        "label": "Households",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "The line at the middle marks half of households; a dashed line marks the United States, 35 percent renters."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D09",
+  "states": [],
+  "encode": {
+    "category": "name",
+    "left": "renter_pct",
+    "right": "owner_pct",
+    "code": "code"
+  },
+  "labels": {
+    "left": "Renters",
+    "right": "Owners",
+    "midline": "Half",
+    "value_head": "Renters",
+    "point": "District of Columbia",
+    "reference": {
+      "key": "United States",
+      "label": "United States, 35%"
+    }
+  },
+  "formats": {
+    "value": "percent:0"
+  },
+  "notes_internal": [
+    "Draft."
+  ]
+}

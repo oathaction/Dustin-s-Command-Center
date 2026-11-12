@@ -2,7 +2,7 @@
 editor's chapter file and entries, and the makers' entries and specs (Phase 3, round 1; the round 1 brief, Engineer 3).
 
 Usage (from the project folder):
-  python3 -I work/build/scripts/phase-3/phase3_ch14_build.py [--rounds 1]   write the files below; exit 1 on any fault
+  python3 -I work/build/scripts/phase-3/phase3_ch14_build.py [--rounds 1,2]   write the files below; exit 1 on any fault
   python3 -I work/build/scripts/phase-3/phase3_ch14_build.py --check        fail if a file on disk is not what this writes
 
 Reads   work/handoffs/phase-3/20261112_Chapter-14-Plan.json (every number, tier, round, spec and owner; R1)
@@ -41,6 +41,26 @@ STATE_SHARE = 1 / 5       # and no state more than one in five
 ENTRY_DROP = {"use_when", "use_instead", "specimen", "tier", "correct", "failure", "examples", "caption"}
 SKETCH_LIMIT = {"reference": 4096, "avoid": 4096}   # R1-C1; D3-486 raises the avoid sketch to 4,096 bytes for its pair
 SVG_WIDTH = re.compile(r'<svg\b[^>]*?\swidth="([\d.]+)"')
+DESC = re.compile(r"<desc\b[^>]*>(.*?)</desc>", re.S)
+# R2-3 (contract R2-C3): a sentence ends at a period, question mark or exclamation mark followed by a space and a capital
+# letter, a digit or an opening quotation mark; an abbreviation (U.S., a single capital and its period, e.g.) does not end it
+SENTENCE_END = re.compile(r"(?<=[.?!])[\u201d\u2019\"')]?\s+(?=[A-Z0-9\u201c\u2018\"])")
+ABBREV = re.compile(r"(?:\b[A-Z]\.|\b(?:e\.g|i\.e|vs|No|St|Mr|Ms|Dr|Jr|Sr)\.)$")
+
+
+def first_sentence(text):
+    """The first sentence of a sketch's words (R2-3): up to the first end that is not an abbreviation's period."""
+    t = re.sub(r"\s+", " ", str(text or "")).strip()
+    for m in SENTENCE_END.finditer(t):
+        head = t[:m.start()].rstrip()
+        if ABBREV.search(head.rstrip("\u201d\u2019\"')")):
+            continue
+        return head
+    return t
+
+
+def unescape(t):
+    return re.sub(r"\s+", " ", str(t).replace("&amp;", "&").replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", '"').replace("&#39;", "'").replace("&#8217;", "\u2019")).strip()
 
 
 def sketch_widths(path):
@@ -149,8 +169,9 @@ def outputs(rounds):
             sid = p["spec_id"].lower()
             sp = SPECS / f"{sid}.json"
             if not sp.exists():
+                # round 2: an entry whose spec has not landed stays out of the chapter, among the planned numbers, so the
+                # chapter carries every finished entry while its round is built (a fault all the same)
                 faults.append(f"Rule {rid}: no spec {sp.relative_to(ROOT)}")
-                rules.append(rule)
                 continue
             spec = json.loads(sp.read_text())
             if sid in placed_spec:
@@ -172,10 +193,21 @@ def outputs(rounds):
             sk = p["sketch_id"]
             if not (SPECIMENS / f"{sk}.html").exists():
                 faults.append(f"Rule {rid}: the sketch {sk}.html is not in the specimens folder")
+                continue   # as a missing spec: the entry waits among the planned numbers
             # R-B12: an avoid sketch's plate names the form as misleading and carries the do-not-publish bar; a reference
             # sketch's plate reads as a sketch
             avoid = tier_of(p["tier"]) == "avoid"
-            rule["correct"] = {"specimen": sk, "caption": f"{p['form']}, drawn small with illustrative data.",
+            # R2-3 (RS-S2, contract R2-C3): the visible caption is the first sentence of the entry's sketch_alt, and the
+            # sketch's first <desc> carries the same sentence; round 1's sketches without sketch_alt take their first
+            # <desc>'s first sentence, and the <desc> test starts with round 2's sketches
+            descs = [unescape(d) for d in DESC.findall((SPECIMENS / f"{sk}.html").read_text())]
+            cap1 = first_sentence(e.get("sketch_alt")) if e.get("sketch_alt") else (first_sentence(descs[0]) if descs else "")
+            if p.get("round", 1) >= 2:
+                if not e.get("sketch_alt"):
+                    faults.append(f"Rule {rid}: a sketch entry carries sketch_alt, whose first sentence prints as its caption (R2-3)")
+                elif not descs or first_sentence(descs[0]) != cap1:
+                    faults.append(f"Rule {rid}: {sk}.html's first <desc> does not hold sketch_alt's first sentence, \"{cap1}\" (R2-3)")
+            rule["correct"] = {"specimen": sk, "caption": cap1 or f"{p['form']}, drawn small with illustrative data.",
                                "kind": "avoid" if avoid else "sketch",
                                "label": f"{p['form']}, a form that misleads" if avoid else f"{p['form']}, a sketch"}
             limit = SKETCH_LIMIT.get(tier_of(p["tier"]), 4096)
@@ -201,7 +233,7 @@ def outputs(rounds):
         chapter["opener"] = {"specimen": opener["specimen"], "caption": opener.get("caption", "")}
     chapter.update({"intro": chap.get("intro") or [], "groups": groups, "rules": rules,
                     "related_chapters": chap.get("related_chapters") or [], "sources": chap.get("sources") or [],
-                    "planned_rules": [x for x in planned if x not in built_ids]})
+                    "planned_rules": [x for x in planned if x not in ids]})
     # Rule 01.12's log, against DR-229's shares (an atlas-wide table, domain "all", is counted apart)
     n = len(log)
     doms = Counter(x.get("domain") for x in log if x.get("domain") and x.get("domain") != "all")
@@ -225,7 +257,7 @@ def outputs(rounds):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--rounds", default="1", help="the rounds built, as a comma list (default 1)")
+    ap.add_argument("--rounds", default="1,2", help="the rounds built, as a comma list (default 1,2: round 2 is being built)")
     ap.add_argument("--check", action="store_true")
     a = ap.parse_args()
     rounds = {int(x) for x in a.rounds.split(",")}

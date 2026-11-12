@@ -616,6 +616,100 @@ async function self_test() {
     console.log(`${ok3 ? 'pass' : 'FAIL'} a word on a GrayText mark is marked to take Canvas in forced colors, one beside it is not`);
     if (!ok3) bad++;
   }
+  // round 2 (R2-5, contract R2-C2): the shared interval, whisker, band and stack parts, and the interval form's checks (R2-C1)
+  {
+    const P = K.parts, T = K.token_reader(TOK.newsprint);
+    const mk = enc => new K.Ctx({ id: 'T', labels: {}, encode: enc }, [], { width: 400, ground: 'newsprint', t: T, uid: 't2' });
+    const ivm = P.interval_of(mk({ category: 'k', value: 'v', margin: 'm' })), ivl = P.interval_of(mk({ category: 'k', y: 'v', low: 'a', high: 'b' }));
+    const a = ivm({ v: 82, m: 0.4 }), b = ivm({ v: 77, m: 2.5 }), l = ivl({ v: 5, a: 3, b: 8 });
+    const ok1 = a.lo === 81.6 && a.hi === 82.4 && l.lo === 3 && l.hi === 8 && l.m === 2.5 && ivm.differs({ v: 82, m: 0.4 }, { v: 77, m: 2.5 }) && !ivm.differs({ v: 82, m: 0.4 }, { v: 80, m: 2.5 }) && b.m === 2.5;
+    console.log(`${ok1 ? 'pass' : 'FAIL'} interval_of reads a margin or two ends, and differs() tests the margin of the difference`);
+    if (!ok1) bad++;
+    const cw = mk({});
+    const wb = P.whisker(cw, 300, 100, 40, { key: 'AK', low: 81, high: 96 });
+    const ln = cw._els.filter(e => /^<line/.test(e));
+    const ok2 = ln.length === 1 && /oac-s-context/.test(ln[0]) && /stroke-width="2"/.test(ln[0]) && wb.x === 100 && wb.w === 200 &&
+      cw.marks.filter(m => m.kind === 'datum').map(m => m.data.field + '@' + m.x).join(',') === 'low@100,high@300' && !cw.marks.some(m => m.kind === 'line');
+    console.log(`${ok2 ? 'pass' : 'FAIL'} whisker draws one 2 px context line with no mark and records its two ends`);
+    if (!ok2) bad++;
+    const cb = mk({});
+    const pts = [[0, 50, 60], [10, 48, 62], [20, null, 60], [30, 40, 70], [40, 42, 66], [50, 45, 65], [60, 44, 64]].map((p, i) => ({ x: p[0], y0: p[1], y1: p[2], key: 'y' + i, low: i, high: i + 1, break: i === 5 }));
+    const br = P.band(cb, pts, { fill: 'band' });
+    const paths = cb._els.filter(e => /^<path/.test(e));
+    const ok3 = JSON.stringify(br.runs) === '[[0,1],[3,4],[5,6]]' && paths.length === 3 && paths.every(p => /oac-f-band/.test(p)) && br.top === 40 && br.bottom === 70 &&
+      cb.marks.filter(m => m.kind === 'datum').length === 12 && !cb.marks.some(m => m.kind === 'path');
+    const cb1 = mk({}); P.band(cb1, [{ x: 5, y0: 10, y1: 20 }, { x: 6, y0: NaN, y1: 1 }], {});
+    const ok3b = cb1._els.length === 1 && /^<line/.test(cb1._els[0]);
+    console.log(`${ok3 && ok3b ? 'pass' : 'FAIL'} band draws one path a run, breaks at a gap and at break: true, records each end, and draws a lone point as a whisker`);
+    if (!(ok3 && ok3b)) bad++;
+    const rs = [{ k: 'A', o: 60, r: 40, t: 100 }, { k: 'B', o: 30, r: 10, t: 50 }, { k: 'C', o: null, r: 25, t: 25 }];
+    const z = P.stack(rs, ['o', 'r']), ex = P.stack(rs, ['o', 'r'], { offset: 'expand', total: 't' }), ce = P.stack(rs, ['o', 'r'], { offset: 'center', center_at: 'r' });
+    const py = P.stack([{ m: 5, w: 6 }], ['m', 'w'], { negative: ['m'] });
+    const ok4 = z[0].segs[1].start === 60 && z[0].segs[1].end === 100 && z.hi === 100 && z.lo === 0 && z[2].segs[0].missing && z[2].segs[0].start === z[2].segs[0].end &&
+      ex[1].segs[0].end === 60 && ex[1].segs[1].end === 80 && Math.abs(ce[0].segs[0].start + 60) < 1e-9 && ce[0].segs[1].start === 0 && ce[0].segs[1].end === 40 && ce.lo === -75 &&
+      py[0].segs[0].start === -5 && py[0].segs[0].end === 0 && py[0].segs[1].start === 0 && py[0].segs[1].end === 6;
+    const wd = P.wide([{ a: 1, s: 'male', v: 3 }, { a: 1, s: 'female', v: 4 }, { a: 2, s: 'male', v: 5 }], 'a', 's', 'v');
+    const ok4b = wd.length === 2 && wd[0].male === 3 && wd[0].female === 4 && wd[1].male === 5 && wd.series.join() === 'male,female';
+    console.log(`${ok4 && ok4b ? 'pass' : 'FAIL'} stack gives each segment's start and end (zero, a pyramid's negative side, shares, a midline), an empty cell no length; wide pivots long rows`);
+    if (!(ok4 && ok4b)) bad++;
+    // the interval form's checks, on a form registered for the test only
+    if (!K.forms['t-interval']) K.register_chart({ form: 't-interval', family: 'uncertainty-and-estimates', interval: true,
+      encode: { category: 'text', value: 'number', low: 'number?', high: 'number?', margin: 'number?' }, draw: c => { c.height(10); } });
+    const iv = { kit: 1, id: 'T02', form: 't-interval', family: 'uncertainty-and-estimates', tier: 'core', reader_question: 'q', evidence: 'estimate', evidence_label: 'Estimate',
+      title: 'Two estimates.', measure_line: 'A share, with its 90 percent margin of error', source_line: 'Source: invented for the self-test.', illustrative: 'Illustrative data', alt: 'a', phone: 'same', domain: 'all', states: [],
+      encode: { category: 'k', value: 'v', margin: 'm' },
+      table: { caption: 'c', columns: [{ field: 'k', label: 'Name', format: 'text', row_header: true }, { field: 'v', label: 'Share', format: 'number:1' }, { field: 'm', label: 'Margin', format: 'number:1' }] },
+      data: { columns: { k: { type: 'text', description: 'k' }, v: { type: 'number', description: 'v' }, m: { type: 'number', description: 'm' }, lo: { type: 'number', description: 'lo' }, hi: { type: 'number', description: 'hi' } },
+        rows: [{ k: 'A', v: 82, m: 0.4, lo: 81.6, hi: 82.4 }, { k: 'B', v: 77, m: 2.5, lo: 74.5, hi: 79.5 }] } };
+    const ri = run_spec(JSON.parse(JSON.stringify(iv)), { grounds: ['newsprint'], widths: [1440], no_narrow: true });
+    const ok5 = !ri.faults.some(x => /^interval:/.test(x));
+    console.log(`${ok5 ? 'pass' : 'FAIL'} an interval spec with its names, level and table passes the interval checks${ok5 ? '' : ': ' + JSON.stringify(ri.faults.slice(0, 3))}`);
+    if (!ok5) bad++;
+    const icases = [
+      ['an interval form given both a margin and two ends', s => { s.encode.low = 'lo'; s.encode.high = 'hi'; }, 'together, or "margin" alone'],
+      ['an interval that does not hold its estimate', s => { s.encode = { category: 'k', value: 'v', low: 'lo', high: 'hi' }; s.data.rows[1].hi = 76; s.table.columns.push({ field: 'lo', label: 'Low', format: 'number:1' }, { field: 'hi', label: 'High', format: 'number:1' }); }, 'does not hold its estimate'],
+      ['an interval form whose measure line names no level', s => { s.measure_line = 'A share, with its margin of error'; }, 'names the interval\'s level'],
+      ['an interval form whose table leaves the margin out', s => { s.table.columns.pop(); }, 'table equivalent prints the interval'],
+    ];
+    for (const [name, fn, want] of icases) {
+      const s2 = JSON.parse(JSON.stringify(iv)); fn(s2);
+      const r2 = run_spec(s2, { grounds: ['newsprint'], widths: [1440], no_narrow: true });
+      const hit = r2.faults.some(x => x.indexOf(want) >= 0);
+      console.log(`${hit ? 'caught' : 'MISSED'} ${name}${hit ? '' : ': ' + JSON.stringify(r2.faults.slice(0, 3))}`);
+      if (!hit) bad++;
+    }
+    // R2-2: a derived table names its sources and method, and the line printed names each public source's publisher
+    {
+      const td = fs.mkdtempSync(path.join(process.env.TMPDIR || '/tmp', 'oa-kit-derived-'));
+      const DATA = path.join(ROOT, 'work/build/data');
+      const meta = JSON.parse(fs.readFileSync(path.join(DATA, base.dataset + '.meta.json'), 'utf8'));
+      const pub = Object.assign({}, meta, { file: 'oa-test-public.csv', kind: 'public', publisher: 'U.S. Bureau of Labor Statistics' });
+      fs.copyFileSync(path.join(DATA, meta.file), path.join(td, 'oa-test-public.csv'));
+      fs.copyFileSync(path.join(DATA, meta.file), path.join(td, 'oa-test-derived.csv'));
+      fs.writeFileSync(path.join(td, 'oa-test-public.meta.json'), JSON.stringify(pub));
+      const der = Object.assign({}, meta, { file: 'oa-test-derived.csv', kind: 'derived', derived_from: ['oa-test-public.csv'], derivation: 'Bins of the monthly change, each month counted once.',
+        printed_source_line: 'Source: U.S. Bureau of Labor Statistics, all nonfarm employees, monthly change, 2022 to 2026. Retrieved November 6, 2026.', source_line_variants: {
+          bare: 'Source: a fixture table, 2022 to 2026. Retrieved November 6, 2026.' }, source_line_templates: {} });
+      const run_d = (m, line) => {
+        fs.writeFileSync(path.join(td, 'oa-test-derived.meta.json'), JSON.stringify(m));
+        const s3 = JSON.parse(JSON.stringify(base)); s3.dataset = 'oa-test-derived'; delete s3.source_line; if (line) s3.source_line = line;
+        return run_spec(s3, { grounds: ['newsprint'], widths: [1440], data_dir: td, no_narrow: true }).faults;
+      };
+      const f1 = run_d(der), f2 = run_d(der, der.source_line_variants.bare), f3 = run_d(Object.assign({}, der, { derivation: '' }));
+      const okd = !f1.some(x => /R2-2/.test(x)), c2 = f2.some(x => /does not name U\.S\. Bureau of Labor Statistics/.test(x)), c3 = f3.some(x => /names derived_from and derivation/.test(x));
+      console.log(`${okd ? 'pass' : 'FAIL'} a derived table whose line names its source's publisher passes${okd ? '' : ': ' + JSON.stringify(f1.filter(x => /R2-2/.test(x)))}`);
+      console.log(`${c2 ? 'caught' : 'MISSED'} a derived table's line that leaves out its source's publisher${c2 ? '' : ': ' + JSON.stringify(f2.slice(0, 3))}`);
+      console.log(`${c3 ? 'caught' : 'MISSED'} a derived table with no derivation${c3 ? '' : ': ' + JSON.stringify(f3.slice(0, 3))}`);
+      if (!okd) bad++; if (!c2) bad++; if (!c3) bad++;
+      fs.rmSync(td, { recursive: true, force: true });
+    }
+    // RS-S3: a drawing reports its arrangement, the phone one under 480 px or where the form says so
+    const da = K.draw(s, r.rows, { width: 720, ground: 'newsprint', tokens: TOK.newsprint }), dp = K.draw(s, r.rows, { width: 358, ground: 'newsprint', tokens: TOK.newsprint });
+    const ca = mk({}); ca.arrange('phone');
+    const ok6 = da.arrangement === 'desk' && dp.arrangement === 'phone' && ca._arr === 'phone';
+    console.log(`${ok6 ? 'pass' : 'FAIL'} a drawing reports its arrangement (desk at 720 px, phone at 358 px, phone where a form says so)`);
+    if (!ok6) bad++;
+  }
   // D3-519: typography sets curly quotes and its replacements once, and a second pass changes nothing
   {
     const sp = { typography: { curl_quotes: true, replace: [['Act,2026', 'Act, 2026']] } };
