@@ -1,15 +1,14 @@
 /* Connected scatter (coverage plan 3.6, extended; S56). Two measures moving together over time: one dot a period at its
  * two values, joined in time order by a thin path in the subject ink, so the path's shape is the answer (the data lead's
  * rulings (a) and (e)). A period with either value missing breaks the path, which never bridges it, and the gap is named
- * by labels.gap at the middle of the break. Periods the spec names carry their words on a leader (K.parts.note); the
- * first and last periods take a larger dot, so the path's direction reads without arrows. Gridlines both ways, the y
- * values in a left gutter and the x values along the bottom.
- * encode: time (month or year), x (number), y (number).
- * labels: named ({time: words}: periods named on the drawing), place ({time: "above", "below", "left" or "right"}),
- * dx ({time: px}), gap (words naming a missing period, placed at the break), gap_place ("above", "below", "left",
- * "right"), x_axis, y_axis (axis words).
- * formats: x, y (ticks). scale: x and y ([lo, hi]). On a phone the same arrangement draws narrower; a named period may
- * take its own place there (labels.place_phone).
+ * by labels.gap at the middle of the break. Periods the spec names carry their words, placed by the kit's shared part
+ * (K.parts.place_labels) clear of every dot, with a leader where they sit further out; a name with no clear place is
+ * listed under the chart. The first and last periods take a larger dot, so the path's direction reads without arrows.
+ * Gridlines both ways, the y values in a left gutter and the x values along the bottom.
+ * encode: time (month or year: each period's first month for a quarter), x (number), y (number).
+ * labels: named ({time: words}: periods named on the drawing, in the order they claim room), gap (words naming a missing
+ * period, placed at the break), x_axis, y_axis (axis words).
+ * formats: x, y (ticks). scale: x and y ([lo, hi]). On a phone the same arrangement draws narrower.
  * Maker B, round 2. */
 (function (K) {
   'use strict';
@@ -18,12 +17,12 @@
     name: 'Connected Scatter',
     family: 'correlation',
     encode: { time: 'time', x: 'number?', y: 'number?' },
-    labels: ['named', 'place', 'place_phone', 'dx', 'gap', 'gap_place', 'x_axis', 'y_axis'],
+    labels: ['named', 'gap', 'x_axis', 'y_axis'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, L = c.labels, f = c.spec.formats || {}, W = c.width, ph = c.phone;
       var et = c.field('time'), ex = c.field('x'), ey = c.field('y'), tick = c.size('tick');
-      var fx = f.x || 'integer', fy = f.y || 'integer', named = L.named || {}, place = (ph && L.place_phone) || L.place || {}, dxs = L.dx || {};
+      var fx = f.x || 'integer', fy = f.y || 'integer', named = L.named || {};
       var ok = function (r) { return typeof r[ex] === 'number' && typeof r[ey] === 'number'; };
       var rows = c.rows.slice().sort(function (a, b) { return K.time(a[et]) - K.time(b[et]); });
       var have = rows.filter(ok);
@@ -61,12 +60,14 @@
         c.circle(p[0], p[1], big ? c.t('dot-vertex-radius') + 1 : rs, { fill: 'subject', data: { key: r[et], field: ey, value: r[ey], x: r[ex] } });
         c.datum(p[0], p[1], { data: { key: r[et], field: ex, value: r[ex] } });
       });
-      // the named periods, then the gap's words at the middle of the break
+      // the named periods and the gap's words, through the kit's shared placing (R2-C2), clear of every dot; a name with no
+      // clear place is listed under the chart, and the table gives every period
+      var items = [];
       Object.keys(named).forEach(function (k) {
         var r = rows.filter(function (q) { return String(q[et]) === k; })[0];
         if (!r || !ok(r)) { c.warn('labels.named names no period with both values: ' + k); return; }
-        var p = pt(r);
-        P.note(c, p[0], p[1], named[k], { place: place[k] || 'above', dx: dxs[k], max: ph ? 130 : 200 });
+        var p = pt(r), big = r === first || r === last;
+        items.push({ x: p[0], y: p[1], r: big ? c.t('dot-vertex-radius') + 1 : rs, words: named[k], weight: 600 });
       });
       if (L.gap) {
         rows.forEach(function (r, i) {
@@ -74,11 +75,17 @@
           var a = rows[i - 1], b = rows[i + 1];
           if (!ok(a) || !ok(b)) return;
           var pa = pt(a), pb = pt(b);
-          P.note(c, (pa[0] + pb[0]) / 2, (pa[1] + pb[1]) / 2, L.gap, { place: L.gap_place || 'below', max: ph ? 130 : 180 });
+          items.push({ x: (pa[0] + pb[0]) / 2, y: (pa[1] + pb[1]) / 2, r: 2, words: L.gap, weight: 400 });
         });
       }
+      var avoid = have.map(function (r) { var p = pt(r); return { x: p[0] - rs, y: p[1] - rs, w: 2 * rs, h: 2 * rs }; });
+      var pl = P.place_labels(c, items, { top: top, bottom: bot, avoid: avoid, reach: 18 });
       var end = ay + 4;
       if (L.x_axis) { var xb = c.text(W, ay + tick + 10, L.x_axis, { role: 'tick', weight: 600, anchor: 'end', max: W - x0 }); end = xb.bottom; }
+      if (pl.unplaced.length) {
+        var ub = c.text(0, end + c.size('note') + 8, K.word('unlabeled_marks').replace('{codes}', pl.unplaced.map(function (it) { return it.words; }).join('; ')), { role: 'note', max: W, fill: 'secondary' });
+        end = ub.bottom;
+      }
       c.height(end + 2);
     }
   });

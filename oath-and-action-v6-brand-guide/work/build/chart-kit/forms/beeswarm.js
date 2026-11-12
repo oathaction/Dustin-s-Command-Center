@@ -84,7 +84,7 @@
       if (refrow) {
         var rx = xs(refrow[ev]);
         if (L.reference_label) { var rw = P.fill(c, L.reference_label, refrow), rww = c.measure(rw, 'tick'); c.text(Math.min(Math.max(rx, rww / 2), W - rww / 2), tick, rw, { role: 'tick', anchor: 'middle', fill: 'label' }); }
-        c.line(rx, y, rx, bottom + (lab.below.length ? lead : 0), { stroke: 'label', width: c.t('line-baseline'), dash: '5 3', data: { key: refrow[ek], field: ev, value: refrow[ev] } });
+        P.total_line(c, rx, y, rx, bottom + (lab.below.length ? lead : 0), { width: c.t('line-baseline'), data: { key: refrow[ek], field: ev, value: refrow[ev] } });
       }
       // leaders first, so the dots sit over them
       var ly = { above: y + size, below: bottom + lead + size * 0.75 };

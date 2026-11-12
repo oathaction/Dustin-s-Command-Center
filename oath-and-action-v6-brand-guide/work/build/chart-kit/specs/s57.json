@@ -1,112 +1,98 @@
 {
- "kit": 1,
- "id": "S57",
- "form": "range-bar",
- "family": "uncertainty-and-estimates",
- "tier": "core",
- "dataset": "census-acs-earnings-ratio-by-state",
- "sort": [
-  {
-   "field": "women_pct_of_men",
-   "order": "desc"
-  }
- ],
- "reader_question": "How do women’s earnings compare with men’s in each state, and how sure is each figure?",
- "evidence": "finding",
- "evidence_label": "Finding",
- "grade_line": "Documented: a Census Bureau survey, with ratios and margins computed by Oath & Action",
- "title": "DRAFT",
- "measure_line": "DRAFT",
- "notes": [],
- "credit": "Chart: Oath & Action",
- "illustrative": false,
- "alt": "DRAFT",
- "table": {
-  "caption": "Women’s median earnings as a percent of men’s, full-time, year-round workers, 2025",
-  "columns": [
-   {
-    "field": "name",
-    "label": "State",
-    "format": "text",
-    "row_header": true
-   },
-   {
-    "field": "women_pct_of_men",
-    "label": "Women’s median as a percent of men’s",
-    "format": "number:1"
-   },
-   {
-    "field": "women_pct_of_men_moe",
-    "label": "Margin of error, points",
-    "format": "number:1"
-   },
-   {
-    "field": "women_median_earnings",
-    "label": "Women’s median",
-    "format": "dollars"
-   },
-   {
-    "field": "men_median_earnings",
-    "label": "Men’s median",
-    "format": "dollars"
-   }
-  ]
- },
- "phone": "same",
- "artboard": "reading",
- "domain": "D07",
- "states": [],
- "encode": {
-  "category": "name",
-  "value": "women_pct_of_men",
-  "margin": "women_pct_of_men_moe",
-  "key": "code"
- },
- "labels": {
-  "reference": "US",
-  "reference_label": "United States: {value}%",
-  "test": "reference",
-  "named": [
-   "AL",
-   "CA",
-   "CO",
-   "CT",
-   "DC",
-   "FL",
-   "IA",
-   "ID",
-   "IN",
-   "LA",
-   "MA",
-   "MD",
-   "MI",
-   "MT",
-   "NE",
-   "NJ",
-   "NM",
-   "NV",
-   "NY",
-   "OK",
-   "OR",
-   "SC",
-   "TX",
-   "UT",
-   "VT",
-   "WY"
+  "kit": 1,
+  "id": "S57",
+  "form": "range-bar",
+  "family": "uncertainty-and-estimates",
+  "tier": "core",
+  "dataset": "census-acs-earnings-ratio-by-state",
+  "sort": [
+    {
+      "field": "women_pct_of_men",
+      "order": "desc"
+    }
   ],
-  "names": {
-   "DC": "District of Columbia"
+  "reader_question": "How do women’s earnings compare with men’s in each state, and how sure is each figure?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: a Census Bureau survey, with ratios and their margins computed by Oath & Action",
+  "title": "Women who worked full time, year round had median earnings 82.0 percent of men’s in 2025, and in 25 states and the District of Columbia the figure differed from the nation’s by more than the margin of error.",
+  "measure_line": "Women’s median earnings as a percent of men’s, people 16 and over with earnings who worked full time, year round, 2025, 50 states and DC. Each line spans a figure’s 90 percent margin of error.",
+  "reading_guide": "A filled dot differs from the nation’s 82.0 percent by more than the margin of error of the gap between them; an open dot sits within it.",
+  "notes": [
+    "The ratio sets the median of every woman who worked full time, year round against the median of every such man, whatever their jobs.",
+    "A state differs from the nation where the gap between them passes the gap’s own margin of error, the square root of the sum of the two margins squared, the Census Bureau’s test. By that test, 13 states and the District of Columbia sit above the nation and 12 states below it; no state’s lead over the next passes it, so the chart ranks none."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Dots with margin of error lines for the 50 states and DC around the nation’s 82.0 percent. Fourteen filled dots above the nation’s line and 12 below it differ from it by more than the margin of error; the open dots of the other 25 states sit within it.",
+  "table": {
+    "caption": "Women’s median earnings as a percent of men’s, full-time, year-round workers, 2025",
+    "columns": [
+      {
+        "field": "name",
+        "label": "State",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "women_pct_of_men",
+        "label": "Women’s median as a percent of men’s",
+        "format": "number:1"
+      },
+      {
+        "field": "women_pct_of_men_moe",
+        "label": "Margin of error, points",
+        "format": "number:1"
+      },
+      {
+        "field": "women_median_earnings",
+        "label": "Women’s median",
+        "format": "dollars"
+      },
+      {
+        "field": "men_median_earnings",
+        "label": "Men’s median",
+        "format": "dollars"
+      }
+    ]
   },
-  "value": "{value}%"
- },
- "formats": {
-  "value": "number:1",
-  "tick": "integer"
- },
- "scale": {
-  "x": [
-   65,
-   105
+  "chart_notes": [
+    "The dashed line marks the nation, 82.0 percent. Filled dots differ from it by more than the margin of error; open dots sit within it."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D07",
+  "states": [],
+  "encode": {
+    "category": "name",
+    "value": "women_pct_of_men",
+    "margin": "women_pct_of_men_moe",
+    "key": "code"
+  },
+  "labels": {
+    "reference": "US",
+    "reference_label": "United States: {value}%",
+    "test": "reference",
+    "short": {
+      "DC": "D.C."
+    },
+    "value": "{value}%"
+  },
+  "formats": {
+    "value": "number:1",
+    "tick": "integer"
+  },
+  "scale": {
+    "x": [
+      70,
+      105
+    ]
+  },
+  "notes_internal": [
+    "Maker B, round 2. Data plan row 70, rule 14.74 (R2-4: the interval form; ED-E4 moves Rule 14.9’s plate onto it). Draws the frozen census-acs-earnings-ratio-by-state (P7-031).",
+    "Ruling (a) and request B3: no named state; labels.named dropped; dots solid past the margin and open within it through labels.test, the nation as the (b) line. DC and New York: 94.7 (7.3) against 89.0 (1.0), a gap of 5.7 inside its margin of 7.4, so no state is first; Louisiana 75.6 (3.7) against Utah 76.7 (2.6), so none is last.",
+    "R2-C1: the measure line names the 90 percent margin of error; the table prints the margin column; the past-the-margin test is the kit’s interval_of().differs.",
+    "Figures checked by maker_b_round2_derive.py --figures (check S57): the nation 82.04 (82.0); 26 of 51 past the margin by the Census Bureau’s test, 14 above (13 states and DC) and 12 below; 25 within; no adjacent pair in the sorted list differs past the margin.",
+    "Read from the left and the right: the title gives the national figure and the count past the margin; it names no state and no policy. The editor’s first look (title shape, grade line wording, note 1’s positive words) is applied, with “26 states” corrected to 25 states and DC."
   ]
- }
 }

@@ -1,0 +1,77 @@
+{
+  "kit": 1,
+  "id": "S52",
+  "form": "line-histogram",
+  "family": "distribution-and-density",
+  "tier": "extended",
+  "dataset": "census-saipe-county-child-poverty-bins",
+  "reader_question": "Did county child poverty rates shift between 2019 and the latest year?",
+  "evidence": "estimate",
+  "evidence_label": "Estimate",
+  "grade_line": "Documented: the Census Bureau’s Small Area Income and Poverty Estimates",
+  "title": "The median county’s child poverty rate fell from 18.7 percent in 2019 to 17.1 percent in 2024, by the Census Bureau’s estimates.",
+  "measure_line": "Counties by the share of people under 18 in poverty, in two-point bins, 2019 and 2024, 50 states and DC. 2024 is the latest year, and 2019 the year five before it, the last before the pandemic.",
+  "reading_guide": "Each outline counts the counties in each two-point bin for one year. The dark outline is 2024 and the gray one 2019; where the dark outline sits to the left, more counties had lower rates.",
+  "notes": [
+    "Each county counts once, whatever its population, so the outlines describe counties, not children: 3,141 counties in 2019 and 3,143 in 2024, after Connecticut replaced its 8 counties with 9 planning regions and an Alaska census area split in two. Kalawao County, Hawaii, has no estimate in either year.",
+    "Method: the Census Bureau’s model combines survey answers with administrative records under the official poverty measure, which counts pretax cash income and leaves out tax credits such as the child tax credit."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Two stepped outlines count counties by child poverty rate in two-point bins, 2019 in gray and 2024 in dark ink. The 2024 outline sits to the left of 2019’s: the most common bin moved from 18 to under 20 percent in 2019 to 14 to under 16 percent in 2024, and the median county fell from 18.7 to 17.1 percent.",
+  "table": {
+    "caption": "Counties by share of people under 18 in poverty, 2019 and 2024",
+    "pivot": {
+      "row": "label",
+      "column": "year",
+      "value": "counties",
+      "format": "integer",
+      "labels": {
+        "2019": "Counties, 2019",
+        "2024": "Counties, 2024"
+      }
+    },
+    "columns": [
+      {
+        "field": "label",
+        "label": "Share in poverty",
+        "format": "text",
+        "row_header": true
+      }
+    ]
+  },
+  "chart_notes": [
+    "The dark outline is 2024 and the gray outline 2019, each named at its peak. Each step is two percentage points wide."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D08",
+  "states": [],
+  "encode": {
+    "start": "bin_start",
+    "end": "bin_end",
+    "value": "counties",
+    "series": "year",
+    "label": "label"
+  },
+  "labels": {
+    "lit": "2024",
+    "series": {
+      "2019": "2019",
+      "2024": "2024"
+    },
+    "x_axis": "Share of people under 18 in poverty, percent",
+    "y_axis": "Counties"
+  },
+  "formats": {
+    "value": "integer",
+    "edge": "integer",
+    "tick": "integer"
+  },
+  "notes_internal": [
+    "Maker B, round 2. Data plan row 57, rule 14.61. R2-2: drawn from the derived summary census-saipe-county-child-poverty-bins (maker_b_round2_derive.py, from P7-028), two-point bins 0 to 74 for both years by the data lead’s ruling (g).",
+    "Ruling (a): no single named mark; 2024 in the subject ink at the subject weight and 2019 in the context ink at the field weight, each named at its peak (ruling (e)). Ruling (d): Estimate, grade line and Method note. Request B5: the window’s reason in the measure line and Kalawao County in the note.",
+    "Figures checked by maker_b_round2_derive.py --figures (check S52): medians 18.7 (2019) and 17.1 (2024); 3,141 and 3,143 counties; modal bins 18 to 20 (322) and 14 to 16 (347); Connecticut 8 counties in 2019 and 9 planning regions in 2024; Valdez-Cordova split into Chugach and Copper River; Kalawao County missing in both years.",
+    "H09: 2019 and 2024 are calendar years, five apart; neither period is split at an inauguration. Read from the left and the right: the title reports the Bureau’s estimate of the median county and credits no policy."
+  ]
+}

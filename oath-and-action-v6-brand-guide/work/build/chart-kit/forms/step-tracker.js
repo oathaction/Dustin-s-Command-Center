@@ -1,7 +1,8 @@
 /* Step tracker (coverage plan 3.9, core; S62). One bill's six steps as chapter 11 draws them (Rules 11.1 to 11.3,
  * 11.5 and 11.6): numbered circles, filled for a step done, a heavy ring on the step the bill is at now, a fine ring on
  * a step ahead, and a step that never happened keeps its number under a slash. Each step gives its name, its state in
- * words with its date, and a note. Across the row where it is 552 px or wider, each step a sixth of it; narrower, the
+ * words with its date, and a note. Across the row where each step's sixth holds its date on one line (720 px for
+ * dates in full); narrower, the
  * steps run down the page with the words beside each mark (Rule 11.6). The end words follow the marks.
  * Each step's date is the first action whose code the step lists; a step with no action before a later step done
  * never happened (Rule 11.2).
@@ -26,7 +27,9 @@
       var last = -1; hits.forEach(function (h, i) { if (h) last = i; });
       var law = last === steps.length - 1, now = law ? steps.length : last + 1;
       var state = function (i) { return hits[i] ? 'done' : i < last ? 'never' : i === now ? 'now' : 'ahead'; };
-      var wide = W >= 552, d = wide ? 30 : 28, r = d / 2, nsize = 14;
+      // across only where each step's sixth holds its date on one line
+      var dw = 0; hits.forEach(function (h) { if (h) dw = Math.max(dw, c.measure(K.fmt(h[ed], 'date'), 'tick')); });
+      var wide = W >= 552 && W / steps.length - 6 >= dw, d = wide ? 30 : 28, r = d / 2, nsize = 14;
       var mark = function (i, cx, cy) {
         var stt = state(i), n = String(i + 1), ty = cy + nsize * 0.36, data = { data: { key: 'step ' + n, field: 'state', value: stt } };
         if (stt === 'done') {
@@ -50,10 +53,12 @@
           c.rect(xa, cy - (on ? 1 : 0.5), xb - xa, on ? 2 : 1, { fill: on ? 'subject' : 'context', mark: false });
         }
         steps.forEach(function (st, i) {
-          var cx = pitch * i + pitch / 2, mw = pitch - 12;
+          var cx = pitch * i + pitch / 2, mw = pitch - 6, sw = S[state(i)] || state(i);
           mark(i, cx, cy);
           var nb = c.text(cx, cy + r + 8 + size, st.name, { role: 'label', weight: 700, anchor: 'middle', max: mw });
-          var sb = c.text(cx, nb.bottom + 2 + tick * 0.95, sword(i), { role: 'tick', anchor: 'middle', max: mw, fill: 'label' });
+          // across, the state and its date each take a line, the date held whole
+          var sb = c.text(cx, nb.bottom + 2 + tick * 0.95, sw, { role: 'tick', anchor: 'middle', max: mw, fill: 'label' });
+          if (hits[i]) sb = c.text(cx, sb.bottom + 1 + tick * 0.95, K.fmt(hits[i][ed], 'date').replace(/ /g, '\u00a0'), { role: 'tick', anchor: 'middle', fill: 'label' });
           var bb = sb;
           if (st.note) bb = c.text(cx, sb.bottom + 4 + note * 0.95, st.note, { role: 'note', anchor: 'middle', max: mw, leading: nlh, fill: 'secondary' });
           bottom = Math.max(bottom, bb.bottom);

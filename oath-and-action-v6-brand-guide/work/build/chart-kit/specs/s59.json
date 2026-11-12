@@ -1,87 +1,113 @@
 {
- "kit": 1,
- "id": "S59",
- "form": "fan-chart",
- "family": "uncertainty-and-estimates",
- "tier": "extended",
- "dataset": "frb-fomc-projections-unemployment",
- "reader_question": "Where do Federal Reserve officials expect unemployment to go, and how wide is the range?",
- "evidence": "estimate",
- "evidence_label": "Estimate",
- "grade_line": "DRAFT",
- "title": "DRAFT",
- "measure_line": "Unemployment rate, fourth-quarter average, projected for 2026 to 2029 and the longer run, United States. The outer band spans the range that past forecast errors give about a 70 percent probability of holding the actual rate.",
- "notes": [],
- "credit": "Chart: Oath & Action",
- "illustrative": false,
- "alt": "DRAFT",
- "table": {
-  "caption": "Projections of the unemployment rate, percent",
-  "columns": [
-   {
-    "field": "period",
-    "label": "Period",
-    "format": "text",
-    "row_header": true,
-    "words": {
-     "longer_run": "Longer run"
-    }
-   },
-   {
-    "field": "median",
-    "label": "Median",
-    "format": "number:1"
-   },
-   {
-    "field": "central_tendency_low",
-    "label": "Central tendency, low",
-    "format": "number:1"
-   },
-   {
-    "field": "central_tendency_high",
-    "label": "Central tendency, high",
-    "format": "number:1"
-   },
-   {
-    "field": "band_70_low",
-    "label": "70 percent band, low",
-    "format": "number:1"
-   },
-   {
-    "field": "band_70_high",
-    "label": "70 percent band, high",
-    "format": "number:1"
-   }
+  "kit": 1,
+  "id": "S59",
+  "form": "fan-chart",
+  "family": "uncertainty-and-estimates",
+  "tier": "extended",
+  "dataset": "frb-fomc-projections-unemployment",
+  "reader_question": "Where do Federal Reserve officials expect unemployment to go, and how wide is the range?",
+  "evidence": "estimate",
+  "evidence_label": "Estimate",
+  "grade_line": "Documented: the Federal Reserve’s Summary of Economic Projections, September 16, 2026",
+  "title": "Federal Reserve officials projected a median unemployment rate of 4.1 percent for each year through 2029, and past forecast errors put 2029’s range at 2.0 to 6.2 percent.",
+  "measure_line": "Unemployment rate, average for the fourth quarter of each year, projected in September 2026 for 2026 to 2029 and the longer run, United States. The outer band spans the median plus and minus the average error of past forecasts, which the Board says covers about a 70 percent probability.",
+  "reading_guide": "The dark line is the officials’ median. The darker band spans every official’s projection; the lighter band shows how far past forecasts have missed.",
+  "notes": [
+    "Method: the line is the median of officials’ projections, each under that official’s view of appropriate policy; the outer band adds and subtracts the average error of past forecasts, 2006 to 2025, which the Board says covers about 70 percent of outcomes under certain assumptions. The longer run has no error band.",
+    "The officials are the members of the Board of Governors and the presidents of the 12 Reserve Banks."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A fan chart of the unemployment rate projected for 2026 to 2029. The median holds at 4.1 percent each year, inside a darker band for the range of all officials’ projections and a lighter band from past forecast errors that widens to 2.0 to 6.2 percent by 2029. The longer run sits apart at 4.2 percent.",
+  "table": {
+    "caption": "Projections of the unemployment rate, fourth quarter of each year, percent",
+    "columns": [
+      {
+        "field": "period",
+        "label": "Period",
+        "format": "text",
+        "row_header": true,
+        "words": {
+          "longer_run": "Longer run"
+        }
+      },
+      {
+        "field": "median",
+        "label": "Median",
+        "format": "number:1"
+      },
+      {
+        "field": "range_low",
+        "label": "Range, low",
+        "format": "number:1"
+      },
+      {
+        "field": "range_high",
+        "label": "Range, high",
+        "format": "number:1"
+      },
+      {
+        "field": "central_tendency_low",
+        "label": "Central tendency, low",
+        "format": "number:1"
+      },
+      {
+        "field": "central_tendency_high",
+        "label": "Central tendency, high",
+        "format": "number:1"
+      },
+      {
+        "field": "band_70_low",
+        "label": "Band from past errors, low",
+        "format": "number:1",
+        "empty": "None given"
+      },
+      {
+        "field": "band_70_high",
+        "label": "Band from past errors, high",
+        "format": "number:1",
+        "empty": "None given"
+      }
+    ]
+  },
+  "chart_notes": [
+    "The lighter band is the median plus and minus past forecast errors; the darker band is the range of all officials’ projections. The longer run is drawn apart, at the right, with its range as a line."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D07",
+  "states": [],
+  "encode": {
+    "x": "period",
+    "y": "median",
+    "outer_low": "band_70_low",
+    "outer_high": "band_70_high",
+    "inner_low": "range_low",
+    "inner_high": "range_high"
+  },
+  "labels": {
+    "apart": "longer_run",
+    "apart_label": "Longer run",
+    "key_outer": "Band from past forecast errors",
+    "key_inner": "Range of all officials’ projections",
+    "key_median": "Median projection",
+    "y_axis": "Unemployment rate, percent"
+  },
+  "formats": {
+    "y": "number:1",
+    "tick": "integer"
+  },
+  "scale": {
+    "y": [
+      0,
+      7
+    ]
+  },
+  "notes_internal": [
+    "Maker B, round 2. Data plan row 73, rule 14.77. Draws the frozen frb-fomc-projections-unemployment (P7-033), five rows.",
+    "Ruling (a): no single named mark; the median in the subject ink with a dot each year. Ruling (e): the range of all officials’ projections in Stone magnitude step 2 inside the band from past errors in step 1; the longer run apart with its range and no band; the central tendency stays in the table. Ruling (d): Estimate, the grade line and the Method note in the ruling’s words.",
+    "R2-C1: the fan registers interval: \"level\"; the measure line names \"a 70 percent probability\".",
+    "Figures checked by maker_b_round2_derive.py --figures (check S59): medians 4.1 for 2026 to 2029 and 4.2 for the longer run; the 2029 band 2.0 to 6.2; errors 0.5, 1.3, 1.9 and 2.1.",
+    "Read from the left and the right: the title reports the officials’ own projection and its error range, and names no official or party."
   ]
- },
- "phone": "same",
- "artboard": "reading",
- "domain": "D07",
- "states": [],
- "encode": {
-  "x": "period",
-  "y": "median",
-  "outer_low": "band_70_low",
-  "outer_high": "band_70_high",
-  "inner_low": "central_tendency_low",
-  "inner_high": "central_tendency_high"
- },
- "labels": {
-  "apart": "longer_run",
-  "apart_label": "Longer run",
-  "key_outer": "70 percent band from past errors",
-  "key_inner": "Central tendency of officials’ views",
-  "key_median": "Median projection",
-  "y_axis": "Unemployment rate, percent"
- },
- "formats": {
-  "y": "number:1",
-  "tick": "integer"
- },
- "scale": {
-  "y": [
-   0,
-   7
-  ]
- }
 }

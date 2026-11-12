@@ -58,7 +58,8 @@
       var draw = function (r, dir) {
         var role = inband(r) ? bandRole : other, w = sc(r[ev]), x = dir < 0 ? cx - aw / 2 - w : cx + aw / 2;
         var kl = role === 'point' && c.ground !== 'charcoal' ? { stroke: 'point-keyline', width: c.t('keyline') } : {};
-        c.rect(x, ay(r[ea]), w, bh, Object.assign({ fill: role, kind: 'bar', axis: 'x', zero: dir < 0 ? cx - aw / 2 : cx + aw / 2, data: { key: r[es] + '|' + r[ea], field: ev, value: r[ev] } }, kl));
+        // the band's bars on both sides are one job, so they count as one working red (ED-E15)
+        c.rect(x, ay(r[ea]), w, bh, Object.assign({ fill: role, kind: 'bar', axis: 'x', zero: dir < 0 ? cx - aw / 2 : cx + aw / 2, job: inband(r) ? 'band' : undefined, data: { key: r[es] + '|' + r[ea], field: ev, value: r[ev] } }, kl));
       };
       rowsL.forEach(function (r) { draw(r, -1); });
       rowsR.forEach(function (r) { draw(r, 1); });
@@ -86,7 +87,14 @@
         var lines = c.wrap(band.words, 'label', Math.max(40, ex - 10), 700);
         lines.forEach(function (ln, i) { c.text(0, by - (lines.length - 1) * lh2 / 2 + size * 0.35 + i * lh2, ln, { role: 'label', weight: 700 }); });
       }
-      mtexts.forEach(function (m) { c.text(W, m.y - 4, m.words, { role: 'tick', anchor: 'end', fill: 'secondary', halo: true }); });
+      // the marks' words at the right edge, each moved left of the one before where they would touch
+      var mright = W, mprev = null;
+      mtexts.forEach(function (m) {
+        var mw = c.measure(m.words, 'tick'), x = W;
+        if (mprev && Math.abs(mprev.y - m.y) < tick + 2) x = mprev.x - mprev.w - 8;
+        c.text(x, m.y - 4, m.words, { role: 'tick', anchor: 'end', fill: 'secondary', halo: true });
+        mprev = { x: x, y: m.y, w: mw };
+      });
       // the scale along the bottom of each half, mirrored
       var sy = bot + tick + 8;
       ticks.forEach(function (t) {

@@ -12,7 +12,7 @@
     name: 'Bubble Scatter',
     family: 'correlation',
     encode: { key: 'code', label: 'text', x: 'number', y: 'number', size: 'number' },
-    labels: ['named', 'point', 'names', 'reference', 'reference_label', 'place', 'x_axis', 'y_axis', 'size_key', 'size_key_label', 'size_key_title'],
+    labels: ['named', 'point', 'labeled', 'names', 'reference', 'reference_label', 'x_axis', 'y_axis', 'size_key', 'size_key_label', 'size_key_title'],
     phone: 'same',
     draw: function (c) {
       var base = K.forms['scatter-named'];

@@ -1,0 +1,128 @@
+{
+  "kit": 1,
+  "id": "S63",
+  "form": "status-chips",
+  "family": "gauges-and-indicators",
+  "tier": "core",
+  "dataset": "v7-issue-status-checks-on-power",
+  "sort": [
+    {
+      "field": "id",
+      "values": [
+        "I163",
+        "X06",
+        "X05",
+        "I070",
+        "I068",
+        "X18"
+      ]
+    }
+  ],
+  "reader_question": "Where do the fights over removals, spending and watchdogs stand?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Checked by the atlas, record by record: its issue records, as of October 15, 2026",
+  "v7": {
+    "grade": "documented",
+    "ids": [
+      "I068",
+      "I070",
+      "I163",
+      "X05",
+      "X06",
+      "X18"
+    ],
+    "snapshot": "2026-10-15"
+  },
+  "title": "Of six disputes over removals, spending and watchdogs, the Supreme Court had decided one by October 15, 2026, and acted in two others by interim order.",
+  "measure_line": "The status of six issues in the atlas on checks on power, each as its record stood when the atlas checked it on October 15, 2026, United States",
+  "notes": [
+    "Each chip is our reading of the atlas’s status text, and the words under it give the case or finding and its date. An interim order holds while a case continues and decides nothing for good.",
+    "Statuses may have changed since October 15, 2026."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Six issues with status chips. Decided: Issue I163, at-will removal of regulators, by Trump v. Slaughter on June 29, 2026. Interim order: Issue X06, the attempted removal of a Federal Reserve governor, and Issue X05, domestic troop deployments. In court: Issue I070, the firing of inspectors general. Watchdog finding: Issue I068, withheld appropriations. Counted: Issue X18, nationwide injunctions.",
+  "table": {
+    "caption": "Status of six issues on checks on power, as of October 15, 2026",
+    "columns": [
+      {
+        "field": "id",
+        "label": "Issue",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "title",
+        "label": "Title",
+        "format": "text"
+      },
+      {
+        "field": "status_text",
+        "label": "Status, in the atlas’s words",
+        "format": "text"
+      },
+      {
+        "field": "status_result",
+        "label": "Atlas check",
+        "format": "text"
+      },
+      {
+        "field": "checked",
+        "label": "Checked",
+        "format": "date"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Every status chip is drawn the same way; its word gives the status. Each issue’s ID sits in its own chip before its title."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D05",
+  "states": [
+    "IL"
+  ],
+  "typography": {
+    "curl_quotes": true
+  },
+  "encode": {
+    "key": "id",
+    "title": "title",
+    "date": "checked",
+    "result": "status_result"
+  },
+  "labels": {
+    "id_type": "Issue",
+    "status": {
+      "I163": {
+        "chip": "Decided",
+        "words": "Trump v. Slaughter, June 29, 2026: the Supreme Court ruled 6 to 3 that the President may remove Federal Trade Commission members at will."
+      },
+      "X06": {
+        "chip": "Interim order",
+        "words": "Trump v. Cook, June 29, 2026: the Supreme Court, 5 to 4, refused to let the removal of Governor Lisa Cook take effect while her case continues."
+      },
+      "X05": {
+        "chip": "Interim order",
+        "words": "Trump v. Illinois, December 23, 2025: on its emergency docket, the Supreme Court left in place an order blocking the deployment of federalized National Guard troops in Illinois."
+      },
+      "I070": {
+        "chip": "In court",
+        "words": "Storch v. Hegseth: the latest docket entry listed, a July 20, 2026 minute order, shows no ruling on the merits."
+      },
+      "I068": {
+        "chip": "Watchdog finding",
+        "words": "The Government Accountability Office found two more violations of the Impoundment Control Act on October 7, 2026."
+      },
+      "X18": {
+        "chip": "Counted",
+        "words": "The Congressional Research Service counted 50 cases with nationwide injunctions from January 20, 2025 to June 27, 2026, 16 of them after Trump v. CASA, decided June 27, 2025."
+      }
+    },
+    "check_words": "Atlas check: {result}, {date}"
+  },
+  "notes_internal": [
+    "Draft."
+  ]
+}

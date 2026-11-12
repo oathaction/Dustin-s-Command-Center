@@ -1,100 +1,122 @@
 {
- "kit": 1,
- "family": "correlation",
- "dataset": "census-acs-rent-and-income-by-state",
- "evidence": "association",
- "evidence_label": "Association",
- "grade_line": "DRAFT",
- "title": "DRAFT",
- "measure_line": "DRAFT",
- "notes": [
-  "This shows the two move together; it does not show one causes the other."
- ],
- "credit": "Chart: Oath & Action",
- "illustrative": false,
- "alt": "DRAFT",
- "table": {
-  "caption": "DRAFT",
-  "columns": [
-   {
-    "field": "name",
-    "label": "State",
-    "format": "text",
-    "row_header": true
-   },
-   {
-    "field": "renter_median_income",
-    "label": "Renters’ median income",
-    "format": "dollars"
-   },
-   {
-    "field": "median_gross_rent",
-    "label": "Median gross rent",
-    "format": "dollars"
-   },
-   {
-    "field": "rent_pct_of_income",
-    "label": "Rent as a percent of income",
-    "format": "number:1"
-   },
-   {
-    "field": "rent_pct_of_income_moe",
-    "label": "Margin of error",
-    "format": "number:1"
-   },
-   {
-    "field": "renter_households",
-    "label": "Renter households",
-    "format": "integer"
-   }
+  "kit": 1,
+  "id": "S55",
+  "form": "bubble-scatter",
+  "family": "correlation",
+  "tier": "extended",
+  "dataset": "census-acs-rent-and-income-by-state",
+  "sort": [
+    {
+      "field": "renter_households",
+      "order": "desc"
+    }
+  ],
+  "reader_question": "Do rents run higher where renters earn more, with each state sized by its renter households?",
+  "evidence": "association",
+  "evidence_label": "Association",
+  "grade_line": "Documented: a Census Bureau survey",
+  "title": "Higher rents went with higher renter incomes across the states in 2025, and Florida’s 3.0 million renter households paid the largest share of income in rent, 35.5 percent.",
+  "measure_line": "Median gross rent a month against renter households’ median income a year, 2025, 50 states and DC; each circle is a state, its area set by its renter households.",
+  "reading_guide": "States to the right have renters with higher incomes, and states higher up have higher rents. A larger circle holds more renter households.",
+  "notes": [
+    "This shows the two move together; it does not show one causes the other.",
+    "Rent as a percent of income is the Census Bureau’s own measure: the median, across renter households paying cash rent, of each one’s rent over its income. Florida’s 35.5 percent carries a margin of error of 0.5 point at 90 percent confidence, and California’s 32.9 percent, the next highest, 0.3 point."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A bubble chart of 50 states and DC: median gross rent against renter households’ median income in 2025, each circle sized by renter households. The circles climb from lower left to upper right; California’s 6.2 million renter households make the largest circle, at the top right. Florida, in dark ink, sits above the cloud with the largest rent share, 35.5 percent.",
+  "table": {
+    "caption": "Rent, renter income and renter households by state, 2025",
+    "columns": [
+      {
+        "field": "name",
+        "label": "State",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "renter_median_income",
+        "label": "Renters’ median income, a year",
+        "format": "dollars"
+      },
+      {
+        "field": "median_gross_rent",
+        "label": "Median gross rent, a month",
+        "format": "dollars"
+      },
+      {
+        "field": "rent_pct_of_income",
+        "label": "Rent as a percent of income",
+        "format": "number:1"
+      },
+      {
+        "field": "rent_pct_of_income_moe",
+        "label": "Margin of error, points",
+        "format": "number:1"
+      },
+      {
+        "field": "renter_households",
+        "label": "Renter households",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Florida takes the dark ink; the other states are light gray circles with thin outlines, with California and North Dakota named. The open ring marks the United States. The key gives circles for 0.5, 2 and 6 million renter households."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D09",
+  "states": [
+    "FL",
+    "CA",
+    "ND"
+  ],
+  "encode": {
+    "key": "code",
+    "label": "name",
+    "x": "renter_median_income",
+    "y": "median_gross_rent",
+    "size": "renter_households"
+  },
+  "labels": {
+    "named": [
+      "FL"
+    ],
+    "labeled": [
+      "CA",
+      "ND"
+    ],
+    "reference": "US",
+    "reference_label": "United States",
+    "size_key": [
+      500000,
+      2000000,
+      6000000
+    ],
+    "size_key_label": "{value}",
+    "size_key_title": "Renter households",
+    "x_axis": "Renter households’ median income, a year",
+    "y_axis": "Median gross rent, a month"
+  },
+  "formats": {
+    "x": "dollars",
+    "y": "dollars",
+    "size": "millions"
+  },
+  "scale": {
+    "x": [
+      30000,
+      80000
+    ],
+    "y": [
+      800,
+      2200
+    ]
+  },
+  "notes_internal": [
+    "Maker B, round 2. Data plan row 64, rule 14.68. Same file and rulings as S54; circles by area (D2-124), largest drawn first, each with a 1 px outline in the context ink (ruling (e)); the key gives three sizes.",
+    "Figures checked by maker_b_round2_derive.py --figures (check S55): Florida 2,981,485 renter households (3.0 million), California 6,159,367 (6.2 million, the most), Florida’s 35.5 percent the largest share past the margin.",
+    "Read from the left and the right: as S54."
   ]
- },
- "phone": "same",
- "artboard": "reading",
- "domain": "D09",
- "states": [
-  "FL"
- ],
- "encode": {
-  "key": "code",
-  "label": "name",
-  "x": "renter_median_income",
-  "y": "median_gross_rent",
-  "size": "renter_households"
- },
- "labels": {
-  "named": [
-   "FL",
-   "CA",
-   "HI",
-   "CT",
-   "AZ"
-  ],
-  "reference": "US",
-  "reference_label": "United States",
-  "x_axis": "Renter households’ median income, a year",
-  "y_axis": "Median gross rent, a month",
-  "size_key": [
-   500000,
-   2000000,
-   6000000
-  ],
-  "size_key_label": "{value}",
-  "size_key_title": "Renter households"
- },
- "formats": {
-  "x": "dollars",
-  "y": "dollars",
-  "size": "millions:1"
- },
- "sort": [
-  {
-   "field": "rent_pct_of_income",
-   "order": "desc"
-  }
- ],
- "id": "S55",
- "form": "bubble-scatter",
- "tier": "extended",
- "reader_question": "Do rents run higher where renters earn more, with each state sized by its renter households?"
 }

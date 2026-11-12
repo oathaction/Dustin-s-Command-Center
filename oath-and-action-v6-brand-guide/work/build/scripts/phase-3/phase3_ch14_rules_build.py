@@ -660,20 +660,22 @@ def rule_14_3(B):
                         "to 2024, United States",
            notes=["In every year the youngest group trails the next, citizens 25 to 44, by 11 to 16 points."],
            source_line=variant(ds, "source_line_citizen_only"),
-           alt="Four lines of reported voting by age in presidential years from 2004 to 2024, each named at its end: 65 and over highest, "
-               f"near 71 to 75 percent; 45 to 64 next; 25 to 44 below; and 18 to 24 lowest, from {fmt1(v['18_to_24'][2004])} percent in 2004 "
+           alt="Four lines of reported voting by age in presidential years from 2004 to 2024, each named beside it: 65 and over highest, "
+               f"near 71 to 75 percent; 45 to 64 next; 25 to 44 below; and 18 to 24 lowest, in red, from {fmt1(v['18_to_24'][2004])} percent in 2004 "
                f"to {fmt1(v['18_to_24'][2024])} percent in 2024.",
            table={"caption": "Share of citizens who reported voting, by age, percent",
                   "columns": [{"field": "year", "label": "Year", "format": "year", "row_header": True},
                               {"field": "age_group", "label": "Age", "format": "text", "words": dict(AGES)},
                               {"field": "voted_pct", "label": "Reported voting", "format": "percent:1"}]},
            encode={"x": "year", "y": "voted_pct", "series": "age_group"},
-           labels={"subject": "18_to_24", "series": dict(AGES),
+           labels={"point": "18_to_24", "series": dict(AGES),
                    "series_place": {"65_and_over": {"x": 2008, "dy": -15}, "45_to_64": {"x": 2008, "dy": 20},
                                     "25_to_44": {"x": 2008, "dy": 27}, "18_to_24": {"x": 2008, "dy": -8}}},
            scale={"y": [30, 80]},
            domain="D10", states=[], notes_internal="Rule 14.3's correct plate. Checked by script: 18 to 24 more than 10 points below every other "
-                                                   "group in each year (gaps 11.2 to 16.1).")
+                                                   "group in each year (gaps 11.2 to 16.1). The line the title names takes the "
+                                                   "red point (the data lead's ruling (f), RS-S4): an age group carries no tie on "
+                                                   "Rule 14.6's list.")
     # the failure: the same four lines in the four group inks, with a key under the chart and no names on the lines
     lo, hi = 30, 80   # the correct plate's scale, so the pair reads as one chart drawn two ways
     gl, yt = grid([30, 40, 50, 60, 70, 80], lo, hi, str)
@@ -703,7 +705,7 @@ def rule_14_3(B):
         ["12.6", "13.7"],
         "Name each series in the spec’s labels.series; the kit sets the names at the line ends and warns when one cannot fit.",
         B.plate("s-14-3-correct", "Each line carries its own name beside it, so a reader reads the age group in place, and the youngest "
-                                  "group, which the title names, stands out in ink."),
+                                  "group, which the title names, takes the view’s red."),
         B.plate("s-14-3-failure", fails("14.3", "Four lines in four inks send the reader down to a key and back for every line, where a name "
                                                 "beside each line would be read in place.")),
         [ex("Reported voting by age, presidential years 2004 to 2024", "D10", where="14.3")],
@@ -890,7 +892,7 @@ def rule_14_6(B):
         ["05.3", "05.5", "05.7", "01.1", "01.2", "14.7"],
         "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; "
         "where the subject ink takes its place, labels.named does it instead, with a list for two marks. The kit counts working reds and "
-        "fails a view with two.",
+        "fails a view whose red falls on two jobs.",
         B.plate("s-14-6-correct", "The title names Great Smoky Mountains, and its bar alone takes the view’s red, inside its keyline, with "
                                   "every other park in gray."),
         B.plate("s-14-6-failure", fails("14.6", "Red falls on three parks while the title names one, so a reader cannot tell which bar the "

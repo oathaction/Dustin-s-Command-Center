@@ -1,78 +1,95 @@
 {
- "kit": 1,
- "id": "S53",
- "form": "population-pyramid",
- "family": "distribution-and-density",
- "tier": "extended",
- "dataset": "census-pep-population-by-age-sex",
- "where": {
-  "sex": [
-   "male",
-   "female"
+  "kit": 1,
+  "id": "S53",
+  "form": "population-pyramid",
+  "family": "distribution-and-density",
+  "tier": "extended",
+  "dataset": "census-pep-population-by-age-sex",
+  "where": {
+    "sex": [
+      "male",
+      "female"
+    ]
+  },
+  "reader_question": "How many people are near the ages of Social Security and Medicare?",
+  "evidence": "estimate",
+  "evidence_label": "Estimate",
+  "grade_line": "Documented: the Census Bureau’s Vintage 2025 population estimates",
+  "title": "The Census Bureau estimated 41.2 million people aged 55 to 64 on July 1, 2025, the ten years of age just before 65.",
+  "measure_line": "Resident population by single year of age and sex, July 1, 2025, United States; the top bar counts everyone 100 and over.",
+  "reading_guide": "Each bar is one year of age, men to the left and women to the right. The red bars are ages 55 to 64; the thin lines mark ages 62 and 65.",
+  "notes": [
+    "Social Security retirement benefits can start at age 62, and Medicare covers most people from age 65.",
+    "Method: the Census Bureau starts from the 2020 Census and adds births, subtracts deaths and adds net migration for each year since; each new vintage revises the years before it."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A population pyramid for July 1, 2025, one bar per year of age, men on the left and women on the right. The bars for ages 55 to 64, 41.2 million people, are red; the largest single ages sit in the 20s and 30s, and the bars narrow past the late 60s.",
+  "table": {
+    "caption": "Resident population by age and sex, July 1, 2025",
+    "pivot": {
+      "row": "age",
+      "column": "sex",
+      "value": "population_july_2025",
+      "format": "integer",
+      "labels": {
+        "male": "Men",
+        "female": "Women"
+      }
+    },
+    "columns": [
+      {
+        "field": "age",
+        "label": "Age",
+        "format": "integer",
+        "row_header": true
+      }
+    ]
+  },
+  "chart_notes": [
+    "The red bars are ages 55 to 64 on both sides; thin lines mark ages 62 and 65. The scale is millions of people at each age."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D08",
+  "states": [],
+  "encode": {
+    "age": "age",
+    "sex": "sex",
+    "value": "population_july_2025"
+  },
+  "labels": {
+    "left": "male",
+    "right": "female",
+    "sides": {
+      "male": "Men",
+      "female": "Women"
+    },
+    "point": {
+      "from": 55,
+      "to": 64
+    },
+    "band_words": "Ages 55 to 64: 41.2 million",
+    "marks": [
+      {
+        "age": 62,
+        "words": "62"
+      },
+      {
+        "age": 65,
+        "words": "65"
+      }
+    ],
+    "top": "100+",
+    "axis": "Millions of people at each age"
+  },
+  "formats": {
+    "tick": "millions-value:1"
+  },
+  "notes_internal": [
+    "Maker B, round 2. Data plan row 58, rule 14.62. Draws the frozen census-pep-population-by-age-sex (P7-029), men and women by single year of age, 202 rows.",
+    "Ruling (a): the age band the title names takes the red point on both sides as one job (labels.point read as a range of ages); every other age the light fill. Ruling (e): both sides in one ink, sex by position; the age marks 62 and 65 as hairlines in the secondary ink, never red. Ruling (d): Estimate, grade line and Method note.",
+    "Figures checked by maker_b_round2_derive.py --figures (check S53): ages 55 to 64, men and women, sum to 41,189,716 (41.2 million).",
+    "Note 1’s program ages (62 for Social Security retirement benefits, 65 for Medicare) are policy facts, not data from the file; request RB-R3 asks the research lead to confirm both on the agencies’ pages and give a source line variant. Until then the note rests on the atlas’s own pathway texts (Medicare “for people 65 and older”; “Claiming at 62 cuts the monthly benefit by 30 percent”), read November 12, 2026."
   ]
- },
- "reader_question": "How many people are near the ages of Social Security and Medicare?",
- "evidence": "finding",
- "evidence_label": "Finding",
- "grade_line": "DRAFT",
- "title": "DRAFT",
- "measure_line": "DRAFT",
- "notes": [],
- "credit": "Chart: Oath & Action",
- "illustrative": false,
- "alt": "DRAFT",
- "table": {
-  "caption": "Resident population by age and sex, July 1, 2025",
-  "pivot": {
-   "row": "age",
-   "column": "sex",
-   "value": "population_july_2025"
-  },
-  "columns": [
-   {
-    "field": "age",
-    "label": "Age",
-    "format": "integer",
-    "row_header": true
-   },
-   {
-    "field": "sex",
-    "label": "Sex",
-    "format": "text"
-   },
-   {
-    "field": "population_july_2025",
-    "label": "People",
-    "format": "integer"
-   }
-  ]
- },
- "phone": "same",
- "artboard": "reading",
- "domain": "D08",
- "states": [],
- "encode": {
-  "age": "age",
-  "sex": "sex",
-  "value": "population_july_2025"
- },
- "labels": {
-  "left": "male",
-  "right": "female",
-  "sides": {
-   "male": "Men",
-   "female": "Women"
-  },
-  "band": {
-   "from": 62,
-   "to": 67,
-   "words": "Ages 62 to 67"
-  },
-  "top": "100+",
-  "axis": "Millions of people"
- },
- "formats": {
-  "value": "millions:1",
-  "tick": "millions-value:1"
- }
 }

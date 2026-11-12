@@ -48,15 +48,15 @@
       c.rows.forEach(function (r) { lw = Math.max(lw, c.measure(name(r), 'label', 700), L.count ? c.measure(cnt(r), 'tick') : 0); });
       var x0 = ph ? 0 : Math.ceil(lw + 24), x1 = W - 8, pad = 4;
       var xs = K.scale.linear([dom[0], dom[1]], [x0 + pad, x1 - pad]);
-      var bh = ph ? 26 : 30, head = ph ? (L.count ? size + tick + 12 : size + 8) : 0;
+      var bh = ph ? 26 : 30, head = ph ? size + tick + 14 : 0;
       var pitch = bh + head + (ph ? 22 : 28), top = 6, bottom = top + c.rows.length * pitch - (ph ? 12 : 16);
       ticks.forEach(function (t) { c.line(xs(t), top, xs(t), bottom, { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); });
       c.rows.forEach(function (r, i) {
         var role = ink(r), b = ink.named && ink.is_named(r) || ink.is_point(r), y0 = top + i * pitch + head, cy = y0 + bh / 2, k = r[ek];
         // the group's name and its count of units
         if (ph) {
-          c.text(0, top + i * pitch + size, name(r), { role: 'label', weight: b ? 700 : 600 });
-          if (L.count) c.text(0, top + i * pitch + size + tick + 4, cnt(r), { role: 'tick' });
+          var nb = c.text(0, top + i * pitch + size, name(r), { role: 'label', weight: b ? 700 : 600 });
+          if (L.count) c.text(nb.x + nb.w + 8, top + i * pitch + size, cnt(r), { role: 'tick' });
         } else {
           c.text(0, cy + (L.count ? -2 : size * 0.35), name(r), { role: 'label', weight: b ? 700 : 600 });
           if (L.count) c.text(0, cy + tick + 2, cnt(r), { role: 'tick' });

@@ -1,0 +1,119 @@
+{
+  "kit": 1,
+  "id": "S51",
+  "form": "box-plot",
+  "family": "distribution-and-density",
+  "tier": "extended",
+  "dataset": [
+    "census-sahie-county-uninsured-box-by-region",
+    "census-sahie-county-uninsured-outliers"
+  ],
+  "reader_question": "How widely do uninsured rates vary among counties in each region?",
+  "evidence": "estimate",
+  "evidence_label": "Estimate",
+  "grade_line": "Documented: the Census Bureau’s Small Area Health Insurance Estimates",
+  "title": "Counties in the South had the highest median uninsured rate of the four regions in 2024, 13.9 percent of people under 65, by the Census Bureau’s estimates.",
+  "measure_line": "Share of people under 65 without health insurance in each county, 2024, by Census region, 50 states and DC. Each box spans the middle half of a region’s counties; the whiskers reach the last county within one and a half times that span, and dots mark the counties beyond it.",
+  "reading_guide": "The line in each box is the median county. In the South, the middle half of counties ran from 11.0 to 17.9 percent.",
+  "notes": [
+    "Each county counts once, whatever its population, so the boxes describe counties, not people. Kalawao County, Hawaii, has no estimate and is left out.",
+    "Method: the Census Bureau’s model combines survey answers with administrative records to estimate each county’s rate; small counties carry wide margins of error, so the chart ranks no county.",
+    "All 62 counties past a whisker sit above their region’s box; the highest estimate is Gaines County, Texas, at 42.5 percent."
+  ],
+  "source_line": "Source: U.S. Census Bureau, Small Area Health Insurance Estimates, people under 65 without health insurance, 2024, counties in the 50 states and DC. Retrieved November 11, 2026. Model-based estimates; small counties carry wide margins of error; each region’s quartiles, whiskers and outliers computed by Oath & Action.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Box plots of county uninsured rates for people under 65 in 2024, one row per Census region. Median counties: Northeast 7.2 percent, Midwest 8.8, South 13.9 and West 12.4. The South’s middle half spans 11.0 to 17.9 percent, the widest of the four, and 62 counties sit above their region’s whiskers.",
+  "table": {
+    "caption": "County uninsured rates by Census region, people under 65, 2024, percent",
+    "columns": [
+      {
+        "field": "region",
+        "label": "Region",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "counties",
+        "label": "Counties",
+        "format": "integer"
+      },
+      {
+        "field": "whisker_low",
+        "label": "Lower whisker",
+        "format": "number:1"
+      },
+      {
+        "field": "q1",
+        "label": "First quartile",
+        "format": "number:1"
+      },
+      {
+        "field": "median",
+        "label": "Median",
+        "format": "number:1"
+      },
+      {
+        "field": "q3",
+        "label": "Third quartile",
+        "format": "number:1"
+      },
+      {
+        "field": "whisker_high",
+        "label": "Upper whisker",
+        "format": "number:1"
+      },
+      {
+        "field": "outliers",
+        "label": "Counties past a whisker",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "The South’s box takes the dark ink; the other regions’ boxes are light gray, each with its median as a dark line. Small open circles mark the counties past a whisker."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D09",
+  "states": [],
+  "encode": {
+    "category": "region",
+    "low": "whisker_low",
+    "q1": "q1",
+    "median": "median",
+    "q3": "q3",
+    "high": "whisker_high",
+    "count": "counties",
+    "key": "region"
+  },
+  "labels": {
+    "named": [
+      "South"
+    ],
+    "count": "{count} counties",
+    "median": "{median}%",
+    "axis": "Percent of people under 65 without health insurance",
+    "outliers": {
+      "dataset": "census-sahie-county-uninsured-outliers",
+      "category": "region",
+      "value": "uninsured_pct"
+    }
+  },
+  "formats": {
+    "value": "number:1",
+    "tick": "integer"
+  },
+  "scale": {
+    "x": [
+      0,
+      45
+    ]
+  },
+  "notes_internal": [
+    "Maker B, round 2. Data plan row 56, rule 14.60. R2-2: drawn from the derived summaries census-sahie-county-uninsured-box-by-region and census-sahie-county-uninsured-outliers (maker_b_round2_derive.py, from P7-027), Tukey’s box by the data lead’s ruling (g).",
+    "Ruling (a): the South in the subject ink through labels.named (a Census region counts as a set of states). Ruling (d): Estimate, the grade line and the Method note in the ruling’s words. Ruling (e): boxes light with a dark median, whiskers and outliers in the context ink; the South’s box in ink.",
+    "Figures checked by maker_b_round2_derive.py --figures (check S51): medians 7.2, 8.8, 13.9 and 12.35 (alt 12.4), the South highest; South quartiles 11.0 and 17.875 (17.9); 62 outliers, all above their box; Gaines County, TX, 42.5 the highest; Kalawao County the one missing estimate.",
+    "Read from the left and the right: the title gives a region’s median as the Bureau’s model estimates it and names no state or policy; the note says boxes describe counties, not people."
+  ]
+}

@@ -3,7 +3,8 @@
  * end, on a plate of the ground's color where a tick would cross it, so the tick runs behind it; the benchmark's words print once over the first
  * tick when every row shares one benchmark, else each tick prints its own value.
  * encode: category (text), value (number), benchmark (number). labels: benchmark (words over the first tick),
- * categories ({category: printed name}). formats: value, benchmark. On a phone each name sits above its bar. */
+ * categories ({category: printed name}), named and point (rows the title names, in the subject ink or working red, the
+ * rest in the light fill; K.parts.named_fill; round 2). formats: value, benchmark. On a phone each name sits above its bar. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -11,11 +12,13 @@
     name: 'Bar With Benchmark Tick',
     family: 'comparison',
     encode: { category: 'text', value: 'number', benchmark: 'number' },
-    labels: ['benchmark', 'categories'],
+    labels: ['benchmark', 'categories', 'named', 'point'],
     phone: 'same',
     draw: function (c) {
       var rows = c.rows, ek = c.field('category'), ev = c.field('value'), eb = c.field('benchmark');
       var f = c.spec.formats || {}, W = c.width, L = c.labels, names = L.categories || {};
+      // round 2, ruling (c): rows the title names in the subject ink (or the one in working red), the rest in the light fill
+      var fill = K.parts.named_fill(c, L.named, ek, null, L.point);
       var name = function (r) { return names[String(r[ek])] !== undefined ? names[String(r[ek])] : String(r[ek]); };
       var val = function (r) { return K.fmt(r[ev], f.value || 'number:1'); };
       var size = c.size('label'), tick = c.size('tick');
@@ -46,7 +49,7 @@
         var cy = by + bh / 2, xe = xs(r[ev]), tx = xs(r[eb]);
         if (c.phone) c.text(0, by - 8 - (lines - 1) * lh, name(r), { role: 'label', weight: 600, max: lmax });
         else c.text(0, cy + size * 0.35 - (lines - 1) * lh / 2, name(r), { role: 'label', weight: 600, max: lmax });
-        c.rect(zx, by, xe - zx, bh, { fill: 'subject', kind: 'bar', axis: 'x', zero: zx, data: { key: r[ek], field: ev, value: r[ev] } });
+        c.rect(zx, by, xe - zx, bh, Object.assign({ fill: fill(r), kind: 'bar', axis: 'x', zero: zx, data: { key: r[ek], field: ev, value: r[ev] } }, fill.keyline(r)));
         // the tick: a ground-colored keyline under an ink line, so it reads across the bar and beyond it
         c.line(tx, by - over, tx, by + bh + over, { stroke: 'surface', width: c.t('line-subject') + 2 * c.t('keyline'), mark: false });
         c.line(tx, by - over, tx, by + bh + over, { stroke: 'subject', width: c.t('line-subject'), data: { key: r[ek], field: eb, value: r[eb] } });

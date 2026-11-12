@@ -106,7 +106,7 @@
       if (refrow) {
         var bl = xs(lo(refrow)), bh = xs(hi(refrow));
         if (L.reference_band && bh - bl >= 1.5) c.rect(bl, top, bh - bl, bottom - top, { fill: 'band', mark: false });
-        c.line(xs(refrow[ev]), top - 4, xs(refrow[ev]), bottom, { stroke: 'label', width: c.t('line-baseline'), dash: '5 3', data: { key: refrow[ek], field: ev, value: refrow[ev] } });
+        P.total_line(c, xs(refrow[ev]), top - 4, xs(refrow[ev]), bottom, { data: { key: refrow[ek], field: ev, value: refrow[ev] } });
       }
       rows.forEach(function (r, i) {
         var cy = top + i * pitch + pitch / 2, ty = cy + size * 0.35, b = bold(r), role = ink(r), k = r[ek];

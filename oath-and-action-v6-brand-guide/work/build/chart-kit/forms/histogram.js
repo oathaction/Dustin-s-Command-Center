@@ -46,35 +46,36 @@
       rows.forEach(function (r) {
         var a = xs(r[es]), b = xs(r[ee]), role = ink(r), h = bot - ys(r[en]);
         c.rect(a + 0.5, ys(r[en]), Math.max(1, b - a - 1), h, Object.assign({ fill: role, kind: 'bar', axis: 'y', zero: bot, data: { key: r[ek], field: en, value: r[en] } }, ink.keyline(r)));
-        if (fits) c.text((a + b) / 2, ys(r[en]) - 5, vw(r), { role: 'tick', weight: ink.named && ink.is_named(r) || ink.is_point(r) ? 700 : 400, anchor: 'middle', tnum: true, fill: 'label' });
       });
       P.zero_line(c, ys, x0, x1);
       // the marker: a line dashed in the text's ink across the columns, its words above the plot (the data lead's ruling (b))
       if (mk) {
         var mx = xs(mk.value), mw = c.measure(mk.words || '', 'label');
-        c.line(mx, mky + 6, mx, bot, { stroke: 'label', width: c.t('line-baseline'), dash: '5 3', mark: false });
+        P.total_line(c, mx, mky + 6, mx, bot);
         if (mk.words) c.text(Math.min(Math.max(mx, x0 + mw / 2), x1 - mw / 2), mky, mk.words, { role: 'label', anchor: 'middle' });
       }
+      // the counts over their columns, after the marker, on a halo of the ground where the marker crosses them
+      if (fits) rows.forEach(function (r) {
+        c.text((xs(r[es]) + xs(r[ee])) / 2, ys(r[en]) - 5, vw(r), { role: 'tick', weight: ink.named && ink.is_named(r) || ink.is_point(r) ? 700 : 400, anchor: 'middle', tnum: true, fill: 'label', halo: true });
+      });
       // the bins' edges along the bottom, thinned so the labels sit apart; an open last bin takes its own words
       var ay = bot + tick + 8, edges = rows.map(function (r) { return r[es]; });
       var last = rows[rows.length - 1];
       if (!L.open_end) edges.push(hi);
-      var boxes = edges.map(function (v) { var word = K.fmt(v, fe), w = c.measure(word, 'tick'); return { v: v, word: word, x: xs(v), w: w }; });
+      var place = function (b) { b.an = b.x - b.w / 2 < 0 ? 'start' : b.x + b.w / 2 > W ? 'end' : 'middle'; b.l = b.an === 'start' ? Math.max(0, b.x) : b.an === 'end' ? W - b.w : b.x - b.w / 2; b.r = b.l + b.w; return b; };
+      var boxes = edges.map(function (v) { var word = K.fmt(v, fe); return place({ v: v, word: word, x: xs(v), w: c.measure(word, 'tick') }); });
       if (L.open_end) {
         var ow = el ? String(last[el]) : '', w2 = c.measure(ow, 'tick');
-        boxes.push({ v: null, word: ow, x: Math.min((xs(last[es]) + xs(last[ee])) / 2, x1 - w2 / 2), w: w2, open: true });
+        boxes.push(place({ v: null, word: ow, x: Math.min((xs(last[es]) + xs(last[ee])) / 2, x1 - w2 / 2), w: w2, open: true }));
       }
-      var pick = [];
+      // every k-th edge from the first, the smallest k whose labels sit apart (an open last bin keeps its words)
+      var pick = boxes;
       for (var k = 1; k <= boxes.length; k++) {
         pick = boxes.filter(function (b, i) { return b.open || i % k === 0; });
-        var ok = pick.every(function (b, j) { return !j || pick[j - 1].x + pick[j - 1].w / 2 + 10 <= b.x - b.w / 2; });
-        if (ok && pick[0].x - pick[0].w / 2 >= -0.5) break;
+        if (pick.every(function (b, j) { return !j || pick[j - 1].r + 10 <= b.l; })) break;
       }
       edges.forEach(function (v) { c.line(xs(v), bot, xs(v), bot + 4, { stroke: 'baseline', width: c.t('line-hairline'), mark: false }); });
-      pick.forEach(function (b) {
-        var anchor = b.x - b.w / 2 < 0 ? 'start' : b.x + b.w / 2 > W ? 'end' : 'middle';
-        c.text(anchor === 'start' ? Math.max(0, b.x) : anchor === 'end' ? W : b.x, ay, b.word, { role: 'tick', anchor: anchor });
-      });
+      pick.forEach(function (b) { c.text(b.an === 'start' ? b.l : b.an === 'end' ? W : b.x, ay, b.word, { role: 'tick', anchor: b.an }); });
       var bottom = ay + 4;
       if (L.x_axis) { var xb = c.text(x0, ay + tick + 10, L.x_axis, { role: 'tick', weight: 600, max: W - x0 }); bottom = xb.bottom; }
       c.height(bottom + 2);

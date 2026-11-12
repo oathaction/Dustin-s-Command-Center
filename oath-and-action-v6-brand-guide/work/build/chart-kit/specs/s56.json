@@ -1,80 +1,90 @@
 {
- "kit": 1,
- "id": "S56",
- "form": "connected-scatter",
- "family": "correlation",
- "tier": "extended",
- "dataset": "fred-unemployment-and-job-openings",
- "where": {
-  "month": {
-   "from": "2000-12",
-   "to": "2026-09"
-  }
- },
- "reader_question": "How have unemployment and job openings moved together?",
- "evidence": "association",
- "evidence_label": "Association",
- "grade_line": "Documented: two Bureau of Labor Statistics surveys, as copied by FRED, the Federal Reserve Bank of St. Louis’s data site",
- "title": "DRAFT",
- "measure_line": "DRAFT",
- "notes": [
-  "This shows the two move together; it does not show one causes the other."
- ],
- "credit": "Chart: Oath & Action",
- "illustrative": false,
- "alt": "DRAFT",
- "table": {
-  "caption": "Unemployment rate and job openings, monthly",
-  "columns": [
-   {
-    "field": "month",
-    "label": "Month",
-    "format": "month",
-    "row_header": true
-   },
-   {
-    "field": "unemployment_rate",
-    "label": "Unemployment rate, percent",
-    "format": "number:1",
-    "empty": "None published"
-   },
-   {
-    "field": "job_openings_thousands",
-    "label": "Job openings",
-    "format": "thousands"
-   }
+  "kit": 1,
+  "id": "S56",
+  "form": "connected-scatter",
+  "family": "correlation",
+  "tier": "extended",
+  "dataset": "fred-unemployment-and-job-openings-quarterly",
+  "reader_question": "How have unemployment and job openings moved together?",
+  "evidence": "association",
+  "evidence_label": "Association",
+  "grade_line": "Documented: two Bureau of Labor Statistics surveys, as copied by FRED, the Federal Reserve Bank of St. Louis’s data site",
+  "title": "More job openings went with less unemployment from 2001 to 2026: openings averaged 11.7 million in early 2022, when the rate averaged 3.9 percent.",
+  "measure_line": "Quarterly averages of the unemployment rate and of job openings at nonfarm employers, seasonally adjusted, first quarter of 2001 to third quarter of 2026, United States: from the first full quarter of the job openings series to the latest.",
+  "reading_guide": "Each dot is a quarter, joined in time order from early 2001 to the latest quarter. Dots higher up had more openings, and dots to the right more unemployment.",
+  "notes": [
+    "This shows the two move together; it does not show one causes the other.",
+    "No unemployment rate was published for October 2025, so the last quarter of 2025 has no average and the path breaks there.",
+    "The chart draws the average of each quarter’s three months; the table gives every quarter."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A connected scatter of quarterly unemployment rates against job openings from early 2001 to mid 2026. The path swings out to 13.0 percent unemployment in the spring of 2020 and up to 11.7 million openings in early 2022, then settles near 4.1 percent and 7.3 million in the latest quarter. It breaks at the end of 2025, when no rate was published for October.",
+  "table": {
+    "caption": "Unemployment rate and job openings, quarterly averages",
+    "columns": [
+      {
+        "field": "label",
+        "label": "Quarter",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "unemployment_rate",
+        "label": "Unemployment rate, percent",
+        "format": "number:1",
+        "empty": "None: no rate for October 2025"
+      },
+      {
+        "field": "job_openings_millions",
+        "label": "Job openings, millions",
+        "format": "number:1"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Five quarters are named on the path: the first and last, the highest unemployment and the most openings, and the end of 2009. The path breaks where the last quarter of 2025 has no unemployment average."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D07",
+  "states": [],
+  "encode": {
+    "time": "quarter_start",
+    "x": "unemployment_rate",
+    "y": "job_openings_millions"
+  },
+  "labels": {
+    "named": {
+      "2001-01": "January to March 2001",
+      "2009-10": "October to December 2009",
+      "2020-04": "April to June 2020",
+      "2022-01": "January to March 2022",
+      "2026-07": "July to September 2026"
+    },
+    "gap": "No rate for October 2025",
+    "x_axis": "Unemployment rate, percent",
+    "y_axis": "Job openings, millions"
+  },
+  "formats": {
+    "x": "integer",
+    "y": "integer"
+  },
+  "scale": {
+    "x": [
+      2,
+      14
+    ],
+    "y": [
+      0,
+      12
+    ]
+  },
+  "notes_internal": [
+    "Maker B, round 2. Data plan row 65, rule 14.69. Draws fred-unemployment-and-job-openings-quarterly, a derived file maker_b_round2_derive.py writes from the frozen FRED file (P7-013): quarterly averages from the first full quarter of job openings (2001 Q1) to the latest (2026 Q3), 103 quarters.",
+    "Weight call: the monthly path of 310 months measured 27,934 bytes by the kit’s load-table fragment, over the 24,576-byte far-over limit (its table holds every month); quarterly averages keep the path’s shape at about a third of the rows. The data lead’s ruling (e) asked for each month as a dot; request RB-D1 asks the data lead to sign off the quarters.",
+    "Ruling (a): no single named mark; the path in the subject ink. Ruling (d): Association, since the title says the two moved together, with the coverage plan’s line. The October 2025 gap: the quarter takes no unemployment average, the path breaks, and the break is named (the brief).",
+    "Figures checked by maker_b_round2_derive.py --figures (check S56): openings peak 11.7363 million in 2022 Q1 (11.7) with the rate at 3.8667 (3.9); the rate’s peak 13.0 in 2020 Q2; the latest quarter 4.1333 and 7.3493 (4.1 and 7.3); 2025 Q4 empty.",
+    "H09: the window runs from the series’ first full quarter to the latest, with the reason printed; no period is split at an inauguration. Read from the left and the right: the title states an association and names no administration."
   ]
- },
- "phone": "same",
- "artboard": "reading",
- "domain": "D07",
- "states": [],
- "encode": {
-  "time": "month",
-  "x": "unemployment_rate",
-  "y": "job_openings_thousands"
- },
- "labels": {
-  "named": {
-   "2000-12": "December 2000",
-   "2010-01": "January 2010",
-   "2020-04": "April 2020",
-   "2022-03": "March 2022",
-   "2026-09": "September 2026"
-  },
-  "place": {
-   "2000-12": "above",
-   "2010-01": "above",
-   "2020-04": "left",
-   "2022-03": "right",
-   "2026-09": "below"
-  },
-  "gap": "No rate for October 2025",
-  "x_axis": "Unemployment rate, percent",
-  "y_axis": "Job openings"
- },
- "formats": {
-  "x": "integer",
-  "y": "compact-thousands"
- }
 }

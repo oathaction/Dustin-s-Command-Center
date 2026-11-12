@@ -9,10 +9,11 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the bill’s record on Congress.gov",
-  "title": "The TAKE IT DOWN Act went from introduction in the Senate to law in four months, passing both chambers with no hearing and no committee vote.",
+  "title": "The TAKE IT DOWN Act went from introduction to law in four months, after the Senate took it from committee and passed it by unanimous consent.",
   "measure_line": "The six steps of S. 146, the TAKE IT DOWN Act, 119th Congress, from its introduction on January 16, 2025 to its signing on May 19, 2025, as the Library of Congress records its actions",
   "notes": [
-    "The law requires online platforms to remove intimate images shared without consent, including computer-made fakes, within 48 hours of a valid request."
+    "The law requires online platforms to remove intimate images shared without consent, including computer-made fakes, within 48 hours of a valid request.",
+    "A suspension of the rules, the House’s path for a bill with broad support, limits debate and needs two-thirds of those voting."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -37,7 +38,7 @@
     "Filled circles are steps done; a slash marks a step that never happened. The step names follow chapter 11’s six steps for a federal bill."
   ],
   "phone": "differs",
-  "phone_note": "Under 552 px the six steps run down the page, each with its name, its state and its date beside the mark.",
+  "phone_note": "Where a sixth of the row cannot hold a date, the six steps run down the page, each with its name, its state and its date beside the mark.",
   "artboard": "reading",
   "domain": "D01",
   "states": [],
@@ -53,31 +54,31 @@
         "codes": [
           "10000"
         ],
-        "note": "Introduced in the Senate"
+        "note": "In the Senate"
       },
       {
         "name": "Hearing",
         "codes": [],
-        "note": "No hearing: the Commerce Committee was discharged by unanimous consent on February 13, 2025"
+        "note": "None in the bill’s record; the Commerce Committee was discharged by unanimous consent"
       },
       {
         "name": "Committee vote",
         "codes": [],
-        "note": "No committee vote"
+        "note": "None: the committee never reported the bill"
       },
       {
         "name": "First chamber",
         "codes": [
           "17000"
         ],
-        "note": "The Senate passed it by unanimous consent, with no recorded vote"
+        "note": "The Senate, by unanimous consent, with no recorded vote"
       },
       {
         "name": "Second chamber",
         "codes": [
           "8000"
         ],
-        "note": "The House passed it 409 to 2 under a suspension of the rules, which needs two-thirds"
+        "note": "The House, 409 to 2, under a suspension of the rules"
       },
       {
         "name": "President",

@@ -25,7 +25,7 @@
   "In every year the youngest group trails the next, citizens 25 to 44, by 11 to 16 points."
  ],
  "source_line": "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting, citizen voting-age population, November 1978 to 2024, United States. Retrieved November 6, 2026. Self-reported in a survey; citizenship data before 1996 are not fully comparable.",
- "alt": "Four lines of reported voting by age in presidential years from 2004 to 2024, each named at its end: 65 and over highest, near 71 to 75 percent; 45 to 64 next; 25 to 44 below; and 18 to 24 lowest, from 46.7 percent in 2004 to 47.7 percent in 2024.",
+ "alt": "Four lines of reported voting by age in presidential years from 2004 to 2024, each named beside it: 65 and over highest, near 71 to 75 percent; 45 to 64 next; 25 to 44 below; and 18 to 24 lowest, in red, from 46.7 percent in 2004 to 47.7 percent in 2024.",
  "table": {
   "caption": "Share of citizens who reported voting, by age, percent",
   "columns": [
@@ -59,7 +59,7 @@
   "series": "age_group"
  },
  "labels": {
-  "subject": "18_to_24",
+  "point": "18_to_24",
   "series": {
    "18_to_24": "18 to 24",
    "25_to_44": "25 to 44",
@@ -93,7 +93,7 @@
  },
  "domain": "D10",
  "states": [],
- "notes_internal": "Rule 14.3's correct plate. Checked by script: 18 to 24 more than 10 points below every other group in each year (gaps 11.2 to 16.1).",
+ "notes_internal": "Rule 14.3's correct plate. Checked by script: 18 to 24 more than 10 points below every other group in each year (gaps 11.2 to 16.1). The line the title names takes the red point (the data lead's ruling (f), RS-S4): an age group carries no tie on Rule 14.6's list.",
  "credit": "Chart: Oath & Action",
  "illustrative": false,
  "phone": "same"

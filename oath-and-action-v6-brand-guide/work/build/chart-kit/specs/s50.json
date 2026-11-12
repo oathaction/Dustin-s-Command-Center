@@ -1,79 +1,102 @@
 {
- "kit": 1,
- "id": "S50",
- "form": "beeswarm",
- "family": "distribution-and-density",
- "tier": "core",
- "dataset": "census-stc-state-tax-collections",
- "where": {
-  "code": {
-   "not": [
-    "DC"
-   ]
-  }
- },
- "sort": [
-  {
-   "field": "taxes_per_resident",
-   "order": "desc"
-  }
- ],
- "reader_question": "How much does each state collect in taxes per resident?",
- "evidence": "finding",
- "evidence_label": "Finding",
- "grade_line": "Documented: Census Bureau surveys of state governments and population estimates",
- "title": "DRAFT",
- "measure_line": "DRAFT",
- "notes": [],
- "credit": "Chart: Oath & Action",
- "illustrative": false,
- "alt": "DRAFT",
- "table": {
-  "caption": "State taxes per resident, fiscal 2025",
-  "columns": [
-   {
-    "field": "name",
-    "label": "State",
-    "format": "text",
-    "row_header": true
-   },
-   {
-    "field": "taxes_per_resident",
-    "label": "Taxes per resident",
-    "format": "dollars"
-   },
-   {
-    "field": "total_taxes_thousands",
-    "label": "Total taxes",
-    "format": "thousands"
-   }
-  ]
- },
- "phone": "same",
- "artboard": "reading",
- "domain": "D08",
- "states": [
-  "VT",
-  "AK"
- ],
- "encode": {
-  "key": "code",
-  "label": "name",
-  "value": "taxes_per_resident"
- },
- "labels": {
-  "reference": "US",
-  "reference_label": "All states: {value}",
-  "named": [
-   "VT",
-   "AK",
-   "HI",
-   "NH"
+  "kit": 1,
+  "id": "S50",
+  "form": "beeswarm",
+  "family": "distribution-and-density",
+  "tier": "core",
+  "dataset": "census-stc-state-tax-collections",
+  "where": {
+    "code": {
+      "not": [
+        "DC"
+      ]
+    }
+  },
+  "sort": [
+    {
+      "field": "taxes_per_resident",
+      "order": "desc"
+    }
   ],
-  "value": "{label} {value}"
- },
- "formats": {
-  "value": "dollars",
-  "tick": "dollars"
- }
+  "reader_question": "How much does each state collect in taxes per resident?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: Census Bureau surveys of state tax collections and population",
+  "title": "Vermont collected $8,052 in state taxes per resident in fiscal 2025, the most of the 50 states, and Alaska $2,290, the least.",
+  "measure_line": "State government tax collections per resident, fiscal 2025 (July 2024 to June 2025 in 46 states), 50 states, with residents counted on July 1, 2024.",
+  "reading_guide": "Each dot is a state, placed by its taxes per resident; dots stack where states sit close together. The dashed line marks all 50 states together.",
+  "notes": [
+    "State government taxes only: states split taxing between state and local governments in different ways, and some collect taxes paid largely by nonresidents, such as taxes on oil and gas or on tourism.",
+    "Residents are the Census Bureau’s population estimate for July 1, 2024. The District of Columbia is left out: the survey counts state governments, and the District’s taxes include those a state would leave to its cities and counties."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Dots place the 50 states by state taxes collected per resident in fiscal 2025, around a dashed line for all 50 states at $4,526. Vermont collected the most, $8,052, and Alaska the least, $2,290; most states sit between about $2,700 and $5,000.",
+  "table": {
+    "caption": "State taxes per resident, fiscal 2025",
+    "columns": [
+      {
+        "field": "name",
+        "label": "State",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "taxes_per_resident",
+        "label": "Taxes per resident",
+        "format": "dollars"
+      },
+      {
+        "field": "total_taxes_thousands",
+        "label": "Total state taxes",
+        "format": "thousands"
+      },
+      {
+        "field": "population_july_2024",
+        "label": "Residents, July 1, 2024",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Vermont and Alaska take the dark ink; the other states are light gray. The dashed line marks all 50 states together, $4,526 per resident."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D08",
+  "states": [
+    "VT",
+    "AK"
+  ],
+  "encode": {
+    "key": "code",
+    "label": "name",
+    "value": "taxes_per_resident"
+  },
+  "labels": {
+    "reference": "US",
+    "reference_label": "All 50 states: {value}",
+    "named": [
+      "VT",
+      "AK"
+    ],
+    "value": "{label} {value}",
+    "axis": "State taxes per resident"
+  },
+  "formats": {
+    "value": "dollars",
+    "tick": "dollars"
+  },
+  "scale": {
+    "x": [
+      2000,
+      9000
+    ]
+  },
+  "notes_internal": [
+    "Maker B, round 2. Data plan row 55, rule 14.59. Draws census-stc-state-tax-collections (P7-026) after the research lead’s fix of the data lead’s R1: the US row is “All 50 states”, 339,312,487 residents, $4,526.34; DC stays in the file outside the total, and where leaves it out (request B4).",
+    "Ruling (a) and (c): Vermont and Alaska, the two ends, two marks in two roles, both in the subject ink with no red (states); the others in the light fill; all 50 states as the (b) line.",
+    "Figures checked by maker_b_round2_derive.py --figures (check S50): Vermont 8,052 the most, Alaska 2,290 the least, all 50 states 4,526; 46 states with a July to June fiscal year (from the sidecar’s observation period).",
+    "Read from the left and the right: the title gives the two ends of a measured collection; note 1 says what per-resident figures leave out, as the sidecar’s qualification asks."
+  ]
 }

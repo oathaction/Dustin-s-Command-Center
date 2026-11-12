@@ -195,7 +195,7 @@
    ],
    "correct": {
     "specimen": "s-14-3-correct",
-    "caption": "Each line carries its own name beside it, so a reader reads the age group in place, and the youngest group, which the title names, stands out in ink."
+    "caption": "Each line carries its own name beside it, so a reader reads the age group in place, and the youngest group, which the title names, takes the view’s red."
    },
    "failure": {
     "specimen": "s-14-3-failure",
@@ -330,7 +330,7 @@
     "01",
     "05"
    ],
-   "builders": "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; where the subject ink takes its place, labels.named does it instead, with a list for two marks. The kit counts working reds and fails a view with two.",
+   "builders": "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; where the subject ink takes its place, labels.named does it instead, with a list for two marks. The kit counts working reds and fails a view whose red falls on two jobs.",
    "specs": [
     {
      "label": "The point",

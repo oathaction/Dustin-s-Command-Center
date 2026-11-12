@@ -1,81 +1,105 @@
 {
- "kit": 1,
- "id": "S58",
- "form": "line-confidence-band",
- "family": "uncertainty-and-estimates",
- "tier": "core",
- "dataset": "census-cps-median-household-income",
- "reader_question": "How has the typical household’s income changed, and how sure is each year’s figure?",
- "evidence": "finding",
- "evidence_label": "Finding",
- "grade_line": "Documented: a Census Bureau survey",
- "title": "DRAFT",
- "measure_line": "Median household income in 2025 dollars, each year from 1967 to 2025, United States; the band spans each year’s 90 percent margin of error.",
- "notes": [],
- "credit": "Chart: Oath & Action",
- "illustrative": false,
- "alt": "DRAFT",
- "table": {
-  "caption": "Median household income, 2025 dollars",
-  "columns": [
-   {
-    "field": "year",
-    "label": "Year",
-    "format": "year",
-    "row_header": true
-   },
-   {
-    "field": "footnotes",
-    "label": "Change in the survey",
-    "format": "text",
-    "words": {
-     "7": "Earlier income questions",
-     "6": "New income questions",
-     "5": "New processing system"
-    }
-   },
-   {
-    "field": "median_income",
-    "label": "Median income",
-    "format": "dollars"
-   },
-   {
-    "field": "median_moe",
-    "label": "Margin of error",
-    "format": "dollars"
-   }
-  ]
- },
- "phone": "same",
- "artboard": "reading",
- "domain": "D08",
- "states": [],
- "encode": {
-  "x": "year",
-  "y": "median_income",
-  "margin": "median_moe",
-  "break": "footnotes"
- },
- "labels": {
-  "break_end": "7",
-  "break_start": [
-   "6",
-   "5"
+  "kit": 1,
+  "id": "S58",
+  "form": "line-confidence-band",
+  "family": "uncertainty-and-estimates",
+  "tier": "core",
+  "dataset": "census-cps-median-household-income",
+  "reader_question": "How has the typical household’s income changed, and how sure is each year’s figure?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: a Census Bureau survey",
+  "title": "Median household income stood at $87,460 in 2025, in 2025 dollars, the highest since the survey’s first year, 1967.",
+  "measure_line": "Median household income in 2025 dollars, each year from 1967 to 2025, United States, the whole series. The band spans each year’s 90 percent margin of error.",
+  "reading_guide": "The line breaks in 2013, where new income questions put the year’s two estimates $2,200 apart. A new processing system in 2017 put them $300 apart, too close to show as a break; the table prints both.",
+  "notes": [
+    "The 2025 figure carries a margin of error of plus or minus $1,040 at 90 percent confidence; its rise over 2024’s $85,210 passes the margin of the gap.",
+    "Income before taxes, from the Current Population Survey’s Annual Social and Economic Supplement, adjusted for inflation to 2025 dollars."
   ],
-  "end": "{y}, ±{margin}"
- },
- "annotations": [
-  {
-   "at": {
-    "x": 2013,
-    "break": "7"
-   },
-   "text": "New questions",
-   "place": "below"
-  }
- ],
- "formats": {
-  "y": "dollars",
-  "tick": "dollars"
- }
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A line of median household income from 1967 to 2025 in 2025 dollars, with a light band for each year’s margin of error. It rises from $56,230 in 1967 to $87,460 in 2025, the highest of the series, and breaks in 2013, where new survey questions put the year’s two estimates $2,200 apart. In 2017 a new processing system put them $300 apart, too close to show as a break.",
+  "table": {
+    "caption": "Median household income, 2025 dollars",
+    "columns": [
+      {
+        "field": "year",
+        "label": "Year",
+        "format": "year",
+        "row_header": true
+      },
+      {
+        "field": "footnotes",
+        "label": "Change in the survey",
+        "format": "text",
+        "words": {
+          "7": "Earlier income questions",
+          "6": "New income questions",
+          "5": "New processing system",
+          "9": "Wider top income range",
+          "3": "New population weights",
+          "4": "New population weights",
+          "8": "New population weights"
+        }
+      },
+      {
+        "field": "median_income",
+        "label": "Median income",
+        "format": "dollars"
+      },
+      {
+        "field": "median_moe",
+        "label": "Margin of error",
+        "format": "dollars"
+      }
+    ]
+  },
+  "chart_notes": [
+    "The light band around the line spans each year’s margin of error. In 2013 and 2017 the line breaks and draws both of the year’s estimates as dots; 2025 is labeled at the line’s end."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D08",
+  "states": [],
+  "encode": {
+    "x": "year",
+    "y": "median_income",
+    "margin": "median_moe",
+    "break": "footnotes"
+  },
+  "labels": {
+    "break_end": "7",
+    "break_start": [
+      "6",
+      "5"
+    ],
+    "end": "{y} ±{margin}"
+  },
+  "annotations": [
+    {
+      "at": {
+        "x": 2013,
+        "break": "7"
+      },
+      "text": "New questions",
+      "place": "below"
+    }
+  ],
+  "formats": {
+    "y": "dollars",
+    "tick": "dollars"
+  },
+  "scale": {
+    "y": [
+      50000,
+      90000
+    ]
+  },
+  "notes_internal": [
+    "Maker B, round 2. Data plan row 71, rule 14.75. Draws the frozen census-cps-median-household-income (P7-032), all 61 rows, 1967 to 2025, with 2013 and 2017 twice.",
+    "Rule 14.11’s plate shares this file: the breaks agree with its words (break_end 7, break_start 6 and 5; 2013 labeled “New questions”; 2017’s two estimates $300 apart, too close to show as a break), and the reading guide repeats the plate’s.",
+    "Ruling (a): no single named mark; one series in the subject ink, 2025 labeled. Ruling (e): the band through the engineer’s shared part (K.parts.band). R2-C1: the measure line names the 90 percent margin of error; the table prints the margin column.",
+    "Figures checked by maker_b_round2_derive.py --figures (check S58): 2025 87,460 with 1,040, the largest in the file; 2024 85,210 with 1,069, a gap of 2,250 past its margin of 1,491; 1967 56,230; 2013’s two estimates 71,670 and 69,470, 2,200 apart; 2017’s 78,600 and 78,900, 300 apart.",
+    "H09: the whole series, 1967 to 2025, the data’s reach. Read from the left and the right: the title reports the Bureau’s figure and its record high and credits no one."
+  ]
 }

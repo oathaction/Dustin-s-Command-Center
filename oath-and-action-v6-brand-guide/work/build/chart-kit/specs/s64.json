@@ -1,0 +1,85 @@
+{
+  "kit": 1,
+  "id": "S64",
+  "form": "bullet-graph",
+  "family": "gauges-and-indicators",
+  "tier": "extended",
+  "dataset": "treasury-mspd-debt-subject-to-limit",
+  "where": {
+    "date": "2026-10-31"
+  },
+  "reader_question": "How close is federal debt to the limit set in law?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the Treasury’s monthly statement of the public debt",
+  "title": "Federal debt subject to the limit stood at $40,327.1 billion on October 31, 2026, $776.9 billion under the $41,104.0 billion limit.",
+  "measure_line": "Federal debt subject to the limit set in law, held by the public and by government accounts, against the limit, billions of dollars, nominal, October 31, 2026, United States",
+  "notes": [
+    "Public Law 119-21, signed July 4, 2025, raised the limit by $5,000 billion, from $36,104.0 billion to $41,104.0 billion."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A bullet graph of federal debt subject to the limit on October 31, 2026: a bar to $40,327.1 billion against a tick at the $41,104.0 billion limit, over a darker band to the earlier limit of $36,104.0 billion. The debt sits $776.9 billion under the limit.",
+  "table": {
+    "caption": "Federal debt subject to the limit and the limit, millions of dollars, October 31, 2026",
+    "columns": [
+      {
+        "field": "date",
+        "label": "Month end",
+        "format": "date",
+        "row_header": true
+      },
+      {
+        "field": "debt_subject_to_limit_millions",
+        "label": "Debt subject to the limit, millions",
+        "format": "number:1"
+      },
+      {
+        "field": "statutory_limit_millions",
+        "label": "Limit, millions",
+        "format": "number:1"
+      },
+      {
+        "field": "room_under_limit_millions",
+        "label": "Room under the limit, millions",
+        "format": "number:1"
+      }
+    ]
+  },
+  "chart_notes": [
+    "The darker band runs to the limit in force from January to June 2025, $36,104.0 billion, and the lighter band on to the limit since July 2025, $41,104.0 billion, marked by a tick. The bar is the debt."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D08",
+  "states": [],
+  "encode": {
+    "category": "date",
+    "value": "debt_subject_to_limit_millions",
+    "target": "statutory_limit_millions"
+  },
+  "labels": {
+    "bands": [
+      {
+        "to": 36103995.660231,
+        "step": 2,
+        "label": "Limit to June 2025, $36,104.0 billion"
+      },
+      {
+        "to": 41103995.660231,
+        "step": 1
+      }
+    ],
+    "target_words": "Limit since July 2025, ${v} billion",
+    "value_words": "${v} billion",
+    "rest_words": "${v} billion under the limit",
+    "category_format": "month",
+    "per": 1000
+  },
+  "formats": {
+    "value": "number:1"
+  },
+  "notes_internal": [
+    "Draft."
+  ]
+}

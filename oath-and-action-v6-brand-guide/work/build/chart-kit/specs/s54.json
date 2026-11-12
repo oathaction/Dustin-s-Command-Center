@@ -1,86 +1,109 @@
 {
- "kit": 1,
- "family": "correlation",
- "dataset": "census-acs-rent-and-income-by-state",
- "evidence": "association",
- "evidence_label": "Association",
- "grade_line": "DRAFT",
- "title": "DRAFT",
- "measure_line": "DRAFT",
- "notes": [
-  "This shows the two move together; it does not show one causes the other."
- ],
- "credit": "Chart: Oath & Action",
- "illustrative": false,
- "alt": "DRAFT",
- "table": {
-  "caption": "DRAFT",
-  "columns": [
-   {
-    "field": "name",
-    "label": "State",
-    "format": "text",
-    "row_header": true
-   },
-   {
-    "field": "renter_median_income",
-    "label": "Renters’ median income",
-    "format": "dollars"
-   },
-   {
-    "field": "median_gross_rent",
-    "label": "Median gross rent",
-    "format": "dollars"
-   },
-   {
-    "field": "rent_pct_of_income",
-    "label": "Rent as a percent of income",
-    "format": "number:1"
-   },
-   {
-    "field": "rent_pct_of_income_moe",
-    "label": "Margin of error",
-    "format": "number:1"
-   }
-  ]
- },
- "phone": "same",
- "artboard": "reading",
- "domain": "D09",
- "states": [
-  "FL"
- ],
- "encode": {
-  "key": "code",
-  "label": "name",
-  "x": "renter_median_income",
-  "y": "median_gross_rent"
- },
- "labels": {
-  "named": [
-   "FL",
-   "CA",
-   "HI",
-   "CT",
-   "AZ"
+  "kit": 1,
+  "id": "S54",
+  "form": "scatter-named",
+  "family": "correlation",
+  "tier": "core",
+  "dataset": "census-acs-rent-and-income-by-state",
+  "sort": [
+    {
+      "field": "rent_pct_of_income",
+      "order": "desc"
+    }
   ],
-  "reference": "US",
-  "reference_label": "United States",
-  "x_axis": "Renter households’ median income, a year",
-  "y_axis": "Median gross rent, a month"
- },
- "formats": {
-  "x": "dollars",
-  "y": "dollars"
- },
- "sort": [
-  {
-   "field": "rent_pct_of_income",
-   "order": "desc"
-  }
- ],
- "id": "S54",
- "form": "scatter-named",
- "tier": "core",
- "reader_question": "Do rents run higher where renters earn more, and where does rent take the largest share of renters’ income?"
+  "reader_question": "Do rents run higher where renters earn more, and where does rent take the largest share of renters’ income?",
+  "evidence": "association",
+  "evidence_label": "Association",
+  "grade_line": "Documented: a Census Bureau survey",
+  "title": "Higher rents went with higher renter incomes across the states in 2025, and rent took the largest share of renters’ income in Florida, 35.5 percent.",
+  "measure_line": "Median gross rent a month against renter households’ median income a year, 2025, 50 states and DC; each dot is a state.",
+  "reading_guide": "States to the right have renters with higher incomes, and states higher up have higher rents. Dots above the cloud pay more rent for their income.",
+  "notes": [
+    "This shows the two move together; it does not show one causes the other.",
+    "Rent as a percent of income is the Census Bureau’s own measure: the median, across renter households paying cash rent, of each one’s rent over its income. Florida’s 35.5 percent carries a margin of error of 0.5 point at 90 percent confidence, and California’s 32.9 percent, the next highest, 0.3 point."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A scatter plot of 50 states and DC: median gross rent against renter households’ median income in 2025. The dots climb from lower left to upper right, from Mississippi’s $1,033 rent to California’s $2,160. Florida, named in dark ink, sits above the cloud: its rent takes 35.5 percent of renters’ income, the largest share.",
+  "table": {
+    "caption": "Rent and renter income by state, 2025",
+    "columns": [
+      {
+        "field": "name",
+        "label": "State",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "renter_median_income",
+        "label": "Renters’ median income, a year",
+        "format": "dollars"
+      },
+      {
+        "field": "median_gross_rent",
+        "label": "Median gross rent, a month",
+        "format": "dollars"
+      },
+      {
+        "field": "rent_pct_of_income",
+        "label": "Rent as a percent of income",
+        "format": "number:1"
+      },
+      {
+        "field": "rent_pct_of_income_moe",
+        "label": "Margin of error, points",
+        "format": "number:1"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Florida takes the dark ink; the other states are light gray, with California and North Dakota named. The open ring marks the United States."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D09",
+  "states": [
+    "FL",
+    "CA",
+    "ND"
+  ],
+  "encode": {
+    "key": "code",
+    "label": "name",
+    "x": "renter_median_income",
+    "y": "median_gross_rent"
+  },
+  "labels": {
+    "named": [
+      "FL"
+    ],
+    "labeled": [
+      "CA",
+      "ND"
+    ],
+    "reference": "US",
+    "reference_label": "United States",
+    "x_axis": "Renter households’ median income, a year",
+    "y_axis": "Median gross rent, a month"
+  },
+  "formats": {
+    "x": "dollars",
+    "y": "dollars"
+  },
+  "scale": {
+    "x": [
+      30000,
+      80000
+    ],
+    "y": [
+      800,
+      2200
+    ]
+  },
+  "notes_internal": [
+    "Maker B, round 2. Data plan row 63, rule 14.67. Draws the frozen census-acs-rent-and-income-by-state (P7-030), the Bureau’s B25071 rent share beside B25064 and B25119 (D3-88).",
+    "Ruling (a): Florida in the subject ink (labels.named; a state, so no red). Ruling (e): the other states in the light fill; California and North Dakota keep the light fill with their names in the text ink (labels.labeled); the nation as an open ring in the text’s ink (ruling (b)). Ruling (d): Association, with the coverage plan’s line as note 1.",
+    "D3-88: states are named only past the margin: Florida 35.5 (0.5) clears California 32.9 (0.3), gap 2.6 against a gap margin of 0.58; California 32.9 and North Dakota 23.8 (1.2) each clear the nation’s 30.9 (0.1). Checked by maker_b_round2_derive.py --figures (check S54): those figures, Mississippi’s $1,033 the lowest rent and California’s $2,160 the highest, and the correlation of rent and renter income across the 51 (0.92, not printed).",
+    "Read from the left and the right: the title reports the Bureau’s measure and an association, and names one state by its own figure; no policy or party."
+  ]
 }
