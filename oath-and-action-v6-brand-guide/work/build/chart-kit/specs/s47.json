@@ -84,9 +84,10 @@
     "Every figure checked by script (fixfigs.py, scratch, fix pass): 17 positive functions summing to 7,566.3 billion; Social Security the largest, 1,667.1, 22 percent of them; the ten functions under Veterans' benefits and services, each under 2 percent (Transportation 1.89 the largest), folding to 673.6 billion, 8.9 percent.",
     "labels.fold 'fit' folds the fewest smallest functions that let every tile hold its words at 256 px (entry 14.52's test, RF-10): ten, so Veterans' benefits and services, 5.5 percent, keeps its tile; the fold tile is laid out last, at the bottom right at every width. The phone heights grew to hold Veterans' words (716 px at 358, 651 at 296, 666 at 256).",
     "Round 2 review fix pass, ST S6: the source line is the sidecar's treemap_fy2026_september_statement variant, naming the September 2026 statement, and the last note is S44's on the year-end report.",
-    "Round 2 review fix pass, BC M1, CD A-M2, RF-1, AX S4: no red; the chart note names the marks by role, never by color, since the inks differ on Charcoal and in forced colors. ST S1, RF-10: the fold as above, and the chart note says where the fold tile sits and how many functions it holds. The red-share check passes (no red)."
+    "Round 2 review fix pass, BC M1, CD A-M2, RF-1, AX S4: no red; the chart note names the marks by role, never by color, since the inks differ on Charcoal and in forced colors. ST S1, RF-10: the fold as above, and the chart note says where the fold tile sits and how many functions it holds. The red-share check passes (no red).",
+    "Round 2 review fix pass, the data lead's MA-F2: the chart note says Social Security 'takes the strongest ink', as S53 says it, in place of 'the text’s ink', the words' token."
   ],
   "chart_notes": [
-    "Social Security, the tile the title names, takes the text’s ink; every other tile is gray with a thin edge. The last tile, at the bottom right, holds the ten functions too small to name."
+    "Social Security, the tile the title names, takes the strongest ink; every other tile is gray with a thin edge. The last tile, at the bottom right, holds the ten functions too small to name."
   ]
 }

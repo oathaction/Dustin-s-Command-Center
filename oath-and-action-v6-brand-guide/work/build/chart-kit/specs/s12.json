@@ -115,7 +115,8 @@
     "Party marks in neutral inks, direction in words and arrows (DR-48, DR-58); no red and blue.",
     "states: the four the title names. Checked by script: CA 9.03, FL 9.74, NJ 10.03, NY 10.54; WA 0.98, UT 1.10, OK 1.17, NE 1.40.",
     "X3: the kit draws the United States beside the key (DR-64) and Phase 2's two lists, so the lists leave the notes; the national note stays for the two margins the drawing does not print. The 11-column phone grid still waits (E20).",
-    "Statistics P2-S8: the rounding clause."
+    "Statistics P2-S8: the rounding clause.",
+    "Round 2 review fix pass, D3-911 and the data lead's MA-F3: where the shaded tiles are too small for their codes (256 to 279 px) they draw none, the kit's note says the table names every state, and the framed states, where the leader changed, are named under the frame's words."
   ],
   "formats": {
     "shift": "number:1"
