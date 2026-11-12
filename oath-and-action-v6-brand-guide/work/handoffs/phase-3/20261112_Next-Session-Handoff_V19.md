@@ -4,7 +4,7 @@ Written November 12, 2026, after round 1's review, fix pass, second pass and the
 
 ## 1. Where things stand
 
-Phase 3 is the active phase. Round 1 is built, reviewed, fixed, second-passed and rescored. The progress page (DR-241) is published privately (section 2A). Dustin has the round 2 plan with four questions (section 2B); round 2 starts only on his go.
+Phase 3 is the active phase. Round 1 is built, reviewed, fixed, second-passed and rescored. The progress page (DR-241) is published privately (section 2A). Dustin approved the round 2 plan and all four recommendations (DR-242 to DR-246); round 2 starts in the new chat.
 
 **Review** (brief `20261112_Phase-3-Round-1-Review-Brief.md`; reports in `work/handoffs/phase-3/`): statistics and civic 3 of 5 (5 Must, 13 Should); brand and craft 3 (4 Must, 20 Should); accessibility and production 4 (1 Must, 10 Should; the simulated panel's files in `round-1-production-test/`); the creative director's first pass, no item ready (8 Must, 12 Should). Second pass: all three reviewers at 4 of 5, every Must fix closed; new faults the fix pass introduced were fixed in the same pass.
 
@@ -27,11 +27,11 @@ Phase 3 is the active phase. Round 1 is built, reviewed, fixed, second-passed an
 ### A. The progress page
 Published privately at https://claude.ai/artifact/AUM5CtTDVPvPARKM5B3Hu6 (D3-648). The rescore ships all five items (D3-646); its four new Should fix items, chapter 15's wide stage at 1024 px first (its 702 px frame fits the stage if the margin narrows; D3-625 reopened), join round 2. Rebuild with `python3 -I work/build/scripts/phase-3/progress_round_1_build.py --reuse --check` (builder notes `20261112_Round-1-Progress-Page-Builder-Notes.md`). The board check's only fault is axe html-has-lang, which the host's wrapper supplies.
 
-### B. Dustin's answers on the round 2 plan
-The plan and its four questions are in this chat's reply (chapter 13's five title periods, BC Q1 and D3-488; the minimum wage maps ending at January 1, 2024 with no new download; all six of chapter 15's middle rules in round 2; a new chat for round 2). Log his answers as DR-242 on. Then write the round 2 brief on round 1's model (`20261112_Phase-3-Round-1-Brief.md`), carrying section 1's calls as rules for makers.
+### B. Dustin's answers on the round 2 plan (recorded)
+All as recommended, November 12: DR-242 (chapter 13's five chart titles take a closing period, wording unchanged; the editor applies it in round 2 and logs it), DR-243 (minimum wage maps at January 1 of 2010, 2014, 2019 and 2024, with the atlas's July 1, 2026 count as a sourced sentence; no download), DR-244 (all six of chapter 15's middle rules in round 2), DR-245 (round 2 in a new chat), DR-246 (the round 2 plan approved as posted; build without asking again). Write the round 2 brief on round 1's model (`20261112_Phase-3-Round-1-Brief.md`), carrying section 1's calls as rules for makers, and start the agents.
 
 ### C. Round 2
-Rules 14.46 to 14.78 and 14.85 to 14.92 (41 forms; 22 new specimens S43 to S64, four built entries S01, S06, S08, S10, 15 sketches). Maker A: composition, gauges and indicators; maker B: distribution and density, correlation, uncertainty and estimates (with the interval form, which moves Rule 14.9's plate into the kit, ED-E4). Data frozen in round 0. The research lead plans and freezes round 4's data. Chapter 15: 15.11, 15.12 and 15.15 to 15.18 if Dustin agrees. Carried kit items: ED-E13 (chapter 14's plate style block, about 9 KB, D3-616). Hand off before round 2's review.
+Rules 14.46 to 14.78 and 14.85 to 14.92 (41 forms; 22 new specimens S43 to S64, four built entries S01, S06, S08, S10, 15 sketches). Maker A: composition, gauges and indicators; maker B: distribution and density, correlation, uncertainty and estimates (with the interval form, which moves Rule 14.9's plate into the kit, ED-E4). Data frozen in round 0. The research lead plans and freezes round 4's data. Chapter 15: 15.11, 15.12 and 15.15 to 15.18 (DR-244). The editor adds chapter 13's five title periods (DR-242). Carried kit items: ED-E13 (chapter 14's plate style block, about 9 KB, D3-616). Hand off before round 2's review.
 
 ### D. Carried items
 - V7.1 items for board 2: Variable D6's kind (D3-261); Medicaid renewals (D3-260); R-01's measures; the four atlas strings maker A found (A15) and the editor's Article V wording.
@@ -56,9 +56,7 @@ Rules 14.46 to 14.78 and 14.85 to 14.92 (41 forms; 22 new specimens S43 to S64, 
 ```
 I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on the branch claude/friendly-brahmagupta-tonmfa in the oathaction/Dustin-s-Command-Center repo, in the folder oath-and-action-v6-brand-guide/. Fetch that branch and work from it. Keep committing and pushing to it unless I say otherwise.
 
-Round 1 of Phase 3 is reviewed, fixed and rescored, and its progress page is published. Confirm the committed state with a strict build and the quick guide check, record my answers on the round 2 plan below, then write the round 2 brief and build round 2. Hand off before round 2's review.
-
-My answers on the round 2 plan: [PASTE ANSWERS, e.g. "as recommended"]
+Round 1 of Phase 3 is reviewed, fixed and rescored, and its progress page is published. I approved the round 2 plan and all four of its recommendations; my answers are recorded in the decision log as DR-242 to DR-246: chapter 13's five chart titles take a closing period with no change to wording; round 3's minimum wage maps end at January 1, 2024 with no new download; round 2 builds all six of chapter 15's middle rules; and round 2 starts in this new chat. Confirm the committed state with a strict build and the quick guide check, then write the round 2 brief and build round 2 without asking me again. Hand off before round 2's review.
 
 Before you do anything else, read these in order:
 1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from D3-460 to the end), the change ledger (to C-098), the open questions, and the Gate 2 report (work/ledger/20261111_Gate-2-Report.md), section 9.
@@ -68,7 +66,7 @@ Data keys are already saved in this environment: the api.data.gov key for api.op
 
 Nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them, even when they fall more on one side (DR-93). Never manufacture balance.
 
-Settled and not to be changed: the Civic Line icons (DR-144) with the redraws and new drawings I approved (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 like every other reform (DR-223); the atlas visual system (DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on, including DR-225 to DR-241.
+Settled and not to be changed: the Civic Line icons (DR-144) with the redraws and new drawings I approved (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 like every other reform (DR-223); the atlas visual system (DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and build order (DR-62, DR-63); the chart rules of DR-64; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on, including DR-225 to DR-246.
 
 Phase 3 runs as the proposal sets it: form rounds 1 to 3 ending at board 2, rounds 4 and 5 with chapter 15 ending at board 3, then Gate 3. The guide stays one file.
 
