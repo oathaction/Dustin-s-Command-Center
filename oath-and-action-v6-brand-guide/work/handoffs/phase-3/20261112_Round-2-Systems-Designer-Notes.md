@@ -103,12 +103,12 @@ Written for `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` and the coordi
 
 ### Summary
 
-All five items are done by code in `work/build/scripts/phase-3/phase3_ch15_build.py`, which rewrote `work/build/guide/chapters/15-systems-graphics.json`, 18 plates and `work/build/guide/specimens/manifest-systems-graphics.json`. The main session's snapshot commits took in the work as it went, so my files now match HEAD; the changes below run from 011cbdec, where the pass started.
+All five items are done by code in `work/build/scripts/phase-3/phase3_ch15_build.py`, which rewrote `work/build/guide/chapters/15-systems-graphics.json`, 16 plates and `work/build/guide/specimens/manifest-systems-graphics.json`. The main session's snapshot commits took in the work as it went, so my files now match HEAD; the changes below run from 011cbdec, where the pass started.
 
 - **BC S4 (RF-16, RF-16a, D3-906).** Rule 15.17's four core pills print the variables' own titles: Presidential action without new legislation (D2), Congress’s ability to write and check policy (D1), Ability to investigate and enforce the rules (D4) and State and local testing of reforms (D6). The rule's first paragraph takes RF-16's words ("from a variable in the core layer that holds a body’s power, such as Congress’s ability to write and check policy"). By RF-16a, 15.3's card for L16 and 15.5's two cards draw D4 and D6 under their titles too; 15.5's pills take 148 and 132 px so each sets in three rows. The opener and every loop drawing keep the loops' chain labels.
 - **BC S15 (RF-21).** Rule 15.12's plate drops the label over its drawing. Its first label is the problem's, Well supported, and its second the remedy's, Hypothesis; each connection's grade sits in a numbered "Each step" list under the drawing. The note "It acts where the marks turn red" moved under the drawing, where it explains the red.
 - **BC S16.**
-  - No punctuation touches a typed chip on any plate. A variable's chip takes its title in quotation marks, as a connection's takes its name; the loops a reform sits on print as a row of chips; the other lines are recast so words follow a chip. That covers 19 places in nine plates, round 1's 15.10, 15.13 and 15.14 among them.
+  - No punctuation touches a typed chip on any plate. A variable's chip takes its title in quotation marks, as a connection's takes its name; the loops a reform sits on print as a row of chips; the other lines are recast so words follow a chip. That covers 21 places in eight plates, counted by script on the pass's starting files, round 1's 15.10, 15.13 and 15.14 among them.
   - 15.18's label holds "weakest point" together, and every plate's notes, labels, quotations, sources and list items set with `text-wrap: pretty`.
   - 15.18's line on Variable A4 now ends "which is Variable A4 in the atlas’s model."
   - 15.18 spells out UI from the atlas's own summary of Loop B2: unemployment insurance, the atlas's example of “benefits written into law” that “expand without a new vote”.
@@ -200,3 +200,58 @@ The data lead closed SD-9 on `guide4.html` and has nothing open on chapter 15.
 1. **Data lead. Done:** signed off, SD-9 closed. The final build is `/tmp/claude-0/-home-user-Dustin-s-Command-Center/3ab6316c-6935-5f23-804c-cfaafd548447/scratchpad/phase-3/round-2-fix/systems-designer/guide4.html`. Captures sit beside it: `cap/final3/` holds all 37 plates on Newsprint at five widths from `guide3.html`, which differs only in 15.12's order; `cap/final4/` and `cap/final4-ch/` hold 15.12 after SD-9; `cap/final-ch/` and `cap/final3-ch/` hold Charcoal.
 2. **Editor. Done:** your second pass, applied as written (above). SD-9 moved 15.12's alt sentences into the page's order with their words unchanged, which you may want to read.
 3. **Engineer. Landed:** the size line's no-break spaces in `guide_build.py` (BC S16's last point).
+
+### Tested
+
+- `python3 -I work/build/scripts/phase-3/phase3_ch15_build.py`: every check passes, round 1's and round 2's, every `need()` on the atlas values, and this pass's new checks:
+  - no punctuation touching a chip;
+  - a grade word with words after it ends with a period;
+  - 15.3, 15.5 and 15.17 print no chain label for D1, D2, D4 or D6;
+  - the atlas's connections from each core variable name its body;
+  - 15.5's pills each set in three rows;
+  - a four-variable loop's ID has room above its side tags;
+  - 15.12 leads with its two grades in the page's order;
+  - the atlas's words on unemployment insurance, a delay and the three layers.
+- Planted faults, run on an in-memory copy of the generator, each caught:
+  - a comma on a chip (15.11);
+  - a period on a chip (15.18);
+  - four-variable rows 70 px apart (no room for the ID);
+  - the period dropped before L54's added words;
+  - the chain labels back on 15.17's ladder;
+  - a chain label on 15.5's pill;
+  - 15.12's steps set before its grades.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide4.html`: exit 0, 0 warnings. Chapter 15 is at 307,066 bytes against 600,000; the page is at 10,631,760 bytes, projected 15,044,385. (An earlier strict build that afternoon exited 1 on 113 warnings, all chapter 14 charts under the engineer's new label check, none chapter 15's.)
+- `python3 -I work/build/scripts/phase-3/v7_check.py --page <scratch>/guide3.html`: 0 failures; chapter 15 at 116 chips.
+- `node work/build/scripts/phase-2/guide_check.js <scratch>/guide4.html --quick --no-captures` (1440 and 390 px): PASS, 312 rules, 662 specimens, 0 failures; no chapter 15 plate among its exemptions.
+- Captures in Chromium (Playwright), measured by script:
+  - All 37 plates at 1440, 1024, 768, 390 and 360 px on Newsprint (`guide3.html`), and the nine changed correct plates on Charcoal at the same widths (`guide2.html`).
+  - 15.10, 15.11, 15.12 and 15.17 on Charcoal at the five widths (`guide3.html`), and 15.12 after SD-9 at five widths on Newsprint and at 1440 and 390 on Charcoal (`guide4.html`).
+  - Results: 0 flagged. Type is 13 px or more; no text sits outside its stage; no two drawing labels overlap; no frame scrolls. 22 wide plates take 680 px at 1440, 1024 and 768, and every stage is 328 at 390 and 360.
+- The size line in Chromium: before the engineer's change, "680 px" stood alone on its second line at 390 and 360 px on all 22 wide plates. After it, the last line reads "under 680 px", and the line is one line at 1440, 1024 and 768.
+- 15.10's heading in Chromium: three lines at all five widths.
+- Read by eye:
+  - 15.12 at 1440 and 390 (before and after SD-9) and on Charcoal at 1440;
+  - 15.17 at 1440, 768 and 390;
+  - 15.15 at 1440 and 360;
+  - 15.16, 15.6 and 15.6's failure at 1440;
+  - 15.18 at 1440 and 360;
+  - 15.11 at 1440, and on Charcoal at 390;
+  - 15.3 at 1440;
+  - 15.5 at 1440 and 390;
+  - 15.10 at 390.
+
+### Not tested
+
+- The guide check's full four-width run (zoom, text spacing, forced colors); only its quick mode ran.
+- A screen reader on the new key, the bodies list, the chip rows and the reordered alt of 15.12.
+- Print, forced colors and color-vision simulations of the changed plates.
+- A browser that ignores `text-wrap: pretty` (Firefox): there only 15.18's tie holds a label's last two words.
+- Round 1 plates whose markup did not change, read by eye after the `text-wrap` rule (measured by script only).
+
+### Files
+
+- `work/build/scripts/phase-3/phase3_ch15_build.py` (modified)
+- `work/build/guide/chapters/15-systems-graphics.json` (written by the generator)
+- `work/build/guide/specimens/s-15-3-correct.html`, `s-15-3-failure.html`, `s-15-5-correct.html`, `s-15-5-failure.html`, `s-15-6-correct.html`, `s-15-6-failure.html`, `s-15-10-correct.html` to `s-15-18-correct.html` and `s-15-15-failure.html`, 16 plates (written by the generator)
+- `work/build/guide/specimens/manifest-systems-graphics.json` (written by the generator)
+- `work/handoffs/phase-3/20261112_Round-2-Systems-Designer-Notes.md` (this section)

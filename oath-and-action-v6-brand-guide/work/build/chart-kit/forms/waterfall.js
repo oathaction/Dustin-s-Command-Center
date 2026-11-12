@@ -77,7 +77,8 @@
         else P.row_name(c, 0, cy - (lines - 1) * lh / 2, nm(r), { named: isn, max: lmax });
         var xa = xs(Math.min(s.a, s.b)), xb = xs(Math.max(s.a, s.b)), d = { key: r[ek], field: ev, value: r[ev] };
         var fl = isn ? 'subject' : s.total ? 'context' : r[ev] >= 0 ? 'div-5' : 'div-1';
-        c.rect(xa, by, Math.max(1, xb - xa), bh, s.total ? { fill: fl, kind: 'bar', axis: 'x', zero: xs(0), data: d } : { fill: fl, kind: 'segment', data: d });
+        // a total takes its own paint in forced colors, the ground with a CanvasText outline, apart from every step (AX S3)
+        c.rect(xa, by, Math.max(1, xb - xa), bh, s.total ? { fill: fl, kind: 'bar', axis: 'x', zero: xs(0), data: d, fc: 'total' } : { fill: fl, kind: 'segment', data: d });
         // the value beside the bar, on the side the step moves to (a total's on its far side), or the other side where
         // the drawing ends first
         var t = num(s), tw = c.measure(t, 'label', 700, true), right = s.total ? s.b >= 0 : r[ev] >= 0;

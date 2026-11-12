@@ -164,7 +164,7 @@ November 12, 2026, round 2's review fix pass (`work/handoffs/phase-3/20261112_Ro
 
 ### Summary
 
-Done (23:0x), every item in the fix brief's maker A paragraph, calls 3, 5, 10 and 11, the access addendum's maker A row, and the sweep and crossing-check faults the main session routed to me (S01, S07, S12, S15, S16, S63; D3-904, D3-909, D3-911), under the data lead's rulings RF-1 to RF-4, RF-10 to RF-13, RF-15 and RF-22 to RF-24. ST S9 touches maker B's S50 and S54 only. ST S6's maker A side (S45, S46, S47) is done with the research lead's variants. The editor's `column` request is done and the editor told. Every spec I touched builds PASS with the sweep; the strict build exits 0 with no kit fault listed; the quick guide check result is under Tested. Board 2 should list S10 (dashed line, call 5) and the placement-only changes to S01, S07, S12, S15 and S16 (S12 drops its codes at 256 to 279 px, where they cannot fit).
+Done (23:3x), every item in the fix brief's maker A paragraph, calls 3, 5, 10 and 11, the access addendum's maker A row, and the sweep and crossing-check faults the main session routed to me (S01, S07, S12, S15, S16, S63; D3-904, D3-909, D3-911), under the data lead's rulings RF-1 to RF-4, RF-10 to RF-13, RF-15 and RF-22 to RF-24. ST S9 touches maker B's S50 and S54 only. ST S6's maker A side (S45, S46, S47) is done with the research lead's variants. The editor's `column` request is done and the editor told. Every spec I touched builds PASS with the sweep (35 of 35); the strict build exits 0 with no kit fault listed; the quick guide check passes with 0 failures. Board 2 should list S10 (dashed line, call 5) and the placement-only changes to S01, S07, S12, S15 and S16 (S12 drops its codes at 256 to 279 px, where they cannot fit).
 
 ### Items
 
@@ -176,7 +176,7 @@ Done (23:0x), every item in the fix brief's maker A paragraph, calls 3, 5, 10 an
 | BC S2, CD A-S5, AX S2 | S48, `parliament` | Done: the independent and vacancies set apart under the aisle, each named with its own hairline, words below the arc where the hollow is too small |
 | BC M3, call 3 | entry 14.85 | Done |
 | BC S11, AX S5 | S62, `step-tracker` | Done: across, flush left, shared lines; Step column in the table; "Public Law 119-12" held whole |
-| BC S17 (S44), AX S3 | S44 | Done: chart note names steps and totals by role and place |
+| BC S17 (S44), AX S3 | S44 | Done: chart note names steps and totals by role and place; totals take `fc: 'total'` in forced colors |
 | BC S7 | S46, `stacked-area` | Done: a plate of the ground behind "All other sources" on the hatch |
 | SK-S1, BC S13 | sketches 14.54 to 14.57, 14.91, 14.92 | Done: reference sketches 320 px with a 10 px inset, avoid halves 288 px with an 8 px inset, "Illustrative data" in 13 px at the inset's corner, the progress bars widened to the half |
 | ST S5, RF-11a | S43 | Done: DP04 margin column, DC's 1.5 points in note 2, variant `with_dp04_margin` |
@@ -203,6 +203,7 @@ Done (23:0x), every item in the fix brief's maker A paragraph, calls 3, 5, 10 an
 - D3-xxx | S62's across arrangement sets each mark at its sixth's left edge with its words flush left, the names on a shared top and every state, date and note on shared lines; step 2's note is shorter now the research lead confirmed no hearing | BC S11; centered notes ran to eight lines
 - D3-xxx | S62's table takes a Step column through the action code's words, the discharge row naming steps 2 and 3 as never happened | AX S5; the kit's table prints the data's rows, so the two steps share that row
 - D3-xxx | S44's chart note names steps and totals by what they do and where they sit; values sit on `clear_label` knockouts; names and values take `row_name` and `row_value` | BC S17, AX S2, AX S3, BC S8: color words fail on Charcoal and in forced colors; a gridline through a minus reads as a plus
+- D3-xxx | S44's totals (all receipts and the deficit) take `fc: 'total'`, the ground with a CanvasText outline in forced colors | AX S3, the engineer's part: in forced colors the totals took the steps' inks
 - D3-xxx | S43's names and values take `row_name` and `row_value`; S18 and S10 keep their weights | BC S8 names S43, S44, S51 and S57; S10 is board 1's drawing and S18 was not named
 - D3-xxx | S46's "All other sources" sits on a plate of the ground 5 px clear of the words | BC S7; the hatch ran through the letters
 - D3-xxx | Maker A's six sketches take maker B's frames: reference sketches 320 px with a 10 px inset, avoid halves 288 px with an 8 px inset and both halves of a pair one height, "Illustrative data" in 13 px at the inset's corner; the two progress bars take the half's width | SK-S1, BC S13, D3-637
@@ -241,16 +242,18 @@ Done (23:0x), every item in the fix brief's maker A paragraph, calls 3, 5, 10 an
 ### Tested
 
 - `oa-chart.mjs build` with the sweep and PNGs, one run after every last change (23:0x): S01, S07, S08, S10, S12, S15, S16, S17 to S23, S36 to S48, S60 to S64, and `s-14-12-cols`, `s-14-13-cols`, `s-14-4-cols`: 35 of 35 PASS, 0 faults, exit 0, 35 check files counted. Earlier, S40 and S62 failed the new crossing check until the slash took `strike: true`, and S60 failed parity until its captions took the typography first.
+- `dataviz_check.js --kit --no-captures` on the build pages of S10, S43 to S48 and S60 to S64 (forced colors light and dark, contrast, one working red): 12 of 12 PASS, 0 failures, after S44's totals took `fc: 'total'`.
 - Byte comparison against a baseline kit from HEAD 202886e7 (`git archive` into scratch): S01, S07, S12, S15, S16 and S40's 1440 and 390 px SVG exports unchanged on both grounds; S12's 256 px drawing is the one that changes.
 - Captures looked at at twice size: S10 (1440 Newsprint and Charcoal, 390 Newsprint), S18's table rows read, S43 (1440 Newsprint, 256 Charcoal), S44 (1440 and 256 Newsprint, lower half), S45 (1440 and 256 Newsprint), S46 (1440 Newsprint right end, 256 Charcoal; Charcoal 1440 grayscale), S47 (1440 Newsprint, 358 Newsprint, 256 Charcoal; Charcoal 1440 grayscale), S48 (1440 hollow, 358 Newsprint, 296 Charcoal, 256 Newsprint), S60 (1440 Newsprint; 358 Newsprint and 256 Charcoal tops), S61 (1440 Newsprint, 296 Newsprint, 256 Newsprint and Charcoal), S62 (1440 Newsprint, 358 Newsprint, 256 Charcoal), S63 (1440 Newsprint top), S64 (1440 Newsprint, 256 Charcoal), S12 (256 Newsprint), S15 (256 Newsprint, a tagged row); the six sketches rendered on Newsprint and Charcoal with `tokens.css`, `kit.css` and the fonts.
 - `tools/fixfigs.py` (scratch, `python3 -I`): 38 assertions, 0 failed, on every figure the pass put in a title, note, alt or chart note: S43's DC share and DP04 margin and the states past their margins; S45's counts, shares, the 1972 to 1974 record and the thin part's range; S47's fold of ten at $673.6 billion and its shares; S48's counts and variant; S60's survey, figure 5's unique sentence and the sidecar's two provisions; S61's votes by party; S63's X18 and I068 facts, the chips' counts and all six grades from V7's extract.
 - Words lint by script on 15 specs and 9 entries: no em dash, U+2011, straight quote in reader text, banned word or studio code; every "not", "no" and "never" read (the ones left are earlier text).
 - `phase3_ch14_build.py`: 96 rules, 82 entries, 0 faults. Strict build (`guide2.html`, 22:53): exit 0, no warning, 10,632,075 bytes, no kit build fault listed; share per plate 14,781 bytes for 36 to come; my plates S01 6,927, S10 7,424, S18 4,215, S43 9,988, S44 8,313, S45 6,781, S46 11,096, S47 5,341, S48 3,846, S60 8,705, S61 3,896, S62 5,189, S63 10,346, S64 3,750 bytes (the earlier strict build of 22:4x).
+- `guide_check.js --quick --no-captures` on that strict build (`guide2.html`, which holds the six reframed sketches): PASS, 2 widths, 312 rules, 662 specimens, 0 failures, exit 0.
 - In that build by Playwright at 1440 px: Rule 14.57's pair (both halves 288 px, the bar on two lines, "Illustrative data" aligned) and S60 in the 656 px column (each figure beside its caption, four lines at most), no page error.
 
 ### Not tested
 
-- Forced colors, screen readers, print and 200 percent text for the changed specimens.
+- Screen readers, print and 200 percent text for the changed specimens; forced colors only through `dataviz_check.js --kit` on the kit's pages, not in the guide.
 - The guide's own captures of S48 at 390 px (my clip caught the rule text, not the figure); the kit's 358 px drawing was looked at instead.
 - Rule 14.12's plate in the page after the editor rebuilds it.
 - Whether the data lead signs off the redrawn S47, S48, S61 and S45 (they land in its "Sign-off" section).
