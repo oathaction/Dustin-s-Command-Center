@@ -55,6 +55,9 @@ GLOSS = {g["term"]: g["definition"] for g in V7["glossary"]}
 e, need, chip, grade_word, dnp, diagram_label = C13.e, C13.need, C13.chip, C13.grade_word, C13.dnp, C13.diagram_label
 GRADE, DELAY, SNAP, ATLAS, MINUS = C13.GRADE, C13.DELAY, C13.SNAP, C13.ATLAS, C13.MINUS
 need(SNAP == "October 15, 2026", "the atlas snapshot moved; reread every value before printing")
+_SHELL = (ROOT / "work/build/scripts/phase-2/guide_build.py").read_text()
+need(all(k in _SHELL for k in ('"plate_css"', '"wide_px"', '"frame_container"')),
+     "the guide build no longer reads plate_css, wide_px or frame_container (D3-480), which these plates depend on")
 FC = "Failure case: do not publish. "
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -1628,9 +1631,11 @@ def rule_15_13(book):
     # each means, in the delay classes chapter 13 reads from the atlas (one tick per class, short to long, all three here)
     need([DELAY[link(x)["delay"]][0] for x in lp["links"]] == [1, 2, 3], "Loop R1's steps no longer show one, two and three ticks")
     ticks = ", ".join(f"{words_n(DELAY[k][0])} for {DELAY[k][1]}" for k in ("S", "M", "L"))
+    dg = GLOSS["Delay"].split(".")[0]
+    need(dg == "The time between a change and its effect", "the atlas's definition of a delay changed")
     gloss = kw(["<b>money, raises</b>: money is what moves along the connection (Rule 15.4), and raises says the next "
                 "variable moves the same way as the one before it (Rule 15.3).",
-                f"<b>Ticks</b> near a line’s start count its delay, the time the effect takes: {ticks} (Rule 13.5)."])
+                f"<b>Ticks</b> near a line’s start count its delay, {e(dg[0].lower() + dg[1:])}: {ticks} (Rule 13.5)."])
     body = (diagram_label("plausible", "some evidence, the grade of the loop’s least certain step, Connection L02")
             + beside(hed("Loop", "R1", lp["title"]) + fig(svg),
                      ra_p(read_aloud(codes, lp["links"])) + f'<p class="k">Each step, and the weakest</p>{steps}'
@@ -1641,7 +1646,8 @@ def rule_15_13(book):
                   "certain step. Three pills: Wealth concentration at the top, Money in politics below right, Policy tilt to "
                   "insiders below left. Step 1, solid, money, raises; step 2, dashed, money, raises, marked weakest step; step 3, "
                   f"solid, money, raises. The loop reads: {read_aloud(codes, lp['links'])} Beside it, each step with its grade. "
-                  f"{said_alt}"),
+                  f"{said_alt} A key says money is what moves along each connection and raises says the next variable moves "
+                  f"the same way, and that ticks count a step’s delay, {dg[0].lower() + dg[1:]}: {ticks}."),
              notes="Grades, signs, types and delays from each connection's record; the weakest step from the loop's evidence summary.")
     book.log("15.13 correct", "Loop R1, wealth and influence", "D03")
     fb, fh = three_loop(codes, lp["links"], grades={1: "well-supported"})
@@ -1795,6 +1801,7 @@ def chapter(book):
                      "can take from it."},
         ],
         "rules": rules,
+        "plate_css": plate_css(book.files),
         "extras": [],
         "related_chapters": [
             {"chapter": "10", "reason": "Rule 10.10, the atlas’s encoding glyphs and their measurements."},
@@ -1817,7 +1824,7 @@ def chapter(book):
 # ===============================================================================================================
 # Checks
 # ===============================================================================================================
-def curly(o, skip=("specimen", "id", "before_rule", "chapter", "related", "token", "tokens", "anchor")):
+def curly(o, skip=("specimen", "id", "before_rule", "chapter", "related", "token", "tokens", "anchor", "plate_css")):
     """Atlas titles carry straight apostrophes; the chapter prints curly ones (chapter 06), as e() does in the plates."""
     if isinstance(o, str):
         return o.replace("'", "’")
@@ -1830,7 +1837,7 @@ def curly(o, skip=("specimen", "id", "before_rule", "chapter", "related", "token
 
 def check(data, book):
     fails = []
-    texts = {"chapter": " ".join(C13.strings({k: v for k, v in data.items() if k not in ("sources",)}))}
+    texts = {"chapter": " ".join(C13.strings({k: v for k, v in data.items() if k not in ("sources", "plate_css")}))}
     for sid, frag in book.files.items():
         texts[sid] = C13.visible(frag)
         texts[sid + " alt"] = book.manifest[sid]["alt"]
@@ -1885,6 +1892,33 @@ def check(data, book):
     for sid, m_ in book.manifest.items():
         if m_["width_px"] != STAGE:
             fails.append(f"{sid}: a stage of {m_['width_px']} px, where every plate is {STAGE} px")
+        if m_.get("wide_px") not in (None, WIDE) or m_.get("frame_container") is not True:
+            fails.append(f"{sid}: its frame must be the query container, and a wide stage is {WIDE} px")
+        if bool(m_.get("wide_px")) != ('class="p wd"' in book.files[sid]):
+            fails.append(f"{sid}: its manifest and its markup disagree on the wide composition")
+        frag = book.files[sid]
+        if "<style" in frag:
+            fails.append(f"{sid}: a style of its own; the chapter's block holds every plate rule (D3-480)")
+    # D3-480: every plate that has words or a second drawing to set beside its drawing takes the wide stage, and the
+    # plates that hold one drawing alone keep one true size
+    wide = sorted(k for k, m_ in book.manifest.items() if m_.get("wide_px"))
+    want = sorted([data["opener"]["specimen"]] + [r["correct"]["specimen"] for r in data["rules"]]
+                  + ["s-15-3-failure", "s-15-4-failure"])
+    if wide != want:
+        fails.append(f"the wide plates are {wide}, where D3-480 wants {want}")
+    css = data["plate_css"]
+    if re.search(r"@media\b", css):
+        fails.append("plate_css: a media query; the plates compose by their frame's container only (D3-480)")
+    for m in re.finditer(r"@container\s+(\S+)", css):
+        if m.group(1) != "oa-frame":
+            fails.append(f"plate_css: a container query on {m.group(1)}, where the shell's container is oa-frame")
+    if "—" in css or "‑" in css:
+        fails.append("plate_css: an em dash or U+2011")
+    bare_css = re.sub(r"var\((?:[^()]|\([^()]*\))*\)", "", css)
+    if re.search(r"(?<![\w&])#(?:[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b(?![\w-])|\brgba?\(|\bhsla?\(", bare_css):
+        fails.append("plate_css: a literal color")
+    for px in re.findall(r"font(?:-size)?:[^;}\"]*?\b(\d+(?:\.\d+)?)px", css):
+        fails.append(f"plate_css: a font size in px ({px}) outside the tokens")
     op = book.files[data["opener"]["specimen"]]
     if len(op.encode()) > 12 * 1024:
         fails.append(f"the opener's fragment weighs {len(op.encode()):,} bytes; it must stay well under 16 KB as placed")

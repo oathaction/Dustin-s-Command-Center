@@ -51,7 +51,8 @@
         "format": "text",
         "words": {
           "Medicare drug plans' pharmacy benefit managers may take bona fide service fees only, among other requirements": "Medicare drug plans’ pharmacy benefit managers may take bona fide service fees only, among other requirements",
-          "Standards for Medicare drug plans' contract terms with pharmacies, with accountability for pharmacy benefit managers": "Standards for Medicare drug plans’ contract terms with pharmacies, with accountability for pharmacy benefit managers"
+          "Standards for Medicare drug plans' contract terms with pharmacies, with accountability for pharmacy benefit managers": "Standards for Medicare drug plans’ contract terms with pharmacies, with accountability for pharmacy benefit managers",
+          "Deadline for HHS to set a standard reporting format and final rules": "Deadline for the Department of Health and Human Services to set a standard reporting format and final rules"
         }
       },
       {
@@ -92,8 +93,9 @@
     "phase_key": "Reaching each plan as its plan year begins",
     "deadline_key": "Deadline",
     "words": {
-      "Medicare drug plans' pharmacy benefit managers may take bona fide service fees only, among other requirements": "Medicare drug plans’ pharmacy benefit managers may take bona fide service fees only, among other requirements",
-      "Standards for Medicare drug plans' contract terms with pharmacies, with accountability for pharmacy benefit managers": "Standards for Medicare drug plans’ contract terms with pharmacies, with accountability for pharmacy benefit managers"
+      "Medicare drug plans' pharmacy benefit managers may take bona fide service fees only, among other requirements": "Medicare drug plans’ pharmacy benefit managers may take bona fide service fees only, among other requirements",
+      "Standards for Medicare drug plans' contract terms with pharmacies, with accountability for pharmacy benefit managers": "Standards for Medicare drug plans’ contract terms with pharmacies, with accountability for pharmacy benefit managers",
+      "Deadline for HHS to set a standard reporting format and final rules": "Deadline for the Department of Health and Human Services to set a standard reporting format and final rules"
     }
   },
   "notes_internal": [
@@ -103,6 +105,7 @@
     "H12: 'pharmacy benefit managers' in the title, the law's own term, with note 1's gloss (H02); the plan's 'drug middlemen' stays in the reader question. Read from the left and the right: the title gives the dates Congress set and no judgment of the rules.",
     "Words pass (editor 39): two summaries in the data file print a straight apostrophe (plans'); labels.words and the table column's words print them curled until the research lead curls the file (R-B13), which also covers the straight double quotes in the sidecar's printed source line.",
     "Last fix: the data file's date_basis says 'computed by the studio' in three rows; the table column's words print 'date computed by Oath & Action from the law’s text' until the research lead rewords the file (R-B13).",
-    "Last fix, after the research lead reworded the file's date_basis cells: the date_basis words map is gone, since the cells print as they are; any words entry whose key no longer occurs in the data is dropped."
+    "Last fix, after the research lead reworded the file's date_basis cells: the date_basis words map is gone, since the cells print as they are; any words entry whose key no longer occurs in the data is dropped.",
+    "Review fix pass (brand S15): our own summary line names the Department of Health and Human Services in full where the data file says \"HHS\" (the law’s headings keep \"PBM\", which note 1 explains), through labels.words and the table column’s words; in the drawing, \"among other requirements\" holds its last two words with a no-break space so \"requirements\" never sits alone on a line. The research lead may write the full name into the file’s cell, and the words maps then drop the entry."
   ]
 }

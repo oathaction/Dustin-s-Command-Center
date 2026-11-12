@@ -109,7 +109,9 @@ CSS = {
            "color:var(--oa-color-text-secondary);margin-top:6px;max-width:40em}"),
     "art": ".art{margin-top:20px}",
     "nt": f".nt{{{CAP};margin-top:12px;max-width:40em}}",
-    "src": f".src{{{CAP};color:var(--oa-color-text-secondary);margin-top:12px;padding-top:8px;border-top:1px solid var(--oa-color-border-hairline);max-width:44em}}",
+    "src": (f".src{{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;{CAP};color:var(--oa-color-text-secondary);margin-top:16px;"
+            f"padding-top:10px;border-top:1px solid var(--oa-color-border-hairline)}}.src p{{max-width:42em}}"
+            ".src b{font-weight:var(--oa-font-weight-semibold);color:var(--oa-color-text-primary)}"),
     "eq": (f".eq{{margin-top:10px}}.eq>summary{{list-style:none}}.eq>summary::before{{content:'+';display:inline-block;width:1.1em}}.eq>summary{{cursor:pointer;font:var(--oa-font-weight-semibold) var(--oa-type-body-small-font-size)/1.5 var(--oa-font-family-reading)}}"
            f".eq table{{border-collapse:collapse;margin-top:8px;{SMALL}}}.eq caption{{{CAP};text-align:left;color:var(--oa-color-text-secondary);padding-bottom:4px}}"
            f".eq th,.eq td{{text-align:left;padding:4px 16px 4px 0;border-bottom:1px solid var(--oa-color-border-hairline)}}"
@@ -246,10 +248,10 @@ def sent(title):
 def head(label, grade, title, guide=None, measure=None, illus=None):
     out = [f'<div class="evr"><span class="ev">{e(label)}</span>' + (f'<span class="gr">{e(grade)}</span>' if grade else "")
            + (ill(illus) if illus else "") + "</div>", f'<p class="ct">{e(sent(title))}</p>']
-    if guide:
-        out.append(f'<p class="gd">{e(guide)}</p>')
     if measure:
         out.append(f'<p class="ms">{e(measure)}</p>')
+    if guide:
+        out.append(f'<p class="gd">{e(guide)}</p>')
     return "".join(out)
 
 
@@ -261,7 +263,8 @@ def tl(title):
 def foot(notes=(), source=None):
     out = [f'<p class="nt">{e(n)}</p>' for n in notes]
     if source:
-        out.append(f'<p class="src">{e(source)}</p>')
+        need(source.startswith("Source: "), f"a source line that does not open with its label: {source[:40]}")
+        out.append(f'<div class="src"><p><b>Source:</b> {e(source[8:])}</p><p>{e(CREDIT)}</p></div>')
     return "".join(out)
 
 
@@ -366,6 +369,8 @@ class Book:
         s.update(kw)
         if s.get("title") and not topic:
             s["title"] = sent(s["title"])
+        if "failure" not in s:
+            s.setdefault("credit", CREDIT)
         s.setdefault("illustrative", False)
         s.setdefault("phone", "same")
         self.specs[cid] = s
@@ -395,6 +400,7 @@ def entry(rid, title, rule, why, specs, related, builders, correct, failure, exa
 
 
 FC = "Failure case: do not publish. "
+CREDIT = "Chart: Oath & Action"
 
 
 def fails(n, text):
@@ -756,20 +762,26 @@ def circuits():
 
 
 def rule_14_6(B):
-    ds = "fjc-article-iii-judges"
-    data = circuits()
+    ds = "fjc-active-judges-by-court-of-appeals"
+    data = [(r["short_name"], int(r["judges"])) for r in rows(ds)]
+    # the research lead's counts, checked against the directory they come from
+    need(sorted(data, key=lambda t: (-t[1], t[0])) == circuits(), "the counts file and the directory disagree")
     need(len(data) == 13 and data[0] == ("Ninth Circuit", 29) and data[1][1] < 29, f"the circuit counts moved: {data[:2]}")
-    total = sum(v for _, v in data)
     title = "The Ninth Circuit has 29 judges in active service, the most of the 13 federal courts of appeals"
-    g = "Documented: the Federal Judicial Center’s directory of judges"
-    measure = f"Judges in active service on each federal court of appeals, as of {words_date('2026-11-11')}"
-    note = "Counts by court made by Oath & Action from the directory’s list; seats left empty are not counted."
-    tab = table("Judges in active service, by court of appeals", ["Court", "Judges"], [(n, v) for n, v in data])
-    B.add("s-14-6-correct", head("Finding", g, title, measure=measure)
-          + f'<div class="art">{hbars(data, 30, str, point=("Ninth Circuit",))}</div>' + foot([note], src(ds)) + tab,
-          alt=f"Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s 29 in red and the rest "
-              f"in gray, from {data[1][1]} on the {data[1][0]} down to {data[-1][1]} on the {data[-1][0]}.",
-          readable=True, notes="Drawn here from the directory's rows, counted by script, until the kit takes a red point by name (request ED-E1).")
+    B.spec("s-14-6-bars", form="ranked-bar", family="comparison", tier="core", dataset=ds,
+           sort=[{"field": "judges", "order": "desc"}, {"field": "circuit_order", "order": "asc"}],
+           reader_question="Which federal court of appeals has the most judges?",
+           evidence="finding", evidence_label="Finding", grade_line="Documented: the Federal Judicial Center’s directory of judges",
+           title=title, measure_line=f"Judges in active service on each federal court of appeals, as of {words_date('2026-11-11')}",
+           alt=f"Bars of active judges on the 13 federal courts of appeals, the Ninth Circuit’s 29 in red and the rest in gray, from "
+               f"{data[1][1]} on the {data[1][0]} down to {data[-1][1]} on the {data[-1][0]}.",
+           table={"caption": "Judges in active service, by court of appeals",
+                  "columns": [{"field": "short_name", "label": "Court", "format": "text", "row_header": True},
+                              {"field": "judges", "label": "Judges", "format": "integer"}]},
+           encode={"category": "short_name", "value": "judges"}, labels={"point": "Ninth Circuit"},
+           domain="D05", states=[], notes_internal="Rule 14.6's correct plate: the one red point by name, from the kit (BC M2).")
+    B.add("s-14-6-correct", chart("s-14-6-bars"), alt=f"One red bar, the one the title names, and every other court in gray. {title}.",
+          notes="The kit draws it from the research lead's count of judges by court, made from the directory's rows.")
     reds = ("Ninth Circuit", "Fifth Circuit", "Sixth Circuit")
     B.add("s-14-6-failure", dnp() + tl(title)
           + f'<div class="art">{hbars(data, 30, str, point=reds, red=reds)}</div>',
@@ -967,12 +979,12 @@ def rule_14_9(B):
                   f'<b>{fmt1(s["v"])}%</b></li>')
     keyw = ('<p class="ky"><span><i class="kd"></i>Differs from the nation by more than the margin</span>'
             '<span><i class="kd o"></i>Within the margin of error</span></p>')
-    notes = ["Each line spans a state’s margin of error at 90 percent confidence; a gap counts only past the gap’s own margin."]
+    guide = "Each line spans a state’s margin of error at 90 percent confidence; a gap counts only past the gap’s own margin."
     tab = table("Reported voting, November 2024, percent", ["State", "Reported voting", "Margin of error", "Gap from the nation"],
                 [(s["name"], fmt1(s["v"]), "±" + fmt1(s["m"]), (fmt1(s["gap"]) if s["gap"] < 0 else "+" + fmt1(s["gap"]))
                   + (" past" if s["past"] else " within")) for s in by])
-    B.add("s-14-9-correct", head("Finding", g, title, measure=measure) + f'<div class="art">{keyw}<ul class="di" style="--n:{pos(n):.1f}%">{"".join(li)}</ul></div>'
-          + foot(notes, variant(ds, "source_line_2024_only")) + tab,
+    B.add("s-14-9-correct", head("Finding", g, title, guide=guide, measure=measure) + f'<div class="art">{keyw}<ul class="di" style="--n:{pos(n):.1f}%">{"".join(li)}</ul></div>'
+          + foot((), variant(ds, "source_line_2024_only")) + tab,
           alt="Dots with margin of error lines for ten states’ reported turnout in 2024 against the nation’s 65.3 percent: five past the "
               "margin, five within it.",
           readable=True, notes="Drawn here from the turnout file with each gap's margin computed by script, until the kit's interval form lands (round 2).")
@@ -1104,13 +1116,13 @@ def rule_14_11(B):
                    for (y, v), c in [(segs[0][-1], " o"), (segs[1][0], ""), (segs[1][-1], " o"), (segs[2][0], "")])
     leader = f'<line class="ld" x1="{10 * xp(2013):.0f}" x2="{10 * xp(2013):.0f}" y1="150" y2="{10 * yp(71670) - 40:.0f}"/>'
     note = f'<span class="lb e" style="left:calc({xp(2013):.1f}% - 6px);top:2%">2013: new<br>questions</span>'
-    notes = ["The line breaks where the survey changed: new income questions in 2013 and a new processing system in 2017. Each of those "
-             "years prints both estimates, the earlier method’s open and the new one’s filled.",
-             f"The 2025 figure carries a margin of error of ±${comma(moe)} at 90 percent confidence."]
+    guide = ("The line breaks where the survey changed: new income questions in 2013 and a new processing system in 2017. Each of those "
+             "years prints both estimates, the earlier method’s open and the new one’s filled.")
+    notes = [f"The 2025 figure carries a margin of error of ±${comma(moe)} at 90 percent confidence."]
     method = {(2013, 0): ", earlier questions", (2013, 1): ", new questions", (2017, 1): ", earlier processing", (2017, 2): ", new processing"}
     tab = table("Median household income, 2025 dollars", ["Year", "Median income"],
                 [(f"{y}{method.get((y, k), '')}", f"${comma(v)}") for k, s in enumerate(segs) for y, v in s])
-    B.add("s-14-11-correct", head("Finding", g, title, measure=measure) + fluid(gl + lines + leader, yt, xt, over=dots + note, yw=64)
+    B.add("s-14-11-correct", head("Finding", g, title, guide=guide, measure=measure) + fluid(gl + lines + leader, yt, xt, over=dots + note, yw=64)
           + foot(notes, src(ds)) + tab,
           alt=f"A line of median household income from 2005 to 2025, broken where the survey changed in 2013 and 2017, ending at "
               f"${comma(last[1])}.",
@@ -1528,7 +1540,7 @@ def main():
     entries = [f(B) for f in (rule_14_1, rule_14_2, rule_14_3, rule_14_4, rule_14_5, rule_14_6, rule_14_7, rule_14_8, rule_14_9,
                               rule_14_10, rule_14_11, rule_14_12, rule_14_13, rule_14_14)]
     sources = []
-    for s in [sp.get("source_line") for sp in B.specs.values()] + re.findall(r'<p class="src">(.*?)</p>', "".join(B.files.values())):
+    for s in [sp.get("source_line") for sp in B.specs.values()] + ["Source: " + x for x in re.findall(r'<div class="src"><p><b>Source:</b> (.*?)</p>', "".join(B.files.values()))]:
         s = html.unescape(s) if s else s
         if s and s not in sources:
             sources.append(s)

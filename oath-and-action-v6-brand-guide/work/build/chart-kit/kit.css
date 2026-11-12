@@ -77,6 +77,9 @@
 .oac-f-band { fill: var(--oa-chart-color-band); }
 .oac-f-track { fill: var(--oa-chart-color-track); } .oac-s-track { stroke: var(--oa-chart-color-track); fill: none; }
 .oac-f-light-fill { fill: var(--oa-chart-color-light-fill); }
+/* round 1 fix pass (maker A's request): palette rule R3's light gray as a line, for the marks a title does not name in a
+   slope chart; GrayText in forced colors, as the context line */
+.oac-s-light-fill { stroke: var(--oa-chart-color-light-fill); fill: none; }
 .oac-f-land { fill: var(--oa-chart-color-land); } .oac-s-land { stroke: var(--oa-chart-color-land); fill: none; }
 .oac-f-party { fill: var(--oa-chart-color-party-mark); } .oac-s-party { stroke: var(--oa-chart-color-party-mark); fill: none; }
 .oac-f-chip-fill { fill: var(--oa-chart-color-chip-fill); } .oac-f-chip-label { fill: var(--oa-chart-color-chip-label); }
@@ -123,7 +126,7 @@
   .oac-svg .oac-f-none.oac-fc-plate { fill: Canvas; }   /* a plate under words on a hatch (CD KR1) */
   .oac-svg :is(.oac-f-seq-2, .oac-f-seq-4, .oac-f-div-2, .oac-f-div-4, .oac-f-mag-2, .oac-f-cat-3, .oac-f-cat-4):not(.oac-t) { stroke: CanvasText; stroke-width: 1px; }
   .oac-svg [class*="oac-s-"] { stroke: CanvasText; }
-  .oac-svg :is(.oac-s-context, .oac-s-secondary, .oac-s-gridline, .oac-s-ghost, .oac-s-leader, .oac-s-track) { stroke: GrayText; }
+  .oac-svg :is(.oac-s-context, .oac-s-secondary, .oac-s-gridline, .oac-s-ghost, .oac-s-leader, .oac-s-track, .oac-s-light-fill) { stroke: GrayText; }
   .oac-svg .oac-s-surface { stroke: Canvas; }
   .oac-svg .oac-fc-bg { fill: Canvas; } .oac-svg .oac-fc-ink { stroke: CanvasText; } .oac-svg .oac-fc-gray { stroke: GrayText; }
   .oac-svg .oac-t { fill: CanvasText; paint-order: stroke; stroke: Canvas; stroke-width: 3px; stroke-linejoin: round; }

@@ -56,7 +56,7 @@
         "format": "text",
         "words": {
           "b": "Prisons and jails form one system; includes jail populations",
-          "c": "Leaves out people it holds for other states or the federal system",
+          "c": "Leaves out its own prisoners held in federal or other states’ prisons",
           "d": "Includes a few sentences of one year or less",
           "d,f": "Includes a few sentences of one year or less, and people serving 1 to 2.5 years in local jails",
           "e": "Includes people waiting in county jail to move to a state prison",
@@ -107,7 +107,8 @@
     "The State row is one of the rows the chart draws (as its reference line), so the table holds it, in rank order between Nevada and Virginia; US and FED are left out by where.",
     "Footnote words condense BJS's footnotes a to g in the sidecar's notes; a/ belongs to the Federal row only, which is left out.",
     "States in the title are the data's two ends (Rule 01.9 counts them): MS and MA.",
-    "Figures checked by script (figures.py s19): 652 the maximum and MS; 96 the minimum and MA; 318 STATE; 360 US; the six b states; 617 LA, 596 AR, 119 ME."
+    "Figures checked by script (figures.py s19): 652 the maximum and MS; 96 the minimum and MA; 318 STATE; 360 US; the six b states; 617 LA, 596 AR, 119 ME.",
+    "Review fix pass, ST S5: footnote c's words now follow BJS's footnote c (\"Does not include persons held in federal or other state prisons in its sentenced jurisdiction count\"): Idaho and Missouri leave out their own prisoners held elsewhere."
   ],
   "reading_guide": "The dashed line is all states together."
 }

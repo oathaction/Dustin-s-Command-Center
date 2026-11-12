@@ -8,7 +8,7 @@
   "reader_question": "Which issue records cover my question?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: the atlas’s own register of issue records",
+  "grade_line": "Graded by the atlas, record by record: our count of its issue records",
   "v7": {
     "grade": "documented",
     "ids": [
@@ -125,7 +125,8 @@
     "Every record's ID is listed in v7.ids, so the table prints each in its chip ('Issue I001').",
     "Figures checked by script (figures.py s38).",
     "Data lead DL-A6: the title gives each grade its own count. DL-R5: S38 prints the sidecar's domain_d01 variant, which names the one domain drawn.",
-    "No record in D01 is retired, and Rule 13.3 keeps Retired out of every grade key, so the grade filter offers four chips."
+    "No record in D01 is retired, and Rule 13.3 keeps Retired out of every grade key, so the grade filter offers four chips.",
+    "Review fix pass: the grade line by the data lead's ruling (a) (ST M4). CD AM1 and BC S9 (the live lookup in the still's place where scripts run) wait on the engineer's kit side; the spec keeps its lookup and still keys."
   ],
   "where": {
     "domain": "D01"

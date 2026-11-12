@@ -20,7 +20,7 @@
       var ex = c.field('x'), f = c.spec.formats || {}, W = c.width;
       var rows = c.rows.slice().sort(function (a, b) { return K.time(a[ex]) - K.time(b[ex]); });
       var size = c.t(c.phone ? 'type-label' : 'type-measure-size'), lead = c.phone ? Math.round(size * 1.5) : c.t('type-measure-leading');
-      var sw = Math.round(size * (c.labels.spark_em || 6)), sh = Math.round(size * 1.0), space = K.measure(' ', size, 400, 'reading', true);
+      var sw = Math.round(size * (c.labels.spark_em || 6)), space = K.measure(' ', size, 400, 'reading', true);
       var y = size;
       (c.labels.sentences || []).forEach(function (sn, si) {
         var col = sn.field, list = rows.filter(function (r) { return r[col] !== null && r[col] !== undefined; });
@@ -51,11 +51,13 @@
           ln.forEach(function (it, k) {
             if (!it.spark) { if (!run.length && k) x += space; run.push(it.w); return; }
             flush();
-            var sx = x + (k ? space : 0), top = by - size * 0.86, bot = top + sh;
+            // every line sits on one band, from the words' baseline to their cap height, so each reads as a word of the
+            // sentence whatever its shape (CD B-S2); Inter's capitals stand 0.727 em
+            var sx = x + (k ? space : 0), bot = by, top = by - Math.round(size * 0.727);
             var xs = K.scale.linear([K.time(list[0][ex]), K.time(last[ex])], [sx + 2, sx + sw - 3]);
             var ys = K.scale.linear([lo[col], hi[col] === lo[col] ? lo[col] + 1 : hi[col]], [bot, top]);
             var d = list.map(function (r, i) { return (i ? 'L' : 'M') + K.round(xs(K.time(r[ex]))) + ',' + K.round(ys(r[col])); }).join('');
-            c.path(d, { stroke: 'subject', width: c.t('spark-line'), data: { series: col } }, [sx, top, sw, sh]);
+            c.path(d, { stroke: 'subject', width: c.t('spark-line'), data: { series: col } }, [sx, top, sw, bot - top]);
             list.forEach(function (r) { c.datum(xs(K.time(r[ex])), ys(r[col]), { data: { key: col + '|' + r[ex], field: col, value: r[col] } }); });
             c.circle(xs(K.time(first[ex])), ys(first[col]), c.t('spark-end-radius') * 0.7, { fill: 'subject', mark: false });
             c.circle(xs(K.time(last[ex])), ys(last[col]), c.t('spark-end-radius'), { fill: 'subject', mark: false });

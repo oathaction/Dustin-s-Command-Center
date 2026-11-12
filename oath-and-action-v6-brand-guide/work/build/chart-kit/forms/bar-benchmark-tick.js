@@ -1,8 +1,7 @@
 /* Bar with a benchmark tick (coverage plan 3.1, core; S18). One bar per row from a zero line, with a tick across it at
- * the row's benchmark, such as a share of income against a share of households. The value prints at the bar's end, or
- * past the tick where it would touch it; the benchmark's words print once over the first tick when every row shares one
- * benchmark, else each tick prints its own value.
- * A value that would touch the tick prints inside its bar's end where it fits.
+ * the row's benchmark, such as a share of income against a share of households. Every value prints just past its bar's
+ * end, on a halo of the ground, so a tick it crosses runs behind it; the benchmark's words print once over the first
+ * tick when every row shares one benchmark, else each tick prints its own value.
  * encode: category (text), value (number), benchmark (number). labels: benchmark (words over the first tick),
  * categories ({category: printed name}). formats: value, benchmark. On a phone each name sits above its bar. */
 (function (K) {
@@ -51,13 +50,8 @@
         // the tick: a ground-colored keyline under an ink line, so it reads across the bar and beyond it
         c.line(tx, by - over, tx, by + bh + over, { stroke: 'surface', width: c.t('line-subject') + 2 * c.t('keyline'), mark: false });
         c.line(tx, by - over, tx, by + bh + over, { stroke: 'subject', width: c.t('line-subject'), data: { key: r[ek], field: eb, value: r[eb] } });
-        // the value at the bar's end, or past the tick where it would touch it
-        // the value at the bar's end; where it would touch the tick, inside the bar's end if it fits, else past the tick
-        var w = c.measure(val(r), 'label', 700, true), lx = xe + 8;
-        if (lx < tx + 6 && lx + w > tx - 6) {
-          if (w + 16 < xe - zx) c.text(xe - 8, cy + size * 0.35, val(r), { role: 'label', weight: 700, tnum: true, anchor: 'end', fill: 'label-on-subject' });
-          else c.text(tx + 8, cy + size * 0.35, val(r), { role: 'label', weight: 700, tnum: true });
-        } else c.text(lx, cy + size * 0.35, val(r), { role: 'label', weight: 700, tnum: true });
+        // every value just past its bar's end, in one place for every row; the halo keeps it clear where the tick runs behind
+        c.text(xe + 8, cy + size * 0.35, val(r), { role: 'label', weight: 700, tnum: true, halo: true });
         if (!one) c.text(tx, by - over - 4, K.fmt(r[eb], f.benchmark || f.value || 'number:1'), { role: 'tick', anchor: 'middle' });
         // on a phone the zero line runs beside each bar only, never through the names above them
         if (c.phone) c.line(zx, by - over, zx, by + bh + over, { stroke: 'baseline', width: c.t('line-baseline'), mark: false });

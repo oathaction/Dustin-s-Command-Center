@@ -1668,8 +1668,8 @@
      "rule": "14.29"
     },
     {
-     "when": "No month is missing, and the latest months are preliminary and will be revised",
-     "rule": "14.32"
+     "when": "No month is missing, and the latest months are preliminary: mark them as Rule 14.11 sets",
+     "rule": "14.29"
     }
    ],
    "correct": {

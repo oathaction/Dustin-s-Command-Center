@@ -3988,9 +3988,9 @@ def self_test():
     sk_man = {"s-26-skp": {"chapter": "26", "rule": "26.1", "alt": "A misleading form beside the better one, a fixture.", "illustrative": True, "notes": "fixture"},
               "s-26-sk1": {"chapter": "26", "rule": "26.2", "alt": "One misleading form, a fixture.", "illustrative": True, "width_px": 230, "fit_switch": False, "notes": "fixture"}}
     sk = chapter("26", "tokens", "Tokens and how to choose them", [
-        {"id": "26.1", "title": "Rule 26.1 in a fixture.", "rule": "A fixture rule.", "why": {"text": "A fixture with the chapter's basis."},
+        {"id": "26.1", "entry": True, "use_when": ["A fixture."], "title": "Rule 26.1 in a fixture.", "rule": "A fixture rule.", "why": {"text": "A fixture with the chapter's basis."},
          "correct": {"specimen": "s-26-skp", "caption": "A fixture.", "kind": "avoid", "label": "Radar chart, a form that misleads"}},
-        {"id": "26.2", "title": "Rule 26.2 in a fixture.", "rule": "A fixture rule.", "why": {"text": "A fixture.", "basis": "WCAG 2.2"},
+        {"id": "26.2", "entry": True, "use_when": ["A fixture."], "title": "Rule 26.2 in a fixture.", "rule": "A fixture rule.", "why": {"text": "A fixture.", "basis": "WCAG 2.2"},
          "correct": {"specimen": "s-26-sk1", "caption": "A fixture.", "kind": "avoid", "label": "Streamgraph, a form that misleads"}}],
         basis="Design judgment, from a fixture's chart system")
     scenarios += [
@@ -3998,10 +3998,11 @@ def self_test():
          {"26-tokens.json": sk}, {"specimens": sk_specs, "manifest": sk_man},
          {"absent": ["why.basis is empty"],
           "html": ['<div class="sk-pair"><div class="sk-half sk-avoid"><p class="plate-dnp">', '<p class="plate-use"><span aria-hidden="true">✓</span>Use instead: Grouped bars</p>',
-                   'class="basis basis--chapter basis--judgment"><span class="basis-k">Basis</span> Design judgment, from a fixture&#8217;s chart system</p>',
+                   'class="basis basis--chapter basis--judgment"><span class="basis-k">Basis</span> Design judgment, from a fixture',
                    '<span class="basis-k">Basis</span> WCAG 2.2'],
           "tests": [("one drawing keeps the bar over it and no pair", lambda pg: re.search(r'data-specimen="s-26-sk1"[^>]*><p class="plate-dnp">', pg) is not None),
-                    ("the chapter's basis prints once", lambda pg: pg.count("basis--chapter") == 1)]}),
+                    ("the chapter's basis prints once, and the rule that shares it prints no box", lambda pg: pg.count('class="basis basis--chapter') == 1
+                     and pg.count('<span class="basis-k">Basis</span>') == 2)]}),
         ("round 1 fix pass: a plate with two true sizes (wide_px) and a chapter's shared plate CSS (D3-480)",
          {"26-tokens.json": w2}, {"specimens": w2_specs, "manifest": w2_man},
          {"warn": ["s-26-w2b: wide_px 300 needs a number above width_px (328); ignored", "\"plate_css\": 1 literal color value(s) (#E63946)"],

@@ -46,7 +46,7 @@ SVG_WIDTH = re.compile(r'<svg\b[^>]*?\swidth="([\d.]+)"')
 def sketch_widths(path):
     """The true width of each drawing in a sketch file, in order (one, or an avoid entry's pair)."""
     try:
-        return [float(w) for w in SVG_WIDTH.findall(path.read_text())]
+        return [int(float(w)) if float(w).is_integer() else float(w) for w in SVG_WIDTH.findall(path.read_text())]
     except OSError:
         return []
 

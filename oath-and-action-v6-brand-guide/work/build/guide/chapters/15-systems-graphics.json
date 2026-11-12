@@ -6,7 +6,7 @@
  "instruction": "Draw our systems atlas’s mechanisms so a reader can follow them one connection at a time.",
  "opener": {
   "specimen": "s-15-opener",
-  "caption": "Loop R13 from our systems atlas, with the authority line that leaves it and the layer it reaches. Each numeral marks one part of the grammar, and the list names the rule that sets it."
+  "caption": "Loop R13 from our systems atlas, with the authority line that leaves it and the layer it reaches. Each letter marks one part of the grammar, and the list names the rule that sets it."
  },
  "intro": [
   "A systems graphic draws a mechanism: what moves what, which way, and how sure our systems atlas, Who Do They Answer To?, is of each step. It uses the atlas’s own parts. Variables are the quantities or conditions that can rise or fall, connections are the arrows between them, and loops are chains of connections that come back to where they started.",
@@ -139,7 +139,7 @@
    "id": "15.3",
    "title": "Read a plus or minus as the way two variables move together.",
    "rule": [
-    "Each causal connection carries a sign tag. A plus means the two variables tend to move the same way, and a minus means they move in opposite directions, with the model’s other conditions held steady. The word beside the tag says it again: raises for a plus, lowers for a minus.",
+    "Each causal connection joins two variables, the quantities or conditions that can rise or fall, and carries a sign tag. A plus means the two tend to move the same way, and a minus means they move in opposite directions, with the model’s other conditions held steady. The word beside the tag says it again: raises for a plus, lowers for a minus.",
     "Our systems atlas states the rule in its conventions: “The sign on a connection gives direction only.” Print the atlas’s sentence “A positive sign does not mean a benefit.” in every key that shows a sign."
    ],
    "tokens": [
@@ -316,7 +316,7 @@
    },
    "failure": {
     "specimen": "s-15-6-failure",
-    "caption": "<strong>Fails Rule 15.6.</strong> Loop R18 has no step numbers, no chip and no kind, and the words inside it judge the loop. Its two minus signs make it reinforcing."
+    "caption": "<strong>Fails Rule 15.6.</strong> Loop R10 has no step numbers, no chip and no kind, and the words inside it judge the loop. Its two minus signs make it reinforcing."
    },
    "specs": [
     {
@@ -325,7 +325,7 @@
     },
     {
      "label": "Inside the loop",
-     "value": "The loop’s typed ID in bold, such as Loop R18, then reinforcing or balancing"
+     "value": "The loop’s typed ID in bold, such as Loop R10, then reinforcing or balancing"
     },
     {
      "label": "Kind check",
@@ -648,6 +648,7 @@
    ]
   }
  ],
+ "plate_css": ":scope{color:var(--oa-color-text-primary)}.p{box-sizing:border-box;padding:16px;font:var(--oa-type-body);max-width:100%}.p *{box-sizing:border-box}:where(.p) :where(p){margin:0}.dnp{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform)}.evr{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 10px}.ev{display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform)}.gr{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}.chip{display:inline-flex;align-items:center;gap:.3em;padding:1px 8px;border:1px solid var(--oa-color-border-strong);font:var(--oa-type-data-label);white-space:nowrap;vertical-align:baseline}.chip .id{font-variant-numeric:tabular-nums}.k{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);color:var(--oa-color-text-secondary);margin:0 0 6px}.rs{display:inline-block;fill:var(--oa-color-graphic-essential);vertical-align:.08em;margin-right:5px}.gw b{font-weight:var(--oa-font-weight-bold)}.gw .w{white-space:nowrap}.nw2{white-space:nowrap}.src{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:12px;max-width:44em}.nt{font:var(--oa-type-caption);margin-top:10px;max-width:40em}.nt+.nt{margin-top:4px}.hed{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin:0 0 4px;font:var(--oa-type-body-small)}.sub{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}.mk{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 4px;border-radius:10px;background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);letter-spacing:0;vertical-align:.15em;margin:0 1px 0 3px}.sv{display:block;overflow:visible}.sv text{font-family:var(--oa-font-family-reading);font-size:var(--oa-chart-type-label);fill:var(--oa-color-text-primary)}.sv .t{font-weight:var(--oa-font-weight-semibold)}.sv .v{font-weight:var(--oa-font-weight-regular)}.sv .pl{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .pl.th{stroke-width:1px}.sv .ak-mark{fill:none;stroke:var(--oa-color-graphic-essential)}.sv .hd,.sv .tg polygon{fill:var(--oa-color-graphic-essential)}.sv .tg .sg{fill:var(--oa-color-surface)}.sv .tk{stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .rl{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:1px}.sv .id{font-weight:var(--oa-font-weight-bold)}.sv .kd{font-weight:var(--oa-font-weight-regular)}.sv .sn{font-weight:var(--oa-font-weight-bold)}.sv .dm{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .fr{fill:none;stroke:var(--oa-color-border-strong);stroke-width:1px}.sv .fl{fill:var(--oa-color-text-secondary)}.sv .nm circle{fill:var(--oa-chart-color-chip-fill)}.sv .nm text{fill:var(--oa-chart-color-chip-label);font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}.dg{margin:4px 0 0}.dg+.ra{margin-top:10px}.ra{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);max-width:30em}.kw{list-style:none;margin:0;padding:0;font:var(--oa-type-body-small)}.kw li{padding:8px 0;border-top:1px solid var(--oa-color-border-hairline)}.kw li:first-child{border-top:0;padding-top:0}.kw b{font-weight:var(--oa-font-weight-semibold)}.q{font:italic 400 var(--oa-type-body-small-font-size)/1.6 var(--oa-font-family-quote);margin:0}.vc+.vc{margin-top:18px;padding-top:14px;border-top:1px solid var(--oa-color-border-hairline)}.vc .sv{margin:2px 0 8px}.sv .pk{stroke:var(--oa-color-palette-prussian)}.sv .gk{stroke:var(--oa-color-palette-verdigris)}.sv .sk{stroke:var(--oa-color-palette-stone)}.sv .pkf{fill:var(--oa-color-palette-prussian)}.sv .gkf{fill:var(--oa-color-palette-verdigris)}.sv .skf{fill:var(--oa-color-palette-stone)}.kb{margin-top:16px}.sw{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:6px}.sw.gkf{background:var(--oa-color-palette-verdigris)}.sw.pkf{background:var(--oa-color-palette-prussian)}.sw.skf{background:var(--oa-color-palette-stone)}.fx{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.fx.pr{gap:24px}.fx.tri{gap:0}.fx>div{min-width:0}.fx>div>:first-child{margin-top:0}.fx>div>*+.k{margin-top:16px}@container oa-frame (min-width:680px){.p.wd{padding:24px}.wd .fx{grid-template-columns:296px minmax(0,1fr);column-gap:32px}.wd .fx.pr{grid-template-columns:296px 296px;column-gap:40px}.wd .fx.tri{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:16px}.wd .tri>.vc{margin:0;padding:0;border:0}}@container oa-frame (max-width:327.98px){.p :is(p,ul,ol,.evr):not(.dnp){max-width:calc(100cqi - 32px)}}",
  "extras": [],
  "related_chapters": [
   {

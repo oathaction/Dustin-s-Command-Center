@@ -285,7 +285,7 @@
  "s-14-24-sketch": {
   "chapter": "14",
   "rule": "14.24",
-  "width_px": 300.0,
+  "width_px": 300,
   "illustrative": true,
   "alt": "A sketch of a radar chart, with illustrative data.",
   "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
@@ -438,7 +438,7 @@
  "s-14-43-sketch": {
   "chapter": "14",
   "rule": "14.43",
-  "width_px": 300.0,
+  "width_px": 300,
   "illustrative": true,
   "alt": "A sketch of a run chart, with illustrative data.",
   "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
@@ -447,7 +447,7 @@
  "s-14-44-sketch": {
   "chapter": "14",
   "rule": "14.44",
-  "width_px": 300.0,
+  "width_px": 300,
   "illustrative": true,
   "alt": "A sketch of a cycle or seasonal chart, with illustrative data.",
   "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
@@ -456,7 +456,7 @@
  "s-14-45-sketch": {
   "chapter": "14",
   "rule": "14.45",
-  "width_px": 180.0,
+  "width_px": 180,
   "illustrative": true,
   "alt": "A sketch of a streamgraph, with illustrative data.",
   "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
