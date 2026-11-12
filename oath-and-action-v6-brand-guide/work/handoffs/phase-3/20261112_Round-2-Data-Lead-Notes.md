@@ -437,6 +437,8 @@ November 12, 2026, review fix pass, first run. Inputs: the statistics and civic 
 - **Chapters 10 and 11:** `s-10-lib-02` and `s-11-12-correct` print "Executive unilateralism" for D2; whether approved work takes RF-16 is your call.
 - **Rule 05.1's Newsprint share for area forms:** a treemap fills its plot, so S47's export holds 2.9 percent Newsprint. RF-1 sets unnamed areas in the track ink so the drawing reads light; whether the 60 to 85 percent limit counts the track tint as Newsprint for a drawing exported alone is a reading of an approved rule, so I flag it rather than rule it.
 
+**Answered by the main session:** D3-906 keeps "Executive unilateralism" in chapters 10 and 11, where it names Civic Line icon CL-026 (DR-144), and chapter 15 follows RF-16; D3-907 reads Rule 05.1's limits for the view a chart is published in, the kit measuring red on the drawing alone (RF-1 stands) and the Newsprint share where the chart is placed, a track tint not counting as Newsprint, with no change to S47 for the Newsprint share; D3-908 logs the three V7.1 items for board 2.
+
 ### Routine calls
 
 - D3-xxx | The red point stays within 5 percent of the drawing alone at every export width; S47's Social Security tile and S53's band take the subject ink | Rule 05.1 (D3-890); measured 17.6 to 19.7 and 6.1 percent; replaces D3-676's red points
