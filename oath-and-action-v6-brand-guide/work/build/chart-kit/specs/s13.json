@@ -170,7 +170,9 @@
       {
         "value": "CES9091000001",
         "label": "Federal government",
-        "indent": 2
+        "indent": 2,
+        "peak": "Peak: {value} in {x}",
+        "peak_field": "employees_thousands"
       }
     ],
     "totals_title": "The total, its two parts and federal jobs",
@@ -187,6 +189,7 @@
     "D3-83: the grade line prints 'Documented' with its source after the colon; 'Official statistic' leaves every spec.",
     "Statistics P2-S10: 'seasonally adjusted' glossed. P2-S2 (the industry estimates' sampling errors) waits on the research lead's sidecar (R8).",
     "R8, statistics P2-S2: the research lead's sentence on sampling error, with its source in the note until ENG-9 adds it to the sidecar.",
-    "X15: the heads are in sentence case. X13 is held: the federal row's peak label ('Peak: {value} in {x}', peak_field employees_thousands) overlaps its row label at 390 px and narrower, where the form sets both on one line (E32); the third note gives the peak in words."
+    "X15: the heads are in sentence case. X13 is held: the federal row's peak label ('Peak: {value} in {x}', peak_field employees_thousands) overlaps its row label at 390 px and narrower, where the form sets both on one line (E32); the third note gives the peak in words.",
+    "X13: the federal row's peak label is set, now that E32 places it at every width."
   ]
 }

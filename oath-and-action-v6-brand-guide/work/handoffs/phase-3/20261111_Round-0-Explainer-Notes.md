@@ -253,3 +253,5 @@ November 12, DR-191's second pass: the editor's faults E1 to E13 in its notes, "
 D3-xxx | S04's 65-and-over label reads "No clear change (+0.2)" and the notes give its margin of error | The editor's "margin of error" made the label too wide for the narrow guide columns; "no clear change" says what the margin test found
 
 Tested: `oa-chart.mjs build --all`, 16 of 16; each changed string found and replaced by script, with an assertion that the old words were present. Not tested: the editor's read of these new strings; the captures viewed after this pass.
+
+Later, November 12: S06 takes the sidecar's new `directions_wording` line (the editor's E8), and S13's federal row prints "Peak: 3,013,000 in October 2024" now that E32 places it at every width (X13). Rebuilt all 16: 16 of 16 pass. Board folder refreshed.
