@@ -156,3 +156,27 @@ November 12, 2026: the quick guide check failed `s-14-55-sketch.html` on type of
 - Tested: the sketch rendered on Newsprint and Charcoal and looked at (both lines inside the hollow, the drawing unchanged to the eye); 1,034 bytes, under 4,096; its first `<desc>` unchanged; the other five sketches byte for byte as before; a replica of the guide check's background test on the rendered sketch gives 13.29 to 1 for all three words on both grounds; `phase3_ch14_build.py` 0 faults; strict build exit 0, no warning, 10,587,775 bytes.
 - Quick guide check, first fix (28 px, label ink, no hollow): the type scale passed for this sketch, and contrast still failed, "of the whole" at 1 to 1 at 1440 and 390 px. After the hollow, on the strict build of 20:35: `guide_check.js --quick --no-captures` exits 0, with no type-scale or contrast fault anywhere and no line for `s-14-55-sketch`.
 - Files: `work/build/guide/specimens/s-14-55-sketch.html`; this notes file.
+
+
+## Review fix pass
+
+November 12, 2026, round 2's review fix pass (`work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md`). A fresh instance of maker A; this section is its memory. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/3ab6316c-6935-5f23-804c-cfaafd548447/scratchpad/phase-3/round-2-fix/maker-a/`.
+
+### Summary
+
+In progress. Items: ST M1, M2, M3, S1, S5, S8, S11; BC M1, M2, M3, S2, S3, S7, S11, S12, S13 (mine), S17 (mine), S18; CD A-M1, A-M2, A-S1 to A-S5, SK-S1 (mine); call 5 (S10's dashed line); call 11 (one row-name weight). ST S9 touches maker B's S50 and S54 only. AX items wait on the brief's addendum; those on my specs (AX S1 S63, S2 S44 and S48, S3 S44's words, S4 S47's note, S5 S62's table, S9 S45) are listed below as I take them.
+
+### Items
+
+| Item | Spec or file | Status |
+|---|---|---|
+
+### Routine calls
+
+### Requests to the engineer
+
+### Requests to others
+
+### Tested
+
+### Not tested

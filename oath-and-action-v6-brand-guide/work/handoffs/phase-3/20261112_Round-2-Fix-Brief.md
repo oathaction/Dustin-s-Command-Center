@@ -74,3 +74,24 @@ Each owner writes a section "Review fix pass" at the end of its round 2 notes fi
 - Every word follows chapter 02's rules (`work/handoffs/phase-2/20261106_Voice-Writing-Rules.md`): no em dashes, no U+2011, no studio words or decision codes in reader text, curly apostrophes. Every figure in a title or note is checked by script against the data.
 - Report what you tested and what you did not as separate lists. Never describe a check you did not run.
 - Final message to the main session: under 200 words, the items done by code, any not done with the reason, the paths you wrote, and anything blocking.
+
+## Addendum: accessibility and production items (AX)
+
+The report scores 4 of 5, with 1 Must fix and 11 Should fix: `work/handoffs/phase-3/20261112_Round-2-Red-Team-Access-Production.md`, with the simulated panel's files in `work/handoffs/phase-3/round-2-production-test/`. Calls D3-903 to D3-905 settle where it meets the first three reports.
+
+**Calls on the access report**
+- **D3-903. AX M1 is the same fault as CD B-M1 and BC S6** (S58's band at 1.16 to 1): one fix, under the data lead's ruling, within the approved Stone steps (DR-236). The engineer's check covers it: a band or area that carries a form's meaning must meet 3 to 1 against its ground, or carry an edge that does (WCAG 1.4.11).
+- **D3-904. The kit checks every width an entry can draw at** (AX S1): the engineer adds a sweep across the guide's range (256 to 723 px, in steps fine enough to catch S63's and S01's faults) to `build`, or a `--sweep` the makers run before reporting, and says which. A fault the sweep finds in any spec goes to that spec's owner, round 1 specs included (maker A: S17 to S23, S36 to S42, S01 to S16 where maker A holds them; maker B: S24 to S35 and its built specs). S01 is a board 1 drawing; a fix that changes only placement, never data or inks, is the maker's to make and board 2 lists it.
+- **D3-905. AX S8's data side goes to the research lead**: say whether the Census Bureau publishes a margin for the fixed broadband share in the frozen table; if it does, freeze it as a variant under C1; if not, the entry for 14.74 and the README say what a designer does when a margin is missing. The kit's side (a source line that names a different measure than the chart draws; a margin in the wrong unit, named as such in the fault) goes to the engineer.
+
+**Items by owner**
+
+| Owner | Items |
+|---|---|
+| Engineer | AX M1's check (D3-903); AX S1 (D3-904); AX S2 (a guard that sees lines and marks crossing words at 256 and 296 px, with BC S1's halo); AX S3 (forced colors: totals apart from steps); AX S6 (the do-not-publish bar read by a screen reader, each caption once); AX S7 (the README for round 2: intervals, stacks, bands, summaries, sketches); AX S8's kit side (D3-905); AX S11 (print: no blank page, no clipped plate head) |
+| Maker A | AX S1 (S63, S01 and any of your specs the sweep finds); AX S2 (S44, S48); AX S3's words (S44); AX S4 (S47's words named by color); AX S5 (S62's table); AX S9 (S45's middle stack, with the data lead) |
+| Maker B | AX M1 (S58, with CD B-M1 and BC S6); AX S2 (S50); AX S4 (S53's marks named by color); AX S5 (S51, S53, S58's tables); any of your specs the sweep finds |
+| Editor | AX M1 (Rule 14.75's words on the band's ink); AX S4's words; AX S10 (chapter 14's words that stopped the simulated reader) |
+| Systems designer | AX S10 (chapter 15's plates) |
+| Research lead | AX S8's data side (D3-905) |
+| Data lead | AX M1's ruling (with B-M1, BC S6); AX S9's call |
