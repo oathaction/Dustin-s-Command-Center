@@ -94,7 +94,7 @@ Values copied from a publisher (Census tables, FHFA, CBP, the FEC's dollars, the
 
 **P2-S2, margins for S01 and S13.**
 - S01's survey: the Program for Public Consultation's own page says the 2,625-voter sample, fielded May 19 to 30, 2023, has "a margin of error of +/- 1.9%". It gives no margin for each party's voters and states no confidence level (ledger P7-043; request ENG-9).
-- S13: the Bureau of Labor Statistics publishes sampling errors for employment levels and for one-, three- and twelve-month changes, and none for a change as long as S13's 56 months; for levels it gives relative standard errors of 0.1 percent (total nonfarm), 0.3 (professional and business services; health care and social assistance) and 0.9 (information), and it says "estimates of variance are not available for government sectors". Read through the web-fetch tool, first 100,000 characters of the page (ledger P7-044; request ENG-9). A sentence for S13's note: "The Bureau publishes no sampling error for a change over this many months; for employment levels it gives errors of 0.1 to 0.9 percent in these industries, and none for government."
+- S13: the Bureau of Labor Statistics publishes sampling errors for employment levels and for one-, three- and twelve-month changes, and none for a change as long as S13's 56 months; for levels it gives relative standard errors of 0.1 percent (total nonfarm), 0.3 (professional and business services; health care and social assistance) and 0.9 (information), and it says "estimates of variance are not available for government sectors". Read through the web-fetch tool, first 100,000 characters of the page (ledger P7-044; request ENG-9). A sentence for S13's note: "The Bureau publishes no sampling error for a change over this many months. For employment levels it gives relative standard errors of 0.1 to 0.9 percent in these industries, each one standard error, smaller than a 90 percent margin of error, and none for government."
 
 **P2-S7, S06's 2036.** V7's scenarios name no horizon in their introduction or fields; 2036 appears in one scenario's own words (iv-d, "flat through 2036"), and scenario ii is named "State and local track by 2030". The year comes from V7's outcome indicators: `outcomes.indicator_note` says "Each indicator gives its latest reading and two thresholds for 2036", and each indicator carries a `baseline_2026`. For the Explainer maker: either cite that ("directions for the outcome families the atlas measures against thresholds for 2036, from a 2026 baseline") or drop the year, as the reviewer offers.
 
@@ -106,7 +106,7 @@ Values copied from a publisher (Census tables, FHFA, CBP, the FEC's dollars, the
 New requests to the engineer:
 
 - **ENG-8. Derived files stored from rounded figures (D3-95, statistics P2-M1).** Please compute `fec-presidential-shift-by-state`'s margins and shifts from the vote counts in `fec-presidential-results-by-state` (margin = (rep_votes − dem_votes) / total_votes × 100), unrounded, and `fred-payrolls-by-sector-change`'s percent change from the levels, unrounded. The reviewer's four cells (North Dakota 2024, 36.446; North Carolina 2020, 1.348; Mississippi 2020, 16.545; professional and business services, 1.348 percent) then print right.
-- **ENG-9. Margins in two sidecars (P2-S2).** In `v7-stock-trading-ban.meta.json`, add a note: "The Program for Public Consultation gives the full sample's margin of error as plus or minus 1.9 percent (https://publicconsultation.org/united-states/stock-trading-by-members-of-congress/, read November 11, 2026); it gives none for each party's voters and states no confidence level." In `fred-payrolls-by-sector.meta.json`, add: "The Bureau of Labor Statistics publishes sampling errors for levels and for one-, three- and twelve-month changes (All Employees Standard Error Tables, https://www.bls.gov/web/empsit/cesvarae.htm, read November 11, 2026), none for longer changes, and none for government sectors."
+- **ENG-9. Margins in two sidecars (P2-S2).** In `v7-stock-trading-ban.meta.json`, add a note: "The Program for Public Consultation gives the full sample's margin of error as plus or minus 1.9 percent (https://publicconsultation.org/united-states/stock-trading-by-members-of-congress/, retrieved November 11, 2026); it gives none for each party's voters and states no confidence level; the figure is in percentage points." In `fred-payrolls-by-sector.meta.json`, add: "The Bureau of Labor Statistics publishes sampling errors for levels and for one-, three- and twelve-month changes (All Employees Standard Error Tables, https://www.bls.gov/web/empsit/cesvarae.htm, retrieved November 11, 2026), none for longer changes, and none for government sectors."
 
 Routine calls:
 
@@ -125,6 +125,16 @@ Not tested:
 - Missouri's certified count or its certification date; the state's results site refused, and the date in chapter 01's plate was not checked here.
 - The Bureau's change errors for twelve months by industry (Tables 3 and 4 lie past the part of the page the tool read).
 - Whether any spec already names a renamed Treasury column; none of rows 26, 44, 48 or 80 is drawn yet.
+
+## Second pass
+
+DR-191's read (`work/handoffs/phase-3/20261111_Round-0-Editor-Notes.md`, "Fix pass read") found two faults in printed source lines I own; both are fixed at their source and the files rebuilt. The contract check reads 61 tables with 0 faults.
+
+- **D1, straight apostrophes.** `v7-claims-drug-prices` and `v7-issues` printed "atlas's" beside a curly "Oath & Action’s". I fixed it where every printed line is written: `research_v7_extract.py` and my freeze library now set every apostrophe in a printed source line and its variants curly. That closed six more lines of mine with the same fault (the tenure, labor force, NHE shares, housing bills, Fed projections and margin-of-error tables). A script over all 61 sidecars finds no straight apostrophe in any printed line or variant.
+- **D2, a figure under ten.** `v7-numbers` now prints "headline figures, eight figures" (H06), and the script asserts there are eight.
+- **For E4 and E13 (the Explainer maker's words).** St. Charles County's page lists Proposition A's statewide figures under "Unofficial Election Results" and does not name where it took them, so whether the county copied the Secretary of State's count is not on the record; the state's results site refused our reader. I left the attribution to the county, as the page gives it. My suggested S13 sentence and ENG-9 now say "relative standard errors", note that each is one standard error, smaller than a 90 percent margin of error, and write "retrieved".
+
+D3-xxx | Every printed source line my scripts write sets its apostrophes curly | Rule 06's typography, fixed once in the shared writer so no line can miss it
 
 ## Routine calls
 

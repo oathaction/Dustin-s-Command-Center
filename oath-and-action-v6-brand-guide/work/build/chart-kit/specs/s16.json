@@ -22,7 +22,7 @@
   "measure_line": "Citizens 18 and over who said they voted in November 2024, percent, by state; circles sized by the number of citizens 18 and over; 50 states and DC",
   "notes": [
     "These rates are what people told a Census survey, which runs higher than counted ballots. The states’ 90 percent margins of error run from 1.6 to 5.6 points, so a gap of a few points between two states may not be real.",
-    "Texas, Florida and New York each sit below the national rate by more than their 90 percent margins of error; California’s 64.7 percent is within its margin of the nation’s 65.3.",
+    "Texas, Florida and New York each sit below the national rate by more than their 90 percent margins of error; California’s 64.7 percent is within its margin of error of the nation’s 65.3.",
     "Most citizens 18 and over: California 25.3 million, 64.7%; Texas 19.8 million, 57.9%; Florida 16.1 million, 60.3%; New York 13.7 million, 59.2%. Range: Arkansas 52.8% (±2.7) to DC 79.5% (±3.3).",
     "Each circle’s area follows the number of citizens 18 and over. Circles sit at each state’s center and move apart only where they would overlap, most in the Northeast. The table names every state.",
     "Map: U.S. Census Bureau cartographic boundary files (2017), via us-atlas 3.0.1 by Mike Bostock (ISC license)."

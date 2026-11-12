@@ -90,9 +90,10 @@
     "snapshot": "2026-10-15"
   },
   "title": "Of the 64 rule changes in its log, the atlas codes 24 as moving the rules toward voters and 24 as moving them away.",
-  "measure_line": "Each square is one entry in the repair log, the dated list of changes to the rules that decide who officials answer to, kept by the atlas, Oath & Action’s own research, placed by year and by the atlas’s direction code, 1965 to the November 3, 2026 ballot. The count above each year gives every entry the log holds that year.",
+  "measure_line": "Each square is one entry in the atlas’s repair log, its dated list of changes to the rules that decide who officials answer to, placed by year and by the direction the atlas assigns it, 1965 to the November 3, 2026 ballot",
   "notes": [
-    "As of November 11, 2026: voters have cast their ballots on all three measures this chart counts as pending (repair-log entries RL62, RL63 and RL64), and none is certified. Massachusetts Question 3, for one all-candidate primary with the top two advancing, failed 61.0 percent to 39.0 in the unofficial count. Missouri Proposition A, the referendum on the 2025 congressional map, failed 61.8 percent to 38.2 in the unofficial statewide count; a no vote keeps the 2022 districts. Alaska Ballot Measure 2, which would repeal the top-four primary and ranked-choice general elections, trailed 47.4 percent to 52.6 in the unofficial count of November 10, with mailed and overseas ballots still to come. Sources: NBC Boston, Massachusetts ballot question results, November 9, 2026, a secondary source; State of Alaska, Division of Elections, 2026 General Election summary report, unofficial results, November 10, 2026; St. Charles County, Missouri, unofficial statewide returns, November 4, 2026. Retrieved November 11, 2026.",
+    "As of November 11, 2026: voters have cast their ballots on all three measures this chart counts as pending (repair-log entries RL62, RL63 and RL64), and none is certified. Massachusetts Question 3, for one all-candidate primary with the top two advancing, failed 61.0 percent to 39.0 in the unofficial count. Missouri Proposition A, the referendum on the 2025 congressional map, failed 61.8 percent to 38.2 in the unofficial statewide count; a no vote keeps the 2022 districts. Alaska Ballot Measure 2, which would repeal the top-four primary and ranked-choice general elections, trailed 47.4 percent to 52.6 in the unofficial count of November 10, with mailed and overseas ballots still to come. Sources: NBC Boston, Massachusetts ballot question results, November 9, 2026, a secondary source; State of Alaska, Division of Elections, 2026 General Election summary report, unofficial results, November 10, 2026; Missouri Secretary of State, unofficial statewide returns, via St. Charles County, Missouri, November 4, 2026. Retrieved November 11, 2026.",
+    "The count above each year gives every entry the log holds that year.",
     "The first year group, To 2012, holds every entry from 1965 to 2012.",
     "Open squares count toward voters and solid squares away from voters; the band below holds entries that went neither way.",
     "The atlas chose which 64 changes to record, and it records more of recent years: 33 of the 64 entries fall in 2025 and 2026.",
@@ -144,7 +145,7 @@
     ]
   },
   "chart_notes": [
-    "Rows: all entries per year; toward voters, above the year labels; away from voters, below them; neither way (voters kept existing rules when a ballot measure failed, mixed, or pending on November 3, 2026). Years with no entry keep their column and print 0.",
+    "Rows: all entries per year; toward voters, above the year labels; away from voters, below them; neither way: a failed measure that kept the rules, a mixed change, or a measure pending on November 3, 2026. Years with no entry keep their column and print 0.",
     "Key: open square, toward voters; solid square, away from voters; gray square, voters kept existing rules; hatched square, mixed; dashed outline, pending on November 3, 2026."
   ],
   "phone": "same",

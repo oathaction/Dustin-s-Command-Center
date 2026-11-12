@@ -38,13 +38,13 @@
    "description": "V7's check note"
   }
  },
- "title_or_table": "headline figures, 8 numbers with captions, qualifications and sources",
+ "title_or_table": "headline figures, eight figures with captions, qualifications and sources",
  "table_id": "numbers",
  "observation_period": "Each figure states its own period; all checked October 15, 2026",
  "universe_or_base": "The atlas's headline figures",
  "unit": "figures, each in its own unit",
  "qualification": "Each figure carries its own qualification, printed with it; several describe events that may have moved since the snapshot, such as Alaska's Ballot Measure 2, decided on November 3, 2026",
- "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, headline figures, 8 numbers, checked October 15, 2026, United States. Snapshot of October 15, 2026. Each figure carries its own source and qualification.",
+ "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, headline figures, eight figures, checked October 15, 2026, United States. Snapshot of October 15, 2026. Each figure carries its own source and qualification.",
  "domain": "all",
  "domain_note": "The eight figures come from several domains",
  "states": []

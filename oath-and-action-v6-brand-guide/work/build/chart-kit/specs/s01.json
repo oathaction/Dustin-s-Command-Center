@@ -21,7 +21,7 @@
   "reading_guide": "The May 2023 survey asked about a stock-trading ban alone, three years before either vote on H.R. 7008, the Stop Insider Trading Act. As the House passed it, the bill would bar members of Congress, their spouses and dependent children from buying individual stocks, and it would require photo ID to vote in federal elections.",
   "measure_line": "Registered voters who favor a ban, percent, by party, survey of May 2023, United States; the votes on H.R. 7008 in the House (July 22, 2026) and the Senate (September 30, 2026), by party",
   "notes": [
-    "Survey of 2,625 registered voters, May 19 to 30, 2023, three years before either vote. The Program for Public Consultation gives a margin of error of plus or minus 1.9 percent for the whole sample, with no confidence level stated and none by party.",
+    "Survey of 2,625 registered voters, May 19 to 30, 2023, three years before either vote. The Program for Public Consultation gives a margin of error of plus or minus 1.9 percentage points for the whole sample, with no confidence level stated and none by party.",
     "The two parties sit one point apart; the bars run from 0 to 100 percent.",
     "House roll call 280, on passing the bill: Republicans voted 218 to 0 and Democrats 13 to 198, with one Democrat not voting; the one independent voted yes. Senate vote 253, on ending debate on taking up the bill: Republicans voted 53 to 0, Democrats 0 to 45 and independents 0 to 2.",
     "Taking up the bill needed 60 votes, three-fifths of the Senate, to end debate (cloture)."
@@ -52,7 +52,7 @@
     ]
   },
   "chart_notes": [
-    "The votes on H.R. 7008, which pairs a limit on members’ stock purchases with a photo ID requirement to vote in federal elections, by party: the House passed it, 232 to 198, Republicans 218 for and 0 against, Democrats 13 for and 198 against, and one independent for; the Senate vote to take it up fell short, 53 to 47, Republicans 53 for, Democrats 45 against and independents 2 against, seven votes short of the 60 needed."
+    "The votes on H.R. 7008, which pairs a limit on members’ stock purchases with a photo ID requirement to vote in federal elections, by party: the House passed it, 232 to 198, Republicans 218 for and 0 against, Democrats 13 for and 198 against, and one independent for; the Senate vote to take it up got 53 of the 60 votes it needed, 53 to 47: Republicans 53 for, Democrats 45 against and independents two against."
   ],
   "phone": "same",
   "artboard": "reading",

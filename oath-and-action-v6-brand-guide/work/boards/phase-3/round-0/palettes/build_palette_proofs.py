@@ -90,6 +90,11 @@ def dE(a, b):
     return round(C.delta_e_ok(a, b), 3)
 
 
+def nw(n):
+    """H06: a number under ten in prose is a word."""
+    return ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'][n] if 0 <= n < 10 else str(n)
+
+
 def luma(h):
     """The gray level CSS filter grayscale(1) gives: Rec. 709 weights on the encoded components."""
     r, g, b = C.hex_to_rgb(h)
@@ -1059,7 +1064,7 @@ def ramp_plate(pid, ground, m):
         else:
             c = m['closest'][k]
             if cat:
-                sims.append(f'<div class="simv">Closest pair, {e(c["between"][0])} and {e(c["between"][1])[-1]}: <b>{c["delta_e_ok"]:.3f}</b></div>')
+                sims.append(f'<div class="simv">Closest pair, Groups {e(c["between"][0])[-1]} and {e(c["between"][1])[-1]}: <b>{c["delta_e_ok"]:.3f}</b></div>')
             else:
                 sims.append(f'<div class="simv">Closest neighbors: <b>{c["delta_e_ok"]:.3f}</b></div>')
     extra = []
@@ -1185,7 +1190,7 @@ def tile_map(ground):
     body.append(f'<rect x="{ux}" y="0" width="{ts}" height="{ts}" style="fill:var(--seq{k})"/>')
     body.append(text(ux + 5, 16, 'U.S.', 't13 b', f'var(--seql{k})'))
     body.append(text(ux + 5, 38, f'{us:.1f}', 't13', f'var(--seql{k})'))
-    body.append(tspan_lines(ux + ts + 10, 16, ['United States,', f'margin {US_TURNOUT_MOE:g}'], 17, 't13', 'var(--csec)'))
+    body.append(tspan_lines(ux + ts + 10, 16, ['United States,', 'margin of error', f'{US_TURNOUT_MOE:g} points'], 17, 't13', 'var(--csec)'))
     for t in TILE:
         v = TURNOUT[t['code']]['pct']
         s = seq_step(v)
@@ -1875,11 +1880,11 @@ def build_page(M, CK):
            '<p>Every data palette our charts use, drawn on each ground it may sit on, with its contrast, its grayscale and '
            'three simulations of color-vision deficiency. Two colors are new: the Prussian steps that let the diverging '
            'scale work in the dark theme. Every other proposed token reuses a value the tokens already hold.</p>'
-           f'<p>Swatches marked In tokens come from release {e(RELEASE)}. Swatches marked Proposed come from the palette '
+           f'<p>Swatches marked In tokens come from release {e(RELEASE)}; those marked Proposed come from the palette '
            'proposal and wait for board 1. The charts on this sheet draw real data, each with its source line, and every '
            'number on the sheet comes from its build script.</p></div></div>'
            f'<ul class="facts"><li><b>{n_colors}</b><span>new colors, both Prussian mixed toward Newsprint in OKLab</span></li>'
-           f'<li><b>{n_tokens}</b><span>proposed tokens: the {n_colors} new colors, {n_roles} color roles that point at values the release already holds, and {n_tokens - n_colors - n_roles} for the grade line code</span></li>'
+           f'<li><b>{n_tokens}</b><span>proposed tokens: the {nw(n_colors)} new colors, {n_roles} color roles that point at values the release already holds, and {n_tokens - n_colors - n_roles} for the grade line code</span></li>'
            '<li><b>0</b><span>new hues. The categorical set stays with the four brand inks (DR-234)</span></li>'
            f'<li><b>{sum(1 for c in CK if c["passes"])}</b><span>of {len(CK)} scripted checks pass on this sheet</span></li></ul></div>'
            '<div class="tools"><fieldset><legend>View this sheet as</legend>'
@@ -1908,8 +1913,9 @@ def build_page(M, CK):
                                         'Reported voting among citizens 18 and over, percent, November 2024, 50 states and DC, '
                                         'in five steps. Every tile prints its value, so no reader has to match a shade.',
                                         tile_map('newsprint'), TURNOUT_SOURCE,
-                                        f'<p class="fn">The United States stood at {US_TURNOUT:g} percent, margin {US_TURNOUT_MOE:g} '
-                                        f'points, set apart beside the key (DR-64). State margins of error run from '
+                                        f'<p class="fn">The United States stood at {US_TURNOUT:g} percent, margin of error '
+                                        f'{US_TURNOUT_MOE:g} points at 90 percent confidence, set apart beside the key (DR-64). '
+                                        f'State margins of error run from '
                                         f'{MOE_RANGE[0]} to {MOE_RANGE[1]} points, so a state near a step\'s edge may belong '
                                         'in the next step; every tile prints its value, and no tile is ranked.</p>'), 'tile-newsprint'),
             applied('charcoal', figure('Proof on real data, Charcoal', 'The same map in the dark theme',
@@ -2008,10 +2014,10 @@ def build_page(M, CK):
         'added (M1). Each pattern is a multiple of the line\'s width, as Rule 10.10 sets it, so the 6 px lit route keeps its texture.',
         '<p>Every value comes from one source, the atlas build\'s own <code>wire_marks</code> and its constants, read by '
         'script (D3-84). The tokens carry each pattern per 1 px of width, and the kit stretches it so a line starts and ends '
-        'on ink. Phase 0 read V7\'s renderer\'s dash arrays as 9 and 4 for plausible, 9, 3, 2 and 3 for contested, and 2 '
+        'on ink. Phase 0 read the dash arrays in V7\'s drawing code as 9 and 4 for plausible, 9, 3, 2 and 3 for contested, and 2 '
         'and 4 for hypothesis; on a 2 px line the build draws 8 and 4, then 8, 3, 2 and 3, then round dots 5 px apart.</p>'
-        f'<p>No coded line drops under 2 px. A run shorter than {MIN_RUN} widths, key samples included, prints its grade in '
-        f'words beside it: {MIN_RUN * 2} px on a 2 px line.</p>',
+        f'<p>No coded line drops under 2 px. A run shorter than {MIN_RUN} line widths ({MIN_RUN * 2} px on a 2 px line), '
+        'counted after any lead-in, prints its grade in words beside it, and a sample in a key runs at least that long.</p>',
         line_code_values() + lead_in_plate() +
         '<div class="plate g-newsprint"><div class="ph"><h3>At true size</h3><p>Each grade at 2, 3 and 6 px, in color and in black, 168 px long.</p></div>'
         + line_code_table(1, caption='The grade line code at true size, in five treatments') +
@@ -2077,6 +2083,27 @@ H2_RE = re.compile(r'<h2[^>]*>(.*?)</h2>', re.S)
 HEAD_RE = re.compile(r'<(?:h2|h3)[^>]*>(.*?)</(?:h2|h3)>|<p class="(?:ft|vlab[^"]*)"[^>]*>(.*?)</p>', re.S)
 
 
+def curly(page):
+    """Second pass P1: every apostrophe a reader meets is the typographer's (U+2019), in text and in the names and alt
+    texts screen readers speak; style, script and code are left as written."""
+    AP = '\u2019'
+
+    def fix(s):
+        s = s.replace('&#x27;', "'")
+        s = re.sub(r"(?<=[A-Za-z0-9])'(?=[A-Za-z])", AP, s)       # Charcoal's, don't
+        s = re.sub(r"(?<=s)'(?=[\s,.;:)]|$)", AP, s)              # sectors' jobs
+        return s
+    out = []
+    for part in re.split(r'(<style.*?</style>|<script.*?</script>|<code>.*?</code>|<[^>]+>)', page, flags=re.S):
+        if part.startswith('<style') or part.startswith('<script') or part.startswith('<code>'):
+            out.append(part)
+        elif part.startswith('<'):
+            out.append(re.sub(r'((?:aria-label|data-label|alt|title)=")([^"]*)(")', lambda m: m.group(1) + fix(m.group(2)) + m.group(3), part))
+        else:
+            out.append(fix(part))
+    return ''.join(out)
+
+
 def focusable_frames(page):
     """Access review S10: every sideways scroll frame is a named region a keyboard can reach. Each frame takes
     tabindex="0", role="region" and a name from the nearest heading before it; the page script removes all three from a
@@ -2103,7 +2130,10 @@ def focusable_frames(page):
 def main():
     M = all_measures()
     CK = checks(M)
-    page, n_frames = focusable_frames(build_page(M, CK))
+    page, n_frames = focusable_frames(curly(build_page(M, CK)))
+    visible = re.sub(r'<style.*?</style>|<script.*?</script>|<code>.*?</code>', '', page, flags=re.S)
+    straight = [m.group(0) for m in re.finditer(r".{12}(?:'|&#x27;).{12}", re.sub(r'<[^>]+>', ' ', visible))]
+    assert not straight, f'straight apostrophes left in the words: {straight[:5]}'
     assert '—' not in page and '‑' not in page, 'em dash or U+2011 in the page'
     used = set(re.findall(r'var\((--oa-[a-z0-9-]+)\)', page))
     defined = set(re.findall(r'(--oa-[a-z0-9-]+):', page))

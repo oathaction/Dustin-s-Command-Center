@@ -55,6 +55,7 @@ def write(name, rows, columns, meta):
             'geography': 'United States', 'date_retrieved': SNAP, 'vintage': 'Atlas V7 snapshot of October 15, 2026',
             'snapshot': SNAP, 'ledger_row': LEDGER, 'columns': columns}
     base.update(meta)
+    base['printed_source_line'] = base['printed_source_line'].replace("'", '\u2019')
     txt = json.dumps(base, ensure_ascii=False, indent=1)
     assert '—' not in txt and 'isclos' not in txt, name
     (OUT / f'{name}.meta.json').write_text(txt + '\n', encoding='utf-8')
@@ -135,12 +136,13 @@ for n, x in enumerate(V7['numbers'], 1):
 cols = {'order': col('integer', 'order in V7'), 'figure': col('text', 'the figure as V7 prints it'), 'caption': col('text', 'V7\'s caption'), 'qualification': col('text', 'V7\'s qualification'),
         'kind': col('category', 'kind of figure, as V7 labels it'), 'sources': col('text', 'V7 source IDs, joined by "; "'), 'verified_status': col('text', 'V7\'s check note')}
 write('v7-numbers', rows, cols, {
-    'title_or_table': f'headline figures, {len(rows)} numbers with captions, qualifications and sources', 'table_id': 'numbers',
+    'title_or_table': 'headline figures, eight figures with captions, qualifications and sources', 'table_id': 'numbers',
     'observation_period': 'Each figure states its own period; all checked October 15, 2026',
     'universe_or_base': 'The atlas\'s headline figures', 'unit': 'figures, each in its own unit',
     'qualification': 'Each figure carries its own qualification, printed with it; several describe events that may have moved since the snapshot, such as Alaska\'s Ballot Measure 2, decided on November 3, 2026',
-    'printed_source_line': f'Source: {PUB}, headline figures, {len(rows)} numbers, checked October 15, 2026, United States. Snapshot of October 15, 2026. Each figure carries its own source and qualification.',
+    'printed_source_line': f'Source: {PUB}, headline figures, eight figures, checked October 15, 2026, United States. Snapshot of October 15, 2026. Each figure carries its own source and qualification.',
     'domain': 'all', 'domain_note': 'The eight figures come from several domains', 'states': []})
+assert len(rows) == 8
 
 # 5. Status of six checks-on-power issues (status chips)
 PICK = ['I068', 'I070', 'I163', 'X05', 'X06', 'X18']
