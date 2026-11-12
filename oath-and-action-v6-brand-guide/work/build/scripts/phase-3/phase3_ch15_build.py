@@ -2105,6 +2105,244 @@ def rule_15_14(book):
     }
 
 
+def rule_15_15(book):
+    """Worked example 3: Loop B4 beside Loop R10, through Variable C3, which both hold (Master Brief section 14)."""
+    b4, r10 = LOOP["B4"], LOOP["R10"]
+    need([c for c, _ in b4["chain"]] == ["D5", "C3", "C5"] and b4["links"] == ["L23", "L24", "L54"] and b4["type"] == "B"
+         and [link(x)["polarity"] for x in b4["links"]] == ["-", "+", "+"], "Loop B4 changed")
+    need([c for c, _ in r10["chain"]] == ["C1", "C2", "C3", "C4"] and r10["links"] == ["L08", "L25", "L53", "L42"]
+         and r10["type"] == "R", "Loop R10 changed")
+    both = sorted(set(c for c, _ in b4["chain"]) & set(c for c, _ in r10["chain"]))
+    need(both == ["C3"], f"Loops B4 and R10 share {both}, where the example follows Variable C3 alone")
+    need([link(x)["evidence"] for x in b4["links"]] == ["well-supported"] * 3, "Loop B4's grades changed")
+    need(r10["evidence"].endswith("plausible for C3 to C4 (the weakest link)"), "Loop R10's weakest link changed")
+    c3 = node("C3")
+    need(short("C3") == "Electoral pressure" and c3["title"] == "Risk of losing office", "Variable C3's names changed")
+    ep = GLOSS["Electoral pressure"]
+    need(ep == "The credible chance that an official will lose office. It can change behavior before any election removes anyone.",
+         "the atlas's entry for electoral pressure changed")
+    qual = "The loop works only where seats are competitive."
+    need(b4["qualification"].startswith(qual), "Loop B4's qualification changed")
+    val = b4["valence"]
+    need("Its strength depends on C1: Seats with little electoral competition, C2: How often the primary decides the winner," in val,
+         "Loop B4's valence changed")
+    # in and out of Variable C3 in each loop: the connection that arrives and the one that leaves
+    ins = {"B4": ("L23", "L24"), "R10": ("L25", "L53")}
+    for k, (a, b_) in ins.items():
+        need(link(a)["to"] == "C3" and link(b_)["from"] == "C3" and a in LOOP[k]["links"] and b_ in LOOP[k]["links"],
+             f"Variable C3's steps in Loop {k} changed")
+    cols = []
+    specs_ = (("B4", "balancing", 3), ("R10", "reinforcing", 4))
+    for lid, kind, n in specs_:
+        lp = LOOP[lid]
+        codes = [c for c, _ in lp["chain"]]
+        if n == 3:
+            b, h = three_loop(codes, lp["links"], inside=(lid, kind), shared={"C3"})
+        else:
+            b, h = four_loop(codes, lp["links"], inside=(lid, kind), shared={"C3"})
+        a, b_ = ins[lid]
+        steps = (f'<p class="k">Variable C3 in this loop</p>'
+                 + kw([f'<b>In</b>&#160;{gl(a)}: “{e(link(a)["sign_meaning"])}”',
+                       f'<b>Out</b>&#160;{gl(b_)}: “{e(link(b_)["sign_meaning"])}”']))
+        cols.append(f'<div>{label_for(lp["links"], "the grade of the loop’s least certain step")}{hed("Loop", lid, lp["title"])}'
+                    f'{fig(svg_wrap(b, h), read_aloud(codes, lp["links"]))}{steps}</div>')
+    meet = (f'<p class="k">Where the two loops meet</p>'
+            f'<p class="nt">{chip("Variable", "C3", ",")} {e(lc(c3["title"]))}, is the pill filled in ink in both drawings. '
+            f'The atlas calls it electoral pressure: “{e(ep)}”</p>'
+            f'<p class="nt">Loop B4, in the atlas’s words, “{e(qual[len("The loop "):])}” Its strength depends on '
+            f'{chip("Variable", "C1")} and {chip("Variable", "C2", ",")} which Loop R10’s first step joins.</p>')
+    body = (f'<div class="fx pr">{"".join(cols)}</div><div class="kb">{meet}</div>'
+            + src("loops B4 and R10, their connections, and the glossary entry for electoral pressure"))
+    book.add("s-15-15-correct", body, rule="15.15", readable=True, wide=True,
+             alt=(f"Loop B4, “{b4['title']}”, beside Loop R10, “{r10['title']}”, from our systems atlas. Both pass through "
+                  "Electoral pressure, the pill filled in ink in each drawing. Loop B4 draws three pills, Public service "
+                  "quality, Electoral pressure and Sanction applied, its steps marked minus, plus and plus, balancing. Loop R10 "
+                  "draws four on a square, Safe seats, Primary decisiveness, Electoral pressure and Incumbent control of election "
+                  "rules, its steps marked plus, minus, minus and plus, reinforcing. Under each, the connection into Electoral "
+                  f"pressure and the one out of it, with the atlas’s sentences. In Loop B4: {link('L23')['sign_meaning']} "
+                  f"{link('L24')['sign_meaning']} In Loop R10: {link('L25')['sign_meaning']} {link('L53')['sign_meaning']} "
+                  f"A note says Variable C3, risk of losing office, is the shared variable, which the atlas defines: {ep} Loop "
+                  "B4 works only where seats are competitive, and its strength depends on Variable C1 and Variable C2, which "
+                  "Loop R10’s first step joins."),
+             notes="Both loops read by script; the shared variable found as the intersection of their chains; the in and out "
+                   "connections of Variable C3 checked against each loop.")
+    book.log("15.15 correct", "Loop B4, public services", "D04")
+    book.log("15.15 correct", "Loop R10, safe seats", "D02")
+    fcols = []
+    for lid, kind, n in specs_:
+        lp = LOOP[lid]
+        codes = [c for c, _ in lp["chain"]]
+        labels = [short(c) if c != "C3" or lid == "B4" else c3["title"] for c in codes]
+        if n == 3:
+            b, h = three_loop(codes, lp["links"], inside=(lid, kind), labels=labels)
+        else:
+            b, h = four_loop(codes, lp["links"], inside=(lid, kind), labels=labels)
+        fcols.append(f'<div>{hed("Loop", lid, lp["title"])}{fig(svg_wrap(b, h))}</div>')
+    fail = dnp() + f'<div class="fx pr">{"".join(fcols)}</div>'
+    book.add("s-15-15-failure", fail, rule="15.15", wide=True,
+             alt=(FC + "The same two loops side by side, with the shared variable named Electoral pressure in Loop B4 and Risk "
+                  "of losing office in Loop R10, in plain pills, with no chip and no word that the two are one variable."),
+             notes="Labeled failure: the shared variable under two names and no mark, so the loops read as unrelated.")
+    return {
+        "id": "15.15",
+        "title": "Follow a variable two loops share through each loop in turn.",
+        "rule": [
+            f"Loop B4, “{b4['title']}”, and Loop R10, “{r10['title']}”, both pass through Variable C3, "
+            f"{lc(c3['title'])}. Draw the two loops side by side, give the shared variable the same short name in both, and "
+            "fill its pill in ink in each drawing, the one place a pill takes a fill. Under each loop, print the connection "
+            "that brings a change into the shared variable and the one that carries it on, with the atlas’s sentence on each sign.",
+            "Then say where the loops meet, in the atlas’s words. Loop R10 lowers the risk of losing office as primaries "
+            "decide more seats, and Loop B4 turns that same risk into defeats that improve public services. The atlas says "
+            f"Loop B4 “{qual[len('The loop '):][:-1]}”.",
+        ],
+        "tokens": [TOKEN_LINE],
+        "why": {"text": ["Two loops drawn apart look like two separate stories. A variable they share is where one can weaken or "
+                         "strengthen the other, and a reader can find it only if it carries one name and one mark in both."],
+                "basis": "Our systems atlas, Loops B4 and R10 and the glossary entry “Electoral pressure”"},
+        "correct": {"specimen": "s-15-15-correct",
+                    "caption": "Loop B4 beside Loop R10, with Variable C3 filled in ink in both, the connections in and out of it "
+                               "in each loop, and the atlas’s words on where the two meet."},
+        "failure": {"specimen": "s-15-15-failure",
+                    "caption": "<strong>Fails Rule 15.15.</strong> The shared variable takes a different name in each loop and "
+                               "no mark, so the loops read as unrelated. Both pass through Variable C3, the risk of losing office."},
+        "specs": [
+            {"label": "Order", "value": "The two loops side by side from 680 px, one under the other below it"},
+            {"label": "Shared variable", "value": "One short name in both drawings, its pill filled in ink with its name in the surface color",
+             "token": "oa.color.graphic.essential.onNewsprint"},
+            {"label": "In and out", "value": "Under each loop, the connection into the shared variable and the one out of it, with "
+                                             "their chips, grade words and the atlas’s sentences on their signs"},
+            {"label": "Where they meet", "value": "The atlas’s words, quoted, with the shared variable’s chip"},
+        ],
+        "related": ["13"],
+        "builders": ["Find the shared variable as the overlap of the two loops’ chains, by script, and stop the build if the "
+                     "loops share none or more than the one the page follows."],
+    }
+
+
+def effect_rows(r):
+    """One row for each outcome family: its name, then the pips, the atlas's code and its words (Rule 13.5's mark). The
+    families keep the atlas's order and no row adds them."""
+    out = []
+    for fam in ("DQ", "GE", "EP", "EQ"):
+        v = r["effects"][fam]
+        code = v.split(" ")[0]
+        need(code in EFFECT_WORDS, f"reform {r['id']}'s effect {v!r} has no code")
+        qual = v[len(code):].strip()
+        words = EFFECT_WORDS[code] + (f", {qual}" if qual else "")
+        out.append(f'<li><span>{e(FAMILY[fam])}</span><span class="fv">{C13.pips_svg(code)}'
+                   f'<span><b>{e(code.replace("-", MINUS))}</b> {e(words)}</span></span></li>')
+    return '<ul class="ef">' + "".join(out) + "</ul>"
+
+
+def route_rows(r, dated=True):
+    """One row for each route: its chip and name, who acts, the feasibility word, and the route's own check date or
+    "Not checked" in the same type and place (Rule 13.10). dated=False is a failure plate's: every route under one date."""
+    out = []
+    for x in r["routes"]:
+        when = (f"Checked {C13.words_date(x['checked'])}" if x["checked"] else "Not checked") if dated else f"Checked {SNAP}"
+        out.append(f'<li><span>{chip("Route", x["route"])} {e(C13.ROUTE_NAME[x["route"]])}</span>'
+                   f'<p class="sub">{e(x["who"])}</p>'
+                   f'<span class="rd"><span><b>{e(x["feasibility"].capitalize())}</b> feasibility</span><span>{e(when)}</span></span></li>')
+    return '<ul class="ef">' + "".join(out) + "</ul>"
+
+
+FAMILY, EFFECT_WORDS = C13.FAMILY, C13.EFFECT_WORDS
+
+
+def rule_15_16(book):
+    """Worked example 4: Reform R-01 at its actual targets, its effects with no total and its routes with their dates.
+    R-01 is drawn as every other reform is (DR-223), and the page carries no disclosure (DR-100)."""
+    r = reform("R-01", ["L25", "L08", "C2"], ["R10", "B4", "R11"], "rules", "plausible", "plausible_contested")
+    need(r["effects"] == {"DQ": "+M", "GE": "+S", "EP": "0", "EQ": "0"}, "Reform R-01's effects changed")
+    need(r["effects_confidence"] == "medium (participation); low (moderation)", "Reform R-01's confidence changed")
+    rts = [(x["route"], x["feasibility"], x["checked"]) for x in r["routes"]]
+    need(rts == [("BI", "medium", "2026-10-15"), ("SS", "low", None), ("LOC", "medium", "2026-10-15"), ("FS", "very low", None)],
+         f"Reform R-01's routes changed: {rts}")
+    note = V7["outcomes"]["effect_codes_note"]
+    q_note = "The codes are conditional on the reform working as described, and codes for different families are never added together."
+    need(q_note in note, "the atlas's note on effect codes changed")
+    feas = GLOSS["Feasibility"]
+    need(feas.endswith("The Atlas rates it high, medium, low or very low for 2026 to 2030."), "the atlas's entry for feasibility changed")
+    lp = LOOP["R10"]
+    codes = [c for c, _ in lp["chain"]]
+    tg = set(r["targets"])
+    b, h = four_loop(codes, lp["links"], inside=("R10", "reinforcing"), targets=tg)
+    svg = svg_wrap(b, h)
+    pe, re_ = r["problem_evidence"]["grade"], r["remedy_evidence"]["grade"]
+    words = (hed("Reform", "R-01", r["title"]) + acts_note("R-01", r)
+             + f'<p class="k">Its targets</p>{kw(target_items(r, set(codes) | set(lp["links"])))}'
+             + f'<p class="k">Its loops</p>{loops_p(r, "R10")}'
+             + f'<p class="k">Its evidence</p>'
+             + f'<p class="nt">Of the problem: {grade_word(pe)}. For the remedy: {grade_word(re_)}.</p>')
+    fx = (f'<div><p class="k">Effects by outcome family, as of {SNAP}</p>{effect_rows(r)}'
+          f'<p class="nt">The atlas: “{e(q_note)}” Its confidence in these sizes: “{e(r["effects_confidence"])}”.</p></div>'
+          f'<div><p class="k">Routes, with the date each was checked</p>{route_rows(r)}'
+          f'<p class="nt">Feasibility is the atlas’s judgment for 2026 to 2030.</p></div>')
+    body = (label_for(lp["links"], "the grade of the loop’s least certain step")
+            + beside(hed("Loop", "R10", lp["title"]) + fig(svg), words)
+            + f'<div class="two">{fx}</div>'
+            + src("reform R-01, its targets, effects and routes, and loop R10 with its connections"))
+    fam_alt = "; ".join(f"{FAMILY[k]}, {r['effects'][k]}, {EFFECT_WORDS[r['effects'][k]]}" for k in ("DQ", "GE", "EP", "EQ"))
+    rt_alt = "; ".join(f"Route {x['route']}, {C13.ROUTE_NAME[x['route']]}, {x['who']}, {x['feasibility']} feasibility, "
+                       + (f"checked {C13.words_date(x['checked'])}" if x["checked"] else "not checked") for x in r["routes"])
+    book.add("s-15-16-correct", body, rule="15.16", readable=True, wide=True,
+             alt=(f"Reform R-01 from our systems atlas, “{r['title']}”, on Loop R10, “{lp['title']}”, drawn on a square: "
+                  "Safe seats, Primary decisiveness, Electoral pressure and Incumbent control of election rules. Step 1, from "
+                  "Safe seats to Primary decisiveness, and step 2, from Primary decisiveness to Electoral pressure, are drawn "
+                  "heavy in red, and the outline of Primary decisiveness is red; the other two steps and pills stay in ink. "
+                  f"Beside it: Connection L08, {link('L08')['name']}, documented; Connection L25, {link('L25')['name']}, well "
+                  f"supported; Variable C2, {lc(node('C2')['title'])}. Its loops: Loop R10, Loop B4 and Loop R11. Evidence of "
+                  f"the problem, plausible; for the remedy, contested. Effects by outcome family, as of {SNAP}, one row each: "
+                  f"{fam_alt}. {q_note} Routes: {rt_alt}."),
+             notes="Targets, effects, confidence and routes read from the reform's record; each route's own check date or Not "
+                   "checked; no row adds the families. No disclosure prints (DR-100).")
+    book.log("15.16 correct", "Reform R-01, primaries", "D02")
+    fail = (dnp() + hed("Reform", "R-01", r["title"])
+            + f'<p class="k">Overall effect</p><ul class="ef"><li><span>All four families</span><span class="fv">'
+              f'{C13.pips_svg("+L")}<span><b>+L</b> large positive</span></span></li></ul>'
+            + f'<p class="k">Routes</p>{route_rows(r, dated=False)}')
+    book.add("s-15-16-failure", fail, rule="15.16",
+             alt=(FC + "Reform R-01 with one overall effect for all four families, three pips and +L, large positive, and its "
+                  f"four routes each marked checked {SNAP}."),
+             notes="Labeled failure: the families added into one score, and every route given the reform's snapshot date.")
+    return {
+        "id": "15.16",
+        "title": "Show a reform’s four effects side by side, with each route’s check date.",
+        "rule": [
+            f"Reform R-01, “{r['title']}”, targets two connections and one variable on Loop R10, and sits on Loops R10, B4 "
+            "and R11. Draw it where it acts (Rule 15.11), then print its effects one outcome family to a row, each with the "
+            "atlas’s code, its words and the pips of Rule 13.5, and no row that adds them. Its routes follow, each with who "
+            "acts there, its feasibility and its own check date, or “Not checked” where the atlas gives none (Rule 13.10).",
+            f"As of {SNAP}, the atlas codes a moderate gain for the quality of democracy, a small one for government "
+            "efficacy and no expected effect on the other two. It checked the state ballot and local routes on that date, "
+            "and the state statute and federal statute routes carry no date.",
+        ],
+        "tokens": ["oa.color.data.emphasisRed.onNewsprint", TOKEN_LINE],
+        "why": {"text": ["A single score would hide what the atlas keeps apart: the families use different units, and a reform "
+                         "can help one while it costs another. A route rated without a date reads as current, and a reader "
+                         "deciding where to act needs to know which ratings the atlas checked."],
+                "basis": "Our systems atlas, Reform R-01’s profile and its note on effect codes; Rules 13.5 and 13.10"},
+        "correct": {"specimen": "s-15-16-correct",
+                    "caption": f"Reform R-01 at its targets on Loop R10, with its four effects one family to a row and its "
+                               f"four routes each dated or marked not checked, as of {SNAP}."},
+        "failure": {"specimen": "s-15-16-failure",
+                    "caption": "<strong>Fails Rule 15.16.</strong> The card adds two gains into one large positive score and "
+                               f"dates all four routes {SNAP}. The atlas adds no families, and it checked only the ballot and "
+                               "local routes."},
+        "specs": [
+            {"label": "Where it acts", "value": "Its targets in Rule 12.5’s red, as Rule 15.11 sets"},
+            {"label": "Effects", "value": "One row per outcome family, in the atlas’s order, with the pips, the code and its words; "
+                                          "the atlas’s note that codes are never added, quoted"},
+            {"label": "Routes", "value": "Chip and name, who acts, feasibility, and “Checked” with the route’s own date, or “Not checked”"},
+            {"label": "Date", "value": f"“As of {SNAP}” over the effects, the snapshot date"},
+            {"label": "Never", "value": "A total, an overall score, or a route dated from the reform’s status"},
+        ],
+        "related": ["12", "13"],
+        "builders": ["Print each family from the reform’s <code>effects</code> record and each route from its <code>routes</code> "
+                     "list, and stop the build if any row sums or a route without a <code>checked</code> date prints one."],
+    }
+
+
 # ===============================================================================================================
 # The chapter
 # ===============================================================================================================
