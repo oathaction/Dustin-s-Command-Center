@@ -377,6 +377,8 @@ November 12, 2026, on the fix pass's strict build (`round-1-second/build/guide.h
 | BC M2, M3, M4, S8, S13 | As above (14.6, 14.9, 14.11, 14.12; S36; both avoid pairs; S25's end steps and 8 px edge; flush-left names) |
 | Row 113 | Variant `panels_2010_2014_2019_2024` and the plan's notes landed as ruled |
 
+- **Rules 14.6 and 14.11, redrawn (D3-624, D3-639, D3-640): signed off.** Built both editor specs with the kit (PASS, 0 faults) and looked at 1440 and 390 px on Newsprint and Charcoal. 14.6 draws 12 of the 15 parks in the frozen file (D3-639; the main session's message said 15), with Great Smoky Mountains in red with its keyline on Newsprint and the rest in the light fill; a park ties to no party (D3-489). Figures by script: 11,527,939 and 4,984,525 visits, 2.3 times; every bar's rounding; the sidecar documents the 63 parks and the ranking. 14.11 labels only the 2013 break; the $2,200 (71,670 against 69,470) and $300 (78,900 against 78,600) gaps check against the file. Optional for the editor: at 390 px the note wraps between "±" and "$1,040"; a word joiner keeps them together.
+
 ### Held
 
 - **S25, note 2 only.** It gives the change on each side of January 31, 2025 and says that day "falls 11 days after the inauguration", a sentence that splits the window at an inauguration, which H09 forbids ("No chart or sentence splits a period at an inauguration date"). Write: "In all, the files counted 2,155,201 employees on January 31, 2022, 2,304,585 on January 31, 2025 and 2,024,832 on August 31, 2026; the table gives each agency on all three dates." Three dated totals show when the change came, as BC S20 asks, with no split and no officeholder (figures from the file's ALL row). Owner: the editor (D3-615). The rest of S25 is signed off.
