@@ -835,7 +835,7 @@ def rule_14_6(B):
            table={"caption": "Judges in active service, by court of appeals",
                   "columns": [{"field": "short_name", "label": "Court", "format": "text", "row_header": True},
                               {"field": "judges", "label": "Judges", "format": "integer"}]},
-           encode={"category": "short_name", "value": "judges"}, labels={"point": "Ninth Circuit"},
+           encode={"category": "short_name", "value": "judges"}, labels={"named": "Ninth Circuit", "point": "Ninth Circuit"},
            domain="D05", states=[], notes_internal="Rule 14.6's correct plate: the one red point by name, from the kit (BC M2).")
     B.add("s-14-6-correct", chart("s-14-6-bars"), alt=f"One red bar, the one the title names, and every other court in gray. {title}.",
           notes="The kit draws it from the research lead's count of judges by court, made from the directory's rows.")
@@ -860,8 +860,9 @@ def rule_14_6(B):
          ("An error, a step or a party tie", "Charcoal at the subject weight, with the label", "oa.chart.color.subject.onNewsprint"),
          ("Red never", "Codes a series, a group or a step on a scale")],
         ["05.3", "05.5", "05.7", "01.1", "01.2", "14.7"],
-        "Name the one point in the spec’s labels.point, which draws it in red with its keyline, or in labels.named where a party tie "
-        "gives it the subject ink; the kit counts working reds and fails a view with two.",
+        "Name the one point in the spec’s labels.named, which sets every other mark in the light fill, and again in labels.point, which "
+        "draws it in red with its keyline; where a party tie gives it the subject ink, labels.named alone does. The kit counts working "
+        "reds and fails a view with two.",
         B.plate("s-14-6-correct", "The title names the Ninth Circuit, and its bar alone takes the view’s red, inside its keyline, with every "
                                   "other court in gray."),
         B.plate("s-14-6-failure", fails("14.6", "Red falls on three courts while the title names one, so a reader cannot tell which bar the "
@@ -1309,7 +1310,7 @@ def rule_14_13(B):
            table={"caption": "Super PACs in the Federal Election Commission’s totals, by two-year cycle",
                   "columns": [{"field": "cycle", "label": "Cycle", "format": "year", "row_header": True},
                               {"field": "super_pacs", "label": "Super PACs", "format": "integer"}]},
-           encode={"x": "cycle", "y": "super_pacs"}, labels={"point": last}, domain="D03", states=[],
+           encode={"x": "cycle", "y": "super_pacs"}, labels={"named": last, "point": last}, domain="D03", states=[],
            notes_internal="Rule 14.13's correct plate: a still chart with every value printed and its table as live text.")
     # the failure: the same columns, the named one in its red and keyline as the kit draws it, with no values printed
     top = 2200
@@ -1319,7 +1320,7 @@ def rule_14_13(B):
     bars = "".join(f'<rect class="{"pt" if y == last else "lf"}" x="{i * stp + stp * 0.15:.0f}" y="{1000 - 10 * pct(r[y], 0, top):.0f}" '
                    f'width="{stp * 0.7:.0f}" height="{10 * pct(r[y], 0, top):.0f}"/>' for i, y in enumerate(cycles))
     xt = [(str(y), (i + 0.5) * 100 / n, "" if i % 2 == 1 else "w") for i, y in enumerate(cycles)]
-    tip = f'<p class="tip" style="bottom:calc({pct(r[last], 0, top):.1f}% + 8px)">{last}: {comma(r[last])}</p>'
+    tip = f'<p class="tip" style="top:calc({100 - pct(r[last], 0, top):.1f}% + 10px)">{last}: {comma(r[last])}</p>'
     B.add("s-14-13-correct", chart("s-14-13-cols"),
           alt=f"Columns with every value printed and the table open beneath them. {title}.")
     B.add("s-14-13-failure", dnp() + tl(title) + fluid(bars + BASE_LINE, (), xt, over=tip, yw=0)
