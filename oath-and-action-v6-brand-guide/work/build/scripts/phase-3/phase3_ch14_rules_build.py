@@ -330,54 +330,6 @@ def lkey(items):
                                       f'</svg>{e(n)}</span>' for c, n in items) + "</p>"
 
 
-def dots_svgs(by, nation, lo=50, hi=80):
-    """Rule 14.9's drawing in the kit's role classes (ED-E9): a desk drawing at 480 px, the narrowest artboard the kit draws
-    as desk, so it never scales, and a phone drawing at 224 px, the guide's narrowest column (at 320 px). Each state's margin of error
-    is a line, a dot sits at its value, filled past the margin from the nation and open within it, and the nation's figure
-    is a line down the rows."""
-    T = lambda x, y, w, cls="oac-f-label", a=None, size=15: (f'<text x="{x:.1f}" y="{y:.1f}" class="oac-t oac-t-label oac-w4 {cls}" '
-                                                            f'font-size="{size}"{f" text-anchor={chr(34)}{a}{chr(34)}" if a else ""}>{e(w)}</text>')
-    def dot(x, y, filled):
-        return (f'<circle cx="{x:.1f}" cy="{y:.1f}" r="6.5" class="oac-f-subject"/>' if filled else
-                f'<circle cx="{x:.1f}" cy="{y:.1f}" r="5.5" class="oac-f-surface"/><circle cx="{x:.1f}" cy="{y:.1f}" r="5.5" class="oac-s-subject" stroke-width="2"/>')
-
-    def draw(W, x0, x1, pitch, top, phone):
-        xs = scale(lo, hi, x0, x1)
-        bot = top + pitch * len(by)
-        out = [T(xs(nation), 14, f"Nation {fmt1(nation)}%", "oac-f-secondary", "middle", 13)]
-        if not phone:
-            out += [f'<line x1="{xs(t):.1f}" x2="{xs(t):.1f}" y1="{top - 4}" y2="{bot}" class="oac-s-gridline" stroke-width="1"/>' for t in (50, 60, 70, 80)]
-        out.append(f'<line x1="{xs(nation):.1f}" x2="{xs(nation):.1f}" y1="20" y2="{bot}" class="oac-s-baseline" stroke-width="1.5"/>')
-        for k, x in enumerate(by):
-            ry = top + k * pitch
-            cy = ry + (30 if phone else pitch / 2)
-            ty = ry + (15 if phone else pitch / 2 + 5)
-            out.append(T(0, ty, x["name"]) + T(W, ty, f"{fmt1(x['v'])}%", "oac-f-label oac-tnum", "end"))
-            out.append(f'<line x1="{xs(x["v"] - x["m"]):.1f}" x2="{xs(x["v"] + x["m"]):.1f}" y1="{cy:.1f}" y2="{cy:.1f}" class="oac-s-context" stroke-width="2"/>')
-            out.append(dot(xs(x["v"]), cy, x["past"]))
-        ticks = (50, 60, 70, 80) if not phone else (50, 80)
-        out += [T(xs(t), bot + 18, f"{t}%", "oac-f-secondary", "start" if phone and t == lo else "end" if phone else "middle", 13) for t in ticks]
-        H = bot + 24
-        return (f'<svg xmlns="http://www.w3.org/2000/svg" class="oac-svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">' + "".join(out) + "</svg>")
-    return draw(480, 128, 416, 32, 30, False), draw(224, 6, 218, 48, 26, True)
-
-
-def static_figure(B, cid, desk, phone):
-    """The kit's figure around a drawing the script makes (ED-E9): oa-chart.mjs figure prints the anatomy, the bold source
-    label, the credit and the table from the spec's rows, after the kit's word and data checks and the sketch rules."""
-    import os, subprocess, tempfile
-    tmp = Path(tempfile.mkdtemp(prefix="ch14-fig-"))
-    (tmp / f"{cid}.chart.json").write_text(json.dumps(B.specs[cid], ensure_ascii=False))
-    (tmp / "desk.svg").write_text(desk)
-    (tmp / "phone.svg").write_text(phone)
-    r = subprocess.run(["node", str(ROOT / "work/build/chart-kit/oa-chart.mjs"), "figure", str(tmp / f"{cid}.chart.json"), "--svg", str(tmp / "desk.svg"),
-                        "--phone-svg", str(tmp / "phone.svg"), "--id", f"oac-{cid}", "--out", str(tmp / "fig.html")],
-                       capture_output=True, text=True, cwd=ROOT)
-    need(r.returncode == 0, f"the kit's figure for {cid} failed: {r.stderr.strip()[-600:]}")
-    B.static.add(cid)
-    return (tmp / "fig.html").read_text().strip()
-
-
 BASE_LINE = '<line class="ax" x1="0" x2="1000" y1="1000" y2="1000"/>'
 
 
@@ -396,7 +348,7 @@ def hbars(data, vmax, fmt, subject=(), point=(), red=()):
 # ---------------------------------------------------------------------------------------------------------------
 class Book:
     def __init__(self):
-        self.files, self.specs, self.plates, self.static = {}, {}, {}, set()
+        self.files, self.specs, self.plates = {}, {}, {}
         self.raw, self.plate_css = {}, ""
 
     def add(self, sid, body, *, alt, illustrative=False, readable=False, interactive=False, notes="", extra_css="", width=None):
@@ -1058,12 +1010,15 @@ def rule_14_9(B):
     need(mi["v"] - pa["v"] < gm_top and ny["v"] - tx["v"] < gm_bot, "the ranked ends now pass their margins")
     title = "Five of the ten states with the most voting-age citizens differed from the nation’s 65.3 percent turnout by more than the margin of error"
     g = "Documented: a Census Bureau survey"
-    measure = "Share of citizens 18 and over who reported voting, November 2024, the ten states with the most voting-age citizens"
-    guide = ("Each line spans a state’s margin of error at 90 percent confidence, and a gap counts only past the gap’s own margin. A filled "
+    # the kit's interval check asks the measure line to name the interval's level, so the reading guide no longer repeats it
+    measure = ("Share of citizens 18 and over who reported voting, November 2024, the ten states with the most voting-age citizens, with "
+               "each figure’s 90 percent margin of error")
+    guide = ("Each line spans a state’s margin of error, and a gap counts only past the gap’s own margin. A filled "
              "dot differs from the nation by more than the margin; an open dot sits within it.")
     names = lambda xs: ", ".join(x["name"] for x in xs[:-1]) + " and " + xs[-1]["name"]
     within = [x for x in by if not x["past"]]
-    B.spec("s-14-9-dots", form="dot-plot", family="uncertainty-and-estimates", tier="core", dataset=ds,
+    # ED-E4 (D3-657): maker B's range-bar draws the plate in the kit at every width, the narrowest plate column included
+    B.spec("s-14-9-range", form="range-bar", family="uncertainty-and-estimates", tier="core", dataset=ds,
            where={"year": 2024, "code": [x["code"] for x in st] + ["US"]}, sort=[{"field": "voted_pct", "order": "desc"}],
            reader_question="Which of the largest states differ from the nation in reported turnout, past the margin of error?",
            evidence="finding", evidence_label="Finding", grade_line=g, title=title, measure_line=measure, reading_guide=guide,
@@ -1075,11 +1030,15 @@ def rule_14_9(B):
                   "columns": [{"field": "name", "label": "State", "format": "text", "row_header": True},
                               {"field": "voted_pct", "label": "Reported voting", "format": "number:1"},
                               {"field": "moe_pct", "label": "Margin of error", "format": "number:1"}]},
-           encode={"key": "code", "label": "name", "value": "voted_pct"}, domain="D10", states=[x["code"] for x in st],
-           notes_internal="Rule 14.9's correct plate: the script's drawing inside the kit's own figure (ED-E9) until round 2's interval form.")
-    B.add("s-14-9-correct", '<div class="art">' + static_figure(B, "s-14-9-dots", *dots_svgs(by, n)) + "</div>",
-          alt=f"Dots with margin of error lines for ten states against the nation. {title}.", interactive=True,
-          notes="The kit's own figure, from oa-chart.mjs figure, around the script's two drawings (desk and phone), until the kit's interval form lands (round 2).")
+           encode={"category": "name", "value": "voted_pct", "margin": "moe_pct", "key": "code"},
+           labels={"reference": "US", "reference_label": "Nation {value}%", "test": "reference", "value": "{value}%"},
+           formats={"value": "number:1", "tick": "integer"}, scale={"x": [50, 80]}, phone="same",
+           domain="D10", states=[x["code"] for x in st],
+           notes_internal="Rule 14.9's correct plate on the kit's range-bar form (ED-E4). Checked by script: five states past the "
+                          "gap's margin from the nation (the form's labels.test reads the same margins), five within it; the ranked "
+                          "ends inside their own margins.")
+    B.add("s-14-9-correct", chart("s-14-9-range"),
+          alt=f"Dots with margin of error lines for ten states against the nation. {title}.")
     rk = "".join(f'<li><span class="r">{i + 1}</span><span>{e(s["name"])}</span><span class="v">{fmt1(s["v"])}%</span></li>'
                  for i, s in enumerate(by))
     B.add("s-14-9-failure", dnp() + tl("Michigan led the ten largest states in reported turnout in 2024, and Texas came last") + f'<div class="art"><ol class="rk">{rk}</ol></div>',

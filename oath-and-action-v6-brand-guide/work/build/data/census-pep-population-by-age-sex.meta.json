@@ -40,5 +40,11 @@
  "ledger_row": "P7-029",
  "domain": "D08",
  "domain_note": "The reader question asks how many people are near the ages for Social Security and Medicare, programs V7 places under taxes, wealth and economic security",
- "states": []
+ "states": [],
+ "source_line_variants": {
+  "with_program_ages": "Source: U.S. Census Bureau, Vintage 2025 population estimates, resident population by single year of age and sex, July 1, 2025, United States. Retrieved November 11, 2026. Estimates are revised with each vintage; the top row counts everyone 100 and over. Program ages from the Social Security Act, 42 U.S.C. 402(a) and 426(a), read November 12, 2026."
+ },
+ "notes": [
+  "Program ages for S53’s note, read November 12, 2026 (maker B’s RB-R3): 42 U.S.C. 402(a) (United States Code, 2024 edition) entitles a fully insured individual who “has attained age 62” to old-age insurance benefits, and 416(l)(2) defines “early retirement age” as “age 62” for an old-age benefit; 42 U.S.C. 426(a) entitles to hospital insurance (Medicare Part A) an individual who “has attained age 65” and is entitled to Social Security or railroad retirement benefits; medicare.gov, Get started with Medicare: “Medicare is health insurance for people 65 or older who meet citizenship or residency requirements. You may be eligible to get Medicare earlier if you have a disability, End-Stage Renal Disease (ESRD), or ALS”. ssa.gov refused this container (HTTP 403)"
+ ]
 }
