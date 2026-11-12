@@ -1,0 +1,42 @@
+{
+  "id": "14.17",
+  "title": "Add a benchmark tick when each bar has a fair share to meet.",
+  "rule": [
+    "Draw one bar per group from zero and cross it with a short tick at the value the reader should compare it with, such as the 20 percent of households each fifth holds. Print the bar’s value at its end, name the tick once above the first bar, and draw the tick in ink with an edge of the ground’s color so it shows across the bar."
+  ],
+  "use_when": "The reader asks how a group’s share compares with its size, or how each result compares with a target or a national figure.",
+  "use_instead": [
+    {
+      "when": "Each row compares two times or two measures, with no fixed value to meet",
+      "rule": "14.19"
+    },
+    {
+      "when": "The reader needs only the order of the groups, with nothing to compare each one against",
+      "rule": "14.15"
+    },
+    {
+      "when": "One value moves toward a target through ranges marked poor, fair and good",
+      "rule": "14.90"
+    },
+    {
+      "when": "The parts add to one whole and the reader asks how the whole divides",
+      "rule": "14.46"
+    }
+  ],
+  "why": {
+    "text": [
+      "A share means little until the reader knows what share to expect. The tick puts that expectation on every bar, so the gap shows as distance on the same scale and nobody has to subtract one number from another."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S18",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.3",
+    "14.4"
+  ],
+  "builders": "Form bar-benchmark-tick: node work/build/chart-kit/oa-chart.mjs build s18, or copy specs/s18.json and point it at a new dataset; encode.benchmark names the column the tick draws.",
+  "correct": null,
+  "failure": null
+}

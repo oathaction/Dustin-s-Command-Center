@@ -1,0 +1,48 @@
+{
+  "id": "14.16",
+  "title": "Use columns for a few categories or a short run of years.",
+  "rule": [
+    "Use columns to compare a few counts side by side, or one count over a short run of years read from left to right, such as the laws each Congress enacted. Start every column at zero (Rule 14.4), print each value at the column’s end and its name below it, and set the column the title names in ink with the rest in gray.",
+    "When a phone leaves too little room to print every name and value, the columns turn into bars read from top to bottom in the same order (Rule 14.12)."
+  ],
+  "use_when": "The reader asks how a handful of counts compare, or how one count changed across a few years or terms of office, and each value matters on its own.",
+  "use_instead": [
+    {
+      "when": "The categories have long names, there are more than about a dozen, or they read best ranked by size",
+      "rule": "14.15"
+    },
+    {
+      "when": "The run of years is long and the shape of the change matters more than any one value",
+      "rule": "14.29"
+    },
+    {
+      "when": "Monthly values swing so much that the trend needs an average drawn through them",
+      "rule": "14.32"
+    },
+    {
+      "when": "Each category carries two or three measures that the reader compares within it",
+      "rule": "14.22"
+    },
+    {
+      "when": "The values run above and below zero and their direction is the point",
+      "rule": "14.27"
+    }
+  ],
+  "why": {
+    "text": [
+      "Every column stands on the same zero line, so the eye compares heights as amounts. Readers take left to right as the order of time, which suits a count per year or per term. Past a dozen or so, columns thin into a fence the eye cannot sort, and a line shows the same run more clearly."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S17",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.3",
+    "14.4",
+    "14.12"
+  ],
+  "builders": "Form column: node work/build/chart-kit/oa-chart.mjs build s17, or copy specs/s17.json and point it at a new dataset; labels.named names the columns set in ink.",
+  "correct": null,
+  "failure": null
+}

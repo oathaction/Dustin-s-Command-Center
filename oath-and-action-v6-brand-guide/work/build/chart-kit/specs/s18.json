@@ -1,0 +1,85 @@
+{
+  "kit": 1,
+  "id": "S18",
+  "form": "bar-benchmark-tick",
+  "family": "comparison",
+  "tier": "core",
+  "dataset": "census-acs-income-shares-by-quintile",
+  "where": {
+    "group": {
+      "not": [
+        "top_5_percent"
+      ]
+    }
+  },
+  "reader_question": "What share of all household income goes to each fifth of households?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: a Census Bureau survey; the shares are estimates",
+  "title": "The highest-income fifth of households received 51.6 percent of all household income in 2025, and the lowest fifth received 3.0 percent.",
+  "measure_line": "Share of all household income received by each fifth of households, ranked by income, United States, 2025. Each fifth holds 20 percent of households, marked by the tick. Bars start at zero.",
+  "notes": [
+    "The top 5 percent of households, part of the highest fifth, received 23.1 percent of all household income.",
+    "The survey counts money income before taxes and leaves out noncash benefits such as food aid.",
+    "Margins of error, at 90 percent confidence, are 0.08 points or less, too small to draw at this scale."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Bars show each fifth of households’ share of all household income in 2025 against a tick at 20 percent, its share of households. The lowest fifth received 3.0 percent, the second 8.5, the middle 14.4 and the fourth 22.6; the highest fifth received 51.6 percent, more than the other four together.",
+  "table": {
+    "caption": "Share of household income by fifth of households, 2025",
+    "columns": [
+      {
+        "field": "label",
+        "label": "Households",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "share_of_households_pct",
+        "label": "Share of households",
+        "format": "percent:0"
+      },
+      {
+        "field": "share_of_income_pct",
+        "label": "Share of income",
+        "format": "percent:2"
+      },
+      {
+        "field": "moe_pct",
+        "label": "Margin of error, points",
+        "format": "number:2"
+      }
+    ]
+  },
+  "chart_notes": [
+    "Each bar is a fifth’s share of income; the tick across it marks the fifth’s share of households, 20 percent."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D08",
+  "states": [],
+  "encode": {
+    "category": "label",
+    "value": "share_of_income_pct",
+    "benchmark": "share_of_households_pct"
+  },
+  "labels": {
+    "benchmark": "20% of households in each fifth",
+    "categories": {
+      "Highest fifth": "Highest fifth",
+      "Lowest fifth": "Lowest fifth",
+      "Third fifth": "Middle fifth"
+    }
+  },
+  "formats": {
+    "value": "percent:1"
+  },
+  "notes_internal": [
+    "Data plan row 3; coverage plan re-pick under DR-229 (income shares against each fifth's 20 percent, in place of CPS voters by age).",
+    "The top 5 percent row sits inside the highest fifth, so it is left out of the bars (where) and given in note 1; the five fifths add to 100.0.",
+    "The Census Bureau's 'Third fifth' prints as 'Middle fifth' in the drawing, the plain name; the table keeps the Bureau's label.",
+    "Figures checked by script (figures.py s18): 51.58 and 2.96 round to 51.6 and 3.0; 8.53, 14.36, 22.57; 23.11; the highest fifth's share is over the other four together; the largest margin in the file is 0.08.",
+    "Every row's benchmark is 20, so the tick's words print once over the first tick."
+  ]
+}

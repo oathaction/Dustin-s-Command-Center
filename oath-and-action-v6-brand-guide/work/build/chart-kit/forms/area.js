@@ -1,4 +1,4 @@
-/* Area chart (coverage plan 3.3, extended; S29). One total over time, filled from zero in the light fill with the series as
+/* Area chart (coverage plan 3.3, extended; S29). One total over time, filled from zero in the band fill (as S13's panels draw it) with the series as
  * a Charcoal line on top, so the area reads as the amount itself. The scale always starts at zero (Rule 14.4).
  * encode: x (year, month or date), y (number). labels: area (words set inside the fill, naming what it counts), area_at
  * (the x value under which those words sit), x_ticks (the x values to label, in place of the kit's own thinning).
@@ -20,17 +20,17 @@
       var ts = rows.map(function (r) { return K.time(r[ex]); });
       var tlo = ts[0], thi = ts[ts.length - 1];
       var vmax = Math.max.apply(null, rows.map(function (r) { return r[ey]; }));
-      var vs = P.value_scale(c, 0, vmax, c.phone ? 4 : 5), ticks = vs.ticks;
+      var vs = P.value_scale(c, 0, vmax, 5), ticks = vs.ticks;
       var top = c.size('tick') + 6, plotH = c.t(c.phone ? 'columns-phone-height' : 'columns-height'), bot = top + plotH;
       var gut = P.value_gutter(c, ticks, f.y_tick || 'integer');
-      var x0 = gut + 8, x1 = W - (c.phone ? 8 : 16);
+      var x0 = gut + 12, x1 = W - (c.phone ? 8 : 16);
       var ys = K.scale.linear([vs.lo, vs.hi], [bot, top]), xs = K.scale.linear([tlo, thi], [x0, x1]);
       var pts = rows.map(function (r) { return [xs(K.time(r[ex])), ys(r[ey])]; });
       var line = pts.map(function (p, i) { return (i ? 'L' : 'M') + K.round(p[0]) + ',' + K.round(p[1]); }).join('');
       // the area under the line, from the zero line up, drawn before the grid so the gridlines read across it
       var yz = ys(0);
       c.path('M' + K.round(pts[0][0]) + ',' + K.round(yz) + line.replace(/^M/, 'L') + 'L' + K.round(pts[pts.length - 1][0]) + ',' + K.round(yz) + 'Z',
-        { fill: 'light-fill', data: { field: ey } }, [x0, top, x1 - x0, plotH]);
+        { fill: 'band', data: { field: ey } }, [x0, top, x1 - x0, plotH]);
       P.value_grid(c, ys, ticks, f.y_tick || 'integer', x0, x1, gut);
       // the series line on a keyline of the ground, then the zero line over the fill's foot
       c.path(line, { stroke: 'surface', width: c.t('line-subject') + 2 * c.t('keyline'), mark: false });

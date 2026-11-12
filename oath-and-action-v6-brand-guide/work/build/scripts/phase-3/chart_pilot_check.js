@@ -7,7 +7,9 @@
 //   scripts on     drawn at 1440 and at 390 px (data-oa-drawn), no drawing error, one SVG, the drawing's width the column's
 //   resize         a page opened at 1440 and narrowed to 390 redraws each chart at the phone width
 //   scripts off    the title, source line and table equivalent are in the page and visible or one click away, the table's
-//                  rows are there, and no empty drawing box shows (the art box holds nothing)
+//                  rows are there, and no empty drawing box shows (the art box holds nothing); since board 1's compressed
+//                  chart data (DR-238), also the description as words, the line saying the drawing needs scripts, and the
+//                  table open and its rows on screen
 //   print          under print media the drawing stays, inside the page width
 //   forced colors  under forced colors the drawing stays, and text and marks take system colors
 //   reduced motion every chart drawn, with no animation or transition on any chart element
@@ -75,16 +77,22 @@ const drawnState = () => Array.from(document.querySelectorAll('figure.oac-fig'))
         // a part the spec leaves out (a chapter plate's "show") is not required; a part the figure holds must be readable
         const vis = (el) => !el || (el.getBoundingClientRect().height > 0 && getComputedStyle(el).visibility !== 'hidden');
         const art = f.querySelector('[data-oa-art]');
+        const eq = f.querySelector('details.oac-eq'), row = f.querySelector('table.oac-table tbody tr');
         return { id: f.id, title: vis(f.querySelector('[data-role=title]')), source: vis(f.querySelector('[data-role=source]')),
           summary: !!f.querySelector('details.oac-eq > summary') && vis(f.querySelector('details.oac-eq > summary')), rows: f.querySelectorAll('table.oac-table tbody tr').length,
-          artH: art ? art.getBoundingClientRect().height : 0, svgs: f.querySelectorAll('svg').length };
+          artH: art ? art.getBoundingClientRect().height : 0, svgs: f.querySelectorAll('svg').length,
+          alt: !f.querySelector('[data-role=alt]') || (vis(f.querySelector('[data-role=alt]')) && f.querySelector('[data-role=alt]').getBoundingClientRect().width > 1),
+          needs: !!f.querySelector('[data-role=scripts-off]') && vis(f.querySelector('[data-role=scripts-off]')),
+          open: !!eq && eq.open && !!row && row.getBoundingClientRect().height > 0 };
       }));
       st.forEach((s) => {
         if (!s.title || !s.source || !s.summary) fail('scripts off', s.id, `title ${s.title}, source ${s.source}, table one click away ${s.summary}`);
         if (!s.rows) fail('scripts off', s.id, 'the table equivalent has no rows');
         if (s.artH > 40) fail('scripts off', s.id, `an empty drawing box ${Math.round(s.artH)} px tall`);
+        if (!s.alt || !s.needs || !s.open) fail('scripts off', s.id, `description as words ${s.alt}, the needs-scripts line ${s.needs}, the table open ${s.open}`);
       });
-      res.conditions['scripts off'] = { figures: st.length, readable: st.filter((s) => s.title && s.source && s.summary && s.rows).length, table_rows: st.reduce((a, s) => a + s.rows, 0) };
+      res.conditions['scripts off'] = { figures: st.length, readable: st.filter((s) => s.title && s.source && s.summary && s.rows).length, table_rows: st.reduce((a, s) => a + s.rows, 0),
+        description_needs_line_and_open_table: st.filter((s) => s.alt && s.needs && s.open).length };
       await ctx.close();
     }
     // print, forced colors, reduced motion

@@ -1,0 +1,33 @@
+{
+  "id": "14.37",
+  "title": "Stop the line at a missing month and name the gap where it falls.",
+  "rule": [
+    "When a series has no value for a period, end the line before it and start it again after it, shade the missing period and name it on the chart. The table keeps the row and prints Not published in its cell."
+  ],
+  "use_when": "The reader follows a monthly or yearly series with a period the publisher left blank, such as a month a survey did not run.",
+  "use_instead": [
+    {
+      "when": "The method changed and the publisher prints two estimates for the year it changed",
+      "rule": "14.29"
+    },
+    {
+      "when": "No month is missing, and the latest months are preliminary and will be revised",
+      "rule": "14.32"
+    }
+  ],
+  "why": {
+    "text": [
+      "A line drawn across a missing month invents a figure the publisher never printed, and the reader cannot tell it from the measured months around it. A named gap shows where the record stops, and the table says the same in words (Rule 14.11)."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S31",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.11"
+  ],
+  "builders": "Form line-data-gap: node work/build/chart-kit/oa-chart.mjs build s31; leave the missing period’s cell empty in the data file and give the gap its words in labels.gap.",
+  "correct": null,
+  "failure": null
+}

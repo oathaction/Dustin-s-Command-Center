@@ -308,3 +308,59 @@ The atlas glossary defines the Supplemental Poverty Measure as one "that counts 
 - The kit words on a page with scripts off, which shows the new scripts-off line; I read it in the code only.
 - An export of an SVG to see the new fonts line in its description.
 - The full `guide_check.js` run, as before.
+
+## Board 1 apply
+
+November 12, 2026, from `work/handoffs/phase-3/20261112_Board-1-Apply-Brief.md`: part A applies DR-239 to chapter 02 and part B applies DR-238 to chapter 01. Both go through the generators, then the chain V16 sets: `guide_editor_build.py`, then `stage_b_identity_ch01.py`. Chapter 13 does not change (DR-237).
+
+### What changed
+
+| Where | Original | Revision | Reason |
+|---|---|---|---|
+| H08, after line (Rule 02.22, `s-02-22-correct`) | “… and payrolls shrank in seven of the 57 months charted.” | The same, then “Only the October 2025 and February 2026 drops pass the survey’s margin of error.” with the repair’s solid underline | DR-239 |
+| H06, example (same plate) | “payrolls shrank in seven of the 57 months charted” | “Payrolls shrank in seven of the 57 months charted. Only the October 2025 and February 2026 drops pass the survey’s margin of error.” | DR-239; two whole sentences, so the first word takes a capital |
+| Rule 01.6’s correct plate (`s-01-6-correct`) | `20261106_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005.jpg` | `20261112_…-2005-1200-Wide.jpg`, the research lead’s rendition | DR-238 |
+| Rule 01.8’s two plates (`s-01-8-correct`, `s-01-8-failure`) | `20261106_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Zianno.jpg` | `20261112_…-Zianno-1200-Wide.jpg` | DR-238 |
+| Each photograph’s `<img>` | `width="1920" height="1152"` | `width="1200" height="720"` | The hint named a width the file no longer has |
+
+How it is done:
+- `work/build/scripts/phase-2/guide_editor_ch02.py`: `content()` applies DR-239 as it applies D2-256 and D2-326, and stops the build if H06’s example or the end of H08’s after line no longer holds the approved count. The module docstring and the plate’s internal notes name DR-239.
+- `work/build/scripts/phase-2/guide_editor_ch01.py`: `PHOTO_PARKS` and `PHOTO_ZIANNO` name the renditions, so Rules 01.6 and 01.8 list them under Files. The size hint in `ph()` changed, and both plates’ internal notes add that the plate shows the 1,200 px rendition while the 1,920 px file stays the source. No builders line names a file. Alt texts, captions and credits keep their words.
+- `guide_editor_common.py`, the Board 5 content file and `work/handoffs/phase-2/20261106_Voice-Writing-Rules.md` are unchanged.
+- The run rewrote six outputs: `work/build/guide/chapters/01-purpose.json` (the two Files paths), `work/build/guide/specimens/manifest-editor.json` (three notes), `s-01-6-correct.html`, `s-01-8-correct.html`, `s-01-8-failure.html` and `s-02-22-correct.html`. `02-voice.json` and every other chapter 01 and 02 file came out byte for byte as before, the identity step’s plates and `manifest-identity-ch01.json` among them.
+- The reading: H08’s after line now reads as a title and its qualification, and H06’s example reads as two plain sentences. Both use the same words for the margin as W20’s approved after line, “the survey’s margin of error”. The new sentence breaks none of chapter 02’s writing rules and holds no number under ten. The frozen file `work/build/data/fred-payrolls-monthly-change.csv` gives 57 months and seven drops, and only October 2025 (−140,000) and February 2026 (−156,000) pass ±122,000 (D3-171).
+
+### Routine calls
+
+- D3-xxx | DR-239 goes into chapter 02 through `content()` in `guide_editor_ch02.py`, which checks the approved text before it adds the sentence, and the Board 5 content file and writing rules file stay as they are | Those two files are the record of what Board 5 approved, D2-256 and D2-326 were applied the same way, and the editor build’s whole-section check reads `content()`, so it now proves the sentence is on the page
+- D3-xxx | H06’s example opens with a capital, “Payrolls shrank …”, now that a whole sentence follows it | A lowercase clause before a whole sentence reads as a fragment, and the words DR-239 keeps, “shrank in seven of the 57 months charted”, do not change
+- D3-xxx | In H08’s after line the new sentence carries the repair’s solid underline | The after line marks every change from the before, and the chapter’s key says a solid underline marks the repair
+- D3-xxx | The house rules plate keeps its caption; its internal notes record DR-239 | The caption’s “as approved” still holds, and decision codes stay out of reader text (H11)
+- D3-xxx | Chapter 01’s photographs carry a size hint of 1200 by 720 in place of 1920 by 1152 | The hint named a width the renditions do not have; the crop classes set each frame’s ratio, so nothing moves on the page (checked at 1440 and 390 px)
+
+### Requests
+
+- **Main session, the margin’s source (possible contradiction).** The sentence rests on the Bureau’s Employment Situation technical note, October 2026 release: ±122,000 at 90 percent confidence (D3-171, research ledger row P7-042). H06’s and H08’s source lines name only the Current Employment Statistics series, copied by FRED. The research lead advised that the sentence cite the note and its date. Rule 13.5’s Specifications give a survey figure’s margin of error “at the publisher’s stated confidence”. The sentence prints no figure, so I left the approved source lines alone. W20’s approved after line says “the survey’s margin of error” the same way. A reader also meets “the survey” while the source line never calls Current Employment Statistics a survey. If the main session or Dustin wants it, one sentence added to both source lines would settle all three points: “The margin of error is the Bureau’s 90 percent interval for a month’s change in its survey of employers, plus or minus 122,000, from its Employment Situation technical note, October 2026 release.” This is the same request the brief invites from the Explainer maker for S14, so the two should match.
+- **Main session, the record.** `20261106_Voice-Writing-Rules.md`, which `CLAUDE.md` names as the binding text, has never carried D2-256’s erratum, and it does not carry DR-239. If it should show approved changes, an errata note at its foot would cover both. I did not write one, since the brief does not name the file.
+
+### Contradictions found
+
+- The possible one above: the new sentence names a margin of error, and neither its figure, its confidence level nor its source appears on the plate (H06, H08; compare Rule 13.5’s Specifications and H04).
+
+### Tested
+
+- A dry run of the editor build before any edit, from my scratch folder, which built both chapters in memory: every chapter 02 output and the editor manifest equal the files on disk, and the editor’s checks pass. A second dry run after the part A edit changed only `s-02-22-correct` and its manifest entry.
+- `python3 -I work/build/scripts/phase-2/guide_editor_build.py`: exit 0, every check passing (locked lines, no em dash, listed words, the writing section carried whole with DR-239’s sentence, sizes, tokens); 113 specimens. `python3 -I work/build/scripts/phase-2/stage_b_identity_ch01.py` after it: exit 0, the four plates it writes equal to before.
+- Every chapter 01 and 02 output compared with a snapshot taken before the run: the six files listed above changed, and no others did. `git diff` on them shows only the paths, the size hint, the notes and the two examples.
+- No file in `work/build/guide`, `work/build/scripts` or `work/build/chart-kit` names the original photographs any more.
+- A strict guide build written to my scratch folder: exit 1 on one warning, Rule 26.8’s `s-26-8-correct` with the literal colors #505C7D and #828A9D, from the engineer’s token release in progress; no warning from chapter 01 or 02. Page 8,895,829 bytes, chapter 01 1,355,456 bytes. The photographs as base64 now take 1,059,828 bytes less, board 1’s figure.
+- Playwright on that page at 1440 and 390 px, 1x and 2x, on the three photo plates. Each carries its rendition (the SHA-256 of the data URI equals the file), natural size 1200 by 797 and 1200 by 768. At 1440 px they draw at 600 by 360 (5:3) and 600 by 400 (3:2), and at 390 px at 294 px wide. A 2x screen at 1440 px needs 1,200 device pixels, the rendition’s width. I looked at the captures: both photographs are sharp at 2x, the agency’s mark stays outside Rule 01.6’s crop, and the captions are unchanged.
+- H06’s and H08’s rows on that page at 1440 and 390 px: the text as intended, H08’s five repair marks with the new sentence last, no sideways scroll; captures looked at.
+- A script scan of the changed outputs: no em dash; no listed word added (the manifest’s 16 are quotations from before, in the entries for W17, W18 and Rule 02.26’s word list).
+
+### Not tested
+
+- Print, forced colors and scripts off on the photo plates; the change swaps the file and the hint only.
+- A side-by-side of each rendition against its original, which is the research lead’s check.
+- The four-width guide check.
+- The engineer’s token tests, kit build and weight options, which are the engineer’s.

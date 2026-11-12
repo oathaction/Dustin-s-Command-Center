@@ -1,0 +1,35 @@
+{
+  "id": "14.36",
+  "title": "Draw an amount a law fixes between dates as a step line.",
+  "rule": [
+    "Use a step line for an amount a law or rule holds until the next change, such as a tax credit per child: keep the line flat through each period, move it straight up or down in the period the change takes effect, and print each level’s amount on it. Name the law that made each change beside its step or in the notes."
+  ],
+  "use_when": "The reader asks what a rule set at each date, and the value stays fixed between one change and the next.",
+  "use_instead": [
+    {
+      "when": "The values are measured and move between dates, such as a rate from a survey",
+      "rule": "14.29"
+    },
+    {
+      "when": "The reader needs the dates each part of one law takes effect more than an amount",
+      "rule": "14.39"
+    },
+    {
+      "when": "The dates of events matter and no amount changes",
+      "rule": "14.38"
+    }
+  ],
+  "why": {
+    "text": [
+      "A line that slopes from one date to the next tells the reader the amount crept up over the years, when the law moved it all at once. Flat runs and straight risers show what each tax year carried, and the law named at each riser tells the reader who made the change."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S30",
+  "tier": "extended",
+  "tokens": [],
+  "related": [],
+  "builders": "Form step-line: node work/build/chart-kit/oa-chart.mjs build s30, with x the year or date each amount takes effect and y the amount.",
+  "correct": null,
+  "failure": null
+}

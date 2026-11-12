@@ -83,7 +83,13 @@
       "place": "above",
       "anchor": "end",
       "dx": 2,
-      "dot": true
+      "dot": true,
+      "dy": -34,
+      "phone": {
+        "place": "left",
+        "dy": 10,
+        "anchor": "end"
+      }
     }
   ],
   "notes_internal": [

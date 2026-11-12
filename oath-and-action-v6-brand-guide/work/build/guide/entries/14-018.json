@@ -1,0 +1,42 @@
+{
+  "id": "14.18",
+  "title": "Use a dot plot to set many items on one scale.",
+  "rule": [
+    "Give each item one row: its name at the left, a dot at its value and the value printed in a column at the right edge, sorted so the order answers the reader’s question. Draw a figure the reader compares against, such as all states together, as a labeled line across the rows, and mark rows counted another way with an open dot and a key."
+  ],
+  "use_when": "The reader asks where one item stands among dozens, such as their own state among 50, and the values sit far from zero or close together.",
+  "use_instead": [
+    {
+      "when": "There are a dozen items or fewer and their size from zero is the point",
+      "rule": "14.15"
+    },
+    {
+      "when": "Each item has two values, such as two years, and the change between them matters",
+      "rule": "14.19"
+    },
+    {
+      "when": "Each value is a survey estimate whose margin of error decides the order",
+      "rule": "14.74"
+    },
+    {
+      "when": "The reader asks how the values spread, and no single item matters",
+      "rule": "14.59"
+    }
+  ],
+  "why": {
+    "text": [
+      "A dot marks a position without the weight of a bar, so 50 rows stay light enough to scan and the eye follows the line of dots down the ranking. The printed column lets a reader find an exact figure without reading it off the scale."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S19",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.3",
+    "14.11"
+  ],
+  "builders": "Form dot-plot: node work/build/chart-kit/oa-chart.mjs build s19, or copy specs/s19.json and point it at a new dataset; labels.reference names the row drawn as the line, labels.open the status drawn as an open dot.",
+  "correct": null,
+  "failure": null
+}

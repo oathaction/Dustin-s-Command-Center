@@ -1,0 +1,113 @@
+{
+  "kit": 1,
+  "id": "S17",
+  "form": "column",
+  "family": "comparison",
+  "tier": "core",
+  "dataset": "congress-gov-laws-by-congress",
+  "where": {
+    "congress": [
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118
+    ]
+  },
+  "sort": [
+    {
+      "field": "congress",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "How many bills became law in each Congress?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the official count of laws, as Congress.gov serves it",
+  "title": "The 118th Congress enacted 274 public laws in 2023 and 2024, the fewest of the ten Congresses charted.",
+  "measure_line": "Public laws enacted by each Congress, a two-year term of the House and Senate, for the ten Congresses before the one now sitting: the 109th (2005 to 2006) to the 118th (2023 to 2024), United States. Every count is drawn from zero.",
+  "notes": [
+    "A count of laws says nothing about their length or reach: one appropriations law can run past a thousand pages, and many laws name a post office.",
+    "Public laws apply generally. Private laws, which name a person or an entity, are left out.",
+    "The 119th Congress (2025 to 2026) is still in session, so the chart leaves it out; it had enacted 138 public laws by November 11, 2026."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Columns show the public laws each of ten Congresses enacted, from 482 in the 109th (2005 to 2006) to 274 in the 118th (2023 to 2024), the fewest. The count fell to 283 in the 112th, rose to 442 in the 115th and has stayed under 400 since.",
+  "table": {
+    "caption": "Public laws enacted by each Congress, 109th to 118th",
+    "columns": [
+      {
+        "field": "congress",
+        "label": "Congress",
+        "format": "text",
+        "row_header": true,
+        "words": {
+          "109": "109th",
+          "110": "110th",
+          "111": "111th",
+          "112": "112th",
+          "113": "113th",
+          "114": "114th",
+          "115": "115th",
+          "116": "116th",
+          "117": "117th",
+          "118": "118th"
+        }
+      },
+      {
+        "field": "years",
+        "label": "Years",
+        "format": "text"
+      },
+      {
+        "field": "public_laws",
+        "label": "Public laws",
+        "format": "integer"
+      }
+    ]
+  },
+  "chart_notes": [
+    "The 118th Congress, which the title names, is drawn in the text’s ink; the other nine are gray."
+  ],
+  "phone": "differs",
+  "phone_note": "On a phone the ten columns turn into bars, read from top to bottom in order of Congress, so every count keeps its label.",
+  "artboard": "reading",
+  "domain": "D04",
+  "states": [],
+  "encode": {
+    "x": "congress",
+    "y": "public_laws",
+    "sub": "years"
+  },
+  "labels": {
+    "categories": {
+      "109": "109th",
+      "110": "110th",
+      "111": "111th",
+      "112": "112th",
+      "113": "113th",
+      "114": "114th",
+      "115": "115th",
+      "116": "116th",
+      "117": "117th",
+      "118": "118th"
+    },
+    "named": "118"
+  },
+  "formats": {
+    "value": "integer"
+  },
+  "notes_internal": [
+    "Data plan row 2: the chart shows the last ten complete Congresses, the 109th to the 118th; the 119th is partial (complete is false) and is left out, with its count in note 3.",
+    "Figures checked by script against congress-gov-laws-by-congress.csv (maker A's check, s17 in the notes' Tested list): 274 is the 118th's public_laws and the minimum of the ten rows; 482 the 109th's; 283 the 112th's; 442 the 115th's; the 116th to 118th are each under 400; 138 is the 119th's.",
+    "Note 1 restates the sidecar's own qualification (research lead).",
+    "Named column in ink against gray (DR-234's one-in-ink pattern), with no red: a count of laws carries no direction a reader on either side would agree is good or bad, and red would read as alarm.",
+    "Source line: the sidecar's line names 93rd to 118th Congress, the dataset's span. Request A1 asks the research lead for a variant naming the charted span; when it lands, source_line takes it."
+  ]
+}

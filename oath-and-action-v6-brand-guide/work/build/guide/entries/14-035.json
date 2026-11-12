@@ -1,0 +1,41 @@
+{
+  "id": "14.35",
+  "title": "Fill the space under one total when its size is the point.",
+  "rule": [
+    "Use an area chart for one total over time, such as the people an industry employs: fill from zero up to the line, run the line along the top of the fill and set the scale from zero. Draw one series, and name what the fill counts inside it."
+  ],
+  "use_when": "The reader asks how big a total is and how far it has grown or shrunk, and the amount itself carries the story.",
+  "use_instead": [
+    {
+      "when": "The values are a rate or a share, where a fill would show an amount the figures do not hold",
+      "rule": "14.29"
+    },
+    {
+      "when": "Several groups make up the total and the reader needs each one",
+      "rule": "14.51"
+    },
+    {
+      "when": "The counts swing month to month and the trend needs an average",
+      "rule": "14.32"
+    },
+    {
+      "when": "The same total runs across many industries or places",
+      "rule": "14.34"
+    }
+  ],
+  "why": {
+    "text": [
+      "A filled area asks the eye to judge size, so it fits a count of people, dollars or places. Under a rate, the same fill shows a size the numbers never had. The scale starts at zero for the reason a bar does (Rule 14.4): a fill cut off above zero makes a small fall look like a collapse."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S29",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.4"
+  ],
+  "builders": "Form area: node work/build/chart-kit/oa-chart.mjs build s29, or copy specs/s29.json and point it at a new dataset.",
+  "correct": null,
+  "failure": null
+}

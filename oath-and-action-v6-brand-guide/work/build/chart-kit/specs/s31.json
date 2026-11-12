@@ -1,0 +1,155 @@
+{
+  "kit": 1,
+  "id": "S31",
+  "form": "line-data-gap",
+  "family": "change-over-time",
+  "tier": "core",
+  "dataset": "fred-unemployment-and-job-openings",
+  "where": {
+    "month": [
+      "2022-01",
+      "2022-02",
+      "2022-03",
+      "2022-04",
+      "2022-05",
+      "2022-06",
+      "2022-07",
+      "2022-08",
+      "2022-09",
+      "2022-10",
+      "2022-11",
+      "2022-12",
+      "2023-01",
+      "2023-02",
+      "2023-03",
+      "2023-04",
+      "2023-05",
+      "2023-06",
+      "2023-07",
+      "2023-08",
+      "2023-09",
+      "2023-10",
+      "2023-11",
+      "2023-12",
+      "2024-01",
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07",
+      "2026-08",
+      "2026-09",
+      "2026-10"
+    ]
+  },
+  "sort": [
+    {
+      "field": "month",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "What was the unemployment rate each month, and which month is missing?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: a Bureau of Labor Statistics survey of households, as copied by FRED",
+  "title": "The unemployment rate stood at 4.1 percent in October 2026, and the government published no rate for October 2025.",
+  "reading_guide": "The line stops at September 2025 and starts again at November 2025. The gray column marks the month with no figure, so nothing is drawn across it.",
+  "measure_line": "Unemployment rate, people 16 and over without a job and looking for one as a percent of the labor force, seasonally adjusted, monthly, United States, January 2022 to October 2026: from the month the guide’s jobs charts start to the latest month published. The scale starts at zero.",
+  "notes": [
+    "The rate rose from a low of 3.4 percent in April 2023 to 4.5 percent in November 2025, the first month after the gap.",
+    "The Census Bureau, which runs the household survey behind the rate, notes that it collected no data in October 2025, during the lapse in federal funding. The Bureau of Labor Statistics published no rate for that month, and FRED’s file leaves the cell blank.",
+    "Seasonally adjusted: the Bureau removes the swings that recur each year, such as summer hiring and holiday layoffs, so one month compares with the next."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Line chart of the monthly unemployment rate from January 2022 to October 2026. It held between 3.4 and 4.0 percent through 2023, rose to 4.4 percent by September 2025, and stood at 4.1 percent in October 2026. October 2025 has no figure, and the line breaks there.",
+  "table": {
+    "caption": "Unemployment rate, percent, seasonally adjusted",
+    "columns": [
+      {
+        "field": "month",
+        "label": "Month",
+        "format": "month",
+        "row_header": true
+      },
+      {
+        "field": "unemployment_rate",
+        "label": "Unemployment rate, percent",
+        "format": "number:1",
+        "empty": "Not published"
+      }
+    ]
+  },
+  "chart_notes": [
+    "The heavy line is the unemployment rate. The scale runs from 0 to 5 percent.",
+    "Gray column: October 2025, the month with no published rate; the line breaks on either side of it.",
+    "Label: 4.1% in October 2026."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D07",
+  "states": [],
+  "encode": {
+    "x": "month",
+    "y": "unemployment_rate"
+  },
+  "formats": {
+    "x": "month",
+    "y": "percent:1",
+    "y_tick": "number:0",
+    "y_tick_top": "percent:0"
+  },
+  "labels": {
+    "gap": "No rate published for {x}",
+    "gap_place": "left"
+  },
+  "annotations": [
+    {
+      "at": {
+        "x": "2026-10"
+      },
+      "text": " in October 2026",
+      "value": true,
+      "place": "below",
+      "anchor": "end",
+      "dx": 4,
+      "dot": true,
+      "phone": {
+        "dy": 10
+      }
+    }
+  ],
+  "notes_internal": [
+    "Maker B, round 1. Data plan row 23, rule 14.37. Domain D07 from the sidecar; no state named.",
+    "Checked by script against fred-unemployment-and-job-openings.csv, January 2022 to October 2026 (58 months): October 2026 4.1; October 2025 blank (the file's note: BLS published none); low 3.4 in April 2023; high 4.5 in November 2025; September 2025 4.4.",
+    "The gap's cause in note 2 rests on the Census Bureau's CPS/HVS footnote, as the sidecar's 'unconfirmed' list says; the note attributes it to the Census Bureau and says only that BLS published no rate, which the file shows.",
+    "H09 and H12: the window starts in January 2022 with the jobs charts S13 and S14 and runs one month past their September 2026 end, to the latest month, which the sidecar's printed source line covers; 'lapse in federal funding' is the neutral name.",
+    "where lists the 58 months because the kit's where takes values only; request R-B3 asks for a from-to range.",
+    "The scale starts at zero so the rise from 3.4 to 4.5 percent keeps its size against the whole rate."
+  ]
+}
