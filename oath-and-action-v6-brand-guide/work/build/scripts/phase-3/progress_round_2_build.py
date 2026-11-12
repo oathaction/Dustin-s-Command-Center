@@ -80,6 +80,8 @@ FILL = {}
 IMAGES = {}
 STATUS = {}
 CACHE = {}
+G_OK = False              # the strict build passed; a part that reads the guide is Ready only then
+ACCEPT_FAILED = False     # --photos-from-failed-build: photograph a strict build that failed, to prove the method
 
 
 class PageError(Exception):
@@ -161,9 +163,15 @@ def guide_build():
         warn(f'the strict guide build failed (exit {r.returncode}); the guide pictures wait for a passing build')
     report = json.loads(rep.read_text()) if rep.exists() else {}
     text = page.read_text() if page.exists() else ''
+    usable = ok or (ACCEPT_FAILED and page.exists() and rep.exists())
+    if usable and not ok:
+        warn('the page’s pictures come from a strict build that failed; a method run only, never one to publish')
     FIG['guide_build'] = {'exit': r.returncode, 'bytes': report.get('bytes'), 'rules': report.get('rules'),
-                          'specimens': report.get('specimens_placed'), 'warnings': len(report.get('warnings', [])), 'built': report.get('built')}
-    return {'ok': ok, 'page': page, 'text': text, 'report': report, 'mtime': page.stat().st_mtime if page.exists() else None}
+                          'specimens': report.get('specimens_placed'), 'warnings': len(report.get('warnings', [])), 'built': report.get('built'),
+                          'pictures_from_failed_build': usable and not ok}
+    global G_OK
+    G_OK = ok
+    return {'ok': ok, 'usable': usable, 'page': page, 'text': text, 'report': report, 'mtime': page.stat().st_mtime if page.exists() else None}
 
 
 def element_html(page, el_id):
@@ -378,6 +386,8 @@ def refs_line(refs, where):
 
 def section(key, body, status):
     P = C['sections'][key]
+    if status == 'ready' and not G_OK and key not in ('scores', 'next'):
+        status = ('partial', 'build')
     STATUS[key] = status
     return (f'<section class="sec" id="p-{key}" aria-labelledby="h-{key}"><div class="sec-top"><p class="label">Part {P["n"]}</p>{chip(status)}</div>'
             f'<h2 class="sec-h" id="h-{key}">{esc(fill(P["title"]))}</h2>{body}{refs_line(P.get("refs", ""), "part " + key)}</section>')
@@ -638,6 +648,13 @@ def printed_evidence(G, sid):
     return (text_of(k.group(1)) if k else None, text_of(g.group(1)) if g else None)
 
 
+def short_fault(x):
+    """A kit fault as the line under a chart quotes it: decision codes move to the part's reference line (D3-206),
+    and the fault stops at 180 characters."""
+    s = B1.strip_codes(str(x))
+    return s if len(s) <= 180 else s[:179].rsplit(' ', 1)[0] + ' …'
+
+
 def chart_article(G, f, kit_out, S, what=None):
     """One chart as part 2 shows it: its rule, form and maker, its title as printed, the guide's evidence label where it
     is the one the content file marks, the kit's two composed pictures and the line under them. None when the kit made
@@ -648,14 +665,14 @@ def chart_article(G, f, kit_out, S, what=None):
     d = kit_out / lo
     caps = {(g, w): d / f'{lo}-{g}-{w}.png' for g in ('newsprint', 'charcoal') for w in (1440, 390)}
     chk_p = d / f'{lo}-check.json'
-    title = printed_title(G, sid) if G['ok'] else None
+    title = printed_title(G, sid) if G['usable'] else None
     title_from = 'guide'
     if title in (None, 'spec'):
-        if title is None and G['ok']:
+        if title is None and G['usable']:
             warn(f'{sid} was not found in the guide; the spec’s title prints instead')
         title, title_from = spec['title'], 'spec'
     QUOTED.append(title)
-    ev, grade = printed_evidence(G, sid) if G['ok'] else (None, None)
+    ev, grade = printed_evidence(G, sid) if G['usable'] else (None, None)
     marked = ev is not None and ev == C['sections']['charts']['mark_label']
     if marked:
         QUOTED.extend([ev, grade or ''])
@@ -678,9 +695,9 @@ def chart_article(G, f, kit_out, S, what=None):
         warn(f'the build report gives no bytes for {sid}')
     nd = len(chk.get('drawings', []))
     result = ('passes every check in the kit, ' + f'{nd} drawings checked' if not faults else
-              f'{nw(len(faults))} {"fault" if len(faults) == 1 else "faults"} in the kit’s check: ' + '; '.join(B1.shorten_paths(x) for x in faults[:3])
+              f'{nw(len(faults))} {"fault" if len(faults) == 1 else "faults"} in the kit’s check: ' + '; '.join(short_fault(x) for x in faults[:3])
               + (f'; and {len(faults) - 3} more' if len(faults) > 3 else ''))
-    QUOTED.extend(faults)
+    QUOTED.extend(short_fault(x) for x in faults[:3])
     line = (f'{wb:,} bytes in the guide' if wb is not None else 'Its bytes in the guide were not found') + f'; {result}.'
     body = (f'<article class="chart" id="{aid}">{head}'
             f'<p class="row-label">{esc(S["row_newsprint"])}</p>{frame(rn_, f"{f["form"]}, Rule {f["rule"]}, on Newsprint, drawn for a 1440 px page and for a 390 px page, side by side. {alt}", lazy=len(IMAGES) > 2)}'
@@ -746,13 +763,13 @@ def entry_section(G, shots):
     src = element_html(G['text'], f'rule-{r["id"].replace(".", "-")}') or ''
     ph = re.search(r'<p class="oac-phone-k"[^>]*>(.*?)</p>', src, flags=re.S)
     phone = text_of(ph.group(1)) if ph else ''
-    if G['ok'] and not phone:
+    if G['usable'] and not phone:
         warn(f'Rule {r["id"]} prints no desk phone drawing')
     FILL.update({'entry_rule': r['id'], 'entry_title': r['title'].rstrip('.'), 'entry_phone': phone})
     QUOTED.extend([r['title'].rstrip('.'), phone])
     body = f'<p class="intro">{esc(fill(S["lede"]))}</p>' + (f'<p>{esc(fill(S["phone_line"]))}</p>' if phone else '')
     k14, k39 = f'entry-{r["id"]}-1440', f'entry-{r["id"]}-390'
-    if G['ok'] and shots.get(k14, pathlib.Path('-')).exists() and shots.get(k39, pathlib.Path('-')).exists():
+    if G['usable'] and shots.get(k14, pathlib.Path('-')).exists() and shots.get(k39, pathlib.Path('-')).exists():
         a = compose(f'Entry-{r["id"].replace(".", "-")}-1440', [(shots[k14], '')])
         b = compose(f'Entry-{r["id"].replace(".", "-")}-390', [(shots[k39], '')])
         body += (f'<div class="pair">{figure(a, f"Rule {r["id"]} as the guide prints it at a 1440 px window: the rule, use it when, use instead, why it works, the example chart with its drawing for a phone beside it, and its table", esc(S["cap_1440"]))}'
@@ -796,7 +813,7 @@ def sketches_section(G, rn, shots):
         if kind != shown:
             shown = kind
             out.append(f'<h3 class="sub grp">{esc(S["h_avoid"] if kind == "avoid" else S["h_reference"])}</h3>')
-        head, chip, words = sketch_print(G, sid) if G['ok'] else (None, '', '')
+        head, chip, words = sketch_print(G, sid) if G['usable'] else (None, '', '')
         key = f'sketch-{f["rule"]}'
         kw = S['kind_avoid'] if kind == 'avoid' else S['kind_reference']
         QUOTED.extend([r.get('title', ''), head or '', chip, words])
@@ -809,7 +826,7 @@ def sketches_section(G, rn, shots):
         else:
             missing.append(f['rule'])
             out.append(f'<article class="sketch">{h}{pending("Waiting for a passing guide build and its photograph.")}</article>')
-        if G['ok'] and not words:
+        if G['usable'] and not words:
             warn(f'the sketch for Rule {f["rule"]} prints no caption')
         FIG.setdefault('sketches', {})[f['rule']] = {'specimen': sid, 'heading': head, 'kind': kind, 'caption': words}
     return section('sketches', ''.join(out), 'ready' if not missing else ('partial', 'render'))
@@ -883,7 +900,7 @@ def ch15_section(G, shots):
     S = C['sections']['ch15']
     ch15 = json.loads((ROOT / C['slots']['chapter15']).read_text())
     r15 = new_ch15(ch15)
-    wides = wide_plates(G, r15) if G['ok'] else []
+    wides = wide_plates(G, r15) if G['usable'] else []
     w1 = wides[0] if wides else None
     FILL.update({'wide_rule': w1[0] if w1 else '', 'wide_kind': (S['kind_correct'] if w1[1] == 'correct' else S['kind_failure']).lower() if w1 else '',
                  'wide_px': w1[3] if w1 else ''})
@@ -1472,7 +1489,11 @@ def main():
     ap.add_argument('--strict', action='store_true', help='exit 1 on any warning')
     ap.add_argument('--scratch', type=pathlib.Path, default=SCRATCH_DEFAULT)
     ap.add_argument('--out', type=pathlib.Path, default=OUT)
+    ap.add_argument('--photos-from-failed-build', action='store_true',
+                    help='photograph a strict build that failed, while the fix pass runs, to prove the method; never for the page Dustin sees')
     a = ap.parse_args()
+    global ACCEPT_FAILED
+    ACCEPT_FAILED = a.photos_from_failed_build
     SCRATCH = a.scratch
     SCRATCH.mkdir(parents=True, exist_ok=True)
     os.environ['TMPDIR'] = str(SCRATCH)
@@ -1497,7 +1518,7 @@ def main():
     ch15 = json.loads((ROOT / C['slots']['chapter15']).read_text())
     rules = changed_rules()
     shots = {}
-    if G['ok']:
+    if G['usable']:
         er = C['sections']['entry']['rule']
         items = [(f'entry-{er}-1440', f'rule-{er.replace(".", "-")}', 1440), (f'entry-{er}-390', f'rule-{er.replace(".", "-")}', 390)]
         held = {r['id']: r for r in ch14['rules']}
