@@ -145,6 +145,10 @@ EXTRA_NOTES = {
                                 '(All Employees Standard Error Tables, https://www.bls.gov/web/empsit/cesvarae.htm, read November 11, 2026), '
                                 'none for longer changes, and none for government sectors.'),
     'census-cps-reported-voting': 'Margins for the 2020 and 2024 age-gap figures are in census-cps-voting-age-gap-moe: the gap between citizens 65 and over and citizens 18 to 24 grew 3.9 points with a margin of about 2.0 points.',
+    # ENG-11 (round 1): the research lead's re-read after the November 3, 2026 election, printed as the decision tree's as-of date
+    'ballotpedia-rcv-prohibitions-by-state': ('Re-read November 12, 2026, after the November 3, 2026 election: the same 19 states. The only 2026 measures on '
+                                              'electoral systems, Alaska Ballot Measure 2 (trailing, uncertified) and Massachusetts Question 3 (rejected), '
+                                              'add or remove no ban (research ledger P7-218).'),
     'census-hvs-homeownership-by-race-annual': 'Margins for 2003 and the 2003 to 2025 gaps are in census-hvs-homeownership-gap-moe: the non-Hispanic White and Black gap widened 2.3 points with a margin of about 0.7 points.',
 }
 

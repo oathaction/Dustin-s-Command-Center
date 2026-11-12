@@ -84,7 +84,7 @@
    "title": "Name each variable, its kind and what a higher value means.",
    "rule": [
     "Our systems atlas defines a variable as “a quantity or condition in the model that can rise or fall”. Draw each one as a pill holding its short name, the name the atlas gives it on its loops, or its title where it sits in no loop. The first time a reader meets it, give its typed chip, its kind in words and the atlas’s own sentence on what a higher value means.",
-    "The atlas uses four kinds. Its 31 stocks are amounts built up over time, and its nine flows are amounts per period. Its six conditions, which the atlas calls auxiliary, are worked out from other variables. Its five outside drivers are forces whose causes lie outside the model, and Rule 15.9 sets where they go."
+    "Of its 51 variables, 31 are stocks, amounts built up over time, and nine are flows, amounts per period. Six are conditions the atlas calls auxiliary, worked out from other variables. The other five are outside drivers, forces whose causes lie outside the model, and Rule 15.9 sets where they go."
    ],
    "tokens": [
     "oa.chart.type.label"
@@ -193,7 +193,7 @@
    "id": "15.4",
    "title": "Say in words when a connection carries money, information or ownership.",
    "rule": [
-    "Our systems atlas gives each connection a type. Most are causal: a change in one variable changes another. Others name what moves along the line: money (17 connections), such as contributions or advertising revenue; information (9), such as news coverage or a feed; or ownership (5), where one quantity is held inside another. Print the type in words before the verb, as in “money, lowers”, and in the key.",
+    "Our systems atlas gives each connection a type. Most are causal: a change in one variable changes another. Others name what moves along the line: money on 17 of them, such as contributions or advertising revenue; information on nine, such as news coverage or a feed; and ownership on five, where one quantity is held inside another. Print the type in words before the verb, as in “money, lowers”, and in the key.",
     "Line patterns carry the evidence grade (Rule 13.4), so a type takes no pattern, width or color of its own. Authority, the fifth type, takes its own mark (Rule 15.5)."
    ],
    "tokens": [
@@ -211,7 +211,7 @@
    },
    "failure": {
     "specimen": "s-15-4-failure",
-    "caption": "<strong>Fails Rule 15.4.</strong> Color alone tells the three types apart, so a reader with gray print or low color vision cannot tell money from information."
+    "caption": "<strong>Fails Rule 15.4.</strong> Color alone tells the three types apart. In gray print the money and ownership lines match, and the key cannot say which is which."
    },
    "specs": [
     {
@@ -245,7 +245,7 @@
    "title": "Draw authority with its open diamond and no sign, outside every loop.",
    "rule": [
     "An authority connection shows that one body holds legal power over something: it appoints, appropriates, preempts, enforces or sets a rate. In our systems atlas’s words, “It says who decides, without saying which way the decision goes, so it has no sign and never closes a loop.” Draw it solid, end it in an open diamond, and print decides where a causal line prints its verb.",
-    "Keep it out of every loop drawing, even where it touches a variable the loop holds. All 7 of the atlas’s authority connections are documented, and none sits in a loop."
+    "Keep it out of every loop drawing, even where it touches a variable the loop holds. All seven of the atlas’s authority connections are documented, and none sits in a loop."
    ],
    "tokens": [
     "oa.color.graphic.essential.onNewsprint"
@@ -298,7 +298,7 @@
    "id": "15.6",
    "title": "Number a loop’s steps in order, and name it reinforcing or balancing.",
    "rule": [
-    "A loop is “a chain of causes that returns to its starting variable”, in our systems atlas’s words. Number its steps from the variable the atlas starts it at, in the atlas’s order, and print its typed chip and its kind inside it: reinforcing, coded R, where the returning effect amplifies the first change, or balancing, coded B, where it pushes back.",
+    "A loop is “a chain of causes that returns to its starting variable”, in our systems atlas’s words. Number its steps from the variable the atlas starts it at, in the atlas’s order. Give the loop its typed chip and name beside the drawing, and set its ID and its kind inside it: reinforcing, coded R, where the returning effect amplifies the first change, or balancing, coded B, where it pushes back.",
     "The minus signs give the kind. An even count, zero included, makes a loop reinforcing, and an odd count makes it balancing, as on all 20 of the atlas’s loops with numbered steps. Either kind can help or harm, depending on which way it runs."
    ],
    "tokens": [
@@ -451,7 +451,7 @@
    "id": "15.9",
    "title": "Frame the atlas’s layers and clusters, and set outside drivers beyond the frames.",
    "rule": [
-    "Our systems atlas sorts its 51 variables into three layers: the core, “Power and accountability”, with 31 variables, five of them outside drivers and the rest in 5 clusters; the economy layer, with 12; and the technology layer, with 8. Where a drawing shows variables from more than one layer, frame each layer with a 1 px rule and its name, and name the cluster of a core variable.",
+    "Our systems atlas sorts its 51 variables into three layers: the core, “Power and accountability”, with 31 variables, five of them outside drivers and the rest in five clusters; the economy layer, with 12; and the technology layer, with eight. Where a drawing shows variables from more than one layer, frame each layer with a 1 px rule and its name, and name the cluster of a core variable.",
     "An outside driver is “a force that affects the model but whose own causes lie outside its boundary”, in the atlas’s words. Set it outside every frame, with its kind in words. Where a connection crosses a frame, break the frame around the line, so a reader sees where the effect comes in."
    ],
    "tokens": [
@@ -600,7 +600,7 @@
    "id": "15.14",
    "title": "Show a change to the model in the atlas’s own words, with its date.",
    "rule": [
-    "Our systems atlas revises its model as the evidence changes, and it records some revisions in its own text. Loop R8, “Housing scarcity strengthens owners' incentive to restrict building”, carries one: its evidence note grades it “well-supported for both links”, and says the loop “no longer depends on” Variable A1, concentration of household wealth. Quote a revision as the atlas writes it, with the snapshot date, and draw the loop as it stands now.",
+    "Our systems atlas revises its model as the evidence changes, and it records some revisions in its own text. Loop R8, “Housing scarcity strengthens owners’ incentive to restrict building”, carries one: its evidence note reads “well-supported for both links”, and says the loop “no longer depends on” Variable A1, concentration of household wealth. Quote a revision as the atlas writes it, with the snapshot date, and draw the loop as it stands now.",
     "A drawing made before the revision is a record of what we drew. It is never evidence for the model, and a page that published one corrects it as Rule 13.13 sets out."
    ],
    "tokens": [],

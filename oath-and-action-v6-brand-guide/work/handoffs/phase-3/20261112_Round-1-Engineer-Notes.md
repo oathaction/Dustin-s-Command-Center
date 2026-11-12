@@ -6,10 +6,10 @@ Oath & Action Edition 06, Phase 3, round 1, November 12, 2026. Written by the en
 
 ## Summary
 
-- **Contracts R1-C1 to R1-C6 are written** (below): the sketch format and its role classes, the shared parts a form may call, the rules a form module follows beyond C4, how chapter 14 places a specimen (`s-14-sNN`), the weight each plate may take, and how a script reads a data island.
+- **Contracts R1-C1 to R1-C7 are written** (below): the sketch format and its role classes, the shared parts a form may call, the rules a form module follows beyond C4, how chapter 14 places a specimen (`s-14-sNN`), the weight each plate may take, and how a script reads a data island, and the shape of map geometry in the data folder (ENG-10).
 - **Done from the requests:** R-B6, the shared arrow moved into `parts.js` (S11, S12 and S15 rebuilt: every export and capture equal byte for byte); D3-219, the payroll file's `with_margin` source line, which maker B can now set as S14's `source_line`; A5, the `survey_only` line on `v7-stock-trading-ban` for S41 and S42.
 - **Also done:** R-B2 (`dollars` and `signed-dollars` formats) and R-B3 (a range in `where`).
-- **Not yet started:** entry support in the guide build, `phase3_ch14_build.py`, S05's gap brackets and the light fill, and the requests A4, ENG-10 and DL-E1. They follow in this order: the generator and entry support, A4, ENG-10 and DL-E1, then S05 and the light fill.
+- **Not yet started:** entry support in the guide build, `phase3_ch14_build.py`, S05's gap brackets and the light fill, and the requests A4, the kit's side of ENG-10, and DL-E1. They follow in this order: the generator and entry support, A4, ENG-10 and DL-E1, then S05 and the light fill.
 
 ## Contracts
 
@@ -77,6 +77,16 @@ Chapter 14's generator places an entry's chart as `<div data-oa-chart="s-14-s17"
 
 A figure's data is carried compressed (`<script type="text/plain" data-oa-chart-data="deflate">`). A script that reads it calls `OAChart.island(element)`; never `JSON.parse` on its text.
 
+### R1-C7. Map geometry in the data folder (ENG-10)
+
+C1 gains one file kind, a boundary file, so the maps' data can freeze. The research lead's proposal stands, made exact:
+
+- **Files:** `work/build/data/census-cb-2024-states.geojson`, `census-cb-2024-counties.geojson`, `census-cb-2024-cd119.geojson` (and `census-cb-2024-nation.geojson` if a map needs the outline), flat in the folder beside the tables, one boundary set per file.
+- **Format:** an RFC 7946 GeoJSON FeatureCollection, UTF-8, no byte-order mark. Coordinates are `[longitude, latitude]` exactly as the Bureau's file gives them (NAD83, unprojected), unsimplified, at most six decimals. One Feature per state, county or district, sorted by `geoid`; a shape with parts is one MultiPolygon. No `bbox`, no `id` outside `properties`.
+- **Properties, and only these:** `geoid` (string, the Bureau's GEOID: two digits for a state, five for a county, four for a district); `code` (the state's USPS code, also on counties and districts); `name` (as the Bureau prints it: "Kern County", "Congressional District 23"); on districts `district` (string: "23", or "AL" for an at-large seat). What a map draws lives in its CSV under C1 and joins on `geoid` or `code`; a boundary file carries no data values.
+- **Sidecar** `<name>.meta.json`: C1's required fields (`kind: "public"`, `columns` for the properties with types `id`, `code`, `text`, `printed_source_line` naming "U.S. Census Bureau, Cartographic Boundary Files, 2024", with the resolution), plus `geometry_type` ("Polygon and MultiPolygon"), `source_resolution` ("1:20,000,000", or "1:5,000,000" for the 5m files), `raw_file` (the zip's name), `raw_file_sha256`, `feature_count`, and `coordinates` ("NAD83 longitude and latitude as published, unprojected and unsimplified").
+- **The kit projects and simplifies at build** (an Albers equal-area projection for the lower 48, with Alaska and Hawaii set apart as the tile maps place them, and simplification to the drawing's pixel), so the page carries only drawn paths. That code and the data check's reading of `.geojson` files are the engineer's next map work (with DL-E1's measure of a county map); a file written to this shape will not need rewriting.
+
 ### Contract changes
 
 - November 12 (R-B2): number formats `dollars` ($2,000, −$2,000; `dollars:2` keeps cents) and `signed-dollars` (+$2,000), for axis ticks, table cells and `{placeholder}` fills; a table cell in either format reads back to its value.
@@ -88,6 +98,7 @@ A figure's data is carried compressed (`<script type="text/plain" data-oa-chart-
 - D3-xxx | The shift arrow moves from `shift-arrows.js` into `parts.js` as `K.parts.arrow` (R-B6) | Four forms draw it; a page that loads one of them alone must have it; S11, S12 and S15 draw byte for byte as before
 - D3-xxx | The payroll margin's line is a source line variant of the payroll file (`with_margin`), written by `data_round0_build.py` | C2 lets a spec's line equal a sidecar variant, so the kit's source check holds S14 to it (D3-219)
 - D3-xxx | A `where` range compares numbers as numbers and anything else as text | Months (`2022-01`) and dates sort correctly as text, years and counts as numbers (R-B3)
+- D3-xxx | Map geometry joins C1 as unprojected, unsimplified GeoJSON with properties limited to IDs and names; the kit projects and simplifies at build | The research lead's proposal: the data stays as the Bureau published it, projection is a drawing choice, and the page carries only drawn paths
 - D3-xxx | A sketch is one inline SVG classed `oac-svg oac-sketch`, colored only by the kit's role classes, at most 4 KB (reference) or 2 KB (avoid) | The kit's classes carry the approved tokens on both grounds and the forced-colors rules; one format lets the build check every sketch
 
 ## Requests
@@ -102,8 +113,9 @@ Taken, in the order they arrived:
 | R-B3, a range in `where` | maker B | Done (contract changes) |
 | R-B2, a `dollars` format | maker B | Done (contract changes) |
 | A4, `v7-claims-by-hub-and-grade` | maker A | Queued |
-| ENG-10, map geometry in the data folder | research lead | Queued |
+| ENG-10, map geometry in the data folder | research lead | Shape posted (R1-C7); the kit's projection and the data check's `.geojson` reading queued |
 | DL-E1, one county map measured against the stop | data lead | Queued, after ENG-10 |
+| ENG-11, the Ballotpedia bans re-read note | research lead | Done: the note in `ballotpedia-rcv-prohibitions-by-state.meta.json`'s `notes`, in the research lead's words, written by `data_round0_build.py` (88 tables, 0 faults) |
 
 ## Tested
 

@@ -1,0 +1,134 @@
+{
+  "kit": 1,
+  "id": "S38",
+  "form": "filterable-lookup-table",
+  "family": "tables-and-plain-words",
+  "tier": "extended",
+  "dataset": "v7-issues",
+  "reader_question": "Which issue records cover my question?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the atlas’s own register of issue records",
+  "v7": {
+    "grade": "documented",
+    "ids": [
+      "I001",
+      "I002",
+      "I003",
+      "I004",
+      "I005",
+      "I006",
+      "I007",
+      "I008",
+      "I009",
+      "I010",
+      "I011",
+      "I012",
+      "I013",
+      "I014",
+      "I015",
+      "I016",
+      "X13"
+    ],
+    "snapshot": "2026-10-15"
+  },
+  "title": "Of the atlas’s 17 issue records on news, records and public information, ten are documented or well supported, six plausible and one a hypothesis.",
+  "measure_line": "Issue records in the atlas’s domain of news, records and public information, each a problem it records with its grade and the month it was observed, as of October 15, 2026, United States. Search by words, or filter by grade.",
+  "notes": [
+    "Grades: documented means on the public record; well supported means strong research evidence; plausible means some evidence; a hypothesis is a proposed link that needs stronger evidence.",
+    "The atlas keeps 194 issue records across its ten domains; this lookup holds one domain’s 17.",
+    "The still image shows one filter on: the eight records graded well supported."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A lookup table of the atlas’s 17 issue records on news, records and public information, with a search field and a filter by grade. The still image shows the eight records graded well supported.",
+  "table": {
+    "caption": "The atlas’s issue records on news, records and public information",
+    "columns": [
+      {
+        "field": "title",
+        "label": "Issue record",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "id",
+        "label": "Atlas issue",
+        "format": "text"
+      },
+      {
+        "field": "grade",
+        "label": "Grade",
+        "format": "text",
+        "words": {
+          "documented": "Documented",
+          "well_supported": "Well supported",
+          "plausible": "Plausible",
+          "hypothesis": "Hypothesis",
+          "retired": "Retired"
+        }
+      },
+      {
+        "field": "observed",
+        "label": "Observed",
+        "format": "month"
+      }
+    ]
+  },
+  "lookup": {
+    "search": {
+      "label": "Search the issue records",
+      "fields": [
+        "title",
+        "subsystem",
+        "actor"
+      ]
+    },
+    "filters": [
+      {
+        "field": "grade",
+        "label": "Grade",
+        "words": {
+          "documented": "Documented",
+          "well_supported": "Well supported",
+          "plausible": "Plausible",
+          "hypothesis": "Hypothesis",
+          "retired": "Retired"
+        }
+      }
+    ],
+    "noun": "issue records",
+    "none": "No issue record matches. Clear the search or the filters to see more."
+  },
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D01",
+  "states": [],
+  "encode": {
+    "key": "id",
+    "title": "title",
+    "facet": "grade"
+  },
+  "labels": {
+    "still": "well_supported",
+    "count": "{n} of {total} issue records: {facet}",
+    "facet_words": {
+      "documented": "Documented",
+      "well_supported": "Well supported",
+      "plausible": "Plausible",
+      "hypothesis": "Hypothesis",
+      "retired": "Retired"
+    },
+    "id_type": "Issue"
+  },
+  "notes_internal": [
+    "Data plan row 37 drew the whole register (194 records, atlas-wide). As live text the 194 rows weigh about 25 KB at the least (51 KB with ID, domain and month), over three times the extended average; R6 and DR-238 keep tables live, so the lookup holds one domain's 17 records (4 to 5 KB) and note 2 gives the whole count. Request A10 asks the data lead to confirm the Rule 01.9 change from all to D01.",
+    "D01 has the most room in chapter 14's count (3 of 95, data lead DL-ED1) and all four grades, so the grade filter has something to do.",
+    "The live lookup (search field, grade filter, count line) waits on request A9; until then the figure shows the still and the folded table, both complete.",
+    "Every record's ID is listed in v7.ids, so the table prints each in its chip ('Issue I001').",
+    "Figures checked by script (figures.py s38)."
+  ],
+  "where": {
+    "domain": "D01"
+  }
+}

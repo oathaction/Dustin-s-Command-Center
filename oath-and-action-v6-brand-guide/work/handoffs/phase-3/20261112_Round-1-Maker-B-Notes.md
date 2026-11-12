@@ -4,26 +4,30 @@ Oath & Action Edition 06, Phase 3, round 1, November 12, 2026. Maker B, a senior
 
 ## Summary
 
-Started. Read the brief's "Read first" list. Working one specimen at a time, starting with S29 (area chart).
+All of maker B's rows in the plan file are done: twelve new specimens (S24 to S35), each with a new form, a spec and an entry; S14's payroll margin printed (D3-219); entries for the six built specimens S02, S05, S09, S11, S13 (Rule 14.34) and S14; the three sketches for Rules 14.43 to 14.45; and the illustrative benefit-cliff data file with its sidecar. Every spec passes `oa-chart.mjs build` (1440 and 390 px on both grounds, the guide widths 656 to 256 px, page-to-Node parity) and `dataviz_check.js --kit` on its build page. The data lead's requests DL-B1 to DL-B10 are applied. Captures stay in scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/f15cd04b-21be-5dde-a467-804e951756a2/scratchpad/phase-3/round-1/maker-b/kit-out/`.
 
-| Rule | Form | Spec | Form file | Entry | Build | Captures looked at |
-|---|---|---|---|---|---|---|
-| 14.35 | Area chart | S29 | `forms/area.js` (new) | `14-035.json` | PASS, 0 faults | 1440 and 390, both grounds, grayscale |
-| 14.36 | Step line | S30 | `forms/step-line.js` (new) | `14-036.json` | PASS, 0 faults | 1440 and 390, both grounds |
-| 14.37 | Line with a data gap marked | S31 | `forms/line-data-gap.js` (new) | `14-037.json` | PASS, 0 faults | 1440 and 390, both grounds |
-| 14.33 | Sparkline | S28 | `forms/sparkline.js` (new) | `14-033.json` | PASS, 0 faults | 1440 and 390, both grounds |
-| 14.26 | Change lollipop | S24 | `forms/change-lollipop.js` (new) | `14-026.json` | PASS, 0 faults | 1440 and 390, both grounds |
-| 14.27 | Diverging bar | S25 | `forms/diverging-bar.js` (new) | `14-027.json` | PASS, 0 faults | 1440 and 390, both grounds |
-| 14.28 | Diverging bar with arrows over time | S26 | `forms/diverging-bar-arrows.js` (new) | `14-028.json` | PASS, 0 faults | 1440 and 390, both grounds |
-| 14.40 | Indexed line | S33 | `forms/indexed-line.js` (new) | `14-040.json` | PASS, 0 faults | 1440 and 390, both grounds |
-| 14.31 | Line field with highlight | S27 | `forms/line-field.js` (new) | `14-031.json` | PASS, 0 faults | 1440 and 390, both grounds |
-| 14.39 | Implementation timeline | S32 | `forms/implementation-timeline.js` (new) | `14-039.json` | PASS, 0 faults | 1440 and 390, both grounds |
-| 14.41 | Bubble timeline | S34 | `forms/bubble-timeline.js` (new) | `14-041.json` | PASS, 0 faults | 1440 and 390, both grounds |
-| 14.42 | Benefit-cliff line | S35 | `forms/benefit-cliff.js` (new) | `14-042.json` | PASS, 0 faults | 1440 and 390, both grounds |
-| 14.32 | S14's margin (D3-219) | S14 | built | entry to write | PASS, 0 faults | 1440 notes and source line |
+| Rule | Form | Spec | Form file | Entry | Build | Plate bytes (load-table) | Captures looked at |
+|---|---|---|---|---|---|---|---|
+| 14.26 | Change lollipop | S24 | `forms/change-lollipop.js` | `14-026.json` | PASS | 8,036 | 1440 and 390, both grounds |
+| 14.27 | Diverging bar | S25 | `forms/diverging-bar.js` | `14-027.json` | PASS | 23,365 | 1440 and 390, both grounds |
+| 14.28 | Diverging bar with arrows over time | S26 | `forms/diverging-bar-arrows.js` | `14-028.json` | PASS | 9,427 | 1440 and 390, both grounds |
+| 14.31 | Line field with highlight | S27 | `forms/line-field.js` | `14-031.json` | PASS | 13,633 | 1440 and 390, both grounds |
+| 14.33 | Sparkline | S28 | `forms/sparkline.js` | `14-033.json` | PASS | 5,849 | 1440 and 390, both grounds |
+| 14.35 | Area chart | S29 | `forms/area.js` | `14-035.json` | PASS | 5,120 | 1440 and 390, both grounds, grayscale |
+| 14.36 | Step line | S30 | `forms/step-line.js` | `14-036.json` | PASS | 5,895 | 1440 and 390, both grounds |
+| 14.37 | Line with a data gap marked | S31 | `forms/line-data-gap.js` | `14-037.json` | PASS | 7,748 | 1440 and 390, both grounds |
+| 14.39 | Implementation timeline | S32 | `forms/implementation-timeline.js` | `14-039.json` | PASS | 6,386 | 1440 and 390, both grounds |
+| 14.40 | Indexed line | S33 | `forms/indexed-line.js` | `14-040.json` | PASS | 17,381 | 1440 and 390, both grounds |
+| 14.41 | Bubble timeline | S34 | `forms/bubble-timeline.js` | `14-041.json` | PASS | 10,357 | 1440 and 390, both grounds |
+| 14.42 | Benefit-cliff line | S35 | `forms/benefit-cliff.js` | `14-042.json` | PASS | 10,059 | 1440 and 390, both grounds |
+| 14.32 | Columns with a moving average (margin printed) | S14 | built | `14-032.json` | PASS | 11,376 | 1440 notes and source line |
+| 14.25, 14.29, 14.30, 14.34, 14.38 | Built: shift arrows, line with event notes, multi-line, area sparklines, timeline | S11, S02, S05, S13, S09 | built, unchanged | `14-025`, `14-029`, `14-030`, `14-034`, `14-038` | not rebuilt except S02 (PASS) | | |
+| 14.43, 14.44, 14.45 | Run chart, cycle chart (reference), streamgraph (avoid) | sketches | | `14-043` to `14-045` | 2,570, 1,842 and 1,713 bytes | | both grounds and grayscale in a kit-styled page |
 
 ## Routine calls
 
+- D3-xxx | S24 adds no note on where an application is counted | The Census Bureau's Business Formation Statistics methodology and definitions pages, read November 12, 2026, do not say how an application is assigned to a state (data lead DL-B1)
+- D3-xxx | S25's table drops its "In the chart" column | The plate measured 26,172 bytes by the kit's load-table fragment, over three times the core average; note 2 states the size rule the column repeated, and the plate now measures 23,365
 - D3-xxx | The benefit cliff's invented family is a parent with two children in Alder County, with generic benefit names (food aid, child care help, tax credits) and round invented rules stated in the sidecar | Rule 13.8 and H03: no real program's amounts are implied; the rules reproduce the file exactly
 - D3-xxx | On a phone, S35's two line names become a key above the plot | The names cannot sit on the lines at 358 px without crossing them (Rule 14.3 allows a key where labels cannot fit)
 - D3-xxx | S34 sizes circles by votes on cloture, the measure the reader question asks about, with motions filed and cloture invoked in the table; the 119th Congress, in session, takes a dashed outline | Rule 14.11 marks a period still under way; votes held answer 'how often has the Senate voted'
@@ -45,6 +49,8 @@ Started. Read the brief's "Read first" list. Working one specimen at a time, sta
 
 ## Requests
 
+Open, by owner. The research lead: R-B1, R-B4, R-B5, R-B8 (the data lead's DL-R2 asks the same), R-B10; and the data lead's DL-R1 and DL-R3, which touch S31 and S30 (S31 takes DL-R1's variant when it lands). The engineer: R-B2, R-B3, R-B7. Done: R-B6.
+
 - R-B10, to the research lead (for your information, as the brief asks): `work/build/data/illustrative-benefit-cliff.csv` and `.meta.json` are written, `kind: illustrative`, an invented parent with two children in Alder County, earnings $0 to $60,000 in $1,000 steps, every rule stated in the sidecar's qualification; `ledger_row` reads "none: invented data". Add a Part 7 row if the ledger lists invented files
 - R-B7, to the engineer: a `billions:N` number format (a value in dollars printed as 173.2 billion, or a table cell of 173.2), so S33's table can print receipts in billions where today it prints whole dollars
 - R-B8, to the research lead: a `source_line_variants` entry in `treasury-mts-receipts-by-source.meta.json` naming fiscal 2016 to 2026, the window S33 draws; the printed line names 2015 to 2026
@@ -55,6 +61,38 @@ Started. Read the brief's "Read first" list. Working one specimen at a time, sta
 - R-B2, to the engineer: a `dollars` number format (`dollars`, `dollars:N`, and a signed form) for axis ticks, table cells and `{y}` fills, so S30's axis and table can print $2,000 where today they print 2,000 and the measure line names dollars. S35 (benefit cliff) needs the same
 - R-B1, to the research lead: add to `census-cbp-newspaper-publishers.meta.json` (and `census-cbp-civic-organizations.meta.json`) a `breaks_in_series` line saying County Business Patterns moved from SIC to NAICS with the 1998 data year, so S29's measure line ("The count starts in 1998, the first year County Business Patterns sorted businesses by the North American Industry Classification System") traces to the sidecar
 
+
 ## Tested
 
+- `node work/build/chart-kit/oa-chart.mjs build s24 s25 s26 s27 s28 s29 s30 s31 s32 s33 s34 s35 s14 --out <scratch>/kit-out`: 13 of 13 PASS with 0 faults, at 1440 and 390 px on Newsprint and Charcoal and at 656, 558, 358, 296 and 256 px, page-to-Node parity included; S25, S26, S27, S29 and S30 rebuilt again after the data lead's requests, PASS. S02 built once as a trial, PASS.
+- `node work/build/scripts/phase-2/dataviz_check.js <page> --kit --no-captures` on each of the 13 build pages: PASS, 2 figures each at 1440 and 390 px, 0 failures. (A first run with the arguments in the wrong order checked no figures and wrote a results file beside the repository folder; I deleted that file and reran.)
+- Looked at every new specimen's captures at 1440 and 390 px, Newsprint and Charcoal, most at twice size by crop; grayscale captures for S29, and the rest by their single-ink or position-coded drawings. Fixed what read badly though the checks passed: S29's end label on the line, S30's labels crossing risers, S31's phone scale, S26's names, S32's lines through words, S33's base label, S35's phone labels.
+- Every figure in a title, note and alt checked by script against its data file, each check named in the spec's `notes_internal`. Two counts were wrong on first writing and fixed: S26's changes of control (seven, not eight) and S34's Congresses with no vote (11, not 13).
+- `oa-chart.mjs fragments` (load-table method) for the 12 new specs, S14, S02 and S13: plate bytes in the table above; S25 trimmed under three times the core average.
+- The sketches rendered in Chromium (Playwright) inside a page with `tokens.css` and `kit.css` on Newsprint, Charcoal and in grayscale; each under its byte limit, colored only by R1-C1's classes, with title, description and the "Illustrative data" label.
+- `make_benefit_cliff.py` (scratch `scripts/`) writes the data file and prints its drop and climb back, which S35's form finds again from the rows.
+- My files scanned for em dashes, U+2011, literal colors and font names: none.
+- Census BFS methodology and definitions pages fetched (200) for DL-B1; neither says how an application is assigned to a state.
+
 ## Not tested
+
+- Chapter 14's generator and the guide build with these entries and sketches: `phase3_ch14_build.py` and the build's sketch check are not written yet (engineer notes, "Not yet started").
+- The strict build's per-specimen weight warning: measured only by the kit's fragment, not by `guide_build.py --strict`.
+- The built specimens S05, S09, S11 and S13: not rebuilt; their entries describe them as approved on board 1.
+- Forced colors, print, 200 percent text and reduced motion: only the kit's own emulated forced-colors check ran; no Chromium forced-colors capture of the new forms.
+- DL-B6's code-list fact (online-only news sites in NAICS 519130) and S29's 1998 NAICS start rest on the code system's definitions, not on a census.gov page read today (R-B1).
+- S34's 2013 and 2017 threshold changes for nominations rest on the sidecar's qualification, which lists them as unconfirmed on a Senate page.
+- No real screen reader or device.
+
+## Change log
+
+Created:
+- `work/build/chart-kit/forms/` `area.js`, `step-line.js`, `line-data-gap.js`, `sparkline.js`, `change-lollipop.js`, `diverging-bar.js`, `diverging-bar-arrows.js`, `indexed-line.js`, `line-field.js`, `implementation-timeline.js`, `bubble-timeline.js`, `benefit-cliff.js`
+- `work/build/chart-kit/specs/s24.json` to `s35.json`
+- `work/build/guide/entries/14-025.json` to `14-045.json` (21 files)
+- `work/build/guide/specimens/s-14-43-sketch.html`, `s-14-44-sketch.html`, `s-14-45-sketch.html`
+- `work/build/data/illustrative-benefit-cliff.csv` and `illustrative-benefit-cliff.meta.json`
+- `work/handoffs/phase-3/20261112_Round-1-Maker-B-Notes.md` (this file)
+
+Modified:
+- `work/build/chart-kit/specs/s14.json` (the `with_margin` source line and the margin figure in note 4)

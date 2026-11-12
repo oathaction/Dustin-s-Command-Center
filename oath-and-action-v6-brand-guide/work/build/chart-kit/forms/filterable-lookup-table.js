@@ -1,11 +1,11 @@
 /* Filterable lookup table (coverage plan 3.15, extended and interactive; S38). On the atlas site and in the guide a reader
  * searches and filters the whole register in its live table (spec.lookup, Rules 18.10, 18.15 and 18.16). The drawing is
  * the still image a post or an email carries (DR-49): the register filtered to one value of one facet, under the count
- * line the live table would show with that filter on, each record's title with its typed ID and its second column.
+ * line the live table would show with that filter on, each record's title under its typed ID.
  * encode: key (id: the record's ID), title (text), facet (category: the column the still filters on), second (category,
- * optional: a short word printed at the right, such as a grade). labels: still (the facet value the still shows), count
- * ("{n} of {total} issue records: {facet}"), facet_words ({value: printed words}), second_words ({value: words}),
- * id_type (the type word before each ID, such as "Issue"). */
+ * optional: a short word printed at the right). labels: still (the facet value the still shows), count ("{n} of {total}
+ * issue records: {facet}"), facet_words ({value: printed words}), second_words ({value: words}), id_type (the type word
+ * before each ID, such as "Issue"). */
 (function (K) {
   'use strict';
   K.register_chart({

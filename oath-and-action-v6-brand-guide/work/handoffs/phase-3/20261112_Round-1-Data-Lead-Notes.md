@@ -80,7 +80,7 @@ What holds on every plate: each connection's sign and its verb match V7 (L01 to 
 
 ### To the research lead (round 3 data plan)
 
-The twelve changes in the plan's "Data lead sign-off" section, by row: 95, 108, 102, 86, 90, 96, 100, 94, 109 and 111, 113, 83, 87.
+The twelve changes in the plan's "Data lead sign-off" section, by row: 95, 108, 102, 86, 90, 96, 100, 94, 109 and 111, 113, 83, 87. The research lead's section "Research lead, after the sign-off" applies all twelve (read at 04:40 UTC); row 113 waits on download item 2 and the map geometry on ENG-10. I have not yet checked the frozen files against the changes.
 
 ### To the research lead (round 1 sidecars)
 
@@ -139,7 +139,7 @@ The twelve changes in the plan's "Data lead sign-off" section, by row: 95, 108, 
 - Read each spec's words and its entry (14-015 to 14-023, 14-026 to 14-028, 14-033, 14-035 to 14-037, 14-040) against the plan file's forms; every `use_instead` names a real rule number for the form it describes.
 - Checked S25's and S26's scale notes against their forms' scale code (`forms/diverging-bar.js`, lines 27 to 30) and the drawings; checked S30's words against `govinfo-child-tax-credit-by-law.csv` and its sidecar; checked S29's code list against `census-cbp-newspaper-publishers.meta.json` (the 2023 file is served under the 2017 code list).
 
-- Chapter 15: `guide_build.py --out <scratch>/guide/guide.html` (built; its notes reported no failure for chapter 15). Playwright captures of all 25 plate stages at 1440 and 390 px and of each rule's block at 1440 px; I looked at every plate at 1440 px and every correct plate at 390 px, and zoomed on 15.8's frame crossings and 15.13's ticks. Script checks on V7: every link's ends, sign, type, grade and delay named above; loop chains, closures and kinds; variable types and plain kinds (finding D6); the glossary, methods, evidence-note, qualification and `sign_meaning` quotations; LTR1's full reason; chapter 11's Rule 11.14 and chapter 18's Rule 18.22.
+- Chapter 15: `guide_build.py --out <scratch>/guide/guide.html` (built: 0 warnings in its build report, 18 chapters, 485 specimens placed). Playwright captures of all 25 plate stages at 1440 and 390 px and of each rule's block at 1440 px; I looked at every plate at 1440 px and every correct plate at 390 px, and zoomed on 15.8's frame crossings and 15.13's ticks. Script checks on V7: every link's ends, sign, type, grade and delay named above; loop chains, closures and kinds; variable types and plain kinds (finding D6); the glossary, methods, evidence-note, qualification and `sign_meaning` quotations; LTR1's full reason; chapter 11's Rule 11.14 and chapter 18's Rule 18.22.
 
 ## Not tested
 
