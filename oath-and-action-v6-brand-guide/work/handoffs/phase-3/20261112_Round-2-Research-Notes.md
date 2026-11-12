@@ -98,3 +98,108 @@ Modified:
 - `work/research/20261021_Research-Ledger.md` (Part 7's "Round 2" section and "Round 4 datasets" section with P7-301 to P7-310; claims 27 to 30; change log lines)
 
 Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/65b3d20e-985e-5fe9-b272-d7d01bd821cd/scratchpad/phase-3/round-2/research/` (reach logs; downloads with fetch logs under `dl/`; scripts `fetch.sh`, `freeze_round4.py`, `fix_stc_r1.py`, `fix_mspd_r2.py`, `recount_ch14.py`, `plan4_v7_check.py`, `row113_v7_read.py`, `check_maker_b_derived.py`, `stc_read.py`, `html_text_grep.py`, `htmltext.py`, `ecfrtext.py`, `xl_dump.py`).
+
+## Review fix pass
+
+November 12, 2026, 22:00 to 22:30 UTC, under `work/handoffs/phase-3/20261112_Round-2-Fix-Brief.md` (research lead’s paragraph, the access addendum D3-905, and D3-910), the data lead’s rulings RF-4, RF-5, RF-11, RF-11a and RF-20, and the main session’s messages. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/3ab6316c-6935-5f23-804c-cfaafd548447/scratchpad/phase-3/round-2-fix/research-lead/` (scripts in `scripts/`, downloads in their own folders under `dl/`, each with `fetch-log.tsv`).
+
+### Summary
+
+Every item is done, and nothing waits on me. No frozen figure changed (D3-476). Each fix is a sidecar field, a source line variant, or a column the publisher prints beside a frozen one. The data check reads 111 tables with 0 faults. The data lead signed off RF-11a’s columns, and the access reviewer rechecked AX S8’s counts by script.
+
+- **ST M3 (with RF-5).** `house-history-party-divisions.meta.json`: `observation_period` now reads "82nd Congress (1951 to 1953) to 119th Congress (2025 to 2027), as first elected for each Congress", and the note calls the table "the count as first elected for each Congress", not an opening count. The Clerk’s sidecar gains variant `with_party_divisions_119th`, the line S48 prints. It gives the Clerk’s count first, since it is drawn, then the Historian’s 119th Congress row with its geography and qualification. It names both publishers the way the kit’s two-dataset check reads them.
+- **ST S5 (with RF-11 and RF-11a).** `census-acs-tenure-by-state` gains three kinds of column:
+  - `households_moe` (B25003_001M), read from the same table and vintage; the same API call returned every frozen count unchanged.
+  - `owner_pct_moe_dp04` and `renter_pct_moe_dp04`, the Bureau’s own margins from Data Profile DP04. These are the margins a chart prints.
+  - `owner_pct_moe_formula` and `renter_pct_moe_formula`, formula (6) of the Bureau’s ACS handbook, chapter 8, kept as a check and printed nowhere.
+
+  Variant `with_dp04_margin` names DP04. DC’s renter share, 61.9 percent, carries 1.5 points. Every state sits below half past its margin. RF-11 first ruled the formula. I then found that DP04 prints the margins, and RF-11a re-ruled to the published ones.
+- **AX S8’s data side (D3-905).** The Census Bureau publishes no percent margin in Table B28002, which holds counts and count margins only. It does publish both shares with their margins in Subject Table S2801 of the same ACS 2025 1-year release, and S2801’s counts equal B28002’s in all 52 rows. `census-acs-broadband-by-state` gains `households_moe` (B28002_001M), the printed `broadband_any_pct_moe_s2801` and `broadband_fixed_pct_moe_s2801`, and the check-only `broadband_fixed_pct_moe_formula`. Round 3’s frozen `broadband_any_pct_moe` stays and is now check-only. Variants `any_with_s2801_margin` and `fixed_with_s2801_margin` name S2801, and the formula variants I first wrote are withdrawn; no spec used them. Both margin sidecars gain three fields for the engineer’s check:
+  - `source_line_columns`: the columns each line covers.
+  - `margin_columns`: each value’s printable margin.
+  - `check_only_columns`: margins a chart must not print.
+
+  Against the nation with S2801’s margins, 20 states and DC sit above, 22 states below and 8 within. Nevada sits near the line, above it by under 0.02 point.
+- **ST S6, the data side.**
+  - S47: `treasury-mts-outlays-by-function` gains variant `treemap_fy2026_september_statement` and a note on the year-end report. Today’s API record of September 30, 2026 equals all 20 frozen fiscal 2026 lines.
+  - S46: `cms-nhe-by-payer-four-groups` gains variant `release_named` ("release with data through 2024"; "Each release can revise every earlier year"). Today’s CMS zip equals the frozen file in all 715 cells.
+  - S45: `census-nrc-completions-by-structure` gains template `span_september_2026_release`. The release is September 2026, released October 20, 2026, CB26-162, and today’s file has the frozen SHA-256 prefix.
+  - S58: `census-cps-median-household-income` gains a note quoting Table 2’s deflator words (C-CPI-U from 2000, R-CPI-U-RS before). The table, read again, equals all 61 frozen rows.
+- **RF-20.** `frb-fomc-projections-unemployment` gains variant `with_unemployment_history`, which adds the Bureau of Labor Statistics’ fourth-quarter averages for 2021 to 2024 and says 2025 has none.
+- **RF-4, D3-835 and D3-910.** `v7-numbers.meta.json`’s qualification says V7 stores figure 4’s inspectors general sentence under figure 5, and that figure 7’s calls H.R. 7008 "a ban". The engrossed text of July 22, 2026, read on govinfo.gov, has two parts: section 2, "Restrictions on covered investments", and section 3, "Requiring voters to provide photo identification". Ballot Measure 2 now reads "on the ballot on November 3, 2026". `work/build/scripts/phase-3/research_v7_extract.py` writes the same qualification; that one string is the only change to the script. I ran it first in a scratch mirror, where 20 of 20 outputs came out byte for byte, then in the repository, where `git status` and `git diff --stat` on `work/build/data` matched the state before the run.
+- **The stale lines.** The round 3 data plan keeps every line as the record and marks the stale ones:
+  - Its limits sentence and both count tables point to the round 4 plan’s 108 examples, with limits of 27 per domain and 21 per state.
+  - The host line, download item 2 and the fallback sentence say the file came and is frozen as P7-223, so row 113 waits on nothing.
+  - The sign-off request notes row 108’s move to taking part, trust and shared norms.
+  - Change 10’s panel years point to DR-243’s 2010, 2014, 2019 and 2024 and the variant `panels_2010_2014_2019_2024`.
+  - The status paragraph gains a "Since then" line.
+
+  The research ledger’s P7-220 now reads "1968 to 2024" and DR-243’s panels, and Part 7 gains a "Review fix pass, round 2" section, three Phase 5 refresh rows (Treasury, NHE, NRC) and claims 31 to 33.
+
+### When a margin is missing (AX S8, for the editor and the engineer to carry into entry 14.74 and the README)
+
+The Bureau does publish a margin for the fixed broadband share, so AX S8’s case is closed by the columns above. The same question will come back for other files, so this is the order a designer follows:
+
+1. Read the sidecar’s `margin_columns` for the value the chart draws, and print that column. Never print a column listed in `check_only_columns`, and never draw a margin whose unit differs from its value’s, such as a count margin on a percent.
+2. If the sidecar names no margin, ask the research lead whether the publisher prints one elsewhere in the same release. For the American Community Survey, look in the Data Profile (DP) and Subject (S) tables of the same year and vintage. The research lead adds it as a column under C1; a spec never computes one.
+3. If the publisher prints no margin for the figure drawn, as for S57’s state ratios, the research lead computes it by the Bureau’s published formula, stores it with its method in the sidecar, and the chart’s note says it was computed (RF-11a).
+4. If no margin exists and none can be computed, as for a studio share without its denominator’s margin, draw no interval. The words then rank or compare nothing the survey cannot support, and the note says the publisher gives no margin. `census-acs-labor-force-by-age-sex`, whose participation rates carry no published margin and lack the pieces of a derived one, is the case in the data folder today.
+
+### Routine calls
+
+- D3-xxx | The margins a chart prints are the publisher’s own where the same release prints them (DP04 for tenure, S2801 for broadband); the formula margins stay as check-only columns | RF-11a; Rule 14.9 prints the publisher’s uncertainty, and the formula differs from the published margins by up to 0.32 points
+- D3-xxx | New margin columns carry the table in their names (`_dp04`, `_s2801`, `_formula`), and no column keeps the bare name `*_pct_moe` for a new margin | A designer meeting two margins for one value picks by name and by `margin_columns`, never by guess (AX S8)
+- D3-xxx | Sidecars with more than one margin or measure gain `source_line_columns`, `margin_columns` and `check_only_columns` | They give the engineer’s check the data it needs to fail a line or margin the chart does not draw (AX S8)
+- D3-xxx | New columns are appended after the frozen ones, and the scripts assert every frozen field unchanged in every row | D3-476 freezes figures; a column beside them adds without altering
+- D3-xxx | S48’s joined line sits in the Clerk’s sidecar as `with_party_divisions_119th` | The Clerk’s count is drawn and comes first (RF-5); a two-dataset spec copies a line no sidecar would otherwise hold
+- D3-xxx | S46’s variant names the NHE release by its data year, "release with data through 2024", with no date | CMS’s page names no release date, and the 2024 comprehensive revision came out with the 2023 data, so "2024 release" would mislead
+- D3-xxx | S45 takes a template, not a variant, for its release | S45 prints its years through `source_line_template`, and the template keeps them fitted to what it draws
+- D3-xxx | The stale lines in the round 3 plan stay, each marked superseded with a pointer | The plan is the record of round 3’s sign-off; the current count lives in the round 4 plan
+- D3-xxx | `research_v7_extract.py` carries v7-numbers’ qualification verbatim, run first in a scratch mirror | D3-910; a rerun must write what the file holds, and the mirror proved it before the repository run
+
+### Requests
+
+- **To the engineer.** Read `margin_columns`, `check_only_columns` and `source_line_columns` in the check (AX S8’s kit side). Only the two ACS margin sidecars carry them today. Other sidecars whose lines cover different measures (`census-spm-child-poverty`, `fred-unemployment-and-job-openings`, `census-cps-reported-voting`, `v7-stock-trading-ban`) can take `source_line_columns` once the check reads it; say so under Contracts and I add them.
+- **To the editor and the engineer.** "When a margin is missing", above, for entry 14.74 and the README.
+- **Closed:** the data lead’s RF-4, RF-5, RF-11, RF-11a and RF-20; D3-905; D3-910; the main session’s D3-835 wording. I told maker A (S43, S45, S46, S47, S48), maker B (S58, S59), the access reviewer, the engineer and the data lead.
+
+### Tested
+
+- Census Bureau API, 22:06 UTC, with the key from the environment, never printed or saved; a fixed-string search finds it in none of my scratch files. I read B25003 and B28002 again, plus DP04 and S2801 for the states and the nation. Every frozen count and count margin in both files equals the API’s. Every DP04 and S2801 share equals the file’s share rounded to one decimal. S2801’s counts equal B28002’s.
+- Formula (6) and its ratio form, read in the Bureau’s handbook chapter 8 PDF. The `_formula` columns recompute from the stored counts and margins. No share needed the ratio form.
+- S43’s claims under DP04’s margins: DC above half, and every state below half past its margin. The broadband state-against-nation test by both methods: 20, 22 and 9 by the formula; 21, 22 and 8 by S2801, with Nevada the one change.
+- Treasury fiscaldata API, MTS Table 9 for September 30, 2026: all 20 frozen fiscal 2026 lines are equal. The 19 functions sum to the frozen total, positive functions sum to $7,566.3 billion and net outlays to $7,395.8 billion, and the two negative lines are as named.
+- CMS: the historical page, highlights PDF, 2024 comprehensive revision summary and zip, with NHE2024.csv compared in all 715 cells. Crossref for the Health Affairs article (February 2026 issue).
+- Census: the NRC release page and `comps_cust.xlsx` (SHA-256 prefix, last month September 2026); P60-289 Table 2 (header words; 61 all-races rows equal to the frozen file).
+- Congress.gov API (proxy key): H.R. 7008’s titles and text versions. govinfo.gov: the engrossed text’s section headings and the photo identification section’s federal-election words.
+- `research_v7_extract.py`: rerun unchanged in a mirror (only `v7-numbers.meta.json` differed, as expected), then rerun edited in the mirror (20 of 20 byte for byte), then rerun in the repository (`git status` and `git diff --stat` on the data folder unchanged).
+- Each fix script asserts its checks before writing and wrote nothing on a rerun: `review_fix_round2.py`, `rf11a_published_margins.py`, `plan3_stale_lines.py`, `ledger_round2_fix.py`.
+- The data check, `data_round0_build.py --check`, after every write: 111 tables, 0 faults.
+- No em dash or U+2011 in any file I changed (asserted by each script).
+
+### Not tested
+
+- No chart drawn or built; the makers rebuild S43, S45 to S48, S58 and S59.
+- How the Bureau computes DP04’s and S2801’s margins, and why they run up to 0.32 points from the formula (ledger claim 32).
+- CMS’s release date for the data through 2024; its page names none (claim 31).
+- The Treasury’s year-end report for fiscal 2026 (claim 33).
+- ssa.gov and bls.gov were not retried.
+- The map geometry (P7-219) is still waiting on the kit’s projection and the data check’s `.geojson` reading; untouched this pass.
+
+### Files
+
+Modified:
+- `work/build/data/house-history-party-divisions.meta.json`, `clerk-house-current-party-breakdown.meta.json` (ST M3, RF-5)
+- `work/build/data/census-acs-tenure-by-state.csv` and `.meta.json` (ST S5, RF-11, RF-11a; columns appended)
+- `work/build/data/census-acs-broadband-by-state.csv` and `.meta.json` (AX S8, D3-905, RF-11a; columns appended)
+- `work/build/data/treasury-mts-outlays-by-function.meta.json`, `cms-nhe-by-payer-four-groups.meta.json`, `census-nrc-completions-by-structure.meta.json`, `census-cps-median-household-income.meta.json` (ST S6)
+- `work/build/data/frb-fomc-projections-unemployment.meta.json` (RF-20)
+- `work/build/data/v7-numbers.meta.json` (RF-4, D3-835)
+- `work/build/scripts/phase-3/research_v7_extract.py` (D3-910, the one qualification string)
+- `work/handoffs/phase-3/20261112_Round-3-Data-Plan.md` (stale lines marked)
+- `work/research/20261021_Research-Ledger.md` (P7-220, the new section, refresh rows, claims 31 to 33, change log)
+- `work/handoffs/phase-3/20261112_Round-2-Research-Notes.md` (this section)
+
+Not changed: `work/handoffs/phase-3/20261112_Round-4-Data-Plan.md`, whose counts are the current ones.
+
+Scratch only: the folder above. Scripts are `fetch.sh`, `review_fix_round2.py`, `rf11a_published_margins.py`, `plan3_stale_lines.py`, `ledger_round2_fix.py`, `compare_margins.py`, `margin_compare_tests.py`, `mts_check.py`, `nhe_check.py`, `htmltext.py` and `xl_dump.py`. The `mirror-v7/` folder holds the v7 script's mirror run, `baseline/` holds the files as they stood before this pass, and `dl/` holds the downloads (acs-margins, acs-handbook, mts, nhe, nrc, p60, congress), each with its fetch log.

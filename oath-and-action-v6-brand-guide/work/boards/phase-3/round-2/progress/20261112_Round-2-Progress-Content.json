@@ -211,7 +211,8 @@
     {
      "label": "The strict build of the guide",
      "kind": "build",
-     "words": "{bytes} bytes, {warnings} warnings"
+     "words": "{bytes} bytes, {warnings} warnings",
+     "words_failed": "did not pass today: {warnings} warnings on a build of {bytes} bytes"
     },
     {
      "label": "The quick guide check",

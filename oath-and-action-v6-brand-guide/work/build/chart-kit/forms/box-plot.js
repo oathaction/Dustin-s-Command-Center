@@ -107,7 +107,7 @@
         c.rect(K.snap(mx, 2) - mlw / 2, y0, mlw, bh, { fill: lit ? 'label-on-subject' : 'subject', data: { key: k, field: em, value: r[em] } });
         if (L.median) {
           var words = String(L.median).replace('{median}', K.fmt(r[em], fv)), mw = c.measure(words, 'tick', b ? 700 : 600);
-          c.text(Math.min(Math.max(mx, x0 + mw / 2), W - mw / 2), y0 - 7, words, { role: 'tick', weight: b ? 700 : 600, anchor: 'middle', fill: 'label', halo: true });
+          c.text(Math.min(Math.max(mx, x0 + mw / 2), W - mw / 2), y0 - 7, words, { role: 'tick', weight: b ? 700 : 600, anchor: 'middle', fill: 'label' });
         }
         // the units past the whiskers, small open dots on the row's line or the lane the swarm gave them
         swarms[i].forEach(function (p) {

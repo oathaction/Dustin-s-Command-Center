@@ -1987,9 +1987,9 @@ def rule_15_12(book):
     steps = (f'<p class="k">Each step</p>'
              + "".join(f'<p class="nt"><b>{i}</b>&#160;{chip("Connection", x)} “{e(link(x)["name"])}”.&#160;'
                        f'{grade_word(link(x)["evidence"], gloss=False)}</p>' for i, x in enumerate(chain, 1)))
-    words = (f'<p class="k">Two grades, apart</p>{blocks}' + acts_note("R-32", r))
+    words = f'<p class="k">Two grades, apart</p>{blocks}'
     key = reading_key(chain, layers=("Technology layer", "Core layer"))
-    body = (hed("Reform", "R-32", r["title"]) + beside(fig(svg) + steps, words)
+    body = (hed("Reform", "R-32", r["title"]) + beside(fig(svg) + acts_note("R-32", r) + steps, words)
             + f'<div class="kb"><p class="k">Reading a step</p>{key}</div>'
             + src("reform R-32, its problem and remedy evidence, and connections LT03 and L26"))
     book.add("s-15-12-correct", body, rule="15.12", readable=True, wide=True,

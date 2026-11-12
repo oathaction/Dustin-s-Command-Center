@@ -11,21 +11,20 @@
       "order": "desc"
     }
   ],
-  "reader_question": "Do rents run higher where renters earn more, with each state sized by its renter households?",
+  "reader_question": "Where do the states with the most renter households sit on rent and renters’ income?",
   "evidence": "association",
   "evidence_label": "Association",
   "grade_line": "Documented: a Census Bureau survey",
-  "title": "Higher rents went with higher renter incomes across the states in 2025, and in Florida, home to 3.0 million renter households, the median renter paid the largest share of income in rent, 35.5 percent.",
+  "title": "The four states with the most renter households held 17.1 million of the nation’s 46.6 million in 2025, and three of them had median rents above the nation’s.",
   "measure_line": "Median gross rent a month against renter households’ median income a year, 2025, 50 states and DC; each circle is a state, its area set by its renter households.",
-  "reading_guide": "States to the right have renters with higher incomes, and states higher up have higher rents. A larger circle holds more renter households.",
+  "reading_guide": "States to the right have renters with higher incomes, and states higher up have higher rents. A larger circle holds more renter households; the four largest are named.",
   "notes": [
     "This shows the two move together; it does not show one causes the other.",
-    "Rent as a percent of income is the Census Bureau’s own measure: the median, across renter households paying cash rent, of each one’s rent over its income. Florida’s 35.5 percent (margin 0.5) passes the next figures, California’s 32.9 (0.3) and Hawaii’s 32.8 (1.2), by more than their margins. Margins of error are at 90 percent confidence.",
-    "North Dakota has the smallest figure, 23.8 percent (margin 1.2); Wyoming’s 25.5 (2.0) sits within its margin, so the survey cannot order the two."
+    "California’s median rent of $2,160 a month, New York’s $1,704 and Florida’s $1,866 sit above the nation’s $1,557, and Texas’s $1,515 below it, each by more than the margin of error of the gap. Margins of error are at 90 percent confidence."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "A bubble chart of 50 states and DC: median gross rent against renter households’ median income in 2025, each circle sized by renter households. The circles climb from lower left to upper right; California’s 6.2 million renter households make the largest circle, at the top right. Florida, in dark ink, sits above the cloud with the largest rent share, 35.5 percent.",
+  "alt": "A bubble chart of 50 states and DC: median gross rent against renter households’ median income in 2025, each circle sized by renter households. The circles climb from lower left to upper right. The four largest, California with 6.2 million renter households, Texas with 4.3 million, New York with 3.6 million and Florida with 3.0 million, are named in dark ink; three sit above the nation’s rent and Texas below it.",
   "table": {
     "caption": "Rent, renter income and renter households by state, 2025",
     "columns": [
@@ -63,7 +62,7 @@
     ]
   },
   "chart_notes": [
-    "Florida takes the dark ink; the other states are light gray circles with thin outlines, with California and North Dakota named. The open ring marks the United States. The key gives circles for 1 million and 6 million renter households."
+    "The four states with the most renter households take the dark ink, each named with its renter households; the other states are light gray circles with thin outlines. The open ring marks the United States. The key gives circles for 1 million and 6 million renter households."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -82,11 +81,10 @@
   },
   "labels": {
     "named": [
-      "FL"
-    ],
-    "labeled": [
       "CA",
-      "ND"
+      "TX",
+      "NY",
+      "FL"
     ],
     "reference": "US",
     "reference_label": "United States",
@@ -97,7 +95,13 @@
     "size_key_label": "{value}",
     "size_key_title": "Renter households",
     "x_axis": "Renter households’ median income, a year",
-    "y_axis": "Median gross rent, a month"
+    "y_axis": "Median gross rent, a month",
+    "sub": {
+      "CA": "6.2 million",
+      "TX": "4.3 million",
+      "NY": "3.6 million",
+      "FL": "3.0 million"
+    }
   },
   "formats": {
     "x": "dollars",
@@ -118,6 +122,7 @@
     "Maker B, round 2. Data plan row 64, rule 14.68. Same file and rulings as S54; circles by area (D2-124), largest drawn first, each with a 1 px outline in the context ink (ruling (e)); the key gives two sizes (Rule 14.4).",
     "Figures checked by maker_b_round2_derive.py --figures (check S55): Florida 2,981,485 renter households (3.0 million), California 6,159,367 (6.2 million, the most), Florida’s 35.5 percent the largest share past the margin.",
     "Read from the left and the right: as S54.",
-    "Data lead MB-7 to MB-9 and MB-10, MB-11: California and North Dakota labeled in regular weight; note 2 tests Florida against California and Hawaii and a note gives North Dakota’s figure against Wyoming’s (checked by --figures); the income scale ends at $85,000 so DC’s dot at $79,741 sits inside the plot."
+    "Data lead MB-7 to MB-9 and MB-10, MB-11: California and North Dakota labeled in regular weight; note 2 tests Florida against California and Hawaii and a note gives North Dakota’s figure against Wyoming’s (checked by --figures); the income scale ends at $85,000 so DC’s dot at $79,741 sits inside the plot.",
+    "Review fix pass: the data lead’s RF-18 (CD B-S1): the question and title turn on the four states with the most renter households, so circle size answers the question; the four take the subject ink as states (Rule 14.6’s list), each named with its renter households in regular weight (labels.sub). RF-6 drops North Dakota; note 2 now tests the four states’ rents against the nation’s, each past the gap’s margin. RF-19: the United States’ name keeps off every circle where it can. BC S17: the key’s circles take the field’s fill and outline. The Association label and note 1 stay, as entries 14.67 and 14.68 set for every correlation chart; the title states documented counts and rents. Checked by maker_b_round2_derive.py --figures (check S55)."
   ]
 }

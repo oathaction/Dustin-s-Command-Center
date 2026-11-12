@@ -2,7 +2,7 @@
   "id": "14.56",
   "title": "Use a marimekko when the groups differ in size and each splits into the same parts.",
   "rule": [
-    "Use a marimekko, a reference form, to show two ways of dividing one whole at once: each column is as wide as its group’s share of the whole, and each column splits by the same parts as a 100 percent bar does. Name every column and part, and print each column’s width as a share, since width is the measure a reader cannot read from a scale."
+    "Use a marimekko, a reference form, to show two ways of dividing one whole at once: each column is as wide as its group’s share of the whole, and each column splits by the same parts as a 100 percent bar does. Name every column and part, and print each column’s width as a share, since width is the measure a reader cannot read from a scale. A cell the title names takes the subject ink, since a cell in red would pass Rule 05.1’s 5 percent of the drawing (Rule 14.6)."
   ],
   "use_when": "The reader asks how a whole divides by two things at once, such as who answered each way within groups of very different size, and the area of each cell is the count that matters.",
   "use_instead": [

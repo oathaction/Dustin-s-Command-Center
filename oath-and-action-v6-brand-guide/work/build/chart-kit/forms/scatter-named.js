@@ -3,7 +3,7 @@
  * dots the title names take the subject ink (or the red point) and carry their names in bold, every other dot the light
  * fill, and a few more may carry their names in regular weight in the light fill (labels.labeled). Names are placed by the kit's shared part
  * (K.parts.place_labels): eight places around each dot, then further out with a leader, clear of every name, text and
- * dot; a name with no clear place is listed in a line under the chart. A reference point (labels.reference, such as the
+ * dot and circle; a name with no clear place is listed in a line under the chart. A reference point (labels.reference, such as the
  * nation) takes the kit's open ring in the text's ink (K.parts.total_ring) with its name. Axis words sit over the value
  * axis at the left and at the right end under the bottom axis. No fitted line: the reader judges the pattern, and the
  * evidence label says what it can show.
@@ -12,7 +12,10 @@
  * labels: named (keys in the subject ink, each named), point (the one key in the red point, named), labeled (keys named
  * in the light fill), names ({key: printed name}), reference (a key drawn as an open ring and named), reference_label (its
  * words, with any column in braces), x_axis, y_axis (axis words), size_key ([values] for a key of circle sizes),
- * size_key_label (each one's words, with {value}), size_key_title (words over that key).
+ * size_key_label (each one's words, with {value}), size_key_title (words over that key), sub ({key: words}: a second
+ * line in regular weight under a named point's bold name, or over it, such as the figure the title gives; round 2 fix
+ * pass, BC S9). The key's circles take the field's fill and outline, as the circles they stand for (BC S17); the
+ * reference's name keeps off every circle where it can (BC S9).
  * formats: x, y (ticks), size (the key). scale: x and y ([lo, hi]). On a phone the same arrangement draws narrower, with
  * smaller dots and circles. Maker B, round 2. */
 (function (K) {
@@ -22,7 +25,7 @@
     name: 'Scatter Named',
     family: 'correlation',
     encode: { key: 'code', label: 'text', x: 'number', y: 'number', size: 'number?' },
-    labels: ['named', 'point', 'labeled', 'names', 'reference', 'reference_label', 'x_axis', 'y_axis', 'size_key', 'size_key_label', 'size_key_title'],
+    labels: ['named', 'point', 'labeled', 'names', 'reference', 'reference_label', 'x_axis', 'y_axis', 'size_key', 'size_key_label', 'size_key_title', 'sub'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, L = c.labels, f = c.spec.formats || {}, W = c.width, ph = c.phone;
@@ -54,7 +57,8 @@
         L.size_key.forEach(function (v, i) {
           var words = String(L.size_key_label || '{value}').replace('{value}', K.fmt(v, f.size || 'integer')), ww = 2 * kr[i] + 6 + c.measure(words, 'tick');
           if (kx > 0 && kx + ww > W) { kx = 0; krow += kh + 8; }
-          c.circle(kx + kr[i], krow + kh - kr[i], kr[i], { stroke: 'context', width: c.t('bubble-outline'), mark: false });
+          c.circle(kx + kr[i], krow + kh - kr[i], kr[i], { fill: c.ground === 'charcoal' ? 'context' : 'light-fill', mark: false });
+          c.circle(kx + kr[i], krow + kh - kr[i], kr[i], { stroke: c.ground === 'charcoal' ? 'surface' : 'context', width: c.t('bubble-outline'), mark: false });
           c.text(kx + 2 * kr[i] + 6, krow + kh - kr[i] + tick * 0.35, words, { role: 'tick' });
           kx += ww + 18;
         });
@@ -106,11 +110,40 @@
       var order = function (p) { return p.ref ? 2 : lit(p.r) ? 0 : 1; };
       var lab = pts.filter(function (p) { return p.ref ? !!L.reference_label : lit(p.r) || labeled.indexOf(String(p.r[ek])) >= 0; })
         .sort(function (a, b) { return order(a) - order(b) || a.x - b.x; });
-      // a name may lie across a large circle's edge on its halo, as a map's bubble names do, but never over a dot
-      var avoid = pts.filter(function (p) { return lab.indexOf(p) < 0 && p.rad <= 12; }).map(function (p) { return { x: p.x - p.rad, y: p.y - p.rad, w: 2 * p.rad, h: 2 * p.rad }; });
-      var pl = P.place_labels(c, lab.map(function (p) {
-        return { x: p.x, y: p.y, r: p.rad, words: p.ref ? P.fill(c, L.reference_label, p.r) : name(p.r), weight: lit(p.r) && !p.ref ? 700 : 400, key: p.r[ek] };
-      }), { top: 0, bottom: bot, avoid: avoid });
+      // a name keeps off every dot and circle that carries no name of its own (the kit's crossing check fails a word half over
+      // a circle, round 2 fix pass, AX S2); the named circles are guarded by the part itself
+      var avoid = pts.filter(function (p) { return lab.indexOf(p) < 0; }).map(function (p) { return { x: p.x - p.rad, y: p.y - p.rad, w: 2 * p.rad, h: 2 * p.rad }; });
+      var item = function (p) { return { x: p.x, y: p.y, r: p.rad, words: p.ref ? P.fill(c, L.reference_label, p.r) : name(p.r), weight: lit(p.r) && !p.ref ? 700 : 400, key: p.r[ek] }; };
+      var pl = P.place_labels(c, lab.filter(function (p) { return !p.ref; }).map(item), { top: 0, bottom: bot, avoid: avoid });
+      // the reference's name, last, keeps off every circle too (BC S9)
+      var refl = lab.filter(function (p) { return p.ref; });
+      if (refl.length) {
+        var all = pts.filter(function (p) { return !p.ref; }).map(function (p) { return { x: p.x - p.rad, y: p.y - p.rad, w: 2 * p.rad, h: 2 * p.rad }; });
+        var pr = P.place_labels(c, refl.map(item), { top: 0, bottom: bot, avoid: all });
+        pl.placed = pl.placed.concat(pr.placed); pl.unplaced = pl.unplaced.concat(pr.unplaced);
+      }
+      // a named point's second line in regular weight (labels.sub), under its name or over it, clear of every word and dot;
+      // where neither is clear it takes a place of its own beside the dot
+      var subs = L.sub || {}, loose = [];
+      pl.placed.forEach(function (q) {
+        var words = subs[String(q.item.key)];
+        if (!words) return;
+        var b = q.box, an = b.x >= q.item.x - 0.5 ? 'start' : b.x + b.w <= q.item.x + 0.5 ? 'end' : 'middle';
+        var sx = an === 'start' ? b.x : an === 'end' ? b.x + b.w : b.x + b.w / 2, sw = c.measure(words, 'label', 400);
+        var bx = an === 'start' ? sx : an === 'end' ? sx - sw : sx - sw / 2;
+        var dotb = pts.map(function (p) { return { x: p.x - p.rad, y: p.y - p.rad, w: 2 * p.rad, h: 2 * p.rad }; });
+        var clear = function (ty) {
+          var bb = { x: bx, y: ty - 0.864 * size, w: sw, h: size };
+          if (bb.x < 0 || bb.x + bb.w > W || bb.y < 0 || bb.y + bb.h > bot) return false;
+          var hit = function (t) { return bb.x < t.x + t.w + 2 && t.x < bb.x + bb.w + 2 && bb.y < t.y + t.h + 1 && t.y < bb.y + bb.h + 1; };
+          return !c.texts.some(hit) && !dotb.some(hit);
+        };
+        var below = b.y + b.h + 0.864 * size + 1, above = b.y - 0.136 * size - 1;
+        var ty = clear(below) ? below : clear(above) ? above : null;
+        if (ty === null) { loose.push({ x: q.item.x, y: q.item.y, r: q.item.r, words: words, weight: 400, key: q.item.key }); return; }
+        c.text(sx, ty, words, { role: 'label', weight: 400, anchor: an, halo: true });
+      });
+      if (loose.length) { var pls = P.place_labels(c, loose, { top: 0, bottom: bot, avoid: pts.map(function (p) { return { x: p.x - p.rad, y: p.y - p.rad, w: 2 * p.rad, h: 2 * p.rad }; }) }); pl.unplaced = pl.unplaced.concat(pls.unplaced); }
       var end = ay + 4;
       if (L.x_axis) { var xb = c.text(W, ay + tick + 10, L.x_axis, { role: 'tick', weight: 600, anchor: 'end', max: W - x0 }); end = xb.bottom; }
       if (pl.unplaced.length) {

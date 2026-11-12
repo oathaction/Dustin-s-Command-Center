@@ -28,13 +28,13 @@
   "title": "Social Security took the largest share of federal spending in fiscal 2026, $1,667.1 billion.",
   "measure_line": "Net federal outlays by budget function, billions of dollars, nominal, fiscal year 2026 (October 1, 2025 to September 30, 2026), United States; each tile’s share is of the functions with positive outlays, $7,566.3 billion",
   "notes": [
-    "Eleven functions under 6 percent each fold into one tile, $1,089.8 billion in all; the table lists each.",
+    "The last tile holds the ten functions too small to name, each under 2 percent, $673.6 billion in all; the table lists each.",
     "Shares are of the 17 functions with positive outlays, $7,566.3 billion; net outlays came to $7,395.8 billion after two negative lines.",
     "Fiscal 2026 figures come from the September 2026 statement and may change in the Treasury’s year-end report."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Tiles sized by fiscal 2026 net outlays for each budget function with positive outlays. Social Security, $1,667.1 billion, is the largest, then Medicare, $1,072.6 billion, net interest, $1,051.8 billion, health, $1,025.6 billion, and national defense, $965.2 billion.",
+  "alt": "Tiles sized by fiscal 2026 net outlays for each budget function with positive outlays. Social Security, $1,667.1 billion, is the largest, then Medicare, $1,072.6 billion, net interest, $1,051.8 billion, health, $1,025.6 billion, and national defense, $965.2 billion; the ten smallest functions share the last tile, $673.6 billion.",
   "table": {
     "caption": "Net federal outlays by budget function, fiscal 2026",
     "columns": [
@@ -64,7 +64,8 @@
     "names": {
       "National Defense": "National defense",
       "Income Security": "Income security",
-      "Net Interest": "Net interest"
+      "Net Interest": "Net interest",
+      "Veterans Benefits and Services": "Veterans’ benefits and services"
     },
     "fold_label": "All other functions, {n} in all",
     "value_words": "${v}, {p}",
@@ -79,12 +80,13 @@
   },
   "notes_internal": [
     "Maker A, round 2. Data plan row 48, rule 14.52. Domain D08. Source line: the sidecar's treemap_fy2026 variant.",
-    "Data lead rulings (a) and (e): Social Security takes the red point with its keyline (labels.point), every other tile the light fill; words on red in Charcoal (the text ink on Newsprint, the ground's dark on Charcoal).",
-    "Every figure checked by script (maker A's tools/figs.py, scratch, round 2): 17 positive functions summing to 7,566.3 billion; Social Security the largest, 1,667.1, 22 percent of them; 11 functions under 6 percent folding to 1,089.8 billion.",
-    "fold_below 6 so every tile holds its words from 256 px up; at 5 percent Veterans' benefits and services (5.5) could not at 296 and 256 px.",
-    "Round 2 review fix pass, ST S6: the source line is the sidecar's treemap_fy2026_september_statement variant, naming the September 2026 statement, and the last note is S44's on the year-end report."
+    "Data lead rulings (a) and (e), as RF-1 of the review fix pass changed them: Social Security takes the subject ink through labels.named, its words in the label-on-subject ink, with no keyline and no plate; every other tile takes the track ink with a 1 px edge in the context ink (Rule 05.1: an area form spends no red).",
+    "Every figure checked by script (fixfigs.py, scratch, fix pass): 17 positive functions summing to 7,566.3 billion; Social Security the largest, 1,667.1, 22 percent of them; the ten functions under Veterans' benefits and services, each under 2 percent (Transportation 1.89 the largest), folding to 673.6 billion, 8.9 percent.",
+    "labels.fold 'fit' folds the fewest smallest functions that let every tile hold its words at 256 px (entry 14.52's test, RF-10): ten, so Veterans' benefits and services, 5.5 percent, keeps its tile; the fold tile is laid out last, at the bottom right at every width. The phone heights grew to hold Veterans' words (716 px at 358, 651 at 296, 666 at 256).",
+    "Round 2 review fix pass, ST S6: the source line is the sidecar's treemap_fy2026_september_statement variant, naming the September 2026 statement, and the last note is S44's on the year-end report.",
+    "Round 2 review fix pass, BC M1, CD A-M2, RF-1, AX S4: no red; the chart note names the marks by role, never by color, since the inks differ on Charcoal and in forced colors. ST S1, RF-10: the fold as above, and the chart note says where the fold tile sits and how many functions it holds. The red-share check passes (no red)."
   ],
   "chart_notes": [
-    "Every tile is light gray except Social Security, which the title names, in red. The last tile holds the 11 functions under 6 percent."
+    "Social Security, the tile the title names, takes the ink of the text; every other tile is gray with a thin edge. The last tile, at the bottom right, holds the ten functions too small to name."
   ]
 }

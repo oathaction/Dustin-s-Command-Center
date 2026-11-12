@@ -942,7 +942,7 @@ def ch15_section(G, shots):
 
 
 # ------------------------------------------------------------------------------------------------------- scores
-ID = r'[A-Z]{1,4}(?:-[A-Z]{1,3})?-?\d{1,3}'
+ID = r'[A-Z]{1,4}(?:[- ][A-Z]{1,3})?-?\d{1,3}'      # M1, SC-M1, and round 2's prefixed IDs with a space: ST M1, BC S18, AX M1
 
 
 def findings(body):
@@ -1035,7 +1035,7 @@ def cd_table(first, rescore):
             moved = w is not None and w != v
             return (f'<td class="num sc{" mv" if moved else ""}"><span class="r1{" lo" if wlo else ""}">{esc(w) if w is not None else "new"}</span>'
                     f'<span class="r2{" lo" if lo else ""}">{esc(v)}</span></td>')
-        rows.append(f'<tr><th scope="row">{esc(it.get("name", it.get("key")))}</th>{"".join(cell(c) for c in crit)}<td>{"Yes" if it.get("ready") else "<b>Not yet</b>"}</td></tr>')
+        rows.append(f'<tr><th scope="row">{esc(drop_ids(it.get("name", it.get("key"))))}</th>{"".join(cell(c) for c in crit)}<td>{"Yes" if it.get("ready") else "<b>Not yet</b>"}</td></tr>')
     nr = [i for i in items if not i.get('ready')]
     short = lambda i: S.get('short_names', {}).get(i.get('key'), i.get('name', i.get('key')))
     if both:
@@ -1156,6 +1156,10 @@ def tested_section(G):
             rep = G['report']
             if G['ok']:
                 words = fill(it['words'], {'bytes': f'{rep.get("bytes", 0):,}', 'warnings': nw(len(rep.get('warnings', [])))})
+            elif rep:
+                words = fill(it['words_failed'], {'bytes': f'{rep.get("bytes", 0):,}', 'warnings': nw(len(rep.get('warnings', []))),
+                                                  'exit': FIG['guide_build']['exit']})
+                missing.append(it['label'])
         elif kind == 'guide_check':
             cands = sorted(SCRATCH.parents[2].glob(it['scratch_glob']), key=os.path.getmtime)
             if cands:

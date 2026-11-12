@@ -451,19 +451,30 @@ def figures():
     same('S54', num(wy['rent_pct_of_income']) - num(nd['rent_pct_of_income']) < (num(wy['rent_pct_of_income_moe']) ** 2 + num(nd['rent_pct_of_income_moe']) ** 2) ** 0.5, True, 'Wyoming within North Dakota’s margin')
     for sid in ('s54', 's55'):
         sp, t = spec_words(sid)
-        want(sid.upper(), t, 'Florida, 35.5 percent' if sid == 's54' else 'the median renter paid the largest share of income in rent, 35.5 percent', 'title')
-        want(sid.upper(), t, 'Florida’s 35.5 percent (margin 0.5) passes the next figures, California’s 32.9 (0.3) and Hawaii’s 32.8 (1.2), by more than their margins', 'note 2')
-        want(sid.upper(), t, 'North Dakota has the smallest figure, 23.8 percent (margin 1.2); Wyoming’s 25.5 (2.0) sits within its margin', 'North Dakota')
+        same(sid.upper(), 'ND' in sp['labels'].get('labeled', []) or 'North Dakota' in t, False, 'North Dakota unlabeled (RF-6)')
         same(sid.upper(), sp['scale']['x'][1] > max(num(r['renter_median_income']) for r in st), True, 'the income scale holds every state')
+    sp, t = spec_words('s54')
+    want('S54', t, 'Florida, 35.5 percent', 'title')
+    want('S54', t, 'Florida’s 35.5 percent (margin 0.5) passes the next figures, California’s 32.9 (0.3) and Hawaii’s 32.8 (1.2), by more than their margins', 'note 2')
+    same('S54', sp['labels']['sub']['FL'], 'rent %s%% of income' % rent['FL']['rent_pct_of_income'], 'Florida’s figure beside its mark (RF-19)')
     sp, t = spec_words('s54')
     lr = min(st, key=lambda r: num(r['median_gross_rent'])); hr = max(st, key=lambda r: num(r['median_gross_rent']))
     want('S54', t, 'West Virginia’s ${:,}'.format(int(lr['median_gross_rent'])), 'lowest rent')
     want('S54', t, 'California’s ${:,}'.format(int(hr['median_gross_rent'])), 'highest rent')
     same('S54', (lr['code'], hr['code']), ('WV', 'CA'), 'rent ends')
     sp, t = spec_words('s55')
-    want('S55', t, 'home to %.1f million renter households' % (int(rent['FL']['renter_households']) / 1e6), 'Florida households')
-    want('S55', t, 'California’s %.1f million renter households' % (int(rent['CA']['renter_households']) / 1e6), 'California households')
-    same('S55', max(st, key=lambda r: int(r['renter_households']))['code'], 'CA', 'most renter households')
+    four = sorted(st, key=lambda r: -int(r['renter_households']))[:4]
+    same('S55', [r['code'] for r in four], ['CA', 'TX', 'NY', 'FL'], 'the four with the most renter households (RF-18)')
+    same('S55', sorted(sp['labels']['named']), sorted(r['code'] for r in four), 'the named marks are the four')
+    want('S55', t, 'held %.1f million of the nation’s %.1f million in 2025' % (sum(int(r['renter_households']) for r in four) / 1e6, int(U['renter_households']) / 1e6), 'title counts')
+    for r in four:
+        same('S55', sp['labels']['sub'][r['code']].replace('\u00a0', ' '), '%.1f million' % (int(r['renter_households']) / 1e6), r['code'] + ' households')
+        g = int(r['median_gross_rent']) - int(U['median_gross_rent']); m = (int(r['median_gross_rent_moe']) ** 2 + int(U['median_gross_rent_moe']) ** 2) ** 0.5
+        same('S55', (r['code'], abs(g) > m, g > 0), (r['code'], True, r['code'] != 'TX'), 'rent against the nation past the margin')
+    same('S55', sum(1 for r in four if int(r['median_gross_rent']) > int(U['median_gross_rent'])), 3, 'three of them above (title)')
+    want('S55', t, 'California’s median rent of ${:,} a month, New York’s ${:,} and Florida’s ${:,} sit above the nation’s ${:,}, and Texas’s ${:,} below it'.format(
+        int(rent['CA']['median_gross_rent']), int(rent['NY']['median_gross_rent']), int(rent['FL']['median_gross_rent']), int(U['median_gross_rent']), int(rent['TX']['median_gross_rent'])), 'note 2')
+    want('S55', t, 'California with 6.2 million renter households, Texas with 4.3 million, New York with 3.6 million and Florida with 3.0 million', 'alt')
     # S56
     sp, t = spec_words('s56')
     q = read('fred-unemployment-and-job-openings-quarterly')

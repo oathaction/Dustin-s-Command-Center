@@ -278,7 +278,49 @@ function check_spec(K, spec, opts) {
         if (bad) f.push(`interval: ${bad} row(s) whose interval does not hold its estimate, or lacks an end (${first})`);
       }
       const tf = new Set((tb.columns || []).map(c => c.field).concat(tb.pivot ? [tb.pivot.value] : []));
-      if (!(mg ? tf.has(enc.margin) : (tf.has(enc.low) && tf.has(enc.high)))) f.push(`interval: the table equivalent prints the interval: ${mg ? `the margin column "${enc.margin}"` : `both "${enc.low}" and "${enc.high}"`} (contract R2-C1)`);
+      // AX S8: the message names the fields the spec gives; a missing one is named by the encode fault above
+      if (mg || (enc.low !== undefined && enc.high !== undefined)) {
+        if (!(mg ? tf.has(enc.margin) : (tf.has(enc.low) && tf.has(enc.high)))) f.push(`interval: the table equivalent prints the interval: ${mg ? `the margin column "${enc.margin}"` : `both "${enc.low}" and "${enc.high}"`} (contract R2-C1)`);
+      }
+      // AX S8 (D3-905): a margin is in its value's unit (percentage points for a percent), and the margin a sidecar names
+      // for the value (margin_columns) is the one a chart prints
+      const cols = (first && first.meta.columns) || {}, vf = enc.value !== undefined ? enc.value : enc.y;
+      const unit = c => cols[c] && cols[c].unit ? String(cols[c].unit) : null;
+      const same_unit = (v, m) => v === m || (/^percent$/i.test(v) && /^percentage points$/i.test(m));
+      [['margin', enc.margin], ['low', enc.low], ['high', enc.high]].forEach(([k, c]) => {
+        if (c === undefined || !unit(c) || !unit(vf)) return;
+        const ok = k === 'margin' ? same_unit(unit(vf), unit(c)) : unit(vf) === unit(c);
+        if (!ok) f.push(`interval: the ${k} "${c}" is in ${unit(c)} and the value "${vf}" in ${unit(vf)}; ${k === 'margin' ? 'a margin is in its value\'s unit (percentage points for a percent)' : 'an interval\'s ends are in its value\'s unit'}${first.meta.margin_columns && first.meta.margin_columns[vf] ? `: the sidecar's margin for "${vf}" is "${first.meta.margin_columns[vf]}"` : ''} (AX S8)`);
+      });
+      const mc = first && first.meta.margin_columns;
+      if (mg && mc && mc[vf] && mc[vf] !== enc.margin) f.push(`interval: the margin "${enc.margin}" is not the one the sidecar names for "${vf}"; print "${mc[vf]}" (margin_columns, AX S8)`);
+    }
+  }
+  // AX S8 (D3-905): a sidecar's check_only_columns print nowhere, and its source_line_columns name the columns each source
+  // line covers, so a chart prints a line for the measure it draws
+  if (first && first.meta) {
+    const m = first.meta, enc = spec.encode || {}, tb = spec.table || {}, cols = m.columns || {};
+    const printed = [];
+    Object.keys(enc).forEach(k => { if (k !== 'of') [].concat(enc[k]).forEach(x => { if (typeof x === 'string') printed.push(x); }); });
+    (tb.columns || []).forEach(c => printed.push(c.field));
+    if (tb.pivot) printed.push(tb.pivot.value);
+    const co = new Set(m.check_only_columns || []);
+    [...new Set(printed)].filter(c => co.has(c)).forEach(c => {
+      const alt = Object.keys(m.margin_columns || {}).find(v => printed.indexOf(v) >= 0);
+      f.push(`data: "${c}" is in its sidecar's check_only_columns and prints nowhere${alt ? `; print "${m.margin_columns[alt]}", the margin the sidecar names for "${alt}"` : ''} (AX S8)`);
+    });
+    const slc = m.source_line_columns;
+    if (slc && spec.source_line) {
+      const key = spec.source_line === m.printed_source_line ? 'printed_source_line' : Object.keys(m.source_line_variants || {}).find(k => m.source_line_variants[k] === spec.source_line);
+      const num = c => cols[c] && ['number', 'integer'].indexOf(cols[c].type) >= 0;
+      const drawn = [...new Set(printed)].filter(num);
+      if (key && slc[key]) {
+        const out = drawn.filter(c => slc[key].indexOf(c) < 0);
+        if (out.length) {
+          const fit = Object.keys(slc).filter(k => drawn.every(c => slc[k].indexOf(c) >= 0)).map(k => k === 'printed_source_line' ? 'its printed_source_line' : `its source_line_variants "${k}"`);
+          f.push(`source: the source line printed (${key === 'printed_source_line' ? 'the sidecar\'s printed_source_line' : `variant "${key}"`}) covers ${slc[key].join(', ')}, and the chart prints ${out.join(', ')}; print ${fit.length ? fit.join(' or ') : 'a line for the measure drawn (ask the research lead for a variant)'} (AX S8)`);
+        }
+      }
     }
   }
   // the table equivalent's rows against the data rows

@@ -78,7 +78,7 @@
       };
       // the shortest height, from a set of proportions, at which every tile holds its words; null where none does
       var lay = function (its, w0, phone) {
-        var ratios = phone ? [1.45, 1.6, 1.8, 2.0, 2.3] : [0.62, 0.7, 0.8, 0.9], got = null, last = null;
+        var ratios = phone ? [1.45, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.45, 2.6, 2.8, 3.0] : [0.62, 0.66, 0.7, 0.75, 0.8, 0.85, 0.9], got = null, last = null;
         ratios.some(function (rt) {
           var H0 = Math.round(Math.max(w0 * rt, phone ? 520 : 0)), tl = squarify(its.map(function (it, i) { return { i: i, v: it.v }; }), 0, 0, w0, H0);
           last = { H: H0, tiles: tl };

@@ -28,7 +28,7 @@ Two additions for round 3:
 1. **Maps of every state or county alike** count toward no state, as before. A map that singles out one state (the district map, the locator) counts once toward it.
 2. **Domains follow V7's own issue for the topic** wherever V7 has one, named in each row's reason: V7 files paperwork that pushes people off benefits under Congress, agencies and public services (I062), slow internet under news, records and public information (I015), drug middlemen under competition (I084), utility networks under competition (I093), shutdowns under Congress and agencies (I054), and the minimum wage under work and pay (I104).
 
-Limits. Rounds 0 to 3 hold 84 examples: one in four is 21, one in five is 16.8, so no domain may supply more than 21 and no state more than 16. Chapter 14 as a whole holds about 95: no domain more than 23, no state more than 19.
+Limits. Rounds 0 to 3 hold 84 examples: one in four is 21, one in five is 16.8, so no domain may supply more than 21 and no state more than 16. Chapter 14 as a whole holds about 95: no domain more than 23, no state more than 19. (Research lead, round 2 review fix pass, November 12, 2026: superseded. The round 4 plan counts 108 examples for the chapter, 84 specimens in rounds 0 to 3, 13 rule plates and round 4’s 11, so no domain may supply more than 27 and no state more than 21; see the note under "Rule 01.9 count for chapter 14".)
 
 ## Round 3: 32 forms
 
@@ -90,6 +90,8 @@ Notes the makers need, row by row:
 
 ## Rule 01.9 count for chapter 14
 
+**Superseded (Research lead, round 2 review fix pass, November 12, 2026).** The two tables below are the record of round 3’s sign-off. The chapter’s current count is the round 4 plan’s, `work/handoffs/phase-3/20261112_Round-4-Data-Plan.md`, section "Rule 01.9 count for chapter 14 as a whole": 108 examples (84 specimens in rounds 0 to 3, 13 rule plates and round 4’s 11), limits of 27 per domain and 21 per state, taxes, wealth and economic security the largest at 16, and California and Florida the most-named states at 5 each. That count puts S38 under news, records and public information, so rounds 0 to 3 read news and records 4 and atlas-wide 9, and it re-picks round 4’s forms, so the round 4 column in the second table no longer holds.
+
 ### Rounds 0 to 3: 84 examples
 
 S01 to S16 (16), rounds 1 (26) and 2 (22) as signed off, and round 3's 20 new specimens. Round 3's built maps (S07, S12, S16) are already in the 16.
@@ -114,6 +116,8 @@ S01 to S16 (16), rounds 1 (26) and 2 (22) as signed off, and round 3's 20 new sp
 **Level and region (Rule 01.12).** Rows 109 and 108 are state and local (Michigan's districts; a town in Kern County, California). Every other round 3 example is national or covers every state or county alike.
 
 ### Chapter 14 as a whole: about 95 examples
+
+Superseded by the round 4 plan’s count of 108; see the note at the head of this section.
 
 Round 4 adds 11 data-bearing specimens (6 core and 5 extended in proportion and overlap and infographics). I count them with the two moves the data lead signed off for round 4 (the calendar to federal budget and tax deadlines, the step-by-step to applying for a benefit) and the coverage plan's data for the rest. Round 4's plan, a round ahead, re-picks them in detail.
 
@@ -195,17 +199,17 @@ After your sign-off. Each goes into `work/build/data/` under contract C1 with a 
 | `dol-state-minimum-wage-history` | 113 | www.dol.gov | Download item 2 |
 | Geometry: `census-cb-2024-states`, `-counties`, `-cd119` | 107 to 112 | www2.census.gov | Files, converted to GeoJSON (ENG-10) |
 
-Every host above answered this container today, between 03:58 and 04:04 UTC (the Congress.gov, FEC and Census APIs with their keys), except www.dol.gov, which refused. www.ssa.gov, www.medicaid.gov, www.usace.army.mil and www.fcc.gov also refused, and www.federalregister.gov and www.ecfr.gov's pages sent a bot check, so no row depends on them; eCFR's API answered. Only row 113 depends on a host that refused.
+Every host above answered this container today, between 03:58 and 04:04 UTC (the Congress.gov, FEC and Census APIs with their keys), except www.dol.gov, which refused. www.ssa.gov, www.medicaid.gov, www.usace.army.mil and www.fcc.gov also refused, and www.federalregister.gov and www.ecfr.gov's pages sent a bot check, so no row depends on them; eCFR's API answered. Only row 113 depends on a host that refused. (Research lead, round 2 review fix pass, November 12, 2026: its page came as download item 2 and is frozen as P7-223.)
 
 ## Download list (DR-230)
 
-Item 1 was Dustin's FRED file (round 0). One more is needed; three of the five would remain.
+Item 1 was Dustin's FRED file (round 0). One more is needed; three of the five would remain. (Research lead, round 2 review fix pass, November 12, 2026: item 2 came. Dustin saved the page on November 12, 2026, and it is frozen as P7-223 in `dol-state-minimum-wage-history` and `dol-state-minimum-wage-classes`.)
 
 | # | Page to open | File to save | What it is | Specimen it serves |
 |---|---|---|---|---|
 | 2 | https://www.dol.gov/agencies/whd/state/minimum-wage/history | The page itself (in a browser, File, Save Page As, "Web page, HTML only"), or a PDF print of it; please attach it to the chat as is | The Department of Labor's table of each state's basic minimum wage in selected years from 1968 to 2024 (the plan first read 2025; the page's title reads 1968 to 2024) | Row 113, small-multiple maps |
 
-Why a download: dol.gov refused this container's reader (HTTP 403) at 03:58 UTC, and no other primary source gives every state's rate by year. If the file does not come, row 113 waits, and I propose the ACS uninsured rate by state for four years as its fallback.
+Why a download: dol.gov refused this container's reader (HTTP 403) at 03:58 UTC, and no other primary source gives every state's rate by year. If the file does not come, row 113 waits, and I propose the ACS uninsured rate by state for four years as its fallback. (Research lead, round 2 review fix pass, November 12, 2026: superseded. The file came the same day and is frozen as P7-223, so row 113 waits on nothing and the fallback is not used.)
 
 ## What stays Illustrative
 
@@ -215,7 +219,7 @@ Nothing in round 3. Every row has a primary source, V7 or a labeled secondary so
 
 Please check five things, under Rule 01.9 and DR-229:
 
-1. The domain of each row, above all row 86 (the rule process under checks on power, V7's "Agency law" subsystem, rather than Congress and agencies), row 108 (the locator under housing, health care and getting ahead, for the dam project), and the two atlas-wide rows, 91 and 95.
+1. The domain of each row, above all row 86 (the rule process under checks on power, V7's "Agency law" subsystem, rather than Congress and agencies), row 108 (the locator under housing, health care and getting ahead, for the dam project; the sign-off’s change 2 moved it to taking part, trust and shared norms, V7 I146, as the table above now reads), and the two atlas-wide rows, 91 and 95.
 2. The thirteen re-picks, form by form, against what each form teaches.
 3. Rows 92 and 94, the two that touch party: the roll-call grid of H.R. 5371 and the joint fundraising committees of both nominees.
 4. Rows 109 and 111 drawing one results file two ways.
@@ -257,6 +261,7 @@ Reply in your notes with "signed off" or the changes. I fetch nothing you change
 8. **Row 94, network diagram: one stated rule picks each committee.** Each nominee had more than one joint fundraising committee. Take for each the one that transferred the most to its nominee's principal campaign committee in the cycle, read the same way for both, and print that rule in the sidecar with the Schedule B lines used. Line width encodes dollars transferred, with a key, and every recipient sums the same lines.
 9. **Rows 109 and 111: define the margin for every kind of seat.** "By how much" needs a rule where the usual margin does not exist: unopposed seats (some states print no votes for them), top-two contests between two candidates of one party (such as California's), ranked-choice contests (Alaska and Maine: say whether the margin is the first round or the last), and Louisiana's November open primary with any runoff. Each case gets its own labeled class in both maps and both tables, and both maps take the same margin classes. Row 109's sidecar says why Michigan in terms of the lesson (for example, districts that run from close to safe for each party, if the results bear that out); the words say nothing about how the lines were drawn.
 10. **Row 113, small-multiple maps: panels after July 24, 2009, at one as-of day.** The federal $7.25 took effect July 24, 2009. If the Department of Labor's table gives January 1 rates, a 2009 panel compares states with $6.55. Take years whose as-of day falls after that date, for example 2010, 2015, 2020 and 2026, all at the table's own as-of day, and name July 1, 2026 where the last panel differs. Three classes: above $7.25; at $7.25; below it or no state minimum, where the federal rate covers most workers. The uninsured fallback moves the row to housing, health care and getting ahead (11 there, within every limit) and carries its margins.
+   (Research lead, round 2 review fix pass, November 12, 2026: the panel years above are superseded. The data lead’s review fix pass and DR-243 set January 1 of 2010, 2014, 2019 and 2024, printed from `dol-state-minimum-wage-classes` with its variant `panels_2010_2014_2019_2024`, and the page has no 2026 column, so the atlas’s July 1, 2026 count prints beneath the maps as one sourced sentence (V7 claim CL1516); no fallback is used. Row 113 above and its note carry this.)
 11. **Row 83, funnel: nested stages from one base.** A funnel narrows, so each stage sits inside the one before: renewals due; renewals decided, with pending renewals counted and set apart; renewals not ended for procedural reasons; renewals that kept coverage. Automatic and form renewals can split in the table. If CMS's national sums differ from V7 I062's figures (more than 25 million disenrolled, 69 percent for procedural reasons, from KFF), the chart prints CMS's own figures and period, and the difference goes to the open questions ledger for Dustin, never into the chart as a correction of V7.
 12. **Row 87, decision tree: branch on whether a ban reaches city elections, and confirm the date.** "All or some" is the wrong branch for a city. Tennessee's ban is partial, but its scope note names local government offices, so unless the act's text shows a route for a city, a Tennessee city follows the ban branch with the other 17. Only Ohio's leaves home-rule cities an opening, at the price its note names. The bans were read November 6, 2026, three days after a general election: at the fetch, confirm that no measure decided November 3, 2026 changed a state's status, and print the as-of date. The coverage plan's disclosure on this tree and the ranked-choice maps is retired (DR-100).
 
@@ -290,3 +295,5 @@ Applied November 12, 2026, before the fetch. The tables above now carry each cha
 - **Change 12, row 87.** The bans are re-confirmed after the November 3, 2026 election and printed with their as-of date. The branch on whether a ban reaches city elections needs its own column, since `scope` codes Tennessee "some" like Ohio (statistics review S12): `reaches_city_elections` (yes for the 17 full bans and Tennessee, partly for Ohio, empty where there is no ban) with `city_reach_note`, requested from the engineer, whose script writes the file (research notes, "Review fix pass", ENG-13). Tennessee's Public Chapter 621, read November 12, 2026, bars a county election commission from ranked-choice voting "for a statewide or local government office" and defines local government to include "an incorporated city or town".
 
 **Status of every dataset, November 12, 2026, 04:40 UTC.** Frozen in `work/build/data/` with sidecars and research ledger rows P7-201 to P7-217, the engineer’s check reading 88 tables with 0 faults: rows 83 (two files), 86, 87 (V7 routes; the Ballotpedia bans re-read, P7-218), 88, 89, 90, 91 (two files), 92, 94, 95 (two files), 96 (three files), 100 (two files), 102, 107, 108, 109 and 111 (two files), 110 and 112. Three changes from this plan's text, each for its source: the House results come from the Clerk’s compilation, since the FEC’s 2024 congressional file lists candidates without votes; the Sankey reads the FEC’s current campaigns file, since the API’s candidate totals lack the receipt and loan lines change 7 needs; and the bill search reads the Library of Congress’s bulk bill status files, which carry every title of every bill. Waiting: the map geometry (raw Census files downloaded and GeoJSON staged; frozen when the engineer sets ENG-10’s shape, P7-219) and row 113 (download item 2, P7-220).
+
+**Since then (Research lead, round 2 review fix pass, November 12, 2026).** Row 113 waits on nothing: download item 2 came on November 12, 2026 and is frozen as P7-223 (`dol-state-minimum-wage-history`, and the derived `dol-state-minimum-wage-classes`), printed with the variant `panels_2010_2014_2019_2024`; P7-220 was its placeholder and points to P7-223. The map geometry still waits (P7-219): the engineer posted the shape (R1-C7), and the kit’s projection and the data check’s reading of `.geojson` files are queued.

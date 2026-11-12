@@ -26,8 +26,7 @@
   "reading_guide": "States to the right have renters with higher incomes, and states higher up have higher rents. States above the cloud pay more rent for their income.",
   "notes": [
     "This shows the two move together; it does not show one causes the other.",
-    "Rent as a percent of income is the Census Bureau’s own measure: the median, across renter households paying cash rent, of each one’s rent over its income. Florida’s 35.5 percent (margin 0.5) passes the next figures, California’s 32.9 (0.3) and Hawaii’s 32.8 (1.2), by more than their margins. Margins of error are at 90 percent confidence.",
-    "North Dakota has the smallest figure, 23.8 percent (margin 1.2); Wyoming’s 25.5 (2.0) sits within its margin, so the survey cannot order the two."
+    "Rent as a percent of income is the Census Bureau’s own measure: the median, across renter households paying cash rent, of each one’s rent over its income. Florida’s 35.5 percent (margin 0.5) passes the next figures, California’s 32.9 (0.3) and Hawaii’s 32.8 (1.2), by more than their margins. Margins of error are at 90 percent confidence."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -64,7 +63,7 @@
     ]
   },
   "chart_notes": [
-    "Florida takes the dark ink; the other states are light gray, with California and North Dakota named. The open ring marks the United States."
+    "Florida takes the dark ink, its name in bold with its rent share under it; the other states are light gray, with California named. The open ring marks the United States."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -85,13 +84,15 @@
       "FL"
     ],
     "labeled": [
-      "CA",
-      "ND"
+      "CA"
     ],
     "reference": "US",
     "reference_label": "United States",
     "x_axis": "Renter households’ median income, a year",
-    "y_axis": "Median gross rent, a month"
+    "y_axis": "Median gross rent, a month",
+    "sub": {
+      "FL": "rent 35.5% of income"
+    }
   },
   "formats": {
     "x": "dollars",
@@ -113,6 +114,7 @@
     "D3-88: states are named only past the margin: Florida 35.5 (0.5) clears California 32.9 (0.3), gap 2.6 against a gap margin of 0.58; California 32.9 and North Dakota 23.8 (1.2) each clear the nation’s 30.9 (0.1). Checked by maker_b_round2_derive.py --figures (check S54): those figures, West Virginia’s $921 the lowest rent and California’s $2,160 the highest, and the correlation of rent and renter income across the 51 (0.92, not printed).",
     "Read from the left and the right: the title reports the Bureau’s measure and an association, and names one state by its own figure; no policy or party.",
     "Data lead MB-7 to MB-9: California and North Dakota labeled in regular weight; note 2 tests Florida against California and Hawaii and a note gives North Dakota’s figure against Wyoming’s (checked by --figures); the income scale ends at $85,000 so DC’s dot at $79,741 sits inside the plot.",
-    "Review fix pass (ST S9): the table sets the United States row first, apart from the states, as S57 and the data lead’s ruling (b) set a listing; the drawing reads its rows by value and is unchanged."
+    "Review fix pass (ST S9): the table sets the United States row first, apart from the states, as S57 and the data lead’s ruling (b) set a listing; the drawing reads its rows by value and is unchanged.",
+    "Review fix pass: the data lead’s RF-6 (ST S2) drops North Dakota’s label and note 3, since its low place sits within Wyoming’s margin; RF-19 (BC S9) prints Florida’s figure beside its mark, “rent 35.5% of income” in regular weight under the bold name (labels.sub); ST S9, the United States row first in the table. Checked by maker_b_round2_derive.py --figures (check S54)."
   ]
 }
