@@ -508,7 +508,86 @@ def item_bc_s20(dl):
     save(OPM, meta, nl)
 
 
-ITEMS = {'s24': item_s24, 's34': item_s34, 's31': item_s31, 's27': item_s27, 'bc_m3': item_bc_m3, 'bc_s20': item_bc_s20}
+# ---------------------------------------------------------------------------------------------------------------
+# ed_r1: the editor's ED-R1 (BC M2, Rule 14.6's plate from the kit's ranked-bar). Active judges counted by court of
+# appeals from the frozen FJC file, a derived table. Reads only work/build/data/.
+# ---------------------------------------------------------------------------------------------------------------
+FJC = 'fjc-article-iii-judges'
+FJC_COA = 'fjc-active-judges-by-court-of-appeals'
+CIRCUITS = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh', 'Eighth', 'Ninth', 'Tenth', 'Eleventh']
+
+
+def coa_short(name):
+    tail = name.replace('U.S. Court of Appeals for the ', '')
+    if tail == 'District of Columbia Circuit':
+        return 'D.C. Circuit', 11
+    if tail == 'Federal Circuit':
+        return 'Federal Circuit', 12
+    word = tail.replace(' Circuit', '')
+    return f'{word} Circuit', CIRCUITS.index(word)
+
+
+def item_ed_r1(dl):
+    import collections
+    rows = list(csv.DictReader(io.StringIO((DATA / f'{FJC}.csv').read_text(encoding='utf-8'))))
+    n = collections.Counter(r['court_name'] for r in rows if r['court_type'] == 'U.S. Court of Appeals')
+    assert len(n) == 13 and sum(n.values()) == 179 and n['U.S. Court of Appeals for the Ninth Circuit'] == 29
+    out_rows = []
+    for court, judges in n.items():
+        short, order = coa_short(court)
+        out_rows.append({'court': court, 'short_name': short, 'circuit_order': order + 1, 'judges': judges})
+    out_rows.sort(key=lambda r: (-r['judges'], r['circuit_order']))
+    out = io.StringIO()
+    w = csv.DictWriter(out, fieldnames=['court', 'short_name', 'circuit_order', 'judges'], lineterminator='\n')
+    w.writeheader()
+    w.writerows(out_rows)
+    p = DATA / f'{FJC_COA}.csv'
+    if not p.exists() or p.read_text(encoding='utf-8') != out.getvalue():
+        p.write_text(out.getvalue(), encoding='utf-8')
+        print(f'wrote {p.relative_to(ROOT)}')
+    src, _ = load(FJC)
+    meta = {
+        'file': f'{FJC_COA}.csv',
+        'kind': 'derived',
+        'publisher': src['publisher'],
+        'title_or_table': src['title_or_table'],
+        'table_id': src['table_id'],
+        'url': src['url'],
+        'observation_period': 'Judges in active service on the export’s latest record (latest commission date 2026-10-22), as retrieved November 11, 2026',
+        'geography': 'The 13 United States courts of appeals',
+        'universe_or_base': 'The 179 Article III judges in active service on a court of appeals in the frozen export, with no senior-status or termination date',
+        'unit': 'judges in active service, counted by Oath & Action',
+        'date_retrieved': src['date_retrieved'],
+        'vintage': src['vintage'],
+        'qualification': ('A judge who takes senior status still hears cases but leaves this count, and vacant seats are not in the file, so a '
+                          'court’s count is below its authorized judgeships when a seat is open'),
+        'columns': {
+            'court': {'type': 'text', 'description': 'the court as the directory names it'},
+            'short_name': {'type': 'text', 'description': 'the court’s short name as a chart prints it (Ninth Circuit, D.C. Circuit, Federal Circuit), Oath & Action’s'},
+            'circuit_order': {'type': 'integer', 'description': 'the courts’ customary order, First Circuit 1 to Eleventh 11, D.C. Circuit 12, Federal Circuit 13'},
+            'judges': {'type': 'integer', 'description': 'judges in active service', 'unit': 'judges'},
+        },
+        'printed_source_line': ('Source: Federal Judicial Center, Biographical Directory of Article III Federal Judges, judges in active service on '
+                                'the 13 courts of appeals, as of November 11, 2026, United States. Retrieved November 11, 2026. Judges on senior '
+                                'status and vacant seats are not counted; judges counted by court by Oath & Action.'),
+        'ledger_row': src['ledger_row'],
+        'domain': src['domain'],
+        'states': [],
+        'derived_from': [f'{FJC}.csv'],
+        'derivation': ('Rows of the frozen FJC file whose court_type is "U.S. Court of Appeals", counted by court_name; rows sorted by judges, '
+                       'most first, then by circuit_order'),
+        'notes': ['Made November 12, 2026 for Rule 14.6’s plate (the editor’s request ED-R1). The 13 counts sum to 179, the file’s court of appeals rows.'],
+    }
+    pm = DATA / f'{FJC_COA}.meta.json'
+    text = json.dumps(meta, indent=1, ensure_ascii=False) + '\n'
+    if not pm.exists() or pm.read_text(encoding='utf-8') != text:
+        pm.write_text(text, encoding='utf-8')
+        print(f'wrote {pm.relative_to(ROOT)}')
+    print('; '.join(f'{r["short_name"]} {r["judges"]}' for r in out_rows))
+
+
+ITEMS = {'s24': item_s24, 's34': item_s34, 's31': item_s31, 's27': item_s27, 'bc_m3': item_bc_m3, 'bc_s20': item_bc_s20,
+         'ed_r1': item_ed_r1}
 
 
 def main(argv):

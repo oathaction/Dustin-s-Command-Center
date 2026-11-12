@@ -285,10 +285,11 @@
  "s-14-24-sketch": {
   "chapter": "14",
   "rule": "14.24",
-  "width_px": null,
+  "width_px": 300.0,
   "illustrative": true,
   "alt": "A sketch of a radar chart, with illustrative data.",
-  "notes": "avoid sketch, at most 2,048 bytes (contract R1-C1)"
+  "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
  },
  "s-14-s11": {
   "chapter": "14",
@@ -318,7 +319,7 @@
   "chapter": "14",
   "rule": "14.28",
   "width_px": null,
-  "alt": "Arrows for each Congress from 1951 to 2025 show the House majority’s lead in seats at the opening of each Congress, pointing left for Democratic majorities and right for Republican ones. Democratic leads ran as high as 155 seats in 1965; leads since 1995 have mostly been under 60 seats, and the 119th Congress opened in 2025 with a Republican lead of 5, the smallest in the chart.",
+  "alt": "Arrows for each Congress from 1951 to 2025 show the House majority’s lead in seats as first elected, pointing left for Democratic majorities and right for Republican ones. Democratic leads ran as high as 155 seats in 1965, leads since 1995 have mostly been under 60 seats, and Republicans won the 119th Congress, which opened in 2025, by five seats, the smallest lead in the chart.",
   "illustrative": false,
   "notes": "S26, diverging-bar-arrows: the chart kit draws it from work/build/chart-kit/specs/s26.json (contract R1-C3)"
  },
@@ -342,7 +343,7 @@
   "chapter": "14",
   "rule": "14.31",
   "width_px": null,
-  "alt": "Thin lines for the 50 states and DC show the house price index for every state and DC from 1991 to 2026, all starting near 100. Montana, drawn heavy, rose most, to 742 in the second quarter of 2026. Connecticut, the lowest, reached 319. Many lines peak in 2006 and dip by 2011 before climbing again.",
+  "alt": "Thin lines for the 50 states and DC show the house price index from 1991 to 2026, all starting near 100. Montana and Utah, drawn heavy, rose most, to 742 and 725 in the second quarter of 2026, and the United States as a whole, dashed, reached 436. Connecticut, the lowest, reached 319. Many lines peak in 2006 and dip by 2011 before climbing again.",
   "illustrative": false,
   "notes": "S27, line-field: the chart kit draws it from work/build/chart-kit/specs/s27.json (contract R1-C3)"
  },
@@ -422,7 +423,7 @@
   "chapter": "14",
   "rule": "14.41",
   "width_px": null,
-  "alt": "Bubble timeline of Senate votes on ending debate in each Congress from 1917 to 2026. The circles stay tiny or absent until about 1970, grow through the 1970s to 2000s, and swell after 2007; the largest is 298 votes in the Congress of 2019 and 2020, and the current Congress has held 294 so far.",
+  "alt": "Bubble timeline of Senate votes on ending debate in each Congress from 1917 to 2026. A sentence sums the 27 Congresses before 1971, which held 49 votes in all and no more than seven in any one. From 1971 the circles grow through the 1970s to the 2000s and swell after 2007; the largest is 298 votes in the Congress of 2019 and 2020, and the current Congress has held 295 through November 10, 2026.",
   "illustrative": false,
   "notes": "S34, bubble-timeline: the chart kit draws it from work/build/chart-kit/specs/s34.json (contract R1-C3)"
  },
@@ -437,26 +438,29 @@
  "s-14-43-sketch": {
   "chapter": "14",
   "rule": "14.43",
-  "width_px": null,
+  "width_px": 300.0,
   "illustrative": true,
   "alt": "A sketch of a run chart, with illustrative data.",
-  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1)"
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
  },
  "s-14-44-sketch": {
   "chapter": "14",
   "rule": "14.44",
-  "width_px": null,
+  "width_px": 300.0,
   "illustrative": true,
   "alt": "A sketch of a cycle or seasonal chart, with illustrative data.",
-  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1)"
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
  },
  "s-14-45-sketch": {
   "chapter": "14",
   "rule": "14.45",
-  "width_px": null,
+  "width_px": 180.0,
   "illustrative": true,
   "alt": "A sketch of a streamgraph, with illustrative data.",
-  "notes": "avoid sketch, at most 2,048 bytes (contract R1-C1)"
+  "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
  },
  "s-14-s15": {
   "chapter": "14",
@@ -486,7 +490,7 @@
   "chapter": "14",
   "rule": "14.129",
   "width_px": null,
-  "alt": "A heat table of the atlas’s 50 reforms against 11 routes to change, each cell tinted and labeled with the atlas’s rating of feasibility for 2026 to 2030. The atlas rates routes through an act of Congress low or very low in 36 of 38 cases, and routes through a state law medium or high in 24 of 29.",
+  "alt": "A heat table of the atlas’s 50 reforms, under its nine reform groups, against 11 routes to change, each cell tinted and labeled with the atlas’s rating of feasibility for 2026 to 2030. The atlas rates the federal statute route low or very low for 36 of the 38 reforms that could take it, and the state statute route medium or high for 24 of 29.",
   "illustrative": false,
   "notes": "S37, heat-table: the chart kit draws it from work/build/chart-kit/specs/s37.json (contract R1-C3)"
  },

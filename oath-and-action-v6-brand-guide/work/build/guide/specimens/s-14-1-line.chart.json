@@ -12,9 +12,9 @@
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: a Census Bureau count of applications for a tax ID",
- "title": "Americans filed 5.7 million applications to start a business in 2025, more than twice the 2.5 million of 2005",
+ "title": "Americans filed 5.7 million applications to start a business in 2025, more than twice the 2.5 million of 2005.",
  "measure_line": "Applications for a federal tax ID that signal a new business, each year from 2005, the first full year the Census Bureau publishes, to 2025, United States",
- "source_line": "Source: U.S. Census Bureau, Business Formation Statistics, business applications, 2005 to 2025, 50 states and DC. Retrieved November 11, 2026. Applications for a tax ID that signal a new business; many never hire; annual totals summed by Oath & Action.",
+ "source_line": "Source: U.S. Census Bureau, Business Formation Statistics, September 2026 monthly release (October 14, 2026), business applications, 2005 to 2025, 50 states and DC. Retrieved November 11, 2026. Applications for a tax ID that signal a new business; many never hire; annual totals summed by Oath & Action.",
  "notes": [
   "Many applications never become a business that hires anyone, so the count measures plans to start one."
  ],

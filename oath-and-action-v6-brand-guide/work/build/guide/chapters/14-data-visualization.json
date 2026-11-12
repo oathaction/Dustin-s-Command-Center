@@ -3,14 +3,15 @@
  "anchor": "data-visualization",
  "title": "Data visualization",
  "part": "Evidence and media",
- "instruction": "Start from the reader's question to choose a chart, then title it with the evidence it shows.",
+ "instruction": "Start from the reader’s question to choose a chart, then title it with the evidence it shows.",
+ "basis": "Design judgment, from the chart system our founder and editor approved in November 2026",
  "opener": {
   "specimen": "s-14-opener",
   "caption": "Each group of this chapter opens with the question a reader brings, and its forms answer it."
  },
  "intro": [
   "This chapter sets how Oath & Action shows numbers. Fourteen rules come first and hold for every chart. Each form a chart can take then has its own entry, grouped by the question it answers, with when to use it, what to use instead, and a finished example that our chart kit draws from frozen data, with its table as live text.",
-  "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files."
+  "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files. Each rule and entry rests on design judgment, from the chart system our founder and editor approved in November 2026, unless it names a basis of its own."
  ],
  "groups": [
   {
@@ -60,8 +61,7 @@
    "why": {
     "text": [
      "Each form answers one kind of question well. Bars sorted by size show which year was largest and hide the order of the years, so a reader who asked how something changed cannot see the change."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -104,13 +104,12 @@
    "title": "Build every chart in one anatomy, from evidence label to table.",
    "rule": [
     "Every chart prints the same eight parts in the same order, so a reader always knows where to look: the evidence label and grade line (Rules 13.1 and 13.2), the title, the measure line (Rule 13.7), the reading guide, the chart, its notes, the source line (Rule 13.6) and the table (Rule 14.13).",
-    "The title is one full sentence, and house rule H08 sizes its claim. The reading guide says in a sentence or two how to read the drawing. Notes carry what the drawing cannot. A part with nothing to say is left out, and the rest keep their order."
+    "The title is one full sentence, and house rule H08 sizes its claim. A chart of dollars across years says in its measure line “not adjusted for inflation”, or names the dollars’ year and the price index that adjusted them. The reading guide says in a sentence or two how to read the drawing. Notes carry what the drawing cannot. A part with nothing to say is left out, and the rest keep their order."
    ],
    "why": {
     "text": [
      "Readers learn where things are after a few charts. When every chart puts its source in the same place, a reader can check any figure in seconds, and a chart that lacks a part shows the gap."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [
     "oa.chart.color.chip.fill.onNewsprint"
@@ -156,8 +155,7 @@
    "why": {
     "text": [
      "A reader matching inks between a key and the lines looks away from the data at every step, and close inks are hard to match at all in grayscale or with a color vision deficiency. A name beside each line is read in place."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [
     "oa.chart.color.label.onNewsprint"
@@ -166,7 +164,7 @@
     "12",
     "13"
    ],
-   "builders": "Name each series in the spec's labels.series; the kit sets the names at the line ends and warns when one cannot fit.",
+   "builders": "Name each series in the spec’s labels.series; the kit sets the names at the line ends and warns when one cannot fit.",
    "specs": [
     {
      "label": "A line",
@@ -209,8 +207,7 @@
    "why": {
     "text": [
      "Readers judge a bar by its length before they read its number. Cut the axis at 55 percent and 1992’s 67.7 percent stands 3.7 times as tall as 1996’s 58.4, for a gap of 9.3 points."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [
     "oa.chart.line.baseline"
@@ -259,8 +256,7 @@
    "why": {
     "text": [
      "A reader takes a color’s meaning from the first chart and carries it to the next. When each palette keeps its one job across our work, a reader who has learned that a darker green means more can trust it on every page."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [
     "oa.chart.color.sequential.fill.step1.onNewsprint",
@@ -313,14 +309,13 @@
    "id": "14.6",
    "title": "Spend the view’s one red on the point the title names.",
    "rule": [
-    "Rule 05.3 gives each view one working red and says which job claims it first. In a chart, the red goes to the one point, bar or line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Every other mark keeps the subject and context inks of Rule 05.7.",
-    "When an error or a step the reader can take already holds the view’s red, the named point gives it up and takes Charcoal at the subject weight, with its label. Red never codes a series, a group or a step on a scale."
+    "Rule 05.3 gives each view one working red and says which job claims it first. In a chart, the red goes to the one point, bar or line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Every other mark takes the light fill on Newsprint and the context ink on Charcoal (Rule 05.7).",
+    "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber whose majority readers know, an election result, a campaign’s money and a policy readers link to one party all carry that tie, and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7). Red never codes a series, a group or a step on a scale."
    ],
    "why": {
     "text": [
      "One red mark tells a reader where to look first, and the title tells them why. A second red mark splits their attention, and red that codes a group reads as a warning about that group."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [
     "oa.chart.color.point.onNewsprint",
@@ -330,7 +325,7 @@
     "01",
     "05"
    ],
-   "builders": "Name the one point in the spec (labels.named for the subject ink); the kit counts working reds and fails a view with two.",
+   "builders": "Name the one point in the spec’s labels.point, which draws it in red with its keyline, or in labels.named where a party tie gives it the subject ink; the kit counts working reds and fails a view with two.",
    "specs": [
     {
      "label": "The point",
@@ -342,7 +337,7 @@
      "value": "Beside the mark, in the text ink"
     },
     {
-     "label": "When red is taken",
+     "label": "An error, a step or a party tie",
      "value": "Charcoal at the subject weight, with the label",
      "token": "oa.chart.color.subject.onNewsprint"
     },
@@ -355,7 +350,9 @@
     "05.3",
     "05.5",
     "05.7",
-    "01.1"
+    "01.1",
+    "01.2",
+    "14.7"
    ],
    "correct": {
     "specimen": "s-14-6-correct",
@@ -376,8 +373,7 @@
    "why": {
     "text": [
      "Red and blue turn a chart of results into team colors, and a reader decides which side the chart is on before reading a number. A name on each mark gives readers on both sides the same facts, in color or in grayscale."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [
     "oa.chart.color.party.mark.onNewsprint"
@@ -430,8 +426,7 @@
    "why": {
     "text": [
      "Past four, the inks start to look alike and the key grows longer than a reader will hold. Small panels on one scale let a reader take each group’s shape and level one at a time, and still compare them."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [
     "oa.chart.color.context.onNewsprint"
@@ -478,8 +473,7 @@
    "why": {
     "text": [
      "A survey measures a sample, so each figure could sit anywhere in its interval. Two states three points apart, each with a margin near three points, may stand in either order across the whole population, and a ranking that puts one first tells a reader something the survey cannot know."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [
     "oa.chart.color.context.onNewsprint"
@@ -524,14 +518,13 @@
    "id": "14.10",
    "title": "Choose the window from the question, and draw an inauguration only as a dated note.",
    "rule": [
-    "Choose the window, the first and last period a chart shows, from the reader’s question, and print its reason in the measure line: the first year a series exists, the first year a method holds, or the span the question names. Rule 13.7 gives charts shown together one window.",
+    "Choose the window, the first and last period a chart shows, from the reader’s question, and print its reason in the measure line: the first year a series exists, the first year a method holds, the span the question names, or a round span back from the latest figure when no earlier start has a reason of its own. Rule 13.7 gives charts shown together one window.",
     "An inauguration or an election may appear inside the window as a dated note on an unbroken line. The line keeps one ink and one weight across the date, and no band, color or break divides the period into one officeholder’s years and another’s (house rule H09)."
    ],
    "why": {
     "text": [
      "A window that starts where a line looks best can make a long fall look like a rise, and a reader cannot see what was left out. Bands at each inauguration ask the reader to credit or blame each officeholder for whatever the line does inside them, which the chart cannot show."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [
     "oa.chart.color.leader.onNewsprint"
@@ -539,7 +532,7 @@
    "related": [
     "13"
    ],
-   "builders": "Put the window's reason in measure_line and any event in annotations; the kit draws one line with no band.",
+   "builders": "Put the window’s reason in measure_line and any event in annotations; the kit draws one line with no band.",
    "specs": [
     {
      "label": "Window",
@@ -581,8 +574,7 @@
    "why": {
     "text": [
      "A line drawn through a missing month invents a value, and a line run across a change of method shows the change as a jump in what was measured. Marking each one where it falls lets a reader see what the data can and cannot say."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [
     "oa.chart.color.leader.onNewsprint"
@@ -590,7 +582,7 @@
    "related": [
     "13"
    ],
-   "builders": "Mark breaks in the data's break column and preliminary rows in its status column; the kit leaves the gap and opens the mark.",
+   "builders": "Mark breaks in the data’s break column and preliminary rows in its status column; the kit leaves the gap and opens the mark.",
    "specs": [
     {
      "label": "No figure",
@@ -630,8 +622,7 @@
    "why": {
     "text": [
      "Many readers meet our charts on a phone first. A drawing redrawn for no reason gives them a second picture to learn, and one that drops rows or changes its title gives phone readers a different finding from everyone else."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [
     "oa.chart.artboard.phone"
@@ -733,8 +724,7 @@
    "why": {
     "text": [
      "A file made by hand drifts from the page the first time someone fixes one and forgets the other. One command from one spec keeps the drawing, the still image and the numbers in step, and the kit checks the CSV against the table each time it runs."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [
@@ -777,8 +767,7 @@
    "why": {
     "text": [
      "Readers judge length from a shared zero line more exactly than any other mark, and sorting puts the answer at the top of the chart. A bar laid on its side leaves room for a category’s full name, so nobody has to decode an abbreviation."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -822,8 +811,7 @@
    "why": {
     "text": [
      "Every column stands on the same zero line, so the eye compares heights as amounts. Readers take left to right as the order of time, which suits a count per year or per term. Past a dozen or so, columns thin into a fence the eye cannot sort, and a line shows the same run more clearly."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -871,8 +859,7 @@
    "why": {
     "text": [
      "A share means little until the reader knows what share to expect. The tick puts that expectation on every bar, so the gap shows as distance on the same scale and nobody has to subtract one number from another."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -915,8 +902,7 @@
    "why": {
     "text": [
      "A dot marks a position without the weight of a bar, so 50 rows stay light enough to scan and the eye follows the line of dots down the ranking. The printed column lets a reader find an exact figure without reading it off the scale."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -959,8 +945,7 @@
    "why": {
     "text": [
      "The line between the dots draws the gap itself, so a reader sees its size without subtracting, and the two dot styles keep the years apart in gray print. A dot carries no length from zero, so the scale may start where the data starts, as long as the chart says so."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1001,8 +986,7 @@
    "why": {
     "text": [
      "The angle of each line shows the direction and size of a change at a glance, and lines that cross show a change in order that two lists of numbers hide. Two points alone say nothing about the years between them, so the chart owes the reader the reason for its dates."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1042,8 +1026,7 @@
    "why": {
     "text": [
      "A stem keeps the length a reader compares from the zero line while putting little ink on the page, so a long list stays easy to scan. The dot marks where each length ends, which is the one place the eye needs."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1083,8 +1066,7 @@
    "why": {
     "text": [
      "A reader compares bars that touch first, so grouping decides which comparison the reader makes. Grouping by category puts the two series of each category side by side, which suits a gap within each group, and the eye can still run down one series’ bars to compare across groups."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1125,8 +1107,7 @@
    "why": {
     "text": [
      "Panels that repeat one design let the reader learn the chart once and then read every group the same way. A shared scale keeps a long bar in one panel the same size as a long bar in another, which separate scales would break without any sign on the page."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1165,8 +1146,7 @@
    "why": {
     "text": [
      "A radar chart draws values as a shape, and a shape’s area grows with the square of its values, so a group a little ahead on every spoke looks far bigger. Moving one spoke to another place changes every shape on the chart with no change in the data, and overlapping outlines hide each other."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1206,8 +1186,7 @@
    "why": {
     "text": [
      "An arrow carries three facts at once: the start, the end and the direction, so a reader sees both that every state moved one way and how far apart they still stand. Party names in words and position carry the sides (Rule 14.7)."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1246,8 +1225,7 @@
    "why": {
     "text": [
      "Ranking by the size of the change answers the reader’s question in the order they ask it. A stem from zero gives each change a length the eye can compare, as a bar does (Rule 14.4), and the key ties that length to a number. The dot marks where each change stops with less ink than a full bar, so 50 rows stay light."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1285,8 +1263,7 @@
    "why": {
     "text": [
      "Bars from one zero line let the eye compare every gain and loss by length (Rule 14.4), and the side of the line tells the direction before a reader reaches a figure. A figure set across zero from its bar lines up with every other figure, so the column reads as a list. Color repeats what position says, so the chart still reads in grayscale (Rule 14.5)."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [
     "oa.chart.color.diverging.fill.step2.onNewsprint",
@@ -1330,8 +1307,7 @@
    "why": {
     "text": [
      "An arrow’s direction answers who held the advantage and its length answers by how much, so a reader running down the rows sees both the size of each lead and every change of control. One ink for every arrow keeps color from taking a side (Rule 14.7); position and the printed names carry it."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1369,8 +1345,7 @@
    "why": {
     "text": [
      "A note set at the point it explains lets the reader see the event and the change together, without a legend to match. The note says what happened and when, and leaves the cause to the evidence (Rule 13.2), so the timing of a rise is never offered as proof of what caused it."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [
@@ -1412,8 +1387,7 @@
    "why": {
     "text": [
      "Four lines on one plot tangle where they cross, and a key makes the reader match colors. A panel per group, with the others drawn gray in every panel, keeps each line readable and puts every gap in view, and one scale keeps the panels honest with each other."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1451,8 +1425,7 @@
    "why": {
     "text": [
      "Colored lines for 50 states tangle into noise, and the same lines in gray read as one shape: the range every place moved within. One line in ink against that shape shows where the subject sits without a key, and the table gives every other series a reader may want to find (Rule 14.8)."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1490,8 +1463,7 @@
    "why": {
     "text": [
      "Each column shows one month as the survey counted it, and the average shows where the months are heading, so a single bad month reads as a dip in a trend that holds. A survey’s monthly figure carries error, and the note that says which drops pass the margin keeps a small swing from reading as news (Rule 14.9)."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1530,8 +1502,7 @@
    "why": {
     "text": [
      "A sparkline gives the shape of a series in the space of a word, so the reader keeps reading. Each line takes its own scale, so its height says nothing about size, and the figures in the sentence carry the amounts."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1566,8 +1537,7 @@
    "why": {
     "text": [
      "One shared scale lets a reader compare panels at a glance, and the gray line of the whole in every panel shows which parts ran ahead of it. Small panels give each part room that one plot of many lines cannot."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1605,8 +1575,7 @@
    "why": {
     "text": [
      "A filled area asks the eye to judge size, so it fits a count of people, dollars or places. Under a rate, the same fill shows a size the numbers never had. The scale starts at zero for the reason a bar does (Rule 14.4): a fill cut off above zero makes a small fall look like a collapse."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1648,8 +1617,7 @@
    "why": {
     "text": [
      "A line that slopes from one date to the next tells the reader the amount crept up over the years, when the law moved it all at once. Flat runs and straight risers show what each tax year carried, and the law named at each riser tells the reader who made the change."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1684,8 +1652,7 @@
    "why": {
     "text": [
      "A line drawn across a missing month invents a figure the publisher never printed, and the reader cannot tell it from the measured months around it. A named gap shows where the record stops, and the table says the same in words (Rule 14.11)."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1719,8 +1686,7 @@
    "why": {
     "text": [
      "True spacing shows the reader that some decades held many changes and others few, which an evenly spaced list hides. Lanes sort events by kind without a key, and a phone list keeps every date and name readable where a lane would crowd (Rule 14.12)."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1758,8 +1724,7 @@
    "why": {
     "text": [
      "A President signs a law on one day, and its parts start on many, and a reader who hears it passed may expect the change at once. One lane per part, each starting on its own date, shows the wait for each part, and the hatched year keeps a plan-year date from reading as one day for everyone."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1794,8 +1759,7 @@
    "why": {
     "text": [
      "On a scale of dollars, a $35 billion source that quintuples lies flat beside a $3 trillion one. An index puts every series at 100 on the same date, so a line’s height shows growth alone. A fast-growing source can stay small, so the notes give each highlighted series’ amount and share, and the reader does not take a fast-growing small source for a large one."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1833,8 +1797,7 @@
    "why": {
     "text": [
      "A circle sized by area lets a reader see a count grow from a handful to hundreds without a scale that crushes the small years. The eye judges area loosely, so the key gives round sizes, the notes give the largest figure, and the table gives every one."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1872,8 +1835,7 @@
    "why": {
     "text": [
      "A raise that leaves a family with less is hard to believe until the reader sees the line fall. The diagonal of earnings alone shows what the benefits add, and the band shows how far the family must climb to get back, so the size of the trap reads before any figure. Real cliffs depend on the state, the family and the year, so the chart names the household it assumes."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [
@@ -1909,8 +1871,7 @@
    "why": {
     "text": [
      "Every process wobbles, and a single high week proves nothing. A run of points on one side of the median is a simple, standard sign that something changed, which keeps a reader from taking noise for news or missing a real shift."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1947,8 +1908,7 @@
    "why": {
     "text": [
      "A measure that rises every winter looks like a crisis on a plain line each December. Laying the years over the same months shows the season as the shape every year shares, and puts this year’s difference from that shape in view."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -1985,8 +1945,7 @@
    "why": {
     "text": [
      "A streamgraph stacks its layers around a wavy center line, so no layer sits on a flat baseline and a reader can measure none of them against a scale. When one layer swells, every layer above and below it bends, and a reader takes that bend for a change in layers that never moved."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -2024,8 +1983,7 @@
    "why": {
     "text": [
      "A table lets a reader find their own state by name and read its exact margin, which a map hides in its smallest places. The bar and arrow drawn in each row let the eye compare rows down the page without leaving the table."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -2066,8 +2024,7 @@
    "why": {
     "text": [
      "A register keeps the name and the number side by side, which is what a reader looking for one group needs, and the rank tells them where it stands without counting. The thin bars add the shape of the drop from first to last at little cost in ink."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -2111,8 +2068,7 @@
    "why": {
     "text": [
      "A matrix holds every option against every criterion in one view, so a reader can read across a row or down a column. The source’s words keep its qualifiers, such as “slightly up in metro areas that reform housing rules”, which a score would throw away."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -2151,8 +2107,7 @@
    "why": {
     "text": [
      "A sparkline gives a series’ path in the space of a word, so the table stays a table while the reader sees whether a figure came from a steady climb or a late turn. One shared scale keeps a flat line flat in every row."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -2190,8 +2145,7 @@
    "why": {
     "text": [
      "Tints let the eye find the dark and light patches across a grid of a hundred cells before reading any of them, and the printed word keeps every cell exact. One scale from light to dark reads as more and less in color, in gray print and for readers who see color differently."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [
@@ -2234,8 +2188,7 @@
    "why": {
     "text": [
      "A register of a hundred records answers a hundred questions, and a reader with one question needs a way in. A search and a few filters cut the table to the rows that answer it, and the count tells every reader, screen reader users among them, how many rows remain."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [
@@ -2278,8 +2231,7 @@
    "why": {
     "text": [
      "A claim read apart from its grade and limits can say more than its evidence does. Setting them in one row means the qualification travels with the claim when a reader scans, quotes or shares it."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [
@@ -2321,8 +2273,7 @@
    "why": {
     "text": [
      "A reader tracking bills wants the same answer for each one: how far it has come, what happened last and when. The six marks answer the first at a glance, in the same shapes the reader meets on every Oath & Action tracker, and the dated words answer the rest."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [
@@ -2365,8 +2316,7 @@
    "why": {
     "text": [
      "Three numbers within two points of each other make bars of almost the same length, which tells the reader less than the figures do. A table puts the exact value where the eye lands, keeps live text for screen readers and copying, and costs the page almost nothing."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [],
@@ -2409,8 +2359,7 @@
    "why": {
     "text": [
      "Two numbers of almost the same size make a chart of two equal shapes, which says less than the numbers do. A sentence names whom the survey counted and when in the same breath as the figures, so a reader can quote it whole with its source."
-    ],
-    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+    ]
    },
    "tokens": [],
    "related": [
@@ -2475,7 +2424,7 @@
   }
  ],
  "sources": [
-  "Source: U.S. Census Bureau, Business Formation Statistics, business applications, 2005 to 2025, 50 states and DC. Retrieved November 11, 2026. Applications for a tax ID that signal a new business; many never hire; annual totals summed by Oath & Action.",
+  "Source: U.S. Census Bureau, Business Formation Statistics, September 2026 monthly release (October 14, 2026), business applications, 2005 to 2025, 50 states and DC. Retrieved November 11, 2026. Applications for a tax ID that signal a new business; many never hire; annual totals summed by Oath & Action.",
   "Source: U.S. Census Bureau, County Business Patterns, civic and social organizations (NAICS 813410), 1998 to 2023, United States. Retrieved November 11, 2026. Establishments with paid employees only; employees counted in mid-March.",
   "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting, citizen voting-age population, November 1978 to 2024, United States. Retrieved November 6, 2026. Self-reported in a survey; citizenship data before 1996 are not fully comparable.",
   "Source: Office of the Clerk, U.S. House of Representatives, party breakdown, as of November 11, 2026, United States House. Retrieved November 11, 2026. Two seats vacant; the count changes with each vacancy and special election.",

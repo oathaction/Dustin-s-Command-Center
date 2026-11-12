@@ -9,7 +9,7 @@
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: a Census Bureau count of employers",
- "title": "Newspaper publishers ran 5,851 establishments in 2023, down from 8,686 in 1998",
+ "title": "Newspaper publishers ran 5,851 establishments in 2023, down from 8,686 in 1998.",
  "measure_line": "Newspaper publishers’ establishments with paid employees, each year from 1998, the first year the Census Bureau counted them under today’s industry codes, to 2023, the latest it has published, United States",
  "source_line": "Source: U.S. Census Bureau, County Business Patterns, newspaper publishers (NAICS 511110), 1998 to 2023, United States. Retrieved November 11, 2026. Establishments with paid employees only; employees counted in mid-March.",
  "alt": "An unbroken line of newspaper publishers’ establishments from 1998 to 2023, falling from 8,686 to 5,851.",

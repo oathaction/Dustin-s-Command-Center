@@ -39,6 +39,21 @@ LOG = ENTRIES / "14-example-log.json"
 DOMAIN_SHARE = 1 / 4      # DR-229: no atlas domain supplies more than one example in four in chapter 14
 STATE_SHARE = 1 / 5       # and no state more than one in five
 ENTRY_DROP = {"use_when", "use_instead", "specimen", "tier", "correct", "failure", "examples", "caption"}
+SKETCH_LIMIT = {"reference": 4096, "avoid": 4096}   # R1-C1; D3-486 raises the avoid sketch to 4,096 bytes for its pair
+SVG_WIDTH = re.compile(r'<svg\b[^>]*?\swidth="([\d.]+)"')
+
+
+def sketch_widths(path):
+    """The true width of each drawing in a sketch file, in order (one, or an avoid entry's pair)."""
+    try:
+        return [float(w) for w in SVG_WIDTH.findall(path.read_text())]
+    except OSError:
+        return []
+
+
+def same_basis(a, b):
+    norm = lambda t: re.sub(r"\s+", " ", str(t or "")).strip().rstrip(".").lower()
+    return bool(norm(a)) and norm(a) == norm(b)
 
 
 def curly(t):
@@ -88,6 +103,9 @@ def outputs(rounds):
             faults.append(f"Rule {rid}: {ef.name} says id {e.get('id')!r}; the plan fixes {rid}")
         rule = {k: v for k, v in e.items() if k not in ENTRY_DROP}
         rule["id"] = rid
+        # BC S18 (ED-E11): the chapter states its basis once; a rule or entry whose basis is that one prints no box of its own
+        if chap.get("basis") and isinstance(rule.get("why"), dict) and same_basis(rule["why"].get("basis"), chap["basis"]):
+            rule["why"] = {k: v for k, v in rule["why"].items() if k != "basis"}
         # R2 gives "related" as the rule numbers an entry cites; the guide prints related chapters, so the rules' chapters
         # other than 14 go there and the rule numbers stay beside them as "related_rules"
         rel = [str(x) for x in (e.get("related") or [])]
@@ -158,17 +176,25 @@ def outputs(rounds):
             rule["correct"] = {"specimen": sk, "caption": f"{p['form']}, drawn small with illustrative data.",
                                "kind": "avoid" if avoid else "sketch",
                                "label": f"{p['form']}, a form that misleads" if avoid else f"{p['form']}, a sketch"}
-            limit = 4096 if tier_of(p["tier"]) == "reference" else 2048
-            manifest[sk] = {"chapter": "14", "rule": rid, "width_px": None, "illustrative": True,
+            limit = SKETCH_LIMIT.get(tier_of(p["tier"]), 4096)
+            # CD SK-M2, BC S7: one drawing sets its stage at the drawing's true width, so the frame centers it and the
+            # do-not-publish bar takes its width; an avoid entry's pair (D3-486) flows, each half at its own width, side by
+            # side where the frame holds both and one over the other where it does not
+            ws = sketch_widths(SPECIMENS / f"{sk}.html")
+            manifest[sk] = {"chapter": "14", "rule": rid, "width_px": ws[0] if len(ws) == 1 else None, "illustrative": True,
                             "alt": e.get("sketch_alt") or f"A sketch of a {p['form'].lower()}, with illustrative data.",
-                            "notes": f"{tier_of(p['tier'])} sketch, at most {limit:,} bytes (contract R1-C1)"}
+                            "notes": f"{tier_of(p['tier'])} sketch, at most {limit:,} bytes (contract R1-C1, D3-486)"}
+            if len(ws) == 1:
+                manifest[sk]["fit_switch"] = False
+            if len(ws) > 2 or (len(ws) == 2 and not avoid):
+                faults.append(f"Rule {rid}: {sk}.html holds {len(ws)} drawings; a sketch holds one, or an avoid entry's pair (D3-486)")
             if (SPECIMENS / f"{sk}.html").exists() and (SPECIMENS / f"{sk}.html").stat().st_size > limit:
                 faults.append(f"Rule {rid}: {sk}.html weighs {(SPECIMENS / f'{sk}.html').stat().st_size:,} bytes, over its {limit:,} (R1-C1)")
         rules.append(rule)
     # the groups whose first rule is built
     ids = [r["id"] for r in rules]
     groups = [g for g in chap.get("groups") or [] if str(g.get("before_rule")) in ids]
-    chapter = {k: chap[k] for k in ("number", "anchor", "title", "part", "instruction") if k in chap}
+    chapter = {k: chap[k] for k in ("number", "anchor", "title", "part", "instruction", "basis", "plate_css") if k in chap}
     if opener.get("specimen"):
         chapter["opener"] = {"specimen": opener["specimen"], "caption": opener.get("caption", "")}
     chapter.update({"intro": chap.get("intro") or [], "groups": groups, "rules": rules,

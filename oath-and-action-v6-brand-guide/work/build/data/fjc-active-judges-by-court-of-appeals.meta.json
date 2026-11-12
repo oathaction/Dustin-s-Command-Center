@@ -1,0 +1,48 @@
+{
+ "file": "fjc-active-judges-by-court-of-appeals.csv",
+ "kind": "derived",
+ "publisher": "Federal Judicial Center",
+ "title_or_table": "Biographical Directory of Article III Federal Judges, 1789 to present, export file federal-judicial-service.csv (active judges only)",
+ "table_id": "FJC judges export, federal-judicial-service.csv",
+ "url": [
+  "https://www.fjc.gov/sites/default/files/history/federal-judicial-service.csv",
+  "https://www.fjc.gov/history/judges/biographical-directory-article-iii-federal-judges-export"
+ ],
+ "observation_period": "Judges in active service on the export’s latest record (latest commission date 2026-10-22), as retrieved November 11, 2026",
+ "geography": "The 13 United States courts of appeals",
+ "universe_or_base": "The 179 Article III judges in active service on a court of appeals in the frozen export, with no senior-status or termination date",
+ "unit": "judges in active service, counted by Oath & Action",
+ "date_retrieved": "2026-11-11",
+ "vintage": "FJC export as posted on November 11, 2026; the file states no as-of date",
+ "qualification": "A judge who takes senior status still hears cases but leaves this count, and vacant seats are not in the file, so a court’s count is below its authorized judgeships when a seat is open",
+ "columns": {
+  "court": {
+   "type": "text",
+   "description": "the court as the directory names it"
+  },
+  "short_name": {
+   "type": "text",
+   "description": "the court’s short name as a chart prints it (Ninth Circuit, D.C. Circuit, Federal Circuit), Oath & Action’s"
+  },
+  "circuit_order": {
+   "type": "integer",
+   "description": "the courts’ customary order, First Circuit 1 to Eleventh 11, D.C. Circuit 12, Federal Circuit 13"
+  },
+  "judges": {
+   "type": "integer",
+   "description": "judges in active service",
+   "unit": "judges"
+  }
+ },
+ "printed_source_line": "Source: Federal Judicial Center, Biographical Directory of Article III Federal Judges, judges in active service on the 13 courts of appeals, as of November 11, 2026, United States. Retrieved November 11, 2026. Judges on senior status and vacant seats are not counted; judges counted by court by Oath & Action.",
+ "ledger_row": "P7-025",
+ "domain": "D05",
+ "states": [],
+ "derived_from": [
+  "fjc-article-iii-judges.csv"
+ ],
+ "derivation": "Rows of the frozen FJC file whose court_type is \"U.S. Court of Appeals\", counted by court_name; rows sorted by judges, most first, then by circuit_order",
+ "notes": [
+  "Made November 12, 2026 for Rule 14.6’s plate (the editor’s request ED-R1). The 13 counts sum to 179, the file’s court of appeals rows."
+ ]
+}

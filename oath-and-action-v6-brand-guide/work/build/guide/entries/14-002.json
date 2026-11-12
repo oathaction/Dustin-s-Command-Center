@@ -3,7 +3,7 @@
  "title": "Build every chart in one anatomy, from evidence label to table.",
  "rule": [
   "Every chart prints the same eight parts in the same order, so a reader always knows where to look: the evidence label and grade line (Rules 13.1 and 13.2), the title, the measure line (Rule 13.7), the reading guide, the chart, its notes, the source line (Rule 13.6) and the table (Rule 14.13).",
-  "The title is one full sentence, and house rule H08 sizes its claim. The reading guide says in a sentence or two how to read the drawing. Notes carry what the drawing cannot. A part with nothing to say is left out, and the rest keep their order."
+  "The title is one full sentence, and house rule H08 sizes its claim. A chart of dollars across years says in its measure line “not adjusted for inflation”, or names the dollars’ year and the price index that adjusted them. The reading guide says in a sentence or two how to read the drawing. Notes carry what the drawing cannot. A part with nothing to say is left out, and the rest keep their order."
  ],
  "use_when": null,
  "use_instead": [],

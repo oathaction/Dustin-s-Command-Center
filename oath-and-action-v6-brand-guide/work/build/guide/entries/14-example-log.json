@@ -33,6 +33,7 @@
   "OH": 1,
   "PA": 1,
   "TX": 1,
+  "UT": 1,
   "WA": 1,
   "WY": 1
  },
@@ -215,7 +216,7 @@
    "source": "s20.json"
   },
   {
-   "example": "Of the atlas’s 16 everyday answers, voting and public influence rests on the most claims, 42, and roads, bridges and transit on the fewest, 13.",
+   "example": "Of the atlas’s 16 everyday answers, voting and public influence rests on the most claims, 42.",
    "domain": "all",
    "states": [],
    "rule": "14.21",
@@ -229,7 +230,7 @@
    "source": "s22.json"
   },
   {
-   "example": "Of the atlas’s five topic hubs, “Public services where you live” has the largest share of documented claims, 84.5 percent, and “Voice, power and information” the smallest, 67.2.",
+   "example": "Of the atlas’s five topic hubs, “Public services where you live” has the largest share of documented claims, 84.5 percent.",
    "domain": "all",
    "states": [],
    "rule": "14.23",
@@ -255,14 +256,14 @@
    "source": "s24.json"
   },
   {
-   "example": "Federal agencies had 130,369 fewer civilian employees in August 2026 than in January 2022, and 33 of the 37 largest in January 2022 shrank.",
+   "example": "Agencies that report to the Office of Personnel Management had 130,369 fewer civilian employees in August 2026 than in January 2022, and 33 of the 37 largest in January 2022 shrank.",
    "domain": "D04",
    "states": [],
    "rule": "14.27",
    "source": "s25.json"
   },
   {
-   "example": "The House majority opened the 119th Congress in 2025 with five more seats than the minority, its smallest lead at the start of any Congress since 1951.",
+   "example": "Republicans won five more House seats than Democrats in the 2024 election, the smallest lead in the first count for any Congress since 1951.",
    "domain": "D02",
    "states": [],
    "rule": "14.28",
@@ -283,10 +284,11 @@
    "source": "s05.json"
   },
   {
-   "example": "Home prices rose in every state and DC from 1991 to 2026, most in Montana, where they grew more than sevenfold.",
+   "example": "Home prices rose in every state and DC from 1991 to 2026, most in Montana and Utah, each more than seven times their level in early 1991.",
    "domain": "D09",
    "states": [
     "MT",
+    "UT",
     "CT"
    ],
    "rule": "14.31",
@@ -391,7 +393,7 @@
    "source": "s06.json"
   },
   {
-   "example": "Of 38 routes through an act of Congress, the atlas rates 36 low or very low in feasibility for 2026 to 2030.",
+   "example": "For 36 of the 38 reforms that could pass as an act of Congress, the atlas rates that route’s feasibility for 2026 to 2030 low or very low.",
    "domain": "all",
    "states": [],
    "rule": "14.129",

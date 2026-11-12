@@ -467,7 +467,7 @@ def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None):
         out.append(loop_id(mid_x, mid_y - 3, lid_, kind, two=True))
     if inside_rows:
         need(max(tw(r_, 700) for r_ in inside_rows) <= room, "the words inside the loop crowd its side steps")
-        out.append(f'<text class="id" x="{F(mid_x)}" y="{F(mid_y - 3)}" text-anchor="middle">{e(inside_rows[0])}'
+        out.append(f'<text class="id" x="{F(mid_x)}" y="{F(mid_y - 9)}" text-anchor="middle">{e(inside_rows[0])}'
                    f'<tspan x="{F(mid_x)}" dy="{LH}">{e(inside_rows[1])}</tspan></text>')
     h = bot_y + 34 + (rows[2] - 1) * LH
     return "".join(out), h
@@ -626,7 +626,7 @@ def numeral(n, x, y):
 
 def opener(book):
     """Loop R13 with authority connection LE02, which leaves the loop's first variable for the economy layer (SD-6: the
-    data lead's choice, since Rule 15.6 draws Loop R18)."""
+    data lead's choice; Rule 15.6 then drew Loop R18, and draws Loop R10 since the review fix pass)."""
     lid = "R13"
     lp = LOOP[lid]
     need(lp["links"] == ["L11", "L12"] and lp["type"] == "R" and minus_count(lp["links"]) == 2, "Loop R13 changed")
@@ -1173,32 +1173,43 @@ def rule_15_6(book):
     rg, bg = GLOSS["Reinforcing loop (R)"], GLOSS["Balancing loop (B)"]
     fb_ = GLOSS["Feedback loop"]
     need(fb_.endswith("either kind can produce good or harmful results."), "the atlas's feedback loop entry changed")
-    picks = [("R18", "reinforcing", 2), ("B5", "balancing", 1)]
+    # Loop R10 sits outside executive power and reads the same from either side, and its signs run plus, minus, minus,
+    # plus, so a reader counts two minus signs among plus signs to find its kind (the data lead's ruling on BC S2)
+    picks = [("R10", "reinforcing", 2, 4), ("B5", "balancing", 1, 2)]
+    r10 = LOOP["R10"]
+    need([c for c, _ in r10["chain"]] == ["C1", "C2", "C3", "C4"] and r10["links"] == ["L08", "L25", "L53", "L42"]
+         and [link(x)["polarity"] for x in r10["links"]] == ["+", "-", "-", "+"] and r10["closure"].startswith("closed"),
+         "Loop R10 changed")
+    need(all(node(c)["layer"] == "core" for c, _ in r10["chain"]), "Loop R10 left the core layer")
     cols = []
-    for lid, kind, n in picks:
+    for lid, kind, n, k in picks:
         lp = LOOP[lid]
-        need(minus_count(lp["links"]) == n and len(lp["links"]) == 2, f"Loop {lid} changed")
+        need(minus_count(lp["links"]) == n and len(lp["links"]) == k and lp["type"] == kind[0].upper(), f"Loop {lid} changed")
         codes = [c for c, _ in lp["chain"]]
-        b, h, _ = two_loop(codes, lp["links"], inside=(lid, kind))
+        if k == 4:
+            b, h = four_loop(codes, lp["links"], inside=(lid, kind))
+        else:
+            b, h, _ = two_loop(codes, lp["links"], inside=(lid, kind))
         steps = "".join(f'<p class="nt"><b>{i}</b>&#160;{gl(x)}</p>' for i, x in enumerate(lp["links"], 1))
         cols.append(f'<div>{label_for(lp["links"], "the grade of the loop’s least certain step")}{hed("Loop", lid, lp["title"])}'
                     f'{fig(svg_wrap(b, h), read_aloud(codes, lp["links"]))}{steps}'
                     f'<p class="nt"><b>{words_n(n).capitalize()} minus sign{"s" if n != 1 else ""}</b>: {kind}.</p></div>')
-    body = f'<div class="fx">{"".join(cols)}</div>' + src("loops R18 and B5 and their connections")
-    book.add("s-15-6-correct", body, rule="15.6", readable=True,
-             alt=("Two loops from our systems atlas, each with its steps numbered 1 and 2, its number and kind inside it, a sentence "
-                  "that reads it aloud and its count of minus signs. "
+    body = f'<div class="fx pr">{"".join(cols)}</div>' + src("loops R10 and B5 and their connections")
+    book.add("s-15-6-correct", body, rule="15.6", readable=True, wide=True,
+             alt=("Two loops from our systems atlas, each with its steps numbered in order, its number and kind inside it, a "
+                  "sentence that reads it aloud and its count of minus signs. Loop R10 draws four variables on a square, its "
+                  "steps marked plus, minus, minus and plus; Loop B5 draws two. "
                   + " ".join(f"Loop {lid}, {LOOP[lid]['title']}: {read_aloud([c for c, _ in LOOP[lid]['chain']], LOOP[lid]['links'])} "
-                             f"{words_n(n).capitalize()} minus sign{'s' if n != 1 else ''}, {kind}." for lid, kind, n in picks)),
-             notes="Kinds checked against the count of minus signs on every numbered loop; read-aloud lines carry the signs around.")
-    book.log("15.6 correct", "Loop R18, watchdogs", "D05")
+                             f"{words_n(n).capitalize()} minus sign{'s' if n != 1 else ''}, {kind}." for lid, kind, n, _ in picks)),
+             notes="Kinds checked against the count of minus signs on every numbered loop; read-aloud lines carry the signs "
+                   "around. Loop R10 replaces Loop R18, so the chapter's first plates draw executive power once, in the opener.")
+    book.log("15.6 correct", "Loop R10, safe seats", "D02")
     book.log("15.6 correct", "Loop B5, state experiments", "D03")
-    lp = LOOP["R18"]
-    codes = [c for c, _ in lp["chain"]]
-    b, h, _ = two_loop(codes, lp["links"], numbered=False, inside=(None, "A vicious cycle"))
+    codes = [c for c, _ in r10["chain"]]
+    b, h = four_loop(codes, r10["links"], numbered=False, inside_rows=("A vicious", "cycle"))
     fail = dnp() + fig(svg_wrap(b, h))
     book.add("s-15-6-failure", fail, rule="15.6",
-             alt=(FC + "Loop R18 drawn with no step numbers, no chip and no kind, and the words A vicious cycle inside it."),
+             alt=(FC + "Loop R10 drawn with no step numbers, no chip and no kind, and the words A vicious cycle inside it."),
              notes="Labeled failure: a judgment for a kind, and no numbers to read the loop in order.")
     return {
         "id": "15.6",
@@ -1221,11 +1232,11 @@ def rule_15_6(book):
                     "caption": "Two loops from our systems atlas, each with numbered steps, its number and kind inside it, a "
                                "sentence that reads it aloud and its count of minus signs."},
         "failure": {"specimen": "s-15-6-failure",
-                    "caption": "<strong>Fails Rule 15.6.</strong> Loop R18 has no step numbers, no chip and no kind, and the "
+                    "caption": "<strong>Fails Rule 15.6.</strong> Loop R10 has no step numbers, no chip and no kind, and the "
                                "words inside it judge the loop. Its two minus signs make it reinforcing."},
         "specs": [
             {"label": "Step number", "value": "Bold, before the verb, from the atlas’s first connection: 1 raises"},
-            {"label": "Inside the loop", "value": "The loop’s typed ID in bold, such as Loop R18, then reinforcing or balancing"},
+            {"label": "Inside the loop", "value": "The loop’s typed ID in bold, such as Loop R10, then reinforcing or balancing"},
             {"label": "Kind check", "value": "An even count of minus signs for reinforcing, odd for balancing; the build checks every numbered loop"},
             {"label": "Read aloud", "value": "One sentence that carries more or less around the loop and back to the start"},
         ],
@@ -1257,8 +1268,8 @@ def rule_15_7(book):
     col2 = (diagram_label("well-supported", "the atlas’s grade for the mechanism, where entry is possible")
             + hed("Loop", "B3", b3["title"]) + fig(svg_wrap(b2, h2)) + '<p class="nt"><b>No numbered chain</b>. Its three '
             'stations sit outside the atlas’s numbered variables.</p>')
-    body = f'<div class="fx"><div>{col1}</div><div>{col2}</div></div>' + src("loops R16 and B3")
-    book.add("s-15-7-correct", body, rule="15.7", readable=True,
+    body = f'<div class="fx pr"><div>{col1}</div><div>{col2}</div></div>' + src("loops R16 and B3")
+    book.add("s-15-7-correct", body, rule="15.7", readable=True, wide=True,
              alt=(f"Two loops from our systems atlas with their closure in words beside their grade. Loop R16, “{r16['title']}”, "
                   "labeled Hypothesis: a solid step from Local news supply to Electoral pressure, and a dotted step back that "
                   f"closes it; the words read Closes through a hypothesis. Loop B3, “{b3['title']}”, labeled Well supported: "
@@ -1357,9 +1368,9 @@ def rule_15_8(book):
                 f"{gl('L37')}: the core map’s one arrow for the same path carries a minus.",
                 f"The atlas: “{e(q)}”"])
     body = (label_for(["LE12", "LE14", "L37"])
-            + f'<div class="fx"><div>{fig(svg, ra)}</div><div><p class="k">Carry the sign along</p>{words}</div></div>'
-            + src("connections LE12, LE14 and L37, and the atlas’s model conventions"))
-    book.add("s-15-8-correct", body, rule="15.8", readable=True,
+            + beside(fig(svg), ra_p(ra) + f'<p class="k">Carry the sign along</p>{words}'
+                     + src("connections LE12, LE14 and L37, and the atlas’s model conventions")))
+    book.add("s-15-8-correct", body, rule="15.8", readable=True, wide=True,
              alt=(f"An open chain from our systems atlas, drawn downward: Policy tilt to insiders, a minus tag and the words money, "
                   f"lowers, into Net support from taxes and public benefits, framed as the economy layer, then a plus tag and the "
                   f"words money, raises, into Household security. On the right, connection L37 runs from Policy tilt to insiders "
@@ -1454,9 +1465,10 @@ def rule_15_9(book):
                 "2026 to 2036.", f"{chip('Variable', 'B6')} sits in the core layer’s cluster B.",
                 f"{chip('Variable', 'TC1')} sits in the technology layer.",
                 f"Each frame breaks where a connection crosses it: {gl('LX4')}, {gl('LT01')}."])
-    body = (label_for(["LX4", "LT01"]) + f'<div class="fx"><div>{fig(svg)}</div><div><p class="k">Inside and outside</p>{words}</div></div>'
-            + src("variables X4, B6 and TC1, connections LX4 and LT01, the layers and the model’s boundary"))
-    book.add("s-15-9-correct", body, rule="15.9", readable=True,
+    body = (label_for(["LX4", "LT01"])
+            + beside(fig(svg), f'<p class="k">Inside and outside</p>{words}'
+                     + src("variables X4, B6 and TC1, connections LX4 and LT01, the layers and the model’s boundary")))
+    book.add("s-15-9-correct", body, rule="15.9", readable=True, wide=True,
              alt=("A drawing from our systems atlas in three bands. At the top, outside every frame, Foreign interference, marked "
                   "outside driver. A line marked information, raises crosses into a frame named Core layer, Political inputs, "
                   "holding Hostile-content exposure. Below it a frame named Technology layer holds How platforms rank feeds and "
@@ -1534,10 +1546,9 @@ def rule_15_10(book):
              f'<p class="q">“{e(quote)}”</p><p class="nt">{tail}</p>'
              f'<p class="nt">The atlas keeps {words_n(len(rej))} connections it reviewed and left off its map, each with its reason.</p>')
     body = (label_for(["LT01"], "the grade of the connection drawn")
-            + f'<div class="fx"><div>{hed("Connection", "LT01", link("LT01")["name"])}{fig(svg_wrap(b, h))}'
-            f'<p class="nt">{gl("LT01")}</p></div><div>{panel}</div></div>'
-            + src("connection LT01, rejected connection LTR1 and connection L47"))
-    book.add("s-15-10-correct", body, rule="15.10", readable=True,
+            + beside(hed("Connection", "LT01", link("LT01")["name"]) + fig(svg_wrap(b, h)),
+                     f'<p class="nt">{gl("LT01")}</p>{panel}' + src("connection LT01, rejected connection LTR1 and connection L47")))
+    book.add("s-15-10-correct", body, rule="15.10", readable=True, wide=True,
              alt=(f"Connection LT01 from our systems atlas, “{link('LT01')['name']}”, drawn from How platforms rank feeds and seek "
                   "attention, in the technology layer, down to Hostile-content exposure, in the core layer, with the words "
                   f"information, raises. Beside it, under the heading Reviewed and not drawn, the claim from feed ranking to "
@@ -1691,9 +1702,10 @@ def rule_15_14(book):
     panel = (f'<p class="k">The atlas’s revision, as of {SNAP}</p><p class="nt">{rev_html}</p>'
              f'<p class="nt">{why_html}</p>')
     body = (diagram_label("well-supported", "strong research evidence, the grade of both steps")
-            + f'<div class="fx"><div>{hed("Loop", "R8", lp["title"])}{fig(svg_wrap(b, h), read_aloud(codes, lp["links"]))}</div>'
-            f'<div>{panel}</div></div>' + src("loop R8, its evidence note and qualification, and connection T12"))
-    book.add("s-15-14-correct", body, rule="15.14", readable=True,
+            + beside(hed("Loop", "R8", lp["title"]) + fig(svg_wrap(b, h)),
+                     ra_p(read_aloud(codes, lp["links"])) + panel
+                     + src("loop R8, its evidence note and qualification, and connection T12")))
+    book.add("s-15-14-correct", body, rule="15.14", readable=True, wide=True,
              alt=(f"Loop R8 from our systems atlas, “{lp['title']}”, under a label reading Well supported. Two pills, Housing "
                   "scarcity and Owner home equity, with step 1 over the top, plus, raises, and step 2 under the bottom, plus, "
                   f"raises, both solid with three delay ticks. The loop reads: {read_aloud(codes, lp['links'])} Beside it, the "

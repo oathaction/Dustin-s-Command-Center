@@ -22,7 +22,7 @@
   "12.6",
   "13.7"
  ],
- "builders": "Name each series in the spec's labels.series; the kit sets the names at the line ends and warns when one cannot fit.",
+ "builders": "Name each series in the spec’s labels.series; the kit sets the names at the line ends and warns when one cannot fit.",
  "specs": [
   {
    "label": "A line",

@@ -3,7 +3,7 @@
  "anchor": "data-visualization",
  "title": "Data visualization",
  "part": "Evidence and media",
- "instruction": "Start from the reader's question to choose a chart, then title it with the evidence it shows.",
+ "instruction": "Start from the reader’s question to choose a chart, then title it with the evidence it shows.",
  "opener": {
   "specimen": "s-14-opener",
   "caption": "Each group of this chapter opens with the question a reader brings, and its forms answer it.",
@@ -14,8 +14,9 @@
  },
  "intro": [
   "This chapter sets how Oath & Action shows numbers. Fourteen rules come first and hold for every chart. Each form a chart can take then has its own entry, grouped by the question it answers, with when to use it, what to use instead, and a finished example that our chart kit draws from frozen data, with its table as live text.",
-  "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files."
+  "Chapter 13 sets the evidence every chart carries: its label, its grade, its source line and its dates. The rules here cite those rules by number and add what a drawing needs, from its scale and colors to its labels, its phone drawing and its files. Each rule and entry rests on design judgment, from the chart system our founder and editor approved in November 2026, unless it names a basis of its own."
  ],
+ "basis": "Design judgment, from the chart system our founder and editor approved in November 2026",
  "groups": [
   {
    "number": 1,
@@ -71,7 +72,7 @@
    "before_rule": "14.74",
    "title": "Uncertainty and estimates: how sure is it?",
    "rules": "14.74 to 14.78",
-   "line": "How sure a figure is shows as a range, a band or a fan, as its publisher states it."
+   "line": "A range, a band or a fan shows how sure a figure is, as its publisher states it, whether a survey’s margin of error around a finding or a model’s range around an estimate (Rule 13.1)."
   },
   {
    "number": 9,
@@ -168,7 +169,7 @@
   }
  ],
  "sources": [
-  "Source: U.S. Census Bureau, Business Formation Statistics, business applications, 2005 to 2025, 50 states and DC. Retrieved November 11, 2026. Applications for a tax ID that signal a new business; many never hire; annual totals summed by Oath & Action.",
+  "Source: U.S. Census Bureau, Business Formation Statistics, September 2026 monthly release (October 14, 2026), business applications, 2005 to 2025, 50 states and DC. Retrieved November 11, 2026. Applications for a tax ID that signal a new business; many never hire; annual totals summed by Oath & Action.",
   "Source: U.S. Census Bureau, County Business Patterns, civic and social organizations (NAICS 813410), 1998 to 2023, United States. Retrieved November 11, 2026. Establishments with paid employees only; employees counted in mid-March.",
   "Source: U.S. Census Bureau, Current Population Survey Voting and Registration Supplement, Table A-1, reported voting, citizen voting-age population, November 1978 to 2024, United States. Retrieved November 6, 2026. Self-reported in a survey; citizenship data before 1996 are not fully comparable.",
   "Source: Office of the Clerk, U.S. House of Representatives, party breakdown, as of November 11, 2026, United States House. Retrieved November 11, 2026. Two seats vacant; the count changes with each vacancy and special election.",

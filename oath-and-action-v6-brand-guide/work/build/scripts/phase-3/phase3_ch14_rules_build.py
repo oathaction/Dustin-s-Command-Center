@@ -211,7 +211,8 @@ CSS = {
     "tip": (f".tip{{position:absolute;right:0;padding:6px 10px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);{SMALL}}}"),
     "opq": (".opq{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);gap:0}"
             "@media (min-width:48em){.opq{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}}"
-            ".opq li{display:grid;gap:4px;padding:10px 0;border-top:1px solid var(--oa-color-border-hairline)}"
+            ".opq li{display:grid;align-content:start;gap:4px;padding:10px 0;border-top:1px solid var(--oa-color-border-hairline)}"
+            ".opq a{color:inherit;text-underline-offset:3px}"
             ".opq .qq{font:var(--oa-font-weight-bold) var(--oa-type-h4-font-size)/var(--oa-type-h4-line-height) var(--oa-font-family-display);letter-spacing:-0.01em}"
             f".opq .fm{{{CAP};color:var(--oa-color-text-secondary)}}"),
     "olp": (f".olp{{margin:16px 0 0;padding:0;list-style:none;counter-reset:pt;display:grid;gap:4px;{SMALL}}}"
@@ -1312,8 +1313,12 @@ def opener(B):
     lis = []
     for gp in PLAN["groups"][1:]:
         fam, q = gp["title"].split(": ", 1)
-        lis.append(f'<li><span class="qq">{e(q[0].upper() + q[1:])}</span>'
-                   f'<span class="fm">{e(fam)}</span></li>')
+        q = e(q[0].upper() + q[1:])
+        # a group whose first entry is written links to its heading; a later round's group prints unlinked (D3-452)
+        first = int(gp["rules"].split(" to ")[0].split(".")[1])
+        built = (ENTRIES / f"14-{first:03d}.json").exists()
+        lis.append((f'<li><a class="qq" href="#group-14-{gp["group"]}">{q}</a>' if built else f'<li><span class="qq">{q}</span>')
+                   + f'<span class="fm">{e(fam)}</span></li>')
     body = ('<p class="k" style="margin:0 0 12px">Every chart answers one question</p><ol class="opq">' + "".join(lis) + "</ol>")
     B.add("s-14-opener", body, readable=True,
           alt="The sixteen reader questions that open chapter 14’s groups, from which is bigger and how they rank to how something works "

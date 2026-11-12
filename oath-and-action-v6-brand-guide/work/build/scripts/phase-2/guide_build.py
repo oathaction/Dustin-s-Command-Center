@@ -916,7 +916,17 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     else:
         body = frag
         if kind == "avoid":
-            body = '<p class="plate-dnp"><span aria-hidden="true">×</span>Form to avoid: do not publish</p>' + body
+            dnp = '<p class="plate-dnp"><span aria-hidden="true">×</span>Form to avoid: do not publish</p>'
+            pair = re.findall(r"<svg\b.*?</svg>", body, re.S)
+            if len(pair) == 2:
+                # D3-486 (BC M4, CD SK-M1): the misleading form beside the better choice from the same data, the bar over
+                # the misleading half only and "Use instead" over the other; each half at its drawing's true width
+                m = re.search(r'\sdata-label="([^"]*)"', pair[1][:pair[1].find(">")])
+                use = "Use instead" + (f": {m.group(1)}" if m and m.group(1).strip() else "")
+                body = ('<div class="sk-pair"><div class="sk-half sk-avoid">' + dnp + pair[0] + '</div>'
+                        f'<div class="sk-half sk-use"><p class="plate-use"><span aria-hidden="true">✓</span>{use}</p>' + pair[1] + '</div></div>')
+            else:
+                body = dnp + body
         if interactive or readable:
             # D2-255, AX-S2: a group named by the plate, described once by the alt. The alt paragraph is hidden from
             # assistive technology, so it is heard only as the group's description.
@@ -1463,7 +1473,9 @@ def render_rule(ch_num, r, specs, tokens, ctx, amp_svg, demo=False):
                    + "".join(token_chip(t, tokens, where) for t in r["tokens"]) + "</ul></div>")
     if why:
         out.append('<div class="why"><p class="label">Why it works</p>' + basis_tag(why.get("basis")) + paras(why.get("text"), ctx) + "</div>")
-        if not why.get("basis"):
+        # BC S18 (round 1 fix pass): a chapter that states its basis once ("basis") lets a rule leave out a basis that is
+        # the chapter's; the box then prints only where a rule names its own
+        if not why.get("basis") and not ctx.get("chapter_basis"):
             R.warn(where, "why.basis is empty: name the source, or write \"Design judgment\"")
     if r.get("downloads"):
         out.append(downloads_block(r.get("downloads"), tokens, ctx, where))
@@ -1774,9 +1786,12 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
         intro_html = ""
     else:
         intro_html = paras(data.get("intro"), dict(ctx, self_chapter=num), "intro")
+        # BC S18: the chapter's own basis, stated once after its introduction
+        if data.get("basis"):
+            intro_html += basis_tag(data.get("basis")).replace('<p class="basis', '<p class="basis basis--chapter', 1)
         if len(data.get("intro") or []) > 2:
             R.warn(where, "intro has more than two paragraphs (content contract: at most two short paragraphs)")
-    cctx = dict(ctx, self_chapter=num)
+    cctx = dict(ctx, self_chapter=num, chapter_basis=(data or {}).get("basis") if not placeholder else None)
     # D2-965, D2-1134: the opener figure, under the intro and before the rule index
     opener_html = ""
     op = None if placeholder else (data or {}).get("opener")
@@ -3967,7 +3982,26 @@ def self_test():
                                                                               "failure": {"specimen": "s-26-w2b", "caption": "A fixture."}}),
                                                                     rule("26.2", {"correct": {"specimen": "s-26-w2c", "caption": "A fixture."}})],
                  plate_css=".oa-w2 { color: var(--oa-color-text-primary) }\n.oa-w2-bad { color: #E63946 }")
+    sk_specs = {"s-26-skp.html": '<svg class="oac-svg oac-sketch" width="200" height="100" viewBox="0 0 200 100" role="img" aria-label="A"><rect x="1" y="1" width="9" height="9" class="oac-f-subject"/></svg>\n'
+                                 '<svg class="oac-svg oac-sketch" width="180" height="100" viewBox="0 0 180 100" role="img" aria-label="B" data-label="Grouped bars"><rect x="1" y="1" width="9" height="9" class="oac-f-subject"/></svg>',
+                "s-26-sk1.html": '<svg class="oac-svg oac-sketch" width="230" height="100" viewBox="0 0 230 100" role="img" aria-label="C"><rect x="1" y="1" width="9" height="9" class="oac-f-subject"/></svg>'}
+    sk_man = {"s-26-skp": {"chapter": "26", "rule": "26.1", "alt": "A misleading form beside the better one, a fixture.", "illustrative": True, "notes": "fixture"},
+              "s-26-sk1": {"chapter": "26", "rule": "26.2", "alt": "One misleading form, a fixture.", "illustrative": True, "width_px": 230, "fit_switch": False, "notes": "fixture"}}
+    sk = chapter("26", "tokens", "Tokens and how to choose them", [
+        {"id": "26.1", "title": "Rule 26.1 in a fixture.", "rule": "A fixture rule.", "why": {"text": "A fixture with the chapter's basis."},
+         "correct": {"specimen": "s-26-skp", "caption": "A fixture.", "kind": "avoid", "label": "Radar chart, a form that misleads"}},
+        {"id": "26.2", "title": "Rule 26.2 in a fixture.", "rule": "A fixture rule.", "why": {"text": "A fixture.", "basis": "WCAG 2.2"},
+         "correct": {"specimen": "s-26-sk1", "caption": "A fixture.", "kind": "avoid", "label": "Streamgraph, a form that misleads"}}],
+        basis="Design judgment, from a fixture's chart system")
     scenarios += [
+        ("round 1 fix pass: an avoid pair under its bar and Use instead (D3-486); a chapter's basis stated once (BC S18)",
+         {"26-tokens.json": sk}, {"specimens": sk_specs, "manifest": sk_man},
+         {"absent": ["why.basis is empty"],
+          "html": ['<div class="sk-pair"><div class="sk-half sk-avoid"><p class="plate-dnp">', '<p class="plate-use"><span aria-hidden="true">✓</span>Use instead: Grouped bars</p>',
+                   'class="basis basis--chapter basis--judgment"><span class="basis-k">Basis</span> Design judgment, from a fixture&#8217;s chart system</p>',
+                   '<span class="basis-k">Basis</span> WCAG 2.2'],
+          "tests": [("one drawing keeps the bar over it and no pair", lambda pg: re.search(r'data-specimen="s-26-sk1"[^>]*><p class="plate-dnp">', pg) is not None),
+                    ("the chapter's basis prints once", lambda pg: pg.count("basis--chapter") == 1)]}),
         ("round 1 fix pass: a plate with two true sizes (wide_px) and a chapter's shared plate CSS (D3-480)",
          {"26-tokens.json": w2}, {"specimens": w2_specs, "manifest": w2_man},
          {"warn": ["s-26-w2b: wide_px 300 needs a number above width_px (328); ignored", "\"plate_css\": 1 literal color value(s) (#E63946)"],

@@ -22,7 +22,7 @@
   "14.37",
   "14.32"
  ],
- "builders": "Mark breaks in the data's break column and preliminary rows in its status column; the kit leaves the gap and opens the mark.",
+ "builders": "Mark breaks in the data’s break column and preliminary rows in its status column; the kit leaves the gap and opens the mark.",
  "specs": [
   {
    "label": "No figure",

@@ -2,7 +2,7 @@
  "id": "14.10",
  "title": "Choose the window from the question, and draw an inauguration only as a dated note.",
  "rule": [
-  "Choose the window, the first and last period a chart shows, from the reader’s question, and print its reason in the measure line: the first year a series exists, the first year a method holds, or the span the question names. Rule 13.7 gives charts shown together one window.",
+  "Choose the window, the first and last period a chart shows, from the reader’s question, and print its reason in the measure line: the first year a series exists, the first year a method holds, the span the question names, or a round span back from the latest figure when no earlier start has a reason of its own. Rule 13.7 gives charts shown together one window.",
   "An inauguration or an election may appear inside the window as a dated note on an unbroken line. The line keeps one ink and one weight across the date, and no band, color or break divides the period into one officeholder’s years and another’s (house rule H09)."
  ],
  "use_when": null,
@@ -22,7 +22,7 @@
   "13.7",
   "14.29"
  ],
- "builders": "Put the window's reason in measure_line and any event in annotations; the kit draws one line with no band.",
+ "builders": "Put the window’s reason in measure_line and any event in annotations; the kit draws one line with no band.",
  "specs": [
   {
    "label": "Window",
