@@ -227,10 +227,15 @@ CSS = {
 }
 
 
-def styled(body, extra=""):
+def keys_used(body):
     used = set()
     for cls in re.findall(r'class="([^"]+)"', body):
         used.update(cls.split())
+    return {k for k in CSS if k in used}
+
+
+def styled(body, extra=""):
+    used = keys_used(body)
     rules = [BASE] + [css for k, css in CSS.items() if k in used] + ([extra] if extra else [])
     return "<style>" + "".join(rules) + "</style>"
 
@@ -392,13 +397,13 @@ def hbars(data, vmax, fmt, subject=(), point=(), red=()):
 class Book:
     def __init__(self):
         self.files, self.specs, self.plates, self.static = {}, {}, {}, set()
+        self.raw, self.plate_css = {}, ""
 
     def add(self, sid, body, *, alt, illustrative=False, readable=False, interactive=False, notes="", extra_css="", width=None):
         need(sid not in self.files, f"duplicate specimen {sid}")
         body = re.sub(r">\s+<", "><", body.strip())
-        self.files[sid] = (f"<!-- {sid}: Oath & Action guide, Edition 06, chapter 14. Editor, {WRITTEN}. Written by "
-                           f"work/build/scripts/phase-3/phase3_ch14_rules_build.py. -->\n" + styled(body, extra_css)
-                           + f'\n<div class="p">{body}</div>\n')
+        self.raw[sid] = (body, extra_css)
+        self.files[sid] = self.fragment(sid, styled(body, extra_css))
         charts = re.findall(r'data-oa-chart="([^"]+)"', body)
         for c in charts:
             need(c in self.specs, f"{sid} places chart {c}, which has no spec")
@@ -413,6 +418,23 @@ class Book:
             m["charts"] = charts
         self.plates[sid] = m
         return sid
+
+    def fragment(self, sid, style):
+        body = self.raw[sid][0]
+        return (f"<!-- {sid}: Oath & Action guide, Edition 06, chapter 14. Editor, {WRITTEN}. Written by "
+                f"work/build/scripts/phase-3/phase3_ch14_rules_build.py. -->\n" + style + f'\n<div class="p">{body}</div>\n')
+
+    def finish(self):
+        """ED-E13 (D3-655): the base block and every style rule two or more plates use print once, in 14-chapter.json's
+        plate_css, which the guide scopes to each stage of chapter 14 as it scopes a plate's own style. Each plate keeps
+        the rules only it uses, in the same order, so no plate's cascade changes."""
+        used = {sid: keys_used(body) for sid, (body, _) in self.raw.items()}
+        count = Counter(k for ks in used.values() for k in ks)
+        shared = [k for k in CSS if count[k] >= 2]
+        self.plate_css = BASE + "".join(CSS[k] for k in shared)
+        for sid, (body, extra) in self.raw.items():
+            own = [CSS[k] for k in CSS if k in used[sid] and k not in shared] + ([extra] if extra else [])
+            self.files[sid] = self.fragment(sid, ("<style>" + "".join(own) + "</style>") if own else "")
 
     def plate(self, sid, caption):
         need(sid in self.plates, f"no plate {sid}")
@@ -847,22 +869,28 @@ def rule_14_6(B):
     return entry(
         "14.6", "Spend the view’s one red on the point the title names.",
         ["Rule 05.3 gives each view one working red and says which job claims it first. In a chart, the red goes to the one point, bar or "
-         "line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Every other mark takes "
+         "line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Marks the title names "
+         "together, such as the bars of one age band, share the red. Every other mark takes "
          "the light fill on Newsprint and the context ink on Charcoal (Rule 05.7).",
          "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step "
          "the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber "
          "whose majority readers know, an election result, money spent to elect a candidate and a policy readers link to one party all "
          "carry that tie, "
-         "and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7). Red never codes a series, a group or a step on a scale."],
+         "and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7). A title that names two marks in two roles, such as the most "
+         "and the least, sets both in Charcoal the same way, since two reds would split the reader’s first look. Red never codes a series, "
+         "a group, a step on a scale or a sign, such as a deficit or a loss."],
         ["One red mark tells a reader where to look first, and the title tells them why. A second red mark splits their attention, and red "
          "that codes a group reads as a warning about that group."],
         [("The point", "Pillar Red with a 1 px Charcoal keyline", "oa.chart.color.point.onNewsprint"),
          ("Its label", "Beside the mark, in the text ink"),
-         ("An error, a step or a party tie", "Charcoal at the subject weight, with the label", "oa.chart.color.subject.onNewsprint"),
-         ("Red never", "Codes a series, a group or a step on a scale")],
+         ("An error, a step, a sign or a party tie", "Charcoal at the subject weight, with the label", "oa.chart.color.subject.onNewsprint"),
+         ("Two marks in two roles", "Both in Charcoal at the subject weight, each with its label"),
+         ("A total or national line", "Dashed in the text’s ink, with its own label", "oa.chart.color.label.onNewsprint"),
+         ("Red never", "Codes a series, a group, a step on a scale or a sign, such as a deficit or a loss")],
         ["05.3", "05.5", "05.7", "01.1", "01.2", "14.7"],
         "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; "
-        "where a party tie gives it the subject ink, labels.named does it instead. The kit counts working reds and fails a view with two.",
+        "where the subject ink takes its place, labels.named does it instead, with a list for two marks. The kit counts working reds and "
+        "fails a view with two.",
         B.plate("s-14-6-correct", "The title names Great Smoky Mountains, and its bar alone takes the view’s red, inside its keyline, with "
                                   "every other park in gray."),
         B.plate("s-14-6-failure", fails("14.6", "Red falls on three parks while the title names one, so a reader cannot tell which bar the "
@@ -1530,7 +1558,7 @@ def token_names():
 
 
 def reader_strings(entry_or_chapter):
-    skip = {"notes", "specimen", "charts", "examples", "token", "tokens", "related", "id", "illustrative", "readable"}
+    skip = {"notes", "specimen", "charts", "examples", "token", "tokens", "related", "id", "illustrative", "readable", "plate_css"}
 
     def walk(o, k=None):
         if isinstance(o, str):
@@ -1595,7 +1623,7 @@ def check(entries, chap, B):
                 fails.append(f"{where} cites Rule {m.group(1)}, which no chapter or plan holds")
         if re.search(r"['\"]", re.sub(r"<[^>]+>", "", s)):
             fails.append(f"a straight quote mark in {where}: {s[:60]}")
-    for sid, t in B.files.items():
+    for sid, t in list(B.files.items()) + [("plate_css", B.plate_css)]:
         bare = re.sub(r"var\([^)]*\)", "", t)
         if re.search(r"#[0-9a-fA-F]{3,6}\b|\brgba?\(", bare):
             fails.append(f"{sid}: a literal color")
@@ -1644,10 +1672,13 @@ def main():
         if s and s not in sources:
             sources.append(s)
     chap = chapter(B, sources)
+    B.finish()
+    chap["plate_css"] = B.plate_css
     fails = check(entries, chap, B)
-    weight = sum(len(t.encode()) for t in B.files.values()) + sum(len(json.dumps(s, ensure_ascii=False).encode()) for s in B.specs.values())
-    print(f"14 rules, {len(B.files)} plates, {len(B.specs)} kit specs; fragments and specs {weight:,} bytes before the kit draws; "
-          f"opener {len(B.files['s-14-opener'].encode()):,} bytes")
+    weight = (sum(len(t.encode()) for t in B.files.values()) + sum(len(json.dumps(s, ensure_ascii=False).encode()) for s in B.specs.values())
+              + len(B.plate_css.encode()))
+    print(f"14 rules, {len(B.files)} plates, {len(B.specs)} kit specs; fragments, specs and the shared plate style "
+          f"({len(B.plate_css.encode()):,}) {weight:,} bytes before the kit draws; opener {len(B.files['s-14-opener'].encode()):,} bytes")
     doms = Counter(x["domain"] for en in entries for x in en["examples"])
     print("examples by domain:", dict(sorted(doms.items())))
     if fails:

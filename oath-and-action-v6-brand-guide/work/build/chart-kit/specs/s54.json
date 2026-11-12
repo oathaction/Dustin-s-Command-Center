@@ -1,0 +1,86 @@
+{
+ "kit": 1,
+ "family": "correlation",
+ "dataset": "census-acs-rent-and-income-by-state",
+ "evidence": "association",
+ "evidence_label": "Association",
+ "grade_line": "DRAFT",
+ "title": "DRAFT",
+ "measure_line": "DRAFT",
+ "notes": [
+  "This shows the two move together; it does not show one causes the other."
+ ],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "DRAFT",
+ "table": {
+  "caption": "DRAFT",
+  "columns": [
+   {
+    "field": "name",
+    "label": "State",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "renter_median_income",
+    "label": "Renters’ median income",
+    "format": "dollars"
+   },
+   {
+    "field": "median_gross_rent",
+    "label": "Median gross rent",
+    "format": "dollars"
+   },
+   {
+    "field": "rent_pct_of_income",
+    "label": "Rent as a percent of income",
+    "format": "number:1"
+   },
+   {
+    "field": "rent_pct_of_income_moe",
+    "label": "Margin of error",
+    "format": "number:1"
+   }
+  ]
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D09",
+ "states": [
+  "FL"
+ ],
+ "encode": {
+  "key": "code",
+  "label": "name",
+  "x": "renter_median_income",
+  "y": "median_gross_rent"
+ },
+ "labels": {
+  "named": [
+   "FL",
+   "CA",
+   "HI",
+   "CT",
+   "AZ"
+  ],
+  "reference": "US",
+  "reference_label": "United States",
+  "x_axis": "Renter households’ median income, a year",
+  "y_axis": "Median gross rent, a month"
+ },
+ "formats": {
+  "x": "dollars",
+  "y": "dollars"
+ },
+ "sort": [
+  {
+   "field": "rent_pct_of_income",
+   "order": "desc"
+  }
+ ],
+ "id": "S54",
+ "form": "scatter-named",
+ "tier": "core",
+ "reader_question": "Do rents run higher where renters earn more, and where does rent take the largest share of renters’ income?"
+}

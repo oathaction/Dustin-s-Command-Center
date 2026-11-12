@@ -2,8 +2,8 @@
  "id": "14.6",
  "title": "Spend the view’s one red on the point the title names.",
  "rule": [
-  "Rule 05.3 gives each view one working red and says which job claims it first. In a chart, the red goes to the one point, bar or line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Every other mark takes the light fill on Newsprint and the context ink on Charcoal (Rule 05.7).",
-  "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber whose majority readers know, an election result, money spent to elect a candidate and a policy readers link to one party all carry that tie, and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7). Red never codes a series, a group or a step on a scale."
+  "Rule 05.3 gives each view one working red and says which job claims it first. In a chart, the red goes to the one point, bar or line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Marks the title names together, such as the bars of one age band, share the red. Every other mark takes the light fill on Newsprint and the context ink on Charcoal (Rule 05.7).",
+  "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber whose majority readers know, an election result, money spent to elect a candidate and a policy readers link to one party all carry that tie, and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7). A title that names two marks in two roles, such as the most and the least, sets both in Charcoal the same way, since two reds would split the reader’s first look. Red never codes a series, a group, a step on a scale or a sign, such as a deficit or a loss."
  ],
  "use_when": null,
  "use_instead": [],
@@ -27,7 +27,7 @@
   "01.2",
   "14.7"
  ],
- "builders": "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; where a party tie gives it the subject ink, labels.named does it instead. The kit counts working reds and fails a view with two.",
+ "builders": "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; where the subject ink takes its place, labels.named does it instead, with a list for two marks. The kit counts working reds and fails a view with two.",
  "specs": [
   {
    "label": "The point",
@@ -39,13 +39,22 @@
    "value": "Beside the mark, in the text ink"
   },
   {
-   "label": "An error, a step or a party tie",
+   "label": "An error, a step, a sign or a party tie",
    "value": "Charcoal at the subject weight, with the label",
    "token": "oa.chart.color.subject.onNewsprint"
   },
   {
+   "label": "Two marks in two roles",
+   "value": "Both in Charcoal at the subject weight, each with its label"
+  },
+  {
+   "label": "A total or national line",
+   "value": "Dashed in the text’s ink, with its own label",
+   "token": "oa.chart.color.label.onNewsprint"
+  },
+  {
    "label": "Red never",
-   "value": "Codes a series, a group or a step on a scale"
+   "value": "Codes a series, a group, a step on a scale or a sign, such as a deficit or a loss"
   }
  ],
  "correct": {

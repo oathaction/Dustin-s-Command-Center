@@ -1,0 +1,94 @@
+/* Population pyramid (coverage plan 3.5, extended; S53). A population by single year of age and by sex: one thin bar a
+ * year of age for each side, the youngest at the bottom, one side growing left from the center and the other right on one
+ * scale, ages labeled down the center. A band of ages the title names (labels.band) takes the subject ink, or the red
+ * point, with its words beside it; every other age takes the light fill. Each side is named over its half; the scale runs
+ * along the bottom of each half, mirrored.
+ * encode: age (number), sex (category), value (number).
+ * labels: left (the sex value drawn on the left), right (the one drawn on the right), sides ({value: printed name}),
+ * band ({from, to, words, point}: the ages in ink, their words beside the band; point true draws them in the red point),
+ * age_step (ages labeled every this many years; default 10), top (words for the top age, such as "100+"), axis (words
+ * under the scale).
+ * formats: value (the band's words and the scale), tick. On a phone the same arrangement draws narrower.
+ * Maker B, round 2. */
+(function (K) {
+  'use strict';
+  K.register_chart({
+    form: 'population-pyramid',
+    name: 'Population Pyramid',
+    family: 'distribution-and-density',
+    encode: { age: 'number', sex: 'category', value: 'number' },
+    labels: ['left', 'right', 'sides', 'band', 'age_step', 'top', 'axis'],
+    phone: 'same',
+    draw: function (c) {
+      var P = K.parts, L = c.labels, f = c.spec.formats || {}, W = c.width, ph = c.phone;
+      var ea = c.field('age'), es = c.field('sex'), ev = c.field('value');
+      var tick = c.size('tick'), size = c.size('label'), ft = f.tick || 'millions-value:1';
+      var left = String(L.left), right = String(L.right), sides = L.sides || {};
+      var rowsL = c.rows.filter(function (r) { return String(r[es]) === left; }), rowsR = c.rows.filter(function (r) { return String(r[es]) === right; });
+      if (!rowsL.length || !rowsR.length) c.warn('labels.left and labels.right must each name a sex value in the rows');
+      var ages = c.rows.map(function (r) { return r[ea]; }), amin = Math.min.apply(null, ages), amax = Math.max.apply(null, ages);
+      var vmax = Math.max.apply(null, rowsL.concat(rowsR).map(function (r) { return r[ev]; }));
+      var band = L.band || null, inband = function (r) { return band && r[ea] >= band.from && r[ea] <= band.to; };
+      var bandRole = band && band.point ? 'point' : 'subject', other = c.ground === 'charcoal' ? 'context' : 'light-fill';
+      // the center column for the ages, and the two halves
+      var aw = Math.ceil(Math.max(c.measure(String(amax), 'tick'), L.top ? c.measure(L.top, 'tick') : 0)) + (ph ? 12 : 20);
+      var cx = W / 2, half = cx - aw / 2;
+      // the scale ends at the next half step past the largest bar, so the bars fill their halves
+      var nk = K.nice(0, vmax, ph ? 2 : 3), hi = Math.ceil(vmax / (nk.step / 2) - 1e-9) * nk.step / 2, ticks = K.ticks(0, hi, 0, nk.step);
+      var sc = K.scale.linear([0, hi], [0, half - 4]);
+      var y = 0;
+      // the sides' names over their halves
+      var nl = sides[left] !== undefined ? sides[left] : left, nr = sides[right] !== undefined ? sides[right] : right;
+      c.text(cx - aw / 2 - 4, size, nl, { role: 'label', weight: 700, anchor: 'end' });
+      c.text(cx + aw / 2 + 4, size, nr, { role: 'label', weight: 700 });
+      y = size + 10;
+      var n = amax - amin + 1, bh = ph ? 3 : 4, top = y, bot = top + n * bh;
+      var ay = function (a) { return bot - (a - amin + 1) * bh; };
+      // gridlines at the scale's ticks, on both halves
+      ticks.forEach(function (t) {
+        if (!t) return;
+        c.line(cx - aw / 2 - sc(t), top, cx - aw / 2 - sc(t), bot, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
+        c.line(cx + aw / 2 + sc(t), top, cx + aw / 2 + sc(t), bot, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
+      });
+      // the bars: the left side grows left from the center column's edge, the right side right
+      var draw = function (r, dir) {
+        var role = inband(r) ? bandRole : other, w = sc(r[ev]), x = dir < 0 ? cx - aw / 2 - w : cx + aw / 2;
+        var kl = role === 'point' && c.ground !== 'charcoal' ? { stroke: 'point-keyline', width: c.t('keyline') } : {};
+        c.rect(x, ay(r[ea]), w, bh, Object.assign({ fill: role, kind: 'bar', axis: 'x', zero: dir < 0 ? cx - aw / 2 : cx + aw / 2, data: { key: r[es] + '|' + r[ea], field: ev, value: r[ev] } }, kl));
+      };
+      rowsL.forEach(function (r) { draw(r, -1); });
+      rowsR.forEach(function (r) { draw(r, 1); });
+      c.line(cx - aw / 2, top, cx - aw / 2, bot, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });
+      c.line(cx + aw / 2, top, cx + aw / 2, bot, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });
+      // the ages down the center
+      var step = L.age_step || 10;
+      for (var a = amin; a <= amax; a += step) {
+        var words = a === amax && L.top ? L.top : String(a);
+        c.text(cx, ay(a) + bh / 2 + tick * 0.35, words, { role: 'tick', anchor: 'middle' });
+      }
+      // the band's words at the left edge, level with the band, with a bracket beside the band's ages
+      if (band && band.words) {
+        var bt = ay(band.to), bb = ay(band.from) + bh, by = (bt + bb) / 2;
+        var bl = rowsL.filter(inband), wmax = Math.max.apply(null, bl.map(function (r) { return sc(r[ev]); }));
+        var ex = cx - aw / 2 - wmax - 8, lh2 = Math.round(size * 1.2);
+        c.line(ex, bt, ex, bb, { stroke: 'label', width: c.t('line-hairline'), mark: false });
+        var lines = c.wrap(band.words, 'label', Math.max(40, ex - 10), 700);
+        lines.forEach(function (ln, i) { c.text(0, by - (lines.length - 1) * lh2 / 2 + size * 0.35 + i * lh2, ln, { role: 'label', weight: 700 }); });
+      }
+      // the scale along the bottom of each half, mirrored
+      var sy = bot + tick + 8;
+      ticks.forEach(function (t) {
+        if (!t) return;
+        var w = K.fmt(t, ft);
+        [cx - aw / 2 - sc(t), cx + aw / 2 + sc(t)].forEach(function (x, i) {
+          c.line(x, bot, x, bot + 4, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });
+          var tw = c.measure(w, 'tick'), an = x - tw / 2 < 0 ? 'start' : x + tw / 2 > W ? 'end' : 'middle';
+          c.text(an === 'start' ? 0 : an === 'end' ? W : x, sy, w, { role: 'tick', anchor: an });
+        });
+      });
+      var end = sy + 4;
+      if (L.axis) { var xb = c.text(cx, sy + tick + 10, L.axis, { role: 'tick', weight: 600, anchor: 'middle', max: W }); end = xb.bottom; }
+      c.height(end + 2);
+    }
+  });
+})(globalThis.OAChart);

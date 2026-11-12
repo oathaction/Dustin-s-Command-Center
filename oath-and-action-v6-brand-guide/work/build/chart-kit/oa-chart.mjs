@@ -678,6 +678,38 @@ async function self_test() {
       console.log(`${hit ? 'caught' : 'MISSED'} ${name}${hit ? '' : ': ' + JSON.stringify(r2.faults.slice(0, 3))}`);
       if (!hit) bad++;
     }
+    // ruling (b): the total line dashed 5 and 3 in the text's ink, the total point an open ring in it
+    {
+      const ct = mk({});
+      P.total_line(ct, 0, 50, 300, 50); P.total_ring(ct, 40, 40, 6.5, { data: { key: 'US', field: 'v', value: 1 } });
+      const okt = /oac-s-label/.test(ct._els[0]) && /stroke-dasharray="5 3"/.test(ct._els[0]) && /stroke-width="2"/.test(ct._els[0]) && /oac-f-surface/.test(ct._els[1]) &&
+        /oac-s-label/.test(ct._els[2]) && ct.marks.length === 1 && ct.marks[0].data.key === 'US';
+      console.log(`${okt ? 'pass' : 'FAIL'} total_line draws the dashed total in the text's ink, total_ring an open ring`);
+      if (!okt) bad++;
+    }
+    // labels in small areas (fit_label) and labels beside points that keep clear of each other (place_labels)
+    {
+      const cf = mk({});
+      const inside = (t, b) => t.x >= b.x - 0.01 && t.x + t.w <= b.x + b.w + 0.01 && t.y >= b.y - 0.01 && t.y + t.h <= b.y + b.h + 0.01;
+      const b1 = { x: 0, y: 0, w: 200, h: 60 }, b2 = { x: 220, y: 0, w: 40, h: 18 }, b3 = { x: 0, y: 80, w: 160, h: 60 };
+      const t1 = P.fit_label(cf, b1, 'National Defense'), n0 = cf._els.length, t2 = P.fit_label(cf, b2, 'Social Security'), t3 = P.fit_label(cf, b3, 'Veterans Benefits and Services', { fill: 'label-on-subject' });
+      const ok7 = t1 && inside(t1, b1) && t1.size === cf.size('label') && t2 === null && cf._els.length === n0 + 1 && t3 && inside(t3, b3) && /<tspan/.test(cf._els[cf._els.length - 1]) && /oac-f-label-on-subject/.test(cf._els[cf._els.length - 1]);
+      console.log(`${ok7 ? 'pass' : 'FAIL'} fit_label sets words inside an area on one or two lines, and draws nothing where they do not fit`);
+      if (!ok7) bad++;
+      const cp = mk({});
+      const pts = [{ x: 100, y: 100, r: 6.5, words: 'Massachusetts' }, { x: 112, y: 104, r: 6.5, words: 'Connecticut' }, { x: 104, y: 92, r: 6.5, words: 'New Jersey' }, { x: 395, y: 150, r: 6.5, words: 'Hawaii' },
+        { x: 106, y: 98, r: 6.5, words: 'Rhode Island' }, { x: 98, y: 108, r: 6.5, words: 'New York' }, { x: 110, y: 96, r: 6.5, words: 'Maryland' }, { x: 102, y: 102, r: 6.5, words: 'Delaware' }];
+      pts.forEach(p => cp.circle(p.x, p.y, p.r, { fill: 'subject', data: { key: p.words } }));
+      const pl = P.place_labels(cp, pts, { top: 0, bottom: 260 });
+      const g = K.guard(cp, 400, 260);
+      const hw = pl.placed.find(x => x.item.words === 'Hawaii');
+      const ok8 = pl.placed.length >= 5 && pl.placed.length + pl.unplaced.length === pts.length && !g.length && hw && hw.box.x + hw.box.w <= 395 &&
+        pl.placed.every(x => pts.every(q => q === x.item || !(x.box.x < q.x + q.r && q.x - q.r < x.box.x + x.box.w && x.box.y < q.y + q.r && q.y - q.r < x.box.y + x.box.h)));
+      const cp2 = mk({}); const pl2 = P.place_labels(cp2, pts, { top: 0, bottom: 260, leaders: false });
+      const ok8b = pl2.placed.length < pl.placed.length || pl2.unplaced.length > 0;
+      console.log(`${ok8 && ok8b ? 'pass' : 'FAIL'} place_labels keeps labels clear of each other, of other dots and of the edge, uses leaders past the first ring, and returns those it cannot place (${pl.placed.length} of ${pts.length} placed; ${pl2.placed.length} without leaders)${ok8 ? '' : ': ' + JSON.stringify(g.slice(0, 2))}`);
+      if (!(ok8 && ok8b)) bad++;
+    }
     // R2-2: a derived table names its sources and method, and the line printed names each public source's publisher
     {
       const td = fs.mkdtempSync(path.join(process.env.TMPDIR || '/tmp', 'oa-kit-derived-'));

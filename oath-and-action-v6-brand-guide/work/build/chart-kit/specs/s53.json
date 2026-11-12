@@ -1,0 +1,78 @@
+{
+ "kit": 1,
+ "id": "S53",
+ "form": "population-pyramid",
+ "family": "distribution-and-density",
+ "tier": "extended",
+ "dataset": "census-pep-population-by-age-sex",
+ "where": {
+  "sex": [
+   "male",
+   "female"
+  ]
+ },
+ "reader_question": "How many people are near the ages of Social Security and Medicare?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "DRAFT",
+ "title": "DRAFT",
+ "measure_line": "DRAFT",
+ "notes": [],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "DRAFT",
+ "table": {
+  "caption": "Resident population by age and sex, July 1, 2025",
+  "pivot": {
+   "row": "age",
+   "column": "sex",
+   "value": "population_july_2025"
+  },
+  "columns": [
+   {
+    "field": "age",
+    "label": "Age",
+    "format": "integer",
+    "row_header": true
+   },
+   {
+    "field": "sex",
+    "label": "Sex",
+    "format": "text"
+   },
+   {
+    "field": "population_july_2025",
+    "label": "People",
+    "format": "integer"
+   }
+  ]
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D08",
+ "states": [],
+ "encode": {
+  "age": "age",
+  "sex": "sex",
+  "value": "population_july_2025"
+ },
+ "labels": {
+  "left": "male",
+  "right": "female",
+  "sides": {
+   "male": "Men",
+   "female": "Women"
+  },
+  "band": {
+   "from": 62,
+   "to": 67,
+   "words": "Ages 62 to 67"
+  },
+  "top": "100+",
+  "axis": "Millions of people"
+ },
+ "formats": {
+  "value": "millions:1",
+  "tick": "millions-value:1"
+ }
+}

@@ -1,0 +1,81 @@
+{
+ "kit": 1,
+ "id": "S58",
+ "form": "line-confidence-band",
+ "family": "uncertainty-and-estimates",
+ "tier": "core",
+ "dataset": "census-cps-median-household-income",
+ "reader_question": "How has the typical household’s income changed, and how sure is each year’s figure?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: a Census Bureau survey",
+ "title": "DRAFT",
+ "measure_line": "Median household income in 2025 dollars, each year from 1967 to 2025, United States; the band spans each year’s 90 percent margin of error.",
+ "notes": [],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "DRAFT",
+ "table": {
+  "caption": "Median household income, 2025 dollars",
+  "columns": [
+   {
+    "field": "year",
+    "label": "Year",
+    "format": "year",
+    "row_header": true
+   },
+   {
+    "field": "footnotes",
+    "label": "Change in the survey",
+    "format": "text",
+    "words": {
+     "7": "Earlier income questions",
+     "6": "New income questions",
+     "5": "New processing system"
+    }
+   },
+   {
+    "field": "median_income",
+    "label": "Median income",
+    "format": "dollars"
+   },
+   {
+    "field": "median_moe",
+    "label": "Margin of error",
+    "format": "dollars"
+   }
+  ]
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D08",
+ "states": [],
+ "encode": {
+  "x": "year",
+  "y": "median_income",
+  "margin": "median_moe",
+  "break": "footnotes"
+ },
+ "labels": {
+  "break_end": "7",
+  "break_start": [
+   "6",
+   "5"
+  ],
+  "end": "{y}, ±{margin}"
+ },
+ "annotations": [
+  {
+   "at": {
+    "x": 2013,
+    "break": "7"
+   },
+   "text": "New questions",
+   "place": "below"
+  }
+ ],
+ "formats": {
+  "y": "dollars",
+  "tick": "dollars"
+ }
+}

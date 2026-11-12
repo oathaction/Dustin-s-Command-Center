@@ -1,10 +1,11 @@
 """Write chapter 15, Systems graphics: its words, its plates and its manifest.
 
-Oath & Action Edition 06, Phase 3, round 1. Systems designer, November 12, 2026. The brief is
-work/handoffs/phase-3/20261112_Phase-3-Round-1-Brief.md (systems designer); the rule list the main session fixed (R7)
-is in work/handoffs/phase-3/20261112_Round-1-Systems-Designer-Notes.md, section "Rule list". Round 1 builds the
-grammar, Rules 15.1 to 15.10, and worked examples 1 and 2, Rules 15.13 (Loop R1) and 15.14 (Loop R8), with the opener.
-The rules of later rounds are listed in PLANNED and join as each round builds them.
+Oath & Action Edition 06, Phase 3, rounds 1 and 2. Systems designer, November 12, 2026. The briefs are
+work/handoffs/phase-3/20261112_Phase-3-Round-1-Brief.md and 20261112_Phase-3-Round-2-Brief.md (systems designer); the
+rule list the main session fixed (R7) is in work/handoffs/phase-3/20261112_Round-1-Systems-Designer-Notes.md, section
+"Rule list". Round 1 built the grammar, Rules 15.1 to 15.10, and worked examples 1 and 2, Rules 15.13 (Loop R1) and
+15.14 (Loop R8), with the opener. Round 2 (DR-244) builds the reforms on the drawing, Rules 15.11 and 15.12, and worked
+examples 3 to 6, Rules 15.15 to 15.18. The rules of later rounds are listed in PLANNED and join as each round builds them.
 
 Usage:
     python3 -I work/build/scripts/phase-3/phase3_ch15_build.py [--check-only]
@@ -33,7 +34,8 @@ word, no studio word or decision code in reader text, titles of fifteen words or
 "Fails Rule 15.N.", failure plates with the do-not-publish band), no literal color, every font size from a token,
 every atlas ID in a chip present in the model, every value the words print matched to the model, loop kind against
 the count of minus signs on every numbered loop, no authority connection in any loop, Rule 01.9 over the example log,
-and the chapter's bytes against round 1's 0.25 MB.
+red only on a reform's own targets, no effect total, every route dated or "Not checked", and the chapter's bytes
+against its 0.60 MB ceiling.
 """
 import html
 import importlib.util
@@ -49,7 +51,8 @@ CHAPTERS = ROOT / "work/build/guide/chapters"
 SPECIMENS = ROOT / "work/build/guide/specimens"
 MAKER = "systems-graphics"
 WRITTEN = "November 12, 2026"
-ROUND_STOP = 250_000          # the brief: chapter 15 under 0.25 MB at round 1's end (guide_charts.MB is 1,000,000)
+ROUND_STOP = 600_000          # chapter 15's ceiling, 0.60 MB (guide_charts.MB is 1,000,000); the generator's own count of
+                              # its fragments and chapter file stays under it, and the strict build reports the placed bytes
 
 sys.dont_write_bytecode = True
 _c13 = importlib.util.spec_from_file_location("phase3_ch13_build", ROOT / "work/build/scripts/phase-3/phase3_ch13_build.py")
@@ -67,16 +70,11 @@ need(all(k in _SHELL for k in ('"plate_css"', '"wide_px"', '"frame_container"'))
 FC = "Failure case: do not publish. "
 
 # ---------------------------------------------------------------------------------------------------------------
-# The rule list the main session fixed (R7). Round 1 builds BUILT; the rest wait for their rounds.
+# The rule list the main session fixed (R7). Rounds 1 and 2 build BUILT; the rest wait for their rounds.
 # ---------------------------------------------------------------------------------------------------------------
-BUILT = ["15.1", "15.2", "15.3", "15.4", "15.5", "15.6", "15.7", "15.8", "15.9", "15.10", "15.13", "15.14"]
-PLANNED = {"15.11": "Place a reform on the exact connections and variables it targets, with its band.",
-           "15.12": "Grade the evidence for the problem and for the remedy apart.",
-           "15.15": "Follow a variable two loops share through each loop in turn.",
-           "15.16": "Show a reform’s four effects side by side, with each route’s check date.",
-           "15.17": "Draw who holds power over each level in one authority diagram.",
-           "15.18": "Print a conceptual loop’s missing chain beside its grade.",
-           "15.19": "Let a reader step through a loop one connection at a time, with a still sequence.",
+BUILT = ["15.1", "15.2", "15.3", "15.4", "15.5", "15.6", "15.7", "15.8", "15.9", "15.10", "15.11", "15.12", "15.13",
+         "15.14", "15.15", "15.16", "15.17", "15.18"]
+PLANNED = {"15.19": "Let a reader step through a loop one connection at a time, with a still sequence.",
            "15.20": "Let a reader choose a reform and see its targets, effects and assumptions.",
            "15.21": "Give every control the model’s own steps, and no slider for a strength.",
            "15.22": "Draw a route to change as its whole workflow, through to reversal.",
@@ -222,15 +220,23 @@ def cut(pts, s0, s1):
 MARK_RE = re.compile(r'<path class="ak-mark" d="([^"]*)"[^>]*/>')
 
 
-def conn(pts, grade=None, sign=None, delay=None, authority=False, hollow=False, w=LW):
+RED = ' data-red="working" data-red-job="where a reform acts"'   # Rule 12.5's marker, counted by the guide check
+
+
+def conn(pts, grade=None, sign=None, delay=None, authority=False, hollow=False, w=LW, target=False):
     """One connection along pts, tail to tip, drawn by the atlas build's wire_marks: the line in its grade's pattern or
     hollow, delay ticks after the tail, the sign tag, the arrowhead or the authority diamond. A patterned line with ticks
-    runs solid for LEAD px, then leaves its pattern's own gap and starts the fitted pattern on ink (D3-105)."""
+    runs solid for LEAD px, then leaves its pattern's own gap and starts the fitted pattern on ink (D3-105).
+    target=True draws Rule 12.5's red target: wire_marks' lit marks, a 4 px red line on a 6 px ink case with the 6 px
+    tag, ticks and arrowhead, which the chapter's block shows only inside a group of class rt (round 2)."""
     t = "solid" if hollow else tex(grade)
+    if target:
+        need(t == "solid" and not authority, "a red target here draws a solid connection; a patterned one needs its lead-in at 6 px")
     marks, body, _ = BS.wire_marks(pts, grade or "documented", sign if sign in ("+", "-") else None, delay, w,
-                                   lit=False, sketch=hollow, authority=authority)
-    marks = re.sub(r'<path class="ak-case"[^>]*/>', "", marks)
-    marks = (marks.replace(' fill="none"', "").replace(' stroke-linecap="butt"', "").replace('<g class="lo">', "<g>")
+                                   lit=target, sketch=hollow, authority=authority)
+    if not target:
+        marks = re.sub(r'<path class="ak-case"[^>]*/>', "", marks).replace('<g class="lo">', "<g>")
+    marks = (marks.replace(' fill="none"', "").replace(' stroke-linecap="butt"', "")
              .replace('class="rail"', 'class="rl"').replace(' stroke-width="1"', ""))
     if not hollow and t != "solid":
         arr, cap = BS.pattern(t, w)
@@ -292,16 +298,18 @@ def loop_id(x, y, lid, kind, two=False):
             f'<tspan class="kd"> {e(kind)}</tspan></text>')
 
 
-def verb_at(pts, sign, words, side):
-    """A connection's words beside its tag: above or below a level run, left or right of an upright one."""
+def verb_at(pts, sign, words, side, big=False):
+    """A connection's words beside its tag: above or below a level run, left or right of an upright one. big leaves room
+    for a red target's 6 px tag, 22 px tall where the 2 px tag is 16."""
     x, y, ux, uy = anchor_at(pts, sign)
+    k = 3 if big else 0
     if side == "above":
-        return lines(x, y - 15 - (len(words) - 1) * LH, words, "v")
+        return lines(x, y - 15 - k - (len(words) - 1) * LH, words, "v")
     if side == "below":
-        return lines(x, y + 26, words, "v")
+        return lines(x, y + 26 + k, words, "v")
     if side == "right":
-        return lines(x + 15, y + 5 - (len(words) - 1) * LH / 2, words, "v", "start")
-    return lines(x - 15, y + 5 - (len(words) - 1) * LH / 2, words, "v", "end")
+        return lines(x + 15 + k, y + 5 - (len(words) - 1) * LH / 2, words, "v", "start")
+    return lines(x - 15 - k, y + 5 - (len(words) - 1) * LH / 2, words, "v", "end")
 
 
 def pill_w(label, pw=PW):
@@ -313,11 +321,12 @@ class Pill:
     """A variable as a pill with its short name inside (System 1's station_block, DR-36), or a thin pill for a station
     that is no numbered variable (a conceptual loop's)."""
 
-    def __init__(self, label, cx, cy, pw=PW, thin=False, cls=""):
+    def __init__(self, label, cx, cy, pw=PW, thin=False, cls="", red=False, shared=False):
         pw = pill_w(label, pw)
         self.rows = wrap(label, pw - 2 * PAD)
         self.h = max(len(self.rows) * LH + 22, 44)
         self.cx, self.cy, self.pw, self.thin, self.cls = cx, cy, pw, thin, cls
+        self.red, self.shared = red, shared
 
     @property
     def top(self):
@@ -336,10 +345,13 @@ class Pill:
         return self.cx + self.pw / 2
 
     def svg(self):
-        c = "pl" + (" th" if self.thin else "") + (" " + self.cls if self.cls else "")
+        """A red target pill (Rule 12.5) takes a 3 px red outline under data-red; a shared variable (Rule 15.15) is
+        filled in ink with its name in the surface color, the one fill a pill takes."""
+        c = ("pl" + (" th" if self.thin else "") + (" rp" if self.red else "") + (" sh" if self.shared else "")
+             + (" " + self.cls if self.cls else ""))
         ty = self.cy - (len(self.rows) - 1) * LH / 2 + 15 * 0.35
-        return (f'<rect class="{c}" x="{F(self.left)}" y="{F(self.top)}" width="{F(self.pw)}" height="{F(self.h)}" rx="{F(self.h / 2)}"/>'
-                + lines(self.cx, ty, self.rows, "t"))
+        return (f'<rect class="{c}" x="{F(self.left)}" y="{F(self.top)}" width="{F(self.pw)}" height="{F(self.h)}" '
+                f'rx="{F(self.h / 2)}"{RED if self.red else ""}/>' + lines(self.cx, ty, self.rows, "t ts" if self.shared else "t"))
 
 
 def svg_wrap(body, h, label=None, w=W):
@@ -358,19 +370,26 @@ def step_words(n, lid, extra=()):
     return [f"{lead}{word}", *extra]
 
 
+def wr(m, target=False):
+    """A connection's group: a red target's carries Rule 12.5's data-red and the class the chapter's block shows it by."""
+    return f'<g class="wr rt"{RED}>{m}</g>' if target else f'<g class="wr">{m}</g>'
+
+
 def two_loop(codes, lids, numbered=True, weakest=None, inside=None, labels=None, thin=False, grades=None, widths=None,
-             hollow=False, scale=None, a_in=0, top=0):
+             hollow=False, scale=None, a_in=0, top=0, targets=(), shared=()):
     """A loop of two variables, side by side, its first step arching over the top and its second under the bottom
     (System 1's n == 2 cycle, drawn for the 296 px artboard). inside is (loop ID, kind word), set on one line inside the
-    loop; a_in moves the second step's arrival along the first pill, to free room under it. Returns (body, h, pills)."""
+    loop; a_in moves the second step's arrival along the first pill, to free room under it. targets names the
+    connections and variables a reform acts on (Rule 12.5's red); shared names a variable another loop holds too
+    (Rule 15.15). Returns (body, h, pills)."""
     labels = labels or [short(c) for c in codes]
     pw = [pill_w(lb, PW if not scale else PW * sc) for lb, sc in zip(labels, scale or [1, 1])]
     rows_h = [max(len(wrap(lb, p - 2 * PAD)) * LH + 22, 44) for lb, p in zip(labels, pw)]
     wrows = [len(step_words(1, x, ("weakest step",) if weakest == i else ())) if x else 1 for i, x in enumerate(lids)]
-    run_y = top + 30 + (wrows[0] - 1) * LH
+    run_y = top + 30 + (wrows[0] - 1) * LH + (3 if lids[0] in targets else 0)
     cy = run_y + RISE + max(rows_h) / 2
-    a = Pill(labels[0], 2 + pw[0] / 2, cy, pw[0], thin)
-    b = Pill(labels[1], W - 2 - pw[1] / 2, cy, pw[1], thin)
+    a = Pill(labels[0], 2 + pw[0] / 2, cy, pw[0], thin, red=codes[0] in targets, shared=codes[0] in shared)
+    b = Pill(labels[1], W - 2 - pw[1] / 2, cy, pw[1], thin, red=codes[1] in targets, shared=codes[1] in shared)
     out = []
     bot_y = max(a.bot, b.bot) + RISE
     p1 = [(a.cx, a.top - 2), (a.cx, run_y), (b.cx, run_y), (b.cx, b.top - 2)]
@@ -379,11 +398,12 @@ def two_loop(codes, lids, numbered=True, weakest=None, inside=None, labels=None,
         l = link(lid) if lid else {"polarity": None, "evidence": None, "delay": None}
         g = (grades or {}).get(i, l["evidence"])
         w = (widths or {}).get(i, LW)
-        m, _ = conn(pts, g, l["polarity"], l["delay"], hollow=hollow, w=w)
-        out.append(f'<g class="wr">{m}</g>')
+        tg = bool(lid) and lid in targets
+        m, _ = conn(pts, g, l["polarity"], l["delay"], hollow=hollow, w=w, target=tg)
+        out.append(wr(m, tg))
         if lid:
             extra = ("weakest step",) if weakest == i else ()
-            out.append(verb_at(pts, l["polarity"], step_words(i + 1 if numbered else 0, lid, extra), side))
+            out.append(verb_at(pts, l["polarity"], step_words(i + 1 if numbered else 0, lid, extra), side, big=tg))
     out.append(a.svg() + b.svg())
     if inside:
         out.append(loop_id(W / 2, run_y + 28, *inside, two=True))
@@ -391,17 +411,20 @@ def two_loop(codes, lids, numbered=True, weakest=None, inside=None, labels=None,
     return "".join(out), h, (a, b)
 
 
-def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=None, hollow=False, labels=None, thin=False):
+def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=None, hollow=False, labels=None, thin=False,
+               targets=(), shared=(), top=0):
     """A loop of three variables: the first centered at the top, the second below it to the right and the third to the
-    left. Steps 1 and 3 run straight between overlapping pills; step 2 arches under the bottom row. Returns (body, h)."""
+    left. Steps 1 and 3 run straight between overlapping pills; step 2 arches under the bottom row. targets and shared
+    as two_loop takes them. Returns (body, h)."""
     labels = labels or [short(c) for c in codes]
     hs = [max(len(wrap(lb, pill_w(lb) - 2 * PAD)) * LH + 22, 44) for lb in labels]
-    y1 = 4 + hs[0] / 2
+    y1 = top + 4 + hs[0] / 2
     gap = 108
     y2 = y1 + hs[0] / 2 + gap + max(hs[1], hs[2]) / 2
-    p1 = Pill(labels[0], W / 2, y1, PW, thin)
-    p2 = Pill(labels[1], W - 2 - pill_w(labels[1]) / 2, y2, PW, thin)
-    p3 = Pill(labels[2], 2 + pill_w(labels[2]) / 2, y2, PW, thin)
+    kw_ = [dict(red=c in targets, shared=c in shared) for c in codes]
+    p1 = Pill(labels[0], W / 2, y1, PW, thin, **kw_[0])
+    p2 = Pill(labels[1], W - 2 - pill_w(labels[1]) / 2, y2, PW, thin, **kw_[1])
+    p3 = Pill(labels[2], 2 + pill_w(labels[2]) / 2, y2, PW, thin, **kw_[2])
     xr = (max(p1.left, p2.left) + min(p1.right, p2.right)) / 2
     xl = (max(p1.left, p3.left) + min(p1.right, p3.right)) / 2
     bot_y = max(p2.bot, p3.bot) + RISE
@@ -412,11 +435,12 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
     for i, ((pts, side), lid) in enumerate(zip(paths, lids)):
         l = link(lid) if lid else {"polarity": None, "evidence": None, "delay": None}
         g = (grades or {}).get(i, l["evidence"])
-        m, _ = conn(pts, g, l["polarity"], l["delay"], hollow=hollow)
-        out.append(f'<g class="wr">{m}</g>')
+        tg = bool(lid) and lid in targets
+        m, _ = conn(pts, g, l["polarity"], l["delay"], hollow=hollow, target=tg)
+        out.append(wr(m, tg))
         if lid:
             extra = ("weakest step",) if weakest == i else ()
-            out.append(verb_at(pts, l["polarity"], step_words(i + 1 if numbered else 0, lid, extra), side))
+            out.append(verb_at(pts, l["polarity"], step_words(i + 1 if numbered else 0, lid, extra), side, big=tg))
     out.append(p1.svg() + p2.svg() + p3.svg())
     if inside:
         out.append(loop_id(W / 2, max(p2.bot, p3.bot) + 28, *inside))
@@ -429,23 +453,25 @@ GAP4 = 112                # the rise between a four-variable loop's two rows: th
 INNER = 8                 # a side step's line stands 8 px in from where the pill's rounded end meets its flat edge
 
 
-def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None):
+def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None, targets=(), shared=(), labels=None):
     """A loop of four variables on a square, clockwise from the top left: step 1 arches over the top and step 3 under
     the bottom, as two_loop draws a two-variable loop; steps 2 and 4 run straight down the right and up the left, each on
     its pills' flat edges near their inner ends, with its words outside the loop, so the loop's ID sits clear between
-    them. inside is (loop ID, kind); inside_rows sets words of a failure plate's own on two rows. Returns (body, h)."""
-    labels = [short(c) for c in codes]
+    them. inside is (loop ID, kind); inside_rows sets words of a failure plate's own on two rows; targets and shared as
+    two_loop takes them; labels overrides the short names (a failure plate's own words). Returns (body, h)."""
+    labels = labels or [short(c) for c in codes]
     pw = [pill_w(lb) for lb in labels]
     rows = [len(step_words(1, x)) if x else 1 for x in lids]
-    run_y = 30 + (rows[0] - 1) * LH
+    run_y = 30 + (rows[0] - 1) * LH + (3 if lids[0] in targets else 0)
     hs = [max(len(wrap(lb, p - 2 * PAD)) * LH + 22, 44) for lb, p in zip(labels, pw)]
     h1, h2 = max(hs[0], hs[1]), max(hs[2], hs[3])
     cy1 = run_y + RISE + h1 / 2
     cy2 = cy1 + h1 / 2 + GAP4 + h2 / 2
-    a = Pill(labels[0], 2 + pw[0] / 2, cy1, pw[0])
-    b = Pill(labels[1], W - 2 - pw[1] / 2, cy1, pw[1])
-    c = Pill(labels[2], W - 2 - pw[2] / 2, cy2, pw[2])
-    d = Pill(labels[3], 2 + pw[3] / 2, cy2, pw[3])
+    kw_ = [dict(red=c_ in targets, shared=c_ in shared) for c_ in codes]
+    a = Pill(labels[0], 2 + pw[0] / 2, cy1, pw[0], **kw_[0])
+    b = Pill(labels[1], W - 2 - pw[1] / 2, cy1, pw[1], **kw_[1])
+    c = Pill(labels[2], W - 2 - pw[2] / 2, cy2, pw[2], **kw_[2])
+    d = Pill(labels[3], 2 + pw[3] / 2, cy2, pw[3], **kw_[3])
     xr = max(b.left + b.h / 2, c.left + c.h / 2) + INNER
     xl = min(a.right - a.h / 2, d.right - d.h / 2) - INNER
     need(xr <= min(b.right - b.h / 2, c.right - c.h / 2) and xl >= max(a.left + a.h / 2, d.left + d.h / 2),
@@ -458,13 +484,14 @@ def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None):
     out = []
     for i, ((pts, side), lid) in enumerate(zip(paths, lids)):
         l = link(lid)
-        m, _ = conn(pts, l["evidence"], l["polarity"], l["delay"])
-        out.append(f'<g class="wr">{m}</g>')
+        tg = lid in targets
+        m, _ = conn(pts, l["evidence"], l["polarity"], l["delay"], target=tg)
+        out.append(wr(m, tg))
         words = step_words(i + 1 if numbered else 0, lid)
-        out.append(verb_at(pts, l["polarity"], words, side))
+        out.append(verb_at(pts, l["polarity"], words, side, big=tg))
         if side in ("left", "right"):
             x, _, _, _ = anchor_at(pts, l["polarity"])
-            span = max(tw(w_, 600 if re.match(r"\d+ ", w_) else 400) for w_ in words)
+            span = max(tw(w_, 600 if re.match(r"\d+ ", w_) else 400) for w_ in words) + (3 if tg else 0)
             need((x - 15 - span >= 2) if side == "left" else (x + 15 + span <= W - 2),
                  f"step {i + 1}'s words of a four-variable loop leave the {W} px artboard")
     out.append(a.svg() + b.svg() + c.svg() + d.svg())
@@ -520,7 +547,8 @@ LAYOUT = (".fx{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.fx.pr{
           f".wd .fx{{grid-template-columns:{W}px minmax(0,1fr);column-gap:{GAP_A}px}}"
           f".wd .fx.pr{{grid-template-columns:{W}px {W}px;column-gap:{GAP_PR}px}}"
           f".wd .fx.tri{{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:{GAP_TRI}px}}"
-          ".wd .tri>.vc{margin:0;padding:0;border:0}}"
+          ".wd .tri>.vc{margin:0;padding:0;border:0}"
+          f".wd .two{{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:{GAP_PR}px}}}}"
           "@container oa-frame (max-width:327.98px){.p :is(p,ul,ol,.evr):not(.dnp){max-width:calc(100cqi - 32px)}}")
 CSS.update({
     "sv": (".sv{display:block;overflow:visible}"
@@ -551,6 +579,24 @@ CSS.update({
     "sw": (".sw{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:6px}"
            ".sw.gkf{background:var(--oa-color-palette-verdigris)}.sw.pkf{background:var(--oa-color-palette-prussian)}"
            ".sw.skf{background:var(--oa-color-palette-stone)}"),
+    # round 2. Rule 12.5's red target, as chapter 13's plates and the atlas build draw it: a 4 px red line on a 6 px ink
+    # case with the 6 px tag, ticks and arrowhead; a target variable's outline in red at 3 px
+    "rt": (".sv .hi{display:none}.sv .rt .lo{display:none}.sv .rt .hi{display:inline}"
+           ".sv .rt .ak-mark{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px}"
+           f".sv .rt .ak-case{{fill:none;stroke:{INK};stroke-width:6px}}.sv .rt .hd{{fill:var(--oa-color-data-emphasis-red)}}"),
+    "rp": ".sv .pl.rp{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}",
+    # Rule 15.15's shared variable: the pill filled in ink and its name in the surface color
+    "sh": f".sv .pl.sh{{fill:{INK}}}.sv .ts{{fill:var(--oa-color-surface)}}",
+    "pp": C13.CSS["pp"],
+    # a list of rows under a small head: a reform's effects by family and its routes (Rules 15.16, 13.5, 13.10)
+    "ef": (".ef{list-style:none;margin:0;padding:0;font:var(--oa-type-body-small)}"
+           ".ef>li{padding:8px 0;border-top:1px solid var(--oa-color-border-hairline)}.ef>li:last-child{border-bottom:1px solid var(--oa-color-border-hairline)}"
+           ".ef .fv{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-top:4px}"
+           ".ef .fv b{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}"
+           ".ef .rd{display:flex;flex-wrap:wrap;gap:2px 16px;margin-top:2px}"),
+    "gp": (".gp+.gp{margin-top:16px;padding-top:14px;border-top:1px solid var(--oa-color-border-hairline)}"
+           ".gp .evr{margin-bottom:6px}"),
+    "two": ".two{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:20px}",
 })
 
 
@@ -764,7 +810,30 @@ def card_width(a_code, b_code, lid, words=None, pw=CARD_PW):
 
 def drawn_loop(n, stations, steps, numbered=True, weakest=None, inside=None, thin=False):
     """A loop drawn from explicit steps, for a mechanism with no numbered connections (a conceptual loop) or a loop drawn
-    against the record in a failure plate. stations are labels; steps are dicts of sign, grade, delay, hollow."""
+    against the record in a failure plate. stations are labels; steps are dicts of sign, grade, delay, hollow. Two
+    stations sit side by side as two_loop sets them (round 2, Loop B2); three as three_loop sets them."""
+    if n == 2:
+        hs = [max(len(wrap(lb, pill_w(lb) - 2 * PAD)) * LH + 22, 44) for lb in stations]
+        run_y = 30
+        cy = run_y + RISE + max(hs) / 2
+        a = Pill(stations[0], 2 + pill_w(stations[0]) / 2, cy, PW, thin)
+        b = Pill(stations[1], W - 2 - pill_w(stations[1]) / 2, cy, PW, thin)
+        bot_y = max(a.bot, b.bot) + RISE
+        paths = [([(a.cx, a.top - 2), (a.cx, run_y), (b.cx, run_y), (b.cx, b.top - 2)], "above"),
+                 ([(b.cx, b.bot + 2), (b.cx, bot_y), (a.cx, bot_y), (a.cx, a.bot + 2)], "below")]
+        pills = [a, b]
+        need(a.right + 12 <= b.left, "a two-station loop's stations touch")
+        mid = (W / 2, run_y + 28)
+        out = []
+        for i, ((pts, side), st) in enumerate(zip(paths, steps)):
+            m, _ = conn(pts, st.get("grade"), st["sign"], st.get("delay"), hollow=st.get("hollow", False))
+            out.append(f'<g class="wr">{m}</g>')
+            word = BS.verb(st["sign"])
+            out.append(verb_at(pts, st["sign"], [f"{i + 1} {word}" if numbered else word], side))
+        out.append(a.svg() + b.svg())
+        if inside:
+            out.append(loop_id(*mid, *inside, two=True))
+        return "".join(out), bot_y + 34
     if n == 3:
         hs = [max(len(wrap(lb, pill_w(lb) - 2 * PAD)) * LH + 22, 44) for lb in stations]
         y1 = 4 + hs[0] / 2
@@ -1928,7 +1997,8 @@ def check(data, book):
     op = book.files[data["opener"]["specimen"]]
     if len(op.encode()) > 12 * 1024:
         fails.append(f"the opener's fragment weighs {len(op.encode()):,} bytes; it must stay well under 16 KB as placed")
-    kinds = {"Variable": NODE, "Connection": LINK, "Loop": LOOP, "Reform": REFORM}
+    kinds = {"Variable": NODE, "Connection": LINK, "Loop": LOOP, "Reform": REFORM,
+             "Route": {r["code"] for r in V7["routes"]["items"]}}
     for sid, frag in book.files.items():
         for kind, rid in re.findall(r'<span class="chip">([A-Za-z ]+) <span class="id">([^<]+)</span>', frag):
             if rid not in kinds.get(kind, {}):

@@ -32,9 +32,8 @@
       var ek = c.field('key', false) || ec, es = c.field('status', false), names = L.names || {};
       if (!em && !(elo && ehi)) c.warn('range-bar needs encode.margin, or encode.low and encode.high');
       // each row's estimate and interval through the kit's shared reading (R2-C1, R2-C2), so the drawing and the checks agree
-      var iv = P.interval_of ? P.interval_of(c) : null;
-      var lo = function (r) { return iv ? iv(r).lo : em ? r[ev] - r[em] : r[elo]; }, hi = function (r) { return iv ? iv(r).hi : em ? r[ev] + r[em] : r[ehi]; };
-      var half = function (r) { return iv ? iv(r).m : em ? r[em] : (r[ehi] - r[elo]) / 2; };
+      var iv = P.interval_of(c);
+      var lo = function (r) { return iv(r).lo; }, hi = function (r) { return iv(r).hi; }, half = function (r) { return iv(r).m; };
       var ref = L.reference === undefined || L.reference === null ? null : String(L.reference);
       var refrow = ref === null ? null : c.rows.filter(function (r) { return String(r[ek]) === ref; })[0] || null;
       if (ref !== null && !refrow) c.warn('labels.reference names no row: ' + ref);
@@ -44,7 +43,7 @@
       // open dots: a status the spec names, or a gap to the reference inside the gap's own margin (Rule 14.9)
       var is_open = function (r) {
         if (es && L.open !== undefined) return String(r[es]) === String(L.open);
-        if (L.test === 'reference' && refrow) return iv && iv.differs ? !iv.differs(r, refrow) : Math.abs(r[ev] - refrow[ev]) <= Math.sqrt(Math.pow(half(r), 2) + Math.pow(half(refrow), 2));
+        if (L.test === 'reference' && refrow) return !iv.differs(r, refrow);
         return false;
       };
       var fv = f.value || 'number:1';
@@ -113,8 +112,7 @@
         c.text(0, ty, name(r), { role: 'label', weight: b ? 700 : 400 });
         var a = xs(lo(r)), z = xs(hi(r)), x = xs(r[ev]);
         var wst = role === 'subject' || role === 'point' ? 'context' : role;
-        if (P.whisker) P.whisker(c, a, z, cy, { dir: 'h', stroke: wst, width: c.t('line-context'), key: k, low: lo(r), high: hi(r) });
-        else c.line(a, cy, z, cy, { stroke: wst, width: c.t('line-context'), data: { key: k, field: em || ehi, value: em ? r[em] : r[ehi] } });
+        P.whisker(c, a, z, cy, { dir: 'h', stroke: wst, key: k, low: lo(r), high: hi(r) });
         if (is_open(r)) {
           c.circle(x, cy, rd, { fill: 'surface', data: { key: k, field: ev, value: r[ev] } });
           c.circle(x, cy, rd, { stroke: role, width: c.t('line-context'), mark: false });

@@ -1,0 +1,79 @@
+{
+  "kit": 1,
+  "id": "S47",
+  "form": "treemap",
+  "family": "composition",
+  "tier": "extended",
+  "dataset": "treasury-mts-outlays-by-function",
+  "where": {
+    "fiscal_year": 2026,
+    "function": {
+      "not": [
+        "Total",
+        "Commerce and Housing Credit",
+        "Undistributed Offsetting Receipts"
+      ]
+    }
+  },
+  "sort": [
+    {
+      "field": "outlays_dollars",
+      "order": "desc"
+    }
+  ],
+  "reader_question": "Where did federal spending go in fiscal 2026?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the Treasury’s monthly statement of federal outlays",
+  "title": "Social Security took the largest share of federal spending in fiscal 2026, $1,667.1 billion.",
+  "measure_line": "Net federal outlays by budget function, billions of dollars, nominal, fiscal year 2026 (October 1, 2025 to September 30, 2026), United States; each tile’s share is of the functions with positive outlays, $7,566.3 billion",
+  "notes": [
+    "Ten functions under 5 percent each are folded into one tile; the table lists each."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Tiles sized by fiscal 2026 outlays for each budget function.",
+  "table": {
+    "caption": "Net federal outlays by budget function, fiscal 2026",
+    "columns": [
+      {
+        "field": "function",
+        "label": "Function, as the Treasury names it",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "outlays_dollars",
+        "label": "Billions of dollars",
+        "format": "billions-value:1"
+      }
+    ]
+  },
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D08",
+  "states": [],
+  "source_line": "Source: U.S. Department of the Treasury, Monthly Treasury Statement, Table 9, outlays by function, fiscal 2026, United States. Retrieved November 11, 2026. Tiles show the functions with positive net outlays, $7,566.3 billion against total net outlays of $7,395.8 billion; offsetting receipts and Commerce and Housing Credit, both negative, are left out.",
+  "encode": {
+    "category": "function",
+    "value": "outlays_dollars"
+  },
+  "labels": {
+    "names": {
+      "National Defense": "National defense",
+      "Income Security": "Income security",
+      "Net Interest": "Net interest"
+    },
+    "fold_below": 6,
+    "fold_label": "All other functions, 11 in all",
+    "value_words": "${v}, {p}",
+    "point": "Social Security"
+  },
+  "formats": {
+    "value": "billions:1",
+    "share": "percent:0"
+  },
+  "notes_internal": [
+    "Draft."
+  ]
+}

@@ -1,0 +1,79 @@
+{
+ "kit": 1,
+ "id": "S50",
+ "form": "beeswarm",
+ "family": "distribution-and-density",
+ "tier": "core",
+ "dataset": "census-stc-state-tax-collections",
+ "where": {
+  "code": {
+   "not": [
+    "DC"
+   ]
+  }
+ },
+ "sort": [
+  {
+   "field": "taxes_per_resident",
+   "order": "desc"
+  }
+ ],
+ "reader_question": "How much does each state collect in taxes per resident?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: Census Bureau surveys of state governments and population estimates",
+ "title": "DRAFT",
+ "measure_line": "DRAFT",
+ "notes": [],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "DRAFT",
+ "table": {
+  "caption": "State taxes per resident, fiscal 2025",
+  "columns": [
+   {
+    "field": "name",
+    "label": "State",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "taxes_per_resident",
+    "label": "Taxes per resident",
+    "format": "dollars"
+   },
+   {
+    "field": "total_taxes_thousands",
+    "label": "Total taxes",
+    "format": "thousands"
+   }
+  ]
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D08",
+ "states": [
+  "VT",
+  "AK"
+ ],
+ "encode": {
+  "key": "code",
+  "label": "name",
+  "value": "taxes_per_resident"
+ },
+ "labels": {
+  "reference": "US",
+  "reference_label": "All states: {value}",
+  "named": [
+   "VT",
+   "AK",
+   "HI",
+   "NH"
+  ],
+  "value": "{label} {value}"
+ },
+ "formats": {
+  "value": "dollars",
+  "tick": "dollars"
+ }
+}

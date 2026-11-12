@@ -107,7 +107,10 @@ def chapter14_parts(page):
             sketches.append({"rule": "14." + n, "kind": k.group(1), "bytes": size(blk), "sketch_bytes": sk})
     op = re.search(r'<figure class="plate plate--opener[^"]*"[^>]*>.*?</figure>', sec, re.S)
     opener = size(op.group(0)) if op else 0
-    return {"rules_1_to_14": rules, "opener": opener, "rules_and_opener": rules + opener, "allowance": RULES_ALLOWANCE, "sketch_entries": sketches}
+    # ED-E13 (round 2): the rule plates' shared style, printed once at the chapter's head, counts with the rules it serves
+    pc = re.search(r'<style data-plate-css>.*?</style>', sec, re.S)
+    css = size(pc.group(0)) if pc else 0
+    return {"rules_1_to_14": rules, "opener": opener, "plate_css": css, "rules_and_opener": rules + opener + css, "allowance": RULES_ALLOWANCE, "sketch_entries": sketches}
 # Chapters Phase 3 is still building: the projection counts each at no less than its allocation until its round ends
 IN_PROGRESS = ("14", "15")
 ENTRY_PLATE = re.compile(r"^s-14-s\d+$")   # an entry's specimen (R1-C3); a chapter-wide rule's plates (s-14-1-line) count under NOT_PLATES
@@ -250,7 +253,7 @@ def gates(weights, charts, fonts_file_bytes, present, warn):
            "far_over_approved": approved}
     parts14 = weights.get("chapter_14_parts")
     if parts14:
-        rec["chapter_14_rules"] = {k: parts14[k] for k in ("rules_1_to_14", "opener", "rules_and_opener", "allowance")}
+        rec["chapter_14_rules"] = {k: parts14.get(k, 0) for k in ("rules_1_to_14", "opener", "plate_css", "rules_and_opener", "allowance")}
         if parts14["rules_and_opener"] > RULES_ALLOWANCE:
             warn("chapter 14", f"rules 14.1 to 14.14 with the opener weigh {parts14['rules_and_opener']:,} bytes, over their {RULES_ALLOWANCE:,} "
                                "(0.20 MB and the 12,288 bytes call 4 moved to them)")
@@ -420,6 +423,11 @@ def self_test():
     ok = m is not None and m["rules_1_to_14"] == len('<div class="rule" id="rule-14-1" data-rule="14.1"><p>One</p></div>') and m["opener"] > 0 \
         and len(m["sketch_entries"]) == 1 and m["sketch_entries"][0]["sketch_bytes"] == len('<svg class="oac-svg oac-sketch">x</svg>')
     print(f"{'pass' if ok else 'FAIL'} the page's measure finds rules 14.1 to 14.14, the opener and each sketch entry whole")
+    bad += not ok
+    css = '<style data-plate-css>@scope (#data-visualization [data-specimen]) {\n.a { color: var(--x) }\n}</style>'
+    m2 = chapter14_parts(pg.replace('<figure class="plate plate--opener"', css + '<figure class="plate plate--opener"', 1))
+    ok = m2 is not None and m2["plate_css"] == len(css) and m2["rules_and_opener"] == m["rules_and_opener"] + len(css)
+    print(f"{'pass' if ok else 'FAIL'} ED-E13: the chapter's shared plate style counts with rules 14.1 to 14.14 and the opener")
     bad += not ok
     print("guide_charts self-test: " + ("every planted fault caught" if not bad else f"{bad} failed"))
     return bad

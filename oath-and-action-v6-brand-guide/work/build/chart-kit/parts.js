@@ -290,6 +290,89 @@
     out.lo = lo; out.hi = hi;
     return out;
   };
+  // A total or national line and point, one treatment for every form (the data lead's round 2 ruling (b)): a line across a
+  // plot dashed 5 and 3 px in the text's ink at the field's weight (o.width, default 2 px; never heavier than the named
+  // mark), drawn under the named mark; a point as an open ring in the text's ink. o.data marks the line or ring for the checks.
+  P.total_line = function (c, x1, y1, x2, y2, o) {
+    o = o || {};
+    c.line(x1, y1, x2, y2, { stroke: 'label', width: o.width || c.t('line-context'), dash: '5 3', mark: !!o.data, data: o.data });
+  };
+  P.total_ring = function (c, x, y, r, o) {
+    o = o || {};
+    c.circle(x, y, r, { fill: 'surface', mark: false });
+    c.circle(x, y, r, { stroke: 'label', width: o.width || c.t('line-context'), data: o.data, mark: !!o.data, row: o.row });
+  };
+  // ---- Labels in small areas and labels beside points (round 2, contract R2-C2) -------------------------------------
+  // The box the layout guard gives a one-line label set at baseline y (Inter's line box less its half-leading, as c.text
+  // records it): from 0.864 em above the baseline to 0.136 em below it
+  var ABOVE = 0.864, BELOW = 0.136;
+  var lbox = function (x, y, w, size, anchor) {
+    return { x: anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x, y: y - ABOVE * size, w: w, h: size };
+  };
+  var overlaps = function (b, t, pad) { return b.x < t.x + t.w + pad && t.x < b.x + b.w + pad && b.y < t.y + t.h + pad && t.y < b.y + b.h + pad; };
+  // Words set inside a rectangle (a treemap's tile, a block of seats): fit_label(c, box, words, o) tries each role in
+  // o.roles (default label, then tick) on one line, then up to o.lines lines (default 2), inside o.pad px (default 4);
+  // o.align 'start' (top left, default) or 'middle'; o.fill the text role for the ground under it (label-on-subject on the
+  // subject ink, on-cat-1 to on-cat-3 on a group's fill); o.weight (default 600). Returns the text's box, or null and draws
+  // nothing where the words do not fit, so the form sets them outside or folds the area into "All other".
+  P.fit_label = function (c, box, words, o) {
+    o = o || {};
+    var pad = o.pad === undefined ? 4 : o.pad, wgt = o.weight || 600, roles = o.roles || ['label', 'tick'], maxl = o.lines || 2;
+    var aw = box.w - 2 * pad, ah = box.h - 2 * pad;
+    for (var i = 0; i < roles.length; i++) {
+      var role = roles[i], size = c.size(role), lh = Math.round(size * 1.25);
+      if (aw <= 0) break;
+      var lines = K.wrap(words, size, aw, wgt, 'reading'), wide = 0;
+      lines.forEach(function (ln) { wide = Math.max(wide, c.measure(ln, size, wgt)); });
+      var th = size + (lines.length - 1) * lh;
+      if (lines.length > maxl || wide > aw || th > ah) continue;
+      var mid = o.align === 'middle', x = mid ? box.x + box.w / 2 : box.x + pad;
+      var y = (mid ? box.y + (box.h - th) / 2 : box.y + pad) + ABOVE * size;
+      return c.text(x, y, String(words), { role: role, weight: wgt, anchor: mid ? 'middle' : 'start', max: aw + 0.5, leading: lh, fill: o.fill });
+    }
+    return null;
+  };
+  // Labels beside points that keep clear of each other: place_labels(c, items, o), items [{x, y, r, words, key, weight,
+  // fill}] in the order they claim room (the named point first). Each label tries eight places around its point, right,
+  // left, above, below, then the four corners, r + o.gap px out (default 4); then, with o.leaders (default true), the same
+  // places o.reach px further (default 14) with a hairline leader. A place must sit inside the drawing (0 to c.width, o.top
+  // to o.bottom), clear of every label placed, every text already drawn, every point's dot and o.avoid boxes. Returns
+  // {placed: [{item, box}], unplaced: [items]}; name the unplaced in a note (K.word('unlabeled_marks')) or the table.
+  P.place_labels = function (c, items, o) {
+    o = o || {};
+    var role = o.role || 'label', size = c.size(role), gap = o.gap === undefined ? 4 : o.gap, reach = o.reach || 14, pad = 2;
+    var top = o.top || 0, bottom = o.bottom === undefined ? Infinity : o.bottom;
+    var dots = items.map(function (it) { var r = it.r || 0; return { x: it.x - r, y: it.y - r, w: 2 * r, h: 2 * r }; });
+    var taken = (o.avoid || []).slice(), placed = [], unplaced = [];
+    var places = [['right', 1, 0], ['left', -1, 0], ['above', 0, -1], ['below', 0, 1], ['upper right', 0.75, -0.75], ['lower right', 0.75, 0.75], ['upper left', -0.75, -0.75], ['lower left', -0.75, 0.75]];
+    items.forEach(function (it, n) {
+      var wgt = it.weight || 400, w = c.measure(it.words, role, wgt), r = it.r || 0, done = null;
+      for (var ring = 0; ring < (o.leaders === false ? 1 : 2) && !done; ring++) {
+        var d = r + gap + ring * reach;
+        for (var k = 0; k < places.length && !done; k++) {
+          var ax = places[k][1], ay = places[k][2];
+          var anchor = ax > 0 ? 'start' : ax < 0 ? 'end' : 'middle';
+          var x = it.x + ax * d, y = ay < 0 ? it.y + ay * d - BELOW * size : ay > 0 ? it.y + ay * d + ABOVE * size : it.y + 0.35 * size;
+          var b = lbox(x, y, w, size, anchor);
+          if (b.x < 0 || b.x + b.w > c.width || b.y < top || b.y + b.h > bottom) continue;
+          if (taken.some(function (t) { return overlaps(b, t, pad); }) || c.texts.some(function (t) { return overlaps(b, t, pad); })) continue;
+          if (dots.some(function (t, j) { return j !== n && t.w > 0 && overlaps(b, t, 1); })) continue;
+          done = { x: x, y: y, anchor: anchor, box: b, ring: ring };
+        }
+      }
+      if (!done) { unplaced.push(it); return; }
+      var tb = c.text(done.x, done.y, String(it.words), { role: role, weight: wgt, anchor: done.anchor, fill: it.fill, halo: o.halo !== false });
+      taken.push(tb);
+      if (done.ring) {
+        // the leader from the dot's edge to the label's nearest edge
+        var bx = Math.max(tb.x, Math.min(it.x, tb.x + tb.w)), by = Math.max(tb.y, Math.min(it.y, tb.y + tb.h));
+        var dx = bx - it.x, dy = by - it.y, len = Math.sqrt(dx * dx + dy * dy) || 1;
+        c.line(it.x + dx / len * (r + 1), it.y + dy / len * (r + 1), bx - dx / len * 2, by - dy / len * 2, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+      }
+      placed.push({ item: it, box: tb });
+    });
+    return { placed: placed, unplaced: unplaced };
+  };
   // Long rows to one row a key, for stack: wide(rows, key, series, value) gives one row per key value with a column per
   // series value, in first-seen order; .series lists the series values
   P.wide = function (rows, key, series, value) {

@@ -1,0 +1,87 @@
+{
+ "kit": 1,
+ "id": "S59",
+ "form": "fan-chart",
+ "family": "uncertainty-and-estimates",
+ "tier": "extended",
+ "dataset": "frb-fomc-projections-unemployment",
+ "reader_question": "Where do Federal Reserve officials expect unemployment to go, and how wide is the range?",
+ "evidence": "estimate",
+ "evidence_label": "Estimate",
+ "grade_line": "DRAFT",
+ "title": "DRAFT",
+ "measure_line": "Unemployment rate, fourth-quarter average, projected for 2026 to 2029 and the longer run, United States. The outer band spans the range that past forecast errors give about a 70 percent probability of holding the actual rate.",
+ "notes": [],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "DRAFT",
+ "table": {
+  "caption": "Projections of the unemployment rate, percent",
+  "columns": [
+   {
+    "field": "period",
+    "label": "Period",
+    "format": "text",
+    "row_header": true,
+    "words": {
+     "longer_run": "Longer run"
+    }
+   },
+   {
+    "field": "median",
+    "label": "Median",
+    "format": "number:1"
+   },
+   {
+    "field": "central_tendency_low",
+    "label": "Central tendency, low",
+    "format": "number:1"
+   },
+   {
+    "field": "central_tendency_high",
+    "label": "Central tendency, high",
+    "format": "number:1"
+   },
+   {
+    "field": "band_70_low",
+    "label": "70 percent band, low",
+    "format": "number:1"
+   },
+   {
+    "field": "band_70_high",
+    "label": "70 percent band, high",
+    "format": "number:1"
+   }
+  ]
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D07",
+ "states": [],
+ "encode": {
+  "x": "period",
+  "y": "median",
+  "outer_low": "band_70_low",
+  "outer_high": "band_70_high",
+  "inner_low": "central_tendency_low",
+  "inner_high": "central_tendency_high"
+ },
+ "labels": {
+  "apart": "longer_run",
+  "apart_label": "Longer run",
+  "key_outer": "70 percent band from past errors",
+  "key_inner": "Central tendency of officials’ views",
+  "key_median": "Median projection",
+  "y_axis": "Unemployment rate, percent"
+ },
+ "formats": {
+  "y": "number:1",
+  "tick": "integer"
+ },
+ "scale": {
+  "y": [
+   0,
+   7
+  ]
+ }
+}

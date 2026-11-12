@@ -1,0 +1,101 @@
+{
+  "kit": 1,
+  "id": "S45",
+  "form": "stacked-column",
+  "family": "composition",
+  "tier": "extended",
+  "dataset": "census-nrc-completions-by-structure",
+  "where": {
+    "year": {
+      "from": 2000
+    }
+  },
+  "reader_question": "What kinds of homes were finished each year?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: a Census Bureau survey of new construction",
+  "title": "Homes in buildings of five or more units made up 36 percent of the new homes finished in 2024, their largest share of any year since 2000.",
+  "measure_line": "New privately owned housing units completed, thousands, by the number of units in the building, United States, 2000 to 2025. The chart starts in 2000 so each year’s column stays wide enough to read.",
+  "notes": [
+    "Builders finished 1,626,900 homes in 2024: 1,018,600 in one-unit buildings, 16,600 in buildings of two to four units and 591,700 in buildings of five or more."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Stacked columns of new homes finished each year from 2000 to 2025, split into one-unit buildings, buildings of two to four units and buildings of five or more. One-unit homes make up most of every year; homes in buildings of five or more units reached 591,700 in 2024, 36 percent of the year’s 1,626,900.",
+  "table": {
+    "caption": "New homes finished by units in the building, thousands, 2000 to 2025",
+    "columns": [
+      {
+        "field": "year",
+        "label": "Year",
+        "format": "year",
+        "row_header": true
+      },
+      {
+        "field": "one_unit_thousands",
+        "label": "One unit",
+        "format": "number:1"
+      },
+      {
+        "field": "two_to_four_units_thousands",
+        "label": "Two to four units",
+        "format": "number:1"
+      },
+      {
+        "field": "five_or_more_units_thousands",
+        "label": "Five or more units",
+        "format": "number:1"
+      },
+      {
+        "field": "total_thousands",
+        "label": "All homes",
+        "format": "number:1"
+      }
+    ]
+  },
+  "chart_notes": [
+    "The parts stack from the zero line: one-unit buildings, then two to four units, then five or more."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D09",
+  "states": [],
+  "source_line_template": "span",
+  "encode": {
+    "x": "year",
+    "parts": [
+      "one_unit_thousands",
+      "two_to_four_units_thousands",
+      "five_or_more_units_thousands"
+    ]
+  },
+  "labels": {
+    "parts": [
+      {
+        "field": "one_unit_thousands",
+        "label": "One unit"
+      },
+      {
+        "field": "two_to_four_units_thousands",
+        "label": "Two to four units"
+      },
+      {
+        "field": "five_or_more_units_thousands",
+        "label": "Five or more units"
+      }
+    ],
+    "totals_at": [
+      2006,
+      2011,
+      2024
+    ],
+    "y_head": "Thousands of homes"
+  },
+  "formats": {
+    "y_tick": "integer",
+    "total": "thousands"
+  },
+  "notes_internal": [
+    "Draft."
+  ]
+}

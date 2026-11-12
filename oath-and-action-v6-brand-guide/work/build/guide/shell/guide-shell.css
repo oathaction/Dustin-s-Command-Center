@@ -489,6 +489,15 @@ a.toc-part-k:hover { text-decoration: underline }
 /* frame_container (AX S5): a frame that is the container with one true size, so a fragment's prose follows the frame */
 .plate-scroll:is([data-wide], [data-frame-container]) { container: oa-frame / inline-size }
 @container oa-frame (min-width: 680px) { .plate-stage[data-wide] { width: var(--w2, var(--w)) } }
+/* RS-S1 (round 2): a frame with two true sizes narrows its mat where that lets its content box hold the wide stage, from
+   48 px a side down to 8 px, so a frame 698 to 778 px wide (1024 and 768 px pages) switches on its own width as wider
+   frames do. --room2 is the frame's width less the wide stage; the content box keeps 2 px over it, so rounding never drops
+   it under the switch. A frame too narrow for an 8 px mat keeps 48 px and the narrow stage (the second term of max() is
+   48 px whenever --room2 is under 18 px, and zero or less otherwise). */
+@media (min-width: 48em) {
+  .plate-scroll[data-wide] { --room2: calc(100% - var(--w2));
+    padding-inline: max(min(var(--oa-space-600), (var(--room2) - 2px) / 2), min(var(--oa-space-600), (2 * var(--oa-space-100) + 2px - var(--room2)) * 1000)) }
+}
 .plate-pending { margin: 0; font: var(--oa-type-body-small) }
 .plate-fit { width: fit-content; margin: 0 auto }
 .plate-fit > .plate-stage { margin: 0 }

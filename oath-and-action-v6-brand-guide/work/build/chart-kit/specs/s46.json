@@ -1,0 +1,95 @@
+{
+  "kit": 1,
+  "id": "S46",
+  "form": "stacked-area",
+  "family": "composition",
+  "tier": "extended",
+  "dataset": "cms-nhe-by-payer-four-groups",
+  "reader_question": "Who pays the nation’s health care bill?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the federal government’s National Health Expenditure Accounts",
+  "title": "Private insurance, Medicare and Medicaid together paid 70 percent of the nation’s health care bill in 2024, up from 21 percent in 1960.",
+  "measure_line": "National health spending by who paid, as a share of each year’s total, United States, 1960 to 2024",
+  "notes": [
+    "Medicare and Medicaid began paying in 1966."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Stacked bands of the nation’s health spending by who paid, 1960 to 2024.",
+  "table": {
+    "caption": "Shares of national health spending by who paid, 1960 to 2024",
+    "columns": [
+      {
+        "field": "year",
+        "label": "Year",
+        "format": "year",
+        "row_header": true
+      },
+      {
+        "field": "private_health_insurance_pct",
+        "label": "Private insurance, percent",
+        "format": "number:1"
+      },
+      {
+        "field": "medicare_pct",
+        "label": "Medicare, percent",
+        "format": "number:1"
+      },
+      {
+        "field": "medicaid_pct",
+        "label": "Medicaid, percent",
+        "format": "number:1"
+      },
+      {
+        "field": "all_other_sources_pct",
+        "label": "All other sources, percent",
+        "format": "number:1"
+      }
+    ]
+  },
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D09",
+  "states": [],
+  "encode": {
+    "x": "year",
+    "parts": [
+      "private_health_insurance_pct",
+      "medicare_pct",
+      "medicaid_pct",
+      "all_other_sources_pct"
+    ]
+  },
+  "labels": {
+    "parts": [
+      {
+        "field": "private_health_insurance_pct",
+        "label": "Private insurance",
+        "at": 1995
+      },
+      {
+        "field": "medicare_pct",
+        "label": "Medicare",
+        "at": 2005
+      },
+      {
+        "field": "medicaid_pct",
+        "label": "Medicaid",
+        "at": 2005
+      },
+      {
+        "field": "all_other_sources_pct",
+        "label": "All other sources",
+        "at": 1972
+      }
+    ],
+    "offset": "expand"
+  },
+  "formats": {
+    "end": "percent:0"
+  },
+  "notes_internal": [
+    "Draft."
+  ]
+}
