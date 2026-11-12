@@ -885,7 +885,9 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
         head.append(f'<p class="plate-size">{e(scale_words(sc))}</p>')
     elif wide and not height:
         # D3-480, D3-485: a plate with two true sizes names both
-        words = f"True size, {num(wide)} px wide; {num(width)} px in a column under {num(wide)} px"
+        # BC S16 (round 2 fix pass, the systems designer's request): a number never leaves its unit, and the last words
+        # hold together, so "680 px" never stands alone on a phone's second line
+        words = f"True size, {num(wide)}\u00a0px wide; {num(width)}\u00a0px in a column under\u00a0{num(wide)}\u00a0px"
         head.append(f'<p class="plate-size" data-true="{words}">{words}</p>')
     elif size_bits:
         head.append(f'<p class="plate-size" data-true="True size, {", ".join(size_bits)}">True size, {", ".join(size_bits)}</p>')
@@ -4071,7 +4073,7 @@ def self_test():
          {"warn": ["s-26-w2b: wide_px 300 needs a number above width_px (328); ignored", "\"plate_css\": 1 literal color value(s) (#E63946)"],
           "absent": ["s-26-w2: wide_px"],
           "html": ['style="--w:328px;--w2:680px" data-width="328" data-wide="680"', 'data-width="328" style="--w:328px;--w2:680px" data-wide="680"',
-                   'True size, 680 px wide; 328 px in a column under 680 px',
+                   'True size, 680\u00a0px wide; 328\u00a0px in a column under\u00a0680\u00a0px',
                    '<style data-plate-css>@scope (#tokens [data-specimen]) {'],
           "tests": [("the shared plate CSS prints once, at the head of its chapter", lambda pg: pg.count("data-plate-css") == 1
                      and pg.find('id="tokens"') < pg.find("data-plate-css") < pg.find('id="fig-s-26-w2"')),

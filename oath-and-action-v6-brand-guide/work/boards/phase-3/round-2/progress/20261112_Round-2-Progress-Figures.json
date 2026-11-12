@@ -1,12 +1,12 @@
 {
- "built": "2026-11-12T22:24:04.188822+00:00",
+ "built": "2026-11-12T22:29:12.675195+00:00",
  "guide_build": {
   "exit": 1,
-  "bytes": 10611038,
+  "bytes": 10619415,
   "rules": 312,
   "specimens": 606,
-  "warnings": 105,
-  "built": "2026-11-12T22:24:11",
+  "warnings": 95,
+  "built": "2026-11-12T22:29:19",
   "pictures_from_failed_build": true
  },
  "kit_builds": {
@@ -145,7 +145,9 @@
    "wide-s-15-8-correct-1024",
    "wide-s-15-8-correct-768",
    "wide-s-15-9-correct-1024",
-   "wide-s-15-9-correct-768"
+   "wide-s-15-9-correct-768",
+   "wide-s-15-opener-1024",
+   "wide-s-15-opener-768"
   ],
   "reused": []
  },
@@ -232,6 +234,7 @@
   },
   "wide_stage": {
    "plates": [
+    "opener opener",
     "15.1 correct",
     "15.2 correct",
     "15.3 correct",
@@ -256,12 +259,12 @@
    ],
    "widths": {
     "1024": [
-     21,
-     21
+     22,
+     22
     ],
     "768": [
-     21,
-     21
+     22,
+     22
     ]
    }
   }
@@ -349,11 +352,11 @@
    "rule": "14.50",
    "form": "Stacked column",
    "maker": "A",
-   "title": "Homes in buildings of five or more units made up 36 percent of the new homes finished in 2024, their largest share in any year from 2000 to 2025.",
+   "title": "Builders finished 591,700 homes in buildings of five or more units in 2024, more than in any other year from 2000 to 2025.",
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 6340,
+   "bytes_in_guide": 6781,
    "faults": 0,
    "drawings": 4,
    "rows": 26
@@ -379,7 +382,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 5144,
+   "bytes_in_guide": 5341,
    "faults": 0,
    "drawings": 4,
    "rows": 17
@@ -470,7 +473,7 @@
    "title_from": "guide",
    "evidence": "Association",
    "marked": false,
-   "bytes_in_guide": 9790,
+   "bytes_in_guide": 9704,
    "faults": 0,
    "drawings": 4,
    "rows": 52
@@ -479,12 +482,12 @@
    "rule": "14.68",
    "form": "Bubble chart",
    "maker": "B",
-   "title": "Higher rents went with higher renter incomes across the states in 2025, and in Florida, home to 3.0 million renter households, the median renter paid the largest share of income in rent, 35.5 percent.",
+   "title": "The four states with the most renter households held 17.1 million of the nation’s 46.6 million in 2025, and three of them had median rents above the nation’s.",
    "title_from": "guide",
    "evidence": "Association",
    "marked": false,
-   "bytes_in_guide": 11058,
-   "faults": 2,
+   "bytes_in_guide": 10940,
+   "faults": 0,
    "drawings": 4,
    "rows": 52
   },
@@ -536,7 +539,7 @@
    "evidence": "Estimate",
    "marked": true,
    "bytes_in_guide": 5258,
-   "faults": 22,
+   "faults": 0,
    "drawings": 4,
    "rows": 5
   },
@@ -557,11 +560,11 @@
    "rule": "14.87",
    "form": "Progress bar",
    "maker": "A",
-   "title": "The Senate fell seven votes short of the 60 it needed to take up H.R. 7008, the Stop Insider Trading Act, which, as the House passed it, limits members’ stock purchases and requires photo ID to vote in federal elections.",
+   "title": "The Senate fell seven votes short of the 60 needed to take up the House’s bill to limit members’ stock purchases and require photo ID to vote in federal elections.",
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 3835,
+   "bytes_in_guide": 3896,
    "faults": 0,
    "drawings": 4,
    "rows": 3
@@ -574,7 +577,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 5189,
+   "bytes_in_guide": 5299,
    "faults": 21,
    "drawings": 4,
    "rows": 7
@@ -587,7 +590,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 9728,
+   "bytes_in_guide": 9812,
    "faults": 6,
    "drawings": 4,
    "rows": 6
@@ -600,7 +603,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 3750,
+   "bytes_in_guide": 3764,
    "faults": 0,
    "drawings": 4,
    "rows": 1
@@ -920,18 +923,18 @@
   }
  ],
  "weight": {
-  "chapter_14": 1177386,
+  "chapter_14": 1181810,
   "stop": 2803941,
-  "per_plate": 15355,
+  "per_plate": 15093,
   "plates_to_come": 36,
-  "chapter_15": 306534,
+  "chapter_15": 306502,
   "chapter_15_ceiling": 600000.0,
-  "page": 10611038,
+  "page": 10619415,
   "projected": 15042495,
   "budget": 15500000.0
  },
  "tested": {
-  "The strict build of the guide": "did not pass today: 105 warnings on a build of 10,611,038 bytes",
+  "The strict build of the guide": "did not pass today: 95 warnings on a build of 10,619,415 bytes",
   "The quick guide check": "Not found in its file at this build.",
   "The four-width guide check": "at 1440, 1024, 390 and 360 px, on a build of 10,587,775 bytes: no failures",
   "The chart kit’s build of every chart": "64 of 64 charts pass, checked without pictures",
@@ -949,11 +952,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-2/progress/20261112_Round-2-Progress.html",
- "html_bytes": 131154,
+ "html_bytes": 129892,
  "images": 84,
- "image_bytes": 24425498,
+ "image_bytes": 24339069,
  "folder_files": 88,
- "folder_bytes": 24613059,
+ "folder_bytes": 24525350,
  "largest_image": [
   672614,
   "20261112_Chart-14-74-Newsprint.png"
@@ -1094,7 +1097,6 @@
   "D3-205",
   "D3-350",
   "D3-894",
-  "D3-903",
   "DR-191",
   "DR-202",
   "DR-213",
@@ -1109,11 +1111,11 @@
  "warnings": [
   "the strict guide build failed (exit 1); the guide pictures wait for a passing build",
   "the page’s pictures come from a strict build that failed; a method run only, never one to publish",
-  "the quick guide check ran on 10,587,775 bytes and today’s strict build is 10,611,038",
+  "the quick guide check ran on 10,587,775 bytes and today’s strict build is 10,619,415",
   "Tested lines without their figure: The strict build of the guide, The quick guide check"
  ],
- "seconds": 210,
- "words": 4777,
+ "seconds": 215,
+ "words": 4563,
  "words_tested_part": 241,
  "check": {
   "page": {
