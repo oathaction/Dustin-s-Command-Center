@@ -13,7 +13,7 @@
 .oac-art { position: relative; margin: 28px 0 0; }
 .oac-art > svg.oac-svg { display: block; max-width: 100%; height: auto; overflow: visible; }
 .oac-illus { margin: 0 0 8px; font: var(--oa-font-weight-semibold) 14px/20px var(--oa-font-family-reading); }
-.oac-vh, .oac-fig[data-oa-js] .oac-alt { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.oac-vh, .oac-fig[data-oa-js] .oac-alt, .oac-fig[data-oa-static] .oac-alt { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 /* With scripts off (no data-oa-js on the figure), the description shows as words with a line saying the drawing needs
    scripts, and the table stands open (D3-97) */
 .oac-alt { margin: 20px 0 0; font: var(--oa-font-weight-regular) 15px/22px var(--oa-font-family-reading); max-width: 42em; }

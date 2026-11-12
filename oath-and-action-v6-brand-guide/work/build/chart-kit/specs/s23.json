@@ -8,17 +8,17 @@
   "reader_question": "How sure is each of the five topic hubs’ evidence?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: the atlas’s own register of graded claims",
+  "grade_line": "Graded by the atlas, claim by claim: our count of its register of claims",
   "v7": {
     "grade": "documented",
     "ids": [],
     "snapshot": "2026-10-15"
   },
-  "title": "Of the atlas’s five topic hubs, “Public services where you live” has the largest share of documented claims, 84.5 percent, and “Voice, power and information” the smallest, 67.2.",
+  "title": "Of the atlas’s five topic hubs, “Public services where you live” has the largest share of documented claims, 84.5 percent.",
   "measure_line": "Claims behind the atlas’s 16 everyday answers, grouped by its five topic hubs, as a share of each hub’s claims by evidence grade, 433 claims checked through October 15, 2026, United States.",
   "notes": [
     "Grades: Documented, on the public record; Well supported, strong research evidence; Plausible, some evidence; Contested, evidence disputed. A claim’s grade covers that claim alone.",
-    "Voice, power and information has the largest share of plausible claims, 18.8 percent, and work and financial security the largest share contested, 8.2 percent."
+    "“Voice, power and information” has the smallest share of documented claims, 67.2 percent, and the largest share of plausible claims, 18.8; work and financial security has the largest share contested, 8.2 percent."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -56,7 +56,7 @@
     ]
   },
   "chart_notes": [
-    "In each panel the documented bar is drawn in the text’s ink and the other three grades in light gray."
+    "The documented bar for public services where you live, which the title names, is in red with a dark outline; every other bar is light gray, with its value printed."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -75,20 +75,18 @@
       "plausible": "Plausible",
       "contested": "Contested"
     },
-    "named": "documented"
+    "point": {
+      "panel": "community-services",
+      "category": "documented"
+    }
   },
   "formats": {
     "value": "percent:1"
   },
-  "scale": {
-    "x": [
-      0,
-      100
-    ]
-  },
   "notes_internal": [
     "Data plan row 9 (coverage plan: evidence mix by topic hub). Draws the engineer's derived file v7-claims-by-hub-and-grade (request A4), the sums of v7-claims-by-grade over each hub; C1 keeps the grouping in its own file. Its printed source line is the sidecar's.",
-    "Figures checked by script (figures.py s23) against v7-claims-by-grade itself."
+    "Figures checked by script (figures.py s23) against v7-claims-by-grade itself.",
+    "Review fix pass: the data lead's rulings (a) and (b) under D3-489: the grade line names our count and the atlas's claim-by-claim grade (ST M4); the title names one point, which takes the red with its keyline (labels.point, panel and category), every other bar the light fill (D3-477, R3); the smallest share moves to note 2 in the data lead's words. CD A-S1: the shared scale ends at the largest share (no scale key), so the four grades read apart. Figures checked by script (round-1-fix tools/figs.py s23)."
   ],
-  "reading_guide": "Every panel shares one scale."
+  "reading_guide": "Every panel shares one scale, from zero to the largest share."
 }

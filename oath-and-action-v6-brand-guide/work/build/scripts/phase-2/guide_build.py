@@ -817,7 +817,9 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     interactive, scale, fit_switch, check_exempt, breakout (round 2: a flowing stage that takes the room over the rail
     from 80em, as a wide fixed stage does, such as chapter 26's token table), wide_px (Phase 3 round 1 fix pass, D3-480: a
     fixed stage that widens from width_px to wide_px where its frame's content box holds wide_px; the frame is the query
-    container oa-frame, and the fragment's own @container oa-frame rules compose for each width; nothing scales)."""
+    container oa-frame, and the fragment's own @container oa-frame rules compose for each width; nothing scales),
+    frame_container (true: the frame is the query container oa-frame with no second size, so a fragment's prose can follow
+    the frame's width, AX S5)."""
     meta = specs.meta(spec_id) if spec_id else {}
     frag = specs.fragment(spec_id, where) if spec_id else None
     lab, glyph = PLATE_LABEL.get(kind, (None, None))
@@ -948,6 +950,7 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
             + f'<div class="plate-scroll" data-plate-scroll data-frame-name="{e(frame_name)}"'
             + (f' data-width="{width:g}" style="--w:{width:g}px' + (f';--w2:{wide:g}px" data-wide="{wide:g}"' if wide else '"') if isinstance(width, (int, float)) else "")
             + (' data-breakout' if meta.get("breakout") and not isinstance(width, (int, float)) else "")
+            + (' data-frame-container' if meta.get("frame_container") is True or wide else "")
             + f'>{alt_html}{stage}</div>'
             + cap + "</figure>")
 
@@ -3956,10 +3959,13 @@ def self_test():
     ]
     # Phase 3, round 1 fix pass (D3-480): a plate with two true sizes, and a chapter's shared plate CSS printed once
     w2_specs = {"s-26-w2.html": "<p>A plate composed for two widths.</p>", "s-26-w2b.html": "<p>A second.</p>"}
+    w2_specs["s-26-w2c.html"] = "<p>A plate whose frame is a container, one true size.</p>"
     w2_man = {"s-26-w2": {"chapter": "26", "rule": "26.1", "alt": "A plate with two true sizes, a fixture.", "width_px": 328, "wide_px": 680, "fit_switch": False, "notes": "fixture"},
+              "s-26-w2c": {"chapter": "26", "rule": "26.2", "alt": "A plate whose frame is a query container, a fixture.", "width_px": 328, "frame_container": True, "fit_switch": False, "notes": "fixture"},
               "s-26-w2b": {"chapter": "26", "rule": "26.1", "alt": "A plate with a wide size under its narrow one, a fixture.", "width_px": 328, "wide_px": 300, "fit_switch": False, "notes": "fixture"}}
     w2 = chapter("26", "tokens", "Tokens and how to choose them", [rule("26.1", {"correct": {"specimen": "s-26-w2", "caption": "A fixture."},
-                                                                              "failure": {"specimen": "s-26-w2b", "caption": "A fixture."}})],
+                                                                              "failure": {"specimen": "s-26-w2b", "caption": "A fixture."}}),
+                                                                    rule("26.2", {"correct": {"specimen": "s-26-w2c", "caption": "A fixture."}})],
                  plate_css=".oa-w2 { color: var(--oa-color-text-primary) }\n.oa-w2-bad { color: #E63946 }")
     scenarios += [
         ("round 1 fix pass: a plate with two true sizes (wide_px) and a chapter's shared plate CSS (D3-480)",
@@ -3974,7 +3980,12 @@ def self_test():
                     ("the shell switches the stage by its frame's container", lambda pg: "container:oa-frame/inline-size" in pg.replace(" ", "")
                      and "@container oa-frame (min-width: 680px)" in pg or "@container oa-frame (min-width:680px)" in pg),
                     ("a plate whose wide_px is ignored keeps one true size", lambda pg: 'data-specimen="s-26-w2b"' in pg
-                     and not re.search(r'data-specimen="s-26-w2b"[^>]*data-wide', pg))]}),
+                     and not re.search(r'data-specimen="s-26-w2b"[^>]*data-wide', pg)),
+                    ("frame_container makes the frame a container with one true size; wide_px does too; a plain plate's frame is none",
+                     lambda pg: re.search(r'data-frame-name="Correct application, Rule 26\.2" data-width="328" style="--w:328px" data-frame-container>', pg) is not None
+                     and re.search(r'data-frame-name="Correct application, Rule 26\.1"[^>]*data-wide="680" data-frame-container>', pg) is not None
+                     and re.search(r'data-frame-name="Failure case, Rule 26\.1"[^>]*data-frame-container', pg) is None
+                     and "True size, 328 px wide" in pg)]}),
     ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:

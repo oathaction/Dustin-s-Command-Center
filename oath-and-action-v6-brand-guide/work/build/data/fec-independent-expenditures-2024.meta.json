@@ -5,15 +5,16 @@
  "title_or_table": "OpenFEC API, financial totals for PACs and party committees, 2023 to 2024 election cycle, sorted by independent expenditures (top 25)",
  "table_id": "api.open.fec.gov v1 /totals/pac-party/?cycle=2024&sort=-independent_expenditures",
  "url": [
-  "https://api.open.fec.gov/v1/totals/pac-party/?cycle=2024&sort=-independent_expenditures&per_page=40"
+  "https://api.open.fec.gov/v1/totals/pac-party/?cycle=2024&sort=-independent_expenditures&per_page=40",
+  "https://api.open.fec.gov/v1/committee/<committee_id>/"
  ],
  "observation_period": "Two-year election cycle 2023 to 2024 (January 1, 2023 to December 31, 2024)",
  "geography": "United States (federal elections)",
  "universe_or_base": "Political action committees and party committees registered with the FEC (9688 in the cycle), ranked by the independent expenditures their reports total",
  "unit": "dollars, nominal, as the FEC's processed totals give them",
  "date_retrieved": "2026-11-11",
- "vintage": "FEC processed data as served on November 11, 2026",
- "qualification": "Independent expenditures are spending for or against candidates made without coordinating with them; the totals count spending for and against together and leave out groups that are not political committees (filers of Form 5, such as some nonprofits). Money moved between committees is counted where it was spent. The FEC records no party for a PAC, so the register names each committee as the FEC lists it",
+ "vintage": "FEC processed data as served on November 11, 2026: the totals stand on the reports and amendments the commission had processed by then, every committee’s covering through December 31, 2024; a later amendment can change a total. Parties from the committee records as served November 12, 2026",
+ "qualification": "Independent expenditures are spending for or against candidates made without coordinating with them; the totals count spending for and against together and leave out groups that are not political committees (filers of Form 5, such as some nonprofits). Money moved between committees is counted where it was spent. The party columns copy the party each committee’s FEC record lists: the three party committees list theirs, one hybrid PAC lists one, and the other 21 PACs list none",
  "columns": {
   "rank": {
    "type": "integer",
@@ -35,6 +36,18 @@
    "type": "text",
    "description": "the committee type in words"
   },
+  "party": {
+   "type": "category",
+   "description": "party code on the committee’s FEC record (DEM, REP); empty where the record lists none"
+  },
+  "party_full": {
+   "type": "text",
+   "description": "party as the committee’s FEC record lists it"
+  },
+  "party_words": {
+   "type": "category",
+   "description": "the party in a reader’s word (Democratic, Republican); empty where the record lists none"
+  },
   "independent_expenditures": {
    "type": "number",
    "description": "independent expenditures in the cycle",
@@ -45,8 +58,11 @@
    "description": "last day covered by the committee's reports"
   }
  },
- "printed_source_line": "Source: Federal Election Commission, financial totals for PACs and party committees, independent expenditures, 2023 to 2024 cycle, United States. Retrieved November 11, 2026. Spending for and against candidates together; groups that are not political committees are not included.",
+ "printed_source_line": "Source: Federal Election Commission, financial totals for PACs and party committees, independent expenditures, 2023 to 2024 cycle, from reports the commission had processed by November 11, 2026, with each party committee’s party from its committee record, United States. Retrieved November 11 and 12, 2026. Spending for and against candidates together; groups that are not political committees are not included.",
  "ledger_row": "P7-017",
  "domain": "D03",
- "states": []
+ "states": [],
+ "notes": [
+  "Parties read November 12, 2026 from each of the 25 committees’ records (api.open.fec.gov/v1/committee/<id>/, key injected by the network proxy; fetch log in the research lead’s scratch folder). Records that list a party: SFA FUND, INC (Hybrid PAC, nonqualified, Republican); DCCC (Party committee, qualified, Democratic); DSCC (Party committee, qualified, Democratic); NRCC (Party committee, qualified, Republican). The three party committees’ records also give party type NATIONAL. SFA Fund, Inc. (C00828061) is a hybrid PAC whose record lists \"REPUBLICAN PARTY\" with no party type; its filing frequency reads T. A chart that says the commission records no party for a PAC is wrong for this one. The file keeps each name as the 2024 totals list it; four records carry a newer name: CONGRESSIONAL LEADERSHIP FUND (C00504530) now reads CLF; SENATE LEADERSHIP FUND (C00571703) now reads SLF PAC; RESTORATION PAC (C00571588) now reads RESTORATION OF AMERICA PAC; REPUBLICAN ACCOUNTABILITY PAC (C00804856) now reads LF PAC."
+ ]
 }

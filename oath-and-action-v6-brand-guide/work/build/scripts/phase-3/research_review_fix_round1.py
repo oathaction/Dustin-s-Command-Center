@@ -333,7 +333,83 @@ def item_s27(dl):
     save(FHFA, meta, nl)
 
 
-ITEMS = {'s24': item_s24, 's34': item_s34, 's31': item_s31, 's27': item_s27}
+# ---------------------------------------------------------------------------------------------------------------
+# bc_m3: BC M3, with ST S3 for S36. Each committee's party as its FEC committee record lists it (api.open.fec.gov
+# /v1/committee/<id>/, read November 12, 2026), for all 25 rows: the three party committees and one hybrid PAC carry
+# one. The totals do not change. The printed line names the processing date the totals stand on (the vintage) and the
+# committee records. --dl holds committee-<id>.json for each row.
+# ---------------------------------------------------------------------------------------------------------------
+FEC_IE = 'fec-independent-expenditures-2024'
+PARTY_WORDS = {'DEMOCRATIC PARTY': 'Democratic', 'REPUBLICAN PARTY': 'Republican'}
+
+
+def item_bc_m3(dl):
+    if dl is None:
+        raise SystemExit('bc_m3 needs --dl <folder with committee-<id>.json>')
+    p = DATA / f'{FEC_IE}.csv'
+    raw = p.read_text(encoding='utf-8')
+    rows = list(csv.DictReader(io.StringIO(raw)))
+    head = [h for h in rows[0].keys() if h not in ('party', 'party_full', 'party_words')]
+    i = head.index('committee_type_words') + 1
+    head = head[:i] + ['party', 'party_full', 'party_words'] + head[i:]
+    named, renamed = [], []
+    for r in rows:
+        rec = json.loads((dl / f'committee-{r["committee_id"]}.json').read_text(encoding='utf-8'))['results'][0]
+        if rec['committee_id'] != r['committee_id']:
+            raise SystemExit(f'{r["committee_id"]}: the record is {rec["committee_id"]}; nothing written')
+        if rec['name'] != r['committee_name']:
+            renamed.append(f'{r["committee_name"]} ({r["committee_id"]}) now reads {rec["name"]}')
+        full = rec.get('party_full') or ''
+        if full and full not in PARTY_WORDS:
+            raise SystemExit(f'{r["committee_id"]}: party {full} has no reader word; nothing written')
+        r['party'], r['party_full'], r['party_words'] = rec.get('party') or '', full, PARTY_WORDS.get(full, '')
+        if full:
+            named.append(f'{r["committee_name"]} ({r["committee_type_words"]}, {PARTY_WORDS[full]})')
+    out = io.StringIO()
+    w = csv.DictWriter(out, fieldnames=head, lineterminator='\n')
+    w.writeheader()
+    w.writerows(rows)
+    if out.getvalue() != raw:
+        p.write_text(out.getvalue(), encoding='utf-8')
+        print(f'wrote {p.relative_to(ROOT)}')
+    print('party listed:', '; '.join(named))
+    meta, nl = load(FEC_IE)
+    cols = meta['columns']
+    new_cols = {}
+    for k, v in cols.items():
+        if k in ('party', 'party_full', 'party_words'):
+            continue
+        new_cols[k] = v
+        if k == 'committee_type_words':
+            new_cols['party'] = {'type': 'category', 'description': 'party code on the committee’s FEC record (DEM, REP); empty where the record lists none'}
+            new_cols['party_full'] = {'type': 'text', 'description': 'party as the committee’s FEC record lists it'}
+            new_cols['party_words'] = {'type': 'category', 'description': 'the party in a reader’s word (Democratic, Republican); empty where the record lists none'}
+    meta['columns'] = new_cols
+    meta['url'] = ['https://api.open.fec.gov/v1/totals/pac-party/?cycle=2024&sort=-independent_expenditures&per_page=40',
+                   'https://api.open.fec.gov/v1/committee/<committee_id>/']
+    meta['vintage'] = ('FEC processed data as served on November 11, 2026: the totals stand on the reports and amendments the commission had '
+                       'processed by then, every committee’s covering through December 31, 2024; a later amendment can change a total. '
+                       'Parties from the committee records as served November 12, 2026')
+    meta['qualification'] = ('Independent expenditures are spending for or against candidates made without coordinating with them; the totals '
+                             'count spending for and against together and leave out groups that are not political committees (filers of Form 5, '
+                             'such as some nonprofits). Money moved between committees is counted where it was spent. The party columns copy '
+                             'the party each committee’s FEC record lists: the three party committees list theirs, one hybrid PAC lists one, '
+                             'and the other 21 PACs list none')
+    meta['printed_source_line'] = ('Source: Federal Election Commission, financial totals for PACs and party committees, independent expenditures, '
+                                   '2023 to 2024 cycle, from reports the commission had processed by November 11, 2026, with each party committee’s '
+                                   'party from its committee record, United States. Retrieved November 11 and 12, 2026. Spending for and against '
+                                   'candidates together; groups that are not political committees are not included.')
+    set_note(meta, 'Parties read November 12, 2026',
+             'Parties read November 12, 2026 from each of the 25 committees’ records (api.open.fec.gov/v1/committee/<id>/, key injected by the '
+             f'network proxy; fetch log in the research lead’s scratch folder). Records that list a party: {"; ".join(named)}. The three party '
+             'committees’ records also give party type NATIONAL. SFA Fund, Inc. (C00828061) is a hybrid PAC whose record lists '
+             '"REPUBLICAN PARTY" with no party type; its filing frequency reads T. A chart that says the commission records no party for a PAC '
+             'is wrong for this one. The file keeps each name as the 2024 totals list it; four records carry a newer name: '
+             f'{"; ".join(renamed)}.')
+    save(FEC_IE, meta, nl)
+
+
+ITEMS = {'s24': item_s24, 's34': item_s34, 's31': item_s31, 's27': item_s27, 'bc_m3': item_bc_m3}
 
 
 def main(argv):

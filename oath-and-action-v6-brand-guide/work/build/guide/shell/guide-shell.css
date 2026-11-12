@@ -472,7 +472,8 @@ a.toc-part-k:hover { text-decoration: underline }
    oa-frame, so the stage switches by the room its frame gives it, never by the viewport: --w (328 px) in a narrower frame,
    --w2 (680 px) once the frame's content box holds it. The fragment composes for each width with @container oa-frame;
    nothing scales. data-width stays the narrow size, so the phone padding and the checks read it as before. */
-.plate-scroll[data-wide] { container: oa-frame / inline-size }
+/* frame_container (AX S5): a frame that is the container with one true size, so a fragment's prose follows the frame */
+.plate-scroll:is([data-wide], [data-frame-container]) { container: oa-frame / inline-size }
 @container oa-frame (min-width: 680px) { .plate-stage[data-wide] { width: var(--w2, var(--w)) } }
 .plate-pending { margin: 0; font: var(--oa-type-body-small) }
 .plate-fit { width: fit-content; margin: 0 auto }

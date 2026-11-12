@@ -6,6 +6,8 @@
 //                                          [--out DIR] [--no-png] [--date YYYYMMDD] [--specs DIR]
 //   node work/build/chart-kit/oa-chart.mjs check <ID|spec path>... [--all]
 //   node work/build/chart-kit/oa-chart.mjs fragments --in LIST.json --out OUT.json     (guide_build.py's hook)
+//   node work/build/chart-kit/oa-chart.mjs figure <spec path> --svg DESK.svg [--phone-svg PHONE.svg] [--id FID] [--out FILE]
+//                                          a drawing made outside the kit, set in the kit's figure (ED-E9, round 1 fix pass)
 //   node work/build/chart-kit/oa-chart.mjs self-test
 //
 // It never reads source/ or writes into the repository unless --out names a folder there.
@@ -60,6 +62,9 @@ function args(argv) {
     else if (a === '--date') o.date = argv[++i];
     else if (a === '--specs') o.specs = path.resolve(argv[++i]);
     else if (a === '--in') o.in = argv[++i];
+    else if (a === '--svg') o.svg = argv[++i];
+    else if (a === '--phone-svg') o.phone_svg = argv[++i];
+    else if (a === '--id') o.id = argv[++i];
     else o._.push(a);
   }
   if (!o.date) { const d = new Date(); o.date = `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`; }
@@ -576,6 +581,47 @@ async function self_test() {
   return bad ? 1 : 0;
 }
 
+// ED-E9 (round 1 fix pass): a drawing a script makes outside the kit, until a kit form draws it (Rule 14.9's intervals),
+// set inside the kit's own figure, so the plate prints the kit's anatomy, its bold "Source:", the credit and the table
+// from the spec, as every kit chart does. The spec passes the kit's word and data checks; the drawing takes the kit's role
+// classes only (the sketch format, R1-C1: no literal color, no style attribute or element, text at 13 px or more). The
+// figure is static: no island, nothing redraws, and its description names the drawing.
+export function static_figure(spec, desk, phone, fid) {
+  const faults = [];
+  const one = (svg, which) => {
+    svg = String(svg || '').trim();
+    if (!/^<svg\b[^>]*>[\s\S]*<\/svg>$/.test(svg)) { faults.push(`${which}: the file is not one <svg> element`); return ''; }
+    if (!/^<svg\b[^>]*\bclass="[^"]*\boac-svg\b/.test(svg)) faults.push(`${which}: the <svg> needs class="oac-svg", so kit.css colors it on both grounds and in forced colors`);
+    if (/\sstyle="|<style\b/.test(svg)) faults.push(`${which}: a style attribute or element; color and type come from the kit's role classes`);
+    if (/(?:fill|stroke)="#|(?:fill|stroke)="rgb|font-family=/.test(svg)) faults.push(`${which}: a literal color or font name; use the kit's role classes (oac-f-*, oac-s-*, oac-t)`);
+    for (const m of svg.matchAll(/font-size="([\d.]+)"/g)) if (+m[1] < 13) { faults.push(`${which}: text at ${m[1]} px; nothing under 13 px`); break; }
+    if (/\u2014/.test(svg)) faults.push(`${which}: an em dash`);
+    const w = /^<svg\b[^>]*\bwidth="([\d.]+)"/.exec(svg);
+    if (!w) faults.push(`${which}: the <svg> needs its width in px, its true size`);
+    return svg.replace(/^<svg\b/, `<svg role="img" aria-labelledby="${fid}-alt"`).replace(/\srole="img"(?=[^>]*role="img")/, '');
+  };
+  let svg = one(desk, 'the drawing');
+  let art = '';
+  if (phone) { svg = svg.replace('class="oac-svg', 'class="oac-svg oac-desk') + one(phone, 'the phone drawing').replace('class="oac-svg', 'class="oac-svg oac-phone'); art = ' data-oa-lean'; }
+  const html = K.figure(spec, spec._rows || [], { id: fid, svg, art_attrs: art + ' data-oa-static', guide: true })
+    .replace('<figure class="oac-fig"', '<figure class="oac-fig" data-oa-static');
+  return { html, faults };
+}
+async function figure_cmd(o) {
+  const sp = o._[0] ? spec_path(o._[0], o.specs) : null;
+  if (!sp || !o.svg) { console.error('usage: oa-chart.mjs figure <spec path> --svg DESK.svg [--phone-svg PHONE.svg] [--id FID] [--out FILE]'); return 2; }
+  const spec = JSON.parse(fs.readFileSync(sp, 'utf8'));
+  let chk;
+  try { chk = C.check_spec(K, spec, { spec_path: sp }); } catch (e) { console.error('FAIL spec: ' + e.message); return 1; }
+  const fid = o.id || ('oac-' + String(spec.id).toLowerCase());
+  const r = static_figure(Object.assign({}, spec, { _rows: chk.rows || [] }), fs.readFileSync(o.svg, 'utf8'), o.phone_svg ? fs.readFileSync(o.phone_svg, 'utf8') : null, fid);
+  const faults = chk.faults.concat(r.faults);
+  if (o.out && o.out !== SCRATCH) fs.writeFileSync(o.out, r.html + '\n'); else process.stdout.write(r.html + '\n');
+  for (const f of faults) console.error('  - ' + f);
+  console.error(`${faults.length ? 'FAIL' : 'PASS'} ${spec.id} static figure: ${(chk.rows || []).length} rows, ${faults.length} faults`);
+  return faults.length ? 1 : 0;
+}
+
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (isMain) {
   const [cmd, ...rest] = process.argv.slice(2);
@@ -584,7 +630,8 @@ if (isMain) {
   if (cmd === 'build') code = await build(o, false);
   else if (cmd === 'check') code = await build(o, true);
   else if (cmd === 'fragments') code = await fragments(o);
+  else if (cmd === 'figure') code = await figure_cmd(o);
   else if (cmd === 'self-test') code = await self_test();
-  else console.error('usage: oa-chart.mjs build|check|fragments|self-test ...');
+  else console.error('usage: oa-chart.mjs build|check|fragments|figure|self-test ...');
   process.exit(code);
 }
