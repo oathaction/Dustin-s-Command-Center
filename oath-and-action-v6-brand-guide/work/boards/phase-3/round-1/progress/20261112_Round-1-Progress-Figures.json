@@ -1,0 +1,953 @@
+{
+ "built": "2026-11-12T16:15:13.354156+00:00",
+ "guide_build": {
+  "exit": 0,
+  "bytes": 10017051,
+  "rules": 265,
+  "specimens": 554,
+  "warnings": 0,
+  "built": "2026-11-12T16:15:19"
+ },
+ "kit_builds": {
+  "rebuilt": [],
+  "reused": [
+   "S17",
+   "S18",
+   "S19",
+   "S20",
+   "S21",
+   "S22",
+   "S23",
+   "S24",
+   "S25",
+   "S26",
+   "S27",
+   "S28",
+   "S29",
+   "S30",
+   "S31",
+   "S32",
+   "S33",
+   "S34",
+   "S35",
+   "S36",
+   "S37",
+   "S38",
+   "S39",
+   "S40",
+   "S41",
+   "S42"
+  ]
+ },
+ "shots": {
+  "taken": [],
+  "reused": [
+   "ch14-opener",
+   "ch15-15.1-correct-1440",
+   "ch15-15.1-correct-390",
+   "ch15-15.1-failure-1440",
+   "ch15-15.1-failure-390",
+   "ch15-15.10-correct-1440",
+   "ch15-15.10-correct-390",
+   "ch15-15.10-failure-1440",
+   "ch15-15.10-failure-390",
+   "ch15-15.13-correct-1440",
+   "ch15-15.13-correct-390",
+   "ch15-15.13-failure-1440",
+   "ch15-15.13-failure-390",
+   "ch15-15.14-correct-1440",
+   "ch15-15.14-correct-390",
+   "ch15-15.14-failure-1440",
+   "ch15-15.14-failure-390",
+   "ch15-15.2-correct-1440",
+   "ch15-15.2-correct-390",
+   "ch15-15.2-failure-1440",
+   "ch15-15.2-failure-390",
+   "ch15-15.3-correct-1440",
+   "ch15-15.3-correct-390",
+   "ch15-15.3-failure-1440",
+   "ch15-15.3-failure-390",
+   "ch15-15.4-correct-1440",
+   "ch15-15.4-correct-390",
+   "ch15-15.4-failure-1440",
+   "ch15-15.4-failure-390",
+   "ch15-15.5-correct-1440",
+   "ch15-15.5-correct-390",
+   "ch15-15.5-failure-1440",
+   "ch15-15.5-failure-390",
+   "ch15-15.6-correct-1440",
+   "ch15-15.6-correct-390",
+   "ch15-15.6-failure-1440",
+   "ch15-15.6-failure-390",
+   "ch15-15.7-correct-1440",
+   "ch15-15.7-correct-390",
+   "ch15-15.7-failure-1440",
+   "ch15-15.7-failure-390",
+   "ch15-15.8-correct-1440",
+   "ch15-15.8-correct-390",
+   "ch15-15.8-failure-1440",
+   "ch15-15.8-failure-390",
+   "ch15-15.9-correct-1440",
+   "ch15-15.9-correct-390",
+   "ch15-15.9-failure-1440",
+   "ch15-15.9-failure-390",
+   "ch15-opener-1440",
+   "ch15-opener-390",
+   "entry-14.16-1440",
+   "entry-14.16-390",
+   "plate-14.1-correct",
+   "plate-14.1-failure",
+   "plate-14.10-correct",
+   "plate-14.10-failure",
+   "plate-14.11-correct",
+   "plate-14.11-failure",
+   "plate-14.12-correct",
+   "plate-14.12-failure",
+   "plate-14.13-correct",
+   "plate-14.13-failure",
+   "plate-14.14-correct",
+   "plate-14.14-failure",
+   "plate-14.2-correct",
+   "plate-14.2-failure",
+   "plate-14.3-correct",
+   "plate-14.3-failure",
+   "plate-14.4-correct",
+   "plate-14.4-failure",
+   "plate-14.5-correct",
+   "plate-14.5-failure",
+   "plate-14.6-correct",
+   "plate-14.6-failure",
+   "plate-14.7-correct",
+   "plate-14.7-failure",
+   "plate-14.8-correct",
+   "plate-14.8-failure",
+   "plate-14.9-correct",
+   "plate-14.9-failure",
+   "sketch-14.24",
+   "sketch-14.43",
+   "sketch-14.44",
+   "sketch-14.45"
+  ]
+ },
+ "round3": {
+  "data_rows": 20,
+  "frozen_rows": 14,
+  "waiting_rows": [
+   107,
+   108,
+   109,
+   110,
+   111,
+   112
+  ],
+  "files_named": [
+   "cms-medicaid-chip-renewal-outcomes",
+   "govinfo-federal-rulemaking-steps",
+   "v7-rcv-local-routes",
+   "v7-pathway-electric-decision-makers",
+   "v7-routes",
+   "v7-links-with-regions",
+   "v7-region-connection-matrix",
+   "clerk-house-committees-119",
+   "uscode-federal-courts-circuits-districts",
+   "usgov-route-requirements",
+   "congress-hr5371-roll-calls-by-member",
+   "fec-jfc-transfers-2024",
+   "congress-gov-pbm-bills-119",
+   "fec-house-campaigns-2024-by-candidate",
+   "fec-house-campaigns-2024-money-in-out",
+   "govinfo-snap-application-steps",
+   "census-acs-broadband-by-state",
+   "census-gazetteer-2024-places",
+   "census-gazetteer-2024-cd119",
+   "clerk-house-results-2024-by-candidate",
+   "clerk-house-results-2024-by-district",
+   "census-acs5-county-median-household-income",
+   "census-cbp-county-employment",
+   "dol-state-minimum-wage-history",
+   "census-cb-2024-states",
+   "census-cb-2024-counties",
+   "census-cb-2024-cd119"
+  ],
+  "files_frozen": [
+   "census-acs-broadband-by-state",
+   "census-acs5-county-median-household-income",
+   "census-cbp-county-employment",
+   "census-gazetteer-2024-cd119",
+   "census-gazetteer-2024-places",
+   "clerk-house-committees-119",
+   "clerk-house-results-2024-by-candidate",
+   "clerk-house-results-2024-by-district",
+   "cms-medicaid-chip-renewal-outcomes",
+   "congress-gov-pbm-bills-119",
+   "congress-hr5371-roll-calls-by-member",
+   "dol-state-minimum-wage-history",
+   "fec-house-campaigns-2024-by-candidate",
+   "fec-house-campaigns-2024-money-in-out",
+   "fec-jfc-transfers-2024",
+   "govinfo-federal-rulemaking-steps",
+   "govinfo-snap-application-steps",
+   "uscode-federal-courts-circuits-districts",
+   "usgov-route-requirements",
+   "v7-links-with-regions",
+   "v7-pathway-electric-decision-makers",
+   "v7-rcv-local-routes",
+   "v7-region-connection-matrix",
+   "v7-routes"
+  ],
+  "files_waiting": [
+   "census-cb-2024-states",
+   "census-cb-2024-counties",
+   "census-cb-2024-cd119"
+  ]
+ },
+ "dol": {
+  "file": "work/build/data/dol-state-minimum-wage-history.csv",
+  "rows": 2145,
+  "ledger_row": "P7-223"
+ },
+ "round": {
+  "entries": 41,
+  "new": 26,
+  "built": 11,
+  "sketches": 4,
+  "new_ids": [
+   "S17",
+   "S18",
+   "S19",
+   "S20",
+   "S21",
+   "S22",
+   "S23",
+   "S24",
+   "S25",
+   "S26",
+   "S27",
+   "S28",
+   "S29",
+   "S30",
+   "S31",
+   "S32",
+   "S33",
+   "S34",
+   "S35",
+   "S36",
+   "S37",
+   "S38",
+   "S39",
+   "S40",
+   "S41",
+   "S42"
+  ],
+  "chapter_rules": [
+   "14.1",
+   "14.2",
+   "14.3",
+   "14.4",
+   "14.5",
+   "14.6",
+   "14.7",
+   "14.8",
+   "14.9",
+   "14.10",
+   "14.11",
+   "14.12",
+   "14.13",
+   "14.14"
+  ],
+  "rule_plates": 28,
+  "ch15_rules": [
+   "15.1",
+   "15.2",
+   "15.3",
+   "15.4",
+   "15.5",
+   "15.6",
+   "15.7",
+   "15.8",
+   "15.9",
+   "15.10",
+   "15.13",
+   "15.14"
+  ],
+  "ch15_plates": 25
+ },
+ "charts": {
+  "S17": {
+   "rule": "14.16",
+   "form": "Column",
+   "maker": "A",
+   "title": "The 118th Congress enacted 274 public laws in 2023 and 2024, the fewest of the ten Congresses charted.",
+   "bytes_in_guide": 4155,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 10,
+   "title_from": "guide"
+  },
+  "S18": {
+   "rule": "14.17",
+   "form": "Bar with a benchmark tick",
+   "maker": "A",
+   "title": "The highest-income fifth of households received 51.6 percent of all household income in 2025, and the lowest fifth received 3.0 percent.",
+   "bytes_in_guide": 3992,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 5,
+   "title_from": "guide"
+  },
+  "S19": {
+   "rule": "14.18",
+   "form": "Dot plot",
+   "maker": "A",
+   "title": "State imprisonment rates at the end of 2023 ran from 96 sentenced prisoners per 100,000 residents in Massachusetts to 652 in Mississippi.",
+   "bytes_in_guide": 10501,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 51,
+   "title_from": "guide"
+  },
+  "S20": {
+   "rule": "14.20",
+   "form": "Slope chart",
+   "maker": "A",
+   "title": "Householders under 35 owned their homes at 37.0 percent in 2025, up 2.0 points from 2015 and still the lowest of five age groups.",
+   "bytes_in_guide": 4187,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 10,
+   "title_from": "guide"
+  },
+  "S21": {
+   "rule": "14.21",
+   "form": "Lollipop",
+   "maker": "A",
+   "title": "Of the atlas’s 16 everyday answers, voting and public influence rests on the most claims, 42, and roads, bridges and transit on the fewest, 13.",
+   "bytes_in_guide": 5677,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 16,
+   "title_from": "guide"
+  },
+  "S22": {
+   "rule": "14.22",
+   "form": "Grouped bar",
+   "maker": "A",
+   "title": "Women’s labor force participation trailed men’s in every age group from 22 on in 2025, by as much as 9.7 points at ages 60 and 61.",
+   "bytes_in_guide": 4844,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 26,
+   "title_from": "guide"
+  },
+  "S23": {
+   "rule": "14.23",
+   "form": "Small-multiple bars",
+   "maker": "A",
+   "title": "Of the atlas’s five topic hubs, “Public services where you live” has the largest share of documented claims, 84.5 percent, and “Voice, power and information” the smallest, 67.2.",
+   "bytes_in_guide": 6107,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 20,
+   "title_from": "guide"
+  },
+  "S24": {
+   "rule": "14.26",
+   "form": "Change lollipop with a size-of-shift key",
+   "maker": "B",
+   "title": "Applications to start a business rose in every state and DC from 2019 to 2025, by 62 percent nationwide and most in Wyoming, where they quadrupled.",
+   "bytes_in_guide": 9265,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 52,
+   "title_from": "guide"
+  },
+  "S25": {
+   "rule": "14.27",
+   "form": "Diverging bar",
+   "maker": "B",
+   "title": "Federal agencies had 130,369 fewer civilian employees in August 2026 than in January 2022, and 33 of the 37 largest in January 2022 shrank.",
+   "bytes_in_guide": 23326,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 130,
+   "title_from": "guide"
+  },
+  "S26": {
+   "rule": "14.28",
+   "form": "Diverging bar with arrows over time",
+   "maker": "B",
+   "title": "The House majority opened the 119th Congress in 2025 with five more seats than the minority, its smallest lead at the start of any Congress since 1951.",
+   "bytes_in_guide": 9492,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 38,
+   "title_from": "guide"
+  },
+  "S27": {
+   "rule": "14.31",
+   "form": "Line field with highlight",
+   "maker": "B",
+   "title": "Home prices rose in every state and DC from 1991 to 2026, most in Montana, where they grew more than sevenfold.",
+   "bytes_in_guide": 13658,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 408,
+   "title_from": "guide"
+  },
+  "S28": {
+   "rule": "14.33",
+   "form": "Sparkline",
+   "maker": "B",
+   "title": "Civic and social organizations with paid staff ran 24,698 locations in 2023, 23 percent fewer than in 1998.",
+   "bytes_in_guide": 5849,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 26,
+   "title_from": "guide"
+  },
+  "S29": {
+   "rule": "14.35",
+   "form": "Area chart",
+   "maker": "B",
+   "title": "Newspaper publishers employed 91,350 people in 2023, less than a quarter of the 401,373 they employed in 1998.",
+   "bytes_in_guide": 5210,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 26,
+   "title_from": "guide"
+  },
+  "S30": {
+   "rule": "14.36",
+   "form": "Step line",
+   "maker": "B",
+   "title": "Congress has changed the child tax credit’s top amount three times since 2017, most recently to $2,200 per child from 2025.",
+   "bytes_in_guide": 6098,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 10,
+   "title_from": "guide"
+  },
+  "S31": {
+   "rule": "14.37",
+   "form": "Line with a data gap marked",
+   "maker": "B",
+   "title": "The unemployment rate stood at 4.1 percent in October 2026, and the government published no rate for October 2025.",
+   "bytes_in_guide": 7631,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 58,
+   "title_from": "guide"
+  },
+  "S32": {
+   "rule": "14.39",
+   "form": "Implementation timeline",
+   "maker": "B",
+   "title": "Congress set the 2026 law’s rules for pharmacy benefit managers to start on four dates, from an August 2027 deadline for federal rules to January 2029.",
+   "bytes_in_guide": 6962,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 6,
+   "title_from": "guide"
+  },
+  "S33": {
+   "rule": "14.40",
+   "form": "Indexed line",
+   "maker": "B",
+   "title": "Customs duties grew fastest of the federal government’s revenue sources from fiscal 2016 to 2026, to almost five times their 2016 level.",
+   "bytes_in_guide": 17357,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 110,
+   "title_from": "guide"
+  },
+  "S34": {
+   "rule": "14.41",
+   "form": "Bubble timeline",
+   "maker": "B",
+   "title": "The Senate held 298 votes to end debate in 2019 and 2020, after no more than seven in any Congress before 1971.",
+   "bytes_in_guide": 10742,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 55,
+   "title_from": "guide"
+  },
+  "S35": {
+   "rule": "14.42",
+   "form": "Benefit-cliff line",
+   "maker": "B",
+   "title": "In this invented budget, a raise from $36,000 to $37,000 leaves a family $8,386 a year worse off, because its child care help ends.",
+   "bytes_in_guide": 10074,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 61,
+   "title_from": "guide"
+  },
+  "S36": {
+   "rule": "14.126",
+   "form": "Ranked register",
+   "maker": "A",
+   "title": "FF PAC, a hybrid PAC, reported $503.3 million in independent spending for the 2024 federal elections, the most of any PAC or party committee.",
+   "bytes_in_guide": 8722,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 25,
+   "title_from": "guide"
+  },
+  "S37": {
+   "rule": "14.129",
+   "form": "Heat table",
+   "maker": "A",
+   "title": "Of 38 routes through an act of Congress, the atlas rates 36 low or very low in feasibility for 2026 to 2030.",
+   "bytes_in_guide": 14783,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 126,
+   "title_from": "guide"
+  },
+  "S38": {
+   "rule": "14.130",
+   "form": "Filterable lookup table",
+   "maker": "A",
+   "title": "Of the atlas’s 17 issue records on news, records and public information, two are documented, eight well supported, six plausible and one a hypothesis.",
+   "bytes_in_guide": 10004,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 17,
+   "title_from": "guide"
+  },
+  "S39": {
+   "rule": "14.131",
+   "form": "Evidence table",
+   "maker": "A",
+   "title": "The atlas grades 10 of its 11 claims about drug middlemen and prices documented, and the eleventh, on generic competition, well supported.",
+   "bytes_in_guide": 10198,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 11,
+   "title_from": "guide"
+  },
+  "S40": {
+   "rule": "14.132",
+   "form": "Tracker list",
+   "maker": "A",
+   "title": "Of eight housing bills that moved past committee referral in the 119th Congress, two had become law by November 11, 2026.",
+   "bytes_in_guide": 8689,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 8,
+   "title_from": "guide"
+  },
+  "S41": {
+   "rule": "14.133",
+   "form": "Plain table",
+   "maker": "A",
+   "title": "Republican and Democratic voters favored a ban on stock trading by members of Congress at almost the same rate in a May 2023 survey, 87 and 88 percent.",
+   "bytes_in_guide": 3350,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 3,
+   "title_from": "guide"
+  },
+  "S42": {
+   "rule": "14.134",
+   "form": "One sentence",
+   "maker": "A",
+   "title": "In a May 2023 survey of 2,625 registered voters, 87 percent of Republicans and 88 percent of Democrats favored a ban on stock trading by members of Congress.",
+   "bytes_in_guide": 2396,
+   "faults": 0,
+   "drawings": 4,
+   "rows": 2,
+   "title_from": "spec"
+  }
+ },
+ "sketches": {
+  "14.24": {
+   "specimen": "s-14-24-sketch",
+   "heading": "Radar chart, a form that misleads",
+   "kind": "avoid"
+  },
+  "14.43": {
+   "specimen": "s-14-43-sketch",
+   "heading": "Run chart, a sketch",
+   "kind": "sketch"
+  },
+  "14.44": {
+   "specimen": "s-14-44-sketch",
+   "heading": "Cycle or seasonal chart, a sketch",
+   "kind": "sketch"
+  },
+  "14.45": {
+   "specimen": "s-14-45-sketch",
+   "heading": "Streamgraph, a form that misleads",
+   "kind": "avoid"
+  }
+ },
+ "rules": {
+  "14.1": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2349
+   ]
+  },
+  "14.2": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2418
+   ]
+  },
+  "14.3": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1936
+   ]
+  },
+  "14.4": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1834
+   ]
+  },
+  "14.5": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1589
+   ]
+  },
+  "14.6": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1902
+   ]
+  },
+  "14.7": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1514
+   ]
+  },
+  "14.8": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1716
+   ]
+  },
+  "14.9": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1943
+   ]
+  },
+  "14.10": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1814
+   ]
+  },
+  "14.11": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1675
+   ]
+  },
+  "14.12": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1994
+   ]
+  },
+  "14.13": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1872
+   ]
+  },
+  "14.14": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1259
+   ]
+  }
+ },
+ "cd": {
+  "first": null,
+  "rescore": null
+ },
+ "red_teams": [
+  {
+   "name": "Statistics and civic education",
+   "state": "ready",
+   "score": 3,
+   "must_fix": 5,
+   "should_fix": 13,
+   "file": "work/handoffs/phase-3/20261112_Round-1-Red-Team-Statistics-Civic.md"
+  },
+  {
+   "name": "Fairness, brand and craft",
+   "state": "waiting",
+   "score": null,
+   "must_fix": null,
+   "should_fix": null,
+   "file": "work/handoffs/phase-3/20261112_Round-1-Red-Team-Brand-Craft.md"
+  },
+  {
+   "name": "Access and the test with simulated users",
+   "state": "waiting",
+   "score": null,
+   "must_fix": null,
+   "should_fix": null,
+   "file": "work/handoffs/phase-3/20261112_Round-1-Red-Team-Access-Production.md"
+  }
+ ],
+ "weight": {
+  "chapter_14": 792010,
+  "stop": 2803941,
+  "per_plate": 16537,
+  "plates_to_come": 61,
+  "chapter_15": 229072,
+  "chapter_15_ceiling": 600000.0,
+  "page": 10017051,
+  "projected": 15041533,
+  "budget": 15500000.0
+ },
+ "tested": {
+  "work/handoffs/phase-3/20261112_Round-1-Maker-A-Notes.md": {
+   "tested": 24,
+   "not": 8
+  },
+  "work/handoffs/phase-3/20261112_Round-1-Maker-B-Notes.md": {
+   "tested": 14,
+   "not": 7
+  },
+  "work/handoffs/phase-3/20261112_Round-1-Editor-Notes.md": {
+   "tested": 14,
+   "not": 8
+  },
+  "work/handoffs/phase-3/20261112_Round-1-Engineer-Notes.md": {
+   "tested": 10,
+   "not": 4
+  },
+  "work/handoffs/phase-3/20261112_Round-1-Systems-Designer-Notes.md": {
+   "tested": 14,
+   "not": 7
+  },
+  "work/handoffs/phase-3/20261112_Round-1-Research-Notes.md": {
+   "tested": 24,
+   "not": 18
+  },
+  "work/handoffs/phase-3/20261112_Round-1-Data-Lead-Notes.md": {
+   "tested": 7,
+   "not": 10
+  },
+  "work/handoffs/phase-3/20261112_Round-1-Red-Team-Statistics-Civic.md": {
+   "tested": 13,
+   "not": 8
+  },
+  "work/handoffs/phase-3/20261112_CD-Review-Of-Round-1.md": {
+   "tested": 12,
+   "not": 6
+  }
+ },
+ "tokens_used": 110,
+ "page": "work/boards/phase-3/round-1/progress/20261112_Round-1-Progress.html",
+ "html_bytes": 184685,
+ "images": 98,
+ "image_bytes": 32463562,
+ "folder_files": 102,
+ "folder_bytes": 32692880,
+ "largest_image": [
+  1261899,
+  "20261112_Chart-14-129-Newsprint.png"
+ ],
+ "status": {
+  "round": "ready",
+  "charts": "ready",
+  "entry": "ready",
+  "sketches": "ready",
+  "rules": "ready",
+  "ch15": "ready",
+  "scores": [
+   "waiting",
+   "cd"
+  ],
+  "weight": "ready",
+  "tested": [
+   "partial",
+   "notes"
+  ],
+  "next": "ready"
+ },
+ "image_sources": {
+  "img/20261112_Chart-14-16-Newsprint.png": "[scratch]/kit-out/s17/s17-newsprint-1440.png, [scratch]/kit-out/s17/s17-newsprint-390.png",
+  "img/20261112_Chart-14-16-Charcoal.png": "[scratch]/kit-out/s17/s17-charcoal-1440.png, [scratch]/kit-out/s17/s17-charcoal-390.png",
+  "img/20261112_Chart-14-17-Newsprint.png": "[scratch]/kit-out/s18/s18-newsprint-1440.png, [scratch]/kit-out/s18/s18-newsprint-390.png",
+  "img/20261112_Chart-14-17-Charcoal.png": "[scratch]/kit-out/s18/s18-charcoal-1440.png, [scratch]/kit-out/s18/s18-charcoal-390.png",
+  "img/20261112_Chart-14-18-Newsprint.png": "[scratch]/kit-out/s19/s19-newsprint-1440.png, [scratch]/kit-out/s19/s19-newsprint-390.png",
+  "img/20261112_Chart-14-18-Charcoal.png": "[scratch]/kit-out/s19/s19-charcoal-1440.png, [scratch]/kit-out/s19/s19-charcoal-390.png",
+  "img/20261112_Chart-14-20-Newsprint.png": "[scratch]/kit-out/s20/s20-newsprint-1440.png, [scratch]/kit-out/s20/s20-newsprint-390.png",
+  "img/20261112_Chart-14-20-Charcoal.png": "[scratch]/kit-out/s20/s20-charcoal-1440.png, [scratch]/kit-out/s20/s20-charcoal-390.png",
+  "img/20261112_Chart-14-21-Newsprint.png": "[scratch]/kit-out/s21/s21-newsprint-1440.png, [scratch]/kit-out/s21/s21-newsprint-390.png",
+  "img/20261112_Chart-14-21-Charcoal.png": "[scratch]/kit-out/s21/s21-charcoal-1440.png, [scratch]/kit-out/s21/s21-charcoal-390.png",
+  "img/20261112_Chart-14-22-Newsprint.png": "[scratch]/kit-out/s22/s22-newsprint-1440.png, [scratch]/kit-out/s22/s22-newsprint-390.png",
+  "img/20261112_Chart-14-22-Charcoal.png": "[scratch]/kit-out/s22/s22-charcoal-1440.png, [scratch]/kit-out/s22/s22-charcoal-390.png",
+  "img/20261112_Chart-14-23-Newsprint.png": "[scratch]/kit-out/s23/s23-newsprint-1440.png, [scratch]/kit-out/s23/s23-newsprint-390.png",
+  "img/20261112_Chart-14-23-Charcoal.png": "[scratch]/kit-out/s23/s23-charcoal-1440.png, [scratch]/kit-out/s23/s23-charcoal-390.png",
+  "img/20261112_Chart-14-26-Newsprint.png": "[scratch]/kit-out/s24/s24-newsprint-1440.png, [scratch]/kit-out/s24/s24-newsprint-390.png",
+  "img/20261112_Chart-14-26-Charcoal.png": "[scratch]/kit-out/s24/s24-charcoal-1440.png, [scratch]/kit-out/s24/s24-charcoal-390.png",
+  "img/20261112_Chart-14-27-Newsprint.png": "[scratch]/kit-out/s25/s25-newsprint-1440.png, [scratch]/kit-out/s25/s25-newsprint-390.png",
+  "img/20261112_Chart-14-27-Charcoal.png": "[scratch]/kit-out/s25/s25-charcoal-1440.png, [scratch]/kit-out/s25/s25-charcoal-390.png",
+  "img/20261112_Chart-14-28-Newsprint.png": "[scratch]/kit-out/s26/s26-newsprint-1440.png, [scratch]/kit-out/s26/s26-newsprint-390.png",
+  "img/20261112_Chart-14-28-Charcoal.png": "[scratch]/kit-out/s26/s26-charcoal-1440.png, [scratch]/kit-out/s26/s26-charcoal-390.png",
+  "img/20261112_Chart-14-31-Newsprint.png": "[scratch]/kit-out/s27/s27-newsprint-1440.png, [scratch]/kit-out/s27/s27-newsprint-390.png",
+  "img/20261112_Chart-14-31-Charcoal.png": "[scratch]/kit-out/s27/s27-charcoal-1440.png, [scratch]/kit-out/s27/s27-charcoal-390.png",
+  "img/20261112_Chart-14-33-Newsprint.png": "[scratch]/kit-out/s28/s28-newsprint-1440.png, [scratch]/kit-out/s28/s28-newsprint-390.png",
+  "img/20261112_Chart-14-33-Charcoal.png": "[scratch]/kit-out/s28/s28-charcoal-1440.png, [scratch]/kit-out/s28/s28-charcoal-390.png",
+  "img/20261112_Chart-14-35-Newsprint.png": "[scratch]/kit-out/s29/s29-newsprint-1440.png, [scratch]/kit-out/s29/s29-newsprint-390.png",
+  "img/20261112_Chart-14-35-Charcoal.png": "[scratch]/kit-out/s29/s29-charcoal-1440.png, [scratch]/kit-out/s29/s29-charcoal-390.png",
+  "img/20261112_Chart-14-36-Newsprint.png": "[scratch]/kit-out/s30/s30-newsprint-1440.png, [scratch]/kit-out/s30/s30-newsprint-390.png",
+  "img/20261112_Chart-14-36-Charcoal.png": "[scratch]/kit-out/s30/s30-charcoal-1440.png, [scratch]/kit-out/s30/s30-charcoal-390.png",
+  "img/20261112_Chart-14-37-Newsprint.png": "[scratch]/kit-out/s31/s31-newsprint-1440.png, [scratch]/kit-out/s31/s31-newsprint-390.png",
+  "img/20261112_Chart-14-37-Charcoal.png": "[scratch]/kit-out/s31/s31-charcoal-1440.png, [scratch]/kit-out/s31/s31-charcoal-390.png",
+  "img/20261112_Chart-14-39-Newsprint.png": "[scratch]/kit-out/s32/s32-newsprint-1440.png, [scratch]/kit-out/s32/s32-newsprint-390.png",
+  "img/20261112_Chart-14-39-Charcoal.png": "[scratch]/kit-out/s32/s32-charcoal-1440.png, [scratch]/kit-out/s32/s32-charcoal-390.png",
+  "img/20261112_Chart-14-40-Newsprint.png": "[scratch]/kit-out/s33/s33-newsprint-1440.png, [scratch]/kit-out/s33/s33-newsprint-390.png",
+  "img/20261112_Chart-14-40-Charcoal.png": "[scratch]/kit-out/s33/s33-charcoal-1440.png, [scratch]/kit-out/s33/s33-charcoal-390.png",
+  "img/20261112_Chart-14-41-Newsprint.png": "[scratch]/kit-out/s34/s34-newsprint-1440.png, [scratch]/kit-out/s34/s34-newsprint-390.png",
+  "img/20261112_Chart-14-41-Charcoal.png": "[scratch]/kit-out/s34/s34-charcoal-1440.png, [scratch]/kit-out/s34/s34-charcoal-390.png",
+  "img/20261112_Chart-14-42-Newsprint.png": "[scratch]/kit-out/s35/s35-newsprint-1440.png, [scratch]/kit-out/s35/s35-newsprint-390.png",
+  "img/20261112_Chart-14-42-Charcoal.png": "[scratch]/kit-out/s35/s35-charcoal-1440.png, [scratch]/kit-out/s35/s35-charcoal-390.png",
+  "img/20261112_Chart-14-126-Newsprint.png": "[scratch]/kit-out/s36/s36-newsprint-1440.png, [scratch]/kit-out/s36/s36-newsprint-390.png",
+  "img/20261112_Chart-14-126-Charcoal.png": "[scratch]/kit-out/s36/s36-charcoal-1440.png, [scratch]/kit-out/s36/s36-charcoal-390.png",
+  "img/20261112_Chart-14-129-Newsprint.png": "[scratch]/kit-out/s37/s37-newsprint-1440.png, [scratch]/kit-out/s37/s37-newsprint-390.png",
+  "img/20261112_Chart-14-129-Charcoal.png": "[scratch]/kit-out/s37/s37-charcoal-1440.png, [scratch]/kit-out/s37/s37-charcoal-390.png",
+  "img/20261112_Chart-14-130-Newsprint.png": "[scratch]/kit-out/s38/s38-newsprint-1440.png, [scratch]/kit-out/s38/s38-newsprint-390.png",
+  "img/20261112_Chart-14-130-Charcoal.png": "[scratch]/kit-out/s38/s38-charcoal-1440.png, [scratch]/kit-out/s38/s38-charcoal-390.png",
+  "img/20261112_Chart-14-131-Newsprint.png": "[scratch]/kit-out/s39/s39-newsprint-1440.png, [scratch]/kit-out/s39/s39-newsprint-390.png",
+  "img/20261112_Chart-14-131-Charcoal.png": "[scratch]/kit-out/s39/s39-charcoal-1440.png, [scratch]/kit-out/s39/s39-charcoal-390.png",
+  "img/20261112_Chart-14-132-Newsprint.png": "[scratch]/kit-out/s40/s40-newsprint-1440.png, [scratch]/kit-out/s40/s40-newsprint-390.png",
+  "img/20261112_Chart-14-132-Charcoal.png": "[scratch]/kit-out/s40/s40-charcoal-1440.png, [scratch]/kit-out/s40/s40-charcoal-390.png",
+  "img/20261112_Chart-14-133-Newsprint.png": "[scratch]/kit-out/s41/s41-newsprint-1440.png, [scratch]/kit-out/s41/s41-newsprint-390.png",
+  "img/20261112_Chart-14-133-Charcoal.png": "[scratch]/kit-out/s41/s41-charcoal-1440.png, [scratch]/kit-out/s41/s41-charcoal-390.png",
+  "img/20261112_Chart-14-134-Newsprint.png": "[scratch]/kit-out/s42/s42-newsprint-1440.png, [scratch]/kit-out/s42/s42-newsprint-390.png",
+  "img/20261112_Chart-14-134-Charcoal.png": "[scratch]/kit-out/s42/s42-charcoal-1440.png, [scratch]/kit-out/s42/s42-charcoal-390.png",
+  "img/20261112_Entry-14-16-1440.png": "[scratch]/shots/entry-14.16-1440.png",
+  "img/20261112_Entry-14-16-390.png": "[scratch]/shots/entry-14.16-390.png",
+  "img/20261112_Sketch-14-24.png": "[scratch]/shots/sketch-14.24.png",
+  "img/20261112_Sketch-14-43.png": "[scratch]/shots/sketch-14.43.png",
+  "img/20261112_Sketch-14-44.png": "[scratch]/shots/sketch-14.44.png",
+  "img/20261112_Sketch-14-45.png": "[scratch]/shots/sketch-14.45.png",
+  "img/20261112_Ch14-Opener.png": "[scratch]/shots/ch14-opener.png",
+  "img/20261112_Rule-14-1-Plates.png": "[scratch]/shots/plate-14.1-correct.png, [scratch]/shots/plate-14.1-failure.png",
+  "img/20261112_Rule-14-2-Plates.png": "[scratch]/shots/plate-14.2-correct.png, [scratch]/shots/plate-14.2-failure.png",
+  "img/20261112_Rule-14-3-Plates.png": "[scratch]/shots/plate-14.3-correct.png, [scratch]/shots/plate-14.3-failure.png",
+  "img/20261112_Rule-14-4-Plates.png": "[scratch]/shots/plate-14.4-correct.png, [scratch]/shots/plate-14.4-failure.png",
+  "img/20261112_Rule-14-5-Plates.png": "[scratch]/shots/plate-14.5-correct.png, [scratch]/shots/plate-14.5-failure.png",
+  "img/20261112_Rule-14-6-Plates.png": "[scratch]/shots/plate-14.6-correct.png, [scratch]/shots/plate-14.6-failure.png",
+  "img/20261112_Rule-14-7-Plates.png": "[scratch]/shots/plate-14.7-correct.png, [scratch]/shots/plate-14.7-failure.png",
+  "img/20261112_Rule-14-8-Plates.png": "[scratch]/shots/plate-14.8-correct.png, [scratch]/shots/plate-14.8-failure.png",
+  "img/20261112_Rule-14-9-Plates.png": "[scratch]/shots/plate-14.9-correct.png, [scratch]/shots/plate-14.9-failure.png",
+  "img/20261112_Rule-14-10-Plates.png": "[scratch]/shots/plate-14.10-correct.png, [scratch]/shots/plate-14.10-failure.png",
+  "img/20261112_Rule-14-11-Plates.png": "[scratch]/shots/plate-14.11-correct.png, [scratch]/shots/plate-14.11-failure.png",
+  "img/20261112_Rule-14-12-Plates.png": "[scratch]/shots/plate-14.12-correct.png, [scratch]/shots/plate-14.12-failure.png",
+  "img/20261112_Rule-14-13-Plates.png": "[scratch]/shots/plate-14.13-correct.png, [scratch]/shots/plate-14.13-failure.png",
+  "img/20261112_Rule-14-14-Plates.png": "[scratch]/shots/plate-14.14-correct.png, [scratch]/shots/plate-14.14-failure.png",
+  "img/20261112_Ch15-Opener.png": "[scratch]/shots/ch15-opener-1440.png, [scratch]/shots/ch15-opener-390.png",
+  "img/20261112_Ch15-15-1-Correct.png": "[scratch]/shots/ch15-15.1-correct-1440.png, [scratch]/shots/ch15-15.1-correct-390.png",
+  "img/20261112_Ch15-15-1-Failure.png": "[scratch]/shots/ch15-15.1-failure-1440.png, [scratch]/shots/ch15-15.1-failure-390.png",
+  "img/20261112_Ch15-15-2-Correct.png": "[scratch]/shots/ch15-15.2-correct-1440.png, [scratch]/shots/ch15-15.2-correct-390.png",
+  "img/20261112_Ch15-15-2-Failure.png": "[scratch]/shots/ch15-15.2-failure-1440.png, [scratch]/shots/ch15-15.2-failure-390.png",
+  "img/20261112_Ch15-15-3-Correct.png": "[scratch]/shots/ch15-15.3-correct-1440.png, [scratch]/shots/ch15-15.3-correct-390.png",
+  "img/20261112_Ch15-15-3-Failure.png": "[scratch]/shots/ch15-15.3-failure-1440.png, [scratch]/shots/ch15-15.3-failure-390.png",
+  "img/20261112_Ch15-15-4-Correct.png": "[scratch]/shots/ch15-15.4-correct-1440.png, [scratch]/shots/ch15-15.4-correct-390.png",
+  "img/20261112_Ch15-15-4-Failure.png": "[scratch]/shots/ch15-15.4-failure-1440.png, [scratch]/shots/ch15-15.4-failure-390.png",
+  "img/20261112_Ch15-15-5-Correct.png": "[scratch]/shots/ch15-15.5-correct-1440.png, [scratch]/shots/ch15-15.5-correct-390.png",
+  "img/20261112_Ch15-15-5-Failure.png": "[scratch]/shots/ch15-15.5-failure-1440.png, [scratch]/shots/ch15-15.5-failure-390.png",
+  "img/20261112_Ch15-15-6-Correct.png": "[scratch]/shots/ch15-15.6-correct-1440.png, [scratch]/shots/ch15-15.6-correct-390.png",
+  "img/20261112_Ch15-15-6-Failure.png": "[scratch]/shots/ch15-15.6-failure-1440.png, [scratch]/shots/ch15-15.6-failure-390.png",
+  "img/20261112_Ch15-15-7-Correct.png": "[scratch]/shots/ch15-15.7-correct-1440.png, [scratch]/shots/ch15-15.7-correct-390.png",
+  "img/20261112_Ch15-15-7-Failure.png": "[scratch]/shots/ch15-15.7-failure-1440.png, [scratch]/shots/ch15-15.7-failure-390.png",
+  "img/20261112_Ch15-15-8-Correct.png": "[scratch]/shots/ch15-15.8-correct-1440.png, [scratch]/shots/ch15-15.8-correct-390.png",
+  "img/20261112_Ch15-15-8-Failure.png": "[scratch]/shots/ch15-15.8-failure-1440.png, [scratch]/shots/ch15-15.8-failure-390.png",
+  "img/20261112_Ch15-15-9-Correct.png": "[scratch]/shots/ch15-15.9-correct-1440.png, [scratch]/shots/ch15-15.9-correct-390.png",
+  "img/20261112_Ch15-15-9-Failure.png": "[scratch]/shots/ch15-15.9-failure-1440.png, [scratch]/shots/ch15-15.9-failure-390.png",
+  "img/20261112_Ch15-15-10-Correct.png": "[scratch]/shots/ch15-15.10-correct-1440.png, [scratch]/shots/ch15-15.10-correct-390.png",
+  "img/20261112_Ch15-15-10-Failure.png": "[scratch]/shots/ch15-15.10-failure-1440.png, [scratch]/shots/ch15-15.10-failure-390.png",
+  "img/20261112_Ch15-15-13-Correct.png": "[scratch]/shots/ch15-15.13-correct-1440.png, [scratch]/shots/ch15-15.13-correct-390.png",
+  "img/20261112_Ch15-15-13-Failure.png": "[scratch]/shots/ch15-15.13-failure-1440.png, [scratch]/shots/ch15-15.13-failure-390.png",
+  "img/20261112_Ch15-15-14-Correct.png": "[scratch]/shots/ch15-15.14-correct-1440.png, [scratch]/shots/ch15-15.14-correct-390.png",
+  "img/20261112_Ch15-15-14-Failure.png": "[scratch]/shots/ch15-15.14-failure-1440.png, [scratch]/shots/ch15-15.14-failure-390.png"
+ },
+ "codes_in_reference_lines": [
+  "D3-195",
+  "D3-196",
+  "D3-200",
+  "D3-205",
+  "D3-219",
+  "D3-228",
+  "D3-350",
+  "D3-458",
+  "D3-459",
+  "D3-462",
+  "DR-191",
+  "DR-204",
+  "DR-238",
+  "DR-240",
+  "DR-241",
+  "DR-64"
+ ],
+ "notes": [],
+ "warnings": [],
+ "seconds": 7,
+ "check": {
+  "page": {
+   "failures": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "allowed": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "results": "work/boards/phase-3/round-1/progress/20261112_Round-1-Progress-Check-Results.json"
+  },
+  "wrapped": {
+   "failures": [],
+   "pass": true,
+   "results": "[scratch]/publish-view/20261112_Round-1-Progress-Check-Results.json"
+  },
+  "widths": [
+   1440,
+   390,
+   360
+  ]
+ }
+}

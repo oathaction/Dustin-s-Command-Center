@@ -10,6 +10,9 @@
 // draw_all calls OAChart.draw_all() and waits until every kit figure reports drawn (or an error), then waits for the
 // page's height to hold still, so a chart drawn above an element cannot shift it after its picture is taken (D3-200).
 // Each element is photographed only once its position holds still. One page and one window at a time, to keep memory low.
+// An element taller than the window is photographed by making the window taller (its width, and so every layout width,
+// stays the same) and clipping the picture from the window: Playwright's capture beyond the window takes tens of seconds
+// on the 10 MB guide and timed out on four plates in the first run. CSS animations and transitions are turned off first.
 // Prints one line per item and exits 1 if any item failed.
 'use strict';
 const fs = require('fs');
@@ -43,7 +46,9 @@ async function holdStill(pg, read, tries = 20, wait = 250) {
       pg.on('pageerror', (e) => errors.push(String(e)));
       await pg.goto('file://' + j.file, { waitUntil: 'load', timeout: 180000 });
       await pg.evaluate(() => document.fonts.ready);
+      await pg.addStyleTag({ content: '*,*::before,*::after{animation:none!important;transition:none!important;caret-color:transparent!important}' });
       await pg.waitForTimeout(300);
+      let winH = j.height;
       if (j.static_sticky) {
         await pg.evaluate(() => {
           for (const e of document.querySelectorAll('body *')) {
@@ -68,12 +73,25 @@ async function holdStill(pg, read, tries = 20, wait = 250) {
           fs.mkdirSync(path.dirname(it.out), { recursive: true });
           const el = await pg.$(it.selector);
           if (!el) throw new Error('no match for ' + it.selector);
-          await el.scrollIntoViewIfNeeded();
-          await pg.waitForTimeout(200);
+          await el.evaluate((n) => n.scrollIntoView({ block: 'start' }));
+          await pg.waitForTimeout(150);
           await holdStill(pg, () => el.evaluate((n) => { const r = n.getBoundingClientRect(); return [Math.round(r.top + scrollY), Math.round(r.width), Math.round(r.height)].join(','); }), 12, 200);
-          await el.scrollIntoViewIfNeeded();
-          await pg.waitForTimeout(120);
-          await el.screenshot({ path: it.out });
+          let box = null;
+          for (let k = 0; k < 4; k++) {
+            await el.evaluate((n) => n.scrollIntoView({ block: 'start' }));
+            await pg.waitForTimeout(100);
+            box = await el.evaluate((n) => { const r = n.getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height }; });
+            const need = Math.ceil(Math.max(0, box.y) + box.h) + 2;
+            if (box.y >= 0 && need <= winH) break;
+            winH = Math.max(winH, need);
+            await pg.setViewportSize({ width: j.width, height: winH });
+            await pg.waitForTimeout(250);
+          }
+          // whole pixels, rounded outward as an element picture is, so no edge of the element is cut
+          const x0 = Math.floor(box.x), y0 = Math.floor(box.y);
+          const clip = { x: x0, y: y0, width: Math.ceil(box.x + box.w) - x0, height: Math.ceil(box.y + box.h) - y0 };
+          if (clip.y < 0 || clip.y + clip.height > winH) throw new Error('the element does not fit the window: ' + JSON.stringify(clip) + ' in ' + winH);
+          await pg.screenshot({ path: it.out, clip, animations: 'disabled' });
           console.log('ok', path.basename(it.out));
         } catch (e) {
           failed++;

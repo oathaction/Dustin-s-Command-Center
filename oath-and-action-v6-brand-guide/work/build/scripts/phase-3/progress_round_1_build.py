@@ -25,8 +25,11 @@ Writes:
 
 --reuse keeps a kit capture when its spec, data, form module and the kit's shared files are unchanged, and a guide
 photograph when its element's HTML, the page's styles and scripts and the window width are unchanged; without it,
-every capture and photograph is made afresh. --check runs dataviz_check.js on the page with --board --no-captures, from
-work/build, and fails the build if it fails. --strict exits 1 on any warning. A part whose file is missing or still
+every capture and photograph is made afresh. --check runs dataviz_check.js with --board --no-captures, from work/build,
+twice: on the page itself, whose results file lands beside it, and on a copy in the scratch folder wrapped as the host
+wraps it (doctype, <html lang="en">, charset and viewport). The page carries no <html> tag by its contract, so axe's
+html-has-lang is the one failure allowed on the page itself; the wrapped copy must pass every check. Either failing
+otherwise fails the build. --strict exits 1 on any warning. A part whose file is missing or still
 pending prints "Waiting for". Images the page no longer names are removed from img/ on every run.
 """
 import argparse
@@ -398,30 +401,43 @@ def plan():
 
 
 def round3_data():
-    """Round 3's data rows, read from the plan's own table, against the frozen files in the data folder."""
+    """Round 3's data, read from the plan's table "Datasets to fetch and freeze" (each line's files and the rows they
+    serve, the map geometry included), against the files in the data folder: a file is frozen when it and its sidecar
+    are there, and a row when every file it needs is."""
     t = read(C['slots']['round3_plan']) or ''
-    sec = B1.md_section(t, [r'round 3: \d+ forms']) or ''
+    sec = B1.md_section(t, [r'datasets to fetch and freeze']) or ''
     dd = ROOT / C['slots']['data_dir']
-    rows, frozen, waiting, tables = 0, 0, [], set()
+    need_rows, stems_all, missing_kinds = {}, [], []
     for head, body in B1.md_tables(sec):
-        if 'Status' not in head:
+        if not head or not head[0].startswith('Dataset') or 'Rows' not in head:
             continue
-        k_ds, k_st = next(i for i, h in enumerate(head) if h.startswith('Dataset')), head.index('Status')
+        k_rows = head.index('Rows')
         for r in body:
-            stems = re.findall(r'`([a-z0-9][a-z0-9-]+)`', r[k_ds]) if k_ds < len(r) else []
-            if not stems or (k_st < len(r) and r[k_st].lower().startswith('rule only')):
-                continue
-            rows += 1
-            have = [s for s in stems if any((dd / f'{s}{e}').exists() for e in ('.csv', '.json')) and (dd / f'{s}.meta.json').exists()]
-            tables |= set(have)
-            if len(have) == len(stems):
-                frozen += 1
-            else:
-                waiting.append(r[0])
-    if not rows:
-        warn('the round 3 data plan’s table of forms was not found')
-    FIG['round3'] = {'data_rows': rows, 'frozen_rows': frozen, 'tables': sorted(tables), 'waiting_rows': waiting}
-    return rows, frozen, len(tables), waiting
+            cell = r[0]
+            stems = re.findall(r'`([a-z0-9-]+)`', cell)
+            full = [s for s in stems if not s.startswith('-')]
+            base = re.sub(r'-[a-z0-9]+$', '', full[0]) if full else ''
+            stems = [s if not s.startswith('-') else base + s for s in stems]
+            rows = []
+            for a, b in re.findall(r'(\d+)(?:\s+to\s+(\d+))?', r[k_rows] if k_rows < len(r) else ''):
+                rows += list(range(int(a), int(b) + 1)) if b else [int(a)]
+            label = re.match(r'([A-Z][a-z ]+):', cell)
+            for s in stems:
+                stems_all.append(s)
+                have = any((dd / f'{s}{e}').exists() for e in ('.csv', '.json')) and (dd / f'{s}.meta.json').exists()
+                for n in rows:
+                    need_rows.setdefault(n, []).append((s, have))
+                if not have:
+                    missing_kinds.append(f'the {label.group(1).lower()} files' if label else 'a data table')
+    if not need_rows:
+        warn('the round 3 data plan’s table "Datasets to fetch and freeze" was not found')
+    frozen_rows = [n for n, xs in need_rows.items() if all(h for _, h in xs)]
+    waiting_rows = sorted(n for n in need_rows if n not in frozen_rows)
+    have = sorted({s for xs in need_rows.values() for s, h in xs if h})
+    stems_u = list(dict.fromkeys(stems_all))
+    FIG['round3'] = {'data_rows': len(need_rows), 'frozen_rows': len(frozen_rows), 'waiting_rows': waiting_rows, 'files_named': stems_u,
+                     'files_frozen': have, 'files_waiting': [s for s in stems_u if s not in have]}
+    return len(need_rows), len(frozen_rows), len(have), len(stems_u), waiting_rows, list(dict.fromkeys(missing_kinds))
 
 
 def dol():
@@ -431,6 +447,12 @@ def dol():
     m = dd / f'{stem}.meta.json'
     if f and m.exists():
         side = json.loads(m.read_text())
+        notes = read(C['slots']['research_notes']) or ''
+        lr = str(side.get('ledger_row', ''))
+        if not (lr and re.search(r'(?i)frozen\W[^\n]{0,160}' + re.escape(lr), notes)):
+            warn(f'{f.name} is in the data folder, but the research lead’s notes do not record it frozen with row {lr or "?"}')
+            FIG['dol'] = {'file': rel(f), 'in_notes': False}
+            return False
         n = sum(1 for _ in open(f)) - 1 if f.suffix == '.csv' else len(json.loads(f.read_text()))
         FILL.update({'dol_file': f.name, 'dol_rows': f'{n:,}', 'dol_row': side.get('ledger_row', '?')})
         FIG['dol'] = {'file': rel(f), 'rows': n, 'ledger_row': side.get('ledger_row')}
@@ -455,7 +477,7 @@ def round_section(G, P, r1):
     rule_plates = sum(1 for x in cr for k in ('correct', 'failure') if isinstance(held.get(x['rule'], {}).get(k), dict))
     r15 = [r['id'] for r in ch15['rules']]
     p15 = (1 if ch15.get('opener') else 0) + sum(1 for r in ch15['rules'] for k in ('correct', 'failure') if isinstance(r.get(k), dict))
-    rows, frozen, n_tables, waiting = round3_data()
+    rows, frozen, n_have, n_named, waiting, kinds = round3_data()
     rep = G['report']
     FILL.update({'n_entries': len(entries), 'n_new': len(new), 'n_built': len(built), 'n_sketch': len(sk), 'n_sketch_w': nw(len(sk)), 'new_first': ids[0], 'new_last': ids[-1],
                  'r_first': cr[0]['rule'], 'r_last': cr[-1]['rule'], 'n_ch_rules': len(cr), 'n_rule_plates': rule_plates,
@@ -466,8 +488,9 @@ def round_section(G, P, r1):
         (S['facts']['rules'], f'Rules {cr[0]["rule"]} to {cr[-1]["rule"]}, with {rule_plates} plates, and the chapter’s opening plate'
                               + ('' if ch14.get('opener') else '; the opening plate is missing')),
         (S['facts']['ch15'], f'The opening plate and {len(r15)} rules, {join_words(compact_ids(r15))}: {p15} plates'),
-        (S['facts']['data'], f'{frozen} of its {rows} data rows frozen, in {n_tables} tables' + (f'; row {join_words(waiting)} waiting' if len(waiting) == 1 else
-                                                                                                    f'; rows {join_words(waiting)} waiting' if waiting else '')),
+        (S['facts']['data'], f'{frozen} of its {rows} data rows have every file frozen; {n_have} of the {n_named} files its plan names are in the data folder'
+                             + (f'. Waiting: {join_words(kinds)}, for '
+                                + ('row ' if len(waiting) == 1 else 'rows ') + join_words([str(n) for n in waiting]) if waiting else '')),
         (S['facts']['dol'], fill(S['dol_frozen']) if dol() else S['dol_waiting']),
     ]
     if G['ok']:
@@ -498,8 +521,15 @@ def compact_ids(ids):
 
 
 def printed_title(G, sid):
-    m = re.search(r'<p class="oac-title" id="oac-s-14-' + sid.lower() + r'-t"[^>]*>(.*?)</p>', G['text'], flags=re.S)
-    return text_of(m.group(1)) if m else None
+    """The title the guide prints over the chart, or, for a form that draws its one sentence in place of a title (the
+    one-sentence form), the spec's title, which is that sentence. None when the chart is not in the guide."""
+    fig = element_html(G['text'], f'oac-s-14-{sid.lower()}')
+    if fig is None:
+        return None
+    m = re.search(r'<p class="oac-title"[^>]*>(.*?)</p>', fig, flags=re.S)
+    if m:
+        return text_of(m.group(1))
+    return 'spec'
 
 
 def charts_section(G, P, r1, kit_out):
@@ -513,16 +543,19 @@ def charts_section(G, P, r1, kit_out):
         if f['family_section'] != cur:
             cur = f['family_section']
             g = groups.get(cur, {})
+            QUOTED.append(g.get('title', ''))
             parts.append(f'<h3 class="sub grp">{esc(g.get("title", f["family"]))}</h3>')
         spec = json.loads((ROOT / C['slots']['specs_dir'] / f'{lo}.json').read_text())
         d = kit_out / lo
         caps = {(g, w): d / f'{lo}-{g}-{w}.png' for g in ('newsprint', 'charcoal') for w in (1440, 390)}
         chk_p = d / f'{lo}-check.json'
         title = printed_title(G, sid) if G['ok'] else None
-        if title is None:
-            title = spec['title']
-            if G['ok']:
-                warn(f'{sid}’s printed title was not found in the guide; the spec’s title prints instead')
+        title_from = 'guide'
+        if title in (None, 'spec'):
+            if title is None and G['ok']:
+                warn(f'{sid} was not found in the guide; the spec’s title prints instead')
+            title, title_from = spec['title'], 'spec'
+        QUOTED.append(title)
         head = (f'<header class="ch-h"><p class="label">Rule {esc(f["rule"])} · {esc(f["form"])} · {esc(fill(S["maker"], {"m": f.get("maker", "?")}))}</p>'
                 f'<h4 class="ch-t">{esc(title)}</h4></header>')
         if not chk_p.exists() or not all(p.exists() for p in caps.values()):
@@ -549,7 +582,7 @@ def charts_section(G, P, r1, kit_out):
                      f'<p class="row-label">{esc(S["row_charcoal"])}</p>{frame(rc, f"{f["form"]}, Rule {f["rule"]}, on Charcoal, drawn for a 1440 px page and for a 390 px page, side by side.")}'
                      f'<p class="ch-line">{esc(line)}</p></article>')
         FIG.setdefault('charts', {})[sid] = {'rule': f['rule'], 'form': f['form'], 'maker': f.get('maker'), 'title': title, 'bytes_in_guide': wb,
-                                             'faults': len(faults), 'drawings': nd, 'rows': chk.get('rows')}
+                                             'faults': len(faults), 'drawings': nd, 'rows': chk.get('rows'), 'title_from': title_from}
     FILL['n_pass'] = n_pass
     lede = f'<p class="intro">{esc(fill(S["lede"]))}</p>'
     idx = ('<nav class="idx" aria-label="The new charts by rule"><ol>' + ''.join(f'<li><a href="#chart-{f["rule"].replace(".", "-")}">{esc(f["rule"])}</a></li>' for f in new) + '</ol></nav>')
@@ -566,6 +599,7 @@ def entry_section(G, shots):
     r = next((x for x in ch14['rules'] if x['id'] == S['rule']), None)
     need(r is not None, f'chapter 14 holds no Rule {S["rule"]}')
     FILL.update({'entry_rule': r['id'], 'entry_title': r['title'].rstrip('.')})
+    QUOTED.append(r['title'].rstrip('.'))
     body = f'<p class="intro">{esc(fill(S["lede"]))}</p>'
     k14, k39 = f'entry-{r["id"]}-1440', f'entry-{r["id"]}-390'
     if G['ok'] and shots.get(k14, pathlib.Path('-')).exists() and shots.get(k39, pathlib.Path('-')).exists():
@@ -598,6 +632,7 @@ def sketches_section(G, r1, shots):
         head = sketch_heading(G, sid) if G['ok'] else None
         key = f'sketch-{f["rule"]}'
         kw = S['kind_avoid'] if kind == 'avoid' else S['kind_reference']
+        QUOTED.extend([r.get('title', ''), head or ''])
         h = (f'<header class="ch-h"><p class="label">Rule {esc(f["rule"])} · {esc(kw)}</p><h4 class="ch-t">{esc(r.get("title", f["form"]))}</h4></header>')
         if head and shots.get(key, pathlib.Path('-')).exists():
             rec = compose(f'Sketch-{f["rule"].replace(".", "-")}', [(shots[key], '')])
@@ -622,6 +657,7 @@ def rules_section(G, P, shots):
     op = ch14.get('opener', {}).get('specimen')
     if op and shots.get('ch14-opener', pathlib.Path('-')).exists():
         rec = compose('Ch14-Opener', [(shots['ch14-opener'], '')])
+        QUOTED.append(caption_text(ch14['opener']))
         out.append(f'<h3 class="sub">{esc(S["opener_h"])}</h3>' + figure(rec, f'Chapter 14’s opening plate at a 1440 px window. {caption_text(ch14["opener"])}', esc(caption_text(ch14['opener'])), lazy=True))
     elif op:
         missing.append('the opening plate')
@@ -632,6 +668,7 @@ def rules_section(G, P, shots):
             continue
         keys = [f'plate-{rid}-{k}' for k in ('correct', 'failure') if isinstance(r.get(k), dict)]
         have = [k for k in keys if shots.get(k, pathlib.Path('-')).exists()]
+        QUOTED.append(r['title'])
         h = f'<h3 class="r-h" id="rule-{rid.replace(".", "-")}"><span class="rid">Rule {esc(rid)}</span> {esc(r["title"])}</h3>'
         if len(have) < len(keys) or not keys:
             missing.append(f'Rule {rid}')
@@ -668,12 +705,14 @@ def ch15_section(G, shots):
     for r in ch15['rules']:
         rid = r['id']
         if rid in groups:
+            QUOTED.append(groups[rid]['title'])
             out.append(f'<h3 class="sub grp">{esc(groups[rid]["title"])}</h3>')
         figs = ''
         for k in ('correct', 'failure'):
             if isinstance(r.get(k), dict):
                 figs += (f'<p class="row-label">{"Correct plate" if k == "correct" else "Failure plate"}</p>'
                          + pair(f'ch15-{rid}-{k}', f'{rid.replace(".", "-")}-{cap(k)}', f'Rule {rid}’s {k} plate at a 1440 px window and at a 390 px window, side by side. {caption_text(r[k])}'))
+        QUOTED.append(r['title'])
         out.append(f'<article class="rule"><h4 class="r-h"><span class="rid">Rule {esc(rid)}</span> {esc(r["title"])}</h4>{figs}</article>')
     if missing:
         warn('chapter 15 plates not photographed: ' + ', '.join(missing))
@@ -694,9 +733,9 @@ def findings(body):
         return None
     if re.fullmatch(r'(?i)none\.?|no must fix\.?|no should fix\.?', b):
         return 0
-    ids = re.findall(r'^(?:#{2,6}\s+|[-*]\s+|\d+\.\s+)?\*\*(' + ID + r')[.:)]?\*\*', b, flags=re.M)
-    ids += re.findall(r'^#{2,6}\s+(' + ID + r')\b', b, flags=re.M)
-    ids += re.findall(r'^(?:[-*]\s+|\d+\.\s+)\*\*(' + ID + r')[.:]', b, flags=re.M)
+    # "**M1. Title**", "**M1.** Title", "- **SC-M1:** ...", "### M1. Title"
+    ids = re.findall(r'^(?:#{2,6}\s+|[-*]\s+|\d+\.\s+)?\*\*(' + ID + r')(?:[.:)]|\*\*)', b, flags=re.M)
+    ids += re.findall(r'^#{2,6}\s+(' + ID + r')[.:)\s]', b, flags=re.M)
     if ids:
         return len(dict.fromkeys(ids))
     n = len(re.findall(r'^\d+\.\s+\S', b, flags=re.M))
@@ -800,10 +839,15 @@ def scores_section():
             trs.append(f'<tr><th scope="row">{esc(r["name"])}</th><td colspan="3">{esc(S["rt_wait"])}</td></tr>')
             continue
         trs.append(f'<tr><th scope="row">{esc(r["name"])}</th><td class="num">{r["score"]} of 5</td><td class="num">{r["must_fix"]}</td><td class="num">{r["should_fix"]}</td></tr>')
-    if any(r['state'] != 'ready' for r in rts) and status == 'ready':
+    n_rt = sum(1 for r in rts if r['state'] == 'ready')
+    if not first and not n_rt:
+        status = ('waiting', 'cd')
+    elif not first or not rescore:
+        status = ('partial', 'cd' if not first else 'cd_re')
+    elif n_rt < len(rts):
         status = ('partial', 'red')
-    elif any(r['state'] != 'ready' for r in rts) and status != 'ready' and status[1] != 'cd':
-        status = ('partial', 'red' if all(r['state'] != 'ready' for r in rts) else status[1])
+    else:
+        status = 'ready'
     FIG['red_teams'] = rts
     hd = ''.join(f'<th scope="col">{esc(c)}</th>' for c in S['rt_cols'])
     out.append(f'<h3 class="sub">{esc(fill(S["rt_h"]))}</h3><p>{esc(fill(S["rt_lede"]))}</p>'
@@ -840,7 +884,7 @@ def weight_section(G):
                 f'style="width:{min(share, 100):.3f}%"></span><span class="pct">{share:.1f} percent</span></td><td class="num">{b:,}</td><td class="num">{lim:,}</td></tr>')
     hd = ''.join(f'<th scope="col">{esc(c)}</th>' for c in S['cols'])
     body = (f'<p class="intro">{esc(S["lede"])}</p>'
-            f'<figure class="wfig"><div class="tw" role="region" tabindex="0" aria-label="{esc(S["fig_caption"])}; scrolls sideways"><table class="wt">'
+            f'<figure class="wfig" data-spec="weight-shares"><div class="tw" role="region" tabindex="0" aria-label="{esc(S["fig_caption"])}; scrolls sideways"><table class="wt">'
             f'<caption>{esc(S["fig_caption"])}</caption><thead><tr>{hd}</tr></thead><tbody>{trs}</tbody></table></div></figure>'
             f'<p>{esc(fill(S["per_plate"]))}</p><p>{esc(fill(S["ch15_line"]))}</p><p>{esc(fill(S["page_line"]))}</p>')
     FIG['weight'] = {'chapter_14': c14.get('bytes'), 'stop': stop, 'per_plate': pp.get('per_plate'), 'plates_to_come': pp.get('plates_to_come'),
@@ -981,6 +1025,7 @@ th,td{text-align:left;vertical-align:top;padding:var(--oa-space-100) var(--oa-sp
 thead th{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--wink-2);background:var(--head-fill);vertical-align:bottom}
 tbody th{font:var(--oa-type-body-small);font-weight:600;color:var(--wink)}
 td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.wt td.num,.rt td.num{text-align:right}.wt thead th:nth-child(n+3),.rt thead th:nth-child(n+2){text-align:right}
 table.scores{min-width:44rem}table.rt{min-width:30rem}table.wt{min-width:40rem}
 td.sc.lo{box-shadow:inset 0 0 0 var(--oa-border-width-rule) var(--wstrong);font-weight:700}
 td.sc .r1{display:inline-block;min-width:1.4em;font:var(--oa-type-caption);color:var(--wink-2);margin-right:.35em;padding:0 .2em}
@@ -1105,6 +1150,40 @@ def checks(page):
     return text
 
 
+def run_checks(out, page):
+    """dataviz_check.js --board on the page, then on a copy wrapped as the host wraps it (see the module's docstring)."""
+    def check(path):
+        r = subprocess.run(['node', str(SCRIPTS2 / 'dataviz_check.js'), str(path), '--board', '--no-captures'], cwd=ROOT / 'work/build',
+                           capture_output=True, text=True, env=dict(os.environ, TMPDIR=str(SCRATCH)))
+        res = pathlib.Path(path).with_name(pathlib.Path(path).stem + '-Check-Results.json')
+        J = json.loads(res.read_text()) if res.exists() else {}
+        return r, J
+    r1, J1 = check(out)
+    fails1 = J1.get('failures', ['no results file'])
+    other = [f for f in fails1 if not re.search(r'axe html-has-lang', f)]
+    wrap_dir = SCRATCH / 'publish-view'
+    wrap_dir.mkdir(parents=True, exist_ok=True)
+    link = wrap_dir / 'img'
+    if link.is_symlink() or link.exists():
+        link.unlink() if link.is_symlink() else shutil.rmtree(link)
+    link.symlink_to(IMG, target_is_directory=True)
+    wrapped = wrap_dir / out.name
+    wrapped.write_text('<!doctype html>\n<html lang="en"><head><meta charset="utf-8">'
+                       '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head>\n<body>\n' + page + '</body></html>\n')
+    r2, J2 = check(wrapped)
+    fails2 = J2.get('failures', ['no results file'])
+    print('the page itself: ' + ('PASS' if not fails1 else f'{len(fails1)} failures: ' + '; '.join(fails1[:6])))
+    print('the page as the host wraps it: ' + ('PASS' if not fails2 else f'{len(fails2)} failures: ' + '; '.join(fails2[:6])))
+    FIG['check'] = {'page': {'failures': fails1, 'allowed': [f for f in fails1 if f not in other], 'results': rel(out.with_name(out.stem + '-Check-Results.json'))},
+                    'wrapped': {'failures': fails2, 'pass': J2.get('pass'), 'results': '[scratch]/publish-view/' + wrapped.stem + '-Check-Results.json'},
+                    'widths': [x.get('width') for x in J2.get('runs', [])]}
+    if other:
+        warn('the page check failed: ' + '; '.join(other[:6]))
+    if fails2:
+        warn('the wrapped page check failed: ' + '; '.join(fails2[:6]))
+    return not other and not fails2
+
+
 def main():
     global C, LOG, SCRATCH, CACHE
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
@@ -1197,12 +1276,9 @@ def main():
     print('parts: ' + ', '.join(f'{k} {status_words(v)}' for k, v in STATUS.items()))
     print(f'{len(WARN)} warnings')
     if a.check:
-        r = subprocess.run(['node', str(SCRIPTS2 / 'dataviz_check.js'), str(a.out), '--board', '--no-captures'], cwd=ROOT / 'work/build',
-                           capture_output=True, text=True, env=dict(os.environ, TMPDIR=str(SCRATCH)))
-        print(r.stdout.strip()[-3000:])
-        FIG['check'] = {'exit': r.returncode, 'tail': r.stdout.strip()[-600:]}
+        ok = run_checks(a.out, page)
         FIGURES.write_text(json.dumps(FIG, indent=1, ensure_ascii=False, default=str))
-        if r.returncode != 0:
+        if not ok:
             sys.exit(1)
     if WARN and a.strict:
         sys.exit(1)

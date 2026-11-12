@@ -1,0 +1,92 @@
+{
+ "kit": 1,
+ "id": "P01",
+ "form": "dumbbell",
+ "family": "comparison",
+ "tier": "core",
+ "dataset": "treasury-mts-outlays-by-function",
+ "where": {
+  "fiscal_year": [
+   2016,
+   2026
+  ],
+  "function": {
+   "not": [
+    "Total"
+   ]
+  }
+ },
+ "sort": [
+  {
+   "field": "outlays_dollars",
+   "order": "desc"
+  }
+ ],
+ "reader_question": "How did the federal government’s spending by function change between fiscal 2016 and 2026?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: the Treasury’s own monthly statement",
+ "title": "Net interest rose from $240.7 billion in fiscal 2016 to $1,051.8 billion in fiscal 2026, the largest rise of any budget function.",
+ "measure_line": "Net federal outlays by budget function, billions of dollars, not adjusted for inflation, fiscal 2016 and fiscal 2026 (each October to September), United States. The window is the ten years the question names.",
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D08",
+ "states": [],
+ "encode": {
+  "category": "function",
+  "value": "outlays_dollars",
+  "series": "fiscal_year"
+ },
+ "labels": {
+  "from": "2016",
+  "to": "2026",
+  "from_label": "2016",
+  "to_label": "2026",
+  "categories": {
+   "Education, Training, Employment, and Social Services": "Education and social services",
+   "General Science, Space, and Technology": "Science, space and technology",
+   "Community and Regional Development": "Community development",
+   "Undistributed Offsetting Receipts": "Offsetting receipts",
+   "Commerce and Housing Credit": "Commerce and housing credit",
+   "Veterans Benefits and Services": "Veterans benefits",
+   "Natural Resources and Environment": "Natural resources",
+   "Administration of Justice": "Justice"
+  },
+  "domain": [
+   -200000000000,
+   1800000000000
+  ]
+ },
+ "formats": {
+  "value": "billions-value:1",
+  "tick": "billions-value:0"
+ },
+ "alt": "Dumbbell chart of net federal outlays by budget function in fiscal 2016 and 2026, in billions of dollars. Social Security rose from 916.1 to 1,667.1, Medicare from 594.5 to 1,072.6 and net interest from 240.7 to 1,051.8, the largest rise. Education, training, employment and social services held near 108. Offsetting receipts, counted as negative outlays, went from minus 95.3 to minus 155.0.",
+ "table": {
+  "caption": "Net federal outlays by budget function, fiscal 2016 and 2026, billions of dollars",
+  "pivot": {
+   "row": "function",
+   "column": "fiscal_year",
+   "value": "outlays_dollars",
+   "format": "billions-value:1",
+   "labels": {
+    "2016": "Fiscal 2016",
+    "2026": "Fiscal 2026"
+   }
+  },
+  "columns": [
+   {
+    "field": "function",
+    "label": "Budget function",
+    "format": "text",
+    "row_header": true
+   }
+  ]
+ },
+ "notes": [
+  "Net outlays: two functions are negative. Undistributed offsetting receipts, such as federal agencies’ payments into employee retirement funds, count against outlays every year; commerce and housing credit runs negative when loan programs take in more than they pay out.",
+  "Five long function names are shortened in the drawing; the table gives each as Treasury names it."
+ ]
+}

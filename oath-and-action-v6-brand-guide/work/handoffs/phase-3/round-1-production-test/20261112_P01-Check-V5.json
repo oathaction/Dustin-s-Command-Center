@@ -1,0 +1,37 @@
+{
+ "id": "P01",
+ "form": "dumbbell",
+ "spec": "work/handoffs/phase-3/round-1-production-test/20261112_P01-Spec-V5.json",
+ "rows": 38,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 720,
+   "height": 891,
+   "svg_bytes": 17955
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 1203,
+   "svg_bytes": 17891
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 720,
+   "height": 891,
+   "svg_bytes": 17955
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 1203,
+   "svg_bytes": 17891
+  }
+ ],
+ "faults": []
+}

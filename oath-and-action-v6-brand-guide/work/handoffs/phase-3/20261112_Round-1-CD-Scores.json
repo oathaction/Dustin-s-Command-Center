@@ -1,0 +1,492 @@
+{
+ "title": "Creative director’s scores for Phase 3, round 1 (first pass): rules 14.1 to 14.14 with the opener, maker A’s and maker B’s specimens with their entries, the four sketches, and chapter 15’s round 1 plates",
+ "date": "2026-11-12",
+ "author": "Creative director (oa-creative-director), subagent of the main session",
+ "basis": "work/handoffs/phase-3/20261112_Phase-3-Round-1-Review-Brief.md, creative director’s lens; Master Brief section 6 rubric; the strict build in the scratchpad’s phase-3/round-1-review/build/guide.html (10,017,051 bytes, built 2026-11-12T15:30:16, 0 warnings, 265 rules, 554 specimens) and its guide-Build-Report.json; every plate of chapters 14 and 15 (94) captured at 1440 and 390 px on Newsprint and on Charcoal (a scratch copy with each stage’s surface class set to Charcoal), nine plates at 2x, first screens at 1440, 1024 and 390 px, chapters 11 to 13’s plates for comparison; words from the entry files, specs and chapter 15’s JSON",
+ "review": "work/handoffs/phase-3/20261112_CD-Review-Of-Round-1.md",
+ "first_pass_of_round": 1,
+ "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
+ "criteria": [
+  {
+   "key": "craft",
+   "name": "Craft"
+  },
+  {
+   "key": "clarity",
+   "name": "Clarity"
+  },
+  {
+   "key": "brand_fidelity",
+   "name": "Brand fidelity"
+  },
+  {
+   "key": "usefulness",
+   "name": "Usefulness"
+  },
+  {
+   "key": "evidence_honesty",
+   "name": "Evidence honesty"
+  },
+  {
+   "key": "accessibility",
+   "name": "Accessibility"
+  }
+ ],
+ "items": [
+  {
+   "key": "ch14_rules",
+   "name": "Rules 14.1 to 14.14 with chapter 14’s opener",
+   "anchor": "#data-visualization, #group-14-1; work/build/guide/entries/14-001.json to 14-014.json, 14-chapter.json",
+   "stage": "Phase 3, round 1, first pass",
+   "scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "The kit-drawn correct plates (14.1 to 14.4, 14.7, 14.8, 14.10, 14.13) hold board 1's standard at 2x, but 14.3's correct plate draws its zero line 189 px below the drawing and through its own source line, and eight script-drawn plates set a 256 px drawing in the top left of a 770 px frame at 1440 px, so each failure draws at about a third of its partner's scale (RM1, RM2).",
+    "clarity": "Each rule leads with its instruction, each failure caption names its one fault, and 14.5 sets each palette beside its job and its question, though the opener's 16 questions link nowhere and 12 of them lead to groups not built yet.",
+    "brand_fidelity": "One red in 14.6 inside its keyline, red and blue only on 14.7's failure under the do-not-publish bar, parties in one ink, and with a plate in view the chip, the Inter Tight titles and the gray-and-ink discipline read as Oath & Action; the first screen is type on Newsprint.",
+    "usefulness": "Every rule cites its tokens and a builders line, 14.2 numbers the eight parts where the kit prints them, and 14.14 gives the one command and its three files.",
+    "evidence_honesty": "Titles take record verbs for counts, 14.9 ranks only past the margin and prints it, and 14.11 prints both estimates at each break, though two frozen series carry five plates between them (newspaper publishers on 14.10, 14.13 and S29; civic organizations on 14.2 and S28).",
+    "accessibility": "Plates with a table are readable groups, each alt says what a reader learns, and axe-core 4.10 finds no violation in the chapter at 1440 or 390 px."
+   },
+   "specimens_under_the_bar": [],
+   "must_fix": [
+    "RM1",
+    "RM2"
+   ],
+   "should_fix": [
+    "R-S1",
+    "R-S2",
+    "R-S3",
+    "R-S4",
+    "R-S5"
+   ],
+   "must_fix_count": 2,
+   "should_fix_count": 5,
+   "ready": false,
+   "to_ready": "Land RM1 and RM2; craft then reaches 4."
+  },
+  {
+   "key": "maker_a",
+   "name": "Maker A: S17 to S23 and S36 to S42 with their entries, and the entries for S03, S04, S06, S15 and 14.128",
+   "anchor": "#group-14-2, #group-14-16; work/build/chart-kit/specs/s17.json to s23.json, s36.json to s42.json",
+   "stage": "Phase 3, round 1, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 3,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "S17 to S22, S36 and S39 to S42 hold at 2x on both grounds, with the light fill on every named bar and clean phone forms, though S23's bars run short in each panel.",
+    "clarity": "S37's title counts the routes through an act of Congress and the drawing gives that column no emphasis while its group headings repeat, and S38 prints a still list headed \"8 of 17 issue records\" above a live lookup that says \"17 of 17\", so one figure gives two counts (AM1, AM2).",
+    "brand_fidelity": "Sequential Verdigris on S37 with Charcoal or Newsprint words that pass 4.5 to 1 on every step on both grounds (lowest 5.41 on Newsprint and 4.61 on Charcoal, by the WCAG formula), the four inks in order on S22, and no party color anywhere.",
+    "usefulness": "Each entry gives when to use it, what to use instead with live links, why it works and a builders line, and 14.128 points to S13 rather than drawing it twice.",
+    "evidence_honesty": "S20 claims only the rise past its margin, S41 and S42 print the survey's margin and say it cannot tell the parties apart, and S39 prints each claim's source, period and limits.",
+    "accessibility": "Every table is live text, and S38's lookup has a labeled search, a filter button and a count line; I did not test it by keyboard or screen reader."
+   },
+   "specimens_under_the_bar": [
+    "S37",
+    "S38"
+   ],
+   "must_fix": [
+    "AM1",
+    "AM2"
+   ],
+   "should_fix": [
+    "A-S1"
+   ],
+   "must_fix_count": 2,
+   "should_fix_count": 1,
+   "ready": false,
+   "to_ready": "Land AM1 and AM2; clarity then reaches 4."
+  },
+  {
+   "key": "maker_b",
+   "name": "Maker B: S24 to S35 with their entries, and the entries for S02, S05, S09, S11, S13 and S14",
+   "anchor": "#group-14-3, #group-14-4; work/build/chart-kit/specs/s24.json to s35.json",
+   "stage": "Phase 3, round 1, first pass",
+   "scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "S24 to S32 and S35 are at or above board 1, but S33 breaks \"Unemployment insurance taxes 100\" over two lines so 100 sits alone above \"Miscellaneous receipts 30\", and on a phone its plot shrinks to about 150 px beside a two-line label column (BM1).",
+    "clarity": "Each reading guide says how to read the form in plain words (S25's losses to the left, S30's flat runs, S31's gray column for the missing month), though S34's circles merge into one mass after 2000 at 1440 px.",
+    "brand_fidelity": "S26 draws both parties in one ink with their names, pair B appears only on S25 with signed figures, no chart splits a period at an inauguration, and every chart reads as the house system on Charcoal.",
+    "usefulness": "Each entry names the better form for the cases it misses (S30 to 14.29, S31 to 14.11), and the builders line gives the command.",
+    "evidence_honesty": "S35 carries Illustration and \"Illustrative data\" inside the drawing, S30's steps fall on the laws' dates, and S31 names the missing month in the drawing, the note and the source line.",
+    "accessibility": "Tables are live text, and grayscale keeps every series apart by weight, position and label (S22, S25 and S32 checked in grayscale)."
+   },
+   "specimens_under_the_bar": [
+    "S33"
+   ],
+   "must_fix": [
+    "BM1"
+   ],
+   "should_fix": [
+    "B-S1",
+    "B-S2"
+   ],
+   "must_fix_count": 1,
+   "should_fix_count": 2,
+   "ready": false,
+   "to_ready": "Land BM1; craft then reaches 4."
+  },
+  {
+   "key": "sketches",
+   "name": "The four sketches with their entries: 14.24 radar and 14.45 streamgraph (avoid), 14.43 run chart and 14.44 cycle chart (reference)",
+   "anchor": "#rule-14-24, #rule-14-43, #rule-14-44, #rule-14-45; work/build/guide/specimens/s-14-24-sketch.html, s-14-43-sketch.html to s-14-45-sketch.html",
+   "stage": "Phase 3, round 1, first pass",
+   "scores": {
+    "craft": 3,
+    "clarity": 3,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Each sketch sits small in the top left of a 770 px frame at 1440 px, under a full-width do-not-publish bar on the avoid plates, and the radar draws one radar, so the fault its title names never shows (SK-M1, SK-M2).",
+    "clarity": "\"Avoid radar charts, whose shapes change with the order of their spokes\" and \"Avoid streamgraphs, whose layers float on a baseline no one can read\" each show the form once, and neither shows the better choice beside it as DR-240 asks.",
+    "brand_fidelity": "Every sketch draws in the kit's role classes, and the streamgraph uses the group inks in their order.",
+    "usefulness": "The run and cycle sketches each show the form's one idea (six weeks above the median; this year over earlier years), and each entry links the forms to use instead.",
+    "evidence_honesty": "Each sketch carries \"Illustrative data\" inside the drawing and an Illustrative chip in its caption.",
+    "accessibility": "Each sketch has a one-line description and draws in classes that carry the forced-colors rules; I did not run forced colors."
+   },
+   "specimens_under_the_bar": [
+    "s-14-24-sketch",
+    "s-14-45-sketch"
+   ],
+   "must_fix": [
+    "SK-M1",
+    "SK-M2"
+   ],
+   "should_fix": [],
+   "must_fix_count": 2,
+   "should_fix_count": 0,
+   "ready": false,
+   "to_ready": "Land SK-M1 and SK-M2; craft and clarity then reach 4."
+  },
+  {
+   "key": "ch15",
+   "name": "Chapter 15, Systems graphics: the opener and Rules 15.1 to 15.10, 15.13 and 15.14 (25 plates)",
+   "anchor": "#systems-graphics; work/build/guide/chapters/15-systems-graphics.json, specimens s-15-*",
+   "stage": "Phase 3, round 1, first pass",
+   "scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "At 390 px the plates match chapters 11 and 12, and the line code, ticks, sign tags and chips hold at 2x, but at 1440 px each plate is a 328 px column in an 866 px frame, 1,013 to 1,442 px tall, and on the opener the loop's step numbers sit beside the callout numerals (\"1 lowers\" next to callout 2) (CH15-M1, CH15-S1).",
+    "clarity": "Every plate carries its label and grade gloss, the typed chip and the atlas's own name, a sentence that reads the loop aloud, and a failure that names one fault.",
+    "brand_fidelity": "One ink, line patterns for grade, typed chips for every ID, no red, and the plates flip cleanly to Charcoal.",
+    "usefulness": "Each rule gives the counts, the atlas field and the token it rests on, and 15.13 points to chapter 11's live stepper rather than building a second one.",
+    "evidence_honesty": "Every sign, type, grade, delay and closure I checked by script matches V7 (connections L01 to L03, L11, L12, L14 to L17, L38, L39, L46, L48, L49, LE02, T12; Loops R1, R8, R13, R16, R18, B1a, B3, B5), and 15.14 quotes the revision with its snapshot date.",
+    "accessibility": "Type stays at 13 to 15 px at every width, each plate has its alt, and axe-core finds no violation in the chapter at 1440 or 390 px."
+   },
+   "specimens_under_the_bar": [],
+   "must_fix": [
+    "CH15-M1"
+   ],
+   "should_fix": [
+    "CH15-S1"
+   ],
+   "must_fix_count": 1,
+   "should_fix_count": 1,
+   "ready": false,
+   "to_ready": "Land CH15-M1; craft then reaches 4."
+  }
+ ],
+ "totals": {
+  "must_fix": 8,
+  "should_fix": 12,
+  "under_4": [
+   "ch14_rules.craft",
+   "maker_a.clarity",
+   "maker_b.craft",
+   "sketches.craft",
+   "sketches.clarity",
+   "ch15.craft"
+  ],
+  "ready": [],
+  "not_ready": [
+   "ch14_rules",
+   "maker_a",
+   "maker_b",
+   "sketches",
+   "ch15"
+  ],
+  "specimens_under_the_bar": [
+   "S33",
+   "S37",
+   "S38",
+   "s-14-24-sketch",
+   "s-14-45-sketch"
+  ]
+ },
+ "must_fix": {
+  "RM1": {
+   "title": "Rule 14.3's correct plate draws a black rule through its own source line.",
+   "where": "Rule 14.3, correct plate; kit spec work/build/guide/specimens/s-14-3-lines.chart.json; form line-event-notes",
+   "what": "Spec `s-14-3-lines` starts its axis at 30. The form draws the zero baseline (`oac-s-baseline`) at the value 0 anyway, 189 px below the drawing at 1440 px and 147 px at 390 px, and the drawing's `overflow: visible` lets it paint across \"data before 1996 are not fully comparable.\" Measured by script over every kit figure in chapters 13 to 15: no other mark leaves its drawing by more than 6 px.",
+   "fix": "Draw the baseline only when the scale includes zero, and add the check in K-S2.",
+   "owner": "Engineer (the form and a check), editor (rebuild the plate)",
+   "items": [
+    "ch14_rules"
+   ]
+  },
+  "RM2": {
+   "title": "Eight rule plates set a phone drawing on a desktop frame.",
+   "where": "Rules 14.3, 14.4, 14.7, 14.8, 14.10, 14.11 and 14.13 failure plates and 14.11’s correct plate; phase3_ch14_rules_build.py",
+   "what": "The script's drawings are 256 px wide at every width (D3-448): the failure plates of 14.3, 14.4, 14.7, 14.8, 14.10, 14.11 and 14.13, and 14.11's correct plate. At 1440 px each sits in the top left of a 770 px frame, so a failure draws at about a third of its correct partner's scale and the pair stops reading as one chart shown two ways. Round 0 raised the same fault on chapter 13 (S4), and it was fixed there.",
+   "fix": "Draw each at its partner's width where the stage is 600 px or wider, and keep the 256 px drawing below that, switched by a container query on the stage as 14.12 now does. That costs about 1.3 KB a plate, about 11 KB in all; the main session moves 12 KB of chapter 14's 1,008,770 bytes of room to the rules' 0.20 MB, which lowers the share per plate by about 200 bytes. If the bytes cannot move, the least that passes is to center each drawing and set the do-not-publish bar to its width.",
+   "owner": "Editor; the main session for the bytes",
+   "items": [
+    "ch14_rules"
+   ]
+  },
+  "AM1": {
+   "title": "S38 gives two lists and two counts in one figure.",
+   "where": "S38, Rule 14.130; work/build/chart-kit/specs/s38.json and the kit’s lookup",
+   "what": "The still list reads \"8 of 17 issue records: Well supported\". Under the notes and the source line, the live lookup reads \"Filters, 0 on\" and \"17 of 17 issue records\" over the full table. The search and filters sit after the source line, apart from the list they filter.",
+   "fix": "Where scripts run, the live lookup takes the still list's place, with the search and filters above one list and one count; the still image stays the export and the scripts-off view (Rule 14.13).",
+   "owner": "Maker A (the spec), engineer (the kit's lookup)",
+   "items": [
+    "maker_a"
+   ]
+  },
+  "AM2": {
+   "title": "S37 hides the column its title names.",
+   "where": "S37, Rule 14.129; work/build/chart-kit/specs/s37.json",
+   "what": "The title counts the routes \"through an act of Congress\", and the federal statute column takes no emphasis. The rows follow reform number, so a group heading prints each time the group changes: \"Housing, care, energy and infrastructure\" and \"Congress, courts and the executive\" four times each, \"Elections and representation\" and \"Competition and technology\" three times each (counted by script from `v7-reform-routes.json`). The figure runs 4,332 px at 1440 px.",
+   "fix": "Order the rows by the atlas's reform group so each heading prints once, with the rejected option last under its own heading, and set the federal statute column's header in ink with a hairline frame down the column, the way Rule 14.16 sets the named column in ink.",
+   "owner": "Maker A",
+   "items": [
+    "maker_a"
+   ]
+  },
+  "BM1": {
+   "title": "S33's labels break from their values and crush the phone plot.",
+   "where": "S33, Rule 14.40; work/build/chart-kit/specs/s33.json and forms/indexed-line.js",
+   "what": "At 1440 px \"Unemployment insurance taxes\" wraps and its \"100\" sits alone on the line above \"Miscellaneous receipts 30\". At 390 px the eleven labels take two lines each and the plot shrinks to about 150 px.",
+   "fix": "Never wrap a value away from its name. Where the stage is under 600 px, label customs duties and all receipts on the plot and list the other nine sources with their 2026 index under it, sorted, so the plot takes the full width (Rule 14.12, `phone: differs`).",
+   "owner": "Maker B, with the engineer if the wrap is the shared label part",
+   "items": [
+    "maker_b"
+   ]
+  },
+  "SK-M1": {
+   "title": "The avoid sketches never show what misleads, or the better choice.",
+   "where": "Rules 14.24 and 14.45; s-14-24-sketch.html, s-14-45-sketch.html; R1-C1’s avoid limit",
+   "what": "DR-240: \"An avoid entry shows the misleading drawing as a small sketch beside the better choice.\" The radar plate draws one radar with two groups, so a reader cannot see a shape change with the order of its spokes; the streamgraph draws one stream with no baseline to compare.",
+   "fix": "The radar shows the same two groups with the spokes in two orders, two different shapes, beside the same values as grouped bars (Rule 14.22); the streamgraph shows its layers beside the same data as small multiples or stacked areas on a zero line. If 2 KB cannot hold both drawings, the engineer raises R1-C1's avoid limit to 3 KB, 8 KB across the eight avoid entries.",
+   "owner": "Maker A (14.24), maker B (14.45), engineer for the size limit",
+   "items": [
+    "sketches"
+   ]
+  },
+  "SK-M2": {
+   "title": "Sketch plates frame a small drawing in a large empty field.",
+   "where": "The sketch plates of Rules 14.24, 14.43, 14.44 and 14.45 (D3-416)",
+   "what": "At 1440 px each of the four sketches sits at the left of a 770 px frame; the two avoid plates carry a full-width bar over a drawing about 120 px wide.",
+   "fix": "Center the sketch in its stage and set the do-not-publish bar to the sketch's width.",
+   "owner": "Engineer (the sketch plate of D3-416)",
+   "items": [
+    "sketches"
+   ]
+  },
+  "CH15-M1": {
+   "title": "Chapter 15's plates read as phone mockups at desktop width.",
+   "where": "Every chapter 15 plate; phase3_ch15_build.py (D3-450)",
+   "what": "D3-450 holds every plate at a 328 px stage at every width. That keeps type at 13 to 15 px, which is right. At 1440 px it leaves a 328 px column centered in an 866 px frame: 15.4 runs 1,415 px tall and 15.6 runs 1,442 px, with two loops a reader should compare stacked one under the other.",
+   "fix": "Keep every drawing at its true 296 px, never scaled, and switch the stage by its own width with a container query, never a media query, so the narrower 1024 px column stays in one column. Under 680 px: one 328 px column, as now. At 680 px or wider: the drawing at left and its words (chips, read-aloud sentence, key, source) in a column at right, and two-loop plates set their loops side by side. Chapter 13's opener is the model. Bytes: the switch costs about 100 bytes a plate, 2.5 KB, against 20,928 bytes left this round. Of chapter 15's 55,787 bytes of plate CSS, 49,860 repeat across the 25 plates, and 17 rules sit in every one; one chapter-level block for the shared rules pays for the switch many times over and leaves rounds 4 and 5 more of the 0.60 MB.",
+   "owner": "Systems designer (generator and plate CSS), engineer if the shell's stage needs a hook",
+   "items": [
+    "ch15"
+   ]
+  }
+ },
+ "should_fix": {
+  "R-S1": {
+   "title": "Axis and label units",
+   "what_and_fix": "14.1's correct plate prints \"6,000,000\" on its axis and \"5.7 million\" on its labels; set the axis in millions.",
+   "owner": "Editor",
+   "items": [
+    "ch14_rules"
+   ]
+  },
+  "R-S2": {
+   "title": "Straight apostrophes",
+   "what_and_fix": "The chapter's instruction reads \"the reader's question\", and the builders lines read \"the spec's labels.series\", \"the window's reason\" and \"the data's break column\". Curl them as reader text.",
+   "owner": "Editor",
+   "items": [
+    "ch14_rules"
+   ]
+  },
+  "R-S3": {
+   "title": "One dataset, several plates",
+   "what_and_fix": "Newspaper publishers carry 14.10, 14.13 and S29; civic organizations carry 14.2 and S28 (ED-6 kept them for weight). Move 14.13 to a frozen dataset no other plate draws, inside RM2's bytes.",
+   "owner": "Editor",
+   "items": [
+    "ch14_rules"
+   ]
+  },
+  "R-S4": {
+   "title": "Title punctuation",
+   "what_and_fix": "All 42 kit specs end their titles with a period; the nine rule-plate specs do not. Rule 14.2 calls the title \"one full sentence\", so add the period to the nine. Chapter 13's five chart titles lack it too; align them only if the main session opens DR-237 for a word fix.",
+   "owner": "Editor",
+   "items": [
+    "ch14_rules"
+   ]
+  },
+  "R-S5": {
+   "title": "The opener",
+   "what_and_fix": "Link each built group's question to its group and print the rest unlinked, as citations of planned rules print (D3-452).",
+   "owner": "Editor",
+   "items": [
+    "ch14_rules"
+   ]
+  },
+  "A-S1": {
+   "title": "S23",
+   "what_and_fix": "The bars fill about a third of each panel; end the shared scale nearer the largest share so the four grades read apart.",
+   "owner": "Maker A",
+   "items": [
+    "maker_a"
+   ]
+  },
+  "B-S1": {
+   "title": "S34",
+   "what_and_fix": "At 1440 px the circles from 2005 on merge into one mass; draw the phone's rows from 1971 at every width, or stagger alternate Congresses above and below the line.",
+   "owner": "Maker B",
+   "items": [
+    "maker_b"
+   ]
+  },
+  "B-S2": {
+   "title": "Reference lines and word-sized lines",
+   "what_and_fix": "S27 and S33 draw their 100 line in full ink, close to the subject line's weight; draw it in the kit's reference role, thinner and in the secondary ink. S28's two word-sized lines sit at different heights in their lines; set both on one band.",
+   "owner": "Maker B, the engineer if the part is shared",
+   "items": [
+    "maker_b"
+   ]
+  },
+  "CH15-S1": {
+   "title": "Two numbering systems on the opener",
+   "what_and_fix": "Step numbers (\"1 lowers\", \"2 lowers\") sit beside circled callouts 1 to 6. Set the callouts as letters A to F, or move each callout clear of a step label.",
+   "owner": "Systems designer",
+   "items": [
+    "ch15"
+   ]
+  },
+  "K-S1": {
+   "title": "Two rules of different length under every chart",
+   "what_and_fix": "The notes' top rule stops at 38em while the source line's rule runs the figure's width; set both to one measure.",
+   "owner": "Engineer",
+   "items": [
+    "ch14_rules",
+    "maker_a",
+    "maker_b"
+   ]
+  },
+  "K-S2": {
+   "title": "A check for marks outside the drawing",
+   "what_and_fix": "RM1 passed every check; the kit check and the four-width guide check should both fail any mark outside its drawing's box.",
+   "owner": "Engineer",
+   "items": [
+    "ch14_rules",
+    "maker_a",
+    "maker_b"
+   ]
+  },
+  "ST-S1": {
+   "title": "Chapter 14's rail",
+   "what_and_fix": "The in-chapter rail lists every rule title from 14.1 down and marks no current rule: at Rule 14.129 it still shows 14.1 to 14.9, and the link to 14.129 sits about 4,500 px down the rail. At 141 entries it will run past 500 lines. List the groups, open the current group, mark the current rule and keep it in view. The round 1 brief asked the engineer to measure and decide; the notes record no decision.",
+   "owner": "Engineer",
+   "items": [
+    "ch14_rules"
+   ]
+  }
+ },
+ "chapter_15_stage": {
+  "decision": "D3-450, every chapter 15 plate a 328 px true-size stage with words under the drawing",
+  "verdict": "Falls short of the bar at desktop width. Type stays at its token sizes, which is right, but at 1440 px each plate is a 328 px column in an 866 px frame, 1,013 to 1,442 px tall, and two-loop plates stack what a reader should compare. At 390 px the plates are as finished as chapters 11 and 12.",
+  "instruction": "CH15-M1: keep each drawing at its true 296 px and switch the stage by its own width with a container query; two columns (drawing left, words right; two loops side by side) at 680 px or wider, one column below.",
+  "bytes": "About 2.5 KB for 25 plates against 20,928 bytes left this round; 49,860 of the 55,787 bytes of plate CSS repeat across the 25 plates, so one chapter-level block for the shared rules pays for it."
+ },
+ "structure_verdict": {
+  "decision": "DR-240",
+  "verdict": "Reads as a reference a designer would trust: fourteen rules with correct and failure plates, then entries with when to use, what to use instead (live links), why, a builders line and a specimen with its table.",
+  "weaknesses": [
+   "The in-chapter rail lists every rule from 14.1 and marks no current rule (ST-S1).",
+   "Words before each specimen measure 897 to 1,408 px at 1440 px; round 5’s selection guide should carry a visual index."
+  ]
+ },
+ "weight_recommendation": {
+  "chapter_14_now": 792010,
+  "stop": 2803941,
+  "share_per_plate": 16537,
+  "plates_to_come": 61,
+  "round_1_new_entries": {
+   "count": 26,
+   "mean_bytes": 13341,
+   "median_bytes": 13028,
+   "over_share": {
+    "14.27 (S25)": 28870,
+    "14.40 (S33)": 21591,
+    "14.129 (S37)": 19298,
+    "14.31 (S27)": 17712
+   }
+  },
+  "outside_the_reserve": [
+   "Sketch entries’ words, about 3.8 KB each on the four built: about 57 KB for the 26 still to come beyond the 4 KB and 2 KB sketch allowances",
+   "RM2’s 12 KB for the rules’ plates"
+  ],
+  "verdict": "Room holds for rounds 2 to 4 with little margin: with both costs the share falls to about 15,500 bytes, still about 2.5 KB above round 1’s median. The engineer counts sketch entries whole in the weight report, and the far-over test stays on any plate past twice the share."
+ },
+ "distinctiveness_test": [
+  {
+   "view": "Chapter 14, first screen at 1440 px, wordmark covered",
+   "verdict": "Not on its own: type on Newsprint and the opener’s question list in Inter Tight."
+  },
+  {
+   "view": "Chapter 14, any entry’s specimen in view",
+   "verdict": "Reads as Oath & Action: the evidence chip, the sentence title, gray with one subject in ink, the source line in its order."
+  },
+  {
+   "view": "Rule 14.6 on Charcoal",
+   "verdict": "Reads as Oath & Action: one red bar the title names, every other court in gray."
+  },
+  {
+   "view": "Chapter 15, opener in view at 390 px",
+   "verdict": "Reads as Oath & Action: typed chips, the line code with delay ticks, sign tags and the authority diamond."
+  },
+  {
+   "view": "Chapter 15, any plate at 1440 px",
+   "verdict": "Recognizable, but it reads as a phone card in a gray field (CH15-M1)."
+  }
+ ],
+ "risks_for_dustin": [
+  "A designer scanning 141 entries meets 900 to 1,400 px of words between charts; DR-240’s order is right for reading, so round 5’s selection guide should show every form as a small drawing by question, on board 2.",
+  "CH15-M1 changes chapter 15’s composition at wide widths only; a larger desktop drawing for the opener and worked examples would go further and can be paid from the shared-CSS saving later.",
+  "After RM2 and the sketch words chapter 14 keeps about 2.5 KB a plate over round 1’s median; round 3’s maps and distribution forms carry more rows.",
+  "Five rule and entry plates rest on two Census business series and four on Census voting tables, which makes the chapter’s range look smaller than it is (R-S3)."
+ ],
+ "questions_for_dustin": []
+}
