@@ -560,7 +560,7 @@
    "title": "Place a reform on the exact connections and variables it targets, with its band.",
    "rule": [
     "Each of our systems atlas’s 50 reforms lists its targets, the exact connections and variables it acts on, and the loops it sits on. Draw the reform on a drawing that holds its targets, and turn only those marks red, as Rule 12.5 sets: each target connection with its arrowhead, and the outline of each target variable. Beside the drawing, name the reform, say that it acts where the marks turn red, and list each target in its typed chip.",
-    "Mark the targets one by one, even where they fill a cluster, and never turn a frame, a cluster or a whole loop red in their place. Print the reform’s band beside it in the atlas’s words. The band names the kind of change, on Donella Meadows’ ordering of places to intervene in a system, from changing a number to changing what the system aims for. Of the 50 reforms, 26 change rules, 11 change a parameter, five feedback, four information, three the power to change the rules and one goals."
+    "Mark the targets one by one, even where they fill a cluster, and never turn a frame, a cluster or a whole loop red in their place. Print the reform’s band, the kind of change it makes, beside it in the atlas’s words. The bands follow Donella Meadows’ ordering of places to intervene in a system, from changing a number to changing what the system aims for. Of the 50 reforms, 26 change rules, 11 change a parameter, five feedback, four information, three the power to change the rules and one goals."
    ],
    "tokens": [
     "oa.color.data.emphasisRed.onNewsprint",
@@ -679,7 +679,7 @@
     "text": [
      "A loop runs only when each of its steps runs, so its least certain step limits the whole. A reader who sees two solid lines and one dashed line can say how far the loop holds before reading its record."
     ],
-    "basis": "Our systems atlas, Loop R1’s record and evidence summary"
+    "basis": "Our systems atlas, the record and evidence summary of Loop R1"
    },
    "correct": {
     "specimen": "s-15-13-correct",
@@ -728,7 +728,7 @@
     "text": [
      "A revision in the atlas’s own words lets a reader check it against the atlas, and the date tells them which version they read. This one changes what the loop explains: the atlas records that rising home equity tends to lower the top wealth share, so the loop no longer accounts for wealth at the top."
     ],
-    "basis": "Our systems atlas, Loop R8’s record and connection T12"
+    "basis": "Our systems atlas, the record of Loop R8 and Connection T12"
    },
    "correct": {
     "specimen": "s-15-14-correct",
@@ -768,7 +768,7 @@
    "title": "Follow a variable two loops share through each loop in turn.",
    "rule": [
     "Loop B4, “Electoral consequences can improve public performance”, and Loop R10, “Safe seats shift accountability to small primary electorates”, both pass through Variable C3, risk of losing office. Draw the two loops side by side, give the shared variable the same short name in both, and fill its pill in ink in each drawing, the one place a pill takes a fill. Under each loop, print the connection that brings a change into the shared variable and the one that carries it on, with the atlas’s sentence on each sign.",
-    "Then say where the loops meet, in the atlas’s words. In Loop R10 the risk of losing office falls as primaries decide more seats; in Loop B4 the same risk turns into defeats that improve public services. The atlas says Loop B4 “works only where seats are competitive”."
+    "Then say where the loops meet, in the atlas’s words. As primaries decide more seats in Loop R10, the risk of losing office falls, and in Loop B4 that same risk turns poor service into defeats that improve it. The atlas says Loop B4 “works only where seats are competitive”."
    ],
    "tokens": [
     "oa.color.graphic.essential.onNewsprint"
@@ -815,7 +815,7 @@
   },
   {
    "id": "15.16",
-   "title": "Show a reform’s four effects side by side, with each route’s check date.",
+   "title": "Show a reform’s four effects apart, with each route’s check date.",
    "rule": [
     "Reform R-01, “All-party primaries with ranked general elections”, targets two connections and one variable on Loop R10, and sits on Loops R10, B4 and R11. Draw it where it acts (Rule 15.11), then print its effects one outcome family to a row, each with the atlas’s code, its words and the pips of Rule 13.5, and no row that adds them. Its routes follow, each with who acts there, its feasibility and its own check date, or “Not checked” where the atlas gives none (Rule 13.10).",
     "As of October 15, 2026, the atlas codes its effect on the quality of democracy moderate positive, on government efficacy small positive, and on the other two families no expected effect. It checked the state ballot and local routes on that date, and the state statute and federal statute routes carry no date."
@@ -870,10 +870,10 @@
   },
   {
    "id": "15.17",
-   "title": "Draw who holds power over each level in one authority diagram.",
+   "title": "Draw who holds power over each layer in one authority diagram.",
    "rule": [
-    "Our systems atlas records seven authority connections. Each runs from a body in the core layer, such as Congress or the state and local governments that test reforms, to a variable in the economy or technology layer that the body has the legal power to set. Draw all seven in one diagram: the layers stacked with a rule between each and its name, one pill for each body and each variable, and every line in the authority mark of Rule 15.5. Every line in it decides, so print the word once, in a key beside the diagram.",
-    "Run the lines into each layer in lanes on one side of the column, nested so that none crosses another, and list each connection beside the diagram with its name. Then a reader sees what no single line shows: two bodies hold power over three of the four variables, and Congress and the executive each reach both layers."
+    "Our systems atlas records seven authority connections. Each runs from a body in the core layer, such as Congress or the state and local governments that test reforms, to a variable in the economy or technology layer that the body has the legal power to set. Draw all seven in one diagram: the layers stacked with a rule between each and its name, one pill for each body and each variable, and every line in the authority mark of Rule 15.5. Every line in it means the same verb, decides, so print the word once, in a key beside the diagram.",
+    "Run the lines into each layer in lanes on one side of the column, nested so that none crosses another, and list each connection beside the diagram with its name. Then a reader sees what no single line shows: three of the four variables each answer to two bodies, and Congress and the executive each reach both layers."
    ],
    "tokens": [
     "oa.color.graphic.essential.onNewsprint",
@@ -881,7 +881,7 @@
    ],
    "why": {
     "text": [
-     "Power in the atlas is shared. Congress appropriates public investment and the executive administers it; antitrust enforcers and state governments both set rules for pricing software. One diagram keeps every body apart and shows where their powers meet."
+     "Power in the atlas is shared. Congress appropriates public investment and the executive administers it; antitrust enforcers set rules for pricing software, and so do states and cities. One diagram keeps every body apart and shows where their powers meet."
     ],
     "basis": "Our systems atlas’s authority connections and model conventions"
    },
@@ -908,7 +908,7 @@
     },
     {
      "label": "Decides",
-     "value": "Once, in the key, since every line in the diagram decides; each connection’s name beside it says who decides what"
+     "value": "Once, in the key, since every line in the diagram means the same; each connection’s name beside it says who decides what"
     },
     {
      "label": "Lanes",

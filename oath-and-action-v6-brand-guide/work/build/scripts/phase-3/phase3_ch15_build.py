@@ -1797,9 +1797,9 @@ def rule_15_11(book):
             "as Rule 12.5 sets: each target connection with its arrowhead, and the outline of each target variable. Beside "
             "the drawing, name the reform, say that it acts where the marks turn red, and list each target in its typed chip.",
             "Mark the targets one by one, even where they fill a cluster, and never turn a frame, a cluster or a whole loop "
-            "red in their place. Print the reform’s band beside it in the atlas’s words. The band names the kind of change, "
-            "on Donella Meadows’ ordering of places to intervene in a system, from changing a number to changing what the "
-            "system aims for. Of the "
+            "red in their place. Print the reform’s band, the kind of change it makes, beside it in the atlas’s words. The "
+            "bands follow Donella Meadows’ ordering of places to intervene in a system, from changing a number to changing "
+            "what the system aims for. Of the "
             f"{len(REFORM)} reforms, {bands['rules']} change rules, {bands['parameter']} change a parameter, "
             f"{words_n(bands['feedback'])} feedback, {words_n(bands['information'])} information, "
             f"{words_n(bands['power to change the rules'])} the power to change the rules and {words_n(bands['goals'])} goals.",
@@ -1895,7 +1895,8 @@ def rule_15_12(book):
     need(link("LT03")["evidence"] == link("L26")["evidence"], "the chain's two connections no longer share a grade")
     body = (hed("Reform", "R-32", r["title"])
             + diagram_label("well-supported", f"{GRADE['well-supported'][1]}, the grade of both connections drawn")
-            + beside(fig(svg) + f'<p class="nt">{gl("LT03")}</p><p class="nt">{gl("L26")}</p>', words))
+            + beside(fig(svg) + "".join(f'<p class="nt">{chip("Connection", x)} “{e(link(x)["name"])}”.&#160;'
+                                        f'{grade_word(link(x)["evidence"], gloss=False)}</p>' for x in ("LT03", "L26")), words))
     book.add("s-15-12-correct", body, rule="15.12", readable=True, wide=True,
              alt=(f"Reform R-32 from our systems atlas, “{r['title']}”, on a chain of three pills drawn downward: Concentration "
                   "of platforms and digital advertising, in the technology layer, then across a rule into the core layer, Local "
@@ -2013,7 +2014,7 @@ def rule_15_13(book):
         "tokens": ["oa.chart.grade.plausible"],
         "why": {"text": ["A loop runs only when each of its steps runs, so its least certain step limits the whole. A reader who "
                          "sees two solid lines and one dashed line can say how far the loop holds before reading its record."],
-                "basis": "Our systems atlas, Loop R1’s record and evidence summary"},
+                "basis": "Our systems atlas, the record and evidence summary of Loop R1"},
         "correct": {"specimen": "s-15-13-correct",
                     "caption": "Loop R1 from our systems atlas, with its middle step dashed and marked as the weakest, under a "
                                "label that gives the whole loop that step’s grade."},
@@ -2092,7 +2093,7 @@ def rule_15_14(book):
         "why": {"text": ["A revision in the atlas’s own words lets a reader check it against the atlas, and the date tells them "
                          "which version they read. This one changes what the loop explains: the atlas records that rising home "
                          "equity tends to lower the top wealth share, so the loop no longer accounts for wealth at the top."],
-                "basis": "Our systems atlas, Loop R8’s record and connection T12"},
+                "basis": "Our systems atlas, the record of Loop R8 and Connection T12"},
         "correct": {"specimen": "s-15-14-correct",
                     "caption": "Loop R8 as our systems atlas holds it, with the atlas’s revision and its reason quoted beside "
                                f"the drawing, as of {SNAP}."},
@@ -2202,8 +2203,8 @@ def rule_15_15(book):
             f"{lc(c3['title'])}. Draw the two loops side by side, give the shared variable the same short name in both, and "
             "fill its pill in ink in each drawing, the one place a pill takes a fill. Under each loop, print the connection "
             "that brings a change into the shared variable and the one that carries it on, with the atlas’s sentence on each sign.",
-            "Then say where the loops meet, in the atlas’s words. In Loop R10 the risk of losing office falls as primaries "
-            "decide more seats; in Loop B4 the same risk turns into defeats that improve public services. The atlas says "
+            "Then say where the loops meet, in the atlas’s words. As primaries decide more seats in Loop R10, the risk of "
+            "losing office falls, and in Loop B4 that same risk turns poor service into defeats that improve it. The atlas says "
             f"Loop B4 “{qual[len('The loop '):][:-1]}”.",
         ],
         "tokens": [TOKEN_LINE],
@@ -2318,7 +2319,7 @@ def rule_15_16(book):
              notes="Labeled failure: the families added into one score, and every route given the reform's snapshot date.")
     return {
         "id": "15.16",
-        "title": "Show a reform’s four effects side by side, with each route’s check date.",
+        "title": "Show a reform’s four effects apart, with each route’s check date.",
         "rule": [
             f"Reform R-01, “{r['title']}”, targets two connections and one variable on Loop R10, and sits on Loops R10, B4 "
             "and R11. Draw it where it acts (Rule 15.11), then print its effects one outcome family to a row, each with the "
@@ -2483,6 +2484,12 @@ def rule_15_17(book):
     reach = {a: {lay_ for k_, (a_, b_) in want.items() if a_ == a for lay_ in [node(b_)["layer"]]} for a, _ in want.values()}
     need(sorted(a for a, s_ in reach.items() if len(s_) == 2) == ["D1", "D2"], "the bodies that reach both layers changed")
     svg, pills, edges = authority_plate()
+    titles = {c: node(c)["title"] for c in ("EC2", "EC10", "TC5", "TC7")}
+    need(titles == {"EC2": "Public investment in research and infrastructure", "EC10": "Costs of tariffs and trade rules",
+                    "TC5": "Government's ability to build and run digital services", "TC7": "Use of pricing algorithms"},
+         "the titles of the decided variables changed")
+    vname = {c: lc(t) for c, t in titles.items()}
+    vname["TC5"] = "the " + vname["TC5"]          # "the government’s ability", as a phrase in a sentence
     need(sorted(ed[4] for ed in edges) == sorted(AUTH), "the diagram leaves out an authority connection")
 
     def li(k):
@@ -2494,8 +2501,9 @@ def rule_15_17(book):
     words = (f'<p class="k">Key</p>{key_decides()}'
              f'<p class="k">Into the economy layer</p>{kw([li(k) for k in econ])}'
              f'<p class="k">Into the technology layer</p>{kw([li(k) for k in tech])}'
-             f'<p class="nt">Two bodies decide each of {chip("Variable", "EC2", ",")} {chip("Variable", "TC5")} and '
-             f'{chip("Variable", "TC7", ";")} one decides {chip("Variable", "EC10", ".")} Of each line, the atlas says: '
+             f'<p class="nt">Two bodies decide each of {chip("Variable", "EC2", ",")} {e(vname["EC2"])}, '
+             f'{chip("Variable", "TC5", ",")} {e(vname["TC5"])}, and {chip("Variable", "TC7", ",")} {e(vname["TC7"])}; one '
+             f'decides {chip("Variable", "EC10", ",")} {e(vname["EC10"])}. Of each line, the atlas says: '
              f'“{e(next(iter(sm)))}”</p>'
              + src("its seven authority connections and the variables they reach"))
     body = (diagram_label("documented", "on the public record, the grade of all seven connections")
@@ -2523,21 +2531,21 @@ def rule_15_17(book):
              notes="Labeled failure: the four deciding bodies folded into one, so the drawing cannot show who decides what.")
     return {
         "id": "15.17",
-        "title": "Draw who holds power over each level in one authority diagram.",
+        "title": "Draw who holds power over each layer in one authority diagram.",
         "rule": [
             f"Our systems atlas records {words_n(len(AUTH))} authority connections. Each runs from a body in the core layer, "
             "such as Congress or the state and local governments that test reforms, to a variable in the economy or technology "
             "layer that the body has the legal power to set. Draw all seven in one diagram: the layers stacked with a rule "
             "between each and its name, one pill for each body and each variable, and every line in the authority mark of "
-            "Rule 15.5. Every line in it decides, so print the word once, in a key beside the diagram.",
+            "Rule 15.5. Every line in it means the same verb, decides, so print the word once, in a key beside the diagram.",
             "Run the lines into each layer in lanes on one side of the column, nested so that none crosses another, and list "
             "each connection beside the diagram with its name. Then "
-            f"a reader sees what no single line shows: two bodies hold power over {words_n(len(two))} of the four variables, "
+            f"a reader sees what no single line shows: {words_n(len(two))} of the four variables each answer to two bodies, "
             "and Congress and the executive each reach both layers.",
         ],
         "tokens": [TOKEN_LINE, "oa.color.border.strong"],
         "why": {"text": ["Power in the atlas is shared. Congress appropriates public investment and the executive administers it; "
-                         "antitrust enforcers and state governments both set rules for pricing software. One diagram keeps every "
+                         "antitrust enforcers set rules for pricing software, and so do states and cities. One diagram keeps every "
                          "body apart and shows where their powers meet."],
                 "basis": "Our systems atlas’s authority connections and model conventions"},
         "correct": {"specimen": "s-15-17-correct",
@@ -2551,7 +2559,7 @@ def rule_15_17(book):
             {"label": "Layers", "value": "Stacked, with one 1 px rule between each two and both names beside it (Rule 15.9)"},
             {"label": "Bodies", "value": "One pill each, in the core layer"},
             {"label": "Lines", "value": "The authority mark of Rule 15.5: solid, an open diamond, no sign, with its delay ticks"},
-            {"label": "Decides", "value": "Once, in the key, since every line in the diagram decides; each connection’s name beside it says who decides what"},
+            {"label": "Decides", "value": "Once, in the key, since every line in the diagram means the same; each connection’s name beside it says who decides what"},
             {"label": "Lanes", "value": f"Lines into the economy layer on the right and into the technology layer on the left, {LANE} px apart, nested so none crosses"},
             {"label": "Beside it", "value": "Each connection’s chip, name and grade word, grouped by the layer it reaches"},
         ],
@@ -2601,7 +2609,7 @@ def rule_15_18(book):
     need(ra == "More household hardship, more automatic support, and back to less household hardship.", f"Loop B2 reads {ra!r}")
     words = (ra_p(ra)
              + f'<p class="k">The missing chain</p><p class="nt">The atlas: “{e(es[0])} {e(miss)}”</p>'
-             + f'<p class="nt">Household hardship is “{e(rev)}”, {chip("Variable", "A4", ",")} read the other way.</p>'
+             + f'<p class="nt">Household hardship is “{e(rev)}”, {chip("Variable", "A4", ".")}</p>'
              )
     others_html = (f'<p class="k">The atlas’s other conceptual loops</p>'
                    f'<div class="two tw">{"".join(f"<p class={chr(34)}nt{chr(34)}>{x}</p>" for x in o_items)}</div>')
@@ -2613,7 +2621,7 @@ def rule_15_18(book):
                   "hardship and Automatic support (UI, credits), joined by hollow lines: plus, raises, over the top, and minus, "
                   "lowers, under the bottom, with no step numbers. The loop reads: more household hardship, more automatic "
                   f"support, and back to less household hardship. Beside it, the atlas’s words: {es[0]} {miss} Household "
-                  f"hardship is {rev}, Variable A4, read the other way. Then the atlas’s other conceptual loops: Loop B3, "
+                  f"hardship is {rev}, Variable A4. Then the atlas’s other conceptual loops: Loop B3, "
                   f"{b3['title']}, well supported where entry is possible, with no numbered chain; Loop R9, {r9['title']}, "
                   f"hypothesis: {others['R9'][1]}"),
              notes="Stations, signs, grade and the missing chain read from the loop's record; hollow lines and thin pills as "

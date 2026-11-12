@@ -95,3 +95,41 @@ Modified:
 - `work/build/chart-kit/forms/indexed-line.js` and `work/build/chart-kit/specs/s33.json` (ruling (b), request B2)
 
 Scratch (not delivered): the spec, entry and sketch writers, the renderers, captures and weigh script in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/65b3d20e-985e-5fe9-b272-d7d01bd821cd/scratchpad/phase-3/round-2/maker-b/`.
+
+## Second run (ED-E16 and the data lead's sign-off)
+
+November 12, 2026, after the main session's routing of the editor's ED-E16 and the data lead's "Sign-off, maker B" (MB-1 to MB-18). The editor's 34 word changes to my specs and entries are kept: every change below edits the files in place, field by field, and my scratch writers were not rerun.
+
+**RANGE-BAR PHONE READY (ED-E16).** `range-bar` now stacks its rows where the name and value columns would leave the plot narrower than `labels.stack_below` px (160 by default): each row's name and value on one line, its interval across the full width on the line beneath, one scale ticked at the top and the bottom (four ticks), the gridlines and the nation's dashed line running through every interval row and never through a name, and the drawing calls `c.arrange('phone')`. Rule 14.9's trial spec stacks at 294 and 224 px and keeps 480 px side by side; with "each line spans a state’s 90 percent margin of error" added to its measure line it passes the kit's interval check (the plate's own spec needs the level there too). The editor can set `RANGE_BAR_PHONE = True`.
+
+### Routine calls
+
+- D3-xxx | `range-bar` stacks under `labels.stack_below` px of plot (default 160), with the gridlines and the reference drawn only through each interval row | ED-E16 and the data lead's terms: name and value on one line, interval beneath, one scale, the nation's line through every interval row
+- D3-xxx | S57 sets `stack_below` 240, so it stacks at the 358 px phone and every narrower column; `phone` is `differs` with a `phone_note`, and `desk_phone` shows the nation and the first 12 places | At 358 px the side-by-side plot was about 193 px for a 35-point scale; the desk's phone drawing of 13 rows must stack as a phone does, and 51 stacked rows run about 2,000 px
+- D3-xxx | S57 sorts the nation's row first, then by figure | The desk's phone drawing draws the first rows only, and without the nation's row it lost the dashed line and the open dots; the table now sets the nation apart as its first row (ruling (b))
+- D3-xxx | S58's band takes Stone magnitude step 1 on both grounds, and its chart note says "gray band" | RB-D2, MB-13
+- D3-xxx | S56's names take a place beside their dot or a leader that crosses no stretch of the path and passes no other dot, checked in the form; the latest quarter sits beside its dot (up to 8 px out, no leader), on a halo over the path if it must; the gap's words print only where a clear place exists, and the note and chart note name the gap in any case | MB-12; the shared `place_labels` part does not test its leaders against a path (request RB-G4)
+- D3-xxx | S54 and S55 name California and North Dakota in regular weight; their income scale ends at $85,000; S55's field circles take an outline of the ground on Charcoal | MB-7, MB-9, MB-11
+- D3-xxx | S51's title names the South's median county; note 2 names a county only past both margins; note 3 gives Gaines County's 8.5-point lead; the alt gives all four medians, the West's 12.35 now printing 12.4 | MB-3, MB-4; the engineer's rounding fix (RB-G1) made MB-5's rounding in the derived file unnecessary
+- D3-xxx | Entries 14.59, 14.60, 14.67 and 14.68 state Rule 14.6's two cases (the red point, or the subject ink where a reader ties the mark to a party) and cite 14.6; 14.67 says the labeled names are regular weight; 14.75 names Stone magnitude step 1 | MB-16, MB-17, D3-572's form
+
+### Applied
+
+MB-1 (S49 note 2), MB-2 (S50 grade line), MB-3 and MB-4 (S51 title and notes), MB-5 (by the engineer's fix; S51's alt), MB-6 (S53's source line: the editor had already set the research lead's `with_program_ages` line, kept), MB-7 to MB-11 (S54 and S55), MB-12 (S56), MB-13 to MB-15 (S58: band, the 2017 sentence, note 1 tested against 2019's $85,320), MB-16 and MB-17 (entries), MB-18 (sketch 14.78's second bar now 4 units under its threshold, in the file and in my scratch writer).
+
+### Requests
+
+- **RB-G4, to the engineer:** a `paths` option for `K.parts.place_labels`, so a leader may cross no stretch of a drawn path (S56 tests this in its own code today).
+- **To the editor:** S58's reading guide now says 2017's two dots overlap (MB-14); Rule 14.11's plate shares the data and says "too close to show as a break", which you may want to align.
+
+### Tested
+
+- `oa-chart.mjs build` S33 and S49 to S59: 12 of 12 PASS, 0 faults, every width on both grounds; S56 and S57 built again after their last changes, PASS; `dataviz_check.js --kit` on S56 and S57, PASS.
+- S57's kit page drawn at 390, 358, 326, 296 and 256 px on both grounds (Playwright, the figure's box set to each width): every width reports the phone arrangement and stacks; looked at 358 Newsprint, 296 Charcoal, 256 Newsprint and 326 Charcoal at twice size. Rule 14.9's trial drawn at 480, 294 and 224 px: side by side at 480, stacked at 294 and 224; looked at 294 Newsprint and 224 Charcoal.
+- Looked at again: S56 at 1440 Newsprint and 390 Charcoal (all five names placed, leaders clear of the path); S55 at 1440 Newsprint and 390 Charcoal (DC inside the plot, outlines on Charcoal, regular-weight labels); sketch 14.78 on both grounds.
+- `maker_b_round2_derive.py --figures`: 0 faults, with new checks for S51's Gaines lead past both margins, S54's and S55's Florida over California and Hawaii and North Dakota against Wyoming, the income scale's end, S55's title and S58's lead over 2019; `--check`: 0 faults.
+- `phase3_ch14_build.py`: 0 faults; `guide_build.py --strict --out <scratch>/guide.html`: exit 0, 10,589,578 bytes; entry 14.74 captured from it at 1440 px, its desk phone drawing stacked with the nation's line and the open dots.
+
+### Not tested
+
+- Rule 14.9's plate itself on the stacked form (the editor builds it); entry 14.74 at 390 px after the last threshold change; the other changed specs (S49 to S53, S58) were rebuilt and pass but were not looked at again at full size after these word and ink changes, except S58's band ink, which I chose against before (RB-D2).
