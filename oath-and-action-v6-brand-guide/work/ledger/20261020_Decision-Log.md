@@ -4463,3 +4463,22 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | D3-582 | S37's phone drawing at a desk shows the first 20 route rows, the six reforms R-01 to R-06, labeled "the first six reforms shown; a phone draws all 50" | A17 (D3-534); the first group's other four reforms come later in the data's order, so "the first group" would not be true |
 | D3-583 | The radar sketch's grouped bars draw at 280 px | At 170 and 240 px the plate's "Use instead: Grouped bars" label wrapped to two lines and the two drawings sat at different heights |
 | D3-584 | Row names stay flush left in every listing form of mine (dot plot, lollipop, grouped bar, benchmark bars, column on a phone); the register keeps its rank column first, with every name on one left edge | Ruling (f) |
+
+### Editor, round 1 review fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-585 | RM2's failure plates draw one drawing that fills its partner's width at every width, in place of two fixed drawings switched at 600 px | The kit draws at 675 px at 1440 and 510 px at 1024; a fixed wide drawing would scale its words under 13 px at 1024, and one plot with HTML words matches the kit at every width for fewer bytes |
+| D3-586 | Each failure plate takes its partner's scale and inks: 14.3 on 30 to 80, 14.4's columns all in ink, 14.13's named column in red | A failure shows only its own fault |
+| D3-587 | Rule 14.1 prints its axis and its two labels in millions, the unit named once in the measure line | CD R-S1; Rule 14.3 |
+| D3-588 | Rule 14.13 draws the FEC's count of super PACs by cycle, 2010 to 2024, with 2024 as the red point | CD R-S3; a count of committees ties to no party under D3-489's test, so Rule 14.6 gives it the red |
+| D3-589 | Rule 14.12's named 2026 column takes the subject ink | D3-489: fiscal 2026's receipts carry the sitting president's tariffs, the reason S33 takes ink |
+| D3-590 | Rule 14.9 is the kit's static figure, its desk drawing 480 px wide and its phone drawing 256 px | The figure takes fixed widths; 480 px is the narrowest artboard the kit draws as desk and 256 px the guide's narrowest column, so neither ever scales its words |
+| D3-591 | Rule 14.9's key moves into its reading guide, and a note lists the states past and within the margin | The kit's table holds data columns only, so the note keeps the old table's verdict column in words |
+| D3-592 | Rule 14.11's table names each marked year's change in the survey in words, from the Census Bureau's footnotes | The kit draws every vertex dot, so the open and filled marks leave; the table and two labels say which estimate is which |
+| D3-593 | Every correct kit plate carries "Chart: Oath & Action" | Every maker's spec does (BC M2) |
+| D3-594 | Rule 14.6's party case lists the five kinds of tie the data lead's ruling (b) applied | D3-489; one rule, read the same way in the rule and in the charts |
+| D3-595 | AX S8's sentence sits in Rule 14.2, beside the measure line it governs | Rule 13.7 is approved as built (DR-237) |
+| D3-596 | The opener links a question where its group's first entry file exists | R-S5; D3-452 prints planned rules unlinked |
+| D3-597 | The opener's sixteen marks are drawn in the utility icons' manner and the secondary text ink, 2.3 KB | BC S6; they show each family's form without competing with the questions |
+| D3-598 | The generator's limit is 212,288 bytes | D3-479 |

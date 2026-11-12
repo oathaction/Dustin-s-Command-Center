@@ -274,3 +274,79 @@ What reads well across both makers: every title states a finding with a verb its
 - The four-width guide check and `guide_check.js` on a page with chapter 14.
 - The plates on Charcoal, in grayscale, with forced colors, with scripts off and in print.
 - The words pass on the makers' specs and entries.
+
+## Review fix pass
+
+November 12, 2026, under `work/handoffs/phase-3/20261112_Round-1-Fix-Brief.md` (calls D3-476 to D3-489 and the brand and craft addendum). Every change is in `work/build/scripts/phase-3/phase3_ch14_rules_build.py`; it rewrites `work/build/guide/entries/14-001.json` to `14-014.json`, `14-chapter.json` and my plates and specs in `work/build/guide/specimens/`.
+
+### Summary
+
+| Item | What changed |
+|---|---|
+| CD RM1 | Rule 14.3's correct plate rebuilt on the engineer's fix: no zero line under its 30 to 80 scale, and its source line is clear (looked at, 1440 px). |
+| CD RM2 | The seven failure plates (14.3, 14.4, 14.7, 14.8, 14.10, 14.11, 14.13) now draw at their partner's width at every width. Marks sit in a plot stretched to its box with strokes kept at weight, every word is HTML at true size, and the plot takes the kit's own heights (290 px under a 480 px artboard, 360 px above), switched by a container query on the art box. Each failure takes its partner's scale and inks, so it shows only its fault. 14.11's correct plate moved to the kit (BC M2). |
+| CD R-S1 | 14.1's axis and labels in millions (the kit's `millions-value`, ED-E7); the measure line names the unit once (Rule 14.3); its failure prints millions too. |
+| CD R-S2, BC S17 | The chapter instruction and three builders lines take curly apostrophes. The generator's check now fails any straight quote in reader text, inside a word too; it had passed these four. |
+| CD R-S3 | Rule 14.13 draws the research lead's new file, the Federal Election Commission's count of super PACs by cycle, 2010 to 2024 (ED-R2): a publisher and domain (D03) no other plate draws. Newspaper data now carries one rule plate (14.10). |
+| CD R-S4, BC S5 | Every chart title on my plates ends with a period: the twelve kit specs and the script's titles. Rule 14.2's failure keeps its topic for a title, which is its fault. |
+| CD R-S5 | The opener links the questions of the groups built (2, 3, 4 and 16) to their headings; the rest print unlinked, as planned rules do. |
+| BC S6 | The opener's rows share a top, with each family directly under its question, and each question has a small drawn mark of its family's form, in the utility icons' manner (24-unit grid, 2 px line, round caps, secondary ink). |
+| BC M2 | 14.6 from `ranked-bar` with `labels.point`, on the research lead's count by court (ED-R1); 14.11 from `line-event-notes`, broken at the Census Bureau's footnotes 7, then 6 and 5 (ED-E8), its table naming each year's change in words; 14.12 as one `column` spec drawn twice, columns and "On a phone, 358 px" (ED-E10); 14.9 as the kit's own static figure around the script's two drawings (ED-E9), so it prints the kit's anatomy, the bold "Source:", the credit and the table. Every correct kit plate carries "Chart: Oath & Action". The script's other plates print the measure line before the reading guide, "Source:" set apart and the credit. |
+| BC S18 | 14-chapter.json carries the chapter's basis; the build prints it once after the introduction (ED-E11), and 14.13 keeps its own (WCAG 2.2). |
+| ST M1 | 14.1 prints the research lead's vintage line: the September 2026 monthly release of October 14, 2026. |
+| ST M5, D3-477, D3-489 | Rule 14.6's builders line names `labels.named` and `labels.point` (the kit needs both for the light fill, see Requests). Its second paragraph states the party case to match the data lead's ruling (b): a state, a Congress or chamber whose majority readers know, an election result, money spent to elect a candidate and a policy readers link to one party take Charcoal, with the rest in the light fill (S17, S24, S27, S33, S34, S36); everything else takes the red (S20, S21, S23). |
+| ST S9 | Rule 14.10 gives a fourth reason for a window: a round span back from the latest figure, when no earlier start has a reason of its own. |
+| ST S10 | Group 8's line separates a survey's margin of error around a finding from a model's range around an estimate (Rule 13.1). S34's note 1 goes to maker B under Requests. |
+| AX S8 | Rule 14.2: a chart of dollars across years says "not adjusted for inflation" in its measure line, or names the dollars' year and the price index. 14.11's measure line now names the chained consumer price index, as its sidecar records. |
+
+Weight, measured by script in the strict page: rules 14.1 to 14.14 take 198,584 bytes and the opener 6,316, 204,900 in all, 7,388 under D3-479's 212,288. RM2 cost about 7.9 KB; the kit plates for 14.6, 14.11 and 14.12 saved more than that; 14.9's static figure, with two drawings and the kit's table, added about 6.5 KB; the opener's marks added 2.3 KB.
+
+### Decisions
+
+- D3-xxx | RM2's failure plates draw one drawing that fills its partner's width at every width, in place of two fixed drawings switched at 600 px | The kit draws at 675 px at 1440 and 510 px at 1024; a fixed wide drawing would scale its words under 13 px at 1024, and one plot with HTML words matches the kit at every width for fewer bytes
+- D3-xxx | Each failure plate takes its partner's scale and inks: 14.3 on 30 to 80, 14.4's columns all in ink, 14.13's named column in red | A failure shows only its own fault
+- D3-xxx | Rule 14.1 prints its axis and its two labels in millions, the unit named once in the measure line | CD R-S1; Rule 14.3
+- D3-xxx | Rule 14.13 draws the FEC's count of super PACs by cycle, 2010 to 2024, with 2024 as the red point | CD R-S3; a count of committees ties to no party under D3-489's test, so Rule 14.6 gives it the red
+- D3-xxx | Rule 14.12's named 2026 column takes the subject ink | D3-489: fiscal 2026's receipts carry the sitting president's tariffs, the reason S33 takes ink
+- D3-xxx | Rule 14.9 is the kit's static figure, its desk drawing 480 px wide and its phone drawing 256 px | The figure takes fixed widths; 480 px is the narrowest artboard the kit draws as desk and 256 px the guide's narrowest column, so neither ever scales its words
+- D3-xxx | Rule 14.9's key moves into its reading guide, and a note lists the states past and within the margin | The kit's table holds data columns only, so the note keeps the old table's verdict column in words
+- D3-xxx | Rule 14.11's table names each marked year's change in the survey in words, from the Census Bureau's footnotes | The kit draws every vertex dot, so the open and filled marks leave; the table and two labels say which estimate is which
+- D3-xxx | Every correct kit plate carries "Chart: Oath & Action" | Every maker's spec does (BC M2)
+- D3-xxx | Rule 14.6's party case lists the five kinds of tie the data lead's ruling (b) applied | D3-489; one rule, read the same way in the rule and in the charts
+- D3-xxx | AX S8's sentence sits in Rule 14.2, beside the measure line it governs | Rule 13.7 is approved as built (DR-237)
+- D3-xxx | The opener links a question where its group's first entry file exists | R-S5; D3-452 prints planned rules unlinked
+- D3-xxx | The opener's sixteen marks are drawn in the utility icons' manner and the secondary text ink, 2.3 KB | BC S6; they show each family's form without competing with the questions
+- D3-xxx | The generator's limit is 212,288 bytes | D3-479
+
+### Requests
+
+**To maker B.** S34 note 1 (ST S10) still reads "Until 1975, ending debate took a two-thirds vote", which skips 1949 to 1959. Suggested: "From 1917 to 1975, ending debate took two-thirds of the senators present and voting, except from 1949 to 1959, when it took two-thirds of the whole Senate. Since 1975 it takes three-fifths of all senators for most matters, and changes in 2013 and 2017 lowered it to a simple majority for nominations."
+
+**To maker A.** Entry 14.16 can now cite Rule 14.6 by number for both cases (D3-484), since its second paragraph states the party case.
+
+**To the engineer.**
+- ED-E12. With `labels.point` alone, `column` and `ranked-bar` leave the other marks in ink (`P.named_fill`), where Rule 14.6 sets them in the light fill. My specs and Rule 14.6's builders line name the mark in both `labels.named` and `labels.point`. If `labels.point` should imply the light fill for the rest, tell me and I will shorten the builders line.
+- ED-E13 (for round 2's margin). If `phase3_ch14_build.py` passed a `plate_css` from 14-chapter.json into the chapter file (D3-480's hook), the rules plates' shared style (the base block in all 29 and the drawing block in 8, about 9 KB) would print once.
+
+**To the main session.** The strict build exits 1 on one warning, maker B's S25 at 25,523 bytes, far over its tier's average. Nothing in my files warns.
+
+**Second pass.** Still to come: every word the makers changed, and words.json's three phone lines (`phone_view`, `phone_view_part`, `phone_view_rows`, D3-534).
+
+### Tested
+
+- `python3 -I work/build/scripts/phase-3/phase3_ch14_rules_build.py`: every check passes, the stricter quote check included; 14 rules, 29 plates, 13 kit specs. `phase3_ch14_build.py`: 55 rules, 0 faults.
+- `node work/build/chart-kit/oa-chart.mjs check` on all 12 placed kit specs: PASS, 0 faults each. 14.9's `figure` command passes its spec, word and drawing checks (the generator stops if it fails).
+- `guide_build.py --strict --out <scratch>/build/guide.html`: exit 1 on S25's warning only; the page was written and no warning names my files.
+- Weight by script in that page (`measure.py`, scratch): 204,900 bytes for rules 14.1 to 14.14 and the opener.
+- In the page by script: the chapter's basis prints once and 14.13's own once; the opener holds four links, to groups 2, 3, 4 and 16; no straight apostrophe in the rules' text.
+- Playwright (`cap.js`, scratch) on all 29 plates at 1440, 1024, 390 and 360 px: no visible text under 13 px and nothing past the stage's edge (the kit's visually hidden table captions and 14.9's clipped description set aside); 14.6 and 14.13 again after their last change.
+- axe-core 4.10.2, every default rule, on the 29 stages at 1440 and 390 px: 0 violations.
+- By eye: at 1440 px the opener, 14.1, 14.3 (both), 14.6 (correct), 14.9 (correct), 14.10 (failure), 14.11 (correct), 14.12 (correct), 14.13 (both); at 390 px 14.6, 14.8's failure, 14.9, 14.11 and 14.12 (correct); at 360 px 14.4's, 14.10's and 14.13's failures.
+
+### Not tested
+
+- The four-width guide check (`guide_check.js`) and the kit's `build --all`; the main session runs both.
+- Most plates at 1024 px by eye, and 14.3's, 14.7's and the opener's phone drawings by eye (the script read them for size and edges).
+- Charcoal, grayscale, forced colors (light or dark), scripts off and print for the redrawn plates and 14.9's static figure.
+- 14.9's figure and the opener's links by keyboard or screen reader.
+- The makers' changed words: the second pass.
