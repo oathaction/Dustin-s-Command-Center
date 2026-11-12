@@ -4252,3 +4252,17 @@ The main session posted its round 1 plan with two questions. Dustin: "as recomme
 | # | Decision | Reason |
 |---|---|---|
 | D3-450 | Every chapter 15 plate is a 328 px true-size stage, words under the drawing | The guide check accepts only the guide's type sizes, and a drawing that scales with its column sets 15 px words at 12.31 to 14.9 px; chapters 11 and 12 hold their plates at true size the same way |
+
+### Engineer, round 1, later calls
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-451 | Every kit table frame takes its tab stop at load and on each change, drawn or not | A table opened before its drawing scrolled with no tab stop (axe scrollable-region-focusable, the four-width check) |
+| D3-452 | A citation of a rule the plan file sets for a later round prints unlinked and passes the build and the check; one outside the plan fails both | The plan fixes every number before makers start (R1); the page names the planned numbers on its chapter, so the build and the check read one list |
+| D3-453 | A mark that is the red point and carries its keyline keeps its red fill, by a two-class rule in `kit.css` | Rule 05.3 and the chart system draw the point filled red with a 1 px Charcoal keyline on Newsprint; the keyline class alone keeps `fill: none` for outlines (A11) |
+
+### Maker B, round 1 last fix
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-454 | S32's table prints "date computed by Oath & Action from the law’s text" where the data file's `date_basis` says "computed by the studio" (three rows), through the column's `words` | The guide check fails "the studio" in reader text; the data file is the research lead's, so R-B13 now also asks it to reword the three cells |
