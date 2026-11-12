@@ -1,0 +1,39 @@
+{
+  "id": "14.47",
+  "title": "Use a stacked share bar with a midline when the question is which of two parts is the larger.",
+  "rule": [
+    "Split each bar into its two parts as shares of the whole, the part the question asks about from the left and the other in the track gray, with a 1 px line in the text’s ink at half. Sort the bars by the first part’s share, print it at the right of each bar, and set a national or total row first, apart from the rest. The row the title names takes the text’s ink, or the red point where Rule 14.6 allows it, and every other first part takes light gray."
+  ],
+  "use_when": "The reader asks where one of two groups is the majority, such as the states where renters outnumber owners, and the answer turns on which side of half each bar ends.",
+  "use_instead": [
+    {
+      "when": "Each whole splits into three or four parts",
+      "rule": "14.46"
+    },
+    {
+      "when": "The two parts are counts whose sizes the reader compares",
+      "rule": "14.22"
+    },
+    {
+      "when": "The reader needs the margin of error around each share",
+      "rule": "14.74"
+    }
+  ],
+  "why": {
+    "text": [
+      "The midline turns a question about majorities into a question of which side of one line a bar ends on. A shared left edge keeps the first part a length from zero, and the second part in pale gray keeps every bar whole without competing with the share that answers the question."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S43",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.4",
+    "14.6",
+    "14.9"
+  ],
+  "builders": "Form stacked-share-bar: node work/build/chart-kit/oa-chart.mjs build s43; encode.left and encode.right name the two share columns, labels.apart sets a total row first, and labels.named or labels.point names the row the title names.",
+  "correct": null,
+  "failure": null
+}

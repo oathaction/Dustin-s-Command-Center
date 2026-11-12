@@ -1,0 +1,39 @@
+{
+  "id": "14.86",
+  "title": "Use an indicator row for a small set of headline figures read together.",
+  "rule": [
+    "Set four to six figures side by side, each under a hairline with its kind in small words, the figure in the display face in the text’s ink and its caption under it; past six, run on into a second row. Print each figure exactly as its source stores it and keep its qualification in the notes or the table. An indicator row reports a set, so it takes no fill and no red."
+  ],
+  "use_when": "The reader asks for the headline numbers on a subject, such as the atlas’s eight figures, and each figure stands on its own.",
+  "use_instead": [
+    {
+      "when": "One figure is the point",
+      "rule": "14.85"
+    },
+    {
+      "when": "The figures share a measure and should be compared",
+      "rule": "14.15"
+    },
+    {
+      "when": "The figures change over time and the trend matters",
+      "rule": "14.128"
+    }
+  ],
+  "why": {
+    "text": [
+      "Figures in a row are read one by one, each with its own words, so a reader can take any one away without the others. Printing each as stored keeps the row from rounding or restating a figure its source never gave."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S60",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.2",
+    "14.6",
+    "13.10"
+  ],
+  "builders": "Form indicator-row: node work/build/chart-kit/oa-chart.mjs build s60; encode.figure, encode.caption and encode.kind name the columns, labels.kinds the printed kind words and labels.columns the most in a row.",
+  "correct": null,
+  "failure": null
+}

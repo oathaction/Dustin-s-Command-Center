@@ -1,0 +1,34 @@
+{
+  "id": "14.57",
+  "title": "Avoid 3D pies and bars, whose depth bends every value.",
+  "rule": [
+    "Leave 3D pies, 3D bars and every chart drawn with depth or tilt out of every Oath & Action piece. Draw the same values flat, as bars from one zero line, so each value is read as a length."
+  ],
+  "use_when": "Never: a reader who asks how parts compare gets a truer answer from flat bars or a flat 100 percent bar.",
+  "use_instead": [
+    {
+      "when": "The reader compares a handful of values",
+      "rule": "14.15"
+    },
+    {
+      "when": "The values are shares of one whole",
+      "rule": "14.46"
+    }
+  ],
+  "why": {
+    "text": [
+      "Tilting a pie stretches the near slices and shrinks the far ones, so equal shares look unequal, and the sides of a 3D bar add ink that hides where its top is. Neither adds a value the flat chart lacks."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "s-14-57-sketch",
+  "tier": "avoid",
+  "tokens": [],
+  "related": [
+    "14.4"
+  ],
+  "builders": "No form: the kit draws nothing in 3D. The sketch, work/build/guide/specimens/s-14-57-sketch.html, draws a tilted pie beside flat bars of the same values; build the better choice with ranked-bar or percent-bar.",
+  "correct": null,
+  "failure": null,
+  "sketch_alt": "A tilted 3D pie draws two equal illustrative shares so the nearer one looks larger, and flat bars of the same values show them as equal lengths. The pie’s depth adds ink and no value."
+}

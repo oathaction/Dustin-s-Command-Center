@@ -1,0 +1,39 @@
+{
+  "id": "14.49",
+  "title": "Use a unit chart when each mark stands for one thing a reader can count.",
+  "rule": [
+    "Draw one square for each item, grouped by year or kind and placed by the category the question asks about, such as toward voters above a line and away from voters below it. Give each category its own style that holds in gray print (solid, open, gray, hatched or dashed), name each one in a key, and print the count for every group."
+  ],
+  "use_when": "The reader asks how many things of each kind there are, the items are few enough to draw one by one, and seeing each item makes the count concrete.",
+  "use_instead": [
+    {
+      "when": "The items run to the thousands",
+      "rule": "14.15"
+    },
+    {
+      "when": "The reader compares shares of wholes of different sizes",
+      "rule": "14.46"
+    },
+    {
+      "when": "The reader asks about seats in a chamber",
+      "rule": "14.53"
+    }
+  ],
+  "why": {
+    "text": [
+      "A square for each item lets a reader count, so a total never has to be taken on trust. Styles that differ in fill and outline keep the categories apart in gray print and for a reader who sees no color."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S08",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.3",
+    "14.4",
+    "14.8"
+  ],
+  "builders": "Form unit-chart: node work/build/chart-kit/oa-chart.mjs build s08; labels.categories sets each category’s style and words, labels.mirror the two categories set above and below the line.",
+  "correct": null,
+  "failure": null
+}

@@ -62,7 +62,7 @@
     ]
   },
   "chart_notes": [
-    "Florida takes the dark ink; the other states are light gray circles with thin outlines, with California and North Dakota named. The open ring marks the United States. The key gives circles for 0.5, 2 and 6 million renter households."
+    "Florida takes the dark ink; the other states are light gray circles with thin outlines, with California and North Dakota named. The open ring marks the United States. The key gives circles for 1 million and 6 million renter households."
   ],
   "phone": "same",
   "artboard": "reading",
@@ -90,8 +90,7 @@
     "reference": "US",
     "reference_label": "United States",
     "size_key": [
-      500000,
-      2000000,
+      1000000,
       6000000
     ],
     "size_key_label": "{value}",
@@ -115,7 +114,7 @@
     ]
   },
   "notes_internal": [
-    "Maker B, round 2. Data plan row 64, rule 14.68. Same file and rulings as S54; circles by area (D2-124), largest drawn first, each with a 1 px outline in the context ink (ruling (e)); the key gives three sizes.",
+    "Maker B, round 2. Data plan row 64, rule 14.68. Same file and rulings as S54; circles by area (D2-124), largest drawn first, each with a 1 px outline in the context ink (ruling (e)); the key gives two sizes (Rule 14.4).",
     "Figures checked by maker_b_round2_derive.py --figures (check S55): Florida 2,981,485 renter households (3.0 million), California 6,159,367 (6.2 million, the most), Florida’s 35.5 percent the largest share past the margin.",
     "Read from the left and the right: as S54."
   ]

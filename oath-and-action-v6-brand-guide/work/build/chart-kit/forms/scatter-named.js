@@ -105,7 +105,8 @@
       var order = function (p) { return p.ref ? 2 : lit(p.r) ? 0 : 1; };
       var lab = pts.filter(function (p) { return p.ref ? !!L.reference_label : lit(p.r) || labeled.indexOf(String(p.r[ek])) >= 0; })
         .sort(function (a, b) { return order(a) - order(b) || a.x - b.x; });
-      var avoid = pts.filter(function (p) { return lab.indexOf(p) < 0; }).map(function (p) { return { x: p.x - p.rad, y: p.y - p.rad, w: 2 * p.rad, h: 2 * p.rad }; });
+      // a name may lie across a large circle's edge on its halo, as a map's bubble names do, but never over a dot
+      var avoid = pts.filter(function (p) { return lab.indexOf(p) < 0 && p.rad <= 12; }).map(function (p) { return { x: p.x - p.rad, y: p.y - p.rad, w: 2 * p.rad, h: 2 * p.rad }; });
       var pl = P.place_labels(c, lab.map(function (p) {
         return { x: p.x, y: p.y, r: p.rad, words: p.ref ? P.fill(c, L.reference_label, p.r) : name(p.r), weight: lit(p.r) && !p.ref ? 700 : p.ref ? 400 : 600, key: p.r[ek] };
       }), { top: 0, bottom: bot, avoid: avoid });

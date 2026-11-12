@@ -5,26 +5,26 @@
   1,
   2
  ],
- "examples": 49,
+ "examples": 63,
  "by_domain": {
-  "D01": 3,
-  "D02": 5,
-  "D03": 4,
-  "D04": 5,
-  "D05": 1,
+  "D01": 4,
+  "D02": 7,
+  "D03": 5,
+  "D04": 6,
+  "D05": 2,
   "D06": 4,
   "D07": 4,
-  "D08": 7,
-  "D09": 5,
+  "D08": 10,
+  "D09": 8,
   "D10": 6
  },
- "all_domains": 5,
+ "all_domains": 7,
  "by_state": {
   "CA": 1,
   "CT": 1,
   "FL": 1,
   "GA": 1,
-  "IL": 1,
+  "IL": 2,
   "MA": 1,
   "MI": 1,
   "MS": 1,
@@ -371,6 +371,106 @@
    "states": [],
    "rule": "14.42",
    "source": "s35.json"
+  },
+  {
+   "example": "About three in four claims behind the atlas’s 16 everyday answers are documented on the public record.",
+   "domain": "all",
+   "states": [],
+   "rule": "14.46",
+   "source": "s10.json"
+  },
+  {
+   "example": "Renters made up the larger share of households only in the District of Columbia in 2025, at 62 percent.",
+   "domain": "D09",
+   "states": [],
+   "rule": "14.47",
+   "source": "s43.json"
+  },
+  {
+   "example": "Federal outlays of $7,395.8 billion in fiscal 2026 ran $1,992.5 billion past receipts of $5,403.3 billion, the year’s deficit.",
+   "domain": "D08",
+   "states": [],
+   "rule": "14.48",
+   "source": "s44.json"
+  },
+  {
+   "example": "Of the 64 rule changes in its log, the atlas codes 24 as moving the rules toward voters and 24 as moving them away.",
+   "domain": "D02",
+   "states": [],
+   "rule": "14.49",
+   "source": "s08.json"
+  },
+  {
+   "example": "Homes in buildings of five or more units made up 36 percent of the new homes finished in 2024, their largest share of any year since 2000.",
+   "domain": "D09",
+   "states": [],
+   "rule": "14.50",
+   "source": "s45.json"
+  },
+  {
+   "example": "Private insurance, Medicare and Medicaid together paid 70 percent of the nation’s health care bill in 2024, up from 21 percent in 1960.",
+   "domain": "D09",
+   "states": [],
+   "rule": "14.51",
+   "source": "s46.json"
+  },
+  {
+   "example": "Social Security took the largest share of federal spending in fiscal 2026, $1,667.1 billion.",
+   "domain": "D08",
+   "states": [],
+   "rule": "14.52",
+   "source": "s47.json"
+  },
+  {
+   "example": "Republicans held 218 of the House’s 435 seats on November 11, 2026, and Democrats 214, with one independent and two seats vacant.",
+   "domain": "D02",
+   "states": [],
+   "rule": "14.53",
+   "source": "s48.json"
+  },
+  {
+   "example": "Nearly nine in ten Republican and Democratic voters favored a ban on stock trading by members of Congress.",
+   "domain": "D03",
+   "states": [],
+   "rule": "14.85",
+   "source": "s01.json"
+  },
+  {
+   "example": "The atlas puts eight figures first, each checked against its sources on October 15, 2026.",
+   "domain": "all",
+   "states": [],
+   "rule": "14.86",
+   "source": "s60.json"
+  },
+  {
+   "example": "The Senate fell seven votes short of the 60 it needed to take up H.R. 7008, the Stop Insider Trading Act, which as the House passed it limits members’ stock purchases and requires photo ID to vote in federal elections.",
+   "domain": "D04",
+   "states": [],
+   "rule": "14.87",
+   "source": "s61.json"
+  },
+  {
+   "example": "The TAKE IT DOWN Act went from introduction to law in four months, after the Senate took it from committee and passed it by unanimous consent.",
+   "domain": "D01",
+   "states": [],
+   "rule": "14.88",
+   "source": "s62.json"
+  },
+  {
+   "example": "Of six disputes over removals, spending and watchdogs, the Supreme Court had decided one by October 15, 2026, and acted in two others by interim order.",
+   "domain": "D05",
+   "states": [
+    "IL"
+   ],
+   "rule": "14.89",
+   "source": "s63.json"
+  },
+  {
+   "example": "Federal debt subject to the limit stood at $40,327.1 billion on October 31, 2026, $776.9 billion under the $41,104.0 billion limit.",
+   "domain": "D08",
+   "states": [],
+   "rule": "14.90",
+   "source": "s64.json"
   },
   {
    "example": "The Republican nominee led in 31 states in 2024, six more than in 2020; in four of the six states that changed leader, the lead was under 2.5 points.",

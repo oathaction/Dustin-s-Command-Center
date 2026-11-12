@@ -1,0 +1,39 @@
+{
+  "id": "14.87",
+  "title": "Use a progress bar for a count toward a threshold.",
+  "rule": [
+    "Draw one bar that runs to the whole, such as the 100 senators, with the count in the text’s ink from zero and the rest in the track gray. Mark the threshold with a tick in the text’s ink and its words over it, bracket the gap between the count and the threshold under the bar with its words, and name what fills the count and the rest under the bar, each party by name where the count is a vote (Rule 14.7)."
+  ],
+  "use_when": "The reader asks how close a count came to the number it needed, such as the votes to end debate in the Senate.",
+  "use_instead": [
+    {
+      "when": "The measure sits against a target and ranges",
+      "rule": "14.90"
+    },
+    {
+      "when": "Several counts are compared with one threshold",
+      "rule": "14.17"
+    },
+    {
+      "when": "One figure with its context answers it",
+      "rule": "14.85"
+    }
+  ],
+  "why": {
+    "text": [
+      "A bar that runs to the whole shows the count, the threshold and the distance between them as lengths on one scale. The bracket and its words say the shortfall outright, so no reader has to subtract."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S61",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.4",
+    "14.6",
+    "14.7"
+  ],
+  "builders": "Form progress-bar: node work/build/chart-kit/oa-chart.mjs build s61; encode.value and encode.against name each group’s count and rest, and labels.of, labels.needed and their words set the whole and the threshold.",
+  "correct": null,
+  "failure": null
+}

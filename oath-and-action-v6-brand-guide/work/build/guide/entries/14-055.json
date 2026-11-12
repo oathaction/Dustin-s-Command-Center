@@ -1,0 +1,39 @@
+{
+  "id": "14.55",
+  "title": "Use a donut with a number in its center only when that one number is the point.",
+  "rule": [
+    "Use a donut, a reference form, for one share of a whole that a reader should remember, printed large in the center with its words under it. Give the share the text’s ink and the rest of the ring light gray, keep the ring to two parts, and print the whole the share is of."
+  ],
+  "use_when": "The reader asks what share of a whole one part holds, and a single figure answers it.",
+  "use_instead": [
+    {
+      "when": "The figure needs context more than a ring, such as a range or a comparison",
+      "rule": "14.85"
+    },
+    {
+      "when": "The whole splits into three parts",
+      "rule": "14.54"
+    },
+    {
+      "when": "The figure is a count toward a threshold",
+      "rule": "14.87"
+    }
+  ],
+  "why": {
+    "text": [
+      "The number in the center carries the answer, and the ring shows at a glance that it is part of a whole. A ring of more than two parts asks the reader to compare arcs, which they read even less exactly than slices."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "s-14-55-sketch",
+  "tier": "reference",
+  "tokens": [],
+  "related": [
+    "14.5",
+    "14.85"
+  ],
+  "builders": "No kit form: draw a donut only as a sketch; for a figure with its context, build big-number.",
+  "correct": null,
+  "failure": null,
+  "sketch_alt": "A donut of one illustrative whole in two parts, with the larger part’s share, 64 percent, printed in its center and the ring split at that share. The rest of the ring is light gray."
+}

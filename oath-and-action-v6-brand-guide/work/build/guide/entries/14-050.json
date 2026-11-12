@@ -1,0 +1,43 @@
+{
+  "id": "14.50",
+  "title": "Use stacked columns for a total over time that splits into a few parts.",
+  "rule": [
+    "Stack up to four parts in each column in one fixed order, the largest or the base part on the zero line, in the categorical inks in their order: Charcoal, Verdigris, Prussian, then Stone, always hatched (Rule 14.5). Leave a 1 px gap of the page color between parts, name each part beside the last column, or in a key on a phone, and print the total over the columns the title or notes discuss."
+  ],
+  "use_when": "The reader asks how a total changed over a run of years and what it was made of, such as how many homes were finished each year and in what kind of building.",
+  "use_instead": [
+    {
+      "when": "There are more than four parts",
+      "rule": "14.8"
+    },
+    {
+      "when": "The parts’ shares matter more than the total",
+      "rule": "14.51"
+    },
+    {
+      "when": "One year’s parts are the question",
+      "rule": "14.46"
+    },
+    {
+      "when": "The total alone tells the story",
+      "rule": "14.16"
+    }
+  ],
+  "why": {
+    "text": [
+      "Columns from one zero line show the total as a height a reader can compare year to year. Only the first part sits on that line, so the parts above it are read best by their share of the column, which is why the order never changes and the part the story follows goes first or last."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S45",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.4",
+    "14.5",
+    "14.8"
+  ],
+  "builders": "Form stacked-column: node work/build/chart-kit/oa-chart.mjs build s45; encode.parts lists the columns in stacking order, encode.total the published total, and labels.totals_at the columns whose totals print.",
+  "correct": null,
+  "failure": null
+}

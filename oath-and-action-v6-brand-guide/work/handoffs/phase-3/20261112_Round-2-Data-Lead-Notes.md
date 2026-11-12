@@ -12,7 +12,9 @@ Rulings (a) to (g) below are final for drawing. Makers and the editor read them 
 - **(d)** Estimate, with "Documented:" and a method note, for S51, S52, S53 and S59.
 - **(e)** Inks for every form, below; S44 and S51 replace my Gate 2 palette notes.
 - **(f)** RS-S4: the red point on citizens 18 to 24.
-- **(g)** S49: two-year bins of years as a federal judge; S52: two-point bins; S51: Tukey's box, 62 outliers.
+- **(g)** S49: two-year bins of years as a federal judge, 845 judges each counted once (corrected from 850 records in the second run); S52: two-point bins; S51: Tukey's box, 62 outliers.
+
+**Second run.** Round 4's data plan is signed off with two changes (section "Data lead sign-off" at the end of `work/handoffs/phase-3/20261112_Round-4-Data-Plan.md`): rows 123 and 125 move off election data, to the three kinds of federal trial judges and to a public law's first page, under round 3's test for DR-229. The count stays 108, the largest domain 16 against 27, California and Florida 5 each against 21. Conditions for the makers cover the Euler (no frame at true area), the icon array (2025 alone), proportional symbols and both social card crops. Ruling (g) for S49 now counts judges, 845, not service records.
 - Found: S50's file carries a DC row the sidecar says the survey lacks, and its U.S. row divides 50 states' taxes by a population that includes DC (research lead, R1).
 
 ## Rulings
@@ -118,7 +120,7 @@ Others, so no maker asks twice:
 
 ### (g) R2-2's summaries (maker B derives once)
 
-- **S49, judges.** Measure: `years_as_federal_judge`, since the question asks how long judges have served, and a promotion does not restart service. Two-year bins, closed on the left, from 0 to 44: 22 bins. No edge falls on an inauguration (January 20 dates sit 1.81, 5.81, 9.81, 17.81 and 25.81 years back from November 11, 2026). 850 judges, each counted once; median 8.0 years (8.02 by script). The derived file holds each bin's edges and count.
+- **S49, judges (corrected in the second run, after the research lead's RL-B1).** The unit is the judge, each counted once by FJC ID (`nid`): 845 judges in active service, from the file's 850 service records. Four judges hold shared judgeships across districts and appear two or three times (Brian Curtis Wimes and Joshua Michael Divine, Eastern and Western Missouri; Claria Horn Boom, Eastern and Western Kentucky; John Frederick Heil III, Eastern, Northern and Western Oklahoma); each holds one commission and one span of service, and the question asks how long judges have served. Measure: `years_as_federal_judge`, identical across each judge's records, since a promotion does not restart service. Two-year bins, closed on the left, from 0 to 44: 22 bins. No edge falls on an inauguration (January 20 dates sit 1.81, 5.81, 9.81, 17.81 and 25.81 years back from November 11, 2026). Counts by script, judge by judge: 79, 125, 85, 130, 74, 44, 92, 60, 20, 31, 21, 23, 15, 6, 11, 4, 6, 2, 5, 3, 6, 3; the largest bin stays 6 to under 8 years. Median 8.0 years (8.0246). The words: "845 judges in active service, each counted once"; the note may add that four judges serve more than one district. The derived file holds each bin's edges and count, and its sidecar names the count by `nid` in `derivation`.
 - **S52, county child poverty.** Two-point bins, closed on the left, from 0 to 74, the same edges for both years: 37 bins. 3,141 counties in 2019 and 3,143 in 2024, each counted once; Kalawao County, Hawaii, has no estimate in either year; the county lists differ where Connecticut moved from 8 counties to 9 planning regions and Alaska split one area into two. Medians 18.7 and 17.1 percent. The note prints the window's reason: 2024 is the latest year and 2019 the year five back, the last before the pandemic. The derived file holds each bin's edges and both counts.
 - **S51, uninsured by county.** Tukey's box: quartiles by linear interpolation between ranked counties (Python's `statistics.quantiles`, method "inclusive"), whiskers to the last county inside 1.5 times the middle half, every county beyond drawn as an outlier. 3,143 counties with an estimate (Kalawao County has none). By script: Northeast 218 counties, 5 outliers; Midwest 1,055, 33; South 1,422, 23; West 448, 1; 62 in all, every one above its box. The derived file holds per region the count, minimum, quartiles, median, maximum and whisker ends, and the outliers' names and rates; the table shows the five numbers, the whisker ends and the outlier count.
 
@@ -140,6 +142,11 @@ Others, so no maker asks twice:
 - D3-xxx | S57 drops `labels.named`; the form's open dot carries the margin test | One code for one job; the title names no state, since no lead over the next clears the margin
 - D3-xxx | S50 draws the 50 states without DC | The survey covers state governments; DC's figure includes taxes a state would leave to its cities and counties, and the sidecar says DC is not in the survey
 - D3-xxx | S60 prints figure 5 with no qualification | V7 stores figure 4's Inspector General Act sentence under figure 5 (V7.1 list, round 0)
+- D3-xxx | S49 counts judges, each once by FJC ID: 845 in active service, from 850 service records | A judge in a shared judgeship holds one commission and one span of service; the question asks about judges (the research lead's RL-B1)
+- D3-xxx | Round 4's data plan is signed off with two changes: row 123 draws the three kinds of federal trial judges and row 125 a public law's first page | One test for DR-229 in every round: a form keeps election data only where the coverage plan writes its use as an election question, as for the decision tree
+- D3-xxx | Round 4's Euler draws the uninsured as a third circle at true area, with no frame | Two circles cannot fill a frame at true area, so the frame's spare space would overstate the uninsured
+- D3-xxx | Round 4's icon array draws 2025 alone, with 1983 in the note | V7 qualifies the 2025 average, and a second array would invite the comparison it qualifies
+- D3-xxx | The social card counts as its own example, as S41 and S42 each count | Counting it with S19 gives 107 and changes no limit
 
 ## Requests
 
@@ -160,6 +167,7 @@ Others, so no maker asks twice:
 - **B4, S50.** Draw the 50 states; leave DC off. The line for 50 states together is $4,526 per resident (1,535,843,715 thousand dollars over 339,312,487 residents, by script); the file's U.S. row, $4,517, divides by a population that includes DC. Use the research lead's corrected row once it lands (request R1).
 - **B5, S52.** Print the window's reason: the latest year and the year five back, the last before the pandemic. Name Kalawao County's missing estimate in the table's note.
 - **B6, S51.** The note names Kalawao County, Hawaii, as the one county with no estimate, and says each county counts once.
+- **B7, S49 (second run).** Recount the bins by `nid` as corrected ruling (g) gives them: 845 judges, the counts listed there, and "845 judges in active service, each counted once" in the note and table.
 
 ### Requests to the editor
 
@@ -180,6 +188,7 @@ Others, so no maker asks twice:
 ## Tested
 
 - Read: the brief in full; my round 1 notes' rulings, the fix pass, the second pass, "Ruling on S33's all receipts line" and "Requests"; the data plan's round 2 table, sign-off, palette notes and fix pass; the plan file's round 2 rows; D3-477, D3-489, D3-490, D3-572, D3-588, D3-589, D3-594, D3-619, D3-620, D3-638 and D3-650 to D3-663; RS-S4 and the creative director's risks; entries 14-003 and 14-006; Rules 13.1, 11.1, 11.2 and 14.7 from the chapter files; every round 2 sidecar; the round 1 specs S18, S19, S27, S31, S33 and S57's draft labels; the forms' code for `dot-plot`, `line-field`, `indexed-line` and `bar-benchmark-tick` keys; the engineer's R2-C2 parts table.
+- Second run, by script: S49's records grouped by `nid` (845 judges, the four with shared judgeships, identical years on each record, bins and median); the generator's example log (13 plates and their domains); the 22 round 2 specs' domains and states; V7 claim CL1514 and issues I013, I054, I063, I101, I133, I137, I143 and I165. Round 4's plan read in full against both earlier plans, my sign-offs of them and the coverage plan's rows.
 - Scripts (`python3 -I`, in my scratch folder: `side.py`, `q1.py` to `q5.py`): DC's renter share and margin; the waterfall's 30 lines; completions' parts 2000 to 2025; health spending shares; fiscal 2026 functions and the positive sum, $7,566.3 billion; judges' two-year bins on both measures, medians and inauguration offsets; taxes per resident, the U.S. row's denominator and the 50-state figure; SAHIE quartiles, fences, whiskers and outliers by region, and the missing county; SAIPE bins, medians and county list changes; population bands; rent share states past the margin of the nation and Florida past California; earnings ratios past the margin, and DC against New York; the job openings peak and the October 2025 gap; median income's top years; the debt and limit series; V7's headline figures 4 and 5 against the atlas extract; contrast ratios from the token hexes.
 
 ## Not tested
@@ -189,3 +198,4 @@ Others, so no maker asks twice:
 - Whether the Senate Commerce Committee held a hearing on S. 146 before discharge: I read only the frozen action list.
 - Chapter 18's chip component and Rule 13.9 were not read for S63's inks; S63 follows them as the brief says.
 - The kit's contrast check on light-fill marks with no printed value (request G2).
+- Round 4: no fetch and no publisher page read; the U.S. Code sections named in change 1 and the uninsured share behind the Euler condition (near 8 percent) rest on my knowledge, for the research lead to confirm at the fetch.

@@ -1,0 +1,39 @@
+{
+  "id": "14.89",
+  "title": "Use status chips to give each record’s status in a word.",
+  "rule": [
+    "Give each record its status in a chip as chapter 18 draws one: the word in the label style on a hairline edge in the text’s ink, one style for every status, so the word carries the status. Lead each record with its typed ID in its own chip (Rule 13.9) and its title, then the words that give the status its case or finding and its date, then the date the record was checked."
+  ],
+  "use_when": "The reader asks where a set of disputes or measures stands now, such as the fights over removals, spending and watchdogs.",
+  "use_instead": [
+    {
+      "when": "A record moves through set steps",
+      "rule": "14.88"
+    },
+    {
+      "when": "The reader looks up one record among many",
+      "rule": "14.130"
+    },
+    {
+      "when": "Each record carries several measures to compare",
+      "rule": "14.131"
+    }
+  ],
+  "why": {
+    "text": [
+      "A word in a chip is read faster than a sentence and holds its meaning in gray print and for a reader who sees no color. One style for every status keeps color from ranking them, and the words under each chip let a reader check the status against its source."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S63",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "13.9",
+    "13.10",
+    "14.6"
+  ],
+  "builders": "Form status-chips: node work/build/chart-kit/oa-chart.mjs build s63; labels.status gives each record’s chip word and its words, labels.id_type the type word in each ID chip.",
+  "correct": null,
+  "failure": null
+}

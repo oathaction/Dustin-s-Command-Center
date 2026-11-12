@@ -23,7 +23,7 @@
   "source_line": "Source: U.S. Census Bureau, Small Area Health Insurance Estimates, people under 65 without health insurance, 2024, counties in the 50 states and DC. Retrieved November 11, 2026. Model-based estimates; small counties carry wide margins of error; each region’s quartiles, whiskers and outliers computed by Oath & Action.",
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Box plots of county uninsured rates for people under 65 in 2024, one row per Census region. Median counties: Northeast 7.2 percent, Midwest 8.8, South 13.9 and West 12.4. The South’s middle half spans 11.0 to 17.9 percent, the widest of the four, and 62 counties sit above their region’s whiskers.",
+  "alt": "Box plots of county uninsured rates for people under 65 in 2024, one row per Census region. The median county runs from 7.2 percent in the Northeast to 13.9 percent in the South, whose middle half spans 11.0 to 17.9 percent, the widest of the four; 62 counties sit above their region’s whiskers.",
   "table": {
     "caption": "County uninsured rates by Census region, people under 65, 2024, percent",
     "columns": [
@@ -113,7 +113,7 @@
   "notes_internal": [
     "Maker B, round 2. Data plan row 56, rule 14.60. R2-2: drawn from the derived summaries census-sahie-county-uninsured-box-by-region and census-sahie-county-uninsured-outliers (maker_b_round2_derive.py, from P7-027), Tukey’s box by the data lead’s ruling (g).",
     "Ruling (a): the South in the subject ink through labels.named (a Census region counts as a set of states). Ruling (d): Estimate, the grade line and the Method note in the ruling’s words. Ruling (e): boxes light with a dark median, whiskers and outliers in the context ink; the South’s box in ink.",
-    "Figures checked by maker_b_round2_derive.py --figures (check S51): medians 7.2, 8.8, 13.9 and 12.35 (alt 12.4), the South highest; South quartiles 11.0 and 17.875 (17.9); 62 outliers, all above their box; Gaines County, TX, 42.5 the highest; Kalawao County the one missing estimate.",
+    "Figures checked by maker_b_round2_derive.py --figures (check S51): medians 7.2, 8.8, 13.9 and 12.35, the South highest (the alt leaves the West’s 12.35 out, since the kit prints it 12.3: request RB-E1); South quartiles 11.0 and 17.875 (17.9); 62 outliers, all above their box; Gaines County, TX, 42.5 the highest; Kalawao County the one missing estimate.",
     "Read from the left and the right: the title gives a region’s median as the Bureau’s model estimates it and names no state or policy; the note says boxes describe counties, not people."
   ]
 }

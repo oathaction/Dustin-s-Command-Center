@@ -44,6 +44,20 @@
    "line": "Time runs from left to right in lines, columns and timelines, with each gap, break and preliminary value marked where it falls."
   },
   {
+   "number": 5,
+   "before_rule": "14.46",
+   "title": "Composition: what is it made of?",
+   "rules": "14.46 to 14.57",
+   "line": "Stacked bars, unit charts and treemaps show the parts of a whole and print the whole they add up to."
+  },
+  {
+   "number": 10,
+   "before_rule": "14.85",
+   "title": "Gauges and indicators: where does it stand now?",
+   "rules": "14.85 to 14.92",
+   "line": "Big numbers give a figure with the context to judge it, and progress bars and bullet graphs set one measure against its target or limit. Step trackers and status chips show how far a bill or a dispute has come."
+  },
+  {
    "number": 16,
    "before_rule": "14.125",
    "title": "Tables and plain words: where does a reader look things up, and when do words answer faster?",
@@ -1998,6 +2012,824 @@
    }
   },
   {
+   "id": "14.46",
+   "title": "Use a 100 percent bar to compare how wholes of different sizes divide into the same parts.",
+   "rule": [
+    "Draw each whole as one bar of the same length, split into its parts in a fixed order, with the part the question is about first from the left and in the text’s ink. Step the other parts toward the page color, hatch the last, and print the first part’s share with the whole’s count at the right of each bar. Sort the bars by that share, and draw a line across them where an overall share helps the reader place each one."
+   ],
+   "why": {
+    "text": [
+     "Every bar runs the same length, so the eye compares shares as lengths from one shared left edge. The first part is the only one that starts on that edge, which is why it takes the question’s part and the ink. Printing the share and the count keeps a small whole from looking as solid as a large one."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form percent-bar: node work/build/chart-kit/oa-chart.mjs build s10, or copy specs/s10.json and point it at a new dataset; labels.parts sets each part’s fill and words, labels.share the words at the right, and labels.mark_at the line across the bars.",
+   "related_rules": [
+    "14.3",
+    "14.5",
+    "14.8"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how the mix of parts compares across several wholes, such as how much of each answer rests on documented fact, and the wholes differ in size.",
+   "use_instead": [
+    {
+     "when": "Each whole splits two ways and the question is which part is larger",
+     "rule": "14.47"
+    },
+    {
+     "when": "The parts’ sizes matter more than their shares",
+     "rule": "14.23"
+    },
+    {
+     "when": "The reader should see each item as one mark to count",
+     "rule": "14.49"
+    },
+    {
+     "when": "The mix changes across years",
+     "rule": "14.50"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s10",
+    "caption": "How much of each everyday answer rests on documented fact?"
+   }
+  },
+  {
+   "id": "14.47",
+   "title": "Use a stacked share bar with a midline when the question is which of two parts is the larger.",
+   "rule": [
+    "Split each bar into its two parts as shares of the whole, the part the question asks about from the left and the other in the track gray, with a 1 px line in the text’s ink at half. Sort the bars by the first part’s share, print it at the right of each bar, and set a national or total row first, apart from the rest. The row the title names takes the text’s ink, or the red point where Rule 14.6 allows it, and every other first part takes light gray."
+   ],
+   "why": {
+    "text": [
+     "The midline turns a question about majorities into a question of which side of one line a bar ends on. A shared left edge keeps the first part a length from zero, and the second part in pale gray keeps every bar whole without competing with the share that answers the question."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form stacked-share-bar: node work/build/chart-kit/oa-chart.mjs build s43; encode.left and encode.right name the two share columns, labels.apart sets a total row first, and labels.named or labels.point names the row the title names.",
+   "related_rules": [
+    "14.4",
+    "14.6",
+    "14.9"
+   ],
+   "entry": true,
+   "use_when": "The reader asks where one of two groups is the majority, such as the states where renters outnumber owners, and the answer turns on which side of half each bar ends.",
+   "use_instead": [
+    {
+     "when": "Each whole splits into three or four parts",
+     "rule": "14.46"
+    },
+    {
+     "when": "The two parts are counts whose sizes the reader compares",
+     "rule": "14.22"
+    },
+    {
+     "when": "The reader needs the margin of error around each share",
+     "rule": "14.74"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s43",
+    "caption": "In which states do renters make up the larger share of households?"
+   }
+  },
+  {
+   "id": "14.48",
+   "title": "Use a waterfall to show how steps add up to a total or a gap.",
+   "rule": [
+    "Read the steps from top to bottom: each one floats from the running total before it to the one after, a step that adds in diverging pair B’s green and a step that takes away in its dark blue, with every value printed beside its bar with its sign. A total runs from the zero line in the context gray and starts the count again; the result the title names takes the text’s ink and never red, since red on a deficit or a loss reads as its sign (Rule 14.6). A thin line joins each step to the next. Keep every line the publisher prints, or fold small lines within one side only and list each in the table."
+   ],
+   "why": {
+    "text": [
+     "A waterfall keeps the running total in view, so the reader sees where the result comes from as well as how big it is. Floating bars still read as lengths, because each one measures its own step on the shared scale, and the printed signs let a reader who sees no color still tell the two directions apart."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form waterfall: node work/build/chart-kit/oa-chart.mjs build s44; encode.kind marks each line, labels.totals the kinds drawn from zero, labels.named the result the title names, and labels.names the printed names.",
+   "related_rules": [
+    "14.4",
+    "14.5",
+    "14.6"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how a set of additions and subtractions arrive at a result, such as how a year’s receipts and outlays add up to the deficit.",
+   "use_instead": [
+    {
+     "when": "The parts make one whole with nothing taken away",
+     "rule": "14.52"
+    },
+    {
+     "when": "The reader compares the parts’ sizes and the running total does not matter",
+     "rule": "14.15"
+    },
+    {
+     "when": "The same steps are compared across years",
+     "rule": "14.50"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s44",
+    "caption": "How did fiscal 2026’s receipts and outlays add up to the deficit?"
+   }
+  },
+  {
+   "id": "14.49",
+   "title": "Use a unit chart when each mark stands for one thing a reader can count.",
+   "rule": [
+    "Draw one square for each item, grouped by year or kind and placed by the category the question asks about, such as toward voters above a line and away from voters below it. Give each category its own style that holds in gray print (solid, open, gray, hatched or dashed), name each one in a key, and print the count for every group."
+   ],
+   "why": {
+    "text": [
+     "A square for each item lets a reader count, so a total never has to be taken on trust. Styles that differ in fill and outline keep the categories apart in gray print and for a reader who sees no color."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form unit-chart: node work/build/chart-kit/oa-chart.mjs build s08; labels.categories sets each category’s style and words, labels.mirror the two categories set above and below the line.",
+   "related_rules": [
+    "14.3",
+    "14.4",
+    "14.8"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how many things of each kind there are, the items are few enough to draw one by one, and seeing each item makes the count concrete.",
+   "use_instead": [
+    {
+     "when": "The items run to the thousands",
+     "rule": "14.15"
+    },
+    {
+     "when": "The reader compares shares of wholes of different sizes",
+     "rule": "14.46"
+    },
+    {
+     "when": "The reader asks about seats in a chamber",
+     "rule": "14.53"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s08",
+    "caption": "Have the rules been moving toward voters or away from them?"
+   }
+  },
+  {
+   "id": "14.50",
+   "title": "Use stacked columns for a total over time that splits into a few parts.",
+   "rule": [
+    "Stack up to four parts in each column in one fixed order, the largest or the base part on the zero line, in the categorical inks in their order: Charcoal, Verdigris, Prussian, then Stone, always hatched (Rule 14.5). Leave a 1 px gap of the page color between parts, name each part beside the last column, or in a key on a phone, and print the total over the columns the title or notes discuss."
+   ],
+   "why": {
+    "text": [
+     "Columns from one zero line show the total as a height a reader can compare year to year. Only the first part sits on that line, so the parts above it are read best by their share of the column, which is why the order never changes and the part the story follows goes first or last."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form stacked-column: node work/build/chart-kit/oa-chart.mjs build s45; encode.parts lists the columns in stacking order, encode.total the published total, and labels.totals_at the columns whose totals print.",
+   "related_rules": [
+    "14.4",
+    "14.5",
+    "14.8"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how a total changed over a run of years and what it was made of, such as how many homes were finished each year and in what kind of building.",
+   "use_instead": [
+    {
+     "when": "There are more than four parts",
+     "rule": "14.8"
+    },
+    {
+     "when": "The parts’ shares matter more than the total",
+     "rule": "14.51"
+    },
+    {
+     "when": "One year’s parts are the question",
+     "rule": "14.46"
+    },
+    {
+     "when": "The total alone tells the story",
+     "rule": "14.16"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s45",
+    "caption": "What kinds of homes were finished each year?"
+   }
+  },
+  {
+   "id": "14.51",
+   "title": "Use a stacked area of shares to follow a whole’s mix over many years.",
+   "rule": [
+    "Stack up to four parts as shares of each year’s total, from 0 to 100 percent, in the categorical inks in their order with Stone hatched (Rule 14.5). Name each band inside it at its right end and print its last share past the edge. Say in a note when a part starts or stops, such as a program that began partway through the window."
+   ],
+   "why": {
+    "text": [
+     "Shares that add to 100 every year let a reader see one part grow at another’s expense across decades. Only the bottom band and the top edge are straight, so the bands between are read by their thickness, which is why each one is named where it ends and its last share is printed."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form stacked-area: node work/build/chart-kit/oa-chart.mjs build s46; encode.parts lists the columns from the bottom, and labels.offset draws shares (expand) or amounts (zero).",
+   "related_rules": [
+    "14.5",
+    "14.8",
+    "14.11"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how the mix of a whole has shifted over a long run of years, such as who pays the nation’s health care bill, and the total’s size is a separate question.",
+   "use_instead": [
+    {
+     "when": "The run is short enough to draw a column a year",
+     "rule": "14.50"
+    },
+    {
+     "when": "The parts’ amounts matter more than their shares",
+     "rule": "14.30"
+    },
+    {
+     "when": "There are more than four parts",
+     "rule": "14.8"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s46",
+    "caption": "Who pays the nation’s health care bill?"
+   }
+  },
+  {
+   "id": "14.52",
+   "title": "Use a treemap for a budget with many parts in one year.",
+   "rule": [
+    "Draw each part as a rectangle whose area is its amount, largest first, every tile in one light gray with a gap of the page color between tiles, and print each tile’s name, amount and share inside it. The part the title names takes the red point, or the text’s ink where Rule 14.6 sets ink in its place. Fold parts too small to hold their words into one last tile, list each in the table, and say what a negative line the treemap cannot draw leaves out."
+   ],
+   "why": {
+    "text": [
+     "Area shows the whole and each part’s weight in it at once, and the largest parts claim the most room as they claim the most money. Areas are harder to compare exactly than lengths, so every tile prints its amount and share."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form treemap: node work/build/chart-kit/oa-chart.mjs build s47; labels.fold_below sets the share under which parts fold, labels.fold_label the folded tile’s name, and labels.point the tile the title names.",
+   "related_rules": [
+    "14.4",
+    "14.6",
+    "14.8"
+   ],
+   "entry": true,
+   "use_when": "The reader asks where the money in one budget went, the parts number more than a bar chart reads quickly, and the largest few carry the answer.",
+   "use_instead": [
+    {
+     "when": "The reader compares parts across years",
+     "rule": "14.50"
+    },
+    {
+     "when": "The parts are few or must be ranked exactly",
+     "rule": "14.15"
+    },
+    {
+     "when": "Lines add and take away on the way to a result",
+     "rule": "14.48"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s47",
+    "caption": "Where did federal spending go in fiscal 2026?"
+   }
+  },
+  {
+   "id": "14.53",
+   "title": "Use a parliament chart for the seats in a chamber.",
+   "rule": [
+    "Draw every seat as one dot on a half circle of rows, every party in the one party-mark ink, with each party’s block named with its count and set apart from the next by a narrow gap (Rule 14.7). Lay the blocks in the chamber’s usual order, draw an empty seat as an open ring, and mark the seat that makes a majority with a tick. Print the date of the count, since seats change with every vacancy."
+   ],
+   "why": {
+    "text": [
+     "A dot for each seat shows a chamber as readers know it, and blocks of one ink keep color from standing for a party. The names, counts and order carry the sides, and the majority tick shows how close the largest block comes to control."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form parliament: node work/build/chart-kit/oa-chart.mjs build s48; labels.order sets the blocks from left to right, labels.words their names, labels.open the group drawn as open rings and labels.majority the tick.",
+   "related_rules": [
+    "14.7",
+    "14.3",
+    "14.10"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how a chamber divides today, and the size of each block against a majority is the point.",
+   "use_instead": [
+    {
+     "when": "The reader compares the division across many sessions",
+     "rule": "14.16"
+    },
+    {
+     "when": "The reader compares two or three totals",
+     "rule": "14.15"
+    },
+    {
+     "when": "The items are not seats and a grid reads better",
+     "rule": "14.49"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s48",
+    "caption": "How are the House’s seats divided by party today?"
+   }
+  },
+  {
+   "id": "14.54",
+   "title": "Use a pie only for two or three parts of one whole, with each share printed.",
+   "rule": [
+    "Use a pie, a reference form, when one whole splits into two or three parts and the reader needs only a rough sense of each part’s share. Start the largest slice at the top and run clockwise, name each slice with its share printed beside it, and keep the slices flat and in the inks of Rule 14.5. Past three parts, or where the shares sit close together, draw bars."
+   ],
+   "why": {
+    "text": [
+     "Readers judge a slice by its angle and its area, which they read less exactly than a length. Two or three slices with their shares printed are still quick to read, and the printed figures carry the exact values."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw a pie only as a sketch beside its printed shares; for a chart, build percent-bar or ranked-bar.",
+   "sketch_alt": "A pie of one illustrative whole in three parts, each slice named with its share printed beside it, the largest starting at the top. The shares add to 100 percent.",
+   "related_rules": [
+    "14.4",
+    "14.5"
+   ],
+   "entry": true,
+   "use_when": "The reader asks roughly how one whole divides, the parts are two or three, and the shares differ enough to see.",
+   "use_instead": [
+    {
+     "when": "The parts number four or more, or their shares sit close together",
+     "rule": "14.15"
+    },
+    {
+     "when": "Several wholes are compared part by part",
+     "rule": "14.46"
+    },
+    {
+     "when": "One share is the point and a single number says it",
+     "rule": "14.55"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-54-sketch",
+    "caption": "A pie of one illustrative whole in three parts, each slice named with its share printed beside it, the largest starting at the top.",
+    "kind": "sketch",
+    "label": "Pie, a sketch"
+   }
+  },
+  {
+   "id": "14.55",
+   "title": "Use a donut with a number in its center only when that one number is the point.",
+   "rule": [
+    "Use a donut, a reference form, for one share of a whole that a reader should remember, printed large in the center with its words under it. Give the share the text’s ink and the rest of the ring light gray, keep the ring to two parts, and print the whole the share is of."
+   ],
+   "why": {
+    "text": [
+     "The number in the center carries the answer, and the ring shows at a glance that it is part of a whole. A ring of more than two parts asks the reader to compare arcs, which they read even less exactly than slices."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw a donut only as a sketch; for a figure with its context, build big-number.",
+   "sketch_alt": "A donut of one illustrative whole in two parts, with the larger part’s share, 64 percent, printed in its center and the ring split at that share. The rest of the ring is light gray.",
+   "related_rules": [
+    "14.5",
+    "14.85"
+   ],
+   "entry": true,
+   "use_when": "The reader asks what share of a whole one part holds, and a single figure answers it.",
+   "use_instead": [
+    {
+     "when": "The figure needs context more than a ring, such as a range or a comparison",
+     "rule": "14.85"
+    },
+    {
+     "when": "The whole splits into three parts",
+     "rule": "14.54"
+    },
+    {
+     "when": "The figure is a count toward a threshold",
+     "rule": "14.87"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-55-sketch",
+    "caption": "A donut of one illustrative whole in two parts, with the larger part’s share, 64 percent, printed in its center and the ring split at that share.",
+    "kind": "sketch",
+    "label": "Donut with a center number, a sketch"
+   }
+  },
+  {
+   "id": "14.56",
+   "title": "Use a marimekko when the groups differ in size and each splits into the same parts.",
+   "rule": [
+    "Use a marimekko, a reference form, to show two ways of dividing one whole at once: each column is as wide as its group’s share of the whole, and each column splits by the same parts as a 100 percent bar does. Name every column and part, and print each column’s width as a share, since width is the measure a reader cannot read from a scale."
+   ],
+   "why": {
+    "text": [
+     "Each cell’s area is its share of the whole, so a large group’s small part can outweigh a small group’s large one, which a 100 percent bar hides. Widths and heights both carry values, so the chart asks more of the reader and needs every share printed."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw a marimekko only as a sketch until a story needs one; build percent-bar for the mix within groups.",
+   "sketch_alt": "A marimekko of three illustrative groups, each column as wide as its group’s share of the whole and split by the shares of two answers, so each cell’s area is its share of everyone. The widest group holds half of the whole.",
+   "related_rules": [
+    "14.4",
+    "14.46"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how a whole divides by two things at once, such as who answered each way within groups of very different size, and the area of each cell is the count that matters.",
+   "use_instead": [
+    {
+     "when": "The groups’ sizes do not matter, only their mix",
+     "rule": "14.46"
+    },
+    {
+     "when": "The reader compares a few groups on one measure",
+     "rule": "14.22"
+    },
+    {
+     "when": "The cells’ counts are the point and a table reads faster",
+     "rule": "14.129"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-56-sketch",
+    "caption": "A marimekko of three illustrative groups, each column as wide as its group’s share of the whole and split by the shares of two answers, so each cell’s area is its share of everyone.",
+    "kind": "sketch",
+    "label": "Marimekko, a sketch"
+   }
+  },
+  {
+   "id": "14.57",
+   "title": "Avoid 3D pies and bars, whose depth bends every value.",
+   "rule": [
+    "Leave 3D pies, 3D bars and every chart drawn with depth or tilt out of every Oath & Action piece. Draw the same values flat, as bars from one zero line, so each value is read as a length."
+   ],
+   "why": {
+    "text": [
+     "Tilting a pie stretches the near slices and shrinks the far ones, so equal shares look unequal, and the sides of a 3D bar add ink that hides where its top is. Neither adds a value the flat chart lacks."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No form: the kit draws nothing in 3D. The sketch, work/build/guide/specimens/s-14-57-sketch.html, draws a tilted pie beside flat bars of the same values; build the better choice with ranked-bar or percent-bar.",
+   "sketch_alt": "A tilted 3D pie draws two equal illustrative shares so the nearer one looks larger, and flat bars of the same values show them as equal lengths. The pie’s depth adds ink and no value.",
+   "related_rules": [
+    "14.4"
+   ],
+   "entry": true,
+   "use_when": "Never: a reader who asks how parts compare gets a truer answer from flat bars or a flat 100 percent bar.",
+   "use_instead": [
+    {
+     "when": "The reader compares a handful of values",
+     "rule": "14.15"
+    },
+    {
+     "when": "The values are shares of one whole",
+     "rule": "14.46"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-57-sketch",
+    "caption": "A tilted 3D pie draws two equal illustrative shares so the nearer one looks larger, and flat bars of the same values show them as equal lengths.",
+    "kind": "avoid",
+    "label": "3D pie or bar, a form that misleads"
+   }
+  },
+  {
+   "id": "14.85",
+   "title": "Set one figure large when a reader should remember it, with the context to judge it.",
+   "rule": [
+    "Print the one figure the reader should carry away in the display face, with the words that say what it counts directly under it, and set beside it the context that makes it mean something: the groups it splits into, the vote it led to, or the figure it compares with. Name every group in words, in neutral inks where parties are concerned (Rule 14.7)."
+   ],
+   "why": {
+    "text": [
+     "A large figure is remembered and repeated. On its own it invites the reader to supply the comparison, so the context sits in the same view, in the same measure, and the figure keeps its source and its date."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "13"
+   ],
+   "builders": "Form big-number: node work/build/chart-kit/oa-chart.mjs build s01; labels.big_key names the row set large, labels.bars the groups beside it, and labels.votes the recorded votes.",
+   "related_rules": [
+    "14.3",
+    "14.7",
+    "13.2"
+   ],
+   "entry": true,
+   "use_when": "The reader asks one question with one answer, such as whether Republicans and Democrats agree on a ban on stock trading by members of Congress, and the answer needs a little context to be judged.",
+   "use_instead": [
+    {
+     "when": "Four to six figures are read together",
+     "rule": "14.86"
+    },
+    {
+     "when": "The figure is a count toward a threshold",
+     "rule": "14.87"
+    },
+    {
+     "when": "The figure sits against a target and ranges",
+     "rule": "14.90"
+    },
+    {
+     "when": "A sentence carries the figure better than a drawing",
+     "rule": "14.134"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s01",
+    "caption": "Do Republicans and Democrats agree on anything about Congress?"
+   }
+  },
+  {
+   "id": "14.86",
+   "title": "Use an indicator row for a small set of headline figures read together.",
+   "rule": [
+    "Set four to six figures side by side, each under a hairline with its kind in small words, the figure in the display face in the text’s ink and its caption under it; past six, run on into a second row. Print each figure exactly as its source stores it and keep its qualification in the notes or the table. An indicator row reports a set, so it takes no fill and no red."
+   ],
+   "why": {
+    "text": [
+     "Figures in a row are read one by one, each with its own words, so a reader can take any one away without the others. Printing each as stored keeps the row from rounding or restating a figure its source never gave."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "13"
+   ],
+   "builders": "Form indicator-row: node work/build/chart-kit/oa-chart.mjs build s60; encode.figure, encode.caption and encode.kind name the columns, labels.kinds the printed kind words and labels.columns the most in a row.",
+   "related_rules": [
+    "14.2",
+    "14.6",
+    "13.10"
+   ],
+   "entry": true,
+   "use_when": "The reader asks for the headline numbers on a subject, such as the atlas’s eight figures, and each figure stands on its own.",
+   "use_instead": [
+    {
+     "when": "One figure is the point",
+     "rule": "14.85"
+    },
+    {
+     "when": "The figures share a measure and should be compared",
+     "rule": "14.15"
+    },
+    {
+     "when": "The figures change over time and the trend matters",
+     "rule": "14.128"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s60",
+    "caption": "What are the atlas’s headline figures?"
+   }
+  },
+  {
+   "id": "14.87",
+   "title": "Use a progress bar for a count toward a threshold.",
+   "rule": [
+    "Draw one bar that runs to the whole, such as the 100 senators, with the count in the text’s ink from zero and the rest in the track gray. Mark the threshold with a tick in the text’s ink and its words over it, bracket the gap between the count and the threshold under the bar with its words, and name what fills the count and the rest under the bar, each party by name where the count is a vote (Rule 14.7)."
+   ],
+   "why": {
+    "text": [
+     "A bar that runs to the whole shows the count, the threshold and the distance between them as lengths on one scale. The bracket and its words say the shortfall outright, so no reader has to subtract."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form progress-bar: node work/build/chart-kit/oa-chart.mjs build s61; encode.value and encode.against name each group’s count and rest, and labels.of, labels.needed and their words set the whole and the threshold.",
+   "related_rules": [
+    "14.4",
+    "14.6",
+    "14.7"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how close a count came to the number it needed, such as the votes to end debate in the Senate.",
+   "use_instead": [
+    {
+     "when": "The measure sits against a target and ranges",
+     "rule": "14.90"
+    },
+    {
+     "when": "Several counts are compared with one threshold",
+     "rule": "14.17"
+    },
+    {
+     "when": "One figure with its context answers it",
+     "rule": "14.85"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s61",
+    "caption": "How close did the Senate come to the 60 votes it needs to end debate on taking up H.R. 7008, the Stop Insider Trading Act?"
+   }
+  },
+  {
+   "id": "14.88",
+   "title": "Use a step tracker to show where one bill stands in its six steps.",
+   "rule": [
+    "Draw the bill’s six steps as chapter 11 sets them (Rules 11.1 to 11.3): numbered circles, filled for a step done, a heavy ring on the step the bill is at now, a fine ring on a step ahead, and a slash through the number of a step that never happened. Give each step its name, its state in words with its date, and a short note; run the steps across where each one’s sixth of the row holds its date, and down the page where it does not (Rule 11.6). End with the words that say where the bill stands."
+   ],
+   "why": {
+    "text": [
+     "A reader who follows bills learns one set of six marks and reads every tracker the same way, across a page or down it. A slashed step keeps the count at six, so a skipped hearing shows as a step that never happened."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "11"
+   ],
+   "builders": "Form step-tracker: node work/build/chart-kit/oa-chart.mjs build s62; labels.steps gives each step’s name, the action codes that mark it done and its note, and labels.became the end words.",
+   "related_rules": [
+    "11.1",
+    "11.2",
+    "14.12"
+   ],
+   "entry": true,
+   "use_when": "The reader asks where one bill is in its path to law, or how it got there, such as a bill that skipped its committee.",
+   "use_instead": [
+    {
+     "when": "Many bills are followed at once",
+     "rule": "14.132"
+    },
+    {
+     "when": "The dates themselves are the point",
+     "rule": "14.38"
+    },
+    {
+     "when": "The record’s status is a word, with no steps to follow",
+     "rule": "14.89"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s62",
+    "caption": "Where is a bill in its stages, from introduction to law?"
+   }
+  },
+  {
+   "id": "14.89",
+   "title": "Use status chips to give each record’s status in a word.",
+   "rule": [
+    "Give each record its status in a chip as chapter 18 draws one: the word in the label style on a hairline edge in the text’s ink, one style for every status, so the word carries the status. Lead each record with its typed ID in its own chip (Rule 13.9) and its title, then the words that give the status its case or finding and its date, then the date the record was checked."
+   ],
+   "why": {
+    "text": [
+     "A word in a chip is read faster than a sentence and holds its meaning in gray print and for a reader who sees no color. One style for every status keeps color from ranking them, and the words under each chip let a reader check the status against its source."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "13"
+   ],
+   "builders": "Form status-chips: node work/build/chart-kit/oa-chart.mjs build s63; labels.status gives each record’s chip word and its words, labels.id_type the type word in each ID chip.",
+   "related_rules": [
+    "13.9",
+    "13.10",
+    "14.6"
+   ],
+   "entry": true,
+   "use_when": "The reader asks where a set of disputes or measures stands now, such as the fights over removals, spending and watchdogs.",
+   "use_instead": [
+    {
+     "when": "A record moves through set steps",
+     "rule": "14.88"
+    },
+    {
+     "when": "The reader looks up one record among many",
+     "rule": "14.130"
+    },
+    {
+     "when": "Each record carries several measures to compare",
+     "rule": "14.131"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s63",
+    "caption": "Where do the fights over removals, spending and watchdogs stand?"
+   }
+  },
+  {
+   "id": "14.90",
+   "title": "Use a bullet graph to set one measure against its target and the ranges behind it.",
+   "rule": [
+    "Draw the ranges as bands in the magnitude steps from zero, the measure as a narrow bar in the text’s ink from zero, and the target as a tick in the text’s ink across the bands. Name every band edge and the target with its figure once over the rows, and print the measure and its distance to the target beside each bar."
+   ],
+   "why": {
+    "text": [
+     "A bar from zero keeps the measure honest at any distance from its target, and the bands behind it give the scale meaning without a dial or a color code. The printed distance says the answer in the reader’s units."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form bullet-graph: node work/build/chart-kit/oa-chart.mjs build s64; encode.target names the target column, labels.bands the bands with their steps and words, and labels.per divides the printed figures.",
+   "related_rules": [
+    "14.4",
+    "14.5",
+    "14.3"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how close one measure is to a target or a limit, such as federal debt against the limit set in law, and the ranges give it meaning.",
+   "use_instead": [
+    {
+     "when": "The measure is a count toward a threshold with nothing behind it",
+     "rule": "14.87"
+    },
+    {
+     "when": "Several measures are compared with one benchmark each",
+     "rule": "14.17"
+    },
+    {
+     "when": "The measure’s path over time is the point",
+     "rule": "14.29"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s64",
+    "caption": "How close is federal debt to the limit set in law?"
+   }
+  },
+  {
+   "id": "14.91",
+   "title": "Avoid gauges, whose angle is harder to read than a bar’s length.",
+   "rule": [
+    "Leave dials, speedometers and other gauges out of every Oath & Action piece. Draw the same value as a progress bar toward its threshold, or as a bullet graph where a target and ranges matter, so it is read as a length from zero."
+   ],
+   "why": {
+    "text": [
+     "A gauge asks the reader to judge an angle on a curved scale, which they do less exactly than a length on a straight one. Its needle, face and color zones take room and ink that a bar spends on the value."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No form: the kit draws no gauge. The sketch, work/build/guide/specimens/s-14-91-sketch.html, draws a gauge beside a progress bar of the same values; build the better choice with progress-bar or bullet-graph.",
+   "sketch_alt": "A gauge sets an illustrative 70 of 100 as a needle’s angle on a dial, and a progress bar of the same values shows it as a length a reader can measure against the mark at 80. The bar needs no dial to read.",
+   "related_rules": [
+    "14.4",
+    "14.5"
+   ],
+   "entry": true,
+   "use_when": "Never: a reader who asks how close a measure is to a mark gets a truer answer from a progress bar or a bullet graph.",
+   "use_instead": [
+    {
+     "when": "The value is a count toward a threshold",
+     "rule": "14.87"
+    },
+    {
+     "when": "The value sits against a target and ranges",
+     "rule": "14.90"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-91-sketch",
+    "caption": "A gauge sets an illustrative 70 of 100 as a needle’s angle on a dial, and a progress bar of the same values shows it as a length a reader can measure against the mark at 80.",
+    "kind": "avoid",
+    "label": "Gauge, a form that misleads"
+   }
+  },
+  {
+   "id": "14.92",
+   "title": "Avoid thermometers, which spend ink on a tube and a bulb that carry no value.",
+   "rule": [
+    "Leave thermometers, the tubes with a bulb used for fundraising goals, out of every Oath & Action piece. Draw the same count as a progress bar toward its goal, with the goal marked and the amount still to go printed."
+   ],
+   "why": {
+    "text": [
+     "A thermometer is a bar with a bulb at its foot, so the bulb and the tube’s rounded ends add ink with no value. A plain bar from zero shows the same share and leaves room to print the goal and the gap."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No form: the kit draws no thermometer. The sketch, work/build/guide/specimens/s-14-92-sketch.html, draws a thermometer beside a progress bar of the same values; build the better choice with progress-bar.",
+   "sketch_alt": "A thermometer fills an illustrative 70 percent of a goal inside a tube with a bulb, and a progress bar of the same values shows the share with the goal marked and less ink. The bulb holds no value.",
+   "related_rules": [
+    "14.4"
+   ],
+   "entry": true,
+   "use_when": "Never: a reader who asks how close a total is to its goal gets the same answer from a progress bar with less ink.",
+   "use_instead": [
+    {
+     "when": "The value is a count toward a goal",
+     "rule": "14.87"
+    },
+    {
+     "when": "The value sits against a target and ranges",
+     "rule": "14.90"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-92-sketch",
+    "caption": "A thermometer fills an illustrative 70 percent of a goal inside a tube with a bulb, and a progress bar of the same values shows the share with the goal marked and less ink.",
+    "kind": "avoid",
+    "label": "Thermometer, a form that misleads"
+   }
+  },
+  {
    "id": "14.125",
    "title": "Set results as a table with each row’s margin drawn in it.",
    "rule": [
@@ -2461,18 +3293,6 @@
   "Source: Federal Election Commission, financial totals for PACs and party committees, independent expenditure-only committees, known as super PACs, counted by two-year cycle, 2009 to 2010 through 2023 to 2024, United States. Retrieved November 12, 2026. Hybrid PACs, which also make independent expenditures, are not counted."
  ],
  "planned_rules": [
-  "14.46",
-  "14.47",
-  "14.48",
-  "14.49",
-  "14.50",
-  "14.51",
-  "14.52",
-  "14.53",
-  "14.54",
-  "14.55",
-  "14.56",
-  "14.57",
   "14.58",
   "14.59",
   "14.60",
@@ -2500,14 +3320,6 @@
   "14.82",
   "14.83",
   "14.84",
-  "14.85",
-  "14.86",
-  "14.87",
-  "14.88",
-  "14.89",
-  "14.90",
-  "14.91",
-  "14.92",
   "14.93",
   "14.94",
   "14.95",

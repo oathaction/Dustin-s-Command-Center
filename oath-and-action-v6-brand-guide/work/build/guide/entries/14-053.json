@@ -1,0 +1,39 @@
+{
+  "id": "14.53",
+  "title": "Use a parliament chart for the seats in a chamber.",
+  "rule": [
+    "Draw every seat as one dot on a half circle of rows, every party in the one party-mark ink, with each party’s block named with its count and set apart from the next by a narrow gap (Rule 14.7). Lay the blocks in the chamber’s usual order, draw an empty seat as an open ring, and mark the seat that makes a majority with a tick. Print the date of the count, since seats change with every vacancy."
+  ],
+  "use_when": "The reader asks how a chamber divides today, and the size of each block against a majority is the point.",
+  "use_instead": [
+    {
+      "when": "The reader compares the division across many sessions",
+      "rule": "14.16"
+    },
+    {
+      "when": "The reader compares two or three totals",
+      "rule": "14.15"
+    },
+    {
+      "when": "The items are not seats and a grid reads better",
+      "rule": "14.49"
+    }
+  ],
+  "why": {
+    "text": [
+      "A dot for each seat shows a chamber as readers know it, and blocks of one ink keep color from standing for a party. The names, counts and order carry the sides, and the majority tick shows how close the largest block comes to control."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S48",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.7",
+    "14.3",
+    "14.10"
+  ],
+  "builders": "Form parliament: node work/build/chart-kit/oa-chart.mjs build s48; labels.order sets the blocks from left to right, labels.words their names, labels.open the group drawn as open rings and labels.majority the tick.",
+  "correct": null,
+  "failure": null
+}

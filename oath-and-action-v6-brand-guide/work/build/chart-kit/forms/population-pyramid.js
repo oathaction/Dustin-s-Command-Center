@@ -2,7 +2,7 @@
  * year of age for each side, the youngest at the bottom, one side growing left from the center and the other right on one
  * scale, ages labeled down the center, both sides in one ink with sex carried by position and named over each half (the
  * data lead's ruling (e)). A band of ages the title names takes the red point on both sides as one job (labels.point, a
- * range of ages), or the subject ink (labels.named), with its words at the left edge; every other age takes the light
+ * range of ages), or the subject ink (labels.named), its words in the empty upper left; every other age takes the light
  * fill. Ages a story needs, such as 65, may be marked as hairlines in the secondary ink, named at the right edge. The
  * scale runs along the bottom of each half, mirrored.
  * encode: age (number), sex (category), value (number).
@@ -57,7 +57,7 @@
       // the bars: the left side grows left from the center column's edge, the right side right
       var draw = function (r, dir) {
         var role = inband(r) ? bandRole : other, w = sc(r[ev]), x = dir < 0 ? cx - aw / 2 - w : cx + aw / 2;
-        var kl = role === 'point' && c.ground !== 'charcoal' ? { stroke: 'point-keyline', width: c.t('keyline') } : {};
+        var kl = {};   // the band's keyline is one outline round each side's bars, drawn after them, never a stripe a bar
         // the band's bars on both sides are one job, so they count as one working red (ED-E15)
         c.rect(x, ay(r[ea]), w, bh, Object.assign({ fill: role, kind: 'bar', axis: 'x', zero: dir < 0 ? cx - aw / 2 : cx + aw / 2, job: inband(r) ? 'band' : undefined, data: { key: r[es] + '|' + r[ea], field: ev, value: r[ev] } }, kl));
       };
@@ -78,17 +78,22 @@
         var words = a === amax && L.top ? L.top : String(a);
         c.text(cx, ay(a) + bh / 2 + tick * 0.35, words, { role: 'tick', anchor: 'middle' });
       }
-      // the band's words at the left edge, level with the band, with a bracket beside the band's ages
-      if (band && band.words) {
-        var bt = ay(band.to), bb = ay(band.from) + bh, by = (bt + bb) / 2;
-        var bl = rowsL.filter(inband), wmax = Math.max.apply(null, bl.map(function (r) { return sc(r[ev]); }));
-        var ex = cx - aw / 2 - wmax - 8, lh2 = Math.round(size * 1.2);
-        c.line(ex, bt, ex, bb, { stroke: 'label', width: c.t('line-hairline'), mark: false });
-        var lines = c.wrap(band.words, 'label', Math.max(40, ex - 10), 700);
-        lines.forEach(function (ln, i) { c.text(0, by - (lines.length - 1) * lh2 / 2 + size * 0.35 + i * lh2, ln, { role: 'label', weight: 700 }); });
+      // the red band's keyline on Newsprint: one outline round each side's bars, so the band reads as one shape
+      if (band && bandRole === 'point' && c.ground !== 'charcoal') {
+        [[rowsL, -1], [rowsR, 1]].forEach(function (sd) {
+          var bars = sd[0].filter(inband).sort(function (a, b) { return a[ea] - b[ea]; }), dir = sd[1], e0 = dir < 0 ? cx - aw / 2 : cx + aw / 2;
+          if (!bars.length) return;
+          var d = 'M' + K.round(e0) + ',' + K.round(ay(bars[0][ea]) + bh);
+          bars.forEach(function (r) { var xe = e0 + dir * sc(r[ev]); d += 'L' + K.round(xe) + ',' + K.round(ay(r[ea]) + bh) + 'L' + K.round(xe) + ',' + K.round(ay(r[ea])); });
+          d += 'L' + K.round(e0) + ',' + K.round(ay(bars[bars.length - 1][ea])) + 'Z';
+          c.path(d, { fill: 'none', stroke: 'point-keyline', width: c.t('keyline'), mark: false });
+        });
       }
-      // the marks' words at the right edge, each moved left of the one before where they would touch
-      var mright = W, mprev = null;
+      // the band's words in the empty corner over the left half's oldest ages, where every width has room
+      if (band && band.words) {
+        var lh2 = Math.round(size * 1.2), lines = c.wrap(band.words, 'label', Math.max(60, half - 24), 700), ly = top + size;
+        lines.forEach(function (ln, i) { c.text(0, ly + i * lh2, ln, { role: 'label', weight: 700, halo: true }); });
+      }
       mtexts.forEach(function (m) {
         var mw = c.measure(m.words, 'tick'), x = W;
         if (mprev && Math.abs(mprev.y - m.y) < tick + 2) x = mprev.x - mprev.w - 8;

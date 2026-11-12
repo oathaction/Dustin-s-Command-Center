@@ -1,0 +1,35 @@
+{
+  "id": "14.91",
+  "title": "Avoid gauges, whose angle is harder to read than a bar’s length.",
+  "rule": [
+    "Leave dials, speedometers and other gauges out of every Oath & Action piece. Draw the same value as a progress bar toward its threshold, or as a bullet graph where a target and ranges matter, so it is read as a length from zero."
+  ],
+  "use_when": "Never: a reader who asks how close a measure is to a mark gets a truer answer from a progress bar or a bullet graph.",
+  "use_instead": [
+    {
+      "when": "The value is a count toward a threshold",
+      "rule": "14.87"
+    },
+    {
+      "when": "The value sits against a target and ranges",
+      "rule": "14.90"
+    }
+  ],
+  "why": {
+    "text": [
+      "A gauge asks the reader to judge an angle on a curved scale, which they do less exactly than a length on a straight one. Its needle, face and color zones take room and ink that a bar spends on the value."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "s-14-91-sketch",
+  "tier": "avoid",
+  "tokens": [],
+  "related": [
+    "14.4",
+    "14.5"
+  ],
+  "builders": "No form: the kit draws no gauge. The sketch, work/build/guide/specimens/s-14-91-sketch.html, draws a gauge beside a progress bar of the same values; build the better choice with progress-bar or bullet-graph.",
+  "correct": null,
+  "failure": null,
+  "sketch_alt": "A gauge sets an illustrative 70 of 100 as a needle’s angle on a dial, and a progress bar of the same values shows it as a length a reader can measure against the mark at 80. The bar needs no dial to read."
+}

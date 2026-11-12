@@ -457,6 +457,169 @@
   "alt": "A streamgraph beside small multiples of the same illustrative data: the middle part holds steady, and its band bends in the streamgraph and lies flat in the small multiples.",
   "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
  },
+ "s-14-s10": {
+  "chapter": "14",
+  "rule": "14.46",
+  "width_px": null,
+  "alt": "Bars split by evidence grade for each of the atlas’s 16 everyday answers, sorted by the share of claims documented on the public record. Across all 433 claims, 74 percent are documented, from 96 percent for clean drinking water to 59 percent for algorithms in daily life.",
+  "illustrative": false,
+  "notes": "S10, percent-bar: the chart kit draws it from work/build/chart-kit/specs/s10.json (contract R1-C3)"
+ },
+ "s-14-s43": {
+  "chapter": "14",
+  "rule": "14.47",
+  "width_px": null,
+  "alt": "Bars split each state’s households into renters and owners, sorted by the renter share, with a line at half. Only the District of Columbia’s renters, 62 percent, pass the line; New York, 46 percent, and California, 44 percent, come next, and the United States as a whole is 35 percent.",
+  "illustrative": false,
+  "notes": "S43, stacked-share-bar: the chart kit draws it from work/build/chart-kit/specs/s43.json (contract R1-C3)"
+ },
+ "s-14-s44": {
+  "chapter": "14",
+  "rule": "14.48",
+  "width_px": null,
+  "alt": "A waterfall from fiscal 2026’s nine receipt sources, which add to $5,403.3 billion, through 19 outlay functions to a deficit of $1,992.5 billion. Individual income taxes, $2,845.5 billion, and payroll taxes, $1,754.3 billion, bring in most receipts; Social Security, $1,667.1 billion, is the largest outlay.",
+  "illustrative": false,
+  "notes": "S44, waterfall: the chart kit draws it from work/build/chart-kit/specs/s44.json (contract R1-C3)"
+ },
+ "s-14-s08": {
+  "chapter": "14",
+  "rule": "14.49",
+  "width_px": null,
+  "alt": "A unit chart with one square for each of the 64 entries in the atlas’s repair log, placed by year. The atlas codes 24 entries toward voters, above the year line, and 24 away from voters, below it; 16 went neither way. Most entries fall in 2024 to 2026, and 2026 holds the most moves away from voters.",
+  "illustrative": false,
+  "notes": "S08, unit-chart: the chart kit draws it from work/build/chart-kit/specs/s08.json (contract R1-C3)"
+ },
+ "s-14-s45": {
+  "chapter": "14",
+  "rule": "14.50",
+  "width_px": null,
+  "alt": "Stacked columns of new homes finished each year from 2000 to 2025, split into one-unit buildings, buildings of two to four units and buildings of five or more. One-unit homes make up most of every year; homes in buildings of five or more units reached 591,700 in 2024, 36 percent of the year’s 1,626,900.",
+  "illustrative": false,
+  "notes": "S45, stacked-column: the chart kit draws it from work/build/chart-kit/specs/s45.json (contract R1-C3)"
+ },
+ "s-14-s46": {
+  "chapter": "14",
+  "rule": "14.51",
+  "width_px": null,
+  "alt": "Stacked bands of the nation’s health spending by who paid, 1960 to 2024.",
+  "illustrative": false,
+  "notes": "S46, stacked-area: the chart kit draws it from work/build/chart-kit/specs/s46.json (contract R1-C3)"
+ },
+ "s-14-s47": {
+  "chapter": "14",
+  "rule": "14.52",
+  "width_px": null,
+  "alt": "Tiles sized by fiscal 2026 outlays for each budget function.",
+  "illustrative": false,
+  "notes": "S47, treemap: the chart kit draws it from work/build/chart-kit/specs/s47.json (contract R1-C3)"
+ },
+ "s-14-s48": {
+  "chapter": "14",
+  "rule": "14.53",
+  "width_px": null,
+  "alt": "A half circle of 435 dots, one for each House seat: 214 Democrats from the left, then one independent and two empty seats, then 218 Republicans to the right. A tick marks the 218th seat from the right, a majority of the full House.",
+  "illustrative": false,
+  "notes": "S48, parliament: the chart kit draws it from work/build/chart-kit/specs/s48.json (contract R1-C3)"
+ },
+ "s-14-54-sketch": {
+  "chapter": "14",
+  "rule": "14.54",
+  "width_px": 300,
+  "illustrative": true,
+  "alt": "A pie of one illustrative whole in three parts, each slice named with its share printed beside it, the largest starting at the top. The shares add to 100 percent.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-55-sketch": {
+  "chapter": "14",
+  "rule": "14.55",
+  "width_px": 300,
+  "illustrative": true,
+  "alt": "A donut of one illustrative whole in two parts, with the larger part’s share, 64 percent, printed in its center and the ring split at that share. The rest of the ring is light gray.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-56-sketch": {
+  "chapter": "14",
+  "rule": "14.56",
+  "width_px": 300,
+  "illustrative": true,
+  "alt": "A marimekko of three illustrative groups, each column as wide as its group’s share of the whole and split by the shares of two answers, so each cell’s area is its share of everyone. The widest group holds half of the whole.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-57-sketch": {
+  "chapter": "14",
+  "rule": "14.57",
+  "width_px": null,
+  "illustrative": true,
+  "alt": "A tilted 3D pie draws two equal illustrative shares so the nearer one looks larger, and flat bars of the same values show them as equal lengths. The pie’s depth adds ink and no value.",
+  "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
+ },
+ "s-14-s01": {
+  "chapter": "14",
+  "rule": "14.85",
+  "width_px": null,
+  "alt": "A large figure: 86 percent of registered voters favored a ban on stock trading by members of Congress in a May 2023 survey, 88 percent of Democrats and 87 percent of Republicans. Below it, the 2026 votes on H.R. 7008, which pairs a limit on members’ stock purchases with a photo ID requirement to vote in federal elections: the House passed it 232 to 198, with 218 Republicans, 13 Democrats and one independent for and 198 Democrats against; a Senate vote to take it up got 53 votes, all Republican, seven short of the 60 it needed, with 45 Democrats and two independents against.",
+  "illustrative": false,
+  "notes": "S01, big-number: the chart kit draws it from work/build/chart-kit/specs/s01.json (contract R1-C3)"
+ },
+ "s-14-s60": {
+  "chapter": "14",
+  "rule": "14.86",
+  "width_px": null,
+  "alt": "Eight figures, each with its kind and caption: 743 votes, the margin that kept Alaska’s top-four primary; $7.3 billion taken in by pharmacies of the three largest pharmacy benefit managers above their cost for 51 specialty generic drugs; a $35 monthly insulin cap under Medicare Part D; at least 17 inspectors general removed without notice; $62.7 billion in benefits the Government Accountability Office reported; a 5.2 percent child poverty rate in 2021; 87 and 88 percent of Republicans and Democrats backing a stock trading ban; and 9.4 percent of eligible voters deciding 88 percent of House seats.",
+  "illustrative": false,
+  "notes": "S60, indicator-row: the chart kit draws it from work/build/chart-kit/specs/s60.json (contract R1-C3)"
+ },
+ "s-14-s61": {
+  "chapter": "14",
+  "rule": "14.87",
+  "width_px": null,
+  "alt": "A bar of the Senate’s 100 votes filled to 53 yes votes, with a tick at the 60 needed to end debate and a bracket marking the 7-vote gap. All 53 yes votes were Republican; 45 Democrats and 2 independents voted no.",
+  "illustrative": false,
+  "notes": "S61, progress-bar: the chart kit draws it from work/build/chart-kit/specs/s61.json (contract R1-C3)"
+ },
+ "s-14-s62": {
+  "chapter": "14",
+  "rule": "14.88",
+  "width_px": null,
+  "alt": "Six numbered steps for S. 146, the TAKE IT DOWN Act. Filed in the Senate on January 16, 2025; the hearing and committee vote steps never happened, since the Senate Commerce Committee was discharged on February 13, 2025; the Senate passed it that day by unanimous consent, the House on April 28, 2025 by 409 to 2, and the President signed it on May 19, 2025, making it Public Law 119-12.",
+  "illustrative": false,
+  "notes": "S62, step-tracker: the chart kit draws it from work/build/chart-kit/specs/s62.json (contract R1-C3)"
+ },
+ "s-14-s63": {
+  "chapter": "14",
+  "rule": "14.89",
+  "width_px": null,
+  "alt": "Six issues with status chips. Decided: Issue I163, at-will removal of regulators, by Trump v. Slaughter on June 29, 2026. Interim order: Issue X06, the attempted removal of a Federal Reserve governor, and Issue X05, domestic troop deployments. In court: Issue I070, the firing of inspectors general. Watchdog finding: Issue I068, withheld appropriations. Counted: Issue X18, nationwide injunctions.",
+  "illustrative": false,
+  "notes": "S63, status-chips: the chart kit draws it from work/build/chart-kit/specs/s63.json (contract R1-C3)"
+ },
+ "s-14-s64": {
+  "chapter": "14",
+  "rule": "14.90",
+  "width_px": null,
+  "alt": "A bullet graph of federal debt subject to the limit on October 31, 2026: a bar to $40,327.1 billion against a tick at the $41,104.0 billion limit, over a darker band to the earlier limit of $36,104.0 billion. The debt sits $776.9 billion under the limit.",
+  "illustrative": false,
+  "notes": "S64, bullet-graph: the chart kit draws it from work/build/chart-kit/specs/s64.json (contract R1-C3)"
+ },
+ "s-14-91-sketch": {
+  "chapter": "14",
+  "rule": "14.91",
+  "width_px": null,
+  "illustrative": true,
+  "alt": "A gauge sets an illustrative 70 of 100 as a needle’s angle on a dial, and a progress bar of the same values shows it as a length a reader can measure against the mark at 80. The bar needs no dial to read.",
+  "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
+ },
+ "s-14-92-sketch": {
+  "chapter": "14",
+  "rule": "14.92",
+  "width_px": null,
+  "illustrative": true,
+  "alt": "A thermometer fills an illustrative 70 percent of a goal inside a tube with a bulb, and a progress bar of the same values shows the share with the goal marked and less ink. The bulb holds no value.",
+  "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
+ },
  "s-14-s15": {
   "chapter": "14",
   "rule": "14.125",

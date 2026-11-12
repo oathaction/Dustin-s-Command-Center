@@ -1,0 +1,43 @@
+{
+  "id": "14.46",
+  "title": "Use a 100 percent bar to compare how wholes of different sizes divide into the same parts.",
+  "rule": [
+    "Draw each whole as one bar of the same length, split into its parts in a fixed order, with the part the question is about first from the left and in the text’s ink. Step the other parts toward the page color, hatch the last, and print the first part’s share with the whole’s count at the right of each bar. Sort the bars by that share, and draw a line across them where an overall share helps the reader place each one."
+  ],
+  "use_when": "The reader asks how the mix of parts compares across several wholes, such as how much of each answer rests on documented fact, and the wholes differ in size.",
+  "use_instead": [
+    {
+      "when": "Each whole splits two ways and the question is which part is larger",
+      "rule": "14.47"
+    },
+    {
+      "when": "The parts’ sizes matter more than their shares",
+      "rule": "14.23"
+    },
+    {
+      "when": "The reader should see each item as one mark to count",
+      "rule": "14.49"
+    },
+    {
+      "when": "The mix changes across years",
+      "rule": "14.50"
+    }
+  ],
+  "why": {
+    "text": [
+      "Every bar runs the same length, so the eye compares shares as lengths from one shared left edge. The first part is the only one that starts on that edge, which is why it takes the question’s part and the ink. Printing the share and the count keeps a small whole from looking as solid as a large one."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S10",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.3",
+    "14.5",
+    "14.8"
+  ],
+  "builders": "Form percent-bar: node work/build/chart-kit/oa-chart.mjs build s10, or copy specs/s10.json and point it at a new dataset; labels.parts sets each part’s fill and words, labels.share the words at the right, and labels.mark_at the line across the bars.",
+  "correct": null,
+  "failure": null
+}

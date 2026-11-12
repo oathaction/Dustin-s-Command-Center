@@ -372,9 +372,9 @@
   "width_px": 328,
   "fit_switch": false,
   "frame_container": true,
-  "alt": "The seven authority connections in our systems atlas, in one drawing of three layers. At the top, the economy layer: Public investment in research and infrastructure, and Costs of tariffs and trade rules. In the core layer, four deciding bodies: Congressional capacity and Executive unilateralism, then Oversight and enforcement and State and local experimentation. At the bottom, the technology layer: Government’s ability to build and run digital services, and Use of pricing algorithms. Seven solid lines, each ending in an open diamond with the word decides and no sign, run from the bodies to what they decide, and none crosses another. Beside it, each connection with its name, all documented: Connection LE02, Congress decides public investment levels; Connection LE03, The executive administers appropriated public investment; Connection LE19, The executive sets tariff rates; Connection LT13, Antitrust enforcers decide what pricing software may do; Connection LT14, States and cities set rules for pricing software; Connection LT16, The executive opens and closes federal digital teams; Connection LT17, Congress decides funding for government digital capacity. Two bodies decide each of three variables, and one decides tariff costs. Of each line the atlas says: This line shows who has the power to decide. It does not say which way they will decide.",
+  "alt": "The seven authority connections in our systems atlas, in one drawing of three layers. At the top, the economy layer: Public investment in research and infrastructure, and Costs of tariffs and trade rules. In the core layer, four deciding bodies: Congressional capacity and Executive unilateralism, then Oversight and enforcement and State and local experimentation. At the bottom, the technology layer: Government’s ability to build and run digital services, and Use of pricing algorithms. Seven solid lines with no sign run from the bodies to what they decide, in lanes beside the column, those into the economy layer on the right and those into the technology layer on the left, and none crosses another. Each ends in an open diamond, which a key beside the drawing reads as decides. Beside it, each connection with its name, all documented: Connection LE02, Congress decides public investment levels; Connection LE03, The executive administers appropriated public investment; Connection LE19, The executive sets tariff rates; Connection LT13, Antitrust enforcers decide what pricing software may do; Connection LT14, States and cities set rules for pricing software; Connection LT16, The executive opens and closes federal digital teams; Connection LT17, Congress decides funding for government digital capacity. Two bodies decide each of three variables, and one decides tariff costs. Of each line the atlas says: This line shows who has the power to decide. It does not say which way they will decide.",
   "illustrative": false,
-  "notes": "All seven authority connections read by script, with their ends, layers and grades; drawn by wire_marks with its authority switch, routed so no two lines cross.",
+  "notes": "All seven authority connections read by script, with their ends, layers, grades and delays; drawn by wire_marks with its authority switch in nested lanes, so no two lines cross.",
   "wide_px": 680,
   "readable": true
  },
@@ -384,7 +384,7 @@
   "width_px": 328,
   "fit_switch": false,
   "frame_container": true,
-  "alt": "Failure case: do not publish. One pill named The government, in place of the four bodies, with lines that end in open diamonds to the four variables the atlas’s authority connections reach, in the economy and technology layers.",
+  "alt": "Failure case: do not publish. One pill named The government, in place of the four bodies, with four lines that end in open diamonds at the four variables the atlas’s authority connections reach, in the economy and technology layers.",
   "illustrative": false,
   "notes": "Labeled failure: the four deciding bodies folded into one, so the drawing cannot show who decides what."
  },

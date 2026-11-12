@@ -1,0 +1,39 @@
+{
+  "id": "14.48",
+  "title": "Use a waterfall to show how steps add up to a total or a gap.",
+  "rule": [
+    "Read the steps from top to bottom: each one floats from the running total before it to the one after, a step that adds in diverging pair B’s green and a step that takes away in its dark blue, with every value printed beside its bar with its sign. A total runs from the zero line in the context gray and starts the count again; the result the title names takes the text’s ink and never red, since red on a deficit or a loss reads as its sign (Rule 14.6). A thin line joins each step to the next. Keep every line the publisher prints, or fold small lines within one side only and list each in the table."
+  ],
+  "use_when": "The reader asks how a set of additions and subtractions arrive at a result, such as how a year’s receipts and outlays add up to the deficit.",
+  "use_instead": [
+    {
+      "when": "The parts make one whole with nothing taken away",
+      "rule": "14.52"
+    },
+    {
+      "when": "The reader compares the parts’ sizes and the running total does not matter",
+      "rule": "14.15"
+    },
+    {
+      "when": "The same steps are compared across years",
+      "rule": "14.50"
+    }
+  ],
+  "why": {
+    "text": [
+      "A waterfall keeps the running total in view, so the reader sees where the result comes from as well as how big it is. Floating bars still read as lengths, because each one measures its own step on the shared scale, and the printed signs let a reader who sees no color still tell the two directions apart."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S44",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.4",
+    "14.5",
+    "14.6"
+  ],
+  "builders": "Form waterfall: node work/build/chart-kit/oa-chart.mjs build s44; encode.kind marks each line, labels.totals the kinds drawn from zero, labels.named the result the title names, and labels.names the printed names.",
+  "correct": null,
+  "failure": null
+}

@@ -1,0 +1,39 @@
+{
+  "id": "14.88",
+  "title": "Use a step tracker to show where one bill stands in its six steps.",
+  "rule": [
+    "Draw the bill’s six steps as chapter 11 sets them (Rules 11.1 to 11.3): numbered circles, filled for a step done, a heavy ring on the step the bill is at now, a fine ring on a step ahead, and a slash through the number of a step that never happened. Give each step its name, its state in words with its date, and a short note; run the steps across where each one’s sixth of the row holds its date, and down the page where it does not (Rule 11.6). End with the words that say where the bill stands."
+  ],
+  "use_when": "The reader asks where one bill is in its path to law, or how it got there, such as a bill that skipped its committee.",
+  "use_instead": [
+    {
+      "when": "Many bills are followed at once",
+      "rule": "14.132"
+    },
+    {
+      "when": "The dates themselves are the point",
+      "rule": "14.38"
+    },
+    {
+      "when": "The record’s status is a word, with no steps to follow",
+      "rule": "14.89"
+    }
+  ],
+  "why": {
+    "text": [
+      "A reader who follows bills learns one set of six marks and reads every tracker the same way, across a page or down it. A slashed step keeps the count at six, so a skipped hearing shows as a step that never happened."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S62",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "11.1",
+    "11.2",
+    "14.12"
+  ],
+  "builders": "Form step-tracker: node work/build/chart-kit/oa-chart.mjs build s62; labels.steps gives each step’s name, the action codes that mark it done and its note, and labels.became the end words.",
+  "correct": null,
+  "failure": null
+}

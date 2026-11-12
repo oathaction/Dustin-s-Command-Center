@@ -1,0 +1,34 @@
+{
+  "id": "14.92",
+  "title": "Avoid thermometers, which spend ink on a tube and a bulb that carry no value.",
+  "rule": [
+    "Leave thermometers, the tubes with a bulb used for fundraising goals, out of every Oath & Action piece. Draw the same count as a progress bar toward its goal, with the goal marked and the amount still to go printed."
+  ],
+  "use_when": "Never: a reader who asks how close a total is to its goal gets the same answer from a progress bar with less ink.",
+  "use_instead": [
+    {
+      "when": "The value is a count toward a goal",
+      "rule": "14.87"
+    },
+    {
+      "when": "The value sits against a target and ranges",
+      "rule": "14.90"
+    }
+  ],
+  "why": {
+    "text": [
+      "A thermometer is a bar with a bulb at its foot, so the bulb and the tube’s rounded ends add ink with no value. A plain bar from zero shows the same share and leaves room to print the goal and the gap."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "s-14-92-sketch",
+  "tier": "avoid",
+  "tokens": [],
+  "related": [
+    "14.4"
+  ],
+  "builders": "No form: the kit draws no thermometer. The sketch, work/build/guide/specimens/s-14-92-sketch.html, draws a thermometer beside a progress bar of the same values; build the better choice with progress-bar.",
+  "correct": null,
+  "failure": null,
+  "sketch_alt": "A thermometer fills an illustrative 70 percent of a goal inside a tube with a bulb, and a progress bar of the same values shows the share with the goal marked and less ink. The bulb holds no value."
+}

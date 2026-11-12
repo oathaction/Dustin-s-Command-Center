@@ -1,0 +1,39 @@
+{
+  "id": "14.90",
+  "title": "Use a bullet graph to set one measure against its target and the ranges behind it.",
+  "rule": [
+    "Draw the ranges as bands in the magnitude steps from zero, the measure as a narrow bar in the text’s ink from zero, and the target as a tick in the text’s ink across the bands. Name every band edge and the target with its figure once over the rows, and print the measure and its distance to the target beside each bar."
+  ],
+  "use_when": "The reader asks how close one measure is to a target or a limit, such as federal debt against the limit set in law, and the ranges give it meaning.",
+  "use_instead": [
+    {
+      "when": "The measure is a count toward a threshold with nothing behind it",
+      "rule": "14.87"
+    },
+    {
+      "when": "Several measures are compared with one benchmark each",
+      "rule": "14.17"
+    },
+    {
+      "when": "The measure’s path over time is the point",
+      "rule": "14.29"
+    }
+  ],
+  "why": {
+    "text": [
+      "A bar from zero keeps the measure honest at any distance from its target, and the bands behind it give the scale meaning without a dial or a color code. The printed distance says the answer in the reader’s units."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S64",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.4",
+    "14.5",
+    "14.3"
+  ],
+  "builders": "Form bullet-graph: node work/build/chart-kit/oa-chart.mjs build s64; encode.target names the target column, labels.bands the bands with their steps and words, and labels.per divides the printed figures.",
+  "correct": null,
+  "failure": null
+}

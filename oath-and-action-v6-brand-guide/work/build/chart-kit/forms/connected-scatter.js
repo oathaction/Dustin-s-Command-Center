@@ -6,9 +6,10 @@
  * listed under the chart. The first and last periods take a larger dot, so the path's direction reads without arrows.
  * Gridlines both ways, the y values in a left gutter and the x values along the bottom.
  * encode: time (month or year: each period's first month for a quarter), x (number), y (number).
- * labels: named ({time: words}: periods named on the drawing, in the order they claim room), gap (words naming a missing
- * period, placed at the break), x_axis, y_axis (axis words).
- * formats: x, y (ticks). scale: x and y ([lo, hi]). On a phone the same arrangement draws narrower.
+ * labels: named ({time: words}: periods named on the drawing; the latest claims room first, then the gap, then the rest
+ * in the spec's order), gap (words naming a missing period, placed at the break), x_axis, y_axis (axis words).
+ * formats: x, y (ticks). scale: x and y ([lo, hi]), x_step, y_step and x_step_phone (the ticks' steps). On a phone the
+ * same arrangement draws narrower.
  * Maker B, round 2. */
 (function (K) {
   'use strict';
@@ -29,7 +30,8 @@
       var xv = have.map(function (r) { return r[ex]; }), yv = have.map(function (r) { return r[ey]; });
       var sc = c.spec.scale || {}, nx = W < 300 ? 3 : ph ? 4 : 6, ny = ph ? 4 : 5;
       var dx = sc.x || K.nice(Math.min.apply(null, xv), Math.max.apply(null, xv), nx), dy = sc.y || K.nice(Math.min.apply(null, yv), Math.max.apply(null, yv), ny);
-      var tx = K.ticks(dx[0], dx[1], 0, K.nice(dx[0], dx[1], nx).step), ty = K.ticks(dy[0], dy[1], 0, K.nice(dy[0], dy[1], ny).step);
+      // the spec may set each axis's step (scale.x_step, scale.y_step), so whole-number ticks never fall on a half
+      var tx = K.ticks(dx[0], dx[1], 0, (!ph && sc.x_step) || (ph && sc.x_step_phone) || K.nice(dx[0], dx[1], nx).step), ty = K.ticks(dy[0], dy[1], 0, sc.y_step || K.nice(dy[0], dy[1], ny).step);
       var y0 = 0;
       if (L.y_axis) { c.text(0, tick, L.y_axis, { role: 'tick', weight: 600, max: W }); y0 = tick + 10; }
       var gut = P.value_gutter(c, ty, fy), x0 = gut + 8, x1 = W - 6;
@@ -67,7 +69,7 @@
         var r = rows.filter(function (q) { return String(q[et]) === k; })[0];
         if (!r || !ok(r)) { c.warn('labels.named names no period with both values: ' + k); return; }
         var p = pt(r), big = r === first || r === last;
-        items.push({ x: p[0], y: p[1], r: big ? c.t('dot-vertex-radius') + 1 : rs, words: named[k], weight: 600 });
+        items.push({ x: p[0], y: p[1], r: big ? c.t('dot-vertex-radius') + 1 : rs, words: named[k], weight: 600, last: r === last });
       });
       if (L.gap) {
         rows.forEach(function (r, i) {
@@ -75,11 +77,30 @@
           var a = rows[i - 1], b = rows[i + 1];
           if (!ok(a) || !ok(b)) return;
           var pa = pt(a), pb = pt(b);
-          items.push({ x: (pa[0] + pb[0]) / 2, y: (pa[1] + pb[1]) / 2, r: 2, words: L.gap, weight: 400 });
+          items.push({ x: (pa[0] + pb[0]) / 2, y: (pa[1] + pb[1]) / 2, r: 2, words: L.gap, weight: 400, gap: true });
         });
       }
+      // the latest period and the gap claim room first, then the named periods in the spec's order
+      items.sort(function (a, b) { return (a.last ? 0 : a.gap ? 1 : 2) - (b.last ? 0 : b.gap ? 1 : 2); });
+      // every dot and the path itself, sampled every few pixels, are boxes no name may cover, so names sit in open space
       var avoid = have.map(function (r) { var p = pt(r); return { x: p[0] - rs, y: p[1] - rs, w: 2 * rs, h: 2 * rs }; });
-      var pl = P.place_labels(c, items, { top: top, bottom: bot, avoid: avoid, reach: 18 });
+      runs.forEach(function (run) {
+        for (var i = 1; i < run.length; i++) {
+          var a = pt(run[i - 1]), b = pt(run[i]), n = Math.ceil(Math.sqrt(Math.pow(b[0] - a[0], 2) + Math.pow(b[1] - a[1], 2)) / 5);
+          for (var j = 1; j < n; j++) avoid.push({ x: a[0] + (b[0] - a[0]) * j / n - 1, y: a[1] + (b[1] - a[1]) * j / n - 1, w: 2, h: 2 });
+        }
+      });
+      // each name in turn, reaching further out until a place is clear (the part tries one reach a call)
+      var pl = { placed: [], unplaced: [] };
+      items.forEach(function (it) {
+        var got = null;
+        [16, 30, 48, 70, 96, 130, 170, 220].some(function (reach) {
+          var res = P.place_labels(c, [it], { top: top, bottom: bot, avoid: avoid, reach: reach });
+          if (res.placed.length) { got = res.placed[0]; return true; }
+          return false;
+        });
+        if (got) pl.placed.push(got); else pl.unplaced.push(it);
+      });
       var end = ay + 4;
       if (L.x_axis) { var xb = c.text(W, ay + tick + 10, L.x_axis, { role: 'tick', weight: 600, anchor: 'end', max: W - x0 }); end = xb.bottom; }
       if (pl.unplaced.length) {

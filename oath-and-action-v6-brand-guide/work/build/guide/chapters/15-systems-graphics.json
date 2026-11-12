@@ -872,8 +872,8 @@
    "id": "15.17",
    "title": "Draw who holds power over each level in one authority diagram.",
    "rule": [
-    "Our systems atlas records seven authority connections. Each runs from a body in the core layer, such as Congress or the state and local governments that test reforms, to a variable in the economy or technology layer that the body has the legal power to set. Draw all seven in one diagram: the layers stacked with a rule between each and its name, one pill for each body and each variable, and every line in the authority mark of Rule 15.5.",
-    "Route the lines so that none crosses another, and list each connection beside the diagram with its name. Then a reader sees what no single line shows: two bodies hold power over three of the four variables, and Congress and the executive each reach both layers."
+    "Our systems atlas records seven authority connections. Each runs from a body in the core layer, such as Congress or the state and local governments that test reforms, to a variable in the economy or technology layer that the body has the legal power to set. Draw all seven in one diagram: the layers stacked with a rule between each and its name, one pill for each body and each variable, and every line in the authority mark of Rule 15.5. Every line in it decides, so print the word once, in a key beside the diagram.",
+    "Run the lines into each layer in lanes on one side of the column, nested so that none crosses another, and list each connection beside the diagram with its name. Then a reader sees what no single line shows: two bodies hold power over three of the four variables, and Congress and the executive each reach both layers."
    ],
    "tokens": [
     "oa.color.graphic.essential.onNewsprint",
@@ -904,11 +904,15 @@
     },
     {
      "label": "Lines",
-     "value": "The authority mark of Rule 15.5: solid, an open diamond, “decides”, no sign"
+     "value": "The authority mark of Rule 15.5: solid, an open diamond, no sign, with its delay ticks"
     },
     {
-     "label": "Crossings",
-     "value": "None; the build stops if a line meets a pill off its flat edge or two lines touch"
+     "label": "Decides",
+     "value": "Once, in the key, since every line in the diagram decides; each connection’s name beside it says who decides what"
+    },
+    {
+     "label": "Lanes",
+     "value": "Lines into the economy layer on the right and into the technology layer on the left, 12 px apart, nested so none crosses"
     },
     {
      "label": "Beside it",

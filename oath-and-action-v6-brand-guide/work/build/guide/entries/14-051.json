@@ -1,0 +1,39 @@
+{
+  "id": "14.51",
+  "title": "Use a stacked area of shares to follow a whole’s mix over many years.",
+  "rule": [
+    "Stack up to four parts as shares of each year’s total, from 0 to 100 percent, in the categorical inks in their order with Stone hatched (Rule 14.5). Name each band inside it at its right end and print its last share past the edge. Say in a note when a part starts or stops, such as a program that began partway through the window."
+  ],
+  "use_when": "The reader asks how the mix of a whole has shifted over a long run of years, such as who pays the nation’s health care bill, and the total’s size is a separate question.",
+  "use_instead": [
+    {
+      "when": "The run is short enough to draw a column a year",
+      "rule": "14.50"
+    },
+    {
+      "when": "The parts’ amounts matter more than their shares",
+      "rule": "14.30"
+    },
+    {
+      "when": "There are more than four parts",
+      "rule": "14.8"
+    }
+  ],
+  "why": {
+    "text": [
+      "Shares that add to 100 every year let a reader see one part grow at another’s expense across decades. Only the bottom band and the top edge are straight, so the bands between are read by their thickness, which is why each one is named where it ends and its last share is printed."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S46",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.5",
+    "14.8",
+    "14.11"
+  ],
+  "builders": "Form stacked-area: node work/build/chart-kit/oa-chart.mjs build s46; encode.parts lists the columns from the bottom, and labels.offset draws shares (expand) or amounts (zero).",
+  "correct": null,
+  "failure": null
+}

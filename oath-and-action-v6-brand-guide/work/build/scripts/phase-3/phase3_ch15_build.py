@@ -597,6 +597,8 @@ CSS.update({
     "gp": (".gp+.gp{margin-top:16px;padding-top:14px;border-top:1px solid var(--oa-color-border-hairline)}"
            ".gp .evr{margin-bottom:6px}"),
     "two": ".two{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:20px}",
+    "kd2": (".kd2{display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:12px;font:var(--oa-type-body-small)}"
+            ".kd2 .sv{margin-top:4px}.kd2 b{font-weight:var(--oa-font-weight-semibold)}"),
 })
 
 
@@ -2347,149 +2349,108 @@ def rule_15_16(book):
 AUTH = ["LE02", "LE03", "LE19", "LT13", "LT14", "LT16", "LT17"]
 
 
-def min_pw(label, rows):
-    """The narrowest pill, from 120 px up, whose label wraps to the given rows."""
-    for pw in range(120, 240):
-        if len(wrap(label, pw - 2 * PAD)) <= rows:
-            return pw
-    raise SystemExit(f"{label!r} needs more than {rows} rows")
+LADDER_PW = 156             # every pill of the authority diagram: one width, so their ends line up in a column
+LANE = 12                  # the space between two lanes beside the column
 
 
-def name_at(y, xs, rows, x_end=W):
-    """A layer's name beside a boundary, right-aligned at the right end of the drawing where no crossing line stands
-    within 8 px of it, else at the right end of the widest gap left between crossings. rows is the name on one or two
-    lines; returns (svg, x) or stops the build when no gap holds it."""
-    span = max(tw(r_) for r_ in rows) + 8
-    edges = sorted([0] + [x for x in xs] + [x_end + 8])
-    gaps = [(a + 8, b - 8) for a, b in zip(edges, edges[1:]) if b - 8 - (a + 8) >= span - 8]
-    need(gaps, f"no room for the layer name {' '.join(rows)!r}")
-    a, b = gaps[-1]
-    x = min(b, x_end)
-    return lines(x, y, rows, "fl", "end"), x
+def end_x(p, off, side):
+    """Where a horizontal line at a vertical offset from a pill's middle meets its rounded end, 2 px clear of it."""
+    r = p.h / 2
+    inset = r - math.sqrt(max(r * r - off * off, 0))
+    return p.left + inset - 2 if side == "left" else p.right - inset + 2
 
 
 def authority_plate(failure=False):
-    """The seven authority connections in one drawing: the economy layer above, the four deciding bodies in the core
-    layer, the technology layer below. Lines into the economy layer run up from the first core row; lines into the
-    technology layer run down, through the gap between the second row's pills or outside them, so no two lines cross.
-    Every line is drawn by wire_marks with its authority switch: the open diamond, no tag, its delay ticks. failure draws
-    one pill for the government in place of the four bodies (Rule 15.17's failure). Returns (svg, pills)."""
-    ec2 = Pill(short("EC2"), 0, 0, min_pw(short("EC2"), 3))
-    ec10 = Pill(short("EC10"), 0, 0, min_pw(short("EC10"), 3))
-    ec2.cx, ec10.cx = 2 + ec2.pw / 2, W - 2 - ec10.pw / 2
-    need(ec10.left - ec2.right >= 12, "the economy layer's pills touch")
-    h0 = max(ec2.h, ec10.h)
-    ec2.cy = ec10.cy = 2 + h0 / 2
-    out, crossing1, crossing2 = [], [], []
-    lab = []                                     # (x, y, anchor) for each "decides"
-    LB = 22                                      # a "decides" label sits 22 px under the economy row
-    div1 = 2 + h0 + 64
+    """The seven authority connections in one drawing, as a ladder: one column of pills in three bands, the economy
+    layer at the top, the four deciding bodies in the core layer and the technology layer at the bottom, each band set
+    off by a 1 px rule with its name (Rule 15.9). Lines into the economy layer run in lanes on the right and lines into
+    the technology layer in lanes on the left, nested so that no two cross; each leaves its body's pill end level, runs
+    in its lane and enters the decided variable's end with the open diamond. failure folds the four bodies into one pill
+    (Rule 15.17's failure). Returns (svg, rows, edges)."""
+    econ, tech = ["EC2", "EC10"], ["TC7", "TC5"]
+    core = ["GOV"] if failure else ["D2", "D1", "D4", "D6"]
     if failure:
-        gov = Pill("The government", W / 2, 0, 170)
-        gov.cy = div1 + 40 + gov.h / 2
-        core = [gov]
-        r_bot = gov.bot
+        edges = [("GOV", "EC2", "right", 0), ("GOV", "EC10", "right", 1), ("GOV", "TC5", "left", 0), ("GOV", "TC7", "left", 1)]
     else:
-        d1 = Pill(short("D1"), 0, 0, min_pw(short("D1"), 2))
-        d2 = Pill(short("D2"), 0, 0, min_pw(short("D2"), 2))
-        d4 = Pill(short("D4"), 0, 0, min_pw(short("D4"), 2))
-        d6 = Pill(short("D6"), 0, 0, min_pw(short("D6"), 2))
-        d1.cx, d2.cx = 2 + d1.pw / 2, W - 2 - d2.pw / 2
-        d4.cx, d6.cx = 2 + d4.pw / 2, W - 2 - d6.pw / 2
-        h1 = max(d1.h, d2.h)
-        d1.cy = d2.cy = div1 + 40 + h1 / 2
-        h2 = max(d4.h, d6.h)
-        d4.cy = d6.cy = d1.cy + h1 / 2 + 60 + h2 / 2
-        core = [d1, d2, d4, d6]
-        r_bot = d4.bot
-        corridor = (d4.right, d6.left)
-        need(corridor[1] - corridor[0] >= 20, f"the gap between the second core row's pills is {corridor[1] - corridor[0]:.0f} px")
-    div2 = r_bot + 40
-    tc5 = Pill(short("TC5"), W / 2, 0, min_pw(short("TC5"), 3))
-    tc5.cy = div2 + 44 + tc5.h / 2
-    tc7 = Pill(short("TC7"), W / 2, 0, min_pw(short("TC7"), 1))
-    tc7.cy = tc5.bot + 62 + tc7.h / 2
-
-    def flat(p, x):
-        need(p.left + p.h / 2 <= x <= p.right - p.h / 2, f"a line meets {p.rows} off its flat edge at x {x:.0f}")
-        return x
-
-    def draw(pts, lid):
-        l = link(lid)
-        need(l["type"] == "authority", f"connection {lid} is no authority connection")
-        m, _ = conn(pts, "documented", None, l["delay"], authority=True)
+        # lane 0 is outermost: the nesting the column's order allows (EC2, EC10, D2, D1, D4, D6, TC7, TC5)
+        edges = [("D1", "EC2", "right", 0, "LE02"), ("D2", "EC2", "right", 1, "LE03"), ("D2", "EC10", "right", 2, "LE19"),
+                 ("D2", "TC5", "left", 0, "LT16"), ("D1", "TC5", "left", 1, "LT17"), ("D4", "TC7", "left", 2, "LT13"),
+                 ("D6", "TC7", "left", 3, "LT14")]
+    n_left = 1 + max(x[3] for x in edges if x[2] == "left")
+    n_right = 1 + max(x[3] for x in edges if x[2] == "right")
+    lane_x = {"left": [8 + LANE * i for i in range(n_left)], "right": [W - 8 - LANE * i for i in range(n_right)]}
+    cx = 70 + LADDER_PW / 2                       # the column: 26 px clear of the inner left lane, 38 of the inner right
+    pills, y, out = {}, 2, []
+    bands = [("Economy layer", econ), ("Core layer", core), ("Technology layer", tech)]
+    divs = []
+    for bi, (name, codes) in enumerate(bands):
+        if bi:
+            divs.append(y + 26)
+            y += 52
+        for i, c in enumerate(codes):
+            if i:
+                y += 14
+            lab = "The government" if c == "GOV" else short(c)
+            p = Pill(lab, cx, 0, LADDER_PW)
+            need(p.pw == LADDER_PW, f"{lab!r} does not fit a {LADDER_PW} px pill")
+            p.cy = y + p.h / 2
+            y = p.bot
+            pills[c] = p
+    # offsets where two lines share a pill end: the outer lane's line takes the side away from its travel
+    ends = {}
+    for ed in edges:
+        a, b, side, lane = ed[:4]
+        ends.setdefault((a, side), []).append((lane, "out", ed))
+        ends.setdefault((b, side), []).append((lane, "in", ed))
+    off = {}
+    for (c, side), lst in ends.items():
+        if len(lst) == 1:
+            off[(c, side, lst[0][2])] = 0
+            continue
+        need(len(lst) == 2, f"three lines share one end of {c}")
+        lst.sort(key=lambda t: t[0])                 # outer lane first
+        outer, inner = lst
+        up = pills[outer[2][1]].cy < pills[outer[2][0]].cy   # the outer line travels up (into the economy layer)
+        role = outer[1]
+        # departing up or arriving from above: the outer takes the lower offset; departing down or arriving from below: upper
+        lower = (role == "out" and up) or (role == "in" and not up)
+        off[(c, side, outer[2])] = 8 if lower else -8
+        off[(c, side, inner[2])] = -8 if lower else 8
+    xs_used = []
+    for ed in edges:
+        a, b, side, lane = ed[:4]
+        lid = ed[4] if len(ed) > 4 else None
+        pa, pb = pills[a], pills[b]
+        ya, yb = pa.cy + off[(a, side, ed)], pb.cy + off[(b, side, ed)]
+        lx = lane_x[side][lane]
+        xa, xb = end_x(pa, ya - pa.cy, side), end_x(pb, yb - pb.cy, side)
+        first = abs(lx - xa)
+        delay = link(lid)["delay"] if lid else None
+        need(first >= 12 + 5 * ({"S": 0, "M": 1, "L": 2}.get(delay, 0)) + BEND + 4,
+             f"the line into {b} leaves {a} with {first:.0f} px before its lane, short of its ticks")
+        if lid:
+            l = link(lid)
+            need((l["from"], l["to"], l["type"]) == (a, b, "authority"), f"connection {lid} no longer runs from {a} to {b}")
+        m, _ = conn([(xa, ya), (lx, ya), (lx, yb), (xb, yb)], "documented", None, delay, authority=True)
         out.append(wr(m))
+        xs_used.append(lx)
+    need(min(lane_x["right"]) - max(p.right for p in pills.values()) >= 26 and
+         min(p.left for p in pills.values()) - max(lane_x["left"]) >= 26, "a lane runs too close to the column")
+    # the bands' rules, across the column only, so no lane crosses them; each name at the rule's right end
+    x0, x1 = cx - LADDER_PW / 2, cx + LADDER_PW / 2
+    for yd, (above, below) in zip(divs, [("Economy layer", "Core layer"), ("Core layer", "Technology layer")]):
+        out.append(f'<path class="fr" d="M{F(x0)} {F(yd)}H{F(x1)}"/>' + text(x1, yd - 8, above, "fl", "end")
+                   + text(x1, yd + 20, below, "fl", "end"))
+    out.append("".join(p.svg() for p in pills.values()))
+    return svg_wrap("".join(out), y + 4), pills, edges
 
-    if failure:
-        g = core[0]
-        ups = [(ec2, g.left + g.h / 2 + 18), (ec10, g.right - g.h / 2 - 18)]
-        for p, x in ups:
-            xe = flat(p, min(max(x, p.left + p.h / 2), p.right - p.h / 2))
-            ym = div1 + 18
-            pts = [(x, g.top - 2), (x, ym), (xe, ym), (xe, p.bot + 2)] if abs(xe - x) > 1 else [(x, g.top - 2), (x, p.bot + 2)]
-            m, _ = conn(pts, "documented", None, "S", authority=True)
-            out.append(wr(m))
-            crossing1.append(xe)
-            lab.append((xe + (12 if xe > W / 2 else -12), p.bot + LB, "start" if xe > W / 2 else "end"))
-        x5a, x7a = W / 2 - 14, W / 2 + 14
-        m, _ = conn([(x5a, g.bot + 2), (x5a, tc5.top - 2)], "documented", None, "S", authority=True)
-        out.append(wr(m))
-        crossing2.append(x5a)
-        lane = tc5.right + 14
-        m, _ = conn([(x7a + 40, g.bot + 2), (x7a + 40, g.bot + 18), (lane, g.bot + 18), (lane, tc7.cy - 30),
-                     (W / 2 + 40, tc7.cy - 30), (W / 2 + 40, tc7.top - 2)], "documented", None, "S", authority=True)
-        out.append(wr(m))
-        crossing2.append(lane)
-        lab.append((x5a - 12, tc5.top - 14, "end"))
-        lab.append((lane - 12, tc7.cy - 40, "end"))
-    else:
-        # up into the economy layer: LE02 and LE19 straight, LE03 with one jog under the boundary
-        x02 = flat(d1, flat(ec2, min(d1.right - d1.h / 2, ec2.right - ec2.h / 2) - 24))
-        draw([(x02, d1.top - 2), (x02, ec2.bot + 2)], "LE02")
-        x03e = flat(ec2, min(d1.right - d1.h / 2, ec2.right - ec2.h / 2) + 0)
-        x03e = min(x03e + 26, ec2.right - ec2.h / 2)
-        x03s = flat(d2, d2.left + d2.h / 2 + 6)
-        ym = d1.top - 18
-        draw([(x03s, d2.top - 2), (x03s, ym), (x03e, ym), (x03e, ec2.bot + 2)], "LE03")
-        x19 = flat(d2, flat(ec10, max(d2.left + d2.h / 2, ec10.left + ec10.h / 2) + 0))
-        x19 = max(x19, x03s + 24)
-        flat(ec10, x19)
-        draw([(x19, d2.top - 2), (x19, ec10.bot + 2)], "LE19")
-        crossing1 += [x02, x03e, x19]
-        lab += [(x02 - 12, ec2.bot + LB, "end"), (x03e + 12, ec2.bot + LB, "start"), (x19 + 12, ec10.bot + LB, "start")]
-        # down into the technology layer: LT17 and LT16 through the gap between D4 and D6, then into TC5
-        mid = (corridor[0] + corridor[1]) / 2
-        xa, xb = mid - 7, mid + 7
-        y17 = d1.bot + 22
-        y16 = d1.bot + 38
-        s17 = flat(d1, d1.right - d1.h / 2 - 4)
-        s16 = flat(d2, d2.left + d2.h / 2 + 30)
-        need(s16 > xb + 8 and s17 < xa - 8, "the lines into the gap would cross")
-        flat(tc5, xa), flat(tc5, xb)
-        draw([(s17, d1.bot + 2), (s17, y17), (xa, y17), (xa, tc5.top - 2)], "LT17")
-        draw([(s16, d2.bot + 2), (s16, y16), (xb, y16), (xb, tc5.top - 2)], "LT16")
-        # LT13 and LT14 down the outsides of TC5, then into TC7
-        x13 = flat(d4, d4.left + d4.h / 2 + 4)
-        x14 = flat(d6, d6.right - d6.h / 2 - 4)
-        need(x13 < tc5.left - 8 and x14 > tc5.right + 8, "the outer lines touch Technology's first pill")
-        yt = tc5.bot + 30
-        e13, e14 = flat(tc7, tc7.left + tc7.h / 2 + 30), flat(tc7, tc7.right - tc7.h / 2 - 30)
-        draw([(x13, d4.bot + 2), (x13, yt), (e13, yt), (e13, tc7.top - 2)], "LT13")
-        draw([(x14, d6.bot + 2), (x14, yt), (e14, yt), (e14, tc7.top - 2)], "LT14")
-        crossing2 += [x13, xa, xb, x14]
-        lab += [(xa - 12, tc5.top - 14, "end"), (xb + 12, tc5.top - 14, "start"),
-                (e13 - 12, yt - 10, "end"), (e14 + 12, yt - 10, "start")]
-    for x, y, anc in lab:
-        out.append(text(x, y, "decides", "v", anc))
-    out.append(boundary(div1, crossing1))
-    out.append(boundary(div2, crossing2))
-    n1, _ = name_at(div1 - 8 - LH, crossing1, ["Economy", "layer"])
-    n2, _ = name_at(div1 + 20, crossing1, ["Core", "layer"])
-    n3, _ = name_at(div2 - 8 - LH, crossing2, ["Core", "layer"])
-    n4, _ = name_at(div2 + 20, crossing2, ["Technology", "layer"])
-    out.append(n1 + n2 + n3 + n4)
-    out.append("".join(p.svg() for p in [ec2, ec10, *core, tc5, tc7]))
-    return svg_wrap("".join(out), tc7.bot + 4), [ec2, ec10, *core, tc5, tc7]
+
+def key_decides():
+    """The diagram's key: one short authority line, with its open diamond, and the word it stands for."""
+    m, _ = conn([(1, 9), (61, 9)], "documented", None, None, authority=True)
+    return (f'<p class="kd2"><svg class="sv" viewBox="0 0 64 18" width="64" height="18" aria-hidden="true" focusable="false">'
+            f'{wr(m)}</svg><span><b>decides</b>: the body where the line starts holds the power over the variable at its '
+            f'diamond</span></p>')
 
 
 def rule_15_17(book):
@@ -2513,7 +2474,8 @@ def rule_15_17(book):
     need(two == ["EC2", "TC5", "TC7"] and by_target["EC10"] == 1, "the count of bodies over each variable changed")
     reach = {a: {lay_ for k_, (a_, b_) in want.items() if a_ == a for lay_ in [node(b_)["layer"]]} for a, _ in want.values()}
     need(sorted(a for a, s_ in reach.items() if len(s_) == 2) == ["D1", "D2"], "the bodies that reach both layers changed")
-    svg, _ = authority_plate()
+    svg, pills, edges = authority_plate()
+    need(sorted(ed[4] for ed in edges) == sorted(AUTH), "the diagram leaves out an authority connection")
 
     def li(k):
         l = link(k)
@@ -2521,7 +2483,8 @@ def rule_15_17(book):
 
     econ = [k for k in AUTH if lay[want[k][1]] == "economy"]
     tech = [k for k in AUTH if lay[want[k][1]] == "technology"]
-    words = (f'<p class="k">Into the economy layer</p>{kw([li(k) for k in econ])}'
+    words = (f'<p class="k">Key</p>{key_decides()}'
+             f'<p class="k">Into the economy layer</p>{kw([li(k) for k in econ])}'
              f'<p class="k">Into the technology layer</p>{kw([li(k) for k in tech])}'
              f'<p class="nt">Two bodies decide each of {chip("Variable", "EC2", ",")} {chip("Variable", "TC5")} and '
              f'{chip("Variable", "TC7", ";")} one decides {chip("Variable", "EC10", ".")} Of each line, the atlas says: '
@@ -2534,20 +2497,21 @@ def rule_15_17(book):
                   "economy layer: Public investment in research and infrastructure, and Costs of tariffs and trade rules. In the "
                   "core layer, four deciding bodies: Congressional capacity and Executive unilateralism, then Oversight and "
                   "enforcement and State and local experimentation. At the bottom, the technology layer: Government’s ability to "
-                  "build and run digital services, and Use of pricing algorithms. Seven solid lines, each ending in an open "
-                  "diamond with the word decides and no sign, run from the bodies to what they decide, and none crosses another. "
-                  "Beside it, each connection with its name, all documented: "
+                  "build and run digital services, and Use of pricing algorithms. Seven solid lines with no sign run from the "
+                  "bodies to what they decide, in lanes beside the column, those into the economy layer on the right and those "
+                  "into the technology layer on the left, and none crosses another. Each ends in an open diamond, which a key "
+                  "beside the drawing reads as decides. Beside it, each connection with its name, all documented: "
                   + "; ".join(f"Connection {k}, {link(k)['name']}" for k in AUTH)
                   + ". Two bodies decide each of three variables, and one decides tariff costs. Of each line the atlas says: "
                   + next(iter(sm))),
-             notes="All seven authority connections read by script, with their ends, layers and grades; drawn by wire_marks "
-                   "with its authority switch, routed so no two lines cross.")
+             notes="All seven authority connections read by script, with their ends, layers, grades and delays; drawn by "
+                   "wire_marks with its authority switch in nested lanes, so no two lines cross.")
     book.log("15.17 correct", "Seven authority connections, who decides", "D05")
-    fsvg, _ = authority_plate(failure=True)
+    fsvg, _, _ = authority_plate(failure=True)
     fail = dnp() + fig(fsvg)
     book.add("s-15-17-failure", fail, rule="15.17",
-             alt=(FC + "One pill named The government, in place of the four bodies, with lines that end in open diamonds to "
-                  "the four variables the atlas’s authority connections reach, in the economy and technology layers."),
+             alt=(FC + "One pill named The government, in place of the four bodies, with four lines that end in open "
+                  "diamonds at the four variables the atlas’s authority connections reach, in the economy and technology layers."),
              notes="Labeled failure: the four deciding bodies folded into one, so the drawing cannot show who decides what.")
     return {
         "id": "15.17",
@@ -2557,8 +2521,9 @@ def rule_15_17(book):
             "such as Congress or the state and local governments that test reforms, to a variable in the economy or technology "
             "layer that the body has the legal power to set. Draw all seven in one diagram: the layers stacked with a rule "
             "between each and its name, one pill for each body and each variable, and every line in the authority mark of "
-            "Rule 15.5.",
-            "Route the lines so that none crosses another, and list each connection beside the diagram with its name. Then "
+            "Rule 15.5. Every line in it decides, so print the word once, in a key beside the diagram.",
+            "Run the lines into each layer in lanes on one side of the column, nested so that none crosses another, and list "
+            "each connection beside the diagram with its name. Then "
             f"a reader sees what no single line shows: two bodies hold power over {words_n(len(two))} of the four variables, "
             "and Congress and the executive each reach both layers.",
         ],
@@ -2577,8 +2542,9 @@ def rule_15_17(book):
         "specs": [
             {"label": "Layers", "value": "Stacked, with one 1 px rule between each two and both names beside it (Rule 15.9)"},
             {"label": "Bodies", "value": "One pill each, in the core layer"},
-            {"label": "Lines", "value": "The authority mark of Rule 15.5: solid, an open diamond, “decides”, no sign"},
-            {"label": "Crossings", "value": "None; the build stops if a line meets a pill off its flat edge or two lines touch"},
+            {"label": "Lines", "value": "The authority mark of Rule 15.5: solid, an open diamond, no sign, with its delay ticks"},
+            {"label": "Decides", "value": "Once, in the key, since every line in the diagram decides; each connection’s name beside it says who decides what"},
+            {"label": "Lanes", "value": f"Lines into the economy layer on the right and into the technology layer on the left, {LANE} px apart, nested so none crosses"},
             {"label": "Beside it", "value": "Each connection’s chip, name and grade word, grouped by the layer it reaches"},
         ],
         "related": ["13"],

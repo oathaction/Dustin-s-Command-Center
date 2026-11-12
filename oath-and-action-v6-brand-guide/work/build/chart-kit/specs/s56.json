@@ -56,11 +56,11 @@
   },
   "labels": {
     "named": {
-      "2001-01": "January to March 2001",
-      "2009-10": "October to December 2009",
-      "2020-04": "April to June 2020",
+      "2026-07": "July to September 2026",
       "2022-01": "January to March 2022",
-      "2026-07": "July to September 2026"
+      "2020-04": "April to June 2020",
+      "2009-10": "October to December 2009",
+      "2001-01": "January to March 2001"
     },
     "gap": "No rate for October 2025",
     "x_axis": "Unemployment rate, percent",
@@ -78,7 +78,10 @@
     "y": [
       0,
       12
-    ]
+    ],
+    "x_step": 2,
+    "x_step_phone": 4,
+    "y_step": 2
   },
   "notes_internal": [
     "Maker B, round 2. Data plan row 65, rule 14.69. Draws fred-unemployment-and-job-openings-quarterly, a derived file maker_b_round2_derive.py writes from the frozen FRED file (P7-013): quarterly averages from the first full quarter of job openings (2001 Q1) to the latest (2026 Q3), 103 quarters.",
