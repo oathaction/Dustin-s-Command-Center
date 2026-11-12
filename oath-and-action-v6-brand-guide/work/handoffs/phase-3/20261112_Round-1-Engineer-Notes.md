@@ -311,3 +311,44 @@ Written for `work/handoffs/phase-3/20261112_Round-1-Fix-Brief.md` (calls D3-476 
 
 Modified: `work/build/chart-kit/kit.js` (shape boxes and their lift, `K.snap`, the phone view and `desk_phone`, the lookup in place and its Escape, the tall-drawing mark, `typography`, `millions`, the words), `parts.js` (`zero_line`, `arrow`), `checks.js` (shapes outside, the dots check, the source line's years and templates, `typography`, the point and context in forced colors), `kit.css` (forced colors' Canvas ground, point and context, `oac-s-point`, `oac-s-light-fill`, the notes' rule, the chip's mark, print, the phone view, the static figure), `oa-chart.mjs` (`figure`, `phone_view` from the build, `lookup_in_place` on the build page, the self-test), `words.json`, `README.md`, `forms/dumbbell.js`, `forms/line-event-notes.js`, and the one-token zero line change in `forms/area.js`, `benefit-cliff.js`, `columns-moving-average.js`, `indexed-line.js`, `line-data-gap.js`, `line-field.js`, `step-line.js`; `work/build/scripts/phase-2/guide_build.py` (`wide_px`, `frame_container`, `plate_css`, the avoid pair, the chapter's basis, the stage's name, the side list, call 4's measure, self-test scenarios), `guide_check.js` (`chartEdges`, a kit stage described by its figure's alt, plants), `dataviz_check.js` (forced colors in both themes, marks against their ground, plants); `work/build/scripts/phase-3/guide_charts.py` (call 4, `phone_view` for entries, self-test), `phase3_ch14_build.py` (sketch widths and limits, basis, `plate_css`, lookup entries interactive), `data_round0_build.py` (ENG-12, ENG-13, the claims line, the templates' check) and the files it writes (`v7-stock-trading-ban.meta.json`, `ballotpedia-rcv-prohibitions-by-state.csv` and `.meta.json`, `v7-claims-by-grade.meta.json`, `v7-claims-by-hub-and-grade.meta.json`); `work/build/guide/shell/guide-shell.css` (the frame container, the avoid pair, the chapter's basis, the side list) and `guide-shell.js` (the side list); by the generator, `work/build/guide/chapters/14-data-visualization.json` and `work/build/guide/specimens/manifest-data-visualization.json`; this notes file.
 Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/256961f5-3911-5bd9-908d-f34ce0435ace/scratchpad/phase-3/round-1-fix/engineer/` (the baseline and isolated kit copies, the frozen specs, the snapshots, the `build --all` outputs with and without PNGs, the strict builds `build/` and `build2/` with their reports, `fix_test.js` and its results, the captures, the scratch copies of S37, S38 and S39, and the edit scripts).
+
+## Second pass
+
+Written for the main session's four kit items (D3-614); ED-E13 moved to round 2 (D3-616).
+
+### Summary
+
+- **ED-E12, done.** `K.parts.named_fill` reads a `labels.point` with nothing named as naming the point alone, so one key gives the red point and the light fill on every other mark (palette rule R3). A spec that sets both keys draws as before: no current export changed (the two specs that set `labels.point` in `column` and `ranked-bar`, `s-14-6-bars` and `s-14-13-cols`, set both; `lollipop` and `small-multiple-bars` already pass their own named list).
+- **A12, done.** A `sort` entry may give an order of its own, `{"field": "reform_group", "values": ["G1", "G2"]}`; values it does not list sort after those it does, each value's rows in data order. No current spec uses it yet; maker A sets it on S37.
+- **A14, done.** In forced colors a line or outline in group 2 (`oac-s-cat-2`) takes GrayText, as group 2's fill does.
+- **Maker A's flag, audited and fixed.** In forced colors GrayText (seq-3, div-5, mag-3, cat-2, context, secondary) is a middle ink against either system ground, so a word in CanvasText on it measured 1.50 to 1 in both themes. The audit (`dataviz_check.js --kit`, light and dark, 1440 and 390 px, on every live spec's kit page) found one spec with such words, S16's state codes on its middle bubbles (28 words a width and theme); S37's words on seq-3 already sit on a Canvas plate (`oac-fc-plate`). The kit now marks a word set on a GrayText rect or circle (`oac-fc-on-gray`, found from every shape drawn under it, a plate answering first) and `kit.css` sets it in Canvas with a CanvasText halo; on a context mark beside a red point, which takes the ground (access S10), it keeps CanvasText. `checks.js` reads the same rule. After the fix, all 42 kit pages pass the audit in both themes.
+
+### Routine calls
+
+- D3-xxx | `labels.point` alone names the point for the light fill | One key does what palette rule R3 and Rule 05.3 ask together (ED-E12); a spec with both keys keeps its drawing
+- D3-xxx | `sort` takes `values`, an order of its own, with unlisted values last | S37's table can follow the drawing's group order (A12); a missing value never drops a row
+- D3-xxx | Group 2's stroke maps to GrayText in forced colors | Group 2's fill already did (A14)
+- D3-xxx | A word on a GrayText mark takes Canvas in forced colors, found from the shapes drawn under it; a plate under the word answers first | GrayText sits between Canvas and CanvasText in both contrast themes, and Canvas clears it in both (maker A's flag); S37's plates already carry their words
+
+### Requests
+
+- **Main session (S10's owner):** `specs/s10.json` copies the claims register's old line ("claims checked through October 15, 2026") as its `source_line`, so since D3-519's honest line ("432 of the 433 claims checked on October 15, 2026") it fails the source check, the one fault in `build --all`. S10 is no current maker's spec; leave its `source_line` out (it then prints the sidecar's line) or copy the new line.
+- **Maker A:** `labels.point` alone now gives the light fill, so `labels.named` can go where it only repeats the point; `sort` with `values` for S37's table.
+
+### Tested
+
+- `oa-chart.mjs self-test`: every planted fault caught, with three new passes (a point alone gives every other mark the light fill and both keys the same; a sort by values orders rows with unlisted values last; a word on a seq-3 rect is marked for Canvas and one beside it is not).
+- Before and after on a frozen copy of today's specs, with a copy of the kit that undoes only these changes: `kit_snapshot.mjs`, 660 drawings, 10 differ, all S16's (its state codes on middle bubbles take the new class); `build --all --no-png`, 41 of 42 pass in both (S10, Requests), all 42 CSV exports equal byte for byte, only S16's check file differs.
+- `build --all` with PNGs on the live specs: 41 of 42 pass (S10), every page, export and capture written.
+- `dataviz_check.js --kit` on all 42 kit pages, light and dark contrast themes, 1440 and 390 px: before the fix, S16 failed (56 words at 1.50 to 1); after it, 42 of 42 pass.
+- The strict build (`guide_build.py --strict`): exit 0, 0 warnings, 9,988,085 bytes, 265 rules, 554 specimens; share per plate 14,387 bytes for 61 plates.
+
+### Not tested
+
+- S37 with a `sort` by values (maker A's spec), and any spec with `labels.point` alone in `column` or `ranked-bar`, beyond the self-test.
+- Windows' own contrast themes; Chromium's emulation stood in.
+
+### Files
+
+Modified: `work/build/chart-kit/parts.js` (`named_fill`), `kit.js` (`sort` values, `fill_under` and the on-gray class, shape fills recorded), `kit.css` (`oac-s-cat-2` and words on GrayText in forced colors), `checks.js` (the forced-colors word rule), `oa-chart.mjs` (self-test); this notes file.
+Scratch only: the same folder as above (`pre2/`, `post2/`, `specs2/`, `kit-live2/`, `audit-before.log`, `audit-after.log`, `build4/`).
