@@ -157,8 +157,10 @@ SRC_MINWAGE = ("Source: U.S. Department of Labor, Wage and Hour Division, State 
                "applies to employers with annual gross receipts of $405,000 or more.")
 # Round 3 (BE-S8): the two atlas lines that named no date take the snapshot's, as every other atlas line in the chapter does.
 SRC_CLOTURE = "Source: " + ATLAS + ", glossary entry “Cloture”, snapshot of October 15, 2026."
-PHOTO_PARKS = "work/build/assets/photography/20261106_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005.jpg"
-PHOTO_ZIANNO = "work/build/assets/photography/20261106_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Zianno.jpg"
+# DR-238 (board 1, November 12, 2026): the guide shows the research lead's 1,200 px wide renditions, since the plates show
+# each photograph at 600 px wide at most. The 1,920 px originals beside them stay the source, each with its record.
+PHOTO_PARKS = "work/build/assets/photography/20261112_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005-1200-Wide.jpg"
+PHOTO_ZIANNO = "work/build/assets/photography/20261112_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Zianno-1200-Wide.jpg"
 CAP_PARKS = ("Members of the public file past the casket of Rosa Parks, the civil rights pioneer, as she lies in honor in the "
              "Rotunda of the U.S. Capitol, Washington, D.C., October 2005. Photograph: Architect of the Capitol.")
 CAP_ZIANNO = ("Paul Zianno, chief of civil works acquisition and management for the U.S. Army Corps of Engineers Sacramento "
@@ -908,7 +910,8 @@ def build(book):
           f".ed .card .hl{{{fx('h3')};margin:0 0 10px;position:relative;max-width:16ch}}"
           f".ed .card .dek{{position:relative;max-width:40ch}}"
           f".ed .dome{{position:absolute;right:-16px;top:36px;width:200px;height:auto;color:var(--oa-color-graphic-subtle)}}")
-    ph = lambda src, crop, alt, cap: (f'<div class="phw"><img src="{src}" alt="{e(alt)}" class="ph {crop}" width="1920" height="1152" loading="lazy">'
+    # The size hint is the rendition's width at 5:3 (DR-238); the crop classes set each frame's own ratio.
+    ph = lambda src, crop, alt, cap: (f'<div class="phw"><img src="{src}" alt="{e(alt)}" class="ph {crop}" width="1200" height="720" loading="lazy">'
                                       f'<p class="phc">{cap}</p></div>')
     dome = ('<svg class="dome" viewBox="0 0 260 200" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="3">'
             '<path d="M70 120 A60 60 0 0 1 190 120"/><path d="M60 120h140M55 132h150"/><path d="M130 60v-26M122 34h16"/>'
@@ -926,7 +929,8 @@ def build(book):
                                       "filing past a casket inside velvet ropes, with Capitol Police officers among them. Caption: " + CAP_PARKS,
                                   notes="DR-101, round two: the research lead's recommended photograph (pho-01 in the rights ledger), a public-domain work of the "
                                         "Architect of the Capitol, from Wikimedia's 1,920 px rendition. Cropped by CSS to 5:3 from the top, so the agency's mark at "
-                                        "lower right falls outside the frame. No public-domain photograph of the H.R. 7008 vote day was found, so the caption names this event."),
+                                        "lower right falls outside the frame. No public-domain photograph of the H.R. 7008 vote day was found, so the caption names this event. "
+                                        "DR-238: the plate shows the research lead's 1,200 px wide rendition of that file; the 1,920 px file stays the source."),
                     "caption": "The Capitol Rotunda appears only as the place where a named public event happened, and the caption says what, where and when, with the credit. The crop keeps the walls and the public and leaves out the agency’s mark."},
         "failure": {"specimen": A("s-01-6-failure", f'<div class="ed">{dnp()}<div class="card">{dome}{kicker("Explainer", "State senate", illus=True)}'
                                                     '<p class="hl">What the state senate’s vote on S. 214 means for you</p><p class="dek">One vote, 21 to 18, and what comes next.</p></div></div>',
@@ -980,7 +984,8 @@ def build(book):
                                       "residents, seen from behind, listen; a board at left reads Steps in the real estate process. Caption: " + CAP_ZIANNO,
                                   notes="DR-101, round two: the research lead's recommended photograph (pho-04), a public-domain work of the U.S. Army Corps of Engineers, from "
                                         "Wikimedia's 1,920 px rendition, cropped by CSS to 3:2. Chosen over the Menniti frame from the same meeting because the named "
-                                        "official faces the camera, so the caption's who is the person a reader sees, and the residents, who are not named, face away."),
+                                        "official faces the camera, so the caption's who is the person a reader sees, and the residents, who are not named, face away. "
+                                        "DR-238: the plate shows the research lead's 1,200 px wide rendition of that file; the 1,920 px file stays the source."),
                     "caption": "The caption names the official and his job, what he is doing, where and when, then the credit. The residents face away and stay unnamed."},
         "failure": {"specimen": A("s-01-8-failure", '<div class="ed">' + dnp() + ph(PHOTO_ZIANNO, "r32", "The same photograph of the public meeting.", "Democracy in action. " + ill()) + "</div>",
                                   css=(BASE, PH), rule="01.8",

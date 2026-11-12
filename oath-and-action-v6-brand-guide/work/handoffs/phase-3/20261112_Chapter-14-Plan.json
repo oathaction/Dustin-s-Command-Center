@@ -1,0 +1,1569 @@
+{
+ "chapter": "14",
+ "file": "work/build/guide/chapters/14-data-visualization.json",
+ "anchor": "data-visualization",
+ "note": "Rule numbers are fixed for every round. Titles of chapter-wide rules may be tuned to chapter 02 by the editor; numbers and subjects stay.",
+ "groups": [
+  {
+   "group": 1,
+   "title": "Every chart",
+   "rules": "14.1 to 14.14"
+  },
+  {
+   "group": 2,
+   "family_section": "3.1",
+   "title": "Comparison: which is bigger, and how do they rank?",
+   "rules": "14.15 to 14.24"
+  },
+  {
+   "group": 3,
+   "family_section": "3.2",
+   "title": "Shift and swing: what moved, and which way?",
+   "rules": "14.25 to 14.28"
+  },
+  {
+   "group": 4,
+   "family_section": "3.3",
+   "title": "Change over time: how has it moved?",
+   "rules": "14.29 to 14.45"
+  },
+  {
+   "group": 5,
+   "family_section": "3.4",
+   "title": "Composition: what is it made of?",
+   "rules": "14.46 to 14.57"
+  },
+  {
+   "group": 6,
+   "family_section": "3.5",
+   "title": "Distribution and density: how are the values spread?",
+   "rules": "14.58 to 14.66"
+  },
+  {
+   "group": 7,
+   "family_section": "3.6",
+   "title": "Correlation: do two things move together?",
+   "rules": "14.67 to 14.73"
+  },
+  {
+   "group": 8,
+   "family_section": "3.7",
+   "title": "Uncertainty and estimates: how sure is it?",
+   "rules": "14.74 to 14.78"
+  },
+  {
+   "group": 9,
+   "family_section": "3.8",
+   "title": "Proportion and overlap: how much, and how do groups overlap?",
+   "rules": "14.79 to 14.84"
+  },
+  {
+   "group": 10,
+   "family_section": "3.9",
+   "title": "Gauges and indicators: where does it stand now?",
+   "rules": "14.85 to 14.92"
+  },
+  {
+   "group": 11,
+   "family_section": "3.10",
+   "title": "Behavior: how do people move through a process?",
+   "rules": "14.93 to 14.95"
+  },
+  {
+   "group": 12,
+   "family_section": "3.11",
+   "title": "Structure: who decides, and how does it work?",
+   "rules": "14.96 to 14.103"
+  },
+  {
+   "group": 13,
+   "family_section": "3.12",
+   "title": "Relationships: who is connected to whom?",
+   "rules": "14.104 to 14.109"
+  },
+  {
+   "group": 14,
+   "family_section": "3.13",
+   "title": "Flow: where does it go?",
+   "rules": "14.110 to 14.113"
+  },
+  {
+   "group": 15,
+   "family_section": "3.14",
+   "title": "Maps: where is it happening?",
+   "rules": "14.114 to 14.124"
+  },
+  {
+   "group": 16,
+   "family_section": "3.15",
+   "title": "Tables and plain words: where does a reader look things up, and when do words answer faster?",
+   "rules": "14.125 to 14.134"
+  },
+  {
+   "group": 17,
+   "family_section": "3.16",
+   "title": "Infographics: how does it work, in one look?",
+   "rules": "14.135 to 14.141"
+  }
+ ],
+ "chapter_rules": [
+  {
+   "rule": "14.1",
+   "subject": "Start from the reader's question, then choose the form",
+   "owner": "editor",
+   "round": 1,
+   "entry_file": "work/build/guide/entries/14-001.json"
+  },
+  {
+   "rule": "14.2",
+   "subject": "Build every chart in one anatomy: evidence label and grade line, title, reading guide, measure line, chart, notes, source line and table",
+   "owner": "editor",
+   "round": 1,
+   "entry_file": "work/build/guide/entries/14-002.json"
+  },
+  {
+   "rule": "14.3",
+   "subject": "Label the data directly, and use a key only when labels cannot fit",
+   "owner": "editor",
+   "round": 1,
+   "entry_file": "work/build/guide/entries/14-003.json"
+  },
+  {
+   "rule": "14.4",
+   "subject": "Start bars and columns at zero, keep one scale per axis, and size circles by area",
+   "owner": "editor",
+   "round": 1,
+   "entry_file": "work/build/guide/entries/14-004.json"
+  },
+  {
+   "rule": "14.5",
+   "subject": "Give each color a job: sequential, diverging pair B, the four-ink groups, or magnitude",
+   "owner": "editor",
+   "round": 1,
+   "entry_file": "work/build/guide/entries/14-005.json"
+  },
+  {
+   "rule": "14.6",
+   "subject": "Spend the view's one red on the point the title names",
+   "owner": "editor",
+   "round": 1,
+   "entry_file": "work/build/guide/entries/14-006.json"
+  },
+  {
+   "rule": "14.7",
+   "subject": "Draw parties in neutral inks with each party named on its mark, never in red and blue",
+   "owner": "editor",
+   "round": 1,
+   "entry_file": "work/build/guide/entries/14-007.json"
+  },
+  {
+   "rule": "14.8",
+   "subject": "Past four groups, split into small multiples or set one group in ink against gray",
+   "owner": "editor",
+   "round": 1,
+   "entry_file": "work/build/guide/entries/14-008.json"
+  },
+  {
+   "rule": "14.9",
+   "subject": "Show the publisher's uncertainty, and rank only past the margin of error",
+   "owner": "editor",
+   "round": 1,
+   "entry_file": "work/build/guide/entries/14-009.json"
+  },
+  {
+   "rule": "14.10",
+   "subject": "Give charts shown together one window with its reason, and never split a period at an inauguration",
+   "owner": "editor",
+   "round": 1,
+   "entry_file": "work/build/guide/entries/14-010.json"
+  },
+  {
+   "rule": "14.11",
+   "subject": "Mark a gap, a break in a series or a preliminary value in the drawing",
+   "owner": "editor",
+   "round": 1,
+   "entry_file": "work/build/guide/entries/14-011.json"
+  },
+  {
+   "rule": "14.12",
+   "subject": "Redraw for the phone only when the form must change, with the same data and finding",
+   "owner": "editor",
+   "round": 1,
+   "entry_file": "work/build/guide/entries/14-012.json"
+  },
+  {
+   "rule": "14.13",
+   "subject": "Carry every chart's table as live text, and publish a still image first",
+   "owner": "editor",
+   "round": 1,
+   "entry_file": "work/build/guide/entries/14-013.json"
+  },
+  {
+   "rule": "14.14",
+   "subject": "Make every export from the kit, never by hand",
+   "owner": "editor",
+   "round": 1,
+   "entry_file": "work/build/guide/entries/14-014.json"
+  }
+ ],
+ "forms": [
+  {
+   "rule": "14.15",
+   "family_section": "3.1",
+   "family": "Comparison",
+   "form": "Ranked bar",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 1,
+   "maker": "A",
+   "spec_id": "S03",
+   "status": "built",
+   "form_id": "ranked-bar",
+   "reader_question": "Who changed the rules: voters, courts or legislatures?",
+   "entry_file": "work/build/guide/entries/14-015.json"
+  },
+  {
+   "rule": "14.16",
+   "family_section": "3.1",
+   "family": "Comparison",
+   "form": "Column",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 2,
+   "maker": "A",
+   "spec_id": "S17",
+   "status": "new",
+   "form_id": "column",
+   "data_status": "Primary",
+   "reader_question": "How many bills became law in each Congress?",
+   "dataset": "congress-gov-laws-by-congress",
+   "entry_file": "work/build/guide/entries/14-016.json"
+  },
+  {
+   "rule": "14.17",
+   "family_section": "3.1",
+   "family": "Comparison",
+   "form": "Bar with a benchmark tick",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 3,
+   "maker": "A",
+   "spec_id": "S18",
+   "status": "new",
+   "form_id": "bar-benchmark-tick",
+   "data_status": "Primary",
+   "reader_question": "What share of all household income goes to each fifth of households?",
+   "dataset": "census-acs-income-shares-by-quintile",
+   "entry_file": "work/build/guide/entries/14-017.json"
+  },
+  {
+   "rule": "14.18",
+   "family_section": "3.1",
+   "family": "Comparison",
+   "form": "Dot plot",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 4,
+   "maker": "A",
+   "spec_id": "S19",
+   "status": "new",
+   "form_id": "dot-plot",
+   "data_status": "Primary",
+   "reader_question": "How many residents per 100,000 does each state hold in prison?",
+   "dataset": "bjs-imprisonment-rate-by-state",
+   "entry_file": "work/build/guide/entries/14-018.json"
+  },
+  {
+   "rule": "14.19",
+   "family_section": "3.1",
+   "family": "Comparison",
+   "form": "Dumbbell",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 5,
+   "maker": "A",
+   "spec_id": "S04",
+   "status": "built",
+   "form_id": "dumbbell",
+   "reader_question": "Which age groups vote, and did that change between two elections?",
+   "entry_file": "work/build/guide/entries/14-019.json"
+  },
+  {
+   "rule": "14.20",
+   "family_section": "3.1",
+   "family": "Comparison",
+   "form": "Slope chart",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 6,
+   "maker": "A",
+   "spec_id": "S20",
+   "status": "new",
+   "form_id": "slope",
+   "data_status": "Primary",
+   "reader_question": "Did younger households lose ground on owning a home?",
+   "dataset": "census-hvs-homeownership-by-age",
+   "entry_file": "work/build/guide/entries/14-020.json"
+  },
+  {
+   "rule": "14.21",
+   "family_section": "3.1",
+   "family": "Comparison",
+   "form": "Lollipop",
+   "tier": "Extended",
+   "round": 1,
+   "data_plan_row": 7,
+   "maker": "A",
+   "spec_id": "S21",
+   "status": "new",
+   "form_id": "lollipop",
+   "data_status": "V7",
+   "reader_question": "Which everyday answers rest on the most claims?",
+   "dataset": "v7-claims-by-grade",
+   "dataset_note": "v7-claims-by-grade (the engineer's, also S10's)",
+   "entry_file": "work/build/guide/entries/14-021.json"
+  },
+  {
+   "rule": "14.22",
+   "family_section": "3.1",
+   "family": "Comparison",
+   "form": "Grouped bar",
+   "tier": "Extended",
+   "round": 1,
+   "data_plan_row": 8,
+   "maker": "A",
+   "spec_id": "S22",
+   "status": "new",
+   "form_id": "grouped-bar",
+   "data_status": "Primary",
+   "reader_question": "How does taking part in the labor force differ by age for men and women?",
+   "dataset": "census-acs-labor-force-by-age-sex",
+   "entry_file": "work/build/guide/entries/14-022.json"
+  },
+  {
+   "rule": "14.23",
+   "family_section": "3.1",
+   "family": "Comparison",
+   "form": "Small-multiple bars",
+   "tier": "Extended",
+   "round": 1,
+   "data_plan_row": 9,
+   "maker": "A",
+   "spec_id": "S23",
+   "status": "new",
+   "form_id": "small-multiple-bars",
+   "data_status": "V7",
+   "reader_question": "How sure is each of the five topic hubs' evidence?",
+   "dataset": "v7-claims-by-grade",
+   "dataset_note": "v7-claims-by-grade (its hub column)",
+   "entry_file": "work/build/guide/entries/14-023.json"
+  },
+  {
+   "rule": "14.24",
+   "family_section": "3.1",
+   "family": "Comparison",
+   "form": "Radar chart",
+   "tier": "Avoid",
+   "round": 1,
+   "data_plan_row": 10,
+   "maker": "A",
+   "status": "sketch",
+   "sketch_id": "s-14-24-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-024.json"
+  },
+  {
+   "rule": "14.25",
+   "family_section": "3.2",
+   "family": "Shift and swing",
+   "form": "Shift arrows (from, to)",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 11,
+   "maker": "B",
+   "spec_id": "S11",
+   "status": "built",
+   "form_id": "shift-arrows",
+   "reader_question": "Which states moved toward which party between 2020 and 2024, and how far?",
+   "entry_file": "work/build/guide/entries/14-025.json"
+  },
+  {
+   "rule": "14.26",
+   "family_section": "3.2",
+   "family": "Shift and swing",
+   "form": "Change lollipop with a size-of-shift key",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 12,
+   "maker": "B",
+   "spec_id": "S24",
+   "status": "new",
+   "form_id": "change-lollipop",
+   "data_status": "Primary",
+   "reader_question": "Where did applications to start a business rise most since 2019?",
+   "dataset": "census-bfs-business-applications-by-state",
+   "entry_file": "work/build/guide/entries/14-026.json"
+  },
+  {
+   "rule": "14.27",
+   "family_section": "3.2",
+   "family": "Shift and swing",
+   "form": "Diverging bar",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 13,
+   "maker": "B",
+   "spec_id": "S25",
+   "status": "new",
+   "form_id": "diverging-bar",
+   "data_status": "Primary",
+   "reader_question": "Which federal agencies gained or lost civilian employees?",
+   "dataset": "opm-federal-employment-by-agency",
+   "entry_file": "work/build/guide/entries/14-027.json"
+  },
+  {
+   "rule": "14.28",
+   "family_section": "3.2",
+   "family": "Shift and swing",
+   "form": "Diverging bar with arrows over time",
+   "tier": "Extended",
+   "round": 1,
+   "data_plan_row": 14,
+   "maker": "B",
+   "spec_id": "S26",
+   "status": "new",
+   "form_id": "diverging-bar-arrows",
+   "data_status": "Primary",
+   "reader_question": "How large was the House majority's seat advantage in each Congress?",
+   "dataset": "house-history-party-divisions",
+   "entry_file": "work/build/guide/entries/14-028.json"
+  },
+  {
+   "rule": "14.29",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Line with event notes",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 15,
+   "maker": "B",
+   "spec_id": "S02",
+   "status": "built",
+   "form_id": "line-event-notes",
+   "reader_question": "What happened to child poverty when the expanded child tax credit was paid, and after it lapsed?",
+   "entry_file": "work/build/guide/entries/14-029.json"
+  },
+  {
+   "rule": "14.30",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Multi-line with one highlighted",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 16,
+   "maker": "B",
+   "spec_id": "S05",
+   "status": "built",
+   "form_id": "multi-line-highlight",
+   "reader_question": "How far apart are homeownership rates by race, and has the gap closed?",
+   "entry_file": "work/build/guide/entries/14-030.json"
+  },
+  {
+   "rule": "14.31",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Line field with highlight",
+   "tier": "Extended",
+   "round": 1,
+   "data_plan_row": 17,
+   "maker": "B",
+   "spec_id": "S27",
+   "status": "new",
+   "form_id": "line-field",
+   "data_status": "Primary",
+   "reader_question": "How did home prices move in every state, and where did they rise most?",
+   "dataset": "fhfa-house-price-index-by-state",
+   "entry_file": "work/build/guide/entries/14-031.json"
+  },
+  {
+   "rule": "14.32",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Columns with a moving average",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 18,
+   "maker": "B",
+   "spec_id": "S14",
+   "status": "built",
+   "form_id": "columns-moving-average",
+   "reader_question": "How many jobs did the economy add each month?",
+   "entry_file": "work/build/guide/entries/14-032.json"
+  },
+  {
+   "rule": "14.33",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Sparkline",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 19,
+   "maker": "B",
+   "spec_id": "S28",
+   "status": "new",
+   "form_id": "sparkline",
+   "data_status": "Primary",
+   "reader_question": "Has the number of civic and social organizations grown or shrunk?",
+   "dataset": "census-cbp-civic-organizations",
+   "entry_file": "work/build/guide/entries/14-033.json"
+  },
+  {
+   "rule": "14.34",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Small-multiple area sparklines",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 20,
+   "maker": "B",
+   "spec_id": "S13",
+   "status": "built",
+   "form_id": "area-sparklines",
+   "reader_question": "Which sectors added jobs since January 2022, and which lost them?",
+   "entry_file": "work/build/guide/entries/14-034.json"
+  },
+  {
+   "rule": "14.35",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Area chart",
+   "tier": "Extended",
+   "round": 1,
+   "data_plan_row": 21,
+   "maker": "B",
+   "spec_id": "S29",
+   "status": "new",
+   "form_id": "area",
+   "data_status": "Primary",
+   "reader_question": "How many people work for newspaper publishers?",
+   "dataset": "census-cbp-newspaper-publishers",
+   "entry_file": "work/build/guide/entries/14-035.json"
+  },
+  {
+   "rule": "14.36",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Step line",
+   "tier": "Extended",
+   "round": 1,
+   "data_plan_row": 22,
+   "maker": "B",
+   "spec_id": "S30",
+   "status": "new",
+   "form_id": "step-line",
+   "data_status": "Primary",
+   "reader_question": "How has the law changed the child tax credit's top amount per child since 2017?",
+   "dataset": "govinfo-child-tax-credit-by-law",
+   "entry_file": "work/build/guide/entries/14-036.json"
+  },
+  {
+   "rule": "14.37",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Line with a data gap marked",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 23,
+   "maker": "B",
+   "spec_id": "S31",
+   "status": "new",
+   "form_id": "line-data-gap",
+   "data_status": "Primary, FRED copy; download item 1",
+   "reader_question": "What was the unemployment rate each month, and which month is missing?",
+   "dataset": "fred-unemployment-and-job-openings",
+   "entry_file": "work/build/guide/entries/14-037.json"
+  },
+  {
+   "rule": "14.38",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Timeline",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 24,
+   "maker": "B",
+   "spec_id": "S09",
+   "status": "built",
+   "form_id": "timeline",
+   "reader_question": "Which rule changes since 1870 decided who counts, who governs, who owns and who checks?",
+   "entry_file": "work/build/guide/entries/14-038.json"
+  },
+  {
+   "rule": "14.39",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Implementation timeline",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 25,
+   "maker": "B",
+   "spec_id": "S32",
+   "status": "new",
+   "form_id": "implementation-timeline",
+   "data_status": "Primary",
+   "reader_question": "When does each part of the 2026 law on drug middlemen take effect?",
+   "dataset": "govinfo-pl-119-75-effective-dates",
+   "entry_file": "work/build/guide/entries/14-039.json"
+  },
+  {
+   "rule": "14.40",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Indexed line",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 26,
+   "maker": "B",
+   "spec_id": "S33",
+   "status": "new",
+   "form_id": "indexed-line",
+   "data_status": "Primary",
+   "reader_question": "Which sources of federal revenue grew fastest since fiscal 2016?",
+   "dataset": "treasury-mts-receipts-by-source",
+   "entry_file": "work/build/guide/entries/14-040.json"
+  },
+  {
+   "rule": "14.41",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Bubble timeline",
+   "tier": "Extended",
+   "round": 1,
+   "data_plan_row": 27,
+   "maker": "B",
+   "spec_id": "S34",
+   "status": "new",
+   "form_id": "bubble-timeline",
+   "data_status": "Primary",
+   "reader_question": "How often has the Senate voted on ending debate, Congress by Congress?",
+   "dataset": "senate-cloture-motions-by-congress",
+   "entry_file": "work/build/guide/entries/14-041.json"
+  },
+  {
+   "rule": "14.42",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Benefit-cliff line",
+   "tier": "Extended",
+   "round": 1,
+   "data_plan_row": 28,
+   "maker": "B",
+   "spec_id": "S35",
+   "status": "new",
+   "form_id": "benefit-cliff",
+   "data_status": "Illustrative",
+   "reader_question": "What does one family keep as its earnings rise and benefits phase out?",
+   "dataset": "illustrative-benefit-cliff",
+   "entry_file": "work/build/guide/entries/14-042.json"
+  },
+  {
+   "rule": "14.43",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Run chart",
+   "tier": "Reference",
+   "round": 1,
+   "data_plan_row": 29,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-43-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-043.json"
+  },
+  {
+   "rule": "14.44",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Cycle or seasonal chart",
+   "tier": "Reference",
+   "round": 1,
+   "data_plan_row": 30,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-44-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-044.json"
+  },
+  {
+   "rule": "14.45",
+   "family_section": "3.3",
+   "family": "Change over time",
+   "form": "Streamgraph",
+   "tier": "Avoid",
+   "round": 1,
+   "data_plan_row": 31,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-45-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-045.json"
+  },
+  {
+   "rule": "14.46",
+   "family_section": "3.4",
+   "family": "Composition",
+   "form": "100 percent bar",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.47",
+   "family_section": "3.4",
+   "family": "Composition",
+   "form": "Stacked share bar with a midline",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.48",
+   "family_section": "3.4",
+   "family": "Composition",
+   "form": "Waterfall",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.49",
+   "family_section": "3.4",
+   "family": "Composition",
+   "form": "Unit chart or waffle",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.50",
+   "family_section": "3.4",
+   "family": "Composition",
+   "form": "Stacked column",
+   "tier": "Extended",
+   "round": 2
+  },
+  {
+   "rule": "14.51",
+   "family_section": "3.4",
+   "family": "Composition",
+   "form": "Stacked area",
+   "tier": "Extended",
+   "round": 2
+  },
+  {
+   "rule": "14.52",
+   "family_section": "3.4",
+   "family": "Composition",
+   "form": "Treemap",
+   "tier": "Extended",
+   "round": 2
+  },
+  {
+   "rule": "14.53",
+   "family_section": "3.4",
+   "family": "Composition",
+   "form": "Parliament chart",
+   "tier": "Extended",
+   "round": 2
+  },
+  {
+   "rule": "14.54",
+   "family_section": "3.4",
+   "family": "Composition",
+   "form": "Pie",
+   "tier": "Reference",
+   "round": 2
+  },
+  {
+   "rule": "14.55",
+   "family_section": "3.4",
+   "family": "Composition",
+   "form": "Donut with a center number",
+   "tier": "Reference",
+   "round": 2
+  },
+  {
+   "rule": "14.56",
+   "family_section": "3.4",
+   "family": "Composition",
+   "form": "Marimekko",
+   "tier": "Reference",
+   "round": 2
+  },
+  {
+   "rule": "14.57",
+   "family_section": "3.4",
+   "family": "Composition",
+   "form": "3D pie or bar",
+   "tier": "Avoid",
+   "round": 2
+  },
+  {
+   "rule": "14.58",
+   "family_section": "3.5",
+   "family": "Distribution and density",
+   "form": "Histogram",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.59",
+   "family_section": "3.5",
+   "family": "Distribution and density",
+   "form": "Beeswarm or strip plot",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.60",
+   "family_section": "3.5",
+   "family": "Distribution and density",
+   "form": "Box plot",
+   "tier": "Extended",
+   "round": 2
+  },
+  {
+   "rule": "14.61",
+   "family_section": "3.5",
+   "family": "Distribution and density",
+   "form": "Line histogram",
+   "tier": "Extended",
+   "round": 2
+  },
+  {
+   "rule": "14.62",
+   "family_section": "3.5",
+   "family": "Distribution and density",
+   "form": "Population pyramid",
+   "tier": "Extended",
+   "round": 2
+  },
+  {
+   "rule": "14.63",
+   "family_section": "3.5",
+   "family": "Distribution and density",
+   "form": "Violin",
+   "tier": "Reference",
+   "round": 2
+  },
+  {
+   "rule": "14.64",
+   "family_section": "3.5",
+   "family": "Distribution and density",
+   "form": "Ridgeline",
+   "tier": "Reference",
+   "round": 2
+  },
+  {
+   "rule": "14.65",
+   "family_section": "3.5",
+   "family": "Distribution and density",
+   "form": "Hexbin",
+   "tier": "Reference",
+   "round": 2
+  },
+  {
+   "rule": "14.66",
+   "family_section": "3.5",
+   "family": "Distribution and density",
+   "form": "Contour or density",
+   "tier": "Reference",
+   "round": 2
+  },
+  {
+   "rule": "14.67",
+   "family_section": "3.6",
+   "family": "Correlation",
+   "form": "Scatter plot with named points",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.68",
+   "family_section": "3.6",
+   "family": "Correlation",
+   "form": "Bubble chart",
+   "tier": "Extended",
+   "round": 2
+  },
+  {
+   "rule": "14.69",
+   "family_section": "3.6",
+   "family": "Correlation",
+   "form": "Connected scatter",
+   "tier": "Extended",
+   "round": 2
+  },
+  {
+   "rule": "14.70",
+   "family_section": "3.6",
+   "family": "Correlation",
+   "form": "Correlogram",
+   "tier": "Reference",
+   "round": 2
+  },
+  {
+   "rule": "14.71",
+   "family_section": "3.6",
+   "family": "Correlation",
+   "form": "Pair plot",
+   "tier": "Reference",
+   "round": 2
+  },
+  {
+   "rule": "14.72",
+   "family_section": "3.6",
+   "family": "Correlation",
+   "form": "Trajectory or speed chart",
+   "tier": "Reference",
+   "round": 2
+  },
+  {
+   "rule": "14.73",
+   "family_section": "3.6",
+   "family": "Correlation",
+   "form": "Dual-axis line",
+   "tier": "Avoid",
+   "round": 2
+  },
+  {
+   "rule": "14.74",
+   "family_section": "3.7",
+   "family": "Uncertainty and estimates",
+   "form": "Range bar or error bar",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.75",
+   "family_section": "3.7",
+   "family": "Uncertainty and estimates",
+   "form": "Confidence band on a line",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.76",
+   "family_section": "3.7",
+   "family": "Uncertainty and estimates",
+   "form": "Scenario directions",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.77",
+   "family_section": "3.7",
+   "family": "Uncertainty and estimates",
+   "form": "Fan chart",
+   "tier": "Extended",
+   "round": 2
+  },
+  {
+   "rule": "14.78",
+   "family_section": "3.7",
+   "family": "Uncertainty and estimates",
+   "form": "Hypothetical outcomes",
+   "tier": "Reference",
+   "round": 2
+  },
+  {
+   "rule": "14.79",
+   "family_section": "3.8",
+   "family": "Proportion and overlap",
+   "form": "Icon array with Civic Line icons",
+   "tier": "Core",
+   "round": 4
+  },
+  {
+   "rule": "14.80",
+   "family_section": "3.8",
+   "family": "Proportion and overlap",
+   "form": "Proportional symbols",
+   "tier": "Extended",
+   "round": 4
+  },
+  {
+   "rule": "14.81",
+   "family_section": "3.8",
+   "family": "Proportion and overlap",
+   "form": "Venn diagram",
+   "tier": "Extended",
+   "round": 4
+  },
+  {
+   "rule": "14.82",
+   "family_section": "3.8",
+   "family": "Proportion and overlap",
+   "form": "Euler diagram",
+   "tier": "Extended",
+   "round": 4
+  },
+  {
+   "rule": "14.83",
+   "family_section": "3.8",
+   "family": "Proportion and overlap",
+   "form": "Packed circles or bubble cloud",
+   "tier": "Reference",
+   "round": 4
+  },
+  {
+   "rule": "14.84",
+   "family_section": "3.8",
+   "family": "Proportion and overlap",
+   "form": "Rose chart",
+   "tier": "Avoid",
+   "round": 4
+  },
+  {
+   "rule": "14.85",
+   "family_section": "3.9",
+   "family": "Gauges and indicators",
+   "form": "Big number in context",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.86",
+   "family_section": "3.9",
+   "family": "Gauges and indicators",
+   "form": "Indicator row",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.87",
+   "family_section": "3.9",
+   "family": "Gauges and indicators",
+   "form": "Progress bar",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.88",
+   "family_section": "3.9",
+   "family": "Gauges and indicators",
+   "form": "Step tracker",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.89",
+   "family_section": "3.9",
+   "family": "Gauges and indicators",
+   "form": "Status chips",
+   "tier": "Core",
+   "round": 2
+  },
+  {
+   "rule": "14.90",
+   "family_section": "3.9",
+   "family": "Gauges and indicators",
+   "form": "Bullet graph",
+   "tier": "Extended",
+   "round": 2
+  },
+  {
+   "rule": "14.91",
+   "family_section": "3.9",
+   "family": "Gauges and indicators",
+   "form": "Gauge",
+   "tier": "Avoid",
+   "round": 2
+  },
+  {
+   "rule": "14.92",
+   "family_section": "3.9",
+   "family": "Gauges and indicators",
+   "form": "Thermometer",
+   "tier": "Avoid",
+   "round": 2
+  },
+  {
+   "rule": "14.93",
+   "family_section": "3.10",
+   "family": "Behavior",
+   "form": "Funnel",
+   "tier": "Extended",
+   "round": 3
+  },
+  {
+   "rule": "14.94",
+   "family_section": "3.10",
+   "family": "Behavior",
+   "form": "Cohort chart",
+   "tier": "Reference",
+   "round": 3
+  },
+  {
+   "rule": "14.95",
+   "family_section": "3.10",
+   "family": "Behavior",
+   "form": "Survival curve",
+   "tier": "Reference",
+   "round": 3
+  },
+  {
+   "rule": "14.96",
+   "family_section": "3.11",
+   "family": "Structure",
+   "form": "Process diagram",
+   "tier": "Core",
+   "round": 3
+  },
+  {
+   "rule": "14.97",
+   "family_section": "3.11",
+   "family": "Structure",
+   "form": "Decision tree",
+   "tier": "Core",
+   "round": 3
+  },
+  {
+   "rule": "14.98",
+   "family_section": "3.11",
+   "family": "Structure",
+   "form": "Who-decides diagram",
+   "tier": "Core",
+   "round": 3
+  },
+  {
+   "rule": "14.99",
+   "family_section": "3.11",
+   "family": "Structure",
+   "form": "Org chart",
+   "tier": "Extended",
+   "round": 3
+  },
+  {
+   "rule": "14.100",
+   "family_section": "3.11",
+   "family": "Structure",
+   "form": "Hierarchy tree",
+   "tier": "Extended",
+   "round": 3
+  },
+  {
+   "rule": "14.101",
+   "family_section": "3.11",
+   "family": "Structure",
+   "form": "Comparison grid",
+   "tier": "Extended",
+   "round": 3
+  },
+  {
+   "rule": "14.102",
+   "family_section": "3.11",
+   "family": "Structure",
+   "form": "Roll-call grid",
+   "tier": "Extended",
+   "round": 3
+  },
+  {
+   "rule": "14.103",
+   "family_section": "3.11",
+   "family": "Structure",
+   "form": "Mind map",
+   "tier": "Reference",
+   "round": 3
+  },
+  {
+   "rule": "14.104",
+   "family_section": "3.12",
+   "family": "Relationships",
+   "form": "Network diagram",
+   "tier": "Extended",
+   "round": 3
+  },
+  {
+   "rule": "14.105",
+   "family_section": "3.12",
+   "family": "Relationships",
+   "form": "Adjacency matrix",
+   "tier": "Extended",
+   "round": 3
+  },
+  {
+   "rule": "14.106",
+   "family_section": "3.12",
+   "family": "Relationships",
+   "form": "Arc diagram",
+   "tier": "Extended",
+   "round": 3
+  },
+  {
+   "rule": "14.107",
+   "family_section": "3.12",
+   "family": "Relationships",
+   "form": "Chord diagram",
+   "tier": "Reference",
+   "round": 3
+  },
+  {
+   "rule": "14.108",
+   "family_section": "3.12",
+   "family": "Relationships",
+   "form": "Multi-network",
+   "tier": "Reference",
+   "round": 3
+  },
+  {
+   "rule": "14.109",
+   "family_section": "3.12",
+   "family": "Relationships",
+   "form": "Symmetrical links",
+   "tier": "Reference",
+   "round": 3
+  },
+  {
+   "rule": "14.110",
+   "family_section": "3.13",
+   "family": "Flow",
+   "form": "Sankey",
+   "tier": "Extended",
+   "round": 3
+  },
+  {
+   "rule": "14.111",
+   "family_section": "3.13",
+   "family": "Flow",
+   "form": "Alluvial",
+   "tier": "Reference",
+   "round": 3
+  },
+  {
+   "rule": "14.112",
+   "family_section": "3.13",
+   "family": "Flow",
+   "form": "Journey map",
+   "tier": "Core",
+   "round": 3
+  },
+  {
+   "rule": "14.113",
+   "family_section": "3.13",
+   "family": "Flow",
+   "form": "Flow map",
+   "tier": "Reference",
+   "round": 3
+  },
+  {
+   "rule": "14.114",
+   "family_section": "3.14",
+   "family": "Maps",
+   "form": "Tile-grid map, categorical",
+   "tier": "Core",
+   "round": 3
+  },
+  {
+   "rule": "14.115",
+   "family_section": "3.14",
+   "family": "Maps",
+   "form": "Tile-grid map with shift arrows",
+   "tier": "Core",
+   "round": 3
+  },
+  {
+   "rule": "14.116",
+   "family_section": "3.14",
+   "family": "Maps",
+   "form": "Bubble map",
+   "tier": "Core",
+   "round": 3
+  },
+  {
+   "rule": "14.117",
+   "family_section": "3.14",
+   "family": "Maps",
+   "form": "Choropleth, sequential",
+   "tier": "Core",
+   "round": 3
+  },
+  {
+   "rule": "14.118",
+   "family_section": "3.14",
+   "family": "Maps",
+   "form": "Locator map",
+   "tier": "Core",
+   "round": 3
+  },
+  {
+   "rule": "14.119",
+   "family_section": "3.14",
+   "family": "Maps",
+   "form": "District map",
+   "tier": "Extended",
+   "round": 3
+  },
+  {
+   "rule": "14.120",
+   "family_section": "3.14",
+   "family": "Maps",
+   "form": "County choropleth",
+   "tier": "Extended",
+   "round": 3
+  },
+  {
+   "rule": "14.121",
+   "family_section": "3.14",
+   "family": "Maps",
+   "form": "District tile map",
+   "tier": "Extended",
+   "round": 3
+  },
+  {
+   "rule": "14.122",
+   "family_section": "3.14",
+   "family": "Maps",
+   "form": "Dot density map",
+   "tier": "Extended",
+   "round": 3
+  },
+  {
+   "rule": "14.123",
+   "family_section": "3.14",
+   "family": "Maps",
+   "form": "Small-multiple maps",
+   "tier": "Extended",
+   "round": 3
+  },
+  {
+   "rule": "14.124",
+   "family_section": "3.14",
+   "family": "Maps",
+   "form": "Party-colored map or red and blue scale",
+   "tier": "Avoid",
+   "round": 3
+  },
+  {
+   "rule": "14.125",
+   "family_section": "3.15",
+   "family": "Tables and plain words",
+   "form": "Results table with margin cells",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 32,
+   "maker": "A",
+   "spec_id": "S15",
+   "status": "built",
+   "form_id": "results-table",
+   "reader_question": "How did each state vote in 2024, and how did that compare with 2020?",
+   "entry_file": "work/build/guide/entries/14-125.json"
+  },
+  {
+   "rule": "14.126",
+   "family_section": "3.15",
+   "family": "Tables and plain words",
+   "form": "Ranked register",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 33,
+   "maker": "A",
+   "spec_id": "S36",
+   "status": "new",
+   "form_id": "ranked-register",
+   "data_status": "Primary",
+   "reader_question": "Which groups spent the most on their own in the 2024 federal elections?",
+   "dataset": "fec-independent-expenditures-2024",
+   "entry_file": "work/build/guide/entries/14-126.json"
+  },
+  {
+   "rule": "14.127",
+   "family_section": "3.15",
+   "family": "Tables and plain words",
+   "form": "Comparison matrix",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 34,
+   "maker": "A",
+   "spec_id": "S06",
+   "status": "built",
+   "form_id": "comparison-matrix",
+   "reader_question": "If a reform path were followed, which way would each outcome move?",
+   "entry_file": "work/build/guide/entries/14-127.json"
+  },
+  {
+   "rule": "14.128",
+   "family_section": "3.15",
+   "family": "Tables and plain words",
+   "form": "Sparkline table",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 35,
+   "maker": "A",
+   "spec_id": "S13",
+   "status": "built",
+   "form_id": "sparkline-table",
+   "reader_question": "Which sectors added jobs since January 2022?",
+   "spec_owner": "B",
+   "note": "S13 draws both 14.34 and 14.128; maker B owns the spec, maker A writes 14.128's entry",
+   "entry_file": "work/build/guide/entries/14-128.json"
+  },
+  {
+   "rule": "14.129",
+   "family_section": "3.15",
+   "family": "Tables and plain words",
+   "form": "Heat table",
+   "tier": "Extended",
+   "round": 1,
+   "data_plan_row": 36,
+   "maker": "A",
+   "spec_id": "S37",
+   "status": "new",
+   "form_id": "heat-table",
+   "data_status": "V7",
+   "reader_question": "Which routes could carry each reform, and how feasible is each?",
+   "dataset": "v7-reform-routes",
+   "entry_file": "work/build/guide/entries/14-129.json"
+  },
+  {
+   "rule": "14.130",
+   "family_section": "3.15",
+   "family": "Tables and plain words",
+   "form": "Filterable lookup table",
+   "tier": "Extended, interactive",
+   "round": 1,
+   "data_plan_row": 37,
+   "maker": "A",
+   "spec_id": "S38",
+   "status": "new",
+   "form_id": "filterable-lookup-table",
+   "data_status": "V7",
+   "reader_question": "Which issue records cover my question?",
+   "dataset": "v7-issues",
+   "entry_file": "work/build/guide/entries/14-130.json"
+  },
+  {
+   "rule": "14.131",
+   "family_section": "3.15",
+   "family": "Tables and plain words",
+   "form": "Evidence table",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 38,
+   "maker": "A",
+   "spec_id": "S39",
+   "status": "new",
+   "form_id": "evidence-table",
+   "data_status": "V7",
+   "reader_question": "What does the evidence say about drug middlemen and prices?",
+   "dataset": "v7-claims-drug-prices",
+   "entry_file": "work/build/guide/entries/14-131.json"
+  },
+  {
+   "rule": "14.132",
+   "family_section": "3.15",
+   "family": "Tables and plain words",
+   "form": "Tracker list",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 39,
+   "maker": "A",
+   "spec_id": "S40",
+   "status": "new",
+   "form_id": "tracker-list",
+   "data_status": "Primary",
+   "reader_question": "Where do this Congress's housing bills stand?",
+   "dataset": "congress-gov-housing-bills-119",
+   "entry_file": "work/build/guide/entries/14-132.json"
+  },
+  {
+   "rule": "14.133",
+   "family_section": "3.15",
+   "family": "Tables and plain words",
+   "form": "Plain table",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 40,
+   "maker": "A",
+   "spec_id": "S41",
+   "status": "new",
+   "form_id": "plain-table",
+   "data_status": "V7 and Primary",
+   "reader_question": "Do Republicans and Democrats agree on a ban on stock trading by members of Congress?",
+   "dataset": "v7-stock-trading-ban",
+   "dataset_note": "V7 headline figure 7 (engineer's v7-stock-trading-ban), the survey rows alone (fix pass, D3-89)",
+   "entry_file": "work/build/guide/entries/14-133.json"
+  },
+  {
+   "rule": "14.134",
+   "family_section": "3.15",
+   "family": "Tables and plain words",
+   "form": "One sentence",
+   "tier": "Core",
+   "round": 1,
+   "data_plan_row": 41,
+   "maker": "A",
+   "spec_id": "S42",
+   "status": "new",
+   "form_id": "one-sentence",
+   "data_status": "V7",
+   "reader_question": "Same question, answered in one sourced sentence",
+   "dataset": "v7-stock-trading-ban",
+   "dataset_note": "V7 headline figure 7",
+   "entry_file": "work/build/guide/entries/14-134.json"
+  },
+  {
+   "rule": "14.135",
+   "family_section": "3.16",
+   "family": "Infographics",
+   "form": "Process explainer",
+   "tier": "Core",
+   "round": 4
+  },
+  {
+   "rule": "14.136",
+   "family_section": "3.16",
+   "family": "Infographics",
+   "form": "By-the-numbers panel",
+   "tier": "Core",
+   "round": 4
+  },
+  {
+   "rule": "14.137",
+   "family_section": "3.16",
+   "family": "Infographics",
+   "form": "Comparison cards",
+   "tier": "Core",
+   "round": 4
+  },
+  {
+   "rule": "14.138",
+   "family_section": "3.16",
+   "family": "Infographics",
+   "form": "Step-by-step",
+   "tier": "Core",
+   "round": 4
+  },
+  {
+   "rule": "14.139",
+   "family_section": "3.16",
+   "family": "Infographics",
+   "form": "Annotated illustration",
+   "tier": "Extended",
+   "round": 4
+  },
+  {
+   "rule": "14.140",
+   "family_section": "3.16",
+   "family": "Infographics",
+   "form": "Calendar",
+   "tier": "Extended",
+   "round": 4
+  },
+  {
+   "rule": "14.141",
+   "family_section": "3.16",
+   "family": "Infographics",
+   "form": "Social data card",
+   "tier": "Core",
+   "round": 4
+  }
+ ],
+ "entries_note": "Each round 1 form has an entry file owned by its maker; chapter-wide rules have entry files 14-001 to 14-014 owned by the editor."
+}

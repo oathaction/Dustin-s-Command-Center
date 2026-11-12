@@ -2,8 +2,10 @@
 
 The writing section (W01 to W21, H01 to H12, the checklist) is read from the approved content file,
 work/boards/phase-2/voice/20261106_Voice-Rules-Content.json (Board 5, DR-73 to DR-83), and carried whole. Its words
-are not edited here, with one exception: H10's qualification line takes the erratum Dustin approved (D2-256). Each W
-rule becomes Rule 02.n with its W number kept in the title, so Rule 02.5 is W05.
+are not edited here, with the exceptions content() applies and checks: H10's qualification line takes the erratum
+Dustin approved (D2-256), W14's source names the chapter by number (D2-326), and H06's example and H08's after line add
+"Only the October 2025 and February 2026 drops pass the survey’s margin of error." (DR-239). Each W rule becomes
+Rule 02.n with its W number kept in the title, so Rule 02.5 is W05.
 
 Fix pass round one, November 6, 2026: the five teaching groups and two more become the chapter's `groups` (C-S11),
 so the shell prints the group blocks and the rule index; the old index and group-opener specimens are gone.
@@ -23,6 +25,14 @@ H10_NEW = "Each margin is the leading party’s lead, in percentage points of al
 # chapter by its number alone. The before, its rewrite and every other approved word are unchanged.
 W14_SRC_OLD = "Our brand guide, fifth edition, chapter 07 the Signal Grid, figure caption"
 W14_SRC_NEW = "Our brand guide, fifth edition, chapter 07, figure caption"
+# DR-239 (board 1, November 12, 2026): the approved count stays, and the sentence that says which drops the survey can
+# show joins it in H08's after line, marked as part of the repair, and in H06's example. H06's example becomes two whole
+# sentences, so its first word takes a capital. The rules, both source lines and every other approved word are unchanged.
+PAYROLL_COUNT = "payrolls shrank in seven of the 57 months charted"
+PAYROLL_MOE = "Only the October 2025 and February 2026 drops pass the survey’s margin of error."
+H08_AFTER_OLD = "and payrolls shrank in seven [+of the 57+] months [+charted+]."
+H08_AFTER_NEW = H08_AFTER_OLD + f" [+{PAYROLL_MOE}+]"
+H06_EXAMPLE_NEW = f"{PAYROLL_COUNT[0].upper()}{PAYROLL_COUNT[1:]}. {PAYROLL_MOE}"
 
 # The fifth edition's supporting lines, retired with no role: DR-77's four, whole, and DR-122's two, which our copy of
 # that edition keeps only as their first 50 characters, quoted to the end of their last whole sentence.
@@ -32,8 +42,9 @@ RETIRED_OPENINGS = ["Here is what the record shows. …", "The rules connect. Th
 
 
 def content():
-    """The approved writing section (Board 5, DR-73 to DR-83) with its two approved corrections: H10's erratum (D2-256)
-    and W14's source after D2-326. The build and its checks both read it from here."""
+    """The approved writing section (Board 5, DR-73 to DR-83) with its approved corrections: H10's erratum (D2-256),
+    W14's source after D2-326, and the payroll sentence in H06's example and H08's after line (DR-239). The build and
+    its checks both read it from here."""
     C = load(VOICE_CONTENT)
     for g in C["groups"]:
         for r in g["rules"]:
@@ -46,6 +57,14 @@ def content():
             if H10_OLD not in h["example_source"]:
                 raise SystemExit("H10's source line no longer holds the text the erratum replaces")
             h["example_source"] = h["example_source"].replace(H10_OLD, H10_NEW)
+        if h["id"] == "H06":
+            if h["example"] != PAYROLL_COUNT:
+                raise SystemExit("H06's example no longer holds the approved count DR-239 adds to")
+            h["example"] = H06_EXAMPLE_NEW
+        if h["id"] == "H08":
+            if not h["example"].endswith(H08_AFTER_OLD):
+                raise SystemExit("H08's after line no longer ends with the approved count DR-239 adds to")
+            h["example"] = h["example"][: -len(H08_AFTER_OLD)] + H08_AFTER_NEW
     return C
 
 WHY = {
@@ -394,7 +413,10 @@ def build(book):
         "correct": {"specimen": A("s-02-22-correct", house_tbl, css=(BASE, PAIR, HCSS), rule="02.22", readable=True,
                                   alt="The 12 house rules in a table, each with what it asks and an example: H01 to H12, with H08's before and after, then H08's evidence grades in a table of their own, each grade with what it means and the title verb it takes.",
                                   notes="Every rule, example and source line verbatim from the approved content file, except H10's qualification line, "
-                                        "which takes the erratum approved as D2-256. C-M5: H08's grades run full width in their own table under H08's row."),
+                                        "which takes the erratum approved as D2-256, and H06's example and H08's after line, which add the sentence "
+                                        "approved as DR-239: only the October 2025 and February 2026 drops pass the survey's margin of error. In H08 it "
+                                        "carries the repair's solid underline; H06's example becomes two whole sentences, so its first word takes a capital. "
+                                        "C-M5: H08's grades run full width in their own table under H08's row."),
                     "caption": "The house rules as approved with the writing rules. H05 to H07 also belong to the marks and numbers group, and H10’s source line carries its corrected qualification."},
         "failure": {"specimen": A("s-02-22-failure", proof, css=(BASE, PAIR, FCSS), rule="02.22", illustrative=True, exempt=["red", "contrast"],
                                   alt="Failure case: do not publish. An illustrative draft paragraph that breaks eight house rules, each fault underlined and tagged with the rule it breaks: a bare ID R10, a hyphen used as a minus sign, a numeric date, a statistic with no source, a party name set in red, the figure 3 in prose, one side's terms for two contested policies, and an invented person and quote with no Illustrative label."),

@@ -147,7 +147,7 @@
   "width_px": null,
   "alt": "A documentary photograph of the U.S. Capitol Rotunda, its pilasters, framed paintings and statues above a line of people filing past a casket inside velvet ropes, with Capitol Police officers among them. Caption: Members of the public file past the casket of Rosa Parks, the civil rights pioneer, as she lies in honor in the Rotunda of the U.S. Capitol, Washington, D.C., October 2005. Photograph: Architect of the Capitol.",
   "illustrative": false,
-  "notes": "DR-101, round two: the research lead's recommended photograph (pho-01 in the rights ledger), a public-domain work of the Architect of the Capitol, from Wikimedia's 1,920 px rendition. Cropped by CSS to 5:3 from the top, so the agency's mark at lower right falls outside the frame. No public-domain photograph of the H.R. 7008 vote day was found, so the caption names this event."
+  "notes": "DR-101, round two: the research lead's recommended photograph (pho-01 in the rights ledger), a public-domain work of the Architect of the Capitol, from Wikimedia's 1,920 px rendition. Cropped by CSS to 5:3 from the top, so the agency's mark at lower right falls outside the frame. No public-domain photograph of the H.R. 7008 vote day was found, so the caption names this event. DR-238: the plate shows the research lead's 1,200 px wide rendition of that file; the 1,920 px file stays the source."
  },
  "s-01-6-failure": {
   "chapter": "01",
@@ -179,7 +179,7 @@
   "width_px": null,
   "alt": "A documentary photograph of a public meeting: a federal official facing the camera points to a large map of Lake Isabella while two residents, seen from behind, listen; a board at left reads Steps in the real estate process. Caption: Paul Zianno, chief of civil works acquisition and management for the U.S. Army Corps of Engineers Sacramento District, explains the Isabella Lake Dam safety project’s land purchases to residents at a public meeting in Lake Isabella, California, March 27, 2014. Photograph: John Prettyman, U.S. Army.",
   "illustrative": false,
-  "notes": "DR-101, round two: the research lead's recommended photograph (pho-04), a public-domain work of the U.S. Army Corps of Engineers, from Wikimedia's 1,920 px rendition, cropped by CSS to 3:2. Chosen over the Menniti frame from the same meeting because the named official faces the camera, so the caption's who is the person a reader sees, and the residents, who are not named, face away."
+  "notes": "DR-101, round two: the research lead's recommended photograph (pho-04), a public-domain work of the U.S. Army Corps of Engineers, from Wikimedia's 1,920 px rendition, cropped by CSS to 3:2. Chosen over the Menniti frame from the same meeting because the named official faces the camera, so the caption's who is the person a reader sees, and the residents, who are not named, face away. DR-238: the plate shows the research lead's 1,200 px wide rendition of that file; the 1,920 px file stays the source."
  },
  "s-01-8-failure": {
   "chapter": "01",
@@ -848,7 +848,7 @@
   "width_px": null,
   "alt": "The 12 house rules in a table, each with what it asks and an example: H01 to H12, with H08's before and after, then H08's evidence grades in a table of their own, each grade with what it means and the title verb it takes.",
   "illustrative": false,
-  "notes": "Every rule, example and source line verbatim from the approved content file, except H10's qualification line, which takes the erratum approved as D2-256. C-M5: H08's grades run full width in their own table under H08's row.",
+  "notes": "Every rule, example and source line verbatim from the approved content file, except H10's qualification line, which takes the erratum approved as D2-256, and H06's example and H08's after line, which add the sentence approved as DR-239: only the October 2025 and February 2026 drops pass the survey's margin of error. In H08 it carries the repair's solid underline; H06's example becomes two whole sentences, so its first word takes a capital. C-M5: H08's grades run full width in their own table under H08's row.",
   "readable": true
  },
  "s-02-22-failure": {

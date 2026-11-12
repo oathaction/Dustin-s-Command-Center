@@ -218,3 +218,71 @@ Modified:
 - `work/research/20261021_Research-Ledger.md`: Part 7, Phase 3 data, inserted before "Claims I could not verify", and a line in its change log
 
 Scratch only, outside the repository: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-5402-b22c-b6bfd31a97ee/scratchpad/phase-3/round-0/research/` (downloads, freeze scripts, logs, a Python virtual environment for reading OPM's parquet files).
+
+## Board 1 apply
+
+Research lead, November 12, 2026, under `work/handoffs/phase-3/20261112_Board-1-Apply-Brief.md` (DR-238). Read first: `CLAUDE.md`, my role file, the master brief's sections 2, 5, 13 to 16 and 18, V17 section 2A, the decision log's DR-236 to DR-239, D3-87, D3-104, D3-187, D3-190 and D3-193, the engineer's "Board 1 weight options" and `weight_options.py`, and chapter 02's writing rules.
+
+### What changed
+
+**The two renditions**, beside their originals in `work/build/assets/photography/`, each with a record of the same name ending `.json`:
+
+| Rendition | Made from | Pixels | Bytes | SHA-256 |
+|---|---|---|---|---|
+| `20261112_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005-1200-Wide.jpg` | `20261106_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005.jpg` (1,920 x 1,275, 553,102 bytes) | 1,200 x 797 | 223,719 | 6198b4008a76acb77233295ee57460a77d01d7850a38c24f05e60b1174f869e4 |
+| `20261112_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Zianno-1200-Wide.jpg` | `20261106_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Zianno.jpg` (1,920 x 1,229, 375,987 bytes) | 1,200 x 768 | 143,243 | 4af2f1e6f0af84f2ac22af5126934156db0a2ddc8cdbe779a4ae599802ffa2b1 |
+
+**Method.** The engineer's own call in `weight_options.py` (`photo_saving`), with Pillow 12.3.0: resize to 1,200 px wide with the height rounded in proportion, Lanczos resampling, then save as JPEG at quality 85, optimized and progressive, with the original's ICC color profile. Pillow's default chroma subsampling at that quality is 4:2:0, the same as both originals. Both files equal board 1's figures to the byte (223,719 and 143,243), so the pictures Dustin approved on board 1 are the files the guide now shows. With the meeting photograph placed twice, the three placements carry 1,059,828 fewer bytes once base64 in the page, the engineer's figure.
+
+**Metadata.** I read every segment of both originals before the first scan. The meeting photograph carries a 524-byte ICC profile (a compact sRGB profile named "c2"), copied byte for byte. The Rosa Parks original carries no color profile, so its rendition carries none either and both read as sRGB. Neither original holds EXIF, XMP, IPTC or a comment, since Wikimedia's standard-width copies strip them, so no rights metadata existed to keep. Pillow adds its standard JFIF header. The rights travel in each record.
+
+**The records.** Each copies its original's record field for field (rule, Commons page and title, source and original URLs, the Commons original's pixels and SHA-1, download note, agency, author, date, place, license, license line, caption, notes) and adds `rendition_of` (the original's file, record, pixels, bytes and SHA-256), `role` (the original stays the source; the rendition is what the guide shows; new sizes, crops and print files come from the original or the Commons original), `decision` (DR-238 in Dustin's words), `method`, `pixels`, `bytes`, `sha256` and `checks`.
+
+**Rights ledger** (`work/research/20261020_Rights-Ledger.md`, "Added November 6, 2026: photographs for Rules 01.6 and 01.8"): a dated DR-238 paragraph above the table; rows pho-01r and pho-04r directly under pho-01 and pho-04, each saying the guide shows the rendition and the original stays the source; and "Kept as the source of pho-01r (DR-238)" and the same for pho-04r added to the two originals' notes.
+
+**Research ledger:** unchanged. No row in `work/research/20261021_Research-Ledger.md` records these files. I searched it for the file names, "Commons", "Wikimedia", the photographers, the agencies, the photography folder and rules 01.6 and 01.8, and found none. The photographs are recorded in the rights ledger and their sidecars. The stage A research handoff (`work/handoffs/phase-2/20261106_Stage-A-Fix-Pass-Research.md`) lists them as a closed record, which I left alone.
+
+**Originals:** untouched. All twelve files in the folder keep the SHA-256, size and timestamp I took before starting, and `git diff` shows no change to any `20261106_` file.
+
+### Routine calls
+
+- D3-xxx | Chapter 01's renditions use the engineer's board 1 call exactly (Pillow, Lanczos, quality 85, optimized, progressive, the original's color profile) with Pillow's default 4:2:0 subsampling | Both files then equal board 1's figures to the byte, so the pictures Dustin approved are the files the guide shows
+- D3-xxx | The renditions carry no added metadata, and the rights travel in each record | Neither original holds EXIF, XMP, IPTC or a comment to keep, and the Rosa Parks original holds no color profile, so both of its files read as sRGB
+- D3-xxx | The rights ledger names the renditions pho-01r and pho-04r and sets each directly under its original | The brief places them beside pho-01 and pho-04, and the r ties each to its source
+- D3-xxx | The research ledger stays as it is for DR-238 | No row there records these photographs; the rights ledger and the sidecars do
+- D3-xxx | Each rendition's record copies its original's rights and description fields unchanged and adds the original's file and hash, the method, the bytes, the hash and the checks | A reader of either record finds the terms, the credit and the way back to the source without opening the other
+
+### Requests
+
+- **To the main session:** the two file names are in the table above. For print in Phase 4 or 5, make print files from the originals, or from the Commons originals (each record's `original_url` and `original_sha1`), never from these renditions; the records and the ledger say so.
+- **To the editor (optional):** your working copy of `guide_editor_ch01.py` already points `PHOTO_PARKS` and `PHOTO_ZIANNO` at the renditions and sets the size hint to 1,200 by 720 (read in the working tree; I built nothing). The two plates' notes still cite rights rows pho-01 and pho-04; pho-01r and pho-04r are now the rows for the files the plates show.
+
+### Tested
+
+- `check_renditions.py` (scratch), 34 of 34 pass. For each rendition: width 1,200 px; height in proportion (797 for an exact 796.875, 768 for 768.125), aspect within 0.03 percent of the original's; bytes equal to the record and to the engineer's figure (difference 0); SHA-256 equal to the record's; the record names its original and the original's SHA-256; progressive (an SOF2 marker); quantization tables equal to Pillow's quality 85 tables; 4:2:0 subsampling as the original; the color profile copied byte for byte (meeting) or absent as in the original (Rosa Parks); no EXIF, XMP, IPTC or comment in either original; PSNR (peak signal-to-noise ratio, a pixel difference measure) with both at the 600 px display width of 41.0 dB (Rosa Parks) and 43.0 dB (meeting); mean color shift at 600 px of 0.049 and 0.042 of 255.
+- Measured, with no pass bar: PSNR at 1,200 px against the original resampled to the same size, 36.0 dB (Rosa Parks) and 38.9 dB (meeting), the JPEG loss alone. I set a 38 dB bar before the first run, and Rosa Parks missed it. That is the loss of the brief's fixed quality 85 on a busy picture, so I report the figure and let the 2x look decide.
+- A side-by-side page at the guide's 600 px display width, each pair whole and in chapter 01's crops (5:3 from the top for Rosa Parks, 3:2 centered for the meeting), captured in Chromium through Playwright at device scales 1 and 2, with matching 2x regions cut out at full size and a 1,200 px detail crop of each pair. I looked at every one and saw no difference.
+- The Rosa Parks crop: chapter 01's 5:3 frame shows rows 0 to 720 of 797, and the Architect of the Capitol mark sits below row 720, so it stays out of the plate, as on the original.
+- The originals: SHA-256 equal to their records and to the hashes taken before work; all twelve files' sizes and timestamps unchanged; no `git diff` on any original.
+- Both records parse as JSON. No em dash in any file or line I wrote.
+- The page saving by arithmetic from the base64 lengths: 1,059,828 bytes, the engineer's figure.
+
+Scratch files, all in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/f15cd04b-21be-5dde-a467-804e951756a2/scratchpad/phase-3/board-1-apply/research/`: `make_renditions.py`, `check_renditions.py`, `add_checks.py`, `markers.py`, `capture.js`, `checks.json`, `originals-before.sha256`, `side-by-side.html`, the captures `capture-016-whole-1x.png`, `capture-016-whole-2x.png`, `capture-016-plate-1x.png`, `capture-016-plate-2x.png` and the same four for `018`, the 2x cut-outs `zoom-016-plate-2x.png` and `zoom-018-plate-2x.png`, the 1,200 px detail crops `detail-01-6-*.png` and `detail-01-8-*.png`, and `aoc-mark-check.png`.
+
+### Not tested
+
+- The guide build with the renditions: the editor runs chapter 01's chain and the engineer the strict build and `weight_options.py`. I ran neither.
+- The plates on the built guide page. My captures set chapter 01's crop rules on a page of my own.
+- Browsers other than Chromium, and print.
+- The Commons file pages, not re-read today; the terms rest on the November 6 reading recorded in the sidecars.
+- Renditions from Wikimedia's own originals (2,500 and 2,048 px wide); the brief names the 1,920 px files as the source.
+
+### Change log
+
+Created, in `work/build/assets/photography/`:
+- `20261112_Photo-Rule-01-6-Rosa-Parks-Lying-In-Honor-Capitol-Rotunda-2005-1200-Wide.jpg` and `.json`
+- `20261112_Photo-Rule-01-8-Corps-Of-Engineers-Public-Meeting-Lake-Isabella-2014-Zianno-1200-Wide.jpg` and `.json`
+
+Modified:
+- `work/research/20261020_Rights-Ledger.md`: the DR-238 paragraph, rows pho-01r and pho-04r, and a closing sentence in the notes of pho-01 and pho-04
+- `work/handoffs/phase-3/20261111_Round-0-Research-Notes.md`: this section

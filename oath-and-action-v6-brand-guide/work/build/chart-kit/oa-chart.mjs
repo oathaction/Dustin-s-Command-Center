@@ -11,6 +11,7 @@
 // It never reads source/ or writes into the repository unless --out names a folder there.
 import fs from 'fs';
 import path from 'path';
+import zlib from 'zlib';
 import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 import { minify } from './tools/minify.mjs';
@@ -175,7 +176,18 @@ export function island_table(spec, rows, columns, extra) {
   if (missing.length) payload.csv = C.to_csv(rows, missing);
   const carry = K.lean_carry(spec, rows, columns);
   if (Object.keys(carry).length) payload.carry = carry;
-  return '<script type="application/json" data-oa-chart-data>' + JSON.stringify(payload).replace(/</g, '\\u003c') + '</script>';
+  return island_element(payload);
+}
+
+// The island carried compressed (DR-238): its JSON deflated (raw, level 9) and written as base64 in a data block the
+// browser never runs, <script type="text/plain" data-oa-chart-data="deflate">. The kit inflates it at load (K.island);
+// only the script reads it, so a reader with scripts off loses nothing. Each island is inflated again here by the kit's
+// own inflater and must give back its JSON, or the build stops.
+export function island_element(payload) {
+  const json = JSON.stringify(payload);
+  const z = zlib.deflateRawSync(Buffer.from(json, 'utf8'), { level: 9, memLevel: 9 }).toString('base64');
+  if (K.island_text(z, 'deflate') !== json) throw new Error('the kit could not inflate a data island back to its JSON');
+  return '<script type="text/plain" data-oa-chart-data="deflate">' + z + '</script>';
 }
 
 export function island(spec, rows, columns, trim) {
@@ -187,7 +199,7 @@ export function island(spec, rows, columns, trim) {
   const lean = Object.assign({}, spec);
   delete lean.notes_internal;
   const payload = { spec: trim ? lean : spec, columns: trim ? ctypes : columns, csv: C.to_csv(rows, cols) };
-  return '<script type="application/json" data-oa-chart-data>' + JSON.stringify(payload).replace(/</g, '\\u003c') + '</script>';
+  return island_element(payload);
 }
 
 // The kit as a page carries it: minified by tools/minify.mjs (every comment and needless space dropped, nothing renamed),
@@ -262,7 +274,7 @@ async function captures(items, o) {
               const svg = f.querySelector('svg.oac-svg');
               const tb = f.querySelector('table.oac-table');
               const out = { err, rows: tb && tb.hasAttribute('data-oa-lean') ? (tb.querySelector('tbody th[scope=row]') && tb.querySelectorAll('thead th').length > 1 && tb.querySelectorAll('tbody td[data-x]').length + tb.querySelectorAll('tbody td').length !== tb.querySelectorAll('tbody tr').length * (tb.querySelectorAll('thead th').length - 1) ? 0 : 0) : f.querySelectorAll('[data-oa-row]').length };
-              if (tb && tb.hasAttribute('data-oa-lean')) out.rows = window.OAChart.rows_from_table(tb, JSON.parse(f.querySelector('script[data-oa-chart-data]').textContent).spec, JSON.parse(f.querySelector('script[data-oa-chart-data]').textContent)).length;
+              if (tb && tb.hasAttribute('data-oa-lean')) out.rows = (isl => window.OAChart.rows_from_table(tb, isl.spec, isl))(window.OAChart.island(f.querySelector('script[data-oa-chart-data]'))).length;
               if (!svg) return out;
               const clone = svg.cloneNode(true);
               clone.removeAttribute('aria-describedby');
@@ -488,6 +500,36 @@ async function self_test() {
     const hit = f.some(x => x.indexOf(want) >= 0);
     console.log(`${hit ? 'caught' : 'MISSED'} ${name}${hit ? '' : ': ' + JSON.stringify(f.slice(0, 3))}`);
     if (!hit) bad++;
+  }
+  // the compressed island (DR-238): the kit's inflater gives back what zlib deflates, in every block type and level, and
+  // refuses data that is not deflate
+  {
+    const samples = [Buffer.alloc(0), Buffer.from('a'), Buffer.from(JSON.stringify(base)), Buffer.from('é—“chart”−'.repeat(300)),
+      require('crypto').randomBytes(70000), Buffer.from(Array.from({ length: 90000 }, (_, i) => (i * 7919) % 251))];
+    const opts = [0, 1, 6, 9].map(level => ({ level })).concat([{ level: 9, strategy: zlib.constants.Z_FIXED }, { level: 9, strategy: zlib.constants.Z_HUFFMAN_ONLY },
+      { level: 9, strategy: zlib.constants.Z_RLE }, { level: 9, memLevel: 9 }]);
+    let n = 0, miss = 0;
+    for (const b of samples) for (const op of opts) {
+      n++;
+      const got = Buffer.from(K.inflate(zlib.deflateRawSync(b, op)));
+      if (!got.equals(b)) miss++;
+    }
+    console.log(`${miss ? 'FAIL' : 'pass'} the kit's inflater gives back ${n - miss} of ${n} deflated samples (stored, fixed and dynamic blocks)`);
+    if (miss) bad++;
+    const isl = island_element({ mode: 'table', spec: draw_spec(base) });
+    const z = isl.match(/>([^<]*)</)[1];
+    const back = JSON.parse(K.island_text(z, 'deflate'));
+    const ok = JSON.stringify(back) === JSON.stringify({ mode: 'table', spec: draw_spec(base) }) && /^<script type="text\/plain" data-oa-chart-data="deflate">[A-Za-z0-9+/=]+<\/script>$/.test(isl);
+    console.log(`${ok ? 'pass' : 'FAIL'} a compressed island reads back as its JSON`);
+    if (!ok) bad++;
+    const bytes = zlib.deflateRawSync(Buffer.from(JSON.stringify(base)));
+    const cut = bytes.subarray(0, bytes.length >> 1), flip = Buffer.from(bytes); flip[0] |= 6;
+    for (const [name, data] of [['a cut island', cut], ['an island with a bad block type', flip]]) {
+      let threw = false;
+      try { K.inflate(data); } catch (e) { threw = /^inflate: /.test(e.message); }
+      console.log(`${threw ? 'caught' : 'MISSED'} ${name}`);
+      if (!threw) bad++;
+    }
   }
   // the words inside kit.js equal words.json
   const wj = Object.assign({}, K.words); delete wj.about;

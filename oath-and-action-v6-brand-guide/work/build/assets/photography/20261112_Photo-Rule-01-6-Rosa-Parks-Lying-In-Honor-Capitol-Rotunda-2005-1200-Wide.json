@@ -57,5 +57,6 @@
  "caption": "Members of the public file past the casket of Rosa Parks, the civil rights pioneer, as she lies in honor in the Rotunda of the U.S. Capitol, Washington, D.C., October 2005. Photograph: Architect of the Capitol.",
  "why_it_fits": "A documentary photograph in which the Capitol Rotunda (its pilasters, historical paintings and statues) appears as the place where a named public event happened. The subject is the public filing past the casket; no partisan figure is the subject.",
  "notes": "The Architect of the Capitol mark sits at the lower right; crop it. Uniformed U.S. Capitol Police officers stand in the line of mourners.",
- "checked_by": "Research lead, November 12, 2026; checks pending (check_renditions.py adds them)"
+ "checked_by": "Research lead, November 12, 2026; rendition viewed beside the original at 600 px and at 2x before listing",
+ "checks": "November 12, 2026, by script and by eye: 1200 x 797 px, height in proportion to the original's 1920 x 1275; 223,719 bytes, equal to the engineer's board 1 figure; progressive; Pillow's quality 85 tables; 4:2:0 as the original; color profile as the original; PSNR 41.0 dB against the original with both at the 600 px display width and 36.0 dB at 1,200 px against the original resampled to the same size; mean color shift under 0.05 of 255. Viewed beside the original at 600 px, at 2x, and in chapter 01's r53 crop in Chromium: no difference seen. The r53 crop shows rows 0 to 720 of 797, so the agency mark at lower right stays cropped, as on the original."
 }

@@ -3865,3 +3865,27 @@ Dustin, on board 1's four questions: "As recommended, and I approve the smaller 
 | D3-217 | Round 0's board captures in `work/boards/phase-3/round-0/specimens/` stay as they are; S14 with its new note is captured fresh for round 1's board | Those captures record what Dustin saw on board 1 |
 | D3-218 | Chapter 13 does not change for DR-239: its plates keep their level titles, which D3-87 set and DR-237 approved as built | DR-239 names chapter 02 and S14 only |
 | D3-219 | The Explainer maker's request B1, printing the payroll survey's ±122,000 margin with its source on S14, waits for round 1: the engineer adds the source line to the payroll file's record, and S14's note prints the figure, shown on round 1's board | DR-239 set the sentence; the figure needs a printed source the data file's record does not carry yet (D3-171), and this pass applies only what Dustin answered |
+
+## Answers on the round 1 plan, November 12, 2026
+
+The main session posted its round 1 plan with two questions. Dustin: "as recommended, go".
+
+| # | Decision | Source |
+|---|---|---|
+| DR-240 | Chapter 14 opens with about 14 rules for every chart, each with a correct and a failure plate. Each of the 127 forms then is a numbered entry in its family: when to use it, what to use instead, its specimen and its table, and its phone drawing where the form changes. An avoid entry shows the misleading drawing as a small sketch beside the better choice. No form takes a failure plate of its own | Dustin, November 12, as recommended (round 1 question 1) |
+| DR-241 | A short private progress page follows round 1 and round 2, showing each round's charts at desktop and phone widths and asking no decision; board 2 after round 3 stays the board where Dustin decides | Dustin, November 12, as recommended (round 1 question 2) |
+
+## Phase 3 round 1, from November 12, 2026
+
+### Main session (`work/handoffs/phase-3/20261112_Phase-3-Round-1-Brief.md`)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-220 | "go" starts round 1 under its brief, beside the board 1 apply pass still finishing | Dustin's reply; the apply pass and round 1 touch different files, except the engineer, who takes round 1 after it |
+| D3-221 | Chapter 14's numbers are fixed for every round in `work/handoffs/phase-3/20261112_Chapter-14-Plan.json`, written by script from the coverage plan and the data plan: rules 14.1 to 14.14 for every chart in group 1, then the 127 forms as 14.15 to 14.141 in the coverage plan's family order, one group per family | DR-240; numbers fixed before makers start let any chapter cite a form (V14's fixed names) |
+| D3-222 | Round 1's 26 new specimens take IDs S17 to S42 in the data plan's row order; the eleven built specimens keep their IDs and become entries | Contract C2: later rounds take their own IDs |
+| D3-223 | Two makers by family: maker A takes comparison and tables and plain words, maker B shift and swing and change over time, 15 items each | The proposal's two makers; the load comes out even |
+| D3-224 | Each maker writes its own form modules, specs and entry files; only the engineer edits the kit's shared files and takes the makers' requests | One agent edits the shared kit at a time (V17); 25 new forms would queue behind one engineer |
+| D3-225 | Each entry's words live in their own file under `work/build/guide/entries/`, and the engineer's chapter 14 generator assembles entries, specs and plates into `14-data-visualization.json` | S13 serves two entries owned by two makers, so words cannot live in a spec; one file per entry keeps owners apart |
+| D3-226 | The research lead's round 1 work is round 3's data plan, fetched and frozen, and sources for the seven routes not yet covered (FA, FR, ENF, CRT, AV, IC, CIV) | The research lead stays a round ahead; round 2's data is already frozen |
+| D3-227 | Chapter 15 starts with its rule list, the systems grammar and worked examples 1 and 2 (Loop R1 and Loop R8), drawn by the systems designer, with the data lead's sign-off | The proposal starts chapter 15 in round 1; chapter 11's stepper already runs Loop R1 |
