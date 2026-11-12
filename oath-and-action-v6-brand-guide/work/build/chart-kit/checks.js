@@ -247,6 +247,22 @@ function check_drawing(spec, d, tok, where) {
       break;
     }
   }
+  // access S2 (round 1 fix pass): two dots a form draws for one row (a dumbbell's two years) sit apart by more than a dot's
+  // radius wherever the values differ by a tenth or more of the larger, or the drawing shows no change where the data holds
+  // one; a small change drawn as touching dots is the honest drawing of a small change
+  const by_row = {};
+  for (const m of d.marks) if (m.row !== undefined && m.kind === 'circle') (by_row[m.row] = by_row[m.row] || []).push(m);
+  const close = Object.keys(by_row).filter(k => {
+    const ms = by_row[k];
+    for (let i = 0; i < ms.length; i++) for (let j = i + 1; j < ms.length; j++) {
+      const a = ms[i], b = ms[j];
+      const dist = Math.hypot((a.x + a.w / 2) - (b.x + b.w / 2), (a.y + a.h / 2) - (b.y + b.h / 2));
+      const va = Number((a.data || {}).value), vb = Number((b.data || {}).value);
+      if (dist < Math.max(a.r || a.w / 2, b.r || b.w / 2) && Math.abs(va - vb) >= 0.1 * Math.max(Math.abs(va), Math.abs(vb))) return true;
+    }
+    return false;
+  });
+  if (close.length) f.push(`chart: ${close.length} row(s) draw their two dots closer than a dot's radius though their values differ by a tenth or more, so the drawing hides the change (${close.slice(0, 4).join(', ')}${close.length > 4 ? ', and more' : ''}); give each row its own scale, such as a percent change (Rule 14.26), or split the rows into panels by size${at}`);
   for (const m of d.marks) {
     const key = (m.data && (m.data.key || m.data['key'])) || m.kind;
     if (m.x < -1 || m.y < -1 || m.x + m.w > W + 1 || m.y + m.h > H + 1) f.push(`chart: mark ${key} outside its drawing${at}`);
@@ -264,10 +280,12 @@ function check_drawing(spec, d, tok, where) {
   // forced colors (D3-94): no label in the ink of the mark under it, in the reader's system colors (kit.js, K.FC)
   if (d.fc) {
     const fills = d.marks.filter(m => m.fill && m.w > 0 && m.h > 0);
+    // beside a red point the context marks take the ground with an outline (kit.css, access S10)
+    const pointed = d.marks.some(m => m.fill === 'point');
     for (const t of d.texts || []) {
       const cx = t.x + t.w / 2, cy = t.y + t.h / 2;
       let ground = 'Canvas';
-      for (const m of fills) if (cx > m.x && cx < m.x + m.w && cy > m.y && cy < m.y + m.h) ground = d.fc[m.fill] || 'CanvasText';
+      for (const m of fills) if (cx > m.x && cx < m.x + m.w && cy > m.y && cy < m.y + m.h) ground = pointed && m.fill === 'context' ? 'Canvas' : d.fc[m.fill] || 'CanvasText';
       const ink = (d.fc_on_dark || []).indexOf(t.fill) >= 0 ? 'Canvas' : 'CanvasText';
       if (ink === ground) f.push(`forced colors: "${String(t.words).slice(0, 30)}" prints in ${ink} on a mark in ${ground}${at}`);
     }

@@ -93,7 +93,110 @@ def item_s24(dl):
         save(name, meta, nl)
 
 
-ITEMS = {'s24': item_s24}
+# ---------------------------------------------------------------------------------------------------------------
+# s34: ST M3. The 119th Congress row. The frozen row (294 motions, 294 votes, 247 invoked) does not match the Senate's
+# roll call record. Recount: every vote in vote_menu_119_1.xml and _2.xml whose question names cloture, plus the votes
+# the menus list with an empty question, each read from its own record (vote_119_<s>_<n>.xml) and counted when its
+# question is "On the Cloture Motion". The recount must equal the cloture counts page's row, or nothing is written.
+# --dl holds vote_menu_119_1.xml, vote_menu_119_2.xml, clotureCounts.htm and votes/vote_119_*.xml.
+# ---------------------------------------------------------------------------------------------------------------
+CLOTURE = 'senate-cloture-motions-by-congress'
+CLOTURE_NOTE_KEY = 'The 119th Congress row, corrected November 12, 2026'
+
+
+def recount_119(dl):
+    import xml.etree.ElementTree as ET
+    votes, invoked, empty, last = 0, 0, [], None
+    for s in (1, 2):
+        root = ET.parse(dl / f'vote_menu_119_{s}.xml').getroot()
+        for v in root.iter('vote'):
+            q = (v.findtext('question') or '').strip()
+            n = int((v.findtext('vote_number') or '0').strip())
+            if last is None or (s, n) > last[:2]:
+                last = (s, n, (v.findtext('vote_date') or '').strip())
+            if not q:
+                empty.append((s, n))
+            elif 'cloture' in q.lower():
+                votes += 1
+                invoked += (v.findtext('result') or '').strip().lower() == 'agreed to'
+    found = []
+    for s, n in empty:
+        r = ET.parse(dl / 'votes' / f'vote_119_{s}_{n:05d}.xml').getroot()
+        q = (r.findtext('question') or '').strip()
+        res = (r.findtext('vote_result') or '').strip()
+        if q == 'On the Cloture Motion':
+            votes += 1
+            invoked += res == 'Cloture Motion Agreed to'
+            found.append(f'{s}-{n} {res.lower()}')
+    return votes, invoked, empty, found, last
+
+
+def page_row(dl, congress):
+    import html
+    import re
+    t = (dl / 'clotureCounts.htm').read_text(encoding='utf-8', errors='replace')
+    for r in re.findall(r'<tr[^>]*>(.*?)</tr>', t, re.S):
+        c = [re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', x))).strip() for x in re.findall(r'<t[dh][^>]*>(.*?)</t[dh]>', r, re.S)]
+        if c and c[0] == str(congress):
+            return int(c[2].replace(',', '')), int(c[3].replace(',', '')), int(c[4].replace(',', ''))
+    raise SystemExit(f'no row for the {congress}th Congress on the page')
+
+
+def item_s34(dl):
+    if dl is None:
+        raise SystemExit('s34 needs --dl <folder with the vote menus, vote records and clotureCounts.htm>')
+    votes, invoked, empty, found, last = recount_119(dl)
+    motions, p_votes, p_invoked = page_row(dl, 119)
+    print(f'recount: {votes} votes, {invoked} invoked; page: {motions} motions, {p_votes} votes, {p_invoked} invoked; '
+          f'{len(empty)} menu votes with no question, cloture among them: {", ".join(found)}; latest vote {last}')
+    if (votes, invoked) != (p_votes, p_invoked):
+        raise SystemExit('the recount and the page differ; nothing written')
+    p = DATA / f'{CLOTURE}.csv'
+    raw = p.read_text(encoding='utf-8')
+    rows = list(csv.reader(io.StringIO(raw)))
+    head = rows[0]
+    for r in rows[1:]:
+        if r[0] == '119':
+            r[head.index('motions_filed')] = str(motions)
+            r[head.index('votes_on_cloture')] = str(votes)
+            r[head.index('cloture_invoked')] = str(invoked)
+    out = io.StringIO()
+    csv.writer(out, lineterminator='\n').writerows(rows)
+    if out.getvalue() != raw:
+        p.write_text(out.getvalue(), encoding='utf-8')
+        print(f'wrote {p.relative_to(ROOT)}')
+    meta, nl = load(CLOTURE)
+    meta['observation_period'] = ('65th Congress (1917 to 1918) to the 119th Congress (2025 to 2026), through November 10, 2026, '
+                                  'the date of the Senate’s latest roll call vote when the page was read')
+    meta['date_retrieved'] = '2026-11-12'
+    meta['vintage'] = ('Page as read on November 12, 2026, every row; first read November 11, 2026, when the 119th Congress row was '
+                       'frozen as 294 motions, 294 votes and 247 invoked')
+    meta['qualification'] = ('Counts mix bills and nominations, and the vote needed changed over time (two-thirds of those voting until 1975, '
+                             'then three-fifths of senators for most matters; a simple majority for nominations since 2013 and 2017). '
+                             'The 119th Congress is still in session; its row counts votes through November 10, 2026')
+    meta['printed_source_line'] = ('Source: United States Senate, Senate Action on Cloture Motions, 65th Congress (1917) to the 119th Congress '
+                                   'through November 10, 2026, United States Senate. Retrieved November 12, 2026. Counts include bills and '
+                                   'nominations; the votes needed changed in 1975, 2013 and 2017.')
+    meta['url'] = ['https://www.senate.gov/legislative/cloture/clotureCounts.htm',
+                   'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_1.xml',
+                   'https://www.senate.gov/legislative/LIS/roll_call_lists/vote_menu_119_2.xml']
+    set_note(meta, CLOTURE_NOTE_KEY,
+             f'{CLOTURE_NOTE_KEY} (statistics review M3). The page read that day gives the 119th Congress {motions} motions filed, '
+             f'{votes} votes on cloture and {invoked} times invoked, and every other row equals the file. The Senate’s own vote lists give '
+             f'the same {votes} and {invoked}: {votes - len(found)} votes whose question names cloture in vote_menu_119_1.xml and '
+             f'vote_menu_119_2.xml, plus {len(found)} the lists show with no question, each read from its own record as "On the Cloture '
+             f'Motion" (session and vote: {", ".join(found)}). The latest roll call vote was number {last[1]} of the second session, '
+             f'November 10, 2026. The row frozen November 11 (294, 294 and 247) matched neither; the round 0 download is gone, so the '
+             'cause was not found. Motions filed come from the page only; the vote lists do not record a motion until it is voted on.')
+    set_note(meta, 'On September 17, 2025',
+             'On September 17, 2025, cloture on a group of nominations considered together failed 51 to 48 under a three-fifths requirement '
+             '(vote 522 of the first session); the Senate then voted 47 to 52 not to sustain the chair (vote 524) and invoked cloture on the '
+             'same group 52 to 47 with a majority requirement of one-half (vote 525). Read from each vote’s record on senate.gov, '
+             'November 12, 2026. A chart that names the changes in the votes needed may add this one.')
+    save(CLOTURE, meta, nl)
+
+
+ITEMS = {'s24': item_s24, 's34': item_s34}
 
 
 def main(argv):

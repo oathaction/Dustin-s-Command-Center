@@ -41,9 +41,6 @@
       var words = function (v) { return String(L.value || '{value}').replace('{value}', K.fmt(v, f.value || 'signed:0')); };
       // the scale: from zero, or from the lowest shift when one falls below it
       var lo = Math.min(0, Math.min.apply(null, items.map(function (it) { return it.value; }))), hi = Math.max(0, Math.max.apply(null, items.map(function (it) { return it.value; })));
-      // the axis ends at the largest shift, with a tick at each step inside it, so no empty step trails the longest stem
-      var nk = K.nice(lo, hi, c.phone ? 3 : 4), ticks = K.ticks(nk[0], hi, 0, nk.step);
-      nk = [nk[0], Math.max(hi, ticks[ticks.length - 1])];
       var size = c.size('label'), pitch = Math.max(c.t('shift-axis-pitch'), Math.round(size * 1.4));
       var nw = 0;
       items.forEach(function (it) { nw = Math.max(nw, c.measure(it.label, 'label', it.key === String(L.apart) ? 700 : 400)); });
@@ -52,6 +49,16 @@
       // a name column beside the stems, or each name above its stem where the column would leave the stems too little room
       var stacked = W - nw - 16 - vw - 10 < W * 0.4;
       var x0 = stacked ? 0 : Math.ceil(nw + 16), x1 = W - vw - 10;
+      // the axis ends at the largest shift, with a tick at each step inside it, so no empty step trails the longest stem;
+      // the finer steps where their figures fit apart (a phone keeps the +100 step a reading guide may name)
+      var nk, ticks;
+      [4, 3, 2].some(function (n) {
+        nk = K.nice(lo, hi, n); ticks = K.ticks(nk[0], hi, 0, nk.step);
+        var span = Math.max(hi, ticks[ticks.length - 1]) - nk[0], tw = 0;
+        ticks.forEach(function (t) { tw = Math.max(tw, c.measure(K.fmt(t, f.tick || 'signed:0'), 'tick')); });
+        return nk.step / span * (x1 - x0) >= tw + 12;
+      });
+      nk = [nk[0], Math.max(hi, ticks[ticks.length - 1])];
       var xs = K.scale.linear([nk[0], nk[1]], [x0, x1]);
       var y = 0;
       // the size-of-shift key
@@ -81,7 +88,8 @@
       });
       var row = function (it, bold) {
         var ny = stacked ? y + size : y + pitch / 2 + size * 0.35, ly = stacked ? y + size + 10 : y + pitch / 2;
-        c.text(stacked ? 0 : x0 - 10, ny, it.label, { role: 'label', weight: bold ? 700 : 400, anchor: stacked ? 'start' : 'end', halo: true });
+        // names flush left at the drawing's edge, as the family's long ranked lists set them (brand S13, round 1 fix pass)
+        c.text(0, ny, it.label, { role: 'label', weight: bold ? 700 : 400, halo: true });
         var xe = xs(it.value);
         c.line(xs(0), ly, xe, ly, { stroke: 'subject', width: c.t('arrow-shaft'), mark: false });
         c.circle(xe, ly, c.t('dot-vertex-radius'), { fill: 'subject', data: { key: it.key, field: ev || 'change', value: Math.round(it.value * 10) / 10 } });

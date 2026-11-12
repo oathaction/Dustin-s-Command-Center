@@ -16,7 +16,7 @@
   "evidence_label": "Finding",
   "grade_line": "Documented: Census Bureau counts of applications for a tax ID",
   "title": "Applications to start a business rose in every state and DC from 2019 to 2025, by 62 percent nationwide and most in Wyoming, where they quadrupled.",
-  "reading_guide": "Each line runs from zero to the state’s rise in business applications from 2019 to 2025, longest first. The key shows the length of a 100 percent rise, a doubling.",
+  "reading_guide": "Each line runs from zero to the state’s rise in business applications from 2019 to 2025, in percent, longest first. A line that reaches the gridline at +100 marks a doubling.",
   "measure_line": "Change in business applications from 2019 to 2025, percent, 50 states and DC, with the United States above them. 2019 is the last full year before the pandemic, and 2025 the latest full year.",
   "notes": [
     "A business application is a request for a federal tax ID that signals a new business. Many applications never become a business that hires anyone.",
@@ -53,7 +53,6 @@
     ]
   },
   "chart_notes": [
-    "Key: a line the length of a 100 percent rise.",
     "Each state’s rise in percent is printed beside its dot, from Wyoming’s +302% to the District of Columbia’s +22%; the United States, set apart at the top, rose 62%."
   ],
   "phone": "same",
@@ -74,8 +73,6 @@
   },
   "labels": {
     "apart": "US",
-    "key": "A rise of {value} percent",
-    "key_value": 100,
     "value": "{value}%"
   },
   "notes_internal": [
@@ -84,6 +81,7 @@
     "R-B4 landed: the chart reads census-bfs-business-applications-change-by-state, the research lead's derived file from the planned dataset (same publisher, period and printed line), so the table prints each state's change beside both counts; the form draws encode.value.",
     "H09: the window 2019 to 2025 compares two whole calendar years and splits no period at an inauguration; the measure line gives both ends' reasons. Read from the left and the right: the title reports a rise everywhere and names no party or official.",
     "Palette note from the data lead: direction by position, every stem in the subject ink, no fill.",
-    "Data lead DL-B1: the Census Bureau's Business Formation Statistics methodology and definitions pages (census.gov/econ/bfs/methodology.html and definitions.html, read November 12, 2026) do not say how an application is assigned to a state, so the chart adds no note and claims no cause for Wyoming's rise."
+    "Data lead DL-B1: the Census Bureau's Business Formation Statistics methodology and definitions pages (census.gov/econ/bfs/methodology.html and definitions.html, read November 12, 2026) do not say how an application is assigned to a state, so the chart adds no note and claims no cause for Wyoming's rise.",
+    "Review fix pass: the source line is the sidecar’s, which now names the frozen file’s vintage, the September 2026 monthly release of October 14, 2026 (statistics M1 under D3-476: the figures stay as frozen, and the Bureau’s November 12 revision waits for the Phase 5 refresh). The key is dropped, since the labeled +100% gridline shows a doubling, and the names sit flush left (brand S13). Wyoming stays in the subject ink until the data lead rules under D3-489. Figures checked again by script (maker_b_figure_checks.py, check S24)."
   ]
 }

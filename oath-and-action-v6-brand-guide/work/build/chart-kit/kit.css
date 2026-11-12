@@ -106,10 +106,15 @@
    mark in Canvas takes a CanvasText outline. Text is CanvasText on a Canvas halo; text set on a dark fill is Canvas on
    a CanvasText halo. checks.js fails a label in the ink of its ground. */
 @media (forced-colors: active) {
-  .oac-svg { forced-color-adjust: none; }
+  /* access M1 (round 1 fix pass): the drawing sits on the system ground, so its system inks always read, in a dark contrast
+     theme too, even where a host keeps its own colors around it (the guide's stage) */
+  .oac-svg { forced-color-adjust: none; background-color: Canvas; }
   .oac-svg [class*="oac-f-"]:not(.oac-t) { fill: CanvasText; }
   .oac-svg :is(.oac-f-context, .oac-f-secondary, .oac-f-gridline, .oac-f-seq-3, .oac-f-div-5, .oac-f-mag-3, .oac-f-cat-2):not(.oac-t) { fill: GrayText; }
   .oac-svg .oac-f-point:not(.oac-t) { fill: Highlight; }
+  /* access S10: beside a red point, the other marks (context on Charcoal) take the ground with an outline, as the light fill
+     does on Newsprint, so the point stands apart by more than hue */
+  .oac-svg:has(.oac-f-point) .oac-f-context:not(.oac-t) { fill: Canvas; stroke: CanvasText; stroke-width: 1px; }
   .oac-svg :is(.oac-f-band, .oac-f-track, .oac-f-land, .oac-f-light-fill, .oac-f-seq-1, .oac-f-div-3, .oac-f-mag-1):not(.oac-t) { fill: Canvas; stroke: CanvasText; stroke-width: 1px; }
   .oac-svg .oac-f-surface:not(.oac-t) { fill: Canvas; }
   .oac-svg .oac-f-none:not(.oac-t) { fill: none; }

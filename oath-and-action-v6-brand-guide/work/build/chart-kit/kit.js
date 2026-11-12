@@ -422,7 +422,7 @@
     var a = data_of(o, { cx: r1(cx), cy: r1(cy), r: r2(r), 'class': cls_of(o), 'stroke-width': o.width });
     this._push('<circle' + attrs(a) + '/>');
     this._ink('circle', cx - r, cy - r, 2 * r, 2 * r, o);
-    if (o.mark !== false) this.mark({ kind: o.kind || 'circle', x: cx - r, y: cy - r, w: 2 * r, h: 2 * r, r: r, fill: o.fill, stroke: o.stroke, data: o.data || {}, area_of: o.area_of });
+    if (o.mark !== false) this.mark({ kind: o.kind || 'circle', x: cx - r, y: cy - r, w: 2 * r, h: 2 * r, r: r, fill: o.fill, stroke: o.stroke, data: o.data || {}, area_of: o.area_of, row: o.row });
   };
   Ctx.prototype.polygon = function (pts, o) {
     o = o || {};

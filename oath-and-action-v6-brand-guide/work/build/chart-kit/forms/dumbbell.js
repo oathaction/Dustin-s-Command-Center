@@ -2,7 +2,10 @@
  * each value printed beside its dot, the row's words at the right edge.
  * encode: category (category), value (number), series (category: the column naming which of the two a row is).
  * labels: from, to (the series values), from_label, to_label (printed once over the first row), categories ({value: label}),
- * row_words ({category value: words}), domain ([lo, hi]). formats: value, tick. */
+ * row_words ({category value: words}), domain ([lo, hi], in the value column's own unit as the data file holds it, before
+ * any format: dollars for a column of dollars printed as billions). formats: value, tick.
+ * The scale keeps room for the value printed at each end of every row, at every width (access S2, round 1 fix pass), and
+ * the check fails a row whose two dots sit closer than a dot's radius, where the drawing shows no change. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -25,6 +28,25 @@
       var lw = 0, ww = 0;
       cats.forEach(function (k) { lw = Math.max(lw, c.measure(names[k] || k, 'label', 600)); ww = Math.max(ww, words[k] ? c.measure(words[k], 'label', 600) : 0); });
       var x0 = c.phone ? 28 : Math.ceil(lw + 40), x1 = c.phone ? W - 28 : W - ww - 48;
+      // each row prints its lower value left of its left dot and its higher value right of its right dot, 12 px out; move
+      // the scale's ends in until the widest of those fits between the names (or the left edge) and the row words (or the
+      // right edge). A layout where every value fits keeps the ends above.
+      var fv = f.value || 'number:1', lim0 = c.phone ? 0 : Math.ceil(lw + 8), lim1 = c.phone ? W : W - (ww ? ww + 8 : 0);
+      var ends = cats.filter(function (k) { return pair[k].from && pair[k].to; }).map(function (k) {
+        var u = pair[k].from[ev], v = pair[k].to[ev], lo = Math.min(u, v), hi = Math.max(u, v);
+        return { lo: lo, hi: hi, wl: c.measure(K.fmt(lo, fv), 'label', lo === v ? 700 : 400), wr: c.measure(K.fmt(hi, fv), 'label', hi === v ? 700 : 400) };
+      });
+      for (var it = 0; it < 6; it++) {
+        var sc = K.scale.linear(dom, [x0, x1]), need0 = 0, need1 = 0;
+        ends.forEach(function (e) {
+          need0 = Math.max(need0, lim0 - (sc(e.lo) - 12 - e.wl));
+          need1 = Math.max(need1, (sc(e.hi) + 12 + e.wr) - lim1);
+        });
+        if (need0 <= 0.5 && need1 <= 0.5) break;
+        if (need0 > 0.5) x0 += Math.ceil(need0);
+        if (need1 > 0.5) x1 -= Math.ceil(need1);
+        if (x1 - x0 < 40) { c.warn('the values at the scale\'s ends leave the plot under 40 px; shorten the names or set labels.domain'); break; }
+      }
       var xs = K.scale.linear(dom, [x0, x1]), pitch = c.phone ? 62 : 46, y = c.size('tick') + 4;
       var ticks = K.ticks(dom[0], dom[1], c.phone ? 4 : 5);
       ticks.forEach(function (t, i) { c.text(xs(t), y, K.fmt(t, i === ticks.length - 1 ? (f.tick_last || f.tick || 'integer') : (f.tick || 'integer')), { role: 'tick', anchor: 'middle' }); });
@@ -40,9 +62,9 @@
         c.line(xs(dom[0]), ry, xs(dom[1]), ry, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
         var a = xs(p.from[ev]), b = xs(p.to[ev]);
         c.line(a, ry, b, ry, { stroke: 'subject', width: c.t('line-context'), mark: false });
-        c.circle(a, ry, r_open, { fill: 'surface', data: { key: k + '|' + L.from, field: ev, value: p.from[ev] } });
+        c.circle(a, ry, r_open, { fill: 'surface', row: k, data: { key: k + '|' + L.from, field: ev, value: p.from[ev] } });
         c.circle(a, ry, r_open, { stroke: 'subject', width: c.t('line-context'), mark: false });
-        c.circle(b, ry, r_fill, { fill: 'subject', data: { key: k + '|' + L.to, field: ev, value: p.to[ev] } });
+        c.circle(b, ry, r_fill, { fill: 'subject', row: k, data: { key: k + '|' + L.to, field: ev, value: p.to[ev] } });
         var left = a < b ? p.from : p.to, right = a < b ? p.to : p.from;
         var lx = Math.min(a, b) - 12, rx = Math.max(a, b) + 12, ty = ry + c.size('label') * 0.35;
         c.text(lx, ty, K.fmt(left[ev], f.value || 'number:1'), { role: 'label', weight: left === p.to ? 700 : 400, anchor: 'end', fill: left === p.to ? 'label' : 'secondary' });
