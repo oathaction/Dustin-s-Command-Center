@@ -1,7 +1,7 @@
 {
  "run": "2026-11-12",
  "command": "python3 -I work/build/tests/tokens/run_token_tests.py",
- "tokenSetVersion": "6.0.0-gate3.1",
+ "tokenSetVersion": "6.0.0-gate3.2",
  "status": "pre-release",
  "passed": true,
  "steps": [
@@ -423,7 +423,7 @@
    "plant": "A stylesheet edited by hand, so it no longer matches the source",
    "test": "build",
    "caught": true,
-   "failure": "tokens_build --check: tokens.css in ../../../../tmp/oa-token-plants-_j2bjnyx differ from what the source builds. Run the build.",
+   "failure": "tokens_build --check: tokens.css in ../../../../tmp/oa-token-plants-lgjm3nmk differ from what the source builds. Run the build.",
    "alsoCaughtBy": [
     "parity"
    ]
@@ -480,7 +480,7 @@
    "plant": "A version rise with no change note",
    "test": "rules",
    "caught": true,
-   "failure": "root: version 6.0.0-gate3.2 has no change note (version, change, reason) at the head of changeNotes (section 7, step 6)",
+   "failure": "root: version 6.0.0-gate3.3 has no change note (version, change, reason) at the head of changeNotes (section 7, step 6)",
    "alsoCaughtBy": [
     "build",
     "parity"
@@ -510,7 +510,7 @@
    "plant": "A deprecated alias kept past the release that removes it",
    "test": "rules",
    "caught": true,
-   "failure": "oa.color.state.error.mark.onCharcoal: removedIn '6.0.0' names a later release of the second part than 6.0.0-gate3.1",
+   "failure": "oa.color.state.error.mark.onCharcoal: removedIn '6.0.0' names a later release of the second part than 6.0.0-gate3.2",
    "alsoCaughtBy": [
     "build"
    ]

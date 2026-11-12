@@ -7,7 +7,7 @@
  "instruction": "Choose a token step by step from its surface, and call it by name.",
  "intro": [
   "Every color, size, space and speed in this guide comes from a design token: a named value kept in the token files, which the guide, the asset package and every product read. This chapter shows how the names work, when a new token may join, and how to choose the right one in five steps, with four worked examples to copy.",
-  "The files are tokens.css, for a web page, and tokens.json, for design tools and build scripts. Both hold the same 504 tokens and the same version, and Rule 26.8 has both to download."
+  "The files are tokens.css, for a web page, and tokens.json, for design tools and build scripts. Both hold the same 545 tokens and the same version, and Rule 26.8 has both to download."
  ],
  "groups": [
   {
@@ -34,7 +34,7 @@
    "id": "26.1",
    "title": "Read every value through a token named for its job.",
    "rule": [
-    "A token is a named design value, and its name says its job and the surface it sits on. tokens.css and tokens.json hold the same 504 tokens in 13 categories: color, font, type, space, size, layout, radius, border, opacity, motion, z-index, chart and component. A name runs from its category to its surface: <code>oa.color.text.secondary.onNewsprint</code> in tokens.json is <code>--oa-color-text-secondary-on-newsprint</code> in CSS. Each part of the name is a word you can look up.",
+    "A token is a named design value, and its name says its job and the surface it sits on. tokens.css and tokens.json hold the same 545 tokens in 13 categories: color, font, type, space, size, layout, radius, border, opacity, motion, z-index, chart and component. A name runs from its category to its surface: <code>oa.color.text.secondary.onNewsprint</code> in tokens.json is <code>--oa-color-text-secondary-on-newsprint</code> in CSS. Each part of the name is a word you can look up.",
     "Tokens come in three tiers. A primitive holds a value, such as Deep Stone. A semantic token gives a primitive one job on one surface, such as disabled text on Newsprint. A component token gives one part of one component its value, such as the label of an unavailable button, and points to a semantic token. Build with semantic and component tokens. A primitive is there for them to point to."
    ],
    "tokens": [
@@ -439,7 +439,7 @@
    "id": "26.7",
    "title": "Look up any token in the table, and copy its name from there.",
    "rule": [
-    "The table lists every token in tokens.json, 504 in all, in 17 groups, each closed until you open it. The groups follow Rule 26.1’s 13 categories, with color split into four groups and chart into two, font listed as “Type: faces and weights” and z-index as “Stacking order”. A row gives the token’s name in the JSON and in CSS, its value, its job, its tier and, for a color, the contrast it measures on each surface it serves. Search by any of those words, and every group that holds a match opens. Copy puts the CSS name on your clipboard."
+    "The table lists every token in tokens.json, 545 in all, in 17 groups, each closed until you open it. The groups follow Rule 26.1’s 13 categories, with color split into four groups and chart into two, font listed as “Type: faces and weights” and z-index as “Stacking order”. A row gives the token’s name in the JSON and in CSS, its value, its job, its tier and, for a color, the contrast it measures on each surface it serves. Search by any of those words, and every group that holds a match opens. Copy puts the CSS name on your clipboard."
    ],
    "tokens": [],
    "why": {
@@ -450,7 +450,7 @@
    },
    "correct": {
     "specimen": "s-26-token-table",
-    "caption": "Every token in tokens.json, version 6.0.0-gate2.9. Search, then copy a name."
+    "caption": "Every token in tokens.json, version 6.0.0-gate3.2. Search, then copy a name."
    },
    "failure": {
     "specimen": "s-26-7-failure",
@@ -459,7 +459,7 @@
    "specs": [
     {
      "label": "Rows",
-     "value": "504, in 17 groups by category, each closed until opened; the list above them opens one"
+     "value": "545, in 17 groups by category, each closed until opened; the list above them opens one"
     },
     {
      "label": "Search",
@@ -484,7 +484,7 @@
    "rule": [
     "tokens.css and tokens.json carry one version number, in three parts. A renamed or removed token, or a changed palette color, raises the first part, and may break a page. A new token, or a changed value that still passes its contrast, raises the second. A change to descriptions alone raises the third.",
     "A replaced token keeps its old CSS name as an alias for one more release of the second part, marked as deprecated, so a page that reads it keeps working while you move it. Every version comes with a change note: its date, the tokens it touches, what changed and why.",
-    "The files in this draft carry <code>6.0.0-gate2.9</code>. The part after the hyphen marks a draft before 6.0.0, the first release. Since 6.0.0-gate2.8, <code>--oa-color-state-error-mark</code> is the deprecated old name of <code>--oa-color-state-error-bar</code>, and it leaves with 6.1.0."
+    "The files in this draft carry <code>6.0.0-gate3.2</code>. The part after the hyphen marks a draft before 6.0.0, the first release. Since 6.0.0-gate2.8, <code>--oa-color-state-error-mark</code> is the deprecated old name of <code>--oa-color-state-error-bar</code>, and it leaves with 6.1.0."
    ],
    "downloads": [
     "tokens.css",
@@ -499,7 +499,7 @@
    },
    "correct": {
     "specimen": "s-26-8-correct",
-    "caption": "The change note for 6.0.0-gate2.9, as tokens.json records it."
+    "caption": "The change note for 6.0.0-gate3.2, as tokens.json records it."
    },
    "failure": {
     "specimen": "s-26-8-failure",

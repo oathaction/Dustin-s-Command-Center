@@ -255,3 +255,34 @@ D3-xxx | S04's 65-and-over label reads "No clear change (+0.2)" and the notes gi
 Tested: `oa-chart.mjs build --all`, 16 of 16; each changed string found and replaced by script, with an assertion that the old words were present. Not tested: the editor's read of these new strings; the captures viewed after this pass.
 
 Later, November 12: S06 takes the sidecar's new `directions_wording` line (the editor's E8), and S13's federal row prints "Peak: 3,013,000 in October 2024" now that E32 places it at every width (X13). Rebuilt all 16: 16 of 16 pass. Board folder refreshed.
+
+## Board 1 apply
+
+November 12, from `work/handoffs/phase-3/20261112_Board-1-Apply-Brief.md`, the Explainer maker's row: DR-239 in S14. Dustin kept chapter 02's "shrank in seven of the 57 months charted" and added one sentence about the survey's margin of error.
+
+What changed, in `work/build/chart-kit/specs/s14.json` only:
+- The fourth note now reads: "Payrolls shrank in seven months: January, June, August, October and December 2025, and February and July 2026. Only the October 2025 and February 2026 drops pass the survey’s margin of error." The title keeps its words.
+- `notes_internal`: D3-87's hold ("D3-87 still holds the title and the count of drops for Dustin.") is gone. A new entry says DR-239 settled it and records the script check behind the sentence, with its source (D3-171, ledger P7-042).
+- The alt text, chart notes, annotations, table and source line stay as they were.
+
+The kit build passes: `node work/build/chart-kit/oa-chart.mjs build s14 --out /tmp/claude-0/-home-user-Dustin-s-Command-Center/f15cd04b-21be-5dde-a467-804e951756a2/scratchpad/phase-3/board-1-apply/explainer/kit-out` printed "PASS S14 columns-moving-average: 57 rows, 4 drawings, 0 faults". No check failed, so the spec needed no other fix. Round 0's board captures in `work/boards/phase-3/round-0/specimens/` are untouched; the new captures stay in scratch.
+
+- D3-xxx | S14's margin sentence ends the fourth note, after the list of seven months it qualifies | "The drops" points back to that list, and DR-239 has the sentence join the note; at 358 px the note runs five lines and reads as one passage
+- D3-xxx | S14's alt text stays as it was, with its seven months of losses | The alt text describes the drawing, which marks no margin of error; the note beside the drawing carries DR-239's sentence for every reader
+- D3-xxx | The margin's figure, plus or minus 122,000, stays out of S14's printed words and goes to the main session as a request | The brief asks for a request (D3-171); the figure comes from a source the chart's source line does not name, and C2 requires that line to equal its sidecar's
+
+Requests:
+- **B1 to the main session: print the margin's figure and its source.** The new sentence tests each drop against a public statistic the chart does not show: the Bureau of Labor Statistics' 90 percent interval for a month's change in total nonfarm payrolls, plus or minus 122,000, from the Employment Situation Technical Note, October 2026 release, last modified November 6, 2026, retrieved November 11, 2026 (D3-171, ledger P7-042, https://www.bls.gov/news.release/empsit.tn.htm). H04 asks every public policy statistic to carry its source, and the research lead advised that the sentence cite this note and its date, since the Bureau's figure has differed in past years. S14's source line names only the Current Employment Statistics series via FRED, and C2 requires it to equal the sidecar's `printed_source_line` or one of its `source_line_variants`. The engineer's `work/build/scripts/phase-3/data_round0_build.py` writes that sidecar, `work/build/data/fred-payrolls-monthly-change.meta.json`. Proposed: a variant that adds "The margin of error for a month’s change, plus or minus 122,000 jobs at 90 percent confidence, comes from the Bureau’s Employment Situation Technical Note, October 2026 release, retrieved November 11, 2026." after the present line. I switch S14's source line to it when it lands. Chapter 02's H08 after line and H06 example print the same sentence under the same source line, so the editor would need the same words. Dustin did not see the figure on board 1, so the main session decides whether printing it needs his word.
+
+Tested:
+- `oa-chart.mjs build s14` at the default widths: PASS, 0 faults, at 1440 and 390 on Newsprint and Charcoal (drawings 720 and 358 px wide); every C3a check, as the kit runs them. Check file: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/f15cd04b-21be-5dde-a467-804e951756a2/scratchpad/phase-3/board-1-apply/explainer/kit-out/s14/s14-check.json`.
+- The same build with `--widths 1024,360`: PASS, 0 faults.
+- By script on the frozen `work/build/data/fred-payrolls-monthly-change.csv`: 57 months; seven drops; only October 2025 (−140,000) and February 2026 (−156,000) pass plus or minus 122,000. The note holds the sentence with its curly apostrophe, the title still holds "shrank in seven of the 57 months charted", no "D3-87 still holds" line remains, and the file has no em dash and no U+2011.
+- The notes of the Newsprint and Charcoal 390 captures, viewed at 358 px: the fourth note runs five lines and reads as one passage.
+
+Not tested:
+- The 1440 captures, viewed after the change.
+- S14 in a guide build or in the 328, 296 and 256 px guide columns, which the engineer's strict build covers.
+- S14 against the engineer's finished 6.0.0-gate3.2 tokens: the build ran while `work/build/tokens/` held the engineer's DR-236 change in progress.
+- The other 15 specs, which did not change; `--all` was not run.
+- Chapter 02's matching lines, which are the editor's.
