@@ -2568,7 +2568,7 @@
    "id": "14.59",
    "title": "Show every item as a dot on one scale when each one should stay visible.",
    "rule": [
-    "Place each item as one dot on a single value scale, packed up and down from a center line so no dot hides another; the packing follows the data alone, so it draws the same every time. Name the items the title names with their values, in the view’s red point or, where a reader would tie them to a party, as a state, in the subject ink; keep the rest in the light fill, and draw a total or national figure as a dashed line in the text’s ink with its own label (Rule 14.6).",
+    "Place each item as one dot on a single value scale, packed up and down from a center line so no dot hides another; the packing follows the data alone, so it draws the same every time. Name the items the title names with their values, in the view’s red point, or in the subject ink where Rule 14.6 sets ink in its place, as for a state. Keep the rest in the light fill, and draw a total or national figure as a dashed line in the text’s ink with its own label (Rule 14.6).",
     "A strip plot is the same form with the dots in one row; use it when the items rarely touch."
    ],
    "why": {
@@ -2608,7 +2608,7 @@
    "id": "14.60",
    "title": "Use a box plot to compare the spread of a few groups.",
    "rule": [
-    "Draw one row a group, its name and count of units flush left: a box from the first to the third quartile, a 2 px line at the median, whiskers to the last unit within one and a half times the box’s length, and each unit beyond them as a small open circle. Print each median, give the group the title names the view’s red point, or the subject ink where a reader would tie it to a party, as a region of states (Rule 14.6), and say in the measure line what the box and whiskers span.",
+    "Draw one row a group, its name and count of units flush left: a box from the first to the third quartile, a 2 px line at the median, whiskers to the last unit within one and a half times the box’s length, and each unit beyond them as a small open circle. Print each median, give the group the title names the view’s red point, or the subject ink where Rule 14.6 sets ink in its place, as for a region of states, and say in the measure line what the box and whiskers span.",
     "The chart draws from a table of each group’s quartiles, median and whiskers and a table of the units past the whiskers, so a chart of thousands of units stays light."
    ],
    "why": {
@@ -2880,7 +2880,7 @@
    "id": "14.67",
    "title": "Plot two measures as a scatter, and name only the points the story needs.",
    "rule": [
-    "Draw one dot a place at its two values, with gridlines both ways and each axis named. Name the place the title names in the view’s red point, or in the subject ink where a reader would tie it to a party, as a state (Rule 14.6); label a few others in regular weight in the light fill where the data single them out past the margin of error (Rule 14.9); and draw the nation as an open ring in the text’s ink. Draw no fitted line: the reader judges the pattern.",
+    "Draw one dot a place at its two values, with gridlines both ways and each axis named. Name the place the title names in the view’s red point, or in the subject ink where Rule 14.6 sets ink in its place, as for a state; label a few others in regular weight in the light fill where the data single them out past the margin of error (Rule 14.9); and draw the nation as an open ring in the text’s ink. Draw no fitted line: the reader judges the pattern.",
     "Every correlation chart takes the Association label and the note “This shows the two move together; it does not show one causes the other.” (Rule 13.1)."
    ],
    "why": {
@@ -2923,7 +2923,7 @@
    "id": "14.68",
    "title": "Size each point by a third measure only when its size answers the question.",
    "rule": [
-    "Draw the scatter plot with each circle’s area set by a third measure (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circle the title names in the view’s red point, or in the subject ink where a reader would tie it to a party, as a state (Rule 14.6), and keep the Association label and its note."
+    "Draw the scatter plot with each circle’s area set by a third measure (Rule 14.4), the largest drawn first and each with a 1 px outline so overlaps read. Give a key of two circle sizes over the plot, name the circle the title names in the view’s red point, or in the subject ink where Rule 14.6 sets ink in its place, as for a state, and keep the Association label and its note."
    ],
    "why": {
     "text": [
