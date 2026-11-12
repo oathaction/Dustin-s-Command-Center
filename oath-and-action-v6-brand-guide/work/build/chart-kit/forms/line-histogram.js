@@ -5,7 +5,8 @@
  * encode: start (number, the bin's lower edge), end (number, its upper edge), value (number: a count or share), series
  * (category), label (text, optional: the bin's words for an open last bin).
  * labels: lit (the series in ink), series ({value: printed name}), open_end (true: the last bin is open, labeled by its
- * own words), x_axis, y_axis (words over the value axis).
+ * own words), x_axis, y_axis (words over the value axis), medians ({series: value}: a short tick under the baseline in the
+ * series' ink at each median, round 2 fix pass, CD B-S2), median_words (a second line under each name, with {median}).
  * formats: value, edge (the bin edges), tick. scale: y ([lo, hi]). On a phone the same arrangement draws narrower.
  * Maker B, round 2. */
 (function (K) {
@@ -15,7 +16,7 @@
     name: 'Line Histogram',
     family: 'distribution-and-density',
     encode: { start: 'number', end: 'number', value: 'number', series: 'category', label: 'text?' },
-    labels: ['lit', 'series', 'open_end', 'x_axis', 'y_axis'],
+    labels: ['lit', 'series', 'open_end', 'x_axis', 'y_axis', 'medians', 'median_words'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, L = c.labels, f = c.spec.formats || {}, W = c.width, ph = c.phone;
@@ -52,16 +53,24 @@
       }
       order.forEach(function (k) { by[k].forEach(function (r) { c.datum((xs(r[es]) + xs(r[ee])) / 2, ys(r[ev]), { data: { key: k + '|' + r[es], field: ev, value: r[ev] } }); }); });
       P.zero_line(c, ys, x0, x1);
+      // each series' median: a 2 px tick under the baseline in the series' ink, longer than the bins' edge ticks
+      var meds = L.medians || {}, fm = f.median || 'number:1';
+      order.forEach(function (k) {
+        if (typeof meds[k] !== 'number') return;
+        c.line(xs(meds[k]), bot + 1, xs(meds[k]), bot + 9, { stroke: k === lit ? 'subject' : 'context', width: c.t('line-context'), mark: false });
+      });
       // each series named over its peak, kept apart from the other's name and inside the plot
       var placed = [];
       order.slice().sort(function (a, b) { return a === lit ? -1 : b === lit ? 1 : 0; }).forEach(function (k) {
         var pk = by[k].reduce(function (m, r) { return r[ev] > m[ev] ? r : m; }, by[k][0]);
         var words = sname(k), w = c.measure(words, 'label', k === lit ? 700 : 600);
-        var px = (xs(pk[es]) + xs(pk[ee])) / 2, py = ys(pk[ev]) - 8;
+        var mw = L.median_words && typeof meds[k] === 'number' ? String(L.median_words).replace('{median}', K.fmt(meds[k], fm)) : '';
+        if (mw) w = Math.max(w, c.measure(mw, 'tick', k === lit ? 600 : 400));
+        var px = (xs(pk[es]) + xs(pk[ee])) / 2, py = ys(pk[ev]) - 8 - (mw ? tick + 3 : 0);
         // the other series' name moves to the side of the peak where the lit outline sits lowest
         if (placed.length) {
           var p0 = placed[0];
-          if (Math.abs(px - p0.x) < (w + p0.w) / 2 + 12 && Math.abs(py - p0.y) < size + 4) {
+          if (Math.abs(px - p0.x) < (w + p0.w) / 2 + 12 && Math.abs(py - p0.y) < size + 4 + (mw ? tick + 3 : 0)) {
             var right = px >= p0.x;
             px = right ? p0.x + p0.w / 2 + w / 2 + 16 : p0.x - p0.w / 2 - w / 2 - 16;
           }
@@ -69,6 +78,7 @@
         px = Math.min(Math.max(px, x0 + w / 2), x1 - w / 2);
         py = Math.max(py, top + size * 0.2);
         c.text(px, py, words, { role: 'label', weight: k === lit ? 700 : 600, anchor: 'middle', fill: k === lit ? 'label' : 'secondary', halo: true });
+        if (mw) c.text(px, py + tick + 3, mw, { role: 'tick', weight: k === lit ? 600 : 400, anchor: 'middle', fill: k === lit ? 'label' : 'secondary', halo: true });
         placed.push({ x: px, y: py, w: w });
       });
       // the bins' edges along the bottom, thinned to fit; an open last bin takes its own words

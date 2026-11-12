@@ -350,6 +350,42 @@
   }
   K.Ctx = Ctx;
   var SHAPE_LIFT = 12;
+  var HALO_SEQ = 0;
+  // BC S1, AX S2 (round 2 fix pass): does a shape's stroke cross a word's box (less 1.5 px a side)? Lines, a path's points,
+  // a rect's or polygon's outline, a circle's ring. Shared with checks.js, which fails what the halo cannot clear.
+  K.QUIET_STROKES = ['gridline', 'baseline', 'label', 'context', 'secondary'];
+  K.stroke_crosses = function (b, t) {
+    var x0 = t.x + 1.5, x1 = t.x + t.w - 1.5, y0 = t.y + 1.5, y1 = t.y + t.h - 1.5;
+    if (x1 <= x0 || y1 <= y0 || b.x > x1 || b.x + b.w < x0 || b.y > y1 || b.y + b.h < y0) return false;
+    if (b.ring) {
+      var cx = b.ring[0], cy = b.ring[1], r = b.ring[2], nx = Math.max(x0, Math.min(cx, x1)), ny = Math.max(y0, Math.min(cy, y1));
+      var far = Math.max(Math.hypot(x0 - cx, y0 - cy), Math.hypot(x1 - cx, y0 - cy), Math.hypot(x0 - cx, y1 - cy), Math.hypot(x1 - cx, y1 - cy));
+      return Math.hypot(nx - cx, ny - cy) < r && r < far;
+    }
+    var segs = [];
+    if (b.seg) segs.push(b.seg);
+    else if (b.subs) b.subs.forEach(function (pts) {
+      for (var i = 0; i + 1 < pts.length; i++) segs.push([pts[i][0], pts[i][1], pts[i + 1][0], pts[i + 1][1]]);
+      if ((b.kind === 'polygon' || b.closed) && pts.length > 2) segs.push([pts[pts.length - 1][0], pts[pts.length - 1][1], pts[0][0], pts[0][1]]);
+    });
+    else if (b.kind === 'rect') segs.push([b.x, b.y, b.x + b.w, b.y], [b.x + b.w, b.y, b.x + b.w, b.y + b.h], [b.x + b.w, b.y + b.h, b.x, b.y + b.h], [b.x, b.y + b.h, b.x, b.y]);
+    return segs.some(function (sg) { return seg_hits_box(sg[0], sg[1], sg[2], sg[3], x0, y0, x1, y1); });
+  };
+  // a filled shape that covers the whole of a word's box (a dot drawn over its connector, a knockout)
+  K.covers = function (s, t) {
+    var x0 = t.x + 1.5, x1 = t.x + t.w - 1.5, y0 = t.y + 1.5, y1 = t.y + t.h - 1.5, cs = [[x0, y0], [x1, y0], [x0, y1], [x1, y1]];
+    if (s.ring) return cs.every(function (p) { return Math.hypot(p[0] - s.ring[0], p[1] - s.ring[1]) <= s.ring[2]; });
+    if (s.poly) return cs.every(function (p) { return K.in_poly(s.poly, p[0], p[1]); });
+    return s.x <= x0 && s.y <= y0 && s.x + s.w >= x1 && s.y + s.h >= y1;
+  };
+  // a stroke drawn before the word that crosses it and no filled shape drawn between them covers
+  K.crossed_by = function (c_ink, t, test) {
+    var solids = c_ink.filter(function (s) { return s.fill && s.fill !== 'none' && s.a > 0; });
+    return c_ink.filter(function (b) {
+      return b.stroke && !b.strike && test(b) && K.stroke_crosses(b, t) &&
+        !solids.some(function (s) { return s.seq > b.seq && s.seq < t.seq && K.covers(s, t); });
+    });
+  };
   // a shape's box for the drawing-edge check; shapes inside a moved group (a map's projection) are left out
   // CD A-M2 (round 2 fix pass): with its painted area (a, the fill's) and stroke length (len), so the checks measure the
   // share of a view a color covers; o.stroke and o.width ride along
@@ -562,7 +598,10 @@
     var under = K.FC_ON_DARK.indexOf(o.fill) < 0 ? this.fill_under(x0 + w / 2, y - size * 0.35) : null;
     var on_gray = !!under && K.FC[under] === 'GrayText';
     if (on_gray) { cls.push('oac-fc-on-gray'); if (under === 'context') cls.push('oac-fc-on-context'); }
-    var a = data_of(o, { x: r1(x), y: r1(y), 'class': cls.join(' '), 'font-size': size, 'text-anchor': anchor === 'start' ? undefined : anchor });
+    // BC S1 (round 2 fix pass): a word on the ground with no halo carries a marker the draw resolves once every shape is
+    // drawn: the ground's halo where a quiet line drawn before it (a gridline, an axis, a total line) runs through it
+    var hm = !o.halo && !under ? ++HALO_SEQ : 0;
+    var a = data_of(o, { x: r1(x), y: r1(y), 'class': cls.join(' ') + (hm ? '\u0001' + hm + '\u0001' : ''), 'font-size': size, 'text-anchor': anchor === 'start' ? undefined : anchor });
     var body = lines.length === 1 ? esc(lines[0]) : lines.map(function (ln, i) { return '<tspan x="' + r1(x) + '"' + (i ? ' dy="' + lh + '"' : '') + '>' + esc(ln) + '</tspan>'; }).join('');
     this._push('<text' + attrs(a) + '>' + body + '</text>');
     // the box the browser gives this text: its line box (ascent 0.969 em, descent 0.241 em, from the metrics) for the edges,
@@ -571,7 +610,7 @@
     var asc = size * vm.ascent / 1000, desc = size * vm.descent / 1000, half = (asc + desc - size) / 2;
     var box = { x: x0, y: y - asc + half, w: w, h: asc + desc - 2 * half + lh * (lines.length - 1), size: size, words: String(words), role: role,
       overlap_ok: !!o.overlap_ok, id: o.guard_id, top: y - asc, bottom: y + desc + lh * (lines.length - 1), halo: !!o.halo, fill: o.fill,
-      on_gray: on_gray, on_context: on_gray && under === 'context', seq: this._seq++ };
+      on_gray: on_gray, on_context: on_gray && under === 'context', seq: this._seq++, hm: hm };
     this.texts.push(box);
     return box;
   };
@@ -684,6 +723,13 @@
     c.texts.forEach(function (b) { h = Math.max(h, Math.ceil((b.bottom !== undefined ? b.bottom : b.y + b.h) + 2)); });
     c.marks.forEach(function (m) { h = Math.max(h, Math.ceil(m.y + m.h + 1)); });
     h = Math.max(1, h);
+    // BC S1: words on the ground that a quiet line drawn before them crosses take the ground's halo; every other marker goes
+    var halo_on = {};
+    c.texts.forEach(function (t) {
+      if (!t.hm) return;
+      if (K.crossed_by(c.ink, t, function (b) { return b.seq < t.seq && K.QUIET_STROKES.indexOf(b.stroke) >= 0; }).length) { halo_on[t.hm] = true; t.halo = true; t.auto_halo = true; }
+    });
+    c._els = c._els.map(function (e) { return e.indexOf('\u0001') < 0 ? e : e.replace(/\u0001(\d+)\u0001/g, function (_, n) { return halo_on[n] ? ' oac-halo' : ''; }); });
     var guard = K.guard(c, width, h);
     var title = spec.title ? '<title>' + esc(spec.title) + '</title>' : '';   // a table-mode island leaves both out; the figure names the drawing
     var desc = spec.alt ? '<desc>' + esc(spec.alt) + '</desc>' : '';
