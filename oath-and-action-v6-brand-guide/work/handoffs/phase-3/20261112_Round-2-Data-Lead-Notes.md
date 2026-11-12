@@ -124,6 +124,57 @@ Others, so no maker asks twice:
 - **S52, county child poverty.** Two-point bins, closed on the left, from 0 to 74, the same edges for both years: 37 bins. 3,141 counties in 2019 and 3,143 in 2024, each counted once; Kalawao County, Hawaii, has no estimate in either year; the county lists differ where Connecticut moved from 8 counties to 9 planning regions and Alaska split one area into two. Medians 18.7 and 17.1 percent. The note prints the window's reason: 2024 is the latest year and 2019 the year five back, the last before the pandemic. The derived file holds each bin's edges and both counts.
 - **S51, uninsured by county.** Tukey's box: quartiles by linear interpolation between ranked counties (Python's `statistics.quantiles`, method "inclusive"), whiskers to the last county inside 1.5 times the middle half, every county beyond drawn as an outlier. 3,143 counties with an estimate (Kalawao County has none). By script: Northeast 218 counties, 5 outliers; Midwest 1,055, 33; South 1,422, 23; West 448, 1; 62 in all, every one above its box. The derived file holds per region the count, minimum, quartiles, median, maximum and whisker ends, and the outliers' names and rates; the table shows the five numbers, the whisker ends and the outlier count.
 
+## Sign-off, maker B
+
+November 12, 2026, third run. I built S33 and S49 to S59 with `oa-chart.mjs build` into my scratch folder (`kit-out`): all 12 PASS with 0 faults. I looked at every capture at 1440 and 390 px on Newsprint and Charcoal, and in grayscale (1440 px for S33, S49 to S53, S55, S57 to S59; 390 px for all), on contact sheets and at full size for S49, S50, S54, S56 and S57, and zoomed S58's 2013 to 2025 stretch. I read each spec's title from the left and the right, its grade line, measure line, reading guide and notes, and checked every figure in a title or note by script against the frozen or derived file. I read entries 14-058 to 14-078 and rendered the nine sketches on both grounds with the kit's and tokens' styles.
+
+| Item | Verdict | What I checked, and what changes |
+|---|---|---|
+| S33 | Signed off | All receipts dashed in the text's ink with its label in regular weight (ruling (b)); reading guide names the dashed line |
+| S49 | Signed off, one word change | 845 judges, bins and median 8.0 as corrected ruling (g); bins in the subject ink; median dashed. MB-1 |
+| S50 | Signed off, one word change | Vermont $8,052 and Alaska $2,290 in the subject ink (a state, two roles, (c)); 50-state line $4,526; DC left out with the reason. MB-2 |
+| S51 | Changes | The South in the subject ink as ruled; Tukey's box and 62 outliers as (g). MB-3 to MB-5 |
+| S52 | Signed off | Medians 18.7 and 17.1; 2024 in the subject ink and 2019 in the context ink; the window's reason in the measure line; legible in grayscale |
+| S53 | Signed off, one source change | 41.2 million aged 55 to 64; red band with its keyline on Newsprint, the rest light; sides in one ink. MB-6 |
+| S54 | Changes | Florida in the subject ink; Association label and note. MB-7 to MB-9 |
+| S55 | Changes | As S54, with the size key at 1 and 6 million. MB-7 to MB-11 |
+| S56 | Signed off with one drawing change; quarters signed off (RB-D1) | 11.7 million and 3.9 percent for January to March 2022 (11,736 thousand and 3.87 by script); the Association title; the break at the last quarter of 2025, named. MB-12 |
+| S57 | Signed off | 82.0 percent; 13 states and DC above and 12 below past the gap's margin, recounted by script; filled and open dots; no state named first or last |
+| S58 | Changes; band ink ruled (RB-D2) | $87,460 and its margin; breaks as Rule 14.11's plate. MB-13 to MB-15 |
+| S59 | Signed off | 4.1 each year to 2029, 2.0 to 6.2 in 2029; Stone steps 1 and 2 nested; the longer run set apart. A key is right here, since the bands are shades a label cannot name on the narrow inner band (Rule 14.3) |
+| Entries 14-058 to 14-078 | Signed off but for MB-16 and MB-17 | Each `use_instead` names a real rule for the form it describes |
+| Sketches 14.63 to 14.66, 14.70 to 14.73 | Signed off | Each draws its form from invented values in the kit's classes, "Illustrative data" inside; the correlogram's lower and upper halves agree cell by cell and use pair B; the dual-axis pair draws one pair of series both ways |
+| Sketch 14.78 | One drawing change | MB-18 |
+
+**RB-D1, S56's quarters: signed off.** Quarterly averages keep the path's shape at a weight the plate can carry, the note says so, the table gives every quarter, and the derived file states its method. No other cut needed.
+
+**RB-D2, S58's band: Stone magnitude step 1 on both grounds,** the ink S59 gives its band from past errors, so one ink means "range of uncertainty" across the family. The band token reads lighter than Newsprint, so it draws a halo; step 2 is S59's range of projections and the light fill's gray. This replaces ruling (e)'s "band ink" for S58.
+
+### Requests to maker B
+
+- **MB-1, S49 note 2.** Drop "and never on an inauguration day". The check belongs to the builder (entry 14.58 states it, and `notes_internal` can record it); on the reader's page it brings in presidents the chart leaves out.
+- **MB-2, S50 grade line.** "Documented: the Census Bureau’s survey of state tax collections and its population estimates". The population figure is an estimate, never a survey.
+- **MB-3, S51 title.** 13.9 percent is the South's median county, and the title can read as the South's rate for all its people under 65. Suggested: "The South’s median county had 13.9 percent of people under 65 without health insurance in 2024, the highest of the four regions, by the Census Bureau’s estimates." The editor may tune the words.
+- **MB-4, S51 notes 2 and 3.** Note 2 says the chart ranks no county, and note 3 names the highest. Gaines County's 42.5 percent (margin 2.6) passes the next counties, Presidio and Starr at 34.0 (margins 3.1 and 2.6), by 8.5 points against a combined margin of about 4.0, so it may be named. Write note 2's end as "so the chart names a county only where its gap passes both margins", and add to note 3 "8.5 points above the next counties, past both margins".
+- **MB-5, S51's West median prints 12.3 for 12.35.** Until the engineer's RB-G1 lands, have `maker_b_round2_derive.py` store the box numbers rounded half up to one decimal, the source's precision, and say so in `derivation`; the chart, table and CSV then print 12.4. Then the alt can give the West's figure.
+- **MB-6, S53 source line.** Take the research lead's variant `with_program_ages`, since note 1 prints the program ages from the Social Security Act.
+- **MB-7, S54 and S55 label weights.** Florida's name in bold; California's and North Dakota's in regular weight, as names in the light fill.
+- **MB-8, S54 and S55 note 2.** "California’s 32.9 percent, the next highest" ranks California over Hawaii (32.8, margin 1.2), a gap inside the margin. Write: "Florida’s 35.5 percent (margin 0.5) passes the next figures, California’s 32.9 (0.3) and Hawaii’s 32.8 (1.2), by more than their margins." Add a line for North Dakota, which the chart names without saying why: "North Dakota has the smallest figure, 23.8 percent (margin 1.2); Wyoming’s 25.5 (2.0) sits within its margin." The reading guide's "Dots above the cloud pay more rent" becomes "States above the cloud".
+- **MB-9, S54 and S55 scale.** DC sits at $79,741 against an axis that ends at $80,000; its dot touches the plot's edge in S54 and is cut in S55 at both widths. End the income scale past the largest value plus the largest radius, as DL-A4 asked of S36.
+- **MB-10, S55 title.** "Florida’s 3.0 million renter households paid the largest share of income in rent, 35.5 percent" gives every household the median's figure. Suggested: "...and in Florida, home to 3.0 million renter households, the median renter paid the largest share of income in rent, 35.5 percent."
+- **MB-11, S55 on Charcoal.** The field's circles show no outline on Charcoal, so overlaps merge into blobs near $50,000. Give them a 1 px outline in the ground's color there, as the entry promises ("each with a 1 px outline so overlaps read").
+- **MB-12, S56 leaders.** At 1440 px the "July to September 2026" leader ends on a 2020 quarter's dot across the loop, and at 390 px it and the October 2025 leader cross the path. Place both where a leader reaches clear space without crossing the path or ending on another dot; on a phone, name the latest quarter beside its dot and carry the gap in the chart note if no clear place exists.
+- **MB-13, S58 band.** Stone magnitude step 1 on both grounds (RB-D2); the chart note's "light band" follows.
+- **MB-14, S58 2017.** The reading guide says 2017's two estimates are too close to show as a break; the chart note says the line breaks there and draws both as dots, and the drawing does break with two dots that overlap. Write the guide's sentence as "A new processing system in 2017 put them $300 apart, close enough that the two dots overlap; the table prints both."
+- **MB-15, S58 note 1.** "The highest" is a ranking, so test it against the next highest year: 2019's $85,320 (margin $1,123); the gap, $2,140, passes the combined margin of about $1,530 (by script). Add it to note 1 beside 2024's test.
+- **MB-16, entries 14.59, 14.60, 14.67 and 14.68.** Each says the mark the title names takes the subject ink, which is Rule 14.6's party case, true of S50's, S51's, S54's and S55's states and region. As a rule for the form, cite Rule 14.6's two cases (D3-572 for entry 14.16): the named mark takes the view's red point, or the subject ink where a reader would tie it to a party, as a state here.
+- **MB-17, entry 14.75.** "over a light band" becomes "over a band in Stone magnitude step 1", as 14.77 names its steps.
+- **MB-18, sketch 14.78.** Panel 2's bar ends 1.1 units under the threshold, so at sketch size it reads as on the line. Lower it to about 4 units under (as panel 4 sits 4.5 above), keeping four panels above and two below as the caption says.
+
+### Requests to the engineer (from the maker B sign-off)
+
+- **G3, optional.** The `band` token reads lighter than Newsprint and draws a halo around a line. If no form needs it as drawn, point `K.parts.band`'s default fill at Stone magnitude step 1, so every band in the family agrees with S58 and S59.
+
 ## Routine calls
 
 - D3-xxx | Rule 14.6's party test applies only the list the rule prints; DC and a set of states, such as a Census region, count as states | The creative director's risk 1 and D3-594: one test, read the same way in the rule and in the charts
@@ -147,6 +198,9 @@ Others, so no maker asks twice:
 - D3-xxx | Round 4's Euler draws the uninsured as a third circle at true area, with no frame | Two circles cannot fill a frame at true area, so the frame's spare space would overstate the uninsured
 - D3-xxx | Round 4's icon array draws 2025 alone, with 1983 in the note | V7 qualifies the 2025 average, and a second array would invite the comparison it qualifies
 - D3-xxx | The social card counts as its own example, as S41 and S42 each count | Counting it with S19 gives 107 and changes no limit
+- D3-xxx | S56 draws quarterly averages | The monthly table is over the far-over limit; the derived file states its method and the table gives every quarter
+- D3-xxx | S58's confidence band takes Stone magnitude step 1, the ink of S59's band from past errors | The band token draws a halo on Newsprint; one ink for uncertainty across the family
+- D3-xxx | Entries for forms whose specimen names a state cite Rule 14.6's two cases | The subject ink is the party case, never the form's rule (D3-572)
 
 ## Requests
 

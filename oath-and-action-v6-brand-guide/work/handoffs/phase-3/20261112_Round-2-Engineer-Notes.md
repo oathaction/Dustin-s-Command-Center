@@ -9,7 +9,7 @@ Oath & Action Edition 06, Phase 3, round 2, November 12, 2026. Written by the en
 - **ED-E13 HOOK READY (editor).** `phase3_ch14_build.py` copies `14-chapter.json`'s `plate_css` into the chapter file (it has since round 1's fix pass; tested again today), and the guide prints it once at chapter 14's head. Its bytes now count with rules 14.1 to 14.14 and the opener against 212,288. Move the rule plates' shared style into `plate_css` and drop it from each plate.
 - **RS-S1, done in the shell.** At 1024 px (frame 702 px) and 768 px (704 px), and at 800 px (736 px), chapter 15's 15 wide plates now draw their 680 px stage; the mat narrows to 10, 11 and 27 px a side. The systems designer sets nothing.
 - **RS-S2's generator side, done.** A sketch entry's caption is its `sketch_alt`'s first sentence (14.24 and 14.45 from theirs; 14.43 and 14.44 from their `<desc>`).
-- **RS-S3, done in the kit; one line waits on maker A** (`heat-table` says when it draws chips at a desk width).
+- **RS-S3, done.** Maker A added `heat-table`'s line; on the strict page S37's desk phone drawing now hides at 1024 px (figure 5,643 to 4,586 px tall) and shows at 1440 px.
 - **Weight report** (last strict build of this pass, before any round 2 entry landed): see "Weight" below. Chapter 14 with the kit 1,162,341 bytes of its 2,803,941 stop; share per plate 14,249 bytes for each of the 61 still to come; rules 14.1 to 14.14 with the opener and the shared plate style 179,522 of 212,288; chapter 15 184,665 of 600,000; page 10,045,553, projected 15,042,488 (457,512 under 15.5 MB).
 - **Requests answered, in the order they arrived:** the editor's ED-E14 (`line-event-notes` takes `labels.point`, for RS-S4) and ED-E15 (the red count reads a named group as one job), both done; the data lead's G1 and G2, answered (G2 with an opt-in edge for light-fill marks). The makers had written none by the end of this pass; I read their "Requests to the engineer" sections at each pause (six times).
 - `phase3_ch14_build.py` now builds rounds 1 and 2 by default. An entry whose file, spec or sketch has not landed stays out of the chapter among the planned numbers and is listed as a fault, so the script exits 1 until round 2 is whole; that is expected while the makers work.
@@ -41,8 +41,8 @@ Maker B writes `forms/range-bar.js`. The kit's checks expect this of it, and of 
 | `stack` | A stack layout: each segment's start and end, in data units; draws nothing | `var st = K.parts.stack(rows, parts, {offset, total, negative, center_at})`; `parts` the value columns in stacking order, the first on the baseline. `offset`: `'zero'` (default: positives stack up from 0, negatives down from 0; the parts in `negative` count as negative, a pyramid's left side), `'expand'` (each row's parts as shares of its total, 0 to 100; `total` names a total column, else the parts' sum) or `'center'` (as expand, then moved so the boundary before part `center_at` sits at 0: a share bar with a midline). Returns one item a row, `{row, total, segs: [{field, value, start, end, share, missing}]}`, with `start` ≤ `end`; `st.lo` and `st.hi` are the extent for the value scale. An empty cell is a segment with `missing: true` and no length |
 | `wide` | Long rows to one row a key, for `stack` | `K.parts.wide(rows, key, series, value)`: one row per `key` value with a column per `series` value, in first-seen order; `.series` lists them |
 | `total_line`, `total_ring` | The data lead's ruling (b): a total or national line across a plot, and a total point | `K.parts.total_line(c, x1, y1, x2, y2, {width, data})`: dashed 5 and 3 px in the text's ink (`oac-s-label`) at 2 px by default (pass the field's weight, never heavier than the named mark), drawn before the named mark so it sits under it; its label is the form's, in regular weight. `K.parts.total_ring(c, x, y, r, {width, data, row})`: an open ring in the text's ink on the ground. With `data` either is a mark for the checks |
-| `fit_label` | Words set inside a small area (a treemap's tile, a block of seats, a stack's segment), or nothing | `K.parts.fit_label(c, {x, y, w, h}, words, {roles, lines, pad, align, fill, weight})`: tries each role in `roles` (default `['label', 'tick']`, 15 then 13 px) on one line, then up to `lines` lines (default 2), inside `pad` px (default 4), at the top left (`align: 'start'`, default) or centered (`'middle'`); `fill` is the text role for the ground under it (`label-on-subject` on the subject ink, `on-cat-1` to `on-cat-3`); `weight` default 600. Returns the text's box, or `null` with nothing drawn, so the form sets the words outside or folds the area into "All other" |
-| `place_labels` | Labels beside points that keep clear of each other (the scatter forms) | `var pl = K.parts.place_labels(c, items, {top, bottom, gap, reach, leaders, avoid, role, halo})`; `items` `[{x, y, r, words, weight, fill}]` in the order they claim room, the named point first. Each label tries eight places around its dot (right, left, above, below, then the corners) `r + gap` px out (default 4), then, unless `leaders: false`, `reach` px further (default 14) with a hairline leader. A place must sit inside 0 to `c.width` and `top` to `bottom`, clear of every label placed, every text already drawn, every other dot and the `avoid` boxes. Returns `{placed: [{item, box}], unplaced: [items]}`; name the unplaced in a note (`K.word('unlabeled_marks')`) or leave them to the table, as S16's bubbles do. Draw the dots first, so the guard sees them, and the labels after |
+| `fit_label` | Words set inside a small area (a treemap's tile, a block of seats, a stack's segment), or nothing | `K.parts.fit_label(c, {x, y, w, h}, words, {roles, lines, pad, align, fill, weight, sub, sub_lines})` (`sub` and a list of pads: second run, A-E3): tries each role in `roles` (default `['label', 'tick']`, 15 then 13 px) on one line, then up to `lines` lines (default 2), inside `pad` px (default 4), at the top left (`align: 'start'`, default) or centered (`'middle'`); `fill` is the text role for the ground under it (`label-on-subject` on the subject ink, `on-cat-1` to `on-cat-3`); `weight` default 600. Returns the text's box, or `null` with nothing drawn, so the form sets the words outside or folds the area into "All other" |
+| `place_labels` | Labels beside points that keep clear of each other (the scatter forms) | `var pl = K.parts.place_labels(c, items, {top, bottom, gap, reach, leaders, avoid, role, halo})` (`reach` a number or a list: second run, RB-G3); `items` `[{x, y, r, words, weight, fill}]` in the order they claim room, the named point first. Each label tries eight places around its dot (right, left, above, below, then the corners) `r + gap` px out (default 4), then, unless `leaders: false`, `reach` px further (default 14) with a hairline leader. A place must sit inside 0 to `c.width` and `top` to `bottom`, clear of every label placed, every text already drawn, every other dot and the `avoid` boxes. Returns `{placed: [{item, box}], unplaced: [items]}`; name the unplaced in a note (`K.word('unlabeled_marks')`) or leave them to the table, as S16's bubbles do. Draw the dots first, so the guard sees them, and the labels after |
 
 The form scales `start` and `end` to pixels and draws each segment with `data: {key, field, value}` (the value, not the share, unless the chart reads shares). These join round 1's parts (R1-C2: `key`, `value_scale`, `value_gutter`, `value_grid`, `zero_line`, `year_axis`, `note`, `style`, `styled`, `tiles`, `fill`, `arrow`, `named_fill`). A maker who reached one of these before it landed moves its form onto the part. Ask for any other shared part under "Requests to the engineer".
 
@@ -73,6 +73,10 @@ From 48em, the shell narrows the mat of a frame whose plate has `wide_px` from 4
 
 ### Contract changes
 
+- **November 12, second run (RB-G1): numbers round half away from zero on their decimal value.** `K.fmt` reads a value as its 15 significant digits and rounds that decimal, so 12.35 to one place prints 12.4, 1.005 to two places 1.01, and a value computed by a division rounds as its decimal does (`K.dround(a, nd)`). Every number format goes through it (`number`, `percent`, `signed`, `points`, `dollars`, `billions`, `millions`, `integer`, `thousands`, `compact-thousands`, `lead`).
+- **November 12, second run (A-E2):** formats `billions-from-millions:N` (a column held in millions printed in billions, 36,104,000 as "36,104.0 billion") and `billions-value-from-millions:N` (the same, bare, for a column headed in billions); both read back from the table.
+- **November 12, second run (RB-G3, A-E3):** `place_labels`'s `reach` may be a list of reaches, tried in order after the first ring; a place whose leader would cross a word already drawn, or whose label would sit on a leader already drawn, is not clear, by the layout guard's own test (`K.leader_crosses`). `fit_label` takes `sub` (a second block under the words in the tick size, weight 400, on up to `sub_lines` lines, default 1; both must fit; the returned box carries `.sub`) and `pad` as a list (each pad tried with every role, in order).
+- **November 12, second run (A-E1):** a filled path of absolute M, L, H, V and Z commands keeps its outline (`poly` on its ink and mark), so the fill under a word is read from a band or an area by its outline: `c.fill_under` (the forced-colors class on a word) and the forced-colors check in `checks.js`, which reads path marks by outline and, where no mark lies under a word, filled paths drawn as no mark.
 - **November 12, ED-E15 and the data lead's ruling (c): one working red per job.** Any shape (`c.rect`, `c.circle`, `c.line`, `c.path`, `c.polygon`) takes `job`, and `c.group({job})` gives every mark inside it that job; the element or group carries `data-oa-job`. The kit's red count (`checks.js`) and the page check (`dataviz_check.js --kit`) count distinct jobs among red marks: red marks of one job are one working red, a red mark with no job is a job of its own, and two jobs still fail. Use it only for marks the title names together in one role (an age band) or for one mark drawn as several shapes (a red line and its vertex dots).
 - **November 12, `named_fill`:** `labels.point` may be a list, the marks the title names together in one role, all in the red; `fn.job(row)` gives `{job: 'point'}` on a point and `{}` otherwise, to merge into each mark's options (`Object.assign({fill: fill(r), data: ...}, fill.keyline(r), fill.job(r))`). `fn.edge(row)` (G2, opt-in) gives a light-fill mark a 1 px edge in the context ink on Newsprint and `{}` elsewhere; `kit.css` keeps the light fill under the edge.
 - **November 12, ED-E14:** `line-event-notes` takes `labels.point` (the series the title names, in the red, its line and vertex dots one job, on the 1 px keyline on Newsprint) and `labels.named` (series in the subject ink); with either, every other series takes the light fill on Newsprint and the context ink on Charcoal. With neither, `labels.subject` draws as before (every committed drawing equal).
@@ -163,3 +167,80 @@ Taken, in the order they arrived:
 Modified: `work/build/chart-kit/parts.js` (`interval_of`, `whisker`, `band`, `stack`, `wide`, `total_line`, `total_ring`, `fit_label`, `place_labels`; `named_fill` takes a list of points, `job` and `edge`), `kit.js` (`c.arrange`, a drawing's `arrangement`, the figure's `data-oa-phone-form`; `job` on shapes and groups), `kit.css` (the phone view hides beside a phone form; a light-fill mark keeps its fill under its edge), `checks.js` (the interval form's checks, the derived table's checks, the red count by job), `oa-chart.mjs` (self-test cases), `forms/line-event-notes.js` (ED-E14); `work/build/scripts/phase-2/dataviz_check.js` (the red count by job, two self-test cases); `work/build/scripts/phase-3/phase3_ch14_build.py` (rounds 1 and 2 by default, entries not yet landed left among the planned numbers, sketch captions from `sketch_alt`), `guide_charts.py` (the shared plate style counts with the rules; a self-test case); `work/build/scripts/phase-2/guide_build.py` (RS-S1's self-test expectation); `work/build/guide/shell/guide-shell.css` (RS-S1); `work/build/chart-kit/README.md` (the round 2 parts); by the generator, `work/build/guide/chapters/14-data-visualization.json` (four sketch captions) and `work/build/guide/entries/14-example-log.json` (rounds 1 and 2).
 Created: this file.
 Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/65b3d20e-985e-5fe9-b272-d7d01bd821cd/scratchpad/phase-3/round-2/engineer/` (strict builds `base/`, `b2/`, `b3/` with reports and captures; `head/` and `cur/` kit copies, `snap-*.json`, `out-*`; `kit-all1/`; `tools/wide_measure.js`, `phone_form_test.js`, `shots.js`).
+
+## Second run
+
+The main session's second run: maker B's two requests (RB-G1, RB-G3) and its note (RB-G2), and maker A's three optional requests (A-E1 to A-E3). Round 2's entries had all landed by then.
+
+### Summary
+
+- **RB-G1, done.** `K.fmt` rounds half away from zero on the decimal value. **Proof that nothing else changed:** `kit_snapshot.mjs` on the committed state (commit of 19:42, 83 specs: the 64 kit specs, the fixtures and every chapter 13 and 14 `.chart.json`), the committed kit against the same kit with only the rounding edit: 913 drawings and figures, 11 differ, all S51 (its ten drawings and its figure), and the only words that change are "12.3" to "12.4" and "12.3%" to "12.4%". That is S51's West median, 12.35 in `census-sahie-county-uninsured-box-by-region.csv`, a value on the half at one place. CSV exports print stored values and do not change. S51's alt can now give the West's figure (maker B).
+- **RB-G3, done.** `place_labels` takes a list of reaches. With every second-run change in the kit (rounding, A-E1, A-E3, RB-G3), the same comparison gives 13 differences: S51's eleven above, and S56 at 1024 px on both grounds, where the committed drawing's leader ran through "July to September 2026" (the layout guard fails it there; 1024 px is no width the kit checks for an entry, so the build never saw it). The part now refuses that place, by the guard's own test. S56 at every checked width is unchanged.
+- **RB-G2, answered.** `bubble-scatter` calling `K.forms['scatter-named'].draw(c)` stays: it copies no kit code, and the CLI, the guide and the snapshot load every form. The README's plain-page recipe now says `bubble-scatter.js` needs `scatter-named.js` first.
+- **A-E1, done.** A word on a filled path reads that path's fill, in the kit (the forced-colors class) and in the check. No committed drawing changed by it; `stacked-area` can drop its patch under each name when maker A next touches it.
+- **A-E2, done.** `billions-from-millions:N` and `billions-value-from-millions:N`; `bullet-graph` can drop its `labels.per` division.
+- **A-E3, done.** `fit_label` takes `sub` and a list of pads, so `treemap` can move onto the part (`{sub: figure and share, pad: [5, 3]}`).
+- **Weight (strict build, round 2 whole):** see the table below.
+
+### Weight
+
+`guide_build.py --strict`, exit 0, 0 warnings, with all 41 round 2 entries in (`phase3_ch14_build.py`: 96 rules, 82 entries, 61 chart plates, 0 faults):
+
+| Measure | Bytes | Against |
+|---|---|---|
+| Page | 10,583,728 | 16 MB file limit |
+| Projected page | 15,042,488 | 15.5 MB: 457,512 of room |
+| Chapter 14 with the kit | 1,586,694 | 2,803,941 stop |
+| Chapter 14 as built (no kit) | 1,173,952 | |
+| Renderer now, 67 forms | 367,510 | grown to 97 forms: 488,582 |
+| Share per plate still to come | 16,217 for each of 36 | 14,249 before round 2's 25 plates landed; 583,798 bytes of room |
+| Rules 14.1 to 14.14, opener and shared style | 179,615 (169,181, 5,994, 4,440) | 212,288 (32,673 unspent) |
+| Chapter 15 | 298,487 | 0.60 MB ceiling |
+
+Round 2's plates came in under the share on average, so the share for the 36 plates still to come rose by 1,968 bytes.
+
+### Routine calls
+
+- D3-xxx | Numbers round half away from zero on the decimal value read to 15 significant digits | A reader rounds the printed decimal, not its binary neighbor (RB-G1); 15 digits is what a double holds exactly, so a value computed by a division rounds as its decimal does
+- D3-xxx | `place_labels` tests leaders by the layout guard's own rule, shared as `K.leader_crosses` | A part that picks a place the guard then fails helps no one; matching the guard exactly leaves every drawing that passed it as it was
+- D3-xxx | `bubble-scatter` keeps calling `scatter-named`'s draw | It copies no kit code; the plain-page recipe names the load order instead of moving a form into `parts.js`
+- D3-xxx | A filled path's outline is kept only for absolute M, L, H, V and Z paths | The forms' bands and areas use those commands; a curve keeps its box, as before
+- D3-xxx | `billions-from-millions` prints the word "billion" and its `-value` form prints the bare figure | The same pair as `billions` and `billions-value`, so a column headed in billions and a sentence with the word both have one
+
+### Requests
+
+Taken, in the order they arrived:
+
+| Request | From | Status |
+|---|---|---|
+| RB-G1, `K.fmt` rounds 12.35 to 12.3 | maker B | **Done**, with the proof above |
+| RB-G2, `bubble-scatter` calls `scatter-named`'s draw | maker B | **Answered**: keep it; README notes the load order |
+| RB-G3, a list of reaches for `place_labels` | maker B | **Done**: `connected-scatter` can make one call, `reach: [16, 30, 48, 70, 96, 130, 170, 220]` |
+| A-E1, the fill under a word on a filled path | maker A | **Done** |
+| A-E3, a second, smaller block in `fit_label` | maker A | **Done** |
+| A-E2, `billions-from-millions:1` | maker A | **Done** |
+
+To others:
+- **Maker B:** S51's alt can name the West's 12.4 percent; S51 now prints it. `connected-scatter` can pass its reaches as one list.
+- **Maker A:** `stacked-area` can drop its fill patch under each name (A-E1), `bullet-graph` its `labels.per` (A-E2), and `treemap` can move onto `fit_label` with `sub` and `pad: [5, 3]` (A-E3); each is optional, and a rebuild after it should be checked against your last captures.
+
+### Tested
+
+- `oa-chart.mjs self-test`: exit 0, 40 planted faults caught, 27 passes, none missed; new cases: decimal rounding (12.35, −12.35, 12.34999, 1.005, 2.5, 0.05 signed, 173.25 billion, 1.0005 thousand, 12.25 percent, 51.2 thousand), `billions-from-millions` and its read-back, a list of reaches (8 placed with one reach, 10 with three, no guard fault), `fit_label` with `sub` and a list of pads (both blocks inside the tile, none where they do not fit), a word on a filled path (the kit's class and the check's ground).
+- The proofs above: `kit_snapshot.mjs`, committed kit against the rounding edit alone (11 of 913 differ, all S51's 12.35), and against every second-run change (13 of 913; S51, and S56 at 1024 px, whose committed drawing fails the layout guard there and passes with the change).
+- `build --all --no-png` on the live specs: exit 0, 64 check files counted, 64 pass.
+- `phase3_ch14_build.py --check`: 64 of 64 files current; a rerun: 0 faults.
+- `guide_build.py --self-test`: 32 of 32, 326 of 326.
+- The strict build: exit 0, 0 warnings, 10,583,728 bytes (the weight table).
+- RS-S3 on that strict page in Chromium: S37's desk phone drawing hidden at 1024 px, shown at 1440 px.
+
+### Not tested
+
+- The makers' forms moved onto the new options (A-E1 to A-E3, RB-G3): the makers' to do; only the self-test's drawings use them.
+- PNG exports (`build --all` with PNGs), the four-width guide check and axe: not run in this pass.
+- `dataviz_check.js --kit-self-test`: not rerun, since this pass did not change it.
+
+### Files
+
+Modified: `work/build/chart-kit/kit.js` (`dround`, the formats, path outlines and `fill_under`, `K.in_poly`, `K.leader_crosses`), `parts.js` (`place_labels` reaches and leader test, `fit_label` `sub` and pads), `checks.js` (the forced-colors ground by outline), `oa-chart.mjs` (self-test cases), `README.md` (load order); this notes file.
+Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/65b3d20e-985e-5fe9-b272-d7d01bd821cd/scratchpad/phase-3/round-2/engineer/` (`h2/`, `h2new/`, `h2new2/`, `snap-h2*.json`, `tools/patch_rbg1.py`, `kit-all3/`, `b5/`).
