@@ -15,8 +15,11 @@
  * bold, in the subject ink against the light fill), point (the one key in the red point), names ({key: printed name}),
  * short ({key: name printed on a phone}), value (the right column's words, with {value}, {margin}, {low}, {high};
  * default {value}). formats: value (also margin, low and high unless their own are set), tick. scale: x ([lo, hi]).
- * The value scale is ticked along the bottom, and along the top as well past 20 rows. On a phone the same arrangement draws
- * at a narrower plot. Maker B, round 2. */
+ * stack_below (px: the plot's width under which the rows stack; default 160).
+ * The value scale is ticked along the bottom, and along the top as well past 20 rows. Where the name and value columns would
+ * leave the plot narrower than labels.stack_below, the rows stack (ED-E16): each row's name and value on one line, its
+ * interval across the full width on the line beneath, the gridlines and the reference only through the interval lines, and
+ * the scale ticked at the top and the bottom; the drawing then reports the phone arrangement (c.arrange). Maker B, round 2. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -24,7 +27,7 @@
     name: 'Range Bar',
     family: 'uncertainty-and-estimates',
     encode: { category: 'text', value: 'number', low: 'number?', high: 'number?', margin: 'number?', key: 'code?', status: 'category?' },
-    labels: ['reference', 'reference_label', 'reference_band', 'test', 'open', 'key_filled', 'key_open', 'key_interval', 'named', 'point', 'names', 'short', 'value'],
+    labels: ['reference', 'reference_label', 'reference_band', 'test', 'open', 'key_filled', 'key_open', 'key_interval', 'named', 'point', 'names', 'short', 'value', 'stack_below'],
     interval: true,
     phone: 'same',
     draw: function (c) {
@@ -79,14 +82,19 @@
         c.key([{ fill: 'subject', direct: true }, { fill: 'surface', pattern: true }]);
         y = ky + Math.round(size * 0.9);
       }
-      // the name column and the value column
+      // the name column and the value column; where they would leave the plot under labels.stack_below px (160 by
+      // default), the rows stack: each row's name and value on one line and its interval across the full width on the line
+      // beneath, on one shared scale (ED-E16), and the drawing reports its phone arrangement (R2-C4)
       var lw = 0, vw = 0;
       rows.forEach(function (r) { var b = bold(r) ? 700 : 400; lw = Math.max(lw, c.measure(name(r), 'label', b)); vw = Math.max(vw, c.measure(fill(r), 'label', b === 700 ? 700 : 600, true)); });
       var x0 = Math.ceil(lw + (ph ? 10 : 20)), x1 = W - Math.ceil(vw + (ph ? 10 : 20));
+      var stack = x1 - x0 < (L.stack_below || 160);
+      if (stack) { x0 = 0; x1 = W; c.arrange('phone'); }
       var all = c.rows.map(lo).concat(c.rows.map(hi));
-      var sx = (c.spec.scale || {}).x, dom = sx || K.nice(Math.min.apply(null, all), Math.max.apply(null, all), ph ? 3 : 6);
+      var sx = (c.spec.scale || {}).x, nt = stack || ph ? (W < 300 ? 3 : 4) : 6, dom = sx || K.nice(Math.min.apply(null, all), Math.max.apply(null, all), nt);
       var pad = rd + 2, xs = K.scale.linear([dom[0], dom[1]], [x0 + pad, x1 - pad]);
-      var ticks = K.ticks(dom[0], dom[1], ph ? 3 : 6), tf = f.tick || 'integer';
+      var ticks = K.ticks(dom[0], dom[1], 0, K.nice(dom[0], dom[1], nt).step), tf = f.tick || 'integer';
+      var tick_at = function (t) { var w = c.measure(K.fmt(t, tf), 'tick'), x = xs(t); return { x: Math.min(Math.max(x, w / 2), W - w / 2) }; };
       // the reference's words above the rows, kept inside the drawing
       if (refrow && L.reference_label) {
         var words = P.fill(c, L.reference_label, refrow), ww2 = c.measure(words, 'tick');
@@ -94,22 +102,32 @@
         c.text(Math.min(Math.max(xs(refrow[ev]), ww2 / 2), W - ww2 / 2), y, words, { role: 'tick', anchor: 'middle', fill: 'label' });
         y += 8;
       }
-      var top_axis = rows.length > 20;
+      var top_axis = rows.length > 20 || stack;
       if (top_axis) {
         y += tick;
-        ticks.forEach(function (t) { c.text(xs(t), y, K.fmt(t, tf), { role: 'tick', anchor: 'middle' }); });
+        ticks.forEach(function (t) { c.text(tick_at(t).x, y, K.fmt(t, tf), { role: 'tick', anchor: 'middle' }); });
         y += 8;
       }
-      var top = y + 4, bottom = top + rows.length * pitch;
-      // gridlines, the reference's band and line, then the rows over them
-      ticks.forEach(function (t) { c.line(xs(t), top, xs(t), bottom, { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); });
+      var line_gap = 5, spitch = Math.round(size + line_gap + 2 * rd + 10);
+      var top = y + 4, bottom = top + rows.length * (stack ? spitch : pitch);
+      var dot_y = function (i) { return stack ? top + i * spitch + size + line_gap + rd + 2 : top + i * pitch + pitch / 2; };
+      // gridlines, the reference's band and line, then the rows over them; stacked, each runs only through the rows'
+      // interval lines, so no line crosses a name
+      var seg = function (x) {
+        if (!stack) return 'M' + K.round(x) + ',' + K.round(top) + 'V' + K.round(bottom);
+        return rows.map(function (r, i) { return 'M' + K.round(x) + ',' + K.round(dot_y(i) - rd - 2) + 'V' + K.round(dot_y(i) + rd + 2); }).join('');
+      };
+      ticks.forEach(function (t) { c.path(seg(K.snap(xs(t), 1)), { stroke: 'gridline', width: c.t('line-hairline'), mark: false }); });
       if (refrow) {
-        var bl = xs(lo(refrow)), bh = xs(hi(refrow));
-        if (L.reference_band && bh - bl >= 1.5) c.rect(bl, top, bh - bl, bottom - top, { fill: 'band', mark: false });
-        P.total_line(c, xs(refrow[ev]), top - 4, xs(refrow[ev]), bottom, { data: { key: refrow[ek], field: ev, value: refrow[ev] } });
+        var bl = xs(lo(refrow)), bh = xs(hi(refrow)), rx = xs(refrow[ev]);
+        if (L.reference_band && bh - bl >= 1.5 && !stack) c.rect(bl, top, bh - bl, bottom - top, { fill: 'band', mark: false });
+        if (!stack) P.total_line(c, rx, top - 4, rx, bottom, { data: { key: refrow[ek], field: ev, value: refrow[ev] } });
+        else rows.forEach(function (r, i) {
+          P.total_line(c, rx, dot_y(i) - rd - 3, rx, dot_y(i) + rd + 3, i ? {} : { data: { key: refrow[ek], field: ev, value: refrow[ev] } });
+        });
       }
       rows.forEach(function (r, i) {
-        var cy = top + i * pitch + pitch / 2, ty = cy + size * 0.35, b = bold(r), role = ink(r), k = r[ek];
+        var cy = dot_y(i), ty = stack ? top + i * spitch + size : cy + size * 0.35, b = bold(r), role = ink(r), k = r[ek];
         c.text(0, ty, name(r), { role: 'label', weight: b ? 700 : 400 });
         var a = xs(lo(r)), z = xs(hi(r)), x = xs(r[ev]);
         var wst = role === 'subject' || role === 'point' ? 'context' : role;
@@ -124,7 +142,7 @@
       var ay = bottom + tick + 8;
       ticks.forEach(function (t) {
         c.line(xs(t), bottom, xs(t), bottom + 4, { stroke: 'baseline', width: c.t('line-hairline'), mark: false });
-        c.text(xs(t), ay, K.fmt(t, tf), { role: 'tick', anchor: 'middle' });
+        c.text(tick_at(t).x, ay, K.fmt(t, tf), { role: 'tick', anchor: 'middle' });
       });
       c.height(ay + 4);
     }

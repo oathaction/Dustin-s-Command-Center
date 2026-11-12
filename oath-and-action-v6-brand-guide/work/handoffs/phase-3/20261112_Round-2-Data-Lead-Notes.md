@@ -140,7 +140,7 @@ November 12, 2026, third run. I built S33 and S49 to S59 with `oa-chart.mjs buil
 | S54 | Changes | Florida in the subject ink; Association label and note. MB-7 to MB-9 |
 | S55 | Changes | As S54, with the size key at 1 and 6 million. MB-7 to MB-11 |
 | S56 | Signed off with one drawing change; quarters signed off (RB-D1) | 11.7 million and 3.9 percent for January to March 2022 (11,736 thousand and 3.87 by script); the Association title; the break at the last quarter of 2025, named. MB-12 |
-| S57 | Signed off | 82.0 percent; 13 states and DC above and 12 below past the gap's margin, recounted by script; filled and open dots; no state named first or last |
+| S57 | Signed off at 1440 and 390 px; 256 to 358 px held for ED-E16 (below) | 82.0 percent; 13 states and DC above and 12 below past the gap's margin, recounted by script; filled and open dots; no state named first or last |
 | S58 | Changes; band ink ruled (RB-D2) | $87,460 and its margin; breaks as Rule 14.11's plate. MB-13 to MB-15 |
 | S59 | Signed off | 4.1 each year to 2029, 2.0 to 6.2 in 2029; Stone steps 1 and 2 nested; the longer run set apart. A key is right here, since the bands are shades a label cannot name on the narrow inner band (Rule 14.3) |
 | Entries 14-058 to 14-078 | Signed off but for MB-16 and MB-17 | Each `use_instead` names a real rule for the form it describes |
@@ -209,6 +209,11 @@ November 12, 2026, third run. I built S18, S43 to S48 and S60 to S64 with `oa-ch
 - **MA-8, entry 14.53.** "Lay the blocks in the chamber’s usual order" claims a seating order nobody checked. State the guide's order and its reason: Democrats from the left as S26 orders the parties, independents and vacancies between, Republicans from the right.
 - **MA-9, S44, optional.** At 1440 px "−694.2" sits on Income security's connector and "−1,667.1" crosses the zero line; move each value clear of the line.
 
+### Rulings on the editor's two questions (third run)
+
+1. **S63's chip words for Issue X18 keep the source's window and print its reason.** H09 forbids a sentence that splits a period at an inauguration or gives counts on both sides of one; D3-619 applied it to S25, where the studio chose the split. Here the Congressional Research Service counted suits against the administration that took office January 20, 2025, so the window starts on its first day because of what was counted, and the words give no count before it. The one split in the words falls at a court decision, Trump v. CASA. Words, in V7's figures: "The Congressional Research Service counted 50 cases with nationwide injunctions against the administration from its first day, January 20, 2025, to June 27, 2026, 16 of them after Trump v. CASA, decided June 27, 2025." The words may name the report (R49022, July 7, 2026), as V7 does. Owner: the editor writes them into `s63.json`'s `labels.status.X18.words`, as the main session allows; maker A rebuilds S63. MA-5's title change stands alongside.
+2. **S57 at 256 px: held for ED-E16.** At the guide's 256 px width the plot is about 90 px and the scale about 2 px a point, so a 1-point margin sits under its dot and most intervals vanish (rendered with Playwright from the kit's page, looked at). The filled and open dots still carry the test, but the form exists to show each interval. ED-E16's stacked rows are what S57 needs. I sign S57 off at 256, 296, 326 and 358 px once it lands, on these terms: each row's name and value on one line and its interval on the row beneath across the full width; one scale for every row at a given width, with its ticks named; the nation's dashed line running through every interval row; filled and open dots as now; and the dot no wider than the narrowest interval it marks needs to show, or the interval drawn over it. The 1440 and 390 px drawings stay signed off. Owner: maker B; the editor's Rule 14.9 plate takes the same arrangement (D3-641).
+
 ### Requests from the maker A sign-off to others
 
 - **Research lead.** `v7-numbers.meta.json`'s qualification says Alaska's Ballot Measure 2 was "decided on November 3, 2026"; write "voted on", as MA-4.
@@ -242,6 +247,8 @@ November 12, 2026, third run. I built S18, S43 to S48 and S60 to S64 with `oa-ch
 - D3-xxx | Entries for forms whose specimen names a state cite Rule 14.6's two cases | The subject ink is the party case, never the form's rule (D3-572)
 - D3-xxx | Words on a Pillar Red fill sit on a plate of the ground or at large-text size | Charcoal on Pillar Red measures 4.49 to 1, under 4.5 for small text; corrects ruling (e) for S47
 - D3-xxx | S45 keeps its 2000 window and gives 1974's higher share in a note | S20's case: the window shows the columns, the note keeps the longer record
+- D3-xxx | S63's X18 words keep the Congressional Research Service's window from January 20, 2025, with the reason "from its first day" | The count covers suits against one administration, so the window is the data's reach (H09); no count falls on the other side, unlike S25 (D3-619)
+- D3-xxx | S57's narrow drawings wait on `range-bar`'s stacked rows (ED-E16) | At 256 px most intervals sit under their dots
 
 ## Requests
 

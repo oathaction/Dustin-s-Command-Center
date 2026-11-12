@@ -88,12 +88,13 @@
         var ink = role === 'subject' ? 'label-on-subject' : c.ground === 'charcoal' ? 'surface' : 'label';
         var wd = words(it), fit = fitting(it, w, h);
         if (!fit) { c.warn('tile ' + (it.key || 'folded') + ' is too small for its words at ' + W + ' px: raise fold_below'); return; }
-        // on the red point the words sit on a plate that takes Canvas in forced colors, where Highlight under CanvasText
-        // reads at about 1.1 to 1 (invisible in normal colors, as heat-table's plates)
+        // on the red point the words sit on a plate of the ground in the text's ink: Charcoal on Pillar Red measures 4.49 to
+        // 1, under the 4.5 small text needs (MA-3)
         if (role === 'point') {
+          ink = 'label';
           var ls = c.wrap(wd.name, fit.rl, fit.maxw, 700).map(function (l) { return c.measure(l, fit.rl, 700); }).concat(c.wrap(wd.vw, 'tick', fit.maxw, 400).map(function (l) { return c.measure(l, 'tick'); }));
           var nl2 = c.wrap(wd.name, fit.rl, fit.maxw, 700).length, vl2 = c.wrap(wd.vw, 'tick', fit.maxw, 400).length;
-          c.rect(x + fit.pd - 3, y + fit.pd - 3, Math.max.apply(null, ls) + 6, nl2 * fit.lh + vl2 * Math.round(c.size('tick') * 1.25) + 9, { fill: 'none', cls: 'oac-fc-plate', mark: false });
+          c.rect(x + fit.pd - 4, y + fit.pd - 3, Math.max.apply(null, ls) + 8, nl2 * fit.lh + vl2 * Math.round(c.size('tick') * 1.25) + 8, { fill: 'surface', mark: false });
         }
         var nb = c.text(x + fit.pd, y + fit.pd + fit.sz * 0.95, wd.name, { role: fit.rl, weight: 700, max: fit.maxw + 1, leading: fit.lh, fill: ink });
         c.text(x + fit.pd, nb.bottom + 3 + c.size('tick') * 0.95, wd.vw, { role: 'tick', max: fit.maxw + 1, fill: ink, weight: 400 });
