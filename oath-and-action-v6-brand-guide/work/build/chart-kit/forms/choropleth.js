@@ -123,7 +123,7 @@
       if (tb.lines > 1) { x = 0; by = rowb + 19; }
     });
     c.key(steps.slice(0, words.length).map(function (s, i) { return { fill: s, ordered: true, outline: i === 0 }; }));
-    return Math.max(by, rowb - 3) + 12;
+    return rowb + 9;
   };
   var def = K.register_chart({
     form: 'choropleth', name: 'Choropleth', family: 'maps',
