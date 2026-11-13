@@ -647,3 +647,16 @@ Searched by script (`grep` over `work/build/chart-kit/specs/`, `work/build/guide
 Read from the left and the right: each side gets the same two facts in the same frame, the dollars its funds sent and how many committees they reached, and the comparison holds across all seven funds the rule finds. Figures by my script on `fec-jfc-transfers-2024-all-committees` (line 22 rows, 07:14 UTC): the Democratic side's three funds $955,939,029.74 to 54 distinct committees; the Republican side's four $679,818,943.47 to 56. Maker B's figure check reads "$955.9 million to 54" and "$679.8 million to 56" and forbids the possessives, so no check string changed (D3-1307): `maker_b_round3_derive.py --figures` 0 faults. `oa-chart.mjs build s73`, sweep on: PASS, 0 faults, 13,913 bytes with its frame (under 14,106). `phase3_ch14_build.py`: 0 faults; the chapter prints the new caption once. Looked at by eye: the title, measure line and bar heads at 1440 and 390 px on Newsprint. For the data lead's reading from both sides and sign-off.
 
 - D3-xxx | S73's title, measure line, reader question and chart note, and entry 14.104's plate caption, name the funds as the joint fundraising committees that paid each party's presidential campaign, with no nominee's possessive | D3-1508 (ST2-M1): the main Democratic fund and the campaign carried Biden's name until July 21, 2024
+
+### Tested, second pass
+
+- RS-4: `tools/apply.py` on six fields; word counts by script (29, 29, 29); S78's class counts by script on `census-acs-broadband-by-state` (11 places at 79 or more, 9 under 71); `oa-chart.mjs build s65 s77 s78 s81`: 4 PASS, 0 faults; the cartographer's figure check 1 fault (the S78 string I passed on); maker B's check stopped on S73's new column before S65 and S77 (its S73 work then in progress).
+- ST2-M1: S73's sums by script on the all-committees file; `maker_b_round3_derive.py --figures` 0 faults; `oa-chart.mjs build s73` PASS, 0 faults; `phase3_ch14_build.py` 0 faults; S73's title, measure line and bar heads looked at by eye at 1440 and 390 px on Newsprint.
+- N3: every use of `{data_file}` searched by script (none in specs or entries).
+- Last run (07:14): the rules generator passes and changes nothing; strict build `guide3.html` exit 0, 0 warnings, 11,235,128 bytes; rules 14.1 to 14.14 with the opener 175,678 bytes.
+
+### Not tested, second pass
+
+- Maker B's and the cartographer's figure checks after they take the three RS-4 strings (theirs to run).
+- S65, S77, S78 and S81 inside a guide build by eye; S73 on Charcoal and in grayscale (the kit's captures passed its checks).
+- The quick guide check on `guide3.html` (run on `guide2.html` earlier: PASS).
