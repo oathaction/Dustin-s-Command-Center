@@ -975,6 +975,40 @@ async function self_test() {
       const c1 = mk({}), free = K.parts.place_labels(c1, items, { avoid, reach: [40] });
       const c2 = mk({}), blocked = K.parts.place_labels(c2, items, { avoid, reach: [40], paths: sq });
       pass(free.placed.length === 1 && blocked.unplaced.length === 1, 'place_labels draws a leader where it may and none across a path it is given (RB-G4)'); }
+    // ---- round 3 (R3-5, R3-2): nodes, links, trees, flows, and shapes inside a moved group ----
+    const P = K.parts;
+    const drawn = (fn, w) => { const nm = 'oa-self-test-r3'; K.register_chart({ form: nm, name: 'T', family: 'structure', encode: {}, labels: [], phone: 'same', draw: fn });
+      const sp = { kit: 1, id: 'T3', form: nm, encode: {}, labels: {} }; const d = K.draw(sp, [{}], { width: w || 400, ground: 'newsprint', tokens: TOK.newsprint }); delete K.forms[nm]; return { d, f: C.check_drawing(sp, d, TOK.newsprint, 'self-test') }; };
+    { const a = drawn(c => { P.link(c, { x: 10, y: 10, w: 0, h: 0 }, { x: 300, y: 10, w: 0, h: 0 }); c.text(100, 15, 'Under a link'); });
+      pass(a.f.some(x => x.indexOf('a link crosses "Under a link"') >= 0), 'R3-5: the layout guard fails a link drawn before a word with no halo'); }
+    { const a = drawn(c => { c.text(100, 15, 'Under a link'); P.link(c, { x: 10, y: 10, w: 0, h: 0 }, { x: 300, y: 10, w: 0, h: 0 }); });
+      pass(a.f.some(x => x.indexOf('a link crosses') >= 0), 'R3-5: the layout guard fails a link drawn after a word'); }
+    { const a = drawn(c => { P.link(c, { x: 10, y: 10, w: 0, h: 0 }, { x: 300, y: 10, w: 0, h: 0 }); P.clear_label(c, 100, 15, 'On a link'); });
+      pass(!a.f.length, 'R3-5: words set on a link with clear_label pass' + (a.f.length ? ': ' + a.f[0] : '')); }
+    { const a = drawn(c => { const A = P.node(c, { x: 10, y: 10, w: 140, h: 40 }, 'Agency'), B = P.node(c, { x: 200, y: 90, w: 140, h: 40 }, 'Final rule');
+      P.link(c, A, B, { shape: 'elbow', dir: 'down', arrow: true }); P.link(c, A, B, { shape: 'arc' }); P.link(c, A, B); });
+      pass(!a.f.length, 'R3-5: nodes with straight, elbow and arc links to their edges pass, words drawn after links or not' + (a.f.length ? ': ' + a.f[0] : '')); }
+    { const c = mk({}); const r = P.node(c, { x: 0, y: 0, w: 60, h: 24 }, 'Office of Information and Regulatory Affairs'); const sz = P.node_size(c, 'Office of Information and Regulatory Affairs', { max: 200 });
+      pass(r === null && c._els.length === 0 && sz && sz.w <= 200 && sz.lines >= 2, 'R3-5: a node too small for its words draws nothing and says so; node_size gives the box it needs'); }
+    { const items = [{ id: 'r', w: 120, h: 30 }, { id: 'a', parent: 'r', w: 100, h: 30 }, { id: 'b', parent: 'r', w: 160, h: 50 }, { id: 'a1', parent: 'a', w: 90, h: 30 }, { id: 'a2', parent: 'a', w: 90, h: 30 }, { id: 'b1', parent: 'b', w: 90, h: 30 }, { id: 'x', parent: 'nobody', w: 40, h: 30 }];
+      const T = P.tree(items, { gap: 10, level: 20 }), N = T.nodes;
+      let clash = false; for (let i = 0; i < N.length; i++) for (let j = i + 1; j < N.length; j++) { const p = N[i], q = N[j]; if (p.x < q.x + q.w + 9.99 && q.x < p.x + p.w + 9.99 && p.y < q.y + q.h && q.y < p.y + p.h) clash = true; }
+      const mid = Math.abs(T.by.r.cx - (T.by.a.cx + T.by.b.cx) / 2) < 0.01, under = N.every(n => !n.parent || n.y >= T.by[n.parent].y + T.by[n.parent].h + 20 - 0.01);
+      const R = P.tree(items.slice(0, 6), { dir: 'right' }), I = P.tree(items.slice(0, 6), { dir: 'indent' });
+      pass(!clash && mid && under && T.order.join() === 'r,a,a1,a2,b,b1,x' && T.faults.length === 1 && R.by.a1.x > R.by.a.x && I.order.join() === 'r,a,a1,a2,b,b1' && I.by.a1.x === 40,
+        'R3-5: the tree lays siblings apart, centers each parent over its children, reads depth first, and names an unknown parent'); }
+    { const F = P.flows([{ from: 'In', to: 'Node', value: 30 }, { from: 'Loan', to: 'Node', value: 10 }, { from: 'Node', to: 'Out', value: 35 }], { max_px: 80 });
+      const G = P.flows([{ from: 'In', to: 'Node', value: 30 }, { from: 'Node', to: 'Out', value: 25 }, { from: 'Node', to: 'Cash', value: 5 }], { max_px: 60 });
+      pass(F.faults.length === 1 && /Node takes in 40 and sends 35/.test(F.faults[0]) && !G.faults.length && G.links[2].out_at === G.px(25) && Math.abs(G.nodes.Node.size - 60) < 1e-9,
+        'R3-5: flows share one unit, stack at each node, and fail a node whose bands do not sum'); }
+    { const a = drawn(c => { P.flow_band(c, 10, 10, 300, 60, 20, { fill: 'band', edge: false }); });
+      const b = drawn(c => { P.flow_band(c, 10, 10, 300, 60, 20, { fill: 'band' }); });
+      pass(a.f.some(x => x.indexOf('band:') >= 0) && !b.f.some(x => x.indexOf('band:') >= 0), 'R3-5: a light flow band with no edge fails 3 to 1, and passes with its edges'); }
+    { const a = drawn(c => { const g = c.group({ transform: 'translate(0,20) scale(0.5)' }); c.rect(0, 0, 400, 40, { fill: 'point', data: { key: 'x' } }); g.end(); });
+      const b = drawn(c => { const g = c.group({ transform: 'translate(0,20) scale(2)' }); c.rect(0, 0, 400, 40, { fill: 'subject', mark: false }); g.end(); });
+      const e = drawn(c => { const g = c.group({ transform: 'translate(10,20) scale(0.5)' }); c.line(0, 30, 300, 30, { stroke: 'subject', width: 2 }); g.end(); c.text(40, 40, 'Beside the line'); });
+      pass(a.f.some(x => x.indexOf('Pillar Red covers') >= 0) && b.f.some(x => x.indexOf('drawn outside its drawing') >= 0) && e.f.some(x => x.indexOf('runs through "Beside the line"') >= 0) && K.parse_transform('rotate(4)') === null,
+        'R3-2: the red share, edge and crossing checks reach shapes inside a moved and scaled group'); }
   }
   // the words inside kit.js equal words.json
   const wj = Object.assign({}, K.words); delete wj.about;
