@@ -1323,7 +1323,11 @@
     // the same to a screen reader, so the hint is hidden from it), and the frame shows its edges and a scroll bar (kit.css)
     function stage_stop() {
       var hint = art.previousElementSibling && art.previousElementSibling.classList.contains('oac-stage-hint') ? art.previousElementSibling : null;
-      if (art.hasAttribute('data-oa-stage') && art.scrollWidth > art.clientWidth + 1) {
+      // round 4 (the cartographer's 1,103 px window): a drawing at most 1 px wider than its column shrinks to it, never a 1 px
+      // scroll with no tab stop or hint; the overflow is read from the drawn width, so the shrink does not undo itself
+      var over = art.hasAttribute('data-oa-stage') ? +art.getAttribute('data-oa-stage') - art.clientWidth : 0;
+      if (over > 0 && over <= 1) art.setAttribute('data-oa-stage-fit', ''); else art.removeAttribute('data-oa-stage-fit');
+      if (over > 1) {
         art.setAttribute('tabindex', '0'); art.setAttribute('role', 'group'); art.setAttribute('data-oa-scrolls', '');
         art.setAttribute('aria-label', word(opts, 'stage_scroll').replace('{w}', art.getAttribute('data-oa-stage')));
         if (!hint) { art.insertAdjacentHTML('beforebegin', '<p class="oac-stage-hint" aria-hidden="true"></p>'); hint = art.previousElementSibling; }

@@ -20,6 +20,7 @@
    column is narrower; the kit gives the frame a tab stop and a name while it scrolls */
 .oac-art[data-oa-stage] { overflow-x: auto; overflow-y: hidden; padding-bottom: 4px; }
 .oac-art[data-oa-stage] > svg.oac-svg { max-width: none; }
+.oac-art[data-oa-stage][data-oa-stage-fit] > svg.oac-svg { max-width: 100%; height: auto; }
 .oac-art[data-oa-stage]:focus-visible { outline: 2px solid var(--oa-color-focus-ring); outline-offset: 2px; }
 /* RS-1 (second pass): while the staged drawing scrolls, a hint sits above it, and the frame shows both edges and a scroll
    bar that stays in sight (styled, so no browser hides it until the pointer moves), so the cut at the right reads as more

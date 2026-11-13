@@ -26,7 +26,7 @@
   "title": "State imprisonment rates at the end of 2023 ran from 96 sentenced prisoners per 100,000 residents in Massachusetts to 652 in Mississippi.",
   "measure_line": "Imprisonment rate: prisoners serving sentences of more than one year under each state’s authority, per 100,000 state residents, December 31, 2023, 50 states.",
   "notes": [
-    "The card shows each state as a dot, ranked from the highest rate to the lowest, and names the two states the title names; the table below gives every state’s rate, as Rule 14.18’s dot plot does."
+    "The card shows each state as a dot, ranked from the highest rate to the lowest, and labels only the two states in the title; the table below gives every state’s rate, as Rule 14.18’s dot plot does."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,

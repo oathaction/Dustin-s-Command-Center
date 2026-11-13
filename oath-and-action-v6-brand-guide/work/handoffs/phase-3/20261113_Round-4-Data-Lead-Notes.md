@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
-- 21:47 UTC. DR-265 and Rules 15.19 to 15.21 signed off (15.20's R-04 state rests on the accessibility lead's behavior test). Next: re-read S90, S92, S94 and S95 after the design director's second read.
+- 21:46 UTC. DR-265 and Rules 15.19 to 15.21 signed off (15.20's R-04 state rests on the accessibility lead's behavior test). Next: re-read S90, S92, S94 and S95 after the design director's second read.
 - 21:44 UTC. D4-3 signed off: S12, S16 and S78 code all 51 states at 326 px. Next: the systems designer's DR-265 plates and 15.19 to 15.21.
 - 21:43 UTC. S95's date answered: "the end of 2023" meets the R4-4 condition.
 - 21:39 UTC. D4-2 signed off: S16's phone codes complete. S12's and S78's wait on C4-E1.
@@ -148,7 +148,7 @@ The engineer may land items 1 to 3; the cartographer then writes `s12.json` (`"s
 
 CL-050 is an atlas symbol, not a topic symbol: chapter 10's label table files it as Variable A2 (`v7_chip` "Variable A2", label "Worker bargaining power"), and Rule 10.6 sets an atlas drawing only beside the atlas's own name for it, followed by its typed chip. So S85 prints "Worker bargaining power" and the chip "Variable A2" beside the 48 px drawing, both checked by script against `work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json`, with the check named in `notes_internal`. This keeps DR-266 and Rule 10.1 exact: by script, Variable A2's own indicator in the atlas is "Union density (BLS, 10.0% 2025)", the very figure S85 draws, so the drawing means its own variable and nothing else. The chip is a reference line in the label style, which the brief's call 5 allows. DR-265 does not reach it: S85 is not a loop drawing, and chapter 10's icon names stay as approved, so the V7 title "Workers' bargaining power" does not replace the label here. Add `CL1514` to the spec's `v7.ids`, since the figure is that claim's.
 
-### DR-265 and DR-267's titles, and Rules 15.19 to 15.21: signed off (21:47 UTC, for the systems designer)
+### DR-265 and DR-267's titles, and Rules 15.19 to 15.21: signed off (21:46 UTC, for the systems designer)
 
 Read the systems designer's report (21:42 UTC) and its captures; I ran no browser of my own, given the machine's load (about 4.5). Looked at: 15.19, 15.20 and 15.21, correct and failure, at 1440 px on Charcoal (`capGd`, from `guide13.html`); 15.1's correct plate at 360 px and 15.15's failure plate at 390 px on Newsprint (`capF`). The systems designer reports all 510 captures of the 51 changed plates unflagged. Chapter 15's example log, recounted from the generator's source: 30 examples, Elections and representation 7 (23.3 percent, under one in four), Money, lobbying and influence 4, as (f) set.
 
