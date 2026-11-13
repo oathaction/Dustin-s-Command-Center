@@ -138,69 +138,85 @@ November 13, 2026, after the data lead's "Sign-off, maker A" (MA-1 to MA-8, with
 
 ## Review fix pass
 
-November 13, 2026, from 04:34 UTC (clock read). Brief: `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md`, maker A's paragraph and its addendum's row, under calls D3-1319 to D3-1330 and the round 3 brief's calls 1 to 13. Rulings read: the data lead's "Review fix pass" (ST, AX and CD rulings). Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/maker-a/`. Written as I go.
+November 13, 2026, 04:34 to 05:1x UTC (clock read at 04:34, 04:39, 04:55, 04:59, 05:08 and 05:12). Brief: `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md`, maker A's paragraph and its addendum's row, under calls D3-1319 to D3-1330 and the round 3 brief's calls 1 to 13. Rulings read: the data lead's "Review fix pass" (ST, AX and CD rulings). Words: the editor's "Words for maker A, review fix pass", all nine rows applied. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/maker-a/`. The container restarted at about 05:07; every file was on disk and committed, and I rebuilt everything after it.
 
 ### Summary
 
-- 04:3x. Started with the items no ruling waits on.
-- 04:5x. Most items in: S68's table and boxes, S71's cells and title, S66's words and spine, S67's and S72's titles, S72's order and forced colors, S69's and S70's columns, S69's subcommittee rows. Waiting: the engineer's A-E8 (S70's phone part at a desk), the research lead's check of the route grid and request R-A2, the editor's call 9 and second pass.
+- **Finished (05:1x).** Every maker A item in the four reports is done: ST-M3, AX-M2, A-M2 and BC-M2 (S68); A-M1 and BC-M3 (S71); A-S1 to A-S6; AX-S1 and AX-S8 on my specs; ST-S8 and ST-S10; BC-S7, BC-S8, BC-S10 and BC-S12 where they name me. The engineer's A-E8 landed, so S70 shows its first part at a desk. Nothing waits on another owner.
+- Kit build of S66 to S72 at 1440, 390, 296 and 256 px, sweep on: 7 PASS, 0 faults, 0 warnings, 7 check files. Strict build exit 0, no warning. `phase3_ch14_build.py`: 0 faults. Figure checks 44 of 44.
+- Weight (strict build, plate bytes as the build report gives them, the frame about 750 more): S66 9,432; S67 12,429; S68 9,149; S69 13,810 (13,845 at the pass's start); S70 10,210; S71 11,688; S72 7,065. None grows past 14,106 with its frame but S69, which is lower than it started.
 
-| Item | Spec or file | Status |
+| Item | Spec or file | Done |
 |---|---|---|
-| ST-M3, AX-M2, A-M2, BC-M2 (S68) | S68 table, "Line of authority" | done: orders 3, 4, 7 and 8 print "None drawn"; the AX-M2 warning clears |
-| A-M1, BC-M3 | S71, `usgov-v7-route-grid` by the derive script | done: "State constitutions read: Massachusetts, Nebraska, Virginia and Arizona"; the research lead's file: request R-A2 |
-| ST-S10 | S71, the same | done: "changed the vote needed to end debate on nominations in 2013 and 2017" |
-| AX-S8, BC-S12 (OMB) | S66 | done: OIRA prints "in the Office of Management and Budget"; "notice and comment" glossed as steps 2 and 3 in note 2 and the alt |
-| A-S1 | titles of S66, S67, S71 (S72 under A-S2) | done: 27, 25 and 28 words; S71's 60 senators moved to a third note |
-| A-S2, BC-S10 (S72) | S72 title and note 2 | done: neither chamber's crossovers in the title; note 2 names the Senate's both ways, as note 1 does the House's |
-| A-S4 | S69 subcommittee rows; S71 and S70 phone parts at a desk | S69 rows and S71's part done; S70's part waits on A-E8 |
-| A-S5 | S68 boxes; the HHS note | done: a band's stack takes the next column where that column is empty in its band, each stack under its level's name; note 2 quotes the atlas record |
-| A-S6 | S72 named members | done: the record's order, by last name |
-| AX-S1 | S72 in forced colors | done: "did not vote" takes `fc: 'muted'`; looked at in forced colors, light and dark |
-| ST-S8 | S72 on the refrozen roll call file | rebuilt; the page names none of the four |
-| BC-S7 | S69, S70 column order | done: in order down each column, balanced by height; S69 sorted by the printed name |
-| BC-S8 | S66 spine | done: even gaps; the branches run on beside step 2 |
-| BC-S12 | S67 Missouri figures; S71's "38" | done: "1,966,852 to 906,851" in printed words; the count ends 4 px inside |
+| ST-M3, AX-M2, A-M2, BC-M2 (S68) | S68 table, "Line of authority" | Orders 3, 4, 7 and 8 print "None drawn"; the AX-M2 warning clears; the CSV keeps the atlas's `order` |
+| A-M1, BC-M3 | S71, `usgov-v7-route-grid` by the derive script | "State constitutions read: Massachusetts, Nebraska, Virginia and Arizona" |
+| ST-S10 | S71, the same | "changed the vote needed to end debate on nominations in 2013 and 2017" |
+| AX-S8, BC-S12 (OMB) | S66 | OIRA prints "in the Office of Management and Budget"; notice and comment glossed as steps 2 and 3 in note 2 and, in the editor's words, the alt |
+| A-S1 | titles of S66, S67, S71 | 29, 25 and 28 words (S66 in the editor's words); S71's 60 senators moved to note 3 |
+| A-S2, BC-S10 (S72) | S72 title and note 2 | Neither chamber's crossovers in the title (25 words); note 2 names the Senate's both ways, as note 1 does the House's |
+| A-S3, B-S4's side here (call 9) | S66, S68, S71 measure lines and S66, S68 captions | The editor's words: the date leaves the measure line and caption; S69's measure line drops its file date too |
+| A-S4 | S69 subcommittee rows; S70 and S71 phone parts at a desk | S69's subcommittees are named rows with hairline rules and no box; S70 draws the DC and First Circuits and S71 the first three routes, each saying so |
+| A-S5 | S68 boxes; the HHS note | A band's stack takes the next column where that column is empty in its band, each stack under its level's name; Congress and HHS now two lines; note 2 quotes the atlas record |
+| A-S6 | S72 named members | The record's order, by last name, within chamber and party |
+| AX-S1 | S72 in forced colors | "Did not vote" and its key take `fc: 'muted'`; looked at in forced colors, light and dark |
+| ST-S8 | S72 on the refrozen roll call file | Rebuilt; the page names none of the four; table and drawing checked |
+| BC-S7 | S69, S70 column order | In order down each column, balanced by height; S69 sorted by printed name, table and drawing alike |
+| BC-S8 | S66 spine | One even gap between steps; step 1's branches run on beside step 2 |
+| BC-S12 | S67, S71, S66, S70 and every title and note of mine | Missouri's "1,966,852 to 906,851"; S71's "38" ends 5 px inside; citations, bill numbers and figures with their units held by no-break spaces |
 
 ### Routine calls, review fix pass
 
 - D3-xxx | S68's "Line of authority" column maps orders 3, 4, 7 and 8 to "None drawn" | ST-M3's ruling; the column's `empty` never applied, since those orders are not empty
-- D3-xxx | The derive script takes plain words for two cells of `usgov-route-requirements` as it copies them into the route grid (SS's texts, FR's "cloture"), listed in its REWORD table, and passes a cell that already reads the new words | A-M1 and ST-S10; the research lead's own file is theirs to change (R-A2), and the grid stays right either way
+- D3-xxx | The derive script takes plain words for two cells of `usgov-route-requirements` as it copies them into the route grid (SS's texts, FR's "cloture"), listed in its REWORD table and named in the sidecar's `derivation`, and passes a cell that already reads the new words | A-M1 and ST-S10; the research lead keeps its own file as stored (its routine call), which no page prints
 - D3-xxx | FS's text "U.S. Senate, “About Filibusters and Cloture”" stays | A page's title, quoted; ST-S10 named the reader's cell
 - D3-xxx | S66's OIRA prints "Office of Information and Regulatory Affairs, in the Office of Management and Budget" through `typography.replace`; the file keeps "(OMB)" | AX-S8, BC-S12; printed words only (D3-519)
-- D3-xxx | S66 note 2 and the alt gloss notice and comment as steps 2 and 3 | AX-S8: the term came before the steps it names
-- D3-xxx | S66's title reads "A federal agency makes a rule in five steps the law sets, and once it is final, Congress and the President or a court can undo it." | A-S1 under 30 words with "Congress and the President" kept (MA-1); the editor may refit it
+- D3-xxx | S66 note 2 glosses notice and comment as steps 2 and 3, and the alt says "steps 2 and 3, the published proposal and the public’s comments" | AX-S8: the term came before the steps it names; the alt in the editor's words
+- D3-xxx | S66's title reads the editor's 29 words, "Congress and the President" kept | A-S1 with MA-1
 - D3-xxx | S67's title reads the data lead's words, 25 words | A-S1 ruling: Ohio's cost stays on its leaf and in the table
-- D3-xxx | S71's title drops its 60-senator clause, and a third note says a federal statute needs 60 senators to end debate on most bills | A-S1 ruling, in ST-S10's words
+- D3-xxx | S71's title drops its 60-senator clause, and note 3 reads the editor's words | A-S1 ruling, in ST-S10's words
 - D3-xxx | S72's title gives both tallies only; note 2 now names the Senate's seven Democrats beside its one Republican, as note 1 names the House's both ways | A-S2 ruling, BC-S10, DR-93
-- D3-xxx | S72 drops its sort by member, so names keep the record's order, by last name in both chambers | A-S6 ruling; the Senate file is in last-name order already, so no new column is needed
+- D3-xxx | S72 sorts by chamber and party only, so each list keeps the record's order, by last name | A-S6 ruling; the Senate file is in last-name order already; the form orders the squares by vote itself, so the drawing is unchanged (compared pixel for pixel)
 - D3-xxx | S72's "did not vote" squares and key take `fc: 'muted'` | AX-S1 ruling, on the engineer's CSS
 - D3-xxx | S67 prints Missouri's certified returns as "1,966,852 to 906,851" through `typography.replace` | BC-S12; the file keeps the record's figures
+- D3-xxx | Citations ("5 U.S.C. 553(b)", "title 28", "Article III", "H.R. 5371", "Public Law 119-37", "Executive Order 14215"), and figures with their units in titles and notes, hold together by no-break spaces; S66, S70 and S71 hold "U.S.C.", S71 also "CFR", "Section" and "Article I," in their data words through `typography.replace` | BC-S12; the figure checks read a no-break space as a space
 - D3-xxx | S66's steps sit one even gap apart at a desk, and a step's branches run on beside the next steps where they need the room; a step moves down only for its own way in or branch lines | BC-S8: distance along the heavy line read as time
-- D3-xxx | S68 at a desk: columns keep one width and the levels' order; a band's stack takes the next column too where that column holds no body in its band and the wider box saves a line; each stack is named for its level inside its band, in place of one row of heads over both | A-S5: Congress and HHS wrapped to five lines beside an empty column; per-stack names keep the level read at the box, so a wider box never sits under another level's head. Five equal-width columns tried first could not hold Congress under four lines at 720 px
-- D3-xxx | S68's FERC line turns in the gap under its band, clear of the commission's box | The wider federal boxes moved the line beside the commission
+- D3-xxx | S68 at a desk: columns keep one width and the levels' order; a band's stack takes the next column too where that column holds no body in its band and the wider box saves a line; each stack is named for its level inside its band, in place of one row of heads over both | A-S5: per-stack names keep the level read at the box, so a wider box never sits under another level's head; five columns sized by need were tried first and could not hold Congress under four lines at 720 px
+- D3-xxx | S68's FERC line turns in the gap under its band, clear of the commission's box | The wider federal boxes put the old turn beside the commission
 - D3-xxx | S68's note 2 quotes the atlas record for Congress and HHS as stored, with LIHEAP spelled out once | A-S5 ruling: no claim of our own
-- D3-xxx | S69 sorts its committees by printed name within each kind (`sort` by code in that order, checked by script) so drawing and table read alike | BC-S7; R3-6's one reading order
+- D3-xxx | S69 sorts its committees by printed name within each kind (`sort` on the full names in that order, checked by script), so drawing and table read alike | BC-S7; R3-6's one reading order; sorting on the code instead carried a column the page did not need (128 bytes)
 - D3-xxx | S69 and S70 cut their cards into columns in order, balanced by height, the first columns the fuller | BC-S7: "each card in the shortest column" scattered the order
 - D3-xxx | S69's subcommittees print as rows with hairline rules between them and no box, joined by the same elbow links | A-S4
-- D3-xxx | S71's phone drawing at a desk shows the first three routes, saying so | A-S4
-- D3-xxx | S69 and S70 count a group, and S71 scales its bars, from every row where the kit gives them (`c.all_rows`), and S70 leaves out a court whose district courts are not all drawn | A desk's phone part drew "2 standing committees" for 20 (an earlier fault on S69's part) and would draw circuits with no district courts
+- D3-xxx | S69's measure line drops "of November 3, 2026" | Call 9's rule, the date once in the grade line; it also keeps S69 at its starting weight
+- D3-xxx | S70 sorts the Supreme Court's row first, so its table opens with the top court and its phone part at a desk holds the root | The root's empty parent sorted last; the drawing is unchanged (compared pixel for pixel)
+- D3-xxx | S70 and S71 show their first part at a desk, saying so; S69, S70 and S71 count a group and scale their bars from every row (`c.all_rows`, A-E8), and S70 leaves out a court whose district courts are not all drawn | A-S4; S69's part had printed "2 standing committees" for 20
+- D3-xxx | Entries 14.96, 14.98 and 14.99 describe the new drawings: even gaps with the branches beside; each band naming its levels, a box widening into an empty column; named rows with hairlines, in order down each column | An entry describes its own specimen
 
 ### Requests to the engineer
 
-- **A-E8, `kit.js` (the desk's phone part), needed for S70's `desk_phone` and to fix S69's:** where `desk_phone.rows` draws the first rows only (`K.draw(spec, rows.slice(0, pn), ...)` near the end of `K.render`'s wiring), pass every row too, for example `all_rows: rows` in the options and `this.all_rows = opts.all_rows || null` in `Ctx`, so a form's counts and scales read the whole set. Today S69's part at a desk prints "2 standing committees" over its first two cards, since the org chart counts what it draws. My forms read `c.all_rows || c.rows` already; S70 adds `desk_phone` once this lands.
+- **A-E8: done** by the engineer (05:0x); S69, S70 and S71 use it.
 
 ### Requests to the research lead
 
-- **R-A1, data check:** `usgov-v7-route-grid` (with sidecar) is rewritten by `maker_a_round3_derive.py`: SS's `sources` and FR's `what_it_takes` take plain words (A-M1, ST-S10), named in the sidecar's `derivation` and the script's REWORD table; every other value as stored.
-- **R-A2, `usgov-route-requirements.csv` (yours):** the data lead's A-M1 ruling asks the same two cells in your file: SS `sources` "State constitutions read: Massachusetts, Nebraska, Virginia and Arizona"; FR `what_it_takes` "... while precedents set by majority vote changed the vote needed to end debate on nominations in 2013 and 2017". My script passes either version; once you change it I rerun the script so the grid's `derivation` stops naming the change.
-
+- **R-A1, data check: done** by the research lead: the route grid has 0 faults, the two reworded cells named.
+- **R-A2: answered.** The research lead keeps `usgov-route-requirements.csv` as stored, since no page prints it and the grid's `derivation` records the rewording. Nothing waits.
 
 ### Tested, review fix pass
 
-- (Kept current as the pass goes.) `maker_a_round3_derive.py --figures`: 44 checks, 0 failed; `--check`: the grid equals what the script computes.
-- S72 captured in forced colors (Playwright `forcedColors: 'active'`, light and dark) from its kit page at 1440 px: "did not vote" fills with the system gray and no edge, apart from "no"'s outline; vacant seats in gray outline.
+- `node work/build/chart-kit/oa-chart.mjs build s66 s67 s68 s69 s70 s71 s72 --widths 1440,390,296,256 --out <scratch>/kit-out`, sweep on, after the last change: 7 PASS, 0 faults, 0 warnings; 7 check files counted, each with empty `faults` and `warnings`.
+- Looked at: from the final build, all seven at 1440 px on Charcoal in grayscale (contact sheets); from the same command run at 04:5x, before the last word and sort changes (S70's and S72's drawings since compared pixel for pixel, equal), S66, S67, S69, S70, S71 and S72 at 390 px on Newsprint, 390 px on Charcoal in grayscale, 296 px on Newsprint and 256 px on Charcoal, as contact sheets (S69 to S71 their first 2,400 px), and S66 at 1440 px on Charcoal in grayscale; from drafts as each changed, S66, S68, S69, S70 and S71 at 1440 px on Newsprint, and S68 at 1440 px on Charcoal; from the final build, S68 at the four phone captures as a contact sheet.
+- In the strict guide build: every plate of mine at 1440 px on Newsprint drawn with no warning; the phone parts at a desk of S69, S70 and S71 looked at (S69 reads "20 standing committees"; S70 the Supreme Court, "12 regional courts of appeals", the DC and First Circuits and the Federal Circuit apart; S71 three routes on the 38 scale).
+- S72 in forced colors (Playwright `forcedColors: 'active'`, light and dark, its kit page at 1440 px): "did not vote" fills with the system gray and no edge, apart from "no"'s outline; vacant seats in gray outline.
+- S72's and S70's drawings compared pixel for pixel before and after their sort changes: equal. S69's figure HTML diffed before and after: the table's rows reordered, one chart note and a no-break space changed, nothing else.
+- Page tables read from the kit pages: S68 (four "None drawn", two lines named), S72 (20 names, surname order within each group: Cortez Masto to Shaheen; Cuellar to Watson Coleman; Massie, McCaul, Steube), S70 (the Supreme Court's two rows first).
+- `python3 -I work/build/scripts/phase-3/maker_a_round3_derive.py --figures`: 44 checks, 0 failed (new: S66's steps 2 and 3 and its two actors; S67's Ohio and Missouri; S68's record quote and every order mapped; S69's order by printed name; S71's note 3; S72's crossovers in both notes and the record's order); `--check`: the grid equals what the script computes.
+- Words lint by script on S66 to S72 and entries 14.96 to 14.103: no em or en dash, U+2011, straight quote, banned word or studio code in reader text; titles 29, 25, 27, 20, 29, 28 and 25 words.
+- `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py`: 128 rules, 114 entries, 0 faults (last run 05:1x).
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide.html`: exit 0, no warning, 11,256,325 bytes; plate bytes as in the summary; share per plate 11,697 for the 13 to come (the renderer's growth, not these plates).
 
 ### Not tested, review fix pass
 
-- (Kept current as the pass goes.)
+- The quick guide check: I touched no sketch, so the brief does not ask it of me; the main session runs it.
+- Real screen readers, devices, print and 200 percent text. Forced colors only in Chromium's emulation, and only on S72.
+- S67 and S72 phone drawings in grayscale on Newsprint; S69 to S71 below their first 2,400 px at phone widths, checked only by the build.
+- The desk phone parts on Charcoal (the run was stopped by the container restart and not repeated).
+- The CSV exports beyond S68's first rows.

@@ -170,6 +170,7 @@ Every maker B item in the fix brief and its addendum is done but S73's title, wh
 | The editor's words, review fix pass | Applied: S77's measure line, source line and note 1; S65's title and note 1 sentence; S76's note 1 (“the box in the middle, the node”) and its transfers sentence; entry 14.110's first sentence; S73's note 2 clause. Not applied: the editor's interim S73 title, written for the one-fund drawing that BC-M1's redraw replaced |
 
 ### Routine calls, review fix pass
+- D3-xxx | S76's two transfer lines read “Transfers in, net” and “Transfers out, net” under 480 px | Both read “Transfers, net” in the phone's numbered list once the out line drew
 - D3-xxx | S73's derived file adds `link_id` (fund, committee paid and report line) as each row's key, so a committee two funds paid stays two rows in the drawing's marks and the CSV | Save America, the campaigns and the national parties are each paid by more than one fund
 - D3-xxx | S73's node names count each kind's committees once (“51 state party committees”, “4 other committees”), and its table's rows count each fund's | A committee two funds paid (Wisconsin's party, Save America) would otherwise count twice in the node's name
 - D3-xxx | S73's table prints one row for each fund and kind of committee it paid, 20 rows, the other committees and refunds named as their payer wrote them, every row in the export | R3-6's links as rows, at a weight under D3-1328's 14,106 bytes (13,453 with the frame)
@@ -211,10 +212,12 @@ Every maker B item in the fix brief and its addendum is done but S73's title, wh
 - `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py`: 128 rules, 114 entries, 84 plates, 0 faults (0 files written).
 - `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide/guide.html`: exit 0, 0 warnings, 11,253,510 bytes. My plates as the guide places them: S65 5,842; S73 12,718; S74 11,082; S75 7,181; S76 6,935; S77 7,007 bytes. The build's note gives chapter 14's share per plate for the 13 still to come as 11,931 bytes.
 - The research lead's data check over both derived files I rewrote: 0 faults (relayed by the main session).
+- After my own look at S76 at 256 px on Charcoal, its two transfer lines take “Transfers in, net” and “Transfers out, net” under 480 px; S76 rebuilt the same way at 05:09 UTC, after the container restart: PASS, 0 faults, 0 warnings, its check file read; looked at at 256 px Newsprint. `--figures` and `--check` rerun: 0 faults each.
+- The first quick guide check (from 05:01 UTC) was cut off by the container's restart and is not counted. A fresh `phase3_ch14_build.py` (0 faults) and strict build (`<scratch>/guide2/guide.html`, exit 0, 0 warnings, 11,256,325 bytes, my plates unchanged in bytes) at 05:09 UTC; the quick guide check on it with `--no-captures` started 05:09 UTC.
 
 ### Not tested, review fix pass
 
-- The quick guide check: running at the time of writing (see the line added under Tested when it ends).
+- The quick guide check: see Tested for the run on `guide2`; the first run was lost to the container's restart.
 - S73, S76, S77 and S65 in the guide page at any width; plates read from the kit's pages only.
 - Forced colors beyond Chromium's emulation for S74; S73's and S77's drawings in forced colors; print and 200 percent text beyond the kit's checks; no screen reader or real device.
 - S75 looked at after its no-break spaces (its drawing did not change; built PASS).

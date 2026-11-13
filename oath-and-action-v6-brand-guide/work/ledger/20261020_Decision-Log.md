@@ -5585,3 +5585,32 @@ The main session reported that `phase3_ch14_build.py` still builds rounds 1 and 
 | D3-1384 | BC-S9's sentence is checked against the renewal rule, CMS's 2024 rule and the statute, and the parts no source supports are named | medicaid.gov's definitions page refused this container (HTTP 403); the eCFR, govinfo and the Federal Register's own text say what a procedural ending is |
 | D3-1385 | `usgov-route-requirements.csv` keeps "round 0" in its SS `sources` cell | Maker A's derive rewords the cell for the reader and no page prints the public file; changing it would make the derive's record of its two rewordings untrue |
 | D3-1386 | After a container restart at about 05:07 UTC, the five running owners (engineer, maker A, maker B, the cartographer, the editor) resume from their saved transcripts with their context; their files on disk survived and were committed first (`719cf0d8`); maker B's quick guide check, cut off by the restart, reruns and is not counted | V21 section 3: finished and running agents resume by ID after a restart, and a check that stops has checked nothing |
+
+### Maker A, round 3 review fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1387 | S68's "Line of authority" column maps orders 3, 4, 7 and 8 to "None drawn" | ST-M3's ruling; the column's `empty` never applied, since those orders are not empty |
+| D3-1388 | The derive script takes plain words for two cells of `usgov-route-requirements` as it copies them into the route grid (SS's texts, FR's "cloture"), listed in its REWORD table and named in the sidecar's `derivation`, and passes a cell that already reads the new words | A-M1 and ST-S10; the research lead keeps its own file as stored (its routine call), which no page prints |
+| D3-1389 | FS's text "U.S. Senate, “About Filibusters and Cloture”" stays | A page's title, quoted; ST-S10 named the reader's cell |
+| D3-1390 | S66's OIRA prints "Office of Information and Regulatory Affairs, in the Office of Management and Budget" through `typography.replace`; the file keeps "(OMB)" | AX-S8, BC-S12; printed words only (D3-519) |
+| D3-1391 | S66 note 2 glosses notice and comment as steps 2 and 3, and the alt says "steps 2 and 3, the published proposal and the public’s comments" | AX-S8: the term came before the steps it names; the alt in the editor's words |
+| D3-1392 | S66's title reads the editor's 29 words, "Congress and the President" kept | A-S1 with MA-1 |
+| D3-1393 | S67's title reads the data lead's words, 25 words | A-S1 ruling: Ohio's cost stays on its leaf and in the table |
+| D3-1394 | S71's title drops its 60-senator clause, and note 3 reads the editor's words | A-S1 ruling, in ST-S10's words |
+| D3-1395 | S72's title gives both tallies only; note 2 now names the Senate's seven Democrats beside its one Republican, as note 1 names the House's both ways | A-S2 ruling, BC-S10, DR-93 |
+| D3-1396 | S72 sorts by chamber and party only, so each list keeps the record's order, by last name | A-S6 ruling; the Senate file is in last-name order already; the form orders the squares by vote itself, so the drawing is unchanged (compared pixel for pixel) |
+| D3-1397 | S72's "did not vote" squares and key take `fc: 'muted'` | AX-S1 ruling, on the engineer's CSS |
+| D3-1398 | S67 prints Missouri's certified returns as "1,966,852 to 906,851" through `typography.replace` | BC-S12; the file keeps the record's figures |
+| D3-1399 | Citations ("5 U.S.C. 553(b)", "title 28", "Article III", "H.R. 5371", "Public Law 119-37", "Executive Order 14215"), and figures with their units in titles and notes, hold together by no-break spaces; S66, S70 and S71 hold "U.S.C.", S71 also "CFR", "Section" and "Article I," in their data words through `typography.replace` | BC-S12; the figure checks read a no-break space as a space |
+| D3-1400 | S66's steps sit one even gap apart at a desk, and a step's branches run on beside the next steps where they need the room; a step moves down only for its own way in or branch lines | BC-S8: distance along the heavy line read as time |
+| D3-1401 | S68 at a desk: columns keep one width and the levels' order; a band's stack takes the next column too where that column holds no body in its band and the wider box saves a line; each stack is named for its level inside its band, in place of one row of heads over both | A-S5: per-stack names keep the level read at the box, so a wider box never sits under another level's head; five columns sized by need were tried first and could not hold Congress under four lines at 720 px |
+| D3-1402 | S68's FERC line turns in the gap under its band, clear of the commission's box | The wider federal boxes put the old turn beside the commission |
+| D3-1403 | S68's note 2 quotes the atlas record for Congress and HHS as stored, with LIHEAP spelled out once | A-S5 ruling: no claim of our own |
+| D3-1404 | S69 sorts its committees by printed name within each kind (`sort` on the full names in that order, checked by script), so drawing and table read alike | BC-S7; R3-6's one reading order; sorting on the code instead carried a column the page did not need (128 bytes) |
+| D3-1405 | S69 and S70 cut their cards into columns in order, balanced by height, the first columns the fuller | BC-S7: "each card in the shortest column" scattered the order |
+| D3-1406 | S69's subcommittees print as rows with hairline rules between them and no box, joined by the same elbow links | A-S4 |
+| D3-1407 | S69's measure line drops "of November 3, 2026" | Call 9's rule, the date once in the grade line; it also keeps S69 at its starting weight |
+| D3-1408 | S70 sorts the Supreme Court's row first, so its table opens with the top court and its phone part at a desk holds the root | The root's empty parent sorted last; the drawing is unchanged (compared pixel for pixel) |
+| D3-1409 | S70 and S71 show their first part at a desk, saying so; S69, S70 and S71 count a group and scale their bars from every row (`c.all_rows`, A-E8), and S70 leaves out a court whose district courts are not all drawn | A-S4; S69's part had printed "2 standing committees" for 20 |
+| D3-1410 | Entries 14.96, 14.98 and 14.99 describe the new drawings: even gaps with the branches beside; each band naming its levels, a box widening into an empty column; named rows with hairlines, in order down each column | An entry describes its own specimen |

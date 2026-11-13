@@ -146,7 +146,7 @@
           var cands = offs[code] ? [[p.x + offs[code][0], p.y + offs[code][1]]] : [[p.x + p.rad + pad, p.y + s * 0.35], [p.x - p.rad - pad - tw, p.y + s * 0.35], [p.x - tw / 2, p.y - p.rad - pad - s * 0.23], [p.x - tw / 2, p.y + p.rad + pad + asc],
             [p.x + p.rad + pad, p.y - p.rad], [p.x + p.rad + pad, p.y + p.rad + asc], [p.x - p.rad - pad - tw, p.y - p.rad], [p.x - p.rad - pad - tw, p.y + p.rad + asc]];
           if (!offs[code] && prefer[code] !== undefined && SIDES[prefer[code]] !== undefined) cands.unshift(cands[SIDES[prefer[code]]]);
-          for (var rg = 1; rg <= (c.phone ? 14 : 6) && !offs[code]; rg++) {
+          for (var rg = 1; rg <= (c.phone ? 14 : 10) && !offs[code]; rg++) {
             var dd = p.rad + pad + rg * 12;
             for (var ang = 0; ang < 24; ang++) {
               var th = ang * Math.PI / 12, ex = p.x + Math.cos(th) * dd, ey = p.y + Math.sin(th) * dd;
@@ -155,27 +155,38 @@
           }
           // a place is clear when its box touches no text or circle, no leader drawn so far runs through it, and its own
           // leader (when it needs one) runs through no label (D3-93)
+          var forced = always.indexOf(code) >= 0;
           var leads_ok = function (b, cand) {
             if (Ld.some(function (l) { return K.seg_hits_box(l[0], l[1], l[2], l[3], b.x - 1, b.y - 1, b.x + b.w + 1, b.y + b.h + 1); })) return false;
-            var lx = cand[0] + tw / 2, ly = cand[1] - asc / 2;
-            if (Math.sqrt(Math.pow(lx - p.x, 2) + Math.pow(ly - p.y, 2)) <= p.rad + 2 * s && always.indexOf(code) < 0) return true;
-            return !T.some(function (t) { return K.seg_hits_box(p.x, p.y, lx, ly, t.x - 1, t.y - 1, t.x + t.w + 1, t.y + t.h + 1); });
+            var lx = cand[0] + tw / 2, ly = cand[1] - asc / 2, dl = Math.sqrt(Math.pow(lx - p.x, 2) + Math.pow(ly - p.y, 2));
+            if (dl <= p.rad + 2 * s && !forced) return true;
+            // a forced leader runs from the circle's edge to the words' nearest side, and crosses no other words
+            var ex = p.x + (lx - p.x) / dl * p.rad, ey = p.y + (ly - p.y) / dl * p.rad;
+            var nx = Math.max(b.x, Math.min(ex, b.x + b.w)), ny = Math.max(b.y, Math.min(ey, b.y + b.h));
+            return !T.some(function (t) { return K.seg_hits_box(forced ? ex : p.x, forced ? ey : p.y, forced ? nx : lx, forced ? ny : ly, t.x - 1, t.y - 1, t.x + t.w + 1, t.y + t.h + 1); });
           };
           var pick = null;
           // on a phone no code sits more than 64 px past its circle's edge: further, it is named under the map
           var reach_ok = function (cand) { return !c.phone || Math.hypot(cand[0] + tw / 2 - p.x, cand[1] - asc / 2 - p.y) - p.rad <= 110; };
           for (var i = 0; i < cands.length && !pick; i++) { var b = { x: cands[i][0], y: cands[i][1] - asc, w: tw, h: h }; if (!hit2(b) && reach_ok(cands[i]) && leads_ok(b, cands[i])) pick = cands[i]; }
+          // a code with no clear place on a forced leader takes the plain search
+          if (!pick && forced) { forced = false; for (var i2 = 0; i2 < cands.length && !pick; i2++) { var b2 = { x: cands[i2][0], y: cands[i2][1] - asc, w: tw, h: h }; if (!hit2(b2) && reach_ok(cands[i2]) && leads_ok(b2, cands[i2])) pick = cands[i2]; } }
           // on a phone, a small state with no clear place is named under the map instead, and the table names every state;
           // at the narrowest widths only circles that hold their code are labeled (KR2)
-          if ((!pick && c.phone && !offs[code]) || narrow) { out.un.push(code); return; }
+          // at a desk too, a code with no clear place is named under the map rather than set over another (round 3 fix pass)
+          if ((!pick && !offs[code]) || narrow) { out.un.push(code); return; }
           var warn = !pick;
           if (!pick) pick = cands[0];
           var dist = Math.sqrt(Math.pow(pick[0] + tw / 2 - p.x, 2) + Math.pow(pick[1] - asc / 2 - p.y, 2));
-          var far = dist > p.rad + 2 * s || always.indexOf(code) >= 0;
+          var far = dist > p.rad + 2 * s || forced, seg = [p.x, p.y, pick[0] + tw / 2, pick[1] - asc / 2];
+          if (forced) {
+            var ex2 = p.x + (seg[2] - p.x) / dist * p.rad, ey2 = p.y + (seg[3] - p.y) / dist * p.rad;
+            seg = [ex2, ey2, Math.max(pick[0], Math.min(ex2, pick[0] + tw)), Math.max(pick[1] - asc, Math.min(ey2, pick[1] - asc + h))];
+          }
           T.push({ x: pick[0], y: pick[1] - asc, w: tw, h: h });
-          if (far) Ld.push([p.x, p.y, pick[0] + tw / 2, pick[1] - asc / 2]);
+          if (far) Ld.push(seg);
           out.cost += Math.max(0, dist - p.rad);
-          out.placed.push({ p: p, code: code, pick: pick, far: far, tw: tw, asc: asc, warn: warn });
+          out.placed.push({ p: p, code: code, pick: pick, far: far, tw: tw, asc: asc, warn: warn, seg: seg });
         });
         return out;
       };
@@ -191,7 +202,7 @@
       unlabeled = unlabeled.concat(best.un);
       best.placed.forEach(function (q) {
         if (q.warn) c.warn('no clear place for the label ' + q.code + '; set labels.offsets.' + q.code);
-        if (q.far) { c.line(q.p.x, q.p.y, q.pick[0] + q.tw / 2, q.pick[1] - q.asc / 2, { stroke: 'leader', width: c.t('line-hairline'), mark: false }); lead.push([q.p.x, q.p.y, q.pick[0] + q.tw / 2, q.pick[1] - q.asc / 2]); }
+        if (q.far) { c.line(q.seg[0], q.seg[1], q.seg[2], q.seg[3], { stroke: 'leader', width: c.t('line-hairline'), mark: false }); lead.push(q.seg); }
       });
       best.placed.forEach(function (q) { c.text(q.pick[0], q.pick[1], q.code, { role: 'tick', weight: 600, halo: true }); });
       c.height(top + mh + 4);

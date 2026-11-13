@@ -222,7 +222,7 @@ To others:
 
 ## Review fix pass
 
-November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Engineer" paragraph, calls D3-1320, D3-1324 to D3-1326 and D3-1328, and the addendum's BC items) and the data lead's rulings under "Review fix pass" in `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC (clock read); this section last brought up to date at 05:02 UTC. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/`, with a frozen copy of the kit and the 84 specs as they stood at the start in `base/` for snapshots.
+November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Engineer" paragraph, calls D3-1320, D3-1324 to D3-1326 and D3-1328, and the addendum's BC items) and the data lead's rulings under "Review fix pass" in `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC (clock read); this section last brought up to date at 05:11 UTC. The container restarted at about 05:08 UTC; every file had been written and committed, and the checks below the restart were run again from the start. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/`, with a frozen copy of the kit and the 84 specs as they stood at the start in `base/` for snapshots.
 
 ### Summary
 
@@ -241,6 +241,7 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - **A-E8 LANDED (maker A):** a desk's phone part reads every row as `c.all_rows`; S69's part reads "20 standing committees" where it read "2". Told the main session.
 - **BC-S5:** the kit side is call 7's `map_labels`. S16 draws through `bubble-map.js`'s own search, not `map_labels`; its codes at board 1's places are the cartographer's `labels.offsets_phone` (board 1's 358 px drawing is kept only as a picture, `work/boards/phase-3/round-0/specimens/s16-newsprint-390.png`, and git keeps no copy of the 2017 geometry to redraw it).
 - **BC-S12** names no engineer item.
+- **Found and fixed in passing (2):** carrying `typography` in the island showed that five plates (S39, S60, S63, S66, S71) had drawn their words on the guide's page without their curled quotes and replacements, since the island never carried the key; they now draw as in Node. The island carries `typography` only where it changes a word the drawing prints (read at the artboard and at 358 px), so S67, S68, S69, S70, S72 and S84 pay nothing for it.
 - **BC-S4 (kit side) LANDED:** a stroke role `band` (`.oac-s-band`, GrayText in forced colors), so S82's ghosts on Charcoal can take the band ink with no token change. Told the main session for the cartographer.
 - **C-M2's third route measured (for the data lead):** the stacked tile (code and figure on two lines, the arrow beneath) does not fit at 558 px. A tile there is 41 px; by the tile's own metrics (13 px lines at baselines 16 and 32, the arrow's 4.5 px half head under the figure, 6 px foot) the three need about 48 px, which a drawing gives from about 642 px. Not drawn; an estimate from the form's layout. The fixed 1024 px stage stands, as call 6 and the data lead's alignment (04:43) order it. S12's spec now carries `"stage": 1024` (the cartographer's).
 
@@ -330,13 +331,39 @@ No export lacks a column its words promise. Phase 5's package can ship these exp
 
 ### Tested, review fix pass
 
-- Snapshot against the frozen kit and specs (`tools/kit_snapshot.mjs`, 924 drawings and figures from 84 specs): after ST-M1 and the sort, only the figures (tables) of S73, S81, S82 and S83 differ; no drawing differs.
-- `build s69 s73 s68 s82 s81 s83 --no-png --no-sweep`: 6 PASS; S68 printed the AX-M2 warning for "7", "3", "4" and "8" (gone once maker A mapped them). `build s73 s81` with captures at 1440 and 390 px on both grounds: 0 faults. S73's and S69's page tables read in Node.
-- `check s78 s80 s84 s81` with the sweep after `map_labels`' change: 4 PASS. S78's "Not labeled" lists before and after, by script: 720 px 3 to 2 (WV placed); 480 px 6 to 5; 358 px 23 to 19; 326 px 23 to 20 (CA, WA, GA, AL placed); 256 px 36 to 30. S78 at 390 px looked at on Newsprint.
-- A staged copy of S12 in scratch: `build` at 1440, 1024 and 390 px on both grounds with the sweep, 0 faults; every arrow drawn at 1024 (looked at); in Chromium the frame takes a tab stop, a role and a name at 1024 and 600 px windows, none at 1440, and draws the phone form at 390, with no sideways scroll of the page at any of the four.
-- Forced colors in Chromium, both themes: S83 and S81 at 1440 px looked at; a test page of S72's and S74's marks with the new classes looked at in normal and forced colors.
-- `width_key` with three band steps: no key fault on either ground.
-- `build --all --no-png --no-sweep` (84 specs, 84 check files): 84 PASS after the retrieval date check was narrowed to lines that say "Retrieved".
+- **Snapshots** (`tools/kit_snapshot.mjs`, 924 drawings and figures from the 84 specs frozen at the start, on today's data): the kit as it started against my kit with the forms as they started differ in 32, all expected: S73's and S82's figures (`first`, the sort), S81's and S83's figures and drawings (the sort; `oac-fc-region` on the merged fills), S78's drawings (`map_labels`). No other drawing changed.
+- **Kit self-test** after the restart: 129 lines pass or caught, none missed ("every planted fault caught"), with nine new cases: `first` on text and the name sort; an empty printed column, grouped and not, and the words warning with `words_pass`; `map_labels` at the widest run (and not with `widest: false`); the band width key; the stage width, the `fc` classes and the forced edge, `{data_file}`, the island's `stage` and `typography`; `c.all_rows`; retrieval dates and `--data`.
+- **`build` with captures**, at 1440 and 390 px on both grounds: S73, S81 (twice), S69, S72, S66, S78, and the twelve specs that carry `typography` with S12 (S39, S60, S63, S66 to S72, S81, S84, S12): 0 faults, page parity included. The first S81 run failed parity before the island carried `typography`.
+- **`check` with the sweep** on S78, S80, S81 and S84 after `map_labels`' change: 4 PASS. S78's "Not labeled" lists by script before and after: 720 px 3 to 2; 480 px 6 to 5; 358 px 23 to 19; 326 px 23 to 20; 256 px 36 to 30. S78 at 390 px looked at on Newsprint.
+- **S12 staged** (a scratch copy, then the cartographer's spec): `build` at 1440, 1024 and 390 px on both grounds with the sweep, 0 faults; the 1024 px drawing looked at with every arrow; in Chromium the frame takes a tab stop, a role and a name at 1024 and 600 px windows, none at 1440, the phone form at 390, and the page never scrolls sideways.
+- **Forced colors** in Chromium, light and dark themes: S83 and S81 at 1440 px looked at (no county outlines; S83's dots alone in CanvasText); a test page of S72's and S74's marks with `muted` and `forced` looked at in normal and forced colors.
+- **The designer log as the test (AX-S6):** the designer's specs V1, V2 and V4 run with `--data` on their own folder: V1 reaches its file and fails only on its missing source line; V2 fails on its wrong retrieval date; V4 passes with the national figure warning and weighs 12,664 bytes, the designer's own measure.
+- **ST-M2 item 2:** the eight exports read by script (table above).
+- **BC-S15:** every grouped-chapter rule scrolled to at 1440 by 900 px in a strict build, in Chromium: 30 of 289 left the current link cut before, 0 of 289 after.
+- **A-E8:** S69's phone part drawn from its first 20 rows prints "20 standing committees" with every row passed, "2" without.
+- **`build --all --no-png --no-sweep`** at 04:50 (84 of 84, 84 check files) and **`build --all --no-png` with the sweep** at 05:02 to 05:05 UTC: 84 PASS, 84 check files counted, 2 min 57 s; four AX-M2 warnings, all older specs whose words map some values by design (S18, S19, S32, S59).
+- **`guide_build.py --self-test`** after the restart: 32 of 32 scenarios, 328 of 328 expectations. **`guide_charts.py --self-test`**: every planted fault caught. **`geo_build.py --check`**: current. **`phase3_ch14_build.py --check`**: 87 of 87 files current.
+- **Strict builds** to scratch: 04:59 (exit 0, no warning); 05:00 (exit 1, only S73's layout guard while maker B redrew it); 05:09 after the restart (exit 0, no warning), measured above.
+- **AX-S2:** `sketch_names` on the avoid sketch's file gives the second title its period and leaves the first, whose desc the caption holds, as it was.
+
+### Weight (call 10), strict build at 05:09 UTC (clock read)
+
+`guide_build.py --strict --out .../round-3-fix/engineer/g3/guide.html`: exit 0, no warning; `phase3_ch14_build.py --check` 87 of 87 files current before it.
+
+| Measure | Bytes | Against |
+|---|---|---|
+| Page | 11,256,325 | 16 MB file limit |
+| Projected page | 15,044,827 | 15.5 MB: 455,173 of room |
+| Chapter 14 with the kit | 2,248,373 | 2,803,941 stop |
+| Chapter 14 as built | 1,580,983 | |
+| Renderer, the "chart kit" part (without the geometry) | 534,273 | 512,348 at 02:41; grown to 97 forms, 578,741 |
+| Map geometry | 133,117 | 250,000: 116,883 of room |
+| Rules 14.1 to 14.14 with the opener | 175,678 | 212,288 |
+| Chapter 15 | 307,066 | 0.60 MB ceiling |
+| **Share per plate for the 13 still to come** | **11,697** | 14,089 at 02:41; 12,694 at 04:59 |
+
+- **Round 3's 20 plates on the page with their frames** (each `<figure class="plate">` whole, by script): S69 14,556; S82 14,466; S81 13,597; S73 13,500; S83 13,393; S67 13,225; S71 12,452; S74 11,813; S84 11,570; S70 10,975; S66 10,210; S68 9,902; S78 9,556; S75 7,936; S72 7,849; S77 7,787; S76 7,700; S80 6,940; S65 6,689; S79 4,376 (208,492 in all). **Two pass call 10's 14,106: S69 by 450 and S82 by 360** (maker A's and the cartographer's; S82's list is the data lead's D-3). None passes 15,000. The board 1 maps: S07 14,351, S12 14,028 (with its stage), S16 10,700.
+- **Why the share fell 2,392 bytes a plate since 02:41:** the renderer grew 21,925 bytes. Mine is 3,673 of it, minified (`kit.js` and `parts.js` 126,640 to 130,313: the widest-point search, the stage, the sort, the checks' hooks, the forced-colors classes) and about 600 of style; the forms grew 17,286 (369,588 to 386,874, the makers' fix pass), which also lifts the form average the projection counts for each form to come (the report's 4,447 for 87 registered forms). The chapter as built grew with the makers' and the cartographer's changes. My share of the 13 plates' loss is about 330 bytes each.
 
 ### An accident, recorded
 
@@ -344,4 +371,16 @@ At about 04:55 UTC I ran `data_round0_build.py --help` to read its usage. The sc
 
 ### Not tested, review fix pass
 
-- (Kept current as the pass goes.)
+- S72's and S74's forced-colors marks in their own drawings: the classes are in the kit and looked at on a test page; maker A's `fc: 'muted'` and maker B's second edge are theirs to draw and look at.
+- S78's tile grid phone drawing, S80's own-panel numbers and Detroit inset, S82's band-ink ghosts and S16's board 1 code places: the cartographer's, on the kit parts above.
+- The stacked tile for S12 (the data lead's third route): measured from the form's layout, not drawn.
+- `{data_file}` in a real caption, note or entry: no owner has written it yet (D3-1321 holds the words until Dustin answers); the kit and the chapter generator fill it in the self-test and by a check of the generator's output only.
+- The national figure warning on a spec that lacks one: no current map spec lacks it; the self-test does not plant one, and the designer's V1 to V4 printed it.
+- The guide check's own self-test: `guide_check.js` is unchanged, so I did not run it.
+- Print of a staged drawing (the print rule scales it to the page); screen readers on the staged frame's name (Chromium's attributes read by script only).
+- S16 at board 1's places; S16's drawing is unchanged by this pass.
+
+### Files, review fix pass
+
+- Modified: `work/build/chart-kit/kit.js` (`first`, the name sort, `fc` classes, `K.fill_words`, the stage and `K.draw_width`, `c.all_rows`, the words), `parts.js` (`map_labels`' widest point and `widest_spots`, `width_key`'s band, merged fills' `region`, the key's `fc` and `forced_edge`), `checks.js` (empty column, words warning, retrieval dates, `--data`'s order, `retrieved_dates` exported), `oa-chart.mjs` (warnings, the page's empty column check, the stage in Node and the sweep, `--data`, the weight line, the national figure warning, `typography` and `stage` in the island, forced-only marks out of SVG exports, self-test cases), `kit.css` (the stage frame, `region`, `muted`, `forced`, `.oac-s-band`), `words.json` (`data_file`, `stage_scroll`), `README.md` (round 3); `work/build/scripts/phase-2/guide_build.py` (`sketch_names`' period); `work/build/scripts/phase-3/phase3_ch14_build.py` (`{data_file}`); `work/build/guide/shell/guide-shell.js` (`snapTop`); these notes.
+- Created: none in the repository. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/` (`base/` frozen kit and specs, snapshots, kit builds `k1` to `k3`, `all0`, `all1`, `fc`, `fc2`, `typo`, `stage`, `p03`; strict builds `g1` to `g3`; probe scripts).
