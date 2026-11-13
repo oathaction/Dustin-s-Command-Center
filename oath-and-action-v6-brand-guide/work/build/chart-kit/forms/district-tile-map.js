@@ -1,9 +1,9 @@
 /* District tile map (coverage plan 3.14, extended; S82). One square for each House seat, on Oath & Action's own tile
  * layout (a derived table built from the Census Bureau's district centers), drawn twice: one panel for each party, named
  * with its seats, a seat filled in its winner's panel and a ghost outline in the other, so position carries party and no
- * hue does (DR-58). The margin takes four gray steps, closer races lighter; a dot marks a seat unopposed on the ballot and
+ * hue does (DR-58). The margin takes four steps of one sequential ink, every won seat with a context edge; a dot marks a seat unopposed on the ballot and
  * a ring a seat decided another way. A line runs between states, and each state's code sits in its block where the
- * block leaves room over outlines or light squares. Where a square is under 10 px the dots and rings drop and a note
+ * block leaves room over the other party's outlines. Where a square is under 10 px the dots and rings drop and a note
  * names those seats (phone: differs).
  * encode: state (code), district (text), party (category), cls (integer: the margin's class, 1 to 4, from a derived
  * table, so every map of these results takes one set of classes), mark (category: dot, ring or empty), col and row
@@ -28,17 +28,19 @@
       });
       var gap = W >= 560 ? 2 : 1, pitch = Math.floor((W + gap) / cols * 10) / 10, size = pitch - gap;
       var big = size >= 10, gi = size >= 10 ? 2 : size >= 6 ? 1 : 0;   // a ghost sits inset, so it never reads as the lightest step   // dots and rings only where a square holds them (ruling (b))
-      var y = 0, ink = function (s) { return 'mag-' + s; }, named = {};
+      // the margin's four classes on sequential steps 2 to 5 of one ink, every won seat with its 1 px context edge, so the
+      // closest races read as filled beside the other party's empty outlines (the data lead's C-1, round 3)
+      var y = 0, ink = function (s) { return 'seq-' + (s + 1); }, named = {};
       // the key: the four steps, then the marks and the outline
       if (L.key_title) { var kt = c.text(0, y + 13, L.key_title, { role: 'eyebrow', weight: 700, fill: 'secondary', max: W }); y = kt.bottom + 6; }
       var sw = 14, kx = 0, ky = y + 14, row_h = 22;
       var swatch = function (x, yb, s, mk) {
         c.rect(x, yb - 11, sw, sw, { fill: ink(s), mark: false });
-        if (s === 1) c.rect(x + 0.5, yb - 10.5, sw - 1, sw - 1, { stroke: 'context', width: 1, mark: false });
+        c.rect(x + 0.5, yb - 10.5, sw - 1, sw - 1, { stroke: 'context', width: 1, mark: false });
         if (mk) mark_at(x + sw / 2, yb - 11 + sw / 2, sw, s, mk);
       };
       var mark_at = function (cx, cy, sz, s, mk) {
-        var on = 'on-mag-' + s;   // the step's own label ink
+        var on = 'on-' + ink(s);   // the step's own label ink
         if (mk === 'dot') c.circle(cx, cy, Math.max(1.75, sz * 0.14), { fill: on, mark: false });
         else { c.circle(cx, cy, Math.max(2.5, sz * 0.27), { fill: on, mark: false }); c.circle(cx, cy, Math.max(2.5, sz * 0.27) - 1.5, { fill: ink(s), mark: false }); }
       };
@@ -54,7 +56,7 @@
         kx = tb.x + tb.w + 18;
         if (tb.lines > 1) { kx = 0; ky = tb.bottom + 14; }
       });
-      c.key([1, 2, 3, 4].map(function (s) { return { fill: ink(s), ordered: true, outline: s === 1 }; }));
+      c.key([1, 2, 3, 4].map(function (s) { return { fill: ink(s), ordered: true, outline: true }; }));
       y = ky + 18;
       // one panel for each party, Democrats first (S48's order)
       (L.panels || []).forEach(function (pn, pi) {
@@ -67,7 +69,7 @@
           var x = X(s.col), yy = Y(s.row), key = s.r[es] + ' ' + s.r[ed];
           if (String(s.r[ep]) === String(pn.value)) {
             c.rect(x, yy, size, size, { fill: ink(s.st), data: { key: key, field: ek, value: s.st, party: s.r[ep] } });
-            if (s.st === 1) c.rect(x + 0.5, yy + 0.5, size - 1, size - 1, { stroke: 'context', width: 1, mark: false });
+            c.rect(x + 0.5, yy + 0.5, size - 1, size - 1, { stroke: 'context', width: 1, mark: false });
             if (big && s.mk) mark_at(x + size / 2, yy + size / 2, size, s.st, s.mk);
           } else c.rect(x + gi + 0.5, yy + gi + 0.5, size - 2 * gi - 1, size - 2 * gi - 1, { stroke: 'ghost', width: 1, mark: false });
         });
@@ -104,7 +106,7 @@
                 var touches = X(col) < bx + b0.w && X(col) + size > bx && Y(row) < byy + b0.h && Y(row) + size > byy;
                 if (!touches) continue;
                 if (!o || o.r[es] !== st) ok = false;
-                else if (String(o.r[ep]) === String(pn.value) && (o.st >= 3 || (big && o.mk))) ok = false;
+                else if (String(o.r[ep]) === String(pn.value)) ok = false;   // a code sits over outlines only
               }
             }
             if (ok) { c.text(cands[i][0], byy - b0.y, st, { role: 'tick', weight: 700, anchor: 'middle', halo: true }); placed.push({ x: bx, y: byy, w: b0.w, h: b0.h }); named[st] = true; break; }
