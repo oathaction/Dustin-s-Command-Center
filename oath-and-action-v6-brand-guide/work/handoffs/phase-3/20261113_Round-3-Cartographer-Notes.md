@@ -6,6 +6,8 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. The cartographer,
 
 Started 00:50 UTC. Reading the brief, its list, the kit and the three built maps. Order of work, as the brief binds it: the entries for S07 (14.114) and S12 (14.115), the two sketches (14.113, 14.124), S82's tile layout from the district centers, and the forms' design against the engineer's R3-2 parts as they post. Outline maps wait for the frozen boundary files, R3-2 and DL-E1; S16 waits for R3-4; named marks and inks wait for the data lead's rulings.
 
+**From the main session (D3-1087):** S79's California inset and Kern County draw from `census-cb-2024-counties-california-5m.geojson` (all 58 counties at 1:5,000,000, R1-C7 shape), which the research lead freezes beside the national 20m files; the national locator frame draws `census-cb-2024-states`. S79's spec lists the file among its datasets; the plan row's change is the main session's.
+
 ## Routine calls
 
 ## Requests to the engineer
