@@ -125,3 +125,12 @@ All in my scratch folder (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af5
 - `work/build/scripts/phase-2/stage_b_ch12_systems_build.py` (modified), with `s-12-marker-correct.html`, `s-12-marker-failure.html`, `manifest-systems.json`
 - `work/build/scripts/phase-2/stage_c_ch17_build.py` (modified), with `work/build/guide/chapters/17-motion-and-states.json`, `s-17-3-correct.html`, `s-17-4-correct.html`, `manifest-motion.json` and the generator's record `work/handoffs/phase-2/20261111_Stage-C-Round-1-Ch17-Figures.json` (its token set line only)
 - `work/handoffs/phase-3/20261113_Round-4-Systems-Designer-Notes.md` (this file)
+
+## Follow-up (main session's two items, 22:00 UTC)
+
+- **Key paths.** The generator now writes `work/build/guide/specimens/s-15-19-correct.keys.json` and `s-15-20-correct.keys.json` (oa-keys/1, the accessibility lead's paths with Loop R1's three steps and Reforms R-03 and R-04; with two reforms, ArrowDown from R-04 wraps to R-03) and sets `"keys": true` on both manifest entries, so the strict build marks the stages `data-oa-keys`.
+- **Forced colors.** In a live plate the effect pips and the record square take the reader's text color, `CanvasText`, under `@media (forced-colors:active)` with `forced-color-adjust: none` (a first try with `currentColor` kept their own ink and failed the test). The plate rules may now name that medium besides print and screen.
+- D3-xxx | 15.19 and 15.20 carry their keyboard paths as keys files the generator writes | The engineer's specimen key path walk (R4-5)
+- D3-xxx | A live plate's pips and record squares take `CanvasText` in forced colors | The accessibility lead's low item; the words beside them already change
+
+Tested: the generator twice, the second run changing nothing (hashes of every chapter 15 file); strict build `guide15.html`, exit 0, 0 warnings, chapter 15 at 381,559 bytes; Rules 15.19 to 15.21 at 50,046 bytes (reported). `keys_walk.js` (the guide check's keyPath method, copied: a stand-in button before the stage, each key, then focus, states and status) at load 3.83: both 15.19 paths and the 15.20 path pass at 1440 and 390 px, 13, 3 and 10 steps; with forced colors active (dark), 15.20's pips and record square compute to rgb(255, 255, 255), as its words do, on a black ground. Not tested: the guide check's own `keyPath` run on the page.
