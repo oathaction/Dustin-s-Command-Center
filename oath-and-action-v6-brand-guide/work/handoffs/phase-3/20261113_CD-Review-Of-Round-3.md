@@ -24,7 +24,7 @@ Two of the five items are ready: the nine sketches, and rules 14.1 to 14.14 with
 | 1. Maker A: S66 to S72 with entries 14.96 to 14.102 | 4 | 3* | 4 | 4 | 4 | 3* | 2 | 6 | no |
 | 2. Maker B: S65, S73 to S77 with entries 14.93, 14.104 to 14.112 | 3* | 4 | 4 | 4 | 4 | 4 | 0 | 5 | no |
 | 3. The cartographer: S78 to S84, S16 as moved, entries 14.114 to 14.123 | 3* | 3* | 4 | 4 | 4 | 3* | 2 | 6 | no |
-| 4. The nine sketches with their entries | 4 | 4 | 4 | 4 | 4 | 4 | 0 | 1 | yes |
+| 4. The nine sketches with their entries | 4 | 4 | 4 | 4 | 4 | 4 | 0 | 2 | yes |
 | 5. Rules 14.1 to 14.14 with the opener, as round 3 changed them | 4 | 4 | 4 | 4 | 4 | 4 | 0 | 3 | yes |
 
 An asterisk marks a score under 4. Specimens under the bar: S68 (accessibility), S71 (clarity), S73 (craft), S78 (craft), S12 (clarity, accessibility).
@@ -64,7 +64,7 @@ An asterisk marks a score under 4. Specimens under the bar: S68 (accessibility),
 - Accessibility 4. The captions carry what the drawings show, and the avoid halves stack at 390 px with the bar still over the misleading half.
 
 **5. Rules 14.1 to 14.14 with the opener.**
-- Craft 4. No plate changed (D3-1289), the plates read as before at 1440, 1024 and 390 px, and rules with the opener weigh 175,796 of 212,288 bytes.
+- Craft 4. No plate changed (D3-1289), the plates for Rules 14.7 and 14.9 read at 390 and 1024 px as round 2 left them, and rules with the opener weigh 175,796 of 212,288 bytes.
 - Clarity 4. Rule 14.9's second paragraph states the class-map test in plain words, though Rule 14.6 now runs five paragraphs and about 530 words, more than 50 lines at 1440 px, restating its own spec rows (R-S1).
 - Brand fidelity 4. Rule 14.6's area case keeps red off maps, nodes, cells and flows, and Rule 14.7's "Seats on a map" row writes the party test into the rules.
 - Usefulness 4. Rules 14.3, 14.4, 14.7 and 14.12 each gain one spec row a builder can act on (a state on a map, widths, seats on a map, a larger count to a dot), and the opener links groups 11 to 15.
@@ -121,6 +121,8 @@ An asterisk marks a score under 4. Specimens under the bar: S68 (accessibility),
 
 **SK-S1. The cohort sketch's inset.** In 14.94 "100%" sits about 4 px and "2021" about 5 px from the frame at 1x, and "Start" sits under "40" as if it were the next step of the value scale. Hold every word 10 px inside the frame (D3-966) and set "Start" clear of the value labels. Owner: maker B.
 
+**SK-S2. The avoid entry and Rule 14.7's failure plate.** Rule 14.7's failure plate already draws a House bar chart in red and blue under "Failure case: do not publish", while sketch 14.124 draws the same fault in gray with the colors named. Keep the sketch gray, and add one clause to entry 14.124's "why" or caption pointing to Rule 14.7's failure plate, which shows the colors, so the two places teach one lesson. Owner: cartographer, editor.
+
 **R-S1. Rule 14.6's length.** Five paragraphs, about 530 words; paragraph 5 alone is 149 words. The spec rows already carry the cases (a diagram's path, a comparison, an error or party tie, two findings). Keep each paragraph to its principle in two or three sentences and let the rows carry the lists, so the rule reads in half the lines. Owner: editor; data lead (sign-off).
 
 **R-S2. Group 12's line.** "Process diagrams, decision trees and who-decides diagrams show who decides and how a decision moves" names three of the group's eight forms. For example: "Process diagrams, decision trees, org charts and roll-call grids show who decides, who answers to whom and how a decision moves." Owner: editor.
@@ -135,7 +137,7 @@ An asterisk marks a score under 4. Specimens under the bar: S68 (accessibility),
 4. **Diagrams' reading order.** S66's table runs way in, step 1, its branches, then step 2 in the phone's order; S77 names each next step; S74 and S76 print links as rows; S68's lines end in the open diamond on both grounds. I did not test the accessibility tree.
 5. **Weight.** From the build: every round 3 plate with its frame under 15,000 bytes (S69 14,591, the only one over 13,852, as D3-1099 allows); chapter 14 with the kit 2,219,208 of 2,803,941; map geometry 133,117 of 250,000; rules with the opener 175,796 of 212,288; share per plate 14,106 for 13; projection 15,044,385 of 15,500,000. No plate bought its weight with something a reader did not need, though S71 draws a table as a picture and then prints the same words as a table.
 6. **Rule 14.9 on the class maps.** The notes give the counts (13 of 51; 1,707 and 182 of 3,143) and name no place above another; the titles count places by class (C-S3). I did not recompute the classes.
-7. **Sketches at true size.** All nine at 1x and 2x on Newsprint, four at 2x on Charcoal. The avoid sketch's bar sits over the misleading half only and "Use instead" over the panels at every width. The gray stand-in still teaches a real fault, party coded by fill with no margin, and its key and caption name the red and blue.
+7. **Sketches at true size.** All nine at 1x and 2x on Newsprint, four at 2x on Charcoal. The avoid sketch's bar sits over the misleading half only and "Use instead" over the panels at every width. The gray stand-in still teaches a real fault, party coded by fill with no margin, and its key and caption name the red and blue; Rule 14.7's failure plate already shows red against blue, so the entry should point to it (SK-S2).
 
 ## The two questions
 
@@ -145,7 +147,7 @@ An asterisk marks a score under 4. Specimens under the bar: S68 (accessibility),
 
 ## Risks for Dustin to weigh
 
-- **The avoid sketch in gray or in color (board 2 offers the call).** I recommend gray. Literal red and blue would put a party-colored map on an Oath & Action page, against DR-64 and Rule 14.7, and a screenshot travels without its "do not publish" bar. The gray half still shows the fault the entry names, party coded by fill with no margin, and its key reads "Party A, shown red" and "Party B, shown blue".
+- **The avoid sketch in gray or in color (board 2 offers the call).** I recommend gray, with SK-S2's pointer. Rule 14.7's failure plate already shows red against blue under its "do not publish" bar, so the reader meets the colors once, on a bar chart; a second, map-shaped red and blue is the most shareable partisan image there is, and a screenshot travels without its bar. The gray half still shows the fault the entry names, party coded by fill with no margin, and its key reads "Party A, shown red" and "Party B, shown blue".
 - **S12 is a board 1 drawing.** Fixing C-M2 by a fixed 1024 px stage keeps the approved drawing and adds a sideways scroll under 1024 px; fixing it in the form changes the drawing. Either belongs on board 2.
 - **Chapter length.** At this rate chapter 14 will pass 380,000 px at 1440 px after round 4. The local contents carries it today; the selection guide becomes the chapter's front door.
 
