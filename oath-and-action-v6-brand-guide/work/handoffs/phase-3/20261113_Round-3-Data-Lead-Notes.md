@@ -817,3 +817,106 @@ Waiting for owners' reports. Each sign-off will name what I looked at and at whi
 - Whether the stacked tile fits S12 at 558 px (the engineer measures it), and S82's and S84's weight after their changes.
 - Which Census tables publish Puerto Rico rows (the research lead confirms).
 - The live FEC, Census, Clerk and Department of Labor sources.
+
+### Rulings on the brand and craft report (BC)
+
+Read from `work/handoffs/phase-3/20261113_Round-3-Red-Team-Brand-Craft.md` and the fix brief's addendum (D3-1329, D3-1330) at 04:42 UTC.
+
+**BC-M1 with ST-S6. S73 compares the reach of one committee per nominee. Ruled: the research lead reads every joint fundraising committee of both nominees by one rule, and S73 draws them all; the title drops its comparison of reach now. This replaces my ST-S6 ruling ("the title stands").**
+- **Why the title alone cannot fix it.** The drawing itself shows the contrast: 53 links on one side and two on the other. By the sidecar, each nominee had three joint fundraising committees that transferred to the campaign: for Harris, the Harris Victory Fund ($528,730,999.70 to the campaign), the Harris Action Fund ($4,900,000.00) and the Harris Baldwin Victory Fund ($35,265.62); for Trump, the Trump National Committee JFC ($246,821,872.35), the Trump Save America Joint Fundraising Committee ($134,018,942.92) and the Trump 47 Committee ($26,908,283.76). The file read none of the four others' transfers to anyone but the campaigns, so neither the title nor the picture can say whether the gap in reach is real. Even "sent its campaign" compares one committee each: all three of Trump's sent the campaign $407.7 million and all three of Harris's $533.7 million.
+- **The rule, read the same way for both:** every joint fundraising committee that transferred to the nominee's principal campaign committee in the 2024 cycle (the three each the sidecar already names), and every committee each paid on line 22 (and line 28C, kept apart as now), from the same Schedule B aggregate by recipient that RL-3 read. RL-3a's measure, line 22, stays.
+- **The drawing:** one sender bar per nominee, named for the nominee with the count of committees ("Harris’s three joint fundraising committees"), at RL-3a's unit and key; receivers folded by kind, the same way for both sides: the campaign; the national party committee; state party committees as one node with their count; any other committee as one node with its count. Bars solid and links in the light fill with a party-ink edge (B-S1). The grouped table's "From" names each fund in its rows, every row in the export.
+- **The title** states what the record shows across all six, read from both sides; it may compare reach only if the comparison holds across all of them. The editor writes it, and I read it from the left and the right before sign-off. Until the data lands, the title drops "to 53 committees" and "to two" and names no comparison of reach.
+- **If the research lead cannot read the four in this pass**, S73 keeps its one committee each and takes BC's route (b): a title that names what each picked fund sent with no comparison of reach, a note that names the four committees not drawn and says their transfers to party committees were not read, and board 2 shows S73 with the item open.
+- **Plan and board.** This changes change 8 of the round 3 data plan (one committee per nominee) to every committee per nominee, so the data plan's row 94 takes a status line (research lead), and board 2 shows S73's data as changed. Weight stays under D3-1328's 14,106 bytes.
+- Owners: research lead (data, sidecar, data check), maker B (derive, spec, entry 14.104's words on the rule), editor (title and notes); I sign off at 1440 and 390 px on both grounds and in grayscale, with every sum checked by script.
+- Reason: DR-93 and DR-124 ask one standard read both ways, and a contrast the selection rule makes cannot stand as a finding.
+
+**BC-M2.** The same as ST-M1 and ST-M3 (D3-1329): those rulings.
+
+**BC-M3.** The same as A-M1: maker A's words, either BC's or CD's form.
+
+**BC-S1. S80 lets land stand in for seats. Ruled.**
+- Both panels add a Detroit inset at every width, framed and named, with the districts in and around Detroit drawn at a scale where each takes its number, in the same steps, edges and ghosts as the main panel. By the frozen results, Democrats won the 6th, 11th, 12th and 13th, the four districts BC finds too small to number around Detroit; the cartographer names in the inset every district the main panel cannot number at that width, and the "Not labeled at this width" note then lists none of them.
+- One note line, for example: "Each district elects one member, whatever its area." Entry 14.119 adds the same and points to Rule 14.121 for a drawing of seats as equal squares.
+- Inks, classes and panel order do not change. S80 measures 6,514 bytes, so the inset fits under D3-1328's 14,106.
+- Owners: cartographer, engineer if the inset frame needs the map parts; editor (words). I sign off at 1440, 390, 296 and 256 px on both grounds.
+- Reason: the entry's own avoid lesson (14.124) names land standing in for votes, and S80 is the specimen that most risks it.
+
+**BC-S2. S73's nodes and S76's key.** S73: B-S1's ruling (bars solid, links in the light fill with a party-ink edge), which also gives each bar its own edge against the bands. S76: ruled, the width key's band draws in the band fill with its context edge, as every band does, so the key shows what it measures. Owners: maker B, engineer (`width_key`).
+
+**BC-S3. S81's "No estimate" on Charcoal. Ruled:** "No estimate" takes a hatch in the context ink over the land ink, on both grounds and in its key swatch, so it never reads as a class. De Baca County stays named in the note. Owner: cartographer. Reason: a missing value may not look like a value (1.09 to 1 against the lowest class on Charcoal, as BC measured).
+
+**BC-S4. S82's closest races on Charcoal. Ruled:**
+- Every won seat keeps its 1 px context edge at every width, on both grounds; if the form drops the edge on small tiles, it must not.
+- On Charcoal, the ghost outline takes the band ink (1.25 to 1 against the ground, by AX's table), so it sits below the lightest won fill (1.78) and far below the won seat's edge (5.41). Newsprint stays as C-1 left it, where ST, AX and CD found the lightest won seat reads.
+- No dotted ghost: Rule 13.4 keeps line patterns for a connection's grade.
+- The grid insets 2 px at 720 px so no square ends on the drawing's last pixel.
+- The test is C-1's: the lightest won seat reads as filled against an empty ghost on both grounds and in grayscale at every width. I sign off from S82 and S80 at 720, 358, 296 and 256 px on Charcoal and in grayscale.
+- Owners: cartographer, engineer (the ghost's Charcoal ink if it is a kit token). Reason: the title names the 36 closest races, and on Charcoal at phone width they read as seats not won.
+
+**BC-S5. Codes on phone maps.** Joined to D3-1325 and C-M1 (`map_labels`; S78's tile grid fallback). Two rulings beyond them:
+- Codes may sit on mid and dark steps in the step's label ink at every width, as ruling (b) set for the desk; AX measured codes on every step at 4.61 to 1 or more on both grounds.
+- **S82:** at desk width every state carries its code, single-seat states beside their square on a leader. At phone widths a code goes where the state's squares hold it and the note names the rest, as now: a 435-square grid cannot carry 50 codes at 358 px, and Rule 14.12 allows the phone drawing.
+- **S16:** D3-1329 (every state's code at least as well placed as board 1, CT, TN and VA by name), inside ruling (e).
+- Owners: engineer, cartographer.
+
+**BC-S6.** The same as C-S5: no ruling.
+
+**BC-S7 and BC-S8.** No ruling, maker A fixes as the report says.
+
+**BC-S9. S65's title read from the right. Ruled:**
+- The title names the actor in both clauses, for example: "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, states ended 16.0 million for a procedural reason, more than twice the 6.9 million they found ineligible." The figures and the one finding stay (MB-1).
+- One note sentence says what the record's two categories mean, in CMS's own terms as the sidecar gives them (metric 5c, "terminated for a procedural or administrative reason"; metric 5b, "determined ineligible"): a procedural ending is not a finding that the person was ineligible, and the record does not say how many were. No example of a cause, since CMS gives none (D3-1304), and BC's "most often because a renewal form came back incomplete" has no source in the file.
+- Owners: maker B, editor; the research lead checks the sentence against CMS's metric definitions. Reason: read from the right, the title implies eligible people lost coverage; read from the left, it names no actor. The record supports neither more nor less than its two categories.
+
+**BC-S10. One side named where the record has two.** S72: A-S2's ruling (no crossover in the title). Entry 14.115's example gives both directions: "as “toward the Democratic nominee” or “toward the Republican nominee”". Owners: maker A, cartographer, editor.
+
+**BC-S11.** ST-S3's ruling for entries 14.119 and 14.124; the `sketch_alt`'s contrasting pair is the editor's (no ruling).
+
+**BC-S12.** No ruling, owners fix as the report says. S67's Missouri figures take thousands separators in printed words only; the CSV keeps the source's text.
+
+**BC-S13. S77's "some miss the limits". Ruled: cut it.** The chart measures no wait, and the file holds no source for the claim; note 1 ends "a state may move faster." Owner: maker B, the editor reads.
+
+**BC-S14. S74's diagonal. Ruled:** the diagonal is marked in a quiet ink and named. Maker B chooses the lighter of two marks after a look at 1440 and 256 px: a 1 px line in the gridline ink from the matrix's top left corner to its bottom right, drawn over the fills with each count cleared through `K.parts.clear_label`; or a 1 px inner frame in the gridline ink on each diagonal cell. Either is keyed "Within one region". Never the text's ink (the authority cells' edge) and never a dash. Owner: maker B; I sign off at 1440 and 256 px on both grounds and in grayscale. Reason: the title counts the diagonal, so the reader must be able to find it.
+
+**BC-S15.** No ruling, the engineer fixes the rail as the report says.
+
+**BC's question 1.** The same as Q2, with one addition for Dustin: if he approves literal red and blue, DR-64's "no red and blue on any election graphic" records one exception, the misleading half of the avoid sketch at sketch size, under its bar, and the engineer's guide check passes that half alone.
+
+### Alignment with the main session's calls (04:43 UTC)
+
+The main session's calls D3-1320 to D3-1330 landed while I ruled. Where they differ from my words above, theirs govern, and these lines say how my rulings read now:
+- **ST-M2 and D3-1321.** No owner rewrites a "download" or "CSV file" line until Dustin answers Q1. The engineer may prepare the phrase's one home and runs the export check now (items 2 and 3 stand); item 1's rewrite waits.
+- **C-M2 and D3-1324.** The order is the main session's: the drawing unchanged at a width the guide gives it (869 px), else a fixed 1024 px stage that scrolls sideways. My stacked tile becomes the third route, ahead of any tile that drops its figure. A tile that drops its printed figure breaks DR-64's "the figure printed in each tile", so that route needs Dustin's word, not only my sign-off; I ask the main session to put it to him if the first three fail.
+- **A-S3, B-S4 and D3-1327.** The in-force or snapshot date prints once, in the grade line; my line on keeping the same date in grade and source lines gives way to D3-1327. The source line's retrieval date follows H04 as the editor applies D3-1327.
+- **ST-M4 and D3-1328.** S82's limit is 14,106 bytes with its frame, not 13,852.
+
+### Routine calls, review fix pass (BC)
+
+- D3-xxx | S73 draws every joint fundraising committee that transferred to each nominee's campaign, three for each, one sender bar per nominee, receivers folded by kind, line 22 as the measure; the title compares reach only if it holds across all six; replaces my ST-S6 ruling | BC-M1 with D3-1330: the drawn contrast came from the rule that picked one committee each
+- D3-xxx | If the four other committees cannot be read this pass, S73 keeps one each with a title that compares no reach and a note naming the four not read | BC's route (b), with board 2 showing the open item
+- D3-xxx | S80 draws a framed Detroit inset in both panels at every width, and a note says each district elects one member whatever its area | BC-S1: land stood in for seats
+- D3-xxx | S76's width key draws in the band fill with its edge | BC-S2: a key must look like what it measures
+- D3-xxx | S81's "No estimate" takes a hatch on both grounds | BC-S3: a missing value may not look like a class
+- D3-xxx | S82 keeps every won seat's edge at every width, takes the band ink for ghosts on Charcoal, and insets its grid 2 px | BC-S4: the closest races read as seats not won on Charcoal
+- D3-xxx | Map codes may sit on mid and dark steps in the step's label ink; S82 codes every state at desk width with leaders for single-seat states | BC-S5 with D3-1325
+- D3-xxx | S65's title names the states as the actor in both clauses, and a note gives CMS's two categories with no cause | BC-S9: read from both sides; D3-1304
+- D3-xxx | Entry 14.115's example names both directions of a shift | BC-S10: one standard (DR-93)
+- D3-xxx | S77's note drops "and some miss the limits" | BC-S13: an unsourced measured claim on a chart that measures no wait
+- D3-xxx | S74 marks its diagonal in the gridline ink, keyed "Within one region" | BC-S14: the title counts it
+
+### Tested and not tested, after AX, CD and BC
+
+Tested, by script (`python3 -I`), 04:33 to 04:43 UTC:
+- The DOL history file's "..." cells in the four panel years (20, all `cell_status` "not applicable", Alabama, Louisiana, Mississippi, South Carolina and Tennessee), DC's rate in each year of the classes file, and the sidecar's footnote key for [c], (d), (e) and (g).
+- S72's votes by chamber, party and vote from the frozen file (Senate 52 R, 7 D and 1 I yes, 38 D, 1 R and 1 I no; House 216 R and 6 D yes, 207 D and 2 R no, 1 of each not voting), and the Senate Democrats' order in the file.
+- S68's table columns (`controls` printed) and PW03's record for order 7; S73's notes, group columns and `labels.sources`; S78's and S81's title word counts; S65's, S74's and S77's titles and the notes ruled on; the CMS sidecar's words for metrics 5b and 5c.
+- The JFC sidecar's selection rule and its six committees' transfers to the campaigns: $407,749,099.03 from Trump's three, $533,666,265.32 from Harris's three.
+- Michigan's 13 winners and printed margins from `clerk-house-results-2024-classes`.
+- DR-64's text; the main session's calls D3-1320 to D3-1330 and the fix brief's addendum.
+
+Not tested:
+- No build, capture or browser: every change ruled here waits for its owner's build and my sign-off.
+- The four other joint fundraising committees' line 22 transfers (the research lead reads them under BC-M1).
+- BC's, CD's and AX's captures, label counts and contrast figures: read from their reports, not repeated, except where a figure above says "by script".

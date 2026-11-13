@@ -6,7 +6,8 @@
  * (labels.open); the note gives the remainder.
  * Inks (the data lead's round 3 ruling (b)): the node outlined in the subject ink; flows in the light fill with the
  * context edge; the flow the title names (labels.named) in the subject ink; the lines labels.track names (cash on hand)
- * and grouped lines in the track ink with the context edge. No red: a flow is an area.
+ * and grouped lines in the track ink with the context edge; the key band in the light fill with the context edge, as the
+ * bands take it (BC-S2). No red: a flow is an area.
  * encode: side (category: labels.in marks a line in, any other value a line out), key (id), category (text), value.
  * labels: in (default "in"), node (the node's name), names ({key: printed name}), short ({key: name under 480 px}),
  * groups ({key: group name}), track ([keys]), named ([keys]), max_px (the node's height, default 360; 300 on a phone),
@@ -34,7 +35,7 @@
       fl.faults.forEach(function (x) { c.warn(x); });
       var y = 0;
       if (L.key_steps) {
-        y += P.width_key(c, 0, y, fl.unit, L.key_steps, { words: L.key_steps.map(function (s) { return '$' + K.fmt(s, f.key || f.value || 'integer'); }), stroke: 'context', len: 32, title: L.key_title, max: W });
+        y += P.width_key(c, 0, y, fl.unit, L.key_steps, { words: L.key_steps.map(function (s) { return '$' + K.fmt(s, f.key || f.value || 'integer'); }), band: 'light-fill', len: 32, title: L.key_title, max: W });
         if (L.key_hairline) y = c.text(0, y + tk * 0.9, String(L.key_hairline).split('{v}').join('$' + K.fmt(1 / fl.unit, f.key || f.value || 'integer')), { role: 'tick', max: W }).bottom;
         y += 16;
       }

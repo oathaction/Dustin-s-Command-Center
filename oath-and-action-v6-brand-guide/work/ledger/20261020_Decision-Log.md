@@ -5514,3 +5514,54 @@ The main session reported that `phase3_ch14_build.py` still builds rounds 1 and 
 | D3-1328 | No round 3 plate grows past 14,106 bytes with its frame and none past 15,000; a grouped table names what its reader question needs and no more | The share per plate for round 4 is 14,106 (D3-1310); S82's and S70's tables gain rows in this pass |
 | D3-1329 | The brand and craft report (3 of 5, 3 Must fix, 15 Should fix) goes out as the fix brief's addendum; BC-M2 and BC-M3 are faults already in hand (ST-M1, ST-M3, A-M1), BC-S5 joins D3-1325 with S16's codes placed at least as well as board 1 placed them, and BC-S6 is C-S5 | One fault, one fix (D3-1320); S16 is a board 1 drawing, so its placement may move but must not lose ground |
 | D3-1330 | S73's title compares only what its one rule measures: the data lead rules first whether the title drops its comparison of the two committees' reach or the research lead reads every joint fundraising committee of both nominees by one rule (BC-M1, ST-S6) | DR-93 and DR-124: read from the right, the reach the title contrasts comes from the rule that picked one committee per nominee, and the other committees were not read |
+
+### Data visualization lead, round 3 review fix pass (rulings on ST, AX and CD)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1331 | The kit's `first` aggregate prints a group's first value whatever its type, and a printed table column empty in every row fails the page check | S73's table named no sender (ST-M1, AX-M1) |
+| D3-1332 | S73's "From" column prints each fund by the drawing's name, from `labels.sources` | Table and drawing name both funds alike (Rule 01.11) |
+| D3-1333 | S68's "Line of authority" maps orders 3, 4, 7 and 8 to "None drawn"; the kit warns where a `words` column prints an unmapped value unless the spec sets `words_pass` | "7" beside Congress read as a count; S82's districts need the fallback (ST-M3, AX-M2, A-M2) |
+| D3-1334 | No reader text promises "the download" or "the CSV file"; each of the nine promises names the chart's data file in one phrase kept in one place, whose final wording waits on Dustin's answer to where the files live | The guide offers no per-chart download (ST-M2, AX-S5) |
+| D3-1335 | S81's page keeps its class-only island and its grouped table with values and no county names | Each county's value and margin would cost about 10,600 bytes past the plate's ceiling (D3-1090) |
+| D3-1336 | S82's table names its 36 races under 5 points in each state's row, with district, party and margin, in place of the count; its phone note reads "The table gives each state’s seats and names its closest races." | D3-1128: the title names those races, and the old note was false (ST-M4) |
+| D3-1337 | S83's note gives the no-dot count at both units: 1,354 counties and 2.8 million employees at 10,000 a dot, 2,426 and 15.4 million at 50,000 | DL-E1's condition 4; the phone's figure was missing (ST-S1) |
+| D3-1338 | S76 nets transfers candidate by candidate, $175.1 million in and $18.3 million out, and draws the out line | The note promised per-candidate netting; netting across campaigns cancels flows that never met (ST-S2) |
+| D3-1339 | S76's remainder note gives the 297 campaigns that do not balance and the one campaign that leaves $1.5 million of it, with no cause | The file shows the imbalance, not its cause (ST-S2) |
+| D3-1340 | Entries 14.119 and 14.124 describe the margin as steps of one ink, never gray | C-1 moved both maps to Verdigris steps 2 to 5; corrects my C-5 acceptance (ST-S3) |
+| D3-1341 | Maps of the states note any territory their publisher's table holds and the map leaves out; S82 names the House's six non-voting members | Rule 13.6's universe; corrects ruling (b)'s "no round 3 file holds it" (ST-S4) |
+| D3-1342 | A map's words name a place in a class only where its printed interval sits inside the class | Rule 14.9 (ST-S5) |
+| D3-1343 | A class map counts interval crossings on the figures the table prints, one decimal half up; S78's note gives 11 states and DC | D3-1106's rule for printed figures; corrects ruling (c)'s 13 (ST-S12) |
+| D3-1344 | S73's note 2 adds that the number of committees a fund pays is set by the agreement that formed it; the title stands | ST-S6: two documented sums, read alike, with the reason for the counts in view |
+| D3-1345 | S81 adds a note that 549 of 3,143 counties sit at or above the nation's household median | A newcomer reads a county count against a household median (ST-S7) |
+| D3-1346 | Grouped state tables sort by the printed name | ST-S9, AX-S4, C-S4 |
+| D3-1347 | Rule 14.9's class width test is the margin of error, the plus or minus figure; ruling (c)'s test 1 and D3-1103 read "the widest margin of error drawn" | A class as wide as the widest margin already keeps every place within one class of where it is drawn (AX-S7) |
+| D3-1348 | In forced colors merged map land draws no stroke; S72's "did not vote" fills with GrayText; S74's authority cells take a double edge | Each keeps its normal-colors meaning in a contrast theme (AX-S1) |
+| D3-1349 | S84's DC square draws in all four panels at every width, or a note names it where a panel has no room; "..." prints as "No state law" and one note keys the Department's marks [c], (d), (e) and (g) | Every panel's count includes DC; a mark needs its key (AX-S3) |
+| D3-1350 | A map of a model's estimates takes Rule 13.1's Estimate kind, as S51 does; entry 14.120 says so for builders | Round 2 ruling (d); the production test's designer had no path to it (AX-S6) |
+| D3-1351 | S78 labels every state at every width from 358 px through an interior placement and leaders, or takes the tile grid as its phone form if more than six places lack a code under 480 px | Rule 14.3's row and Rule 14.12 (C-M1) |
+| D3-1352 | S12 draws its arrows with the figure in each tile at every desk width, stacked in the tile or in a fixed stage that scrolls; the gray steps stay the phone form | DR-64 promises arrows with figures, and the guide showed none (C-M2) |
+| D3-1353 | S71's and S72's titles drop a clause: S71's 60-senator clause moves to a note, and S72 names neither chamber's crossover | One finding each; S72 read from both sides (A-S1, A-S2, DR-93, DR-124) |
+| D3-1354 | A law's in-force date stays in the grade line and its retrieval date in the source line; measure lines drop the date | Ruling (d) puts the date in the grade line (A-S3, B-S4) |
+| D3-1355 | S72's named members print in the record's order, by last name | The record's own order (A-S6) |
+| D3-1356 | S73's links take the light fill with a 1 px party-ink edge, and its sender and receiver bars stay solid; corrects ruling (b) | A network must read as links between nodes, not one mass (B-S1) |
+| D3-1357 | S77 prints each step's limit on its own line in the text's ink | The title's figures read first (B-S3) |
+| D3-1358 | S78's and S81's titles name the survey as the source of their class counts, and stay Findings | Rule 14.9 with the notes' crossing counts (C-S3) |
+| D3-1359 | Entry 14.124 points to Rule 14.7's failure plate | One lesson in two places whichever way the avoid sketch's colors go (SK-S2) |
+| D3-1360 | The avoid sketch's misleading half draws invented places of unequal size, still in gray until Dustin decides its colors | The land-for-votes harm the entry names becomes visible (Q2, AX-S2) |
+
+### Data visualization lead, round 3 review fix pass (rulings on BC)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1361 | S73 draws every joint fundraising committee that transferred to each nominee's campaign, three for each, one sender bar per nominee, receivers folded by kind, line 22 as the measure; the title compares reach only if it holds across all six; replaces my ST-S6 ruling | BC-M1 with D3-1330: the drawn contrast came from the rule that picked one committee each |
+| D3-1362 | If the four other committees cannot be read this pass, S73 keeps one each with a title that compares no reach and a note naming the four not read | BC's route (b), with board 2 showing the open item |
+| D3-1363 | S80 draws a framed Detroit inset in both panels at every width, and a note says each district elects one member whatever its area | BC-S1: land stood in for seats |
+| D3-1364 | S76's width key draws in the band fill with its edge | BC-S2: a key must look like what it measures |
+| D3-1365 | S81's "No estimate" takes a hatch on both grounds | BC-S3: a missing value may not look like a class |
+| D3-1366 | S82 keeps every won seat's edge at every width, takes the band ink for ghosts on Charcoal, and insets its grid 2 px | BC-S4: the closest races read as seats not won on Charcoal |
+| D3-1367 | Map codes may sit on mid and dark steps in the step's label ink; S82 codes every state at desk width with leaders for single-seat states | BC-S5 with D3-1325 |
+| D3-1368 | S65's title names the states as the actor in both clauses, and a note gives CMS's two categories with no cause | BC-S9: read from both sides; D3-1304 |
+| D3-1369 | Entry 14.115's example names both directions of a shift | BC-S10: one standard (DR-93) |
+| D3-1370 | S77's note drops "and some miss the limits" | BC-S13: an unsourced measured claim on a chart that measures no wait |
+| D3-1371 | S74 marks its diagonal in the gridline ink, keyed "Within one region" | BC-S14: the title counts it |

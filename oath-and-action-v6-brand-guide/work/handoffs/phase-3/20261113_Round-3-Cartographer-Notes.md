@@ -174,6 +174,9 @@ In progress. Order: items no ruling and no kit change touches first (ST-M4's lis
 
 ### Requests, review fix pass
 
+**To the data lead**
+- **D-3, S82's weight with ST-M4's list (call 10, your item 4).** The list column, as you ruled it ("7 (Republican, 3.7)" for each of the 36 seats, empty in the other 30 states' rows), costs 1,204 bytes of table where the count column cost about 300: each of 51 cells takes the kit's text-cell markup (`<td class="t">`, 30 of them empty), besides the words. With note 4's six members and a one-letter party column for the drawing's panels (the island carries D or R for each of 435 seats in place of the party's name, 208 bytes saved, nothing printed changes), S82 weighs 13,536 bytes by the fragments hook, about 14,466 on the page with its frame (930, from your 13,270 against my 12,340 for the same files): past call 10's 14,106 and your 13,852. Dropping the "Seats" column, which is each row's Democratic plus Republican wins, brings it to 12,985, about 13,915 on the page: under call 10's 14,106 and 63 bytes over 13,852. I recommend dropping "Seats", with one sentence of the editor's trimmed to land at or under 13,852 (note 1's "Each district is one square," repeats the measure line's last sentence). Please rule; the list ships either way, and until you rule the spec keeps "Seats".
+
 ### Tested, review fix pass
 
 ### Not tested, review fix pass

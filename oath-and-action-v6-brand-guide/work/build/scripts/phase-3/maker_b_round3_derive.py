@@ -322,14 +322,32 @@ def figures():
     big = max((k for k in ins if k != 'cash_start'), key=ins.get)
     same('S76', big, 'individuals', 'the largest receipt line')
     took = sum(v for k, v in ins.items() if k != 'cash_start')
-    same('S76', round(took, 2), 2252865112.88, 'receipts, cash at the start left out')
+    same('S76', round(took, 2), 2271178361.46, 'receipts, cash at the start left out (transfers netted candidate by candidate, ST-S2)')
+    same('S76', round(1000 * ins['individuals'] / took), 609, 'individuals, 60.9 percent of all they took in')
     want('S76', sp['title'], 'Individuals gave 2024 House campaigns $%s million, more than any other source and %d percent of all they took in' % (mil(ins['individuals']), round(100 * ins['individuals'] / took)), 'title (MB-4)')
+    same('S76', (round(sum(ins.values()), 2), round(sum(outs.values()), 2)), (2626481617.75, 2624948459.72), 'money in and out (ST-S2)')
     rem = round(sum(ins.values()) - sum(outs.values()), 2)
     same('S76', rem, 1533158.03, 'remainder')
-    want('S76', t, 'The reports leave $%s million unaccounted for, %s percent of the money in' % (mil(rem), '{:.3f}'.format(100 * rem / sum(ins.values()))), 'note 2')
-    same('S76', outs['transfers_out_net'], 0.0, 'transfers out')
+    want('S76', t, '$%s million unaccounted for, %s percent of the money in' % (mil(rem), '{:.3f}'.format(100 * rem / sum(ins.values()))), 'note 2')
+    # ST-S2: transfers netted candidate by candidate, each candidate's net on its own side; the remainder by campaign
     cands = read('fec-house-campaigns-2024-by-candidate')
     want('S76', t, 'all {:,} House candidates'.format(len(cands)), 'candidates')
+    z = lambda v: num(v) or 0.0
+    nets = [z(r['trans_from_auth']) - z(r['trans_to_auth']) for r in cands]
+    same('S76', (round(sum(x for x in nets if x > 0), 2), sum(1 for x in nets if x > 0)), (round(ins['transfers_in_net'], 2), 436), 'transfers in, net per candidate')
+    same('S76', (round(-sum(x for x in nets if x < 0), 2), sum(1 for x in nets if x < 0)), (round(outs['transfers_out_net'], 2), 84), 'transfers out, net per candidate')
+    gaps = [(r['cand_id'], round(z(r['coh_bop']) + z(r['ttl_receipts']) - z(r['ttl_disb']) - z(r['coh_cop']), 2)) for r in cands]
+    gaps = [g for g in gaps if g[1] != 0]
+    top = max(gaps, key=lambda g: abs(g[1]))
+    same('S76', (len(gaps), round(sum(g[1] for g in gaps), 2), top), (297, 1533158.03, ('H4IN05195', 1500000.0)), 'campaigns that do not balance, and the one that leaves nearly all of it')
+    same('S76', round(100 * top[1] / rem, 1), 97.8, 'one campaign\'s share of the remainder')
+    same('S76', (round(ins['transfers_in_net'], 2), round(outs['transfers_out_net'], 2)), (175103772.47, 18313248.58), 'the derived file\'s transfer lines')
+    rnote = ' '.join(meta('fec-house-campaigns-2024-money-in-out')['notes'])
+    for piece in ('297 of the 1,926 campaigns do not balance', 'leaves $1,500,000.00, 97.8 percent of the net remainder'):
+        same('S76', piece in rnote, True, 'the sidecar holds: ' + piece)
+    want('S76', t, 'The figures for 297 of the {:,} campaigns do not balance'.format(len(cands)), 'note 2, campaigns that do not balance')
+    want('S76', t, 'one campaign’s reports leave nearly all of it', 'note 2, $1,500,000.00 of $1,533,158.03 (97.8 percent)')
+    same('S76', 'transfers_out_net' in sp['labels']['names'], True, 'the out line has a name')
     for k in ('cash_start', 'individuals', 'other_committees', 'candidate_loans', 'cash_end'):
         want('S76', sp['alt'], '$%s million' % mil(ins.get(k, outs.get(k))), 'alt ' + k)
     same('S76', sp['labels']['named'], ['individuals'], 'named flow')

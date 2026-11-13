@@ -1,8 +1,11 @@
 /* Process diagram (coverage plan 3.11, core; S66). The steps every case takes, numbered in order down a heavy line in
  * the subject ink, and beside them the branches some cases take or the ways in and out, each in a box with a fine edge
  * and a short line that says when it applies, joined to the step it leaves or enters by a fine line with an arrowhead.
- * Desk: the steps in a column at the left, each step's branches stacked beside it at the right. Narrower than two
- * columns of 200 px, one column: a step's ways in sit above it and its branches below it, set in from the line.
+ * Desk: the steps in a column at the left, one even gap apart, and the branches in a column at the right, each step's
+ * branches from the step's top down, running on beside the steps that follow where they need the room, so distance
+ * along the heavy line never reads as time (BC-S8); a step moves down only where its own branches or ways in need it.
+ * Narrower than two columns of 200 px, one column: a step's ways in sit above it and its branches below it, set in
+ * from the line.
  * The table lists the steps in this reading order (sort by the key with its values), each link named in a column.
  * encode: key (integer: the step's key), path (category: main steps take labels.main), step (text: the name),
  * who (text, optional: who acts), limit (text, optional: the time the law sets).
@@ -64,7 +67,7 @@
           K.parts.link(c, { x: pts[i - 1][0], y: pts[i - 1][1] }, { x: pts[i][0], y: pts[i][1] }, Object.assign({ arrow: i === pts.length - 1 }, o));
         }
       };
-      var n = 0, y = 0, prev = null, spine = 15;
+      var n = 0, y = 0, prev = null, spine = 15, col_end = -1e9, lane_end = -1e9;
       main.forEach(function (m) {
         n++;
         var mk = String(m[ek]);
@@ -75,10 +78,14 @@
         if (wide) {
           var mw = Math.floor((W - lane) / 2), bx = mw + lane, bw = W - bx, mp = parts(m, n), mh = fit(mp, mw);
           var bp = brs.map(function (r) { return parts(r, 0); }), bh = bp.map(function (p) { return fit(p, bw); });
+          // the step sits one even gap under the last; it moves down only so that a way in meets it level, or so that its
+          // own branch lines leave below the lane line of an earlier step's branches
           var top = y;
-          if (prev) link([[spine, prev], [spine, top]], null);
+          if (ins.length) top = Math.max(top, col_end + gap);
+          if (outs.length) top = Math.max(top, lane_end + 8 - 14);
+          if (prev !== null) link([[spine, prev], [spine, top]], null);
           box(m, 0, top, mw, mh, n, mp);
-          var by = top, ys = [];
+          var by = Math.max(top, col_end + gap), ys = [];
           brs.forEach(function (r, i) { box(r, bx, by, bw, bh[i], 0, bp[i]); ys.push(by + Math.min(22, bh[i] / 2)); by += bh[i] + gap; });
           ins.forEach(function (r, i) { link([[bx, ys[i]], [mw, ys[i]]], r); });
           if (outs.length) {
@@ -87,9 +94,11 @@
               var yb = ys[oi + i];
               link(Math.abs(yb - sy) < 0.5 ? [[mw, sy], [bx, yb]] : [[mw, sy], [lx, sy], [lx, yb], [bx, yb]], r);
             });
+            lane_end = ys[ys.length - 1];
           }
+          if (brs.length) col_end = by - gap;
           prev = top + mh;
-          y = Math.max(top + mh, by - gap) + 28;
+          y = top + mh + 28;
         } else {
           // one column: ways in above the step, branches below it, set in from the line
           var ind = 28, iw = W - ind;
@@ -117,7 +126,7 @@
           y = yy + 28;
         }
       });
-      c.height(y - 28);
+      c.height(Math.max(y - 28, wide ? col_end : 0));
     }
   });
 })(globalThis.OAChart);

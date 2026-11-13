@@ -61,7 +61,7 @@
       fl.faults.forEach(function (x) { c.warn(x); });
       var y = 0;
       if (L.key_steps) {
-        y += P.width_key(c, 0, y, 1 / unit, L.key_steps, { words: L.key_steps.map(function (s) { return kv(s); }), stroke: ink, len: 32, title: L.key_title, max: W });
+        y += P.width_key(c, 0, y, 1 / unit, L.key_steps, { words: L.key_steps.map(function (s) { return kv(s); }), stroke: ink, len: 32, title: L.key_title, max: W });   // to band: 'light-fill', edge: ink once the key check reads a band key's steps as widths (RB3F-G1)
         if (L.key_hairline) { var hb = c.text(0, y + tk * 0.9, String(L.key_hairline).split('{v}').join(kv(unit)), { role: 'tick', max: W }); y = hb.bottom; }
         y += 18;
       }

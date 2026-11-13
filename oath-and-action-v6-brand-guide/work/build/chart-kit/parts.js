@@ -789,7 +789,9 @@
       c.text(x + len + 8, mid + 0.35 * size, (o.words && o.words[i]) || K.fmt(v, o.fmt || 'integer'), { role: 'tick' });
       cy += Math.max(w, size) + 8;
     });
-    c.key(steps.map(function () { return bf ? { fill: bf, outline: !!edge } : { fill: o.stroke || 'context', pattern: true }; }));
+    // the steps are told apart by their widths and printed values, never by lightness, so each entry reads as patterned
+    // for the key check, band or stroke alike (RB3F-G1)
+    c.key(steps.map(function () { return bf ? { fill: bf, outline: !!edge, pattern: true } : { fill: o.stroke || 'context', pattern: true }; }));
     return cy - y;
   };
 

@@ -168,6 +168,8 @@ In progress. Order: items no ruling touches first (SK-S1, B-S5, B-S2, AX-S1's S7
 
 ### Requests, review fix pass
 
+- **RB3F-G1, to the engineer: `width_key` with `band` and more than one step fails the key check (04:43 UTC).** With `band: 'light-fill', edge: 'party'`, S73's key of three widths ($10, $50 and $100 million) fails 42 times at every width and on both grounds: "key: light-fill and light-fill differ by 0.0 in lightness, under 10, with no pattern or direct label". The band branch registers each step with `c.key({fill, outline})`, which the key check reads as categories; the stroke branch passes `pattern: true`. Please register a band key's steps so the check reads them as widths of one ink (as the stroke branch does), so S73's key can draw its bands as its links draw (BC-S2). Until then S73's key stays on strokes in the party-mark ink, and S73 passes; S76's key of one step draws `band: 'light-fill'` and passes.
+
 ### Tested, review fix pass
 
 ### Not tested, review fix pass
