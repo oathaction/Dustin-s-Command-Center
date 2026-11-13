@@ -8,20 +8,21 @@
  * form says so (c.warn) and the kit fails what runs past its foot.
  * encode: of (the inner form's ID) and the inner form's own names. labels: the inner form's labels, plus card_source (the
  * card's short source line), card_note (the line over the source that says what a mark stands for), card_inner (options
- * the inner form reads as c.card), card_title ([px on a tall crop, px on a square one], default [56, 44]). */
+ * the inner form reads as c.card), card_title ([px on a tall crop, px on a square one], default [56, 40]), card_margin (px to every edge on
+ * both crops, default 64, the safe margin a platform's own controls leave). */
 (function (K) {
   'use strict';
   K.register_chart({
     form: 'social-data-card', name: 'Social Data Card', family: 'infographics', inner: true,
     encode: { of: 'form' },
-    labels: ['card_source', 'card_note', 'card_inner', 'card_title'],
+    labels: ['card_source', 'card_note', 'card_inner', 'card_title', 'card_margin'],
     phone: 'same',
     draw: function (c) {
       var inner = K.forms[c.encode.of];
       if (!inner || !inner.draw || inner.form === 'social-data-card') throw new Error('social-data-card: encode.of names no other drawn form');
       var L = c.labels, W = c.width, H = c.crop ? c.crop.h : Math.round(W * 1.25), tall = H > W * 1.1;
-      var min = c.min_text || 36, pad = Math.round(W / (tall ? 15 : 22)), cw = W - 2 * pad, lh = Math.round(min * 1.3), k = min / c.t('type-tick');
-      var ts = (L.card_title || [56, 44])[tall ? 0 : 1], y = pad, base = y + min * 0.8;
+      var min = c.min_text || 36, pad = L.card_margin || 64, cw = W - 2 * pad, lh = Math.round(min * 1.3), k = min / c.t('type-tick');
+      var ts = (L.card_title || [56, 40])[tall ? 0 : 1], y = pad, base = y + min * 0.8;
       var ev = c.text(pad, base, c.spec.evidence_label || '', { role: 'eyebrow', size: min, weight: 700 });
       // the grade line runs on after the evidence word, as the figure sets them side by side (R4-4): the words that fit
       // beside it on its line, the rest on the lines under it

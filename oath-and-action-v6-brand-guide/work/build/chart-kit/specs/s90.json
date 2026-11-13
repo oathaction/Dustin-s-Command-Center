@@ -131,12 +131,16 @@
         "format": "millions:1",
         "words": "students were enrolled in fall 2023, the count each per-pupil figure divides by."
       }
-    ]
+    ],
+    "plain": true
   },
   "typography": {
     "curl_quotes": true,
     "nbsp": true,
-    "replace": []
+    "replace": [],
+    "hold": [
+      "day-to-day"
+    ]
   },
   "notes_internal": [
     "Infographics maker, round 4. Data plan row 122, rule 14.136. Domain D09 from the sidecar; New York and Idaho named (fact 4), so states lists both (sidecar note 1).",
@@ -145,6 +149,8 @@
     "Shares in cents: 45.2341, 43.1987 and 11.5672 percent round to 45, 43 and 12, which sum to 100 (ruling (b)); 88 cents is 45 plus 43 (88.43 percent unrounded).",
     "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S90.",
     "Editor's words (21:17 UTC) applied: the gloss of current spending (H02) and note 2.",
-    "Data lead MI-3 (21:25 UTC), with the research lead's reading of the Bureau's documentation (school24doc.docx and Appendix A of elsec24_sumtables.xlsx): current spending leaves out capital outlay (construction and equipment), debt service (interest on debt) and payments to other governments; the per-pupil figure also leaves out adult education and community services. The enrollment year is fall 2023 (Table 8's note mislabels it fall 2022; S90 cites Table 19 for it)."
+    "Data lead MI-3 (21:25 UTC), with the research lead's reading of the Bureau's documentation (school24doc.docx and Appendix A of elsec24_sumtables.xlsx): current spending leaves out capital outlay (construction and equipment), debt service (interest on debt) and payments to other governments; the per-pupil figure also leaves out adult education and community services. The enrollment year is fall 2023 (Table 8's note mislabels it fall 2022; S90 cites Table 19 for it).",
+    "Design director DD-I24: \"day-to-day\" held on one line (typography.hold).",
+    "Design director DD-I10 and DD-I11 (with the engineer's oac-h-plain and the source line at each fact's foot, landed 21:45 UTC): each fact sits under a hairline with no frame, as S60's facts do, so S90 reads as facts and S91 alone as cards."
   ]
 }

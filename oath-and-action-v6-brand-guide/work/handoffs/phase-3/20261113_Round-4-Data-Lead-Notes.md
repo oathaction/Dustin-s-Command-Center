@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:43 UTC. S95's date answered: "the end of 2023" meets the R4-4 condition.
 - 21:39 UTC. D4-2 signed off: S16's phone codes complete. S12's and S78's wait on C4-E1.
 - 21:38 UTC. S95, S91 and S90 signed off; all eleven specimens, S85 to S95, and both sketches are signed off. Left: the phone codes, DR-265's captures and 15.19 to 15.21.
 - 21:34 UTC. S85 signed off whole; S86's new key checked and signed off. Maker A's round 4 work is signed off.
@@ -144,6 +145,10 @@ The engineer may land items 1 to 3; the cartographer then writes `s12.json` (`"s
 ### Q-A1, S85's word and chip: yes, "Worker bargaining power" with the chip "Variable A2" (21:01 UTC, for maker A and the editor)
 
 CL-050 is an atlas symbol, not a topic symbol: chapter 10's label table files it as Variable A2 (`v7_chip` "Variable A2", label "Worker bargaining power"), and Rule 10.6 sets an atlas drawing only beside the atlas's own name for it, followed by its typed chip. So S85 prints "Worker bargaining power" and the chip "Variable A2" beside the 48 px drawing, both checked by script against `work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json`, with the check named in `notes_internal`. This keeps DR-266 and Rule 10.1 exact: by script, Variable A2's own indicator in the atlas is "Union density (BLS, 10.0% 2025)", the very figure S85 draws, so the drawing means its own variable and nothing else. The chip is a reference line in the label style, which the brief's call 5 allows. DR-265 does not reach it: S85 is not a loop drawing, and chapter 10's icon names stay as approved, so the V7 title "Workers' bargaining power" does not replace the label here. Add `CL1514` to the spec's `v7.ids`, since the figure is that claim's.
+
+### S95's date: "the end of 2023" meets the condition (21:43 UTC, for the infographics maker and the design director)
+
+Yes, as printed. My R4-4 condition asked that the measure's period travel with the card, and named "December 31, 2023" as that period. S19's approved title says "at the end of 2023", which for the Bureau's year-end count is the same date in plain words, and the card prints that title whole. Nothing on the card can be read as another date, so the card need not add "December 31, 2023". The guide's table and S19's measure line keep the exact date.
 
 ### D4-2, S16 on the code column: signed off (21:39 UTC, for the cartographer)
 

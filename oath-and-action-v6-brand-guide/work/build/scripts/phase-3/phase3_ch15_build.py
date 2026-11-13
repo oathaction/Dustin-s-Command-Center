@@ -3213,7 +3213,9 @@ def chooser_css(rids):
                    f'{yes} .ak-mark{{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px}}'
                    f'{yes} .ak-case{{fill:none;stroke:{INK};stroke-width:6px}}{yes} .hd{{fill:var(--oa-color-data-emphasis-red)}}'
                    f'{yes} .pl{{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}}')
-    shows = "".join(f'.p:has([value="{rid}"]:checked) [data-oa-panel]:not([data-oa-panel="{rid}"]){{display:none}}' for rid in rids)
+    # the chosen panel alone shows, with no rule or space above it where another panel stood before it
+    shows = "".join(f'.p:has([value="{rid}"]:checked) [data-oa-panel]:not([data-oa-panel="{rid}"]){{display:none}}'
+                    f'.p:has([value="{rid}"]:checked) [data-oa-panel="{rid}"]{{margin:0;padding:0;border:0}}' for rid in rids)
     prints = "".join(f'.p:has([value="{rid}"]:checked) [data-oa-print="{rid}"]' + ("," if k < len(rids) - 1 else "")
                      for k, rid in enumerate(rids))
     return (f"@supports selector(:has(*)){{{''.join(out)}@media screen{{{shows}}}"

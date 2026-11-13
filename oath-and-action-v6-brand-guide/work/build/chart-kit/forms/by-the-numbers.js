@@ -5,18 +5,19 @@
  * encode: key (the row's key), value (number), source (text: the table or file each row comes from).
  * labels: facts ([{rows: [keys the fact stands for], figure: the key whose value prints large, format (a kit format),
  * scale (a multiplier, as 1000 for a value held in thousands), before, after (words around the figure), words (the rest
- * of the sentence)}]), in reading order. */
+ * of the sentence)}]), in reading order; plain (true: each fact under a hairline with no frame, kit.css .oac-h-plain). */
 (function (K) {
   'use strict';
   K.register_chart({
     form: 'by-the-numbers', name: 'By-the-Numbers Panel', family: 'infographics',
     encode: { key: 'id', value: 'number', source: 'text' },
-    labels: ['facts'],
+    labels: ['facts', 'plain'],
     phone: 'same',
     html: function (h) {
       var ek = h.field('key'), ev = h.field('value'), es = h.field('source'), at = {};
       h.rows.forEach(function (r, i) { at[String(r[ek])] = i; });
-      return '<ul class="oac-h-facts" role="list">' + (h.labels.facts || []).map(function (f) {
+      // labels.plain: each fact under a hairline with no frame, as S60's indicator row sets its facts (kit.css .oac-h-plain)
+      return '<ul class="oac-h-facts' + (h.labels.plain ? ' oac-h-plain' : '') + '" role="list">' + (h.labels.facts || []).map(function (f) {
         var ks = [].concat(f.rows || [f.figure]).map(String).filter(function (k) { return at[k] !== undefined; });
         var r = h.rows[at[String(f.figure)]];
         if (!r) throw new Error('by-the-numbers: labels.facts names no row ' + f.figure);

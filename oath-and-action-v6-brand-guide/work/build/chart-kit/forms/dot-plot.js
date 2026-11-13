@@ -47,7 +47,8 @@
     var spot = function (words, spots, opt, draw) {
       for (var i = 0; i < spots.length; i++) {
         var s = spots[i], so = Object.assign({ anchor: s[2] }, opt), b = c.text_box(s[0], s[1], words, so);
-        if (clear(b)) { if (draw) { placed.push(b); c.text(s[0], s[1], words, so); } return true; }
+        // DD-I21: the words clear the gridlines under them (a 1 px knockout of the ground; every spot is 1 px clear of the dots)
+        if (clear(b)) { if (draw) { placed.push(b); K.parts.clear_label(c, s[0], s[1], words, Object.assign({ gap: 1 }, so)); } return true; }
       }
       return false;
     };
