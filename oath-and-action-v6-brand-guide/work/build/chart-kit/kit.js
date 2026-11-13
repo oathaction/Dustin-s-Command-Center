@@ -330,6 +330,9 @@
   function Ctx(spec, rows, opts) {
     this.spec = spec;
     this.rows = rows;
+    // A-E8 (round 3 fix pass): where the kit draws only the first rows (a desk's phone part), every row, so a form's counts
+    // and scales read the whole set (c.all_rows || c.rows); null otherwise
+    this.all_rows = opts.all_rows || null;
     this.width = opts.width;
     this.phone = opts.width < PHONE_MAX;
     this.ground = opts.ground || 'newsprint';
@@ -786,7 +789,7 @@
     if (!def) throw new Error('OAChart: form "' + spec.form + '" is not registered');
     var t = opts.t || token_reader(opts.tokens || {});
     var width = Math.round(opts.width || K.artboard(spec, t));
-    var c = new Ctx(spec, rows, { width: width, ground: opts.ground, t: t, extra: opts.extra, uid: opts.uid || ('oac-' + String(spec.id).toLowerCase() + '-' + width) });
+    var c = new Ctx(spec, rows, { width: width, ground: opts.ground, t: t, extra: opts.extra, all_rows: opts.all_rows, uid: opts.uid || ('oac-' + String(spec.id).toLowerCase() + '-' + width) });
     if (def.inner && spec.encode && K.forms[spec.encode.of]) {
       var inn = K.forms[spec.encode.of];
       def = Object.assign({}, def, { encode: Object.assign({}, inn.encode, def.encode), labels: def.labels.concat(inn.labels) });
@@ -1720,7 +1723,7 @@
     var pv = fig.querySelector('[data-oa-art-phone]');
     if (pv && !pv.querySelector('svg.oac-svg')) {
       var pn = +pv.getAttribute('data-oa-rows') || 0;
-      var pr = K.draw(spec, pn ? rows.slice(0, pn) : rows, { width: +pv.getAttribute('data-oa-art-phone') || PHONE_VIEW_PX, ground: ground, t: t, extra: extra, uid: (fig.id || 'oac') + '-phone' });
+      var pr = K.draw(spec, pn ? rows.slice(0, pn) : rows, { width: +pv.getAttribute('data-oa-art-phone') || PHONE_VIEW_PX, ground: ground, t: t, extra: extra, all_rows: pn ? rows : null, uid: (fig.id || 'oac') + '-phone' });
       pv.insertAdjacentHTML('beforeend', pr.svg.replace('<svg ', '<svg aria-hidden="true" ').replace(/<title>[\s\S]*?<\/title>|<desc>[\s\S]*?<\/desc>/g, ''));
     }
     if (root.ResizeObserver) new root.ResizeObserver(function () { draw(); }).observe(art);
