@@ -158,6 +158,7 @@ A diagram draws through five shared parts (contract R3-5), never its own copies:
   `K.parts.clear_label`.
 - `K.parts.tree(items, {dir})` lays out an org chart, a hierarchy or a decision tree (`down`, `right`, or `indent` for
   the phone); its `order` is the reading order the table prints (R3-6).
+- A link of authority ends in Rule 15.5's open diamond: `K.parts.link(c, a, b, {arrow: 'diamond'})`.
 - `K.parts.flows(links, {max_px})` gives every band and line width one unit and fails a node whose bands do not sum;
   `K.parts.flow_band` draws a Sankey band with its edges; `K.parts.width_key` keys the widths.
 
@@ -184,7 +185,10 @@ the rest to the table. Words on a step take its label ink: `on-seq-1` to `on-seq
 `K.parts.map_dots` draws a dot density map from counts and a recorded seed as one path, and `K.parts.map_scale` a scale
 bar. A chart of thousands of places groups its table: `"table": {"columns": [...], "group": {"by": "state", "columns":
 [{"label": "State", "agg": "key", "state_name": true}, {"label": "Counties", "agg": "count"}, ...]}}`. The page prints one
-row a state; the CSV export lists every row. The full calls are in the round 3 notes.
+row a state; the CSV export lists every row. `by` may list several columns; the aggregates are `key`, `count`, `count_in`,
+`count_eq`, `count_set`, `list` (with `distinct`, `odd` and `with`), `min`, `max`, `median`, `sum`, `first`. The full calls
+are in the round 3 notes. A share held as a fraction prints as a percent with the format `fraction-percent:1`
+(0.9368 as 93.7%).
 
 ## The keys a spec takes
 

@@ -122,9 +122,9 @@ November 13, 2026, after the data lead's "Sign-off, maker A" (MA-1 to MA-8, with
 - Words lint on the seven specs and eight entries: no dash, U+2011, straight quote, banned word or studio code.
 - Strict build (`guide-final.html`): exit 0, no warning, 11,226,900 bytes; share per plate 14,092 for the 13 to come. Plates: S66 9,357; S67 12,495; S68 8,749; S69 13,851; S70 10,605; S71 11,399; S72 11,508 bytes.
 - `phase3_ch14_build.py --rounds 1,2,3`, last run: 128 rules, 114 entries, 0 faults (an earlier run showed two faults, both the cartographer's sketch 14.124 mid-edit).
-- Looked at: S68's diamonds at 1440 px Newsprint and 358 px Charcoal (drawn in-form first, then on the kit's part, its path read from the SVG); S72's and S70's grouped tables read from the build pages.
+- Looked at: S68's diamonds at 1440 px Newsprint and 358 px Charcoal (drawn in-form first, then on the kit's part, its path read from the SVG); S66's top at 1440 px Newsprint with the new branch words; S72's and S70's grouped tables read from the build pages.
 
 ### Not tested
 
 - The quick guide check after these fixes (no sketch changed since its run; the tables and words changed).
-- Captures of every touched spec at all four widths by eye: S68 looked at; S66, S69, S70 and S72 checked by the build and their words read, not re-captured by eye.
+- Captures of every touched spec at all four widths by eye: S66 and S68 looked at; S69, S70 and S72 changed words and tables only, checked by the build, not looked at again.
