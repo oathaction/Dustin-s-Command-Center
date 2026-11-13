@@ -7,7 +7,8 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the UX
 - 20:39 UTC: started (clock read).
 - **20:53 UTC: "Interaction specification" WRITTEN** for the engineer and the systems designer (Rules 15.19 and 15.20, with what holds for 15.21). It is written for any loop and any two to five reforms, so it holds whatever the data lead rules under (f); the two key paths take the ruled IDs and step count once (f) lands.
 - **20:56 UTC: "Cards as HTML text (R4-3): the reading order" and "The social card (R4-4)" WRITTEN**, ahead of the engineer's R4-3 and R4-4 contracts, which govern the elements; I read those contracts when they land and reconcile.
-- Next: the tests of 15.19, 15.20, the cards and S95 as built, when the owners report.
+- 21:13 UTC: the main session asks a second owner's look at S93: the infographics maker shortened its alt and moved its three alt-word checks to the table. When I test S93 I confirm that the alt and the table together give a reader who cannot see the drawing every callout in page order (R4-3, "Annotated illustration"), or send a request.
+- Next: the tests of 15.19, 15.20, the cards, S93 and S95 as built, when the owners report.
 
 ## Summary
 
@@ -74,7 +75,7 @@ The CSS of every code set is one global `style` element and each script runs whe
 | Event | Status line | Focus |
 |---|---|---|
 | Page opens | The ready line, not announced: "Ready. Start at [the first variable’s title], and suppose it rises. Press Play, or Next step to follow one connection at a time." | where the reader left it |
-| Next step, or Play from the ready line | "Step 1 of N:" then the step's line and its more | on the button pressed |
+| Next step, or Play from the ready line | "Step 1 of 3:" then the step's line and its more | on the button pressed |
 | Next step, Previous step | "Step k of N:" and its words | on the button pressed |
 | Reset the loop | the ready line again | stays on Reset the loop, now unavailable |
 | Play | each step as it arrives, one hold apart; the word turns to Pause | on Play |
@@ -99,7 +100,7 @@ The drawing's current step differs from the others by weight, not by color alone
 
 **Forced colors.** As in section 1; 18.22's own rules draw the buttons, the dashed unavailable edges and the bar in Highlight.
 
-**Key path** (oa-keys/1, for the engineer to place where the guide check reads specimen paths; see Requests). N is the loop's step count once ruling (f) lands.
+**Key path** (oa-keys/1). Ruling (f) gives Loop R1, three steps. The engineer's R4-5 contract has the guide check walk `work/build/guide/specimens/s-15-19-correct.keys.json` once the manifest sets `"keys"`; the systems designer writes the file from this path.
 
 ```json
 {
@@ -115,10 +116,10 @@ The drawing's current step differs from the others by weight, not by color alone
     { "key": "Tab", "focus": ".oa-stepper-reset", "states": [ { "el": ".oa-stepper-reset", "attr": "aria-disabled", "is": "true" } ] },
     { "key": "Tab", "focus": ".oa-stepper-prev", "states": [ { "el": ".oa-stepper-prev", "attr": "aria-disabled", "is": "true" } ] },
     { "key": "Tab", "focus": ".oa-stepper-next" },
-    { "key": "Enter", "focus": ".oa-stepper-next", "states": [ { "el": ".oa-stepper-step:nth-child(1)", "attr": "aria-current", "is": "step" }, { "el": "[data-oa-stepper]", "attr": "data-oa-at", "is": "1" } ], "status_has": "Step 1 of N:", "status_el": ".oa-stepper-status" },
-    { "key": "Enter", "focus": ".oa-stepper-next", "status_has": "Step 2 of N:", "status_el": ".oa-stepper-status" },
+    { "key": "Enter", "focus": ".oa-stepper-next", "states": [ { "el": ".oa-stepper-step:nth-child(1)", "attr": "aria-current", "is": "step" }, { "el": "[data-oa-stepper]", "attr": "data-oa-at", "is": "1" } ], "status_has": "Step 1 of 3:", "status_el": ".oa-stepper-status" },
+    { "key": "Enter", "focus": ".oa-stepper-next", "status_has": "Step 2 of 3:", "status_el": ".oa-stepper-status" },
     { "key": "Shift+Tab", "focus": ".oa-stepper-prev", "states": [ { "el": ".oa-stepper-prev", "attr": "aria-disabled", "is": null } ] },
-    { "key": "Enter", "focus": ".oa-stepper-prev", "status_has": "Step 1 of N:", "status_el": ".oa-stepper-status" },
+    { "key": "Enter", "focus": ".oa-stepper-prev", "status_has": "Step 1 of 3:", "status_el": ".oa-stepper-status" },
     { "key": "Shift+Tab", "focus": ".oa-stepper-reset" },
     { "key": "Enter", "focus": ".oa-stepper-reset", "states": [ { "el": ".oa-stepper-reset", "attr": "aria-disabled", "is": "true" }, { "el": "[data-oa-stepper]", "attr": "data-oa-at", "is": "0" } ], "status_has": "Ready.", "status_el": ".oa-stepper-status" },
     { "key": "Tab", "focus": ".oa-stepper-prev" },
@@ -131,7 +132,7 @@ The drawing's current step differs from the others by weight, not by color alone
    "setup": { "reducedMotion": true },
    "steps": [
     { "key": "Tab", "focus": ".oa-stepper-play", "states": [ { "el": ".oa-stepper-word", "text": "Play" } ] },
-    { "key": "Enter", "focus": ".oa-stepper-play", "states": [ { "el": ".oa-stepper-word", "text": "Pause" } ], "status_has": "Step 1 of N:", "status_el": ".oa-stepper-status" },
+    { "key": "Enter", "focus": ".oa-stepper-play", "states": [ { "el": ".oa-stepper-word", "text": "Pause" } ], "status_has": "Step 1 of 3:", "status_el": ".oa-stepper-status" },
     { "key": "Enter", "focus": ".oa-stepper-play", "states": [ { "el": ".oa-stepper-word", "text": "Play" } ] }
    ]
   }
@@ -178,7 +179,7 @@ The `data-oa-at` states hold only if the engineer takes the preferred way; with 
 
 **Forced colors.** As in section 1; 18.3's own rules draw the edges in ButtonText; the checked reform keeps its check, bold word and 2 px edge. On the drawing the targets keep their heavier lines and outlines, so they stand apart in grayscale and on paper as well.
 
-**Key path** (oa-keys/1; R-a, R-b and R-c stand for the first three reforms in the ruled order).
+**Key path** (oa-keys/1). Ruling (f) gives Reforms R-03 and R-04 on Loop R4a, R-03 checked on load; the systems designer writes it as `work/build/guide/specimens/s-15-20-correct.keys.json`.
 
 ```json
 {
@@ -188,17 +189,17 @@ The `data-oa-at` states hold only if the engineer takes the preferred way; with 
  "component": "Reform chooser on a systems drawing",
  "paths": [
   {
-   "name": "Enter at the checked reform; the arrow keys choose, the panel and the line follow, and focus stays",
+   "name": "Enter at the checked reform; the arrow keys choose and wrap, the panel and the line follow, and focus stays",
    "steps": [
-    { "key": "Tab", "focus": ".oa-choice-input[value=\"R-a\"]", "states": [ { "el": ".oa-choice-input[value=\"R-a\"]", "prop": "checked", "is": true }, { "el": "[data-oa-panel=\"R-a\"]", "visible": true }, { "el": "[data-oa-panel=\"R-b\"]", "visible": false } ] },
-    { "key": "ArrowDown", "focus": ".oa-choice-input[value=\"R-b\"]", "states": [ { "el": ".oa-choice-input[value=\"R-b\"]", "prop": "checked", "is": true }, { "el": "[data-oa-panel=\"R-b\"]", "visible": true }, { "el": "[data-oa-panel=\"R-a\"]", "visible": false } ], "status_has": "Reform R-b acts where the marks turn red" },
-    { "key": "ArrowDown", "focus": ".oa-choice-input[value=\"R-c\"]", "status_has": "Reform R-c acts where the marks turn red" },
-    { "key": "ArrowUp", "focus": ".oa-choice-input[value=\"R-b\"]", "status_has": "Reform R-b acts where the marks turn red" },
-    { "key": "Tab", "focus": "[data-oa-panel=\"R-b\"] summary", "states": [ { "el": "[data-oa-panel=\"R-b\"] details", "prop": "open", "is": false } ] },
-    { "key": "Enter", "focus": "[data-oa-panel=\"R-b\"] summary", "states": [ { "el": "[data-oa-panel=\"R-b\"] details", "prop": "open", "is": true } ] },
-    { "key": "Shift+Tab", "focus": ".oa-choice-input[value=\"R-b\"]" },
-    { "key": "ArrowUp", "focus": ".oa-choice-input[value=\"R-a\"]", "states": [ { "el": "[data-oa-panel=\"R-b\"] details", "prop": "open", "is": true } ] },
-    { "key": "Tab", "focus": "[data-oa-panel=\"R-a\"] summary" },
+    { "key": "Tab", "focus": ".oa-choice-input[value=\"R-03\"]", "states": [ { "el": ".oa-choice-input[value=\"R-03\"]", "prop": "checked", "is": true }, { "el": "[data-oa-panel=\"R-03\"]", "visible": true }, { "el": "[data-oa-panel=\"R-04\"]", "visible": false } ] },
+    { "key": "ArrowDown", "focus": ".oa-choice-input[value=\"R-04\"]", "states": [ { "el": ".oa-choice-input[value=\"R-04\"]", "prop": "checked", "is": true }, { "el": "[data-oa-panel=\"R-04\"]", "visible": true }, { "el": "[data-oa-panel=\"R-03\"]", "visible": false } ], "status_has": "Reform R-04 acts where the marks turn red" },
+    { "key": "ArrowDown", "focus": ".oa-choice-input[value=\"R-03\"]", "states": [ { "el": "[data-oa-panel=\"R-03\"]", "visible": true } ], "status_has": "Reform R-03 acts where the marks turn red" },
+    { "key": "ArrowUp", "focus": ".oa-choice-input[value=\"R-04\"]", "status_has": "Reform R-04 acts where the marks turn red" },
+    { "key": "Tab", "focus": "[data-oa-panel=\"R-04\"] summary", "states": [ { "el": "[data-oa-panel=\"R-04\"] details", "prop": "open", "is": false } ] },
+    { "key": "Enter", "focus": "[data-oa-panel=\"R-04\"] summary", "states": [ { "el": "[data-oa-panel=\"R-04\"] details", "prop": "open", "is": true } ] },
+    { "key": "Shift+Tab", "focus": ".oa-choice-input[value=\"R-04\"]" },
+    { "key": "ArrowUp", "focus": ".oa-choice-input[value=\"R-03\"]", "states": [ { "el": "[data-oa-panel=\"R-04\"] details", "prop": "open", "is": true } ] },
+    { "key": "Tab", "focus": "[data-oa-panel=\"R-03\"] summary" },
     { "key": "Tab", "focus": "outside" }
    ]
   }
@@ -262,12 +263,14 @@ For the engineer and the infographics maker, on S95's two crops (1080 by 1350 an
 
 ## Requests
 
-### Requests to the engineer
+### Requests to the engineer and the component engineer
 
-1. **Rule 18.22's script, two lines (for 15.19, and better for every builder):** `box.setAttribute('data-oa-live', '')` at its start, so a page hides the buttons, the status line and the reason line until the script runs; and the current step on the root, `box.setAttribute('data-oa-at', String(i))` in `show()`, so a drawing beside the stepper can follow it. If you would rather leave the code set as it is, say so and the systems designer reads the list with `:has()`.
-2. **The guide check walks specimen key paths.** `keyPath` walks only `.plate--code` stages today (`guide_check.js`, `keyPaths`). A manifest key such as `"keys": "s-15-19-correct"`, read from a keys file you place, would let it walk the two paths above at 1440 and 390 px.
-3. **15.20's script**, with me: on `change` inside the plate's `fieldset`, write the checked reform's sentence into the status line (the sentence read from the panel's first line, so the words live in one place); at `beforeprint` open the plate's closed disclosures and at `afterprint` close the ones it opened. Nothing on load.
-4. **Rule 18.8's print promise, guide-wide (low).** Rule 18.8 says a printed page opens every disclosure, and the shell does not: only `kit.js` opens its own tables. The shell's `beforeprint` (it already marks tall plates) could open every closed `details` and close them after.
+The main session split the files at 20:58 UTC: requests 1, 3, 4 and 5 are the component engineer's (the code sets, 15.20's script, the shell); request 2 is the engineer's (the guide check).
+
+1. **Rule 18.22's script, two lines (for 15.19, and better for every builder):** `box.setAttribute('data-oa-live', '')` at its start, so a page hides the buttons, the status line and the reason line until the script runs; and the current step on the root, `box.setAttribute('data-oa-at', String(i))` in `show()`, so a drawing beside the stepper can follow it. If you would rather leave the code set as it is, say so and the systems designer reads the list with `:has()`. *LANDED 21:11 UTC (component engineer, C-1): `data-oa-live` and `data-oa-at`.*
+2. **The guide check walks specimen key paths.** `keyPath` walks only `.plate--code` stages today (`guide_check.js`, `keyPaths`). A manifest key such as `"keys": "s-15-19-correct"`, read from a keys file you place, would let it walk the two paths above at 1440 and 390 px. *Answered 21:05 UTC (engineer, R4-5): the manifest's `"keys"`, files beside the specimens, written by the systems designer.*
+3. **15.20's script**, with me: on `change` inside the plate's `fieldset`, write the checked reform's sentence into the status line (the sentence read from the panel's first line, so the words live in one place); at `beforeprint` open the plate's closed disclosures and at `afterprint` close the ones it opened. Nothing on load. *LANDED 21:11 UTC (component engineer, C-2): in the shell, keyed by `data-oa-chooser`, `data-oa-chooser-status`, `data-oa-panel` and `data-oa-say`; print through C-3.*
+4. **Rule 18.8's print promise, guide-wide (low).** Rule 18.8 says a printed page opens every disclosure, and the shell does not: only `kit.js` opens its own tables. The shell's `beforeprint` (it already marks tall plates) could open every closed `details` and close them after. *LANDED 21:11 UTC (component engineer, C-3).*
 5. **Rule 18.22's step list (low).** Its `list-style: none` drops the list's role in Safari with VoiceOver; `role="list"` on `.oa-stepper-steps` keeps it. Not tested here (no Safari, no VoiceOver); a known WebKit behavior.
 
 ### Requests to the systems designer

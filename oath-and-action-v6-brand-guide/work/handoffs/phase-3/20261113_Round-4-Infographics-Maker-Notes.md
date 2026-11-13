@@ -48,6 +48,8 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the in
 
 - **IM-E3, the facts grid's least column, 13.5rem (21:13 UTC).** S90's widest figure, "$994.9 billion", measures 177.3 px in the display face at the title size (the kit's metrics), so a fact box needs 211 px with its padding and border. `oac-h-facts` at `minmax(min(100%, 12rem), 1fr)` gives three columns of 208 px at a 656 px column, and the build fails "a span.oac-h-big whose words overflow it" there. At 13.5rem (216 px) the grid takes two columns at 656 and three from 680 px, where each box holds 182 px. Only S90 uses `oac-h-facts`.
 
+- **IM-E4, three cards side by side at a desk, 13rem (21:15 UTC).** `oac-h-cards` at 15rem (240 px) sets S91's three cards two and one at the 720 px artboard (three need 752 px), so the cards stop reading side by side, which is the form's job ("two or three options side by side") and the data lead's (b) ("three cards of one width and one height"). At 13rem (208 px) three stand side by side from 656 px. Only S91 uses `oac-h-cards`.
+
 ## Tested
 
 ## Not tested

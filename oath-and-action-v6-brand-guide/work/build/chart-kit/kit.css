@@ -76,7 +76,7 @@
 .oac-h-cards, .oac-h-facts, .oac-h-steps, .oac-h-dates { list-style: none; margin: 0; padding: 0; }
 .oac-h-cards, .oac-h-facts { display: grid; gap: 16px; }
 .oac-h-cards { grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); }
-.oac-h-facts { grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr)); }
+.oac-h-facts { grid-template-columns: repeat(auto-fill, minmax(min(100%, 13.5rem), 1fr)); }   /* IM-E3: S90's "$994.9 billion" fits at 656 px */
 .oac-h-cards > .oac-h-item, .oac-h-facts > .oac-h-item { border: 1px solid var(--oa-color-border-hairline); padding: 14px 16px 16px; min-width: 0; }
 .oac-h-dates > .oac-h-item { border-top: 1px solid var(--oa-color-border-hairline); padding: 10px 0 12px; }
 .oac-h-name { margin: 0; font: var(--oa-font-weight-bold) var(--oa-chart-type-measure-size)/24px var(--oa-font-family-reading); color: var(--oa-color-text-primary); }
@@ -119,6 +119,7 @@
 }
 /* R4-4 (round 4): a social card's crops, each drawn at its true size and shown at the column's width or at its own, whichever
    is less, with its size in words under it; the words and alt text to post beside it as live text */
+.oac-fig[data-oa-card] { max-width: none; }
 .oac-crop { margin-top: 18px; }
 .oac-crop > svg.oac-svg { display: block; max-width: 100%; height: auto; outline: 1px solid var(--oa-color-border-hairline); }
 .oac-crop-k { margin: 6px 0 0; font: var(--oa-font-weight-regular) 13px/18px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); }

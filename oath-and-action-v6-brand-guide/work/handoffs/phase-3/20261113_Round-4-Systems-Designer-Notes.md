@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the sy
 
 ## Status
 
-20:49 UTC. The DR-265 list is below, from a script over a strict build of the committed page. Next: the titles in my four generators (chapters 11, 12, 15 and 17), then Rules 15.19 to 15.21 once the data lead's ruling (f), the accessibility lead's specification and the engineer's R4-5 plan land.
+21:14 UTC. DR-265 applied in my four generators (chapters 11, 12, 15 and 17); the generator chain ran three times, and after the second and third runs no file I own changed (the main session's snapshots had taken in the first run). A rescan of a fresh strict build finds no chain label left in any loop drawing but Rule 15.15's two deliberate places (below) and chapter 10's and Rule 11.12's icon names. Chapter 18's matches are gone too (the engineer's code sets). Now building Rules 15.19 to 15.21 to ruling (f), the accessibility lead's specification and the component engineer's C-1 to C-3. Captures of every changed plate at five widths on both grounds come with them.
 
 ## Summary
 

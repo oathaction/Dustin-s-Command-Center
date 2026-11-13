@@ -19,9 +19,20 @@ The owners read the four "Words for" sections directly. Each row gives the file,
 - D3-xxx | The brief's "group lines 9 and 16" are read as the lines of the two round 4 families: group 9, proportion and overlap (coverage plan 3.8), and group 17, infographics (coverage plan 3.16), which the plan file and `14-chapter.json` number 17 | The plan file's `groups` give group 17 the family section 3.16 and rules 14.135 to 14.141; group 16 is tables and plain words, built in round 1, and I read its line too
 - D3-xxx | Rule 13.4's two plates stay as built under DR-267, and `phase3_ch13_build.py` is unchanged | They print each loop's own title and each connection's name, the atlas's own, and no chain label or variable name, by my script and the systems designer's scan; DR-267 replaces a label where one prints
 - D3-xxx | S37 takes `"typography": {"curl_quotes": true}` after its `table`, and nothing else in the spec moves | The data lead's ED4-1 ruling under D3-1556: typography only, two drawn labels, data and exports as stored
+- D3-xxx | Group 9's line reads "An icon array makes a share countable as people out of 100, and proportional symbols compare counts too far apart for bars. Venn and Euler diagrams show how two groups overlap, the Euler with each group at its true size." | The old line said proportional symbols make a share countable; Rule 14.80 compares counts, and each form's job now comes from its entry
+- D3-xxx | Group 16's line stands | No round 4 entry sits in the group, and S37's curl changes nothing it says
+- D3-xxx | The ink role names in round 4's entry rules stand ("the subject ink", "the context ink"); only "track ink" becomes "the track gray" | Rule 14.6 and the chapter's entries already use Rule 05.7's role names in rule text, and Rule 14.47 names the track fill "the track gray"; the one-ink-word rule covers chart notes and alts
 - D3-xxx | S85's "One in ten" stands | S01's approved title says "nine in ten", so the idiom keeps one form across the chapter
 
 ## Group lines 9 and 17
+
+Each line is read against the entries as they land and changes only where a built entry makes it untrue or unclear. The lines live in `phase3_ch14_rules_build.py` (`GROUP_LINES`) and print through `14-chapter.json`; a group's heading, and the opener's link to it, appear once the chapter build takes round 4 in (D3-452's test, which the generator keeps).
+
+| Group | Line | Status |
+|---|---|---|
+| 9 Proportion and overlap | An icon array makes a share countable as people out of 100, and proportional symbols compare counts too far apart for bars. Venn and Euler diagrams show how two groups overlap, the Euler with each group at its true size. | **Rewritten at 21:13 UTC**, read against entries 14.79 to 14.84 as drafted. The old line, "Icon arrays, proportional symbols and overlap diagrams make a share countable and show where groups overlap.", said proportional symbols make a share countable; Rule 14.80 draws counts too far apart for bars, not shares. The new line takes each form's job from its entry's title (14.79 "make a share countable as people out of 100", 14.80 "counts run too far apart for a bar", 14.81 the overlapping groups, 14.82 "at their true size"), in two sentences of different shapes (W13); the reference and avoid forms go unnamed, as group 6's line names three of nine. I read it again once maker A reports finished |
+| 16 Tables and plain words | A table lets a reader look a value up, and one sentence answers when a single figure is the whole story. | **Stands.** No round 4 entry sits in group 16; S37's curl changes two labels' apostrophes and nothing the line says |
+| 17 Infographics | Process explainers, number panels and comparison cards show how something works in one view. | **Waiting** for entries 14.136 to 14.138, 14.140 and 14.141. Read so far against 14.135 and 14.139: the line does not cover 14.139 (what each part of a document tells a reader), nor, by the plan's rows, the step-by-step, the calendar or the social card, so I expect to rewrite it once those entries land |
 
 ## Rule 13.4's plates (DR-267)
 
@@ -83,6 +94,12 @@ Maker A applies these until it reports finished; after that I write any still op
 
 | S87 | `notes[1]` | Private coverage includes plans through an employer, plans bought directly and TRICARE; public coverage includes Medicare, Medicaid and other means-tested plans, and VA care. | The Census Bureau counts plans through an employer, plans bought directly and TRICARE, the military’s health plan, as private coverage, and Medicare, Medicaid, other plans with an income limit and care from the Department of Veterans Affairs as public. | Names who sorts the plans (W02), as the sidecar says ("The Bureau counts…"); glosses TRICARE and "means-tested" at first use (H02) and spells out VA |
 | S87 | notes | (none) | A note that the four groups are Oath & Action's sums of the published counts, unless the source line's "Overlap computed by Oath & Action from the published counts; margins approximate" is the place you and the data lead settle on | The data lead's (b) for S87 asks the note to say so; the source line already does, so one place is enough |
+
+**Checked at 21:15 UTC against the files, after maker A's 21:16 status line:** every spec row above is applied as written (S85's grade line, note and chart note, its topic word with the chip "Variable A2" by Q-A1; S86's title, note, chart note and grade line; S87's title and notes; S88's title, MA-8's form, and its note), so those rows are closed. The entry rows below are still open. One new item:
+
+| File | Field | Now | Suggested | Why |
+|---|---|---|---|---|
+| S85 | `chart_notes[0]`, last sentence | The drawing beside the words Worker bargaining power is the atlas’s symbol for that variable. | The drawing beside “Worker bargaining power” is the atlas’s symbol for Variable A2. | Words quoted as words take quotation marks, and the chip's own name says which variable, as the plate prints it (H11) |
 
 **Entries 14.79 to 14.84 and sketch 14.83, read at 21:12 UTC.** They read plainly, each names who draws what and why, and the sketch's caption equals its first `<desc>`, word for word (by script). The ink role names in the rules stand: Rule 14.6 itself says "the context ink" and "the light fill", and rule texts across the chapter say "the subject ink"; the one-ink-word rule covers chart notes and alts, where S85 to S88 already say "in the text’s ink", "gray" and "shaded". Open items:
 
@@ -153,3 +170,4 @@ Nothing yet: no change to S12, S16 or S78 or their entries has landed.
 
 - Created: this file.
 - Modified: `work/build/chart-kit/specs/s37.json` (the `typography` key, three lines, ED4-1).
+- Modified: `work/build/scripts/phase-3/phase3_ch14_rules_build.py` (group 9's line), which rewrote `work/build/guide/entries/14-chapter.json` (that one line); the other entries 14.1 to 14.14, the plates and the opener were rewritten byte for byte as they stood.

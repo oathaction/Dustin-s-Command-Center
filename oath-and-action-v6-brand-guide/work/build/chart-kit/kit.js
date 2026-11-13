@@ -1266,7 +1266,7 @@
       spec.card.crops.forEach(function (cr) {
         var a = fig.querySelector('[data-oa-crop="' + cr[0] + 'x' + cr[1] + '"]'), lid = fig.id && (fig.ownerDocument || root.document).getElementById(fig.id + '-alt') ? fig.id + '-alt' : null;
         if (!a || a.querySelector('svg.oac-svg')) return;
-        var r = K.draw(spec, rows, { width: cr[0], crop: cr, ground: ground, t: t, extra: extra, uid: (fig.id || 'oac') + '-' + cr[0] + 'x' + cr[1], label_id: lid });
+        var r = K.draw(spec, rows, { width: cr[0], crop: cr, ground: ground, t: t, extra: extra, uid: (fig.id || 'oac') + '-c' + cr[1] + '-' + cr[0], label_id: lid });
         a.insertAdjacentHTML('beforeend', r.svg);
         if (lid) (fig.ownerDocument || root.document).getElementById(lid).hidden = true;
         if (r.guard.length || r.warnings.length) fig.setAttribute('data-oa-warnings', String(r.guard.length + r.warnings.length));

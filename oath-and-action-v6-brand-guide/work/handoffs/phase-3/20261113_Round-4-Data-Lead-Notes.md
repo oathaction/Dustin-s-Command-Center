@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:14 UTC. Signed off S86, S88 (one small item) and S89; S87 and S93 but for 256 px (MA-9, MI-2); S85's figures, with its icon and chip waiting on the engineer. The share per plate is now 12,495.
 - 21:09 UTC. Resumed on the main session's word. R-2 answered: grade line dates stand; S94's 7508A note ruled. Next: sign-off reads of S86, S87, S88, S89, S93 and S85's figures.
 - 21:03 UTC. S12's stacked tile signed off from my own build; the phone codes wait on C4-E1 and C4-E2. R4-4's data side agreed with two conditions.
 - 21:01 UTC. Q-A1 ruled: S85 prints "Worker bargaining power" with the chip "Variable A2". Drafts of S85, S86 and S89 built and looked at (MA-7 added).
@@ -188,6 +189,19 @@ Type never drops under the type scale's smallest drawing size to make a title fi
 
 ## Sign-offs
 
+### Maker A's S85 to S88 and the infographics maker's S89 and S93 (21:14 UTC)
+
+Built to my scratch with the sweep on, kit pages at 1440, 390, 296 and 256 px on both grounds (`build s85 s86 s87 s88 s89 s93` at 21:08, and S87, S89 and S93 again at 21:12 after their specs changed). Figures read by script from the files and from the exported SVGs. Selection rules read from both sides: each chart draws every row of its file, S86 the federal government and the states as words. No title adds, softens or drops a finding.
+
+**The share per plate is falling:** 13,172 at the tile's landing, then 12,671 (guide build 21:09) and 12,495 (21:12), as kit parts land. Round 4's ceiling is the latest strict build's figure, and none past 15,000. Every plate below is under 10,300 bytes with its frame, but the cards (S90 to S95) should be planned against about 12,500, not 13,172. (For the main session and the engineer.)
+
+- **S86, proportional symbols: signed off.** Looked at: Newsprint 1440, Charcoal 256 px. Radii from the SVGs at 1440, 390, 296 and 256 px give areas in the counts' proportions (counties to special districts 0.0769 at 1440 against 0.0766), and the key's 40,000 circle matches the 39,555 circle's scale at every width (r 101.6 against 101.0 at 1440, 53.3 against 53.0 at 256). Unnamed circles take the track ink with the context edge; special districts the subject ink (MA-4, MA-5 applied). The title states a plurality, 39,555 of 90,888, with "were" for a 2022 count; read from both sides it claims no majority and no judgment. The note and the source line both say how school systems run by another government count; once is enough, the editor's call.
+- **S88, Euler diagram: signed off, with one small item.** Looked at: Newsprint 256, Charcoal 1440 in grayscale. By script from the SVGs, every area matches its count within 0.12 percent at all four widths (public 0.01, none 0.03 at most, overlap 0.12), and the uninsured circle stands apart by at least its own radius (48 px at 1440, about 90 at the phone widths). The title is now the finding MA-8 asked for: 213.2 million private, 119.1 million public, 23.8 million both, each equal to the files rounded. **MA-10:** name the area check in `notes_internal`, as (b) asks.
+- **S87, Venn diagram: signed off but for 256 px.** Looked at: Newsprint 390, Charcoal 256 in grayscale. The title's four counts (189.4, 95.4, 23.8 and 28.3 million) and the shares (56.2, 28.3, 7.1 and 8.4 percent) equal the derived file rounded; every pair's gap passes its margin, so the order is safe. **MA-9:** at 256 px the "Both" region prints no count (the kit's fault, both grounds). Under (b), words that will not fit inside a region take a leader in the context ink to just outside it, as S88 does; the count must show at every width.
+- **S85, icon array: figures signed off; the icon and chip wait.** Looked at: Newsprint 390 px. 10 of 100 filled in the subject ink from 10.0 percent, the open marks now edged in the context ink (MA-2), the 1983, sector and member figures in the note equal CL1514, the 11-month limitation travels in the note and the source line, and the snapshot date prints once, in the grade line (R-1's variant). The CL-050 drawing and its chip "Variable A2" cannot draw until the engineer gives the kit a Civic Line part (A4-E1) **and a typed chip part**: my build fails 30 checks on the chip alone at every width. I sign S85 off whole once both draw beside "Worker bargaining power" at 48 px.
+- **S89, process explainer: signed off.** Looked at: Newsprint 1440, Charcoal 390 px (the phone's single column). Every limit equals the file's `time_limit` (within 30 days of the incident; 5 and 30 days for an emergency; 30 days after designation; 60 days after the declaration), each printed as the law's limit; the in-force date prints once, in the grade line, and the source line takes IM-1's variant (checked in the built HTML); the branch keeps the gray edge; MI-1's note is right. The title runs 35 words against the house limit of under 30; the editor's rewrite is the fix, and it must keep the 30 days as the law's limit.
+- **S93, annotated illustration: signed off but for 256 px.** Looked at: Newsprint 1440 px, with the SVGs at 1440 (Newsprint) and 256 (Charcoal) read by script: every one of the drawing's 36 word pieces is either the page's own printed text (15) or the file's part name or "what it tells" line (21); nothing else. The doubled single quotes and the en dash in "119–12" are the page's own characters. Row 11 (the margin short title) is drawn above row 10, as the page sets it. The title names five parts the page prints, all true. **MI-2:** at 256 px a context-ink line runs through "SECTION 1. SHORT TITLE." on both grounds; clear it with `K.parts.clear_label` or move it.
+
 ### Early read of three drafts against the rulings (20:56 UTC, specs only, no build yet)
 
 Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, with the forms `icon-array.js` and `proportional-symbols.js` and the shared part `named_fill` in `parts.js`. These are requests before the first build, not a sign-off.
@@ -242,11 +256,11 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 
 ### To maker A
 
-- Read (a) to (c) before titles and inks. MA-1 to MA-6 under "Sign-offs", early read.
+- MA-1 to MA-8 closed or applied. Open: **MA-9** (S87's "Both" count leadered out at 256 px) and **MA-10** (name S88's area check in `notes_internal`). S85 waits on the engineer's parts.
 
 ### To the infographics maker
 
-- Read (a) to (c) before titles and inks. MI-1 under "Sign-offs", early read.
+- MI-1 closed. Open: **MI-2** (S93's line through "SECTION 1. SHORT TITLE." at 256 px). S94's note on 26 U.S.C. 7508A as ruled under R-2's answer.
 
 ### To the systems designer
 
@@ -254,7 +268,7 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 
 ### To the engineer
 
-- (d) is signed off: land R4-2's items 1 to 3. The DR-267 code set for Rule 18.22 prints R1's three titles exactly as (f) gives them, so 15.19 and 18.22 share one name for each variable.
+- (d) is signed off and landed. **A typed chip part** beside A4-E1's Civic Line part: S85 prints the chip "Variable A2" after "Worker bargaining power" (Rule 10.6's chip: 1 px strong-border outline, label style, one line), and my build fails 30 checks for want of it. The DR-267 code set for Rule 18.22 prints R1's three titles exactly as (f) gives them, so 15.19 and 18.22 share one name for each variable.
 
 ## Tested
 

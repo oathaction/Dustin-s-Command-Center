@@ -505,7 +505,7 @@
     var fail = spec.failure ? ' data-oa-failure="' + esc(spec.failure.rule || '') + '"' : '';
     var ab = spec.artboard && spec.artboard !== 'reading' ? ' data-oa-artboard="' + esc(spec.artboard) + '"' : '';
     // R4-3: a card figure is static on the page (nothing to draw), marked drawn so a page that waits for drawings goes on
-    return K.hold(spec, '<figure class="oac-fig" id="' + id + '" data-oa-chart-id="' + esc(spec.id) + '" data-form="' + esc(spec.form) + '" data-evidence="' + esc(spec.evidence) + '"' + ab + fail + (lookup ? ' data-oa-lookup' : '') +
+    return K.hold(spec, '<figure class="oac-fig" id="' + id + '" data-oa-chart-id="' + esc(spec.id) + '" data-form="' + esc(spec.form) + '" data-evidence="' + esc(spec.evidence) + '"' + ab + fail + (lookup ? ' data-oa-lookup' : '') + (spec.card && spec.card.crops ? ' data-oa-card' : '') +
       (hc ? ' data-oa-static data-oa-html data-oa-drawn="html"' : '') + '>' + p.join('') + '</figure>');
   };
   // A lookup (A9, round 1; chapter 18's search, Rule 18.15, and filter bar, Rule 18.16): a search field, a Filters button

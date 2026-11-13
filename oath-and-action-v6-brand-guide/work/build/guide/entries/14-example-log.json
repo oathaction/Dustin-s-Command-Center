@@ -4,19 +4,20 @@
  "rounds": [
   1,
   2,
-  3
+  3,
+  4
  ],
- "examples": 97,
+ "examples": 103,
  "by_domain": {
   "D01": 5,
   "D02": 12,
   "D03": 7,
-  "D04": 10,
+  "D04": 13,
   "D05": 5,
   "D06": 6,
-  "D07": 9,
+  "D07": 10,
   "D08": 15,
-  "D09": 11,
+  "D09": 13,
   "D10": 8
  },
  "all_domains": 9,
@@ -530,6 +531,34 @@
    "source": "s59.json"
   },
   {
+   "example": "One in ten U.S. wage and salary workers belonged to a union in 2025.",
+   "domain": "D07",
+   "states": [],
+   "rule": "14.79",
+   "source": "s85.json"
+  },
+  {
+   "example": "Special districts were the most common kind of government in the country in 2022, 39,555 of the 90,888 the Census Bureau counted.",
+   "domain": "D04",
+   "states": [],
+   "rule": "14.80",
+   "source": "s86.json"
+  },
+  {
+   "example": "In 2025, 189.4 million people had private health coverage alone, 95.4 million had public coverage alone, 23.8 million had both and 28.3 million had neither.",
+   "domain": "D09",
+   "states": [],
+   "rule": "14.81",
+   "source": "s87.json"
+  },
+  {
+   "example": "In 2025, 213.2 million people had private health coverage and 119.1 million had public coverage, and 23.8 million had both.",
+   "domain": "D09",
+   "states": [],
+   "rule": "14.82",
+   "source": "s88.json"
+  },
+  {
    "example": "Nearly nine in ten Republican and Democratic voters favored a ban on stock trading by members of Congress.",
    "domain": "D03",
    "states": [],
@@ -805,6 +834,20 @@
    "states": [],
    "rule": "14.134",
    "source": "s42.json"
+  },
+  {
+   "example": "A governor or a tribal government’s chief executive asks the President for a disaster declaration, within 30 days of the disaster under the law, and a declaration opens federal help to people and to governments.",
+   "domain": "D04",
+   "states": [],
+   "rule": "14.135",
+   "source": "s89.json"
+  },
+  {
+   "example": "The first page of Public Law 119-12 gives its number, the Congress that passed it, where it starts in the Statutes at Large, the day it was approved and the bill it began as.",
+   "domain": "D04",
+   "states": [],
+   "rule": "14.139",
+   "source": "s93.json"
   }
  ]
 }
