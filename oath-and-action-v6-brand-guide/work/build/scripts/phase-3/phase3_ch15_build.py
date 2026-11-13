@@ -624,10 +624,14 @@ def stacked_loop(codes, lids, labels, numbered, weakest, inside, thin, grades, w
 
 
 def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=None, hollow=False, labels=None, thin=False,
-               targets=(), shared=(), top=0):
+               targets=(), shared=(), top=0, steps_g=False, lit=(), for_=None, only=None):
     """A loop of three variables: the first centered at the top, the second below it to the right and the third to the
     left. Steps 1 and 3 run straight between overlapping pills; step 2 arches under the bottom row. targets and shared
-    as two_loop takes them. Returns (body, h)."""
+    as two_loop takes them. Round 4: steps_g wraps each step (its band, marks and words) in data-s and each pill in
+    data-p, so Rule 15.19's plate can light the current step from the stepper's data-oa-at; lit draws a connection with
+    Rule 12.5's red marks ready though not shown (the red shows for those in targets), and for_ names the reforms each
+    target belongs to (data-oa-for), so Rule 15.20's plate lights the chosen reform's; only draws those steps alone (a
+    failure plate's). Returns (body, h)."""
     labels = labels or [short(c) for c in codes]
     w3, w2, _ = pair_w(labels[2], labels[1], room=ROW_ROOM3)
     pw = [pill_w(labels[0], PW, TOP_HI), w2, w3]
@@ -656,16 +660,26 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
              ([(p2.cx, p2.bot + 2), (p2.cx, bot_y), (p3.cx, bot_y), (p3.cx, p3.bot + 2)], "below"),
              ([(xl, p3.top - 2), (xl, p1.bot + 2)], "left")]
     out = []
+    fa = lambda k: f' data-oa-for="{for_[k]}"' if for_ and k in for_ else ""
     for i, ((pts, side), lid) in enumerate(zip(paths, lids)):
+        if only is not None and i not in only:
+            continue
         l = link(lid) if lid else {"polarity": None, "evidence": None, "delay": None}
         g = (grades or {}).get(i, l["evidence"])
         tg = bool(lid) and lid in targets
-        m, _ = conn(pts, g, l["polarity"], l["delay"], hollow=hollow, target=tg)
-        out.append(wr(m, tg))
+        lt = tg or (bool(lid) and lid in lit)
+        m, _ = conn(pts, g, l["polarity"], l["delay"], hollow=hollow, target=lt)
+        part = (wr(m, tg) if not lt or tg else f'<g class="wr"{RED}>{m}</g>')
+        if fa(lid):
+            part = part.replace("<g ", f"<g{fa(lid)} ", 1)
         if lid:
             extra = ("weakest step",) if weakest == i else ()
-            out.append(verb_at(pts, l["polarity"], step_words(i + 1 if numbered else 0, lid, extra), side, big=tg))
-    out.append(p1.svg() + p2.svg() + p3.svg())
+            part += verb_at(pts, l["polarity"], step_words(i + 1 if numbered else 0, lid, extra), side, big=lt)
+        if steps_g:
+            part = f'<g data-s="{i + 1}"><path class="bd" d="{BS.rounded_d(pts, BEND)}"/>{part}</g>'
+        out.append(part)
+    for j, p_ in enumerate((p1, p2, p3)):
+        out.append(f'<g data-p="{j}"{fa(codes[j])}>{p_.svg()}</g>' if steps_g or fa(codes[j]) else p_.svg())
     if inside and two_rows:
         need(max(tw(f"Loop {inside[0]}", 700), tw(inside[1])) <= p2.cx - p3.cx - 24, "the loop's ID crowds its lower arch")
         out.append(loop_id(id_x, max(p2.bot, p3.bot) + 28, *inside, two=True))

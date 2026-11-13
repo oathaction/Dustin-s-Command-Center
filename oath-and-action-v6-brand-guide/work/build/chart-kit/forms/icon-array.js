@@ -28,10 +28,14 @@
         var ic = 48, tx = ic + 12;
         if (!K.parts.icon) c.warn('labels.topic names ' + L.topic.id + ', and the kit has no part that draws a Civic Line drawing yet');
         else K.parts.icon(c, L.topic.id, 0, y, ic);
-        var tt = c.text(tx, y + ic / 2 + c.size('label') * 0.35, L.topic.words, { role: 'label', weight: 600, max: W - tx });
+        var nb = y + ic / 2 + c.size('label') * 0.35, cw = c.measure(L.topic.chip || '', 'tick', 600) + 16;
+        var one = !L.topic.chip || tx + c.measure(L.topic.words, 'label', 600) + 10 + cw <= W;
+        // the name and its chip on one line beside the drawing, or the chip under the name, the two centered on the drawing
+        if (!one) nb -= 11;
+        var tt = c.text(tx, nb, L.topic.words, { role: 'label', weight: 600, max: W - tx });
         if (L.topic.chip) {
           if (!K.parts.chip) c.warn('labels.topic.chip names ' + L.topic.chip + ', and the kit has no part that draws a typed chip yet');
-          else K.parts.chip(c, tt.x + tt.w + 10 > W - 90 ? tx : tt.x + tt.w + 10, tt.x + tt.w + 10 > W - 90 ? tt.bottom + 6 : tt.y, L.topic.chip);
+          else K.parts.chip(c, one ? tt.x + tt.w + 10 : tx, one ? nb : tt.bottom + 6 + c.size('tick') * 0.86, L.topic.chip);
         }
         y += ic + 18;
       }

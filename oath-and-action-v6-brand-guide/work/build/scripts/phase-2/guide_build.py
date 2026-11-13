@@ -2990,7 +2990,8 @@ class Sprites:
 
     def inject(self, page):
         """One hidden sprite per family, after <body>, holding the symbols the page references; and the bytes it adds."""
-        used = sorted(set(re.findall(r'href="#(oa-sym-[a-z0-9-]+)"', page)))
+        # A4-E1 (round 4): a chart kit figure names the symbols its drawing uses (data-oa-sym), since the page draws it later
+        used = sorted(set(re.findall(r'href="#(oa-sym-[a-z0-9-]+)"', page)) | {x for v in re.findall(r'data-oa-sym="([^"]+)"', page) for x in v.split()})
         unknown = [u for u in used if u not in self.symbols]
         if unknown:
             gone = sorted({self.family_of(u) for u in unknown} & set(self.missing))

@@ -391,6 +391,23 @@ export function kit_scripts_full() {
   return [fs.readFileSync(path.join(KIT, 'metrics.js'), 'utf8'), fs.readFileSync(path.join(KIT, 'kit.js'), 'utf8'), fs.readFileSync(path.join(KIT, 'kit-build.js'), 'utf8'), fs.readFileSync(path.join(KIT, 'parts.js'), 'utf8'), fs.readFileSync(path.join(KIT, 'geo.js'), 'utf8')].concat(forms).join('\n').replace(/<\/script/gi, '<\\/script');
 }
 
+// A4-E1 (round 4): the sprite symbols a drawing uses (<use href="#oa-sym-...">), and each symbol as the guide's sprite
+// carries it, read from the approved black master (its ink drawn in currentColor), for the kit's own page
+export function icons_of(drawings) {
+  return [...new Set((drawings || []).flatMap(d => [...String(d.svg || d).matchAll(/href="#(oa-sym-[a-z0-9-]+)"/g)].map(m => m[1])))].sort();
+}
+const ICON_DIR = path.join(ROOT, 'work/build/assets/civic-line-v6/black');
+export function kit_symbol(sid) {
+  const id = sid.replace(/^oa-sym-/, '').toUpperCase();
+  const f = fs.existsSync(ICON_DIR) && fs.readdirSync(ICON_DIR).find(n => n.includes(`-${id}-`) && /-Black\.svg$/.test(n));
+  if (!f) return '';
+  const t = fs.readFileSync(path.join(ICON_DIR, f), 'utf8').replace(/<!--[\s\S]*?-->/g, '');
+  const root = t.match(/<svg\b[^>]*>/);
+  const vb = root[0].match(/viewBox="([^"]+)"/)[1];
+  const inner = t.slice(root.index + root[0].length, t.lastIndexOf('</svg>')).replace(/<title>[\s\S]*?<\/title>|<desc>[\s\S]*?<\/desc>/g, '')
+    .replace(/\sid="[^"]*"/g, '').replace(/"#121212"/g, '"currentColor"').replace(/>\s+</g, '><').trim();
+  return `<symbol id="${sid}" viewBox="${vb}">${inner}</symbol>`;
+}
 function page_html(specs) {
   // specs: [{spec, rows, columns, grounds, extra}]
   // a plain page: tokens.css, kit.css, the kit and its forms, and each figure with its data island (DR-235)
@@ -401,6 +418,7 @@ ${(f => f.slice(0, f.lastIndexOf('</figure>')) + island_table(spec, rows, column
 <title>Chart kit build</title><style>${font_css()}</style><style>${CSS}</style><style>${fs.readFileSync(path.join(KIT, 'kit.css'), 'utf8')}</style>
 <style>body{margin:0}.oac-ground{padding:32px 32px 40px}@media (max-width:599px){.oac-ground{padding:24px 16px 32px}}.oac-fig[data-wide]{max-width:var(--oa-chart-artboard-wide)}</style>
 </head><body>
+${(syms => syms.length ? `<svg hidden aria-hidden="true">${syms.map(kit_symbol).join('')}</svg>` : '')([...new Set(specs.flatMap(x => x.syms || []))])}
 ${body}
 <script>OAChart_words=${JSON.stringify(K.words)};</script>
 <script>${kit_scripts()}
@@ -418,7 +436,7 @@ async function captures(items, o) {
     for (const it of items) {
       const { spec, res } = it;
       const dir = path.join(o.out, spec.id.toLowerCase());
-      const html = page_html([{ spec, rows: res.rows, columns: res.datasets.length ? res.datasets[0].meta.columns : (spec.data || {}).columns, grounds: o.grounds, extra: extra_island(res) }]);
+      const html = page_html([{ spec, rows: res.rows, columns: res.datasets.length ? res.datasets[0].meta.columns : (spec.data || {}).columns, grounds: o.grounds, extra: extra_island(res), syms: icons_of(res.drawings) }]);
       const page_file = path.join(dir, spec.id.toLowerCase() + '.html');
       fs.writeFileSync(page_file, html);
       const stem = file_stem(spec, o.date);
@@ -482,6 +500,17 @@ async function captures(items, o) {
                 dst[i].removeAttribute('class');
               }
               ex.removeAttribute('class');
+              // A4-E1 (round 4): a <use> of the page's sprite draws inline in the standalone file, in the ink the page shows
+              const su = svg.querySelectorAll('use'), du = ex.querySelectorAll('use');
+              du.forEach((u, i) => {
+                const sym = document.getElementById((u.getAttribute('href') || '').slice(1));
+                if (!sym) return;
+                const n = document.createElementNS('http://www.w3.org/2000/svg', 'svg'), ink = getComputedStyle(su[i]).color;
+                ['x', 'y', 'width', 'height'].forEach(a => n.setAttribute(a, u.getAttribute(a)));
+                n.setAttribute('viewBox', sym.getAttribute('viewBox'));
+                n.innerHTML = sym.innerHTML.replace(/currentColor/g, ink);
+                u.replaceWith(n);
+              });
               // AX-S1 (round 3 fix pass): a mark drawn for forced colors only (fc 'forced') leaves the standalone file
               ex.querySelectorAll('[data-oa-fc-forced]').forEach(n => n.remove());
               // a standalone file names itself: the spec's title and alt as the SVG's title and desc
@@ -756,6 +785,9 @@ async function fragments(o) {
       html = K.figure(spec, res.rows, { id: fid, guide: true, ground: it.ground || 'newsprint', tokens: TOK[it.ground || 'newsprint'] });
       html = html.slice(0, html.lastIndexOf('</figure>')) + isl + '</figure>';
     }
+    // A4-E1 (round 4): the figure names the sprite symbols its drawing uses, so the guide's page carries each once
+    const syms = icons_of(res.drawings);
+    if (html && syms.length) html = html.replace('<figure class="oac-fig"', `<figure class="oac-fig" data-oa-sym="${syms.join(' ')}"`);
     // round 2 fix pass: the drawing checks this pass added (words crossed or half covered, AX S2; red past Rule 05.1's
     // share, CD A-M2) fail the kit's build and check, the gate every owner runs on a spec; the guide build lists them as
     // notes, so one owner's spec does not stop another's strict build while the owners clear them (the sweep's way too)
@@ -1442,6 +1474,14 @@ async function self_test() {
         && /<span class="oac-nw">Public Law 119-12<\/span>/.test(fig) && isl === '' && /aria-hidden="true"/.test(hc.html)
         && K.typeset(sp, 'Public Law 119-12 passed') === 'Public Law 119-12 passed',
         'R4-3, IM-E1: a card form\'s HTML passes clean and check_html catches eight planted faults; the card figure carries no island or scripts-off line, its table folded; a held phrase prints in .oac-nw' + (good.length ? ': ' + good[0] : '') + (caught.every(Boolean) ? '' : ': missed ' + caught.map((x, i) => x ? null : i + 1).filter(Boolean).join(', '))); }
+    { // A4-E1 (round 4): a Civic Line drawing by <use> of the sprite, read by the checks as a shape (a word on it is caught);
+      // a typed chip with its edge clear of its words; the kit page's symbol from the approved master, one ink
+      const a = drawn(c => { P.icon(c, 'CL-050', 0, 0, 48); P.chip(c, 60, 30, 'Variable A2'); c.height(60); });
+      const b = drawn(c => { P.icon(c, 'CL-050', 0, 0, 48); c.text(4, 30, 'On the drawing', { role: 'tick' }); c.height(60); });
+      const sym = kit_symbol('oa-sym-cl-050');
+      pass(!a.f.length && /<use href="#oa-sym-cl-050" x="0" y="0" width="48" height="48" class="oac-icon"/.test(a.d.svg) && a.d.ink.some(q => q.kind === 'icon' && q.w === 48)
+        && icons_of([a.d]).join() === 'oa-sym-cl-050' && b.f.length > 0 && /^<symbol id="oa-sym-cl-050" viewBox="0 0 128 128">/.test(sym) && sym.indexOf('currentColor') > 0 && sym.indexOf('#121212') < 0,
+        'A4-E1: the icon part draws a <use> of the sprite with a box the checks read (a word on it caught), the chip part draws clean, and the kit page\'s symbol comes from the approved master in one ink' + (a.f.length ? ': ' + a.f[0] : '')); }
     { // board 2 (A1): a table caption's {data_file} fills in the visible caption, the table's name and the summary's hidden words
       const sp = { id: 'T', title: 'A title.', table: { caption: 'Every row is in {data_file}', columns: [{ field: 'k', label: 'Key', format: 'text', row_header: true }] } };
       const fig = [false, true].map(g => K.figure(sp, [{ k: 'A' }], { id: 'oac-t', guide: g }));

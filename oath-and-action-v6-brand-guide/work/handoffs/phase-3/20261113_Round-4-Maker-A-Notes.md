@@ -10,7 +10,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Maker A, briefed 
 
 | Rule | Spec | Form ID | Status |
 |---|---|---|---|
-| 14.79 | S85 | icon-array | form, spec, entry; fails only on A4-E1 (icon and chip parts) |
+| 14.79 | S85 | icon-array | form, spec, entry; PASS with the sweep, icon and chip drawn |
 | 14.80 | S86 | proportional-symbols | form, spec, entry; PASS with the sweep |
 | 14.81 | S87 | venn-diagram | form, spec, entry; PASS with the sweep |
 | 14.82 | S88 | euler-diagram | form, spec, entry; PASS with the sweep |
@@ -24,7 +24,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Maker A, briefed 
 - D3-xxx | S85 draws its 100 marks larger than the unit chart's 14 px squares: 24 px with 4 px gaps at a desk, up to 22 px with 3 px gaps on a phone, a row of ten always | DR-266's plain unit marks in their style (filled, open), sized so a hundred stay countable in a 720 px column; one grid at every width (ruling (b))
 - D3-xxx | S85's key words sit beside their marks: "Union member" beside the filled row and "Not a member" beside the first open row at a desk, both under the grid on a phone, each with its swatch | Ruling (b): the key in the file's words, each beside its mark
 - D3-xxx | S85's table prints all four published rows (2025 all workers, private, public, 1983) and the array draws the 2025 row alone through `labels.draw`, the limitation in the table's caption | Ruling (b): the table prints the published figures with V7's limitation as its caption note; the kit has no separate table note
-- D3-xxx | S85's topic: CL-050 at 48 px, "Worker bargaining power" beside it and the chip "Variable A2" after it, all above the grid | Q-A1 and Rule 10.6; checked by script against the editor's label table and chapter 10's list of 41
+- D3-xxx | S85's topic: CL-050 at 48 px, "Worker bargaining power" beside it and the chip "Variable A2" after it on the name's baseline, all above the grid; where name and chip do not fit one line (the 256 px drawing) the chip sits under the name and the two center on the drawing | Q-A1 and Rule 10.6; checked by script against the editor's label table and chapter 10's list of 41
 - D3-xxx | S86 sets the federal government and the states in one line over the circles, "Not drawn: 1 federal government and 50 state governments, too few to draw at this scale.", with a hairline under it | Ruling (b) ("above or beside the circles with a hairline gap"); above, the five circles take the column's full width at a desk (the largest 196 px across at 720 px against about 140 with the words at the left)
 - D3-xxx | S86 keeps the Bureau's order (county, municipal, township, special district, independent school district), the file's `order`, in the drawing and the table | The plan's levels read in the order the Bureau prints them; drawing and table read alike
 - D3-xxx | S86's special districts print their name and count inside their circle, in the label-on-subject ink, where both fit each chord with 6 px to spare; every other circle is named under it at a desk and beside it on a phone | Ruling (b)
@@ -62,11 +62,19 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Maker A, briefed 
 | MA-4 | S86's unnamed circles take the track ink with a 1 px context-ink edge on both grounds |
 | MA-5 | S86's key: 40,000, 10,000 and 1,000 |
 | MA-6 | S86's title in the past tense, in the editor's words |
-| MA-7 | A4-E1 is with the engineer (queued after R4-3 and R4-4) |
+| MA-7 | A4-E1 landed (`K.parts.icon`, `K.parts.chip`); S85 draws CL-050 at 48 px with its name and chip, PASS |
 | MA-8 | S88's title states the finding, in the editor's words |
 | MA-9 | S87's "Both" takes a leader under the circles where it cannot fit inside; PASS at 1440, 390, 328, 288 and 256 px pages and in the sweep |
 | MA-10 | S88's area check named in `notes_internal` |
 
 ## Tested
+
+- `node work/build/chart-kit/oa-chart.mjs build s85 s86 s87 s88`, sweep on (256 to 720 px), PNGs at 1440 and 390 px pages on both grounds with grayscale: 4 of 4 PASS, 0 faults (S85 after A4-E1 landed, 21:19 UTC; S86 to S88 at 21:1x). Also built without the sweep at 328 and 288 px pages (296 and 256 px drawings) on both grounds, and S87 at 256 px pages (224 px drawing) after MA-9: PASS.
+- Captures looked at as contact sheets, as a design director would at twice size: all four at 1440 px Newsprint; S86 to S88 at 358 px (S86 Charcoal, S87 and S88 Newsprint); S85 at 1440 px Newsprint, 358 px Charcoal and 256 px Newsprint with the icon and chip; S85, S86 and S88 at 256 px Newsprint and 296 px Charcoal in grayscale; S87 at 224, 256 (Charcoal, grayscale) and 296 px. Fixes that came of them: S86's key and words line moved, S86's names under the circles, S87's three-line region words and its leader, S85's chip on the name's baseline.
+- `python3 -I work/build/scripts/phase-3/maker_a_round4_derive.py --figures`: 51 checks, 0 failed.
+- Words lint by script on S85 to S88, entries 14.79 to 14.84 and both sketches: no em or en dash, U+2011, straight apostrophe in reader text, banned word or decision code; titles 14, 22, 25 and 20 words.
+- Both sketches captured on Newsprint and Charcoal and in grayscale (my own page with tokens.css and kit.css): s-14-83 1,893 bytes, s-14-84 3,037 bytes; the rose's first `<desc>` holds `sketch_alt`'s first sentence (the generator's R2-3 check).
+- `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py --rounds 1,2,3,4`: my six entries, four specs and two sketches load with no fault; its five faults are the infographics maker's entries 14.136, 14.137, 14.138, 14.140 and 14.141, not yet written.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide.html` (21:15 UTC, before A4-E1): exit 0; its only warnings were S85's icon and chip, since cleared. Plates as the guide places them: S85 4,172, S86 4,233, S87 4,694, S88 4,733 bytes, each about 750 more with its frame, under the 12,495 share.
 
 ## Not tested
