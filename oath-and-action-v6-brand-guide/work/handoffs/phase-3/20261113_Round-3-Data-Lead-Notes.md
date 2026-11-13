@@ -894,6 +894,54 @@ S73's page table was parsed by script from the kit's page (all 20 rows).
 
 Not looked at: S73's and S77's drawings in forced colors; S74 in forced colors; S75 at 1440 px; S65 at 390 px; any of maker B's plates inside a guide build; sketch 14.94 on Charcoal (my first harness overlapped two drawings and I did not repeat it on Charcoal).
 
+### Cartographer, review fix pass: signed off but for S84's table (06:11 UTC)
+
+**The builds.** Both used the files as they stand, with the sweep on, and every check file read 0 faults and 0 warnings. I used one browser at a time and ran no guide check.
+- At 06:03: `oa-chart.mjs build s78 s79 s80 s81 s82 s83 s84 s16 s12 --widths 1440,390,296,256 --out <scratch>/kit-c`, 9 PASS, nine check files.
+- At 06:07: `build s78 s80 s82 s16 s84 s81 --widths 358,328,288 --out <scratch>/kit-c2`, 6 PASS, so the maps also draw at the guide's own phone drawings of 326, 296 and 256 px.
+
+The kit's weight line puts every plate under 14,106 bytes with its frame: S82 13,735, S12 13,903, S81 13,583.
+
+**What I looked at, at 1x unless enlarged:**
+- **S78.** At 720 px on Newsprint and on Charcoal in grayscale. At 358 px on Charcoal and Newsprint in grayscale. At 326 on Charcoal, 296 on Newsprint and on Charcoal in grayscale, 264 on Charcoal, and 256 on Newsprint and on Charcoal. Plus the "Not labeled" notes at each width, read by script.
+- **S80.** At 720 px on Newsprint and on Charcoal in grayscale, with the Democrats' Detroit inset enlarged three times on both grounds. At 326 on Charcoal, 296 on Newsprint in grayscale, and 256 on Charcoal in color and in grayscale.
+- **S82.** At 720 px on Newsprint and on Charcoal in grayscale, with a western block enlarged four times on Charcoal in color and in grayscale. At 326 on Charcoal, 296 on Charcoal in grayscale, and 256 on Newsprint and on Charcoal in grayscale. Its page table parsed by script.
+- **S16.** At 358 px on Charcoal and on Newsprint in grayscale, beside board 1's Charcoal capture at the same width (`work/boards/phase-3/round-0/specimens/s16-charcoal-390.png`).
+- **S12.** At 1440 px (its 1024 px stage) on Newsprint, and at 358 px on Charcoal and on Newsprint in grayscale.
+- **S81.** At 358 px on Charcoal and at 256 on Charcoal in grayscale.
+- **S84.** At 256 px on Charcoal and at 296 on Newsprint in grayscale, with its page table parsed by script.
+- **S79.** At 358 px on Charcoal.
+- **Sketch 14.124.** Rendered alone on Newsprint at device scale 2.
+
+**Signed off:** S12, S16, S78 to S83, S84 but for its table, entries 14.113 to 14.124, and sketch 14.124.
+
+- **C-M1 and D-6 (S78), signed off.**
+  - At a desk every state and DC carries a code from 520 to 720 px; the small northeastern states, West Virginia and DC's square sit on leaders in a column over the ocean.
+  - Under 520 px the studio's tile grid draws in the same classes, steps, edges, key and national figure. At 358 px every state and DC has its code on its tile, which meets my test (every code from 358 px up).
+  - At the guide's narrower drawings the tiles hold what fits at the 13 px floor: at 326 px all but WA, WV and WY, and at 296 px all but 11. At 256 px the tiles hold none, and the note says the table names every state.
+  - I accept that: a code under 13 px breaks the guide's floor, and Rule 14.12 lets a phone drawing name the rest in a note.
+- **BC-S1 (S80), signed off.**
+  - A framed "Detroit area" inset in both panels draws the 6th, 10th, 11th, 12th and 13th large enough to number, the 13th on a short leader, and the view's frame sits on the main map.
+  - Every district is numbered in the panel where it is filled, at 720, 326, 296 and 256 px on both grounds and in grayscale. The note and entry 14.119 say each district elects one member whatever its area.
+- **BC-S3 (S81), signed off.** "No estimate" takes the hatch in its key and on the map; on Charcoal it no longer matches "Under $50,000".
+- **BC-S4 (S82, S80), signed off.**
+  - On Charcoal the ghosts take the band stroke, inset and faint. Every won seat keeps its full 1 px edge, which stays the brightest line in the block.
+  - Enlarged four times in color and in grayscale, an under-5 seat reads as a filled square with a bright edge against an empty, faint ghost. At 326, 296 and 256 px on Charcoal in grayscale the won seats still read as filled.
+  - The grid sits 2 px inside the drawing.
+- **D-4 (S82's ND, WY and VT at a desk), accepted.** A leader that crosses other states' squares points at the wrong state, so the codes note naming them (backed by the table) is the honest choice. Every other state carries its code at 720 px.
+- **ST-M4 (S82), signed off.** By script, the "Closest races, under 5 points" column names 36 seats, 22 Democratic and 14 Republican, each with its printed margin, the same 36 as the frozen file. Its rows run by state name, and `codes_note` now ends "The table gives each state’s seats and names its closest races." The "Seats" column went at the main session's word (D3-1328's weight); each row still gives both parties' wins.
+- **D-5 (S16), signed off.**
+  - At 358 px CT, TN and VA sit beside their own circles, and the note names DC, DE and RI where board 1 named MA and NJ: the three smallest places for two larger ones.
+  - Every circle sits on land with its frame, and the data, inks, words and named states are as board 1 had them (ruling (e)).
+  - Board 2 shows the label changes beside board 1's drawing.
+- **C-M2 (S12), signed off.** At a desk the 1024 px stage draws board 1's arrows with each tile's code and figure, as DR-64 asks, and on a phone the gray steps. The alt says what each width draws. I did not test the stage's sideways scroll in the guide.
+- **S84 (AX-S3).** DC's square draws in all four panels at 256 and 296 px on both grounds. Notes 3 and 4 name the territories and key the marks. **The table still prints "..." in 20 cells** (five states, four years) because C-E7 has not landed. I sign off S84's table when it does.
+- **Notes and entries, read by script.** S83's note 1 gives both units' counts (1,354 and 2.8 million; 2,426 and 15.4 million). S78's note gives 11 states and DC. S81's note gives 549 of 3,143. S82's note 4 names the six non-voting members, and the Puerto Rico sentences appear on S78, S81 and S83. Entries 14.117 (class defined), 14.119 and 14.124 ("steps of one ink"; no "gray" left but S12's own phone gray steps in 14.115), 14.115 (both directions) and 14.124's pointer to Rule 14.7's failure case.
+- **Sketch 14.124 (Q2's unequal places), signed off.**
+  - The misleading half draws Party B's five places as large dark blocks around Party A's seven small light ones, so land stands in for votes at a glance.
+  - The better half keeps one square a place: 7 and 5 filled, the same winners, margin steps with ghosts.
+  - The file is 3,817 bytes. Its colors still wait on Dustin (D3-1322).
+
 ### Tested, review fix pass
 
 - Clock read with `date -u` at 04:24, 04:26, 04:30, 04:31, 04:32, 04:34, 04:37 and 04:38 UTC.
@@ -1013,3 +1061,4 @@ Not tested:
 - After BC-M1's confirmation, 04:48 to 04:49 UTC, by script from the research lead's downloads in `.../round-3-fix/research/dl/bcm1/`: the payers to each campaign with their FEC designation (3 of 92 designated J for Harris, 4 of 64 for Trump), each fund's transfers to its campaign, each fund's recipient count and aggregate total, and the top recipients of five funds (Trump 47 Committee to the RNC $136,907,129.22; the Harris Action Fund to the DNC $51,530,000.00). Not tested: the line split of the four new funds, which waits on the research lead's itemized files and data check.
 - Maker A's sign-off, 05:13 to 05:17 UTC: the kit build and captures listed under "Maker A, review fix pass: signed off"; page tables parsed by script (`tables.py`, scratch); S72's tallies recounted from the frozen file; S68's note 2 compared with the frozen `controls` cell. Not tested: S72 in forced colors (maker A ran it); any capture at 390 or 296 px; S69 to S71 below the parts named; the CSV exports; maker A's plates inside a guide build.
 - Maker B’s sign-off, 05:37 to 05:40 UTC: the kit build and captures listed under "Maker B, review fix pass: signed off"; S73's sums by nominee, kind and line, state counts and the title's figures recomputed from `fec-jfc-transfers-2024-all-committees`; S73's page table parsed by script; sketch 14.94 rendered with Playwright (`sketch94.cjs`, scratch) and its word boxes measured.
+- Cartographer's sign-off, 06:03 to 06:11 UTC: the two kit builds and the captures listed under "Cartographer, review fix pass: signed off"; S82's closest-races list and S84's table parsed by script (`tables.py`); the S78 and S16 "Not labeled" notes read from the SVGs; sketch 14.124 rendered with Playwright (`sketch124.cjs`, scratch). Not tested: forced colors on any map; S12's sideways scroll and S16 inside the guide; S83 by eye; sketch 14.124 on Charcoal.
