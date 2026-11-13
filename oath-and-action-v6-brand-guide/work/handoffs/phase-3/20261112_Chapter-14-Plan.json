@@ -1236,7 +1236,16 @@
    "family": "Proportion and overlap",
    "form": "Icon array with Civic Line icons",
    "tier": "Core",
-   "round": 4
+   "round": 4,
+   "data_plan_row": 115,
+   "maker": "A",
+   "spec_id": "S85",
+   "form_id": "icon-array",
+   "status": "new",
+   "data_status": "V7",
+   "dataset": "v7-union-membership",
+   "reader_question": "How many of every 100 workers belong to a union?",
+   "entry_file": "work/build/guide/entries/14-079.json"
   },
   {
    "rule": "14.80",
@@ -1244,7 +1253,16 @@
    "family": "Proportion and overlap",
    "form": "Proportional symbols",
    "tier": "Extended",
-   "round": 4
+   "round": 4,
+   "data_plan_row": 116,
+   "maker": "A",
+   "spec_id": "S86",
+   "form_id": "proportional-symbols",
+   "status": "new",
+   "data_status": "Primary",
+   "dataset": "census-cog-2022-governments-by-type",
+   "reader_question": "How many governments of each kind does the country have?",
+   "entry_file": "work/build/guide/entries/14-080.json"
   },
   {
    "rule": "14.81",
@@ -1252,7 +1270,20 @@
    "family": "Proportion and overlap",
    "form": "Venn diagram",
    "tier": "Extended",
-   "round": 4
+   "round": 4,
+   "data_plan_row": 117,
+   "maker": "A",
+   "spec_id": "S87",
+   "form_id": "venn-diagram",
+   "status": "new",
+   "data_status": "Primary",
+   "dataset": "census-acs-health-coverage-overlap",
+   "datasets": [
+    "census-acs-health-coverage-types",
+    "census-acs-health-coverage-overlap"
+   ],
+   "reader_question": "How many people have private health coverage, public coverage, both, or neither?",
+   "entry_file": "work/build/guide/entries/14-081.json"
   },
   {
    "rule": "14.82",
@@ -1260,7 +1291,20 @@
    "family": "Proportion and overlap",
    "form": "Euler diagram",
    "tier": "Extended",
-   "round": 4
+   "round": 4,
+   "data_plan_row": 118,
+   "maker": "A",
+   "spec_id": "S88",
+   "form_id": "euler-diagram",
+   "status": "new",
+   "data_status": "Primary",
+   "dataset": "census-acs-health-coverage-overlap",
+   "datasets": [
+    "census-acs-health-coverage-types",
+    "census-acs-health-coverage-overlap"
+   ],
+   "reader_question": "How many people have private health coverage, public coverage, both, or neither, with each region drawn at its true size?",
+   "entry_file": "work/build/guide/entries/14-082.json"
   },
   {
    "rule": "14.83",
@@ -1268,7 +1312,13 @@
    "family": "Proportion and overlap",
    "form": "Packed circles or bubble cloud",
    "tier": "Reference",
-   "round": 4
+   "round": 4,
+   "data_plan_row": 119,
+   "maker": "A",
+   "status": "sketch",
+   "sketch_id": "s-14-83-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-083.json"
   },
   {
    "rule": "14.84",
@@ -1276,7 +1326,13 @@
    "family": "Proportion and overlap",
    "form": "Rose chart",
    "tier": "Avoid",
-   "round": 4
+   "round": 4,
+   "data_plan_row": 120,
+   "maker": "A",
+   "status": "sketch",
+   "sketch_id": "s-14-84-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-084.json"
   },
   {
    "rule": "14.85",
@@ -2139,7 +2195,16 @@
    "family": "Infographics",
    "form": "Process explainer",
    "tier": "Core",
-   "round": 4
+   "round": 4,
+   "data_plan_row": 121,
+   "maker": "I",
+   "spec_id": "S89",
+   "form_id": "process-explainer",
+   "status": "new",
+   "data_status": "Primary",
+   "dataset": "govinfo-disaster-declaration-steps",
+   "reader_question": "How does a disaster declaration bring federal help, and who asks for it at each step?",
+   "entry_file": "work/build/guide/entries/14-135.json"
   },
   {
    "rule": "14.136",
@@ -2147,7 +2212,16 @@
    "family": "Infographics",
    "form": "By-the-numbers panel",
    "tier": "Core",
-   "round": 4
+   "round": 4,
+   "data_plan_row": 122,
+   "maker": "I",
+   "spec_id": "S90",
+   "form_id": "by-the-numbers",
+   "status": "new",
+   "data_status": "Primary",
+   "dataset": "census-school-system-finances-2024",
+   "reader_question": "What do public schools spend, and where does the money come from?",
+   "entry_file": "work/build/guide/entries/14-136.json"
   },
   {
    "rule": "14.137",
@@ -2155,7 +2229,16 @@
    "family": "Infographics",
    "form": "Comparison cards",
    "tier": "Core",
-   "round": 4
+   "round": 4,
+   "data_plan_row": 123,
+   "maker": "I",
+   "spec_id": "S91",
+   "form_id": "comparison-cards",
+   "status": "new",
+   "data_status": "Primary",
+   "dataset": "uscode-federal-trial-judges",
+   "reader_question": "How do the three kinds of federal trial judges differ: district, bankruptcy and magistrate judges?",
+   "entry_file": "work/build/guide/entries/14-137.json"
   },
   {
    "rule": "14.138",
@@ -2163,7 +2246,16 @@
    "family": "Infographics",
    "form": "Step-by-step",
    "tier": "Core",
-   "round": 4
+   "round": 4,
+   "data_plan_row": 124,
+   "maker": "I",
+   "spec_id": "S92",
+   "form_id": "step-by-step",
+   "status": "new",
+   "data_status": "Primary",
+   "dataset": "govinfo-foia-request-steps",
+   "reader_question": "How do I ask a federal agency for its records, and what can I do if it says no?",
+   "entry_file": "work/build/guide/entries/14-138.json"
   },
   {
    "rule": "14.139",
@@ -2171,7 +2263,16 @@
    "family": "Infographics",
    "form": "Annotated illustration",
    "tier": "Extended",
-   "round": 4
+   "round": 4,
+   "data_plan_row": 125,
+   "maker": "I",
+   "spec_id": "S93",
+   "form_id": "annotated-illustration",
+   "status": "new",
+   "data_status": "Primary",
+   "dataset": "govinfo-pl-119-12-first-page",
+   "reader_question": "What does the first page of a law tell a reader?",
+   "entry_file": "work/build/guide/entries/14-139.json"
   },
   {
    "rule": "14.140",
@@ -2179,7 +2280,16 @@
    "family": "Infographics",
    "form": "Calendar",
    "tier": "Extended",
-   "round": 4
+   "round": 4,
+   "data_plan_row": 126,
+   "maker": "I",
+   "spec_id": "S94",
+   "form_id": "calendar",
+   "status": "new",
+   "data_status": "Primary",
+   "dataset": "govinfo-budget-and-tax-deadlines-2027",
+   "reader_question": "Which dates does federal law set for the budget and for taxes in 2027?",
+   "entry_file": "work/build/guide/entries/14-140.json"
   },
   {
    "rule": "14.141",
@@ -2187,7 +2297,16 @@
    "family": "Infographics",
    "form": "Social data card",
    "tier": "Core",
-   "round": 4
+   "round": 4,
+   "data_plan_row": 127,
+   "maker": "I",
+   "spec_id": "S95",
+   "form_id": "social-data-card",
+   "status": "new",
+   "data_status": "Frozen",
+   "dataset": "bjs-imprisonment-rate-by-state",
+   "reader_question": "How many residents per 100,000 does each state hold in prison?",
+   "entry_file": "work/build/guide/entries/14-141.json"
   }
  ],
  "entries_note": "Each round 1 form has an entry file owned by its maker; chapter-wide rules have entry files 14-001 to 14-014 owned by the editor."

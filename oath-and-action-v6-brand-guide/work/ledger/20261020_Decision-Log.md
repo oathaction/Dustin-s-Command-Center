@@ -6091,3 +6091,15 @@ Dustin, replying to board 2 (https://claude.ai/artifact/AyKqXMpc5Ao68NuZ7wL2m2):
 | D3-1696 | "The two FEC data files" are read as the two public files, `fec-jfc-transfers-2024.csv` (ledger row P7-216) and `fec-jfc-transfers-2024-all-committees.csv` (P7-226) | Both sidecars state lines 22, 28C and 21B; `fec-jfc-transfers-2024-by-node` is derived from the second and repeats its qualification, so it is no third data file |
 | D3-1697 | RL63 (Missouri's Proposition A, still "pending") is reported to the caller and kept off the list | DR-264 approved the board's items; a new row would need its own approval |
 | D3-1698 | The change log line is added after the file's "Modified: none." line, which stays as written | That line records the October 21 state of the file; the November 6 additions carry no change log line, and this pass logs only its own change |
+
+## Answers on the round 4 plan, November 13, 2026
+
+The main session posted the round 4 plan with four questions. Dustin: "Go as recommended."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-266 | Form 14.79's icon array (S85) draws its hundred marks as the kit's plain unit marks, filled for union members and open for the rest, with Civic Line icon CL-050, Worker Bargaining, set once at 48 px beside its word as the topic; no Civic Line drawing takes a second meaning and no new drawing is made | Dustin, November 13, as recommended (question 1, D3-1679) |
+| DR-267 | DR-265 reaches every loop drawing in the guide: the loop drawings in chapters 12 (Rule 12.5), 13 (Rule 13.4), 17 (Rules 17.3 and 17.4) and 18 (Rules 18.22 and 18.23 with their code sets) print each variable's own title too, words only; chapter 10's icon names stay as approved, CL-026 included | Dustin, November 13, as recommended (question 2, D3-1678) |
+| DR-268 | The social data card (S95) draws two crops, 1080 by 1350 and 1080 by 1080; the 1080 by 1920 vertical frame for TikTok and stories waits for chapter 23 in Phase 4, which sets every frame from the platforms' own specifications | Dustin, November 13, as recommended (question 3) |
+| DR-269 | Missouri's Proposition A (repair log row RL63, still "pending") joins V7.1 row 39 with Alaska's and Massachusetts's measures, so all three update by one rule | Dustin, November 13, as recommended (question 4, D3-1681) |
+| DR-270 | The round 4 plan is approved as posted (`work/handoffs/phase-3/20261113_Phase-3-Round-4-Brief.md`): ten owners, the data lead's rulings and the engineer's S12 measure first, S85 to S95 and two sketches, S12's stacked tile and the phone codes, DR-265 and DR-267's titles, rules 15.19 to 15.21 with the accessibility lead's specification first, the weight ceilings, the closing checks and a short progress page before the handoff | Dustin, November 13: "Go as recommended" |
