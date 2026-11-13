@@ -226,6 +226,8 @@ write('v7-pathway-electric-decision-makers', rows, cols, {
     'observation_period': 'As of October 15, 2026', 'universe_or_base': f'The {len(rows)} decision makers V7 lists for "{pw["question"]}"',
     'unit': 'decision makers', 'qualification': 'Who can change a rule is V7\'s own field; lines of authority between them take no sign. V7\'s summary: ' + pw['who_can_change_the_rules'][:600],
     'printed_source_line': f'Source: {PUB}, everyday answer "{pw["title"]}", decision makers, as of October 15, 2026, United States. Snapshot of October 15, 2026. Roles as the atlas states them.',
+    # the editor's request, round 3 review fix pass: S74's form, the snapshot date printed once
+    'source_line_variants': {'snapshot_once': f'Source: {PUB}, everyday answer "{pw["title"]}", decision makers, snapshot of October 15, 2026, United States. Roles as the atlas states them.'},
     'domain': 'D06', 'domain_note': 'V7 I093, utility networks, sits in competition and market power (Sector bottlenecks)', 'states': []})
 
 # 8. The eleven routes (comparison grid, row 91)
