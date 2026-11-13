@@ -25,7 +25,7 @@
       var votes = (L.votes || []).map(String), vw = L.vote_words || {}, pw = L.party_words || {}, KY = L.key || {};
       // words built here hold their dates with no-break spaces themselves, since the page carries the data's words already
       // set and does not set them again (parity)
-      var ty = function (s) { s = K.nbsp(String(s === null || s === undefined ? '' : s)); return c.spec.typography ? K.typeset(c.spec, s) : s; };
+      var ty = function (s) { return K.typeset({ typography: c.spec.typography || { curl_quotes: true, nbsp: true } }, String(s === null || s === undefined ? '' : s)); };
       var fill = function (t, o) { return String(t || '').replace(/\{(\w+)\}/g, function (_, k) { return o[k] === undefined ? '' : String(o[k]); }); };
       var nm = function (pair, n) { pair = [].concat(pair || ''); return n === 1 ? pair[0] : (pair[1] || pair[0]); };
       var lw = 0;

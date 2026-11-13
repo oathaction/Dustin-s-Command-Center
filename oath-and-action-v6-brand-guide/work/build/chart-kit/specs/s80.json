@@ -1,0 +1,106 @@
+{
+ "kit": 1,
+ "id": "S80",
+ "form": "district-map",
+ "family": "maps",
+ "tier": "extended",
+ "dataset": [
+  "clerk-house-results-2024-classes",
+  "census-cb-2024-cd119"
+ ],
+ "where": {
+  "state": "MI"
+ },
+ "sort": [
+  {
+   "field": "district",
+   "order": "asc"
+  }
+ ],
+ "reader_question": "How close was each of Michigan’s 2024 House races, by one margin rule for every kind of seat?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: official results the states certified, compiled by the Clerk of the House",
+ "title": "Michigan’s closest House race in 2024, in the 7th district, was decided by 3.7 points, and 7 of its 13 races by 20 points or more.",
+ "measure_line": "Winner’s margin over the runner-up, in percentage points of all votes for the office, in each of Michigan’s 13 House districts, general election of November 5, 2024, on the districts of the 119th Congress.",
+ "notes": [
+  "All 13 races were between a Republican and a Democrat, so every district takes one of the four margin steps.",
+  "The margin is the winner’s votes less the runner-up’s, as a share of all votes for the office. The table gives each district’s winner and margin."
+ ],
+ "source_line": "Source: Office of the Clerk, U.S. House of Representatives, Statistics of the Presidential and Congressional Election of November 5, 2024, Michigan’s 13 House districts; U.S. Census Bureau, Cartographic Boundary Files, 2024, congressional districts of the 119th Congress, 1:5,000,000. Retrieved November 12 and 13, 2026. Margins computed by Oath & Action from the official counts.",
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "Two maps of Michigan’s 13 House districts. The first shades the 6 districts Democrats won by the winner’s margin and outlines the rest; the second does the same for the 7 Republicans won. The 7th district was closest, won by 3.7 points, and 7 races were decided by 20 points or more. Nationally, Republicans won 220 House seats and Democrats 215.",
+ "table": {
+  "caption": "Michigan’s House races, 2024",
+  "columns": [
+   {
+    "field": "district",
+    "label": "District",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "winner",
+    "label": "Winner",
+    "format": "text"
+   },
+   {
+    "field": "winner_group",
+    "label": "Party",
+    "format": "text"
+   },
+   {
+    "field": "runner_up",
+    "label": "Runner-up",
+    "format": "text"
+   },
+   {
+    "field": "margin_pct",
+    "label": "Margin, points",
+    "format": "number:1"
+   }
+  ]
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D02",
+ "states": [
+  "MI"
+ ],
+ "encode": {
+  "district": "district",
+  "party": "winner_group",
+  "cls": "margin_class",
+  "state": "state"
+ },
+ "labels": {
+  "layer": "cd119-mi",
+  "fips": "26",
+  "panels": [
+   {
+    "value": "Democratic",
+    "label": "Democrats won {n} of {of}"
+   },
+   {
+    "value": "Republican",
+    "label": "Republicans won {n} of {of}"
+   }
+  ],
+  "step_labels": [
+   "Under 5 points",
+   "5 to under 10 points",
+   "10 to under 20 points",
+   "20 points or more"
+  ],
+  "key_title": "Winner’s margin over the runner-up",
+  "ghost_label": "Outline: the seat went to the other party",
+  "nation": "Nationally, Republicans won 220 House seats and Democrats 215."
+ },
+ "notes_internal": [
+  "Ruling (b) and (f): party by position, two panels, Democrats first, each named with its seats ({n} and {of} counted from the data); margin in four gray magnitude steps, step 1 with the context edge; the other party's districts as ghost outlines; no hue carries party (DR-48, DR-58, DR-64). The same derived table and key words as S82.",
+  "Why Michigan, in terms of the lesson (change 9): its 13 districts run from close to safe for each party. Republicans won in all four steps (the 7th at 3.7, the 10th at 6.1, the 4th at 11.7, the 1st, 2nd, 5th and 9th at 20 or more) and Democrats in three (the 8th at 6.6 and the 3rd at 9.9, the 11th at 18.6, the 6th, 12th and 13th at 20 or more). The words say nothing about how the lines were drawn (check S80 in cartographer_round3_derive.py --figures).",
+  "R3-7: the national result set apart and labeled beside the panels, 220 and 215, from the same results file."
+ ],
+ "formats": {}
+}

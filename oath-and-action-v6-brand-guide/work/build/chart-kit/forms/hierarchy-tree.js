@@ -23,7 +23,7 @@
     draw: function (c) {
       var L = c.labels, W = c.width, en = c.field('name'), ep = c.field('parent'), el = c.field('level'), ec = c.field('count'), eg = c.field('place');
       var P = K.parts, spine = 12, ind = 28, cg = 16, vg = 16, sub_in = 16, G = L.groups || {}, apart = (L.apart || []).map(String);
-      var ty = function (s) { s = String(s).replace(/[ \t\n]+/g, ' '); return c.spec.typography ? K.typeset(c.spec, s) : s; };
+      var ty = function (s) { return K.typeset({ typography: c.spec.typography || { curl_quotes: true, nbsp: true } }, String(s).replace(/[ \t\n]+/g, ' ')); };
       var short = function (s) { s = String(s); (L.drop || []).forEach(function (p) { if (s.indexOf(p) === 0) s = s.slice(p.length); }); return s; };
       var fill = function (t, o) { return String(t || '').replace(/\{(\w)\}/g, function (_, k) { return o[k] === undefined ? '' : String(o[k]); }); };
       var root = c.rows.filter(function (r) { return !r[ep]; })[0];

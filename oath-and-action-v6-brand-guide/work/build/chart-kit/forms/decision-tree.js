@@ -18,7 +18,9 @@
     phone: 'differs',
     draw: function (c) {
       var W = c.width, ep = c.field('place'), T = c.labels.tree || {}, pad = 10, gap = 12, ind = 28, spine = 15, cg = 16;
-      var ty = function (w) { return c.spec.typography ? K.typeset(c.spec, w) : String(w); };
+      // words set here once, by the spec's typography or the guide's own (curly quotes, held dates), so Node and the page,
+      // whose rows may arrive unset, print and measure the same words
+      var ty = function (w) { return K.typeset({ typography: c.spec.typography || { curl_quotes: true, nbsp: true } }, String(w).replace(/[ \t\n]+/g, ' ')); };
       var keeps = function (r, wh) {
         return Object.keys(wh || {}).every(function (k) {
           var v = wh[k], x = r[k] === null || r[k] === undefined ? null : String(r[k]);
@@ -37,6 +39,7 @@
       };
       var fit = function (p, w) {
         var y = pad;
+        p.forEach(function (q) { q.w = ty(q.w); });
         p.forEach(function (q, i) {
           var s = c.size(q.role), lh = Math.round(s * 1.3), n = c.wrap(ty(q.w), q.role, w - 2 * pad, q.wt).length;
           if (i) y += 5;

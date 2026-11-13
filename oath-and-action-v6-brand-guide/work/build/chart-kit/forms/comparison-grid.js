@@ -17,7 +17,7 @@
     draw: function (c) {
       var L = c.labels, W = c.width, en = c.field('name'), ek = c.field('count', false), cols = L.columns || [], g = 12, pad = 9;
       var tick = c.size('tick'), size = c.size('label'), lh = Math.round(tick * 1.3), llh = Math.round(size * 1.25);
-      var ty = function (s) { s = String(s === null || s === undefined ? '' : s).replace(/[ \t\n]+/g, ' '); return c.spec.typography ? K.typeset(c.spec, s) : s; };
+      var ty = function (s) { return K.typeset({ typography: c.spec.typography || { curl_quotes: true, nbsp: true } }, String(s === null || s === undefined ? '' : s).replace(/[ \t\n]+/g, ' ')); };
       var under = function (cl, r) { return cl.under_words ? ty(String(cl.under_words).replace(/\{(\w+)\}/g, function (_, f) { return r[f] === null || r[f] === undefined ? '' : r[f]; })) : ''; };
       var max = 0; c.rows.forEach(function (r) { if (ek) max = Math.max(max, +r[ek] || 0); });
       var vw = 0; if (ek) c.rows.forEach(function (r) { vw = Math.max(vw, c.measure(K.fmt(r[ek], 'integer'), 'tick', 600, true)); });

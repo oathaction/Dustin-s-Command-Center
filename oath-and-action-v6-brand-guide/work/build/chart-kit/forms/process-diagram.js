@@ -21,7 +21,9 @@
       var ew = c.field('who', false), el = c.field('limit', false), B = L.branches || {}, named = (L.named || []).map(String);
       var main = c.rows.filter(function (r) { return String(r[ep]) === String(L.main || 'main'); }).sort(function (a, b) { return a[ek] - b[ek]; });
       var pad = 10, chip = 22, gap = 12, lane = 40, wide = W >= 2 * 200 + lane, sz = c.size('label');
-      var ty = function (w) { return c.spec.typography ? K.typeset(c.spec, w) : String(w); };
+      // words set here once, by the spec's typography or the guide's own (curly quotes, held dates), so Node and the page,
+      // whose rows may arrive unset, print and measure the same words
+      var ty = function (w) { return K.typeset({ typography: c.spec.typography || { curl_quotes: true, nbsp: true } }, String(w).replace(/[ \t\n]+/g, ' ')); };
       // a box's words: the branch's line, the name in bold (after the step's number), who acts, and the time limit
       var parts = function (r, n) {
         var p = [], b = B[String(r[ek])];
@@ -29,6 +31,7 @@
         p.push({ w: r[es], role: 'label', wt: 700, ind: n ? chip + 8 : 0 });
         if (ew && r[ew]) p.push({ w: r[ew], role: 'tick', wt: 400, fill: 'secondary' });
         if (el && r[el]) p.push({ w: r[el], role: 'tick', wt: 400, fill: 'label' });
+        p.forEach(function (q) { q.w = ty(q.w); });
         return p;
       };
       var fit = function (p, w) {

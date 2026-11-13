@@ -21,7 +21,7 @@
       var spine = 12, ind = 28, cg = 16, vg = 16, sub_in = 16, P = K.parts, cnt = L.count || {};
       // one space between words, then the spec's typography, so a name measures as it prints in Node and on the page, where
       // the table carries the printed words (D3-519)
-      var one = function (s) { s = String(s).replace(/[ \t\n]+/g, ' '); return c.spec.typography ? K.typeset(c.spec, s) : s; };
+      var one = function (s) { return K.typeset({ typography: c.spec.typography || { curl_quotes: true, nbsp: true } }, String(s).replace(/[ \t\n]+/g, ' ')); };
       var short = function (s) { s = one(s); (L.drop || []).forEach(function (p) { if (s.indexOf(p) === 0) s = s.slice(p.length); }); return s.charAt(0).toUpperCase() + s.slice(1); };
       // the units in the data's order, each with its sub-units
       var units = [], by = {};

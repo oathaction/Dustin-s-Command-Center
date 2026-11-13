@@ -20,7 +20,7 @@
       var L = c.labels, W = c.width, ew = c.field('who'), el = c.field('level'), ec = c.field('changes'), ek = c.field('key');
       var levels = L.levels || [], lw = L.level_words || {}, bands = L.bands || {}, cg = 12, pad = [8, 8], role = ['label'];
       var cw = (W - cg * (levels.length - 1)) / levels.length, wide = cw >= 118, size = c.size('label'), tick = c.size('tick');
-      var split = function (r) { var s = String(r[ew]).replace(/[ \t\n]+/g, ' '), i; s = c.spec.typography ? K.typeset(c.spec, s) : s; i = s.indexOf(' ('); return i > 0 ? [s.slice(0, i), s.slice(i + 1)] : [s, null]; };
+      var split = function (r) { var s = String(r[ew]).replace(/[ \t\n]+/g, ' '), i; s = K.typeset({ typography: c.spec.typography || { curl_quotes: true, nbsp: true } }, s); i = s.indexOf(' ('); return i > 0 ? [s.slice(0, i), s.slice(i + 1)] : [s, null]; };
       var col = function (r) { return Math.max(0, levels.indexOf(String(r[el]))); };
       var ord = (L.order || []).map(String), rank = function (r) { var i = ord.indexOf(String(r[ek])); return i < 0 ? ord.length + r[ek] : i; };
       var band = function (v) { return c.rows.filter(function (r) { return !!r[ec] === v; }).sort(function (a, b) { return col(a) - col(b) || rank(a) - rank(b); }); };
