@@ -252,6 +252,8 @@ This is the whole path for a map of every county, such as S81. Read entry 14.120
    lists every county with its value, margin and class. Give the reader's question its answer in the grouped columns
    (the count in each class, the lowest and highest county). A caption or note that sends a reader to every county's
    figure writes `{data_file}`: the kit prints the words `words.json` holds for where a chart's full data lives.
+   `{data_file}` always follows its verb and never opens a sentence: "Every county with its margin of error is in
+   {data_file}."
 9. **Run the kit, then read the weight line.** `build` prints, for each spec, what it weighs on the guide's page as the
    guide places an entry (its figure, lean table and compressed data), about what it weighs with its plate's frame, and
    chapter 14's share per plate: what each plate still to come may carry, as the last build of the guide reported it
