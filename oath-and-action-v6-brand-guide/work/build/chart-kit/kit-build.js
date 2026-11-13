@@ -151,9 +151,10 @@
     var t = K.fmt(r[pv.value], pv.format);
     return spec.typography && text_col({ format: pv.format }) ? K.typeset(spec, t) : t;
   }
-  function pivot_head(rc, v) {
-    if (rc.words && v !== null && v !== undefined && rc.words[String(v)] !== undefined) return String(rc.words[String(v)]);
-    return K.fmt(v, rc.format);
+  // ED4-3 (round 4): a pivot's row header takes the spec's typography, as its cells (C-E7) and a plain table's text do
+  function pivot_head(rc, v, spec) {
+    var t = rc.words && v !== null && v !== undefined && rc.words[String(v)] !== undefined ? String(rc.words[String(v)]) : K.fmt(v, rc.format);
+    return spec && spec.typography && text_col(rc) ? K.typeset(spec, t) : t;
   }
   K.cell_text = function (col, r, spec) {
     if (spec && spec.typography && text_col(col)) return K.typeset(spec, K.cell_text(col, r));
@@ -284,7 +285,7 @@
           if (r && !first) first = r;
           return '<td class="oac-num"' + (r ? ' data-oa-row="1"' : '') + '>' + (r ? esc(pivot_cell(spec, r, pv)) : '') + '</td>';
         }).join('');
-        var rows_by = [].concat(pv.row), head_txt = first ? pivot_head(rc, first[rows_by[0]]) : k;
+        var rows_by = [].concat(pv.row), head_txt = first ? pivot_head(rc, first[rows_by[0]], spec) : k;
         if (first && rows_by.length > 1) rows_by.slice(1).forEach(function (k2) {
           var v2 = first[k2], w2 = (pv.row_words || {})[String(v2)];
           if (w2) head_txt += ', ' + w2;
@@ -369,7 +370,7 @@
           var h = esc(pivot_cell(spec, r, pv)), d = dv(r[pv.value], h, vcol);
           return '<td' + d + (h === '' && !d ? ' data-n' : '') + '>' + h + '</td>';
         }).join('');
-        var head_txt = first ? pivot_head(rc, first[rows_by[0]]) : k;
+        var head_txt = first ? pivot_head(rc, first[rows_by[0]], spec) : k;
         if (first && rows_by.length > 1) rows_by.slice(1).forEach(function (k2) { var w2 = (pv.row_words || {})[String(first[k2])]; if (w2) head_txt += ', ' + w2; });
         var keyv = rows_by.length > 1 ? JSON.stringify(rows_by.map(function (k2) { return first ? first[k2] : null; })) : null;
         var hv = keyv !== null ? ' data-v="' + esc(keyv) + '"' : dv(first ? first[rows_by[0]] : k, esc(head_txt), { field: rows_by[0], format: rc.format });
@@ -416,7 +417,7 @@
         o = o || {};
         var nm = 'oac-h-mark-form', d;
         K.register_chart({ form: nm, name: 'Mark', family: def.family, encode: {}, labels: [], phone: 'same', draw: function (c) { fn(c); c.height(ht); } });
-        try { d = K.draw({ kit: 1, id: spec.id, form: nm, typography: spec.typography }, rows, { width: w, ground: ground, t: opts.t, tokens: opts.tokens, uid: id + '-m' + (n++) }); } finally { delete K.forms[nm]; }
+        try { d = K.draw({ kit: 1, id: spec.id, form: nm, typography: spec.typography }, rows, { width: w, ground: ground, t: opts.t, tokens: opts.tokens || (K.default_tokens || {})[ground], uid: id + '-m' + (n++) }); } finally { delete K.forms[nm]; }
         // IM-E7: a fluid mark scales to its box, so it holds no words (they print as HTML beside it)
         d.fluid = !!o.fluid;
         marks.push(d);

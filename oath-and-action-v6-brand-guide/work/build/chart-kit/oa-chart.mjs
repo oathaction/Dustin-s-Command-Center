@@ -51,6 +51,7 @@ const C = require(path.join(KIT, 'checks.js'));
 K.id_types = C.id_types();
 const CSS = fs.readFileSync(TOKENS_CSS, 'utf8');
 export const TOK = { newsprint: K.tokens_from_css(CSS, 'newsprint'), charcoal: K.tokens_from_css(CSS, 'charcoal') };
+K.default_tokens = TOK;   // R4-3: a card's h.mark drawn for a caller that passes no tokens (the snapshot tool) reads these
 
 // page width -> the width the figure's drawing gets (the page's gutters: 16 px under 600, 32 px from 600)
 export function container(page, spec) {

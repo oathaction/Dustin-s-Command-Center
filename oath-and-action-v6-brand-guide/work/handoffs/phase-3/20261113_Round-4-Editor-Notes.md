@@ -205,7 +205,11 @@ The infographics maker applies these until it reports finished; after that I wri
 
 ## Words for the cartographer
 
-Nothing yet: no change to S12, S16 or S78 or their entries has landed.
+### Words pass, the cartographer done (D3-669), 21:48 UTC
+
+The cartographer reported done at 21:43. By `git diff` from the round's start (`829d0db8`), its round 4 word changes are S12's alt ("each square holds the state’s code over its figure, with an arrow beneath as long as…") and the builders line of entry 14.116 (`labels.column_phone`); the rest are placement keys and `notes_internal` lines. Entries 14.115 to 14.117 keep their words. I read S12's, S16's and S78's titles, notes, chart notes, phone notes and alts again for any phrase the new codes make stale (the old phone drawings left WA, WV and WY, or DC, DE, ME and NH, to a note): none names an uncoded state. **No change written.**
+
+One optional item, **for the data lead**, since S16 is a board 1 drawing and its words are approved (DR-262): S16's second chart note says "State codes sit inside the circles where they fit and beside their own circle where there is room." On a phone narrower than 358 px, 11 eastern codes now stand in a column at the right on leaders. The leaders show it, so the note is not false; if you want it said, the words would be "…where there is room, and on a phone the codes of 11 small eastern states stand in a column at the right, each joined to its circle by a line."
 
 ## Words for the systems designer
 

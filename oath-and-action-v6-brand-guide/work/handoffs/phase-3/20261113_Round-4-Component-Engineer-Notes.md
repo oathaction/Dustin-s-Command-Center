@@ -9,7 +9,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the co
 - 21:11 UTC: contracts C-1 to C-3 LANDED (the five tasks: requests 1, 3, 4 and 5, and DR-267 in chapter 18).
 - 21:16 UTC: the main session ruled the stale line ("105 KB"); both generators rerun to write, their outputs changed only by that line and the titles.
 - 21:35 UTC: C4-E2 (S16's code column, handed over at 21:31) LANDED in `bubble-map.js`; the cartographer placed S16 at 21:36.
-- 21:41 UTC: done but for the guide check's self-test, which is running; the quick guide check waits for the machine's load (see "Not tested").
+- 21:49 UTC: done. The guide check's self-test passes. The quick guide check did not run: the load stood at 3 to 8 throughout, with other agents driving browsers (see "Not tested").
 
 ## Summary
 
@@ -102,6 +102,7 @@ Scratch is `/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af59004-38b5-5773-
 
 - **Strict builds to scratch.** 21:01, on HEAD before any change: exit 0, 0 warnings. 21:12, with every chapter 18 and shell change: exit 0, 0 warnings. Head and shell grew 1,529 bytes, the shell file exactly. Chapter 18 grew 2,631 bytes, to 1,163,415 of its 1,250,000. 21:39, with the systems designer's 15.19 to 15.21 in: exit 1 on the one token table warning under "Requests to the engineer", outside my files; the page was written.
 - **`guide_build.py --self-test`**: 33 of 33 scenarios, 334 of 334 expectations (21:22).
+- **`guide_check.js --self-test`** (the shell changed), results to scratch (`b1/guide-check-self-test.json`), 21:38 to 21:49: PASS. The clean demo passes, 130 of 130 planted faults are caught and 38 of 38 allowed cases are left alone. A first run at 21:24 was stopped by my own 590-second time limit under a load of 8 and is not counted.
 - **Chapter 18's generators.** Both run on a scratch copy of HEAD for the staleness report. Both then rerun to write after the main session's ruling. `stage_c_ch18_build.py --check` reports "current". A second anatomy run changes nothing (md5 of the plates).
 - **Holds re-timed by script**: 40, 56 and 48 words give 10,000, 14,000 and 12,000 ms. The same script reproduces the old 9,000, 12,750 and 10,500 from the old words.
 - **Chromium (Playwright), on the 21:12 build: `test_r4.js`, at 1440 and 390 px, 52 of 54 passed.** The two misses are the doubled-`beforeprint` case, traced to `kit.js` (request 2 to the engineer). What passed:
@@ -121,6 +122,7 @@ Scratch is `/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af59004-38b5-5773-
 
 ## Not tested
 
+- **The quick guide check on my build** (`guide_check.js <page> --quick --no-captures`). The brief allows it only while no more than one other agent drives a browser, with `uptime` under about 2. The load read 2.1 to 8.5 from 21:12 to 21:49, with up to 21 headless Chromium processes from other agents, so I did not start it. Its key path walk of the two code sets, with the new `status_has` and `text_has` words, has therefore not run in the guide check. My own `test_r4.js` presses the same keys and reads the same words. The main session's closing check covers it.
 - **Any screen reader.** None runs here, so what NVDA, JAWS, VoiceOver or TalkBack say for the stepper's list role, the chooser's status line or the opened disclosures is unheard.
 - **Safari and Firefox.** No WebKit or Gecko runs here, so the effect of `role="list"` in Safari (request 5's purpose) is unverified.
 - **A real print dialog.** Print was tested by dispatching `beforeprint` and `afterprint`; no paper or PDF output was compared.
