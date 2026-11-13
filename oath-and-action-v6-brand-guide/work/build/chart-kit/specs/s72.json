@@ -19,7 +19,7 @@
   "illustrative": false,
   "alt": "One square for each member of Congress on the bill that ended the November 2025 shutdown. Senate, November 10, 2025, on passage of the bill: passed 60 to 40. Democrats, 45: 7 yes, 38 no. Independents, 2: 1 yes, 1 no. Republicans, 53: 52 yes, 1 no. House, November 12, 2025, on the motion to concur in the Senate amendment: passed 222 to 209. Democrats, 214: 6 yes, 207 no, 1 not voting. Two seats vacant. Republicans, 219: 216 yes, 2 no, 1 not voting.",
   "table": {
-    "caption": "How each party voted on H.R. 5371 in each chamber, Senate vote 618 of November 10, 2025 and House roll call 285 of November 12, 2025; the CSV file lists every member’s vote as the record gives it",
+    "caption": "How each party voted on H.R. 5371 in each chamber, Senate vote 618 of November 10, 2025 and House roll call 285 of November 12, 2025, naming each member who voted the other way or did not vote; every member not named voted with most of their party in that chamber, and the CSV file lists all 533 members",
     "columns": [
       {
         "field": "member",
@@ -86,6 +86,17 @@
           "agg": "count_eq",
           "field": "vote_cast",
           "value": "Not Voting"
+        },
+        {
+          "label": "Voted the other way or did not vote",
+          "agg": "list",
+          "field": "member",
+          "odd": "vote_cast",
+          "with": [
+            "state",
+            "vote_cast"
+          ],
+          "empty": "None"
         }
       ]
     }
@@ -191,13 +202,24 @@
   },
   "typography": {
     "curl_quotes": true,
-    "nbsp": true
+    "nbsp": true,
+    "replace": [
+      [
+        "Davis (NC) (NC, ",
+        "Davis (NC, "
+      ],
+      [
+        "Golden (ME) (ME, ",
+        "Golden (ME, "
+      ]
+    ]
   },
   "notes_internal": [
     "Maker A, round 3. Data plan row 92 with the sign-off's conditions on party, rule 14.102. Domain D04 from the sidecar (V7 I054).",
     "Data lead ruling (b): every seat in the party-mark ink; yes solid, no in outline at S61's 1.2 px, not voting in the light fill with no edge, vacant seats as ghost outlines named; Democrats first, then independents as the record lists them, folded into no party, then Republicans; within each group yes, no, not voting. Vacant seats sit between, S48's order.",
     "The House's 435 seats are set by law (2 U.S.C. 2a); the Senate's 100 by the Constitution. Vacant seats are seats less members recorded: House 435 less 433, Senate 100 less 100. Which two House seats were vacant is not in the file and the drawing does not say.",
     "Every figure in the title, notes and alt checked by script: python3 -I work/build/scripts/phase-3/maker_a_round3_derive.py --figures, check S72.",
-    "D3-1097 (weight): the page's table groups by chamber and party (table.group.by, A-E1) with each vote counted, and the CSV export lists all 533 members as each record gives them, DR-249's pattern; the member-by-member table was 77,142 bytes."
+    "D3-1097 (weight): the page's table groups by chamber and party (table.group.by, A-E1) with each vote counted, and the CSV export lists all 533 members as each record gives them, DR-249's pattern; the member-by-member table was 77,142 bytes.",
+    "MA-6: the grouped table names, with state and recorded vote, each member whose vote differs from the most common vote of their party in their chamber (agg list with odd and with, A-E6), both independents where they split; 20 names, so every member's vote can be read from the page."
   ]
 }

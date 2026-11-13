@@ -10,16 +10,16 @@
   "evidence_label": "Finding",
   "grade_line": "Documented: the Clerk of the House’s committee list of November 3, 2026",
   "title": "The House splits its work among 20 standing committees and three select committees, which divide it again among 109 subcommittees.",
-  "measure_line": "Committees and subcommittees of the U.S. House of Representatives, 119th Congress, joint committees included, as the Clerk’s file of November 3, 2026 lists them",
+  "measure_line": "Committees and subcommittees of the U.S. House, 119th Congress, joint committees included, as the Clerk’s file of November 3, 2026 lists them",
   "notes": [
     "Two standing committees, Budget and Ethics, have no subcommittees, and Appropriations has the most, 12, one for each of its yearly spending bills.",
-    "The Clerk’s file lists the select subcommittee on January 6, 2021, as a committee of its own, and the chart follows it."
+    "The Clerk’s file lists the select subcommittee on January 6, 2021, as a committee, and the chart follows it."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, from Agriculture to Ways and Means, three select committees and four joint committees shared with the Senate, each with its subcommittees under it, 109 in all. Appropriations has the most, 12; Budget, Ethics, two select committees and the joint committees have none.",
+  "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, three select committees and four joint committees shared with the Senate, each with its subcommittees under it, 109 in all. Appropriations has the most, 12; Budget, Ethics, two select committees and the joint committees have none.",
   "table": {
-    "caption": "The House’s committees, each with its subcommittees and the seats each side holds, as the Clerk’s file of November 3, 2026 lists them; the CSV file gives each subcommittee’s seats",
+    "caption": "The House’s committees and their subcommittees, with the seats each side holds, from the Clerk’s file of November 3, 2026; the CSV file gives each subcommittee’s seats",
     "columns": [
       {
         "field": "committee",
@@ -90,10 +90,10 @@
     }
   },
   "chart_notes": [
-    "Each committee’s box gives its count of subcommittees, with a box for each under it. Standing committees print without “Committee on”; the table gives every full name."
+    "Each committee’s box gives its count of subcommittees, with a box for each under it. Standing committees drop “Committee on”; the table gives each full name."
   ],
   "phone": "differs",
-  "phone_note": "Where two columns of 220 px do not fit, the committees run in one column down the page.",
+  "phone_note": "Under two columns of 220 px, the committees run in one column down the page.",
   "desk_phone": {
     "rows": 20,
     "part": "the first two committees; a phone draws all 27"
@@ -131,6 +131,7 @@
     "Maker A, round 3. Data plan row 89, rule 14.99. Domain D04 from the sidecar.",
     "Data lead ruling (b): nodes with a subject-ink edge, links in the context ink (elbow), all one ink; no party split in the drawing; majority and minority seats in the table under the Clerk's words.",
     "Every figure in the title, notes and alt checked by script: python3 -I work/build/scripts/phase-3/maker_a_round3_derive.py --figures, check S69.",
-    "D3-1097 (weight): the page's table prints one row a committee (table.group by committee, with count_set and list, A-E2): its subcommittees by name and the seats on the committee as a whole; the CSV export keeps every row with each subcommittee's seats."
+    "D3-1097 (weight): the page's table prints one row a committee (table.group by committee, with count_set and list, A-E2): its subcommittees by name and the seats on the committee as a whole; the CSV export keeps every row with each subcommittee's seats.",
+    "MA-3 and MA-4: the grade line names the file of November 3, 2026; note 2 says the Clerk's file lists the select subcommittee on January 6, 2021, as a committee of its own."
   ]
 }

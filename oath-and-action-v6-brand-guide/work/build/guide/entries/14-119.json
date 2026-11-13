@@ -2,7 +2,7 @@
  "id": "14.119",
  "title": "Use a district map to show one state’s races on the shapes of its districts, with party told by panel.",
  "rule": [
-  "Draw the state’s districts in one panel for each party, as Rule 14.7 sets seats on a map, with the same steps and key words as the district tile map and an edge on the step that holds the closest races. Number each district on its shape, or beside it with a leader, and set the national result beside the panels (Rule 14.6)."
+  "Draw the state’s districts in one panel for each party, as Rule 14.7 sets seats on a map, with the margin in steps of one ink, the lightest still a clear fill, and the same steps and key words as the district tile map. Number each district on its shape, or beside it with a leader, and set the national result beside the panels (Rule 14.6)."
  ],
  "use_when": "The reader asks how close each race was in one state, and the districts’ shapes and places matter.",
  "use_instead": [

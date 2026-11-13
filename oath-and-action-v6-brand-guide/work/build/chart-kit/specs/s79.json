@@ -37,7 +37,11 @@
     "field": "name",
     "label": "Place",
     "format": "text",
-    "row_header": true
+    "row_header": true,
+    "words": {
+     "Lake Isabella CDP": "Lake Isabella, a census-designated place",
+     "Bakersfield city": "Bakersfield, a city"
+    }
    },
    {
     "field": "land_sq_mi",
@@ -73,7 +77,7 @@
   "county": "06029",
   "county_label": "Kern County",
   "state_label": "California",
-  "point": "Lake Isabella",
+  "point": "Lake Isabella CDP",
   "names": {
    "Lake Isabella CDP": "Lake Isabella",
    "Bakersfield city": "Bakersfield"
@@ -99,7 +103,8 @@
  "notes_internal": [
   "Ruling (a): Lake Isabella is round 3's one red point, with its keyline on Newsprint; a place that is not a state carries no tie on Rule 14.6's list. Ruling (b): Bakersfield, the county seat, a dot in the text's ink, named; Kern County in the light fill with the context edge, named; California in the track ink with the context edge; neighboring states as ghost lines; a United States inset in a frame with California in the light fill and the view drawn on it.",
   "D3-1087: California's counties from census-cb-2024-counties-california-5m (the kit's counties-ca layer); the inset from census-cb-2024-states. California counts once.",
-  "Figures checked by script (check S79 in cartographer_round3_derive.py --figures): 36.9 miles, a bearing of 58 degrees, between the Gazetteer's internal points (haversine, mean earth radius 3,958.8 miles); the photograph's date and subject from chapter 01's caption for pho-04r (specimen s-01-8-correct)."
+  "Figures checked by script (check S79 in cartographer_round3_derive.py --figures): 36.9 miles, a bearing of 58 degrees, between the Gazetteer's internal points (haversine, mean earth radius 3,958.8 miles); the photograph's date and subject from chapter 01's caption for pho-04r (specimen s-01-8-correct).",
+  "labels.point is the data value of the red point's row ('Lake Isabella CDP', as the Gazetteer names it), not reader words; the plate prints 'Lake Isabella' through labels.names, and the table's place column prints each name through its words, so 'CDP' never prints unexplained (the editor's H02 point)."
  ],
  "formats": {}
 }

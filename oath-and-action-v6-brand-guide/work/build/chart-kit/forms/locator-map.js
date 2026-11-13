@@ -106,6 +106,7 @@
       c.rect(ix + 0.5, iy + 0.5, TI.w - 1, TI.h - 1, { stroke: 'gridline', width: 1, mark: false });
       K.parts.map_shapes(c, S, TI, S.ids.map(function (id) { return { id: id, fill: id === L.state ? 'light-fill' : 'track' }; }));
       K.parts.map_mesh(c, S, TI, { stroke: 'surface', width: 0.5 });
+      K.parts.map_mesh(c, S, TI, { which: 'outline', stroke: 'context', width: 1 });   // D3-1100: the land's edge carries on both grounds
       K.parts.map_mesh(c, S, TI, { which: 'all', between: function (a, b) { return a === L.state || b === L.state; }, stroke: 'context', width: 1 });
       var back = function (vx, vy) { var q = [((vx - T.ox) / T.k - f[1]) / f[0], ((vy - T.oy) / T.k - f[2]) / f[0]]; return [TI.ox + q[0] * TI.k, TI.oy + q[1] * TI.k]; };
       var a = back(box.x0, box.y0), b2 = back(box.x1, box.y1);

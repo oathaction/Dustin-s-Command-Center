@@ -2,7 +2,7 @@
  "id": "14.124",
  "title": "Avoid coloring a map by party, which takes a side before the reader reads it.",
  "rule": [
-  "Leave party colors, and above all red and blue, off every Oath & Action map, and draw no scale that runs from one party’s color to the other’s. Show who won by position and words, in one panel for each party with the margin in gray steps, as Rule 14.7 sets seats on a map. Show a shift with arrows and the direction named in words."
+  "Leave party colors, and above all red and blue, off every Oath & Action map, and draw no scale that runs from one party’s color to the other’s. Show who won by position and words, in one panel for each party with the margin in steps of one ink, as Rule 14.7 sets seats on a map. Show a shift with arrows and the direction named in words."
  ],
  "use_when": "Never: a reader who asks which party won each place, and by how much, gets a fairer answer from gray panels by party.",
  "use_instead": [
@@ -35,5 +35,5 @@
  "builders": "No kit form, by design; draw district-map (s80) or district-tile-map (s82): labels.panels names each party with its seats, and the margin takes the gray magnitude steps.",
  "correct": null,
  "failure": null,
- "sketch_alt": "The same invented results drawn twice: shaded from one party’s color to the other’s, the map takes a side at a glance, while two gray panels, one for each party’s seats, show who won each place and by how much with no color for either party."
+ "sketch_alt": "Drawn here in gray: a map shaded red for one party and blue for the other takes a side at a glance, while two panels, one for each party’s seats, show who won each place and by how much in steps of one ink, with no color for either party."
 }

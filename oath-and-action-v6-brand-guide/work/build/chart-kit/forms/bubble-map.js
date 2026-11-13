@@ -67,7 +67,20 @@
       var g = c.group({ transform: tf });
       c.path(G.land, { fill: 'land', mark: false });
       c.path(G.borders, { stroke: 'surface', width: 1, mark: false });
+      // D3-1100: the land's edge, 1 px in the context ink, so every state's land carries on both grounds (the land ink
+      // alone measures 1.17 to 1); the coast from the 2024 states layer, cut at the frame's left edge as the land is
+      var S = K.geo('states'), od = '', R = K.round;
+      S.arcs.forEach(function (pts, ai) {
+        if (S.use[ai].length !== 1) return;
+        var run = [];
+        var flush = function () { if (run.length > 1) od += 'M' + run.map(function (q) { return R(q[0]) + ',' + R(q[1]); }).join('L'); run = []; };
+        pts.forEach(function (q) { if (q[0] >= 0) run.push(q); else flush(); });
+        flush();
+      });
+      if (od) c.path(od, { fill: 'none', stroke: 'context', width: Math.round(1 / k * 1000) / 1000, mark: false });
       g.end();
+      // Alaska and Hawaii in thin frames, as every map of the 2024 outlines draws them
+      K.parts.map_insets(c, S, { k: k, ox: 0, oy: top, x: 0, y: top, w: W, h: mh, pt: function (q) { return [q[0] * k, top + q[1] * k]; } });
       // circles: start at the centers, then push apart where they overlap (a fixed number of passes, so every run matches)
       var pts = drawn.map(function (r) {
         var p = G.centers[r[ec]];

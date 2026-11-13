@@ -98,7 +98,7 @@
   "nation": "Nationally, Republicans won 220 House seats and Democrats 215."
  },
  "notes_internal": [
-  "Ruling (b) and (f): party by position, two panels, Democrats first, each named with its seats ({n} and {of} counted from the data); margin in four gray magnitude steps, step 1 with the context edge; the other party's districts as ghost outlines; no hue carries party (DR-48, DR-58, DR-64). The same derived table and key words as S82.",
+  "Ruling (b) and (f): party by position, two panels, Democrats first, each named with its seats ({n} and {of} counted from the data); margin in four sequential Verdigris steps 2 to 5, every won seat with the context edge (the data lead's C-1, correcting ruling (b): gray step 1 read as the other party's ghost); the other party's districts as ghost outlines; no hue carries party (DR-48, DR-58, DR-64). The same derived table and key words as S82.",
   "Why Michigan, in terms of the lesson (change 9): its 13 districts run from close to safe for each party. Republicans won in all four steps (the 7th at 3.7, the 10th at 6.1, the 4th at 11.7, the 1st, 2nd, 5th and 9th at 20 or more) and Democrats in three (the 8th at 6.6 and the 3rd at 9.9, the 11th at 18.6, the 6th, 12th and 13th at 20 or more). The words say nothing about how the lines were drawn (check S80 in cartographer_round3_derive.py --figures).",
   "R3-7: the national result set apart and labeled beside the panels, 220 and 215, from the same results file."
  ],
