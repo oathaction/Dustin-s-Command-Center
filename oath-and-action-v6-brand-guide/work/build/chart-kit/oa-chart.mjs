@@ -29,13 +29,19 @@ const SCRATCH = '/tmp/claude-0/-home-user-Dustin-s-Command-Center/31ab6fca-308a-
 const TOKENS_CSS = path.join(ROOT, 'work/build/tokens/tokens.css');
 const FONTS = path.join(ROOT, 'work/build/assets/fonts');
 
+const FORM_FILES = {};
 export function load_kit() {
   require(path.join(KIT, 'metrics.js'));
   require(path.join(KIT, 'kit.js'));
   require(path.join(KIT, 'kit-build.js'));   // the builder's half: figure, tables, words (call 10); never on the guide's page
   require(path.join(KIT, 'parts.js'));
   require(path.join(KIT, 'geo.js'));
-  for (const f of fs.readdirSync(path.join(KIT, 'forms')).filter(f => f.endsWith('.js')).sort()) require(path.join(KIT, 'forms', f));
+  // R4-3 (round 4): which forms each file registers, so the page leaves out a file whose forms all build HTML (no draw)
+  for (const f of fs.readdirSync(path.join(KIT, 'forms')).filter(f => f.endsWith('.js')).sort()) {
+    const before = new Set(Object.keys(globalThis.OAChart.forms));
+    require(path.join(KIT, 'forms', f));
+    FORM_FILES[f] = Object.keys(globalThis.OAChart.forms).filter(k => !before.has(k));
+  }
   const K = globalThis.OAChart;
   K.words = JSON.parse(fs.readFileSync(path.join(KIT, 'words.json'), 'utf8'));
   return K;
@@ -273,6 +279,7 @@ export function table_fields(spec) {
   return (tb.columns || []).map(c => c.field);
 }
 export function island_table(spec, rows, columns, extra) {
+  if (K.is_card(spec)) return '';   // R4-3: a card draws nothing on the page, so it carries no island
   // method load-table: the drawing spec, the types of the columns it uses, and as CSV only the used columns the table lacks
   // R3-3: a grouped table prints no row, so the island carries only the columns the drawing reads (its encode, where, sort,
   // formats, labels and annotations), never the table's own; the CSV export still lists every column
@@ -337,8 +344,10 @@ export function island(spec, rows, columns, trim) {
 export function strip(js) {
   return js.replace(/^\s*\/\*[\s\S]*?\*\/\s*$/gm, '').split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('//')).join('\n');
 }
+// R4-3: a form file whose every form builds HTML at build time (html, no draw) never rides on the page
+export function card_file(f) { const ks = FORM_FILES[f]; return !!(ks && ks.length && ks.every(k => K.forms[k] && !K.forms[k].draw)); }
 export function kit_parts() {
-  const forms = fs.readdirSync(path.join(KIT, 'forms')).filter(f => f.endsWith('.js')).sort();
+  const forms = fs.readdirSync(path.join(KIT, 'forms')).filter(f => f.endsWith('.js') && !card_file(f)).sort();
   const core = ['metrics.js', 'kit.js', 'parts.js'].map(f => minify(fs.readFileSync(path.join(KIT, f), 'utf8'))).join('');
   return { core, geo: minify(fs.readFileSync(path.join(KIT, 'geo.js'), 'utf8')), forms: Object.fromEntries(forms.map(f => [f, minify(fs.readFileSync(path.join(KIT, 'forms', f), 'utf8'))])),
     css: fs.readFileSync(path.join(KIT, 'kit.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').split('\n').map(l => l.trim()).filter(Boolean).join('\n') };
