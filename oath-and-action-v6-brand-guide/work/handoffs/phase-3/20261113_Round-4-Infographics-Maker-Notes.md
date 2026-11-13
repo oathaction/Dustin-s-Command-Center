@@ -4,28 +4,50 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the in
 
 ## Status
 
-- 21:23 UTC. S89 to S94 built in the repository, each PASS with the sweep (0 faults). Applied the editor's words (first look, 21:03 and 21:17) and the data lead's MI-1, MI-2, MI-4, MI-5, MI-6 and the 7508A ruling. Open: MI-3 (S90's current spending, waiting on the research lead's reading of the Bureau's documentation); IM-E4 (S91's three cards side by side); IM-E5 (the dot-plot card mode, for S95); the editor's ED4-4 (S89's source line words, a sidecar variant); the design director's read. S95's spec and the rewritten `social-data-card` are drafted; the spec waits in scratch until the dot plot's card mode lands, so no `build --all` meets it half-made.
+- 21:34 UTC. All seven specs are in the kit. S89 to S94 PASS with the sweep. S95 builds both crops on the dot plot's card mode and fails only on kit items: "no place clear of the dots for Massachusetts 96" (IM-E6, the engineer is building the band) and parity, since the page's card spec drops the grade line the data lead asked for (IM-E8). Applied: the design director's DD-I1 to DD-I3, DD-I5 to DD-I9, DD-I15, DD-I16 and DD-I20; the data lead's MI-1 to MI-7; the editor's first-look words and its S89 eyebrow ruling. Waiting on the engineer for DD-I10 to DD-I14, DD-I17 to DD-I19 (IM-E7 and the director's own kit requests) and the orphan guard (DD-I4), and on the editor's ED4-4 (S89's source line).
+- 21:23 UTC. S89 to S94 built; editor's words and MI-1, MI-2, MI-4 to MI-6 applied.
 - 21:16 UTC. The engineer landed R4-3 and R4-4; the four card forms and their specs moved from scratch into the kit.
 - 20:56 UTC. Read the data lead's rulings (a) to (c) and applied them to S89.
 - 20:40 UTC. Started.
 
 ## Summary
 
-| Spec | Form | State | Bytes with frame (kit build, 21:22 UTC) |
+| Spec | Form | State | Bytes with frame (kit build) |
 |---|---|---|---|
-| S89 | `process-explainer` (drawing) | Signed off by the data lead (21:14); editor's words applied | 10,222 |
-| S90 | `by-the-numbers` (HTML text) | Signed off with MI-3 open (words) | 6,372 |
-| S91 | `comparison-cards` (HTML text) | Signed off but for MI-4, now applied; cards two and one at 720 px until IM-E4 | 7,109 |
-| S92 | `step-by-step` (HTML text) | Signed off | 9,307 |
-| S93 | `annotated-illustration` (drawing) | Signed off whole (MI-2 fixed) | 7,317 |
-| S94 | `calendar` (HTML text and one year mark) | MI-5 and MI-6 applied, for the data lead's read | 11,960 |
-| S95 | `social-data-card` (two crops) | Module rewritten to R4-4; spec in scratch, waiting on IM-E5 | not built |
+| S89 | `process-explainer` (drawing) | Signed off (21:14); DD-I1 to DD-I3 and DD-I5 applied since, for the director's second read | 10,554 |
+| S90 | `by-the-numbers` (HTML text) | Signed off; MI-3 applied (current spending's exclusions, fall 2023) | 6,410 |
+| S91 | `comparison-cards` (HTML text) | MI-4 and MI-7 applied (the three territories named); shared rows wait on the engineer (DD-I12) | 7,101 |
+| S92 | `step-by-step` (HTML text) | Signed off; DD-I15's bold limit applied | 9,358 |
+| S93 | `annotated-illustration` (drawing) | Signed off whole; DD-I6 to DD-I9 applied, page order with the data lead's yes | 7,383 |
+| S94 | `calendar` (HTML text and one year mark) | MI-5, MI-6, DD-I16 and DD-I20 applied; DD-I17 to DD-I19 wait on the engineer | 12,200 |
+| S95 | `social-data-card` (two crops, 1080 by 1350 and 1080 by 1080) | Builds; two kit faults (IM-E6, IM-E8) | 12,286 (21:29 build) |
 
-Entries 14.135 to 14.141 are written; the chapter generator, run with `--rounds 1,2,3,4`, takes in 14.135 to 14.140 and holds 14.141 among the planned numbers until S95's spec lands (its one fault, "no spec s95.json", says so). Every figure in a title, note, card or alt is checked by `python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures` (all pass; S95 checked from its scratch spec with `--specs`).
+Under DR-271 the share and the 15,000-byte line are figures the build reports; every plate above is under both. Entries 14.135 to 14.141 are written; the chapter generator, run with `--rounds 1,2,3,4`, takes all seven in (141 rules, 0 faults). Every figure in a title, note, card or alt is checked by `python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures` (all pass, S89 to S95).
+
+### The design director's requests: what I did
+
+| Request | Done | How |
+|---|---|---|
+| DD-I1, Must | Yes | The emergency request's link drops down the middle of the lane to its left (the Local lane), clear of every lane rule, then into the box's side |
+| DD-I2, Must | Yes | Every head on one line on one baseline (the form draws lanes only where each head fits on one line and the lane holds its least width); heads now "Local", "State and tribal", "Federal", "Residents"; lanes sized by a stated rule in `notes_internal`: a lane's share follows the steps it holds alone (0.6, 1.2, 1.2, 1.0) |
+| DD-I3, Should | Yes | Set-in boxes at 44 px on a phone, so each link shows a 16 px stem before its head |
+| DD-I4, Should | In part | "the law’s limit" and "30 days" held on one line; a hold on a step's name fails parity (IM-E6 item 2), so "help" and "decides" wait on the engineer's orphan guard |
+| DD-I5, Should | Yes | "30 days" held (`typography.hold`) |
+| DD-I6, Must | Yes | A dashed context-ink rule across the sheet's foot and "The page continues with section 2." under it, inside the drawing; the old note is gone |
+| DD-I7, Must | Yes, with the data lead's yes (21:25) | Parts numbered in the page's reading order through the spec's sort; the table's Number column maps the same; the file is as stored |
+| DD-I8, Should | Yes | A running head that wraps sets "139 STAT. 55" on a line of its own, right-aligned |
+| DD-I9, Should | Yes, with the editor's ruling (21:24) | The page's doubled single marks set as double quotation marks (`typography.replace`, printed words only); the note says so beside the dash |
+| DD-I10, DD-I11 | Waiting | The engineer's facts variant (the director's own kit request) |
+| DD-I12, Must | Waiting | The engineer's shared-row card grid (the director's own kit request) |
+| DD-I13, DD-I14 | Waiting | IM-E7 items 1 and 2 (an eyebrow class; the step's measure is the kit's 38em) |
+| DD-I15, Should | In part | The limit's own words in bold; the 8 px above waits on IM-E7 item 2 |
+| DD-I16, Must | Yes | Each kind of date on a line of its own, its consequence on the next |
+| DD-I17 to DD-I19 | Waiting | IM-E7 items 3 to 5 |
+| DD-I20, Should | Yes | "fiscal 2028" held |
 
 ## Routine calls
 
-- D3-xxx | S89 draws actors as lanes named in words, one each for local governments, states and tribes, the federal government and residents, and each step's box spans the lanes of those who act at it | Ruling (b): actors by position, not ink; call 7: no approved Civic Line drawing means a level of government, a governor, FEMA or the President, so no icon stands for any of them
+- D3-xxx | S89 draws actors as lanes named in words, one each for local, state and tribal, federal and residents, and each step's box spans the lanes of those who act at it | Ruling (b): actors by position, not ink; call 7: no approved Civic Line drawing means a level of government, a governor, FEMA or the President, so no icon stands for any of them
 - D3-xxx | S89's two last steps (public assistance and individual help) share one row after step 6, governments at the left, with the spec's sort putting order 9 before 8 so the numbers read left to right | Both follow FEMA's designation; one row with two arrows from step 6 shows they run side by side, which two rows in sequence would hide
 - D3-xxx | S93's page is redrawn in Inter at the kit's sizes, with line breaks the drawing's measure sets, not the page's | The kit sets no type under 13 px and carries only Inter and Inter Tight; the words are the page's own, and the note says the drawing is a redraw
 - D3-xxx | S93's running head draws the page's dash as a rule one em wide, so no em dash prints | Chapter 02 bars the em dash in reader text; DR-79 drew one the same way in W21's before

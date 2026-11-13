@@ -50,12 +50,24 @@
         p.forEach(function (q) { q.w = ty(q.w); });
         return p;
       };
+      // a measure that leaves no word alone on a block's last line (DD-I4): narrow it a step at a time, up to a third,
+      // until the last line holds two words or more
+      var even = function (t, role, wt, max) {
+        var n0 = c.wrap(t, role, max, wt).length;
+        if (n0 < 2) return max;
+        for (var m = max; m > max * 0.67; m -= 4) {
+          var ls = c.wrap(t, role, m, wt);
+          if (ls.length > n0 + 1) break;
+          if (ls[ls.length - 1].indexOf(' ') > 0) return m;
+        }
+        return max;
+      };
       var fit = function (p, w) {
         var y = pad;
         p.forEach(function (q, i) {
-          var s = c.size(q.role), lh = Math.round(s * 1.3), n = c.wrap(q.w, q.role, w - 2 * pad - (q.ind || 0), q.wt).length;
+          var s = c.size(q.role), lh = Math.round(s * 1.3), mx = even(q.w, q.role, q.wt, w - 2 * pad - (q.ind || 0)), n = c.wrap(q.w, q.role, mx, q.wt).length;
           if (i) y += 4;
-          q.base = y + s * 0.93; q.lh = lh; q.max = w - 2 * pad - (q.ind || 0);
+          q.base = y + s * 0.93; q.lh = lh; q.max = mx;
           if (q.ind) q.base = Math.max(q.base, pad + chip / 2 + 5);
           y = q.base + (n - 1) * lh + s * 0.3;
         });

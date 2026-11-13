@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Design director (
 
 ## Status
 
+- 21:35 UTC. **Second read of maker A's S85 to S88 written** under "Second read": DD-A1 to DD-A11 all closed, so S85 to S88 pass my read. Two new Shoulds on S86's key (DD-A12, DD-A13) don't block. Still to read: the infographics maker's fixes and S95 (waiting on the engineer's IM-E6).
 - 21:28 UTC. **Cards read:** S90, S91, S92 and S94 at twice size, beside S60, S66, S77 and S89. Requests DD-I10 to DD-I20 (3 Must, 8 Should), four to the engineer and three more to the editor. The infographics maker's running total is 7 Must and 13 Should. Waiting for S95 (the engineer's card mode) and both makers' fixes.
 - 21:22 UTC. **First read of the six drafts written:** maker A's S85 to S88 and the infographics maker's S89 and S93, read at twice size from my own builds at 1440, 390 and 320 px on Newsprint and Charcoal and in grayscale, beside round 3's S47, S66, S71 and S77. Requests below: maker A 4 Must and 7 Should; the infographics maker 4 Must and 5 Should; small requests to the data lead, the editor and the engineer. Next: S90, S91, S92 and S94 (built, read next), then S95 when the engineer's card mode lands, then the fixes.
 - 21:06 UTC. Started. Read my role file, `CLAUDE.md`, the master brief's sections 3, 6, 9 to 13, 18 and 19, the round 4 brief, the data lead's notes to 21:03, DR-266 to DR-270, both makers' notes and Rules 10.4 and 10.6.
@@ -71,6 +72,28 @@ The four cards set their words as live text, as call 8 asks, and read cleanly on
 - **DD-I19, Should. A list a reader can scan.** At a desk set the list as rows in S60's grammar: the date in a left column about 180 px wide, the events and consequences beside it, hairlines between. The plate loses about a third of its 2,700 px height and the dates become one scannable column.
 - **DD-I20, Should. Held phrases.** At 320 px "fiscal / 2028" breaks in the February 1 entry. Hold "fiscal 2028" (and every "fiscal YYYY") with `typography.hold`.
 
+## Second read
+
+### Maker A, S85 to S88 (21:34 UTC)
+
+Read from maker A's final build (`scratchpad/phase-3/round-4/maker-a/kit-final/`, 21:29 UTC): the PNG exports, which are each drawing at twice size, at 1440, 390, 352, 328 and 288 px pages on both grounds, with the exported SVGs for geometry, and the 1x page capture at 288 px for the grade line. **All eleven items are closed. S85 to S88 pass my read**, with two new Shoulds on S86 that do not block.
+
+- **DD-A1, closed.** S85's icon, word and chip sit on one row at a desk and at 390 px, the chip's box centered on the word, 10 px after it. At the 320 and 256 px columns the chip drops to its own line, starting at the word's left edge (x 60.5 against 60), with the two lines centered as a group on the icon. Nothing overlaps on either ground.
+- **DD-A2, closed.** CL-050 draws as a line drawing at 48 px, flush with the grid's left edge, one row pitch (28 px) above the grid. Its thin line reads as a heading beside the ten filled marks, not as an eleventh mark, on Newsprint and on Charcoal.
+- **DD-A3, closed.** "October 15, 2026" is held (`typography.hold`) and stays whole in the 288 px grade line.
+- **DD-A4, closed.** S86 runs largest first at every width, bottom-aligned at a desk, and on a phone the named circle is the first mark under the measure.
+- **DD-A5, closed.** The key takes S16's grammar: three circles side by side on one baseline, each value centered beneath, the title at 700 weight in the secondary ink. The 40,000 ring is on the data's own scale (r 101.57 against 101.00 for 39,555, which is the square root of the counts' ratio).
+- **DD-A6, closed.** The "not drawn" sentence sits in the key's band, to the right of the key at a desk with its first line level with the key's title, and under the key on a phone. No hairline; the circles follow the measure directly.
+- **DD-A7, closed.** "this scale" is held, and the sentence breaks without a lone word at every width I read.
+- **DD-A8, closed.** S87's private and public labels take one structure and one top line at every width: three lines from 390 px up, the same five lines each at the 256 px column. "Both" leaves on a leader from 390 px down.
+- **DD-A9, closed.** Set names are centered on their circles in both S87 and S88. On a phone they wrap to two lines and stay tied to their circles; in S88 at 390 px the one-line name sits on the two-line name's last baseline, which is right.
+- **DD-A10, closed.** S88's "Both" is on a leader at a desk too, at the drawing's 15 px, so the drawing has one label size.
+- **DD-A11, closed.** Both leaders run on the lens's own axis (S88: x 241.5, 175.5 and 152.5 against the lens's points at 241.3, 175.8 and 152.6; S87: x 179.5 against 179), leaving the lens through its lower point.
+
+New, from this read:
+- **DD-A12, Should. S86's key rings in the context ink.** The key's rings are drawn in the label ink (Charcoal on Newsprint, Newsprint on Charcoal), darker than the data circles' context-ink edges. The 40,000 ring, as large as the special districts circle, is now the heaviest outline on the plate and pulls the eye below the data. Draw the rings in the context ink at 1 px, as ruling (b) first set them; on S16's map, label-ink rings sit beside filled shades, where this cannot happen.
+- **DD-A13, Should. 1 px clear at the 256 px column.** There the 40,000 ring's stroke reaches 256.47 px in a 256 px drawing (cx 189.6 + r 66.37 + half the 1 px stroke), so at twice size its rightmost arc flattens against the edge. Keep 1 px clear at every width (the 320 px column has 0.93 px), by tightening the key's gaps there.
+
 ## Requests to the data lead
 
 - **S86's key and its "not drawn" sentence (DD-A5, DD-A6).** I ask maker A to use S16's side-by-side size key so chapter 14 keeps one key grammar, and to move the "not drawn" sentence into the key's band. Both touch ruling (b)'s words ("nested circles", "above or beside the circles"); neither changes a figure, ink or scale. Yes or no.
@@ -113,6 +136,7 @@ The four cards set their words as live text, as call 8 asks, and read cleanly on
 - Looked at, for the first read: S85 at 1440 px (Newsprint), 390 px (Newsprint), 320 px (Charcoal, and Newsprint after the chip landed), with a 4x pixel zoom of its grid on both grounds; S86 at 1440 and 390 px (Newsprint) and 320 px (Charcoal, grayscale); S87 at 1440 px (Newsprint; Charcoal in grayscale) and 320 px (Newsprint); S88 at 1440 px (Newsprint; Charcoal in grayscale) and 390 px (Newsprint); S89 at 1440 and 390 px (Newsprint) and 320 px (Charcoal); S93 at 1440 px (Newsprint, both builds), 390 px (Newsprint) and 320 px (Charcoal); S47 and S66 at 1440 px.
 - Read from the exported SVGs: S85's mark and key geometry at 1440, 390 and 320 px; S87's and S88's circles, label positions and sizes at 1440, 390 and 320 px in both builds; S89's lane rules, boxes, badges and arrowheads at 1440 and 390 px; S93's disc sizes.
 - Looked at, for the cards (21:23 to 21:27 UTC, from the 21:18 build): S90 at 1440 px (Newsprint), 390 px (Newsprint) and 320 px (Charcoal, grayscale), beside S60 at 1440 px (built at 21:23); S91 at 1440 and 390 px (Newsprint); S92 at 1440 px (Newsprint) and 320 px (Charcoal), beside S77 at 1440 px; S94 at 1440 px (Newsprint, the year mark and the list to June 15) and 320 px (Charcoal, grayscale). Read the R4-3 classes in `kit.css` (`.oac-h-cards`, `.oac-h-facts`, `.oac-h-item`, `.oac-h-big`, `.oac-source`).
+- Second read (21:31 to 21:34 UTC), from maker A's `kit-final` build, without starting a browser (load average 8 to 9 with five headless browsers already running): S85's exports at 1440, 390, 352 and 288 px on Newsprint and at 288 px on Charcoal; its 288 px page capture (grade line). S86's exports at 1440 and 390 px on Newsprint and at 288 px on Charcoal, converted to grayscale, with an 8x zoom of the 40,000 ring's right edge at 288 px. S87's exports at 390 px on Newsprint and 288 px on Charcoal. S88's exports at 1440, 390 and 288 px on Newsprint. The exported SVGs' circles, leaders and label positions for S86 at 288 to 390 px, S87 at 1440, 390, 352 and 288 px, and S88 at 1440, 390 and 288 px; the four specs' `typography`, `sort`, S86's key labels and measure line.
 - Read the token chain for the icon ink and the subject, context and track inks on both grounds in `work/build/tokens/tokens.css`; S16's size key in `forms/bubble-map.js` and S86's in `forms/proportional-symbols.js`; the kit's wrapping rules in `kit.css`.
 
 ## Not tested
@@ -125,4 +149,5 @@ The four cards set their words as live text, as call 8 asks, and read cleanly on
 - The guide page: I read the kit's page, not a strict guide build.
 - For the cards: S91 at 320 px and on Charcoal; S92 at 390 px and on Newsprint at the phone widths; S94 at 390 px and its list after June 15; S90's and S91's text order for a screen reader (the accessibility lead's).
 - Maker A's two sketches (`s-14-83-sketch.html`, `s-14-84-sketch.html`): outside my brief's list for this read.
+- Second read of S85 to S88: no capture of my own at twice size, and not the 328 px page or S85's and S88's Charcoal exports at a desk. Maker A's sweep and build results are its own (PASS, as the main session reports); I did not rerun them.
 - Print, forced colors and 200 percent text: the accessibility lead's.

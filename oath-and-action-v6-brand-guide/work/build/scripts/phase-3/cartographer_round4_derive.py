@@ -12,9 +12,9 @@ Usage (from the project folder):
   codes   D3-1553: at the guide's 326 px phone drawing (a 390 px window), S12, S16 and S78 each draw every state's and DC's
           code (51), so no "Not labeled" note prints; and at the 296 px drawing (a 360 px window) each names in its note
           every code it does not draw.
-  radii   D4-1, condition 1: S16's code column (labels.column_phone, under 358 px) moves outlines, codes and leaders only.
-          At every whole width from 300 to 357 px, S16 drawn as its spec stands and drawn with the column switched off
-          (labels.column_under 1, which is today's layout) give every state the same circle radius to 0.01 px, the same
+  radii   D4-1, condition 1: S16's code column (labels.column_phone, on phone drawings under 358 px) moves outlines,
+          codes and leaders only. At every whole width from 300 to 357 px, S16 drawn as its spec stands and drawn without
+          labels.column_phone (the layout before the column) give every state the same circle radius to 0.01 px, the same
           shade class and the same size key words; and from 358 to 479 px the two drawings are the same SVG.
 
 --kit names another chart kit folder (a scratch mirror) in place of work/build/chart-kit; --specs another specs folder.
@@ -56,7 +56,7 @@ for (const id of ['s12', 's16', 's78']) {
 }
 // radii
 const s16 = load('s16');
-const off = JSON.parse(JSON.stringify(s16)); off.labels = Object.assign({}, off.labels, { column_under: 1 });
+const off = JSON.parse(JSON.stringify(s16)); delete off.labels.column_phone;
 let compared = 0, same_svg = 0;
 const circles = (d) => { const m = {}; d.marks.filter(x => x.kind === 'circle' && x.data && G.centers[x.data.key]).forEach(x => { m[x.data.key] = { r: x.w / 2, fill: x.fill }; }); return m; };
 const keywords = (d) => d.texts.filter(t => /million|Nation|^\d+$/.test(t.words || '')).map(t => t.words).join('|');

@@ -290,7 +290,7 @@ export function draw_spec(spec) {
   DRAW_KEYS.forEach(k => { if (spec[k] !== undefined) out[k] = spec[k]; });
   if (out.table) out.table = Object.assign({}, out.table, { caption: undefined });
   if (out.card) out.card = { crops: out.card.crops };   // R4-4: the page draws the crops; the post's words print in the figure
-  if (spec.form === 'social-data-card' || spec.card) ['evidence_label', 'title', 'source_line'].forEach(k => { out[k] = spec[k]; });
+  if (spec.form === 'social-data-card' || spec.card) ['evidence_label', 'title', 'grade_line', 'source_line'].forEach(k => { if (spec[k] !== undefined) out[k] = spec[k]; });   // IM-E8: the grade line too
   return out;
 }
 export function typography_draws(spec, rows, extra) {

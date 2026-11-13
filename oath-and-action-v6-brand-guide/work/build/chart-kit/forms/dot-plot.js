@@ -10,7 +10,9 @@
  * column left to right in the rows' order, the value scale vertical with S19's domain and ticks at the left, the reference
  * row a dashed line across with its words where no dot falls, only the named rows labeled (beside their dots, clear of
  * every other dot), each dot at most its column's pitch less 2 px across at the card's true size and an open ring at least
- * 2.8 px; the plot fills c.card.height. It warns where it cannot meet that. Outside a card the form draws as before. */
+ * 2.8 px, 2 px or more between dots; a named dot with no clear place beside it labeled in a band under the zero line on a
+ * hairline leader (IM-E6); the plot fills c.card.height. It warns where it cannot meet that. Outside a card the form draws as
+ * before. */
 (function (K) {
   'use strict';
   function across(c, rows, refrow, o) {
@@ -28,36 +30,53 @@
       c.key([{ fill: 'subject', direct: true }, { fill: 'surface', pattern: true }]);
     }
     var tw = Math.max.apply(null, ticks.map(function (t) { return c.measure(K.fmt(t, o.f.tick || 'integer'), 'tick'); }));
-    var x0 = Math.ceil(tw + 8), py0 = y + size + 8, py1 = H - 2, ys = K.scale.linear([dom[0], dom[1]], [py1, py0]);
-    var n = rows.length, pitch = (W - x0) / n, R = (pitch - 2 / k) / 2, sw = Math.max(2.8 / k + 0.1, Math.min(c.t('line-context'), R * 0.35));
-    if (R - sw < 0.5) c.warn('card: ' + n + ' columns leave no room for an open dot’s ring at ' + Math.round(pitch * k * 10) / 10 + ' px a column');
-    ticks.forEach(function (t) {
-      c.line(x0, ys(t), W, ys(t), { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
-      c.text(x0 - 6, ys(t) + tick * 0.35, K.fmt(t, o.f.tick || 'integer'), { role: 'tick', anchor: 'end' });
-    });
-    var dots = rows.map(function (r, i) { return { r: r, x: x0 + (i + 0.5) * pitch, y: ys(r[o.ev]) }; });
+    var x0 = Math.ceil(tw + 8), py0 = y + size + 8, py1, ys, dots, n = rows.length, pitch = (W - x0) / n;
+    // IM-E6: a gap of 2 px or more at true size between dots, after each center is written to 0.1 of a unit
+    var R = Math.floor((pitch - 2 / k - 0.1) * 50) / 100, sw = Math.max(2.8 / k + 0.1, Math.min(c.t('line-context'), R * 0.35));
+    if (R - sw < 0.5) c.warn('card: ' + n + ' columns leave no room for an open dot\u2019s ring at ' + Math.round(pitch * k * 10) / 10 + ' px a column');
+    var lay = function (band) {
+      py1 = H - 2 - band; ys = K.scale.linear([dom[0], dom[1]], [py1, py0]);
+      dots = rows.map(function (r, i) { return { r: r, x: x0 + (i + 0.5) * pitch, y: ys(r[o.ev]) }; });
+    };
+    lay(0);
     // a place for words clear of every dot (1 px), inside the drawing and right of the scale, and of words placed before
     var placed = [], clear = function (b) {
       return b.x >= x0 && b.x + b.w <= W && b.y >= 0 && b.y + b.h <= H && !placed.some(function (p) { return b.x < p.x + p.w && p.x < b.x + b.w && b.y < p.y + p.h && p.y < b.y + b.h; }) &&
         !dots.some(function (d) { var nx = Math.max(b.x, Math.min(d.x, b.x + b.w)), ny = Math.max(b.y, Math.min(d.y, b.y + b.h)); return Math.hypot(nx - d.x, ny - d.y) < R + 1; });
     };
-    var put = function (words, spots, opt) {
+    var spot = function (words, spots, opt, draw) {
       for (var i = 0; i < spots.length; i++) {
-        var s = spots[i], b = c.text_box(s[0], s[1], words, Object.assign({ anchor: s[2] }, opt));
-        if (clear(b)) { placed.push(b); return c.text(s[0], s[1], words, Object.assign({ anchor: s[2] }, opt)); }
+        var s = spots[i], so = Object.assign({ anchor: s[2] }, opt), b = c.text_box(s[0], s[1], words, so);
+        if (clear(b)) { if (draw) { placed.push(b); c.text(s[0], s[1], words, so); } return true; }
       }
-      c.warn('card: no place clear of the dots for "' + words + '"');
+      return false;
     };
+    var up = size * 0.241 + 3, dn = size * 0.969 + 3, LO = { role: 'label', weight: 700, fill: 'label' };
+    var spots = function (d) { return [[d.x - R, d.y - R - up, 'start'], [d.x + R, d.y - R - up, 'end'], [d.x + R, d.y + R + dn, 'end'], [d.x - R, d.y + R + dn, 'start'],
+      [d.x + R + 4, d.y + size * 0.35, 'start'], [d.x - R - 4, d.y + size * 0.35, 'end']]; };
+    var lab = function (d) { return o.name(d.r) + ' ' + o.val(d.r); }, isn = function (d) { return o.named.indexOf(String(d.r[o.ek])) >= 0; };
+    // IM-E6 (the data lead, 21:32): a named dot with no clear place beside it takes a band one label tall under the zero line,
+    // its words there alone, on a hairline leader to 2 px short of its dot
+    var low = dots.filter(function (d) { return isn(d) && !spot(lab(d), spots(d), LO); }).map(function (d) { return d.r; });
+    if (low.length) lay(Math.ceil(size * 1.25) + 6);
+    ticks.forEach(function (t) {
+      c.line(x0, ys(t), W, ys(t), { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
+      c.text(x0 - 6, ys(t) + tick * 0.35, K.fmt(t, o.f.tick || 'integer'), { role: 'tick', anchor: 'end' });
+    });
     if (refrow) c.line(x0, ys(refrow[o.ev]), W, ys(refrow[o.ev]), { stroke: 'label', width: c.t('line-baseline'), dash: '4 3', data: { key: refrow[o.ek], field: o.ev, value: refrow[o.ev] } });
-    var up = size * 0.241 + 3, dn = size * 0.969 + 3;
     dots.forEach(function (d) {
-      if (o.named.indexOf(String(d.r[o.ek])) < 0) return;
-      put(o.name(d.r) + ' ' + o.val(d.r), [[d.x - R, d.y - R - up, 'start'], [d.x + R, d.y - R - up, 'end'], [d.x + R, d.y + R + dn, 'end'], [d.x - R, d.y + R + dn, 'start'],
-        [d.x + R + 4, d.y + size * 0.35, 'start'], [d.x - R - 4, d.y + size * 0.35, 'end']], { role: 'label', weight: 700, fill: 'label' });
+      if (!isn(d)) return;
+      if (low.indexOf(d.r) < 0) { if (!spot(lab(d), spots(d), LO, true)) c.warn('card: no place clear of the dots for "' + lab(d) + '"'); return; }
+      var by = H - 2 - size * 0.241, b = c.text_box(d.x + R, by, lab(d), Object.assign({ anchor: 'end' }, LO));
+      if (!clear(b)) { c.warn('card: no place clear of the dots for "' + lab(d) + '", in the band under the zero line'); return; }
+      placed.push(b);
+      c.line(d.x, b.y - 1, d.x, d.y + R + 2 / k, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+      c.text(d.x + R, by, lab(d), Object.assign({ anchor: 'end' }, LO));
     });
     if (refrow && L.reference_label) {
       var ry = ys(refrow[o.ev]), words = K.parts.fill(c, L.reference_label, refrow);
-      put(words, [[W, ry - 5 - tick * 0.241, 'end'], [x0, ry - 5 - tick * 0.241, 'start'], [W, ry + 5 + tick * 0.969, 'end'], [x0, ry + 5 + tick * 0.969, 'start']], { role: 'tick', weight: 600, fill: 'label' });
+      if (!spot(words, [[W, ry - 5 - tick * 0.241, 'end'], [x0, ry - 5 - tick * 0.241, 'start'], [W, ry + 5 + tick * 0.969, 'end'], [x0, ry + 5 + tick * 0.969, 'start']], { role: 'tick', weight: 600, fill: 'label' }, true))
+        c.warn('card: no place clear of the dots for "' + words + '"');
     }
     dots.forEach(function (d) {
       if (o.is_open(d.r)) {
