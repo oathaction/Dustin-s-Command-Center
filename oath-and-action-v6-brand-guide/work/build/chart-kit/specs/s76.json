@@ -20,7 +20,7 @@
  "notes": [
   "The chart traces no dollar received to a dollar spent, since the node holds the committees of all 1,926 House candidates together, primary losers included.",
   "Cash on hand at the start and the end of the cycle lets the node balance. The reports leave $1.5 million unaccounted for, 0.059 percent of the money in, where a campaign’s cash figures come from reports that cover different dates.",
-  "All they took in counts every receipt, loans and net transfers included, and leaves out cash on hand. Spending counts every payment other than refunds, loan repayments and transfers. Loans and their repayments stand in their own group on each side. The chart nets transfers between a candidate’s own committees; on the way out they came to $0, so no band draws."
+  "“All they took in” counts every receipt, loans and net transfers included, and leaves out cash on hand. Spending counts every payment other than refunds, loan repayments and transfers. Loans and their repayments stand in their own group on each side. The chart nets transfers between a candidate’s own committees; on the way out they came to $0, so no band draws."
  ],
  "credit": "Chart: Oath & Action",
  "illustrative": false,

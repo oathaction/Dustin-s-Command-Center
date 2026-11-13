@@ -67,6 +67,8 @@
       case 'integer': return (v < 0 ? MINUS : '') + group(dround(Math.abs(v), 0));
       case 'number': return (v < 0 ? MINUS : '') + fixed(v, nd);
       case 'percent': return (v < 0 ? MINUS : '') + fixed(v, nd) + '%';
+      // round 3 (maker B's S65): a share held as a fraction, printed as a percent: 0.9368 as "93.7%" with fraction-percent:1
+      case 'fraction-percent': return (v < 0 ? MINUS : '') + fixed(dround(v * 100, 12), nd) + '%';
       case 'signed': return signed(v, fixed(v, nd));
       case 'points': return (v < 0 ? MINUS : '') + fixed(v, nd);
       // dollars (R-B2, round 1): $2,000 and −$2,000; signed-dollars +$2,000; dollars:2 keeps cents
@@ -1026,6 +1028,10 @@
       return mm[1] === w.positive ? String(v) : mm[1] === w.negative ? String(-v) : undefined;
     }
     var base = f.replace(/:\d+$/, '');
+    if (base === 'fraction-percent') {
+      var nfp = t.replace(/[%\s]/g, '').replace(MINUS, '-');
+      return /^-?\d+(\.\d+)?$/.test(nfp) ? String(dround(parseFloat(nfp) / 100, 12)) : undefined;
+    }
     if (/^(integer|number|percent|signed|points|dollars|signed-dollars)$/.test(base)) {
       var n = t.replace(/[+,%$\s]/g, '').replace(MINUS, '-');
       return /^-?\d+(\.\d+)?$/.test(n) ? n : undefined;
@@ -1108,7 +1114,7 @@
   // from, to, name}]}. agg: 'key' (the group's value, its words, or with state_name the state's name from the tile grid),
   // 'count' (rows in the group), 'count_in' (rows whose field is at least from and under to; either may be left out),
   // 'count_eq' (rows whose field equals value, or any value of a list: C-E1), 'count_set' (rows whose field is not
-  // empty), 'list' (the field's values joined with "; "), 'min',
+  // empty), 'list' (the field's values joined with "; "; distinct, odd and with: A-E5, A-E6), 'min',
   // 'max', 'median', 'sum', 'first', and 'min_name' or 'max_name' (the name column of the row with the least or most of
   // field). The page prints one row a group; the island carries every row the drawing reads, and the CSV export every row
   // (table.columns names them). Its rows are not read back from the table.
@@ -1132,7 +1138,25 @@
     if (a === 'count') return K.fmt(rs.length, col.format || 'integer');
     // A-E2 (maker A): 'list', the field's non-empty values in the group in row order joined with "; "; 'count_set', the
     // rows whose field is not empty
-    if (a === 'list') return rs.map(function (r) { return r[f]; }).filter(function (v) { return v !== null && v !== undefined && v !== ''; }).map(String).join('; ') || col.empty || '';
+    if (a === 'list') {
+      // A-E6: odd names a field; only the rows whose value of it differs from the group's most common value are listed
+      // (every row where no one value is most common); with adds those fields in parentheses after each ("Cuellar (TX,
+      // Yea)"). A-E5: distinct lists each entry once, in first-seen order
+      var lr = rs;
+      if (col.odd) {
+        var tally = {}, top = 0, tops = 0;
+        rs.forEach(function (r) { var k = String(r[col.odd]); tally[k] = (tally[k] || 0) + 1; });
+        Object.keys(tally).forEach(function (k) { if (tally[k] > top) { top = tally[k]; tops = 1; } else if (tally[k] === top) tops++; });
+        var common = tops === 1 ? Object.keys(tally).filter(function (k) { return tally[k] === top; })[0] : null;
+        lr = common === null ? rs : rs.filter(function (r) { return String(r[col.odd]) !== common; });
+      }
+      var items = lr.filter(function (r) { return r[f] !== null && r[f] !== undefined && r[f] !== ''; }).map(function (r) {
+        var extra = [].concat(col.with || []).map(function (w) { return r[w]; }).filter(function (v) { return v !== null && v !== undefined && v !== ''; });
+        return String(r[f]) + (extra.length ? ' (' + extra.join(', ') + ')' : '');
+      });
+      if (col.distinct) items = items.filter(function (x, i) { return items.indexOf(x) === i; });
+      return items.join('; ') || col.empty || '';
+    }
     if (a === 'count_set') return K.fmt(rs.filter(function (r) { return r[f] !== null && r[f] !== undefined && r[f] !== ''; }).length, col.format || 'integer');
     // C-E1 (cartographer): rows whose field equals value (or any of a list of values)
     if (a === 'count_eq') { var want = [].concat(col.value).map(String); return K.fmt(rs.filter(function (r) { return want.indexOf(String(r[f])) >= 0; }).length, col.format || 'integer'); }
@@ -1152,7 +1176,7 @@
     // set as the lean table is: numbers bare, words in class t
     var tb = spec.table, g = tb.group, ids = (spec.v7 && spec.v7.ids) || [], cols = g.columns || [];
     var cap = tb.caption ? '<caption>' + K.chips(tb.caption, ids) + '</caption>' : '';
-    var numc = function (col) { return GROUP_NUM.test(col.agg || '') || /^(integer|number|percent|dollars|thousands)/.test(String(col.format || '')); };
+    var numc = function (col) { return GROUP_NUM.test(col.agg || '') || /^(integer|number|percent|fraction-percent|dollars|thousands)/.test(String(col.format || '')); };
     var head = '<tr>' + cols.map(function (col) { return '<th scope="col"' + (numc(col) ? '' : ' class="t"') + '>' + K.chips(col.label, ids) + '</th>'; }).join('') + '</tr>';
     var body = K.table_groups(spec, rows).map(function (grp) {
       return '<tr>' + cols.map(function (col) {
@@ -1168,7 +1192,7 @@
     var tb = spec.table || {}, ids = (spec.v7 && spec.v7.ids) || [];
     var cap = tb.caption ? '<caption>' + K.chips(tb.caption, ids) + '</caption>' : '';
     var t = K.table_rows(spec, rows), head = '', body = '';
-    function num_col(col) { return /^(integer|number|percent|signed|points|thousands|signed-thousands|dollars|signed-dollars|billions|millions)/.test(String(col.format || '')); }
+    function num_col(col) { return /^(integer|number|percent|fraction-percent|signed|points|thousands|signed-thousands|dollars|signed-dollars|billions|millions)/.test(String(col.format || '')); }
     if (t.pivot) {
       var pv = tb.pivot, rc = (tb.columns || [])[0] || { label: pv.row, format: 'text' };
       head = '<tr><th scope="col">' + esc(rc.label) + '</th>' + t.cols.map(function (cn) {
@@ -1241,7 +1265,7 @@
     var carried = opts.carry === false ? {} : carried_fields(spec, rows, types);
     var cap = tb.caption ? '<caption>' + K.chips(tb.caption, ids) + '</caption>' : '';
     var t = K.table_rows(spec, rows), head = '', body = '';
-    var num_col = function (col) { return /^(integer|number|percent|signed|points|thousands|signed-thousands|lead|compact-thousands|signed-compact-thousands|dollars|signed-dollars|billions|millions)/.test(String(col.format || '')); };
+    var num_col = function (col) { return /^(integer|number|percent|fraction-percent|signed|points|thousands|signed-thousands|lead|compact-thousands|signed-compact-thousands|dollars|signed-dollars|billions|millions)/.test(String(col.format || '')); };
     var dv = function (raw, html, col) {
       if (carried[col.field]) return '';
       var back = K.unformat(visible_text(html), col);

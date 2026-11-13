@@ -2,7 +2,7 @@
  "id": "14.108",
  "title": "Use a multi-network only where the kinds of links are the story.",
  "rule": [
-  "Use a multi-network, a reference form, to draw more than one kind of link among the same nodes, such as shared money and shared staff among a set of groups. Give each kind of link its own ink in the chart order, solid, and name it in a key and on one of its lines; never a dash or dot, which Rule 13.4 keeps for a connection’s grade. Keep to three kinds; past that, draw one panel for each kind with every node in the same place."
+  "Use a multi-network, a reference form, to draw more than one kind of link among the same nodes, such as shared money and shared staff among a set of groups. Give each kind of link its own solid ink, in the order Rule 14.5 sets, and name it in a key and on one of its lines, leaving dashes and dots to a connection’s grade, as Rule 13.4 keeps them. Keep to three kinds; past that, draw one panel for each kind with every node in the same place."
  ],
  "use_when": "A specialist asks how two or three kinds of ties overlap among the same people or groups.",
  "use_instead": [

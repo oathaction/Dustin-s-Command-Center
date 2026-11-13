@@ -565,7 +565,8 @@
   // center toward center, cut at each edge), 'elbow' (o.dir 'down': from a's bottom to b's top, turning at o.bend, a y,
   // default halfway; 'right': from a's right side to b's left side, turning at o.bend, an x) or 'arc' (a's center to b's,
   // a circular arc bowing to o.side 'above' (default) or 'below', o.sag its height as a share of the chord, default 0.5, a
-  // half circle: the arc diagram). o.arrow: true draws a head at b where direction matters, its tip on b's edge, in the
+  // half circle: the arc diagram). o.arrow: 'diamond' ends it in an open diamond (A-E4, Rule 15.5's line of authority;
+  // o.diamond [length, width], default [14, 11]). o.arrow: true draws a head at b where direction matters, its tip on b's edge, in the
   // link's ink (o.head [length, half width], default the arrow tokens); o.arrow 'both' at both ends. o.stroke (default
   // 'context'), o.width (default the baseline, 1.5 px), o.dash; o.data {key, from, to, value} makes it a mark the checks
   // read (a weighted link); o.job. The layout guard fails a link through a word (R3-5). Returns {pts, from, to}.
@@ -603,8 +604,18 @@
     }
     var stroke = o.stroke || 'context', width = o.width || c.t('line-baseline');
     var hl = (o.head && o.head[0]) || c.t('arrow-head-length'), hw = (o.head && o.head[1]) || c.t('arrow-head-half-width');
-    var heads = o.arrow === 'both' ? ['end', 'start'] : o.arrow ? ['end'] : [];
-    var tips = [];
+    var heads = o.arrow === 'both' ? ['end', 'start'] : o.arrow && o.arrow !== 'diamond' ? ['end'] : [];
+    var tips = [], diamond = null;
+    // A-E4 (maker A): arrow 'diamond' ends the link in an open diamond, Rule 15.5's mark for a line of authority, 14 px
+    // long and 11 px wide (o.diamond [length, width]), its far point on b's edge, open on the ground and edged in the
+    // link's ink; the line stops at its near point
+    if (o.arrow === 'diamond') {
+      var dl = (o.diamond && o.diamond[0]) || 14, dw = ((o.diamond && o.diamond[1]) || 11) / 2;
+      var dtip = pts[pts.length - 1], dq = pts[pts.length - 2], ddx = dtip[0] - dq[0], ddy = dtip[1] - dq[1], dL = Math.sqrt(ddx * ddx + ddy * ddy) || 1;
+      var dux = ddx / dL, duy = ddy / dL, dmid = [dtip[0] - dux * dl / 2, dtip[1] - duy * dl / 2];
+      diamond = [[dtip[0], dtip[1]], [dmid[0] - duy * dw, dmid[1] + dux * dw], [dtip[0] - dux * dl, dtip[1] - duy * dl], [dmid[0] + duy * dw, dmid[1] - dux * dw]];
+      pts[pts.length - 1] = [dtip[0] - dux * dl, dtip[1] - duy * dl];
+    }
     // a head's tip sits on the end; the line stops at its base
     heads.forEach(function (at) {
       var e = at === 'end' ? pts.length - 1 : 0, prev = at === 'end' ? pts.length - 2 : 1;
@@ -619,6 +630,7 @@
     var bx = [Math.min.apply(null, xs), Math.min.apply(null, ys), Math.max.apply(null, xs) - Math.min.apply(null, xs), Math.max.apply(null, ys) - Math.min.apply(null, ys)];
     c.path(d, { fill: 'none', stroke: stroke, width: width, dash: o.dash, link: true, pts: [pts], data: o.data, job: o.job, kind: 'link', mark: o.data ? undefined : false }, o.data ? bx : undefined);
     tips.forEach(function (tp) { c.polygon(tp, { fill: stroke, mark: false, job: o.job }); });
+    if (diamond) c.path('M' + diamond.map(function (p) { return R(p[0]) + ',' + R(p[1]); }).join('L') + 'Z', { fill: 'surface', stroke: stroke, width: width, pts: [diamond], closed: true, job: o.job, link: true, mark: false });
     return { pts: pts, from: pts[0], to: pts[pts.length - 1] };
   };
   // tree(items, o): a tidy tree layout; draws nothing. items [{id, parent, w, h}] in reading order (a parent before its
