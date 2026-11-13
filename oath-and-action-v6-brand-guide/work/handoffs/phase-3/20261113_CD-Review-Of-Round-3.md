@@ -172,3 +172,72 @@ An asterisk marks a score under 4. Specimens under the bar: S68 (accessibility),
 - The plates at 768 px, and the chapter opener as a drawing.
 - Maker A's and maker B's plates at 358, 296 and 256 px with the kit; S65 to S77 at 2x except S68.
 - Grayscale for the diagrams; Charcoal at 2x for S16, S78 and S80; S81 to S84, S66 to S71, S74, S75 and S77 on Charcoal at 1440 px (captured, not looked at); maker A's and maker B's plates other than S68, S73, S74 and S76, and S07 and S12, at 390 px (captured, not looked at).
+
+## Second pass
+
+November 13, 2026, from 06:53 UTC (clock read from `date -u`). I rescored all five items on the fix pass's closing strict build (11,231,784 bytes, 0 warnings, 344 rules, 638 specimens), copied to my scratch with a Charcoal copy. The rescores are in `20261113_Round-3-CD-Rescores.json`, in the form of round 2's. I read the fix brief with its addendum, the data lead's "Review fix pass" and "Sign-off, review fix pass", the decision log from D3-1319 to D3-1498, and the other three reviewers' reports.
+
+### Verdict
+
+All five items are ready, every score is 4 or more, and no Must fix remains. **Round 3 is ready for board 2.** Five Should fixes remain (RS-1 to RS-5), all words, type or placement; RS-1 and RS-5 touch S12, which board 2 shows anyway. Items waiting on Dustin are not held against an owner: Q1 (where a chart's full data lives, and every "download" line), Q2 (the avoid sketch's colors) and Q3 (S16's range words).
+
+| Item | Craft | Clarity | Brand fidelity | Usefulness | Evidence honesty | Accessibility | Must | Should | Ready |
+|---|---|---|---|---|---|---|---|---|---|
+| 1. Maker A | 4 | 4 (was 3) | 4 | 4 | 4 | 4 (was 3) | 0 | 0 | yes |
+| 2. Maker B | 4 (was 3) | 4 | 4 | 4 | 4 | 4 | 0 | 3 | yes |
+| 3. The cartographer | 4 (was 3) | 4 (was 3) | 4 | 4 | 4 | 4 (was 3) | 0 | 3 | yes |
+| 4. The nine sketches | 4 | 4 | 4 | 4 | 4 | 4 | 0 | 0 | yes |
+| 5. Rules 14.1 to 14.14 with the opener | 4 | 4 | 4 | 4 | 4 | 4 | 0 | 0 | yes |
+
+RS-4 counts under both maker B and the cartographer.
+
+### My items, closed
+
+- **A-M1, S71.** The cell reads "State constitutions read: Massachusetts, Nebraska, Virginia and Arizona"; no "round" word is left in reader text on the page.
+- **A-M2, S68.** The table prints "None drawn" for Congress and HHS, the city council, the cooperative and the utility, and the two lines print their words.
+- **C-M1, S78.** At 1440 and 1024 px every state and DC carries a code, the small northeastern states, West Virginia and DC on leaders in a column over the ocean. At 390 px the studio's tile grid draws in the same classes and key, with every code but WA, WV and WY, which the 13 px floor will not hold, on both grounds.
+- **C-M2, S12.** The arrows draw at every desk width with each tile's code and figure, in a 1024 px stage that scrolls sideways, and the gray steps stay the phone form. The alt says what each width draws. Closed in substance; see RS-1.
+- **B-S1, S73.** Bars solid, links in the light fill with a party-ink edge, on both grounds and at 390 px. With BC-M1 it now draws all seven designated funds by one rule, and its title, "In the 2024 cycle, Kamala D. Harris’s three joint fundraising committees sent $955.9 million to 54 other committees, and Donald J. Trump’s four sent $679.8 million to 56.", reads the same from both sides.
+- **A-S1 to A-S6.** S66, S67, S71 and S72 run 25 to 29 words with one finding; S72 names no crossover in its title; dates print once; S69 to S71 are 3,866, 2,599 and 3,655 px at 1440 px, down from 4,113, 4,581 and 5,758; S68's boxes widen and its note quotes the LIHEAP record; S72's names follow the record's last-name order.
+- **B-S2 to B-S5, SK-S1, SK-S2.** S73's notes split; S77's limits print on their own line in the text's ink and its date once; entry 14.109 points to Rule 14.113; the cohort sketch now holds "100%" about 15 px and "2021" about 18 px inside its frame, "Illustrative data" at D3-966's corner; entry 14.124's why ends "Rule 14.7’s failure case shows the same fault in red and blue".
+- **C-S1 to C-S6.** S80 numbers each district in its own panel with a framed Detroit inset; S16's DC takes a leader and WV sits by its own circle; S78 and S81 name the survey in their titles; the grouped tables run Alabama, Alaska, Arizona; S79's view sits in a frame with "Kern County" on a leader; S82 prints "Alaska at large".
+- **R-S1 to R-S3.** Rule 14.6 holds 277 words, one principle a paragraph, with the lists in its rows; group 12's line names the org chart, hierarchy tree and roll-call grid; entry 14.45 points to Rule 14.51.
+
+### Should fix, second pass
+
+**RS-1. S12's stage scrolls with no visible cue.** At 1024, 1440 and 1920 px windows the stage shows 558, 723 and 829 px of the 1024 px drawing, and the plate's hint "Wider than this column. Scroll the frame sideways to see all of it." stays hidden. At 1440 px a reader sees half-cut tiles at the right edge and no New York, New Jersey or Florida, three of the title's four states, until they scroll; the lists below still name them. Show the hint whenever the stage scrolls, and let the stage break out over the rail from 80em where that holds it whole. Board 2 should also show Dustin the stacked tile the data lead's C-M2 ruling put first (code and figure on two lines), which fits from 723 px and would show the whole map at 1440 px. Owner: engineer, cartographer; main session (board 2).
+
+**RS-2. S73's title breaks a name.** At 1440 px it reads "and Donald / J. Trump’s four sent". Hold "Donald J. Trump’s" together with no-break spaces, as D3-1491 meant. Owner: editor, maker B.
+
+**RS-3. S73's table prints filed capitals.** "Other committees: TAMMY BALDWIN FOR SENATE" and "SAVE AMERICA; DONALD J. TRUMP REPUBLICAN N..." sit beside rows in title case. Print them as the other rows do through the spec's typography, and keep the filed names in the export (D3-519). Owner: maker B, editor.
+
+**RS-4. Three titles past 30 words, two stray periods.** S65 (31 words), S78 (31) and S77 (32); hold each under 30 with its finding unchanged. S78's and S81's measure lines end with a period no other measure line prints. Owner: editor.
+
+**RS-5. S12's phone codes.** At the guide's 326 px phone drawing S12's tiles print no code, while S78's tiles on the same grid at the same width keep 48 of 51. Set S12's phone codes by S78's rule; this is placement on a board 1 drawing, so board 2 shows it. Owner: cartographer.
+
+### Weight and the share per plate
+
+The share is now 13,592 bytes for each of round 4's 13 specimens (176,691 bytes of room; renderer grown to 554,635). Round 3's twenty plates weigh 207,864 bytes with their frames, a mean of 10,393; only S69 (14,556), S82 (13,915) and S81 (13,612) pass 13,592, and none passes 15,000. The page projects to 15,044,827 of 15,500,000; rules with the opener weigh 175,678 of 212,288; map geometry 133,117 of 250,000.
+
+That leaves round 4 room. The share sits about 31 percent above round 3's mean plate, and round 4's forms (icon arrays, proportional symbols, overlap diagrams, process explainers, number panels, comparison cards) carry less than a county map or a House org chart, provided their tables answer the reader question and no more and group 17's cards draw as HTML text. I still recommend holding the 116,883 unspent geometry bytes until round 4's plan confirms no new map layer.
+
+### Risks for Dustin, second pass
+
+- **S12 at a desk.** The arrows draw, but at 1440 px a reader sees about 70 percent of the map and must scroll for the title's eastern states. Board 2 should set the scrolling stage beside the stacked tile.
+- **The avoid sketch's colors (Q2).** I still recommend gray: Rule 14.7's failure case already shows red against blue and entry 14.124 now points to it, and the unequal places make the land-for-votes harm visible without color. The data lead recommends literal color in the misleading half; Dustin decides.
+
+### Tested, second pass
+
+- Copied the closing build and its report to `.../creative-director/pass2/`; made a Charcoal copy by setting each plate stage's surface class to Charcoal under the dark scheme.
+- Captured with Playwright, one browser at a time: all 32 round 3 plates at 1x at 1440 and 390 px on Newsprint and on Charcoal; S12, S16, S66, S68, S73, S78, S80, S82 and Rule 14.6 at 1024 px on both grounds; S12, S16, S68, S73, S78, S79, S80, S82 and sketches 14.94 and 14.124 at 2x at 1440 px on Newsprint; S73, S78, S80 and S82 at 2x at 390 px on Charcoal.
+- Looked at: S12, S68, S73 and S78 at 1440 px on Newsprint; S66, S69, S70 and S71 whole at 1440 px; S79 and S82 at 1440 px; S12, S73, S80 and S81 at 1440 px on Charcoal; S12, S16, S66, S72, S73, S77, S78 and S80 at 390 px on Newsprint; S12, S73, S78 and S82 at 390 px on Charcoal; S12 and S78 at 1024 px; sketches 14.94 and 14.124, S16's northeast and DC at 2x; S82 at 2x at 390 px on Charcoal; Rule 14.6 at 390 px.
+- Probed S12 in the page at 1024, 1440 and 1920 px windows (drawn width, arrowheads, scroll width, tab stop, name, hint) and took a viewport capture at each.
+- Read by script: every round 3 spec's title and word count and the changed measure lines; entries 14.6, 14.9, 14.45, 14.109, 14.115, 14.124 and the group lines; the page tables of S68, S71, S72, S73, S81, S82 and S83; every round 3 plate's bytes with its frame from the page; the build report's weight and projection; a search for "round" words in reader text.
+
+### Not tested, second pass
+
+- The quick guide check, the four-width check, forced colors, a screen reader, print, scripts off and 200 percent text.
+- Any figure against the frozen files, and the CSV exports.
+- Maker A's and maker B's plates at 1024 px except S66, S68 and S73; S65, S67, S69 to S72, S74 to S77 and S83 to S84 on Charcoal at 1440 px (captured, not looked at); the sketches on Charcoal.
+- The kit alone at 358, 296 and 256 px for this build.
+- S12's sideways scroll by keyboard or touch.
