@@ -1,5 +1,5 @@
 /* Oath & Action design tokens, Edition 06
- * Version 6.0.0-gate3.2 (pre-release). Every value may still change until version 6.0.0 ships, once our founder and editor approves these files.
+ * Version 6.0.0-gate3.3 (pre-release). Every value may still change until version 6.0.0 ships, once our founder and editor approves these files.
  * DTCG Format Module 2025.10. Generated from work/build/tokens/src/oa-tokens.src.mjs
  * by work/build/scripts/phase-2/tokens_build.mjs. Do not edit by hand: the token tests fail when this
  * file and tokens.json disagree.
@@ -9,7 +9,7 @@
  * --oa-color-text-secondary, at that surface's tokens.
  * Themes: the root follows the device, light on Newsprint or dark on Charcoal (DR-204), and
  * data-oa-theme="light" or "dark" on the root wins over the device. See the theme blocks below.
- * Change in 6.0.0-gate3.2: Descriptions only; no token is renamed and no value changes. On November 12, 2026, our founder and editor approved the data palettes: the two new colors, Prussian mixed 56% and 29% toward Newsprint, that complete the diverging scale on Charcoal, and the four inks for groups in the order Charcoal, Verdigris, Prussian and Stone, with Stone always hatched. Each description that called its token proposed loses that sentence, and the files mark no token as proposed.
+ * Change in 6.0.0-gate3.3: The gap between tiles on a phone narrows from 2.5 px to 2 px. At the phone width the guide draws, a tile is then 25 px wide on a 27 px pitch, every tile edge falls on a whole pixel, and the widest state codes fit inside their tiles.
  *
  * Media queries cannot read custom properties. Write breakpoints in em, which follows text size:
  *   wide        (min-width: 90em)
@@ -689,7 +689,7 @@
   --oa-chart-tile-size-max: 80px;
   --oa-chart-tile-gap: 6px;
   --oa-chart-tile-mid-gap: 4px;
-  --oa-chart-tile-phone-gap: 2.5px;
+  --oa-chart-tile-phone-gap: 2px;
   --oa-chart-tile-phone-columns: 11;
   --oa-chart-tile-frame: 2px;
 

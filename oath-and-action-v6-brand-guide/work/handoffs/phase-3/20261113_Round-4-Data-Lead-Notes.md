@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:38 UTC. S95, S91 and S90 signed off; all eleven specimens, S85 to S95, and both sketches are signed off. Left: the phone codes, DR-265's captures and 15.19 to 15.21.
 - 21:34 UTC. S85 signed off whole; S86's new key checked and signed off. Maker A's round 4 work is signed off.
 - 21:32 UTC. S95 read against IM-E5: IM-E6's label band accepted; two asks for one build (a 2 px gap between dots, S19's grade line on the card).
 - 21:25 UTC. DR-271 applied: byte figures are reported, not sign-off conditions; data conditions stand. MI-7 is with the infographics maker.
@@ -142,6 +143,14 @@ The engineer may land items 1 to 3; the cartographer then writes `s12.json` (`"s
 ### Q-A1, S85's word and chip: yes, "Worker bargaining power" with the chip "Variable A2" (21:01 UTC, for maker A and the editor)
 
 CL-050 is an atlas symbol, not a topic symbol: chapter 10's label table files it as Variable A2 (`v7_chip` "Variable A2", label "Worker bargaining power"), and Rule 10.6 sets an atlas drawing only beside the atlas's own name for it, followed by its typed chip. So S85 prints "Worker bargaining power" and the chip "Variable A2" beside the 48 px drawing, both checked by script against `work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json`, with the check named in `notes_internal`. This keeps DR-266 and Rule 10.1 exact: by script, Variable A2's own indicator in the atlas is "Union density (BLS, 10.0% 2025)", the very figure S85 draws, so the drawing means its own variable and nothing else. The chip is a reference line in the label style, which the brief's call 5 allows. DR-265 does not reach it: S85 is not a loop drawing, and chapter 10's icon names stay as approved, so the V7 title "Workers' bargaining power" does not replace the label here. Add `CL1514` to the spec's `v7.ids`, since the figure is that claim's.
+
+### S95, S91 and S90: signed off (21:38 UTC)
+
+- **S95, social card: signed off.** Looked at: 1080 by 1350 on Charcoal and 1080 by 1080 on Newsprint, the infographics maker's exports of 21:36. By script on all four SVGs: 50 columns, a gap of 2.05 px (tall crop) and 2.22 px (square) between dots at true size, the six open rings at 3.08 px. The four PNGs measure exactly 1080 by 1350 and 1080 by 1080. IM-E5's five conditions are met: S19's 0 to 700 scale, rank across with its words, every dot alone, "Mississippi 652" above and "Massachusetts 96" in the band under the zero line on a hairline leader that crosses no dot, and all 50 states on both crops. My R4-4 conditions are met too: S19's grade line now runs after "Finding", and the title (period and measure), the key and the source with its table are on the card. The words to post state only figures the card prints (96, 652, 318) and name the source and table, and the alt states the finding. In S19's design every dot takes the subject ink and the named states are labeled in bold, so the card's inks are S19's.
+- **S91, comparison cards: signed off.** MI-7: "District judges serve for life except in Guam, the Northern Mariana Islands and the Virgin Islands" is true of every seat, and Puerto Rico's life-tenured judges stay inside the claim. "Full-time magistrate judges for eight" is right, and the note explains the 345 against 316 by temporary judgeships. The shared-row grid changes no field or figure.
+- **S90, by the numbers: signed off whole.** MI-3's words are in the card: "current spending, the day-to-day cost of running schools, which leaves out construction and equipment, interest on debt, payments to other governments, adult education and community services". This matches the Bureau's definitions as the research lead read them. The enrollment fact says fall 2023.
+
+**The infographics maker's round 4 work is signed off:** S89 to S95. Entries 14.135 to 14.141 carry nothing for me to change in what I have read (14.135 and 14.139 by file); the rest I read with their specimens at the editor's pass if asked.
 
 ### S85 whole, and S86 after DD-A5 and DD-A6: signed off (21:34 UTC)
 

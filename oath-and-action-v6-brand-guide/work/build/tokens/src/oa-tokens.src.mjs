@@ -61,7 +61,7 @@ const chartNum = (value, unit, description, source, ext = {}) => tok('number', v
 // ------------------------------------------------------------------------------------------ metadata
 export const meta = {
   title: 'Oath & Action design tokens, Edition 06',
-  version: '6.0.0-gate3.2',   // Board 1 apply, November 12, 2026: descriptions only; the palette tokens lose "proposed" (DR-236). Before that, gate3.1, Phase 3 round 0, November 11, 2026: the palette proposal's chart tokens, proposed until board 1 (DR-204, DR-234, Gate 1 M1). Before that, gate2.9, the Gate 2 fix pass, November 11, 2026: descriptions only (DT-S5, DT-S6, AX-1, AX-2), no name or value changes; the error bar drops its keyline record. Before that, gate2.8, stage C round 2, November 11, 2026: DR-218 (descriptions in reader words, the loading mark's description, error.mark renamed error.bar with a deprecated alias) and D2-1544 (the field ground on Charcoal is Charcoal); see changeNotes (gate2.7: the light and dark themes, DR-204; gate2.6: the error mark token colors the 4 px bar, PP-M3; gate2.5: the icon accent from 48 px, the 16 px utility line; gate2.4: mark tokens, D2-402, the 24 px utility line, icon sizes after DR-136)
+  version: '6.0.0-gate3.3',   // Round 4, November 13, 2026: the phone tile gap from 2.5 to 2 px (C4-E1), accepted into this pre-release set by the main session; Gate 3 decides chart token releases. Before that, gate3.2, Board 1 apply, November 12, 2026: descriptions only; the palette tokens lose "proposed" (DR-236). Before that, gate3.1, Phase 3 round 0, November 11, 2026: the palette proposal's chart tokens, proposed until board 1 (DR-204, DR-234, Gate 1 M1). Before that, gate2.9, the Gate 2 fix pass, November 11, 2026: descriptions only (DT-S5, DT-S6, AX-1, AX-2), no name or value changes; the error bar drops its keyline record. Before that, gate2.8, stage C round 2, November 11, 2026: DR-218 (descriptions in reader words, the loading mark's description, error.mark renamed error.bar with a deprecated alias) and D2-1544 (the field ground on Charcoal is Charcoal); see changeNotes (gate2.7: the light and dark themes, DR-204; gate2.6: the error mark token colors the 4 px bar, PP-M3; gate2.5: the icon accent from 48 px, the 16 px utility line; gate2.4: mark tokens, D2-402, the 24 px utility line, icon sizes after DR-136)
   status: 'pre-release',
   // DR-191's second pass, E3: reader words, since a builder downloads this file
   statusNote:
@@ -106,6 +106,11 @@ export const meta = {
   // A note's version, date, tokens, change and reason are reader words: chapter 26 prints the newest note (Rule 26.8), and
   // tokens.css's header carries its change. The studio's decision codes sit in `record` alone (DR-218, BE-S7).
   changeNotes: [
+    { version: '6.0.0-gate3.3', date: '2026-11-13',
+      tokens: 'oa.chart.tile.phoneGap',
+      change: 'The gap between tiles on a phone narrows from 2.5 px to 2 px. At the phone width the guide draws, a tile is then 25 px wide on a 27 px pitch, every tile edge falls on a whole pixel, and the widest state codes fit inside their tiles.',
+      reason: 'With the wider gap, the tiles of three states had no room for their codes on a phone, so a note named them; with the narrower gap every state carries its own code. Before 6.0.0, every change raises the number after the hyphen (Rule 26.8).',
+      record: 'C4-E1 (round 4, the cartographer\'s request), D3-1553, D3-1562; accepted into this pre-release set by the main session', gate: 'Gate 3' },
     { version: '6.0.0-gate3.2', date: '2026-11-12',
       tokens: 'oa.color.tint.prussianN56 and prussianN29; the six tints with a second job in the charts (stoneC72, verdigrisC20, verdigrisN25, prussianN62, stoneN55 and stoneC40); oa.chart.color.diverging on Charcoal; oa.chart.color.categorical; oa.chart.color.ghost; oa.chart.grade',
       change: 'Descriptions only; no token is renamed and no value changes. On November 12, 2026, our founder and editor approved the data palettes: the two new colors, Prussian mixed 56% and 29% toward Newsprint, that complete the diverging scale on Charcoal, and the four inks for groups in the order Charcoal, Verdigris, Prussian and Stone, with Stone always hatched. Each description that called its token proposed loses that sentence, and the files mark no token as proposed.',
@@ -777,7 +782,7 @@ const chart = {
     sizeMax: chartDim(80, 'Largest tile in a tile-grid map.', STR("['tile']['size_max']")),
     gap: chartDim(6, 'Gap between tiles.', STR("['tile']['gap']")),
     midGap: chartDim(4, 'Gap between tiles at the middle artboard.', STR("['tile']['mid_gap']")),
-    phoneGap: chartDim(2.5, 'Gap between tiles on phones.', STR("['tile']['phone_gap']")),
+    phoneGap: chartDim(2, 'Gap between tiles on phones.', STR("['tile']['phone_gap']")),   // 6.0.0-gate3.3: 2.5 to 2 px (C4-E1, D3-1553)
     phoneColumns: chartNum(11, 'columns', 'Columns of the tile grid on phones.', STR("['tile']['phone_cols']")),
     frame: chartDim(2, 'Outline of a tile that changed hands.', STR("['tile']['frame']")),
   },
