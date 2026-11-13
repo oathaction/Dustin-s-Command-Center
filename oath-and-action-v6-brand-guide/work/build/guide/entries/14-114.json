@@ -1,0 +1,43 @@
+{
+ "id": "14.114",
+ "title": "Use a tile-grid map to show each state’s status, every state the same size.",
+ "rule": [
+  "Draw each state and the District of Columbia as one square of the same size, on a grid that keeps each state beside its neighbors, with Alaska and Hawaii at its corners, and print each state’s two-letter code in its square. Tell the categories apart by fill and outline as well as shade, so the key still reads in gray print: solid squares for the status the title names, open squares for a partial case and gray squares for none, each named in the key with its count. Print one more fact under the code, such as the year a law took effect, wherever the square holds it. Where the squares grow too small for their codes, leave the codes out and say under the map that the table names every state."
+ ],
+ "use_when": "The reader asks which states have a law or status, and each state counts once, whatever its size or population.",
+ "use_instead": [
+  {
+   "when": "A rate by state, on the shapes readers know",
+   "rule": "14.117"
+  },
+  {
+   "when": "How far each state moved between two dates",
+   "rule": "14.115"
+  },
+  {
+   "when": "The same status at several dates, to show how it spread",
+   "rule": "14.123"
+  },
+  {
+   "when": "The reader looks up one state’s law and its details",
+   "rule": "14.130"
+  }
+ ],
+ "why": {
+  "text": [
+   "On a map of real shapes, large and empty states take most of the page, so a status held mostly by small eastern states looks rare. Equal squares give every state the same weight, and the code in each square names the place in words."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S07",
+ "tier": "core",
+ "tokens": [],
+ "related": [
+  "14.3",
+  "14.5",
+  "14.13"
+ ],
+ "builders": "Form tile-map-categorical: node work/build/chart-kit/oa-chart.mjs build s07, or copy specs/s07.json and point it at a new dataset; encode code, category and sub (the line under the code); labels.categories sets each category’s style (solid, open or light) and words, and labels.key_at the key’s place in the grid’s empty upper middle.",
+ "correct": null,
+ "failure": null
+}

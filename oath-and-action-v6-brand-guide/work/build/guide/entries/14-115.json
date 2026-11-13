@@ -1,0 +1,40 @@
+{
+ "id": "14.115",
+ "title": "Use a tile map of arrows to show where a measure moved, every state on one scale.",
+ "rule": [
+  "Give each state one square holding a flat arrow whose length follows its shift on one scale across the map, with the state’s code and the shift printed above the arrow. Name the direction in words in the key, as “toward the Republican nominee”, and draw every party in neutral ink (Rule 14.7). Set the national figure beside the key with its own label and arrow, apart from the squares, and frame each state whose leader changed.",
+  "On a phone, where an arrow would be too short to read, each square takes a gray step by the size of its shift, and two lists under the map name the largest and smallest shifts with their figures (Rule 14.12)."
+ ],
+ "use_when": "The reader asks where a measure moved between two dates and how far, state by state, such as a presidential margin from one election to the next.",
+ "use_instead": [
+  {
+   "when": "The reader asks which places moved most, more than where they sit",
+   "rule": "14.25"
+  },
+  {
+   "when": "The reader looks up how each state voted in each year",
+   "rule": "14.125"
+  },
+  {
+   "when": "Each state has a status with no direction",
+   "rule": "14.114"
+  }
+ ],
+ "why": {
+  "text": [
+   "A reader compares lengths more surely than shades, so arrows on one scale show at a glance where a shift ran large. The arrows and the words in the key carry the direction, so no party needs a color, and equal squares keep a small state’s move as visible as a large one’s."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S12",
+ "tier": "core",
+ "tokens": [],
+ "related": [
+  "14.7",
+  "14.12",
+  "14.25"
+ ],
+ "builders": "Form tile-map-shift-arrows: node work/build/chart-kit/oa-chart.mjs build s12; encode code, shift, from and to; labels.frame \"sign\" frames a state whose from and to differ in sign, labels.key_steps sets the sample arrows, labels.steps and steps_labels the phone’s gray steps, labels.nation_label the national figure beside the key, and labels.lists the two lists.",
+ "correct": null,
+ "failure": null
+}

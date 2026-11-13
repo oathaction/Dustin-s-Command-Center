@@ -1850,7 +1850,7 @@
    "dataset": [
     "census-gazetteer-2024-places",
     "census-cb-2024-states",
-    "census-cb-2024-counties"
+    "census-cb-2024-counties-california-5m"
    ],
    "entry_file": "work/build/guide/entries/14-118.json"
   },

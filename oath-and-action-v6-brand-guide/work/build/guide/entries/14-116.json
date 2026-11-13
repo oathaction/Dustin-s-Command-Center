@@ -1,0 +1,39 @@
+{
+ "id": "14.116",
+ "title": "Use a bubble map when the size of each place matters as much as its rate.",
+ "rule": [
+  "Set a circle at each state’s center over the land, its area in proportion to a count such as citizens 18 and over (Rule 14.4), and shade it by a rate in the sequential steps, with a key for each. Move circles apart only where they would overlap, and name each one by its code, inside the circle where it fits and beside it, with a leader where needed, where it does not. Mark the national rate on the step key with its label, apart from the circles on the map. Ring only the circles the title names, and single out a survey rate only where its gap passes the margin of error (Rule 14.9)."
+ ],
+ "use_when": "The reader asks where a rate ran high or low and where most of the people are, such as which of the largest states reported low turnout.",
+ "use_instead": [
+  {
+   "when": "A rate alone, where each state’s size adds nothing",
+   "rule": "14.117"
+  },
+  {
+   "when": "Where a count sits inside the states, county by county",
+   "rule": "14.122"
+  },
+  {
+   "when": "Two measures compared as a pattern, with size as a third",
+   "rule": "14.68"
+  }
+ ],
+ "why": {
+  "text": [
+   "A shaded state lets its land speak for it, so a large, empty state outweighs a small, crowded one. A circle sized by people gives each state its weight on the page, and its shade adds the rate without a second map."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S16",
+ "tier": "core",
+ "tokens": [],
+ "related": [
+  "14.4",
+  "14.9",
+  "14.68"
+ ],
+ "builders": "Form bubble-map: node work/build/chart-kit/oa-chart.mjs build s16; encode code, size (the circle’s area) and shade; labels.bins sets the shade’s four breaks, labels.size_steps and size_step_words the size key, labels.ring the circles ringed, labels.nation and nation_label the national rate on the step key, and labels.offsets a code’s place where the search finds none.",
+ "correct": null,
+ "failure": null
+}
