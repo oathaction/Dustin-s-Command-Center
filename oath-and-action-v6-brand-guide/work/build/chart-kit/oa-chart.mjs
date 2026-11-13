@@ -230,7 +230,9 @@ export function used_columns(spec, columns) {
 }
 
 // The keys a page needs to draw: no words the figure already prints (method load-table)
-const DRAW_KEYS = ['kit', 'id', 'form', 'artboard', 'stage', 'encode', 'labels', 'annotations', 'formats', 'scale', 'table', 'phone'];
+// typography rides along (round 3 fix pass): c.text sets a drawing's words through it, so a page without it drew S81's key
+// without its no-break spaces and failed parity
+const DRAW_KEYS = ['kit', 'id', 'form', 'artboard', 'stage', 'encode', 'labels', 'annotations', 'formats', 'scale', 'table', 'phone', 'typography'];
 export function draw_spec(spec) {
   const out = {};
   DRAW_KEYS.forEach(k => { if (spec[k] !== undefined) out[k] = spec[k]; });

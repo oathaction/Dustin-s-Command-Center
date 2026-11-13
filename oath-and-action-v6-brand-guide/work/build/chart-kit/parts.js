@@ -20,7 +20,12 @@
       else if (e.shape === 'dot') c.circle(cx + sw / 2, top + sw / 2, sw / 2.4, { fill: e.fill, mark: false });
       else {
         if (e.pattern) { c.pattern(e.pattern, e.stroke || 'subject'); c.rect(cx, top, sw, sw, { pattern: e.pattern, mark: false }); c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { stroke: e.stroke || 'subject', mark: false }); }
-        else if (!e.fill && e.stroke) { c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { fill: e.open ? 'surface' : 'none', mark: false }); c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { stroke: e.stroke, dash: e.dash, mark: false }); }
+        else if (!e.fill && e.stroke) {
+          c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { fill: e.open ? 'surface' : 'none', mark: false }); c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { stroke: e.stroke, dash: e.dash, mark: false });
+          // AX-S1 (round 3 fix pass): forced_edge, a second edge 2 px inside the first in forced colors only, as the mark it
+          // keys draws (S74's authority cell)
+          if (e.forced_edge) c.rect(cx + 2.5, top + 2.5, sw - 5, sw - 5, { stroke: e.stroke, width: 1, fc: 'forced', mark: false });
+        }
         else {
           c.rect(cx, top, sw, sw, { fill: e.fill, fc: e.fc, mark: false });
           // RB-G6 (round 2 fix pass): a swatch for a band with edges takes the same 1 px edge, inset, in e.edge's ink

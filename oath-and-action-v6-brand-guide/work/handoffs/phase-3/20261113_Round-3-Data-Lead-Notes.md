@@ -802,7 +802,20 @@ Read from `work/handoffs/phase-3/20261113_CD-Review-Of-Round-3.md` at 04:35 UTC;
 
 ## Sign-off, review fix pass
 
-Waiting for owners' reports. Each sign-off will name what I looked at and at which widths.
+Each sign-off names what I looked at and at which widths. Owners' fixes are signed off here as they report.
+
+### BC-M1, S73's committees: the rule's set confirmed (04:49 UTC, for maker B, the editor and the research lead)
+
+The research lead found that the rule names seven committees, not six. My BC-M1 ruling said "the three each the sidecar already names"; that was wrong, and the rule governs, not the count. Read by script from the research lead's downloads (`.../round-3-fix/research/dl/bcm1/`, `agg-to-C00703975.json`, `agg-to-C00828541.json`, `committees-payers.json`, the seven `agg-` files):
+- **The rule:** every committee the FEC designates a joint fundraising committee (designation J) that transferred to the nominee's principal campaign committee in the 2024 cycle. Of 92 committees that paid Harris's campaign, 3 are designated J; of 64 that paid Trump's, 4 are.
+- **Harris (3):** Harris Victory Fund, C00744946, $528,730,999.70 to the campaign; Harris Action Fund, C00838912, $4,900,000.00; Harris Baldwin Victory Fund, C00849281, $35,265.62.
+- **Trump (4):** Trump National Committee JFC, C00873893, $246,821,872.35; Trump Save America Joint Fundraising Committee, C00770941, $134,018,942.92; Trump 47 Committee, C00867937, $26,908,283.76; Trump Bilirakis Victory Fund, C00855114, $5,832.04 in 3 payments.
+- **Confirmed: all seven, frozen under the one rule.** A committee that paid a campaign but is not designated J (for example the Donald J. Trump Republican Nominee Fund 2024, $29,133.95) stays out, read the same way for both.
+- **Every fund folds into its nominee's one sender bar; none draws as a sender part of its own.** The bar is named for the nominee with its count ("Harris’s three joint fundraising committees", "Trump’s four joint fundraising committees"). A $5,832.04 part would draw far under a pixel at $4 million a pixel, and parts of unequal visibility would make one side's bar look more divided than the other's. The grouped table's "From" names each of the seven funds in its rows, and the export carries every row with its fund.
+- **The measure stays line 22**, split from line 21B and 28C by the itemized files as RL-3 did; the aggregates by recipient are not the measure, since they sum every line. Refunds sit apart in the table as now; any line 21B to a drawn committee goes in a note, for both sides alike.
+- **Receivers fold by kind, by one rule stated in the sidecar and read the same way for both:** the nominee's campaign; national party committees (the DNC and RNC, and any party's House or Senate committee if one appears), with their count; state party committees, with their count; every other committee (for example Save America, Bilirakis for Congress, Tammy Baldwin for Senate), with their count. The research lead names in the sidecar how it tells a state party committee from a national one (for example the FEC's committee type and the committee's own name); "Oklahoma Leadership Council", which Trump 47 Committee paid, shows why the rule must be written down.
+- **The contrast does not hold.** By script, Trump 47 Committee paid 54 recipients, the Republican National Committee $136,907,129.22 of them; the Harris Action Fund paid the DNC $51,530,000.00. So "53 committees" against "two" goes. The title states what the record shows across all seven by one measure, and I read it from the left and the right before sign-off. The editor drafts it from the frozen file's sums; no figure prints until the research lead's data check passes.
+- **Sign-off of S73** waits on the frozen file, maker B's build and the editor's title. I check every sum by script and look at 1440 and 390 px on both grounds and in grayscale.
 
 ### Tested, review fix pass
 
@@ -894,7 +907,7 @@ The main session's calls D3-1320 to D3-1330 landed while I ruled. Where they dif
 
 ### Routine calls, review fix pass (BC)
 
-- D3-xxx | S73 draws every joint fundraising committee that transferred to each nominee's campaign, three for each, one sender bar per nominee, receivers folded by kind, line 22 as the measure; the title compares reach only if it holds across all six; replaces my ST-S6 ruling | BC-M1 with D3-1330: the drawn contrast came from the rule that picked one committee each
+- D3-xxx | S73 draws every committee the FEC designates a joint fundraising committee that transferred to each nominee's campaign, three for Harris and four for Trump, each folded into one sender bar per nominee, receivers folded by kind, line 22 as the measure; the title compares reach only if it holds across all six; replaces my ST-S6 ruling | BC-M1 with D3-1330: the drawn contrast came from the rule that picked one committee each
 - D3-xxx | If the four other committees cannot be read this pass, S73 keeps one each with a title that compares no reach and a note naming the four not read | BC's route (b), with board 2 showing the open item
 - D3-xxx | S80 draws a framed Detroit inset in both panels at every width, and a note says each district elects one member whatever its area | BC-S1: land stood in for seats
 - D3-xxx | S76's width key draws in the band fill with its edge | BC-S2: a key must look like what it measures
@@ -920,3 +933,4 @@ Not tested:
 - No build, capture or browser: every change ruled here waits for its owner's build and my sign-off.
 - The four other joint fundraising committees' line 22 transfers (the research lead reads them under BC-M1).
 - BC's, CD's and AX's captures, label counts and contrast figures: read from their reports, not repeated, except where a figure above says "by script".
+- After BC-M1's confirmation, 04:48 to 04:49 UTC, by script from the research lead's downloads in `.../round-3-fix/research/dl/bcm1/`: the payers to each campaign with their FEC designation (3 of 92 designated J for Harris, 4 of 64 for Trump), each fund's transfers to its campaign, each fund's recipient count and aggregate total, and the top recipients of five funds (Trump 47 Committee to the RNC $136,907,129.22; the Harris Action Fund to the DNC $51,530,000.00). Not tested: the line split of the four new funds, which waits on the research lead's itemized files and data check.

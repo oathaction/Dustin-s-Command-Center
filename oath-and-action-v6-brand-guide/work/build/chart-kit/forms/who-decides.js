@@ -26,7 +26,7 @@
       var col = function (r) { return Math.max(0, levels.indexOf(String(r[el]))); };
       var ord = (L.order || []).map(String), rank = function (r) { var i = ord.indexOf(String(r[ek])); return i < 0 ? ord.length + r[ek] : i; };
       var band = function (v) { return c.rows.filter(function (r) { return !!r[ec] === v; }).sort(function (a, b) { return col(a) - col(b) || rank(a) - rank(b); }); };
-      var at = {}, y = 0;
+      var at = {}, y = 0, band_end = {};
       var node = function (r, x, top, w, h, eyebrow) {
         var nm = split(r), words = nm[0];
         var nb = K.parts.node(c, { x: x, y: top, w: w, h: h }, words, { stroke: 'subject', align: 'start', lines: 8, pad: pad, sub: nm[1] || undefined, sub_lines: 4, weight: 600, roles: role, data: { key: String(r[ek]), field: 'who', value: r[ew] } });
@@ -78,6 +78,7 @@
             });
             bottom = Math.max(bottom, yy - 22);
           });
+          sts.forEach(function (st) { st.rows.forEach(function (r) { band_end[String(r[ek])] = bottom; }); });
           y = bottom + (bi ? 0 : 28);
         });
       } else {
@@ -114,7 +115,8 @@
           var fx = f.x + f.w / 2, tx = t.x + t.w / 2;
           if (Math.abs(fx - tx) < 1) K.parts.link(c, { x: fx, y: f.y + f.h }, { x: tx, y: t.y }, od);
           else {
-            var bend = f.y + f.h + 12;
+            // the line turns in the gap under the band it leaves, clear of the bodies below the one it leaves
+            var bend = Math.max(f.y + f.h + 12, (band_end[String(a.from)] || 0) + 14);
             K.parts.link(c, { x: fx, y: f.y + f.h }, { x: fx, y: bend }, o);
             K.parts.link(c, { x: fx, y: bend }, { x: tx, y: bend }, o);
             K.parts.link(c, { x: tx, y: bend }, { x: tx, y: t.y }, od);

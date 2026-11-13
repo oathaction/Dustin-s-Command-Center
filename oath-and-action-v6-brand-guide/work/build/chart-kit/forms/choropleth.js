@@ -9,6 +9,7 @@
  * in place of bins), steps (fills, lightest first; default seq-1, seq-3, seq-4, seq-5), class_labels, key_title, nation
  * (the row's code, default US), nation_label ({value}, {margin}), dc ('DC' square words), codes (false: no state codes),
  * state_lines (true on a county layer: state borders in the context ink at 0.5 px), none_label (a region with no value),
+ * none_hatch (true: that region and its key swatch take a hatch in the context ink over the land ink; BC-S3),
  * outline_all (true: the context edge round the land). formats: value, margin. */
 (function (K) {
   'use strict';
@@ -31,6 +32,13 @@
     }
     var fill_of = function (it) { return it.cls ? steps[it.cls - 1] : 'land'; };
     K.parts.map_shapes(c, L, T, o.items.map(function (it) { return { id: it.id, fill: fill_of(it), data: it.data }; }), { merge: !!o.merge });
+    // BC-S3 (round 3 fix pass): a region with no estimate takes a hatch in the context ink over the land ink, on both
+    // grounds, so it never reads as the lightest class (o.none_hatch)
+    var nones = o.items.filter(function (it) { return !it.cls; });
+    if (o.none_hatch && nones.length) {
+      c.pattern('none', 'context');
+      K.parts.map_shapes(c, L, T, nones.map(function (it) { return { id: it.id, pattern: 'none' }; }), { merge: !!o.merge });
+    }
     var cls_of = {};
     o.items.forEach(function (it) { cls_of[it.id] = it.cls; });
     var first = function (id) { return id !== null && (cls_of[id] === 1 || cls_of[id] === null || cls_of[id] === undefined); };
@@ -122,11 +130,12 @@
     var by = ky + 13, rowb = by;
     // one swatch and its words a step, in rows that wrap; a label too long for the row wraps under itself, and the next
     // row starts under its last line (the data lead's C-2: S84's longest label at 224 px)
-    var items = words.map(function (w, i) { return { w: w, fill: steps[i], edge: i === 0 }; }).concat((extra || []).map(function (e) { return { w: e.words, fill: e.fill, edge: true }; }));
+    var items = words.map(function (w, i) { return { w: w, fill: steps[i], edge: i === 0 }; }).concat((extra || []).map(function (e) { return { w: e.words, fill: e.fill, edge: true, pattern: e.pattern }; }));
     items.forEach(function (it) {
       var need = sw + 6 + c.measure(it.w, 'tick');
       if (x > 0 && x + need > W) { x = 0; by = rowb + 19; }
       c.rect(x, by - 11, sw, sw, { fill: it.fill, mark: false });
+      if (it.pattern) { c.pattern(it.pattern, 'context'); c.rect(x, by - 11, sw, sw, { pattern: it.pattern, mark: false }); }
       if (it.edge) c.rect(x + 0.5, by - 10.5, sw - 1, sw - 1, { stroke: 'context', width: 1, mark: false });
       var tb = c.text(x + sw + 6, by, it.w, { role: 'tick', max: W - x - sw - 6 });
       rowb = Math.max(rowb, tb.bottom);

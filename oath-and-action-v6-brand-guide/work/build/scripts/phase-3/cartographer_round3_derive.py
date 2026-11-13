@@ -599,12 +599,21 @@ def figures():
     eq('S78', [len(byc[k]) for k in (1, 2, 3, 4)], [9, 11, 20, 11], 'class counts')
     eq('S78', 'DC' in byc[4] and 'DC' not in byc[1], True, 'DC in the top class, so 10 states and DC; nine states at the bottom')
     has('S78', '10 states and DC', 'title'); has('S78', 'under 71 percent in nine states', 'title')
-    # the data lead's count (ruling (c)): the printed figure, one decimal, with its printed margin, ends included
-    cross = [r['code'] for r in st if any(round(float(r['broadband_fixed_pct']), 1) - float(r['broadband_fixed_pct_moe_s2801']) <= b <= round(float(r['broadband_fixed_pct']), 1) + float(r['broadband_fixed_pct_moe_s2801']) for b in (71, 75, 79))]
-    eq('S78', len(cross), 13, 'intervals crossing a break'); has('S78', 'Thirteen of the 50 states and the District of Columbia', 'note 1')
-    for code in ('CO', 'UT', 'WA', 'HI'): eq('S78', code in byc[4], True, 'alt: %s in the top class' % code)
-    for code in ('AK', 'MS', 'WV', 'MT', 'NM'): eq('S78', code in byc[1], True, 'alt: %s in the bottom class' % code)
-    ne = ['CT', 'DE', 'MA', 'MD', 'NH', 'NJ']; eq('S78', sum(1 for c in byc[4] if c in ne) > len(byc[4]) / 2, True, 'alt: most of the top class in the Northeast')
+    # ST-S12 (review fix pass, the data lead's rule): count on the figures the table prints, one decimal half up; a place
+    # crosses where its printed interval reaches a value in another class, an interval ending exactly on a break reaching
+    # the class that begins there
+    import decimal
+    p1 = lambda x: float(decimal.Decimal(str(x)).quantize(decimal.Decimal('0.1'), rounding=decimal.ROUND_HALF_UP))
+    pr = {r['code']: (p1(r['broadband_fixed_pct']), float(r['broadband_fixed_pct_moe_s2801'])) for r in st}
+    eq('S78', [c for c in pr if cl(pr[c][0]) != cl(float([r for r in st if r['code'] == c][0]['broadband_fixed_pct']))], [], 'rounding moves no class')
+    cross = sorted(c for c, (e, m) in pr.items() if cl(round(e - m, 1)) != cl(e) or cl(round(e + m, 1)) != cl(e))
+    eq('S78', cross, ['AR', 'CA', 'CO', 'DC', 'DE', 'KS', 'ND', 'NE', 'OK', 'VT', 'WI', 'WY'], 'intervals crossing a break, on the printed figures')
+    has('S78', 'On the figures the table prints, 11 states and the District of Columbia sit close enough to a class line', 'note 1')
+    # ST-S5: the alt names a state in a class only where its printed interval sits inside it
+    clear_top = sorted(c for c in byc[4] if round(pr[c][0] - pr[c][1], 1) >= 79)
+    eq('S78', clear_top, ['CT', 'HI', 'MA', 'MD', 'NH', 'NJ', 'UT', 'WA'], 'alt: the top class clear of the line')
+    has('S78', 'eight of them stay in it even at the low end of the survey’s margin of error: Connecticut, Hawaii, Maryland, Massachusetts, New Hampshire, New Jersey, Utah and Washington', 'alt')
+    for code in ('AK', 'MS', 'WV', 'MT', 'NM'): eq('S78', code in byc[1] and round(pr[code][0] + pr[code][1], 1) < 71, True, 'alt: %s under 71 across its margin' % code)
     has('S78', 'United States {value}% (±{margin})', 'national label')
     # S79: the distance and bearing between the Gazetteer's internal points; the photograph's credit
     pl = {r['name']: r for r in read('census-gazetteer-2024-places')}
@@ -631,6 +640,14 @@ def figures():
     one = sorted((r['state'], r['district']) for r in hc if r['seat_kind'] == 'one-party contest (top-two)')
     eq('S82', one, [('CA', '12'), ('CA', '16'), ('CA', '20'), ('CA', '34'), ('WA', '04'), ('WA', '09')], 'one-party contests')
     has('S82', '36 of the 435 races were decided by under 5 points', 'title'); has('S82', '22 won by Democrats and 14 by Republicans, and 22 seats', 'alt')
+    # ST-M4: the list column names exactly the 36 seats under 5 points as printed
+    cs = [r for r in hc if r['close_seat']]; eq('S82', (len(cs), len(set(r['state'] for r in cs)), sorted(r['state'] + r['district'] for r in cs) == sorted(r['state'] + r['district'] for r in u5)), (36, 21, True), 'closest races listed')
+    eq('S82', all(r['close_seat'].endswith('(%s, %s)' % (r['winner_group'], r['margin_printed'])) for r in cs), True, 'each close seat with its party and printed margin')
+    # ST-S4: the six non-voting members, the district-98 features of the boundary file
+    with open(os.path.join(DATA, 'census-cb-2024-cd119.geojson'), encoding='utf-8') as fh:
+        d98 = sorted(f['properties']['geoid'] for f in json.load(fh)['features'] if f['properties'].get('district') == '98')
+    eq('S82', d98, ['1198', '6098', '6698', '6998', '7298', '7898'], 'six non-voting members: DC, American Samoa, Guam, Northern Mariana Islands, Puerto Rico, Virgin Islands')
+    has('S82', 'the six members who have no vote on the House floor: the delegates of the District of Columbia, American Samoa, Guam, the Northern Mariana Islands and the U.S. Virgin Islands, and Puerto Rico’s Resident Commissioner', 'note 4')
     # S81: county classes and crossings, the nation
     ic = read('census-acs5-county-median-household-income-classes'); usr = [r for r in read('census-acs5-county-median-household-income') if r['geoid'] == 'US'][0]
     eq('S81', [sum(1 for r in ic if r['income_class'] == str(k)) for k in (1, 2, 3, 4)], [371, 1138, 1049, 585], 'class counts')
@@ -639,6 +656,8 @@ def figures():
     eq('S81', (usr['median_household_income'], usr['moe']), ('80734', '166'), 'nation'); has('S81', '$80,734 (±$166)', 'national label')
     eq('S81', [r['name'] for r in ic if r['income_class'] == ''], ['De Baca County, New Mexico'], 'no estimate')
     for w in ('585 counties and under $50,000 in 371', '1,707 of 3,143', '182 two classes away'): has('S81', w, 'title and note')
+    eq('S81', sum(1 for r in est if int(r['median_household_income']) >= int(usr['median_household_income'])), 549, 'counties at or above the nation (ST-S7)')
+    has('S81', '549 of the 3,143 counties sit at or above it', 'note 2')
     # S83: dots and the county sum
     dd = read('census-cbp-county-employment-dots'); e = [r for r in dd if r['paid_employees'] != '']
     tot = sum(int(r['paid_employees']) for r in e); eq('S83', (len(e), tot), (3142, 132151802), 'counties and their sum')
@@ -648,6 +667,8 @@ def figures():
         if acc >= tot / 2: n_half = i + 1; break
     eq('S83', n_half, 100, 'counties holding half'); has('S83', 'Half of the 132.2 million', 'title'); has('S83', '100 of the 3,142 counties', 'title')
     none = [r for r in e if r['dots_10k'] == '0']; eq('S83', (len(none), sum(int(r['paid_employees']) for r in none)), (1354, 2841136), 'no dot')
+    none5 = [r for r in e if r['dots_50k'] == '0']; eq('S83', (len(none5), sum(int(r['paid_employees']) for r in none5)), (2426, 15370827), 'no dot at 50,000 (ST-S1)')
+    has('S83', '1,354 counties holding 2.8 million employees. On a phone, where a dot stands for 50,000, 2,426 counties holding 15.4 million draw none.', 'note 1')
     cbm = meta('census-cbp-county-employment'); eq('S83', any('139,831,742' in n and '7,679,940' in n for n in cbm.get('notes', [])), True, 'the national total and the gap in the sidecar')
     eq('S83', 139831742 - tot, 7679940, 'gap'); has('S83', 'Another 7.7 million', 'note 4'); has('S83', 'The dots draw the 132.2 million', 'note 4')
     eq('S83', (sum(1 for r in e if r['emp_noise_flag'] == 'H'), sum(1 for r in e if r['emp_noise_flag'] == 'J')), (378, 29), 'flags'); has('S83', '378 counties’ counts by 2 to under 5 percent and 29 by 5 percent or more', 'note 3')
@@ -660,6 +681,18 @@ def figures():
         eq('S84', tuple(sum(1 for r in rs if r['class'] == k) for k in ('above $7.25', 'at $7.25', 'below $7.25 or no state minimum')), want, 'panel ' + y)
         eq('S84', [r['class'] for r in rs if r['code'] == 'DC'], ['above $7.25'], 'DC above in ' + y)
     for w in ('Thirty states and DC', '14 states and DC on January 1, 2010', '23 and DC in 2014, 29 and DC in 2019 and 30 and DC in 2024'): has('S84', w, 'title and alt')
+    # ST-S4 and AX-S3: the places the Department lists and the map does not draw; the marks in the four years
+    hist = read('dol-state-minimum-wage-history')
+    eq('S84', sorted(set(r['code'] for r in hist) - set(r['code'] for r in mw) - {'US'}), ['GU', 'PR', 'VI'], 'places the table lists and the map does not draw')
+    has('S84', 'also lists Guam, Puerto Rico and the U.S. Virgin Islands, which the map does not draw', 'note 3')
+    import re as _re, collections as _co
+    four = [r for r in mw if r['year'] in ('2010', '2014', '2019', '2024')]
+    mk = _co.Counter(m for r in four for m in _re.findall(r'\[[a-z]\]|\([a-z]\)', r['rate_as_published']))
+    eq('S84', dict(mk), {'[c]': 14, '(g)': 12, '(e)': 11, '(d)': 4}, 'marks in the four years')
+    eq('S84', sum(1 for r in four if r['rate_as_published'] == '...'), 20, 'cells printed "..." (No state law)')
+    key = ' '.join(meta('dol-state-minimum-wage-history').get('notes', []))
+    for w in ('[c] - Rates applicable to employers of four or more', '(d) - Rates applicable to employers of six or more', '(e) - Rates applicable to employers of two or more', '(g) - Minnesota sets a lower rate'): eq('S84', w in key, True, 'the Department\'s key: ' + w)
+    has('S84', '[c], (d) and (e) mark rates for employers of four, six or two or more workers, and (g) marks a state that sets a lower rate for some smaller businesses', 'note 4')
     with open(os.path.normpath(os.path.join(HERE, '..', '..', '..', 'extract', 'atlas-v7-data.json')), encoding='utf-8') as fh:
         atlas = json.load(fh)
     def find(o):
