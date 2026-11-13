@@ -1,0 +1,85 @@
+{
+ "kit": 1,
+ "id": "S74",
+ "form": "adjacency-matrix",
+ "family": "relationships",
+ "tier": "extended",
+ "dataset": [
+  "v7-region-connection-matrix",
+  "v7-links-with-regions"
+ ],
+ "where": {
+  "links": {"not": [0]}
+ },
+ "reader_question": "Which parts of the atlas connect to which?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "The atlas’s own model: our count of its connections by region",
+ "title": "Of the atlas’s 118 connections, 23 start in governing institutions, more than in any other region, and all 7 authority connections start there.",
+ "measure_line": "Connections in the atlas’s model, counted by the region each starts in and the region it reaches, as of October 15, 2026",
+ "notes": [
+  "A connection links two variables in the atlas’s model; a count says how many connections join two regions, not how strong they are.",
+  "Authority connections, such as a legislature setting a regulator’s powers, carry no plus or minus sign in the atlas, so they form their own class."
+ ],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "A grid of the atlas’s ten regions, rows for where a connection starts and columns for where it ends, with 44 of the 100 cells holding connections. Governing institutions starts 23, the most, including all seven authority connections; outside drivers receives none.",
+ "table": {
+  "caption": "Connections in the atlas’s model by region, as of October 15, 2026",
+  "columns": [
+   {"field": "from_title", "label": "From region", "format": "text", "row_header": true},
+   {"field": "to_title", "label": "To region", "format": "text"},
+   {"field": "links", "label": "Connections", "format": "integer"},
+   {"field": "positive", "label": "Plus sign", "format": "integer"},
+   {"field": "negative", "label": "Minus sign", "format": "integer"},
+   {"field": "no_sign", "label": "No sign (authority)", "format": "integer"}
+  ]
+ },
+ "phone": "differs",
+ "phone_note": "On a phone the rows carry numbers, and the numbered region names follow the grid.",
+ "artboard": "reading",
+ "domain": "all",
+ "states": [],
+ "v7": {"grade": "documented", "ids": [], "snapshot": "2026-10-15"},
+ "source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, model connections counted by region, as of October 15, 2026, United States. Snapshot of October 15, 2026. Counted by Oath & Action.",
+ "encode": {
+  "from": "from_region",
+  "to": "to_region",
+  "value": "links",
+  "special": "no_sign"
+ },
+ "labels": {
+  "order": ["A", "B", "C", "D", "E", "X", "production", "household", "money", "TC"],
+  "names": {
+   "A": "Economic structure",
+   "B": "Political inputs",
+   "C": "Electoral competition",
+   "D": "Governing institutions",
+   "E": "Legitimacy",
+   "X": "Outside drivers",
+   "production": "Production and income",
+   "household": "Household budgets and wealth",
+   "money": "Credit, trade and environment",
+   "TC": "Technology mechanisms"
+  },
+  "groups": [
+   {"name": "Power and accountability", "keys": ["A", "B", "C", "D", "E", "X"]},
+   {"name": "How the economy reaches a household", "keys": ["production", "household", "money"]},
+   {"name": "Technology and its effects", "keys": ["TC"]}
+  ],
+  "steps": [
+   {"min": 1, "max": 1, "label": "1"},
+   {"min": 2, "max": 2, "label": "2"},
+   {"min": 3, "max": 4, "label": "3 or 4"},
+   {"min": 5, "max": 7, "label": "5 to 7"}
+  ],
+  "key_title": "Connections in a cell",
+  "special_label": "Authority connections, no sign",
+  "from_label": "From",
+  "to_label": "To",
+  "named": ["D"]
+ },
+ "notes_internal": [
+  "Maker B, round 3. Data plan row 95 with change 1, rule 14.105. Draft words, before the data lead's rulings."
+ ]
+}
