@@ -552,6 +552,7 @@ async function self_test() {
     ['a missing table', s => { s.table = { caption: 'x', columns: [] }; }, 'no columns'],
     ['an unknown form', s => { s.form = 'pie-of-pies'; }, 'not registered'],
     ['a bare atlas ID', s => { s.notes = ['As Loop R10 shows.']; }, 'not listed in v7.ids'],
+    ['a bare atlas claim ID (C-3, round 3)', s => { s.notes = ['As the atlas’s claim CL1516 records.']; }, 'CL1516 in notes[0] is an atlas ID not listed'],
     ['a causal verb on a plausible grade', s => { s.v7 = { grade: 'plausible', ids: [], snapshot: '2026-10-15' }; s.title = 'Tariffs caused the drop in jobs.'; }, 'causal verb'],
     ['an association titled as a cause', s => { s.evidence = 'association'; s.title = 'Rates drove the change.'; }, 'causal verb'],
     ['a typography replacement whose words hold what it finds (D3-519)', s => { s.typography = { curl_quotes: true, replace: [['Act', 'Acts']] }; }, 'second pass'],
@@ -1066,6 +1067,9 @@ async function self_test() {
       const h = K.table_html(sp, rows, { lean: true });
       pass(/>Senate Democrats<\/th><td>1<\/td><td class="t">A; B<\/td><td>1<\/td>/.test(h) && />House, D<\/th><td>1<\/td><td class="t">C<\/td><td>1<\/td>/.test(h),
         'A-E1 and A-E2: a table grouped by two columns, with a list and a count of the set' + (/Senate Democrats/.test(h) ? '' : ': ' + h.slice(0, 300))); }
+    { // C-3, C-E6: a claim ID listed in v7.ids prints in its typed chip, once
+      pass(K.chips('as CL1516 records', ['CL1516']) === 'as <span class="oa-id" data-oa-id="CL1516">Claim CL1516</span> records' && /claim <span class="oa-id" data-oa-id="CL1516">CL1516</.test(K.chips('the atlas’s claim CL1516', ['CL1516'])),
+        "C-3: an atlas claim ID takes its typed chip, its type word printed once"); }
     { // A-E5 and A-E6: a list of the rows that broke from their group, with fields in parentheses, and a distinct list
       const sp = { id: 'T', table: { columns: [{ field: 'm', label: 'M' }], group: { by: 'p', columns: [{ label: 'Party', agg: 'key' },
         { label: 'Broke', agg: 'list', field: 'm', odd: 'v', with: ['st', 'v'] }, { label: 'States', agg: 'list', field: 'st', distinct: true }] } } };

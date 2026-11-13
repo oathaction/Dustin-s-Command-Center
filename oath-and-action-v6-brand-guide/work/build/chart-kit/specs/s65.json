@@ -31,7 +31,7 @@
    {"field": "stage", "label": "Stage", "format": "text", "row_header": true},
    {"field": "role", "label": "Kind of row", "format": "text", "words": {"stage": "Stage", "set apart": "Set apart, pending", "drop": "Lost between stages", "split": "Part of kept coverage"}},
    {"field": "people", "label": "Renewals", "format": "integer"},
-   {"field": "share_of_due", "label": "Share of renewals due, 0 to 1", "format": "number:4"}
+   {"field": "share_of_due", "label": "Share of renewals due", "format": "fraction-percent:1"}
   ]
  },
  "phone": "same",
