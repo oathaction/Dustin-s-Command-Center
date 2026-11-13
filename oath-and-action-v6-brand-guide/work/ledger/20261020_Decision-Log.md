@@ -5477,3 +5477,10 @@ The main session reported that `phase3_ch14_build.py` still builds rounds 1 and 
 | D3-1306 | Maker B's entries cite Rule 14.4 for widths and Rule 14.6 for the path, a named arc, ribbon or flow, and the party tie, in place of restating them (14.104, 14.106, 14.107, 14.110, 14.112) | The rulings' cases now live in those rules |
 | D3-1307 | Where a maker's figure check reads a sentence word for word and H06 or W02 changes it, the editor makes the change and gives the maker the new string through the main session | H06 binds; the figures stay, and the check keeps reading the same facts |
 | D3-1308 | Other atlas source lines that print October 15, 2026 twice stay as they are this round, and the change goes to board 2 as an item (under "Requests", to the main session) | The main session's word: changing them would move round 0 to 2 specimens |
+
+### Main session, round 3 close
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1309 | `v7_check.py` indexes the atlas's 433 claims as IDs a chip may name, as `checks.js` does since C-E6; the closing page reads PASS, 0 failures (chapter 13 50 chips, chapter 14 128, chapter 15 116, 102 kit specs), with no page byte changed | The closing V7 check failed one line on S84's CL1516 chip, which the data lead's C-3 asked for |
+| D3-1310 | The share per plate stands at 14,106 bytes for the 13 finished specimens still to come: the measured map geometry (133,117) sits inside its own 250,000 reserve and is not counted twice; the reserve's unspent 116,883 stays held until round 4's plan shows no map needs it, and board 2 shows the figure | The engineer traced the room's arithmetic; releasing the reserve now would leave no room for another map layer, and round 4's forms are not yet drawn |
