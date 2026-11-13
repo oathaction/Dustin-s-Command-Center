@@ -5,37 +5,27 @@
  * a ring a seat decided another way. A line runs between states, and each state's code sits in its block where the
  * block leaves room over outlines or light squares. Where a square is under 10 px the dots and rings drop and a note
  * names those seats (phone: differs).
- * encode: state (code), district (text), party (category), margin (number), kind (category).
- * labels: layout (the layout dataset: state, district, col, row), panels ([{value, label}] in order; {n} gives the
- * party's seats), steps ([5, 10, 20]), step_labels (four words), key_title, marks ({kind: 'dot' | 'ring'}),
+ * encode: state (code), district (text), party (category), cls (integer: the margin's class, 1 to 4, from a derived
+ * table, so every map of these results takes one set of classes), mark (category: dot, ring or empty), col and row
+ * (integer: the seat's square in the tile layout).
+ * labels: panels ([{value, label}] in order; {n} gives the party's seats), step_labels (four words), key_title,
  * mark_labels ({dot, ring}), ghost_label, small ({dot, ring}: the note's words where marks drop; {seats} fills),
  * codes_note (words under the map naming states whose code found no room in either panel; {codes} fills). */
 (function (K) {
   'use strict';
   K.register_chart({
     form: 'district-tile-map', name: 'District Tile Map', family: 'maps',
-    encode: { state: 'code', district: 'text', party: 'category', margin: 'number?', kind: 'category' },
-    labels: ['layout', 'panels', 'steps', 'step_labels', 'key_title', 'marks', 'mark_labels', 'ghost_label', 'small', 'codes_note'],
-    phone: 'differs', extra: true,
+    encode: { state: 'code', district: 'text', party: 'category', cls: 'integer', mark: 'category?', col: 'integer', row: 'integer' },
+    labels: ['panels', 'step_labels', 'key_title', 'mark_labels', 'ghost_label', 'small', 'codes_note'],
+    phone: 'differs',
     draw: function (c) {
       var L = c.labels, W = c.width, es = c.field('state'), ed = c.field('district'), ep = c.field('party');
-      var em = c.field('margin'), ek = c.field('kind');
-      var lay = (c.extra || {})[L.layout];
-      if (!lay) throw new Error('labels.layout names no dataset this spec carries');
+      var ek = c.field('cls'), emk = c.field('mark', false), ecol = c.field('col'), erow = c.field('row');
       var at = {}, cols = 0, nrows = 0;
-      lay.forEach(function (r) { at[r.state + '|' + r.district] = r; cols = Math.max(cols, r.col + 1); nrows = Math.max(nrows, r.row + 1); });
-      var steps = L.steps || [5, 10, 20], marks = L.marks || {};
-      // a seat's class follows its margin as printed, to one decimal (ruling (f))
-      var step = function (m) {
-        if (m === null || m === undefined || m === '') return 4;
-        var v = Math.round(m * 10) / 10;
-        return v < steps[0] ? 1 : v < steps[1] ? 2 : v < steps[2] ? 3 : 4;
-      };
       var seats = c.rows.map(function (r) {
-        var t = at[r[es] + '|' + r[ed]];
-        if (!t) { c.warn('no square for ' + r[es] + ' ' + r[ed]); return null; }
-        return { r: r, col: t.col, row: t.row, st: step(r[em]), mk: marks[r[ek]] || null };
-      }).filter(Boolean);
+        cols = Math.max(cols, r[ecol] + 1); nrows = Math.max(nrows, r[erow] + 1); at[r[es] + '|' + r[ed]] = 1;
+        return { r: r, col: r[ecol], row: r[erow], st: r[ek], mk: (emk && r[emk]) || null };
+      });
       var gap = W >= 560 ? 2 : 1, pitch = Math.floor((W + gap) / cols * 10) / 10, size = pitch - gap;
       var big = size >= 10, gi = size >= 10 ? 2 : size >= 6 ? 1 : 0;   // a ghost sits inset, so it never reads as the lightest step   // dots and rings only where a square holds them (ruling (b))
       var y = 0, ink = function (s) { return 'mag-' + s; }, named = {};
@@ -48,7 +38,7 @@
         if (mk) mark_at(x + sw / 2, yb - 11 + sw / 2, sw, s, mk);
       };
       var mark_at = function (cx, cy, sz, s, mk) {
-        var on = s >= 3 ? 'label-on-subject' : 'label';
+        var on = 'on-mag-' + s;   // the step's own label ink
         if (mk === 'dot') c.circle(cx, cy, Math.max(1.75, sz * 0.14), { fill: on, mark: false });
         else { c.circle(cx, cy, Math.max(2.5, sz * 0.27), { fill: on, mark: false }); c.circle(cx, cy, Math.max(2.5, sz * 0.27) - 1.5, { fill: ink(s), mark: false }); }
       };
@@ -76,7 +66,7 @@
         seats.forEach(function (s) {
           var x = X(s.col), yy = Y(s.row), key = s.r[es] + ' ' + s.r[ed];
           if (String(s.r[ep]) === String(pn.value)) {
-            c.rect(x, yy, size, size, { fill: ink(s.st), data: { key: key, field: em, value: s.r[em] === null ? '' : s.r[em], party: s.r[ep] } });
+            c.rect(x, yy, size, size, { fill: ink(s.st), data: { key: key, field: ek, value: s.st, party: s.r[ep] } });
             if (s.st === 1) c.rect(x + 0.5, yy + 0.5, size - 1, size - 1, { stroke: 'context', width: 1, mark: false });
             if (big && s.mk) mark_at(x + size / 2, yy + size / 2, size, s.st, s.mk);
           } else c.rect(x + gi + 0.5, yy + gi + 0.5, size - 2 * gi - 1, size - 2 * gi - 1, { stroke: 'ghost', width: 1, mark: false });

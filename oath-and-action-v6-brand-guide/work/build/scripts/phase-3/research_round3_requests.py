@@ -302,6 +302,10 @@ def rl3(dl, write):
         'same way. Names: recipient_name_2024_election gives each committee the name its payer wrote just before the '
         'election, "HARRIS FOR PRESIDENT" (called "BIDEN FOR PRESIDENT" on its 14 payments to July 2024) and "DONALD J. '
         'TRUMP FOR PRESIDENT 2024, INC."; both have since become PACs.')
+    old_u = ('For each major-party nominee, the joint fundraising committee that transferred the most to the nominee’s '
+             'principal campaign committee in the 2024 cycle, and every committee it paid')
+    assert m['universe_or_base'] in (old_u, old_u + ' on line 22 (transfers) or line 28C (refunds)')  # RL-3a
+    m['universe_or_base'] = old_u + ' on line 22 (transfers) or line 28C (refunds)'
     u = 'https://api.open.fec.gov/v1/schedules/schedule_b/?committee_id={jfc}&recipient_committee_id={recipient}&two_year_transaction_period=2024'
     if u not in m['url']:
         m['url'].append(u)

@@ -4,10 +4,7 @@
  "form": "district-tile-map",
  "family": "maps",
  "tier": "extended",
- "dataset": [
-  "clerk-house-results-2024-by-district",
-  "census-gazetteer-2024-cd119-tile-layout"
- ],
+ "dataset": "clerk-house-results-2024-classes",
  "sort": [
   {
    "field": "state",
@@ -123,11 +120,12 @@
   "state": "state",
   "district": "district",
   "party": "winner_group",
-  "margin": "margin_pct",
-  "kind": "seat_kind"
+  "cls": "margin_class",
+  "mark": "mark",
+  "col": "col",
+  "row": "row"
  },
  "labels": {
-  "layout": "census-gazetteer-2024-cd119-tile-layout",
   "panels": [
    {
     "value": "Democratic",
@@ -138,11 +136,6 @@
     "label": "Republicans won {n} seats"
    }
   ],
-  "steps": [
-   5,
-   10,
-   20
-  ],
   "step_labels": [
    "Under 5 points",
    "5 to under 10 points",
@@ -150,13 +143,6 @@
    "20 points or more"
   ],
   "key_title": "Winner’s margin over the runner-up",
-  "marks": {
-   "unopposed on the ballot": "dot",
-   "one-party contest (top-two)": "ring",
-   "ranked-choice, first round (the Clerk prints the first round)": "ring",
-   "ranked-choice, final round (the Clerk prints the final round)": "ring",
-   "Louisiana open primary, decided in November": "ring"
-  },
   "mark_labels": {
    "dot": "Unopposed on the ballot, no margin",
    "ring": "Another kind of contest; the table names it"
@@ -171,8 +157,8 @@
  "notes_internal": [
   "Ruling (b) and (f): party by position, two panels, Democrats first, each named with its seats ({n} counted from the data); margin by four gray magnitude steps, step 1 with the context edge; unopposed seats step 4 with a dot; seats decided another way their step with a ring; no hue carries party (DR-48, DR-58, DR-64).",
   "Ruling (f): a seat's class follows its margin as printed to one decimal; by script 36, 33, 85 and 259 seats, and 22 unopposed (check S82 in cartographer_round3_derive.py --figures).",
-  "The tile layout is our own, built by cartographer_round3_derive.py from the Gazetteer's district centers (data plan row 111); no published layout was traced.",
-  "DR-249 and D3-1097: the table groups the 435 seats by state (seats, each party's wins, races under 5 points by the printed margin, unopposed seats); the CSV export lists every seat with its winner, margin and kind. count_in to 4.95 counts margins that print under 5.0."
+  "DR-249 and D3-1097: the table groups the 435 seats by state (seats, each party's wins, races under 5 points by the printed margin, unopposed seats); the CSV export lists every seat with its winner, margin and kind. count_in to 4.95 counts margins that print under 5.0.",
+  "Data: clerk-house-results-2024-classes, derived by cartographer_round3_derive.py from the Clerk's results and our tile layout (census-gazetteer-2024-cd119-tile-layout, from the Gazetteer's district centers; data plan row 111: no published layout was traced). S80 reads the same file, so both maps take one set of classes."
  ],
  "formats": {
   "margin": "number:1"

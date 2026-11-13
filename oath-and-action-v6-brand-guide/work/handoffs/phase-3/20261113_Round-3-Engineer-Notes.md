@@ -165,7 +165,7 @@ To others:
 - `oa-chart.mjs self-test`: every planted fault caught, with 14 new cases (links through words, words on a link, node fit, the tree, flows' sums, a flow band's edge, RB3-G1, shapes in a moved group, a grouped table with `count_eq`, a one-column CSV's empty cell).
 - Snapshot against the committed kit (`kit_snapshot.mjs`, HEAD's forms, HEAD's 64 specs): with the 2017 geometry, 704 of 704 drawings and figures equal; with the 2024 geometry, only S16's 10 drawings differ (the outlines, R3-4). Every committed spec's island equal (64 of 64).
 - `geo_build.py`: four layers built from the frozen files; decoded in Node; the states' centers equal the 2017 frame's (Alabama 671.6, 432.2).
-- `build s16` on the 2024 outlines, sweep on: 0 faults; its capture at 1440 px looked at.
+- `build s16` on the 2024 outlines, sweep on: 0 faults; its captures at 1440 px on Newsprint and 390 px on Charcoal looked at.
 - The data check: 117 tables, 0 faults, the five boundary files read; nine planted faults in a copy of the states file each caught.
 - DL-E1's scratch measure (variants A to D), the grouped island read back to equal rows and an equal drawing, and the county map's sweep (17 s, no fault); its 720 px drawing looked at.
 - `guide_charts.py --self-test` and `guide_build.py --self-test` (32 of 32 scenarios) pass; the strict build passes with no warning.
@@ -175,4 +175,4 @@ To others:
 
 - The map parts in a maker's own form: the cartographer has not drawn on them yet. In scratch forms I looked at `map_labels` on the states (720 and 358 px), `map_dots` on 13,028 dots at 10,000 a dot and 2,400 at 50,000, and California's counties with Kern County, Lake Isabella and `map_scale` (50 miles); the self-test covers each.
 - The page's own read-back of a grouped table in a browser (tested in Node through the kit's own functions).
-- S16 on Charcoal and at 390 px after the outline change (the build's checks ran; I looked at 1440 px on Newsprint only).
+- S16 at 1440 px on Charcoal and at 390 px on Newsprint after the outline change (the build's checks ran on all four; I looked at 1440 px on Newsprint and 390 px on Charcoal).
