@@ -69,7 +69,6 @@
   "unit": 4000000,
   "key_steps": [10000000, 50000000, 100000000],
   "key_title": "Each link’s width is the dollars it carried",
-  "key_hairline": "A link under {v} would draw 1 pixel wide",
   "ink": "party"
  },
  "formats": {
@@ -80,7 +79,7 @@
  "notes_internal": [
   "Maker B, round 3. Data plan row 94 with change 8, rule 14.104. Draws fec-jfc-transfers-2024 (P7-216, RL-3 of November 13, 2026): for each nominee the joint fundraising committee that sent the most to the principal campaign committee, read the same way for both, and every committee it paid on lines 22 and 28C.",
   "Data lead ruling (a): no named mark, both committees as a set; (b): both drawn alike, side by side from 680 px (one under the other below, each source's words heading its block under 420 px); every node edge and link in the party-mark ink (money spent to elect a candidate, Rule 14.6's list), node words in the text's ink; one linear unit for both, $4 million a pixel, with a key of three widths; Harris's 51 state party committees fold into one node and the table lists each.",
-  "Ruling RL-3a (MB-R3-1): line 22 alone draws, for both committees (labels.lines, encode.line amount_lines); the two line 28C refunds sort after the drawn rows and print in the table as not drawn; line 21B's $27,141,702.01 to three drawn committees is named in note 3; the other committees node and the hairline sentence leave; names from recipient_name_2024_election; source variant transfers_and_refunds. The key keeps its hairline line as a rule of the drawing.",
+  "Ruling RL-3a (MB-R3-1): line 22 alone draws, for both committees (labels.lines, encode.line amount_lines); the two line 28C refunds sort after the drawn rows and print in the table as not drawn; line 21B's $27,141,702.01 to three drawn committees is named in note 3; the other committees node and the hairline sentence leave; names from recipient_name_2024_election; source variant transfers_and_refunds. Every drawn link is wider than a pixel, so the key's hairline line is left out.",
   "Figures checked by maker_b_round3_derive.py --figures (check S73): line 22 sums, Harris Victory Fund $899,402,049.70 to 53 committees ($528.7 million campaign, $189.3 million DNC, $181.4 million to 51 state party committees, DC among them); Trump National Committee JFC $273,762,296.73 to two ($246.8 million campaign, $26.9 million RNC), every row on line 22; line 28C $81,000 in two rows; line 21B $27.1 million to three drawn committees, $12.0 million to the campaign and $15.1 million to the DNC, none for the Trump committee; the other joint fundraising committees' transfers to the campaigns from the sidecar's note, $4,935,265.62 and $160,927,226.68."
  ]
 }

@@ -178,35 +178,38 @@ def figures():
     want('S65', sp['title'], 'Of %s million Medicaid and CHIP renewals due from April 2023 to March 2024, %s million ended for a procedural reason, and %s million kept coverage' % (mil(fu['due']), mil(fu['ended_procedural']), mil(fu['kept'])), 'title')
     same('S65', sp['labels']['named'], ['ended_procedural'], 'the named loss')
 
-    # S73: both joint fundraising committees, folded as the drawing folds them
+    # S73: both joint fundraising committees, line 22 alone drawn (ruling RL-3a), folded as the drawing folds them
     sp, t = spec('s73')
     rows = read('fec-jfc-transfers-2024')
-    hv = [r for r in rows if r['jfc_name'] == 'HARRIS VICTORY FUND']
-    tn = [r for r in rows if r['jfc_name'] == 'TRUMP NATIONAL COMMITTEE JFC, INC.']
-    same('S73', len(hv) + len(tn), len(rows), 'two committees only')
+    hv = [r for r in rows if r['jfc_name'] == 'HARRIS VICTORY FUND' and r['amount_lines'] == '22']
+    tn = [r for r in rows if r['jfc_name'] == 'TRUMP NATIONAL COMMITTEE JFC, INC.' and r['amount_lines'] == '22']
+    refunds = [r for r in rows if r['amount_lines'] == '28C']
+    same('S73', len(hv) + len(tn) + len(refunds), len(rows), 'every row is line 22 or a line 28C refund')
     tot = lambda rs: round(sum(float(r['amount']) for r in rs), 2)
-    same('S73', (len(hv), len(tn)), (55, 2), 'committees paid')
-    want('S73', sp['title'], '$%s million to %d committees' % (mil(tot(hv)), len(hv)), 'Harris total')
-    want('S73', sp['title'], '$%s million to two' % mil(tot(tn)), 'Trump total')
+    same('S73', (len(hv), tot(hv), len(tn), tot(tn)), (53, 899402049.70, 2, 273762296.73), 'line 22 sums')
+    same('S73', (len(refunds), tot(refunds), {r['jfc_name'] for r in refunds}), (2, 81000.0, {'HARRIS VICTORY FUND'}), 'refunds')
+    want('S73', sp['title'], 'The Harris Victory Fund sent $%s million to %d committees in the 2024 cycle, and the Trump National Committee JFC sent $%s million to two' % (mil(tot(hv)), len(hv), mil(tot(tn))), 'title')
     camp = [r for r in hv if r['recipient_id'] == 'C00703975']
     dnc = [r for r in hv if r['recipient_id'] == 'C00010603']
     states = [r for r in hv if r['recipient_type'] == 'Party - Qualified' and r['recipient_id'] != 'C00010603']
-    rest = [r for r in hv if r not in camp + dnc + states]
-    same('S73', (len(camp), len(dnc), len(states), len(rest)), (1, 1, 51, 2), 'Harris folds')
+    same('S73', (len(camp), len(dnc), len(states), len(hv) - len(camp) - len(dnc) - len(states)), (1, 1, 51, 0), 'Harris folds')
     same('S73', 'DC' in [r['recipient_state'] for r in states], True, 'the District of Columbia among the 51')
-    want('S73', t, '$%s million to the Harris campaign, $%s million to the Democratic National Committee, $%s million to 51 state party committees and $%s to two other committees' % (mil(tot(camp)), mil(tot(dnc)), mil(tot(states)), '{:,.0f}'.format(tot(rest))), 'alt, Harris')
+    want('S73', t, '$%s million to the Harris campaign, $%s million to the Democratic National Committee and $%s million to 51 state party committees, $%s million in all' % (mil(tot(camp)), mil(tot(dnc)), mil(tot(states)), mil(tot(hv))), 'alt, Harris')
     tc = [r for r in tn if r['recipient_id'] == 'C00828541']
     rnc = [r for r in tn if r['recipient_id'] == 'C00003418']
     want('S73', t, '$%s million to the Trump campaign and $%s million to the Republican National Committee' % (mil(tot(tc)), mil(tot(rnc))), 'alt, Trump')
+    b21 = [r for r in rows if float(r['line_21b_amount'] or 0) > 0]
+    same('S73', (len(b21), round(sum(float(r['line_21b_amount']) for r in b21), 2), {r['jfc_name'] for r in b21}), (3, 27141702.01, {'HARRIS VICTORY FUND'}), 'line 21B')
+    same('S73', all(r in hv for r in b21), True, 'line 21B only to drawn committees')
+    want('S73', t, 'paid three of the committees drawn $%s million for operating expenses (line 21B), $%s million of it to the campaign and $%s million to the Democratic National Committee, and refunded $%s to two committees' % (mil(sum(float(r['line_21b_amount']) for r in b21)), mil(float(camp[0]['line_21b_amount'])), mil(float(dnc[0]['line_21b_amount'])), '{:,.0f}'.format(tot(refunds))), 'note 3')
     note = json.loads(meta('fec-jfc-transfers-2024')['notes'][0])
-    for nominee, campaign_words in (('Kamala D. Harris', 'Harris'), ('Donald J. Trump', 'Trump')):
+    for nominee, campaign_words, drawn in (('Kamala D. Harris', 'Harris', camp), ('Donald J. Trump', 'Trump', tc)):
         nt = note[nominee]
-        same('S73', round(nt['to_campaign'], 2), tot(camp if campaign_words == 'Harris' else tc), nominee + ': the committee drawn sent the most')
+        same('S73', round(nt['to_campaign'], 2), tot(drawn), nominee + ': the committee drawn sent the most')
         same('S73', all(o[1] < nt['to_campaign'] for o in nt['other_jfcs']), True, nominee + ': the rule picks the largest')
         want('S73', t, 'the %s campaign $%s million' % (campaign_words, mil(sum(o[1] for o in nt['other_jfcs']))), nominee + ': other committees')
-    want('S73', t, 'A link under $4 million draws one pixel wide', 'chart note against labels.unit')
     same('S73', sp['labels']['unit'], 4000000, 'unit')
-    same('S73', mil(tot(rest)) < '4', True, 'the other committees draw at a hairline')
+    same('S73', min(tot(rnc), tot(states), tot(dnc)) > sp['labels']['unit'], True, 'every drawn link is wider than a pixel')
 
     # S74: the region matrix against the 118 links
     sp, t = spec('s74')

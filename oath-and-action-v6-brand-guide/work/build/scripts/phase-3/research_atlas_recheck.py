@@ -455,13 +455,16 @@ def table_md(data, rows, tot_p0, tot_re, tot_conf, changed, model_ok, id_changed
       f'the results Phase 0 recorded: {tot_conf} conflicts, the same two Ledger reform counts for D03 and D04 that Phase 0 '
       'found, and nothing new. The rerun also found again, word for word, the 8 flags Phase 0 read in context and set aside '
       'as false positives. Every one of the '
-      f'{data["identifier_occurrences_rechecked"]:,} identifier occurrences Phase 0 recorded still resolves to the same kind '
-      f'of record ({len(id_changed)} changed). So the rerun adds **no candidate V7.1 item**; the two Ledger counts are '
+      f'{data["identifier_occurrences_rechecked"]:,} identifier occurrences Phase 0 recorded (its 1,447 less the 18 Standards '
+      f'rule numbers and the 4 placeholders, which name no V7 record) still resolves to the same kind of record '
+      f'({len(id_changed)} changed). So the rerun adds **no candidate V7.1 item**; the two Ledger counts are '
       'Phase 0’s, already on its list.')
     w('')
     w(f'The other {n_not:,} comparisons could not be rerun from the record, because Phase 0 read their page side from lines '
-      'or drawings it did not store. Each of those families is tested through every V7-side value Phase 0 did store, and all '
-      'are equal today; beyond that they rest on the model’s provenance, below.')
+      'or drawings it did not store. Three of those families, the effect cells, Who Can Act and the rest of the Circuit, are '
+      'tested through the V7-side values Phase 0 stored for them, all equal today. The other four (the production table rows, '
+      'connection names without an ID, effect words, and domain and layer rows) have no stored V7 side and rest on the model’s '
+      'provenance alone, below.')
     w('')
     w('## Which files the rerun could and could not read')
     w('')
@@ -488,7 +491,7 @@ def table_md(data, rows, tot_p0, tot_re, tot_conf, changed, model_ok, id_changed
     for r in rows:
         v7s = FAM[r[0]].get('v7_side')
         w(f'| {r[0]} | {r[1]:,} | {r[2]} | {r[3]:,} | {r[4]} | {r[5]} | ' +
-          (f'yes, {sum(v7s)} of {len(v7s)} values' if v7s else 'none recorded') + ' |')
+          (f'yes, {sum(v7s)} of {len(v7s)}' if v7s else 'none recorded') + ' |')
     w(f'| **Total** | **{tot_p0:,}** | **2** | **{tot_re:,}** | **{tot_conf}** | {tot_re:,} rerun; {n_not:,} not | |')
     w('')
     w('## Conflicts today')

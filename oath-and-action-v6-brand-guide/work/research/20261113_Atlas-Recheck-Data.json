@@ -1,0 +1,255 @@
+{
+ "run": "November 13, 2026, research lead, Phase 3 round 3 (DR-250)",
+ "v7_model": {
+  "file": "work/research/atlas-v7-docs/20261015_Atlas-V7-Model.json",
+  "sha256": "ef1028ac87e402e30af9e3cda234fed63794b5570d0a165b9dab39073e08c7f2",
+  "extract_equal": true
+ },
+ "families": [
+  {
+   "family": "Concepts V2 Register connection rows",
+   "phase0_comparisons": 908,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 908,
+   "rerun_conflicts": 0,
+   "method": "recomputed from the recorded rows",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "Concepts V2 Register variable cards",
+   "phase0_comparisons": 213,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 213,
+   "rerun_conflicts": 0,
+   "method": "recomputed from the recorded cards",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "Concepts V2 Register reform rows",
+   "phase0_comparisons": 172,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 172,
+   "rerun_conflicts": 0,
+   "method": "recomputed from the recorded rows",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "Concepts V2 Register effect cells",
+   "phase0_comparisons": 344,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 0,
+   "rerun_conflicts": 0,
+   "method": "not recomputed: the cells were read from the SVG and not recorded; V7 side tested through Phase 0’s recorded effect-code tallies",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "Concepts V2 Register sheet figures and index table",
+   "phase0_comparisons": 146,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 146,
+   "rerun_conflicts": 0,
+   "method": "recomputed from the recorded sheet and index figures; busiest crossings by Phase 0’s recorded counts",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "Concepts V2 Field Guide specimens",
+   "phase0_comparisons": 160,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 160,
+   "rerun_conflicts": 0,
+   "method": "recomputed from the recorded specimens and glyph counts",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "Concepts V2 Who Can Act",
+   "phase0_comparisons": 94,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 0,
+   "rerun_conflicts": 0,
+   "method": "V7 side only: Phase 0’s recorded route and effect tallies against today’s",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "Concepts V2 Ledger rows",
+   "phase0_comparisons": 48,
+   "phase0_conflicts": 2,
+   "rerun_comparisons": 48,
+   "rerun_conflicts": 2,
+   "method": "recomputed from the recorded rows",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": [
+    {
+     "item": "D03 reforms",
+     "shown": "10",
+     "v7_today": "9",
+     "type": "structure"
+    },
+    {
+     "item": "D04 reforms",
+     "shown": "14",
+     "v7_today": "13",
+     "type": "structure"
+    }
+   ]
+  },
+  {
+   "family": "Concepts V2 Circuit",
+   "phase0_comparisons": 27,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 9,
+   "rerun_conflicts": 0,
+   "method": "V7 side for the tally and the four area cards (9); the 5 pass-on examples and 13 drawn bundle counts were not recorded",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "Other numeric claims",
+   "phase0_comparisons": 21,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 21,
+   "rerun_conflicts": 0,
+   "method": "recomputed from the recorded claims",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "Direction-and-sign sentences",
+   "phase0_comparisons": 78,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 78,
+   "rerun_conflicts": 0,
+   "method": "reparsed from the lines Phase 0 recorded with each identifier",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "AVS production table rows",
+   "phase0_comparisons": 48,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 0,
+   "rerun_conflicts": 0,
+   "method": "not recomputed: the rows were read from the lines after each ID, not recorded",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "Connection names shown without an ID",
+   "phase0_comparisons": 127,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 0,
+   "rerun_conflicts": 0,
+   "method": "not recomputed: the lines were matched by name, not recorded",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "Connection IDs with a grade, delay or glyph shown beside them",
+   "phase0_comparisons": 179,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 179,
+   "rerun_conflicts": 0,
+   "method": "recomputed from the recorded attributes",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "Loop titles printed beside loop IDs",
+   "phase0_comparisons": 42,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 42,
+   "rerun_conflicts": 0,
+   "method": "reparsed from the recorded lines",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "Reform effect words (Concepts V2 and AVS outcome figure)",
+   "phase0_comparisons": 24,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 0,
+   "rerun_conflicts": 0,
+   "method": "not recomputed: read from the lines after each heading",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  },
+  {
+   "family": "AVS domain titles and layer rows",
+   "phase0_comparisons": 13,
+   "phase0_conflicts": 0,
+   "rerun_comparisons": 0,
+   "rerun_conflicts": 0,
+   "method": "not recomputed: read from the lines after each code",
+   "v7_side_equal_to_phase0": true,
+   "conflicts": []
+  }
+ ],
+ "totals": {
+  "phase0": 2644,
+  "rerun": 1976,
+  "rerun_conflicts": 2
+ },
+ "families_whose_result_changed": [],
+ "identifier_occurrences_rechecked": 1425,
+ "identifier_kinds_changed": [],
+ "ledger_conflicts_now": [
+  "D03 reforms",
+  "D04 reforms"
+ ],
+ "reviewed_false_positives_found_again": [
+  {
+   "item": "L26",
+   "shown": "grade hypothesis",
+   "file": "work/extract/v5-polished/chapters/16-atlas-system.html",
+   "why": "the word 'hypothetical' in this clause describes T01, the next link"
+  },
+  {
+   "item": "L26",
+   "shown": "grade hypothesis",
+   "file": "work/extract/v5-polished/chapters/16-atlas-system.html",
+   "why": "the word 'hypothetical' in this clause describes T01, the next link"
+  },
+  {
+   "item": "L26",
+   "shown": "grade hypothesis",
+   "file": "work/extract/v5-polished/images/e44e256497.svg",
+   "why": "the word 'hypothetical' in this clause describes T01, the next link"
+  },
+  {
+   "item": "L03",
+   "shown": "grade plausible",
+   "file": "work/extract/v5-polished/images/0164ea8408.svg",
+   "why": "'plausible' is the remedy evidence grade of reform R-28, shown on the line below"
+  },
+  {
+   "item": "L26",
+   "shown": "grade hypothesis",
+   "file": "work/extract/atlas-visual-system/chapters/05-evidence.html",
+   "why": "the word 'hypothetical' in this clause describes T01, the next link"
+  },
+  {
+   "item": "L26",
+   "shown": "grade hypothesis",
+   "file": "work/extract/atlas-visual-system/chapters/05-evidence.html",
+   "why": "the word 'hypothetical' in this clause describes T01, the next link"
+  },
+  {
+   "item": "L03",
+   "shown": "grade plausible",
+   "file": "work/extract/atlas-visual-system/images/0164ea8408.svg",
+   "why": "'plausible' is the remedy evidence grade of reform R-28, shown on the line below"
+  },
+  {
+   "item": "L26",
+   "shown": "grade hypothesis",
+   "file": "work/extract/atlas-visual-system/images/e44e256497.svg",
+   "why": "the word 'hypothetical' in this clause describes T01, the next link"
+  }
+ ]
+}
