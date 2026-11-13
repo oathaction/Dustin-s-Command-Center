@@ -2,7 +2,7 @@
  "id": "14.104",
  "title": "Use a network diagram to show who sent what to whom.",
  "rule": [
-  "Draw each sender and each receiver as a box with its name and amount inside, and join them with links whose width is the amount, in one linear unit for the whole drawing, with a key of widths (Rule 14.4). Stack the links that leave a box in the order of the boxes they reach, so none cross. Fold many small receivers of one kind into one box with their count, and list each in the table. Draw two sides alike, side by side and in one ink, and name each side in words; money spent to elect a candidate takes one neutral ink for every party, with no red or blue (Rules 14.6 and 14.7)."
+  "Draw each sender and each receiver as a bar as tall as its amount, with its name and amount beside it, and join them with links whose width is the amount, in one linear unit for the whole drawing, with a key of widths (Rule 14.4). Stack the links that leave a bar in the order of the bars they reach, so none cross. Fold many small receivers of one kind into one bar with their count, and list each in the table. Draw two sides alike, side by side and in one ink, and name each side in words; money spent to elect a candidate takes one neutral ink for every party, with no red or blue (Rules 14.6 and 14.7)."
  ],
  "use_when": "The reader asks where money or influence went from a few senders, and which links carried the most.",
  "use_instead": [
@@ -21,7 +21,7 @@
  ],
  "why": {
   "text": [
-   "Widths on one scale let a reader compare every link of both senders at a glance, and boxes that hold their names keep each end readable on a phone. Folding many small receivers keeps the drawing calm, and the table keeps every one."
+   "Bars and links on one scale let a reader compare every sender and receiver of both sides at a glance, and names set beside the bars keep each end readable on a phone. Folding many small receivers keeps the drawing calm, and the table keeps every one."
   ],
   "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
  },
@@ -32,7 +32,7 @@
   "14.3",
   "14.7"
  ],
- "builders": "Form network-diagram: node work/build/chart-kit/oa-chart.mjs build s73; encode source, target, value, target_key and kind; labels.nodes folds rows into nodes, labels.unit sets the measure one pixel of width carries, labels.key_steps the key, labels.ink the party-mark ink; draws through K.parts.node, flows, flow_band and width_key.",
+ "builders": "Form network-diagram: node work/build/chart-kit/oa-chart.mjs build s73; encode source, target, value, target_key and kind; labels.nodes folds rows into nodes, labels.unit sets the measure one pixel of width carries, labels.key_steps the key, labels.ink the party-mark ink; draws its bars as tall as their dollars in the links’ unit, through K.parts.flows, flow_band and width_key.",
  "correct": null,
  "failure": null
 }

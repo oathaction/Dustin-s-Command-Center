@@ -479,14 +479,50 @@ def cms_proc(dl, write):
     return out, 'metric 5c quoted in both sidecars'
 
 
+def snap_expedited(dl, write):
+    """RL-5 (for maker B's MB-7): who qualifies for expedited service, 7 CFR 273.2(i)(1), in the regulation's words.
+    dl holds govinfo-2025.xml (the 2025 annual edition), ecfr-273-2.html (eCFR's renderer, current) and versions.json
+    and titles.json (eCFR's versioner). The words come from govinfo and must equal eCFR's, word for word."""
+    import html as _html
+    import re as _re
+    import xml.etree.ElementTree as _ET
+    norm = lambda s: _re.sub(r'\s+', ' ', _re.sub(r'§\s*', '§ ', s)).strip()
+    root = _ET.parse(dl / 'govinfo-2025.xml').getroot()
+    paras = [' '.join(' '.join(p.itertext()).split()) for p in root.iter() if p.tag in ('P', 'FP')]
+    j = next(k for k, p in enumerate(paras) if 'Entitlement to expedited service' in p)
+    words = paras[j:j + 4]
+    words[0] = words[0].split('—', 1)[1].strip()
+    assert words[0].startswith('(1) Entitlement to expedited service.') and words[3].startswith('(iii) Households whose')
+    ecfr = norm(_html.unescape(_re.sub(r'<[^>]+>', ' ', (dl / 'ecfr-273-2.html').read_text(encoding='utf-8'))))
+    squeeze = lambda s: _re.sub(r'\s+', '', s)
+    assert all(squeeze(w) in squeeze(ecfr) for w in words), 'eCFR and govinfo differ'  # word for word, spacing aside
+    last = max(v['date'] for v in json.loads((dl / 'versions.json').read_text())['content_versions'])
+    t7 = [t for t in json.loads((dl / 'titles.json').read_text())['titles'] if t['number'] == 7][0]
+    assert last == '2020-07-14' and t7['up_to_date_as_of'] == '2026-11-10', (last, t7['up_to_date_as_of'])
+    quote = ' '.join(norm(w) for w in words)
+    note = ('Who qualifies for expedited service, 7 CFR 273.2(i)(1), in the regulation’s words (RL-5; read November 13, '
+            '2026 on eCFR, title 7 up to date as of November 10, 2026, and in the 2025 annual edition on govinfo, the same '
+            'word for word; the section was last amended July 14, 2020, so the November 9 reading this file froze holds): '
+            f'“{quote}”')
+    mp = OUT / 'govinfo-snap-application-steps.meta.json'
+    m, end = read_meta_any(mp)
+    m['notes'] = set_note(list(m.get('notes') or []), 'Who qualifies for expedited service, 7 CFR 273.2(i)(1)', note)
+    for u in ('https://www.ecfr.gov/api/versioner/v1/versions/title-7.json?part=273&section=273.2',):
+        if u not in m['url']:
+            m['url'].append(u)
+    t = json.dumps(m, indent=1, ensure_ascii=False) + end
+    assert '—' not in t and '‑' not in t
+    return [(mp, t)], 'three tests quoted: under $150 income with $100 or less in liquid resources; destitute farmworkers with $100 or less; income and resources below rent or mortgage and utilities'
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('item', choices=['rl1', 'rl2', 'rl3', 'judges', 'rl4', 'cms_proc'])
+    ap.add_argument('item', choices=['rl1', 'rl2', 'rl3', 'judges', 'rl4', 'cms_proc', 'snap_expedited'])
     ap.add_argument('--dl', required=True)
     ap.add_argument('--write', action='store_true')
     a = ap.parse_args()
     files, summary = {'rl1': rl1, 'rl2': rl2, 'rl3': rl3, 'judges': judges, 'rl4': rl4,
-                      'cms_proc': cms_proc}[a.item](Path(a.dl), a.write)
+                      'cms_proc': cms_proc, 'snap_expedited': snap_expedited}[a.item](Path(a.dl), a.write)
     for p, text in files:
         print(f'{p.name}: {put(p, text, a.write)}')
     print(f'{a.item}: {summary}')

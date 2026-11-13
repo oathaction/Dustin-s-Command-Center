@@ -2,7 +2,7 @@
  "id": "14.109",
  "title": "Draw a tie that runs both ways as one line with no arrowhead.",
  "rule": [
-  "Use symmetrical links, a reference form, where a tie means the same from either end, such as two agencies that share board members: draw each tie as one plain line with no arrowhead, as thick as its strength where it has one. Where a tie runs one way, give it an arrowhead (Rule 14.104), and where the two ways carry different amounts, draw two arcs, each with its own arrowhead and width."
+  "Use symmetrical links, a reference form, where a tie means the same from either end, such as two agencies that share board members: draw each tie as one plain line with no arrowhead, as thick as its count, such as shared members, with a key of widths (Rule 14.4). Where a tie runs one way, give it an arrowhead (Rule 14.104), and where the two ways carry different amounts, draw two arcs, each with its own arrowhead and width."
  ],
  "use_when": "The reader asks who is tied to whom, and each tie means the same from either end.",
  "use_instead": [
@@ -27,7 +27,7 @@
  "related": [
   "14.104"
  ],
- "builders": "No kit form: draw each tie with K.parts.link and no arrow, its width the tie’s strength.",
+ "builders": "No kit form: draw each tie with K.parts.link and no arrow, its width the tie’s count, with K.parts.width_key.",
  "correct": null,
  "failure": null,
  "sketch_alt": "Four nodes joined by plain lines with no arrowheads, each line as thick as the tie it draws."

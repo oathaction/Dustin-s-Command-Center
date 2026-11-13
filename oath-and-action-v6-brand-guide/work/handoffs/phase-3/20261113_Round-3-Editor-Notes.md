@@ -24,11 +24,11 @@ What round 2's words pass found most often, so you can write it right the first 
 
 - 00:50. Started. Read my role file, `CLAUDE.md`, chapter 02's writing rules, the round 3 brief and my round 2 notes. A rerun of `phase3_ch14_rules_build.py` before any change leaves `git status` clean. No round 3 spec, entry or sketch exists yet; the data lead's "Rulings" are in progress.
 - 00:55. First look at the cartographer's entries 14.114 to 14.116, under "Words for the cartographer".
-- 01:15. **The data lead's rulings (a) to (g) are in rules 14.1 to 14.14**, each case once, in `phase3_ch14_rules_build.py`, which rewrote `14-003`, `14-004`, `14-006`, `14-007`, `14-009` and `14-012`. No plate, drawing or caption changed. The cases and where each now lives are under "Rules 14.1 to 14.14" below. Entries cite these rules for them and never restate them.
-- 01:15. **The opener no longer links a heading the page lacks.** With 14.114 written and the chapter build still on rounds 1 and 2, the opener linked group 15 to an id the page did not hold. The generator now reads which groups the last chapter build printed. See "Group lines 11 to 15".
-- 01:20. First looks written for all three makers on what has landed (S65 to S69, S73, S74; entries 14.113 to 14.116 and sketch 14.113), as early items in the three "Words for" sections. The full words pass waits for the makers to report.
-- 02:30. **Maker B's words pass, done (D3-669).** 34 changes in 13 files, written straight into its word fields and logged under "Words for maker B": S65, S73 to S77 and entries 14.94, 14.104 to 14.107, 14.110 and 14.112; the six sketch captions read and kept. All six specs pass the kit with the sweep. Maker B's figure check reads three sentences word for word that H06 and W02 changed; the new strings are under "Words for maker B" for the main session to pass on.
-- 02:30. **Groups 11 to 15 now link from the opener**, after the chapter build took round 3 in, and **group lines 11, 13 and 14 are rewritten** against maker B's built entries (under "Group lines 11 to 15"). Group 12 waits for maker A, and group 15 for the cartographer.
+- 01:05. **The data lead's rulings (a) to (g) are in rules 14.1 to 14.14**, each case once, in `phase3_ch14_rules_build.py`, which rewrote `14-003`, `14-004`, `14-006`, `14-007`, `14-009` and `14-012`. No plate, drawing or caption changed. The cases and where each now lives are under "Rules 14.1 to 14.14" below. Entries cite these rules for them and never restate them.
+- 01:05. **The opener no longer links a heading the page lacks.** With 14.114 written and the chapter build still on rounds 1 and 2, the opener linked group 15 to an id the page did not hold. The generator now reads which groups the last chapter build printed. See "Group lines 11 to 15".
+- 01:11. First looks written for all three makers on what has landed (S65 to S69, S73, S74; entries 14.113 to 14.116 and sketch 14.113), as early items in the three "Words for" sections. The full words pass waits for the makers to report.
+- 02:09. **Maker B's words pass, applied (D3-669); paused at 02:11 at the main session's word, since maker B reopens its files for the data lead's MB-1 to MB-9.** 34 changes in 13 files, written straight into its word fields and logged under "Words for maker B": S65, S73 to S77 and entries 14.94, 14.104 to 14.107, 14.110 and 14.112; the six sketch captions read and kept. All six specs pass the kit with the sweep. Maker B's figure check reads three sentences word for word that H06 and W02 changed; the new strings are under "Words for maker B" for the main session to pass on.
+- 02:10. **Groups 11 to 15 now link from the opener**, after the chapter build took round 3 in, and **group lines 11, 13 and 14 are rewritten** against maker B's built entries (under "Group lines 11 to 15"). Group 12 waits for maker A, and group 15 for the cartographer.
 
 ## Routine calls
 
@@ -53,11 +53,11 @@ What round 2's words pass found most often, so you can write it right the first 
 - D3-xxx | S74 prints the research lead's new sidecar line, "snapshot of October 15, 2026, United States.", copied exactly | RB3-R3 (H04: the date once)
 - D3-xxx | Maker B's entries cite Rule 14.4 for widths and Rule 14.6 for the path, a named arc, ribbon or flow, and the party tie, in place of restating them (14.104, 14.106, 14.107, 14.110, 14.112) | The rulings' cases now live in those rules
 - D3-xxx | Where a maker's figure check reads a sentence word for word and H06 or W02 changes it, the editor makes the change and gives the maker the new string through the main session | H06 binds; the figures stay, and the check keeps reading the same facts
-- D3-xxx | Other atlas source lines that print "Snapshot of October 15, 2026." stay this round, and no board 2 item is needed | None of them prints the date twice; only S74 did, and its sidecar line now takes chapter 13's form
+- D3-xxx | Other atlas source lines that print October 15, 2026 twice stay as they are this round, and the change goes to board 2 as an item (under "Requests", to the main session) | The main session's word: changing them would move round 0 to 2 specimens
 
 ## Group lines 11 to 15
 
-Each line is read against the entries as they land, and changes only where a built entry makes it untrue or unclear. Status at 02:30, with maker B's entries and 14.113 to 14.116 in:
+Each line is read against the entries as they land, and changes only where a built entry makes it untrue or unclear. Status at 02:10, with maker B's entries and 14.113 to 14.116 in:
 
 | Group | Line | Status |
 |---|---|---|
@@ -67,7 +67,7 @@ Each line is read against the entries as they land, and changes only where a bui
 | 14 Flow | Sankeys, alluvial charts and flow maps show where money or people go, and the table gives every flow’s amount. A journey map follows one person through a public service, step by step. | **Rewritten.** The old line said "with every flow accounted for", and S76 leaves $1.5 million "unaccounted for"; 14.110, 14.111 and 14.113 each give every flow's amount in the table; the journey map (14.112) was missing |
 | 15 Maps | A map appears when the place answers the question, and it names its places in words as well as color. | 14.114 to 14.116 agree (codes in every square or circle, the table naming every state). To check against 14.120 and 14.122, where the map names no county and the table does, and Rule 14.3's new row |
 
-**The opener (D3-452).** A group's question links to its heading only once the chapter build prints that heading. Round 3's entries now land before `phase3_ch14_build.py` takes round 3 in (its default is rounds 1 and 2), so an entry file alone no longer means the heading exists: at 01:00 the opener linked group 15 to `#group-14-15`, which the page did not hold. The generator now also reads the groups the last chapter build printed (`work/build/guide/chapters/14-data-visualization.json`), so it never links a heading the page lacks. **Done at 02:25:** the chapter build's default now takes round 3 in (DR-253), so I ran it, then the rules generator, then the chapter build again; the opener links groups 11 to 15, and every `#group-14-N` link in the strict build lands on an id. Each later rerun keeps it so.
+**The opener (D3-452).** A group's question links to its heading only once the chapter build prints that heading. Round 3's entries now land before `phase3_ch14_build.py` takes round 3 in (its default is rounds 1 and 2), so an entry file alone no longer means the heading exists: at 01:00 the opener linked group 15 to `#group-14-15`, which the page did not hold. The generator now also reads the groups the last chapter build printed (`work/build/guide/chapters/14-data-visualization.json`), so it never links a heading the page lacks. **Done at 02:09:** the chapter build's default now takes round 3 in (DR-253), so I ran it, then the rules generator, then the chapter build again; the opener links groups 11 to 15, and every `#group-14-N` link in the strict build lands on an id. Each later rerun keeps it so.
 
 ## Rules 14.1 to 14.14
 
@@ -91,7 +91,7 @@ Weight: see "Tested".
 
 ## Words for maker A
 
-### First look (01:20): S66 to S69 as drafted
+### First look (01:11): S66 to S69 as drafted
 
 Your words are still landing, so these are early; the full pass follows when you report. Apply what still fits.
 
@@ -109,7 +109,7 @@ Read and kept so far: S66's title, grade line, measure line and note 2; S67's no
 
 ## Words for maker B
 
-### First look (01:20): S65, S73 and S74 as drafted
+### First look (01:11): S65, S73 and S74 as drafted
 
 Your words are still landing, so these are early; the full pass follows when you report. Apply what still fits.
 
@@ -125,9 +125,9 @@ Your words are still landing, so these are early; the full pass follows when you
 
 Read and kept so far: S65's title, grade line, measure line and alt; S73's title, notes and alt; S74's measure line, note 2 and region names.
 
-### Words pass, maker B finished (D3-669), 02:05 to 02:30
+### Words pass, maker B finished (D3-669), 02:04 to 02:11 UTC
 
-**Status, 02:35: paused at the main session's word.** The data lead held S65, S73, S76 and sketch 14.108 and asked for MB-1 to MB-9, so maker B reopens its files. All 34 changes below were already applied before the pause, and none is half done; the two fixes the main session sent are among them (S74's `source_line`, and S65's `notes.0` with `notes.1`). **Maker B: these are now in your files; keep them as you work MB-1 to MB-9, or tell me which one an MB item replaces.** I write nothing more into maker B's files until the main session resumes me after maker B reports again; then I read every field it changed.
+**Status, 02:11 UTC: paused at the main session's word.** The data lead held S65, S73, S76 and sketch 14.108 and asked for MB-1 to MB-9, so maker B reopens its files. All 34 changes below were already applied before the pause, and none is half done; the two fixes the main session sent are among them (S74's `source_line`, and S65's `notes.0` with `notes.1`). **Maker B: these are now in your files; keep them as you work MB-1 to MB-9, or tell me which one an MB item replaces.** I write nothing more into maker B's files until the main session resumes me after maker B reports again; then I read every field it changed.
 
 The main session told me maker B had reported finished, so I wrote these straight into its word fields and log each here. I read every word field of S65 and S73 to S77, entries 14.93 to 14.95 and 14.104 to 14.112, and the six sketch captions with their first `<desc>`, by `words/words.py dump` (scratch) and then by hand, with its lint. `words.py apply` fails a change whose before-text is not found once in its field or whose after drops a figure (a figure moved or spelled out under H06 is marked so), proves by parsing that no other field moved, and edits the hand-laid specs (S65, S75 to S77) in their own text. No form, data, figure, grade line or kit file changed. S73 follows the data lead's RL-3a as written, S77 the research lead's 273.2(i) reading, S74 the research lead's new sidecar line, and S65's note on the procedural reason CMS's own terms, as the main session relayed (CMS gives no example, so the note names none).
 
@@ -176,13 +176,13 @@ Read and kept: every title (S74's "32 of them" I kept because maker B's figure c
 
 ## Words for the cartographer
 
-### First look (01:20): entry 14.113 and its sketch
+### First look (01:11): entry 14.113 and its sketch
 
 Read and kept: 14.113's title, rule, use_when, use_instead, why and builders, and the sketch's caption, which is its first `<desc>` word for word (2,664 bytes). One suggestion: the caption can say the values are invented, as "Curved lines run from one place to four others over a plain map, each as wide as the invented number of people who moved along it, with a key of two widths." The drawing already carries "Illustrative data", so this one is yours to take or leave; if you take it, change the `<desc>` too.
 
 ### First look (00:55): entries 14.114 to 14.116
 
-Read against S07, S12 and S16 as board 1 approved them, and again at 01:15 against the data lead's rulings, which now sit in rules 14.1 to 14.14 (above). The cartographer applies these.
+Read against S07, S12 and S16 as board 1 approved them, and again at 01:05 against the data lead's rulings, which now sit in rules 14.1 to 14.14 (above). The cartographer applies these.
 
 | File | Field | Old words | New words | Why |
 |---|---|---|---|---|
@@ -200,6 +200,10 @@ Read and kept: the three titles; 14.114's use_when, use_instead and builders; 14
 **For S16's move to the 2024 outlines (R3-4):** its note 4 names the old file, "Map: U.S. Census Bureau cartographic boundary files (2017), via us-atlas 3.0.1 by Mike Bostock (ISC license)." Once S16 draws the 2024 file, that note names the 2024 file in the research lead's sidecar words, with no us-atlas credit, or the note says something untrue. Its other words stay, as the brief asks, unless a check fails.
 
 ## Requests
+
+### To the main session
+
+- **A board 2 item, the atlas's date printed twice.** Twenty-one distinct source lines in nine atlas sidecars print the snapshot date twice (by script), once as the period ("as of October 15, 2026", "checked on October 15, 2026", "verified through October 15, 2026") and again in the retrieval slot ("Snapshot of October 15, 2026."). They include `v7-issues` (11 lines), `v7-claims-by-grade`, `v7-claims-by-hub-and-grade`, `v7-claims-drug-prices`, `v7-issue-status-checks-on-power`, `v7-numbers`, and three that round 3 prints: `v7-rcv-local-routes` (S67), `v7-pathway-electric-decision-makers` (S68) and `v7-routes` (S71). The research lead's new line for S74, "…, snapshot of October 15, 2026, United States.", says it once, in chapter 13's atlas form. Recommendation for board 2: one pass over every atlas sidecar line into that form, with the specimens that print them rebuilt, since each change moves a round 0 to 2 specimen's words (H04: the date once). Left as they are this round, at your word.
 
 ## Tested
 

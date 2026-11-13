@@ -7,7 +7,8 @@
  "url": [
   "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-7?part=273&section=273.2",
   "https://www.govinfo.gov/content/pkg/CFR-2025-title7-vol4/xml/CFR-2025-title7-vol4-sec273-2.xml",
-  "https://www.fns.usda.gov/snap/applicant-recipient"
+  "https://www.fns.usda.gov/snap/applicant-recipient",
+  "https://www.ecfr.gov/api/versioner/v1/versions/title-7.json?part=273&section=273.2"
  ],
  "observation_period": "Regulation as eCFR printed it, up to date as of November 9, 2026",
  "geography": "United States; states run SNAP within these rules",
@@ -58,5 +59,8 @@
  "raw_files_sha256_prefix": {
   "ecfr-273-2.xml": "b47660a89ecd6fe4",
   "cfr7-273-2.xml": "d1f90c88f6e5dd8c"
- }
+ },
+ "notes": [
+  "Who qualifies for expedited service, 7 CFR 273.2(i)(1), in the regulation’s words (RL-5; read November 13, 2026 on eCFR, title 7 up to date as of November 10, 2026, and in the 2025 annual edition on govinfo, the same word for word; the section was last amended July 14, 2020, so the November 9 reading this file froze holds): “(1) Entitlement to expedited service. The following households are entitled to expedited service: (i) Households with less than $150 in monthly gross income, as computed in § 273.10 provided their liquid resources (i.e., cash on hand, checking or savings accounts, savings certificates, and lump sum payments as specified in § 273.9(c)(8)) do not exceed $100; (ii) Migrant or seasonal farmworker households who are destitute as defined in § 273.10(e)(3) provided their liquid resources (i.e., cash on hand, checking or savings accounts, savings certificates, and lump sum payments as specified in § 273.9(c)(8)) do not exceed $100; (iii) Households whose combined monthly gross income and liquid resources are less than the household's monthly rent or mortgage, and utilities (including entitlement to a SUA, as appropriate, in accordance with § 273.9(d)).”"
+ ]
 }
