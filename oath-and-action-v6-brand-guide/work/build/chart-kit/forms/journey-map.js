@@ -7,7 +7,7 @@
  * encode: step (text), path (category: labels.main marks a step on the path, any other value a branch), key (id: the
  * step's order or key), who (text, optional), limit (text, optional: the rule's time limit).
  * labels: main (default "main"), branch_from (the key of the step a branch leaves; default the first step), sub ('{who}'
- * and '{limit}' words under each step's name; default '{who}. {limit}'), limits ({key: the limit in words, in place of
+ * and '{limit}' words under each step's name; default '{who}: {limit}'), limits ({key: the limit in words, in place of
  * the limit column}), names ({key: printed name}), across_from (px), branch_label (words over the branch's link).
  * Maker B, round 3. */
 (function (K) {
@@ -26,7 +26,7 @@
       var name = function (r) { var k = String(r[ek]); return names[k] !== undefined ? names[k] : r[es]; };
       var sub = function (r) {
         var k = String(r[ek]), lim = limits[k] !== undefined ? limits[k] : el ? r[el] : '';
-        return String(L.sub || '{who}. {limit}').split('{who}').join(ew ? r[ew] : '').split('{limit}').join(lim || '').replace(/^[.\s]+|[.\s]+$/g, '') + '.';
+        return String(L.sub || '{who}: {limit}').split('{who}').join(ew ? r[ew] : '').split('{limit}').join(lim || '').replace(/^[.\s]+|[.\s]+$/g, '') + '.';
       };
       var from = L.branch_from === undefined ? String(main[0][ek]) : String(L.branch_from);
       var opt = function (r, onpath) { return { fill: 'surface', stroke: onpath ? 'subject' : 'context', width: onpath ? 2 : 1.5, align: 'start', pad: [10, 8], named: onpath, sub: sub(r), sub_lines: 6, lines: 3, data: { key: String(r[ek]), field: es, value: r[es] } }; };

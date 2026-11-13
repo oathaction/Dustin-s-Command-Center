@@ -96,7 +96,7 @@ def snap_path():
         else:
             nxt = 'None: the path ends with benefits or a denial notice'
         out.append(dict(r, next_step=nxt, path_words='Every application'))
-    out.append(dict(br, next_step='None: the branch ends with benefits', path_words='Branch from ' + main[0]['step'].lower() + ', for ' + cond))
+    out.append(dict(br, next_step='None: the branch ends with benefits', path_words='Branch after “' + main[0]['step'] + '”, for ' + cond))
     cols = ['order', 'step', 'path', 'path_words', 'who_acts', 'time_limit', 'next_step', 'what_happens', 'legal_basis', 'source_words']
     side = {
         'file': 'govinfo-snap-application-path.csv',
