@@ -536,7 +536,7 @@ async function build(o, check_only) {
     if (!check_only) fs.writeFileSync(path.join(o.out, spec.id.toLowerCase(), `${spec.id.toLowerCase()}-check.json`), JSON.stringify(summary, null, 1));
     console.log(`${res.faults.length ? 'FAIL' : 'PASS'} ${spec.id} ${spec.form}: ${summary.rows} rows, ${res.drawings.length} drawings, ${res.faults.length} faults`);
     res.faults.slice(0, 40).forEach(f => console.log('  - ' + f));
-    if (wt) console.log(`  weight: ${wt.figure.toLocaleString('en-US')} bytes as the guide places it, about ${wt.with_frame.toLocaleString('en-US')} with its plate's frame; share per plate ${wt.share.toLocaleString('en-US')}, ceiling ${wt.ceiling.toLocaleString('en-US')}`);
+    if (wt) console.log(`  weight: ${wt.figure.toLocaleString('en-US')} bytes as the guide places it, about ${wt.with_frame.toLocaleString('en-US')} with its plate's frame; share per plate ${wt.share.toLocaleString('en-US')} (${wt.share_from}), ceiling ${wt.ceiling.toLocaleString('en-US')}`);
     // AX-M2 (round 3 fix pass): a warning prints and is written to the check file; it does not fail the spec
     (res.warnings || []).forEach(x => console.log('  ~ warning: ' + x));
     if (res.faults.length) bad++;
@@ -550,14 +550,25 @@ async function build(o, check_only) {
 // places an entry (the figure with its lean table and its compressed island), with a plate's frame added; the share per
 // plate is D3-1328's for round 3's plates, and the guide's strict build prints the current share in its report
 // ("chapter 14's share per plate")
-export const PLATE_FRAME = 750, PLATE_SHARE = 14106, PLATE_CEILING = 15000;
+export const PLATE_FRAME = 750, PLATE_CEILING = 15000;
+// D3-1497 (second pass): the share per plate is the one the last guide build of the guide's own chapters reported, which
+// guide_build.py writes to plate-share.json; with no such build yet, D3-1328's 14,106
+export function plate_share() {
+  try {
+    const j = JSON.parse(fs.readFileSync(path.join(KIT, 'plate-share.json'), 'utf8'));
+    if (j && j.per_plate > 0) return { bytes: j.per_plate, from: `the guide build of ${String(j.built || '').replace('T', ' ')}`, plates: j.plates_to_come };
+  } catch (e) { /* no build has written it */ }
+  return { bytes: 14106, from: 'D3-1328, no guide build recorded', plates: null };
+}
+export const PLATE_SHARE = plate_share().bytes;
 export function plate_weight(spec, res) {
   if (!res.rows || !res.rows.length || !K.forms[spec.form]) return null;
   const columns = res.datasets && res.datasets.length ? res.datasets[0].meta.columns : (spec.data || {}).columns || {};
   let html = K.figure(spec, res.rows, { id: 'oac-' + String(spec.id).toLowerCase(), lean_table: true, types: columns, guide: true });
   html = html.slice(0, html.lastIndexOf('</figure>')) + island_table(spec, res.rows, columns, extra_island(res)) + '</figure>';
   const fig = Buffer.byteLength(html);
-  return { figure: fig, with_frame: fig + PLATE_FRAME, share: PLATE_SHARE, ceiling: PLATE_CEILING };
+  const sh = plate_share();
+  return { figure: fig, with_frame: fig + PLATE_FRAME, share: sh.bytes, share_from: sh.from, ceiling: PLATE_CEILING };
 }
 
 export const GUIDE_NOTE_FAULTS = [/^layout: a /, /^chart: Pillar Red covers /];

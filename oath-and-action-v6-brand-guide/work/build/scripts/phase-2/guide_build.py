@@ -72,6 +72,7 @@ AMP_B_24 = ASSETS / "identity/ampersand/20261028_Amp-B-24px-Master.svg"
 # Gate 2 (D2-1702): the preview is the page Dustin sees from now on, republished as version 8 (DR-225). Version 7's page,
 # work/boards/phase-2/stage-a/20261106_Stage-A-Chapters.html, stays as that version's record and is never rebuilt.
 DEFAULT_OUT = ROOT / "work/boards/phase-2/gate-2/20261111_Gate-2-Preview.html"
+KIT_SHARE = ROOT / "work/build/chart-kit/plate-share.json"   # D3-1497: chapter 14's share per plate, for the kit's weight line
 EDITION_DATE = "November 7, 2026"   # the apply pass draft; a build without edition.json still prints it
 FRONT = GUIDE / "front"
 START_JSON = FRONT / "where-to-start.json"            # the editor's words (D2-1698)
@@ -3458,6 +3459,15 @@ def build(args):
     }
     rep_path = out_path.with_name(out_path.stem + "-Build-Report.json")
     rep_path.write_text(json.dumps(report, indent=1, ensure_ascii=False))
+    # D3-1497 (round 3 fix pass, second pass): a build of the guide's own chapters records chapter 14's share per plate
+    # where the chart kit reads it, so `oa-chart.mjs build` prints the figure this report gives; fixture builds and the
+    # self-test (--chapters) and demo builds leave it alone
+    pp = projection.get("chapter_14_per_plate")
+    if pp and not args.chapters and not args.demo and not stop:
+        KIT_SHARE.write_text(json.dumps({"per_plate": pp["per_plate"], "plates_to_come": pp["plates_to_come"], "built": report["built"],
+                                         "page": report["page"], "about": "Written by guide_build.py from its weight report; "
+                                         "oa-chart.mjs build prints per_plate on each spec's weight line. Never edit by hand."},
+                                        indent=1, ensure_ascii=False) + "\n")
     if not args.quiet:
         rel = report["page"]
         print(f"wrote {rel} ({len(page.encode()):,} bytes): {n_real} chapter file(s), {len(report['placeholders'])} placeholder(s), "

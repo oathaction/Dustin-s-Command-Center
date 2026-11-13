@@ -220,3 +220,15 @@ November 13, 2026, 04:34 to 05:1x UTC (clock read at 04:34, 04:39, 04:55, 04:59,
 - S67 and S72 phone drawings in grayscale on Newsprint; S69 to S71 below their first 2,400 px at phone widths, checked only by the build.
 - The desk phone parts on Charcoal (the run was stopped by the container restart and not repeated).
 - The CSV exports beyond S68's first rows.
+
+## Second pass
+
+November 13, 2026, 06:53 UTC (clock read).
+
+### Routine calls, second pass
+
+- D3-xxx | S18's "Households" column and S19's "State" column set `"words_pass": true`; nothing else in either spec changes | Both print the stored value on purpose and map one value only (S18 "Third fifth" to "Middle fifth", S19's national row "State" to "All states together"); the engineer's new words check (D3-1497) warned on them
+
+### Tested, second pass
+
+- `node work/build/chart-kit/oa-chart.mjs build s18 s19 --no-png --out <scratch>/kit-s18`, sweep on: 2 PASS, 0 faults, 0 warnings; 2 check files counted.
