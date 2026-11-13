@@ -3,7 +3,7 @@
  * share prints as whole people (10 of 100) and the table prints the published figure. A topic symbol, a Civic Line drawing
  * at 48 px with its word beside it, heads the drawing where the spec names one (Rules 10.4, 10.6), and means its topic only.
  * encode: value (number: the share, in percent of the whole), category (text, optional: the row's name).
- * labels: draw ({column: value, ...}: the row the array draws; the first row by default), of (marks in all, default 100),
+ * labels: draw ({column: value, ...}: the row the array draws; the first row by default), total (marks in all, default 100),
  * per_row (marks a row, default 10), filled and open (words beside each kind of mark, {n} its count), topic ({id, words}),
  * point (true: the filled marks take the red point, with its keyline on Newsprint), open_stroke (the open marks' edge,
  * default subject). */
@@ -12,16 +12,16 @@
   K.register_chart({
     form: 'icon-array', name: 'Icon Array', family: 'proportion-and-overlap',
     encode: { value: 'number', category: 'text?' },
-    labels: ['draw', 'of', 'per_row', 'filled', 'open', 'topic', 'point', 'open_stroke'],
+    labels: ['draw', 'total', 'per_row', 'filled', 'open', 'topic', 'point', 'open_stroke'],
     phone: 'same',
     draw: function (c) {
       var L = c.labels, W = c.width, ev = c.field('value'), ec = c.field('category', false);
       var all = c.all_rows || c.rows, want = L.draw || null;
       var row = want ? all.filter(function (r) { return Object.keys(want).every(function (k) { return String(r[k]) === String(want[k]); }); })[0] : all[0];
       if (!row) { c.warn('labels.draw matches no row'); c.height(10); return; }
-      var of = L.of || 100, per = L.per_row || 10, n = Math.round(+row[ev] / 100 * of);
-      if (!(n >= 0 && n <= of)) { c.warn('the share ' + row[ev] + ' is not between 0 and 100 percent'); c.height(10); return; }
-      var rowsN = Math.ceil(of / per), y = 0;
+      var tot = L.total || 100, per = L.per_row || 10, n = Math.round(+row[ev] / 100 * tot);
+      if (!(n >= 0 && n <= tot)) { c.warn('the share ' + row[ev] + ' is not between 0 and 100 percent'); c.height(10); return; }
+      var rowsN = Math.ceil(tot / per), y = 0;
       // the topic: the drawing at 48 px, its word beside it, read once (Rule 10.6: the drawing is hidden from screen readers)
       if (L.topic) {
         var ic = 48;
@@ -36,7 +36,7 @@
       var gw = per * (u + gap) - gap, gh = rowsN * (u + gap) - gap;
       var pt = !!L.point, fillRole = pt ? 'point' : 'subject', ost = L.open_stroke || 'subject';
       var top = y;
-      for (var i = 0; i < of; i++) {
+      for (var i = 0; i < tot; i++) {
         var x = (i % per) * (u + gap), yy = top + Math.floor(i / per) * (u + gap), on = i < n;
         var d = { key: (on ? 'counted ' : 'rest ') + (i + 1), field: ev, value: row[ev] };
         if (on) c.rect(x, yy, u, u, Object.assign({ fill: fillRole, kind: 'unit', data: d }, pt ? { job: 'point' } : {}));
@@ -46,7 +46,7 @@
       }
       // words for each kind of mark, each with its swatch: beside the first row of its marks at a desk, under the marks on a phone
       var fw = String(L.filled || '{n}').split('{n}').join(K.fmt(n, 'integer'));
-      var ow = String(L.open || '{n}').split('{n}').join(K.fmt(of - n, 'integer'));
+      var ow = String(L.open || '{n}').split('{n}').join(K.fmt(tot - n, 'integer'));
       var sw = 12, lx = gw + 20, side = !c.phone && W - lx >= 200;
       var words = function (x0, base, txt, on, max) {
         var t0 = base - c.size('label') * 0.35 - sw / 2;
@@ -56,17 +56,17 @@
       };
       var bottom = top + gh;
       if (side) {
-        var r1 = Math.floor(Math.max(0, n - 1) / per), r2 = Math.floor(Math.min(of - 1, n) / per);
+        var r1 = Math.floor(Math.max(0, n - 1) / per), r2 = Math.floor(Math.min(tot - 1, n) / per);
         var b1 = top + r1 * (u + gap) + u / 2 + c.size('label') * 0.35;
         var b2 = top + r2 * (u + gap) + u / 2 + c.size('label') * 0.35;
         var t1 = n ? words(lx, b1, fw, true, W - lx) : null;
         if (t1 && b2 < t1.bottom + 8) b2 = t1.bottom + 8 + c.size('label') * 0.7;
-        if (of - n) { var t2 = words(lx, b2, ow, false, W - lx); bottom = Math.max(bottom, t2.bottom); }
+        if (tot - n) { var t2 = words(lx, b2, ow, false, W - lx); bottom = Math.max(bottom, t2.bottom); }
         if (t1) bottom = Math.max(bottom, t1.bottom);
       } else {
         var by = bottom + 20 + c.size('label') * 0.7;
         if (n) { var p1 = words(0, by, fw, true, W); by = p1.bottom + 10 + c.size('label') * 0.7; bottom = p1.bottom; }
-        if (of - n) { var p2 = words(0, by, ow, false, W); bottom = p2.bottom; }
+        if (tot - n) { var p2 = words(0, by, ow, false, W); bottom = p2.bottom; }
       }
       // the open marks are told apart by their edge, so the lightness test reads the filled marks alone
       c.key([{ fill: fillRole, direct: true }, { fill: 'surface', pattern: true, direct: true }]);
