@@ -203,7 +203,7 @@
    "n": 10,
    "nav": "Tested and not tested",
    "title": "Tested and not tested",
-   "lede": "What the studio checked on round 2’s closing build, kept apart from what it did not. Each figure is read from the file that records it.",
+   "lede": "What the studio checked on round 2’s closing build, apart from what it did not. Each figure comes from the file that records it.",
    "tested_h": "Tested",
    "not_h": "Not tested",
    "tested": [
@@ -250,8 +250,13 @@
      "sources": [
       {
        "file": "work/handoffs/phase-3/20261112_Round-2-Maker-A-Notes.md",
-       "pattern": "figs\\.py`?\\)?[^\\n]{0,30}?(\\d+) assertions, (\\d+) failed",
+       "pattern": "(?<!fix)figs\\.py`?\\)?[^\\n]{0,30}?(\\d+) assertions, (\\d+) failed",
        "words": "maker A’s charts, {1} figures recomputed, {2} wrong"
+      },
+      {
+       "file": "work/handoffs/phase-3/20261112_Round-2-Maker-A-Notes.md",
+       "pattern": "fixfigs\\.py`?[^\\n]{0,30}?(\\d+) assertions, (\\d+) failed",
+       "words": "then {1} the fix pass changed, {2} wrong"
       },
       {
        "file": "work/handoffs/phase-3/20261112_Round-2-Maker-B-Notes.md",
@@ -273,7 +278,7 @@
    ],
    "not_tested": [
     {
-     "words": "Real readers and real devices: screen readers, phones, paper and Windows’ contrast themes.",
+     "words": "Real screen readers, phones, paper and Windows’ contrast themes.",
      "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Access-Production.md",
      "pattern": "Real screen readers"
     },
@@ -283,17 +288,12 @@
      "pattern": "Color-vision simulations were not run"
     },
     {
-     "words": "Round 2’s figures against their publishers’ own pages; the reviewers rebuilt each one from the frozen files.",
+     "words": "Round 2’s figures against their publishers’ pages; the reviewers rebuilt them from the frozen files.",
      "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Statistics-Civic.md",
      "pattern": "No publisher page for any round 2 dataset"
-    },
-    {
-     "words": "Chapter 15’s new plates on Charcoal, read closely by the brand reviewer.",
-     "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Brand-Craft.md",
-     "pattern": "Chapter 15's six plates on Charcoal"
     }
    ],
-   "full_lists": "The full lists are in each owner’s round 2 notes, the three reviews and the creative director’s review.",
+   "full_lists": "The full lists are in each owner’s round 2 notes and the four reviews.",
    "refs": "DR-202 · DR-213 · D3-894 · files: work/handoffs/phase-3/20261112_Round-2-*-Notes.md, 20261112_Round-2-Red-Team-*.md, 20261112_CD-Review-Of-Round-2.md",
    "wait_words": "Waits for the end of the fix pass."
   },

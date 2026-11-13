@@ -1,16 +1,17 @@
 {
- "built": "2026-11-12T22:33:30.388068+00:00",
+ "built": "2026-11-13T00:27:57.907409+00:00",
  "guide_build": {
-  "exit": 1,
-  "bytes": 10618153,
+  "exit": 0,
+  "bytes": 10638223,
   "rules": 312,
   "specimens": 606,
-  "warnings": 89,
-  "built": "2026-11-12T22:33:36",
-  "pictures_from_failed_build": true
+  "warnings": 0,
+  "built": "2026-11-13T00:28:05",
+  "pictures_from_failed_build": false
  },
  "kit_builds": {
-  "rebuilt": [
+  "rebuilt": [],
+  "reused": [
    "S43",
    "S44",
    "S45",
@@ -35,8 +36,7 @@
    "S64",
    "S18",
    "S33"
-  ],
-  "reused": []
+  ]
  },
  "changed_rules_from": {
   "file": "work/handoffs/phase-3/20261112_Round-2-CD-Scores.json",
@@ -50,7 +50,8 @@
   ]
  },
  "shots": {
-  "taken": [
+  "taken": [],
+  "reused": [
    "ch14-opener",
    "ch15-15.11-correct-1024",
    "ch15-15.11-correct-1440",
@@ -148,8 +149,7 @@
    "wide-s-15-9-correct-768",
    "wide-s-15-opener-1024",
    "wide-s-15-opener-768"
-  ],
-  "reused": []
+  ]
  },
  "round4": {
   "data_rows": 11,
@@ -219,7 +219,7 @@
   ],
   "plate_css": {
    "bytes": 4479,
-   "rules_and_opener": 172075,
+   "rules_and_opener": 172255,
    "allowance": 212288
   },
   "ch13_titles": {
@@ -356,7 +356,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 6781,
+   "bytes_in_guide": 6884,
    "faults": 0,
    "drawings": 4,
    "rows": 26
@@ -382,7 +382,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 5341,
+   "bytes_in_guide": 5338,
    "faults": 0,
    "drawings": 4,
    "rows": 17
@@ -395,7 +395,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 3846,
+   "bytes_in_guide": 3860,
    "faults": 0,
    "drawings": 4,
    "rows": 4
@@ -421,7 +421,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 9800,
+   "bytes_in_guide": 9798,
    "faults": 0,
    "drawings": 4,
    "rows": 51
@@ -434,7 +434,7 @@
    "title_from": "guide",
    "evidence": "Estimate",
    "marked": true,
-   "bytes_in_guide": 6613,
+   "bytes_in_guide": 6626,
    "faults": 0,
    "drawings": 4,
    "rows": 4
@@ -447,7 +447,7 @@
    "title_from": "guide",
    "evidence": "Estimate",
    "marked": true,
-   "bytes_in_guide": 7595,
+   "bytes_in_guide": 7633,
    "faults": 0,
    "drawings": 4,
    "rows": 74
@@ -460,7 +460,7 @@
    "title_from": "guide",
    "evidence": "Estimate",
    "marked": true,
-   "bytes_in_guide": 11566,
+   "bytes_in_guide": 11454,
    "faults": 0,
    "drawings": 4,
    "rows": 202
@@ -473,7 +473,7 @@
    "title_from": "guide",
    "evidence": "Association",
    "marked": false,
-   "bytes_in_guide": 9704,
+   "bytes_in_guide": 9710,
    "faults": 0,
    "drawings": 4,
    "rows": 52
@@ -484,9 +484,9 @@
    "maker": "B",
    "title": "The four states with the most renter households held 17.1 million of the nation’s 46.6 million in 2025, and three of them had median rents above the nation’s.",
    "title_from": "guide",
-   "evidence": "Association",
+   "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 10940,
+   "bytes_in_guide": 11004,
    "faults": 0,
    "drawings": 4,
    "rows": 52
@@ -499,7 +499,7 @@
    "title_from": "guide",
    "evidence": "Association",
    "marked": false,
-   "bytes_in_guide": 14661,
+   "bytes_in_guide": 14640,
    "faults": 0,
    "drawings": 4,
    "rows": 103
@@ -512,7 +512,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 11135,
+   "bytes_in_guide": 11137,
    "faults": 0,
    "drawings": 4,
    "rows": 52
@@ -525,7 +525,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 11431,
+   "bytes_in_guide": 11448,
    "faults": 0,
    "drawings": 4,
    "rows": 61
@@ -538,7 +538,7 @@
    "title_from": "guide",
    "evidence": "Estimate",
    "marked": true,
-   "bytes_in_guide": 5258,
+   "bytes_in_guide": 6707,
    "faults": 0,
    "drawings": 4,
    "rows": 5
@@ -551,8 +551,8 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 6137,
-   "faults": 4,
+   "bytes_in_guide": 8788,
+   "faults": 0,
    "drawings": 4,
    "rows": 8
   },
@@ -578,7 +578,7 @@
    "evidence": "Finding",
    "marked": false,
    "bytes_in_guide": 5189,
-   "faults": 21,
+   "faults": 0,
    "drawings": 4,
    "rows": 7
   },
@@ -624,7 +624,7 @@
    "title_from": "guide",
    "evidence": "Finding",
    "marked": false,
-   "bytes_in_guide": 4215,
+   "bytes_in_guide": 4209,
    "faults": 0,
    "drawings": 4,
    "rows": 5
@@ -708,7 +708,7 @@
    "specimen": "s-14-66-sketch",
    "heading": "Contour or density, a sketch",
    "kind": "sketch",
-   "caption": "Three nested contour rings around the densest part of a point cloud, the inner ring darkest, with a few points outside the outer ring."
+   "caption": "Three nested contour rings around the densest part of a point cloud, the inner ring the strongest, with a few points outside the outer ring."
   },
   "14.70": {
    "specimen": "s-14-70-sketch",
@@ -794,12 +794,12 @@
  },
  "cd": {
   "first": "work/handoffs/phase-3/20261112_Round-2-CD-Scores.json",
-  "rescore": null
+  "rescore": "work/handoffs/phase-3/20261112_Round-2-CD-Rescores.json"
  },
  "cd_scores": {
   "items": 5,
-  "ready": 2,
-  "both": false,
+  "ready": 5,
+  "both": true,
   "scores": {
    "maker_a": {
     "first": {
@@ -812,8 +812,8 @@
     },
     "now": {
      "craft": 4,
-     "clarity": 3,
-     "brand_fidelity": 3,
+     "clarity": 4,
+     "brand_fidelity": 4,
      "usefulness": 4,
      "evidence_honesty": 4,
      "accessibility": 4
@@ -829,7 +829,7 @@
      "accessibility": 4
     },
     "now": {
-     "craft": 3,
+     "craft": 4,
      "clarity": 4,
      "brand_fidelity": 4,
      "usefulness": 4,
@@ -847,7 +847,7 @@
      "accessibility": 4
     },
     "now": {
-     "craft": 3,
+     "craft": 4,
      "clarity": 4,
      "brand_fidelity": 4,
      "usefulness": 4,
@@ -900,7 +900,7 @@
    "score": 4,
    "must_fix": 3,
    "should_fix": 11,
-   "second_score": null,
+   "second_score": 4,
    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Statistics-Civic.md"
   },
   {
@@ -909,7 +909,7 @@
    "score": 3,
    "must_fix": 3,
    "should_fix": 18,
-   "second_score": null,
+   "second_score": 4,
    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Brand-Craft.md"
   },
   {
@@ -918,30 +918,30 @@
    "score": 4,
    "must_fix": 1,
    "should_fix": 11,
-   "second_score": null,
+   "second_score": 4,
    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Access-Production.md"
   }
  ],
  "weight": {
-  "chapter_14": 1177885,
+  "chapter_14": 1186315,
   "stop": 2803941,
-  "per_plate": 15154,
+  "per_plate": 14495,
   "plates_to_come": 36,
-  "chapter_15": 306678,
+  "chapter_15": 307066,
   "chapter_15_ceiling": 600000.0,
-  "page": 10618153,
-  "projected": 15043771,
+  "page": 10638223,
+  "projected": 15044385,
   "budget": 15500000.0
  },
  "tested": {
-  "The strict build of the guide": "did not pass today: 89 warnings on a build of 10,618,153 bytes",
-  "The quick guide check": "Not found in its file at this build.",
-  "The four-width guide check": "at 1440, 1024, 390 and 360 px, on a build of 10,587,775 bytes: no failures",
-  "The chart kit’s build of every chart": "64 of 64 charts pass, checked without pictures",
-  "The data check": "111 tables, 0 faults",
-  "The figure checks": "maker A’s charts, 91 figures recomputed, 0 wrong; maker B’s, 0 faults",
-  "The three reviewers’ second passes": "Waits for the end of the fix pass.",
-  "The creative director’s rescore at true size": "Waits for the end of the fix pass."
+  "The strict build of the guide": "10,638,223 bytes, no warnings",
+  "The quick guide check": "at 1440 and 390 px, on a build of 10,638,223 bytes: no failures",
+  "The four-width guide check": "at 1440, 1024, 390 and 360 px, on the review’s build of 10,587,775 bytes, before the fix pass: no failures",
+  "The chart kit’s build of every chart": "64 of 64 charts pass, each checked at every width the guide can draw it",
+  "The data check": "112 tables, 0 faults",
+  "The figure checks": "maker A’s charts, 91 figures recomputed, 0 wrong; then 38 the fix pass changed, 0 wrong; maker B’s, 0 faults",
+  "The three reviewers’ second passes": "all three at 4 of 5",
+  "The creative director’s rescore at true size": "all five parts ship, each at 4 or more on all six counts"
  },
  "guide_check": {
   "file": "[scratch]/phase-3/round-2-review/main/full/guide-Guide-Check-Results.json",
@@ -950,58 +950,34 @@
   "pass": true,
   "page_bytes": 10587775
  },
+ "kit_close": {
+  "glob": "[scratch]/phase-3/round-2-close/kit/*/*-check.json",
+  "check_files": 64,
+  "pass": 64,
+  "sweep": true
+ },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-2/progress/20261112_Round-2-Progress.html",
- "html_bytes": 129947,
+ "html_bytes": 128678,
  "images": 84,
- "image_bytes": 24632809,
+ "image_bytes": 25151319,
  "folder_files": 88,
- "folder_bytes": 24819050,
+ "folder_bytes": 25336020,
  "largest_image": [
-  672614,
-  "20261112_Chart-14-74-Newsprint.png"
+  689459,
+  "20261112_Entry-14-74-1440.png"
  ],
  "status": {
-  "round": [
-   "partial",
-   "build"
-  ],
-  "charts": [
-   "partial",
-   "build"
-  ],
-  "changed": [
-   "partial",
-   "build"
-  ],
-  "entry": [
-   "partial",
-   "build"
-  ],
-  "sketches": [
-   "partial",
-   "build"
-  ],
-  "rules": [
-   "partial",
-   "build"
-  ],
-  "ch15": [
-   "partial",
-   "build"
-  ],
-  "scores": [
-   "partial",
-   "cd_re"
-  ],
-  "weight": [
-   "partial",
-   "build"
-  ],
-  "tested": [
-   "partial",
-   "notes"
-  ],
+  "round": "ready",
+  "charts": "ready",
+  "changed": "ready",
+  "entry": "ready",
+  "sketches": "ready",
+  "rules": "ready",
+  "ch15": "ready",
+  "scores": "ready",
+  "weight": "ready",
+  "tested": "ready",
   "next": "ready"
  },
  "image_sources": {
@@ -1108,15 +1084,10 @@
   "DR-246"
  ],
  "notes": [],
- "warnings": [
-  "the strict guide build failed (exit 1); the guide pictures wait for a passing build",
-  "the page’s pictures come from a strict build that failed; a method run only, never one to publish",
-  "the quick guide check ran on 10,587,775 bytes and today’s strict build is 10,618,153",
-  "Tested lines without their figure: The strict build of the guide, The quick guide check"
- ],
- "seconds": 216,
- "words": 4517,
- "words_tested_part": 241,
+ "warnings": [],
+ "seconds": 8,
+ "words": 4103,
+ "words_tested_part": 234,
  "check": {
   "page": {
    "failures": [

@@ -4,11 +4,11 @@ Oath & Action Edition 06, Phase 3, round 2, November 12, 2026. The page builder 
 
 ## Status
 
-- **Method proven; waiting for the main session's word.** At 23:40 UTC the rescore file had landed (`20261112_Round-2-CD-Rescores.json`, all five parts ready), the statistics and brand reviews carried their second passes and the access review did not yet; the final build sits in scratch at `phase-3/round-2-final/` with no quick check results file yet. Then: `python3 -I work/build/scripts/phase-3/progress_round_2_build.py --reuse --check`, read the parts' states, report.
-- Built: `work/boards/phase-3/round-2/progress/20261112_Round-2-Progress.html` with `img/` beside it, by `work/build/scripts/phase-3/progress_round_2_build.py` and `progress_round_2_render.js` (copied from round 1's and adapted; round 1's scripts and page untouched), from the words in `20261112_Round-2-Progress-Content.json`. Figures go to `20261112_Round-2-Progress-Figures.json`; the check writes `20261112_Round-2-Progress-Check-Results.json`.
-- **The page in the folder now is a method run, not one to publish.** The fix pass has the strict guide build failing (exit 1, 388 warnings from the kit's new label guard on round 1 and round 2 charts), so the last runs used `--photos-from-failed-build`: the guide pictures come from that failed build, every part that reads the guide carries "Part waiting for a passing guide build", "The guide today" says the strict build did not pass, and the figures file records `pictures_from_failed_build: true`. The final run drops the flag.
-- Folder at the last run: 88 files, about 24.5 MB (the page about 130 kB, 84 composed PNGs, the three JSON files). Limits: under 200 files and 50 MB.
-- What waits on others: the strict build passing; the quick guide check's results file (the brief's path, `.../round-2-review/main/quick/guide-Guide-Check-Results.json`, does not exist: that run's log shows a Playwright timeout, exit 1; the four-width file exists and reads 0 failures); the reviewers' second passes; the rescore; the kit's faults on S47, S50, S55, S57, S59, S62 and S63 (the fix pass's new sweep and guards), which print under each chart until they pass.
+- **Ready to publish.** Final run on November 13, 2026, 00:23 to 00:28 UTC, after the main session's word that the rescore had landed and every round 2 item was signed off: `--reuse --check` exits 0 with 0 warnings and all eleven parts Ready. The page check fails only axe html-has-lang at 1440, 390 and 360 px (the page carries no `<html>` tag by contract); the wrapped copy passes at all three. No sideways scroll at 1440 or 390 px.
+- Built: `work/boards/phase-3/round-2/progress/20261112_Round-2-Progress.html` (128,678 bytes) with `img/` beside it, by `work/build/scripts/phase-3/progress_round_2_build.py` and `progress_round_2_render.js`, from the words in `20261112_Round-2-Progress-Content.json`; figures in `20261112_Round-2-Progress-Figures.json`, check results in `20261112_Round-2-Progress-Check-Results.json`. The folder holds 88 files, 25,336,020 bytes (84 composed PNGs). Visible text 4,103 words; part 10 234.
+- Part 8: the first scores found two of five parts ready; the rescore (`20261112_Round-2-CD-Rescores.json`) finds all five. Red teams, first score, Must fix, Should fix, second score: statistics 4 of 5, 3, 11, 4 of 5; brand and craft 3 of 5, 3, 18, 4 of 5; access 4 of 5, 1, 11, 4 of 5.
+- Part 10 reads the closing run in scratch (`phase-3/round-2-close/`): today's strict build 10,638,223 bytes, 0 warnings, equal to the closing build; the quick check at 1440 and 390 px on that build, 0 failures; the four-width check on the review's build (10,587,775 bytes), labeled as before the fix pass, 0 failures; the kit, 64 of 64 check files without a fault, the sweep running in every `build` by the engineer's notes; the data check, 112 tables, 0 faults (`close.log`); maker A's figure checks, 91 and then 38 after the fix pass, 0 wrong; maker B's, 0 faults; the second passes and the rescore.
+- All 22 new charts and S18 and S33 pass the kit's own checks at this build, 0 faults each.
 
 ## How to rerun
 
@@ -19,7 +19,7 @@ python3 -I work/build/scripts/phase-3/progress_round_2_build.py --reuse --check
 - About 4 minutes while the fix pass changes the kit's shared files and the guide's styles, since then nothing can be reused (a strict build, 24 kit charts, 97 photographs and measurements, 84 compositions, the two checks); well under a minute once nothing changes. Drop `--reuse` to remake every capture.
 - `--reuse` keeps a kit capture when its spec, data, form module and the kit's shared files (and tokens.css) are unchanged, and a guide photograph or measurement when its element's HTML, the guide page's styles and scripts and the window width are unchanged. The strict guide build always runs afresh.
 - `--check` runs `dataviz_check.js --board --no-captures` from `work/build` twice: on the page itself and on a scratch copy wrapped as the host wraps it. `--strict` exits 1 on any warning. `--photos-from-failed-build` is for a method run only. Scratch defaults to `/tmp/claude-0/-home-user-Dustin-s-Command-Center/3ab6316c-6935-5f23-804c-cfaafd548447/scratchpad/phase-3/round-2/progress-page/`; `--scratch DIR` moves it.
-- When the main session names the final build's guide check results, change the two `scratch_glob` lines in the content file's `sections.tested.tested` (paths under the session's scratchpad folder). The build warns while a results file's build differs in bytes from today's strict build.
+- The guide check results, the closing kit's check files and the data check's line are read from the session's scratch folder by the `scratch_glob` and `scratch_file` lines in the content file's `sections.tested.tested`. The build warns when the quick check's build differs in bytes from today's strict build; the four-width line carries `other_build`, since it ran on the review's build before the fix pass.
 - The rescore is read from the newest `work/handoffs/phase-3/*Round-2-CD-Rescore*.json`; each reviewer's second score from its report's "Second pass" section.
 
 ## What the page reads
@@ -54,6 +54,9 @@ python3 -I work/build/scripts/phase-3/progress_round_2_build.py --reuse --check
 - D3-xxx | `--photos-from-failed-build` photographs a strict build that failed, for a method run only, and every part that reads the guide then stays "Part waiting for a passing guide build" | The fix pass had the strict build failing at the first run, and the method still needed its photographs proven
 - D3-xxx | A tested line for the second passes or the rescore reads "Waits for the end of the fix pass." until its file lands | "Not found in its file" would read as a fault
 - D3-xxx | The quick guide check's line reads its results file from the brief's path and says "Not found" while the file is missing | That run timed out in Playwright and wrote no results; the four-width check's file stands beside it
+- D3-xxx | Part 10 reads the closing run's files: the quick check from `round-2-close/quick/`, the kit's 64 check files from `round-2-close/kit/`, the data check from `round-2-close/close.log`; the four-width check stays the review's and says it ran before the fix pass | The main session named these at the close, and the four-width check was not rerun after the fix pass
+- D3-xxx | Maker A's figure checks print both counts, the round's 91 and the fix pass's 38 | The last line alone read as if 38 figures were all that was checked
+- D3-xxx | Part 10 keeps three Not tested lines and one line on where the full lists are | The main session asked for part 10 short, as round 1's became
 
 ## Tested
 
@@ -64,9 +67,11 @@ python3 -I work/build/scripts/phase-3/progress_round_2_build.py --reuse --check
 - The build's own checks on every run, as round 1's: no em or en dash, no flagged word, no unfilled field, no decision code on the face, every reference code in the decision log, no private path, no script, no document tags, no dark-mode block, no color outside a token, no type under 13 px, alt text on every image, the page names exactly the images in `img/`.
 - The wrapped copy read by eye from screenshots at 1440 px (cover, parts 1, 2's S51, 4, 5, 7, 8) and 390 px (part 3); no sideways scroll at either width (scroll width equal to the window). Two composed pictures viewed whole (Rule 15.11 at 1024 px, the sketch for Rule 14.73).
 
+- Final run, `--reuse --check`, November 13: exit 0, 0 warnings, all parts Ready; the strict build passed (0 warnings, 10,638,223 bytes); the kit rebuilt all 24 charts, 24 PASS with 0 faults; 97 elements photographed or measured, none failed; the page itself fails only axe html-has-lang at three widths and the wrapped copy passes. A second `--reuse --check` after trimming part 10: 25 seconds, every capture reused, the same results.
+- The final page read by eye from screenshots of the wrapped copy at 1440 px (cover, parts 1, 2's S51, 4, 5, 7, 8, 9, 10) and 390 px (parts 1, 3), scroll width equal to the window at both.
+
 ## Not tested
 
-- The page with a passing strict build, the quick guide check's results, the second passes or the rescore: none exists yet.
 - The page in Safari or Firefox, on a 2x screen, printed, or as the host wraps it once published; the wrapped copy stands in.
 - 82 of the 84 composed pictures one by one, and most parts at 390 px by eye.
 - A keyboard walk past the first 40 stops, and a screen reader.

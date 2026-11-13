@@ -1,6 +1,6 @@
 {
  "file": "work/boards/phase-3/round-2/progress/20261112_Round-2-Progress.html",
- "checked": "2026-11-12T22:37:06.752Z",
+ "checked": "2026-11-13T00:28:06.771Z",
  "views": [
   "overview"
  ],
@@ -9,7 +9,7 @@
    "width": 1440,
    "view": "overview",
    "rootVisible": true,
-   "texts": 515,
+   "texts": 535,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -42,7 +42,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 139803,
+   "height": 141107,
    "axe": [
     {
      "id": "html-has-lang",
@@ -58,7 +58,7 @@
    "width": 390,
    "view": "overview",
    "rootVisible": true,
-   "texts": 515,
+   "texts": 535,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -91,7 +91,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 151170,
+   "height": 152293,
    "axe": [
     {
      "id": "html-has-lang",
@@ -107,7 +107,7 @@
    "width": 360,
    "view": "overview",
    "rootVisible": true,
-   "texts": 515,
+   "texts": 535,
    "minSize": 13,
    "under13": [],
    "lowContrast": [],
@@ -140,7 +140,7 @@
     "Inter",
     "Inter Tight"
    ],
-   "height": 152597,
+   "height": 153309,
    "axe": [
     {
      "id": "html-has-lang",
