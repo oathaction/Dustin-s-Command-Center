@@ -105,7 +105,8 @@
       "CT": "right",
       "TN": "right",
       "VA": "left",
-      "VT": "above"
+      "VT": "above",
+      "KY": "left"
     },
     "prefer": {
       "WV": "left"

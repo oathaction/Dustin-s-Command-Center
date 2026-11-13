@@ -32,7 +32,8 @@
       entries.forEach(function (e) {
         var need = sw + 6 + c.measure(e.w, 'tick');
         if (kx > 0 && kx + need > W) { kx = 0; ky += 22; }
-        if (e.ghost) c.rect(kx + 0.5, ky - 10.5, sw - 1, sw - 1, { stroke: ghost, width: 1, mark: false });
+        // BC N3 (second pass): the outline's swatch takes a 1 px context edge round a ghost inset, so it reads on Charcoal
+        if (e.ghost) { c.rect(kx + 0.5, ky - 10.5, sw - 1, sw - 1, { stroke: 'context', width: 1, mark: false }); c.rect(kx + 3.5, ky - 7.5, sw - 7, sw - 7, { stroke: ghost, width: 1, mark: false }); }
         else {
           c.rect(kx, ky - 11, sw, sw, { fill: 'seq-' + (e.s + 1), mark: false });
           c.rect(kx + 0.5, ky - 10.5, sw - 1, sw - 1, { stroke: 'context', width: 1, mark: false });
@@ -60,6 +61,8 @@
         var won = {}; c.rows.forEach(function (r) { won[id_of(r)] = String(r[ep]) === String(pn.value) ? r[ek] : 0; });
         K.parts.map_mesh(c, G, T, { which: 'all', between: function (a, b) { return !won[a] && (b === null || !won[b]); }, stroke: ghost, width: 1 });
         K.parts.map_mesh(c, G, T, { which: 'all', between: function (a, b) { return !!won[a] || (b !== null && !!won[b]); }, stroke: 'context', width: 1 });
+        // BC N3: the state's own outline in the context ink above the ghosts, so the state keeps its shape on Charcoal
+        K.parts.map_mesh(c, G, T, { which: 'outline', stroke: 'context', width: 1 });
         // BC-S1: a framed inset of the city's districts, larger, in the empty part of the frame, its view framed on the map
         var T2 = null;
         if (ins) {
@@ -78,6 +81,7 @@
           K.parts.map_shapes(c, G, T2, items2);
           K.parts.map_mesh(c, G, T2, { ids: in_ids, which: 'all', between: function (a2, b2) { return !won[a2] && (b2 === null || !won[b2]); }, stroke: ghost, width: 1 });
           K.parts.map_mesh(c, G, T2, { ids: in_ids, which: 'all', between: function (a2, b2) { return !!won[a2] || (b2 !== null && !!won[b2]); }, stroke: 'context', width: 1 });
+          K.parts.map_mesh(c, G, T2, { ids: in_ids, which: 'outline', stroke: 'context', width: 1 });
         }
         // C-S1: each district is numbered in the panel where it is filled, the city's districts in the inset
         var lab = function (rs, TT) {

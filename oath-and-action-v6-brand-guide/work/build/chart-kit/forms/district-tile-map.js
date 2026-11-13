@@ -56,7 +56,8 @@
       entries.forEach(function (e) {
         var tw = c.measure(e.w, 'tick'), need = sw + 6 + tw;
         if (kx > 0 && kx + need > W) { kx = 0; ky += row_h; }
-        if (e.ghost) c.rect(kx + 2.5, ky - 8.5, sw - 5, sw - 5, { stroke: ghost, width: 1, mark: false });
+        // BC N3 (second pass): the outline's swatch takes a 1 px context edge round the ghost inset, so it reads on Charcoal
+        if (e.ghost) { c.rect(kx + 0.5, ky - 10.5, sw - 1, sw - 1, { stroke: 'context', width: 1, mark: false }); c.rect(kx + 3.5, ky - 7.5, sw - 7, sw - 7, { stroke: ghost, width: 1, mark: false }); }
         else swatch(kx, ky, e.s, e.mk);
         var tb = c.text(kx + sw + 6, ky, e.w, { role: 'tick', max: W - kx - sw - 6 });
         kx = tb.x + tb.w + 18;

@@ -5,12 +5,12 @@
  "family": "relationships",
  "tier": "extended",
  "dataset": "fec-jfc-transfers-2024-by-node",
- "reader_question": "Where did each 2024 presidential nominee’s joint fundraising committees send what they raised?",
+ "reader_question": "Where did the joint fundraising committees that paid each 2024 presidential campaign send what they raised?",
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: the committees’ reports to the Federal Election Commission",
- "title": "In the 2024 cycle, Kamala D. Harris’s three joint fundraising committees sent $955.9 million to 54 other committees, and Donald J. Trump’s four sent $679.8 million to 56.",
- "measure_line": "Dollars each 2024 presidential nominee’s joint fundraising committees transferred to other committees (line 22 of their reports), 2023 to 2024 election cycle, not adjusted for inflation; a link’s width is its dollars, on one scale for both",
+ "title": "Joint fundraising committees that paid the 2024 Democratic presidential campaign sent $955.9 million to 54 other committees, and those that paid the Republican one sent $679.8 million to 56.",
+ "measure_line": "Transfers to other committees (line 22 of their reports) by the joint fundraising committees that paid each major party’s presidential campaign committee, in dollars, 2023 to 2024 election cycle, not adjusted for inflation; a link’s width is its dollars, on one scale for both",
  "source_line": "Source: Federal Election Commission, itemized Schedule B transfers and refunds to other committees (lines 22 and 28C) of the seven committees the FEC designates joint fundraising committees that paid the Democratic or the Republican presidential campaign committee, and those committees’ Statements of Organization (Form 1), 2023 to 2024 cycle, United States. Retrieved November 12 and 13, 2026. Names and the dates they changed from Form 1; committees named as their payer wrote them before the November 5, 2024 election.",
  "notes": [
   "Each party’s bar holds every committee the Federal Election Commission designates a joint fundraising committee that paid the party’s presidential campaign committee in the cycle: for the Democratic campaign, the Harris Victory Fund, the Harris Action Fund and the Harris Baldwin Victory Fund; for the Republican campaign, the Trump National Committee JFC, the Trump Save America Joint Fundraising Committee, the Trump 47 Committee and the Trump Bilirakis Victory Fund. The table gives each fund’s transfers.",
@@ -23,7 +23,7 @@
  "illustrative": false,
  "alt": "Two senders side by side, one bar for the joint fundraising committees that paid each party’s presidential campaign, with links to bars for the committees they transferred money to, every bar as tall and every link as wide as its dollars on one scale. The three that paid the Democratic campaign, whose candidate was Joseph R. Biden Jr. until July 21, 2024, then Kamala D. Harris, sent $533.7 million to the campaign, $240.8 million to the Democratic National Committee, $181.4 million to 51 state party committees and $38,640 to one other committee, $955.9 million in all. The four that paid the Republican campaign, whose candidate was Donald J. Trump, sent $407.8 million to the campaign, $163.8 million to the Republican National Committee, $69.9 million to 50 state party committees and $38.3 million to four other committees, $679.8 million in all.",
  "chart_notes": [
-  "The chart draws both nominees’ committees alike, in one ink, on one scale: each bar is as tall as the dollars it sent or received, and each link as wide as the dollars it carried; a link under $4 million shows as a hairline."
+  "The chart draws both sets of committees alike, in one ink, on one scale: each bar is as tall as the dollars it sent or received, and each link as wide as the dollars it carried; a link under $4 million shows as a hairline."
  ],
  "table": {
   "caption": "Transfers by the joint fundraising committees that paid each party’s presidential campaign to other committees, 2023 to 2024 cycle, one row for each fund and kind of committee it paid, with refunds set apart; the download lists every committee",
