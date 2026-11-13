@@ -5,7 +5,7 @@
  * encode: value (number: the share, in percent of the whole), category (text, optional: the row's name).
  * labels: draw ({column: value, ...}: the row the array draws; the first row by default), total (marks in all, default 100),
  * per_row (marks a row, default 10), filled and open (the key's words beside each kind of mark, {n} its count), topic
- * ({id, words}). The counted marks take the subject ink (an area form spends no red, RF-1); the rest are open, a 1 px edge in
+ * ({id, words, chip}: a Civic Line drawing, its approved name and, for an atlas symbol, its typed chip). The counted marks take the subject ink (an area form spends no red, RF-1); the rest are open, a 1 px edge in
  * the context ink and no fill (RF-2). */
 (function (K) {
   'use strict';
@@ -22,12 +22,17 @@
       var tot = L.total || 100, per = L.per_row || 10, n = Math.round(+row[ev] / 100 * tot);
       if (!(n >= 0 && n <= tot)) { c.warn('the share ' + row[ev] + ' is not between 0 and 100 percent'); c.height(10); return; }
       var rowsN = Math.ceil(tot / per), y = 0;
-      // the topic: the drawing at 48 px, its word beside it, read once (Rule 10.6: the drawing is hidden from screen readers)
+      // the topic: the drawing at 48 px in the icon ink, its atlas name and typed chip beside it (Rule 10.6: the drawing is
+      // hidden from screen readers, so the name is read once)
       if (L.topic) {
-        var ic = 48;
-        if (!(K.parts.icon)) c.warn('labels.topic names ' + L.topic.id + ', and the kit has no part that draws a Civic Line drawing yet');
+        var ic = 48, tx = ic + 12;
+        if (!K.parts.icon) c.warn('labels.topic names ' + L.topic.id + ', and the kit has no part that draws a Civic Line drawing yet');
         else K.parts.icon(c, L.topic.id, 0, y, ic);
-        c.text(ic + 12, y + ic / 2 + c.size('label') * 0.35, L.topic.words, { role: 'label', weight: 600, max: W - ic - 12 });
+        var tt = c.text(tx, y + ic / 2 + c.size('label') * 0.35, L.topic.words, { role: 'label', weight: 600, max: W - tx });
+        if (L.topic.chip) {
+          if (!K.parts.chip) c.warn('labels.topic.chip names ' + L.topic.chip + ', and the kit has no part that draws a typed chip yet');
+          else K.parts.chip(c, tt.x + tt.w + 10 > W - 90 ? tx : tt.x + tt.w + 10, tt.x + tt.w + 10 > W - 90 ? tt.bottom + 6 : tt.y, L.topic.chip);
+        }
         y += ic + 18;
       }
       // the marks: the unit chart's own steps, larger, so a hundred stay countable; a row of ten fits the column on a phone

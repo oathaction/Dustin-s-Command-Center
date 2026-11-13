@@ -521,6 +521,106 @@ async function captures(items, o) {
   }
 }
 
+// R4-3 (round 4): a card form in the browser. On the kit's page, at each page width the build names and, with the sweep, at
+// every 8 px column from the narrowest guide column to the widest drawing and at the guide's own columns: every text's
+// computed size on the type scale and 13 px or more; no box whose words overflow it or leave the cards' box; no two lines
+// of words overlapping; each list's items in visual order (DOM order is reading order); and the page's cards equal to
+// Node's (text and elements). Exports: a PNG of the cards' box at true pixels for each page width the build names.
+export const CARD_SIZES = ['--oa-chart-type-label', '--oa-chart-type-tick', '--oa-chart-type-note', '--oa-chart-type-title-size', '--oa-chart-type-title-phone-size',
+  '--oa-chart-type-measure-size', '--oa-chart-type-eyebrow'];
+function card_page_width(col) { return col + 64 >= 600 ? col + 64 : col + 32; }
+async function card_captures(items, o) {
+  const { chromium } = require('/opt/node-tools/node_modules/playwright');
+  const browser = await chromium.launch();
+  try {
+    for (const { spec, res } of items) {
+      const dir = path.join(o.out, spec.id.toLowerCase());
+      const columns = res.datasets && res.datasets.length ? res.datasets[0].meta.columns : (spec.data || {}).columns;
+      const page_file = path.join(dir, spec.id.toLowerCase() + '.html');
+      fs.writeFileSync(page_file, page_html([{ spec, rows: res.rows, columns, grounds: o.grounds, extra: {} }]));
+      const stem = file_stem(spec, o.date);
+      const ctx = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
+      const p = await ctx.newPage();
+      const errors = [];
+      p.on('pageerror', e => errors.push(String(e)));
+      await p.goto('file://' + page_file);
+      await p.evaluate(() => document.fonts.ready);
+      errors.forEach(e => res.faults.push(`page error: ${e}`));
+      const art_max = K.artboard(spec, K.token_reader(TOK.newsprint));
+      const cols = new Set(guide_widths(spec).filter(w => w <= art_max));
+      if (o.sweep) for (let w = Math.min(...guide_widths(spec)); w <= Math.min(SWEEP_MAX, art_max); w += 8) cols.add(w);
+      const pages = [...new Set([...o.widths, ...[...cols].map(card_page_width)])].sort((a, b) => a - b);
+      const seen = new Map();
+      for (const pw of pages) {
+        await p.setViewportSize({ width: pw, height: 1000 });
+        const got = await p.evaluate(({ sizes, nodes }) => {
+          const out = [], probe = document.createElement('span');
+          document.body.append(probe);
+          const allowed = sizes.map(v => { probe.style.fontSize = `var(${v})`; return parseFloat(getComputedStyle(probe).fontSize); }).filter(x => x > 0);
+          probe.remove();
+          document.querySelectorAll('figure.oac-fig[data-oa-html]').forEach(f => {
+            const g = f.closest('[data-ground]').getAttribute('data-ground'), art = f.querySelector('[data-oa-html]'), ab = art.getBoundingClientRect();
+            const lines = [], say = t => t.replace(/\s+/g, ' ').trim().slice(0, 32);
+            const tw = document.createTreeWalker(art, NodeFilter.SHOW_TEXT);
+            for (let n = tw.nextNode(); n; n = tw.nextNode()) {
+              if (!n.textContent.trim() || n.parentElement.closest('svg')) continue;
+              const el = n.parentElement, size = parseFloat(getComputedStyle(el).fontSize);
+              if (size < 12.95) out.push(`${g}: words under 13 px (${size} px): "${say(n.textContent)}"`);
+              else if (!allowed.some(a => Math.abs(a - size) <= 0.3)) out.push(`${g}: words at ${size} px, off the chart type scale: "${say(n.textContent)}"`);
+              const rg = document.createRange();
+              rg.selectNodeContents(n);
+              for (const rc of rg.getClientRects()) {
+                if (rc.width < 0.5 || !n.textContent.trim()) continue;
+                lines.push({ n, rc });
+                if (rc.left < ab.left - 0.5 || rc.right > ab.right + 0.5) out.push(`${g}: words past the cards' box: "${say(n.textContent)}"`);
+              }
+            }
+            art.querySelectorAll('*').forEach(el => {
+              if (el.closest('svg') || !el.clientWidth) return;
+              if (el.scrollWidth > el.clientWidth + 1) out.push(`${g}: a <${el.tagName.toLowerCase()}${el.className ? ' class="' + el.className + '"' : ''}> whose words overflow it: "${say(el.textContent)}"`);
+            });
+            for (let i = 0; i < lines.length; i++) for (let j = i + 1; j < lines.length; j++) {
+              const a = lines[i].rc, b = lines[j].rc;
+              if (lines[i].n === lines[j].n) continue;
+              if (Math.min(a.right, b.right) - Math.max(a.left, b.left) > 1 && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 1) out.push(`${g}: words overlap: "${say(lines[i].n.textContent)}" and "${say(lines[j].n.textContent)}"`);
+            }
+            art.querySelectorAll('ul, ol').forEach(l => {
+              const its = [...l.children].filter(c => c.tagName === 'LI').map(c => c.getBoundingClientRect());
+              for (let i = 1; i < its.length; i++) {
+                const a = its[i - 1], b = its[i];
+                if (!(b.top > a.top + 1 || (Math.abs(b.top - a.top) <= 1 && b.left > a.left))) out.push(`${g}: item ${i + 1} of a list sits before item ${i} on the page; the reading order must be the visual order`);
+              }
+            });
+            const t = document.createElement('template');
+            t.innerHTML = nodes[g] || '';
+            const shape = r => [...r.querySelectorAll('*')].map(e => e.tagName.toLowerCase() + '.' + (e.getAttribute('class') || '')).join(' ');
+            if (t.content.textContent !== art.textContent || shape(t.content) !== shape(art)) out.push(`${g}: parity: the page's cards differ from the Node cards`);
+          });
+          return out;
+        }, { sizes: CARD_SIZES, nodes: res.cards });
+        const col = pw - (pw < 600 ? 32 : 64);
+        for (const x of got) { const k = x.replace(/-?\d+(\.\d+)?/g, '#'); if (!seen.has(k)) seen.set(k, { first: x, ws: [] }); seen.get(k).ws.push(col); }
+        if (o.widths.includes(pw)) for (const g of o.grounds) {
+          const fid = `#oac-${spec.id.toLowerCase()}-${g}`;
+          const art = await p.$(fid + ' [data-oa-html]'), fig = await p.$(fid);
+          const pf = path.join(dir, `${stem}-${title_case(g)}-${pw}.png`);
+          await art.screenshot({ path: pf });
+          const bb = await art.boundingBox(), sz = png_size(fs.readFileSync(pf));
+          if (Math.abs(sz.w - Math.round(bb.width)) > 1 || Math.abs(sz.h - Math.round(bb.height)) > 1) res.faults.push(`png: ${path.basename(pf)} is ${sz.w} by ${sz.h}, the cards' box ${Math.round(bb.width)} by ${Math.round(bb.height)}`);
+          await fig.screenshot({ path: path.join(dir, `${spec.id.toLowerCase()}-${g}-${pw}.png`) });
+          await p.addStyleTag({ content: 'html{filter:grayscale(1)}' });
+          await fig.screenshot({ path: path.join(dir, `${spec.id.toLowerCase()}-${g}-${pw}-grayscale.png`) });
+          await p.addStyleTag({ content: 'html{filter:none}' });
+        }
+      }
+      for (const v of seen.values()) res.faults.push(`cards: ${v.first} (at ${v.ws.length} column width${v.ws.length > 1 ? 's' : ''}: ${span_list([...new Set(v.ws)].sort((a, b) => a - b))})`);
+      await ctx.close();
+    }
+  } finally {
+    await browser.close();
+  }
+}
+
 async function build(o, check_only) {
   let paths = o._.map(x => spec_path(x, o.specs));
   if (o.all) paths = fs.readdirSync(o.specs).filter(f => /^s\d+\.json$/.test(f)).sort().map(f => path.join(o.specs, f));
@@ -547,6 +647,7 @@ async function build(o, check_only) {
     }
     if (o.png) {
       await captures(items.filter(i => i.res.drawings.length), o);
+      await card_captures(items.filter(i => i.res.cards && Object.keys(i.res.cards).length), o);
       // the grayscale proofs are exact gray (R = G = B), so one 8-bit channel holds the same pixels at half the bytes (E24)
       const { spawnSync } = require('child_process');
       const dirs = items.map(i => path.join(o.out, i.spec.id.toLowerCase()));

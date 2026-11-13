@@ -744,14 +744,21 @@ def read_aloud(codes, lids, closes=True):
     """More or less at each variable, carrying the signs along the chain from a rise at the first (System 1's
     read_aloud, from the atlas's signs)."""
     up, parts = True, []
+
+    def more(name, up_):
+        # a title that asks how often ("How often the primary decides the winner") reads "the primary decides the winner
+        # more often"; every other title takes more or less before it
+        if name.startswith("how often "):
+            return name[len("how often "):] + (" more often" if up_ else " less often")
+        return ("more " if up_ else "less ") + name
     for i, code in enumerate(codes):
         name = lc(short(code))
-        parts.append(("more " if up else "less ") + name)
+        parts.append(more(name, up))
         if i < len(lids) and link(lids[i])["polarity"] == "-":
             up = not up
     line = ", ".join(parts)
     if closes:
-        line += ", and back to " + ("more " if up else "less ") + lc(short(codes[0]))
+        line += ", and back to " + more(lc(short(codes[0])), up)
     return line[0].upper() + line[1:] + "."
 
 
@@ -945,7 +952,12 @@ def opener(book):
     fr = (f'<path class="fr" d="M0 {F(fy)}H{F(xa - 7)}M{F(xa + 7)} {F(fy)}H{W}"/>'
           + text(W, fy - 8, "Core layer", "fl", "end") + text(W, fy + 20, "Economy layer", "fl", "end"))
     lab = text(xa + 10, run2 + 24, "decides", "v", "start")
-    nums = (numeral(1, a.left + 6, a.top - 1) + numeral(2, W / 2 + 46, 15) + numeral(3, W / 2, a.cy)
+    # C marks the loop's number and kind, so it sits just left of "Loop R13" (DR-265's wider pills leave no room between
+    # the two pills, where it stood before)
+    run_y = a.top - RISE
+    need(xa < W / 2 - tw(f"Loop {lid}", 700) / 2 - 24, "the opener's letter C crowds the authority line")
+    nums = (numeral(1, a.left + 6, a.top - 1) + numeral(2, W / 2 + 46, 15)
+            + numeral(3, W / 2 - tw(f"Loop {lid}", 700) / 2 - 13, run_y + 22 - 5)
             + numeral(4, xa - 20, a.bot + 30) + numeral(5, W / 2 - 4, fy) + numeral(6, W / 2 + 64, run2 + 20))
     total = ec.bot + 4
     svg = svg_wrap(body + f'<g class="wr">{m}</g>' + lab + fr + ec.svg() + nums, total)

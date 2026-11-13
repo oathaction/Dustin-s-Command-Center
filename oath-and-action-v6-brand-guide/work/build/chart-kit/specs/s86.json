@@ -14,14 +14,14 @@
   "reader_question": "How many governments of each kind does the country have?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: the Census Bureau’s 2022 count of every government in the country",
-  "title": "Special districts are the most common kind of government in the country, 39,555 of the 90,888 the Census Bureau counted in 2022.",
+  "grade_line": "Documented: the Census Bureau’s 2022 Census of Governments",
+  "title": "Special districts were the most numerous kind of government in 2022, 39,555 of the 90,888 the Census Bureau counted.",
   "measure_line": "Governments by type, 2022, United States; each circle’s area is in proportion to its count",
   "notes": [
     "School systems run by a state, county, city or township count with that government, so independent school districts are not every school system."
   ],
   "chart_notes": [
-    "The circle the title names, special districts, takes the text’s ink; the others are gray with a thin edge. The federal government and the 50 states print in words, since their circles would draw under a pixel and a few pixels across."
+    "The circle the title names, special districts, takes the text’s ink, with its count inside; the others are gray with a thin edge, named beside. The federal government and the 50 states print in words over the circles."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -73,8 +73,9 @@
       "Federal government",
       "State governments"
     ],
-    "words": "Not drawn: {list}, too few for a circle at this scale.",
+    "words": "Not drawn: {list}, too few to draw at this scale.",
     "key_steps": [
+      40000,
       10000,
       1000
     ],
@@ -89,6 +90,8 @@
   "domain": "D04",
   "states": [],
   "notes_internal": [
-    "Maker A, round 4. Data plan row 116, rule 14.80. Domain D04 (V7 I165). Draft before the data lead's rulings."
+    "Maker A, round 4. Data plan row 116, rule 14.80. Domain D04 (V7 I165). Source line: the sidecar's printed line.",
+    "Data lead rulings (a) subject ink on special districts, the title's named kind, no red (an area, round 3 principle 3); (b) five circles at true area on one scale, the others in the track ink with a 1 px context-ink edge (RF-1, MA-4), a key of three nested circles at 1,000, 10,000 and 40,000 in the context ink (MA-5), the federal government and the states in words over the circles with a hairline under them; (c) the grade line. MA-6: 'were' for a 2022 count.",
+    "Checks by script (maker_a_round4_derive.py --figures, check S86): 39,555 the largest local kind, 43.5 percent of the 90,837 local governments and no majority; 90,888 the U.S. total with the federal government and 50 states; every count in the alt equals the file; the county circle at least 12 px across at 256 px."
   ]
 }

@@ -8,10 +8,12 @@
   "reader_question": "How many of every 100 workers belong to a union?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: the Bureau of Labor Statistics’ count of union members, as the atlas records it",
+  "grade_line": "Documented: a Bureau of Labor Statistics survey, as the atlas records it on October 15, 2026",
   "v7": {
     "grade": "documented",
-    "ids": [],
+    "ids": [
+      "CL1514"
+    ],
     "snapshot": "2026-10-15"
   },
   "title": "One in ten U.S. wage and salary workers belonged to a union in 2025.",
@@ -21,32 +23,63 @@
     "The Bureau says the 2025 average, which leaves out October, is not strictly comparable with other years’ averages."
   ],
   "chart_notes": [
-    "Each square stands for one worker in 100: the 10 union members are filled, in the text’s ink, and the 90 others are open."
+    "Each square stands for one worker in 100: the 10 union members are filled, in the text’s ink, and the 90 others are open. The drawing beside the words Worker bargaining power is the atlas’s symbol for that variable."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
   "alt": "A grid of 100 squares, one for each worker in 100. The first row of 10 is filled for union members in 2025, and the other 90 are open.",
   "table": {
-    "caption": "Union members as a share of employed wage and salary workers",
+    "caption": "Union members as a share of employed wage and salary workers; the 2025 figures average 11 months, since the October 2025 survey was not collected",
     "columns": [
-      { "field": "group", "label": "Workers", "format": "text", "row_header": true },
-      { "field": "year", "label": "Year", "format": "text" },
-      { "field": "members_pct", "label": "Union members, percent", "format": "number:1" },
-      { "field": "members_millions", "label": "Union members, millions", "format": "number:1", "empty": "Not in the atlas’s record" }
+      {
+        "field": "group",
+        "label": "Workers",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "year",
+        "label": "Year",
+        "format": "text"
+      },
+      {
+        "field": "members_pct",
+        "label": "Union members, percent",
+        "format": "number:1"
+      },
+      {
+        "field": "members_millions",
+        "label": "Union members, millions",
+        "format": "number:1",
+        "empty": "Not in the atlas’s record"
+      }
     ]
   },
-  "encode": { "value": "members_pct", "category": "group" },
+  "encode": {
+    "value": "members_pct",
+    "category": "group"
+  },
   "labels": {
-    "draw": { "year": 2025, "group": "All wage and salary workers" },
-    "filled": "{n} union members",
-    "open": "{n} not members",
-    "topic": { "id": "CL-050", "words": "Worker bargaining" }
+    "draw": {
+      "year": 2025,
+      "group": "All wage and salary workers"
+    },
+    "filled": "Union member",
+    "open": "Not a member",
+    "topic": {
+      "id": "CL-050",
+      "words": "Worker bargaining power",
+      "chip": "Variable A2"
+    }
   },
   "phone": "same",
   "artboard": "reading",
   "domain": "D07",
   "states": [],
   "notes_internal": [
-    "Maker A, round 4. Data plan row 115, rule 14.79. Domain D07 (V7 I101). Draft before the data lead's rulings."
-  ]
+    "Maker A, round 4. Data plan row 115, rule 14.79. Domain D07 (V7 I101). Source line: the sidecar's snapshot_in_grade variant (data lead R-1), the atlas's date printed once, in the grade line.",
+    "Data lead rulings (a) subject ink on the 10 members, no red (an area form, RF-1); (b) one 10 by 10 grid of plain unit marks at every width, the 90 others open with a 1 px context-ink edge and no fill (RF-2), the key in the file's words, CL-050 once at 48 px in the icon ink, outside the grid; (c) the grade line. Q-A1: CL-050 prints 'Worker bargaining power' with the chip 'Variable A2' (Rule 10.6, an atlas symbol).",
+    "Checks by script (maker_a_round4_derive.py --figures, check S85): 10.0 percent rounds to 10 of 100; 1983 20.1, private 5.9, public 32.9 and 14.7 million as in note 1; CL-050's label and chip equal the editor's label table (work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json) and chapter 10's list of 41."
+  ],
+  "source_line": "Source: U.S. Bureau of Labor Statistics, Union Members, 2025 (February 18, 2026), employed wage and salary workers, 2025, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To? The 2025 average covers 11 months, since the October 2025 survey was not collected."
 }

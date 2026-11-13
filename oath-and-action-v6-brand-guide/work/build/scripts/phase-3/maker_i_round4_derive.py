@@ -4,6 +4,7 @@ a file the research lead froze, so no derived file is written.
 
     python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures          # all seven
     python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S90 S94  # some
+    ... --specs DIR    reads the specs from DIR in place of the kit's specs folder
 
 Each check prints PASS or FAIL with what it compared; the script exits 1 on any failure. Paths are relative to the
 repository's brand guide folder, found from this file.
@@ -69,8 +70,24 @@ def s89():
 def s90():
     sid, s = "S90", spec("S90")
     r = {x["order"]: x for x in rows("census-school-system-finances-2024")}
-    t = words(s) + " " + json.dumps(s.get("labels", {}), ensure_ascii=False)
     v = {k: float(x["value"]) for k, x in r.items()}
+    # the figures the form prints from the rows: before + the kit's format of value times scale + after
+    def fmt(val, f):
+        kind, _, nd = f.partition(":")
+        nd = int(nd or 0)
+        if kind == "billions":
+            return f"{val / 1e9:,.{nd}f} billion"
+        if kind == "millions":
+            return f"{val / 1e6:,.{nd}f} million"
+        if kind == "dollars":
+            return f"${val:,.{nd}f}"
+        if kind == "integer":
+            return f"{round(val):,}"
+        return str(val)
+    figs = [f.get("before", "") + fmt(v[str(f["figure"])] * f.get("scale", 1), f.get("format", "number")) + f.get("after", "") for f in s["labels"]["facts"]]
+    check(sid, "four to six facts", 4 <= len(figs) <= 6, f"{len(figs)}")
+    t = words(s) + " " + " ".join(figs)
+    print("     figures printed large:", figs)
     rev_b = round(v["1"] / 1e6, 1)
     has(sid, t, f"${rev_b:,.1f}", "total revenue, billions (Table 1)")
     cents = [round(v["2"]), round(v["3"]), round(v["4"])]
@@ -87,6 +104,7 @@ def s90():
     has(sid, t, f"${relief:.1f}", "COVID-19 relief, billions (all data items file)")
     fed_b = round(v["1"] * v["4"] / 100 / 1e6, 1)
     check(sid, "federal revenue is $115.1 billion (Table 1 times Table 5's share)", fed_b == 115.1, f"{fed_b}")
+    check(sid, "88 cents: the state and local shares together", round(v["2"] + v["3"]) == 88 and "88 cents" in t, f"{v['2'] + v['3']:.4f}")
     check(sid, "states named are NY and ID", sorted(s.get("states", [])) == ["ID", "NY"], f"{s.get('states')}")
 
 
@@ -95,7 +113,7 @@ def s91():
     r = {x["order"]: x for x in rows("uscode-federal-trial-judges")}
     t = words(s)
     check(sid, "677 district seats = 673 in the statute + 4 territorial", int(r["1"]["seats"]) == 677 and int(r["1"]["seats_in_statute_table"]) + int(r["1"]["seats_in_territorial_courts"]) == 677)
-    has(sid, t, "677", "district seats")
+    check(sid, "a card field prints the seats column", any(f["field"] == "seats" for f in s["labels"]["fields"]))
     has(sid, t, "four", "the territorial courts' seats")
     check(sid, "345 bankruptcy judgeships", int(r["2"]["seats"]) == 345)
     check(sid, "593 magistrate judge positions", int(r["3"]["seats"]) == 593)
@@ -113,6 +131,7 @@ def s92():
     check(sid, "90 days to appeal, 20 working days to decide: row 6", r["6"]["time_limit"] == "At least 90 days to appeal; the agency decides within 20 working days")
     check(sid, "10 days to decide on expediting: row 4", r["4"]["time_limit"] == "The agency decides whether to expedite within 10 days")
     check(sid, "two hours and 100 pages free: row 3", "first two hours of search and the first 100 pages free" in r["3"]["what_happens"])
+    has(sid, t, "20 working days", "the agency's limit to decide")
     check(sid, "two optional steps, rows 4 and 7", [k for k, x in r.items() if x["path"] == "branch"] == ["4", "7"])
 
 
@@ -152,6 +171,9 @@ def s94():
     check(sid, "May 15, 2027 is a Saturday", datetime.date(2027, 5, 15).strftime("%A") == "Saturday")
     both = sorted({x["date"] for x in rr if any(y["date"] == x["date"] and y["consequence"].startswith("None") for y in rr) and any(y["date"] == x["date"] and not y["consequence"].startswith("None") for y in rr)})
     check(sid, "April 15 and June 15 hold both kinds", both == ["2027-04-15", "2027-06-15"], f"{both}")
+    check(sid, "six tax dates, and October 1 the seventh with a consequence", len(taxes) == 6 and all(not x["consequence"].startswith("None") for x in taxes) and [x["date"] for x in cons if x["track"] == "budget"] == ["2027-10-01"])
+    has(sid, t, "16 budget and tax dates", "the count of dates")
+    has(sid, t, "seven of them, the six tax dates", "the dates with a consequence")
     for n in re.findall(r"\b(\d+) (?:dates|events|days)\b", t):
         check(sid, f"a count the words print, {n}, is one the data gives", int(n) in (16, 13, 7, 9, 12), n)
 
@@ -174,7 +196,12 @@ def s95():
 CHECKS = {"S89": s89, "S90": s90, "S91": s91, "S92": s92, "S93": s93, "S94": s94, "S95": s95}
 
 if __name__ == "__main__":
-    args = [a for a in sys.argv[1:] if a != "--figures"]
+    argv = sys.argv[1:]
+    if "--specs" in argv:   # read specs from another folder first (a maker's scratch, before they land)
+        i = argv.index("--specs")
+        SPECS = Path(argv[i + 1])
+        argv = argv[:i] + argv[i + 2:]
+    args = [a for a in argv if a != "--figures"]
     if "--figures" not in sys.argv:
         print(__doc__)
         sys.exit(2)
