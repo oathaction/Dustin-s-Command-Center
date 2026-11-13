@@ -101,6 +101,12 @@ Maker A applies these until it reports finished; after that I write any still op
 |---|---|---|---|---|
 | S85 | `chart_notes[0]`, last sentence | The drawing beside the words Worker bargaining power is the atlas’s symbol for that variable. | The drawing beside “Worker bargaining power” is the atlas’s symbol for Variable A2. | Words quoted as words take quotation marks, and the chip's own name says which variable, as the plate prints it (H11) |
 
+**The design director's ask for maker A (its "Requests to the editor", 21:22), ruled at 21:24 UTC:**
+
+| File | Field | Now | Suggested | Why |
+|---|---|---|---|---|
+| S86 | `measure_line` | Governments by type, 2022, United States; each circle’s area is in proportion to its count | Governments by type, 2022, United States | The key's title, "Circle area shows the count", says it beside the circles, where a reader needs it, so once is enough (W07) |
+
 **Entries 14.79 to 14.84 and sketch 14.83, read at 21:12 UTC.** They read plainly, each names who draws what and why, and the sketch's caption equals its first `<desc>`, word for word (by script). The ink role names in the rules stand: Rule 14.6 itself says "the context ink" and "the light fill", and rule texts across the chapter say "the subject ink"; the one-ink-word rule covers chart notes and alts, where S85 to S88 already say "in the text’s ink", "gray" and "shaded". Open items:
 
 | File | Field | Now | Suggested | Why |

@@ -3130,7 +3130,7 @@ def rule_15_19(book):
     n = len(steps)
     return {
         "id": "15.19",
-        "title": "Let a reader step through a loop one connection at a time, with a still sequence.",
+        "title": "Step a reader through a loop one connection at a time, with a still sequence.",
         "rule": [
             "A loop read all at once asks a reader to hold every step in mind. Let the reader move through it instead: one "
             "connection at a time, in the loop’s own order, with Play, Pause, Reset the loop, Previous step and Next step. "
@@ -3363,14 +3363,14 @@ def rule_15_21(book):
             "A control may offer only what the model holds: its loops and their steps, its reforms, Rule 13.3’s grade words, "
             "the three delay classes and the four ordinal effect codes. Each is a set of named steps, so build it from the "
             "stepper, the radio group or the disclosure, never from a slider, a dial or a field for a number.",
-            f"Give no control for an amount, odds, a total or a strength. Our systems atlas measures no connection’s size and "
+            f"Never offer a total, odds, an amount or a strength in a control. Our systems atlas measures no connection’s size and "
             f"says “{lq[0].upper() + lq[1:]}” A slider set between 0 and 100 would hand a reader a figure no study supports.",
         ],
         "tokens": [TOKEN_LINE],
         "why": {"text": ["A slider promises that any value along it means something and that moving it changes the outcome "
                          "by that much. The atlas grades its connections in words and codes its effects in ordinal steps, so "
                          "the honest control has exactly those steps and no more."],
-                "basis": "Our systems atlas, Connection L55 and the model’s limits; Master Brief section 14’s lesson on precision"},
+                "basis": "Our systems atlas, Connection L55 and the model’s limits"},
         "correct": {"specimen": "s-15-21-correct",
                     "caption": "Connection L55 with what our systems atlas holds for it, each on the model’s own steps: its "
                                "sign, its grade on the ladder, its delay class, and no strength."},
@@ -3379,7 +3379,7 @@ def rule_15_21(book):
                                "figure our systems atlas does not hold. The picture names the value as its own."},
         "specs": [
             {"label": "Steps a control may offer", "value": "Loops and their steps, reforms, grade words, delay classes and ordinal effect codes"},
-            {"label": "Never", "value": "A slider, dial or number field for an amount, odds, a total or a strength"},
+            {"label": "Never", "value": "A total, odds, an amount or a strength, never as a slider, dial or number field"},
             {"label": "A picture of a control", "value": "Drawn, not built, with its alt saying it is a picture"},
         ],
         "related": ["13", "18"],
@@ -3716,7 +3716,7 @@ def check(data, book):
     if "s-15-20-correct" in book.files:
         f20 = book.files["s-15-20-correct"]
         radios = re.findall(r'<input class="oa-choice-input" type="radio" name="s-15-20-reform" value="([^"]+)"', f20)
-        if radios != list(offered["s-15-20-correct"]) or f20.count(" checked") != 1 or not 2 <= len(radios) <= 5:
+        if radios != list(offered["s-15-20-correct"]) or len(re.findall(r'" checked>', f20)) != 1 or not 2 <= len(radios) <= 5:
             fails.append(f"s-15-20-correct: the radios are {radios}, where ruling (f) offers R-03 and R-04 in one group, one checked")
         for rid in radios:
             if f20.count(f'data-oa-panel="{rid}"') != 1 or "data-oa-say" not in f20.split(f'data-oa-panel="{rid}"')[1][:400]:

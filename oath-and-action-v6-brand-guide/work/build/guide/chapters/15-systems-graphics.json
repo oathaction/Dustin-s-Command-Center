@@ -30,6 +30,12 @@
    "number": 3,
    "title": "Worked examples from the atlas",
    "line": "Each example draws one mechanism from our systems atlas as the atlas records it, and shows what a reader can take from it."
+  },
+  {
+   "before_rule": "15.19",
+   "number": 4,
+   "title": "Interaction",
+   "line": "A control lets a reader move through what the atlas holds, one step or one reform at a time, and offers nothing the atlas does not hold."
   }
  ],
  "rules": [
@@ -978,9 +984,169 @@
    "builders": [
     "Read the closure and the evidence summary from the loop’s record, and stop the build if a conceptual loop gains numbered connections or the summary changes."
    ]
+  },
+  {
+   "id": "15.19",
+   "title": "Step a reader through a loop one connection at a time, with a still sequence.",
+   "rule": [
+    "A loop read all at once asks a reader to hold every step in mind. Let the reader move through it instead: one connection at a time, in the loop’s own order, with Play, Pause, Reset the loop, Previous step and Next step. Use the loop stepper of Rule 18.22, its markup and its code, and set the drawing beside it so the current step lights in both.",
+    "Each step’s words say everything the drawing shows for it: the two variables by their own titles, which way the change runs, what moves along the connection, its grade and its delay. Number every step, and print the whole sequence in order wherever nothing can move: on paper, with motion reduced and with scripts off."
+   ],
+   "tokens": [
+    "oa.color.state.selected.band",
+    "oa.color.state.selected.bar",
+    "oa.color.state.muted.text"
+   ],
+   "why": {
+    "text": [
+     "A drawing of a loop shows its shape, and a stepper shows its order. Read one connection at a time, the weakest step stands out where it falls, and the reader sees why the loop’s grade is the grade of that step (Rule 15.13). The still sequence keeps the same reading for a reader who cannot or will not run it."
+    ],
+    "basis": "Our systems atlas, Loop R1; the stepper and still-sequence lessons of LOOPY, as Rule 18.22 sets them"
+   },
+   "correct": {
+    "specimen": "s-15-19-correct",
+    "caption": "Loop R1 from our systems atlas on the loop stepper of Rule 18.22, live: three numbered steps, each with its connection, grade and delay. The current step lights in the drawing and in the list; on paper and with scripts off the list shows every step in order."
+   },
+   "failure": {
+    "specimen": "s-15-19-failure",
+    "caption": "<strong>Fails Rule 15.19.</strong> The player shows one step at a time and nothing else: no numbers, no list and no way to pause, so on paper, with motion reduced or with scripts off a reader sees one connection of three."
+   },
+   "specs": [
+    {
+     "label": "Component",
+     "value": "The loop stepper of Rule 18.22: its markup, its styles and its script, once on the page"
+    },
+    {
+     "label": "Current step",
+     "value": "The selected band behind its line and its two pills, the list’s band and bar beside it, in ink, never in red",
+     "token": "oa.color.state.selected.band"
+    },
+    {
+     "label": "Steps ahead",
+     "value": "Muted, each line keeping its grade’s pattern",
+     "token": "oa.color.state.muted.text"
+    },
+    {
+     "label": "Step words",
+     "value": "The variables’ titles and the sign’s verb, then the connection, what moves along it, its grade and its delay"
+    },
+    {
+     "label": "Still sequence",
+     "value": "Every step numbered and in ink, buttons hidden, on paper, with motion reduced and with scripts off"
+    }
+   ],
+   "related": [
+    "13",
+    "17",
+    "18"
+   ],
+   "builders": [
+    "Carry Rule 18.22’s markup and let chapter 18’s script run it; never copy the script. Light the drawing from the stepper’s <code>data-oa-at</code>, and number the steps with a CSS counter, never inside the line the status reads."
+   ]
+  },
+  {
+   "id": "15.20",
+   "title": "Let a reader choose a reform and see its targets, effects and assumptions.",
+   "rule": [
+    "Offer the reforms that act on one drawing as a named group of radio buttons (Rule 18.3), so a reader chooses one at a time. The chosen reform’s exact targets turn red on the drawing (Rule 15.11), and its panel lists its targets, its band, its four effects apart in the atlas’s codes with their date (Rule 15.16) and its routes, each with its check date or “Not checked”.",
+    "Keep the atlas’s qualifications and assumptions one step away, in a disclosure under the panel (Rule 18.8), and never light two reforms at once or add their effects. Offer only reforms whose every target sits on the drawing, so nothing lights for a reform that does not act there."
+   ],
+   "tokens": [
+    "oa.color.data.emphasis.red"
+   ],
+   "why": {
+    "text": [
+     "A reader comparing reforms wants to see where each one acts and what the atlas expects of it. One choice at a time keeps each reform’s red its own, and the effects stay four ordinal codes, never a score the atlas does not hold. The assumptions sit one step away, where a reader who asks finds them whole."
+    ],
+    "basis": "Our systems atlas, Reforms R-03 and R-04 on Loop R4a; the choice lessons of En-ROADS, as Rules 18.3 and 18.8 set them"
+   },
+   "correct": {
+    "specimen": "s-15-20-correct",
+    "caption": "Reforms R-03 and R-04 on Loop R4a, live: choose one and its targets turn red, with its effects and routes beside the drawing and its qualifications one step away."
+   },
+   "failure": {
+    "specimen": "s-15-20-failure",
+    "caption": "<strong>Fails Rule 15.20.</strong> Both reforms light at once, so no red says whose target it is, and a combined score adds effects our systems atlas never adds. The qualifications are gone."
+   },
+   "specs": [
+    {
+     "label": "Choice",
+     "value": "A named group of radio buttons, two to five reforms, the first chosen on load (Rule 18.3)"
+    },
+    {
+     "label": "Targets",
+     "value": "The chosen reform’s alone, in Rule 12.5’s red, with each named in a typed chip",
+     "token": "oa.color.data.emphasis.red"
+    },
+    {
+     "label": "Effects",
+     "value": "Four rows, one outcome family each, in the atlas’s codes with their date; never added"
+    },
+    {
+     "label": "Assumptions",
+     "value": "In a disclosure under the panel, closed on load, open on paper (Rule 18.8)"
+    },
+    {
+     "label": "Status line",
+     "value": "One sentence on each change, hidden from sight, never on load"
+    }
+   ],
+   "related": [
+    "13",
+    "18"
+   ],
+   "builders": [
+    "Show the chosen panel and light its targets from the checked radio with CSS, so the choice works with scripts off; let the shell’s listener write the status line from the panel’s first line."
+   ]
+  },
+  {
+   "id": "15.21",
+   "title": "Give every control the model’s own steps, and no slider for a strength.",
+   "rule": [
+    "A control may offer only what the model holds: its loops and their steps, its reforms, Rule 13.3’s grade words, the three delay classes and the four ordinal effect codes. Each is a set of named steps, so build it from the stepper, the radio group or the disclosure, never from a slider, a dial or a field for a number.",
+    "Never offer a total, odds, an amount or a strength in a control. Our systems atlas measures no connection’s size and says “No whole loop has a measured strength.” A slider set between 0 and 100 would hand a reader a figure no study supports."
+   ],
+   "tokens": [
+    "oa.color.graphic.essential.onNewsprint"
+   ],
+   "why": {
+    "text": [
+     "A slider promises that any value along it means something and that moving it changes the outcome by that much. The atlas grades its connections in words and codes its effects in ordinal steps, so the honest control has exactly those steps and no more."
+    ],
+    "basis": "Our systems atlas, Connection L55 and the model’s limits"
+   },
+   "correct": {
+    "specimen": "s-15-21-correct",
+    "caption": "Connection L55 with what our systems atlas holds for it, each on the model’s own steps: its sign, its grade on the ladder, its delay class, and no strength."
+   },
+   "failure": {
+    "specimen": "s-15-21-failure",
+    "caption": "<strong>Fails Rule 15.21.</strong> A slider sets the connection’s strength at 70 of 100, a figure our systems atlas does not hold. The picture names the value as its own."
+   },
+   "specs": [
+    {
+     "label": "Steps a control may offer",
+     "value": "Loops and their steps, reforms, grade words, delay classes and ordinal effect codes"
+    },
+    {
+     "label": "Never",
+     "value": "A total, odds, an amount or a strength, never as a slider, dial or number field"
+    },
+    {
+     "label": "A picture of a control",
+     "value": "Drawn, not built, with its alt saying it is a picture"
+    }
+   ],
+   "related": [
+    "13",
+    "18"
+   ],
+   "builders": [
+    "Stop the build if a plate or a control prints a number the model’s record does not hold."
+   ]
   }
  ],
- "plate_css": ":scope{color:var(--oa-color-text-primary)}.p{box-sizing:border-box;padding:16px;font:var(--oa-type-body);max-width:100%}.p *{box-sizing:border-box}:where(.p) :where(p){margin:0}.p :is(.gr,.nt,.ra,.q,.src,li){text-wrap:pretty}.dnp{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform)}.evr{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 10px}.ev{display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform)}.gr{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}.chip{display:inline-flex;align-items:center;gap:.3em;padding:1px 8px;border:1px solid var(--oa-color-border-strong);font:var(--oa-type-data-label);white-space:nowrap;vertical-align:baseline}.chip .id{font-variant-numeric:tabular-nums}.k{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);color:var(--oa-color-text-secondary);margin:0 0 6px}.rs{display:inline-block;fill:var(--oa-color-graphic-essential);vertical-align:.08em;margin-right:5px}.gw b{font-weight:var(--oa-font-weight-bold)}.gw .w{white-space:nowrap}.nw2{white-space:nowrap}.src{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:12px;max-width:44em}.nt{font:var(--oa-type-caption);margin-top:10px;max-width:40em}.nt+.nt{margin-top:4px}.hed{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin:0 0 4px;font:var(--oa-type-body-small)}.p>.hed+.evr{margin-top:12px}.sub{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}.mk{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 4px;border-radius:10px;background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);letter-spacing:0;vertical-align:.15em;margin:0 1px 0 3px}.sv{display:block;overflow:visible}.sv text{font-family:var(--oa-font-family-reading);font-size:var(--oa-chart-type-label);fill:var(--oa-color-text-primary)}.sv .t{font-weight:var(--oa-font-weight-semibold)}.sv .v{font-weight:var(--oa-font-weight-regular)}.sv .pl{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .pl.th{stroke-width:1px}.sv .ak-mark{fill:none;stroke:var(--oa-color-graphic-essential)}.sv .hd,.sv .tg polygon{fill:var(--oa-color-graphic-essential)}.sv .tg .sg{fill:var(--oa-color-surface)}.sv .tk{stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .rl{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:1px}.sv .id{font-weight:var(--oa-font-weight-bold)}.sv .kd{font-weight:var(--oa-font-weight-regular)}.sv .sn{font-weight:var(--oa-font-weight-bold)}.sv .dm{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .fr{fill:none;stroke:var(--oa-color-border-strong);stroke-width:1px}.sv .fl{fill:var(--oa-color-text-secondary)}.sv .nm circle{fill:var(--oa-chart-color-chip-fill)}.sv .nm text{fill:var(--oa-chart-color-chip-label);font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}.dg{margin:4px 0 0}.dg+.ra{margin-top:10px}.ra{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);max-width:30em}.kw{list-style:none;margin:0;padding:0;font:var(--oa-type-body-small)}.kw li{padding:8px 0;border-top:1px solid var(--oa-color-border-hairline)}.kw li:first-child{border-top:0;padding-top:0}.kw b{font-weight:var(--oa-font-weight-semibold)}.q{font:italic 400 var(--oa-type-body-small-font-size)/1.6 var(--oa-font-family-quote);margin:0}.vc+.vc{margin-top:18px;padding-top:14px;border-top:1px solid var(--oa-color-border-hairline)}.vc .sv{margin:2px 0 8px}.sv .pk{stroke:var(--oa-color-palette-prussian)}.sv .gk{stroke:var(--oa-color-palette-verdigris)}.sv .sk{stroke:var(--oa-color-palette-stone)}.sv .pkf{fill:var(--oa-color-palette-prussian)}.sv .gkf{fill:var(--oa-color-palette-verdigris)}.sv .skf{fill:var(--oa-color-palette-stone)}.kb{margin-top:16px}.hg li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:6px;align-items:baseline}.hg .mk{margin:0}.sw{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:6px}.sw.gkf{background:var(--oa-color-palette-verdigris)}.sw.pkf{background:var(--oa-color-palette-prussian)}.sw.skf{background:var(--oa-color-palette-stone)}.sv .hi{display:none}.sv .rt .lo{display:none}.sv .rt .hi{display:inline}.sv .rt .ak-mark{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px}.sv .rt .ak-case{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:6px}.sv .rt .hd{fill:var(--oa-color-data-emphasis-red)}.sv .pl.rp{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}.sv .pl.sh{fill:var(--oa-color-graphic-essential)}.sv .ts{fill:var(--oa-color-surface)}.pp{display:block;flex:none;fill:var(--oa-color-graphic-essential)}.pp .z{stroke:var(--oa-color-graphic-essential);stroke-width:1}.ef{list-style:none;margin:0;padding:0;font:var(--oa-type-body-small)}.ef>li{padding:8px 0;border-top:1px solid var(--oa-color-border-hairline)}.ef>li:last-child{border-bottom:1px solid var(--oa-color-border-hairline)}.ef .fv{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-top:4px}.ef .fv b{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}.ef>li>p{margin-top:2px}.gp+.gp{margin-top:16px;padding-top:14px;border-top:1px solid var(--oa-color-border-hairline)}.gp .evr{margin-bottom:6px}.two{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:20px}.two.tw{gap:12px;margin-top:0}.two.tw>p{margin:0}.kd2{display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:12px;font:var(--oa-type-body-small)}.kd2 .sv{margin-top:4px}.kd2 b{font-weight:var(--oa-font-weight-semibold)}.kd2+.kd2{margin-top:8px}.cr{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 8px}.fx{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.fx.pr{gap:24px}.fx.tri{gap:0}.fx>div{min-width:0}.fx>div>:first-child{margin-top:0}.fx>div>*+.k{margin-top:16px}@container oa-frame (min-width:680px){.p.wd{padding:24px}.wd .fx{grid-template-columns:296px minmax(0,1fr);column-gap:32px}.wd .fx.pr{grid-template-columns:296px 296px;column-gap:40px}.wd .fx.tri{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:16px}.wd .tri>.vc{margin:0;padding:0;border:0}.wd .two{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px}.wd .fx.g3>:nth-child(1){grid-column:1;grid-row:1}.wd .fx.g3>:nth-child(2){grid-column:2;grid-row:1/span 2}.wd .fx.g3>:nth-child(3){grid-column:1;grid-row:2}}}@container oa-frame (max-width:327.98px){.p :is(p,ul,ol,.evr):not(.dnp){max-width:calc(100cqi - 32px)}}",
+ "plate_css": ":scope{color:var(--oa-color-text-primary)}.p{box-sizing:border-box;padding:16px;font:var(--oa-type-body);max-width:100%}.p *{box-sizing:border-box}:where(.p) :where(p){margin:0}.p :is(.gr,.nt,.ra,.q,.src,li){text-wrap:pretty}.dnp{display:flex;align-items:center;gap:8px;margin:0 0 16px;padding:6px 10px;background:var(--oa-color-surface-charcoal);color:var(--oa-color-text-primary-on-charcoal);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform)}.evr{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin:0 0 10px}.ev{display:inline-flex;align-items:center;min-height:24px;padding:3px 8px;background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform)}.gr{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}.chip{display:inline-flex;align-items:center;gap:.3em;padding:1px 8px;border:1px solid var(--oa-color-border-strong);font:var(--oa-type-data-label);white-space:nowrap;vertical-align:baseline}.chip .id{font-variant-numeric:tabular-nums}.k{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);color:var(--oa-color-text-secondary);margin:0 0 6px}.rs{display:inline-block;fill:var(--oa-color-graphic-essential);vertical-align:.08em;margin-right:5px}.gw b{font-weight:var(--oa-font-weight-bold)}.gw .w{white-space:nowrap}.nw2{white-space:nowrap}.src{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);margin-top:12px;max-width:44em}.nt{font:var(--oa-type-caption);margin-top:10px;max-width:40em}.nt+.nt{margin-top:4px}.hed{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;margin:0 0 4px;font:var(--oa-type-body-small)}.p>.hed+.evr{margin-top:12px}.sub{font:var(--oa-type-caption);color:var(--oa-color-text-secondary)}.mk{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 4px;border-radius:10px;background:var(--oa-chart-color-chip-fill);color:var(--oa-chart-color-chip-label);font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:var(--oa-type-label-text-transform);letter-spacing:0;vertical-align:.15em;margin:0 1px 0 3px}.sv{display:block;overflow:visible}.sv text{font-family:var(--oa-font-family-reading);font-size:var(--oa-chart-type-label);fill:var(--oa-color-text-primary)}.sv .t{font-weight:var(--oa-font-weight-semibold)}.sv .v{font-weight:var(--oa-font-weight-regular)}.sv .pl{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .pl.th{stroke-width:1px}.sv .ak-mark{fill:none;stroke:var(--oa-color-graphic-essential)}.sv .hd,.sv .tg polygon{fill:var(--oa-color-graphic-essential)}.sv .tg .sg{fill:var(--oa-color-surface)}.sv .tk{stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .rl{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:1px}.sv .id{font-weight:var(--oa-font-weight-bold)}.sv .kd{font-weight:var(--oa-font-weight-regular)}.sv .sn{font-weight:var(--oa-font-weight-bold)}.sv .dm{fill:var(--oa-color-surface);stroke:var(--oa-color-graphic-essential);stroke-width:2px}.sv .fr{fill:none;stroke:var(--oa-color-border-strong);stroke-width:1px}.sv .fl{fill:var(--oa-color-text-secondary)}.sv .nm circle{fill:var(--oa-chart-color-chip-fill)}.sv .nm text{fill:var(--oa-chart-color-chip-label);font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}.dg{margin:4px 0 0}.dg+.ra{margin-top:10px}.ra{font:var(--oa-type-caption);color:var(--oa-color-text-secondary);max-width:30em}.kw{list-style:none;margin:0;padding:0;font:var(--oa-type-body-small)}.kw li{padding:8px 0;border-top:1px solid var(--oa-color-border-hairline)}.kw li:first-child{border-top:0;padding-top:0}.kw b{font-weight:var(--oa-font-weight-semibold)}.q{font:italic 400 var(--oa-type-body-small-font-size)/1.6 var(--oa-font-family-quote);margin:0}.vc+.vc{margin-top:18px;padding-top:14px;border-top:1px solid var(--oa-color-border-hairline)}.vc .sv{margin:2px 0 8px}.sv .pk{stroke:var(--oa-color-palette-prussian)}.sv .gk{stroke:var(--oa-color-palette-verdigris)}.sv .sk{stroke:var(--oa-color-palette-stone)}.sv .pkf{fill:var(--oa-color-palette-prussian)}.sv .gkf{fill:var(--oa-color-palette-verdigris)}.sv .skf{fill:var(--oa-color-palette-stone)}.kb{margin-top:16px}.hg li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:6px;align-items:baseline}.hg .mk{margin:0}.sw{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:6px}.sw.gkf{background:var(--oa-color-palette-verdigris)}.sw.pkf{background:var(--oa-color-palette-prussian)}.sw.skf{background:var(--oa-color-palette-stone)}.sv .hi{display:none}.sv .rt .lo{display:none}.sv .rt .hi{display:inline}.sv .rt .ak-mark{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px}.sv .rt .ak-case{fill:none;stroke:var(--oa-color-graphic-essential);stroke-width:6px}.sv .rt .hd{fill:var(--oa-color-data-emphasis-red)}.sv .pl.rp{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}.sv .pl.sh{fill:var(--oa-color-graphic-essential)}.sv .ts{fill:var(--oa-color-surface)}.pp{display:block;flex:none;fill:var(--oa-color-graphic-essential)}.pp .z{stroke:var(--oa-color-graphic-essential);stroke-width:1}.ef{list-style:none;margin:0;padding:0;font:var(--oa-type-body-small)}.ef>li{padding:8px 0;border-top:1px solid var(--oa-color-border-hairline)}.ef>li:last-child{border-bottom:1px solid var(--oa-color-border-hairline)}.ef .fv{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-top:4px}.ef .fv b{font-weight:var(--oa-font-weight-bold);font-variant-numeric:tabular-nums}.ef>li>p{margin-top:2px}.gp+.gp{margin-top:16px;padding-top:14px;border-top:1px solid var(--oa-color-border-hairline)}.gp .evr{margin-bottom:6px}.two{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:20px}.two.tw{gap:12px;margin-top:0}.two.tw>p{margin:0}.kd2{display:grid;grid-template-columns:64px minmax(0,1fr);column-gap:12px;font:var(--oa-type-body-small)}.kd2 .sv{margin-top:4px}.kd2 b{font-weight:var(--oa-font-weight-semibold)}.kd2+.kd2{margin-top:8px}.cr{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 8px}.lv{forced-color-adjust:auto;background:var(--oa-color-surface)}.dw{forced-color-adjust:none;background:var(--oa-color-surface)}.lv>.oa-choice{margin:0 0 16px}.dw{--k:var(--oa-color-graphic-essential);--t:var(--oa-color-text-primary);--f:var(--oa-color-surface)}.dw .ak-mark,.dw .tk{stroke:var(--k)}.dw .hd,.dw .tg polygon{fill:var(--k)}.dw text{fill:var(--t)}.dw .pl{stroke:var(--k);fill:var(--f)}.dw .bd{display:none;fill:none;stroke:var(--oa-color-state-selected-band);stroke-width:14px;stroke-linecap:round}[data-oa-at=\"0\"] [data-s=\"1\"],[data-oa-at=\"0\"] [data-s=\"2\"],[data-oa-at=\"0\"] [data-s=\"3\"],[data-oa-at=\"0\"] [data-p=\"1\"],[data-oa-at=\"0\"] [data-p=\"2\"]{--k:var(--oa-color-state-muted-text);--t:var(--oa-color-state-muted-text)}[data-oa-at=\"0\"] [data-p=\"0\"]{--f:var(--oa-color-state-selected-band)}[data-oa-at=\"1\"] [data-s=\"2\"],[data-oa-at=\"1\"] [data-s=\"3\"],[data-oa-at=\"1\"] [data-p=\"2\"]{--k:var(--oa-color-state-muted-text);--t:var(--oa-color-state-muted-text)}[data-oa-at=\"1\"] [data-p=\"0\"],[data-oa-at=\"1\"] [data-p=\"1\"]{--f:var(--oa-color-state-selected-band)}[data-oa-at=\"1\"] [data-s=\"1\"] .bd{display:inline}[data-oa-at=\"1\"] [data-s=\"1\"] text{font-weight:var(--oa-font-weight-bold)}[data-oa-at=\"2\"] [data-s=\"3\"]{--k:var(--oa-color-state-muted-text);--t:var(--oa-color-state-muted-text)}[data-oa-at=\"2\"] [data-p=\"1\"],[data-oa-at=\"2\"] [data-p=\"2\"]{--f:var(--oa-color-state-selected-band)}[data-oa-at=\"2\"] [data-s=\"2\"] .bd{display:inline}[data-oa-at=\"2\"] [data-s=\"2\"] text{font-weight:var(--oa-font-weight-bold)}[data-oa-at=\"3\"] [data-p=\"0\"],[data-oa-at=\"3\"] [data-p=\"2\"]{--f:var(--oa-color-state-selected-band)}[data-oa-at=\"3\"] [data-s=\"3\"] .bd{display:inline}[data-oa-at=\"3\"] [data-s=\"3\"] text{font-weight:var(--oa-font-weight-bold)}[data-oa-stepper]:not([data-oa-live]) :is(.oa-stepper-controls,.oa-stepper-status,.oa-stepper-why){display:none}.oa-stepper-steps{counter-reset:st}.oa-stepper-step::before{counter-increment:st;content:counter(st);margin-right:8px;font-weight:var(--oa-font-weight-bold)}@media print{.p .oa-stepper :is(.oa-stepper-controls,.oa-stepper-status,.oa-stepper-why){display:none}.p .oa-stepper .oa-stepper-step{background:none;border-left-color:transparent;color:inherit}.p .oa-stepper .dw :is([data-s],[data-p]){--k:var(--oa-color-graphic-essential);--t:var(--oa-color-text-primary);--f:var(--oa-color-surface)}.p .oa-stepper .dw .bd{display:none}.p .oa-stepper .dw [data-s] text{font-weight:var(--oa-font-weight-regular)}}.ch1{flex-direction:column;align-items:flex-start}@supports selector(:has(*)){.p:has([value=\"R-04\"]:checked) [data-oa-for]:not([data-oa-for~=\"R-04\"]) .hi,.p:has([value=\"R-04\"]:checked) [data-oa-for~=\"R-04\"] .lo{display:none}.p:has([value=\"R-04\"]:checked) [data-oa-for]:not([data-oa-for~=\"R-04\"]) .lo,.p:has([value=\"R-04\"]:checked) [data-oa-for~=\"R-04\"] .hi{display:inline}.p:has([value=\"R-04\"]:checked) [data-oa-for]:not([data-oa-for~=\"R-04\"]) .pl{stroke:var(--oa-color-graphic-essential);stroke-width:2px}@media screen{.p:has([value=\"R-03\"]:checked) [data-oa-panel]:not([data-oa-panel=\"R-03\"]){display:none}.p:has([value=\"R-04\"]:checked) [data-oa-panel]:not([data-oa-panel=\"R-04\"]){display:none}}@media print{.p:has([value=\"R-03\"]:checked) [data-oa-print=\"R-03\"],.p:has([value=\"R-04\"]:checked) [data-oa-print=\"R-04\"]{display:block}}}.pn+.pn{margin-top:24px;padding-top:16px;border-top:1px solid var(--oa-color-border-hairline)}.pn .oa-disclosure-set{margin-top:16px}.pon{display:none}.ld{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 14px;font:var(--oa-type-body-small);color:var(--oa-color-text-secondary)}.ld .on{color:var(--oa-color-text-primary);font-weight:var(--oa-font-weight-bold);border-bottom:2px solid var(--oa-color-border-strong)}.pb{display:flex;gap:12px;align-items:center;margin-top:12px}.ib{display:inline-grid;place-items:center;flex:none;width:44px;height:44px;border:1px solid var(--oa-color-border-strong)}.ib svg,.xb svg{fill:none;stroke:currentColor;stroke-width:var(--oa-component-icon-utility-line-medium);stroke-linecap:round;stroke-linejoin:round}.xk{margin-bottom:12px}.xk li{display:flex;gap:8px;align-items:center}.xb{display:inline-grid;place-items:center;flex:none;width:24px;height:24px;border:2px solid var(--oa-color-border-strong)}.xb svg{width:20px;height:20px}.fx{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}.fx.pr{gap:24px}.fx.tri{gap:0}.fx>div{min-width:0}.fx>div>:first-child{margin-top:0}.fx>div>*+.k{margin-top:16px}@container oa-frame (min-width:680px){.p.wd{padding:24px}.wd .fx{grid-template-columns:296px minmax(0,1fr);column-gap:32px}.wd .fx.pr{grid-template-columns:296px 296px;column-gap:40px}.wd .fx.tri{grid-template-columns:repeat(3,minmax(0,1fr));column-gap:16px}.wd .tri>.vc{margin:0;padding:0;border:0}.wd .two{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px}.wd .fx.g3>:nth-child(1){grid-column:1;grid-row:1}.wd .fx.g3>:nth-child(2){grid-column:2;grid-row:1/span 2}.wd .fx.g3>:nth-child(3){grid-column:1;grid-row:2}}}@container oa-frame (max-width:327.98px){.p :is(p,ul,ol,.evr,.oa-stepper-controls,fieldset,.oa-choice-item,details):not(.dnp){max-width:calc(100cqi - 32px)}}",
  "extras": [],
  "related_chapters": [
   {
@@ -1004,8 +1170,12 @@
    "reason": "Charts, where widths and areas carry measured amounts."
   },
   {
+   "chapter": "17",
+   "reason": "Motion and states, where the stepper’s current step and reduced motion are set."
+  },
+  {
    "chapter": "18",
-   "reason": "Rule 18.22, the loop stepper as a component, and Rule 18.24, the typed ID chip."
+   "reason": "Rules 18.3, 18.8 and 18.22, the choice, the disclosure and the loop stepper that Rules 15.19 and 15.20 are built on, and Rule 18.24, the typed ID chip."
   }
  ],
  "sources": [

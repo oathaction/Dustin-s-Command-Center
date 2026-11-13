@@ -31,7 +31,8 @@
       // lane geometry: shares of the width less the gutters
       var tot = lanes.reduce(function (s, l) { return s + (l.share || 1); }, 0), avail = W - g * Math.max(0, lanes.length - 1), lx = [], lw = [], x = 0;
       lanes.forEach(function (l) { var w = avail * (l.share || 1) / (tot || 1); lx.push(x); lw.push(w); x += w + g; });
-      var wide = lanes.length > 1 && !c.phone && lw.every(function (w, i) { return w >= (lanes[i].min || L.lane_min || 150); });
+      // lanes only where each holds its least width and its head on one line (DD-I2)
+      var wide = lanes.length > 1 && !c.phone && lw.every(function (w, i) { return w >= (lanes[i].min || L.lane_min || 150) && c.measure(ty(lanes[i].label || ''), 'tick', 700) <= w; });
       var span = function (r) {
         var ix = [];
         String(r[ev] || '').split(/;\s*/).forEach(function (v) { lanes.forEach(function (l, i) { if ((l.levels || []).indexOf(v.trim()) >= 0) ix.push(i); }); });
@@ -92,9 +93,9 @@
       var y = 0;
       if (wide) {
         // the lanes' heads, a rule under them, and a hairline between lanes the height of the steps
-        // the heads share a last baseline, so a head on two lines rises above the others
-        var hb = 0, hl = Math.round(c.size('tick') * 1.25), hn = lanes.map(function (l, i) { return c.wrap(ty(l.label || ''), 'tick', lw[i], 700).length; }), hm = Math.max.apply(null, hn);
-        lanes.forEach(function (l, i) { hb = Math.max(hb, c.text(lx[i], c.size('tick') * 0.95 + (hm - hn[i]) * hl, ty(l.label || ''), { role: 'tick', weight: 700, fill: 'label', max: lw[i], leading: hl }).bottom); });
+        // the heads, each on one line, on one baseline
+        var hb = 0;
+        lanes.forEach(function (l, i) { hb = Math.max(hb, c.text(lx[i], c.size('tick') * 0.95, ty(l.label || ''), { role: 'tick', weight: 700, fill: 'label' }).bottom); });
         y = Math.ceil(hb + 6);
         var rule_y = y;
         y += 14;
@@ -118,8 +119,9 @@
           var blocked = nx !== null && avoid.some(function (o) { var O = o._b; return o !== a && o !== b && nx > O.x && nx < O.x + O.w && O.y > ty0 && O.y < ty1; });
           if (nx !== null && !blocked) return link([[nx, ty0], [nx, ty1]], hv);
           if (nx !== null) {
-            // down beside the box in the way, then into the step's side
-            var sx = bx0 - g / 2 - 4, iy = Bb.y + Math.min(22, Bb.h / 2);
+            // down the middle of the lane left of the step, clear of the lane rules (DD-I1), then into the step's side
+            var li = 0; lx.forEach(function (x0, i) { if (x0 <= bx0 + 0.5) li = i; });
+            var sx = li ? lx[li - 1] + lw[li - 1] / 2 : bx0 - g / 2 - 4, iy = Bb.y + Math.min(22, Bb.h / 2);
             return link([[sx, ty0], [sx, iy], [bx0, iy]], hv);
           }
           if (bcx > ax1) return link([[ax1, ly], [bcx, ly], [bcx, ty1]], hv);
@@ -141,7 +143,7 @@
       } else {
         // one column: the steps down a heavy line at the left; a branch set in under the step it replaces
         if (!c.phone) c.arrange('phone');
-        var spine = pad + chip / 2, ind = 28, prev = null;
+        var spine = pad + chip / 2, ind = 44, prev = null;
         // steps that share a row, like a branch, are set in from the line, each joined to it by its own arrow
         rows.forEach(function (row) {
           row.items.forEach(function (r) {

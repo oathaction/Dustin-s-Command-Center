@@ -6103,3 +6103,11 @@ The main session posted the round 4 plan with four questions. Dustin: "Go as rec
 | DR-268 | The social data card (S95) draws two crops, 1080 by 1350 and 1080 by 1080; the 1080 by 1920 vertical frame for TikTok and stories waits for chapter 23 in Phase 4, which sets every frame from the platforms' own specifications | Dustin, November 13, as recommended (question 3) |
 | DR-269 | Missouri's Proposition A (repair log row RL63, still "pending") joins V7.1 row 39 with Alaska's and Massachusetts's measures, so all three update by one rule | Dustin, November 13, as recommended (question 4, D3-1681) |
 | DR-270 | The round 4 plan is approved as posted (`work/handoffs/phase-3/20261113_Phase-3-Round-4-Brief.md`): ten owners, the data lead's rulings and the engineer's S12 measure first, S85 to S95 and two sketches, S12's stacked tile and the phone codes, DR-265 and DR-267's titles, rules 15.19 to 15.21 with the accessibility lead's specification first, the weight ceilings, the closing checks and a short progress page before the handoff | Dustin, November 13: "Go as recommended" |
+
+## Answer on page weight during round 4, November 13, 2026
+
+Dustin, during round 4's build, after the main session raised the chart kit's part from 0.55 to 0.56 MB: "if you need to increase the size or increase the allocation, do it. I'm more concerned with getting all this content and getting it done well than staying within some what I think are arbitrary size limits."
+
+| # | Decision | Source |
+|---|---|---|
+| DR-271 | Page weight allocations inside the guide move as content and quality need: the per-plate share and the 15,000-byte plate limit (D3-1097, D3-1328), the chart kit's part, rules 15.19 to 15.21's 75,000 bytes (R4-6), and chapter ceilings, chapter 14's 2,803,941-byte stop (DR-238) included, become figures the build reports and the studio raises, with each raise logged; no form, word or picture is cut to meet them. The one fixed limit is the page's: the guide stays one file under the 16 MB the host publishes and Phase 5's assembly requires, with the 15.5 MB projection kept as its early warning | Dustin, November 13, during round 4 |

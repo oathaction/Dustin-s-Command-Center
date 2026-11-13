@@ -409,5 +409,71 @@
   "alt": "Failure case: do not publish. Loop B2 drawn as before, hollow and thin, under a label that reads only Well supported, strong research evidence, with no word that the loop has no numbered chain.",
   "illustrative": false,
   "notes": "Labeled failure: the grade printed alone, so it reads as the grade of steps that were never numbered."
+ },
+ "s-15-19-correct": {
+  "chapter": "15",
+  "rule": "15.19",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Loop R1 from our systems atlas, “Wealth and political influence reinforce each other”, drawn as three pills with its steps numbered 1 to 3, beside the loop stepper of Rule 18.22: a status line, the three steps in order, and four buttons, Play, Reset the loop, Previous step and Next step. The current step lights in the drawing and in the list. With scripts off or in print, the list shows every step in order.",
+  "illustrative": false,
+  "notes": "Rule 18.22's markup with no script of its own (C-1); its controls and reason line read from work/build/guide/code/c-18-loop-stepper.html; the drawing follows data-oa-at through the chapter's block; every word of the steps read from the atlas's loop and connection records.",
+  "wide_px": 680,
+  "interactive": true
+ },
+ "s-15-19-failure": {
+  "chapter": "15",
+  "rule": "15.19",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Failure case: do not publish. A picture of a player on Loop R1 that draws one step at a time: only the middle step shows, with no number, and the pills it does not join stand alone. Under it, a square button with a play icon and no word, and the word Playing. There is no step list, no Pause and no Reset.",
+  "illustrative": false,
+  "notes": "Labeled failure, drawn as a still picture: no control, no script."
+ },
+ "s-15-20-correct": {
+  "chapter": "15",
+  "rule": "15.20",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "A reform chooser on Loop R4a from our systems atlas: a group of two radio buttons, Reform R-03 and Reform R-04, with R-03 chosen; the loop drawn as three pills with the chosen reform’s targets in red; and the chosen reform’s panel with its targets, its band, its four effects one family to a row as of October 15, 2026, its routes, each not checked, and its qualifications and assumptions one step away in a disclosure.",
+  "illustrative": false,
+  "notes": "Rule 18.3's choice and Rule 18.8's disclosure as their code sets write them; the choice shows through the chapter's block from the checked radio, scripts on or off; the status line is the shell's (C-2). Every value read from the atlas's reform and loop records.",
+  "wide_px": 680,
+  "interactive": true
+ },
+ "s-15-20-failure": {
+  "chapter": "15",
+  "rule": "15.20",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Failure case: do not publish. A picture of a chooser with two boxes, Reform R-03 and Reform R-04, both checked, over Loop R4a with every target of both in red, so no mark says whose it is. Under it a line reads Combined effect on democracy: +L. No qualification or assumption appears.",
+  "illustrative": false,
+  "notes": "Labeled failure, drawn as a still picture: no control. Its combined score is the fault and holds no atlas value: the atlas never adds reform effects."
+ },
+ "s-15-21-correct": {
+  "chapter": "15",
+  "rule": "15.21",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Connection L55 from our systems atlas, “Safe seats keep majorities in power”, drawn from seats with little electoral competition down to entrenched control of rule-setting institutions, dashed for plausible, with two delay ticks, a plus tag and the word raises. Beside it, what the model holds for it, each on the atlas’s own steps: its sign, plus, with the atlas’s sentence; its grade, plausible, marked on the ladder of five grades; its delay, 2 to 10 years, marked among three classes; and its strength, none in the model, with the atlas’s words: Seat safety is documented (Unite America’s 2026 count, an advocacy source); the effect on how long majorities last relies on seats-votes analysis with no single estimate in this model.",
+  "illustrative": false,
+  "notes": "Every value read from the connection's record; the build stops if the record ever holds a number.",
+  "wide_px": 680,
+  "readable": true
+ },
+ "s-15-21-failure": {
+  "chapter": "15",
+  "rule": "15.21",
+  "width_px": 328,
+  "fit_switch": false,
+  "frame_container": true,
+  "alt": "Failure case: do not publish. Connection L55 drawn as on the correct plate, and under it a picture of a slider labeled Strength of this connection, running from 0 to 100, its handle set at 70. A note says the value 70 is the picture’s own and the atlas holds no such figure. It is a picture, not a control.",
+  "illustrative": false,
+  "notes": "Labeled failure, drawn in SVG as a still picture: no input, no slider role, no Tab stop."
  }
 }

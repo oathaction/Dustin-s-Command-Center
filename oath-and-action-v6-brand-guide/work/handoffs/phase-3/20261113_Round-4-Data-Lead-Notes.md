@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:24 UTC. S94 signed off whole; S91 waits on one phrase (MI-7: Puerto Rico's district judges serve for life, so "outside the territories" misleads).
 - 21:21 UTC. S87, S88 and S93 signed off whole; S90 and S92 signed off (S90 with MI-3, words); S91 but for its title and note (MI-4); S94 waits on MI-5 and MI-6.
 - 21:17 UTC. Entries 14.135 and 14.139 read: nothing in them for me to change; I sign them off with their specimens. Waiting on: the cards S90 to S92 and S94, S95, S85's parts, MA-9, MI-2, the phone codes, DR-265's captures and 15.19 to 15.21.
 - 21:17 UTC. IM-E5 ruled: S95's card turns the ranks across, with five conditions.
@@ -205,6 +206,12 @@ Type never drops under the type scale's smallest drawing size to make a title fi
 **DR-229 under D3-689's test.** No round 4 chapter 14 form draws election data: the coverage plan (sections 3.8 and 3.16) writes each form's use in general words, none of them an election question: "One in ten, made countable", "Sizes compared by area", "Two or three groups that overlap", "Overlaps drawn at true size", "Steps of a public process with icons", "Four to six facts with sources", "Two or three options side by side", "What a reader can do, in order", "A drawing with callouts", "Dates that matter" and "One chart or figure at 1080 by 1350 and 1080 by 1080". Rows 123 and 125 moved off election data at the round 4 plan's sign-off. S95 redraws S19's prison counts, which count under checks on power and equal justice. Chapter 15's 15.20 and 15.21 draw an Elections loop, R4a, because the model's structure picks it (f), and Rule 01.9 holds there too.
 
 ## Sign-offs
+
+### S94 and S91 after MI-4 to MI-6 (21:24 UTC)
+
+`build s91 s94 --widths 1440,390,296,256` with the sweep (21:23): both PASS, 0 faults; titles and notes read in the specs.
+- **S94: signed off whole.** The title counts 16 deadlines on 13 days and seven with a consequence, each true by the file; the 7508A note is as ruled (with "written request", the statute's word).
+- **S91: one word left (MI-7).** "Outside the territories, district judges ... serve for life" implies that no territorial district judge does, but Puerto Rico's district judges serve for life (28 U.S.C. 133 lists them). Name the three: "apart from the four judges in Guam, the Northern Mariana Islands and the Virgin Islands", or "apart from four judges in three territories". The note on the 345 bankruptcy judgeships is now right. With that change S91 is signed off; no second read is needed if the words name the three territories or say "four judges in three territories".
 
 ### Second reads: MA-9, MA-10, MI-2 and the cards S90, S91, S92 and S94 (21:21 UTC)
 
