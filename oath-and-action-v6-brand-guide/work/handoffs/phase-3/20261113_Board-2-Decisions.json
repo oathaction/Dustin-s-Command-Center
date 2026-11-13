@@ -1,7 +1,7 @@
 {
  "schema": "board-2-decisions/1",
  "state": "signed off",
- "updated_utc": "2026-11-13T17:35:22Z",
+ "updated_utc": "2026-11-13T17:43:30Z",
  "written_by": "data lead",
  "words_owner": "editor",
  "reply_line": "To answer, reply “As recommended”, or name the item and your change.",
@@ -226,7 +226,7 @@
      "id": "placement",
      "title": "Eleven board 1 drawings moved a word, a label or a key",
      "answer": "A width check now draws every chart at every width from 256 px up, and a crossing check finds words that touch a line. Eleven board 1 drawings moved a word, a label or a key where those checks found a fault, most of them only at widths board 1 did not show. No figure, ink or word changed.",
-     "what_changed": "Each row says what moved and where. S01, S02, S07, S15 and S16 were compared with board 1's 1,440 and 390 px drawings and are unchanged there.",
+     "what_changed": "Each row says what moved and where. Each owner compared the drawing before and after its move: S01, S02, S07, S15 and S16 drew the same at 1,440 and 390 px.",
      "why": "At some widths a label ran past the edge or across a line.",
      "recommendation": "Approve the moves as listed.",
      "refs": [

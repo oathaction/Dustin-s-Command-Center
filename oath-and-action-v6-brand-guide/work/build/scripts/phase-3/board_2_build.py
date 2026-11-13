@@ -432,40 +432,52 @@ def kit_build(groups, reuse):
     return out
 
 
-def board1_compare(ids, kit_out):
-    """Whether each board 1 specimen's drawing changed since board 1: the kit draws it again in Node at board 1's widths
-    (1440 and 390 px windows, both grounds; no browser) and each drawing's size and bytes are compared with board 1's
-    check file; the desk drawing's exported file on Newsprint is compared with board 1's, character for character."""
+def board1_compare(ids, kit_out, pages):
+    """Whether each board 1 chart's drawing changed since board 1, two ways. (1) Panel 1: the charts the decisions file's
+    "board-1-changed" group names, in its items or rows, are the changes the data lead lists. (2) Pixels: the kit's
+    drawing alone at a 1440 px window on Newsprint, at twice the pixels, compared pixel for pixel with board 1's file of
+    the same drawing; where the guide draws the chart at another width, the kit draws it again at 1440 px for this test
+    alone. A difference that panel 1 does not name is a warning for the data lead."""
+    from PIL import Image, ImageChops
     S = C['slots']
     b1 = ROOT / S['board1_specimens']
     out = SCRATCH / 'board1-compare'
-    sig = sha(kit_shared_sig(), *[kit_sig(s, '', (1440, 390)) for s in ids])
+    need_run = [s for s in ids if pages.get(s, (DESK,))[0] != DESK]
+    sig = sha(kit_shared_sig(), *[kit_sig(s, '', (1440,)) for s in need_run])
     stamp = out / 'sig.txt'
-    if not (stamp.exists() and stamp.read_text() == sig):
+    if need_run and not (stamp.exists() and stamp.read_text() == sig):
         shutil.rmtree(out, ignore_errors=True)
         out.mkdir(parents=True, exist_ok=True)
-        r = subprocess.run(['node', str(ROOT / S['kit_command']), 'build', *[s.lower() for s in ids], '--widths', '1440,390', '--no-png', '--no-sweep',
-                            '--out', str(out), '--date', DATE], cwd=ROOT, capture_output=True, text=True, env=dict(os.environ, TMPDIR=str(SCRATCH)))
+        r = subprocess.run(['node', str(ROOT / S['kit_command']), 'build', *[s.lower() for s in need_run], '--widths', '1440', '--grounds', 'newsprint',
+                            '--no-sweep', '--out', str(out), '--date', DATE], cwd=ROOT, capture_output=True, text=True, env=dict(os.environ, TMPDIR=str(SCRATCH)))
         (SCRATCH / 'board1-compare.log').write_text(r.stdout + r.stderr)
         stamp.write_text(sig)
+    named = {}
+    for g in (D or {}).get('panels', []):
+        if g.get('id') != C['sections']['forms']['b1_group']:
+            continue
+        for it in g.get('items', []):
+            sp = item_spec(it)
+            if sp:
+                named.setdefault(sp, it.get('id'))
+            for r_ in it.get('rows') or []:
+                if r_.get('spec'):
+                    named.setdefault(str(r_['spec']).upper(), it.get('id'))
     res = {}
     for sid in ids:
         lo = sid.lower()
-        old_p, new_p = b1 / f'{lo}-check.json', out / lo / f'{lo}-check.json'
-        if not (old_p.exists() and new_p.exists()):
-            res[sid] = None
-            warn(f'board 1 comparison for {sid}: a check file is missing')
-            continue
-        key = lambda d: (d['ground'], d['page'])
-        old = {key(d): (d['width'], d['height'], d['svg_bytes']) for d in json.loads(old_p.read_text()).get('drawings', [])}
-        new = {key(d): (d['width'], d['height'], d['svg_bytes']) for d in json.loads(new_p.read_text()).get('drawings', [])}
-        moved = sorted(f'{g} {p}' for (g, p) in old if new.get((g, p)) != old[(g, p)])
-        osvg = sorted(b1.glob(f'*_{sid}-*-Newsprint-1440.svg'))
-        nsvg = sorted((kit_out / lo).glob('*-Newsprint-1440.svg'))
-        svg_same = bool(osvg and nsvg and osvg[-1].read_text() == nsvg[-1].read_text())
-        if osvg and nsvg and not svg_same and 'newsprint 1440' not in moved:
-            moved.append('newsprint 1440 file')
-        res[sid] = {'changed': bool(moved), 'where': moved, 'desk_file_same': svg_same}
+        old = sorted(b1.glob(f'*_{sid}-*-Newsprint-1440.png'))
+        new = sorted(((out if sid in need_run else kit_out) / lo).glob(f'{DATE}_{sid}-*-Newsprint-1440.png'))
+        same = None
+        if old and new:
+            a, b = Image.open(old[-1]).convert('RGB'), Image.open(new[-1]).convert('RGB')
+            same = a.size == b.size and ImageChops.difference(a, b).getbbox() is None
+        else:
+            warn(f'board 1 comparison for {sid}: a drawing file is missing')
+        res[sid] = {'named_in_panel_1': named.get(sid), 'desk_pixels_same': same,
+                    'files': [rel(old[-1]) if old else None, rel(new[-1]) if new else None]}
+        if same is False and D is not None and sid not in named:
+            warn(f'{sid}: its desk drawing differs from board 1’s pixel for pixel, and the decisions file’s board 1 group does not name it')
     FIG['board1_compare'] = res
     return res
 
@@ -475,19 +487,25 @@ def png_size(p):
     return B1.png_size(p)
 
 
+def img_size(p):
+    from PIL import Image
+    with Image.open(p) as im:
+        return im.size
+
+
 def compose(name, parts, cols=None, gap=24, label_h=26):
     """One picture of one or more, each part at its true size on whole pixels, its label set in Inter Medium at 13 px
-    above it (D3-196), saved as a PNG with lossless compression. parts: [(path, label)]. Grayscale parts stay one gray
-    channel when every part is gray."""
+    above it (D3-196), saved as a lossless WebP: every pixel as captured, at about a fifth of a PNG's bytes. parts:
+    [(path, label)]. Grayscale parts are composed in one gray channel when every part is gray."""
     from PIL import Image, ImageDraw, ImageFont
-    out = IMG / f'{DATE}_{name}.png'
+    out = IMG / f'{DATE}_{name}.webp'
     for p, _ in parts:
         need(pathlib.Path(p).exists(), f'missing picture {rel(p)} for {name}')
     if not any(lab for _, lab in parts):
         label_h = 0
-    sig = sha(json.dumps([[str(p), file_sig(p), lab] for p, lab in parts] + [cols, gap, label_h, 'b2v1']))
+    sig = sha(json.dumps([[str(p), file_sig(p), lab] for p, lab in parts] + [cols, gap, label_h, 'b2v2-webp']))
     if out.exists() and CACHE.get(out.name) == sig:
-        w, h = png_size(out)
+        w, h = img_size(out)
     else:
         ims = [Image.open(p) for p, _ in parts]
         gray = all(im.mode == 'L' for im in ims)
@@ -523,7 +541,7 @@ def compose(name, parts, cols=None, gap=24, label_h=26):
                 canvas.paste(im, (x, y + label_h))
                 x += col_w[k] + gap
             y += row_h[r] + label_h + gap
-        canvas.save(out, 'PNG', optimize=True)
+        canvas.save(out, 'WEBP', lossless=True, quality=100, method=4)
         CACHE[out.name] = sig
         w, h = W, H
     rec = {'src': f'img/{out.name}', 'file': out, 'w': w, 'h': h, 'source': ', '.join(rel(p) for p, _ in parts)}
@@ -544,7 +562,9 @@ def frame(rec, alt, lazy=True):
     return f'<div class="frame"{attrs}><img src="{rec["src"]}" width="{w}" height="{h}" alt="{esc(alt)}"{ld} decoding="async"></div>'
 
 
-def figure(rec, alt, cap_html='', lazy=True):
+def figure(rec, alt, cap_html='', lazy=True, top=False):
+    if top and cap_html:
+        return f'<figure class="shot"><figcaption class="top">{cap_html}</figcaption>{frame(rec, alt, lazy)}</figure>'
     return f'<figure class="shot">{frame(rec, alt, lazy)}' + (f'<figcaption>{cap_html}</figcaption>' if cap_html else '') + '</figure>'
 
 
@@ -691,8 +711,9 @@ def picture_html(it, pics, shots, fshots, kit_out, pages):
         rec = compose(f'Decide-{re.sub(r"[^A-Za-z0-9]+", "-", str(it.get("id")))}-{n}', [(path, '')])
         alt = (f'{label}: ' if label else '') + (pic.get('alt') or it.get('title', ''))
         QUOTED.extend([label, pic.get('alt') or ''])
-        cap_html = f'<b>{esc(label)}</b>' if label else ''
-        out.append((role, figure(rec, alt, cap_html)))
+        rw = C['sections']['decide']['role_words'].get(role, '')
+        cap_html = (f'<span class="role {esc(role)}">{esc(rw)}</span> ' if rw else '') + (f'<b>{esc(label)}</b>' if label else '')
+        out.append((role, figure(rec, alt, cap_html, top=True)))
     rows, cur = [], None
     for r, h in out:
         kind = 'ba' if r in ('before', 'after') else 'view'
@@ -920,14 +941,18 @@ def form_article(G, f, held, S, kit_out, pages, b1cmp, rendered, sk_shots):
     head += f'<div class="f-ev"><span class="ev-k{" est" if est else ""}">{esc(ev)}</span><p class="f-ct">{esc(title)}</p></div></header>'
     b1 = sid in C['board1_ids']
     notes = []
+    b1_link = None
     if b1:
-        cmp_ = b1cmp.get(sid)
-        if cmp_ is None:
-            notes.append(S['b1_unknown'])
-        elif cmp_['changed']:
-            notes.append(fill(S['b1_changed'], {'where': join_words([fill(S['b1_where'].get(w.split(' ')[0], w), {'w': w.split(' ')[1]}) for w in cmp_['where']])}))
-        else:
+        cmp_ = b1cmp.get(sid) or {}
+        if cmp_.get('named_in_panel_1'):
+            notes.append(S['b1_named'])
+            b1_link = f'#d-{re.sub(r"[^A-Za-z0-9-]+", "-", str(cmp_["named_in_panel_1"]))}'
+        elif cmp_.get('desk_pixels_same'):
             notes.append(S['b1_same'])
+        elif cmp_.get('desk_pixels_same') is False:
+            notes.append(S['b1_differs'])
+        else:
+            notes.append(S['b1_unknown'])
     if sid in rendered:
         notes.append(fill(S['shared_spec'], {'rule': rendered[sid]}))
     d = kit_out / lo
@@ -936,7 +961,7 @@ def form_article(G, f, held, S, kit_out, pages, b1cmp, rendered, sk_shots):
     caps = {(g, w, x): d / f'{lo}-{g}-{w}{x}.png' for g in ('newsprint', 'charcoal') for w in (dp, pw) for x in ('', '-grayscale')}
     body = ''
     if notes:
-        body += '<p class="what">' + ' '.join(esc(n) for n in notes) + '</p>'
+        body += '<p class="what">' + ' '.join(esc(n) for n in notes) + (f' <a href="{b1_link}">{esc(S["b1_link"])}</a>' if b1_link else '') + '</p>'
     ok = True
     if not chk_p.exists() or not all(p.exists() for p in caps.values()):
         body += pending(S['wait_kit'])
@@ -1083,7 +1108,7 @@ def bar_rows(rows, cols, caption, unit=''):
         tick = f'<span class="lim" style="left:{100 * lim / mx:.3f}%"></span>' if lim else ''
         trs += (f'<tr><th scope="row">{esc(name)}</th><td class="barcell"><span class="track">{tick}<span class="bar" data-mark="bar" data-value="{v}" data-key="{esc(name)}" style="width:{share:.3f}%"></span></span></td>'
                 f'<td class="num">{v:,}{unit}</td><td class="num">{"" if lim is None else f"{lim:,}"}</td><td>{esc(C["sections"]["count"]["pass_words"] if ok else C["sections"]["count"]["fail_words"])}</td></tr>')
-    hd = ''.join(f'<th scope="col">{esc(c)}</th>' for c in cols)
+    hd = ''.join(f'<th scope="col"{" class=\"n\"" if i in (2, 3) else ""}>{esc(c)}</th>' for i, c in enumerate(cols))
     return (f'<div class="tw" role="region" tabindex="0" aria-label="{esc(caption)}; scrolls sideways"><table class="wt ct">'
             f'<caption>{esc(caption)}</caption><thead><tr>{hd}</tr></thead><tbody>{trs}</tbody></table></div>')
 
@@ -1103,8 +1128,6 @@ def count_panel():
             facts.append((S['facts']['built'], f'{bt}'))
         facts += [(S['facts']['total'], f'{r9.get("total_examples", "?")}'), (S['facts']['ruling'], f'{r9.get("ruling_g", "?")}'),
                   (S['facts']['recount'], f'{r9.get("recount", "?")}'), (S['facts']['limits'], fill(S['limits_words'], {'d': lim.get('domain', '?'), 's': lim.get('state', '?')}))]
-    if k.get('script'):
-        facts.append((S['facts']['script'], k['script']))
     out.append('<dl class="facts">' + ''.join(f'<div><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in facts) + '</dl>')
     if r9.get('note'):
         QUOTED.append(r9['note'])
@@ -1137,7 +1160,7 @@ def count_panel():
             out.append(f'<p>{esc(dr["note"])}</p>')
     FIG['count'] = {'recount': r9.get('recount'), 'ruling_g': r9.get('ruling_g'), 'dr_229': dr.get('count')}
     st = 'ready' if (D or {}).get('state') == 'signed off' else ('partial', 'data_lead')
-    return section('count', ''.join(out), st)
+    return section('count', ''.join(out), st, fill(S['script_ref'], {'script': k.get('script', '')}) if k.get('script') else '')
 
 
 # ------------------------------------------------------------------------------------------------------- panel 5
@@ -1170,7 +1193,7 @@ def spend_panel(G, rn, kit_out):
         bar = (f'<span class="bar" data-mark="bar" data-value="{share:.3f}" data-key="{esc(name)}" style="width:{min(share, 100):.3f}%"></span><span class="pct">{share:.1f} percent</span>'
                if share is not None else f'<span class="pct">{esc(S["no_limit"])}</span>')
         trs += f'<tr><th scope="row">{esc(name)}</th><td class="barcell">{bar}</td><td class="num">{b:,}</td><td class="num">{"" if lim is None else f"{lim:,}"}</td></tr>'
-    hd = ''.join(f'<th scope="col">{esc(c)}</th>' for c in S['cols'])
+    hd = ''.join(f'<th scope="col"{" class=\"n\"" if i >= 2 else ""}>{esc(c)}</th>' for i, c in enumerate(S['cols']))
     body = (f'<p class="intro">{esc(fill(S["lede"]))}</p>'
             f'<figure class="wfig"><div class="tw" role="region" tabindex="0" aria-label="{esc(S["caption"])}; scrolls sideways"><table class="wt">'
             f'<caption>{esc(S["caption"])}</caption><thead><tr>{hd}</tr></thead><tbody>{trs}</tbody></table></div></figure>'
@@ -1200,7 +1223,7 @@ def spend_panel(G, rn, kit_out):
         frows += (f'<tr><th scope="row">{esc(t)}</th><td class="barcell"><span class="bar" data-mark="bar" data-value="{b}" data-key="{esc(t)}" style="width:{100 * b / mx:.3f}%"></span></td>'
                   f'<td class="num">{n}</td><td class="num">{m}</td><td class="num">{b:,}</td></tr>')
     body += (f'<h3 class="sub">{esc(S["fam_h"])}</h3><p>{esc(S["fam_lede"])}</p><div class="tw" role="region" tabindex="0" aria-label="{esc(S["fam_caption"])}; scrolls sideways">'
-             f'<table class="wt ft2"><caption>{esc(S["fam_caption"])}</caption><thead><tr>' + ''.join(f'<th scope="col">{esc(c)}</th>' for c in S['fam_cols'])
+             f'<table class="wt ft2"><caption>{esc(S["fam_caption"])}</caption><thead><tr>' + ''.join(f'<th scope="col"{" class=\"n\"" if i >= 2 else ""}>{esc(c)}</th>' for i, c in enumerate(S['fam_cols']))
              + f'</tr></thead><tbody>{frows}</tbody></table></div>')
     # the heaviest plates, with the kit's measure with the plate's frame
     plates = []
@@ -1216,7 +1239,7 @@ def spend_panel(G, rn, kit_out):
     hrows = ''.join(f'<tr><th scope="row">{esc(sid)}</th><td><a href="#form-{rule.replace(".", "-")}">{esc(rule)}</a></td><td>{esc(form)}</td><td class="num">{b:,}</td><td class="num">{"" if wf is None else f"{wf:,}"}</td></tr>'
                     for b, sid, rule, form, wf in top)
     body += (f'<h3 class="sub">{esc(fill(S["heavy_h"], {"n": len(top)}))}</h3><div class="tw" role="region" tabindex="0" aria-label="{esc(S["heavy_caption"])}; scrolls sideways">'
-             f'<table class="wt ht"><caption>{esc(S["heavy_caption"])}</caption><thead><tr>' + ''.join(f'<th scope="col">{esc(c)}</th>' for c in S['heavy_cols'])
+             f'<table class="wt ht"><caption>{esc(S["heavy_caption"])}</caption><thead><tr>' + ''.join(f'<th scope="col"{" class=\"n\"" if i >= 3 else ""}>{esc(c)}</th>' for i, c in enumerate(S['heavy_cols']))
              + f'</tr></thead><tbody>{hrows}</tbody></table></div><p class="small">{esc(S["heavy_note"])}</p>')
     FIG['spend'] = {'rows': rows, 'per_plate': pp.get('per_plate'), 'plates_to_come': pp.get('plates_to_come'), 'by_family': fam, 'heaviest': top}
     return section('spend', body, 'ready' if G['ok'] else ('partial', 'build'))
@@ -1340,7 +1363,7 @@ def scores_panel():
         s2 = f'{r["second_score"]} of 5' if r.get('second_score') is not None else esc(S['rt_wait2'])
         trs.append(f'<tr><th scope="row">{esc(r["name"])}</th><td class="num">{r["round"]}</td><td class="num">{r["score"]} of 5</td><td class="num">{r["must_fix"]}</td>'
                    f'<td class="num">{r["should_fix"]}</td><td class="num">{s2}</td></tr>')
-    hd = ''.join(f'<th scope="col">{esc(c)}</th>' for c in S['rt_cols'])
+    hd = ''.join(f'<th scope="col"{" class=\"n\"" if i >= 1 else ""}>{esc(c)}</th>' for i, c in enumerate(S['rt_cols']))
     out.append(f'<h3 class="sub">{esc(S["rt_h"])}</h3><p>{esc(S["rt_lede"])}</p>'
                f'<div class="tw" role="region" tabindex="0" aria-label="{esc(S["rt_h"])}; scrolls sideways"><table class="rt"><caption>{esc(S["rt_h"])}</caption><thead><tr>{hd}</tr></thead><tbody>{"".join(trs)}</tbody></table></div>')
     # the board's own score, when it lands
@@ -1558,6 +1581,10 @@ blockquote.q footer{font:var(--oa-type-caption);color:var(--ink-2)}
 .shot{margin:var(--oa-space-200) 0 var(--oa-space-300);min-width:0;max-width:100%;display:flex;flex-direction:column;gap:var(--oa-space-100)}
 .shot figcaption{font:var(--oa-type-caption);color:var(--ink-2);max-width:var(--oa-layout-measure-intro-max)}
 .shot figcaption b{color:var(--ink);font-weight:600}
+.shot figcaption.top{font:var(--oa-type-body-small);color:var(--ink)}
+.role{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;padding:1px 6px;margin-right:var(--oa-space-050);border:var(--oa-border-width-hairline) solid var(--strong)}
+.role.after{background:var(--charcoal);color:var(--np);border-color:var(--charcoal)}
+.pair.ba{border-top:var(--oa-border-width-hairline) solid var(--hair);margin-top:var(--oa-space-200)}
 .frame{max-width:100%;line-height:0;overflow-x:auto;overscroll-behavior-x:contain;align-self:flex-start}
 .frame img{display:block;max-width:none;height:auto}
 .pair{display:flex;flex-wrap:wrap;gap:0 var(--oa-space-400);align-items:flex-start}
@@ -1574,6 +1601,7 @@ td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
 table.ft td:not(.t),table.ft th[scope=col]:not(.t){text-align:right;font-variant-numeric:tabular-nums}
 table.ft{min-width:24rem}
 .wt td.num,.rt td.num,.ft2 td.num,.ht td.num{text-align:right}
+th.n{text-align:right}
 table.scores{min-width:44rem}table.rt{min-width:36rem}table.wt{min-width:40rem}table.dt{min-width:36rem}
 td.sc.lo{box-shadow:inset 0 0 0 var(--oa-border-width-rule) var(--wstrong);font-weight:700}
 td.sc .r1{display:inline-block;min-width:1.4em;font:var(--oa-type-caption);color:var(--wink-2);margin-right:.35em;padding:0 .2em}
@@ -1672,9 +1700,13 @@ def checks(page):
     stray = set(re.findall(r'\b' + CODE_DEC + r'\b', face))
     if stray:
         warn('decision codes on the board’s face: ' + ', '.join(sorted(stray)))
-    quoted_codes = set(re.findall(r'\b' + CODE_DEC + r'\b', visible_text(re.sub(r'<p class="codes">.*?</p>', ' ', page, flags=re.S)))) - stray
+    face_all = visible_text(re.sub(r'<p class="codes">.*?</p>', ' ', page, flags=re.S))
+    quoted_codes = set(re.findall(r'\b' + CODE_DEC + r'\b', face_all)) - stray
     if quoted_codes:
         warn('decision codes in the words the board quotes from teammates’ files, on its face: ' + ', '.join(sorted(quoted_codes)))
+    paths = sorted(set(re.findall(r'\b(?:work|source|deliverables|brief)/[\w./-]+|\b[\w-]+\.(?:json|md|py|mjs|js|csv|html)\b', face_all)))
+    if paths:
+        warn('file paths on the board’s face, which belong in reference lines: ' + ', '.join(paths[:8]) + (f' and {len(paths) - 8} more' if len(paths) > 8 else ''))
     for pat in (r'/home/', r'file://', r'scratchpad', r'/tmp/', r'@anthropic'):
         if re.search(pat, page):
             warn(f'a private path on the board ({pat})')
@@ -1834,7 +1866,7 @@ def main():
             for w, pw in ((DESK, pages[sid][0]), (PHONE, pages[sid][1])):
                 if measured[sid][w] and dw.get(('newsprint', pw)) and int(dw[('newsprint', pw)]) != int(measured[sid][w]):
                     warn(f'{sid}: the guide draws {measured[sid][w]} px at a {w} px window and the kit {dw[("newsprint", pw)]} px at {pw}')
-    b1cmp = board1_compare([s for s in specs if s in C['board1_ids']], kit_out)
+    b1cmp = board1_compare([s for s in specs if s in C['board1_ids']], kit_out, pages)
     # 3. the panels
     parts = [decide_panel(shots, fshots, kit_out, pages), forms_panel(G, P, rn, held, kit_out, pages, b1cmp, shots),
              rules_panel(G, ch, held, shots), count_panel(), spend_panel(G, rn, kit_out), scores_panel(), tested_panel(G, kit_out, specs), next_panel()]

@@ -34,7 +34,7 @@
   "title": "Chapter 14’s forms, rounds 1 to 3",
   "for_line": "For Dustin Cathcart · {built_date}",
   "deck": [
-   "Rounds 1 to 3 built {n_forms} of chapter 14’s forms in {n_fams} families: {n_specs} charts drawn from real data and {n_sketches} sketches. You already answered five questions before this board, and it shows each answer as done beside what it replaced.",
+   "Rounds 1 to 3 built {n_forms} of chapter 14’s forms in {n_fams} families: {n_spec_rows} with a chart and {n_sketches} with a sketch. You answered five questions before this board, and it shows each answer done beside what it replaced.",
    "Panel 1 asks only what is still open. Every panel after it is a reference: each form at true size on both grounds, the count of examples by place and topic, what chapter 14 has spent, and the scores."
   ],
   "toc_h": "On this board",
@@ -99,7 +99,12 @@
    "view_by": "The {who}’s view.",
    "plan_said": "The plan said",
    "built_k": "As built",
-   "group_wait": "Waiting for this group’s items."
+   "group_wait": "Waiting for this group’s items.",
+   "role_words": {
+    "before": "Before",
+    "after": "Now",
+    "view": ""
+   }
   },
   "forms": {
    "n": 2,
@@ -121,12 +126,7 @@
    "wait_photo": "Waiting for a passing guide build and this sketch’s photograph.",
    "wait_kit": "Waiting for the kit’s pictures of this chart.",
    "wait_some": "Waiting for pictures of Rules {list}.",
-   "b1_same": "A board 1 chart. Its drawing is the one board 1 approved.",
-   "b1_changed": "A board 1 chart. Its drawing changed since board 1 {where}; panel 1 lists the change.",
-   "b1_where": {
-    "newsprint": "on Newsprint at a {w} px window",
-    "charcoal": "on Charcoal at a {w} px window"
-   },
+   "b1_same": "A board 1 chart. Its drawing at a 1440 px window matches board 1’s, pixel for pixel.",
    "b1_unknown": "A board 1 chart. The build could not compare its drawing with board 1’s.",
    "shared_spec": "The same chart serves Rule {rule}, shown above.",
    "label_desk": "At a 1440 px window · {px} px drawing",
@@ -138,7 +138,11 @@
    "bytes_line": "{with_frame} bytes on the page with its plate frame ({figure} for the chart as the guide places it).",
    "kit_pass": "Passes every check in the kit.",
    "kit_faults": "{n} faults in the kit’s checks:",
-   "table_summary": "The table, as the guide prints it"
+   "table_summary": "The table, as the guide prints it",
+   "b1_group": "board-1-changed",
+   "b1_named": "A board 1 chart, changed since board 1.",
+   "b1_link": "See what changed in panel 1.",
+   "b1_differs": "A board 1 chart. Its drawing at a 1440 px window differs from board 1’s."
   },
   "rules": {
    "n": 3,
@@ -161,7 +165,6 @@
     "ruling": "The data lead’s earlier count",
     "recount": "This recount",
     "limits": "The limits",
-    "script": "Counted by",
     "built": "Examples as built"
    },
    "limits_words": "{d} for a topic, {s} for a state",
@@ -195,7 +198,8 @@
     "data",
     "test",
     "passes"
-   ]
+   ],
+   "script_ref": "counted by {script}"
   },
   "spend": {
    "n": 5,

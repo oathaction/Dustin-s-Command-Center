@@ -1,16 +1,30 @@
 {
- "built": "2026-11-13T17:23:03.995406+00:00",
+ "built": "2026-11-13T17:46:38.853655+00:00",
  "guide_build": {
   "exit": 0,
-  "bytes": 11236072,
+  "bytes": 11236319,
   "rules": 344,
   "specimens": 638,
   "warnings": 0,
-  "built": "2026-11-13T17:23:14"
+  "built": "2026-11-13T17:46:48"
+ },
+ "decisions": {
+  "file": "work/handoffs/phase-3/20261113_Board-2-Decisions.json",
+  "state": "signed off",
+  "updated_utc": "2026-11-13T17:43:30Z",
+  "schema": "board-2-decisions/1"
  },
  "shots": {
-  "taken": [
+  "taken": [],
+  "reused": [
    "ch14-opener",
+   "dec-fig-s-14-124-sketch-1440",
+   "dec-oac-s-14-s10-1440",
+   "dec-oac-s-14-s12-1024",
+   "dec-oac-s-14-s12-1440",
+   "dec-oac-s-14-s12-390",
+   "dec-oac-s-14-s16-1440",
+   "dec-oac-s-14-s16-390",
    "m-S01-1440",
    "m-S01-390",
    "m-S02-1440",
@@ -235,8 +249,7 @@
    "sketch-14.92",
    "sketch-14.94",
    "sketch-14.95"
-  ],
-  "reused": []
+  ]
  },
  "guide_widths": {
   "S01": {
@@ -577,23 +590,25 @@
   }
  },
  "kit_builds": {
-  "rebuilt": [
+  "rebuilt": [],
+  "reused": [
+   "S05",
+   "S06",
+   "S08",
+   "S09",
+   "S11",
+   "S13",
+   "S15",
+   "S16",
+   "S37",
+   "S12",
    "S01",
    "S02",
    "S03",
    "S04",
-   "S05",
-   "S06",
    "S07",
-   "S08",
-   "S09",
    "S10",
-   "S11",
-   "S12",
-   "S13",
    "S14",
-   "S15",
-   "S16",
    "S17",
    "S18",
    "S19",
@@ -614,7 +629,6 @@
    "S34",
    "S35",
    "S36",
-   "S37",
    "S38",
    "S39",
    "S40",
@@ -663,25 +677,15 @@
    "S83",
    "S84"
   ],
-  "reused": [],
   "widths": {
    "1440,358": [
     "S01",
     "S02",
     "S03",
     "S04",
-    "S05",
-    "S06",
     "S07",
-    "S08",
-    "S09",
     "S10",
-    "S11",
-    "S12",
-    "S13",
     "S14",
-    "S15",
-    "S16",
     "S17",
     "S18",
     "S19",
@@ -702,7 +706,6 @@
     "S34",
     "S35",
     "S36",
-    "S37",
     "S38",
     "S39",
     "S40",
@@ -750,156 +753,158 @@
     "S82",
     "S83",
     "S84"
+   ],
+   "787,358": [
+    "S05",
+    "S06",
+    "S08",
+    "S09",
+    "S11",
+    "S13",
+    "S15",
+    "S16",
+    "S37"
+   ],
+   "1088,358": [
+    "S12"
    ]
   }
  },
  "board1_compare": {
   "S01": {
-   "changed": true,
-   "where": [
-    "charcoal 1440",
-    "charcoal 390",
-    "newsprint 1440",
-    "newsprint 390"
-   ],
-   "desk_file_same": false
+   "named_in_panel_1": "placement",
+   "desk_pixels_same": false,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S01-Big-Number-In-Context-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/kit-out/s01/20261113_S01-Big-Number-In-Context-Newsprint-1440.png"
+   ]
   },
   "S02": {
-   "changed": true,
-   "where": [
-    "charcoal 1440",
-    "newsprint 1440"
-   ],
-   "desk_file_same": false
+   "named_in_panel_1": "placement",
+   "desk_pixels_same": false,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S02-Line-With-Event-Notes-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/kit-out/s02/20261113_S02-Line-With-Event-Notes-Newsprint-1440.png"
+   ]
   },
   "S03": {
-   "changed": false,
-   "where": [],
-   "desk_file_same": true
+   "named_in_panel_1": null,
+   "desk_pixels_same": true,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S03-Ranked-Bar-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/kit-out/s03/20261113_S03-Ranked-Bar-Newsprint-1440.png"
+   ]
   },
   "S04": {
-   "changed": true,
-   "where": [
-    "charcoal 1440",
-    "charcoal 390",
-    "newsprint 1440",
-    "newsprint 390"
-   ],
-   "desk_file_same": false
+   "named_in_panel_1": null,
+   "desk_pixels_same": false,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S04-Dumbbell-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/kit-out/s04/20261113_S04-Dumbbell-Newsprint-1440.png"
+   ]
   },
   "S05": {
-   "changed": true,
-   "where": [
-    "charcoal 1440",
-    "charcoal 390",
-    "newsprint 1440",
-    "newsprint 390"
-   ],
-   "desk_file_same": false
+   "named_in_panel_1": "placement",
+   "desk_pixels_same": false,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S05-Small-Multiple-Lines-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/board1-compare/s05/20261113_S05-Small-Multiple-Lines-Newsprint-1440.png"
+   ]
   },
   "S06": {
-   "changed": true,
-   "where": [
-    "charcoal 390",
-    "newsprint 390"
-   ],
-   "desk_file_same": true
+   "named_in_panel_1": null,
+   "desk_pixels_same": true,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S06-Scenario-Directions-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/board1-compare/s06/20261113_S06-Scenario-Directions-Newsprint-1440.png"
+   ]
   },
   "S07": {
-   "changed": false,
-   "where": [],
-   "desk_file_same": true
+   "named_in_panel_1": "placement",
+   "desk_pixels_same": true,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S07-Tile-Grid-Map-Categorical-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/kit-out/s07/20261113_S07-Tile-Grid-Map-Categorical-Newsprint-1440.png"
+   ]
   },
   "S08": {
-   "changed": true,
-   "where": [
-    "charcoal 1440",
-    "charcoal 390",
-    "newsprint 1440",
-    "newsprint 390"
-   ],
-   "desk_file_same": false
+   "named_in_panel_1": null,
+   "desk_pixels_same": false,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S08-Unit-Chart-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/board1-compare/s08/20261113_S08-Unit-Chart-Newsprint-1440.png"
+   ]
   },
   "S09": {
-   "changed": true,
-   "where": [
-    "charcoal 1440",
-    "charcoal 390",
-    "newsprint 1440",
-    "newsprint 390"
-   ],
-   "desk_file_same": false
+   "named_in_panel_1": "placement",
+   "desk_pixels_same": false,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S09-Timeline-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/board1-compare/s09/20261113_S09-Timeline-Newsprint-1440.png"
+   ]
   },
   "S10": {
-   "changed": true,
-   "where": [
-    "charcoal 1440",
-    "charcoal 390",
-    "newsprint 1440",
-    "newsprint 390"
-   ],
-   "desk_file_same": false
+   "named_in_panel_1": "S10",
+   "desk_pixels_same": false,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S10-One-Hundred-Percent-Bar-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/kit-out/s10/20261113_S10-One-Hundred-Percent-Bar-Newsprint-1440.png"
+   ]
   },
   "S11": {
-   "changed": true,
-   "where": [
-    "charcoal 1440",
-    "charcoal 390",
-    "newsprint 1440",
-    "newsprint 390"
-   ],
-   "desk_file_same": false
+   "named_in_panel_1": "placement",
+   "desk_pixels_same": false,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S11-Shift-Arrows-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/board1-compare/s11/20261113_S11-Shift-Arrows-Newsprint-1440.png"
+   ]
   },
   "S12": {
-   "changed": true,
-   "where": [
-    "charcoal 1440",
-    "charcoal 390",
-    "newsprint 1440",
-    "newsprint 390"
-   ],
-   "desk_file_same": false
+   "named_in_panel_1": "S12",
+   "desk_pixels_same": false,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S12-Tile-Grid-Map-With-Shift-Arrows-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/board1-compare/s12/20261113_S12-Tile-Grid-Map-With-Shift-Arrows-Newsprint-1440.png"
+   ]
   },
   "S13": {
-   "changed": true,
-   "where": [
-    "charcoal 1440",
-    "charcoal 390",
-    "newsprint 1440",
-    "newsprint 390"
-   ],
-   "desk_file_same": false
+   "named_in_panel_1": "placement",
+   "desk_pixels_same": false,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S13-Small-Multiple-Area-Sparklines-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/board1-compare/s13/20261113_S13-Small-Multiple-Area-Sparklines-Newsprint-1440.png"
+   ]
   },
   "S14": {
-   "changed": true,
-   "where": [
-    "charcoal 1440",
-    "charcoal 390",
-    "newsprint 1440",
-    "newsprint 390"
-   ],
-   "desk_file_same": false
+   "named_in_panel_1": "placement",
+   "desk_pixels_same": false,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S14-Columns-With-Moving-Average-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/kit-out/s14/20261113_S14-Columns-With-Moving-Average-Newsprint-1440.png"
+   ]
   },
   "S15": {
-   "changed": true,
-   "where": [
-    "charcoal 1440",
-    "charcoal 390",
-    "newsprint 1440",
-    "newsprint 390"
-   ],
-   "desk_file_same": false
+   "named_in_panel_1": "placement",
+   "desk_pixels_same": false,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S15-Results-Table-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/board1-compare/s15/20261113_S15-Results-Table-Newsprint-1440.png"
+   ]
   },
   "S16": {
-   "changed": true,
-   "where": [
-    "charcoal 1440",
-    "charcoal 390",
-    "newsprint 1440",
-    "newsprint 390"
-   ],
-   "desk_file_same": false
+   "named_in_panel_1": "S16",
+   "desk_pixels_same": false,
+   "files": [
+    "work/boards/phase-3/round-0/specimens/20261112_S16-Bubble-Map-Newsprint-1440.png",
+    "[scratch]/phase-3/board-2/builder/board1-compare/s16/20261113_S16-Bubble-Map-Newsprint-1440.png"
+   ]
   }
+ },
+ "decide": {
+  "items": 30,
+  "questions": 2,
+  "state": "signed off",
+  "pictures_waiting": []
  },
  "forms": {
   "14.24": {
@@ -924,6 +929,10 @@
    "with_frame": 9292,
    "figure_bytes": 8542,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -947,6 +956,10 @@
    "with_frame": 4884,
    "figure_bytes": 4134,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -970,6 +983,10 @@
    "with_frame": 4956,
    "figure_bytes": 4206,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -993,6 +1010,10 @@
    "with_frame": 11276,
    "figure_bytes": 10526,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1016,6 +1037,10 @@
    "with_frame": 5448,
    "figure_bytes": 4698,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1039,6 +1064,10 @@
    "with_frame": 5165,
    "figure_bytes": 4415,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1062,6 +1091,10 @@
    "with_frame": 6432,
    "figure_bytes": 5682,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1085,6 +1118,10 @@
    "with_frame": 5818,
    "figure_bytes": 5068,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1108,6 +1145,10 @@
    "with_frame": 6962,
    "figure_bytes": 6212,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1131,10 +1172,14 @@
    "with_frame": 14873,
    "figure_bytes": 14123,
    "faults": 0,
+   "kit_windows": [
+    787,
+    358
+   ],
    "drawn": {
-    "newsprint 1440": 1024,
+    "newsprint 787": 723,
     "newsprint 358": 326,
-    "charcoal 1440": 1024,
+    "charcoal 787": 723,
     "charcoal 358": 326
    },
    "spec": "S11",
@@ -1154,6 +1199,10 @@
    "with_frame": 10103,
    "figure_bytes": 9353,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1177,6 +1226,10 @@
    "with_frame": 23541,
    "figure_bytes": 22791,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1200,6 +1253,10 @@
    "with_frame": 10361,
    "figure_bytes": 9611,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1235,6 +1292,10 @@
    "with_frame": 11390,
    "figure_bytes": 10640,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1258,10 +1319,14 @@
    "with_frame": 31047,
    "figure_bytes": 30297,
    "faults": 0,
+   "kit_windows": [
+    787,
+    358
+   ],
    "drawn": {
-    "newsprint 1440": 1024,
+    "newsprint 787": 723,
     "newsprint 358": 326,
-    "charcoal 1440": 1024,
+    "charcoal 787": 723,
     "charcoal 358": 326
    },
    "spec": "S05",
@@ -1281,6 +1346,10 @@
    "with_frame": 14928,
    "figure_bytes": 14178,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1304,6 +1373,10 @@
    "with_frame": 12103,
    "figure_bytes": 11353,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1327,6 +1400,10 @@
    "with_frame": 6584,
    "figure_bytes": 5834,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1350,10 +1427,14 @@
    "with_frame": 34223,
    "figure_bytes": 33473,
    "faults": 0,
+   "kit_windows": [
+    787,
+    358
+   ],
    "drawn": {
-    "newsprint 1440": 1024,
+    "newsprint 787": 723,
     "newsprint 358": 326,
-    "charcoal 1440": 1024,
+    "charcoal 787": 723,
     "charcoal 358": 326
    },
    "spec": "S13",
@@ -1373,6 +1454,10 @@
    "with_frame": 5945,
    "figure_bytes": 5195,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1396,6 +1481,10 @@
    "with_frame": 6833,
    "figure_bytes": 6083,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1419,6 +1508,10 @@
    "with_frame": 8877,
    "figure_bytes": 8127,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1442,10 +1535,14 @@
    "with_frame": 13642,
    "figure_bytes": 12892,
    "faults": 0,
+   "kit_windows": [
+    787,
+    358
+   ],
    "drawn": {
-    "newsprint 1440": 1024,
+    "newsprint 787": 723,
     "newsprint 358": 326,
-    "charcoal 1440": 1024,
+    "charcoal 787": 723,
     "charcoal 358": 326
    },
    "spec": "S09",
@@ -1465,6 +1562,10 @@
    "with_frame": 7784,
    "figure_bytes": 7034,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1488,6 +1589,10 @@
    "with_frame": 17208,
    "figure_bytes": 16458,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1511,6 +1616,10 @@
    "with_frame": 11949,
    "figure_bytes": 11199,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1534,6 +1643,10 @@
    "with_frame": 10814,
    "figure_bytes": 10064,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1593,6 +1706,10 @@
    "with_frame": 8156,
    "figure_bytes": 7406,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1616,6 +1733,10 @@
    "with_frame": 10723,
    "figure_bytes": 9973,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1639,6 +1760,10 @@
    "with_frame": 9048,
    "figure_bytes": 8298,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1662,10 +1787,14 @@
    "with_frame": 22515,
    "figure_bytes": 21765,
    "faults": 0,
+   "kit_windows": [
+    787,
+    358
+   ],
    "drawn": {
-    "newsprint 1440": 1024,
+    "newsprint 787": 723,
     "newsprint 358": 326,
-    "charcoal 1440": 1024,
+    "charcoal 787": 723,
     "charcoal 358": 326
    },
    "spec": "S08",
@@ -1685,6 +1814,10 @@
    "with_frame": 7619,
    "figure_bytes": 6869,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1708,6 +1841,10 @@
    "with_frame": 11831,
    "figure_bytes": 11081,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1731,6 +1868,10 @@
    "with_frame": 6073,
    "figure_bytes": 5323,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1754,6 +1895,10 @@
    "with_frame": 4595,
    "figure_bytes": 3845,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1813,6 +1958,10 @@
    "with_frame": 6262,
    "figure_bytes": 5512,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1836,6 +1985,10 @@
    "with_frame": 10533,
    "figure_bytes": 9783,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1859,6 +2012,10 @@
    "with_frame": 7361,
    "figure_bytes": 6611,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1882,6 +2039,10 @@
    "with_frame": 8368,
    "figure_bytes": 7618,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1905,6 +2066,10 @@
    "with_frame": 12189,
    "figure_bytes": 11439,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -1988,6 +2153,10 @@
    "with_frame": 10445,
    "figure_bytes": 9695,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2011,6 +2180,10 @@
    "with_frame": 11739,
    "figure_bytes": 10989,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2034,6 +2207,10 @@
    "with_frame": 15375,
    "figure_bytes": 14625,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2093,6 +2270,10 @@
    "with_frame": 11650,
    "figure_bytes": 10900,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2116,6 +2297,10 @@
    "with_frame": 12183,
    "figure_bytes": 11433,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2139,10 +2324,14 @@
    "with_frame": 16702,
    "figure_bytes": 15952,
    "faults": 0,
+   "kit_windows": [
+    787,
+    358
+   ],
    "drawn": {
-    "newsprint 1440": 1024,
+    "newsprint 787": 723,
     "newsprint 358": 326,
-    "charcoal 1440": 1024,
+    "charcoal 787": 723,
     "charcoal 358": 326
    },
    "spec": "S06",
@@ -2162,6 +2351,10 @@
    "with_frame": 7454,
    "figure_bytes": 6704,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2221,6 +2414,10 @@
    "with_frame": 7662,
    "figure_bytes": 6912,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2244,6 +2441,10 @@
    "with_frame": 9827,
    "figure_bytes": 9077,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2267,6 +2468,10 @@
    "with_frame": 4631,
    "figure_bytes": 3881,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2290,6 +2495,10 @@
    "with_frame": 5814,
    "figure_bytes": 5064,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2313,6 +2522,10 @@
    "with_frame": 11081,
    "figure_bytes": 10331,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2336,6 +2549,10 @@
    "with_frame": 4485,
    "figure_bytes": 3735,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2359,6 +2576,10 @@
    "with_frame": 6567,
    "figure_bytes": 5817,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2406,6 +2627,10 @@
    "with_frame": 10057,
    "figure_bytes": 9307,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2429,6 +2654,10 @@
    "with_frame": 12965,
    "figure_bytes": 12215,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2452,6 +2681,10 @@
    "with_frame": 9750,
    "figure_bytes": 9000,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2475,6 +2708,10 @@
    "with_frame": 14366,
    "figure_bytes": 13616,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2498,6 +2735,10 @@
    "with_frame": 10871,
    "figure_bytes": 10121,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2518,9 +2759,13 @@
    "round": 3,
    "maker": "A",
    "status": "new",
-   "with_frame": 12246,
-   "figure_bytes": 11496,
+   "with_frame": 12595,
+   "figure_bytes": 11845,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2544,6 +2789,10 @@
    "with_frame": 7934,
    "figure_bytes": 7184,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2579,6 +2828,10 @@
    "with_frame": 14087,
    "figure_bytes": 13337,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2602,6 +2855,10 @@
    "with_frame": 11654,
    "figure_bytes": 10904,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2625,6 +2882,10 @@
    "with_frame": 7806,
    "figure_bytes": 7056,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2684,6 +2945,10 @@
    "with_frame": 7570,
    "figure_bytes": 6820,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2719,6 +2984,10 @@
    "with_frame": 7622,
    "figure_bytes": 6872,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2754,7 +3023,7 @@
    "kind": "avoid",
    "specimen": "s-14-124-sketch",
    "heading": "Party-colored map or red and blue scale, a form that misleads",
-   "caption": "Drawn here in gray: a map shaded red for one party and blue for the other, which takes a side at a glance and makes a party that wins a few large places look bigger than its count."
+   "caption": "A map that shades Party A’s seven small places red and Party B’s five large places blue, which takes a side at a glance and makes Party B look bigger than its count."
   },
   "14.114": {
    "rule": "14.114",
@@ -2766,6 +3035,10 @@
    "with_frame": 14354,
    "figure_bytes": 13604,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2789,10 +3062,14 @@
    "with_frame": 13903,
    "figure_bytes": 13153,
    "faults": 0,
+   "kit_windows": [
+    1088,
+    358
+   ],
    "drawn": {
-    "newsprint 1440": 1024,
+    "newsprint 1088": 1024,
     "newsprint 358": 326,
-    "charcoal 1440": 1024,
+    "charcoal 1088": 1024,
     "charcoal 358": 326
    },
    "spec": "S12",
@@ -2812,10 +3089,14 @@
    "with_frame": 10933,
    "figure_bytes": 10183,
    "faults": 0,
+   "kit_windows": [
+    787,
+    358
+   ],
    "drawn": {
-    "newsprint 1440": 1024,
+    "newsprint 787": 723,
     "newsprint 358": 326,
-    "charcoal 1440": 1024,
+    "charcoal 787": 723,
     "charcoal 358": 326
    },
    "spec": "S16",
@@ -2835,6 +3116,10 @@
    "with_frame": 9406,
    "figure_bytes": 8656,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2858,6 +3143,10 @@
    "with_frame": 4304,
    "figure_bytes": 3554,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2881,6 +3170,10 @@
    "with_frame": 6891,
    "figure_bytes": 6141,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2904,6 +3197,10 @@
    "with_frame": 13640,
    "figure_bytes": 12890,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2927,6 +3224,10 @@
    "with_frame": 13859,
    "figure_bytes": 13109,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2950,6 +3251,10 @@
    "with_frame": 13338,
    "figure_bytes": 12588,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2973,6 +3278,10 @@
    "with_frame": 11473,
    "figure_bytes": 10723,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -2996,10 +3305,14 @@
    "with_frame": 17298,
    "figure_bytes": 16548,
    "faults": 0,
+   "kit_windows": [
+    787,
+    358
+   ],
    "drawn": {
-    "newsprint 1440": 1024,
+    "newsprint 787": 723,
     "newsprint 358": 326,
-    "charcoal 1440": 1024,
+    "charcoal 787": 723,
     "charcoal 358": 326
    },
    "spec": "S15",
@@ -3019,6 +3332,10 @@
    "with_frame": 11018,
    "figure_bytes": 10268,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -3042,10 +3359,14 @@
    "with_frame": 16702,
    "figure_bytes": 15952,
    "faults": 0,
+   "kit_windows": [
+    787,
+    358
+   ],
    "drawn": {
-    "newsprint 1440": 1024,
+    "newsprint 787": 723,
     "newsprint 358": 326,
-    "charcoal 1440": 1024,
+    "charcoal 787": 723,
     "charcoal 358": 326
    },
    "spec": "S06",
@@ -3065,10 +3386,14 @@
    "with_frame": 34223,
    "figure_bytes": 33473,
    "faults": 0,
+   "kit_windows": [
+    787,
+    358
+   ],
    "drawn": {
-    "newsprint 1440": 1024,
+    "newsprint 787": 723,
     "newsprint 358": 326,
-    "charcoal 1440": 1024,
+    "charcoal 787": 723,
     "charcoal 358": 326
    },
    "spec": "S13",
@@ -3088,10 +3413,14 @@
    "with_frame": 16815,
    "figure_bytes": 16065,
    "faults": 0,
+   "kit_windows": [
+    787,
+    358
+   ],
    "drawn": {
-    "newsprint 1440": 1024,
+    "newsprint 787": 723,
     "newsprint 358": 326,
-    "charcoal 1440": 1024,
+    "charcoal 787": 723,
     "charcoal 358": 326
    },
    "spec": "S37",
@@ -3111,6 +3440,10 @@
    "with_frame": 10767,
    "figure_bytes": 10017,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -3134,6 +3467,10 @@
    "with_frame": 11031,
    "figure_bytes": 10281,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -3157,6 +3494,10 @@
    "with_frame": 9424,
    "figure_bytes": 8674,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -3180,6 +3521,10 @@
    "with_frame": 4143,
    "figure_bytes": 3393,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -3203,6 +3548,10 @@
    "with_frame": 3194,
    "figure_bytes": 2444,
    "faults": 0,
+   "kit_windows": [
+    1440,
+    358
+   ],
    "drawn": {
     "newsprint 1440": 720,
     "newsprint 358": 326,
@@ -3346,11 +3695,16 @@
    ]
   }
  },
+ "count": {
+  "recount": 108,
+  "ruling_g": 108,
+  "dr_229": 17
+ },
  "spend": {
   "rows": [
    [
     "Chapter 14 with the chart kit",
-    2228120,
+    2228367,
     2803941
    ],
    [
@@ -3374,7 +3728,7 @@
     15500000
    ]
   ],
-  "per_plate": 13249,
+  "per_plate": 13230,
   "plates_to_come": 13,
   "by_family": {
    "3.1": [
@@ -3423,12 +3777,12 @@
     2
    ],
    "3.11": [
-    80232,
+    80581,
     7,
     1
    ],
    "3.12": [
-    49509,
+    49413,
     3,
     3
    ],
@@ -3438,7 +3792,7 @@
     2
    ],
    "3.14": [
-    113868,
+    113819,
     10,
     1
    ],
@@ -3636,10 +3990,10 @@
   ]
  },
  "tested": {
-  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 17:23 UTC: exit 0, no warnings, 11,236,072 bytes, 344 rules, 638 examples placed",
+  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 17:46 UTC: exit 0, no warnings, 11,236,319 bytes, 344 rules, 638 examples placed",
   "Quick guide check": "run by the main session on a copy of its strict build of 11,235,128 bytes, at 1440 and 390 px: 694 examples, 3,296 same-page links, no failures",
   "The kit’s build of every chart": "run by this board’s build at the widths the guide draws, with the sweep from 256 px: 84 of 84 charts pass with no fault, no warnings",
-  "This board’s own check": "Waiting for its file"
+  "This board’s own check": "on its last run at 1440, 390 and 360 px: no failures, leaving aside the page’s language, which the host’s wrapper sets"
  },
  "guide_check": {
   "file": "[scratch]/phase-3/board-2/main/quick/guide-Guide-Check-Results.json",
@@ -3654,350 +4008,419 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-3/board-2/20261113_Board-2.html",
- "html_bytes": 896750,
- "images": 295,
- "image_bytes": 123638004,
- "folder_files": 297,
- "folder_bytes": 124551287,
+ "html_bytes": 986339,
+ "images": 310,
+ "image_bytes": 40639494,
+ "folder_files": 314,
+ "folder_bytes": 41811688,
  "largest_image": [
-  1331207,
-  "20261113_Form-S37-Newsprint.png"
+  492518,
+  "20261113_Form-S37-Grayscale.webp"
  ],
  "status": {
-  "decide": [
-   "waiting",
-   "data_lead"
-  ],
+  "decide": "ready",
   "forms": "ready",
   "rules": "ready",
-  "count": [
-   "waiting",
-   "data_lead"
-  ],
+  "count": "ready",
   "spend": "ready",
   "scores": [
    "partial",
    "cd_board"
   ],
-  "tested": [
-   "partial",
-   "notes"
-  ],
+  "tested": "ready",
   "next": "ready"
  },
  "image_sources": {
-  "img/20261113_Sketch-14-24.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.24.png",
-  "img/20261113_Form-S03-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s03/s03-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-newsprint-358.png",
-  "img/20261113_Form-S03-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s03/s03-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-charcoal-358.png",
-  "img/20261113_Form-S03-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s03/s03-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-charcoal-358-grayscale.png",
-  "img/20261113_Form-S17-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s17/s17-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-newsprint-358.png",
-  "img/20261113_Form-S17-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s17/s17-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-charcoal-358.png",
-  "img/20261113_Form-S17-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s17/s17-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-charcoal-358-grayscale.png",
-  "img/20261113_Form-S18-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s18/s18-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-newsprint-358.png",
-  "img/20261113_Form-S18-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s18/s18-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-charcoal-358.png",
-  "img/20261113_Form-S18-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s18/s18-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-charcoal-358-grayscale.png",
-  "img/20261113_Form-S19-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s19/s19-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-newsprint-358.png",
-  "img/20261113_Form-S19-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s19/s19-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-charcoal-358.png",
-  "img/20261113_Form-S19-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s19/s19-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-charcoal-358-grayscale.png",
-  "img/20261113_Form-S04-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s04/s04-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-newsprint-358.png",
-  "img/20261113_Form-S04-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s04/s04-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-charcoal-358.png",
-  "img/20261113_Form-S04-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s04/s04-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-charcoal-358-grayscale.png",
-  "img/20261113_Form-S20-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s20/s20-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-newsprint-358.png",
-  "img/20261113_Form-S20-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s20/s20-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-charcoal-358.png",
-  "img/20261113_Form-S20-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s20/s20-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-charcoal-358-grayscale.png",
-  "img/20261113_Form-S21-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s21/s21-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-newsprint-358.png",
-  "img/20261113_Form-S21-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s21/s21-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-charcoal-358.png",
-  "img/20261113_Form-S21-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s21/s21-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-charcoal-358-grayscale.png",
-  "img/20261113_Form-S22-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s22/s22-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-newsprint-358.png",
-  "img/20261113_Form-S22-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s22/s22-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-charcoal-358.png",
-  "img/20261113_Form-S22-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s22/s22-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-charcoal-358-grayscale.png",
-  "img/20261113_Form-S23-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s23/s23-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-newsprint-358.png",
-  "img/20261113_Form-S23-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s23/s23-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-charcoal-358.png",
-  "img/20261113_Form-S23-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s23/s23-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-charcoal-358-grayscale.png",
-  "img/20261113_Form-S11-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s11/s11-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-newsprint-358.png",
-  "img/20261113_Form-S11-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s11/s11-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-charcoal-358.png",
-  "img/20261113_Form-S11-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s11/s11-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-charcoal-358-grayscale.png",
-  "img/20261113_Form-S24-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s24/s24-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-newsprint-358.png",
-  "img/20261113_Form-S24-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s24/s24-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-charcoal-358.png",
-  "img/20261113_Form-S24-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s24/s24-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-charcoal-358-grayscale.png",
-  "img/20261113_Form-S25-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s25/s25-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-newsprint-358.png",
-  "img/20261113_Form-S25-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s25/s25-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-charcoal-358.png",
-  "img/20261113_Form-S25-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s25/s25-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-charcoal-358-grayscale.png",
-  "img/20261113_Form-S26-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s26/s26-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-newsprint-358.png",
-  "img/20261113_Form-S26-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s26/s26-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-charcoal-358.png",
-  "img/20261113_Form-S26-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s26/s26-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-charcoal-358-grayscale.png",
-  "img/20261113_Sketch-14-45.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.45.png",
-  "img/20261113_Form-S02-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s02/s02-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-newsprint-358.png",
-  "img/20261113_Form-S02-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s02/s02-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-charcoal-358.png",
-  "img/20261113_Form-S02-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s02/s02-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-charcoal-358-grayscale.png",
-  "img/20261113_Form-S05-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s05/s05-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-newsprint-358.png",
-  "img/20261113_Form-S05-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s05/s05-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-charcoal-358.png",
-  "img/20261113_Form-S05-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s05/s05-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-charcoal-358-grayscale.png",
-  "img/20261113_Form-S27-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s27/s27-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-newsprint-358.png",
-  "img/20261113_Form-S27-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s27/s27-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-charcoal-358.png",
-  "img/20261113_Form-S27-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s27/s27-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-charcoal-358-grayscale.png",
-  "img/20261113_Form-S14-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s14/s14-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-newsprint-358.png",
-  "img/20261113_Form-S14-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s14/s14-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-charcoal-358.png",
-  "img/20261113_Form-S14-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s14/s14-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-charcoal-358-grayscale.png",
-  "img/20261113_Form-S28-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s28/s28-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-newsprint-358.png",
-  "img/20261113_Form-S28-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s28/s28-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-charcoal-358.png",
-  "img/20261113_Form-S28-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s28/s28-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-charcoal-358-grayscale.png",
-  "img/20261113_Form-S13-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s13/s13-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-newsprint-358.png",
-  "img/20261113_Form-S13-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s13/s13-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-charcoal-358.png",
-  "img/20261113_Form-S13-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s13/s13-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-charcoal-358-grayscale.png",
-  "img/20261113_Form-S29-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s29/s29-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-newsprint-358.png",
-  "img/20261113_Form-S29-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s29/s29-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-charcoal-358.png",
-  "img/20261113_Form-S29-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s29/s29-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-charcoal-358-grayscale.png",
-  "img/20261113_Form-S30-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s30/s30-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-newsprint-358.png",
-  "img/20261113_Form-S30-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s30/s30-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-charcoal-358.png",
-  "img/20261113_Form-S30-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s30/s30-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-charcoal-358-grayscale.png",
-  "img/20261113_Form-S31-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s31/s31-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-newsprint-358.png",
-  "img/20261113_Form-S31-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s31/s31-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-charcoal-358.png",
-  "img/20261113_Form-S31-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s31/s31-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-charcoal-358-grayscale.png",
-  "img/20261113_Form-S09-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s09/s09-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-newsprint-358.png",
-  "img/20261113_Form-S09-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s09/s09-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-charcoal-358.png",
-  "img/20261113_Form-S09-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s09/s09-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-charcoal-358-grayscale.png",
-  "img/20261113_Form-S32-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s32/s32-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-newsprint-358.png",
-  "img/20261113_Form-S32-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s32/s32-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-charcoal-358.png",
-  "img/20261113_Form-S32-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s32/s32-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-charcoal-358-grayscale.png",
-  "img/20261113_Form-S33-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s33/s33-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-newsprint-358.png",
-  "img/20261113_Form-S33-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s33/s33-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-charcoal-358.png",
-  "img/20261113_Form-S33-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s33/s33-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-charcoal-358-grayscale.png",
-  "img/20261113_Form-S34-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s34/s34-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-newsprint-358.png",
-  "img/20261113_Form-S34-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s34/s34-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-charcoal-358.png",
-  "img/20261113_Form-S34-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s34/s34-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-charcoal-358-grayscale.png",
-  "img/20261113_Form-S35-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s35/s35-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-newsprint-358.png",
-  "img/20261113_Form-S35-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s35/s35-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-charcoal-358.png",
-  "img/20261113_Form-S35-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s35/s35-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-charcoal-358-grayscale.png",
-  "img/20261113_Sketch-14-43.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.43.png",
-  "img/20261113_Sketch-14-44.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.44.png",
-  "img/20261113_Sketch-14-57.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.57.png",
-  "img/20261113_Form-S10-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s10/s10-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-newsprint-358.png",
-  "img/20261113_Form-S10-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s10/s10-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-charcoal-358.png",
-  "img/20261113_Form-S10-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s10/s10-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-charcoal-358-grayscale.png",
-  "img/20261113_Form-S43-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s43/s43-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-newsprint-358.png",
-  "img/20261113_Form-S43-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s43/s43-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-charcoal-358.png",
-  "img/20261113_Form-S43-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s43/s43-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-charcoal-358-grayscale.png",
-  "img/20261113_Form-S44-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s44/s44-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-newsprint-358.png",
-  "img/20261113_Form-S44-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s44/s44-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-charcoal-358.png",
-  "img/20261113_Form-S44-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s44/s44-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-charcoal-358-grayscale.png",
-  "img/20261113_Form-S08-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s08/s08-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-newsprint-358.png",
-  "img/20261113_Form-S08-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s08/s08-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-charcoal-358.png",
-  "img/20261113_Form-S08-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s08/s08-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-charcoal-358-grayscale.png",
-  "img/20261113_Form-S45-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s45/s45-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-newsprint-358.png",
-  "img/20261113_Form-S45-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s45/s45-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-charcoal-358.png",
-  "img/20261113_Form-S45-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s45/s45-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-charcoal-358-grayscale.png",
-  "img/20261113_Form-S46-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s46/s46-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-newsprint-358.png",
-  "img/20261113_Form-S46-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s46/s46-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-charcoal-358.png",
-  "img/20261113_Form-S46-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s46/s46-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-charcoal-358-grayscale.png",
-  "img/20261113_Form-S47-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s47/s47-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-newsprint-358.png",
-  "img/20261113_Form-S47-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s47/s47-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-charcoal-358.png",
-  "img/20261113_Form-S47-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s47/s47-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-charcoal-358-grayscale.png",
-  "img/20261113_Form-S48-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s48/s48-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-newsprint-358.png",
-  "img/20261113_Form-S48-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s48/s48-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-charcoal-358.png",
-  "img/20261113_Form-S48-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s48/s48-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-charcoal-358-grayscale.png",
-  "img/20261113_Sketch-14-54.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.54.png",
-  "img/20261113_Sketch-14-55.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.55.png",
-  "img/20261113_Sketch-14-56.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.56.png",
-  "img/20261113_Form-S49-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s49/s49-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-newsprint-358.png",
-  "img/20261113_Form-S49-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s49/s49-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-charcoal-358.png",
-  "img/20261113_Form-S49-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s49/s49-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-charcoal-358-grayscale.png",
-  "img/20261113_Form-S50-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s50/s50-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-newsprint-358.png",
-  "img/20261113_Form-S50-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s50/s50-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-charcoal-358.png",
-  "img/20261113_Form-S50-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s50/s50-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-charcoal-358-grayscale.png",
-  "img/20261113_Form-S51-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s51/s51-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-newsprint-358.png",
-  "img/20261113_Form-S51-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s51/s51-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-charcoal-358.png",
-  "img/20261113_Form-S51-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s51/s51-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-charcoal-358-grayscale.png",
-  "img/20261113_Form-S52-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s52/s52-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-newsprint-358.png",
-  "img/20261113_Form-S52-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s52/s52-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-charcoal-358.png",
-  "img/20261113_Form-S52-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s52/s52-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-charcoal-358-grayscale.png",
-  "img/20261113_Form-S53-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s53/s53-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-newsprint-358.png",
-  "img/20261113_Form-S53-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s53/s53-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-charcoal-358.png",
-  "img/20261113_Form-S53-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s53/s53-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-charcoal-358-grayscale.png",
-  "img/20261113_Sketch-14-63.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.63.png",
-  "img/20261113_Sketch-14-64.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.64.png",
-  "img/20261113_Sketch-14-65.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.65.png",
-  "img/20261113_Sketch-14-66.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.66.png",
-  "img/20261113_Sketch-14-73.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.73.png",
-  "img/20261113_Form-S54-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s54/s54-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-newsprint-358.png",
-  "img/20261113_Form-S54-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s54/s54-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-charcoal-358.png",
-  "img/20261113_Form-S54-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s54/s54-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-charcoal-358-grayscale.png",
-  "img/20261113_Form-S55-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s55/s55-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-newsprint-358.png",
-  "img/20261113_Form-S55-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s55/s55-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-charcoal-358.png",
-  "img/20261113_Form-S55-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s55/s55-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-charcoal-358-grayscale.png",
-  "img/20261113_Form-S56-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s56/s56-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-newsprint-358.png",
-  "img/20261113_Form-S56-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s56/s56-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-charcoal-358.png",
-  "img/20261113_Form-S56-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s56/s56-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-charcoal-358-grayscale.png",
-  "img/20261113_Sketch-14-70.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.70.png",
-  "img/20261113_Sketch-14-71.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.71.png",
-  "img/20261113_Sketch-14-72.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.72.png",
-  "img/20261113_Form-S57-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s57/s57-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-newsprint-358.png",
-  "img/20261113_Form-S57-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s57/s57-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-charcoal-358.png",
-  "img/20261113_Form-S57-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s57/s57-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-charcoal-358-grayscale.png",
-  "img/20261113_Form-S58-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s58/s58-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-newsprint-358.png",
-  "img/20261113_Form-S58-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s58/s58-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-charcoal-358.png",
-  "img/20261113_Form-S58-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s58/s58-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-charcoal-358-grayscale.png",
-  "img/20261113_Form-S06-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s06/s06-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-newsprint-358.png",
-  "img/20261113_Form-S06-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s06/s06-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-charcoal-358.png",
-  "img/20261113_Form-S06-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s06/s06-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-charcoal-358-grayscale.png",
-  "img/20261113_Form-S59-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s59/s59-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-newsprint-358.png",
-  "img/20261113_Form-S59-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s59/s59-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-charcoal-358.png",
-  "img/20261113_Form-S59-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s59/s59-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-charcoal-358-grayscale.png",
-  "img/20261113_Sketch-14-78.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.78.png",
-  "img/20261113_Sketch-14-91.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.91.png",
-  "img/20261113_Sketch-14-92.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.92.png",
-  "img/20261113_Form-S01-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s01/s01-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-newsprint-358.png",
-  "img/20261113_Form-S01-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s01/s01-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-charcoal-358.png",
-  "img/20261113_Form-S01-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s01/s01-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-charcoal-358-grayscale.png",
-  "img/20261113_Form-S60-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s60/s60-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-newsprint-358.png",
-  "img/20261113_Form-S60-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s60/s60-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-charcoal-358.png",
-  "img/20261113_Form-S60-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s60/s60-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-charcoal-358-grayscale.png",
-  "img/20261113_Form-S61-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s61/s61-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-newsprint-358.png",
-  "img/20261113_Form-S61-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s61/s61-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-charcoal-358.png",
-  "img/20261113_Form-S61-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s61/s61-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-charcoal-358-grayscale.png",
-  "img/20261113_Form-S62-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s62/s62-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-newsprint-358.png",
-  "img/20261113_Form-S62-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s62/s62-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-charcoal-358.png",
-  "img/20261113_Form-S62-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s62/s62-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-charcoal-358-grayscale.png",
-  "img/20261113_Form-S63-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s63/s63-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-newsprint-358.png",
-  "img/20261113_Form-S63-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s63/s63-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-charcoal-358.png",
-  "img/20261113_Form-S63-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s63/s63-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-charcoal-358-grayscale.png",
-  "img/20261113_Form-S64-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s64/s64-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-newsprint-358.png",
-  "img/20261113_Form-S64-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s64/s64-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-charcoal-358.png",
-  "img/20261113_Form-S64-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s64/s64-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-charcoal-358-grayscale.png",
-  "img/20261113_Form-S65-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s65/s65-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-newsprint-358.png",
-  "img/20261113_Form-S65-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s65/s65-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-charcoal-358.png",
-  "img/20261113_Form-S65-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s65/s65-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-charcoal-358-grayscale.png",
-  "img/20261113_Sketch-14-94.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.94.png",
-  "img/20261113_Sketch-14-95.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.95.png",
-  "img/20261113_Form-S66-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s66/s66-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-newsprint-358.png",
-  "img/20261113_Form-S66-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s66/s66-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-charcoal-358.png",
-  "img/20261113_Form-S66-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s66/s66-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-charcoal-358-grayscale.png",
-  "img/20261113_Form-S67-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s67/s67-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-newsprint-358.png",
-  "img/20261113_Form-S67-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s67/s67-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-charcoal-358.png",
-  "img/20261113_Form-S67-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s67/s67-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-charcoal-358-grayscale.png",
-  "img/20261113_Form-S68-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s68/s68-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-newsprint-358.png",
-  "img/20261113_Form-S68-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s68/s68-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-charcoal-358.png",
-  "img/20261113_Form-S68-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s68/s68-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-charcoal-358-grayscale.png",
-  "img/20261113_Form-S69-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s69/s69-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-newsprint-358.png",
-  "img/20261113_Form-S69-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s69/s69-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-charcoal-358.png",
-  "img/20261113_Form-S69-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s69/s69-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-charcoal-358-grayscale.png",
-  "img/20261113_Form-S70-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s70/s70-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-newsprint-358.png",
-  "img/20261113_Form-S70-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s70/s70-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-charcoal-358.png",
-  "img/20261113_Form-S70-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s70/s70-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-charcoal-358-grayscale.png",
-  "img/20261113_Form-S71-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s71/s71-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-newsprint-358.png",
-  "img/20261113_Form-S71-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s71/s71-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-charcoal-358.png",
-  "img/20261113_Form-S71-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s71/s71-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-charcoal-358-grayscale.png",
-  "img/20261113_Form-S72-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s72/s72-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-newsprint-358.png",
-  "img/20261113_Form-S72-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s72/s72-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-charcoal-358.png",
-  "img/20261113_Form-S72-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s72/s72-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-charcoal-358-grayscale.png",
-  "img/20261113_Sketch-14-103.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.103.png",
-  "img/20261113_Form-S73-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s73/s73-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-newsprint-358.png",
-  "img/20261113_Form-S73-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s73/s73-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-charcoal-358.png",
-  "img/20261113_Form-S73-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s73/s73-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-charcoal-358-grayscale.png",
-  "img/20261113_Form-S74-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s74/s74-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-newsprint-358.png",
-  "img/20261113_Form-S74-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s74/s74-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-charcoal-358.png",
-  "img/20261113_Form-S74-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s74/s74-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-charcoal-358-grayscale.png",
-  "img/20261113_Form-S75-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s75/s75-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-newsprint-358.png",
-  "img/20261113_Form-S75-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s75/s75-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-charcoal-358.png",
-  "img/20261113_Form-S75-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s75/s75-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-charcoal-358-grayscale.png",
-  "img/20261113_Sketch-14-107.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.107.png",
-  "img/20261113_Sketch-14-108.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.108.png",
-  "img/20261113_Sketch-14-109.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.109.png",
-  "img/20261113_Form-S76-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s76/s76-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-newsprint-358.png",
-  "img/20261113_Form-S76-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s76/s76-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-charcoal-358.png",
-  "img/20261113_Form-S76-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s76/s76-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-charcoal-358-grayscale.png",
-  "img/20261113_Sketch-14-111.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.111.png",
-  "img/20261113_Form-S77-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s77/s77-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-newsprint-358.png",
-  "img/20261113_Form-S77-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s77/s77-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-charcoal-358.png",
-  "img/20261113_Form-S77-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s77/s77-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-charcoal-358-grayscale.png",
-  "img/20261113_Sketch-14-113.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.113.png",
-  "img/20261113_Sketch-14-124.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.124.png",
-  "img/20261113_Form-S07-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s07/s07-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-newsprint-358.png",
-  "img/20261113_Form-S07-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s07/s07-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-charcoal-358.png",
-  "img/20261113_Form-S07-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s07/s07-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-charcoal-358-grayscale.png",
-  "img/20261113_Form-S12-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s12/s12-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-newsprint-358.png",
-  "img/20261113_Form-S12-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s12/s12-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-charcoal-358.png",
-  "img/20261113_Form-S12-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s12/s12-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-charcoal-358-grayscale.png",
-  "img/20261113_Form-S16-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s16/s16-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-newsprint-358.png",
-  "img/20261113_Form-S16-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s16/s16-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-charcoal-358.png",
-  "img/20261113_Form-S16-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s16/s16-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-charcoal-358-grayscale.png",
-  "img/20261113_Form-S78-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s78/s78-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-newsprint-358.png",
-  "img/20261113_Form-S78-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s78/s78-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-charcoal-358.png",
-  "img/20261113_Form-S78-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s78/s78-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-charcoal-358-grayscale.png",
-  "img/20261113_Form-S79-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s79/s79-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-newsprint-358.png",
-  "img/20261113_Form-S79-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s79/s79-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-charcoal-358.png",
-  "img/20261113_Form-S79-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s79/s79-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-charcoal-358-grayscale.png",
-  "img/20261113_Form-S80-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s80/s80-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-newsprint-358.png",
-  "img/20261113_Form-S80-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s80/s80-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-charcoal-358.png",
-  "img/20261113_Form-S80-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s80/s80-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-charcoal-358-grayscale.png",
-  "img/20261113_Form-S81-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s81/s81-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-newsprint-358.png",
-  "img/20261113_Form-S81-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s81/s81-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-charcoal-358.png",
-  "img/20261113_Form-S81-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s81/s81-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-charcoal-358-grayscale.png",
-  "img/20261113_Form-S82-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s82/s82-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-newsprint-358.png",
-  "img/20261113_Form-S82-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s82/s82-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-charcoal-358.png",
-  "img/20261113_Form-S82-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s82/s82-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-charcoal-358-grayscale.png",
-  "img/20261113_Form-S83-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s83/s83-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-newsprint-358.png",
-  "img/20261113_Form-S83-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s83/s83-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-charcoal-358.png",
-  "img/20261113_Form-S83-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s83/s83-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-charcoal-358-grayscale.png",
-  "img/20261113_Form-S84-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s84/s84-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-newsprint-358.png",
-  "img/20261113_Form-S84-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s84/s84-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-charcoal-358.png",
-  "img/20261113_Form-S84-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s84/s84-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-charcoal-358-grayscale.png",
-  "img/20261113_Form-S15-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s15/s15-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-newsprint-358.png",
-  "img/20261113_Form-S15-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s15/s15-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-charcoal-358.png",
-  "img/20261113_Form-S15-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s15/s15-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-charcoal-358-grayscale.png",
-  "img/20261113_Form-S36-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s36/s36-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-newsprint-358.png",
-  "img/20261113_Form-S36-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s36/s36-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-charcoal-358.png",
-  "img/20261113_Form-S36-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s36/s36-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-charcoal-358-grayscale.png",
-  "img/20261113_Form-S37-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s37/s37-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-newsprint-358.png",
-  "img/20261113_Form-S37-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s37/s37-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-charcoal-358.png",
-  "img/20261113_Form-S37-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s37/s37-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-charcoal-358-grayscale.png",
-  "img/20261113_Form-S38-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s38/s38-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-newsprint-358.png",
-  "img/20261113_Form-S38-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s38/s38-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-charcoal-358.png",
-  "img/20261113_Form-S38-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s38/s38-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-charcoal-358-grayscale.png",
-  "img/20261113_Form-S39-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s39/s39-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-newsprint-358.png",
-  "img/20261113_Form-S39-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s39/s39-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-charcoal-358.png",
-  "img/20261113_Form-S39-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s39/s39-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-charcoal-358-grayscale.png",
-  "img/20261113_Form-S40-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s40/s40-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-newsprint-358.png",
-  "img/20261113_Form-S40-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s40/s40-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-charcoal-358.png",
-  "img/20261113_Form-S40-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s40/s40-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-charcoal-358-grayscale.png",
-  "img/20261113_Form-S41-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s41/s41-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-newsprint-358.png",
-  "img/20261113_Form-S41-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s41/s41-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-charcoal-358.png",
-  "img/20261113_Form-S41-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s41/s41-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-charcoal-358-grayscale.png",
-  "img/20261113_Form-S42-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-358.png",
-  "img/20261113_Form-S42-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-358.png",
-  "img/20261113_Form-S42-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-358-grayscale.png",
-  "img/20261113_Ch14-Opener.png": "[scratch]/phase-3/board-2/builder/shots/ch14-opener.png",
-  "img/20261113_Rule-14-1-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.1-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.1-failure.png",
-  "img/20261113_Rule-14-2-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.2-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.2-failure.png",
-  "img/20261113_Rule-14-3-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.3-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.3-failure.png",
-  "img/20261113_Rule-14-4-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.4-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.4-failure.png",
-  "img/20261113_Rule-14-5-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.5-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.5-failure.png",
-  "img/20261113_Rule-14-6-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.6-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.6-failure.png",
-  "img/20261113_Rule-14-7-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.7-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.7-failure.png",
-  "img/20261113_Rule-14-8-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.8-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.8-failure.png",
-  "img/20261113_Rule-14-9-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.9-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.9-failure.png",
-  "img/20261113_Rule-14-10-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.10-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.10-failure.png",
-  "img/20261113_Rule-14-11-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.11-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.11-failure.png",
-  "img/20261113_Rule-14-12-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.12-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.12-failure.png",
-  "img/20261113_Rule-14-13-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.13-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.13-failure.png",
-  "img/20261113_Rule-14-14-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.14-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.14-failure.png"
+  "img/20261113_Decide-S12-1.webp": "work/boards/phase-3/round-0/specimens/s12-newsprint-1440.png",
+  "img/20261113_Decide-S12-2.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s12-1440.png",
+  "img/20261113_Decide-S12-3.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s12-1024.png",
+  "img/20261113_Decide-S12-4.webp": "[scratch]/phase-3/board-2/builder/files/file-20261113-S12-Stacked-Tile-1440-newsprint-1440.png",
+  "img/20261113_Decide-S12-5.webp": "[scratch]/phase-3/board-2/builder/files/file-20261113-S12-Stacked-Tile-1024-newsprint-1024.png",
+  "img/20261113_Decide-S12-6.webp": "work/boards/phase-3/round-0/specimens/s12-newsprint-390.png",
+  "img/20261113_Decide-S12-7.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s12-390.png",
+  "img/20261113_Decide-S16-1.webp": "work/boards/phase-3/round-0/specimens/s16-newsprint-1440.png",
+  "img/20261113_Decide-S16-2.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s16-1440.png",
+  "img/20261113_Decide-S16-3.webp": "work/boards/phase-3/round-0/specimens/s16-newsprint-390.png",
+  "img/20261113_Decide-S16-4.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s16-390.png",
+  "img/20261113_Decide-S10-1.webp": "work/boards/phase-3/round-0/specimens/s10-newsprint-1440.png",
+  "img/20261113_Decide-S10-2.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s10-1440.png",
+  "img/20261113_Decide-DR-255-1.webp": "[scratch]/phase-3/board-2/builder/files/file-20261113-S-14-124-Sketch-Gray-Before-newsprint-1440.png",
+  "img/20261113_Decide-DR-255-2.webp": "[scratch]/phase-3/board-2/builder/shots/dec-fig-s-14-124-sketch-1440.png",
+  "img/20261113_Sketch-14-24.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.24.png",
+  "img/20261113_Form-S03-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s03/s03-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-newsprint-358.png",
+  "img/20261113_Form-S03-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s03/s03-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-charcoal-358.png",
+  "img/20261113_Form-S03-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s03/s03-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-charcoal-358-grayscale.png",
+  "img/20261113_Form-S17-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s17/s17-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-newsprint-358.png",
+  "img/20261113_Form-S17-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s17/s17-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-charcoal-358.png",
+  "img/20261113_Form-S17-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s17/s17-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-charcoal-358-grayscale.png",
+  "img/20261113_Form-S18-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s18/s18-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-newsprint-358.png",
+  "img/20261113_Form-S18-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s18/s18-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-charcoal-358.png",
+  "img/20261113_Form-S18-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s18/s18-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-charcoal-358-grayscale.png",
+  "img/20261113_Form-S19-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s19/s19-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-newsprint-358.png",
+  "img/20261113_Form-S19-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s19/s19-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-charcoal-358.png",
+  "img/20261113_Form-S19-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s19/s19-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-charcoal-358-grayscale.png",
+  "img/20261113_Form-S04-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s04/s04-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-newsprint-358.png",
+  "img/20261113_Form-S04-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s04/s04-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-charcoal-358.png",
+  "img/20261113_Form-S04-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s04/s04-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-charcoal-358-grayscale.png",
+  "img/20261113_Form-S20-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s20/s20-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-newsprint-358.png",
+  "img/20261113_Form-S20-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s20/s20-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-charcoal-358.png",
+  "img/20261113_Form-S20-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s20/s20-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-charcoal-358-grayscale.png",
+  "img/20261113_Form-S21-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s21/s21-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-newsprint-358.png",
+  "img/20261113_Form-S21-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s21/s21-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-charcoal-358.png",
+  "img/20261113_Form-S21-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s21/s21-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-charcoal-358-grayscale.png",
+  "img/20261113_Form-S22-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s22/s22-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-newsprint-358.png",
+  "img/20261113_Form-S22-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s22/s22-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-charcoal-358.png",
+  "img/20261113_Form-S22-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s22/s22-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-charcoal-358-grayscale.png",
+  "img/20261113_Form-S23-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s23/s23-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-newsprint-358.png",
+  "img/20261113_Form-S23-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s23/s23-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-charcoal-358.png",
+  "img/20261113_Form-S23-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s23/s23-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-charcoal-358-grayscale.png",
+  "img/20261113_Form-S11-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s11/s11-newsprint-787.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-newsprint-358.png",
+  "img/20261113_Form-S11-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s11/s11-charcoal-787.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-charcoal-358.png",
+  "img/20261113_Form-S11-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s11/s11-newsprint-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-charcoal-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-charcoal-358-grayscale.png",
+  "img/20261113_Form-S24-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s24/s24-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-newsprint-358.png",
+  "img/20261113_Form-S24-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s24/s24-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-charcoal-358.png",
+  "img/20261113_Form-S24-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s24/s24-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-charcoal-358-grayscale.png",
+  "img/20261113_Form-S25-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s25/s25-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-newsprint-358.png",
+  "img/20261113_Form-S25-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s25/s25-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-charcoal-358.png",
+  "img/20261113_Form-S25-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s25/s25-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-charcoal-358-grayscale.png",
+  "img/20261113_Form-S26-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s26/s26-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-newsprint-358.png",
+  "img/20261113_Form-S26-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s26/s26-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-charcoal-358.png",
+  "img/20261113_Form-S26-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s26/s26-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-45.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.45.png",
+  "img/20261113_Form-S02-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s02/s02-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-newsprint-358.png",
+  "img/20261113_Form-S02-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s02/s02-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-charcoal-358.png",
+  "img/20261113_Form-S02-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s02/s02-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-charcoal-358-grayscale.png",
+  "img/20261113_Form-S05-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s05/s05-newsprint-787.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-newsprint-358.png",
+  "img/20261113_Form-S05-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s05/s05-charcoal-787.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-charcoal-358.png",
+  "img/20261113_Form-S05-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s05/s05-newsprint-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-charcoal-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-charcoal-358-grayscale.png",
+  "img/20261113_Form-S27-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s27/s27-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-newsprint-358.png",
+  "img/20261113_Form-S27-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s27/s27-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-charcoal-358.png",
+  "img/20261113_Form-S27-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s27/s27-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-charcoal-358-grayscale.png",
+  "img/20261113_Form-S14-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s14/s14-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-newsprint-358.png",
+  "img/20261113_Form-S14-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s14/s14-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-charcoal-358.png",
+  "img/20261113_Form-S14-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s14/s14-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-charcoal-358-grayscale.png",
+  "img/20261113_Form-S28-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s28/s28-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-newsprint-358.png",
+  "img/20261113_Form-S28-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s28/s28-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-charcoal-358.png",
+  "img/20261113_Form-S28-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s28/s28-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-charcoal-358-grayscale.png",
+  "img/20261113_Form-S13-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s13/s13-newsprint-787.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-newsprint-358.png",
+  "img/20261113_Form-S13-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s13/s13-charcoal-787.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-charcoal-358.png",
+  "img/20261113_Form-S13-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s13/s13-newsprint-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-charcoal-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-charcoal-358-grayscale.png",
+  "img/20261113_Form-S29-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s29/s29-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-newsprint-358.png",
+  "img/20261113_Form-S29-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s29/s29-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-charcoal-358.png",
+  "img/20261113_Form-S29-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s29/s29-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-charcoal-358-grayscale.png",
+  "img/20261113_Form-S30-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s30/s30-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-newsprint-358.png",
+  "img/20261113_Form-S30-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s30/s30-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-charcoal-358.png",
+  "img/20261113_Form-S30-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s30/s30-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-charcoal-358-grayscale.png",
+  "img/20261113_Form-S31-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s31/s31-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-newsprint-358.png",
+  "img/20261113_Form-S31-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s31/s31-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-charcoal-358.png",
+  "img/20261113_Form-S31-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s31/s31-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-charcoal-358-grayscale.png",
+  "img/20261113_Form-S09-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s09/s09-newsprint-787.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-newsprint-358.png",
+  "img/20261113_Form-S09-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s09/s09-charcoal-787.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-charcoal-358.png",
+  "img/20261113_Form-S09-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s09/s09-newsprint-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-charcoal-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-charcoal-358-grayscale.png",
+  "img/20261113_Form-S32-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s32/s32-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-newsprint-358.png",
+  "img/20261113_Form-S32-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s32/s32-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-charcoal-358.png",
+  "img/20261113_Form-S32-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s32/s32-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-charcoal-358-grayscale.png",
+  "img/20261113_Form-S33-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s33/s33-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-newsprint-358.png",
+  "img/20261113_Form-S33-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s33/s33-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-charcoal-358.png",
+  "img/20261113_Form-S33-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s33/s33-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-charcoal-358-grayscale.png",
+  "img/20261113_Form-S34-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s34/s34-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-newsprint-358.png",
+  "img/20261113_Form-S34-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s34/s34-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-charcoal-358.png",
+  "img/20261113_Form-S34-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s34/s34-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-charcoal-358-grayscale.png",
+  "img/20261113_Form-S35-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s35/s35-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-newsprint-358.png",
+  "img/20261113_Form-S35-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s35/s35-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-charcoal-358.png",
+  "img/20261113_Form-S35-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s35/s35-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-43.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.43.png",
+  "img/20261113_Sketch-14-44.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.44.png",
+  "img/20261113_Sketch-14-57.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.57.png",
+  "img/20261113_Form-S10-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s10/s10-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-newsprint-358.png",
+  "img/20261113_Form-S10-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s10/s10-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-charcoal-358.png",
+  "img/20261113_Form-S10-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s10/s10-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-charcoal-358-grayscale.png",
+  "img/20261113_Form-S43-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s43/s43-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-newsprint-358.png",
+  "img/20261113_Form-S43-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s43/s43-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-charcoal-358.png",
+  "img/20261113_Form-S43-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s43/s43-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-charcoal-358-grayscale.png",
+  "img/20261113_Form-S44-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s44/s44-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-newsprint-358.png",
+  "img/20261113_Form-S44-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s44/s44-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-charcoal-358.png",
+  "img/20261113_Form-S44-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s44/s44-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-charcoal-358-grayscale.png",
+  "img/20261113_Form-S08-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s08/s08-newsprint-787.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-newsprint-358.png",
+  "img/20261113_Form-S08-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s08/s08-charcoal-787.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-charcoal-358.png",
+  "img/20261113_Form-S08-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s08/s08-newsprint-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-charcoal-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-charcoal-358-grayscale.png",
+  "img/20261113_Form-S45-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s45/s45-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-newsprint-358.png",
+  "img/20261113_Form-S45-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s45/s45-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-charcoal-358.png",
+  "img/20261113_Form-S45-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s45/s45-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-charcoal-358-grayscale.png",
+  "img/20261113_Form-S46-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s46/s46-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-newsprint-358.png",
+  "img/20261113_Form-S46-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s46/s46-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-charcoal-358.png",
+  "img/20261113_Form-S46-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s46/s46-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-charcoal-358-grayscale.png",
+  "img/20261113_Form-S47-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s47/s47-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-newsprint-358.png",
+  "img/20261113_Form-S47-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s47/s47-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-charcoal-358.png",
+  "img/20261113_Form-S47-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s47/s47-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-charcoal-358-grayscale.png",
+  "img/20261113_Form-S48-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s48/s48-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-newsprint-358.png",
+  "img/20261113_Form-S48-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s48/s48-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-charcoal-358.png",
+  "img/20261113_Form-S48-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s48/s48-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-54.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.54.png",
+  "img/20261113_Sketch-14-55.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.55.png",
+  "img/20261113_Sketch-14-56.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.56.png",
+  "img/20261113_Form-S49-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s49/s49-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-newsprint-358.png",
+  "img/20261113_Form-S49-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s49/s49-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-charcoal-358.png",
+  "img/20261113_Form-S49-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s49/s49-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-charcoal-358-grayscale.png",
+  "img/20261113_Form-S50-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s50/s50-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-newsprint-358.png",
+  "img/20261113_Form-S50-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s50/s50-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-charcoal-358.png",
+  "img/20261113_Form-S50-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s50/s50-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-charcoal-358-grayscale.png",
+  "img/20261113_Form-S51-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s51/s51-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-newsprint-358.png",
+  "img/20261113_Form-S51-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s51/s51-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-charcoal-358.png",
+  "img/20261113_Form-S51-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s51/s51-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-charcoal-358-grayscale.png",
+  "img/20261113_Form-S52-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s52/s52-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-newsprint-358.png",
+  "img/20261113_Form-S52-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s52/s52-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-charcoal-358.png",
+  "img/20261113_Form-S52-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s52/s52-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-charcoal-358-grayscale.png",
+  "img/20261113_Form-S53-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s53/s53-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-newsprint-358.png",
+  "img/20261113_Form-S53-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s53/s53-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-charcoal-358.png",
+  "img/20261113_Form-S53-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s53/s53-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-63.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.63.png",
+  "img/20261113_Sketch-14-64.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.64.png",
+  "img/20261113_Sketch-14-65.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.65.png",
+  "img/20261113_Sketch-14-66.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.66.png",
+  "img/20261113_Sketch-14-73.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.73.png",
+  "img/20261113_Form-S54-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s54/s54-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-newsprint-358.png",
+  "img/20261113_Form-S54-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s54/s54-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-charcoal-358.png",
+  "img/20261113_Form-S54-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s54/s54-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-charcoal-358-grayscale.png",
+  "img/20261113_Form-S55-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s55/s55-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-newsprint-358.png",
+  "img/20261113_Form-S55-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s55/s55-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-charcoal-358.png",
+  "img/20261113_Form-S55-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s55/s55-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-charcoal-358-grayscale.png",
+  "img/20261113_Form-S56-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s56/s56-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-newsprint-358.png",
+  "img/20261113_Form-S56-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s56/s56-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-charcoal-358.png",
+  "img/20261113_Form-S56-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s56/s56-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-70.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.70.png",
+  "img/20261113_Sketch-14-71.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.71.png",
+  "img/20261113_Sketch-14-72.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.72.png",
+  "img/20261113_Form-S57-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s57/s57-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-newsprint-358.png",
+  "img/20261113_Form-S57-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s57/s57-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-charcoal-358.png",
+  "img/20261113_Form-S57-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s57/s57-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-charcoal-358-grayscale.png",
+  "img/20261113_Form-S58-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s58/s58-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-newsprint-358.png",
+  "img/20261113_Form-S58-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s58/s58-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-charcoal-358.png",
+  "img/20261113_Form-S58-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s58/s58-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-charcoal-358-grayscale.png",
+  "img/20261113_Form-S06-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s06/s06-newsprint-787.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-newsprint-358.png",
+  "img/20261113_Form-S06-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s06/s06-charcoal-787.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-charcoal-358.png",
+  "img/20261113_Form-S06-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s06/s06-newsprint-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-charcoal-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-charcoal-358-grayscale.png",
+  "img/20261113_Form-S59-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s59/s59-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-newsprint-358.png",
+  "img/20261113_Form-S59-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s59/s59-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-charcoal-358.png",
+  "img/20261113_Form-S59-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s59/s59-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-78.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.78.png",
+  "img/20261113_Sketch-14-91.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.91.png",
+  "img/20261113_Sketch-14-92.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.92.png",
+  "img/20261113_Form-S01-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s01/s01-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-newsprint-358.png",
+  "img/20261113_Form-S01-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s01/s01-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-charcoal-358.png",
+  "img/20261113_Form-S01-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s01/s01-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-charcoal-358-grayscale.png",
+  "img/20261113_Form-S60-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s60/s60-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-newsprint-358.png",
+  "img/20261113_Form-S60-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s60/s60-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-charcoal-358.png",
+  "img/20261113_Form-S60-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s60/s60-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-charcoal-358-grayscale.png",
+  "img/20261113_Form-S61-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s61/s61-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-newsprint-358.png",
+  "img/20261113_Form-S61-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s61/s61-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-charcoal-358.png",
+  "img/20261113_Form-S61-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s61/s61-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-charcoal-358-grayscale.png",
+  "img/20261113_Form-S62-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s62/s62-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-newsprint-358.png",
+  "img/20261113_Form-S62-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s62/s62-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-charcoal-358.png",
+  "img/20261113_Form-S62-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s62/s62-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-charcoal-358-grayscale.png",
+  "img/20261113_Form-S63-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s63/s63-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-newsprint-358.png",
+  "img/20261113_Form-S63-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s63/s63-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-charcoal-358.png",
+  "img/20261113_Form-S63-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s63/s63-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-charcoal-358-grayscale.png",
+  "img/20261113_Form-S64-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s64/s64-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-newsprint-358.png",
+  "img/20261113_Form-S64-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s64/s64-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-charcoal-358.png",
+  "img/20261113_Form-S64-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s64/s64-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-charcoal-358-grayscale.png",
+  "img/20261113_Form-S65-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s65/s65-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-newsprint-358.png",
+  "img/20261113_Form-S65-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s65/s65-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-charcoal-358.png",
+  "img/20261113_Form-S65-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s65/s65-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-94.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.94.png",
+  "img/20261113_Sketch-14-95.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.95.png",
+  "img/20261113_Form-S66-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s66/s66-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-newsprint-358.png",
+  "img/20261113_Form-S66-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s66/s66-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-charcoal-358.png",
+  "img/20261113_Form-S66-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s66/s66-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-charcoal-358-grayscale.png",
+  "img/20261113_Form-S67-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s67/s67-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-newsprint-358.png",
+  "img/20261113_Form-S67-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s67/s67-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-charcoal-358.png",
+  "img/20261113_Form-S67-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s67/s67-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-charcoal-358-grayscale.png",
+  "img/20261113_Form-S68-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s68/s68-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-newsprint-358.png",
+  "img/20261113_Form-S68-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s68/s68-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-charcoal-358.png",
+  "img/20261113_Form-S68-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s68/s68-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-charcoal-358-grayscale.png",
+  "img/20261113_Form-S69-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s69/s69-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-newsprint-358.png",
+  "img/20261113_Form-S69-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s69/s69-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-charcoal-358.png",
+  "img/20261113_Form-S69-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s69/s69-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-charcoal-358-grayscale.png",
+  "img/20261113_Form-S70-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s70/s70-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-newsprint-358.png",
+  "img/20261113_Form-S70-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s70/s70-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-charcoal-358.png",
+  "img/20261113_Form-S70-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s70/s70-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-charcoal-358-grayscale.png",
+  "img/20261113_Form-S71-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s71/s71-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-newsprint-358.png",
+  "img/20261113_Form-S71-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s71/s71-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-charcoal-358.png",
+  "img/20261113_Form-S71-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s71/s71-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-charcoal-358-grayscale.png",
+  "img/20261113_Form-S72-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s72/s72-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-newsprint-358.png",
+  "img/20261113_Form-S72-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s72/s72-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-charcoal-358.png",
+  "img/20261113_Form-S72-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s72/s72-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-103.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.103.png",
+  "img/20261113_Form-S73-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s73/s73-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-newsprint-358.png",
+  "img/20261113_Form-S73-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s73/s73-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-charcoal-358.png",
+  "img/20261113_Form-S73-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s73/s73-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-charcoal-358-grayscale.png",
+  "img/20261113_Form-S74-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s74/s74-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-newsprint-358.png",
+  "img/20261113_Form-S74-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s74/s74-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-charcoal-358.png",
+  "img/20261113_Form-S74-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s74/s74-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-charcoal-358-grayscale.png",
+  "img/20261113_Form-S75-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s75/s75-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-newsprint-358.png",
+  "img/20261113_Form-S75-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s75/s75-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-charcoal-358.png",
+  "img/20261113_Form-S75-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s75/s75-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-107.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.107.png",
+  "img/20261113_Sketch-14-108.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.108.png",
+  "img/20261113_Sketch-14-109.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.109.png",
+  "img/20261113_Form-S76-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s76/s76-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-newsprint-358.png",
+  "img/20261113_Form-S76-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s76/s76-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-charcoal-358.png",
+  "img/20261113_Form-S76-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s76/s76-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-111.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.111.png",
+  "img/20261113_Form-S77-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s77/s77-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-newsprint-358.png",
+  "img/20261113_Form-S77-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s77/s77-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-charcoal-358.png",
+  "img/20261113_Form-S77-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s77/s77-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-113.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.113.png",
+  "img/20261113_Sketch-14-124.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.124.png",
+  "img/20261113_Form-S07-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s07/s07-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-newsprint-358.png",
+  "img/20261113_Form-S07-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s07/s07-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-charcoal-358.png",
+  "img/20261113_Form-S07-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s07/s07-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-charcoal-358-grayscale.png",
+  "img/20261113_Form-S12-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s12/s12-newsprint-1088.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-newsprint-358.png",
+  "img/20261113_Form-S12-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s12/s12-charcoal-1088.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-charcoal-358.png",
+  "img/20261113_Form-S12-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s12/s12-newsprint-1088-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-charcoal-1088-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-charcoal-358-grayscale.png",
+  "img/20261113_Form-S16-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s16/s16-newsprint-787.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-newsprint-358.png",
+  "img/20261113_Form-S16-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s16/s16-charcoal-787.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-charcoal-358.png",
+  "img/20261113_Form-S16-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s16/s16-newsprint-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-charcoal-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-charcoal-358-grayscale.png",
+  "img/20261113_Form-S78-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s78/s78-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-newsprint-358.png",
+  "img/20261113_Form-S78-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s78/s78-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-charcoal-358.png",
+  "img/20261113_Form-S78-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s78/s78-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-charcoal-358-grayscale.png",
+  "img/20261113_Form-S79-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s79/s79-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-newsprint-358.png",
+  "img/20261113_Form-S79-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s79/s79-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-charcoal-358.png",
+  "img/20261113_Form-S79-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s79/s79-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-charcoal-358-grayscale.png",
+  "img/20261113_Form-S80-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s80/s80-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-newsprint-358.png",
+  "img/20261113_Form-S80-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s80/s80-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-charcoal-358.png",
+  "img/20261113_Form-S80-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s80/s80-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-charcoal-358-grayscale.png",
+  "img/20261113_Form-S81-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s81/s81-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-newsprint-358.png",
+  "img/20261113_Form-S81-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s81/s81-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-charcoal-358.png",
+  "img/20261113_Form-S81-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s81/s81-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-charcoal-358-grayscale.png",
+  "img/20261113_Form-S82-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s82/s82-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-newsprint-358.png",
+  "img/20261113_Form-S82-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s82/s82-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-charcoal-358.png",
+  "img/20261113_Form-S82-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s82/s82-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-charcoal-358-grayscale.png",
+  "img/20261113_Form-S83-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s83/s83-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-newsprint-358.png",
+  "img/20261113_Form-S83-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s83/s83-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-charcoal-358.png",
+  "img/20261113_Form-S83-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s83/s83-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-charcoal-358-grayscale.png",
+  "img/20261113_Form-S84-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s84/s84-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-newsprint-358.png",
+  "img/20261113_Form-S84-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s84/s84-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-charcoal-358.png",
+  "img/20261113_Form-S84-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s84/s84-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-charcoal-358-grayscale.png",
+  "img/20261113_Form-S15-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s15/s15-newsprint-787.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-newsprint-358.png",
+  "img/20261113_Form-S15-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s15/s15-charcoal-787.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-charcoal-358.png",
+  "img/20261113_Form-S15-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s15/s15-newsprint-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-charcoal-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-charcoal-358-grayscale.png",
+  "img/20261113_Form-S36-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s36/s36-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-newsprint-358.png",
+  "img/20261113_Form-S36-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s36/s36-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-charcoal-358.png",
+  "img/20261113_Form-S36-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s36/s36-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-charcoal-358-grayscale.png",
+  "img/20261113_Form-S37-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s37/s37-newsprint-787.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-newsprint-358.png",
+  "img/20261113_Form-S37-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s37/s37-charcoal-787.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-charcoal-358.png",
+  "img/20261113_Form-S37-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s37/s37-newsprint-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-charcoal-787-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-charcoal-358-grayscale.png",
+  "img/20261113_Form-S38-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s38/s38-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-newsprint-358.png",
+  "img/20261113_Form-S38-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s38/s38-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-charcoal-358.png",
+  "img/20261113_Form-S38-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s38/s38-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-charcoal-358-grayscale.png",
+  "img/20261113_Form-S39-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s39/s39-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-newsprint-358.png",
+  "img/20261113_Form-S39-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s39/s39-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-charcoal-358.png",
+  "img/20261113_Form-S39-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s39/s39-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-charcoal-358-grayscale.png",
+  "img/20261113_Form-S40-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s40/s40-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-newsprint-358.png",
+  "img/20261113_Form-S40-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s40/s40-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-charcoal-358.png",
+  "img/20261113_Form-S40-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s40/s40-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-charcoal-358-grayscale.png",
+  "img/20261113_Form-S41-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s41/s41-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-newsprint-358.png",
+  "img/20261113_Form-S41-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s41/s41-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-charcoal-358.png",
+  "img/20261113_Form-S41-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s41/s41-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-charcoal-358-grayscale.png",
+  "img/20261113_Form-S42-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-358.png",
+  "img/20261113_Form-S42-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-358.png",
+  "img/20261113_Form-S42-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-358-grayscale.png",
+  "img/20261113_Ch14-Opener.webp": "[scratch]/phase-3/board-2/builder/shots/ch14-opener.png",
+  "img/20261113_Rule-14-1-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.1-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.1-failure.png",
+  "img/20261113_Rule-14-2-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.2-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.2-failure.png",
+  "img/20261113_Rule-14-3-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.3-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.3-failure.png",
+  "img/20261113_Rule-14-4-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.4-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.4-failure.png",
+  "img/20261113_Rule-14-5-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.5-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.5-failure.png",
+  "img/20261113_Rule-14-6-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.6-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.6-failure.png",
+  "img/20261113_Rule-14-7-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.7-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.7-failure.png",
+  "img/20261113_Rule-14-8-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.8-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.8-failure.png",
+  "img/20261113_Rule-14-9-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.9-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.9-failure.png",
+  "img/20261113_Rule-14-10-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.10-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.10-failure.png",
+  "img/20261113_Rule-14-11-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.11-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.11-failure.png",
+  "img/20261113_Rule-14-12-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.12-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.12-failure.png",
+  "img/20261113_Rule-14-13-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.13-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.13-failure.png",
+  "img/20261113_Rule-14-14-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.14-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.14-failure.png"
  },
  "codes_in_reference_lines": [
+  "D3-1092",
+  "D3-1102",
+  "D3-1104",
+  "D3-1130",
+  "D3-1308",
   "D3-1310",
+  "D3-1324",
+  "D3-1327",
   "D3-1328",
+  "D3-1329",
+  "D3-1330",
+  "D3-1338",
+  "D3-1339",
+  "D3-1343",
+  "D3-1351",
+  "D3-1363",
+  "D3-1372",
   "D3-1414",
+  "D3-1463",
+  "D3-1465",
+  "D3-1472",
+  "D3-1477",
   "D3-1505",
   "D3-1507",
+  "D3-1508",
+  "D3-1509",
+  "D3-1515",
+  "D3-1524",
   "D3-1527",
+  "D3-1529",
   "D3-1533",
   "D3-1537",
   "D3-1541",
+  "D3-1542",
+  "D3-1543",
+  "D3-168",
+  "D3-260",
+  "D3-261",
+  "D3-309",
+  "D3-349",
+  "D3-354",
+  "D3-482",
+  "D3-519",
+  "D3-566",
+  "D3-581",
+  "D3-628",
+  "D3-668",
+  "D3-677",
   "D3-689",
+  "D3-88",
+  "D3-89",
+  "D3-895",
+  "D3-904",
+  "D3-906",
+  "D3-908",
+  "D3-909",
+  "D3-911",
+  "D3-912",
+  "D3-914",
+  "D3-930",
+  "D3-936",
+  "D3-998",
   "DR-213",
   "DR-229",
+  "DR-234",
+  "DR-243",
   "DR-252",
   "DR-254",
-  "DR-260"
+  "DR-255",
+  "DR-256",
+  "DR-257",
+  "DR-258",
+  "DR-260",
+  "DR-62",
+  "DR-63",
+  "DR-64",
+  "DR-98",
+  "Q-18"
  ],
  "anchors_linked": [
   "rule-14-1",
@@ -4131,19 +4554,12 @@
  ],
  "notes": [],
  "warnings": [
-  "the strict build changed work/build/chart-kit/plate-share.json past its timestamp (13322 to 13249); left as the build wrote it",
-  "S05: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
-  "S06: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
-  "S08: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
-  "S09: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
-  "S11: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
-  "S13: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
-  "S15: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
-  "S16: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
-  "S37: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
-  "the quick guide check ran on 11,235,128 bytes and this board’s strict build is 11,236,072",
-  "the folder comes to 124.55 MB, at or over 120 MB"
+  "S04: its desk drawing differs from board 1’s pixel for pixel, and the decisions file’s board 1 group does not name it",
+  "S08: its desk drawing differs from board 1’s pixel for pixel, and the decisions file’s board 1 group does not name it",
+  "the quick guide check ran on 11,235,128 bytes and this board’s strict build is 11,236,319",
+  "decision codes in the words the board quotes from teammates’ files, on its face: D3-1515, D3-689, DR-256, DR-64",
+  "file paths on the board’s face, which belong in reference lines: Full-Table.md, work/build/scripts/phase-3/board_2_data_lead_counts.py, work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-Measure.json, work/research/20261113_Atlas-Recheck-Full-Data.json"
  ],
- "seconds": 722,
- "words": 48582
+ "seconds": 14,
+ "words": 56916
 }

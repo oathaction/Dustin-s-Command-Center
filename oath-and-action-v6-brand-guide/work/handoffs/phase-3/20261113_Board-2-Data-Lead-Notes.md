@@ -11,6 +11,7 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. Data visualizatio
 - **For the builder, the `counts` layout:** `counts.rule_01_9` holds the board's table at the top level (`total_examples` 108, `limit_domain` 27, `limit_state` 21, `by_domain` and `by_state` rows with `count`, `limit`, `passes`, `note`), and `built` holds the same for the 97 examples as built. `counts.dr_229.examples` rows carry `spec` or `where`, `rule`, `form`, `data`, `coverage_use`, `election_data`, `passes`, `test`; `note` is the words.
 - 17:35 UTC. **Part A: A1 to A5 all signed off; the engineer may run A6** ("Sign-off", last heading of Part A). A2 to A5 change no figure; A5 changes words only.
 - 17:33 UTC. **Decisions file, second draft:** all four panels hold their items. Added the atlas V7.1 panel (nine items and the loop label question, from the research lead's facts), the "answered" panel (DR-254 to DR-258, old and new words read by script from the committed state `33dc30a3` and the files as they stand), and S12 rewritten on the cartographer's measure. **My S12 recommendation changed** to the stacked tile; the reason is under "Rulings". Still `state: "draft"`; it turns "signed off" when A4 lands and the editor has read the words.
+- 17:39 UTC. Two editor changes after the Part A sign-off (S74 at 17:28, S71 at 17:37) signed off before A6; A6 runs on the specs as they stand. Replies to the editor and requests to the main session under "Replies and requests".
 - 17:35 UTC. **Decisions file `state: "signed off"`** (`signed_off_utc` 17:35:22Z), with `counts` and `checks` rerun after it. The editor owns the words from here; a word change needs no new sign-off unless it moves a figure. Next: the figure sign-off of the builder's first full build.
 - **For the builder:** new optional fields `facts` on S12 and the loop item, `question` on the loop item, `list_item` and `list_note` on two V7.1 items, `list_file` on the V7.1 panel, and `old`/`new` on DR-255. S12's stacked tile pictures name the cartographer's two HTML files. `answered` items carry `approval: "none"` at panel level.
 
@@ -162,6 +163,32 @@ I read the diff of `work/build/scripts/phase-2/guide_build.py` against `33dc30a3
 
 For the main session and the engineer: A1 (17:27), A2 (17:29), A3 (17:27), A4 (17:35) and A5 (17:27) are signed off, each under its heading above. A2 to A5 change no figure, and A5 changes words only: every changed field was compared with the committed state before Part A (`33dc30a3`) by script, figure by figure, and no file in `work/build/data/` but six sidecars' added variants changed (125 of 125 data files equal). Plate weights before and after are listed under A1 and A5; S16 10,732 to 10,933 and sketch 14.124 3,817 to 3,941 bytes; none passes D3-1328's ceilings or R3-9's 4,096. Two items for the editor's fix round, neither blocking: S74's measure line still prints the snapshot date that its grade and source lines print (D3-1485), and "DC" could hold to its figure in S16's note 3.
 
+
+### Two editor changes after the Part A sign-off, before A6: signed off (17:39 UTC)
+
+The editor changed two specs after my 17:27 field comparison: S74 at 17:28 and S71 at 17:37 (file times). Both are words only, and **A6 should run on the specs as they stand now**, which hold both.
+- **S74:** the measure line and the table caption drop "as of October 15, 2026"; the grade line ("as of October 15, 2026") and the source line ("snapshot of October 15, 2026") still print it. D3-1485's rule, the item I left to the editor at 17:27. No figure moves.
+- **S71:** a `typography.replace` pair prints the four state constitutions' web addresses (Massachusetts, Nebraska, Virginia, Arizona, in the row's own order) in place of the stored cell "work/research/20261111_Policy-Workflow-Sources.md, section SS", a studio path a reader would have met in the table. Each address is in that sources file, by `grep`. Printed words only (D3-519): the CSV export still holds the path, which goes to the main session as the editor asks (under "Requests").
+- The rest of the comparison is as at 17:27: no data file changed, and the only other file the editor's later work touched is the guide's specimen manifest, whose S16 and sketch 14.124 alt texts follow the signed-off words.
+## Replies and requests
+
+- **To the editor, the decisions file's words (17:39 UTC): agreed.** Every panel is written. I do not rerun `write_decisions_v1.py` or `patch_decisions_2.py`; any later change of mine is a targeted edit of one field, logged here, and `board_2_data_lead_counts.py --write` touches only `counts` and `checks` and keeps each `note`. Edit the word fields in place as you propose. Figures stay mine: a sentence whose figure you move comes back to me.
+- **To the editor, straight apostrophes in S21, S09 and S10's tables (17:39 UTC): yes, in the fix round.** Each takes `"typography": {"curl_quotes": true}`, printed words only (D3-519), with the data as stored; S09 and S10 are board 1 charts, and a curled apostrophe moves no figure or mark. Not before A6, so A6 runs on the state I signed off.
+- **To the main session:** S71's data file `usgov-v7-route-grid.csv` stores a studio path in the SS row's `url` cell, which the chart's CSV export would ship under DR-254. The page now prints the four addresses; the stored cell is maker A's derive or the research lead's, before Phase 5's package.
+- **To the main session:** the two generator lines that still say "download" (Rule 14.14's "as Rule 18.14 asks of a download"; the related-chapters line's "named downloads") promise no file; I accept them as they stand, and the editor's words for a literal zero are in its notes if you want them.
+
+## Decisions file: my field edits after the second draft
+
+Each a targeted edit of one field, for the editor's table.
+
+| UTC | Item, field | Why |
+|---|---|---|
+| 17:34 | `S10`, `answer` and `what_changed` | Board 1 drew the "All 433 claims" line solid; the first draft called it a bar |
+| 17:34 | `placement`, `title`, `answer`, `what_changed`; `board-1-changed`, `lede` | S14's note moved at every desk width, so "at widths board 1 did not show" was too broad |
+| 17:34 | `placement`, row S05 | Drawing order only, said without a negation |
+| 17:35 | `S73` `why`; `RL-3` `answer`; `R-01` `what_changed`, `why` | Corrective negations rewritten (chapter 02) |
+| 17:43 | `placement`, `what_changed` | The owners compared each drawing with itself before its move, not with board 1's files; my pixel check finds S01 and S02 a pixel or so off board 1's 1,440 px files (S01's leader, S02's antialiasing) and S14's note 10 px higher, as its row says |
+
 ## Routine calls
 
 - D3-xxx | The decisions file's schema is the data lead's of 17:09 UTC with the board builder's six additions (`state`, `spec` and `rule`, picture `role` and `element`, `facts`, `rows` fields) | Agreed within the brief's first 20 minutes; the builder prints only what the file holds
@@ -176,6 +203,9 @@ For the main session and the engineer: A1 (17:27), A2 (17:29), A3 (17:27), A4 (1
 - D3-xxx | The loop label question (D3-912) is recommended "yes": each variable's own title in every loop drawing in chapters 10, 11 and 15, and in V7.1 | The titles carry no verdict and need no gloss ("Executive unilateralism", "Policy tilt to insiders", "Affective polarization" do); one name per variable; the costs (longer words, CL-026's printed name) go on the board
 - D3-xxx | RL-3 is recommended off the V7.1 list | No atlas record names joint fundraising; the fact lives in the two FEC sidecars
 - D3-xxx | The issue title item asks one test for all 18 atlas titles with an effect verb, whoever the actor | DR-93; five concern the executive and thirteen do not, and a test applied to five alone would be one standard for one side
+- D3-xxx | S74's measure line and caption drop the snapshot date its grade and source lines print, and S71 prints the four constitutions' addresses in place of a studio path; both signed off before A6 | D3-1485; no studio path in reader text (H11); words only
+- D3-xxx | S21, S09 and S10 curl the atlas's straight apostrophes in their tables in the fix round, not before A6 | D3-519's printed-words rule; A6 runs on the state signed off at 17:35 and 17:39
+- D3-xxx | The decisions file is `state: "signed off"` from 17:35 UTC, and the editor edits its words in place from 17:39 | Every panel written; figures checked by script; the editor owns the words (brief)
 
 ## Tested
 

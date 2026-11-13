@@ -7,6 +7,7 @@ Oath & Action Edition 06, Phase 3, board 2. Editor (`oa-editor`), November 13, 2
 - 17:12 UTC. Started. Read `CLAUDE.md`, my role file, chapter 02's writing rules, the board 2 brief, the decision log from D3-1312 to D3-1541 with DR-254 to DR-260, and my round 3 notes (call 5's held S16 draft, N3's `{data_file}` rule, call 9). Order: A1, A2's words, A4, A5, then the board's words once the builder's first full build lands.
 - 17:24 UTC. **Part A's words have all landed, each waiting on the data lead's sign-off** (under "Words for the data lead"): A1 at 17:15 (nine places, 8 files), A4 at 17:18 (S16), A2 at 17:19 (entry 14.124 and the sketch's first `<desc>`), A5 at 17:20 (seven specs). Every changed spec passes `oa-chart.mjs build`, sweep on, 0 faults. **One kit fault for the engineer:** two copies of each table caption print `{data_file}` raw (under "Words for the engineer"). **Two literal "download" hits remain** in text the rules generator writes, both cross-references to Rule 18.14 (under "Requests"). Next: the board's words, once the builder's notes say its first full build has landed.
 - 17:28 UTC. The data lead signed off A1, A5 and A4's words at 17:27; A2 waits on the cartographer's lighter blue (the caption names no hex, so my words hold). S74's measure line and caption drop the snapshot date under call 9 (17:28), for the data lead's sign-off. Waiting for the builder's first full build; the decisions file's 17:25 draft is read, and I edit its words once the data lead says every panel is written (the contract under "Words for the data lead").
+- 17:38 UTC. The data lead signed off A2 at 17:29, so Part A's words are all signed off but A4's layout (the cartographer's). Read the board's first page (the builder's 17:35 file, before its notes call it a full build): one guide fault found and fixed, S71's table printing a studio file path ("S71" under "Words for the data lead", for sign-off); my planned words for the content file are under "Words for the board builder". Panel 1 had not yet read the decisions file.
 
 ## Routine calls
 
@@ -17,6 +18,7 @@ Oath & Action Edition 06, Phase 3, board 2. Editor (`oa-editor`), November 13, 2
 - D3-xxx | S16's note 3 and alt take DR-256's words exactly as the brief quotes them, read from the brief by script | Dustin's answer; every figure checked by script against S16's data
 - D3-xxx | S10, S21, S23, S38, S39, S60 and S63 print the research lead's `snapshot_once` source variants, grade lines unchanged | DR-257 under D3-1327 and D3-1493: the snapshot date once in the source line, in S68's and S74's form
 - D3-xxx | S74's measure line and table caption drop "as of October 15, 2026", which its grade and source lines hold | Call 9 (D3-1485) binds round 3's specs and missed S74; taken before A6 so the board's pictures carry it (the data lead's A5 note)
+- D3-xxx | S71's State statute row prints the four constitutions' web addresses in place of a studio file path, through a `typography.replace` pair | No studio word or path in reader text (H11, chapter 02's scope); the addresses are section SS's own, in the form the other rows print
 
 ## Words for the data lead (sign-off)
 
@@ -95,7 +97,17 @@ Your A5 note: S74, a round 3 spec, prints October 15, 2026 in its grade, measure
 | S74 `measure_line` | Connections in the atlas’s model, counted by the region each starts in (rows) and the region it reaches (columns), as of October 15, 2026 | Connections in the atlas’s model, counted by the region each starts in (rows) and the region it reaches (columns) |
 | S74 `table.caption` | Connections in the atlas’s model by region, as of October 15, 2026 | Connections in the atlas’s model by region |
 
-The grade line keeps "as of October 15, 2026" and the source line "snapshot of October 15, 2026", as S68's do. Maker B's figure check reads S74's title and alt, neither of which moved. `oa-chart.mjs build s74`, sweep on: PASS, 0 faults; 11,750 to 11,654 bytes with the frame. S10's and S21's measure lines also print the date beside their source lines, but both are board 1 words outside DR-257, so they stand.
+The grade line keeps "as of October 15, 2026" and the source line "snapshot of October 15, 2026", as S68's do. Maker B's figure check reads S74's title and alt, neither of which moved. `oa-chart.mjs build s74`, sweep on: PASS, 0 faults; 11,750 to 11,654 bytes with the frame. S10's and S21's measure lines also print the date beside their source lines; S10 is a board 1 chart and S21 a round 1 chart, both outside DR-257 and call 9, so they stand.
+
+### S71: a studio file path printed in its table (landed 17:36 UTC, for your sign-off)
+
+Found reading the board's first page (17:35 build): S71's table, column "Where they were read", prints "work/research/20261111_Policy-Workflow-Sources.md, section SS" in the State statute row, a studio path in reader text. Every other row prints the web addresses its texts were read at. Section SS of that file names the four constitutions and their addresses, so S71 now prints them through one `typography.replace` pair, the way S67 and S84 print other cells, in the form the Federal statute and Article V rows use:
+
+| Field | Prints before | Prints after |
+|---|---|---|
+| S71 `typography.replace`, a new pair for the SS row's `url` cell | work/research/20261111_Policy-Workflow-Sources.md, section SS | https://malegislature.gov/Laws/Constitution ; https://nebraskalegislature.gov/laws/articles.php?article=IV-15 ; https://law.lis.virginia.gov/constitution/article5/section6/ ; https://www.azleg.gov/const/5/7.htm |
+
+The four addresses are copied from the file's section SS (Massachusetts, Nebraska, Virginia, Arizona, each read November 11, 2026, as the row's "Read" cell says). The stored cell and the CSV export keep the path, so the data file DR-254 promises would still carry it: that is the data's to fix, in maker A's derive (its REWORD table already rewords the row's `sources` cell, D3-1388) or the research lead's file, and I ask the main session to route it. `oa-chart.mjs build s71`, sweep on: PASS, 0 faults; 12,246 to 12,595 bytes with the frame (the island carries both strings of the pair), under 14,106. No other path or code prints anywhere in the board's text (script over all 17,951 lines).
 
 ## Words for the cartographer
 
@@ -116,10 +128,32 @@ The grade line keeps "as of October 15, 2026" and the source line "snapshot of O
 
 ## Words for the board builder
 
+### Planned edits to the content file, read on your 17:35 page (I apply them by script once your notes say the first full build has landed)
+
+| Field | Now | Planned | Why |
+|---|---|---|---|
+| `cover.deck[0]` | …in {n_fams} families: {n_specs} charts drawn from real data and {n_sketches} sketches. You already answered five questions before this board, and it shows each answer as done beside what it replaced. | …in {n_fams} families: {n_spec_rows} shown by {n_specs} charts drawn from real data, and {n_sketches} by sketches. You answered five questions before this board, and it shows each answer done, beside what it replaced. | Printed, "114 … 84 charts … and 28 sketches" does not add up (84 + 28 = 112); two charts serve two forms each. "Already" adds nothing (W17) |
+| `cover.deck[1]` | Every panel after it is a reference: each form at true size on both grounds, the count of examples by place and topic, what chapter 14 has spent, and the scores. | The panels after it are for reference, from every form at true size on both grounds to the scores and what was tested. | The list left out the rules and the tests; a span names the range without a list to keep complete |
+| `sections.forms.lede` | Every form rounds 1 to 3 built, in the plan’s order: … and {n_sketches} sketches. | This panel shows every form rounds 1 to 3 built, in the plan’s order: … and {n_sketches} with a sketch. | A lede is a full sentence (chapter 02's scope) |
+| `sections.forms.how` | …the source line as printed, the chart’s weight with its plate frame, and its table… | …the source line as printed, the bytes the chart adds to the page, and its table… | "Plate frame" is a studio word on the board's face |
+| `sections.forms.lede_est` | The guide labels {n_est_w} of these charts Estimate, and their label shows filled in black here as it does there: Rules {est_rules}. | The guide labels {n_est_w} of these charts Estimate, in Rules {est_rules}, and the board shows that label as the guide prints it. | The rule list read as the end of a reveal (W06) |
+| `sections.forms.family_line` | {n} forms, {s} of them sketches. | {n} forms, {s} sketched | "1 of them sketches" and "0 of them sketches" print; a label takes figures (H06) |
+| `sections.forms.bytes_line` | {with_frame} bytes on the page with its plate frame ({figure} for the chart as the guide places it). | {with_frame} bytes on the page with the frame round the chart, {figure} for the chart alone. | The same studio word |
+| `sections.rules.lede` | The fourteen rules every chart follows, as rounds 1 to 3 left them: each rule’s title with its correct and failure plates, photographed from today’s build at a 1440 px window. | These are the fourteen rules every chart follows, as rounds 1 to 3 left them. Each shows its title with its correct and failure plates, photographed from today’s build at a 1440 px window. | A lede is a full sentence |
+| `sections.spend.per_plate` | …has {per_plate} bytes to spend, its plate frame included. | …has {per_plate} bytes to spend, the frame round it included. | The same studio word |
+| `sections.spend.heavy_cols[4]`, `heavy_note` | "With its plate frame"; "As placed is the build report’s figure; with its plate frame is the kit’s measure, which adds the frame round the plate." | "With its frame"; "“As placed” is the guide build’s own figure, and “With its frame” is the kit’s, which adds the frame the guide draws round each chart." | The same, and the column names read as names |
+| `sections.scores.lede`, last sentence | Three reviewers read each round from their own lens. | Three reviewers also read each round, each for one part of the work, named in the table below. | Says who they are without a figure of speech |
+| `sections.tested.tested[0..3].words` | "run by this board’s build on {when}: exit 0, …" and the same colon in the other three | "run by this board’s build on {when}, with exit 0, …"; "…at {widths} px, with {specimens} examples, …"; the kit's "at the widths the guide draws and at every whole width from 256 px, with {pass} of {n} charts passing with no fault and {warnings} warnings"; the board check's "on its last run at {widths} px, with {failures} failures, …" | The label already ends in a colon, so each line printed two; "the sweep" is a studio word |
+| `sections.tested.not_tested[3]` | …and a sample was read by eye. | …and the builder looked at a sample. | W02: name who looked |
+
+If you would rather apply these yourself, say so under your "Status" and I leave the file to you.
+
 ## Requests
 
 - **To the main session (A1's check):** two lines in chapter 14 still say "download", both written by `phase3_ch14_rules_build.py` and both naming chapter 18's rule on downloads, with no promise of a file. If you want the script check to read zero, these words would do it, in the generator and its two outputs (`14-014.json`, `14-chapter.json`): Rule 14.14, "Each name carries the date, what the chart is, its ground and its width, as Rule 18.14 asks of a download." to "Each name carries the date, what the chart is, its ground and its width (Rule 18.14)."; the related-chapters line, "Rules 18.10 and 18.14: tables and named downloads, and the components interactive charts use." to "Rules 18.10 and 18.14: tables and file names, and the components interactive charts use." I tried and the session's permission check refused my edit to the generator, so I left it.
-- **To the engineer:** the kit fault above (a raw `{data_file}` in two copies of each table caption).
+- **To the engineer:** the kit fault above (a raw `{data_file}` in two copies of each table caption). Fixed at 17:20 UTC.
+- **To the main session (S71's data):** the derived file `usgov-v7-route-grid.csv` stores "work/research/20261111_Policy-Workflow-Sources.md, section SS" in the SS row's `url` cell, and the CSV export copies it, so the data file DR-254 promises would print a studio path. The page now prints the four addresses (above); the stored cell is maker A's derive or the research lead's to change.
+- **To the data lead (not changed):** three older charts print straight apostrophes from the atlas's stored questions in their tables, with no `curl_quotes`: S21 (Rule 14.21, "Why isn't my pay…"), S09 (Rule 14.38, "Vice President's", "Humphrey's") and S10 (Rule 14.46, "my child's school"). S09 and S10 are board 1 charts, so I leave them for your call; one `"typography": {"curl_quotes": true}` each would curl them.
 
 ## Tested
 
