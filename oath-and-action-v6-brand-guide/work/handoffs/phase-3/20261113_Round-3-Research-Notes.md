@@ -142,6 +142,8 @@ Modified:
 - `work/build/data/census-cbp-county-employment.csv` and `.meta.json` (RL-2)
 - `work/build/data/fec-jfc-transfers-2024.csv` and `.meta.json` (RL-3, RL-3a)
 - `work/build/data/uscode-federal-trial-judges.csv` and `.meta.json`, `uscode-federal-courts-circuits-districts.meta.json` (judge counts)
+- `work/build/data/cms-medicaid-chip-renewal-outcomes.meta.json` and `cms-medicaid-chip-renewal-funnel.meta.json` (RB3-R2, a note)
+- `work/build/data/v7-region-connection-matrix.meta.json` and `v7-links-with-regions.meta.json` (RB3-R3, the printed line), through `work/build/scripts/phase-3/research_v7_extract.py` (two lines)
 - `work/research/20261021_Research-Ledger.md` (Part 7: "Map geometry, round 3" with P7-219a to P7-219e; "Round 3, November 13, 2026"; stale cells; claims 10, 11 and 28 settled, 34 to 37 added; change log)
 - `work/handoffs/phase-3/20261112_Round-3-Data-Plan.md` (status lines only)
 - `work/handoffs/phase-3/20261112_Round-4-Data-Plan.md` (row 123's note, D3-1098)
