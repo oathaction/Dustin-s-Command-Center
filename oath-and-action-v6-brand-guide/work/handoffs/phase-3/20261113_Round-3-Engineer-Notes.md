@@ -426,9 +426,13 @@ November 13, 2026, 06:53 to 07:00 UTC (clock read), at the main session's reques
 - **Every spec at the 256 px page width (the main session's request, 07:00 UTC):** `build --all --widths 256 --no-png --no-sweep`, both grounds, 84 check files counted: 69 PASS, 15 FAIL. A 256 px page gives a 224 px drawing (16 px gutters), under the 256 px the guide gives an entry at its narrowest (a 320 px window, WCAG's reflow width; N1, D3-904); 224 px is a rule plate's floor, and the sweep already reaches it for rule plates. Faulting there, by owner: **maker A** S01 (14 lines, leaders across words), S02, S03, S04, S05, S08, S10, S19, S20, S37 (38 lines, words past the artboard), S47, S48, S64; **maker B** S30, S35; **cartographer** none. S53 and S59 pass after maker B's fixes.
 - **Should the sweep reach 224 px for every spec? Not recommended, and not changed.** No reader's window under the guide's layout draws an entry below 256 px, so a fault at 224 is a fault at a width the guide never shows; extending the sweep would fail 15 specs, 13 of them signed off on boards 1 and 2, for no reader. A 256 px *page* width in `--widths` tests a 224 px drawing; the narrowest page that matches the guide's narrowest entry is 288 (a 256 px drawing), which the sweep covers. If the studio wants a margin below the reflow width, it is one line in `sweep_range` (`guide_widths`' floor), a call for the main session with the 15 specs' owners.
 
+- **RS-1 (N2), S12's stage shows that it scrolls LANDED (07:05 to 07:16 UTC).** While a staged drawing scrolls, a hint above it reads "Wider than this column. Scroll the drawing sideways to see all of it." (`words.json` `stage_hint`; hidden from screen readers, since the frame's name says the same), the frame shows both edges in the strong border ink and a scroll bar that stays in sight, and from 80em the plate takes the room over the rail (the shell's flowing breakout, set in the manifest for any spec with `stage` by `phase3_ch14_build.py`). At 1440 px the frame now shows 943 of the 1024 px (it showed 723), with New York, New Jersey, Florida and California in view; at 1280 and 1920 px it shows all 1024. The drawing is unchanged. Print hides the hint and the edges.
+- **N3 (the editor's):** the README's step 8 says `{data_file}` follows its verb and never opens a sentence, with the editor's example.
+
 ### Routine calls, second pass
 
 - D3-xxx | The sweep keeps an entry's floor at 256 px and a rule plate's at 224 px | The guide's narrowest entry drawing is 256 px (N1); the 15 specs that fault at a 224 px drawing do so at a width no reader gets
+- D3-xxx | A staged drawing that scrolls shows a hint above it, both edges and a scroll bar that stays in sight, and a staged spec's plate breaks out over the rail from 80em | RS-1 and N2: a reader must see that the frame scrolls before scrolling; the breakout shows the whole map at 1280 and 1920 px and all but the last column at 1440, with no change to the drawing
 - D3-xxx | The kit's weight line reads the share per plate the last build of the guide's own chapters reported, from `plate-share.json`, which only such a build writes | D3-1497: one figure in every report; a fixture build, a demo or the self-test never overwrites it
 
 ### Tested, second pass
@@ -438,10 +442,13 @@ November 13, 2026, 06:53 to 07:00 UTC (clock read), at the main session's reques
 - The kit's self-test: every planted fault caught.
 - `build --all --no-png` with the sweep, 06:55 to 07:00: 84 specs, 84 check files counted, 84 PASS, 0 faults; all 84 weight lines give 13,588 from the 06:55 build.
 
+- RS-1: strict build at 07:06 (`.../g8/guide.html`), exit 0, no warning, `plate-share.json` 13,370 for the 13 plates to come (the hint's style and script, and the makers' changes). In Chromium on the guide page at 1440, 1024 and 768 px: the hint shows, the frame takes a tab stop, its name and a solid focus ring, the right arrow scrolls it (81 px to its end at 1440; 240 px at 1024 and 768), and the page never scrolls sideways; viewport captures at 1440 and 768 looked at. On the kit's page, both grounds, at 1440 (no scroll, no hint), 1024 and 768 (hint, edges in each ground's border ink, keys as above): `build s12 --widths 1440,1024,768` with captures, 0 faults; the 768 px Charcoal capture looked at. Then the kit's self-test, every planted fault caught, and **`build --all --no-png` with the sweep, 07:12 to 07:16 UTC: 84 specs, 84 check files counted, 84 PASS, no warning.**
+
 ### Not tested, second pass
+- RS-1: the quick guide check on the 07:06 build (not rerun this pass); Firefox and Safari, where the styled scroll bar takes each browser's own rule.
 
 - A build by another owner rewriting the record while a kit build reads it: the kit reads the file once a weight line, and a half-written file falls back to 14,106 with its words.
 
 ### Files, second pass
 
-- Created: `work/build/chart-kit/plate-share.json` (written by the build). Modified: `work/build/scripts/phase-2/guide_build.py`, `work/build/chart-kit/oa-chart.mjs`, `work/build/chart-kit/README.md`, these notes.
+- Created: `work/build/chart-kit/plate-share.json` (written by the build). Modified: `work/build/scripts/phase-2/guide_build.py`, `work/build/chart-kit/oa-chart.mjs`, `work/build/chart-kit/README.md`, `kit.js`, `kit.css`, `words.json`, `kit-build.js` (RS-1), `work/build/scripts/phase-3/phase3_ch14_build.py` (the breakout key), these notes; the generator rewrote `work/build/guide/specimens/manifest-data-visualization.json` and `work/build/guide/entries/14-example-log.json`.
