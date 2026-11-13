@@ -46,7 +46,11 @@ Done 02:20 UTC (ledger claim 28). **677 = 673 + 4.** The courts' 677 district po
 
 ## Stale lines
 
-(Queued.)
+Done 02:30 UTC. Each line stays as the record, marked "Stale (research lead, round 3, November 13, 2026)" with a pointer.
+
+- **Research ledger:** P7-219's status ("freeze waits on the engineer’s shape"); P7-101's publisher cell ("Ballotpedia. Secondary source"); P7-212's qualification ("the code’s meaning was not read, so no county is marked"); P7-216's "sums of itemized disbursements"; P7-307's "the courts’ counts include temporary judgeships". Claims 10, 11 and 28 are marked settled, and claims 34 to 37 added.
+- **Round 3 data plan (status lines only):** the status paragraph's "Waiting: the map geometry" and the round 2 "Since then" line's "The map geometry still waits (P7-219)", both pointing to a new closing line, "Since then, round 3", which lists the five frozen files and RL-1 and RL-2.
+- **Not mine to edit this round (requests below):** the round 4 plan's row 123 note gives 677 and 673 without the reason; my round 2 notes say the courts' counts include temporary judgeships (Summary, "Row 123", and the routine call on row 123's seats).
 
 ## Data check over derived files
 
