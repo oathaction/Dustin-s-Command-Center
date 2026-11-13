@@ -48,7 +48,7 @@ FRAME = (975, 610)
 WIDEST_PX = 720            # the widest a map draws in the guide (a reading chart); the frame's 975 units scale to it
 TOL_PX = 0.5               # simplified to half a pixel at that width
 TOL = TOL_PX * FRAME[0] / WIDEST_PX
-QUANTUM = 0.25             # frame units per grid step
+QUANTUM = 0.5              # frame units per grid step (0.37 px at 720 px)
 MIN_RING_PX2 = 1.0         # an island ring under a pixel's area at 720 px is left out (never a feature's largest)
 ALPHA = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_$'
 
@@ -311,20 +311,30 @@ def build_layer(name, file, keep, frame, digits, labels):
         f['keep'] = polys
     used = sorted({(r if r >= 0 else ~r) for f in feats for poly in f['keep'] for ring in poly for r in ring})
     renum = {old: new for new, old in enumerate(used)}
-    arc_s = []
+    # each arc: its length, its first point as a step from the last arc's last point (arcs follow their rings, so most
+    # start where the one before ended), then the steps between its points
+    arc_s, last = [], (0, 0)
     for old in used:
         a = q[old]
-        s = varint(len(a)) + enc(a[0][0]) + enc(a[0][1])
+        s = varint(len(a)) + enc(a[0][0] - last[0]) + enc(a[0][1] - last[1])
         for (x0, y0), (x1, y1) in zip(a, a[1:]):
             s += enc(x1 - x0) + enc(y1 - y0)
         arc_s.append(s)
+        last = a[-1]
+    # each ring's arcs: a reference is the step from the ring's last reference (zigzag of the arc's number, ~n when the
+    # ring runs it backward), so a ring of arcs found in order takes one character an arc
     shape_s = []
     for f in feats:
         s = varint(len(f['keep']))
         for poly in f['keep']:
             s += varint(len(poly))
             for ring in poly:
-                s += varint(len(ring)) + ''.join(enc(renum[r] if r >= 0 else ~renum[~r]) for r in ring)
+                s += varint(len(ring))
+                prev = 0
+                for r in ring:
+                    v = zz(renum[r]) if r >= 0 else zz(~renum[~r])
+                    s += enc(v - prev)
+                    prev = v
         shape_s.append(s)
     prev, ids = 0, ''
     for f in feats:

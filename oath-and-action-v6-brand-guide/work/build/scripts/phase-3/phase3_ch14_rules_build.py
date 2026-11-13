@@ -880,6 +880,11 @@ def rule_14_6(B):
          "mark takes Charcoal at the subject weight and the value the title names carries a label. When the title names a second mark only "
          "to measure the first against, as “more than twice Zion’s” does on this rule’s plate, that mark is a comparison. It keeps the light "
          "fill with its label, and the red stays on the finding.",
+         # round 3, the data lead's principles 1 and 2 (diagrams answer with their path, maps with their pattern)
+         "A diagram or a map often answers with its whole path or pattern, and then the title names no single mark. In a process, the path "
+         "the reader’s question follows takes Charcoal at the subject weight and the branches it leaves take the context ink, as on Rule "
+         "14.96’s diagram. Where the reader’s own case picks the path, as in a decision tree, every branch takes the same ink. On a map, a "
+         "place the title names as a point, such as a town, may take the red, as on Rule 14.118’s locator.",
          "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step "
          "the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber "
          "whose majority readers know, an election result, money spent to elect a candidate and a policy readers link to one party all "
