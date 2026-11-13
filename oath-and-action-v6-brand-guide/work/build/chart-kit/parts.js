@@ -1016,25 +1016,77 @@
   // (default true) sets words on the ground's halo. A layer with no label points (counties) places every name beside.
   // An item's fill is the ink inside its shape (its step's label ink, on-seq-4); a name set beside takes the label ink.
   // Draw the inset frames and every line before the names.
+  // C-M1, D3-1325 (round 3 fix pass): where the name does not fit at the label point, it sits at the shape's widest
+  // interior point instead: the row across the shape whose run inside it, the name's full height (o.spare px, default the
+  // smaller of inset and 1, above and below), is widest, with the name centered on that run, where its box fits with
+  // o.spare px to spare on every side. o.widest: false keeps the label point alone.
   // Returns {inside: [{item, box}], beside: [{item, box}], unplaced: [items]}; name the unplaced in a note or the table.
+  // a box that lies wholly inside one polygon of rings and meets none of their edges
+  var box_in = function (polys, bx) {
+    var corners = [[bx.x, bx.y], [bx.x + bx.w, bx.y], [bx.x, bx.y + bx.h], [bx.x + bx.w, bx.y + bx.h]];
+    return polys.some(function (rs) {
+      if (!corners.every(function (q) { return K.in_poly(rs, q[0], q[1]); })) return false;
+      return !rs.some(function (r) { for (var i = 0; i < r.length; i++) { var a = r[i], b = r[(i + 1) % r.length]; if (K.seg_hits_box(a[0], a[1], b[0], b[1], bx.x, bx.y, bx.x + bx.w, bx.y + bx.h)) return true; } return false; });
+    });
+  };
+  // the runs inside a polygon's rings along the row at y (even-odd, as in_poly reads them): [[x0, x1], ...]
+  var row_runs = function (rs, y) {
+    var xs = [];
+    rs.forEach(function (r) {
+      for (var i = 0, j = r.length - 1; i < r.length; j = i++) {
+        var a = r[i], b = r[j];
+        if ((a[1] > y) !== (b[1] > y)) xs.push((b[0] - a[0]) * (y - a[1]) / (b[1] - a[1]) + a[0]);
+      }
+    });
+    xs.sort(function (u, v) { return u - v; });
+    var out = [];
+    for (var k = 0; k + 1 < xs.length; k += 2) out.push([xs[k], xs[k + 1]]);
+    return out;
+  };
+  var runs_and = function (A, B) {
+    var out = [];
+    A.forEach(function (a) { B.forEach(function (b) { var x0 = Math.max(a[0], b[0]), x1 = Math.min(a[1], b[1]); if (x1 > x0) out.push([x0, x1]); }); });
+    return out;
+  };
+  // candidate centers for a w by h box inside the polygons, widest run first, then nearest the label point's row
+  P.widest_spots = function (polys, w, h, spare, near_y) {
+    var H = h + 2 * spare, need = w + 2 * spare, out = [];
+    polys.forEach(function (rs) {
+      var y0 = Infinity, y1 = -Infinity, memo = {};
+      rs[0].forEach(function (q) { if (q[1] < y0) y0 = q[1]; if (q[1] > y1) y1 = q[1]; });
+      var at = function (y) { var k = y.toFixed(2); if (!memo[k]) memo[k] = row_runs(rs, y); return memo[k]; };
+      for (var cy = Math.ceil(y0 + H / 2); cy <= y1 - H / 2; cy++) {
+        var runs = at(cy - H / 2);
+        for (var yy = cy - H / 2 + 1; yy < cy + H / 2 && runs.length; yy++) runs = runs_and(runs, at(yy));
+        if (runs.length) runs = runs_and(runs, at(cy + H / 2));
+        runs.forEach(function (rn) { if (rn[1] - rn[0] >= need) out.push({ x: (rn[0] + rn[1]) / 2, y: cy, run: rn[1] - rn[0] }); });
+      }
+    });
+    out.sort(function (a, b) { return b.run - a.run || Math.abs(a.y - near_y) - Math.abs(b.y - near_y) || a.x - b.x; });
+    return out;
+  };
   P.map_labels = function (c, L, T, items, o) {
     o = o || {};
     var role = o.role || 'label', size = c.size(role), inset = o.inset === undefined ? 2 : o.inset, inside = [], rest = [];
+    var spare = o.spare === undefined ? Math.min(inset, 1) : o.spare;
+    var taken = function (bx) { return c.texts.some(function (t) { return t.x < bx.x + bx.w && bx.x < t.x + t.w && t.y < bx.y + bx.h && bx.y < t.y + t.h; }); };
     items.forEach(function (it) {
       var fi = L.index[String(it.id)];
       if (fi === undefined || !L.labels) { if (fi !== undefined) rest.push({ it: it, p: T.pt(L.rings(fi)[0][0][0]) }); return; }
       var p = T.pt(L.labels[fi]), w = c.measure(it.words, role, it.weight || 400);
       var bx = { x: p[0] - w / 2 - inset, y: p[1] - size / 2 - inset, w: w + 2 * inset, h: size + 2 * inset };
       var polys = L.rings(fi).map(function (rs) { return rs.map(function (r) { return r.map(T.pt); }); });
-      var corners = [[bx.x, bx.y], [bx.x + bx.w, bx.y], [bx.x, bx.y + bx.h], [bx.x + bx.w, bx.y + bx.h]];
-      var fits = polys.some(function (rs) {
-        if (!corners.every(function (q) { return K.in_poly(rs, q[0], q[1]); })) return false;
-        return !rs.some(function (r) { for (var i = 0; i < r.length; i++) { var a = r[i], b = r[(i + 1) % r.length]; if (K.seg_hits_box(a[0], a[1], b[0], b[1], bx.x, bx.y, bx.x + bx.w, bx.y + bx.h)) return true; } return false; });
-      });
-      var taken = c.texts.some(function (t) { return t.x < bx.x + bx.w && bx.x < t.x + t.w && t.y < bx.y + bx.h && bx.y < t.y + t.h; });
-      if (fits && !taken) {
-        var tb = c.text(p[0], p[1] + 0.35 * size, String(it.words), { role: role, weight: it.weight || 400, anchor: 'middle', fill: it.fill, halo: o.halo !== false && !it.fill });
-        inside.push({ item: it, box: tb });
+      var at = (box_in(polys, bx) && !taken(bx)) ? p : null;
+      if (!at && o.widest !== false) {
+        var spots = P.widest_spots(polys, w, size, spare, p[1]);
+        for (var si = 0; si < spots.length && !at; si++) {
+          var sb = { x: spots[si].x - w / 2 - spare, y: spots[si].y - size / 2 - spare, w: w + 2 * spare, h: size + 2 * spare };
+          if (box_in(polys, sb) && !taken(sb)) at = [spots[si].x, spots[si].y];
+        }
+      }
+      if (at) {
+        var tb = c.text(at[0], at[1] + 0.35 * size, String(it.words), { role: role, weight: it.weight || 400, anchor: 'middle', fill: it.fill, halo: o.halo !== false && !it.fill });
+        inside.push({ item: it, box: tb, moved: at !== p });
       } else rest.push({ it: it, p: p });
     });
     // a name set beside its shape sits on the ground or another shape, so it takes the label ink on a halo, never its

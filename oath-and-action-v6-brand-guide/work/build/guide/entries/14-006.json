@@ -2,11 +2,11 @@
  "id": "14.6",
  "title": "Spend the view’s one red on the point the title names.",
  "rule": [
-  "Rule 05.3 gives each view one working red and says which job claims it first. In a chart, the red goes to the one point, bar or line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Marks the title names together, such as the bars of one age band, share the red. Every other mark takes the light fill on Newsprint and the context ink on Charcoal (Rule 05.7).",
-  "A line or a single bar is one mark, and a run of columns is a set of marks, so a title can name one column of a run and give it the red, as on Rule 14.12’s plate. A chart that draws only one line, bar or path has no other mark to set it apart from, so the mark takes Charcoal at the subject weight and the value the title names carries a label. When the title names a second mark only to measure the first against, as “more than twice Zion’s” does on this rule’s plate, that mark is a comparison. It keeps the light fill with its label, and the red stays on the finding.",
-  "When a diagram or a map answers with its whole path or pattern, the title names no single mark. In a process, the path the reader’s question follows takes Charcoal at the subject weight and the branches it leaves take the context ink, as on Rule 14.96’s diagram. Where the reader’s own case picks the path, as in a decision tree, every branch takes the same ink. On a map, a place the title names as a point, such as a town, may take the red, as on Rule 14.118’s locator.",
-  "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber whose majority readers know, an election result, money spent to elect a candidate and a policy readers link to one party all carry that tie, and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7).",
-  "A title that states two findings, each on its own, such as the most and the least, sets both marks in Charcoal the same way, since two reds would split the reader’s first look. Rule 05.1 keeps the red within 5 percent of the drawing at every width. An area’s size follows its data, so a named area takes Charcoal at any size: a part of a treemap, pie, donut or funnel, a region on a map, a node, a cell of a matrix, or a line or band whose width carries an amount, such as a flow. A named mark that would pass that share, such as a tall column in a short run, takes Charcoal at the subject weight as well. Red never codes a series, a group, a step on a scale or in a process, or a sign, such as a deficit or a loss."
+  "Rule 05.3 gives each view one working red. In a chart, the red goes to the point, bar or line the title names, inside Rule 05.5’s keyline and with its own label, and every other mark takes the light fill on Newsprint and the context ink on Charcoal (Rule 05.7).",
+  "A line or a bar is one mark, and a run of columns is a set of marks, so a title can give one column of a run the red, as on Rule 14.12’s plate. A mark the title names only to measure the finding against, as “more than twice Zion’s” does on this rule’s plate, keeps the light fill with its label.",
+  "When a diagram or a map answers with its whole path or pattern, its title names no single mark. In a process, the path the reader’s question follows takes Charcoal at the subject weight, as on Rule 14.96’s diagram. A map gives the red only to a place its title names as a point, such as the town on Rule 14.118’s locator.",
+  "The named mark gives up the red and takes Charcoal at the subject weight when an error or a step the reader can take holds the red first (Rule 05.3), or when a reader would tie the mark to a party, since red there reads as a party’s color (Rules 01.1, 01.2 and 14.7).",
+  "Rule 05.1 keeps the red within 5 percent of the drawing at every width, so a named area, whose size follows its data, takes Charcoal at any size, and so does a named mark that would pass that share, such as a tall column in a short run."
  ],
  "use_when": null,
  "use_instead": [],
@@ -36,7 +36,7 @@
  "specs": [
   {
    "label": "The point",
-   "value": "Pillar Red with a 1 px Charcoal keyline",
+   "value": "Pillar Red with a 1 px Charcoal keyline (Rule 05.5)",
    "token": "oa.chart.color.point.onNewsprint"
   },
   {
@@ -44,13 +44,17 @@
    "value": "Beside the mark, in the text ink"
   },
   {
+   "label": "Marks named together",
+   "value": "Share the red, as the bars of one age band do"
+  },
+  {
    "label": "A chart of one mark",
-   "value": "One line, bar or path in Charcoal at the subject weight, the title’s value labeled",
+   "value": "One line, bar or path, with no other mark to set it apart from, in Charcoal at the subject weight, the title’s value labeled",
    "token": "oa.chart.color.subject.onNewsprint"
   },
   {
    "label": "A diagram’s path",
-   "value": "The path the question follows in Charcoal at the subject weight, the branches it leaves in the context ink, no red",
+   "value": "The path the question follows in Charcoal at the subject weight and the branches it leaves in the context ink; where the reader’s own case picks the path, as in a decision tree, every branch in one ink; no red",
    "token": "oa.chart.color.subject.onNewsprint"
   },
   {
@@ -59,8 +63,13 @@
    "token": "oa.chart.color.lightFill.onNewsprint"
   },
   {
-   "label": "An error, a step, a sign or a party tie",
+   "label": "An error, a step or a sign",
    "value": "Charcoal at the subject weight, with the label",
+   "token": "oa.chart.color.subject.onNewsprint"
+  },
+  {
+   "label": "A party tie",
+   "value": "A state, a Congress or chamber whose majority readers know, an election result, money spent to elect a candidate, or a policy readers link to one party: Charcoal at the subject weight, with the label",
    "token": "oa.chart.color.subject.onNewsprint"
   },
   {
@@ -69,7 +78,7 @@
   },
   {
    "label": "A named area, or past 5 percent of the drawing",
-   "value": "Charcoal, with the label (Rule 05.1)",
+   "value": "Charcoal, with the label (Rule 05.1): a part of a treemap, pie, donut or funnel, a region on a map, a node (a box or dot where a diagram’s links meet), a cell of a matrix, or a line or band whose width carries an amount, such as a flow",
    "token": "oa.chart.color.subject.onNewsprint"
   },
   {

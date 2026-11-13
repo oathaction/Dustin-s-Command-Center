@@ -133,9 +133,6 @@
         "Present",
         "Not Voting"
       ]
-    },
-    {
-      "field": "member"
     }
   ],
   "encode": {

@@ -877,45 +877,46 @@ def rule_14_6(B):
           alt=FC + "The same bars with three parks in red, Great Smoky Mountains, Zion and Yellowstone, under a title that names one.")
     return entry(
         "14.6", "Spend the view’s one red on the point the title names.",
-        ["Rule 05.3 gives each view one working red and says which job claims it first. In a chart, the red goes to the one point, bar or "
-         "line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Marks the title names "
-         "together, such as the bars of one age band, share the red. Every other mark takes "
-         "the light fill on Newsprint and the context ink on Charcoal (Rule 05.7).",
-         # RF-17 (BC S5, CD R-S1): what counts as one mark, and the comparison case, each read on its own
-         "A line or a single bar is one mark, and a run of columns is a set of marks, so a title can name one column of a run and give it "
-         "the red, as on Rule 14.12’s plate. A chart that draws only one line, bar or path has no other mark to set it apart from, so the "
-         "mark takes Charcoal at the subject weight and the value the title names carries a label. When the title names a second mark only "
-         "to measure the first against, as “more than twice Zion’s” does on this rule’s plate, that mark is a comparison. It keeps the light "
-         "fill with its label, and the red stays on the finding.",
+        # round 3's review fix pass (CD R-S1): each paragraph keeps its principle in two or three sentences, and the specification
+        # rows carry the lists (the party tie, the named areas, the decision tree's branches, marks named together)
+        ["Rule 05.3 gives each view one working red. In a chart, the red goes to the point, bar or line the title names, inside Rule "
+         "05.5’s keyline and with its own label, and every other mark takes the light fill on Newsprint and the context ink on Charcoal "
+         "(Rule 05.7).",
+         # RF-17 (BC S5, CD R-S1): what counts as one mark, and the comparison case
+         "A line or a bar is one mark, and a run of columns is a set of marks, so a title can give one column of a run the red, as on "
+         "Rule 14.12’s plate. A mark the title names only to measure the finding against, as “more than twice Zion’s” does on this rule’s "
+         "plate, keeps the light fill with its label.",
          # round 3, the data lead's principles 1 and 2 (diagrams answer with their path, maps with their pattern)
-         "When a diagram or a map answers with its whole path or pattern, the title names no single mark. In a process, the path "
-         "the reader’s question follows takes Charcoal at the subject weight and the branches it leaves take the context ink, as on Rule "
-         "14.96’s diagram. Where the reader’s own case picks the path, as in a decision tree, every branch takes the same ink. On a map, a "
-         "place the title names as a point, such as a town, may take the red, as on Rule 14.118’s locator.",
-         "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step "
-         "the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber "
-         "whose majority readers know, an election result, money spent to elect a candidate and a policy readers link to one party all "
-         "carry that tie, "
-         "and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7).",
-         # RF-17's two findings, and RF-1 (D3-890, BC M1, CD A-M2): Rule 05.1's share, stated once here
-         "A title that states two findings, each on its own, such as the most and the least, sets both marks in Charcoal the same way, since "
-         "two reds would split the reader’s first look. Rule 05.1 keeps the red within 5 percent of the drawing at every width. An area’s "
-         "size follows its data, so a named area takes Charcoal at any size: a part of a treemap, pie, donut or funnel, a region on a map, a "
-         "node, a cell of a matrix, or a line or band whose width carries an amount, such as a flow. A named mark that would pass that share, such as "
-         "a tall column in a short run, takes Charcoal at the subject weight as well. Red never codes a series, a group, a step on a scale or "
-         "in a process, or a sign, such as a deficit or a loss."],
+         "When a diagram or a map answers with its whole path or pattern, its title names no single mark. In a process, the path the "
+         "reader’s question follows takes Charcoal at the subject weight, as on Rule 14.96’s diagram. A map gives the red only to a place "
+         "its title names as a point, such as the town on Rule 14.118’s locator.",
+         "The named mark gives up the red and takes Charcoal at the subject weight when an error or a step the reader can take holds the "
+         "red first (Rule 05.3), or when a reader would tie the mark to a party, since red there reads as a party’s color (Rules 01.1, "
+         "01.2 and 14.7).",
+         # RF-1 (D3-890, BC M1, CD A-M2): Rule 05.1's share, stated once here; RF-17's two findings live in their row and the why
+         "Rule 05.1 keeps the red within 5 percent of the drawing at every width, so a named area, "
+         "whose size follows its data, takes Charcoal at any size, and so does a named mark that would pass that share, such as a tall "
+         "column in a short run."],
         ["One red mark tells a reader where to look first, and the title tells them why. A second red mark splits their attention, and red "
          "that codes a group reads as a warning about that group."],
-        [("The point", "Pillar Red with a 1 px Charcoal keyline", "oa.chart.color.point.onNewsprint"),
+        [("The point", "Pillar Red with a 1 px Charcoal keyline (Rule 05.5)", "oa.chart.color.point.onNewsprint"),
          ("Its label", "Beside the mark, in the text ink"),
-         ("A chart of one mark", "One line, bar or path in Charcoal at the subject weight, the title’s value labeled",
+         ("Marks named together", "Share the red, as the bars of one age band do"),
+         ("A chart of one mark", "One line, bar or path, with no other mark to set it apart from, in Charcoal at the subject weight, the "
+                                 "title’s value labeled", "oa.chart.color.subject.onNewsprint"),
+         ("A diagram’s path", "The path the question follows in Charcoal at the subject weight and the branches it leaves in the context "
+                              "ink; where the reader’s own case picks the path, as in a decision tree, every branch in one ink; no red",
           "oa.chart.color.subject.onNewsprint"),
-         ("A diagram’s path", "The path the question follows in Charcoal at the subject weight, the branches it leaves in the context ink, "
-                              "no red", "oa.chart.color.subject.onNewsprint"),
          ("A comparison", "The light fill, with its label", "oa.chart.color.lightFill.onNewsprint"),
-         ("An error, a step, a sign or a party tie", "Charcoal at the subject weight, with the label", "oa.chart.color.subject.onNewsprint"),
+         ("An error, a step or a sign", "Charcoal at the subject weight, with the label", "oa.chart.color.subject.onNewsprint"),
+         ("A party tie", "A state, a Congress or chamber whose majority readers know, an election result, money spent to elect a "
+                         "candidate, or a policy readers link to one party: Charcoal at the subject weight, with the label",
+          "oa.chart.color.subject.onNewsprint"),
          ("Two findings", "Both in Charcoal at the subject weight, each with its label"),
-         ("A named area, or past 5 percent of the drawing", "Charcoal, with the label (Rule 05.1)", "oa.chart.color.subject.onNewsprint"),
+         ("A named area, or past 5 percent of the drawing", "Charcoal, with the label (Rule 05.1): a part of a treemap, pie, donut or "
+                                                            "funnel, a region on a map, a node (a box or dot where a diagram’s "
+                                                            "links meet), a cell of a matrix, or a line or band whose width carries "
+                                                            "an amount, such as a flow", "oa.chart.color.subject.onNewsprint"),
          # ruling (b) of round 2 (D3-677) and round 3's map case: one row for every place a total or national figure sits
          ("A total or national line", "Dashed in the text’s ink, with its own label", "oa.chart.color.label.onNewsprint"),
          ("A total or national figure elsewhere", "As a point, an open ring; in a list, the first row, set apart; on a map, beside it with "
@@ -1165,14 +1166,18 @@ def rule_14_9(B):
         "14.9", "Show the publisher’s uncertainty, and rank only where a gap passes the margin of error.",
         ["Rule 13.5 draws a survey figure’s margin of error as an interval. A chart that ranks survey figures, or singles one out as higher or "
          "lower than another, does so only where the gap between them passes the gap’s own margin of error at the publisher’s stated "
-         "confidence, and a note says so. Figures whose gaps sit inside it are drawn and described as alike: an open dot, a shared place, or "
+         "confidence, and a note says so. The gap’s margin comes from the two figures’ own margins, by the arithmetic the specifications "
+         "give. "
+         "Figures whose gaps sit inside it are drawn and described as alike: an open dot, a shared place, or "
          "the words “within the margin of error”.",
          # round 3, the data lead's ruling (c): a choropleth meets this rule by three tests
-         "A map that shades survey figures in classes ranks them too, since a place in a stronger class reads as higher. Make each class at "
-         "least as wide as the widest margin of error drawn, so no place could belong more than one class away from where it is drawn, and "
-         "check that any two places drawn two classes apart differ by more than their gap’s margin. The note counts the places whose "
-         "interval crosses a class line. Where some margins run wider than any useful class, as in small counties, the note says how many places could fall in another class, and the "
-         "words set no place above another unless its gap passes its margin, as on Rule 14.120’s map.",
+         "A map that shades survey figures in classes, ranges of values that share one shade, ranks them too, since a place in a stronger "
+         "class reads as higher. Make each class at least as wide as the widest margin of error drawn, the plus or minus figure, so no "
+         "place could belong more than one class away from where it is drawn, and check that any two places drawn two classes apart "
+         "differ by more than the margin of error of the gap between them. The note counts the places whose interval crosses a class "
+         "line. Where some margins run wider than any useful class, as in small counties, the note says how many places could fall in "
+         "another class, and the words set no place above another unless the gap between them passes its margin, as on Rule 14.120’s "
+         "map.",
          "A count of every case, such as votes cast or seats held, has no sampling margin and ranks as it stands."],
         ["A survey measures a sample, so each figure could sit anywhere in its interval. Two states three points apart, each with a margin "
          "near three points, may stand in either order across the whole population, and a ranking that puts one first tells a reader "
@@ -1185,8 +1190,8 @@ def rule_14_9(B):
                                                     "people or households; where the data hold no share, the first test, and the note "
                                                     "says it treats the two as independent"),
          ("Within the margin", "An open dot and the words “within the margin of error”"),
-         ("Classes on a map", "Each at least as wide as the widest margin drawn, and places two classes apart differing by more than "
-                              "their gap’s margin"),
+         ("Classes on a map", "Each at least as wide as the widest margin of error drawn, and places two classes apart differing by "
+                              "more than the margin of error of the gap between them"),
          ("A class map’s note", "How many places have an interval that crosses a class line"),
          ("Counts", "No sampling margin; they rank as they stand")],
         ["13.5", "13.1", "14.117", "14.120"],
@@ -1604,10 +1609,13 @@ GROUP_LINES = {
          "target or limit. Step trackers and status chips show how far a bill or a dispute has come."),
     # round 3: checked against entries 14.93 to 14.112 as built
     11: "Funnels, cohort charts and survival curves follow people through a process and show at which stage, or how soon, they leave it.",
-    12: "Process diagrams, decision trees and who-decides diagrams show who decides and how a decision moves.",
+    # the review fix pass (CD R-S2): the line names more of the group's eight forms
+    12: ("Process diagrams, decision trees and who-decides diagrams show who decides and how a decision moves. An org chart or a "
+         "hierarchy tree shows which part sits under which, and a roll-call grid gives every member’s vote."),
     13: "Networks, matrices and arc diagrams show who is connected to whom, with a width or a shade for each link’s amount or count.",
-    14: ("Sankeys, alluvial charts and flow maps show where money or people go, and the table gives every flow’s amount. A journey map "
-         "follows one person through a public service, step by step."),
+    # the review fix pass (AX-S8): the line says what a Sankey draws, since "Sankey" stopped the simulated reader
+    14: ("Sankeys, alluvial charts and flow maps show where money or people go, each flow drawn as a band or line as wide as its "
+         "amount, and the table gives every amount. A journey map follows one person through a public service, step by step."),
     15: ("A map appears when the place answers the question, and words in its key, labels and table say what every shade, size or "
          "mark stands for."),
     16: "A table lets a reader look a value up, and one sentence answers when a single figure is the whole story.",

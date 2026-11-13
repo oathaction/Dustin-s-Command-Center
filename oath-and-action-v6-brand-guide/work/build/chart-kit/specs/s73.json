@@ -64,7 +64,11 @@
      "label": "From",
      "agg": "first",
      "field": "jfc_name",
-     "format": "text"
+     "format": "text",
+     "words": {
+      "HARRIS VICTORY FUND": "Harris Victory Fund",
+      "TRUMP NATIONAL COMMITTEE JFC, INC.": "Trump National Committee JFC"
+     }
     },
     {
      "label": "To",
@@ -172,6 +176,7 @@
   "Ruling RL-3a (MB-R3-1): line 22 alone draws, for both committees (labels.lines, encode.line amount_lines); the two line 28C refunds sort after the drawn rows and print in the table as not drawn; line 21B's $27,141,702.01 to three drawn committees is named in note 3; the other committees node and the hairline sentence leave; names from recipient_name_2024_election; source variant transfers_and_refunds. Every drawn link is wider than a pixel, so the key's hairline line is left out.",
   "Figures checked by maker_b_round3_derive.py --figures (check S73): line 22 sums, Harris Victory Fund $899,402,049.70 to 53 committees ($528.7 million campaign, $189.3 million DNC, $181.4 million to 51 state party committees, DC among them); Trump National Committee JFC $273,762,296.73 to two ($246.8 million campaign, $26.9 million RNC), every row on line 22; line 28C $81,000 in two rows; line 21B $27.1 million to three drawn committees, $12.0 million to the campaign and $15.1 million to the DNC, none for the Trump committee; the other joint fundraising committees' transfers to the campaigns from the sidecar's note, $4,935,265.62 and $160,927,226.68.",
   "Sign-off fix MB-3: every node is a bar as tall as its dollars in the links' unit, its words beside it (each committee's words head its block), so no box's size reads as a measure it is not; title, widths, unit, key and notes unchanged.",
-  "Weight (D3-1097): the page's table groups by the derived node column, one row a node drawn and one a refund, with each committee's count; the CSV export lists all 57 rows with the node each is drawn in; the sidecar's printed line is the transfers_and_refunds variant."
+  "Weight (D3-1097): the page's table groups by the derived node column, one row a node drawn and one a refund, with each committee's count; the CSV export lists all 57 rows with the node each is drawn in; the sidecar's printed line is the transfers_and_refunds variant.",
+  "Review fix pass, ST-M1 and AX-M1: with the engineer’s K.group_cell fix the table’s From column prints each fund, through words that name it as the drawing and the title do (labels.sources); the refund rows print “28C, refund”."
  ]
 }

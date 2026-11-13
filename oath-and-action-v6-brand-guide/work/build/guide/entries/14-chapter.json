@@ -100,7 +100,7 @@
    "before_rule": "14.96",
    "title": "Structure: who decides, and how does it work?",
    "rules": "14.96 to 14.103",
-   "line": "Process diagrams, decision trees and who-decides diagrams show who decides and how a decision moves."
+   "line": "Process diagrams, decision trees and who-decides diagrams show who decides and how a decision moves. An org chart or a hierarchy tree shows which part sits under which, and a roll-call grid gives every member’s vote."
   },
   {
    "number": 13,
@@ -114,7 +114,7 @@
    "before_rule": "14.110",
    "title": "Flow: where does it go?",
    "rules": "14.110 to 14.113",
-   "line": "Sankeys, alluvial charts and flow maps show where money or people go, and the table gives every flow’s amount. A journey map follows one person through a public service, step by step."
+   "line": "Sankeys, alluvial charts and flow maps show where money or people go, each flow drawn as a band or line as wide as its amount, and the table gives every amount. A journey map follows one person through a public service, step by step."
   },
   {
    "number": 15,

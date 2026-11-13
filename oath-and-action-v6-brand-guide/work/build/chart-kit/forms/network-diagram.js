@@ -5,8 +5,9 @@
  * receiver's name and measure sit beside its bar (the data lead's MB-3: a node's size is its measure, never its words).
  * Sources sit side by side from labels.side_by_side px (default 680) and one under another below it, drawn alike on one
  * unit. Rows a spec folds (labels.nodes) join one node; the table lists each row or groups them. Inks (the data lead's
- * round 3 ruling (b)): every bar and link in the ink labels.ink names (the party-mark ink for money spent to elect a
- * candidate, Rule 14.6), the words in the text's ink.
+ * round 3 ruling (b), as its review fix pass corrects it for B-S1): every bar solid in the ink labels.ink names (the
+ * party-mark ink for money spent to elect a candidate, Rule 14.6), every link in the light fill with a 1 px edge in that
+ * ink (RF-2), as the Sankey draws its bands, so the links read apart from the bars they join; the words in the text's ink.
  * encode: source (text), target (text), value (number), target_key (id, matched by labels.nodes), kind (category,
  * optional, matched by labels.nodes), line (category, optional: with labels.lines, only rows of those values draw).
  * labels: nodes ([{source, keys: [target_key], kind: [kind], rest: true, name}], in drawing order: a row joins the first
@@ -87,7 +88,7 @@
         var ly = y0;
         // links first, then the bars over their ends, then the words beside the bars
         items.forEach(function (it) {
-          P.flow_band(c, x0 + bw, ly, rx, it.y, it.h, { fill: ink, edge: false, data: { key: it.nd.name, from: b.source, to: it.nd.name, value: it.nd.value } });
+          P.flow_band(c, x0 + bw, ly, rx, it.y, it.h, { fill: 'light-fill', edge: ink, edge_width: 1, data: { key: it.nd.name, from: b.source, to: it.nd.name, value: it.nd.value } });
           if (it.nd.rows.length > 1) it.nd.rows.forEach(function (r) { c.datum(rx, it.y + it.h / 2, { data: { key: r[ek], field: ev, value: r[ev] } }); });
           ly += it.h;
         });

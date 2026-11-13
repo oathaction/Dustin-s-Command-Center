@@ -5,6 +5,7 @@ Run, with the downloads in folders of their own:
 
     python3 -I work/build/scripts/phase-3/research_review_fix_round3.py st_s8 --dl <folder with roll285.xml, senate-618.xml>
     python3 -I work/build/scripts/phase-3/research_review_fix_round3.py st_s11 --dl <folder with meta-e6205a51.json, renewals.csv>
+    python3 -I work/build/scripts/phase-3/research_review_fix_round3.py st_s2 --dl <any folder; reads only frozen files>
 
 Add --write to write. Each item reads its downloads, checks them against the hashes the sidecars record, asserts every
 frozen field it does not mean to change, and sets values rather than appending, so a rerun writes nothing. It refuses
@@ -17,6 +18,8 @@ to write when a check fails.
 - st_s11 (ST-S11): S65's source line can name CMS's release. A variant on cms-medicaid-chip-renewal-funnel (S65's first
   dataset) and one on cms-medicaid-chip-renewal-outcomes, each the printed line with "October 2024 final release" after
   the title, from the metastore record and the file, both read today and equal to the frozen file's hash.
+- st_s2 (ST-S2, S76): fec-house-campaigns-2024-money-in-out nets transfers between a candidate's own committees
+  candidate by candidate (the data lead's ruling), so an out line appears; its sidecar gives the remainder by campaign.
 """
 import argparse
 import csv
@@ -176,7 +179,106 @@ def st_s11(dl, write):
     return files, 'variant with_release on both sidecars: "... Updated Renewal Outcomes, October 2024 final release, renewals due ..."'
 
 
-ITEMS = {'st_s8': st_s8, 'st_s11': st_s11}
+def st_s2(dl, write):
+    """ST-S2 (S76): fec-house-campaigns-2024-money-in-out nets transfers between a candidate's own committees candidate
+    by candidate, as S76's note says, instead of across all 1,926 candidates at once; and its sidecar says what the
+    file shows of the remainder, with no cause. Reads only the frozen by-candidate file; dl is not read."""
+    from decimal import Decimal
+    src = read_csv_raw(OUT / 'fec-house-campaigns-2024-by-candidate.csv')
+    head, body = src[0], src[1:]
+    cand = [dict(zip(head, r)) for r in body]
+    assert len(cand) == 1926
+    cents = lambda r, k: int((Decimal(r[k] or '0') * 100).to_integral_value())
+    tot = lambda k: sum(cents(r, k) for r in cand)
+    frm, to = tot('trans_from_auth'), tot('trans_to_auth')
+    net_in = sum(max(0, cents(r, 'trans_from_auth') - cents(r, 'trans_to_auth')) for r in cand)
+    net_out = sum(max(0, cents(r, 'trans_to_auth') - cents(r, 'trans_from_auth')) for r in cand)
+    n_in = sum(1 for r in cand if cents(r, 'trans_from_auth') > cents(r, 'trans_to_auth'))
+    n_out = sum(1 for r in cand if cents(r, 'trans_to_auth') > cents(r, 'trans_from_auth'))
+    named_in = ['ttl_indiv_contrib', 'other_pol_cmte_contrib', 'pol_pty_contrib', 'cand_contrib', 'cand_loans', 'other_loans']
+    named_out = ['indiv_refunds', 'cmte_refunds', 'cand_loan_repay', 'other_loan_repay']
+    want = {
+        'cash_start': tot('coh_bop'), 'individuals': tot('ttl_indiv_contrib'), 'other_committees': tot('other_pol_cmte_contrib'),
+        'party': tot('pol_pty_contrib'), 'candidate_contributions': tot('cand_contrib'), 'candidate_loans': tot('cand_loans'),
+        'other_loans': tot('other_loans'), 'transfers_in_net': net_in,
+        'other_receipts': tot('ttl_receipts') - sum(tot(k) for k in named_in) - frm,
+        'spending': tot('ttl_disb') - sum(tot(k) for k in named_out) - to,
+        'refunds_individuals': tot('indiv_refunds'), 'refunds_committees': tot('cmte_refunds'),
+        'candidate_loan_repayments': tot('cand_loan_repay'), 'other_loan_repayments': tot('other_loan_repay'),
+        'transfers_out_net': net_out, 'cash_end': tot('coh_cop')}
+    name = 'fec-house-campaigns-2024-money-in-out'
+    cp, mp = OUT / f'{name}.csv', OUT / f'{name}.meta.json'
+    rows, (m, end) = read_csv_raw(cp), read_meta(mp)
+    assert rows[0] == ['order', 'side', 'line_id', 'line', 'dollars']
+    words = {'transfers_in_net': 'Transfers from other committees of the same candidates, net of transfers out, candidate by candidate',
+             'transfers_out_net': 'Transfers to other committees of the same candidates, net of transfers in, candidate by candidate'}
+    old_words = {'transfers_in_net': 'Transfers from other committees of the same candidates, net of transfers out',
+                 'transfers_out_net': 'Transfers to other committees of the same candidates, net of transfers in'}
+    out = [rows[0]]
+    for r in rows[1:]:
+        r = list(r)
+        lid = r[2]
+        v = want[lid]
+        if lid in words:
+            assert r[3] in (old_words[lid], words[lid]), r
+            r[3] = words[lid]
+            r[4] = f'{v // 100}.{v % 100:02d}'
+        else:  # every other line is the frozen value, recomputed to the cent
+            assert int((Decimal(r[4]) * 100).to_integral_value()) == v, (lid, r[4], v)
+        out.append(r)
+    assert [r[2] for r in out[1:]] == list(want)
+    ins = sum(want[r[2]] for r in out[1:] if r[1] == 'in')
+    outs = sum(want[r[2]] for r in out[1:] if r[1] == 'out')
+    rem_c = {r['cand_id']: cents(r, 'coh_bop') + cents(r, 'ttl_receipts') - cents(r, 'ttl_disb') - cents(r, 'coh_cop') for r in cand}
+    nz = {k: v for k, v in rem_c.items() if v}
+    pos, neg = sum(v for v in nz.values() if v > 0), -sum(v for v in nz.values() if v < 0)
+    big_id, big = max(nz.items(), key=lambda kv: abs(kv[1]))
+    big_row = next(r for r in cand if r['cand_id'] == big_id)
+    rem = ins - outs
+    assert rem == sum(nz.values()) == 153315803, rem          # the remainder does not move
+    assert (net_in, net_out, n_in, n_out, len(nz)) == (17510377247, 1831324858, 436, 84, 297)
+    assert (big_id, big, big_row['coverage_end']) == ('H4IN05195', 150000000, '04/30/2024')
+    assert (ins, outs) == (262648161775, 262494845972)
+    took = ins - want['cash_start']
+    usd = lambda c: f'${c // 100:,}.{c % 100:02d}'
+    pct = lambda a, b, d: f'{100 * a / b:.{d}f}'
+    others = sum(v for k, v in nz.items() if k != big_id)
+    m['qualification'] = (
+        'No dollar received is traced to a dollar spent: the node is all House campaigns together. Loans and their '
+        'repayments are their own lines, so a loan is not read as a gift. Transfers between a candidate’s own committees '
+        f'are netted candidate by candidate: {n_in} candidates took in more from their other committees than they sent '
+        f'them ({usd(net_in)} net, on the in side) and {n_out} sent more than they took ({usd(net_out)} net, on the out '
+        f'side). Cash at the start plus receipts comes to {usd(ins)}; spending, refunds, repayments, transfers and cash '
+        f'at the end come to {usd(outs)}; the remainder, {usd(rem)}, is the figures of {len(nz)} of the 1,926 campaigns '
+        'that do not balance in the file (cash at the start plus receipts, less disbursements and cash at the end), '
+        f'{usd(big)} of it from one campaign. The file gives no cause.')
+    m['derivation'] = (
+        'Sums of the file’s columns over every House candidate; other receipts and spending are totals less the named '
+        'lines; transfers between a candidate’s own committees are netted candidate by candidate, each candidate’s net '
+        'transfers in summed on the in side and net transfers out on the out side.')
+    notes = [n for n in (m.get('notes') or []) if not n.startswith('In: ')]
+    notes.insert(0, f'In: {usd(ins)[1:]}; out: {usd(outs)[1:]}; remainder: {usd(rem)[1:]} ({pct(rem, ins, 3)} percent of '
+                    f'the in side). Receipts with cash at the start left out: {usd(took)[1:]}; individuals '
+                    f'{usd(want["individuals"])[1:]}, {pct(want["individuals"], took, 1)} percent of them.')
+    notes = set_note(notes, 'The remainder, by campaign', (
+        f'The remainder, by campaign (ST-S2, November 13, 2026): {len(nz)} of the 1,926 campaigns do not balance, '
+        f'{sum(1 for v in nz.values() if v > 0)} leaving more in than out ({usd(pos)}) and '
+        f'{sum(1 for v in nz.values() if v < 0)} less ({usd(neg)}). One campaign, {big_id}, whose last report in the '
+        f'file covers through April 30, 2024, leaves {usd(big)}, {pct(big, rem, 1)} percent of the net remainder; the '
+        f'other {len(nz) - 1} leave {usd(others)} net, from {usd(pos - big)} over and {usd(neg)} under. The chart names '
+        'no candidate.'))
+    notes = set_note(notes, 'Transfers netted candidate by candidate since', (
+        'Transfers netted candidate by candidate since November 13, 2026 (ST-S2): before, the file netted them across all '
+        f'1,926 campaigns at once ({usd(frm - to)} in, $0.00 out), which set one campaign’s transfers out against '
+        f'another’s transfers in. Money in and out each grow by {usd(net_out)}; the remainder does not move.'))
+    m['notes'] = notes
+    return [(cp, write_csv(out)), (mp, dump_meta(m, end))], (
+        f'net in {usd(net_in)} ({n_in} candidates), net out {usd(net_out)} ({n_out}); in {usd(ins)}, out {usd(outs)}, '
+        f'remainder {usd(rem)} ({pct(rem, ins, 3)} percent); individuals {pct(want["individuals"], took, 1)} percent of '
+        f'{usd(took)}; {len(nz)} campaigns unbalanced, {big_id} {usd(big)}')
+
+
+ITEMS = {'st_s8': st_s8, 'st_s11': st_s11, 'st_s2': st_s2}
 
 
 def main():

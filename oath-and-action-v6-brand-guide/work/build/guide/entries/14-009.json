@@ -2,8 +2,8 @@
  "id": "14.9",
  "title": "Show the publisher’s uncertainty, and rank only where a gap passes the margin of error.",
  "rule": [
-  "Rule 13.5 draws a survey figure’s margin of error as an interval. A chart that ranks survey figures, or singles one out as higher or lower than another, does so only where the gap between them passes the gap’s own margin of error at the publisher’s stated confidence, and a note says so. Figures whose gaps sit inside it are drawn and described as alike: an open dot, a shared place, or the words “within the margin of error”.",
-  "A map that shades survey figures in classes ranks them too, since a place in a stronger class reads as higher. Make each class at least as wide as the widest margin of error drawn, so no place could belong more than one class away from where it is drawn, and check that any two places drawn two classes apart differ by more than their gap’s margin. The note counts the places whose interval crosses a class line. Where some margins run wider than any useful class, as in small counties, the note says how many places could fall in another class, and the words set no place above another unless its gap passes its margin, as on Rule 14.120’s map.",
+  "Rule 13.5 draws a survey figure’s margin of error as an interval. A chart that ranks survey figures, or singles one out as higher or lower than another, does so only where the gap between them passes the gap’s own margin of error at the publisher’s stated confidence, and a note says so. The gap’s margin comes from the two figures’ own margins, by the arithmetic the specifications give. Figures whose gaps sit inside it are drawn and described as alike: an open dot, a shared place, or the words “within the margin of error”.",
+  "A map that shades survey figures in classes, ranges of values that share one shade, ranks them too, since a place in a stronger class reads as higher. Make each class at least as wide as the widest margin of error drawn, the plus or minus figure, so no place could belong more than one class away from where it is drawn, and check that any two places drawn two classes apart differ by more than the margin of error of the gap between them. The note counts the places whose interval crosses a class line. Where some margins run wider than any useful class, as in small counties, the note says how many places could fall in another class, and the words set no place above another unless the gap between them passes its margin, as on Rule 14.120’s map.",
   "A count of every case, such as votes cast or seats held, has no sampling margin and ranks as it stands."
  ],
  "use_when": null,
@@ -46,7 +46,7 @@
   },
   {
    "label": "Classes on a map",
-   "value": "Each at least as wide as the widest margin drawn, and places two classes apart differing by more than their gap’s margin"
+   "value": "Each at least as wide as the widest margin of error drawn, and places two classes apart differing by more than the margin of error of the gap between them"
   },
   {
    "label": "A class map’s note",

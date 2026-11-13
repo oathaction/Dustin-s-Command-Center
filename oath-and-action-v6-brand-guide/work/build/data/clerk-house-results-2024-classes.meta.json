@@ -61,6 +61,10 @@
    "type": "category",
    "description": "dot, unopposed on the ballot; ring, decided another way; empty otherwise"
   },
+  "close_seat": {
+   "type": "text",
+   "description": "the district as S82's table names a close race (\"7\", or \"at large\"), only where the margin as printed is under 5 points; empty otherwise"
+  },
   "col": {
    "type": "integer",
    "description": "tile layout column"
@@ -81,7 +85,7 @@
   "clerk-house-results-2024-by-district.csv",
   "census-gazetteer-2024-cd119-tile-layout.csv"
  ],
- "derivation": "Each race's printed margin, class (data lead's ruling (f), round 3) and mark, joined to its square in the tile layout by state and district (cartographer_round3_derive.py)",
+ "derivation": "Each race's printed margin, class (data lead's ruling (f), round 3), mark and, for a race under 5 points as printed, the district as the closest-races list names it (ST-M4, review fix pass), joined to its square in the tile layout by state and district (cartographer_round3_derive.py)",
  "notes": [
   "house classes (class, party): [(('1', 'Democratic'), 22), (('1', 'Republican'), 14), (('2', 'Democratic'), 24), (('2', 'Republican'), 9), (('3', 'Democratic'), 43), (('3', 'Republican'), 42), (('4', 'Democratic'), 117), (('4', 'Republican'), 142), (('unopposed', 'Democratic'), 9), (('unopposed', 'Republican'), 13)]"
  ]

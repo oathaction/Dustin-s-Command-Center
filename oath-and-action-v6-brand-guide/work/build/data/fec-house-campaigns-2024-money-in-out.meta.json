@@ -14,7 +14,7 @@
  "unit": "dollars, summed and stored to the cent",
  "date_retrieved": "2026-11-12",
  "vintage": "webl24.zip as posted November 11, 2026",
- "qualification": "No dollar received is traced to a dollar spent: the node is all House campaigns together. Loans and their repayments are their own lines, so a loan is not read as a gift. Transfers between a candidate’s own committees are netted out. Cash at the start plus receipts comes to $2,608,168,369.17; spending, refunds, repayments, transfers and cash at the end come to $2,606,635,211.14; the remainder, $1,533,158.03, is reports that do not balance in the file (cash figures from reports with different coverage dates).",
+ "qualification": "No dollar received is traced to a dollar spent: the node is all House campaigns together. Loans and their repayments are their own lines, so a loan is not read as a gift. Transfers between a candidate’s own committees are netted candidate by candidate: 436 candidates took in more from their other committees than they sent them ($175,103,772.47 net, on the in side) and 84 sent more than they took ($18,313,248.58 net, on the out side). Cash at the start plus receipts comes to $2,626,481,617.75; spending, refunds, repayments, transfers and cash at the end come to $2,624,948,459.72; the remainder, $1,533,158.03, is the figures of 297 of the 1,926 campaigns that do not balance in the file (cash at the start plus receipts, less disbursements and cash at the end), $1,500,000.00 of it from one campaign. The file gives no cause.",
  "columns": {
   "order": {
    "type": "integer",
@@ -45,11 +45,13 @@
  "derived_from": [
   "fec-house-campaigns-2024-by-candidate.csv"
  ],
- "derivation": "Sums of the file’s columns over every House candidate; other receipts and spending are totals less the named lines; transfers between a candidate’s committees are netted.",
+ "derivation": "Sums of the file’s columns over every House candidate; other receipts and spending are totals less the named lines; transfers between a candidate’s own committees are netted candidate by candidate, each candidate’s net transfers in summed on the in side and net transfers out on the out side.",
  "raw_files_sha256_prefix": {
   "webl24.zip": "fbdba514d5b3f59a"
  },
  "notes": [
-  "In: 2,608,168,369.17; out: 2,606,635,211.14; remainder: 1,533,158.03 (0.059 percent of the in side)."
+  "In: 2,626,481,617.75; out: 2,624,948,459.72; remainder: 1,533,158.03 (0.058 percent of the in side). Receipts with cash at the start left out: 2,271,178,361.46; individuals 1,384,115,131.69, 60.9 percent of them.",
+  "The remainder, by campaign (ST-S2, November 13, 2026): 297 of the 1,926 campaigns do not balance, 167 leaving more in than out ($2,799,022.51) and 130 less ($1,265,864.48). One campaign, H4IN05195, whose last report in the file covers through April 30, 2024, leaves $1,500,000.00, 97.8 percent of the net remainder; the other 296 leave $33,158.03 net, from $1,299,022.51 over and $1,265,864.48 under. The chart names no candidate.",
+  "Transfers netted candidate by candidate since November 13, 2026 (ST-S2): before, the file netted them across all 1,926 campaigns at once ($156,790,523.89 in, $0.00 out), which set one campaign’s transfers out against another’s transfers in. Money in and out each grow by $18,313,248.58; the remainder does not move."
  ]
 }

@@ -25,7 +25,7 @@
   "Each district is one square, placed so states keep their places and districts their order within each state, with Alaska and Hawaii apart at the lower left.",
   "The margin is the winner’s votes less the runner-up’s, as a share of all votes for the office, the same rule in every kind of race. A seat with one candidate on the ballot has no margin.",
   "A ring marks 14 races decided another way: six between two candidates of one party (California’s 12th, 16th, 20th and 34th, and Washington’s 4th and 9th), Alaska’s first round of ranked-choice counting, Maine’s 2nd district’s final round, and Louisiana’s six November open primaries.",
-  "The map leaves out the District of Columbia’s delegate, who has no vote on the House floor."
+  "The map leaves out the six members who have no vote on the House floor: the delegates of the District of Columbia, American Samoa, Guam, the Northern Mariana Islands and the U.S. Virgin Islands, and Puerto Rico’s Resident Commissioner."
  ],
  "source_line": "Source: Office of the Clerk, U.S. House of Representatives, Statistics of the Presidential and Congressional Election of November 5, 2024, 435 House districts; U.S. Census Bureau, 2024 Gazetteer Files, congressional districts of the 119th Congress. Retrieved November 12, 2026. Margins computed by Oath & Action from the official counts; tile layout by Oath & Action from the Bureau’s district centers.",
  "credit": "Chart: Oath & Action",
@@ -97,10 +97,13 @@
      "value": "Republican"
     },
     {
-     "label": "Under 5 points",
-     "agg": "count_in",
-     "field": "margin_pct",
-     "to": 4.95
+     "label": "Closest races, under 5 points",
+     "agg": "list",
+     "field": "close_seat",
+     "with": [
+      "winner_group",
+      "margin_printed"
+     ]
     }
    ]
   }
@@ -146,13 +149,15 @@
    "dot": "Unopposed on the ballot, no margin: {seats}.",
    "ring": "Another kind of contest: {seats}."
   },
-  "codes_note": "Codes not shown on the map, where a state’s squares leave no room: {codes}. The table names every seat."
+  "codes_note": "Codes not shown on the map, where a state’s squares leave no room: {codes}. The table gives each state’s seats and names its closest races.",
+  "at_large": "{state} at large"
  },
  "notes_internal": [
   "Ruling (b) and (f): party by position, two panels, Democrats first, each named with its seats ({n} counted from the data); margin in four sequential Verdigris steps 2 to 5, every won seat with the context edge (the data lead's C-1, correcting ruling (b): gray step 1 read as the other party's ghost); unopposed seats step 4 with a dot; seats decided another way their step with a ring; no hue carries party (DR-48, DR-58, DR-64).",
   "Ruling (f): a seat's class follows its margin as printed to one decimal; by script 36, 33, 85 and 259 seats, and 22 unopposed (check S82 in cartographer_round3_derive.py --figures).",
-  "DR-249 and D3-1097: the table groups the 435 seats by state (seats, each party's wins, races under 5 points by the printed margin; unopposed seats in the map's dots and the CSV, to keep the plate inside D3-1097's 13,852 bytes); the CSV export lists every seat with its winner, margin and kind. count_in to 4.95 counts margins that print under 5.0.",
-  "Data: clerk-house-results-2024-classes, derived by cartographer_round3_derive.py from the Clerk's results and our tile layout (census-gazetteer-2024-cd119-tile-layout, from the Gazetteer's district centers; data plan row 111: no published layout was traced). S80 reads the same file, so both maps take one set of classes."
+  "DR-249, D3-1097 and ST-M4 (review fix pass): the table groups the 435 seats by state (seats, each party's wins, and the closest races named, each the district with its winner's party and printed margin, from the derived close_seat column, which is set only where the printed margin is under 5 points, so the list names the 36 seats the title counts; unopposed seats in the map's dots and the CSV); the CSV export lists every seat with its winner, margin and kind.",
+  "Data: clerk-house-results-2024-classes, derived by cartographer_round3_derive.py from the Clerk's results and our tile layout (census-gazetteer-2024-cd119-tile-layout, from the Gazetteer's district centers; data plan row 111: no published layout was traced). S80 reads the same file, so both maps take one set of classes.",
+  "ST-S4 (review fix pass): note 4 names the six non-voting members, the six district-98 features of census-cb-2024-cd119 (geoids 1198, 6098, 6698, 6998, 7298, 7898; check S82 in cartographer_round3_derive.py --figures). C-S6: the phone's lists print Alaska's at-large seat as \"Alaska at large\" (labels.at_large), so two-letter codes stand for states only."
  ],
  "formats": {
   "margin": "number:1"

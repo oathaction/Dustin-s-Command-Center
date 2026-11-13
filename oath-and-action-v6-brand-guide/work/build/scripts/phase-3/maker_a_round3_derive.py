@@ -8,7 +8,7 @@ Writes one derived table with its sidecar in work/build/data/:
   reform profiles that list each route), joined by route code to what the official texts require of each route
   (usgov-route-requirements: who decides, what it takes, how it can be undone, the texts and one address), with the
   date each route's texts were read, from the workflow sources file (FS, SS, BI and LOC on November 11, 2026; the
-  other seven on November 12, 2026, as its sections say). Rows keep the atlas's order. No value is changed.
+  other seven on November 12, 2026, as its sections say). Rows keep the atlas's order. No value is changed but the two cells REWORD names (round 3 fix pass), which take plain words for a reader.
 
 --check writes nothing and fails when a written file differs from what the script computes now. --figures writes
 nothing and checks every figure in the titles, notes, alts and labels of specs S66 to S72 against the data files,
@@ -79,7 +79,7 @@ def route_dates():
     return out
 
 
-# Round 3 fix pass (A-M1, ST-SS10): two cells of usgov-route-requirements print in a reader's grid, and their words
+# Round 3 fix pass (A-M1, ST-S10): two cells of usgov-route-requirements print in a reader's grid, and their words
 # carry a studio word ("round 0") and an undefined term ("cloture"). The grid takes plain words for them; the meaning
 # is unchanged. A cell that already reads the new words passes; one that reads neither is a fault.
 REWORD = [
@@ -168,7 +168,11 @@ def grid():
         'states': mu.get('states', []),
         'derived_from': ['v7-routes.json', 'usgov-route-requirements.csv'],
         'derivation': ('Each of V7’s eleven routes, in V7’s order, joined by route code to the row of usgov-route-requirements '
-                       'with the same code, every value copied as stored; date_read and date_read_words give the dates the '
+                       'with the same code, every value copied as stored' + (
+                           ' except ' + ' and '.join('%s’s %s' % (rt, cl) for rt, cl in changed) + ', which take plain '
+                           'words for a reader (a studio word and the term “cloture” out; the meaning unchanged; the old and '
+                           'new words are in the script’s REWORD table)' if changed else '') +
+                       '; date_read and date_read_words give the dates the '
                        'workflow sources file records for the route’s texts (the dates in its section’s rows). Script: '
                        'work/build/scripts/phase-3/maker_a_round3_derive.py.'),
     }

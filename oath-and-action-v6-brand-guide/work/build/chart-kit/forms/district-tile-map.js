@@ -10,13 +10,15 @@
  * (integer: the seat's square in the tile layout).
  * labels: panels ([{value, label}] in order; {n} gives the party's seats), step_labels (four words), key_title,
  * mark_labels ({dot, ring}), ghost_label, small ({dot, ring}: the note's words where marks drop; {seats} fills),
- * codes_note (words under the map naming states whose code found no room in either panel; {codes} fills). */
+ * codes_note (words under the map naming states whose code found no room in either panel; {codes} fills), at_large
+ * (words for an at-large seat in the note's lists, {state} the state's name: "Alaska at large", so a two-letter code
+ * stands for a state only; C-S6, round 3 fix pass). */
 (function (K) {
   'use strict';
   K.register_chart({
     form: 'district-tile-map', name: 'District Tile Map', family: 'maps',
     encode: { state: 'code', district: 'text', party: 'category', cls: 'integer', mark: 'category?', col: 'integer', row: 'integer' },
-    labels: ['panels', 'step_labels', 'key_title', 'mark_labels', 'ghost_label', 'small', 'codes_note'],
+    labels: ['panels', 'step_labels', 'key_title', 'mark_labels', 'ghost_label', 'small', 'codes_note', 'at_large'],
     phone: 'differs',
     draw: function (c) {
       var L = c.labels, W = c.width, es = c.field('state'), ed = c.field('district'), ep = c.field('party');
@@ -121,7 +123,11 @@
       if (!big && L.small) {
         ['dot', 'ring'].forEach(function (mk) {
           if (!L.small[mk]) return;
-          var list = seats.filter(function (s) { return s.mk === mk; }).map(function (s) { return s.r[es] + ' ' + s.r[ed]; });
+          var seat = function (s) {
+            var tl = globalThis.OAChartGeo && globalThis.OAChartGeo.tiles[s.r[es]];
+            return String(s.r[ed]) === '00' && L.at_large && tl ? String(L.at_large).replace('{state}', tl[3]) : s.r[es] + ' ' + s.r[ed];
+          };
+          var list = seats.filter(function (s) { return s.mk === mk; }).map(seat);
           if (!list.length) return;
           var nt = c.text(0, y + 16, String(L.small[mk]).replace('{seats}', list.join(', ')), { role: 'note', fill: 'secondary', max: W });
           y = nt.bottom + 4;

@@ -85,5 +85,5 @@
   "v7-routes.json",
   "usgov-route-requirements.csv"
  ],
- "derivation": "Each of V7’s eleven routes, in V7’s order, joined by route code to the row of usgov-route-requirements with the same code, every value copied as stored; date_read and date_read_words give the dates the workflow sources file records for the route’s texts (the dates in its section’s rows). Script: work/build/scripts/phase-3/maker_a_round3_derive.py."
+ "derivation": "Each of V7’s eleven routes, in V7’s order, joined by route code to the row of usgov-route-requirements with the same code, every value copied as stored except SS’s sources and FR’s what_it_takes, which take plain words for a reader (a studio word and the term “cloture” out; the meaning unchanged; the old and new words are in the script’s REWORD table); date_read and date_read_words give the dates the workflow sources file records for the route’s texts (the dates in its section’s rows). Script: work/build/scripts/phase-3/maker_a_round3_derive.py."
 }
