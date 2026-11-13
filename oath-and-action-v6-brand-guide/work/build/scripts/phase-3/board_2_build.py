@@ -91,6 +91,7 @@ IMAGES = {}
 STATUS = {}
 CACHE = {}
 ANCHORS = set()
+V9_IDS = None             # the ids on the published preview's page, when the content file names it
 LINKS = []                # every link to the guide preview, one entry a link
 FAILS = []                # B2-M6: what fails the build outright, whatever --strict says
 MEAS = {}                 # spec -> {window: the guide's measure of its figure}
@@ -182,6 +183,8 @@ def rule_href(rid):
     a = rid_anchor(rid)
     if ANCHORS and a not in ANCHORS:
         warn(f'Rule {rid}: #{a} is not on today’s strict build')
+    if V9_IDS is not None and a not in V9_IDS:
+        fail(f'Rule {rid}: #{a} is not on the published preview’s page')
     LINKED.add(a)
     LINKS.append(a)
     return f'{C["slots"]["preview_url"]}#{a}'
@@ -678,8 +681,9 @@ def item_specs(it):
     """Every chart an item covers: its specs, else its spec, else the chart ids its own id names (S54-S55)."""
     if it.get('specs'):
         return [str(x).upper() for x in it['specs']]
+    ids = [x.upper() for x in re.findall(r'\bS\d\d\b', str(it.get('id', '')).replace('-', ' '))]
     s = item_spec(it)
-    return [s] if s else [x.upper() for x in re.findall(r'\bS\d\d\b', str(it.get('id', '')).replace('-', ' '))]
+    return list(dict.fromkeys(([s] if s else []) + ids)) if len(ids) > 1 or not s else [s]
 
 
 def pic_request(it, pic, n):
@@ -717,6 +721,9 @@ def picture_alt(it, pic, label, req):
     where the picture comes from and at what window, and the chart's title."""
     if pic.get('alt'):
         return pic['alt']
+    by_file = C['sections']['decide'].get('picture_alts', {})
+    if pic.get('path') in by_file:
+        return by_file[pic['path']]
     spec = (pic.get('spec') or item_spec(it) or '').upper()
     w = int(pic.get('width') or DESK)
     src = C['sections']['decide']['alt_source'].get(pic.get('kind'), '')
@@ -1068,16 +1075,18 @@ def plate_weight(G, sid, chk=None):
     ents = (PLATES or {}).get('entries') or []
     e = next((x for x in ents if str(x.get('spec', '')).upper() == sid), {})
     frame_b = on_page = None
+    added = 0
     if e:
         if placed is not None and e.get('bytes_as_placed') is not None and int(e['bytes_as_placed']) != int(placed):
             warn(f'{sid}: the engineer measured {e["bytes_as_placed"]:,} bytes as placed and this build’s report gives {placed:,}')
         frame_b = int(e.get('frame_bytes', 0)) + int(e.get('added_on_page', 0))
+        added = int(e.get('added_on_page', 0))
         if placed is None:
             placed = e.get('bytes_as_placed')
         on_page = placed + frame_b if placed is not None else None
     ce = e.get('ceiling') or {}
     ceiling = ce.get('bytes') if ce.get('measure') == 'total' else None
-    return {'placed': placed, 'frame': frame_b, 'on_page': on_page, 'ceiling': ceiling, 'within': e.get('within_ceiling')}
+    return {'placed': placed, 'frame': frame_b, 'added': added, 'on_page': on_page, 'ceiling': ceiling, 'within': e.get('within_ceiling')}
 
 
 def form_article(G, f, held, S, kit_out, pages, b1cmp, rendered, sk_shots):
@@ -1178,7 +1187,8 @@ def form_article(G, f, held, S, kit_out, pages, b1cmp, rendered, sk_shots):
         W_ = plate_weight(G, sid, chk)
         wf = W_['on_page']
         if wf is not None:
-            bytes_line = fill(S['bytes_line'], {'on_page': f'{wf:,}', 'placed': f'{W_["placed"]:,}', 'frame': f'{W_["frame"]:,}'})
+            bytes_line = fill(S['bytes_line_added'] if W_['added'] else S['bytes_line'],
+                              {'on_page': f'{wf:,}', 'placed': f'{W_["placed"]:,}', 'frame': f'{W_["frame"] - W_["added"]:,}', 'added': f'{W_["added"]:,}'})
         else:
             bytes_line = fill(S['bytes_wait'], {'placed': f'{W_["placed"]:,}' if W_['placed'] is not None else '?'})
         if W_['ceiling']:
@@ -1437,12 +1447,14 @@ def spend_panel(G, rn, kit_out):
     plates.sort(key=lambda x: -x[0])
     top = plates[:int(S.get('heaviest_n', 10))]
     nb = lambda v: '' if v is None else f'{v:,}'
+    added_top = [sid for b, sid, rule, form, W_ in top if W_.get('added')]
     hrows = ''.join(f'<tr><th scope="row">{esc(sid)}</th><td><a href="#form-{rule.replace(".", "-")}">{esc(rule)}</a></td><td>{esc(form)}</td>'
                     f'<td class="num">{nb(W_["placed"])}</td><td class="num">{nb(W_["frame"])}</td><td class="num">{nb(W_["on_page"])}</td></tr>'
                     for b, sid, rule, form, W_ in top)
     body += (f'<h3 class="sub">{esc(fill(S["heavy_h"], {"n": len(top)}))}</h3><div class="tw" role="region" tabindex="0" aria-label="{esc(S["heavy_caption"])}; scrolls sideways">'
              f'<table class="wt ht"><caption>{esc(S["heavy_caption"])}</caption><thead><tr>' + ''.join(f'<th scope="col"{" class=\"n\"" if i >= 3 else ""}>{esc(c)}</th>' for i, c in enumerate(S['heavy_cols']))
-             + f'</tr></thead><tbody>{hrows}</tbody></table></div><p class="small">{esc(S["heavy_note"])}</p>')
+             + f'</tr></thead><tbody>{hrows}</tbody></table></div><p class="small">{esc(S["heavy_note"])}'
+             + (f' {esc(fill(S["heavy_added"], {"specs": join_words(added_top)}))}' if added_top else '') + '</p>')
     FIG['spend'] = {'rows': rows, 'per_plate': pp.get('per_plate'), 'plates_to_come': pp.get('plates_to_come'), 'by_family': fam, 'heaviest': top}
     return section('spend', body, 'ready' if G['ok'] else ('partial', 'build'))
 
@@ -1571,13 +1583,21 @@ def scores_panel():
                f'<div class="tw" role="region" tabindex="0" aria-label="{esc(S["rt_h"])}; scrolls sideways"><table class="rt"><caption>{esc(S["rt_h"])}</caption><thead><tr>{hd}</tr></thead><tbody>{"".join(trs)}</tbody></table></div>')
     # the board's own score, when it lands
     bp = ROOT / C['slots']['board_scores']
+    brp = ROOT / C['slots'].get('board_rescores', '-')
     out.append(f'<h3 class="sub">{esc(S["board_h"])}</h3>')
     if bp.exists():
         try:
             B = json.loads(bp.read_text())
-            tbl, fr, nr, n = cd_table(B, None, S['board_caption'])
+            BR = json.loads(brp.read_text()) if brp.is_file() else None
+            tbl, fr, nr, n = cd_table(B, BR, S['board_caption'])
+            if n == 1:
+                rw_ = lambda k: S['ready_word'] if k else S['not_ready_word']
+                bl = fill(S['board_line_one'] if BR else S['board_line_one_first'], {'first': rw_(fr), 'now': rw_(nr)})
+            else:
+                bl = fill(S['board_line'] if BR else S['board_line_first'], {'first': nw(fr, 'none'), 'now': nw(nr, 'none'), 'n': nw(n)})
+            out.append(f'<p>{esc(bl)}</p>')
             out.append(tbl)
-            FIG['board_score'] = {'file': rel(bp), 'ready': nr, 'items': n}
+            FIG['board_score'] = {'file': rel(bp), 'rescore': rel(brp) if BR else None, 'ready': nr, 'items': n}
         except (json.JSONDecodeError, KeyError, TypeError) as e:
             warn(f'{rel(bp)} could not be read: {e}')
             out.append(pending(S['board_wait']))
@@ -1629,6 +1649,11 @@ def tested_panel(G, kit_out, all_specs):
                 wn = sum(len(json.loads(f.read_text()).get('warnings') or []) for f in fs)
                 w = fill(it['words'], {'pass': f'{ok_n:,}', 'n': f'{len(fs):,}', 'warnings': nw(wn)})
                 FIG['kit_checks'] = {'check_files': len(fs), 'pass': ok_n, 'warnings': wn}
+        elif kind == 'preview_links':
+            if V9_IDS is not None:
+                hit = sum(1 for a in LINKS if a in V9_IDS)
+                w = fill(it['words'], {'links': f'{len(LINKS):,}', 'anchors': f'{len(set(LINKS)):,}', 'found': f'{hit:,}'})
+                FIG['preview_links'] = {'page': C['slots'].get('preview_page'), 'links': len(LINKS), 'anchors': len(set(LINKS)), 'found': hit}
         elif kind == 'board_check':
             p = BOARD_DIR / f'{DATE}_Board-2-Check-Results.json'
             if p.exists():
@@ -1646,17 +1671,18 @@ def tested_panel(G, kit_out, all_specs):
                     parts.append(re.sub(r'\{(\d)\}', lambda m: g[int(m.group(1)) - 1], s['words']))
             w = '; '.join(parts) if parts and len(parts) == len(it.get('sources', [])) else None
         if w is None:
-            missing.append(it['label'])
+            missing.append(it.get('owner', 'notes'))
             w = S['wait_words']
         rows.append(f'<li><b>{esc(it["label"])}:</b> {esc(w if w.endswith(".") else w + ".")}</li>')
         FIG.setdefault('tested', {})[it['label']] = w
     FILL['n_links'] = f'{len(LINKS):,}'
     FILL['n_anchors'] = f'{len(set(LINKS)):,}'
-    nots = ''.join(f'<li>{esc(fill(x))}</li>' for x in S['not_tested'])
+    nl = S['not_tested'] if V9_IDS is None else [x for x in S['not_tested'] if '{n_links}' not in x] + S.get('not_tested_published', [])
+    nots = ''.join(f'<li>{esc(fill(x))}</li>' for x in nl)
     body = (f'<p class="intro">{esc(S["lede"])}</p><div class="tcols">'
             f'<div class="tcol"><h3 class="tcol-h">{esc(S["tested_h"])}</h3><ul>{"".join(rows)}</ul></div>'
             f'<div class="tcol"><h3 class="tcol-h">{esc(S["not_h"])}</h3><ul>{nots}</ul></div></div>')
-    return section('tested', body, 'ready' if not missing else ('partial', 'notes'))
+    return section('tested', body, 'ready' if not missing else ('partial', missing[0]))
 
 
 def next_panel():
@@ -2048,6 +2074,11 @@ def main():
     P, rn = plan()
     ch, held = chapter14()
     D = decisions()
+    global V9_IDS
+    vp = ROOT / C['slots'].get('preview_page', '-')
+    if vp.is_file():
+        V9_IDS = set(re.findall(r'\sid="([^"]+)"', vp.read_text()))
+        FIG['preview_page'] = {'file': rel(vp), 'ids': len(V9_IDS)}
     specs = sorted({f['spec_id'] for f in rn if f.get('spec_id')}, key=lambda s: int(s[1:]))
     global CHARCOAL, PLATES
     m = re.search(r'--oa-color-palette-charcoal:\s*#([0-9A-Fa-f]{6})', (ROOT / C['slots']['tokens_css']).read_text())

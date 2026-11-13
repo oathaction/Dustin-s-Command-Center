@@ -60,7 +60,8 @@
   "cd_board": "the creative director’s score of this board",
   "red": "the reviewers’ second passes",
   "notes": "the owners’ notes",
-  "engineer": "the engineer’s plate measures"
+  "engineer": "the engineer’s plate measures",
+  "quick": "the quick guide check’s results file"
  },
  "sections": {
   "decide": {
@@ -125,7 +126,11 @@
     "file": "from the studio’s files"
    },
    "alt_chart": "{form} ({spec}), {src}, at a {w} px window. Its title: {title}",
-   "alt_other": "A picture for “{title}”, {src}, at a {w} px window."
+   "alt_other": "A picture for “{title}”, {src}, at a {w} px window.",
+   "picture_alts": {
+    "work/handoffs/phase-3/board-2-pictures/20261113_S-14-124-Sketch-Gray-Before-Plate-1440-Newsprint.png": "Sketch 14.124’s misleading half in gray, as it stood before your answer: seven small places for Party A and five large blocks for Party B under the do-not-publish bar, beside the two panels by party, with Illustrative data.",
+    "work/handoffs/phase-3/board-2-pictures/20261113_S-14-124-Sketch-After-Plate-1440-Newsprint.png": "Sketch 14.124 as the guide now draws it: the misleading half shades Party A’s seven small places red and Party B’s five large blocks blue, each color named in its key, under the do-not-publish bar, beside the two panels by party."
+   }
   },
   "forms": {
    "n": 2,
@@ -170,7 +175,8 @@
    "ceiling_line": "A round 3 chart may take {ceiling}.",
    "ceiling_over": "A round 3 chart may take {ceiling}; this one is over.",
    "measure_line": "Every weight on this board is one measure: the bytes the guide build reports for the chart as placed, plus the frame round its plate, measured on the page by the engineer.",
-   "measure_wait": "Every weight on this board will be one measure: the bytes the guide build reports for the chart as placed, plus the frame round its plate, which the engineer measures on the page. Until that file lands, the weights give the chart as placed."
+   "measure_wait": "Every weight on this board will be one measure: the bytes the guide build reports for the chart as placed, plus the frame round its plate, which the engineer measures on the page. Until that file lands, the weights give the chart as placed.",
+   "bytes_line_added": "{on_page} bytes on the page: {placed} for the chart as the build places it, {added} the page adds inside it round its atlas IDs, and {frame} for the frame round it."
   },
   "rules": {
    "n": 3,
@@ -277,7 +283,8 @@
     "Frame",
     "On the page"
    ],
-   "heavy_note": "“As placed” is the guide build’s own figure; “Frame” is the frame round the plate, measured on the page by the engineer; “On the page” is the two together, the one measure the board uses."
+   "heavy_note": "“As placed” is the guide build’s own figure; “Frame” is the frame round the plate, measured on the page by the engineer; “On the page” is the two together, the one measure the board uses.",
+   "heavy_added": "For {specs}, “Frame” also counts the bytes the page adds inside the chart round its atlas IDs."
   },
   "scores": {
    "n": 6,
@@ -304,7 +311,13 @@
    "rt_wait2": "Waiting",
    "board_h": "This board",
    "board_caption": "The creative director’s scores for this board",
-   "board_wait": "Waiting for the creative director’s score of this board."
+   "board_wait": "Waiting for the creative director’s score of this board.",
+   "board_line": "The creative director’s first score found {first} of the {n} items ready; the score after the fix round finds {now}.",
+   "board_line_first": "The creative director’s first score finds {now} of the {n} items ready; the score after the fix round follows it.",
+   "board_line_one": "The creative director’s first score found the board {first}, and the score after the fix round finds it {now}.",
+   "board_line_one_first": "The creative director’s first score finds the board {now}; the score after the fix round follows it.",
+   "ready_word": "ready",
+   "not_ready_word": "not yet ready"
   },
   "tested": {
    "n": 7,
@@ -327,7 +340,14 @@
      "kind": "guide_check",
      "scratch_file": "phase-3/board-2/main/v9/quick/guide-Guide-Check-Results.json",
      "words": "run by the main session on a copy of its strict build of {page_bytes} bytes at {widths} px, with {specimens} drawn examples, {links} same-page links and {failures} failures",
-     "words_other": "run by the main session on a copy of the committed build of {page_bytes} bytes, before your answers landed, at {widths} px, with {specimens} drawn examples, {links} same-page links and {failures} failures; this board’s strict build after them is {build_bytes} bytes, and the main session’s check of the final build replaces this line when it runs"
+     "words_other": "run by the main session on a copy of the committed build of {page_bytes} bytes, before your answers landed, at {widths} px, with {specimens} drawn examples, {links} same-page links and {failures} failures; this board’s strict build after them is {build_bytes} bytes, and the main session’s check of the final build replaces this line when it runs",
+     "owner": "quick"
+    },
+    {
+     "label": "Links to the guide preview",
+     "kind": "preview_links",
+     "owner": "render",
+     "words": "{links} links to {anchors} entries, each anchor read by this board’s build on the page published as version 9, {found} of {links} found"
     },
     {
      "label": "The kit’s build of every chart",
@@ -373,7 +393,8 @@
     {
      "label": "This board’s own check",
      "kind": "board_check",
-     "words": "on its last run at {widths} px, with {failures} failures once the page’s language is left aside, since the host’s wrapper sets it"
+     "words": "on its last run at {widths} px, with {failures} failures once the page’s language is left aside, since the host’s wrapper sets it",
+     "owner": "render"
     }
    ],
    "not_tested": [
@@ -383,6 +404,9 @@
     "The board in Safari or Firefox, on a 2x screen, printed, or as the host shows it once published; a copy wrapped as the host wraps it stands in.",
     "Every picture by eye: the build checks each one’s size and source, and the builder looked at a sample.",
     "A keyboard walk past the check’s first stops, and a screen reader."
+   ],
+   "not_tested_published": [
+    "The links clicked in the published preview: each anchor is read on its page’s file, not followed in the host."
    ]
   },
   "next": {
@@ -470,6 +494,8 @@
     "file": "work/handoffs/phase-3/20261113_Round-3-Red-Team-Access-Production.md"
    }
   ],
-  "plate_bytes": "work/handoffs/phase-3/board-2-pictures/20261113_Plate-Bytes.json"
+  "plate_bytes": "work/handoffs/phase-3/board-2-pictures/20261113_Plate-Bytes.json",
+  "board_rescores": "work/handoffs/phase-3/20261113_Board-2-CD-Rescores.json",
+  "preview_page": "work/boards/phase-3/round-3/20261113_Guide-Preview-V9.html"
  }
 }

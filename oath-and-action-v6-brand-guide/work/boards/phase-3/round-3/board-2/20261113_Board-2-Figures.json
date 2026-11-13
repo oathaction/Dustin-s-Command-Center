@@ -1,12 +1,12 @@
 {
- "built": "2026-11-13T18:51:50.985251+00:00",
+ "built": "2026-11-13T19:17:26.093160+00:00",
  "guide_build": {
   "exit": 0,
   "bytes": 11236260,
   "rules": 344,
   "specimens": 638,
   "warnings": 0,
-  "built": "2026-11-13T18:52:00"
+  "built": "2026-11-13T19:17:36"
  },
  "decisions": {
   "file": "work/handoffs/phase-3/20261113_Board-2-Decisions.json",
@@ -28,10 +28,7 @@
   "measured_utc": "2026-11-13T18:50:35Z"
  },
  "shots": {
-  "taken": [
-   "m-S06-1440",
-   "m-S06-390"
-  ],
+  "taken": [],
   "reused": [
    "ch14-opener",
    "dec-oac-s-14-s05-1440",
@@ -51,6 +48,8 @@
    "m-S04-390",
    "m-S05-1440",
    "m-S05-390",
+   "m-S06-1440",
+   "m-S06-390",
    "m-S07-1440",
    "m-S07-390",
    "m-S08-1440",
@@ -604,12 +603,10 @@
   }
  },
  "kit_builds": {
-  "rebuilt": [
-   "S06",
-   "S42"
-  ],
+  "rebuilt": [],
   "reused": [
    "S05",
+   "S06",
    "S08",
    "S09",
    "S11",
@@ -649,6 +646,7 @@
    "S39",
    "S40",
    "S41",
+   "S42",
    "S43",
    "S44",
    "S45",
@@ -938,6 +936,7 @@
    "weight": {
     "placed": 8557,
     "frame": 741,
+    "added": 0,
     "on_page": 9298,
     "ceiling": null,
     "within": true
@@ -970,6 +969,7 @@
    "weight": {
     "placed": 4259,
     "frame": 730,
+    "added": 0,
     "on_page": 4989,
     "ceiling": null,
     "within": true
@@ -1002,6 +1002,7 @@
    "weight": {
     "placed": 4221,
     "frame": 755,
+    "added": 0,
     "on_page": 4976,
     "ceiling": null,
     "within": true
@@ -1034,6 +1035,7 @@
    "weight": {
     "placed": 10541,
     "frame": 749,
+    "added": 0,
     "on_page": 11290,
     "ceiling": null,
     "within": true
@@ -1066,6 +1068,7 @@
    "weight": {
     "placed": 4713,
     "frame": 761,
+    "added": 0,
     "on_page": 5474,
     "ceiling": null,
     "within": true
@@ -1098,6 +1101,7 @@
    "weight": {
     "placed": 4430,
     "frame": 739,
+    "added": 0,
     "on_page": 5169,
     "ceiling": null,
     "within": true
@@ -1130,6 +1134,7 @@
    "weight": {
     "placed": 5703,
     "frame": 734,
+    "added": 0,
     "on_page": 6437,
     "ceiling": null,
     "within": true
@@ -1162,6 +1167,7 @@
    "weight": {
     "placed": 5083,
     "frame": 759,
+    "added": 0,
     "on_page": 5842,
     "ceiling": null,
     "within": true
@@ -1194,6 +1200,7 @@
    "weight": {
     "placed": 6227,
     "frame": 747,
+    "added": 0,
     "on_page": 6974,
     "ceiling": null,
     "within": true
@@ -1226,6 +1233,7 @@
    "weight": {
     "placed": 14248,
     "frame": 760,
+    "added": 0,
     "on_page": 15008,
     "ceiling": null,
     "within": true
@@ -1258,6 +1266,7 @@
    "weight": {
     "placed": 9368,
     "frame": 751,
+    "added": 0,
     "on_page": 10119,
     "ceiling": null,
     "within": true
@@ -1290,6 +1299,7 @@
    "weight": {
     "placed": 22806,
     "frame": 744,
+    "added": 0,
     "on_page": 23550,
     "ceiling": null,
     "within": true
@@ -1322,6 +1332,7 @@
    "weight": {
     "placed": 9626,
     "frame": 755,
+    "added": 0,
     "on_page": 10381,
     "ceiling": null,
     "within": true
@@ -1366,6 +1377,7 @@
    "weight": {
     "placed": 10655,
     "frame": 783,
+    "added": 0,
     "on_page": 11438,
     "ceiling": null,
     "within": true
@@ -1398,6 +1410,7 @@
    "weight": {
     "placed": 30312,
     "frame": 757,
+    "added": 0,
     "on_page": 31069,
     "ceiling": null,
     "within": true
@@ -1430,6 +1443,7 @@
    "weight": {
     "placed": 14193,
     "frame": 757,
+    "added": 0,
     "on_page": 14950,
     "ceiling": null,
     "within": true
@@ -1462,6 +1476,7 @@
    "weight": {
     "placed": 11368,
     "frame": 732,
+    "added": 0,
     "on_page": 12100,
     "ceiling": null,
     "within": true
@@ -1494,6 +1509,7 @@
    "weight": {
     "placed": 5849,
     "frame": 752,
+    "added": 0,
     "on_page": 6601,
     "ceiling": null,
     "within": true
@@ -1526,6 +1542,7 @@
    "weight": {
     "placed": 33488,
     "frame": 752,
+    "added": 0,
     "on_page": 34240,
     "ceiling": null,
     "within": true
@@ -1558,6 +1575,7 @@
    "weight": {
     "placed": 5210,
     "frame": 733,
+    "added": 0,
     "on_page": 5943,
     "ceiling": null,
     "within": true
@@ -1590,6 +1608,7 @@
    "weight": {
     "placed": 6098,
     "frame": 768,
+    "added": 0,
     "on_page": 6866,
     "ceiling": null,
     "within": true
@@ -1622,6 +1641,7 @@
    "weight": {
     "placed": 8142,
     "frame": 757,
+    "added": 0,
     "on_page": 8899,
     "ceiling": null,
     "within": true
@@ -1654,6 +1674,7 @@
    "weight": {
     "placed": 13027,
     "frame": 774,
+    "added": 0,
     "on_page": 13801,
     "ceiling": null,
     "within": true
@@ -1686,6 +1707,7 @@
    "weight": {
     "placed": 7049,
     "frame": 764,
+    "added": 0,
     "on_page": 7813,
     "ceiling": null,
     "within": true
@@ -1718,6 +1740,7 @@
    "weight": {
     "placed": 16583,
     "frame": 751,
+    "added": 0,
     "on_page": 17334,
     "ceiling": null,
     "within": true
@@ -1750,6 +1773,7 @@
    "weight": {
     "placed": 11324,
     "frame": 757,
+    "added": 0,
     "on_page": 12081,
     "ceiling": null,
     "within": true
@@ -1782,6 +1806,7 @@
    "weight": {
     "placed": 10079,
     "frame": 797,
+    "added": 0,
     "on_page": 10876,
     "ceiling": null,
     "within": true
@@ -1850,6 +1875,7 @@
    "weight": {
     "placed": 7427,
     "frame": 745,
+    "added": 0,
     "on_page": 8172,
     "ceiling": null,
     "within": true
@@ -1882,6 +1908,7 @@
    "weight": {
     "placed": 9988,
     "frame": 753,
+    "added": 0,
     "on_page": 10741,
     "ceiling": null,
     "within": true
@@ -1914,6 +1941,7 @@
    "weight": {
     "placed": 8313,
     "frame": 754,
+    "added": 0,
     "on_page": 9067,
     "ceiling": null,
     "within": true
@@ -1946,6 +1974,7 @@
    "weight": {
     "placed": 21780,
     "frame": 746,
+    "added": 0,
     "on_page": 22526,
     "ceiling": null,
     "within": true
@@ -1978,6 +2007,7 @@
    "weight": {
     "placed": 6884,
     "frame": 731,
+    "added": 0,
     "on_page": 7615,
     "ceiling": null,
     "within": true
@@ -2010,6 +2040,7 @@
    "weight": {
     "placed": 11096,
     "frame": 728,
+    "added": 0,
     "on_page": 11824,
     "ceiling": null,
     "within": true
@@ -2042,6 +2073,7 @@
    "weight": {
     "placed": 5338,
     "frame": 732,
+    "added": 0,
     "on_page": 6070,
     "ceiling": null,
     "within": true
@@ -2074,6 +2106,7 @@
    "weight": {
     "placed": 3860,
     "frame": 738,
+    "added": 0,
     "on_page": 4598,
     "ceiling": null,
     "within": true
@@ -2142,6 +2175,7 @@
    "weight": {
     "placed": 5527,
     "frame": 733,
+    "added": 0,
     "on_page": 6260,
     "ceiling": null,
     "within": true
@@ -2174,6 +2208,7 @@
    "weight": {
     "placed": 9798,
     "frame": 742,
+    "added": 0,
     "on_page": 10540,
     "ceiling": null,
     "within": true
@@ -2206,6 +2241,7 @@
    "weight": {
     "placed": 6626,
     "frame": 752,
+    "added": 0,
     "on_page": 7378,
     "ceiling": null,
     "within": true
@@ -2238,6 +2274,7 @@
    "weight": {
     "placed": 7633,
     "frame": 757,
+    "added": 0,
     "on_page": 8390,
     "ceiling": null,
     "within": true
@@ -2270,6 +2307,7 @@
    "weight": {
     "placed": 11454,
     "frame": 753,
+    "added": 0,
     "on_page": 12207,
     "ceiling": null,
     "within": true
@@ -2362,6 +2400,7 @@
    "weight": {
     "placed": 9710,
     "frame": 796,
+    "added": 0,
     "on_page": 10506,
     "ceiling": null,
     "within": true
@@ -2394,6 +2433,7 @@
    "weight": {
     "placed": 11004,
     "frame": 773,
+    "added": 0,
     "on_page": 11777,
     "ceiling": null,
     "within": true
@@ -2426,6 +2466,7 @@
    "weight": {
     "placed": 14640,
     "frame": 741,
+    "added": 0,
     "on_page": 15381,
     "ceiling": null,
     "within": true
@@ -2494,6 +2535,7 @@
    "weight": {
     "placed": 11137,
     "frame": 777,
+    "added": 0,
     "on_page": 11914,
     "ceiling": null,
     "within": true
@@ -2526,6 +2568,7 @@
    "weight": {
     "placed": 11448,
     "frame": 774,
+    "added": 0,
     "on_page": 12222,
     "ceiling": null,
     "within": true
@@ -2558,6 +2601,7 @@
    "weight": {
     "placed": 16085,
     "frame": 1113,
+    "added": 360,
     "on_page": 17198,
     "ceiling": null,
     "within": true
@@ -2590,6 +2634,7 @@
    "weight": {
     "placed": 6719,
     "frame": 775,
+    "added": 0,
     "on_page": 7494,
     "ceiling": null,
     "within": true
@@ -2658,6 +2703,7 @@
    "weight": {
     "placed": 6927,
     "frame": 749,
+    "added": 0,
     "on_page": 7676,
     "ceiling": null,
     "within": true
@@ -2690,6 +2736,7 @@
    "weight": {
     "placed": 9092,
     "frame": 727,
+    "added": 0,
     "on_page": 9819,
     "ceiling": null,
     "within": true
@@ -2722,6 +2769,7 @@
    "weight": {
     "placed": 3896,
     "frame": 809,
+    "added": 0,
     "on_page": 4705,
     "ceiling": null,
     "within": true
@@ -2754,6 +2802,7 @@
    "weight": {
     "placed": 5189,
     "frame": 743,
+    "added": 0,
     "on_page": 5932,
     "ceiling": null,
     "within": true
@@ -2786,6 +2835,7 @@
    "weight": {
     "placed": 10346,
     "frame": 736,
+    "added": 0,
     "on_page": 11082,
     "ceiling": null,
     "within": true
@@ -2818,6 +2868,7 @@
    "weight": {
     "placed": 3750,
     "frame": 737,
+    "added": 0,
     "on_page": 4487,
     "ceiling": null,
     "within": true
@@ -2850,6 +2901,7 @@
    "weight": {
     "placed": 5832,
     "frame": 847,
+    "added": 0,
     "on_page": 6679,
     "ceiling": 14106,
     "within": true
@@ -2906,6 +2958,7 @@
    "weight": {
     "placed": 9432,
     "frame": 778,
+    "added": 0,
     "on_page": 10210,
     "ceiling": 14106,
     "within": true
@@ -2938,6 +2991,7 @@
    "weight": {
     "placed": 12340,
     "frame": 796,
+    "added": 48,
     "on_page": 13136,
     "ceiling": 14106,
     "within": true
@@ -2970,6 +3024,7 @@
    "weight": {
     "placed": 9125,
     "frame": 753,
+    "added": 0,
     "on_page": 9878,
     "ceiling": 14106,
     "within": true
@@ -3002,6 +3057,7 @@
    "weight": {
     "placed": 13807,
     "frame": 746,
+    "added": 0,
     "on_page": 14553,
     "ceiling": 14556,
     "within": true
@@ -3034,6 +3090,7 @@
    "weight": {
     "placed": 10349,
     "frame": 765,
+    "added": 0,
     "on_page": 11114,
     "ceiling": 14106,
     "within": true
@@ -3066,6 +3123,7 @@
    "weight": {
     "placed": 12037,
     "frame": 764,
+    "added": 0,
     "on_page": 12801,
     "ceiling": 14106,
     "within": true
@@ -3098,6 +3156,7 @@
    "weight": {
     "placed": 7309,
     "frame": 784,
+    "added": 0,
     "on_page": 8093,
     "ceiling": 14106,
     "within": true
@@ -3142,6 +3201,7 @@
    "weight": {
     "placed": 13263,
     "frame": 796,
+    "added": 0,
     "on_page": 14059,
     "ceiling": 14106,
     "within": true
@@ -3174,6 +3234,7 @@
    "weight": {
     "placed": 11029,
     "frame": 731,
+    "added": 0,
     "on_page": 11760,
     "ceiling": 14106,
     "within": true
@@ -3206,6 +3267,7 @@
    "weight": {
     "placed": 7181,
     "frame": 755,
+    "added": 0,
     "on_page": 7936,
     "ceiling": 14106,
     "within": true
@@ -3274,6 +3336,7 @@
    "weight": {
     "placed": 6945,
     "frame": 765,
+    "added": 0,
     "on_page": 7710,
     "ceiling": 14106,
     "within": true
@@ -3318,6 +3381,7 @@
    "weight": {
     "placed": 6997,
     "frame": 780,
+    "added": 0,
     "on_page": 7777,
     "ceiling": 14106,
     "within": true
@@ -3374,6 +3438,7 @@
    "weight": {
     "placed": 13619,
     "frame": 732,
+    "added": 0,
     "on_page": 14351,
     "ceiling": null,
     "within": true
@@ -3406,6 +3471,7 @@
    "weight": {
     "placed": 13278,
     "frame": 764,
+    "added": 0,
     "on_page": 14042,
     "ceiling": null,
     "within": true
@@ -3438,6 +3504,7 @@
    "weight": {
     "placed": 10198,
     "frame": 735,
+    "added": 0,
     "on_page": 10933,
     "ceiling": null,
     "within": true
@@ -3470,6 +3537,7 @@
    "weight": {
     "placed": 8781,
     "frame": 753,
+    "added": 0,
     "on_page": 9534,
     "ceiling": 14106,
     "within": true
@@ -3502,6 +3570,7 @@
    "weight": {
     "placed": 3569,
     "frame": 807,
+    "added": 0,
     "on_page": 4376,
     "ceiling": 14106,
     "within": true
@@ -3534,6 +3603,7 @@
    "weight": {
     "placed": 6156,
     "frame": 784,
+    "added": 0,
     "on_page": 6940,
     "ceiling": 14106,
     "within": true
@@ -3566,6 +3636,7 @@
    "weight": {
     "placed": 12905,
     "frame": 749,
+    "added": 0,
     "on_page": 13654,
     "ceiling": 14106,
     "within": true
@@ -3598,6 +3669,7 @@
    "weight": {
     "placed": 13234,
     "frame": 805,
+    "added": 0,
     "on_page": 14039,
     "ceiling": 14106,
     "within": true
@@ -3630,6 +3702,7 @@
    "weight": {
     "placed": 12713,
     "frame": 723,
+    "added": 0,
     "on_page": 13436,
     "ceiling": 14106,
     "within": true
@@ -3662,6 +3735,7 @@
    "weight": {
     "placed": 10738,
     "frame": 752,
+    "added": 0,
     "on_page": 11490,
     "ceiling": 14106,
     "within": true
@@ -3694,6 +3768,7 @@
    "weight": {
     "placed": 16673,
     "frame": 757,
+    "added": 0,
     "on_page": 17430,
     "ceiling": null,
     "within": true
@@ -3726,6 +3801,7 @@
    "weight": {
     "placed": 10283,
     "frame": 760,
+    "added": 0,
     "on_page": 11043,
     "ceiling": null,
     "within": true
@@ -3758,6 +3834,7 @@
    "weight": {
     "placed": 16085,
     "frame": 1113,
+    "added": 360,
     "on_page": 17198,
     "ceiling": null,
     "within": true
@@ -3790,6 +3867,7 @@
    "weight": {
     "placed": 33488,
     "frame": 752,
+    "added": 0,
     "on_page": 34240,
     "ceiling": null,
     "within": true
@@ -3822,6 +3900,7 @@
    "weight": {
     "placed": 16268,
     "frame": 752,
+    "added": 0,
     "on_page": 17020,
     "ceiling": null,
     "within": true
@@ -3854,6 +3933,7 @@
    "weight": {
     "placed": 10072,
     "frame": 739,
+    "added": 0,
     "on_page": 10811,
     "ceiling": null,
     "within": true
@@ -3886,6 +3966,7 @@
    "weight": {
     "placed": 10406,
     "frame": 748,
+    "added": 0,
     "on_page": 11154,
     "ceiling": null,
     "within": true
@@ -3918,6 +3999,7 @@
    "weight": {
     "placed": 8799,
     "frame": 739,
+    "added": 0,
     "on_page": 9538,
     "ceiling": null,
     "within": true
@@ -3950,6 +4032,7 @@
    "weight": {
     "placed": 3408,
     "frame": 773,
+    "added": 0,
     "on_page": 4181,
     "ceiling": null,
     "within": true
@@ -3982,6 +4065,7 @@
    "weight": {
     "placed": 2454,
     "frame": 803,
+    "added": 0,
     "on_page": 3257,
     "ceiling": null,
     "within": true
@@ -4028,7 +4112,7 @@
   "state": "signed off",
   "pictures_waiting": []
  },
- "panel_1_words": 5952,
+ "panel_1_words": 5975,
  "rules": {
   "14.1": {
    "plates": 2,
@@ -4259,6 +4343,7 @@
     {
      "placed": 33488,
      "frame": 752,
+     "added": 0,
      "on_page": 34240,
      "ceiling": null,
      "within": true
@@ -4272,6 +4357,7 @@
     {
      "placed": 30312,
      "frame": 757,
+     "added": 0,
      "on_page": 31069,
      "ceiling": null,
      "within": true
@@ -4285,6 +4371,7 @@
     {
      "placed": 22806,
      "frame": 744,
+     "added": 0,
      "on_page": 23550,
      "ceiling": null,
      "within": true
@@ -4298,6 +4385,7 @@
     {
      "placed": 21780,
      "frame": 746,
+     "added": 0,
      "on_page": 22526,
      "ceiling": null,
      "within": true
@@ -4311,6 +4399,7 @@
     {
      "placed": 16673,
      "frame": 757,
+     "added": 0,
      "on_page": 17430,
      "ceiling": null,
      "within": true
@@ -4324,6 +4413,7 @@
     {
      "placed": 16583,
      "frame": 751,
+     "added": 0,
      "on_page": 17334,
      "ceiling": null,
      "within": true
@@ -4337,6 +4427,7 @@
     {
      "placed": 16085,
      "frame": 1113,
+     "added": 360,
      "on_page": 17198,
      "ceiling": null,
      "within": true
@@ -4350,6 +4441,7 @@
     {
      "placed": 16268,
      "frame": 752,
+     "added": 0,
      "on_page": 17020,
      "ceiling": null,
      "within": true
@@ -4363,6 +4455,7 @@
     {
      "placed": 14640,
      "frame": 741,
+     "added": 0,
      "on_page": 15381,
      "ceiling": null,
      "within": true
@@ -4376,6 +4469,7 @@
     {
      "placed": 14248,
      "frame": 760,
+     "added": 0,
      "on_page": 15008,
      "ceiling": null,
      "within": true
@@ -4385,7 +4479,8 @@
  },
  "board_score": {
   "file": "work/handoffs/phase-3/20261113_Board-2-CD-Scores.json",
-  "ready": 0,
+  "rescore": "work/handoffs/phase-3/20261113_Board-2-CD-Rescores.json",
+  "ready": 1,
   "items": 1
  },
  "scores": {
@@ -4503,11 +4598,17 @@
   ]
  },
  "tested": {
-  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 18:52 UTC, with exit 0, no warnings, 11,236,260 bytes, 344 rules and 638 examples placed",
-  "Quick guide check": "Waiting for its file",
+  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 19:17 UTC, with exit 0, no warnings, 11,236,260 bytes, 344 rules and 638 examples placed",
+  "Quick guide check": "run by the main session on a copy of its strict build of 11,236,260 bytes at 1440 and 390 px, with 694 drawn examples, 3,296 same-page links and no failures",
   "The kit’s build of every chart": "run by this board’s build at the widths the guide draws and at every whole width from 256 px, with 84 of 84 charts passing with no fault and no warnings",
   "The engineer’s checks after your answers landed": "chapter 14’s generator, 87 of 87 files current; the kit’s build of every chart at every whole width from 256 px, 84 of 84 pass and 0 fail; the data check, 125 tables and 0 faults; the map shapes current; the atlas check PASS with 0 failures; the kit’s self-test, every planted fault caught",
   "This board’s own check": "on its last run at 1440, 390 and 360 px, with no failures once the page’s language is left aside, since the host’s wrapper sets it"
+ },
+ "guide_check": {
+  "file": "[scratch]/phase-3/board-2/main/v9/quick/guide-Guide-Check-Results.json",
+  "failures": [],
+  "pass": true,
+  "page_bytes": 11236260
  },
  "kit_checks": {
   "check_files": 84,
@@ -4516,11 +4617,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-3/board-2/20261113_Board-2.html",
- "html_bytes": 1044139,
+ "html_bytes": 1046689,
  "images": 314,
  "image_bytes": 40707016,
  "folder_files": 318,
- "folder_bytes": 41949582,
+ "folder_bytes": 41955581,
  "largest_image": [
   496612,
   "20261113_Form-S37-Grayscale.webp"
@@ -4532,10 +4633,7 @@
   "count": "ready",
   "spend": "ready",
   "scores": "ready",
-  "tested": [
-   "partial",
-   "notes"
-  ],
+  "tested": "ready",
   "next": "ready"
  },
  "image_sources": {
@@ -5073,32 +5171,6 @@
  ],
  "notes": [],
  "warnings": [],
- "seconds": 67,
- "words": 61831,
- "check": {
-  "page": {
-   "failures": [
-    "1440 overview: axe html-has-langx1",
-    "390 overview: axe html-has-langx1",
-    "360 overview: axe html-has-langx1"
-   ],
-   "allowed": [
-    "1440 overview: axe html-has-langx1",
-    "390 overview: axe html-has-langx1",
-    "360 overview: axe html-has-langx1"
-   ],
-   "results": "work/boards/phase-3/round-3/board-2/20261113_Board-2-Check-Results.json"
-  },
-  "wrapped": {
-   "failures": [],
-   "pass": true,
-   "results": "[scratch]/phase-3/board-2/builder/publish-view/20261113_Board-2-Check-Results.json"
-  },
-  "widths": [
-   1440,
-   390,
-   360
-  ]
- },
- "fails": []
+ "seconds": 16,
+ "words": 61947
 }
