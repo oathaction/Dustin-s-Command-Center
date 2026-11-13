@@ -4,7 +4,7 @@
  * the context ink (the kit's tree part, indent layout). Every box takes a subject-ink edge, all one ink. Cards fill as
  * many columns of 220 px as the width holds, each card in the shortest column, so the drawing keeps the data's order
  * from the top down; a phone draws one column.
- * encode: unit (text: the unit's name), unit_key (id), group (category), sub (text: the sub-unit's name, empty on the
+ * encode: unit (text: the unit's name), unit_key (id, optional: the unit's name keys it where left out), group (category), sub (text: the sub-unit's name, empty on the
  * unit's own row).
  * labels: root (the body's name), groups ({value: words}, in order; {n} the count), drop ([prefixes left off a unit's
  * name, the table keeping it whole]), count ({one, many}: words under a unit's name with {n}), none (words for a unit
@@ -13,11 +13,11 @@
   'use strict';
   K.register_chart({
     form: 'org-chart', name: 'Org Chart', family: 'structure',
-    encode: { unit: 'text', unit_key: 'id', group: 'category', sub: 'text' },
+    encode: { unit: 'text', unit_key: 'id?', group: 'category', sub: 'text' },
     labels: ['root', 'groups', 'drop', 'count', 'none'],
     phone: 'differs',
     draw: function (c) {
-      var L = c.labels, W = c.width, eu = c.field('unit'), ek = c.field('unit_key'), eg = c.field('group'), es = c.field('sub');
+      var L = c.labels, W = c.width, eu = c.field('unit'), ek = c.field('unit_key', false) || c.field('unit'), eg = c.field('group'), es = c.field('sub');
       var spine = 12, ind = 28, cg = 16, vg = 16, sub_in = 16, P = K.parts, cnt = L.count || {};
       // one space between words, then the spec's typography, so a name measures as it prints in Node and on the page, where
       // the table carries the printed words (D3-519)
