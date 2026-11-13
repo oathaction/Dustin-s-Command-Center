@@ -3023,6 +3023,7 @@ BAND = "var(--oa-color-state-selected-band)"
 MUTED = "var(--oa-color-state-muted-text)"
 SHELL_CHOOSER_BYTES = 873     # the shell's status-line listener for 15.20 (C-2), counted toward R4-6's 75,000
 R4_6 = 75_000
+INTERACTION_BYTES = []       # filled by check(): fragments, rule entries, styles, the shell's listener, the sum
 INTERACTION = ("15.19", "15.20", "15.21")
 
 
@@ -3386,6 +3387,57 @@ def rule_15_21(book):
     }
 
 
+def stepper_css(n):
+    """Rule 15.19's drawing follows the stepper's data-oa-at (C-1): the steps before the current one in ink, the current
+    one on the selected band with its words bold, the steps ahead and the variables not yet reached muted, each line
+    keeping its grade's pattern; at the start, the first variable on the band. No red (ruling (f))."""
+    out = []
+    for k in range(n + 1):
+        s_ = f'[data-oa-at="{k}"]'
+        lit = {0} if k == 0 else {k - 1, k % n}
+        mute = [f'{s_} [data-s="{i}"]' for i in range(k + 1, n + 1)] + [f'{s_} [data-p="{j}"]' for j in range(n) if j > k and j not in lit]
+        if mute:
+            out.append(",".join(mute) + f"{{--k:{MUTED};--t:{MUTED}}}")
+        out.append(",".join(f'{s_} [data-p="{j}"]' for j in sorted(lit)) + f"{{--f:{BAND}}}")
+        if k:
+            out.append(f'{s_} [data-s="{k}"] .bd{{display:inline}}{s_} [data-s="{k}"] text{{font-weight:var(--oa-font-weight-bold)}}')
+    return "".join(out)
+
+
+CSS.update({
+    # AX section 1: a live plate's words and controls take the reader's forced colors on a ground of their own, and the
+    # drawing keeps its own colors on its own ground
+    "lv": (".lv{forced-color-adjust:auto;background:var(--oa-color-surface)}"
+           ".dw{forced-color-adjust:none;background:var(--oa-color-surface)}.lv>.oa-choice{margin:0 0 16px}"),
+    "dw": (f".dw{{--k:{INK};--t:var(--oa-color-text-primary);--f:var(--oa-color-surface)}}"
+           ".dw .ak-mark,.dw .tk{stroke:var(--k)}.dw .hd,.dw .tg polygon{fill:var(--k)}.dw text{fill:var(--t)}"
+           ".dw .pl{stroke:var(--k);fill:var(--f)}"
+           f".dw .bd{{display:none;fill:none;stroke:{BAND};stroke-width:14px;stroke-linecap:round}}" + stepper_css(3)
+           # C-1: scripts off, the buttons and the two lines that speak of them stay hidden; the still sequence shows
+           + "[data-oa-stepper]:not([data-oa-live]) :is(.oa-stepper-controls,.oa-stepper-status,.oa-stepper-why){display:none}"
+           ".oa-stepper-steps{counter-reset:st}.oa-stepper-step::before{counter-increment:st;content:counter(st);"
+           "margin-right:8px;font-weight:var(--oa-font-weight-bold)}"
+           # AX section 2, print: the still sequence, whatever state the reader left
+           "@media print{.p .oa-stepper :is(.oa-stepper-controls,.oa-stepper-status,.oa-stepper-why){display:none}"
+           ".p .oa-stepper .oa-stepper-step{background:none;border-left-color:transparent;color:inherit}"
+           f".p .oa-stepper .dw :is([data-s],[data-p]){{--k:{INK};--t:var(--oa-color-text-primary);--f:var(--oa-color-surface)}}"
+           ".p .oa-stepper .dw .bd{display:none}.p .oa-stepper .dw [data-s] text{font-weight:var(--oa-font-weight-regular)}}"),
+    "ch1": ".ch1{flex-direction:column;align-items:flex-start}" + chooser_css(["R-03", "R-04"]),
+    "pn": (".pn+.pn{margin-top:24px;padding-top:16px;border-top:1px solid var(--oa-color-border-hairline)}"
+           ".pn .oa-disclosure-set{margin-top:16px}"),
+    "pon": ".pon{display:none}",
+    "ld": (".ld{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 14px;font:var(--oa-type-body-small);"
+           "color:var(--oa-color-text-secondary)}.ld .on{color:var(--oa-color-text-primary);font-weight:var(--oa-font-weight-bold);"
+           "border-bottom:2px solid var(--oa-color-border-strong)}"),
+    "pb": (".pb{display:flex;gap:12px;align-items:center;margin-top:12px}"
+           ".ib{display:inline-grid;place-items:center;flex:none;width:44px;height:44px;border:1px solid var(--oa-color-border-strong)}"
+           ".ib svg,.xb svg{fill:none;stroke:currentColor;stroke-width:var(--oa-component-icon-utility-line-medium);"
+           "stroke-linecap:round;stroke-linejoin:round}"),
+    "xk": (".xk{margin-bottom:12px}.xk li{display:flex;gap:8px;align-items:center}.xb{display:inline-grid;place-items:center;"
+           "flex:none;width:24px;height:24px;border:2px solid var(--oa-color-border-strong)}.xb svg{width:20px;height:20px}"),
+})
+
+
 def chapter(book):
     op = opener(book)
     rules = [rule_15_1(book), rule_15_2(book), rule_15_3(book), rule_15_4(book), rule_15_5(book), rule_15_6(book),
@@ -3555,12 +3607,15 @@ def check(data, book):
     # plates that hold one drawing alone keep one true size
     wide = sorted(k for k, m_ in book.manifest.items() if m_.get("wide_px"))
     want = sorted([data["opener"]["specimen"]] + [r["correct"]["specimen"] for r in data["rules"]]
-                  + ["s-15-3-failure", "s-15-4-failure", "s-15-15-failure"])
+                  + ["s-15-3-failure", "s-15-4-failure", "s-15-15-failure"])   # 15.19 to 15.21's correct plates among them
     if wide != want:
         fails.append(f"the wide plates are {wide}, where D3-480 wants {want}")
     css = data["plate_css"]
-    if re.search(r"@media\b", css):
-        fails.append("plate_css: a media query; the plates compose by their frame's container only (D3-480)")
+    # round 4: print and screen are the only media a plate rule may name (Rules 15.19 and 15.20's still sequence on
+    # paper, AX section 2); the plates still compose by their frame's container only (D3-480)
+    for m in re.finditer(r"@media\s*([^{]*)\{", css):
+        if m.group(1).strip() not in ("print", "screen"):
+            fails.append(f"plate_css: a media query on {m.group(1).strip()!r}; the plates compose by their frame's container only (D3-480)")
     for m in re.finditer(r"@container\s+(\S+)", css):
         if m.group(1) != "oa-frame":
             fails.append(f"plate_css: a container query on {m.group(1)}, where the shell's container is oa-frame")
@@ -3612,10 +3667,12 @@ def check(data, book):
     # round 2: Rule 12.5's red sits on a reform's own targets and nowhere else on a correct plate; no correct plate or
     # rule text adds effects; every route a correct plate prints carries its own check date or "Not checked" (Rule 13.10)
     reform_of = {"s-15-11-correct": "R-03", "s-15-12-correct": "R-32", "s-15-16-correct": "R-01"}
+    offered = {"s-15-20-correct": ("R-03", "R-04")}      # round 4: every target of every reform a chooser offers
     for r in data["rules"]:
         sid = r["correct"]["specimen"]
         n_red = book.files[sid].count('data-red="working"')
-        want_red = len(REFORM[reform_of[sid]]["targets"]) if sid in reform_of else 0
+        want_red = (len(REFORM[reform_of[sid]]["targets"]) if sid in reform_of else
+                    len({t_ for x in offered[sid] for t_ in REFORM[x]["targets"]}) if sid in offered else 0)
         if n_red != want_red:
             fails.append(f"{sid}: {n_red} red marks, where its reform's targets call for {want_red}")
     tally = re.compile(r"\b(?:overall|total|net effect|sum of|adds? up|added up)\b", re.I)
@@ -3629,15 +3686,52 @@ def check(data, book):
     for sid, frag in book.files.items():
         if "failure" in sid:
             continue
-        for li in re.findall(r"<li>(.*?)</li>", frag):
+        for seg in re.split(r'(?=data-oa-panel=")', frag):
+          pm = re.match(r'data-oa-panel="([^"]+)"', seg)
+          for li in re.findall(r"<li>(.*?)</li>", seg):
             mm = re.search(r'<span class="chip">Route <span class="id">([A-Z]+)</span>', li)
             if not mm:
                 continue
-            rid = reform_of.get(sid)
+            rid = pm.group(1) if pm else reform_of.get(sid)
             entry = next(x for x in REFORM[rid]["routes"] if x["route"] == mm.group(1))
             want = f"Checked {C13.words_date(entry['checked'])}" if entry["checked"] else "Not checked"
             if want not in li or (not entry["checked"] and re.search(r"\bChecked\b", li)):
                 fails.append(f"{sid}: route {mm.group(1)} does not print {want!r}")
+    # round 4 (R4-5, R4-6): no plate carries a script; 15.19 is Rule 18.22's markup; 15.20's radios are one named group;
+    # every failure plate and both of 15.21's plates hold no control; 15.19 to 15.21 weigh 75,000 bytes or less together,
+    # the shell's listener for 15.20 included
+    live = re.compile(r"<(?:button|input|select|textarea|script)\b|role=\"slider\"|tabindex=|contenteditable", re.I)
+    for sid, frag in book.files.items():
+        if "<script" in frag:
+            fails.append(f"{sid}: a script; chapter 18's code plate and the shell carry every script a plate needs (R4-5)")
+        if ("failure" in sid or sid.startswith("s-15-21-")) and live.search(frag):
+            fails.append(f"{sid}: a working control, where this plate is a still picture (R4-5)")
+    if "s-15-19-correct" in book.files:
+        f19 = book.files["s-15-19-correct"]
+        if not all(k in f19 for k in ("data-oa-stepper", 'class="oa-stepper-status" role="status" data-oa-ready=',
+                                      'class="oa-stepper-steps" role="list"', "oa-stepper-play", "oa-stepper-why")):
+            fails.append("s-15-19-correct: Rule 18.22's markup is incomplete (C-1)")
+        if f19.count('class="oa-stepper-step"') != len(LOOP["R1"]["links"]):
+            fails.append("s-15-19-correct: the steps differ from Loop R1's connections")
+    if "s-15-20-correct" in book.files:
+        f20 = book.files["s-15-20-correct"]
+        radios = re.findall(r'<input class="oa-choice-input" type="radio" name="s-15-20-reform" value="([^"]+)"', f20)
+        if radios != list(offered["s-15-20-correct"]) or f20.count(" checked") != 1 or not 2 <= len(radios) <= 5:
+            fails.append(f"s-15-20-correct: the radios are {radios}, where ruling (f) offers R-03 and R-04 in one group, one checked")
+        for rid in radios:
+            if f20.count(f'data-oa-panel="{rid}"') != 1 or "data-oa-say" not in f20.split(f'data-oa-panel="{rid}"')[1][:400]:
+                fails.append(f"s-15-20-correct: reform {rid} lacks its panel or the line the status reads (C-2)")
+        if "data-oa-chooser-status" not in f20 or "data-oa-chooser" not in f20:
+            fails.append("s-15-20-correct: the shell's hooks are missing (C-2)")
+    if all(r_ in BUILT for r_ in INTERACTION):
+        ours = [k for k in book.files if k.startswith(("s-15-19-", "s-15-20-", "s-15-21-"))]
+        frag_b = sum(len(book.files[k].encode()) for k in ours)
+        rules_b = sum(len(json.dumps(r_, ensure_ascii=False, indent=1).encode()) for r_ in data["rules"] if r_["id"] in INTERACTION)
+        css_b = sum(len(CSS[k].encode()) for k in ("lv", "dw", "ch1", "pn", "pon", "ld", "pb", "xk"))
+        tot = frag_b + rules_b + css_b + SHELL_CHOOSER_BYTES
+        INTERACTION_BYTES[:] = [frag_b, rules_b, css_b, SHELL_CHOOSER_BYTES, tot]
+        if tot > R4_6:
+            fails.append(f"Rules 15.19 to 15.21 weigh {tot:,} bytes with their styles and the shell's listener, over R4-6's {R4_6:,}")
     # the model's own consistency, which every rule here leans on
     for k, p in LOOP.items():
         if p["links"] and ("R" if minus_count(p["links"]) % 2 == 0 else "B") != p["type"]:
@@ -3681,6 +3775,10 @@ def main():
     if frag + js > ROUND_STOP:
         fails.append(f"chapter 15's fragments and file weigh {frag + js:,} bytes, over its {ROUND_STOP:,} byte ceiling")
     print("examples by domain:", dict(sorted(dom.items())), "| all examples:", len(book.examples))
+    if INTERACTION_BYTES:
+        f_, r_, c_, s_, tot = INTERACTION_BYTES
+        print(f"Rules 15.19 to 15.21: {tot:,} bytes of {R4_6:,} (plates {f_:,}, rule entries {r_:,}, styles {c_:,}, "
+              f"the shell's listener {s_:,})")
     for sid, f_ in sorted(book.files.items(), key=lambda x: -len(x[1].encode()))[:6]:
         print(f"  {sid}: {len(f_.encode()):,} bytes")
     if fails:

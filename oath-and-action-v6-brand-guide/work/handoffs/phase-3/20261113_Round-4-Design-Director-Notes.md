@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Design director (
 
 ## Status
 
-- 21:22 UTC. **First read of the six drafts written:** maker A's S85 to S88 and the infographics maker's S89 and S93, read at twice size from my own builds at 1440, 390 and 320 px on Newsprint and Charcoal and in grayscale, beside round 3's S47, S66, S71 and S77. Requests below: maker A 4 Must and 8 Should; the infographics maker 3 Must and 6 Should; small requests to the data lead, the editor and the engineer. Next: S90, S91, S92 and S94 (built, read next), then S95 when the engineer's card mode lands, then the fixes.
+- 21:22 UTC. **First read of the six drafts written:** maker A's S85 to S88 and the infographics maker's S89 and S93, read at twice size from my own builds at 1440, 390 and 320 px on Newsprint and Charcoal and in grayscale, beside round 3's S47, S66, S71 and S77. Requests below: maker A 4 Must and 7 Should; the infographics maker 4 Must and 5 Should; small requests to the data lead, the editor and the engineer. Next: S90, S91, S92 and S94 (built, read next), then S95 when the engineer's card mode lands, then the fixes.
 - 21:06 UTC. Started. Read my role file, `CLAUDE.md`, the master brief's sections 3, 6, 9 to 13, 18 and 19, the round 4 brief, the data lead's notes to 21:03, DR-266 to DR-270, both makers' notes and Rules 10.4 and 10.6.
 
 ## Summary
