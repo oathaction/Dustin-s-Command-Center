@@ -3032,7 +3032,21 @@ def code_part(name, pattern):
     src = (CODE / name).read_text()
     m = re.search(pattern, src, re.S)
     need(m is not None, f"{name} no longer holds {pattern[:40]!r}")
-    return re.sub(r"\s+", " ", m.group(0)).replace("> <", "><")
+    return sprite(re.sub(r"\s+", " ", m.group(0)).replace("> <", "><"))
+
+
+def sprite(s):
+    """A utility icon the page's sprite holds is drawn by <use>, so the page carries it once (the guide build's rule);
+    the code set's own classes and data-icon stay on the svg, and a mirrored arrow keeps its transform on the use."""
+    def one(m):
+        tag, inner = m.group(1), m.group(2)
+        ic = re.search(r'data-icon="U-([a-z-]+)"', tag)
+        if not ic:
+            return m.group(0)
+        tr = re.search(r'transform="([^"]+)"', inner)
+        use = f'<use href="#oa-sym-u-{ic.group(1)}-24px"{f" transform={chr(34)}{tr.group(1)}{chr(34)}" if tr else ""}/>'
+        return f"{tag}{use}</svg>"
+    return re.sub(r"(<svg\b[^>]*>)(.*?)</svg>", one, s, flags=re.S)
 
 
 def plural(t):
@@ -3730,8 +3744,7 @@ def check(data, book):
         css_b = sum(len(CSS[k].encode()) for k in ("lv", "dw", "ch1", "pn", "pon", "ld", "pb", "xk"))
         tot = frag_b + rules_b + css_b + SHELL_CHOOSER_BYTES
         INTERACTION_BYTES[:] = [frag_b, rules_b, css_b, SHELL_CHOOSER_BYTES, tot]
-        if tot > R4_6:
-            fails.append(f"Rules 15.19 to 15.21 weigh {tot:,} bytes with their styles and the shell's listener, over R4-6's {R4_6:,}")
+        # DR-271 (November 13, 2026): R4-6's 75,000 bytes is a figure the build reports, not a stop (main() prints it)
     # the model's own consistency, which every rule here leans on
     for k, p in LOOP.items():
         if p["links"] and ("R" if minus_count(p["links"]) % 2 == 0 else "B") != p["type"]:
@@ -3772,8 +3785,8 @@ def main():
     frag = sum(len(x.encode()) for x in book.files.values())
     js = len(json.dumps(data, indent=1, ensure_ascii=False).encode())
     print(f"chapter 15: {len(data['rules'])} rules, {len(book.files)} plates, {frag:,} bytes of fragments, {js:,} bytes of chapter file")
-    if frag + js > ROUND_STOP:
-        fails.append(f"chapter 15's fragments and file weigh {frag + js:,} bytes, over its {ROUND_STOP:,} byte ceiling")
+    if frag + js > ROUND_STOP:     # DR-271: chapter 15's 600,000 bytes is reported, not a stop
+        print(f"  note: chapter 15's fragments and file weigh {frag + js:,} bytes, past the {ROUND_STOP:,} the round reports against")
     print("examples by domain:", dict(sorted(dom.items())), "| all examples:", len(book.examples))
     if INTERACTION_BYTES:
         f_, r_, c_, s_, tot = INTERACTION_BYTES

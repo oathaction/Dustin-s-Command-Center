@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:25 UTC. The design director's DD-A5, DD-A6 and DD-I7 answered yes, with conditions; MI-3 answered by the research lead, words for S90 set.
 - 21:24 UTC. S94 signed off whole; S91 waits on one phrase (MI-7: Puerto Rico's district judges serve for life, so "outside the territories" misleads).
 - 21:21 UTC. S87, S88 and S93 signed off whole; S90 and S92 signed off (S90 with MI-3, words); S91 but for its title and note (MI-4); S94 waits on MI-5 and MI-6.
 - 21:17 UTC. Entries 14.135 and 14.139 read: nothing in them for me to change; I sign them off with their specimens. Waiting on: the cards S90 to S92 and S94, S95, S85's parts, MA-9, MI-2, the phone codes, DR-265's captures and 15.19 to 15.21.
@@ -206,6 +207,12 @@ Type never drops under the type scale's smallest drawing size to make a title fi
 **DR-229 under D3-689's test.** No round 4 chapter 14 form draws election data: the coverage plan (sections 3.8 and 3.16) writes each form's use in general words, none of them an election question: "One in ten, made countable", "Sizes compared by area", "Two or three groups that overlap", "Overlaps drawn at true size", "Steps of a public process with icons", "Four to six facts with sources", "Two or three options side by side", "What a reader can do, in order", "A drawing with callouts", "Dates that matter" and "One chart or figure at 1080 by 1350 and 1080 by 1080". Rows 123 and 125 moved off election data at the round 4 plan's sign-off. S95 redraws S19's prison counts, which count under checks on power and equal justice. Chapter 15's 15.20 and 15.21 draw an Elections loop, R4a, because the model's structure picks it (f), and Rule 01.9 holds there too.
 
 ## Sign-offs
+
+### The design director's two asks and MI-3's answer (21:25 UTC, for the design director, both makers and the editor)
+
+- **DD-A5 and DD-A6, S86's key and its "not drawn" sentence: yes.** S16's side-by-side size key and the sentence in the key's band change no figure, ink or scale, and one key grammar across chapter 14 is right. Conditions: the key's circles stay on the drawing's one area scale at every width, the largest step at 40,000 so the key spans the 39,555 circle (MA-5), each step prints its value, and the sentence keeps both counts (1 federal government, 50 state governments) and its reason. I read it again only if a key circle's radius departs from the scale; maker A names the check in `notes_internal`.
+- **DD-I7, S93's parts in the order the eye meets them: yes.** "The file's order" in (b) meant the rows as the page holds them, and the page's own reading order serves that better than the frozen file's row numbers: running head, Statutes at Large citation, Public Law number, Congress, long title, date approved, bill number, enacting clause, short title section, margin short title, margin note. Set it through the spec's sort and the table's Number column, as S93 already does for rows 10 and 11; the frozen file and its sidecar stay as stored (the research lead's), the drawing, the list and the table share one sequence, and the alt follows it. I read the order again when it lands.
+- **MI-3, answered by the research lead from the Bureau's documentation:** current spending leaves out capital outlay (construction and equipment), interest on debt and payments to other governments, and the per-pupil figure also leaves out adult education and community services. S90's card says so in the Bureau's terms; the research lead's plain words are right ("Spending per pupil counts day-to-day costs such as salaries, benefits, services and supplies. It leaves out construction and equipment, interest on debt and payments to other governments, as well as adult education and community services."). Where S90 names the enrollment year behind the per-pupil figure, it is fall 2023, by the documentation, not Table 8's "fall 2022" label. With those words S90 needs no second read.
 
 ### S94 and S91 after MI-4 to MI-6 (21:24 UTC)
 
