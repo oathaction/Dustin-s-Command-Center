@@ -1136,8 +1136,12 @@
       return rs;
     };
     if (tb.group) return K.type_rows(geo_ids(isl.csv ? K.parse_csv(isl.csv) : []), isl.columns);
-    var cell_raw = function (el, col) {
-      return el.hasAttribute('data-v') ? el.getAttribute('data-v') : K.unformat(el.textContent, col);
+    // IM-E6 item 2 (round 4): a held phrase prints with no-break spaces (typography.hold); read back, it takes its stored
+    // spaces again, so a form that wraps the stored words draws on the page as in Node
+    var held = ((spec.typography || {}).hold || []), cell_raw = function (el, col) {
+      var t = el.textContent;
+      held.forEach(function (p) { t = t.split(p.replace(/ /g, '\u00a0')).join(p); });
+      return el.hasAttribute('data-v') ? el.getAttribute('data-v') : K.unformat(t, col);
     };
     if (tb.pivot) {
       var pv = tb.pivot, rc = (tb.columns || [])[0] || { format: 'text' }, rows_by = [].concat(pv.row);

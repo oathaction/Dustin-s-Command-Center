@@ -4,17 +4,19 @@
  * option (the data lead's round 4 ruling (b)). A field the law leaves empty prints the file's own words.
  * encode: key (the row's key), name (text: the option's name).
  * labels: fields ([{field, label, format (a kit format, default text), notes ({key: a line printed under that card's
- * value})}]), in the order every card prints them. */
+ * value})}]), in the order every card prints them; rows (true: each field on one line across the cards that stand side
+ * by side, kit.css .oac-h-rows). */
 (function (K) {
   'use strict';
   K.register_chart({
     form: 'comparison-cards', name: 'Comparison Cards', family: 'infographics',
     encode: { key: 'id', name: 'text' },
-    labels: ['fields'],
+    labels: ['fields', 'rows'],
     phone: 'same',
     html: function (h) {
       var ek = h.field('key'), en = h.field('name'), fs = h.labels.fields || [];
-      return '<ul class="oac-h-cards" role="list">' + h.rows.map(function (r, i) {
+      // labels.rows: each field on one line across the cards where they stand side by side (kit.css .oac-h-rows, DD-I12)
+      return '<ul class="oac-h-cards' + (h.labels.rows ? ' oac-h-rows' : '') + '" role="list">' + h.rows.map(function (r, i) {
         return '<li class="oac-h-item"' + h.row(i) + '><p class="oac-h-name">' + h.words(r[en]) + '</p><dl class="oac-h-fields">' +
           fs.map(function (f) {
             var v = r[f.field], note = (f.notes || {})[String(r[ek])];

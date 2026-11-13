@@ -9,7 +9,7 @@
   K.register_chart({
     form: 'bubble-map', name: 'Bubble Map', family: 'maps',
     encode: { code: 'code', size: 'number', shade: 'number' },
-    labels: ['bins', 'ring', 'ring_label', 'shade_title', 'size_title', 'size_steps', 'size_unit', 'size_step_words', 'nation', 'nation_label', 'offsets', 'offsets_phone', 'prefer', 'prefer_phone', 'lead', 'orders', 'narrow_under'],
+    labels: ['bins', 'ring', 'ring_label', 'shade_title', 'size_title', 'size_steps', 'size_unit', 'size_step_words', 'nation', 'nation_label', 'offsets', 'offsets_phone', 'prefer', 'prefer_phone', 'lead', 'orders', 'narrow_under', 'column_phone'],
     phone: 'same',
     draw: function (c) {
       var G = globalThis.OAChartGeo, rows = c.rows, ec = c.field('code'), ez = c.field('size'), eh = c.field('shade');
@@ -63,8 +63,14 @@
         return Math.max(y, base + 30);
       };
       var y = narrow ? 0 : drawKey(0);
+      // labels.column_phone (round 4, D3-1553, D4-1): on a phone drawing narrower than the phone artboard (358 px, where the
+      // plain search codes every state), the small states it lists that cannot hold their code take a column of codes on the
+      // ocean at the right, north to south, each on a leader, as a newsroom map labels the Northeast; the map fits that much
+      // narrower, and circle sizes do not change
+      var col = c.phone && !narrow && W < c.t('artboard-phone') && L.column_phone, colw = 0;
+      if (col) col.forEach(function (cd) { colw = Math.max(colw, c.measure(cd, 'tick', 600) + 10); });
       // the map in its 975 by 610 frame, scaled to the width
-      var k = W / G.frame[0], top = y, mh = G.frame[1] * k;
+      var k = (W - colw) / G.frame[0], top = y, mh = G.frame[1] * k;
       var tf = 'translate(0,' + K.round(top) + ') scale(' + Math.round(k * 10000) / 10000 + ')';
       var g = c.group({ transform: tf });
       c.path(G.land, { fill: 'land', mark: false });
@@ -82,7 +88,7 @@
       if (od) c.path(od, { fill: 'none', stroke: 'context', width: Math.round(1 / k * 1000) / 1000, mark: false });
       g.end();
       // Alaska and Hawaii in thin frames, as every map of the 2024 outlines draws them
-      K.parts.map_insets(c, S, { k: k, ox: 0, oy: top, x: 0, y: top, w: W, h: mh, pt: function (q) { return [q[0] * k, top + q[1] * k]; } });
+      K.parts.map_insets(c, S, { k: k, ox: 0, oy: top, x: 0, y: top, w: W - colw, h: mh, pt: function (q) { return [q[0] * k, top + q[1] * k]; } });
       // circles: start at the centers, then push apart where they overlap (a fixed number of passes, so every run matches)
       var pts = drawn.map(function (r) {
         var p = G.centers[r[ec]];
@@ -102,7 +108,7 @@
         if (!moved) break;
       }
       // every circle stays inside the artboard
-      pts.forEach(function (p) { p.x = Math.max(p.rad + 1, Math.min(W - p.rad - 1, p.x)); });
+      pts.forEach(function (p) { p.x = Math.max(p.rad + 1, Math.min(W - colw - p.rad - 1, p.x)); });
       var shade = function (v) { var s = 1; bins.forEach(function (b) { if (v >= b) s++; }); return 'seq-' + Math.min(5, s); };
       pts.forEach(function (p) {
         var sh = shade(p.r[eh]);
@@ -133,10 +139,29 @@
       // the fewest states unlabeled, then the shortest leaders, is drawn, so a small move of the circles on the 2024
       // outlines does not push a code far from its circle. labels.prefer / prefer_phone ({code: side}) try a side first
       // (right, left, above, below); labels.lead ([codes]) gives a code a leader to its circle however near it sits.
+      // the column's slots sit 16 px apart, each as near its circle's height as the pitch allows (adjacent blocks pooled
+      // where they would overlap, so every run matches); the search then places the rest clear of its codes and leaders
+      var pre = [];
+      if (col) {
+        var cs = c.size('tick'), pitch = cs + 3, cx = W - colw + 10, bl = [];
+        var cl = outside.filter(function (p) { return col.indexOf(p.r[ec]) >= 0; }).sort(function (a, b) { return a.y - b.y; });
+        cl.forEach(function (p, i) {
+          bl.push([p.y - i * pitch, 1, i]);
+          for (var n = bl.length; n > 1 && bl[n - 2][0] / bl[n - 2][1] > bl[n - 1][0] / bl[n - 1][1]; n--) { var q = bl.pop(); bl[n - 2][0] += q[0]; bl[n - 2][1] += q[1]; }
+        });
+        bl.forEach(function (b) { for (var j = 0; j < b[1]; j++) {
+          var p = cl[b[2] + j], code = p.r[ec], base = b[0] / b[1] + (b[2] + j) * pitch + cs * 0.35, ly = base - cs * 0.385 + 1, d = Math.hypot(cx - 2 - p.x, ly - p.y) || 1;
+          if (c.texts.some(function (t) { return cx < t.x + t.w + 1 && t.x < cx + c.measure(code, 'tick', 600) + 1 && base - cs * 0.77 < t.y + t.h + 1 && t.y < base + cs * 0.23 + 1; })) continue;
+          var sg = [p.x + (cx - 2 - p.x) / d * p.rad, p.y + (ly - p.y) / d * p.rad, cx - 2, ly];
+          c.line(sg[0], sg[1], sg[2], sg[3], { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+          c.text(cx, base, code, { role: 'tick', weight: 600, halo: true });
+          pre.push(sg); outside.splice(outside.indexOf(p), 1);
+        } });
+      }
       var prefer = (c.phone && L.prefer_phone) || L.prefer || {}, always = L.lead || [];
       var SIDES = { right: 0, left: 1, above: 2, below: 3 };
       var run = function (order) {
-        var T = c.texts.map(function (t) { return { x: t.x, y: t.y, w: t.w, h: t.h }; }), Ld = [], out = { placed: [], un: [], cost: 0 };
+        var T = c.texts.map(function (t) { return { x: t.x, y: t.y, w: t.w, h: t.h }; }), Ld = pre.slice(), out = { placed: [], un: [], cost: 0 };
         var hit2 = function (b) {
           if (b.x < 0 || b.x + b.w > W) return true;
           if (T.some(function (t) { return b.x < t.x + t.w + 1 && t.x < b.x + b.w + 1 && b.y < t.y + t.h + 1 && t.y < b.y + b.h + 1; })) return true;

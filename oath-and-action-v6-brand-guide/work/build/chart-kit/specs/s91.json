@@ -107,7 +107,8 @@
         "field": "number_set_by",
         "label": "Number of seats set by"
       }
-    ]
+    ],
+    "rows": true
   },
   "typography": {
     "curl_quotes": true,
@@ -138,7 +139,8 @@
     "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S91.",
     "Editor's words (21:17 UTC) applied: title, the territorial courts' line (10-year, H06) and note 1.",
     "Data lead MI-4 (21:21 UTC): the title is true of every seat (the four territorial judges serve 10-year terms; eight years is the full-time magistrate term, four part time), and the note says why the courts count 345 bankruptcy judgeships against the table's 316, in the research lead's words. Words for the editor to set.",
-    "Data lead MI-7 (21:24 UTC): Puerto Rico's district judges serve for life, so the title names the three territories whose district judges serve 10-year terms."
+    "Data lead MI-7 (21:24 UTC): Puerto Rico's district judges serve for life, so the title names the three territories whose district judges serve 10-year terms.",
+    "Design director DD-I12 (21:28 UTC): labels.rows sets the engineer's shared-row grid (.oac-h-rows, from 27rem), so each field lies on one line across the three cards; stacked on a phone, each card flows as before."
   ],
   "source_line": "Source: U.S. Code, 2024 edition, 28 U.S.C. 133, 134, 152, 631 and 633; Administrative Office of the U.S. Courts, Judicial Business 2025, United States. Retrieved November 12, 2026. Seats include vacant ones; the 677 district positions include the territorial courts’ 4."
 }
