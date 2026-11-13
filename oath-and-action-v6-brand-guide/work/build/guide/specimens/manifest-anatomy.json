@@ -173,7 +173,7 @@
   "width_px": null,
   "alt": "Anatomy of a loop stepper, drawn from its code to copy on Newsprint, with eight numbered callouts and a key. 1, Status line: Each step, said once, politely. 2, Current step: A 4 px bar drawn as a border, in the step list. 3, Height: 44 px tall. 4, Play: Its icon and word; Pause while it runs, Play again at the end. 5, Reset the loop: The open circle with one arrowhead, and its words. 6, Previous step: The arrow mirrored, before the words. 7, Next step, unavailable: At the last step: a dashed edge, and it keeps its focus. 8, Reason line: Says why Next step waits and what to do.",
   "illustrative": false,
-  "notes": "Drawn from work/build/guide/code/c-18-loop-stepper.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366). Drawn at the last step, the state the stepper script writes there, with its four buttons two by two."
+  "notes": "Drawn from work/build/guide/code/c-18-loop-stepper.html and .css by stage_c_ch18_anatomy_build.py: the parts the caption names, as a picture (AX-S8), with the code’s own states set by attribute and its class names shortened (D2-1366). Drawn at the last step, the state the stepper script writes there, with its four buttons two by two, and one a row in a column of 24rem or less, where two would cut their words, as the code set stacks them."
  },
  "s-18-23-anatomy": {
   "chapter": "18",

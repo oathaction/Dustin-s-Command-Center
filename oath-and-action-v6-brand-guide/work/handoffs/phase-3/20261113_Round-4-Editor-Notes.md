@@ -66,6 +66,8 @@ Each line is read against the entries as they land and changes only where a buil
 
 The same two words print in S37's table once the engineer's ED4-3 fix lands; the CSV export keeps the atlas's straight marks, as D3-519 sets. No figure, ink, mark, order or position changes.
 
+**ED4-3 landed and checked (21:53 UTC).** After the engineer's fix, `oa-chart.mjs build s37`, sweep on: PASS, 0 faults. The table's two row headers now print "Rebuild Congress’s own staff and experts" and "Limits on pricing software using rivals’ data" (by script on the kit's page; no straight form left anywhere in it); the four SVGs and the CSV are byte-identical to my 21:00 build. S37 now weighs 16,093 bytes as the guide places it (16,843 with its frame), 28 more than before the curl, since the lean table no longer needs the two `data-v` attributes. So board 3's two labels change in the drawing and the table alike.
+
 ## Words for maker A
 
 ### First look (by 20:57 UTC): S85 and S86 as drafted, read only

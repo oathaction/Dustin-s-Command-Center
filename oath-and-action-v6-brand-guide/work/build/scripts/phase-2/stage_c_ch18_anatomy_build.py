@@ -1111,8 +1111,11 @@ def p22():
            (7, 'Next step, unavailable', 'At the last step: a dashed edge, and it keeps its focus'),
            (8, 'Reason line', 'Says why Next step waits and what to do')]
     return ['loop-stepper'], r, key, 'a loop stepper', ('Drawn at the last step, the state the stepper script writes '
-                                                        'there, with its four buttons two by two.'), False, (
-        '.oa-stepper-controls{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:28px}.oa-stepper-why{margin-top:28px}')
+                                                        'there, with its four buttons two by two, and one a row in a '
+                                                        'column of 24rem or less, where two would cut their words, as the '
+                                                        'code set stacks them.'), False, (
+        '.oa-stepper-controls{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:28px}.oa-stepper-why{margin-top:28px}'
+        '@container (max-width:24rem){.oa-stepper-controls{grid-template-columns:minmax(0,1fr);row-gap:28px}}')
 
 
 def p23():
