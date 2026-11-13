@@ -1008,7 +1008,21 @@ def sketch_names(body, caption):
     def fix(m):
         ids = [i for i in m.group(2).split() if descs.get(i) != cap]
         return m.group(1) + " ".join(ids) + m.group(3) if ids else m.group(0)
-    return re.sub(r'(<svg\b[^>]*\baria-labelledby=")([^"]*)(")', fix, body)
+    body = re.sub(r'(<svg\b[^>]*\baria-labelledby=")([^"]*)(")', fix, body)
+    # AX-S2 (round 3 fix pass): a drawing named by its title and its desc together is heard as one run of words, so a
+    # title that ends with no stop takes a period ("... the form to use instead. The same places ..."); the title is never
+    # shown on the page, so the period changes only what a reader hears
+    named = set()
+    for m in re.finditer(r'<svg\b[^>]*\baria-labelledby="([^"]*)"', body):
+        ids = m.group(1).split()
+        named.update(i for k, i in enumerate(ids) if k + 1 < len(ids) and ids[k + 1] in descs)
+
+    def stop(m):
+        t = m.group(3).rstrip()
+        if m.group(2) not in named or not t or re.search(r"[.?!:;\u201d\u2019\"')]$", t):
+            return m.group(0)
+        return m.group(1) + t + "." + m.group(4)
+    return re.sub(r'(<title\b[^>]*\bid="([^"]+)"[^>]*>)(.*?)(</title>)', stop, body, flags=re.S)
 
 
 # ---------------------------------------------------------------------------------------------------------------

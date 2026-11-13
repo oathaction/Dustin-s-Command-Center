@@ -10,10 +10,12 @@
  * (the row's code, default US), nation_label ({value}, {margin}), dc ('DC' square words), codes (false: no state codes),
  * state_lines (true on a county layer: state borders in the context ink at 0.5 px), none_label (a region with no value),
  * none_hatch (true: that region and its key swatch take a hatch in the context ink over the land ink; BC-S3),
- * outline_all (true: the context edge round the land). formats: value, margin. */
+ * outline_all (true: the context edge round the land), phone_tiles (true: under 480 px the states take the studio's tile
+ * grid, every state's code on its tile; set phone "differs"; C-M1, round 3 fix pass). formats: value, margin. */
 (function (K) {
   'use strict';
   var STEPS = ['seq-1', 'seq-3', 'seq-4', 'seq-5'];
+  var fill_of_cls = function (steps, it) { return it.cls ? steps[it.cls - 1] : 'land'; };
   var on_ink = function (fill) { return /^(seq|mag|div)-\d$/.test(fill || '') ? 'on-' + fill : 'label'; };   // the step's own label ink
   // one map: o = {layer, x, y, w, max_h, items: [{id, cls (1 to n, or null), data, code}], steps, codes, dc, dc_room,
   // state_lines, outline_all}; returns {T, bottom, unplaced}. dc_room (AX-S3, round 3 fix pass): DC's square and its
@@ -148,7 +150,7 @@
   var def = K.register_chart({
     form: 'choropleth', name: 'Choropleth', family: 'maps',
     encode: { code: 'code?', id: 'id?', value: 'number', margin: 'number?' },
-    labels: ['layer', 'bins', 'class_field', 'steps', 'class_labels', 'key_title', 'nation', 'nation_label', 'dc', 'codes', 'state_lines', 'none_label', 'outline_all'],
+    labels: ['layer', 'bins', 'class_field', 'steps', 'class_labels', 'key_title', 'nation', 'nation_label', 'dc', 'codes', 'state_lines', 'none_label', 'none_hatch', 'outline_all', 'phone_tiles'],
     phone: 'same',
     draw: function (c) {
       var L = c.labels, W = c.width, f = c.spec.formats || {}, G = globalThis.OAChartGeo;
@@ -164,6 +166,26 @@
         var nw = String(L.nation_label).replace('{value}', K.fmt(nrow[ev], f.value || 'number:1')).replace('{margin}', em ? K.fmt(nrow[em], f.margin || 'number:1') : '');
         var nb = c.text(0, y + 12, nw, { role: 'tick', weight: 700, max: W });
         y = nb.bottom + 4;
+      }
+      if (c.phone && L.phone_tiles && ec && G.tiles) {
+        // C-M1 (round 3 fix pass): under 480 px the states take the studio's tile grid (S07's), one square each in the same
+        // classes, steps and edges, so every state keeps its code where outlines leave most of them no room; a code sits
+        // on its tile in its step's label ink with 1 px to spare each side, and any that cannot is named in a note
+        var tm = K.parts.tiles(c), top = y + 10, tsize = c.t('type-tile-code-phone'), lost = [], tb2 = top;
+        items.forEach(function (it) {
+          var t = G.tiles[it.code];
+          if (!t) return;
+          var x = t[0] * tm.pitch, yy = top + t[1] * tm.pitch, fl = fill_of_cls(steps, it);
+          c.rect(x, yy, tm.size, tm.size, { fill: fl, data: it.data });
+          if (it.cls === 1 || !it.cls) c.rect(x + 0.5, yy + 0.5, tm.size - 1, tm.size - 1, { stroke: 'context', width: 1, mark: false });
+          var cw = c.measure(it.code, 'tick', 600) * tsize / c.size('tick');
+          if (tm.size - 2 >= cw) c.text(x + tm.size / 2, yy + tm.size / 2 + tsize * 0.35, it.code, { role: 'tick', size: tsize, weight: 600, anchor: 'middle', fill: on_ink(fl) });
+          else lost.push(it.code);
+          tb2 = Math.max(tb2, yy + tm.size);
+        });
+        if (lost.length) tb2 = c.text(0, tb2 + 20, K.word('unlabeled_marks').replace('{codes}', lost.sort().join(', ')), { role: 'note', max: W, fill: 'secondary' }).bottom;
+        c.height(tb2 + 4);
+        return;
       }
       var r = panel(c, { layer: layer, x: 0, y: y + 10, w: W, items: items, steps: steps, codes: L.codes !== false && !!ec, dc: L.dc, merge: !!L.state_lines, state_lines: L.state_lines, outline_all: L.outline_all });
       var bottom = r.bottom;

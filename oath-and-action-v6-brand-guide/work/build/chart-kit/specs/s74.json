@@ -165,7 +165,9 @@
   "special_label": "Lines of authority, no sign",
   "from_label": "From",
   "to_label": "To",
-  "axes_short": "Rows: where a connection starts. Columns: where it ends."
+  "axes_short": "Rows: where a connection starts. Columns: where it ends.",
+  "diagonal": "frame",
+  "diagonal_label": "Within one region"
  },
  "notes_internal": [
   "Maker B, round 3. Data plan row 95 with change 1, rule 14.105. Draws the derived v7-region-connection-matrix (from v7-links-with-regions), V7 snapshot October 15, 2026; where drops the 56 empty pairs, so the table lists the 44 filled cells as links (from, to, count), R3-6.",
