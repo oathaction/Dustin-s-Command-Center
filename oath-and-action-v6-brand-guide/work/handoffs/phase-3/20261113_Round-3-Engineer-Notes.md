@@ -219,3 +219,48 @@ To others:
 - Modified: `work/build/chart-kit/kit.js` (moved groups read by the checks, links, curve points, grouped tables, the island's geoids, step label inks, one-column CSV cells), `parts.js` (R3-5's parts, `K.geo` and the map parts, the legacy names, `place_labels`' `ok` and `ring0`), `checks.js` (links, RB3-G1, boundary datasets, grouped tables, step inks, one-column CSV), `oa-chart.mjs` (boundary datasets, grouped islands and page check, self-test cases), `kit.css` (round dots, step label inks), `README.md` (round 3), `geo.js` (regenerated from the 2024 files), `tools/geo_build.py` (rewritten for the 2024 files); `work/build/scripts/phase-2/guide_build.py` (map geometry as its own part); `work/build/scripts/phase-3/guide_charts.py` (geometry allowance), `data_round0_build.py` (`.geojson` reading, ENG-R3-1), `phase3_ch14_build.py` (default rounds 1, 2 and 3, DR-253).
 - Deleted: `work/build/chart-kit/geo-LICENSE.txt` (us-atlas's license; no us-atlas data remains, R3-4).
 - Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c155381-70e7-5490-bd84-f6f867d97cb7/scratchpad/phase-3/round-3/engineer/` (the DL-E1 measure in `dle1/`, snapshots, builds `b1` to `b3`, `kit-all1` to `kit-all3`, trial maps in `t/`).
+
+## Review fix pass
+
+November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Engineer" paragraph, calls D3-1320, D3-1324 to D3-1326 and D3-1328) and the data lead's rulings under "Review fix pass" in `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC (clock read). Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/`, with a frozen copy of the kit and the 84 specs as they stood at the start in `base/` for snapshots.
+
+### Summary
+
+- **ST-M1, AX-M1 LANDED (04:38 UTC):** `K.group_cell`'s `first` runs above the numeric guard and prints the group's first row through `K.cell_text` whatever its type. S73's "From" names the fund in all seven rows and both refunds print "28C, refund". Told the main session for maker B.
+- **ST-S9, AX-S4, C-S4 LANDED (04:38 UTC):** `table.group.sort` takes `name` (the key column's printed words), and `key` sorts by the printed name where the key column sets `state_name`. S81, S82 and S83 now run Alabama, Alaska, Arizona, Arkansas with no spec change.
+- **AX-M1's check LANDED:** a printed column empty in every row fails, in the spec check (`check`, `build`, the sweep and the guide build) and in the page check (read from the page's own table).
+- **AX-M2's warning LANDED:** a column with `words` that prints a stored value its words do not map warns (it does not fail); `"words_pass": true` on the column silences it. S68 warns until maker A maps 3, 4, 7 and 8.
+
+(More items follow as they land.)
+
+### Items done, by code
+
+| Code | What changed | Where |
+|---|---|---|
+| ST-M1, AX-M1 | `first` prints text; specs using it on a grouped table: S69 (numbers, unchanged) and S73 (text, now printed) | `kit.js` `K.group_cell` |
+| ST-S9, AX-S4, C-S4 | `sort: "name"`, and `sort: "key"` by name where `state_name` | `kit.js` `K.table_groups` |
+| AX-M1 (check) | empty printed column fails | `checks.js` `check_spec`; `oa-chart.mjs` page check |
+| AX-M2 (check) | unmapped `words` value warns; `words_pass` | `checks.js`; `oa-chart.mjs` prints warnings and writes them to the check file |
+
+### Routine calls, review fix pass
+
+- D3-xxx | `first` prints the group's first row as stored, through the column's words and empty word | The data lead's ruling on ST-M1: "the group's first row through `K.cell_text` whatever its type"
+- D3-xxx | `sort: "key"` sorts by the printed name wherever the key column prints a state's name, and `sort: "name"` does so for any key column | Call 2 asks the sort "where a key prints as a state's name"; doing it in the kit fixes S81 to S83 and every map that copies them with no spec change
+- D3-xxx | The name sort folds case and compares by code point, the key breaking ties | One order in Node and every browser, with no locale tables
+- D3-xxx | An empty printed column fails in the spec check as well as the page check | `check` and the sweep run without a browser; the page check proves the page prints what the Node table prints
+- D3-xxx | An unmapped `words` value is a warning, printed under the spec's PASS line and written to its check file, never a fault, and the guide build does not list it | The data lead's ruling on AX-M2: S82 depends on the fallback
+
+### Contract changes, review fix pass
+
+- `table.group.sort`: `"key"`, `"name"`, or left out (first seen). With `"key"` and a key column that sets `state_name`, the groups sort by the printed name.
+- A column (grouped or not) may set `"words_pass": true`: its stored values print where its `words` give none, with no warning.
+- `check_spec` returns `{faults, warnings, rows, datasets}`; `run_spec`'s result carries `warnings`; each check file carries `warnings`.
+
+### Tested, review fix pass
+
+- Snapshot against the frozen kit and specs (`tools/kit_snapshot.mjs`, 924 drawings and figures from 84 specs): after ST-M1 and the sort, only the figures (tables) of S73, S81, S82 and S83 differ; no drawing differs.
+- `build s69 s73 s68 s82 s81 s83 --no-png --no-sweep`: 6 PASS, 0 faults; S68 prints the AX-M2 warning for "7", "3", "4" and "8". `build s73 s81` with captures at 1440 and 390 px on both grounds: 0 faults, the page check's empty-column reading included. S73's and S69's page tables read in Node (`gt.mjs` in scratch).
+
+### Not tested, review fix pass
+
+- (Kept current as the pass goes.)

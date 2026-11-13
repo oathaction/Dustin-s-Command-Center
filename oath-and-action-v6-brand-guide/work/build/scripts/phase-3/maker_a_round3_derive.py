@@ -79,14 +79,42 @@ def route_dates():
     return out
 
 
+# Round 3 fix pass (A-M1, ST-SS10): two cells of usgov-route-requirements print in a reader's grid, and their words
+# carry a studio word ("round 0") and an undefined term ("cloture"). The grid takes plain words for them; the meaning
+# is unchanged. A cell that already reads the new words passes; one that reads neither is a fault.
+REWORD = [
+    ('SS', 'sources', 'State constitutions read in round 0: Massachusetts, Nebraska, Virginia, Arizona',
+     'State constitutions read: Massachusetts, Nebraska, Virginia and Arizona'),
+    ('FR', 'what_it_takes', 'A majority of the chamber; in the Senate, two-thirds of senators present and voting to end debate '
+     'on a rules change, while precedents set by majority vote changed cloture on nominations in 2013 and 2017',
+     'A majority of the chamber; in the Senate, two-thirds of senators present and voting to end debate on a rules change, '
+     'while precedents set by majority vote changed the vote needed to end debate on nominations in 2013 and 2017'),
+]
+
+
+def reword(q):
+    """The reader's words for the cells REWORD names; returns the list of (route, column) changed."""
+    done = []
+    for route, col, old, new in REWORD:
+        if q['route'] != route:
+            continue
+        if q[col] == old:
+            q[col] = new
+            done.append((route, col))
+        elif q[col] != new:
+            FAULTS.append('route %s, %s: reads neither the stored nor the reader’s words' % (route, col))
+    return done
+
+
 def grid():
     v7 = read_json('v7-routes')
-    req = {r['route']: r for r in read_csv('usgov-route-requirements')}
+    req = {r['route']: dict(r) for r in read_csv('usgov-route-requirements')}
     dates = route_dates()
     words = {'2026-11-11': 'November 11, 2026', '2026-11-12': 'November 12, 2026'}
-    rows = []
+    rows, changed = [], []
     for r in v7:
         q = req[r['route']]
+        changed += reword(q)
         if q['name'] != r['name']:
             FAULTS.append('route %s: names differ (%s, %s)' % (r['route'], r['name'], q['name']))
         ds = dates.get(r['route']) or []

@@ -799,3 +799,21 @@ Read from `work/handoffs/phase-3/20261113_CD-Review-Of-Round-3.md` at 04:35 UTC;
 - D3-xxx | S78's and S81's titles name the survey as the source of their class counts, and stay Findings | Rule 14.9 with the notes' crossing counts (C-S3)
 - D3-xxx | Entry 14.124 points to Rule 14.7's failure plate | One lesson in two places whichever way the avoid sketch's colors go (SK-S2)
 - D3-xxx | The avoid sketch's misleading half draws invented places of unequal size, still in gray until Dustin decides its colors | The land-for-votes harm the entry names becomes visible (Q2, AX-S2)
+
+## Sign-off, review fix pass
+
+Waiting for owners' reports. Each sign-off will name what I looked at and at which widths.
+
+### Tested, review fix pass
+
+- Clock read with `date -u` at 04:24, 04:26, 04:30, 04:31, 04:32, 04:34, 04:37 and 04:38 UTC.
+- `st_check.py` (scratch, `python3 -I` over `work/build/data/`): S78's crossings on the unrounded estimates (10 states and DC) and on the printed figures (11 states and DC), no class change on rounding, class counts 9, 11, 20 and 11, the top class's states and which clear 79, the bottom class's named states under 71; S81's 3,143 counties, 549 at or above $80,734 (±$166), 585 at $80,000 or more; S83's no-dot counties and employees at both units (1,354 and 2,841,136; 2,426 and 15,370,827, two counties with no count left out), 13,040 and 2,402 dots, 132,151,802 in all; S16's lowest and highest states and the gap tests for DC against Minnesota and Oregon and Arkansas against Texas; S82's 36 races under 5 points by party and state, the list's bytes for 36 and for all 435 seats, the margin classes and marks; PW03's eight bodies and their orders; S76's transfers netted in all and per candidate, the 84 candidates with more out than in, the 297 campaigns that do not balance and the one that leaves $1,500,000.00, the derived file's sixteen lines; the four unaccented names in the roll call file; Puerto Rico in the DOL history file and in none of the income, employment or broadband files.
+- One-off checks by script: `K.group_cell` in `kit.js` (the numeric guard above `first`) and the specs that use `first`; S68's, S73's, S82's and S84's table settings; S82's `codes_note`; every round 3 plate's bytes with its frame, measured from the main session's strict build (S82 13,270; S81 13,264; S69 14,591); `census-cb-2024-cd119.geojson`'s six district-98 features; the DOL history file's territories, its "..." cells (20, five states) and the marks in the four panel years ([c] 14, (g) 12, (e) 11, (d) 4); DC above $7.25 in each panel year; S72's votes by chamber, party and vote and the Senate Democrats' order in the frozen file; the "round 0" cell in both route files; PW03's record for order 7; DR-64's text in the decision log; S12's spec and its form's `tight` test; the titles and word counts of S66, S67, S71, S72, S78 and S81.
+
+### Not tested, review fix pass
+
+- No build, capture or browser this pass: nothing has changed yet. Every drawing ruled on here waits for the owners' builds and my sign-off.
+- The reviewers' captures, forced-colors findings, label counts at phone widths (S78's 23 and 41, S12's drawn widths) and the production test's runs: I read their reports and did not repeat them.
+- Whether the stacked tile fits S12 at 558 px (the engineer measures it), and S82's and S84's weight after their changes.
+- Which Census tables publish Puerto Rico rows (the research lead confirms).
+- The live FEC, Census, Clerk and Department of Labor sources.

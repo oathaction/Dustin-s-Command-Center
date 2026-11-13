@@ -135,3 +135,28 @@ November 13, 2026, after the data lead's "Sign-off, maker A" (MA-1 to MA-8, with
 - D3-xxx | S69's alt reads "each with its subcommittees, 109 in all" | S69 had grown to 13,854 bytes with no change of mine (the kit's frame); now 13,845
 - Tested: `oa-chart.mjs build s70` and `s69` with the sweep and PNGs at four page widths, both grounds: 2 PASS, 0 faults; S70's page table read from the build page (the Supreme Court row reads as set); `maker_a_round3_derive.py --figures` 35 of 35; `phase3_ch14_build.py --rounds 1,2,3` 0 faults; strict build exit 0, no warning, 11,226,719 bytes; plates S66 9,357, S67 12,495, S68 8,902, S69 13,845, S70 10,105, S71 11,402, S72 11,498 bytes.
 - Kept: the editor's second-look words (S68's and S71's alts, entry 14.96's why), unchanged.
+
+## Review fix pass
+
+November 13, 2026, from 04:35 UTC (clock read). Brief: `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md`, maker A's paragraph, under calls D3-1319 to D3-1328 and the round 3 brief's calls 1 to 13. Rulings read: the data lead's "Review fix pass" (ST and AX so far). Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/maker-a/`. Written as I go.
+
+### Summary
+
+- 04:3x. Started with the items no ruling waits on. ST-M3, AX-M2 and A-M2 done in S68's spec.
+
+| Item | Spec or file | Status |
+|---|---|---|
+| ST-M3, AX-M2, A-M2 | S68 table, column "Line of authority" | done: orders 3, 4, 7 and 8 print "None drawn" |
+| A-M1 | S71, the route grid (derive script) | in progress |
+| ST-S10 | S71, the route grid (derive script) | in progress |
+| AX-S8 | S66 ("OMB", "notice and comment") | in progress |
+| A-S6 | S72's named members by surname | in progress |
+| A-S4 | S69, S70, S71 phone drawings at a desk | in progress |
+| A-S5 | S68's boxes; the HHS row's note | boxes in progress; the note waits on the data lead's words |
+| A-S1, A-S2 | titles of S66, S67, S71, S72 | wait on the data lead's CD rulings |
+| AX-S1 | S72 in forced colors | waits on the engineer's CSS |
+| ST-S8 | S72 rebuilt on the refrozen roll call file | waits on the research lead |
+
+### Routine calls, review fix pass
+
+- D3-xxx | S68's "Line of authority" column maps orders 3, 4, 7 and 8 to "None drawn" | ST-M3's ruling; the column's `empty` never applied, since those orders are not empty
