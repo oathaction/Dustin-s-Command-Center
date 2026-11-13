@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. The cartographer,
 
 ## Summary
 
-Done (02:25 UTC by the container's clock), waiting on the editor's words pass and the data lead's sign-off; the quick guide check passes with 0 failures on my second strict build. Seven map forms written on the engineer's R3-2 parts; S78 to S84 pass `oa-chart.mjs build` with the sweep, 0 faults; S16 placed on the 2024 outlines with its credit note replaced; entries 14.113 to 14.124 written; both sketches drawn; `phase3_ch14_build.py --rounds 1,2,3`: 0 faults; a strict build: exit 0, no warning on my plates. Every figure in my titles, notes and alts is checked by `cartographer_round3_derive.py --figures` (0 faults).
+Done, with the data lead's sign-off fixes in (see "Sign-off fixes", about 03:00 UTC by the container’s clock): every map passes the kit with the sweep, the third strict build exits 0, and the quick guide check passes with 0 failures. Seven map forms written on the engineer's R3-2 parts; S78 to S84 pass `oa-chart.mjs build` with the sweep, 0 faults; S16 placed on the 2024 outlines with its credit note replaced; entries 14.113 to 14.124 written; both sketches drawn; `phase3_ch14_build.py --rounds 1,2,3`: 0 faults; a strict build: exit 0, no warning on my plates. Every figure in my titles, notes and alts is checked by `cartographer_round3_derive.py --figures` (0 faults).
 
 | Rule | Spec or sketch | Form | Bytes in the second strict build (02:10) | Status |
 |---|---|---|---|---|
@@ -142,6 +142,14 @@ From the data lead's "Sign-off, cartographer" (C-1 to C-4, D-1) and the main ses
 - Looked at: S16 at 1440 px on Charcoal (land edge, Alaska and Hawaii framed) and Alaska and Hawaii cropped at 1440 px on both grounds before the change, in my clean build and in the data lead's `kit-r3c` captures and SVG export (land drawn in all four); S82 at 1440 px on Newsprint and S80 on Charcoal (the closest races filled beside the other party's outlines); S84 at 256 px (the key wraps inside the plate); S79 at 1440 px (the red point back); sketch 14.124 on Newsprint, Charcoal and grayscale at twice size.
 - Sketch 14.124's words by the guide check's own background rule (`svgUnder`, copied): lowest 5.49 to 1 on Newsprint, 7.26 on Charcoal; 3,797 bytes; its first `<desc>` equals the entry's `sketch_alt`.
 - `cartographer_round3_derive.py --figures`: 0 faults after the editor's words and these fixes.
+- `--check`: 0 faults; `phase3_ch14_build.py --rounds 1,2,3`: 0 faults.
+- A third strict build (`guide_build.py --strict`, `guide3.html`): exit 0, 11,227,146 bytes, no warning on my plates; chapter 14's share 14,073 bytes a plate for 13 to come. My plates: S16 9,909; S78 8,343; S79 3,569; S80 5,730; S81 12,515; S82 12,465; S83 12,503; S84 10,117 bytes, each under D3-1097's 13,852 with a 1,300-byte frame; entry 14.113 6,436 (sketch 2,700), entry 14.124 8,127 (sketch 3,894).
+- `guide_check.js --quick --no-captures` on that build: PASS, 0 failures, 2 widths, 344 rules, 694 specimens.
+
+### Not tested
+
+- The data lead's sign-off of the held items (S80, S82, S84, S16, entries 14.119, 14.121, 14.124 and sketch 14.124) at 256 px in grayscale; I looked at 256 px for S84 only.
+- Forced colors, print and screen readers beyond the kit's own emulated checks.
 
 ## Files
 
