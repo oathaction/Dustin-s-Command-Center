@@ -37,7 +37,18 @@ For the engineer and the cartographer: Alaska's Aleutians west of 180 degrees ca
 
 ## Routine calls
 
+- D3-xxx | The boundary files are fetched again and frozen by a script in the repository, `research_geometry_freeze.py`, with its own standard-library shapefile reader checked against pyshp | Round 1's staging was lost with its scratch folder; anyone can rerun the freeze with no package the build lacks, and a rerun writes nothing
+- D3-xxx | Rings are written in RFC 7946's order, outer rings counterclockwise and holes clockwise, reversing the shapefile's vertex sequence with no value changed | R1-C7 names RFC 7946, whose section 3.1.6 makes the order a MUST; the kit uses no d3-geo, and a planar projection fills either way
+- D3-xxx | A vertex that rounding to six decimals makes equal to the one before it is dropped and counted (8 in the districts file, none elsewhere) | R1-C7 allows six decimals; a segment of no length would trip code that takes a segment's direction, and neighboring districts drop the same vertex, so shared edges stay identical
+- D3-xxx | At-large seats read "AL" and delegate areas keep the Bureau's "98" | R1-C7 names "AL" for an at-large seat; a delegate has no vote on the House floor, so calling the area an at-large seat would mislead
+- D3-xxx | Each boundary file keeps every feature the Bureau's file holds, Puerto Rico and the delegate areas included | C1 freezes a table as published; a map's CSV chooses what it draws
+- D3-xxx | Each boundary sidecar quotes the Bureau's terms in `terms_of_use`: the zip metadata's use and access constraints word for word, the product page and the description page | The brief asks for the terms in each sidecar; the metadata carries the formal terms, and neither page states a license
+- D3-xxx | States, counties and nation take domain `all`, the districts D02 and California's counties D10, as the locator's Gazetteer row does | A boundary file carries no data values and serves each map's own domain
+
 ## Requests
+
+- **To the engineer (R3-2).** The five boundary files are frozen. Today's `data_round0_build.py --check` reads 117 tables with 10 faults, all of them these files: "only .csv, .json and .meta.json files belong here" and "no rows", five each. They clear when the check reads `.geojson` under R1-C7. The script's own check of R1-C7 (`research_geometry_freeze.py` without `--freeze`) passes for all five. Two facts for the projection: rings are in RFC 7946's order (outer counterclockwise; reverse them if you use d3-geo), and Alaska's Aleutians west of 180 degrees carry positive longitudes.
+- **To the cartographer.** `census-cb-2024-counties-california-5m` is frozen for S79 (Kern County `06029`). For S83, County Business Patterns has no row for 15005 (Kalawao County, Hawaii) or 48269 (King County, Texas), which the county geometry holds. The district file's at-large seats read "AL" where the Clerk's file reads "00"; join on `geoid`.
 
 ## Tested
 

@@ -35,14 +35,20 @@
         "field": "reaches_city_elections",
         "label": "Does a ban reach city elections?",
         "format": "text",
-        "words": { "yes": "Yes", "partly": "Partly" },
+        "words": {
+          "yes": "Yes",
+          "partly": "Partly"
+        },
         "empty": "No ban"
       },
       {
         "field": "reaches_city_elections",
         "label": "Then",
         "format": "text",
-        "words": { "yes": "A city cannot adopt it while the ban stands", "partly": "Home-rule cities may, at a price" },
+        "words": {
+          "yes": "A city cannot adopt it while the ban stands",
+          "partly": "Home-rule cities may, at a price"
+        },
         "empty": "Check the state’s home-rule law"
       },
       {
@@ -72,10 +78,21 @@
   "phone_note": "Where three columns cannot each hold 190 px, the answers run down the page, each set in from a line at the left.",
   "artboard": "reading",
   "domain": "D02",
-  "states": ["OH", "TN"],
+  "states": [
+    "OH",
+    "TN"
+  ],
   "sort": [
-    { "field": "reaches_city_elections", "values": ["yes", "partly"] },
-    { "field": "name" }
+    {
+      "field": "reaches_city_elections",
+      "values": [
+        "yes",
+        "partly"
+      ]
+    },
+    {
+      "field": "name"
+    }
   ],
   "encode": {
     "place": "name"
@@ -87,20 +104,31 @@
       "branches": [
         {
           "answer": "Yes",
-          "where": { "reaches_city_elections": "yes" },
+          "where": {
+            "reaches_city_elections": "yes"
+          },
           "count": "{n} states",
           "leaf": "A city cannot adopt it while the ban stands.",
           "list": true
         },
         {
           "answer": "Partly",
-          "where": { "reaches_city_elections": "partly" },
+          "where": {
+            "reaches_city_elections": "partly"
+          },
           "count": "Ohio",
           "leaf": "Home-rule cities may still adopt it, but lose state local government fund distributions while it is in effect."
         },
         {
           "answer": "No",
-          "where": { "reaches_city_elections": null, "code": { "not": ["DC"] } },
+          "where": {
+            "reaches_city_elections": null,
+            "code": {
+              "not": [
+                "DC"
+              ]
+            }
+          },
           "count": "{n} states and the District of Columbia",
           "then": {
             "q": "Check your state’s home-rule law. May a city set its own election rules?",
@@ -119,10 +147,20 @@
       ]
     }
   },
-  "typography": { "curl_quotes": true, "nbsp": true },
+  "typography": {
+    "curl_quotes": true,
+    "nbsp": true
+  },
   "notes_internal": [
     "Maker A, round 3. Data plan row 87 with the sign-off's change 12, rule 14.97. Domain D02 from the sidecar; Ohio and Tennessee count, since the tree and its notes name them.",
     "The first question branches on reaches_city_elections (yes for the 17 full bans and Tennessee, partly for Ohio, empty where there is no ban). The third answer's where leaves DC out of its count so the words read 31 states and the District of Columbia; the table keeps every row.",
     "The second question's two answers rest on V7's local route (v7-rcv-local-routes; routes.items LOC): its instrument (ordinance, charter amendment or local practice) and its dependence on state home-rule law, with Dillon's Rule states, where cities hold only the powers the state grants."
-  ]
+  ],
+  "v7": {
+    "ids": [
+      "R-01",
+      "R-02"
+    ],
+    "snapshot": "2026-10-15"
+  }
 }
