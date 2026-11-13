@@ -39,7 +39,8 @@ Started 00:50 UTC. Kept current as the work goes.
 ## Requests to the engineer
 
 - **C-E1, `kit.js`, the grouped table (R3-3):** S82's table groups its 435 seats by state, one row a state, every seat in the CSV export. It needs one more `agg`: a count of rows whose field equals a value, as `{"agg": "count_eq", "field": "winner_group", "value": "Democratic"}`, so each row prints the seats each party won. `count_in` counts S82's margin classes as is (`to: 4.95`, `9.95`, `19.95` match the printed classes). S80, at 13 rows, needs none.
-- **C-E2, for information:** S82 reads its tile layout through `c.extra` (its spec's second dataset, `census-gazetteer-2024-cd119-tile-layout`); every row rides in the island, about 4 KB before compression.
+- **C-E3, `oa-chart.mjs` `build`, a grouped table on the page:** with `table.group`, the page check reads 0 table rows against the data's rows (`table: the page shows 0 table rows or cells for 435 data rows`, S82 at 1440 and 390 px on both grounds). The check takes `K.table_rows(...).rows.length` (435) and counts the page's rows as 0; for a grouped table it should count one row a group (50 for S82) or skip. Every other check passes. S81 and S83 will meet the same fault.
+- **C-E2, for information (superseded 04:30):** S82 no longer reads a second dataset; it reads `clerk-house-results-2024-classes`, my derived table with each seat's class, mark and square. S82 reads its tile layout through `c.extra` (its spec's second dataset, `census-gazetteer-2024-cd119-tile-layout`); every row rides in the island, about 4 KB before compression.
 
 ## Requests to the data lead
 

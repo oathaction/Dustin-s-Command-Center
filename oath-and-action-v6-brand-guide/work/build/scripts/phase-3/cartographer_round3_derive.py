@@ -556,6 +556,9 @@ def house_classes(lay):
             "row": {"type": "integer", "description": "tile layout row"}
         },
         "printed_source_line": m0["printed_source_line"],
+        "source_line_variants": {
+            "with_tile_layout": "Source: Office of the Clerk, U.S. House of Representatives, Statistics of the Presidential and Congressional Election of November 5, 2024, 435 House districts; U.S. Census Bureau, 2024 Gazetteer Files, congressional districts of the 119th Congress. Retrieved November 12, 2026. Margins computed by Oath & Action from the official counts; tile layout by Oath & Action from the Bureau’s district centers."
+        },
         "ledger_row": m0.get("ledger_row"), "domain": m0.get("domain"), "states": [],
         "derived_from": ["clerk-house-results-2024-by-district.csv", "census-gazetteer-2024-cd119-tile-layout.csv"],
         "derivation": "Each race's printed margin, class (data lead's ruling (f), round 3) and mark, joined to its square in the tile layout by state and district (cartographer_round3_derive.py)",

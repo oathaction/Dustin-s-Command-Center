@@ -19,7 +19,7 @@
   "illustrative": false,
   "alt": "A tree of the federal courts. The Supreme Court, with nine justices, sits at the top. Under it are 12 regional courts of appeals, from the District of Columbia Circuit with 11 judgeships to the Ninth Circuit with 29, each listing the states and territories whose district courts it hears appeals from, with each district court’s judgeships; the Ninth Circuit’s districts hold the most, 112. Apart from them, the Federal Circuit, with 12 judgeships, hears appeals by subject from every district. The courts of Guam, the Northern Mariana Islands and the Virgin Islands are territorial courts, not Article III courts.",
   "table": {
-    "caption": "The federal courts and the judgeships the law authorizes for each, the Supreme Court, then the courts of appeals, then the district courts grouped by the court of appeals that hears their appeals",
+    "caption": "The federal courts grouped by the court that hears their appeals, with the judgeships the law authorizes, as the 2024 edition of the U.S. Code sets them; the Federal Circuit hears appeals by subject from every district, and the CSV file lists each court",
     "columns": [
       {
         "field": "court",
@@ -58,7 +58,51 @@
         "label": "The law",
         "format": "text"
       }
-    ]
+    ],
+    "group": {
+      "by": [
+        "parent"
+      ],
+      "columns": [
+        {
+          "label": "Appeals go to",
+          "agg": "key",
+          "words": {
+            "Supreme Court of the United States": "The Supreme Court, from the 13 courts of appeals",
+            "U.S. Court of Appeals for the District of Columbia Circuit": "The District of Columbia Circuit, from its district courts",
+            "U.S. Court of Appeals for the First Circuit": "The First Circuit, from its district courts",
+            "U.S. Court of Appeals for the Second Circuit": "The Second Circuit, from its district courts",
+            "U.S. Court of Appeals for the Third Circuit": "The Third Circuit, from its district courts",
+            "U.S. Court of Appeals for the Fourth Circuit": "The Fourth Circuit, from its district courts",
+            "U.S. Court of Appeals for the Fifth Circuit": "The Fifth Circuit, from its district courts",
+            "U.S. Court of Appeals for the Sixth Circuit": "The Sixth Circuit, from its district courts",
+            "U.S. Court of Appeals for the Seventh Circuit": "The Seventh Circuit, from its district courts",
+            "U.S. Court of Appeals for the Eighth Circuit": "The Eighth Circuit, from its district courts",
+            "U.S. Court of Appeals for the Ninth Circuit": "The Ninth Circuit, from its district courts",
+            "U.S. Court of Appeals for the Tenth Circuit": "The Tenth Circuit, from its district courts",
+            "U.S. Court of Appeals for the Eleventh Circuit": "The Eleventh Circuit, from its district courts",
+            "null": "No court: the Supreme Court hears the last appeal"
+          }
+        },
+        {
+          "label": "Courts",
+          "agg": "count_eq",
+          "field": "level",
+          "value": [
+            "supreme",
+            "appeals",
+            "district",
+            "district-territorial"
+          ]
+        },
+        {
+          "label": "Judgeships",
+          "agg": "sum",
+          "field": "judgeships",
+          "format": "integer"
+        }
+      ]
+    }
   },
   "chart_notes": [
     "Each court of appeals’ box gives its own judgeships and the sum of its district courts’ judgeships, and each row under it names a state or territory with its district courts and their judgeships. A shaded row is a territorial court, not an Article III court."
@@ -127,7 +171,8 @@
   "notes_internal": [
     "Maker A, round 3. Data plan row 90 with the sign-off's change 5, rule 14.100. Domain D05 from the sidecar.",
     "Data lead ruling (b): nodes with a subject-ink edge, links in the context ink (elbow); each court's judgeships on its node; the territorial courts shaded (the track ink, which holds words at 4.5 to 1 on both grounds, where the light fill measures 4.29 on Charcoal) with a context edge and the words 'not an Article III court'; the Federal Circuit apart, named.",
-    "The 673 and 4 in note 1 are the sidecar's own sums of 28 U.S.C. 133 (shared seats included) and the Title 48 courts; the drawing prints no single district total until the research lead's finding on 673 against 677 lands.",
-    "Every figure in the title, notes and alt checked by script: python3 -I work/build/scripts/phase-3/maker_a_round3_derive.py --figures, check S70."
+    "Every figure in the title, notes and alt checked by script: python3 -I work/build/scripts/phase-3/maker_a_round3_derive.py --figures, check S70.",
+    "D3-1097 (weight): the page's table groups the courts by the court that hears their appeals (table.group by parent): courts, counting no shared seat as a court, and judgeships summed; the drawing lists every court in reading order (R3-6) and the CSV export keeps every row.",
+    "Judge counts (research lead, round 3): the courts' 677 district positions are 28 U.S.C. 133's 673 plus the four judgeships of the three territorial courts (Guam 1, Northern Mariana Islands 1, Virgin Islands 2). Note 1 gives 673 Article III district judgeships, shared seats included, and four in the territorial courts, and prints no 677 total."
   ]
 }

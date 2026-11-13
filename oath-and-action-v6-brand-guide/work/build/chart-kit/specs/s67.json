@@ -33,7 +33,7 @@
       },
       {
         "field": "reaches_city_elections",
-        "label": "Does a ban reach city elections?",
+        "label": "Ban reaches city elections",
         "format": "text",
         "words": {
           "yes": "Yes",
@@ -42,25 +42,9 @@
         "empty": "No ban"
       },
       {
-        "field": "reaches_city_elections",
-        "label": "Then",
-        "format": "text",
-        "words": {
-          "yes": "A city cannot adopt it while the ban stands",
-          "partly": "Home-rule cities may, at a price"
-        },
-        "empty": "Check the state’s home-rule law"
-      },
-      {
         "field": "measure",
         "label": "Law",
         "format": "text",
-        "empty": "None"
-      },
-      {
-        "field": "enacted_year",
-        "label": "Year",
-        "format": "year",
         "empty": "None"
       },
       {

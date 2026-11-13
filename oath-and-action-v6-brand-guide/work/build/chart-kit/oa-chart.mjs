@@ -364,6 +364,11 @@ async function captures(items, o) {
               const tb = f.querySelector('table.oac-table');
               const out = { err, rows: tb && tb.hasAttribute('data-oa-lean') ? (tb.querySelector('tbody th[scope=row]') && tb.querySelectorAll('thead th').length > 1 && tb.querySelectorAll('tbody td[data-x]').length + tb.querySelectorAll('tbody td').length !== tb.querySelectorAll('tbody tr').length * (tb.querySelectorAll('thead th').length - 1) ? 0 : 0) : f.querySelectorAll('[data-oa-row]').length };
               if (tb && tb.hasAttribute('data-oa-lean')) out.rows = (isl => window.OAChart.rows_from_table(tb, isl.spec, isl))(window.OAChart.island(f.querySelector('script[data-oa-chart-data]'))).length;
+              // RB3-G2 (round 3): a grouped table's rows come back from the island; the page prints one row a group
+              if (tb && tb.hasAttribute('data-oa-group')) {
+                out.rows = (isl => window.OAChart.rows_from_table(tb, isl.spec, isl))(window.OAChart.island(f.querySelector('script[data-oa-chart-data]'))).length;
+                out.groups = tb.querySelectorAll('tbody tr').length;
+              }
               if (!svg) return out;
               const clone = svg.cloneNode(true);
               clone.removeAttribute('aria-describedby');
@@ -418,6 +423,7 @@ async function captures(items, o) {
               const t = K.table_rows(spec, res.rows);
               const want = t.pivot ? Object.keys(t.cell).length : t.rows.length;
               if (info.rows !== want) res.faults.push(`table: the page shows ${info.rows} table rows or cells for ${want} data rows (${g} ${w})`);
+              if (t.group && info.groups !== t.groups.length) res.faults.push(`table: the page prints ${info.groups} grouped rows for the data's ${t.groups.length} groups (${g} ${w})`);
               if (!info.export_ok) res.faults.push(`svg export: not standalone or no title and desc (${g} ${w})`);
               fs.writeFileSync(path.join(dir, `${stem}-${title_case(g)}-${w}.svg`), info.export);
               const fig = await p.$(fid);

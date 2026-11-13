@@ -71,6 +71,9 @@
   }
  },
  "printed_source_line": "Source: Office of the Clerk, U.S. House of Representatives, Statistics of the Presidential and Congressional Election of November 5, 2024, 435 House districts. Retrieved November 12, 2026. Margins computed by Oath & Action from the official counts.",
+ "source_line_variants": {
+  "with_tile_layout": "Source: Office of the Clerk, U.S. House of Representatives, Statistics of the Presidential and Congressional Election of November 5, 2024, 435 House districts; U.S. Census Bureau, 2024 Gazetteer Files, congressional districts of the 119th Congress. Retrieved November 12, 2026. Margins computed by Oath & Action from the official counts; tile layout by Oath & Action from the Bureau’s district centers."
+ },
  "ledger_row": "P7-215",
  "domain": "D02",
  "states": [],
