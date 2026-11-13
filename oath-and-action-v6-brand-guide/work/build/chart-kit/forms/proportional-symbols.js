@@ -1,12 +1,13 @@
 /* Proportional symbols (coverage plan 3.8, extended; S86). One circle for each row, its area in proportion to its count
  * (the radius by the square root, the largest at the drawing's widest circle), so counts too far apart for a bar's length
  * still compare. At a desk the circles stand side by side on one line, each named under it with its count; on a phone they
- * stand one under another, named beside. Rows too small to draw at that scale print as counts in words over the circles,
- * never as circles. A key of nested circles at set counts says that area carries the count.
+ * stand one under another, named beside. The circle the title names takes the subject ink with its words inside where they
+ * fit; the rest take the track ink with a 1 px context-ink edge (RF-1). Rows too small to draw at that scale print as counts
+ * in words over the circles, set off by a hairline, never as circles. A key of nested circles says that area is the count.
  * encode: category (text), value (number).
- * labels: names ({stored: printed}), named ([categories] in the subject ink; the rest take the light fill with an edge),
- * words_only ([categories] printed in words), word ("{v} {name}", each such row), words ("{list}", the line they print in,
- * the rows joined with "and"), key_steps ([counts]), key_title. formats: value. */
+ * labels: names ({stored: printed}), named ([categories]), words_only ([categories] printed in words), word ("{v} {name}",
+ * each such row), words ("{list}", the line they print in, the rows joined with "and"), key_steps ([counts]), key_title.
+ * formats: value. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -17,23 +18,34 @@
     draw: function (c) {
       var L = c.labels, W = c.width, ec = c.field('category'), ev = c.field('value'), f = c.spec.formats || {};
       var nm = function (r) { return (L.names || {})[r[ec]] || r[ec]; }, fv = function (v) { return K.fmt(v, f.value || 'integer'); };
-      var wo = L.words_only || [], all = c.all_rows || c.rows;
+      var wo = L.words_only || [], all = c.all_rows || c.rows, named = L.named || [];
       var words = all.filter(function (r) { return wo.indexOf(r[ec]) >= 0; });
       var circ = c.rows.filter(function (r) { return wo.indexOf(r[ec]) < 0; });
       var maxv = Math.max.apply(null, circ.map(function (r) { return +r[ev]; }));
-      var fill = K.parts.named_fill(c, L.named, ec);
+      var isn = function (r) { return named.indexOf(r[ec]) >= 0; }, wt = function (r) { return isn(r) ? 700 : 600; };
       var lab = c.size('label'), lh = Math.round(lab * 1.25), y = 0, gap = 16;
       var list = words.map(function (r) { return String(L.word || '{v} {name}').split('{v}').join(fv(r[ev])).split('{name}').join(nm(r)); });
       var joined = list.length > 1 ? list.slice(0, -1).join(', ') + ' and ' + list[list.length - 1] : list.join('');
+      // a named circle's words inside it, where each line fits its chord with 6 px to spare; true when they do
+      var inside = function (r, cx, cy, rad) {
+        var ls = c.wrap(nm(r), 'label', 2 * rad * 0.8, 700).concat([fv(r[ev])]), hh = lab + (ls.length - 1) * lh, top = cy - hh / 2;
+        var ok = ls.every(function (s, j) { var d0 = Math.max(Math.abs(top + j * lh - cy), Math.abs(top + j * lh + lab - cy)); return d0 < rad && c.measure(s, 'label', 700, true) + 12 < 2 * Math.sqrt(rad * rad - d0 * d0); });
+        if (ok) ls.forEach(function (s, j) { c.text(cx, top + j * lh + lab * 0.86, s, { role: 'label', weight: 700, anchor: 'middle', tnum: j === ls.length - 1, fill: 'label-on-subject' }); });
+        return ok;
+      };
       var draw_circle = function (r, cx, cy, R) {
         var rad = Math.sqrt(+r[ev] / maxv) * R;
-        c.circle(cx, cy, rad, Object.assign({ fill: fill(r), area_of: { value: +r[ev], max_value: maxv, max_radius: R }, data: { key: r[ec], field: ev, value: r[ev] } }, fill.edge(r)));
-        return rad;
+        c.circle(cx, cy, rad, { fill: isn(r) ? 'subject' : 'track', area_of: { value: +r[ev], max_value: maxv, max_radius: R }, data: { key: r[ec], field: ev, value: r[ev] } });
+        if (!isn(r)) c.circle(cx, cy, rad - 0.5, { stroke: 'context', width: 1, mark: false });
+        return isn(r) && inside(r, cx, cy, rad);
       };
-      var wt = function (r) { return fill.named && fill.is_named(r) ? 700 : 600; };
       var name_w = function (r, max) { var ln = c.wrap(nm(r), 'label', max, wt(r)), w = 0; ln.forEach(function (s) { w = Math.max(w, c.measure(s, 'label', wt(r))); }); return { w: w, n: ln.length }; };
-      // the rows too small to draw, in words over the circles
-      if (words.length) { var wb = c.text(0, lab * 0.86, String(L.words || '{list}').split('{list}').join(joined), { role: 'label', weight: 400, max: W }); y = wb.bottom + 22; }
+      // the rows too small to draw, in words over the circles, a hairline under them
+      if (words.length) {
+        var wb = c.text(0, lab * 0.86, String(L.words || '{list}').split('{list}').join(joined), { role: 'label', weight: 400, max: W });
+        c.line(0, wb.bottom + 10, W, wb.bottom + 10, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
+        y = wb.bottom + 26;
+      }
       var R, bottom;
       if (!c.phone) {
         // each circle's room is its own width or its name's on up to three lines, whichever is wider
@@ -45,11 +57,12 @@
         var g2 = circ.length > 1 ? Math.min(48, gap + (W - fit(R)) / (circ.length - 1)) : 0, x = 0;
         var base = y + Math.ceil(2 * R), low = base;
         circ.forEach(function (r) {
-          var s = slot(r, R), cx = x + s / 2;
-          draw_circle(r, cx, base - Math.sqrt(+r[ev] / maxv) * R, R);
-          var t = c.text(cx, base + 10 + lab * 0.86, nm(r), { role: 'label', weight: wt(r), anchor: 'middle', max: s + 0.5 });
-          var v = c.text(cx, t.bottom + lab * 0.86, fv(r[ev]), { role: 'label', weight: fill.named && fill.is_named(r) ? 700 : 400, anchor: 'middle', tnum: true });
-          low = Math.max(low, v.bottom);
+          var s = slot(r, R), cx = x + s / 2, rad = Math.sqrt(+r[ev] / maxv) * R;
+          if (!draw_circle(r, cx, base - rad, R)) {
+            var t = c.text(cx, base + 10 + lab * 0.86, nm(r), { role: 'label', weight: wt(r), anchor: 'middle', max: s + 0.5 });
+            var v = c.text(cx, t.bottom - lab * 0.241 + lh, fv(r[ev]), { role: 'label', weight: isn(r) ? 700 : 400, anchor: 'middle', tnum: true });
+            low = Math.max(low, v.bottom);
+          }
           x += s + g2;
         });
         bottom = low;
@@ -61,9 +74,10 @@
         circ.forEach(function (r) {
           var rad = Math.sqrt(+r[ev] / maxv) * R, nw = name_w(r, W - 2 * R - 14), th = nw.n * lh + lh;
           var h = Math.max(2 * rad, th), cy = y + h / 2;
-          draw_circle(r, R, cy, R);
-          var t = c.text(2 * R + 14, cy - th / 2 + lab * 0.86, nm(r), { role: 'label', weight: wt(r), max: W - 2 * R - 14 });
-          c.text(2 * R + 14, t.bottom + lab * 0.86, fv(r[ev]), { role: 'label', weight: fill.named && fill.is_named(r) ? 700 : 400, tnum: true });
+          if (!draw_circle(r, R, cy, R)) {
+            var t = c.text(2 * R + 14, cy - th / 2 + lab * 0.86, nm(r), { role: 'label', weight: wt(r), max: W - 2 * R - 14 });
+            c.text(2 * R + 14, t.bottom - lab * 0.241 + lh, fv(r[ev]), { role: 'label', weight: isn(r) ? 700 : 400, tnum: true });
+          }
           y += h + 12;
         });
         bottom = y - 12;
@@ -74,17 +88,15 @@
         var ky = bottom + 26;
         if (L.key_title) { var kt = c.text(0, ky + c.size('tick') * 0.86, L.key_title, { role: 'tick', weight: 600, max: W }); ky = kt.bottom + 10; }
         var kr = Math.sqrt(ks[0] / maxv) * R, kb = ky + 2 * kr, kx = kr + 1;
-        ks.forEach(function (s) { var r = Math.sqrt(s / maxv) * R; c.circle(kx, kb - r, r, { stroke: 'label', width: 1, mark: false }); });
-        var used = [];
+        ks.forEach(function (s) { var r = Math.sqrt(s / maxv) * R; c.circle(kx, kb - r, r, { stroke: 'context', width: 1, mark: false }); });
         ks.forEach(function (s) {
           var r = Math.sqrt(s / maxv) * R, ty = kb - 2 * r, lx = 2 * kr + 10;
-          var t = c.text(lx + 4, ty + c.size('tick') * 0.35, fv(s), { role: 'tick', tnum: true });
           c.line(kx, ty, lx, ty, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
-          used.push(t);
+          c.text(lx + 4, ty + c.size('tick') * 0.35, fv(s), { role: 'tick', tnum: true });
         });
         bottom = kb;
       }
-      c.key([{ fill: fill.named ? 'subject' : 'subject', direct: true }]);
+      c.key([{ fill: named.length ? 'subject' : 'track', direct: true }]);
       c.height(bottom + 6);
     }
   });

@@ -378,7 +378,7 @@ function page_html(specs) {
   // specs: [{spec, rows, columns, grounds, extra}]
   // a plain page: tokens.css, kit.css, the kit and its forms, and each figure with its data island (DR-235)
   const body = specs.map(({ spec, rows, columns, grounds, extra }) => grounds.map(g => `<section class="oa-surface-${g} oac-ground" data-ground="${g}">
-${(f => f.slice(0, f.lastIndexOf('</figure>')) + island_table(spec, rows, columns, extra) + '</figure>')(K.figure(spec, rows, { id: `oac-${spec.id.toLowerCase()}-${g}`, lean_table: true, types: columns }))}
+${(f => f.slice(0, f.lastIndexOf('</figure>')) + island_table(spec, rows, columns, extra) + '</figure>')(K.figure(spec, rows, { id: `oac-${spec.id.toLowerCase()}-${g}`, lean_table: true, types: columns, ground: g, tokens: TOK[g] }))}
 </section>`).join('\n')).join('\n');
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Chart kit build</title><style>${font_css()}</style><style>${CSS}</style><style>${fs.readFileSync(path.join(KIT, 'kit.css'), 'utf8')}</style>
@@ -592,7 +592,7 @@ export const PLATE_SHARE = plate_share().bytes;
 export function plate_weight(spec, res) {
   if (!res.rows || !res.rows.length || !K.forms[spec.form]) return null;
   const columns = res.datasets && res.datasets.length ? res.datasets[0].meta.columns : (spec.data || {}).columns || {};
-  let html = K.figure(spec, res.rows, { id: 'oac-' + String(spec.id).toLowerCase(), lean_table: true, types: columns, guide: true });
+  let html = K.figure(spec, res.rows, { id: 'oac-' + String(spec.id).toLowerCase(), lean_table: true, types: columns, guide: true, ground: 'newsprint', tokens: TOK.newsprint });
   html = html.slice(0, html.lastIndexOf('</figure>')) + island_table(spec, res.rows, columns, extra_island(res)) + '</figure>';
   const fig = Buffer.byteLength(html);
   const sh = plate_share();
@@ -622,11 +622,11 @@ async function fragments(o) {
       if (ph) svg += ph.svg.replace('class="oac-svg"', 'class="oac-svg oac-phone"');
       html = K.figure(spec, res.rows, { id: fid, svg, art_attrs: ' data-oa-lean', guide: true });
     } else if (list.method === 'load-table') {
-      html = K.figure(spec, res.rows, { id: fid, lean_table: true, types: columns, guide: true });
+      html = K.figure(spec, res.rows, { id: fid, lean_table: true, types: columns, guide: true, ground: it.ground || 'newsprint', tokens: TOK[it.ground || 'newsprint'] });
       html = html.slice(0, html.lastIndexOf('</figure>')) + island_table(spec, res.rows, columns, extra_island(res)) + '</figure>';
     } else {
       const isl = island(spec, res.rows, columns, list.method === 'load-trim');
-      html = K.figure(spec, res.rows, { id: fid, guide: true });
+      html = K.figure(spec, res.rows, { id: fid, guide: true, ground: it.ground || 'newsprint', tokens: TOK[it.ground || 'newsprint'] });
       html = html.slice(0, html.lastIndexOf('</figure>')) + isl + '</figure>';
     }
     // round 2 fix pass: the drawing checks this pass added (words crossed or half covered, AX S2; red past Rule 05.1's

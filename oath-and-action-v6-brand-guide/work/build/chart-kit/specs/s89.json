@@ -83,7 +83,7 @@
     ]
   },
   "chart_notes": [
-    "Each column is a level of government, or residents, named at its head. Each step’s box spans the levels that act at it. Numbered boxes edged in the text’s ink are the steps every declaration takes, in order; the box with a gray edge is the request some cases make in its place."
+    "Each column is a level of government, or residents, named at its head, and each step’s box spans the levels that act at it. Numbered boxes edged in the text’s ink are the path from a request to the help a declaration names, in order: a denial ends it at step 5, and steps 7 and 8 follow where FEMA names that help for an area. The box with a gray edge is the request some cases make in place of step 3."
   ],
   "phone": "differs",
   "phone_note": "Where the four columns cannot each hold 150 px, the steps run down one column, each naming who acts; the emergency request sits under step 3, set in from the line.",
@@ -190,6 +190,7 @@
     "Infographics maker, round 4. Data plan row 121, rule 14.135. Domain D04 from the sidecar (data lead sign-off, point 4).",
     "The eight main steps are the rows with path main, numbered 1 to 8 in reading order; row 4 is the emergency request, drawn in place of step 3. Rows 9 and 8 (public assistance, individual help) share one row after step 6, governments at the left, so the sort puts 9 before 8 and the numbers read left to right.",
     "Actors in words: no Civic Line drawing means a governor, a tribe, FEMA or the President, and CL-026 never stands for the President (round 4 call 7; Rule 10.6).",
-    "Data lead rulings (a) to (c), 20:46 UTC: no named mark; main steps 1.5 px subject-ink edges and links, the branch in the context ink named \"Or, for an emergency\"; lanes named in words, gridline-ink rules; each limit printed as the law's limit; grade line as (c). Words still waiting on the editor's pass."
+    "Data lead rulings (a) to (c), 20:46 UTC: no named mark; main steps 1.5 px subject-ink edges and links, the branch in the context ink named \"Or, for an emergency\"; lanes named in words, gridline-ink rules; each limit printed as the law's limit; grade line as (c). Words still waiting on the editor's pass.",
+    "Data lead MI-1 (20:59 UTC): the chart note no longer says every declaration takes every numbered step; a denial ends the path at step 5, and steps 7 and 8 follow where FEMA names that help."
   ]
 }
