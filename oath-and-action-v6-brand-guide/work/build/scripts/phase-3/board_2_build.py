@@ -953,6 +953,11 @@ def decide_panel(shots, fshots, kit_out, pages):
     else:
         parts.append(pending(S['replies_wait']))
     parts.append(f'<p class="reply">{esc(reply)}</p>')
+    # the words a reader meets to answer from the top: the lede, the numbered replies and the reply line
+    tw = panel_words(''.join(parts))
+    tm = max(1, round(tw / 200))
+    FILL.update({'p1_top_words': f'{tw:,}', 'p1_top_min': f'{nw(tm)} minute' + ('' if tm == 1 else 's')})
+    FIG['panel_1_top_words'] = tw
     n_items = n_q = 0
     missing = []
     for g in D.get('panels', []):
@@ -1812,6 +1817,8 @@ details.done-g>summary{cursor:pointer;display:flex;flex-wrap:wrap;align-items:ce
 details.done-g>summary .n{font:var(--oa-type-caption);color:var(--ink-2)}
 .dec-done{font-weight:600;max-width:var(--oa-layout-measure-intro-max)}
 details.pics{margin-top:var(--oa-space-300)}
+.dec>.small>a{display:inline-flex;align-items:center;min-height:2.75rem}
+details.pics{margin-bottom:var(--oa-space-200)}
 .measure{font:var(--oa-type-ui);font-weight:600;border-left:var(--oa-border-width-bar) solid var(--charcoal);padding-left:var(--oa-space-200);max-width:var(--oa-layout-measure-intro-max)}
 .narrow-hint{display:none;font:var(--oa-type-caption);color:var(--ink-2);margin:0 0 var(--oa-space-100)}
 @media (max-width:47.49em){.narrow-hint{display:block}.frame.dp{direction:rtl}}

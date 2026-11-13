@@ -38,7 +38,7 @@
    "Panel 1 asks only what is still open. The panels after it are for reference, from every form at true size on both grounds to the scores and what was tested."
   ],
   "toc_h": "On this board",
-  "minutes": "Panel 1 opens with the five replies we need from you. With its folds closed it holds {p1_words} words, about {p1_min} minutes to read at 200 words a minute. Pictures show at true size; where one is wider than your window, its frame scrolls sideways."
+  "minutes": "The five numbered replies at the top of panel 1 take about {p1_top_min} to read and answer ({p1_top_words} words), and every item in the panel about {p1_min} minutes ({p1_words} words with its folds closed), at 200 words a minute. Pictures show at true size; where one is wider than your window, its frame scrolls sideways."
  },
  "status_words": {
   "ready": "Ready",

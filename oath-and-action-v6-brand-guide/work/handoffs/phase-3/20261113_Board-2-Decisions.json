@@ -1,7 +1,7 @@
 {
  "schema": "board-2-decisions/1",
  "state": "signed off",
- "updated_utc": "2026-11-13T18:31:17Z",
+ "updated_utc": "2026-11-13T18:42:18Z",
  "written_by": "data lead",
  "words_owner": "editor",
  "reply_line": "To answer, reply “As recommended”, or name the item and your change.",
@@ -18,9 +18,9 @@
      "rule": "14.115",
      "title": "S12, the shift arrows map at a desk",
      "answer": "Board 1 approved S12 drawn 1,024 px wide. The guide’s column is narrower than that at every desk width, so the approved drawing now sits in a frame 1,024 px wide that scrolls sideways, widened over the chapter list from a 1,280 px window. The other choice is a stacked tile: each state’s code over its figure, with the arrow beneath, which fits a drawing 618 px wide or more, the guide’s column from a 1,104 px window.",
-     "what_changed": "As built, at a 1,440 px window the frame shows 943 of the drawing’s 1,024 px, from Alaska to New Jersey and Connecticut; the column with Maine and Rhode Island needs a scroll, and a line above the map says so. At a 1,024 px window the column is 558 px wide, a little over half the drawing, and the frame scrolls the other 466 px. While S12 is in view the chapter list on the left is hidden. The stacked tile at a 1,440 px window draws the whole map in the column, 723 px wide, in tiles 54 px wide, with every code, figure and arrow inside its tile. Its arrows are shorter: 3.8 px a point against board 1’s 6.2, so 12 states’ small shifts draw as an arrowhead alone, against six on board 1. The figure in every tile is unchanged. On a phone both draw gray steps, as board 1 approved; at the 326 px drawing a 390 px phone gets, a note names WA, WV and WY, whose tiles are too small for a code.",
+     "what_changed": "As built, at a 1,440 px window the frame shows 943 of the drawing’s 1,024 px, from Alaska to New Jersey and Connecticut; Maine, New Hampshire and Rhode Island sit past its edge until an 81 px scroll, and a line above the map says so. At a 1,024 px window the column is 558 px wide; inside its edges the frame shows 556 px of the drawing and scrolls the other 468. While S12 is in view the chapter list on the left is hidden. The stacked tile at a 1,440 px window draws the whole map in the column, 723 px wide, in tiles 54 px wide, with every code, figure and arrow inside its tile. Its arrows are shorter: 3.8 px a point against board 1’s 6.2, so 12 states’ small shifts draw as an arrowhead alone, against six on board 1. The figure in every tile is unchanged. On a phone both draw gray steps, as board 1 approved; at the 326 px drawing a 390 px phone gets, a note names WA, WV and WY, whose tiles are too small for a code.",
      "why": "Board 1’s arrows need tiles 72 px wide, which only a drawing 930 px wide or more gives, and chapter 14 never gives a drawing that width. The round 3 reviewers found S12 drawing gray steps at every desk width, with no arrows, though its entry, reading guide and alt describe arrows.",
-     "recommendation": "Take the stacked tile. It keeps board 1’s arrows, figures, scale rule, inks and words, and a reader at a 1,440 px window sees the whole map in the column with the chapter list in place. Where the column is narrower than 618 px, from a 1,024 to a 1,103 px window, hold the stacked tile in a frame 618 px wide that scrolls about 60 px, in place of the 466 px the 1,024 px frame scrolls there. The cost is shorter arrows and a change to a drawing you approved; the engineer measures the kit’s bytes before it is built.",
+     "recommendation": "Take the stacked tile. It keeps board 1’s arrows, figures, scale rule, inks and words, and a reader at a 1,440 px window sees the whole map in the column with the chapter list in place. Where the column is narrower than 618 px, from a 1,024 to a 1,103 px window, hold the stacked tile in a frame 618 px wide that scrolls 62 px, in place of the 468 px the 1,024 px frame scrolls there. The cost is shorter arrows and a change to a drawing you approved; the engineer measures the kit’s bytes before it is built.",
      "refs": [
       "DR-64",
       "D3-1324",
@@ -43,13 +43,54 @@
      ],
      "pictures": [
       {
+       "kind": "board-pictures",
+       "spec": "s12",
+       "width": 1440,
+       "ground": "newsprint",
+       "path": "work/handoffs/phase-3/board-2-pictures/20261113_S12-Stage-1440-Frame-Newsprint.png",
+       "label": "As built, at a 1,440 px window: the 1,024 px frame shows 943 px; Maine, New Hampshire and Rhode Island sit past its edge",
+       "role": "after",
+       "row": "1440"
+      },
+      {
+       "kind": "board-pictures",
+       "spec": "s12",
+       "width": 1440,
+       "ground": "newsprint",
+       "path": "work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-1440-Drawing-Newsprint.png",
+       "label": "Recommended, at a 1,440 px window: the stacked tile, 723 px wide, the whole map in the column",
+       "role": "view",
+       "row": "1440"
+      },
+      {
+       "kind": "board-pictures",
+       "spec": "s12",
+       "width": 1024,
+       "ground": "newsprint",
+       "path": "work/handoffs/phase-3/board-2-pictures/20261113_S12-Stage-1024-Frame-Newsprint.png",
+       "label": "As built, at a 1,024 px window: the frame in its 558 px column shows 556 px of the 1,024 px drawing; 21 states sit past its edge",
+       "role": "after",
+       "row": "1024"
+      },
+      {
+       "kind": "board-pictures",
+       "spec": "s12",
+       "width": 1024,
+       "ground": "newsprint",
+       "path": "work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-1024-Frame-Newsprint.png",
+       "label": "Recommended, at a 1,024 px window: the stacked tile, 618 px wide, in the same frame; Maine, New Hampshire and Rhode Island sit past its edge until a 62 px scroll",
+       "role": "view",
+       "row": "1024"
+      },
+      {
        "kind": "board-1",
        "spec": "s12",
        "width": 1440,
        "ground": "newsprint",
        "path": "work/boards/phase-3/round-0/specimens/s12-newsprint-1440.png",
-       "label": "Board 1’s drawing, 1,024 px wide",
-       "role": "before"
+       "label": "Board 1: the 1,024 px drawing",
+       "role": "before",
+       "fold": true
       },
       {
        "kind": "guide",
@@ -57,8 +98,9 @@
        "width": 1440,
        "ground": "newsprint",
        "path": null,
-       "label": "At a 1,440 px window, the 1,024 px frame as built, widened over the chapter list",
+       "label": "As built, the whole plate at a 1,440 px window",
        "role": "after",
+       "fold": true,
        "element": "oac-s-14-s12"
       },
       {
@@ -67,27 +109,10 @@
        "width": 1024,
        "ground": "newsprint",
        "path": null,
-       "label": "At a 1,024 px window, the 1,024 px frame as built, in the column",
+       "label": "As built, the whole plate at a 1,024 px window",
        "role": "after",
+       "fold": true,
        "element": "oac-s-14-s12"
-      },
-      {
-       "kind": "board-pictures",
-       "spec": "s12",
-       "width": 1440,
-       "ground": "newsprint",
-       "path": "work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-1440.html",
-       "label": "The stacked tile at a 1,440 px window, the whole map in the column",
-       "role": "view"
-      },
-      {
-       "kind": "board-pictures",
-       "spec": "s12",
-       "width": 1024,
-       "ground": "newsprint",
-       "path": "work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-1024.html",
-       "label": "The stacked tile forced into the 556 px column at a 1,024 px window: the arrows run past their tiles, so this width takes a 618 px frame",
-       "role": "view"
       },
       {
        "kind": "board-1",
@@ -95,8 +120,10 @@
        "width": 390,
        "ground": "newsprint",
        "path": "work/boards/phase-3/round-0/specimens/s12-newsprint-390.png",
-       "label": "Board 1 on a phone",
-       "role": "before"
+       "label": "Board 1 on a phone, a 358 px drawing",
+       "role": "before",
+       "row": "phone",
+       "fold": true
       },
       {
        "kind": "guide",
@@ -104,8 +131,10 @@
        "width": 390,
        "ground": "newsprint",
        "path": null,
-       "label": "On a phone",
+       "label": "Today on a phone, a 326 px drawing; a note names WA, WV and WY",
        "role": "after",
+       "row": "phone",
+       "fold": true,
        "element": "oac-s-14-s12"
       }
      ],
@@ -125,6 +154,10 @@
       {
        "label": "Measured in",
        "value": "work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-Measure.json"
+      },
+      {
+       "label": "Arrowhead only in a 618 px frame",
+       "value": "23 states"
       }
      ],
      "reply_number": 1
@@ -1179,21 +1212,18 @@
        "spec": null,
        "width": 1440,
        "ground": "newsprint",
-       "path": "work/handoffs/phase-3/board-2-pictures/20261113_S-14-124-Sketch-Gray-Before.html",
-       "label": "In gray, as it stood before your answer",
-       "role": "before",
-       "alt": "Sketch 14.124’s misleading half in gray, as it stood before your answer: seven small places for Party A and five large blocks for Party B under the do-not-publish bar, beside the two panels by party, with Illustrative data."
+       "path": "work/handoffs/phase-3/board-2-pictures/20261113_S-14-124-Sketch-Gray-Before-Plate-1440-Newsprint.png",
+       "label": "Before: the misleading half in gray, in the same plate",
+       "role": "before"
       },
       {
-       "kind": "guide",
+       "kind": "board-pictures",
        "spec": null,
        "width": 1440,
        "ground": "newsprint",
-       "path": null,
-       "label": "In red and blue",
-       "role": "after",
-       "element": "fig-s-14-124-sketch",
-       "alt": "Sketch 14.124 as the guide now draws it: the misleading half shades Party A’s seven small places red and Party B’s five large blocks blue, each color named in its key, under the do-not-publish bar, beside the two panels by party."
+       "path": "work/handoffs/phase-3/board-2-pictures/20261113_S-14-124-Sketch-After-Plate-1440-Newsprint.png",
+       "label": "Now: the misleading half in red and blue",
+       "role": "after"
       }
      ]
     },

@@ -4,9 +4,9 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. The board builder
 
 ## Status
 
-- 18:40 UTC. **Fix round built; the board reruns clean.** `--reuse --check` exits 0 with no failure. Panel 1 opens with the data lead's five replies, each with its recommendation and a link, then the reply line; the five carry "Reply 1" to "Reply 5"; the answered items sit in one closed "Done" fold; every forms item shows panel 2's Newsprint picture, linked. One byte measure from the engineer's file (S73: 14,059 bytes on the page against 14,106). Counts name their base (108; 97). Folder 316 files, about 42.1 MB. Board check: the page alone fails only axe html-has-lang at 1440, 390 and 360 px; the wrapped copy passes.
-- **Waiting on others:** S12's two rows and fold (B2-M2) and the like-for-like 14.124 pair (B2-S2) need the data lead to name the cartographer's PNGs with `row` and `fold` in the decisions file (request under "For the data lead (18:33 UTC)"); the builder's layout is ready. The engineer's plate file was measured on the 11,236,230-byte build; S09, S10 and S21 gained 6 to 10 bytes since (the editor's curled quotes), and the board warns until the engineer remeasures on the final build. The guide preview is not yet version 9.
-- Panel 1 holds 5,913 words with its folds closed; the cover says so, about 30 minutes at 200 words a minute (B2-M1).
+- 18:46 UTC. **Run 14 clean.** `--reuse --check` exits 0, no failures. S12 now lays out from the data lead's rows and fold (18:42 decisions file): the 1,440 px row, the 1,024 px row, and board 1's plate, the full plates and the phone pair in one closed fold; the item is about 4,500 px tall at 1440, down from 14,220. Sketch 14.124's before and after are the cartographer's like-for-like plates. The cover gives both reading times in one sentence: the five replies about one minute (201 words), every item about 30 minutes (5,952 words, folds closed). Folder 318 files, 41,950,781 bytes. Board check: the page alone fails only axe html-has-lang at 1440, 390 and 360 px; the wrapped copy passes (run 13's target-size failure on S12's entry link is fixed).
+- Four warnings stand: the engineer's plate file was measured on the 11,236,230-byte build, and S09, S10 and S21 gained 6 to 10 bytes since; they clear when the engineer remeasures on the build published as version 9.
+- Waiting: the main session's word that version 9 is published, then `--reuse --check` against it.
 
 ## Contracts
 
@@ -127,6 +127,9 @@ Under `work/handoffs/phase-3/20261113_Board-2-Fix-Brief.md` (calls 1 to 8) and t
 - D3-xxx | The count captions name their base from the decisions file: 108 examples (97 built and round 4's 11 as planned) by topic and by state; the 17 of the 97 built for election data | B2-S7 and the data lead's sign-off
 - D3-xxx | The quick check line says it ran on the committed build before the answers landed, with this board's build beside it; Not tested counts every link to the preview and the entries they reach | B2-S6
 - D3-xxx | A chart the guide shows in a scrolling frame is labeled "the whole N px drawing, which the guide shows in a frame that scrolls" | B2-S8: S12's picture is the drawing the frame scrolls through
+- D3-xxx | The cover's minutes line gives both figures: the words from panel 1's top through the reply line (lede, the five replies, the reply line) and every item with its folds closed, each at 200 words a minute | The coordinator's change after run 11: the time to answer and the time to read every item, in one sentence
+- D3-xxx | Pictures in one `row` that do not fit the column side by side at true size wrap, one under the other, inside one bordered row | S12's frame (946 px) and stacked tile (723 px) need 1,693 px at true size, wider than the 1,312 px column at 1440
+- D3-xxx | A decision item's entry link takes a 44 px target | Run 13's axe target-size failure: the link sat alone in its line beside the new picture fold
 - D3-xxx | Under 760 px a side-by-side chart frame opens at its right end, on the phone drawing (`direction: rtl` on the frame), with a line above it saying so; composed Charcoal pictures take a 16 px Charcoal margin | B2-S12; one picture a ground keeps the folder near 300 files, where separate phone pictures would add 168
 
 ## Tested
