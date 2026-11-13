@@ -1,0 +1,465 @@
+{
+ "title": "Creative director’s rescores for Phase 3, round 3: maker A’s, maker B’s and the cartographer’s specimens with their entries, S16 as moved, the nine sketches, and rules 14.1 to 14.14 with the opener, after the review fix pass",
+ "date": "2026-11-13",
+ "author": "Creative director (oa-creative-director), subagent of the main session",
+ "basis": "The fix pass's closing strict build (scratchpad phase-3/round-3-fix/close/guide.html, 11,231,784 bytes, 0 warnings, 344 rules, 638 specimens) and its guide-Build-Report.json, copied to the creative director's pass2 scratch with a Charcoal copy; all 32 round 3 plates at 1x at 1440 and 390 px on Newsprint and on Charcoal; S12, S16, S66, S68, S73, S78, S80, S82 and Rule 14.6 at 1024 px on both grounds; ten plates and Rule 14.6 at 2x at 1440 px; S73, S78, S80 and S82 at 2x at 390 px on Charcoal; S12 probed in the page at 1024, 1440 and 1920 px with a viewport capture; page tables and words read by script",
+ "first_scores_file": "work/handoffs/phase-3/20261113_Round-3-CD-Scores.json",
+ "review": "work/handoffs/phase-3/20261113_CD-Review-Of-Round-3.md, section \"Second pass\"",
+ "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
+ "criteria": [
+  {
+   "key": "craft",
+   "name": "Craft"
+  },
+  {
+   "key": "clarity",
+   "name": "Clarity"
+  },
+  {
+   "key": "brand_fidelity",
+   "name": "Brand fidelity"
+  },
+  {
+   "key": "usefulness",
+   "name": "Usefulness"
+  },
+  {
+   "key": "evidence_honesty",
+   "name": "Evidence honesty"
+  },
+  {
+   "key": "accessibility",
+   "name": "Accessibility"
+  }
+ ],
+ "items": [
+  {
+   "key": "maker_a",
+   "name": "Maker A: S66 to S72 with entries 14.96 to 14.102",
+   "anchor": "#group-14-12; work/build/chart-kit/specs/s66.json to s72.json; work/build/guide/entries/14-096.json to 14-102.json",
+   "stage": "Phase 3, round 3, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 3,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 3
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Unchanged at 4: S66's five steps now sit one even gap apart with the branches beside them, S69's subcommittees print as named rows with hairlines in order down each column, and S68's federal boxes widen so Congress and HHS fit two lines.",
+    "clarity": "Raised from 3: S71's cell reads \"State constitutions read: Massachusetts, Nebraska, Virginia and Arizona\", and S66, S67, S71 and S72 now run 25 to 29 words with one finding each.",
+    "brand_fidelity": "Unchanged at 4: S72's title gives both tallies and names no crossover, while its notes and table name the crossovers both ways in both chambers.",
+    "usefulness": "Unchanged at 4: S70 and S71 show their first part at a desk and say so, and entries 14.96, 14.98 and 14.99 describe the drawings as they now stand.",
+    "evidence_honesty": "Unchanged at 4: S68's note quotes the atlas's record for Congress and HHS as stored with LIHEAP spelled out, and each law's in-force date prints once, in the grade line.",
+    "accessibility": "Raised from 3: S68's table prints \"None drawn\" for the four bodies with no line of authority, and S72's named members follow the record's last-name order."
+   },
+   "changed": [
+    "clarity",
+    "accessibility"
+   ],
+   "first_must_fix": [
+    "A-M1",
+    "A-M2"
+   ],
+   "first_should_fix": [
+    "A-S1",
+    "A-S2",
+    "A-S3",
+    "A-S4",
+    "A-S5",
+    "A-S6"
+   ],
+   "first_items_landed": [
+    "A-M1",
+    "A-M2",
+    "A-S1",
+    "A-S2",
+    "A-S3",
+    "A-S4",
+    "A-S5",
+    "A-S6"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready. S69 stands at 14,556 bytes with its frame, over 14,106 and under 15,000, as D3-1412 accepts."
+  },
+  {
+   "key": "maker_b",
+   "name": "Maker B: S65 and S73 to S77 with entries 14.93 and 14.104 to 14.112 (sketch entries aside)",
+   "anchor": "#group-14-11, #group-14-13, #group-14-14; work/build/chart-kit/specs/s65.json, s73.json to s77.json; work/build/guide/entries/14-093.json, 14-104.json to 14-112.json",
+   "stage": "Phase 3, round 3, after the review fix pass",
+   "first_scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Raised from 3: S73's bars stay solid and its links take the light fill with a party-ink edge, so sender, links and receivers read apart at 1440, 1024 and 390 px on both grounds, and S77 sets each limit on its own line in the text's ink.",
+    "clarity": "Unchanged at 4: S73's title states both nominees' funds by one rule in 28 words, though it breaks \"Donald / J. Trump’s\" at 1440 px (RS-2) and S65's title grew to 31 words (RS-4).",
+    "brand_fidelity": "Unchanged at 4: S73 draws all seven designated funds, three for Harris and four for Trump, in one ink and one measure, so no contrast comes from the selection rule.",
+    "usefulness": "Unchanged at 4: entry 14.104 tells a builder to pick senders by one rule read alike for every side, and entry 14.109 now points to Rule 14.113's arrowhead.",
+    "evidence_honesty": "Unchanged at 4: line 22 is the measure for all seven funds, with lines 21B and 28C given for both sides alike, and S76 nets transfers candidate by candidate.",
+    "accessibility": "Unchanged at 4: S73's table names a fund in every row, though its other committees and refund payers print in the FEC's capitals (RS-3)."
+   },
+   "changed": [
+    "craft"
+   ],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "B-S1",
+    "B-S2",
+    "B-S3",
+    "B-S4",
+    "B-S5"
+   ],
+   "first_items_landed": [
+    "B-S1",
+    "B-S2",
+    "B-S3",
+    "B-S4",
+    "B-S5"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [
+    "RS-2",
+    "RS-3",
+    "RS-4"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 3,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready; RS-2 to RS-4 are word and type fixes for round 4's first pass or board 2."
+  },
+  {
+   "key": "cartographer",
+   "name": "The cartographer: S78 to S84 with entries 14.117 to 14.123, S16 as moved, and the entries for S07, S12 and S16 (14.114 to 14.116)",
+   "anchor": "#group-14-15; work/build/chart-kit/specs/s78.json to s84.json, s07.json, s12.json, s16.json; work/build/guide/entries/14-114.json to 14-123.json",
+   "stage": "Phase 3, round 3, after the review fix pass",
+   "first_scores": {
+    "craft": 3,
+    "clarity": 3,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 3
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Raised from 3: S78 codes every state on its outlines at a desk with an ocean column of leaders and draws the tile grid with codes on a phone, S80 numbers each district in its own panel with a Detroit inset, S16's DC takes a leader and S79's view sits in a frame.",
+    "clarity": "Raised from 3: S12 now draws board 1's arrows with each tile's code and figure at every desk width, as entry 14.115 teaches, though its 1024 px stage shows 54, 71 and 81 percent of the map at 1024, 1440 and 1920 px with no visible cue to scroll (RS-1).",
+    "brand_fidelity": "Unchanged at 4: Verdigris steps on every class map, one red point on Lake Isabella, and parties by panel with the same steps and ghosts in both.",
+    "usefulness": "Unchanged at 4: entries 14.117, 14.119 and 14.124 name the steps, the inset and Rule 14.7's failure case, and the class maps' notes give their crossings on the printed figures.",
+    "evidence_honesty": "Unchanged at 4: S78's and S81's titles name the survey behind their class counts, S78's note counts 11 states and DC on the printed figures, and the state maps say the survey covers Puerto Rico, which they do not draw.",
+    "accessibility": "Raised from 3: S12's alt says what each width draws and its stage takes a tab stop and a name, the grouped tables sort by printed name, and S81's \"No estimate\" takes a hatch on both grounds."
+   },
+   "changed": [
+    "craft",
+    "clarity",
+    "accessibility"
+   ],
+   "first_must_fix": [
+    "C-M1",
+    "C-M2"
+   ],
+   "first_should_fix": [
+    "C-S1",
+    "C-S2",
+    "C-S3",
+    "C-S4",
+    "C-S5",
+    "C-S6"
+   ],
+   "first_items_landed": [
+    "C-M1",
+    "C-M2",
+    "C-S1",
+    "C-S2",
+    "C-S3",
+    "C-S4",
+    "C-S5",
+    "C-S6"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [
+    "RS-1",
+    "RS-4",
+    "RS-5"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 3,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready; RS-1 and RS-5 touch S12, a board 1 drawing, and go to board 2 with it."
+  },
+  {
+   "key": "sketches",
+   "name": "The nine sketches with their entries: reference 14.94, 14.95, 14.103, 14.107, 14.108, 14.109, 14.111, 14.113; avoid 14.124",
+   "anchor": "work/build/guide/specimens/s-14-94-sketch.html, s-14-95-sketch.html, s-14-103-sketch.html, s-14-107-sketch.html to s-14-109-sketch.html, s-14-111-sketch.html, s-14-113-sketch.html, s-14-124-sketch.html",
+   "stage": "Phase 3, round 3, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Unchanged at 4: at 2x the cohort sketch now holds \"100%\" about 15 px and \"2021\" about 18 px inside its frame, with \"Start\" at the plot's left edge clear of the value labels.",
+    "clarity": "Unchanged at 4: the avoid sketch's misleading half now draws five large places for Party B round seven small ones for Party A, so land standing in for votes shows at a glance.",
+    "brand_fidelity": "Unchanged at 4: the misleading half stays gray with its colors named, and the better half keeps one square a place in steps of one ink.",
+    "usefulness": "Unchanged at 4: entry 14.124's why now ends \"Rule 14.7’s failure case shows the same fault in red and blue\", and the avoid entries open \"No reader’s question calls for it.\"",
+    "evidence_honesty": "Unchanged at 4: \"Illustrative data\" sits inside every drawing and the chip beside every caption.",
+    "accessibility": "Unchanged at 4: the captions still carry what each drawing shows, and the avoid halves stack at 390 px with each bar over its own half."
+   },
+   "changed": [],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "SK-S1",
+    "SK-S2"
+   ],
+   "first_items_landed": [
+    "SK-S1",
+    "SK-S2"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready. The misleading half's colors wait on Dustin (D3-1322) and are not held against an owner."
+  },
+  {
+   "key": "rules",
+   "name": "Rules 14.1 to 14.14 with the opener as round 3 changed them (Rules 14.3, 14.4, 14.6, 14.7, 14.9, 14.12, group lines 11 to 15, the opener's links)",
+   "anchor": "#data-visualization, #group-14-1; work/build/guide/entries/14-001.json to 14-014.json, 14-chapter.json",
+   "stage": "Phase 3, round 3, after the review fix pass",
+   "first_scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Unchanged at 4: no plate was drawn again, and rules with the opener weigh 175,678 of 212,288 bytes.",
+    "clarity": "Unchanged at 4, and clearer: Rule 14.6 now holds one principle a paragraph in 277 words against 530, with the lists in its spec rows, and Rule 14.9 defines a class at first use.",
+    "brand_fidelity": "Unchanged at 4: the party test's five kinds of mark sit whole in Rule 14.6's \"A party tie\" row, and the area case still keeps red off maps, nodes, cells and flows.",
+    "usefulness": "Unchanged at 4: group 12's line now names the org chart, hierarchy tree and roll-call grid, and entry 14.45's builders line points to Rule 14.51.",
+    "evidence_honesty": "Unchanged at 4: Rule 14.9 reads its class width as the plus or minus figure and says where a gap's margin comes from.",
+    "accessibility": "Unchanged at 4: rule text stays live at every width, and Rule 14.6 at 390 px now reads in about half the scroll."
+   },
+   "changed": [],
+   "first_must_fix": [],
+   "first_should_fix": [
+    "R-S1",
+    "R-S2",
+    "R-S3"
+   ],
+   "first_items_landed": [
+    "R-S1",
+    "R-S2",
+    "R-S3"
+   ],
+   "first_items_open": [],
+   "must_fix": [],
+   "should_fix": [],
+   "must_fix_count": 0,
+   "should_fix_count": 0,
+   "ready": true,
+   "ships": true,
+   "to_ready": "Ready."
+  }
+ ],
+ "totals": {
+  "must_fix": 0,
+  "should_fix": 5,
+  "under_4": [],
+  "ready": [
+   "maker_a",
+   "maker_b",
+   "cartographer",
+   "sketches",
+   "rules"
+  ],
+  "not_ready": [],
+  "first_must_fix_landed": 4,
+  "first_should_fix_landed": 22,
+  "lowest_score_by_item": {
+   "maker_a": 4,
+   "maker_b": 4,
+   "cartographer": 4,
+   "sketches": 4,
+   "rules": 4
+  }
+ },
+ "must_fix": {},
+ "should_fix": {
+  "RS-1": {
+   "items": [
+    "cartographer"
+   ],
+   "where": "S12, entry 14.115; the kit's \"stage\": 1024 and the guide's plate hint",
+   "what_and_fix": "The 1024 px stage shows 558, 723 and 829 px of the drawing at 1024, 1440 and 1920 px windows, and the plate's hint \"Wider than this column. Scroll the frame sideways to see all of it.\" stays hidden, so a desk reader sees half-cut tiles at the right edge and no New York, New Jersey or Florida, the title's states, until they scroll. Show the hint whenever the stage scrolls, and let the stage break out over the rail from 80em where that holds it whole. Board 2 should also show Dustin the stacked tile the data lead's C-M2 ruling put first (code and figure on two lines), which fits at 723 px and up and would show the whole map at 1440 px.",
+   "owner": "Engineer, cartographer; main session (board 2)"
+  },
+  "RS-2": {
+   "items": [
+    "maker_b"
+   ],
+   "where": "S73's title",
+   "what_and_fix": "At 1440 px the title breaks \"and Donald / J. Trump’s four sent\". Hold \"Donald J. Trump’s\" together with no-break spaces after \"Donald\" and \"J.\", as D3-1491 meant.",
+   "owner": "Editor, maker B"
+  },
+  "RS-3": {
+   "items": [
+    "maker_b"
+   ],
+   "where": "S73's page table, \"To\" column",
+   "what_and_fix": "Other committees and refund payers print in the FEC's capitals (\"Other committees: TAMMY BALDWIN FOR SENATE\", \"SAVE AMERICA; DONALD J. TRUMP REPUBLICAN N...\") beside rows set in title case. Print them as the other rows do through the spec's typography, and keep the filed names in the export (D3-519).",
+   "owner": "Maker B, editor"
+  },
+  "RS-4": {
+   "items": [
+    "maker_b",
+    "cartographer"
+   ],
+   "where": "S65, S77 and S78 titles; S78's and S81's measure lines",
+   "what_and_fix": "After the pass S65's title runs 31 words, S78's 31 and S77's 32; hold each under 30 with its finding unchanged. S78's and S81's measure lines end with a period that no other measure line prints; drop it.",
+   "owner": "Editor"
+  },
+  "RS-5": {
+   "items": [
+    "cartographer"
+   ],
+   "where": "S12's phone form",
+   "what_and_fix": "At the guide's 326 px phone drawing S12's tiles print no code (\"At this width the tiles are too small for state codes\"), while S78's tiles on the same grid at the same width keep 48 of 51. Set S12's phone codes by S78's rule; this is placement on a board 1 drawing, so board 2 shows it.",
+   "owner": "Cartographer"
+  }
+ },
+ "judgments": {
+  "s12_stage": "C-M2 closed in substance: the arrows draw at every desk width with each tile's code and figure, as DR-64 and entry 14.115 promise, and the alt says what each width draws. The cost is a frame that scrolls sideways at every desk width the guide gives, with no visible cue (RS-1).",
+  "s78_codes": "C-M1 closed: every state and DC carries a code on the outlines from 520 px, and the tile grid carries every code but WA, WV and WY at the guide's 326 px phone drawing, under the 13 px floor.",
+  "s73": "B-S1 and BC-M1 closed: one bar per nominee, light links, seven funds by one rule, and a title that reads the same from both sides.",
+  "s68_s71": "A-M1 and A-M2 closed: no studio word in S71, and S68's table prints \"None drawn\" for four bodies.",
+  "rule_14_6": "R-S1 closed: 277 words in five paragraphs, one principle each, with the lists in the spec rows; nothing the data lead listed was lost."
+ },
+ "board_2": {
+  "ready": true,
+  "verdict": "Round 3 is ready for board 2. No Must fix remains in my items, every item scores 4 or more, and the five Should fixes are word, type and placement items, two of them on S12, which board 2 shows anyway.",
+  "waiting_on_dustin": [
+   "Q1: where a chart's full data lives, and with it every \"download\" line (D3-1321)",
+   "Q2: literal red and blue in the avoid sketch's misleading half (D3-1322); my recommendation stays gray",
+   "Q3: S16's range words (D3-1323)"
+  ],
+  "board_1_drawings_that_changed": [
+   "S12: arrows in a 1024 px stage that scrolls at desk widths (RS-1 offers the stacked tile as the alternative)",
+   "S16: the 2024 outlines, DC's leader and the phone codes",
+   "S78's phone tile grid is a new phone form of a round 3 drawing"
+  ]
+ },
+ "weight_recommendation": {
+  "page": 11231784,
+  "projection": 15044827,
+  "budget": 15500000,
+  "chapter_14_now": 1580453,
+  "chapter_14_with_kit": 2223832,
+  "stop": 2803941,
+  "share_per_plate": 13592,
+  "plates_to_come": 13,
+  "room": 176691,
+  "round_3_plates": {
+   "count": 20,
+   "total_bytes_with_frames": 207864,
+   "mean_bytes": 10393,
+   "over_13592": {
+    "S69": 14556,
+    "S82": 13915,
+    "S81": 13612
+   }
+  },
+  "rules_and_opener": {
+   "bytes": 175678,
+   "allowance": 212288
+  },
+  "map_geometry": {
+   "bytes": 133117,
+   "allowance": 250000,
+   "unspent": 116883
+  },
+  "verdict": "Room holds for round 4. The share of 13,592 bytes sits about 31 percent above round 3's mean plate, and only three of round 3's twenty plates, two county-scale maps and the House org chart, needed more. Round 4's forms (icon arrays, proportional symbols, overlap diagrams, process explainers, number panels, comparison cards) are lighter than those if their tables answer the reader question and no more, and if group 17's cards draw as HTML text. Hold the 116,883 unspent geometry bytes until round 4's plan confirms no new map layer."
+ },
+ "distinctiveness_test": [
+  {
+   "view": "S73 at 1440 and 390 px, wordmark covered",
+   "verdict": "Now reads as Oath & Action: solid bars, light links with a dark edge, one ink for both sides, words beside each bar."
+  },
+  {
+   "view": "S78 at 390 px",
+   "verdict": "Reads as the house's tile grid in Verdigris steps with every code but three, the national figure above."
+  },
+  {
+   "view": "S12 at 1440 px",
+   "verdict": "Reads as board 1's arrow map, but cut at the right edge of the frame (RS-1)."
+  }
+ ],
+ "risks_for_dustin": [
+  "S12's stage: the arrows draw, but at a 1440 px desk a reader sees about 70 percent of the map and must scroll to reach the title's eastern states. Board 2 should show the scrolling stage beside the stacked tile, which keeps board 1's encoding and fits the column from 723 px.",
+  "The avoid sketch's colors (Q2): I still recommend gray, since Rule 14.7's failure case already shows red against blue and entry 14.124 now points to it; the unequal places make the land-for-votes harm visible in gray."
+ ],
+ "questions_for_dustin": []
+}
