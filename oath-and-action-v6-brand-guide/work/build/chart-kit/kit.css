@@ -117,6 +117,14 @@
   .oac-art.oac-html { break-inside: auto; }
   .oac-h-item { break-inside: avoid; }
 }
+/* R4-4 (round 4): a social card's crops, each drawn at its true size and shown at the column's width or at its own, whichever
+   is less, with its size in words under it; the words and alt text to post beside it as live text */
+.oac-crop { margin-top: 18px; }
+.oac-crop > svg.oac-svg { display: block; max-width: 100%; height: auto; outline: 1px solid var(--oa-color-border-hairline); }
+.oac-crop-k { margin: 6px 0 0; font: var(--oa-font-weight-regular) 13px/18px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); }
+.oac-post { margin-top: 18px; max-width: 42em; }
+.oac-post-k { margin: 12px 0 0; font: var(--oa-font-weight-semibold) 13px/18px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); }
+.oac-post-v { margin: 2px 0 0; font: var(--oa-font-weight-regular) 15px/23px var(--oa-font-family-reading); }
 
 /* The drawing: text */
 .oac-svg { overflow: visible; }
