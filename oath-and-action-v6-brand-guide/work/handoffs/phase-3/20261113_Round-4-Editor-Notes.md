@@ -182,6 +182,17 @@ The infographics maker applies these until it reports finished; after that I wri
 
 **S94's note on 26 U.S.C. 7508A, before S94 lands (21:10 UTC).** The data lead's 21:09 sentence holds all four causes and reads well aloud. One word, from the law's subsection (c): "The IRS may postpone tax dates for people affected by a federally declared disaster, a significant fire or a terrorist or military action, and, at a governor’s **written** request, by a disaster the state declares (26 U.S.C. 7508A)." Here "may" states what the law lets the IRS do, so it is no hedge (W16).
 
+**Entries 14.136 to 14.138, 14.140 and 14.141, read at 21:35 UTC, read only.** Each rule says what a builder sets and why; the cards' entries say "live text" where the engineer's R4-3 contract puts it.
+
+| File | Field | Now | Suggested | Why |
+|---|---|---|---|---|
+| 14.137 | `rule[0]` | Print a field the law leaves empty in the source’s own words, never as a dash, … | Print a field the law leaves empty in the source’s own words, such as “None”, … | The ", never as a dash" turn (W09); the example shows what to print, as the data lead's (b) rules for S91 |
+| 14.138 | `why.text[0]` | …and the law’s limit beside each step tells a reader when they can press. Text keeps every step searchable and copyable. | …and the law’s limit beside each step tells a reader when they may take the next step. Live text keeps every step searchable and copyable. | "press" can be heard as pressing a button; "Live text" is the family's own term (14.136) |
+| 14.140 | `rule[0]` | Draw the year as twelve months in order, … | Draw the year as 12 months in order, … | Figures for 10 and up (H06) |
+| 14.140 | `why.text[0]` | …and the list gives each one exactly. The kind of date in words means no reader has to read a square’s fill to learn whether missing a date carries a penalty. | …and the list gives each one in full. The kind of date in words means no reader has to read a square’s fill to learn whether missing a date carries a consequence. | "exactly" adds force and no fact (W17); "consequence" is the term the plate, its key and the data lead's rulings use, so it stays one word (H02) |
+| 14.141 | `title` | Use a social data card to carry one chart’s finding into a feed at the platform’s sizes. | Use a social data card to carry one chart’s finding into a feed in two crops. | DR-268: chapter 23 sets every frame from the platforms' own specifications in Phase 4, so the two crops here are not yet "the platform's sizes" |
+| 14.141 | `rule[0]`, last sentence | Post the card with its alt text, the finding in a sentence or two, and keep the full table with the chart. | Post the card with its alt text and the finding in a sentence or two, and keep the full table with the chart. | As written, "the finding in a sentence or two" reads as a third thing to keep; the post carries the alt and the finding, as the data lead's "Words to post" condition sets |
+
 ## Words for the cartographer
 
 Nothing yet: no change to S12, S16 or S78 or their entries has landed.

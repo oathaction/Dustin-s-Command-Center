@@ -989,7 +989,7 @@
    "id": "15.19",
    "title": "Step a reader through a loop one connection at a time, with a still sequence.",
    "rule": [
-    "A loop read all at once asks a reader to hold every step in mind. Let the reader move through it instead: one connection at a time, in the loop’s own order, with Play, Pause, Reset the loop, Previous step and Next step. Use the loop stepper of Rule 18.22, its markup and its code, and set the drawing beside it so the current step lights in both.",
+    "Let a reader move through a loop one connection at a time, in the loop’s own order, with Play, Pause, Reset the loop, Previous step and Next step, since a loop read all at once asks a reader to hold every step in mind. Use the loop stepper of Rule 18.22, its markup and its code, and set the drawing beside it so the current step lights in both.",
     "Each step’s words say everything the drawing shows for it: the two variables by their own titles, which way the change runs, what moves along the connection, its grade and its delay. Number every step, and print the whole sequence in order wherever nothing can move: on paper, with motion reduced and with scripts off."
    ],
    "tokens": [
@@ -999,13 +999,13 @@
    ],
    "why": {
     "text": [
-     "A drawing of a loop shows its shape, and a stepper shows its order. Read one connection at a time, the weakest step stands out where it falls, and the reader sees why the loop’s grade is the grade of that step (Rule 15.13). The still sequence keeps the same reading for a reader who cannot or will not run it."
+     "A stepper adds the loop’s order to the shape its drawing shows. When a reader takes the loop one connection at a time, the weakest step stands out where it falls, and the reader sees why the loop’s grade is that step’s grade (Rule 15.13). The still sequence keeps the same reading for a reader who cannot or will not run it."
     ],
     "basis": "Our systems atlas, Loop R1; the stepper and still-sequence lessons of LOOPY, as Rule 18.22 sets them"
    },
    "correct": {
     "specimen": "s-15-19-correct",
-    "caption": "Loop R1 from our systems atlas on the loop stepper of Rule 18.22, live: three numbered steps, each with its connection, grade and delay. The current step lights in the drawing and in the list; on paper and with scripts off the list shows every step in order."
+    "caption": "Loop R1, where wealth and political influence reinforce each other, on the loop stepper of Rule 18.22, live: three numbered steps, each with its connection, grade and delay. The current step lights in the drawing and in the list; on paper and with scripts off the list shows every step in order."
    },
    "failure": {
     "specimen": "s-15-19-failure",
@@ -1056,13 +1056,13 @@
    ],
    "why": {
     "text": [
-     "A reader comparing reforms wants to see where each one acts and what the atlas expects of it. One choice at a time keeps each reform’s red its own, and the effects stay four ordinal codes, never a score the atlas does not hold. The assumptions sit one step away, where a reader who asks finds them whole."
+     "A reader comparing reforms wants to see where each one acts and what the atlas expects of it. One choice at a time keeps each reform’s red its own, and the effects stay the atlas’s four ordinal codes. The assumptions sit one step away, where a reader who asks finds them whole."
     ],
     "basis": "Our systems atlas, Reforms R-03 and R-04 on Loop R4a; the choice lessons of En-ROADS, as Rules 18.3 and 18.8 set them"
    },
    "correct": {
     "specimen": "s-15-20-correct",
-    "caption": "Reforms R-03 and R-04 on Loop R4a, live: choose one and its targets turn red, with its effects and routes beside the drawing and its qualifications one step away."
+    "caption": "Reform R-03, proportional elections in multi-seat House districts, and Reform R-04, independent citizen commissions that draw election maps, on Loop R4a, where majorities draw maps that help them keep control, live: choose one and its targets turn red, with its effects and routes beside the drawing and its qualifications one step away."
    },
    "failure": {
     "specimen": "s-15-20-failure",
@@ -1103,25 +1103,25 @@
    "id": "15.21",
    "title": "Give every control the model’s own steps, and no slider for a strength.",
    "rule": [
-    "A control may offer only what the model holds: its loops and their steps, its reforms, Rule 13.3’s grade words, the three delay classes and the four ordinal effect codes. Each is a set of named steps, so build it from the stepper, the radio group or the disclosure, never from a slider, a dial or a field for a number.",
-    "Never offer a total, odds, an amount or a strength in a control. Our systems atlas measures no connection’s size and says “No whole loop has a measured strength.” A slider set between 0 and 100 would hand a reader a figure no study supports."
+    "A control may offer only what the model holds: its loops and their steps, its reforms, Rule 13.3’s grade words, the three delay classes and the four ordinal effect codes. Each is a set of named steps, so build it from the stepper, the radio group or the disclosure.",
+    "Leave totals, odds, amounts and strengths out of every control, and with them sliders, dials and fields for a number, because our systems atlas leaves the size of any effect to the studies behind each connection and says that “no whole loop has a measured strength.” A slider set between 0 and 100 would hand a reader a figure no study supports."
    ],
    "tokens": [
     "oa.color.graphic.essential.onNewsprint"
    ],
    "why": {
     "text": [
-     "A slider promises that any value along it means something and that moving it changes the outcome by that much. The atlas grades its connections in words and codes its effects in ordinal steps, so the honest control has exactly those steps and no more."
+     "A slider promises that any value along it means something and that moving it changes the outcome by that much. The atlas grades its connections in words and codes its effects in ordinal steps, so the honest control offers those steps alone."
     ],
     "basis": "Our systems atlas, Connection L55 and the model’s limits"
    },
    "correct": {
     "specimen": "s-15-21-correct",
-    "caption": "Connection L55 with what our systems atlas holds for it, each on the model’s own steps: its sign, its grade on the ladder, its delay class, and no strength."
+    "caption": "Connection L55, “Safe seats keep majorities in power”, with what our systems atlas holds for it, each on the model’s own steps: its sign, its grade on the ladder, its delay class, and no strength."
    },
    "failure": {
     "specimen": "s-15-21-failure",
-    "caption": "<strong>Fails Rule 15.21.</strong> A slider sets the connection’s strength at 70 of 100, a figure our systems atlas does not hold. The picture names the value as its own."
+    "caption": "<strong>Fails Rule 15.21.</strong> A slider sets the connection’s strength at 70 of 100, a figure our systems atlas does not hold. A line under the slider says the picture made the value up."
    },
    "specs": [
     {
@@ -1129,8 +1129,8 @@
      "value": "Loops and their steps, reforms, grade words, delay classes and ordinal effect codes"
     },
     {
-     "label": "Never",
-     "value": "A total, odds, an amount or a strength, never as a slider, dial or number field"
+     "label": "Never offered",
+     "value": "A total, odds, an amount or a strength, whether by slider, dial or number field"
     },
     {
      "label": "A picture of a control",

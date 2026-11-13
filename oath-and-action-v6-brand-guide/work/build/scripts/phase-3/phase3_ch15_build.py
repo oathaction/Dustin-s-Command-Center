@@ -3074,7 +3074,7 @@ def stepper_steps(lid):
             verb = "can raise" if up else "can lower"
         else:
             verb = ("raise" if up else "lower") if plural(a) else ("raises" if up else "lowers")
-        line = f"{a} {verb} {lc(b)}" + (", where the loop began" if i == n - 1 else "") + "."
+        line = f"{a} {verb} {lc(b)}."
         moves = f"{l['type']} moves along it, " if l["type"] in ("money", "information", "ownership") else ""
         least = ", the least certain step in the loop" if l["evidence"] == least_certain(lp["links"]) and len(
             {link(y)["evidence"] for y in lp["links"]}) > 1 else ""
@@ -3082,8 +3082,8 @@ def stepper_steps(lid):
                 f'{GRADE[l["evidence"]][0].lower()}{least}, and its effect takes {DELAY[l["delay"]][1]}.')
         if i == n - 1:
             m_ = minus_count(lp["links"])
-            more += (f" The loop is back where it began, and with {words_n(m_)} minus sign{'' if m_ == 1 else 's'} on its "
-                     f"steps it is {'reinforcing' if m_ % 2 == 0 else 'balancing'}.")
+            signs = "no minus sign on any step" if m_ == 0 else f"{words_n(m_)} minus sign{'' if m_ == 1 else 's'} on its steps"
+            more += f" The loop is back where it began, and with {signs} it is {'reinforcing' if m_ % 2 == 0 else 'balancing'}."
         said = f"Step {i + 1} of {n}: {line} {re.sub(r'<[^>]+>', '', more)}"
         hold = max(6000, 250 * len(said.split()))
         out.append((line, more, hold))
@@ -3135,8 +3135,8 @@ def rule_15_19(book):
     play = code_part("c-18-loop-stepper.html", r'<svg\s+class="oa-stepper-icon oa-stepper-icon--play".*?</svg>')
     play = re.sub(r'\sclass="[^"]*"', ' class="pi"', play, count=1)
     fail = (dnp() + hed("Loop", lid, lp["title"]) + fig(svg_wrap(fb, fh))
-            + f'<div class="pb"><span class="ib">{play}</span><p class="nt">Playing. A button with a play icon and no '
-              'word; no step list, no numbers and no Pause.</p></div>')
+            + f'<div class="pb"><span class="ib">{play}</span><p class="nt">Playing. A play button with no word on it, '
+              'and nothing else: the step list, the numbers and Pause are missing.</p></div>')
     book.add("s-15-19-failure", fail, rule="15.19",
              alt=(FC + "A picture of a player on Loop R1 that draws one step at a time: only the middle step shows, with no "
                   "number, and the pills it does not join stand alone. Under it, a square button with a play icon and no "
@@ -3147,8 +3147,8 @@ def rule_15_19(book):
         "id": "15.19",
         "title": "Step a reader through a loop one connection at a time, with a still sequence.",
         "rule": [
-            "A loop read all at once asks a reader to hold every step in mind. Let the reader move through it instead: one "
-            "connection at a time, in the loop’s own order, with Play, Pause, Reset the loop, Previous step and Next step. "
+            "Let a reader move through a loop one connection at a time, in the loop’s own order, with Play, Pause, Reset the "
+            "loop, Previous step and Next step, since a loop read all at once asks a reader to hold every step in mind. "
             "Use the loop stepper of Rule 18.22, its markup and its code, and set the drawing beside it so the current step "
             "lights in both.",
             "Each step’s words say everything the drawing shows for it: the two variables by their own titles, which way the "
@@ -3156,13 +3156,13 @@ def rule_15_19(book):
             "sequence in order wherever nothing can move: on paper, with motion reduced and with scripts off.",
         ],
         "tokens": ["oa.color.state.selected.band", "oa.color.state.selected.bar", "oa.color.state.muted.text"],
-        "why": {"text": ["A drawing of a loop shows its shape, and a stepper shows its order. Read one connection at a time, "
-                         "the weakest step stands out where it falls, and the reader sees why the loop’s grade is the "
-                         "grade of that step (Rule 15.13). The still sequence keeps the same reading for a reader who "
+        "why": {"text": ["A stepper adds the loop’s order to the shape its drawing shows. When a reader takes the loop one "
+                         "connection at a time, the weakest step stands out where it falls, and the reader sees why the "
+                         "loop’s grade is that step’s grade (Rule 15.13). The still sequence keeps the same reading for a reader who "
                          "cannot or will not run it."],
                 "basis": "Our systems atlas, Loop R1; the stepper and still-sequence lessons of LOOPY, as Rule 18.22 sets them"},
         "correct": {"specimen": "s-15-19-correct",
-                    "caption": f"Loop R1 from our systems atlas on the loop stepper of Rule 18.22, live: {words_n(n)} numbered "
+                    "caption": f"Loop R1, where {lc(lp['title'])}, on the loop stepper of Rule 18.22, live: {words_n(n)} numbered "
                                "steps, each with its connection, grade and delay. The current step lights in the drawing "
                                "and in the list; on paper and with scripts off the list shows every step in order."},
         "failure": {"specimen": "s-15-19-failure",
@@ -3228,6 +3228,7 @@ def rule_15_20(book):
                                          {"DQ": "+M", "GE": "0", "EP": "0", "EQ": "0"}], "the reforms' effects changed")
     need(all(not x["checked"] for r_ in rs for x in r_["routes"]), "a route of R-03 or R-04 now carries a check date")
     owner = chooser_targets(rids, lp)
+    need(REFORM["R-04"]["title"] == "Independent citizen commissions draw election maps", "R-04's title changed; reread the caption")
     check_ = code_part("c-18-choice.html", r'<svg\s+class="oa-choice-check".*?</svg>')
     chev = code_part("c-18-disclosure.html", r'<svg\s+class="oa-disclosure-chevron".*?</svg>')
     items = "".join(
@@ -3301,12 +3302,13 @@ def rule_15_20(book):
         ],
         "tokens": ["oa.color.data.emphasis.red"],
         "why": {"text": ["A reader comparing reforms wants to see where each one acts and what the atlas expects of it. One "
-                         "choice at a time keeps each reform’s red its own, and the effects stay four ordinal codes, never "
-                         "a score the atlas does not hold. The assumptions sit one step away, where a reader who asks finds "
+                         "choice at a time keeps each reform’s red its own, and the effects stay the atlas’s four ordinal "
+                         "codes. The assumptions sit one step away, where a reader who asks finds "
                          "them whole."],
                 "basis": "Our systems atlas, Reforms R-03 and R-04 on Loop R4a; the choice lessons of En-ROADS, as Rules 18.3 and 18.8 set them"},
         "correct": {"specimen": "s-15-20-correct",
-                    "caption": "Reforms R-03 and R-04 on Loop R4a, live: choose one and its targets turn red, with its "
+                    "caption": f"Reform R-03, {lc(REFORM['R-03']['title'])}, and Reform R-04, independent citizen commissions "
+                               f"that draw election maps, on Loop R4a, where {lc(lp['title'])}, live: choose one and its targets turn red, with its "
                                "effects and routes beside the drawing and its qualifications one step away."},
         "failure": {"specimen": "s-15-20-failure",
                     "caption": "<strong>Fails Rule 15.20.</strong> Both reforms light at once, so no red says whose target it "
@@ -3337,7 +3339,8 @@ def rule_15_21(book):
     need(q.endswith("relies on seats-votes analysis with no single estimate in this model."), "L55's qualification changed")
     limits = V7["methods"]["limits"]
     lq = "no whole loop has a measured strength."
-    need(lq in limits, "the atlas's limits no longer say no loop has a measured strength")
+    need(lq in limits and "the size of any effect comes from the studies attached to each connection" in limits,
+         "the atlas's limits no longer say an effect's size comes from the studies and no loop has a measured strength")
     fb, fh, _ = card("C1", "D7", "L55")
     ladder = lambda opts, on: ('<ol class="ld">' + "".join(
         f'<li{" class=\"on\"" if o == on else ""}>{e(o)}</li>' for o in opts) + "</ol>")
@@ -3377,24 +3380,25 @@ def rule_15_21(book):
         "rule": [
             "A control may offer only what the model holds: its loops and their steps, its reforms, Rule 13.3’s grade words, "
             "the three delay classes and the four ordinal effect codes. Each is a set of named steps, so build it from the "
-            "stepper, the radio group or the disclosure, never from a slider, a dial or a field for a number.",
-            f"Never offer a total, odds, an amount or a strength in a control. Our systems atlas measures no connection’s size and "
-            f"says “{lq[0].upper() + lq[1:]}” A slider set between 0 and 100 would hand a reader a figure no study supports.",
+            "stepper, the radio group or the disclosure.",
+            "Leave totals, odds, amounts and strengths out of every control, and with them sliders, dials and fields for a "
+            "number, because our systems atlas leaves the size of any effect to the studies behind each connection and says "
+            f"that “{lq}” A slider set between 0 and 100 would hand a reader a figure no study supports.",
         ],
         "tokens": [TOKEN_LINE],
         "why": {"text": ["A slider promises that any value along it means something and that moving it changes the outcome "
                          "by that much. The atlas grades its connections in words and codes its effects in ordinal steps, so "
-                         "the honest control has exactly those steps and no more."],
+                         "the honest control offers those steps alone."],
                 "basis": "Our systems atlas, Connection L55 and the model’s limits"},
         "correct": {"specimen": "s-15-21-correct",
-                    "caption": "Connection L55 with what our systems atlas holds for it, each on the model’s own steps: its "
+                    "caption": f"Connection L55, “{l['name']}”, with what our systems atlas holds for it, each on the model’s own steps: its "
                                "sign, its grade on the ladder, its delay class, and no strength."},
         "failure": {"specimen": "s-15-21-failure",
                     "caption": "<strong>Fails Rule 15.21.</strong> A slider sets the connection’s strength at 70 of 100, a "
-                               "figure our systems atlas does not hold. The picture names the value as its own."},
+                               "figure our systems atlas does not hold. A line under the slider says the picture made the value up."},
         "specs": [
             {"label": "Steps a control may offer", "value": "Loops and their steps, reforms, grade words, delay classes and ordinal effect codes"},
-            {"label": "Never", "value": "A total, odds, an amount or a strength, never as a slider, dial or number field"},
+            {"label": "Never offered", "value": "A total, odds, an amount or a strength, whether by slider, dial or number field"},
             {"label": "A picture of a control", "value": "Drawn, not built, with its alt saying it is a picture"},
         ],
         "related": ["13", "18"],

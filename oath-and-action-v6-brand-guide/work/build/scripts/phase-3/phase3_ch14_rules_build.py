@@ -1621,7 +1621,11 @@ GROUP_LINES = {
     15: ("A map appears when the place answers the question, and words in its key, labels and table say what every shade, size or "
          "mark stands for."),
     16: "A table lets a reader look a value up, and one sentence answers when a single figure is the whole story.",
-    17: "Process explainers, number panels and comparison cards show how something works in one view.",
+    # round 4: checked against entries 14.135 to 14.141 as built; a calendar, a number panel and a social card show no
+    # workings, so the line names what each core form does
+    17: ("Process explainers and step-by-step guides show how a public process runs and what a reader can do in it. A number "
+         "panel or a set of comparison cards puts facts or options side by side, and a social card carries one chart’s "
+         "finding into a feed."),
 }
 
 
