@@ -80,11 +80,13 @@
   "panels": [
    {
     "value": "Democratic",
-    "label": "Democrats won {n} of {of}"
+    "label": "Democrats won {n} of {of}",
+    "where": "in the Democrats’ panel"
    },
    {
     "value": "Republican",
-    "label": "Republicans won {n} of {of}"
+    "label": "Republicans won {n} of {of}",
+    "where": "in the Republicans’ panel"
    }
   ],
   "step_labels": [
@@ -95,7 +97,24 @@
   ],
   "key_title": "Winner’s margin over the runner-up",
   "ghost_label": "Outline: the seat went to the other party",
-  "nation": "Nationally, Republicans won 220 House seats and Democrats 215."
+  "nation": "Nationally, Republicans won 220 House seats and Democrats 215.",
+  "inset": {
+   "ids": [
+    "06",
+    "10",
+    "11",
+    "12",
+    "13"
+   ],
+   "title": "Detroit area",
+   "at": [
+    30,
+    650,
+    470,
+    1000
+   ]
+  },
+  "unlabeled": "Not numbered at this width: {list}. The table names every district."
  },
  "notes_internal": [
   "Ruling (b) and (f): party by position, two panels, Democrats first, each named with its seats ({n} and {of} counted from the data); margin in four sequential Verdigris steps 2 to 5, every won seat with the context edge (the data lead's C-1, correcting ruling (b): gray step 1 read as the other party's ghost); the other party's districts as ghost outlines; no hue carries party (DR-48, DR-58, DR-64). The same derived table and key words as S82.",

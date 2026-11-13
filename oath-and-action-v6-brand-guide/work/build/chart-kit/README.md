@@ -220,14 +220,15 @@ This is the whole path for a map of every county, such as S81. Read entry 14.120
 2. **Name both datasets**, the data file first and the boundary file second:
    `"dataset": ["census-sahie-county-uninsured-classes", "census-cb-2024-counties"]`. The kit draws the shapes from
    `geo.js`, never from the boundary file's rows.
-3. **Write the class column with a derive script.** The drawing reads a class from 1 to n (`labels.class_field`, `cls` in
-   S81), so the page carries one small number a county, not its value and margin (about 10,600 bytes less). Copy
-   `work/build/scripts/phase-3/cartographer_round3_derive.py`'s county part: it reads the data file, sets the breaks under
-   Rule 14.9's three tests (each class at least as wide as the widest margin of error, the plus or minus figure; no two
-   places drawn two classes apart within their gap's margin; a note counting the places whose interval reaches another
-   class) and writes the class beside every county's value and margin. It writes a sidecar too: `kind: "derived"`,
-   `derived_from` (the data file, and the boundary file if you name it), `derivation` (the breaks in words), the columns,
-   and a `printed_source_line`.
+3. **Write the class column with a derive script.** The drawing reads a class from 1 to n (`encode.cls`; S81 reads
+   `income_class`), so the page carries one small number a county, not its value and margin (about 10,600 bytes less).
+   Copy the county part of `work/build/scripts/phase-3/cartographer_round3_derive.py` (`county_income_classes`): it
+   reads the data file in the boundary layer's geoid order, writes each county's class under the breaks you set, and
+   counts the breaks each county's 90 percent interval crosses. Choose the breaks under Rule 14.9's three tests, each
+   checked by your script: every class at least as wide as the widest margin of error drawn (the plus or minus figure);
+   no two places drawn two classes apart within their gap's margin; and a note that counts the places whose interval
+   reaches another class. The script also writes the sidecar: `kind: "derived"`, `derived_from` (the data file, and the
+   boundary file if you name it), `derivation` (the breaks in words), the columns and a `printed_source_line`.
 4. **Where the derived file goes.** In the studio, the script writes into `work/build/data/` and the research lead runs
    the data check over it (`python3 -I work/build/scripts/phase-3/data_round0_build.py --check`, which writes nothing).
    Outside the studio, or before that check, keep the file and its sidecar in a folder of your own and run the kit with
@@ -251,8 +252,8 @@ This is the whole path for a map of every county, such as S81. Read entry 14.120
    figure writes `{data_file}`: the kit prints the words `words.json` holds for where a chart's full data lives.
 9. **Run the kit, then read the weight line.** `build` prints, for each spec, what it weighs on the guide's page as the
    guide places an entry (its figure, lean table and compressed data) and about what it weighs with its plate's frame:
-   `weight: 12,664 bytes as the guide places it, about 13,414 with its plate's frame; share per plate 14,106, ceiling
-   15,000`. The share per plate is what each plate still to come may carry (D3-1328's 14,106 for round 3); the strict
+   `weight: 12,768 bytes as the guide places it, about 13,518 with its plate's frame; share per plate 14,106, ceiling
+   15,000` (S81, November 13, 2026). The share per plate is what each plate still to come may carry (D3-1328's 14,106 for round 3); the strict
    guide build prints the current figure in its report as "chapter 14's share per plate". A plate from S65 on that passes
    15,000 with its frame warns. The figure is also in each spec's check file, under `weight`.
 
