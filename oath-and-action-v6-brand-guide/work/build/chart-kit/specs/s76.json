@@ -18,13 +18,13 @@
  "title": "Individuals gave 2024 House campaigns $1,384.1 million, more than any other source and 61 percent of all they took in.",
  "measure_line": "Money into and out of every House candidate’s campaign committees together, 2023 to 2024 election cycle, millions of dollars, not adjusted for inflation; a band’s width is its dollars",
  "notes": [
-  "The chart traces no dollar received to a dollar spent, since the node holds the committees of all 1,926 House candidates together, primary losers included.",
-  "Cash on hand at the start and the end of the cycle lets the node balance. The reports leave $1.5 million unaccounted for, 0.059 percent of the money in, where a campaign’s cash figures come from reports that cover different dates.",
-  "“All they took in” counts every receipt, loans and net transfers included, and leaves out cash on hand. Spending counts every payment other than refunds, loan repayments and transfers. Loans and their repayments stand in their own group on each side. The chart nets transfers between a candidate’s own committees; on the way out they came to $0, so no band draws."
+  "The chart traces no dollar received to a dollar spent, since its node, the bar in the middle where every band meets, holds the committees of all 1,926 House candidates together, primary losers included.",
+  "Cash on hand at the start and the end of the cycle lets the node balance. The figures for 297 of the 1,926 campaigns do not balance, which leaves $1.5 million unaccounted for, 0.058 percent of the money in; one campaign’s reports leave nearly all of it.",
+  "“All they took in” counts every receipt, loans and net transfers included, and leaves out cash on hand. Spending counts every payment other than refunds, loan repayments and transfers. Loans and their repayments stand in their own group on each side. Transfers between a campaign and the candidate’s other committees count once, as the difference: a campaign that took in more than it sent adds to the band on the left, and one that sent more adds to the band on the right."
  ],
  "credit": "Chart: Oath & Action",
  "illustrative": false,
- "alt": "Bands of money flowing into one node for all 2024 House campaigns and out of it, each as wide as its dollars. In: cash on hand at the start, $355.3 million; contributions from individuals, $1,384.1 million; from PACs and other political committees, $429.9 million; loans from the candidates, $228.5 million; and smaller lines. Out: spending, $2,045.3 million; refunds and loan repayments; and cash on hand at the end, $487.8 million.",
+ "alt": "Bands of money flowing into one node for all 2024 House campaigns and out of it, each as wide as its dollars. In: cash on hand at the start, $355.3 million; contributions from individuals, $1,384.1 million; from PACs and other political committees, $429.9 million; loans from the candidates, $228.5 million; and smaller lines. Out: spending, $2,045.3 million; refunds, loan repayments and transfers to the candidates’ other committees; and cash on hand at the end, $487.8 million.",
  "chart_notes": [
   "Contributions from individuals, the band the title names, are in the text’s ink. Every other band is gray with a thin edge, and the thinnest are solid gray lines."
  ],
@@ -64,7 +64,7 @@
    "refunds_individuals": "Refunds to individuals",
    "refunds_committees": "Refunds to committees",
    "candidate_loan_repayments": "Candidates’ loans repaid",
-   "other_loan_repayments": "Other loans repaid",
+   "other_loan_repayments": "Other loans repaid", "transfers_out_net": "Transfers to the candidates’ other committees, net",
    "cash_end": "Cash on hand at the end"
   },
   "short": {
@@ -72,7 +72,7 @@
    "individuals": "Individuals",
    "other_committees": "PACs and other committees",
    "candidate_contributions": "Candidates’ own money",
-   "transfers_in_net": "Transfers, net",
+   "transfers_in_net": "Transfers, net", "transfers_out_net": "Transfers, net",
    "candidate_loans": "Candidates’ loans",
    "cash_end": "Cash at the end"
   },
@@ -96,8 +96,8 @@
  },
  "notes_internal": [
   "Maker B, round 3. Data plan row 100 with change 7, rule 14.110. Draws the derived fec-house-campaigns-2024-money-in-out (P7-217, from fec-house-campaigns-2024-by-candidate, the FEC's webl24 file): every House candidate's principal and authorized committees with activity in the cycle, 1,926 candidates.",
-  "Data lead ruling (a): the title names contributions from individuals, $1,384,115,131.69, the largest receipt line, in the subject ink through labels.named (a flow is an area, no red); (b): one node in the subject-ink edge, flows in one unit with a key bar of $500 million, receipts and spending in the light fill with the context edge, cash on hand at the start (left, first) and end (right, last) in the track ink with the context edge, candidate loans, other loans and both repayment lines grouped apart by a gap under Loans and Loan repayments in the track ink with the context edge; transfers out net to $0.00, so no band and a note. A band under 3 px takes the context ink whole, which reads at 3 to 1 with no edge. The node is listed open in K.parts.flows: the $1,533,158.03 remainder is the record's, named in note 2.",
+  "Data lead ruling (a): the title names contributions from individuals, $1,384,115,131.69, the largest receipt line, in the subject ink through labels.named (a flow is an area, no red); (b): one node in the subject-ink edge, flows in one unit with a key bar of $500 million, receipts and spending in the light fill with the context edge, cash on hand at the start (left, first) and end (right, last) in the track ink with the context edge, candidate loans, other loans and both repayment lines grouped apart by a gap under Loans and Loan repayments in the track ink with the context edge; transfers out net to $0.00, so no band and a note (superseded in the review fix pass: ST-S2 nets transfers candidate by candidate and draws the out line). A band under 3 px takes the context ink whole, which reads at 3 to 1 with no edge. The node is listed open in K.parts.flows: the $1,533,158.03 remainder is the record's, named in note 2.",
   "On a phone the figures print to the whole million so the label columns hold them; the table keeps every cent.",
-  "Figures checked by maker_b_round3_derive.py --figures (check S76): individuals $1,384,115,131.69 the largest receipt line ($1,384.1 million); spending $2,045,316,351.59 ($2,045.3 million); in $2,608,168,369.17 and out $2,606,635,211.14 leave $1,533,158.03 ($1.5 million, 0.059 percent of in); 1,926 candidates in the by-candidate file; transfers out $0.00; the alt's cash, PAC and loan lines."
+  "Figures checked by maker_b_round3_derive.py --figures (check S76): individuals $1,384,115,131.69 the largest receipt line ($1,384.1 million); spending $2,045,316,351.59 ($2,045.3 million); in $2,608,168,369.17 and out $2,606,635,211.14 leave $1,533,158.03 ($1.5 million, 0.058 percent of in); 1,926 candidates in the by-candidate file; the alt's cash, PAC and loan lines. Review fix pass (ST-S2): transfers netted candidate by candidate, in $175,103,772.47 and out $18,313,248.58; money in $2,626,481,617.75 and out $2,624,948,459.72; all they took in $2,271,178,361.46, individuals 60.9 percent (the title's 61); 297 of 1,926 campaigns do not balance, one of them leaving $1,500,000.00 of the remainder (the sidecar's notes)."
  ]
 }

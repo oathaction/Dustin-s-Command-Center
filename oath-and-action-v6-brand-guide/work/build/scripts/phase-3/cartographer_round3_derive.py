@@ -527,12 +527,14 @@ def house_classes(lay):
         cls = 4 if printed == '' else (1 if float(printed) < 5 else 2 if float(printed) < 10 else 3 if float(printed) < 20 else 4)
         mark = 'dot' if r['seat_kind'] == 'unopposed on the ballot' else 'ring' if r['seat_kind'] in RING_KINDS else ''
         if r['seat_kind'] not in RING_KINDS + ['unopposed on the ballot', 'Republican and Democratic', 'other pairing']: FAULTS.append('house: a kind of seat with no rule: ' + r['seat_kind'])
-        # ST-M4 (review fix pass): the district as S82's table names a close race ("7", or "at large"), only where the
-        # race was decided by under 5 points as printed (class 1), so the grouped table's list names those seats alone
-        close = ('at large' if r['district'] == '00' else str(int(r['district']))) if cls == 1 else ''
+        # ST-M4 (review fix pass): a close race as S82's table names it, the district, the winner's party and the margin
+        # as printed ("7 (Republican, 3.7)", "at large (Republican, 2.0)"), only where the race was decided by under 5
+        # points as printed (class 1), so the grouped table's list names those seats alone
+        close = '%s (%s, %s)' % ('at large' if r['district'] == '00' else str(int(r['district'])), r['winner_group'], printed) if cls == 1 else ''
         out.append({'state': r['state'], 'district': r['district'], 'winner': r['winner'], 'winner_group': r['winner_group'],
                     'runner_up': r['runner_up'], 'runner_up_group': r['runner_up_group'], 'margin_pct': m, 'margin_printed': printed,
-                    'margin_class': cls, 'seat_kind': r['seat_kind'], 'mark': mark, 'close_seat': close, 'col': t['col'], 'row': t['row']})
+                    'margin_class': cls, 'seat_kind': r['seat_kind'], 'mark': mark, 'close_seat': close,
+                    'party': {'Democratic': 'D', 'Republican': 'R'}[r['winner_group']], 'col': t['col'], 'row': t['row']})
     import collections
     k = collections.Counter((str(r['margin_class']) if r['mark'] != 'dot' else 'unopposed', r['winner_group']) for r in out)
     LOG.append('house classes (class, party): %s' % sorted(k.items()))
@@ -556,7 +558,8 @@ def house_classes(lay):
             "margin_class": {"type": "integer", "description": "1 under 5 points, 2 under 10, 3 under 20, 4 at 20 or more and unopposed"},
             "seat_kind": {"type": "category", "description": "kind of seat, in the source file's words"},
             "mark": {"type": "category", "description": "dot, unopposed on the ballot; ring, decided another way; empty otherwise"},
-            "close_seat": {"type": "text", "description": "the district as S82's table names a close race (\"7\", or \"at large\"), only where the margin as printed is under 5 points; empty otherwise"},
+            "party": {"type": "category", "description": "the winner's party as one letter, D or R, the column the tile map's panels read (its island carries 435 of them; the table and the CSV print winner_group in words)"},
+            "close_seat": {"type": "text", "description": "a close race as S82's table names it: the district, the winner's party and the margin as printed (\"7 (Republican, 3.7)\", \"at large (Republican, 2.0)\"), only where the margin as printed is under 5 points; empty otherwise"},
             "col": {"type": "integer", "description": "tile layout column"},
             "row": {"type": "integer", "description": "tile layout row"}
         },
@@ -566,10 +569,10 @@ def house_classes(lay):
         },
         "ledger_row": m0.get("ledger_row"), "domain": m0.get("domain"), "states": [],
         "derived_from": ["clerk-house-results-2024-by-district.csv", "census-gazetteer-2024-cd119-tile-layout.csv"],
-        "derivation": "Each race's printed margin, class (data lead's ruling (f), round 3), mark and, for a race under 5 points as printed, the district as the closest-races list names it (ST-M4, review fix pass), joined to its square in the tile layout by state and district (cartographer_round3_derive.py)",
+        "derivation": "Each race's printed margin, class (data lead's ruling (f), round 3), mark and, for a race under 5 points as printed, the words the closest-races list prints for it (ST-M4, review fix pass), and the winner's party as one letter for the drawing, joined to its square in the tile layout by state and district (cartographer_round3_derive.py)",
         "notes": LOG[-1:]
     }
-    write('clerk-house-results-2024-classes', ['state', 'district', 'winner', 'winner_group', 'runner_up', 'runner_up_group', 'margin_pct', 'margin_printed', 'margin_class', 'seat_kind', 'mark', 'close_seat', 'col', 'row'], out, side)
+    write('clerk-house-results-2024-classes', ['state', 'district', 'winner', 'winner_group', 'runner_up', 'runner_up_group', 'margin_pct', 'margin_printed', 'margin_class', 'seat_kind', 'mark', 'close_seat', 'party', 'col', 'row'], out, side)
 
 
 SPECS = os.path.normpath(os.path.join(HERE, '..', '..', 'chart-kit', 'specs'))

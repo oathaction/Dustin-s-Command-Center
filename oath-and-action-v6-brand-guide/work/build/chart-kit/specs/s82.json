@@ -99,11 +99,7 @@
     {
      "label": "Closest races, under 5 points",
      "agg": "list",
-     "field": "close_seat",
-     "with": [
-      "winner_group",
-      "margin_printed"
-     ]
+     "field": "close_seat"
     }
    ]
   }
@@ -116,7 +112,7 @@
  "encode": {
   "state": "state",
   "district": "district",
-  "party": "winner_group",
+  "party": "party",
   "cls": "margin_class",
   "mark": "mark",
   "col": "col",
@@ -125,11 +121,11 @@
  "labels": {
   "panels": [
    {
-    "value": "Democratic",
+    "value": "D",
     "label": "Democrats won {n} seats"
    },
    {
-    "value": "Republican",
+    "value": "R",
     "label": "Republicans won {n} seats"
    }
   ],

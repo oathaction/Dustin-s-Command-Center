@@ -772,17 +772,24 @@
   // width_key(c, x, y, unit, steps, o): a key for line or band widths in one unit: a short stroke at each step's width
   // with its value beside it (o.fmt a format, default 'integer'; o.words a list of printed words in place of the values;
   // o.stroke default 'context'; o.len px, default 28; o.title words above it). Returns its height.
+  // BC-S2 (round 3 fix pass): o.band draws each step as the bands draw, a band of that height in the band's fill (true:
+  // 'band', or a fill role) with its two 1 px edges in o.edge (default 'context', false for none), as flow_band sets
+  // them, so a Sankey's key takes the ink its bands take
   P.width_key = function (c, x, y, unit, steps, o) {
     o = o || {};
-    var len = o.len || 28, cy = y, size = c.size('tick');
+    var len = o.len || 28, cy = y, size = c.size('tick'), bf = o.band ? (o.band === true ? 'band' : o.band) : null;
+    var edge = o.edge === undefined ? 'context' : o.edge, ew = c.t('line-hairline');
     if (o.title) { var tt = c.text(x, cy + size, o.title, { role: 'tick', weight: 600, max: o.max }); cy = tt.bottom + 6; }
     steps.forEach(function (v, i) {
       var w = Math.max(0.5, v * unit), mid = cy + Math.max(w, size) / 2;
-      c.line(x, mid, x + len, mid, { stroke: o.stroke || 'context', width: w, mark: false });
+      if (bf) {
+        c.rect(x, mid - w / 2, len, w, { fill: bf, mark: false });
+        if (edge) { c.line(x, mid - w / 2, x + len, mid - w / 2, { stroke: edge, width: ew, mark: false }); c.line(x, mid + w / 2, x + len, mid + w / 2, { stroke: edge, width: ew, mark: false }); }
+      } else c.line(x, mid, x + len, mid, { stroke: o.stroke || 'context', width: w, mark: false });
       c.text(x + len + 8, mid + 0.35 * size, (o.words && o.words[i]) || K.fmt(v, o.fmt || 'integer'), { role: 'tick' });
       cy += Math.max(w, size) + 8;
     });
-    c.key(steps.map(function () { return { fill: o.stroke || 'context', pattern: true }; }));
+    c.key(steps.map(function () { return bf ? { fill: bf, outline: !!edge } : { fill: o.stroke || 'context', pattern: true }; }));
     return cy - y;
   };
 

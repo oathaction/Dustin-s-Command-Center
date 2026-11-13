@@ -208,7 +208,9 @@ def figures():
     check('S66', '90 calendar days' in by['2']['time_limit'] and '90 days' in s['alt'], 'White House review, 90 days')
     check('S66', '30 days' in by['5']['time_limit'] and 'at least 30 days' in s['alt'], 'final rule 30 days before effect')
     check('S66', 'February 18, 2025' in s['notes'][0] and 'February 18, 2025' in meta('govinfo-federal-rulemaking-steps')['vintage'], 'EO 14215 date')
-    check('S66', 'November 12, 2026' in s['measure_line'] and meta('govinfo-federal-rulemaking-steps')['date_retrieved'] == '2026-11-12', 'law as of the retrieval date')
+    check('S66', 'November 12, 2026' in s['grade_line'] and meta('govinfo-federal-rulemaking-steps')['date_retrieved'] == '2026-11-12', 'law in force on the retrieval date (grade line)')
+    check('S66', [r['order'] for r in rows if r['path'] == 'branch' and r['order'] in ('3', '4')] == [] and 'steps 2 and 3' in s['notes'][1] and by['3']['step'].startswith('Proposed') and by['4']['step'] == 'Public comment', 'notice and comment are steps 2 and 3 (note 2)')
+    check('S66', 'Congress and the President' in s['title'] and by['7']['who_acts'] == 'Congress and the President' and by['8']['who_acts'] == 'Federal courts', 'Congress and the President, or a court (title)')
     # S67: 18, Ohio, 31 states and DC
     s, rows = spec('s67'), read_csv('ballotpedia-rcv-prohibitions-by-state')
     yes = [r for r in rows if r['reaches_city_elections'] == 'yes']
@@ -218,12 +220,19 @@ def figures():
     check('S67', [r['code'] for r in part] == ['OH'], 'Ohio alone partly')
     check('S67', len(none) == 32 and 'DC' in [r['code'] for r in none] and '31 states and the District of Columbia' in s['alt'], '31 states and DC with no ban')
     check('S67', sum(1 for r in yes if r['scope'] == 'all') == 17, '17 full bans in the first answer')
+    check('S67', 'partly in Ohio' in s['title'], 'Ohio partly (title)')
+    mo = [r for r in rows if r['code'] == 'MO'][0]
+    check('S67', all(a in mo['measure'] and b in s['typography']['replace'][0][1] for a, b in (('1966852', '1,966,852'), ('906851', '906,851'))), "Missouri's certified returns, printed with separators")
     check('S67', 'Public Chapter 621' in s['notes'][1] and 'Public Chapter 621' in part[0]['city_reach_note'] + ''.join(r['city_reach_note'] for r in yes), 'Public Chapter 621')
     # S68: six can change, two apply
     s, rows = spec('s68'), read_json('v7-pathway-electric-decision-makers')
     ch = [r for r in rows if r['can_change_rule']]
     check('S68', len(rows) == 8 and len(ch) == 6 and 'Six of the eight' in s['title'], 'six of eight can change')
     check('S68', sorted(r['order'] for r in rows if not r['can_change_rule']) == [6, 8], 'the two who apply: grid operators and the investor-owned utility')
+    o7 = [r for r in rows if r['order'] == 7][0]
+    check('S68', '“' + o7['controls'] + '”' in s['notes'][1] and o7['who'] == 'Congress and the Department of Health and Human Services', 'the atlas record for Congress and HHS, quoted as stored (note 2)')
+    words = s['table']['columns'][3]['words']
+    check('S68', all(str(r['order']) in words for r in rows), 'every order mapped in the line-of-authority column')
     # S69: 20 standing, 3 select, 109 subcommittees, Appropriations 12, Budget and Ethics none
     s, rows = spec('s69'), read_csv('clerk-house-committees-119')
     com = {}
@@ -254,7 +263,7 @@ def figures():
     s, rows = spec('s71'), read_csv('usgov-v7-route-grid')
     n = {r['route']: int(r['route_entries']) for r in rows}
     check('S71', len(rows) == 11 and n['FS'] == 38 and max(n.values()) == 38 and '38' in s['title'], 'federal statute listed most, 38')
-    check('S71', '60 senators to end debate on most bills' in [r for r in rows if r['route'] == 'FS'][0]['what_it_takes'] and '60 senators' in s['title'], '60 senators to end debate')
+    check('S71', '60 senators to end debate on most bills' in [r for r in rows if r['route'] == 'FS'][0]['what_it_takes'] and '60 senators to end debate on most bills' in s['notes'][2], '60 senators to end debate (note 3)')
     want = {'SS': 29, 'LOC': 15, 'BI': 11, 'FA': 7, 'CRT': 7, 'FR': 6, 'ENF': 5, 'CIV': 4, 'AV': 3, 'IC': 1}
     check('S71', all(n[k] == v for k, v in want.items()), 'every route count in the alt')
     check('S71', '546,651' in [r for r in rows if r['route'] == 'BI'][0]['what_it_takes'], "California's signature count behind note 2")
@@ -263,7 +272,10 @@ def figures():
     def cnt(ch, party=None, vote=None):
         return sum(1 for r in rows if r['chamber'] == ch and (party is None or r['party'] == party) and (vote is None or r['vote_cast'] == vote))
     check('S72', cnt('Senate', vote='Yea') == 60 and cnt('Senate', vote='Nay') == 40 and '60 to 40' in s['title'], 'Senate 60 to 40')
-    check('S72', cnt('Senate', 'D', 'Yea') == 7 and cnt('Senate', 'I', 'Yea') == 1 and cnt('Senate', 'R', 'Yea') == 52 and 'seven Democrats and one independent joining 52 Republicans' in s['title'], 'Senate yes: 7 D, 1 I, 52 R (title)')
+    check('S72', cnt('Senate', 'D', 'Yea') == 7 and cnt('Senate', 'I', 'Yea') == 1 and cnt('Senate', 'R', 'Yea') == 52 and 'Democrats, 45: 7 yes' in s['alt'] and 'seven Democrats voted yes and one Republican voted no' in s['notes'][1], 'Senate yes: 7 D, 1 I, 52 R (alt, note 2)')
+    check('S72', 'Six Democrats voted yes in the House and two Republicans voted no' in s['notes'][0] and cnt('House', 'D', 'Yea') == 6 and cnt('House', 'R', 'Nay') == 2, 'House crossovers both ways (note 1)')
+    sen = [r['member'] for r in rows if r['chamber'] == 'Senate']
+    check('S72', not any(x.get('field') == 'member' for x in s['sort']) and sen == sorted(sen, key=lambda n: (n.split(' ', 1)[1].lower(), n)), "members in the record's order, by last name")
     check('S72', cnt('Senate', 'R', 'Nay') == 1 and cnt('Senate', 'I', 'Nay') == 1 and cnt('Senate', 'D', 'Nay') == 38, 'Senate no: 1 R, 1 I, 38 D')
     check('S72', cnt('House', vote='Yea') == 222 and cnt('House', vote='Nay') == 209 and '222 to 209' in s['title'], 'House 222 to 209')
     check('S72', cnt('House') == 433 and 435 - cnt('House') == 2, 'House 433 members recorded, 2 of 435 seats vacant')

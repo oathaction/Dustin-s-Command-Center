@@ -12,7 +12,7 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: state laws compiled by Ballotpedia, a secondary source, as of November 2026; the city route from the atlas, as of October 15, 2026",
-  "title": "A state ban on ranked-choice voting reaches city elections in 18 states, Ohio’s ban lets home-rule cities adopt it at the cost of state local government funds, and elsewhere the answer turns on state home-rule law.",
+  "title": "A state ban on ranked-choice voting reaches city elections in 18 states and partly in Ohio, and elsewhere the answer turns on state home-rule law.",
   "measure_line": "Whether a state ban on ranked-choice voting reaches a city’s own elections, 50 states and the District of Columbia, bans as of November 2026, read November 6, 2026, and read again November 12, 2026, after the November 3 election",
   "notes": [
     "Tennessee’s ban covers some elections, but it names local government offices and counts an incorporated city or town as local government, so its cities follow the first answer with the other 17 states.",
@@ -134,7 +134,13 @@
   },
   "typography": {
     "curl_quotes": true,
-    "nbsp": true
+    "nbsp": true,
+    "replace": [
+      [
+        "1966852 to 906851",
+        "1,966,852 to 906,851"
+      ]
+    ]
   },
   "notes_internal": [
     "Maker A, round 3. Data plan row 87 with the sign-off's change 12, rule 14.97. Domain D02 from the sidecar; Ohio and Tennessee count, since the tree and its notes name them.",
