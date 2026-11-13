@@ -4,9 +4,7 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. The board builder
 
 ## Status
 
-- 18:54 UTC. **Run 15 (`--reuse --check --strict`) exits 0, 0 warnings, no failures**, on this board's strict build of 11,236,260 bytes (the size of the main session's version 9 build) and the engineer's plate file remeasured on that build. Folder 318 files, 41,949,582 bytes. Board check: the page alone fails only axe html-has-lang at 1440, 390 and 360 px; the wrapped copy passes. The quick check line points at `phase-3/board-2/main/v9/quick/guide-Guide-Check-Results.json`, which had not landed, so it prints "Waiting for its file" and the Tested panel reads "Part waiting"; one more run after it lands.
-
-- Waiting: the main session's word that version 9 is published, then `--reuse --check` against it.
+- 19:30 UTC. **Run 18 (`--reuse --check --strict`) exits 0: 0 warnings, no failures, all eight panels Ready.** Strict build 11,236,260 bytes, the size of the build published as preview version 9. The quick check line reads the v9 check (1440 and 390 px, 694 drawn examples, 3,296 same-page links, no failures). All 183 links to the preview (128 entries) find their anchors on version 9's page (`work/boards/phase-3/round-3/20261113_Guide-Preview-V9.html`); a missing one now fails the build. B2-S3, S13, S14 and S15 closed. Folder 318 files, 41,956,844 bytes. Board check: the page alone fails only axe html-has-lang at 1440, 390 and 360 px; the wrapped copy passes.
 
 ## Contracts
 
@@ -135,6 +133,7 @@ Under `work/handoffs/phase-3/20261113_Board-2-Fix-Brief.md` (calls 1 to 8) and t
 - D3-xxx | S06's and S67's weight lines name apart the bytes the build adds inside the chart round its atlas IDs (360 and 48, the engineer's `added_on_page`); the ten-heaviest table keeps one "Frame" column and says which charts it also counts them for | B2-S13
 - D3-xxx | An item whose id names two charts (S54-S55) shows both of panel 2's Newsprint pictures even where it names one `spec` | B2-S15
 - D3-xxx | The content file keeps the editor's two alts for sketch 14.124's pair (its 18:26 words), keyed by each picture's file, read where the decisions file's picture carries none | B2-S3: the alts the editor set in the decisions file left with the pictures the data lead replaced for B2-S2
+- D3-xxx | Every link to the guide preview is checked against the ids of version 9's published page as committed (the content file's `preview_page`); a missing anchor fails the build, and the Tested panel says how many links and entries were found | The coordinator asked that the board's links resolve against version 9's anchors; the Not tested line that said version 9 was unpublished gives way to one on the links not clicked in the host
 - D3-xxx | Under 760 px a side-by-side chart frame opens at its right end, on the phone drawing (`direction: rtl` on the frame), with a line above it saying so; composed Charcoal pictures take a 16 px Charcoal margin | B2-S12; one picture a ground keeps the folder near 300 files, where separate phone pictures would add 168
 
 ## Tested

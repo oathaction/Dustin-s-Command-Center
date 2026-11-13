@@ -1,18 +1,22 @@
 {
- "built": "2026-11-13T19:17:26.093160+00:00",
+ "built": "2026-11-13T19:28:56.173683+00:00",
  "guide_build": {
   "exit": 0,
   "bytes": 11236260,
   "rules": 344,
   "specimens": 638,
   "warnings": 0,
-  "built": "2026-11-13T19:17:36"
+  "built": "2026-11-13T19:29:08"
  },
  "decisions": {
   "file": "work/handoffs/phase-3/20261113_Board-2-Decisions.json",
   "state": "signed off",
   "updated_utc": "2026-11-13T18:42:18Z",
   "schema": "board-2-decisions/1"
+ },
+ "preview_page": {
+  "file": "work/boards/phase-3/round-3/20261113_Guide-Preview-V9.html",
+  "ids": 2402
  },
  "plate_bytes": {
   "file": "work/handoffs/phase-3/board-2-pictures/20261113_Plate-Bytes.json",
@@ -4598,8 +4602,9 @@
   ]
  },
  "tested": {
-  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 19:17 UTC, with exit 0, no warnings, 11,236,260 bytes, 344 rules and 638 examples placed",
+  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 19:29 UTC, with exit 0, no warnings, 11,236,260 bytes, 344 rules and 638 examples placed",
   "Quick guide check": "run by the main session on a copy of its strict build of 11,236,260 bytes at 1440 and 390 px, with 694 drawn examples, 3,296 same-page links and no failures",
+  "Links to the guide preview": "183 links to 128 entries, each anchor read by this board’s build on the page published as version 9, 183 of 183 found",
   "The kit’s build of every chart": "run by this board’s build at the widths the guide draws and at every whole width from 256 px, with 84 of 84 charts passing with no fault and no warnings",
   "The engineer’s checks after your answers landed": "chapter 14’s generator, 87 of 87 files current; the kit’s build of every chart at every whole width from 256 px, 84 of 84 pass and 0 fail; the data check, 125 tables and 0 faults; the map shapes current; the atlas check PASS with 0 failures; the kit’s self-test, every planted fault caught",
   "This board’s own check": "on its last run at 1440, 390 and 360 px, with no failures once the page’s language is left aside, since the host’s wrapper sets it"
@@ -4610,6 +4615,12 @@
   "pass": true,
   "page_bytes": 11236260
  },
+ "preview_links": {
+  "page": "work/boards/phase-3/round-3/20261113_Guide-Preview-V9.html",
+  "links": 183,
+  "anchors": 128,
+  "found": 183
+ },
  "kit_checks": {
   "check_files": 84,
   "pass": 84,
@@ -4617,11 +4628,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-3/board-2/20261113_Board-2.html",
- "html_bytes": 1046689,
+ "html_bytes": 1046788,
  "images": 314,
  "image_bytes": 40707016,
  "folder_files": 318,
- "folder_bytes": 41955581,
+ "folder_bytes": 41956844,
  "largest_image": [
   496612,
   "20261113_Form-S37-Grayscale.webp"
@@ -5171,6 +5182,32 @@
  ],
  "notes": [],
  "warnings": [],
- "seconds": 16,
- "words": 61947
+ "seconds": 19,
+ "words": 61963,
+ "check": {
+  "page": {
+   "failures": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "allowed": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "results": "work/boards/phase-3/round-3/board-2/20261113_Board-2-Check-Results.json"
+  },
+  "wrapped": {
+   "failures": [],
+   "pass": true,
+   "results": "[scratch]/phase-3/board-2/builder/publish-view/20261113_Board-2-Check-Results.json"
+  },
+  "widths": [
+   1440,
+   390,
+   360
+  ]
+ },
+ "fails": []
 }
