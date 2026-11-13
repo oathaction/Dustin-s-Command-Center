@@ -973,9 +973,10 @@ def rule_14_7(B):
         [("Party marks", "One neutral ink for every party, Charcoal on Newsprint", "oa.chart.color.party.mark.onNewsprint"),
          ("Two sides at a glance", "One solid and one open mark, in the same ink (Rule 01.2)"),
          ("Direction", "An arrow, the mark’s place or a printed lead, such as “Republican +2.2”"),
-         # round 3, the data lead's ruling (b) for the district map and the district tile map
-         ("Seats on a map", "One panel for each party, named with the seats it won, each seat filled in its winner’s panel and its margin "
-                            "in gray steps (Rule 14.5)"),
+         # round 3, the data lead's ruling (b) for the district map and the district tile map, with C-1's correction: the margin
+         # takes sequential steps 2 to 5, so the closest race reads as filled beside an empty outline
+         ("Seats on a map", "One panel for each party, named with the seats it won, each seat filled in its winner’s panel and empty in "
+                            "the other, its margin in steps of one sequential ink, the closest still a clear fill (Rule 14.5)"),
          ("Never", "Red against blue, or Prussian for a party")],
         ["01.1", "01.2", "05.7"],
         "Party data takes the party role in any form; the kit fails a party mark in Pillar Red or Prussian.",

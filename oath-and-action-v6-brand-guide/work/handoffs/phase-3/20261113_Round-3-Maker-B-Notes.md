@@ -131,6 +131,8 @@ November 13, 2026, after the data lead's "Sign-off, maker B" (MB-1 to MB-9), the
 - `maker_b_round3_derive.py --figures`: 0 faults, with the new checks for MB-1 (2.30 times), MB-2, MB-4 (61 percent of $2,252,865,112.88), MB-6 and MB-7 (each test against the quoted rule) and the editor's three strings; `--check`: 0 faults after rewriting both derived sidecars (the steps sidecar's notes, and the source changes the research lead made).
 - `phase3_ch14_build.py --rounds 1,2,3`: 128 rules, 114 entries, 84 plates, 0 faults. `guide_build.py --strict --out <scratch>/guide4/guide.html`: exit 0, 11,221,514 bytes. Plate weights from its report: S65 5,535; S73 8,917; S74 10,946; S75 7,169; S76 6,710; S77 7,055 bytes.
 
+- `guide_check.js <scratch>/guide4/guide.html --quick --no-captures`, run to its end: PASS, 2 widths, 344 rules, 694 specimens, 3,275 same-page links, 0 failures.
+
 ### Not tested (sign-off fixes)
 
 - S65, S74 and S77 drawings after their word changes at narrow widths (their forms did not change; only titles, measure lines and notes moved, and each built PASS).
