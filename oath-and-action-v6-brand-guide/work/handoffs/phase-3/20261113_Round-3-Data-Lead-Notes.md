@@ -639,3 +639,49 @@ November 13, 2026, review fix pass, first run, from 04:24 UTC (clock read from `
 - **To the editor:** ST-M2 item 1 (nine places); the words of ST-M4, ST-S1 to ST-S7, ST-S10 and ST-S12 as owners apply them, or straight into finished owners' fields (D3-669).
 - **To the research lead:** ST-S2's data check and sidecar lines; ST-S4 (which tables publish Puerto Rico); ST-S8 (refreeze with accents); ST-S10's data check on the route grid; ST-S11 (S65's release in the source line).
 - **To the main session, for Dustin:** Q1, Q2 and Q3 as recommended above.
+
+### Rulings on the access and production report (AX)
+
+Read from `work/handoffs/phase-3/20261113_Round-3-Red-Team-Access-Production.md` and its panel's files at 04:33 UTC. The panel is simulated and untested with real people; I rule on what it found, not on its verdicts.
+
+**AX-M1. S73's empty "From".** The same fault as ST-M1, one fix: ST-M1's ruling. Added from AX: the engineer's page check fails a printed table column that is empty in every row, so a blank sender cannot pass again. Owners: engineer, maker B. Reason: the check counted rows and missed an empty column.
+
+**AX-M2. S68's bare order numbers.** The same fault as ST-M3, one fix: ST-M3's ruling (maker A maps 3, 4, 7 and 8 to "None drawn"). Added from AX, and narrower than the report asks: the engineer's check warns, not fails, where a column with `words` prints a stored value it does not map, and a spec may mark such a column `words_pass: true` where printing the value is meant (S82's district numbers, which print as stored but for "00"). Owners: maker A, engineer. Reason: S82 depends on the fallback, so a failing check would break a correct spec.
+
+**AX-S1. Forced colors merge marks the drawing keeps apart.**
+- **S83 and S81, ruled:** in forced colors the merged land path draws its fill with no stroke; the coast and state lines come from `map_mesh`, in GrayText at the widths they take in normal colors, and S83's dots alone take CanvasText. This keeps normal colors' order (dots, then land edge and state lines in the context ink) in a contrast theme. Owner: engineer.
+- **S72, ruled:** in forced colors "did not vote" fills with GrayText and no edge, which keeps its normal-colors meaning (a light fill, no edge) and leaves "no" as the only CanvasText outline; vacant seats stay ghost outlines in GrayText. No new mark: a center dot already means "unopposed" on S82. The key's swatches follow. Owners: engineer (forced-colors map in `kit.css`), maker A (rebuild and look).
+- **S74, ruled:** in forced colors the authority cell takes a second edge inside its first, 2 px in, both CanvasText, so it differs from a one-connection cell by form as well as ink. Normal colors stay as signed off. Owners: engineer (CSS), maker B (a class on the authority cells if the form lacks one).
+- Reason: WCAG 1.4.1 and 1.4.11 in a contrast theme; each fix keeps the meaning the mark has in normal colors.
+
+**AX-S2. The avoid sketch.** Q2's ruling: color waits on Dustin, unequal places now (AX's recommendation matches the one I give Dustin). `use_when` is ST-S3's ruling ("panels by party", no "gray"). No ruling on the accessible name: the engineer joins the second drawing's title and description with a period, as the report says. Owners: cartographer, editor, engineer.
+
+**AX-S3. S84's DC square and the Department's marks.**
+- **DC, ruled:** the square draws in all four panels at every width. Under 326 px the form places it as at 326 px, east of Maryland in the panel's margin, at the size the panel allows. If a panel has no room at all, the form honors `panel`'s `unplaced` and a note at that width names DC and its class in each year. By script, DC sits above $7.25 in all four years, so the note can say so in one clause. Note 3's "the District of Columbia as a square beside Maryland" must stay true at every width. Owner: cartographer. Reason: every panel's printed count includes DC, so a reader must be able to find it.
+- **Marks, ruled:** the table keeps the Department's cells, as its caption promises, with two changes in printed words only (D3-519's pattern; the CSV keeps the Department's cell):
+  - "..." prints as "No state law" through the spec's `typography.replace`. By script, 20 of the four years' cells read "..." (five states, four years), `cell_status` "not applicable".
+  - One table note gives the four marks that occur in the four years, in the Department's key shortened: "[c], (d) and (e) mark rates for employers of four, six or two or more workers; (g) marks a state that sets a lower rate for some smaller businesses." By script the four years carry [c] 14 times, (g) 12, (e) 11 and (d) 4, and no other mark.
+- Owners: cartographer (spec), editor (words). Reason: a screen reader says "dot dot dot", and a mark with no key is a mark no reader can read.
+
+**AX-S4. Grouped tables in postal-code order.** The same as ST-S9: ST-S9's ruling (sort by the printed name where `state_name` is set; S81, S82 and S83 take it).
+
+**AX-S5. "The download".** The same as ST-M2: ST-M2's ruling, with Q1 waiting on Dustin. AX's other wording ("a published chart’s CSV lists ...") is the second form Dustin can choose; the one-string rule lets either land with no spec change. S74's IDs stay out of its page table (D3-1121): Rule 13.9 sets how an ID prints, not that it must, and the file Q1 names carries `link_ids`.
+
+**AX-S6. The kit for a designer.** No ruling on marks; the engineer fixes as the report says (`--data DIR`, the README's round 3 rows, map source lines, the share per plate in `build`'s output, the retrieval date check, the national figure warning). One part touches a title's kind, and I rule it: a map of a model's estimates, such as the Small Area Health Insurance Estimates the designer drew, takes Rule 13.1's Estimate kind as S51 does; a survey's own published estimates with their margins (S78, S81) stay Findings, as ruling (d) set them. The editor adds one "For builders" line to entry 14.120 pointing there. Owners: engineer, editor. Reason: the designer had no path from a county map to the right title kind.
+
+**AX-S7. Rule 14.9's class width: margin or interval. Ruled: the margin, the plus or minus figure.**
+- Test 1's reason is that no place can sit more than one class from where it is drawn. A class at least as wide as the widest margin already guarantees that: a place at e in a class [a, a + w) with margin m ≤ w has an interval inside [a − w, a + 2w), so it can reach the class below or above and no further. A class twice as wide (the whole interval) adds only that an interval crosses one break at most, and the third test's note already counts those places.
+- So Rule 14.9's words stand ("at least as wide as the widest margin of error drawn"), and I correct ruling (c)'s test 1 to "every class at least as wide as the widest margin of error drawn, the plus or minus figure". The editor glosses it once in Rule 14.9 in those plain words. S78 (4-point classes against Wyoming's ±1.9) and S81's notes need no change; S78 meets both.
+- Owners: editor (the gloss); I correct D3-1103's wording below. Reason: one test, stated once, that delivers the rule's own reason.
+
+**AX-S8. Words that stopped the simulated reader.** No ruling on marks; the editor, maker A (S66's "OMB" spelled out as the Office of Management and Budget) and maker B (S76's "Sankey", "node" and "nets transfers", which ST-S2's new note 3 replaces) fix as the report says. Entry 14.124's "Use it when: Never" and the "sequential steps" phrase in entry 14.120 go to the editor.
+
+**Noted from AX's named places, no item.** S80's note names its unlabeled districts without their panel at 256 px; no ruling, the cartographer adds the party to each name if it fits. The ghost outline's key swatch on Charcoal (1.80 to 1) needs no change: the ghost marks a seat the other panel fills, and the filled seat carries the meaning.
+
+### Requests from the AX rulings
+
+- **To the engineer:** AX-M1's empty-column check; AX-M2's warning with `words_pass`; AX-S1's three forced-colors changes; AX-S2's accessible name; AX-S6 as the report lists.
+- **To maker A:** S72 rebuilt and looked at in forced colors (AX-S1); S66's "OMB" (AX-S8).
+- **To maker B:** S74's authority cells carry a class the CSS can reach (AX-S1).
+- **To the cartographer:** AX-S3 (DC at every width; the "..." words and the marks note).
+- **To the editor:** AX-S3's marks note and "No state law"; AX-S6's builders' line in entry 14.120; AX-S7's gloss in Rule 14.9; AX-S8.
