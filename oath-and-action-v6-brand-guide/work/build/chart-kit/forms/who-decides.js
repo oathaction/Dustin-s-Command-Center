@@ -2,7 +2,7 @@
  * what they can do: a band of those who can change the rules above a band of those who apply them, in columns by level
  * (federal, regional, state, local, private). One node style for every body, a subject-ink edge with the text's ink
  * inside, the name in bold and any words in parentheses under it. Lines of authority (one body setting or approving
- * another's rules) run in the context ink with an arrowhead and take no sign; they close no loop (R3-6, Rule 15.5).
+ * another's rules) run in the context ink and end in Rule 15.5's open diamond; they take no sign and close no loop (R3-6).
  * Narrower than five columns of 118 px, the bands run down the page, each body a row under its level's name, and the
  * lines of authority run in a lane at the left.
  * encode: who (text), level (category), changes (boolean: can change the rules), key (the body's own key, for links).
@@ -79,24 +79,36 @@
       }
       // lines of authority: drawn before nothing else crosses them; across, down from the body to the one it governs;
       // on a phone, out to a lane at the left and back in
+      // Rule 15.5's open diamond, 14 by 11 px, its tip on the governed body's edge, pointing along the line's last run
+      // (drawn here until the kit's link takes a diamond end, A-E4)
+      var diamond = function (x, yy, dx, dy, key) {
+        var l = 14, h = 5.5, bx = x - dx * l, by = yy - dy * l, mx = x - dx * l / 2, my = yy - dy * l / 2;
+        c.path('M' + K.round(x) + ',' + K.round(yy) + 'L' + K.round(mx - dy * h) + ',' + K.round(my + dx * h) + 'L' + K.round(bx) + ',' + K.round(by) +
+          'L' + K.round(mx + dy * h) + ',' + K.round(my - dx * h) + 'Z', { fill: 'surface', stroke: 'context', width: 1.5, data: { key: key, field: 'authority', value: 'authority' } },
+          [Math.min(x, bx) - h, Math.min(yy, by) - h, Math.abs(bx - x) + 2 * h, Math.abs(by - yy) + 2 * h]);
+      };
+      // lines of authority: across, down from the body that decides to the one it governs; on a phone, out to a lane at the
+      // left and back in; each ends in the open diamond, with no sign
       (L.authority || []).forEach(function (a, i) {
         var f = at[String(a.from)], t = at[String(a.to)];
         if (!f || !t) { c.warn('labels.authority: no body with key ' + (f ? a.to : a.from)); return; }
-        var o = { stroke: 'context', width: 1.5, arrow: true, head: [7, 4], data: { key: 'authority ' + a.from + '>' + a.to, from: String(a.from), to: String(a.to), value: 'authority' } };
+        var o = { stroke: 'context', width: 1.5 }, key = 'authority ' + a.from + '>' + a.to;
         if (wide) {
           var fx = f.x + f.w / 2, tx = t.x + t.w / 2;
-          if (Math.abs(fx - tx) < 1) K.parts.link(c, { x: fx, y: f.y + f.h }, { x: tx, y: t.y }, o);
+          if (Math.abs(fx - tx) < 1) K.parts.link(c, { x: fx, y: f.y + f.h }, { x: tx, y: t.y - 14 }, o);
           else {
             var bend = f.y + f.h + 12;
-            K.parts.link(c, { x: fx, y: f.y + f.h }, { x: fx, y: bend }, { stroke: 'context', width: 1.5 });
-            K.parts.link(c, { x: fx, y: bend }, { x: tx, y: bend }, { stroke: 'context', width: 1.5 });
-            K.parts.link(c, { x: tx, y: bend }, { x: tx, y: t.y }, o);
+            K.parts.link(c, { x: fx, y: f.y + f.h }, { x: fx, y: bend }, o);
+            K.parts.link(c, { x: fx, y: bend }, { x: tx, y: bend }, o);
+            K.parts.link(c, { x: tx, y: bend }, { x: tx, y: t.y - 14 }, o);
           }
+          diamond(tx, t.y, 0, 1, key);
         } else {
           var lx = 4 + 9 * i, fy = f.y + Math.min(20, f.h / 2), ty = t.y + Math.min(20, t.h / 2);
-          K.parts.link(c, { x: f.x, y: fy }, { x: lx, y: fy }, { stroke: 'context', width: 1.5 });
-          K.parts.link(c, { x: lx, y: fy }, { x: lx, y: ty }, { stroke: 'context', width: 1.5 });
-          K.parts.link(c, { x: lx, y: ty }, { x: t.x, y: ty }, o);
+          K.parts.link(c, { x: f.x, y: fy }, { x: lx, y: fy }, o);
+          K.parts.link(c, { x: lx, y: fy }, { x: lx, y: ty }, o);
+          K.parts.link(c, { x: lx, y: ty }, { x: t.x - 14, y: ty }, o);
+          diamond(t.x, ty, 1, 0, key);
         }
       });
       c.height(y + 1);
