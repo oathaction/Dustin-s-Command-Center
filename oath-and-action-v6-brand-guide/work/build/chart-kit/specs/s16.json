@@ -100,6 +100,17 @@
       "1 million",
       "5 million",
       "20 million"
+    ],
+    "prefer_phone": {
+      "CT": "right",
+      "TN": "right",
+      "VA": "left"
+    },
+    "prefer": {
+      "WV": "left"
+    },
+    "lead": [
+      "DC"
     ]
   },
   "notes_internal": [

@@ -250,6 +250,15 @@ export function draw_spec(spec) {
   if (spec.form === 'social-data-card') ['evidence_label', 'title', 'source_line'].forEach(k => { out[k] = spec[k]; });
   return out;
 }
+export function typography_draws(spec, rows, extra) {
+  if (!spec.typography || !K.forms[spec.form] || !rows || !rows.length) return false;
+  const bare = Object.assign({}, spec); delete bare.typography;
+  const art = K.artboard(spec, K.token_reader(TOK.newsprint));
+  return [art, Math.min(art, 358)].some(w => {
+    const o = { width: w, ground: 'newsprint', tokens: TOK.newsprint, extra, uid: 'oac-typo' };
+    try { return K.draw(spec, rows, o).svg !== K.draw(bare, rows, o).svg; } catch (e) { return true; }
+  });
+}
 export function table_fields(spec) {
   const tb = spec.table || {};
   if (tb.group) return [];   // R3-3: a grouped table carries no row, so the island carries every column the drawing reads
@@ -265,6 +274,9 @@ export function island_table(spec, rows, columns, extra) {
   const ctypes = {};
   used.concat([...inTable]).forEach(c => { if (columns[c]) ctypes[c] = { type: columns[c].type }; });
   const payload = { mode: 'table', spec: draw_spec(spec), columns: ctypes };
+  // the island carries typography only where it changes a word the drawing prints, read at the artboard and at 358 px
+  // (the phone column), so a spec whose typography reaches only its title, notes and table pays nothing for it
+  if (payload.spec.typography && !typography_draws(spec, rows, extra)) delete payload.spec.typography;
   if (extra && Object.keys(extra).length) payload.extra = extra;
   // R3-3 (DL-E1): a column that holds a map layer's geoids, every one in the layer's own order, is not carried; the page
   // reads it back from geo.js, which the page carries once

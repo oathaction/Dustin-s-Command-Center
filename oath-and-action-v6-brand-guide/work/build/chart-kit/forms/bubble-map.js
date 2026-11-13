@@ -9,7 +9,7 @@
   K.register_chart({
     form: 'bubble-map', name: 'Bubble Map', family: 'maps',
     encode: { code: 'code', size: 'number', shade: 'number' },
-    labels: ['bins', 'ring', 'ring_label', 'shade_title', 'size_title', 'size_steps', 'size_unit', 'size_step_words', 'nation', 'nation_label', 'offsets', 'offsets_phone'],
+    labels: ['bins', 'ring', 'ring_label', 'shade_title', 'size_title', 'size_steps', 'size_unit', 'size_step_words', 'nation', 'nation_label', 'offsets', 'offsets_phone', 'prefer', 'prefer_phone', 'lead', 'orders'],
     phone: 'same',
     draw: function (c) {
       var G = globalThis.OAChartGeo, rows = c.rows, ec = c.field('code'), ez = c.field('size'), eh = c.field('shade');
@@ -126,36 +126,74 @@
         var sh = shade(p.r[eh]);
         c.text(p.x, p.y + s * 0.35, p.r[ec], { role: 'tick', weight: 700, anchor: 'middle', fill: sh === 'seq-4' || sh === 'seq-5' ? 'label-on-subject' : 'label' });
       });
-      outside.sort(function (a, b) { return a.rad - b.rad; }).forEach(function (p) {
-        var code = p.r[ec], s = c.size('tick'), tw = c.measure(code, 'tick', 700);
-        var pad = c.t('bubble-label-pad') + 1, asc = s * 0.77, h = s;
-        var cands = offs[code] ? [[p.x + offs[code][0], p.y + offs[code][1]]] : [[p.x + p.rad + pad, p.y + s * 0.35], [p.x - p.rad - pad - tw, p.y + s * 0.35], [p.x - tw / 2, p.y - p.rad - pad - s * 0.23], [p.x - tw / 2, p.y + p.rad + pad + asc],
-          [p.x + p.rad + pad, p.y - p.rad], [p.x + p.rad + pad, p.y + p.rad + asc], [p.x - p.rad - pad - tw, p.y - p.rad], [p.x - p.rad - pad - tw, p.y + p.rad + asc]];
-        for (var rg = 1; rg <= (c.phone ? 14 : 6) && !offs[code]; rg++) {
-          var dd = p.rad + pad + rg * 12;
-          for (var ang = 0; ang < 24; ang++) {
-            var th = ang * Math.PI / 12, ex = p.x + Math.cos(th) * dd, ey = p.y + Math.sin(th) * dd;
-            cands.push([Math.cos(th) < -0.1 ? ex - tw : Math.cos(th) > 0.1 ? ex : ex - tw / 2, ey + s * 0.35]);
-          }
-        }
-        // a place is clear when its box touches no text or circle, no leader drawn so far runs through it, and its own
-        // leader (when it needs one) runs through no label (D3-93)
-        var leads_ok = function (b, cand) {
-          if (lead.some(function (l) { return K.seg_hits_box(l[0], l[1], l[2], l[3], b.x - 1, b.y - 1, b.x + b.w + 1, b.y + b.h + 1); })) return false;
-          var lx = cand[0] + tw / 2, ly = cand[1] - asc / 2;
-          if (Math.sqrt(Math.pow(lx - p.x, 2) + Math.pow(ly - p.y, 2)) <= p.rad + 2 * s) return true;
-          return !c.texts.some(function (t) { return K.seg_hits_box(p.x, p.y, lx, ly, t.x - 1, t.y - 1, t.x + t.w + 1, t.y + t.h + 1); });
+      // BC-S5, C-S2 (round 3 fix pass): the labels outside their circles are placed in each of a few orders (smallest
+      // circle first, as board 1 did; largest first; west to east; east to west) on a dry run, and the order that leaves
+      // the fewest states unlabeled, then the shortest leaders, is drawn, so a small move of the circles on the 2024
+      // outlines does not push a code far from its circle. labels.prefer / prefer_phone ({code: side}) try a side first
+      // (right, left, above, below); labels.lead ([codes]) gives a code a leader to its circle however near it sits.
+      var prefer = (c.phone && L.prefer_phone) || L.prefer || {}, always = L.lead || [];
+      var SIDES = { right: 0, left: 1, above: 2, below: 3 };
+      var run = function (order) {
+        var T = c.texts.map(function (t) { return { x: t.x, y: t.y, w: t.w, h: t.h }; }), Ld = [], out = { placed: [], un: [], cost: 0 };
+        var hit2 = function (b) {
+          if (b.x < 0 || b.x + b.w > W) return true;
+          if (T.some(function (t) { return b.x < t.x + t.w + 1 && t.x < b.x + b.w + 1 && b.y < t.y + t.h + 1 && t.y < b.y + b.h + 1; })) return true;
+          return pts.some(function (q) { var nx = Math.max(b.x, Math.min(q.x, b.x + b.w)), ny = Math.max(b.y, Math.min(q.y, b.y + b.h)); return (nx - q.x) * (nx - q.x) + (ny - q.y) * (ny - q.y) < q.rad * q.rad - 1; });
         };
-        var pick = null;
-        for (var i = 0; i < cands.length && !pick; i++) { var b = { x: cands[i][0], y: cands[i][1] - asc, w: tw, h: h }; if (!hits(b) && leads_ok(b, cands[i])) pick = cands[i]; }
-        // on a phone, a small state with no clear place is named under the map instead, and the table names every state;
-        // at the narrowest widths only circles that hold their code are labeled (KR2)
-        if ((!pick && c.phone && !offs[code]) || narrow) { unlabeled.push(code); return; }
-        if (!pick) { pick = cands[0]; c.warn('no clear place for the label ' + code + '; set labels.offsets.' + code); }
-        var far = Math.sqrt(Math.pow(pick[0] + tw / 2 - p.x, 2) + Math.pow(pick[1] - asc / 2 - p.y, 2)) > p.rad + 2 * s;
-        c.text(pick[0], pick[1], code, { role: 'tick', weight: 600, halo: true });
-        if (far) { c.line(p.x, p.y, pick[0] + tw / 2, pick[1] - asc / 2, { stroke: 'leader', width: c.t('line-hairline'), mark: false }); lead.push([p.x, p.y, pick[0] + tw / 2, pick[1] - asc / 2]); }
+        order.forEach(function (p) {
+          var code = p.r[ec], s = c.size('tick'), tw = c.measure(code, 'tick', 700);
+          var pad = c.t('bubble-label-pad') + 1, asc = s * 0.77, h = s;
+          var cands = offs[code] ? [[p.x + offs[code][0], p.y + offs[code][1]]] : [[p.x + p.rad + pad, p.y + s * 0.35], [p.x - p.rad - pad - tw, p.y + s * 0.35], [p.x - tw / 2, p.y - p.rad - pad - s * 0.23], [p.x - tw / 2, p.y + p.rad + pad + asc],
+            [p.x + p.rad + pad, p.y - p.rad], [p.x + p.rad + pad, p.y + p.rad + asc], [p.x - p.rad - pad - tw, p.y - p.rad], [p.x - p.rad - pad - tw, p.y + p.rad + asc]];
+          if (!offs[code] && prefer[code] !== undefined && SIDES[prefer[code]] !== undefined) cands.unshift(cands[SIDES[prefer[code]]]);
+          for (var rg = 1; rg <= (c.phone ? 14 : 6) && !offs[code]; rg++) {
+            var dd = p.rad + pad + rg * 12;
+            for (var ang = 0; ang < 24; ang++) {
+              var th = ang * Math.PI / 12, ex = p.x + Math.cos(th) * dd, ey = p.y + Math.sin(th) * dd;
+              cands.push([Math.cos(th) < -0.1 ? ex - tw : Math.cos(th) > 0.1 ? ex : ex - tw / 2, ey + s * 0.35]);
+            }
+          }
+          // a place is clear when its box touches no text or circle, no leader drawn so far runs through it, and its own
+          // leader (when it needs one) runs through no label (D3-93)
+          var leads_ok = function (b, cand) {
+            if (Ld.some(function (l) { return K.seg_hits_box(l[0], l[1], l[2], l[3], b.x - 1, b.y - 1, b.x + b.w + 1, b.y + b.h + 1); })) return false;
+            var lx = cand[0] + tw / 2, ly = cand[1] - asc / 2;
+            if (Math.sqrt(Math.pow(lx - p.x, 2) + Math.pow(ly - p.y, 2)) <= p.rad + 2 * s && always.indexOf(code) < 0) return true;
+            return !T.some(function (t) { return K.seg_hits_box(p.x, p.y, lx, ly, t.x - 1, t.y - 1, t.x + t.w + 1, t.y + t.h + 1); });
+          };
+          var pick = null;
+          // on a phone no code sits more than 64 px past its circle's edge: further, it is named under the map
+          var reach_ok = function (cand) { return !c.phone || Math.hypot(cand[0] + tw / 2 - p.x, cand[1] - asc / 2 - p.y) - p.rad <= 110; };
+          for (var i = 0; i < cands.length && !pick; i++) { var b = { x: cands[i][0], y: cands[i][1] - asc, w: tw, h: h }; if (!hit2(b) && reach_ok(cands[i]) && leads_ok(b, cands[i])) pick = cands[i]; }
+          // on a phone, a small state with no clear place is named under the map instead, and the table names every state;
+          // at the narrowest widths only circles that hold their code are labeled (KR2)
+          if ((!pick && c.phone && !offs[code]) || narrow) { out.un.push(code); return; }
+          var warn = !pick;
+          if (!pick) pick = cands[0];
+          var dist = Math.sqrt(Math.pow(pick[0] + tw / 2 - p.x, 2) + Math.pow(pick[1] - asc / 2 - p.y, 2));
+          var far = dist > p.rad + 2 * s || always.indexOf(code) >= 0;
+          T.push({ x: pick[0], y: pick[1] - asc, w: tw, h: h });
+          if (far) Ld.push([p.x, p.y, pick[0] + tw / 2, pick[1] - asc / 2]);
+          out.cost += Math.max(0, dist - p.rad);
+          out.placed.push({ p: p, code: code, pick: pick, far: far, tw: tw, asc: asc, warn: warn });
+        });
+        return out;
+      };
+      // the codes a spec prefers on a side claim their places first
+      var pf = function (p) { return prefer[p.r[ec]] !== undefined ? 0 : 1; };
+      var by_rad = outside.slice().sort(function (a, b) { return pf(a) - pf(b) || a.rad - b.rad || a.x - b.x; });
+      var orders = L.orders === 'one' ? [by_rad] : [by_rad, outside.slice().sort(function (a, b) { return pf(a) - pf(b) || b.rad - a.rad; }), outside.slice().sort(function (a, b) { return pf(a) - pf(b) || a.x - b.x; }), outside.slice().sort(function (a, b) { return pf(a) - pf(b) || b.x - a.x; })];
+      var best = null;
+      // the score: every px a code sits from its circle, a long leader counted twice over, and a state left unlabeled as
+      // 60 px; the first order wins a tie, so board 1's order stands where it does as well
+      var score = function (r2) { return r2.cost + r2.placed.reduce(function (t, q) { var d = Math.hypot(q.pick[0] + q.tw / 2 - q.p.x, q.pick[1] - q.asc / 2 - q.p.y) - q.p.rad; return t + (d > 40 ? d : 0); }, 0) + 60 * r2.un.length; };
+      orders.forEach(function (o2) { var r2 = run(o2); r2.score = score(r2); if (!best || r2.score < best.score - 0.5) best = r2; });
+      unlabeled = unlabeled.concat(best.un);
+      best.placed.forEach(function (q) {
+        if (q.warn) c.warn('no clear place for the label ' + q.code + '; set labels.offsets.' + q.code);
+        if (q.far) { c.line(q.p.x, q.p.y, q.pick[0] + q.tw / 2, q.pick[1] - q.asc / 2, { stroke: 'leader', width: c.t('line-hairline'), mark: false }); lead.push([q.p.x, q.p.y, q.pick[0] + q.tw / 2, q.pick[1] - q.asc / 2]); }
       });
+      best.placed.forEach(function (q) { c.text(q.pick[0], q.pick[1], q.code, { role: 'tick', weight: 600, halo: true }); });
       c.height(top + mh + 4);
       var low = top + mh;
       c.texts.forEach(function (t) { low = Math.max(low, t.y + t.h); });

@@ -124,6 +124,12 @@
   "states": [],
   "sort": [
     {
+      "field": "level",
+      "values": [
+        "supreme"
+      ]
+    },
+    {
       "field": "parent",
       "values": [
         "",

@@ -241,6 +241,8 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - **A-E8 LANDED (maker A):** a desk's phone part reads every row as `c.all_rows`; S69's part reads "20 standing committees" where it read "2". Told the main session.
 - **BC-S5:** the kit side is call 7's `map_labels`. S16 draws through `bubble-map.js`'s own search, not `map_labels`; its codes at board 1's places are the cartographer's `labels.offsets_phone` (board 1's 358 px drawing is kept only as a picture, `work/boards/phase-3/round-0/specimens/s16-newsprint-390.png`, and git keeps no copy of the 2017 geometry to redraw it).
 - **BC-S12** names no engineer item.
+- **BC-S4 (kit side) LANDED:** a stroke role `band` (`.oac-s-band`, GrayText in forced colors), so S82's ghosts on Charcoal can take the band ink with no token change. Told the main session for the cartographer.
+- **C-M2's third route measured (for the data lead):** the stacked tile (code and figure on two lines, the arrow beneath) does not fit at 558 px. A tile there is 41 px; by the tile's own metrics (13 px lines at baselines 16 and 32, the arrow's 4.5 px half head under the figure, 6 px foot) the three need about 48 px, which a drawing gives from about 642 px. Not drawn; an estimate from the form's layout. The fixed 1024 px stage stands, as call 6 and the data lead's alignment (04:43) order it. S12's spec now carries `"stage": 1024` (the cartographer's).
 
 ### Items done, by code
 
@@ -305,7 +307,8 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 
 - **Maker B:** `sankey.js` passes `band: true` to `width_key` (BC-S2); S74's authority cell draws its forced-colors second edge and its key entry takes `forced_edge: true` (AX-S1).
 - **Maker A:** S72's "not voting" rect and its key entry take `fc: 'muted'` (AX-S1).
-- **Cartographer:** `"stage": 1024` in `s12.json` and its alt for each width (call 6); S78 at 358 px still leaves 19 states uncoded, so call 7's tile grid phone drawing applies; S80's 10th and 12th need the form to label each panel's own districts (C-S1).
+- **Cartographer:** `"stage": 1024` in `s12.json` and its alt for each width (call 6; landed in the spec); S78 at 358 px still leaves 19 states uncoded, so call 7's tile grid phone drawing applies; S80's 10th and 12th need the form to label each panel's own districts (C-S1); `stroke: 'band'` for S82's ghosts on Charcoal (BC-S4); S16's CT, TN and VA at board 1's places by `labels.offsets_phone` (BC-S5).
+- **Maker A:** A-E8 landed; S70 can add `desk_phone`.
 - **Editor:** `{data_file}` for the nine places of ST-M2 item 1.
 
 ### ST-M2 item 2: what each chart's CSV export holds
@@ -334,6 +337,10 @@ No export lacks a column its words promise. Phase 5's package can ship these exp
 - Forced colors in Chromium, both themes: S83 and S81 at 1440 px looked at; a test page of S72's and S74's marks with the new classes looked at in normal and forced colors.
 - `width_key` with three band steps: no key fault on either ground.
 - `build --all --no-png --no-sweep` (84 specs, 84 check files): 84 PASS after the retrieval date check was narrowed to lines that say "Retrieved".
+
+### An accident, recorded
+
+At about 04:55 UTC I ran `data_round0_build.py --help` to read its usage. The script reads only `--check` and took the run as its write mode: it rewrote its 34 files in `work/build/data/` (the S01 to S16 tables) from their sources. Each came out byte for byte as committed: `git status` shows none of them changed, and every one was last committed three hours earlier, so no owner's uncommitted edit sat in them. Its check then listed one fault that was not mine (the cartographer's `clerk-house-results-2024-classes.csv` columns in a different order from its sidecar, mid-edit; the research lead's 04:56 check found it cleared). I run that script only with `--check` from here.
 
 ### Not tested, review fix pass
 

@@ -31,7 +31,8 @@
       });
       // BC-S4 (round 3 fix pass): the grid sits 2 px inside the drawing, so no square ends on its last pixel
       var IN = 2, gap = W >= 560 ? 2 : 1, pitch = Math.floor((W - 2 * IN + gap) / cols * 10) / 10, size = pitch - gap;
-      var ghost = L.ghost_ink || 'ghost';
+      // BC-S4: on Charcoal the ghost outline takes the band ink, below the lightest won fill; Newsprint keeps the ghost ink
+      var ghost = L.ghost_ink || (c.ground === 'charcoal' ? 'band' : 'ghost');
       var big = size >= 10, gi = size >= 10 ? 2 : size >= 6 ? 1 : 0;   // a ghost sits inset, so it never reads as the lightest step   // dots and rings only where a square holds them (ruling (b))
       // the margin's four classes on sequential steps 2 to 5 of one ink, every won seat with its 1 px context edge, so the
       // closest races read as filled beside the other party's empty outlines (the data lead's C-1, round 3)

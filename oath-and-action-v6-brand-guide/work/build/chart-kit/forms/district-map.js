@@ -22,6 +22,8 @@
     draw: function (c) {
       var L = c.labels, W = c.width, ed = c.field('district'), ep = c.field('party'), ek = c.field('cls');
       var G = K.geo(L.layer), id_of = function (r) { return String(L.fips) + (r[ed] === '00' ? '00' : r[ed]); };
+      // BC-S4 (round 3 fix pass): on Charcoal the ghost outline takes the band ink, as on the district tile map
+      var ghost = c.ground === 'charcoal' ? 'band' : 'ghost';
       var y = 0, sw = 14, kx = 0;
       if (L.key_title) { var kt = c.text(0, 13, L.key_title, { role: 'eyebrow', weight: 700, fill: 'secondary', max: W }); y = kt.bottom + 6; }
       var ky = y + 14, kbot = 0;
@@ -30,7 +32,7 @@
       entries.forEach(function (e) {
         var need = sw + 6 + c.measure(e.w, 'tick');
         if (kx > 0 && kx + need > W) { kx = 0; ky += 22; }
-        if (e.ghost) c.rect(kx + 0.5, ky - 10.5, sw - 1, sw - 1, { stroke: 'ghost', width: 1, mark: false });
+        if (e.ghost) c.rect(kx + 0.5, ky - 10.5, sw - 1, sw - 1, { stroke: ghost, width: 1, mark: false });
         else {
           c.rect(kx, ky - 11, sw, sw, { fill: 'seq-' + (e.s + 1), mark: false });
           c.rect(kx + 0.5, ky - 10.5, sw - 1, sw - 1, { stroke: 'context', width: 1, mark: false });
@@ -56,7 +58,7 @@
         K.parts.map_shapes(c, G, T, items);
         // a ghost district takes a 1 px ghost outline; every won district a 1 px context edge (the data lead's C-1)
         var won = {}; c.rows.forEach(function (r) { won[id_of(r)] = String(r[ep]) === String(pn.value) ? r[ek] : 0; });
-        K.parts.map_mesh(c, G, T, { which: 'all', between: function (a, b) { return !won[a] && (b === null || !won[b]); }, stroke: 'ghost', width: 1 });
+        K.parts.map_mesh(c, G, T, { which: 'all', between: function (a, b) { return !won[a] && (b === null || !won[b]); }, stroke: ghost, width: 1 });
         K.parts.map_mesh(c, G, T, { which: 'all', between: function (a, b) { return !!won[a] || (b !== null && !!won[b]); }, stroke: 'context', width: 1 });
         // BC-S1: a framed inset of the city's districts, larger, in the empty part of the frame, its view framed on the map
         var T2 = null;
@@ -74,7 +76,7 @@
             return { id: id_of(r), fill: wn ? 'seq-' + (r[ek] + 1) : 'surface' };
           });
           K.parts.map_shapes(c, G, T2, items2);
-          K.parts.map_mesh(c, G, T2, { ids: in_ids, which: 'all', between: function (a2, b2) { return !won[a2] && (b2 === null || !won[b2]); }, stroke: 'ghost', width: 1 });
+          K.parts.map_mesh(c, G, T2, { ids: in_ids, which: 'all', between: function (a2, b2) { return !won[a2] && (b2 === null || !won[b2]); }, stroke: ghost, width: 1 });
           K.parts.map_mesh(c, G, T2, { ids: in_ids, which: 'all', between: function (a2, b2) { return !!won[a2] || (b2 !== null && !!won[b2]); }, stroke: 'context', width: 1 });
         }
         // C-S1: each district is numbered in the panel where it is filled, the city's districts in the inset
