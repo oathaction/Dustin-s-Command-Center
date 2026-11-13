@@ -75,8 +75,7 @@
     ],
     "fills": {
       "ab": "track"
-    },
-    "value_words": "{v}, {p}"
+    }
   },
   "formats": {
     "value": "millions:1",

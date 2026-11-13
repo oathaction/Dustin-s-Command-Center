@@ -392,10 +392,55 @@
     return '<table class="oac-table" data-oa-lean>' + cap + '<thead>' + head + '</thead><tbody>' + body + '</tbody></table>';
   }
 
+  // R4-3 (round 4): cards as HTML text. A form that registers html (and no draw) writes its words as live HTML at build, and
+  // the guide's page carries no code for it. K.html_card gives the form its builder, h, and returns the HTML with every
+  // drawing h.mark made (for the drawing checks). opts: ground, t or tokens, id. The contract is in the round 4 engineer
+  // notes, R4-3; the classes are kit.css's oac-h-*.
+  K.is_card = function (spec) { var d = spec && K.forms[spec.form]; return !!(d && d.html && !d.draw); };
+  K.html_card = function (spec, rows, opts) {
+    opts = opts || {};
+    var def = K.forms[spec.form], ids = (spec.v7 && spec.v7.ids) || [], id = String(opts.id || ('oac-' + String(spec.id).toLowerCase()));
+    var marks = [], n = 0, ground = opts.ground || 'newsprint';
+    var h = {
+      spec: spec, rows: rows, labels: spec.labels || {}, encode: spec.encode || {}, ground: ground,
+      field: function (k) { return (spec.encode || {})[k]; },
+      fmt: function (v, f) { return K.fmt(v, f || 'text'); },
+      esc: esc,
+      // the spec's typography, then atlas IDs as typed chips, then escaped: the path a title's words take
+      words: function (t) { return t === null || t === undefined ? '' : K.chips(K.typeset(spec, String(t)), ids); },
+      // the attribute that ties an item to its row, or to several (IM-E2: one fact printing three rows)
+      row: function (i) { return ' data-oa-row="' + [].concat(i).join(' ') + '"'; },
+      id: function (s) { return id + '-h-' + s; },
+      // a mark that carries data, drawn by the kit's own context and parts at a fixed size, aria-hidden unless named
+      mark: function (w, ht, fn, o) {
+        o = o || {};
+        var nm = 'oac-h-mark-form', d;
+        K.register_chart({ form: nm, name: 'Mark', family: def.family, encode: {}, labels: [], phone: 'same', draw: function (c) { fn(c); c.height(ht); } });
+        try { d = K.draw({ kit: 1, id: spec.id, form: nm, typography: spec.typography }, rows, { width: w, ground: ground, t: opts.t, tokens: opts.tokens, uid: id + '-m' + (n++) }); } finally { delete K.forms[nm]; }
+        marks.push(d);
+        return '<span class="oac-h-mark">' + d.svg.replace('data-oa-form="' + nm + '"', 'data-oa-form="' + esc(spec.form) + '"')
+          .replace(' role="img"', o.name ? ' role="img" aria-label="' + esc(o.name) + '"' : ' aria-hidden="true" focusable="false"') + '</span>';
+      }
+    };
+    return { html: String(def.html(h)), marks: marks };
+  };
+  // IM-E1 (round 4): each phrase typography.hold lists prints inside span.oac-nw, held on one line, in the figure's words
+  // (never inside a tag or an attribute); a typeset cell holds it with no-break spaces, which the pattern also reads
+  K.hold = function (spec, html) {
+    var hold = spec && spec.typography && spec.typography.hold;
+    if (!hold || !hold.length) return html;
+    var re = new RegExp('(' + hold.map(function (p) { return esc(p).replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '[ \u00a0]'); }).join('|') + ')', 'g');
+    var inside = 0;
+    return html.split(/(<[^>]+>)/).map(function (s) {
+      if (s.charAt(0) === '<') { if (/^<(script|style|title|desc)\b/i.test(s)) inside++; else if (/^<\/(script|style|title|desc)\b/i.test(s)) inside--; return s; }
+      return inside ? s : s.replace(re, '<span class="oac-nw">$1</span>');
+    }).join('');
+  };
   K.figure = function (spec, rows, opts) {
     // the whole figure as HTML; opts.svg puts a drawing inside, opts.art_attrs adds attributes to the drawing's box
     opts = opts || {};
     var ids = (spec.v7 && spec.v7.ids) || [], id = String(opts.id || ('oac-' + String(spec.id).toLowerCase()));
+    var hc = !opts.svg && K.is_card(spec) ? K.html_card(spec, rows, opts) : null;
     var show = spec.show || ['evidence', 'title', 'guide', 'measure', 'chart', 'notes', 'source', 'table'];
     var has = function (k) { return show.indexOf(k) >= 0 || (k === 'evidence' && show.indexOf('title') >= 0 && !spec.show) || (k === 'guide' && show.indexOf('measure') >= 0 && !spec.show); };
     var p = [];
@@ -407,7 +452,11 @@
     // the measure line sits under the title, then the reading guide (Rule 13.7, Rule 12.6; brand KS1)
     if (has('measure') && spec.measure_line) p.push('<p class="oac-measure" data-role="measure">' + K.chips(spec.measure_line, ids) + '</p>');
     if (has('guide') && spec.reading_guide) p.push('<p class="oac-guide" data-role="reading-guide">' + K.chips(spec.reading_guide, ids) + '</p>');
-    if (has('chart')) {
+    if (has('chart') && hc) {
+      // R4-3: the cards, named by the spec's short alt; no island, no drawing to wait for, no scripts-off line
+      p.push((spec.illustrative ? '<p class="oac-illus" data-role="illustrative">' + esc(spec.illustrative) + '</p>' : '') +
+        '<div class="oac-art oac-html" data-oa-html role="group"' + (spec.alt ? ' aria-label="' + esc(spec.alt) + '"' : '') + '>' + hc.html + '</div>');
+    } else if (has('chart')) {
       var illus = spec.illustrative ? '<p class="oac-illus" data-role="illustrative">' + esc(spec.illustrative) + '</p>' : '';
       p.push('<div class="oac-art" data-oa-art' + (opts.art_attrs || '') + '>' + illus + (opts.svg || '') + '</div>');
       // D3-487 (BC S3, ED-E10): a form that changes on a phone also shows its phone drawing to a reader at a desk, drawn
@@ -441,11 +490,14 @@
     var cap = K.fill_words((spec.table && spec.table.caption) || spec.title || '');
     var lookup = spec.lookup && !(spec.table && spec.table.pivot) ? K.lookup_html(spec, id, opts) : '';
     if (lookup) p.push(lookup);
-    p.push('<details class="oac-eq" data-role="equivalent"' + (opts.svg && !lookup ? '' : ' open') + '><summary>' + esc(word(opts, 'table_summary')) + (cap ? '<span class="oac-vh">: ' + esc(cap) + '</span>' : '') + '</summary>' +
-      '<div class="oac-eq-b">' + cn + (opts.guide ? '<div class="oac-tw" role="group" aria-label="' + esc(region) + '">' : '<div class="oac-tw" role="region" tabindex="0" aria-label="' + esc(region) + '">') + K.table_html(spec, rows, { lean: opts.lean_table, types: opts.types }) + '</div></div></details>');
+    // R4-3: a card's table is folded from the start and carries its own values (no island reads them back)
+    p.push('<details class="oac-eq" data-role="equivalent"' + ((opts.svg || hc) && !lookup ? '' : ' open') + '><summary>' + esc(word(opts, 'table_summary')) + (cap ? '<span class="oac-vh">: ' + esc(cap) + '</span>' : '') + '</summary>' +
+      '<div class="oac-eq-b">' + cn + (opts.guide ? '<div class="oac-tw" role="group" aria-label="' + esc(region) + '">' : '<div class="oac-tw" role="region" tabindex="0" aria-label="' + esc(region) + '">') + K.table_html(spec, rows, { lean: opts.lean_table && !hc, types: opts.types }) + '</div></div></details>');
     var fail = spec.failure ? ' data-oa-failure="' + esc(spec.failure.rule || '') + '"' : '';
     var ab = spec.artboard && spec.artboard !== 'reading' ? ' data-oa-artboard="' + esc(spec.artboard) + '"' : '';
-    return '<figure class="oac-fig" id="' + id + '" data-oa-chart-id="' + esc(spec.id) + '" data-form="' + esc(spec.form) + '" data-evidence="' + esc(spec.evidence) + '"' + ab + fail + (lookup ? ' data-oa-lookup' : '') + '>' + p.join('') + '</figure>';
+    // R4-3: a card figure is static on the page (nothing to draw), marked drawn so a page that waits for drawings goes on
+    return K.hold(spec, '<figure class="oac-fig" id="' + id + '" data-oa-chart-id="' + esc(spec.id) + '" data-form="' + esc(spec.form) + '" data-evidence="' + esc(spec.evidence) + '"' + ab + fail + (lookup ? ' data-oa-lookup' : '') +
+      (hc ? ' data-oa-static data-oa-html data-oa-drawn="html"' : '') + '>' + p.join('') + '</figure>');
   };
   // A lookup (A9, round 1; chapter 18's search, Rule 18.15, and filter bar, Rule 18.16): a search field, a Filters button
   // that opens a sheet of chips, and one status line that counts the rows shown, above the table equivalent, which stays

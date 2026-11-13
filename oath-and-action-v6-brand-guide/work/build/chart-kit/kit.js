@@ -701,7 +701,8 @@
   // Register a form; draw one
   // ------------------------------------------------------------------------------------------------------------
   K.register_chart = function (def) {
-    if (!def || !def.form || typeof def.draw !== 'function') throw new Error('register_chart: a form needs "form" and "draw"');
+    // R4-3 (round 4): a card form registers html (built in Node, never on the page) in place of draw
+    if (!def || !def.form || typeof (def.draw || def.html) !== 'function') throw new Error('register_chart: a form needs "form" and "draw" or "html"');
     if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(def.form)) throw new Error('register_chart: form IDs are kebab-case: ' + def.form);
     def.encode = def.encode || {};
     def.labels = def.labels || [];
@@ -990,6 +991,8 @@
     if (!ty || words === null || words === undefined) return words;
     var t = String(words);
     (ty.replace || []).forEach(function (pr) { if (pr && pr[0]) t = t.split(String(pr[0])).join(String(pr[1])); });
+    // IM-E1 (round 4): a held phrase never breaks in a drawing (K.wrap breaks at spaces only); HTML holds it in .oac-nw
+    (ty.hold || []).forEach(function (p) { t = t.split(p).join(p.replace(/ /g, ' ')); });
     if (ty.nbsp) t = K.nbsp(t);
     return ty.curl_quotes ? curl(t) : t;
   };

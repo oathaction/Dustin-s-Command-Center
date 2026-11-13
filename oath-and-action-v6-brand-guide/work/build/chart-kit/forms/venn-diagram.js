@@ -39,12 +39,13 @@
       // inside a region bounded at each height dy from the circles' middle by lo(dy) and hi(dy); a fault where nothing fits
       var inside = function (r, cy, lo, hi, ink) {
         var roles = ['label', 'tick'];
-        for (var i = 0; i < roles.length; i++) {
-          var sz = c.size(roles[i]), lh = Math.round(sz * 1.25), ls = lines(r, roles[i], hi(0) - lo(0) - 8);
+        // each role at the room's width, then narrower, so a long count breaks onto a second line where the region narrows
+        for (var n = 0; n < 2 * roles.length; n++) {
+          var role = roles[n >> 1], sz = c.size(role), lh = Math.round(sz * 1.25), ls = lines(r, role, (hi(0) - lo(0) - 8) * (n % 2 ? 0.7 : 1));
           var hh = sz + (ls.length - 1) * lh, top = cy - hh / 2, a = -1e9, b = 1e9, wide = 0;
           ls.forEach(function (ln, j) { wide = Math.max(wide, ln[2]); [top + j * lh - cy, top + j * lh + sz - cy].forEach(function (dy) { a = Math.max(a, lo(dy)); b = Math.min(b, hi(dy)); }); });
           if (ls.length > 5 || wide + 8 > b - a) continue;
-          set_lines(ls, (a + b) / 2, top, roles[i], 'middle', ink);
+          set_lines(ls, (a + b) / 2, top, role, 'middle', ink);
           return true;
         }
         c.warn('the words for ' + r[er] + ' do not fit inside its region at ' + W + ' px');

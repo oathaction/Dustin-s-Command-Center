@@ -639,7 +639,10 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
             return (lo_ + hi_) / 2
         return (max(p.left, q.left) + min(p.right, q.right)) / 2
     xr, xl = mid(p1, p2), mid(p1, p3)
-    bot_y = max(p2.bot, p3.bot) + RISE
+    # the loop's ID sits on one line under the lower row, between the lower arch's two upright ends with 12 px to spare
+    # each side; where DR-265's wider pills bring those ends too close, it takes two rows and the arch drops 18 px more
+    two_rows = bool(inside) and (tw(f"Loop {inside[0]} ", 700) + tw(inside[1]) > p2.cx - p3.cx - 24)
+    bot_y = max(p2.bot, p3.bot) + RISE + (LH if two_rows else 0)
     paths = [([(xr, p1.bot + 2), (xr, p2.top - 2)], "right"),
              ([(p2.cx, p2.bot + 2), (p2.cx, bot_y), (p3.cx, bot_y), (p3.cx, p3.bot + 2)], "below"),
              ([(xl, p3.top - 2), (xl, p1.bot + 2)], "left")]
@@ -654,7 +657,10 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
             extra = ("weakest step",) if weakest == i else ()
             out.append(verb_at(pts, l["polarity"], step_words(i + 1 if numbered else 0, lid, extra), side, big=tg))
     out.append(p1.svg() + p2.svg() + p3.svg())
-    if inside:
+    if inside and two_rows:
+        need(max(tw(f"Loop {inside[0]}", 700), tw(inside[1])) <= p2.cx - p3.cx - 24, "the loop's ID crowds its lower arch")
+        out.append(loop_id((p2.cx + p3.cx) / 2, max(p2.bot, p3.bot) + 28, *inside, two=True))
+    elif inside:
         out.append(loop_id(W / 2, max(p2.bot, p3.bot) + 28, *inside))
     n2 = len(step_words(2, lids[1], ("weakest step",) if weakest == 1 else ())) if lids[1] else 1
     h = bot_y + 34 + (n2 - 1) * LH

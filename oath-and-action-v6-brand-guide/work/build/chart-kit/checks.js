@@ -160,6 +160,8 @@ function check_spec(K, spec, opts) {
     else {
       if (ty.curl_quotes !== undefined && typeof ty.curl_quotes !== 'boolean') f.push('spec: typography.curl_quotes is true or false');
       if (ty.nbsp !== undefined && typeof ty.nbsp !== 'boolean') f.push('spec: typography.nbsp is true or false');
+      // IM-E1 (round 4): phrases held on one line
+      if (ty.hold !== undefined && (!Array.isArray(ty.hold) || ty.hold.some(p => typeof p !== 'string' || !p.trim()))) f.push('spec: typography.hold is a list of phrases, such as ["Public Law 119-12"]');
       (ty.replace || []).forEach((pr, i) => {
         if (!Array.isArray(pr) || pr.length !== 2 || typeof pr[0] !== 'string' || typeof pr[1] !== 'string' || !pr[0]) f.push(`spec: typography.replace[${i}] is a pair of words, ["find", "put"]`);
         else if (pr[1].indexOf(pr[0]) >= 0) f.push(`spec: typography.replace[${i}] puts words that hold what it finds ("${pr[0]}"), so a second pass would change them again`);
@@ -796,5 +798,80 @@ function id_types() {
   return out;
 }
 
-module.exports = { id_types, check_spec, check_drawing, check_csv, red_share, RED_SHARE, contrast, band_faults, interval_faults, crossing_faults, to_csv, load_dataset, rows_of, v7, role_color, hex_to_lab_l, strings, retrieved_dates,
+// R4-3 (round 4): a card form's HTML, read in Node (no browser): its elements, attributes and classes; a role="list" on every
+// list; every row the spec selects tied to items by data-oa-row, each row once; the same fields in the same order on every
+// card; and the words checks a spec's words get. The h.mark drawings are checked as drawings (run_spec); here they are cut
+// out first. The browser half (sizes on the type scale, overflow, overlap, reading order, 200 percent) runs in
+// oa-chart.mjs build.
+const HTML_TAGS = ['ul', 'ol', 'li', 'dl', 'dt', 'dd', 'p', 'span', 'strong', 'time'];
+const HTML_CLASSES = ['oac-h-cards', 'oac-h-facts', 'oac-h-steps', 'oac-h-dates', 'oac-h-item', 'oac-h-branch', 'oac-h-name', 'oac-h-big', 'oac-h-body',
+  'oac-h-small', 'oac-h-src', 'oac-h-fields', 'oac-h-k', 'oac-h-v', 'oac-h-tag', 'oac-h-tag-strong', 'oac-h-mark', 'oac-nw', 'oa-id'];
+const HTML_ATTRS = ['class', 'role', 'data-oa-row', 'data-oa-id', 'datetime', 'id', 'aria-hidden'];
+function html_tree(html) {
+  const root = { tag: '#root', attrs: {}, kids: [], text: '' }, stack = [root], f = [];
+  const re = /<(\/?)([a-zA-Z][a-zA-Z0-9-]*)((?:\s+[a-zA-Z:-]+(?:="[^"]*")?)*)\s*(\/?)>|([^<]+)/g;
+  let m;
+  while ((m = re.exec(html))) {
+    if (m[5] !== undefined) { const t = m[5]; stack.forEach(n => { n.text += t; }); stack[stack.length - 1].kids.push({ tag: '#text', text: t }); continue; }
+    const tag = m[2].toLowerCase();
+    if (m[1]) {
+      if (stack.length < 2 || stack[stack.length - 1].tag !== tag) { f.push(`html: </${tag}> closes nothing open`); continue; }
+      stack.pop(); continue;
+    }
+    const attrs = {};
+    for (const a of m[3].matchAll(/([a-zA-Z:-]+)(?:="([^"]*)")?/g)) attrs[a[1].toLowerCase()] = a[2] === undefined ? '' : a[2];
+    const node = { tag, attrs, kids: [], text: '' };
+    stack[stack.length - 1].kids.push(node);
+    if (!m[4]) stack.push(node);
+  }
+  if (stack.length > 1) f.push(`html: <${stack[stack.length - 1].tag}> is never closed`);
+  return { root, faults: f };
+}
+function check_html(spec, html, rows) {
+  const f = [];
+  const body = String(html).replace(/<span class="oac-h-mark"><svg[\s\S]*?<\/svg><\/span>/g, '<span class="oac-h-mark"></span>');
+  const { root, faults } = html_tree(body);
+  f.push(...faults);
+  const seen = {}, all = [], bad = new Set();
+  const walk = n => { for (const k of n.kids) if (k.tag !== '#text') { all.push(k); walk(k); } };
+  walk(root);
+  for (const n of all) {
+    if (HTML_TAGS.indexOf(n.tag) < 0) bad.add(`html: <${n.tag}> is not a card element (R4-3: ul, ol, li, dl, dt, dd, p, span, strong, time)`);
+    for (const a of Object.keys(n.attrs)) if (HTML_ATTRS.indexOf(a) < 0) bad.add(`html: the attribute ${a} on <${n.tag}> is not one a card writes (R4-3)`);
+    for (const c of String(n.attrs.class || '').split(/\s+/).filter(Boolean)) if (HTML_CLASSES.indexOf(c) < 0) bad.add(`html: the class ${c} is not one of kit.css's card classes (R4-3); ask the engineer for one`);
+    if (n.attrs.role !== undefined && !(n.attrs.role === 'list' && (n.tag === 'ul' || n.tag === 'ol'))) bad.add(`html: role="${n.attrs.role}" on <${n.tag}>; a card writes role="list" on its lists only`);
+    if ((n.tag === 'ul' || n.tag === 'ol') && n.attrs.role !== 'list') bad.add(`html: a <${n.tag}> without role="list" (the kit's lists drop their bullets, and Safari then drops the role)`);
+    if (n.attrs.id !== undefined && !/-h-[a-z0-9-]+$/.test(n.attrs.id)) bad.add(`html: id "${n.attrs.id}" is not one h.id gave`);
+    if (n.tag === 'time' && !/^\d{4}(-\d{2}(-\d{2})?)?$/.test(n.attrs.datetime || '')) bad.add('html: a <time> needs datetime="YYYY-MM-DD"');
+    if (n.attrs['data-oa-row'] !== undefined) {
+      if (n.tag !== 'li') bad.add('html: data-oa-row belongs on an item (<li>)');
+      for (const x of n.attrs['data-oa-row'].split(/\s+/).filter(Boolean)) {
+        const i = +x;
+        if (!(Number.isInteger(i) && i >= 0 && i < rows.length)) bad.add(`html: data-oa-row="${x}" names no row (0 to ${rows.length - 1})`);
+        else if (seen[i]) bad.add(`html: row ${i} is printed by two items; each row belongs to one item`);
+        else seen[i] = 1;
+      }
+    }
+  }
+  f.push(...bad);
+  const missed = rows.map((r, i) => i).filter(i => !seen[i]);
+  if (missed.length) f.push(`html: ${missed.length} of the ${rows.length} rows the spec selects print in no item (rows ${missed.slice(0, 8).join(', ')}${missed.length > 8 ? ', ...' : ''}); tie each to an item with h.row, or leave it out with the spec's where`);
+  // the same fields in the same order on every card
+  for (const ul of all.filter(n => /\boac-h-cards\b/.test(n.attrs.class || ''))) {
+    const sets = ul.kids.filter(k => k.tag === 'li').map(li => { const out = []; const w = n => n.kids.forEach(k => { if (k.tag === 'dt') out.push(k.text.trim()); else if (k.tag !== '#text') w(k); }); w(li); return out.join(' | '); });
+    if (new Set(sets).size > 1) f.push(`html: the cards do not print the same fields in the same order (${[...new Set(sets)].slice(0, 2).map(s => '"' + s.slice(0, 60) + '"').join(' against ')})`);
+  }
+  // the words: the checks a spec's words get
+  const text = root.text.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+  if (/—/.test(text)) f.push('words: an em dash in the cards');
+  if (/‑/.test(text)) f.push('words: U+2011 in the cards; IDs take an ASCII hyphen (D2-975)');
+  if (DISCLOSURE.test(text)) f.push('words: the retired disclosure in the cards (DR-100, D2-1756)');
+  if (COLOR_LITERAL.test(body.replace(/<[^>]+>/g, ' '))) f.push('words: a literal color in the cards');
+  if (/style=/.test(body)) f.push('html: a style attribute; a card takes its look from kit.css');
+  for (const [re, what] of STUDIO) if (re.test(text)) { f.push(`words: ${what} in the cards ("${(text.match(re) || [''])[0]}")`); break; }
+  if (/[A-Za-z]'[A-Za-z]/.test(text)) f.push('words: a straight apostrophe in the cards; print the curled one (typography.curl_quotes, or the data as stored)');
+  return f;
+}
+
+module.exports = { id_types, check_spec, check_drawing, check_html, HTML_CLASSES, check_csv, red_share, RED_SHARE, contrast, band_faults, interval_faults, crossing_faults, to_csv, load_dataset, rows_of, v7, role_color, hex_to_lab_l, strings, retrieved_dates,
   FAMILIES, TIERS, EVIDENCE, DISCLOSURE, KEY_LIGHTNESS_MARGIN, ROOT, DATA };

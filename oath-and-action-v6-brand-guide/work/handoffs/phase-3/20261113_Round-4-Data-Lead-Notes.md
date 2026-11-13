@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:03 UTC. S12's stacked tile signed off from my own build; the phone codes wait on C4-E1 and C4-E2. R4-4's data side agreed with two conditions.
 - 21:01 UTC. Q-A1 ruled: S85 prints "Worker bargaining power" with the chip "Variable A2". Drafts of S85, S86 and S89 built and looked at (MA-7 added).
 - 20:58 UTC. ED4-1 ruled: the editor applies S37's curl. R-03's federal route display ruled for the systems designer (under (f)).
 - 20:57 UTC. D4-1 ruled: S16 takes the code column under 358 px, with two conditions (radii unchanged; the engineer reports the new share).
@@ -105,6 +106,15 @@ Every round 4 title is a **Finding**: each states what a record, a count, a surv
 
 The engineer may land items 1 to 3; the cartographer then writes `s12.json` (`"stage_min": 618` for `"stage": 1024`, the alt and phone words, `notes_internal`). I sign off S12 from the landing build's captures at 1440, 1024, 768 and 390 px on both grounds. The phone codes on S12, S16 and S78 (D3-1553) are signed off as the cartographer reports them.
 
+### S12's stacked tile as landed: signed off (21:03 UTC, for the cartographer and the main session)
+
+**Signed off.** `build s12` to my scratch with the sweep on, kit pages at 1440, 1024, 768 and 390 px on both grounds: PASS, 0 faults; 13,206 bytes as the guide places it (about 13,956 with its frame; the engineer's R4-2 figure of 14,076 counted the island and manifest change on the page, and the next strict build gives the binding one). Looked at: Newsprint at 1440 and 768 px, Charcoal at 1024 px in grayscale, and Charcoal at 390 px.
+- Each desk tile prints the state's code in bold over its figure with the arrow beneath; every figure is board 1's (spot-read against the lists: New York 10.5, New Jersey 10.0, Florida 9.7, California 9.0; Washington 1.0, Utah 1.1, Oklahoma 1.2, Nebraska 1.4; the nation 5.9). Arrows keep one scale with the key's 1, 5 and 10, all point one way, and the frames for the leader's change hold. In grayscale on Charcoal every code, figure and arrow reads; nothing depends on hue.
+- The phone keeps board 1's four gray steps, with the largest and smallest lists, as DR-261 says. The alt says what each width draws, as I asked under (d).
+- The title, grade, measure, notes and source are unchanged. S12 goes on board 3's list of changed board 1 drawings.
+
+**Still open for S12, S16 and S78: the phone codes (D3-1553).** At the 326 px drawing, S12 and S78 leave WA, WV and WY to a note until the engineer's C4-E1 (the 2 px phone gap) lands, and S16 four northeastern states until C4-E2 (the column, D4-1). I sign off the phone codes when the cartographer reports them built.
+
 ### D4-1, S16 under 358 px: the code column, (A), ruled (20:57 UTC, for the cartographer and the engineer)
 
 **(A), the column**, with two conditions. I looked at the cartographer's 3x pictures at 326 px on Newsprint, today's (`scratch/exp/s16-o-map.png`) beside the column (`s16-w3-map.png`), with its notes and measures.
@@ -186,6 +196,8 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 **Drafts built to my scratch (20:59 UTC, looked at by 21:00):** `oa-chart.mjs build s85 s86 s89 --widths 1440,390,296,256 --no-sweep`: 3 PASS, 0 faults; S85 warns at every width that the kit has no part yet that draws a Civic Line drawing (the topic icon). Looked at 1440 px on Newsprint. The pictures confirm MA-2 (S85's 90 open squares in the subject ink read nearly as heavy as the 10 filled) and MA-4 (S86's four unnamed circles in the light fill read as a second heavy group beside the named black one). S89 at 1440 px matches (b): lanes by position, the emergency branch in the gray edge, each limit under its step as the law's. Its notes and source line both say "Times are limits in law, not measured waits"; once is enough, the editor's call. Weights as the guide places them, with frames: S85 about 4,588, S86 about 4,874, S89 about 10,203 bytes, each under the ceiling.
 - **MA-7, S85's topic icon.** DR-266 sets CL-050 once at 48 px beside its word; the kit cannot draw it yet. Maker A's request to the engineer, if not already made; S85 is not signed off without the icon as DR-266 approved it.
 
+- **MA-8, S88’s title (21:03 UTC, from my build at 1440 px, Newsprint).** "Drawn at true size, ... share a narrow overlap, and the 28.3 million with neither form a circle of their own" describes the drawing, not the record, and "narrow" is our judgment of a size the reader can see. Rule 13.1 asks the title for what the evidence supports. State the Euler's own finding, the two groups and their overlap, for example: "In 2025, 213.2 million people had private health coverage and 119.1 million public coverage, and 23.8 million of them had both." (figures from `census-acs-health-coverage-types` and the derived file, by script; the editor sets the words). S87's title gives the four regions, so the pair then states two findings from one file, each in its drawing's terms. The drawing itself matches (b): radii read off the capture give areas in the counts' proportions (public to private 0.553 against 0.559; none to private 0.130 against 0.133, to the pixel I can read), the overlap alone takes the track ink, and the uninsured circle stands apart by about its own radius. S87 and S88 fail 7 and 1 checks in my scratch build; those are maker A's to clear before I sign off.
+
 **Infographics maker**
 - **MI-1, S89's chart note.** "Numbered boxes ... are the steps every declaration takes" is not what the file says: steps 7 and 8 (public assistance and individual help) follow only where FEMA names that help for an area, and a denial ends the path at step 5. Word it as the path from a request to the help a declaration names, with the editor.
 - S89's grade line, lanes by position, the branch in a gray edge, the limits as "time the law allows" and `phone: "differs"` with its note match (b) and (c).
@@ -242,10 +254,13 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 - Read by script (`python3 -I`): the plan file's 13 round 4 rows; the ten round 4 data files and their sidecars; `atlas-v7-data.json`'s `loops`, `links`, `nodes` and `reforms` (every loop's reforms against each reform's targets and loops, both lists compared); `14-example-log.json` (97 examples by domain and state); `phase3_ch15_build.py`'s 27 `book.log` examples by domain; the margins of the four coverage regions, every pair's gap against its combined margin; the calendar's 16 events by kind and consequence, and the weekday of each date; the revenue shares' sum; specs S19, S41, S62, S68, S70, S74, S77 and the 22 earlier grade lines for precedent.
 - Read: the brief, CLAUDE.md, my role file, the round 4 data plan with my sign-off, my round 2 and round 3 rulings (principles, RF-1, RF-2, RF-17), D3-1319 to D3-1328, D3-1493, DR-64, DR-93, DR-124, DR-223, DR-229, DR-255 and DR-261 to DR-270, Rules 13.2, 15.11, 15.16, 18.3, 18.8, 18.22 and 18.23, the coverage plan's sections 3.8 and 3.16, the Civic Line inventory row for CL-050 and chapter 10's icon list, and the engineer's R4-2 (its sums checked by hand).
 - Read the first drafts of S85, S86 and S89 with the icon-array and proportional-symbols forms and `named_fill`.
+- Kit builds to my scratch (`TMPDIR` set, `git status` unchanged by them): `build s85 s86 s89 --widths 1440,390,296,256 --no-sweep` (3 PASS, 0 faults; S85 warns that no kit part draws its icon yet); `build s87 s88 --widths 1440,390,256 --no-sweep` (S87 FAIL 7 faults, S88 FAIL 1, maker A's drafts); `build s12 --widths 1440,1024,768,390` with the sweep (PASS, 0 faults).
+- Looked at: S85, S86, S88 and S89 at 1440 px on Newsprint; S12 at 1440 and 768 px on Newsprint, 1024 px on Charcoal in grayscale, 390 px on Charcoal; the cartographer's S16 pictures at 326 px (3x, Newsprint), today's and the column.
+- Read R4-3 and R4-4 in the engineer's notes, the research lead's facts for 15.19 to 15.21, the accessibility lead's request, the editor's S37 facts and the systems designer's DR-265 list; CL-050's rows in the Civic Line inventory and chapter 10's label table; Variable A2's indicator in V7.
 
 ## Not tested
 
-- No build, capture or browser run of my own yet: no specimen has been drawn for me to look at. Every sign-off below names the widths it looked at.
+- Sweeps on S85 to S89 (built with `--no-sweep` as drafts); widths 390, 296 and 256 px of S85, S86 and S89 not yet looked at, nor their grayscale, nor Charcoal for S85 to S89. Each sign-off names the widths it looked at.
 - R4-2's bytes are the engineer's measure; I checked its arithmetic, not the minified files.
 - The U.S. Code's currency after its 2024 edition (request R-2).
 - Chapter 15's Rule 01.9 count is read from the generator's source, not from a run of it.
