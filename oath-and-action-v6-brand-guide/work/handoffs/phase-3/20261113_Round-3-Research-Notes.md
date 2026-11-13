@@ -4,7 +4,14 @@ Oath & Action Edition 06, Phase 3, round 3. Research lead (`oa-research-lead`), 
 
 ## Summary
 
-Started 00:49 UTC. Order of work, as the brief binds it: the boundary files (P7-219), the atlas re-check (DR-250), the judge counts, the stale lines, then the data check over each file the makers derive.
+Started 00:49 UTC; this state at 03:00 UTC. Order of work, as the brief binds it: the boundary files (P7-219), the atlas re-check (DR-250), the judge counts, the stale lines, then the data check over each file the makers derive, with the main session's relays taken as they came.
+
+- **Geometry frozen, 00:58 to 01:00 UTC.** Five boundary files in `work/build/data/` under R1-C7, each with a sidecar quoting the Bureau's terms and a ledger row (P7-219a to P7-219e): states, counties and nation at 1:20,000,000, the 119th Congress's districts at 1:5,000,000, and California's counties at 1:5,000,000 for the locator (D3-1087). The engineer's data check reads them with 0 faults.
+- **Atlas re-check (DR-250): no comparison changed, no candidate V7.1 item.** 1,976 of the 2,644 comparisons rerun against today's V7 give Phase 0's results; 668 could not be rerun because the supplied pages are not in the container, and rest on Phase 0's stored V7 values or the model's provenance.
+- **Judge counts: 677 = 673 + 4.** The courts count the territorial district courts' 4 judgeships beside 28 U.S.C. 133's 673; temporary judgeships, the round 2 guess, are not the difference. Row 123's file and S70's file now give the same account.
+- **Requests landed:** R3-A1 (Ballotpedia's publisher), RL-1 (the nation's county median), RL-2 (County Business Patterns' noise flags and the 7.7 million gap), RL-3 (names in the cycle; the FEC aggregate's lines 22 and 28C, with line 21B apart), RL-3a's phrase.
+- **Derived files checked:** seven, 0 data faults; maker A's route grid needs its ledger row set to P7-209.
+- **Stale lines marked** in the ledger, the round 3 plan and, by D3-1098, the round 4 plan's row 123.
 
 ## Geometry
 
@@ -78,6 +85,12 @@ Done 02:30 UTC. Each line stays as the record, marked "Stale (research lead, rou
 - D3-xxx | County noise flags come from the Bureau's downloadable county file, not the API's code | The file's record layout defines its flags and its counts equal the API's in every row; the API defines no values for its code
 - D3-xxx | A recipient's name in the cycle is the name its joint fundraising committee wrote on its last itemized payment on or before November 5, 2024 | One date read the same way for every recipient; the FEC's 2024 committee history already shows a change made after the election
 - D3-xxx | The JFC amounts stay as the FEC's aggregate gives them, line 22 and two line 28C refunds, with line 21B in its own columns | D3-476 freezes figures; the aggregate is the commission's own and reads the same lines for both nominees, and the new columns show what it leaves out
+- D3-xxx | The atlas re-check takes each page's side from Phase 0's recorded data and runs Phase 0's own V7 helpers by executing only its script's header | The supplied pages are not in the container; the header reads no source file, so the V7 side is computed exactly as Phase 0 computed it
+- D3-xxx | Comparisons whose page side Phase 0 did not store are reported as not rerun, with Phase 0's stored V7-side values tested and the model's provenance stated | Reconstructing a page value would print a guess as a check
+- D3-xxx | The rerun counts the 8 flags matching Phase 0's reviewed false positives as Phase 0 did, by item, file, shown word and V7 value | Phase 0 read each in context; the rerun shows they returned unchanged rather than reading them again
+- D3-xxx | The trial judges file gains `seats_in_territorial_courts`, and its printed line names the territorial courts' 4 | Row 123's "for life" card must not count ten-year seats as life-tenured, and the line must not name temporary judgeships, which no longer exist
+- D3-xxx | The bankruptcy count's 29 above the statute table is written as not traced | The status page gives 345 with no breakdown; naming temporary judgeships without reading them would repeat round 2's guess
+- D3-xxx | Stale ledger cells keep their words, with a dated "Stale" note and a pointer | The ledger is the record; the pattern D3-1056 set for the plans
 
 ## Requests
 
@@ -90,6 +103,40 @@ Done 02:30 UTC. Each line stays as the record, marked "Stale (research lead, rou
 
 ## Tested
 
+- **Geometry.** Every download returned 200, logged with time, address, bytes and SHA-256 (`.../round-3/research/dl/geometry/fetch-log.tsv`); the freeze script checks each zip's SHA-256 before reading. My standard-library reader and pyshp 3.1.8 agree feature by feature on all 3,774 features (properties, ring grouping, every vertex, ring direction aside). R1-C7 read back from the written text: bare FeatureCollection, keys, properties in order, geoid patterns, sorted and unique, Polygon or MultiPolygon, rings closed with four or more points, no repeated vertex, ring direction by role (RFC 7946), coordinates in range with six decimals at most, vertex counts accounted for, no byte-order mark. A rerun writes nothing. The engineer's data check reads all five with 0 faults. RFC 7946's ring rule read in the RFC's own text. Joins: all 3,144 county income rows and all 435 House results rows reach a shape; Kern County is 06029.
+- **Terms.** Read in each zip's ISO metadata (use and access constraints, quoted word for word), on the product page and on the description page it names.
+- **R3-A1.** S07 built before and after (PASS, 0 faults, 19 of 19 files equal byte for byte); S67 FAIL before, PASS after.
+- **RL-1 to RL-3 and the judges item.** Each asserts its frozen fields unchanged before writing, and a rerun writes nothing. RL-1: the API's county values equal all 3,144 frozen rows. RL-2: the Bureau's county file equals the frozen API counts in all 3,142 rows; 51 state totals sum to the nation; counties, 50 statewide records and the 5 in Hawaii and Texas sum to it. RL-3: 59 committee records and histories, 57 itemized recipient queries (all 200 after retries on 429), 2 aggregates equal to all 57 frozen rows; no duplicate transaction IDs; each row's line 22 or 28C payments sum to its amount. Judges: the Administrative Office's table parses to 104 rows summing to its printed 677, and its 97 rows with seats equal the frozen file's court by court; no temporary district judgeship is current. S70 built before and after: PASS, every file equal byte for byte. S73 rebuilt: PASS; only its CSV export grew.
+- **Atlas re-check.** The extract equals the committed model (SHA-256); 1,976 comparisons rerun with Phase 0's results; Phase 0's stored V7-side values equal today's (sheet figures, crossings, Ledger, Circuit, claims, Field Guide signs, Who Can Act tallies); 1,425 identifier occurrences resolve as before; a planted change in a scratch mirror was caught.
+- **Derived files.** Seven checked by my own scripts, as listed above; maker B's and maker A's own `--check` 0 faults.
+- **The data check,** `data_round0_build.py --check`, after each write: 117 tables with the 10 expected `.geojson` faults before the engineer's reading landed, then 119, 120, 122 and 124 tables with 0 faults.
+- No em dash or U+2011 in any file I wrote (asserted by each writing script). The Census key: added at request time only by `census_get.py`, which refuses to write a response that holds it; the fetch logs record the address without it.
+
 ## Not tested
 
+- The kit's projection and drawing of the boundary files (the engineer's and the cartographer's step); I checked the files, not maps.
+- The 668 atlas comparisons whose page side Phase 0 did not store (claim 37); the supplied pages are not in the container.
+- The 29 bankruptcy judgeships above 28 U.S.C. 152(a)(2)'s table (claim 34).
+- What the API's `EMP_N` code means (claim 35); what the Harris Victory Fund's line 21B payments to three committees bought (claim 36).
+- S82's tile layout algorithm itself (Albers, Dorling, transport); only its result's properties were checked.
+- Captures of any chart; I built S07, S67, S70 and S73 with `--no-png` where noted, and looked at no image.
+
 ## Files
+
+Created:
+- `work/build/data/census-cb-2024-states.geojson`, `census-cb-2024-counties.geojson`, `census-cb-2024-cd119.geojson`, `census-cb-2024-nation.geojson`, `census-cb-2024-counties-california-5m.geojson`, each with its `.meta.json`
+- `work/build/scripts/phase-3/research_geometry_freeze.py`, `research_round3_requests.py`, `research_atlas_recheck.py`
+- `work/research/20261113_Atlas-Recheck-Table.md`, `work/research/20261113_Atlas-Recheck-Data.json`
+- `work/handoffs/phase-3/20261113_Round-3-Research-Notes.md` (this file)
+
+Modified:
+- `work/build/data/ballotpedia-rcv-prohibitions-by-state.meta.json` (R3-A1)
+- `work/build/data/census-acs5-county-median-household-income.csv` and `.meta.json` (RL-1)
+- `work/build/data/census-cbp-county-employment.csv` and `.meta.json` (RL-2)
+- `work/build/data/fec-jfc-transfers-2024.csv` and `.meta.json` (RL-3, RL-3a)
+- `work/build/data/uscode-federal-trial-judges.csv` and `.meta.json`, `uscode-federal-courts-circuits-districts.meta.json` (judge counts)
+- `work/research/20261021_Research-Ledger.md` (Part 7: "Map geometry, round 3" with P7-219a to P7-219e; "Round 3, November 13, 2026"; stale cells; claims 10, 11 and 28 settled, 34 to 37 added; change log)
+- `work/handoffs/phase-3/20261112_Round-3-Data-Plan.md` (status lines only)
+- `work/handoffs/phase-3/20261112_Round-4-Data-Plan.md` (row 123's note, D3-1098)
+
+Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c155381-70e7-5490-bd84-f6f867d97cb7/scratchpad/phase-3/round-3/research/` (downloads with fetch logs under `dl/`; scripts under `scripts/`: `fetch.sh`, `census_get.py`, `fec_pager.py`, `htmltext.py`, `iso_terms.py`, `xcheck_pyshp.py`, `dup_probe.py`, `rl2_trace.py`, `judge_trace.py`, `judge_compare.py`, `check_derived_snap.py`, `check_derived_jfc_node.py`, `check_derived_round3.py`; the pyshp venv; kit builds under `r3a1/`, `rl3/`, `judges/`; the re-check mirror).

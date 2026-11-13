@@ -27,6 +27,8 @@
       // a county map: no county lines; state lines in the context ink at 0.5 px, and the land's edge in the context ink
       K.parts.map_mesh(c, L, T, { between: function (a, b) { return b !== null && a.slice(0, 2) !== b.slice(0, 2); }, stroke: 'context', width: 0.5 });
       K.parts.map_mesh(c, L, T, { which: 'outline', stroke: 'context', width: 0.5 });
+      // a county with no estimate keeps the land ink with a 1 px context edge (ruling (b))
+      K.parts.map_mesh(c, L, T, { which: 'all', between: function (a, b) { return cls_of[a] === null || (b !== null && cls_of[b] === null); }, stroke: 'context', width: 1 });
     } else {
       K.parts.map_mesh(c, L, T, { stroke: 'surface', width: 1 });
       // the lightest step meets the ground with a 1 px context edge (call 3)
