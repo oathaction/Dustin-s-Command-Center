@@ -15,6 +15,7 @@ Rulings (a) to (g) below are final for drawing. Makers, the cartographer, the ed
 - **(g) Rule 01.9 and DR-229 hold after round 3; nothing moves.** Row 109 passes D3-689's test.
 - **After RL-3 (second run).** S73 draws line 22 transfers alone for both committees: $899.4 million to 53 committees and $273.8 million to two. The refunds go apart in the table and the operating expenses into a note. Widths stay; the title changes. RL-1, RL-2 and DL-E1 are signed off, with S81 national as the engineer's variant B.
 - **Maker B after its fixes (sixth run).** MB-1 to MB-9 are closed. All of maker B's six specs, twelve entries and six sketches are signed off; S65's table share moves to a percent when the engineer's format lands, with no further sign-off.
+- **Maker A after its fixes (seventh run).** MA-1 to MA-8 are closed and maker A's work is signed off. S72's doubled states in two names wait on the engineer's A-E7, and S70's Supreme Court cell on a small MA-9; I accept both on report.
 - **Cartographer (fifth run).** S78, S79, S81 and S83 are signed off, with nine of twelve entries and the flow map sketch. D-2 is accepted. D-1: the avoid sketch draws in gray with the colors named in words, not in the diverging pair. C-1 to C-4 ask for changes:
   - S80's and S82's closest races read as the other party's seats, so the margins move to Verdigris steps 2 to 5;
   - S84 fails at 256 px;
@@ -316,6 +317,32 @@ Note 1 prints 673, the four territorial judgeships and no 677 total, as D3-1096 
 
 S66, S70, S72 and entries 14.98 and 14.102 are signed off once their items land. I sign off from 1440 and 256 px on both grounds.
 
+## Sign-off, maker A, after the fixes
+
+November 13, 2026, from 02:41 UTC. I rebuilt S66, S68, S69, S70 and S72 from the files as they stand with `oa-chart.mjs build s66 s68 s69 s70 s72 --widths 1440,390,296,256 --out <scratch>/kit-r3a2`, sweep on: 5 PASS, 0 faults. I looked at:
+- S68 at 1440 px on Newsprint and on Charcoal in grayscale, and at 390 px on Newsprint;
+- S66's drawing at 1440 px on Newsprint;
+- S72's and S70's page tables, read from the built pages in Chromium.
+
+I read the five specs' titles, grade lines, notes and captions, and entries 14.98 and 14.102, by script.
+
+**MA-1 to MA-8 are closed. Maker A's seven specs, eight entries and the mind map sketch are signed off, with S72's grouped rows pending the engineer's A-E7 and one small table change on S70 (MA-9).**
+
+- **S66 (MA-1, MA-2).** The title names "Congress and the President", and the review branch reads "Before steps 2 and 4, for significant rules".
+- **S68 (MA-7, Q-A1) and entry 14.98.** Both lines of authority end in an open diamond at the body governed: the commission under the legislature, and PJM under FERC. They hold on both grounds and on the phone's lane. The note opens "A line ending in an open diamond is a line of authority", and entry 14.98 cites Rule 15.5.
+- **S69 (MA-3, MA-4).** The grade line names the Clerk's list of November 3, 2026. The note on the select subcommittee reads "lists ... as a committee", which says the same thing in fewer words.
+- **S70 (MA-5, MA-8).**
+  - Title: "The 94 district courts try federal cases", which claims no more than the drawing.
+  - The grouped table now lists each circuit's states and territories once, so a reader finds their state's court of appeals on the page.
+  - The Ninth Circuit lists the Northern Mariana Islands, from its district row.
+  - **MA-9 (small, accepted on report without another look):** the Supreme Court row's cell repeats every circuit's list, ends in "All Federal judicial districts" (28 U.S.C. 41's words for the Federal Circuit), and lacks the Northern Mariana Islands, since section 41 names them for no circuit. Give that one cell "Every state, DC and the territories, through the 13 courts of appeals" through the column's `words`, as the key column already does.
+- **S72 (MA-6) and entry 14.102.** The page table names the 20 members, each with state and vote:
+  - the Senate's seven Democrats yes, King yes and Sanders no, and Rand Paul no;
+  - the House's six Democrats yes and Watson Coleman not voting;
+  - Massie and Steube no, and McCaul not voting.
+
+  These match my script's list member for member. The caption says every member not named voted with most of their party in that chamber, and the CSV lists all 533. Pending A-E7: the Clerk's own names carry their state ("Davis (NC)", "Golden (ME)"), so two cells print the state twice ("Davis (NC) (NC, Yea)") until the kit applies the spec's typography to grouped tables. I sign that off on the engineer's report without another look.
+
 ## Sign-off, cartographer
 
 November 13, 2026, from 02:31 UTC. I built S78 to S84 and S16 from the files as they stand with `oa-chart.mjs build s78 s79 s80 s81 s82 s83 s84 s16 --widths 1440,390,296,256 --out <scratch>/kit-r3c`, sweep on: 7 PASS and **S84 FAIL with 2 faults**, eight check files read. I looked at the page captures at 1x:
@@ -404,6 +431,7 @@ S80, S82, S84, S16, entries 14.119, 14.121 and 14.124 and sketch 14.124 are sign
 - D3-xxx | S81's CSV may leave out the nation's row; the grouped table's caption gives it | The drawn rows read their geoids from geo.js; the nation prints beside the map
 - D3-xxx | S16's map credit names the 2024 Census files | The credit must name the outlines drawn (R3-4)
 - D3-xxx | Maker B's round 3 work signed off: S65, S73 to S77, entries 14.93 to 14.95 and 14.104 to 14.112, six sketches | MB-1 to MB-9 closed, checked by build, capture and script
+- D3-xxx | Maker A's round 3 work signed off: S66 to S72, entries 14.96 to 14.103 and the mind map sketch, S72's grouped rows pending A-E7 and S70's Supreme Court cell pending MA-9 | MA-1 to MA-8 closed, checked by build, page tables and script
 
 ## Requests
 
@@ -421,7 +449,7 @@ S80, S82, S84, S16, entries 14.119, 14.121 and 14.124 and sketch 14.124 are sign
 - MB-1 to MB-9: closed (see "Sign-off, maker B, after the fixes").
 
 ### To maker A
-- MA-1 to MA-8: see "Sign-off, maker A".
+- MA-1 to MA-8: closed. MA-9 (S70's Supreme Court cell): see "Sign-off, maker A, after the fixes".
 
 ### To the engineer (through the main session)
 - Let the kit's atlas check read claim IDs (CL) so S84's "claim CL1516" can print as Rule 13.9's typed chip (C-3).
@@ -441,6 +469,7 @@ S80, S82, S84, S16, entries 14.119, 14.121 and 14.124 and sketch 14.124 are sign
 Read rulings (a) to (g) and "Rulings, after RL-3" directly.
 
 ## Tested
+- Maker A after its fixes, 02:41 UTC: `oa-chart.mjs build s66 s68 s69 s70 s72 --widths 1440,390,296,256 --out <scratch>/kit-r3a2`, sweep on, 5 PASS, 0 faults; S72's and S70's page tables dumped from the built pages in Chromium (`dump_tables.cjs`, scratch) and compared with my script's list and the frozen court file; S68 and S66 captures looked at as listed.
 - Maker B after its fixes, 02:35 UTC: `oa-chart.mjs build s65 s73 s74 s76 s77 --widths 1440,390,296,256 --out <scratch>/kit-r3b2`, sweep on, 5 PASS, 0 faults; captures and sketch as listed under "Sign-off, maker B, after the fixes"; S65's 2.30, S76's 61.4 percent and S77's three tests checked by script against the files.
 - Cartographer, 02:31 UTC: `oa-chart.mjs build s78 s79 s80 s81 s82 s83 s84 s16 --widths 1440,390,296,256 --out <scratch>/kit-r3c`, sweep on: 7 PASS, S84 FAIL (2 faults, the key at 256 px), eight check files read; captures as listed under "Sign-off, cartographer"; both sketches rendered and looked at on Newsprint and in grayscale; twelve entries read by script; figures checked by script as listed there.
 - Maker A, 02:23 UTC: `oa-chart.mjs build s66 s67 s68 s69 s70 s71 s72 --widths 1440,390,296,256 --out <scratch>/kit-r3a`, sweep on, 7 PASS, 0 faults, seven check files read; captures as listed under "Sign-off, maker A"; the mind map sketch rendered and looked at on Newsprint; eight entries read by script; the figures listed there checked by script.
@@ -453,6 +482,7 @@ Read rulings (a) to (g) and "Rulings, after RL-3" directly.
 - Contrast by the WCAG formula on token hexes: sequential steps 1 to 5 and gray magnitude steps 1 to 4 against Newsprint and against each other.
 
 ## Not tested
+- Maker A after its fixes: S69, S70 and S72 captures (table and word changes; built PASS), S66 below 1440 px.
 - Maker B after its fixes: S65, S74 and S77 captures (word changes only; built PASS); S73 below 1440 px and S76 at 1440 px; sketch 14.109 rendered but not looked at again (unchanged).
 - Cartographer: S78, S79, S80, S83, S84 and S16 below 1440 px (looked at 1440 px only, on both grounds and in grayscale); S81 and S82 at 296 px on Charcoal and 256 px on Newsprint; the sketches on Charcoal; the cartographer's plates inside a guide build.
 - Maker A: S67, S69, S70 and S71 below 1440 px on Newsprint, and S66, S68, S69 to S72 below 1440 px on Charcoal (the 1440 Charcoal grayscale captures looked at for all); the mind map sketch on Charcoal; maker A's plates inside a guide build.

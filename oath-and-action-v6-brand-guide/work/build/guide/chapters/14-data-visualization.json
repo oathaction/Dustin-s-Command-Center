@@ -3885,7 +3885,7 @@
    ],
    "why": {
     "text": [
-     "One line through the steps every case takes lets a reader learn the main path first, and the branches beside it show where the path can turn without hiding it. Numbers keep the order when the diagram is read aloud or as a table."
+     "One line through the main path lets a reader learn it first, and the branches beside it show where the path can turn without hiding it. Numbers keep the order when the diagram is read aloud or as a table."
     ]
    },
    "tokens": [],
@@ -4801,7 +4801,7 @@
    "id": "14.119",
    "title": "Use a district map to show one state’s races on the shapes of its districts, with party told by panel.",
    "rule": [
-    "Draw the state’s districts in one panel for each party, as Rule 14.7 sets seats on a map, with the margin in steps of one ink, the lightest still a clear fill, and the same steps and key words as the district tile map. Number each district on its shape, or beside it with a leader, and set the national result beside the panels (Rule 14.6)."
+    "Draw the state’s districts in one panel for each party, as Rule 14.7 sets seats on a map, with the same steps and key words as the district tile map, the closest races still a clear fill. Number each district on its shape, or beside it with a leader, and set the national result beside the panels (Rule 14.6)."
    ],
    "why": {
     "text": [

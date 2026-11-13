@@ -112,11 +112,11 @@ From the data lead's "Sign-off, cartographer" (C-1 to C-4, D-1) and the main ses
 
 ### Items
 
-- **C-1, S80 and S82.** The four margin classes take sequential Verdigris steps 2 to 5 (`seq-2` to `seq-5`), every won seat or district with its 1 px context edge; the other party's seats stay ghost outlines (inset on S82); dots and rings take the step's own label ink (`on-seq-N`); keys follow. S82's state codes now sit over the other party's outlines only, since words over a filled step fail the half-under check. Entry 14.119 takes the data lead's words ("the margin in steps of one ink, the lightest still a clear fill"); S82's alt says "four steps of one ink".
+- **C-1, S80 and S82.** The four margin classes take sequential Verdigris steps 2 to 5 (`seq-2` to `seq-5`), every won seat or district with its 1 px context edge; the other party's seats stay ghost outlines (inset on S82); dots and rings take the step's own label ink (`on-seq-N`); keys follow. S82's state codes now sit over the other party's outlines only, since words over a filled step fail the half-under check. Entry 14.119 ends as the editor's replacement gives it ("with the same steps and key words as the district tile map, the closest races still a clear fill"), since Rule 14.7's row now holds the steps; S82's alt says "four steps of one ink".
 - **C-2, S84 at 256 px.** The choropleth's key (S78, S81 and S84 share it) now wraps a label too long for its row and starts the next row under its last line.
-- **C-3, S84's claim ID.** Request C-E6 to the engineer, below; until it lands, note 1 keeps "claim CL1516" in words.
+- **C-3, S84's claim ID.** The engineer's C-E6 landed (the atlas check indexes claims); S84's `v7.ids` lists CL1516, and note 1 prints it as a typed chip (`<span class="oa-id" data-oa-id="CL1516">`).
 - **C-4 and D3-1100, land that carries a shape.** S16: in a clean build at 1440 px the land of Alaska and Hawaii is drawn, as it is in the data lead's own files (its page captures and SVG exports in `data-lead/kit-r3c/s16/` show both). What differs is ink: the land measures 1.17 to 1 against the ground, and Alaska and Hawaii have no inner border to carry them, so on Charcoal they all but vanish. The bubble map now draws the land's edge, 1 px in the context ink, from the 2024 states layer's coast (cut at the frame's left edge, as the land is), and frames Alaska and Hawaii with `K.parts.map_insets`, as S78, S81, S83 and S84 draw them. The locator's inset takes the same 1 px land edge; its main view already edges California. Words, data and inks of S16 are unchanged (ruling (e)): the edge and frames are placement of the outlines.
-- **D-1, sketch 14.124.** The misleading half draws in gray: the same 12 invented places, each filled whole by its winner with no margin, Party A in the darkest gray step and Party B in the lightest with its edge, the key reading "Party A, shown red" and "Party B, shown blue". The caption (`sketch_alt`, the first `<desc>`) starts "Drawn here in gray: a map shaded red for one party and blue for the other". The better half follows C-1 (`data-label="Panels by party"`). 3,796 bytes; every word measures 5.49 to 1 or more on Newsprint and 7.26 on Charcoal by the guide check's own background rule. Entry 14.124 says "the margin in steps of one ink".
+- **D-1, sketch 14.124.** The misleading half draws in gray: the same 12 invented places, each filled whole by its winner with no margin, Party A in the darkest gray step and Party B in the lightest with its edge, the key reading "Party A, shown red" and "Party B, shown blue". The caption (`sketch_alt`, the first `<desc>`) starts "Drawn here in gray: a map shaded red for one party and blue for the other". The better half follows C-1 (`data-label="Panels by party"`), its description ending "a stronger shade for a wider margin" (the editor's word). 3,797 bytes; every word measures 5.49 to 1 or more on Newsprint and 7.26 on Charcoal by the guide check's own background rule. Entry 14.124 says "the margin in steps of one ink".
 - **S79's red point (the editor's change).** The editor changed `labels.point` from "Lake Isabella CDP" to "Lake Isabella" for H02. That key is the data value that picks the red point's row, not printed words, so no point took the red. Restored; the plate already prints "Lake Isabella" through `labels.names`, and the table's place column now prints "Lake Isabella, a census-designated place" and "Bakersfield, a city", so "CDP" never prints unexplained.
 
 ### Routine calls
@@ -133,12 +133,15 @@ From the data lead's "Sign-off, cartographer" (C-1 to C-4, D-1) and the main ses
 
 ### Requests to the editor
 
-- Rule 14.7's spec row "Seats on a map" says the margin takes gray steps; C-1 moves S80 and S82 to steps 2 to 5 of one sequential ink, so the row needs the same change. Entry 14.119's new words are the data lead's ("the lightest still a clear fill"); "lightest" is an ink word that swaps on Charcoal (D3-1042), so word it as you see fit.
+- Done by the editor: Rule 14.7's row follows C-1, and its three replacements for my files are applied (14.119's ending, 14.124's margin words, the sketch's second description).
 - S79's `labels.point` is a data value; please leave it as the Gazetteer prints it.
 
 ### Tested
 
-(Written as each run ends.)
+- `oa-chart.mjs build s78 s79 s80 s81 s82 s83 s84 s16 --widths 1440,390,296,256`, sweep on, after C-1, C-2, D3-1100 and S79's fix: 8 of 8 PASS, 0 faults, eight check files read; S84 again after C-3's chip: PASS, 0 faults, the chip in its page.
+- Looked at: S16 at 1440 px on Charcoal (land edge, Alaska and Hawaii framed) and Alaska and Hawaii cropped at 1440 px on both grounds before the change, in my clean build and in the data lead's `kit-r3c` captures and SVG export (land drawn in all four); S82 at 1440 px on Newsprint and S80 on Charcoal (the closest races filled beside the other party's outlines); S84 at 256 px (the key wraps inside the plate); S79 at 1440 px (the red point back); sketch 14.124 on Newsprint, Charcoal and grayscale at twice size.
+- Sketch 14.124's words by the guide check's own background rule (`svgUnder`, copied): lowest 5.49 to 1 on Newsprint, 7.26 on Charcoal; 3,797 bytes; its first `<desc>` equals the entry's `sketch_alt`.
+- `cartographer_round3_derive.py --figures`: 0 faults after the editor's words and these fixes.
 
 ## Files
 

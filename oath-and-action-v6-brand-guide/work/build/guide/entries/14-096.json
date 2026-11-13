@@ -21,7 +21,7 @@
   ],
   "why": {
     "text": [
-      "One line through the steps every case takes lets a reader learn the main path first, and the branches beside it show where the path can turn without hiding it. Numbers keep the order when the diagram is read aloud or as a table."
+      "One line through the main path lets a reader learn it first, and the branches beside it show where the path can turn without hiding it. Numbers keep the order when the diagram is read aloud or as a table."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
   },

@@ -33,6 +33,7 @@ What round 2's words pass found most often, so you can write it right the first 
 - 02:31. **The cartographer's words pass, done (D3-669):** 30 changes in 17 files, logged under "Words for the cartographer"; entries 14.117 to 14.122 and 14.124 now point to rules 14.3, 14.6, 14.7, 14.9 and 14.12. S78 to S84 pass the kit with the sweep, the cartographer's figure check passes, and the strict build exits 0. **Group line 15 rewritten, group line 12 stands**, so all five of round 3's group lines are checked against built entries.
 - 02:39. **Maker B's second look, done:** two changes (S76's note 3, entry 14.108), logged under "Words for maker B, second look"; S76 passes the kit with the sweep and maker B's figure check reports 0 faults, so no string changes. **Rule 14.7's "Seats on a map" row follows the data lead's C-1** (the margin in steps of one sequential ink), and three of my cartographer words that C-1 makes stale are listed for the cartographer.
 - 02:40. **S65's share column prints percents** (`fraction-percent:1`, label without "0 to 1"), at the main session's word; PASS with the sweep, figure check 0 faults. **My S79 error, logged:** I had changed `labels.point`, a data key, which took the red point off the locator; the cartographer restored it, and my rebuild shows the red back. I now leave mark and ink keys to their owners.
+- 02:43. **Maker A's second look, done:** three changes (S68's alt on the two diamond lines, S71's alt, entry 14.96's why), logged under "Words for maker A, second look"; S68 and S71 pass the kit with the sweep, and maker A's figure check passes 35 of 35, so no string changes.
 
 ## Routine calls
 
@@ -142,6 +143,18 @@ Maker A is in its final review, so at the main session's word I read its files a
 | 14-102 | rule.0 | Draw one square a member in the party-mark ink: | Draw one square for each member, in one neutral ink for every party (Rule 14.7): | "Party-mark ink" is a builders' name (D3-914); Rule 14.7's own words |
 
 Read and kept: S66 whole after the first look; S67's title (the first look's words, applied), notes, alt, chart note, leaves and table words; S68's grade line, measure line, note, alt, chart note and band words; S69 whole after the first look; S70's title, grade line, measure line, note 2, alt, chart note and table words; S71's grade line, measure line, note 2 and column words; S72 whole, its alt's tallies by party read as data (H06 keeps figures for data); entries 14.100, 14.101 and 14.103 whole, and every title, use_when, use_instead and builders line of the eight; the mind map's caption. Titles of the entries are the plan's to set; 14.96's "how a decision is made" is passive, and "the steps an institution takes to decide, and where others can step in" would name the actor, for maker A to weigh.
+
+### Words for maker A, second look (D3-669), 02:42 to 02:43 UTC
+
+Maker A applied all 15 of my words above and then the data lead's MA-1 to MA-8 ("Sign-off fixes" in its notes). I read every word it changed: S66's title, alt, review branch and table words; S68's notes, chart note, alt and line words, and entry 14.98 on the open diamond; S69's grade line, new note and the words it trimmed to hold 13,851 bytes; S70's title and grouped table words; S72's grouped table and caption; entry 14.102. Three changes, written straight in, with no mark or ink key touched:
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| S68 | alt | A line runs from the legislature to the commission, whose powers it sets. | Two lines of authority, each ending in an open diamond, run from the legislature to the commission, whose powers it sets, and from the Federal Energy Regulatory Commission to the grid operators, whose rule changes it approves. | MA-7 draws two lines, each ending in a diamond (`labels.authority` holds both); the alt named one and no diamond |
+| S71 | alt | A state statute is listed by 29, the local route by 15 and a state ballot measure by 11. | Twenty-nine reforms list a state statute, 15 the local route and 11 a state ballot measure. | W02, in the frame of the next sentence, which my first pass wrote |
+| 14-096 | why.text.0 | One line through the steps every case takes lets a reader learn the main path first, | One line through the main path lets a reader learn it first, | The rule's first sentence no longer says "every case takes", since S66 draws a branch in place of steps 2 and 3; the why said it still |
+
+No figure-check string changed: `maker_a_round3_derive.py --figures` 35 checks, 0 failed. S68 and S71 rebuilt with the sweep: 2 PASS, 0 faults. S69 is left alone, since it sits 1 byte under 13,852. Read and kept: S66's title (MA-1, 33 words with both actors), branch words and alt; S68's note and chart note on the diamond; entry 14.98's diamond sentence (the data lead's words); S69's grade line (MA-3), note 2 (MA-4) and trimmed words; S70's title (MA-5) and grouped table's words, "No court: the Supreme Court hears the last appeal" among them; S72's caption and grouped column words (MA-6), whose "Davis (NC) (NC, Yea)" waits on the engineer's A-E7 and is no word fault; entry 14.102's new last sentence. S70's three "territorial court, not an Article III court" phrases stay: ruling (b) gives the words, and note 1 now glosses Article III.
 
 ## Words for maker B
 
