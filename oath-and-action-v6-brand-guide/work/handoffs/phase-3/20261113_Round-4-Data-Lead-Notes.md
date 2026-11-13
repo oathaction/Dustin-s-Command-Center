@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:25 UTC. DR-271 applied: byte figures are reported, not sign-off conditions; data conditions stand. MI-7 is with the infographics maker.
 - 21:25 UTC. The design director's DD-A5, DD-A6 and DD-I7 answered yes, with conditions; MI-3 answered by the research lead, words for S90 set.
 - 21:24 UTC. S94 signed off whole; S91 waits on one phrase (MI-7: Puerto Rico's district judges serve for life, so "outside the territories" misleads).
 - 21:21 UTC. S87, S88 and S93 signed off whole; S90 and S92 signed off (S90 with MI-3, words); S91 but for its title and note (MI-4); S94 waits on MI-5 and MI-6.
@@ -208,6 +209,13 @@ Type never drops under the type scale's smallest drawing size to make a title fi
 
 ## Sign-offs
 
+### DR-271 applied to my sign-offs (21:25 UTC)
+
+Read DR-271 in the decision log. From now on the share per plate, the 15,000-byte plate limit, the kit's part, R4-6's 75,000 bytes and chapter 14's stop are figures the build reports, not conditions of my sign-offs. Where my earlier text sets a byte ceiling, read it as a reported figure:
+- (d)'s "round 4's per-plate ceiling", the weight lines in my sign-offs of S12 and the drafts, D4-1's condition 2 (the column's 1,395 bytes) and ED4-1's 129 bytes: all stand as reported figures only. D4-1's condition 1 (radii unchanged) and every data condition stand.
+- (f)'s choice of loops was not made for weight, so it stands as ruled. Its Rule 01.9 count is about examples, not bytes.
+- The fixed limit is the page's: one file under 16 MB, with the 15.5 MB projection as the early warning. I may still ask for a leaner drawing where leanness costs the reader nothing, and will say so as a request, never as a sign-off condition.
+
 ### The design director's two asks and MI-3's answer (21:25 UTC, for the design director, both makers and the editor)
 
 - **DD-A5 and DD-A6, S86's key and its "not drawn" sentence: yes.** S16's side-by-side size key and the sentence in the key's band change no figure, ink or scale, and one key grammar across chapter 14 is right. Conditions: the key's circles stay on the drawing's one area scale at every width, the largest step at 40,000 so the key spans the 39,555 circle (MA-5), each step prints its value, and the sentence keeps both counts (1 federal government, 50 state governments) and its reason. I read it again only if a key circle's radius departs from the scale; maker A names the check in `notes_internal`.
@@ -295,6 +303,7 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 - D3-xxx | 15.20 prints each route's name, then the atlas's `who` words with no "Who acts" label | R-03's federal route stores an action there; nothing inferred
 - D3-xxx | S85's CL-050 prints "Worker bargaining power" with the chip "Variable A2" (Q-A1) | Rule 10.6 for an atlas symbol; A2's own indicator is the union density S85 draws
 - D3-xxx | S95's card draws the states as columns in rank order with S19's vertical scale (IM-E5) | Same data, order, scale and finding under DR-64's rule; fifty labeled rows cannot fit a card at 36 px
+- D3-xxx | Byte figures in my rulings and sign-offs become reported figures under DR-271; data conditions stand | Dustin's DR-271: nothing is cut to meet an allocation; the page stays under 16 MB
 - D3-xxx | A DR-265 title that will not fit wraps, then re-lays, then takes a chip with a keyed title, never cut | One name for each variable wherever a loop is drawn
 
 ## Requests

@@ -35,7 +35,7 @@ word, no studio word or decision code in reader text, titles of fifteen words or
 every atlas ID in a chip present in the model, every value the words print matched to the model, loop kind against
 the count of minus signs on every numbered loop, no authority connection in any loop, Rule 01.9 over the example log,
 red only on a reform's own targets, no effect total, every route dated or "Not checked", and the chapter's bytes
-against its 0.60 MB ceiling.
+against the 0.60 MB it reports (DR-271: a reported figure, not a stop).
 """
 import html
 import importlib.util
