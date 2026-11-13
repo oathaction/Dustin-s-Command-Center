@@ -89,7 +89,10 @@
           "agg": "list",
           "field": "state_or_territory",
           "distinct": true,
-          "empty": "The whole country"
+          "empty": "The whole country",
+          "words": {
+            "Supreme Court of the United States": "Every state, DC and the territories, through the 13 courts of appeals"
+          }
         },
         {
           "label": "Courts",
@@ -183,6 +186,7 @@
     "D3-1097 (weight): the page's table groups the courts by the court that hears their appeals (table.group by parent): courts, counting no shared seat as a court, and judgeships summed; the drawing lists every court in reading order (R3-6) and the CSV export keeps every row.",
     "Judge counts (research lead, round 3): the courts' 677 district positions are 28 U.S.C. 133's 673 plus the four judgeships of the three territorial courts (Guam 1, Northern Mariana Islands 1, Virgin Islands 2). Note 1 gives 673 Article III district judgeships, shared seats included, and four in the territorial courts, and prints no 677 total.",
     "MA-5: the title keeps to what the drawing draws, the 94 district courts that try federal cases.",
-    "MA-8: the grouped table lists each group's states and territories once, in the drawing's order (agg list with distinct, A-E5), so a reader finds the court that hears a case from their state."
+    "MA-8: the grouped table lists each group's states and territories once, in the drawing's order (agg list with distinct, A-E5), so a reader finds the court that hears a case from their state.",
+    "MA-9: the Supreme Court's row in the grouped table reads 'Every state, DC and the territories, through the 13 courts of appeals' through the column's words, keyed by the group's key, the parent's name as stored (the engineer's group-column words)."
   ]
 }

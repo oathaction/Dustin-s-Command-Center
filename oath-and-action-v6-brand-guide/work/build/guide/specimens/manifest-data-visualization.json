@@ -849,7 +849,7 @@
   "chapter": "14",
   "rule": "14.99",
   "width_px": null,
-  "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, three select committees and four joint committees shared with the Senate, each with its subcommittees under it, 109 in all. Appropriations has the most, 12; Budget, Ethics, two select committees and the joint committees have none.",
+  "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, three select committees and four joint committees shared with the Senate, each with its subcommittees, 109 in all. Appropriations has the most, 12; Budget, Ethics, two select committees and the joint committees have none.",
   "illustrative": false,
   "notes": "S69, org-chart: the chart kit draws it from work/build/chart-kit/specs/s69.json (contract R1-C3)"
  },

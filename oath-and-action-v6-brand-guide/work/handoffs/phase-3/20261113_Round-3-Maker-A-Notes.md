@@ -128,3 +128,10 @@ November 13, 2026, after the data lead's "Sign-off, maker A" (MA-1 to MA-8, with
 
 - The quick guide check after these fixes (no sketch changed since its run; the tables and words changed).
 - Captures of every touched spec at all four widths by eye: S66 and S68 looked at; S69, S70 and S72 changed words and tables only, checked by the build, not looked at again.
+
+### MA-9
+
+- D3-xxx | S70's grouped table gives the Supreme Court's row "Every state, DC and the territories, through the 13 courts of appeals" through the column's `words`, keyed "Supreme Court of the United States", the group's key as stored | MA-9: the list repeated every circuit's places, ended in "All Federal judicial districts" and left out the Northern Mariana Islands
+- D3-xxx | S69's alt reads "each with its subcommittees, 109 in all" | S69 had grown to 13,854 bytes with no change of mine (the kit's frame); now 13,845
+- Tested: `oa-chart.mjs build s70` and `s69` with the sweep and PNGs at four page widths, both grounds: 2 PASS, 0 faults; S70's page table read from the build page (the Supreme Court row reads as set); `maker_a_round3_derive.py --figures` 35 of 35; `phase3_ch14_build.py --rounds 1,2,3` 0 faults; strict build exit 0, no warning, 11,226,719 bytes; plates S66 9,357, S67 12,495, S68 8,902, S69 13,845, S70 10,105, S71 11,402, S72 11,498 bytes.
+- Kept: the editor's second-look words (S68's and S71's alts, entry 14.96's why), unchanged.
