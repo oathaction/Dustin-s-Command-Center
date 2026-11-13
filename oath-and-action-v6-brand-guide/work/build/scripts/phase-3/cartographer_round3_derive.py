@@ -445,8 +445,8 @@ def county_income_classes():
         },
         "printed_source_line": m0["printed_source_line"],
         "ledger_row": m0.get("ledger_row"), "domain": m0.get("domain"), "states": [],
-        "derived_from": ["census-acs5-county-median-household-income.csv", "census-cb-2024-counties.geojson"],
-        "derivation": "Each county's class by the data lead's breaks (round 3 ruling (c)) and the count of breaks strictly inside its 90 percent interval; rows in the boundary layer's geoid order, the national row left out (the map prints it beside itself) (cartographer_round3_derive.py)",
+        "derived_from": ["census-acs5-county-median-household-income.csv"],
+        "derivation": "Each county's class by the data lead's breaks (round 3 ruling (c)) and the count of breaks strictly inside its 90 percent interval; rows in the geoid order of the boundary file census-cb-2024-counties.geojson, the national row left out (the map prints it beside itself) (cartographer_round3_derive.py)",
         "margin_columns": {"median_household_income": "moe"},
         "notes": LOG[-1:]
     }
@@ -503,8 +503,8 @@ def cbp_dots():
         },
         "printed_source_line": m0["printed_source_line"],
         "ledger_row": m0.get("ledger_row"), "domain": m0.get("domain"), "states": [],
-        "derived_from": ["census-cbp-county-employment.csv", "census-cb-2024-counties.geojson"],
-        "derivation": "Each county's dots at one a 10,000 and one a 50,000 paid employees, rounded half up; rows in the boundary layer's geoid order, with the two counties the Bureau's file lacks kept empty (cartographer_round3_derive.py)",
+        "derived_from": ["census-cbp-county-employment.csv"],
+        "derivation": "Each county's dots at one a 10,000 and one a 50,000 paid employees, rounded half up; rows in the geoid order of the boundary file census-cb-2024-counties.geojson, with the two counties the Bureau's file lacks kept empty (cartographer_round3_derive.py)",
         "notes": LOG[-1:]
     }
     write('census-cbp-county-employment-dots', ['geoid', 'name', 'state', 'paid_employees', 'emp_noise_flag', 'emp_noise_words', 'dots_10k', 'dots_50k'], out, side)

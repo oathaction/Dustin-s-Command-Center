@@ -18,7 +18,7 @@
   "illustrative": false,
   "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, from Agriculture to Ways and Means, three select committees and four joint committees shared with the Senate. Each committee lists its subcommittees under it, 109 in all; Appropriations has the most, 12, and the Budget, Ethics, two select committees and the joint committees have none.",
   "table": {
-    "caption": "The House’s committees in the drawing’s order, standing, then select, then joint, each with its subcommittees and the seats each side holds on the committee as a whole, as the Clerk’s file of November 3, 2026 lists them; the CSV file gives each subcommittee’s seats",
+    "caption": "The House’s committees, each with its subcommittees and the seats each side holds, as the Clerk’s file of November 3, 2026 lists them; the CSV file gives each subcommittee’s seats",
     "columns": [
       {
         "field": "committee",
@@ -89,7 +89,7 @@
     }
   },
   "chart_notes": [
-    "Each committee’s box gives its name and its count of subcommittees, and a box for each subcommittee sits under it, joined by a line. Standing committees print without “Committee on”; the table gives every full name, with the seats each side holds as the Clerk’s file gives them."
+    "Each committee’s box gives its count of subcommittees, with a box for each under it. Standing committees print without “Committee on”; the table gives every full name."
   ],
   "phone": "differs",
   "phone_note": "Where two columns of 220 px do not fit, the committees run in one column down the page.",

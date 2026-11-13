@@ -52,10 +52,9 @@
  "domain": "D08",
  "states": [],
  "derived_from": [
-  "census-acs5-county-median-household-income.csv",
-  "census-cb-2024-counties.geojson"
+  "census-acs5-county-median-household-income.csv"
  ],
- "derivation": "Each county's class by the data lead's breaks (round 3 ruling (c)) and the count of breaks strictly inside its 90 percent interval; rows in the boundary layer's geoid order, the national row left out (the map prints it beside itself) (cartographer_round3_derive.py)",
+ "derivation": "Each county's class by the data lead's breaks (round 3 ruling (c)) and the count of breaks strictly inside its 90 percent interval; rows in the geoid order of the boundary file census-cb-2024-counties.geojson, the national row left out (the map prints it beside itself) (cartographer_round3_derive.py)",
  "margin_columns": {
   "median_household_income": "moe"
  },

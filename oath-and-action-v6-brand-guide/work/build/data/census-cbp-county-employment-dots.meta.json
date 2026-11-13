@@ -61,10 +61,9 @@
  "domain": "D07",
  "states": [],
  "derived_from": [
-  "census-cbp-county-employment.csv",
-  "census-cb-2024-counties.geojson"
+  "census-cbp-county-employment.csv"
  ],
- "derivation": "Each county's dots at one a 10,000 and one a 50,000 paid employees, rounded half up; rows in the boundary layer's geoid order, with the two counties the Bureau's file lacks kept empty (cartographer_round3_derive.py)",
+ "derivation": "Each county's dots at one a 10,000 and one a 50,000 paid employees, rounded half up; rows in the geoid order of the boundary file census-cb-2024-counties.geojson, with the two counties the Bureau's file lacks kept empty (cartographer_round3_derive.py)",
  "notes": [
   "dots: 13040 at 10,000 and 2402 at 50,000; 1354 counties draw no dot at 10,000, holding 2841136 employees; counties sum 132151802; missing ['15005', '48269']"
  ]
