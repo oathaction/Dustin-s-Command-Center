@@ -5,7 +5,10 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Written by the en
 ## Summary
 
 - **R3-5 LANDED (01:05 UTC):** `node_size`, `node`, `link`, `tree`, `flows`, `flow_band` and `width_key` in `parts.js`, with the layout guard reading links and self-test cases. Calls under "Contracts".
-- **In progress:** R3-2 on the frozen 2024 files (frozen 01:00 UTC), then DL-E1, then R3-4.
+- **R3-2 LANDED (02:40 UTC):** `geo.js` from the 2024 files (133,117 bytes against 250,000), the map parts, `.geojson` in the kit's check and in the data check, the geometry weighed apart in `guide_charts.py`, and the checks reaching shapes in moved groups. Calls under "Contracts".
+- **DL-E1 MEASURED (03:05 UTC):** S81 fits its share, about 14,200 bytes with its frame, when the drawing reads a class column and the table groups by state; reading the value costs about 24,780. Figures under "Contracts", for the data lead's sign-off.
+- **R3-4 LANDED:** the kit's state outlines are the 2024 file's; S16 passes as committed on them (`build s16`: 0 faults, sweep on). S16 can be placed.
+- **RB3-G1 LANDED (01:55 UTC):** the band check reads a band's x extent (maker B).
 
 ## Contracts
 
@@ -28,6 +31,62 @@ Every part draws through the form's context, so the layout guard and the checks 
 **The layout guard and links.** A link is a line no word may sit under. The guard fails a link drawn after a word, and one drawn before a word set with no halo or knockout: `layout guard: a link crosses "..."`. The kit never clears a link with a knockout, as it does a gridline. Draw links first, nodes and words after; where words must sit on a link (a branch's "Yes"), set them with `K.parts.clear_label`. `place_labels` also keeps labels off links. Curved links and bands carry their points to the checks (`c.path(d, {pts})`), so an arc is read where it runs.
 
 **Moved and scaled groups (R3-2's last item, landed with these).** A shape inside `c.group({transform: 'translate(x,y) scale(k)'})` is now read through the transform by the red share, the crossing and half-under checks, the edge check and the guard; words inside one are read where and at the size they print. Only a transform the kit cannot read (a rotation) still hides its shapes. Every committed drawing is unchanged (snapshot below).
+
+### R3-2. Map geometry in the kit (ENG-10). LANDED, 02:40 UTC
+
+**The geometry.** `work/build/chart-kit/tools/geo_build.py` writes `geo.js` from the research lead's frozen 2024 files (`python3 -I work/build/chart-kit/tools/geo_build.py`; `--check` exits 1 when `geo.js` is stale). The page carries it once, inside the kit's script, for every map that shares it.
+- **Projection:** d3's `geoAlbersUsa` at scale 1300 in a 975 by 610 frame, computed in the tool: the lower 48 on an Albers equal-area conic (parallels 29.5 and 45.5); Alaska at 0.35 of the scale (parallels 55 and 65) and Hawaii (parallels 8 and 18) set apart at the lower left, where the tile maps put them. A feature goes to Alaska or Hawaii by its state code, so the Aleutians west of 180 degrees sit with the rest of Alaska. The states' centers match the 2017 us-atlas frame to 0.1 unit (Alabama 671.6, 432.2 in both). A state-level layer is drawn on the lower 48's projection and fitted to a frame 975 units wide.
+- **Puerto Rico:** no map draws it. No round 3 map's data holds it (the county, employment and broadband files have no Puerto Rico rows), so every layer keeps the 50 states and DC.
+- **Shared borders, simplified once:** each ring is cut at its junctions into arcs, and an arc two features share is kept once, so neighbors share one simplified border. Each arc is simplified (Douglas-Peucker) to half a pixel at 720 px, the widest a map draws, and written on a 0.5-unit grid (0.37 px at 720). Island rings under a pixel's area are dropped, never a feature's largest.
+- **Layers** (name: file, features, vertices in the file, vertices carried, bytes):
+
+| Layer | File | Features | Vertices in the file | Carried | Bytes |
+|---|---|---|---|---|---|
+| `states` | `census-cb-2024-states` | 51 | 13,442 | 2,243 | 6,643 |
+| `counties` | `census-cb-2024-counties` | 3,144 | 52,322 | 24,727 | 114,077 |
+| `cd119-mi` | `census-cb-2024-cd119` (Michigan's 13, fitted) | 13 | 4,061 | 1,189 | 3,400 |
+| `counties-ca` | `census-cb-2024-counties-california-5m` (fitted) | 58 | 8,622 | 2,490 | 6,959 |
+
+- **Weight:** `geo.js` minified, as the page carries it, **133,117 bytes against its 250,000** (116,883 to spare). `guide_charts.py` now weighs it apart (`weight.projection.map_geometry` in the build report) and warns past 250,000. A map that needs another layer (a district map of another state, a finer inset) asks me; each layer is listed in the tool's `LAYERS`.
+- **The 2017 outlines and the us-atlas license have left the kit** (R3-4): `geo.js` holds no us-atlas data and `geo-LICENSE.txt` is deleted. The studio's tile grid (`tiles`) stays.
+
+**A spec names its boundary file** as a second dataset (`"dataset": ["census-acs5-county-median-household-income", "census-cb-2024-counties"]`), as the plan rows do. The kit reads a `.geojson` dataset as shapes, never as rows: it is never in the island or the CSV export. `check` fails a boundary file named first, and one no layer is drawn from. The source line names every dataset's publisher, the Census Bureau included.
+
+**The map parts (`parts.js`).** Every map form calls these; a form that drew its own moves onto them.
+
+| Part | What it does | Call |
+|---|---|---|
+| `K.geo(name)` | A layer, decoded once a page draws it | `var L = K.geo('counties')`: `L.ids` (geoids in order), `L.index[geoid]`, `L.rings(i)` (feature i's polygons as rings of [x, y] in frame units), `L.labels[i]` ([x, y, r]: the point inside the largest polygon farthest from its edges, and that distance; states and districts), `L.arcs`, `L.use`, `L.box`, `L.frame`, `L.credit` |
+| `K.geo.project` | A longitude and latitude in a layer's frame, as the tool projects | `K.geo.project(L, lon, lat, code)`; pass `code` 'AK' or 'HI' for a place there. Lake Isabella in `counties-ca`: 489.8, 1102.1 |
+| `map_fit` | Where a layer draws: its box scaled to a width | `var T = K.parts.map_fit(c, L, {x, y, w, max_h, pad, ids})`; `ids` fits only those features (a state on the national layer). Returns `{k, x, y, w, h, pt([x, y]), px(lon, lat, code), box}`; `T.h` is the height to give `c.height` |
+| `map_shapes` | Each feature filled | `K.parts.map_shapes(c, L, T, items, {merge, stroke, width})`; `items` `[{id, fill, pattern, data, job, fc}]`. One path a feature with its data by default; `merge: true` draws one path a fill (a county map's 3,144 shapes in five elements) and records each feature's data at its label point, no element. Returns `{missing}` (ids the layer lacks). A feature with no estimate takes its own fill or pattern and a key entry; never leave it the ground |
+| `map_mesh` | Borders, drawn once, one path | `K.parts.map_mesh(c, L, T, {which, between, ids, stroke, width, dash})`; `which` `interior` (default), `outline` or `all`; `between(a, b)` with the two features' geoids (b null on the outline): state lines on a county map are `function (a, b) { return b !== null && a.slice(0, 2) !== b.slice(0, 2); }`. Default `surface` at 1 px |
+| `map_labels` | Names on their shapes, or beside them with leaders | `K.parts.map_labels(c, L, T, items, {role, inset, reach, avoid, top, bottom, halo})`; `items` `[{id, words, weight, fill}]` in the order they claim room. A name sits at the label point where its box fits wholly inside the shape, `inset` px clear of every edge; any other goes beside through `place_labels` with a leader (`reach` default [16, 30, 46, 64]). Returns `{inside, beside, unplaced}` |
+| `map_insets` | A thin frame round Alaska and Hawaii | `K.parts.map_insets(c, L, T, {prefixes, pad, stroke, width})`; default geoid prefixes '02' and '15', `gridline` at 1 px, kept inside the map's box |
+| `map_scale` | A scale bar for a fitted layer | `K.parts.map_scale(c, L, T, x, y, {miles, words, stroke})`; default a round figure near a fifth of the map's width, words '{n} miles' |
+| `map_dots` | A dot density map, one path for every dot | `K.parts.map_dots(c, L, T, counts, {per, seed, r, fill, job})`; `counts` `{geoid: count}`; each feature's dots are round(count / per), placed at random inside its shape in frame units (the same places at every width) by a generator seeded from `seed` and the geoid, drawn as one path of round dots (`kit.css` `.oac-dots`). Returns `{dots, per, seed, skipped}` |
+| `table.group` | A table grouped by a column (DL-E1, DR-249) | `"table": {"caption", "columns": [every column, for the CSV export], "group": {"by": "state", "sort": "key", "columns": [{label, agg, field, format, state_name, from, to, name}]}}`; `agg` `key` (with `state_name: true`, the state's name), `count`, `count_in` (field at least `from` and under `to`), `min`, `max`, `median`, `sum`, `first`, `min_name`, `max_name`. The page prints one row a group; the island carries the drawing's columns for every row; the CSV export lists every row |
+
+**Islands for maps.** Where a column of the rows holds a layer's geoids, every one, in the layer's order (sorted by geoid, as every frozen file is), the island leaves it out and the page reads it back from `geo.js` (`geo_key`). A grouped table's island carries only the columns the drawing reads (encode, where, sort, formats, labels, annotations), never the table's.
+
+**S16 and the bubble map (R3-4).** `OAChartGeo.land`, `.borders` and `.centers` are still there, now worked out from the 2024 `states` layer the first time a map reads them, so `bubble-map.js` draws unchanged. `land` is cut at the frame's left edge (x 0), as the board 1 drawing showed it: four western Aleutian polygons lie wholly left of it and one crosses it. On `map_fit` the whole of Alaska draws.
+
+### R3-3. DL-E1: S81's county map measured. MEASURED, 03:05 UTC (for the data lead's sign-off)
+
+Measured with a scratch form that draws S81 through the map parts above (`.../round-3/engineer/dle1/dle1.mjs`), placed as the guide places an entry (method `load-table`: words, lean table, compressed island), on `census-acs5-county-median-household-income` (3,144 counties, one with no estimate: 35011, De Baca County, New Mexico) and the `counties` layer. Words at a full entry's length (title, measure line, a four-note list, a two-dataset source line, a 380-character description: 2,419 bytes). A plate frame adds about 1,300 bytes.
+
+| Variant | Table | Island | Figure | With the frame | Against the share, 14,495 |
+|---|---|---|---|---|---|
+| **B. The drawing reads a class column (1 to 5) a derive script writes; table grouped by state: state, counties, lowest, highest, and the count in each of five classes** | 7,833 | 2,652 | 12,904 | **about 14,200** | **fits**, about 300 under |
+| A. As B, the drawing reads the value itself | 7,833 | 13,228 | 23,480 | about 24,780 | 1.7 times; about 200 over the far-over line (24,576, three times the extended average), so `--strict` fails it |
+| C. As A, a four-column table (state, counties, lowest, highest) | 4,987 | 13,068 | 20,474 | about 21,800 | 1.5 times |
+| D. Every county in the table, ungrouped (for comparison) | 299,836 | 416 | 302,671 | about 304,000 | 21 times |
+
+- **Geometry:** the `counties` layer is 114,077 bytes; with the states, Michigan's districts and California's counties, `geo.js` is 133,117 of its 250,000. S83 shares the `counties` layer at no further cost.
+- **The CSV export** lists every county with its value and margin of error in every variant (the kit writes the first dataset's rows whole). The page's table is grouped by state.
+- **Drawing:** one path a class plus two meshes; 635 KB of SVG at 720 px, drawn in the browser (not page bytes); about 45 ms a drawing in Node; the full width sweep 17 seconds. The page reads back the island and `geo.js` to the same rows and the same drawing (tested).
+- **Recommendation:** national, as variant B: the cartographer's derive script writes the county file with a class column under Rule 14.9's breaks (the sidecar `kind: "derived"`, `derived_from` the ACS file, `derivation` the breaks), the map reads the class, the table groups by state, and the CSV export carries every county's value, margin and class. DR-232's order is not needed. A drawing that must read the value (variant A) needs about 9,800 bytes more than the share and fails `--strict` as measured.
+- **S83's dots (R3-3):** `K.parts.map_dots` draws every dot from the county counts and the recorded seed into one path of zero-length round strokes, so the page carries no element a dot and no dot positions: the island carries one number a county (the geoids come back from `geo.js`). Carrying each county's dot count (a small integer, from the derive script) in place of its employee count keeps the island near variant B's; carrying the employee counts costs about variant A's 13 KB.
 
 ## Routine calls
 
