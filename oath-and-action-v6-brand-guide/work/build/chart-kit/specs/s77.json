@@ -12,14 +12,14 @@
  "title": "Under the federal SNAP rule, a state has at most 30 days from an application to a decision, and at most seven days for a household with very little income or cash.",
  "measure_line": "Steps from a SNAP application to a decision, with the longest time the federal rule allows for each, 7 CFR 273.2 as in force November 9, 2026, United States; the times are the rule’s limits, and the chart measures no household’s wait",
  "notes": [
-  "SNAP, the Supplemental Nutrition Assistance Program, helps households buy food. States run it within these federal rules; a state may move faster, and some miss the limits.",
+  "SNAP, the Supplemental Nutrition Assistance Program, helps households buy food. States run it within these federal rules, and a state may move faster.",
   "The rule gives the household at least 10 days to send proof. It sets no day for the interview, which a state may hold by phone or, in some cases, waive.",
   "The state still interviews a household on the expedited branch within the seven days. The state may postpone some proof to get benefits out; that proof comes due by the second or third month of benefits.",
   "The rule gives expedited service to three kinds of household: one with under $150 in monthly gross income and no more than $100 in cash and other liquid resources; a destitute migrant or seasonal farmworker household with no more than $100 in such resources; and one whose monthly gross income and liquid resources together fall short of its monthly rent or mortgage and utilities. The chart calls them households with very little income or cash."
  ],
  "credit": "Chart: Oath & Action",
  "illustrative": false,
- "alt": "Four steps in order, each a box with who acts and the time the rule allows: the household files an application, taken the same day; an interview; the household sends proof, with at least 10 days to do it; and the state’s decision, within 30 days of filing. A branch after filing leads to expedited service, an interview and benefits within 7 days, for a household with very little income or cash, with postponed proof due later.",
+ "alt": "Four steps in order, each a box with the time the rule allows and who acts: the household files an application, taken the same day; an interview; the household sends proof, with at least 10 days to do it; and the state’s decision, within 30 days of filing. A branch after filing leads to expedited service, an interview and benefits within 7 days, for a household with very little income or cash, with postponed proof due later.",
  "chart_notes": [
   "The main path is in the text’s ink, and the expedited branch is gray."
  ],
@@ -49,17 +49,18 @@
  },
  "labels": {
   "limits": {
-   "1": "taken the same day",
-   "2": "no day set in the rule",
-   "3": "at least 10 days to send it",
-   "4": "within 30 days of filing, the rule’s limit",
-   "5": "interview and benefits within 7 days of filing, the rule’s limit"
+   "1": "Taken the same day",
+   "2": "No day set in the rule",
+   "3": "At least 10 days to send it",
+   "4": "Within 30 days of filing, the rule’s limit",
+   "5": "Interview and benefits within 7 days of filing, the rule’s limit"
   },
   "branch_label": "For a household with very little income or cash"
  },
  "notes_internal": [
   "Maker B, round 3. Data plan row 102 with change 3, rule 14.112. Draws the derived govinfo-snap-application-path (maker_b_round3_derive.py, from govinfo-snap-application-steps, P7-208): the steps in reading order, each with its next step named, as R3-6 asks of a journey map's table.",
   "Data lead ruling (a): no named mark, the steps and their limits; (b): the path in the subject ink (box edges and arrows), the expedited branch in the context ink, named; each step's time printed as the rule's limit; no red. Ruling (d) and the sign-off's condition on rows 86 and 102: the grade line and the measure line print the date of the rule, and the measure line says the times are limits and waits are not measured.",
-  "Figures checked by maker_b_round3_derive.py --figures (check S77): the limits as the file holds them (same day, none for the interview, at least 10 days, 30 and 7 calendar days) against the title, the alt, note 2 and labels.limits; the rule in force November 9, 2026; the expedited interview inside the 7 days and the postponed proof due by the second or third month of benefits (7 CFR 273.2(i)(3)(iii) and (i)(4)(iii)(A), the research lead’s reading of November 13, 2026, relayed by the main session), in note 3, the alt and the branch row’s next step."
+  "Figures checked by maker_b_round3_derive.py --figures (check S77): the limits as the file holds them (same day, none for the interview, at least 10 days, 30 and 7 calendar days) against the title, the alt, note 2 and labels.limits; the rule in force November 9, 2026; the expedited interview inside the 7 days and the postponed proof due by the second or third month of benefits (7 CFR 273.2(i)(3)(iii) and (i)(4)(iii)(A), the research lead’s reading of November 13, 2026, relayed by the main session), in note 3, the alt and the branch row’s next step.",
+  "Review fix pass: each step's limit prints on its own line under the step's name, in the text's ink at the label size, and who acts follows in the tick size (B-S3, the data lead's ruling); note 1 drops “and some miss the limits”, which the file does not source (BC-S13); the title's figures hold to their units with no-break spaces (BC-S12)."
  ]
 }

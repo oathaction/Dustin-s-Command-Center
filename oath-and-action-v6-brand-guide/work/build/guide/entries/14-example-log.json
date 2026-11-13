@@ -574,21 +574,21 @@
    "source": "s64.json"
   },
   {
-   "example": "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, 16.0 million ended for a procedural reason, more than twice the 6.9 million found ineligible.",
+   "example": "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, states ended 16.0 million for a procedural reason, more than twice the 6.9 million they found ineligible.",
    "domain": "D04",
    "states": [],
    "rule": "14.93",
    "source": "s65.json"
   },
   {
-   "example": "A federal agency makes a rule in five steps the law sets, and Congress and the President can strike the rule down or a court can set it aside once it is final.",
+   "example": "A federal agency makes a rule in five steps the law sets, and once it is final, Congress and the President or a court can undo it.",
    "domain": "D05",
    "states": [],
    "rule": "14.96",
    "source": "s66.json"
   },
   {
-   "example": "A state ban on ranked-choice voting reaches city elections in 18 states, Ohio’s ban lets home-rule cities adopt it at the cost of state local government funds, and elsewhere the answer turns on state home-rule law.",
+   "example": "A state ban on ranked-choice voting reaches city elections in 18 states and partly in Ohio, and elsewhere the answer turns on state home-rule law.",
    "domain": "D02",
    "states": [
     "OH",
@@ -619,21 +619,21 @@
    "source": "s70.json"
   },
   {
-   "example": "The eleven routes a reform can take run from a city ordinance to a constitutional amendment, and 38 reforms list a federal statute, more than any other route, though most bills need 60 senators to end debate.",
+   "example": "The eleven routes a reform can take run from a city ordinance to a constitutional amendment, and 38 reforms list a federal statute, more than any other route.",
    "domain": "all",
    "states": [],
    "rule": "14.101",
    "source": "s71.json"
   },
   {
-   "example": "The bill that ended the shutdown passed the Senate 60 to 40 on November 10, 2025, with seven Democrats and one independent joining 52 Republicans, and the House 222 to 209 two days later.",
+   "example": "The bill that ended the shutdown passed the Senate 60 to 40 on November 10, 2025, and the House 222 to 209 two days later.",
    "domain": "D04",
    "states": [],
    "rule": "14.102",
    "source": "s72.json"
   },
   {
-   "example": "The Harris Victory Fund sent $899.4 million to 53 committees in the 2024 cycle, and the Trump National Committee JFC sent $273.8 million to two.",
+   "example": "The Harris Victory Fund sent $899.4 million to other committees in the 2024 cycle, and the Trump National Committee JFC sent $273.8 million.",
    "domain": "D03",
    "states": [],
    "rule": "14.104",
@@ -647,21 +647,21 @@
    "source": "s74.json"
   },
   {
-   "example": "Of 10 House bills whose titles name pharmacy benefit managers, H.R. 6609 and H.R. 6610 shared the most backers, 34 members.",
+   "example": "Of 10 House bills whose titles name pharmacy benefit managers, H.R. 6609 and H.R. 6610 shared the most backers, 34 members.",
    "domain": "D06",
    "states": [],
    "rule": "14.106",
    "source": "s75.json"
   },
   {
-   "example": "Individuals gave 2024 House campaigns $1,384.1 million, more than any other source and 61 percent of all they took in.",
+   "example": "Individuals gave 2024 House campaigns $1,384.1 million, more than any other source and 61 percent of all they took in.",
    "domain": "D03",
    "states": [],
    "rule": "14.110",
    "source": "s76.json"
   },
   {
-   "example": "Under the federal SNAP rule, a state has at most 30 days from an application to a decision, and at most seven days for a household with very little income or cash.",
+   "example": "Under the federal SNAP rule, a state has at most 30 days from an application to a decision, and at most seven days for a household with very little income or cash.",
    "domain": "D04",
    "states": [],
    "rule": "14.112",

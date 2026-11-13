@@ -161,7 +161,16 @@
   .oac-ev-k { forced-color-adjust: none; background: CanvasText; color: Canvas; }
   /* AX S3 (round 2 fix pass): a total (fc: 'total') takes the ground with a 2 px outline, apart from every step's ink */
   .oac-svg .oac-fc-total.oac-fc-total:not(.oac-t) { fill: Canvas; stroke: CanvasText; stroke-width: 2px; }
+  /* AX-S1 (round 3 fix pass): a map's merged fill takes no edge, so S83's county outlines never draw in the dots' ink and
+     S81's classes show no county lines; the coast and state lines are map_mesh's, in their own inks */
+  .oac-svg .oac-fc-region.oac-fc-region:not(.oac-t) { stroke: none; }
+  /* S72's "did not vote": GrayText with no edge, apart from "no", the only CanvasText outline */
+  .oac-svg .oac-fc-muted.oac-fc-muted:not(.oac-t) { fill: GrayText; stroke: none; }
+  /* S74's authority cell: a second CanvasText edge inside the first, drawn for forced colors only */
+  .oac-svg .oac-fc-forced.oac-fc-forced { visibility: visible; stroke: CanvasText; }
 }
+/* a mark drawn for forced colors only (fc: 'forced') is hidden in normal colors */
+.oac-svg .oac-fc-forced { visibility: hidden; }
 /* Print (D3-100): a figure taller than a page may break, but never inside its title block, its drawing, its source block or
    a table row; the kit opens every table before print */
 @media print {

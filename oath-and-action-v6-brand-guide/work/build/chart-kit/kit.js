@@ -514,6 +514,10 @@
     // AX S3 (round 2 fix pass): fc: 'total' gives a total or a subtotal (a waterfall's) its own paint in forced colors, the
     // ground with a 2 px CanvasText outline, so it never takes a step's ink
     if (o.fc === 'total') c.push('oac-fc-total');
+    // AX-S1 (round 3 fix pass): 'region', a map's merged fill, takes no edge in forced colors (map_mesh draws the lines);
+    // 'muted', a light fill with no edge that must stay apart from an outline (S72's "did not vote"), takes GrayText with
+    // no edge; 'forced', a mark drawn for forced colors only (S74's authority cell's second edge), hidden otherwise
+    if (o.fc === 'region' || o.fc === 'muted' || o.fc === 'forced') c.push('oac-fc-' + o.fc);
     return c.join(' ') || undefined;
   }
   function data_of(o, base) {

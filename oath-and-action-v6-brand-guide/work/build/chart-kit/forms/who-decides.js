@@ -3,10 +3,10 @@
  * (federal, regional, state, local, private). One node style for every body, a subject-ink edge with the text's ink
  * inside, the name in bold and any words in parentheses under it. Lines of authority (one body setting or approving
  * another's rules) run in the context ink and end in Rule 15.5's open diamond; they take no sign and close no loop (R3-6).
- * Each column takes the width its names need (A-S5): every column starts at 118 px and the width left over goes, a few
- * pixels at a time, to the column whose widening shortens the bands most, so a long name stops wrapping to five lines
- * beside an empty column; what no column can use is shared evenly. Narrower than five columns of 118 px, the bands run
- * down the page, each body a row under its level's name, and the lines of authority run in a lane at the left.
+ * Columns keep one width and the levels' order; each band names the level over each of its stacks, and a stack takes
+ * the next column too where that column holds no body in its band and the wider box saves a line (A-S5). Narrower
+ * than five columns of 118 px, the bands run down the page, each body a row under its level's name, and the lines of
+ * authority run in a lane at the left.
  * encode: who (text), level (category), changes (boolean: can change the rules), key (the body's own key, for links).
  * labels: levels ([values], the columns' order), level_words ({value: words}), bands ({true: words, false: words}),
  * authority ([{from: key, to: key}]), order ([keys]: the order bodies stack in a column; a body whose line leaves for
@@ -40,56 +40,45 @@
         if (!(k in memo)) { var nm = split(r); memo[k] = K.parts.node_size(c, nm[0], { max: w, min: w, lines: 8, pad: pad, sub: nm[1] || undefined, sub_lines: 4, weight: 600, roles: role }); }
         return memo[k];
       };
-      // each column's width (A-S5): 118 px each, then the rest a step at a time to the column that shortens the bands most
-      var ws = levels.map(function () { return cw; });
-      var band_h = function (v, w2) {
-        // a name that cannot fit its column costs more than any height, each one alone, so the step that fits one counts
-        var hs = levels.map(function () { return 0; }), ns = levels.map(function () { return 0; }), miss = 0;
-        c.rows.forEach(function (r) { if (!!r[ec] !== v) return; var i = col(r), s = size_of(r, w2[i]); if (!s) miss++; hs[i] += (s ? s.h : 0) + (ns[i]++ ? 22 : 0); });
-        return Math.max.apply(null, hs) + 10000 * miss;
+      // a stack is a band's bodies at one level; it may take the next column too where that column holds no body in its
+      // band and the wider box saves a line (A-S5), so a long name stops wrapping beside an empty cell
+      var span_w = function (k) { return k * cw + (k - 1) * cg; };
+      var stacks = function (v) {
+        var rows = band(v), used = levels.map(function (lv, i) { return rows.some(function (r) { return col(r) === i; }); });
+        return levels.map(function (lv, i) {
+          var rs = rows.filter(function (r) { return col(r) === i; });
+          if (!rs.length) return null;
+          var k = 1;
+          if (i + 1 < levels.length && !used[i + 1]) {
+            var h1 = rs.reduce(function (s, r) { var z = size_of(r, span_w(1)); return s + (z ? z.h : 1e4); }, 0);
+            var h2 = rs.reduce(function (s, r) { var z = size_of(r, span_w(2)); return s + (z ? z.h : 1e4); }, 0);
+            if (h2 < h1) k = 2;
+          }
+          return { i: i, rows: rs, w: span_w(k) };
+        }).filter(Boolean);
       };
-      // the bands' heights, and every box's own, so a name stops wrapping where the room is there
-      var cost = function (w2) { var all = 0; c.rows.forEach(function (r) { var s = size_of(r, w2[col(r)]); all += s ? s.h : 0; }); return band_h(true, w2) + band_h(false, w2) + all; };
-      var share = function () {
-        var avail = W - cg * (levels.length - 1), base = 118, step = 4;
-        ws = levels.map(function () { return base; });
-        var left = avail - base * levels.length, now = cost(ws);
-        while (left >= step) {
-          var best = -1, bd = 0, bgain = 0;
-          levels.forEach(function (v, i) {
-            // the least widening of this column, up to what is left, that shortens the bands
-            for (var d = step; d <= left; d += step) {
-              var w2 = ws.slice(); w2[i] += d;
-              var g = now - cost(w2);
-              if (g > 0) { if (best < 0 || g / d > bgain / bd) { best = i; bd = d; bgain = g; } break; }
-            }
-          });
-          if (best < 0) break;
-          ws[best] += bd; left -= bd; now -= bgain;
-        }
-        ws = ws.map(function (w) { return Math.floor((w + left / levels.length) * 100) / 100; });
-      };
-      // one size for every name: the label size where every name fits its column, else the tick size
-      var fits = function () { return c.rows.every(function (r) { return !!size_of(r, ws[col(r)]); }); };
-      if (wide) { share(); if (!fits()) { role = ['tick']; share(); if (!fits()) wide = false; } }
+      // one size for every name: the label size where every name fits its box, else the tick size
+      var fits = function () { return [true, false].every(function (v) { return stacks(v).every(function (st) { return st.rows.every(function (r) { return !!size_of(r, st.w); }); }); }); };
+      if (wide && !fits()) { role = ['tick']; if (!fits()) wide = false; }
       var heading = function (x, yb, words, max) { return c.text(x, yb, words, { role: 'label', weight: 700, max: max }); };
       if (wide) {
-        // column heads, then each band under its heading, set in the first column's width so a line of authority clears it
-        var cx = function (i) { var x = 0; for (var j = 0; j < i; j++) x += ws[j] + cg; return x; };
-        var hb = 0;
-        levels.forEach(function (v, i) { hb = Math.max(hb, c.text(cx(i), tick * 0.95, lw[v] || v, { role: 'tick', weight: 600, fill: 'secondary', max: ws[i] }).bottom); });
-        y = hb + 14;
+        // each band under its heading (set in the first column's width, so a line of authority clears it); in the band,
+        // each stack under its level's name, the columns in the levels' order, so position still carries the level
+        var cx = function (i) { return i * (cw + cg); };
         [true, false].forEach(function (v, bi) {
-          var rows = band(v);
-          if (!rows.length) return;
-          var hd = heading(0, y + size * 0.93, bands[String(v)] || String(v), bi ? ws[0] : W);
-          var top = hd.bottom + 10, stack = levels.map(function () { return top; });
-          rows.forEach(function (r) {
-            var i = col(r), s = size_of(r, ws[i]), h = s ? s.h : 60;
-            node(r, cx(i), stack[i], ws[i], h);
-            stack[i] += h + 22;
+          var sts = stacks(v);
+          if (!sts.length) return;
+          var hd = heading(0, y + size * 0.93, bands[String(v)] || String(v), bi ? cw : W), bottom = hd.bottom;
+          sts.forEach(function (st) {
+            var lv = levels[st.i], yy = c.text(cx(st.i), hd.bottom + 8 + tick * 0.95, lw[lv] || lv, { role: 'tick', weight: 600, fill: 'secondary', max: st.w }).bottom + 5;
+            st.rows.forEach(function (r) {
+              var s = size_of(r, st.w), h = s ? s.h : 60;
+              node(r, cx(st.i), yy, st.w, h);
+              yy += h + 22;
+            });
+            bottom = Math.max(bottom, yy - 22);
           });
-          y = Math.max.apply(null, stack) - 22 + (bi ? 0 : 28);
+          y = bottom + (bi ? 0 : 28);
         });
       } else {
         c.arrange('phone');

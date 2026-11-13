@@ -1,5 +1,6 @@
 /* Journey map (coverage plan 3.13, core; S77). A person's path through a public service, step by step: each step a box
- * with its name, who acts and the time the rule allows, joined in order by arrows; a branch some people take leaves the
+ * with its name, then the time the rule allows on a line of its own in the text's ink at the label size, so the limits
+ * read first (the data lead's B-S3), then who acts in the tick size, joined in order by arrows; a branch some people take leaves the
  * step it starts from. At a desk the path reads across with the branch under the step it leaves; on a phone the path
  * reads down, and the branch's link runs down the right edge to its box after the last step (labels.across_from px,
  * default 600). Inks (the data lead's round 3 ruling (b)): the path's boxes edged and its arrows in the subject ink; the
@@ -7,8 +8,8 @@
  * encode: step (text), path (category: labels.main marks a step on the path, any other value a branch), key (id: the
  * step's order or key), who (text, optional), limit (text, optional: the rule's time limit).
  * labels: main (default "main"), branch_from (the key of the step a branch leaves; default the first step), sub ('{who}'
- * and '{limit}' words under each step's name; default '{who}: {limit}'), limits ({key: the limit in words, in place of
- * the limit column}), names ({key: printed name}), across_from (px), branch_label (words over the branch's link).
+ * words under each step's limit; default '{who}'), limits ({key: the limit in words, in place of the limit column}),
+ * names ({key: printed name}), across_from (px), branch_label (words over the branch's link).
  * Maker B, round 3. */
 (function (K) {
   'use strict';
@@ -24,13 +25,27 @@
       var main = c.rows.filter(function (r) { return String(r[ep]) === mv; }), br = c.rows.filter(function (r) { return String(r[ep]) !== mv; });
       if (!main.length) { c.warn('journey-map: no step has path "' + mv + '"'); return; }
       var name = function (r) { var k = String(r[ek]); return names[k] !== undefined ? names[k] : r[es]; };
-      var sub = function (r) {
-        var k = String(r[ek]), lim = limits[k] !== undefined ? limits[k] : el ? r[el] : '';
-        return String(L.sub || '{who}: {limit}').split('{who}').join(ew ? r[ew] : '').split('{limit}').join(lim || '').replace(/^[.\s]+|[.\s]+$/g, '') + '.';
-      };
+      var lim = function (r) { var k = String(r[ek]), v = limits[k] !== undefined ? limits[k] : el ? r[el] : ''; return v ? String(v) : ''; };
+      var sub = function (r) { var w = String(L.sub || '{who}').split('{who}').join(ew ? r[ew] : '').replace(/^[.\s]+|[.\s]+$/g, ''); return w; };
       var from = L.branch_from === undefined ? String(main[0][ek]) : String(L.branch_from);
-      var opt = function (r, onpath) { return { fill: 'surface', stroke: onpath ? 'subject' : 'context', width: onpath ? 2 : 1.5, align: 'start', pad: [10, 8], named: onpath, sub: sub(r), sub_lines: 6, lines: 3, data: { key: String(r[ek]), field: es, value: r[es] } }; };
-      var sz = function (r, w, onpath) { return P.node_size(c, name(r), Object.assign(opt(r, onpath), { max: w, min: w })); };
+      // each box: its name (label, 700 on the path, 600 on a branch), the limit on its own line (label, 400, the text's
+      // ink), who acts (tick, 400, the secondary ink), inside a 10 by 8 px pad
+      var lb = c.size('label'), llh = Math.round(lb * 1.25), tlh = Math.round(tk * 1.25), PX = 10, PY = 8;
+      var parts = function (r, w, onpath) {
+        var aw = w - 2 * PX, n = c.wrap(name(r), 'label', aw, onpath ? 700 : 600).length, l = lim(r) ? c.wrap(lim(r), 'label', aw, 400).length : 0, s = sub(r) ? c.wrap(sub(r), 'tick', aw, 400).length : 0;
+        return { n: n, l: l, s: s, h: Math.ceil(2 * PY + n * llh + (l ? 4 + l * llh : 0) + (s ? 4 + s * tlh : 0)) };
+      };
+      var sz = function (r, w, onpath) { return { w: w, h: parts(r, w, onpath).h }; };
+      var draw_box = function (b) {
+        var r = b.r, aw = b.w - 2 * PX, x = b.x + PX, pt = parts(r, b.w, b.on);
+        c.rect(b.x, b.y, b.w, b.h, { fill: 'surface', kind: 'node', data: { key: String(r[ek]), field: es, value: r[es] } });
+        c.rect(b.x + 0.5, b.y + 0.5, b.w - 1, b.h - 1, { stroke: b.on ? 'subject' : 'context', width: b.on ? 2 : 1.5, mark: false });
+        var t = c.text(x, b.y + PY + 0.864 * lb, name(r), { role: 'label', weight: b.on ? 700 : 600, max: aw, leading: llh, fill: 'label' });
+        var yb = b.y + PY + pt.n * llh;
+        if (lim(r)) { c.text(x, yb + 4 + 0.864 * lb, lim(r), { role: 'label', weight: 400, max: aw, leading: llh, fill: 'label' }); yb += 4 + pt.l * llh; }
+        if (sub(r)) c.text(x, yb + 4 + 0.864 * tk, sub(r), { role: 'tick', weight: 400, max: aw, leading: tlh });
+        return t;
+      };
       var boxes = {}, gap = across ? 30 : 26, y = 0, bottom = 0;
       if (across) {
         // across: equal boxes on one row, the branch under the step it leaves
@@ -61,7 +76,7 @@
       }
       Object.keys(boxes).forEach(function (k) {
         var b = boxes[k];
-        if (!P.node(c, b, name(b.r), opt(b.r, b.on))) c.warn('journey-map: the words do not fit the box for ' + name(b.r) + ' at ' + W + ' px');
+        draw_box(b);
         bottom = Math.max(bottom, b.y + b.h);
       });
       c.height(bottom + 2);

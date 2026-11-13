@@ -406,9 +406,12 @@ async function captures(items, o) {
                   if (pr === 'font-family') v = v.replace(/"/g, "'");
                   dst[i].setAttribute(pr, v);
                 }
+                if (/\boac-fc-forced\b/.test(src[i].getAttribute('class') || '')) dst[i].setAttribute('data-oa-fc-forced', '');
                 dst[i].removeAttribute('class');
               }
               ex.removeAttribute('class');
+              // AX-S1 (round 3 fix pass): a mark drawn for forced colors only (fc 'forced') leaves the standalone file
+              ex.querySelectorAll('[data-oa-fc-forced]').forEach(n => n.remove());
               // a standalone file names itself: the spec's title and alt as the SVG's title and desc
               const NS = 'http://www.w3.org/2000/svg';
               if (!ex.querySelector(':scope > desc') && alt) { const d = document.createElementNS(NS, 'desc'); d.textContent = alt; ex.insertBefore(d, ex.firstChild); }

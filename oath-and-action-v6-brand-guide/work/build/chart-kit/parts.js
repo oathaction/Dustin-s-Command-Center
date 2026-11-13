@@ -22,7 +22,7 @@
         if (e.pattern) { c.pattern(e.pattern, e.stroke || 'subject'); c.rect(cx, top, sw, sw, { pattern: e.pattern, mark: false }); c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { stroke: e.stroke || 'subject', mark: false }); }
         else if (!e.fill && e.stroke) { c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { fill: e.open ? 'surface' : 'none', mark: false }); c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { stroke: e.stroke, dash: e.dash, mark: false }); }
         else {
-          c.rect(cx, top, sw, sw, { fill: e.fill, mark: false });
+          c.rect(cx, top, sw, sw, { fill: e.fill, fc: e.fc, mark: false });
           // RB-G6 (round 2 fix pass): a swatch for a band with edges takes the same 1 px edge, inset, in e.edge's ink
           if (e.edge) c.rect(cx + 0.5, top + 0.5, sw - 1, sw - 1, { stroke: e.edge === true ? 'context' : e.edge, width: 1, mark: false });
         }
@@ -982,9 +982,11 @@
       var bx = K.parts.subs_box(subs);
       c.path(d, { fill: it.pattern ? undefined : (it.fill || 'land'), pattern: it.pattern, stroke: o.stroke, width: o.width, data: it.data, job: it.job, fc: it.fc, pts: subs, closed: true, kind: 'region', mark: it.data ? undefined : false }, it.data ? bx : undefined);
     });
+    // AX-S1 (round 3 fix pass): a merged fill holds every shape of its step, so in forced colors it takes no edge (fc
+    // 'region'), and the lines come from map_mesh in their own inks; an item's own fc wins
     order.forEach(function (gk) {
       var g = groups[gk];
-      c.path(g.d, { fill: g.it.pattern ? undefined : (g.it.fill || 'land'), pattern: g.it.pattern, stroke: o.stroke, width: o.width, job: g.it.job, fc: g.it.fc, pts: g.subs, closed: true, kind: 'region', mark: false });
+      c.path(g.d, { fill: g.it.pattern ? undefined : (g.it.fill || 'land'), pattern: g.it.pattern, stroke: o.stroke, width: o.width, job: g.it.job, fc: g.it.fc || (o.stroke ? undefined : 'region'), pts: g.subs, closed: true, kind: 'region', mark: false });
     });
     return { missing: missing };
   };

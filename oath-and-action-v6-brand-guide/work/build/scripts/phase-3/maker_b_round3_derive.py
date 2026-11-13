@@ -366,7 +366,8 @@ def figures():
     want('S77', sp['title'], 'at most 30 days from an application to a decision, and at most seven days for a household with very little income or cash', 'title')
     want('S77', t, 'at least 10 days', 'proof')
     lim = sp['labels']['limits']
-    same('S77', (lim['4'], lim['5'], lim['3'], lim['1']), ('within 30 days of filing, the rule’s limit', 'interview and benefits within 7 days of filing, the rule’s limit', 'at least 10 days to send it', 'taken the same day'), 'step words against the limits')
+    same('S77', (lim['4'], lim['5'], lim['3'], lim['1']), ('Within 30 days of filing, the rule’s limit', 'Interview and benefits within 7 days of filing, the rule’s limit', 'At least 10 days to send it', 'Taken the same day'), 'step words against the limits')
+    same('S77', 'miss the limits' in t, False, 'no claim on measured waits (BC-S13)')
     want('S77', sp['grade_line'], 'November 9, 2026', 'in force')
     same('S77', st['5']['next_step'], 'Postponed proof, due by the second or third month of benefits', 'the branch goes on (273.2(i)(4)(iii)(A))')
     want('S77', t, 'interviews a household on the expedited branch within the seven days', 'the expedited interview (273.2(i)(3)(iii))')
