@@ -397,6 +397,7 @@ November 13, 2026, round 3's review fix pass, under `work/handoffs/phase-3/20261
 - 05:08. **S73's title (BC-M1), read on the build of all seven committees.** Maker B's draft, "Kamala D. Harris’s three joint fundraising committees sent $955.9 million to 54 other committees in the 2024 cycle, and Donald J. Trump’s four sent $679.8 million to 56." (28 words), holds by my script on `fec-jfc-transfers-2024-by-node` (line 22 rows: $955,939,029.74 to 54 distinct recipients from three funds; $679,818,943.47 to 56 from four). Read from the left and the right it gives each side the same two facts in the same frame, and its comparison of reach holds across every fund the rule finds (the data lead's condition). I keep it as my title and leave it to the data lead's reading from both sides. The container restarted at about 05:07; my files survived and were committed.
 - 05:15. **Maker A's second pass done (D3-669):** four changes in S67, S70 and entry 14.96, logged under "Words for maker A, second pass"; S67 and S70 pass the kit, and maker A's figure check passes 44 of 44. Maker B and the cartographer have not reported.
 - 05:20. **The data lead's three word items on maker A's fields done:** S70's date (already out at 05:14), S72's House panel head ("House roll call 285, November 12, 2025", through a typography pair), and S68's source line set to the research lead's `snapshot_once` variant. S68 and S72 pass the kit; maker A's figure check 44 of 44.
+- 05:38. **Maker B's second pass done (D3-669), S73's title written (BC-M1):** four changes and the title's no-break spaces in S73, S76 and S77, logged under "Words for maker B, second pass"; three specs pass the kit; maker B's figure check 0 faults. S73's title goes to the data lead for its reading from both sides.
 - 04:47 to 04:57. Rules generator, chapter build, strict build (`guide1.html`, exit 0, 0 warnings) and captures at 1440, 1024, 390 and 360 px; see "Tested, review fix pass". **My own items are done; waiting on the makers to report.**
 
 ### Words for maker A, review fix pass (handed 04:50 UTC; maker A applies until it reports finished)
@@ -459,6 +460,21 @@ S72 rebuilt: PASS, 0 faults; its four SVG exports print "House roll call 285, No
 
 To read when you apply them: S73's notes and table words after BC-M1's redraw (B-S2's split joins it), S76's notes 2 and 3 with ST-S2's figures, S65's source line (ST-S11), entry 14.104 after BC-M1, S74's diagonal key (BC-S14). Entry 14.109's B-S5 change ("as on a flow map (Rule 14.113), or with senders on one side and receivers on the other, as a network diagram sets them (Rule 14.104)") read at 04:44 and kept.
 
+### Words for maker B, second pass (D3-669), 05:33 to 05:38 UTC
+
+The main session told me maker B had reported finished, at about 05:32 by my clock. I read every word maker B changed in this pass, by `git diff` from `7447f9be` and `tools/dump.py`, with the lint: S65's title, note 1 and source line; S73 whole, on all seven committees; S74's diagonal key, axes and chart note; S75's title, notes and chart note (no-break spaces); S76's notes, alt and band names; S77's title, measure line, note 1, source line, alt and limit words; entries 14.104, 14.105, 14.109, 14.110 and 14.112; sketch 14.94's words. My handed rows are in, but the interim S73 title, written for the old drawing. Four changes in S73, S76 and S77, plus the title's no-break spaces, written straight in, no mark or ink key touched:
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| S73 | title | Kamala D. Harris’s three joint fundraising committees sent $955.9 million to 54 other committees in the 2024 cycle, and Donald J. Trump’s four sent $679.8 million to 56. | In the 2024 cycle, Kamala D. Harris’s three joint fundraising committees sent $955.9 million to 54 other committees, and Donald J. Trump’s four sent $679.8 million to 56. | BC-M1 and D3-1330, my title: the period first, then the same two facts for each side in one frame. By my script on `fec-jfc-transfers-2024-all-committees` (line 22 rows): $955,939,029.74 from three funds to 54 distinct committees; $679,818,943.47 from four funds to 56. Its comparison of reach holds across all seven funds. A no-break space holds each middle initial to its surname. For the data lead's reading from the left and the right |
+| S73 | notes.3 | Drawn here are transfers, line 22 of each committee’s reports, … | The chart draws transfers, line 22 of each committee’s reports, … | W02: the inverted sentence named no actor |
+| S77 | alt | … an interview and benefits within 7 days, … | … an interview and benefits within seven days, … | H06 in an alt's sentence, as the title and note 3 write it |
+| S76 | notes.2 | …, and draws the difference in or out. | …, and draws the difference, the net, in or out. | The bands are named "Transfers in, net" and "Transfers to the candidates’ other committees, net"; the note now ties the label's word to the plain sentence that explains it (AX-S8's "net") |
+
+Read and kept: S65's title (the data lead's words) and note 1's last sentence (my words, the CMS sidecars' sources); S73's notes 1 to 4, alt, chart note, node and table words, with the "download" sentences left as they stand (D3-1321); S74's "Within one region" and the chart note on the diagonal; S75's no-break spaces; S76's notes 1 and 2 (the data lead's figures) and alt; S77's limits as labels in figures (H06 lets labels keep figures); entry 14.104's rule and why (BC-M1's rule in words a builder can follow), 14.105's diagonal sentence, 14.109 (B-S5), 14.110 (my Sankey and node words), 14.112's limit line; sketch 14.94's labels.
+
+Checks: `tools/apply.py` (each phrase once in its field and in the file, only that field changed); `oa-chart.mjs build s73 s76 s77`: 3 PASS, 0 faults, three check files (S73 13,457 bytes with its frame, S76 7,570, S77 7,636); `maker_b_round3_derive.py --figures`: 0 faults (it reads the title's phrases with a no-break space as a space). Looked at by eye: S73's title at 1440 and 390 px on Newsprint, "J. Trump’s" and "D. Harris’s" held together.
+
 ### Words for the cartographer, review fix pass (handed 04:50 UTC; the cartographer applies until it reports finished)
 
 | File | Field | Words now | New words | Why |
@@ -503,7 +519,8 @@ By the data lead's script (Q3): Arkansas's gap to Texas, 5.1 points against 3.55
 - D3-xxx | S65's added note gives the example and the silence on eligibility only as the CMS sidecars' sources word them (42 CFR 435.916(a)(3)(iii); 89 FR 22800 and 22781) | BC-S9, with the research lead's finding that BC's "most often" and "some were still eligible" have no source
 - D3-xxx | S67's and S70's measure lines, and S67's table caption, drop the law's date, which the grade line holds, as call 9 does for S66, S68, S71 and S77 | The data lead's routine call (measure lines drop the date) reaches every round 3 spec that prints a law's date; S67's re-read dates stay, since only the measure line carries them
 - D3-xxx | Entry 14.96 says a branch column starts "level with the step it leaves or enters" | "From the step … down" read as a direction of travel
-- D3-xxx | S73's title stands as maker B drafted it on all seven committees, checked by script and read from both sides, for the data lead's reading | BC-M1 and D3-1330: the comparison of reach holds across every fund the rule finds
+- D3-xxx | S73's title reads "In the 2024 cycle, Kamala D. Harris’s three joint fundraising committees sent $955.9 million to 54 other committees, and Donald J. Trump’s four sent $679.8 million to 56." | BC-M1 and D3-1330: the same two facts for each side, and the comparison of reach holds across all seven funds by script; the data lead reads it from both sides
+- D3-xxx | A no-break space holds a middle initial to its surname in S73's title | "Donald J. / Trump’s" broke across lines at 1440 px
 
 ### Requests, review fix pass
 
