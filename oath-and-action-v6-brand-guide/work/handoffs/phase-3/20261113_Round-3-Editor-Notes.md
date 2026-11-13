@@ -431,6 +431,16 @@ Read and kept: S66's title (my words, 29 words) and alt; S67's title (the data l
 
 Checks: `tools/apply.py` (each old phrase once in its field and in the file, only that field changed, by parse); `oa-chart.mjs build s67 s70`: 2 PASS, 0 faults, 0 warnings, two check files (S67 12,965 bytes with its frame, S70 10,703); `maker_a_round3_derive.py --figures`: 44 checks, 0 failed.
 
+**The data lead's three word items on maker A's fields (its "Sign-off, review fix pass", 05:17 UTC), at the main session's word, 05:16 to 05:18 UTC:**
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| S70 | measure_line | (done above, 05:14) | | The data lead's second item; call 9's rule reaches S70 |
+| S72 | typography.replace (a pair added) | the House panel head printed "House roll call 285, 2025, November 12, 2025" | "House roll call 285, November 12, 2025" | The year printed twice: the head fills "{roll}, {date}" and the record's vote name ends ", 2025". The pair changes printed words only; the frozen file keeps the Clerk's name (D3-519's pattern). The Senate's head, "Senate vote 618, 119th Congress, 1st session, November 10, 2025", names no year twice and stays |
+| S68 | source line | Source: … decision makers, as of October 15, 2026, United States. Snapshot of October 15, 2026. Roles as the atlas states them. | Waits on a variant from the research lead (request below) | The kit prints a source line only as the sidecar's line or one of its variants (Rule 13.6), and `v7-pathway-electric-decision-makers` is the research lead's file |
+
+S72 rebuilt: PASS, 0 faults; its four SVG exports print "House roll call 285, November 12, 2025"; looked at by eye at 390 px on Newsprint. `maker_a_round3_derive.py --figures`: 44 of 44.
+
 ### Words for maker B, review fix pass (handed 04:50 UTC; maker B applies until it reports finished)
 
 | File | Field | Words now | New words | Why |
@@ -495,6 +505,8 @@ By the data lead's script (Q3): Arkansas's gap to Texas, 5.1 points against 3.55
 - D3-xxx | S73's title stands as maker B drafted it on all seven committees, checked by script and read from both sides, for the data lead's reading | BC-M1 and D3-1330: the comparison of reach holds across every fund the rule finds
 
 ### Requests, review fix pass
+
+- **To the research lead, through the main session (05:18 UTC): a source variant for S68.** In `v7-pathway-electric-decision-makers.meta.json`, a `source_line_variants` entry, for example `snapshot_once`, reading "Source: Oath & Action’s systems atlas, Who Do They Answer To?, everyday answer “Electric and utility bills”, decision makers, snapshot of October 15, 2026, United States. Roles as the atlas states them." It is S74's form (RB3-R3, D3-1305), with the date once. When it lands I set S68's `source_line` to it, word for word, and rebuild S68.
 
 - **To the data lead:** sign-off of R-S1 (Rule 14.6, rule 14-006.json and its rows) and of AX-S7's gloss and ST-S10's definition in Rule 14.9 (14-009.json). Every case your R-S1 ruling lists is in the rule or a row.
 - **To the main session:** call 9 changes a string maker A's figure check reads (`maker_a_round3_derive.py` line 211 reads "November 12, 2026" in S66's `measure_line`); my row for S66 says so. S68's source line prints October 15, 2026 twice and stays, as one of D3-1308's 21 lines (D3-1327).
