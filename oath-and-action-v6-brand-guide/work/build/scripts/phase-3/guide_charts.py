@@ -216,7 +216,8 @@ def kit_bytes(page):
 def gates(weights, charts, fonts_file_bytes, present, warn):
     """The Phase 3 weight gates on a weighed page. Returns (stop message or None, the projection record)."""
     ch = {n: v["bytes"] for n, v in weights["chapters"].items()}
-    kit = weights["parts"].get("chart kit", 0)
+    # R3-2: the page weighs the map geometry apart from the renderer; inside chapter 14's stop they count together
+    kit = weights["parts"].get("chart kit", 0) + weights["parts"].get("map geometry", 0)
     for n in ("13", "15"):
         if n in ch and ch[n] > CEILING[n]:
             warn(f"chapter {n}", f"weighs {ch[n] / MB:.3f} MB, over its Phase 3 ceiling of {CEILING[n] / MB:.2f} MB (proposal section 3)")
@@ -264,7 +265,7 @@ def gates(weights, charts, fonts_file_bytes, present, warn):
         if parts14["rules_and_opener"] > RULES_ALLOWANCE:
             warn("chapter 14", f"rules 14.1 to 14.14 with the opener weigh {parts14['rules_and_opener']:,} bytes, over their {RULES_ALLOWANCE:,} "
                                "(0.20 MB and the 12,288 bytes call 4 moved to them)")
-    geo = (KIT_SIZES or {}).get("geo", 0) if kit else 0
+    geo = weights["parts"].get("map geometry") or ((KIT_SIZES or {}).get("geo", 0) if kit else 0)
     if geo:
         rec["map_geometry"] = {"bytes": geo, "allowance": GEOMETRY_ALLOWANCE, "room": GEOMETRY_ALLOWANCE - geo}
         if geo > GEOMETRY_ALLOWANCE:

@@ -6,8 +6,8 @@ Reads frozen files in work/build/data/ and writes one derived table with its sid
 
 - govinfo-snap-application-path: the steps of 7 CFR 273.2 in the order a screen reader takes them, each with the step
   that follows it named (contract R3-6: a journey map's table lists its steps in reading order with each link named),
-  from govinfo-snap-application-steps (P7-208). The main path's steps run in their order; the branch follows them and
-  names the step it leaves; the last step of each says the path ends.
+  from govinfo-snap-application-steps (P7-208). The main path's steps run in their order and the last says the path
+  ends; the branch follows them, names the step it leaves, and names its own next step, the postponed proof (273.2(i)).
 
 --check writes nothing and fails when a written file differs from what the script computes now. --figures writes
 nothing and checks every figure in the titles, notes, alts, chart notes and labels of specs S65 and S73 to S77 against
@@ -92,11 +92,14 @@ def snap_path():
         if i + 1 < len(main):
             nxt = main[i + 1]['step']
             if i == 0:
-                nxt += '; or ' + br['step'].lower() + ', for ' + cond
+                nxt += '; or ' + br['step'].lower() + ', with its own interview inside 7 days, for ' + cond
         else:
             nxt = 'None: the path ends with benefits or a denial notice'
         out.append(dict(r, next_step=nxt, path_words='Every application'))
-    out.append(dict(br, next_step='None: the branch ends with benefits', path_words='Branch after “' + main[0]['step'] + '”, for ' + cond))
+    # 7 CFR 273.2(i)(3)(iii) and (i)(4)(iii)(A), as the research lead read them November 13, 2026: an expedited household is
+    # still interviewed within the 7 days, and the proof the state postponed comes due by the second or third month of
+    # benefits ("the household must reapply and satisfy all verification requirements which were postponed")
+    out.append(dict(br, next_step='Postponed proof, due by the second or third month of benefits', path_words='Branch after “' + main[0]['step'] + '”, for ' + cond))
     cols = ['order', 'step', 'path', 'path_words', 'who_acts', 'time_limit', 'next_step', 'what_happens', 'legal_basis', 'source_words']
     side = {
         'file': 'govinfo-snap-application-path.csv',
@@ -130,7 +133,7 @@ def snap_path():
         'domain_note': m.get('domain_note', ''),
         'states': [],
         'derived_from': [src + '.csv'],
-        'derivation': 'The rows of ' + src + ' in reading order: the main path by its order, then the branch. next_step names the main step that follows each step (the first also names the branch, with the condition the branch summary opens with); the last step of the path and of the branch says it ends. path_words puts the path column in words. No other value changes.',
+        'derivation': 'The rows of ' + src + ' in reading order: the main path by its order, then the branch. next_step names the main step that follows each step (the first also names the branch, with the condition the branch summary opens with); the last step of the path says it ends, and the branch’s next step is the postponed proof, due by the second or third month of benefits, with its interview inside the 7 days (7 CFR 273.2(i)(3)(iii) and (i)(4)(iii)(A), as the research lead read them November 13, 2026). path_words puts the path column in words. No other value changes.',
     }
     write('govinfo-snap-application-path', cols, out, side)
 
@@ -284,8 +287,11 @@ def figures():
     want('S77', sp['title'], 'at most 30 days from an application to a decision, and at most 7 for a household with very little income or cash', 'title')
     want('S77', t, 'at least 10 days', 'proof')
     lim = sp['labels']['limits']
-    same('S77', (lim['4'], lim['5'], lim['3'], lim['1']), ('within 30 days of filing, the rule’s limit', 'within 7 days of filing, the rule’s limit', 'at least 10 days to send it', 'taken the same day'), 'step words against the limits')
+    same('S77', (lim['4'], lim['5'], lim['3'], lim['1']), ('within 30 days of filing, the rule’s limit', 'interview and benefits within 7 days of filing, the rule’s limit', 'at least 10 days to send it', 'taken the same day'), 'step words against the limits')
     want('S77', sp['grade_line'], 'November 9, 2026', 'in force')
+    same('S77', st['5']['next_step'], 'Postponed proof, due by the second or third month of benefits', 'the branch goes on (273.2(i)(4)(iii)(A))')
+    want('S77', t, 'interviewed within the 7 days', 'the expedited interview (273.2(i)(3)(iii))')
+    want('S77', t, 'second or third month of benefits', 'postponed proof')
 
     for f in bad:
         print('FAULT ' + f)

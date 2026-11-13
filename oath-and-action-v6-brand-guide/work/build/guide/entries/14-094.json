@@ -1,0 +1,35 @@
+{
+ "id": "14.94",
+ "title": "Use a cohort chart to follow groups that started at different times.",
+ "rule": [
+  "Use a cohort chart, a reference form, to track groups that began at different times, such as the people who enrolled in a program each year, on one clock that starts when each group began. Draw one line a group, the years since its start across and the share still enrolled up from 100 percent, and name each line at its end by its start year. Keep to four groups, or set the one the title names in the text’s ink and the rest in gray (Rule 14.8)."
+ ],
+ "use_when": "A specialist asks whether people who started later stay longer or leave sooner than those who started earlier.",
+ "use_instead": [
+  {
+   "when": "One group and the time until an event",
+   "rule": "14.95"
+  },
+  {
+   "when": "One measure across calendar years",
+   "rule": "14.30"
+  }
+ ],
+ "why": {
+  "text": [
+   "Lining groups up by the time since they started sets each against the others at the same stage. The clock that starts at each group’s own start needs explaining, so the form suits reports and specialists more than a quick read."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-94-sketch",
+ "tier": "reference",
+ "tokens": [],
+ "related": [
+  "14.8",
+  "14.10"
+ ],
+ "builders": "No kit form: draw a cohort chart with one line a group in the subject ink or the context ink, labeled at its end, on a shared start-time axis.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "Four lines, one for each year’s starting group, falling from 100 percent as the years since the start pass, with the latest group in the text’s ink."
+}

@@ -13,6 +13,7 @@ Rulings (a) to (g) below are final for drawing. Makers, the cartographer, the ed
 - **(e) S16** may move its outlines, bubble centers and word placement, and nothing else.
 - **(f) Change 9's classes** confirmed from the file: 36, 33, 85 and 259 seats by margin, 22 unopposed, 14 decided another way.
 - **(g) Rule 01.9 and DR-229 hold after round 3; nothing moves.** Row 109 passes D3-689's test.
+- **After RL-3 (second run).** S73 draws line 22 transfers alone for both committees: $899.4 million to 53 committees and $273.8 million to two. The refunds go apart in the table and the operating expenses into a note. Widths stay; the title changes. RL-1, RL-2 and DL-E1 are signed off, with S81 national as the engineer's variant B.
 
 ## Rulings
 
@@ -143,6 +144,46 @@ Seats decided another way, each drawn by its printed margin with the ring mark a
 
 **DR-229 under D3-689's test.** Round 3 forms that draw election data: S67 (the coverage plan writes its use as "Can my city adopt ranked-choice voting?"), S82 ("Every House seat as a square", with House results as its data) and S80. The coverage plan writes S80's use as "House districts", with the NYT3 election maps as its reference; a House district exists to elect a member, and the form's lesson in this round is the pair with S82, one results file drawn two ways (change 9). It passes, and it stays. The network (S73) and the Sankey (S76) draw campaign money, which counts under money, lobbying and influence, as the plan has it. The roll-call grid (S72) draws votes in Congress. No other round 3 form draws election data.
 
+## Rulings, after RL-3
+
+November 13, 2026. Inputs: the research lead's RL-1 to RL-3 (`work/handoffs/phase-3/20261113_Round-3-Research-Notes.md`, "Requests landed") and the three sidecars. Every figure read by script: the frozen CSVs and, for RL-3, the research lead's 57 itemized files (`.../round-3/research/dl/rl3-fec/sbr-*.json`, every payment from each joint fundraising committee to each committee in the file), summed by line.
+
+### RL-3a. S73 draws line 22 alone, for both committees (maker B; the editor reads)
+
+- **The measure.** Transfers to other committees, line 22 of each committee's reports, where a joint fundraising committee reports the shares it passes on to the committees it raises for. One measure, read the same way for both (change 8, Rule 01.11). By script: the Harris Victory Fund transferred $899,402,049.70 to 53 committees (Harris for President $528,730,999.70; the Democratic National Committee $189,315,000.00; 51 state party committees, DC's included, $181,356,050.00). The Trump National Committee JFC transferred $273,762,296.73 to two (Donald J. Trump for President 2024 $246,821,872.35 in 13 payments; the Republican National Committee $26,940,424.38 in 6).
+- **Not drawn: line 28C.** The Harris Victory Fund refunded $80,000 to the Progressive Turnout Project and $1,000 to Operating Engineers Local 478's PAC. A refund returns a committee's own contribution; it is no share of what the fund raised. The table lists both after the drawn rows, set apart, as "Refund of its own contribution (line 28C), not drawn".
+- **Not drawn: line 21B.** The Harris Victory Fund paid three of the committees drawn $27,141,702.01 in operating expenditures: the campaign $11,993,565.82 (7 payments), the DNC $15,146,635.19 (32) and Kentucky's Democratic party $1,501.00 (1). A payment for costs is a different measure from a share passed on, so it stays out of the widths and a note names it.
+- **The Trump committee, read the same way.** Every itemized payment from the Trump National Committee JFC to its two committees is line 22: 19 payments, no line 21B and no line 28C. Not read for either side: line 21B payments to committees outside the file. The research lead's one page of the Trump committee's full Schedule B (100 of 6,673 rows) holds 99 line 21B payments to vendors, none to a committee. S73 draws no committee outside the file, and the note speaks only of the committees drawn, so nothing waits on it (RL-4, below, if the research lead has time).
+- **Title changes.** "$899.5 million to 55 committees" becomes "$899.4 million to 53 committees". For example: "The Harris Victory Fund sent $899.4 million to 53 committees in the 2024 cycle, and the Trump National Committee JFC sent $273.8 million to two." The check in `notes_internal` sums line 22 by script.
+- **Widths do not change.** One linear unit for both, $4 million a pixel, with the same key. The campaign, national party and state party links keep their dollars. The "{n} other committees" node and its hairline leave the drawing, and the chart note's hairline sentence goes with them.
+- **Measure line:** "Dollars each 2024 presidential nominee’s joint fundraising committee transferred to other committees (line 22 of its reports), 2023 to 2024 election cycle, not adjusted for inflation; a link’s width is its dollars, on one scale for both".
+- **The note,** in place of note 3's second sentence (the editor may tighten it): "Drawn here are transfers, line 22 of each committee’s reports, where a joint fundraising committee reports the shares it passes on. On the same reports, the Harris Victory Fund also paid three of the committees drawn $27.1 million for operating expenses (line 21B), $12.0 million of it to the campaign and $15.1 million to the Democratic National Committee, and refunded $81,000 to two committees that had given to it (line 28C), which the table lists. The Trump National Committee JFC’s payments to its two committees were all transfers." Note 3's first sentence on DC stays.
+- **Source line:** the variant `transfers_and_refunds`, which names lines 22 and 28C, the two lines the table prints. The note names line 21B and "the same reports" for its figures.
+- **Table.** Names from `recipient_name_2024_election`, as the nodes already give them. The column "Report lines (Schedule B)" prints `amount_lines`, the line each row's dollars sum, since `schedule_b_lines` lists 21B beside rows whose dollars leave it out. Drawn rows first, the two refunds after them, set apart. The CSV keeps every column, line 21B included.
+- **Alt text:** "$899.5 million" and "$81,000 to two other committees" go; the Harris figures become $528.7 million, $189.3 million and $181.4 million to 51 state party committees, $899.4 million in all.
+
+Reason: change 8 asks for dollars transferred, one measure that every recipient sums the same way. Line 22 is that measure for both committees; a refund and a payment for costs are other measures, and the note keeps them in view.
+
+### RL-1, signed off (cartographer)
+
+The nation's row is in the file: `US`, $80,734 with a 90 percent margin of $166, variant `with_united_states`. It sits $734 above the $80,000 break, inside my $3,000 test, so S81's breaks stand. Recounted with the nation left out of the counties: 371, 1,138, 1,049 and 585 counties; 1,707 of 3,143 with an interval across a break, 182 across two. Unchanged. S81 prints "United States $80,734 (±$166)" beside the map, never as a region, and no count or note includes the `US` row. The source line takes `with_united_states`.
+
+### RL-2, signed off (cartographer)
+
+- **Flags.** `emp_noise_flag` and `emp_noise_words`: G 2,735, H 378, J 29, from the Bureau's 2023 county file, whose counts equal the API's in all 3,142 rows. S83's table, grouped by state, gives each state's counties, their paid employees, and how many of its counties are flagged H and J. The CSV gives every county with its flag in the Bureau's words. The dots draw every county's count as published, flags and all; noise of 5 percent or more moves the largest J county, Los Alamos County, New Mexico (17,888), by less than one 10,000 dot.
+- **The statewide gap.** 7,679,940 paid employees: the 50 statewide records (7,679,935), employers with no fixed county, and 5 in Hawaii's and Texas's state totals. They draw no dots, since a dot needs a county.
+- **S83's note** (the editor may tighten it): "The Bureau adds a little noise to each count to protect employers. It changed 378 counties’ counts by 2 to under 5 percent and 29 by 5 percent or more; the download gives each county’s flag. The dots draw the 132.2 million paid employees counted in counties. Another 7.7 million in the nation’s total work for employers the Bureau places in a state but in no county, and they draw no dots."
+- **Source line:** the variant `with_noise_flags`. The nation's 139,831,742 comes from the sidecar's national row; the note gives it only as the difference.
+
+### DL-E1, signed off: S81 national, as variant B (engineer, cartographer)
+
+I read the engineer's measure under "Contracts", R3-3, at 03:05 UTC: the table of four variants, the geometry line and the map parts it rests on (`map_shapes` with `merge`, `map_mesh`, `table.group`, `map_dots`). I did not rerun `dle1.mjs`. Variant B fits: about 14,200 bytes with its frame against the 14,495 share, and the `counties` layer brings `geo.js` to 133,117 of its 250,000 bytes, shared with S83 at no further cost. DR-249 applies as national (D3-1090), and DR-232's order is not needed. Conditions, none of which adds bytes:
+
+1. **The class column follows ruling (c):** four classes, under $50,000, $50,000 to under $65,000, $65,000 to under $80,000, and $80,000 or more, from the published median, plus one value for no estimate (De Baca County, New Mexico). The engineer measured five classes; four plus no estimate is the same width of column. The derive script's sidecar names the breaks in `derivation` and Rule 14.9's note figures (1,707 and 182 of 3,143) in its notes, and the research lead's data check reads it.
+2. **The grouped table prints values, never names,** for each state's lowest and highest county: a name would single a county out, which Rule 14.9 allows only past its margin. Columns: state, counties, lowest county estimate, highest county estimate, and the count in each of the four classes. `min_name` and `max_name` stay unused on S81. The note says every county's estimate and margin is in the download.
+3. **The CSV export carries every county's value, margin and class,** with the nation's row apart and labeled.
+4. **S83:** the island carries dot counts, not employee counts, as the engineer proposes, one column for each unit ruling (b) sets (10,000 from 480 px up, 50,000 below), each equal to round(count / unit) from the published count, written by the cartographer's derive script with a sidecar. If one column with a unit chosen by width costs less, the engineer may draw that instead, so long as each width's dots equal that rounding. The note's count of counties with no dot comes from `map_dots`'s `skipped` at each unit.
+
 ## Routine calls
 
 - D3-xxx | S78 draws fixed broadband (B28002 line 007) with S2801's margins, source variant `fixed_with_s2801_margin` | V7 I015 names slow or missing service, and the any-type line's 5.9-point spread allows no more than two honest classes
@@ -158,6 +199,12 @@ Seats decided another way, each drawn by its printed margin with the ring mark a
 - D3-xxx | S83 draws one dot per 10,000 employees from 480 px and per 50,000 below, `phone: "differs"` | At phone width 13,040 dots would cover half the land
 - D3-xxx | Row 109's district map keeps election data under D3-689's test | Its unit is the House district and its lesson is the pair with row 111
 - D3-xxx | S73 prints each campaign under its 2024 name, from the sidecar's `principal_name_in_2024` | The file names Harris's campaign as of 2024 and Trump's as the FEC lists it today; Rule 01.11 reads both the same way
+- D3-xxx | S73 draws line 22 transfers alone for both committees; the two line 28C refunds sit apart in the table and the line 21B operating expenses go in a note | Change 8's one measure read the same way for both (Rule 01.11); a refund and a payment for costs are other measures
+- D3-xxx | S73's title gives $899.4 million to 53 committees; widths, unit and key unchanged | Line 22 by script from the itemized files; only the $81,000 of refunds leave the drawing
+- D3-xxx | S73's source line takes the variant `transfers_and_refunds`; its table prints `amount_lines` in place of `schedule_b_lines` | The table prints lines 22 and 28C, and each row's dollars should name the one line they sum
+- D3-xxx | RL-1 signed off: S81 sets the nation apart at $80,734 (±$166); breaks stand | The nation sits $734 from the top break
+- D3-xxx | RL-2 signed off: S83's table counts H and J counties by state, the CSV carries every flag, and the note names the 7.7 million in no county | The Bureau's flags and statewide records, read from its county file
+- D3-xxx | DL-E1 signed off: S81 national as variant B, four classes plus no estimate, grouped table with values and no county names | About 14,200 bytes against 14,495; Rule 14.9 names no county inside its margin
 
 ## Requests
 
@@ -165,6 +212,15 @@ Seats decided another way, each drawn by its printed margin with the ring mark a
 - **RL-1.** Add the national row to `census-acs5-county-median-household-income` (B19013, 5-year 2020 to 2024, `us:1`, with its margin) and say so in the sidecar, so S81 sets the nation apart beside the map.
 - **RL-2.** `census-cbp-county-employment`: read the meaning of the noise range code the API returned (0 for every county) from the Bureau's variable list and write it into the qualification; the brief's condition marks flagged counties in the table, and none can be marked until the code is read. Trace the gap between the counties' 132,151,802 and the national 139,831,742 (likely the Bureau's statewide records, establishments with no fixed county) and write it into the sidecar so S83's note can name it.
 - **RL-3.** `fec-jfc-transfers-2024`: `recipient_name` gives Harris's campaign its 2024 name and Trump's its current one ("NEVER SURRENDER, INC.", C00828541). Please add a column with each recipient's name in the cycle, or say in the qualification that the names are as the FEC lists them today, so the two campaigns read alike in the file as on the chart.
+
+- **RL-4 (not blocking).** If time allows, read both joint fundraising committees' full line 21B lists for any payee with a committee ID outside the file, and say what you find in the sidecar. S73 draws no such committee, and its note speaks only of the committees drawn.
+- **RL-3a follow-up.** `fec-jfc-transfers-2024.meta.json`'s `universe_or_base` says "every committee it paid"; it holds every committee paid on line 22 or 28C. One phrase.
+
+### To maker B (S73, ruling RL-3a)
+- MB-R3-1. Draw line 22 alone; the "{n} other committees" node and the hairline sentence go; title, measure line, note, alt text, source variant and table as RL-3a sets them. The editor reads the words.
+
+### To the cartographer
+- C-R3-1. S81: DL-E1's conditions 1 to 3, and the nation from RL-1 beside the map. S83: RL-2's table and note, DL-E1's condition 4.
 
 ### To the main session
 - **For the open questions (Dustin).** S65: CMS's own sums for renewals due April 2023 to March 2024 give 22,914,537 ended (15,966,431 procedural, 69.7 percent of those ended). V7 I062 cites KFF's "more than 25 million disenrolled, 69 percent for procedural reasons". The share agrees; the count differs, most likely because KFF's tally runs past March 2024. The chart prints CMS's figures and period and corrects nothing in V7.

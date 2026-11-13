@@ -2628,14 +2628,17 @@ WEIGHT_BUDGET = {"01": 2.7, "02": 0.85, "03": 0.65, "04": 0.45, "05": 0.45, "06"
 # so its budget rises from 0.6 to 1.0 MB.
 WEIGHT_DEFAULT = 0.45          # chapters 13 to 16, 20 to 25, 27 and 28
 WEIGHT_FIXED = {"head and shell": 0.22, "sprites": 0.35, "appendix": 0.2, "front matter and part openers": 0.1,
-                "fonts": 0.5, "chart kit": 0.55}
+                "fonts": 0.5, "chart kit": 0.55, "map geometry": 0.25}
 # Phase 3 (round 0): head and shell rise from 0.20 to 0.22 MB, since tokens.css, inlined in the head, carries the palette
 # proposal's chart tokens (6.0.0-gate3.1, about 10 KB); the projection still holds the page under 15.5 MB.
 # Phase 3 (the proposal's section 3, DR-227): chapters 13, 14 and 15 take their ceilings from guide_charts.CEILING, where
 # chapter 14 with the chart kit is a hard stop; the chart kit weighs as its own part, allocated 0.22 MB inside chapter 14.
 # Board 1 apply (November 12, 2026): the chart kit's part rises from 0.22 to 0.55 MB. DR-238's stop of 2,803,941 bytes was
 # measured with the renderer grown to 97 forms (0.50 MB on board 1's pilot) beside the map geometry (45 KB today), all inside
-# chapter 14's hard stop; round 1's forms took the kit past 0.22 MB at 35 forms (0.25 MB), as that projection expects.   # Gate 2: six WOFF2 files, 255,920 bytes after the fix pass (CD-M1), about 342 KB as base64 (D2-1697)
+# chapter 14's hard stop; round 1's forms took the kit past 0.22 MB at 35 forms (0.25 MB), as that projection expects.
+# Round 3 (R3-2): the map geometry (geo.js, now the 2024 Census files) weighs as a part of its own, "map geometry", against
+# the 0.25 MB chapter 14's projection reserves for it (guide_charts.NOT_PLATES); "chart kit" is the renderer and its style.
+# Both still count inside chapter 14's hard stop (guide_charts.gates adds them back), and guide_charts warns past 0.25 MB.   # Gate 2: six WOFF2 files, 255,920 bytes after the fix pass (CD-M1), about 342 KB as base64 (D2-1697)
 
 
 class Sprites:
@@ -3092,7 +3095,10 @@ def weigh(page, sprite_bytes):
     # Phase 3: the chart kit's style (in the head) and script (before the closing script) weigh as their own part
     kb = guide_charts.kit_bytes(page)
     if kb:
-        parts["chart kit"] = kb
+        geo = (guide_charts.KIT_SIZES or {}).get("geo", 0)
+        parts["chart kit"] = kb - geo
+        if geo:
+            parts["map geometry"] = geo
         parts["head and shell"] -= sum(size(m.group(0)) for m in guide_charts.KIT_RE.finditer(page[:page.find("<body")]))
     marks = [(m.start(), m.group(1), m.group(2)) for m in re.finditer(r'<section class="(chapter|part|contents|appendix|cover|start)[^"]*" id="([^"]+)"', page)]
     end = page.find("</main>")
@@ -3115,6 +3121,8 @@ def weigh(page, sprite_bytes):
             R.warn(f"chapter {n}", f"weighs {b / MB:.2f} MB, over its budget of {budget / MB:.2f} MB; draw symbols from the sprite, show "
                                    f"contact sheets as images and keep photographs at the size shown")
     for k, b in parts.items():
+        if k == "map geometry":
+            continue   # guide_charts.gates() weighs it against its allowance and warns past it (R3-2)
         if b > WEIGHT_FIXED.get(k, 0) * MB:
             R.warn("page weight", f"{k} weighs {b / MB:.2f} MB, over its budget of {WEIGHT_FIXED.get(k, 0):.2f} MB")
     if total > WEIGHT_PAGE:

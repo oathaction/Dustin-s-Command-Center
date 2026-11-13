@@ -1,0 +1,34 @@
+{
+ "id": "14.106",
+ "title": "Use an arc diagram for links among items in a set order.",
+ "rule": [
+  "Set the items on one line in an order that means something, such as the date each was introduced, and join each linked pair with an arc above the line whose width is the pair’s count, in one linear unit with a key of widths. Draw the widest arcs first so narrow ones stay in view, name each item under the line, and set the pair the title names in the text’s ink with every other arc gray. On a phone, run the line down the left and bow the arcs to the right. Print every pair and its count in the table."
+ ],
+ "use_when": "The reader asks which items in a list share something, such as bills that drew the same backers, and the list has an order worth keeping.",
+ "use_instead": [
+  {
+   "when": "Many parts with many links among them",
+   "rule": "14.105"
+  },
+  {
+   "when": "Amounts sent from a few senders",
+   "rule": "14.104"
+  }
+ ],
+ "why": {
+  "text": [
+   "Keeping the items in their own order lets a reader see whether linked items sit close together or far apart. Arcs cross one another, so the form holds a few dozen links before the table must carry the detail."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S75",
+ "tier": "extended",
+ "tokens": [],
+ "related": [
+  "14.3",
+  "14.6"
+ ],
+ "builders": "Form arc-diagram: node work/build/chart-kit/oa-chart.mjs build s75; encode from, to and value; labels.order sets the line, labels.unit the px of width per unit, labels.named the pair in the subject ink, labels.split breaks “H.R. 950” over two lines; draws through K.parts.link with shape arc and K.parts.width_key.",
+ "correct": null,
+ "failure": null
+}

@@ -1,0 +1,35 @@
+{
+ "id": "14.111",
+ "title": "Use an alluvial chart only where the same people are counted at each time.",
+ "rule": [
+  "Use an alluvial chart, a reference form, to show how one group’s choices changed between two or three times, such as the plans the same people chose in two years of a panel survey: each time a column of stacked blocks, and bands between the columns as wide as the people who moved from one block to another. Draw it only from data that follow the same people; a survey that asks different people each time cannot show who moved."
+ ],
+ "use_when": "A specialist asks how the same people moved between choices from one time to the next.",
+ "use_instead": [
+  {
+   "when": "Totals at two times, from different people",
+   "rule": "14.20"
+  },
+  {
+   "when": "Money into one account and out of it",
+   "rule": "14.110"
+  }
+ ],
+ "why": {
+  "text": [
+   "Bands between columns show who stayed and who switched, which two separate totals cannot. The bands mean something only when each person is the same at both times."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-111-sketch",
+ "tier": "reference",
+ "tokens": [],
+ "related": [
+  "14.8",
+  "14.110"
+ ],
+ "builders": "No kit form: draw an alluvial chart with K.parts.flow_band between two stacked columns, bands in the context ink and the named band in the subject ink.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "Two columns of three stacked blocks, joined by gray bands as wide as the people who stayed or moved between them, with one band in the text’s ink."
+}

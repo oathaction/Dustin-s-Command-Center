@@ -1,0 +1,35 @@
+{
+ "id": "14.95",
+ "title": "Use a survival curve to show how long until an event happens.",
+ "rule": [
+  "Use a survival curve, a reference form, to show the share of a group that has not yet reached an event, such as a case still open or a person still enrolled, at each point after its start. Draw a step line from 100 percent that drops at each event, mark each person who left before the event with a small tick, and print the time at which half the group had reached it. Name the group, the start and the event in the measure line."
+ ],
+ "use_when": "A specialist asks how long cases or people last before something happens to them.",
+ "use_instead": [
+  {
+   "when": "Several groups by their start date",
+   "rule": "14.94"
+  },
+  {
+   "when": "Counts of people at fixed stages",
+   "rule": "14.93"
+  }
+ ],
+ "why": {
+  "text": [
+   "A step line keeps each drop at the moment it happened, so the curve shows when the event comes fastest. People whose outcome is not yet known stay in the count until they leave, which a plain share of those who reached the event would miss."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-95-sketch",
+ "tier": "reference",
+ "tokens": [],
+ "related": [
+  "14.11",
+  "14.36"
+ ],
+ "builders": "No kit form: draw a survival curve as a step line in the subject ink, with ticks for people who left before the event.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "A step line falling from 100 percent as time passes, with small ticks where people left before the event and a thin line where half the group had reached it."
+}

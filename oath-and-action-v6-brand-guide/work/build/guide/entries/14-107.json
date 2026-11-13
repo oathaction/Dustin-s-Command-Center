@@ -1,0 +1,34 @@
+{
+ "id": "14.107",
+ "title": "Use a chord diagram only for flows among a few groups, for specialists.",
+ "rule": [
+  "Use a chord diagram, a reference form, to show flows both ways among a few groups: each group an arc on a circle, sized by its total, and each flow a ribbon between two arcs, as wide at each end as the amount it carries from that side. Keep to five groups or fewer, name each arc outside the circle, and draw the ribbons gray, with the one the title names in the text’s ink."
+ ],
+ "use_when": "A specialist asks how much flows each way among a few groups, such as people moving among four regions.",
+ "use_instead": [
+  {
+   "when": "Flows from sources to uses in one direction",
+   "rule": "14.110"
+  },
+  {
+   "when": "Counts between many groups",
+   "rule": "14.105"
+  }
+ ],
+ "why": {
+  "text": [
+   "A circle shows every pair and both directions in one view, but ribbons that bend around it are hard to compare by width. A matrix or a Sankey gives the same amounts more exactly to a general reader."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-107-sketch",
+ "tier": "reference",
+ "tokens": [],
+ "related": [
+  "14.8"
+ ],
+ "builders": "No kit form: draw a chord diagram with ribbons in the context ink and the named ribbon in the subject ink.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "Four arcs around a circle, one for each group, joined by gray ribbons as wide as the flows between them, with one ribbon in the text’s ink."
+}

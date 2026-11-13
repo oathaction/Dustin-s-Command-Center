@@ -1,0 +1,38 @@
+{
+ "id": "14.93",
+ "title": "Use a funnel when people pass through stages and some leave at each.",
+ "rule": [
+  "Draw each stage as a bar from one left edge, each inside the one before, so every stage reads against the first by length, and print each stage’s count and its share of the first. Beside each bar, draw what the stage lost as a segment from its end to the end of the stage before, and name it under the segment. The loss the title names takes the text’s ink, and stages and other losses are gray (Rule 14.6). Set a group still waiting, decided neither way, apart below the stages, and keep the parts of a stage in the table."
+ ],
+ "use_when": "The reader asks how many people made it through each step of a process, and where the rest left.",
+ "use_instead": [
+  {
+   "when": "Steps of a process with the time each may take",
+   "rule": "14.112"
+  },
+  {
+   "when": "Parts of one whole with no order",
+   "rule": "14.46"
+  },
+  {
+   "when": "One group followed over time until an event",
+   "rule": "14.95"
+  }
+ ],
+ "why": {
+  "text": [
+   "A funnel puts the start and every stage on one scale, so a reader sees how many remain and where the largest loss came. Bars from one edge compare more exactly than the centered funnel shape, which makes the eye judge widths from the middle."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S65",
+ "tier": "extended",
+ "tokens": [],
+ "related": [
+  "14.4",
+  "14.6"
+ ],
+ "builders": "Form funnel: node work/build/chart-kit/oa-chart.mjs build s65; encode category, value, key and role (labels.stage marks a stage); labels.losses maps each stage to the loss before it, labels.apart sets a group aside below the stages, labels.named takes the loss the title names into the subject ink; stages take the light fill with the context edge.",
+ "correct": null,
+ "failure": null
+}

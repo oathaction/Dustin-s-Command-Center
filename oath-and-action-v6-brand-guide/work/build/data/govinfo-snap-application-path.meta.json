@@ -66,5 +66,5 @@
  "derived_from": [
   "govinfo-snap-application-steps.csv"
  ],
- "derivation": "The rows of govinfo-snap-application-steps in reading order: the main path by its order, then the branch. next_step names the main step that follows each step (the first also names the branch, with the condition the branch summary opens with); the last step of the path and of the branch says it ends. path_words puts the path column in words. No other value changes."
+ "derivation": "The rows of govinfo-snap-application-steps in reading order: the main path by its order, then the branch. next_step names the main step that follows each step (the first also names the branch, with the condition the branch summary opens with); the last step of the path says it ends, and the branch’s next step is the postponed proof, due by the second or third month of benefits, with its interview inside the 7 days (7 CFR 273.2(i)(3)(iii) and (i)(4)(iii)(A), as the research lead read them November 13, 2026). path_words puts the path column in words. No other value changes."
 }

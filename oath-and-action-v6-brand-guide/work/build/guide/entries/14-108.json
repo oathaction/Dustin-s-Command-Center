@@ -1,0 +1,35 @@
+{
+ "id": "14.108",
+ "title": "Use a multi-network only where the kinds of links are the story.",
+ "rule": [
+  "Use a multi-network, a reference form, to draw more than one kind of link among the same nodes, such as shared money and shared staff among a set of groups. Give each kind of link its own line style, solid or dashed, in one ink, name each style in a key, and keep to three kinds; past that, draw one panel for each kind with every node in the same place."
+ ],
+ "use_when": "A specialist asks how two or three kinds of ties overlap among the same people or groups.",
+ "use_instead": [
+  {
+   "when": "One kind of link with an amount",
+   "rule": "14.104"
+  },
+  {
+   "when": "Links counted between groups",
+   "rule": "14.105"
+  }
+ ],
+ "why": {
+  "text": [
+   "Line styles tell kinds apart in grayscale and for readers who see color differently, where a hue for each kind would fail. More than three kinds tangle, and panels with fixed places keep each kind readable."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "s-14-108-sketch",
+ "tier": "reference",
+ "tokens": [],
+ "related": [
+  "14.5",
+  "14.8"
+ ],
+ "builders": "No kit form: draw a multi-network with K.parts.node and K.parts.link, one dash a kind of link, in the context ink.",
+ "correct": null,
+ "failure": null,
+ "sketch_alt": "Five nodes joined by solid lines for one kind of tie and dashed lines for another, each kind named in a key."
+}

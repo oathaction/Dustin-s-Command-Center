@@ -1,0 +1,38 @@
+{
+ "id": "14.105",
+ "title": "Use an adjacency matrix when many parts link to many others.",
+ "rule": [
+  "Draw one row for each part a link starts from and one column for each part it reaches, in the same order, and shade each cell by its count on a sequential scale, with the count printed in it; leave an empty cell as the page inside a thin grid line. Group the parts with a gap between groups, number the columns and name the rows; on a phone, number the rows too and list the names under the grid. Give a class of links that differs in kind, such as lines of authority with no sign, an outline and a key entry of its own, never a step of the scale."
+ ],
+ "use_when": "The reader asks which parts of a system connect to which, and the links are too many for lines to stay readable.",
+ "use_instead": [
+  {
+   "when": "A few senders and the amounts they sent",
+   "rule": "14.104"
+  },
+  {
+   "when": "Links among items in a set order",
+   "rule": "14.106"
+  },
+  {
+   "when": "Values across two categories, with no links",
+   "rule": "14.129"
+  }
+ ],
+ "why": {
+  "text": [
+   "A grid never tangles, however many links it holds, and its rows and columns let a reader find any pair. It gives up the paths a network shows, so it suits counts between groups more than one route."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S74",
+ "tier": "extended",
+ "tokens": [],
+ "related": [
+  "14.5",
+  "13.9"
+ ],
+ "builders": "Form adjacency-matrix: node work/build/chart-kit/oa-chart.mjs build s74; encode from, to, value and special (the count in the class with no sign); labels.order sets the parts, labels.groups the gaps, labels.steps the scale with its fills (seq-1 takes the context edge), labels.special_label the outlined class.",
+ "correct": null,
+ "failure": null
+}
