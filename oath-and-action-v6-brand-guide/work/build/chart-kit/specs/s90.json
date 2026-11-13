@@ -104,7 +104,7 @@
         ],
         "figure": 6,
         "format": "dollars",
-        "words": "for each pupil went to current spending, the day-to-day cost of running schools, which leaves out adult education and other programs outside elementary and secondary schooling."
+        "words": "for each pupil went to current spending, the day-to-day cost of running schools, which leaves out construction and equipment, interest on debt, payments to other governments, adult education and community services."
       },
       {
         "rows": [
@@ -143,6 +143,7 @@
     "Source line: the sidecar's tables_named variant (ruling (c)).",
     "Shares in cents: 45.2341, 43.1987 and 11.5672 percent round to 45, 43 and 12, which sum to 100 (ruling (b)); 88 cents is 45 plus 43 (88.43 percent unrounded).",
     "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S90.",
-    "Editor's words (21:17 UTC) applied: the gloss of current spending (H02) and note 2."
+    "Editor's words (21:17 UTC) applied: the gloss of current spending (H02) and note 2.",
+    "Data lead MI-3 (21:25 UTC), with the research lead's reading of the Bureau's documentation (school24doc.docx and Appendix A of elsec24_sumtables.xlsx): current spending leaves out capital outlay (construction and equipment), debt service (interest on debt) and payments to other governments; the per-pupil figure also leaves out adult education and community services. The enrollment year is fall 2023 (Table 8's note mislabels it fall 2022; S90 cites Table 19 for it)."
   ]
 }

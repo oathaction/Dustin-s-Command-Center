@@ -1,0 +1,128 @@
+{
+  "kit": 1,
+  "id": "S95",
+  "form": "social-data-card",
+  "family": "infographics",
+  "tier": "core",
+  "dataset": "bjs-imprisonment-rate-by-state",
+  "where": {
+    "code": {
+      "not": [
+        "US",
+        "FED"
+      ]
+    }
+  },
+  "sort": [
+    {
+      "field": "rate_2023",
+      "order": "desc"
+    }
+  ],
+  "reader_question": "How many residents per 100,000 does each state hold in prison?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: counts the states report to the Bureau of Justice Statistics",
+  "title": "State imprisonment rates at the end of 2023 ran from 96 sentenced prisoners per 100,000 residents in Massachusetts to 652 in Mississippi.",
+  "measure_line": "Imprisonment rate: prisoners serving sentences of more than one year under each state’s authority, per 100,000 state residents, December 31, 2023, 50 states.",
+  "notes": [
+    "The card shows each state as a dot, ranked from the highest rate to the lowest, and names the two states the title names; the table below gives every state’s rate, as Rule 14.18’s dot plot does."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Dots for the 50 states’ imprisonment rates at the end of 2023, highest at the left, beside a dashed line for all states together at 318 per 100,000. Mississippi held the most, 652 per 100,000 residents, and Massachusetts the fewest, 96.",
+  "table": {
+    "caption": "Imprisonment rate by state, year-end 2023",
+    "columns": [
+      {
+        "field": "name",
+        "label": "State",
+        "format": "text",
+        "row_header": true,
+        "words": {
+          "State": "All states together"
+        },
+        "words_pass": true
+      },
+      {
+        "field": "rate_2023",
+        "label": "Prisoners per 100,000 residents",
+        "format": "integer"
+      },
+      {
+        "field": "footnote",
+        "label": "Reporting difference",
+        "format": "text",
+        "words": {
+          "b": "Prisons and jails form one system; includes jail populations",
+          "c": "Leaves out its own prisoners held in federal or other states’ prisons",
+          "d": "Includes a few sentences of one year or less",
+          "d,f": "Includes a few sentences of one year or less, and people serving 1 to 2.5 years in local jails",
+          "e": "Includes people waiting in county jail to move to a state prison",
+          "g": "Leaves out people in residential confinement"
+        },
+        "empty": "None"
+      }
+    ]
+  },
+  "chart_notes": [
+    "The dashed line marks all states together, 318 per 100,000. Open dots mark the six states whose prisons and jails form one system."
+  ],
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D05",
+  "states": [
+    "MS",
+    "MA"
+  ],
+  "encode": {
+    "of": "dot-plot",
+    "key": "code",
+    "label": "name",
+    "value": "rate_2023",
+    "status": "footnote"
+  },
+  "labels": {
+    "reference": "STATE",
+    "reference_label": "All states together: {value}",
+    "open": "b",
+    "key_open": "Prisons and jails form one system, so the rate includes jail populations",
+    "named": [
+      "MS",
+      "MA"
+    ],
+    "card_source": "Source and every state’s rate: Bureau of Justice Statistics, Prisoners in 2023, Table 7, year-end 2023. Chart: Oath & Action",
+    "card_inner": {
+      "label": "named",
+      "ranks": "across"
+    }
+  },
+  "formats": {
+    "value": "integer",
+    "tick": "integer"
+  },
+  "scale": {
+    "x": [
+      0,
+      700
+    ]
+  },
+  "card": {
+    "crops": [
+      [
+        1080,
+        1350
+      ],
+      [
+        1080,
+        1080
+      ]
+    ],
+    "post": "State imprisonment rates at the end of 2023 ran from 96 sentenced prisoners per 100,000 residents in Massachusetts to 652 in Mississippi. All states together held 318 per 100,000. The Bureau of Justice Statistics’ Prisoners in 2023, Table 7, gives every state’s rate."
+  },
+  "notes_internal": [
+    "Infographics maker, round 4. Data plan row 127, rule 14.141: S19's chart and finding redrawn as a social card at 1080 by 1350 and 1080 by 1080 (DR-268), from S19's frozen file (P7-003). Title, grade line, measure line, table and key words are S19's (data lead (a): the card keeps S19's title, finding and marks).",
+    "Inner form: dot-plot in its card mode (IM-E5, the data lead's five conditions): only Mississippi and Massachusetts named, in the subject ink; the 48 others as dots in rank order; the all-states line; S19's open dots and key.",
+    "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S95."
+  ]
+}

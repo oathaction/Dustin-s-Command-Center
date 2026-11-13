@@ -113,7 +113,7 @@ def s91():
     r = {x["order"]: x for x in rows("uscode-federal-trial-judges")}
     t = words(s)
     check(sid, "345 bankruptcy seats against the table's 316", int(r["2"]["seats"]) == 345 and int(r["2"]["seats_in_statute_table"]) == 316)
-    has(sid, t, "Outside the territories", "the territorial judges' exception")
+    has(sid, t, "except in Guam, the Northern Mariana Islands and the Virgin Islands", "the territorial judges' exception, the three territories named")
     has(sid, t, "full-time magistrate judges for eight", "the full-time magistrate term")
     check(sid, "677 district seats = 673 in the statute + 4 territorial", int(r["1"]["seats"]) == 677 and int(r["1"]["seats_in_statute_table"]) + int(r["1"]["seats_in_territorial_courts"]) == 677)
     check(sid, "a card field prints the seats column", any(f["field"] == "seats" for f in s["labels"]["fields"]))
@@ -155,7 +155,7 @@ def s93():
     cols = [c["field"] for c in s["table"]["columns"]]
     check(sid, "the table prints each part, its words as printed and what it tells", all(f in cols for f in ("part", "printed_text", "what_it_tells")), f"{cols}")
     order = [str(v) for v in s["sort"][0]["values"]]
-    check(sid, "the parts read top to bottom: the margin short title (row 11) before the U.S. Code note (row 10)", order.index("11") < order.index("10") and sorted(order, key=int) == sorted(r, key=int))
+    check(sid, "the parts read top to bottom: the citation beside the running head second, the margin short title (row 11) before the U.S. Code note (row 10)", order == ["1", "4", "2", "3", "7", "5", "6", "8", "9", "11", "10"])
     nums = s["table"]["columns"][0].get("words", {})
     check(sid, "the table's numbers match the drawing's: each part's place in that order", all(nums.get(k) == str(i + 1) for i, k in enumerate(order)))
     em = "—"

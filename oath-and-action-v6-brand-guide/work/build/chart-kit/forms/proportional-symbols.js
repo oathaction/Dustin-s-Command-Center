@@ -2,11 +2,14 @@
  * (the radius by the square root, the largest at the drawing's widest circle), so counts too far apart for a bar's length
  * still compare. At a desk the circles stand side by side on one line, each named under it with its count; on a phone they
  * stand one under another, named beside. The circle the title names takes the subject ink with its words inside where they
- * fit; the rest take the track ink with a 1 px context-ink edge (RF-1). Rows too small to draw at that scale print as counts
- * in words over the circles, set off by a hairline, never as circles. A key of nested circles says that area is the count.
+ * fit; the rest take the track ink with a 1 px context-ink edge (RF-1). A size key in S16's grammar follows the circles: an
+ * eyebrow title, circles at set counts side by side on one line, each count centered under its circle. Rows too small to draw
+ * at that scale print as counts in words in the key's band, never as circles: at a desk beside the key, its first line level
+ * with the key's title; on a phone under the key.
  * encode: category (text), value (number).
  * labels: names ({stored: printed}), named ([categories]), words_only ([categories] printed in words), word ("{v} {name}",
- * each such row), words ("{list}", the line they print in, the rows joined with "and"), key_steps ([counts]), key_title.
+ * each such row), words ("{list}", the line they print in, the rows joined with "and"), key_steps ([counts], in the order
+ * drawn), key_title.
  * formats: value. */
 (function (K) {
   'use strict';
@@ -40,12 +43,6 @@
         return isn(r) && inside(r, cx, cy, rad);
       };
       var name_w = function (r, max) { var ln = c.wrap(nm(r), 'label', max, wt(r)), w = 0; ln.forEach(function (s) { w = Math.max(w, c.measure(s, 'label', wt(r))); }); return { w: w, n: ln.length }; };
-      // the rows too small to draw, in words over the circles, a hairline under them
-      if (words.length) {
-        var wb = c.text(0, lab * 0.86, String(L.words || '{list}').split('{list}').join(joined), { role: 'label', weight: 400, max: W });
-        c.line(0, wb.bottom + 10, W, wb.bottom + 10, { stroke: 'gridline', width: c.t('line-hairline'), mark: false });
-        y = wb.bottom + 26;
-      }
       var R, bottom;
       if (!c.phone) {
         // each circle's room is its own width or its name's on up to three lines, whichever is wider
@@ -82,19 +79,22 @@
         });
         bottom = y - 12;
       }
-      // the key: nested circles on one line, each count beside its circle's top on a leader
-      var ks = (L.key_steps || []).slice().sort(function (a, b) { return b - a; });
-      if (ks.length) {
-        var ky = bottom + 26;
-        if (L.key_title) { var kt = c.text(0, ky + c.size('tick') * 0.86, L.key_title, { role: 'tick', weight: 600, max: W }); ky = kt.bottom + 10; }
-        var kr = Math.sqrt(ks[0] / maxv) * R, kb = ky + 2 * kr, kx = kr + 1;
-        ks.forEach(function (s) { var r = Math.sqrt(s / maxv) * R; c.circle(kx, kb - r, r, { stroke: 'context', width: 1, mark: false }); });
-        ks.forEach(function (s) {
-          var r = Math.sqrt(s / maxv) * R, ty = kb - 2 * r, lx = 2 * kr + 10;
-          c.line(kx, ty, lx, ty, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
-          c.text(lx + 4, ty + c.size('tick') * 0.35, fv(s), { role: 'tick', tnum: true });
-        });
-        bottom = kb;
+      // the key, as S16 draws its size key, then the rows too small to draw, in words beside it or under it
+      var ks = L.key_steps || [], ky = bottom + 28, kx = 0, kb = ky;
+      if (L.key_title) c.text(0, ky, L.key_title, { role: 'eyebrow', weight: 700, fill: 'secondary' });
+      var kmax = ks.length ? Math.sqrt(Math.max.apply(null, ks) / maxv) * R : 0;
+      kb = ky + 14 + 2 * kmax;
+      ks.forEach(function (st) {
+        var r = Math.sqrt(st / maxv) * R, lw = c.measure(fv(st), 'tick'), mid = kx + Math.max(r, lw / 2);
+        c.circle(mid, kb - r, r, { stroke: 'label', width: c.t('bubble-outline'), mark: false });
+        c.text(mid, kb + 16, fv(st), { role: 'tick', anchor: 'middle', tnum: true });
+        kx = mid + Math.max(r, lw / 2) + 14;
+      });
+      bottom = ks.length ? kb + 20 : bottom;
+      if (words.length) {
+        var wl = String(L.words || '{list}').split('{list}').join(joined), beside = !c.phone && W - kx - 18 >= 200;
+        var wb = c.text(beside ? kx + 18 : 0, beside ? ky : bottom + 18 + lab * 0.86, wl, { role: 'label', weight: 400, max: beside ? W - kx - 18 : W });
+        bottom = Math.max(bottom, wb.bottom);
       }
       c.key([{ fill: named.length ? 'subject' : 'track', direct: true }]);
       c.height(bottom + 6);

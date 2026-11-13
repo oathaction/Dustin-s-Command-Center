@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Design director (
 
 ## Status
 
+- 21:28 UTC. **Cards read:** S90, S91, S92 and S94 at twice size, beside S60, S66, S77 and S89. Requests DD-I10 to DD-I20 (3 Must, 8 Should), four to the engineer and three more to the editor. The infographics maker's running total is 7 Must and 13 Should. Waiting for S95 (the engineer's card mode) and both makers' fixes.
 - 21:22 UTC. **First read of the six drafts written:** maker A's S85 to S88 and the infographics maker's S89 and S93, read at twice size from my own builds at 1440, 390 and 320 px on Newsprint and Charcoal and in grayscale, beside round 3's S47, S66, S71 and S77. Requests below: maker A 4 Must and 7 Should; the infographics maker 4 Must and 5 Should; small requests to the data lead, the editor and the engineer. Next: S90, S91, S92 and S94 (built, read next), then S95 when the engineer's card mode lands, then the fixes.
 - 21:06 UTC. Started. Read my role file, `CLAUDE.md`, the master brief's sections 3, 6, 9 to 13, 18 and 19, the round 4 brief, the data lead's notes to 21:03, DR-266 to DR-270, both makers' notes and Rules 10.4 and 10.6.
 
@@ -49,6 +50,25 @@ Beside chapter 14's earlier forms: S89 shares S66's box grammar exactly (number 
 - **DD-I8, Should. The running head at 320 px.** The head breaks after its rule and sets "MAY 19, 2025" on the same line as "139 STAT. 55", so date and citation read as one phrase. At widths where the head will not hold one line, set "139 STAT. 55" on its own line, right-aligned, as the 390 px drawing does.
 - **DD-I9, Should, with the editor. Quotation marks in the redraw.** The short title section prints ‘‘Tools ... Act’’ with doubled single marks copied from the Government Publishing Office's typesetting. The drawing is a redraw in Inter (accepted by the data lead), and in Inter those marks read as a typing error. Set true double curly quotes and let the note say so beside the dash; the editor rules the words.
 
+**S90, by the numbers** (read 21:24 UTC, beside S60)
+- **DD-I10, Must. The table lines on one line per row.** Each framed box stretches to its row's tallest while its words stop where they stop, so the "Table" lines sit at three heights in each row (at a desk y 359, 428 and 428 in the first row, 613, 590 and 613 in the second) and the first box carries about 150 px of empty frame under "Table 1". Either pin each table line to its box's foot, so a row's three share one line (a column flex with the source line pushed down; the class is the engineer's), or take DD-I11, which removes the empty frames.
+- **DD-I11, Should, with the engineer (R4-3 sets the frames). Facts without boxes.** S60, the chapter's indicator row, separates its facts with a hairline and no box; S91's cards are boxed by ruling. S90 boxed as well reads as a second set of cards, and on a phone six framed boxes in a column read heavy. Set each fact under a hairline in the gridline ink, no frame, as S60 does: the panel then reads as facts, and S91 alone as cards.
+
+**S91, comparison cards** (read at a desk with three cards in a row)
+- **DD-I12, Must, with the engineer. Each field on one line across the cards.** The cards hold the same fields in the same order, but each field sits at a different height in each card: "Term" at y 411, 470 and 431 at a desk, "Seats" at 599, 580 and 677, "Number of seats set by" at 730, 625 and 722. A reader comparing one field across three cards has to hunt for it. Where cards sit side by side, each field takes one row shared across the cards (the card list as a grid whose rows each card's fields span, `grid-template-rows: subgrid`), so "Term" lies on one line in all three; stacked on a phone, each card keeps its own flow, as now. The class is the engineer's under R4-3.
+
+**S92, step-by-step** (read beside S66, S77 and S89)
+- **DD-I13, Should. The family's inks.** The optional steps' eyebrows ("Optional, when the need is urgent") and the actor lines ("Agency", "Requester and agency") are set in the text ink at body weight; S66, S77 and S89 set an eyebrow in the secondary ink at 600 weight and an actor in the secondary ink. Set them as the family does, so the step's own words (its title, what to do, its limit) carry the text ink.
+- **DD-I14, Should. One measure per step.** At a desk the step's words run to about 600 px, up to 84 characters a line, past the 60 to 75 the type rules set, while its limit line wraps at about 540 px. Cap every line in a step at one measure, about 38em, the notes' own.
+- **DD-I15, Should. The limit findable.** The law's limit is the figure a reader comes for, and it sits in a 14 px line between a 15 px description and a 13 px citation, in the same ink and weight as the description. Give it 8 px of space above and set its figure phrase in 600 weight; a field label in S91's style ("Time limit") would be the editor's word.
+
+**S94, calendar**
+- **DD-I16, Must. Consequence lines that wrap back under the chip.** Where a consequence runs past one line, its second line starts at the plate's left edge, under the black chip: "(26 U.S.C. 6654(a))" under January 15, "extended (26 U.S.C. 6651(a))" under April 15, at a desk and on the phone. Set chip and words as one row with the words in their own column, so a wrapped line starts under the words, not under the chip; or set the consequence on its own line under the chip.
+- **DD-I17, Should, words with the editor. The year's own marks in the list.** Seven filled Charcoal chips and nine outlined ones are the heaviest marks on the plate after the title, so the list's rhythm is set by labels rather than by dates. Use the year mark's squares instead: a 10 px filled or open square before "Consequence in law" or "No consequence stated" in 600 weight, the very mark the reader has just learned above. Give the year mark's key the same two squares beside the same words; today the key is a sentence with no mark beside it.
+- **DD-I18, Should. The year at the plate's size.** The year mark draws 256 px wide at every width. At a desk it fills a third of the column with two thirds empty beside it, April 15's three marks stack in a 24 px tower, and the list beneath runs twice its width. Draw it at the kit's drawing widths (the column's width at a desk), the day marks at 8 to 10 px, so the year reads at the plate's scale.
+- **DD-I19, Should. A list a reader can scan.** At a desk set the list as rows in S60's grammar: the date in a left column about 180 px wide, the events and consequences beside it, hairlines between. The plate loses about a third of its 2,700 px height and the dates become one scannable column.
+- **DD-I20, Should. Held phrases.** At 320 px "fiscal / 2028" breaks in the February 1 entry. Hold "fiscal 2028" (and every "fiscal YYYY") with `typography.hold`.
+
 ## Requests to the data lead
 
 - **S86's key and its "not drawn" sentence (DD-A5, DD-A6).** I ask maker A to use S16's side-by-side size key so chapter 14 keeps one key grammar, and to move the "not drawn" sentence into the key's band. Both touch ruling (b)'s words ("nested circles", "above or beside the circles"); neither changes a figure, ink or scale. Yes or no.
@@ -59,10 +79,16 @@ Beside chapter 14's earlier forms: S89 shares S66's box grammar exactly (number 
 - **S86.** The measure says "each circle’s area is in proportion to its count" and the key's title says "Circle area shows the count". One is enough; the key's title is the one a reader meets beside the circles.
 - **S89.** The branch box's eyebrow "Or, for an emergency" sits over its title "Or request an emergency declaration": "Or" twice in two lines.
 - **S93.** The page prints "119–12" with an en dash and the title, measure and source print "119-12". The page keeps its own mark; please rule what the plate's own words use, and the quotation marks in DD-I9.
+- **S90.** Fact 2's figure is "45 cents" (the states' share) while its words carry the local 43 cents and the federal 12 too, so it runs six lines at a desk against three for its neighbors and its figure names one of its three numbers. Consider a figure that names all three, or splitting it.
+- **S91.** The source line ends "the 677 district positions include the territorial courts’ 4." Reword so the figure reads as a count ("include four in the territorial courts").
+- **S94.** If DD-I17 lands, the key's words beside its two squares should be the list's own: "Consequence in law" and "No consequence stated".
 
 ## Requests to the engineer
 
-- **An orphan guard for drawn text, Should.** `c.text` with `max` wraps at word breaks with no guard against a one-word last line; the kit's HTML lines already carry `text-wrap: pretty`. A guard (when a text runs to two lines or more, pull the last line's break back one word if the last line holds one word) would clear S86's "scale.", S89's "limit" and "help", and future cases, without each maker setting breaks by hand.
+- **An orphan guard for drawn text, Should.** `c.text` with `max` wraps at word breaks with no guard against a one-word last line; the kit's measure and guide lines already carry `text-wrap: pretty`. A guard (when a text runs to two lines or more, pull the last line's break back one word if the last line holds one word) would clear S86's "scale.", S89's "limit" and "help", and future cases, without each maker setting breaks by hand.
+- **`text-wrap: pretty` on the card text and the source line, Should.** The R4-3 classes (`.oac-h-item` text in cards, facts, steps and dates) and `.oac-source` wrap without it: S92 ends two limit lines on a lone "limit" at 320 px, S94's key sentence ends on "none.", and S91's source line ends on "4." alone at a desk.
+- **A shared-row card grid for S91, Must for DD-I12.** A class on `.oac-h-cards` that lets each card's fields span rows shared across the cards (`grid-template-rows: subgrid` on each card, the field count from the spec), switched off where the cards stack.
+- **S90's facts, Should, for DD-I10 and DD-I11.** A facts variant with a hairline above each fact and no frame, as S60; or, if frames stay, each item a column flex with its source line pushed to the foot.
 
 ## Routine calls
 
@@ -72,6 +98,9 @@ Beside chapter 14's earlier forms: S89 shares S66's box grammar exactly (number 
 - D3-xxx | I ask for S86's circles largest first, not in the Census table's order | The title names the largest kind, and the table's grouping is never named on the drawing
 - D3-xxx | Requests that would move a placement a ruling names (S86's key and sentence, S93's order) go to the maker as Should and to the data lead for a yes | Placement is mine to ask for; the ruling's words are the data lead's
 - D3-xxx | S93's two-digit numerals stay in 20 px discs | At twice size "10" and "11" clear the disc's edge by about 3 px; ruling (b) sets 20 px
+- D3-xxx | S91's fields aligned across side-by-side cards is a Must | Comparing one field across the cards is the form's job; fields at three heights make the reader hunt
+- D3-xxx | S94's chips, its year mark's width and its list layout are Shoulds | Each reads correctly today; the changes are weight, scale and scanning, not errors
+- D3-xxx | S90, S92 and S94 are read against S60, S66, S77 and S89 for one family grammar (hairline-separated facts; eyebrow and actor in the secondary ink) | The chapter teaches by repetition; a form that renames the grammar teaches less
 
 ## Tested
 
@@ -79,6 +108,7 @@ Beside chapter 14's earlier forms: S89 shares S66's box grammar exactly (number 
 - My own captures at twice size (`cap2x.cjs` in my scratch, Playwright, `deviceScaleFactor: 2`): each draft at 1440, 390 and 320 px on Newsprint and Charcoal, each also in grayscale; S47, S66, S71 and S77 at 1440 and 390 px on Newsprint.
 - Looked at, for the first read: S85 at 1440 px (Newsprint), 390 px (Newsprint), 320 px (Charcoal, and Newsprint after the chip landed), with a 4x pixel zoom of its grid on both grounds; S86 at 1440 and 390 px (Newsprint) and 320 px (Charcoal, grayscale); S87 at 1440 px (Newsprint; Charcoal in grayscale) and 320 px (Newsprint); S88 at 1440 px (Newsprint; Charcoal in grayscale) and 390 px (Newsprint); S89 at 1440 and 390 px (Newsprint) and 320 px (Charcoal); S93 at 1440 px (Newsprint, both builds), 390 px (Newsprint) and 320 px (Charcoal); S47 and S66 at 1440 px.
 - Read from the exported SVGs: S85's mark and key geometry at 1440, 390 and 320 px; S87's and S88's circles, label positions and sizes at 1440, 390 and 320 px in both builds; S89's lane rules, boxes, badges and arrowheads at 1440 and 390 px; S93's disc sizes.
+- Looked at, for the cards (21:23 to 21:27 UTC, from the 21:18 build): S90 at 1440 px (Newsprint), 390 px (Newsprint) and 320 px (Charcoal, grayscale), beside S60 at 1440 px (built at 21:23); S91 at 1440 and 390 px (Newsprint); S92 at 1440 px (Newsprint) and 320 px (Charcoal), beside S77 at 1440 px; S94 at 1440 px (Newsprint, the year mark and the list to June 15) and 320 px (Charcoal, grayscale). Read the R4-3 classes in `kit.css` (`.oac-h-cards`, `.oac-h-facts`, `.oac-h-item`, `.oac-h-big`, `.oac-source`).
 - Read the token chain for the icon ink and the subject, context and track inks on both grounds in `work/build/tokens/tokens.css`; S16's size key in `forms/bubble-map.js` and S86's in `forms/proportional-symbols.js`; the kit's wrapping rules in `kit.css`.
 
 ## Not tested
@@ -89,4 +119,6 @@ Beside chapter 14's earlier forms: S89 shares S66's box grammar exactly (number 
 - S87's latest fix ("Both" on a leader at the narrowest widths) at 256 px, where the main session says it applies; at 320 and 390 px my 21:18 build draws S87 as before.
 - Charcoal in color (not grayscale) for S87 and S88, and grayscale for S89 and S93; Newsprint grayscale for any draft.
 - The guide page: I read the kit's page, not a strict guide build.
+- For the cards: S91 at 320 px and on Charcoal; S92 at 390 px and on Newsprint at the phone widths; S94 at 390 px and its list after June 15; S90's and S91's text order for a screen reader (the accessibility lead's).
+- Maker A's two sketches (`s-14-83-sketch.html`, `s-14-84-sketch.html`): outside my brief's list for this read.
 - Print, forced colors and 200 percent text: the accessibility lead's.

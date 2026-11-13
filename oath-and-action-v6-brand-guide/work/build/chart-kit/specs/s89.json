@@ -121,30 +121,31 @@
         "levels": [
           "local"
         ],
-        "label": "Local governments",
-        "share": 1
+        "label": "Local",
+        "share": 0.6,
+        "min": 80
       },
       {
         "levels": [
           "state",
           "tribal"
         ],
-        "label": "States and tribes",
-        "share": 1
+        "label": "State and tribal",
+        "share": 1.2
       },
       {
         "levels": [
           "federal"
         ],
-        "label": "Federal government",
-        "share": 1
+        "label": "Federal",
+        "share": 1.2
       },
       {
         "levels": [
           "resident"
         ],
         "label": "Residents",
-        "share": 1
+        "share": 1.0
       }
     ],
     "branches": {
@@ -186,8 +187,6 @@
     ],
     "hold": [
       "30 days",
-      "individual help",
-      "the help",
       "law’s limit"
     ]
   },
@@ -199,7 +198,7 @@
     "Data lead MI-1 (20:59 UTC): the chart note no longer says every declaration takes every numbered step; a denial ends the path at step 5, and steps 7 and 8 follow where FEMA names that help.",
     "Source line: the sidecar's in_force_in_grade variant (IM-1), since the grade line prints the in-force date once (call 1).",
     "Editor's words (first look, 21:03 UTC) applied: title, chart note, note 2 and the alt's \"five days\".",
-    "Design director DD-I1 to DD-I5 (21:22 UTC): the emergency request's link drops down the middle of the local lane, clear of the lane rules; four equal lanes, every head on one line on one baseline (lanes only where each holds 150 px and its head); set-in boxes at 44 px on a phone, so each link shows a 16 px stem; no lone last word: \"the law’s limit\", \"individual help\", \"the help\" and \"30 days\" held on one line (typography.hold)."
+    "Design director DD-I1 to DD-I5 (21:22 UTC): the emergency request's link drops down the middle of the local lane, clear of the lane rules; four equal lanes, every head on one line on one baseline (lanes only where each holds 150 px and its head); set-in boxes at 44 px on a phone, so each link shows a 16 px stem; no lone last word: \"the law’s limit\" and \"30 days\" held on one line (typography.hold); a hold on words in the table's row header column (\"individual help\") fails the kit's parity check, reported to the engineer (IM-E6). Lanes sized by a stated rule (DD-I2's Should): a lane's share follows the steps it holds alone, so Local, which holds none alone, takes 0.6; State and tribal (two) and Federal (three) 1.2 each; Residents (one) 1.0; each head on one line."
   ],
   "source_line": "Source: Robert T. Stafford Disaster Relief and Emergency Assistance Act, 42 U.S.C. 5170 and 5191 (United States Code, 2024 edition), and FEMA’s regulation, 44 CFR part 206, United States. Retrieved November 12, 2026. Times are limits in law, not measured waits."
 }

@@ -22,6 +22,9 @@
       var tot = L.total || 100, per = L.per_row || 10, n = Math.round(+row[ev] / 100 * tot);
       if (!(n >= 0 && n <= tot)) { c.warn('the share ' + row[ev] + ' is not between 0 and 100 percent'); c.height(10); return; }
       var rowsN = Math.ceil(tot / per), y = 0;
+      // the marks: the unit chart's own steps, larger, so a hundred stay countable; a row of ten fits the column on a phone
+      var gap = c.phone ? c.t('unit-gap') : c.t('unit-gap') + 1;
+      var u = Math.max(c.t('unit-size'), Math.min(c.phone ? 22 : 24, Math.floor((W + gap) / per) - gap));
       // the topic: the drawing at 48 px in the icon ink, its atlas name and typed chip beside it (Rule 10.6: the drawing is
       // hidden from screen readers, so the name is read once)
       if (L.topic) {
@@ -29,19 +32,16 @@
         if (!K.parts.icon) c.warn('labels.topic names ' + L.topic.id + ', and the kit has no part that draws a Civic Line drawing yet');
         else K.parts.icon(c, L.topic.id, 0, y, ic);
         var nb = y + ic / 2 + c.size('label') * 0.35, cw = c.measure(L.topic.chip || '', 'tick', 600) + 16;
-        var one = !L.topic.chip || tx + c.measure(L.topic.words, 'label', 600) + 10 + cw <= W;
+        var one = !L.topic.chip || tx + c.measure(L.topic.words, 'label', 600) + 8 + cw <= W;
         // the name and its chip on one line beside the drawing, or the chip under the name, the two centered on the drawing
         if (!one) nb -= 11;
         var tt = c.text(tx, nb, L.topic.words, { role: 'label', weight: 600, max: W - tx });
         if (L.topic.chip) {
           if (!K.parts.chip) c.warn('labels.topic.chip names ' + L.topic.chip + ', and the kit has no part that draws a typed chip yet');
-          else K.parts.chip(c, one ? tt.x + tt.w + 10 : tx, one ? nb : tt.bottom + 6 + c.size('tick') * 0.86, L.topic.chip);
+          else K.parts.chip(c, one ? tt.x + tt.w + 8 : tx, one ? nb : tt.bottom + 6 + c.size('tick') * 0.86, L.topic.chip);
         }
-        y += ic + 18;
+        y += ic + u + gap;   // a row pitch under the drawing, so it reads as the heading, never as a mark (DD-A2)
       }
-      // the marks: the unit chart's own steps, larger, so a hundred stay countable; a row of ten fits the column on a phone
-      var gap = c.phone ? c.t('unit-gap') : c.t('unit-gap') + 1;
-      var u = Math.max(c.t('unit-size'), Math.min(c.phone ? 22 : 24, Math.floor((W + gap) / per) - gap));
       var gw = per * (u + gap) - gap, gh = rowsN * (u + gap) - gap;
       var top = y;
       for (var i = 0; i < tot; i++) {

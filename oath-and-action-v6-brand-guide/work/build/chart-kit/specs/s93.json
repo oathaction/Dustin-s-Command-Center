@@ -12,12 +12,11 @@
   "title": "Public Law 119-12’s first page gives its number, the Congress that passed it, its place in the Statutes at Large, its approval date and the bill it began as.",
   "measure_line": "The parts of the first page of Public Law 119-12, the TAKE IT DOWN Act, redrawn with the page’s own words",
   "notes": [
-    "The drawing stops after section 1; section 2 begins lower on the same page.",
-    "The page prints a dash between the law’s number and its date in the running head; the drawing sets it as a rule."
+    "The drawing sets the page’s dash in the running head as a rule and its doubled single quotation marks as double quotation marks."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "A drawing of the first page of Public Law 119-12 with its eleven parts numbered, from the running head and the law’s number at the top to the short title section and the two notes in its margin.",
+  "alt": "A drawing of the first page of Public Law 119-12 with its eleven parts numbered in the order they sit on the page, from the running head and the law’s number at the top to the short title section and the two notes in its margin.",
   "table": {
     "caption": "The parts of the first page of Public Law 119-12, in reading order",
     "columns": [
@@ -27,12 +26,12 @@
         "format": "text",
         "words": {
           "1": "1",
-          "2": "2",
-          "3": "3",
-          "4": "4",
-          "5": "5",
-          "6": "6",
-          "7": "7",
+          "4": "2",
+          "2": "3",
+          "3": "4",
+          "7": "5",
+          "5": "6",
+          "6": "7",
           "8": "8",
           "9": "9",
           "11": "10",
@@ -75,12 +74,12 @@
       "field": "order",
       "values": [
         "1",
+        "4",
         "2",
         "3",
-        "4",
+        "7",
         "5",
         "6",
-        "7",
         "8",
         "9",
         "11",
@@ -161,21 +160,31 @@
       }
     ],
     "named": [],
-    "page_max": 430
+    "page_max": 430,
+    "crop_words": "The page continues with section 2."
   },
   "typography": {
     "curl_quotes": true,
     "nbsp": true,
-    "replace": []
+    "replace": [
+      [
+        "‘‘",
+        "“"
+      ],
+      [
+        "’’",
+        "”"
+      ]
+    ]
   },
   "notes_internal": [
     "Infographics maker, round 4. Data plan row 125 (data lead change 2), rule 14.139. Domain D04 from the sidecar.",
     "Every word the page drawing prints is a row's printed_text, split only where the page breaks a line; the running head's three pieces are the row's semicolon-separated parts, joined as the page joins them, with a rule one em wide for the page's dash (DR-79's drawing of an em dash).",
     "Layout checked against the page itself: govinfo PLAW-119publ12.pdf, page 1, fetched November 13, 2026 to the maker's scratch, rendered and read with pdftotext -layout.",
-    "Row 11, the margin short title, added by the research lead (IM-4), sits above row 10 in the margin; the parts are numbered in the order they sit on the page (the sort puts 11 before 10), so the drawing and the list print 10 for row 11 and 11 for row 10, and the table's Number column maps them the same way.",
     "Source line: the sidecar's date_on_page variant (IM-3); grade line as ruling (c); the approval date prints only on the page drawing and its callout.",
     "Data lead (20:59 UTC) accepted numbered markers with no leader lines, and the redraw in Inter with the drawing's own line breaks.",
-    "Editor's words (21:03 UTC) applied: title and grade line; the alt prints a hyphen in 119-12."
+    "Editor's words (21:03 UTC) applied: title and grade line; the alt prints a hyphen in 119-12.",
+    "Design director DD-I6 to DD-I9 (21:22 UTC) and the data lead's yes to DD-I7 (21:25): the crop drawn as a dashed rule across the sheet's foot, with \"The page continues with section 2.\" under it, in place of the old note; parts numbered in the page's reading order through the sort (1 running head, 2 the Statutes at Large citation beside it, 3 Public Law number, 4 Congress, 5 long title, 6 date approved, 7 bill number, 8 enacting clause, 9 short title section, 10 margin short title, 11 margin note), the table's Number column mapped the same way and the file as stored; a running head that wraps sets its citation on a line of its own; the page's doubled single quotation marks set as double quotation marks in the drawing (typography.replace, printed words only), with the note saying so."
   ],
   "source_line": "Source: Public Law 119-12, the TAKE IT DOWN Act, 139 Stat. 55, first page, United States, from govinfo, U.S. Government Publishing Office. Retrieved November 12, 2026."
 }

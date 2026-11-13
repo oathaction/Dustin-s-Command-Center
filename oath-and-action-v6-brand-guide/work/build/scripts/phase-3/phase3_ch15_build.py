@@ -3111,7 +3111,8 @@ def rule_15_19(book):
     ready = (f"Ready. Start at {lc(short(codes[0]))}, and suppose it rises. Press Play, or Next step to follow one "
              "connection at a time.")
     body, h = three_loop(codes, lp["links"], weakest=1, inside=(lid, "reinforcing"), steps_g=True)
-    lis = "".join(f'<li class="oa-stepper-step" data-oa-hold="{hd}"><span class="oa-stepper-line">{e(ln)}</span> '
+    # &#32; keeps the space between the line and its more words, which the plate minifier would close up
+    lis = "".join(f'<li class="oa-stepper-step" data-oa-hold="{hd}"><span class="oa-stepper-line">{e(ln)}</span>&#32;'
                   f'<span class="oa-stepper-more">{mo}</span></li>' for ln, mo, hd in steps)
     right = (f'<p class="oa-stepper-status" role="status" data-oa-ready="{e(ready)}">{e(ready)}</p>'
              f'<ol class="oa-stepper-steps" role="list">{lis}</ol>{ctl}{why}'
@@ -3437,7 +3438,7 @@ CSS.update({
            f".p .oa-stepper .dw :is([data-s],[data-p]){{--k:{INK};--t:var(--oa-color-text-primary);--f:var(--oa-color-surface)}}"
            ".p .oa-stepper .dw .bd{display:none}.p .oa-stepper .dw [data-s] text{font-weight:var(--oa-font-weight-regular)}}"),
     "ch1": ".ch1{flex-direction:column;align-items:flex-start}" + chooser_css(["R-03", "R-04"]),
-    "pn": (".pn+.pn{margin-top:24px;padding-top:16px;border-top:1px solid var(--oa-color-border-hairline)}"
+    "pn": (".pn+.pn{margin-top:24px;padding-top:16px;border-top:1px solid var(--oa-color-border-hairline)}.pn>*+.k{margin-top:16px}"
            ".pn .oa-disclosure-set{margin-top:16px}"),
     "pon": ".pon{display:none}",
     "ld": (".ld{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 14px;font:var(--oa-type-body-small);"

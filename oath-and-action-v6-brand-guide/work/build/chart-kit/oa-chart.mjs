@@ -1488,6 +1488,19 @@ async function self_test() {
       pass(!a.f.length && /<use href="#oa-sym-cl-050" x="0" y="0" width="48" height="48" class="oac-icon"/.test(a.d.svg) && a.d.ink.some(q => q.kind === 'icon' && q.w === 48)
         && icons_of([a.d]).join() === 'oa-sym-cl-050' && b.f.length > 0 && /^<symbol id="oa-sym-cl-050" viewBox="0 0 128 128">/.test(sym) && sym.indexOf('currentColor') > 0 && sym.indexOf('#121212') < 0,
         'A4-E1: the icon part draws a <use> of the sprite with a box the checks read (a word on it caught), the chip part draws clean, and the kit page\'s symbol comes from the approved master in one ink' + (a.f.length ? ': ' + a.f[0] : '')); }
+    { // R4-4, IM-E5 (round 4): a card's crop is exactly its height with a 36 px floor; c.inner draws S19's dot plot across in
+      // rank order, 50 columns, the two named states labeled clear of every dot; outside a card S19 draws as before
+      const s19 = JSON.parse(fs.readFileSync(path.join(KIT, 'specs/s19.json'), 'utf8')), r19 = C.check_spec(K, s19, {}).rows;
+      K.register_chart({ form: 'oa-self-test-card', name: 'T', family: 'infographics', inner: true, encode: { of: 'form' }, labels: [], phone: 'same',
+        draw: c => { c.inner(40, 40, 1000, 36 / 13, { label: 'named', ranks: 'across', height: 220 }); c.height(10); } });
+      const sp = Object.assign({}, s19, { form: 'oa-self-test-card', encode: Object.assign({ of: 'dot-plot' }, s19.encode) });
+      const d = K.draw(sp, r19, { width: 1080, crop: [1080, 760], ground: 'newsprint', tokens: TOK.newsprint });
+      delete K.forms['oa-self-test-card'];
+      const dots = d.marks.filter(m => m.kind === 'circle' && m.data && m.data.key !== undefined), xs = dots.map(m => m.x);
+      const labs = d.texts.filter(t => /^(Mississippi|Massachusetts) \d+$/.test(t.words));
+      const small = d.guard.filter(g => /under 36 px/.test(g)), plain = K.draw(s19, r19, { width: 720, ground: 'newsprint', tokens: TOK.newsprint });
+      pass(d.height === 760 && dots.length === 50 && xs.every((x, i) => !i || x > xs[i - 1]) && labs.length === 2 && !d.warnings.length && !small.length && plain.marks.filter(m => m.kind === 'circle').length >= 50,
+        'R4-4, IM-E5: a crop is exactly its height; S19 across on a card draws 50 columns in rank order with its two named states and no word under 36 px' + (d.warnings.length ? ': ' + d.warnings[0] : '') + (small.length ? ': ' + small[0] : '')); }
     { // board 2 (A1): a table caption's {data_file} fills in the visible caption, the table's name and the summary's hidden words
       const sp = { id: 'T', title: 'A title.', table: { caption: 'Every row is in {data_file}', columns: [{ field: 'k', label: 'Key', format: 'text', row_header: true }] } };
       const fig = [false, true].map(g => K.figure(sp, [{ k: 'A' }], { id: 'oac-t', guide: g }));

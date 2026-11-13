@@ -2,7 +2,8 @@
  * part marked by a numbered disc in the subject ink, and beside the page (under it on a phone) the callouts in the same
  * order: the number, the part's name in bold and what it tells a reader. The page is drawn from the rows, top to bottom,
  * as labels.layout sets it: a running head across the top, a main column and a margin column at its right, the page's
- * edge in the context ink and open at the foot, since the drawing stops partway down the page. Numbers sit in the page's
+ * edge in the context ink, and a dashed rule across its foot where the drawing stops partway down the page, with words
+ * that say so. Numbers sit in the page's
  * left gutter for the main column and outside its right edge for the margin. Where the margin column cannot hold
  * labels.margin_min px, the margin's parts follow the block they sit beside, set flush right. A word the page prints as a
  * dash is drawn as a rule one em wide (labels.dash_at), so no dash character prints.
@@ -14,13 +15,13 @@
  * whose number marks the flush-right piece), beside (margin: the key of the main block it sits beside), center (true),
  * weight, size ("label"), breaks ([words that start a new line]), lead (words set in bold at the block's start), gap (px
  * before)}]), page_max (px: the page's widest, default 400), margin_share (default 0.3), margin_min (px, default 84),
- * named (keys the title names). */
+ * named (keys the title names), crop_words (the line under the dashed rule where the drawing crops the page). */
 (function (K) {
   'use strict';
   K.register_chart({
     form: 'annotated-illustration', name: 'Annotated Illustration', family: 'infographics',
     encode: { key: 'integer', part: 'text', text: 'text', tells: 'text' },
-    labels: ['layout', 'page_max', 'margin_share', 'margin_min', 'named'],
+    labels: ['layout', 'page_max', 'margin_share', 'margin_min', 'named', 'crop_words'],
     phone: 'differs',
     draw: function (c) {
       var L = c.labels, W = c.width, ek = c.field('key'), ep = c.field('part'), et = c.field('text'), el = c.field('tells');
@@ -76,7 +77,7 @@
               else hx += 6;
             }
           });
-          if (hx + 12 + c.measure(last, 'tick', 600) > edge) base += lh;
+          if (base > b0 || hx + 12 + c.measure(last, 'tick', 600) > edge) base += lh;
           c.text(edge, base, last, { role: 'tick', weight: 600, fill: 'label', anchor: 'end' });
           b._base = b0;
           if (b.right_key !== undefined) placed[String(b.right_key)] = { base: base, right: true };
@@ -98,8 +99,10 @@
         if (split && mb.length) y = Math.max(y, my - 6);
       });
       var frame_bottom = y + pin + 10;
-      // the page's edge, open at the foot, drawn before the numbers
+      // the page's edge, and across its foot a dashed rule where the drawing crops the page, with the words under it (DD-I6)
       c.path('M' + x0 + ',' + frame_bottom + 'V' + (frame_top + 0.5) + 'H' + x1 + 'V' + frame_bottom, { fill: 'none', stroke: 'context', width: 1, mark: false });
+      c.line(x0, frame_bottom + 0.5, x1, frame_bottom + 0.5, { stroke: 'context', width: 1, dash: '4 3', mark: false });
+      if (L.crop_words) frame_bottom = c.text(x0, frame_bottom + 8 + tk * 0.93, ty(L.crop_words), { role: 'tick', fill: 'secondary', max: x1 - x0, leading: lh }).bottom;
       // the numbers: the main column's in the left gutter, the margin's and the flush-right piece's outside the right edge
       Object.keys(placed).sort(function (a, b) { return num[a] - num[b]; }).forEach(function (key) {
         var p = placed[key]; if (p.base === undefined || p.base === null) return;
