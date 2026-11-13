@@ -17,5 +17,8 @@
  "phone_view_rows": "the first {n} of {total} rows; a phone draws them all",
  "stage_scroll": "The drawing at its full width, {w} px; scroll sideways to see all of it",
  "data_file": "this chart’s data file in the guide’s asset package",
- "stage_hint": "Wider than this column. Scroll the drawing sideways to see all of it."
+ "stage_hint": "Wider than this column. Scroll the drawing sideways to see all of it.",
+ "card_size": "Drawn at {w} by {h} px",
+ "card_post": "Words to post",
+ "card_alt": "Alt text to post"
 }

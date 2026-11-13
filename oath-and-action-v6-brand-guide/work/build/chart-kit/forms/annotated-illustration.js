@@ -7,7 +7,7 @@
  * labels.margin_min px, the margin's parts follow the block they sit beside, set flush right. A word the page prints as a
  * dash is drawn as a rule one em wide (labels.dash_at), so no dash character prints.
  * The table lists the parts in reading order, with the words as printed.
- * encode: key (integer: the part's number), part (text: its name), text (text: the words as printed), tells (text: what
+ * encode: key (integer: the part's key; its number is its place in the sorted rows), part (text: its name), text (text: the words as printed), tells (text: what
  * it tells a reader).
  * labels: layout ([{key, slot: "head" | "main" | "margin", split (head: the separator between its pieces; the last piece
  * sets flush right), dash_at (head: the piece after which a rule one em wide joins the next), right_key (head: the part
@@ -24,7 +24,8 @@
     phone: 'differs',
     draw: function (c) {
       var L = c.labels, W = c.width, ek = c.field('key'), ep = c.field('part'), et = c.field('text'), el = c.field('tells');
-      var by = {}; c.rows.forEach(function (r) { by[String(r[ek])] = r; });
+      // each part's number is its place in the rows as the spec sorts them, the order the parts sit on the page
+      var by = {}, num = {}; c.rows.forEach(function (r, i) { by[String(r[ek])] = r; num[String(r[ek])] = i + 1; });
       var named = (L.named || []).map(String), tk = c.size('tick'), lh = Math.round(tk * 1.36), chip = 20, gut = chip + 8;
       var ty = function (w) { return K.typeset({ typography: c.spec.typography || { curl_quotes: true, nbsp: true } }, String(w).replace(/[ \t\n]+/g, ' ')); };
       // the page and the callouts: side by side where the callouts keep 220 px, else the callouts under the page
@@ -35,7 +36,7 @@
       var chipat = function (key, x, base) {
         var nm = named.indexOf(String(key)) >= 0, y = base - tk * 0.35;
         c.circle(x + chip / 2, y, chip / 2, { fill: 'subject', data: { key: String(key), field: 'part', value: key } });
-        c.text(x + chip / 2, y + 4.4, String(key), { role: 'tick', weight: 700, anchor: 'middle', fill: 'label-on-subject' });
+        c.text(x + chip / 2, y + 4.4, String(num[String(key)]), { role: 'tick', weight: 700, anchor: 'middle', fill: 'label-on-subject' });
         return nm;
       };
       // the words of a block, as lines, with the lead in bold
@@ -100,13 +101,13 @@
       // the page's edge, open at the foot, drawn before the numbers
       c.path('M' + x0 + ',' + frame_bottom + 'V' + (frame_top + 0.5) + 'H' + x1 + 'V' + frame_bottom, { fill: 'none', stroke: 'context', width: 1, mark: false });
       // the numbers: the main column's in the left gutter, the margin's and the flush-right piece's outside the right edge
-      Object.keys(placed).sort(function (a, b) { return a - b; }).forEach(function (key) {
+      Object.keys(placed).sort(function (a, b) { return num[a] - num[b]; }).forEach(function (key) {
         var p = placed[key]; if (p.base === undefined || p.base === null) return;
         chipat(key, p.right ? x1 + 6 : 0, p.base);
       });
       // the callouts
       var cx = side ? pw + 16 : 0, cw = side ? W - cx : W, cy = side ? 0 : frame_bottom + 20;
-      c.rows.slice().sort(function (a, b) { return a[ek] - b[ek]; }).forEach(function (r) {
+      c.rows.forEach(function (r) {
         var key = String(r[ek]), base = cy + c.size('label') * 0.93;
         chipat(key, cx, base);
         var t = c.text(cx + gut, base, ty(r[ep]), { role: 'label', weight: 700, max: cw - gut, fill: 'label' });

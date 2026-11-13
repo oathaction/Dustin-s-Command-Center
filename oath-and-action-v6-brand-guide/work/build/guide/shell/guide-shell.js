@@ -11,6 +11,8 @@
 // D2-964); from 80em a fixed plate wider than its column breaks out over the rail where the page holds it whole (CA-S13).
 // Gate 2, November 11, 2026: a step of the "Where to start" page offers the way back to itself (D2-1698); the fix pass
 // snaps openers, the pillar row's icons and the colophon's lockmark onto whole device pixels.
+// Phase 3 round 4, November 13, 2026: print opens every closed disclosure (Rule 18.8); a reform chooser's status line
+// (Rule 15.20).
 (function () {
   'use strict';
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -562,9 +564,30 @@
   // AX S11 (round 2 fix pass): a plate taller than a printed page may break inside, so print never pushes it whole to a
   // fresh page and leaves the page before it blank (chapter 13's first plate, 1,622 px tall). 860 px is a Letter page's
   // text height less a margin, on the screen's layout; a shorter plate keeps whole.
-  var PRINT_TALL = 860;
+  // Rule 18.8 (round 4): a printed page opens every disclosure. Each closed details opens before the plates are
+  // measured, and after print the ones opened here close again, so the page comes back as the reader left it.
+  var PRINT_TALL = 860, printOpened = [];
   window.addEventListener('beforeprint', function () {
+    var shut = $$('details:not([open])');
+    shut.forEach(function (d) { d.open = true; });
+    printOpened = printOpened.concat(shut);
     $$('.plate').forEach(function (p) { p.classList.toggle('is-print-tall', p.getBoundingClientRect().height > PRINT_TALL); });
+  });
+  window.addEventListener('afterprint', function () {
+    printOpened.forEach(function (d) { d.open = false; });
+    printOpened = [];
+  });
+
+  // Rule 15.20 (round 4): a reform chooser, [data-oa-chooser], chooses by its radios and its own CSS, with or without
+  // this script. On each change, and only then, its status line [data-oa-chooser-status] takes the words of the
+  // [data-oa-say] line in the panel whose data-oa-panel is the checked radio's value. Nothing on load, nothing moves,
+  // and focus stays on the radio.
+  document.addEventListener('change', function (ev) {
+    var r = ev.target, box = r.type === 'radio' && r.checked && r.closest && r.closest('[data-oa-chooser]');
+    var line = box && $('[data-oa-chooser-status]', box);
+    var panel = line && $$('[data-oa-panel]', box).filter(function (p) { return p.getAttribute('data-oa-panel') === r.value; })[0];
+    var say = panel && $('[data-oa-say]', panel);
+    if (say) line.textContent = say.textContent.replace(/\s+/g, ' ').trim();
   });
 
   function start() {

@@ -107,6 +107,8 @@ The infographics maker applies these until it reports finished; after that I wri
 |---|---|---|---|---|
 | 14.135 | `rule[0]`, third sentence | Print each time as the law’s limit, never as a wait, and the date of the law once, in the grade line. | Print each time as the law’s limit, and the date of the law once, in the grade line. | The ", never as a wait" turn (W09); "limit" already says it |
 
+**S94's note on 26 U.S.C. 7508A, before S94 lands (21:10 UTC).** The data lead's 21:09 sentence holds all four causes and reads well aloud. One word, from the law's subsection (c): "The IRS may postpone tax dates for people affected by a federally declared disaster, a significant fire or a terrorist or military action, and, at a governor’s **written** request, by a disaster the state declares (26 U.S.C. 7508A)." Here "may" states what the law lets the IRS do, so it is no hedge (W16).
+
 ## Words for the cartographer
 
 Nothing yet: no change to S12, S16 or S78 or their entries has landed.

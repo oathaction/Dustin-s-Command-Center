@@ -1,0 +1,39 @@
+{
+  "id": "14.81",
+  "title": "Use a Venn diagram to name the groups two overlapping sets make.",
+  "rule": [
+    "Draw two circles of one size inside a frame for everyone, each named, so the drawing holds four groups: the first alone, both, the second alone and neither. Print each group’s count and share inside it, shade the overlap in the track ink, and say in a note that the circles’ sizes carry no count. Name a group above another only where the gap passes its margin of error (Rule 14.9)."
+  ],
+  "use_when": "The reader asks who falls in one group, the other, both or neither, and the four counts matter more than their sizes, such as people with private health coverage, public coverage, both or none.",
+  "use_instead": [
+    {
+      "when": "The reader needs each group drawn at its true size",
+      "rule": "14.82"
+    },
+    {
+      "when": "The groups cannot overlap, such as the voters of two parties",
+      "rule": "14.46"
+    },
+    {
+      "when": "Three or more sets overlap in many ways",
+      "rule": "14.133"
+    }
+  ],
+  "why": {
+    "text": [
+      "The overlap is the place a reader looks first, and four named regions answer the question in one look. Circles of one size keep the drawing simple; the note and the printed counts keep a reader from reading the sizes as counts."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S87",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.82",
+    "14.9",
+    "14.4"
+  ],
+  "builders": "Form venn-diagram: node work/build/chart-kit/oa-chart.mjs build s87; labels.regions maps each row to its region, labels.sets names the circles, labels.frame names the frame with {total}, and labels.fills shades the overlap.",
+  "correct": null,
+  "failure": null
+}

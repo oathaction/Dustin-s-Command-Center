@@ -846,7 +846,7 @@
         },
         {
           "label": "Pace",
-          "value": "Play holds each step about 250 ms a word and never under 6 seconds, with reduced motion too: 9 to 12.75 seconds a step here. Pause stops it, and Next step turns one step at a time"
+          "value": "Play holds each step about 250 ms a word and never under 6 seconds, with reduced motion too: 10 to 14 seconds a step here. Pause stops it, and Next step turns one step at a time"
         },
         {
           "label": "Step words",

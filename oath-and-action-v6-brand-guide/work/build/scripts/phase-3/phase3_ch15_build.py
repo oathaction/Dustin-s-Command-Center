@@ -966,7 +966,7 @@ def opener(book):
     run_y = a.top - RISE
     need(xa < W / 2 - tw(f"Loop {lid}", 700) / 2 - 24, "the opener's letter C crowds the authority line")
     nums = (numeral(1, a.left + 6, a.top - 1) + numeral(2, W / 2 + 46, 15)
-            + numeral(3, W / 2 - tw(f"Loop {lid}", 700) / 2 - 13, run_y + 22 - 5)
+            + numeral(3, W / 2 - tw(f"Loop {lid}", 700) / 2 - 17, run_y + 22 - 5)
             + numeral(4, xa - 20, a.bot + 30) + numeral(5, W / 2 - 4, fy) + numeral(6, W / 2 + 64, run2 + 20))
     total = ec.bot + 4
     svg = svg_wrap(body + f'<g class="wr">{m}</g>' + lab + fr + ec.svg() + nums, total)

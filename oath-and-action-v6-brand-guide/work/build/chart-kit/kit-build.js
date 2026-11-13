@@ -86,7 +86,7 @@
 
   // words.json's words, carried inside the kit so a plain page opened from disk prints them too (access S8); the kit's
   // self-test fails when this copy and words.json differ
-  K.WORDS = {"source_label": "Source:", "table_summary": "The table and notes", "notes_in_chart": "Notes in the chart", "table_region": "{caption}, table", "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.", "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.", "scripts_off": "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below.", "export_fonts": "Set in Inter and Inter Tight. On a computer without both fonts, the labels fall back to another font and change width.", "lookup_clear_search": "Clear the search", "lookup_filters": "Filters, {n} on", "lookup_clear_filters": "Clear filters", "lookup_count": "{n} of {total} {noun}", "phone_view": "On a phone, {w} px", "phone_view_part": "On a phone, {w} px: {part}", "phone_view_rows": "the first {n} of {total} rows; a phone draws them all", "stage_scroll": "The drawing at its full width, {w} px; scroll sideways to see all of it", "data_file": "this chart’s data file in the guide’s asset package", "stage_hint": "Wider than this column. Scroll the drawing sideways to see all of it."};
+  K.WORDS = {"source_label": "Source:", "table_summary": "The table and notes", "notes_in_chart": "Notes in the chart", "table_region": "{caption}, table", "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.", "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.", "scripts_off": "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below.", "export_fonts": "Set in Inter and Inter Tight. On a computer without both fonts, the labels fall back to another font and change width.", "lookup_clear_search": "Clear the search", "lookup_filters": "Filters, {n} on", "lookup_clear_filters": "Clear filters", "lookup_count": "{n} of {total} {noun}", "phone_view": "On a phone, {w} px", "phone_view_part": "On a phone, {w} px: {part}", "phone_view_rows": "the first {n} of {total} rows; a phone draws them all", "stage_scroll": "The drawing at its full width, {w} px; scroll sideways to see all of it", "data_file": "this chart’s data file in the guide’s asset package", "stage_hint": "Wider than this column. Scroll the drawing sideways to see all of it.", "card_size": "Drawn at {w} by {h} px", "card_post": "Words to post", "card_alt": "Alt text to post"};
 
   // ST-M2 item 1 (round 3 fix pass): "{data_file}" in a caption or note prints words.json's data_file, the one place
   // that names where a chart's full rows live, so Dustin's answer changes one string and no spec
@@ -458,7 +458,13 @@
         '<div class="oac-art oac-html" data-oa-html role="group"' + (spec.alt ? ' aria-label="' + esc(spec.alt) + '"' : '') + '>' + hc.html + '</div>');
     } else if (has('chart')) {
       var illus = spec.illustrative ? '<p class="oac-illus" data-role="illustrative">' + esc(spec.illustrative) + '</p>' : '';
-      p.push('<div class="oac-art" data-oa-art' + (opts.art_attrs || '') + '>' + illus + (opts.svg || '') + '</div>');
+      // R4-4 (round 4): a card's crops, each drawn at its true size and shown at the column's width, with its size in words
+      var crops = spec.card && spec.card.crops && !opts.svg ? spec.card.crops : null;
+      if (crops) p.push(illus + crops.map(function (cr) {
+        return '<div class="oac-art oac-crop" data-oa-art data-oa-crop="' + (+cr[0]) + 'x' + (+cr[1]) + '"></div>' +
+          '<p class="oac-crop-k">' + esc(word(opts, 'card_size').replace('{w}', String(+cr[0])).replace('{h}', String(+cr[1]))) + '</p>';
+      }).join(''));
+      else p.push('<div class="oac-art" data-oa-art' + (opts.art_attrs || '') + '>' + illus + (opts.svg || '') + '</div>');
       // D3-487 (BC S3, ED-E10): a form that changes on a phone also shows its phone drawing to a reader at a desk, drawn
       // from the same rows at a fixed 358 px under the desktop drawing; hidden where the figure is itself phone width
       // A17 (D3-534): desk_phone {rows, part} draws it from the first rows only, where the whole phone drawing would run far
@@ -472,6 +478,9 @@
       // script runs, the description names the drawing and leaves the reading order, so it is heard once (D3-97)
       if (spec.alt) p.push('<p class="oac-alt" id="' + id + '-alt" data-role="alt">' + K.chips(spec.alt, ids) + '</p>');
       if (!opts.svg) p.push('<p class="oac-noscript" data-role="scripts-off">' + esc(word(opts, 'scripts_off')) + '</p>');
+      // R4-4: beside the card, as live text to copy, the words the post carries and the alt text to post with the image
+      if (crops) p.push('<div class="oac-post" data-role="post">' + (spec.card.post ? '<p class="oac-post-k">' + esc(word(opts, 'card_post')) + '</p><p class="oac-post-v">' + K.chips(spec.card.post, ids) + '</p>' : '') +
+        (spec.alt ? '<p class="oac-post-k">' + esc(word(opts, 'card_alt')) + '</p><p class="oac-post-v">' + K.chips(spec.alt, ids) + '</p>' : '') + '</div>');
     }
     if (has('chart') && spec.phone_notes && spec.phone_notes.length) p.push('<ul class="oac-notes oac-phone-notes" data-role="phone-notes">' + spec.phone_notes.map(function (n) { return '<li>' + K.chips(n, ids) + '</li>'; }).join('') + '</ul>');
     if (has('notes') && spec.notes && spec.notes.length) p.push('<ul class="oac-notes" data-role="notes">' + spec.notes.map(function (n) { return '<li>' + K.chips(n, ids) + '</li>'; }).join('') + '</ul>');

@@ -83,9 +83,11 @@ def specimens(ctx, rows, v7, figs):
     def spec(sid, html, rule, alt, **kw):
         return _spec(sid, nb_html(html), CH, rule, nb(alt), **kw)
 
-    vname = lambda code: rows[next(i for i, r in rows.items() if r.get('v7_id') == code)]['label_where_atlas'] \
-        if rows[next(i for i, r in rows.items() if r.get('v7_id') == code)].get('label_where_atlas') \
-        else rows[next(i for i, r in rows.items() if r.get('v7_id') == code)]['label']
+    # DR-265 and DR-267 (November 13, 2026): a variable in a loop drawing prints its own title from the atlas, never the
+    # chain label its loops list; chapter 10's label table keeps the icons' approved names for chapter 10 alone
+    nodes = v7['nodes'] if isinstance(v7['nodes'], dict) else {n['id']: n for n in v7['nodes']}
+    vname = lambda code: nodes[code]['title']
+    vlow = lambda code: vname(code)[0].lower() + vname(code)[1:]
 
     # ---------------------------------------------------------------- 12.5 the intervention marker (System 1's red target)
     reform = 'R-01'
@@ -140,8 +142,8 @@ def specimens(ctx, rows, v7, figs):
              '.red .ak-mark,.red .pl{stroke:var(--red)}.wire.red .hd{fill:var(--red)}'
              '.wire.red .ak-case{stroke:var(--oa-color-graphic-essential-on-newsprint);stroke-width:6px;stroke-dasharray:var(--d6,none)}')
     note = (f'Reform {reform}, {r01["title"][0].lower() + r01["title"][1:]}, acts where the marks turn red: here, on '
-            f'the connection and on {vname("C2")}.')
-    note_ink = (f'Reform {reform} acts on the marks drawn heavier: the connection and {vname("C2")}. An error holds '
+            f'the connection and on {vlow("C2")}.')
+    note_ink = (f'Reform {reform} acts on the marks drawn heavier: the connection and {vlow("C2")}. An error holds '
                 'this view’s red.')
     html = (f'<p class="sec">In a view of its own: the working red</p>{chain_svg("red")}<p class="nt">{esc(note)}</p>'
             f'<p class="sec two">Beside an error or a step to take now: the same marks in ink</p>{chain_svg("ink")}'
@@ -149,19 +151,19 @@ def specimens(ctx, rows, v7, figs):
     css = (k.vars() + pad(24) + sec_css + '.sec.two{margin-top:28px}' + s1css +
            f'.nt{{margin:8px 0 0;{t("bodySmall")};max-width:34rem}}')
     spec('s-12-marker-correct', f'<style>{css}</style><div class="pad">{html}</div>', '12.5',
-         f'Two copies of one step from the atlas’s safe-seat loop, on Newsprint at 600 px: {vname("C1")} raises '
-         f'{vname("C2")}, the connection drawn with its sign tag, its evidence line and its delay tick. In the first '
-         f'copy, reform {reform}’s marks are Pillar Red at a heavier weight: the connection, with a thin Charcoal edge, '
-         f'and the outline of {vname("C2")}. A note under it reads: {note} In the second '
+         f'Two copies of one step from the atlas’s safe-seat loop, on Newsprint at 600 px: the connection from '
+         f'{vname("C1")} to {vlow("C2")}, drawn with its sign tag, the word raises, its evidence line and its delay tick. '
+         f'In the first copy, reform {reform}’s marks are Pillar Red at a heavier weight: the connection, with a thin '
+         f'Charcoal edge, and the outline of {vlow("C2")}. A note under it reads: {note} In the second '
          f'copy the same marks are heavier but drawn in Charcoal, and the note says an error holds this view’s red.',
          width=600, notes='Marks, pills, tags, verbs and widths from System 1 (DR-36): targets at the selected weight '
                           '(4 px wires, 3 px pills), the lit marks at the 6 px sizes, and atlas-kit.css\'s 1 px Charcoal '
-                          'keyline on a red wire on Newsprint. Names from the editor\'s label table (DR-185). The second '
+                          'keyline on a red wire on Newsprint. Each variable prints its own title from the atlas (DR-265, DR-267). The second '
                           'copy is Rule 11.16\'s yield.')
     fail_html = (f'{band}<div class="pad"><p class="sec">Where the problem is</p>{chain_svg("problem")}'
                  f'<p class="nt">Red marks the problem: primaries that settle the seat before November.</p></div>')
     spec('s-12-marker-failure', f'<style>{band_css}{css}</style>{fail_html}', '12.5',
-         f'Failure case: do not publish. The same step, with {vname("C2")} outlined in Pillar Red and a note that '
+         f'Failure case: do not publish. The same step, with {vlow("C2")} outlined in Pillar Red and a note that '
          'says red marks the problem: primaries that settle the seat. No reform is named.',
          width=600, exempt=['red'],
          notes='Labeled failure: red spent on a problem, which System 1 never does ("It never marks a problem or a bad '

@@ -4,12 +4,19 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Research lead (`o
 
 ## Status
 
+- 21:11 UTC. Done for this pass. Both makers' derive scripts now exist and both say they derive no table this round: `maker_a_round4_derive.py --figures` (S85 to S88, 51 checks, 0 failed) and `maker_i_round4_derive.py --figures` (S89 and S93 drafted; S93's three alt-wording checks on its own draft fail, rows 4 to 6, not a data fault), each run read-only with `git status` unchanged. So no file is derived in round 4 and nothing waits on a derived check. Waiting on the data lead: the ruling on 26 U.S.C. 7508A's sentence (S94, Requests).
 - 21:07 UTC. Resumed at 20:55 on the main session's word. Done since: the facts for 15.19 to 15.21 (20:56, told the main session); R-1 and IM-1 to IM-4 (four source line variants and row 11 of the Public Law 119-12 file, 20:59); R-2 (19 U.S. Code sections against the Law Revision Counsel's current release, 21:01 to 21:05: 18 read the same, 26 U.S.C. 7508A changed in parts the calendar does not draw; currency notes in four sidecars); R-3 (already item 29 of the V7.1 list; no new row). Derived files: none yet. The infographics maker's `maker_i_round4_derive.py` says it derives nothing; the cartographer's writes nothing; maker A has no derive script yet. Data check 125 tables, 0 faults.
 - 20:48 UTC. Handed back to the main session before any derived file or ruling (f) landed; the watch is stopped. Still to do when resumed: the data check on each derived file as the makers write it (`scripts/r4_derived_check.py <root> 829d0db8`, then a recomputation for each file, then `data_round0_build.py --check`); the 15.20 facts once ruling (f) names the reforms (from `r4/reform-facts.json`, rechecked against the model); any V7.1 row round 4 raises; the data plan's status lines.
 - 20:47 UTC. Data lead's rulings (a) to (c) read; (f) not yet posted. The reform facts table for all 50 reforms is ready in scratch (`r4/reform-facts.json`: 50 reforms, R-35 rejected; 126 route entries, 13 dated; 200 effect values, 38 beyond the seven codes, as the brief's section 14 counts). The common checker for changed data files (`scripts/r4_derived_check.py`, base commit 829d0db8) reads 0 changed tables so far. A watch on the makers' "derive" lines, the data folder and ruling (f) runs every 30 seconds.
 - 20:44 UTC. Started round 4 after DR-269 (row 39 done, 20:43; see `work/handoffs/phase-3/20261113_Board-2-Apply-Research-Notes.md`, "Routine calls, DR-269"). Read the round 4 brief in full and the round 4 data plan. Baseline data check, `data_round0_build.py --check`: 125 tables, 0 faults. No derived file has landed yet: maker A's and the infographics maker's notes have no "derive" line. Data lead's ruling (f) not yet written. Preparing the 15.20 facts table for all 50 reforms from the model while I wait.
 
 ## Summary
+
+- **Facts for 15.19 to 15.21** (ruling (f)), read by script into this file: R1's three steps, R-03 and R-04 on R4a with targets, effects, routes (all "Not checked"), grades, confidence, remedy text and trade-offs, and L55's record. R-03's federal route stores an action in `who`.
+- **Requests:** R-1 and IM-1 to IM-3 answered with four source line variants; IM-4 with row 11 of the Public Law 119-12 file (the margin short title); R-2 with a currency check of 19 U.S. Code sections (18 the same; 26 U.S.C. 7508A amended in 2025 outside the subsections the calendar cites, ruling requested); R-3 already item 29.
+- **V7.1:** one proposed row for board 3 (`routes[].who` mixes actors, instruments and actions); none added to the list.
+- **Data check:** no round 4 file is derived; the folder reads 125 tables, 0 faults; every existing round 4 spec prints its sidecar's line or a variant.
+- **Data plan:** a round 4 status line added.
 
 ## Data check over derived files
 
@@ -96,8 +103,47 @@ Raised and already covered: the loop and reform lists (item 29, R-3 above); Miss
 
 ## Routine calls
 
+- D3-xxx | The four source line variants are written into the sidecars by a scratch script, `r4_requests.py`, not by a repository script | No repository script writes three of the four sidecars (frozen in round 2 by scratch scripts, as the round 4 data plan's request said); the kit's README names the research lead for new variants; the script asserts each variant is the stored line with one phrase cut, and a rerun writes nothing
+- D3-xxx | Variant names are the requesters' own (`snapshot_in_grade`, `in_force_in_grade`, `seats_date_in_grade`, `date_on_page`) | The makers asked for them by name; S85's spec already reads `snapshot_in_grade`
+- D3-xxx | S85's variant ends the atlas's title with its own question mark and starts the limitation as a new sentence ("Who Do They Answer To? The 2025 average ...") | Cutting ", snapshot of October 15, 2026" would otherwise leave "To?." at the end of the title
+- D3-xxx | IM-4 adds the margin short title as row 11 and leaves row 10 as it is | govinfo's HTML text and the PDF's word positions give two separate margin notes; a new row keeps the draft's row numbers, as the maker offered
+- D3-xxx | R-2 compares each section's text from its heading to its source credit, with spaces removed, soft hyphens dropped and fractions written alike | The two sites set spaces around enumerators and citations differently and govinfo writes 66⅔ as "662/3"; every difference left after that was read by hand, and only 7508A's is a change in the law
+- D3-xxx | R-2 adds 5 U.S.C. 6103 to the 18 sections listed | The calendar uses its holiday list for 26 U.S.C. 7503 (Washington's Birthday on February 15, 2027)
+- D3-xxx | R-2 reads the laws after the Law Revision Counsel's release (Public Laws 119-139 to 119-142) in their enrolled text | The grade lines date the law to November 9 and 12, 2026, after the release's November 3; four laws fall between, and none amends a drawn section
+- D3-xxx | 26 U.S.C. 7508A's change goes to the data lead as a ruling, with a suggested note, and the calendar sidecar's qualification stays as it is until then | The subsections the file cites read the same, so no figure or date changes; the data lead set the re-rule for a section that differs
+- D3-xxx | Each law sidecar gains one dated note on the currency check | So the grade lines' "as in force on" dates can be traced to a reading
+- D3-xxx | R-3 gets no new row: item 29 already lists it | The 15 pairs recounted today equal item 29's 14 reforms; the pairs go to board 3 as a possible addition to item 29's Where
+- D3-xxx | The `routes[].who` finding goes to board 3 as a proposed row, not onto the list | A new row needs Dustin's word (main session, 20:55 UTC)
+- D3-xxx | The status line in the round 4 data plan is added as a new paragraph under the November 12 one | The plan's earlier status line records the freeze; round 4's line records what changed since, with its own time
+
 ## Requests
+
+### To the data lead
+
+- **26 U.S.C. 7508A (R-2).** Please rule on S94's note and the calendar sidecar's sentence: "The IRS may postpone tax dates for a federally declared disaster (26 U.S.C. 7508A)" is true of subsection (a), which reads the same, but Public Law 119-29 (July 24, 2025) added a state-declared path at a governor's request. Suggested words under "Requests answered". I change the sidecar's qualification to match once you rule.
+
+### To maker A and the infographics maker (for the main session to relay)
+
+- The four variants exist (see "Requests answered"). S85's spec already prints `snapshot_in_grade`. By script at 21:09 UTC, S89's spec still prints the sidecar's line, so "November 9, 2026" prints in both its grade and source lines, and S93's grade line prints "May 19, 2025" while its source line does too; `in_force_in_grade` and `date_on_page` remove the date from the source line.
 
 ## Tested
 
+- Facts for 15.19 to 15.21: `r4_ch15_facts.py` read every value from the committed model (SHA-256 checked, snapshot asserted) and asserted (f)'s structure: R1's three links and grades; R4a's two reforms on both lists; every target of R-03 and R-04 on R4a; R-03's and R-04's effects; every route undated; L55's qualification. Its rerun of (f)'s rule over the 20 closed loops passes R4a alone. Every quoted string in the facts section (61) found in the model by script.
+- Rule figures: the data lead's S86 to S95 figures recomputed from the frozen files (see "Data check over derived files"), all equal.
+- R-1, IM-1 to IM-4: `r4_requests.py` asserts each sidecar in its writer's format before and after, each variant one cut from the stored line, every other key unchanged, the CSV round-tripping byte for byte before row 11; a rerun writes nothing. Public Law 119-12's PDF and HTML fetched today (200 each, SHA-256 logged); page 1's margin read by word position and in the HTML's notes.
+- R-2: 38 pages fetched (200 each, logged with SHA-256); 19 sections compared; each difference read; 7508A's subsections (a) and (b) compared alone (same) and its amendment notes read; Congress.gov's law list (142 public laws) and the four newest enrolled texts read; the classification tables page read. `r4_currency_notes.py` asserts the report before writing; a rerun writes nothing.
+- R-3: both lists compared by script in both directions.
+- `routes[].who`: every value counted by script (126 entries, 89 values); the five verb-led entries listed by script.
+- Missouri (DR-269): the Secretary of State's ballot measures and results pages fetched (200 each), enr.sos.mo.gov fetched (403, a Cloudflare block page).
+- Round 4 specs against their sidecars (`r4_spec_sources.py`, 21:09 UTC): six specs exist (S85 to S89, S93); each names a dataset with a sidecar and prints its sidecar's line or a variant; 0 faults.
+- Both makers' figure checks run read-only at 21:10 to 21:11 UTC: maker A 51 checks, 0 failed; the infographics maker's 17 passes and 3 failures on S93's draft alt (rows 4 to 6), with S90 to S92, S94 and S95 skipped for want of specs; `git status` the same before and after.
+- The data check, `data_round0_build.py --check`, after each write: 125 tables, 0 faults. The changed-files checker: 6 changed tables since 829d0db8, all mine, 0 faults.
+
 ## Not tested
+
+- Any file a round 4 maker derives: none exists. Both makers' derive scripts check figures and write nothing (maker A's landed at about 21:10 UTC), and the cartographer's writes nothing. If a maker later derives a table, `r4_derived_check.py` and a recomputation should run on it.
+- The 2024 edition's own currency date as govinfo states it; the comparison rests on govinfo serving the 2024 edition (its page names it) and on the Law Revision Counsel's banner.
+- Whether 44 CFR part 206 and 26 CFR 1.6081-4 changed after eCFR's November 9, 2026 date; R-2 asked about the U.S. Code only.
+- Any public law enacted after November 10, 2026 that Congress.gov had not listed by 21:04 UTC.
+- Missouri's Proposition A result: the unofficial results site blocked the reader.
+- How the systems designer prints the facts; the plates are not built yet.

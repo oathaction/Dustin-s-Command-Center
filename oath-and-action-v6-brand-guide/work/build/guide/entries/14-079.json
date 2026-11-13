@@ -1,0 +1,39 @@
+{
+  "id": "14.79",
+  "title": "Use an icon array to make a share countable as people out of 100.",
+  "rule": [
+    "Draw 100 plain unit marks in rows of ten, read from the top left, and fill one in the subject ink for each person the share counts; leave the rest open, with a thin edge in the context ink and no fill. Round the share to whole people and print the published figure in the table. Draw one share, and give a comparison the publisher qualifies, such as another year, in a note. A Civic Line drawing may head the chart once, at 48 px beside the word chapter 10 gives it, as the chart’s subject and outside the grid; the marks stay plain squares (Rules 10.1, 10.4 and 10.6)."
+  ],
+  "use_when": "The reader asks how many of every 100 people something touches, and one share answers it, such as the one worker in ten who belonged to a union in 2025.",
+  "use_instead": [
+    {
+      "when": "The reader compares shares across groups or years",
+      "rule": "14.46"
+    },
+    {
+      "when": "Each mark is a record the reader can trace, such as one entry in a log",
+      "rule": "14.49"
+    },
+    {
+      "when": "One figure answers the question by itself",
+      "rule": "14.85"
+    }
+  ],
+  "why": {
+    "text": [
+      "A reader counts ten filled squares in a row of ten faster than a reader turns 10.0 percent into people, and a grid of 100 makes one in ten something to see. Filled against open holds in gray print and for a reader who sees no color. A symbol drawn in each square would give a topic drawing a second meaning, one person, so the squares stay plain."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S85",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.49",
+    "14.6",
+    "14.13"
+  ],
+  "builders": "Form icon-array: node work/build/chart-kit/oa-chart.mjs build s85; labels.draw picks the row the array draws, labels.filled and labels.open set the key’s words, and labels.topic sets the Civic Line drawing, its name and its chip.",
+  "correct": null,
+  "failure": null
+}

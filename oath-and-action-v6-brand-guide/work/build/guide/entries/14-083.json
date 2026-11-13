@@ -1,0 +1,40 @@
+{
+  "id": "14.83",
+  "title": "Keep packed circles for a first look at many sizes, and publish a chart that gives exact values.",
+  "rule": [
+    "Use packed circles, a reference form, to show many sizes at once with no exact reading: one circle for each item, its area in proportion to its value, packed together with no axis. Label only the circles large enough to hold their words, and put every value in the table. When a reader needs to compare or rank the items, draw proportional symbols with a key, a treemap or a ranked bar instead."
+  ],
+  "use_when": "A story needs a quick picture of a few large items among many small ones, such as the largest lines of an illustrative city budget, and no reader needs to rank them.",
+  "use_instead": [
+    {
+      "when": "The reader compares a handful of counts far apart",
+      "rule": "14.80"
+    },
+    {
+      "when": "The items are parts of one whole",
+      "rule": "14.52"
+    },
+    {
+      "when": "The reader ranks the items",
+      "rule": "14.15"
+    }
+  ],
+  "why": {
+    "text": [
+      "Packed circles give a reader the spread of sizes at a glance, but circles of near sizes cannot be told apart by eye, and their order on the page follows the packing. Forms with a scale or a shared baseline let a reader read each value."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "s-14-83-sketch",
+  "tier": "reference",
+  "tokens": [],
+  "related": [
+    "14.80",
+    "14.52",
+    "14.4"
+  ],
+  "builders": "No kit form: draw packed circles only as a sketch for planning; build proportional-symbols, treemap or ranked-bar for a reader.",
+  "correct": null,
+  "failure": null,
+  "sketch_alt": "Packed circles for an illustrative city budget, one circle for each line, its area in proportion to the amount, the four largest named. The sizes read at a glance, and no value can be read off the drawing."
+}

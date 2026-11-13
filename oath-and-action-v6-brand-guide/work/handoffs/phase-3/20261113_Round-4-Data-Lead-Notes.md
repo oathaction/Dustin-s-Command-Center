@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
-- 21:11 UTC. Resumed on the main session's word. R-2 answered: grade line dates stand; S94's 7508A note ruled. Next: sign-off reads of S86, S87, S88, S89, S93 and S85's figures.
+- 21:09 UTC. Resumed on the main session's word. R-2 answered: grade line dates stand; S94's 7508A note ruled. Next: sign-off reads of S86, S87, S88, S89, S93 and S85's figures.
 - 21:03 UTC. S12's stacked tile signed off from my own build; the phone codes wait on C4-E1 and C4-E2. R4-4's data side agreed with two conditions.
 - 21:01 UTC. Q-A1 ruled: S85 prints "Worker bargaining power" with the chip "Variable A2". Drafts of S85, S86 and S89 built and looked at (MA-7 added).
 - 20:58 UTC. ED4-1 ruled: the editor applies S37's curl. R-03's federal route display ruled for the systems designer (under (f)).
@@ -139,7 +139,7 @@ Read the engineer's R4-4 (set 21:05 by his clock note). Its data side matches (b
 - **The card prints S19's finding whole at 36 px or more:** its title, its grade line, the measure's period ("December 31, 2023"), the open dots' key words and its source line naming the Bureau of Justice Statistics, Prisoners in 2023, Table 7. A card cropped from its source is the view most often shared alone (RF-1's reasoning), so nothing that qualifies the figures may fall off it.
 - **"Words to post" state no figure the card does not print,** and any figure they state carries its year and source in the same post. They may repeat S19's title; they add no claim, adjective or comparison of their own.
 
-### R-2's answer and S94's note on 26 U.S.C. 7508A: ruled (21:11 UTC, for the research lead and the infographics maker)
+### R-2's answer and S94’s note on 26 U.S.C. 7508A: ruled (21:09 UTC, for the research lead and the infographics maker)
 
 The research lead read all 19 sections in the Law Revision Counsel's release (current through Public Law 119-138, November 3, 2026) and the four laws after it: 18 read the same as the 2024 edition the files quote. **The grade lines' dates stand as (c) gives them:** S89 and S94 "as in force on November 9, 2026", S91 and S92 "as in force on November 12, 2026". R-3 is already V7.1 item 29; no new row.
 

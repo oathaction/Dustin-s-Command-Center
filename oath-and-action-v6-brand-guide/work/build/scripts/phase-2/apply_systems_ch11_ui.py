@@ -14,6 +14,7 @@ it keeps the guide's (AX-S6). Scripts find their elements by data attributes fro
 prefixes every id and every class in a specimen.
 """
 import json
+import pathlib
 import re
 
 LOOP_ID = 'R1'       # DR-195: the loop the stepper runs; change only this to run another loop
@@ -501,8 +502,8 @@ def s_links_fail(ctx, m):
 
 # ------------------------------------------------------------------------------------------------ 11.14 the loop stepper
 def plural(label):
-    """Whether a chain label takes a plural verb: its head noun, the last word before any preposition, ends in a
-    single s (Safe seats raise; Primary decisiveness raises; Money in politics raises)."""
+    """Whether a variable's title takes a plural verb: its head noun, the last word before any preposition, ends in a
+    single s (Policy advantages for wealthy and organized interests raise; Concentration of household wealth raises)."""
     head = re.split(r'\s(?:in|to|of|for|on|from)\s', label)[0].split()[-1].lower()
     return head.endswith('s') and not head.endswith('ss')
 
@@ -514,7 +515,8 @@ def loop_steps(m):
     d = json.loads((m.ROOT / 'work/extract/atlas-v7-data.json').read_text())
     lp = d['loops'][LOOP_ID]
     links = d['links'] if isinstance(d['links'], dict) else {x['id']: x for x in d['links']}
-    labels = [lab for lab, _ in lp['chain_labels']]
+    # DR-265 (November 13, 2026): each variable's own title, never the chain label the loop's record lists for it
+    labels = [d['nodes'][c]['title'] for c, _ in lp['chain']]
     signs = [sg for _, sg in lp['chain']]
     grades = [links[lid]['evidence'] for lid in lp['links']]
     if lp.get('evidence') != 'plausible' or grades.index('plausible') != 1:
@@ -778,8 +780,10 @@ YIELD_BILL = dict(id='H.99009', title='Local news grants', states=['done', 'take
                   cta='How to send testimony')
 YIELD_HEAD = 'The House hears the local news grants bill on March 3'
 YIELD_REFORM = ('R-32', 'public and philanthropic funding for local news')
-YIELD_PILLS = ('Local news supply', 'Electoral pressure')      # B2 and C3, V7's loop short names
-YIELD_NOTE = ('In our atlas, more local news raises electoral pressure, the risk officials face of losing office. It '
+# B2 and C3 by their own titles (DR-265), read from Atlas V7, never the chain labels its loops list for them
+_V7_NODES = json.loads((pathlib.Path(__file__).resolve().parents[4] / 'work/extract/atlas-v7-data.json').read_text())['nodes']
+YIELD_PILLS = tuple(_V7_NODES[c]['title'] for c in ('B2', 'C3'))
+YIELD_NOTE = ('In our atlas, more local reporting raises officials’ risk of losing office. It '
               'grades the reform’s own effect a hypothesis, since no evaluation has yet shown that such funds improve '
               'coverage.')
 EMAIL_ERR = 'Enter an email address with an\u00a0@, such as name@example.com.'   # CD-S5: "an @," stays on one line

@@ -1,0 +1,39 @@
+{
+  "id": "14.82",
+  "title": "Use an Euler diagram to draw overlapping groups at their true size.",
+  "rule": [
+    "Draw each group as a circle whose area is in proportion to its count on one scale, the two that overlap set apart until the area they share matches the count in both, and a group in neither as a circle of its own, at least its own radius away. Leave out the frame for everyone, which two circles cannot fill at true size, and put the count for everyone in the measure line. Print each group’s count and share inside it, or below the circles on a leader where it does not fit."
+  ],
+  "use_when": "The reader needs to see how big each group and its overlap are, such as the 23.8 million people with both private and public health coverage against the 213.2 million with private coverage.",
+  "use_instead": [
+    {
+      "when": "The four counts matter more than their sizes",
+      "rule": "14.81"
+    },
+    {
+      "when": "The reader compares the groups exactly, side by side",
+      "rule": "14.15"
+    },
+    {
+      "when": "The groups are shares of one whole with no overlap",
+      "rule": "14.46"
+    }
+  ],
+  "why": {
+    "text": [
+      "A Venn diagram of one size can make a small overlap look as large as a big group. Drawn at true area, the overlap shows its real weight. The kit checks every circle’s radius and the shared area against their counts at every width."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S88",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.81",
+    "14.4",
+    "14.9"
+  ],
+  "builders": "Form euler-diagram: node work/build/chart-kit/oa-chart.mjs build s88; labels.regions maps each row to its region, labels.sets names the two circles, and labels.fills shades the overlap; the form fails a drawing whose shared area is more than 1 percent off its count.",
+  "correct": null,
+  "failure": null
+}

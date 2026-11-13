@@ -496,6 +496,18 @@
       }
     };
   };
+  // R4-4 (round 4): a card draws its inner form (encode.of) in a scaled group at width w / k from x, y, so the inner form's
+  // words print at k times their size and the checks read them there; o reaches the inner form as c.card. Returns the
+  // height drawn, in the card's px.
+  Ctx.prototype.inner = function (x, y, w, k, o) {
+    var inner = K.forms[this.encode.of], sv = [this.width, this.phone, this._h, this.card], n0 = this.texts.length, ih;
+    if (!inner || !inner.draw || inner === K.forms[this.spec.form]) throw new Error('a card names no other drawn form in encode.of');
+    var g = this.group({ transform: 'translate(' + x + ',' + y + ') scale(' + k + ')' });
+    this.width = Math.round(w / k); this.phone = this.width < PHONE_MAX; this.card = o || {}; this._h = 0;
+    try { inner.draw(this); ih = this._h * k; } finally { g.end(); this.width = sv[0]; this.phone = sv[1]; this._h = sv[2]; this.card = sv[3]; }
+    this.texts.slice(n0).forEach(function (b) { ih = Math.max(ih, (b.bottom !== undefined ? b.bottom : b.y + b.h) - y); });
+    return ih;
+  };
   // D3-1546 (round 4): a cell, a box that must hold every shape and word drawn while it is open (a tile's code, figure and
   // arrow) with o.spare px to spare on every side (default 1); checks.js fails one that leaves it. c.cell(null) closes it.
   Ctx.prototype.cell = function (x, y, w, h, o) {
@@ -730,6 +742,8 @@
     var t = opts.t || token_reader(opts.tokens || {});
     var width = Math.round(opts.width || K.artboard(spec, t));
     var c = new Ctx(spec, rows, { width: width, ground: opts.ground, t: t, extra: opts.extra, all_rows: opts.all_rows, uid: opts.uid || ('oac-' + String(spec.id).toLowerCase() + '-' + width) });
+    // R4-4 (round 4): a card's crop, drawn at its true size: exactly crop[1] px tall, every word 36 px or more (13 px in a feed)
+    if (opts.crop) { c.crop = { w: width, h: opts.crop[1], name: width + 'x' + opts.crop[1] }; c.min_text = K.CARD_MIN_TEXT; }
     if (def.inner && spec.encode && K.forms[spec.encode.of]) {
       var inn = K.forms[spec.encode.of];
       def = Object.assign({}, def, { encode: Object.assign({}, inn.encode, def.encode), labels: def.labels.concat(inn.labels) });
@@ -771,7 +785,7 @@
     var h = c._h;
     c.texts.forEach(function (b) { h = Math.max(h, Math.ceil((b.bottom !== undefined ? b.bottom : b.y + b.h) + 2)); });
     c.marks.forEach(function (m) { h = Math.max(h, Math.ceil(m.y + m.h + 1)); });
-    h = Math.max(1, h);
+    h = c.crop ? c.crop.h : Math.max(1, h);
     // BC S1: words on the ground that a quiet line drawn before them crosses are cleared: a knockout of the ground behind
     // their box, 2 px wider each side, which cuts the line cleanly (a minus sign or a decimal point keeps its shape); where
     // that box would touch any other shape or word drawn before them, the ground's halo round their letters. Every other
@@ -851,12 +865,13 @@
   // The layout guard: every text inside the artboard, no two texts overlapping, nothing under 13 px
   // ------------------------------------------------------------------------------------------------------------
   K.MIN_TEXT = 13;
+  K.CARD_MIN_TEXT = 36;
   K.guard = function (c, width, height) {
     var out = [], pad = 1;
     var tx = c.texts;
     for (var i = 0; i < tx.length; i++) {
       var a = tx[i];
-      if (a.size < K.MIN_TEXT - 1e-6) out.push('text under 13 px (' + a.size + ' px): "' + a.words.slice(0, 40) + '"');
+      if (a.size < (c.min_text || K.MIN_TEXT) - 1e-6) out.push('text under ' + (c.min_text ? c.min_text + ' px on a card (13 px in a feed)' : '13 px') + ' (' + a.size + ' px): "' + a.words.slice(0, 40) + '"');
       var top = a.top !== undefined ? a.top : a.y, bot = a.bottom !== undefined ? a.bottom : a.y + a.h;
       if (a.x < -0.5 || a.x + a.w > width + 0.5 || top < -0.5 || bot > height + 0.5)
         out.push('text outside the artboard: "' + a.words.slice(0, 40) + '" at ' + r1(a.x) + ',' + r1(a.y) + ' (' + r1(a.w) + ' wide; artboard ' + width + ' by ' + height + ')');
@@ -1246,6 +1261,20 @@
     if (!art) return null;
     var cs = root.getComputedStyle(fig), t = token_reader(function (n) { return cs.getPropertyValue(n); });
     var ground = opts.ground || (fig.closest && fig.closest('.oa-surface-charcoal') ? 'charcoal' : 'newsprint');
+    // R4-4 (round 4): a card draws each crop once at its true size; the page's CSS shows it at the column's width
+    if (spec.card && spec.card.crops) {
+      spec.card.crops.forEach(function (cr) {
+        var a = fig.querySelector('[data-oa-crop="' + cr[0] + 'x' + cr[1] + '"]'), lid = fig.id && (fig.ownerDocument || root.document).getElementById(fig.id + '-alt') ? fig.id + '-alt' : null;
+        if (!a || a.querySelector('svg.oac-svg')) return;
+        var r = K.draw(spec, rows, { width: cr[0], crop: cr, ground: ground, t: t, extra: extra, uid: (fig.id || 'oac') + '-' + cr[0] + 'x' + cr[1], label_id: lid });
+        a.insertAdjacentHTML('beforeend', r.svg);
+        if (lid) (fig.ownerDocument || root.document).getElementById(lid).hidden = true;
+        if (r.guard.length || r.warnings.length) fig.setAttribute('data-oa-warnings', String(r.guard.length + r.warnings.length));
+      });
+      fig.setAttribute('data-oa-drawn', 'card');
+      K.frame(fig);
+      return { redraw: function () {}, result: function () { return null; } };
+    }
     var last = -1, result = null, staged = !!(spec.stage || spec.stage_min);
     function draw() {
       var cw = art.clientWidth || fig.clientWidth, w = K.artboard(spec, t, cw), w0 = w;
