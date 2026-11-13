@@ -1,0 +1,107 @@
+{
+ "format": "oa-keys/1",
+ "set": "s-15-20-correct",
+ "rule": "15.20",
+ "component": "Reform chooser on a systems drawing",
+ "paths": [
+  {
+   "name": "Enter at the checked reform; the arrow keys choose, the panel and the line follow, and focus stays",
+   "steps": [
+    {
+     "key": "Tab",
+     "focus": ".oa-choice-input[value=\"R-03\"]",
+     "states": [
+      {
+       "el": ".oa-choice-input[value=\"R-03\"]",
+       "prop": "checked",
+       "is": true
+      },
+      {
+       "el": "[data-oa-panel=\"R-03\"]",
+       "visible": true
+      },
+      {
+       "el": "[data-oa-panel=\"R-04\"]",
+       "visible": false
+      }
+     ]
+    },
+    {
+     "key": "ArrowDown",
+     "focus": ".oa-choice-input[value=\"R-04\"]",
+     "states": [
+      {
+       "el": ".oa-choice-input[value=\"R-04\"]",
+       "prop": "checked",
+       "is": true
+      },
+      {
+       "el": "[data-oa-panel=\"R-04\"]",
+       "visible": true
+      },
+      {
+       "el": "[data-oa-panel=\"R-03\"]",
+       "visible": false
+      }
+     ],
+     "status_has": "Reform R-04 acts where the marks turn red"
+    },
+    {
+     "key": "ArrowDown",
+     "focus": ".oa-choice-input[value=\"R-03\"]",
+     "status_has": "Reform R-03 acts where the marks turn red"
+    },
+    {
+     "key": "ArrowUp",
+     "focus": ".oa-choice-input[value=\"R-04\"]",
+     "status_has": "Reform R-04 acts where the marks turn red"
+    },
+    {
+     "key": "Tab",
+     "focus": "[data-oa-panel=\"R-04\"] summary",
+     "states": [
+      {
+       "el": "[data-oa-panel=\"R-04\"] details",
+       "prop": "open",
+       "is": false
+      }
+     ]
+    },
+    {
+     "key": "Enter",
+     "focus": "[data-oa-panel=\"R-04\"] summary",
+     "states": [
+      {
+       "el": "[data-oa-panel=\"R-04\"] details",
+       "prop": "open",
+       "is": true
+      }
+     ]
+    },
+    {
+     "key": "Shift+Tab",
+     "focus": ".oa-choice-input[value=\"R-04\"]"
+    },
+    {
+     "key": "ArrowUp",
+     "focus": ".oa-choice-input[value=\"R-03\"]",
+     "states": [
+      {
+       "el": "[data-oa-panel=\"R-04\"] details",
+       "prop": "open",
+       "is": true
+      }
+     ]
+    },
+    {
+     "key": "Tab",
+     "focus": "[data-oa-panel=\"R-03\"] summary"
+    },
+    {
+     "key": "Tab",
+     "focus": "outside"
+    }
+   ]
+  }
+ ]
+}

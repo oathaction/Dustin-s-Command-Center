@@ -889,7 +889,7 @@ def plate_css(files):
 # ---------------------------------------------------------------------------------------------------------------
 class Book:
     def __init__(self):
-        self.files, self.manifest, self.examples = {}, {}, []
+        self.files, self.manifest, self.examples, self.keys = {}, {}, [], {}
 
     def add(self, sid, body, *, rule, alt, illustrative=False, readable=False, notes="", wide=False, interactive=False):
         """A plate at true size, never scaled (fix pass 2, D3-480). Every plate is a 328 px stage, the 296 px drawing with
@@ -909,6 +909,8 @@ class Book:
             m["readable"] = True
         if interactive:               # round 4: a live plate, a group the shell names, never an image (AX section 1)
             m["interactive"] = True
+        if sid in self.keys:          # round 4: its keyboard path, walked by the guide check from <sid>.keys.json
+            m["keys"] = True
         self.manifest[sid] = m
 
     def log(self, where, example, domain, states=(), level="federal"):
@@ -3093,6 +3095,69 @@ def stepper_steps(lid):
     return out
 
 
+def stepper_keys(lid, n_steps):
+    """Rule 15.19's keyboard path in oa-keys/1, as the accessibility lead's "Interaction specification" writes it (section
+    2), with the loop's ID and step count; the guide check walks it in the stage at 1440 and 390 px."""
+    n = n_steps
+    sl = ".oa-stepper-status"
+    return {"format": "oa-keys/1", "set": "s-15-19-correct", "rule": "15.19", "component": "Loop stepper on a systems drawing",
+            "paths": [
+                {"name": "Step by hand; the line says each step, the drawing follows, and no button moves focus",
+                 "steps": [
+                     {"key": "Tab", "focus": ".oa-stepper-play"},
+                     {"key": "Tab", "focus": ".oa-stepper-reset", "states": [{"el": ".oa-stepper-reset", "attr": "aria-disabled", "is": "true"}]},
+                     {"key": "Tab", "focus": ".oa-stepper-prev", "states": [{"el": ".oa-stepper-prev", "attr": "aria-disabled", "is": "true"}]},
+                     {"key": "Tab", "focus": ".oa-stepper-next"},
+                     {"key": "Enter", "focus": ".oa-stepper-next", "states": [{"el": ".oa-stepper-step:nth-child(1)", "attr": "aria-current", "is": "step"},
+                                                                              {"el": "[data-oa-stepper]", "attr": "data-oa-at", "is": "1"}],
+                      "status_has": f"Step 1 of {n}:", "status_el": sl},
+                     {"key": "Enter", "focus": ".oa-stepper-next", "status_has": f"Step 2 of {n}:", "status_el": sl},
+                     {"key": "Shift+Tab", "focus": ".oa-stepper-prev", "states": [{"el": ".oa-stepper-prev", "attr": "aria-disabled", "is": None}]},
+                     {"key": "Enter", "focus": ".oa-stepper-prev", "status_has": f"Step 1 of {n}:", "status_el": sl},
+                     {"key": "Shift+Tab", "focus": ".oa-stepper-reset"},
+                     {"key": "Enter", "focus": ".oa-stepper-reset", "states": [{"el": ".oa-stepper-reset", "attr": "aria-disabled", "is": "true"},
+                                                                               {"el": "[data-oa-stepper]", "attr": "data-oa-at", "is": "0"}],
+                      "status_has": "Ready.", "status_el": sl},
+                     {"key": "Tab", "focus": ".oa-stepper-prev"},
+                     {"key": "Tab", "focus": ".oa-stepper-next"},
+                     {"key": "Tab", "focus": "outside"}]},
+                {"name": "Play becomes Pause and back, with focus on it, under reduced motion too",
+                 "setup": {"reducedMotion": True},
+                 "steps": [
+                     {"key": "Tab", "focus": ".oa-stepper-play", "states": [{"el": ".oa-stepper-word", "text": "Play"}]},
+                     {"key": "Enter", "focus": ".oa-stepper-play", "states": [{"el": ".oa-stepper-word", "text": "Pause"}],
+                      "status_has": f"Step 1 of {n}:", "status_el": sl},
+                     {"key": "Enter", "focus": ".oa-stepper-play", "states": [{"el": ".oa-stepper-word", "text": "Play"}]}]}]}
+
+
+def chooser_keys(rids):
+    """Rule 15.20's keyboard path in oa-keys/1, the accessibility lead's section 3 with the ruled reforms: Tab enters at
+    the checked reform, the arrow keys choose and wrap, the panel and the status line follow, focus stays, the chosen
+    panel's disclosure keeps its own state."""
+    a, b_ = rids[0], rids[1]
+    inp = lambda r: f'.oa-choice-input[value="{r}"]'
+    pan = lambda r: f'[data-oa-panel="{r}"]'
+    say = lambda r: f"Reform {r} acts where the marks turn red"
+    wrap_ = rids[2] if len(rids) > 2 else a      # with two reforms, ArrowDown from the second wraps to the first
+    return {"format": "oa-keys/1", "set": "s-15-20-correct", "rule": "15.20", "component": "Reform chooser on a systems drawing",
+            "paths": [
+                {"name": "Enter at the checked reform; the arrow keys choose, the panel and the line follow, and focus stays",
+                 "steps": [
+                     {"key": "Tab", "focus": inp(a), "states": [{"el": inp(a), "prop": "checked", "is": True},
+                                                                {"el": pan(a), "visible": True}, {"el": pan(b_), "visible": False}]},
+                     {"key": "ArrowDown", "focus": inp(b_), "states": [{"el": inp(b_), "prop": "checked", "is": True},
+                                                                       {"el": pan(b_), "visible": True}, {"el": pan(a), "visible": False}],
+                      "status_has": say(b_)},
+                     {"key": "ArrowDown", "focus": inp(wrap_), "status_has": say(wrap_)},
+                     {"key": "ArrowUp", "focus": inp(b_), "status_has": say(b_)},
+                     {"key": "Tab", "focus": f"{pan(b_)} summary", "states": [{"el": f"{pan(b_)} details", "prop": "open", "is": False}]},
+                     {"key": "Enter", "focus": f"{pan(b_)} summary", "states": [{"el": f"{pan(b_)} details", "prop": "open", "is": True}]},
+                     {"key": "Shift+Tab", "focus": inp(b_)},
+                     {"key": "ArrowUp", "focus": inp(a), "states": [{"el": f"{pan(b_)} details", "prop": "open", "is": True}]},
+                     {"key": "Tab", "focus": f"{pan(a)} summary"},
+                     {"key": "Tab", "focus": "outside"}]}]}
+
+
 def rule_15_19(book):
     """Rule 15.19: the loop stepper on Loop R1 (ruling (f)), built on Rule 18.22's component and code, never a second copy."""
     lid = "R1"
@@ -3124,6 +3189,7 @@ def rule_15_19(book):
     root = (f'<div class="oa-stepper lv" data-oa-stepper>'
             + label_for(lp["links"], "the grade of the loop’s least certain step")
             + beside(hed("Loop", lid, lp["title"]) + f'<div class="dw">{svg_wrap(body, h)}</div>', right) + "</div>")
+    book.keys["s-15-19-correct"] = stepper_keys(lid, n_steps=len(steps))
     book.add("s-15-19-correct", root, rule="15.19", wide=True, interactive=True,
              alt=(f"Loop R1 from our systems atlas, “{lp['title']}”, drawn as three pills with its steps numbered 1 to 3, "
                   "beside the loop stepper of Rule 18.22: a status line, the three steps in order, and four buttons, Play, "
@@ -3276,6 +3342,7 @@ def rule_15_20(book):
     root = (f'<div class="lv" data-oa-chooser>{group}' + label_for(lp["links"], "the grade of the loop’s least certain step")
             + beside(left, "".join(panels)) + src("reforms R-03 and R-04, their targets, effects, routes and evidence, and "
                                                    "loop R4a with its connections") + "</div>")
+    book.keys["s-15-20-correct"] = chooser_keys(rids)
     book.add("s-15-20-correct", root, rule="15.20", wide=True, interactive=True,
              alt=("A reform chooser on Loop R4a from our systems atlas: a group of two radio buttons, Reform R-03 and Reform "
                   "R-04, with R-03 chosen; the loop drawn as three pills with the chosen reform’s targets in red; and the "
@@ -3437,6 +3504,9 @@ CSS.update({
     # AX section 1: a live plate's words and controls take the reader's forced colors on a ground of their own, and the
     # drawing keeps its own colors on its own ground
     "lv": (".lv{forced-color-adjust:auto;background:var(--oa-color-surface)}"
+           # the effect pips and the record square sit in a live plate's words: with forced colors they keep their shape
+           # and take the reader's text color through currentColor, as the words beside them do
+           ".lv :is(.pp,.rs){forced-color-adjust:none;fill:currentColor}.lv .pp .z{stroke:currentColor}"
            ".dw{forced-color-adjust:none;background:var(--oa-color-surface)}.lv>.oa-choice{margin:0 0 16px}"),
     "dw": (f".dw{{--k:{INK};--t:var(--oa-color-text-primary);--f:var(--oa-color-surface)}}"
            ".dw .ak-mark,.dw .tk{stroke:var(--k)}.dw .hd,.dw .tg polygon{fill:var(--k)}.dw text{fill:var(--t)}"
@@ -3787,6 +3857,11 @@ def write(data, book):
             old.unlink()
     for sid, txt in book.files.items():
         (SPECIMENS / f"{sid}.html").write_text(txt)
+    for old in SPECIMENS.glob("s-15-*.keys.json"):
+        if old.name[: -len(".keys.json")] not in book.keys:
+            old.unlink()
+    for sid, k in book.keys.items():
+        (SPECIMENS / f"{sid}.keys.json").write_text(json.dumps(k, indent=1, ensure_ascii=False) + "\n")
     (SPECIMENS / f"manifest-{MAKER}.json").write_text(json.dumps(book.manifest, indent=1, ensure_ascii=False) + "\n")
     p = CHAPTERS / "15-systems-graphics.json"
     p.write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n")

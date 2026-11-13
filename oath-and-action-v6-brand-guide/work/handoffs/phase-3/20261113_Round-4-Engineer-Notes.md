@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the en
 
 ## Status
 
-Started 20:39 UTC (clock read).
+Started 20:39 UTC (clock read). **Row done at 21:57 UTC (clock read); ready for the main session's closing checks.** My closing checks: kit self-test every planted fault caught; `build --all --no-png` with the sweep 95 of 95 PASS, 95 check files, 0 faults, 0 warnings; `guide_build.py --self-test` 35 of 35, 344 of 344; `guide_charts.py --self-test` every fault caught; data check 125 tables, 0 faults; `geo.js` current; tokens and token table current; `phase3_ch14_build.py --check` 98 of 98; **strict build 21:55, exit 0, 0 warnings, 11,501,698 bytes, 360 rules, 657 specimens; share per plate 23,878 for the 2 still to come; kit part 559,153 (reported figure 560,000); projection 15,051,540; Rules 15.19 to 15.21 70,489 of R4-6's 75,000.** The guide check's own self-test was still running at 21:57 (started 21:45; my change there is the key path walk, proved on its scratch page).
 
 - **R4-2: MEASURED (20:50), SIGNED OFF by the data lead (20:52), LANDED in the kit (20:57 UTC).** `forms/tile-map-shift-arrows.js`, `kit.js`, `checks.js` and `oa-chart.mjs` now equal the proved mirror copies byte for byte; the kit's self-test passes with the new case (every planted fault caught; the case itself fails when the cell check is removed). **For the cartographer:** S12 may now take `"stage_min": 618` in place of `"stage": 1024`, with its alt and phone words. Until it does, S12 draws the stacked tile on its 1024 px stage. Share per plate **13,172** once the landing build confirms it (below).
 - **R4-3 (cards as HTML text) and R4-4 (the social card): SET (21:05), LANDED in the kit (21:15 UTC)**, with IM-E1 (`typography.hold`), IM-E2 (four additions) and IM-E3 (facts at 13.5rem) folded in. Tested end to end on scratch card and card forms in the mirror: Node checks, the browser checks with planted faults caught, PNGs at true pixels, parity. The kit's self-test passes with a new R4-3 case (eight planted faults caught). Makers build on it now.
@@ -26,6 +26,15 @@ Started 20:39 UTC (clock read).
 - **Next:** the closing checks (running: the guide check's self-test, the kit's self-test and `build --all --no-png` with the sweep), then the strict build and weight report.
 
 ## Summary
+
+- **R4-2:** the stacked tile measured (share 13,235 to 13,172), signed off, landed: S12's only desk tile, `stage_min` (a floor for the stage), and D3-1546's check (`c.cell`), proved by the planted 558 px case. The cartographer set `"stage_min": 618`.
+- **R4-3:** cards as live HTML text built in Node (`html`, `h`, `h.mark`), never on the page, with Node and browser checks; IM-E1 to IM-E4 and IM-E7, DD-I10 to DD-I12 folded in.
+- **R4-4:** the social card's two crops at true size (`card.crops`, `c.crop`, the 36 px floor, `c.inner`), true-pixel PNGs; the dot plot's card mode on the data lead's five conditions with IM-E6's band, DD-I21's cleared gridlines and IM-E8; S19 byte-identical.
+- **A4-E1:** `K.parts.icon` (a Civic Line drawing from the sprite) and `K.parts.chip` (a typed ID chip).
+- **C4-E1:** tokens 6.0.0-gate3.3 (the phone tile gap 2 px) with chapter 26's table; C4-E2 went to the component engineer.
+- **DR-271:** allocations reported as notes; the page's 16 MB the one stop.
+- **Also:** the guide check walks specimen key paths (R4-5); the orphan guard opt-in; ED4-3, ED4-6; the 1 px stage case; the kit's CSS minify.
+- **Board 3:** 16 drawings of 1,133 moved from the round's start (S12 8, S07 4, S78 4), plus 4 and 20 of 107 HTML source lines' breaks at 1440 and 390 px, chapter 26's table and S94's date rows.
 
 ## Handed to the component engineer
 
@@ -156,6 +165,7 @@ Each strict build of the guide's own chapters to scratch (`guide_build.py --stri
 | 20:49, scratch mirror with the stacked tile | (mirror) | | 513,702 | 2,229,083 | 13,172 for 13 | | |
 | 21:19, R4-2 to R4-4 and A4-E1 landed, the makers' forms registered (97 of 97) | **1**: "chart kit weighs 0.55 MB, over its budget of 0.55 MB" | 11,358,287 | 550,217 | 2,339,184 | 17,323 for 7 | 15,050,450 | 312,594 |
 | 21:21, the page's kit.css minified | 0, 0 warnings | 11,405,561 | **549,966 (34 bytes under)** | 2,386,458 | 24,663 for 3 | 15,050,450 | 312,594 |
+| 21:55, every landing (final) | **0, 0 warnings** | 11,501,698 | 559,153 (reported figure 560,000) | 2,412,720 | 23,878 for 2 | 15,051,540 | 381,379; **Rules 15.19 to 15.21: 69,616 on the page plus 873 of the shell's script = 70,489 of 75,000 (R4-6)** |
 | 21:40, the token table rerun | **0, 0 warnings** | 11,500,361 | 558,224 | 2,411,668 | 24,404 for 2 | 15,051,454 | 381,180 |
 | 21:39, DR-271, the dot plot's card mode, IM-E6 to IM-E8, the shared rows, C4-E1 and the makers' latest forms | **1**: Rule 26.7's token table one version behind (C4-E1; waiting on the main session) | 11,500,254 | 558,221 (the reported figure 560,000, a note under DR-271) | 2,411,559 | 24,458 for 2 | 15,051,456 | 381,180 (the systems designer's 15.19 to 15.21) |
 
@@ -207,6 +217,14 @@ Dustin's answer (DR-271), applied by the main session's instruction. What change
 - D3-xxx | A cell's spare is 1 px by default | The cartographer's board 2 measure called a tile "held" at 1 px or more to spare on every side
 
 ## Requests
+
+None outstanding from me.
+
+## Files
+
+- Modified (all committed by the main session's snapshots as the round went, but for `plate-share.json`): `work/build/chart-kit/kit.js`, `kit-build.js`, `parts.js`, `checks.js`, `oa-chart.mjs`, `kit.css`, `words.json`, `plate-share.json` (the 21:55 build's share, 23,878), `forms/tile-map-shift-arrows.js` (DR-261), `forms/dot-plot.js` (the card mode, on the main session's word); `work/build/scripts/phase-2/guide_build.py`, `guide_check.js`, `token_table_build.py`'s output `work/build/guide/specimens/s-26-token-table.html` (on the main session's word); `work/build/scripts/phase-3/guide_charts.py`, `phase3_ch14_build.py`; `work/build/tokens/src/oa-tokens.src.mjs`, `tokens.css`, `tokens.json`.
+- Created: these notes.
+- Scratch (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af59004-38b5-5773-926b-c1b00dd9bd57/scratchpad/phase-3/round-4/engineer/`): the mirror `m/`, strict builds `b0` to `b6`, kit builds (`k12real`, `k85`, `kim7`, `kc4`, `k95`, `kall`, `cards/`), the snapshot `snap/`, `orphan_reach.json`, `keys/`, `scripts/` (`plant_overrun.mjs`, `kit_bytes.mjs`, `plates.py`, `snap_spec.mjs`, `card_gaps.mjs`, `css_equal.cjs`, `src_breaks.cjs`, `orphan_reach.mjs`, `codes326.mjs`, `stage_fit.cjs`).
 
 ## Tested
 

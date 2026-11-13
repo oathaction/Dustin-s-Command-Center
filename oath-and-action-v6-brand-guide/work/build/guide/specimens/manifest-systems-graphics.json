@@ -420,7 +420,8 @@
   "illustrative": false,
   "notes": "Rule 18.22's markup with no script of its own (C-1); its controls and reason line read from work/build/guide/code/c-18-loop-stepper.html; the drawing follows data-oa-at through the chapter's block; every word of the steps read from the atlas's loop and connection records.",
   "wide_px": 680,
-  "interactive": true
+  "interactive": true,
+  "keys": true
  },
  "s-15-19-failure": {
   "chapter": "15",
@@ -442,7 +443,8 @@
   "illustrative": false,
   "notes": "Rule 18.3's choice and Rule 18.8's disclosure as their code sets write them; the choice shows through the chapter's block from the checked radio, scripts on or off; the status line is the shell's (C-2). Every value read from the atlas's reform and loop records.",
   "wide_px": 680,
-  "interactive": true
+  "interactive": true,
+  "keys": true
  },
  "s-15-20-failure": {
   "chapter": "15",
