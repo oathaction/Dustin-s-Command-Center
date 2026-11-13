@@ -277,6 +277,7 @@ def main():
     rule_01_9 = {
         # the board's table (the data lead's schema): chapter 14 as a whole, round 4 as planned; "built" is rounds 0 to 3
         "limits": {"domain": "1 in 4", "state": "1 in 5"},
+        "refs": ["DR-229", "D3-689"],
         "total_examples": whole_t["examples"],
         "limit_domain": whole_t["limit_domain"], "limit_state": whole_t["limit_state"],
         "atlas_wide": whole_t["atlas_wide"],
@@ -300,9 +301,9 @@ def main():
         if x["domain"] != "D02" and not voting:
             continue
         ds = x.get("dataset") or []
-        data = ("voting: reported voting or turnout, counted under taking part" if x["domain"] == "D10" else
-                "the atlas's log of rule changes, counted under elections" if any(str(d).startswith("v7-repair-log") for d in ds) else
-                "election results, seats or election rules")
+        data = ("Reported voting, counted under taking part" if x["domain"] == "D10" else
+                "The atlas's log of rule changes, counted under elections" if any(str(d).startswith("v7-repair-log") for d in ds) else
+                "Election results, seats or election rules")
         row = {"where": x["where"], "rule": x["rule"], "kind": x["kind"], "domain": x["domain"], "data": data,
                "dataset": ds, "example": x.get("example")}
         if x["kind"] == "specimen":
@@ -311,23 +312,25 @@ def main():
                         "election_use": bool(c and ELECTION_USE.search(c["use"])),
                         "built_in_phase_2": x["built_in_phase_2"]})
             row["spec"] = x["where"]
-            row["test"] = ("passes" if row["election_use"] else
-                           "not applied: built in Phase 2 and approved on board 1, before the test" if x["built_in_phase_2"]
-                           else "fails")
+            row["test"] = ("Passes" if row["election_use"] else
+                           "Not applied: built in Phase 2 and approved on board 1 before the test" if x["built_in_phase_2"]
+                           else "Fails")
         else:
-            row["test"] = "not a form: a rule's plate, whose data the rule itself needs"
+            row["test"] = "Not applied: a rule's own plate, whose lesson needs the data"
         row["election_data"] = True
-        row["passes"] = row["test"] == "passes"
+        # true or false only where the test applies; null where it was not applied
+        row["passes"] = True if row["test"] == "Passes" else False if row["test"] == "Fails" else None
         elect.append(row)
     r4_elect = [x for x in r4 if x["domain"] == "D02"]
     dr_229 = {
-        "test": "D3-689: a form keeps election data only where the coverage plan writes its use as an election question",
+        "test": "A form keeps election data only where the coverage plan writes its use as an election question",
+        "refs": ["DR-229", "D3-689"],
         "examples": elect,
         "count": len(elect),
         "election_domain": sum(1 for x in elect if x["domain"] == "D02"),
         "voting_under_taking_part": sum(1 for x in elect if x["domain"] == "D10"),
-        "new_forms_pass": sum(1 for x in elect if x["kind"] == "specimen" and not x.get("built_in_phase_2") and x["test"] == "passes"),
-        "new_forms_fail": sum(1 for x in elect if x["kind"] == "specimen" and not x.get("built_in_phase_2") and x["test"] == "fails"),
+        "new_forms_pass": sum(1 for x in elect if x["kind"] == "specimen" and not x.get("built_in_phase_2") and x["test"] == "Passes"),
+        "new_forms_fail": sum(1 for x in elect if x["kind"] == "specimen" and not x.get("built_in_phase_2") and x["test"] == "Fails"),
         "built_specimens": sum(1 for x in elect if x.get("built_in_phase_2")),
         "rule_plates": sum(1 for x in elect if x["kind"] == "rule plate"),
         "round_4_planned_election_rows": len(r4_elect),

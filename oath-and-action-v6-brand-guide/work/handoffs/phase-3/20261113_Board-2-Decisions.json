@@ -1,7 +1,7 @@
 {
  "schema": "board-2-decisions/1",
  "state": "signed off",
- "updated_utc": "2026-11-13T17:43:30Z",
+ "updated_utc": "2026-11-13T17:51:55Z",
  "written_by": "data lead",
  "words_owner": "editor",
  "reply_line": "To answer, reply “As recommended”, or name the item and your change.",
@@ -9,7 +9,7 @@
   {
    "id": "board-1-changed",
    "title": "Board 1 drawings that changed",
-   "lede": "Three drawings you approved on board 1 changed in rounds 2 and 3: S12, S16 and S10. Eleven board 1 drawings, S12 and S16 among them, moved a word, label or key, most of them only at widths board 1 did not show, and twelve round 1 charts changed the words that name an ink. S12 is the one choice: we recommend the stacked tile in place of the scrolling frame, and one approval for the rest.",
+   "lede": "Four drawings you approved on board 1 changed in rounds 1 to 3: S12, S16, S10 and S05. Thirteen board 1 drawings, S12 and S16 among them, moved a word, a label, a line or a key, most of them only at widths board 1 did not show, and twelve round 1 charts changed the words that name an ink. S12 is the one choice: we recommend the stacked tile in place of the scrolling frame, and one approval for the rest.",
    "approval": "one",
    "items": [
     {
@@ -39,7 +39,7 @@
        "who": "creative director",
        "text": "S12's stage: the arrows draw, but at a 1440 px desk a reader sees about 70 percent of the map and must scroll to reach the title's eastern states. Board 2 should show the scrolling stage beside the stacked tile, which keeps board 1's encoding and fits the column from 723 px.",
        "source": "work/handoffs/phase-3/20261113_Round-3-CD-Rescores.json#risks_for_dustin",
-       "note": "Written before the frame widened over the chapter list (D3-1515) and before the cartographer measured the stacked tile's first width, 618 px, which is narrower than the 723 px the creative director gave."
+       "note": "Written before the frame widened over the chapter list and before the cartographer measured the stacked tile's first width, 618 px, which is narrower than the 723 px the creative director gave."
       }
      ],
      "pictures": [
@@ -135,7 +135,7 @@
      "rule": "14.116",
      "title": "S16, the turnout bubble map",
      "answer": "S16 now draws on the Census Bureau's 2024 state outlines, with Alaska and Hawaii framed apart, DC on a leader at a desk, every state's code on a phone, a credit line for the map, and the range words you approved on November 13. Its data, circle sizes, inks and named states are as board 1 approved.",
-     "what_changed": "The 2024 outlines, with the coast drawn as an edge; Alaska and Hawaii each in a frame, not to scale; DC on a leader at a desk and West Virginia beside its own circle; codes placed so that at a 358 px phone drawing all 51 carry a code, where board 1's named two in a note; a credit line naming the map's source; note 3's range and the alt's last sentence in the words of DR-256.",
+     "what_changed": "The 2024 outlines, with the coast drawn as an edge; Alaska and Hawaii each in a frame, not to scale; DC on a leader at a desk and West Virginia beside its own circle; codes placed so that at a 358 px phone drawing all 51 carry a code, where board 1's named two in a note; a credit line naming the map's source; note 3's range and the alt's last sentence in the words you approved on November 13.",
      "why": "Round 3 moved every state map onto one set of 2024 outlines, and the reviewers asked for DC and the small northeastern states to be findable. Placement only: the data, the circle scale and its key, the inks, the title, the notes but note 3, and the table are unchanged.",
      "recommendation": "Approve S16 as drawn.",
      "refs": [
@@ -223,9 +223,52 @@
      ]
     },
     {
+     "id": "S05",
+     "spec": "S05",
+     "rule": "14.30",
+     "title": "S05, homeownership by race and ethnicity",
+     "answer": "S05 now draws the gap to non-Hispanic White households as a bracket in 2003 and in 2025, in the Hispanic and Black panels, with 2003 marked on the time axis. Board 1 gave those gaps in a note, since the chart kit could not yet draw a bracket. The lines, inks and title are as board 1 approved.",
+     "what_changed": "Four brackets with their figures: Hispanic households 28.7 points behind in 2003 and 25.8 in 2025; Black households 27.3 behind in 2003 and 29.6 in 2025. Note 1 now gives each change against its margin of error, and the gridlines draw before the panel words.",
+     "why": "The brackets were planned for S05 before board 1 and waited on the kit; a note should not describe a mark the reader cannot find.",
+     "recommendation": "Approve S05 as drawn.",
+     "refs": [
+      "D3-36",
+      "D3-191",
+      "D3-428"
+     ],
+     "question_for_dustin": false,
+     "facts": [
+      {
+       "label": "Gaps checked by script",
+       "value": "2003 and 2025 annual rates in the Census Bureau's file, to one decimal"
+      }
+     ],
+     "pictures": [
+      {
+       "kind": "board-1",
+       "spec": "s05",
+       "width": 1440,
+       "ground": "newsprint",
+       "path": "work/boards/phase-3/round-0/specimens/s05-newsprint-1440.png",
+       "label": "Board 1",
+       "role": "before"
+      },
+      {
+       "kind": "guide",
+       "spec": "s05",
+       "width": 1440,
+       "ground": "newsprint",
+       "path": null,
+       "label": "Today at a 1,440 px window",
+       "role": "after",
+       "element": "oac-s-14-s05"
+      }
+     ]
+    },
+    {
      "id": "placement",
-     "title": "Eleven board 1 drawings moved a word, a label or a key",
-     "answer": "A width check now draws every chart at every width from 256 px up, and a crossing check finds words that touch a line. Eleven board 1 drawings moved a word, a label or a key where those checks found a fault, most of them only at widths board 1 did not show. No figure, ink or word changed.",
+     "title": "Thirteen board 1 drawings moved a word, a label, a line or a key",
+     "answer": "A width check now draws every chart at every width from 256 px up, and a crossing check finds words that touch a line. Thirteen board 1 drawings moved a word, a label, a line or a key, eleven where those checks found a fault and two by the chart kit's later craft fixes, most of them only at widths board 1 did not show. No figure, ink or word changed.",
      "what_changed": "Each row says what moved and where. Each owner compared the drawing before and after its move: S01, S02, S07, S15 and S16 drew the same at 1,440 and 390 px.",
      "why": "At some widths a label ran past the edge or across a line.",
      "recommendation": "Approve the moves as listed.",
@@ -254,6 +297,14 @@
        ]
       },
       {
+       "spec": "S04",
+       "rule": "14.19",
+       "what_changed": "Each row's rule now breaks round the value labels it crosses and sits a pixel lower, the chart kit's clearing of words a quiet line crosses.",
+       "refs": [
+        "D3-946"
+       ]
+      },
+      {
        "spec": "S05",
        "rule": "14.30",
        "what_changed": "Gridlines draw before the panel words, and each bracket's words after its lines; only the order of drawing changed.",
@@ -270,9 +321,15 @@
        ]
       },
       {
+       "spec": "S08",
+       "rule": "14.49",
+       "what_changed": "The two rules above and below the year labels sit a pixel lower.",
+       "refs": []
+      },
+      {
        "spec": "S09",
        "rule": "14.38",
-       "what_changed": "Each label is measured at the width it is drawn and may wrap at six more widths; the drawing differs at 558 px only.",
+       "what_changed": "Each label is measured at the width it is drawn and may wrap at six more widths; some event stems sit a pixel off board 1's.",
        "refs": [
         "D3-904"
        ]
@@ -313,7 +370,7 @@
       {
        "spec": "S15",
        "rule": "14.125",
-       "what_changed": "The “Leader changed” tag goes under the state's name on a phone where it would reach the shift column.",
+       "what_changed": "The “Leader changed” tag goes under the state's name on a phone where it would reach the shift column; at a desk the rule under the national row sits a pixel lower.",
        "refs": [
         "D3-911"
        ]
@@ -1032,7 +1089,7 @@
      "spec": null,
      "rule": "14.124",
      "title": "Sketch 14.124 in red and blue",
-     "answer": "The misleading half now draws in a plain news red and blue that are none of the guide's inks, under its do-not-publish bar, with each color named in the key. The better half is unchanged. The guide's build check gives that one half a named exemption, recorded as DR-64's one exception.",
+     "answer": "The misleading half now draws in a plain news red and blue that are none of the guide's inks, under its do-not-publish bar, with each color named in the key. The better half is unchanged. The guide's build check gives that one half a named exemption, recorded as the one exception to your rule of no red and blue on an election graphic.",
      "what_changed": "Party A's seven small places in red (#CC0000) and Party B's five large places in blue (#3A8AC4), each with a thin edge; the blue sits far enough from the red in lightness to tell them apart in gray print. The caption names both colors.",
      "why": "Gray did not show the first harm the entry names, color used as one side's scoreboard.",
      "recommendation": "Done.",
@@ -1188,12 +1245,16 @@
  ],
  "counts": {
   "script": "work/build/scripts/phase-3/board_2_data_lead_counts.py",
-  "run_utc": "2026-11-13T17:35:22Z",
+  "run_utc": "2026-11-13T17:51:45Z",
   "rule_01_9": {
    "limits": {
     "domain": "1 in 4",
     "state": "1 in 5"
    },
+   "refs": [
+    "DR-229",
+    "D3-689"
+   ],
    "total_examples": 108,
    "limit_domain": 27,
    "limit_state": 21,
@@ -1793,62 +1854,66 @@
    "note": "Chapter 14 holds 97 examples as built, 84 specimens and 13 rule plates, and 108 with round 4's 11 as planned, the figure the data lead's ruling (g) gave. No atlas domain passes one in four (27 of 108) and no state passes one in five (21). Taxes, wealth and economic security is the largest domain at 16, and California and Florida are the most named states at 5 each. The script's count of the 97 equals the guide's own build log."
   },
   "dr_229": {
-   "test": "D3-689: a form keeps election data only where the coverage plan writes its use as an election question",
+   "test": "A form keeps election data only where the coverage plan writes its use as an election question",
+   "refs": [
+    "DR-229",
+    "D3-689"
+   ],
    "examples": [
     {
      "where": "Rule 14.3 plate",
      "rule": "14.3",
      "kind": "rule plate",
      "domain": "D10",
-     "data": "voting: reported voting or turnout, counted under taking part",
+     "data": "Reported voting, counted under taking part",
      "dataset": [],
      "example": "Reported voting by age, presidential years 2004 to 2024",
-     "test": "not a form: a rule's plate, whose data the rule itself needs",
+     "test": "Not applied: a rule's own plate, whose lesson needs the data",
      "election_data": true,
-     "passes": false
+     "passes": null
     },
     {
      "where": "Rule 14.4 plate",
      "rule": "14.4",
      "kind": "rule plate",
      "domain": "D10",
-     "data": "voting: reported voting or turnout, counted under taking part",
+     "data": "Reported voting, counted under taking part",
      "dataset": [],
      "example": "Reported voting, citizens 18 and over, presidential years",
-     "test": "not a form: a rule's plate, whose data the rule itself needs",
+     "test": "Not applied: a rule's own plate, whose lesson needs the data",
      "election_data": true,
-     "passes": false
+     "passes": null
     },
     {
      "where": "Rule 14.7 plate",
      "rule": "14.7",
      "kind": "rule plate",
      "domain": "D02",
-     "data": "election results, seats or election rules",
+     "data": "Election results, seats or election rules",
      "dataset": [],
      "example": "House seats by party, November 11, 2026",
-     "test": "not a form: a rule's plate, whose data the rule itself needs",
+     "test": "Not applied: a rule's own plate, whose lesson needs the data",
      "election_data": true,
-     "passes": false
+     "passes": null
     },
     {
      "where": "Rule 14.9 plate",
      "rule": "14.9",
      "kind": "rule plate",
      "domain": "D10",
-     "data": "voting: reported voting or turnout, counted under taking part",
+     "data": "Reported voting, counted under taking part",
      "dataset": [],
      "example": "Reported turnout, ten states with the most voting-age citizens, 2024",
-     "test": "not a form: a rule's plate, whose data the rule itself needs",
+     "test": "Not applied: a rule's own plate, whose lesson needs the data",
      "election_data": true,
-     "passes": false
+     "passes": null
     },
     {
      "where": "S03",
      "rule": "14.15",
      "kind": "specimen",
      "domain": "D02",
-     "data": "the atlas's log of rule changes, counted under elections",
+     "data": "The atlas's log of rule changes, counted under elections",
      "dataset": [
       "v7-repair-log-by-instrument"
      ],
@@ -1858,16 +1923,16 @@
      "election_use": false,
      "built_in_phase_2": true,
      "spec": "S03",
-     "test": "not applied: built in Phase 2 and approved on board 1, before the test",
+     "test": "Not applied: built in Phase 2 and approved on board 1 before the test",
      "election_data": true,
-     "passes": false
+     "passes": null
     },
     {
      "where": "S04",
      "rule": "14.19",
      "kind": "specimen",
      "domain": "D10",
-     "data": "voting: reported voting or turnout, counted under taking part",
+     "data": "Reported voting, counted under taking part",
      "dataset": [
       "census-cps-reported-voting",
       "census-cps-voting-age-gap-moe"
@@ -1878,16 +1943,16 @@
      "election_use": false,
      "built_in_phase_2": true,
      "spec": "S04",
-     "test": "not applied: built in Phase 2 and approved on board 1, before the test",
+     "test": "Not applied: built in Phase 2 and approved on board 1 before the test",
      "election_data": true,
-     "passes": false
+     "passes": null
     },
     {
      "where": "S11",
      "rule": "14.25",
      "kind": "specimen",
      "domain": "D02",
-     "data": "election results, seats or election rules",
+     "data": "Election results, seats or election rules",
      "dataset": [
       "fec-presidential-shift-by-state"
      ],
@@ -1897,7 +1962,7 @@
      "election_use": true,
      "built_in_phase_2": true,
      "spec": "S11",
-     "test": "passes",
+     "test": "Passes",
      "election_data": true,
      "passes": true
     },
@@ -1906,7 +1971,7 @@
      "rule": "14.28",
      "kind": "specimen",
      "domain": "D02",
-     "data": "election results, seats or election rules",
+     "data": "Election results, seats or election rules",
      "dataset": [
       "house-history-party-divisions"
      ],
@@ -1916,7 +1981,7 @@
      "election_use": true,
      "built_in_phase_2": false,
      "spec": "S26",
-     "test": "passes",
+     "test": "Passes",
      "election_data": true,
      "passes": true
     },
@@ -1925,7 +1990,7 @@
      "rule": "14.49",
      "kind": "specimen",
      "domain": "D02",
-     "data": "the atlas's log of rule changes, counted under elections",
+     "data": "The atlas's log of rule changes, counted under elections",
      "dataset": [
       "v7-repair-log"
      ],
@@ -1935,16 +2000,16 @@
      "election_use": false,
      "built_in_phase_2": true,
      "spec": "S08",
-     "test": "not applied: built in Phase 2 and approved on board 1, before the test",
+     "test": "Not applied: built in Phase 2 and approved on board 1 before the test",
      "election_data": true,
-     "passes": false
+     "passes": null
     },
     {
      "where": "S48",
      "rule": "14.53",
      "kind": "specimen",
      "domain": "D02",
-     "data": "election results, seats or election rules",
+     "data": "Election results, seats or election rules",
      "dataset": [
       "clerk-house-current-party-breakdown",
       "house-history-party-divisions"
@@ -1955,7 +2020,7 @@
      "election_use": true,
      "built_in_phase_2": false,
      "spec": "S48",
-     "test": "passes",
+     "test": "Passes",
      "election_data": true,
      "passes": true
     },
@@ -1964,7 +2029,7 @@
      "rule": "14.97",
      "kind": "specimen",
      "domain": "D02",
-     "data": "election results, seats or election rules",
+     "data": "Election results, seats or election rules",
      "dataset": [
       "ballotpedia-rcv-prohibitions-by-state",
       "v7-rcv-local-routes"
@@ -1975,7 +2040,7 @@
      "election_use": true,
      "built_in_phase_2": false,
      "spec": "S67",
-     "test": "passes",
+     "test": "Passes",
      "election_data": true,
      "passes": true
     },
@@ -1984,7 +2049,7 @@
      "rule": "14.114",
      "kind": "specimen",
      "domain": "D02",
-     "data": "election results, seats or election rules",
+     "data": "Election results, seats or election rules",
      "dataset": [
       "ballotpedia-rcv-prohibitions-by-state"
      ],
@@ -1994,16 +2059,16 @@
      "election_use": false,
      "built_in_phase_2": true,
      "spec": "S07",
-     "test": "not applied: built in Phase 2 and approved on board 1, before the test",
+     "test": "Not applied: built in Phase 2 and approved on board 1 before the test",
      "election_data": true,
-     "passes": false
+     "passes": null
     },
     {
      "where": "S12",
      "rule": "14.115",
      "kind": "specimen",
      "domain": "D02",
-     "data": "election results, seats or election rules",
+     "data": "Election results, seats or election rules",
      "dataset": [
       "fec-presidential-shift-by-state"
      ],
@@ -2013,16 +2078,16 @@
      "election_use": false,
      "built_in_phase_2": true,
      "spec": "S12",
-     "test": "not applied: built in Phase 2 and approved on board 1, before the test",
+     "test": "Not applied: built in Phase 2 and approved on board 1 before the test",
      "election_data": true,
-     "passes": false
+     "passes": null
     },
     {
      "where": "S16",
      "rule": "14.116",
      "kind": "specimen",
      "domain": "D10",
-     "data": "voting: reported voting or turnout, counted under taking part",
+     "data": "Reported voting, counted under taking part",
      "dataset": [
       "census-cps-2024-turnout-by-state"
      ],
@@ -2032,16 +2097,16 @@
      "election_use": false,
      "built_in_phase_2": true,
      "spec": "S16",
-     "test": "not applied: built in Phase 2 and approved on board 1, before the test",
+     "test": "Not applied: built in Phase 2 and approved on board 1 before the test",
      "election_data": true,
-     "passes": false
+     "passes": null
     },
     {
      "where": "S80",
      "rule": "14.119",
      "kind": "specimen",
      "domain": "D02",
-     "data": "election results, seats or election rules",
+     "data": "Election results, seats or election rules",
      "dataset": [
       "clerk-house-results-2024-classes",
       "census-cb-2024-cd119"
@@ -2052,7 +2117,7 @@
      "election_use": true,
      "built_in_phase_2": false,
      "spec": "S80",
-     "test": "passes",
+     "test": "Passes",
      "election_data": true,
      "passes": true
     },
@@ -2061,7 +2126,7 @@
      "rule": "14.121",
      "kind": "specimen",
      "domain": "D02",
-     "data": "election results, seats or election rules",
+     "data": "Election results, seats or election rules",
      "dataset": [
       "clerk-house-results-2024-classes"
      ],
@@ -2071,7 +2136,7 @@
      "election_use": true,
      "built_in_phase_2": false,
      "spec": "S82",
-     "test": "passes",
+     "test": "Passes",
      "election_data": true,
      "passes": true
     },
@@ -2080,7 +2145,7 @@
      "rule": "14.125",
      "kind": "specimen",
      "domain": "D02",
-     "data": "election results, seats or election rules",
+     "data": "Election results, seats or election rules",
      "dataset": [
       "fec-presidential-shift-by-state"
      ],
@@ -2090,7 +2155,7 @@
      "election_use": true,
      "built_in_phase_2": true,
      "spec": "S15",
-     "test": "passes",
+     "test": "Passes",
      "election_data": true,
      "passes": true
     }
@@ -2103,12 +2168,12 @@
    "built_specimens": 8,
    "rule_plates": 4,
    "round_4_planned_election_rows": 0,
-   "note": "Seventeen of the 97 examples draw election or voting data: 12 in elections and representation, and 5 on reported voting, counted under taking part. Every form built in rounds 1 to 3 that keeps election data passes D3-689's test, since the coverage plan writes its use as an election question: S26, S48, S67, S80 and S82. Eight are Phase 2 specimens board 1 approved before the test (S03, S04, S07, S08, S11, S12, S15 and S16), and four are rule plates whose rules need the data. Round 4 plans no election data."
+   "note": "Seventeen of the 97 examples draw election or voting data: 12 in elections and representation, and 5 on reported voting, counted under taking part. Every form built in rounds 1 to 3 that keeps election data passes the test, since the coverage plan writes its use as an election question: S26, S48, S67, S80 and S82. Eight are Phase 2 specimens board 1 approved before the test (S03, S04, S07, S08, S11, S12, S15 and S16), and four are rule plates whose rules need the data. Round 4 plans no election data."
   }
  },
  "checks": {
   "script": "work/build/scripts/phase-3/board_2_data_lead_counts.py",
-  "run_utc": "2026-11-13T17:35:22Z",
+  "run_utc": "2026-11-13T17:51:45Z",
   "tiers": {
    "forms": 114,
    "by_tier": {

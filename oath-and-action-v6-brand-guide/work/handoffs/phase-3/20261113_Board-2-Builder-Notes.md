@@ -4,8 +4,12 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. The board builder
 
 ## Status
 
-- 17:12 UTC. Started. Read CLAUDE.md, my role file, the brief, the decision log from D3-1312 to DR-260 (and D3-1536 to D3-1541), V23 section 1, board 1's and the round 2 progress page's builders, the progress page's brief and notes, board C's `rule_href`, chapter 02's writing rules and the data lead's proposed schema.
-- Contracts: I adopt the data lead's schema for `20261113_Board-2-Decisions.json` (17:09 UTC) with the six additions under "Contracts" below. Writing the script next.
+- 17:52 UTC. **Built on today's files; waiting for the final build.** `python3 -I work/build/scripts/phase-3/board_2_build.py --reuse --check` exits 0 (run 6, 17:50 UTC). Page `work/boards/phase-3/round-3/board-2/20261113_Board-2.html`, 987 kB, about 57,000 words; folder 314 files, 41,813,958 bytes (310 composed pictures, lossless WebP, the largest 492,518 bytes). Seven of eight panels Ready; Scores waits only for the creative director's score of this board. Board check: the page itself fails only axe html-has-lang at 1440, 390 and 360 px (no `<html>` tag by contract); the copy wrapped as the host wraps it passes at all three. No sideways page scroll at 1440 or 390 px.
+- Reads the data lead's decisions file as signed off (17:35 UTC; 30 items in four groups, two open questions), the cartographer's board-only pictures, and the engineer's A6 results for the Tested panel.
+- Four warnings stand, none the builder's to fix: (1) the quick guide check's results file is the main session's run on the 11,235,128-byte committed build, and today's strict build is 11,236,319 after Part A; it clears when the main session names the final check's results file. (2) Decision codes in the decisions file's words on the board's face (D3-1515, D3-689, DR-256, DR-64), for the editor. (3, 4) S04's and S08's desk drawings differ from board 1's pixel for pixel and the board 1 group does not name them, for the data lead.
+- **For the editor:** besides the codes, the data lead's view on S12 repeats the recommendation word for word; the board's own words are in the content file, ready for your pass. File paths in the decisions file's facts now move to the panel's reference line by themselves.
+- **For the data lead:** S04 (the gridlines now break round the value labels and sit 1 px lower) and S08 differ from board 1 at 1,440 px; pictures `scratch/builder/cmp-S04-old.png`, `-new.png`, and the same for S08. Either name them in the board 1 group's placement rows or tell me they are not changes worth listing, and I drop the warning for them by name.
+- Next: when the main session says the final build is ready and preview version 9 is published, `--reuse --check`, then the creative director's and editor's fix round, then `--check --strict`.
 
 ## Contracts
 
@@ -63,7 +67,7 @@ python3 -I work/build/scripts/phase-3/board_2_build.py --reuse --check
 | 4, the count | the decisions file's `counts` (Rule 01.9 by topic and by state, DR-229), the script it names |
 | 5, the spend | the strict build's report: chapter 14 with the kit against its stop, the kit, map shapes against their reserve, rules with the opener, the share per plate, the projection; bytes by family from each chart's and sketch entry's bytes; the ten heaviest charts with the kit's frame measure |
 | 6, scores | the creative director's first scores and rescores for rounds 1 to 3, the nine red team reports (first score and counts before "Second pass", second score after), the board's own scores when they land |
-| 7, tested | the strict build's report; the main session's quick check results file in scratch; the kit's check files from this run; this board's last check results file |
+| 7, tested | the strict build's report; the main session's quick check results file in scratch (`phase-3/board-2/main/quick/guide-Guide-Check-Results.json`, the content file's `scratch_file`); the kit's check files from this run; the engineer's A6 table in `20261113_Board-2-Engineer-Notes.md` by pattern (generator check, `build --all` with the sweep, data check, map shapes, V7 check, kit self-test); this board's check results file from its last run |
 | 8, next | the content file |
 
 ## Routine calls
@@ -81,4 +85,25 @@ python3 -I work/build/scripts/phase-3/board_2_build.py --reuse --check
 
 ## Tested
 
+- Six runs, 17:22 to 17:50 UTC. Run 1 without `--reuse`: strict build exit 0; 225 guide elements photographed or measured, none failed; the kit built all 84 charts, 84 check files, 0 faults, 0 warnings; 295 pictures; 124.55 MB as PNG, past the 120 MB aim. Runs 2 to 6 with `--reuse --check`: 9 wide charts and S12 rebuilt at the guide's widths; the decisions file read; 310 pictures; 41.8 MB as lossless WebP; the board check as in Status every time.
+- The guide's drawing widths, measured on the strict build: 74 charts at 720 px and 9 at 723 px at a 1440 px window, S12 at 1,024; all 84 at 326 px at a 390 px window. After the kit's builds, every chart's kit drawing equals the guide's at both windows (the build warns on any difference; none since run 2).
+- Lossless WebP: four composed pictures decoded and compared with their PNGs pixel for pixel, all equal.
+- The board 1 comparison: the kit's drawing-only file at 1440 px on Newsprint against board 1's for S01 to S16: S03, S06 and S07 equal pixel for pixel; S04 and S08 differ and are not named (above); the other 11 differ and are named in panel 1.
+- Red team counts read by script from the nine reports: round 3 statistics 3 of 5, 4 Must fix, 12 Should fix, second 3.5; access 3, 2, 8, second 4; brand and craft 3, 3, 15, second 4, matching V23's figures.
+- The build's own checks every run: no em dash in the board's text or alt text; no flagged word, unfilled field or en dash in the board's own words; decision codes and file paths only in reference lines for the board's own words (quoted words flagged above); every reference code in the decision log; no private path, no script, no document tags, no dark-mode block, no color outside a token, no type under 13 px; every image with alt text, width, height and `loading="lazy"`; links only to the guide preview; outside loads only from Google Fonts; the page names exactly the images in `img/`; `plate-share.json` left as found (`git status` shows no builder file outside the board folder and these notes).
+- Read by eye from screenshots of the wrapped copy: at 1440 px the cover, panel 1's S12 item, form 14.104 (S73), form 14.124 (the avoid sketch), panels 4 and 5; at 390 px the cover, panel 1's S16 item and form 14.104; scroll width equal to the window at both (1440 and 390).
+
 ## Not tested
+
+- The final build and preview version 9: the board links to `https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF#rule-14-N`, and each anchor is checked on today's strict build, not on the published page.
+- The guide check: never run by this builder.
+- The board in Safari or Firefox, on a 2x screen, printed, or as the host shows it once published; the wrapped copy stands in.
+- Most of the 310 pictures one by one, and most of the forms panel at 390 px by eye.
+- A keyboard walk past the check's focus stops, and a screen reader.
+- The words the board quotes from the decisions file and teammates' files beyond the build's checks; the editor reads them.
+
+## Change log
+
+- Created: `work/build/scripts/phase-3/board_2_build.py`, `work/build/scripts/phase-3/board_2_render.js` (copied from `progress_round_2_render.js`, measure item extended), `work/boards/phase-3/round-3/board-2/` (`20261113_Board-2.html`, `20261113_Board-2-Content.json`, `20261113_Board-2-Figures.json`, `20261113_Board-2-Check-Results.json`, `img/`), this file.
+- Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/builder/` (strict builds, `kit-out/`, `board1-compare/`, `shots/`, `files/`, caches, `publish-view/`, `view/` screenshots, run logs, `test-decisions.json`).
+- Modified outside these: none. `work/build/chart-kit/plate-share.json`, rewritten by run 1's strict build, was put back as committed at 17:26 UTC; the script now does so itself.

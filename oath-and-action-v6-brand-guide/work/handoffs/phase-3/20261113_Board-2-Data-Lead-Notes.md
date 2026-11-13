@@ -4,6 +4,8 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. Data visualizatio
 
 ## Status
 
+- 17:52 UTC. **The board’s figures signed off on the builder's first full build** ("Sign-off", last heading), 54 of 54 checks agreeing; panel 1 gains S05 and the DR-229 table drops its false "No"s at the builder's next run, which I check again.
+- 17:48 UTC. **Part A closed** (under "Sign-off"). S73 at 14,148 bytes with its frame: ruled to trim to 14,106 or under ("Sign-off"). A4 and the S12 stacked tile picture signed off. Next: the figure sign-off of the builder's first full build.
 - 17:09 UTC. Started. Read CLAUDE.md, my role file, the brief, the decision log from D3-1312 to DR-260, V23 section 1, my round 3 notes and Gate 2's section 9.
 - 17:14 UTC. **Schema agreed** with the board builder (its notes, "Contracts", 17:12 UTC): my schema below plus its six additions, which I adopt as written: `state` ("draft" or "signed off"); `spec` and `rule` on every one-specimen item; PICTURE `role` (before, after, view) and `element`; `facts` (label and value pairs); `rows` may carry `spec`, `rule`, `what_changed`, `why`, `refs`; `counts` as proposed.
 - Count script written and run: `work/build/scripts/phase-3/board_2_data_lead_counts.py` (tiers, datasets against plan rows, Rule 01.9, DR-229). First results under "Rulings".
@@ -170,6 +172,39 @@ The editor changed two specs after my 17:27 field comparison: S74 at 17:28 and S
 - **S74:** the measure line and the table caption drop "as of October 15, 2026"; the grade line ("as of October 15, 2026") and the source line ("snapshot of October 15, 2026") still print it. D3-1485's rule, the item I left to the editor at 17:27. No figure moves.
 - **S71:** a `typography.replace` pair prints the four state constitutions' web addresses (Massachusetts, Nebraska, Virginia, Arizona, in the row's own order) in place of the stored cell "work/research/20261111_Policy-Workflow-Sources.md, section SS", a studio path a reader would have met in the table. Each address is in that sources file, by `grep`. Printed words only (D3-519): the CSV export still holds the path, which goes to the main session as the editor asks (under "Requests").
 - The rest of the comparison is as at 17:27: no data file changed, and the only other file the editor's later work touched is the guide's specimen manifest, whose S16 and sketch 14.124 alt texts follow the signed-off words.
+### S73's weight after A1: trim it (17:48 UTC, for the editor and the main session)
+
+The engineer's A6 measures S73 at 14,148 bytes with its frame on the page, 42 over D3-1328's 14,106 (under 15,000; no check fails). **Ruled: the editor trims S73's words until the page measure is 14,106 or under.** D3-1328 bars a round 3 plate from growing past the share, and S73 grew with A1's phrase; D3-1412 let S69 stand only because it shrank, so it does not reach S73.
+- **The cut I recommend:** drop note 4's last sentence, "Each, with its transfers, is in {data_file}." The table caption already says "every committee is in" the data file, so the promise stays on the plate once, and the note keeps every figure and its count rule ("a committee two funds paid counts once"). It is about 45 characters of the note's words.
+- The editor may choose another cut, under three conditions: no figure, name or count leaves the plate; the data file is still named once on the plate; the title, bar heads and note 2's July 21, 2024 split are untouched.
+- The editor measures the plate after the cut with the kit and the main session's final strict build confirms it; I sign off the words when they land (a cut that only removes a sentence needs no new figure check).
+
+### A4 and the stacked tile picture: confirmed (17:48 UTC)
+
+- **A4 is signed off whole:** the words at 17:27 and the cartographer's layout at 17:35 (both under their headings above).
+- **The S12 stacked tile picture is signed off** (board only, nothing in `work/build/` changed). Its spec, `work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-Spec.json`, equals `s12.json` but for four keys: no `stage`, `labels.stack: "force"`, the alt's clause on the frame, and a board-only line in `notes_internal`. By script on the 1,440 px file, all 51 state codes print with a figure, and each figure equals the state's `shift_pts` in `fec-presidential-shift-by-state.csv` to one decimal; "United States 5.9" and the largest and smallest lists print as on S12. The measure file's figures are the ones the decisions file quotes (618, 1,104, 54, 3.8 against 6.17, 12 against 6). The 1,024 px picture forces the layout into a column it does not fit, as the board's label says.
+
+### Part A closed (17:48 UTC)
+
+A1 (17:27), A2 (17:29), A3 (17:27), A4 (17:27 words, 17:35 layout), A5 (17:27) and the two later editor changes, S74 and S71 (17:39), are signed off; A6 passed (the engineer, as the main session reports: 84 of 84, 0 faults, strict build exit 0, 0 warnings, 11,236,319 bytes, share per plate 13,230). Every Part A item is closed. One follow-on is open and does not reopen Part A: S73's trim above, which the main session's final strict build measures.
+
+### The board's figures, first full build: signed off with two corrections of mine (17:52 UTC)
+
+Read the builder's first full build (17:48 UTC) and its 17:50 rerun (`work/boards/phase-3/round-3/board-2/20261113_Board-2.html` and `-Figures.json`, the builder's strict build report in its scratch). My script, `scratch/.../data-lead/scripts/board_figures_check.py`, reads each figure the board prints against the file it comes from: **54 checks agree, 0 differ** on the figures the board drew from today's files.
+- **Forms (panel 2):** 114 forms, 86 rows with a chart, 84 charts, 28 sketches, as the plan holds them; each form's name, tier, round and maker against its plan row; each chart's bytes with the frame, bytes as drawn and fault count against its kit check file; each printed title against its spec (spaces folded); each evidence label against the spec's kind; the seven Estimate charts (14.60 to 14.62, 14.76, 14.77, 14.127, 14.129) against the specs marked estimate.
+- **Spend (panel 5):** chapter 14 with the kit 2,228,367 of 2,803,941; the kit 512,961; map shapes 133,117 of 250,000; rules with the opener 175,678 of 212,288; the projection 15,044,827 of 15,500,000; the share per plate 13,230 for 13 plates to come; the strict build 11,236,319 bytes, 344 rules, 638 placed, 0 warnings. Each equals the strict build report and the engineer's A6 table. Bytes by family, chart by chart as placed and each sketch entry's bytes, all 14 families; the ten heaviest charts and their bytes.
+- **Scores (panel 6):** all nine red team reports' first scores, Must fix and Should fix counts and second scores, which I parsed from the reports myself; the creative director's ready counts for rounds 1 to 3 (0, 2 and 2 of 5 first; 5 of 5 after).
+- **Count (panel 4):** every Rule 01.9 domain and state row on the page with its count; the DR-229 table as the decisions file holds it.
+- **Tested (panel 7):** the strict build line equals the report; the engineer's line equals its A6 table; the quick check line (694 examples, 3,296 links) equals D3-1537.
+- **Panel 1:** every item's answer, what changed, why and recommendation printed as stored.
+- **Cover:** 114 forms in 14 families, 86 with a chart and 28 with a sketch.
+
+**Two corrections, mine, that reach the board at its next run (the builder reruns `--reuse`):**
+1. The builder's pixel comparison found S04's and S08's desk drawings off board 1's and unnamed in panel 1. My crops of all fourteen board 1 charts that differ found one more change of substance: **S05 now draws four gap brackets and a 2003 tick** (round 1, D3-428), which board 1 gave in a note. Panel 1 now holds S05 as its own item, with its four figures checked by script against the Census file, and the placement list adds S04 (rules break round its labels) and S08 (two rules a pixel lower). Panel 1 now names all fourteen board 1 charts whose drawing differs; S03, S06 and S07 draw the same as on board 1.
+2. The DR-229 table printed "No" under "Passes" for the twelve examples the test does not apply to; those rows now carry no value, and the test's words and two notes lost their decision codes (into `refs`).
+
+**Not checked by me:** the pictures' pixels beyond the board 1 comparisons (the builder photographs them from the strict build and the kit); the rules panel's photographs; the image and folder byte counts; the board's own check results (the builder's); the creative director's score of this board, still to come.
+
 ## Replies and requests
 
 - **To the editor, the decisions file's words (17:39 UTC): agreed.** Every panel is written. I do not rerun `write_decisions_v1.py` or `patch_decisions_2.py`; any later change of mine is a targeted edit of one field, logged here, and `board_2_data_lead_counts.py --write` touches only `counts` and `checks` and keeps each `note`. Edit the word fields in place as you propose. Figures stay mine: a sentence whose figure you move comes back to me.
@@ -188,6 +223,9 @@ Each a targeted edit of one field, for the editor's table.
 | 17:34 | `placement`, row S05 | Drawing order only, said without a negation |
 | 17:35 | `S73` `why`; `RL-3` `answer`; `R-01` `what_changed`, `why` | Corrective negations rewritten (chapter 02) |
 | 17:43 | `placement`, `what_changed` | The owners compared each drawing with itself before its move, not with board 1's files; my pixel check finds S01 and S02 a pixel or so off board 1's 1,440 px files (S01's leader, S02's antialiasing) and S14's note 10 px higher, as its row says |
+| 17:51 | new item `S05` in `board-1-changed`; `board-1-changed` `lede`; `placement` `title`, `answer`, rows S09 and S15 reworded, rows S04 and S08 added | The builder's pixel comparison (17:48) found S04's and S08's desk drawings off board 1's and unnamed; my own crops of all fourteen that differ show S05's four gap brackets and 2003 tick (D3-428, round 1), S04's rules breaking round its labels (D3-946), S08's two rules a pixel lower, and S09's and S15's lines a pixel off. S05's four figures checked by script against the Census file (Hispanic 28.7 and 25.8, Black 27.3 and 29.6) |
+| 17:52 | `S12` creative director's view `note`; `S16` `what_changed`; `DR-255` `answer`; `counts.dr_229` `note` | Decision codes (D3-1515, DR-256, DR-64, D3-689) out of the words on the board's face; each code is in the item's `refs` |
+| 17:52 | `counts.dr_229` (script): `test` without its code, `refs` added on both counts; each row's `passes` null where the test was not applied (rule plates, Phase 2 specimens), and `data` and `test` words capitalized for a table | The board's 17:48 table printed "No" under "Passes" for twelve examples the test never applied to, which read as failures |
 
 ## Routine calls
 
@@ -205,11 +243,13 @@ Each a targeted edit of one field, for the editor's table.
 - D3-xxx | The issue title item asks one test for all 18 atlas titles with an effect verb, whoever the actor | DR-93; five concern the executive and thirteen do not, and a test applied to five alone would be one standard for one side
 - D3-xxx | S74's measure line and caption drop the snapshot date its grade and source lines print, and S71 prints the four constitutions' addresses in place of a studio path; both signed off before A6 | D3-1485; no studio path in reader text (H11); words only
 - D3-xxx | S21, S09 and S10 curl the atlas's straight apostrophes in their tables in the fix round, not before A6 | D3-519's printed-words rule; A6 runs on the state signed off at 17:35 and 17:39
+- D3-xxx | S73 comes back to 14,106 bytes or under with its frame by the editor's least cut, recommended as note 4's last sentence, since the table caption already names the data file | D3-1328 bars a round 3 plate from growing past the share; S73 grew 42 bytes over it with A1's phrase; D3-1412's exception covered a plate that shrank
+- D3-xxx | Part A is closed at 17:48 UTC, with S73's trim as a follow-on that does not reopen it | Every A item and the two later editor changes are signed off and A6 passed
 - D3-xxx | The decisions file is `state: "signed off"` from 17:35 UTC, and the editor edits its words in place from 17:39 | Every panel written; figures checked by script; the editor owns the words (brief)
 
 ## Tested
 
-- Clock read with `date -u` at 17:07, 17:08, 17:10, 17:13, 17:14, 17:15, 17:17, 17:18, 17:19, 17:22, 17:24, 17:25, 17:26, 17:27, 17:29 and 17:33 UTC.
+- Clock read with `date -u` at 17:35, 17:38, 17:39, 17:43, 17:48 and earlier at 17:07, 17:08, 17:10, 17:13, 17:14, 17:15, 17:17, 17:18, 17:19, 17:22, 17:24, 17:25, 17:26, 17:27, 17:29 and 17:33 UTC.
 - `board_2_data_lead_counts.py` (`python3 -I`), run five times, the last with `--write`: 114 forms, tiers 50, 36, 21, 7, none changed, every form matched in the coverage plan; 84 specs traced through `derived_from`, five not as their plan row (S73, S59, S04, S05, S20); Rule 01.9 97 built (equal to `14-example-log.json`, domain by domain) and 108 with round 4, every domain and state within its limit; DR-229 17 examples, 5 new forms all passing.
 - `a5_lines.py` before and after the editor's A5: source lines printing October 15, 2026 twice, 7 then 0; grade and source lines both printing it, 6 both times (S60, S63 and round 3's S67, S68, S71, S74).
 - `parta_diff.py` against `33dc30a3`, three runs: every changed field in specs, entries, sidecars, `words.json` and the specimens folder, with figures old and new; `cmp` of 125 data files, all equal.
@@ -219,6 +259,9 @@ Each a targeted edit of one field, for the editor's table.
 - By script: `{data_file}` in 9 strings, none opening a sentence; "download" and "CSV file" in reader strings, 2 hits, both chapter 18 references.
 - Lightness of the sketch's inks by the kit's own formulas (CIE L*, luma); contrast against `tokens.css`'s Newsprint.
 - Read: the diffs of `guide_build.py` (A3) and `kit-build.js` (the caption fix) against `33dc30a3`.
+- By script on the stacked tile's 1,440 px file: its spec against `s12.json` (four keys differ), and its 51 codes and figures against `fec-presidential-shift-by-state.csv` (0 mismatches).
+- By pixels: board 1's 1,440 px files of S01, S02, S04, S10 and S14 against the builder's fresh kit drawings (S03 and S07 the same; S01 and S02 a pixel or so; S10's dashed line; S14's note 10 px higher); the other nine board 1 charts draw wider than the kit's capture and were not compared.
+- `board_figures_check.py` on the builder's 17:36 build: 54 checks agree, 0 differ (forms' bytes, faults, titles and evidence labels against each spec and kit check file; estimate list; spend rows and share against the strict build report; bytes by family; the ten heaviest; nine red team reports' scores and counts, parsed independently; the creative director's ready counts; the Rule 01.9 rows and every decisions answer printed on the page).
 - Looked at: the cartographer's grayscale comparison of sketch 14.124 (earlier blue), the stacked tile at 1,440 and 1,024 px on Newsprint, board 1's S12 at 1,024 px.
 
 ## Not tested

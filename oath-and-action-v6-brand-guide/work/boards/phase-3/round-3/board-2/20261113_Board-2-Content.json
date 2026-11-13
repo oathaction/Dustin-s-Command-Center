@@ -295,12 +295,48 @@
      "label": "Quick guide check",
      "kind": "guide_check",
      "scratch_file": "phase-3/board-2/main/quick/guide-Guide-Check-Results.json",
-     "words": "run by the main session on a copy of its strict build of {page_bytes} bytes, at {widths} px: {specimens} examples, {links} same-page links, {failures} failures"
+     "words": "run by the main session on a copy of its strict build of {page_bytes} bytes, at {widths} px: {specimens} drawn examples, {links} same-page links, {failures} failures"
     },
     {
      "label": "The kit’s build of every chart",
      "kind": "kit",
      "words": "run by this board’s build at the widths the guide draws, with the sweep from 256 px: {pass} of {n} charts pass with no fault, {warnings} warnings"
+    },
+    {
+     "label": "The engineer’s checks after your answers landed",
+     "kind": "notes",
+     "sources": [
+      {
+       "file": "work/handoffs/phase-3/20261113_Board-2-Engineer-Notes.md",
+       "pattern": "phase3_ch14_build\\.py --check` \\| \\*\\*(\\d+) of (\\d+) files current",
+       "words": "chapter 14’s generator, {1} of {2} files current"
+      },
+      {
+       "file": "work/handoffs/phase-3/20261113_Board-2-Engineer-Notes.md",
+       "pattern": "build --all --no-png`, sweep on[^|]*\\| exit 0: \\*\\*(\\d+) of (\\d+) PASS, (\\d+) FAIL",
+       "words": "the kit’s build of every chart with the sweep, {1} of {2} pass and {3} fail"
+      },
+      {
+       "file": "work/handoffs/phase-3/20261113_Board-2-Engineer-Notes.md",
+       "pattern": "Data check, `data_round0_build\\.py --check`[^|]*\\| \\*\\*([\\d,]+) tables, (\\d+) faults",
+       "words": "the data check, {1} tables and {2} faults"
+      },
+      {
+       "file": "work/handoffs/phase-3/20261113_Board-2-Engineer-Notes.md",
+       "pattern": "`tools/geo_build\\.py --check` \\| \\*\\*`geo\\.js` is (current)",
+       "words": "the map shapes {1}"
+      },
+      {
+       "file": "work/handoffs/phase-3/20261113_Board-2-Engineer-Notes.md",
+       "pattern": "V7 check, `v7_check\\.py --page` that build[^|]*\\| \\*\\*(PASS), (\\d+) failures",
+       "words": "the atlas check {1} with {2} failures"
+      },
+      {
+       "file": "work/handoffs/phase-3/20261113_Board-2-Engineer-Notes.md",
+       "pattern": "Kit self-test, `oa-chart\\.mjs self-test` \\| \\*\\*(every planted fault caught)",
+       "words": "the kit’s self-test, {1}"
+      }
+     ]
     },
     {
      "label": "This board’s own check",

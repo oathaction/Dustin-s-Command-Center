@@ -1,12 +1,12 @@
 {
- "built": "2026-11-13T17:46:38.853655+00:00",
+ "built": "2026-11-13T17:50:32.420709+00:00",
  "guide_build": {
   "exit": 0,
   "bytes": 11236319,
   "rules": 344,
   "specimens": 638,
   "warnings": 0,
-  "built": "2026-11-13T17:46:48"
+  "built": "2026-11-13T17:50:42"
  },
  "decisions": {
   "file": "work/handoffs/phase-3/20261113_Board-2-Decisions.json",
@@ -3990,9 +3990,10 @@
   ]
  },
  "tested": {
-  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 17:46 UTC: exit 0, no warnings, 11,236,319 bytes, 344 rules, 638 examples placed",
-  "Quick guide check": "run by the main session on a copy of its strict build of 11,235,128 bytes, at 1440 and 390 px: 694 examples, 3,296 same-page links, no failures",
+  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 17:50 UTC: exit 0, no warnings, 11,236,319 bytes, 344 rules, 638 examples placed",
+  "Quick guide check": "run by the main session on a copy of its strict build of 11,235,128 bytes, at 1440 and 390 px: 694 drawn examples, 3,296 same-page links, no failures",
   "The kit’s build of every chart": "run by this board’s build at the widths the guide draws, with the sweep from 256 px: 84 of 84 charts pass with no fault, no warnings",
+  "The engineer’s checks after your answers landed": "chapter 14’s generator, 87 of 87 files current; the kit’s build of every chart with the sweep, 84 of 84 pass and 0 fail; the data check, 125 tables and 0 faults; the map shapes current; the atlas check PASS with 0 failures; the kit’s self-test, every planted fault caught",
   "This board’s own check": "on its last run at 1440, 390 and 360 px: no failures, leaving aside the page’s language, which the host’s wrapper sets"
  },
  "guide_check": {
@@ -4008,11 +4009,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-3/board-2/20261113_Board-2.html",
- "html_bytes": 986339,
+ "html_bytes": 986621,
  "images": 310,
  "image_bytes": 40639494,
  "folder_files": 314,
- "folder_bytes": 41811351,
+ "folder_bytes": 41813355,
  "largest_image": [
   492518,
   "20261113_Form-S37-Grayscale.webp"
@@ -4557,11 +4558,10 @@
   "S04: its desk drawing differs from board 1’s pixel for pixel, and the decisions file’s board 1 group does not name it",
   "S08: its desk drawing differs from board 1’s pixel for pixel, and the decisions file’s board 1 group does not name it",
   "the quick guide check ran on 11,235,128 bytes and this board’s strict build is 11,236,319",
-  "decision codes in the words the board quotes from teammates’ files, on its face: D3-1515, D3-689, DR-256, DR-64",
-  "file paths on the board’s face, which belong in reference lines: Full-Table.md, work/build/scripts/phase-3/board_2_data_lead_counts.py, work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-Measure.json, work/research/20261113_Atlas-Recheck-Full-Data.json"
+  "decision codes in the words the board quotes from teammates’ files, on its face: D3-1515, D3-689, DR-256, DR-64"
  ],
  "seconds": 14,
- "words": 56916,
+ "words": 56974,
  "check": {
   "page": {
    "failures": [
