@@ -90,7 +90,7 @@
         });
         c.path(d, { stroke: 'context', width: gap >= 2 ? 1.5 : 1 });
         // each state's code in its block, over outlines or light squares only, nearest the block's middle
-        var by = {}, placed = [];
+        var by = {}, placed = [], later = [];
         seats.forEach(function (s) { (by[s.r[es]] = by[s.r[es]] || []).push(s); });
         Object.keys(by).sort().forEach(function (st) {
           var cells = by[st], mx = 0, my = 0;
@@ -119,7 +119,12 @@
           // BC-S5 (round 3 fix pass): at a desk, a state whose block holds no room for its code (a single seat, a block
           // of its party's own squares) takes it beside the block on the ground, on the shortest leader from one of its
           // squares that clears every word and every other leader; the words never sit on a square
-          if (ok !== 'in' && big) {
+          if (ok !== 'in' && big) later.push({ st: st, cells: cells, b0: b0 });
+        });
+        // the codes set beside, after every code inside a block, so no leader runs under a code set later
+        later.forEach(function (lt) {
+          var st = lt.st, cells = lt.cells, b0 = lt.b0;
+          {
             var occupied = function (x0, y0, x1, y1) {
               for (var cc = Math.floor((x0 - IN) / pitch); cc <= Math.floor((x1 - IN) / pitch); cc++) for (var rr = Math.floor((y0 - top) / pitch); rr <= Math.floor((y1 - top) / pitch); rr++) if (own[cc + ',' + rr]) return true;
               return false;

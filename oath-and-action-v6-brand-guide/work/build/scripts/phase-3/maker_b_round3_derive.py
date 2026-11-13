@@ -209,10 +209,10 @@ def jfc_nodes():
                     grp.sort(key=lambda r: -float(r['amount']))
                     tt = table_to(grp[0], grp)
                     for r in grp:
-                        out.append(dict(r, node=node(r), table_row=str(order), table_to=tt))
+                        out.append(dict(r, link_id=r['jfc_id'] + '>' + r['recipient_id'] + '>' + r['amount_lines'], node=node(r), table_row=str(order), table_to=tt))
     if len(out) != len(rows):
         FAULTS.append('S73: %d rows written of %d' % (len(out), len(rows)))
-    cols = list(rows[0].keys()) + ['node', 'table_row', 'table_to']
+    cols = list(rows[0].keys()) + ['link_id', 'node', 'table_row', 'table_to']
     side = dict(m)
     side.pop('source_line_variants', None)
     side.update({
@@ -220,12 +220,13 @@ def jfc_nodes():
         'kind': 'derived',
         'title_or_table': m['title_or_table'] + ', each payment with the node the network diagram draws it in and the table row it prints in',
         'columns': dict(m['columns'],
+                        link_id={'type': 'id', 'description': 'the payment line\'s own ID: the paying fund, the committee paid and the report line'},
                         node={'type': 'text', 'description': 'the receiver the drawing folds the payment into, for its nominee: the campaign, the national party committee, the state party committees with their count, or the other committees with their count; a line 28C refund does not draw'},
                         table_row={'type': 'id', 'description': 'the page table\'s row: one for each fund and kind of receiver, then each fund\'s refunds, in the order the table prints them'},
                         table_to={'type': 'text', 'description': 'the words the page table prints for the row\'s receivers: the committee, its kind, or the other committees and refunds by name, as the payer wrote them'}),
         'printed_source_line': m['printed_source_line'],
         'derived_from': [src + '.csv'],
-        'derivation': 'The rows of ' + src + ' unchanged, with three columns added, read the same way for both nominees: node names the receiver the network diagram draws each line 22 payment in, by recipient_kind (each nominee\'s campaign and national party committee alone; its state party committees and its other committees each as one node, counted once each, whichever fund paid them), and marks a line 28C refund, which does not draw; table_row and table_to give the page table one row for each fund and kind of receiver, in the order nominee, kind, then fund by what it sent the campaign, with each fund\'s refunds after every drawn row. Rows sorted in that order, then by amount, largest first.',
+        'derivation': 'The rows of ' + src + ' unchanged, with four columns added, read the same way for both nominees: node names the receiver the network diagram draws each line 22 payment in, by recipient_kind (each nominee\'s campaign and national party committee alone; its state party committees and its other committees each as one node, counted once each, whichever fund paid them), and marks a line 28C refund, which does not draw; link_id joins the paying fund, the committee paid and the report line; table_row and table_to give the page table one row for each fund and kind of receiver, in the order nominee, kind, then fund by what it sent the campaign, with each fund\'s refunds after every drawn row. Rows sorted in that order, then by amount, largest first.',
     })
     write('fec-jfc-transfers-2024-by-node', cols, out, side)
 
