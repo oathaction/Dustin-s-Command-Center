@@ -40,7 +40,7 @@
   },
   {
    "label": "Seats on a map",
-   "value": "One panel for each party, named with the seats it won, each seat filled in its winner’s panel and its margin in gray steps (Rule 14.5)"
+   "value": "One panel for each party, named with the seats it won, each seat filled in its winner’s panel and empty in the other, its margin in steps of one sequential ink, the closest still a clear fill (Rule 14.5)"
   },
   {
    "label": "Never",
