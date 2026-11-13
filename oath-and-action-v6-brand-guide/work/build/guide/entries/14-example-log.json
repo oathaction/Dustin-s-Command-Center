@@ -581,7 +581,7 @@
    "source": "s65.json"
   },
   {
-   "example": "A federal agency makes a rule in five steps the law sets, and Congress can strike the rule down or a court can set it aside once it is final.",
+   "example": "A federal agency makes a rule in five steps the law sets, and Congress and the President can strike the rule down or a court can set it aside once it is final.",
    "domain": "D05",
    "states": [],
    "rule": "14.96",
@@ -612,7 +612,7 @@
    "source": "s69.json"
   },
   {
-   "example": "A federal case starts in one of 94 district courts, an appeal goes to the court of appeals for its region, and the Supreme Court sits over all 13 courts of appeals.",
+   "example": "The 94 district courts try federal cases, an appeal goes to the court of appeals for the region, and the Supreme Court sits over all 13 courts of appeals.",
    "domain": "D05",
    "states": [],
    "rule": "14.100",

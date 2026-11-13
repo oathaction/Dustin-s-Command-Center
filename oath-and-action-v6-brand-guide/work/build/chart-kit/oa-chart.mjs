@@ -1066,6 +1066,26 @@ async function self_test() {
       const h = K.table_html(sp, rows, { lean: true });
       pass(/>Senate Democrats<\/th><td>1<\/td><td class="t">A; B<\/td><td>1<\/td>/.test(h) && />House, D<\/th><td>1<\/td><td class="t">C<\/td><td>1<\/td>/.test(h),
         'A-E1 and A-E2: a table grouped by two columns, with a list and a count of the set' + (/Senate Democrats/.test(h) ? '' : ': ' + h.slice(0, 300))); }
+    { // A-E5 and A-E6: a list of the rows that broke from their group, with fields in parentheses, and a distinct list
+      const sp = { id: 'T', table: { columns: [{ field: 'm', label: 'M' }], group: { by: 'p', columns: [{ label: 'Party', agg: 'key' },
+        { label: 'Broke', agg: 'list', field: 'm', odd: 'v', with: ['st', 'v'] }, { label: 'States', agg: 'list', field: 'st', distinct: true }] } } };
+      const rows = [{ p: 'D', m: 'A', st: 'NY', v: 'Nay' }, { p: 'D', m: 'B', st: 'NY', v: 'Nay' }, { p: 'D', m: 'Cuellar', st: 'TX', v: 'Yea' },
+        { p: 'I', m: 'K', st: 'ME', v: 'Yea' }, { p: 'I', m: 'S', st: 'VT', v: 'Nay' }];
+      const h = K.table_html(sp, rows, { lean: true });
+      pass(/>D<\/th><td class="t">Cuellar \(TX, Yea\)<\/td><td class="t">NY; TX<\/td>/.test(h) && />I<\/th><td class="t">K \(ME, Yea\); S \(VT, Nay\)<\/td>/.test(h),
+        'A-E5 and A-E6: a list of the rows that broke from their group, with fields, and a distinct list' + (/Cuellar/.test(h) ? '' : ': ' + h.slice(0, 300))); }
+    { // maker B's S65: a share held as a fraction prints as a percent and reads back to its stored value
+      const sp = { id: 'T', table: { columns: [{ field: 'k', label: 'K', row_header: true }, { field: 's', label: 'Share', format: 'fraction-percent:1' }] } };
+      const rows = [{ k: 'a', s: 0.9368 }, { k: 'b', s: 0.5 }];
+      const h = K.table_html(sp, rows, { lean: true, types: { k: { type: 'text' }, s: { type: 'number' } } });
+      const carry = K.lean_carry(sp, rows, { k: { type: 'text' }, s: { type: 'number' } });
+      pass(K.fmt(0.9368, 'fraction-percent:1') === '93.7%' && K.fmt(0.05, 'fraction-percent') === '5%' && K.unformat('93.7%', { format: 'fraction-percent:1' }) === '0.937' && />93\.7%</.test(h) && carry.s && /0\.9368/.test(carry.s),
+        'fraction-percent prints a fraction as a percent and the table carries its stored value' + (/93\.7%/.test(h) ? '' : ': ' + h.slice(0, 200))); }
+    { // A-E4: a link ending in Rule 15.5's open diamond, its far point on the node's edge and the line stopped at its near point
+      const a = drawn(c => { const A = P.node(c, { x: 10, y: 10, w: 140, h: 40 }, 'Commission'), B = P.node(c, { x: 200, y: 120, w: 140, h: 40 }, 'Utility');
+        const L = P.link(c, A, B, { shape: 'elbow', arrow: 'diamond' }); c.height(170); c.extra.L = L; });
+      const dia = a.d.svg.match(/<path d="M([\d.]+),([\d.]+)L[^"]*Z" class="oac-f-surface oac-s-context"/);
+      pass(!a.f.length && !!dia && Math.abs(+dia[2] - 120) < 0.6, 'A-E4: a link ends in an open diamond on its node\'s edge' + (a.f.length ? ': ' + a.f[0] : '')); }
     { // R3-3: a one-column island keeps a row whose value is empty
       const back = K.parse_csv(C.to_csv([{ v: 1 }, { v: null }, { v: 3 }], ['v']));
       pass(back.length === 3 && back[1].v === '', 'R3-3: a one-column CSV keeps its empty cells as rows'); }

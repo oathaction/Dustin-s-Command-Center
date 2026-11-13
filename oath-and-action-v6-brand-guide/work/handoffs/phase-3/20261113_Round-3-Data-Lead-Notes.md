@@ -14,6 +14,7 @@ Rulings (a) to (g) below are final for drawing. Makers, the cartographer, the ed
 - **(f) Change 9's classes** confirmed from the file: 36, 33, 85 and 259 seats by margin, 22 unopposed, 14 decided another way.
 - **(g) Rule 01.9 and DR-229 hold after round 3; nothing moves.** Row 109 passes D3-689's test.
 - **After RL-3 (second run).** S73 draws line 22 transfers alone for both committees: $899.4 million to 53 committees and $273.8 million to two. The refunds go apart in the table and the operating expenses into a note. Widths stay; the title changes. RL-1, RL-2 and DL-E1 are signed off, with S81 national as the engineer's variant B.
+- **Maker B after its fixes (sixth run).** MB-1 to MB-9 are closed. All of maker B's six specs, twelve entries and six sketches are signed off; S65's table share moves to a percent when the engineer's format lands, with no further sign-off.
 - **Cartographer (fifth run).** S78, S79, S81 and S83 are signed off, with nine of twelve entries and the flow map sketch. D-2 is accepted. D-1: the avoid sketch draws in gray with the colors named in words, not in the diverging pair. C-1 to C-4 ask for changes:
   - S80's and S82's closest races read as the other party's seats, so the margins move to Verdigris steps 2 to 5;
   - S84 fails at 256 px;
@@ -237,6 +238,31 @@ November 13, 2026, from 02:04 UTC (clock read from `date -u`). I built S65 and S
 
 S65, S73, S76, entries 14.104, 14.108 and 14.109 and sketch 14.108 are signed off once their items land. I sign off from 1440 and 256 px on both grounds, and from 390 px for MB-3.
 
+## Sign-off, maker B, after the fixes
+
+November 13, 2026, from 02:35 UTC. I rebuilt S65, S73, S74, S76 and S77 from the files as they stand with `oa-chart.mjs build s65 s73 s74 s76 s77 --widths 1440,390,296,256 --out <scratch>/kit-r3b2`, sweep on: 5 PASS, 0 faults. I looked at the captures at 1x:
+- S73 at 1440 px on Newsprint and on Charcoal in grayscale;
+- S76 at 390 and 296 px on Newsprint, at 256 px on Charcoal, and at 256 px on Newsprint in grayscale.
+
+I rendered sketch 14.108 on Newsprint, Charcoal and grayscale, and read entries 14.104, 14.108 and 14.109 and the five specs' titles, measure lines and notes by script.
+
+**All of MB-1 to MB-9 are closed. Maker B's six specs, twelve entries and six sketches are signed off.**
+
+- **S65 (MB-1, MB-2).** The title now names one finding: "16.0 million ended for a procedural reason, more than twice the 6.9 million found ineligible". By script, 15,966,431 against 6,948,106, 2.30 times. Found ineligible stays gray as the comparison (RF-17). The measure line ends "shares are of renewals due". The table's share prints as a fraction under the label "Share of renewals due, 0 to 1", which is true as it stands; it moves to a percent when the engineer's format lands, and needs no further sign-off.
+- **S73 (MB-3) and entry 14.104.** No node shape is left to read as a measure. The bands meet their ends at their own widths, the names and dollars sit beside them, and the RNC's $26.9 million band draws as a seventh of the DNC's $189.3 million. Title, unit, key and notes are as RL-3a set them. Entry 14.104's "a bar as tall as its amount, with its name and amount beside it" is signed off.
+- **S74 (MB-6).** "and 32 of the connections stay within one region". By script, the diagonal sums to 32.
+- **S76 (MB-4, MB-5).**
+  - Title: "61 percent of all they took in", by script 1,384,115,131.69 of 2,252,865,112.88, 61.4 percent, with note 3 saying what "all they took in" counts.
+  - Under 300 px each band's end carries a number and the list under the drawing names every line. At 296 and 256 px the bands now run about 100 px a side and read as bands on both grounds, the named band with them.
+- **S77 (MB-7).** Note 4's three tests match 7 CFR 273.2(i)(1) as RL-5 quotes it in the steps sidecar: under $150 in monthly gross income with liquid resources not over $100; a destitute migrant or seasonal farmworker household with resources not over $100; and income and liquid resources together under the monthly rent or mortgage and utilities. "Very little income or cash" now stands as the chart's short name, and the note says so.
+- **Sketch 14.108 and its entry (MB-8).**
+  - Shared money in Charcoal and shared staff in Verdigris, both solid, each named in the key and on one of its own lines, with no dash.
+  - In grayscale the two inks differ and the names carry the kinds.
+  - On Charcoal the money lines take the light ink.
+  - 2,620 bytes. The entry cites Rule 13.4 for keeping dashes and dots to a connection's grade.
+- **Entry 14.109 (MB-9).** "As thick as its count, such as shared members, with a key of widths (Rule 14.4)".
+
+
 ## Sign-off, maker A
 
 November 13, 2026, from 02:23 UTC. I built S66 to S72 from the files as they stand with `oa-chart.mjs build s66 s67 s68 s69 s70 s71 s72 --widths 1440,390,296,256 --out <scratch>/kit-r3a`, sweep on: 7 PASS, 0 faults, seven check files read, each with `faults` empty. I looked at the page captures at 1x:
@@ -377,6 +403,7 @@ S80, S82, S84, S16, entries 14.119, 14.121 and 14.124 and sketch 14.124 are sign
 - D3-xxx | The avoid sketch draws its misleading half in gray with the party colors named in words, not in the diverging pair | DR-48 and DR-58; a reader would carry pair B as a party pair to every diverging chart
 - D3-xxx | S81's CSV may leave out the nation's row; the grouped table's caption gives it | The drawn rows read their geoids from geo.js; the nation prints beside the map
 - D3-xxx | S16's map credit names the 2024 Census files | The credit must name the outlines drawn (R3-4)
+- D3-xxx | Maker B's round 3 work signed off: S65, S73 to S77, entries 14.93 to 14.95 and 14.104 to 14.112, six sketches | MB-1 to MB-9 closed, checked by build, capture and script
 
 ## Requests
 
@@ -391,7 +418,7 @@ S80, S82, S84, S16, entries 14.119, 14.121 and 14.124 and sketch 14.124 are sign
 - **RL-5 (for MB-7).** Add the words of 7 CFR 273.2(i)(1), who qualifies for expedited service with its dollar tests, to `govinfo-snap-application-path`'s sidecar (`source_words` or a note), so maker B prints them from the file.
 
 ### To maker B
-- MB-1 to MB-9: see "Sign-off, maker B".
+- MB-1 to MB-9: closed (see "Sign-off, maker B, after the fixes").
 
 ### To maker A
 - MA-1 to MA-8: see "Sign-off, maker A".
@@ -414,6 +441,7 @@ S80, S82, S84, S16, entries 14.119, 14.121 and 14.124 and sketch 14.124 are sign
 Read rulings (a) to (g) and "Rulings, after RL-3" directly.
 
 ## Tested
+- Maker B after its fixes, 02:35 UTC: `oa-chart.mjs build s65 s73 s74 s76 s77 --widths 1440,390,296,256 --out <scratch>/kit-r3b2`, sweep on, 5 PASS, 0 faults; captures and sketch as listed under "Sign-off, maker B, after the fixes"; S65's 2.30, S76's 61.4 percent and S77's three tests checked by script against the files.
 - Cartographer, 02:31 UTC: `oa-chart.mjs build s78 s79 s80 s81 s82 s83 s84 s16 --widths 1440,390,296,256 --out <scratch>/kit-r3c`, sweep on: 7 PASS, S84 FAIL (2 faults, the key at 256 px), eight check files read; captures as listed under "Sign-off, cartographer"; both sketches rendered and looked at on Newsprint and in grayscale; twelve entries read by script; figures checked by script as listed there.
 - Maker A, 02:23 UTC: `oa-chart.mjs build s66 s67 s68 s69 s70 s71 s72 --widths 1440,390,296,256 --out <scratch>/kit-r3a`, sweep on, 7 PASS, 0 faults, seven check files read; captures as listed under "Sign-off, maker A"; the mind map sketch rendered and looked at on Newsprint; eight entries read by script; the figures listed there checked by script.
 - Maker B, 02:04 UTC: `oa-chart.mjs build s65 s73 s74 s75 s76 s77 --widths 1440,390,296,256 --out <scratch>/kit-r3`, sweep on, 6 PASS, 0 faults, six check files read; captures looked at as listed under "Sign-off, maker B"; six sketches rendered with Chromium (maker B's script, copied) and looked at on Newsprint; twelve entries read by script; figures checked by script: S65's 2.30 ratio, S75's dates and counts, S74's 32, S76's 1,926 candidates and 61.4 percent, RL-4 from the sidecar.
@@ -425,6 +453,7 @@ Read rulings (a) to (g) and "Rulings, after RL-3" directly.
 - Contrast by the WCAG formula on token hexes: sequential steps 1 to 5 and gray magnitude steps 1 to 4 against Newsprint and against each other.
 
 ## Not tested
+- Maker B after its fixes: S65, S74 and S77 captures (word changes only; built PASS); S73 below 1440 px and S76 at 1440 px; sketch 14.109 rendered but not looked at again (unchanged).
 - Cartographer: S78, S79, S80, S83, S84 and S16 below 1440 px (looked at 1440 px only, on both grounds and in grayscale); S81 and S82 at 296 px on Charcoal and 256 px on Newsprint; the sketches on Charcoal; the cartographer's plates inside a guide build.
 - Maker A: S67, S69, S70 and S71 below 1440 px on Newsprint, and S66, S68, S69 to S72 below 1440 px on Charcoal (the 1440 Charcoal grayscale captures looked at for all); the mind map sketch on Charcoal; maker A's plates inside a guide build.
 - Maker B's six specs on Charcoal at 390, 296 and 256 px for S73, S75 and S77 (looked at on Newsprint, in grayscale, and on Charcoal at 1440 px only).

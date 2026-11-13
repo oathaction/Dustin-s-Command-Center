@@ -31,6 +31,7 @@ What round 2's words pass found most often, so you can write it right the first 
 - 02:10. **Groups 11 to 15 now link from the opener**, after the chapter build took round 3 in, and **group lines 11, 13 and 14 are rewritten** against maker B's built entries (under "Group lines 11 to 15"). Group 12 waits for maker A, and group 15 for the cartographer.
 - 02:14. **Maker A's words, read only:** 15 changes for maker A to apply, under "Words for maker A" (S67, S68, S70, S71, entries 14.96 to 14.99 and 14.102). A board 2 item for the main session: 21 atlas source lines print the snapshot date twice (under "Requests").
 - 02:31. **The cartographer's words pass, done (D3-669):** 30 changes in 17 files, logged under "Words for the cartographer"; entries 14.117 to 14.122 and 14.124 now point to rules 14.3, 14.6, 14.7, 14.9 and 14.12. S78 to S84 pass the kit with the sweep, the cartographer's figure check passes, and the strict build exits 0. **Group line 15 rewritten, group line 12 stands**, so all five of round 3's group lines are checked against built entries.
+- 02:39. **Maker B's second look, done:** two changes (S76's note 3, entry 14.108), logged under "Words for maker B, second look"; S76 passes the kit with the sweep and maker B's figure check reports 0 faults, so no string changes. **Rule 14.7's "Seats on a map" row follows the data lead's C-1** (the margin in steps of one sequential ink), and three of my cartographer words that C-1 makes stale are listed for the cartographer.
 
 ## Routine calls
 
@@ -205,6 +206,17 @@ Read and kept: every title (S74's "32 of them" I kept because maker B's figure c
 **For the main session, to maker B (three strings in its figure check).** `maker_b_round3_derive.py --figures` now reports 3 faults, each a sentence it reads word for word that H06 or W02 changed; no figure moved. Please have maker B change its `want()` strings to: S75 "10 House bills and eight Senate bills"; S77's title "at most 30 days from an application to a decision, and at most seven days for a household with very little income or cash"; S77's note "interviews a household on the expedited branch within the seven days".
 
 **For maker B, two small things outside word fields (yours to take or leave):** S65's table prints the share of renewals due as a decimal, "0.9368", under "Share of renewals due, 0 to 1", while the drawing prints percents; `percent:1`, as `formats.share` already uses, would read the same in both. Sketch 14.94's value axis labels 100%, 80, 60, 40 and 0, with no 20.
+
+### Words for maker B, second look (D3-669), 02:36 to 02:39 UTC
+
+Maker B kept my 34 changes and made the data lead's MB-1 to MB-9 ("Sign-off fixes" in its notes). I read every word it changed: S65's title and measure line, S73's alt and chart note and entry 14.104, S74's title, S76's title, note 3 and phone note, S77's note 4, sketch 14.108's caption and key words with entry 14.108, entry 14.109, and sketch 14.94's "Start". Two changes, written straight in:
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| S76 | notes.2 | All they took in counts every receipt, loans and net transfers included, and leaves out cash on hand. | “All they took in” counts every receipt, loans and net transfers included, and leaves out cash on hand. | The title's phrase in quotation marks reads as a name at the head of a sentence, as S46's group name does |
+| 14-108 | rule.0 | Give each kind of link its own ink in the chart order, solid, and name it in a key and on one of its lines; never a dash or dot, which Rule 13.4 keeps for a connection’s grade. | Give each kind of link its own solid ink, in the order Rule 14.5 sets, and name it in a key and on one of its lines, leaving dashes and dots to a connection’s grade, as Rule 13.4 keeps them. | W09 and W11, no "never" turn; "the chart order" named its rule |
+
+No figure-check string changed: maker B's `--figures` reports 0 faults after both. S76 rebuilt with the sweep: PASS, 0 faults (14.108 is an entry, with no spec). Read and kept: S65's one-finding title (MB-1) and its measure line's base; S73's alt and chart note on bars; entry 14.104's bars, why and builders (MB-3); S74's "32 of the connections" (MB-6, as my first pass hoped); S76's title (MB-4) and phone note (MB-5); S77's note 4, the rule's three tests in its own words (MB-7); sketch 14.108's caption, its first `<desc>` word for word, and its "Money", "Staff" and key words; 14.108's why and builders; 14.109 (MB-9), whose caption "each line as thick as the tie it draws" the data lead signed off with its key of members; sketch 14.94's "Start".
 
 ## Words for the cartographer
 

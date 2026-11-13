@@ -3963,7 +3963,7 @@
    "id": "14.98",
    "title": "Use a who-decides diagram to show who can change a rule and who only applies it.",
    "rule": [
-    "Place each body by what it can do: those who can change the rules in a band above those who apply them, in columns from federal to regional, state, local and private hands, every body in one box style with its name in bold. Draw a line of authority, one body setting or approving another’s rules, as a gray arrow from the body that decides to the one it governs, with no plus or minus sign and no loop, as chapter 15 keeps authority apart from cause (Rule 15.5). On a phone the bands run down the page, each body under its level’s name, with the lines of authority in a lane at the left."
+    "Place each body by what it can do: those who can change the rules in a band above those who apply them, in columns from federal to regional, state, local and private hands, every body in one box style with its name in bold. Draw a line of authority, one body setting or approving another’s rules, as a gray line ending in an open diamond, from the body that decides to the one it governs, as chapter 15 draws authority (Rule 15.5). On a phone the bands run down the page, each body under its level’s name, with the lines of authority in a lane at the left."
    ],
    "why": {
     "text": [
@@ -4123,7 +4123,7 @@
    "id": "14.102",
    "title": "Use a roll-call grid to show how every member voted, with each party named in words.",
    "rule": [
-    "Draw one square for each member, in one neutral ink for every party (Rule 14.7): solid for yes, an outline for no, shaded for a member who did not vote and a faint outline for a vacant seat. Head each chamber with its vote, its date and the question and result in the record’s words. Give each party a row of its own, named in words with its count and how it voted, Democrats first, independents as the record lists them, folded into no party, and Republicans last, with vacant seats between, as the chart for Rule 14.53 orders the sides (Rule 14.7)."
+    "Draw one square for each member, in one neutral ink for every party (Rule 14.7): solid for yes, an outline for no, shaded for a member who did not vote and a faint outline for a vacant seat. Head each chamber with its vote, its date and the question and result in the record’s words. Give each party a row of its own, named in words with its count and how it voted, Democrats first, independents as the record lists them, folded into no party, and Republicans last, with vacant seats between, as the chart for Rule 14.53 orders the sides (Rule 14.7). Where the table must stay short, group it by party and name every member who voted the other way, so each member’s vote can still be read."
    ],
    "why": {
     "text": [
@@ -4357,7 +4357,7 @@
    "id": "14.108",
    "title": "Use a multi-network only where the kinds of links are the story.",
    "rule": [
-    "Use a multi-network, a reference form, to draw more than one kind of link among the same nodes, such as shared money and shared staff among a set of groups. Give each kind of link its own ink in the chart order, solid, and name it in a key and on one of its lines; never a dash or dot, which Rule 13.4 keeps for a connection’s grade. Keep to three kinds; past that, draw one panel for each kind with every node in the same place."
+    "Use a multi-network, a reference form, to draw more than one kind of link among the same nodes, such as shared money and shared staff among a set of groups. Give each kind of link its own solid ink, in the order Rule 14.5 sets, and name it in a key and on one of its lines, leaving dashes and dots to a connection’s grade, as Rule 13.4 keeps them. Keep to three kinds; past that, draw one panel for each kind with every node in the same place."
    ],
    "why": {
     "text": [
