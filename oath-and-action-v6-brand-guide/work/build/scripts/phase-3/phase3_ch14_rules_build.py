@@ -1604,7 +1604,9 @@ GROUP_LINES = {
     7: "Scatter plots and their relatives show whether two measures move together, and an association’s note says what the pattern cannot show about cause.",
     8: ("A range, a band or a fan shows how sure a figure is, as its publisher states it, and an estimate’s note gives the method "
         "behind its range (Rule 13.1)."),
-    9: "Icon arrays, proportional symbols and overlap diagrams make a share countable and show where groups overlap.",
+    # round 4: checked against entries 14.79 to 14.84 as built; proportional symbols compare counts, not shares (14.80)
+    9: ("An icon array makes a share countable as people out of 100, and proportional symbols compare counts too far apart "
+        "for bars. Venn and Euler diagrams show how two groups overlap, the Euler with each group at its true size."),
     10: ("Big numbers give a figure with the context to judge it, and progress bars and bullet graphs set one measure against its "
          "target or limit. Step trackers and status chips show how far a bill or a dispute has come."),
     # round 3: checked against entries 14.93 to 14.112 as built

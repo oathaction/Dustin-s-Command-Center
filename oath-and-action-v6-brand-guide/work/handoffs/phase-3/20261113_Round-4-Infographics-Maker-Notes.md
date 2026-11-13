@@ -46,6 +46,8 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the in
   3. *Order marks on the steps (S92), ruling (b).* The data lead sets each step's number on a 24 px disc in the subject ink with its numeral in the label-on-subject ink, the line joining the discs in the subject ink, and an optional step (S92's rows 4 and 7) on a disc edged in the context ink with a text-ink numeral, named optional in words. Please draw `oac-h-steps`' counter that way, with a modifier for the optional step's `li` (`oac-h-branch`, say); the words "Optional" print in the step as HTML text.
   4. *Months in order (S94).* The calendar lists its dates as an `ol.oac-h-dates` under one year mark drawn by `h.mark`; nothing more is needed if `h.mark`'s drawing holds its month names (a picture, `aria-hidden`, as the accessibility lead allows for a grid). I draw it 256 px wide, the narrowest column, so it never scales.
 
+- **IM-E3, the facts grid's least column, 13.5rem (21:13 UTC).** S90's widest figure, "$994.9 billion", measures 177.3 px in the display face at the title size (the kit's metrics), so a fact box needs 211 px with its padding and border. `oac-h-facts` at `minmax(min(100%, 12rem), 1fr)` gives three columns of 208 px at a 656 px column, and the build fails "a span.oac-h-big whose words overflow it" there. At 13.5rem (216 px) the grid takes two columns at 656 and three from 680 px, where each box holds 182 px. Only S90 uses `oac-h-facts`.
+
 ## Tested
 
 ## Not tested

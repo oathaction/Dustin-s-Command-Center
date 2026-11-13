@@ -79,7 +79,7 @@
    "before_rule": "14.79",
    "title": "Proportion and overlap: how much, and how do groups overlap?",
    "rules": "14.79 to 14.84",
-   "line": "Icon arrays, proportional symbols and overlap diagrams make a share countable and show where groups overlap."
+   "line": "An icon array makes a share countable as people out of 100, and proportional symbols compare counts too far apart for bars. Venn and Euler diagrams show how two groups overlap, the Euler with each group at its true size."
   },
   {
    "number": 10,
