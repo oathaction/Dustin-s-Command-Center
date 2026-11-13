@@ -1413,7 +1413,19 @@
    "family": "Behavior",
    "form": "Funnel",
    "tier": "Extended",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 83,
+   "maker": "B",
+   "spec_id": "S65",
+   "status": "new",
+   "form_id": "funnel",
+   "data_status": "Primary",
+   "reader_question": "Of the people whose Medicaid or CHIP coverage came up for renewal, how many had a decision, how many were not cut off for paperwork, and how many kept coverage?",
+   "dataset": [
+    "cms-medicaid-chip-renewal-funnel",
+    "cms-medicaid-chip-renewal-outcomes"
+   ],
+   "entry_file": "work/build/guide/entries/14-093.json"
   },
   {
    "rule": "14.94",
@@ -1421,7 +1433,13 @@
    "family": "Behavior",
    "form": "Cohort chart",
    "tier": "Reference",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 84,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-94-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-094.json"
   },
   {
    "rule": "14.95",
@@ -1429,7 +1447,13 @@
    "family": "Behavior",
    "form": "Survival curve",
    "tier": "Reference",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 85,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-95-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-095.json"
   },
   {
    "rule": "14.96",
@@ -1437,7 +1461,16 @@
    "family": "Structure",
    "form": "Process diagram",
    "tier": "Core",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 86,
+   "maker": "A",
+   "spec_id": "S66",
+   "status": "new",
+   "form_id": "process-diagram",
+   "data_status": "Primary",
+   "reader_question": "How does a federal agency make or change a rule, and where can Congress or a court step in?",
+   "dataset": "govinfo-federal-rulemaking-steps",
+   "entry_file": "work/build/guide/entries/14-096.json"
   },
   {
    "rule": "14.97",
@@ -1445,7 +1478,19 @@
    "family": "Structure",
    "form": "Decision tree",
    "tier": "Core",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 87,
+   "maker": "A",
+   "spec_id": "S67",
+   "status": "new",
+   "form_id": "decision-tree",
+   "data_status": "Secondary and V7",
+   "reader_question": "Can my city switch its own elections to ranked-choice voting?",
+   "dataset": [
+    "ballotpedia-rcv-prohibitions-by-state",
+    "v7-rcv-local-routes"
+   ],
+   "entry_file": "work/build/guide/entries/14-097.json"
   },
   {
    "rule": "14.98",
@@ -1453,7 +1498,16 @@
    "family": "Structure",
    "form": "Who-decides diagram",
    "tier": "Core",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 88,
+   "maker": "A",
+   "spec_id": "S68",
+   "status": "new",
+   "form_id": "who-decides",
+   "data_status": "V7",
+   "reader_question": "Who sets my electric bill, and who can change the rules behind it?",
+   "dataset": "v7-pathway-electric-decision-makers",
+   "entry_file": "work/build/guide/entries/14-098.json"
   },
   {
    "rule": "14.99",
@@ -1461,7 +1515,16 @@
    "family": "Structure",
    "form": "Org chart",
    "tier": "Extended",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 89,
+   "maker": "A",
+   "spec_id": "S69",
+   "status": "new",
+   "form_id": "org-chart",
+   "data_status": "Primary",
+   "reader_question": "How is the House divided into committees and subcommittees?",
+   "dataset": "clerk-house-committees-119",
+   "entry_file": "work/build/guide/entries/14-099.json"
   },
   {
    "rule": "14.100",
@@ -1469,7 +1532,16 @@
    "family": "Structure",
    "form": "Hierarchy tree",
    "tier": "Extended",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 90,
+   "maker": "A",
+   "spec_id": "S70",
+   "status": "new",
+   "form_id": "hierarchy-tree",
+   "data_status": "Primary",
+   "reader_question": "Which federal court hears a case from my state, and where does an appeal go?",
+   "dataset": "uscode-federal-courts-circuits-districts",
+   "entry_file": "work/build/guide/entries/14-100.json"
   },
   {
    "rule": "14.101",
@@ -1477,7 +1549,19 @@
    "family": "Structure",
    "form": "Comparison grid",
    "tier": "Extended",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 91,
+   "maker": "A",
+   "spec_id": "S71",
+   "status": "new",
+   "form_id": "comparison-grid",
+   "data_status": "V7 and Primary",
+   "reader_question": "Which of the eleven routes can carry a reform, and what does each one take?",
+   "dataset": [
+    "v7-routes",
+    "usgov-route-requirements"
+   ],
+   "entry_file": "work/build/guide/entries/14-101.json"
   },
   {
    "rule": "14.102",
@@ -1485,7 +1569,16 @@
    "family": "Structure",
    "form": "Roll-call grid",
    "tier": "Extended",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 92,
+   "maker": "A",
+   "spec_id": "S72",
+   "status": "new",
+   "form_id": "roll-call-grid",
+   "data_status": "Primary",
+   "reader_question": "How did each senator and representative vote on the November 2025 bill that ended the shutdown?",
+   "dataset": "congress-hr5371-roll-calls-by-member",
+   "entry_file": "work/build/guide/entries/14-102.json"
   },
   {
    "rule": "14.103",
@@ -1493,7 +1586,13 @@
    "family": "Structure",
    "form": "Mind map",
    "tier": "Reference",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 93,
+   "maker": "A",
+   "status": "sketch",
+   "sketch_id": "s-14-103-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-103.json"
   },
   {
    "rule": "14.104",
@@ -1501,7 +1600,16 @@
    "family": "Relationships",
    "form": "Network diagram",
    "tier": "Extended",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 94,
+   "maker": "B",
+   "spec_id": "S73",
+   "status": "new",
+   "form_id": "network-diagram",
+   "data_status": "Primary",
+   "reader_question": "Where did each 2024 presidential nominee's joint fundraising committee send what it raised?",
+   "dataset": "fec-jfc-transfers-2024",
+   "entry_file": "work/build/guide/entries/14-104.json"
   },
   {
    "rule": "14.105",
@@ -1509,7 +1617,19 @@
    "family": "Relationships",
    "form": "Adjacency matrix",
    "tier": "Extended",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 95,
+   "maker": "B",
+   "spec_id": "S74",
+   "status": "new",
+   "form_id": "adjacency-matrix",
+   "data_status": "V7",
+   "reader_question": "Which parts of the atlas connect to which?",
+   "dataset": [
+    "v7-region-connection-matrix",
+    "v7-links-with-regions"
+   ],
+   "entry_file": "work/build/guide/entries/14-105.json"
   },
   {
    "rule": "14.106",
@@ -1517,7 +1637,20 @@
    "family": "Relationships",
    "form": "Arc diagram",
    "tier": "Extended",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 96,
+   "maker": "B",
+   "spec_id": "S75",
+   "status": "new",
+   "form_id": "arc-diagram",
+   "data_status": "Primary",
+   "reader_question": "Which House bills to rein in drug middlemen drew the same backers?",
+   "dataset": [
+    "congress-gov-pbm-bill-shared-backers-119",
+    "congress-gov-pbm-bills-119",
+    "congress-gov-pbm-bill-backers-119"
+   ],
+   "entry_file": "work/build/guide/entries/14-106.json"
   },
   {
    "rule": "14.107",
@@ -1525,7 +1658,13 @@
    "family": "Relationships",
    "form": "Chord diagram",
    "tier": "Reference",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 97,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-107-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-107.json"
   },
   {
    "rule": "14.108",
@@ -1533,7 +1672,13 @@
    "family": "Relationships",
    "form": "Multi-network",
    "tier": "Reference",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 98,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-108-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-108.json"
   },
   {
    "rule": "14.109",
@@ -1541,7 +1686,13 @@
    "family": "Relationships",
    "form": "Symmetrical links",
    "tier": "Reference",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 99,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-109-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-109.json"
   },
   {
    "rule": "14.110",
@@ -1549,7 +1700,19 @@
    "family": "Flow",
    "form": "Sankey",
    "tier": "Extended",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 100,
+   "maker": "B",
+   "spec_id": "S76",
+   "status": "new",
+   "form_id": "sankey",
+   "data_status": "Primary",
+   "reader_question": "Where did the money for 2024 House campaigns come from, and where did it go?",
+   "dataset": [
+    "fec-house-campaigns-2024-money-in-out",
+    "fec-house-campaigns-2024-by-candidate"
+   ],
+   "entry_file": "work/build/guide/entries/14-110.json"
   },
   {
    "rule": "14.111",
@@ -1557,7 +1720,13 @@
    "family": "Flow",
    "form": "Alluvial",
    "tier": "Reference",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 101,
+   "maker": "B",
+   "status": "sketch",
+   "sketch_id": "s-14-111-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-111.json"
   },
   {
    "rule": "14.112",
@@ -1565,7 +1734,16 @@
    "family": "Flow",
    "form": "Journey map",
    "tier": "Core",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 102,
+   "maker": "B",
+   "spec_id": "S77",
+   "status": "new",
+   "form_id": "journey-map",
+   "data_status": "Primary",
+   "reader_question": "What happens after someone applies for SNAP food benefits, and how long can each step take?",
+   "dataset": "govinfo-snap-application-steps",
+   "entry_file": "work/build/guide/entries/14-112.json"
   },
   {
    "rule": "14.113",
@@ -1573,7 +1751,13 @@
    "family": "Flow",
    "form": "Flow map",
    "tier": "Reference",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 103,
+   "maker": "C",
+   "status": "sketch",
+   "sketch_id": "s-14-113-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-113.json"
   },
   {
    "rule": "14.114",
@@ -1581,7 +1765,16 @@
    "family": "Maps",
    "form": "Tile-grid map, categorical",
    "tier": "Core",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 104,
+   "maker": "C",
+   "spec_id": "S07",
+   "status": "built",
+   "form_id": "tile-map-categorical",
+   "data_status": "Secondary",
+   "reader_question": "Which states prohibit ranked-choice voting?",
+   "dataset": "ballotpedia-rcv-prohibitions-by-state",
+   "entry_file": "work/build/guide/entries/14-114.json"
   },
   {
    "rule": "14.115",
@@ -1589,7 +1782,16 @@
    "family": "Maps",
    "form": "Tile-grid map with shift arrows",
    "tier": "Core",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 105,
+   "maker": "C",
+   "spec_id": "S12",
+   "status": "built",
+   "form_id": "tile-map-shift-arrows",
+   "data_status": "Primary",
+   "reader_question": "Where did the presidential margin move between 2020 and 2024?",
+   "dataset": "fec-presidential-shift-by-state",
+   "entry_file": "work/build/guide/entries/14-115.json"
   },
   {
    "rule": "14.116",
@@ -1597,7 +1799,19 @@
    "family": "Maps",
    "form": "Bubble map",
    "tier": "Core",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 106,
+   "maker": "C",
+   "spec_id": "S16",
+   "status": "built",
+   "form_id": "bubble-map",
+   "data_status": "Primary",
+   "reader_question": "Where did more citizens report voting in 2024?",
+   "dataset": [
+    "census-cps-2024-turnout-by-state",
+    "census-cb-2024-states"
+   ],
+   "entry_file": "work/build/guide/entries/14-116.json"
   },
   {
    "rule": "14.117",
@@ -1605,7 +1819,19 @@
    "family": "Maps",
    "form": "Choropleth, sequential",
    "tier": "Core",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 107,
+   "maker": "C",
+   "spec_id": "S78",
+   "status": "new",
+   "form_id": "choropleth",
+   "data_status": "Primary",
+   "reader_question": "Where do more households have a broadband internet subscription?",
+   "dataset": [
+    "census-acs-broadband-by-state",
+    "census-cb-2024-states"
+   ],
+   "entry_file": "work/build/guide/entries/14-117.json"
   },
   {
    "rule": "14.118",
@@ -1613,7 +1839,20 @@
    "family": "Maps",
    "form": "Locator map",
    "tier": "Core",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 108,
+   "maker": "C",
+   "spec_id": "S79",
+   "status": "new",
+   "form_id": "locator-map",
+   "data_status": "Primary",
+   "reader_question": "Where is Lake Isabella, the town in chapter 01's photograph of a public meeting?",
+   "dataset": [
+    "census-gazetteer-2024-places",
+    "census-cb-2024-states",
+    "census-cb-2024-counties"
+   ],
+   "entry_file": "work/build/guide/entries/14-118.json"
   },
   {
    "rule": "14.119",
@@ -1621,7 +1860,19 @@
    "family": "Maps",
    "form": "District map",
    "tier": "Extended",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 109,
+   "maker": "C",
+   "spec_id": "S80",
+   "status": "new",
+   "form_id": "district-map",
+   "data_status": "Primary",
+   "reader_question": "How close was each of Michigan's 2024 House races, by one margin rule for every kind of seat?",
+   "dataset": [
+    "clerk-house-results-2024-by-district",
+    "census-cb-2024-cd119"
+   ],
+   "entry_file": "work/build/guide/entries/14-119.json"
   },
   {
    "rule": "14.120",
@@ -1629,7 +1880,19 @@
    "family": "Maps",
    "form": "County choropleth",
    "tier": "Extended",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 110,
+   "maker": "C",
+   "spec_id": "S81",
+   "status": "new",
+   "form_id": "county-choropleth",
+   "data_status": "Primary",
+   "reader_question": "How does median household income vary from county to county?",
+   "dataset": [
+    "census-acs5-county-median-household-income",
+    "census-cb-2024-counties"
+   ],
+   "entry_file": "work/build/guide/entries/14-120.json"
   },
   {
    "rule": "14.121",
@@ -1637,7 +1900,19 @@
    "family": "Maps",
    "form": "District tile map",
    "tier": "Extended",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 111,
+   "maker": "C",
+   "spec_id": "S82",
+   "status": "new",
+   "form_id": "district-tile-map",
+   "data_status": "Primary",
+   "reader_question": "Which party won each House seat in 2024, and by how much, with the same margin classes as Michigan's district map?",
+   "dataset": [
+    "clerk-house-results-2024-by-district",
+    "census-gazetteer-2024-cd119"
+   ],
+   "entry_file": "work/build/guide/entries/14-121.json"
   },
   {
    "rule": "14.122",
@@ -1645,7 +1920,19 @@
    "family": "Maps",
    "form": "Dot density map",
    "tier": "Extended",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 112,
+   "maker": "C",
+   "spec_id": "S83",
+   "status": "new",
+   "form_id": "dot-density-map",
+   "data_status": "Primary",
+   "reader_question": "Where are the private-sector jobs?",
+   "dataset": [
+    "census-cbp-county-employment",
+    "census-cb-2024-counties"
+   ],
+   "entry_file": "work/build/guide/entries/14-122.json"
   },
   {
    "rule": "14.123",
@@ -1653,7 +1940,16 @@
    "family": "Maps",
    "form": "Small-multiple maps",
    "tier": "Extended",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 113,
+   "maker": "C",
+   "spec_id": "S84",
+   "status": "new",
+   "form_id": "small-multiple-maps",
+   "data_status": "Download and V7",
+   "reader_question": "When did states set their minimum wage above the federal $7.25?",
+   "dataset": "dol-state-minimum-wage-classes",
+   "entry_file": "work/build/guide/entries/14-123.json"
   },
   {
    "rule": "14.124",
@@ -1661,7 +1957,13 @@
    "family": "Maps",
    "form": "Party-colored map or red and blue scale",
    "tier": "Avoid",
-   "round": 3
+   "round": 3,
+   "data_plan_row": 114,
+   "maker": "C",
+   "status": "sketch",
+   "sketch_id": "s-14-124-sketch",
+   "reader_question": "",
+   "entry_file": "work/build/guide/entries/14-124.json"
   },
   {
    "rule": "14.125",
