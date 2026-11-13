@@ -1,0 +1,47 @@
+{
+ "faults": [],
+ "rows": 3144,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 720,
+   "height": 484,
+   "bytes": 398087
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 295,
+   "bytes": 395407
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 720,
+   "height": 484,
+   "bytes": 398087
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 295,
+   "bytes": 395407
+  }
+ ],
+ "csv_rows": 3144,
+ "csv_cols": [
+  "geoid",
+  "name",
+  "state",
+  "uninsured_pct",
+  "uninsured_moe",
+  "uninsured_people",
+  "uninsured_class",
+  "breaks_crossed"
+ ],
+ "figure_bytes": 11794,
+ "island_bytes": 2240
+}

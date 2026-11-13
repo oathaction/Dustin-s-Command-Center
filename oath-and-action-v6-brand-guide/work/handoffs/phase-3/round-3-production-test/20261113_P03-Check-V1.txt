@@ -1,0 +1,3 @@
+FAIL P03 county-choropleth: 0 rows, 0 drawings, 2 faults
+  - spec: "source_line" is missing; contract C2 in work/build/chart-kit/README.md lists every key
+  - dataset census-sahie-county-uninsured-classes: no sidecar work/build/data/census-sahie-county-uninsured-classes.meta.json
