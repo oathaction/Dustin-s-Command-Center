@@ -104,14 +104,16 @@
     "prefer_phone": {
       "CT": "right",
       "TN": "right",
-      "VA": "left"
+      "VA": "left",
+      "VT": "above"
     },
     "prefer": {
       "WV": "left"
     },
     "lead": [
       "DC"
-    ]
+    ],
+    "narrow_under": 300
   },
   "notes_internal": [
     "The national 65.3 percent (margin 0.5) is in the sidecar's notes and in census-cps-reported-voting.csv (2024, all ages, citizens); it matches Table A-1.",

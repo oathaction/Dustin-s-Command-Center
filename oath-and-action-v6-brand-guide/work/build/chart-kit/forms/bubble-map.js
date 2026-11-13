@@ -9,7 +9,7 @@
   K.register_chart({
     form: 'bubble-map', name: 'Bubble Map', family: 'maps',
     encode: { code: 'code', size: 'number', shade: 'number' },
-    labels: ['bins', 'ring', 'ring_label', 'shade_title', 'size_title', 'size_steps', 'size_unit', 'size_step_words', 'nation', 'nation_label', 'offsets', 'offsets_phone', 'prefer', 'prefer_phone', 'lead', 'orders'],
+    labels: ['bins', 'ring', 'ring_label', 'shade_title', 'size_title', 'size_steps', 'size_unit', 'size_step_words', 'nation', 'nation_label', 'offsets', 'offsets_phone', 'prefer', 'prefer_phone', 'lead', 'orders', 'narrow_under'],
     phone: 'same',
     draw: function (c) {
       var G = globalThis.OAChartGeo, rows = c.rows, ec = c.field('code'), ez = c.field('size'), eh = c.field('shade');
@@ -19,7 +19,9 @@
       var drawn = rows.filter(function (r) { return G.centers[r[ec]]; });
       var maxv = Math.max.apply(null, drawn.map(function (r) { return r[ez]; })), area = K.scale.sqrt(maxv, R);
       // the key: above the map, or under it at the narrowest widths, where the map takes the full width first (CD KR2)
-      var narrow = W < 340, ring = L.ring || [];
+      // labels.narrow_under (round 3 second pass, BC N2): the width under which only circles that hold their code are
+      // labeled; default 340 px, as board 1 drew it
+      var narrow = W < (L.narrow_under || 340), ring = L.ring || [];
       // the size key beside the shade key, or under it as on a phone wherever its steps would run past the drawing's
       // edge (D3-904's sweep; placement only)
       var ksteps = L.size_steps || [], kwid = ksteps.reduce(function (t, s, si) {
@@ -146,10 +148,12 @@
           var cands = offs[code] ? [[p.x + offs[code][0], p.y + offs[code][1]]] : [[p.x + p.rad + pad, p.y + s * 0.35], [p.x - p.rad - pad - tw, p.y + s * 0.35], [p.x - tw / 2, p.y - p.rad - pad - s * 0.23], [p.x - tw / 2, p.y + p.rad + pad + asc],
             [p.x + p.rad + pad, p.y - p.rad], [p.x + p.rad + pad, p.y + p.rad + asc], [p.x - p.rad - pad - tw, p.y - p.rad], [p.x - p.rad - pad - tw, p.y + p.rad + asc]];
           if (!offs[code] && prefer[code] !== undefined && SIDES[prefer[code]] !== undefined) cands.unshift(cands[SIDES[prefer[code]]]);
-          for (var rg = 1; rg <= (c.phone ? 14 : 10) && !offs[code]; rg++) {
-            var dd = p.rad + pad + rg * 12;
-            for (var ang = 0; ang < 24; ang++) {
-              var th = ang * Math.PI / 12, ex = p.x + Math.cos(th) * dd, ey = p.y + Math.sin(th) * dd;
+          // rings 8 px apart at 36 angles on a phone (the second pass: KY and VT nearer their circles), 12 px at 24 at a desk
+          var RS = c.phone ? 8 : 12, NA = c.phone ? 36 : 24;
+          for (var rg = 1; rg <= (c.phone ? 21 : 10) && !offs[code]; rg++) {
+            var dd = p.rad + pad + rg * RS;
+            for (var ang = 0; ang < NA; ang++) {
+              var th = ang * 2 * Math.PI / NA, ex = p.x + Math.cos(th) * dd, ey = p.y + Math.sin(th) * dd;
               cands.push([Math.cos(th) < -0.1 ? ex - tw : Math.cos(th) > 0.1 ? ex : ex - tw / 2, ey + s * 0.35]);
             }
           }

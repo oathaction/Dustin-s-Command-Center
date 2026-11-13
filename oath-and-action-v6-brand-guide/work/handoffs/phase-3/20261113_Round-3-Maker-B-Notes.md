@@ -229,13 +229,22 @@ Every maker B item in the fix brief and its addendum is done but S73's title, wh
 
 ## Second pass
 
-November 13, 2026, from 06:53 UTC (clock read from `date -u`), on the main session's D3-1497.
+November 13, 2026, from 06:53 UTC (clock read from `date -u`), on the main session's D3-1497, then S53 and S59 at 256 px, then S73 under ST2-M1 (the data lead's rulings of 07:03 and 07:06 UTC, D3-1508 and D3-1509) and the creative director's RS-3. Two container restarts stopped the work; the files survived, and I picked up from these notes.
 
 ### Routine calls, second pass
 
 - D3-xxx | S32's "What starts" and S59's "Period" set `"words_pass": true`, nothing else changed | The engineer's words check warned on stored values these columns print on purpose: S32's three plain step names (its words only curl two apostrophes and spell out HHS) and S59's years 2026 to 2029 (its words only name the longer run)
 - D3-xxx | S59's first projected value gives way where its label would touch the history's last value on a narrow plot (`fan-chart`: `give` on that label), the last projected value always printing; data, inks and words unchanged | The two “4.1” labels overlapped at the 256 px page width; the table keeps every median, and the title's 4.1 still prints at 2029
 - D3-xxx | S53's band words go over the drawing on the full width where a held line would reach the center column or the oldest ages' bars in the corner (`population-pyramid`), as at the 256 and 296 px page widths; data, inks and words unchanged | Found by the check of my specs at 256 px: “Ages 55 to 64:”, held whole by its no-break spaces, ran into “100+” and over the top bars (3 faults)
+
+- D3-xxx | S73's bar heads name the funds by the rule that found them, one form for both parties and no nominee's possessive (“Three joint fundraising committees that paid the Democratic presidential campaign, $955.9 million in all”; “Four … Republican …, $679.8 million in all”), the total held to its words with no-break spaces; the line under each names the campaign's candidate over the cycle (“Joseph R. Biden Jr. until July 21, 2024, then Kamala D. Harris”; “Donald J. Trump”) | ST2-M1 (D3-1508): the words made the funds Harris's for the whole cycle; `network-diagram` now fills `{total}` in a block's head
+- D3-xxx | Side by side, `network-diagram` starts every block's bars under the deepest heading | The Democratic head runs a line longer, and the two sides' bars must share one top to be read on one scale
+- D3-xxx | S73's note 1, notes 3 and 4, alt and table caption name the funds by party (“the Democratic funds”, “the Republican funds”), never by a nominee's possessive | ST2-M1, in one form for both sides; the title and measure line are the editor's
+- D3-xxx | S73's new note 2 splits the Democratic funds' line 22 at July 21, 2024 by kind ($161.4 million, $85.8 million, $68.1 million to 50 and $29,350 before; $372.2 million, $155.1 million, $113.3 million to 51 and $9,290 from that day), says the Republican campaign kept one candidate so its funds are not split, and names its two renames once with their dates (2024 RNC Victory to the Trump 47 Committee, March 14, 2024; the campaign committee to Never Surrender, Inc., November 12, 2024, which two drawn payments followed) | D3-1509, one test for both sides, on the research lead's split and Form 1 names
+- D3-xxx | S73 prints the committee names its table lists in title case through `typography.replace`, eleven pairs, the data as stored | RS-3: the FEC's capitals read as shouting beside the drawing's names
+- D3-xxx | S73's source line is the sidecar's `with_form_1` variant; the derive script carries the source file's variants into the by-node sidecar | D3-1509: the note's dates rest on Form 1
+- D3-xxx | S73's `encode.target_key` reads `table_row`, so a node's marks carry the table rows they sum; `link_id` stays in the file and its export | 372 bytes off the page, so the July 21 note and the longer source line fit under D3-1328's 14,106 (13,866 with the frame)
+- D3-xxx | My figure check reads S65's and S77's titles as the editor shortened them (RS-4), figures unchanged | D3-1307
 
 ### Tested, second pass
 
@@ -244,6 +253,11 @@ November 13, 2026, from 06:53 UTC (clock read from `date -u`), on the main sessi
 - My specs at the 256 px page width, `build s49 ... s59 s65 s73 ... s77 --widths 256 --no-png`, sweep on: before the fixes S53 failed 3 (texts overlap “100+” and “Ages 55 to 64:” on both grounds; a bar half under the words on Charcoal) and S59 its 2; every other spec PASS. After both fixes, 17 of 17 PASS, 0 faults, 0 warnings; 17 check files read.
 - S53 after the fix, `build s53 --widths 1440,390,296,256`, sweep on: PASS, 0 faults, 0 warnings; its drawings at 1440 and 390 px are byte for byte the same as the committed form's (built from it into scratch, then my form put back); looked at at 256 and 296 px on Newsprint and Charcoal (the band's words in one line over the drawing).
 
+- S73 after ST2-M1 and RS-3: `maker_b_round3_derive.py` rerun on the research lead's new columns and variant; `--check` 0 faults. `--figures`: 1 fault, which waits on the editor: S73's title and measure line still say “Harris’s”, “Trump’s” and “nominee’s” (ST2-M1 gives them to the editor). Every other S73 check passes: the bar heads and candidate lines, no possessive in the notes, alt, caption or heads, the July 21 split by kind recomputed from `amount_before_2024_07_21` (and independently in a one-off script), the counts of 50 and 51 state parties, the Democratic and Republican Form 1 names in the sidecar, the two December 11, 2024 payments, the eleven title-case names against the stored ones, and the source line against `with_form_1`. S65's and S77's title checks read the editor's shorter titles and pass.
+- `node work/build/chart-kit/oa-chart.mjs build s73 --widths 1440,390,296 --out <scratch>/kit-s73h`, sweep on, at 07:11 UTC: PASS, 0 faults, 0 warnings, its check file read; 13,116 bytes as the guide places it, about 13,866 with the frame. Page table read with scripts on and off: 20 rows, the funds named, the committee names in title case, the caption with no possessive. Looked at: 1440 px on Newsprint and Charcoal and Charcoal in grayscale, 390 px on Newsprint and Charcoal, 296 px on Charcoal (the heads, the candidate lines, both sides' bars on one top).
+
 ### Not tested, second pass
 
-- S32, S53 and S59 in the guide page; no strict build or guide check for these changes (two table keys and two forms' placement).
+- S32, S53, S59 and S73 in the guide page; no strict build or guide check for the second pass's changes.
+- S73 at 256 px (the coordinator's widths were 1440, 390 and 296; the sweep ran every width).
+- S73's title and measure line under ST2-M1: the editor's.
