@@ -115,6 +115,10 @@ First strict build (`guide_build.py --strict --out .../round-3/engineer/b1/guide
 
 Strict build exit 1 on three far-over plates, all maker A's: S72 81,880 bytes, S70 35,545, S69 27,629 (three times the extended average is 24,576). Page 11,245,119; projected 15,044,385; chapter 14 with the kit 2,237,609 of 2,803,941; renderer 496,447; map geometry 133,117 of 250,000; rules with the opener 175,577 of 212,288; chapter 15 307,066. **The share per plate for the 20 still to come fell to 7,108** (77 plates placed, 82 forms at a 4,342 average). Round 3's 13 placed plates: S72 81,880; S70 35,545; S69 27,629; S74 19,833; S67 17,262; S73 16,547; S71 11,413; S66 9,157; S68 8,691; S75 7,159; S77 6,630; S76 6,488; S65 5,306 (253,540 in all). Sent to the main session, which routed it (D3-1097: every round 3 plate at or under 13,852 with its frame, none over 15,000; S72 by `table.group` with every member in the CSV).
 
+### Weight, strict build at 01:46 UTC (clock read), after the makers' weight fixes
+
+Exit 0, no warning. Page 11,218,725; projected 15,044,385; chapter 14 with the kit 2,211,215 of 2,803,941; renderer 509,938; map geometry 133,117 of 250,000; rules with the opener 175,657 of 212,288; chapter 15 307,066. **Share per plate for the 13 still to come: 14,719** (84 placed, 87 forms registered). Round 3's 20 plates on the page with their frames (a plate frame measures about 750 bytes, not the 1,300 R3-8 allowed): S69 14,584; S81 13,351; S82 13,293; S67 13,283; S83 13,207; S71 12,149; S74 11,671; S72 11,296; S84 10,820; S66 9,943; S70 9,688; S73 9,595; S68 9,453; S78 9,063; S75 7,914; S77 7,410; S76 7,253; S80 6,508; S65 6,243; S79 4,310. Only S69 is over 13,852 (by 732), under D3-1097's 15,000. `phase3_ch14_build.py --check` read 84 of 87 files current: the chapter files lag the newest entries until an owner reruns the generator.
+
 ## Routine calls
 
 - D3-xxx | Links are read by the layout guard as lines no word may sit under, and the kit never clears one with a knockout | R3-5 asks the guard to read links; a gridline's knockout would hide a link that runs through a node's words

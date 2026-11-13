@@ -23,7 +23,7 @@
       var T = K.parts.map_fit(c, G, { x: 0, y: kt.bottom + 12, w: W });
       K.parts.map_shapes(c, G, T, G.ids.map(function (id) { return { id: id, fill: 'land' }; }), { merge: true });
       K.parts.map_mesh(c, G, T, { between: function (a, b) { return b !== null && a.slice(0, 2) !== b.slice(0, 2); }, stroke: 'context', width: 0.5 });
-      K.parts.map_mesh(c, G, T, { which: 'outline', stroke: 'context', width: 0.5 });
+      K.parts.map_mesh(c, G, T, { which: 'outline', stroke: 'context', width: 1 });   // 1 px, so the land's edge carries on Charcoal
       K.parts.map_insets(c, G, T);
       var counts = {};
       c.rows.forEach(function (row) { var n = row[ed]; if (n !== null && n !== undefined && n !== '' && +n > 0) counts[String(row[ei])] = +n; });

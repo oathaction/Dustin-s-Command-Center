@@ -29,9 +29,10 @@
         var nm = split(r), words = nm[0];
         var nb = K.parts.node(c, { x: x, y: top, w: w, h: h }, words, { stroke: 'subject', align: 'start', lines: 8, pad: pad, sub: nm[1] || undefined, sub_lines: 4, weight: 600, roles: role, data: { key: String(r[ek]), field: 'who', value: r[ew] } });
         at[String(r[ek])] = { x: x, y: top, w: w, h: h };
+        if (!nb) c.warn('who-decides: the words of ' + words + ' do not fit their box at ' + W + ' px');
         return nb;
       };
-      var size_of = function (r, w) { var nm = split(r); return K.parts.node_size(c, nm[0], { max: w + 0.5, min: w, lines: 8, pad: pad, sub: nm[1] || undefined, sub_lines: 4, weight: 600, roles: role }); };
+      var size_of = function (r, w) { var nm = split(r); return K.parts.node_size(c, nm[0], { max: w, min: w, lines: 8, pad: pad, sub: nm[1] || undefined, sub_lines: 4, weight: 600, roles: role }); };
       // one size for every name: the label size where every name fits its column, else the tick size
       var fits = function (w) { return c.rows.every(function (r) { return !!size_of(r, w); }); };
       if (wide && !fits(cw)) { role = ['tick']; if (!fits(cw)) wide = false; }

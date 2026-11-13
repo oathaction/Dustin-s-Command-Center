@@ -24,9 +24,9 @@
     o.items.forEach(function (it) { cls_of[it.id] = it.cls; });
     var first = function (id) { return id !== null && (cls_of[id] === 1 || cls_of[id] === null || cls_of[id] === undefined); };
     if (o.state_lines) {
-      // a county map: no county lines; state lines in the context ink at 0.5 px, and the land's edge in the context ink
+      // a county map: no county lines; state lines in the context ink at 0.5 px, and the land's edge in the context ink at 1 px
       K.parts.map_mesh(c, L, T, { between: function (a, b) { return b !== null && a.slice(0, 2) !== b.slice(0, 2); }, stroke: 'context', width: 0.5 });
-      K.parts.map_mesh(c, L, T, { which: 'outline', stroke: 'context', width: 0.5 });
+      K.parts.map_mesh(c, L, T, { which: 'outline', stroke: 'context', width: 1 });   // 1 px, so the land's edge carries on Charcoal
       // a county with no estimate keeps the land ink with a 1 px context edge (ruling (b))
       K.parts.map_mesh(c, L, T, { which: 'all', between: function (a, b) { return cls_of[a] === null || (b !== null && cls_of[b] === null); }, stroke: 'context', width: 1 });
     } else {

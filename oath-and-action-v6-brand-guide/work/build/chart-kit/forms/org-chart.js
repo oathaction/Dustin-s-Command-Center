@@ -53,7 +53,7 @@
           }));
           items.forEach(function (it) {
             var w = cw - (it.parent ? sub_in : 0);
-            var s = P.node_size(c, it.words, Object.assign({ max: w + 0.5, min: w, named: it.named, sub: it.sub, roles: it.parent ? ['tick'] : ['label'], pad: it.parent ? [8, 4] : [10, 7], weight: it.parent ? 400 : 700 }, szo));
+            var s = P.node_size(c, it.words, Object.assign({ max: w, min: w, named: it.named, sub: it.sub, roles: it.parent ? ['tick'] : ['label'], pad: it.parent ? [8, 4] : [10, 7], weight: it.parent ? 400 : 700 }, szo));
             it.w = w; it.h = s ? s.h : 40;
           });
           var t = P.tree(items, { dir: 'indent', indent: sub_in, row_gap: 4 });
@@ -66,7 +66,7 @@
           });
           t.nodes.forEach(function (nd) {
             var it = nd.item;
-            box({ x: x + nd.x, y: top + nd.y, w: nd.w, h: nd.h }, it.words, { named: it.named, sub: it.sub, roles: it.parent ? ['tick'] : ['label'], pad: it.parent ? [8, 4] : [10, 7], weight: it.parent ? 400 : 700, data: { key: it.id, field: it.parent ? 'sub' : 'unit', value: it.words } });
+            if (!box({ x: x + nd.x, y: top + nd.y, w: nd.w, h: nd.h }, it.words, { named: it.named, sub: it.sub, roles: it.parent ? ['tick'] : ['label'], pad: it.parent ? [8, 4] : [10, 7], weight: it.parent ? 400 : 700, data: { key: it.id, field: it.parent ? 'sub' : 'unit', value: it.words } })) c.warn('org-chart: the words of ' + it.words + ' do not fit their box at ' + W + ' px');
           });
           cols[ci] = top + t.height + vg;
         });

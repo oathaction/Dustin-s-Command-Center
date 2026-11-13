@@ -64,7 +64,7 @@
           }));
           items.forEach(function (it) {
             var w = cw - (it.head ? 0 : sub_in);
-            var s = P.node_size(c, it.words, Object.assign({ max: w + 0.5, min: w, named: it.head, sub: it.sub, roles: it.head ? ['label'] : ['tick'], pad: it.head ? [10, 7] : (it.odd ? [8, 4] : [0, 3]), weight: it.head ? 700 : 400 }, szo));
+            var s = P.node_size(c, it.words, Object.assign({ max: w, min: w, named: it.head, sub: it.sub, roles: it.head ? ['label'] : ['tick'], pad: it.head ? [10, 7] : (it.odd ? [8, 4] : [0, 3]), weight: it.head ? 700 : 400 }, szo));
             it.w = w; it.h = s ? s.h : 30;
           });
           var t = P.tree(items, { dir: 'indent', indent: sub_in, row_gap: 2 });
@@ -81,7 +81,7 @@
               : it.odd ? { fill: 'track', stroke: 'context', roles: ['tick'], pad: [8, 4], weight: 400 }
                 : { fill: 'surface', stroke: false, roles: ['tick'], pad: [0, 3], weight: 400, text: 'label' };
             if (it.odd) o.text = 'label';
-            P.node(c, b, it.words, Object.assign({ align: 'start', data: { key: it.head ? String(k[en]) : it.place, field: it.head ? 'court' : 'place', value: it.words } }, szo, o));
+            if (!P.node(c, b, it.words, Object.assign({ align: 'start', data: { key: it.head ? String(k[en]) : it.place, field: it.head ? 'court' : 'place', value: it.words } }, szo, o))) c.warn('hierarchy-tree: the words of ' + it.words + ' do not fit their box at ' + W + ' px');
           });
           cols[ci] = top + t.height + vg;
         });
