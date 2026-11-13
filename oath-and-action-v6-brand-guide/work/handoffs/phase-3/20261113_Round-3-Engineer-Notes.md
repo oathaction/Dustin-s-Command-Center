@@ -416,3 +416,28 @@ At about 04:55 UTC I ran `data_round0_build.py --help` to read its usage. The sc
 
 - Modified: `work/build/chart-kit/kit.js` (`first`, the name sort, `fc` classes, `K.fill_words`, the stage and `K.draw_width`, `c.all_rows`, the words), `parts.js` (`map_labels`' widest point and `widest_spots`, `width_key`'s band, merged fills' `region`, the key's `fc` and `forced_edge`), `checks.js` (empty column, words warning, retrieval dates, `--data`'s order, `retrieved_dates` exported), `oa-chart.mjs` (warnings, the page's empty column check, the stage in Node and the sweep, `--data`, the weight line, the national figure warning, `typography` and `stage` in the island, forced-only marks out of SVG exports, self-test cases), `kit.css` (the stage frame, `region`, `muted`, `forced`, `.oac-s-band`), `words.json` (`data_file`, `stage_scroll`), `README.md` (round 3); `work/build/scripts/phase-2/guide_build.py` (`sketch_names`' period); `work/build/scripts/phase-3/phase3_ch14_build.py` (`{data_file}`); `work/build/guide/shell/guide-shell.js` (`snapTop`); these notes.
 - Created: `work/build/chart-kit/kit-build.js` (the builder's half of the kit, call 10). Also modified: `work/build/chart-kit/tools/kit_snapshot.mjs` (loads `kit-build.js`); `work/build/scripts/phase-3/progress_round_1_build.py` and `progress_round_2_build.py` (`kit-build.js` in the kit's change signature; not rerun). Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/` (`base/` frozen kit and specs, snapshots, kit builds `k1` to `k3`, `all0`, `all1`, `fc`, `fc2`, `typo`, `stage`, `p03`; strict builds `g1` to `g3`; probe scripts).
+
+## Second pass
+
+November 13, 2026, 06:53 to 07:00 UTC (clock read), at the main session's request (D3-1497).
+
+- **One share figure in every report LANDED.** Each build of the guide's own chapters (`guide_build.py` with no `--chapters` and no `--demo`) now writes chapter 14's share per plate from its weight report to `work/build/chart-kit/plate-share.json`; `oa-chart.mjs build` reads it and prints it on every spec's weight line with the build it came from ("share per plate 13,588 (the guide build of 2026-11-13 06:55:07)"), and in each check file under `weight`. With no record, the line gives D3-1328's 14,106 and says so. No drawing, table or check changed. The README's step 9 and its file table say where the figure comes from.
+
+### Routine calls, second pass
+
+- D3-xxx | The kit's weight line reads the share per plate the last build of the guide's own chapters reported, from `plate-share.json`, which only such a build writes | D3-1497: one figure in every report; a fixture build, a demo or the self-test never overwrites it
+
+### Tested, second pass
+
+- Strict build at 06:55 (`.../g7/guide.html`): exit 0, no warning; it wrote `plate-share.json` with 13,588 for the 13 plates to come, the figure its report's note gives.
+- `guide_build.py --self-test`: 32 of 32 scenarios, 328 of 328 expectations, and `plate-share.json` byte for byte as before it ran.
+- The kit's self-test: every planted fault caught.
+- `build --all --no-png` with the sweep, 06:55 to 07:00: 84 specs, 84 check files counted, 84 PASS, 0 faults; all 84 weight lines give 13,588 from the 06:55 build.
+
+### Not tested, second pass
+
+- A build by another owner rewriting the record while a kit build reads it: the kit reads the file once a weight line, and a half-written file falls back to 14,106 with its words.
+
+### Files, second pass
+
+- Created: `work/build/chart-kit/plate-share.json` (written by the build). Modified: `work/build/scripts/phase-2/guide_build.py`, `work/build/chart-kit/oa-chart.mjs`, `work/build/chart-kit/README.md`, these notes.

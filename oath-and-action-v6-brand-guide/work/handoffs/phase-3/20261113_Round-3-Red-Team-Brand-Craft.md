@@ -145,3 +145,9 @@ No red and blue anywhere, no Prussian for a party, and no party named by color. 
 - The guide check and the four-width check (the main session runs them).
 - S07 and S12 beyond their kit builds (placement only, unchanged drawings).
 - Chapter 15's plates beside the round 3 diagrams; I read chapter 15's grammar from its manifest's alt text, not its plates.
+
+## Second pass
+
+November 13, 2026, from 06:53 UTC (clock read with `date -u`). Build read: the fix pass's closing strict build (`.../round-3-fix/close/guide.html`, 11,231,784 bytes, 0 warnings), copied to `.../round-3-review/brand-craft/second/` before any capture. Read first: the fix brief and its addendum (D3-1329, D3-1330), the data lead's "Review fix pass", "Sign-off, review fix pass" and "Rulings on the brand and craft report (BC)", the owners' "Review fix pass" sections, and the decision log from D3-1319 to D3-1498.
+
+Status: in progress (word and table checks done; captures running).

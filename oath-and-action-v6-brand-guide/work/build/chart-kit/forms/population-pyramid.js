@@ -40,13 +40,28 @@
       // the scale ends at the next half step past the largest bar, so the bars fill their halves
       var nk = K.nice(0, vmax, ph ? 2 : 3), hi = Math.ceil(vmax / (nk.step / 2) - 1e-9) * nk.step / 2, ticks = K.ticks(0, hi, 0, nk.step);
       var sc = K.scale.linear([0, hi], [0, half - 4]);
-      var y = 0;
+      var y = 0, n = amax - amin + 1, bh = ph ? 3 : 4;
+      // the band's words go in the empty corner over the left half's oldest ages; where a held line (a no-break space keeps
+      // "Ages 55 to 64:" whole) would reach the center column or the oldest ages' bars there, as on the narrowest phones,
+      // they go over the drawing instead, on the full width (placement only, D3-1497's follow-up)
+      var lh2 = Math.round(size * 1.2), blines = [], above = null;
+      if (band && band.words) {
+        blines = c.wrap(band.words, 'label', Math.max(60, half - 24), 700);
+        var span = Math.ceil((size + blines.length * lh2) / bh) + 1;
+        var reach = Math.max.apply(null, [0].concat(rowsL.filter(function (r) { return r[ea] > amax - span; }).map(function (r) { return sc(r[ev]); })));
+        var widest = Math.max.apply(null, blines.map(function (ln) { return c.measure(ln, 'label', 700); }));
+        if (widest > cx - aw / 2 - reach - 8) {
+          above = c.wrap(band.words, 'label', W, 700);
+          above.forEach(function (ln, i) { c.text(0, size + i * lh2, ln, { role: 'label', weight: 700 }); });
+          y = (above.length - 1) * lh2 + size + 10;
+        }
+      }
       // the sides' names over their halves
       var nl = sides[left] !== undefined ? sides[left] : left, nr = sides[right] !== undefined ? sides[right] : right;
-      c.text(cx - aw / 2 - 4, size, nl, { role: 'label', weight: 700, anchor: 'end' });
-      c.text(cx + aw / 2 + 4, size, nr, { role: 'label', weight: 700 });
-      y = size + 10;
-      var n = amax - amin + 1, bh = ph ? 3 : 4, top = y, bot = top + n * bh;
+      c.text(cx - aw / 2 - 4, y + size, nl, { role: 'label', weight: 700, anchor: 'end' });
+      c.text(cx + aw / 2 + 4, y + size, nr, { role: 'label', weight: 700 });
+      y += size + 10;
+      var top = y, bot = top + n * bh;
       var ay = function (a) { return bot - (a - amin + 1) * bh; };
       // gridlines at the scale's ticks, on both halves
       ticks.forEach(function (t) {
@@ -92,10 +107,7 @@
       // the band's words in the empty corner over the left half's oldest ages, where every width has room
       // the band's words in the empty corner over the left half's oldest ages, where every width has room; with no halo, so the
       // kit clears the gridlines behind them with a knockout of the ground (BC S1)
-      if (band && band.words) {
-        var lh2 = Math.round(size * 1.2), blines = c.wrap(band.words, 'label', Math.max(60, half - 24), 700);
-        blines.forEach(function (ln, i) { c.text(0, top + size + i * lh2, ln, { role: 'label', weight: 700 }); });
-      }
+      if (band && band.words && !above) blines.forEach(function (ln, i) { c.text(0, top + size + i * lh2, ln, { role: 'label', weight: 700 }); });
       mtexts.forEach(function (m) {
         var mw = c.measure(m.words, 'tick'), x = W;
         if (mprev && Math.abs(mprev.y - m.y) < tick + 2) x = mprev.x - mprev.w - 8;

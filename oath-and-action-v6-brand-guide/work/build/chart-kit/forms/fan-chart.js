@@ -96,7 +96,9 @@
         // a value whose words the outer band's edge would cross sits just over that edge (the data lead's MB-F3)
         var vy = ys(r[eih] !== undefined && eih ? Math.max(r[ey], r[eih]) : r[ey]) - 8, oy = ys(r[eoh]);
         if (oy > vy - tick - 2 && oy < vy + 4) vy = oy - 5;
-        vlab.push({ x: px(i), y: vy, words: K.fmt(r[ey], fy), weight: 600, halo: true, must: i === 0 || i === main.length - 1 });
+        // the first period's value gives way where it would touch the history's last value on a narrow plot (the table
+        // keeps it); the last period's value always prints
+        vlab.push({ x: px(i), y: vy, words: K.fmt(r[ey], fy), weight: 600, halo: true, must: i === 0 || i === main.length - 1, give: i === 0 && i !== main.length - 1 && hist.length > 0 });
         vdots.push({ x: px(i), y: ys(r[ey]), r: c.t('dot-vertex-radius') + 2 });
       });
       var setl = [], lbox = function (v) { var w = c.measure(v.words, 'tick', v.weight); return { x: v.x - w / 2 - 3, y: v.y - tick, w: w + 6, h: tick + 2 }; };
@@ -106,7 +108,7 @@
       };
       vlab.filter(function (v) { return v.must; }).concat(vlab.filter(function (v) { return !v.must; }).sort(function (a, b) { return a.x - b.x; })).forEach(function (v) {
         var b = lbox(v);
-        if (!v.must && clash(b)) return;
+        if ((!v.must || v.give) && clash(b)) return;
         setl.push(b);
         c.text(v.x, v.y, v.words, { role: 'tick', weight: v.weight, anchor: 'middle', fill: 'label', halo: !!v.halo });
       });
