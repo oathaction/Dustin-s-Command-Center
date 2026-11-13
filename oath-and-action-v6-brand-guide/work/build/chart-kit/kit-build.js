@@ -145,6 +145,12 @@
   function text_col(col) { return !col.format || col.format === 'text'; }
   // RB-G5 (round 2 fix pass): a pivot's row header prints its column's words where the column gives them ("100" as "100
   // and over"), as any cell does; the lean table carries the stored value in data-v for the read-back
+  // C-E7 (round 3 fix pass): a pivot's cell of format text takes the spec's typography, as an ungrouped table's text
+  // columns do (S84's "..." prints "No state law"); the lean table's read-back compares it with the typeset value
+  function pivot_cell(spec, r, pv) {
+    var t = K.fmt(r[pv.value], pv.format);
+    return spec.typography && text_col({ format: pv.format }) ? K.typeset(spec, t) : t;
+  }
   function pivot_head(rc, v) {
     if (rc.words && v !== null && v !== undefined && rc.words[String(v)] !== undefined) return String(rc.words[String(v)]);
     return K.fmt(v, rc.format);
@@ -276,7 +282,7 @@
         var cells = t.cols.map(function (cn) {
           var r = t.cell[k + '\u0000' + cn];
           if (r && !first) first = r;
-          return '<td class="oac-num"' + (r ? ' data-oa-row="1"' : '') + '>' + (r ? esc(K.fmt(r[pv.value], pv.format)) : '') + '</td>';
+          return '<td class="oac-num"' + (r ? ' data-oa-row="1"' : '') + '>' + (r ? esc(pivot_cell(spec, r, pv)) : '') + '</td>';
         }).join('');
         var rows_by = [].concat(pv.row), head_txt = first ? pivot_head(rc, first[rows_by[0]]) : k;
         if (first && rows_by.length > 1) rows_by.slice(1).forEach(function (k2) {
@@ -360,7 +366,7 @@
           // A8 (round 1): a pivot cell with no row is a bare <td></td>; a row whose value prints as nothing carries data-n,
           // the rarer case, so the reader tells the two apart (pages written with data-x on empty cells still read)
           if (!r) return '<td></td>';
-          var h = esc(K.fmt(r[pv.value], pv.format)), d = dv(r[pv.value], h, vcol);
+          var h = esc(pivot_cell(spec, r, pv)), d = dv(r[pv.value], h, vcol);
           return '<td' + d + (h === '' && !d ? ' data-n' : '') + '>' + h + '</td>';
         }).join('');
         var head_txt = first ? pivot_head(rc, first[rows_by[0]]) : k;

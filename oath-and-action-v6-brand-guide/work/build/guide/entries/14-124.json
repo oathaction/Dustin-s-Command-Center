@@ -35,5 +35,5 @@
  "builders": "No kit form, by design; draw district-map (s80) or district-tile-map (s82): labels.panels names each party with its seats, and the margin takes sequential steps 2 to 5.",
  "correct": null,
  "failure": null,
- "sketch_alt": "Drawn here in gray: a map shaded red for one party and blue for the other, which takes a side at a glance and lets a party’s large places outweigh its seats. Beside it, two panels, one for each party’s seats, show who won each place and by how much in steps of one ink, with no color for either party."
+ "sketch_alt": "Drawn here in gray: a map shaded red for one party and blue for the other, which takes a side at a glance and makes a party that wins a few large places look bigger than its count. Beside it, two panels, one for each party’s seats, show who won each place and by how much in steps of one ink, with no color for either party."
 }

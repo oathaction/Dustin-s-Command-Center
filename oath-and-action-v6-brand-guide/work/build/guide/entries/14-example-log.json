@@ -633,7 +633,7 @@
    "source": "s72.json"
   },
   {
-   "example": "Kamala D. Harris’s three joint fundraising committees sent $955.9 million to 54 other committees in the 2024 cycle, and Donald J. Trump’s four sent $679.8 million to 56.",
+   "example": "In the 2024 cycle, Kamala D. Harris’s three joint fundraising committees sent $955.9 million to 54 other committees, and Donald J. Trump’s four sent $679.8 million to 56.",
    "domain": "D03",
    "states": [],
    "rule": "14.104",

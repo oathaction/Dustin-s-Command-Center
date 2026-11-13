@@ -1236,6 +1236,11 @@ async function self_test() {
         && K.chips('In {data_file}.', []).indexOf(K.fill_words('{data_file}')) > 0 && K.fill_words('{data_file}') === K.word('data_file')
         && draw_spec({ id: 'x', typography: { nbsp: true }, stage: 1024 }).typography.nbsp === true && draw_spec({ id: 'x', stage: 1024 }).stage === 1024,
         'C-M2, AX-S1, ST-M2: a stage keeps its desk width; fc classes and a forced edge print; {data_file} fills; the island keeps stage and typography' + (a.f.length ? ': ' + a.f[0] : '')); }
+    { // C-E7: a pivot's text cells take the spec's typography, and the lean table reads them back with no carried value
+      const sp = { id: 'T', typography: { replace: [['...', 'No state law']] }, table: { columns: [{ field: 'st', label: 'State', format: 'text', row_header: true }], pivot: { row: 'st', column: 'y', value: 'r', format: 'text' } } };
+      const rows = [{ st: 'AL', y: 2020, r: '...' }, { st: 'AL', y: 2024, r: '7.25' }];
+      const lean = K.table_html(sp, rows, { lean: true, types: { st: { type: 'text' }, y: { type: 'integer' }, r: { type: 'text' } } }), full = K.table_html(sp, rows);
+      pass(/<td>No state law<\/td>/.test(lean) && !/>\.\.\.</.test(lean) && /No state law/.test(full) && !/data-v="\.\.\."/.test(lean), 'C-E7: a pivot\'s text cells take the typography and read back as printed'); }
     { // A-E8: a part drawn from the first rows reads every row as c.all_rows
       let seen = null; K.register_chart({ form: 'oa-self-test-all', name: 'T', family: 'structure', encode: {}, labels: [], phone: 'same', draw: c => { seen = [c.rows.length, (c.all_rows || c.rows).length]; c.height(10); } });
       K.draw({ kit: 1, id: 'T', form: 'oa-self-test-all', encode: {} }, [{}, {}], { width: 300, ground: 'newsprint', tokens: TOK.newsprint, all_rows: [{}, {}, {}, {}, {}] }); delete K.forms['oa-self-test-all'];

@@ -958,7 +958,7 @@
   "chapter": "14",
   "rule": "14.112",
   "width_px": null,
-  "alt": "Four steps in order, each a box with the time the rule allows and who acts: the household files an application, taken the same day; an interview; the household sends proof, with at least 10 days to do it; and the state’s decision, within 30 days of filing. A branch after filing leads to expedited service, an interview and benefits within 7 days, for a household with very little income or cash, with postponed proof due later.",
+  "alt": "Four steps in order, each a box with the time the rule allows and who acts: the household files an application, taken the same day; an interview; the household sends proof, with at least 10 days to do it; and the state’s decision, within 30 days of filing. A branch after filing leads to expedited service, an interview and benefits within seven days, for a household with very little income or cash, with postponed proof due later.",
   "illustrative": false,
   "notes": "S77, journey-map: the chart kit draws it from work/build/chart-kit/specs/s77.json (contract R1-C3)"
  },
@@ -1056,7 +1056,7 @@
   "rule": "14.124",
   "width_px": null,
   "illustrative": true,
-  "alt": "Drawn here in gray: a map shaded red for one party and blue for the other, which takes a side at a glance and lets a party’s large places outweigh its seats. Beside it, two panels, one for each party’s seats, show who won each place and by how much in steps of one ink, with no color for either party.",
+  "alt": "Drawn here in gray: a map shaded red for one party and blue for the other, which takes a side at a glance and makes a party that wins a few large places look bigger than its count. Beside it, two panels, one for each party’s seats, show who won each place and by how much in steps of one ink, with no color for either party.",
   "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
  },
  "s-14-s15": {

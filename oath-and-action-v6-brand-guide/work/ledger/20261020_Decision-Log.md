@@ -5699,3 +5699,9 @@ The main session reported that `phase3_ch14_build.py` still builds rounds 1 and 
 | D3-1473 | S12 takes `"stage": 1024` and an alt that says what each width draws | C-M2 with call 6 (D3-1324); the engineer measured the stacked tile at 41 px against 48 needed at 558 px |
 | D3-1474 | Sketch 14.124's misleading half draws five large places for Party B and seven small ones for Party A, Party B in the dark step | Q2's unequal places, ruled now; colors wait on Dustin |
 | D3-1475 | S78's and S84's boundary lines keep their wording | The data lead's "Noted, no item" asks for the editor's agreement first; left for the editor (request below) |
+
+### Engineer, round 3 review fix pass (C-E7)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1476 | A pivot's text cells take the spec's typography, and the lean table's read-back compares them with the typeset value | C-E7: D3-519's rule for text cells, which the pivot had missed; the page reads back what it prints, as text columns already do |
