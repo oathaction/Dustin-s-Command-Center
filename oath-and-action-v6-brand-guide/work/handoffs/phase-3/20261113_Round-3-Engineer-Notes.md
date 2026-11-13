@@ -88,10 +88,77 @@ Measured with a scratch form that draws S81 through the map parts above (`.../ro
 - **Recommendation:** national, as variant B: the cartographer's derive script writes the county file with a class column under Rule 14.9's breaks (the sidecar `kind: "derived"`, `derived_from` the ACS file, `derivation` the breaks), the map reads the class, the table groups by state, and the CSV export carries every county's value, margin and class. DR-232's order is not needed. A drawing that must read the value (variant A) needs about 9,800 bytes more than the share and fails `--strict` as measured.
 - **S83's dots (R3-3):** `K.parts.map_dots` draws every dot from the county counts and the recorded seed into one path of zero-length round strokes, so the page carries no element a dot and no dot positions: the island carries one number a county (the geoids come back from `geo.js`). Carrying each county's dot count (a small integer, from the derive script) in place of its employee count keeps the island near variant B's; carrying the employee counts costs about variant A's 13 KB.
 
+## Weight
+
+Strict build of 03:30 UTC (`guide_build.py --strict --out .../round-3/engineer/b1/guide.html`: exit 0, no warning), with rounds 1 and 2 placed and the makers' round 3 forms registered in the renderer as they stood (79 form files, 81 forms):
+
+| Measure | Bytes | Against |
+|---|---|---|
+| Page | 10,815,157 | 16 MB file limit |
+| Projected page | 15,044,385 | 15.5 MB: 455,615 of room |
+| Chapter 14 with the kit | 1,807,647 | 2,803,941 stop (DR-238) |
+| Renderer, the "chart kit" part (script and style without the geometry) | 484,932 | 0.55 MB part; grown to 97 forms, 553,696 |
+| Map geometry, its own part now (`geo.js`) | 133,117 | 250,000: 116,883 of room |
+| Share per plate still to come | 13,852 for each of 36 | D3-1077's 14,495; 498,669 bytes of room |
+| Rules 14.1 to 14.14 with the opener and the shared style | 175,538 | 212,288 |
+| Chapter 15 | 307,066 | 0.60 MB ceiling |
+
+- **Why the share fell 643 bytes:** the renderer grew. My shared files grew by 30,953 bytes minified (`parts.js` 17,216 to 42,331 with the diagram and map parts and the decoder; `kit.js` 66,353 to 72,191 with the grouped table, the moved-group reading and the island's geoids), and the makers' new forms raised the form average to 4,298, which the projection counts for each form still to come. The geometry's growth (45,232 to 133,117) costs the share nothing: it sits in its own reserve.
+- **The geometry is now weighed apart:** `guide_build.py` reports `map geometry` as its own part (the 0.55 MB "chart kit" part had held the 2017 outlines, 45 KB); `guide_charts.py` adds it back inside chapter 14's stop and warns past 250,000.
+
 ## Routine calls
+
+- D3-xxx | Links are read by the layout guard as lines no word may sit under, and the kit never clears one with a knockout | R3-5 asks the guard to read links; a gridline's knockout would hide a link that runs through a node's words
+- D3-xxx | A link ends at its nodes' edges, and an arrowhead's tip sits on the edge | The link never runs under its own node's words, so the guard needs no exception for them
+- D3-xxx | Curved links and bands pass their points to the checks (`c.path(d, {pts})`) | The checks read straight segments only; an arc read by its box would fail words beside it
+- D3-xxx | The tree layout is the classic contour packing, each parent centered over its first and last child | Small org charts and court trees; one pass, the same result in Node and every browser
+- D3-xxx | `flows` fails a node whose bands do not sum unless the spec lists it as open | R3-5 says the widths sum at each node; a Sankey with cash on hand at both ends balances by its own links (ruling S76)
+- D3-xxx | Shapes inside a translate-and-scale group are read through the transform; any other transform still hides them | R3-2's last item; a rotation never occurs in a map, and reading it wrongly would be worse than not reading it
+- D3-xxx | The projection is d3's geoAlbersUsa at scale 1300 in the 975 by 610 frame, computed in the build tool | The frame the tile maps and S16 already use; the states' centers match the 2017 frame to 0.1 unit
+- D3-xxx | Alaska and Hawaii are chosen by the feature's state code, not by clip boxes | The Aleutians west of 180 degrees carry positive longitudes in the Bureau's file and belong with Alaska
+- D3-xxx | Simplified once per shared arc to half a pixel at 720 px, on a 0.5-unit grid | Neighbors keep one border with no sliver; 0.5 px is under what the eye or the crossing checks resolve at the widest map
+- D3-xxx | Puerto Rico is left out of every layer | No round 3 map's data holds it; the tile maps leave it out too
+- D3-xxx | Four layers: national states and counties, Michigan's districts and California's counties fitted | The plan's maps: S16, S78, S84 (states), S81, S83 (counties), S80 (Michigan), S79 (California's inset); another layer on request
+- D3-xxx | Geometry is carried as zigzag varints in a 64-character alphabet, arcs and references as steps | 133,117 bytes against 190,277 in the first encoding and an estimated 250,000 or more as path text
+- D3-xxx | The bubble map's `land`, `borders` and `centers` stay, worked out from the 2024 states, `land` cut at x 0 | S16 draws unchanged in form and passes; the board 1 drawing cut the Aleutians at the same edge
+- D3-xxx | `geo-LICENSE.txt` is deleted | `geo.js` holds no us-atlas data now (R3-4)
+- D3-xxx | A spec names its boundary file as a later dataset; the kit never reads it into rows, the island or the CSV | One copy of the shapes on the page; the source line still credits it
+- D3-xxx | A grouped table (`table.group`) prints one row a group and carries every row in the island and the CSV export | DR-249's table grouped by state with every county in the CSV
+- D3-xxx | An island leaves out a column that holds a layer's geoids in its order, and the page reads them from `geo.js` | Saves about 8,700 bytes on a county map; proved to read back to the same rows and drawing
+- D3-xxx | In a one-column CSV an empty cell is written `""`, and the reader keeps such a line | A county with no estimate (35011) dropped a row and shifted every county after it; no committed island changes (64 of 64 equal)
+- D3-xxx | DL-E1's recommended form is the class column (variant B) | It fits the share with every county in the CSV; reading the value fails `--strict`'s far-over line by about 200 bytes
+- D3-xxx | Map geometry weighs as its own page part, "map geometry", and counts inside chapter 14's stop | R3-2 holds it apart in its 250,000 bytes; the 0.55 MB kit part had held the 2017 outlines
+- D3-xxx | The band check reads a band as under another only where the other holds it across as well as down (RB3-G1) | Side by side links and a Sankey's left and right bands lie on the ground
+- D3-xxx | `data_round0_build.py` carries the Ballotpedia publisher in `LINE_FIXES` (ENG-R3-1) | A rerun to a scratch folder writes all 34 of its files equal byte for byte to the folder as it stands
 
 ## Requests log
 
+Taken in the order they arrived:
+
+| Request | From | Status |
+|---|---|---|
+| RB3-G1, the band check reads x | maker B | **Done** (01:55); S73 and S76 pass `check --no-sweep`; told the main session for maker B |
+| ENG-R3-1, the Ballotpedia publisher in the data script | research lead | **Done**; a rerun to scratch writes the 34 files as they stand |
+| C-E1, `count_eq` for a grouped table | cartographer | **Done**, with a self-test case; told the main session (the cartographer is not reachable by name) |
+| C-E2, S82's tile layout through `c.extra` | cartographer | Read; nothing to do: the island carries it compressed |
+
+To others:
+- **Cartographer:** S16's spec still prints the 2017 credit ("via us-atlas 3.0.1"); replace it with the 2024 files' credit. S16 may move onto `map_fit` to show all of Alaska. De Baca County (35011) has no estimate: per the data lead, the land ink with the context edge and a note. S81 reads a class column (DL-E1 variant B); ruling (c)'s breaks give four classes.
+- **Main session:** `phase3_ch14_build.py` still builds rounds 1 and 2 by default; my change to make it 1, 2 and 3 (as round 2 did for round 2) was blocked by the permission check, since it writes the chapter files other owners read. Makers can pass `--rounds 1,2,3`; say if the default should change.
+
 ## Tested
 
+- `oa-chart.mjs self-test`: every planted fault caught, with 14 new cases (links through words, words on a link, node fit, the tree, flows' sums, a flow band's edge, RB3-G1, shapes in a moved group, a grouped table with `count_eq`, a one-column CSV's empty cell).
+- Snapshot against the committed kit (`kit_snapshot.mjs`, HEAD's forms, HEAD's 64 specs): with the 2017 geometry, 704 of 704 drawings and figures equal; with the 2024 geometry, only S16's 10 drawings differ (the outlines, R3-4). Every committed spec's island equal (64 of 64).
+- `geo_build.py`: four layers built from the frozen files; decoded in Node; the states' centers equal the 2017 frame's (Alabama 671.6, 432.2).
+- `build s16` on the 2024 outlines, sweep on: 0 faults; its capture at 1440 px looked at.
+- The data check: 117 tables, 0 faults, the five boundary files read; nine planted faults in a copy of the states file each caught.
+- DL-E1's scratch measure (variants A to D), the grouped island read back to equal rows and an equal drawing, and the county map's sweep (17 s, no fault); its 720 px drawing looked at.
+- `guide_charts.py --self-test` and `guide_build.py --self-test` (32 of 32 scenarios) pass; the strict build passes with no warning.
+- The data script's rerun to scratch: 34 of 34 files equal.
+
 ## Not tested
+
+- The map parts in a maker's own form: the cartographer has not drawn on them yet; `map_labels`, `map_scale` and `map_dots` are exercised by self-test and scratch code only, not looked at on a map.
+- The page's own read-back of a grouped table in a browser (tested in Node through the kit's own functions).
+- S16 on Charcoal and at 390 px after the outline change (the build's checks ran; I looked at 1440 px on Newsprint only).

@@ -44,10 +44,11 @@
       c.text(dx + s + 4, dy + s - 1, o.dc, { role: 'tick', weight: 600, halo: true });
     }
     if (o.codes) {
-      // names claim room largest shape first; a name inside takes its step's label ink, one beside its shape the text's
+      // names claim room largest shape first; a name inside takes its step's label ink (the first pass places none beside),
+      // one beside its shape the text's ink on the ground's halo
       var items = o.items.filter(function (it) { return it.code && it.id !== '11' && L.index[it.id] !== undefined; })
         .sort(function (a, b) { return L.labels[L.index[b.id]][2] - L.labels[L.index[a.id]][2] || (a.id < b.id ? -1 : 1); });
-      var r1 = K.parts.map_labels(c, L, T, items.map(function (it) { return { id: it.id, words: it.code, weight: 600, fill: on_ink(fill_of(it)), ink: true }; }), { role: 'tick', reach: [] });
+      var r1 = K.parts.map_labels(c, L, T, items.map(function (it) { return { id: it.id, words: it.code, weight: 600, fill: on_ink(fill_of(it)) }; }), { role: 'tick', reach: [], top: Infinity });
       var r2 = K.parts.map_labels(c, L, T, r1.unplaced.map(function (it) { return { id: it.id, words: it.words, weight: 600 }; }), { role: 'tick', reach: [14, 24, 36, 50] });
       unplaced = r2.unplaced.map(function (it) { return it.words; });
       c.texts.forEach(function (t) { bottom = Math.max(bottom, t.y + t.h); });

@@ -212,7 +212,7 @@ I read the engineer's measure under "Contracts", R3-3, at 03:05 UTC: the table o
 - **RL-1.** Add the national row to `census-acs5-county-median-household-income` (B19013, 5-year 2020 to 2024, `us:1`, with its margin) and say so in the sidecar, so S81 sets the nation apart beside the map.
 - **RL-2.** `census-cbp-county-employment`: read the meaning of the noise range code the API returned (0 for every county) from the Bureau's variable list and write it into the qualification; the brief's condition marks flagged counties in the table, and none can be marked until the code is read. Trace the gap between the counties' 132,151,802 and the national 139,831,742 (likely the Bureau's statewide records, establishments with no fixed county) and write it into the sidecar so S83's note can name it.
 - **RL-3.** `fec-jfc-transfers-2024`: `recipient_name` gives Harris's campaign its 2024 name and Trump's its current one ("NEVER SURRENDER, INC.", C00828541). Please add a column with each recipient's name in the cycle, or say in the qualification that the names are as the FEC lists them today, so the two campaigns read alike in the file as on the chart.
-
+- RL-1, RL-2 and RL-3 landed at 01:15 UTC and are signed off under "Rulings, after RL-3".
 - **RL-4 (not blocking).** If time allows, read both joint fundraising committees' full line 21B lists for any payee with a committee ID outside the file, and say what you find in the sidecar. S73 draws no such committee, and its note speaks only of the committees drawn.
 - **RL-3a follow-up.** `fec-jfc-transfers-2024.meta.json`'s `universe_or_base` says "every committee it paid"; it holds every committee paid on line 22 or 28C. One phrase.
 
@@ -226,18 +226,20 @@ I read the engineer's measure under "Contracts", R3-3, at 03:05 UTC: the table o
 - **For the open questions (Dustin).** S65: CMS's own sums for renewals due April 2023 to March 2024 give 22,914,537 ended (15,966,431 procedural, 69.7 percent of those ended). V7 I062 cites KFF's "more than 25 million disenrolled, 69 percent for procedural reasons". The share agrees; the count differs, most likely because KFF's tally runs past March 2024. The chart prints CMS's figures and period and corrects nothing in V7.
 
 ### To the cartographer, maker A, maker B, the editor and the engineer
-Read rulings (a) to (g) directly; no other requests yet.
+Read rulings (a) to (g) and "Rulings, after RL-3" directly.
 
 ## Tested
 
 - Read by script from the frozen files: the funnel stages and shares; the Sankey's sixteen lines and its remainder; both committees' transfers by recipient type; both roll calls by party and vote; the bills by chamber and the shared-backer counts; the district results by party, kind of seat and margin class, Michigan's 13 rows and the seats within 0.15 of a break; fixed and any-type broadband with S2801 margins, clear gaps, break sets and pairwise overlaps; county income ranges, margins, break sets and crossings; County Business Patterns totals and dots by unit; the minimum wage classes for the four panels.
 - Read by script from `work/extract/atlas-v7-data.json`: CL1516; PW03's eight decision makers with `can_change_rule` (six true); the 118 connections by type and polarity (seven authority connections with no sign); the region matrix's 100 cells.
 - Rulings (c) and (f) rerun from one script, `rulings_check.py` in my scratch folder, against the frozen files: every class count, crossing count and pairwise test above reproduces.
+- After RL-3: line 22, 28C and 21B summed by JFC from the research lead's 57 itemized files (Harris Victory Fund $899,402,049.70, $81,000.00 and $27,141,702.01; Trump National Committee JFC $273,762,296.73 on line 22 alone, 19 payments); the one page of the Trump committee's full Schedule B (lines by count, payees with a committee ID: none); the frozen JFC file's new columns; the nation's county income row and S81's class counts recounted without it; the CBP flags by count and the 29 J counties.
 - Contrast by the WCAG formula on token hexes: sequential steps 1 to 5 and gray magnitude steps 1 to 4 against Newsprint and against each other.
 
 ## Not tested
 
 - No drawing yet: nothing in rulings (b) has been built or looked at; every ink above waits for the kit's checks and my sign-off.
 - Contrast on Charcoal for the steps I picked; the kit's check measures both grounds.
-- The national county median (RL-1), the CBP noise code (RL-2) and the county sum gap.
+- The engineer's DL-E1 measure: I read its figures and did not rerun `dle1.mjs` or any build.
+- Line 21B payments from either committee to committees outside the file (RL-4).
 - Tile size at each width for S82's ring and dot marks.
