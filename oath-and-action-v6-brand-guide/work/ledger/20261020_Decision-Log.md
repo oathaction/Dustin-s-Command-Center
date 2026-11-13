@@ -6111,3 +6111,232 @@ Dustin, during round 4's build, after the main session raised the chart kit's pa
 | # | Decision | Source |
 |---|---|---|
 | DR-271 | Page weight allocations inside the guide move as content and quality need: the per-plate share and the 15,000-byte plate limit (D3-1097, D3-1328), the chart kit's part, rules 15.19 to 15.21's 75,000 bytes (R4-6), and chapter ceilings, chapter 14's 2,803,941-byte stop (DR-238) included, become figures the build reports and the studio raises, with each raise logged; no form, word or picture is cut to meet them. The one fixed limit is the page's: the guide stays one file under the 16 MB the host publishes and Phase 5's assembly requires, with the 15.5 MB projection kept as its early warning | Dustin, November 13, during round 4 |
+
+### Main session, round 4 build
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1699 | Ten owners start together at 20:35 UTC on the approved brief (data lead, engineer, maker A, the infographics maker, the cartographer, the systems designer, the accessibility lead, the editor, the research lead resumed with its context); the design director starts when the first drafts land | DR-270; V20: owners start together and read each other's notes |
+| D3-1700 | R4-2's measure (the kit part 741 bytes more, S12's plate 34, the share 13,235 to 13,172) goes to the data lead before the stacked tile lands, and the new share becomes round 4's figure | DR-261: the engineer measures before it is built; kit growth cuts every plate (V23) |
+| D3-1701 | The accessibility lead's five requests: the two additive lines in Rule 18.22's script, the key path walk and 15.20's status script are in scope for 15.19 and 15.20 (R4-5); the shell opening every closed disclosure at print (Rule 18.8) and `role="list"` on the stepper's steps are defect fixes that make approved rules true; each is listed for board 3 as changed outside chapters 13 to 15 | CLAUDE.md gate rule 3: work outside the proposal waits, but a fix that keeps an approved rule true is logged and shown |
+| D3-1702 | The data lead's request R-3 (a V7.1 row on loop and reform lists that disagree) goes to board 3 as a proposed row, not onto the list; it proved to be item 29 already | A new V7.1 row needs Dustin's word (D3-1697) |
+| D3-1703 | A second engineer instance, the component engineer, takes `work/build/guide/code/`, the shell and 15.20's script; the engineer keeps the chart kit, the guide build and check, tokens and the weight report | The engineer's queue held about ten items; handoff V14's split by file worked with no collision |
+| D3-1704 | The component engineer owns every loop word in chapter 18 for DR-267, string edits only in `stage_c_ch18_build.py` and `stage_c_ch18_anatomy_build.py` with their outputs, and reruns them only after the main session read the existing staleness of `18-components.json` on HEAD | V16: keys files are generator output; a stale generator could revert approved words |
+| D3-1705 | Rule 18.14's example size changes from "95 KB" to "105 KB", the generator's line, since tokens.css measures 105,067 bytes; both chapter 18 generators may rerun to write | Rule 18.14 names each download's size; a stale size is a defect; listed for board 3 |
+| D3-1706 | The engineer makes `dot-plot.js`'s card-only mode for S95, with S19 proven byte-identical in all 932 drawings | Round 0's maker is not active; ownership by file; a board 1 drawing must not move |
+| D3-1707 | S93's replaced alt-word checks (by table checks) go to the accessibility lead for a second look before they stand; it confirmed the alt and table give every callout in page order | A maker changing its own failing check gets a second owner's look |
+| D3-1708 | The chart kit's part budget rises from 550,000 to 560,000 bytes in `guide_build.py`'s WEIGHT_FIXED | A studio allocation inside DR-238's stop (D3-345's precedent): all 97 forms registered, chapter 14 at 2,386,458 of 2,803,941, projection 15,050,450; DR-271 then made every such allocation a reported figure |
+| D3-1709 | Under DR-271, the engineer turns `guide_build.py`'s allocation stops into reported warnings and keeps the page's 16 MB stop and the projection test, with the self-test proving the page stop still fails; the owners are told no plate is cut to meet a byte figure | Dustin's answer (DR-271) |
+| D3-1710 | C4-E1 (the phone tile gap from 2.5 to 2 px) is accepted as a token change in pre-release 6.0.0-gate3.3, with chapter 26's token table rerun by the engineer; S07's, S12's and S78's phone drawings are listed for board 3. C4-E2 (S16's phone code column, `bubble-map.js` only) goes to the component engineer | Gate 3 decides chart token releases; the change sits inside the phase; the split shortens the engineer's queue |
+| D3-1711 | The opt-in orphan guard (`typography.pretty`) stands, since a global one would move words in 56 signed-off specs; `text-wrap: pretty` on every HTML source line is accepted and listed for board 3 with its reach (line breaks move in 4 of 107 source lines at 1440 px and 20 at 390 px; no drawing moves) | A board 1 or round 1 to 3 drawing must not move without Dustin's sight; the source lines are HTML text outside the drawings |
+| D3-1712 | The 18.22 anatomy plate's buttons, which broke mid-word at 320 to 390 px on HEAD, are fixed now by the component engineer (one container rule; wider widths pixel-identical) and listed for board 3 | A defect in an approved plate, cheapest to fix while its generator's owner holds the context |
+| D3-1713 | Carried to the review chat: the design director did not see the cards on a phone or on Charcoal (it read exports under load); the accessibility lead did not test 768 and 360 px, any screen reader, Safari or Firefox; S95's two crops share one full alt (heard three times); the editor's ED4-7 (S92's sidecar source line) and an optional S16 chart note | Report what was not tested (CLAUDE.md, Honesty) |
+
+### Research lead, DR-269
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1714 | Row 39 keeps the 45 fields of Alaska's and Massachusetts's measures as printed and adds Missouri's as a second group, with the overlap named | The 45 were approved under DR-264; a second group lets the editor see what DR-269 added, and the two shared fields (PW15 `who_can_change_the_rules`, the history chip `events_chips[28]`) are named so the total of 65 can be checked |
+| D3-1715 | Missouri's 22 fields are counted by the same kind of rule as the 45: a match on "Proposition A" or the URL slug "proposition-a" | The 45 counted K1703's URL by its petition number, so K1707's URL counts here too; every match is Missouri's 2026 referendum (21 say so in their own words, and CL1733's `limitation` sits on a claim about Missouri's map), and no other state's Proposition A appears in the model |
+| D3-1716 | Three fields that call it "the pending referendum" without its name (L56 and R4a `qualification`, CL1713 `supports`) are listed apart and left out of the 22 | They need the same rewrite, but they do not name the measure, as RL62's and RL64's `direction` fields did not; the list says which they are |
+| D3-1717 | RL63's `direction` and `margin` are named beside its `rule`, as RL62's and RL64's are | They read "pending" and "pending (election Nov 3, 2026)" |
+| D3-1718 | Row 39 says what Missouri's Secretary of State showed at 20:40 to 20:42 UTC, and only that: Proposition A is listed among the measures certified for the ballot; the results page gives official totals through the August 4, 2026 primary and none for November 3; the unofficial results site, enr.sos.mo.gov, refused this reader with a Cloudflare block (HTTP 403) | The coordinator asked for what the site shows today; with no result read, the row says "voters cast ballots on all three", not that any was decided |
+| D3-1719 | The fix keeps the board's words, widened as the coordinator asked: "rewrite the places that name each of the three measures from its state's certified result, with its date, once all three certify" | DR-269's "all three update by one rule"; "each state's" becomes "its state's" because each measure belongs to one state |
+| D3-1720 | No Missouri certification date is printed | None was read; Alaska's November 25 date stays as the board wrote it |
+
+### Data visualization lead, round 4
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1721 | No round 4 plate takes the red point | No title names one point among many: the icon array and circles are areas (RF-1), diagrams answer with their path, sets with every item, and S95 keeps S19's subject ink |
+| D3-1722 | A set of facts, fields or parts takes no named mark, and its words stay HTML text | Round 4's infographics answer with every item (S60's case) under the brief's call 8 |
+| D3-1723 | S87 and S88 draw outline circles in the subject ink with the overlap alone in the track ink | Grayscale-proof, one fill on the region the form exists to show, and the pair reads as one file drawn two ways |
+| D3-1724 | S94's filled and open squares mark a date with and without a consequence in law | A status of a date, as S19's open dots and DR-266's array use it; no vote is drawn |
+| D3-1725 | Round 4's in-force and snapshot dates print once, in the grade line, and S85's source line takes a variant without the snapshot | The brief's call 1 (D3-1327); a retrieval date stays in the source line |
+| D3-1726 | R4-2's measure is signed off and 13,172 bytes a plate is round 4's ceiling once the tile lands | DR-261 word for word, D3-1546's planted case caught, S12 at 14,076 under 15,000 |
+| D3-1727 | 15.20 offers R-03 and R-04 on Loop R4a | The one closed loop whose reforms' targets all sit on it, with both of V7's lists agreeing and two to five choices (Rule 18.3) |
+| D3-1728 | 15.19 steps Loop R1 | Rule 18.22's code already steps it (R4-5's one copy), Rule 15.13 teaches its weakest step, and a third R4a plate would pass Rule 01.9 in chapter 15 |
+| D3-1729 | 15.21 is recommended on Connection L55 | Its record says the model holds no single estimate of the effect |
+| D3-1730 | S16 takes the cartographer's code column under 358 px (D4-1, (A)) | Every state coded on the map with fewer and shorter crossing leaders; unchanged from board 1's 358 px up; radii and legend held exactly |
+| D3-1731 | S37 takes its curled apostrophes (ED4-1) | Typography only: two drawn labels, same words, data and exports as stored; a binding writing rule |
+| D3-1732 | 15.20 prints each route's name, then the atlas's `who` words with no "Who acts" label | R-03's federal route stores an action there; nothing inferred |
+| D3-1733 | S85's CL-050 prints "Worker bargaining power" with the chip "Variable A2" (Q-A1) | Rule 10.6 for an atlas symbol; A2's own indicator is the union density S85 draws |
+| D3-1734 | S95's card draws the states as columns in rank order with S19's vertical scale (IM-E5) | Same data, order, scale and finding under DR-64's rule; fifty labeled rows cannot fit a card at 36 px |
+| D3-1735 | Byte figures in my rulings and sign-offs become reported figures under DR-271; data conditions stand | Dustin's DR-271: nothing is cut to meet an allocation; the page stays under 16 MB |
+| D3-1736 | A DR-265 title that will not fit wraps, then re-lays, then takes a chip with a keyed title, never cut | One name for each variable wherever a loop is drawn |
+
+### Engineer, round 4
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1737 | The chapter generator defaults to rounds 1 to 4 | ED4-6: the brief's closing run takes no flag, and with round 3's default it would drop round 4's 13 entries; DR-253 set round 3's default the same way |
+| D3-1738 | A pivot's row header takes the spec's typography | ED4-3: its cells already did (C-E7); only S37 holds a straight mark there, so no other chart moves |
+| D3-1739 | A specimen's keyboard path is named by its manifest's `"keys"` and walked from `work/build/guide/specimens/<id>.keys.json` | The accessibility lead's request 2; the walk is the code sets' own, so one reader of oa-keys/1 serves both |
+| D3-1740 | S12's 1 px case shrinks the drawing to its column rather than moving the frame's switch point | At a 617 px column the stacked tile does not fit (it needs 618), so drawing at the column would fall back to the phone's steps; a shrink of 1 px in 618 moves no word off the type scale |
+| D3-1741 | The design director's orphan guard is opt-in, `typography.pretty` | Applied to every drawing it would move words in 61 specs, 56 of them signed off |
+| D3-1742 | Under DR-271 an allocation's figure is a note in the build report and its printed log, and only the page over 16,000,000 bytes stops the build | Dustin's answer: allocations move as content needs; the page is the one fixed limit, with the 15.5 MB projection as its early warning, which still warns |
+| D3-1743 | The fonts part's agreement with its manifest stays a warning | It tests that the embedded fonts are the licensed files, not a byte allocation |
+| D3-1744 | The chart kit part's budget rises from 0.55 to 0.56 MB (`guide_build.py` WEIGHT_FIXED) once all 97 forms are registered, at 549,966 bytes on the 21:21 strict build | The main session's call (by 21:24), as D3-345 raised it from 0.22 MB: chapter 14's 2,803,941-byte stop and the 15.5 MB projection (15,050,450) do not move |
+| D3-1745 | The page's kit.css is minified (white space round { } ; , > and after a colon), 2,175 bytes less | The browser's parse of both gives the same 204 rules; the self-test fails a quoted string the minify could change |
+| D3-1746 | The dot plot's card mode is a branch the form takes only inside a card with ranks "across"; outside it the form runs the code it ran before | S19 is a board 1 drawing; its 932 drawings compare byte for byte |
+| D3-1747 | The design director's orphan guard waits until its reach is measured | A change to K.wrap moves every drawn word that wraps, signed-off drawings included |
+| D3-1748 | The stacked tile is S12's only desk tile; the board's `labels.stack: "force"` is not carried into the kit | DR-261 approves the stacked tile at a desk, and a key that draws a tile known to overrun would undo D3-1546's check |
+| D3-1749 | DR-261's frame is a floor on the stage, `stage_min`, beside the fixed `stage` | DR-261 draws the tile in the column from 618 px and scrolls only below it; a fixed stage would draw 618 px at every desk width |
+| D3-1750 | The overrun check reads cells a form declares, in `checks.js`, and the page carries only the recording | D3-1546: the layout guard does not read a tile's edge against its arrow; the sweep draws every width the guide gives, so the check need not ride on the page |
+| D3-1751 | A cell's spare is 1 px by default | The cartographer's board 2 measure called a tile "held" at 1 px or more to spare on every side |
+
+### Component engineer, round 4
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1752 | Each title enters a sentence in lower case after its first word ("Start at the concentration of household wealth", "raises money spent to influence politics"), with "the" before "concentration" where English needs it | The atlas's own `how_to_read` for Loop R1 runs the three titles as one sentence the same way |
+| D3-1753 | Step 3 and the diagram's last verb say "raise", not "raises" | E1's title, "Policy advantages for wealthy and organized interests", is plural; the atlas's sentence says "raise" too |
+| D3-1754 | Only the chain labels change; each step's second sentence (`oa-stepper-more`), the diagram's detail lines and the anatomy plate's readout and panel words stay as approved | DR-267 asks for the variables' titles, words only; any further rewording is the editor's (see "Requests to the editor") |
+| D3-1755 | The stepper's holds are re-timed from the new words: 9,000, 12,750 and 10,500 ms become 10,000, 14,000 and 12,000 ms | Rule 18.22's own rule, 250 ms a word of what the status line says, never under 6 seconds (D2-972); checked by script against the three status lines |
+| D3-1756 | 15.20's status script lives in the shell, keyed by `data-oa-chooser`, `data-oa-chooser-status`, `data-oa-panel` and `data-oa-say` | Every page carries the shell, a chapter 15 build of one's own too, so the line works wherever the plate is; data attributes keep it out of any class the plate's CSS owns |
+| D3-1757 | The status line reads the panel's own `[data-oa-say]` line, not a sentence held in the script | The words then live in one place, the systems designer's and the editor's, as the accessibility lead's request 3 asks |
+| D3-1758 | Print opens every closed `details` and records which, adding to the record on a second `beforeprint`, and closes exactly those at `afterprint`; it runs before the tall plates are measured | Rule 18.8 promises it; a reader's own open disclosure stays open; opened panels change a plate's height, so AX S11's measure must come after |
+| D3-1759 | The guide-wide print opening covers `details` only | The request names it; a disclosure built on a button holds its state in `aria-expanded` and a script of its own |
+
+### Maker A, round 4
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1760 | S85 draws its 100 marks larger than the unit chart's 14 px squares: 24 px with 4 px gaps at a desk, up to 22 px with 3 px gaps on a phone, a row of ten always | DR-266's plain unit marks in their style (filled, open), sized so a hundred stay countable in a 720 px column; one grid at every width (ruling (b)) |
+| D3-1761 | S85's key words sit beside their marks: "Union member" beside the filled row and "Not a member" beside the first open row at a desk, both under the grid on a phone, each with its swatch | Ruling (b): the key in the file's words, each beside its mark |
+| D3-1762 | S85's table prints all four published rows (2025 all workers, private, public, 1983) and the array draws the 2025 row alone through `labels.draw`, the limitation in the table's caption | Ruling (b): the table prints the published figures with V7's limitation as its caption note; the kit has no separate table note |
+| D3-1763 | S85's topic: CL-050 at 48 px, "Worker bargaining power" beside it and the chip "Variable A2" after it on the name's baseline, all above the grid; where name and chip do not fit one line (the 256 px drawing) the chip sits under the name and the two center on the drawing | Q-A1 and Rule 10.6; checked by script against the editor's label table and chapter 10's list of 41 |
+| D3-1764 | S86 sets the federal government and the states in one line, "Not drawn: 1 federal government and 50 state governments, too few to draw at this scale.", in the key's band: beside the key at a desk, under it on a phone, with no hairline | DD-A6 with the data lead's yes (21:25 UTC); the circles follow the measure line directly and take the column's full width at a desk |
+| D3-1765 | S86's circles run largest first at every width; the table opens with the federal government and the states, then the local kinds in the same order (`sort` by level, then by count) | DD-A4: the row reads as the ranking the title states, and the named circle comes first |
+| D3-1766 | S86's special districts print their name and count inside their circle, in the label-on-subject ink, where both fit each chord with 6 px to spare; every other circle is named under it at a desk and beside it on a phone | Ruling (b) |
+| D3-1767 | S86's key takes S16's grammar: an eyebrow title, "Circle area shows the count", and rings at 1,000, 10,000 and 40,000 side by side on one line in the context ink at 1 px, each count centered under its ring, under the circles at the left | MA-5, DD-A5 with the data lead's yes, DD-A12; the editor moved the area sentence from the measure line to the key's title |
+| D3-1768 | S87's circles overlap by 1.2 times the radius between centers at a desk and 1.12 on a phone, the frame full width with the two circles centered, "No coverage" beside the second circle where it fits and in a band under the circles where it does not | Equal circles carry no count; the overlap wide enough for "Both", its count and share at 256 px |
+| D3-1769 | S87 and S88 print each group's name, count and share on their own lines, inside the group where each line fits its region at its own height with 4 px to spare, the label size first, then the tick size, then narrower | Ruling (b), "inside the region where it fits with 4 px to spare"; one rule in both forms, so the pair reads as one file drawn two ways |
+| D3-1770 | S88 finds the distance between the two centers that gives the shared area by bisection on the lens formula and fails the drawing past 1 percent; the kit's `area_of` check holds each radius | Ruling (b): each drawn area within 1 percent of its count at every width, named in `notes_internal` |
+| D3-1771 | S88's overlap words ("Both", 23.8 million, 7.1%) sit under the circles on a leader at every width, since the overlap is 0.45 of the larger radius wide | Ruling (b), a leader in the context ink where the words do not fit |
+| D3-1772 | S88 places "No coverage" beside the pair at a desk, its circle one radius clear of the public circle, and under the pair on a phone with its words beside it | Ruling (b): a gap at least its own radius |
+| D3-1773 | S87's and S88's titles: S87 lists the four groups; S88 states the two circles and their overlap ("In 2025, 213.2 million people had private health coverage and 119.1 million had public coverage, and 23.8 million had both.") | MA-8 and the editor's words: two findings from one file, each in its drawing's terms |
+| D3-1774 | No derived file this round: the derive script only checks figures (`--figures`, 51 checks) | S85 to S88 draw the research lead's frozen files as they stand |
+| D3-1775 | The packed circles sketch draws an illustrative city budget of 12 lines packed by a greedy tangent search, the four largest named, track ink with a context edge | R3-9's frame (320 px, 10 px inset); the same budget the mind map sketch uses, so the two reference sketches read as one family |
+| D3-1776 | The rose chart sketch draws four illustrative values as quarter wedges whose radius is the value (A 2, B 4, C 3, D 1) beside bars of the same values from one zero line, each wedge's label beside it and clear of its box | R3-9's frame (two 288 px halves of one height); "a value twice another looks four times as large" is A against B; the guide check reads a label inside a wedge's box as set on its fill |
+| D3-1777 | S87's words for a group that cannot fit inside it (at the narrowest drawings, "Both") sit under the circles inside the frame, on a leader straight down from the group, and the frame grows to hold them | MA-9: the count shows at every width; the same rule S88 uses |
+| D3-1778 | S88's `notes_internal` names its area check: the form's 1 percent test on the shared area, the kit's `area_of` on each radius, and the derive script's recomputation at six radii | MA-10 |
+| D3-1779 | I ran `phase3_ch14_build.py --rounds 1,2,3,4` so my entries reach the chapter file for my own strict build | The generator's default builds rounds 1 to 3 (DR-253); its five faults are the infographics maker's entries not yet landed |
+
+### Infographics maker, round 4
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1780 | S89 draws actors as lanes named in words, one each for local, state and tribal, federal and residents, and each step's box spans the lanes of those who act at it | Ruling (b): actors by position, not ink; call 7: no approved Civic Line drawing means a level of government, a governor, FEMA or the President, so no icon stands for any of them |
+| D3-1781 | S89's two last steps (public assistance and individual help) share one row after step 6, governments at the left, with the spec's sort putting order 9 before 8 so the numbers read left to right | Both follow FEMA's designation; one row with two arrows from step 6 shows they run side by side, which two rows in sequence would hide |
+| D3-1782 | S93's page is redrawn in Inter at the kit's sizes, with line breaks the drawing's measure sets, not the page's | The kit sets no type under 13 px and carries only Inter and Inter Tight; the words are the page's own, and the note says the drawing is a redraw |
+| D3-1783 | S93's running head draws the page's dash as a rule one em wide, so no em dash prints | Chapter 02 bars the em dash in reader text; DR-79 drew one the same way in W21's before |
+| D3-1784 | S93 numbers its parts on the page and in the callout list, with no leader lines | Ruling (b) puts the callouts' words in HTML text beside or under the page, where a leader from the drawing cannot reach them; the numbers carry the link at every width |
+| D3-1785 | S93 stays a drawing, its callouts drawn beside the page in the SVG, with the table giving every part, its words as printed and what it tells, in the order the parts sit on the page | The engineer's R4-3 keeps the annotated illustration a drawing through `draw`; the accessibility lead's reading order for a drawing is its text equivalent, which the table now follows (row 11 before row 10) |
+| D3-1786 | S93 numbers its parts by their place on the page, so row 11 (the margin short title, added by the research lead) prints as 10 and row 10 (the U.S. Code note) as 11, the table's Number column mapping both | The research lead kept row numbers fixed; a reader meets the margin's short title above the code note, and the callout list follows the page |
+| D3-1787 | S90 sets six facts: New York's and Idaho's spending per pupil take a fact each | Five facts left a hole in the grid's second row; six fill two rows of three at a desk and three of two at 656 px, and each figure is one row's value |
+| D3-1788 | S90 leaves row 5, the COVID-19 relief sum, out of its cards and table by `where`, and prints it in the note | The brief and the data lead's condition put the $39.2 billion in the note; the source line also carries it |
+| D3-1789 | S94's year mark draws at 224 px, the art box at a 256 px window, with every month a row, a hairline for its days and each event a 6 px square on its day | `h.mark` draws at a fixed size and never scales its words, so the mark is drawn at the narrowest width the page can give it |
+| D3-1790 | S94's list holds one item a day, with every event on it; its table gives the date, what falls due and the law | Grouping by day spares the date line three times; the table stays lean since the list already carries who and each consequence as live text, which kept the plate near 12,000 bytes with its frame |
+| D3-1791 | S92 and S94 end each step's "what happens" line with a period the spec adds (S92's `labels.stop`), and S94's events stay phrases, as a date book sets them | The research lead's summaries are sentences stored without a stop; chapter 02 asks a full sentence of every line but labels |
+| D3-1792 | The four card forms register `html` and no `draw`, so the guide's page carries none of their code | R4-3, item 1; a card form adds no byte to the renderer |
+| D3-1793 | `social-data-card` sets the evidence word at 36 px, the title at 62 px on the tall crop and 54 px on the square, the inner form at k = 36/13 through `c.inner`, and the card's own source line, which names where every state's rate is, at 36 px under a 2 px hairline | R4-4's floor (36 px at true size) and the data lead's condition that the card say where the full list is; the inner form's own words (IM-E5's condition) say each dot is a state |
+
+### Design director, round 4
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1794 | I read every draft from my own kit build with my own captures at twice size (`deviceScaleFactor: 2`) at 1440, 390 and 320 px on both grounds and in grayscale | The kit's figure captures are 1x, and the rubric's craft bar is the plate at 2x zoom |
+| D3-1795 | S85 is not read for sign-off until the CL-050 drawing is in place (A4-E1) | DR-266 sets the icon, and the topic row's weight against the ten member marks cannot be judged from an empty slot |
+| D3-1796 | S85's key swatches stay at 12 px beside 24 px marks | At full size, 20 px from the grid, the swatches would read as an eleventh column of marks; at a desk each entry already sits level with its row |
+| D3-1797 | I ask for S86's circles largest first, not in the Census table's order | The title names the largest kind, and the table's grouping is never named on the drawing |
+| D3-1798 | Requests that would move a placement a ruling names (S86's key and sentence, S93's order) go to the maker as Should and to the data lead for a yes | Placement is mine to ask for; the ruling's words are the data lead's |
+| D3-1799 | S93's two-digit numerals stay in 20 px discs | At twice size "10" and "11" clear the disc's edge by about 3 px; ruling (b) sets 20 px |
+| D3-1800 | S91's fields aligned across side-by-side cards is a Must | Comparing one field across the cards is the form's job; fields at three heights make the reader hunt |
+| D3-1801 | S94's chips, its year mark's width and its list layout are Shoulds | Each reads correctly today; the changes are weight, scale and scanning, not errors |
+| D3-1802 | S95 is read as a chart card with its credit line and no wordmark, and I ask for none | DR-268 leaves the social frame (marks, safe areas, platform sizes) to chapter 23 in Phase 4 |
+| D3-1803 | The second reads use exports and 1x page captures without a browser when the load average is over 4 | The brief's limit of two browsers at once; the PNG exports are the drawings at twice size |
+| D3-1804 | S90, S92 and S94 are read against S60, S66, S77 and S89 for one family grammar (hairline-separated facts; eyebrow and actor in the secondary ink) | The chapter teaches by repetition; a form that renames the grammar teaches less |
+
+### Cartographer, round 4
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1805 | The phone codes are fixed by the tile grid's gap (S12, S78) and a code column (S16), each in the kit by request; no font size, weight, word or ink changes | Rule 13's type floor is 13 px for tile codes (`type-tile-code-phone`), and D3-1325's 1 px a side stands; the only free variable is room |
+| D3-1806 | S16's column takes ME, NH, VT, MA, RI, CT, NJ, DE, MD, DC and WV, ordered by their circles from north to south, slots 16 px apart as near each circle's height as the pitch allows | Of four lists tried, this one left the fewest codes out with no leader thrown below Florida (lists without WV threw one at 326 px; adding VA, NC, SC and GA cost crossings and two sweep faults) |
+| D3-1807 | S12 takes `"stage_min": 618` in place of `"stage": 1024`, and its alt's desk clause reads "each square holds the state’s code over its figure, with an arrow beneath" | DR-261 and ruling (d); the scroll clause stays, since the frame still scrolls below a 618 px column; `phone_note` is not printed and still holds |
+| D3-1808 | C4-E2 drops `labels.column_under`; the phone artboard's token alone sets the 358 px limit | 274 page bytes less, the same drawing at all 448 phone drawings |
+| D3-1809 | `cartographer_round4_derive.py` holds this round's checks (codes at 326 and 296 px on S12, S16 and S78; S16's radii, shades and key against the layout without the column), and S12's, S16's and S78's `notes_internal` name it | D4-1 condition 1 asks for a check by script named in `notes_internal`; no layout table is derived this round |
+| D3-1810 | S16's column applies only under the phone artboard's 358 px | Today's search codes all 51 at 358 px (board 1's phone width, D3-1329, D3-1527), and the column there would drop NC; at 358 px and over nothing changes |
+
+### Systems designer, round 4
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1811 | Rule 13.4's plates print no chain label, so DR-267 changes nothing there | They print the atlas's loop title and connection names; the first scan matched "Safe seats" inside those names |
+| D3-1812 | In chapter 15 every drawing that holds a variable prints its own title, a loop's or not, and the short-name rule (D3-368) and RF-16's split for D1, D2, D4 and D6 retire | DR-265 asks one name per variable; a chapter that printed titles in its loops and chain labels in its cards would print two |
+| D3-1813 | Rule 15.2's rule now says a pill holds the variable's own title in every drawing, and its card drops the title beside the chip | The pill above the chip already prints the title; the rule teaches DR-265 where the chapter names its variables |
+| D3-1814 | Rule 15.15's failure keeps Variable C3's chain label, "Electoral pressure", in Loop B4 as its fault, and the correct plate reads "The atlas’s glossary defines it as electoral pressure" | The failure's lesson is one variable under two names; "Electoral pressure" is also the glossary's own term, quoted as such; the generator allows exactly these and fails any other chain label |
+| D3-1815 | Pills that share a row take the widths that set both titles in the fewest rows (three at most), keep the 130 px base where they can, set their rows as evenly as the words allow, and stay half again as wide as they are tall | Ruling (e), step 1; greedy wrapping left "new" and "and" alone on rows, and a short title on three rows drew a disc |
+| D3-1816 | Loop B1a (Rule 15.1) draws one pill above the other at one width, step 1 down the right and step 2 up the left, its ID between them above the tags | Ruling (e), step 2: "Policy advantages for wealthy and organized interests" and "Ability to investigate and enforce the rules" cannot share a 296 px row in three rows each; the rule's "two pills of one size" holds |
+| D3-1817 | A three-variable loop's lower row may close to 6 px, its upright steps land on the shared flat edge where the pills have one, and its ID centers on the lower arch, on two rows with the arch 18 px lower where one row would crowd it | Ruling (e), step 2, for Loops R1, R4a and B4; the ID had run into the arch's upright ends |
+| D3-1818 | The read-aloud line turns a title that asks how often into "the primary decides the winner more often" | "More how often the primary decides the winner" is not English |
+| D3-1819 | The opener's letter C moves to the left of "Loop R13" | The wider pills leave 12 px between them, where it stood |
+| D3-1820 | Rule 11.16's note reads "In our atlas, more local reporting raises officials’ risk of losing office", and Rule 12.5's alts say "the connection from Seats with little electoral competition to how often the primary decides the winner" | The old words used the chain labels; a plural title would have needed its own verb |
+| D3-1821 | Rule 15.19's title reads "Step a reader through a loop one connection at a time, with a still sequence." | The rule list's title runs 16 words, past the fifteen chapter 13's check holds, as 15.1 and 15.8 did in round 1; number and subject unchanged |
+| D3-1822 | Rule 15.19's current step takes the selected band behind its line and its two pills, with its words bold; the steps ahead and the variables not yet reached take the muted ink; no line grows heavier | Ruling (f) names the selected look; Rule 15.1 keeps one line width so width never reads as strength; the band differs by lightness, so it holds in grayscale (the accessibility lead asked "heavier"; the band does that work) |
+| D3-1823 | Rule 15.19 prints Loop R1's qualification once, under the reason line, as "The atlas’s limit on the loop" | Ruling (f); after the controls so the list and the buttons stay together |
+| D3-1824 | Rule 15.20 draws every target of both reforms with Rule 12.5's red marks ready under one data-red job, and its CSS shows the checked reform's; L42 belongs to both | The choice works with scripts off; the guide check needs every red mark under data-red |
+| D3-1825 | Rule 15.20 prints each route's stored `who` line unlabeled, as Rule 15.16 does | R-03's federal route stores an action there (the research lead); no route row in chapter 15 labels it "Who acts" |
+| D3-1826 | Rule 15.20 hides its radio group on paper and prints a line naming the reform the drawing shows | The accessibility lead's print section |
+| D3-1827 | Rule 15.21's correct plate prints L55's sign, its grade marked on the five-grade ladder and its delay among the three classes, with "None in the model" for strength and the atlas's own sentence | Ruling (f)'s recommendation; the ladders show the model's own steps without any control |
+| D3-1828 | The plates may name `@media print` and `@media screen`, and no other medium | The still sequence on paper; the plates still compose by their frame alone |
+| D3-1829 | The code sets' utility icons in 15.19 and 15.20 draw by `<use>` from the sprite, their classes kept | The guide build warns on an inlined sprite drawing |
+| D3-1830 | The generator reports chapter 15's bytes and R4-6's figure and stops on neither | DR-271 |
+| D3-1831 | 15.19 and 15.20 carry their keyboard paths as keys files the generator writes | The engineer's specimen key path walk (R4-5) |
+| D3-1832 | A live plate's pips and record squares take `CanvasText` in forced colors | The accessibility lead's low item; the words beside them already change |
+
+### Accessibility lead, round 4
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1833 | Neither plate's drawing is reachable: the SVG stays `aria-hidden`, and the step list (15.19) and the targets and step lists (15.20) carry its facts | One control per plate keeps two Tab stops or four, and a second way of choosing cannot drift from the first; Rule 18.23 applies whole if a later round makes items reachable |
+| D3-1834 | Interactive plates take `forced-color-adjust: auto` on their words and controls, with their own background, and keep `none` on the drawing with its own ground | AX-S6 keeps a picture's colors, but live controls follow the reader's colors as chapter 18's live stages do (`.code-stage`); measured in Chromium, `auto` without its own background turns the words white over Newsprint |
+| D3-1835 | 15.20's choice shows through CSS from the checked radio, so it works with scripts off; the script writes only the status line and opens the disclosures for print | Native radios already choose without a script (Rule 18.3); a status line written by script is the one part that needs one |
+| D3-1836 | 15.20's status line is visually hidden and says one sentence on each change, never on load | The chosen panel's first line shows the same words; a longer line at every arrow press would bury the radio's own announcement |
+| D3-1837 | 15.19 carries no runner and no `data-oa-motion` | Rule 18.22 keeps the pace under reduced motion, which the motion check's last-frame rule would contradict; the step lights at once, which is a state change, not a motion |
+| D3-1838 | 15.19's numbers come from a CSS counter on the step, never from the step's line | 18.22's script reads the line into the status line, which already says "Step 2 of 4" |
+| D3-1839 | 15.20 offers two to five reforms, one checked on load | Rule 18.3's range; a drawing that is never empty gives print and scripts off a state to show |
+
+### Editor, round 4
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1840 | The brief's "group lines 9 and 16" are read as the lines of the two round 4 families: group 9, proportion and overlap (coverage plan 3.8), and group 17, infographics (coverage plan 3.16), which the plan file and `14-chapter.json` number 17 | The plan file's `groups` give group 17 the family section 3.16 and rules 14.135 to 14.141; group 16 is tables and plain words, built in round 1, and I read its line too |
+| D3-1841 | Rule 13.4's two plates stay as built under DR-267, and `phase3_ch13_build.py` is unchanged | They print each loop's own title and each connection's name, the atlas's own, and no chain label or variable name, by my script and the systems designer's scan; DR-267 replaces a label where one prints |
+| D3-1842 | S37 takes `"typography": {"curl_quotes": true}` after its `table`, and nothing else in the spec moves | The data lead's ED4-1 ruling under D3-1556: typography only, two drawn labels, data and exports as stored |
+| D3-1843 | Group 9's line reads "An icon array makes a share countable as people out of 100, and proportional symbols compare counts too far apart for bars. Venn and Euler diagrams show how two groups overlap, the Euler with each group at its true size." | The old line said proportional symbols make a share countable; Rule 14.80 compares counts, and each form's job now comes from its entry |
+| D3-1844 | Group 17's line reads "Process explainers and step-by-step guides show how a public process runs and what a reader can do in it. A number panel or a set of comparison cards puts facts or options side by side, and a social card carries one chart’s finding into a feed." | The old line said every form shows how something works, untrue for the panel, the calendar and the card; the core forms' jobs now come from their entries |
+| D3-1845 | Group 16's line stands | No round 4 entry sits in the group, and S37's curl changes nothing it says |
+| D3-1846 | The ink role names in round 4's entry rules stand ("the subject ink", "the context ink"); only "track ink" becomes "the track gray" | Rule 14.6 and the chapter's entries already use Rule 05.7's role names in rule text, and Rule 14.47 names the track fill "the track gray"; the one-ink-word rule covers chart notes and alts |
+| D3-1847 | S93's own words print "Public Law 119-12" with a hyphen; the redrawn page keeps its own en dash | H12's form and every other mention in the guide; the redraw prints the page's own characters |
+| D3-1848 | S93's redraw and its "As printed" column set the page's paired single quotation marks as true double marks, the CSV keeping them as stored, and note 2 says so | DD-I9: in Inter the pair reads as a typing error; the pair is the printer's way of making one mark, so no word changes |
+| D3-1849 | S91's title is the infographics maker's under MI-7, with "courts pick" for "judges pick" | My 21:22 title said "apart from four in the territories", which wrongly takes in Puerto Rico's life-tenured judges; naming the three territories is true of every seat |
+| D3-1850 | S85's "One in ten" stands | S01's approved title says "nine in ten", so the idiom keeps one form across the chapter |
+
+### Research lead, round 4
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1851 | The four source line variants are written into the sidecars by a scratch script, `r4_requests.py`, not by a repository script | No repository script writes three of the four sidecars (frozen in round 2 by scratch scripts, as the round 4 data plan's request said); the kit's README names the research lead for new variants; the script asserts each variant is the stored line with one phrase cut, and a rerun writes nothing |
+| D3-1852 | Variant names are the requesters' own (`snapshot_in_grade`, `in_force_in_grade`, `seats_date_in_grade`, `date_on_page`) | The makers asked for them by name; S85's spec already reads `snapshot_in_grade` |
+| D3-1853 | S85's variant ends the atlas's title with its own question mark and starts the limitation as a new sentence ("Who Do They Answer To? The 2025 average ...") | Cutting ", snapshot of October 15, 2026" would otherwise leave "To?." at the end of the title |
+| D3-1854 | IM-4 adds the margin short title as row 11 and leaves row 10 as it is | govinfo's HTML text and the PDF's word positions give two separate margin notes; a new row keeps the draft's row numbers, as the maker offered |
+| D3-1855 | R-2 compares each section's text from its heading to its source credit, with spaces removed, soft hyphens dropped and fractions written alike | The two sites set spaces around enumerators and citations differently and govinfo writes 66⅔ as "662/3"; every difference left after that was read by hand, and only 7508A's is a change in the law |
+| D3-1856 | R-2 adds 5 U.S.C. 6103 to the 18 sections listed | The calendar uses its holiday list for 26 U.S.C. 7503 (Washington's Birthday on February 15, 2027) |
+| D3-1857 | R-2 reads the laws after the Law Revision Counsel's release (Public Laws 119-139 to 119-142) in their enrolled text | The grade lines date the law to November 9 and 12, 2026, after the release's November 3; four laws fall between, and none amends a drawn section |
+| D3-1858 | 26 U.S.C. 7508A's change goes to the data lead as a ruling, with a suggested note, and the calendar sidecar's qualification stays as it is until then | The subsections the file cites read the same, so no figure or date changes; the data lead set the re-rule for a section that differs |
+| D3-1859 | Each law sidecar gains one dated note on the currency check | So the grade lines' "as in force on" dates can be traced to a reading |
+| D3-1860 | R-3 gets no new row: item 29 already lists it | The 15 pairs recounted today equal item 29's 14 reforms; the pairs go to board 3 as a possible addition to item 29's Where |
+| D3-1861 | The `routes[].who` finding goes to board 3 as a proposed row, not onto the list | A new row needs Dustin's word (main session, 20:55 UTC) |
+| D3-1862 | The status line in the round 4 data plan is added as a new paragraph under the November 12 one | The plan's earlier status line records the freeze; round 4's line records what changed since, with its own time |
