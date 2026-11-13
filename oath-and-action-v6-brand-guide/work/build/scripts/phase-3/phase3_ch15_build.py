@@ -3505,8 +3505,9 @@ CSS.update({
     # drawing keeps its own colors on its own ground
     "lv": (".lv{forced-color-adjust:auto;background:var(--oa-color-surface)}"
            # the effect pips and the record square sit in a live plate's words: with forced colors they keep their shape
-           # and take the reader's text color through currentColor, as the words beside them do
-           ".lv :is(.pp,.rs){forced-color-adjust:none;fill:currentColor}.lv .pp .z{stroke:currentColor}"
+           # and take the reader's text color, as the words beside them do (the accessibility lead's low item)
+           "@media (forced-colors:active){.lv :is(.pp,.rs){forced-color-adjust:none;fill:CanvasText}"
+           ".lv .pp .z{stroke:CanvasText}}"
            ".dw{forced-color-adjust:none;background:var(--oa-color-surface)}.lv>.oa-choice{margin:0 0 16px}"),
     "dw": (f".dw{{--k:{INK};--t:var(--oa-color-text-primary);--f:var(--oa-color-surface)}}"
            ".dw .ak-mark,.dw .tk{stroke:var(--k)}.dw .hd,.dw .tg polygon{fill:var(--k)}.dw text{fill:var(--t)}"
@@ -3710,10 +3711,11 @@ def check(data, book):
     if wide != want:
         fails.append(f"the wide plates are {wide}, where D3-480 wants {want}")
     css = data["plate_css"]
-    # round 4: print and screen are the only media a plate rule may name (Rules 15.19 and 15.20's still sequence on
-    # paper, AX section 2); the plates still compose by their frame's container only (D3-480)
+    # round 4: print, screen and forced colors are the only media a plate rule may name (Rules 15.19 and 15.20's still
+    # sequence on paper, AX section 2, and a live plate's marks in the reader's colors); the plates still compose by their
+    # frame's container only (D3-480)
     for m in re.finditer(r"@media\s*([^{]*)\{", css):
-        if m.group(1).strip() not in ("print", "screen"):
+        if m.group(1).strip() not in ("print", "screen", "(forced-colors:active)"):
             fails.append(f"plate_css: a media query on {m.group(1).strip()!r}; the plates compose by their frame's container only (D3-480)")
     for m in re.finditer(r"@container\s+(\S+)", css):
         if m.group(1) != "oa-frame":

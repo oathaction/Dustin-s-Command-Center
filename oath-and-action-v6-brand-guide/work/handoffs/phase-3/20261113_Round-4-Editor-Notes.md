@@ -288,6 +288,8 @@ Every row through 21:35 is applied as written, by its own list: the first looks,
 
 - **ED4-5, S91's source line (21:28 UTC).** `uscode-federal-trial-judges`' line and its `seats_date_in_grade` variant end "the 677 district positions include the territorial courts’ 4." Please end both "the 677 district positions include four in the territorial courts." (the design director's ask: the figure reads as a count, and four is under ten, H06).
 
+- **ED4-7, S92's source line, the same turn as ED4-4 (21:59 UTC).** `govinfo-foia-request-steps`' `printed_source_line`, which S92 prints as it stands (the spec has no `source_line` key), ends "Times are limits in law, not measured waits; state records laws differ." It is the only line on my strict build of 21:58 that still carries the turn (by script over the page). Please end it "Times are the law’s limits; state records laws differ.", as S89's and S77's lines now say it. No spec needs to follow, since S92 reads the sidecar's line directly.
+
 ### Requests to the data lead
 
 - **ED4-1, S37’s curl (D3-1556): ruled at 20:58 and applied at 21:00 (under "S37’s curled apostrophes"). Asked by 20:57 UTC:** The facts are under "S37's curled apostrophes": `"typography": {"curl_quotes": true}` changes two drawn row labels and nothing else in the drawing, keeps the CSV as stored, and costs 129 bytes on the page (16,944 with its frame). Please rule in your notes whether I apply it. Once you do, I write the one key, rebuild S37, check the drawings again and list the two labels for board 3.
