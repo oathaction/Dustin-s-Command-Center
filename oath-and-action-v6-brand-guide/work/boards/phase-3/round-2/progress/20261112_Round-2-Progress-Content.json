@@ -232,7 +232,7 @@
      "scratch_glob": "phase-3/round-2-close/kit/*/*-check.json",
      "confirm_file": "work/handoffs/phase-3/20261112_Round-2-Engineer-Notes.md",
      "confirm_pattern": "the width sweep[^\\n]{0,40}It runs in `build` and `check` by default",
-     "words": "{pass} of {n} charts pass, each drawn at every width from a phone to a desk column",
+     "words": "{pass} of {n} charts pass, each checked at every width the guide can draw it",
      "words_plain": "{pass} of {n} charts pass"
     },
     {
