@@ -16,7 +16,7 @@
   "Each party’s bar holds every committee the Federal Election Commission designates a joint fundraising committee that paid the party’s presidential campaign committee in the cycle: for the Democratic campaign, the Harris Victory Fund, the Harris Action Fund and the Harris Baldwin Victory Fund; for the Republican campaign, the Trump National Committee JFC, the Trump Save America Joint Fundraising Committee, the Trump 47 Committee and the Trump Bilirakis Victory Fund. The table gives each fund’s transfers.",
   "On July 21, 2024, the Democratic campaign committee and its three funds filed new names: Biden for President became Harris for President, and each Biden fund a Harris fund. Before that day the three funds sent the campaign $161.4 million, the Democratic National Committee $85.8 million, 50 state party committees $68.1 million and one other committee $29,350; from that day on, $372.2 million, $155.1 million, $113.3 million to 51 and $9,290. The Republican campaign kept one candidate through the cycle, so its funds are not split; the Trump 47 Committee was named 2024 RNC Victory until March 14, 2024, and the campaign committee took the name Never Surrender, Inc. on November 12, 2024.",
   "A joint fundraising committee raises money for several committees at once and splits it among them by agreement, so a transfer passes on money raised for the committee that gets it, and the agreement that formed a fund sets how many committees it pays.",
-  "The Democratic funds paid the state party committees of the 50 states and the District of Columbia, and the Republican funds those of 48 states, the District of Columbia and Guam; a committee two funds paid counts once. The download lists each with its transfers.",
+  "The Democratic funds paid the state party committees of the 50 states and the District of Columbia, and the Republican funds those of 48 states, the District of Columbia and Guam; a committee two funds paid counts once. Each, with its transfers, is in {data_file}.",
   "The chart draws transfers, line 22 of each committee’s reports, where a joint fundraising committee reports the shares it passes on. On the same reports, the Democratic funds also paid committees drawn here $27.3 million for operating expenses (line 21B) and the Republican funds $12.7 million, which the chart leaves out. The Democratic funds refunded $81,000 to two committees that had given to them, and the Republican funds $4,000 to four (line 28C); the table sets the refunds apart."
  ],
  "credit": "Chart: Oath & Action",
@@ -26,7 +26,7 @@
   "The chart draws both sets of committees alike, in one ink, on one scale: each bar is as tall as the dollars it sent or received, and each link as wide as the dollars it carried; a link under $4 million shows as a hairline."
  ],
  "table": {
-  "caption": "Transfers by the joint fundraising committees that paid each party’s presidential campaign to other committees, 2023 to 2024 cycle, one row for each fund and kind of committee it paid, with refunds set apart; the download lists every committee",
+  "caption": "Transfers by the joint fundraising committees that paid each party’s presidential campaign to other committees, 2023 to 2024 cycle, one row for each fund and kind of committee it paid, with refunds set apart; every committee is in {data_file}",
   "columns": [
    {
     "field": "jfc_name",

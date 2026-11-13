@@ -25,7 +25,7 @@
   "A connection joins two variables in the atlas’s model, from the one that acts to the one it affects. A cell counts the connections between two regions and gives no measure of their strength.",
   "Lines of authority, such as Congress deciding public investment levels or the executive setting tariff rates, carry no plus or minus sign in the atlas. All seven start in governing institutions and are the only connections in three cells, which the grid draws with an outline.",
   "Outside drivers, conditions the atlas treats as given, such as geography, receive no connection.",
-  "The download lists the connections in each cell by their atlas IDs."
+  "Each cell’s connections, by their atlas IDs, are in {data_file}."
  ],
  "credit": "Chart: Oath & Action",
  "illustrative": false,

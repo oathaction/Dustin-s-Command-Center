@@ -64,6 +64,7 @@
  },
  "domain_note": "The five hubs span every domain, as the 16 everyday questions do",
  "source_line_variants": {
-  "phase_2_wording": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, claims register, 433 claims across 16 everyday questions grouped by its five topic hubs, 432 of the 433 claims checked on October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone."
+  "phase_2_wording": "Source: Oath & Action, Who Do They Answer To? Systems Atlas V7, claims register, 433 claims across 16 everyday questions grouped by its five topic hubs, 432 of the 433 claims checked on October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.",
+  "snapshot_once": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, claims register, 433 claims across 16 everyday questions grouped by its five topic hubs, snapshot of October 15, 2026, United States. The atlas checked 432 of the 433 claims on that date. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone."
  }
 }

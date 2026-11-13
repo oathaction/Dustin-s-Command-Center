@@ -17,7 +17,7 @@
  "notes": [
   "Each dot sits at random inside its county, so it stands for a count and marks no address. A county with fewer than 5,000 employees draws no dot: 1,354 counties holding 2.8 million employees. On a phone, where a dot stands for 50,000, 2,426 counties holding 15.4 million draw none.",
   "County Business Patterns counts employees of private employers, and leaves out government workers, the self-employed and most farm and household workers.",
-  "The Bureau adds a little noise to each count to protect employers. It changed 378 counties’ counts by 2 to under 5 percent and 29 by 5 percent or more; the download gives each county’s flag.",
+  "The Bureau adds a little noise to each count to protect employers. It changed 378 counties’ counts by 2 to under 5 percent and 29 by 5 percent or more; each county’s flag is in {data_file}.",
   "The dots draw the 132.2 million paid employees counted in counties. Another 7.7 million in the nation’s total work for employers the Bureau places in a state but in no county, and they draw no dots. The Bureau’s file holds no row for Kalawao County, Hawaii, or King County, Texas.",
   "The map draws Alaska and Hawaii apart and not to scale. The Bureau’s count also covers Puerto Rico, which the map does not draw."
  ],

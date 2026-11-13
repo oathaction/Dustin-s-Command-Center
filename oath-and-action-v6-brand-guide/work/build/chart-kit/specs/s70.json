@@ -19,7 +19,7 @@
   "illustrative": false,
   "alt": "A tree of the federal courts. The Supreme Court, with nine justices, sits at the top. Under it are 12 regional courts of appeals, from the District of Columbia Circuit with 11 judgeships to the Ninth Circuit with 29, each listing the states and territories whose district courts it hears appeals from, with each district court’s judgeships; the Ninth Circuit’s districts hold the most, 112. Apart from them, the Federal Circuit, with 12 judgeships, hears appeals by subject from every district. The courts of Guam, the Northern Mariana Islands and the Virgin Islands are territorial courts, not Article III courts.",
   "table": {
-    "caption": "The federal courts grouped by the court that hears their appeals, with the judgeships the law authorizes, as the 2024 edition of the U.S. Code sets them; the Federal Circuit hears appeals by subject from every district, and the CSV file lists each court",
+    "caption": "The federal courts grouped by the court that hears their appeals, with the judgeships the law authorizes, as the 2024 edition of the U.S. Code sets them; the Federal Circuit hears appeals by subject from every district, and each court has its own row in {data_file}",
     "columns": [
       {
         "field": "court",

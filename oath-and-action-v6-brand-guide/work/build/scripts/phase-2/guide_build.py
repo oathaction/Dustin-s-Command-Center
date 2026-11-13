@@ -662,6 +662,11 @@ def process_fragment(src, sid, where, literal_ok=False):
         R.warn(where, f"{sid}: an em dash in the text (DR-79); only W21's labeled specimen may show one, with data-allow-emdash")
     # colors only through var(--oa-...): look for literal colors outside var() fallbacks
     bare = re.sub(r"var\((?:[^()]|\([^()]*\))*\)", "", s)
+    if sid in LITERAL_HALF:
+        # DR-255: DR-64's one exception, the named half of an avoid pair alone (LITERAL_HALF)
+        pair = re.findall(r"<svg\b.*?</svg>", bare, re.S)
+        if len(pair) == 2:
+            bare = bare.replace(pair[LITERAL_HALF[sid]], "", 1)
     bare = re.sub(r'\sd="[^"]*"', "", bare)          # path data
     bare = re.sub(r"data:[^\"')\s]+", "", bare)       # data URIs
     lits = re.findall(r"(?<![\w&])#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3})\b(?![\w-])|\brgba?\(|\bhsla?\(", bare)
@@ -787,6 +792,13 @@ OPENER_MAX_PX = 328
 OPENER_MAX_BYTES = 16 * 1024
 # Round 1: "literal" lets a labeled failure plate draw a color no token holds, such as a rejected or a typed value
 EXEMPT_KINDS = ("contrast", "size", "red", "locked", "scale", "literal")
+# DR-255 (board 2, November 13, 2026) records DR-64's one exception. DR-64 keeps red and blue off every election graphic;
+# the one exception is sketch 14.124's misleading half, which draws a plain news red and blue that are none of the
+# guide's inks, at sketch size, under its do-not-publish bar, so the form the entry warns against shows as it misleads.
+# That half alone may draw literal colors: the drawing at this index of the named specimen's avoid pair (0, the first
+# <svg>, the half the avoid plate sets under its bar). Its better half and every other specimen keep the literal color
+# check, and nothing else in the check changes. The guide check needs no exemption: neither ink is a guide ink.
+LITERAL_HALF = {"s-14-124-sketch": 0}
 SCALE_WORDS = {0.5: "Half size", 0.25: "One quarter size", 0.2: "One fifth size", 0.125: "One eighth size", 0.1: "One tenth size",
                2: "Twice true size"}
 
@@ -4121,6 +4133,28 @@ def self_test():
                      and re.search(r'data-frame-name="Correct application, Rule 26\.1"[^>]*data-wide="680" data-frame-container>', pg) is not None
                      and re.search(r'data-frame-name="Failure case, Rule 26\.1"[^>]*data-frame-container', pg) is None
                      and "True size, 328 px wide" in pg)]}),
+    ]
+    # DR-255 (board 2): DR-64's one exception is sketch 14.124's misleading half alone. Its red passes; a literal in the
+    # same file's better half, and the same red in another avoid sketch's misleading half, still warn
+    half = lambda fill, extra="": (f'<svg class="oac-svg oac-sketch" width="200" height="100" viewBox="0 0 200 100" role="img" aria-label="A"{extra}>'
+                                   f'<rect x="1" y="1" width="9" height="9" {fill}/></svg>')
+    ex_specs = {"s-14-124-sketch.html": half('fill="#CC0000"') + "\n" + half('fill="#2C7BB6"', ' data-label="Panels by party"'),
+                "s-26-skx.html": half('fill="#CC0000"') + "\n" + half('class="oac-f-subject"', ' data-label="Panels by party"')}
+    ex_man = {"s-14-124-sketch": {"chapter": "26", "rule": "26.1", "alt": "A party-colored map beside two panels, a fixture.", "illustrative": True, "notes": "fixture"},
+              "s-26-skx": {"chapter": "26", "rule": "26.2", "alt": "Another misleading form beside the better one, a fixture.", "illustrative": True, "notes": "fixture"}}
+    ex = chapter("26", "tokens", "Tokens and how to choose them", [
+        {"id": "26.1", "entry": True, "use_when": ["A fixture."], "title": "Rule 26.1 in a fixture.", "rule": "A fixture rule.", "why": {"text": "A fixture.", "basis": "WCAG 2.2"},
+         "correct": {"specimen": "s-14-124-sketch", "caption": "A fixture.", "kind": "avoid", "label": "Party-colored map, a form that misleads"}},
+        {"id": "26.2", "entry": True, "use_when": ["A fixture."], "title": "Rule 26.2 in a fixture.", "rule": "A fixture rule.", "why": {"text": "A fixture.", "basis": "WCAG 2.2"},
+         "correct": {"specimen": "s-26-skx", "caption": "A fixture.", "kind": "avoid", "label": "Party-colored map, a form that misleads"}}])
+    scenarios += [
+        ("board 2: DR-64's one exception, sketch 14.124's misleading half alone, may draw literal colors (DR-255)",
+         {"26-tokens.json": ex}, {"specimens": ex_specs, "manifest": ex_man},
+         {"warn": ["s-14-124-sketch: 1 literal color value(s) (#2C7BB6)", "s-26-skx: 1 literal color value(s) (#CC0000)"],
+          "absent": ["#CC0000, ", "(#2C7BB6, #CC0000)"],
+          "html": ['<div class="sk-pair"><div class="sk-half sk-avoid"><p class="plate-dnp">'],
+          "tests": [("the exempt half still draws its red, under the do-not-publish bar", lambda pg: re.search(
+              r'data-specimen="s-14-124-sketch".*?<div class="sk-half sk-avoid"><p class="plate-dnp">.*?fill="#CC0000"', pg, re.S) is not None)]}),
     ]
     results, ok_all = [], True
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-") as tmp:

@@ -41,6 +41,9 @@
  "unit": "issue statuses",
  "qualification": "Statuses can have moved since October 15, 2026; a chip prints V7's date beside it. The chip words (decided, pending, in court) are the studio's reading of V7's text and must quote the case and date the text gives",
  "printed_source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, issue records, status of six issues on checks on power, as of October 15, 2026, United States. Snapshot of October 15, 2026. Statuses may have changed since that date.",
+ "source_line_variants": {
+  "snapshot_once": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, issue records, status of six issues on checks on power, snapshot of October 15, 2026, United States. Statuses may have changed since that date."
+ },
  "domain": "D05",
  "states": [
   "IL"
