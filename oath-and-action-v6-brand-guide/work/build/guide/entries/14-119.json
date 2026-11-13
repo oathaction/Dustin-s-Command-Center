@@ -1,0 +1,34 @@
+{
+ "id": "14.119",
+ "title": "Use a district map to show one state’s races on the shapes of its districts, with party told by panel.",
+ "rule": [
+  "Draw the state’s districts twice, one panel for each party, named with the seats it won: a district fills in its winner’s panel and shows as a thin gray outline in the other, so position carries party and no color does (Rule 14.7). Shade the winner’s margin in four gray steps, closer races lighter, the lightest with an edge, with the same steps and key words as the district tile map. Number each district on its shape, or beside it with a leader, and set the national result beside the panels."
+ ],
+ "use_when": "The reader asks how close each race was in one state, and the districts’ shapes and places matter.",
+ "use_instead": [
+  {
+   "when": "Every seat in the country, each the same size",
+   "rule": "14.121"
+  },
+  {
+   "when": "The reader looks up one race’s figures",
+   "rule": "14.125"
+  }
+ ],
+ "why": {
+  "text": [
+   "Shapes let a reader find the district where they live, and two panels put each party’s seats together without a party color. Gray steps for the margin keep a close race and a safe one apart on both sides alike."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S80",
+ "tier": "extended",
+ "tokens": [],
+ "related": [
+  "14.7",
+  "14.121"
+ ],
+ "builders": "Form district-map: node work/build/chart-kit/oa-chart.mjs build s80; encode district, party and cls (the margin’s class from clerk-house-results-2024-classes, the table S82 reads); labels.layer the state’s fitted district layer (cd119-mi), labels.fips its code, labels.panels each party’s panel.",
+ "correct": null,
+ "failure": null
+}

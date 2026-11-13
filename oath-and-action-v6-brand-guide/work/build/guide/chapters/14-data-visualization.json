@@ -4716,6 +4716,267 @@
    }
   },
   {
+   "id": "14.117",
+   "title": "Use a choropleth to show a rate on the shapes of the states, in a few classes a margin of error cannot blur.",
+   "rule": [
+    "Shade each state by its class in the sequential steps, four classes at most, the lightest with a 1 px edge, and draw the borders as thin lines of the page color. Set each class at least as wide as the widest margin of error drawn, and say in a note how many states sit close enough to a class line to fall in the next one (Rule 14.9). Print each state’s code on its shape in its step’s label ink, or beside it with a short leader; draw the District of Columbia as a small square beside Maryland; set Alaska and Hawaii apart in thin frames, and put the national figure above the map with its name (Rule 14.6)."
+   ],
+   "why": {
+    "text": [
+     "A reader finds a state by its shape faster than by a list, and a few classes turn the rates into a pattern at a glance. Classes wider than the survey’s margins keep a state’s shade from claiming more than the survey can tell."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form choropleth: node work/build/chart-kit/oa-chart.mjs build s78; encode code, value and margin; labels.bins sets where each class starts, labels.class_labels its words, labels.nation and nation_label the national figure, labels.dc the District of Columbia’s square; the boundary file is the spec’s second dataset.",
+   "related_rules": [
+    "14.5",
+    "14.9",
+    "14.6"
+   ],
+   "entry": true,
+   "use_when": "The reader asks where a rate runs high or low across the states, and the shape of the country helps them find their own.",
+   "use_instead": [
+    {
+     "when": "Each state counts once, whatever its size",
+     "rule": "14.114"
+    },
+    {
+     "when": "Size matters as much as the rate",
+     "rule": "14.116"
+    },
+    {
+     "when": "The rate county by county",
+     "rule": "14.120"
+    },
+    {
+     "when": "The reader looks up one state’s exact figure",
+     "rule": "14.133"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s78",
+    "caption": "Where do more households have a broadband internet subscription?"
+   }
+  },
+  {
+   "id": "14.118",
+   "title": "Use a locator map to show where a story takes place, with one red point on the place.",
+   "rule": [
+    "Mark the place in the view’s one red point with its keyline and name it (Rule 14.6), with a second, better-known place nearby in the text’s ink for scale. Shade the place’s county lightly with an edge, draw the rest of the state in the track ink and its neighbors as thin gray lines, add a scale bar, and set a small inset of the country with the state shaded and the view outlined on it."
+   ],
+   "why": {
+    "text": [
+     "A reader who has never been to a place needs a nearby name they know and a sense of distance. The inset answers “which part of the country”, and the main view answers “where in the state”."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form locator-map: node work/build/chart-kit/oa-chart.mjs build s79; encode name, lon and lat; labels.point names the red point’s row, labels.county the county’s geoid, labels.layer a fitted county layer (counties-ca), and labels.neighbors the neighboring states’ names.",
+   "related_rules": [
+    "14.6",
+    "14.3"
+   ],
+   "entry": true,
+   "use_when": "The reader needs to know where a place in the story is, such as the town in a photograph.",
+   "use_instead": [
+    {
+     "when": "A rate across many places",
+     "rule": "14.117"
+    },
+    {
+     "when": "Movement between places",
+     "rule": "14.113"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s79",
+    "caption": "Where is Lake Isabella, the town in chapter 01’s photograph of a public meeting?"
+   }
+  },
+  {
+   "id": "14.119",
+   "title": "Use a district map to show one state’s races on the shapes of its districts, with party told by panel.",
+   "rule": [
+    "Draw the state’s districts twice, one panel for each party, named with the seats it won: a district fills in its winner’s panel and shows as a thin gray outline in the other, so position carries party and no color does (Rule 14.7). Shade the winner’s margin in four gray steps, closer races lighter, the lightest with an edge, with the same steps and key words as the district tile map. Number each district on its shape, or beside it with a leader, and set the national result beside the panels."
+   ],
+   "why": {
+    "text": [
+     "Shapes let a reader find the district where they live, and two panels put each party’s seats together without a party color. Gray steps for the margin keep a close race and a safe one apart on both sides alike."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form district-map: node work/build/chart-kit/oa-chart.mjs build s80; encode district, party and cls (the margin’s class from clerk-house-results-2024-classes, the table S82 reads); labels.layer the state’s fitted district layer (cd119-mi), labels.fips its code, labels.panels each party’s panel.",
+   "related_rules": [
+    "14.7",
+    "14.121"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how close each race was in one state, and the districts’ shapes and places matter.",
+   "use_instead": [
+    {
+     "when": "Every seat in the country, each the same size",
+     "rule": "14.121"
+    },
+    {
+     "when": "The reader looks up one race’s figures",
+     "rule": "14.125"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s80",
+    "caption": "How close was each of Michigan’s 2024 House races, by one margin rule for every kind of seat?"
+   }
+  },
+  {
+   "id": "14.120",
+   "title": "Use a county choropleth for a pattern across thousands of places, and rank none of them.",
+   "rule": [
+    "Shade every county by its class in four sequential steps, with no county lines, the state lines thin and gray, and a county with no estimate unshaded with an edge, named in a note. Set classes wide against the typical county’s margin of error, and say in a note what share of counties could fall in the next class, so the map reads as a pattern (Rule 14.9). Name no county in words unless its gap passes its margin. Put the national figure above the map, group the table by state and give every county with its margin in the download."
+   ],
+   "why": {
+    "text": [
+     "Counties show the pattern inside the states, such as cities against their rural neighbors. Small counties carry wide margins, so a county map answers “where” in broad strokes and leaves exact figures to the table."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form county-choropleth: node work/build/chart-kit/oa-chart.mjs build s81; encode id (the geoid, in the layer’s order) and cls (each county’s class, written by a derive script so the page carries one small number a county); table.group groups the table by state, and the CSV export lists every county.",
+   "related_rules": [
+    "14.9",
+    "14.117",
+    "14.13"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how a figure varies across the whole country, place by place, and the pattern matters more than any one county.",
+   "use_instead": [
+    {
+     "when": "A figure by state",
+     "rule": "14.117"
+    },
+    {
+     "when": "A count, such as jobs, where people or work cluster",
+     "rule": "14.122"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s81",
+    "caption": "How does median household income vary from county to county?"
+   }
+  },
+  {
+   "id": "14.121",
+   "title": "Use a district tile map to show every House seat as one square, with party told by panel.",
+   "rule": [
+    "Give each district one square of the same size on a layout that keeps states in their places and districts in their order, with lines between states and each state’s code where its block leaves room. Draw the map twice, one panel for each party, named with its seats, each seat filled in its winner’s panel and outlined in the other (Rule 14.7). Shade the margin in four gray steps, mark a seat unopposed on the ballot with a dot and a race decided another way with a ring, and name those seats in a note where the squares grow too small for the marks."
+   ],
+   "why": {
+    "text": [
+     "On a map of real districts, a few large rural seats fill the page while dozens of city seats shrink to dots. Equal squares give every seat the weight it has in the House, and the panels show each party’s seats without a party color."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form district-tile-map: node work/build/chart-kit/oa-chart.mjs build s82; encode state, district, party, cls, mark, col and row, all in clerk-house-results-2024-classes, which cartographer_round3_derive.py writes from the Clerk’s results and our own tile layout built from the Census Bureau’s district centers; table.group groups the table by state.",
+   "related_rules": [
+    "14.7",
+    "14.119",
+    "14.114"
+   ],
+   "entry": true,
+   "use_when": "The reader asks which party won each House seat and by how much, and every seat should count the same.",
+   "use_instead": [
+    {
+     "when": "One state’s districts on their real shapes",
+     "rule": "14.119"
+    },
+    {
+     "when": "How far each state moved, with direction",
+     "rule": "14.115"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s82",
+    "caption": "Which party won each House seat in 2024, and by how much, with the same margin classes as Michigan’s district map?"
+   }
+  },
+  {
+   "id": "14.122",
+   "title": "Use a dot density map to show where a count clusters, each dot a stated number.",
+   "rule": [
+    "Place one dot for each stated count, such as 10,000 employees, at random inside its county from a seed the chart records, and say that a dot is a count, never an address. Draw the dots in the subject ink over the land with thin gray state lines, raise the count per dot on a phone so the dots never cover the land, print the count in the key at every width, and say in a note how many units draw no dot (Rule 14.12)."
+   ],
+   "why": {
+    "text": [
+     "A dot for every 10,000 shows both how many and where, so a crowded city and an empty county read for what they are. Random places inside each county keep a dot from pointing at any one address."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form dot-density-map: node work/build/chart-kit/oa-chart.mjs build s83; encode id, dots and dots_phone (each county’s dots at the desk’s and the phone’s unit, from a derive script); labels.seed records the seed, labels.per the two units and labels.key the key’s words; the kit draws every dot as one path.",
+   "related_rules": [
+    "14.12",
+    "14.120"
+   ],
+   "entry": true,
+   "use_when": "The reader asks where people, jobs or homes are, and a count matters more than a rate.",
+   "use_instead": [
+    {
+     "when": "A rate, such as a share of households",
+     "rule": "14.120"
+    },
+    {
+     "when": "A count by state, sized as circles",
+     "rule": "14.116"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s83",
+    "caption": "Where are the private-sector jobs?"
+   }
+  },
+  {
+   "id": "14.123",
+   "title": "Use small-multiple maps to show how a pattern changed across a few dates, one map each.",
+   "rule": [
+    "Draw the same map at each date, two to a row, in the same classes, inks and key, and name each panel with its date and its counts. Keep to a few dates spaced at a stated interval, all on one as-of day, and keep a period whole (Rule 14.10). Leave codes off the small panels and let the table give each state’s figure at each date."
+   ],
+   "why": {
+    "text": [
+     "Side by side, the same map at four dates shows a spread a reader can follow from one panel to the next. Counts under each panel give the change in numbers as well as in shade."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form small-multiple-maps: node work/build/chart-kit/oa-chart.mjs build s84; encode code, panel (the date column) and category; labels.categories sets each class’s words in the key’s order, labels.panel_title and panel_counts each panel’s name and counts.",
+   "related_rules": [
+    "14.8",
+    "14.10",
+    "14.117"
+   ],
+   "entry": true,
+   "use_when": "The reader asks when and where something spread, such as states raising their minimum wage above the federal floor.",
+   "use_instead": [
+    {
+     "when": "One date, on a larger map",
+     "rule": "14.117"
+    },
+    {
+     "when": "How far each state moved between two dates",
+     "rule": "14.115"
+    },
+    {
+     "when": "The count over every year, as a line",
+     "rule": "14.29"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s84",
+    "caption": "When did states set their minimum wage above the federal $7.25?"
+   }
+  },
+  {
    "id": "14.124",
    "title": "Avoid coloring a map by party, which takes a side before the reader reads it.",
    "rule": [
@@ -5224,13 +5485,6 @@
   "14.82",
   "14.83",
   "14.84",
-  "14.117",
-  "14.118",
-  "14.119",
-  "14.120",
-  "14.121",
-  "14.122",
-  "14.123",
   "14.135",
   "14.136",
   "14.137",

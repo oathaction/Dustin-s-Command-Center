@@ -849,7 +849,7 @@
   "chapter": "14",
   "rule": "14.99",
   "width_px": null,
-  "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, from Agriculture to Ways and Means, three select committees and four joint committees shared with the Senate. Each committee lists its subcommittees under it, 109 in all; Appropriations has the most, 12, and the Budget, Ethics, two select committees and the joint committees have none.",
+  "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, from Agriculture to Ways and Means, three select committees and four joint committees shared with the Senate, each with its subcommittees under it, 109 in all. Appropriations has the most, 12; the Budget, Ethics, two select committees and the joint committees have none.",
   "illustrative": false,
   "notes": "S69, org-chart: the chart kit draws it from work/build/chart-kit/specs/s69.json (contract R1-C3)"
  },
@@ -994,6 +994,62 @@
   "alt": "A map of the United States with a circle on each state sized by its citizens 18 and over and shaded by the share who said they voted in November 2024. California, Texas, Florida and New York have the most citizens 18 and over; Texas at 57.9 percent, New York at 59.2 and Florida at 60.3 sit below the national 65.3 percent by more than their margins of error, while California’s 64.7 does not. Rates run from 52.8 percent in Arkansas to 79.5 percent in DC.",
   "illustrative": false,
   "notes": "S16, bubble-map: the chart kit draws it from work/build/chart-kit/specs/s16.json (contract R1-C3)"
+ },
+ "s-14-s78": {
+  "chapter": "14",
+  "rule": "14.117",
+  "width_px": null,
+  "alt": "A map of the United States with each state shaded in one of four classes by the share of households with home broadband such as cable, fiber or DSL in 2025. Ten states and the District of Columbia reach 79 percent or more, most of them in the Northeast, along with Colorado, Utah, Washington and Hawaii; nine states sit under 71 percent, among them Alaska, Mississippi, West Virginia, Montana and New Mexico. The United States stands at 76.6 percent.",
+  "illustrative": false,
+  "notes": "S78, choropleth: the chart kit draws it from work/build/chart-kit/specs/s78.json (contract R1-C3)"
+ },
+ "s-14-s79": {
+  "chapter": "14",
+  "rule": "14.118",
+  "width_px": null,
+  "alt": "A map of California’s counties with Kern County shaded. A red point marks Lake Isabella in the county’s northeast, about 37 miles northeast of Bakersfield, the county seat, shown as a small dot. An inset map of the United States marks California and the view.",
+  "illustrative": false,
+  "notes": "S79, locator-map: the chart kit draws it from work/build/chart-kit/specs/s79.json (contract R1-C3)"
+ },
+ "s-14-s80": {
+  "chapter": "14",
+  "rule": "14.119",
+  "width_px": null,
+  "alt": "Two maps of Michigan’s 13 House districts. The first shades the six districts Democrats won by the winner’s margin and outlines the rest; the second does the same for the seven Republicans won. The 7th district was closest, won by 3.7 points, and seven races were decided by 20 points or more. Nationally, Republicans won 220 House seats and Democrats 215.",
+  "illustrative": false,
+  "notes": "S80, district-map: the chart kit draws it from work/build/chart-kit/specs/s80.json (contract R1-C3)"
+ },
+ "s-14-s81": {
+  "chapter": "14",
+  "rule": "14.120",
+  "width_px": null,
+  "alt": "A map of every county in the United States shaded in four classes by median household income for 2020 to 2024. The highest class, $80,000 or more, covers 585 counties, many around large cities and along the coasts; the lowest, under $50,000, covers 371, many across the rural South. The nation’s median was $80,734.",
+  "illustrative": false,
+  "notes": "S81, county-choropleth: the chart kit draws it from work/build/chart-kit/specs/s81.json (contract R1-C3)"
+ },
+ "s-14-s82": {
+  "chapter": "14",
+  "rule": "14.121",
+  "width_px": null,
+  "alt": "Two tile maps of the 435 House districts, one square each, grouped by state. The first fills the 215 seats Democrats won and the second the 220 Republicans won, each square shaded by the winner’s margin in four gray steps from under 5 points to 20 or more, with the other party’s seats as outlines. Thirty-six races were decided by under 5 points, 22 won by Democrats and 14 by Republicans, and 22 seats had one candidate on the ballot.",
+  "illustrative": false,
+  "notes": "S82, district-tile-map: the chart kit draws it from work/build/chart-kit/specs/s82.json (contract R1-C3)"
+ },
+ "s-14-s83": {
+  "chapter": "14",
+  "rule": "14.122",
+  "width_px": null,
+  "alt": "A map of the United States with one dot for every 10,000 private-sector paid employees, placed at random inside each county. The dots crowd around large cities, above all New York, Los Angeles, Chicago, Dallas, Houston and Atlanta, and thin out across the Great Plains and the mountain West. Half of the 132.2 million employees counted by county in 2023 worked in 100 of the 3,142 counties.",
+  "illustrative": false,
+  "notes": "S83, dot-density-map: the chart kit draws it from work/build/chart-kit/specs/s83.json (contract R1-C3)"
+ },
+ "s-14-s84": {
+  "chapter": "14",
+  "rule": "14.123",
+  "width_px": null,
+  "alt": "Four maps of the states on January 1 of 2010, 2014, 2019 and 2024, each state shaded by whether its minimum wage was above the federal $7.25, at it, or below it or absent. States above $7.25 grew from 14 and DC in 2010 to 23 and DC in 2014, 29 and DC in 2019 and 30 and DC in 2024, spreading from the coasts and the Northeast into the Midwest; most of the South stayed at $7.25 or had no state minimum.",
+  "illustrative": false,
+  "notes": "S84, small-multiple-maps: the chart kit draws it from work/build/chart-kit/specs/s84.json (contract R1-C3)"
  },
  "s-14-124-sketch": {
   "chapter": "14",

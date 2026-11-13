@@ -1,0 +1,35 @@
+{
+ "id": "14.121",
+ "title": "Use a district tile map to show every House seat as one square, with party told by panel.",
+ "rule": [
+  "Give each district one square of the same size on a layout that keeps states in their places and districts in their order, with lines between states and each state’s code where its block leaves room. Draw the map twice, one panel for each party, named with its seats, each seat filled in its winner’s panel and outlined in the other (Rule 14.7). Shade the margin in four gray steps, mark a seat unopposed on the ballot with a dot and a race decided another way with a ring, and name those seats in a note where the squares grow too small for the marks."
+ ],
+ "use_when": "The reader asks which party won each House seat and by how much, and every seat should count the same.",
+ "use_instead": [
+  {
+   "when": "One state’s districts on their real shapes",
+   "rule": "14.119"
+  },
+  {
+   "when": "How far each state moved, with direction",
+   "rule": "14.115"
+  }
+ ],
+ "why": {
+  "text": [
+   "On a map of real districts, a few large rural seats fill the page while dozens of city seats shrink to dots. Equal squares give every seat the weight it has in the House, and the panels show each party’s seats without a party color."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S82",
+ "tier": "extended",
+ "tokens": [],
+ "related": [
+  "14.7",
+  "14.119",
+  "14.114"
+ ],
+ "builders": "Form district-tile-map: node work/build/chart-kit/oa-chart.mjs build s82; encode state, district, party, cls, mark, col and row, all in clerk-house-results-2024-classes, which cartographer_round3_derive.py writes from the Clerk’s results and our own tile layout built from the Census Bureau’s district centers; table.group groups the table by state.",
+ "correct": null,
+ "failure": null
+}

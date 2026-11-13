@@ -1,0 +1,43 @@
+{
+ "id": "14.117",
+ "title": "Use a choropleth to show a rate on the shapes of the states, in a few classes a margin of error cannot blur.",
+ "rule": [
+  "Shade each state by its class in the sequential steps, four classes at most, the lightest with a 1 px edge, and draw the borders as thin lines of the page color. Set each class at least as wide as the widest margin of error drawn, and say in a note how many states sit close enough to a class line to fall in the next one (Rule 14.9). Print each state’s code on its shape in its step’s label ink, or beside it with a short leader; draw the District of Columbia as a small square beside Maryland; set Alaska and Hawaii apart in thin frames, and put the national figure above the map with its name (Rule 14.6)."
+ ],
+ "use_when": "The reader asks where a rate runs high or low across the states, and the shape of the country helps them find their own.",
+ "use_instead": [
+  {
+   "when": "Each state counts once, whatever its size",
+   "rule": "14.114"
+  },
+  {
+   "when": "Size matters as much as the rate",
+   "rule": "14.116"
+  },
+  {
+   "when": "The rate county by county",
+   "rule": "14.120"
+  },
+  {
+   "when": "The reader looks up one state’s exact figure",
+   "rule": "14.133"
+  }
+ ],
+ "why": {
+  "text": [
+   "A reader finds a state by its shape faster than by a list, and a few classes turn the rates into a pattern at a glance. Classes wider than the survey’s margins keep a state’s shade from claiming more than the survey can tell."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S78",
+ "tier": "core",
+ "tokens": [],
+ "related": [
+  "14.5",
+  "14.9",
+  "14.6"
+ ],
+ "builders": "Form choropleth: node work/build/chart-kit/oa-chart.mjs build s78; encode code, value and margin; labels.bins sets where each class starts, labels.class_labels its words, labels.nation and nation_label the national figure, labels.dc the District of Columbia’s square; the boundary file is the spec’s second dataset.",
+ "correct": null,
+ "failure": null
+}

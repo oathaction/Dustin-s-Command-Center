@@ -12,11 +12,11 @@
   "title": "The House splits its work among 20 standing committees and three select committees, which divide it again among 109 subcommittees.",
   "measure_line": "Committees and subcommittees of the U.S. House of Representatives, 119th Congress, joint committees included, as the Clerk’s file of November 3, 2026 lists them",
   "notes": [
-    "Two standing committees, the Budget and Ethics, have no subcommittees, and Appropriations has the most, 12, one for each of its yearly spending bills."
+    "Two standing committees, Budget and Ethics, have no subcommittees, and Appropriations has the most, 12, one for each of its yearly spending bills."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, from Agriculture to Ways and Means, three select committees and four joint committees shared with the Senate, each with its subcommittees under it, 109 in all. Appropriations has the most, 12; the Budget, Ethics, two select committees and the joint committees have none.",
+  "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, from Agriculture to Ways and Means, three select committees and four joint committees shared with the Senate, each with its subcommittees under it, 109 in all. Appropriations has the most, 12; Budget, Ethics, two select committees and the joint committees have none.",
   "table": {
     "caption": "The House’s committees, each with its subcommittees and the seats each side holds, as the Clerk’s file of November 3, 2026 lists them; the CSV file gives each subcommittee’s seats",
     "columns": [

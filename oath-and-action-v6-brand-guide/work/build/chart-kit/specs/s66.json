@@ -12,7 +12,7 @@
   "title": "A federal agency makes a rule in five steps the law sets, and Congress can strike the rule down or a court can set it aside once it is final.",
   "measure_line": "The steps of federal rule making in 5 U.S.C. 551 and 553, with the branches for White House review, guidance, petitions, the Congressional Review Act and court review, as the law and Executive Orders 12866 and 14215 stand on November 12, 2026",
   "notes": [
-    "Executive Order 14215 of February 18, 2025 sends the significant rules of independent regulatory agencies to White House review as well; the Federal Reserve’s monetary policy stays outside it.",
+    "Executive Order 14215 of February 18, 2025, sends the significant rules of independent regulatory agencies to White House review as well; the Federal Reserve’s monetary policy stays outside it.",
     "Some rules skip notice and comment under the exceptions in 5 U.S.C. 553(b), and White House review covers significant rules only. The law sets the steps; how long an agency takes is its own practice."
   ],
   "credit": "Chart: Oath & Action",
@@ -85,7 +85,7 @@
     ]
   },
   "chart_notes": [
-    "Numbered boxes on the heavy line are the steps every rule takes, in order. Boxes with a fine edge are steps some rules take, or a way in or out, each with an arrow that points the way a case moves."
+    "Numbered boxes on the heavy line are the steps the law sets for a rule, in order. Boxes with a fine edge are steps some rules take, or a way in or out, each with an arrow that points the way a case moves."
   ],
   "phone": "differs",
   "phone_note": "Where two columns cannot each hold 200 px, the steps run down one column; a step’s way in sits above it and its branches below it, set in from the line.",

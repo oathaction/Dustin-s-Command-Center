@@ -6,29 +6,29 @@
   2,
   3
  ],
- "examples": 90,
+ "examples": 97,
  "by_domain": {
-  "D01": 4,
-  "D02": 10,
+  "D01": 5,
+  "D02": 12,
   "D03": 7,
   "D04": 10,
   "D05": 5,
   "D06": 6,
-  "D07": 7,
-  "D08": 14,
+  "D07": 9,
+  "D08": 15,
   "D09": 11,
-  "D10": 7
+  "D10": 8
  },
  "all_domains": 9,
  "by_state": {
   "AK": 1,
-  "CA": 4,
+  "CA": 5,
   "CT": 1,
   "FL": 5,
   "GA": 1,
   "IL": 2,
   "MA": 1,
-  "MI": 1,
+  "MI": 2,
   "MS": 1,
   "MT": 1,
   "NC": 1,
@@ -696,6 +696,59 @@
    ],
    "rule": "14.116",
    "source": "s16.json"
+  },
+  {
+   "example": "Home broadband such as cable, fiber or DSL reached at least 79 percent of households in 10 states and DC in 2025, and under 71 percent in nine states.",
+   "domain": "D01",
+   "states": [],
+   "rule": "14.117",
+   "source": "s78.json"
+  },
+  {
+   "example": "Lake Isabella, a census-designated place in Kern County, California, sits about 37 miles northeast of Bakersfield, the county seat.",
+   "domain": "D10",
+   "states": [
+    "CA"
+   ],
+   "rule": "14.118",
+   "source": "s79.json"
+  },
+  {
+   "example": "Michigan’s closest House race in 2024, in the 7th district, was decided by 3.7 points, and seven of its 13 races by 20 points or more.",
+   "domain": "D02",
+   "states": [
+    "MI"
+   ],
+   "rule": "14.119",
+   "source": "s80.json"
+  },
+  {
+   "example": "Median household income was $80,000 or more in 585 counties and under $50,000 in 371 over 2020 to 2024, when the nation’s was $80,734.",
+   "domain": "D08",
+   "states": [],
+   "rule": "14.120",
+   "source": "s81.json"
+  },
+  {
+   "example": "Republicans won 220 House seats in November 2024 and Democrats 215, and 36 of the 435 races were decided by under 5 points.",
+   "domain": "D02",
+   "states": [],
+   "rule": "14.121",
+   "source": "s82.json"
+  },
+  {
+   "example": "Half of the 132.2 million private-sector paid employees counted by county in 2023 worked in 100 of the 3,142 counties.",
+   "domain": "D07",
+   "states": [],
+   "rule": "14.122",
+   "source": "s83.json"
+  },
+  {
+   "example": "Thirty states and DC had a minimum wage above the federal $7.25 on January 1, 2024, up from 14 states and DC on January 1, 2010.",
+   "domain": "D07",
+   "states": [],
+   "rule": "14.123",
+   "source": "s84.json"
   },
   {
    "example": "The Republican nominee led in 31 states in 2024, six more than in 2020; in four of the six states that changed leader, the lead was under 2.5 points.",

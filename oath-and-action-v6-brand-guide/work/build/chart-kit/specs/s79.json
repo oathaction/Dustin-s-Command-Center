@@ -1,0 +1,105 @@
+{
+ "kit": 1,
+ "id": "S79",
+ "form": "locator-map",
+ "family": "maps",
+ "tier": "core",
+ "dataset": [
+  "census-gazetteer-2024-places",
+  "census-cb-2024-counties-california-5m",
+  "census-cb-2024-states"
+ ],
+ "sort": [
+  {
+   "field": "name",
+   "order": "asc"
+  }
+ ],
+ "reader_question": "Where is Lake Isabella, the town in chapter 01’s photograph of a public meeting?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: the Census Bureau’s 2024 Gazetteer and boundary files",
+ "title": "Lake Isabella, a census-designated place in Kern County, California, sits about 37 miles northeast of Bakersfield, the county seat.",
+ "measure_line": "Places by the Census Bureau’s internal point for each, on the 2024 county outlines of California, with the United States in the inset.",
+ "notes": [
+  "A census-designated place is a community the Census Bureau maps and counts that has no city government of its own.",
+  "The distance is a straight line between the Bureau’s internal points for the two places, a point inside each place.",
+  "Chapter 01’s photograph of a public meeting on the Isabella Lake Dam safety project was taken in Lake Isabella on March 27, 2014."
+ ],
+ "source_line": "Source: U.S. Census Bureau, 2024 Gazetteer Files, places, Kern County, California; Cartographic Boundary Files, 2024, counties of California, 1:5,000,000, and states, 1:20,000,000. Retrieved November 12 and 13, 2026. Points sit inside each place.",
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "A map of California’s counties with Kern County shaded. A red point marks Lake Isabella in the county’s northeast, about 37 miles northeast of Bakersfield, the county seat, shown as a small dot. An inset map of the United States marks California and the view.",
+ "table": {
+  "caption": "The two places on the map",
+  "columns": [
+   {
+    "field": "name",
+    "label": "Place",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "land_sq_mi",
+    "label": "Land area, square miles",
+    "format": "number:1"
+   },
+   {
+    "field": "lat",
+    "label": "Latitude",
+    "format": "number:4"
+   },
+   {
+    "field": "lon",
+    "label": "Longitude",
+    "format": "number:4"
+   }
+  ]
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D10",
+ "states": [
+  "CA"
+ ],
+ "encode": {
+  "name": "name",
+  "lon": "lon",
+  "lat": "lat"
+ },
+ "labels": {
+  "layer": "counties-ca",
+  "state": "06",
+  "county": "06029",
+  "county_label": "Kern County",
+  "state_label": "California",
+  "point": "Lake Isabella CDP",
+  "names": {
+   "Lake Isabella CDP": "Lake Isabella",
+   "Bakersfield city": "Bakersfield"
+  },
+  "neighbors": [
+   {
+    "words": "Nevada",
+    "lon": -116.9,
+    "lat": 38.9
+   },
+   {
+    "words": "Arizona",
+    "lon": -113.6,
+    "lat": 33.9
+   },
+   {
+    "words": "Oregon",
+    "lon": -121.5,
+    "lat": 42.6
+   }
+  ]
+ },
+ "notes_internal": [
+  "Ruling (a): Lake Isabella is round 3's one red point, with its keyline on Newsprint; a place that is not a state carries no tie on Rule 14.6's list. Ruling (b): Bakersfield, the county seat, a dot in the text's ink, named; Kern County in the light fill with the context edge, named; California in the track ink with the context edge; neighboring states as ghost lines; a United States inset in a frame with California in the light fill and the view drawn on it.",
+  "D3-1087: California's counties from census-cb-2024-counties-california-5m (the kit's counties-ca layer); the inset from census-cb-2024-states. California counts once.",
+  "Figures checked by script (check S79 in cartographer_round3_derive.py --figures): 36.9 miles, a bearing of 58 degrees, between the Gazetteer's internal points (haversine, mean earth radius 3,958.8 miles); the photograph's date and subject from chapter 01's caption for pho-04r (specimen s-01-8-correct)."
+ ],
+ "formats": {}
+}

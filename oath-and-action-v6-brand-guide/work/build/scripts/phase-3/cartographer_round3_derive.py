@@ -40,8 +40,9 @@ Writes, from frozen files in work/build/data/:
   4 at 20 or more; unopposed seats 4), its mark (dot: unopposed on the ballot; ring: a race decided another way), and
   its square in the tile layout above, so both maps take one set of classes and the page carries small numbers.
 
---check writes nothing and fails when a written file differs from what the script computes now. --figures checks
-figures in the cartographer's specs against the data files (added as specs land). Standard library only.
+--check writes nothing and fails when a written file differs from what the script computes now. --figures writes nothing
+and checks every figure in the titles, notes and alts of S78 to S84 against the data files, each check named in the
+spec's notes_internal (check S78 to check S84). Standard library only.
 """
 import csv
 import io
@@ -567,7 +568,115 @@ def house_classes(lay):
     write('clerk-house-results-2024-classes', ['state', 'district', 'winner', 'winner_group', 'runner_up', 'runner_up_group', 'margin_pct', 'margin_printed', 'margin_class', 'seat_kind', 'mark', 'col', 'row'], out, side)
 
 
+SPECS = os.path.normpath(os.path.join(HERE, '..', '..', 'chart-kit', 'specs'))
+
+
+def spec_words(sid):
+    with open(os.path.join(SPECS, sid.lower() + '.json'), encoding='utf-8') as fh:
+        d = json.load(fh)
+    parts = [d['title'], d['measure_line'], d['alt']] + d.get('notes', []) + [json.dumps(d.get('labels', {}), ensure_ascii=False)]
+    return ' '.join(parts)
+
+
+def figures():
+    bad = []
+    def has(sid, words, why):
+        if words not in spec_words(sid): bad.append('%s: "%s" not found (%s)' % (sid, words, why))
+    def eq(sid, a, b, why):
+        if a != b: bad.append('%s: %s: %r against %r' % (sid, why, a, b))
+    # S78: fixed broadband, classes at 71, 75 and 79 percent
+    bb = read('census-acs-broadband-by-state'); us = [r for r in bb if r['code'] == 'US'][0]; st = [r for r in bb if r['code'] != 'US']
+    eq('S78', '%.1f' % float(us['broadband_fixed_pct']), '76.6', 'national figure'); eq('S78', us['broadband_fixed_pct_moe_s2801'], '0.1', 'national margin')
+    cl = lambda v: 1 if v < 71 else 2 if v < 75 else 3 if v < 79 else 4
+    byc = {k: [r['code'] for r in st if cl(float(r['broadband_fixed_pct'])) == k] for k in (1, 2, 3, 4)}
+    eq('S78', [len(byc[k]) for k in (1, 2, 3, 4)], [9, 11, 20, 11], 'class counts')
+    eq('S78', 'DC' in byc[4] and 'DC' not in byc[1], True, 'DC in the top class, so 10 states and DC; nine states at the bottom')
+    has('S78', '10 states and DC', 'title'); has('S78', 'under 71 percent in nine states', 'title')
+    # the data lead's count (ruling (c)): the printed figure, one decimal, with its printed margin, ends included
+    cross = [r['code'] for r in st if any(round(float(r['broadband_fixed_pct']), 1) - float(r['broadband_fixed_pct_moe_s2801']) <= b <= round(float(r['broadband_fixed_pct']), 1) + float(r['broadband_fixed_pct_moe_s2801']) for b in (71, 75, 79))]
+    eq('S78', len(cross), 13, 'intervals crossing a break'); has('S78', 'Thirteen of the 50 states and the District of Columbia', 'note 1')
+    for code in ('CO', 'UT', 'WA', 'HI'): eq('S78', code in byc[4], True, 'alt: %s in the top class' % code)
+    for code in ('AK', 'MS', 'WV', 'MT', 'NM'): eq('S78', code in byc[1], True, 'alt: %s in the bottom class' % code)
+    ne = ['CT', 'DE', 'MA', 'MD', 'NH', 'NJ']; eq('S78', sum(1 for c in byc[4] if c in ne) > len(byc[4]) / 2, True, 'alt: most of the top class in the Northeast')
+    has('S78', 'United States {value}% (±{margin})', 'national label')
+    # S79: the distance and bearing between the Gazetteer's internal points; the photograph's credit
+    pl = {r['name']: r for r in read('census-gazetteer-2024-places')}
+    a, b = pl['Bakersfield city'], pl['Lake Isabella CDP']
+    p1, p2 = math.radians(float(a['lat'])), math.radians(float(b['lat'])); dl = math.radians(float(b['lon']) - float(a['lon']))
+    h = math.sin((p2 - p1) / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    miles = 2 * 3958.7613 * math.asin(math.sqrt(h)); brg = (math.degrees(math.atan2(math.sin(dl) * math.cos(p2), math.cos(p1) * math.sin(p2) - math.sin(p1) * math.cos(p2) * math.cos(dl))) + 360) % 360
+    eq('S79', round(miles), 37, 'miles'); eq('S79', 22.5 <= brg < 67.5, True, 'bearing northeast')
+    has('S79', 'about 37 miles northeast of Bakersfield', 'title')
+    plate = open(os.path.normpath(os.path.join(HERE, '..', '..', 'guide', 'specimens', 's-01-8-correct.html')), encoding='utf-8').read()
+    eq('S79', 'Isabella Lake Dam safety project' in plate and 'March 27, 2014' in plate and 'Lake Isabella, California' in plate, True, "the photograph's caption in chapter 01's plate (pho-04r)")
+    # S80 and S82: the shared classes
+    hc = read('clerk-house-results-2024-classes'); mi = [r for r in hc if r['state'] == 'MI']
+    eq('S80', len(mi), 13, 'districts'); eq('S80', sum(1 for r in mi if r['winner_group'] == 'Democratic'), 6, 'Democratic seats')
+    closest = min((r for r in mi if r['margin_printed']), key=lambda r: float(r['margin_printed']))
+    eq('S80', (closest['district'], closest['margin_printed']), ('07', '3.7'), 'closest race'); has('S80', 'in the 7th district, was decided by 3.7 points', 'title')
+    eq('S80', sum(1 for r in mi if r['margin_class'] == '4'), 7, 'races at 20 or more'); has('S80', 'seven of its 13 races by 20 points or more', 'title')
+    eq('S80', all(r['seat_kind'] == 'Republican and Democratic' for r in mi), True, 'note 1: every race a Republican against a Democrat')
+    eq('S82', (sum(1 for r in hc if r['winner_group'] == 'Republican'), sum(1 for r in hc if r['winner_group'] == 'Democratic')), (220, 215), 'seats')
+    for sid in ('S80', 'S82'): has(sid, 'Republicans won 220' if sid == 'S82' else 'Republicans won 220 House seats and Democrats 215', 'national result')
+    u5 = [r for r in hc if r['margin_class'] == '1']
+    eq('S82', (len(u5), sum(1 for r in u5 if r['winner_group'] == 'Democratic')), (36, 22), 'under 5 points')
+    eq('S82', sum(1 for r in hc if r['mark'] == 'dot'), 22, 'unopposed'); eq('S82', sum(1 for r in hc if r['mark'] == 'ring'), 14, 'rings')
+    one = sorted((r['state'], r['district']) for r in hc if r['seat_kind'] == 'one-party contest (top-two)')
+    eq('S82', one, [('CA', '12'), ('CA', '16'), ('CA', '20'), ('CA', '34'), ('WA', '04'), ('WA', '09')], 'one-party contests')
+    has('S82', '36 of the 435 races were decided by under 5 points', 'title'); has('S82', '22 won by Democrats and 14 by Republicans, and 22 seats', 'alt')
+    # S81: county classes and crossings, the nation
+    ic = read('census-acs5-county-median-household-income-classes'); usr = [r for r in read('census-acs5-county-median-household-income') if r['geoid'] == 'US'][0]
+    eq('S81', [sum(1 for r in ic if r['income_class'] == str(k)) for k in (1, 2, 3, 4)], [371, 1138, 1049, 585], 'class counts')
+    est = [r for r in ic if r['income_class'] != '']
+    eq('S81', (len(est), sum(1 for r in est if int(r['breaks_crossed']) >= 1), sum(1 for r in est if int(r['breaks_crossed']) >= 2)), (3143, 1707, 182), 'crossings')
+    eq('S81', (usr['median_household_income'], usr['moe']), ('80734', '166'), 'nation'); has('S81', '$80,734 (±$166)', 'national label')
+    eq('S81', [r['name'] for r in ic if r['income_class'] == ''], ['De Baca County, New Mexico'], 'no estimate')
+    for w in ('585 counties and under $50,000 in 371', '1,707 of 3,143', '182 two classes away'): has('S81', w, 'title and note')
+    # S83: dots and the county sum
+    dd = read('census-cbp-county-employment-dots'); e = [r for r in dd if r['paid_employees'] != '']
+    tot = sum(int(r['paid_employees']) for r in e); eq('S83', (len(e), tot), (3142, 132151802), 'counties and their sum')
+    srt = sorted((int(r['paid_employees']) for r in e), reverse=True); acc = 0; n_half = None
+    for i, v in enumerate(srt):
+        acc += v
+        if acc >= tot / 2: n_half = i + 1; break
+    eq('S83', n_half, 100, 'counties holding half'); has('S83', 'Half of the 132.2 million', 'title'); has('S83', '100 of the 3,142 counties', 'title')
+    none = [r for r in e if r['dots_10k'] == '0']; eq('S83', (len(none), sum(int(r['paid_employees']) for r in none)), (1354, 2841136), 'no dot')
+    cbm = meta('census-cbp-county-employment'); eq('S83', any('139,831,742' in n and '7,679,940' in n for n in cbm.get('notes', [])), True, 'the national total and the gap in the sidecar')
+    eq('S83', 139831742 - tot, 7679940, 'gap'); has('S83', 'another 7,679,940', 'note 2')
+    top = sorted(e, key=lambda r: -int(r['paid_employees']))[:20]; ids = set(r['geoid'] for r in top)
+    for g, nm in (('36061', 'New York'), ('06037', 'Los Angeles'), ('17031', 'Chicago'), ('48113', 'Dallas'), ('48201', 'Houston'), ('13121', 'Atlanta')): eq('S83', g in ids, True, 'alt: %s among the 20 largest counties' % nm)
+    # S84: the panels and the atlas's sentence
+    mw = read('dol-state-minimum-wage-classes')
+    for y, want in (('2010', (15, 26, 10)), ('2014', (24, 19, 8)), ('2019', (30, 14, 7)), ('2024', (31, 13, 7))):
+        rs = [r for r in mw if r['year'] == y]
+        eq('S84', tuple(sum(1 for r in rs if r['class'] == k) for k in ('above $7.25', 'at $7.25', 'below $7.25 or no state minimum')), want, 'panel ' + y)
+        eq('S84', [r['class'] for r in rs if r['code'] == 'DC'], ['above $7.25'], 'DC above in ' + y)
+    for w in ('Thirty states and DC', '14 states and DC on January 1, 2010', '23 and DC in 2014, 29 and DC in 2019 and 30 and DC in 2024'): has('S84', w, 'title and alt')
+    with open(os.path.normpath(os.path.join(HERE, '..', '..', '..', 'extract', 'atlas-v7-data.json')), encoding='utf-8') as fh:
+        atlas = json.load(fh)
+    def find(o):
+        if isinstance(o, dict):
+            if o.get('id') == 'CL1516': return o
+            o = list(o.values())
+        if isinstance(o, list):
+            for v in o:
+                hit = find(v)
+                if hit: return hit
+        return None
+    c0 = find(atlas) or {}
+    eq('S84', c0.get('confidence'), 'documented', 'CL1516 graded documented')
+    cl = c0.get('supports', '') + ' ' + c0.get('claim', '')
+    for w in ('30 states and DC above $7.25', '13 states at $7.25', 'Georgia and Wyoming at $5.15', 'five states with no minimum wage law', 'July 1, 2026'):
+        eq('S84', w in cl, True, 'V7 CL1516 holds "%s"' % w)
+    for w in ('30 states and DC set a minimum wage above $7.25, 13 states set $7.25, Georgia and Wyoming set $5.15, and five states had no minimum wage law', 'atlas snapshot of October 15, 2026'): has('S84', w, 'note 1')
+    for line in bad: print('FIGURE', line)
+    print('figures: %d fault(s)' % len(bad))
+    return bad
+
+
 def main():
+    if '--figures' in sys.argv:
+        sys.exit(1 if figures() else 0)
     lay = tile_layout()
     g = meta('census-gazetteer-2024-cd119')
     side = {

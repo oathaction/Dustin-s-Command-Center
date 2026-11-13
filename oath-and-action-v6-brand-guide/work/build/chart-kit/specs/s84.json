@@ -1,0 +1,103 @@
+{
+ "kit": 1,
+ "id": "S84",
+ "form": "small-multiple-maps",
+ "family": "maps",
+ "tier": "extended",
+ "dataset": [
+  "dol-state-minimum-wage-classes",
+  "census-cb-2024-states"
+ ],
+ "where": {
+  "year": [
+   2010,
+   2014,
+   2019,
+   2024
+  ]
+ },
+ "sort": [
+  {
+   "field": "year",
+   "order": "asc"
+  },
+  {
+   "field": "name",
+   "order": "asc"
+  }
+ ],
+ "reader_question": "When did states set their minimum wage above the federal $7.25?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: the Department of Labor’s table of state minimum wages on January 1 of each year shown",
+ "title": "Thirty states and DC had a minimum wage above the federal $7.25 on January 1, 2024, up from 14 states and DC on January 1, 2010.",
+ "measure_line": "Each state’s basic minimum wage under state law for non-farm work, against the federal $7.25, on January 1 of 2010, 2014, 2019 and 2024, 50 states and the District of Columbia, in three classes.",
+ "notes": [
+  "On July 1, 2026, 30 states and DC set a minimum wage above $7.25, 13 states set $7.25, Georgia and Wyoming set $5.15, and five states had no minimum wage law, where the federal rate applies to covered employers, by the count in our systems atlas, Who Do They Answer To? (claim CL1516, graded documented, from the Department of Labor’s state minimum wage page of that date; atlas snapshot of October 15, 2026).",
+  "Classes follow each state’s highest listed rate, and some rates apply only to larger employers. Where a state’s rate is below $7.25, or it has none, employers the federal law covers pay $7.25.",
+  "Alaska and Hawaii are drawn apart and not to scale; the District of Columbia is drawn as a square beside Maryland. The table gives each state’s rate at each date as the Department prints it."
+ ],
+ "source_line": "Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under State Law, January 1 rates in 2010, 2014, 2019 and 2024, 50 states and DC; U.S. Census Bureau, Cartographic Boundary Files, 2024, states. Retrieved November 12 and 13, 2026. Classes by Oath & Action from each state’s highest listed rate; some rates apply only to larger employers, and where a state is below $7.25 or has none, covered employers pay the federal rate.",
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "Four maps of the states on January 1 of 2010, 2014, 2019 and 2024, each state shaded by whether its minimum wage was above the federal $7.25, at it, or below it or absent. States above $7.25 grew from 14 and DC in 2010 to 23 and DC in 2014, 29 and DC in 2019 and 30 and DC in 2024, spreading from the coasts and the Northeast into the Midwest; most of the South stayed at $7.25 or had no state minimum.",
+ "table": {
+  "caption": "State minimum wage on January 1 of each year shown, as the Department of Labor prints it",
+  "pivot": {
+   "row": "name",
+   "column": "year",
+   "value": "rate_as_published",
+   "format": "text"
+  },
+  "columns": [
+   {
+    "field": "name",
+    "label": "State",
+    "format": "text",
+    "row_header": true
+   }
+  ]
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D07",
+ "states": [],
+ "encode": {
+  "code": "code",
+  "panel": "year",
+  "category": "class"
+ },
+ "labels": {
+  "categories": [
+   {
+    "value": "below $7.25 or no state minimum",
+    "label": "Below $7.25 or no state minimum"
+   },
+   {
+    "value": "at $7.25",
+    "label": "At $7.25"
+   },
+   {
+    "value": "above $7.25",
+    "label": "Above $7.25"
+   }
+  ],
+  "steps": [
+   "seq-1",
+   "seq-3",
+   "seq-5"
+  ],
+  "panel_title": "January 1, {panel}",
+  "panel_counts": "{c3} above, {c2} at, {c1} below or none",
+  "key_title": "Basic minimum wage under state law",
+  "dc": "DC"
+ },
+ "notes_internal": [
+  "DR-243 and ruling (b): January 1 of 2010, 2014, 2019 and 2024 from dol-state-minimum-wage-classes; three classes in sequential steps 1 (with the edge), 3 and 5; one key; each panel named with its date and counts: 2010, 15 above, 26 at, 10 below or none; 2014, 24, 19, 8; 2019, 30, 14, 7; 2024, 31, 13, 7, DC counted with the states and above in every panel (check S84 in cartographer_round3_derive.py --figures).",
+  "The first note is the sourced sentence DR-243 asks for, its figures read by script from Atlas V7 claim CL1516 in work/extract/atlas-v7-data.json (30 states and DC above, 13 at, Georgia and Wyoming at $5.15, five with no law; snapshot October 15, 2026).",
+  "Ruling (a): no named mark; four panels."
+ ],
+ "formats": {
+  "panel": "year"
+ }
+}

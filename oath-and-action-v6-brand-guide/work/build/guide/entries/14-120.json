@@ -1,0 +1,35 @@
+{
+ "id": "14.120",
+ "title": "Use a county choropleth for a pattern across thousands of places, and rank none of them.",
+ "rule": [
+  "Shade every county by its class in four sequential steps, with no county lines, the state lines thin and gray, and a county with no estimate unshaded with an edge, named in a note. Set classes wide against the typical county’s margin of error, and say in a note what share of counties could fall in the next class, so the map reads as a pattern (Rule 14.9). Name no county in words unless its gap passes its margin. Put the national figure above the map, group the table by state and give every county with its margin in the download."
+ ],
+ "use_when": "The reader asks how a figure varies across the whole country, place by place, and the pattern matters more than any one county.",
+ "use_instead": [
+  {
+   "when": "A figure by state",
+   "rule": "14.117"
+  },
+  {
+   "when": "A count, such as jobs, where people or work cluster",
+   "rule": "14.122"
+  }
+ ],
+ "why": {
+  "text": [
+   "Counties show the pattern inside the states, such as cities against their rural neighbors. Small counties carry wide margins, so a county map answers “where” in broad strokes and leaves exact figures to the table."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S81",
+ "tier": "extended",
+ "tokens": [],
+ "related": [
+  "14.9",
+  "14.117",
+  "14.13"
+ ],
+ "builders": "Form county-choropleth: node work/build/chart-kit/oa-chart.mjs build s81; encode id (the geoid, in the layer’s order) and cls (each county’s class, written by a derive script so the page carries one small number a county); table.group groups the table by state, and the CSV export lists every county.",
+ "correct": null,
+ "failure": null
+}

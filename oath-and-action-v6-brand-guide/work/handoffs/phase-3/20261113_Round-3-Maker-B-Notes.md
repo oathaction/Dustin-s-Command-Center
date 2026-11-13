@@ -51,6 +51,7 @@ In progress (02:20). The six forms are written and on the engineer's R3-5 parts 
 - **RB3-D1, S74's chips (D3-1097).** Ruling (b) asked for the connection IDs in the table as typed chips; for the plate's weight they move to the CSV export (`link_ids`) with note 4 saying so. Please sign off, or say which cut you would rather make.
 - **RB3-D2, S75's Senate bills.** Change 6 asked for the other chamber's bills in the table; the table lists pairs (R3-6) and a Senate bill pairs with no House bill, so note 2 lists the eight by number.
 - **RB3-D3, S73's table grouped (D3-1097).** One row for each node drawn and each refund; the 51 state party committees appear in the CSV export with their amounts and report lines. Ruling (b) said "the table lists each recipient"; please sign off the download carrying them.
+- **RB3-D4, S75's key.** Ruling (b) named a key of 1, 10 and 30 backers. At a third of a pixel a backer an arc of one or two members would draw under a pixel, so every arc takes 1 px at least, and the key starts at 3 (1 px, where widths turn true), then 10 and 30, with the line "An arc of one or two members draws at the width of three." Please sign off, or ask for a wider unit (half a pixel a backer puts the widest arc at 17 px).
 
 ## Requests to the editor
 
@@ -59,6 +60,24 @@ In progress (02:20). The six forms are written and on the engineer's R3-5 parts 
 
 ## For the main session
 
+- RB3-G1 and RB3-G2 landed; the research lead's data check passed both derived files (relayed). Q-18 (S65's CMS figures against V7 I062) is the main session's open question; S65 prints CMS's figures and period only.
+- `phase3_ch14_build.py --rounds 1,2,3` rewrote the generated chapter files (`work/build/guide/chapters/14-data-visualization.json`, `entries/14-example-log.json`, `specimens/manifest-data-visualization.json`), as the main session asked; the default run builds rounds 1 and 2 only.
+
 ## Tested
 
+- `node work/build/chart-kit/oa-chart.mjs build s65 s73 s74 s75 s76 s77 --widths 1440,390,328,288` with the sweep on (every whole width from 256 to 720 px): 6 of 6 PASS, 0 faults, six check files read (`kit-final/sNN/sNN-check.json`, each `faults` empty); S75 and S76 rebuilt the same way after their last form changes, PASS. After S65's last note change, `oa-chart.mjs check` on all six: PASS.
+- Looked at by eye, from the exports and page captures: all six at 720 px Newsprint, at 296 px Newsprint and 256 px Charcoal (drawing exports, side by side), and at 358 px on both grounds during drafting; grayscale at 1440 px for S74 and S76 and at 390 px Charcoal for S65. Fixed from them: S65's left baseline through the names; S73's boxes too narrow for their words at 656, 358 and 256 px (side by side from 680 px, headings under 420 px), "$$81,000" and the key without its dollar sign; S74's "From" and "To" touching on a phone, the gray counts in the authority cells; S75's named key words in the secondary ink; S76's figures past the edge at 256 px, a group name's wrap at 299 to 320 px (the sweep), steep bands (node taller, 440 px at a desk); S77's who-acts words.
+- `python3 -I work/build/scripts/phase-3/maker_b_round3_derive.py --check`: 0 faults (both derived files); `--figures`: 0 faults, checks S65 and S73 to S77, every figure in the titles, notes, alts and chart notes against the data (rewritten for RL-3a and the 273.2(i) point).
+- The six sketches: 1,963 to 2,987 bytes; rendered in Chromium (Playwright) with `tokens.css` and `kit.css` on Newsprint and Charcoal and in grayscale at device scale 2, looked at; every shape's box inside the drawing after the survival curve's label moved (`getBBox` against the viewBox); classes only, no `style` and no literal color; each first `<desc>` is its entry's `sketch_alt`.
+- `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py --rounds 1,2,3`: 128 rules, 114 entries, 84 chart plates, 0 faults (earlier runs showed only the cartographer's then missing entries).
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide3/guide.html`: exit 0, 11,216,709 bytes, 344 rules. Plate weights from its report: S65 5,396; S73 8,813; S74 10,940; S75 7,159; S76 6,488; S77 6,630 bytes, each under D3-1097's 13,852.
+- My specs and entries scanned by script for em dashes, U+2011, straight apostrophes, ink words (dark, light) and "subject ink" outside builders' lines: none.
+- Forms' sizes (bytes, unminified): `funnel` 6,587; `network-diagram` 8,381; `adjacency-matrix` 7,046; `arc-diagram` 5,594; `sankey` 7,524; `journey-map` 6,228.
+
 ## Not tested
+
+- The quick guide check: my first run was cut off by its own 15-minute limit (exit 124), so it does not count; a second run on `guide3` is under way (see below when it lands).
+- My entries in the guide page at any width (read from the files only); the six plates inside the guide were not captured.
+- Forced colors, print and 200 percent text beyond the kit's emulated checks; no screen reader or real device.
+- Grayscale of S73, S75 and S77 at desk widths (each draws one ink plus gray, or one ink).
+- CMS's own wording for a procedural reason (RB3-R2) and the research lead's 273.2(i) reading, which I applied as relayed without reading the rule myself.

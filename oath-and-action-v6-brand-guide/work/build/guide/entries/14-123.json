@@ -1,0 +1,39 @@
+{
+ "id": "14.123",
+ "title": "Use small-multiple maps to show how a pattern changed across a few dates, one map each.",
+ "rule": [
+  "Draw the same map at each date, two to a row, in the same classes, inks and key, and name each panel with its date and its counts. Keep to a few dates spaced at a stated interval, all on one as-of day, and keep a period whole (Rule 14.10). Leave codes off the small panels and let the table give each state’s figure at each date."
+ ],
+ "use_when": "The reader asks when and where something spread, such as states raising their minimum wage above the federal floor.",
+ "use_instead": [
+  {
+   "when": "One date, on a larger map",
+   "rule": "14.117"
+  },
+  {
+   "when": "How far each state moved between two dates",
+   "rule": "14.115"
+  },
+  {
+   "when": "The count over every year, as a line",
+   "rule": "14.29"
+  }
+ ],
+ "why": {
+  "text": [
+   "Side by side, the same map at four dates shows a spread a reader can follow from one panel to the next. Counts under each panel give the change in numbers as well as in shade."
+  ],
+  "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+ },
+ "specimen": "S84",
+ "tier": "extended",
+ "tokens": [],
+ "related": [
+  "14.8",
+  "14.10",
+  "14.117"
+ ],
+ "builders": "Form small-multiple-maps: node work/build/chart-kit/oa-chart.mjs build s84; encode code, panel (the date column) and category; labels.categories sets each class’s words in the key’s order, labels.panel_title and panel_counts each panel’s name and counts.",
+ "correct": null,
+ "failure": null
+}
