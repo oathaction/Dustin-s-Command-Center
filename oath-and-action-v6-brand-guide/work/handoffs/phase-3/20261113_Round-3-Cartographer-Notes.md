@@ -106,6 +106,40 @@ Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map 
 
 - My entries placed in the guide page, by eye; forced colors, print and 200 percent text beyond the kit's emulated checks; screen readers and real devices.
 
+## Sign-off fixes
+
+From the data lead's "Sign-off, cartographer" (C-1 to C-4, D-1) and the main session's D3-1100, after the editor's words pass. I read the editor's log first and kept all 30 of its changes but one: S79's `labels.point` (below).
+
+### Items
+
+- **C-1, S80 and S82.** The four margin classes take sequential Verdigris steps 2 to 5 (`seq-2` to `seq-5`), every won seat or district with its 1 px context edge; the other party's seats stay ghost outlines (inset on S82); dots and rings take the step's own label ink (`on-seq-N`); keys follow. S82's state codes now sit over the other party's outlines only, since words over a filled step fail the half-under check. Entry 14.119 takes the data lead's words ("the margin in steps of one ink, the lightest still a clear fill"); S82's alt says "four steps of one ink".
+- **C-2, S84 at 256 px.** The choropleth's key (S78, S81 and S84 share it) now wraps a label too long for its row and starts the next row under its last line.
+- **C-3, S84's claim ID.** Request C-E6 to the engineer, below; until it lands, note 1 keeps "claim CL1516" in words.
+- **C-4 and D3-1100, land that carries a shape.** S16: in a clean build at 1440 px the land of Alaska and Hawaii is drawn, as it is in the data lead's own files (its page captures and SVG exports in `data-lead/kit-r3c/s16/` show both). What differs is ink: the land measures 1.17 to 1 against the ground, and Alaska and Hawaii have no inner border to carry them, so on Charcoal they all but vanish. The bubble map now draws the land's edge, 1 px in the context ink, from the 2024 states layer's coast (cut at the frame's left edge, as the land is), and frames Alaska and Hawaii with `K.parts.map_insets`, as S78, S81, S83 and S84 draw them. The locator's inset takes the same 1 px land edge; its main view already edges California. Words, data and inks of S16 are unchanged (ruling (e)): the edge and frames are placement of the outlines.
+- **D-1, sketch 14.124.** The misleading half draws in gray: the same 12 invented places, each filled whole by its winner with no margin, Party A in the darkest gray step and Party B in the lightest with its edge, the key reading "Party A, shown red" and "Party B, shown blue". The caption (`sketch_alt`, the first `<desc>`) starts "Drawn here in gray: a map shaded red for one party and blue for the other". The better half follows C-1 (`data-label="Panels by party"`). 3,796 bytes; every word measures 5.49 to 1 or more on Newsprint and 7.26 on Charcoal by the guide check's own background rule. Entry 14.124 says "the margin in steps of one ink".
+- **S79's red point (the editor's change).** The editor changed `labels.point` from "Lake Isabella CDP" to "Lake Isabella" for H02. That key is the data value that picks the red point's row, not printed words, so no point took the red. Restored; the plate already prints "Lake Isabella" through `labels.names`, and the table's place column now prints "Lake Isabella, a census-designated place" and "Bakersfield, a city", so "CDP" never prints unexplained.
+
+### Routine calls
+
+- D3-xxx | S80's and S82's margins on sequential steps 2 to 5 with the context edge on every won seat; codes over outlines only | The data lead's C-1, correcting ruling (b)
+- D3-xxx | The choropleth key wraps a long label and starts the next row under it | C-2: S84's longest class label at a 224 px plate
+- D3-xxx | Land that carries a shape takes a 1 px context edge, and Alaska and Hawaii their thin frames, on every map of the 2024 outlines (S16's bubble map and S79's inset join S78, S81, S83 and S84) | D3-1100: the land ink measures 1.17 to 1; one treatment for every map
+- D3-xxx | The avoid sketch's misleading half in gray, its colors named in the key and caption | D-1 (DR-48, DR-58)
+- D3-xxx | S79's `labels.point` stays the Gazetteer's name; the table words print the place's kind | The key selects a row; H02 is met in printed words
+
+### Requests to the engineer
+
+- **C-E6, `checks.js` `v7()`: atlas claims as IDs.** The atlas holds its claims under `claims` (`claims.CL1516`), which `v7()` does not index, so a spec's `v7.ids: ["CL1516"]` fails "v7: ID CL1516 is not in Atlas V7" and no chip can print. Please add `Object.keys(d.claims).forEach(k => add(k, 'Claim'))` (or the type word Rule 13.9 gives a claim); then S84's note 1 takes the typed chip (C-3).
+
+### Requests to the editor
+
+- Rule 14.7's spec row "Seats on a map" says the margin takes gray steps; C-1 moves S80 and S82 to steps 2 to 5 of one sequential ink, so the row needs the same change. Entry 14.119's new words are the data lead's ("the lightest still a clear fill"); "lightest" is an ink word that swaps on Charcoal (D3-1042), so word it as you see fit.
+- S79's `labels.point` is a data value; please leave it as the Gazetteer prints it.
+
+### Tested
+
+(Written as each run ends.)
+
 ## Files
 
 Created: `work/build/chart-kit/forms/choropleth.js`, `locator-map.js`, `district-map.js`, `county-choropleth.js`, `district-tile-map.js`, `dot-density-map.js`, `small-multiple-maps.js`; `work/build/chart-kit/specs/s78.json` to `s84.json`; `work/build/guide/entries/14-113.json` to `14-124.json`; `work/build/guide/specimens/s-14-113-sketch.html`, `s-14-124-sketch.html`; `work/build/scripts/phase-3/cartographer_round3_derive.py`; `work/build/data/census-gazetteer-2024-cd119-tile-layout`, `clerk-house-results-2024-classes`, `census-acs5-county-median-household-income-classes` and `census-cbp-county-employment-dots` (each `.csv` and `.meta.json`); this notes file.

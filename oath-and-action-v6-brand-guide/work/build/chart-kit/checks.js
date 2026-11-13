@@ -48,6 +48,8 @@ function v7() {
   Object.keys(d.deliveryLog).forEach(k => add(k, 'Delivery log'));
   d.domains.forEach(x => add(x.id, 'Domain'));
   d.overlays.forEach(x => add(x.id, 'Overlay'));
+  // round 3 (the data lead's C-3): the atlas's claims (CL...), so a claim printed in words takes its typed chip
+  Object.keys(d.claims || {}).forEach(k => add(k, 'Claim'));
   V7 = { data: d, ids, snapshot: d.meta.snapshot };
   return V7;
 }
@@ -717,9 +719,9 @@ function to_csv(rows, columns) {
 }
 
 function id_types() {
-  // the type word each chip carries (H11): Variable, Connection, Loop, Reform, Issue
+  // the type word each chip carries (H11): Variable, Connection, Loop, Reform, Issue, and since round 3 Claim (C-3)
   const out = {};
-  for (const [k, t] of v7().ids) if (['Variable', 'Connection', 'Loop', 'Reform', 'Issue'].indexOf(t) >= 0) out[k] = t;
+  for (const [k, t] of v7().ids) if (['Variable', 'Connection', 'Loop', 'Reform', 'Issue', 'Claim'].indexOf(t) >= 0) out[k] = t;
   return out;
 }
 

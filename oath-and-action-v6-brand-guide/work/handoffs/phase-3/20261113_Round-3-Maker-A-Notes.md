@@ -93,3 +93,38 @@ Created: `work/build/chart-kit/forms/process-diagram.js`, `decision-tree.js`, `w
 Created and removed (a snapshot commit caught them): `work/build/data/clerk-house-committees-119-grouped.*`, `congress-hr5371-roll-calls-grouped.*`.
 Written by running the engineer's generator, not by hand: chapter 14's JSON, its manifest, the example log and the `s-14-sNN.html` fragments.
 Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c155381-70e7-5490-bd84-f6f867d97cb7/scratchpad/phase-3/round-3/maker-a/` (kit-out, kit-final, guide.html, captures, contact sheets, lint and parity tools).
+
+## Sign-off fixes
+
+November 13, 2026, after the data lead's "Sign-off, maker A" (MA-1 to MA-8, with Q-A1 answered: the open diamond).
+
+| Item | Spec or file | Done |
+|---|---|---|
+| MA-1 | S66 title, alt | "and Congress and the President can strike the rule down"; the alt says a joint resolution Congress passes and the President signs, or that survives a veto |
+| MA-2 | S66 branch, table, alt | White House review reads "Before steps 2 and 4, for significant rules"; the table's "Then" for it reads "Step 2, and again before step 4, the final rule"; the alt says review comes before the proposed and again before the final rule |
+| MA-3 | S69 grade line | "Documented: the Clerk of the House’s committee list of November 3, 2026" |
+| MA-4 | S69 note 2 | "The Clerk’s file lists the select subcommittee on January 6, 2021, as a committee, and the chart follows it." ("of its own" dropped to keep the plate within 13,852 bytes) |
+| MA-5 | S70 title | "The 94 district courts try federal cases, an appeal goes to the court of appeals for the region, and the Supreme Court sits over all 13 courts of appeals." |
+| MA-6 | S72 table; entry 14.102 | A column "Voted the other way or did not vote" names each member whose vote differs from their party's most common vote in that chamber, with state and recorded vote (A-E6, `odd` and `with`), both independents where they split: 20 names; the caption says every member not named voted with most of their party and the CSV file lists all 533; the entry adds the data lead's line |
+| MA-7 | S68 lines, notes; entry 14.98 | Lines of authority end in Rule 15.5's open diamond through `K.parts.link(..., {arrow: 'diamond'})` (A-E4; my in-form diamond, drawn while it landed, is gone); note 1 and the chart note say a line ending in an open diamond is a line of authority; the entry takes the data lead's words |
+| MA-8 | S70 table | A column "States and territories" lists each group's places once, in the drawing's order (A-E5, `distinct`) |
+
+### Routine calls
+
+- D3-xxx | S72's list prints the record's names, so two House names that carry their state ("Davis (NC)", "Golden (ME)") print it twice until group cells take the spec's typography (A-E7); S72's two replace pairs are set and take effect then | The record's words stay as stored in the data; the fix belongs in the printed words
+- D3-xxx | S70's row for the Supreme Court as the court of appeals' destination lists every circuit's places, "All Federal judicial districts" among them | `distinct` reads the field as stored; the row is the Supreme Court's reach, and its 13 courts and 179 judgeships sit beside it
+- D3-xxx | S69's words trimmed to hold 13,851 bytes after note 2: caption, measure line ("the U.S. House"), phone note, chart note, alt (drops "from Agriculture to Ways and Means") | D3-1097: every plate at or under 13,852
+
+### Tested
+
+- `oa-chart.mjs build` with the sweep and PNGs at 1440, 390, 328 and 288 px pages, both grounds, after the last change (S66 to S72 into `kit-signoff`): results below.
+- `maker_a_round3_derive.py --figures`: 35 of 35 (S66's and S70's checked phrases kept: "five steps", "94 district courts", "13 courts of appeals"; S72's counts and names read from the file by script for MA-6, the 20 names equal the data lead's list).
+- Words lint on the seven specs and eight entries: no dash, U+2011, straight quote, banned word or studio code.
+- Strict build (`guide-final.html`): exit 0, no warning, 11,226,900 bytes; share per plate 14,092 for the 13 to come. Plates: S66 9,357; S67 12,495; S68 8,749; S69 13,851; S70 10,605; S71 11,399; S72 11,508 bytes.
+- `phase3_ch14_build.py --rounds 1,2,3`: my rules clean; its two faults are the cartographer's sketch 14.124, mid-edit.
+- Looked at: S68's diamonds at 1440 px Newsprint and 358 px Charcoal (drawn in-form first, then on the kit's part, its path read from the SVG); S72's and S70's grouped tables read from the build pages.
+
+### Not tested
+
+- The quick guide check after these fixes (no sketch changed since its run; the tables and words changed).
+- Captures of every touched spec at all four widths by eye: S68 looked at; S66, S69, S70 and S72 checked by the build and their words read, not re-captured by eye.
