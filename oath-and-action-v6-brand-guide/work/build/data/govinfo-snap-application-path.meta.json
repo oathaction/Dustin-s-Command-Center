@@ -1,0 +1,70 @@
+{
+ "file": "govinfo-snap-application-path.csv",
+ "kind": "derived",
+ "publisher": "Office of the Federal Register and U.S. Government Publishing Office, Electronic Code of Federal Regulations",
+ "title_or_table": "Supplemental Nutrition Assistance Program, application processing, 7 CFR 273.2: the steps in reading order, each with the step that follows it",
+ "table_id": "7 CFR 273.2 (c), (e), (f), (g) and (i)",
+ "url": [
+  "https://www.ecfr.gov/api/renderer/v1/content/enhanced/current/title-7?part=273&section=273.2",
+  "https://www.govinfo.gov/content/pkg/CFR-2025-title7-vol4/xml/CFR-2025-title7-vol4-sec273-2.xml",
+  "https://www.fns.usda.gov/snap/applicant-recipient"
+ ],
+ "observation_period": "Regulation as eCFR printed it, up to date as of November 9, 2026",
+ "geography": "United States; states run SNAP within these rules",
+ "universe_or_base": "A household’s path from application to benefits under the federal rule",
+ "unit": "steps; days",
+ "date_retrieved": "2026-11-12",
+ "vintage": "eCFR, title 7 up to date as of November 9, 2026; checked against the 2025 annual edition on govinfo",
+ "qualification": "The times are the regulation’s limits, not measured waits; states may move faster, and some miss the limits. The interview rule allows phone interviews and waivers under 273.2(e)(2).",
+ "columns": {
+  "order": {
+   "type": "integer",
+   "description": "display order"
+  },
+  "step": {
+   "type": "text",
+   "description": "step name, plain words"
+  },
+  "path": {
+   "type": "category",
+   "description": "main (every rule) or branch (some rules, or a way out)"
+  },
+  "path_words": {
+   "type": "text",
+   "description": "who takes the step, in words: every application, or the branch with its condition"
+  },
+  "who_acts": {
+   "type": "text",
+   "description": "who acts at this step"
+  },
+  "time_limit": {
+   "type": "text",
+   "description": "the longest time the regulation allows, not a measured wait"
+  },
+  "next_step": {
+   "type": "text",
+   "description": "the step that follows, named, in reading order (contract R3-6)"
+  },
+  "what_happens": {
+   "type": "text",
+   "description": "what happens, the research lead’s plain summary of the provision"
+  },
+  "legal_basis": {
+   "type": "text",
+   "description": "the provision"
+  },
+  "source_words": {
+   "type": "text",
+   "description": "the provision’s own words where it sets a test or a time"
+  }
+ },
+ "printed_source_line": "Source: Office of the Federal Register and U.S. Government Publishing Office, Electronic Code of Federal Regulations, 7 CFR 273.2, SNAP application processing, as in force November 9, 2026, United States. Retrieved November 12, 2026. Times are the regulation’s limits; each step’s next step named by Oath & Action.",
+ "ledger_row": "P7-208",
+ "domain": "D04",
+ "domain_note": "V7 I062, \"Delivering services\" (data lead change 3)",
+ "states": [],
+ "derived_from": [
+  "govinfo-snap-application-steps.csv"
+ ],
+ "derivation": "The rows of govinfo-snap-application-steps in reading order: the main path by its order, then the branch. next_step names the main step that follows each step (the first also names the branch, with the condition the branch summary opens with); the last step of the path and of the branch says it ends. path_words puts the path column in words. No other value changes."
+}

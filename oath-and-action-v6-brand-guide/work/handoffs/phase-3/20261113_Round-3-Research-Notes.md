@@ -51,6 +51,11 @@ For the engineer and the cartographer: Alaska's Aleutians west of 180 degrees ca
 - D3-xxx | Each boundary file keeps every feature the Bureau's file holds, Puerto Rico and the delegate areas included | C1 freezes a table as published; a map's CSV chooses what it draws
 - D3-xxx | Each boundary sidecar quotes the Bureau's terms in `terms_of_use`: the zip metadata's use and access constraints word for word, the product page and the description page | The brief asks for the terms in each sidecar; the metadata carries the formal terms, and neither page states a license
 - D3-xxx | States, counties and nation take domain `all`, the districts D02 and California's counties D10, as the locator's Gazetteer row does | A boundary file carries no data values and serves each map's own domain
+- D3-xxx | The Ballotpedia sidecar's `publisher` reads "Ballotpedia, a secondary source" | The words the printed line and D2-99 already use; the two-dataset check reads the publisher, and S07's one-dataset check does not
+- D3-xxx | The county income file's national row goes first with code `US` | The kit and the broadband and business formation files carry the nation that way
+- D3-xxx | County noise flags come from the Bureau's downloadable county file, not the API's code | The file's record layout defines its flags and its counts equal the API's in every row; the API defines no values for its code
+- D3-xxx | A recipient's name in the cycle is the name its joint fundraising committee wrote on its last itemized payment on or before November 5, 2024 | One date read the same way for every recipient; the FEC's 2024 committee history already shows a change made after the election
+- D3-xxx | The JFC amounts stay as the FEC's aggregate gives them, line 22 and two line 28C refunds, with line 21B in its own columns | D3-476 freezes figures; the aggregate is the commission's own and reads the same lines for both nominees, and the new columns show what it leaves out
 
 ## Requests
 

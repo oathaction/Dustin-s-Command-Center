@@ -1025,6 +1025,17 @@ async function self_test() {
     { const a = drawn(c => { P.flow_band(c, 10, 10, 300, 60, 20, { fill: 'band', edge: false }); });
       const b = drawn(c => { P.flow_band(c, 10, 10, 300, 60, 20, { fill: 'band' }); });
       pass(a.f.some(x => x.indexOf('band:') >= 0) && !b.f.some(x => x.indexOf('band:') >= 0), 'R3-5: a light flow band with no edge fails 3 to 1, and passes with its edges'); }
+    { // R3-3 and C-E1: a grouped table prints one row a group with its counts, and the island reads back to every row
+      const sp = { id: 'T', table: { columns: [{ field: 'g', label: 'G' }], group: { by: 'st', sort: 'key', columns: [{ label: 'State', agg: 'key', state_name: true }, { label: 'Seats', agg: 'count' },
+        { label: 'Won by A', agg: 'count_eq', field: 'w', value: 'A' }, { label: 'Close', agg: 'count_in', field: 'm', to: 5 }, { label: 'Least', agg: 'min', field: 'm', format: 'number:1' }, { label: 'Closest', agg: 'min_name', field: 'm', name: 'g' }] } } };
+      const rows = [{ st: 'MI', g: 'MI-01', w: 'A', m: 3.2 }, { st: 'MI', g: 'MI-02', w: 'B', m: 12 }, { st: 'AL', g: 'AL-01', w: 'A', m: 40 }];
+      const h = K.table_html(sp, rows, { lean: true });
+      pass(/<tr><th scope="row" class="t">Alabama<\/th><td>1<\/td><td>1<\/td><td>0<\/td><td>40\.0<\/td><td class="t">AL-01<\/td><\/tr><tr><th scope="row" class="t">Michigan<\/th><td>2<\/td><td>1<\/td><td>1<\/td><td>3\.2<\/td><td class="t">MI-01<\/td><\/tr>/.test(h)
+        && K.table_rows(sp, rows).rows.length === 3 && K.rows_from_table(null, sp, { csv: 'g,m\nMI-01,3.2\n', columns: { g: { type: 'text' }, m: { type: 'number' } } }).length === 1,
+        'R3-3: a grouped table prints a row a group with its counts (count_eq: C-E1) and reads its rows from the island' + (/Alabama/.test(h) ? '' : ': ' + h.slice(0, 200))); }
+    { // R3-3: a one-column island keeps a row whose value is empty
+      const back = K.parse_csv(C.to_csv([{ v: 1 }, { v: null }, { v: 3 }], ['v']));
+      pass(back.length === 3 && back[1].v === '', 'R3-3: a one-column CSV keeps its empty cells as rows'); }
     { // RB3-G1: two bands side by side at one height lie on the ground; a band inside a wider one across and down lies on it
       const side = drawn(c => { P.flow_band(c, 10, 10, 150, 10, 40, { fill: 'light-fill' }); P.flow_band(c, 200, 10, 340, 10, 40, { fill: 'light-fill' }); });
       const held = drawn(c => { P.flow_band(c, 10, 10, 340, 10, 60, { fill: 'light-fill' }); P.flow_band(c, 60, 20, 300, 20, 20, { fill: 'light-fill' }); });
