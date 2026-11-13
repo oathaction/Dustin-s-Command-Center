@@ -23,8 +23,8 @@
       ['chamber', 'party', 'vote', 'roll', 'date', 'question', 'result'].forEach(function (k) { E[k] = c.field(k); });
       var u = c.t('unit-size'), gp = c.t('unit-gap'), pitch = u + gp, size = c.size('label'), tick = c.size('tick');
       var votes = (L.votes || []).map(String), vw = L.vote_words || {}, pw = L.party_words || {}, KY = L.key || {};
-      // words built here hold their dates with no-break spaces themselves, since the page carries the data's words already
-      // set and does not set them again (parity)
+      // words set here once, by the spec's typography or the guide's own (curly quotes, held dates), so Node and the page,
+      // whose rows may arrive unset, print and measure the same words
       var ty = function (s) { return K.typeset({ typography: c.spec.typography || { curl_quotes: true, nbsp: true } }, String(s === null || s === undefined ? '' : s)); };
       var fill = function (t, o) { return String(t || '').replace(/\{(\w+)\}/g, function (_, k) { return o[k] === undefined ? '' : String(o[k]); }); };
       var nm = function (pair, n) { pair = [].concat(pair || ''); return n === 1 ? pair[0] : (pair[1] || pair[0]); };
