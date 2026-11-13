@@ -108,25 +108,22 @@
   var key = function (c, y, steps, words, extra) {
     var L = c.labels, W = c.width, sw = 14, x = 0, ky = y;
     if (L.key_title) { var kt = c.text(0, ky + 13, L.key_title, { role: 'eyebrow', weight: 700, fill: 'secondary', max: W }); ky = kt.bottom + 8; }
-    var by = ky + 13;
-    words.forEach(function (w, i) {
-      var tw = c.measure(w, 'tick'), need = sw + 6 + tw;
-      if (x > 0 && x + need > W) { x = 0; by += 22; }
-      c.rect(x, by - 11, sw, sw, { fill: steps[i], mark: false });
-      if (i === 0) c.rect(x + 0.5, by - 10.5, sw - 1, sw - 1, { stroke: 'context', width: 1, mark: false });
-      var tb = c.text(x + sw + 6, by, w, { role: 'tick' });
+    var by = ky + 13, rowb = by;
+    // one swatch and its words a step, in rows that wrap; a label too long for the row wraps under itself, and the next
+    // row starts under its last line (the data lead's C-2: S84's longest label at 224 px)
+    var items = words.map(function (w, i) { return { w: w, fill: steps[i], edge: i === 0 }; }).concat((extra || []).map(function (e) { return { w: e.words, fill: e.fill, edge: true }; }));
+    items.forEach(function (it) {
+      var need = sw + 6 + c.measure(it.w, 'tick');
+      if (x > 0 && x + need > W) { x = 0; by = rowb + 19; }
+      c.rect(x, by - 11, sw, sw, { fill: it.fill, mark: false });
+      if (it.edge) c.rect(x + 0.5, by - 10.5, sw - 1, sw - 1, { stroke: 'context', width: 1, mark: false });
+      var tb = c.text(x + sw + 6, by, it.w, { role: 'tick', max: W - x - sw - 6 });
+      rowb = Math.max(rowb, tb.bottom);
       x = tb.x + tb.w + 16;
-    });
-    (extra || []).forEach(function (e) {
-      var tw = c.measure(e.words, 'tick'), need = sw + 6 + tw;
-      if (x > 0 && x + need > W) { x = 0; by += 22; }
-      c.rect(x, by - 11, sw, sw, { fill: e.fill, mark: false });
-      c.rect(x + 0.5, by - 10.5, sw - 1, sw - 1, { stroke: 'context', width: 1, mark: false });
-      var tb = c.text(x + sw + 6, by, e.words, { role: 'tick' });
-      x = tb.x + tb.w + 16;
+      if (tb.lines > 1) { x = 0; by = rowb + 19; }
     });
     c.key(steps.slice(0, words.length).map(function (s, i) { return { fill: s, ordered: true, outline: i === 0 }; }));
-    return by + 12;
+    return Math.max(by, rowb - 3) + 12;
   };
   var def = K.register_chart({
     form: 'choropleth', name: 'Choropleth', family: 'maps',
