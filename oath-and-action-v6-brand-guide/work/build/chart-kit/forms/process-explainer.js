@@ -92,8 +92,9 @@
       var y = 0;
       if (wide) {
         // the lanes' heads, a rule under them, and a hairline between lanes the height of the steps
-        var hb = 0;
-        lanes.forEach(function (l, i) { hb = Math.max(hb, c.text(lx[i], c.size('tick') * 0.95, ty(l.label || ''), { role: 'tick', weight: 700, fill: 'label', max: lw[i] }).bottom); });
+        // the heads share a last baseline, so a head on two lines rises above the others
+        var hb = 0, hl = Math.round(c.size('tick') * 1.25), hn = lanes.map(function (l, i) { return c.wrap(ty(l.label || ''), 'tick', lw[i], 700).length; }), hm = Math.max.apply(null, hn);
+        lanes.forEach(function (l, i) { hb = Math.max(hb, c.text(lx[i], c.size('tick') * 0.95 + (hm - hn[i]) * hl, ty(l.label || ''), { role: 'tick', weight: 700, fill: 'label', max: lw[i], leading: hl }).bottom); });
         y = Math.ceil(hb + 6);
         var rule_y = y;
         y += 14;
@@ -141,9 +142,10 @@
         // one column: the steps down a heavy line at the left; a branch set in under the step it replaces
         if (!c.phone) c.arrange('phone');
         var spine = pad + chip / 2, ind = 28, prev = null;
+        // steps that share a row, like a branch, are set in from the line, each joined to it by its own arrow
         rows.forEach(function (row) {
           row.items.forEach(function (r) {
-            if (row.main) {
+            if (row.main && row.items.length < 2) {
               var p = words(r), h = fit(p, W);
               if (prev !== null) link([[spine, prev], [spine, y]], true);
               box(r, { x: 0, y: y, w: W, h: h, p: p });
@@ -151,7 +153,7 @@
             } else {
               var p2 = words(r), iw = W - ind, h2 = fit(p2, iw), top = y - rowgap + 16, ly = top + Math.min(22, h2 / 2);
               K.parts.link(c, { x: spine, y: prev }, { x: spine, y: ly }, { stroke: 'subject', width: 2 });
-              link([[spine, ly], [ind, ly]], false);
+              link([[spine, ly], [ind, ly]], row.main);
               box(r, { x: ind, y: top, w: iw, h: h2, p: p2 });
               prev = ly; y = top + h2 + rowgap;
             }

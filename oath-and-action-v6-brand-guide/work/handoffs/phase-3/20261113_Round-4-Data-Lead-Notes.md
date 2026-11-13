@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:00 UTC. D4-1 ruled: S16 takes the code column under 358 px, with two conditions (radii unchanged; the engineer reports the new share).
 - 20:54 UTC. **All seven rulings (a) to (g) are posted.** (d) covers R4-2's measure; S12's capture sign-off and the phone codes follow as they land. Requests R-1 to R-3 to the research lead. Early read of S85, S86 and S89 posted under "Sign-offs" (MA-1 to MA-6, MI-1).
 - 20:52 UTC. (d), R4-2's measure, signed off: the engineer may land the stacked tile; 13,172 bytes a plate is round 4's ceiling once it lands.
 - 20:46 UTC. Rulings (a), (b) and (c) posted: makers may draw.
@@ -102,6 +103,15 @@ Every round 4 title is a **Finding**: each states what a record, a count, a surv
 
 The engineer may land items 1 to 3; the cartographer then writes `s12.json` (`"stage_min": 618` for `"stage": 1024`, the alt and phone words, `notes_internal`). I sign off S12 from the landing build's captures at 1440, 1024, 768 and 390 px on both grounds. The phone codes on S12, S16 and S78 (D3-1553) are signed off as the cartographer reports them.
 
+### D4-1, S16 under 358 px: the code column, (A), ruled (21:00 UTC, for the cartographer and the engineer)
+
+**(A), the column**, with two conditions. I looked at the cartographer's 3x pictures at 326 px on Newsprint, today's (`scratch/exp/s16-o-map.png`) beside the column (`s16-w3-map.png`), with its notes and measures.
+
+- *Why.* D3-1553 allows either a code for every state or a note naming what the drawing cannot code. The column codes all 51, cuts leaders that cross another state's circle from 15 to 11 and the longest leader from 104 to 72 px, and sets the eleven small northeastern codes in north-to-south order, where today MA, NJ and CT run long leaders across New York and Pennsylvania. A reader finds Maine or Delaware on the map itself, not in the table. From 358 px up the drawing is unchanged at all 122 widths, so board 1's phone width keeps its approved placement (D3-1329).
+- *Condition 1, the data.* The column moves outlines, codes and leaders only, under round 3's (e): every bubble's area, the area scale in pixels for each width and the legend's values stay exactly as today at every width the column touches, and the inks and the three named states (Texas, Florida, New York) are untouched. The cartographer confirms by script that each circle's radius at 300, 326 and 357 px equals today's to 0.01 px, and names the check in `notes_internal`. If the narrower map changes any radius, the column waits for me.
+- *Condition 2, the weight.* The form grows 1,395 bytes on the page, which cuts the share per plate by roughly a thirteenth of that once the engineer lands it (my estimate from R4-2's 782 bytes for 63; the engineer's strict build gives the figure). The engineer reports the new share in his notes; that figure, not 13,172, is then round 4's ceiling, and makers read it from the build. Land it only after the stacked tile, so each measure stands alone.
+- S16 goes on board 3's list of changed board 1 drawings, as the cartographer says. C4-E1, the 2 px phone tile gap, changes no figure, ink or word; it is the engineer's to take, and S07 joins board 3's list if the token changes.
+
 ### (f) Rules 15.19 to 15.21: which loop, which reforms (for the systems designer, the accessibility lead and the research lead)
 
 Read by script from `work/extract/atlas-v7-data.json` (`loops`, `links`, `nodes`, `reforms`) and from `phase3_ch15_build.py`'s example log as it stands (27 examples, counted from its `book.log` calls).
@@ -161,6 +171,18 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 
 ## Routine calls
 
+- D3-xxx | No round 4 plate takes the red point | No title names one point among many: the icon array and circles are areas (RF-1), diagrams answer with their path, sets with every item, and S95 keeps S19's subject ink
+- D3-xxx | A set of facts, fields or parts takes no named mark, and its words stay HTML text | Round 4's infographics answer with every item (S60's case) under the brief's call 8
+- D3-xxx | S87 and S88 draw outline circles in the subject ink with the overlap alone in the track ink | Grayscale-proof, one fill on the region the form exists to show, and the pair reads as one file drawn two ways
+- D3-xxx | S94's filled and open squares mark a date with and without a consequence in law | A status of a date, as S19's open dots and DR-266's array use it; no vote is drawn
+- D3-xxx | Round 4's in-force and snapshot dates print once, in the grade line, and S85's source line takes a variant without the snapshot | The brief's call 1 (D3-1327); a retrieval date stays in the source line
+- D3-xxx | R4-2's measure is signed off and 13,172 bytes a plate is round 4's ceiling once the tile lands | DR-261 word for word, D3-1546's planted case caught, S12 at 14,076 under 15,000
+- D3-xxx | 15.20 offers R-03 and R-04 on Loop R4a | The one closed loop whose reforms' targets all sit on it, with both of V7's lists agreeing and two to five choices (Rule 18.3)
+- D3-xxx | 15.19 steps Loop R1 | Rule 18.22's code already steps it (R4-5's one copy), Rule 15.13 teaches its weakest step, and a third R4a plate would pass Rule 01.9 in chapter 15
+- D3-xxx | 15.21 is recommended on Connection L55 | Its record says the model holds no single estimate of the effect
+- D3-xxx | S16 takes the cartographer's code column under 358 px (D4-1, (A)) | Every state coded on the map with fewer and shorter crossing leaders; unchanged from board 1's 358 px up; radii and legend held exactly
+- D3-xxx | A DR-265 title that will not fit wraps, then re-lays, then takes a chip with a keyed title, never cut | One name for each variable wherever a loop is drawn
+
 ## Requests
 
 ### To the research lead
@@ -188,4 +210,13 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 
 ## Tested
 
+- Read by script (`python3 -I`): the plan file's 13 round 4 rows; the ten round 4 data files and their sidecars; `atlas-v7-data.json`'s `loops`, `links`, `nodes` and `reforms` (every loop's reforms against each reform's targets and loops, both lists compared); `14-example-log.json` (97 examples by domain and state); `phase3_ch15_build.py`'s 27 `book.log` examples by domain; the margins of the four coverage regions, every pair's gap against its combined margin; the calendar's 16 events by kind and consequence, and the weekday of each date; the revenue shares' sum; specs S19, S41, S62, S68, S70, S74, S77 and the 22 earlier grade lines for precedent.
+- Read: the brief, CLAUDE.md, my role file, the round 4 data plan with my sign-off, my round 2 and round 3 rulings (principles, RF-1, RF-2, RF-17), D3-1319 to D3-1328, D3-1493, DR-64, DR-93, DR-124, DR-223, DR-229, DR-255 and DR-261 to DR-270, Rules 13.2, 15.11, 15.16, 18.3, 18.8, 18.22 and 18.23, the coverage plan's sections 3.8 and 3.16, the Civic Line inventory row for CL-050 and chapter 10's icon list, and the engineer's R4-2 (its sums checked by hand).
+- Read the first drafts of S85, S86 and S89 with the icon-array and proportional-symbols forms and `named_fill`.
+
 ## Not tested
+
+- No build, capture or browser run of my own yet: no specimen has been drawn for me to look at. Every sign-off below names the widths it looked at.
+- R4-2's bytes are the engineer's measure; I checked its arithmetic, not the minified files.
+- The U.S. Code's currency after its 2024 edition (request R-2).
+- Chapter 15's Rule 01.9 count is read from the generator's source, not from a run of it.

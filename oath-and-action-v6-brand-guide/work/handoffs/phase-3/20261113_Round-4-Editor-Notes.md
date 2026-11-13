@@ -8,6 +8,7 @@ The owners read the four "Words for" sections directly. Each row gives the file,
 
 - 20:41 UTC. Started. Read my role file, `CLAUDE.md`, chapter 02's writing rules, the round 4 brief and my round 3 and board 2 notes. No round 4 spec, entry, sketch or notes file of another owner exists yet. Working tree clean at `829d0db8`. Next: the rest of the brief's "Read first" list, then group lines 9 and 17, then Rule 13.4's plates once the systems designer's DR-265 list lands, and S37 once the data lead rules.
 
+- 20:57 UTC. First looks written for maker A (S85, S86, S87) and the infographics maker (S89 with the data lead's MI-1, S93), read only, under the two "Words for" sections; the data lead's MA-1, MA-3 and MA-6 agree with mine. Rule 13.4 confirmed unchanged under DR-267 (the systems designer's list agrees). Baseline strict build to scratch (`guide0.html`): exit 0, 11,245,723 bytes, 344 rules, 638 specimens; the build's share per plate is 13,188. Requests: ED4-1 (S37) to the data lead, ED4-2 (S93's source variant) to the research lead. Waiting on: the data lead's S37 ruling, the makers' entries, owners reporting finished.
 - 20:49 UTC. Baselines taken: `phase3_ch14_rules_build.py` and `phase3_ch13_build.py` each rerun with no change and write nothing (`git status` unchanged). S37 built as committed to scratch (PASS, 16,065 bytes, 16,815 with its frame), and a scratch preview of its curl (below) for the data lead. Read the data lead's rulings (a) to (c); no ruling on S37 yet. Rule 13.4's two plates print no chain label (below), which the systems designer's list should confirm.
 
 ## Summary
@@ -15,6 +16,8 @@ The owners read the four "Words for" sections directly. Each row gives the file,
 ## Routine calls
 
 - D3-xxx | The brief's "group lines 9 and 16" are read as the lines of the two round 4 families: group 9, proportion and overlap (coverage plan 3.8), and group 17, infographics (coverage plan 3.16), which the plan file and `14-chapter.json` number 17 | The plan file's `groups` give group 17 the family section 3.16 and rules 14.135 to 14.141; group 16 is tables and plain words, built in round 1, and I read its line too
+- D3-xxx | Rule 13.4's two plates stay as built under DR-267, and `phase3_ch13_build.py` is unchanged | They print each loop's own title and each connection's name, the atlas's own, and no chain label or variable name, by my script and the systems designer's scan; DR-267 replaces a label where one prints
+- D3-xxx | S85's "One in ten" stands | S01's approved title says "nine in ten", so the idiom keeps one form across the chapter
 
 ## Group lines 9 and 17
 
@@ -22,7 +25,7 @@ The owners read the four "Words for" sections directly. Each row gives the file,
 
 **What the two plates print today (20:47 UTC, read by script on `s-13-4-correct.html` and `s-13-4-failure.html`).** Each loop prints its chip and its own title in quotation marks (`loops[].title`), then each connection's chip and its own name (`links[].name`), with the grade word on the correct plate. Neither plate prints a variable's name in any form: no chain label (`loops[].chain_labels`) and no variable title (`nodes[].title`), in the visible text, the alt, any `<svg>` (11 and 4 drawings, none with a `<text>`, `<title>` or `<desc>`), or an attribute. A match of every one of the 31 chain labels that differ from their variable's title, as a whole item or a short phrase, finds none in any chapter 13 plate. The only raw substring hit is "Safe seats", which opens Loop R10's own title ("Safe seats shift accountability to small primary electorates") and Connection L08's name ("Safe seats make the primary decisive"); both are the atlas's names for a loop and a connection, which DR-265 and DR-267 leave as they are. So, unless the systems designer's list shows a label I missed, Rule 13.4's plates need no change under DR-267, and I will say so to the data lead rather than add variable names the plates never printed.
 
-**Confirmed (20:53 UTC).** The systems designer's "DR-265 list" (its `dr265_scan.py` over a strict build of HEAD, which masks the atlas's longer names first and matches each label without regard to case, in SVG lines, HTML text, alts, attributes and scripts) finds the same: "Rule 13.4: no chain label prints", and its one request to me says nothing changes unless I read it otherwise. I read it the same way. **`phase3_ch13_build.py` is unchanged under DR-267**, so no plate of Rule 13.4 is re-laid; its plates were looked at in my baseline strict build (under "Tested"). DR-267's words ("print each variable's own title too, words only") replace a label where one prints, and these plates name connections and loops, which keep their atlas names.
+**Confirmed (by 20:57 UTC).** The systems designer's "DR-265 list" (its `dr265_scan.py` over a strict build of HEAD, which masks the atlas's longer names first and matches each label without regard to case, in SVG lines, HTML text, alts, attributes and scripts) finds the same: "Rule 13.4: no chain label prints", and its one request to me says nothing changes unless I read it otherwise. I read it the same way. **`phase3_ch13_build.py` is unchanged under DR-267**, so no plate of Rule 13.4 is re-laid; its plates were looked at in my baseline strict build (under "Tested"). DR-267's words ("print each variable's own title too, words only") replace a label where one prints, and these plates name connections and loops, which keep their atlas names.
 
 ## S37's curled apostrophes (D3-1556)
 
@@ -30,7 +33,7 @@ The owners read the four "Words for" sections directly. Each row gives the file,
 
 ## Words for maker A
 
-### First look (21:02 UTC): S85 and S86 as drafted, read only
+### First look (by 20:57 UTC): S85 and S86 as drafted, read only
 
 Maker A applies these until it reports finished; after that I write any still open straight in (D3-669). Each title's word count is by script; the house limit is under 30 (round 3's RS-4).
 
@@ -46,7 +49,7 @@ Maker A applies these until it reports finished; after that I write any still op
 | S86 | `chart_notes[0]`, second sentence | The federal government and the 50 states print in words, since their circles would draw under a pixel and a few pixels across. | The federal government and the 50 states print in words, since at this scale the federal government’s circle would be under a pixel across and the states’ a few pixels. | The old clause paired two sizes with two subjects a reader has to sort out |
 | S86 | `grade_line` | Documented: the Census Bureau’s 2022 count of every government in the country | Either this or the data lead's "Documented: the Census Bureau’s 2022 Census of Governments" | Both read plainly; the data lead's names the census a reader can look up, so it is the data lead's call |
 
-**S87 as drafted (21:06 UTC), read only:**
+**S87 as drafted (by 20:57 UTC), read only:**
 
 | File | Field | Now | Suggested | Why |
 |---|---|---|---|---|
@@ -58,13 +61,14 @@ Maker A applies these until it reports finished; after that I write any still op
 
 ## Words for the infographics maker
 
-### First look (21:02 UTC): S89 and S93 as drafted, read only
+### First look (by 20:57 UTC): S89 and S93 as drafted, read only
 
 The infographics maker applies these until it reports finished; after that I write any still open straight in (D3-669). Title word counts by script; the house limit is under 30 (round 3's RS-4).
 
 | File | Field | Now | Suggested | Why |
 |---|---|---|---|---|
 | S89 | `title` | A governor or a tribal government’s chief executive asks the President for a disaster declaration, within 30 days of the disaster under the law, and a declaration opens federal help to people and to governments. (35 words) | Under the law, a governor or a tribal government’s chief executive has 30 days from the incident to ask the President for a disaster declaration, which opens federal help. (28) | Under 30 words; "has 30 days under the law" states a limit, as the data lead's (c) and the plan's condition ask; "incident" is the regulation's word and the alt's, where the title said "disaster". The two kinds of help stay in the drawing, the alt and the table |
+| S89 | `chart_notes[0]` (the data lead's MI-1) | Each column is a level of government, or residents, named at its head. Each step’s box spans the levels that act at it. Numbered boxes edged in the text’s ink are the steps every declaration takes, in order; the box with a gray edge is the request some cases make in its place. | Each column is a level of government, or residents, named at its head, and a step’s box spans the levels that act at it. Boxes edged in the text’s ink run in order from the disaster to the help a declaration names; the box with a gray edge is the emergency request some cases make in place of step 3. A denial at step 5 ends the path, and steps 7 and 8 follow only where FEMA names that help for an area. | MI-1: "the steps every declaration takes" was untrue, since a denial ends the path at step 5 and steps 7 and 8 follow only for the help FEMA names. Joining the first two sentences also breaks the run of two "Each…" openers (W13) |
 | S89 | `notes[1]` | Times are limits in law, not measured waits, and FEMA may extend several of them. | Each time is a limit the law sets, and FEMA may extend several of them. The chart measures no wait. | Drops the ", not measured waits" turn (W09); S77's measure line says "the chart measures no wait" in the same family |
 | S89 | `alt` | …within 5 days after the need becomes apparent and no later than 30 days. | …within five days after the need becomes apparent and no later than 30 days. | Numbers under ten in words in an alt (H06) |
 | S93 | `grade_line` | Documented: Public Law 119-12 as the Government Publishing Office publishes it, approved May 19, 2025 | Documented: Public Law 119-12’s first page, as the Government Publishing Office prints it | The data lead's (c): the approval date is a part the page prints and a callout names, so it prints there once, never again in the grade or source line. The sidecar's source line also carries "approved May 19, 2025", so S93 needs a source variant without it (a request to the research lead, below) |
@@ -77,18 +81,18 @@ Nothing yet: no change to S12, S16 or S78 or their entries has landed.
 
 ## Words for the systems designer
 
-- **Rule 13.4 (20:53 UTC).** Your scan and mine agree: its two plates print no chain label, so `phase3_ch13_build.py` stays as it is under DR-267. Thank you for the list.
+- **Rule 13.4 (by 20:57 UTC).** Your scan and mine agree: its two plates print no chain label, so `phase3_ch13_build.py` stays as it is under DR-267. Thank you for the list.
 - Nothing else yet: rules 15.19 to 15.21 have not landed, and I read each DR-265 title change in your generators' words once you report them.
 
 ## Requests
 
 ### Requests to the research lead
 
-- **ED4-2, S93's source line without the approval date (21:02 UTC).** `govinfo-pl-119-12-first-page`'s `printed_source_line` reads "…139 Stat. 55, approved May 19, 2025, first page, United States…". The data lead's (c) prints the approval date once, as the part a callout names, and in neither the grade nor the source line. Please add a variant without it (as `snapshot_once` and `date_in_grade_line` were added before), for the infographics maker to print.
+- **ED4-2, S93's source line without the approval date (by 20:57 UTC).** `govinfo-pl-119-12-first-page`'s `printed_source_line` reads "…139 Stat. 55, approved May 19, 2025, first page, United States…". The data lead's (c) prints the approval date once, as the part a callout names, and in neither the grade nor the source line. Please add a variant without it (as `snapshot_once` and `date_in_grade_line` were added before), for the infographics maker to print.
 
 ### Requests to the data lead
 
-- **ED4-1, S37's curl (D3-1556), ready on your ruling (20:50 UTC).** The facts are under "S37's curled apostrophes": `"typography": {"curl_quotes": true}` changes two drawn row labels and nothing else in the drawing, keeps the CSV as stored, and costs 129 bytes on the page (16,944 with its frame). Please rule in your notes whether I apply it. Once you do, I write the one key, rebuild S37, check the drawings again and list the two labels for board 3.
+- **ED4-1, S37's curl (D3-1556), ready on your ruling (by 20:57 UTC).** The facts are under "S37's curled apostrophes": `"typography": {"curl_quotes": true}` changes two drawn row labels and nothing else in the drawing, keeps the CSV as stored, and costs 129 bytes on the page (16,944 with its frame). Please rule in your notes whether I apply it. Once you do, I write the one key, rebuild S37, check the drawings again and list the two labels for board 3.
 
 ## Tested
 
