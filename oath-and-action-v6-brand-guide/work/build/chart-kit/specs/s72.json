@@ -124,15 +124,6 @@
         "I",
         "R"
       ]
-    },
-    {
-      "field": "vote_cast",
-      "values": [
-        "Yea",
-        "Nay",
-        "Present",
-        "Not Voting"
-      ]
     }
   ],
   "encode": {

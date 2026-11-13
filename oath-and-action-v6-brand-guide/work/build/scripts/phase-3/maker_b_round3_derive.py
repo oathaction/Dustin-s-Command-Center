@@ -277,7 +277,7 @@ def figures():
     sn = ' '.join(meta('cms-medicaid-chip-renewal-funnel')['notes'])
     for piece in ('terminated for failure to submit the renewal form or necessary information', 'did not respond to the State’s request for additional information', 'No record read says how many people ended for a procedural reason were still eligible'):
         same('S65', piece in sn, True, 'the sidecar quotes the rules (BC-S9): ' + piece)
-    want('S65', t, 'a renewal form or information it asked for does not come back; the record does not say whether those people were still eligible', 'note 1, the procedural reason in the rules\' terms (BC-S9)')
+    want('S65', t, 'a renewal form or the information it asked for does not come back, and the record does not say how many of those people were still eligible', 'note 1, the procedural reason in the rules\' terms (BC-S9)')
     same('S65', 2 < fu['ended_procedural'] / fu['ended_ineligible'] < 3, True, 'more than twice (2.30)')
     want('S65', sp['measure_line'], 'shares are of renewals due', 'MB-2')
     same('S65', sp['labels']['named'], ['ended_procedural'], 'the named loss')
@@ -324,6 +324,8 @@ def figures():
     same('S73', len({r['recipient_state'] for r in l22 if r['nominee'] == 'Donald J. Trump' and r['recipient_kind'] == 'state party committee'} - {'DC', 'GU'}), 48, 'Trump: 48 states')
     want('S73', t, 'Harris’s funds paid the state party committees of the 50 states and the District of Columbia, and Trump’s those of 48 states, the District of Columbia and Guam', 'note 3')
     same('S73', sp['labels']['unit'], 4000000, 'unit')
+    want('S73', t, 'and the agreement that formed a fund sets how many committees it pays', 'note 2 (ST-S6)')
+    same('S73', any(w in sp['title'] for w in ('53', 'to two')), False, 'the title sets no one fund\'s reach against another\'s (BC-M1)')
     n22 = [r for r in nodes if r['amount_lines'] == '22']
     nk = lambda r: r['node'] + ' (' + r['nominee'] + ')'
     under = sorted(n for n in {nk(r) for r in n22} if sum(float(r['amount']) for r in n22 if nk(r) == n) < sp['labels']['unit'])

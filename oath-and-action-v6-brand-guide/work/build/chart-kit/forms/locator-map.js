@@ -87,16 +87,28 @@
         var clear = pts.every(function (p) { return p.x + p.r + 4 < g.x || p.x - p.r - 4 > g.x + g.w || p.y + p.r + 4 < g.y || p.y - p.r - 4 > g.y + g.h; });
         if (fits && clear) { kpick = [cp[0] + o[0], cp[1] + o[1]]; krole = role; }
       }); });
-      // else at the county's widest room clear of the places (C-S5: its lower right at a desk)
+      // else anywhere inside the county clear of its edges and the places, nearest its middle (C-S5: its lower right at
+      // a desk), searched on a 2 px grid
+      var fits_at = function (g) {
+        var corners = [[g.x, g.y], [g.x + g.w, g.y], [g.x, g.y + g.h], [g.x + g.w, g.y + g.h]];
+        return polys.some(function (rs) {
+          if (!corners.every(function (q) { return K.in_poly(rs, q[0], q[1]); })) return false;
+          return !rs.some(function (r) { for (var i = 0; i < r.length; i++) { var p1 = r[i], p2 = r[(i + 1) % r.length]; if (K.seg_hits_box(p1[0], p1[1], p2[0], p2[1], g.x, g.y, g.x + g.w, g.y + g.h)) return true; } return false; });
+        });
+      };
+      var kbx = [Infinity, Infinity, -Infinity, -Infinity];
+      polys.forEach(function (rs) { rs[0].forEach(function (q) { kbx[0] = Math.min(kbx[0], q[0]); kbx[1] = Math.min(kbx[1], q[1]); kbx[2] = Math.max(kbx[2], q[0]); kbx[3] = Math.max(kbx[3], q[1]); }); });
       ['label', 'tick'].forEach(function (role) {
         if (kpick) return;
-        var kb0 = c.text_box(0, 0, L.county_label, { role: role, weight: 600, anchor: 'middle' });
-        K.parts.widest_spots(polys, kb0.w, kb0.h, 2, cp[1]).some(function (sp) {
-          var g = { x: sp.x - kb0.w / 2 - 2, y: sp.y - kb0.h / 2 - 2, w: kb0.w + 4, h: kb0.h + 4 };
-          var clear = pts.every(function (p) { return p.x + p.r + 4 < g.x || p.x - p.r - 4 > g.x + g.w || p.y + p.r + 4 < g.y || p.y - p.r - 4 > g.y + g.h; });
-          if (clear) { kpick = [sp.x, sp.y - kb0.h / 2 - kb0.y]; krole = role; }
-          return clear;
-        });
+        var kb0 = c.text_box(0, 0, L.county_label, { role: role, weight: 600, anchor: 'middle' }), best = null;
+        for (var gx = kbx[0] + kb0.w / 2; gx <= kbx[2] - kb0.w / 2; gx += 2) for (var gy = kbx[1]; gy <= kbx[3]; gy += 2) {
+          var g = { x: gx - kb0.w / 2 - 2, y: gy + kb0.y - 2, w: kb0.w + 4, h: kb0.h + 4 };
+          if (!pts.every(function (p) { return p.x + p.r + 4 < g.x || p.x - p.r - 4 > g.x + g.w || p.y + p.r + 4 < g.y || p.y - p.r - 4 > g.y + g.h; })) continue;
+          if (!fits_at(g)) continue;
+          var dd = Math.hypot(gx - cp[0], gy - cp[1]);
+          if (!best || dd < best[2]) best = [gx, gy, dd];
+        }
+        if (best) { kpick = [best[0], best[1]]; krole = role; }
       });
       var kt;
       if (kpick) kt = c.text(kpick[0], kpick[1], L.county_label, { role: krole, weight: 600, anchor: 'middle' });

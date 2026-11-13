@@ -287,7 +287,7 @@ def figures():
     check('S72', cnt('Senate', 'D', 'Yea') == 7 and cnt('Senate', 'I', 'Yea') == 1 and cnt('Senate', 'R', 'Yea') == 52 and 'Democrats, 45: 7 yes' in s['alt'] and 'seven Democrats voted yes and one Republican voted no' in s['notes'][1], 'Senate yes: 7 D, 1 I, 52 R (alt, note 2)')
     check('S72', 'Six Democrats voted yes in the House and two Republicans voted no' in s['notes'][0] and cnt('House', 'D', 'Yea') == 6 and cnt('House', 'R', 'Nay') == 2, 'House crossovers both ways (note 1)')
     sen = [r['member'] for r in rows if r['chamber'] == 'Senate']
-    check('S72', not any(x.get('field') == 'member' for x in s['sort']) and sen == sorted(sen, key=lambda n: (n.split(' ', 1)[1].lower(), n)), "members in the record's order, by last name")
+    check('S72', [x.get('field') for x in s['sort']] == ['chamber', 'party'] and sen == sorted(sen, key=lambda n: (n.split(' ', 1)[1].lower(), n)), "members in the record's order, by last name, within chamber and party")
     check('S72', cnt('Senate', 'R', 'Nay') == 1 and cnt('Senate', 'I', 'Nay') == 1 and cnt('Senate', 'D', 'Nay') == 38, 'Senate no: 1 R, 1 I, 38 D')
     check('S72', cnt('House', vote='Yea') == 222 and cnt('House', vote='Nay') == 209 and '222 to 209' in s['title'], 'House 222 to 209')
     check('S72', cnt('House') == 433 and 435 - cnt('House') == 2, 'House 433 members recorded, 2 of 435 seats vacant')
