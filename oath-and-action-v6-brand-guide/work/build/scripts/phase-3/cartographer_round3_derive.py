@@ -598,7 +598,7 @@ def figures():
     byc = {k: [r['code'] for r in st if cl(float(r['broadband_fixed_pct'])) == k] for k in (1, 2, 3, 4)}
     eq('S78', [len(byc[k]) for k in (1, 2, 3, 4)], [9, 11, 20, 11], 'class counts')
     eq('S78', 'DC' in byc[4] and 'DC' not in byc[1], True, 'DC in the top class, so 10 states and DC; nine states at the bottom')
-    has('S78', '10 states and DC', 'title'); has('S78', 'under 71 percent in nine states', 'title')
+    has('S78', '10 states and DC', 'title'); has('S78', 'under 71 percent in nine.', 'title')
     # ST-S12 (review fix pass, the data lead's rule): count on the figures the table prints, one decimal half up; a place
     # crosses where its printed interval reaches a value in another class, an interval ending exactly on a break reaching
     # the class that begins there
@@ -692,7 +692,7 @@ def figures():
     eq('S84', sum(1 for r in four if r['rate_as_published'] == '...'), 20, 'cells printed "..." (No state law)')
     key = ' '.join(meta('dol-state-minimum-wage-history').get('notes', []))
     for w in ('[c] - Rates applicable to employers of four or more', '(d) - Rates applicable to employers of six or more', '(e) - Rates applicable to employers of two or more', '(g) - Minnesota sets a lower rate'): eq('S84', w in key, True, 'the Department\'s key: ' + w)
-    has('S84', '[c], (d) and (e) mark rates for employers of four, six or two or more workers, and (g) marks a state that sets a lower rate for some smaller businesses', 'note 4')
+    has('S84', '[c] marks a rate for employers of four or more workers, (d) of six or more and (e) of two or more, and (g) a state that sets a lower rate for some smaller businesses', 'note 4')
     with open(os.path.normpath(os.path.join(HERE, '..', '..', '..', 'extract', 'atlas-v7-data.json')), encoding='utf-8') as fh:
         atlas = json.load(fh)
     def find(o):

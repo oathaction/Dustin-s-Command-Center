@@ -46,6 +46,19 @@ DESC = re.compile(r"<desc\b[^>]*>(.*?)</desc>", re.S)
 # R2-3 (contract R2-C3): a sentence ends at a period, question mark or exclamation mark followed by a space and a capital
 # letter, a digit or an opening quotation mark; an abbreviation (U.S., a single capital and its period, e.g.) does not end it
 SENTENCE_END = re.compile(r"(?<=[.?!])[\u201d\u2019\"')]?\s+(?=[A-Z0-9\u201c\u2018\"])")
+# ST-M2 item 1 (round 3 fix pass): "{data_file}" in an entry's words prints the kit's words.json phrase for where a chart's
+# full data lives, the one string Dustin's answer changes (the kit fills the same placeholder in captions and notes)
+WORDS = ROOT / "work/build/chart-kit/words.json"
+
+
+def fill_words(text):
+    """An entry file's text with {data_file} filled from words.json, escaped for JSON."""
+    if "{data_file}" not in text:
+        return text
+    phrase = json.loads(WORDS.read_text())["data_file"]
+    return text.replace("{data_file}", json.dumps(phrase, ensure_ascii=False)[1:-1])
+
+
 ABBREV = re.compile(r"(?:\b[A-Z]\.|\b(?:e\.g|i\.e|vs|No|St|Mr|Ms|Dr|Jr|Sr)\.)$")
 
 
@@ -98,7 +111,7 @@ def num_key(rid):
 def outputs(rounds):
     faults = []
     plan = json.loads(PLAN.read_text())
-    chap = json.loads((ENTRIES / "14-chapter.json").read_text())
+    chap = json.loads(fill_words((ENTRIES / "14-chapter.json").read_text()))
     built = [dict(r, kind="rule", tier=None) for r in plan["chapter_rules"] if r.get("round", 1) in rounds]
     built += [dict(f, kind="form") for f in plan["forms"] if f["round"] in rounds]
     planned = sorted({r["rule"] for r in plan["chapter_rules"]} | {f["rule"] for f in plan["forms"]}, key=num_key)
@@ -115,7 +128,7 @@ def outputs(rounds):
             faults.append(f"Rule {rid}: no entry file {ef.relative_to(ROOT)} for a built round")
             continue
         try:
-            e = json.loads(ef.read_text())
+            e = json.loads(fill_words(ef.read_text()))
         except json.JSONDecodeError as ex:
             faults.append(f"Rule {rid}: {ef.name} is not JSON ({ex})")
             continue

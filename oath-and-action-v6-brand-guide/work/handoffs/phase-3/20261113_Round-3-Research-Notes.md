@@ -156,7 +156,7 @@ Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c155381-70e7-54
 
 ## Review fix pass
 
-November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Research lead" paragraph and its addendum) and the data lead's rulings in "Review fix pass" of `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC; this state at 04:58 UTC. Script: `work/build/scripts/phase-3/research_review_fix_round3.py`, one item a subcommand (`st_s8`, `st_s11`, `st_s2`, `bc_m1`, `st_s4`, `bc_s9`); each checks its downloads against the hashes the sidecars record or against today's records, asserts every field it does not mean to change, and writes nothing on a rerun. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/research/` (downloads under `dl/`, each folder with a fetch log of time, address without key, status, bytes and SHA-256; checking scripts under `scripts/`; kit builds under `kit/`).
+November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Research lead" paragraph and its addendum) and the data lead's rulings in "Review fix pass" of `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC; this state at 05:01 UTC. Script: `work/build/scripts/phase-3/research_review_fix_round3.py`, one item a subcommand (`st_s8`, `st_s11`, `st_s2`, `bc_m1`, `st_s4`, `bc_s9`); each checks its downloads against the hashes the sidecars record or against today's records, asserts every field it does not mean to change, and writes nothing on a rerun. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/research/` (downloads under `dl/`, each folder with a fetch log of time, address without key, status, bytes and SHA-256; checking scripts under `scripts/`; kit builds under `kit/`).
 
 ### Summary
 
@@ -168,7 +168,7 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - **BC-S9 done (04:56 UTC).** The CMS sidecars quote the renewal rule and CMS's 2024 rule on what a procedural ending is; the figures in S65's title check.
 - **A-M1's check and ST-S10's check done (04:57 UTC).** Maker A's route grid: 0 faults by my own script.
 - **ST-S6:** folded into BC-M1 by the data lead (the title drops its comparison of reach); the figures it asked for are in the new file's notes.
-- **Data check:** 125 tables, 0 faults at 04:56 UTC. The check over each owner's changed derived file runs as they land (below).
+- **Data check over the folder and over every file this pass changed (05:00 UTC):** 125 tables, 0 faults. All 18 data files changed since the pass began (against commit 77f08669) are checked: my 11 by my writing script's assertions and second scripts, and the owners' 7 by my own scripts (below), each 0 faults. Ledger row P7-226 and the round 3 data plan's row 94 status line are written.
 
 ### Items done, by code
 
@@ -183,6 +183,12 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
   - For the editor (ST-S6's figures): S73's note 1 gives the other funds' sums to the campaigns as $4,935,265.62 for Harris and $160,927,226.68 for Trump; with Trump Bilirakis Victory Fund, Trump's is $160,933,058.72. Across all funds, the campaigns took $533,666,265.32 and $407,754,931.07.
 - **ST-S4.** The Census API, read today, returns Puerto Rico for each table behind a round 3 map: B28002 and S2801 (ACS 2025 1-year, state 72; S78), B19013 (ACS 2020 to 2024 5-year, its 78 municipios; S81) and County Business Patterns 2023 (its 78 municipios, 740,830 employees in all; S83). So each of S78, S81 and S83 can say Puerto Rico is not drawn. The geography lines of `census-acs-broadband-by-state`, `census-acs5-county-median-household-income` and `census-cbp-county-employment` now say the file leaves Puerto Rico out though the Bureau publishes it. `dol-state-minimum-wage-history` already holds Guam, Puerto Rico and the U.S. Virgin Islands (S84). The six non-voting House members are in `census-cb-2024-cd119` at district 98 (the data lead's script). I did not read the CPS's coverage for S16; its frozen file covers the 50 states and DC.
 - **BC-S9.** S65's figures check by script: 76,734,167 renewals due (76.7 million), 15,966,431 ended for a procedural reason (16.0 million, 20.8 percent), 6,948,106 found ineligible (6.9 million, 9.1 percent), 2.30 times as many; procedural endings 69.7 percent of the 22,914,537 endings. Procedural endings exceed ineligible ones in every month, by 1.92 to 2.86 times, so "more than twice" holds for the twelve months summed but not in September 2023 or February 2024 alone. The wording BC suggests, checked against primary sources read today: the renewal rule in force through the period, 42 CFR 435.916(a)(3)(iii), speaks of "an individual who is terminated for failure to submit the renewal form or necessary information"; CMS's 2024 rule (89 FR 22780) says "terminated for procedural reasons (that is, because they did not respond to the State's request for additional information)" (at 22800) and "losing coverage due to procedural reasons, including, for example, failure to return paperwork" (at 22781); section 1902(tt)(1)(B) of the Social Security Act has states count those terminated "for procedural reasons" apart. Both CMS sidecars quote these in a new note. BC's "most often" and "some of those people were still eligible and some were not" have no source I could read: no record gives the reasons' frequency or the eligibility of those ended. Suggested sentence for maker B and the editor: "A procedural ending means the state closed the case without finding the person ineligible, for example when a renewal form or information the state asked for did not come back; the record does not say whether those people were still eligible." "States ended" is supported: the state agency terminates, and the counts are the states' reports.
+- **The data check over the owners' changed files (04:59 to 05:00 UTC), each by my own script, 0 faults:**
+  - Maker B's `fec-jfc-transfers-2024-by-node` (S73, now from P7-226): 125 rows; the 19 carried columns equal the source row for row; `link_id` unique and built from fund, committee and line; each line 22 row's node by its stated rule (campaign and national party committee alone, state party committees and other committees each one node a nominee with their count), line 28C rows "Refunds, not drawn"; one `table_row` for each fund and kind, refunds last, rows in table order; sidecar fields equal the source's. Node sums equal the figures above. Maker B's `--check` and `--figures`: 0 faults.
+  - Maker B's `govinfo-snap-application-path.meta.json`: the variant `date_in_grade_line` is the printed line less "as in force November 9, 2026" and nothing else (call 9).
+  - The cartographer's `clerk-house-results-2024-classes` (ST-M4): every column it held before the pass unchanged in all 435 rows; `close_seat` set on exactly the 36 seats under 5 points as printed, 22 Democratic and 14 Republican in 21 states, in the form "7 (Republican, 3.7)"; `party` the winner's letter in every row.
+  - Maker A's `usgov-v7-route-grid` (A-M1, ST-S10): below.
+  - S65, S72, S73 and S76 built with `--no-png` on the current files at 05:01 UTC: PASS, 0 faults each; S65 prints `with_release`, S72's export carries the four accented names and no doubled space, S76 names `transfers_out_net`.
 - **A-M1 (and ST-S10's cell).** Maker A's `usgov-v7-route-grid`, checked by my own script against `v7-routes` and `usgov-route-requirements`: 11 routes in V7's order, every value equal except the two reworded cells (SS's sources, "State constitutions read: Massachusetts, Nebraska, Virginia and Arizona", the four states the workflow sources file's section SS reads; FR's what it takes, "changed the vote needed to end debate on nominations in 2013 and 2017"), no studio word or decision code in any cell, no em dash or U+2011, ledger row P7-209. 0 faults. The public file `usgov-route-requirements.csv` keeps "round 0" in its SS `sources` cell, which no page prints.
 
 ### Routine calls, review fix pass
@@ -203,7 +209,7 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 ### Requests, review fix pass
 
 - **To maker A:** rebuild S72 and its CSV export after ST-S8 (the page names none of the changed members).
-- **To maker B:** copy `with_release` from `cms-medicaid-chip-renewal-funnel.meta.json` into `s65.json`'s `source_line` (ST-S11). For S76, `labels.names` needs `transfers_out_net`, and `--figures` needs the new figures (ST-S2). For S73, derive from `fec-jfc-transfers-2024-all-committees` and fold by `recipient_kind` (BC-M1); its printed line names the seven funds' lines 22 and 28C. For S65, BC-S9's sentence above.
+- **To maker B, landed by 05:00 UTC:** S65 prints `with_release` (ST-S11); S76 names `transfers_out_net` and its `--figures` passes (ST-S2); S73 derives from `fec-jfc-transfers-2024-all-committees` by `recipient_kind` (BC-M1). Open: BC-S9's sentence above, for S65.
 - **To the cartographer:** S78, S81 and S83 may each say Puerto Rico is not drawn (ST-S4); S84 names Guam, Puerto Rico and the U.S. Virgin Islands. Its derived sidecars may carry the same geography words.
 - **To the editor:** BC-S9's sentence above, and S73's note 1 figures under BC-M1.
 
@@ -216,8 +222,9 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - ST-S4: five Census API reads for state 72 (B28002, S2801, B19013 by county, CBP by county and state), all 200; 78 municipios in each county table; the key added at request time only and absent from the log.
 - BC-S9: eCFR's 42 CFR 435.916 as of October 1, 2023 and as of November 10, 2026; 89 FR 22780 from govinfo, quotes and pages asserted by script; 42 U.S.C. 1396a(tt)(1)(B) from govinfo's 2024 U.S. Code; the S65 figures and month-by-month ratios from the frozen files.
 - A-M1: `check_route_grid.py` over the grid and its two sources: 0 faults.
-- Makers' derive checks after my source changes: the cartographer's and maker B's `--check` 0 faults; maker A's reported no fault.
-- Data check after each write: 124 tables, 0 faults (after ST-S8, ST-S11, ST-S2); 125 tables, 1 fault not mine at 04:54 UTC (the cartographer's `clerk-house-results-2024-classes.csv` columns out of order with its sidecar, mid-edit); 125 tables, 0 faults at 04:56 UTC.
+- Makers' derive checks after my source changes: the cartographer's and maker B's `--check` 0 faults; maker A's printed no fault line.
+- The owners' changed derived files: `check_by_node.py`, `check_classes_fix.py`, `check_route_grid.py` and a one-line check of the SNAP variant, each 0 faults; S65, S72, S73 and S76 built with `--no-png`, PASS.
+- Data check after each write: 124 tables, 0 faults (after ST-S8, ST-S11, ST-S2); 125 tables, 1 fault not mine at 04:54 UTC (the cartographer's `clerk-house-results-2024-classes.csv` columns out of order with its sidecar, mid-edit); 125 tables, 0 faults at 04:56 and 05:00 UTC.
 
 ### Not tested, review fix pass
 
@@ -226,3 +233,21 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - Line 21B paid by the five new funds to committees outside the file.
 - What the Trump Bilirakis Victory Fund's agreement says about its participants; only the FEC's designation and payments were read.
 - The Current Population Survey's coverage of Puerto Rico (S16): taken from its frozen file's geography line.
+- Captures of any chart at any width or ground; the guide build; the editor's and makers' words after my changes.
+
+### Files, review fix pass
+
+Created:
+- `work/build/data/fec-jfc-transfers-2024-all-committees.csv` and `.meta.json` (BC-M1, P7-226)
+- `work/build/scripts/phase-3/research_review_fix_round3.py`
+
+Modified:
+- `work/build/data/congress-hr5371-roll-calls-by-member.csv` and `.meta.json` (ST-S8)
+- `work/build/data/cms-medicaid-chip-renewal-funnel.meta.json` and `cms-medicaid-chip-renewal-outcomes.meta.json` (ST-S11, BC-S9)
+- `work/build/data/fec-house-campaigns-2024-money-in-out.csv` and `.meta.json` (ST-S2)
+- `work/build/data/census-acs-broadband-by-state.meta.json`, `census-acs5-county-median-household-income.meta.json`, `census-cbp-county-employment.meta.json` (ST-S4, geography lines)
+- `work/research/20261021_Research-Ledger.md` (Part 7's "Review fix pass, round 3" with P7-226; stale cells in P7-216 and P7-217; claims 13 and 38 settled in part, 39 added; change log)
+- `work/handoffs/phase-3/20261112_Round-3-Data-Plan.md` (change 8 marked superseded in part; a status line for row 94)
+- `work/handoffs/phase-3/20261113_Round-3-Research-Notes.md` (this section)
+
+Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/research/` (downloads with fetch logs under `dl/clerk`, `dl/senate`, `dl/s8`, `dl/cms`, `dl/bcm1`, `dl/pr`; scripts `fec_get.py`, `fec_committees.py`, `census_get.py`, `check_bcm1.py`, `check_by_node.py`, `check_classes_fix.py`, `check_route_grid.py`; kit builds under `kit/`).

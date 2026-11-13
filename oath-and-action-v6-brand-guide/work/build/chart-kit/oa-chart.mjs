@@ -1186,6 +1186,56 @@ async function self_test() {
       const e = drawn(c => { const g = c.group({ transform: 'translate(10,20) scale(0.5)' }); c.line(0, 30, 300, 30, { stroke: 'subject', width: 2 }); g.end(); c.text(40, 40, 'Beside the line'); });
       pass(a.f.some(x => x.indexOf('Pillar Red covers') >= 0) && b.f.some(x => x.indexOf('drawn outside its drawing') >= 0) && e.f.some(x => x.indexOf('runs through "Beside the line"') >= 0) && K.parse_transform('rotate(4)') === null,
         'R3-2: the red share, edge and crossing checks reach shapes inside a moved and scaled group'); }
+    // ---- round 3 fix pass ----
+    { // ST-M1: first prints text through the column's words; ST-S9: a state_name key sorts by the printed name
+      const g1 = K.group_cell({ agg: 'first', field: 'n', words: { '28C': '28C, refund' } }, { key: 'x', rows: [{ n: '28C' }, { n: '22' }] });
+      const g2 = K.group_cell({ agg: 'first', field: 'n' }, { key: 'x', rows: [{ n: 'HARRIS VICTORY FUND' }] });
+      const sp = { table: { group: { by: 'st', sort: 'key', columns: [{ agg: 'key', state_name: true }] } } };
+      const order = K.table_groups(sp, [{ st: 'AK' }, { st: 'AL' }, { st: 'DC' }, { st: 'DE' }]).map(g => g.key).join();
+      const sp2 = { table: { group: { by: 'k', sort: 'name', columns: [{ agg: 'key', words: { b: 'Apple', a: 'Pear' } }] } } };
+      const order2 = K.table_groups(sp2, [{ k: 'a' }, { k: 'b' }]).map(g => g.key).join();
+      pass(g1 === '28C, refund' && g2 === 'HARRIS VICTORY FUND' && order === 'AL,AK,DE,DC' && order2 === 'b,a', 'ST-M1 and ST-S9: first prints text; groups sort by the printed name' + ` (${g1}; ${g2}; ${order}; ${order2})`); }
+    { // AX-M1: a printed column empty in every row fails; AX-M2: a words column printing an unmapped value warns, words_pass silences it
+      const cols = { k: { type: 'text' }, v: { type: 'number' }, e: { type: 'text' } };
+      const mk = (tb) => ({ kit: 1, id: 'T', form: 'ranked-bar', illustrative: 'Illustrative data', data: { columns: cols, rows: [{ k: 'a', v: 1, e: '' }, { k: 'b', v: 2, e: '' }] }, encode: { category: 'k', value: 'v' }, table: tb });
+      const r1 = C.check_spec(K, mk({ columns: [{ field: 'k', label: 'K', row_header: true, words: { a: 'Ay' } }, { field: 'e', label: 'Empty' }] }), {});
+      const r2 = C.check_spec(K, mk({ columns: [{ field: 'k', label: 'K', row_header: true, words: { a: 'Ay' }, words_pass: true }, { field: 'v', label: 'V' }] }), {});
+      const r3 = C.check_spec(K, mk({ columns: [{ field: 'k', label: 'K' }], group: { by: 'k', columns: [{ label: 'K', agg: 'key' }, { label: 'Blank', agg: 'first', field: 'e' }] } }), {});
+      pass(r1.faults.some(x => /the column "Empty" prints nothing/.test(x)) && r1.warnings.some(x => /"K" has words and prints 1 stored value they do not map \("b"\)/.test(x))
+        && !r2.warnings.length && r3.faults.some(x => /the column "Blank" prints nothing in any of its 2 rows/.test(x)), 'AX-M1 and AX-M2: an empty printed column fails, grouped or not; an unmapped words value warns unless words_pass'); }
+    { // call 7: map_labels sets a name at the widest run where the label point has no room
+      const ring = [[0, 0], [200, 0], [200, 20], [20, 20], [20, 200], [0, 200], [0, 0]];
+      const L = { index: { X: 0 }, labels: [[10, 150, 10]], rings: () => [[ring]], arcs: [], ids: ['X'] };
+      const T = { pt: p => p, ox: 0, oy: 0, k: 1, box: [0, 0, 200, 200], x: 0, y: 0, w: 200, h: 200 };
+      let res = null, res0 = null;
+      drawn(c => { res = P.map_labels(c, L, T, [{ id: 'X', words: 'WIDE NAME', weight: 600 }], { role: 'tick', beside: false, inset: 1 }); });
+      drawn(c => { res0 = P.map_labels(c, L, T, [{ id: 'X', words: 'WIDE NAME', weight: 600 }], { role: 'tick', beside: false, inset: 1, widest: false }); });
+      const b = res && res.inside[0] && res.inside[0].box;
+      pass(!!b && res.inside[0].moved && b.y > 0 && b.y + b.h < 20 && b.x > 20 && res0.unplaced.length === 1, 'call 7: map_labels sets a name at the shape\'s widest run where its label point has no room' + (b ? ` (${Math.round(b.x)}, ${Math.round(b.y)})` : '')); }
+    { // BC-S2, RB3F-G1: a band key of three steps draws in the band's fill and reads as widths of one ink
+      const a = drawn(c => { c.height(P.width_key(c, 0, 0, 0.2, [10, 50, 100], { band: true, len: 32 }) + 4); });
+      pass(!a.f.some(x => /^key/.test(x)) && /oac-f-band/.test(a.d.svg), 'BC-S2: width_key with band draws the band fill, and its steps pass the key check' + (a.f.length ? ': ' + a.f[0] : '')); }
+    { // C-M2: a stage draws one desk width; AX-S1: fc classes and the key's forced edge; ST-M2: {data_file}; the island keeps typography
+      const st = { artboard: 'wide', stage: 1024 };
+      const a = drawn(c => { c.rect(0, 0, 10, 10, { fill: 'land', fc: 'region' }); P.key(c, [{ label: 'Authority', stroke: 'label', forced_edge: true }, { label: 'Not voting', fill: 'light-fill', fc: 'muted' }], 0, 40, 380); c.height(80); });
+      pass(K.draw_width(st, 600) === 1024 && K.draw_width(st, 479) === 479 && container(1440, st) === 1024 && container(390, st) === 358
+        && /oac-fc-region/.test(a.d.svg) && /oac-fc-forced/.test(a.d.svg) && /oac-fc-muted/.test(a.d.svg) && !a.f.length
+        && K.chips('In {data_file}.', []).indexOf(K.fill_words('{data_file}')) > 0 && K.fill_words('{data_file}') === K.word('data_file')
+        && draw_spec({ id: 'x', typography: { nbsp: true }, stage: 1024 }).typography.nbsp === true && draw_spec({ id: 'x', stage: 1024 }).stage === 1024,
+        'C-M2, AX-S1, ST-M2: a stage keeps its desk width; fc classes and a forced edge print; {data_file} fills; the island keeps stage and typography' + (a.f.length ? ': ' + a.f[0] : '')); }
+    { // A-E8: a part drawn from the first rows reads every row as c.all_rows
+      let seen = null; K.register_chart({ form: 'oa-self-test-all', name: 'T', family: 'structure', encode: {}, labels: [], phone: 'same', draw: c => { seen = [c.rows.length, (c.all_rows || c.rows).length]; c.height(10); } });
+      K.draw({ kit: 1, id: 'T', form: 'oa-self-test-all', encode: {} }, [{}, {}], { width: 300, ground: 'newsprint', tokens: TOK.newsprint, all_rows: [{}, {}, {}, {}, {}] }); delete K.forms['oa-self-test-all'];
+      pass(seen && seen[0] === 2 && seen[1] === 5, 'A-E8: a part drawn from its first rows reads every row'); }
+    { // AX-S6: a source line's retrieval dates, and --data read before work/build/data/
+      const d1 = C.retrieved_dates('Source: X; Y. Retrieved November 12 and 13, 2026. Survey estimates.'), d2 = C.retrieved_dates('Source: X. Retrieved October 30 and November 3, 2026.'), d3 = C.retrieved_dates('Source: X, 2026.');
+      const td = fs.mkdtempSync(path.join(process.env.TMPDIR || '/tmp', 'oa-kit-data-'));
+      const m = JSON.parse(fs.readFileSync(path.join(C.DATA, 'census-sahie-county-uninsured.meta.json'), 'utf8')); m.file = 'own-file.csv';
+      fs.writeFileSync(path.join(td, 'own-file.csv'), 'a\n1\n'); fs.writeFileSync(path.join(td, 'own-file.meta.json'), JSON.stringify(m));
+      const own = C.load_dataset('own-file', td), frozen = C.load_dataset('census-cb-2024-states', td), none = C.load_dataset('no-such-file', td);
+      fs.rmSync(td, { recursive: true, force: true });
+      pass(d1.join() === '2026-11-12,2026-11-13' && d2.join() === '2026-10-30,2026-11-03' && d3 === null && own.file === 'own-file.csv' && frozen.geo === true && !!none.fault,
+        'AX-S6: retrieval dates read from a source line; --data read first, work/build/data/ after'); }
   }
   // the words inside kit.js equal words.json
   const wj = Object.assign({}, K.words); delete wj.about;

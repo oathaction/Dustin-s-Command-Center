@@ -784,5 +784,5 @@ function id_types() {
   return out;
 }
 
-module.exports = { id_types, check_spec, check_drawing, check_csv, red_share, RED_SHARE, contrast, band_faults, interval_faults, crossing_faults, to_csv, load_dataset, rows_of, v7, role_color, hex_to_lab_l, strings,
+module.exports = { id_types, check_spec, check_drawing, check_csv, red_share, RED_SHARE, contrast, band_faults, interval_faults, crossing_faults, to_csv, load_dataset, rows_of, v7, role_color, hex_to_lab_l, strings, retrieved_dates,
   FAMILIES, TIERS, EVIDENCE, DISCLOSURE, KEY_LIGHTNESS_MARGIN, ROOT, DATA };

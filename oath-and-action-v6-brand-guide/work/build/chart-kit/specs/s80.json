@@ -25,12 +25,13 @@
  "measure_line": "Winner’s margin over the runner-up, in percentage points of all votes for the office, in each of Michigan’s 13 House districts, general election of November 5, 2024, on the districts of the 119th Congress.",
  "notes": [
   "All 13 races were between a Republican and a Democrat, so every district takes one of the four margin steps.",
-  "The margin is the winner’s votes less the runner-up’s, as a share of all votes for the office. The table gives each district’s winner and margin."
+  "The margin is the winner’s votes less the runner-up’s, as a share of all votes for the office. The table gives each district’s winner and margin.",
+  "Each district elects one member, whatever its area. An inset in each panel draws the five districts in and around Detroit larger."
  ],
  "source_line": "Source: Office of the Clerk, U.S. House of Representatives, Statistics of the Presidential and Congressional Election of November 5, 2024, Michigan’s 13 House districts; U.S. Census Bureau, Cartographic Boundary Files, 2024, congressional districts of the 119th Congress, 1:5,000,000. Retrieved November 12 and 13, 2026. Margins computed by Oath & Action from the official counts.",
  "credit": "Chart: Oath & Action",
  "illustrative": false,
- "alt": "Two maps of Michigan’s 13 House districts. The first shades the six districts Democrats won by the winner’s margin and outlines the rest; the second does the same for the seven seats Republicans won. The 7th district was closest, won by 3.7 points, and seven races were decided by 20 points or more. Nationally, Republicans won 220 House seats and Democrats 215.",
+ "alt": "Two maps of Michigan’s 13 House districts. The first shades the six districts Democrats won by the winner’s margin and outlines the rest; the second does the same for the seven seats Republicans won. An inset in each panel draws the five districts in and around Detroit larger, so each takes its number. The 7th district was closest, won by 3.7 points, and seven races were decided by 20 points or more. Nationally, Republicans won 220 House seats and Democrats 215.",
  "table": {
   "caption": "Michigan’s House races, 2024",
   "columns": [
@@ -119,7 +120,8 @@
  "notes_internal": [
   "Ruling (b) and (f): party by position, two panels, Democrats first, each named with its seats ({n} and {of} counted from the data); margin in four sequential Verdigris steps 2 to 5, every won seat with the context edge (the data lead's C-1, correcting ruling (b): gray step 1 read as the other party's ghost); the other party's districts as ghost outlines; no hue carries party (DR-48, DR-58, DR-64). The same derived table and key words as S82.",
   "Why Michigan, in terms of the lesson (change 9): its 13 districts run from close to safe for each party. Republicans won in all four steps (the 7th at 3.7, the 10th at 6.1, the 4th at 11.7, the 1st, 2nd, 5th and 9th at 20 or more) and Democrats in three (the 8th at 6.6 and the 3rd at 9.9, the 11th at 18.6, the 6th, 12th and 13th at 20 or more). The words say nothing about how the lines were drawn (check S80 in cartographer_round3_derive.py --figures).",
-  "R3-7: the national result set apart and labeled beside the panels, 220 and 215, from the same results file."
+  "R3-7: the national result set apart and labeled beside the panels, 220 and 215, from the same results file.",
+  "BC-S1 (review fix pass, the data lead's ruling): a framed Detroit inset in both panels at every width (labels.inset: the 6th, 10th, 11th, 12th and 13th, fitted larger in the empty lower left of the layer's frame, with the view framed on the map), in the same steps, edges and ghosts; a note says each district elects one member whatever its area. C-S1: each district is numbered in the panel where it is filled, the five in the inset; a district with no room is named with its panel (labels.unlabeled, AX's note). By probe every district is numbered at 256, 296, 358, 390, 480, 558, 600, 656 and 720 px."
  ],
  "formats": {}
 }
