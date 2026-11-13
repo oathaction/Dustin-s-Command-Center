@@ -952,6 +952,25 @@ At 06:12 I built S84 alone from the files as they stand with `oa-chart.mjs build
 
 With this, every chart, sketch and entry the review fix pass changed is signed off: maker A's, maker B's with S73's title, and the cartographer's. What still waits on Dustin is unchanged: Q1 (where the full data lives, and with it the "download" lines), Q2 (literal red and blue in sketch 14.124's misleading half), Q3 (S16's range words), and a tile that drops S12's printed figure, which DR-64 does not allow without him and which the 1024 px stage made unnecessary.
 
+### Rule 14.6 after R-S1: signed off (06:45 UTC)
+
+I compared `work/build/guide/entries/14-006.json` by script with its committed round 3 text (`8507b822`). The rule runs 277 words against 530, in five paragraphs, one principle each. The title, why, plate, failure plate, related rules and builders' line are unchanged, and no plate was drawn again.
+
+Each case my round 3 rulings and R-S1's list asked the rule to keep, and where it now lives:
+- **The named mark takes the red,** inside Rule 05.5's keyline with its own label, every other mark in the light fill or the context ink: paragraph 1 and the "The point" and "Its label" rows. Marks named together share the red: a new row, moved from the old paragraph 1.
+- **A run of columns** may give one column the red, and **a comparison** keeps the light fill with its label: paragraph 2 and the "A comparison" row. A chart of one mark takes Charcoal: its row, which now also carries the reason ("with no other mark to set it apart from").
+- **A diagram or map that answers with its whole path or pattern names no single mark (principles 1 and 2).** The path is in Charcoal: paragraph 3. The branches in the context ink and, where the reader's case picks the path, every branch in one ink: the "A diagram’s path" row, which gained the decision-tree clause from the old paragraph 3.
+  - On a map only a place named as a point may take the red. "A map gives the red only to a place its title names as a point" says what principle 2 says, a little more firmly than the old "may take the red".
+- **An error or a step holds the red first, and the party tie:** paragraph 4, with Rules 01.1, 01.2 and 14.7 cited.
+  - The party test's list (a state, a Congress or chamber whose majority readers know, an election result, money spent to elect a candidate, a policy readers link to one party) moved whole into a new "A party tie" row, word for word.
+  - The old "An error, a step, a sign or a party tie" row split into two rows with the same value.
+- **The area case and the 5 percent share (principle 3, RF-1, D3-1279):** paragraph 5 and the "A named area, or past 5 percent of the drawing" row. The row now lists treemap, pie, donut, funnel, map region, node (glossed for AX-S8), matrix cell and width-coded line or band, as the old paragraph 5 did.
+- **"Red never codes a series, a group, a step on a scale or in a process, or a sign":** the "Red never" row, unchanged, "or in a process" (D3-1280) included.
+- **Two findings,** each in Charcoal with its label: the "Two findings" row, unchanged. The old sentence's reason (two reds split the first look) stands in the why.
+- **A total or national figure set apart:** the "A total or national line" and "A total or national figure elsewhere" rows, unchanged.
+
+No case was lost and none changed in meaning. Signed off. Not tested: the rule's plates and text in a guide build or capture; the editor's rules build and weight, which the editor reports.
+
 ### Tested, review fix pass
 
 - Clock read with `date -u` at 04:24, 04:26, 04:30, 04:31, 04:32, 04:34, 04:37 and 04:38 UTC.
@@ -1073,3 +1092,4 @@ Not tested:
 - Maker B’s sign-off, 05:37 to 05:40 UTC: the kit build and captures listed under "Maker B, review fix pass: signed off"; S73's sums by nominee, kind and line, state counts and the title's figures recomputed from `fec-jfc-transfers-2024-all-committees`; S73's page table parsed by script; sketch 14.94 rendered with Playwright (`sketch94.cjs`, scratch) and its word boxes measured.
 - Cartographer's sign-off, 06:03 to 06:11 UTC: the two kit builds and the captures listed under "Cartographer, review fix pass: signed off"; S82's closest-races list and S84's table parsed by script (`tables.py`); the S78 and S16 "Not labeled" notes read from the SVGs; sketch 14.124 rendered with Playwright (`sketch124.cjs`, scratch). Not tested: forced colors on any map; S12's sideways scroll and S16 inside the guide; S83 by eye; sketch 14.124 on Charcoal.
 - S84's table after C-E7, 06:12 UTC: `build s84` with the sweep, PASS, 0 faults; its page table parsed by script (20 "No state law" cells, none with "..."); its CSV read by grep (20 "..." cells kept).
+- Rule 14.6 after R-S1, 06:45 UTC: the entry compared by script with its text at `8507b822` (rule paragraphs, spec rows by label and value, title, why, plates, related, builders).

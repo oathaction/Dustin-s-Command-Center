@@ -398,6 +398,8 @@ November 13, 2026, round 3's review fix pass, under `work/handoffs/phase-3/20261
 - 05:15. **Maker A's second pass done (D3-669):** four changes in S67, S70 and entry 14.96, logged under "Words for maker A, second pass"; S67 and S70 pass the kit, and maker A's figure check passes 44 of 44. Maker B and the cartographer have not reported.
 - 05:20. **The data lead's three word items on maker A's fields done:** S70's date (already out at 05:14), S72's House panel head ("House roll call 285, November 12, 2025", through a typography pair), and S68's source line set to the research lead's `snapshot_once` variant. S68 and S72 pass the kit; maker A's figure check 44 of 44.
 - 05:38. **Maker B's second pass done (D3-669), S73's title written (BC-M1):** four changes and the title's no-break spaces in S73, S76 and S77, logged under "Words for maker B, second pass"; three specs pass the kit; maker B's figure check 0 faults. S73's title goes to the data lead for its reading from both sides.
+- 06:15. **The cartographer's second pass done (D3-669):** three changes in 14.117, S81 and 14.124 with the sketch's first `<desc>`, logged under "Words for the cartographer, second pass"; S81 passes the kit and the cartographer's figure check 0 faults. Then the rules generator, the chapter build and the strict build `guide2.html` (exit 0, 0 warnings); see "Tested, review fix pass".
+- 06:43. **Done.** Quick guide check on `guide2.html` PASS (0 failures), 64 captures of the plates I touched at 1440, 1024, 390 and 360 px clean; rules 14.1 to 14.14 with the opener 175,678 bytes. Waiting on Dustin: the download lines (call 3), the avoid sketch's colors (call 4), S16's range words (call 5, drafted below). For the data lead: R-S1's sign-off and S73's title read from both sides.
 - 04:47 to 04:57. Rules generator, chapter build, strict build (`guide1.html`, exit 0, 0 warnings) and captures at 1440, 1024, 390 and 360 px; see "Tested, review fix pass". **My own items are done; waiting on the makers to report.**
 
 ### Words for maker A, review fix pass (handed 04:50 UTC; maker A applies until it reports finished)
@@ -494,6 +496,20 @@ Checks: `tools/apply.py` (each phrase once in its field and in the file, only th
 
 To read when you apply them: ST-S1 (S83's no-dot counts), ST-S4 (the territories and S82's six non-voting members), ST-S5 (S78's alt and 14.117's why), ST-S7 (S81's note on the median), ST-S12 (S78's note 1), ST-M4 (S82's closest races and `codes_note`), BC-S1's note on S80, C-S1 and C-S6's district words, S12's alt after C-M2, S84's "No state law" and DC note (AX-S3).
 
+### Words for the cartographer, second pass (D3-669), 06:04 to 06:15 UTC
+
+The main session told me the cartographer had reported finished (06:03 UTC). I read every word it changed in this pass, by `git diff` from `7447f9be` and `tools/dump.py`, with the lint: S12's alt; S16's label places (no words); S78's title, notes, alt, phone words and DC; S80's notes, alt, panel words, inset title and unlabeled note; S81's title and notes; S82's notes, closest-races column, codes note, ring and at-large words; S83's notes; S84's notes, DC words and "No state law"; entries 14.115, 14.117, 14.119, 14.120 and 14.124 and the avoid sketch's words. My handed rows are in, and 14.117's phone sentence was reworded at the main session's word after the quick guide check caught "the studio’s tile grid". Three changes, written straight in, no mark or ink key touched:
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| 14-117 | rule.0 | draw a tile grid map, one square a state (Rule 14.114), | draw a tile grid map, one square for each state (Rule 14.114), | W01: "one square a state" is shorthand a listener has to unpack, as "one line a group" was in 14.94 |
+| S81 | notes.1 | The nation’s median is taken over all households, so … | The Census Bureau takes the nation’s median over all households, so … | W02: name who takes the median. The figure check's phrase ("549 of the 3,143 counties sit at or above it") stays |
+| 14-124 | sketch_alt's first sentence, and the sketch's first `<desc>` with it | …, which takes a side at a glance and lets a party’s large places outweigh its seats. | …, which takes a side at a glance and makes a party that wins a few large places look bigger than its count. | "Outweigh its seats" left the listener to work out what outweighs what; the new words are the entry's own why ("looks bigger than its count"). The caption is still the first `<desc>` word for word (by script), and the sketch weighs 3,817 bytes, under 4,096 |
+
+Read and kept: S12's alt, which now says what a desk and a phone draw (C-M2); S78's title (my words, 31 words), notes 1 to 3 (ST-S12's count, ST-S4's Puerto Rico) and alt (ST-S5's eight states clear of the line); S80's notes (each district elects one member, the inset) and alt; S81's title (my words) and note 4, whose "download" sentence stands (D3-1321); S82's note on the six non-voting members, the closest-races column, the codes note and "Alaska at large"; S83's note on the no-dot counts at both units; S84's notes 3 and 4 (the Department's marks, my words) and its DC note; 14.115's both directions; 14.119's steps of one ink and the area sentence; 14.120's rule and builders line (my words, with the download clause left as it stands); 14.124's use, why (the pointer to Rule 14.7's failure case) and builders. S12's `phone_note` carries "(DR-64)", but the guide does not print it (by search of the strict build); left to the cartographer as a note. S16's range words, the download lines and the avoid sketch's colors wait on Dustin.
+
+Checks: `tools/apply.py`; the sketch's caption against its first `<desc>`, by script; `cartographer_round3_derive.py --figures`: 0 faults; `oa-chart.mjs build s81`: PASS, 0 faults, 13,598 bytes with its frame.
+
 ### Call 5: S16's range words, drafted and held (D3-1323; waits on Dustin)
 
 The data lead's ruled words (Q3), read for voice. Nothing on S16 changes until Dustin answers; board 2 shows old and new side by side.
@@ -504,6 +520,24 @@ The data lead's ruled words (Q3), read for voice. Nothing on S16 changes until D
 | S16 alt, its last sentence | Rates run from 52.8 percent in Arkansas to 79.5 percent in DC. | Arkansas, at 52.8 percent, is lowest by more than the margin of error, and DC, at 79.5 percent, is highest, within the margin of error of Minnesota and Oregon. |
 
 By the data lead's script (Q3): Arkansas's gap to Texas, 5.1 points against 3.55; DC's to Minnesota, 3.6 against 4.39, and to Oregon, 4.2 against 4.33. The alt's sentence joins the two halves with "and" in place of the data lead's semicolon, since an alt is read aloud.
+
+### Items done, by code (review fix pass)
+
+| Item | Done |
+|---|---|
+| R-S1 | Rule 14.6 at 277 words from 530, one principle a paragraph; the lists in its rows (data lead to sign off) |
+| R-S2 | Group 12's line names five of the group's forms |
+| R-S3 | Entry 14.45's builders line cites Rule 14.51, no "from round 2" |
+| AX-S7 | Rule 14.9's class test glossed once: "the widest margin of error drawn, the plus or minus figure" |
+| AX-S8 | In rules and group lines: Rule 14.9's gap's margin, group 14's Sankey. In makers' fields (handed, applied, read): S66's OMB and notice and comment, S76's node and net, 14.110's Sankey and node, 14.117's choropleth, 14.120's sequential steps, 14.124's "Use it when"; the six older avoid entries take the same opening |
+| ST-S10 | "Class" defined at first use in Rule 14.9 and entry 14.117; S71's cloture cell in plain words (maker A, read) |
+| Call 9 (A-S3, B-S4) | The date prints once, in the grade line: S66, S68, S71 and S77's measure lines, S66's and S68's captions, S77's source line, S68's source variant; S67's and S70's measure lines by the same rule |
+| Call 5 (Q3) | S16's range words drafted from the data lead's and held for Dustin |
+| BC-M1 | S73's title written on all seven committees, checked by script, for the data lead's reading from both sides |
+| BC-S9, BC-S10, BC-S11, BC-S13 | Words handed and applied (S65's title and note, 14.115's both directions, 14.119 and 14.124 with no "gray" and no contrasting pair, S77's note 1), then read in the second pass |
+| CD's A-S1, C-S3, SK-S2 and the AX-S3, AX-S6 and ST words | Words handed, applied by their owners and read |
+| Second pass (D3-669) | Maker A: four changes and the data lead's three items; maker B: four changes and S73's title; the cartographer: three changes |
+| Waits on Dustin | The download lines (call 3, D3-1321), the avoid sketch's colors (call 4), S16's range words (call 5) |
 
 ### Routine calls, review fix pass
 
@@ -521,6 +555,10 @@ By the data lead's script (Q3): Arkansas's gap to Texas, 5.1 points against 3.55
 - D3-xxx | Entry 14.96 says a branch column starts "level with the step it leaves or enters" | "From the step … down" read as a direction of travel
 - D3-xxx | S73's title reads "In the 2024 cycle, Kamala D. Harris’s three joint fundraising committees sent $955.9 million to 54 other committees, and Donald J. Trump’s four sent $679.8 million to 56." | BC-M1 and D3-1330: the same two facts for each side, and the comparison of reach holds across all seven funds by script; the data lead reads it from both sides
 - D3-xxx | A no-break space holds a middle initial to its surname in S73's title | "Donald J. / Trump’s" broke across lines at 1440 px
+- D3-xxx | S70's measure line drops its retrieval date, and S72's House panel head prints its roll call once with its date ("House roll call 285, November 12, 2025") through a typography pair | The data lead's word items at maker A's sign-off; the date prints once, and the record's vote name keeps its year in the file
+- D3-xxx | S68 prints the research lead's `snapshot_once` source variant | D3-1327 at the main session's word: the snapshot date once in the source line, in S74's form
+- D3-xxx | S73's last note, S76's transfers note and S77's alt take W02, the label's word "net" and H06 | Maker B's second pass
+- D3-xxx | Entry 14.117's phone sentence says "one square for each state"; S81's note names the Census Bureau as the one that takes the median; the avoid sketch's caption and first `<desc>` say a party that wins a few large places looks bigger than its count | The cartographer's second pass (W01, W02, and the entry's own why)
 
 ### Requests, review fix pass
 
@@ -539,10 +577,23 @@ By the data lead's script (Q3): Arkansas's gap to Texas, 5.1 points against 3.55
 - Strict build `guide1.html` (04:47): exit 0, 0 warnings, 11,232,381 bytes, 344 rules, 638 specimens; rules 14.1 to 14.14 with the opener 175,678 bytes, 36,610 under 212,288 (the build report). Every new phrase found once in the page by script; "their gap’s margin" and "from round 2" found 0 times; all 15 `#group-14-N` links land on an id.
 - Playwright (`tools/cap.js`, scratch), one browser, on `guide1.html` at 1440, 1024, 390 and 360 px: rules 14.6, 14.9, 14.24 and 14.45 and group heads 12 and 14, 24 captures; no visible text under 13 px in any, no sideways page scroll at any width. The script's "past the width" list held only text in hidden alt paragraphs and table captions inside the tables' scrolling frames, not my words. Looked at by eye: 14.6's rule text at 1440 and 390 px, 14.9's at 360, group heads 12 and 14 at 390 and 12 at 1440, 14.45's use and builders lines at 1024 and 360.
 
+- **Second pass (05:12 to 06:15).** Each change made by `tools/apply.py` (scratch), which fails unless the old words occur once in the named field and once in the file's text and, by parse, only that field changes; the S72 typography pair, S68's `source_line` and the sketch's `<desc>` by short scripts with the same parse test. Kit builds with the sweep on: S67, S70, S72, S68 (maker A), S73, S76, S77 (maker B) and S81 (the cartographer), 8 PASS, 0 faults, 0 warnings, eight check files read; with frames S67 12,965, S68 9,750, S70 10,703, S72 7,802, S73 13,457, S76 7,570, S77 7,636 and S81 13,598 bytes, each under 14,106. Figure checks: maker A's 44 of 44, maker B's 0 faults, the cartographer's 0 faults. My S73 sums by script on `fec-jfc-transfers-2024-all-committees` (and the by-node file): $955,939,029.74 to 54 committees from three funds, $679,818,943.47 to 56 from four. The sketch's caption equals its first `<desc>` by script; the sketch weighs 3,817 bytes.
+- **Last runs (06:15 to 06:43).** The rules generator (every check passes, nothing changes in my files); `phase3_ch14_build.py`: 0 faults, 128 rules; strict build `guide2.html`: exit 0, 0 warnings, 11,231,784 bytes, 344 rules, 638 specimens; rules 14.1 to 14.14 with the opener 175,678 bytes, 36,610 under 212,288; every second-pass phrase found in the page by script, "the studio’s tile grid" 0 times, all 15 `#group-14-N` links land. The quick guide check on `guide2.html` with `--no-captures`: PASS, 2 widths, 344 rules, 694 specimens, 3,296 same-page links, 0 failures (24 minutes under load).
+- **Captures in `guide2.html`** (`tools/cap.js`, one browser, after the guide check closed): rules 14.6, 14.9, 14.45, 14.96, 14.97, 14.98, 14.100, 14.102, 14.104, 14.110, 14.112, 14.117, 14.120 and 14.124 and group heads 12 and 14 at 1440, 1024, 390 and 360 px, 64 captures: no visible text under 13 px and no sideways page scroll in any; the "past the width" list held only visually hidden alts (`vh`, `oac-alt`) and table captions and cells inside the tables' closed or scrolling frames. Looked at by eye: 14.124 whole at 390 px (the use line, the why's pointer, the sketch and its new caption), 14.104's rule at 1440, 14.117's rule at 1024, and in the kit's captures S73's title at 1440 and 390 and S72 at 390 px.
 ### Not tested, review fix pass
 
 - No plate, drawing or caption of rules 14.1 to 14.14 changed, so none was rebuilt in the kit; plates on Charcoal, in grayscale and in forced colors not looked at.
 - Rule 14.6's specification table in the page looked at by script only (each new row found once), not by eye.
 - The quick guide check and the kit's `--all` (the main session runs them).
 - How the shorter Rule 14.6 reads aloud to a real reader; the simulated reader's stoppers fixed in words only, not retested on a panel.
-- The makers' words: handed, not yet applied or read in their files.
+- The makers' plates on Charcoal, in grayscale and in forced colors inside the guide (the kit's own captures on both grounds and in grayscale passed its checks); of the kit's captures I looked at S73 and S72 only.
+- S69's and S72's captions and every "download" or "CSV file" line: left as they stand (D3-1321), so not reread for a rewrite.
+- The avoid sketch's colors and S16's range words: waiting on Dustin, so S16 was not changed or rebuilt.
+- How the changed words sound to a real reader; no panel retest.
+
+### Files, review fix pass
+
+- Modified, mine: `work/build/scripts/phase-3/phase3_ch14_rules_build.py` (Rule 14.6's paragraphs and rows, Rule 14.9's words, group lines 12 and 14), which rewrote `work/build/guide/entries/14-006.json`, `14-009.json` and `14-chapter.json`; the specimens it writes came out byte for byte as before.
+- Modified, finished owners' words (D3-669): `work/build/guide/entries/14-024.json`, `14-045.json`, `14-057.json`, `14-073.json`, `14-091.json`, `14-092.json` (rounds 1 and 2); maker A's `work/build/chart-kit/specs/s67.json`, `s68.json`, `s70.json`, `s72.json` and `work/build/guide/entries/14-096.json`; maker B's `s73.json`, `s76.json`, `s77.json`; the cartographer's `s81.json`, `work/build/guide/entries/14-117.json`, `14-124.json` and `work/build/guide/specimens/s-14-124-sketch.html` (its first `<desc>`).
+- Rewritten by every owner's run: `work/build/guide/chapters/14-data-visualization.json`, the chapter manifest and the example log (`phase3_ch14_build.py`, the engineer's).
+- This file. Scratch only: `tools/dump.py`, `tools/lint.py`, `tools/apply.py`, `tools/cap.js`, `words/*.json`, the builds `guide1.html` and `guide2.html` with their reports, `kit-out-a/`, `kit-out-b/`, `kit-out-c/`, and the captures in `caps/` and `caps2/`.
