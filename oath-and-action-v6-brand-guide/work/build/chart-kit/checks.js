@@ -700,7 +700,9 @@ function check_csv(K, csv_text, rows, ds_meta) {
 }
 
 function to_csv(rows, columns) {
-  const q = v => { if (v === null || v === undefined) return ''; const s = String(v); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+  // R3-3: in a one-column file an empty cell is written "", so its line is not read as no row
+  const one = columns.length === 1;
+  const q = v => { if (v === null || v === undefined || v === '') return one ? '""' : ''; const s = String(v); return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
   return [columns.join(',')].concat(rows.map(r => columns.map(c => q(r[c])).join(','))).join('\n') + '\n';
 }
 

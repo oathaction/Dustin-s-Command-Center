@@ -40,7 +40,8 @@
       var row_words = function (place, ls) {
         var parts = ls.map(function (r) {
           if (L.shared_level && String(r[el]) === String(L.shared_level)) return fill(L.shared_words, { n: r[ec] });
-          var nm = short(r[en]).split(' ' + (L.single || 'District of') + ' ' + place).join('').split((L.single || 'District of') + ' ' + place).join('').trim();
+          var sg = (L.single || 'District of') + ' ' + place, nm = short(r[en]);
+          nm = nm === place ? '' : nm.split(' ' + sg).join('').split(sg).join('').trim();
           return (nm ? nm + ' ' : '') + r[ec];
         });
         var odd = L.apart_level && ls.some(function (r) { return String(r[el]) === String(L.apart_level); });
@@ -79,6 +80,7 @@
             var o = it.head ? { stroke: 'subject', named: true, sub: it.sub, roles: ['label'], pad: [10, 7], weight: 700 }
               : it.odd ? { fill: 'track', stroke: 'context', roles: ['tick'], pad: [8, 4], weight: 400 }
                 : { fill: 'surface', stroke: false, roles: ['tick'], pad: [0, 3], weight: 400, text: 'label' };
+            if (it.odd) o.text = 'label';
             P.node(c, b, it.words, Object.assign({ align: 'start', data: { key: it.head ? String(k[en]) : it.place, field: it.head ? 'court' : 'place', value: it.words } }, szo, o));
           });
           cols[ci] = top + t.height + vg;

@@ -1,0 +1,139 @@
+{
+ "kit": 1,
+ "id": "S82",
+ "form": "district-tile-map",
+ "family": "maps",
+ "tier": "extended",
+ "dataset": [
+  "clerk-house-results-2024-by-district",
+  "census-gazetteer-2024-cd119-tile-layout"
+ ],
+ "sort": [
+  {
+   "field": "state",
+   "order": "asc"
+  },
+  {
+   "field": "district",
+   "order": "asc"
+  }
+ ],
+ "reader_question": "Which party won each House seat in 2024, and by how much, with the same margin classes as Michigan’s district map?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: official results the states certified, compiled by the Clerk of the House",
+ "title": "Republicans won 220 House seats in November 2024 and Democrats 215, and 36 of the 435 races were decided by under 5 points.",
+ "measure_line": "Winner’s margin over the runner-up, in percentage points of all votes for the office, in each of the 435 House districts, general election of November 5, 2024. Each square is one district, whatever its size.",
+ "notes": [
+  "Each district is one square, placed so states keep their places and districts their order within each state, with Alaska and Hawaii apart at the lower left. The squares show seats, not land.",
+  "The margin is the winner’s votes less the runner-up’s, as a share of all votes for the office, the same rule in every kind of race. A seat with one candidate on the ballot has no margin.",
+  "A ring marks 14 races decided another way: six between two candidates of one party (California’s 12th, 16th, 20th and 34th, and Washington’s 4th and 9th), Alaska’s first round of ranked-choice counting, Maine’s 2nd district’s final round, and Louisiana’s six November open primaries.",
+  "The District of Columbia’s delegate, who has no vote on the House floor, is not drawn."
+ ],
+ "source_line": "Source: Office of the Clerk, U.S. House of Representatives, Statistics of the Presidential and Congressional Election of November 5, 2024, 435 House districts; U.S. Census Bureau, 2024 Gazetteer Files, congressional districts of the 119th Congress. Retrieved November 12, 2026. Margins computed by Oath & Action from the official counts; tile layout by Oath & Action from the Bureau’s district centers.",
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "Two tile maps of the 435 House districts, one square each, grouped by state. The first fills the 215 seats Democrats won and the second the 220 Republicans won, each square shaded by the winner’s margin in four gray steps from under 5 points to 20 or more, with the other party’s seats as outlines. Thirty-six races were decided by under 5 points, 22 won by Democrats and 14 by Republicans, and 22 seats had one candidate on the ballot.",
+ "table": {
+  "caption": "House races by district, 2024",
+  "columns": [
+   {
+    "field": "state",
+    "label": "State",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "district",
+    "label": "District",
+    "format": "text",
+    "words": {
+     "00": "At large"
+    }
+   },
+   {
+    "field": "winner",
+    "label": "Winner",
+    "format": "text"
+   },
+   {
+    "field": "winner_group",
+    "label": "Party",
+    "format": "text"
+   },
+   {
+    "field": "margin_pct",
+    "label": "Margin, points",
+    "format": "number:1",
+    "empty": "Unopposed"
+   },
+   {
+    "field": "seat_kind",
+    "label": "Kind of seat",
+    "format": "text"
+   }
+  ]
+ },
+ "phone": "differs",
+ "phone_note": "On phones the squares are too small to hold a dot or a ring, so a note under the map names the unopposed seats and the races decided another way.",
+ "artboard": "reading",
+ "domain": "D02",
+ "states": [],
+ "encode": {
+  "state": "state",
+  "district": "district",
+  "party": "winner_group",
+  "margin": "margin_pct",
+  "kind": "seat_kind"
+ },
+ "labels": {
+  "layout": "census-gazetteer-2024-cd119-tile-layout",
+  "panels": [
+   {
+    "value": "Democratic",
+    "label": "Democrats won {n} seats"
+   },
+   {
+    "value": "Republican",
+    "label": "Republicans won {n} seats"
+   }
+  ],
+  "steps": [
+   5,
+   10,
+   20
+  ],
+  "step_labels": [
+   "Under 5 points",
+   "5 to under 10 points",
+   "10 to under 20 points",
+   "20 points or more"
+  ],
+  "key_title": "Winner’s margin over the runner-up",
+  "marks": {
+   "unopposed on the ballot": "dot",
+   "one-party contest (top-two)": "ring",
+   "ranked-choice, first round (the Clerk prints the first round)": "ring",
+   "ranked-choice, final round (the Clerk prints the final round)": "ring",
+   "Louisiana open primary, decided in November": "ring"
+  },
+  "mark_labels": {
+   "dot": "Unopposed on the ballot, no margin",
+   "ring": "Another kind of contest; the table names it"
+  },
+  "ghost_label": "Outline: the seat went to the other party",
+  "small": {
+   "dot": "Unopposed on the ballot, no margin: {seats}.",
+   "ring": "Another kind of contest: {seats}."
+  },
+  "codes_note": "Codes not shown on the map, where a state’s squares leave no room: {codes}. The table names every seat."
+ },
+ "notes_internal": [
+  "Ruling (b) and (f): party by position, two panels, Democrats first, each named with its seats ({n} counted from the data); margin by four gray magnitude steps, step 1 with the context edge; unopposed seats step 4 with a dot; seats decided another way their step with a ring; no hue carries party (DR-48, DR-58, DR-64).",
+  "Ruling (f): a seat's class follows its margin as printed to one decimal; by script 36, 33, 85 and 259 seats, and 22 unopposed (check S82 in cartographer_round3_derive.py --figures).",
+  "The tile layout is our own, built by cartographer_round3_derive.py from the Gazetteer's district centers (data plan row 111); no published layout was traced."
+ ],
+ "formats": {
+  "margin": "number:1"
+ }
+}

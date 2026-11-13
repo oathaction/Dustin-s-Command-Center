@@ -244,12 +244,29 @@ export function island_table(spec, rows, columns, extra) {
   used.concat([...inTable]).forEach(c => { if (columns[c]) ctypes[c] = { type: columns[c].type }; });
   const payload = { mode: 'table', spec: draw_spec(spec), columns: ctypes };
   if (extra && Object.keys(extra).length) payload.extra = extra;
+  // R3-3 (DL-E1): a column that holds a map layer's geoids, every one in the layer's own order, is not carried; the page
+  // reads it back from geo.js, which the page carries once
+  const gk = geo_key(spec, rows, missing);
+  if (gk) { payload.geo_key = gk; missing.splice(missing.indexOf(gk.field), 1); }
   if (missing.length) payload.csv = C.to_csv(rows, missing);
   const carry = K.lean_carry(spec, rows, columns);
   if (Object.keys(carry).length) payload.carry = carry;
   return island_element(payload);
 }
 
+// R3-3: the map layer whose ids a column of the rows holds, in order, every one: {field, layer}, or null
+export function geo_key(spec, rows, fields) {
+  const G = globalThis.OAChartGeo;
+  if (!G || !G.layers || !rows.length) return null;
+  const files = [].concat(spec.dataset || []);
+  for (const name of Object.keys(G.layers)) {
+    if (files.indexOf(G.layers[name].file) < 0) continue;
+    const ids = K.geo(name).ids;
+    if (ids.length !== rows.length) continue;
+    for (const f of fields) if (rows.every((r, i) => String(r[f]) === ids[i])) return { field: f, layer: name };
+  }
+  return null;
+}
 // The island carried compressed (DR-238): its JSON deflated (raw, level 9) and written as base64 in a data block the
 // browser never runs, <script type="text/plain" data-oa-chart-data="deflate">. The kit inflates it at load (K.island);
 // only the script reads it, so a reader with scripts off loses nothing. Each island is inflated again here by the kit's

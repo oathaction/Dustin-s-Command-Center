@@ -8,13 +8,14 @@
  * encode: state (code), district (text), party (category), margin (number), kind (category).
  * labels: layout (the layout dataset: state, district, col, row), panels ([{value, label}] in order; {n} gives the
  * party's seats), steps ([5, 10, 20]), step_labels (four words), key_title, marks ({kind: 'dot' | 'ring'}),
- * mark_labels ({dot, ring}), ghost_label, small ({dot, ring}: the note's words where marks drop; {seats} fills). */
+ * mark_labels ({dot, ring}), ghost_label, small ({dot, ring}: the note's words where marks drop; {seats} fills),
+ * codes_note (words under the map naming states whose code found no room in either panel; {codes} fills). */
 (function (K) {
   'use strict';
   K.register_chart({
     form: 'district-tile-map', name: 'District Tile Map', family: 'maps',
     encode: { state: 'code', district: 'text', party: 'category', margin: 'number?', kind: 'category' },
-    labels: ['layout', 'panels', 'steps', 'step_labels', 'key_title', 'marks', 'mark_labels', 'ghost_label', 'small'],
+    labels: ['layout', 'panels', 'steps', 'step_labels', 'key_title', 'marks', 'mark_labels', 'ghost_label', 'small', 'codes_note'],
     phone: 'differs', extra: true,
     draw: function (c) {
       var L = c.labels, W = c.width, es = c.field('state'), ed = c.field('district'), ep = c.field('party');
@@ -36,8 +37,8 @@
         return { r: r, col: t.col, row: t.row, st: step(r[em]), mk: marks[r[ek]] || null };
       }).filter(Boolean);
       var gap = W >= 560 ? 2 : 1, pitch = Math.floor((W + gap) / cols * 10) / 10, size = pitch - gap;
-      var big = size >= 10;   // dots and rings only where a square holds them (ruling (b))
-      var y = 0, ink = function (s) { return 'mag-' + s; };
+      var big = size >= 10, gi = size >= 10 ? 2 : size >= 6 ? 1 : 0;   // a ghost sits inset, so it never reads as the lightest step   // dots and rings only where a square holds them (ruling (b))
+      var y = 0, ink = function (s) { return 'mag-' + s; }, named = {};
       // the key: the four steps, then the marks and the outline
       if (L.key_title) { var kt = c.text(0, y + 13, L.key_title, { role: 'eyebrow', weight: 700, fill: 'secondary', max: W }); y = kt.bottom + 6; }
       var sw = 14, kx = 0, ky = y + 14, row_h = 22;
@@ -57,7 +58,7 @@
       entries.forEach(function (e) {
         var tw = c.measure(e.w, 'tick'), need = sw + 6 + tw;
         if (kx > 0 && kx + need > W) { kx = 0; ky += row_h; }
-        if (e.ghost) c.rect(kx + 0.5, ky - 10.5, sw - 1, sw - 1, { stroke: 'ghost', width: 1, mark: false });
+        if (e.ghost) c.rect(kx + 2.5, ky - 8.5, sw - 5, sw - 5, { stroke: 'ghost', width: 1, mark: false });
         else swatch(kx, ky, e.s, e.mk);
         var tb = c.text(kx + sw + 6, ky, e.w, { role: 'tick', max: W - kx - sw - 6 });
         kx = tb.x + tb.w + 18;
@@ -78,7 +79,7 @@
             c.rect(x, yy, size, size, { fill: ink(s.st), data: { key: key, field: em, value: s.r[em] === null ? '' : s.r[em], party: s.r[ep] } });
             if (s.st === 1) c.rect(x + 0.5, yy + 0.5, size - 1, size - 1, { stroke: 'context', width: 1, mark: false });
             if (big && s.mk) mark_at(x + size / 2, yy + size / 2, size, s.st, s.mk);
-          } else c.rect(x + 0.5, yy + 0.5, size - 1, size - 1, { stroke: 'ghost', width: 1, mark: false });
+          } else c.rect(x + gi + 0.5, yy + gi + 0.5, size - 2 * gi - 1, size - 2 * gi - 1, { stroke: 'ghost', width: 1, mark: false });
         });
         // lines between states and round the map, in the gaps between squares
         var d = '', half = gap / 2;
@@ -90,9 +91,9 @@
           if (other(0, 1)) d += 'M' + K.round(x - half) + ',' + K.round(yy + size + half) + 'H' + K.round(x + size + half);
           if (other(0, -1)) d += 'M' + K.round(x - half) + ',' + K.round(yy - half) + 'H' + K.round(x + size + half);
         });
-        c.path(d, { stroke: 'baseline', width: W >= 560 ? 1.5 : 1 });
+        c.path(d, { stroke: 'context', width: gap >= 2 ? 1.5 : 1 });
         // each state's code in its block, over outlines or light squares only, nearest the block's middle
-        var by = {};
+        var by = {}, placed = [];
         seats.forEach(function (s) { (by[s.r[es]] = by[s.r[es]] || []).push(s); });
         Object.keys(by).sort().forEach(function (st) {
           var cells = by[st], mx = 0, my = 0;
@@ -105,6 +106,7 @@
           cands.sort(function (a, b) { return Math.hypot(a[0] - mx, a[1] - my) - Math.hypot(b[0] - mx, b[1] - my) || a[1] - b[1] || a[0] - b[0]; });
           for (var i = 0; i < cands.length; i++) {
             var bx = cands[i][0] - b0.w / 2, byy = cands[i][1] - b0.h / 2, ok = bx >= 0 && bx + b0.w <= W;
+            if (placed.some(function (p) { return bx < p.x + p.w + 2 && p.x < bx + b0.w + 2 && byy < p.y + p.h + 2 && p.y < byy + b0.h + 2; })) ok = false;
             // every square the words touch is this state's, and an outline or one of the two light steps here
             for (var col = Math.floor(bx / pitch); ok && col <= Math.floor((bx + b0.w) / pitch); col++) {
               for (var row = Math.floor((byy - top) / pitch); ok && row <= Math.floor((byy + b0.h - top) / pitch); row++) {
@@ -115,11 +117,14 @@
                 else if (String(o.r[ep]) === String(pn.value) && (o.st >= 3 || (big && o.mk))) ok = false;
               }
             }
-            if (ok) { c.text(cands[i][0], byy - b0.y + b0.y, st, { role: 'tick', weight: 700, anchor: 'middle', halo: true }); break; }
+            if (ok) { c.text(cands[i][0], byy - b0.y, st, { role: 'tick', weight: 700, anchor: 'middle', halo: true }); placed.push({ x: bx, y: byy, w: b0.w, h: b0.h }); named[st] = true; break; }
           }
         });
         y = Y(nrows - 1) + size + (pi < (L.panels || []).length - 1 ? 26 : 8);
       });
+      // a state whose squares left no room for its code in either panel is named under the map; the table names every seat
+      var none = Object.keys(at).map(function (k) { return k.split('|')[0]; }).filter(function (st, i, a) { return a.indexOf(st) === i && !named[st]; }).sort();
+      if (none.length && L.codes_note) { var cn = c.text(0, y + 16, String(L.codes_note).replace('{codes}', none.join(', ')), { role: 'note', fill: 'secondary', max: W }); y = cn.bottom + 4; }
       // where the squares are too small for dots and rings, the note names those seats
       if (!big && L.small) {
         ['dot', 'ring'].forEach(function (mk) {

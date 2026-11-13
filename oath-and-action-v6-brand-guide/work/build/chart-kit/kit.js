@@ -185,18 +185,20 @@
   // Data: CSV, types, the spec's rows
   // ------------------------------------------------------------------------------------------------------------
   K.parse_csv = function (text) {
-    var rows = [], row = [], cell = '', q = false, i = 0, s = String(text).replace(/^﻿/, '');
+    // R3-3 (round 3): a line that holds only "" is a row with one empty cell (a one-column island's missing value), kept;
+    // a line with nothing on it is still skipped
+    var rows = [], row = [], cell = '', q = false, i = 0, s = String(text).replace(/^﻿/, ''), quoted = false;
     for (; i < s.length; i++) {
       var ch = s[i];
       if (q) {
         if (ch === '"') { if (s[i + 1] === '"') { cell += '"'; i++; } else q = false; } else cell += ch;
-      } else if (ch === '"') q = true;
+      } else if (ch === '"') { q = true; quoted = true; }
       else if (ch === ',') { row.push(cell); cell = ''; }
       else if (ch === '\n' || ch === '\r') {
         if (ch === '\r' && s[i + 1] === '\n') i++;
         row.push(cell); cell = '';
-        if (row.length > 1 || row[0] !== '') rows.push(row);
-        row = [];
+        if (row.length > 1 || row[0] !== '' || quoted) rows.push(row);
+        row = []; quoted = false;
       } else cell += ch;
     }
     if (cell !== '' || row.length) { row.push(cell); rows.push(row); }
@@ -1391,7 +1393,15 @@
     // the rows a chart draws, read back from its own table equivalent and the island's extra columns (method load-table)
     var tb = spec.table || {}, out = [];
     // R3-3: a grouped table holds no row of its own; the island carries every row the drawing reads
-    if (tb.group) return K.type_rows(isl.csv ? K.parse_csv(isl.csv) : [], isl.columns);
+    // the geoids, read from the map layer the island names (R3-3)
+    var geo_ids = function (rs) {
+      if (!isl.geo_key || !K.geo) return rs;
+      var gids = K.geo(isl.geo_key.layer).ids;
+      if (!rs.length) rs = gids.map(function () { return {}; });
+      rs.forEach(function (o, i) { o[isl.geo_key.field] = gids[i]; });
+      return rs;
+    };
+    if (tb.group) return K.type_rows(geo_ids(isl.csv ? K.parse_csv(isl.csv) : []), isl.columns);
     var cell_raw = function (el, col) {
       return el.hasAttribute('data-v') ? el.getAttribute('data-v') : K.unformat(el.textContent, col);
     };
@@ -1435,7 +1445,7 @@
       var extra = K.parse_csv(isl.csv);
       out.forEach(function (o, i) { var e = extra[i] || {}; for (var k in e) o[k] = e[k]; });
     }
-    return K.type_rows(out, isl.columns);
+    return K.type_rows(geo_ids(out), isl.columns);
   };
   var PHONE_VIEW_PX = 358;
   K.figure = function (spec, rows, opts) {

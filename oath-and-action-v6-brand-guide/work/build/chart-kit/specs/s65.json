@@ -12,38 +12,26 @@
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: renewal outcomes the states reported to the Centers for Medicare & Medicaid Services",
- "title": "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, 49.0 million kept coverage and 16.0 million ended for a procedural reason.",
- "measure_line": "Medicaid and CHIP renewals due from April 2023 to March 2024, summed over the 12 months, by what happened to each, United States; a person due in two of the months counts twice",
+ "title": "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, 16.0 million ended for a procedural reason, and 49.0 million kept coverage.",
+ "measure_line": "Medicaid and CHIP renewals due from April 2023 to March 2024, summed over the 12 months, by what happened to each, United States",
  "notes": [
-  "Each stage holds only the renewals still in the stage above it. Pending renewals are set apart: the states had not decided them three months after they were due."
+  "Each stage holds only the renewals left in the stage above it. Coverage ended for a procedural reason when the state stopped it for an administrative reason, as the states reported it, without finding that the person no longer qualified.",
+  "Pending renewals, 4.9 million, sit apart at the bottom: the states had not decided them three months after they were due.",
+  "The national figures are our sums of the states’ reports. The file ends with renewals due in March 2024, before every state had finished, and a person due in two of the months counts twice."
  ],
  "credit": "Chart: Oath & Action",
  "illustrative": false,
- "alt": "Four bars from one left edge, each shorter than the one above. Of 76.7 million renewals due, 71.9 million were decided and 4.9 million were pending; 55.9 million were not ended for a procedural reason, after 16.0 million were; 49.0 million kept coverage, after 6.9 million were found ineligible.",
+ "alt": "Four bars from one left edge, each shorter than the one above: 76.7 million renewals due; 71.9 million decided; 55.9 million not ended for a procedural reason, after 16.0 million were, the loss drawn in the text’s ink; and 49.0 million that kept coverage, after 6.9 million were found ineligible. Below them, 4.9 million pending renewals sit apart.",
+ "chart_notes": [
+  "The renewals ended for a procedural reason, the loss the title names, are in the text’s ink. The stages, the other loss and the pending renewals are gray."
+ ],
  "table": {
   "caption": "Medicaid and CHIP renewals due April 2023 to March 2024, by stage, United States",
   "columns": [
-   {
-    "field": "stage",
-    "label": "Stage",
-    "format": "text",
-    "row_header": true
-   },
-   {
-    "field": "people",
-    "label": "People",
-    "format": "integer"
-   },
-   {
-    "field": "share_of_due",
-    "label": "Share of renewals due",
-    "format": "number:4"
-   },
-   {
-    "field": "role",
-    "label": "Kind of row",
-    "format": "text"
-   }
+   {"field": "stage", "label": "Stage", "format": "text", "row_header": true},
+   {"field": "role", "label": "Kind of row", "format": "text", "words": {"stage": "Stage", "set apart": "Set apart, pending", "drop": "Lost between stages", "split": "Part of kept coverage"}},
+   {"field": "people", "label": "People", "format": "integer"},
+   {"field": "share_of_due", "label": "Share of renewals due, 0 to 1", "format": "number:4"}
   ]
  },
  "phone": "same",
@@ -62,9 +50,7 @@
    "not_ended_procedural": "ended_procedural",
    "kept": "ended_ineligible"
   },
-  "apart": [
-   "pending"
-  ],
+  "apart": ["pending"],
   "names": {
    "due": "Renewals due",
    "decided": "Decided",
@@ -74,15 +60,16 @@
    "ended_procedural": "Ended for a procedural reason",
    "ended_ineligible": "Found ineligible"
   },
-  "named": [
-   "ended_procedural"
-  ]
+  "named": ["ended_procedural"]
  },
  "formats": {
   "value": "millions:1",
   "share": "percent:1"
  },
  "notes_internal": [
-  "Maker B, round 3. Data plan row 83 with change 11, rule 14.93. Draft words, before the data lead's rulings."
+  "Maker B, round 3. Data plan row 83 with change 11, rule 14.93. Draws the derived cms-medicaid-chip-renewal-funnel (P7-202, from cms-medicaid-chip-renewal-outcomes, P7-201): renewals due April 2023 to March 2024, nested stages from one base.",
+  "Data lead ruling (a): the named mark is the loss between decided and not ended for a procedural reason, 15,966,431, in the subject ink through labels.named (an area, no red); (b): stages in the light fill with the context edge (context ink on Charcoal) and their counts and shares printed, found ineligible in the track ink with the context edge, pending set apart below the stages after a gap, in the track ink with the context edge; automatic and form renewals in the table only.",
+  "Change 11 and Q-18: CMS’s own figures and period print; the difference from V7 I062’s KFF figures (more than 25 million disenrolled) is open question Q-18 for Dustin and is not drawn or corrected here.",
+  "Figures checked by maker_b_round3_derive.py --figures (check S65): 76,734,167 due (76.7 million), 71,882,535 decided (71.9 million), 55,916,104 not ended for a procedural reason (55.9 million), 48,967,998 kept (49.0 million), 15,966,431 ended for a procedural reason (16.0 million), 6,948,106 found ineligible (6.9 million), 4,851,632 pending (4.9 million); the stages nest; the twelve months April 2023 to March 2024 of the outcomes file sum to these figures."
  ]
 }

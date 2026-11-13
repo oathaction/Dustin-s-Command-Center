@@ -1030,8 +1030,9 @@
       var x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
       L.ids.forEach(function (id, fi) { if (id.slice(0, 2) !== px) return; L.rings(fi).forEach(function (rs) { rs[0].forEach(function (p) { var q = T.pt(p); if (q[0] < x0) x0 = q[0]; if (q[0] > x1) x1 = q[0]; if (q[1] < y0) y0 = q[1]; if (q[1] > y1) y1 = q[1]; }); }); });
       if (!(x0 <= x1)) return;
-      var b = { x: Math.max(0.5, x0 - pad), y: y0 - pad, w: 0, h: 0 };
-      b.w = Math.min(c.width - 0.5, x1 + pad) - b.x; b.h = y1 + pad - b.y;
+      // inside the drawing's width and the map's own box, so the frame never reaches past what the form made room for
+      var b = { x: Math.max(0.5, x0 - pad), y: Math.max(T.y + 0.5, y0 - pad), w: 0, h: 0 };
+      b.w = Math.min(c.width - 0.5, x1 + pad) - b.x; b.h = Math.min(T.y + T.h - 0.5, y1 + pad) - b.y;
       c.rect(b.x, b.y, b.w, b.h, { stroke: o.stroke || 'gridline', width: o.width || 1, mark: false });
       out.push(b);
     });

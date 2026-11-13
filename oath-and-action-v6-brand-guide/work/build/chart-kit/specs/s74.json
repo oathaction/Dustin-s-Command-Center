@@ -9,30 +9,65 @@
   "v7-links-with-regions"
  ],
  "where": {
-  "links": {"not": [0]}
+  "links": {
+   "not": [
+    0
+   ]
+  }
  },
  "reader_question": "Which parts of the atlas connect to which?",
  "evidence": "finding",
  "evidence_label": "Finding",
- "grade_line": "The atlas’s own model: our count of its connections by region",
- "title": "Of the atlas’s 118 connections, 23 start in governing institutions, more than in any other region, and all 7 authority connections start there.",
- "measure_line": "Connections in the atlas’s model, counted by the region each starts in and the region it reaches, as of October 15, 2026",
+ "grade_line": "Graded by the atlas, connection by connection: our count of its 118 connections by region, as of October 15, 2026",
+ "title": "The atlas’s 118 connections fill 44 of the 100 pairs of its ten regions, and 32 of them stay within one region.",
+ "measure_line": "Connections in the atlas’s model, counted by the region each starts in (rows) and the region it reaches (columns), as of October 15, 2026",
  "notes": [
-  "A connection links two variables in the atlas’s model; a count says how many connections join two regions, not how strong they are.",
-  "Authority connections, such as a legislature setting a regulator’s powers, carry no plus or minus sign in the atlas, so they form their own class."
+  "A connection joins two variables in the atlas’s model, from the one that acts to the one it affects. A cell counts the connections between two regions; it does not weigh them.",
+  "Lines of authority, such as Congress deciding public investment levels or the executive setting tariff rates, carry no plus or minus sign in the atlas. All seven start in governing institutions and fill three cells alone, each drawn with an outline.",
+  "Outside drivers, conditions the atlas treats as given, such as geography, receive no connection."
  ],
  "credit": "Chart: Oath & Action",
  "illustrative": false,
- "alt": "A grid of the atlas’s ten regions, rows for where a connection starts and columns for where it ends, with 44 of the 100 cells holding connections. Governing institutions starts 23, the most, including all seven authority connections; outside drivers receives none.",
+ "alt": "A grid of the atlas’s ten regions, rows for where a connection starts and columns for where it ends. Forty-four of the 100 cells hold connections, from 1 to 7 each, and the diagonal holds the 32 that stay within a region. Governing institutions starts 23, the most, among them all seven lines of authority; no connection reaches outside drivers.",
  "table": {
   "caption": "Connections in the atlas’s model by region, as of October 15, 2026",
   "columns": [
-   {"field": "from_title", "label": "From region", "format": "text", "row_header": true},
-   {"field": "to_title", "label": "To region", "format": "text"},
-   {"field": "links", "label": "Connections", "format": "integer"},
-   {"field": "positive", "label": "Plus sign", "format": "integer"},
-   {"field": "negative", "label": "Minus sign", "format": "integer"},
-   {"field": "no_sign", "label": "No sign (authority)", "format": "integer"}
+   {
+    "field": "from_title",
+    "label": "From region",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "to_title",
+    "label": "To region",
+    "format": "text"
+   },
+   {
+    "field": "links",
+    "label": "Connections",
+    "format": "integer"
+   },
+   {
+    "field": "positive",
+    "label": "Plus sign",
+    "format": "integer"
+   },
+   {
+    "field": "negative",
+    "label": "Minus sign",
+    "format": "integer"
+   },
+   {
+    "field": "no_sign",
+    "label": "Lines of authority, no sign",
+    "format": "integer"
+   },
+   {
+    "field": "link_ids",
+    "label": "Connections by ID",
+    "format": "text"
+   }
   ]
  },
  "phone": "differs",
@@ -40,7 +75,130 @@
  "artboard": "reading",
  "domain": "all",
  "states": [],
- "v7": {"grade": "documented", "ids": [], "snapshot": "2026-10-15"},
+ "v7": {
+  "grade": "documented",
+  "ids": [
+   "L01",
+   "L02",
+   "L03",
+   "L04",
+   "L05",
+   "L06",
+   "L08",
+   "L09",
+   "L10",
+   "L11",
+   "L12",
+   "L13",
+   "L14",
+   "L15",
+   "L16",
+   "L17",
+   "L18",
+   "L19",
+   "L20",
+   "L21",
+   "L22",
+   "L23",
+   "L24",
+   "L25",
+   "L26",
+   "L27",
+   "L28",
+   "L29",
+   "L30",
+   "L31",
+   "L32",
+   "L33",
+   "L34",
+   "L35",
+   "L36",
+   "L37",
+   "L38",
+   "L39",
+   "L40",
+   "L41",
+   "L42",
+   "L44",
+   "L45",
+   "L46",
+   "L47",
+   "L48",
+   "L49",
+   "L50",
+   "L51",
+   "L52",
+   "L53",
+   "LX1",
+   "LX2",
+   "LX3",
+   "LX4",
+   "LX5",
+   "T01",
+   "T02",
+   "T03",
+   "T04",
+   "T05",
+   "T06",
+   "T07",
+   "T08",
+   "T09",
+   "T10",
+   "T11",
+   "L54",
+   "T12",
+   "L55",
+   "L56",
+   "L57",
+   "LE01",
+   "LE02",
+   "LE03",
+   "LE04",
+   "LE05",
+   "LE06",
+   "LE07",
+   "LE08",
+   "LE09",
+   "LE10",
+   "LE11",
+   "LE12",
+   "LE13",
+   "LE14",
+   "LE15",
+   "LE16",
+   "LE17",
+   "LE18",
+   "LE19",
+   "LE20",
+   "LE21",
+   "LE22",
+   "LE23",
+   "LE24",
+   "LE25",
+   "LE26",
+   "LE27",
+   "LT01",
+   "LT02",
+   "LT03",
+   "LT04",
+   "LT05",
+   "LT06",
+   "LT07",
+   "LT08",
+   "LT09",
+   "LT10",
+   "LT11",
+   "LT12",
+   "LT13",
+   "LT14",
+   "LT15",
+   "LT16",
+   "LT17",
+   "LT18",
+   "LT19"
+  ],
+  "snapshot": "2026-10-15"
+ },
  "source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, model connections counted by region, as of October 15, 2026, United States. Snapshot of October 15, 2026. Counted by Oath & Action.",
  "encode": {
   "from": "from_region",
@@ -49,7 +207,18 @@
   "special": "no_sign"
  },
  "labels": {
-  "order": ["A", "B", "C", "D", "E", "X", "production", "household", "money", "TC"],
+  "order": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "E",
+   "X",
+   "production",
+   "household",
+   "money",
+   "TC"
+  ],
   "names": {
    "A": "Economic structure",
    "B": "Political inputs",
@@ -63,23 +232,70 @@
    "TC": "Technology mechanisms"
   },
   "groups": [
-   {"name": "Power and accountability", "keys": ["A", "B", "C", "D", "E", "X"]},
-   {"name": "How the economy reaches a household", "keys": ["production", "household", "money"]},
-   {"name": "Technology and its effects", "keys": ["TC"]}
+   {
+    "name": "Power and accountability",
+    "keys": [
+     "A",
+     "B",
+     "C",
+     "D",
+     "E",
+     "X"
+    ]
+   },
+   {
+    "name": "How the economy reaches a household",
+    "keys": [
+     "production",
+     "household",
+     "money"
+    ]
+   },
+   {
+    "name": "Technology and its effects",
+    "keys": [
+     "TC"
+    ]
+   }
   ],
   "steps": [
-   {"min": 1, "max": 1, "label": "1"},
-   {"min": 2, "max": 2, "label": "2"},
-   {"min": 3, "max": 4, "label": "3 or 4"},
-   {"min": 5, "max": 7, "label": "5 to 7"}
+   {
+    "min": 1,
+    "max": 1,
+    "label": "1",
+    "fill": "seq-1"
+   },
+   {
+    "min": 2,
+    "max": 3,
+    "label": "2 or 3",
+    "fill": "seq-3"
+   },
+   {
+    "min": 4,
+    "max": 5,
+    "label": "4 or 5",
+    "fill": "seq-4"
+   },
+   {
+    "min": 6,
+    "max": 7,
+    "label": "6 or 7",
+    "fill": "seq-5"
+   }
   ],
   "key_title": "Connections in a cell",
-  "special_label": "Authority connections, no sign",
+  "special_label": "Lines of authority, no sign",
   "from_label": "From",
   "to_label": "To",
-  "named": ["D"]
+  "axes_short": "Rows: where a connection starts. Columns: where it ends."
  },
  "notes_internal": [
-  "Maker B, round 3. Data plan row 95 with change 1, rule 14.105. Draft words, before the data lead's rulings."
+  "Maker B, round 3. Data plan row 95 with change 1, rule 14.105. Draws the derived v7-region-connection-matrix (from v7-links-with-regions), V7 snapshot October 15, 2026; where drops the 56 empty pairs, so the table lists the 44 filled cells as links (from, to, count), R3-6.",
+  "Data lead ruling (a): no named mark, the matrix answers with its pattern; (b): four sequential steps 1; 2 or 3; 4 or 5; 6 or 7 on seq-1, seq-3, seq-4 and seq-5, seq-1 with the context edge; empty cells the ground in a gridline; the seven lines of authority in three cells with no fill and a 1.5 px edge in the text's ink; no split by sign; the table gives plus, minus and no sign per cell with the connection IDs as typed chips (every ID in v7.ids).",
+  "Figures checked by maker_b_round3_derive.py --figures (check S74): 118 connections, 44 of 100 cells filled, 32 within a region (the diagonal), governing institutions starts 23 (the most), all 7 authority connections start there and fill three cells, outside drivers receives 0, counts run 1 to 7. The two example lines of authority are LE02's and LE19's names in V7."
+ ],
+ "chart_notes": [
+  "Each filled cell is shaded by its count, with the count printed in it; the more connections, the stronger the shade. Lines of authority, which carry no sign, fill three cells drawn with an outline and no shade."
  ]
 }
