@@ -852,6 +852,48 @@ I read every page table of S68 (scripts-off markup, all 8 rows), S72 (all 6), S7
 - S70's measure line still ends "retrieved November 12, 2026". S70 is not on D3-1327's list; the editor decides whether call 9's rule reaches it.
 - S72's House panel head reads "House roll call 285, 2025, November 12, 2025", with the year twice.
 
+### Maker B, review fix pass: signed off, with S73’s title (05:40 UTC)
+
+At 05:37 I built S65 and S73 to S77 from the files as they stand with `node work/build/chart-kit/oa-chart.mjs build s65 s73 s74 s75 s76 s77 --widths 1440,390,296,256 --out <scratch>/kit-b`, sweep on: 6 PASS, 0 faults, and six check files read, each with 0 faults and 0 warnings. The engineer's new `kit-build.js` (D3-1414) ran under the same command. One browser was used at a time, and I ran no guide check.
+
+What I looked at, at 1x:
+- S73 at 1440 px on Newsprint and on Charcoal; at 390 px on Newsprint, on Charcoal and on Charcoal in grayscale; at 256 px on both grounds.
+- S76 at 1440 px on both grounds (the first 1,000 px), and at 390 and 256 px on both grounds.
+- S74 at 1440 px on Newsprint and on Charcoal in grayscale (the grid and its notes), and at 256 px on both grounds.
+- S77 and S65 at 1440 px on Charcoal and at 256 px on both grounds.
+- S75 at 256 px on both grounds.
+- Sketch 14.94 rendered alone on Newsprint at device scale 2, with every word's box measured by `getBBox`.
+
+S73's page table was parsed by script from the kit's page (all 20 rows).
+
+**S73's title, read from both sides and signed off.** "In the 2024 cycle, Kamala D. Harris’s three joint fundraising committees sent $955.9 million to 54 other committees, and Donald J. Trump’s four sent $679.8 million to 56."
+- By script on `fec-jfc-transfers-2024-all-committees`, line 22 only: $955,939,029.74 from 3 funds to 54 committees, and $679,818,943.47 from 4 funds to 56.
+- From the left: each nominee is named in full with the same verb and one measure, and the 56 committees Trump's funds reached stand beside Harris's 54.
+- From the right: Harris's larger dollar total is the record's, read the same way. The count of funds is given for both, so neither side's bar reads as one committee.
+- No word ranks or judges either side, and the comparison holds across every fund the rule finds (D3-1330).
+
+**Signed off: S65, S73 to S77, entries 14.104, 14.105, 14.109, 14.110 and 14.112, and sketch 14.94.**
+- **S73 (BC-M1, ST-M1, B-S1, BC-S2, ST-S6, B-S2).**
+  - The drawing: one bar per nominee with every link in the light fill and a party-ink edge. Bars and links read apart on both grounds and in grayscale at 390 px, and the key draws its widths as the links are drawn.
+  - Receivers by kind, all checked by script. For Harris: the campaign $533,666,265.32; the DNC $240,845,000.00; 51 state party committees $181,389,124.21 (the 50 states and DC); 1 other $38,640.21. For Trump: the campaign $407,754,931.07; the RNC $163,847,553.60; 50 state party committees $69,874,339.21 (48 states, DC and Guam); 4 others $38,342,119.59.
+  - Note 4's figures check by script: line 21B $27,342,597.86 and $12,660,108.41; line 28C $81,000.00 to two and $4,000.00 to four.
+  - The table's "From" names a fund in every row, and the refunds print "28C, refund".
+  - The "download" lines stay as written until Dustin answers Q1 (D3-1321).
+- **S76 (ST-S2, BC-S2, AX-S8).**
+  - Per-candidate transfers draw as "Transfers from the candidates’ other committees, net" at $175.1 million in and "Transfers to the candidates’ other committees, net" at $18.3 million out. My own script gave $175,103,772.47 and $18,313,248.58.
+  - The key band is in the band fill with its edge. Note 2's 297 campaigns and 0.058 percent check, and note 3 says how transfers count.
+  - The named band stays the one dark band, and every band reads as a band at 256 px on both grounds.
+- **S74 (BC-S14, AX-S1).** The diagonal is a gridline-ink line broken round each count, keyed "Within one region", and visible in the empty diagonal cell and the group gap at 1440 and 256 px on both grounds. The authority cells keep their text-ink edge in normal colors. The forced-colors second edge I did not look at; maker B did.
+- **S77 (B-S3, BC-S13, B-S4).** Each limit prints on its own line in the text's ink under the step's name. Note 1 ends "a state may move faster than they require". The date prints once, in the grade line.
+- **S65 (BC-S9, ST-S11).**
+  - The title names the states in both clauses, and its figures are unchanged.
+  - Note 1's example ("a renewal form or the information it asked for does not come back") rests on 42 CFR 435.916(a)(3)(iii), which the funnel's sidecar now quotes. That is a source my ruling did not have, so the example stands.
+  - The source line is the sidecar's `with_release` variant.
+- **Sketch 14.94 (SK-S1).** Every word sits 10 px or more inside the 320 by 236 frame but "Illustrative data", at D3-966's corner. "Start" sits at the plot's left edge, clear of the value labels.
+- **Words the editor changed (S73 note 4, S76 note 3, S77's alt)** were read by script; their figures match the checks above.
+
+Not looked at: S73's and S77's drawings in forced colors; S74 in forced colors; S75 at 1440 px; S65 at 390 px; any of maker B's plates inside a guide build; sketch 14.94 on Charcoal (my first harness overlapped two drawings and I did not repeat it on Charcoal).
+
 ### Tested, review fix pass
 
 - Clock read with `date -u` at 04:24, 04:26, 04:30, 04:31, 04:32, 04:34, 04:37 and 04:38 UTC.
@@ -970,3 +1012,4 @@ Not tested:
 - BC's, CD's and AX's captures, label counts and contrast figures: read from their reports, not repeated, except where a figure above says "by script".
 - After BC-M1's confirmation, 04:48 to 04:49 UTC, by script from the research lead's downloads in `.../round-3-fix/research/dl/bcm1/`: the payers to each campaign with their FEC designation (3 of 92 designated J for Harris, 4 of 64 for Trump), each fund's transfers to its campaign, each fund's recipient count and aggregate total, and the top recipients of five funds (Trump 47 Committee to the RNC $136,907,129.22; the Harris Action Fund to the DNC $51,530,000.00). Not tested: the line split of the four new funds, which waits on the research lead's itemized files and data check.
 - Maker A's sign-off, 05:13 to 05:17 UTC: the kit build and captures listed under "Maker A, review fix pass: signed off"; page tables parsed by script (`tables.py`, scratch); S72's tallies recounted from the frozen file; S68's note 2 compared with the frozen `controls` cell. Not tested: S72 in forced colors (maker A ran it); any capture at 390 or 296 px; S69 to S71 below the parts named; the CSV exports; maker A's plates inside a guide build.
+- Maker B’s sign-off, 05:37 to 05:40 UTC: the kit build and captures listed under "Maker B, review fix pass: signed off"; S73's sums by nominee, kind and line, state counts and the title's figures recomputed from `fec-jfc-transfers-2024-all-committees`; S73's page table parsed by script; sketch 14.94 rendered with Playwright (`sketch94.cjs`, scratch) and its word boxes measured.
