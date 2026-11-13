@@ -12,7 +12,7 @@
  * encode: source (text), target (text), value (number), target_key (id, matched by labels.nodes), kind (category,
  * optional, matched by labels.nodes), line (category, optional: with labels.lines, only rows of those values draw).
  * labels: nodes ([{source, keys: [target_key], kind: [kind], rest: true, name}], in drawing order: a row joins the first
- * node it matches; {n} in a name counts its rows), sources ({source: the block's heading}), sub ({source: words under the
+ * node it matches; {n} in a name counts its rows), sources ({source: the block's heading, with {total}}), sub ({source: words under the
  * heading, with {total} and {n}}), value ('{v}' words under a node's name; default '{v}'), unit (the measure one pixel of
  * width carries), key_steps ([measures] the key draws), key_title, key_hairline (words under the key, {v} the measure of
  * one pixel), ink (a color role; default 'party'), side_by_side (px), lines ([values of encode.line] drawn).
@@ -76,7 +76,7 @@
         var x0 = two ? bi * (pw + 28) : 0, y0 = two ? top : low + (bi ? 28 : 0), rx = x0 + bx;
         var hsub = (L.sub || {})[b.source];
         hsub = hsub ? String(hsub).split('{total}').join(v(b.total)).split('{n}').join(String(b.rows)) : undefined;
-        var nb = c.text(x0, y0 + lb * 0.95, String((L.sources || {})[b.source] || b.source), { role: 'label', weight: 700, max: pw });
+        var nb = c.text(x0, y0 + lb * 0.95, String((L.sources || {})[b.source] || b.source).split('{total}').join(v(b.total)), { role: 'label', weight: 700, max: pw });
         if (hsub) nb = c.text(x0, nb.bottom + tk * 0.95, hsub, { role: 'tick', max: pw, fill: 'label' });
         y0 = Math.ceil(nb.bottom) + 12;
         // each receiver's slot: as tall as its bar or its words, whichever is taller

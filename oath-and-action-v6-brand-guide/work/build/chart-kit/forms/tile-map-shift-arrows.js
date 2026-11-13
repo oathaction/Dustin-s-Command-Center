@@ -106,6 +106,7 @@
       if (L.frame_label) {
         c.rect(0.5, ky + 6.5, 13, 13, { stroke: 'label', width: c.t('tile-frame'), mark: false });
         var fb = c.text(20, ky + 18, L.frame_label, { role: 'tick', max: W - 24 });
+        bot = Math.max(bot, fb.bottom + 12);   // RS-5: the note under it clears the frame's words when they wrap
         if (!codes) {
           // with no codes in the tiles, the framed states are named under the frame's words, so the drawing still says
           // which states they are (the data lead's MA-F3)

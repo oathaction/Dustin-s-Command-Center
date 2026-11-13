@@ -1,0 +1,47 @@
+{
+ "id": "P03",
+ "form": "county-choropleth",
+ "spec": "work/handoffs/phase-3/round-3-production-test/20261113_P03-Spec-V5.json",
+ "rows": 3144,
+ "drawings": [
+  {
+   "ground": "newsprint",
+   "page": 1440,
+   "width": 720,
+   "height": 484,
+   "svg_bytes": 398157
+  },
+  {
+   "ground": "newsprint",
+   "page": 390,
+   "width": 358,
+   "height": 295,
+   "svg_bytes": 395477
+  },
+  {
+   "ground": "charcoal",
+   "page": 1440,
+   "width": 720,
+   "height": 484,
+   "svg_bytes": 398157
+  },
+  {
+   "ground": "charcoal",
+   "page": 390,
+   "width": 358,
+   "height": 295,
+   "svg_bytes": 395477
+  }
+ ],
+ "faults": [],
+ "warnings": [
+  "map: the form prints a national figure beside the map (labels.nation_text) and this spec sets none; entries 14.115 to 14.120 ask for it: print it, or say in a note why the data holds no national row and ask the research lead for one (AX-S6)"
+ ],
+ "weight": {
+  "figure": 12798,
+  "with_frame": 13548,
+  "share": 13588,
+  "share_from": "the guide build of 2026-11-13 06:55:07",
+  "ceiling": 15000
+ }
+}

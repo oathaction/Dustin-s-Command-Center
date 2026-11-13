@@ -21,6 +21,16 @@
 .oac-art[data-oa-stage] { overflow-x: auto; overflow-y: hidden; padding-bottom: 4px; }
 .oac-art[data-oa-stage] > svg.oac-svg { max-width: none; }
 .oac-art[data-oa-stage]:focus-visible { outline: 2px solid var(--oa-color-focus-ring); outline-offset: 2px; }
+/* RS-1 (second pass): while the staged drawing scrolls, a hint sits above it, and the frame shows both edges and a scroll
+   bar that stays in sight (styled, so no browser hides it until the pointer moves), so the cut at the right reads as more
+   to see, before a reader scrolls */
+.oac-stage-hint { margin: 20px 0 0; font: var(--oa-font-weight-regular) 14px/20px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); max-width: 42em; }
+.oac-stage-hint[hidden] { display: none; }
+.oac-stage-hint:not([hidden]) + .oac-art { margin-top: 8px; }
+.oac-art[data-oa-scrolls] { border-inline: 1px solid var(--oa-color-border-strong); padding-bottom: 0; scrollbar-width: auto; scrollbar-color: var(--oa-color-text-secondary) var(--oa-color-border-hairline); }
+.oac-art[data-oa-scrolls]::-webkit-scrollbar { height: 12px; }
+.oac-art[data-oa-scrolls]::-webkit-scrollbar-track { background: var(--oa-color-border-hairline); }
+.oac-art[data-oa-scrolls]::-webkit-scrollbar-thumb { background: var(--oa-color-text-secondary); border: 2px solid var(--oa-color-border-hairline); }
 .oac-illus { margin: 0 0 8px; font: var(--oa-font-weight-semibold) 14px/20px var(--oa-font-family-reading); }
 .oac-vh, .oac-fig[data-oa-js] .oac-alt, .oac-fig[data-oa-static] .oac-alt { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 /* With scripts off (no data-oa-js on the figure), the description shows as words with a line saying the drawing needs
@@ -186,7 +196,8 @@
   .oac-art[data-oa-sliced] > .oac-slices { display: block; }
   .oac-slices > svg.oac-slice { display: block; max-width: 100%; height: auto; overflow: hidden; break-inside: avoid; }
   .oac-tw { overflow: visible; }
-  .oac-art[data-oa-stage] { overflow: visible; }
+  .oac-art[data-oa-stage] { overflow: visible; border: 0; }
+  .oac-stage-hint { display: none; }
   .oac-art[data-oa-stage] > svg.oac-svg { max-width: 100%; }
   .oac-eq > summary::before { content: none; }
 }

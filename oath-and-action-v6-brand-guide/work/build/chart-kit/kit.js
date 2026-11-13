@@ -1264,11 +1264,20 @@
     }
     // C-M2: a staged drawing wider than its column takes a tab stop and a name, so a keyboard can scroll it (as the table's
     // frame does); it gives them up when it fits
+    // RS-1 (second pass): while it scrolls, a hint above the drawing says so before a reader scrolls (the frame's name says
+    // the same to a screen reader, so the hint is hidden from it), and the frame shows its edges and a scroll bar (kit.css)
     function stage_stop() {
+      var hint = art.previousElementSibling && art.previousElementSibling.classList.contains('oac-stage-hint') ? art.previousElementSibling : null;
       if (art.hasAttribute('data-oa-stage') && art.scrollWidth > art.clientWidth + 1) {
-        art.setAttribute('tabindex', '0'); art.setAttribute('role', 'group');
+        art.setAttribute('tabindex', '0'); art.setAttribute('role', 'group'); art.setAttribute('data-oa-scrolls', '');
         art.setAttribute('aria-label', word(opts, 'stage_scroll').replace('{w}', art.getAttribute('data-oa-stage')));
-      } else { art.removeAttribute('tabindex'); art.removeAttribute('role'); art.removeAttribute('aria-label'); }
+        if (!hint) { art.insertAdjacentHTML('beforebegin', '<p class="oac-stage-hint" aria-hidden="true"></p>'); hint = art.previousElementSibling; }
+        hint.textContent = word(opts, 'stage_hint');
+        hint.hidden = false;
+      } else {
+        art.removeAttribute('tabindex'); art.removeAttribute('role'); art.removeAttribute('aria-label'); art.removeAttribute('data-oa-scrolls');
+        if (hint) hint.hidden = true;
+      }
     }
     draw();
     // the phone drawing at its fixed width, once (D3-487); the figure's description and table carry its data, so it is

@@ -16,5 +16,6 @@
  "phone_view_part": "On a phone, {w} px: {part}",
  "phone_view_rows": "the first {n} of {total} rows; a phone draws them all",
  "stage_scroll": "The drawing at its full width, {w} px; scroll sideways to see all of it",
- "data_file": "this chart’s data file in the guide’s asset package"
+ "data_file": "this chart’s data file in the guide’s asset package",
+ "stage_hint": "Wider than this column. Scroll the drawing sideways to see all of it."
 }
