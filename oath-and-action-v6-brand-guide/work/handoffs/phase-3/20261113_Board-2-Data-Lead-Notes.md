@@ -4,18 +4,24 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. Data visualizatio
 
 ## Status
 
-- 17:52 UTC. **The board’s figures signed off on the builder's first full build** ("Sign-off", last heading), 54 of 54 checks agreeing; panel 1 gains S05 and the DR-229 table drops its false "No"s at the builder's next run, which I check again.
-- 17:48 UTC. **Part A closed** (under "Sign-off"). S73 at 14,148 bytes with its frame: ruled to trim to 14,106 or under ("Sign-off"). A4 and the S12 stacked tile picture signed off. Next: the figure sign-off of the builder's first full build.
+Current at 18:02 UTC (clock read). My three tasks are done; what is left is a recheck at the builder's next run.
+
+- **Part A closed (17:48 UTC).** A1 to A5 signed off (17:27 to 17:35), the editor's later S74 and S71 words (17:39) and S73's trim (17:54) signed off; A2 to A5 change no figure and A5 changes words only. A6 passed (the engineer). S73 was ruled to come back to 14,106 bytes or under with its frame; the editor cut note 4's last sentence, and the main session's final strict build measures it.
+- **Decisions file signed off (17:35 UTC)**, `work/handoffs/phase-3/20261113_Board-2-Decisions.json`: four panels, 31 items (S05 added at 17:51), `counts` and `checks` from `work/build/scripts/phase-3/board_2_data_lead_counts.py`. The editor owns the words and is editing them in place; my field edits since are logged under "Decisions file: my field edits".
+- **Board figures signed off (17:52 UTC)** on the builder's first full build: 54 of 54 checks agree by `scratch/.../data-lead/scripts/board_figures_check.py`. At the 17:51 run the only differences are words the editor changed after that run; no figure differs. The builder's next run prints S05's item, S04's and S08's rows and the DR-229 table without its false "No"s; rerun the script then (`python3 -I <script> <builder scratch> <out.json>` from the brand guide folder).
+- **Recommendations for Dustin:** S12, the stacked tile; the loop label question, each variable's own title everywhere; the V7.1 items as listed, RL-3 off the list.
+
+### Log, newest first
+
+- 17:53 UTC. S04 and S08 named in panel 1 with their causes (D3-555's pixel grid, D3-946's knockout); "Sign-off" has the trace.
+- 17:52 UTC. The board's figures signed off on the builder's first full build ("Sign-off").
+- 17:48 UTC. Part A closed. S73's weight ruled. A4 and the S12 stacked tile picture confirmed.
+- 17:39 UTC. The editor's S74 and S71 changes signed off before A6. Replies and requests written.
+- 17:35 UTC. A1 to A5 all signed off; the engineer may run A6. Decisions file `state: "signed off"`.
+- 17:33 UTC. Decisions file, second draft: the V7.1 and "answered" panels; S12's recommendation changed to the stacked tile ("Rulings").
+- 17:25 UTC. Decisions file, first draft; `counts` and `checks` written by the script.
+- 17:14 UTC. Schema agreed with the board builder: my schema below plus its six additions (`state`; `spec` and `rule`; picture `role` and `element`; `facts`; `rows` fields; `counts` as proposed). For the builder: `counts.rule_01_9` holds the board's table at the top level (108 examples, limits 27 and 21) and `built` holds the 97 as built; `counts.dr_229.examples` rows carry `passes` true, false or null (null where the test was not applied). Optional fields added later: `facts`, `question`, `list_item`, `list_note`, `list_file`, and `old`/`new` on DR-255.
 - 17:09 UTC. Started. Read CLAUDE.md, my role file, the brief, the decision log from D3-1312 to DR-260, V23 section 1, my round 3 notes and Gate 2's section 9.
-- 17:14 UTC. **Schema agreed** with the board builder (its notes, "Contracts", 17:12 UTC): my schema below plus its six additions, which I adopt as written: `state` ("draft" or "signed off"); `spec` and `rule` on every one-specimen item; PICTURE `role` (before, after, view) and `element`; `facts` (label and value pairs); `rows` may carry `spec`, `rule`, `what_changed`, `why`, `refs`; `counts` as proposed.
-- Count script written and run: `work/build/scripts/phase-3/board_2_data_lead_counts.py` (tiers, datasets against plan rows, Rule 01.9, DR-229). First results under "Rulings".
-- 17:25 UTC. **Decisions file, first draft written:** `work/handoffs/phase-3/20261113_Board-2-Decisions.json`, `state: "draft"`. Panels: board 1 drawings that changed (S12 with both views, S16, S10, the eleven placement moves, the twelve note-word changes), forms whose tier or data changed (tiers by script; S73, S76, S78, S80, S59, S54 and S55, S41, S20; the seventeen plan changes), and `counts` and `checks` written by the script with `--write` (a rerun keeps the editor's `note` words). Still to come: the atlas V7.1 panel (waits on the research lead's facts), the "answered" panel (waits on A1 to A5), and S12's stacked tile pictures (the cartographer's files).
-- **For the builder, the `counts` layout:** `counts.rule_01_9` holds the board's table at the top level (`total_examples` 108, `limit_domain` 27, `limit_state` 21, `by_domain` and `by_state` rows with `count`, `limit`, `passes`, `note`), and `built` holds the same for the 97 examples as built. `counts.dr_229.examples` rows carry `spec` or `where`, `rule`, `form`, `data`, `coverage_use`, `election_data`, `passes`, `test`; `note` is the words.
-- 17:35 UTC. **Part A: A1 to A5 all signed off; the engineer may run A6** ("Sign-off", last heading of Part A). A2 to A5 change no figure; A5 changes words only.
-- 17:33 UTC. **Decisions file, second draft:** all four panels hold their items. Added the atlas V7.1 panel (nine items and the loop label question, from the research lead's facts), the "answered" panel (DR-254 to DR-258, old and new words read by script from the committed state `33dc30a3` and the files as they stand), and S12 rewritten on the cartographer's measure. **My S12 recommendation changed** to the stacked tile; the reason is under "Rulings". Still `state: "draft"`; it turns "signed off" when A4 lands and the editor has read the words.
-- 17:39 UTC. Two editor changes after the Part A sign-off (S74 at 17:28, S71 at 17:37) signed off before A6; A6 runs on the specs as they stand. Replies to the editor and requests to the main session under "Replies and requests".
-- 17:35 UTC. **Decisions file `state: "signed off"`** (`signed_off_utc` 17:35:22Z), with `counts` and `checks` rerun after it. The editor owns the words from here; a word change needs no new sign-off unless it moves a figure. Next: the figure sign-off of the builder's first full build.
-- **For the builder:** new optional fields `facts` on S12 and the loop item, `question` on the loop item, `list_item` and `list_note` on two V7.1 items, `list_file` on the V7.1 panel, and `old`/`new` on DR-255. S12's stacked tile pictures name the cartographer's two HTML files. `answered` items carry `approval: "none"` at panel level.
 
 ## Schema for the decisions file (proposed 17:09 UTC, for the board builder)
 
@@ -205,6 +211,17 @@ Read the builder's first full build (17:48 UTC) and its 17:50 rerun (`work/board
 
 **Not checked by me:** the pictures' pixels beyond the board 1 comparisons (the builder photographs them from the strict build and the kit); the rules panel's photographs; the image and folder byte counts; the board's own check results (the builder's); the creative director's score of this board, still to come.
 
+### S73's trim: the words signed off (17:54 UTC)
+
+The editor dropped note 4's last sentence, "Each, with its transfers, is in {data_file}.", the cut I recommended. By `parta_diff.py`, note 4 and the table caption keep every figure; the caption still names the data file ("every committee is in" it), so the plate names it once. Not tested by me: the plate's page weight after the cut, which the main session's final strict build measures against 14,106. The editor's words in the decisions file's DR-254 item already say eight of the nine places name the file; I set the S73 note row's new words to the note as it stands.
+
+### S04 and S08 against board 1: named in panel 1 (17:53 UTC, for the main session)
+
+The builder's run 6 found S04's and S08's desk drawings off board 1's pixel for pixel. I diffed board 1's SVG files (`work/boards/phase-3/round-0/specimens/20261112_S04-…` and `…_S08-…`) against today's kit drawings:
+- **S08:** every difference is a 1 px rule moved half a pixel (for example `y1="66"` to `"66.5"`), the round 1 fix pass's pixel grid (D3-555: straight lines of a whole-pixel width snap to the grid so they draw crisp at 1x; the engineer's round 1 notes count the board 1 specimens among the 48 specs it moved). No word, figure or square moved.
+- **S04:** the same half-pixel move of its row rules, and four knockout rectangles in the ground's color where a rule crosses a value label, round 2's kit fix (D3-946, BC S1). No word or figure moved.
+- Both are in panel 1's placement list now, each with one plain line and its codes, and the list's "what changed" says once that the round 1 pixel grid moved lines in most board 1 drawings by up to half a pixel. The same cause explains the faint differences in S01, S02, S09, S11, S13 and S15, so their rows keep only the moves their owners made. With S05 (gap brackets, D3-428, added at 17:51), panel 1 names all fourteen board 1 charts whose drawing differs; S03, S06 and S07 match board 1.
+
 ## Replies and requests
 
 - **To the editor, the decisions file's words (17:39 UTC): agreed.** Every panel is written. I do not rerun `write_decisions_v1.py` or `patch_decisions_2.py`; any later change of mine is a targeted edit of one field, logged here, and `board_2_data_lead_counts.py --write` touches only `counts` and `checks` and keeps each `note`. Edit the word fields in place as you propose. Figures stay mine: a sentence whose figure you move comes back to me.
@@ -226,6 +243,8 @@ Each a targeted edit of one field, for the editor's table.
 | 17:51 | new item `S05` in `board-1-changed`; `board-1-changed` `lede`; `placement` `title`, `answer`, rows S09 and S15 reworded, rows S04 and S08 added | The builder's pixel comparison (17:48) found S04's and S08's desk drawings off board 1's and unnamed; my own crops of all fourteen that differ show S05's four gap brackets and 2003 tick (D3-428, round 1), S04's rules breaking round its labels (D3-946), S08's two rules a pixel lower, and S09's and S15's lines a pixel off. S05's four figures checked by script against the Census file (Hispanic 28.7 and 25.8, Black 27.3 and 29.6) |
 | 17:52 | `S12` creative director's view `note`; `S16` `what_changed`; `DR-255` `answer`; `counts.dr_229` `note` | Decision codes (D3-1515, DR-256, DR-64, D3-689) out of the words on the board's face; each code is in the item's `refs` |
 | 17:52 | `counts.dr_229` (script): `test` without its code, `refs` added on both counts; each row's `passes` null where the test was not applied (rule plates, Phase 2 specimens), and `data` and `test` words capitalized for a table | The board's 17:48 table printed "No" under "Passes" for twelve examples the test never applied to, which read as failures |
+| 17:53 | `placement`: `what_changed` adds the round 1 pixel grid; rows S04, S08 reworded with their causes; rows S09, S15 drop the pixel clause; `refs` add D3-555, D3-946 | The main session's question on S04 and S08; one cause stated once |
+| 17:54 | `DR-254` row S73 note 4 `new` (the editor had already rewritten the answer; my appended sentence removed at once) | The editor's S73 trim removed that place's line |
 
 ## Routine calls
 
@@ -249,6 +268,9 @@ Each a targeted edit of one field, for the editor's table.
 
 ## Tested
 
+- `board_figures_check.py` on the builder's 17:48, 17:50 and 17:51 runs: 54 checks agree each time; the only differences at 17:51 are panel 1 words the editor changed after that run.
+- `diff` of board 1's SVG files against today's kit drawings for S04 and S08 (half-pixel line moves; S04's four knockouts); pixel crops of all fourteen board 1 charts that differ; S05's four gap figures by script against `census-hvs-homeownership-by-race-annual.csv`.
+- `parta_diff.py` after S74's, S71's and S73's later edits (figures kept; S71's four addresses found in the sources file by `grep`).
 - Clock read with `date -u` at 17:35, 17:38, 17:39, 17:43, 17:48 and earlier at 17:07, 17:08, 17:10, 17:13, 17:14, 17:15, 17:17, 17:18, 17:19, 17:22, 17:24, 17:25, 17:26, 17:27, 17:29 and 17:33 UTC.
 - `board_2_data_lead_counts.py` (`python3 -I`), run five times, the last with `--write`: 114 forms, tiers 50, 36, 21, 7, none changed, every form matched in the coverage plan; 84 specs traced through `derived_from`, five not as their plan row (S73, S59, S04, S05, S20); Rule 01.9 97 built (equal to `14-example-log.json`, domain by domain) and 108 with round 4, every domain and state within its limit; DR-229 17 examples, 5 new forms all passing.
 - `a5_lines.py` before and after the editor's A5: source lines printing October 15, 2026 twice, 7 then 0; grade and source lines both printing it, 6 both times (S60, S63 and round 3's S67, S68, S71, S74).
@@ -266,6 +288,8 @@ Each a targeted edit of one field, for the editor's table.
 
 ## Not tested
 
+- S73's page weight after the trim, and every plate's page weight: the engineer's and the main session's strict builds measure them.
+- The board's run after my 17:51 to 17:54 edits (S05's item, S04's and S08's rows, the DR-229 table): not yet built when I stopped.
 - No build, capture or browser of my own: I ran no kit build, no guide build and no guide check. The engineer's export check, A3 self-test and kit checks, the editor's and cartographer's builds and weights, and the cartographer's color measures are theirs, read from their notes.
 - Sketch 14.124 with its final blue, rendered: I looked only at the earlier blue's capture.
 - S16's layout at the sweep's widths (the cartographer's A4 check, pending).

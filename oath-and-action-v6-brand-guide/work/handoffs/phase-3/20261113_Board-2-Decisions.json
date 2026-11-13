@@ -1,7 +1,7 @@
 {
  "schema": "board-2-decisions/1",
  "state": "signed off",
- "updated_utc": "2026-11-13T17:51:55Z",
+ "updated_utc": "2026-11-13T17:54:34Z",
  "written_by": "data lead",
  "words_owner": "editor",
  "reply_line": "To answer, reply “As recommended”, or name the item and your change.",
@@ -9,7 +9,7 @@
   {
    "id": "board-1-changed",
    "title": "Board 1 drawings that changed",
-   "lede": "Four drawings you approved on board 1 changed in rounds 1 to 3: S12, S16, S10 and S05. Thirteen board 1 drawings, S12 and S16 among them, moved a word, a label, a line or a key, most of them only at widths board 1 did not show, and twelve round 1 charts changed the words that name an ink. S12 is the one choice: we recommend the stacked tile in place of the scrolling frame, and one approval for the rest.",
+   "lede": "Four drawings you approved on board 1 changed in rounds 1 to 3: the shift arrows map (S12), the turnout bubble map (S16), the evidence mix bars (S10) and homeownership by race and ethnicity (S05). Thirteen board 1 drawings, S12 and S16 among them, moved a word, a label, a line or a key, most of them only at widths board 1 did not show, and twelve round 1 charts now name their inks in new words. S12 is the one choice here. We recommend the stacked tile in place of the scrolling frame, and one approval for the rest.",
    "approval": "one",
    "items": [
     {
@@ -17,10 +17,10 @@
      "spec": "S12",
      "rule": "14.115",
      "title": "S12, the shift arrows map at a desk",
-     "answer": "Board 1 approved S12 drawn 1,024 px wide. The guide's column is narrower than that at every desk width, so the approved drawing now sits in a frame 1,024 px wide that scrolls sideways, widened over the chapter list from a 1,280 px window. The other choice is a stacked tile: each state's code over its figure, with the arrow beneath, which fits a drawing 618 px wide or more, the guide's column from a 1,104 px window.",
-     "what_changed": "As built, at a 1,440 px window the frame shows 943 of the drawing's 1,024 px, from Alaska to New Jersey and Connecticut; the column with Maine and Rhode Island needs a scroll, and a line above the map says so. At a 1,024 px window the column shows 556 px, a little over half. While S12 is in view the chapter list on the left is hidden. The stacked tile at a 1,440 px window draws the whole map in the column, 723 px wide, in tiles 54 px wide, with every code, figure and arrow inside its tile. Its arrows are shorter: 3.8 px a point against board 1's 6.2, so 12 states' small shifts draw as an arrowhead alone, against 6 on board 1. The figure in every tile is unchanged. On a phone both draw gray steps, as board 1 approved.",
-     "why": "Board 1's arrows need tiles 72 px wide, which only a drawing 930 px wide or more gives, and chapter 14 never gives a drawing that width. The round 3 reviewers found S12 drawing gray steps at every desk width, with no arrows, though its entry, reading guide and alt describe arrows (C-M2).",
-     "recommendation": "Take the stacked tile. It keeps board 1's arrows, figures, scale rule, inks and words, and a reader at a 1,440 px window sees the whole map in the column with the chapter list in place. Where the column is narrower than 618 px, from a 1,024 to a 1,103 px window, hold the stacked tile in a frame 618 px wide that scrolls about 60 px, in place of the 468 px the 1,024 px frame scrolls there. The cost is shorter arrows and a change to a drawing you approved; the engineer measures the kit's bytes before it is built.",
+     "answer": "Board 1 approved S12 drawn 1,024 px wide. The guide’s column is narrower than that at every desk width, so the approved drawing now sits in a frame 1,024 px wide that scrolls sideways, widened over the chapter list from a 1,280 px window. The other choice is a stacked tile: each state’s code over its figure, with the arrow beneath, which fits a drawing 618 px wide or more, the guide’s column from a 1,104 px window.",
+     "what_changed": "As built, at a 1,440 px window the frame shows 943 of the drawing’s 1,024 px, from Alaska to New Jersey and Connecticut; the column with Maine and Rhode Island needs a scroll, and a line above the map says so. At a 1,024 px window the column shows 556 px, a little over half. While S12 is in view the chapter list on the left is hidden. The stacked tile at a 1,440 px window draws the whole map in the column, 723 px wide, in tiles 54 px wide, with every code, figure and arrow inside its tile. Its arrows are shorter: 3.8 px a point against board 1’s 6.2, so 12 states’ small shifts draw as an arrowhead alone, against six on board 1. The figure in every tile is unchanged. On a phone both draw gray steps, as board 1 approved.",
+     "why": "Board 1’s arrows need tiles 72 px wide, which only a drawing 930 px wide or more gives, and chapter 14 never gives a drawing that width. The round 3 reviewers found S12 drawing gray steps at every desk width, with no arrows, though its entry, reading guide and alt describe arrows.",
+     "recommendation": "Take the stacked tile. It keeps board 1’s arrows, figures, scale rule, inks and words, and a reader at a 1,440 px window sees the whole map in the column with the chapter list in place. Where the column is narrower than 618 px, from a 1,024 to a 1,103 px window, hold the stacked tile in a frame 618 px wide that scrolls about 60 px, in place of the 468 px the 1,024 px frame scrolls there. The cost is shorter arrows and a change to a drawing you approved; the engineer measures the kit’s bytes before it is built.",
      "refs": [
       "DR-64",
       "D3-1324",
@@ -32,14 +32,14 @@
      "views": [
       {
        "who": "data lead",
-       "text": "Take the stacked tile. It keeps board 1's arrows, figures, scale rule, inks and words, and a reader at a 1,440 px window sees the whole map in the column with the chapter list in place. Where the column is narrower than 618 px, from a 1,024 to a 1,103 px window, hold the stacked tile in a frame 618 px wide that scrolls about 60 px, in place of the 468 px the 1,024 px frame scrolls there. The cost is shorter arrows and a change to a drawing you approved; the engineer measures the kit's bytes before it is built.",
+       "text": "My first draft kept the 1,024 px frame, because I believed the stacked tile needed a wider column than it does. The cartographer’s measure changed my view. My ruling on this map in the last round put the stacked tile first and a scrolling frame only where it does not fit, and in either drawing the figure in each tile still carries every state’s value.",
        "source": "work/handoffs/phase-3/20261113_Board-2-Data-Lead-Notes.md#rulings"
       },
       {
        "who": "creative director",
        "text": "S12's stage: the arrows draw, but at a 1440 px desk a reader sees about 70 percent of the map and must scroll to reach the title's eastern states. Board 2 should show the scrolling stage beside the stacked tile, which keeps board 1's encoding and fits the column from 723 px.",
        "source": "work/handoffs/phase-3/20261113_Round-3-CD-Rescores.json#risks_for_dustin",
-       "note": "Written before the frame widened over the chapter list and before the cartographer measured the stacked tile's first width, 618 px, which is narrower than the 723 px the creative director gave."
+       "note": "Written before the frame widened over the chapter list and before the cartographer measured the stacked tile’s first width, 618 px, which is narrower than the 723 px the creative director gave."
       }
      ],
      "pictures": [
@@ -49,7 +49,7 @@
        "width": 1440,
        "ground": "newsprint",
        "path": "work/boards/phase-3/round-0/specimens/s12-newsprint-1440.png",
-       "label": "Board 1: the 1,024 px drawing",
+       "label": "Board 1’s drawing, 1,024 px wide",
        "role": "before"
       },
       {
@@ -58,7 +58,7 @@
        "width": 1440,
        "ground": "newsprint",
        "path": null,
-       "label": "As built, at a 1,440 px window: the 1,024 px frame, widened over the chapter list",
+       "label": "At a 1,440 px window, the 1,024 px frame as built, widened over the chapter list",
        "role": "after",
        "element": "oac-s-14-s12"
       },
@@ -68,7 +68,7 @@
        "width": 1024,
        "ground": "newsprint",
        "path": null,
-       "label": "As built, at a 1,024 px window: the 1,024 px frame in the column",
+       "label": "At a 1,024 px window, the 1,024 px frame as built, in the column",
        "role": "after",
        "element": "oac-s-14-s12"
       },
@@ -105,7 +105,7 @@
        "width": 390,
        "ground": "newsprint",
        "path": null,
-       "label": "Today on a phone, with the state codes",
+       "label": "On a phone, with each state’s code",
        "role": "after",
        "element": "oac-s-14-s12"
       }
@@ -117,11 +117,11 @@
       },
       {
        "label": "Arrow scale at 1,440 px",
-       "value": "3.8 px a point stacked; 6.2 px on board 1's drawing"
+       "value": "3.8 px a point stacked; 6.2 px on board 1’s drawing"
       },
       {
        "label": "Arrowhead only at 1,440 px",
-       "value": "12 states stacked; 6 on board 1's drawing"
+       "value": "12 states stacked; 6 on board 1’s drawing"
       },
       {
        "label": "Measured in",
@@ -134,9 +134,9 @@
      "spec": "S16",
      "rule": "14.116",
      "title": "S16, the turnout bubble map",
-     "answer": "S16 now draws on the Census Bureau's 2024 state outlines, with Alaska and Hawaii framed apart, DC on a leader at a desk, every state's code on a phone, a credit line for the map, and the range words you approved on November 13. Its data, circle sizes, inks and named states are as board 1 approved.",
-     "what_changed": "The 2024 outlines, with the coast drawn as an edge; Alaska and Hawaii each in a frame, not to scale; DC on a leader at a desk and West Virginia beside its own circle; codes placed so that at a 358 px phone drawing all 51 carry a code, where board 1's named two in a note; a credit line naming the map's source; note 3's range and the alt's last sentence in the words you approved on November 13.",
-     "why": "Round 3 moved every state map onto one set of 2024 outlines, and the reviewers asked for DC and the small northeastern states to be findable. Placement only: the data, the circle scale and its key, the inks, the title, the notes but note 3, and the table are unchanged.",
+     "answer": "S16 now draws on the Census Bureau’s 2024 state outlines, with Alaska and Hawaii framed apart, DC on a leader at a desk, every state’s code on a phone, a credit line for the map, and the range words you approved on November 13. Its data, circle sizes, inks and named states are as board 1 approved.",
+     "what_changed": "The 2024 outlines, with the coast drawn as an edge; Alaska and Hawaii each in a frame, not to scale; DC on a leader at a desk and West Virginia beside its own circle; codes placed so that at a 358 px phone drawing all 51 carry a code, where board 1’s named two in a note; a credit line naming the map’s source; note 3’s range and the alt’s last sentence in the words you approved on November 13.",
+     "why": "Round 3 moved every state map onto one set of 2024 outlines, and the reviewers asked for DC and the small northeastern states to be findable. Placement only: the data, the circle scale and its key, the inks, the title, every note but note 3, and the table are unchanged.",
      "recommendation": "Approve S16 as drawn.",
      "refs": [
       "D3-1329",
@@ -161,7 +161,7 @@
        "width": 1440,
        "ground": "newsprint",
        "path": null,
-       "label": "Today at a 1,440 px window",
+       "label": "At a 1,440 px window",
        "role": "after",
        "element": "oac-s-14-s16"
       },
@@ -180,7 +180,7 @@
        "width": 390,
        "ground": "newsprint",
        "path": null,
-       "label": "Today on a phone",
+       "label": "On a phone",
        "role": "after",
        "element": "oac-s-14-s16"
       }
@@ -191,7 +191,7 @@
      "spec": "S10",
      "rule": "14.46",
      "title": "S10, the evidence mix bars",
-     "answer": "S10's line for all 433 claims, at 74 percent documented, now draws dashed in the text's ink with its own label, the way every total or national line in chapter 14 draws (Rule 14.6). Board 1 drew it solid. Nothing else in the drawing moved.",
+     "answer": "S10’s line for all 433 claims, at 74 percent documented, now draws dashed in the text’s ink with its own label, the way every total or national line in chapter 14 draws (Rule 14.6). Board 1 drew it solid. Nothing else in the drawing moved.",
      "what_changed": "The line marked “All 433 claims: 74% documented” is dashed.",
      "why": "One treatment for a total line across the chapter.",
      "recommendation": "Approve S10 as drawn.",
@@ -216,7 +216,7 @@
        "width": 1440,
        "ground": "newsprint",
        "path": null,
-       "label": "Today at a 1,440 px window",
+       "label": "At a 1,440 px window",
        "role": "after",
        "element": "oac-s-14-s10"
       }
@@ -240,7 +240,7 @@
      "facts": [
       {
        "label": "Gaps checked by script",
-       "value": "2003 and 2025 annual rates in the Census Bureau's file, to one decimal"
+       "value": "2003 and 2025 annual rates in the Census Bureau’s file, to one decimal"
       }
      ],
      "pictures": [
@@ -259,7 +259,7 @@
        "width": 1440,
        "ground": "newsprint",
        "path": null,
-       "label": "Today at a 1,440 px window",
+       "label": "At a 1,440 px window",
        "role": "after",
        "element": "oac-s-14-s05"
       }
@@ -268,14 +268,16 @@
     {
      "id": "placement",
      "title": "Thirteen board 1 drawings moved a word, a label, a line or a key",
-     "answer": "A width check now draws every chart at every width from 256 px up, and a crossing check finds words that touch a line. Thirteen board 1 drawings moved a word, a label, a line or a key, eleven where those checks found a fault and two by the chart kit's later craft fixes, most of them only at widths board 1 did not show. No figure, ink or word changed.",
-     "what_changed": "Each row says what moved and where. Each owner compared the drawing before and after its move: S01, S02, S07, S15 and S16 drew the same at 1,440 and 390 px.",
+     "answer": "A width check now draws every chart at every width from 256 px up, and a crossing check finds words that touch a line. Thirteen board 1 drawings moved a word, a label, a line or a key, eleven where those checks found a fault and two from later fixes to the chart kit, most of them only at widths board 1 did not show. No figure, ink or word changed.",
+     "what_changed": "Each row says what moved and where. Each owner compared the drawing before and after its move: S01, S02, S07, S15 and S16 drew the same at 1,440 and 390 px. Separately, in round 1 the chart kit set every straight line of a whole-pixel width on the pixel grid, so it draws crisp at 1x; that moved lines in most board 1 drawings by up to half a pixel, with nothing else changed.",
      "why": "At some widths a label ran past the edge or across a line.",
      "recommendation": "Approve the moves as listed.",
      "refs": [
+      "D3-555",
       "D3-904",
       "D3-909",
-      "D3-911"
+      "D3-911",
+      "D3-946"
      ],
      "question_for_dustin": false,
      "pictures": [],
@@ -283,7 +285,7 @@
       {
        "spec": "S01",
        "rule": "14.85",
-       "what_changed": "Takes its phone arrangement wherever “86%” would reach the bars beside it, and a party's words move under the bar where the 60-vote line would cross them.",
+       "what_changed": "Takes its phone arrangement wherever “86%” would reach the bars beside it, and a party’s words move under the bar where the 60-vote line would cross them.",
        "refs": [
         "D3-904"
        ]
@@ -299,15 +301,16 @@
       {
        "spec": "S04",
        "rule": "14.19",
-       "what_changed": "Each row's rule now breaks round the value labels it crosses and sits a pixel lower, the chart kit's clearing of words a quiet line crosses.",
+       "what_changed": "Each row’s rule now breaks round the value labels it crosses, a change from round 2’s review, and in round 1 the rules moved half a pixel onto the pixel grid.",
        "refs": [
-        "D3-946"
+        "D3-946",
+        "D3-555"
        ]
       },
       {
        "spec": "S05",
        "rule": "14.30",
-       "what_changed": "Gridlines draw before the panel words, and each bracket's words after its lines; only the order of drawing changed.",
+       "what_changed": "Gridlines draw before the panel words, and each bracket’s words after its lines; only the order of drawing changed.",
        "refs": [
         "D3-911"
        ]
@@ -323,13 +326,15 @@
       {
        "spec": "S08",
        "rule": "14.49",
-       "what_changed": "The two rules above and below the year labels sit a pixel lower.",
-       "refs": []
+       "what_changed": "Its rules moved half a pixel onto the pixel grid in round 1, so they draw crisp; no word, figure or square moved.",
+       "refs": [
+        "D3-555"
+       ]
       },
       {
        "spec": "S09",
        "rule": "14.38",
-       "what_changed": "Each label is measured at the width it is drawn and may wrap at six more widths; some event stems sit a pixel off board 1's.",
+       "what_changed": "Each label is measured at the width it is drawn and may wrap at six more widths.",
        "refs": [
         "D3-904"
        ]
@@ -345,7 +350,7 @@
       {
        "spec": "S12",
        "rule": "14.115",
-       "what_changed": "On a phone each tile prints its state's code where the tile holds it, and a note names the codes with no room; under 292 px the table names every state.",
+       "what_changed": "On a phone each tile prints its state’s code where the tile holds it, and a note names the codes with no room; under 292 px the table names every state.",
        "refs": [
         "D3-911",
         "D3-1524"
@@ -370,7 +375,7 @@
       {
        "spec": "S15",
        "rule": "14.125",
-       "what_changed": "The “Leader changed” tag goes under the state's name on a phone where it would reach the shift column; at a desk the rule under the national row sits a pixel lower.",
+       "what_changed": "The “Leader changed” tag goes under the state’s name on a phone where it would reach the shift column.",
        "refs": [
         "D3-911"
        ]
@@ -390,7 +395,7 @@
      "id": "round-1-notes",
      "title": "Twelve round 1 drawings whose note words changed",
      "answer": "The notes and alt text of twelve round 1 charts now name a mark the same way on both grounds: the mark the title names is “in the text’s ink”, other marks are “gray”, and no ink is called dark or light. No drawing changed.",
-     "what_changed": "The words that name inks in each chart's notes, alt text and reading guide.",
+     "what_changed": "The words that name inks in each chart’s notes, alt text and reading guide.",
      "why": "Dark and light swap on Charcoal, so “dark ink” was wrong on one ground.",
      "recommendation": "Approve the words as listed.",
      "refs": [
@@ -466,7 +471,7 @@
   {
    "id": "forms-changed",
    "title": "Forms whose tier or data changed",
-   "lede": "No form changed its tier. Nine specimens changed their data, measure or drawing after their data plan row was signed off, each for a reason a review found, and seventeen changes were made to the data plans before anything was fetched. We recommend one approval for the list.",
+   "lede": "No form changed its tier. Nine charts changed their data, measure or drawing after the data lead signed off their data plan rows, each for a reason a review found, and the data lead changed the data plans in seventeen places before the research lead fetched anything. We recommend one approval for the list.",
    "approval": "one",
    "items": [
     {
@@ -474,7 +479,7 @@
      "title": "Tiers",
      "answer": "No form changed its tier. All 114 forms of rounds 1 to 3 carry the tier the coverage plan gave them: 50 core, 36 extended, 21 reference and 7 to avoid.",
      "what_changed": "Nothing.",
-     "why": "A script read each form's tier in the coverage plan, the chapter 14 plan, the data plans, each entry and each spec.",
+     "why": "A script read each form’s tier in the coverage plan, the chapter 14 plan, the data plans, each entry and each spec.",
      "recommendation": "No decision needed.",
      "refs": [
       "DR-62",
@@ -502,8 +507,8 @@
      "spec": "S73",
      "rule": "14.104",
      "title": "S73, the joint fundraising committees",
-     "answer": "S73 now draws every committee the Federal Election Commission designates a joint fundraising committee that paid either party's 2024 presidential campaign: three on the Democratic side and four on the Republican side, in place of one each.",
-     "what_changed": "The plan picked the one committee per nominee that sent the campaign the most. The chart now reads all seven by that rule, from a new file, with transfers to other committees (line 22) as the measure for both. The Democratic campaign and its main fund carried Joseph R. Biden Jr.'s name until July 21, 2024, so the line under that bar names both candidates with the date, and a note splits that side's transfers before and after the date. The Republican side kept one candidate and is not split; its two renames are named with their dates.",
+     "answer": "S73 now draws every committee the Federal Election Commission designates a joint fundraising committee that paid either party’s 2024 presidential campaign: three on the Democratic side and four on the Republican side, in place of one each.",
+     "what_changed": "The plan picked the one committee per nominee that sent the campaign the most. The chart now reads all seven by that rule, from a new file, with transfers to other committees (line 22) as the measure for both. The Democratic campaign and its main fund carried Joseph R. Biden Jr.’s name until July 21, 2024, so the line under that bar names both candidates with the date, and a note splits that side’s transfers before and after the date. The Republican side kept one candidate and is not split; its two renames are named with their dates.",
      "why": "Read from the right, picking one committee per side drew a contrast in reach, 53 committees against two, that came from the rule that picked them. Read across all seven, both sides reached a similar number of committees: 54 and 56.",
      "recommendation": "Approve S73 as drawn.",
      "refs": [
@@ -517,9 +522,9 @@
      "plan_row": {
       "file": "work/handoffs/phase-3/20261112_Round-3-Data-Plan.md",
       "row": 94,
-      "said": "`fec-jfc-transfers-2024`: the one committee per nominee that transferred the most to the nominee's principal campaign committee (data lead change 8)."
+      "said": "One joint fundraising committee per nominee, the one that transferred the most to the nominee’s principal campaign committee."
      },
-     "built": "`fec-jfc-transfers-2024-all-committees` (research ledger P7-226): all seven designated joint fundraising committees, line 22, refunds on line 28C set apart."
+     "built": "A new file of all seven committees the FEC designates joint fundraising committees of the two campaigns, with transfers on line 22 and refunds on line 28C set apart."
     },
     {
      "id": "S76",
@@ -527,8 +532,8 @@
      "rule": "14.110",
      "title": "S76, where 2024 House campaign money came from and went",
      "answer": "S76 now nets the transfers between each campaign and its own other committees candidate by candidate, and draws the money sent out as its own band.",
-     "what_changed": "The file had netted transfers across all 1,926 campaigns at once, which left $156.8 million in and nothing out. Netted for each candidate, $175.1 million came in and $18.3 million went out. The money left unaccounted for stays $1.5 million, and a note says 297 campaigns' figures do not balance, with one campaign leaving nearly all of it.",
-     "why": "Netting across campaigns cancels one campaign's money out against another's money in, and those dollars never met. The note promised candidate-by-candidate netting.",
+     "what_changed": "The file had netted transfers across all 1,926 campaigns at once, which left $156.8 million in and nothing out. Netted for each candidate, $175.1 million came in and $18.3 million went out. The money left unaccounted for stays $1.5 million, and a note says 297 campaigns’ figures do not balance, with one campaign leaving nearly all of it.",
+     "why": "Netting across campaigns cancels one campaign’s money out against another’s money in, and those dollars never met. The note promised candidate-by-candidate netting.",
      "recommendation": "Approve S76 as drawn.",
      "refs": [
       "D3-1338",
@@ -539,18 +544,18 @@
      "plan_row": {
       "file": "work/handoffs/phase-3/20261112_Round-3-Data-Plan.md",
       "row": 100,
-      "said": "Transfers between a candidate's own committees are netted out."
+      "said": "Transfers between a candidate’s own committees are netted out."
      },
-     "built": "`fec-house-campaigns-2024-money-in-out`, transfers netted candidate by candidate (research ledger P7-217)."
+     "built": "The same file, with transfers netted candidate by candidate."
     },
     {
      "id": "S78",
      "spec": "S78",
      "rule": "14.117",
      "title": "S78, broadband by state",
-     "answer": "S78 maps home broadband such as cable, fiber or DSL, a line of the Census Bureau's table the plan left open, with the Bureau's own published margins, and on a phone it draws the studio's tile grid in place of state outlines.",
-     "what_changed": "The plan asked for “households with a broadband internet subscription”. The chart reads the table's fixed broadband line, which leaves out a household with a cellular data plan alone, and prints the margins the Bureau publishes. Under 520 px the map becomes the tile grid S07 uses, with the same classes, inks and key, so every state carries its code.",
-     "why": "The atlas issue it serves (I015) names slow or missing home internet, which a phone plan alone does not answer, and broadband of any kind spans too narrow a range for more than two honest classes. On the outlines, 19 states had no room for a code at a 358 px phone drawing.",
+     "answer": "S78 maps home broadband such as cable, fiber or DSL, a line of the Census Bureau’s table the plan left open, with the Bureau’s own published margins, and on a phone it draws a grid of equal state tiles in place of state outlines.",
+     "what_changed": "The plan asked for “households with a broadband internet subscription”. The chart reads the table’s fixed broadband line, which leaves out a household with a cellular data plan alone, and prints the margins the Bureau publishes. Under 520 px the map becomes the tile grid S07 uses, with the same classes, inks and key, so every state carries its code.",
+     "why": "The atlas issue it serves, Issue I015 “Public information is out of reach for some residents”, names slow or missing home internet, which a phone plan alone does not answer, and broadband of any kind spans too narrow a range for more than two honest classes. On the outlines, 19 states had no room for a code at a 358 px phone drawing.",
      "recommendation": "Approve S78 as drawn.",
      "refs": [
       "D3-1102",
@@ -564,18 +569,18 @@
      "plan_row": {
       "file": "work/handoffs/phase-3/20261112_Round-3-Data-Plan.md",
       "row": 107,
-      "said": "Households with a broadband internet subscription, table B28002, with margins; the line used to be named."
+      "said": "Households with a broadband internet subscription, table B28002, with margins, the line to be named later."
      },
-     "built": "B28002's fixed broadband line, with the published margins of table S2801 (source variant `fixed_with_s2801_margin`)."
+     "built": "Table B28002’s fixed broadband line, with the published margins of table S2801."
     },
     {
      "id": "S80",
      "spec": "S80",
      "rule": "14.119",
-     "title": "S80, Michigan's House districts",
+     "title": "S80, Michigan’s House districts",
      "answer": "S80 now draws a framed inset of the Detroit area in both panels, so the five districts there are large enough to number and read.",
      "what_changed": "The 6th and the 10th to 13th districts draw again, larger, in a framed inset in each panel, and a note says each district elects one member whatever its area. The margin steps on S80 and S82 moved from gray to four steps of Verdigris.",
-     "why": "Land stood in for seats: the small Detroit districts were too small to see, and gray step 1 read as the other party's empty seat.",
+     "why": "Land stood in for seats: the small Detroit districts were too small to see, and gray step 1 read as the other party’s empty seat.",
      "recommendation": "Approve S80 as drawn.",
      "refs": [
       "D3-1130",
@@ -587,7 +592,7 @@
      "plan_row": {
       "file": "work/handoffs/phase-3/20261112_Round-3-Data-Plan.md",
       "row": 109,
-      "said": "Michigan's 13 districts with the district geometry."
+      "said": "Michigan’s 13 districts with the district geometry."
      },
      "built": "The same results and geometry, with the Detroit inset drawn from them."
     },
@@ -595,9 +600,9 @@
      "id": "S59",
      "spec": "S59",
      "rule": "14.77",
-     "title": "S59, the Federal Reserve's unemployment projections",
-     "answer": "S59 adds where the unemployment rate stood: its fourth-quarter average for 2021 to 2024, the projections' own measure, drawn before the fan.",
-     "what_changed": "A second file, the fourth-quarter averages derived from the monthly rate the guide already holds. 2025 has no average, since October 2025 was not collected, and its column is drawn empty.",
+     "title": "S59, the Federal Reserve’s unemployment projections",
+     "answer": "S59 adds where the unemployment rate stood: its fourth-quarter average for 2021 to 2024, the projections’ own measure, drawn before the fan.",
+     "what_changed": "A second file, the fourth-quarter averages derived from the monthly rate the guide already holds. The 2025 column is drawn empty, since the Census Bureau did not collect October 2025 and the year has no average.",
      "why": "A fan of projections reads only against where the rate started.",
      "recommendation": "Approve S59 as drawn.",
      "refs": [
@@ -609,18 +614,18 @@
      "plan_row": {
       "file": "work/handoffs/phase-3/20261111_Rounds-1-2-Data-Plan.md",
       "row": 73,
-      "said": "`frb-fomc-projections-unemployment` alone."
+      "said": "The Federal Reserve’s projections alone."
      },
-     "built": "Adds `fred-unemployment-fourth-quarter`, derived from `fred-unemployment-and-job-openings`."
+     "built": "Adds a file of fourth-quarter averages, derived from the monthly unemployment rate."
     },
     {
      "id": "S54-S55",
      "spec": "S54",
      "rule": "14.67",
-     "title": "S54 and S55, rent against renters' income",
-     "answer": "S54 and S55 draw the Census Bureau's own measure of rent burden, median gross rent as a share of household income with its margin, in place of a ratio the studio worked out.",
-     "what_changed": "The first file divided a year of median rent by the median income of all households, owners included. The file now carries the Bureau's table B25071 with its margin, beside median rent and renters' median income.",
-     "why": "The studio's ratio mixed owners' income into a renters' measure and carried no margin.",
+     "title": "S54 and S55, rent against renters’ income",
+     "answer": "S54 and S55 draw the Census Bureau’s own measure of rent burden, median gross rent as a share of household income with its margin, in place of a ratio the studio worked out.",
+     "what_changed": "The first file divided a year of median rent by the median income of all households, owners included. The file now carries the Bureau’s table B25071 with its margin, beside median rent and renters’ median income.",
+     "why": "The studio’s ratio mixed owners’ income into a renters’ measure and carried no margin.",
      "recommendation": "Approve S54 and S55 as drawn.",
      "refs": [
       "D3-88"
@@ -630,17 +635,17 @@
      "plan_row": {
       "file": "work/handoffs/phase-3/20261111_Rounds-1-2-Data-Plan.md",
       "row": 63,
-      "said": "`census-acs-rent-and-income-by-state`, with the studio's rent-to-income ratio."
+      "said": "The state rent and income file, with the studio’s own ratio of rent to income."
      },
-     "built": "The same file rebuilt from tables B25071, B25064 and B25119 (research ledger P7-030)."
+     "built": "The same file, rebuilt from the Census Bureau’s tables B25071, B25064 and B25119."
     },
     {
      "id": "S41",
      "spec": "S41",
      "rule": "14.133",
      "title": "S41, the plain table",
-     "answer": "S41's table shows the 2023 survey alone, the question it answers. The House and Senate votes stay in S01 and S61.",
-     "what_changed": "The plan's five rows mixed the survey's shares with the two chambers' votes.",
+     "answer": "S41’s table shows the 2023 survey alone, the question it answers. The House and Senate votes stay in S01 and S61.",
+     "what_changed": "The plan’s five rows mixed the survey’s shares with the two chambers’ votes.",
      "why": "A plain table should answer one question; the votes came three years after the survey and are on a bill with a second provision the survey never asked about.",
      "recommendation": "Approve S41 as drawn.",
      "refs": [
@@ -652,17 +657,17 @@
      "plan_row": {
       "file": "work/handoffs/phase-3/20261111_Rounds-1-2-Data-Plan.md",
       "row": 40,
-      "said": "S01's survey shares and votes as a five-row table."
+      "said": "S01’s survey shares and votes as a five-row table."
      },
-     "built": "The 2023 survey's shares alone."
+     "built": "The 2023 survey’s shares alone."
     },
     {
      "id": "S20",
      "spec": "S20",
      "rule": "14.20",
      "title": "S20, homeownership by age",
-     "answer": "S20 reads a second file with the Census Bureau's published margins for its 2015 and 2025 rates, so its title claims the rise for householders under 35 only because it passes its margin.",
-     "what_changed": "A margins file beside the planned rates file, and a note that prints each change's margin.",
+     "answer": "S20 reads a second file with the Census Bureau’s published margins for its 2015 and 2025 rates, so its title claims the rise for householders under 35 only because it passes its margin.",
+     "what_changed": "A margins file beside the planned rates file, and a note that prints each change’s margin.",
      "why": "Rule 14.9 lets a chart single out a survey change only past its margin; the under-35 rate rose 2.0 points against a margin of about 0.8.",
      "recommendation": "Approve S20 as drawn.",
      "refs": [
@@ -674,14 +679,14 @@
      "plan_row": {
       "file": "work/handoffs/phase-3/20261111_Rounds-1-2-Data-Plan.md",
       "row": 6,
-      "said": "`census-hvs-homeownership-by-age` alone."
+      "said": "The homeownership rates by age alone."
      },
-     "built": "Adds `census-hvs-homeownership-by-age-moe` (research ledger P7-222)."
+     "built": "Adds the Census Bureau’s published margins for those rates."
     },
     {
      "id": "plan-changes",
      "title": "Changes the data lead made to the data plans before anything was fetched",
-     "answer": "Seventeen changes, five to the rounds 1 and 2 plan and twelve to the round 3 plan, each made before the research lead fetched the data, so the plan rows already carry them. They are listed so you can see where the specimens differ from the coverage plan you approved.",
+     "answer": "The data lead made seventeen changes, five to the rounds 1 and 2 plan and twelve to the round 3 plan, each before the research lead fetched the data, so the plan rows already carry them. The list shows where the charts differ from the coverage plan you approved.",
      "what_changed": "Each row gives the change in a line.",
      "why": "Each keeps the form and tier and fixes a period, a source, a grouping or a rule the drawing needs.",
      "recommendation": "Approve the changes as listed.",
@@ -740,13 +745,13 @@
       {
        "spec": "S74",
        "rule": "14.105",
-       "what_changed": "The matrix groups the atlas's 51 variables by its ten regions, since 20 variables have no domain.",
+       "what_changed": "The matrix groups the atlas’s 51 variables by its ten regions, since 20 variables have no domain.",
        "refs": []
       },
       {
        "spec": "S79",
        "rule": "14.118",
-       "what_changed": "Counted under taking part, trust and shared norms, the public meeting in chapter 01's photograph.",
+       "what_changed": "Counted under taking part, trust and shared norms, the public meeting in chapter 01’s photograph.",
        "refs": []
       },
       {
@@ -764,7 +769,7 @@
       {
        "spec": "S70",
        "rule": "14.100",
-       "what_changed": "Each court's authorized judgeships, and the territorial courts cited from title 48 as courts that are not Article III courts.",
+       "what_changed": "Each court’s authorized judgeships, and the territorial courts cited from title 48 as courts that are not Article III courts.",
        "refs": []
       },
       {
@@ -782,7 +787,7 @@
       {
        "spec": "S73",
        "rule": "14.104",
-       "what_changed": "One stated rule picks each nominee's committee, read the same way for both; the review later widened it to every committee (above).",
+       "what_changed": "One stated rule picks each nominee’s committee, read the same way for both; the review later widened it to every committee (above).",
        "refs": []
       },
       {
@@ -802,7 +807,7 @@
       {
        "spec": "S65",
        "rule": "14.93",
-       "what_changed": "Nested stages from one base, renewals due, with CMS's own figures and period.",
+       "what_changed": "Nested stages from one base, renewals due, with CMS’s own figures and period.",
        "refs": []
       },
       {
@@ -818,16 +823,16 @@
   {
    "id": "atlas-v7-1",
    "title": "Atlas V7.1 items",
-   "lede": "Nine items carried for board 2 and one question. Seven are new to the V7.1 list you approved in October; RL-3 is no atlas item and should come off it. None changes the guide now. The question is whether each variable takes one name across chapters 10, 11 and 15, and we recommend its own title.",
+   "lede": "Nine atlas items come to this board, with one question. Seven are new to the V7.1 list you approved in October, and the item on the FEC’s joint fundraising totals is no atlas item and should come off it. None changes the guide now. The question is whether each variable takes one name across chapters 10, 11 and 15, and we recommend each variable’s own title.",
    "approval": "one",
    "items": [
     {
      "id": "Q-18",
-     "title": "Medicaid renewals: the atlas's 25 million against CMS's own count",
-     "answer": "The atlas says more than 25 million people were disenrolled when pandemic-era Medicaid rules ended, 69 percent for a procedural reason. Its claims give KFF's count to September 12, 2024, but issue I062, issue I133 and three pathways print the figure with no period. CMS's own file, which S65 draws, counts 22,914,537 renewals ended for renewals due April 2023 to March 2024, 69.7 percent for a procedural reason.",
+     "title": "Medicaid renewals: the atlas’s 25 million against CMS’s own count",
+     "answer": "The atlas says more than 25 million people were disenrolled when pandemic-era Medicaid rules ended, 69 percent for a procedural reason. Its claims give KFF’s count to September 12, 2024, but Issue I062 “Paperwork pushes eligible people off benefits”, Issue I133 “Coverage gaps and renewal paperwork interrupt health care” and three pathways print the figure with no period. CMS’s own file, which S65 draws, counts 22,914,537 renewals ended for renewals due April 2023 to March 2024, 69.7 percent for a procedural reason.",
      "what_changed": "Nothing in the guide. The two counts come from different publishers, months and counting rules, so neither shows the other wrong.",
      "why": "A figure without its period cannot be checked against another count.",
-     "recommendation": "In V7.1, print KFF's period beside the 25 million wherever the atlas gives the figure without one, and keep the figure. The guide keeps printing CMS's figures with CMS's period on S65 and corrects nothing in the atlas.",
+     "recommendation": "In V7.1, print KFF’s period beside the 25 million wherever the atlas gives the figure without one, and keep the figure. The guide keeps printing CMS’s figures with CMS’s period on S65 and corrects nothing in the atlas.",
      "refs": [
       "Q-18",
       "D3-260",
@@ -840,8 +845,8 @@
     },
     {
      "id": "RL-3",
-     "title": "The FEC's joint fundraising totals mix three report lines",
-     "answer": "The FEC's totals of what a joint fundraising committee paid each recipient add line 22 transfers and line 28C refunds and leave out line 21B. No record in the atlas names joint fundraising, so this is a fact about the FEC's data.",
+     "title": "The FEC’s joint fundraising totals mix three report lines",
+     "answer": "The FEC’s totals of what a joint fundraising committee paid each recipient add line 22 transfers and line 28C refunds and leave out line 21B. No record in the atlas names joint fundraising, so this is a fact about the FEC’s data.",
      "what_changed": "Nothing in the atlas.",
      "why": "The two FEC sidecars already state it, and S73 reads line 22 alone for both parties.",
      "recommendation": "Take it off the V7.1 list and keep it as a note in the two FEC sidecars, where it is now.",
@@ -856,10 +861,10 @@
     {
      "id": "D6",
      "title": "Variable D6, typed a flow and described as a stock",
-     "answer": "The atlas types Variable D6, state and local testing of reforms, as a flow, and its own description calls it a stock whose listed indicators count a flow.",
-     "what_changed": "Nothing since the list's item 8 of October 21.",
-     "why": "The record's two fields disagree.",
-     "recommendation": "In V7.1, set D6's type to stock, as its description reads, and keep the note that its indicators count adoptions a year. Chapter 15 prints no kind for D6 until then.",
+     "answer": "The atlas types Variable D6, state and local testing of reforms, as a flow, a rate of change, and its own description calls it a stock, an amount that builds up, whose listed indicators count a flow.",
+     "what_changed": "Nothing has changed since item 8 of the list, on October 21.",
+     "why": "The record’s two fields disagree.",
+     "recommendation": "In V7.1, set D6’s type to stock, as its description reads, and keep the note that its indicators count adoptions a year. Chapter 15 prints no kind for D6 until then.",
      "refs": [
       "D3-261"
      ],
@@ -871,11 +876,11 @@
     },
     {
      "id": "R-01",
-     "title": "Reform R-01's two ballot measures, decided after the snapshot",
-     "answer": "The atlas's snapshot of October 15, 2026 describes Alaska's Ballot Measure 2 and Massachusetts Question 3 as pending; 49 text fields name one or both. Both were decided on November 3. Alaska's unofficial count of November 12 has Measure 2 at 47.19 percent yes and 52.81 percent no, with every precinct in. Question 3 lost, 38.96 percent yes to 61.04 percent no, by NBC Boston's unofficial results with the Associated Press's call, a secondary source read November 11. Neither state has certified.",
+     "title": "Reform R-01’s two ballot measures, decided after the snapshot",
+     "answer": "The atlas’s snapshot of October 15, 2026 describes Alaska’s Ballot Measure 2 and Massachusetts Question 3 as pending; 49 text fields name one or both. Both were decided on November 3. Alaska’s unofficial count of November 12 has Measure 2 at 47.19 percent yes and 52.81 percent no, with every precinct in. Question 3 lost, 38.96 percent yes to 61.04 percent no, by NBC Boston’s unofficial results with the Associated Press’s call, a secondary source read November 11. Neither state has certified.",
      "what_changed": "Nothing in the guide.",
      "why": "The records were right on October 15, 2026 and are out of date now.",
-     "recommendation": "In V7.1, rewrite the places that name either measure from each state's certified result, with its date, once both certify; Alaska aims for November 25, 2026. Until then the guide prints the atlas's status with its snapshot date and no outcome.",
+     "recommendation": "In V7.1, rewrite the places that name either measure from each state’s certified result, with its date, once both certify; Alaska aims for November 25, 2026. Until then the guide prints the atlas’s status with its snapshot date and no outcome.",
      "refs": [],
      "new_to_v7_1_list": true,
      "question_for_dustin": false,
@@ -884,8 +889,8 @@
     },
     {
      "id": "A15",
-     "title": "Four strings in the atlas's drug price claims",
-     "answer": "Two straight apostrophes, in claims CL1359 and CL1363, straight quote marks in one source's title, and one missing space in another source's title, “Consolidated Appropriations Act,2026”. The atlas uses straight quotes in 1,730 text fields and curly ones in 4, and the guide curls quotes in print.",
+     "title": "Four strings in the atlas’s drug price claims",
+     "answer": "The four are two straight apostrophes, in claims CL1359 and CL1363, straight quote marks in one source’s title, and a missing space in another source’s title, “Consolidated Appropriations Act,2026”. The atlas uses straight quotes in 1,730 text fields and curly ones in 4, and the guide curls quotes in print.",
      "what_changed": "Nothing in the guide: S39 already prints the space and curled quotes through its typography setting.",
      "why": "The missing space is the one true typo.",
      "recommendation": "Keep only the missing space on the V7.1 list and drop the three quote marks.",
@@ -900,9 +905,9 @@
     },
     {
      "id": "Article-V",
-     "title": "The atlas's wording of the Article V route",
-     "answer": "The atlas's route for a constitutional amendment reads “Two-thirds of each house of Congress and three-quarters of the states, or a convention”, with no source. Article V gives two ways to propose an amendment, by two-thirds of both houses or by a convention the states call, and two ways to ratify it, by three-quarters of the states' legislatures or of state conventions.",
-     "what_changed": "Nothing in the guide: S37's note prints the studio's own sentence.",
+     "title": "The atlas’s wording of the Article V route",
+     "answer": "The atlas’s route for a constitutional amendment reads “Two-thirds of each house of Congress and three-quarters of the states, or a convention”, with no source. Article V gives two ways to propose an amendment, by two-thirds of both houses or by a convention the states call, and two ways to ratify it, by three-quarters of the states’ legislatures or of state conventions.",
+     "what_changed": "Nothing in the guide: S37’s note prints the studio’s own sentence.",
      "why": "Read as written, a convention could seem to amend the Constitution alone; under Article V a convention only proposes, and three-quarters of the states must still ratify.",
      "recommendation": "In V7.1, rewrite the route to name both ways to propose and both ways to ratify, citing Article V.",
      "refs": [
@@ -916,11 +921,11 @@
     },
     {
      "id": "figure-5",
-     "title": "Headline figure 5 carries figure 4's qualification",
-     "answer": "Headline figure 5, the $62.7 billion in financial benefits the Government Accountability Office reported for fiscal 2025, carries figure 4's sentence about a court case under the Inspector General Act, which says nothing about GAO. The atlas's September V3.2 gave figure 5 its own note on GAO's report.",
+     "title": "Headline figure 5 carries figure 4’s qualification",
+     "answer": "Headline figure 5, the $62.7 billion in financial benefits the Government Accountability Office reported for fiscal 2025, carries figure 4’s sentence about a court case under the Inspector General Act, which says nothing about GAO. The atlas’s September V3.2 gave figure 5 its own note on GAO’s report.",
      "what_changed": "Nothing in the guide: S60 prints “None of its own in the atlas; see the note” in that cell.",
      "why": "A qualification must qualify its own figure.",
-     "recommendation": "In V7.1, give figure 5 its own qualification on GAO's report and drop the copied sentence.",
+     "recommendation": "In V7.1, give figure 5 its own qualification on GAO’s report and drop the copied sentence.",
      "refs": [
       "D3-668"
      ],
@@ -932,17 +937,17 @@
     {
      "id": "figure-7",
      "title": "Headline figure 7 calls H.R. 7008 “a ban”",
-     "answer": "Figure 7's qualification says “The House passed a ban 232 to 198”, and reform R-09's status calls it a ban too. H.R. 7008, the Stop Insider Trading Act, also requires photo identification to vote in federal elections. The atlas's issue I043 already names both provisions.",
+     "answer": "Figure 7’s qualification says “The House passed a ban 232 to 198”, and reform R-09’s status calls it a ban too. H.R. 7008, the Stop Insider Trading Act, also requires photo identification to vote in federal elections. The atlas’s issue I043 already names both provisions.",
      "what_changed": "Nothing in the guide, which names the bill with both provisions at first mention in each chapter.",
-     "why": "“A ban” alone leaves out the bill's second provision, which a reader who backs photo ID laws and a reader who opposes them both need to know the bill holds.",
-     "recommendation": "In V7.1, name the bill in full with both provisions in figure 7's qualification and in R-09's status, as list item 36 already asks for its status entry.",
+     "why": "“A ban” alone leaves out the bill’s second provision, which a reader who backs photo ID laws and a reader who opposes them both need to know the bill holds.",
+     "recommendation": "In V7.1, name the bill in full with both provisions in figure 7’s qualification and in R-09’s status, as list item 36 already asks for its status entry.",
      "refs": [
       "DR-98",
       "D3-908"
      ],
      "new_to_v7_1_list": false,
      "list_item": 36,
-     "list_note": "Item 36 covers H.R. 7008's status entry; figure 7 and R-09's status are two places it does not name.",
+     "list_note": "Item 36 covers H.R. 7008’s status entry; figure 7 and R-09’s status are two places it does not name.",
      "question_for_dustin": false,
      "pictures": [],
      "source": "work/handoffs/phase-3/20261113_Board-2-Research-Notes.md#v71-facts"
@@ -950,10 +955,10 @@
     {
      "id": "issue-titles",
      "title": "Issue titles that state an effect",
-     "answer": "Three issue titles S63 prints state an effect: “Withholding appropriated money weakens Congress's spending decisions”, “Firing and emptying watchdog offices weakens oversight” and “At-will removal of regulators narrows agency independence”. A reread of the atlas's 334 headings for six such verbs (weaken, narrow, threaten, drain, dilute, harm) finds them in 16 issue titles and 2 loop titles across several domains; five of the titles concern a president's or the executive's actions.",
+     "answer": "Three issue titles S63 prints state an effect: “Withholding appropriated money weakens Congress’s spending decisions”, “Firing and emptying watchdog offices weakens oversight” and “At-will removal of regulators narrows agency independence”. A reread of the atlas’s 334 headings for six such verbs (weaken, narrow, threaten, drain, dilute, harm) finds them in 16 issue titles and 2 loop titles across several domains; five of the titles concern a president’s or the executive’s actions.",
      "what_changed": "Nothing in the guide, which prints atlas titles as stored with their grade beside them.",
-     "why": "A title that states an effect reads as the atlas's verdict, and the same test has to reach every title, whoever the actor is.",
-     "recommendation": "In V7.1, read all 18 titles by one test: a title states an effect only as firmly as the issue's own grade for that effect allows, and otherwise names the action the record documents.",
+     "why": "A title that states an effect reads as the atlas’s verdict, and the same test has to reach every title, whoever the actor is.",
+     "recommendation": "In V7.1, read all 18 titles by one test: a title states an effect only as firmly as the issue’s own grade for that effect allows, and otherwise names the action the record documents.",
      "refs": [
       "D3-349",
       "D3-908",
@@ -966,12 +971,12 @@
     },
     {
      "id": "loop-labels",
-     "title": "One name for each variable: the loop label or the variable's title",
+     "title": "One name for each variable: the loop label or the variable’s title",
      "answer": "The atlas gives 24 of the 25 variables in its numbered loops two names: a title on the variable and a shorter label inside each loop. Several loop labels carry a verdict or a term a reader has to look up: “Executive unilateralism” for presidential action without new legislation, “Policy tilt to insiders” for policy advantages for wealthy and organized interests, “Affective polarization” for hostility toward the other political party. The guide prints the loop labels inside loops and the titles elsewhere, and chapters 10 and 11 use “Executive unilateralism” as the name of Civic Line icon CL-026.",
-     "question": "Should every variable's own title replace its loop label wherever the guide draws a loop, in chapters 10, 11 and 15 together?",
-     "what_changed": "Nothing yet. Until you answer, chapter 15 keeps loop labels inside loops and the titles of D1, D2, D4 and D6 outside them.",
+     "question": "Should every variable’s own title replace its loop label wherever the guide draws a loop, in chapters 10, 11 and 15 together?",
+     "what_changed": "Nothing yet. Until you answer, chapter 15 keeps loop labels inside loops and the titles of variables D1, D2, D4 and D6 outside them.",
      "why": "Two names for one variable make a reader ask whether they are two things, and the titles are the plainer names, with no verdict in them.",
-     "recommendation": "Yes. Use each variable's title in every loop drawing in chapters 10, 11 and 15, and ask V7.1 to do the same, so each variable has one name. The titles run longer, 36.5 characters on average against 22.0, so loop drawings need more room, and Civic Line icon CL-026 would print “Presidential action without new legislation” in place of “Executive unilateralism”.",
+     "recommendation": "Yes. Use each variable’s title in every loop drawing in chapters 10, 11 and 15, and ask V7.1 to do the same, so each variable has one name. The titles run longer, 36.5 characters on average against 22.0, so loop drawings need more room, and Civic Line icon CL-026 would print “Presidential action without new legislation” in place of “Executive unilateralism”.",
      "refs": [
       "D3-906",
       "D3-908",
@@ -1002,14 +1007,14 @@
   {
    "id": "answered",
    "title": "Answered before the board",
-   "lede": "You answered five questions on November 13 before the board's pictures were taken. Each is done, shown with its old version beside it.",
+   "lede": "You answered five questions on November 13, before the studio took the board’s pictures. Each is done, shown with its old version beside it.",
    "approval": "none",
    "items": [
     {
      "id": "DR-254",
-     "title": "Where a chart's full data lives",
-     "answer": "Each chart's full data ships as one CSV file in Phase 5's asset package, and the nine places that promised “the download” or “the CSV file” now name “this chart’s data file in the guide’s asset package”.",
-     "what_changed": "Nine places in seven charts and one entry. No reader text in chapter 14 now promises a download; the two places that still use the word name chapter 18's rule on downloads.",
+     "title": "Where a chart’s full data lives",
+     "answer": "Each chart’s full data ships as one CSV file in Phase 5’s asset package. Of the nine places that promised “the download” or “the CSV file”, eight now name “this chart’s data file in the guide’s asset package”. The ninth, S73’s fourth note, drops its line, since S73’s table caption already names the file.",
+     "what_changed": "Nine places in seven charts and one entry. No reader text in chapter 14 now promises a download; the two places that still use the word name chapter 18’s rule on downloads.",
      "why": "The guide page offers no per-chart download.",
      "recommendation": "Done.",
      "refs": [
@@ -1052,7 +1057,7 @@
        "rule": "14.104",
        "where": "note 4",
        "old": "The Democratic funds paid the state party committees of the 50 states and the District of Columbia, and the Republican funds those of 48 states, the District of Columbia and Guam; a committee two funds paid counts once. The download lists each with its transfers.",
-       "new": "The Democratic funds paid the state party committees of the 50 states and the District of Columbia, and the Republican funds those of 48 states, the District of Columbia and Guam; a committee two funds paid counts once. Each, with its transfers, is in this chart’s data file in the guide’s asset package."
+       "new": "The Democratic funds paid the state party committees of the 50 states and the District of Columbia, and the Republican funds those of 48 states, the District of Columbia and Guam; a committee two funds paid counts once."
       },
       {
        "spec": "S74",
@@ -1078,7 +1083,7 @@
       {
        "spec": null,
        "rule": "14.120",
-       "where": "entry's rule text",
+       "where": "entry’s rule text",
        "old": "Shade every county by its class in four steps of one ink, as Rule 14.117’s choropleth shades states, with no county lines, the state lines thin and gray, and a county with no estimate unshaded with an edge, named in a note. Set the classes, their note and the words by Rule 14.9’s test for small places, so the map reads as a pattern. Put the national figure above the map (Rule 14.6), group the table by state and give every county with its margin in the download.",
        "new": "Shade every county by its class in four steps of one ink, as Rule 14.117’s choropleth shades states, with no county lines, the state lines thin and gray, and a county with no estimate unshaded with an edge, named in a note. Set the classes, their note and the words by Rule 14.9’s test for small places, so the map reads as a pattern. Put the national figure above the map (Rule 14.6), group the table by state and give every county with its margin in this chart’s data file in the guide’s asset package."
       }
@@ -1089,9 +1094,9 @@
      "spec": null,
      "rule": "14.124",
      "title": "Sketch 14.124 in red and blue",
-     "answer": "The misleading half now draws in a plain news red and blue that are none of the guide's inks, under its do-not-publish bar, with each color named in the key. The better half is unchanged. The guide's build check gives that one half a named exemption, recorded as the one exception to your rule of no red and blue on an election graphic.",
-     "what_changed": "Party A's seven small places in red (#CC0000) and Party B's five large places in blue (#3A8AC4), each with a thin edge; the blue sits far enough from the red in lightness to tell them apart in gray print. The caption names both colors.",
-     "why": "Gray did not show the first harm the entry names, color used as one side's scoreboard.",
+     "answer": "The misleading half now draws in a plain news red and blue that are none of the guide’s inks, under its do-not-publish bar, with each color named in the key. The better half is unchanged. The guide’s build check gives that one half a named exemption, recorded as the one exception to your rule of no red and blue on an election graphic.",
+     "what_changed": "Party A’s seven small places in red (#CC0000) and Party B’s five large places in blue (#3A8AC4), each with a thin edge; the blue sits far enough from the red in lightness to tell them apart in gray print. The caption names both colors.",
+     "why": "Gray did not show the first harm the entry names, color used as one side’s scoreboard.",
      "recommendation": "Done.",
      "refs": [
       "DR-255",
@@ -1107,7 +1112,7 @@
        "width": 1440,
        "ground": "newsprint",
        "path": "work/handoffs/phase-3/board-2-pictures/20261113_S-14-124-Sketch-Gray-Before.html",
-       "label": "Before: gray",
+       "label": "In gray, as it stood before your answer",
        "role": "before"
       },
       {
@@ -1116,7 +1121,7 @@
        "width": 1440,
        "ground": "newsprint",
        "path": null,
-       "label": "Now: red and blue",
+       "label": "In red and blue",
        "role": "after",
        "element": "fig-s-14-124-sketch"
       }
@@ -1126,10 +1131,10 @@
      "id": "DR-256",
      "spec": "S16",
      "rule": "14.116",
-     "title": "S16's range words",
-     "answer": "S16's note 3 and alt now say Arkansas sits lowest by more than the margin of error, and DC highest but within the margin of error of Minnesota and Oregon.",
-     "what_changed": "Two sentences. Every figure in them is a value or margin in S16's data, checked by script.",
-     "why": "The old words set DC above every state, which the survey's margins cannot support.",
+     "title": "S16’s range words",
+     "answer": "S16’s note 3 and alt now say Arkansas sits lowest by more than the margin of error, and DC highest but within the margin of error of Minnesota and Oregon.",
+     "what_changed": "Two sentences. Every figure in them is a value or margin in S16’s data, checked by script.",
+     "why": "The old words set DC above every state, which the survey’s margins cannot support.",
      "recommendation": "Done.",
      "refs": [
       "DR-256"
@@ -1154,9 +1159,9 @@
     {
      "id": "DR-257",
      "title": "Source lines that printed October 15, 2026 twice",
-     "answer": "Seven older charts printed the atlas's snapshot date twice in their source line. Each now prints it once.",
-     "what_changed": "The source line of S10, S21, S23, S38, S39, S60 and S63; words only. Of the 21 stored lines that print the date twice, these seven charts print 6; the other 15 print nowhere on the page.",
-     "why": "Round 3's rule: the date prints once.",
+     "answer": "Seven older charts printed the atlas’s snapshot date twice in their source line. Each now prints it once.",
+     "what_changed": "The source line of S10, S21, S23, S38, S39, S60 and S63; words only. Of the 21 stored lines that print the date twice, these seven charts print six; the other 15 print nowhere on the page.",
+     "why": "Round 3’s rule: the date prints once.",
      "recommendation": "Done.",
      "refs": [
       "DR-257",
@@ -1207,7 +1212,7 @@
      "id": "DR-258",
      "title": "The atlas comparisons rerun from your uploads",
      "answer": "You uploaded Concepts V2, V5 Polished and the Atlas Visual System, each equal to the October 20 files byte for byte. All 2,644 comparisons between those pages and Atlas V7 were rerun, and none differs from Phase 0.",
-     "what_changed": "Nothing in the guide. The rerun is the record for chapter 15's reconciliation table at board 3.",
+     "what_changed": "Nothing in the guide. The rerun is the record for chapter 15’s reconciliation table at board 3.",
      "why": "Round 3 could rerun 1,976 of the 2,644; the other 668 needed the three files.",
      "recommendation": "Done.",
      "refs": [
@@ -1851,7 +1856,7 @@
      "round": 4
     }
    ],
-   "note": "Chapter 14 holds 97 examples as built, 84 specimens and 13 rule plates, and 108 with round 4's 11 as planned, the figure the data lead's ruling (g) gave. No atlas domain passes one in four (27 of 108) and no state passes one in five (21). Taxes, wealth and economic security is the largest domain at 16, and California and Florida are the most named states at 5 each. The script's count of the 97 equals the guide's own build log."
+   "note": "Chapter 14 holds 97 examples as built, 84 charts and 13 rule plates, and 108 with round 4’s 11 as planned, the figure of the data lead’s earlier count. No atlas domain passes one in four (27 of 108) and no state passes one in five (21). Taxes, wealth and economic security is the largest domain at 16, and California and Florida are the most named states at 5 each. The script’s count of the 97 equals the guide’s own build log."
   },
   "dr_229": {
    "test": "A form keeps election data only where the coverage plan writes its use as an election question",
@@ -1868,7 +1873,7 @@
      "data": "Reported voting, counted under taking part",
      "dataset": [],
      "example": "Reported voting by age, presidential years 2004 to 2024",
-     "test": "Not applied: a rule's own plate, whose lesson needs the data",
+     "test": "Not applied: a rule’s own plate, whose lesson needs the data",
      "election_data": true,
      "passes": null
     },
@@ -1880,7 +1885,7 @@
      "data": "Reported voting, counted under taking part",
      "dataset": [],
      "example": "Reported voting, citizens 18 and over, presidential years",
-     "test": "Not applied: a rule's own plate, whose lesson needs the data",
+     "test": "Not applied: a rule’s own plate, whose lesson needs the data",
      "election_data": true,
      "passes": null
     },
@@ -1892,7 +1897,7 @@
      "data": "Election results, seats or election rules",
      "dataset": [],
      "example": "House seats by party, November 11, 2026",
-     "test": "Not applied: a rule's own plate, whose lesson needs the data",
+     "test": "Not applied: a rule’s own plate, whose lesson needs the data",
      "election_data": true,
      "passes": null
     },
@@ -1904,7 +1909,7 @@
      "data": "Reported voting, counted under taking part",
      "dataset": [],
      "example": "Reported turnout, ten states with the most voting-age citizens, 2024",
-     "test": "Not applied: a rule's own plate, whose lesson needs the data",
+     "test": "Not applied: a rule’s own plate, whose lesson needs the data",
      "election_data": true,
      "passes": null
     },
@@ -1913,7 +1918,7 @@
      "rule": "14.15",
      "kind": "specimen",
      "domain": "D02",
-     "data": "The atlas's log of rule changes, counted under elections",
+     "data": "The atlas’s log of rule changes, counted under elections",
      "dataset": [
       "v7-repair-log-by-instrument"
      ],
@@ -1990,7 +1995,7 @@
      "rule": "14.49",
      "kind": "specimen",
      "domain": "D02",
-     "data": "The atlas's log of rule changes, counted under elections",
+     "data": "The atlas’s log of rule changes, counted under elections",
      "dataset": [
       "v7-repair-log"
      ],
@@ -5079,5 +5084,5 @@
   }
  },
  "signed_off_utc": "2026-11-13T17:35:22Z",
- "signed_off_note": "Signed off by the data lead: every figure in this file read by script or from the owner's file it names; Part A (A1 to A5) signed off at 17:35 UTC. The editor owns the words."
+ "signed_off_note": "Signed off by the data lead: every figure in this file read by script or from the owner’s file it names; Part A (A1 to A5) signed off at 17:35 UTC. The editor owns the words."
 }

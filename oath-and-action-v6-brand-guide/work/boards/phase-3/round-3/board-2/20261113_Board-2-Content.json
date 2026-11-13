@@ -35,7 +35,7 @@
   "for_line": "For Dustin Cathcart · {built_date}",
   "deck": [
    "Rounds 1 to 3 built {n_forms} of chapter 14’s forms in {n_fams} families: {n_spec_rows} with a chart and {n_sketches} with a sketch. You answered five questions before this board, and it shows each answer done beside what it replaced.",
-   "Panel 1 asks only what is still open. Every panel after it is a reference: each form at true size on both grounds, the count of examples by place and topic, what chapter 14 has spent, and the scores."
+   "Panel 1 asks only what is still open. The panels after it are for reference, from every form at true size on both grounds to the scores and what was tested."
   ],
   "toc_h": "On this board",
   "minutes": "Panel 1 takes about fifteen minutes to read and answer. Pictures show at true size; where one is wider than your window, its frame scrolls sideways."
@@ -111,12 +111,12 @@
    "nav": "The {n_forms} forms by family",
    "title": "The {n_forms} forms by family",
    "refs": "DR-252 · D3-1505 · D3-1527",
-   "lede": "Every form rounds 1 to 3 built, in the plan’s order: {n_spec_rows} forms with a chart, drawn from {n_specs} charts, and {n_sketches} sketches. Within each family, a form to avoid comes first.",
-   "how": "Each chart shows as the guide draws it at a 1440 px window and a 390 px window, at true size, first on Newsprint and then on Charcoal; a fold under them holds both grounds in grayscale. Under the pictures sit the source line as printed, the chart’s weight with its plate frame, and its table as text in a second fold. Each heading links to the form’s live entry in the guide preview.",
-   "lede_est": "The guide labels {n_est_w} of these charts Estimate, and their label shows filled in black here as it does there: Rules {est_rules}.",
+   "lede": "This panel shows every form rounds 1 to 3 built, in the plan’s order: {n_spec_rows} forms with a chart, drawn from {n_specs} charts, and {n_sketches} with a sketch. Within each family, a form to avoid comes first.",
+   "how": "Each chart shows as the guide draws it at a 1440 px window and a 390 px window, at true size, first on Newsprint and then on Charcoal; a fold under them holds both grounds in grayscale. Under the pictures sit the source line as printed, the bytes the chart adds to the page, and its table as text in a second fold. Each heading links to the form’s live entry in the guide preview.",
+   "lede_est": "The guide labels {n_est_w} of these charts Estimate, in Rules {est_rules}, and the board shows that label as the guide prints it.",
    "estimate_label": "Estimate",
    "index_h": "The forms by family",
-   "family_line": "{n} forms, {s} of them sketches.",
+   "family_line": "{n} forms, {s} sketched",
    "live": "Open the live entry",
    "tag_avoid": "Form to avoid",
    "use_when": "Use it when",
@@ -135,7 +135,7 @@
    "row_charcoal": "On Charcoal",
    "row_gray": "Grayscale proof of both grounds",
    "gray_label": "{g} · {w} px window",
-   "bytes_line": "{with_frame} bytes on the page with its plate frame ({figure} for the chart as the guide places it).",
+   "bytes_line": "{with_frame} bytes on the page with the frame round the chart, {figure} for the chart alone.",
    "kit_pass": "Passes every check in the kit.",
    "kit_faults": "{n} faults in the kit’s checks:",
    "table_summary": "The table, as the guide prints it",
@@ -149,7 +149,7 @@
    "nav": "Rules 14.1 to 14.14",
    "title": "Rules 14.1 to 14.14 and the opener",
    "refs": "",
-   "lede": "The fourteen rules every chart follows, as rounds 1 to 3 left them: each rule’s title with its correct and failure plates, photographed from today’s build at a 1440 px window.",
+   "lede": "These are the fourteen rules every chart follows, as rounds 1 to 3 left them. Each shows its title with its correct and failure plates, photographed from today’s build at a 1440 px window.",
    "opener_h": "The chapter’s opening plate",
    "wait": "Waiting for the photographs of this rule’s plates."
   },
@@ -223,7 +223,7 @@
     "page": "The whole guide, as projected"
    },
    "no_limit": "Counted inside chapter 14",
-   "per_plate": "Each of round 4’s {to_come} charts still to come has {per_plate} bytes to spend, its plate frame included.",
+   "per_plate": "Each of round 4’s {to_come} charts still to come has {per_plate} bytes to spend, the frame round it included.",
    "geo_line": "The map shapes take {geo} bytes of their {geo_allow}-byte reserve; the unspent {geo_room} stay held for maps to come.",
    "page_line": "The guide is {page_now} bytes today and projects to {proj} bytes when every chapter is built, {proj_room} under the {budget_mb} MB limit.",
    "fam_h": "Bytes by family",
@@ -244,16 +244,16 @@
     "Rule",
     "Form",
     "As placed",
-    "With its plate frame"
+    "With its frame"
    ],
-   "heavy_note": "As placed is the build report’s figure; with its plate frame is the kit’s measure, which adds the frame round the plate."
+   "heavy_note": "“As placed” is the guide build’s own figure, and “With its frame” is the kit’s, which adds the frame the guide draws round each chart."
   },
   "scores": {
    "n": 6,
    "nav": "Scores",
    "title": "Scores",
    "refs": "D3-1507",
-   "lede": "The creative director scores each round’s work on six criteria from 1 to 5, and an item is ready when every score is 4 or more with no Must fix open. Three reviewers read each round from their own lens.",
+   "lede": "The creative director scores each round’s work on six criteria from 1 to 5, and an item is ready when every score is 4 or more with no Must fix open. Three reviewers also read each round, each for one part of the work, named in the table below.",
    "legend": "Each cell gives the first score, small, then the score after the fix pass. A box marks a score under 4.",
    "wait_round": "Waiting for round {r}’s scores.",
    "cd_h": "Round {r}",
@@ -288,19 +288,19 @@
     {
      "label": "Strict build of the guide",
      "kind": "build",
-     "words": "run by this board’s build on {when}: exit 0, {warnings} warnings, {bytes} bytes, {rules} rules, {specimens} examples placed",
+     "words": "run by this board’s build on {when}, with exit 0, {warnings} warnings, {bytes} bytes, {rules} rules and {specimens} examples placed",
      "words_failed": "run by this board’s build, it failed with exit {exit}"
     },
     {
      "label": "Quick guide check",
      "kind": "guide_check",
      "scratch_file": "phase-3/board-2/main/quick/guide-Guide-Check-Results.json",
-     "words": "run by the main session on a copy of its strict build of {page_bytes} bytes, at {widths} px: {specimens} drawn examples, {links} same-page links, {failures} failures"
+     "words": "run by the main session on a copy of its strict build of {page_bytes} bytes at {widths} px, with {specimens} drawn examples, {links} same-page links and {failures} failures"
     },
     {
      "label": "The kit’s build of every chart",
      "kind": "kit",
-     "words": "run by this board’s build at the widths the guide draws, with the sweep from 256 px: {pass} of {n} charts pass with no fault, {warnings} warnings"
+     "words": "run by this board’s build at the widths the guide draws and at every whole width from 256 px, with {pass} of {n} charts passing with no fault and {warnings} warnings"
     },
     {
      "label": "The engineer’s checks after your answers landed",
@@ -314,7 +314,7 @@
       {
        "file": "work/handoffs/phase-3/20261113_Board-2-Engineer-Notes.md",
        "pattern": "build --all --no-png`, sweep on[^|]*\\| exit 0: \\*\\*(\\d+) of (\\d+) PASS, (\\d+) FAIL",
-       "words": "the kit’s build of every chart with the sweep, {1} of {2} pass and {3} fail"
+       "words": "the kit’s build of every chart at every whole width from 256 px, {1} of {2} pass and {3} fail"
       },
       {
        "file": "work/handoffs/phase-3/20261113_Board-2-Engineer-Notes.md",
@@ -341,14 +341,14 @@
     {
      "label": "This board’s own check",
      "kind": "board_check",
-     "words": "on its last run at {widths} px: {failures} failures, leaving aside the page’s language, which the host’s wrapper sets"
+     "words": "on its last run at {widths} px, with {failures} failures once the page’s language is left aside, since the host’s wrapper sets it"
     }
    ],
    "not_tested": [
     "The guide check itself: the main session runs it, and this board’s build never does.",
     "The four scripts for real devices, which stay not tested.",
     "The board in Safari or Firefox, on a 2x screen, printed, or as the host shows it once published; a copy wrapped as the host wraps it stands in.",
-    "Every picture by eye: the build checks each one’s size and source, and a sample was read by eye.",
+    "Every picture by eye: the build checks each one’s size and source, and the builder looked at a sample.",
     "A keyboard walk past the check’s first stops, and a screen reader."
    ]
   },

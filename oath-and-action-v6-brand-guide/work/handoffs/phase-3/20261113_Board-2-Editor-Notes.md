@@ -9,6 +9,8 @@ Oath & Action Edition 06, Phase 3, board 2. Editor (`oa-editor`), November 13, 2
 - 17:28 UTC. The data lead signed off A1, A5 and A4's words at 17:27; A2 waits on the cartographer's lighter blue (the caption names no hex, so my words hold). S74's measure line and caption drop the snapshot date under call 9 (17:28), for the data lead's sign-off. Waiting for the builder's first full build; the decisions file's 17:25 draft is read, and I edit its words once the data lead says every panel is written (the contract under "Words for the data lead").
 - 17:38 UTC. The data lead signed off A2 at 17:29, so Part A's words are all signed off but A4's layout (the cartographer's). Read the board's first page (the builder's 17:35 file, before its notes call it a full build): one guide fault found and fixed, S71's table printing a studio file path ("S71" under "Words for the data lead", for sign-off); my planned words for the content file are under "Words for the board builder". Panel 1 had not yet read the decisions file.
 
+- 17:55 UTC. **First board words pass done; the builder is asked to rerun** ("Words for the board builder"). The decisions file's words (42 edits, apostrophes curled) at 17:53, S73 trimmed to 13,998 bytes in the kit's measure on the data lead's ruling at 17:54 (for its sign-off), the content file's words (18 edits) at 17:55. Next: read the rerun page whole.
+
 ## Routine calls
 
 - D3-xxx | The nine data file lines end on `{data_file}` after "in", each in a full clause, none opening a sentence | D3-1529; the long phrase falls last, where a listener expects the new fact (W01)
@@ -18,6 +20,9 @@ Oath & Action Edition 06, Phase 3, board 2. Editor (`oa-editor`), November 13, 2
 - D3-xxx | S16's note 3 and alt take DR-256's words exactly as the brief quotes them, read from the brief by script | Dustin's answer; every figure checked by script against S16's data
 - D3-xxx | S10, S21, S23, S38, S39, S60 and S63 print the research lead's `snapshot_once` source variants, grade lines unchanged | DR-257 under D3-1327 and D3-1493: the snapshot date once in the source line, in S68's and S74's form
 - D3-xxx | S74's measure line and table caption drop "as of October 15, 2026", which its grade and source lines hold | Call 9 (D3-1485) binds round 3's specs and missed S74; taken before A6 so the board's pictures carry it (the data lead's A5 note)
+- D3-xxx | S73's note 4 drops its last sentence, "Each, with its transfers, is in {data_file}." | The data lead's ruling: S73 grew 42 bytes past D3-1328's 14,106 with A1's phrase, and its table caption already names the data file
+- D3-xxx | The board's words keep decision codes, ledger numbers, file names and review codes off the board's face, name each specimen and atlas code at first use in a panel, and take typographic apostrophes | The brief's words rule (codes and paths only in the small reference lines) and H11
+- D3-xxx | The data lead's view on S12 gives the data lead's own reasons, from its notes, in place of repeating the recommendation | The board printed the recommendation twice, word for word
 - D3-xxx | S71's State statute row prints the four constitutions' web addresses in place of a studio file path, through a `typography.replace` pair | No studio word or path in reader text (H11, chapter 02's scope); the addresses are section SS's own, in the form the other rows print
 
 ## Words for the data lead (sign-off)
@@ -25,6 +30,10 @@ Oath & Action Edition 06, Phase 3, board 2. Editor (`oa-editor`), November 13, 2
 ### The decisions file's words: how we share it (17:28 UTC)
 
 You write `20261113_Board-2-Decisions.json` by `write_decisions_v1.py`, so a rerun would overwrite words I set in the file. Proposal: once you note that every panel is written (the V7.1 and "Answered" panels are still empty in the 17:25 draft), I edit the word fields in place (`title`, `answer`, `lede`, `what_changed`, `why`, `recommendation`, `question`, `views` texts, and the words of `rows`), each by a script that fails unless only that field moves, and I log every change in a table under "Board words" below with its before and after. If you must rerun the writer after that, carry my words into it first, or tell me and I re-apply my table. Figures stay yours: I change no number, and any sentence whose figures I move comes back to you before it lands.
+
+### The decisions file: my words are in (17:53 UTC); please re-read before any further edit
+
+At 17:53:43 UTC I wrote 42 word edits and curled the straight apostrophes in 77 word fields of `20261113_Board-2-Decisions.json`, in one read and write, on your file as it stood at 17:53:28 (your S04 and S08 rows included). No figure moved: my script fails on any new figure in a field and on any change outside the word fields, and lists each figure that leaves a field (only decision and ledger codes, file names, and 6 spelled "six" twice). The table of every change is under "Board words" below. If you edit a field after this, read the file first, since a write from an older copy would undo these.
 
 ### A1, DR-254: the nine data file lines (landed 17:15 UTC, for your sign-off)
 
@@ -88,6 +97,16 @@ I read the research lead's added sentences ("The atlas checked … on that date.
 
 **Signed off by the data lead at 17:27 UTC** (A1, A5 whole, A4's words).
 
+### S73: trimmed under 14,106 as you ruled (landed 17:54 UTC, for your sign-off)
+
+Your ruling (17:48): S73 measured 14,148 bytes with its frame on the A6 page, 42 over D3-1328's 14,106, and the least cut is note 4's last sentence, since the table caption already names the data file. Taken as ruled:
+
+| Field | Before | After |
+|---|---|---|
+| S73 `notes[3]` (note 4 as printed) | …the District of Columbia and Guam; a committee two funds paid counts once. Each, with its transfers, is in {data_file}. | …the District of Columbia and Guam; a committee two funds paid counts once. |
+
+The caption keeps "every committee is in {data_file}", so a reader still learns where every committee's transfers are. `oa-chart.mjs build s73`, sweep on: PASS, 0 faults; the kit's measure 14,087 to 13,998 with the frame, 89 bytes off, which puts the page measure near 14,059 if the page drops what the kit drops (the main session's final strict build measures it). `maker_b_round3_derive.py --figures` (read-only): 0 faults. Of A1's nine places, eight now name the file and this one drops its line; the decisions file's "Answered" item says so (a figure change there, nine into eight and one, for your sign-off).
+
 ### S74: call 9 taken now, on your note (landed 17:28 UTC, for your sign-off)
 
 Your A5 note: S74, a round 3 spec, prints October 15, 2026 in its grade, measure and source lines and its table caption, where call 9 (D3-1485) drops it from the measure line and any caption that repeats it. I took it now, before A6, so the board's pictures carry it and no fix-round picture changes. Words only:
@@ -109,6 +128,84 @@ Found reading the board's first page (17:35 build): S71's table, column "Where t
 
 The four addresses are copied from the file's section SS (Massachusetts, Nebraska, Virginia, Arizona, each read November 11, 2026, as the row's "Read" cell says). The stored cell and the CSV export keep the path, so the data file DR-254 promises would still carry it: that is the data's to fix, in maker A's derive (its REWORD table already rewords the row's `sources` cell, D3-1388) or the research lead's file, and I ask the main session to route it. `oa-chart.mjs build s71`, sweep on: PASS, 0 faults; 12,246 to 12,595 bytes with the frame (the island carries both strings of the pair), under 14,106. No other path or code prints anywhere in the board's text (script over all 17,951 lines).
 
+## Board words
+
+### The decisions file (17:53 to 17:54 UTC)
+
+Applied by `tools/dec_edit.py` (scratch): each edit fails unless its old words occur once in the field; the script fails, writing nothing, if any field outside the word fields moves or a new figure enters a field, and lists each figure that leaves one. Every straight apostrophe in a word field became ’ (103 fields), except in the creative director's quoted view, which stays as quoted. The data lead's 17:52 edits had already taken the four decision codes the builder flagged (D3-1515, DR-256, DR-64, D3-689) out of the words, so I took the rest. Read by me, with the builder's 17:48 page beside it: every title, answer, lede, what changed, why, recommendation, question, view, note, picture label, plan line, row and count note.
+
+| Field | Before | After | Why |
+|---|---|---|---|
+| `panels[0].lede` | Four drawings you approved on board 1 changed in rounds 1 to 3: S12, S16, S10 and S05. Thirteen board 1 drawings, S12 and S16 among them, moved a word, a label, a line or a key, most of them only at widths board 1 did not show, and twelve round 1 charts changed the words that name an ink. S12 is the one choice: we recommend the stacked tile in place of the scrolling frame, and one approval for the rest. | Four drawings you approved on board 1 changed in rounds 1 to 3: the shift arrows map (S12), the turnout bubble map (S16), the evidence mix bars (S10) and homeownership by race and ethnicity (S05). Thirteen board 1 drawings, S12 and S16 among them, moved a word, a label, a line or a key, most of them only at widths board 1 did not show, and twelve round 1 charts now name their inks in new words. S12 is the one choice here. We recommend the stacked tile in place of the scrolling frame, and one approval for the rest. | H11: each code named at first use; the colon held the recommendation back (W06) |
+| `panels[0].items[0].what_changed` | against 6 on board 1. | against six on board 1. | H06 |
+| `panels[0].items[0].why` |  describe arrows (C-M2). |  describe arrows. | A review code on the board's face |
+| `panels[0].items[0].views[0].text` | Take the stacked tile. It keeps board 1's arrows, figures, scale rule, inks and words, and a reader at a 1,440 px window sees the whole map in the column with the chapter list in place. Where the column is narrower than 618 px, from a 1,024 to a 1,103 px window, hold the stacked tile in a frame 618 px wide that scrolls about 60 px, in place of the 468 px the 1,024 px frame scrolls there. The cost is shorter arrows and a change to a drawing you approved; the engineer measures the kit's bytes before it is built. | My first draft kept the 1,024 px frame, because I believed the stacked tile needed a wider column than it does. The cartographer’s measure changed my view. My ruling on this map in the last round put the stacked tile first and a scrolling frame only where it does not fit, and in either drawing the figure in each tile still carries every state’s value. | The view printed the recommendation a second time, word for word; these are the data lead's own reasons from its notes (S12, 17:33 UTC) |
+| `panels[0].items[0].pictures[0].label` | Board 1: the 1,024 px drawing | Board 1’s drawing, 1,024 px wide | Printed after the board's own “Before” |
+| `panels[0].items[0].pictures[1].label` | As built, at a 1,440 px window: the 1,024 px frame, widened over the chapter list | At a 1,440 px window, the 1,024 px frame as built, widened over the chapter list | Printed after “Now”, which read “Now As built” |
+| `panels[0].items[0].pictures[2].label` | As built, at a 1,024 px window: the 1,024 px frame in the column | At a 1,024 px window, the 1,024 px frame as built, in the column | The same |
+| `panels[0].items[0].pictures[6].label` | Today on a phone, with the state codes | On a phone, with each state’s code | Printed after “Now” |
+| `panels[0].items[1].why` | the notes but note 3, | every note but note 3, | W01 |
+| `panels[0].items[1].pictures[1].label` | Today at a 1,440 px window | At a 1,440 px window | Printed after “Now” |
+| `panels[0].items[1].pictures[3].label` | Today on a phone | On a phone | Printed after “Now” |
+| `panels[0].items[2].pictures[1].label` | Today at a 1,440 px window | At a 1,440 px window | Printed after “Now” |
+| `panels[1].lede` | Nine specimens changed their data, measure or drawing after their data plan row was signed off, each for a reason a review found, and seventeen changes were made to the data plans before anything was fetched. | Nine charts changed their data, measure or drawing after the data lead signed off their data plan rows, each for a reason a review found, and the data lead changed the data plans in seventeen places before the research lead fetched anything. | W02: name who acts |
+| `panels[1].items[1].plan_row.said` | `fec-jfc-transfers-2024`: the one committee per nominee that transferred the most to the nominee's principal campaign committee (data lead change 8). | One joint fundraising committee per nominee, the one that transferred the most to the nominee’s principal campaign committee. | A file name and a studio code on the board's face |
+| `panels[1].items[1].built` | `fec-jfc-transfers-2024-all-committees` (research ledger P7-226): all seven designated joint fundraising committees, line 22, refunds on line 28C set apart. | A new file of all seven committees the FEC designates joint fundraising committees of the two campaigns, with transfers on line 22 and refunds on line 28C set apart. | The same |
+| `panels[1].items[2].built` | `fec-house-campaigns-2024-money-in-out`, transfers netted candidate by candidate (research ledger P7-217). | The same file, with transfers netted candidate by candidate. | The same |
+| `panels[1].items[3].answer` | and on a phone it draws the studio's tile grid in place of state outlines. | and on a phone it draws a grid of equal state tiles in place of state outlines. | A studio word on the board's face |
+| `panels[1].items[3].why` | The atlas issue it serves (I015) names | The atlas issue it serves, Issue I015 “Public information is out of reach for some residents”, names | H11: a bare ID |
+| `panels[1].items[3].plan_row.said` | with margins; the line used to be named. | with margins, the line to be named later. | “Used to be” read as the past |
+| `panels[1].items[3].built` | B28002's fixed broadband line, with the published margins of table S2801 (source variant `fixed_with_s2801_margin`). | Table B28002’s fixed broadband line, with the published margins of table S2801. | A studio key on the board's face |
+| `panels[1].items[5].what_changed` | 2025 has no average, since October 2025 was not collected, and its column is drawn empty. | The 2025 column is drawn empty, since the Census Bureau did not collect October 2025 and the year has no average. | W02, and a sentence opened with a figure; the Census Bureau as the plan-changes row names it |
+| `panels[1].items[5].plan_row.said` | `frb-fomc-projections-unemployment` alone. | The Federal Reserve’s projections alone. | A file name on the board's face |
+| `panels[1].items[5].built` | Adds `fred-unemployment-fourth-quarter`, derived from `fred-unemployment-and-job-openings`. | Adds a file of fourth-quarter averages, derived from the monthly unemployment rate. | File names on the board's face |
+| `panels[1].items[6].plan_row.said` | `census-acs-rent-and-income-by-state`, with the studio's rent-to-income ratio. | The state rent and income file, with the studio’s own ratio of rent to income. | A file name on the board's face |
+| `panels[1].items[6].built` | The same file rebuilt from tables B25071, B25064 and B25119 (research ledger P7-030). | The same file, rebuilt from the Census Bureau’s tables B25071, B25064 and B25119. | A studio code on the board's face |
+| `panels[1].items[8].plan_row.said` | `census-hvs-homeownership-by-age` alone. | The homeownership rates by age alone. | A file name on the board's face |
+| `panels[1].items[8].built` | Adds `census-hvs-homeownership-by-age-moe` (research ledger P7-222). | Adds the Census Bureau’s published margins for those rates. | A file name and a studio code on the board's face |
+| `panels[1].items[9].answer` | Seventeen changes, five to the rounds 1 and 2 plan and twelve to the round 3 plan, each made before the research lead fetched the data, so the plan rows already carry them. They are listed so you can see where the specimens differ from the coverage plan you approved. | The data lead made seventeen changes, five to the rounds 1 and 2 plan and twelve to the round 3 plan, each before the research lead fetched the data, so the plan rows already carry them. The list shows where the charts differ from the coverage plan you approved. | A full sentence that names who acted (W02) |
+| `panels[2].lede` | Nine items carried for board 2 and one question. Seven are new to the V7.1 list you approved in October; RL-3 is no atlas item and should come off it. None changes the guide now. The question is whether each variable takes one name across chapters 10, 11 and 15, and we recommend its own title. | Nine atlas items come to this board, with one question. Seven are new to the V7.1 list you approved in October, and the item on the FEC’s joint fundraising totals is no atlas item and should come off it. None changes the guide now. The question is whether each variable takes one name across chapters 10, 11 and 15, and we recommend each variable’s own title. | A full first sentence; a studio code named in words (H11) |
+| `panels[2].items[0].answer` | but issue I062, issue I133 and three pathways print | but Issue I062 “Paperwork pushes eligible people off benefits”, Issue I133 “Coverage gaps and renewal paperwork interrupt health care” and three pathways print | H11: each ID with its record's name |
+| `panels[2].items[2].answer` | as a flow, and its own description calls it a stock whose listed indicators count a flow. | as a flow, a rate of change, and its own description calls it a stock, an amount that builds up, whose listed indicators count a flow. | H02: stock and flow glossed at first use |
+| `panels[2].items[2].what_changed` | Nothing since the list's item 8 of October 21. | Nothing has changed since item 8 of the list, on October 21. | W01 |
+| `panels[2].items[4].answer` | Two straight apostrophes, in claims CL1359 and CL1363, straight quote marks in one source's title, and one missing space | The four are two straight apostrophes, in claims CL1359 and CL1363, straight quote marks in one source’s title, and a missing space | A full sentence |
+| `panels[2].items[9].what_changed` | the titles of D1, D2, D4 and D6 outside them. | the titles of variables D1, D2, D4 and D6 outside them. | H11 |
+| `panels[3].lede` | You answered five questions on November 13 before the board's pictures were taken. | You answered five questions on November 13, before the studio took the board’s pictures. | W02 |
+| `panels[3].items[1].pictures[0].label` | Before: gray | In gray, as it stood before your answer | Printed after “Before”, which read “Before Before” |
+| `panels[3].items[1].pictures[1].label` | Now: red and blue | In red and blue | Printed after “Now” |
+| `panels[3].items[3].what_changed` | these seven charts print 6; | these seven charts print six; | H06 |
+| `counts.rule_01_9.note` | 84 specimens and 13 rule plates, and 108 with round 4's 11 as planned, the figure the data lead's ruling (g) gave. | 84 charts and 13 rule plates, and 108 with round 4's 11 as planned, the figure of the data lead’s earlier count. | A studio word on the board's face |
+| `panels[0].items[3].pictures[1].label` | Today at a 1,440 px window | At a 1,440 px window | Printed after “Now” |
+| `panels[0].items[4].answer` | eleven where those checks found a fault and two by the chart kit's later craft fixes, | eleven where those checks found a fault and two from later fixes to the chart kit, | A studio phrase |
+| `panels[0].items[4].rows[2].what_changed` | Each row's rule now breaks round the value labels it crosses (round 2's review), and the rules moved half a pixel onto the pixel grid (round 1's). | Each row’s rule now breaks round the value labels it crosses, a change from round 2’s review, and in round 1 the rules moved half a pixel onto the pixel grid. | Parenthetical references read as studio notes |
+| `panels[3].items[0].answer` | …Phase 5's asset package, and the nine places that promised “the download” or “the CSV file” now name “this chart’s data file in the guide’s asset package”. | …Phase 5’s asset package. Of the nine places that promised “the download” or “the CSV file”, eight now name “this chart’s data file in the guide’s asset package”. The ninth, S73’s fourth note, drops its line, since S73’s table caption already names the file. | S73's trim (below); **a figure moved (nine to eight and one), for your sign-off** |
+| `panels[3].items[0].rows[4].new` | …a committee two funds paid counts once. Each, with its transfers, is in this chart’s data file in the guide’s asset package. | …a committee two funds paid counts once. | The row's “Now” is the note as it now reads |
+| `panels[1].items[1].what_changed` | Jr.'s | Jr.’s | The one straight apostrophe the pattern missed |
+
+Read and kept: every other word field, among them S12's answer, what changed and recommendation, S16's and S10's items, the twelve note-word rows, S76, S80, S41 and S20, the V7.1 items on Medicaid renewals, the ballot measures, Article V, figures 5 and 7, the issue titles and the loop label question, and the "Answered" items on the sketch, S16, the source lines and the comparisons. The creative director's view on S12 stays word for word as quoted.
+
+**For the data lead (figures, not changed):** the plan-changes item says "seventeen changes, five to the rounds 1 and 2 plan and twelve to the round 3 plan", and its table lists 19 rows, seven of them rounds 1 and 2 (S25, S33, S46, S47, S26, S61, S20). Two rows (S33, S61) and a round 3 row (S84) cite your answers (DR-234, DR-98, DR-243) and may be yours rather than the data lead's changes; either the count or the rows needs to move. The election data table's "Passes" column is yours (you set null where the test was not applied, 17:52).
+
+### The content file (17:55 UTC)
+
+Applied by `tools/apply.py` (each old phrase once in its field and once in the file; only that field moves). The builder had already rewritten `cover.deck[0]` so its counts add up.
+
+| Field | Before | After | Why |
+|---|---|---|---|
+| `cover.deck[1]` | Every panel after it is a reference: each form at true size on both grounds, the count of examples by place and topic, what chapter 14 has spent, and the scores. | The panels after it are for reference, from every form at true size on both grounds to the scores and what was tested. | The list left out the rules and the tests |
+| `sections.forms.lede` | Every form rounds 1 to 3 built, in the plan’s order: … and {n_sketches} sketches. | This panel shows every form rounds 1 to 3 built, in the plan’s order: … and {n_sketches} with a sketch. | A lede is a full sentence |
+| `sections.forms.how` | …the chart’s weight with its plate frame,… | …the bytes the chart adds to the page,… | "Plate frame" is a studio word |
+| `sections.forms.lede_est` | The guide labels {n_est_w} of these charts Estimate, and their label shows filled in black here as it does there: Rules {est_rules}. | The guide labels {n_est_w} of these charts Estimate, in Rules {est_rules}, and the board shows that label as the guide prints it. | The list of rules read as a reveal (W06) |
+| `sections.forms.family_line` | {n} forms, {s} of them sketches. | {n} forms, {s} sketched | It printed "1 of them sketches" and "0 of them sketches" |
+| `sections.forms.bytes_line` | {with_frame} bytes on the page with its plate frame ({figure} for the chart as the guide places it). | {with_frame} bytes on the page with the frame round the chart, {figure} for the chart alone. | The same studio word |
+| `sections.rules.lede` | The fourteen rules every chart follows, as rounds 1 to 3 left them: each rule’s title with… | These are the fourteen rules every chart follows, as rounds 1 to 3 left them. Each shows its title with… | A full sentence |
+| `sections.spend.per_plate` | …its plate frame included. | …the frame round it included. | The studio word |
+| `sections.spend.heavy_cols[4]`, `heavy_note` | With its plate frame; "As placed is the build report’s figure; with its plate frame is the kit’s measure, which adds the frame round the plate." | With its frame; "“As placed” is the guide build’s own figure, and “With its frame” is the kit’s, which adds the frame the guide draws round each chart." | The column names read as names |
+| `sections.scores.lede`, last sentence | Three reviewers read each round from their own lens. | Three reviewers also read each round, each for one part of the work, named in the table below. | Plain words for who they are |
+| `sections.tested.tested[0]`, `[1]`, `[2]`, `[4]` `words` | "…on {when}: exit 0, …" and the same colon in the others; "with the sweep from 256 px" | "…on {when}, with exit 0, …"; "at the widths the guide draws and at every whole width from 256 px, with {pass} of {n} charts passing…"; "…with {failures} failures once the page’s language is left aside, since the host’s wrapper sets it" | Each line printed two colons after its label; "the sweep" is a studio word |
+| `sections.tested.tested[3].sources[1].words` | the kit’s build of every chart with the sweep, … | the kit’s build of every chart at every whole width from 256 px, … | The same |
+| `sections.tested.not_tested[3]` | …and a sample was read by eye. | …and the builder looked at a sample. | W02 |
+
 ## Words for the cartographer
 
 - **A2 (17:19 UTC):** entry 14.124's `sketch_alt` and the sketch's first `<desc>` both now read "A map that shades Party A’s seven small places red and Party B’s five large places blue, which takes a side at a glance and makes Party B look bigger than its count." I set the `<desc>` myself, one line changed in the file (3,941 bytes), so `phase3_ch14_build.py`'s caption test passes; please don't set it again, and if `sketch_a2.py` reruns from the gray file, give it this sentence. Your key words "Party A, red" and "Party B, blue" stand.
@@ -127,6 +224,14 @@ The four addresses are copied from the file's section SS (Massachusetts, Nebrask
 - **A5 (17:20 UTC):** all seven specs now print your variants, copied from the sidecars by script; my page scan agrees with your seven and your 15 lines that print nowhere. I keep your "The atlas checked … on that date." sentences as written, so no variant needs to change.
 
 ## Words for the board builder
+
+### 17:55 UTC: my first words pass is in; please rerun
+
+Both files carry my words (tables under "Board words"): the content file at 17:55 and the decisions file at 17:53 to 17:54, with S73's trim on the data lead's ruling. Please rerun with `--reuse`; I read the new page and its visible text next and write a second, smaller pass if it needs one. Three things only your script can change:
+
+- The "Answered" item on the data file prints **"None"** in the Chart column for entry 14.120's row, whose `spec` is empty. An empty cell, or "Entry", would read right.
+- A board 1 chart that changed at both widths on both grounds prints all four places in one sentence ("…on Charcoal at a 1440 px window, on Charcoal at a 390 px window, on Newsprint at a 1440 px window and on Newsprint at a 390 px window; panel 1 lists the change."). "at both widths on both grounds" would say it in five words.
+- The S12 picture labels now read after your role words without repeating them ("Now At a 1,440 px window, the 1,024 px frame as built…"), and the data lead's view on S12 is its own reasons, so it no longer repeats the recommendation.
 
 ### Planned edits to the content file, read on your 17:35 page (I apply them by script once your notes say the first full build has landed)
 
@@ -162,7 +267,7 @@ If you would rather apply these yourself, say so under your "Status" and I leave
 - A4: `tools/s16_check.py`, 11 checks, 0 faults (above); `oa-chart.mjs build s16`, sweep on: PASS, 0 faults.
 - A5: `tools/a5_find.py` on the main session's strict build and on the specs with their sidecars (above); each variant read from its sidecar; `oa-chart.mjs build s10 s21 s23 s38 s39 s60 s63`, sweep on: 7 PASS, 0 faults; `check` on the saved originals for the before weights.
 - S74 (call 9): `tools/apply.py` on two fields; `oa-chart.mjs build s74`, sweep on: PASS, 0 faults.
-- **A slip, logged:** at 17:28 UTC I ran `maker_b_round3_derive.py --help` to read its options; it takes none, so it ran and rewrote four derived files (`fec-jfc-transfers-2024-by-node` and `govinfo-snap-application-path`, each CSV and sidecar). `git status` and `git diff` show all four byte for byte as committed, so nothing changed. I run no other owner's script from here on.
+- **A slip, logged:** at 17:28 UTC I ran `maker_b_round3_derive.py --help` to read its options; it takes none, so it ran and rewrote four derived files (`fec-jfc-transfers-2024-by-node` and `govinfo-snap-application-path`, each CSV and sidecar). `git status` and `git diff` show all four byte for byte as committed, so nothing changed. From here on I run another owner's script only in its read-only check mode (`maker_b_round3_derive.py --figures` at 17:54, which wrote nothing: the four files keep their 17:28 times).
 
 ## Not tested
 
