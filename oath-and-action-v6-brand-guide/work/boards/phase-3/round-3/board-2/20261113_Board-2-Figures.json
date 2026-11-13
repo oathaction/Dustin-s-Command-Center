@@ -1,0 +1,4149 @@
+{
+ "built": "2026-11-13T17:23:03.995406+00:00",
+ "guide_build": {
+  "exit": 0,
+  "bytes": 11236072,
+  "rules": 344,
+  "specimens": 638,
+  "warnings": 0,
+  "built": "2026-11-13T17:23:14"
+ },
+ "shots": {
+  "taken": [
+   "ch14-opener",
+   "m-S01-1440",
+   "m-S01-390",
+   "m-S02-1440",
+   "m-S02-390",
+   "m-S03-1440",
+   "m-S03-390",
+   "m-S04-1440",
+   "m-S04-390",
+   "m-S05-1440",
+   "m-S05-390",
+   "m-S06-1440",
+   "m-S06-390",
+   "m-S07-1440",
+   "m-S07-390",
+   "m-S08-1440",
+   "m-S08-390",
+   "m-S09-1440",
+   "m-S09-390",
+   "m-S10-1440",
+   "m-S10-390",
+   "m-S11-1440",
+   "m-S11-390",
+   "m-S12-1440",
+   "m-S12-390",
+   "m-S13-1440",
+   "m-S13-390",
+   "m-S14-1440",
+   "m-S14-390",
+   "m-S15-1440",
+   "m-S15-390",
+   "m-S16-1440",
+   "m-S16-390",
+   "m-S17-1440",
+   "m-S17-390",
+   "m-S18-1440",
+   "m-S18-390",
+   "m-S19-1440",
+   "m-S19-390",
+   "m-S20-1440",
+   "m-S20-390",
+   "m-S21-1440",
+   "m-S21-390",
+   "m-S22-1440",
+   "m-S22-390",
+   "m-S23-1440",
+   "m-S23-390",
+   "m-S24-1440",
+   "m-S24-390",
+   "m-S25-1440",
+   "m-S25-390",
+   "m-S26-1440",
+   "m-S26-390",
+   "m-S27-1440",
+   "m-S27-390",
+   "m-S28-1440",
+   "m-S28-390",
+   "m-S29-1440",
+   "m-S29-390",
+   "m-S30-1440",
+   "m-S30-390",
+   "m-S31-1440",
+   "m-S31-390",
+   "m-S32-1440",
+   "m-S32-390",
+   "m-S33-1440",
+   "m-S33-390",
+   "m-S34-1440",
+   "m-S34-390",
+   "m-S35-1440",
+   "m-S35-390",
+   "m-S36-1440",
+   "m-S36-390",
+   "m-S37-1440",
+   "m-S37-390",
+   "m-S38-1440",
+   "m-S38-390",
+   "m-S39-1440",
+   "m-S39-390",
+   "m-S40-1440",
+   "m-S40-390",
+   "m-S41-1440",
+   "m-S41-390",
+   "m-S42-1440",
+   "m-S42-390",
+   "m-S43-1440",
+   "m-S43-390",
+   "m-S44-1440",
+   "m-S44-390",
+   "m-S45-1440",
+   "m-S45-390",
+   "m-S46-1440",
+   "m-S46-390",
+   "m-S47-1440",
+   "m-S47-390",
+   "m-S48-1440",
+   "m-S48-390",
+   "m-S49-1440",
+   "m-S49-390",
+   "m-S50-1440",
+   "m-S50-390",
+   "m-S51-1440",
+   "m-S51-390",
+   "m-S52-1440",
+   "m-S52-390",
+   "m-S53-1440",
+   "m-S53-390",
+   "m-S54-1440",
+   "m-S54-390",
+   "m-S55-1440",
+   "m-S55-390",
+   "m-S56-1440",
+   "m-S56-390",
+   "m-S57-1440",
+   "m-S57-390",
+   "m-S58-1440",
+   "m-S58-390",
+   "m-S59-1440",
+   "m-S59-390",
+   "m-S60-1440",
+   "m-S60-390",
+   "m-S61-1440",
+   "m-S61-390",
+   "m-S62-1440",
+   "m-S62-390",
+   "m-S63-1440",
+   "m-S63-390",
+   "m-S64-1440",
+   "m-S64-390",
+   "m-S65-1440",
+   "m-S65-390",
+   "m-S66-1440",
+   "m-S66-390",
+   "m-S67-1440",
+   "m-S67-390",
+   "m-S68-1440",
+   "m-S68-390",
+   "m-S69-1440",
+   "m-S69-390",
+   "m-S70-1440",
+   "m-S70-390",
+   "m-S71-1440",
+   "m-S71-390",
+   "m-S72-1440",
+   "m-S72-390",
+   "m-S73-1440",
+   "m-S73-390",
+   "m-S74-1440",
+   "m-S74-390",
+   "m-S75-1440",
+   "m-S75-390",
+   "m-S76-1440",
+   "m-S76-390",
+   "m-S77-1440",
+   "m-S77-390",
+   "m-S78-1440",
+   "m-S78-390",
+   "m-S79-1440",
+   "m-S79-390",
+   "m-S80-1440",
+   "m-S80-390",
+   "m-S81-1440",
+   "m-S81-390",
+   "m-S82-1440",
+   "m-S82-390",
+   "m-S83-1440",
+   "m-S83-390",
+   "m-S84-1440",
+   "m-S84-390",
+   "plate-14.1-correct",
+   "plate-14.1-failure",
+   "plate-14.10-correct",
+   "plate-14.10-failure",
+   "plate-14.11-correct",
+   "plate-14.11-failure",
+   "plate-14.12-correct",
+   "plate-14.12-failure",
+   "plate-14.13-correct",
+   "plate-14.13-failure",
+   "plate-14.14-correct",
+   "plate-14.14-failure",
+   "plate-14.2-correct",
+   "plate-14.2-failure",
+   "plate-14.3-correct",
+   "plate-14.3-failure",
+   "plate-14.4-correct",
+   "plate-14.4-failure",
+   "plate-14.5-correct",
+   "plate-14.5-failure",
+   "plate-14.6-correct",
+   "plate-14.6-failure",
+   "plate-14.7-correct",
+   "plate-14.7-failure",
+   "plate-14.8-correct",
+   "plate-14.8-failure",
+   "plate-14.9-correct",
+   "plate-14.9-failure",
+   "sketch-14.103",
+   "sketch-14.107",
+   "sketch-14.108",
+   "sketch-14.109",
+   "sketch-14.111",
+   "sketch-14.113",
+   "sketch-14.124",
+   "sketch-14.24",
+   "sketch-14.43",
+   "sketch-14.44",
+   "sketch-14.45",
+   "sketch-14.54",
+   "sketch-14.55",
+   "sketch-14.56",
+   "sketch-14.57",
+   "sketch-14.63",
+   "sketch-14.64",
+   "sketch-14.65",
+   "sketch-14.66",
+   "sketch-14.70",
+   "sketch-14.71",
+   "sketch-14.72",
+   "sketch-14.73",
+   "sketch-14.78",
+   "sketch-14.91",
+   "sketch-14.92",
+   "sketch-14.94",
+   "sketch-14.95"
+  ],
+  "reused": []
+ },
+ "guide_widths": {
+  "S01": {
+   "1440": 720,
+   "390": 326
+  },
+  "S02": {
+   "1440": 720,
+   "390": 326
+  },
+  "S03": {
+   "1440": 720,
+   "390": 326
+  },
+  "S04": {
+   "1440": 720,
+   "390": 326
+  },
+  "S05": {
+   "1440": 723,
+   "390": 326
+  },
+  "S06": {
+   "1440": 723,
+   "390": 326
+  },
+  "S07": {
+   "1440": 720,
+   "390": 326
+  },
+  "S08": {
+   "1440": 723,
+   "390": 326
+  },
+  "S09": {
+   "1440": 723,
+   "390": 326
+  },
+  "S10": {
+   "1440": 720,
+   "390": 326
+  },
+  "S11": {
+   "1440": 723,
+   "390": 326
+  },
+  "S12": {
+   "1440": 1024,
+   "390": 326
+  },
+  "S13": {
+   "1440": 723,
+   "390": 326
+  },
+  "S14": {
+   "1440": 720,
+   "390": 326
+  },
+  "S15": {
+   "1440": 723,
+   "390": 326
+  },
+  "S16": {
+   "1440": 723,
+   "390": 326
+  },
+  "S17": {
+   "1440": 720,
+   "390": 326
+  },
+  "S18": {
+   "1440": 720,
+   "390": 326
+  },
+  "S19": {
+   "1440": 720,
+   "390": 326
+  },
+  "S20": {
+   "1440": 720,
+   "390": 326
+  },
+  "S21": {
+   "1440": 720,
+   "390": 326
+  },
+  "S22": {
+   "1440": 720,
+   "390": 326
+  },
+  "S23": {
+   "1440": 720,
+   "390": 326
+  },
+  "S24": {
+   "1440": 720,
+   "390": 326
+  },
+  "S25": {
+   "1440": 720,
+   "390": 326
+  },
+  "S26": {
+   "1440": 720,
+   "390": 326
+  },
+  "S27": {
+   "1440": 720,
+   "390": 326
+  },
+  "S28": {
+   "1440": 720,
+   "390": 326
+  },
+  "S29": {
+   "1440": 720,
+   "390": 326
+  },
+  "S30": {
+   "1440": 720,
+   "390": 326
+  },
+  "S31": {
+   "1440": 720,
+   "390": 326
+  },
+  "S32": {
+   "1440": 720,
+   "390": 326
+  },
+  "S33": {
+   "1440": 720,
+   "390": 326
+  },
+  "S34": {
+   "1440": 720,
+   "390": 326
+  },
+  "S35": {
+   "1440": 720,
+   "390": 326
+  },
+  "S36": {
+   "1440": 720,
+   "390": 326
+  },
+  "S37": {
+   "1440": 723,
+   "390": 326
+  },
+  "S38": {
+   "1440": 720,
+   "390": 326
+  },
+  "S39": {
+   "1440": 720,
+   "390": 326
+  },
+  "S40": {
+   "1440": 720,
+   "390": 326
+  },
+  "S41": {
+   "1440": 720,
+   "390": 326
+  },
+  "S42": {
+   "1440": 720,
+   "390": 326
+  },
+  "S43": {
+   "1440": 720,
+   "390": 326
+  },
+  "S44": {
+   "1440": 720,
+   "390": 326
+  },
+  "S45": {
+   "1440": 720,
+   "390": 326
+  },
+  "S46": {
+   "1440": 720,
+   "390": 326
+  },
+  "S47": {
+   "1440": 720,
+   "390": 326
+  },
+  "S48": {
+   "1440": 720,
+   "390": 326
+  },
+  "S49": {
+   "1440": 720,
+   "390": 326
+  },
+  "S50": {
+   "1440": 720,
+   "390": 326
+  },
+  "S51": {
+   "1440": 720,
+   "390": 326
+  },
+  "S52": {
+   "1440": 720,
+   "390": 326
+  },
+  "S53": {
+   "1440": 720,
+   "390": 326
+  },
+  "S54": {
+   "1440": 720,
+   "390": 326
+  },
+  "S55": {
+   "1440": 720,
+   "390": 326
+  },
+  "S56": {
+   "1440": 720,
+   "390": 326
+  },
+  "S57": {
+   "1440": 720,
+   "390": 326
+  },
+  "S58": {
+   "1440": 720,
+   "390": 326
+  },
+  "S59": {
+   "1440": 720,
+   "390": 326
+  },
+  "S60": {
+   "1440": 720,
+   "390": 326
+  },
+  "S61": {
+   "1440": 720,
+   "390": 326
+  },
+  "S62": {
+   "1440": 720,
+   "390": 326
+  },
+  "S63": {
+   "1440": 720,
+   "390": 326
+  },
+  "S64": {
+   "1440": 720,
+   "390": 326
+  },
+  "S65": {
+   "1440": 720,
+   "390": 326
+  },
+  "S66": {
+   "1440": 720,
+   "390": 326
+  },
+  "S67": {
+   "1440": 720,
+   "390": 326
+  },
+  "S68": {
+   "1440": 720,
+   "390": 326
+  },
+  "S69": {
+   "1440": 720,
+   "390": 326
+  },
+  "S70": {
+   "1440": 720,
+   "390": 326
+  },
+  "S71": {
+   "1440": 720,
+   "390": 326
+  },
+  "S72": {
+   "1440": 720,
+   "390": 326
+  },
+  "S73": {
+   "1440": 720,
+   "390": 326
+  },
+  "S74": {
+   "1440": 720,
+   "390": 326
+  },
+  "S75": {
+   "1440": 720,
+   "390": 326
+  },
+  "S76": {
+   "1440": 720,
+   "390": 326
+  },
+  "S77": {
+   "1440": 720,
+   "390": 326
+  },
+  "S78": {
+   "1440": 720,
+   "390": 326
+  },
+  "S79": {
+   "1440": 720,
+   "390": 326
+  },
+  "S80": {
+   "1440": 720,
+   "390": 326
+  },
+  "S81": {
+   "1440": 720,
+   "390": 326
+  },
+  "S82": {
+   "1440": 720,
+   "390": 326
+  },
+  "S83": {
+   "1440": 720,
+   "390": 326
+  },
+  "S84": {
+   "1440": 720,
+   "390": 326
+  }
+ },
+ "kit_builds": {
+  "rebuilt": [
+   "S01",
+   "S02",
+   "S03",
+   "S04",
+   "S05",
+   "S06",
+   "S07",
+   "S08",
+   "S09",
+   "S10",
+   "S11",
+   "S12",
+   "S13",
+   "S14",
+   "S15",
+   "S16",
+   "S17",
+   "S18",
+   "S19",
+   "S20",
+   "S21",
+   "S22",
+   "S23",
+   "S24",
+   "S25",
+   "S26",
+   "S27",
+   "S28",
+   "S29",
+   "S30",
+   "S31",
+   "S32",
+   "S33",
+   "S34",
+   "S35",
+   "S36",
+   "S37",
+   "S38",
+   "S39",
+   "S40",
+   "S41",
+   "S42",
+   "S43",
+   "S44",
+   "S45",
+   "S46",
+   "S47",
+   "S48",
+   "S49",
+   "S50",
+   "S51",
+   "S52",
+   "S53",
+   "S54",
+   "S55",
+   "S56",
+   "S57",
+   "S58",
+   "S59",
+   "S60",
+   "S61",
+   "S62",
+   "S63",
+   "S64",
+   "S65",
+   "S66",
+   "S67",
+   "S68",
+   "S69",
+   "S70",
+   "S71",
+   "S72",
+   "S73",
+   "S74",
+   "S75",
+   "S76",
+   "S77",
+   "S78",
+   "S79",
+   "S80",
+   "S81",
+   "S82",
+   "S83",
+   "S84"
+  ],
+  "reused": [],
+  "widths": {
+   "1440,358": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15",
+    "S16",
+    "S17",
+    "S18",
+    "S19",
+    "S20",
+    "S21",
+    "S22",
+    "S23",
+    "S24",
+    "S25",
+    "S26",
+    "S27",
+    "S28",
+    "S29",
+    "S30",
+    "S31",
+    "S32",
+    "S33",
+    "S34",
+    "S35",
+    "S36",
+    "S37",
+    "S38",
+    "S39",
+    "S40",
+    "S41",
+    "S42",
+    "S43",
+    "S44",
+    "S45",
+    "S46",
+    "S47",
+    "S48",
+    "S49",
+    "S50",
+    "S51",
+    "S52",
+    "S53",
+    "S54",
+    "S55",
+    "S56",
+    "S57",
+    "S58",
+    "S59",
+    "S60",
+    "S61",
+    "S62",
+    "S63",
+    "S64",
+    "S65",
+    "S66",
+    "S67",
+    "S68",
+    "S69",
+    "S70",
+    "S71",
+    "S72",
+    "S73",
+    "S74",
+    "S75",
+    "S76",
+    "S77",
+    "S78",
+    "S79",
+    "S80",
+    "S81",
+    "S82",
+    "S83",
+    "S84"
+   ]
+  }
+ },
+ "board1_compare": {
+  "S01": {
+   "changed": true,
+   "where": [
+    "charcoal 1440",
+    "charcoal 390",
+    "newsprint 1440",
+    "newsprint 390"
+   ],
+   "desk_file_same": false
+  },
+  "S02": {
+   "changed": true,
+   "where": [
+    "charcoal 1440",
+    "newsprint 1440"
+   ],
+   "desk_file_same": false
+  },
+  "S03": {
+   "changed": false,
+   "where": [],
+   "desk_file_same": true
+  },
+  "S04": {
+   "changed": true,
+   "where": [
+    "charcoal 1440",
+    "charcoal 390",
+    "newsprint 1440",
+    "newsprint 390"
+   ],
+   "desk_file_same": false
+  },
+  "S05": {
+   "changed": true,
+   "where": [
+    "charcoal 1440",
+    "charcoal 390",
+    "newsprint 1440",
+    "newsprint 390"
+   ],
+   "desk_file_same": false
+  },
+  "S06": {
+   "changed": true,
+   "where": [
+    "charcoal 390",
+    "newsprint 390"
+   ],
+   "desk_file_same": true
+  },
+  "S07": {
+   "changed": false,
+   "where": [],
+   "desk_file_same": true
+  },
+  "S08": {
+   "changed": true,
+   "where": [
+    "charcoal 1440",
+    "charcoal 390",
+    "newsprint 1440",
+    "newsprint 390"
+   ],
+   "desk_file_same": false
+  },
+  "S09": {
+   "changed": true,
+   "where": [
+    "charcoal 1440",
+    "charcoal 390",
+    "newsprint 1440",
+    "newsprint 390"
+   ],
+   "desk_file_same": false
+  },
+  "S10": {
+   "changed": true,
+   "where": [
+    "charcoal 1440",
+    "charcoal 390",
+    "newsprint 1440",
+    "newsprint 390"
+   ],
+   "desk_file_same": false
+  },
+  "S11": {
+   "changed": true,
+   "where": [
+    "charcoal 1440",
+    "charcoal 390",
+    "newsprint 1440",
+    "newsprint 390"
+   ],
+   "desk_file_same": false
+  },
+  "S12": {
+   "changed": true,
+   "where": [
+    "charcoal 1440",
+    "charcoal 390",
+    "newsprint 1440",
+    "newsprint 390"
+   ],
+   "desk_file_same": false
+  },
+  "S13": {
+   "changed": true,
+   "where": [
+    "charcoal 1440",
+    "charcoal 390",
+    "newsprint 1440",
+    "newsprint 390"
+   ],
+   "desk_file_same": false
+  },
+  "S14": {
+   "changed": true,
+   "where": [
+    "charcoal 1440",
+    "charcoal 390",
+    "newsprint 1440",
+    "newsprint 390"
+   ],
+   "desk_file_same": false
+  },
+  "S15": {
+   "changed": true,
+   "where": [
+    "charcoal 1440",
+    "charcoal 390",
+    "newsprint 1440",
+    "newsprint 390"
+   ],
+   "desk_file_same": false
+  },
+  "S16": {
+   "changed": true,
+   "where": [
+    "charcoal 1440",
+    "charcoal 390",
+    "newsprint 1440",
+    "newsprint 390"
+   ],
+   "desk_file_same": false
+  }
+ },
+ "forms": {
+  "14.24": {
+   "rule": "14.24",
+   "form": "Radar chart",
+   "tier": "Avoid",
+   "round": 1,
+   "maker": "A",
+   "status": "sketch",
+   "kind": "avoid",
+   "specimen": "s-14-24-sketch",
+   "heading": "Radar chart, a form that misleads",
+   "caption": "Two radar charts draw the same illustrative values for two groups with their spokes in different orders, and the dark group’s shape is the larger in the first and the smaller in the second."
+  },
+  "14.15": {
+   "rule": "14.15",
+   "form": "Ranked bar",
+   "tier": "Core",
+   "round": 1,
+   "maker": "A",
+   "status": "built",
+   "with_frame": 9292,
+   "figure_bytes": 8542,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S03",
+   "title": "The atlas codes nine of the 11 state statutes in its log as moving the rules away from voters.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "Who changed the rules: voters, courts or legislatures?"
+  },
+  "14.16": {
+   "rule": "14.16",
+   "form": "Column",
+   "tier": "Core",
+   "round": 1,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 4884,
+   "figure_bytes": 4134,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S17",
+   "title": "The 118th Congress enacted 274 public laws in 2023 and 2024, the fewest of the ten Congresses charted.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How many bills became law in each Congress?"
+  },
+  "14.17": {
+   "rule": "14.17",
+   "form": "Bar with a benchmark tick",
+   "tier": "Core",
+   "round": 1,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 4956,
+   "figure_bytes": 4206,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S18",
+   "title": "The highest-income fifth of households received 51.6 percent of all household income in 2025, and the lowest fifth received 3.0 percent.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "What share of all household income goes to each fifth of households?"
+  },
+  "14.18": {
+   "rule": "14.18",
+   "form": "Dot plot",
+   "tier": "Core",
+   "round": 1,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 11276,
+   "figure_bytes": 10526,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S19",
+   "title": "State imprisonment rates at the end of 2023 ran from 96 sentenced prisoners per 100,000 residents in Massachusetts to 652 in Mississippi.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How many residents per 100,000 does each state hold in prison?"
+  },
+  "14.19": {
+   "rule": "14.19",
+   "form": "Dumbbell",
+   "tier": "Core",
+   "round": 1,
+   "maker": "A",
+   "status": "built",
+   "with_frame": 5448,
+   "figure_bytes": 4698,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S04",
+   "title": "The gap in reported voting between citizens 18 to 24 and those 65 and over grew from 23 points in 2020 to 27 in 2024.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "Which age groups vote, and did that change between two elections?"
+  },
+  "14.20": {
+   "rule": "14.20",
+   "form": "Slope chart",
+   "tier": "Core",
+   "round": 1,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 5165,
+   "figure_bytes": 4415,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S20",
+   "title": "The homeownership rate for householders under 35 stood at 37.0 percent in 2025, up 2.0 points from 2015 and still the lowest of five age groups.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Did younger households lose ground on owning a home?"
+  },
+  "14.21": {
+   "rule": "14.21",
+   "form": "Lollipop",
+   "tier": "Extended",
+   "round": 1,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 6432,
+   "figure_bytes": 5682,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S21",
+   "title": "Of the atlas’s 16 everyday answers, the one on voting and public influence rests on the most claims, 42.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Which everyday answers rest on the most claims?"
+  },
+  "14.22": {
+   "rule": "14.22",
+   "form": "Grouped bar",
+   "tier": "Extended",
+   "round": 1,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 5818,
+   "figure_bytes": 5068,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S22",
+   "title": "Women’s labor force participation trailed men’s in every age group from 22 on in 2025, by as much as 9.7 points at ages 60 and 61.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How does taking part in the labor force differ by age for men and women?"
+  },
+  "14.23": {
+   "rule": "14.23",
+   "form": "Small-multiple bars",
+   "tier": "Extended",
+   "round": 1,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 6962,
+   "figure_bytes": 6212,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S23",
+   "title": "Of the atlas’s five topic hubs, “Public services where you live” has the largest share of documented claims, 84.5 percent.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How sure is each of the five topic hubs’ evidence?"
+  },
+  "14.25": {
+   "rule": "14.25",
+   "form": "Shift arrows (from, to)",
+   "tier": "Core",
+   "round": 1,
+   "maker": "B",
+   "status": "built",
+   "with_frame": 14873,
+   "figure_bytes": 14123,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 1024,
+    "newsprint 358": 326,
+    "charcoal 1440": 1024,
+    "charcoal 358": 326
+   },
+   "spec": "S11",
+   "title": "The margin in every state and DC moved toward the Republican nominee from 2020 to 2024, by 1.0 point in Washington to 10.5 points in New York.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "Which states moved toward which party between 2020 and 2024, and how far?"
+  },
+  "14.26": {
+   "rule": "14.26",
+   "form": "Change lollipop with a size-of-shift key",
+   "tier": "Core",
+   "round": 1,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 10103,
+   "figure_bytes": 9353,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S24",
+   "title": "Applications to start a business rose in every state and DC from 2019 to 2025, by 62 percent nationwide and most in Wyoming, where they quadrupled.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Where did applications to start a business rise most since 2019?"
+  },
+  "14.27": {
+   "rule": "14.27",
+   "form": "Diverging bar",
+   "tier": "Core",
+   "round": 1,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 23541,
+   "figure_bytes": 22791,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S25",
+   "title": "Agencies that report to the Office of Personnel Management had 130,369 fewer civilian employees in August 2026 than in January 2022, and 33 of the 37 largest in January 2022 shrank.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Which federal agencies gained or lost civilian employees?"
+  },
+  "14.28": {
+   "rule": "14.28",
+   "form": "Diverging bar with arrows over time",
+   "tier": "Extended",
+   "round": 1,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 10361,
+   "figure_bytes": 9611,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S26",
+   "title": "Republicans won five more House seats than Democrats in the 2024 election, the smallest lead in the first count for any Congress since 1951.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How large was the House majority’s seat advantage in each Congress?"
+  },
+  "14.45": {
+   "rule": "14.45",
+   "form": "Streamgraph",
+   "tier": "Avoid",
+   "round": 1,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "avoid",
+   "specimen": "s-14-45-sketch",
+   "heading": "Streamgraph, a form that misleads",
+   "caption": "A streamgraph beside small multiples of the same illustrative data: the middle part holds steady, and its band bends in the streamgraph and lies flat in the small multiples."
+  },
+  "14.29": {
+   "rule": "14.29",
+   "form": "Line with event notes",
+   "tier": "Core",
+   "round": 1,
+   "maker": "B",
+   "status": "built",
+   "with_frame": 11390,
+   "figure_bytes": 10640,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S02",
+   "title": "Child poverty fell to 5.1 percent in 2021, the lowest since the series began in 2009, and more than doubled the next year.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "What happened to child poverty when the expanded child tax credit was paid, and after it lapsed?"
+  },
+  "14.30": {
+   "rule": "14.30",
+   "form": "Multi-line with one highlighted",
+   "tier": "Core",
+   "round": 1,
+   "maker": "B",
+   "status": "built",
+   "with_frame": 31047,
+   "figure_bytes": 30297,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 1024,
+    "newsprint 358": 326,
+    "charcoal 1440": 1024,
+    "charcoal 358": 326
+   },
+   "spec": "S05",
+   "title": "Non-Hispanic White and Black homeownership rates were nearly 30 points apart in 2025, a wider gap than in 2003.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "How far apart are homeownership rates by race, and has the gap closed?"
+  },
+  "14.31": {
+   "rule": "14.31",
+   "form": "Line field with highlight",
+   "tier": "Extended",
+   "round": 1,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 14928,
+   "figure_bytes": 14178,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S27",
+   "title": "Home prices rose in every state and DC from 1991 to 2026, most in Montana and Utah, each more than seven times their level in early 1991.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How did home prices move in every state, and where did they rise most?"
+  },
+  "14.32": {
+   "rule": "14.32",
+   "form": "Columns with a moving average",
+   "tier": "Core",
+   "round": 1,
+   "maker": "B",
+   "status": "built",
+   "with_frame": 12103,
+   "figure_bytes": 11353,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S14",
+   "title": "The three-month average of monthly job change stood at 51,000 in September 2026, a preliminary figure, and payrolls shrank in seven of the 57 months charted.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "How many jobs did the economy add each month?"
+  },
+  "14.33": {
+   "rule": "14.33",
+   "form": "Sparkline",
+   "tier": "Core",
+   "round": 1,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 6584,
+   "figure_bytes": 5834,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S28",
+   "title": "Civic and social organizations with paid staff ran 24,698 locations in 2023, 23 percent fewer than in 1998.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Has the number of civic and social organizations grown or shrunk?"
+  },
+  "14.34": {
+   "rule": "14.34",
+   "form": "Small-multiple area sparklines",
+   "tier": "Core",
+   "round": 1,
+   "maker": "B",
+   "status": "built",
+   "with_frame": 34223,
+   "figure_bytes": 33473,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 1024,
+    "newsprint 358": 326,
+    "charcoal 1440": 1024,
+    "charcoal 358": 326
+   },
+   "spec": "S13",
+   "title": "Health care and social assistance added 3.8 million jobs from January 2022 to September 2026, the most of any industry; information and the federal government lost jobs.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "Which sectors added jobs since January 2022, and which lost them?"
+  },
+  "14.35": {
+   "rule": "14.35",
+   "form": "Area chart",
+   "tier": "Extended",
+   "round": 1,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 5945,
+   "figure_bytes": 5195,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S29",
+   "title": "Newspaper publishers employed 91,350 people in 2023, less than a quarter of the 401,373 they employed in 1998.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How many people work for newspaper publishers?"
+  },
+  "14.36": {
+   "rule": "14.36",
+   "form": "Step line",
+   "tier": "Extended",
+   "round": 1,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 6833,
+   "figure_bytes": 6083,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S30",
+   "title": "Congress has changed the child tax credit’s top amount three times since 2017, most recently to $2,200 per child from 2025.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How has the law changed the child tax credit’s top amount per child since 2017?"
+  },
+  "14.37": {
+   "rule": "14.37",
+   "form": "Line with a data gap marked",
+   "tier": "Core",
+   "round": 1,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 8877,
+   "figure_bytes": 8127,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S31",
+   "title": "The unemployment rate stood at 4.1 percent in October 2026, and the government published no rate for October 2025.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "What was the unemployment rate each month, and which month is missing?"
+  },
+  "14.38": {
+   "rule": "14.38",
+   "form": "Timeline",
+   "tier": "Core",
+   "round": 1,
+   "maker": "B",
+   "status": "built",
+   "with_frame": 13642,
+   "figure_bytes": 12892,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 1024,
+    "newsprint 358": 326,
+    "charcoal 1440": 1024,
+    "charcoal 358": 326
+   },
+   "spec": "S09",
+   "title": "The atlas traces 24 rule changes since 1870 on four threads: who counts, who governs, who owns and who checks.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "Which rule changes since 1870 decided who counts, who governs, who owns and who checks?"
+  },
+  "14.39": {
+   "rule": "14.39",
+   "form": "Implementation timeline",
+   "tier": "Core",
+   "round": 1,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 7784,
+   "figure_bytes": 7034,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S32",
+   "title": "Congress set the 2026 law’s rules for pharmacy benefit managers to start on four dates, from an August 2027 deadline for federal rules to January 2029.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "When does each part of the 2026 law on drug middlemen take effect?"
+  },
+  "14.40": {
+   "rule": "14.40",
+   "form": "Indexed line",
+   "tier": "Core",
+   "round": 1,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 17208,
+   "figure_bytes": 16458,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S33",
+   "title": "Customs duties grew fastest of the federal government’s revenue sources from fiscal 2016 to 2026, to almost five times their 2016 level.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Which sources of federal revenue grew fastest since fiscal 2016?"
+  },
+  "14.41": {
+   "rule": "14.41",
+   "form": "Bubble timeline",
+   "tier": "Extended",
+   "round": 1,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 11949,
+   "figure_bytes": 11199,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S34",
+   "title": "The Senate held 298 votes to end debate in 2019 and 2020, after no more than seven in any Congress before 1971.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How often has the Senate voted on ending debate, Congress by Congress?"
+  },
+  "14.42": {
+   "rule": "14.42",
+   "form": "Benefit-cliff line",
+   "tier": "Extended",
+   "round": 1,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 10814,
+   "figure_bytes": 10064,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S35",
+   "title": "In this invented budget, a raise from $36,000 to $37,000 leaves a family $8,386 a year worse off, because its child care help ends.",
+   "evidence": "Illustration",
+   "estimate": false,
+   "board_1": false,
+   "question": "What does one family keep as its earnings rise and benefits phase out?"
+  },
+  "14.43": {
+   "rule": "14.43",
+   "form": "Run chart",
+   "tier": "Reference",
+   "round": 1,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-43-sketch",
+   "heading": "Run chart, a sketch",
+   "caption": "A weekly measure of a process as a line of dots around a dashed median line, with a shaded stretch where six weeks in a row sit above the median, a run long enough to signal a shift in the process."
+  },
+  "14.44": {
+   "rule": "14.44",
+   "form": "Cycle or seasonal chart",
+   "tier": "Reference",
+   "round": 1,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-44-sketch",
+   "heading": "Cycle or seasonal chart, a sketch",
+   "caption": "Months from January to December along the bottom, one thin gray line for each earlier year and a heavy line for this year so far, so a reader compares each month with the same month in other years."
+  },
+  "14.57": {
+   "rule": "14.57",
+   "form": "3D pie or bar",
+   "tier": "Avoid",
+   "round": 2,
+   "maker": "A",
+   "status": "sketch",
+   "kind": "avoid",
+   "specimen": "s-14-57-sketch",
+   "heading": "3D pie or bar, a form that misleads",
+   "caption": "A tilted 3D pie draws two equal illustrative shares so the nearer one looks larger, and flat bars of the same values show them as equal lengths."
+  },
+  "14.46": {
+   "rule": "14.46",
+   "form": "100 percent bar",
+   "tier": "Core",
+   "round": 2,
+   "maker": "A",
+   "status": "built",
+   "with_frame": 8156,
+   "figure_bytes": 7406,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S10",
+   "title": "About three in four claims behind the atlas’s 16 everyday answers are documented on the public record.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "How much of each everyday answer rests on documented fact?"
+  },
+  "14.47": {
+   "rule": "14.47",
+   "form": "Stacked share bar with a midline",
+   "tier": "Core",
+   "round": 2,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 10723,
+   "figure_bytes": 9973,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S43",
+   "title": "In 2025 renters outnumbered owners only in the District of Columbia, where they made up 62 percent of households.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "In which states do renters make up the larger share of households?"
+  },
+  "14.48": {
+   "rule": "14.48",
+   "form": "Waterfall",
+   "tier": "Core",
+   "round": 2,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 9048,
+   "figure_bytes": 8298,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S44",
+   "title": "Federal outlays of $7,395.8 billion in fiscal 2026 ran past receipts of $5,403.3 billion, leaving a deficit of $1,992.5 billion.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How did fiscal 2026’s receipts and outlays add up to the deficit?"
+  },
+  "14.49": {
+   "rule": "14.49",
+   "form": "Unit chart or waffle",
+   "tier": "Core",
+   "round": 2,
+   "maker": "A",
+   "status": "built",
+   "with_frame": 22515,
+   "figure_bytes": 21765,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 1024,
+    "newsprint 358": 326,
+    "charcoal 1440": 1024,
+    "charcoal 358": 326
+   },
+   "spec": "S08",
+   "title": "Of the 64 rule changes in its log, the atlas codes 24 as moving the rules toward voters and 24 as moving them away.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "Have the rules been moving toward voters or away from them?"
+  },
+  "14.50": {
+   "rule": "14.50",
+   "form": "Stacked column",
+   "tier": "Extended",
+   "round": 2,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 7619,
+   "figure_bytes": 6869,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S45",
+   "title": "Builders finished 591,700 homes in buildings of five or more units in 2024, more than in any other year from 2000 to 2025.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "What kinds of homes were finished each year?"
+  },
+  "14.51": {
+   "rule": "14.51",
+   "form": "Stacked area",
+   "tier": "Extended",
+   "round": 2,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 11831,
+   "figure_bytes": 11081,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S46",
+   "title": "Private insurance, Medicare and Medicaid together paid 70 percent of the nation’s health care bill in 2024, up from 21 percent in 1960.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Who pays the nation’s health care bill?"
+  },
+  "14.52": {
+   "rule": "14.52",
+   "form": "Treemap",
+   "tier": "Extended",
+   "round": 2,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 6073,
+   "figure_bytes": 5323,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S47",
+   "title": "Social Security took the largest share of federal spending in fiscal 2026, $1,667.1 billion.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Where did federal spending go in fiscal 2026?"
+  },
+  "14.53": {
+   "rule": "14.53",
+   "form": "Parliament chart",
+   "tier": "Extended",
+   "round": 2,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 4595,
+   "figure_bytes": 3845,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S48",
+   "title": "Republicans held 218 of the House’s 435 seats on November 11, 2026, and Democrats 214, with one independent and two seats vacant.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How are the House’s seats divided by party today?"
+  },
+  "14.54": {
+   "rule": "14.54",
+   "form": "Pie",
+   "tier": "Reference",
+   "round": 2,
+   "maker": "A",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-54-sketch",
+   "heading": "Pie, a sketch",
+   "caption": "A pie of one illustrative whole in three parts, each slice named with its share printed beside it, the largest starting at the top."
+  },
+  "14.55": {
+   "rule": "14.55",
+   "form": "Donut with a center number",
+   "tier": "Reference",
+   "round": 2,
+   "maker": "A",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-55-sketch",
+   "heading": "Donut with a center number, a sketch",
+   "caption": "A donut of one illustrative whole in two parts, with the larger part’s share, 64 percent, printed in its center and the ring split at that share."
+  },
+  "14.56": {
+   "rule": "14.56",
+   "form": "Marimekko",
+   "tier": "Reference",
+   "round": 2,
+   "maker": "A",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-56-sketch",
+   "heading": "Marimekko, a sketch",
+   "caption": "A marimekko of three illustrative groups, each column as wide as its group’s share of the whole and split by the shares of two answers, so each cell’s area is its share of everyone."
+  },
+  "14.58": {
+   "rule": "14.58",
+   "form": "Histogram",
+   "tier": "Core",
+   "round": 2,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 6262,
+   "figure_bytes": 5512,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S49",
+   "title": "The 845 federal judges in active service in November 2026 had served a median of 8.0 years.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How long have today’s federal judges served?"
+  },
+  "14.59": {
+   "rule": "14.59",
+   "form": "Beeswarm or strip plot",
+   "tier": "Core",
+   "round": 2,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 10533,
+   "figure_bytes": 9783,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S50",
+   "title": "Vermont collected $8,052 in state taxes per resident in fiscal 2025, the most of the 50 states, and Alaska $2,290, the least.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How much does each state collect in taxes per resident?"
+  },
+  "14.60": {
+   "rule": "14.60",
+   "form": "Box plot",
+   "tier": "Extended",
+   "round": 2,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 7361,
+   "figure_bytes": 6611,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S51",
+   "title": "The South’s median county had 13.9 percent of people under 65 without health insurance in 2024, the highest of the four regions, by the Census Bureau’s estimates.",
+   "evidence": "Estimate",
+   "estimate": true,
+   "board_1": false,
+   "question": "How widely do uninsured rates vary among counties in each region?"
+  },
+  "14.61": {
+   "rule": "14.61",
+   "form": "Line histogram",
+   "tier": "Extended",
+   "round": 2,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 8368,
+   "figure_bytes": 7618,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S52",
+   "title": "The median county’s child poverty rate fell from 18.7 percent in 2019 to 17.1 percent in 2024, by the Census Bureau’s estimates.",
+   "evidence": "Estimate",
+   "estimate": true,
+   "board_1": false,
+   "question": "Did county child poverty rates shift between 2019 and the latest year?"
+  },
+  "14.62": {
+   "rule": "14.62",
+   "form": "Population pyramid",
+   "tier": "Extended",
+   "round": 2,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 12189,
+   "figure_bytes": 11439,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S53",
+   "title": "The Census Bureau estimated 41.2 million people aged 55 to 64 on July 1, 2025, the ten years before most people qualify for Medicare at 65.",
+   "evidence": "Estimate",
+   "estimate": true,
+   "board_1": false,
+   "question": "How many people are near the ages of Social Security and Medicare?"
+  },
+  "14.63": {
+   "rule": "14.63",
+   "form": "Violin",
+   "tier": "Reference",
+   "round": 2,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-63-sketch",
+   "heading": "Violin, a sketch",
+   "caption": "Three violins, each a mirrored density shape with its quartile box and median inside, side by side on one scale; the middle group has two humps that a box plot alone would hide."
+  },
+  "14.64": {
+   "rule": "14.64",
+   "form": "Ridgeline",
+   "tier": "Reference",
+   "round": 2,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-64-sketch",
+   "heading": "Ridgeline, a sketch",
+   "caption": "Five filled curves on evenly spaced baselines, one row a year, whose peak drifts to the right from the top row to the bottom."
+  },
+  "14.65": {
+   "rule": "14.65",
+   "form": "Hexbin",
+   "tier": "Reference",
+   "round": 2,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-65-sketch",
+   "heading": "Hexbin, a sketch",
+   "caption": "A field of hexagons shaded from light to dark by how many points fall in each, densest along a rising diagonal, with a four-step key."
+  },
+  "14.66": {
+   "rule": "14.66",
+   "form": "Contour or density",
+   "tier": "Reference",
+   "round": 2,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-66-sketch",
+   "heading": "Contour or density, a sketch",
+   "caption": "Three nested contour rings around the densest part of a point cloud, the inner ring the strongest, with a few points outside the outer ring."
+  },
+  "14.73": {
+   "rule": "14.73",
+   "form": "Dual-axis line",
+   "tier": "Avoid",
+   "round": 2,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "avoid",
+   "specimen": "s-14-73-sketch",
+   "heading": "Dual-axis line, a form that misleads",
+   "caption": "The same two invented series drawn twice: on two value scales the lines cross in the middle, and in two aligned panels, each on its own scale from zero, neither line crosses anything, so no false meeting point appears."
+  },
+  "14.67": {
+   "rule": "14.67",
+   "form": "Scatter plot with named points",
+   "tier": "Core",
+   "round": 2,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 10445,
+   "figure_bytes": 9695,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S54",
+   "title": "Higher rents went with higher renter incomes across the states in 2025, and rent took the largest share of renters’ income in Florida, 35.5 percent.",
+   "evidence": "Association",
+   "estimate": false,
+   "board_1": false,
+   "question": "Do rents run higher where renters earn more, and where does rent take the largest share of renters’ income?"
+  },
+  "14.68": {
+   "rule": "14.68",
+   "form": "Bubble chart",
+   "tier": "Extended",
+   "round": 2,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 11739,
+   "figure_bytes": 10989,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S55",
+   "title": "The four states with the most renter households held 17.1 million of the nation’s 46.6 million in 2025, and three of them had median rents above the nation’s.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Where do the states with the most renter households sit on rent and renters’ income?"
+  },
+  "14.69": {
+   "rule": "14.69",
+   "form": "Connected scatter",
+   "tier": "Extended",
+   "round": 2,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 15375,
+   "figure_bytes": 14625,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S56",
+   "title": "More job openings went with less unemployment from 2001 to 2026: openings averaged 11.7 million in early 2022, when the rate averaged 3.9 percent.",
+   "evidence": "Association",
+   "estimate": false,
+   "board_1": false,
+   "question": "How have unemployment and job openings moved together?"
+  },
+  "14.70": {
+   "rule": "14.70",
+   "form": "Correlogram",
+   "tier": "Reference",
+   "round": 2,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-70-sketch",
+   "heading": "Correlogram, a sketch",
+   "caption": "A five-by-five grid of squares, each shaded on a diverging scale by the correlation between two variables, dark at the strongest pairs and pale near zero."
+  },
+  "14.71": {
+   "rule": "14.71",
+   "form": "Pair plot",
+   "tier": "Reference",
+   "round": 2,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-71-sketch",
+   "heading": "Pair plot, a sketch",
+   "caption": "A three-by-three grid: small scatter plots of each pair of three variables off the diagonal, and a small histogram of each variable on it."
+  },
+  "14.72": {
+   "rule": "14.72",
+   "form": "Trajectory or speed chart",
+   "tier": "Reference",
+   "round": 2,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-72-sketch",
+   "heading": "Trajectory or speed chart, a sketch",
+   "caption": "A curved path with dots at equal time steps, spaced wide where change ran fast and close together where it slowed, from a start dot to an end dot."
+  },
+  "14.74": {
+   "rule": "14.74",
+   "form": "Range bar or error bar",
+   "tier": "Core",
+   "round": 2,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 11650,
+   "figure_bytes": 10900,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S57",
+   "title": "Among full-time, year-round workers, women’s median earnings were 82.0 percent of men’s in 2025; 25 states and the District of Columbia differed from that past the margin of error.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How do women’s earnings compare with men’s in each state, and how sure is each figure?"
+  },
+  "14.75": {
+   "rule": "14.75",
+   "form": "Confidence band on a line",
+   "tier": "Core",
+   "round": 2,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 12183,
+   "figure_bytes": 11433,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S58",
+   "title": "Median household income stood at $87,460 in 2025, in 2025 dollars, the highest since the survey’s first year, 1967.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How has the typical household’s income changed, and how sure is each year’s figure?"
+  },
+  "14.76": {
+   "rule": "14.76",
+   "form": "Scenario directions",
+   "tier": "Core",
+   "round": 2,
+   "maker": "B",
+   "status": "built",
+   "with_frame": 16702,
+   "figure_bytes": 15952,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 1024,
+    "newsprint 358": 326,
+    "charcoal 1440": 1024,
+    "charcoal 358": 326
+   },
+   "spec": "S06",
+   "title": "If their assumptions hold, five of the seven scenarios beyond the baseline would lift at least one outcome family by 2036.",
+   "evidence": "Estimate",
+   "estimate": true,
+   "board_1": true,
+   "question": "If a reform path were followed, which way would each outcome move?"
+  },
+  "14.77": {
+   "rule": "14.77",
+   "form": "Fan chart",
+   "tier": "Extended",
+   "round": 2,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 7454,
+   "figure_bytes": 6704,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S59",
+   "title": "Federal Reserve officials projected a median unemployment rate of 4.1 percent for each year through 2029, and past forecast errors put 2029’s range at 2.0 to 6.2 percent.",
+   "evidence": "Estimate",
+   "estimate": true,
+   "board_1": false,
+   "question": "Where do Federal Reserve officials expect unemployment to go, and how wide is the range?"
+  },
+  "14.78": {
+   "rule": "14.78",
+   "form": "Hypothetical outcomes",
+   "tier": "Reference",
+   "round": 2,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-78-sketch",
+   "heading": "Hypothetical outcomes, a sketch",
+   "caption": "Six small panels, each one possible outcome drawn from the same estimate, with a dashed line marking the threshold; the bar lands above it in four panels and below it in two."
+  },
+  "14.91": {
+   "rule": "14.91",
+   "form": "Gauge",
+   "tier": "Avoid",
+   "round": 2,
+   "maker": "A",
+   "status": "sketch",
+   "kind": "avoid",
+   "specimen": "s-14-91-sketch",
+   "heading": "Gauge, a form that misleads",
+   "caption": "A gauge sets an illustrative 70 of 100 as a needle’s angle on a dial, and a progress bar of the same values shows it as a length a reader can measure against the mark at 80."
+  },
+  "14.92": {
+   "rule": "14.92",
+   "form": "Thermometer",
+   "tier": "Avoid",
+   "round": 2,
+   "maker": "A",
+   "status": "sketch",
+   "kind": "avoid",
+   "specimen": "s-14-92-sketch",
+   "heading": "Thermometer, a form that misleads",
+   "caption": "A thermometer fills an illustrative 70 percent of a goal inside a tube with a bulb, and a progress bar of the same values shows the share with the goal marked and less ink."
+  },
+  "14.85": {
+   "rule": "14.85",
+   "form": "Big number in context",
+   "tier": "Core",
+   "round": 2,
+   "maker": "A",
+   "status": "built",
+   "with_frame": 7662,
+   "figure_bytes": 6912,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S01",
+   "title": "Nearly nine in ten Republican and Democratic voters favored a ban on stock trading by members of Congress.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "Do Republicans and Democrats agree on anything about Congress?"
+  },
+  "14.86": {
+   "rule": "14.86",
+   "form": "Indicator row",
+   "tier": "Core",
+   "round": 2,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 9827,
+   "figure_bytes": 9077,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S60",
+   "title": "The atlas puts eight figures first, each checked against its sources on October 15, 2026.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "What are the atlas’s headline figures?"
+  },
+  "14.87": {
+   "rule": "14.87",
+   "form": "Progress bar",
+   "tier": "Core",
+   "round": 2,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 4631,
+   "figure_bytes": 3881,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S61",
+   "title": "The Senate fell seven votes short of the 60 needed to take up the House’s bill to limit members’ stock purchases and require photo ID to vote in federal elections.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How close did the Senate come to the 60 votes it needs to end debate on taking up H.R. 7008, the Stop Insider Trading Act?"
+  },
+  "14.88": {
+   "rule": "14.88",
+   "form": "Step tracker",
+   "tier": "Core",
+   "round": 2,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 5814,
+   "figure_bytes": 5064,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S62",
+   "title": "The TAKE IT DOWN Act went from introduction to law in four months, after the Senate took it from committee and passed it by unanimous consent.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Where is a bill in its stages, from introduction to law?"
+  },
+  "14.89": {
+   "rule": "14.89",
+   "form": "Status chips",
+   "tier": "Core",
+   "round": 2,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 11081,
+   "figure_bytes": 10331,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S63",
+   "title": "Of six disputes over checks on power, the Supreme Court had decided one by October 15, 2026, and two others stood on its interim orders.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Where do six disputes over checks on power stand?"
+  },
+  "14.90": {
+   "rule": "14.90",
+   "form": "Bullet graph",
+   "tier": "Extended",
+   "round": 2,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 4485,
+   "figure_bytes": 3735,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S64",
+   "title": "Federal debt subject to the limit stood at $40,327.1 billion on October 31, 2026, $776.9 billion under the $41,104.0 billion limit.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How close is federal debt to the limit set in law?"
+  },
+  "14.93": {
+   "rule": "14.93",
+   "form": "Funnel",
+   "tier": "Extended",
+   "round": 3,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 6567,
+   "figure_bytes": 5817,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S65",
+   "title": "Of 76.7 million Medicaid and CHIP renewals due April 2023 to March 2024, states ended 16.0 million for a procedural reason, over twice the 6.9 million they found ineligible.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Of the people whose Medicaid or CHIP coverage came up for renewal, how many had a decision, how many were not cut off for paperwork, and how many kept coverage?"
+  },
+  "14.94": {
+   "rule": "14.94",
+   "form": "Cohort chart",
+   "tier": "Reference",
+   "round": 3,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-94-sketch",
+   "heading": "Cohort chart, a sketch",
+   "caption": "Four lines, one for each year’s starting group, falling from 100 percent as the years since the start pass, with the latest group in the text’s ink."
+  },
+  "14.95": {
+   "rule": "14.95",
+   "form": "Survival curve",
+   "tier": "Reference",
+   "round": 3,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-95-sketch",
+   "heading": "Survival curve, a sketch",
+   "caption": "A step line falling from 100 percent as time passes, with small ticks where people left before the event and a thin line where half the group had reached it."
+  },
+  "14.96": {
+   "rule": "14.96",
+   "form": "Process diagram",
+   "tier": "Core",
+   "round": 3,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 10057,
+   "figure_bytes": 9307,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S66",
+   "title": "A federal agency makes a rule in five steps the law sets, and Congress and the President can then strike it down or a court can set it aside.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How does a federal agency make or change a rule, and where can Congress or a court step in?"
+  },
+  "14.97": {
+   "rule": "14.97",
+   "form": "Decision tree",
+   "tier": "Core",
+   "round": 3,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 12965,
+   "figure_bytes": 12215,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S67",
+   "title": "A state ban on ranked-choice voting reaches city elections in 18 states and partly in Ohio, and elsewhere the answer turns on state home-rule law.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Can my city switch its own elections to ranked-choice voting?"
+  },
+  "14.98": {
+   "rule": "14.98",
+   "form": "Who-decides diagram",
+   "tier": "Core",
+   "round": 3,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 9750,
+   "figure_bytes": 9000,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S68",
+   "title": "Six of the eight bodies behind an electric bill can change the rules behind it, and two, the regional grid operators and the investor-owned utility, apply them.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Who sets my electric bill, and who can change the rules behind it?"
+  },
+  "14.99": {
+   "rule": "14.99",
+   "form": "Org chart",
+   "tier": "Extended",
+   "round": 3,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 14366,
+   "figure_bytes": 13616,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S69",
+   "title": "The House splits its work among 20 standing committees and three select committees, which divide it again among 109 subcommittees.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How is the House divided into committees and subcommittees?"
+  },
+  "14.100": {
+   "rule": "14.100",
+   "form": "Hierarchy tree",
+   "tier": "Extended",
+   "round": 3,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 10871,
+   "figure_bytes": 10121,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S70",
+   "title": "The 94 district courts try federal cases, an appeal goes to the court of appeals for the region, and the Supreme Court sits over all 13 courts of appeals.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Which federal court hears a case from my state, and where does an appeal go?"
+  },
+  "14.101": {
+   "rule": "14.101",
+   "form": "Comparison grid",
+   "tier": "Extended",
+   "round": 3,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 12246,
+   "figure_bytes": 11496,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S71",
+   "title": "The eleven routes a reform can take run from a city ordinance to a constitutional amendment, and 38 reforms list a federal statute, more than any other route.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Which of the eleven routes can carry a reform, and what does each one take?"
+  },
+  "14.102": {
+   "rule": "14.102",
+   "form": "Roll-call grid",
+   "tier": "Extended",
+   "round": 3,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 7934,
+   "figure_bytes": 7184,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S72",
+   "title": "The bill that ended the shutdown passed the Senate 60 to 40 on November 10, 2025, and the House 222 to 209 two days later.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How did each senator and representative vote on the November 2025 bill that ended the shutdown?"
+  },
+  "14.103": {
+   "rule": "14.103",
+   "form": "Mind map",
+   "tier": "Reference",
+   "round": 3,
+   "maker": "A",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-103-sketch",
+   "heading": "Mind map, a sketch",
+   "caption": "A mind map of an illustrative city budget, one topic in the middle with four parts on lines around it and a further idea beside each."
+  },
+  "14.104": {
+   "rule": "14.104",
+   "form": "Network diagram",
+   "tier": "Extended",
+   "round": 3,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 14087,
+   "figure_bytes": 13337,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S73",
+   "title": "Joint fundraising committees that paid the 2024 Democratic presidential campaign sent $955.9 million to 54 other committees, and those that paid the Republican one sent $679.8 million to 56.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Where did the joint fundraising committees that paid each 2024 presidential campaign send what they raised?"
+  },
+  "14.105": {
+   "rule": "14.105",
+   "form": "Adjacency matrix",
+   "tier": "Extended",
+   "round": 3,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 11654,
+   "figure_bytes": 10904,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S74",
+   "title": "The atlas’s 118 connections fill 44 of the 100 pairs of its ten regions, and 32 of the connections stay within one region.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Which parts of the atlas connect to which?"
+  },
+  "14.106": {
+   "rule": "14.106",
+   "form": "Arc diagram",
+   "tier": "Extended",
+   "round": 3,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 7806,
+   "figure_bytes": 7056,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S75",
+   "title": "Of 10 House bills whose titles name pharmacy benefit managers, H.R. 6609 and H.R. 6610 shared the most backers, 34 members.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Which House bills to rein in drug middlemen drew the same backers?"
+  },
+  "14.107": {
+   "rule": "14.107",
+   "form": "Chord diagram",
+   "tier": "Reference",
+   "round": 3,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-107-sketch",
+   "heading": "Chord diagram, a sketch",
+   "caption": "Four arcs around a circle, one for each group, joined by gray ribbons as wide as the flows between them, with one ribbon in the text’s ink."
+  },
+  "14.108": {
+   "rule": "14.108",
+   "form": "Multi-network",
+   "tier": "Reference",
+   "round": 3,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-108-sketch",
+   "heading": "Multi-network, a sketch",
+   "caption": "Five nodes joined by solid lines in two inks, one for each kind of tie, each kind named in a key and on one of its lines."
+  },
+  "14.109": {
+   "rule": "14.109",
+   "form": "Symmetrical links",
+   "tier": "Reference",
+   "round": 3,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-109-sketch",
+   "heading": "Symmetrical links, a sketch",
+   "caption": "Four nodes joined by plain lines with no arrowheads, each line as thick as the tie it draws."
+  },
+  "14.110": {
+   "rule": "14.110",
+   "form": "Sankey",
+   "tier": "Extended",
+   "round": 3,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 7570,
+   "figure_bytes": 6820,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S76",
+   "title": "Individuals gave 2024 House campaigns $1,384.1 million, more than any other source and 61 percent of all they took in.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Where did the money for 2024 House campaigns come from, and where did it go?"
+  },
+  "14.111": {
+   "rule": "14.111",
+   "form": "Alluvial",
+   "tier": "Reference",
+   "round": 3,
+   "maker": "B",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-111-sketch",
+   "heading": "Alluvial, a sketch",
+   "caption": "Two columns of three stacked blocks, joined by gray bands as wide as the people who stayed or moved between them, with one band in the text’s ink."
+  },
+  "14.112": {
+   "rule": "14.112",
+   "form": "Journey map",
+   "tier": "Core",
+   "round": 3,
+   "maker": "B",
+   "status": "new",
+   "with_frame": 7622,
+   "figure_bytes": 6872,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S77",
+   "title": "Under the federal SNAP rule, a state has at most 30 days from an application to a decision, and seven for a household with very little income or cash.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "What happens after someone applies for SNAP food benefits, and how long can each step take?"
+  },
+  "14.113": {
+   "rule": "14.113",
+   "form": "Flow map",
+   "tier": "Reference",
+   "round": 3,
+   "maker": "C",
+   "status": "sketch",
+   "kind": "sketch",
+   "specimen": "s-14-113-sketch",
+   "heading": "Flow map, a sketch",
+   "caption": "Curved lines run from one place to four others over a plain map, each as wide as the invented number of people who moved along it, with a key of two widths."
+  },
+  "14.124": {
+   "rule": "14.124",
+   "form": "Party-colored map or red and blue scale",
+   "tier": "Avoid",
+   "round": 3,
+   "maker": "C",
+   "status": "sketch",
+   "kind": "avoid",
+   "specimen": "s-14-124-sketch",
+   "heading": "Party-colored map or red and blue scale, a form that misleads",
+   "caption": "Drawn here in gray: a map shaded red for one party and blue for the other, which takes a side at a glance and makes a party that wins a few large places look bigger than its count."
+  },
+  "14.114": {
+   "rule": "14.114",
+   "form": "Tile-grid map, categorical",
+   "tier": "Core",
+   "round": 3,
+   "maker": "C",
+   "status": "built",
+   "with_frame": 14354,
+   "figure_bytes": 13604,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S07",
+   "title": "Nineteen states ban ranked-choice voting as of November 2026, 17 of them in all elections, by Ballotpedia’s reading.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "Where can a city adopt ranked-choice voting, and where has the state ruled it out?"
+  },
+  "14.115": {
+   "rule": "14.115",
+   "form": "Tile-grid map with shift arrows",
+   "tier": "Core",
+   "round": 3,
+   "maker": "C",
+   "status": "built",
+   "with_frame": 13903,
+   "figure_bytes": 13153,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 1024,
+    "newsprint 358": 326,
+    "charcoal 1440": 1024,
+    "charcoal 358": 326
+   },
+   "spec": "S12",
+   "title": "New York, New Jersey, Florida and California moved furthest toward the Republican nominee, each by 9 points or more.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "Where did the shift happen?"
+  },
+  "14.116": {
+   "rule": "14.116",
+   "form": "Bubble map",
+   "tier": "Core",
+   "round": 3,
+   "maker": "C",
+   "status": "built",
+   "with_frame": 10933,
+   "figure_bytes": 10183,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 1024,
+    "newsprint 358": 326,
+    "charcoal 1440": 1024,
+    "charcoal 358": 326
+   },
+   "spec": "S16",
+   "title": "Texas, Florida and New York, three of the four states with the most citizens 18 and over, reported turnout below the national 65.3 percent by more than the survey’s margin of error.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "Where did citizens 18 and over turn out, and where are most of them?"
+  },
+  "14.117": {
+   "rule": "14.117",
+   "form": "Choropleth, sequential",
+   "tier": "Core",
+   "round": 3,
+   "maker": "C",
+   "status": "new",
+   "with_frame": 9406,
+   "figure_bytes": 8656,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S78",
+   "title": "In a 2025 Census survey, broadband such as cable, fiber or DSL reached at least 79 percent of households in 10 states and DC and under 71 in nine.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Where do more households have a broadband internet subscription?"
+  },
+  "14.118": {
+   "rule": "14.118",
+   "form": "Locator map",
+   "tier": "Core",
+   "round": 3,
+   "maker": "C",
+   "status": "new",
+   "with_frame": 4304,
+   "figure_bytes": 3554,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S79",
+   "title": "Lake Isabella, a census-designated place in Kern County, California, sits about 37 miles northeast of Bakersfield, the county seat.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Where is Lake Isabella, the town in chapter 01’s photograph of a public meeting?"
+  },
+  "14.119": {
+   "rule": "14.119",
+   "form": "District map",
+   "tier": "Extended",
+   "round": 3,
+   "maker": "C",
+   "status": "new",
+   "with_frame": 6891,
+   "figure_bytes": 6141,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S80",
+   "title": "Michigan’s closest House race in 2024, in the 7th district, was decided by 3.7 points, and seven of its 13 races by 20 points or more.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How close was each of Michigan’s 2024 House races, by one margin rule for every kind of seat?"
+  },
+  "14.120": {
+   "rule": "14.120",
+   "form": "County choropleth",
+   "tier": "Extended",
+   "round": 3,
+   "maker": "C",
+   "status": "new",
+   "with_frame": 13640,
+   "figure_bytes": 12890,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S81",
+   "title": "In the Census Bureau’s survey of 2020 to 2024, median household income was $80,000 or more in 585 counties and under $50,000 in 371, and the nation’s median was $80,734.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "How does median household income vary from county to county?"
+  },
+  "14.121": {
+   "rule": "14.121",
+   "form": "District tile map",
+   "tier": "Extended",
+   "round": 3,
+   "maker": "C",
+   "status": "new",
+   "with_frame": 13859,
+   "figure_bytes": 13109,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S82",
+   "title": "Republicans won 220 House seats in November 2024 and Democrats 215, and 36 of the 435 races were decided by under 5 points.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Which party won each House seat in 2024, and by how much, with the same margin classes as Michigan’s district map?"
+  },
+  "14.122": {
+   "rule": "14.122",
+   "form": "Dot density map",
+   "tier": "Extended",
+   "round": 3,
+   "maker": "C",
+   "status": "new",
+   "with_frame": 13338,
+   "figure_bytes": 12588,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S83",
+   "title": "Half of the 132.2 million private-sector paid employees counted by county in 2023 worked in 100 of the 3,142 counties.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Where are the private-sector jobs?"
+  },
+  "14.123": {
+   "rule": "14.123",
+   "form": "Small-multiple maps",
+   "tier": "Extended",
+   "round": 3,
+   "maker": "C",
+   "status": "new",
+   "with_frame": 11473,
+   "figure_bytes": 10723,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S84",
+   "title": "Thirty states and DC had a minimum wage above the federal $7.25 on January 1, 2024, up from 14 states and DC on January 1, 2010.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "When did states set their minimum wage above the federal $7.25?"
+  },
+  "14.125": {
+   "rule": "14.125",
+   "form": "Results table with margin cells",
+   "tier": "Core",
+   "round": 1,
+   "maker": "A",
+   "status": "built",
+   "with_frame": 17298,
+   "figure_bytes": 16548,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 1024,
+    "newsprint 358": 326,
+    "charcoal 1440": 1024,
+    "charcoal 358": 326
+   },
+   "spec": "S15",
+   "title": "The Republican nominee led in 31 states in 2024, six more than in 2020; in four of the six states that changed leader, the lead was under 2.5 points.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "How did each state vote in 2024, and how did that compare with 2020?"
+  },
+  "14.126": {
+   "rule": "14.126",
+   "form": "Ranked register",
+   "tier": "Core",
+   "round": 1,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 11018,
+   "figure_bytes": 10268,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S36",
+   "title": "FF PAC, a hybrid PAC, reported $503.3 million in independent spending for the 2024 federal elections, the most of any PAC or party committee.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Which groups spent the most on their own in the 2024 federal elections?"
+  },
+  "14.127": {
+   "rule": "14.127",
+   "form": "Comparison matrix",
+   "tier": "Core",
+   "round": 1,
+   "maker": "A",
+   "status": "built",
+   "with_frame": 16702,
+   "figure_bytes": 15952,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 1024,
+    "newsprint 358": 326,
+    "charcoal 1440": 1024,
+    "charcoal 358": 326
+   },
+   "spec": "S06",
+   "title": "If their assumptions hold, five of the seven scenarios beyond the baseline would lift at least one outcome family by 2036.",
+   "evidence": "Estimate",
+   "estimate": true,
+   "board_1": true,
+   "question": "If a reform path were followed, which way would each outcome move?"
+  },
+  "14.128": {
+   "rule": "14.128",
+   "form": "Sparkline table",
+   "tier": "Core",
+   "round": 1,
+   "maker": "A",
+   "status": "built",
+   "with_frame": 34223,
+   "figure_bytes": 33473,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 1024,
+    "newsprint 358": 326,
+    "charcoal 1440": 1024,
+    "charcoal 358": 326
+   },
+   "spec": "S13",
+   "title": "Health care and social assistance added 3.8 million jobs from January 2022 to September 2026, the most of any industry; information and the federal government lost jobs.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": true,
+   "question": "Which sectors added jobs since January 2022, and which lost them?"
+  },
+  "14.129": {
+   "rule": "14.129",
+   "form": "Heat table",
+   "tier": "Extended",
+   "round": 1,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 16815,
+   "figure_bytes": 16065,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 1024,
+    "newsprint 358": 326,
+    "charcoal 1440": 1024,
+    "charcoal 358": 326
+   },
+   "spec": "S37",
+   "title": "For 36 of the 38 reforms that could pass as an act of Congress, the atlas rates that route’s feasibility for 2026 to 2030 low or very low.",
+   "evidence": "Estimate",
+   "estimate": true,
+   "board_1": false,
+   "question": "Which routes could carry each reform, and how feasible is each?"
+  },
+  "14.130": {
+   "rule": "14.130",
+   "form": "Filterable lookup table",
+   "tier": "Extended, interactive",
+   "round": 1,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 10767,
+   "figure_bytes": 10017,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S38",
+   "title": "Of the atlas’s 17 issue records on news, records and public information, two are documented, eight well supported, six plausible and one a hypothesis.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Which issue records cover my question?"
+  },
+  "14.131": {
+   "rule": "14.131",
+   "form": "Evidence table",
+   "tier": "Core",
+   "round": 1,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 11031,
+   "figure_bytes": 10281,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S39",
+   "title": "The atlas grades 10 of its 11 claims about drug middlemen and prices documented, and the eleventh, on generic competition, well supported.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "What does the evidence say about drug middlemen and prices?"
+  },
+  "14.132": {
+   "rule": "14.132",
+   "form": "Tracker list",
+   "tier": "Core",
+   "round": 1,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 9424,
+   "figure_bytes": 8674,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S40",
+   "title": "Of eight housing bills that moved past committee referral in the 119th Congress, two had become law by November 11, 2026.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Where do this Congress’s housing bills stand?"
+  },
+  "14.133": {
+   "rule": "14.133",
+   "form": "Plain table",
+   "tier": "Core",
+   "round": 1,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 4143,
+   "figure_bytes": 3393,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S41",
+   "title": "Republican and Democratic voters favored a ban on stock trading by members of Congress at almost the same rate in a May 2023 survey, 87 and 88 percent.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Do Republicans and Democrats agree on a ban on stock trading by members of Congress?"
+  },
+  "14.134": {
+   "rule": "14.134",
+   "form": "One sentence",
+   "tier": "Core",
+   "round": 1,
+   "maker": "A",
+   "status": "new",
+   "with_frame": 3194,
+   "figure_bytes": 2444,
+   "faults": 0,
+   "drawn": {
+    "newsprint 1440": 720,
+    "newsprint 358": 326,
+    "charcoal 1440": 720,
+    "charcoal 358": 326
+   },
+   "spec": "S42",
+   "title": "In a May 2023 survey of 2,625 registered voters, 87 percent of Republicans and 88 percent of Democrats favored a ban on stock trading by members of Congress.",
+   "evidence": "Finding",
+   "estimate": false,
+   "board_1": false,
+   "question": "Do Republicans and Democrats agree on a ban on stock trading by members of Congress?"
+  }
+ },
+ "forms_summary": {
+  "forms": 114,
+  "shown": 114,
+  "ready": 114,
+  "estimate": [
+   "14.60",
+   "14.61",
+   "14.62",
+   "14.76",
+   "14.77",
+   "14.127",
+   "14.129"
+  ],
+  "waiting": []
+ },
+ "rules": {
+  "14.1": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2388
+   ]
+  },
+  "14.2": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2440
+   ]
+  },
+  "14.3": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2145
+   ]
+  },
+  "14.4": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2032
+   ]
+  },
+  "14.5": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1590
+   ]
+  },
+  "14.6": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2146
+   ]
+  },
+  "14.7": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1483
+   ]
+  },
+  "14.8": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1890
+   ]
+  },
+  "14.9": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2035
+   ]
+  },
+  "14.10": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2012
+   ]
+  },
+  "14.11": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2167
+   ]
+  },
+  "14.12": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2279
+   ]
+  },
+  "14.13": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    2200
+   ]
+  },
+  "14.14": {
+   "plates": 2,
+   "layout": "stacked",
+   "size": [
+    868,
+    1259
+   ]
+  }
+ },
+ "spend": {
+  "rows": [
+   [
+    "Chapter 14 with the chart kit",
+    2228120,
+    2803941
+   ],
+   [
+    "The chart kit the page carries",
+    512961,
+    null
+   ],
+   [
+    "Map shapes",
+    133117,
+    250000
+   ],
+   [
+    "Rules 14.1 to 14.14 with the opener",
+    175678,
+    212288
+   ],
+   [
+    "The whole guide, as projected",
+    15044827,
+    15500000
+   ]
+  ],
+  "per_plate": 13249,
+  "plates_to_come": 13,
+  "by_family": {
+   "3.1": [
+    61708,
+    9,
+    1
+   ],
+   "3.2": [
+    56048,
+    4,
+    0
+   ],
+   "3.3": [
+    202821,
+    14,
+    3
+   ],
+   "3.4": [
+    96787,
+    8,
+    4
+   ],
+   "3.5": [
+    67317,
+    5,
+    4
+   ],
+   "3.6": [
+    62064,
+    3,
+    4
+   ],
+   "3.7": [
+    51679,
+    4,
+    1
+   ],
+   "3.9": [
+    51648,
+    6,
+    2
+   ],
+   "3.10": [
+    18028,
+    1,
+    2
+   ],
+   "3.11": [
+    80232,
+    7,
+    1
+   ],
+   "3.12": [
+    49509,
+    3,
+    3
+   ],
+   "3.13": [
+    26847,
+    2,
+    2
+   ],
+   "3.14": [
+    113868,
+    10,
+    1
+   ],
+   "3.15": [
+    78363,
+    8,
+    0
+   ]
+  },
+  "heaviest": [
+   [
+    33488,
+    "S13",
+    "14.34",
+    "Small-multiple area sparklines",
+    34223
+   ],
+   [
+    30312,
+    "S05",
+    "14.30",
+    "Multi-line with one highlighted",
+    31047
+   ],
+   [
+    22806,
+    "S25",
+    "14.27",
+    "Diverging bar",
+    23541
+   ],
+   [
+    21780,
+    "S08",
+    "14.49",
+    "Unit chart or waffle",
+    22515
+   ],
+   [
+    16673,
+    "S15",
+    "14.125",
+    "Results table with margin cells",
+    17298
+   ],
+   [
+    16583,
+    "S33",
+    "14.40",
+    "Indexed line",
+    17208
+   ],
+   [
+    16268,
+    "S37",
+    "14.129",
+    "Heat table",
+    16815
+   ],
+   [
+    16077,
+    "S06",
+    "14.76",
+    "Scenario directions",
+    16702
+   ],
+   [
+    14640,
+    "S56",
+    "14.69",
+    "Connected scatter",
+    15375
+   ],
+   [
+    14248,
+    "S11",
+    "14.25",
+    "Shift arrows (from, to)",
+    14873
+   ]
+  ]
+ },
+ "scores": {
+  "cd": [
+   {
+    "round": 1,
+    "first_ready": 0,
+    "now_ready": 5,
+    "items": 5
+   },
+   {
+    "round": 2,
+    "first_ready": 2,
+    "now_ready": 5,
+    "items": 5
+   },
+   {
+    "round": 3,
+    "first_ready": 2,
+    "now_ready": 5,
+    "items": 5
+   }
+  ],
+  "red_teams": [
+   {
+    "name": "Statistics and civic education",
+    "round": 1,
+    "state": "ready",
+    "score": 3,
+    "must_fix": 5,
+    "should_fix": 13,
+    "second_score": 4,
+    "file": "work/handoffs/phase-3/20261112_Round-1-Red-Team-Statistics-Civic.md"
+   },
+   {
+    "name": "Fairness, brand and craft",
+    "round": 1,
+    "state": "ready",
+    "score": 3,
+    "must_fix": 4,
+    "should_fix": 20,
+    "second_score": 4,
+    "file": "work/handoffs/phase-3/20261112_Round-1-Red-Team-Brand-Craft.md"
+   },
+   {
+    "name": "Access and the test with a simulated designer",
+    "round": 1,
+    "state": "ready",
+    "score": 4,
+    "must_fix": 1,
+    "should_fix": 10,
+    "second_score": 4,
+    "file": "work/handoffs/phase-3/20261112_Round-1-Red-Team-Access-Production.md"
+   },
+   {
+    "name": "Statistics and civic education",
+    "round": 2,
+    "state": "ready",
+    "score": 4,
+    "must_fix": 3,
+    "should_fix": 11,
+    "second_score": 4,
+    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Statistics-Civic.md"
+   },
+   {
+    "name": "Fairness, brand and craft",
+    "round": 2,
+    "state": "ready",
+    "score": 3,
+    "must_fix": 3,
+    "should_fix": 18,
+    "second_score": 4,
+    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Brand-Craft.md"
+   },
+   {
+    "name": "Access and the test with a simulated designer",
+    "round": 2,
+    "state": "ready",
+    "score": 4,
+    "must_fix": 1,
+    "should_fix": 11,
+    "second_score": 4,
+    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Access-Production.md"
+   },
+   {
+    "name": "Statistics and civic education",
+    "round": 3,
+    "state": "ready",
+    "score": 3,
+    "must_fix": 4,
+    "should_fix": 12,
+    "second_score": 3.5,
+    "file": "work/handoffs/phase-3/20261113_Round-3-Red-Team-Statistics-Civic.md"
+   },
+   {
+    "name": "Fairness, brand and craft",
+    "round": 3,
+    "state": "ready",
+    "score": 3,
+    "must_fix": 3,
+    "should_fix": 15,
+    "second_score": 4,
+    "file": "work/handoffs/phase-3/20261113_Round-3-Red-Team-Brand-Craft.md"
+   },
+   {
+    "name": "Access and the test with a simulated designer",
+    "round": 3,
+    "state": "ready",
+    "score": 3,
+    "must_fix": 2,
+    "should_fix": 8,
+    "second_score": 4,
+    "file": "work/handoffs/phase-3/20261113_Round-3-Red-Team-Access-Production.md"
+   }
+  ]
+ },
+ "tested": {
+  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 17:23 UTC: exit 0, no warnings, 11,236,072 bytes, 344 rules, 638 examples placed",
+  "Quick guide check": "run by the main session on a copy of its strict build of 11,235,128 bytes, at 1440 and 390 px: 694 examples, 3,296 same-page links, no failures",
+  "The kit’s build of every chart": "run by this board’s build at the widths the guide draws, with the sweep from 256 px: 84 of 84 charts pass with no fault, no warnings",
+  "This board’s own check": "Waiting for its file"
+ },
+ "guide_check": {
+  "file": "[scratch]/phase-3/board-2/main/quick/guide-Guide-Check-Results.json",
+  "failures": [],
+  "pass": true,
+  "page_bytes": 11235128
+ },
+ "kit_checks": {
+  "check_files": 84,
+  "pass": 84,
+  "warnings": 0
+ },
+ "tokens_used": 110,
+ "page": "work/boards/phase-3/round-3/board-2/20261113_Board-2.html",
+ "html_bytes": 896750,
+ "images": 295,
+ "image_bytes": 123638004,
+ "folder_files": 297,
+ "folder_bytes": 124551287,
+ "largest_image": [
+  1331207,
+  "20261113_Form-S37-Newsprint.png"
+ ],
+ "status": {
+  "decide": [
+   "waiting",
+   "data_lead"
+  ],
+  "forms": "ready",
+  "rules": "ready",
+  "count": [
+   "waiting",
+   "data_lead"
+  ],
+  "spend": "ready",
+  "scores": [
+   "partial",
+   "cd_board"
+  ],
+  "tested": [
+   "partial",
+   "notes"
+  ],
+  "next": "ready"
+ },
+ "image_sources": {
+  "img/20261113_Sketch-14-24.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.24.png",
+  "img/20261113_Form-S03-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s03/s03-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-newsprint-358.png",
+  "img/20261113_Form-S03-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s03/s03-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-charcoal-358.png",
+  "img/20261113_Form-S03-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s03/s03-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-charcoal-358-grayscale.png",
+  "img/20261113_Form-S17-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s17/s17-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-newsprint-358.png",
+  "img/20261113_Form-S17-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s17/s17-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-charcoal-358.png",
+  "img/20261113_Form-S17-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s17/s17-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s17/s17-charcoal-358-grayscale.png",
+  "img/20261113_Form-S18-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s18/s18-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-newsprint-358.png",
+  "img/20261113_Form-S18-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s18/s18-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-charcoal-358.png",
+  "img/20261113_Form-S18-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s18/s18-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s18/s18-charcoal-358-grayscale.png",
+  "img/20261113_Form-S19-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s19/s19-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-newsprint-358.png",
+  "img/20261113_Form-S19-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s19/s19-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-charcoal-358.png",
+  "img/20261113_Form-S19-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s19/s19-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s19/s19-charcoal-358-grayscale.png",
+  "img/20261113_Form-S04-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s04/s04-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-newsprint-358.png",
+  "img/20261113_Form-S04-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s04/s04-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-charcoal-358.png",
+  "img/20261113_Form-S04-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s04/s04-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s04/s04-charcoal-358-grayscale.png",
+  "img/20261113_Form-S20-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s20/s20-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-newsprint-358.png",
+  "img/20261113_Form-S20-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s20/s20-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-charcoal-358.png",
+  "img/20261113_Form-S20-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s20/s20-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s20/s20-charcoal-358-grayscale.png",
+  "img/20261113_Form-S21-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s21/s21-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-newsprint-358.png",
+  "img/20261113_Form-S21-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s21/s21-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-charcoal-358.png",
+  "img/20261113_Form-S21-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s21/s21-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s21/s21-charcoal-358-grayscale.png",
+  "img/20261113_Form-S22-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s22/s22-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-newsprint-358.png",
+  "img/20261113_Form-S22-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s22/s22-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-charcoal-358.png",
+  "img/20261113_Form-S22-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s22/s22-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s22/s22-charcoal-358-grayscale.png",
+  "img/20261113_Form-S23-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s23/s23-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-newsprint-358.png",
+  "img/20261113_Form-S23-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s23/s23-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-charcoal-358.png",
+  "img/20261113_Form-S23-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s23/s23-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s23/s23-charcoal-358-grayscale.png",
+  "img/20261113_Form-S11-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s11/s11-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-newsprint-358.png",
+  "img/20261113_Form-S11-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s11/s11-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-charcoal-358.png",
+  "img/20261113_Form-S11-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s11/s11-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s11/s11-charcoal-358-grayscale.png",
+  "img/20261113_Form-S24-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s24/s24-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-newsprint-358.png",
+  "img/20261113_Form-S24-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s24/s24-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-charcoal-358.png",
+  "img/20261113_Form-S24-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s24/s24-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s24/s24-charcoal-358-grayscale.png",
+  "img/20261113_Form-S25-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s25/s25-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-newsprint-358.png",
+  "img/20261113_Form-S25-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s25/s25-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-charcoal-358.png",
+  "img/20261113_Form-S25-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s25/s25-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s25/s25-charcoal-358-grayscale.png",
+  "img/20261113_Form-S26-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s26/s26-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-newsprint-358.png",
+  "img/20261113_Form-S26-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s26/s26-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-charcoal-358.png",
+  "img/20261113_Form-S26-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s26/s26-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s26/s26-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-45.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.45.png",
+  "img/20261113_Form-S02-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s02/s02-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-newsprint-358.png",
+  "img/20261113_Form-S02-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s02/s02-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-charcoal-358.png",
+  "img/20261113_Form-S02-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s02/s02-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s02/s02-charcoal-358-grayscale.png",
+  "img/20261113_Form-S05-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s05/s05-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-newsprint-358.png",
+  "img/20261113_Form-S05-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s05/s05-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-charcoal-358.png",
+  "img/20261113_Form-S05-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s05/s05-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s05/s05-charcoal-358-grayscale.png",
+  "img/20261113_Form-S27-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s27/s27-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-newsprint-358.png",
+  "img/20261113_Form-S27-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s27/s27-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-charcoal-358.png",
+  "img/20261113_Form-S27-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s27/s27-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s27/s27-charcoal-358-grayscale.png",
+  "img/20261113_Form-S14-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s14/s14-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-newsprint-358.png",
+  "img/20261113_Form-S14-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s14/s14-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-charcoal-358.png",
+  "img/20261113_Form-S14-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s14/s14-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s14/s14-charcoal-358-grayscale.png",
+  "img/20261113_Form-S28-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s28/s28-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-newsprint-358.png",
+  "img/20261113_Form-S28-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s28/s28-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-charcoal-358.png",
+  "img/20261113_Form-S28-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s28/s28-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s28/s28-charcoal-358-grayscale.png",
+  "img/20261113_Form-S13-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s13/s13-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-newsprint-358.png",
+  "img/20261113_Form-S13-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s13/s13-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-charcoal-358.png",
+  "img/20261113_Form-S13-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s13/s13-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s13/s13-charcoal-358-grayscale.png",
+  "img/20261113_Form-S29-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s29/s29-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-newsprint-358.png",
+  "img/20261113_Form-S29-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s29/s29-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-charcoal-358.png",
+  "img/20261113_Form-S29-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s29/s29-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s29/s29-charcoal-358-grayscale.png",
+  "img/20261113_Form-S30-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s30/s30-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-newsprint-358.png",
+  "img/20261113_Form-S30-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s30/s30-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-charcoal-358.png",
+  "img/20261113_Form-S30-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s30/s30-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s30/s30-charcoal-358-grayscale.png",
+  "img/20261113_Form-S31-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s31/s31-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-newsprint-358.png",
+  "img/20261113_Form-S31-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s31/s31-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-charcoal-358.png",
+  "img/20261113_Form-S31-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s31/s31-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s31/s31-charcoal-358-grayscale.png",
+  "img/20261113_Form-S09-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s09/s09-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-newsprint-358.png",
+  "img/20261113_Form-S09-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s09/s09-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-charcoal-358.png",
+  "img/20261113_Form-S09-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s09/s09-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s09/s09-charcoal-358-grayscale.png",
+  "img/20261113_Form-S32-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s32/s32-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-newsprint-358.png",
+  "img/20261113_Form-S32-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s32/s32-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-charcoal-358.png",
+  "img/20261113_Form-S32-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s32/s32-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s32/s32-charcoal-358-grayscale.png",
+  "img/20261113_Form-S33-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s33/s33-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-newsprint-358.png",
+  "img/20261113_Form-S33-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s33/s33-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-charcoal-358.png",
+  "img/20261113_Form-S33-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s33/s33-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s33/s33-charcoal-358-grayscale.png",
+  "img/20261113_Form-S34-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s34/s34-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-newsprint-358.png",
+  "img/20261113_Form-S34-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s34/s34-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-charcoal-358.png",
+  "img/20261113_Form-S34-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s34/s34-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s34/s34-charcoal-358-grayscale.png",
+  "img/20261113_Form-S35-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s35/s35-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-newsprint-358.png",
+  "img/20261113_Form-S35-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s35/s35-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-charcoal-358.png",
+  "img/20261113_Form-S35-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s35/s35-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s35/s35-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-43.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.43.png",
+  "img/20261113_Sketch-14-44.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.44.png",
+  "img/20261113_Sketch-14-57.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.57.png",
+  "img/20261113_Form-S10-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s10/s10-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-newsprint-358.png",
+  "img/20261113_Form-S10-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s10/s10-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-charcoal-358.png",
+  "img/20261113_Form-S10-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s10/s10-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s10/s10-charcoal-358-grayscale.png",
+  "img/20261113_Form-S43-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s43/s43-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-newsprint-358.png",
+  "img/20261113_Form-S43-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s43/s43-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-charcoal-358.png",
+  "img/20261113_Form-S43-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s43/s43-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s43/s43-charcoal-358-grayscale.png",
+  "img/20261113_Form-S44-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s44/s44-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-newsprint-358.png",
+  "img/20261113_Form-S44-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s44/s44-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-charcoal-358.png",
+  "img/20261113_Form-S44-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s44/s44-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s44/s44-charcoal-358-grayscale.png",
+  "img/20261113_Form-S08-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s08/s08-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-newsprint-358.png",
+  "img/20261113_Form-S08-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s08/s08-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-charcoal-358.png",
+  "img/20261113_Form-S08-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s08/s08-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s08/s08-charcoal-358-grayscale.png",
+  "img/20261113_Form-S45-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s45/s45-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-newsprint-358.png",
+  "img/20261113_Form-S45-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s45/s45-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-charcoal-358.png",
+  "img/20261113_Form-S45-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s45/s45-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s45/s45-charcoal-358-grayscale.png",
+  "img/20261113_Form-S46-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s46/s46-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-newsprint-358.png",
+  "img/20261113_Form-S46-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s46/s46-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-charcoal-358.png",
+  "img/20261113_Form-S46-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s46/s46-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s46/s46-charcoal-358-grayscale.png",
+  "img/20261113_Form-S47-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s47/s47-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-newsprint-358.png",
+  "img/20261113_Form-S47-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s47/s47-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-charcoal-358.png",
+  "img/20261113_Form-S47-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s47/s47-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s47/s47-charcoal-358-grayscale.png",
+  "img/20261113_Form-S48-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s48/s48-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-newsprint-358.png",
+  "img/20261113_Form-S48-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s48/s48-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-charcoal-358.png",
+  "img/20261113_Form-S48-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s48/s48-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s48/s48-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-54.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.54.png",
+  "img/20261113_Sketch-14-55.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.55.png",
+  "img/20261113_Sketch-14-56.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.56.png",
+  "img/20261113_Form-S49-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s49/s49-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-newsprint-358.png",
+  "img/20261113_Form-S49-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s49/s49-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-charcoal-358.png",
+  "img/20261113_Form-S49-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s49/s49-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s49/s49-charcoal-358-grayscale.png",
+  "img/20261113_Form-S50-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s50/s50-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-newsprint-358.png",
+  "img/20261113_Form-S50-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s50/s50-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-charcoal-358.png",
+  "img/20261113_Form-S50-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s50/s50-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s50/s50-charcoal-358-grayscale.png",
+  "img/20261113_Form-S51-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s51/s51-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-newsprint-358.png",
+  "img/20261113_Form-S51-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s51/s51-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-charcoal-358.png",
+  "img/20261113_Form-S51-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s51/s51-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s51/s51-charcoal-358-grayscale.png",
+  "img/20261113_Form-S52-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s52/s52-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-newsprint-358.png",
+  "img/20261113_Form-S52-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s52/s52-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-charcoal-358.png",
+  "img/20261113_Form-S52-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s52/s52-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s52/s52-charcoal-358-grayscale.png",
+  "img/20261113_Form-S53-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s53/s53-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-newsprint-358.png",
+  "img/20261113_Form-S53-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s53/s53-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-charcoal-358.png",
+  "img/20261113_Form-S53-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s53/s53-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s53/s53-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-63.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.63.png",
+  "img/20261113_Sketch-14-64.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.64.png",
+  "img/20261113_Sketch-14-65.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.65.png",
+  "img/20261113_Sketch-14-66.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.66.png",
+  "img/20261113_Sketch-14-73.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.73.png",
+  "img/20261113_Form-S54-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s54/s54-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-newsprint-358.png",
+  "img/20261113_Form-S54-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s54/s54-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-charcoal-358.png",
+  "img/20261113_Form-S54-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s54/s54-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s54/s54-charcoal-358-grayscale.png",
+  "img/20261113_Form-S55-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s55/s55-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-newsprint-358.png",
+  "img/20261113_Form-S55-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s55/s55-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-charcoal-358.png",
+  "img/20261113_Form-S55-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s55/s55-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s55/s55-charcoal-358-grayscale.png",
+  "img/20261113_Form-S56-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s56/s56-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-newsprint-358.png",
+  "img/20261113_Form-S56-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s56/s56-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-charcoal-358.png",
+  "img/20261113_Form-S56-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s56/s56-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s56/s56-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-70.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.70.png",
+  "img/20261113_Sketch-14-71.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.71.png",
+  "img/20261113_Sketch-14-72.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.72.png",
+  "img/20261113_Form-S57-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s57/s57-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-newsprint-358.png",
+  "img/20261113_Form-S57-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s57/s57-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-charcoal-358.png",
+  "img/20261113_Form-S57-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s57/s57-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s57/s57-charcoal-358-grayscale.png",
+  "img/20261113_Form-S58-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s58/s58-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-newsprint-358.png",
+  "img/20261113_Form-S58-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s58/s58-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-charcoal-358.png",
+  "img/20261113_Form-S58-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s58/s58-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s58/s58-charcoal-358-grayscale.png",
+  "img/20261113_Form-S06-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s06/s06-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-newsprint-358.png",
+  "img/20261113_Form-S06-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s06/s06-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-charcoal-358.png",
+  "img/20261113_Form-S06-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s06/s06-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s06/s06-charcoal-358-grayscale.png",
+  "img/20261113_Form-S59-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s59/s59-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-newsprint-358.png",
+  "img/20261113_Form-S59-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s59/s59-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-charcoal-358.png",
+  "img/20261113_Form-S59-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s59/s59-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s59/s59-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-78.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.78.png",
+  "img/20261113_Sketch-14-91.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.91.png",
+  "img/20261113_Sketch-14-92.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.92.png",
+  "img/20261113_Form-S01-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s01/s01-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-newsprint-358.png",
+  "img/20261113_Form-S01-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s01/s01-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-charcoal-358.png",
+  "img/20261113_Form-S01-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s01/s01-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s01/s01-charcoal-358-grayscale.png",
+  "img/20261113_Form-S60-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s60/s60-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-newsprint-358.png",
+  "img/20261113_Form-S60-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s60/s60-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-charcoal-358.png",
+  "img/20261113_Form-S60-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s60/s60-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s60/s60-charcoal-358-grayscale.png",
+  "img/20261113_Form-S61-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s61/s61-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-newsprint-358.png",
+  "img/20261113_Form-S61-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s61/s61-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-charcoal-358.png",
+  "img/20261113_Form-S61-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s61/s61-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s61/s61-charcoal-358-grayscale.png",
+  "img/20261113_Form-S62-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s62/s62-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-newsprint-358.png",
+  "img/20261113_Form-S62-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s62/s62-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-charcoal-358.png",
+  "img/20261113_Form-S62-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s62/s62-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s62/s62-charcoal-358-grayscale.png",
+  "img/20261113_Form-S63-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s63/s63-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-newsprint-358.png",
+  "img/20261113_Form-S63-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s63/s63-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-charcoal-358.png",
+  "img/20261113_Form-S63-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s63/s63-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s63/s63-charcoal-358-grayscale.png",
+  "img/20261113_Form-S64-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s64/s64-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-newsprint-358.png",
+  "img/20261113_Form-S64-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s64/s64-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-charcoal-358.png",
+  "img/20261113_Form-S64-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s64/s64-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s64/s64-charcoal-358-grayscale.png",
+  "img/20261113_Form-S65-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s65/s65-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-newsprint-358.png",
+  "img/20261113_Form-S65-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s65/s65-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-charcoal-358.png",
+  "img/20261113_Form-S65-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s65/s65-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s65/s65-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-94.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.94.png",
+  "img/20261113_Sketch-14-95.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.95.png",
+  "img/20261113_Form-S66-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s66/s66-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-newsprint-358.png",
+  "img/20261113_Form-S66-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s66/s66-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-charcoal-358.png",
+  "img/20261113_Form-S66-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s66/s66-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s66/s66-charcoal-358-grayscale.png",
+  "img/20261113_Form-S67-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s67/s67-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-newsprint-358.png",
+  "img/20261113_Form-S67-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s67/s67-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-charcoal-358.png",
+  "img/20261113_Form-S67-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s67/s67-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s67/s67-charcoal-358-grayscale.png",
+  "img/20261113_Form-S68-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s68/s68-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-newsprint-358.png",
+  "img/20261113_Form-S68-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s68/s68-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-charcoal-358.png",
+  "img/20261113_Form-S68-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s68/s68-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s68/s68-charcoal-358-grayscale.png",
+  "img/20261113_Form-S69-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s69/s69-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-newsprint-358.png",
+  "img/20261113_Form-S69-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s69/s69-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-charcoal-358.png",
+  "img/20261113_Form-S69-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s69/s69-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s69/s69-charcoal-358-grayscale.png",
+  "img/20261113_Form-S70-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s70/s70-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-newsprint-358.png",
+  "img/20261113_Form-S70-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s70/s70-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-charcoal-358.png",
+  "img/20261113_Form-S70-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s70/s70-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s70/s70-charcoal-358-grayscale.png",
+  "img/20261113_Form-S71-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s71/s71-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-newsprint-358.png",
+  "img/20261113_Form-S71-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s71/s71-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-charcoal-358.png",
+  "img/20261113_Form-S71-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s71/s71-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s71/s71-charcoal-358-grayscale.png",
+  "img/20261113_Form-S72-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s72/s72-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-newsprint-358.png",
+  "img/20261113_Form-S72-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s72/s72-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-charcoal-358.png",
+  "img/20261113_Form-S72-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s72/s72-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s72/s72-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-103.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.103.png",
+  "img/20261113_Form-S73-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s73/s73-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-newsprint-358.png",
+  "img/20261113_Form-S73-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s73/s73-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-charcoal-358.png",
+  "img/20261113_Form-S73-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s73/s73-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s73/s73-charcoal-358-grayscale.png",
+  "img/20261113_Form-S74-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s74/s74-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-newsprint-358.png",
+  "img/20261113_Form-S74-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s74/s74-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-charcoal-358.png",
+  "img/20261113_Form-S74-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s74/s74-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s74/s74-charcoal-358-grayscale.png",
+  "img/20261113_Form-S75-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s75/s75-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-newsprint-358.png",
+  "img/20261113_Form-S75-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s75/s75-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-charcoal-358.png",
+  "img/20261113_Form-S75-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s75/s75-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s75/s75-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-107.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.107.png",
+  "img/20261113_Sketch-14-108.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.108.png",
+  "img/20261113_Sketch-14-109.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.109.png",
+  "img/20261113_Form-S76-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s76/s76-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-newsprint-358.png",
+  "img/20261113_Form-S76-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s76/s76-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-charcoal-358.png",
+  "img/20261113_Form-S76-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s76/s76-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s76/s76-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-111.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.111.png",
+  "img/20261113_Form-S77-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s77/s77-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-newsprint-358.png",
+  "img/20261113_Form-S77-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s77/s77-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-charcoal-358.png",
+  "img/20261113_Form-S77-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s77/s77-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s77/s77-charcoal-358-grayscale.png",
+  "img/20261113_Sketch-14-113.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.113.png",
+  "img/20261113_Sketch-14-124.png": "[scratch]/phase-3/board-2/builder/shots/sketch-14.124.png",
+  "img/20261113_Form-S07-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s07/s07-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-newsprint-358.png",
+  "img/20261113_Form-S07-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s07/s07-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-charcoal-358.png",
+  "img/20261113_Form-S07-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s07/s07-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s07/s07-charcoal-358-grayscale.png",
+  "img/20261113_Form-S12-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s12/s12-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-newsprint-358.png",
+  "img/20261113_Form-S12-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s12/s12-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-charcoal-358.png",
+  "img/20261113_Form-S12-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s12/s12-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s12/s12-charcoal-358-grayscale.png",
+  "img/20261113_Form-S16-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s16/s16-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-newsprint-358.png",
+  "img/20261113_Form-S16-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s16/s16-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-charcoal-358.png",
+  "img/20261113_Form-S16-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s16/s16-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s16/s16-charcoal-358-grayscale.png",
+  "img/20261113_Form-S78-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s78/s78-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-newsprint-358.png",
+  "img/20261113_Form-S78-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s78/s78-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-charcoal-358.png",
+  "img/20261113_Form-S78-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s78/s78-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s78/s78-charcoal-358-grayscale.png",
+  "img/20261113_Form-S79-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s79/s79-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-newsprint-358.png",
+  "img/20261113_Form-S79-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s79/s79-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-charcoal-358.png",
+  "img/20261113_Form-S79-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s79/s79-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s79/s79-charcoal-358-grayscale.png",
+  "img/20261113_Form-S80-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s80/s80-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-newsprint-358.png",
+  "img/20261113_Form-S80-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s80/s80-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-charcoal-358.png",
+  "img/20261113_Form-S80-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s80/s80-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s80/s80-charcoal-358-grayscale.png",
+  "img/20261113_Form-S81-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s81/s81-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-newsprint-358.png",
+  "img/20261113_Form-S81-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s81/s81-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-charcoal-358.png",
+  "img/20261113_Form-S81-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s81/s81-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s81/s81-charcoal-358-grayscale.png",
+  "img/20261113_Form-S82-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s82/s82-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-newsprint-358.png",
+  "img/20261113_Form-S82-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s82/s82-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-charcoal-358.png",
+  "img/20261113_Form-S82-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s82/s82-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s82/s82-charcoal-358-grayscale.png",
+  "img/20261113_Form-S83-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s83/s83-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-newsprint-358.png",
+  "img/20261113_Form-S83-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s83/s83-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-charcoal-358.png",
+  "img/20261113_Form-S83-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s83/s83-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s83/s83-charcoal-358-grayscale.png",
+  "img/20261113_Form-S84-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s84/s84-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-newsprint-358.png",
+  "img/20261113_Form-S84-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s84/s84-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-charcoal-358.png",
+  "img/20261113_Form-S84-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s84/s84-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s84/s84-charcoal-358-grayscale.png",
+  "img/20261113_Form-S15-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s15/s15-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-newsprint-358.png",
+  "img/20261113_Form-S15-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s15/s15-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-charcoal-358.png",
+  "img/20261113_Form-S15-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s15/s15-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s15/s15-charcoal-358-grayscale.png",
+  "img/20261113_Form-S36-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s36/s36-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-newsprint-358.png",
+  "img/20261113_Form-S36-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s36/s36-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-charcoal-358.png",
+  "img/20261113_Form-S36-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s36/s36-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s36/s36-charcoal-358-grayscale.png",
+  "img/20261113_Form-S37-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s37/s37-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-newsprint-358.png",
+  "img/20261113_Form-S37-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s37/s37-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-charcoal-358.png",
+  "img/20261113_Form-S37-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s37/s37-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s37/s37-charcoal-358-grayscale.png",
+  "img/20261113_Form-S38-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s38/s38-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-newsprint-358.png",
+  "img/20261113_Form-S38-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s38/s38-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-charcoal-358.png",
+  "img/20261113_Form-S38-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s38/s38-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s38/s38-charcoal-358-grayscale.png",
+  "img/20261113_Form-S39-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s39/s39-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-newsprint-358.png",
+  "img/20261113_Form-S39-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s39/s39-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-charcoal-358.png",
+  "img/20261113_Form-S39-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s39/s39-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s39/s39-charcoal-358-grayscale.png",
+  "img/20261113_Form-S40-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s40/s40-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-newsprint-358.png",
+  "img/20261113_Form-S40-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s40/s40-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-charcoal-358.png",
+  "img/20261113_Form-S40-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s40/s40-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s40/s40-charcoal-358-grayscale.png",
+  "img/20261113_Form-S41-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s41/s41-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-newsprint-358.png",
+  "img/20261113_Form-S41-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s41/s41-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-charcoal-358.png",
+  "img/20261113_Form-S41-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s41/s41-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s41/s41-charcoal-358-grayscale.png",
+  "img/20261113_Form-S42-Newsprint.png": "[scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-358.png",
+  "img/20261113_Form-S42-Charcoal.png": "[scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-358.png",
+  "img/20261113_Form-S42-Grayscale.png": "[scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-358-grayscale.png",
+  "img/20261113_Ch14-Opener.png": "[scratch]/phase-3/board-2/builder/shots/ch14-opener.png",
+  "img/20261113_Rule-14-1-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.1-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.1-failure.png",
+  "img/20261113_Rule-14-2-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.2-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.2-failure.png",
+  "img/20261113_Rule-14-3-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.3-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.3-failure.png",
+  "img/20261113_Rule-14-4-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.4-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.4-failure.png",
+  "img/20261113_Rule-14-5-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.5-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.5-failure.png",
+  "img/20261113_Rule-14-6-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.6-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.6-failure.png",
+  "img/20261113_Rule-14-7-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.7-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.7-failure.png",
+  "img/20261113_Rule-14-8-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.8-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.8-failure.png",
+  "img/20261113_Rule-14-9-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.9-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.9-failure.png",
+  "img/20261113_Rule-14-10-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.10-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.10-failure.png",
+  "img/20261113_Rule-14-11-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.11-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.11-failure.png",
+  "img/20261113_Rule-14-12-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.12-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.12-failure.png",
+  "img/20261113_Rule-14-13-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.13-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.13-failure.png",
+  "img/20261113_Rule-14-14-Plates.png": "[scratch]/phase-3/board-2/builder/shots/plate-14.14-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.14-failure.png"
+ },
+ "codes_in_reference_lines": [
+  "D3-1310",
+  "D3-1328",
+  "D3-1414",
+  "D3-1505",
+  "D3-1507",
+  "D3-1527",
+  "D3-1533",
+  "D3-1537",
+  "D3-1541",
+  "D3-689",
+  "DR-213",
+  "DR-229",
+  "DR-252",
+  "DR-254",
+  "DR-260"
+ ],
+ "anchors_linked": [
+  "rule-14-1",
+  "rule-14-10",
+  "rule-14-100",
+  "rule-14-101",
+  "rule-14-102",
+  "rule-14-103",
+  "rule-14-104",
+  "rule-14-105",
+  "rule-14-106",
+  "rule-14-107",
+  "rule-14-108",
+  "rule-14-109",
+  "rule-14-11",
+  "rule-14-110",
+  "rule-14-111",
+  "rule-14-112",
+  "rule-14-113",
+  "rule-14-114",
+  "rule-14-115",
+  "rule-14-116",
+  "rule-14-117",
+  "rule-14-118",
+  "rule-14-119",
+  "rule-14-12",
+  "rule-14-120",
+  "rule-14-121",
+  "rule-14-122",
+  "rule-14-123",
+  "rule-14-124",
+  "rule-14-125",
+  "rule-14-126",
+  "rule-14-127",
+  "rule-14-128",
+  "rule-14-129",
+  "rule-14-13",
+  "rule-14-130",
+  "rule-14-131",
+  "rule-14-132",
+  "rule-14-133",
+  "rule-14-134",
+  "rule-14-14",
+  "rule-14-15",
+  "rule-14-16",
+  "rule-14-17",
+  "rule-14-18",
+  "rule-14-19",
+  "rule-14-2",
+  "rule-14-20",
+  "rule-14-21",
+  "rule-14-22",
+  "rule-14-23",
+  "rule-14-24",
+  "rule-14-25",
+  "rule-14-26",
+  "rule-14-27",
+  "rule-14-28",
+  "rule-14-29",
+  "rule-14-3",
+  "rule-14-30",
+  "rule-14-31",
+  "rule-14-32",
+  "rule-14-33",
+  "rule-14-34",
+  "rule-14-35",
+  "rule-14-36",
+  "rule-14-37",
+  "rule-14-38",
+  "rule-14-39",
+  "rule-14-4",
+  "rule-14-40",
+  "rule-14-41",
+  "rule-14-42",
+  "rule-14-43",
+  "rule-14-44",
+  "rule-14-45",
+  "rule-14-46",
+  "rule-14-47",
+  "rule-14-48",
+  "rule-14-49",
+  "rule-14-5",
+  "rule-14-50",
+  "rule-14-51",
+  "rule-14-52",
+  "rule-14-53",
+  "rule-14-54",
+  "rule-14-55",
+  "rule-14-56",
+  "rule-14-57",
+  "rule-14-58",
+  "rule-14-59",
+  "rule-14-6",
+  "rule-14-60",
+  "rule-14-61",
+  "rule-14-62",
+  "rule-14-63",
+  "rule-14-64",
+  "rule-14-65",
+  "rule-14-66",
+  "rule-14-67",
+  "rule-14-68",
+  "rule-14-69",
+  "rule-14-7",
+  "rule-14-70",
+  "rule-14-71",
+  "rule-14-72",
+  "rule-14-73",
+  "rule-14-74",
+  "rule-14-75",
+  "rule-14-76",
+  "rule-14-77",
+  "rule-14-78",
+  "rule-14-8",
+  "rule-14-85",
+  "rule-14-86",
+  "rule-14-87",
+  "rule-14-88",
+  "rule-14-89",
+  "rule-14-9",
+  "rule-14-90",
+  "rule-14-91",
+  "rule-14-92",
+  "rule-14-93",
+  "rule-14-94",
+  "rule-14-95",
+  "rule-14-96",
+  "rule-14-97",
+  "rule-14-98",
+  "rule-14-99"
+ ],
+ "notes": [],
+ "warnings": [
+  "the strict build changed work/build/chart-kit/plate-share.json past its timestamp (13322 to 13249); left as the build wrote it",
+  "S05: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
+  "S06: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
+  "S08: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
+  "S09: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
+  "S11: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
+  "S13: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
+  "S15: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
+  "S16: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
+  "S37: the guide draws 723 px at a 1440 px window and the kit 1024 px at 1440",
+  "the quick guide check ran on 11,235,128 bytes and this board’s strict build is 11,236,072",
+  "the folder comes to 124.55 MB, at or over 120 MB"
+ ],
+ "seconds": 722,
+ "words": 48582
+}

@@ -9,7 +9,9 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. Data visualizatio
 - Count script written and run: `work/build/scripts/phase-3/board_2_data_lead_counts.py` (tiers, datasets against plan rows, Rule 01.9, DR-229). First results under "Rulings".
 - 17:25 UTC. **Decisions file, first draft written:** `work/handoffs/phase-3/20261113_Board-2-Decisions.json`, `state: "draft"`. Panels: board 1 drawings that changed (S12 with both views, S16, S10, the eleven placement moves, the twelve note-word changes), forms whose tier or data changed (tiers by script; S73, S76, S78, S80, S59, S54 and S55, S41, S20; the seventeen plan changes), and `counts` and `checks` written by the script with `--write` (a rerun keeps the editor's `note` words). Still to come: the atlas V7.1 panel (waits on the research lead's facts), the "answered" panel (waits on A1 to A5), and S12's stacked tile pictures (the cartographer's files).
 - **For the builder, the `counts` layout:** `counts.rule_01_9` holds the board's table at the top level (`total_examples` 108, `limit_domain` 27, `limit_state` 21, `by_domain` and `by_state` rows with `count`, `limit`, `passes`, `note`), and `built` holds the same for the 97 examples as built. `counts.dr_229.examples` rows carry `spec` or `where`, `rule`, `form`, `data`, `coverage_use`, `election_data`, `passes`, `test`; `note` is the words.
-- Part A: A5's sidecar variants verified (below, "Sign-off"); A1, A2, A4 and the editor's A5 specs in progress. The engineer's A1 export check is in (8 of 8 exports whole). A2 has one request (lighter blue) under "Rulings".
+- 17:35 UTC. **Part A: A1 to A5 all signed off; the engineer may run A6** ("Sign-off", last heading of Part A). A2 to A5 change no figure; A5 changes words only.
+- 17:33 UTC. **Decisions file, second draft:** all four panels hold their items. Added the atlas V7.1 panel (nine items and the loop label question, from the research lead's facts), the "answered" panel (DR-254 to DR-258, old and new words read by script from the committed state `33dc30a3` and the files as they stand), and S12 rewritten on the cartographer's measure. **My S12 recommendation changed** to the stacked tile; the reason is under "Rulings". Still `state: "draft"`; it turns "signed off" when A4 lands and the editor has read the words.
+- **For the builder:** new optional fields `facts` on S12 and the loop item, `question` on the loop item, `list_item` and `list_note` on two V7.1 items, `list_file` on the V7.1 panel, and `old`/`new` on DR-255. S12's stacked tile pictures name the cartographer's two HTML files. `answered` items carry `approval: "none"` at panel level.
 
 ## Schema for the decisions file (proposed 17:09 UTC, for the board builder)
 
@@ -84,6 +86,17 @@ Read by script from `work/build/guide/specimens/s-14-124-sketch.html` against th
 - **The two fills are too close in lightness for a sketch whose places carry no words.** The kit's own key test (`checks.js`, `KEY_LIGHTNESS_MARGIN` 10: the smaller of the CIE L* gap and the grayscale proof's luma gap, for fills told apart by fill alone) reads `#CC0000` at L* 42.5 and `#2C7BB6` at L* 49.6, a gap of 7.1, though their luma gap is 26. The sketch never runs through that check, but the standard is the guide's, and the lesson's second harm (land for votes) needs a grayscale reader to see which places belong to which party.
 - **Asked:** keep the red and lighten the blue until the gap is 10 or more by that test, staying a plain news blue far from Prussian. For example `#3A8AC4`: L* 55.1, gap 12.6, 3.1 to 1 on Newsprint and 4.3 to 1 on Charcoal (my figures, a one-off check in my scratch). Any blue that passes the test and the ΔE distance you measured is fine; say which in your notes and I sign off.
 
+### S12: the stacked tile, recommended (17:33 UTC)
+
+My first draft (17:25) recommended the 1,024 px frame as built, on the belief that the stacked tile fits only from a 723 px column. The cartographer's measure (`work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-Measure.json`, 17:27 UTC) changes that, and I changed the recommendation:
+
+- The stacked tile holds every code, figure and arrow in all 51 tiles from a **618 px** drawing, which the guide's column gives from a **1,104 px** window. At 1,440 px it draws the whole map in the column (723 px, 54 px tiles) with the chapter list in place; the frame as built shows 943 of 1,024 px there and hides the chapter list.
+- Where the column is narrower (windows from 1,024 to 1,103 px), the stacked tile held in a 618 px frame scrolls about 60 px, against 468 px for the 1,024 px frame. This is my round 3 C-M2 ruling's order (point 3): the stacked tile first, and a stage at the narrowest width that fits where it does not.
+- **The cost, stated on the board:** arrows at 3.8 px a point against board 1's 6.2, so 12 states' small shifts draw as an arrowhead alone at 1,440 px against 6; a change to a drawing Dustin approved; and the kit bytes of a stacked layout, which the engineer has not measured. The figure in every tile carries each value either way, and the encoding, scale rule, inks and words are board 1's.
+- Read from both sides: no party or side is named in the choice; New York, New Jersey, Florida and California, the title's states, are in view at 1,440 px either way.
+- I looked at the cartographer's 1x captures of the stacked tile at 1,440 and 1,024 px on Newsprint (`scratch/.../cartographer/shots/stacked/`) and board 1's 1,024 px drawing. At 1,024 px the forced stacked tile runs its arrows past the tiles' feet, as the measure says, so the board labels that picture as the width that needs the 618 px frame.
+- The creative director's view goes beside mine, quoted from the rescores, with a note that it was written before the frame widened over the rail and before the 618 px measure.
+
 ### Counts and checks by script (17:16 UTC; the script is `work/build/scripts/phase-3/board_2_data_lead_counts.py`)
 
 - **Tiers: no form's tier changed.** All 114 forms of rounds 1 to 3 (50 core, 36 extended, 21 reference, 7 avoid, Gate 2's table) read the same tier in the coverage plan, the chapter 14 plan, the data plans' rows, each entry file and each spec (S06 and S13 each serve two forms and are left out of the spec column). Every form matched a coverage plan row.
@@ -138,8 +151,49 @@ I read the diff of `work/build/scripts/phase-2/guide_build.py` against `33dc30a3
 - Every figure checked by my own script on `census-cps-2024-turnout-by-state.csv` (2024 rows, 50 states and DC): Arkansas 52.8 (±2.7) is lowest, past the gap's margin to the next place (Texas 57.9: 5.1 against 3.55; Louisiana 58.0: 5.2 against 4.50); DC 79.5 (±3.3) is highest and within the gap's margin of exactly two places, Minnesota 75.9 (3.6 against 4.39) and Oregon 75.3 (4.2 against 4.33); the next, Virginia 72.9, is past it (6.6 against 4.08). The words add two figures, 75.9 and 75.3, both values in the file; no other figure moved.
 - S16's weight 10,732 to 10,933 with the frame (the editor's build), under every ceiling. I sign off A4 whole when the cartographer reports the layout at every width the sweep runs.
 
+### A4, the layout: signed off (17:35 UTC). A4 is signed off whole.
+
+- The cartographer's report (17:34 UTC): `oa-chart.mjs build s16`, sweep on, PASS, 0 faults, 0 warnings, over every whole width from 256 to 869 px and the 1440 and 390 px pages on both grounds; S16 drawn as committed before Part A and as it stands, 1,230 of 1,230 drawings equal with the alt set aside. Codes placed as round 3 left them (all 51 from 358 px up). I read the report and did not rerun it.
+- Note 3 wraps in eight lines at 390 px with no break inside a figure and its margin. "DC" ends one line and "79.5% (±3.3)" opens the next; a no-break space after "DC" is the editor's choice, words only, and does not block A4.
+- **A4 changes words only:** two sentences, figures checked by script against the data above.
+
+### Part A: A1 to A5 all signed off (17:35 UTC). The engineer may run A6.
+
+For the main session and the engineer: A1 (17:27), A2 (17:29), A3 (17:27), A4 (17:35) and A5 (17:27) are signed off, each under its heading above. A2 to A5 change no figure, and A5 changes words only: every changed field was compared with the committed state before Part A (`33dc30a3`) by script, figure by figure, and no file in `work/build/data/` but six sidecars' added variants changed (125 of 125 data files equal). Plate weights before and after are listed under A1 and A5; S16 10,732 to 10,933 and sketch 14.124 3,817 to 3,941 bytes; none passes D3-1328's ceilings or R3-9's 4,096. Two items for the editor's fix round, neither blocking: S74's measure line still prints the snapshot date that its grade and source lines print (D3-1485), and "DC" could hold to its figure in S16's note 3.
+
 ## Routine calls
+
+- D3-xxx | The decisions file's schema is the data lead's of 17:09 UTC with the board builder's six additions (`state`, `spec` and `rule`, picture `role` and `element`, `facts`, `rows` fields) | Agreed within the brief's first 20 minutes; the builder prints only what the file holds
+- D3-xxx | Board 2's Rule 01.9 and DR-229 counts come from `work/build/scripts/phase-3/board_2_data_lead_counts.py`, which also checks every form's tier and every spec's files against its plan row and writes `counts` and `checks` into the decisions file, keeping the editor's `note` words | One script the main session can rerun; the brief asks for a recount by script named in the file
+- D3-xxx | DR-229's count takes election data as the elections and representation domain plus reported voting counted under taking part; campaign money (S73, S76, S36, Rule 14.13's plate) counts under money, as ruling (g) set | One reading of "election or voting data" (Gate 2 question 1) across the chapter
+- D3-xxx | D3-689's test is applied to forms built in rounds 1 to 3; Phase 2's specimens approved on board 1 and the rule plates are listed with the test's result and are not moved by it | DR-229 keeps every form and its approved drawings; the test governs new picks
+- D3-xxx | The forms-changed list names nine specimens changed after their plan row was signed off (S73, S76, S78, S80, S59, S54, S55, S41, S20) and lists the seventeen data plan changes separately; S04's and S05's margins files are left out | Their margins files (P7-037, P7-038) date from round 0, before board 1 showed both drawings
+- D3-xxx | Sketch 14.124's two fills differ by 10 or more on the kit's key test (`KEY_LIGHTNESS_MARGIN`, the smaller of the CIE L* and grayscale luma gaps); the blue is `#3A8AC4` | The places carry no words, so a grayscale reader needs the gap the guide asks of any key told apart by fill alone
+- D3-xxx | A2 to A5 are signed off on a field-by-field comparison with the committed state before Part A (`33dc30a3`), every figure in each changed string listed old and new, and a `cmp` of all 125 data files | "No figure changes" is checked by script, not by reading
+- D3-xxx | The 15 of D3-1308's 21 atlas source lines that print nowhere stay as stored; board 2 says so | DR-257 fixes what a reader meets; a future spec that prints one takes a `snapshot_once` variant
+- D3-xxx | S12's recommendation is the stacked tile at every desk width, held in a 618 px frame that scrolls where the column is narrower; it replaces my first draft's recommendation of the 1,024 px frame | The cartographer's measure: the stacked tile fits from 618 px (a 1,104 px window), shows the whole map at 1,440 px and scrolls about 60 px at 1,024 against 468; C-M2 point 3
+- D3-xxx | The loop label question (D3-912) is recommended "yes": each variable's own title in every loop drawing in chapters 10, 11 and 15, and in V7.1 | The titles carry no verdict and need no gloss ("Executive unilateralism", "Policy tilt to insiders", "Affective polarization" do); one name per variable; the costs (longer words, CL-026's printed name) go on the board
+- D3-xxx | RL-3 is recommended off the V7.1 list | No atlas record names joint fundraising; the fact lives in the two FEC sidecars
+- D3-xxx | The issue title item asks one test for all 18 atlas titles with an effect verb, whoever the actor | DR-93; five concern the executive and thirteen do not, and a test applied to five alone would be one standard for one side
 
 ## Tested
 
+- Clock read with `date -u` at 17:07, 17:08, 17:10, 17:13, 17:14, 17:15, 17:17, 17:18, 17:19, 17:22, 17:24, 17:25, 17:26, 17:27, 17:29 and 17:33 UTC.
+- `board_2_data_lead_counts.py` (`python3 -I`), run five times, the last with `--write`: 114 forms, tiers 50, 36, 21, 7, none changed, every form matched in the coverage plan; 84 specs traced through `derived_from`, five not as their plan row (S73, S59, S04, S05, S20); Rule 01.9 97 built (equal to `14-example-log.json`, domain by domain) and 108 with round 4, every domain and state within its limit; DR-229 17 examples, 5 new forms all passing.
+- `a5_lines.py` before and after the editor's A5: source lines printing October 15, 2026 twice, 7 then 0; grade and source lines both printing it, 6 both times (S60, S63 and round 3's S67, S68, S71, S74).
+- `parta_diff.py` against `33dc30a3`, three runs: every changed field in specs, entries, sidecars, `words.json` and the specimens folder, with figures old and new; `cmp` of 125 data files, all equal.
+- By script on the committed sidecars: D3-1308's 21 lines in nine sidecars.
+- By script on `work/extract/atlas-v7-data.json`: claims' `verified_on` (432 of 433), the 11 drug-price claims, the eight headline figures' status, the six status rows' `checked`; the 25 looped variables' titles against their chain labels (24 differ; mean length 36.5 against 22.0).
+- By script on `census-cps-2024-turnout-by-state.csv`: A4's figures and the gap tests (Arkansas against Texas and Louisiana; DC against Minnesota, Oregon, Virginia and New Jersey).
+- By script: `{data_file}` in 9 strings, none opening a sentence; "download" and "CSV file" in reader strings, 2 hits, both chapter 18 references.
+- Lightness of the sketch's inks by the kit's own formulas (CIE L*, luma); contrast against `tokens.css`'s Newsprint.
+- Read: the diffs of `guide_build.py` (A3) and `kit-build.js` (the caption fix) against `33dc30a3`.
+- Looked at: the cartographer's grayscale comparison of sketch 14.124 (earlier blue), the stacked tile at 1,440 and 1,024 px on Newsprint, board 1's S12 at 1,024 px.
+
 ## Not tested
+
+- No build, capture or browser of my own: I ran no kit build, no guide build and no guide check. The engineer's export check, A3 self-test and kit checks, the editor's and cartographer's builds and weights, and the cartographer's color measures are theirs, read from their notes.
+- Sketch 14.124 with its final blue, rendered: I looked only at the earlier blue's capture.
+- S16's layout at the sweep's widths (the cartographer's A4 check, pending).
+- The stacked tile's kit bytes and its behavior in the guide's page (it is a board-only picture).
+- The live FEC, Census, Clerk, CMS and state election sources behind the V7.1 facts; I read the research lead's facts and the atlas extract.
