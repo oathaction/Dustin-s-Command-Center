@@ -63,7 +63,7 @@ Every part draws through the form's context, so the layout guard and the checks 
 | `map_fit` | Where a layer draws: its box scaled to a width | `var T = K.parts.map_fit(c, L, {x, y, w, max_h, pad, ids})`; `ids` fits only those features (a state on the national layer). Returns `{k, x, y, w, h, pt([x, y]), px(lon, lat, code), box}`; `T.h` is the height to give `c.height` |
 | `map_shapes` | Each feature filled | `K.parts.map_shapes(c, L, T, items, {merge, stroke, width})`; `items` `[{id, fill, pattern, data, job, fc}]`. One path a feature with its data by default; `merge: true` draws one path a fill (a county map's 3,144 shapes in five elements) and records each feature's data at its label point, no element. Returns `{missing}` (ids the layer lacks). A feature with no estimate takes its own fill or pattern and a key entry; never leave it the ground |
 | `map_mesh` | Borders, drawn once, one path | `K.parts.map_mesh(c, L, T, {which, between, ids, stroke, width, dash})`; `which` `interior` (default), `outline` or `all`; `between(a, b)` with the two features' geoids (b null on the outline): state lines on a county map are `function (a, b) { return b !== null && a.slice(0, 2) !== b.slice(0, 2); }`. Default `surface` at 1 px |
-| `map_labels` | Names on their shapes, or beside them with leaders | `K.parts.map_labels(c, L, T, items, {role, inset, reach, avoid, top, bottom, halo})`; `items` `[{id, words, weight, fill}]` in the order they claim room. A name sits at the label point where its box fits wholly inside the shape, `inset` px clear of every edge; any other goes beside through `place_labels` with a leader (`reach` default [16, 30, 46, 64]). Returns `{inside, beside, unplaced}` |
+| `map_labels` | Names on their shapes, or beside them with leaders | `K.parts.map_labels(c, L, T, items, {role, inset, column, beside, beside_fill, reach, avoid, top, bottom, halo})`; `items` `[{id, words, weight, fill}]` in the order they claim room, `fill` the ink inside the shape (its step's label ink, `on-seq-4`). A name sits at the label point where its box fits wholly inside the shape, `inset` px clear of every edge. A name that does not fit and whose point lies in the map's eastern fifth (`column`, default 0.8 of its width) goes to a column on the ocean east of the land, north to south, with a leader: the small northeastern states; fit the map about 44 px narrower than the drawing (`map_fit`'s `w`) to leave it room. Any other goes beside through `place_labels` (`reach` default [16, 30, 46, 64]). A name set beside takes the label ink on a halo and sits only where the ground or a light fill lies under all of it; one that finds no room is returned in `unplaced` for the table. `beside: false` places names inside only (a phone map). Draw the inset frames and every line first. Returns `{inside, beside, unplaced}`. At 720 px on the states layer with the map 44 px narrow: 40 inside, 11 in the column, none unplaced |
 | `map_insets` | A thin frame round Alaska and Hawaii | `K.parts.map_insets(c, L, T, {prefixes, pad, stroke, width})`; default geoid prefixes '02' and '15', `gridline` at 1 px, kept inside the map's box |
 | `map_scale` | A scale bar for a fitted layer | `K.parts.map_scale(c, L, T, x, y, {miles, words, stroke})`; default a round figure near a fifth of the map's width, words '{n} miles' |
 | `map_dots` | A dot density map, one path for every dot | `K.parts.map_dots(c, L, T, counts, {per, seed, r, fill, job})`; `counts` `{geoid: count}`; each feature's dots are round(count / per), placed at random inside its shape in frame units (the same places at every width) by a generator seeded from `seed` and the geoid, drawn as one path of round dots (`kit.css` `.oac-dots`). Returns `{dots, per, seed, skipped}` |
@@ -134,6 +134,9 @@ Strict build of 03:30 UTC (`guide_build.py --strict --out .../round-3/engineer/b
 - D3-xxx | Map geometry weighs as its own page part, "map geometry", and counts inside chapter 14's stop | R3-2 holds it apart in its 250,000 bytes; the 0.55 MB kit part had held the 2017 outlines
 - D3-xxx | The band check reads a band as under another only where the other holds it across as well as down (RB3-G1) | Side by side links and a Sankey's left and right bands lie on the ground
 - D3-xxx | `data_round0_build.py` carries the Ballotpedia publisher in `LINE_FIXES` (ENG-R3-1) | A rerun to a scratch folder writes all 34 of its files equal byte for byte to the folder as it stands
+- D3-xxx | `phase3_ch14_build.py` builds rounds 1, 2 and 3 by default (DR-253) | Dustin's permission, as round 2's default did for its round; run with no flag it writes what `--rounds 1,2,3` writes (80 of 80 files current both ways), and lists 7 faults, the map entries 14.117 to 14.123 not yet written
+- D3-xxx | Each step's label ink is a text and fill role (`on-seq-N`, `on-mag-N`, `on-div-N`) | Ruling (b) sets codes and district marks in the step's label ink; the tokens existed, the kit had no class for them
+- D3-xxx | A map name that does not fit its shape goes to an eastern column first, then beside through `place_labels`, never onto a dark fill | The small northeastern states read as a list on the ocean; a name over another state's dark step fails forced colors and reads badly
 
 ## Requests log
 
@@ -148,7 +151,7 @@ Taken in the order they arrived:
 
 To others:
 - **Cartographer:** S16's spec still prints the 2017 credit ("via us-atlas 3.0.1"); replace it with the 2024 files' credit. S16 may move onto `map_fit` to show all of Alaska. De Baca County (35011) has no estimate: per the data lead, the land ink with the context edge and a note. S81 reads a class column (DL-E1 variant B); ruling (c)'s breaks give four classes.
-- **Main session:** `phase3_ch14_build.py` still builds rounds 1 and 2 by default; my change to make it 1, 2 and 3 (as round 2 did for round 2) was blocked by the permission check, since it writes the chapter files other owners read. Makers can pass `--rounds 1,2,3`; say if the default should change.
+- **Main session:** the generator's default (first refused by the permission check) landed after Dustin's permission (DR-253).
 
 ## Tested
 
@@ -163,6 +166,6 @@ To others:
 
 ## Not tested
 
-- The map parts in a maker's own form: the cartographer has not drawn on them yet; `map_labels`, `map_scale` and `map_dots` are exercised by self-test and scratch code only, not looked at on a map.
+- The map parts in a maker's own form: the cartographer has not drawn on them yet. In scratch forms I looked at `map_labels` on the states (720 and 358 px), `map_dots` on 13,028 dots at 10,000 a dot and 2,400 at 50,000, and California's counties with Kern County, Lake Isabella and `map_scale` (50 miles); the self-test covers each.
 - The page's own read-back of a grouped table in a browser (tested in Node through the kit's own functions).
 - S16 on Charcoal and at 390 px after the outline change (the build's checks ran; I looked at 1440 px on Newsprint only).

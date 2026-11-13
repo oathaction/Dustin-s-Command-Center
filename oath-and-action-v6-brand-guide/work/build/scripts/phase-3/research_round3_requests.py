@@ -17,6 +17,9 @@ write when a check fails.
   record layout's letters), and the sidecar traces the gap between the counties' sum and the national total.
 - RL-3: fec-jfc-transfers-2024 gains each recipient's name as its joint fundraising committee wrote it on the itemized
   payments, the line 21B payments the FEC's aggregate leaves out, and the lines its amount sums.
+- judges (the brief's third research item, ledger claim 28): the courts' 677 district positions traced to 28 U.S.C.
+  133's 673 and the territorial courts' 4; uscode-federal-trial-judges and uscode-federal-courts-circuits-districts
+  print the same account. Run with any --dl; it reads only the frozen files.
 """
 import argparse
 import collections
@@ -324,13 +327,83 @@ def rl3(dl, write):
         f'Harris {by["C00703975"][11]}, Trump {by["C00828541"][11]}; lines {dict(found)}')
 
 
+# ------------------------------------------------------------------------------------------------------------------
+def read_meta_any(p):
+    t = p.read_text(encoding='utf-8')
+    m = json.loads(t)
+    end = '\n' if t.endswith('\n') else ''
+    assert json.dumps(m, indent=1, ensure_ascii=False) + end == t, f'{p.name} is not in its writer format; stop'
+    return m, end
+
+
+def judges(dl, write):
+    """The judge counts (ledger claim 28): the courts' 677 district positions are 28 U.S.C. 133's 673 and the 4
+    judgeships of the three territorial district courts. Asserted from the frozen files themselves; the Administrative
+    Office's table of authorized district judgeships (January 2025), read court by court, agrees (research notes)."""
+    tp, tm = OUT / 'uscode-federal-trial-judges.csv', OUT / 'uscode-federal-trial-judges.meta.json'
+    cp, cm = OUT / 'uscode-federal-courts-circuits-districts.csv', OUT / 'uscode-federal-courts-circuits-districts.meta.json'
+    courts = list(csv.DictReader(io.StringIO(cp.read_text(encoding='utf-8'))))
+    stat = sum(int(r['judgeships']) for r in courts if r['level'] in ('district', 'district-shared'))
+    terr = {r['code']: int(r['judgeships']) for r in courts if r['level'] == 'district-territorial'}
+    assert stat == 673 and terr == {'GU': 1, 'MP': 1, 'VI': 2}, (stat, terr)
+    rows = read_csv_raw(tp)
+    frozen_head = ['order', 'kind', 'appointed_by', 'consent', 'term', 'cases_heard', 'seats', 'seats_as_of',
+                   'seats_in_statute_table', 'number_set_by', 'legal_basis', 'source_words']
+    assert rows[0][:12] == frozen_head and len(rows) == 4
+    dist = rows[1]
+    assert dist[1] == 'District judge' and int(dist[6]) == 677 and int(dist[8]) == 673 == stat
+    assert int(dist[6]) == stat + sum(terr.values())
+    out = [frozen_head + ['seats_in_territorial_courts']]
+    for r in rows[1:]:
+        out.append(r[:12] + ([str(sum(terr.values()))] if r[1] == 'District judge' else ['']))
+    m, end = read_meta_any(tm)
+    m['columns']['seats_in_territorial_courts'] = {'type': 'integer', 'description': (
+        'of seats, the judgeships of the three territorial district courts (Guam 1, the Northern Mariana Islands 1, the '
+        'Virgin Islands 2), set by Title 48, whose judges serve ten-year terms; district row only')}
+    m['qualification'] = (
+        'Seats are positions authorized, filled or vacant: 677 district positions (48 vacant), 345 bankruptcy '
+        'judgeships authorized and funded (63 vacant), and 593 magistrate judge positions (567 full time, 24 part time, '
+        '2 combined with a clerk’s post), all as of September 30, 2025. The courts’ 677 district positions are the 673 '
+        'judgeships of 28 U.S.C. 133’s table and the 4 of the three territorial district courts (Guam 1, the Northern '
+        'Mariana Islands 1, the Virgin Islands 2), which Title 48 sets and whose judges serve ten-year terms, not for '
+        'life; the Administrative Office’s table of authorized district judgeships agrees court by court. No temporary '
+        'district judgeship remains: Pub. L. 118-203 of December 23, 2024 made the last ten permanent, and the courts '
+        'counted 677 in every year from 2021 to 2025. The statute table lists 316 bankruptcy judgeships; the 29 more the '
+        'courts count were not traced. No appointing president or party is recorded.')
+    m['printed_source_line'] = (
+        'Source: U.S. Code, 2024 edition, 28 U.S.C. 133, 134, 152, 631 and 633; Administrative Office of the U.S. Courts, '
+        'Judicial Business 2025, seats as of September 30, 2025, United States. Retrieved November 12, 2026. Seats include '
+        'vacant ones; the 677 district positions include the territorial courts’ 4.')
+    for u in ('https://www.uscourts.gov/sites/default/files/2025-01/districtauth-with-endnotes.pdf',
+              'https://www.uscourts.gov/sites/default/files/2025-01/districttemp.pdf'):
+        if u not in m['url']:
+            m['url'].append(u)
+    note = ('Traced November 13, 2026 (ledger claim 28): 677 = 673 + 4. The Administrative Office’s "Additional Authorized '
+            'Judgeships" table (January 2025) lists 104 district rows summing to 677; its 97 rows with seats equal, court '
+            'by court, the 94 statute rows and 3 territorial rows of uscode-federal-courts-circuits-districts. Its '
+            '"Authorized Temporary Judgeships" list shows the last ten temporary district judgeships (Alabama Northern, '
+            'Arizona, California Central, Florida Southern, Hawaii, Kansas, Missouri Eastern, New Mexico, North Carolina '
+            'Western, Texas Eastern) made permanent by Pub. L. 118-203, December 23, 2024. Judicial Business 2025, Table 10, '
+            'gives 677 district positions for 2021 to 2025.')
+    notes = [n for n in (m.get('notes') or []) if not n.startswith('The courts’ 677 district positions against')]
+    m['notes'] = set_note(notes, 'Traced November 13, 2026 (ledger claim 28)', note)
+    m2, end2 = read_meta_any(cm)
+    m2['notes'] = set_note(list(m2.get('notes') or []), 'The courts count 677 district positions',
+                           'The courts count 677 district positions on September 30, 2025 (Judicial Business 2025, Table '
+                           '10): this file’s 673 statute judgeships and its 4 territorial ones, court by court as the '
+                           'Administrative Office’s table of authorized district judgeships lists them (read November 13, '
+                           '2026). uscode-federal-trial-judges prints the same account.')
+    return [(tp, write_csv(out)), (tm, json.dumps(m, indent=1, ensure_ascii=False) + end),
+            (cm, json.dumps(m2, indent=1, ensure_ascii=False) + end2)], '677 = 673 + 4 (GU 1, MP 1, VI 2)'
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('item', choices=['rl1', 'rl2', 'rl3'])
+    ap.add_argument('item', choices=['rl1', 'rl2', 'rl3', 'judges'])
     ap.add_argument('--dl', required=True)
     ap.add_argument('--write', action='store_true')
     a = ap.parse_args()
-    files, summary = {'rl1': rl1, 'rl2': rl2, 'rl3': rl3}[a.item](Path(a.dl), a.write)
+    files, summary = {'rl1': rl1, 'rl2': rl2, 'rl3': rl3, 'judges': judges}[a.item](Path(a.dl), a.write)
     for p, text in files:
         print(f'{p.name}: {put(p, text, a.write)}')
     print(f'{a.item}: {summary}')
