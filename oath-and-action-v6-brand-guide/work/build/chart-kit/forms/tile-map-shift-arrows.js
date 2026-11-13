@@ -19,8 +19,12 @@
       var tight = c.phone || size < c.measure('WW 88.8', 'tick', 700) + 12;
       // a shaded tile too small for its code at the smallest text size draws no code, and a note says the table names
       // every state, as the categorical tile map does (D3-93; the sweep found codes across the tiles' edges at 256 to 279 px)
-      var cmax = 0; c.rows.forEach(function (r) { if (G.tiles[r[ec]]) cmax = Math.max(cmax, c.measure(String(r[ec]), 'tick', 600)); });
-      var codes = !tight || size - 2 >= cmax * c.t('type-tile-code-phone') / c.size('tick');
+      // RS-5 (round 3, second pass): as S78's tiles do, each code sits in its tile where the tile holds it with 1 px to
+      // spare each side, and the codes with no room are named in a note; where more than ten have none, no tile carries a
+      // code and the note says the table names every state (board 1's phone drawing printed every code at 358 px)
+      var fits = function (code) { return size - 2 >= c.measure(String(code), 'tick', 600) * c.t('type-tile-code-phone') / c.size('tick'); };
+      var lost = c.rows.filter(function (r) { return G.tiles[r[ec]] && !fits(r[ec]); }).map(function (r) { return r[ec]; }).sort();
+      var codes = !tight || lost.length <= 10;
       var max = Math.max.apply(null, rows.map(function (r) { return Math.abs(r[es]); }));
       var ky = 0;
       // key
@@ -54,7 +58,7 @@
           c.rect(x, y, size, size, { fill: sh, data: { key: r[ec], field: es, value: r[es] } });
           // a 1 px outline keeps the lightest step apart from the ground (access S5)
           c.rect(x + 0.5, y + 0.5, size - 1, size - 1, { stroke: 'sequential-outline', width: 1, mark: false });
-          if (codes) c.text(x + size / 2, y + size / 2 + 4, r[ec], { role: 'tick', size: c.t('type-tile-code-phone'), weight: 600, anchor: 'middle', fill: sh === 'mag-4' || sh === 'mag-3' ? 'label-on-subject' : 'label' });
+          if (codes && fits(r[ec])) c.text(x + size / 2, y + size / 2 + 4, r[ec], { role: 'tick', size: c.t('type-tile-code-phone'), weight: 600, anchor: 'middle', fill: sh === 'mag-4' || sh === 'mag-3' ? 'label-on-subject' : 'label' });
         } else {
           // the track ground keeps the code and figure at 4.5 to 1 or more on both grounds, in the label ink
           c.rect(x, y, size, size, { fill: 'track', mark: false });
@@ -115,6 +119,7 @@
         }
       }
       if (!codes) bot = c.text(0, bot + 6, K.word('unlabeled_tiles'), { role: 'note', max: W, fill: 'secondary' }).bottom + 4;
+      else if (tight && lost.length) bot = c.text(0, bot + 6, K.word('unlabeled_marks').replace('{codes}', lost.join(', ')), { role: 'note', max: W, fill: 'secondary' }).bottom + 4;
       c.height(bot);
     }
   });

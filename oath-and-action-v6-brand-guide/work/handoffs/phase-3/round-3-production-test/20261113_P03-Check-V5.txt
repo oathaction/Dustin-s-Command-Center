@@ -1,0 +1,4 @@
+PASS P03 county-choropleth: 3144 rows, 4 drawings, 0 faults
+  weight: 12,798 bytes as the guide places it, about 13,548 with its plate's frame; share per plate 13,588 (the guide build of 2026-11-13 06:55:07), ceiling 15,000
+  ~ warning: map: the form prints a national figure beside the map (labels.nation_text) and this spec sets none; entries 14.115 to 14.120 ask for it: print it, or say in a note why the data holds no national row and ask the research lead for one (AX-S6)
+wrote: /tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-second-pass/access-production/designer-out, one folder per spec (its pages, SVG, PNG and CSV exports, captures and check file)
