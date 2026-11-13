@@ -1589,7 +1589,10 @@ async function focusAudit(page, stops) {
 //            animation at 0 ms.
 // tokenTable Chapter 26's table (s-26-token-table) against tokens.json: one row per token, the file's count and version,
 //            every CSS name defined on the page's root, and every swatch drawn in the hex its row prints.
-const CODE_DIRS = [path.join(ROOT, 'work/build/guide/code'), path.join(ROOT, 'work/build/guide/shell/fixtures/code')];
+// R4-5 (round 4): a specimen's keyboard path sits beside it, work/build/guide/specimens/<id>.keys.json, named by its stage's
+// data-oa-keys (the manifest's "keys")
+const CODE_DIRS = [path.join(ROOT, 'work/build/guide/code'), path.join(ROOT, 'work/build/guide/shell/fixtures/code'), path.join(ROOT, 'work/build/guide/specimens')]
+  .concat(process.env.OA_KEYS_DIR ? [path.resolve(process.env.OA_KEYS_DIR)] : []);   // a test's own keys files
 const TOKENS_JSON = path.join(ROOT, 'work/build/tokens/tokens.json');
 const KEY_WIDTHS = [1440, 390];
 
@@ -1672,11 +1675,13 @@ async function keyPaths(browser, file, widths, opts = {}) {
   const pg = await probe.newPage();
   await pg.goto('file://' + file, { waitUntil: 'load' });
   const sets = await pg.evaluate(() => [...document.querySelectorAll('.plate--code[data-code-set]')].map((f) => ({ set: f.getAttribute('data-code-set'), themes: [...f.querySelectorAll('.code-stage[data-code-theme]')].map((s) => s.getAttribute('data-code-theme')) })));
+  // R4-5: a specimen stage that names a keys file is walked once, as it draws (no theme)
+  const specs = await pg.evaluate(() => [...document.querySelectorAll('.plate-stage[data-oa-keys]')].map((st) => ({ set: st.getAttribute('data-oa-keys'), themes: [null], spec: true })));
   await probe.close();
-  const out = { sets: sets.length, withKeys: 0, paths: 0, walks: 0, steps: 0, missing: [], problems: [] };
-  for (const { set, themes } of sets) {
+  const out = { sets: sets.length, specimens: specs.length, withKeys: 0, paths: 0, walks: 0, steps: 0, missing: [], problems: [] };
+  for (const { set, themes, spec } of sets.concat(specs)) {
     const k = keysFor(set);
-    if (!k) { out.missing.push(set); continue; }
+    if (!k) { if (spec) out.problems.push({ set, why: `the stage names keys "${set}", and work/build/guide/specimens/${set}.keys.json does not exist` }); else out.missing.push(set); continue; }
     if (k.error || !k.data || k.data.format !== 'oa-keys/1' || !Array.isArray(k.data.paths)) { out.problems.push({ set, why: `${path.relative(ROOT, k.file)} is not an oa-keys/1 file${k.error ? ': ' + k.error : ''}` }); continue; }
     out.withKeys++;
     for (const p of k.data.paths) {
@@ -1697,7 +1702,7 @@ async function keyPaths(browser, file, widths, opts = {}) {
         await page.evaluate(() => document.fonts.ready);
         if (opts.mutate) await page.evaluate(opts.mutate);
         for (const theme of themes.filter((t) => !p.themes || p.themes.includes(t))) {
-          const stageSel = `.plate--code[data-code-set="${set}"] .code-stage[data-code-theme="${theme}"]`;
+          const stageSel = spec ? `.plate-stage[data-oa-keys="${set}"]` : `.plate--code[data-code-set="${set}"] .code-stage[data-code-theme="${theme}"]`;
           const ok = await page.evaluate((sel) => {
             const st = document.querySelector(sel); if (!st) return false;
             document.querySelectorAll('.oa-keys-start').forEach((b) => b.remove());
@@ -2178,7 +2183,7 @@ async function checkPage(browser, file, widths, opts = {}) {
   if (opts.keys !== false) {
     const kw = KEY_WIDTHS.filter((w) => widths.includes(w));
     const k = await keyPaths(browser, file, kw.length ? kw : [widths[0]], opts);
-    report.keys = { widths: kw, sets: k.sets, withKeys: k.withKeys, paths: k.paths, walks: k.walks, steps: k.steps, missing: k.missing, problems: k.problems.slice(0, 20) };
+    report.keys = { widths: kw, sets: k.sets, specimens: k.specimens, withKeys: k.withKeys, paths: k.paths, walks: k.walks, steps: k.steps, missing: k.missing, problems: k.problems.slice(0, 20) };
     const need = k.missing.filter((x) => /^c-18-/.test(x));
     if (need.length) report.failures.push({ key: 'keyPath', msg: `${need.length} chapter 18 code set(s) with no keys file: ${need.join(', ')}` });
     for (const pr of k.problems) report.failures.push({ key: 'keyPath', msg: `${pr.width || ''}${pr.width ? ' ' : ''}${pr.set}${pr.theme ? ' (' + pr.theme + ')' : ''}${pr.path ? ', "' + pr.path + '"' : ''}${pr.step ? ', step ' + pr.step + (pr.key ? ' (' + pr.key + ')' : '') : ''}: ${pr.why}` });
@@ -2785,7 +2790,7 @@ async function selfTest() {
   if (r0.specimens.exemptions.length) console.log(`  exemptions: ${r0.specimens.exemptions.map((x) => x.specimen + ' (' + x.skips + ')').join(', ')}`);
   console.log(`  fitSwitch: ${report.runs.map((r) => `${r.width} at 1x ${r.fitSwitch.pairs} switches, fit shown in ${r.fitSwitch.fitShown}`).join('; ')}; `
     + `${report.hiDpi.map((h) => `${h.width} at ${h.dpr}x ${h.pairs} switches, master shown in ${h.masterShown}`).join('; ')}`);
-  if (report.keys) console.log(`  keyPath: ${report.keys.withKeys} of ${report.keys.sets} code sets with keys files, ${report.keys.paths} paths, ${report.keys.walks} walks and ${report.keys.steps} steps at ${report.keys.widths.join(' and ')} px`
+  if (report.keys) console.log(`  keyPath: ${report.keys.withKeys} of ${report.keys.sets} code sets and ${report.keys.specimens || 0} specimen stages with keys files, ${report.keys.paths} paths, ${report.keys.walks} walks and ${report.keys.steps} steps at ${report.keys.widths.join(' and ')} px`
     + (report.keys.missing.length ? `; no keys file: ${report.keys.missing.join(', ')}` : ''));
   if (report.motion) console.log(`  motion: ${report.motion.players} moving specimen(s), ${report.motion.reduced.filter((x) => x.finalAtOnce).length} showing the final frame at once under reduced motion; ${report.motion.failurePlates} on failure plates left alone`);
   if (report.redPrussian) console.log(`  redTouchesPrussian: ${report.redPrussian.stages} stages at 1440 px, ${report.redPrussian.captured} captured, ${report.redPrussian.exempt} exempt; Send pressed in ${report.redPrussian.sends} of ${report.redPrussian.forms} form(s)`);

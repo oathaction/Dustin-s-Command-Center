@@ -924,6 +924,10 @@ def plate(kind, spec_id, caption, specs, ctx, where, label=None, rule_id=None, f
     if exempt:
         stage_attrs.append(f'data-check-exempt="{" ".join(exempt)}"')
     stage_attrs.append(f'data-surface="{surf}"')
+    # R4-5 (round 4, the accessibility lead's request 2): a manifest entry's "keys" names a keyboard path file,
+    # work/build/guide/specimens/<keys>.keys.json (oa-keys/1), that guide_check.js walks in this stage
+    if meta.get("keys"):
+        stage_attrs.append(f'data-oa-keys="{e(spec_id if meta.get("keys") is True else str(meta["keys"]))}"')
     alt_html = ""
     if frag is None:
         body = (f'<p class="plate-pending">Specimen <code>{e(spec_id or "(none named)")}</code> is not in '

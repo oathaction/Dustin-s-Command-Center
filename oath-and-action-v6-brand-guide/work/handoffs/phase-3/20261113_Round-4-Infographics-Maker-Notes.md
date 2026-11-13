@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the in
 
 ## Status
 
+- 21:45 UTC. **Built and checked; reporting.** All seven specs PASS the kit build with the sweep on today's kit; the figure check passes; the chapter generator (`--rounds 1,2,3,4`) writes nothing new with 0 faults; a strict build of my own exits 0 with 0 warnings. Applied since 21:34: the design director's DD-I10, DD-I11, DD-I13, DD-I17, DD-I19, DD-I22 to DD-I24 on the engineer's new classes (`oac-h-plain`, `oac-h-k`, `oac-h-limit`, `oac-h-sq`, two-column dates, the shared-row grid), the editor's 21:22 to 21:35 words, MI-7, and held dates in the grade lines. Open, none mine to build: DD-I21 (the engineer's card mode), the data lead's sign-off of S91, S94 and S95 as rebuilt, the editor's ED4-4 and ED4-5 (sidecar variants for the research lead) and its word on S91's title under MI-7, and the accessibility lead's browser tests of the cards. DD-I18 is declined with a reason (below).
 - 21:34 UTC. All seven specs are in the kit. S89 to S94 PASS with the sweep. S95 builds both crops on the dot plot's card mode and fails only on kit items: "no place clear of the dots for Massachusetts 96" (IM-E6, the engineer is building the band) and parity, since the page's card spec drops the grade line the data lead asked for (IM-E8). Applied: the design director's DD-I1 to DD-I3, DD-I5 to DD-I9, DD-I15, DD-I16 and DD-I20; the data lead's MI-1 to MI-7; the editor's first-look words and its S89 eyebrow ruling. Waiting on the engineer for DD-I10 to DD-I14, DD-I17 to DD-I19 (IM-E7 and the director's own kit requests) and the orphan guard (DD-I4), and on the editor's ED4-4 (S89's source line).
 - 21:23 UTC. S89 to S94 built; editor's words and MI-1, MI-2, MI-4 to MI-6 applied.
 - 21:16 UTC. The engineer landed R4-3 and R4-4; the four card forms and their specs moved from scratch into the kit.
@@ -12,15 +13,15 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the in
 
 ## Summary
 
-| Spec | Form | State | Bytes with frame (kit build) |
+| Spec | Form | State | Bytes on the page with its frame (strict build, 21:44 UTC: as placed plus about 750) |
 |---|---|---|---|
-| S89 | `process-explainer` (drawing) | Signed off (21:14); DD-I1 to DD-I3 and DD-I5 applied since, for the director's second read | 10,554 |
-| S90 | `by-the-numbers` (HTML text) | Signed off; MI-3 applied (current spending's exclusions, fall 2023) | 6,410 |
-| S91 | `comparison-cards` (HTML text) | MI-4 and MI-7 applied (the three territories named); the shared-row grid applied (DD-I12, `labels.rows`) | 7,112 |
-| S92 | `step-by-step` (HTML text) | Signed off; DD-I15's bold limit applied | 9,358 |
-| S93 | `annotated-illustration` (drawing) | Signed off whole; DD-I6 to DD-I9 applied, page order with the data lead's yes | 7,383 |
-| S94 | `calendar` (HTML text and one year mark) | MI-5, MI-6, DD-I16 and DD-I20 applied; DD-I17 to DD-I19 wait on the engineer | 12,200 |
-| S95 | `social-data-card` (two crops, 1080 by 1350 and 1080 by 1080) | PASS with the sweep after IM-E6 and IM-E8 landed; S19's grade line beside "Finding"; for the data lead's and the accessibility lead's read | 12,326 |
+| S89 | `process-explainer` (drawing) | Signed off (21:14); passes the director's second read | 10,723 |
+| S90 | `by-the-numbers` (HTML text) | Signed off; MI-3, DD-I10, DD-I11 and DD-I24 applied | 6,451 |
+| S91 | `comparison-cards` (HTML text) | MI-4 and MI-7 applied; shared rows (DD-I12); passes the director's second read | 7,349 |
+| S92 | `step-by-step` (HTML text) | Signed off; DD-I13 and DD-I15 applied | 9,408 |
+| S93 | `annotated-illustration` (drawing) | Signed off whole; DD-I6 to DD-I9 applied; passes the director's second read | 7,549 |
+| S94 | `calendar` (HTML text and one year mark) | MI-5, MI-6, DD-I16, DD-I17, DD-I19 and DD-I20 applied; DD-I18 declined | 12,255 |
+| S95 | `social-data-card` (two crops, 1080 by 1350 and 1080 by 1080) | PASS with the sweep; S19's grade line beside "Finding"; DD-I22 and DD-I23 applied; DD-I21 with the engineer | 12,341 |
 
 Under DR-271 the share and the 15,000-byte line are figures the build reports; every plate above is under both. Entries 14.135 to 14.141 are written; the chapter generator, run with `--rounds 1,2,3,4`, takes all seven in (141 rules, 0 faults). Every figure in a title, note, card or alt is checked by `python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures` (all pass, S89 to S95).
 
@@ -119,11 +120,11 @@ Under DR-271 the share and the 15,000-byte line are figures the build reports; e
 
 ## Tested
 
-- `node work/build/chart-kit/oa-chart.mjs build s89 s90 s91 s92 s93 s94 s95` with the sweep on (every whole width from 256 to 720 px, the guide's columns, both grounds), to my scratch `kit-out`: all seven PASS, 0 faults, last at 21:38 to 21:43 UTC after each change; the whole output read and each spec's check file counted. S95 at both crops, each exactly 1080 by 1350 and 1080 by 1080 px.
+- `node work/build/chart-kit/oa-chart.mjs build s89 s90 s91 s92 s93 s94 s95` with the sweep on (every whole width from 256 to 720 px, the guide's columns, both grounds), to my scratch `kit-out`: all seven PASS, 0 faults, each rebuilt after its last change (the last at 21:43 UTC); the whole output read and each spec's check file counted. S95 at both crops, each exactly 1080 by 1350 and 1080 by 1080 px.
 - Captures looked at as a design director would: every spec at 1440 and 390 px on Newsprint and Charcoal (S94 at 390 in grayscale too); at 296 and 256 px windows on Newsprint (S89, S90, S91, S93, S94) and Charcoal (S89 to S94), which found and fixed S94's year overflowing a 224 px column, S93's lead line crossing its frame (MI-2) and S91's held "Northern Mariana Islands" running past 224 px; S95's four true-pixel PNGs.
 - `python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures`: every figure in S89 to S95's titles, notes, cards, alts and drawn figures checked against its data file (weekdays by `datetime`, shares' rounding, the 677 = 673 + 4 sum, the 16 deadlines on 13 days and the six tax deadlines on five, Mississippi's and Massachusetts's ranks, no party or president on S91); all pass.
 - `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py --rounds 1,2,3,4`: 141 rules, 127 entries, 95 chart plates, 108 examples logged, 0 faults. (A first run without `--rounds` dropped round 4 from the generated chapter, manifest and log; rerunning with `--rounds 1,2,3,4` restored them at once, with only my entries' additions in the diff.)
-- A strict guide build of my own to scratch (`guide_build.py --strict --out .../strict/guide.html`, 21:38 UTC): exit 0, 0 warnings, 11,498,515 bytes; the seven plates as placed: S89 9,929, S90 5,670, S91 6,573, S92 8,618, S93 6,758, S94 11,460, S95 11,591 bytes (each about 750 more with its frame). That build rewrote `plate-share.json`, as every strict build does.
+- Strict guide builds of my own to scratch (`guide_build.py --strict --out .../strict/guide.html`), at 21:38 and again at 21:44 UTC after the last changes: each exit 0, 0 warnings; at 21:44, 11,501,460 bytes, the seven plates as placed S89 9,973, S90 5,701, S91 6,599, S92 8,658, S93 6,799, S94 11,505, S95 11,591 bytes (each about 750 more with its frame). Each strict build rewrote `plate-share.json`, as every strict build does.
 - S93's layout against the page itself: govinfo's PLAW-119publ12.pdf, fetched 20:44 UTC to my scratch `dl-plaw`, page 1 rendered and read with `pdftotext -layout` and `-bbox-layout`.
 - S89's parity fault isolated by builds of three variants: a `typography.hold` on a phrase in the table's row-header column fails parity, the same hold elsewhere passes (IM-E6 item 2).
 
@@ -134,3 +135,19 @@ Under DR-271 the share and the 15,000-byte line are figures the build reports; e
 - The quick guide check (`guide_check.js`): I drew no sketch, and the brief asks it of sketches; not run.
 - Captures at twice size: I looked at the kit's 1x captures and the cards' true-pixel PNGs; the design director reads at 2x.
 - DD-I10, DD-I11, DD-I13, DD-I14, DD-I17 to DD-I19 and the 8 px of DD-I15: not built, waiting on the engineer's kit classes.
+
+## Files
+
+Created (paths relative to `oath-and-action-v6-brand-guide/`):
+- `work/build/chart-kit/forms/process-explainer.js`, `annotated-illustration.js` (drawn forms) and `by-the-numbers.js`, `comparison-cards.js`, `step-by-step.js`, `calendar.js` (card forms under R4-3)
+- `work/build/chart-kit/specs/s89.json` to `s95.json`
+- `work/build/guide/entries/14-135.json` to `14-141.json`
+- `work/build/scripts/phase-3/maker_i_round4_derive.py` (figure checks; it derives no file)
+- this notes file
+
+Modified:
+- `work/build/chart-kit/forms/social-data-card.js` (the round 0 module, redrawn on R4-4)
+- Written by `phase3_ch14_build.py --rounds 1,2,3,4` when my entries landed: `work/build/guide/chapters/14-data-visualization.json`, `work/build/guide/entries/14-example-log.json`, `work/build/guide/specimens/manifest-data-visualization.json`
+- `work/build/chart-kit/plate-share.json`, rewritten by my strict builds, as every strict build does
+
+Scratch only (not in the repository): kit outputs, captures and true-pixel PNGs in `kit-out`, `kit-narrow` and `kit-par`; the strict builds in `strict`; the Public Law 119-12 PDF in `dl-plaw`; the kit mirror used before R4-3 landed in `mirror`.
