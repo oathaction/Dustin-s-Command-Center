@@ -1181,8 +1181,18 @@ def tested_section(G):
                                            'page_bytes': f'{pg.stat().st_size:,}' if pg.exists() else '?'})
                 FIG['guide_check'] = {'file': '[scratch]/' + str(cands[-1].relative_to(SCRATCH.parents[2])), 'checked': J.get('checked'),
                                       'failures': J.get('failures'), 'pass': J.get('pass'), 'page_bytes': pg.stat().st_size if pg.exists() else None}
-                if pg.exists() and G['report'].get('bytes') and pg.stat().st_size != G['report']['bytes']:
+                if not it.get('other_build') and pg.exists() and G['report'].get('bytes') and pg.stat().st_size != G['report']['bytes']:
                     warn(f'the quick guide check ran on {pg.stat().st_size:,} bytes and today’s strict build is {G["report"]["bytes"]:,}')
+        elif kind == 'kit_checks':
+            # the kit's own check files from the closing run, one per chart; the sweep is read from the engineer's notes
+            fs = sorted(SCRATCH.parents[2].glob(it['scratch_glob']))
+            if fs:
+                ok_n = sum(1 for f in fs if not json.loads(f.read_text()).get('faults'))
+                sweep = bool(re.search(it['confirm_pattern'], read(it['confirm_file']) or ''))
+                if not sweep:
+                    warn(f'“{it["label"]}”: {it["confirm_file"]} no longer says the sweep runs in every build')
+                words = fill(it['words'] if sweep else it['words_plain'], {'pass': f'{ok_n:,}', 'n': f'{len(fs):,}'})
+                FIG['kit_close'] = {'glob': '[scratch]/' + it['scratch_glob'], 'check_files': len(fs), 'pass': ok_n, 'sweep': sweep}
         elif kind == 'second_pass':
             rts = FILL.get('second_scores') or []
             got = [r for r in rts if r.get('second_score')]
@@ -1200,13 +1210,14 @@ def tested_section(G):
         else:
             parts = []
             for s in it['sources']:
-                txt = read(s['file']) or ''
+                sp = SCRATCH.parents[2] / s['scratch_file'] if s.get('scratch_file') else None
+                txt = (sp.read_text() if sp and sp.exists() else '') if sp else (read(s['file']) or '')
                 ms = list(re.finditer(s['pattern'], txt))
                 if ms:
                     g = ms[-1].groups()
                     parts.append(re.sub(r'\{(\d)\}', lambda m: f'{int(g[int(m.group(1)) - 1]):,}', s['words']))
                 else:
-                    warn(f'“{it["label"]}”: its figure was not found in {s["file"]}')
+                    warn(f'“{it["label"]}”: its figure was not found in {s.get("file") or "[scratch]/" + s["scratch_file"]}')
             words = '; '.join(parts) if len(parts) == len(it['sources']) else None
         if words is None and kind in ('second_pass', 'rescore'):
             waits.append(it['label'])

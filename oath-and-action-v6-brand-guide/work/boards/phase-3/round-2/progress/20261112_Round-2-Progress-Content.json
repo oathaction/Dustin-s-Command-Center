@@ -203,7 +203,7 @@
    "n": 10,
    "nav": "Tested and not tested",
    "title": "Tested and not tested",
-   "lede": "What the studio checked on round 2, kept apart from what it did not. Each figure is read from the file that records it.",
+   "lede": "What the studio checked on round 2’s closing build, kept apart from what it did not. Each figure is read from the file that records it.",
    "tested_h": "Tested",
    "not_h": "Not tested",
    "tested": [
@@ -216,31 +216,31 @@
     {
      "label": "The quick guide check",
      "kind": "guide_check",
-     "scratch_glob": "phase-3/round-2-review/main/quick/*Guide-Check-Results.json",
+     "scratch_glob": "phase-3/round-2-close/quick/*Guide-Check-Results.json",
      "words": "at {widths} px, on a build of {page_bytes} bytes: {failures} failures"
     },
     {
      "label": "The four-width guide check",
      "kind": "guide_check",
+     "other_build": true,
      "scratch_glob": "phase-3/round-2-review/main/full/*Guide-Check-Results.json",
-     "words": "at {widths} px, on a build of {page_bytes} bytes: {failures} failures"
+     "words": "at {widths} px, on the review’s build of {page_bytes} bytes, before the fix pass: {failures} failures"
     },
     {
      "label": "The chart kit’s build of every chart",
-     "sources": [
-      {
-       "file": "work/handoffs/phase-3/20261112_Round-2-Engineer-Notes.md",
-       "pattern": "`build --all --no-png`[^\\n]{0,60}?(\\d+) check files counted, (\\d+) pass",
-       "words": "{2} of {1} charts pass, checked without pictures"
-      }
-     ]
+     "kind": "kit_checks",
+     "scratch_glob": "phase-3/round-2-close/kit/*/*-check.json",
+     "confirm_file": "work/handoffs/phase-3/20261112_Round-2-Engineer-Notes.md",
+     "confirm_pattern": "the width sweep[^\\n]{0,40}It runs in `build` and `check` by default",
+     "words": "{pass} of {n} charts pass, each drawn at every width from a phone to a desk column",
+     "words_plain": "{pass} of {n} charts pass"
     },
     {
      "label": "The data check",
      "sources": [
       {
-       "file": "work/handoffs/phase-3/20261112_Round-2-Research-Notes.md",
-       "pattern": "data check reads (\\d+) tables with (\\d+) faults",
+       "scratch_file": "phase-3/round-2-close/close.log",
+       "pattern": "work/build/data: (\\d+) tables, (\\d+) faults",
        "words": "{1} tables, {2} faults"
       }
      ]
