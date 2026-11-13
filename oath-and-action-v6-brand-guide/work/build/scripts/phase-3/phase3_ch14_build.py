@@ -257,7 +257,7 @@ def outputs(rounds):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--rounds", default="1,2", help="the rounds built, as a comma list (default 1,2: round 2 is being built)")
+    ap.add_argument("--rounds", default="1,2,3", help="the rounds built, as a comma list (default 1,2,3: round 3 is being built, DR-253)")
     ap.add_argument("--check", action="store_true")
     a = ap.parse_args()
     rounds = {int(x) for x in a.rounds.split(",")}

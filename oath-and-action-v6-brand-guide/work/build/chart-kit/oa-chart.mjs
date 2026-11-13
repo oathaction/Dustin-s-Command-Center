@@ -1041,6 +1041,20 @@ async function self_test() {
       const bad = drawn(c => { c.rect(0, 0, 200, 40, { fill: 'seq-5', data: { key: 'a' } }); c.text(10, 26, 'OK', { fill: 'label' }); });
       pass(!ok1.f.length && bad.f.some(x => /forced colors/.test(x)) && C.role_color('on-seq-5', TOK.newsprint) && C.contrast(C.role_color('on-seq-5', TOK.newsprint), C.role_color('seq-5', TOK.newsprint)) >= 4.5,
         "round 3: a step's label ink reads on its step, in forced colors too" + (ok1.f.length ? ': ' + ok1.f[0] : '')); }
+    { // R3-2: the layers decode to their features; names sit inside or in the eastern column, none on a dark fill; dots are
+      // the same at every call and every width; a place projects inside its county
+      const Ls = K.geo('states'), Lc = K.geo('counties'), Lca = K.geo('counties-ca'), code = {};
+      Object.keys(globalThis.OAChartGeo.tiles).forEach(k => { code[globalThis.OAChartGeo.tiles[k][2]] = k; });
+      let lab = null;
+      const a = drawn(c => { const T = P.map_fit(c, Ls, { w: c.width - 44 }); const it = Ls.ids.map((id, i) => ({ id, fill: 'seq-' + (1 + (i % 5)) }));
+        P.map_shapes(c, Ls, T, it); P.map_mesh(c, Ls, T, {}); P.map_insets(c, Ls, T);
+        lab = P.map_labels(c, Ls, T, it.map(x => ({ id: x.id, words: code[x.id], fill: 'on-' + x.fill }))); c.height(T.h); }, 720);
+      const dots = w => { let d = null; drawn(c => { const T = P.map_fit(c, Lc, {}); d = P.map_dots(c, Lc, T, { '06037': 4500000, '36061': 2400000, '99999': 5 }, { per: 10000, seed: 7 }); c.height(T.h); }, w); return d; };
+      const d1 = dots(720), d2 = dots(720), d3 = dots(400);
+      const ki = Lca.index['06029'], li = K.geo.project(Lca, -118.48261, 35.637098);
+      pass(Ls.ids.length === 51 && Lc.ids.length === 3144 && !a.f.length && lab.inside.length + lab.beside.length === 51 && d1.dots === 690 && d2.dots === d1.dots && d3.dots === d1.dots && d1.skipped.join() === '99999'
+        && Lca.rings(ki).some(rs => K.in_poly(rs, li[0], li[1])),
+        'R3-2: layers decode, names sit inside or in the eastern column, dots repeat at every width, a place lands in its county' + (a.f.length ? ': ' + a.f[0] : '') + (lab ? ` (${lab.inside.length} inside, ${lab.beside.length} beside)` : '')); }
     { // RB3-G1: two bands side by side at one height lie on the ground; a band inside a wider one across and down lies on it
       const side = drawn(c => { P.flow_band(c, 10, 10, 150, 10, 40, { fill: 'light-fill' }); P.flow_band(c, 200, 10, 340, 10, 40, { fill: 'light-fill' }); });
       const held = drawn(c => { P.flow_band(c, 10, 10, 340, 10, 60, { fill: 'light-fill' }); P.flow_band(c, 60, 20, 300, 20, 20, { fill: 'light-fill' }); });
