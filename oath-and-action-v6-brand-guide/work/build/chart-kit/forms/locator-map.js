@@ -98,9 +98,12 @@
       };
       var kbx = [Infinity, Infinity, -Infinity, -Infinity];
       polys.forEach(function (rs) { rs[0].forEach(function (q) { kbx[0] = Math.min(kbx[0], q[0]); kbx[1] = Math.min(kbx[1], q[1]); kbx[2] = Math.max(kbx[2], q[0]); kbx[3] = Math.max(kbx[3], q[1]); }); });
-      ['label', 'tick'].forEach(function (role) {
+      var klines = [L.county_label], ksp = String(L.county_label).lastIndexOf(' ');
+      [['label', 1], ['tick', 1], ['tick', 2]].forEach(function (rl) {
         if (kpick) return;
-        var kb0 = c.text_box(0, 0, L.county_label, { role: role, weight: 600, anchor: 'middle' }), best = null;
+        var role = rl[0], two = rl[1] === 2 && ksp > 0, ws = two ? [L.county_label.slice(0, ksp), L.county_label.slice(ksp + 1)] : [L.county_label];
+        var bs = ws.map(function (w) { return c.text_box(0, 0, w, { role: role, weight: 600, anchor: 'middle' }); }), lh2 = Math.round(c.size(role) * 1.2);
+        var kb0 = { w: Math.max.apply(null, bs.map(function (b) { return b.w; })), h: bs[0].h + (ws.length - 1) * lh2, y: bs[0].y }, best = null;
         for (var gx = kbx[0] + kb0.w / 2; gx <= kbx[2] - kb0.w / 2; gx += 2) for (var gy = kbx[1]; gy <= kbx[3]; gy += 2) {
           var g = { x: gx - kb0.w / 2 - 2, y: gy + kb0.y - 2, w: kb0.w + 4, h: kb0.h + 4 };
           if (!pts.every(function (p) { return p.x + p.r + 4 < g.x || p.x - p.r - 4 > g.x + g.w || p.y + p.r + 4 < g.y || p.y - p.r - 4 > g.y + g.h; })) continue;
@@ -108,15 +111,19 @@
           var dd = Math.hypot(gx - cp[0], gy - cp[1]);
           if (!best || dd < best[2]) best = [gx, gy, dd];
         }
-        if (best) { kpick = [best[0], best[1]]; krole = role; }
+        if (best) { kpick = [best[0], best[1]]; krole = role; klines = ws; kpick.lh = lh2; }
       });
       var kt;
-      if (kpick) kt = c.text(kpick[0], kpick[1], L.county_label, { role: krole, weight: 600, anchor: 'middle' });
+      var kts = [];
+      if (kpick) {
+        klines.forEach(function (w, li) { kts.push(c.text(kpick[0], kpick[1] + li * (kpick.lh || 0), w, { role: krole, weight: 600, anchor: 'middle' })); });
+        kt = kts[0];
+      }
       else {
         var lowest = 0; polys.forEach(function (rs) { rs[0].forEach(function (q) { lowest = Math.max(lowest, q[1]); }); });
         kt = c.text(cp[0], lowest + 16, L.county_label, { role: 'label', weight: 600, anchor: 'middle', halo: true });
       }
-      var pl = K.parts.place_labels(c, pts.map(function (p) { return { x: p.x, y: p.y, r: p.r, words: p.words, weight: p.weight }; }), { role: 'label', reach: [8, 18, 30], avoid: [kt] });
+      var pl = K.parts.place_labels(c, pts.map(function (p) { return { x: p.x, y: p.y, r: p.r, words: p.words, weight: p.weight }; }), { role: 'label', reach: [8, 18, 30], avoid: kts.length ? kts : [kt] });
       if (pl.unplaced.length) c.warn('places with no room for a name: ' + pl.unplaced.map(function (u) { return u.words; }).join(', '));
       if (L.state_label) {
         var sp = T.pt(K.geo.project(C, -120.6, 38.6));

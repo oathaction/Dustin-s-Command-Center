@@ -393,6 +393,7 @@ November 13, 2026, round 3's review fix pass, under `work/handoffs/phase-3/20261
 - 04:45. **The six older avoid entries' "Use it when"** (14.24, 14.45, 14.57, 14.73, 14.91, 14.92, finished owners) now open "No reader’s question calls for it." in place of "Never: a reader …", so the form AX-S8 asks of 14.124 holds for all seven; 14.124's own words are handed to the cartographer.
 - 04:50. **Handed words** for maker A, maker B and the cartographer below, with call 9 (A-S3, B-S4) for S66, S68, S71 and S77, the BC items (BC-M1's interim title, BC-S9, BC-S10, BC-S11, BC-S13) and the CD, AX and ST items whose words are mine. **Call 5's draft held** below.
 - 04:58. S65's note words (BC-S9) revised to the sources the research lead added to the CMS sidecars, at the main session's word.
+- 05:00. Noted at the main session's word: the engineer's `{data_file}` token prints `words.json`'s one `data_file` string in captions and notes. When Dustin answers where a chart's full data lives (call 3), I rewrite each download line with `{data_file}`; until then the lines stand (D3-1321).
 - 04:47 to 04:57. Rules generator, chapter build, strict build (`guide1.html`, exit 0, 0 warnings) and captures at 1440, 1024, 390 and 360 px; see "Tested, review fix pass". **My own items are done; waiting on the makers to report.**
 
 ### Words for maker A, review fix pass (handed 04:50 UTC; maker A applies until it reports finished)
