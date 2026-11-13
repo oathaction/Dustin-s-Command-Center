@@ -38,6 +38,10 @@
    "value": "Once, in the measure line"
   },
   {
+   "label": "A state on a map",
+   "value": "Its two-letter code on or beside its shape, with a leader for a small state, and its full name in the table"
+  },
+  {
    "label": "A key",
    "value": "Only for a code no label can carry, under the measure line, in the order the marks run (Rule 12.6)"
   }

@@ -12,7 +12,8 @@ and writes, in work/build/data/:
   monthly change in total payrolls with its three-month average), each naming its source file and method;
   six Atlas V7 tables (v7-*.json) for S01, S03, S06, S08, S09 and S10.
 The retired disclosure (DR-100, D2-1756) is dropped: no sidecar carries it or a required_text that holds it.
---check reads the folder back and fails on any contract fault; it writes nothing.
+--check reads the folder back and fails on any contract fault; it writes nothing. Since round 3 (R3-2) it reads boundary
+files too: a .geojson file in R1-C7's shape (check_geojson below) with its sidecar's extra fields.
 """
 import collections
 import csv
@@ -729,6 +730,84 @@ def v7_tables():
 # ---------------------------------------------------------------------------------------------------------------
 # The check: every file in the folder against the contract
 # ---------------------------------------------------------------------------------------------------------------
+# R1-C7 (round 1) and R3-2 (round 3): a boundary file's sidecar names these beside C1's fields, and its features carry
+# exactly the properties its columns list, geoid first
+GEO_REQUIRED = ('geometry_type', 'source_resolution', 'raw_file', 'raw_file_sha256', 'feature_count', 'coordinates')
+GEOID_DIGITS = {2, 4, 5, 7}
+
+
+def check_geojson(dp, m):
+    """A boundary file under R1-C7: an RFC 7946 FeatureCollection in UTF-8 with no byte-order mark; one Feature per
+    place, sorted by geoid, a Polygon or MultiPolygon; properties exactly the sidecar's columns (geoid, code, name, and
+    district on districts); longitude and latitude in range with at most six decimals; every ring closed, of four points
+    or more; no bbox and no id outside properties; the count the sidecar gives. Returns faults."""
+    faults = []
+    raw = dp.read_bytes()
+    if raw.startswith(b'\xef\xbb\xbf'):
+        faults.append(f'{dp.name}: starts with a byte-order mark')
+    try:
+        gj = json.loads(raw.decode('utf-8'))
+    except Exception as ex:
+        return [f'{dp.name}: does not parse as UTF-8 JSON ({ex})']
+    for k in GEO_REQUIRED:
+        if k not in m or m[k] in (None, ''):
+            faults.append(f'{dp.name}: its sidecar lacks {k} (R1-C7)')
+    if gj.get('type') != 'FeatureCollection' or not isinstance(gj.get('features'), list):
+        return faults + [f'{dp.name}: not a FeatureCollection']
+    if 'bbox' in gj:
+        faults.append(f'{dp.name}: carries a bbox (R1-C7 leaves it out)')
+    feats = gj['features']
+    if m.get('feature_count') != len(feats):
+        faults.append(f'{dp.name}: {len(feats)} features, but the sidecar says {m.get("feature_count")}')
+    cols = list((m.get('columns') or {}).keys())
+    if cols[:1] != ['geoid']:
+        faults.append(f'{dp.name}: the sidecar\'s first column is not geoid')
+    ids, bad = [], 0
+    dec6 = re.compile(r'^-?\d+(?:\.\d{1,6})?$')
+    for i, f in enumerate(feats):
+        where = f'{dp.name}: feature {i + 1}'
+        if f.get('type') != 'Feature' or 'id' in f or 'bbox' in f:
+            faults.append(f'{where} is not a plain Feature (no id or bbox outside properties)')
+        pr = f.get('properties') or {}
+        if list(pr.keys()) != cols:
+            faults.append(f'{where}: properties {list(pr.keys())} differ from the sidecar\'s columns {cols}')
+        gid = str(pr.get('geoid', ''))
+        if not (gid.isdigit() and len(gid) in GEOID_DIGITS) and gid != 'US':
+            faults.append(f'{where}: geoid {gid!r} is not the Bureau\'s digits')
+        if 'code' in pr and not re.fullmatch(r'[A-Z]{2}', str(pr['code'])):
+            faults.append(f'{where}: code {pr["code"]!r} is not a USPS code')
+        ids.append(gid)
+        g = f.get('geometry') or {}
+        if g.get('type') not in ('Polygon', 'MultiPolygon'):
+            faults.append(f'{where}: geometry {g.get("type")!r} is not a Polygon or MultiPolygon')
+            continue
+        polys = g['coordinates'] if g['type'] == 'MultiPolygon' else [g['coordinates']]
+        for poly in polys:
+            for ring in poly:
+                if len(ring) < 4 or ring[0] != ring[-1]:
+                    bad += 1
+                    if bad <= 3:
+                        faults.append(f'{where}: a ring is open or has under four points')
+                for pt in ring:
+                    if len(pt) != 2 or not (-180 <= pt[0] <= 180 and -90 <= pt[1] <= 90):
+                        bad += 1
+                        if bad <= 3:
+                            faults.append(f'{where}: a point {pt} is not a longitude and latitude')
+                        break
+        if i < 40 or i % 97 == 0:
+            # the six-decimal rule, read from the file's own text for a sample of features (json.loads drops the text)
+            txt = json.dumps(g['coordinates'][:1])
+            for num in re.findall(r'-?\d+\.\d+(?:e-?\d+)?', txt):
+                if not dec6.match(num):
+                    faults.append(f'{where}: a coordinate {num} carries more than six decimals')
+                    break
+    if ids != sorted(ids):
+        faults.append(f'{dp.name}: features are not sorted by geoid')
+    if len(set(ids)) != len(ids):
+        faults.append(f'{dp.name}: a geoid appears twice')
+    return faults
+
+
 def load_rows(p):
     if p.suffix == '.csv':
         return read_csv(p), None
@@ -767,12 +846,12 @@ def check_derived(out=OUT):
 def check_folder(out=OUT):
     faults = check_derived(out)
     metas = sorted(out.glob('*.meta.json'))
-    datas = sorted(p for p in out.iterdir() if p.suffix in ('.csv', '.json') and not p.name.endswith('.meta.json'))
+    datas = sorted(p for p in out.iterdir() if p.suffix in ('.csv', '.json', '.geojson') and not p.name.endswith('.meta.json'))
     for p in out.iterdir():
         if p.is_dir():
             faults.append(f'{p.name}: the folder is flat; no subfolders')
-        elif not (p.suffix in ('.csv', '.json')):
-            faults.append(f'{p.name}: only .csv, .json and .meta.json files belong here')
+        elif not (p.suffix in ('.csv', '.json', '.geojson')):
+            faults.append(f'{p.name}: only .csv, .json, .geojson and .meta.json files belong here')
     named = set()
     for mp in metas:
         name = mp.name[:-len('.meta.json')]
@@ -812,6 +891,13 @@ def check_folder(out=OUT):
         dp = out / m.get('file', '')
         if not dp.is_file():
             faults.append(f'{mp.name}: its data file {m.get("file")} is missing')
+            continue
+        if dp.suffix == '.geojson':
+            # R1-C7: a boundary file, public, named census-cb-<year>-..., read as shapes rather than rows
+            named.add(dp.name)
+            if m.get('kind') != 'public' or not name.startswith('census-cb-'):
+                faults.append(f'{mp.name}: a boundary file is kind public and named census-cb-<year>-<set>')
+            faults.extend(check_geojson(dp, m))
             continue
         if (dp.suffix == '.json') != name.startswith('v7-'):
             faults.append(f'{mp.name}: V7 tables are v7-*.json and only they are JSON')

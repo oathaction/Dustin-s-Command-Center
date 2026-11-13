@@ -1,0 +1,56 @@
+{
+ "kit": 1,
+ "id": "S77",
+ "form": "journey-map",
+ "family": "flow",
+ "tier": "core",
+ "dataset": "govinfo-snap-application-steps",
+ "reader_question": "What happens after someone applies for SNAP food benefits, and how long can each step take?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: the text of 7 CFR 273.2, as in force on November 9, 2026",
+ "title": "The federal SNAP rule gives a state 30 days from an application to a decision, and 7 days for a household with very little income or cash; these are the rule’s limits, not measured waits.",
+ "measure_line": "Steps from a SNAP application to a decision, with the longest time the federal rule allows for each, 7 CFR 273.2 as in force November 9, 2026, United States",
+ "notes": [
+  "SNAP, the Supplemental Nutrition Assistance Program, helps households buy food. States run it within these federal rules; a state may move faster, and some miss the limits.",
+  "The interview may be held by phone, and the rule lets a state waive it in some cases."
+ ],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "Four steps in order, each a box with who acts and the time the rule allows: file an application, taken the same day; an interview; send proof, with at least 10 days to do it; and a decision within 30 days of filing. A branch from filing leads to expedited service, benefits within 7 days, for a household with very little income or cash.",
+ "table": {
+  "caption": "Steps from a SNAP application to a decision under 7 CFR 273.2, in reading order",
+  "columns": [
+   {"field": "step", "label": "Step", "format": "text", "row_header": true},
+   {"field": "who_acts", "label": "Who acts", "format": "text"},
+   {"field": "time_limit", "label": "Longest time the rule allows", "format": "text", "empty": "No limit set"},
+   {"field": "what_happens", "label": "What happens", "format": "text"},
+   {"field": "legal_basis", "label": "Provision", "format": "text"}
+  ]
+ },
+ "phone": "differs",
+ "phone_note": "On a phone the steps read down the page, and the expedited branch follows the last step, its line running down the right edge from the first step.",
+ "artboard": "reading",
+ "domain": "D04",
+ "states": [],
+ "encode": {
+  "step": "step",
+  "path": "path",
+  "key": "order",
+  "who": "who_acts",
+  "limit": "time_limit"
+ },
+ "labels": {
+  "limits": {
+   "1": "Taken the same day",
+   "2": "No day set in the rule",
+   "3": "At least 10 days to send it",
+   "4": "Within 30 days of filing, the rule’s limit",
+   "5": "Within 7 days of filing, the rule’s limit"
+  },
+  "branch_label": "For a household with very little income or cash"
+ },
+ "notes_internal": [
+  "Maker B, round 3. Data plan row 102, rule 14.112. Draft words."
+ ]
+}

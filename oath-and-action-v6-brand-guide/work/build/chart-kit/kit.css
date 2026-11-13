@@ -203,3 +203,5 @@
 .oac-phone-k { margin: 0 0 10px; font: var(--oa-font-weight-semibold) 14px/20px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); }
 @container (max-width: 479px) { .oac-art-phone { display: none; } }
 .oac-fig[data-oa-phone-form] .oac-art-phone { display: none; }   /* RS-S3: the figure already draws its phone form */
+/* R3-2 (round 3): a dot density map's dots, one path of zero-length strokes with round ends (K.parts.map_dots) */
+.oac-svg .oac-dots { stroke-linecap: round; }

@@ -23,8 +23,22 @@ What round 2's words pass found most often, so you can write it right the first 
 ## Summary
 
 - 00:50. Started. Read my role file, `CLAUDE.md`, chapter 02's writing rules, the round 3 brief and my round 2 notes. A rerun of `phase3_ch14_rules_build.py` before any change leaves `git status` clean. No round 3 spec, entry or sketch exists yet; the data lead's "Rulings" are in progress.
+- 01:15. **The data lead's rulings (a) to (g) are in rules 14.1 to 14.14**, each case once, in `phase3_ch14_rules_build.py`, which rewrote `14-003`, `14-004`, `14-006`, `14-007`, `14-009`, `14-012` and the opener (group 15 now links, since 14.114 exists). No plate, drawing or caption changed. The cases and where each now lives are under "Rules 14.1 to 14.14" below. Entries cite these rules for them and never restate them.
+- 00:55. First look at the cartographer's entries 14.114 to 14.116, under "Words for the cartographer".
 
 ## Routine calls
+
+- D3-xxx | Rule 14.6 takes a third paragraph: a diagram or map that answers with its whole path or pattern names no single mark; the followed path in Charcoal at the subject weight and the branches in the context ink, one ink for every branch where the reader's case picks the path, and on a map only a place named as a point may take the red; spec row "A diagram’s path" | The data lead's principles 1 and 2 and ruling (a) for S79; one case to a paragraph, as CD R-S1 asked of this rule
+- D3-xxx | Rule 14.6's 5 percent sentence becomes the area case: a named area takes Charcoal at any size (a part of a treemap, pie, donut or funnel, a region on a map, a node, a cell of a matrix, or a line or band whose width carries an amount), and a tall column in a short run keeps the share test; the spec row reads "A named area, or past 5 percent of the drawing" | Principles 2 and 3, RF-1's area rule (D3-916, D3-970); the rule said "would pass that share" for areas, and the ruling says outright
+- D3-xxx | Rule 14.6's "Red never" line adds "or in a process" to "a step on a scale" | Principle 1: red on one step or branch would code it
+- D3-xxx | Rule 14.6 adds the spec row "A total or national figure elsewhere": an open ring as a point, the first row set apart in a list, beside a map with its name and value, outside every region; the approved row for the line stays as worded | Ruling (b), "National figure", with the brief's call 4; ten map entries would otherwise each restate it
+- D3-xxx | Rule 14.4 adds widths: a line or band whose width stands for an amount takes one unit across the drawing with a key, a line too thin at that unit drawn as a keyed hairline; related adds 14.110 | Principle 3 and ruling (b) for S73, S75 and S76; it is the same promise as a circle sized by area
+- D3-xxx | Rule 14.3 adds the spec row "A state on a map": its code on or beside its shape, a leader for a small state, the full name in the table | Ruling (b), "State names", for every map
+- D3-xxx | Rule 14.7 lets place include a party's own panel, and adds the spec row "Seats on a map" | Ruling (b) for S80 and S82, with its routine call under DR-58
+- D3-xxx | Rule 14.9 takes a second paragraph on class maps (the three tests and the county case) and two spec rows; related adds 14.117 and 14.120 | Ruling (c): "a choropleth meets Rule 14.9 by three tests"
+- D3-xxx | Rule 14.12's list of reasons to redraw adds marks too small or too crowded to read, as dots on a dot map, and each dot then stands for a larger count | The routine call for S83's phone drawing; the rule's "only when it must" list would otherwise leave S83 and S82 outside it
+- D3-xxx | Rule 14.5 takes no case for four classes on steps 1, 3, 4 and 5 | The heat table (S37, board 1) draws four classes on steps 2 to 5, so the step choice stays per spec as ruling (b) gives it
+- D3-xxx | No plate, drawing or caption of rules 14.1 to 14.14 changes for these cases | Each case is words in the rule and its spec rows; the plates' findings and inks still hold
 
 ## Group lines 11 to 15
 
@@ -32,7 +46,23 @@ What round 2's words pass found most often, so you can write it right the first 
 
 ## Rules 14.1 to 14.14
 
-(Any case the data lead's round 3 rulings add.)
+The data lead's rulings (`20261113_Round-3-Data-Lead-Notes.md`, "Rulings", "How the test runs this round" and (b) to (c)) add these cases. Each now sits once in its rule; an entry that needs one cites the rule by number, as "(Rule 14.6)", and gives no reason of its own. **Makers and the cartographer: please cite, never restate.**
+
+| Rule | Case the ruling adds | Where it now sits | Ruling |
+|---|---|---|---|
+| 14.6 | A diagram or a map that answers with its whole path or pattern names no single mark; in a process the followed path takes Charcoal at the subject weight and the branches the context ink; where the reader's own case picks the path, as in a decision tree, every branch takes one ink; on a map only a place named as a point, such as a town, may take the red | Third paragraph (new), spec row "A diagram’s path", builders line ("a diagram or map that names no mark sets neither") | Principles 1 and 2; (a) for S79 |
+| 14.6 | A named area takes Charcoal at any size: a part of a treemap, pie, donut or funnel, a region on a map, a node, a cell of a matrix, or a line or band whose width carries an amount, such as a flow | Last paragraph; spec row "A named area, or past 5 percent of the drawing" | Principles 2 and 3 (RF-1's area rule, D3-916); (a) for S65, S75, S76 |
+| 14.6 | Red never codes a step in a process | "Red never" sentence and spec row | Principle 1 |
+| 14.6 | A total or national figure as a point (an open ring), in a list (the first row, set apart) and on a map (beside it with its name and value, outside every region) | Spec row "A total or national figure elsewhere", beside the approved line row | (b) "National figure", the brief's call 4 |
+| 14.4 | A line or band whose width stands for an amount takes one unit across the whole drawing, with a key; a line too thin to see at that unit draws as a hairline the key names | Second paragraph; spec row "Widths" | Principle 3; (b) for S73, S75, S76 |
+| 14.3 | A state on a map takes its two-letter code on or beside its shape, with a leader for a small state, and its full name in the table | Spec row "A state on a map" | (b) "State names" |
+| 14.7 | Party by place includes a party's own panel; seats on a map take one panel per party, named with the seats it won, each seat filled in its winner's panel and its margin in gray steps | First paragraph ("or in its party’s own panel"); spec row "Seats on a map" | (b) for S80 and S82 |
+| 14.9 | A class map ranks survey figures too: each class at least as wide as the widest margin drawn, places two classes apart differing by more than their gap's margin, a note counting places whose interval crosses a class line, and, where small places' margins outrun any class, a note saying how many could fall in another class with no place set above another unless its gap passes | Second paragraph (new); spec rows "Classes on a map" and "A class map’s note"; related adds 14.117 and 14.120 | (c) |
+| 14.12 | A phone drawing may change when marks grow too small or too crowded to read, as dots on a dot map do, and then each dot stands for a larger count | First paragraph; spec row "A new form" | (b) and the routine call for S83; (f)'s small tiles on S82 |
+
+Left out on purpose: ruling (b)'s four sequential steps 1, 3, 4 and 5 for four classes. Rule 14.5 does not take it as a general case, because the heat table (S37, a board 1 drawing) draws its four classes on steps 2 to 5; the choice stays per spec, as the ruling gives it.
+
+Weight: see "Tested".
 
 ## Words for maker A
 
@@ -46,7 +76,7 @@ What round 2's words pass found most often, so you can write it right the first 
 
 ### First look (00:55): entries 14.114 to 14.116
 
-Read against S07, S12 and S16 as board 1 approved them. The cartographer applies these; a later read follows once the data lead's rulings land, since one of them may set where the national figure on a map is stated.
+Read against S07, S12 and S16 as board 1 approved them, and again at 01:15 against the data lead's rulings, which now sit in rules 14.1 to 14.14 (above). The cartographer applies these.
 
 | File | Field | Old words | New words | Why |
 |---|---|---|---|---|
@@ -54,11 +84,12 @@ Read against S07, S12 and S16 as board 1 approved them. The cartographer applies
 | 14-114 | why.text.0 | large and empty states take most of the page | large, thinly settled states take most of the page | "Empty" overstates (W20) and reads as a judgment of the place |
 | 14-115 | rule.0 | Give each state one square holding a flat arrow whose length follows its shift on one scale across the map, | Give each state one square holding an arrow that points the way the measure moved, its length set by the shift on one scale across the map, | "Flat arrow" leaves the reader to guess what flat means; S12's arrows point the way the margin moved |
 | 14-115 | rule.0 | Name the direction in words in the key, as “toward the Republican nominee”, and draw every party in neutral ink (Rule 14.7). | Name the direction in words in the key, as “toward the Republican nominee”, so no color stands for a party (Rule 14.7). | S12 draws no party mark: its arrows carry the direction and the key's words name it |
-| 14-115 | rule.0 | Set the national figure beside the key with its own label and arrow, never as a square, and frame | Set the national figure beside the key, outside the grid of states, with its own label and arrow, and frame | W09: say where it sits, with no "never" turn |
-| 14-116 | rule.0 | and name each one by its code, inside the circle where it fits and beside it, with a leader where needed, where it does not. | and print each state’s code inside its circle, or beside it with a leader where the circle is too small to hold it. | Two "where" clauses in a row; one plain sentence says the same |
+| 14-115 | rule.0 | Set the national figure beside the key with its own label and arrow, never as a square, and frame | Set the national figure beside the key with its own label and arrow (Rule 14.6), and frame | Rule 14.6 now holds the national figure on a map ("beside it with its name and value, outside every region"); the entry cites it, with no "never" turn (W09) |
+| 14-116 | rule.0 | and name each one by its code, inside the circle where it fits and beside it, with a leader where needed, where it does not. | and print each state’s code inside its circle, or beside it with a leader where the circle is too small to hold it (Rule 14.3). | Two "where" clauses in a row; one plain sentence says the same, and Rule 14.3 now holds a state's code on a map |
+| 14-116 | rule.0 | Mark the national rate on the step key with its label, apart from the circles on the map. | Mark the national rate on the step key with its label (Rule 14.6). | Rule 14.6 holds the national figure on a map; cite it |
 | 14-116 | why.text.0 | A shaded state lets its land speak for it, so a large, empty state outweighs a small, crowded one. | On a map of shaded states, land sets how much of the page each state takes, so a large state with few people outweighs a small, crowded one. | "Lets its land speak for it" is a figure of speech a listener has to decode (W01); "empty", as in 14.114 |
 
-Read and kept: the three titles; 14.114's use_when, use_instead and builders; 14.115's phone paragraph (Rule 14.12) and why; 14.116's use_when, use_instead, builders, and its "Mark the national rate on the step key with its label, apart from the circles on the map".
+Read and kept: the three titles; 14.114's use_when, use_instead and builders; 14.115's phone paragraph (Rule 14.12) and why; 14.116's use_when, use_instead and builders.
 
 **For S16's move to the 2024 outlines (R3-4):** its note 4 names the old file, "Map: U.S. Census Bureau cartographic boundary files (2017), via us-atlas 3.0.1 by Mike Bostock (ISC license)." Once S16 draws the 2024 file, that note names the 2024 file in the research lead's sidecar words, with no us-atlas credit, or the note says something untrue. Its other words stay, as the brief asks, unless a check fails.
 

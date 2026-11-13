@@ -701,6 +701,8 @@ def rule_14_3(B):
         [("A line", "Its name beside it, toward its last point, in the label ink", "oa.chart.color.label.onNewsprint"),
          ("A bar", "Its value at its end, its name beside it"),
          ("Units", "Once, in the measure line"),
+         # round 3, the data lead's ruling (b) for maps
+         ("A state on a map", "Its two-letter code on or beside its shape, with a leader for a small state, and its full name in the table"),
          ("A key", "Only for a code no label can carry, under the measure line, in the order the marks run (Rule 12.6)")],
         ["12.6", "13.7"],
         "Name each series in the spec’s labels.series; the kit sets the names at the line ends and warns when one cannot fit.",
@@ -759,14 +761,19 @@ def rule_14_4(B):
         ["Draw an amount at its true size. Bars and columns start at zero, because a reader compares their lengths. A line may start above "
          "zero when the change is the point, with the axis labeled where it starts.",
          "Each axis keeps one scale, so two measures take two panels side by side rather than a second axis on the right. A circle that "
-         "stands for an amount takes its area from the value, so its radius grows with the square root of the value."],
+         "stands for an amount takes its area from the value, so its radius grows with the square root of the value. A line or band whose "
+         "width stands for an amount, as in a network or a flow, takes one unit across the whole drawing, with a key, so twice the width "
+         "means twice the amount."],
         [f"Readers judge a bar by its length before they read its number. Cut the axis at {cut} percent and {y_hi}’s {fmt1(hi)} percent "
          f"stands {ratio:.1f} times as tall as {y_lo}’s {fmt1(lo)}, for a gap of {fmt1(hi - lo)} points."],
         [("Bars and columns", "From a zero line drawn at the baseline weight", "oa.chart.line.baseline"),
          ("A line", "May start above zero, with the axis labeled at its start"),
          ("Two measures", "Two panels on two scales, side by side"),
-         ("Circles", "Area in proportion to the value, so the radius follows its square root")],
-        ["14.23", "14.29"],
+         ("Circles", "Area in proportion to the value, so the radius follows its square root"),
+         # round 3, the data lead's principle 3
+         ("Widths", "One unit for every line and band in the drawing, with a key; a line too thin to see at that unit drawn as a "
+                    "hairline, which the key names")],
+        ["14.23", "14.29", "14.110"],
         "The kit draws every bar and column from zero and fails a circle not sized by area; scale may set a line’s range, never a bar’s.",
         B.plate("s-14-4-correct", f"From zero, each column keeps its true size: the highest share, {fmt1(hi)} percent in {y_hi}, stands about "
                                   f"{round(100 * (hi / lo - 1))} percent taller than the lowest, {fmt1(lo)} percent in {y_lo}."),
@@ -881,7 +888,7 @@ def rule_14_6(B):
          "to measure the first against, as “more than twice Zion’s” does on this rule’s plate, that mark is a comparison. It keeps the light "
          "fill with its label, and the red stays on the finding.",
          # round 3, the data lead's principles 1 and 2 (diagrams answer with their path, maps with their pattern)
-         "A diagram or a map often answers with its whole path or pattern, and then the title names no single mark. In a process, the path "
+         "When a diagram or a map answers with its whole path or pattern, the title names no single mark. In a process, the path "
          "the reader’s question follows takes Charcoal at the subject weight and the branches it leaves take the context ink, as on Rule "
          "14.96’s diagram. Where the reader’s own case picks the path, as in a decision tree, every branch takes the same ink. On a map, a "
          "place the title names as a point, such as a town, may take the red, as on Rule 14.118’s locator.",
@@ -894,7 +901,7 @@ def rule_14_6(B):
          "A title that states two findings, each on its own, such as the most and the least, sets both marks in Charcoal the same way, since "
          "two reds would split the reader’s first look. Rule 05.1 keeps the red within 5 percent of the drawing at every width. An area’s "
          "size follows its data, so a named area takes Charcoal at any size: a part of a treemap, pie, donut or funnel, a region on a map, a "
-         "node or a cell, or a line or band whose width carries an amount, such as a flow. A named mark that would pass that share, such as "
+         "node, a cell of a matrix, or a line or band whose width carries an amount, such as a flow. A named mark that would pass that share, such as "
          "a tall column in a short run, takes Charcoal at the subject weight as well. Red never codes a series, a group, a step on a scale or "
          "in a process, or a sign, such as a deficit or a loss."],
         ["One red mark tells a reader where to look first, and the title tells them why. A second red mark splits their attention, and red "
@@ -910,9 +917,9 @@ def rule_14_6(B):
          ("Two findings", "Both in Charcoal at the subject weight, each with its label"),
          ("A named area, or past 5 percent of the drawing", "Charcoal, with the label (Rule 05.1)", "oa.chart.color.subject.onNewsprint"),
          # ruling (b) of round 2 (D3-677) and round 3's map case: one row for every place a total or national figure sits
-         ("A total or national figure", "Across a plot, a line dashed in the text’s ink; as a point, an open ring; in a list, the first row, "
-                                        "set apart; on a map, beside it with its name and value; each with its own label",
-          "oa.chart.color.label.onNewsprint"),
+         ("A total or national line", "Dashed in the text’s ink, with its own label", "oa.chart.color.label.onNewsprint"),
+         ("A total or national figure elsewhere", "As a point, an open ring; in a list, the first row, set apart; on a map, beside it with "
+                                                  "its name and value, outside every region"),
          ("Red never", "Codes a series, a group, a step on a scale or in a process, or a sign, such as a deficit or a loss")],
         ["05.1", "05.3", "05.5", "05.7", "01.1", "01.2", "14.7", "14.12"],
         "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; "
@@ -958,14 +965,17 @@ def rule_14_7(B):
     return entry(
         "14.7", "Tell parties apart by name, place and shape, with no red and blue.",
         ["Rule 01.2 draws every party in one neutral ink with its name on the mark, and Rule 01.1 keeps red off every party. A chart then "
-         "tells parties apart by what a reader can read without color: the name on or beside each mark, the mark’s place in the order, a "
-         "solid and an open mark where two sides sit side by side, and a word or sign for direction, as in “Republican +2.2”.",
+         "tells parties apart by what a reader can read without color: the name on or beside each mark, the mark’s place in the order or "
+         "in its party’s own panel, a solid and an open mark where two sides sit side by side, and a word or sign for direction, as in “Republican +2.2”.",
          "No election graphic pairs red with blue, social cards included, and Prussian never stands for a party."],
         ["Red and blue turn a chart of results into team colors, and a reader decides which side the chart is on before reading a number. "
          "A name on each mark gives readers on both sides the same facts, in color or in grayscale."],
         [("Party marks", "One neutral ink for every party, Charcoal on Newsprint", "oa.chart.color.party.mark.onNewsprint"),
          ("Two sides at a glance", "One solid and one open mark, in the same ink (Rule 01.2)"),
          ("Direction", "An arrow, the mark’s place or a printed lead, such as “Republican +2.2”"),
+         # round 3, the data lead's ruling (b) for the district map and the district tile map
+         ("Seats on a map", "One panel for each party, named with the seats it won, each seat filled in its winner’s panel and its margin "
+                            "in gray steps (Rule 14.5)"),
          ("Never", "Red against blue, or Prussian for a party")],
         ["01.1", "01.2", "05.7"],
         "Party data takes the party role in any form; the kit fails a party mark in Pillar Red or Prussian.",
@@ -1156,6 +1166,12 @@ def rule_14_9(B):
          "lower than another, does so only where the gap between them passes the gap’s own margin of error at the publisher’s stated "
          "confidence, and a note says so. Figures whose gaps sit inside it are drawn and described as alike: an open dot, a shared place, or "
          "the words “within the margin of error”.",
+         # round 3, the data lead's ruling (c): a choropleth meets this rule by three tests
+         "A map that shades survey figures in classes ranks them too, since a place in a stronger class reads as higher. Make each class at "
+         "least as wide as the widest margin of error drawn, so no place could belong more than one class away from where it is drawn, and "
+         "check that any two places drawn two classes apart differ by more than their gap’s margin. The note counts the places whose "
+         "interval crosses a class line. Where some margins run wider than any useful class, as in small counties, the note says how many places could fall in another class, and the "
+         "words set no place above another unless its gap passes its margin, as on Rule 14.120’s map.",
          "A count of every case, such as votes cast or seats held, has no sampling margin and ranks as it stands."],
         ["A survey measures a sample, so each figure could sit anywhere in its interval. Two states three points apart, each with a margin "
          "near three points, may stand in either order across the whole population, and a ranking that puts one first tells a reader "
@@ -1168,8 +1184,11 @@ def rule_14_9(B):
                                                     "people or households; where the data hold no share, the first test, and the note "
                                                     "says it treats the two as independent"),
          ("Within the margin", "An open dot and the words “within the margin of error”"),
+         ("Classes on a map", "Each at least as wide as the widest margin drawn, and places two classes apart differing by more than "
+                              "their gap’s margin"),
+         ("A class map’s note", "How many places have an interval that crosses a class line"),
          ("Counts", "No sampling margin; they rank as they stand")],
-        ["13.5", "13.1"],
+        ["13.5", "13.1", "14.117", "14.120"],
         # ED-F2 (the data lead, RF-11a): the publisher's own margin first
         "Take the margin the publisher prints for the figure drawn, and compute one only where it prints none, saying so in the sidecar. "
         "Carry each figure’s margin in its own column of the data; a form draws the interval from it and the note names the confidence.",
@@ -1379,15 +1398,16 @@ def rule_14_12(B):
     return entry(
         "14.12", "Redraw for a phone only when the form must change, and keep the data and finding.",
         ["Draw a chart once for every width when its form still reads at 358 px. Change the form for a phone only when it must: when labels "
-         "would fall under 13 px (Rule 06.3), when columns grow too narrow to carry their values, or when arrows grow too short to read. "
-         "Columns then become bars, and a map of arrows becomes a list.",
+         "would fall under 13 px (Rule 06.3), when columns grow too narrow to carry their values, or when marks grow too small or too crowded "
+         "to read, as arrows on a tile map or dots on a dot map do. Columns then become bars, a map of arrows becomes a list, and each dot "
+         "stands for a larger count.",
          "The phone drawing keeps every row, the title, the finding and the source line, and a note under the drawing carries any words that "
          "leave the plot."],
         ["Many readers meet our charts on a phone first. A drawing redrawn for no reason gives them a second picture to learn, and one that "
          "drops rows or changes its title gives phone readers a different finding from everyone else."],
         [("Phone width", "358 px, the narrowest drawing the kit checks above 296 px", "oa.chart.artboard.phone"),
          ("Same form", "When every label and mark reads at that width"),
-         ("A new form", "Columns as bars, arrows as a list, when the first form cannot carry its words"),
+         ("A new form", "Columns as bars, arrows as a list, a larger count to a dot, when the first form cannot carry its words or marks"),
          ("Kept", "Every row, the title, the finding and the source line")],
         ["06.3", "14.16", "14.25"],
         "Set phone to differs and write phone_note in the spec when the form changes; the kit draws both and checks each at 358 px.",
@@ -1534,14 +1554,27 @@ MARKS = {
 }
 
 
+def printed_groups():
+    """The groups the last chapter build printed. Round 3's entries land before the chapter build takes round 3 in, so an
+    entry file alone no longer means its group heading is on the page; a link to a heading not yet printed would land on
+    no id. A group the build has not printed stays unlinked until the generator runs again after it."""
+    p = ROOT / "work/build/guide/chapters/14-data-visualization.json"
+    try:
+        return {g["number"] for g in json.loads(p.read_text()).get("groups") or []}
+    except (OSError, ValueError, KeyError, TypeError):
+        return None
+
+
 def opener(B):
     lis = []
+    printed = printed_groups()
     for gp in PLAN["groups"][1:]:
         fam, q = gp["title"].split(": ", 1)
         q = e(q[0].upper() + q[1:])
-        # a group whose first entry is written links to its heading; a later round's group prints unlinked (D3-452)
+        # a group whose first entry is written and whose heading the chapter prints links to it; a later round's group
+        # prints unlinked (D3-452)
         first = int(gp["rules"].split(" to ")[0].split(".")[1])
-        built = (ENTRIES / f"14-{first:03d}.json").exists()
+        built = (ENTRIES / f"14-{first:03d}.json").exists() and (printed is None or gp["group"] in printed)
         dots = ' class="dd"' if gp["group"] == 7 else ""   # a scatter's dots draw at twice the line's weight
         mark = f'<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path{dots} d="{MARKS[gp["group"]]}"/></svg>'
         lis.append(f"<li>{mark}" + (f'<a class="qq" href="#group-14-{gp["group"]}">{q}</a>' if built else f'<span class="qq">{q}</span>')

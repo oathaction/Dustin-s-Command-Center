@@ -3,7 +3,7 @@
  "title": "Start bars and columns at zero, keep one scale per axis, and size circles by area.",
  "rule": [
   "Draw an amount at its true size. Bars and columns start at zero, because a reader compares their lengths. A line may start above zero when the change is the point, with the axis labeled where it starts.",
-  "Each axis keeps one scale, so two measures take two panels side by side rather than a second axis on the right. A circle that stands for an amount takes its area from the value, so its radius grows with the square root of the value."
+  "Each axis keeps one scale, so two measures take two panels side by side rather than a second axis on the right. A circle that stands for an amount takes its area from the value, so its radius grows with the square root of the value. A line or band whose width stands for an amount, as in a network or a flow, takes one unit across the whole drawing, with a key, so twice the width means twice the amount."
  ],
  "use_when": null,
  "use_instead": [],
@@ -20,7 +20,8 @@
  ],
  "related": [
   "14.23",
-  "14.29"
+  "14.29",
+  "14.110"
  ],
  "builders": "The kit draws every bar and column from zero and fails a circle not sized by area; scale may set a line’s range, never a bar’s.",
  "specs": [
@@ -40,6 +41,10 @@
   {
    "label": "Circles",
    "value": "Area in proportion to the value, so the radius follows its square root"
+  },
+  {
+   "label": "Widths",
+   "value": "One unit for every line and band in the drawing, with a key; a line too thin to see at that unit drawn as a hairline, which the key names"
   }
  ],
  "correct": {

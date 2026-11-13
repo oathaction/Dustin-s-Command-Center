@@ -764,4 +764,321 @@
     c.key(steps.map(function () { return { fill: o.stroke || 'context', pattern: true }; }));
     return cy - y;
   };
+
+  // ---- Round 3 (contract R3-2): map geometry and the shared map parts --------------------------------------------------
+  // geo.js (tools/geo_build.py) carries each layer once: its features' geoids, its arcs (shared borders kept once) and
+  // each feature's rings as arc references, simplified at build to half a pixel at 720 px and written on a 0.5-unit grid
+  // of a frame 975 units wide. K.geo reads a layer once a page draws it, and keeps it.
+  var GEO = {}, ALPHA = null;
+  var dec = function (str) {
+    // the zigzag varints of a string, as numbers
+    var out = [], n = 0, sh = 0;
+    for (var i = 0; i < str.length; i++) {
+      var v = ALPHA[str.charCodeAt(i)];
+      if (v >= 32) { n += (v - 32) * Math.pow(2, sh); sh += 5; }
+      else { n += v * Math.pow(2, sh); out.push(n % 2 ? -(n + 1) / 2 : n / 2); n = 0; sh = 0; }
+    }
+    return out;
+  };
+  var unzz = function (v) { return v < 0 ? -2 * v - 1 : 2 * v; };   // dec reads every number as zigzag; counts are not
+  K.geo = function (name) {
+    var G = root.OAChartGeo;
+    if (!G || !G.layers || !G.layers[name]) throw new Error('OAChart: map layer "' + name + '" is not in geo.js; its layers are ' + (G && G.layers ? Object.keys(G.layers).join(', ') : 'none'));
+    if (GEO[name]) return GEO[name];
+    if (!ALPHA) { ALPHA = {}; for (var a = 0; a < G.alpha.length; a++) ALPHA[G.alpha.charCodeAt(a)] = a; }
+    var L = G.layers[name], q = G.quantum, A = dec(L.arcs), arcs = [], i = 0, lx = 0, ly = 0;
+    while (i < A.length) {
+      var n = unzz(A[i++]), x = lx + A[i++], y = ly + A[i++], pts = [[x * q, y * q]];
+      for (var k = 1; k < n; k++) { x += A[i++]; y += A[i++]; pts.push([x * q, y * q]); }
+      arcs.push(pts); lx = x; ly = y;
+    }
+    var S = dec(L.shapes), shapes = [], j = 0;
+    for (var f = 0; f < L.n; f++) {
+      var np = unzz(S[j++]), polys = [];
+      for (var pi = 0; pi < np; pi++) {
+        var nr = unzz(S[j++]), rings = [];
+        for (var ri = 0; ri < nr; ri++) {
+          var na = unzz(S[j++]), refs = [], prev = 0;
+          for (var ai = 0; ai < na; ai++) { prev += S[j++]; refs.push(prev % 2 ? -(prev + 1) / 2 : prev / 2); }
+          rings.push(refs);
+        }
+        polys.push(rings);
+      }
+      shapes.push(polys);
+    }
+    var I = dec(L.ids), ids = [], index = {}, acc = 0;
+    I.forEach(function (d, n2) { acc += d; var id = String(acc); while (id.length < L.digits) id = '0' + id; ids.push(id); index[id] = n2; });
+    var labels = null;
+    if (L.labels) { var Lb = dec(L.labels); labels = []; for (var m = 0; m < Lb.length; m += 3) labels.push([Lb[m] * q, Lb[m + 1] * q, unzz(Lb[m + 2]) * q]); }
+    // which features use each arc (for a mesh: interior borders, outlines, borders between groups)
+    var use = arcs.map(function () { return []; });
+    shapes.forEach(function (polys, fi) { polys.forEach(function (rings) { rings.forEach(function (refs) { refs.forEach(function (r) { var u = use[r < 0 ? ~r : r]; if (u[u.length - 1] !== fi) u.push(fi); }); }); }); });
+    var x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    arcs.forEach(function (pts) { pts.forEach(function (p) { if (p[0] < x0) x0 = p[0]; if (p[0] > x1) x1 = p[0]; if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1]; }); });
+    var out = { name: name, file: L.file, frame: L.frame, fit: L.fit || null, ids: ids, index: index, arcs: arcs, shapes: shapes, labels: labels, use: use,
+      box: [x0, y0, x1 - x0, y1 - y0], credit: L.credit, cache: {} };
+    // a feature's rings as points in frame units (each ring closed by its first point)
+    out.rings = function (fi) {
+      if (out.cache[fi]) return out.cache[fi];
+      var res = shapes[fi].map(function (rings) {
+        return rings.map(function (refs) {
+          var pts = [];
+          refs.forEach(function (r) { var a = r < 0 ? arcs[~r].slice().reverse() : arcs[r]; pts = pts.length ? pts.concat(a.slice(1)) : a.slice(); });
+          return pts;
+        });
+      });
+      return (out.cache[fi] = res);
+    };
+    return (GEO[name] = out);
+  };
+  // project a longitude and latitude into a layer's frame, as tools/geo_build.py projects its vertices (d3's
+  // geoAlbersUsa at scale 1300 in a 975 by 610 frame; a state-level layer on the lower 48's projection, fitted)
+  K.geo.project = function (L, lon, lat, code) {
+    var G = root.OAChartGeo, P0 = G.projection, prm = P0[code === 'AK' || code === 'HI' ? code : 'lower48'], rad = Math.PI / 180;
+    var y0 = prm[0] * rad, y1 = prm[1] * rad, sy0 = Math.sin(y0), n = (sy0 + Math.sin(y1)) / 2, cc = 1 + sy0 * (2 * n - sy0), r0 = Math.sqrt(cc) / n;
+    var raw = function (l, p) { var r = Math.sqrt(Math.max(0, cc - 2 * n * Math.sin(p))) / n; l *= n; return [r * Math.sin(l), r0 - r * Math.cos(l)]; };
+    var wrap = function (l) { while (l > Math.PI) l -= 2 * Math.PI; while (l < -Math.PI) l += 2 * Math.PI; return l; };
+    var k = P0.scale * prm[5], tx = P0.translate[0] + prm[6] * P0.scale, ty = P0.translate[1] + prm[7] * P0.scale;
+    var ce = raw(prm[3] * rad, prm[4] * rad), pt = raw(wrap(lon * rad + prm[2] * rad), lat * rad);
+    var x = tx + k * (pt[0] - ce[0]), y = ty - k * (pt[1] - ce[1]);
+    if (L && L.fit) { x = L.fit[0] * x + L.fit[1]; y = L.fit[0] * y + L.fit[2]; }
+    return [x, y];
+  };
+  // frame units per kilometer near a fitted layer's standard parallels (the conic's scale is within about 1 percent of
+  // true between 30 and 45 degrees north), for a scale bar
+  K.geo.units_per_km = function (L) { var G = root.OAChartGeo; return G.projection.scale / 6371.0088 * (L && L.fit ? L.fit[0] : 1); };
+
+  // R3-4: the bubble map's names, now read from the 2024 states: OAChartGeo.land (every state's rings, one path in the
+  // 975 by 610 frame), .borders (the lines two states share) and .centers ({code: [x, y]}, the area center of each
+  // state's largest polygon). geo.js calls this once it loads; each is worked out the first time a map reads it.
+  // a ring cut to x >= 0 (Sutherland and Hodgman against one edge)
+  var clip_x0 = function (r) {
+    var out = [];
+    for (var i = 0; i < r.length; i++) {
+      var a = r[i], b = r[(i + 1) % r.length], ia = a[0] >= 0, ib = b[0] >= 0;
+      if (ia) out.push(a);
+      if (ia !== ib) out.push([0, a[1] + (b[1] - a[1]) * (0 - a[0]) / (b[0] - a[0])]);
+    }
+    return out;
+  };
+  K.geo.legacy = function (G) {
+    var code = {}, R = K.round;
+    Object.keys(G.tiles || {}).forEach(function (k) { code[G.tiles[k][2]] = k; });
+    var make = {
+      // the frame starts at x 0, as the board 1 bubble map drew it: the western Aleutians, left of it, are cut at its edge
+      land: function () {
+        var L = K.geo('states'), d = '';
+        L.ids.forEach(function (id, fi) { L.rings(fi).forEach(function (rs) { rs.forEach(function (r) {
+          var q = clip_x0(r.slice(0, -1));
+          if (q.length > 2) d += 'M' + q.map(function (p) { return R(p[0]) + ',' + R(p[1]); }).join('L') + 'Z';
+        }); }); });
+        return d;
+      },
+      borders: function () {
+        var L = K.geo('states'), d = '';
+        L.arcs.forEach(function (pts, ai) { if (L.use[ai].length > 1 && pts.every(function (p) { return p[0] >= 0; })) d += 'M' + pts.map(function (p) { return R(p[0]) + ',' + R(p[1]); }).join('L'); });
+        return d;
+      },
+      centers: function () {
+        var L = K.geo('states'), out = {};
+        L.ids.forEach(function (id, fi) {
+          var best = [0, 0, 0];
+          L.rings(fi).forEach(function (rs) {
+            var r = rs[0], A = 0, cx = 0, cy = 0;
+            for (var i = 0; i < r.length - 1; i++) { var q = r[i], t = r[i + 1], cr = q[0] * t[1] - t[0] * q[1]; A += cr; cx += (q[0] + t[0]) * cr; cy += (q[1] + t[1]) * cr; }
+            A /= 2;
+            if (A && Math.abs(A) > best[0]) best = [Math.abs(A), cx / (6 * A), cy / (6 * A)];
+          });
+          if (code[id]) out[code[id]] = [R(best[1]), R(best[2])];
+        });
+        return out;
+      }
+    };
+    Object.keys(make).forEach(function (k) {
+      Object.defineProperty(G, k, { configurable: true, enumerable: false, get: function () { var v = make[k](); Object.defineProperty(G, k, { value: v, configurable: true }); return v; } });
+    });
+  };
+  // map_fit(c, L, o): where a layer draws: its features' box (o.ids, a list of geoids, to fit only those) scaled to o.w
+  // px wide (default the drawing's width) and at most o.max_h px tall, its top left at o.x, o.y (default 0, 0); o.pad px
+  // inside. Returns T: {k, x, y, w, h, pt([x, y]) to pixels, px(lon, lat, code) a place's pixels, box}.
+  P.map_fit = function (c, L, o) {
+    o = o || {};
+    var b = L.box;
+    if (o.ids) {
+      var x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+      o.ids.forEach(function (id) { var fi = L.index[String(id)]; if (fi === undefined) return; L.rings(fi).forEach(function (rs) { rs[0].forEach(function (p) { if (p[0] < x0) x0 = p[0]; if (p[0] > x1) x1 = p[0]; if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1]; }); }); });
+      if (x0 <= x1) b = [x0, y0, x1 - x0, y1 - y0];
+    }
+    var pad = o.pad || 0, W = (o.w === undefined ? c.width : o.w) - 2 * pad, k = W / b[2];
+    if (o.max_h && b[3] * k > o.max_h - 2 * pad) k = (o.max_h - 2 * pad) / b[3];
+    var ox = (o.x || 0) + pad + (W - b[2] * k) / 2 - b[0] * k, oy = (o.y || 0) + pad - b[1] * k;
+    var T = { k: k, x: (o.x || 0), y: (o.y || 0), w: b[2] * k + 2 * pad, h: b[3] * k + 2 * pad, box: b, ox: ox, oy: oy };
+    T.pt = function (p) { return [ox + p[0] * k, oy + p[1] * k]; };
+    T.px = function (lon, lat, code) { return T.pt(K.geo.project(L, lon, lat, code)); };
+    return T;
+  };
+  var ring_d = function (ring, T, out) {
+    var R = K.round, s = 'M', pts = [], lx = null, ly = null;
+    for (var i = 0; i < ring.length; i++) {
+      var x = R(T.ox + ring[i][0] * T.k), y = R(T.oy + ring[i][1] * T.k);
+      if (x === lx && y === ly) continue;
+      s += (pts.length ? 'L' : '') + x + ',' + y; pts.push([x, y]); lx = x; ly = y;
+    }
+    if (pts.length > 1 && pts[0][0] === lx && pts[0][1] === ly) { pts.pop(); s = s.slice(0, s.lastIndexOf('L')); }
+    if (pts.length < 3) return '';
+    out.push(pts);
+    return s + 'Z';
+  };
+  // map_shapes(c, L, T, items, o): fill each item's shape: items [{id (a geoid), fill, pattern, data, job, fc}]. One path
+  // a feature, with its data, by default; o.merge: true draws one path a fill (a county map's 3,000 shapes in a few
+  // elements) and records each feature's data at its label point with no element. o.stroke and o.width outline each
+  // shape (most maps draw borders once with map_mesh instead). Returns the items drawn and the ids the layer lacks.
+  P.map_shapes = function (c, L, T, items, o) {
+    o = o || {};
+    var missing = [], groups = {}, order = [];
+    items.forEach(function (it) {
+      var fi = L.index[String(it.id)];
+      if (fi === undefined) { missing.push(String(it.id)); return; }
+      var subs = [], d = '';
+      L.rings(fi).forEach(function (rs) { rs.forEach(function (r) { d += ring_d(r, T, subs); }); });
+      if (!d) return;
+      if (o.merge) {
+        var gk = (it.fill || '') + '|' + (it.pattern || '') + '|' + (it.job || '');
+        if (!groups[gk]) { groups[gk] = { it: it, d: '', subs: [] }; order.push(gk); }
+        groups[gk].d += d; groups[gk].subs = groups[gk].subs.concat(subs);
+        if (it.data) { var lp = L.labels ? T.pt(L.labels[fi]) : T.pt(L.rings(fi)[0][0][0]); c.datum(lp[0], lp[1], { data: it.data }); }
+        return;
+      }
+      var bx = K.parts.subs_box(subs);
+      c.path(d, { fill: it.pattern ? undefined : (it.fill || 'land'), pattern: it.pattern, stroke: o.stroke, width: o.width, data: it.data, job: it.job, fc: it.fc, pts: subs, closed: true, kind: 'region', mark: it.data ? undefined : false }, it.data ? bx : undefined);
+    });
+    order.forEach(function (gk) {
+      var g = groups[gk];
+      c.path(g.d, { fill: g.it.pattern ? undefined : (g.it.fill || 'land'), pattern: g.it.pattern, stroke: o.stroke, width: o.width, job: g.it.job, fc: g.it.fc, pts: g.subs, closed: true, kind: 'region', mark: false });
+    });
+    return { missing: missing };
+  };
+  P.subs_box = function (subs) {
+    var x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    subs.forEach(function (pts) { pts.forEach(function (p) { if (p[0] < x0) x0 = p[0]; if (p[0] > x1) x1 = p[0]; if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1]; }); });
+    return [x0, y0, x1 - x0, y1 - y0];
+  };
+  // map_mesh(c, L, T, o): borders drawn once, as one path. o.which: 'interior' (default: an arc two features share),
+  // 'outline' (an arc one feature uses: the coast and the land's edge), 'all'; or o.between(a, b), given the two features'
+  // geoids (b null on the outline), true for an arc to draw: state lines on a county map are
+  // function (a, b) { return b !== null && a.slice(0, 2) !== b.slice(0, 2); }. o.ids keeps arcs of those features only.
+  // o.stroke (default 'surface', a line of the ground between fills), o.width (default 1), o.dash. Returns the path's
+  // points.
+  P.map_mesh = function (c, L, T, o) {
+    o = o || {};
+    var which = o.which || 'interior', keep = o.ids ? {} : null, R = K.round, d = '', subs = [];
+    if (o.ids) o.ids.forEach(function (id) { var fi = L.index[String(id)]; if (fi !== undefined) keep[fi] = 1; });
+    L.arcs.forEach(function (pts, ai) {
+      var u = L.use[ai];
+      if (keep && !u.some(function (fi) { return keep[fi]; })) return;
+      if (keep) u = u.filter(function (fi) { return keep[fi]; });
+      var ok = o.between ? o.between(L.ids[u[0]], u.length > 1 ? L.ids[u[1]] : null) : which === 'all' || (which === 'interior' ? u.length > 1 : u.length === 1);
+      if (!ok) return;
+      var line = [], lx = null, ly = null;
+      pts.forEach(function (p) { var x = R(T.ox + p[0] * T.k), y = R(T.oy + p[1] * T.k); if (x !== lx || y !== ly) line.push([x, y]); lx = x; ly = y; });
+      if (line.length < 2) return;
+      d += 'M' + line.map(function (p) { return p[0] + ',' + p[1]; }).join('L');
+      subs.push(line);
+    });
+    if (d) c.path(d, { fill: 'none', stroke: o.stroke || 'surface', width: o.width || 1, dash: o.dash, pts: subs, closed: false, mark: false });
+    return subs;
+  };
+  // map_labels(c, L, T, items, o): names on or beside their shapes. items [{id, words, weight, fill}] in the order they
+  // claim room. A name sits at its shape's label point (the point farthest inside it, from geo.js) where its box fits
+  // wholly inside the shape, at least o.inset px (default 2) from every edge; any other goes beside its shape with a
+  // leader, through place_labels (o.reach, default [16, 30, 46, 64] px; o.avoid boxes). o.role (default 'label'); o.halo
+  // (default true) sets words on the ground's halo. A layer with no label points (counties) places every name beside.
+  // Returns {inside: [{item, box}], beside: [{item, box}], unplaced: [items]}; name the unplaced in a note or the table.
+  P.map_labels = function (c, L, T, items, o) {
+    o = o || {};
+    var role = o.role || 'label', size = c.size(role), inset = o.inset === undefined ? 2 : o.inset, inside = [], rest = [];
+    items.forEach(function (it) {
+      var fi = L.index[String(it.id)];
+      if (fi === undefined || !L.labels) { if (fi !== undefined) rest.push({ it: it, p: T.pt(L.rings(fi)[0][0][0]) }); return; }
+      var p = T.pt(L.labels[fi]), w = c.measure(it.words, role, it.weight || 400);
+      var bx = { x: p[0] - w / 2 - inset, y: p[1] - size / 2 - inset, w: w + 2 * inset, h: size + 2 * inset };
+      var polys = L.rings(fi).map(function (rs) { return rs.map(function (r) { return r.map(T.pt); }); });
+      var corners = [[bx.x, bx.y], [bx.x + bx.w, bx.y], [bx.x, bx.y + bx.h], [bx.x + bx.w, bx.y + bx.h]];
+      var fits = polys.some(function (rs) {
+        if (!corners.every(function (q) { return K.in_poly(rs, q[0], q[1]); })) return false;
+        return !rs.some(function (r) { for (var i = 0; i < r.length; i++) { var a = r[i], b = r[(i + 1) % r.length]; if (K.seg_hits_box(a[0], a[1], b[0], b[1], bx.x, bx.y, bx.x + bx.w, bx.y + bx.h)) return true; } return false; });
+      });
+      var taken = c.texts.some(function (t) { return t.x < bx.x + bx.w && bx.x < t.x + t.w && t.y < bx.y + bx.h && bx.y < t.y + t.h; });
+      if (fits && !taken) {
+        var tb = c.text(p[0], p[1] + 0.35 * size, String(it.words), { role: role, weight: it.weight || 400, anchor: 'middle', fill: it.fill, halo: o.halo !== false && !it.fill });
+        inside.push({ item: it, box: tb });
+      } else rest.push({ it: it, p: p });
+    });
+    var pl = P.place_labels(c, rest.map(function (r) { return { x: r.p[0], y: r.p[1], r: 1.5, words: r.it.words, weight: r.it.weight, fill: r.it.fill, src: r.it }; }),
+      { role: role, reach: o.reach || [16, 30, 46, 64], avoid: o.avoid, top: o.top, bottom: o.bottom, halo: o.halo });
+    return { inside: inside, beside: pl.placed.map(function (x) { return { item: x.item.src, box: x.box }; }), unplaced: pl.unplaced.map(function (x) { return x.src; }) };
+  };
+  // map_insets(c, L, T, o): a thin frame round the features of each code in o.codes (default Alaska and Hawaii, the
+  // states whose geoid starts 02 and 15), o.pad px out (default 4), in o.stroke (default 'gridline'), 1 px. Returns the
+  // frames' boxes.
+  P.map_insets = function (c, L, T, o) {
+    o = o || {};
+    var pre = o.prefixes || ['02', '15'], pad = o.pad === undefined ? 4 : o.pad, out = [];
+    pre.forEach(function (px) {
+      var x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+      L.ids.forEach(function (id, fi) { if (id.slice(0, 2) !== px) return; L.rings(fi).forEach(function (rs) { rs[0].forEach(function (p) { var q = T.pt(p); if (q[0] < x0) x0 = q[0]; if (q[0] > x1) x1 = q[0]; if (q[1] < y0) y0 = q[1]; if (q[1] > y1) y1 = q[1]; }); }); });
+      if (!(x0 <= x1)) return;
+      var b = { x: Math.max(0.5, x0 - pad), y: y0 - pad, w: 0, h: 0 };
+      b.w = Math.min(c.width - 0.5, x1 + pad) - b.x; b.h = y1 + pad - b.y;
+      c.rect(b.x, b.y, b.w, b.h, { stroke: o.stroke || 'gridline', width: o.width || 1, mark: false });
+      out.push(b);
+    });
+    return out;
+  };
+  // map_scale(c, L, T, x, y, o): a scale bar at x, y (its left end, on the bar's line) for a fitted layer: o.miles (default
+  // the round figure nearest a fifth of the map's width), in o.stroke (default 'label'), with its words ('{n} miles', or
+  // o.words) under it in the tick size. Returns its box.
+  P.map_scale = function (c, L, T, x, y, o) {
+    o = o || {};
+    var per_mile = K.geo.units_per_km(L) * 1.609344 * T.k, miles = o.miles;
+    if (!miles) { var want = T.w / 5 / per_mile, m = Math.pow(10, Math.floor(Math.log(want) / Math.LN10)); miles = [1, 2, 5, 10].map(function (s) { return s * m; }).filter(function (v) { return v <= want; }).pop() || m; }
+    var w = miles * per_mile, st = { stroke: o.stroke || 'label', width: 1, mark: false };
+    c.line(x, y, x + w, y, st); c.line(x, y - 4, x, y + 0.5, st); c.line(x + w, y - 4, x + w, y + 0.5, st);
+    var tb = c.text(x, y + 4 + c.size('tick'), (o.words || '{n} miles').replace('{n}', K.fmt(miles, 'integer')), { role: 'tick' });
+    return { x: x, y: y - 4, w: Math.max(w, tb.w), h: tb.bottom - y + 4, miles: miles };
+  };
+  // map_dots(c, L, T, counts, o): a dot density map, every dot from the counts and a recorded seed, drawn as one path, so
+  // the page never carries an element a dot. counts {geoid: count}; o.per the count one dot stands for; o.seed (a number,
+  // required, recorded in the spec); o.r the dot's radius in px (default 1.2); o.fill (default 'subject'). A feature's
+  // dots are round(count / per), each placed at random inside the feature's shape in frame units (the same places at every
+  // width, rejection sampling, at most 200 tries a dot), by a generator seeded from o.seed and the geoid. Each feature's
+  // count is recorded at its first dot (no element) for the checks. Returns {dots, per, seed, skipped: [ids]}.
+  P.map_dots = function (c, L, T, counts, o) {
+    o = o || {};
+    if (!(o.per > 0) || o.seed === undefined) throw new Error('map_dots needs o.per and o.seed');
+    var R = K.round, r = o.r || 1.2, d = '', dots = 0, skipped = [], subs = [];
+    var rng = function (s) { return function () { s |= 0; s = s + 0x6D2B79F5 | 0; var t = Math.imul(s ^ s >>> 15, 1 | s); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; };
+    Object.keys(counts).sort().forEach(function (id) {
+      var fi = L.index[String(id)], n = Math.round(+counts[id] / o.per);
+      if (fi === undefined) { skipped.push(id); return; }
+      if (!(n > 0)) return;
+      var polys = L.rings(fi), x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity, rand = rng((+o.seed * 100003) ^ (+id));
+      polys.forEach(function (rs) { rs[0].forEach(function (p) { if (p[0] < x0) x0 = p[0]; if (p[0] > x1) x1 = p[0]; if (p[1] < y0) y0 = p[1]; if (p[1] > y1) y1 = p[1]; }); });
+      var first = true;
+      for (var i = 0; i < n; i++) {
+        for (var tries = 0; tries < 200; tries++) {
+          var px = x0 + rand() * (x1 - x0), py = y0 + rand() * (y1 - y0);
+          if (!polys.some(function (rs) { return K.in_poly(rs, px, py); })) continue;
+          var q = T.pt([px, py]), qx = R(q[0]), qy = R(q[1]);
+          d += 'M' + qx + ',' + qy + 'H' + R(qx + 0.01);
+          subs.push([[qx, qy], [qx + 0.01, qy]]);
+          if (first) { c.datum(qx, qy, { data: { key: id, value: +counts[id] } }); first = false; }
+          dots++;
+          break;
+        }
+      }
+    });
+    if (d) c.path(d, { fill: 'none', stroke: o.fill || 'subject', width: 2 * r, cls: 'oac-dots', pts: subs, closed: false, mark: false, job: o.job });
+    return { dots: dots, per: o.per, seed: o.seed, skipped: skipped };
+  };
 })(typeof globalThis !== 'undefined' ? globalThis : this);

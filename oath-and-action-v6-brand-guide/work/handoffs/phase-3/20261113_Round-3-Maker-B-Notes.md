@@ -4,11 +4,13 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Maker B, a senior
 
 ## Summary
 
-In progress. Reading done (brief, kit README, plan rows, data plan rows 83 to 85 and 94 to 102 with the sign-off, round 2 notes, the six datasets and sidecars). Starting the six forms: `funnel`, `network-diagram`, `adjacency-matrix`, `arc-diagram`, `sankey`, `journey-map`. Named marks and inks wait for the data lead's rulings; shared node, link and flow parts wait for the engineer's contracts.
+In progress (02:20). The six forms are written and on the engineer's R3-5 parts where they draw nodes, links and flows (`network-diagram` on `node`, `node_size`, `flows`, `flow_band`, `width_key`; `arc-diagram` on `link` arcs and `width_key`; `sankey` on `flows`, `flow_band`, `width_key`; `journey-map` on `node`, `node_size`, `link`, `clear_label`). Draft specs S65 and S73 to S77 build; inks and named marks follow the data lead's rulings (a) and (b) as posted. S65, S74, S75 and S77 pass `oa-chart.mjs build` (sweep not yet run); S73 and S76 fail only the band check's x-blind test (RB3-G1). Next: the derive script and its figure checks, the words pass against ruling (d), the entries, the six sketches, then the full checks.
 
 ## Routine calls
 
 ## Requests to the engineer
+
+- **RB3-G1, the band check reads only a band's height (01:40).** `band_faults` in `checks.js` takes as "under" any earlier band whose top and bottom hold a later band's, with no test of x. S73's two committees sit side by side, so the Trump campaign's link (x 497 to 582) is read as lying on the Harris campaign's link (x 124 to 208), and every party-ink link then "measures 1.00 to 1 against the party band under it" (2 faults at 1440 px on both grounds, and at 656 px when stacked links overlap in y only). Please record each flow band's x extent in `flow_band` (`c.bands`) and require the outer band to hold the inner one in x as well as y. Nothing else in my drawings changes. Until then S73 fails only on this line. The same holds for S76's Sankey: its left and right bands overlap in y, so a light-fill band on the right reads as lying on one at the left ("measures 1.00 to 1 against the light-fill band under it, and its context edge 2.37 to 1"); against the ground each band's context edge is 4.29 to 1.
 
 ## Requests to the research lead
 

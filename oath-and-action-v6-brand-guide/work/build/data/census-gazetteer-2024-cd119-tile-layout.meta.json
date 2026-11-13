@@ -1,0 +1,46 @@
+{
+ "file": "census-gazetteer-2024-cd119-tile-layout.csv",
+ "kind": "derived",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "Oath & Action’s tile layout of the 435 House districts of the 119th Congress, from the Census Bureau’s 2024 Gazetteer district centers",
+ "table_id": "2024_Gaz_119CDs_national",
+ "url": [
+  "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/2024_Gaz_119CDs_national.zip"
+ ],
+ "observation_period": "Districts of the 119th Congress (elected November 5, 2024)",
+ "geography": "The 435 House districts of the 50 states; the District of Columbia’s delegate area left out, since its delegate has no vote on the House floor",
+ "universe_or_base": "House districts, one square each",
+ "unit": "grid columns and rows, counted from the upper left",
+ "date_retrieved": "2026-11-12",
+ "vintage": "2024 Gazetteer Files",
+ "qualification": "A layout, not geography: each district is one square of the same size, placed so states keep their order and districts their order inside each state. Alaska and Hawaii sit apart at the lower left. Built by our own script from the Bureau’s district centers; no published layout was traced.",
+ "columns": {
+  "state": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "district": {
+   "type": "text",
+   "description": "district number; 00 at large"
+  },
+  "col": {
+   "type": "integer",
+   "description": "grid column, from 0 at the left"
+  },
+  "row": {
+   "type": "integer",
+   "description": "grid row, from 0 at the top"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, 2024 Gazetteer Files, congressional districts of the 119th Congress, 50 states. Retrieved November 12, 2026. Tile layout by Oath & Action.",
+ "ledger_row": "P7-214",
+ "domain": "D02",
+ "states": [],
+ "derived_from": [
+  "census-gazetteer-2024-cd119.csv"
+ ],
+ "derivation": "One square for each district: districts' internal points projected (Albers equal-area), states as circles of area equal to their seats moved apart and together by Dorling's method, the squares inside the circles with every gap filled, each state given its squares by an exact transportation solution on squared distance and kept in one piece, districts placed inside each state by an exact assignment, Alaska and Hawaii set apart; deterministic, settings {\"ATT\": 0.5, \"HOME\": 0.015, \"LAM\": 0.8, \"PAD\": 0.0, \"W\": 34.0} (cartographer_round3_derive.py)",
+ "notes": [
+  "layout: 0 split by the transport [], 0 balance steps, 2 tightening rounds; faults []"
+ ]
+}

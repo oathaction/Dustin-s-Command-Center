@@ -91,7 +91,7 @@ export function file_stem(spec, date) {
 // The rows of a spec's second and later datasets, by name, every row (a form filters them itself)
 export function extra_rows(chk) {
   const out = {};
-  (chk.datasets || []).slice(1).forEach(ds => { out[ds.file.replace(/\.(csv|json)$/, '')] = C.rows_of(K, ds); });
+  (chk.datasets || []).slice(1).forEach(ds => { if (!ds.geo) out[ds.file.replace(/\.(csv|json)$/, '')] = C.rows_of(K, ds); });
   return out;
 }
 // R-B11 (round 1): a spec's second and later datasets ride in the island only for a form that reads them (c.extra, or
@@ -104,6 +104,7 @@ function extra_island(res) {
   const out = {};
   if (!res.spec_form || !reads_extra(res.spec_form)) return out;
   (res.datasets || []).slice(1).forEach(ds => {
+    if (ds.geo) return;   // R3-2: the shapes ride once in geo.js, never in a chart's island
     const cols = Object.keys(ds.meta.columns), ct = {};
     cols.forEach(c => { ct[c] = { type: ds.meta.columns[c].type }; });
     out[ds.file.replace(/\.(csv|json)$/, '')] = { columns: ct, csv: C.to_csv(C.rows_of(K, ds), cols) };
@@ -229,6 +230,7 @@ export function draw_spec(spec) {
 }
 export function table_fields(spec) {
   const tb = spec.table || {};
+  if (tb.group) return [];   // R3-3: a grouped table carries no row, so the island carries every column the drawing reads
   if (tb.pivot) return [].concat(tb.pivot.row, [tb.pivot.column, tb.pivot.value]);
   return (tb.columns || []).map(c => c.field);
 }

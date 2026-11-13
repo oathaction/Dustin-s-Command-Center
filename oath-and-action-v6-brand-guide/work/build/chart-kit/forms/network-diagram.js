@@ -12,7 +12,7 @@
  * name, with {total} and {n}}), value ('{v}' words under a node's name; default '{v}'), unit (the measure one pixel of
  * width carries), key_steps ([measures] the key draws), key_title, key_hairline (words under the key, {v} the measure of
  * one pixel), ink (a color role; default 'party'), side_by_side (px).
- * formats: value, small (for a measure under 1 million; default the value's). Maker B, round 3. */
+ * formats: value, small (for a measure under 1 million; default the value's), key (the key's measures). Maker B, round 3. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -26,6 +26,7 @@
       var specs = L.nodes || [], ink = L.ink || 'party', unit = +L.unit || 1, tk = c.size('tick');
       var fv = function (x) { return K.fmt(x, Math.abs(x) < 1e6 && f.small ? f.small : f.value || 'integer').replace(/ (million|billion)$/, ' $1'); };
       var v = function (x) { return String(L.value || '{v}').split('{v}').join(fv(x)); };
+      var kv = function (x) { return String(L.value || '{v}').split('{v}').join(K.fmt(x, f.key || f.value || 'integer').replace(/ (million|billion)$/, '\u00a0$1')); };
       // one block a source, in first-seen order, and one node a matching spec
       var blocks = [];
       c.rows.forEach(function (r) {
@@ -55,8 +56,8 @@
       fl.faults.forEach(function (x) { c.warn(x); });
       var y = 0;
       if (L.key_steps) {
-        y += P.width_key(c, 0, y, 1 / unit, L.key_steps, { words: L.key_steps.map(function (s) { return fv(s); }), stroke: ink, len: 32, title: L.key_title, max: W });
-        if (L.key_hairline) { var hb = c.text(0, y + tk * 0.9, String(L.key_hairline).split('{v}').join(fv(unit)), { role: 'tick', max: W }); y = hb.bottom; }
+        y += P.width_key(c, 0, y, 1 / unit, L.key_steps, { words: L.key_steps.map(function (s) { return kv(s); }), stroke: ink, len: 32, title: L.key_title, max: W });
+        if (L.key_hairline) { var hb = c.text(0, y + tk * 0.9, String(L.key_hairline).split('{v}').join(kv(unit)), { role: 'tick', max: W }); y = hb.bottom; }
         y += 18;
       }
       // side by side where both fit; stacked below that; under 420 px each source's words head its block and its box

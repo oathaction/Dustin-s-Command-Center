@@ -1,0 +1,59 @@
+{
+  "kit": 1,
+  "id": "S68",
+  "form": "who-decides",
+  "family": "structure",
+  "tier": "core",
+  "dataset": "v7-pathway-electric-decision-makers",
+  "reader_question": "Who sets my electric bill, and who can change the rules behind it?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Checked by the atlas: its pathway record on electric and utility bills, as of October 15, 2026",
+  "title": "Six of the eight bodies behind an electric bill can change its rules, and two, the regional grid operators and the investor-owned utility, apply them.",
+  "measure_line": "The eight decision makers our systems atlas lists for “Why is my electric bill going up?”, by level and by whether each can change the rules or applies them, as of October 15, 2026",
+  "notes": [
+    "A line of authority shows one body setting or approving another’s rules, as the atlas records it: the legislature writes the laws that define the commission’s powers, and the Federal Energy Regulatory Commission approves the rule changes grid operators file. It says who decides, not which way."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Eight bodies behind an electric bill, by level. Six can change the rules: Congress and the Department of Health and Human Services, and the Federal Energy Regulatory Commission, at the federal level; the state legislature and the state public utility commission; a city council or municipal utility board; and an electric cooperative’s board. Two apply them: PJM Interconnection and other regional grid operators, whose rule changes the Federal Energy Regulatory Commission approves, and the investor-owned utility. A line runs from the legislature to the commission, whose powers it sets.",
+  "table": {
+    "caption": "Who decides an electric bill, as our systems atlas lists them, in the drawing’s order, as of October 15, 2026",
+    "columns": [
+      { "field": "who", "label": "Body", "format": "text", "row_header": true },
+      { "field": "can_change_rule", "label": "Can change the rules?", "format": "text", "words": { "true": "Can change the rules", "false": "Applies them" } },
+      { "field": "jurisdiction", "label": "Level", "format": "text", "words": { "federal": "Federal", "regional": "Regional", "state": "State", "local": "Local", "private": "Private" } },
+      { "field": "order", "label": "Line of authority", "format": "text", "words": { "5": "Approves the rule changes of PJM and other grid operators", "6": "Files its rule changes with the Federal Energy Regulatory Commission for approval", "2": "Writes the laws that define the commission’s powers", "1": "Its powers are set by the state legislature’s laws" }, "empty": "None drawn" },
+      { "field": "controls", "label": "What it controls, in the atlas’s words", "format": "text" },
+      { "field": "how_to_reach", "label": "How to reach it, in the atlas’s words", "format": "text" }
+    ]
+  },
+  "chart_notes": [
+    "Bodies in the upper band can change the rules; the two in the lower band apply them. Columns run from federal to private. An arrow is a line of authority, from the body that decides to the one it governs; it carries no sign."
+  ],
+  "phone": "differs",
+  "phone_note": "Where five columns cannot each hold 118 px, the two bands run down the page, each body a row with its level above its name, and the lines of authority run in a lane at the left.",
+  "artboard": "reading",
+  "domain": "D06",
+  "states": [],
+  "v7": { "ids": ["PW03"], "snapshot": "2026-10-15" },
+  "sort": [
+    { "field": "can_change_rule", "values": ["true", "false"] },
+    { "field": "jurisdiction", "values": ["federal", "regional", "state", "local", "private"] },
+    { "field": "order", "values": ["7", "5", "2", "1", "3", "4", "6", "8"] }
+  ],
+  "encode": { "who": "who", "level": "jurisdiction", "changes": "can_change_rule", "key": "order" },
+  "labels": {
+    "levels": ["federal", "regional", "state", "local", "private"],
+    "level_words": { "federal": "Federal", "regional": "Regional", "state": "State", "local": "Local", "private": "Private" },
+    "bands": { "true": "Can change the rules", "false": "Apply the rules" },
+    "authority": [ { "from": 5, "to": 6 }, { "from": 2, "to": 1 } ],
+    "order": [7, 5, 2, 1, 3, 4, 6, 8]
+  },
+  "typography": { "curl_quotes": true, "nbsp": true },
+  "notes_internal": [
+    "Maker A, round 3. Data plan row 88 with the sign-off's condition on lines of authority, rule 14.98. Domain D06 from the sidecar (V7 I093).",
+    "Data lead ruling (b): position carries the split; one node style for all eight; the two lines of authority (FERC approves PJM's rules; the legislature sets the commission's powers) in the context ink with an arrowhead, no sign, no loop. Each line rests on the controls text V7 stores: PJM's rule changes 'must be filed with and approved by FERC'; the legislature 'writes the laws that define the commission's powers'.",
+    "Names print as V7 stores them; the words in parentheses set under the name in the tick size."
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "kit": 1,
+  "id": "S69",
+  "form": "org-chart",
+  "family": "structure",
+  "tier": "extended",
+  "dataset": "clerk-house-committees-119",
+  "reader_question": "How is the House divided into committees and subcommittees?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the Clerk of the House’s committee list, as of November 12, 2026",
+  "title": "The House splits its work among 20 standing committees and 3 select committees, which divide it again among 109 subcommittees.",
+  "measure_line": "Committees and subcommittees of the U.S. House of Representatives, 119th Congress, as the Clerk’s file of November 3, 2026 lists them, with the four joint committees the House shares with the Senate",
+  "notes": [
+    "Two standing committees, the Budget and Ethics, have no subcommittees, and Appropriations has the most, 12, one for each of its yearly spending bills."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, from Agriculture to Ways and Means, 3 select committees and 4 joint committees shared with the Senate. Each committee lists its subcommittees under it, 109 in all; Appropriations has the most, 12, and the Budget, Ethics, two select committees and the joint committees have none.",
+  "table": {
+    "caption": "Committees and subcommittees of the House, 119th Congress, as the Clerk’s file of November 3, 2026 lists them, each committee followed by its subcommittees",
+    "columns": [
+      { "field": "committee", "label": "Committee", "format": "text", "row_header": true },
+      { "field": "subcommittee", "label": "Subcommittee", "format": "text", "empty": "The committee as a whole" },
+      { "field": "committee_type", "label": "Kind", "format": "text", "words": { "standing": "Standing", "select": "Select", "joint": "Joint, with the Senate" } },
+      { "field": "majority_seats", "label": "Majority seats", "format": "integer" },
+      { "field": "minority_seats", "label": "Minority seats", "format": "integer" }
+    ]
+  },
+  "chart_notes": [
+    "Each committee’s box gives its name and its count of subcommittees, and a box for each subcommittee sits under it, joined by a line. Standing committees print without “Committee on”; the table gives every full name, with the seats each side holds as the Clerk’s file gives them."
+  ],
+  "phone": "differs",
+  "phone_note": "Where two columns of 220 px do not fit, the committees run in one column down the page.",
+  "desk_phone": { "rows": 20, "part": "the first two committees; a phone draws all 27" },
+  "artboard": "reading",
+  "domain": "D04",
+  "states": [],
+  "encode": { "unit": "committee", "unit_key": "committee_code", "group": "committee_type", "sub": "subcommittee" },
+  "labels": {
+    "root": "House of Representatives",
+    "groups": { "standing": "{n} standing committees", "select": "{n} select committees", "joint": "{n} joint committees, shared with the Senate" },
+    "drop": ["Committee on the ", "Committee on "],
+    "count": { "one": "{n} subcommittee", "many": "{n} subcommittees" },
+    "none": "No subcommittees"
+  },
+  "typography": { "curl_quotes": true, "nbsp": true },
+  "notes_internal": [
+    "Maker A, round 3. Data plan row 89, rule 14.99. Domain D04 from the sidecar.",
+    "Data lead ruling (b): nodes with a subject-ink edge, links in the context ink (elbow), all one ink; no party split in the drawing; majority and minority seats in the table under the Clerk's words."
+  ]
+}

@@ -2,7 +2,7 @@
  "id": "14.12",
  "title": "Redraw for a phone only when the form must change, and keep the data and finding.",
  "rule": [
-  "Draw a chart once for every width when its form still reads at 358 px. Change the form for a phone only when it must: when labels would fall under 13 px (Rule 06.3), when columns grow too narrow to carry their values, or when arrows grow too short to read. Columns then become bars, and a map of arrows becomes a list.",
+  "Draw a chart once for every width when its form still reads at 358 px. Change the form for a phone only when it must: when labels would fall under 13 px (Rule 06.3), when columns grow too narrow to carry their values, or when marks grow too small or too crowded to read, as arrows on a tile map or dots on a dot map do. Columns then become bars, a map of arrows becomes a list, and each dot stands for a larger count.",
   "The phone drawing keeps every row, the title, the finding and the source line, and a note under the drawing carries any words that leave the plot."
  ],
  "use_when": null,
@@ -36,7 +36,7 @@
   },
   {
    "label": "A new form",
-   "value": "Columns as bars, arrows as a list, when the first form cannot carry its words"
+   "value": "Columns as bars, arrows as a list, a larger count to a dot, when the first form cannot carry its words or marks"
   },
   {
    "label": "Kept",

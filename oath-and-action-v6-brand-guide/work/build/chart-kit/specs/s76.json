@@ -1,0 +1,140 @@
+{
+ "kit": 1,
+ "id": "S76",
+ "form": "sankey",
+ "family": "flow",
+ "tier": "extended",
+ "dataset": [
+  "fec-house-campaigns-2024-money-in-out",
+  "fec-house-campaigns-2024-by-candidate"
+ ],
+ "sort": [
+  {
+   "field": "line_id",
+   "values": [
+    "cash_start",
+    "individuals",
+    "other_committees",
+    "party",
+    "candidate_contributions",
+    "transfers_in_net",
+    "other_receipts",
+    "candidate_loans",
+    "other_loans",
+    "spending",
+    "refunds_individuals",
+    "refunds_committees",
+    "transfers_out_net",
+    "candidate_loan_repayments",
+    "other_loan_repayments",
+    "cash_end"
+   ]
+  }
+ ],
+ "reader_question": "Where did the money for 2024 House campaigns come from, and where did it go?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: House campaigns’ reports to the Federal Election Commission",
+ "title": "Individuals gave 2024 House campaigns $1,384.1 million, more than any other source, and the campaigns spent $2,045.3 million.",
+ "measure_line": "Money into and out of every House candidate’s campaign committees together, 2023 to 2024 election cycle, millions of dollars, not adjusted for inflation; a band’s width is its dollars",
+ "notes": [
+  "No dollar received is traced to a dollar spent: the node holds all 1,926 House candidates’ committees together, primary losers included.",
+  "Cash on hand at the start and the end of the cycle let the node balance. The reports leave $1.5 million unaccounted for, 0.059 percent of the money in, where a campaign’s cash figures come from reports that cover different dates.",
+  "Loans and their repayments stand apart, so a loan does not read as a gift. Transfers between a candidate’s own committees are netted; on the way out they came to $0, so no band draws."
+ ],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "Bands of money flowing into one node for all 2024 House campaigns and out of it, each as wide as its dollars. In: cash on hand at the start, $355.3 million; individuals, $1,384.1 million; PACs and other committees, $429.9 million; candidates’ loans, $228.5 million; and smaller lines. Out: spending, $2,045.3 million; refunds, loan repayments; and cash on hand at the end, $487.8 million.",
+ "table": {
+  "caption": "Money into and out of 2024 House campaigns, 2023 to 2024 cycle",
+  "columns": [
+   {
+    "field": "line",
+    "label": "Line",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "side",
+    "label": "In or out",
+    "format": "text",
+    "words": {
+     "in": "In",
+     "out": "Out"
+    }
+   },
+   {
+    "field": "dollars",
+    "label": "Dollars",
+    "format": "dollars:2"
+   }
+  ]
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D03",
+ "states": [],
+ "source_line": "Source: Federal Election Commission, current campaigns for House and Senate file, 2023 to 2024 cycle, all House candidates. Retrieved November 12, 2026. Summed by Oath & Action; no receipt is traced to a disbursement.",
+ "encode": {
+  "side": "side",
+  "key": "line_id",
+  "category": "line",
+  "value": "dollars"
+ },
+ "labels": {
+  "node": "2024 House campaigns",
+  "names": {
+   "cash_start": "Cash on hand at the start",
+   "individuals": "Contributions from individuals",
+   "other_committees": "PACs and other political committees",
+   "party": "Party committees",
+   "candidate_contributions": "Candidates’ own contributions",
+   "transfers_in_net": "Transfers from the candidates’ other committees, net",
+   "other_receipts": "Other receipts",
+   "candidate_loans": "Loans from the candidates",
+   "other_loans": "Other loans",
+   "spending": "Spending",
+   "refunds_individuals": "Refunds to individuals",
+   "refunds_committees": "Refunds to committees",
+   "candidate_loan_repayments": "Candidates’ loans repaid",
+   "other_loan_repayments": "Other loans repaid",
+   "cash_end": "Cash on hand at the end"
+  },
+  "short": {
+   "cash_start": "Cash at the start",
+   "individuals": "Individuals",
+   "other_committees": "PACs and other committees",
+   "candidate_contributions": "Candidates’ own money",
+   "transfers_in_net": "Transfers, net",
+   "candidate_loans": "Candidates’ loans",
+   "cash_end": "Cash at the end"
+  },
+  "groups": {
+   "candidate_loans": "Loans",
+   "other_loans": "Loans",
+   "candidate_loan_repayments": "Loan repayments",
+   "other_loan_repayments": "Loan repayments"
+  },
+  "track": [
+   "cash_start",
+   "cash_end"
+  ],
+  "named": [
+   "individuals"
+  ],
+  "key_steps": [
+   500000000
+  ],
+  "key_title": "A band’s width is its dollars",
+  "key_hairline": "A band under $8 million draws 1 pixel wide.",
+  "open": true
+ },
+ "formats": {
+  "value": "millions:1",
+  "value_phone": "millions:0",
+  "key": "millions:0"
+ },
+ "notes_internal": [
+  "Maker B, round 3. Data plan row 100 with change 7, rule 14.110. Draft words."
+ ]
+}

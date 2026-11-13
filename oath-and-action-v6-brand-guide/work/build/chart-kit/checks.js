@@ -71,6 +71,9 @@ function load_dataset(name, dir) {
   const meta = JSON.parse(fs.readFileSync(mp, 'utf8'));
   const fp = path.join(dir, meta.file || '');
   if (!fs.existsSync(fp)) return { fault: `dataset ${name}: no data file ${meta.file}` };
+  // R3-2 (round 3): a boundary file (R1-C7) is read by geo.js, never into a chart's rows or island; the spec names it so
+  // the source line credits it and the check can find the layer drawn from it
+  if (fp.endsWith('.geojson')) return { meta, text: '', file: meta.file, geo: true };
   const text = fs.readFileSync(fp, 'utf8');
   return { meta, text, file: meta.file, json: fp.endsWith('.json') };
 }
@@ -161,6 +164,14 @@ function check_spec(K, spec, opts) {
   names.forEach((n, i) => {
     const ds = load_dataset(n, opts.data_dir);
     if (ds.fault) { f.push(ds.fault); return; }
+    if (ds.geo) {
+      // a boundary file: geo.js carries a layer drawn from it (tools/geo_build.py), and the chart's own data comes first
+      const G = globalThis.OAChartGeo, lay = G && G.layers ? Object.keys(G.layers).filter(k => G.layers[k].file === n) : [];
+      if (i === 0) f.push(`dataset ${n}: a boundary file draws a map's shapes; name the chart's data file first`);
+      if (!lay.length) f.push(`dataset ${n}: no layer in geo.js is drawn from it; ask the engineer for one (tools/geo_build.py)`);
+      datasets.push(ds);
+      return;
+    }
     datasets.push(ds);
     if (i === 0) { first = ds; rows = rows_of(K, ds); }
     if (i === 0 && single && !spec.source_line) spec.source_line = ds.meta.printed_source_line;

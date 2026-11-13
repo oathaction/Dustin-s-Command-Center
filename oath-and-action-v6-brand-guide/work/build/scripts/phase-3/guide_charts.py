@@ -76,6 +76,9 @@ NOT_PLATES = {"reference sketches (22 at 4 KB) and avoid entries (8 at 2 KB)": 2
 # The sketch entries count whole (the creative director's weight paragraph): each one still to come is reserved at its
 # sketch's cap (4,096 bytes for both tiers since D3-486) plus the words and frame the built sketch entries measure.
 RULES_ALLOWANCE = 200_000 + 12_288
+# R3-2 (round 3): the map geometry (geo.js, every layer every map shares) is carried once and weighed apart, against its
+# own allowance; past it the build warns (and --strict fails)
+GEOMETRY_ALLOWANCE = NOT_PLATES["shared map geometry"]
 SKETCH_ENTRIES = {"reference": 22, "avoid": 8}
 SKETCH_CAP = 4096
 SKETCH_WORDS_DEFAULT = 3_800     # the creative director's measure of the four built, before the page measures its own
@@ -261,6 +264,11 @@ def gates(weights, charts, fonts_file_bytes, present, warn):
         if parts14["rules_and_opener"] > RULES_ALLOWANCE:
             warn("chapter 14", f"rules 14.1 to 14.14 with the opener weigh {parts14['rules_and_opener']:,} bytes, over their {RULES_ALLOWANCE:,} "
                                "(0.20 MB and the 12,288 bytes call 4 moved to them)")
+    geo = (KIT_SIZES or {}).get("geo", 0) if kit else 0
+    if geo:
+        rec["map_geometry"] = {"bytes": geo, "allowance": GEOMETRY_ALLOWANCE, "room": GEOMETRY_ALLOWANCE - geo}
+        if geo > GEOMETRY_ALLOWANCE:
+            warn("chart kit", f"the shared map geometry (geo.js) weighs {geo:,} bytes, over its {GEOMETRY_ALLOWANCE:,} byte allowance (R3-2)")
     share = per_plate(ch.get("14", 0), kit, charts, KIT_SIZES, parts14)
     if share:
         rec["chapter_14_per_plate"] = share
@@ -432,6 +440,16 @@ def self_test():
     m2 = chapter14_parts(pg.replace('<figure class="plate plate--opener"', css + '<figure class="plate plate--opener"', 1))
     ok = m2 is not None and m2["plate_css"] == len(css) and m2["rules_and_opener"] == m["rules_and_opener"] + len(css)
     print(f"{'pass' if ok else 'FAIL'} ED-E13: the chapter's shared plate style counts with rules 14.1 to 14.14 and the opener")
+    bad += not ok
+    # R3-2: the map geometry is weighed apart, against its 250,000 bytes
+    KIT_SIZES.clear(); KIT_SIZES.update({"geo": GEOMETRY_ALLOWANCE + 1, "registered": 1, "forms": {"a.js": 1}})
+    _, rec, got = run(base, {}, 300_000, set())
+    over = any("shared map geometry" in g for g in got) and rec["map_geometry"]["room"] == -1
+    KIT_SIZES.update({"geo": GEOMETRY_ALLOWANCE})
+    _, rec, got = run(base, {}, 300_000, set())
+    ok = over and not any("shared map geometry" in g for g in got) and rec["map_geometry"]["bytes"] == 250_000
+    KIT_SIZES.clear()
+    print(f"{'pass' if ok else 'FAIL'} R3-2: map geometry one byte over its 250,000 bytes warns, and at them passes")
     bad += not ok
     print("guide_charts self-test: " + ("every planted fault caught" if not bad else f"{bad} failed"))
     return bad

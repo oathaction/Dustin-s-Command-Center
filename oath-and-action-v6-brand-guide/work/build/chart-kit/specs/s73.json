@@ -99,8 +99,8 @@
    "TRUMP NATIONAL COMMITTEE JFC, INC.": "Trump National Committee JFC"
   },
   "sub": {
-   "HARRIS VICTORY FUND": "For Kamala D. Harris, {total}",
-   "TRUMP NATIONAL COMMITTEE JFC, INC.": "For Donald J. Trump, {total}"
+   "HARRIS VICTORY FUND": "Kamala D. Harris, {total}",
+   "TRUMP NATIONAL COMMITTEE JFC, INC.": "Donald J. Trump, {total}"
   },
   "value": "${v}",
   "unit": 4000000,
@@ -115,7 +115,8 @@
  },
  "formats": {
   "value": "millions:1",
-  "small": "dollars"
+  "small": "integer",
+  "key": "millions:0"
  },
  "notes_internal": [
   "Maker B, round 3. Data plan row 94 with change 8, rule 14.104. Draft words, before the data lead's rulings."

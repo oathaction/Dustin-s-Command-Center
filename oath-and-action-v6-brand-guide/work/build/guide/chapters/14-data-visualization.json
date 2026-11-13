@@ -220,6 +220,10 @@
      "value": "Once, in the measure line"
     },
     {
+     "label": "A state on a map",
+     "value": "Its two-letter code on or beside its shape, with a leader for a small state, and its full name in the table"
+    },
+    {
      "label": "A key",
      "value": "Only for a code no label can carry, under the measure line, in the order the marks run (Rule 12.6)"
     }
@@ -242,7 +246,7 @@
    "title": "Start bars and columns at zero, keep one scale per axis, and size circles by area.",
    "rule": [
     "Draw an amount at its true size. Bars and columns start at zero, because a reader compares their lengths. A line may start above zero when the change is the point, with the axis labeled where it starts.",
-    "Each axis keeps one scale, so two measures take two panels side by side rather than a second axis on the right. A circle that stands for an amount takes its area from the value, so its radius grows with the square root of the value."
+    "Each axis keeps one scale, so two measures take two panels side by side rather than a second axis on the right. A circle that stands for an amount takes its area from the value, so its radius grows with the square root of the value. A line or band whose width stands for an amount, as in a network or a flow, takes one unit across the whole drawing, with a key, so twice the width means twice the amount."
    ],
    "why": {
     "text": [
@@ -271,11 +275,16 @@
     {
      "label": "Circles",
      "value": "Area in proportion to the value, so the radius follows its square root"
+    },
+    {
+     "label": "Widths",
+     "value": "One unit for every line and band in the drawing, with a key; a line too thin to see at that unit drawn as a hairline, which the key names"
     }
    ],
    "related_rules": [
     "14.23",
-    "14.29"
+    "14.29",
+    "14.110"
    ],
    "correct": {
     "specimen": "s-14-4-correct",
@@ -351,8 +360,9 @@
    "rule": [
     "Rule 05.3 gives each view one working red and says which job claims it first. In a chart, the red goes to the one point, bar or line the title names, inside the 1 px Charcoal keyline of Rule 05.5, and that mark carries its own label. Marks the title names together, such as the bars of one age band, share the red. Every other mark takes the light fill on Newsprint and the context ink on Charcoal (Rule 05.7).",
     "A line or a single bar is one mark, and a run of columns is a set of marks, so a title can name one column of a run and give it the red, as on Rule 14.12’s plate. A chart that draws only one line, bar or path has no other mark to set it apart from, so the mark takes Charcoal at the subject weight and the value the title names carries a label. When the title names a second mark only to measure the first against, as “more than twice Zion’s” does on this rule’s plate, that mark is a comparison. It keeps the light fill with its label, and the red stays on the finding.",
+    "When a diagram or a map answers with its whole path or pattern, the title names no single mark. In a process, the path the reader’s question follows takes Charcoal at the subject weight and the branches it leaves take the context ink, as on Rule 14.96’s diagram. Where the reader’s own case picks the path, as in a decision tree, every branch takes the same ink. On a map, a place the title names as a point, such as a town, may take the red, as on Rule 14.118’s locator.",
     "The named mark gives up the red and takes Charcoal at the subject weight, with its label, in two cases: when an error or a step the reader can take already holds the view’s red, and when a reader would tie the mark to a party. A state, a Congress or chamber whose majority readers know, an election result, money spent to elect a candidate and a policy readers link to one party all carry that tie, and red on them reads as a party’s color (Rules 01.1, 01.2 and 14.7).",
-    "A title that states two findings, each on its own, such as the most and the least, sets both marks in Charcoal the same way, since two reds would split the reader’s first look. Rule 05.1 keeps the red within 5 percent of the drawing at every width, so a named mark that would pass that share, such as a part of a treemap, pie or donut, or a tall column in a short run, takes Charcoal at the subject weight as well. Red never codes a series, a group, a step on a scale or a sign, such as a deficit or a loss."
+    "A title that states two findings, each on its own, such as the most and the least, sets both marks in Charcoal the same way, since two reds would split the reader’s first look. Rule 05.1 keeps the red within 5 percent of the drawing at every width. An area’s size follows its data, so a named area takes Charcoal at any size: a part of a treemap, pie, donut or funnel, a region on a map, a node, a cell of a matrix, or a line or band whose width carries an amount, such as a flow. A named mark that would pass that share, such as a tall column in a short run, takes Charcoal at the subject weight as well. Red never codes a series, a group, a step on a scale or in a process, or a sign, such as a deficit or a loss."
    ],
    "why": {
     "text": [
@@ -367,7 +377,7 @@
     "01",
     "05"
    ],
-   "builders": "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; where the subject ink takes its place, labels.named does it instead, with a list for two marks. The kit counts working reds and fails a view whose red falls on two jobs or covers more than 5 percent of the drawing at any width it checks.",
+   "builders": "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; where the subject ink takes its place, labels.named does it instead, with a list for two marks, and a diagram or map that names no mark sets neither. The kit counts working reds and fails a view whose red falls on two jobs or covers more than 5 percent of the drawing at any width it checks.",
    "specs": [
     {
      "label": "The point",
@@ -381,6 +391,11 @@
     {
      "label": "A chart of one mark",
      "value": "One line, bar or path in Charcoal at the subject weight, the title’s value labeled",
+     "token": "oa.chart.color.subject.onNewsprint"
+    },
+    {
+     "label": "A diagram’s path",
+     "value": "The path the question follows in Charcoal at the subject weight, the branches it leaves in the context ink, no red",
      "token": "oa.chart.color.subject.onNewsprint"
     },
     {
@@ -398,8 +413,8 @@
      "value": "Both in Charcoal at the subject weight, each with its label"
     },
     {
-     "label": "Past 5 percent of the drawing",
-     "value": "Charcoal at the subject weight, with the label (Rule 05.1)",
+     "label": "A named area, or past 5 percent of the drawing",
+     "value": "Charcoal, with the label (Rule 05.1)",
      "token": "oa.chart.color.subject.onNewsprint"
     },
     {
@@ -408,8 +423,12 @@
      "token": "oa.chart.color.label.onNewsprint"
     },
     {
+     "label": "A total or national figure elsewhere",
+     "value": "As a point, an open ring; in a list, the first row, set apart; on a map, beside it with its name and value, outside every region"
+    },
+    {
      "label": "Red never",
-     "value": "Codes a series, a group, a step on a scale or a sign, such as a deficit or a loss"
+     "value": "Codes a series, a group, a step on a scale or in a process, or a sign, such as a deficit or a loss"
     }
    ],
    "related_rules": [
@@ -435,7 +454,7 @@
    "id": "14.7",
    "title": "Tell parties apart by name, place and shape, with no red and blue.",
    "rule": [
-    "Rule 01.2 draws every party in one neutral ink with its name on the mark, and Rule 01.1 keeps red off every party. A chart then tells parties apart by what a reader can read without color: the name on or beside each mark, the mark’s place in the order, a solid and an open mark where two sides sit side by side, and a word or sign for direction, as in “Republican +2.2”.",
+    "Rule 01.2 draws every party in one neutral ink with its name on the mark, and Rule 01.1 keeps red off every party. A chart then tells parties apart by what a reader can read without color: the name on or beside each mark, the mark’s place in the order or in its party’s own panel, a solid and an open mark where two sides sit side by side, and a word or sign for direction, as in “Republican +2.2”.",
     "No election graphic pairs red with blue, social cards included, and Prussian never stands for a party."
    ],
    "why": {
@@ -464,6 +483,10 @@
     {
      "label": "Direction",
      "value": "An arrow, the mark’s place or a printed lead, such as “Republican +2.2”"
+    },
+    {
+     "label": "Seats on a map",
+     "value": "One panel for each party, named with the seats it won, each seat filled in its winner’s panel and its margin in gray steps (Rule 14.5)"
     },
     {
      "label": "Never",
@@ -536,6 +559,7 @@
    "title": "Show the publisher’s uncertainty, and rank only where a gap passes the margin of error.",
    "rule": [
     "Rule 13.5 draws a survey figure’s margin of error as an interval. A chart that ranks survey figures, or singles one out as higher or lower than another, does so only where the gap between them passes the gap’s own margin of error at the publisher’s stated confidence, and a note says so. Figures whose gaps sit inside it are drawn and described as alike: an open dot, a shared place, or the words “within the margin of error”.",
+    "A map that shades survey figures in classes ranks them too, since a place in a stronger class reads as higher. Make each class at least as wide as the widest margin of error drawn, so no place could belong more than one class away from where it is drawn, and check that any two places drawn two classes apart differ by more than their gap’s margin. The note counts the places whose interval crosses a class line. Where some margins run wider than any useful class, as in small counties, the note says how many places could fall in another class, and the words set no place above another unless its gap passes its margin, as on Rule 14.120’s map.",
     "A count of every case, such as votes cast or seats held, has no sampling margin and ranks as it stands."
    ],
    "why": {
@@ -569,13 +593,23 @@
      "value": "An open dot and the words “within the margin of error”"
     },
     {
+     "label": "Classes on a map",
+     "value": "Each at least as wide as the widest margin drawn, and places two classes apart differing by more than their gap’s margin"
+    },
+    {
+     "label": "A class map’s note",
+     "value": "How many places have an interval that crosses a class line"
+    },
+    {
      "label": "Counts",
      "value": "No sampling margin; they rank as they stand"
     }
    ],
    "related_rules": [
     "13.5",
-    "13.1"
+    "13.1",
+    "14.117",
+    "14.120"
    ],
    "correct": {
     "specimen": "s-14-9-correct",
@@ -688,7 +722,7 @@
    "id": "14.12",
    "title": "Redraw for a phone only when the form must change, and keep the data and finding.",
    "rule": [
-    "Draw a chart once for every width when its form still reads at 358 px. Change the form for a phone only when it must: when labels would fall under 13 px (Rule 06.3), when columns grow too narrow to carry their values, or when arrows grow too short to read. Columns then become bars, and a map of arrows becomes a list.",
+    "Draw a chart once for every width when its form still reads at 358 px. Change the form for a phone only when it must: when labels would fall under 13 px (Rule 06.3), when columns grow too narrow to carry their values, or when marks grow too small or too crowded to read, as arrows on a tile map or dots on a dot map do. Columns then become bars, a map of arrows becomes a list, and each dot stands for a larger count.",
     "The phone drawing keeps every row, the title, the finding and the source line, and a note under the drawing carries any words that leave the plot."
    ],
    "why": {
@@ -715,7 +749,7 @@
     },
     {
      "label": "A new form",
-     "value": "Columns as bars, arrows as a list, when the first form cannot carry its words"
+     "value": "Columns as bars, arrows as a list, a larger count to a dot, when the first form cannot carry its words or marks"
     },
     {
      "label": "Kept",

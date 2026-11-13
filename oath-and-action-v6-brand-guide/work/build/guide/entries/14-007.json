@@ -2,7 +2,7 @@
  "id": "14.7",
  "title": "Tell parties apart by name, place and shape, with no red and blue.",
  "rule": [
-  "Rule 01.2 draws every party in one neutral ink with its name on the mark, and Rule 01.1 keeps red off every party. A chart then tells parties apart by what a reader can read without color: the name on or beside each mark, the mark’s place in the order, a solid and an open mark where two sides sit side by side, and a word or sign for direction, as in “Republican +2.2”.",
+  "Rule 01.2 draws every party in one neutral ink with its name on the mark, and Rule 01.1 keeps red off every party. A chart then tells parties apart by what a reader can read without color: the name on or beside each mark, the mark’s place in the order or in its party’s own panel, a solid and an open mark where two sides sit side by side, and a word or sign for direction, as in “Republican +2.2”.",
   "No election graphic pairs red with blue, social cards included, and Prussian never stands for a party."
  ],
  "use_when": null,
@@ -37,6 +37,10 @@
   {
    "label": "Direction",
    "value": "An arrow, the mark’s place or a printed lead, such as “Republican +2.2”"
+  },
+  {
+   "label": "Seats on a map",
+   "value": "One panel for each party, named with the seats it won, each seat filled in its winner’s panel and its margin in gray steps (Rule 14.5)"
   },
   {
    "label": "Never",

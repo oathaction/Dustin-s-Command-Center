@@ -3,6 +3,7 @@
  "title": "Show the publisher’s uncertainty, and rank only where a gap passes the margin of error.",
  "rule": [
   "Rule 13.5 draws a survey figure’s margin of error as an interval. A chart that ranks survey figures, or singles one out as higher or lower than another, does so only where the gap between them passes the gap’s own margin of error at the publisher’s stated confidence, and a note says so. Figures whose gaps sit inside it are drawn and described as alike: an open dot, a shared place, or the words “within the margin of error”.",
+  "A map that shades survey figures in classes ranks them too, since a place in a stronger class reads as higher. Make each class at least as wide as the widest margin of error drawn, so no place could belong more than one class away from where it is drawn, and check that any two places drawn two classes apart differ by more than their gap’s margin. The note counts the places whose interval crosses a class line. Where some margins run wider than any useful class, as in small counties, the note says how many places could fall in another class, and the words set no place above another unless its gap passes its margin, as on Rule 14.120’s map.",
   "A count of every case, such as votes cast or seats held, has no sampling margin and ranks as it stands."
  ],
  "use_when": null,
@@ -20,7 +21,9 @@
  ],
  "related": [
   "13.5",
-  "13.1"
+  "13.1",
+  "14.117",
+  "14.120"
  ],
  "builders": "Take the margin the publisher prints for the figure drawn, and compute one only where it prints none, saying so in the sidecar. Carry each figure’s margin in its own column of the data; a form draws the interval from it and the note names the confidence.",
  "specs": [
@@ -40,6 +43,14 @@
   {
    "label": "Within the margin",
    "value": "An open dot and the words “within the margin of error”"
+  },
+  {
+   "label": "Classes on a map",
+   "value": "Each at least as wide as the widest margin drawn, and places two classes apart differing by more than their gap’s margin"
+  },
+  {
+   "label": "A class map’s note",
+   "value": "How many places have an interval that crosses a class line"
   },
   {
    "label": "Counts",

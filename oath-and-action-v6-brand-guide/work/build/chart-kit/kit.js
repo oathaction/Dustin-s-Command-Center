@@ -461,6 +461,15 @@
     }
     return x0 <= x1 ? [x0, y0, x1 - x0, y1 - y0] : null;
   }
+  // R3-5: the box of subpaths of [x, y]
+  function pts_box(subs) {
+    var x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+    for (var i = 0; i < subs.length; i++) for (var j = 0; j < subs[i].length; j++) {
+      var q = subs[i][j];
+      if (q[0] < x0) x0 = q[0]; if (q[0] > x1) x1 = q[0]; if (q[1] < y0) y0 = q[1]; if (q[1] > y1) y1 = q[1];
+    }
+    return x0 <= x1 ? [x0, y0, x1 - x0, y1 - y0] : null;
+  }
   // A-E1 (round 2): the outline of a filled path of absolute M, L, H, V and Z commands, as subpaths of [x, y], so the fill
   // under a word is read from a band or an area as it is from a rect; null for curves
   function path_poly(d) {
@@ -595,16 +604,16 @@
     this._push('<path' + attrs(a) + '/>');
     // R3-5 (round 3): a curve (an arc, a flow band) may pass its points as o.pts, subpaths of [x, y], so the checks read it
     // as they read a path of straight lines; the element keeps its curve
-    var ptsd = o.pts ? 'M' + o.pts.map(function (sp) { return sp.map(function (q) { return q[0] + ',' + q[1]; }).join('L'); }).join('M') + (/Z\s*$/i.test(String(d)) ? 'Z' : '') : null;
-    var dd = ptsd || String(d);
-    var pb = path_box(dd) || box;
+    // (and a map's shapes pass the points they were drawn from, which saves reading the string again)
+    var dd = String(d), given = o.pts || null, closed = given ? (o.closed !== undefined ? !!o.closed : /Z\s*$/i.test(dd)) : /Z/i.test(dd);
+    var pb = given ? pts_box(given) : (path_box(dd) || box);
     // A-E1: a filled path keeps its outline, so a word set on it reads its fill (fill_under, the forced-colors check)
-    var poly = o.fill && o.fill !== 'none' ? path_poly(dd) : null;
+    var poly = o.fill && o.fill !== 'none' ? (given || path_poly(dd)) : null;
     // its paint: the area inside its outline and the length along it, read from its points (a curve: from its box)
     var pg = poly ? poly_geo(poly, true) : null;
-    var pts = poly || path_poly(dd);
-    if (!pg) { pg = pts ? poly_geo(pts, /Z/i.test(dd)) : null; if (pg && !(o.fill && o.fill !== 'none')) pg.a = 0; }
-    if (pg && pts) { pg.subs = pts; pg.closed = /Z/i.test(dd); }
+    var pts = poly || given || path_poly(dd);
+    if (!pg) { pg = pts ? poly_geo(pts, closed) : null; if (pg && !(o.fill && o.fill !== 'none')) pg.a = 0; }
+    if (pg && pts) { pg.subs = pts; pg.closed = closed; }
     if (pb) this._ink('path', pb[0], pb[1], pb[2], pb[3], poly ? Object.assign({}, o, { _poly: poly }) : o, pg || { a: pb[2] * pb[3], len: pb[2] + pb[3] });
     if (box && o.mark !== false) this.mark({ kind: o.kind || 'path', x: box[0], y: box[1], w: box[2], h: box[3], fill: o.fill, fc: o.fc, stroke: o.stroke, data: o.data || {}, job: o.job, poly: poly || undefined });
   };
@@ -969,6 +978,9 @@
   K.table_rows = function (spec, rows) {
     // the table equivalent's body rows: one per data row, or a pivot (spec.table.pivot) with one cell per data row
     var tb = spec.table || {};
+    // R3-3 (round 3, DR-249): a grouped table prints one row a group; every data row falls in one, and the island and the
+    // CSV export carry every row
+    if (tb.group) return { pivot: false, rows: rows, group: true, groups: K.table_groups(spec, rows) };
     if (tb.pivot) {
       var pv = tb.pivot, keys = [], cols = [], cell = {};
       var rkey = function (r) { return [].concat(pv.row).map(function (k) { return String(r[k]); }).join('\u0001'); };
@@ -1086,7 +1098,57 @@
     if (col.words && v !== null && v !== undefined && col.words[String(v)] !== undefined) return col.words[String(v)];
     return K.fmt(v, col.format);
   };
+  // R3-3 (round 3, DR-249): a table grouped by a column, for a chart of thousands of rows (a county map): table.group =
+  // {by: a column, sort: 'key' (else first seen), columns: [{label, agg, field, format, words, state_name, row_header,
+  // from, to, name}]}. agg: 'key' (the group's value, its words, or with state_name the state's name from the tile grid),
+  // 'count' (rows in the group), 'count_in' (rows whose field is at least from and under to; either may be left out), 'min',
+  // 'max', 'median', 'sum', 'first', and 'min_name' or 'max_name' (the name column of the row with the least or most of
+  // field). The page prints one row a group; the island carries every row the drawing reads, and the CSV export every row
+  // (table.columns names them). Its rows are not read back from the table.
+  K.table_groups = function (spec, rows) {
+    var g = spec.table.group, keys = [], map = {};
+    rows.forEach(function (r) { var k = String(r[g.by]); if (!(k in map)) { map[k] = []; keys.push(k); } map[k].push(r); });
+    if (g.sort === 'key') keys.sort();
+    return keys.map(function (k) { return { key: k, rows: map[k] }; });
+  };
+  var GROUP_NUM = /^(count|count_in|min|max|median|sum)$/;
+  K.group_cell = function (col, grp) {
+    var f = col.field, rs = grp.rows, ok = function (v) { return v !== null && v !== undefined && v !== '' && isFinite(+v); };
+    var vals = rs.filter(function (r) { return ok(r[f]); });
+    var nums = vals.map(function (r) { return +r[f]; });
+    var a = col.agg || 'key';
+    if (a === 'key') {
+      if (col.state_name && root.OAChartGeo && root.OAChartGeo.tiles && root.OAChartGeo.tiles[grp.key]) return root.OAChartGeo.tiles[grp.key][3];
+      return col.words && col.words[grp.key] !== undefined ? col.words[grp.key] : grp.key;
+    }
+    if (a === 'count') return K.fmt(rs.length, col.format || 'integer');
+    if (a === 'count_in') return K.fmt(nums.filter(function (v) { return (col.from === undefined || col.from === null || v >= col.from) && (col.to === undefined || col.to === null || v < col.to); }).length, col.format || 'integer');
+    if (!nums.length) return col.empty || '';
+    if (a === 'first') return K.cell_text(col, rs[0]);
+    if (a === 'min' || a === 'min_name' || a === 'max' || a === 'max_name') {
+      var best = vals[0];
+      vals.forEach(function (r) { if (/^min/.test(a) ? +r[f] < +best[f] : +r[f] > +best[f]) best = r; });
+      return /_name$/.test(a) ? String(best[col.name || 'name']) : K.fmt(best[f], col.format);
+    }
+    if (a === 'sum') return K.fmt(nums.reduce(function (t, v) { return t + v; }, 0), col.format);
+    if (a === 'median') { var v = nums.slice().sort(function (x, y) { return x - y; }), m = v.length; return K.fmt(m % 2 ? v[(m - 1) / 2] : (v[m / 2 - 1] + v[m / 2]) / 2, col.format); }
+    return '';
+  };
+  function group_table(spec, rows) {
+    var tb = spec.table, g = tb.group, ids = (spec.v7 && spec.v7.ids) || [], cols = g.columns || [];
+    var cap = tb.caption ? '<caption>' + K.chips(tb.caption, ids) + '</caption>' : '';
+    var numc = function (col) { return GROUP_NUM.test(col.agg || '') || /^(integer|number|percent|dollars|thousands)/.test(String(col.format || '')); };
+    var head = '<tr>' + cols.map(function (col) { return '<th scope="col"' + (numc(col) ? ' class="oac-num"' : '') + '>' + K.chips(col.label, ids) + '</th>'; }).join('') + '</tr>';
+    var body = K.table_groups(spec, rows).map(function (grp) {
+      return '<tr>' + cols.map(function (col) {
+        var txt = esc(K.group_cell(col, grp));
+        return col.row_header || (col.agg || 'key') === 'key' ? '<th scope="row">' + txt + '</th>' : '<td' + (numc(col) ? ' class="oac-num"' : '') + '>' + txt + '</td>';
+      }).join('') + '</tr>';
+    }).join('');
+    return '<table class="oac-table" data-oa-group>' + cap + '<thead>' + head + '</thead><tbody>' + body + '</tbody></table>';
+  }
   K.table_html = function (spec, rows, opts) {
+    if (spec.table && spec.table.group) return group_table(spec, rows);
     if (opts && opts.lean) return lean_table(spec, rows, opts);
     var tb = spec.table || {}, ids = (spec.v7 && spec.v7.ids) || [];
     var cap = tb.caption ? '<caption>' + K.chips(tb.caption, ids) + '</caption>' : '';
@@ -1148,6 +1210,7 @@
     return out;
   }
   K.lean_carry = function (spec, rows, types) {
+    if (spec.table && spec.table.group) return {};
     var fields = carried_fields(spec, rows, types || {}), t = K.table_rows(spec, rows), out = {};
     var ser = function (v) { return v === null || v === undefined || v === '' ? '' : String(v); };
     Object.keys(fields).forEach(function (f) {
@@ -1325,7 +1388,10 @@
   };
   K.rows_from_table = function (table, spec, isl) {
     // the rows a chart draws, read back from its own table equivalent and the island's extra columns (method load-table)
-    var tb = spec.table || {}, out = [], cell_raw = function (el, col) {
+    var tb = spec.table || {}, out = [];
+    // R3-3: a grouped table holds no row of its own; the island carries every row the drawing reads
+    if (tb.group) return K.type_rows(isl.csv ? K.parse_csv(isl.csv) : [], isl.columns);
+    var cell_raw = function (el, col) {
       return el.hasAttribute('data-v') ? el.getAttribute('data-v') : K.unformat(el.textContent, col);
     };
     if (tb.pivot) {

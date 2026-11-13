@@ -1,0 +1,89 @@
+{
+ "kit": 1,
+ "id": "S75",
+ "form": "arc-diagram",
+ "family": "relationships",
+ "tier": "extended",
+ "dataset": "congress-gov-pbm-bill-shared-backers-119",
+ "reader_question": "Which House bills to rein in drug middlemen drew the same backers?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: bill records from the Library of Congress’s bill status files",
+ "title": "Of 10 House bills whose titles name pharmacy benefit managers, H.R. 6609 and H.R. 6610 shared the most backers, 34 members.",
+ "measure_line": "Members who sponsored or cosponsored both bills of a pair, House bills of the 119th Congress whose titles name pharmacy benefit managers, in order of introduction, February 4, 2025 to September 14, 2026; an arc’s width is its count",
+ "notes": [
+  "The search took every bill of the 119th Congress with a title, official, short or popular, that names “pharmacy benefit manager” or “PBM”, in the Library of Congress’s files of November 11, 2026: 10 House bills and 8 Senate bills.",
+  "A representative cannot back a Senate bill, so the chart draws the House, the chamber with more such bills. The Senate’s eight are S. 526, S. 882, S. 3345, S. 3349, S. 3549, S. 3729, S. 3822 and S. 4509.",
+  "A backer is the sponsor or a cosponsor who did not withdraw. Two bills that share backers drew some of the same members; the bills may still differ."
+ ],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "Ten House bills on a line in order of introduction, with 33 arcs joining each pair that shares a sponsor or cosponsor, each arc as wide as its count. H.R. 6609 and H.R. 6610 share 34 backers, the most; H.R. 4317 shares 19 with each of them; most other pairs share one to six.",
+ "table": {
+  "caption": "Pairs of House bills naming pharmacy benefit managers that share a sponsor or cosponsor, 119th Congress",
+  "columns": [
+   {
+    "field": "bill_a",
+    "label": "Bill",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "bill_b",
+    "label": "Shares backers with",
+    "format": "text"
+   },
+   {
+    "field": "shared_backers",
+    "label": "Members who backed both",
+    "format": "integer"
+   }
+  ]
+ },
+ "phone": "differs",
+ "phone_note": "On a phone the bills run down the left in order of introduction and the arcs bow to the right.",
+ "artboard": "reading",
+ "domain": "D06",
+ "states": [],
+ "encode": {
+  "from": "bill_a",
+  "to": "bill_b",
+  "value": "shared_backers"
+ },
+ "labels": {
+  "order": [
+   "H.R. 950",
+   "H.R. 2214",
+   "H.R. 4317",
+   "H.R. 4409",
+   "H.R. 6609",
+   "H.R. 6610",
+   "H.R. 6837",
+   "H.R. 7895",
+   "H.R. 8779",
+   "H.R. 10369"
+  ],
+  "unit": 0.3333,
+  "key_steps": [
+   3,
+   10,
+   30
+  ],
+  "key_words": [
+   "3 members",
+   "10",
+   "30"
+  ],
+  "key_title": "An arc’s width is the members who backed both bills",
+  "key_hairline": "An arc of one or two members draws at the width of three.",
+  "named": [
+   "H.R. 6609",
+   "H.R. 6610"
+  ],
+  "named_words": "{from} and {to} shared {v} backers, the most of any pair",
+  "split": true
+ },
+ "notes_internal": [
+  "Maker B, round 3. Data plan row 96 with change 6, rule 14.106. Draft words."
+ ]
+}
