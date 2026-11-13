@@ -214,7 +214,6 @@ def jfc_nodes():
         FAULTS.append('S73: %d rows written of %d' % (len(out), len(rows)))
     cols = list(rows[0].keys()) + ['link_id', 'node', 'table_row', 'table_to']
     side = dict(m)
-    side.pop('source_line_variants', None)
     side.update({
         'file': 'fec-jfc-transfers-2024-by-node.csv',
         'kind': 'derived',
@@ -351,6 +350,9 @@ def figures():
     for piece in ('“Biden for President” (on file 2022-08-30) then “Harris for President” (filed as a new name 2024-07-21)', '“Biden Victory Fund” (on file 2022-07-01) then “Harris Victory Fund” (filed as a new name 2024-07-21)', '“Biden Action Fund”', '“Biden Baldwin Victory Fund”'):
         same('S73', piece in names, True, 'the sidecar records the July 21, 2024 names: ' + piece[:40])
     want('S73', t, 'On July 21, 2024, the Democratic campaign committee and its three funds filed new names', 'the July 21 note, the names')
+    for piece in ('C00867937, “2024 RNC VICTORY” (first filed 2024-01-31) then “TRUMP 47 COMMITTEE” (filed as a new name 2024-03-14) then “TRUMP 47 COMMITTEE, INC.”', 'C00873893, “TRUMP NATIONAL COMMITTEE JFC” (first filed 2024-03-20) then “TRUMP NATIONAL COMMITTEE JFC, INC.”', 'C00770941, “TRUMP SAVE AMERICA JOINT FUNDRAISING COMMITTEE” (on file 2022-12-05);', 'C00855114, “TRUMP BILIRAKIS VICTORY FUND” (first filed 2023-10-30)', 'C00828541, “DONALD J. TRUMP FOR PRESIDENT 2024, INC.” (filed as a new name 2022-12-05) then “NEVER SURRENDER, INC.” (filed as a new name 2024-11-12)'):
+        same('S73', piece in names, True, 'the Republican names in the cycle: ' + piece[:30])
+    want('S73', t, 'The Republican campaign kept one candidate through the cycle, so its funds are not split; the Trump 47 Committee was named 2024 RNC Victory until March 14, 2024', 'the Republican side, one test (ST2-M1 point 3)')
     same('S73', any(w in sp['title'] for w in ('53', 'to two')), False, 'the title sets no one fund\'s reach against another\'s (BC-M1)')
     n22 = [r for r in nodes if r['amount_lines'] == '22']
     nk = lambda r: r['node'] + ' (' + r['nominee'] + ')'
