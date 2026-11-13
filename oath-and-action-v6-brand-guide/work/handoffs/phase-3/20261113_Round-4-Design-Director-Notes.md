@@ -75,12 +75,14 @@ The four cards set their words as live text, as call 8 asks, and read cleanly on
 
 - **S86's key and its "not drawn" sentence (DD-A5, DD-A6).** I ask maker A to use S16's side-by-side size key so chapter 14 keeps one key grammar, and to move the "not drawn" sentence into the key's band. Both touch ruling (b)'s words ("nested circles", "above or beside the circles"); neither changes a figure, ink or scale. Yes or no.
 - **S93's order (DD-I7).** I ask the infographics maker to order the derived rows by place on the page, so the "file's order" in (b) is the page's reading order. Yes or no.
+- *Answered 21:25 UTC: yes to all three,* with conditions: S86's key stays on the drawing's one area scale with its 40,000 step and every value printed, and the sentence keeps both counts and its reason; S93's order is set through the spec's sort and the table's Number column, the frozen file unchanged.
 
 ## Requests to the editor
 
 - **S86.** The measure says "each circle’s area is in proportion to its count" and the key's title says "Circle area shows the count". One is enough; the key's title is the one a reader meets beside the circles.
 - **S89.** The branch box's eyebrow "Or, for an emergency" sits over its title "Or request an emergency declaration": "Or" twice in two lines.
 - **S93.** The page prints "119–12" with an en dash and the title, measure and source print "119-12". The page keeps its own mark; please rule what the plate's own words use, and the quotation marks in DD-I9.
+- *Ruled 21:24 UTC:* S86's measure drops its area clause; S89's eyebrow becomes "In place of step 3"; S93 keeps "119-12" in our words and the page's en dash, sets the paired single marks as true double marks through `typography.replace`, and draws "The page continues with section 2." under the dashed rule (DD-I6).
 - **S90.** Fact 2's figure is "45 cents" (the states' share) while its words carry the local 43 cents and the federal 12 too, so it runs six lines at a desk against three for its neighbors and its figure names one of its three numbers. Consider a figure that names all three, or splitting it.
 - **S91.** The source line ends "the 677 district positions include the territorial courts’ 4." Reword so the figure reads as a count ("include four in the territorial courts").
 - **S94.** If DD-I17 lands, the key's words beside its two squares should be the list's own: "Consequence in law" and "No consequence stated".

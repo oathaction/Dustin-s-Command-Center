@@ -84,12 +84,16 @@
       if (L.key_title) c.text(0, ky, L.key_title, { role: 'eyebrow', weight: 700, fill: 'secondary' });
       var kmax = ks.length ? Math.sqrt(Math.max.apply(null, ks) / maxv) * R : 0;
       kb = ky + 14 + 2 * kmax;
-      ks.forEach(function (st) {
-        var r = Math.sqrt(st / maxv) * R, lw = c.measure(fv(st), 'tick'), mid = kx + Math.max(r, lw / 2);
+      // each step takes its circle's width or its count's, whichever is wider; the gaps close up to 6 px on a narrow phone
+      var kw = ks.map(function (st) { return Math.max(2 * Math.sqrt(st / maxv) * R, c.measure(fv(st), 'tick', 400, true)); });
+      var kg = ks.length > 1 ? Math.max(6, Math.min(14, (W - kw.reduce(function (t, w) { return t + w; }, 0)) / (ks.length - 1))) : 0;
+      ks.forEach(function (st, i) {
+        var r = Math.sqrt(st / maxv) * R, mid = kx + kw[i] / 2;
         c.circle(mid, kb - r, r, { stroke: 'label', width: c.t('bubble-outline'), mark: false });
         c.text(mid, kb + 16, fv(st), { role: 'tick', anchor: 'middle', tnum: true });
-        kx = mid + Math.max(r, lw / 2) + 14;
+        kx = mid + kw[i] / 2 + kg;
       });
+      kx -= kg;
       bottom = ks.length ? kb + 20 : bottom;
       if (words.length) {
         var wl = String(L.words || '{list}').split('{list}').join(joined), beside = !c.phone && W - kx - 18 >= 200;
