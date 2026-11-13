@@ -5877,3 +5877,165 @@ The main session posted the board 2 plan with V23's five questions and one of it
 | D3-1560 | Board 2 is published privately at https://claude.ai/artifact/AyKqXMpc5Ao68NuZ7wL2m2 (version id 1794598676-3a50) from the builder's run 19 (`work/boards/phase-3/round-3/board-2/20261113_Board-2.html`, 1,046,788 bytes before the Reply 5 words, and its 314 pictures, 41,957,930 bytes with the page), in two publishes of 254 and 60 pictures to one address. Before it the main session scanned the page by script (no scripts, handlers or frames; outside requests only to Google Fonts and the guide preview's links; no private path, key name or address; no em dash; every picture referenced, lazy and with alt text), read panel 1 whole, and looked at contact sheets of all 314 pictures | D3-1540's order; read before publishing |
 | D3-1561 | Reply 5's recommendation keeps Civic Line icon CL-026's approved name, "Executive unilateralism", in chapter 10's library and wherever the guide names the icon; the studio recommends each variable's own title in loop drawings in chapters 11 and 15 and in V7.1, says the icon's name and Variable D2's title differ where they meet, and asks for no change to the icon | Dustin's standing rule that the Civic Line icons are settled (DR-144, D3-906); the main session found the first wording would have renamed an approved icon |
 | D3-1562 | Carried to round 4: coding every state at the 326 px phone drawing on S12, S16 and S78 (D3-1553); S37's curled apostrophes, held because two drawn labels would change (D3-1556); the kit check that passed the stacked tile's 1,024 px overrun (D3-1546); the creative director's watch items (chapter 14's length, round 5's selection guide as its front door, round 4's cards as HTML text) | Round 4's build is where drawing changes belong |
+
+
+### Data visualization lead, board 2
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1563 | The decisions file's schema is the data lead's of 17:09 UTC with the board builder's six additions (`state`, `spec` and `rule`, picture `role` and `element`, `facts`, `rows` fields) | Agreed within the brief's first 20 minutes; the builder prints only what the file holds |
+| D3-1564 | Board 2's Rule 01.9 and DR-229 counts come from `work/build/scripts/phase-3/board_2_data_lead_counts.py`, which also checks every form's tier and every spec's files against its plan row and writes `counts` and `checks` into the decisions file, keeping the editor's `note` words | One script the main session can rerun; the brief asks for a recount by script named in the file |
+| D3-1565 | DR-229's count takes election data as the elections and representation domain plus reported voting counted under taking part; campaign money (S73, S76, S36, Rule 14.13's plate) counts under money, as ruling (g) set | One reading of "election or voting data" (Gate 2 question 1) across the chapter |
+| D3-1566 | D3-689's test is applied to forms built in rounds 1 to 3; Phase 2's specimens approved on board 1 and the rule plates are listed with the test's result and are not moved by it | DR-229 keeps every form and its approved drawings; the test governs new picks |
+| D3-1567 | The forms-changed list names nine specimens changed after their plan row was signed off (S73, S76, S78, S80, S59, S54, S55, S41, S20) and lists the seventeen data plan changes separately; S04's and S05's margins files are left out | Their margins files (P7-037, P7-038) date from round 0, before board 1 showed both drawings |
+| D3-1568 | Sketch 14.124's two fills differ by 10 or more on the kit's key test (`KEY_LIGHTNESS_MARGIN`, the smaller of the CIE L* and grayscale luma gaps); the blue is `#3A8AC4` | The places carry no words, so a grayscale reader needs the gap the guide asks of any key told apart by fill alone |
+| D3-1569 | A2 to A5 are signed off on a field-by-field comparison with the committed state before Part A (`33dc30a3`), every figure in each changed string listed old and new, and a `cmp` of all 125 data files | "No figure changes" is checked by script, not by reading |
+| D3-1570 | The 15 of D3-1308's 21 atlas source lines that print nowhere stay as stored; board 2 says so | DR-257 fixes what a reader meets; a future spec that prints one takes a `snapshot_once` variant |
+| D3-1571 | S12's recommendation is the stacked tile at every desk width, held in a 618 px frame that scrolls where the column is narrower; it replaces my first draft's recommendation of the 1,024 px frame | The cartographer's measure: the stacked tile fits from 618 px (a 1,104 px window), shows the whole map at 1,440 px and scrolls about 60 px at 1,024 against 468; C-M2 point 3 |
+| D3-1572 | The loop label question (D3-912) is recommended "yes" for loop drawings in chapters 11 and 15 and for V7.1; Civic Line icon CL-026 keeps its approved name, "Executive unilateralism", in chapter 10's library and wherever the icon is named (revised 19:33 UTC) | The titles carry no verdict and need no gloss; DR-144 settled the icons and their names, so renaming CL-026 would need Dustin's own named approval, and the studio asks for none |
+| D3-1573 | RL-3 is recommended off the V7.1 list | No atlas record names joint fundraising; the fact lives in the two FEC sidecars |
+| D3-1574 | The issue title item asks one test for all 18 atlas titles with an effect verb, whoever the actor | DR-93; five concern the executive and thirteen do not, and a test applied to five alone would be one standard for one side |
+| D3-1575 | S74's measure line and caption drop the snapshot date its grade and source lines print, and S71 prints the four constitutions' addresses in place of a studio path; both signed off before A6 | D3-1485; no studio path in reader text (H11); words only |
+| D3-1576 | S21, S09 and S10 curl the atlas's straight apostrophes in their tables in the fix round, not before A6 | D3-519's printed-words rule; A6 runs on the state signed off at 17:35 and 17:39 |
+| D3-1577 | S73 comes back to 14,106 bytes or under with its frame by the editor's least cut, recommended as note 4's last sentence, since the table caption already names the data file | D3-1328 bars a round 3 plate from growing past the share; S73 grew 42 bytes over it with A1's phrase; D3-1412's exception covered a plate that shrank |
+| D3-1578 | Part A is closed at 17:48 UTC, with S73's trim as a follow-on that does not reopen it | Every A item and the two later editor changes are signed off and A6 passed |
+| D3-1579 | The decisions file is `state: "signed off"` from 17:35 UTC, and the editor edits its words in place from 17:39 | Every panel written; figures checked by script; the editor owns the words (brief) |
+
+### Data visualization lead, board 2 fix round
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1580 | S03's and S08's first notes keep Alaska's unofficial count of November 10 until all three measures they name are certified, then change once | Dated and true on its date; a second unofficial count would change two board 1 drawings twice for one outcome; one date and one rule for all three measures (DR-93) |
+| D3-1581 | Panel 1 opens with five numbered replies from the decisions file's `replies` list | B2-M1: Dustin's answers first, each with its recommendation and a link |
+| D3-1582 | The creative director's view on S12 quotes its board 2 review, not the round 3 risk note | B2-M2: the old note gave 723 px, since measured at 618 |
+| D3-1583 | S12, S16 and S78 state what the 326 px phone drawing shows, and coding every state at 326 px goes to round 4 as a guide fix | B2-M3: the items claimed every code on a phone where the pictures beside them leave three or four to a note |
+| D3-1584 | S12's 1,024 px column is 558 px and the frame's scroll 466 px, from the measure file alone | B2-S8: one figure per fact |
+| D3-1585 | Each V7.1 item states its place on the October list in its first fact | B2-S4 |
+| D3-1586 | Each count names its base in a caption, 108 for Rule 01.9 and 97 for the election table | B2-S7 |
+
+### Editor, board 2
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1587 | The nine data file lines end on `{data_file}` after "in", each in a full clause, none opening a sentence | D3-1529; the long phrase falls last, where a listener expects the new fact (W01) |
+| D3-1588 | S69's table caption drops "from the Clerk’s file of November 3, 2026" as it takes `{data_file}` | Call 9 (D3-1485): the grade line holds the snapshot date and the measure line names the Clerk's file; it also keeps S69 at or under its old weight, which D3-1328 bars from growing (D3-1412) |
+| D3-1589 | Rule 14.14's "as Rule 18.14 asks of a download" and the chapter's related-chapters line for chapter 18, "tables and named downloads", stand this pass | Both name chapter 18's rule on downloads and promise no file; they live in `phase3_ch14_rules_build.py`, outside the spec and entry word fields this pass lets me edit, and the session's permission check refused the edit |
+| D3-1590 | Sketch 14.124's caption and first `<desc>` name each party's places, their count and their color | DR-255: with the drawing in red and blue, a reader who hears the alt or sees grayscale gets the colors with the counts that carry the lesson |
+| D3-1591 | S16's note 3 and alt take DR-256's words exactly as the brief quotes them, read from the brief by script | Dustin's answer; every figure checked by script against S16's data |
+| D3-1592 | S10, S21, S23, S38, S39, S60 and S63 print the research lead's `snapshot_once` source variants, grade lines unchanged | DR-257 under D3-1327 and D3-1493: the snapshot date once in the source line, in S68's and S74's form |
+| D3-1593 | S74's measure line and table caption drop "as of October 15, 2026", which its grade and source lines hold | Call 9 (D3-1485) binds round 3's specs and missed S74; taken before A6 so the board's pictures carry it (the data lead's A5 note) |
+| D3-1594 | S73's note 4 drops its last sentence, "Each, with its transfers, is in {data_file}." | The data lead's ruling: S73 grew 42 bytes past D3-1328's 14,106 with A1's phrase, and its table caption already names the data file |
+| D3-1595 | The board's words keep decision codes, ledger numbers, file names and review codes off the board's face, name each specimen and atlas code at first use in a panel, and take typographic apostrophes | The brief's words rule (codes and paths only in the small reference lines) and H11 |
+| D3-1596 | The data lead's view on S12 gives the data lead's own reasons, from its notes, in place of repeating the recommendation | The board printed the recommendation twice, word for word |
+| D3-1597 | S71's State statute row prints the four constitutions' web addresses in place of a studio file path, through a `typography.replace` pair | No studio word or path in reader text (H11, chapter 02's scope); the addresses are section SS's own, in the form the other rows print |
+
+### Editor, board 2 fix round
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1598 | S06 and S42 curl the atlas's straight apostrophes through `typography.curl_quotes`, the data and CSV as stored; S37's is held | The data lead's 18:32 ruling: each drawing byte-identical for S06 and S42; S37's drawn row labels would change, which the ruling says to hold |
+| D3-1599 | S21, S09 and S10 curl the atlas's straight apostrophes in their tables through `typography.curl_quotes`, the data as stored | The data lead's answer of 17:39 (D3-519); every drawing equal byte for byte |
+| D3-1600 | S73's reach names each side: "the Democratic funds 54 and the Republican funds 56" | B2-S9, DR-124: a count read from both sides names both |
+| D3-1601 | DR-258's reason names Concepts V2 and the Atlas Visual System as the pages the 668 comparisons needed | B2-S10: none of the 668 read V5 Polished, as the item's own fact says |
+| D3-1602 | Claim IDs and the V7.1 list's item numbers leave the items' words for their reference lines; "sidecars" becomes "the notes kept with the two FEC data files" | B2-S1: plain words on the face |
+| D3-1603 | S03 and S08 keep their November 10 count, and their words do not change | B2-M5: the data lead's R-01 recommendation keeps the count until all three measures certify |
+| D3-1604 | A drawing "carries" its state codes, never "codes" them | W01: the verb read as studio shorthand |
+| D3-1605 | Sketch 14.124's two board pictures take alts that say what each drawing shows | B2-S3: the alt named the item in place of the picture |
+
+### Research lead, board 2
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1606 | A5's variants go to the seven specs whose source line prints October 15, 2026 twice (S10, S21, S23, S38, S39, S60, S63), and the brief's literal test (grade and source line both printing it) is reported beside them | DR-257 names the date printed twice; the literal test also catches S68 and S74, which round 3 already fixed, and misses five of the seven |
+| D3-1607 | Variants are added only for the six lines a spec prints, not for all 21 stored lines | The other 15 print nowhere on the page (counted by script); a variant no spec reads adds weight to a sidecar and nothing for a reader |
+| D3-1608 | Where the stored period said the atlas checked something, the variant keeps it as "The atlas checked ... on that date." | Dropping "432 of the 433 claims checked" would lose a fact the line was written to carry (ST S6, D3-519); each count checked against the model |
+| D3-1609 | S38's variant is named `domain_d01_snapshot_once` | `v7-issues` holds ten domain lines, so one `snapshot_once` key could not say which it replaces |
+| D3-1610 | The variants are written into the sidecars by a scratch script, and the two writer scripts' patches are proven in scratch and requested (R-B2-1) | This pass's scope lets me write sidecars and not scripts; a patch proven byte for byte lets the owners apply it without rework |
+| D3-1611 | RL-3 is reported as having no atlas record | 0 model fields name joint fundraising; the finding is about the FEC's API and lives in the FEC sidecars |
+| D3-1612 | Q-18 and D3-260 are reported as one item | Both compare I062's KFF figure with CMS's count; the facts are the same |
+| D3-1613 | The headings reread tests a short list of judging verbs (weaken, narrow, threaten, drain, dilute, harm) and reports every hit | Nearly every issue title states an effect in sentence form, so a test of "states an effect" would list almost all 194; the list is printed in the output so the data lead can widen it |
+| D3-1614 | R-01's Alaska result is read from the Division of Elections' own unofficial summary today; Massachusetts stays on round 0's secondary reading | The Secretary of the Commonwealth's statistics site lists no 2026 question yet, and neither state has certified |
+| D3-1615 | The Atlas V3.2 package is used only to trace where figure 5's and figure 7's wording came from, and named where used | The main session's word: V7 is the only model of record (DR-46), and V3.2 is no source of values |
+| D3-1616 | The full rerun runs Phase 0's scripts unchanged but for their input and output paths, and compares the whole output with Phase 0's file byte for byte | A byte-for-byte equal output proves every coded comparison gives Phase 0's result, with no family rebuilt by hand |
+| D3-1617 | The Circuit's 13 bundle counts are read by position and reported as this rerun's own reading | Phase 0's table counts them and its script has no code for them; a reading by layout is weaker than Phase 0's code and is labeled so |
+| D3-1618 | The rerun writes `-Full-Data.json` and `-Full-Table.md` and leaves round 3's re-check files as they are | The main session named the Full files; round 3's are the record of D3-1094 |
+| D3-1619 | `research_v7_extract.py` carries the `snapshot_once` variants of `v7-issues` (as `domain_d01_snapshot_once`), `v7-claims-drug-prices`, `v7-numbers` and `v7-issue-status-checks-on-power` beside each printed line, by the diff proven in scratch; `data_round0_build.py` carries the other two (the engineer applied the same proven diff) | R-B2-1, approved by the main session: a rerun of either writer now reproduces today's sidecars, shown by rerunning both for real with `git diff` on `work/build/data/` empty |
+| D3-1620 | The full rerun lives in the repository as `work/build/scripts/phase-3/research_atlas_recheck_full.py`, one script folding in the scratch steps `full_extract.py` and `full_reconcile.py`, with its root found from its own path and the upload and scratch folders as arguments; its table names it | R-B2-2, approved by the main session: chapter 15's table at board 3 can be rerun; the JSON it writes is byte for byte the one already filed, and only the table's first paragraph gained the script's name |
+
+### Engineer, board 2
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1621 | A1 needs no kit or generator change: `words.json`'s `data_file` already reads DR-254's phrase, and the export check already reads every exported row back | ST-M2's placeholder (D3-1448) was built so Dustin's answer changes one string and no spec |
+| D3-1622 | A3's exemption lives in `guide_build.py`'s literal color scan, named by specimen and half (`LITERAL_HALF`), not in the manifest's `check_exempt` | `check_exempt` covers a whole stage and is for failure plates only; DR-255 exempts the misleading half alone, and the better half keeps the check |
+| D3-1623 | The exemption names the half by its place in the pair (the first `<svg>`, the one under the do-not-publish bar) and applies only while the file is a pair | It needs no new attribute in the cartographer's file, and a file that stops being the avoid pair falls back under the check |
+| D3-1624 | `guide_check.js` and `checks.js` stay unchanged | On the real drawing neither reads the red or blue as a guide ink or finds a fault; DR-255 asks for an exemption only where a check fails or warns |
+| D3-1625 | The exemption's proof is a self-test scenario of the build, with three planted faults caught | The brief allows changing nothing else in the check; a test changes no check and keeps the exemption from widening unseen |
+| D3-1626 | A3 was tested on a scratch page of chapter 14 trimmed to rules 14.7 and 14.124, with the real guide check and kit check | The brief keeps the whole-page guide check with the main session; the trimmed page runs the same checks on the sketch in 20 seconds |
+| D3-1627 | A table caption's two hidden copies (the table's name and the summary's words) fill `{data_file}` as the visible caption does, with a kit self-test case | The editor's find: a screen reader heard the braces in S69, S70, S72 and S73; the fix sits in `kit-build.js`, off the page |
+| D3-1628 | `data_round0_build.py` takes the research lead's R-B2-1 diff, once A5 was signed off whole and after a scratch rebuild proved 34 of 34 files equal | The script would otherwise drop S10's and S23's `snapshot_once` variants on its next run; the script is mine to change |
+| D3-1629 | Each Part A plate's "before" is measured on a strict build of `33dc30a3` in scratch, its chapter 14 checked by its share (13,322, the committed figure) | A page measure on both sides, by one script, is the figure D3-1328 and D3-1412 were set in |
+| D3-1630 | `plate-share.json` keeps the strict build's 13,230 | The brief restores it only if the build rewrote nothing but its timestamp; the share changed with the chapter |
+
+### Cartographer, board 2
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1631 | Sketch 14.124's misleading half takes red `#CC0000` and blue `#3A8AC4` as literal fills, with a 1 px context edge on every place and swatch | DR-255: a plain news red and blue, measured against every value in both token files (ΔE 2000 at least 11.9 from every guide ink), apart in grayscale and by the kit's key test (12.6); the edges carry the blue on Newsprint |
+| D3-1632 | Party A stays red and Party B blue, as the signed-off key named them | The least change; Party B's few large places in blue match no real map's pattern, so the sketch points at no one party (DR-124) |
+| D3-1633 | The key reads "Party A, red" and "Party B, blue" | The places are now red and blue, so "shown red" no longer fits; each line names its color for grayscale (the editor kept them) |
+| D3-1634 | The board's gray "before" is also given as a standalone page of the plate from the 15:29 strict build | The copied file is a fragment that draws only with the guide's styles around it |
+| D3-1635 | The stacked tile picture draws code over figure at the kit's 16 px leading, the arrow 2 px under the figure's box or at the tile's foot less 10 px where there is room, on board 1's scale rule | The least change to board 1's tile that keeps encoding, scale, inks and words (C-M2 point 3) |
+| D3-1636 | The 1024 px window's picture draws the stacked tile though it does not fit (`labels.stack: "force"`) | The board must show the route as it would look there, not the form's gray fallback; the notes and measure file say it fails |
+
+### Board builder, board 2
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1637 | Each chart's desk and phone pictures are the kit's own captures, made at the window that gives the drawing width the guide draws at a 1440 px and a 390 px window, measured on today's strict build: 720 px reading charts at the kit's 1440 px window, the 723 px charts (the column at 1440 px) at a 787 px window, S12's 1,024 px stage at 1,088, and every phone drawing (326 px) at a 358 px window | The brief asks for the drawings "as the guide draws them"; the kit's own 1440 and 390 px windows draw 869 or 1,024 px and 358 px, wider than the guide gives, and S16's phone codes differ at 326 and 358 px (D3-1527) |
+| D3-1638 | Labels say the reader's window and the drawing's width ("At a 390 px window · 326 px drawing"), read from each chart's check file | The label must say what the picture is; the kit window that made it is a method detail kept in the figures file |
+| D3-1639 | A board 1 chart says it changed since board 1 where the decisions file's board 1 group names it (in an item or a row), with a link to that item; otherwise it says whether its drawing at a 1440 px window on Newsprint matches board 1's pixel for pixel (the kit's drawing-only file at twice the pixels against board 1's), and a difference panel 1 does not name warns | A first test by each drawing's bytes called 14 of 16 changed: the kit's forced-colors marks and export details change the bytes of a drawing a reader sees unchanged. Panel 1 is the data lead's list of what changed, and a pixel test of the visible drawing guards it |
+| D3-1640 | Within each family the forms to avoid come first, then the plan's order | The brief: "the avoid pairs marked and first in their family" |
+| D3-1641 | A sketch form prints the entry's "Use it when" where a chart form prints its reader question | The plan leaves the reader question empty for sketches, and the entry's own line answers the same need |
+| D3-1642 | Each chart takes three pictures: Newsprint, desk and phone; Charcoal, desk and phone; and one grayscale proof of both grounds and both widths, two by two | 84 charts at three pictures, with 28 sketches, 15 rule pictures and panel 1's, keep the folder near the brief's 300 files |
+| D3-1643 | Each chart's grayscale proof sits in a fold under its Newsprint and Charcoal pictures, labeled "Grayscale proof of both grounds" | Shown open, the 84 proofs (about 3,000 px tall each, two grounds at two widths) would add about 250,000 px to a page Dustin browses; a fold keeps them one click away at true size, and a closed fold's lazy images do not load until opened |
+| D3-1644 | The composed pictures are lossless WebP, pixel for pixel the captures (checked by decoding four against their PNGs), not PNG | The first run's PNGs came to 124.55 MB for the folder, past the brief's 120 MB; lossless WebP holds the same pixels at about a fifth of the bytes for color pictures and a half for gray, and it is a standard web image type |
+| D3-1645 | The page table is the guide's own table from the strict build, with its caption, its classes and data attributes left out, in a fold under each chart | Live text as printed, with no second source to drift |
+| D3-1646 | The strict build's rewrite of `plate-share.json` is put back after each run when the file carries this build's own timestamp | The board's build is a scratch build; the file belongs to the guide's own builds (D3-1500), and this builder writes only its two scripts, the board folder, its notes and scratch |
+
+### Board builder, board 2 fix round
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1647 | Panel 1 opens with the decisions file's `replies`, each line with its recommendation and a same-page link, then the reply line; the group navigation goes, since the replies link to their items and groups | B2-M1: board 1 named its answers, recommendations and reply line in its first screen |
+| D3-1648 | The answered group folds closed under one heading with a "Done" chip and its count; an answered item whose recommendation reads "Done." prints no "Recommended" line | B2-M1 and B2-S5 |
+| D3-1649 | A decision item's table of more than six rows folds closed under "The N places, line by line" | B2-M1's long "Answered" tables; the moves and plan-changes lists fold the same way, which shortens panel 1 without hiding a decision |
+| D3-1650 | The cover's minutes line counts panel 1's words with every fold closed (summaries kept, reference lines left out) and divides by 200, rounded | Call 1: measured by word count at 200 a minute |
+| D3-1651 | Pictures may carry `row` (side by side), `fold` (one closed fold at the item's end) and an `element` with a selector inside it | B2-M2's two rows and fold, written by the data lead in its own file |
+| D3-1652 | A phone picture's label gains its drawing width, read from the guide's measure or board 1's check file, unless the label names one | B2-M3: every phone picture labeled by its drawing width |
+| D3-1653 | A picture's alt text is the data lead's `alt`, else the label, the chart's form and id, where it comes from, the window and the chart's title | B2-S3: say what each picture shows |
+| D3-1654 | An item about charts with no pictures of its own shows panel 2's Newsprint picture of each chart, the same file, under its recommendation with a link to the form | B2-M7; an item covering two charts (S54-S55) shows both |
+| D3-1655 | Every weight is the build report's bytes as placed plus the plate's frame and what the page adds inside it, from the engineer's `20261113_Plate-Bytes.json`; the ceiling prints where the engineer's file sets it on that whole measure (round 3, 14,106) | B2-M4 and call 4; the kit's 15,000 hard limit is not the ceiling that binds (the data lead's sign-off) |
+| D3-1656 | The page sum uses this build's bytes as placed with the engineer's frame, and warns where the engineer's as-placed figure differs | The frame does not move when a chart's words do; the warning says when to remeasure |
+| D3-1657 | A board 1 drawing that differs from board 1's and panel 1 does not name, and a "No" in the election table whose test was not applied, fail the build (exit 1, page still written); a test not applied prints "Not applied" | B2-M6 and call 6 |
+| D3-1658 | The count captions name their base from the decisions file: 108 examples (97 built and round 4's 11 as planned) by topic and by state; the 17 of the 97 built for election data | B2-S7 and the data lead's sign-off |
+| D3-1659 | The quick check line says it ran on the committed build before the answers landed, with this board's build beside it; Not tested counts every link to the preview and the entries they reach | B2-S6 |
+| D3-1660 | A chart the guide shows in a scrolling frame is labeled "the whole N px drawing, which the guide shows in a frame that scrolls" | B2-S8: S12's picture is the drawing the frame scrolls through |
+| D3-1661 | The cover's minutes line gives both figures: the words from panel 1's top through the reply line (lede, the five replies, the reply line) and every item with its folds closed, each at 200 words a minute | The coordinator's change after run 11: the time to answer and the time to read every item, in one sentence |
+| D3-1662 | Pictures in one `row` that do not fit the column side by side at true size wrap, one under the other, inside one bordered row | S12's frame (946 px) and stacked tile (723 px) need 1,693 px at true size, wider than the 1,312 px column at 1440 |
+| D3-1663 | A decision item's entry link takes a 44 px target | Run 13's axe target-size failure: the link sat alone in its line beside the new picture fold |
+| D3-1664 | The Scores panel's board row reads `20261113_Board-2-CD-Rescores.json` as the rescore beside the first score, as rounds 1 to 3 do, with one line on what each found | B2-S14 |
+| D3-1665 | A Tested line waiting for its file names that file in the panel's chip ("the quick guide check's results file") | B2-S14: the chip read "the owners' notes" where it waited for the quick check |
+| D3-1666 | S06's and S67's weight lines name apart the bytes the build adds inside the chart round its atlas IDs (360 and 48, the engineer's `added_on_page`); the ten-heaviest table keeps one "Frame" column and says which charts it also counts them for | B2-S13 |
+| D3-1667 | An item whose id names two charts (S54-S55) shows both of panel 2's Newsprint pictures even where it names one `spec` | B2-S15 |
+| D3-1668 | The content file keeps the editor's two alts for sketch 14.124's pair (its 18:26 words), keyed by each picture's file, read where the decisions file's picture carries none | B2-S3: the alts the editor set in the decisions file left with the pictures the data lead replaced for B2-S2 |
+| D3-1669 | Every link to the guide preview is checked against the ids of version 9's published page as committed (the content file's `preview_page`); a missing anchor fails the build, and the Tested panel says how many links and entries were found | The coordinator asked that the board's links resolve against version 9's anchors; the Not tested line that said version 9 was unpublished gives way to one on the links not clicked in the host |
+| D3-1670 | Under 760 px a side-by-side chart frame opens at its right end, on the phone drawing (`direction: rtl` on the frame), with a line above it saying so; composed Charcoal pictures take a 16 px Charcoal margin | B2-S12; one picture a ground keeps the folder near 300 files, where separate phone pictures would add 168 |
+
+### Cartographer, board 2 fix round
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1671 | S12's 1024 px stacked picture draws the stacked tile at 618 px in the guide's own frame, swapped into the strict build in the page's memory | B2-M2 asks for the stacked tile "in its 618 px frame" beside the frame as built; the same page, frame and crop make the two comparable |
+| D3-1672 | The as-built frames are photographed too, with the same crop (the frame's box) | The builder can set two pictures of one crop side by side |
+| D3-1673 | Sketch 14.124's before and after are photographed from one build, at one window and one crop | B2-S2: like for like, 868 by 545 each |
