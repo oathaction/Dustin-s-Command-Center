@@ -2,7 +2,7 @@
 editor's chapter file and entries, and the makers' entries and specs (Phase 3, round 1; the round 1 brief, Engineer 3).
 
 Usage (from the project folder):
-  python3 -I work/build/scripts/phase-3/phase3_ch14_build.py [--rounds 1,2,3]   write the files below; exit 1 on any fault
+  python3 -I work/build/scripts/phase-3/phase3_ch14_build.py [--rounds 1,2,3,4]   write the files below; exit 1 on any fault
   python3 -I work/build/scripts/phase-3/phase3_ch14_build.py --check        fail if a file on disk is not what this writes
 
 Reads   work/handoffs/phase-3/20261112_Chapter-14-Plan.json (every number, tier, round, spec and owner; R1)
@@ -14,7 +14,7 @@ Writes  work/build/guide/chapters/14-data-visualization.json
         work/build/guide/specimens/s-14-sNN.html (one fragment per entry specimen: the chart placeholder, contract R1-C3)
         work/build/guide/entries/14-example-log.json (Rule 01.12's log for chapter 14, checked against DR-229's limits)
 
-The chapter holds rules 14.1 to 14.14 and every entry of the rounds built (--rounds, default 1,2,3 since round 3, DR-253) whose entry file and
+The chapter holds rules 14.1 to 14.14 and every entry of the rounds built (--rounds, default 1,2,3,4 since round 4, ED4-6; 1,2,3 from round 3, DR-253) whose entry file and
 spec or sketch have landed; the plan's other numbers go into "planned_rules", so a citation of a rule not yet built is no
 fault and prints unlinked until it is. A sketch entry's caption is the first sentence of its sketch_alt (R2-3). An entry
 is a rule with "entry": true: its plate is its specimen, it takes no failure plate (DR-240), and when a spec serves two
@@ -275,7 +275,7 @@ def outputs(rounds):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--rounds", default="1,2,3", help="the rounds built, as a comma list (default 1,2,3: round 3 is being built, DR-253)")
+    ap.add_argument("--rounds", default="1,2,3,4", help="the rounds built, as a comma list (default 1,2,3,4: round 4 is being built; ED4-6, as DR-253 set round 3's)")
     ap.add_argument("--check", action="store_true")
     a = ap.parse_args()
     rounds = {int(x) for x in a.rounds.split(",")}

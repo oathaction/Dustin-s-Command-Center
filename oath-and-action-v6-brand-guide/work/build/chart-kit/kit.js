@@ -1481,7 +1481,8 @@
       root.addEventListener('beforeprint', function () {
         K.draw_all();
         K.print_slices(root.document);
-        opened = Array.prototype.slice.call(root.document.querySelectorAll('figure.oac-fig details.oac-eq:not([open])'));
+        // round 4 (the component engineer's note): a second beforeprint before afterprint adds to the list, never replaces it
+        opened = opened.concat(Array.prototype.slice.call(root.document.querySelectorAll('figure.oac-fig details.oac-eq:not([open])')));
         opened.forEach(function (d) { d.setAttribute('open', ''); });
       });
       root.addEventListener('afterprint', function () { opened.forEach(function (d) { d.removeAttribute('open'); }); opened = []; K.print_unslice(root.document); });
