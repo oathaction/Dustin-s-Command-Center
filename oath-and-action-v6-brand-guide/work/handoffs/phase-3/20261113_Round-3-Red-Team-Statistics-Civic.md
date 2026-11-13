@@ -232,3 +232,109 @@ Terms are explained at first use for a funnel's base (share of renewals due), a 
 - Created: `work/handoffs/phase-3/20261113_Round-3-Red-Team-Statistics-Civic.md` (this report).
 - Scratch only, outside the repository: scripts, `page.json`, `b1.json`, captures and downloads in `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-review/statistics-civic/`.
 - No other file modified.
+
+## Second pass
+
+November 13, 2026, from 06:53 UTC (clock read from `date -u`).
+- **Build read:** the fix pass's closing strict build, copied to `.../statistics-civic/pass2/guide.html` (11,231,784 bytes, 0 warnings in its build report).
+- **Read first:** the fix brief with its addendum; the data lead's "Review fix pass", the corrections to its round 3 rulings and "Sign-off, review fix pass"; the owners' calls D3-1319 to D3-1497 as the decision log gives them.
+- **Method:** every figure below comes from a script I ran with `python3 -I` on `work/build/data/` or the page, or from records I fetched or read today.
+
+### New score
+
+**3.5 of 5.**
+- Every item I raised is closed, closed another way under a ruling, or waits on Dustin. Every figure the fixes changed rebuilds exactly by script.
+- One new Must fix keeps the lens from 4. S73's fix now names the funds as Kamala D. Harris's for the whole cycle. The FEC's itemized records show that the fund paid $233.2 million of what it sent the campaign and the DNC before President Biden withdrew.
+
+### Item by item
+
+| Item | Status | What I checked |
+|---|---|---|
+| ST-M1, S73's empty "From" and "Report line" | **Closed** | All 20 grouped rows name their fund ("Harris Victory Fund" … "Trump Bilirakis Victory Fund"), and both refund rows print "28C, refund". Read from the page's markup and in Chromium with scripts on |
+| ST-M2, the download | **Waits on Dustin** (D3-1321, D3-1334) | The promises stand on the page unchanged: the captions of S69, S70, S72 and S73; the notes of S73, S74, S81 and S83; entry 14.120. The page holds no CSV link (no `text/csv`, no `.csv` link). S81 keeps its class-only island by ruling (D3-1335). The engineer's check that each export holds its columns I did not repeat |
+| ST-M3, S68's bare numbers | **Closed** | All four bodies with no line print "None drawn"; the two lines print their words |
+| ST-M4, S82's table and phone note | **Closed** (D3-1336, D3-1457) | The "Closest races, under 5 points" column names 36 seats in 21 states, 22 Democratic and 14 Republican, each with its printed margin. That equals my rebuild from `clerk-house-results-2024-by-district`, half up to one decimal. The 50 rows sort by name, and the wins sum to 215 and 220. `codes_note` now ends "The table gives each state’s seats and names its closest races." "names every seat" appears nowhere on the page |
+| ST-S1, S83 at the phone's unit | **Closed** | Note 1 gives 1,354 counties and 2.8 million at 10,000 a dot, and 2,426 and 15.4 million at 50,000. Both rebuild (2,841,136; 15,370,827) |
+| ST-S2, S76's transfers and remainder | **Closed** (D3-1338, D3-1339) | I rebuilt every line of `fec-house-campaigns-2024-money-in-out` from 1,926 candidates. Per-candidate netting gives $175,103,772.47 in and $18,313,248.58 out. In $2,626,481,617.75, out $2,624,948,459.72, remainder $1,533,158.03 (0.058 percent). Receipts $2,271,178,361.46, individuals 60.9 percent, so the title's 61 holds. 297 campaigns do not balance. Note 2 gives no cause. The out band draws, as a 1440 px capture shows |
+| ST-S3, gray steps in entries 14.119 and 14.124 | **Closed** (D3-1340) | Both read "steps of one ink"; no "gray" describes a margin |
+| ST-S4, Puerto Rico and the non-voting members | **Closed** (D3-1341, D3-1470) | S78, S81, S83 and S84 each say the publisher's table covers Puerto Rico (S84: Guam, Puerto Rico and the U.S. Virgin Islands). I read the research lead's API answers in the fix scratch folder: B28002 and S2801 for state 72, B19013 for 78 municipios, CBP 2023 for 78 municipios and the state. S82 note 4 names all six non-voting members |
+| ST-S5, S78's alt and entry 14.117 | **Closed** (D3-1342) | The alt names eight states whose printed intervals stay in the top class (CT, HI, MD, MA, NH, NJ, UT, WA; Washington's ends at 79.0 exactly). The five low states named all sit under 71 across their margins. Entry 14.117's `why` reads "within one class of what the survey can tell" |
+| ST-S6, S73's comparison | **Closed another way under D3-1330 and D3-1361** (BC-M1) | All seven designated joint fundraising committees are drawn: Harris $955,939,029.74 to 54 committees, Trump $679,818,943.47 to 56 (details below). The new attribution fault is ST2-M1 |
+| ST-S7, S81's county count against a household median | **Closed** (D3-1345) | The note gives 549 of 3,143 counties at or above $80,734, which rebuilds |
+| ST-S8, accents in the roll call file | **Closed** | The file prints Barragán, García (IL), Sánchez and Velázquez. All 433 House rows equal the Clerk's roll call 285: same SHA-256 prefix, dfbc7b2e76b87b86. The research lead's copy of Senate vote 618 (SHA-256 prefix ab81bac6e53d98c8, the frozen raw's) equals all 100 Senate rows. Only first-name spacing differs in three of the XML's names. The page island carries no member names, so nothing on the page moved |
+| ST-S9, grouped tables sorted by code | **Closed** (D3-1346, D3-1436) | S81, S82 and S83 run Alabama, Alaska, Arizona, Arkansas |
+| ST-S10, "class" and "cloture" | **Closed** | Rule 14.9 and entry 14.117 define a class as "a range of values that share one shade". S71's cell reads "changed the vote needed to end debate on nominations in 2013 and 2017". "Cloture" stays only inside the quoted title of the Senate's page and its link (D3-1389) |
+| ST-S11, S65's release | **Closed** (D3-1376) | The source line names "October 2024 final release" |
+| ST-S12, S78's crossing count | **Closed** (D3-1343) | The note gives 11 states and DC on the printed figures. My count on the printed figures with closed intervals gives the same 12 places |
+| Q2, the avoid sketch's colors | **Waits on Dustin** (D3-1322) | The part ruled now has landed. At 1440 px in the guide, Party B's five large dark places outweigh Party A's seven small light ones, the better half keeps 7 and 5 filled squares, and the caption says a party that wins large places looks bigger than its count |
+| Q3, S16's range words | **Waits on Dustin** (D3-1323) | Unchanged on the page, as ruled. The data lead's draft names Oregon as well as Minnesota. I confirm by my own round 3 script: DC to Minnesota is a 3.6-point gap against a 4.39 margin, so the draft is the right one to put to him |
+
+### Figures the fixes changed, rebuilt by script
+
+- **S73, `fec-jfc-transfers-2024-all-committees`, line 22.**
+  - The 57 rows of the old file sit inside the new one unchanged, and `fec-jfc-transfers-2024-by-node` equals the new file in all 125 rows plus its four columns.
+  - Harris, three funds: $955,939,029.74 to 54 committees. The campaign $533,666,265.32; the DNC $240,845,000.00; 51 state parties (50 states and DC) $181,389,124.21; Tammy Baldwin for Senate $38,640.21.
+  - Trump, four funds: $679,818,943.47 to 56. The campaign $407,754,931.07; the RNC $163,847,553.60; 50 state parties (48 states, DC and Guam; Hawaii and Vermont absent) $69,874,339.21; four others $38,342,119.59.
+  - Line 21B to drawn committees: $27,342,597.86 and $12,660,108.41. Line 28C refunds: $81,000.00 to two and $4,000.00 to four.
+  - The title, alt, node names, notes and all 20 table rows match.
+- **S76:** above.
+- **S82:** above.
+- **S70.** Its data file did not change. The page table now opens with the Supreme Court's own row (1 court, 9 justices), then the courts of appeals (13, 179), then each circuit's district courts. The rows sum to 865, which is 9 plus 179 plus 677. The alt's 11, 29, 112 and 12 hold.
+- **S72.** Title: "passed the Senate 60 to 40 … and the House 222 to 209". Note 2: seven Democrats yes and one Republican no. The 20 named members are the same 20, in the record's order. All counts rebuild.
+- **S78:** above.
+- **Weight**, from the page with each plate's frame:
+  - No round 3 plate passes 14,106 but S69, at 14,556, which D3-1412 accepts. S82 is 13,915 and S73 13,504. Round 3's 20 plates total 207,864 bytes.
+  - From the build report: page projection 15,044,827 of 15,500,000; chapter 14 with the kit 2,223,832; map geometry 133,117 of 250,000; rules with the opener 175,678. Round 4's share per plate is now 13,592 bytes for 13 plates, down from 14,106.
+
+### New faults
+
+**ST2-M1 (Must fix). S73 credits to Kamala D. Harris money her fund sent while it was President Biden's.**
+- **Where:** S73 (14.104). The title reads "In the 2024 cycle, Kamala D. Harris’s three joint fundraising committees sent $955.9 million to 54 other committees". The drawing reads "Harris’s three joint fundraising committees … $955.9 million" and "Harris for President, the campaign $533.7 million". Note 1 calls the three funds Harris's for the cycle.
+- **What the record shows:** the Harris Victory Fund (C00744946) was the Biden Victory Fund, and the campaign (C00703975) was Biden for President, until President Biden withdrew on July 21, 2024. The sidecar already records the campaign's 14 payments under its earlier name.
+  - I fetched the fund's itemized Schedule B payments today from the FEC's API (`api.open.fec.gov`, schedule_b, 2024 cycle). They show $158,200,000.00 to the campaign in 9 line 22 payments before July 21, 2024, and $75,000,000.00 to the DNC in 21 payments.
+  - Their totals equal the frozen aggregates ($528,730,999.70; $189,315,000.00).
+  - So at least $233.2 million of the $955.9 million passed while the fund and campaign carried Biden's name. I could not sum the state party transfers before that date: the API refused further requests (HTTP 429).
+- **Why it matters:**
+  - The party test reads a title from both sides. Read from the right, the title gives Harris's side money raised and sent for another candidate.
+  - The Trump side has no such change.
+  - The round 3 title named the fund ("The Harris Victory Fund sent"). The fix's title names the nominee as owner for the whole cycle, which makes the claim. My round 3 review missed the period.
+- **Fix:** one note sentence from the itemized records, read the same way for both sides. For example: "The Harris Victory Fund was the Biden Victory Fund, and Harris for President was Biden for President, until President Biden withdrew on July 21, 2024; before then the fund sent the campaign $158.2 million and the Democratic National Committee $75.0 million." The title and the bar's head should name the funds as the committees that paid each nominee's campaign rather than as Harris's own for the cycle. The data lead rules the words, and the research lead freezes the before-and-after sums for all three of Harris's funds and their state party transfers.
+- **Owners:** research lead, data lead, maker B, editor.
+
+No other new fault in my lens. S82's `codes_note` says the table "gives each state’s seats". The "Seats" column went (D3-1328), but each row's two win counts sum to its seats, so the words stay true.
+
+### Tested, second pass
+
+- **The build:** the closing build copied to scratch. The 20 round 3 figures and S07, S12 and S16 extracted from its markup (titles, notes, alt, sources, tables, islands). Every changed word and table diffed against the round 3 build.
+- **Rebuilt by script from the frozen files:**
+  - S73 from `fec-jfc-transfers-2024-all-committees`, and the derived file against it;
+  - S76 from `fec-house-campaigns-2024-by-candidate`;
+  - S82's 36 close seats and `close_seat` column from the by-district file;
+  - S83's two no-dot counts;
+  - S78's crossings on the printed figures;
+  - S81's 549 counties;
+  - S72's counts and named members;
+  - S70's table sums.
+- **Records:**
+  - S72's 433 House rows against the Clerk's roll call 285, fetched in round 3 with the same hash;
+  - S72's 100 Senate rows against the research lead's copy of Senate vote 618;
+  - the research lead's Puerto Rico API answers;
+  - the Harris Victory Fund's itemized line 22 payments to the campaign and the DNC, fetched today from the FEC's API (two requests answered; the third, for the fund's state party transfers, refused with HTTP 429).
+- **Entries:** 14.9, 14.104, 14.116, 14.117, 14.119, 14.120 and 14.124, read by script for the words my items named. S71's route grid cells for FR and SS read.
+- **Chromium,** one browser, closed after the batch:
+  - S73's table read with scripts on;
+  - captures at 1440 px on Newsprint of S73, S76, S82 and sketch 14.124 inside the guide. I looked at S73, S76 and the sketch; the S82 capture I did not open.
+- **Weight:** plate weights from the page with frames, and the build report's weight block.
+
+### Not tested, second pass
+
+- Any capture on Charcoal, in grayscale, or at phone widths. S82's capture I took but did not open, and S78's phone tile grid I did not capture.
+- The kit's builder CSV for the nine charts whose words promise a file. The engineer's export check I read about and did not repeat.
+- The Harris Victory Fund's state party transfers before July 21, 2024 (the FEC's API refused with HTTP 429), and the other two Harris funds' dates.
+- The live CMS, Census and Department of Labor sources this pass.
+- The guide check, which stays with the main session, and a screen reader.
+
+### Change log, second pass
+
+- Modified: `work/handoffs/phase-3/20261113_Round-3-Red-Team-Statistics-Civic.md` (this section added).
+- Scratch only, outside the repository: `.../statistics-civic/pass2/` (the build copy, `page.json`, `diff.txt`, captures), `.../statistics-civic/dl/fec/` (the two FEC responses), and scripts `s73b.py`, `s72_senate.py`, `fec_pre.py` and `b4.js` in `.../statistics-civic/scripts/`.

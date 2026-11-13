@@ -971,6 +971,21 @@ Each case my round 3 rulings and R-S1's list asked the rule to keep, and where i
 
 No case was lost and none changed in meaning. Signed off. Not tested: the rule's plates and text in a guide build or capture; the editor's rules build and weight, which the editor reports.
 
+### Maker B's second pass, S53 and S59: signed off (07:01 UTC)
+
+At 07:00 I built both from the files as they stand with `oa-chart.mjs build s53 s59 --widths 1440,296,256 --out <scratch>/kit-e`, sweep on: 2 PASS, 0 faults, 0 warnings, both check files read.
+
+I looked at both at 256 and 296 px on Newsprint and on Charcoal, with S59's plot enlarged twice over on both grounds, and at 1440 px (S53 on Charcoal, S59 on Newsprint).
+
+- **S59.** On the narrow plots the first projected "4.1" gives way, and the history's last 4.1 and the 2029 median's 4.1 both print, clear of each other. The title's 4.1 and the 2029 range, 6.2 and 2.0, print at 256 and 296 px on both grounds. At 1440 px every median label prints as before, the 2026 value included.
+  - The table keeps every median, and nothing the title names leaves the drawing.
+  - Placement only: the data, inks, bands and words are unchanged.
+- **S53.** At 256 and 296 px "Ages 55 to 64: 41.2 million" runs on one line over the drawing, clear of "100+" and the top bars. At 1440 px it sits in the corner as before.
+  - The named band keeps the subject ink (RF-1), dark on Newsprint and light on Charcoal, and the reading guide's "the bars in the text’s ink" still describes it.
+  - Placement only.
+
+Not tested: either plate in a guide build; the 390 px drawings, which maker B reports byte for byte the same as before.
+
 ### Tested, review fix pass
 
 - Clock read with `date -u` at 04:24, 04:26, 04:30, 04:31, 04:32, 04:34, 04:37 and 04:38 UTC.
@@ -1093,3 +1108,4 @@ Not tested:
 - Cartographer's sign-off, 06:03 to 06:11 UTC: the two kit builds and the captures listed under "Cartographer, review fix pass: signed off"; S82's closest-races list and S84's table parsed by script (`tables.py`); the S78 and S16 "Not labeled" notes read from the SVGs; sketch 14.124 rendered with Playwright (`sketch124.cjs`, scratch). Not tested: forced colors on any map; S12's sideways scroll and S16 inside the guide; S83 by eye; sketch 14.124 on Charcoal.
 - S84's table after C-E7, 06:12 UTC: `build s84` with the sweep, PASS, 0 faults; its page table parsed by script (20 "No state law" cells, none with "..."); its CSV read by grep (20 "..." cells kept).
 - Rule 14.6 after R-S1, 06:45 UTC: the entry compared by script with its text at `8507b822` (rule paragraphs, spec rows by label and value, title, why, plates, related, builders).
+- Maker B second pass, 07:00 to 07:01 UTC: `build s53 s59 --widths 1440,296,256`, sweep on, 2 PASS, 0 faults; captures looked at as listed under "Maker B’s second pass, S53 and S59".
