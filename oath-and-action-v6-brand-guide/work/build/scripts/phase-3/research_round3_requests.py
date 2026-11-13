@@ -374,10 +374,14 @@ def judges(dl, write):
         'district judgeship remains: Pub. L. 118-203 of December 23, 2024 made the last ten permanent, and the courts '
         'counted 677 in every year from 2021 to 2025. The statute table lists 316 bankruptcy judgeships; the 29 more the '
         'courts count were not traced. No appointing president or party is recorded.')
+    # Round 4 (the editor's ED4-5, November 13, 2026): the line ends in words, and S91's variant leaves out the seats'
+    # date its grade line prints (IM-2), so a rerun writes both as they stand.
     m['printed_source_line'] = (
         'Source: U.S. Code, 2024 edition, 28 U.S.C. 133, 134, 152, 631 and 633; Administrative Office of the U.S. Courts, '
         'Judicial Business 2025, seats as of September 30, 2025, United States. Retrieved November 12, 2026. Seats include '
-        'vacant ones; the 677 district positions include the territorial courts’ 4.')
+        'vacant ones; the 677 district positions include four in the territorial courts.')
+    m.setdefault('source_line_variants', {})['seats_date_in_grade'] = m['printed_source_line'].replace(
+        ', seats as of September 30, 2025', '')
     for u in ('https://www.uscourts.gov/sites/default/files/2025-01/districtauth-with-endnotes.pdf',
               'https://www.uscourts.gov/sites/default/files/2025-01/districttemp.pdf'):
         if u not in m['url']:

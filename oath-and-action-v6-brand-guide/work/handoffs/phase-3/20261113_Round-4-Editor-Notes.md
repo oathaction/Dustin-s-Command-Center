@@ -260,6 +260,15 @@ Left as they are: S95's open dots' key line, which the card takes from S19's own
 
 Checks: `apply.py` (each phrase once in its field, only that field moved, by parse); `oa-chart.mjs build s91 s93 s95`, sweep on: 3 PASS, 0 faults, three check files; `maker_i_round4_derive.py --figures`: all passed, the data folder unchanged; `phase3_ch14_build.py --rounds 1,2,3,4`: 141 rules, 0 faults.
 
+**ED4-4 and ED4-5 carried into the specs (21:51 UTC),** after the research lead changed both sidecars (21:47 to 21:50) and at the main session's word:
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| S89 | `source_line` | …Retrieved November 12, 2026. Times are limits in law, not measured waits. | …Retrieved November 12, 2026. Times are the law’s limits. | ED4-4 (W09); now equal to the sidecar's `in_force_in_grade` variant, by script |
+| S91 | `source_line` | …Seats include vacant ones; the 677 district positions include the territorial courts’ 4. | …Seats include vacant ones; the 677 district positions include four in the territorial courts. | ED4-5 (H06); now equal to the sidecar's `seats_date_in_grade` variant, by script |
+
+Checks: `apply.py` as above; `oa-chart.mjs build s89 s91`, sweep on: 2 PASS, 0 faults, two check files (each had failed on the source line parity before); `maker_i_round4_derive.py --figures S89 S91`: all passed. The research lead notes that `research_round3_requests.py` (`judges`) would write the judges' old printed line if rerun; that script is the research lead's.
+
 ### What the infographics maker applied (its 21:39 notes, read at 21:40 UTC)
 
 Every row through 21:35 is applied as written, by its own list: the first looks, the 21:17 rows, the design director's rulings (S89's "In place of step 3", S93's hyphen in our words, its double marks and crop line), S90's split shares with New York and Idaho in one fact, and the entry rows for 14.137, 14.138, 14.140 and 14.141. Still open: S91's one word above, and the two sidecar lines (ED4-4, ED4-5) with the research lead.
@@ -290,5 +299,5 @@ Every row through 21:35 is applied as written, by its own list: the first looks,
 - Created: this file.
 - Modified: `work/build/chart-kit/specs/s37.json` (the `typography` key, three lines, ED4-1).
 - Modified: `work/build/scripts/phase-3/phase3_ch14_rules_build.py` (group 9's line), which rewrote `work/build/guide/entries/14-chapter.json` (that one line); the other entries 14.1 to 14.14, the plates and the opener were rewritten byte for byte as they stood.
-- Modified, the infographics maker's pass (D3-669), words only: `work/build/chart-kit/specs/s91.json` (title), `s93.json` (alt), `s95.json` (note 1).
+- Modified, the infographics maker's pass (D3-669), words only: `work/build/chart-kit/specs/s91.json` (title, then `source_line`), `s93.json` (alt), `s95.json` (note 1), `s89.json` (`source_line`).
 - Modified: `phase3_ch14_rules_build.py` again (group 17's line), which rewrote `14-chapter.json` (that line) and `work/build/guide/specimens/s-14-opener.html` (groups 9 and 17 linked, once the chapter build printed them). The engineer's `phase3_ch14_build.py`, run as `--rounds 1,2,3,4`, rewrote `work/build/guide/chapters/14-data-visualization.json` with the two lines, as every owner's run does (see the slip under "Group lines 9 and 17").
