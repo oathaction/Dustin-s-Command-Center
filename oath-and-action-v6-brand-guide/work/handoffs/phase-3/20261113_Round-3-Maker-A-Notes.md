@@ -22,6 +22,9 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Maker A, briefed 
 
 ## Requests to the engineer
 
+- **A-E1, `kit.js` (`K.table_groups`), needed for S72's weight:** let `table.group.by` take a list of columns, the group's key their values joined with ", " (so `words` and `agg: "key"` read the joined key, such as "Senate, D"), groups in first-seen order after the spec's `sort`. S72's member-by-member table is 77,142 bytes of HTML (the plate 81,880, against 24,576 far-over and the 13,852 share); grouped by chamber and party, with `count` and `count_eq` columns for yes, no and not voting, it prints 5 rows and the CSV export keeps all 533 members, DR-249's pattern. A single column cannot split a party by chamber.
+- **A-E2, optional, `kit.js` (`K.group_cell`):** `agg: "list"`, a field's non-empty values in the group joined with "; ", and `agg: "count_set"`, the rows whose field is non-empty. S69 would then group by committee and list each committee's subcommittees in one cell (27 rows in place of 136), and keep every name in the page's table.
+
 ## Requests to the data lead
 
 ## Requests to the research lead

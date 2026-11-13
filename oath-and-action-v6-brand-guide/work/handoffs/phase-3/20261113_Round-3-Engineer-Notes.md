@@ -110,6 +110,10 @@ Strict build of 03:30 UTC (`guide_build.py --strict --out .../round-3/engineer/b
 - **Why the share fell 643 bytes:** the renderer grew. My shared files grew by 30,953 bytes minified (`parts.js` 17,216 to 42,331 with the diagram and map parts and the decoder; `kit.js` 66,353 to 72,191 with the grouped table, the moved-group reading and the island's geoids), and the makers' new forms raised the form average to 4,298, which the projection counts for each form still to come. The geometry's growth (45,232 to 133,117) costs the share nothing: it sits in its own reserve.
 - **The geometry is now weighed apart:** `guide_build.py` reports `map geometry` as its own part (the 0.55 MB "chart kit" part had held the 2017 outlines, 45 KB); `guide_charts.py` adds it back inside chapter 14's stop and warns past 250,000.
 
+### Weight, 04:20 UTC (round 3's landed entries placed)
+
+Strict build exit 1 on three far-over plates, all maker A's: S72 81,880 bytes, S70 35,545, S69 27,629 (three times the extended average is 24,576). Page 11,245,119; projected 15,044,385; chapter 14 with the kit 2,237,609 of 2,803,941; renderer 496,447; map geometry 133,117 of 250,000; rules with the opener 175,577 of 212,288; chapter 15 307,066. **The share per plate for the 20 still to come fell to 7,108** (77 plates placed, 82 forms at a 4,342 average). Round 3's 13 placed plates: S72 81,880; S70 35,545; S69 27,629; S74 19,833; S67 17,262; S73 16,547; S71 11,413; S66 9,157; S68 8,691; S75 7,159; S77 6,630; S76 6,488; S65 5,306 (253,540 in all). Sent to the main session, which routed it (D3-1097: every round 3 plate at or under 13,852 with its frame, none over 15,000; S72 by `table.group` with every member in the CSV).
+
 ## Routine calls
 
 - D3-xxx | Links are read by the layout guard as lines no word may sit under, and the kit never clears one with a knockout | R3-5 asks the guard to read links; a gridline's knockout would hide a link that runs through a node's words
