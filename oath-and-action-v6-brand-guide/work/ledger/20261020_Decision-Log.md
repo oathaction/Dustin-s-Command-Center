@@ -5616,3 +5616,9 @@ The main session reported that `phase3_ch14_build.py` still builds rounds 1 and 
 | D3-1410 | Entries 14.96, 14.98 and 14.99 describe the new drawings: even gaps with the branches beside; each band naming its levels, a box widening into an empty column; named rows with hairlines, in order down each column | An entry describes its own specimen |
 | D3-1411 | The fix pass grew the page's chart kit part by 20,946 bytes (512,498 to 533,444) and the plates by 7,272 net (S73 +3,801 with all seven committees, S82 +1,196, S72 -4,433), cutting round 4's share per plate from 14,106 to 11,777 bytes; the page projection is unchanged at 15,044,827 of 15,500,000. The engineer writes what the 20,946 bytes carry and moves out of the page part any code the page does not run for a reader; board 2 shows the share that results | Chapter 14's 2,803,941-byte stop is the limit that binds; kit growth costs every plate to come, and code only `build` needs should not ride on the page |
 | D3-1412 | S82 comes back to 14,106 bytes or under with its frame (about 14,466 now) with its table still naming the 36 seats under 5 points; S69 stands at its page measure (14,556 with its frame, down from D3-1099's 14,584), since D3-1328 bars growth past the share and S69 shrank | D3-1328 as written; D3-1099 already let S69 stand above the share and under 15,000 |
+
+### Research lead, round 3 review fix pass (after the editor's request)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1413 | S68's variant is named `snapshot_once` and added in the extract script beside the printed line, which stays | The editor sets S68 to it; the printed line is the round 0 form other readers of the file may still print |

@@ -32,6 +32,7 @@ const FONTS = path.join(ROOT, 'work/build/assets/fonts');
 export function load_kit() {
   require(path.join(KIT, 'metrics.js'));
   require(path.join(KIT, 'kit.js'));
+  require(path.join(KIT, 'kit-build.js'));   // the builder's half: figure, tables, words (call 10); never on the guide's page
   require(path.join(KIT, 'parts.js'));
   require(path.join(KIT, 'geo.js'));
   for (const f of fs.readdirSync(path.join(KIT, 'forms')).filter(f => f.endsWith('.js')).sort()) require(path.join(KIT, 'forms', f));
@@ -342,7 +343,7 @@ export function kit_scripts() {
 }
 export function kit_scripts_full() {
   const forms = fs.readdirSync(path.join(KIT, 'forms')).filter(f => f.endsWith('.js')).sort().map(f => fs.readFileSync(path.join(KIT, 'forms', f), 'utf8'));
-  return [fs.readFileSync(path.join(KIT, 'metrics.js'), 'utf8'), fs.readFileSync(path.join(KIT, 'kit.js'), 'utf8'), fs.readFileSync(path.join(KIT, 'parts.js'), 'utf8'), fs.readFileSync(path.join(KIT, 'geo.js'), 'utf8')].concat(forms).join('\n').replace(/<\/script/gi, '<\\/script');
+  return [fs.readFileSync(path.join(KIT, 'metrics.js'), 'utf8'), fs.readFileSync(path.join(KIT, 'kit.js'), 'utf8'), fs.readFileSync(path.join(KIT, 'kit-build.js'), 'utf8'), fs.readFileSync(path.join(KIT, 'parts.js'), 'utf8'), fs.readFileSync(path.join(KIT, 'geo.js'), 'utf8')].concat(forms).join('\n').replace(/<\/script/gi, '<\\/script');
 }
 
 function page_html(specs) {
@@ -1252,7 +1253,7 @@ async function self_test() {
   // the words inside kit.js equal words.json
   const wj = Object.assign({}, K.words); delete wj.about;
   const same = JSON.stringify(wj) === JSON.stringify(K.WORDS);
-  console.log(`${same ? 'pass' : 'FAIL'} the words carried in kit.js equal words.json`);
+  console.log(`${same ? 'pass' : 'FAIL'} the words carried in kit-build.js equal words.json`);
   if (!same) bad++;
   // the CSV check
   const cols = Object.keys(r.datasets[0].meta.columns);

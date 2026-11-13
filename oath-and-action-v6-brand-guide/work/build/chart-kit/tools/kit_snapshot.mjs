@@ -36,7 +36,7 @@ const Kmain = globalThis.OAChart;
 // the copy under test, in a fresh context
 const ctx = vm.createContext({ console });
 const code = opt('--bundle') ? [fs.readFileSync(opt('--bundle'), 'utf8')]
-  : ['metrics.js', 'kit.js', 'parts.js', 'geo.js'].map((f) => fs.readFileSync(path.join(KIT, f), 'utf8'))
+  : ['metrics.js', 'kit.js', 'kit-build.js', 'parts.js', 'geo.js'].map((f) => fs.readFileSync(path.join(KIT, f), 'utf8'))
     .concat(fs.readdirSync(path.join(KIT, 'forms')).filter((f) => f.endsWith('.js')).sort().map((f) => fs.readFileSync(path.join(KIT, 'forms', f), 'utf8')));
 code.forEach((c) => vm.runInContext(c, ctx));
 const K = ctx.OAChart;
