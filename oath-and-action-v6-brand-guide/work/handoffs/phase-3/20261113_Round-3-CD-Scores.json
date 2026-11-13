@@ -1,0 +1,538 @@
+{
+ "title": "Creative director’s scores for Phase 3, round 3 (first pass): maker A’s, maker B’s and the cartographer’s specimens with their entries, S16 as moved, the nine sketches, and rules 14.1 to 14.14 with the opener as round 3 changed them",
+ "date": "2026-11-13",
+ "author": "Creative director (oa-creative-director), subagent of the main session",
+ "basis": "work/handoffs/phase-3/20261113_Phase-3-Round-3-Review-Brief.md, creative director’s lens; Master Brief section 6 rubric; a copy of the strict build of 8507b822 (scratchpad phase-3/round-3-review/creative-director/guide.html, 11,226,718 bytes, 0 warnings, 344 rules, 638 specimens) and its guide-Build-Report.json, with a Charcoal copy; all 32 round 3 plates at 1x at 1440 and 390 px on both grounds; sketches and six plates at 2x; rules and entries whole at 1024, 390 and 1440 px; the page with rail and contents at 1440, 1024 and 390 px; the eight maps built alone with the kit at 390, 358, 296 and 256 px on both grounds with grayscale (8 PASS, 0 faults); S12 probed in the page at 1920, 1440, 1024 and 390 px",
+ "review": "work/handoffs/phase-3/20261113_CD-Review-Of-Round-3.md",
+ "first_pass_of_round": 3,
+ "threshold": "4 on every criterion; an item is ready when every score is 4 or more and it has no Must fix",
+ "criteria": [
+  {
+   "key": "craft",
+   "name": "Craft"
+  },
+  {
+   "key": "clarity",
+   "name": "Clarity"
+  },
+  {
+   "key": "brand_fidelity",
+   "name": "Brand fidelity"
+  },
+  {
+   "key": "usefulness",
+   "name": "Usefulness"
+  },
+  {
+   "key": "evidence_honesty",
+   "name": "Evidence honesty"
+  },
+  {
+   "key": "accessibility",
+   "name": "Accessibility"
+  }
+ ],
+ "items": [
+  {
+   "key": "maker_a",
+   "name": "Maker A: S66 to S72 with entries 14.96 to 14.102",
+   "anchor": "#group-14-12; work/build/chart-kit/specs/s66.json to s72.json; work/build/guide/entries/14-096.json to 14-102.json",
+   "stage": "Phase 3, round 3, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 3,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 3
+   },
+   "reasons": {
+    "craft": "S72's squares, S69's cards and S67's tree hold at 2x on both grounds, though S68 wraps its names to five lines in 134 px boxes across a mostly empty band, and S69, S70 and S71 run 4,113, 4,581 and 5,758 px tall at 1440 px with their desk phone drawings.",
+    "clarity": "S71's cell \"State constitutions read in round 0\" is studio language a reader cannot decode (A-M1), and four titles run past 30 words, S71's at 37 with three findings.",
+    "brand_fidelity": "No red anywhere, every seat in S72 in one neutral ink with each party named, and S68's lines of authority end in Rule 15.5's open diamond, so one mark means one thing across chapters 14 and 15.",
+    "usefulness": "Each entry tells a builder what to draw and in what order, entry 14.102 says how to keep a short table answering its question, and S70's table now names each circuit's states.",
+    "evidence_honesty": "S70 prints 673 and the four territorial judgeships with no 677 total, S66 dates the law it draws, and S72 quotes each chamber's question.",
+    "accessibility": "S68's table equivalent prints \"7\", \"3\", \"4\" and \"8\" under \"Line of authority\" for four of its eight bodies, where it should print \"None drawn\" (A-M2)."
+   },
+   "specimens_under_the_bar": [
+    "S68",
+    "S71"
+   ],
+   "must_fix": [
+    "A-M1",
+    "A-M2"
+   ],
+   "should_fix": [
+    "A-S1",
+    "A-S2",
+    "A-S3",
+    "A-S4",
+    "A-S5",
+    "A-S6"
+   ],
+   "must_fix_count": 2,
+   "should_fix_count": 6,
+   "ready": false,
+   "to_ready": "Land A-M1 and A-M2; clarity and accessibility then reach 4."
+  },
+  {
+   "key": "maker_b",
+   "name": "Maker B: S65 and S73 to S77 with entries 14.93 and 14.104 to 14.112 (sketch entries aside)",
+   "anchor": "#group-14-11, #group-14-13, #group-14-14; work/build/chart-kit/specs/s65.json, s73.json to s77.json; work/build/guide/entries/14-093.json, 14-104.json to 14-112.json",
+   "stage": "Phase 3, round 3, first pass",
+   "scores": {
+    "craft": 3,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "S65, S74, S75 and S76 are among the best drawings in the chapter, but S73's sender bars, links and receiver bars are one solid fill, so the Harris Victory Fund draws as a 222 px Charcoal slab with three wedges and the receivers never read as nodes (B-S1).",
+    "clarity": "Each title names one finding after MB-1 and MB-4, and S77 says its times are limits, though S73's third note runs 107 words.",
+    "brand_fidelity": "S73 reads both committees by one measure in one ink, S74 takes the Verdigris steps with three outlined cells of authority, and no red falls on a flow, a stage or a cell.",
+    "usefulness": "Entries cite Rule 14.4 for widths and Rule 14.6 for the named flow instead of restating them, though entry 14.109 sends a one-way tie to Rule 14.104 for an arrowhead that S73 does not draw (B-S5).",
+    "evidence_honesty": "S73 draws line 22 alone with the refunds apart and line 21B in a note, S76 says no dollar received is traced to a dollar spent and names its remainder, and S65 prints CMS's own sums.",
+    "accessibility": "The network, matrix, arc diagram and Sankey print their links as rows, and S77's table names each step's next step in reading order."
+   },
+   "specimens_under_the_bar": [
+    "S73"
+   ],
+   "must_fix": [],
+   "should_fix": [
+    "B-S1",
+    "B-S2",
+    "B-S3",
+    "B-S4",
+    "B-S5"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 5,
+   "ready": false,
+   "to_ready": "Land B-S1; craft then reaches 4."
+  },
+  {
+   "key": "cartographer",
+   "name": "The cartographer: S78 to S84 with entries 14.117 to 14.123, S16 as moved, and the entries for S07, S12 and S16 (14.114 to 14.116)",
+   "anchor": "#group-14-15; work/build/chart-kit/specs/s78.json to s84.json, s07.json, s12.json, s16.json; work/build/guide/entries/14-114.json to 14-123.json",
+   "stage": "Phase 3, round 3, first pass",
+   "scores": {
+    "craft": 3,
+    "clarity": 3,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 3
+   },
+   "reasons": {
+    "craft": "S81, S83 and S84 are handsome, but S78 drops codes for 23 of 51 states at 390 px, 41 at 256 px and MA, MD and WV at 1440 px (C-M1), S80 leaves the 10th unnumbered in the panel where it is filled, and S16's \"DC\" sits over West Virginia's circle.",
+    "clarity": "Entry 14.115 teaches \"a tile map of arrows\", and S12 draws no arrow at any width the guide gives it, 723 px at 1440 and 829 px at 1920 (C-M2).",
+    "brand_fidelity": "Sequential Verdigris on every class map, one red point on S79's Lake Isabella, parties by panel with the same steps in both, and no hue for any party.",
+    "usefulness": "Entries name the steps, the national figure's place, the insets and Rule 14.9's test, and S81's and S82's tables group by state with every row in the download.",
+    "evidence_honesty": "Each class map meets Rule 14.9's three tests and its note counts the crossings (13 of 51; 1,707 and 182 of 3,143), though S78's and S81's titles count places by the classes the notes call uncertain (C-S3).",
+    "accessibility": "S12's alt and reading guide describe an arrow in every square while the drawing a sighted reader sees at every desk width is shaded squares (C-M2)."
+   },
+   "specimens_under_the_bar": [
+    "S12",
+    "S78"
+   ],
+   "must_fix": [
+    "C-M1",
+    "C-M2"
+   ],
+   "should_fix": [
+    "C-S1",
+    "C-S2",
+    "C-S3",
+    "C-S4",
+    "C-S5",
+    "C-S6"
+   ],
+   "must_fix_count": 2,
+   "should_fix_count": 6,
+   "ready": false,
+   "to_ready": "Land C-M1 and C-M2; craft, clarity and accessibility then reach 4. S12's fix goes to board 2."
+  },
+  {
+   "key": "sketches",
+   "name": "The nine sketches with their entries: reference 14.94, 14.95, 14.103, 14.107, 14.108, 14.109, 14.111, 14.113; avoid 14.124",
+   "anchor": "work/build/guide/specimens/s-14-94-sketch.html, s-14-95-sketch.html, s-14-103-sketch.html, s-14-107-sketch.html to s-14-109-sketch.html, s-14-111-sketch.html, s-14-113-sketch.html, s-14-124-sketch.html",
+   "stage": "Phase 3, round 3, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "Every sketch draws at 320 px with \"Illustrative data\" inset and the avoid halves at 288 px with each bar over its own half, though the cohort sketch sets \"100%\" about 4 px and \"2021\" about 5 px from its frame (SK-S1).",
+    "clarity": "Each caption is the entry's first sketch_alt sentence, and the avoid caption opens \"Drawn here in gray\".",
+    "brand_fidelity": "The multi-network takes Charcoal then Verdigris in the chart order, solid, and the avoid sketch gives no ink of the guide's own to a party.",
+    "usefulness": "Each reference entry says when an expert form earns its place, and the avoid entry sends the reader to Rules 14.121, 14.119 and 14.115.",
+    "evidence_honesty": "\"Illustrative data\" sits inside every drawing and the Illustrative chip beside every caption.",
+    "accessibility": "The captions carry what the drawings show, and the avoid halves stack at 390 px with the bar still over the misleading half."
+   },
+   "specimens_under_the_bar": [],
+   "must_fix": [],
+   "should_fix": [
+    "SK-S1"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 1,
+   "ready": true,
+   "to_ready": "Ready; SK-S1 is a placement fix for the fix pass."
+  },
+  {
+   "key": "rules",
+   "name": "Rules 14.1 to 14.14 with the opener as round 3 changed them (Rules 14.3, 14.4, 14.6, 14.7, 14.9, 14.12, group lines 11 to 15, the opener's links)",
+   "anchor": "#data-visualization, #group-14-1; work/build/guide/entries/14-001.json to 14-014.json, 14-chapter.json",
+   "stage": "Phase 3, round 3, first pass",
+   "scores": {
+    "craft": 4,
+    "clarity": 4,
+    "brand_fidelity": 4,
+    "usefulness": 4,
+    "evidence_honesty": 4,
+    "accessibility": 4
+   },
+   "reasons": {
+    "craft": "No plate changed (D3-1289), the plates read as before at 1440, 1024 and 390 px, and rules with the opener weigh 175,796 of 212,288 bytes.",
+    "clarity": "Rule 14.9's second paragraph states the class-map test in plain words, though Rule 14.6 now runs five paragraphs and about 530 words, more than 50 lines at 1440 px, restating its own spec rows (R-S1).",
+    "brand_fidelity": "Rule 14.6's area case keeps red off maps, nodes, cells and flows, and Rule 14.7's \"Seats on a map\" row writes the party test into the rules.",
+    "usefulness": "Rules 14.3, 14.4, 14.7 and 14.12 each gain one spec row a builder can act on, and the opener links groups 11 to 15.",
+    "evidence_honesty": "Rule 14.9 ranks no place inside its margin and says a full count ranks as it stands.",
+    "accessibility": "Rule text stays live at every width, and the opener's sixteen questions are links where a group exists."
+   },
+   "specimens_under_the_bar": [],
+   "must_fix": [],
+   "should_fix": [
+    "R-S1",
+    "R-S2",
+    "R-S3"
+   ],
+   "must_fix_count": 0,
+   "should_fix_count": 3,
+   "ready": true,
+   "to_ready": "Ready; R-S1 to R-S3 are word fixes for the fix pass."
+  }
+ ],
+ "totals": {
+  "must_fix": 4,
+  "should_fix": 21,
+  "under_4": [
+   "maker_a.clarity",
+   "maker_a.accessibility",
+   "maker_b.craft",
+   "cartographer.craft",
+   "cartographer.clarity",
+   "cartographer.accessibility"
+  ],
+  "ready": [
+   "sketches",
+   "rules"
+  ],
+  "not_ready": [
+   "maker_a",
+   "maker_b",
+   "cartographer"
+  ],
+  "specimens_under_the_bar": [
+   "S68",
+   "S71",
+   "S73",
+   "S78",
+   "S12"
+  ]
+ },
+ "lowest_score_by_item": {
+  "maker_a": 3,
+  "maker_b": 3,
+  "cartographer": 3,
+  "sketches": 4,
+  "rules": 4
+ },
+ "must_fix": {
+  "A-M1": {
+   "title": "S71 prints a studio word in a reader's cell.",
+   "where": "S71, row \"State statute\", column \"What it takes\"; work/build/data/usgov-v7-route-grid.csv and usgov-route-requirements.csv, from maker_a_round3_derive.py",
+   "what": "\"State constitutions read in round 0: Massachusetts, Nebraska, Virginia, Arizona\". \"Round 0\" means nothing to a reader and breaks the rule on studio words in reader text.",
+   "fix": "\"State constitutions read: Massachusetts, Nebraska, Virginia and Arizona\", written by the derive script, with the research lead's data check rerun.",
+   "owner": "Maker A; research lead (check); editor (words)",
+   "items": [
+    "maker_a"
+   ]
+  },
+  "A-M2": {
+   "title": "S68's table prints sort numbers as lines of authority.",
+   "where": "S68, entry 14.98; work/build/chart-kit/specs/s68.json, table column \"order\"",
+   "what": "The column maps words for orders 5, 6, 2 and 1 and expects \"empty\" for the rest, but orders 7, 3, 4 and 8 are not empty, so the page table and a screen reader give \"Line of authority: 7\" for Congress and the Department of Health and Human Services, \"3\" for the city council, \"4\" for the cooperative and \"8\" for the investor-owned utility.",
+   "fix": "Add words for 7, 3, 4 and 8 (\"None drawn\"), or derive a line_of_authority column with empty cells; check the CSV export says the same.",
+   "owner": "Maker A; data lead (sign-off)",
+   "items": [
+    "maker_a"
+   ]
+  },
+  "C-M1": {
+   "title": "S78 loses its state codes where most readers will meet it.",
+   "where": "S78, entry 14.117, Rules 14.3 and 14.12; forms/choropleth.js, K.parts.map_labels",
+   "what": "At 390 px the note reads \"Not labeled at this width: AL, CA, CT, DE, GA, IN, KY, MA, MD, ME, MI, MO, MS, NH, NY, OH, PA, SC, TN, VA, WA, WI, WV\" (23 of 51); at 256 px it lists 41; at 1440 px it lists MA, MD and WV, where WV has room inside its shape. California, New York, Pennsylvania and Washington have room for a 13 px code at 326 px.",
+   "fix": "The engineer lets map_labels place a code inside any shape whose 13 px box fits with 1 px to spare, at the shape's widest interior point, and leaders the rest to the eastern column as S16 does; the cartographer labels every state at 1440 px and every state but the smallest northeastern ones at 358 px. If more than six still lack a code under 480 px, draw S78's phone form on the studio's tile grid (S07's), phone \"differs\", where every state keeps its code.",
+   "owner": "Engineer (map_labels), cartographer (S78), data lead (sign-off)",
+   "items": [
+    "cartographer"
+   ]
+  },
+  "C-M2": {
+   "title": "S12 never draws the arrows its entry teaches.",
+   "where": "S12, entry 14.115; forms/tile-map-shift-arrows.js (tight), the plate's stage",
+   "what": "The form falls back to shaded tiles wherever a tile is too small for its code, figure and arrow. In the guide S12 draws at 723 px at 1440, 558 at 1024 and 829 at 1920, each the shaded-square form with no arrow in its SVG; board 1 drew it with arrows at 1024 px. Entry 14.115 (\"Give each state one square holding an arrow\"), the reading guide and the alt describe a drawing the page never shows.",
+   "fix": "Preferred: S12's plate draws at its board 1 width, 1024 px, in a fixed stage that scrolls sideways where the column is narrower, as chapter 15's wide plates do. Otherwise the engineer lets the tile drop its printed figure (the lists and table carry it) so code and arrow fit at 720 px, a drawing change for board 2. Either way the alt describes what is drawn at each width.",
+   "owner": "Engineer, cartographer; main session (board 2 item)",
+   "items": [
+    "cartographer"
+   ]
+  }
+ },
+ "should_fix": {
+  "A-S1": {
+   "title": "Titles over 30 words",
+   "what_and_fix": "S71 (37 words, three findings), S67 (36), S72 (34) and S66 (33). Hold each under 30 words and to one finding; S71's \"though most bills need 60 senators to end debate\" moves to a note.",
+   "owner": "Maker A, editor",
+   "items": [
+    "maker_a"
+   ]
+  },
+  "A-S2": {
+   "title": "S72's title reads the two chambers differently",
+   "what_and_fix": "It names the Senate's crossover (\"seven Democrats and one independent joining 52 Republicans\") and the House's tally only, where six Democrats also voted yes. Name the crossover in both chambers or in neither (DR-93, DR-124), within A-S1's 30 words.",
+   "owner": "Maker A, editor",
+   "items": [
+    "maker_a"
+   ]
+  },
+  "A-S3": {
+   "title": "A law's date prints three times",
+   "what_and_fix": "S66 prints November 12, 2026 in its grade, measure and source lines; S68 and S71 print October 15, 2026 in grade and measure lines. Keep the in-force date in the grade line and the retrieval date in the source line, and drop it from the measure line, with D3-1308's board 2 item.",
+   "owner": "Editor",
+   "items": [
+    "maker_a"
+   ]
+  },
+  "A-S4": {
+   "title": "The three longest plates",
+   "what_and_fix": "S70's and S71's desk phone drawings repeat the whole diagram (4,581 and 5,758 px at 1440 px). Show the first part only with desk_phone, as S69 does. In S69, list each card's subcommittees as names with hairline rules, no box each, so 109 boxes stop reading as a wall.",
+   "owner": "Maker A",
+   "items": [
+    "maker_a"
+   ]
+  },
+  "A-S5": {
+   "title": "S68's boxes and its HHS row",
+   "what_and_fix": "At 1440 px \"Congress and the Department of Health and Human Services\" wraps to five lines in a 134 px box while the band beside it stands empty. Widen boxes where a column holds one body, and say in the note, from the atlas's record, why Congress and HHS sit behind an electric bill (they fund and distribute LIHEAP).",
+   "owner": "Maker A; data lead for the note's words",
+   "items": [
+    "maker_a"
+   ]
+  },
+  "A-S6": {
+   "title": "S72's names sort by first name",
+   "what_and_fix": "\"Catherine Cortez Masto; Jacky Rosen; Jeanne Shaheen; John Fetterman; ...\" Sort by surname, as the record does, and name members as the record names them.",
+   "owner": "Maker A",
+   "items": [
+    "maker_a"
+   ]
+  },
+  "B-S1": {
+   "title": "S73's bars, links and receivers are one mass",
+   "what_and_fix": "Every node and link fills solid in the party-mark ink, so the drawing reads as a stacked bar, and on Charcoal as a white slab. Keep the bars solid in the party-mark ink and draw the links in the light fill (the context ink on Charcoal) with a 1 px party-mark edge, the same for both committees, as S76 draws its bands.",
+   "owner": "Maker B; data lead (ruling (b) sign-off)",
+   "items": [
+    "maker_b"
+   ]
+  },
+  "B-S2": {
+   "title": "S73's third note",
+   "what_and_fix": "At 107 words it carries DC, the download and lines 22, 21B and 28C. Split it into a note on the state parties and the download and a note on the lines.",
+   "owner": "Maker B, editor",
+   "items": [
+    "maker_b"
+   ]
+  },
+  "B-S3": {
+   "title": "S77's limits",
+   "what_and_fix": "\"30 days\" and \"seven days\", the figures the title names, print in small gray type inside 158 px boxes at 1440 px. Set each step's limit on its own line in the text's ink.",
+   "owner": "Maker B",
+   "items": [
+    "maker_b"
+   ]
+  },
+  "B-S4": {
+   "title": "S77's date",
+   "what_and_fix": "November 9, 2026 prints in the grade, measure and source lines; keep it in the grade line, as A-S3.",
+   "owner": "Editor",
+   "items": [
+    "maker_b"
+   ]
+  },
+  "B-S5": {
+   "title": "Entry 14.109's arrowhead",
+   "what_and_fix": "\"Where a tie runs one way, give it an arrowhead (Rule 14.104)\": S73 draws no arrowhead. Cite Rule 14.113 or 14.96, whose drawings carry arrowheads, or say the direction reads from sender to receiver.",
+   "owner": "Maker B, editor",
+   "items": [
+    "maker_b"
+   ]
+  },
+  "C-S1": {
+   "title": "S80's districts in their own panel",
+   "what_and_fix": "At 1440 px the 10th, a Republican seat at 6.1 points, is filled and unnumbered in the Republicans' panel while its number sits over a ghost in the Democrats' panel. Number every district in the panel where it is filled, with a leader where needed.",
+   "owner": "Cartographer, engineer",
+   "items": [
+    "cartographer"
+   ]
+  },
+  "C-S2": {
+   "title": "S16's DC and WV",
+   "what_and_fix": "At 1440 px \"DC\" sits above West Virginia's light circle and \"WV\" below it, about 30 px from DC's dark circle, with no leader. Give DC a leader to its own circle and WV a place against its own (placement only, ruling (e)).",
+   "owner": "Cartographer",
+   "items": [
+    "cartographer"
+   ]
+  },
+  "C-S3": {
+   "title": "Class counts in two titles",
+   "what_and_fix": "S78 counts \"10 states and DC\" and \"nine states\" and S81 \"585 counties\" and \"371\" by classes the notes say 13 of 51 and 1,707 of 3,143 places could leave. Say the counts are the survey's estimates in the title, or title the national figure and the pattern.",
+   "owner": "Cartographer, editor; data lead (sign-off)",
+   "items": [
+    "cartographer"
+   ]
+  },
+  "C-S4": {
+   "title": "Grouped tables sort by code",
+   "what_and_fix": "S81, S82 and S83 print \"Alaska\" above \"Alabama\", the postal codes' order. Sort by the printed name.",
+   "owner": "Cartographer (or engineer if table.group sorts by key)",
+   "items": [
+    "cartographer"
+   ]
+  },
+  "C-S5": {
+   "title": "S79's neighbors and county name",
+   "what_and_fix": "Nevada's, Oregon's and Arizona's ghost lines end in mid-air at the drawing's edge, and \"Kern County\" sits under the county over Los Angeles County's coast. Clip the neighbors to a thin frame, as the inset is framed, and set the county's name inside it or on a leader.",
+   "owner": "Cartographer",
+   "items": [
+    "cartographer"
+   ]
+  },
+  "C-S6": {
+   "title": "S82's seat codes",
+   "what_and_fix": "The phone lists print \"AK 00\" for Alaska's at-large seat and \"AL 03\" for Alabama's 3rd, while D3-1171 makes \"AL\" the at-large code. Print \"Alaska at large\" and keep two-letter codes to states.",
+   "owner": "Cartographer",
+   "items": [
+    "cartographer"
+   ]
+  },
+  "SK-S1": {
+   "title": "The cohort sketch's inset",
+   "what_and_fix": "In 14.94 \"100%\" sits about 4 px and \"2021\" about 5 px from the frame at 1x, and \"Start\" sits under \"40\" like the next step of the value scale. Hold every word 10 px inside the frame (D3-966) and set \"Start\" clear of the value labels.",
+   "owner": "Maker B",
+   "items": [
+    "sketches"
+   ]
+  },
+  "R-S1": {
+   "title": "Rule 14.6's length",
+   "what_and_fix": "Five paragraphs, about 530 words; paragraph 5 alone is 149. Keep each paragraph to its principle in two or three sentences and let the spec rows carry the lists.",
+   "owner": "Editor; data lead (sign-off)",
+   "items": [
+    "rules"
+   ]
+  },
+  "R-S2": {
+   "title": "Group 12's line",
+   "what_and_fix": "It names three of the group's eight forms. For example: \"Process diagrams, decision trees, org charts and roll-call grids show who decides, who answers to whom and how a decision moves.\"",
+   "owner": "Editor",
+   "items": [
+    "rules"
+   ]
+  },
+  "R-S3": {
+   "title": "A studio word outside round 3",
+   "what_and_fix": "Entry 14.45's builders line ends \"or, from round 2, the stacked area form\". Write \"or the stacked area form\" with its rule number.",
+   "owner": "Editor",
+   "items": [
+    "rules"
+   ]
+  }
+ },
+ "named_places": {
+  "1_maps_256_to_390_on_charcoal": "Land on Charcoal reads by its 1 px edge on S16, S79, S81, S83 and S84; DC's square and the insets hold; S82 at 256 px reads as a texture with rings and dots named below. Codes are lost on S78 (23 of 51 at 390 px, 41 at 256 px), on S80 (10, 12 and 13 at 256 px) and on S16 (42 at 256 px, by design). S80's Democratic ghosts nearly vanish on Charcoal at 256 px.",
+  "2_grouped_tables": "S69, S70, S72 and S73 answer their questions on the page; S81, S82 and S83 answer by state but sort by code under full names (C-S4); S68's table prints wrong cells (A-M2). CSV exports not opened.",
+  "3_party_test": "S72, S73, S80, S82 and sketch 14.124 pass on ink; the Verdigris margin steps read as magnitude only; S72's title reads the chambers differently (A-S2).",
+  "4_diagrams_reading_order": "S66's table follows the phone's order with each next step; S77 names each next step; S74 and S76 print links as rows; S68's lines end in the open diamond. Accessibility tree not tested.",
+  "5_weight": "Every round 3 plate under 15,000 bytes with its frame, S69 the only one over 13,852 (14,591); chapter 14 with the kit 2,219,208 of 2,803,941; geometry 133,117 of 250,000; rules with the opener 175,796 of 212,288; share 14,106 for 13; projection 15,044,385 of 15,500,000.",
+  "6_rule_14_9": "The notes give 13 of 51 and 1,707 and 182 of 3,143 and name no place above another; the titles count places by class (C-S3). Classes not recomputed.",
+  "7_sketches": "All nine at 1x and 2x on Newsprint, four at 2x on Charcoal; the avoid bar sits over the misleading half only and \"Use instead\" over the panels at every width; the gray half still teaches party coded by fill with no margin."
+ },
+ "structure_verdict": {
+  "verdict": "Chapter 14 at 128 rules on the page (124 by the plan's count for round 3) still reads as a reference a designer would trust: every entry keeps one anatomy (rule, use it when, use instead, why it works, specimen with chip, title, measure and source, reader’s question, builders line), the rail and local contents track the reader at 1440 px, and the opener links each built group’s question.",
+  "weaknesses": [
+   "Length: chapter 14 measures about 306,900 px tall at 1440 px and 377,100 at 390 px; round 3’s groups 11 to 15 are 71,650 px of it, with S69 to S71 among the longest plates. Round 5’s selection guide should show every form small, by question.",
+   "Three of the most-used map forms (S12, S78, S80) do not show what their entries promise at the widths most readers use (C-M1, C-M2, C-S1).",
+   "The local contents opened group 14 while group 15’s heading sat at the top of the screen."
+  ]
+ },
+ "weight_recommendation": {
+  "chapter_14_now": 1573593,
+  "chapter_14_with_kit": 2219208,
+  "stop": 2803941,
+  "share_per_plate": 14106,
+  "plates_to_come": 13,
+  "round_3_plates": {
+   "count": 20,
+   "total_bytes_with_frames": 204661,
+   "mean_bytes": 10233,
+   "largest": {
+    "S69": 14591,
+    "S67": 13291,
+    "S82": 13270,
+    "S81": 13264,
+    "S83": 13226
+   },
+   "board_1_entries": {
+    "S07": 14351,
+    "S12": 13850,
+    "S16": 10644
+   }
+  },
+  "map_geometry": {
+   "bytes": 133117,
+   "allowance": 250000,
+   "unspent": 116883
+  },
+  "page_projection": 15044385,
+  "page_budget": 15500000,
+  "verdict": "Room holds for round 4: the share of 14,106 is about 38 percent above round 3’s mean plate. Hold the 116,883 unspent geometry bytes until round 4’s plan confirms no new map layer, then release at most half to the share. Group 17’s cards and panels should draw as HTML text rather than a picture of text, as S71 does."
+ },
+ "distinctiveness_test": [
+  {
+   "view": "Any round 3 map with the wordmark covered",
+   "verdict": "Reads as Oath & Action: the evidence chip, the sentence title, Verdigris steps, the national figure set apart, the source line in its order."
+  },
+  {
+   "view": "S73 at 1440 px on either ground",
+   "verdict": "Reads as a generic block chart; the slabs carry none of the house’s light-and-one-ink restraint (B-S1)."
+  },
+  {
+   "view": "S72 and S82 on either ground",
+   "verdict": "Reads as Oath & Action’s party grammar: one neutral ink, sides by solid and outline or by panel, parties named."
+  }
+ ],
+ "risks_for_dustin": [
+  "The avoid sketch in gray or in color: I recommend gray. Literal red and blue would put a party-colored map on an Oath & Action page against DR-64 and Rule 14.7, and a screenshot travels without its do-not-publish bar; the gray half still shows party coded by fill with no margin, and its key names the red and blue.",
+  "S12 is a board 1 drawing: a fixed 1024 px stage keeps the approved drawing and adds a sideways scroll under 1024 px; a change in the form changes the drawing. Either belongs on board 2.",
+  "Chapter length: at this rate chapter 14 passes 380,000 px at 1440 px after round 4, and the selection guide becomes its front door."
+ ],
+ "questions_for_dustin": []
+}
