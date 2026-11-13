@@ -64,7 +64,7 @@
             if (b.x < 0 || b.x + b.w > c.width || b.y < T.y) return;
             if (c.texts.some(function (t) { return hit(b, t); }) || avoid.some(function (t) { return hit(b, t); })) return;
             if ((c.leaders || []).some(function (l) { return K.leader_crosses(l, b); })) return;
-            for (var i = 0; i <= 2; i++) for (var j = 0; j <= 2; j++) if (in_dark(b.x + i * b.w / 2, b.y + j * b.h / 2)) return;
+            for (var i = 0; i <= 4; i++) for (var j = 0; j <= 2; j++) if (in_dark(b.x - 2 + i * (b.w + 4) / 4, b.y - 2 + j * (b.h + 4) / 2)) return;
             var ex = Math.max(b.x, Math.min(q[0], b.x + b.w)), ey = Math.max(b.y, Math.min(q[1], b.y + b.h));
             if (c.texts.some(function (t) { return K.seg_hits_box(q[0], q[1], ex, ey, t.x - 1, t.y - 1, t.x + t.w + 1, t.y + t.h + 1); })) return;
             pick = { b: b, ex: ex, ey: ey };

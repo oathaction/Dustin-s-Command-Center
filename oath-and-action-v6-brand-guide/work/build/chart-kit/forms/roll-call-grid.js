@@ -4,7 +4,7 @@
  * under it each party is a row of its own in a set order (Democrats first, then independents as the record lists them,
  * folded into no party, then Republicans; vacant seats between, S48's order), named in words with its count and how it
  * voted, its squares in that party's yes, no and not-voting order, row by row. Desk: the party's name at the left of its
- * squares; where that leaves under 12 squares a row, the name sits above them.
+ * squares; where that leaves under 20 squares a row, the name sits above them.
  * encode: chamber (category), party (category), vote (category: as recorded), roll (text: the vote's name),
  * date (date), question (text), result (text).
  * labels: chambers ([values]), seats ({chamber: seats}, so the vacant count is seats less members recorded),
@@ -32,7 +32,7 @@
       // the label column: as wide as the widest party name with its count, where 12 squares a row still fit beside it
       (L.parties || []).concat(['vacant']).forEach(function (p) { lw = Math.max(lw, c.measure(nm(p === 'vacant' ? L.vacant : pw[p], 2) + ', 000', 'label', 700)); });
       lw = Math.ceil(lw) + 12;
-      var side = W - lw >= 12 * pitch, gx = side ? lw : 0, per = Math.max(1, Math.floor((W - gx + gp) / pitch));
+      var side = W - lw >= 20 * pitch, gx = side ? lw : 0, per = Math.max(1, Math.floor((W - gx + gp) / pitch));
       if (!side) c.arrange('phone');
       var sq = function (x, y, kind, key) {
         var d = { key: key, field: 'vote', value: kind };

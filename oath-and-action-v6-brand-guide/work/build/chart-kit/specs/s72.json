@@ -9,10 +9,10 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Senate’s and the House Clerk’s roll call records",
-  "title": "The bill that ended the shutdown passed the Senate 60 to 40 on November 10, 2025, with 7 Democrats and 1 independent joining 52 Republicans, and the House 222 to 209 two days later.",
+  "title": "The bill that ended the shutdown passed the Senate 60 to 40 on November 10, 2025, with seven Democrats and one independent joining 52 Republicans, and the House 222 to 209 two days later.",
   "measure_line": "How each member voted on H.R. 5371, the continuing appropriations act that became Public Law 119-37: the Senate’s vote on passage, November 10, 2025, and the House’s vote to agree to the Senate’s changes, November 12, 2025",
   "notes": [
-    "The House had 433 members on November 12, 2025, and 2 of its 435 seats were vacant. Six Democrats voted yes in the House and two Republicans voted no; one member of each party did not vote.",
+    "The House had 433 members on November 12, 2025, and two of its 435 seats were vacant. Six Democrats voted yes in the House and two Republicans voted no; one member of each party did not vote.",
     "In the Senate, one Republican voted no, and the two independents, whom the record lists apart from both parties, split one yes and one no."
   ],
   "credit": "Chart: Oath & Action",
@@ -58,7 +58,7 @@
     "Each square is one member, in the party ink: solid for yes, an outline for no, shaded for a member who did not vote, and a faint outline for a vacant seat. Each party is named in words with its count; independents are listed as the Senate record lists them, apart from both parties."
   ],
   "phone": "differs",
-  "phone_note": "Where a party’s name and 12 squares a row do not fit side by side, the name sits above its squares.",
+  "phone_note": "Where a party’s name and 20 squares a row do not fit side by side, the name sits above its squares.",
   "artboard": "reading",
   "domain": "D04",
   "states": [],

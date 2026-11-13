@@ -201,7 +201,7 @@ def figures():
             com[r['committee_code']][2] += 1
     ty = [v[1] for v in com.values()]
     check('S69', ty.count('standing') == 20 and ty.count('select') == 3 and ty.count('joint') == 4, '20 standing, 3 select, 4 joint')
-    check('S69', sum(v[2] for v in com.values()) == 109 and '109 subcommittees' in s['title'], '109 subcommittees')
+    check('S69', sum(v[2] for v in com.values()) == 109 and '109 subcommittees' in s['title'] and '20 standing committees and three select' in s['title'], '20 standing, three select, 109 subcommittees (title)')
     check('S69', com['AP00'][2] == 12 and max(v[2] for v in com.values()) == 12, 'Appropriations has the most, 12')
     check('S69', com['BU00'][2] == 0 and com['SO00'][2] == 0 and [v[0] for v in com.values() if v[1] == 'standing' and v[2] == 0] == ['Committee on the Budget', 'Committee on Ethics'], 'Budget and Ethics have none')
     # S70: 94 districts, 13 appeals, 179, 673, 4, 9, the circuits' figures in the alt
@@ -211,7 +211,7 @@ def figures():
     check('S70', len(app) == 13 and len(dist) == 94 and '94 district courts' in s['title'] and '13 courts of appeals' in s['title'], '94 district courts, 13 courts of appeals')
     check('S70', sum(int(r['judgeships']) for r in app) == 179 and '179' in s['notes'][0], '179 appeals judgeships')
     check('S70', sum(int(r['judgeships']) for r in rows if r['level'] in ('district', 'district-shared')) == 673 and '673' in s['notes'][0], '673 district judgeships with shared seats')
-    check('S70', sum(int(r['judgeships']) for r in rows if r['level'] == 'district-territorial') == 4, '4 territorial judgeships')
+    check('S70', sum(int(r['judgeships']) for r in rows if r['level'] == 'district-territorial') == 4, 'four territorial judgeships')
     nine = [r for r in app if 'Ninth' in r['court']][0]
     check('S70', nine['judgeships'] == '29' and sum(int(r['judgeships']) for r in rows if r['parent'] == nine['court']) == 112, 'Ninth Circuit 29 and 112 in its districts')
     dcc = [r for r in app if 'District of Columbia' in r['court']][0]
@@ -231,7 +231,7 @@ def figures():
     def cnt(ch, party=None, vote=None):
         return sum(1 for r in rows if r['chamber'] == ch and (party is None or r['party'] == party) and (vote is None or r['vote_cast'] == vote))
     check('S72', cnt('Senate', vote='Yea') == 60 and cnt('Senate', vote='Nay') == 40 and '60 to 40' in s['title'], 'Senate 60 to 40')
-    check('S72', cnt('Senate', 'D', 'Yea') == 7 and cnt('Senate', 'I', 'Yea') == 1 and cnt('Senate', 'R', 'Yea') == 52, 'Senate yes: 7 D, 1 I, 52 R')
+    check('S72', cnt('Senate', 'D', 'Yea') == 7 and cnt('Senate', 'I', 'Yea') == 1 and cnt('Senate', 'R', 'Yea') == 52 and 'seven Democrats and one independent joining 52 Republicans' in s['title'], 'Senate yes: 7 D, 1 I, 52 R (title)')
     check('S72', cnt('Senate', 'R', 'Nay') == 1 and cnt('Senate', 'I', 'Nay') == 1 and cnt('Senate', 'D', 'Nay') == 38, 'Senate no: 1 R, 1 I, 38 D')
     check('S72', cnt('House', vote='Yea') == 222 and cnt('House', vote='Nay') == 209 and '222 to 209' in s['title'], 'House 222 to 209')
     check('S72', cnt('House') == 433 and 435 - cnt('House') == 2, 'House 433 members recorded, 2 of 435 seats vacant')
