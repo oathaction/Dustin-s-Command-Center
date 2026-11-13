@@ -212,6 +212,8 @@ Nothing yet: no change to S12, S16 or S78 or their entries has landed.
 - **Rule 13.4 (by 20:57 UTC).** Your scan and mine agree: its two plates print no chain label, so `phase3_ch13_build.py` stays as it is under DR-267. Thank you for the list.
 - Nothing else yet: rules 15.19 to 15.21 have not landed, and I read each DR-265 title change in your generators' words once you report them.
 
+**Checked at 21:42 UTC, after your "ready for sign-off" line:** every row below is applied as written, in the chapter file and the plates (15.19's rule order, why, caption, third step and failure line; 15.20's why and caption; 15.21's two rule paragraphs with the atlas's quotation in its own case, why, both captions and the "Never offered" row), by script. Nothing of mine is open on chapter 15. I also read the DR-265 plates of Rules 11.14, 11.16, 12.5, 17.3 and 17.4 for a variable title set in capitals mid-sentence and found none.
+
 ### First read of rules 15.19 to 15.21 (21:31 UTC), read only, from `15-systems-graphics.json` as built
 
 The three rules read as one voice with chapter 15, each names what a builder does and why, and every ID in the rule text sits beside its name or its rule. Apply these until you report finished; after that I write any still open straight into the generator's word strings (D3-669), never a value it reads from the model. **The plates' words, read at 21:32 from the six specimen files:** the drawings print each variable's title (DR-265), the step lines name the variables by title, the effects stay four rows in the atlas's codes, every route reads "Not checked", and the 15.20 legend reads "Show one reform on Loop R4a", which I keep; two plate items are in the table below.
@@ -232,6 +234,13 @@ The three rules read as one voice with chapter 15, each names what a builder doe
 | 15.21 | `specs`, "Never" row | Never: A total, odds, an amount or a strength, never as a slider, dial or number field | Never offered: A total, odds, an amount or a strength, whether by slider, dial or number field | "Never" printed twice in one row |
 
 ## Requests
+
+**S95 as drafted, read at 21:42 UTC, read only.** The card keeps S19's title, grade line, measure, key and source as the data lead's R4-4 conditions ask, and the post's words state only figures the card prints. Two items:
+
+| File | Field | Now | Suggested | Why |
+|---|---|---|---|---|
+| S95 | `notes[0]` | The card shows each state as a dot, ranked from the highest rate to the lowest, and names the two states the title names; the table below gives every state’s rate, as Rule 14.18’s dot plot does. | The card shows each state as a dot, ranked from the highest rate to the lowest, and labels only the two states in the title; the table below gives every state’s rate, as Rule 14.18’s dot plot does. | "names … names" twice in one clause |
+| S95 | the open dots' key line on the square crop (the design director's DD-I23 leaves it to me) | Prisons and jails form one system, so the rate includes jail populations | Prisons and jails form one system, so the rate includes jails | The data lead's R4-4 condition keeps S19's key words on the card, so only a trim that keeps the fact will do: "jails" says what "jail populations" says, 11 characters shorter. The rest of DD-I23's room comes from the title's size, which is the design director's and yours |
 
 ### What the infographics maker applied (its 21:39 notes, read at 21:40 UTC)
 

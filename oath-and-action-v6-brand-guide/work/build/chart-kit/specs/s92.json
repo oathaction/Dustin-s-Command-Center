@@ -125,6 +125,7 @@
     "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S92.",
     "Editor's words (21:17 UTC) applied: title and note 1 with I013's own title.",
     "Design director DD-I15 (21:28 UTC): each limit's own words print in bold (strong), with \", the law’s limit\" after them in the line's weight.",
-    "The grade line's dates held whole (typography.hold), so no column breaks a date before its year (the design director's DD-A3 rule, applied to this plate)."
+    "The grade line's dates held whole (typography.hold), so no column breaks a date before its year (the design director's DD-A3 rule, applied to this plate).",
+    "IM-E7 (landed 21:37 UTC), for the design director's DD-I13 and DD-I15: the optional step's opening line and the actor line print as eyebrows (oac-h-k, the secondary ink at 600 weight), and the limit on its own line with 8 px above it (oac-h-limit)."
   ]
 }

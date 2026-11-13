@@ -2,8 +2,8 @@
  * each event its own square on its day (a picture, hidden from screen readers, since the list says every date), then the
  * dates as live HTML text (R4-3), one a row in date order, each with its day and weekday, what falls due, who acts and
  * the kind of date in words, with the consequence where the law states one; the table gives each date's section. An event the law attaches a consequence to takes a filled square in the
- * subject ink and the strong tag; any other takes an open square edged in the subject ink and the plain tag (the data
- * lead's round 4 ruling (b)). A day with several events stacks their squares.
+ * subject ink and, in the list and the key, its kind in words after a filled square (oac-h-sq-strong); any other takes
+ * an open square edged in the subject ink and its words after an open square (oac-h-sq) (ruling (b); DD-I17). A day with several events stacks their squares.
  * encode: date (date), event (text), who (text, optional), consequence (text), weekday (text, optional).
  * labels: key (the line over the year mark that says what its squares mean), none (words a consequence opens with when the law states none, such as "None"), tags ({strong, plain}: the
  * kinds in words), months (twelve month names for the mark), consequence_words (the words a consequence prints in,
@@ -58,10 +58,12 @@
             var r = h.rows[i], s = strong(r), who = eo && r[eo] ? String(r[eo]) : '', named = who && String(r[ee]).indexOf(who.replace(/^The /, '').split(' ')[0].replace(/s$/, '')) >= 0;
             var cons = s ? String(L.consequence_words || '{consequence}').split('{consequence}').join(r[ec]) : '';
             return '<p class="oac-h-body">' + h.words(r[ee]) + (who && !named ? ' ' + h.words(String(L.who_words || 'for {who}').split('{who}').join(who.charAt(0).toLowerCase() + who.slice(1))) : '') + '</p><p class="oac-h-small"><span class="' +
-              (s ? 'oac-h-tag-strong' : 'oac-h-tag') + '">' + h.words(s ? tags.strong || '' : tags.plain || '') + '</span></p>' + (cons ? '<p class="oac-h-small">' + h.words(cons) + '</p>' : '');
+              (s ? 'oac-h-sq-strong' : 'oac-h-sq') + '">' + h.words(s ? tags.strong || '' : tags.plain || '') + '</span></p>' + (cons ? '<p class="oac-h-small">' + h.words(cons) + '</p>' : '');
           }).join('') + '</li>';
       });
-      return (L.key ? '<p class="oac-h-small">' + h.words(L.key) + '</p>' : '') + mark + '<ol class="oac-h-dates" role="list">' + items.join('') + '</ol>';
+      // the key: a line on the squares, then the two kinds after the squares the list uses (DD-I17)
+      return (L.key ? '<p class="oac-h-small">' + h.words(L.key) + '</p>' : '') +
+        '<p class="oac-h-small"><span class="oac-h-sq-strong">' + h.words(tags.strong || '') + '</span> <span class="oac-h-sq">' + h.words(tags.plain || '') + '</span></p>' + mark + '<ol class="oac-h-dates" role="list">' + items.join('') + '</ol>';
     }
   });
 })(globalThis.OAChart);

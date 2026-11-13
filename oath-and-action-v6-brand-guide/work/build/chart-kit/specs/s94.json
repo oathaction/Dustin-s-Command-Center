@@ -71,7 +71,7 @@
       "Dec"
     ],
     "consequence_words": "{consequence}",
-    "key": "Each square in the year is a date on its day, filled where the law attaches a consequence and open where it states none.",
+    "key": "Each square is a date on its day.",
     "mark_width": 224
   },
   "typography": {
@@ -111,6 +111,7 @@
     "Data lead MI-5 (21:21 UTC): the title counts deadlines (16 on 13 days; the six tax deadlines fall on five days). MI-6: the year mark draws 224 px wide, so nothing overflows at a 256 px window.",
     "Design director DD-I16 and DD-I20 (21:28 UTC): each kind of date sits on a line of its own and its consequence on the next, so a wrapped consequence never starts under the tag; \"fiscal 2028\" held on one line.",
     "Editor's title (21:22 UTC, on MI-5) applied.",
-    "The grade line's dates held whole (typography.hold), so no column breaks a date before its year (the design director's DD-A3 rule, applied to this plate)."
+    "The grade line's dates held whole (typography.hold), so no column breaks a date before its year (the design director's DD-A3 rule, applied to this plate).",
+    "IM-E7 (landed 21:37 UTC), for the design director's DD-I17 and DD-I19: each kind of date prints after the year mark's own square (filled or open) in 600 weight, the key gives the two squares beside the list's own words (the editor's 21:28 words), and the dates run as two columns from 480 px. DD-I18 (the year at the plate's width) is not taken: a mark that scales must hold no words, and the year's month names are its labels; the year stays drawn at 224 px."
   ]
 }
