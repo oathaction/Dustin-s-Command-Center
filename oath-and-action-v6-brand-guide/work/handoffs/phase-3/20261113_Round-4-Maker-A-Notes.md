@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Maker A, briefed 
 
 ## Status
 
+- 21:31 UTC (clock read 21:29). A4-E1 landed and S85 draws its icon and chip. The design director's DD-A1 to DD-A11 are applied (DD-A5 and DD-A6 after the data lead's yes). All four build PASS with the sweep, 0 faults. Waiting on the quick guide check of my strict build (sketches), then a last strict build.
 - 21:16 UTC (clock read 21:13). All four forms, specs S85 to S88, entries 14.79 to 14.84 and both sketches are written. S86, S87 and S88 build PASS with the sweep, 0 faults; S85 fails only for the icon and chip parts it waits on (A4-E1). The data lead's MA-1 to MA-8 and Q-A1, the research lead's R-1 variant and the editor's first and second looks are applied. Figure checks 51 of 51. Next: strict build, quick guide check on the sketches, and the design director's read.
 - 20:58 UTC (clock read 20:55). Rulings (a) to (c) read; applying them. Forms `icon-array`, `proportional-symbols` and `venn-diagram` drafted and building; `euler-diagram` next. S85 waits on A4-E1 (the icon part) and Q-A1 (its word and chip). Round 4's ceiling noted: 13,172 bytes a plate with its frame once S12's tile lands.
 - 20:45 UTC (clock read 20:41). Started. Read `CLAUDE.md`, the round 4 brief, the plan file's round 4 rows, the round 4 data plan with its sign-off and "Conditions for round 4's maker", coverage plan 3.8, the kit README, round 3's maker A notes, DR-266 and D3-1679, Rules 10.1, 10.4 and 10.6, and my four data files with their sidecars. Writing the four forms now; named marks and inks wait on the data lead's "Rulings".
@@ -68,6 +69,24 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Maker A, briefed 
 | MA-8 | S88's title states the finding, in the editor's words |
 | MA-9 | S87's "Both" takes a leader under the circles where it cannot fit inside; PASS at 1440, 390, 328, 288 and 256 px pages and in the sweep |
 | MA-10 | S88's area check named in `notes_internal` |
+
+## The design director's requests
+
+Read at 21:22 UTC; all eleven applied by 21:30 UTC. No figure or word changed; DD-A5 and DD-A6 waited for the data lead's yes (21:25 UTC).
+
+| Item | Spec, form | Done |
+|---|---|---|
+| DD-A1, Must | S85, `icon-array` | The icon, the name and the chip are one row on the icon's vertical center: the chip sits on the name's baseline, 8 px after it. Where they do not fit one line (the 256 and 288 px drawings and the 320 px drawing) the chip drops under the name at x 60, 6 px below, and the two center on the icon. The layout guard passes at every width of the sweep |
+| DD-A2, Must | S85, `icon-array` | A4-E1 landed: CL-050 draws at 48 px in the icon ink at x 0 to 48, flush with the grid's left edge; one row pitch (28 px at a desk, 25 on a phone) under the icon's box before the grid. Captures in my scratch `kit-final/s85/` at 1440, 390, 352, 328 and 288 px pages, both grounds |
+| DD-A3, Should | S85 spec | `typography.hold: ["October 15, 2026"]` (with `nbsp`), so the grade line never breaks the date |
+| DD-A4, Should | S86 spec | Sorted by level, then by count, largest first: the circles run special districts, municipalities, townships, independent school districts, counties at every width; the table opens with the federal government and the states, then the same order |
+| DD-A5, Should | S86, `proportional-symbols` | The key takes S16's grammar: an eyebrow title, "Governments", and circles at 1,000, 10,000 and 40,000 side by side on one baseline, each count centered under its circle, in the label ink at the bubble outline's width as S16 draws them. On a phone the gaps close to 6 px and every circle shrinks with the key's scale until the key fits the width (one area scale at every width) |
+| DD-A6, Should | S86, `proportional-symbols` | "Not drawn: ..." moved into the key's band: at a desk to the key's right, its first line level with the key's title; on a phone under the key; no hairline. The circles now follow the measure line directly |
+| DD-A7, Should | S86 spec | `typography.hold: ["this scale"]`, so "scale." never stands alone |
+| DD-A8, Must | S87, `venn-diagram` | Every region inside the circles takes one line structure from one top line: the fewest breaks at which both lone groups fit (name, count and share; then the count's figure and unit apart; then the name's words apart), the label size only. "Both" takes the same structure from the same top line or leaves on its leader, under the circles in the frame (390 and 320 px today) |
+| DD-A9, Should | S87, S88 | Each set's name is centered over its circle (x = its center), wrapped to the distance between the centers less 12 px, both names on as many lines as the longer needs |
+| DD-A10, Must | S88, `euler-diagram` | One label size: the same rule as DD-A8, so "Both" leaves on its leader at every width where the overlap cannot hold it in the label size with 4 px to spare, desk included |
+| DD-A11, Should | S88, `euler-diagram` | The leader runs down the overlap's own axis (x = the two crossing points'), so it leaves the overlap through its lower point |
 
 ## Tested
 

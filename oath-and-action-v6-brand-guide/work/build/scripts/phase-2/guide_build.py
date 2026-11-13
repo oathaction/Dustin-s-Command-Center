@@ -1880,8 +1880,9 @@ def render_chapter(num, data, specs, tokens, ctx, amp_svg, idx, order, demo=Fals
             opener_html = plate("opener", sid, cap, specs, cctx, where, frame_ctx=f"opening figure of chapter {num}")
             # call 3 (CD-S1): an opener reuses a drawing the chapter has, light, under 16 KB as placed
             if len(opener_html.encode()) > OPENER_MAX_BYTES:
-                R.warn(where, f"the opener {sid} weighs {len(opener_html.encode()):,} bytes as placed, with its frame; an opener stays under "
-                              f"{OPENER_MAX_BYTES:,} (16 KB): draw sprite symbols by <use>, and show a light version of a heavy plate")
+                # DR-271: a byte allocation is reported, never failed; the page's 16 MB is the one fixed limit
+                R.note(f"[{where}] the opener {sid} weighs {len(opener_html.encode()):,} bytes as placed, with its frame, over its "
+                       f"{OPENER_MAX_BYTES:,} (16 KB), reported (DR-271)")
             if not str(specs.meta(sid).get("alt") or "").strip():
                 R.warn(where, f"the opener {sid} has no alt in its manifest; say what a reader learns from it")
     seen = set()
@@ -3146,16 +3147,15 @@ def weigh(page, sprite_bytes):
     total = size(page)
     for n, b in sorted(chapters.items()):
         if n in guide_charts.CEILING:
-            continue   # Phase 3's chapters: guide_charts.gates() checks them, chapter 14 as a hard stop
+            continue   # Phase 3's chapters: guide_charts.gates() reports them (DR-271)
         budget = WEIGHT_BUDGET.get(n, WEIGHT_DEFAULT) * MB
-        if b > budget:
-            R.warn(f"chapter {n}", f"weighs {b / MB:.2f} MB, over its budget of {budget / MB:.2f} MB; draw symbols from the sprite, show "
-                                   f"contact sheets as images and keep photographs at the size shown")
+        if b > budget:   # DR-271: reported, never failed
+            R.note(f"chapter {n} weighs {b / MB:.2f} MB, over its budget of {budget / MB:.2f} MB, reported (DR-271)")
     for k, b in parts.items():
         if k == "map geometry":
             continue   # guide_charts.gates() weighs it against its allowance and warns past it (R3-2)
-        if b > WEIGHT_FIXED.get(k, 0) * MB:
-            R.warn("page weight", f"{k} weighs {b / MB:.2f} MB, over its budget of {WEIGHT_FIXED.get(k, 0):.2f} MB")
+        if b > WEIGHT_FIXED.get(k, 0) * MB:   # DR-271: reported, never failed
+            R.note(f"page weight: {k} weighs {b:,} bytes, over its budget of {WEIGHT_FIXED.get(k, 0) * MB:,.0f}, reported (DR-271)")
     if total > WEIGHT_PAGE:
         R.warn("page weight", f"the page weighs {total / MB:.2f} MB, over its budget of {WEIGHT_PAGE / MB:.1f} MB (the limit is {WEIGHT_LIMIT / MB:.0f} MB)")
     return {"bytes": total, "budget_page": WEIGHT_PAGE, "limit": WEIGHT_LIMIT, "parts": parts,
@@ -3446,7 +3446,8 @@ def build(args):
     weights["pass"] = pass_record
     weights["sprites"] = sprite_counts
     weights["fonts_files"] = fonts.bytes
-    stop, projection = guide_charts.gates(weights, charts, fonts.bytes if fonts.ok else 0, present, R.warn)
+    # DR-271: allocations come back as notes; the page's 16 MB limit stops the build, and the projection still warns
+    stop, projection = guide_charts.gates(weights, charts, fonts.bytes if fonts.ok else 0, present, R.warn, lambda w, m: R.note(f"{w}: {m}"))
     weights["projection"] = projection
     # board 1 apply (item 3): chapter 14's share per plate, printed with every build that carries the chart kit
     if projection.get("chapter_14_per_plate"):
@@ -3736,8 +3737,8 @@ def self_test():
          {"warn": ["D2-328 names it \"Identity proofs\""], "html": ['After chapter 08</p>', 'Foundations, chapters 01 to 08']}),
         ("stage B page weight: one sprite of the symbols referenced, a contact sheet as an image, inlined drawings and budgets",
          {"09-pillar-icons.json": wt09, "10-symbols.json": wt10}, {"specimens": wt_specs, "manifest": wt_manifest},
-         {"warn": ["s-10-inline inlines 1 drawing(s) the sprite holds (CL-024)", "<use> reference(s) to no symbol: oa-sym-cl-999",
-                   "over its budget of 0.40 MB"],
+         {"warn": ["s-10-inline inlines 1 drawing(s) the sprite holds (CL-024)", "<use> reference(s) to no symbol: oa-sym-cl-999"],
+          "note": ["over its budget of 0.40 MB, reported (DR-271)"],
           "absent": ["s-10-use inlines", "s-10-sheet inlines", "chapter 10] weighs"],
           "html": ['<section class="chapter" id="pillar-icons"', 'data-sprite="civic-line"', '<symbol id="oa-sym-cl-019" viewBox="0 0 128 128">',
                    'var(--oa-icon-accent,currentColor)', 'href="#oa-sym-cl-025"'],
@@ -3832,7 +3833,7 @@ def self_test():
     scenarios += [
         ("opener (D2-1134, call 3): chapter 09's figure under its intro and before its rules; 03's is placed too; a 600 px opener is too wide",
          {"03-identity.json": op03, "04-ampersand.json": op04, "09-pillar-icons.json": op09, "10-symbols.json": op10}, {"specimens": op_specs, "manifest": op_manifest},
-         {"warn": ["the opener s-10-wide is 600 px wide", "the opener s-04-heavy weighs"],
+         {"warn": ["the opener s-10-wide is 600 px wide"], "note": ["the opener s-04-heavy weighs"],
           "absent": ["s-09-op is listed but no chapter places it", "[chapter 09] the opener", "the opener s-03-op weighs"],
           "tests": [("chapter 09 holds its opener in the chapter head, after the intro and before the first rule",
                      lambda pg: 0 < ch09(pg).find('class="intro"') < ch09(pg).find('id="fig-s-09-op"') < ch09(pg).find('<div class="rule"')
@@ -4289,13 +4290,15 @@ def self_test():
                 ("three license disclosures, each with its copyright line", lambda pg: pg.count('<details class="lic"') == 3
                  and all(html.escape(f["copyright"]) in pg for f in man["families"].values())),
             ])
-    # Board 1 apply (DR-238): chapter 14's stop of 2,803,941 bytes in a real build, in every mode. A chapter 14 over it writes
-    # no page and exits 3 with --strict and without; one over the old 1.75 MB stop and under the new one is written.
-    print("Board 1 apply: chapter 14's hard stop in a real build (DR-238)")
+    # DR-271 (November 13, 2026; it replaces board 1's hard stop, DR-238): chapter 14 over its 2,803,941 bytes is reported and
+    # its page written, with --strict and without; a page over 16 MB, the one fixed limit, writes no page and exits 3 in every mode.
+    print("DR-271: chapter 14's stop reported, the page's 16 MB limit stopping, in a real build")
     with tempfile.TemporaryDirectory(prefix="oa-guide-build-ch14-") as tmp:
         for name, size, strict, want_stop in (
-                ("chapter 14 over its 2,803,941 byte stop: no page, exit 3, without --strict", 2_900_000, False, True),
-                ("chapter 14 over its 2,803,941 byte stop: no page, exit 3, with --strict", 2_900_000, True, True),
+                ("chapter 14 over its 2,803,941 byte stop: reported, the page written, exit 0, without --strict", 2_900_000, False, "note"),
+                ("chapter 14 over its 2,803,941 byte stop: reported, the page written, exit 0, with --strict", 2_900_000, True, "note"),
+                ("a page over 16 MB: no page, exit 3, without --strict", 16_100_000, False, True),
+                ("a page over 16 MB: no page, exit 3, with --strict", 16_100_000, True, True),
                 ("chapter 14 over the old 1.75 MB stop and under the new one: the page is written", 2_000_000, False, False)):
             base = Path(tmp) / f"c{len(results)}"
             (base / "chapters").mkdir(parents=True)
@@ -4310,12 +4313,16 @@ def self_test():
                                             code=str(base / "code"), demo=False, strict=strict, quiet=True))
             rep = json.loads(out.with_name(out.stem + "-Build-Report.json").read_text())
             c14 = rep["weight"]["projection"]["chapter_14_with_kit"]
-            checks = [(f"chapter 14 weighs {c14:,} bytes, on the intended side of 2,803,941", (c14 > 2_803_941) == want_stop)]
-            if want_stop:
+            checks = [(f"chapter 14 weighs {c14:,} bytes, on the intended side of 2,803,941", (c14 > 2_803_941) == bool(want_stop))]
+            if want_stop is True:
                 checks += [("exits 3", code == 3), ("writes no page", not out.exists()),
-                           ("the warning names the stop", any("hard stop of 2,803,941 bytes" in w["message"] for w in R.warnings))]
+                           ("the warning names the page's limit", any("over the one fixed limit of 16,000,000" in w["message"] for w in R.warnings))]
+            elif want_stop == "note":
+                checks += [("writes the page", out.exists()), ("exits 0", code == 0),
+                           ("a note names the stop's figure", any("over its stop of 2,803,941 bytes" in n for n in R.notes)),
+                           ("no warning names it", not any("2,803,941" in w["message"] for w in R.warnings))]
             else:
-                checks += [("writes the page", out.exists()), ("no stop", code != 3 and not any("hard stop" in w["message"] for w in R.warnings))]
+                checks += [("writes the page", out.exists()), ("no stop", code != 3 and not any("2,803,941" in w["message"] for w in R.warnings))]
             ok = all(c for _, c in checks)
             ok_all &= ok
             results.append({"scenario": name, "pass": ok, "checks": [{"check": c, "pass": p} for c, p in checks]})

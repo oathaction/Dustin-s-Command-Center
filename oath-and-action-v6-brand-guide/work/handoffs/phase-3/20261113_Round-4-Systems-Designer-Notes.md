@@ -4,11 +4,20 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the sy
 
 ## Status
 
-21:14 UTC. DR-265 applied in my four generators (chapters 11, 12, 15 and 17); the generator chain ran three times, and after the second and third runs no file I own changed (the main session's snapshots had taken in the first run). A rescan of a fresh strict build finds no chain label left in any loop drawing but Rule 15.15's two deliberate places (below) and chapter 10's and Rule 11.12's icon names. Chapter 18's matches are gone too (the engineer's code sets). Now building Rules 15.19 to 15.21 to ruling (f), the accessibility lead's specification and the component engineer's C-1 to C-3. Captures of every changed plate at five widths on both grounds come with them.
+21:31 UTC. DR-265 is applied in my four generators and Rules 15.19 to 15.21 are built, each with a correct and a failure plate; every generator check passes and a strict build exits 0 with 0 warnings. Captures of every changed plate at five widths on both grounds are running. Waiting on: the editor's words pass, the data lead's sign-off and the accessibility lead's tests (requests below).
 
 ## Summary
 
-To come when the work is done.
+**DR-265 and DR-267.** Every loop drawing I own prints each variable's own title (`nodes[].title`) where it printed the loop's chain label: Rules 11.14 and 11.16 (`apply_systems_ch11_ui.py`), Rule 12.5's two plates (`stage_b_ch12_systems_build.py`), Rules 17.3 and 17.4 (`stage_c_ch17_build.py`) and every plate of chapter 15 that drew a variable (`phase3_ch15_build.py`), each read by script from the atlas. Chapter 15 now prints one name per variable in every drawing, a loop's or not, so Rule 15.2 states the rule, and Rule 15.15's failure plate draws the one fault on purpose (Variable C3 by its chain label in Loop B4, its title in Loop R10). Rule 13.4 prints no chain label (its plates carry the loop's title and connection names, the atlas's own), and the engineer's code sets for Rules 18.22 and 18.23 already print the titles; a rescan of the page finds no chain label in any loop drawing.
+
+**Re-laid under the data lead's ruling (e).** Every title wraps at word breaks onto three rows at most in its pill, never cut. Pills that share a row now take the widths that hold both titles in the fewest rows (each keeps the 130 px base where it can), and a pill stays at least half again as wide as it is tall. Loop B1a (Rule 15.1) could not hold its two titles side by side in three rows each, so it draws one pill above the other, at one width, steps down the right and up the left, step 2 of the ruling. A three-variable loop's lower row may close to 6 px, and where its ID would crowd the lower arch it takes two rows and the arch drops 18 px. No drawing reached step 3 (chips and a key).
+
+**Rules 15.19 to 15.21** (ruling (f)):
+- 15.19 steps Loop R1 on Rule 18.22's markup with no script of its own (C-1). The drawing follows `data-oa-at`: the current step on the selected band with its words bold, the steps ahead and the variables not yet reached muted, never red. Steps are numbered by a CSS counter; with scripts off and on paper the list is the still sequence and the buttons hide.
+- 15.20 offers Reforms R-03 and R-04 on Loop R4a as Rule 18.3's radio group; the checked radio shows its panel and lights its targets through CSS, scripts on or off; the shell writes the status line (C-2); qualifications and assumptions sit in Rule 18.8's disclosure.
+- 15.21 draws Connection L55 with what the model holds on the model's own steps (sign, grade on the ladder, delay class, no strength), against a still picture of a 0 to 100 slider whose 70 the plate names as its own.
+
+**Weight (reported, DR-271).** Rules 15.19 to 15.21: 48,699 bytes (plates 35,498, rule entries 7,973, styles 4,355, the shell's listener 873), against R4-6's 75,000. Chapter 15 in the strict build: see "Tested".
 
 ## DR-265 list
 
