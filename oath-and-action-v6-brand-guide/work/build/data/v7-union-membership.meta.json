@@ -45,5 +45,8 @@
  "notes": [
   "Figures parsed by script from CL1514’s claim and supporting text, each asserted: 10.0 percent (2025), 5.9 private, 32.9 public, 14.7 million members, 20.1 percent in 1983",
   "The data lead’s condition for row 115: the icon array draws 2025 alone (10 of 100); 1983 and the sector figures go in the note with the limitation"
- ]
+ ],
+ "source_line_variants": {
+  "snapshot_in_grade": "Source: U.S. Bureau of Labor Statistics, Union Members, 2025 (February 18, 2026), employed wage and salary workers, 2025, United States, as recorded in Oath & Action’s systems atlas, Who Do They Answer To? The 2025 average covers 11 months, since the October 2025 survey was not collected."
+ }
 }

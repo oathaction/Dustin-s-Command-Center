@@ -4,7 +4,8 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
-- 21:00 UTC. D4-1 ruled: S16 takes the code column under 358 px, with two conditions (radii unchanged; the engineer reports the new share).
+- 20:58 UTC. ED4-1 ruled: the editor applies S37's curl. R-03's federal route display ruled for the systems designer (under (f)).
+- 20:57 UTC. D4-1 ruled: S16 takes the code column under 358 px, with two conditions (radii unchanged; the engineer reports the new share).
 - 20:54 UTC. **All seven rulings (a) to (g) are posted.** (d) covers R4-2's measure; S12's capture sign-off and the phone codes follow as they land. Requests R-1 to R-3 to the research lead. Early read of S85, S86 and S89 posted under "Sign-offs" (MA-1 to MA-6, MI-1).
 - 20:52 UTC. (d), R4-2's measure, signed off: the engineer may land the stacked tile; 13,172 bytes a plate is round 4's ceiling once it lands.
 - 20:46 UTC. Rulings (a), (b) and (c) posted: makers may draw.
@@ -103,7 +104,7 @@ Every round 4 title is a **Finding**: each states what a record, a count, a surv
 
 The engineer may land items 1 to 3; the cartographer then writes `s12.json` (`"stage_min": 618` for `"stage": 1024`, the alt and phone words, `notes_internal`). I sign off S12 from the landing build's captures at 1440, 1024, 768 and 390 px on both grounds. The phone codes on S12, S16 and S78 (D3-1553) are signed off as the cartographer reports them.
 
-### D4-1, S16 under 358 px: the code column, (A), ruled (21:00 UTC, for the cartographer and the engineer)
+### D4-1, S16 under 358 px: the code column, (A), ruled (20:57 UTC, for the cartographer and the engineer)
 
 **(A), the column**, with two conditions. I looked at the cartographer's 3x pictures at 326 px on Newsprint, today's (`scratch/exp/s16-o-map.png`) beside the column (`s16-w3-map.png`), with its notes and measures.
 
@@ -111,6 +112,10 @@ The engineer may land items 1 to 3; the cartographer then writes `s12.json` (`"s
 - *Condition 1, the data.* The column moves outlines, codes and leaders only, under round 3's (e): every bubble's area, the area scale in pixels for each width and the legend's values stay exactly as today at every width the column touches, and the inks and the three named states (Texas, Florida, New York) are untouched. The cartographer confirms by script that each circle's radius at 300, 326 and 357 px equals today's to 0.01 px, and names the check in `notes_internal`. If the narrower map changes any radius, the column waits for me.
 - *Condition 2, the weight.* The form grows 1,395 bytes on the page, which cuts the share per plate by roughly a thirteenth of that once the engineer lands it (my estimate from R4-2's 782 bytes for 63; the engineer's strict build gives the figure). The engineer reports the new share in his notes; that figure, not 13,172, is then round 4's ceiling, and makers read it from the build. Land it only after the stacked tile, so each measure stands alone.
 - S16 goes on board 3's list of changed board 1 drawings, as the cartographer says. C4-E1, the 2 px phone tile gap, changes no figure, ink or word; it is the engineer's to take, and S07 joins board 3's list if the token changes.
+
+### ED4-1, S37’s curl (D3-1556): apply it (20:58 UTC, for the editor)
+
+**Apply `"typography": {"curl_quotes": true}` to S37.** I read the editor's facts (20:45 UTC preview): the two drawn row labels "Congress's" and "rivals'" become "Congress’s" and "rivals’" at the same x and y, nothing else in any of the four SVGs changes, and the CSV export stays as stored, byte for byte. That is a change of typography, not of data, mark, ink or order: the words, the figures and the reading are identical, and curly apostrophes are a binding writing rule for every word in the guide. D3-1556 held S37 only because its drawing would move; the drawing moves by two glyphs, now shown and listed. The 129 bytes (16,944 with its frame) are the cost of a writing rule on a plate placed under its own round's limit (D3-1451); they come out of chapter 14's stop with every other byte, and the engineer's next strict build reports the share they leave. List both labels for board 3, as the brief asks.
 
 ### (f) Rules 15.19 to 15.21: which loop, which reforms (for the systems designer, the accessibility lead and the research lead)
 
@@ -128,6 +133,8 @@ Read by script from `work/extract/atlas-v7-data.json` (`loops`, `links`, `nodes`
 - *Titles (DR-265).* Variables A1, B1 and E1 print "Concentration of household wealth", "Money spent to influence politics" and "Policy advantages for wealthy and organized interests", the same words as the engineer's DR-267 code set for Rule 18.22.
 
 - **Answer to the accessibility lead’s request 1 (20:54 UTC).** Met as written: (f) gives 15.20 two reforms, R-03 and R-04, inside Rule 18.3's two to five, and every target of both (L42, L56, C1, D7) sits on Loop R4a's one drawing. The rule that picks them demands exactly that.
+
+- **R-03's federal route, ruled (20:58 UTC, on the research lead's point).** The atlas stores an action in that route's `who` ("Repeal the single-member mandate (2 U.S.C. 2c) and require ranked multi-winner counting"), the only one of its 126 routes to do so. 15.20 prints every route of both reforms the same way: the route's name, then the atlas's `who` words as stored with no "Who acts" label before them, then its feasibility and "Not checked". "Federal statute: Congress" and "Federal statute: Repeal the single-member mandate ..." then both read true, and nothing is inferred (writing "Congress" for R-03 would be our word, not the atlas's). The research lead's proposed V7.1 row stands. The research lead's facts table (20:56 UTC) is the systems designer's source for 15.19 to 15.21; I checked its rows against my own reads and they agree.
 
 **Rule 15.21, no control for a strength the model does not hold: Connection L55, the weakest step of R4a.** (A recommendation; the plates' form is the systems designer's.) The atlas's own record for L55 says the effect "relies on seats-votes analysis with no single estimate in this model". The correct plate prints what the model holds for L55 and nothing more: its sign (plus, "raises"), its grade (plausible, on Rule 13.4's ladder), its delay (medium) and that sentence. The failure plate is a still picture of a slider labeled as the link's strength from 0 to 100 with a value set on it; its caption says the atlas holds no such figure. The set value is the failure's own invention and is labeled so beside it. No plate offers an amount, odds, a total or a loop strength.
 
@@ -165,9 +172,17 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 - **MA-5, S86's key.** Add a third step at 40,000 so the key spans the largest circle (39,555), as (b) rules; 1,000 and 10,000 alone leave a reader to guess past a quarter of the largest.
 - **MA-6, S86's title tense.** "Special districts are the most common kind ... counted in 2022" mixes tenses on a 2022 count. Rule 13.2's record words suggest "were"; the editor decides the words. The claim itself holds: 39,555 of 90,888 is the largest share (43.5 percent of local governments), not a majority, and the title claims none.
 
+**Drafts built to my scratch (20:59 UTC, looked at by 21:00):** `oa-chart.mjs build s85 s86 s89 --widths 1440,390,296,256 --no-sweep`: 3 PASS, 0 faults; S85 warns at every width that the kit has no part yet that draws a Civic Line drawing (the topic icon). Looked at 1440 px on Newsprint. The pictures confirm MA-2 (S85's 90 open squares in the subject ink read nearly as heavy as the 10 filled) and MA-4 (S86's four unnamed circles in the light fill read as a second heavy group beside the named black one). S89 at 1440 px matches (b): lanes by position, the emergency branch in the gray edge, each limit under its step as the law's. Its notes and source line both say "Times are limits in law, not measured waits"; once is enough, the editor's call. Weights as the guide places them, with frames: S85 about 4,588, S86 about 4,874, S89 about 10,203 bytes, each under the ceiling.
+- **MA-7, S85's topic icon.** DR-266 sets CL-050 once at 48 px beside its word; the kit cannot draw it yet. Maker A's request to the engineer, if not already made; S85 is not signed off without the icon as DR-266 approved it.
+
 **Infographics maker**
 - **MI-1, S89's chart note.** "Numbered boxes ... are the steps every declaration takes" is not what the file says: steps 7 and 8 (public assistance and individual help) follow only where FEMA names that help for an area, and a denial ends the path at step 5. Word it as the path from a request to the help a declaration names, with the editor.
 - S89's grade line, lanes by position, the branch in a gray edge, the limits as "time the law allows" and `phone: "differs"` with its note match (b) and (c).
+
+**Accepted from the owners' notes (20:59 UTC), changing (b) where it says so:**
+- *S93's callouts* (infographics maker): numbered markers on the page matched to the numbered list, with no leader lines, in place of (b)'s leaders. The list is HTML text beside or under the page, where a leader cannot reach, and the number on each part carries the link at every width. Each marker sits on the part it names, never between two.
+- *S93's redraw* in Inter at the kit's sizes with the drawing's own line breaks, the page's dash drawn as a rule: accepted, with the note saying the drawing is a redraw of the page. IM-4, the short title the page prints in its margin above "47 USC 609 note.", belongs in the file if the page prints it; the research lead decides from the PDF.
+- *S87's and S88's sums* (editor): one place is enough. If the source line says the four groups are computed by Oath & Action from the published counts with approximate margins, the note need only say that the Venn's circle sizes carry no count.
 
 ## Routine calls
 
@@ -181,6 +196,8 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 - D3-xxx | 15.19 steps Loop R1 | Rule 18.22's code already steps it (R4-5's one copy), Rule 15.13 teaches its weakest step, and a third R4a plate would pass Rule 01.9 in chapter 15
 - D3-xxx | 15.21 is recommended on Connection L55 | Its record says the model holds no single estimate of the effect
 - D3-xxx | S16 takes the cartographer's code column under 358 px (D4-1, (A)) | Every state coded on the map with fewer and shorter crossing leaders; unchanged from board 1's 358 px up; radii and legend held exactly
+- D3-xxx | S37 takes its curled apostrophes (ED4-1) | Typography only: two drawn labels, same words, data and exports as stored; a binding writing rule
+- D3-xxx | 15.20 prints each route's name, then the atlas's `who` words with no "Who acts" label | R-03's federal route stores an action there; nothing inferred
 - D3-xxx | A DR-265 title that will not fit wraps, then re-lays, then takes a chip with a keyed title, never cut | One name for each variable wherever a loop is drawn
 
 ## Requests

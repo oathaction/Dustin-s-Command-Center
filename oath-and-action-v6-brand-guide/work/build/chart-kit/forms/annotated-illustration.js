@@ -1,5 +1,5 @@
 /* Annotated illustration (coverage plan 3.16, extended; S93). A document page redrawn in vector with its own words, each
- * part marked by a numbered square in the subject ink, and beside the page (under it on a phone) the callouts in the same
+ * part marked by a numbered disc in the subject ink, and beside the page (under it on a phone) the callouts in the same
  * order: the number, the part's name in bold and what it tells a reader. The page is drawn from the rows, top to bottom,
  * as labels.layout sets it: a running head across the top, a main column and a margin column at its right, the page's
  * edge in the context ink and open at the foot, since the drawing stops partway down the page. Numbers sit in the page's
@@ -25,7 +25,7 @@
     draw: function (c) {
       var L = c.labels, W = c.width, ek = c.field('key'), ep = c.field('part'), et = c.field('text'), el = c.field('tells');
       var by = {}; c.rows.forEach(function (r) { by[String(r[ek])] = r; });
-      var named = (L.named || []).map(String), tk = c.size('tick'), lh = Math.round(tk * 1.36), chip = 18, gut = chip + 8;
+      var named = (L.named || []).map(String), tk = c.size('tick'), lh = Math.round(tk * 1.36), chip = 20, gut = chip + 8;
       var ty = function (w) { return K.typeset({ typography: c.spec.typography || { curl_quotes: true, nbsp: true } }, String(w).replace(/[ \t\n]+/g, ' ')); };
       // the page and the callouts: side by side where the callouts keep 220 px, else the callouts under the page
       var side = W >= 600, pw = side ? Math.min(L.page_max || 400, W - 240) : W, pin = 14, rx = side ? 0 : 0;
@@ -33,9 +33,9 @@
       var inner = x1 - x0 - 2 * pin, mw = Math.round(inner * (L.margin_share || 0.3)), split = mw >= (L.margin_min || 84);
       var mainw = split ? inner - mw - 12 : inner, mx = x1 - pin - mw, tx = x0 + pin;
       var chipat = function (key, x, base) {
-        var nm = named.indexOf(String(key)) >= 0, y = base - tk * 0.35 - chip / 2;
-        c.rect(x, y, chip, chip, { fill: 'subject', data: { key: String(key), field: 'part', value: key } });
-        c.text(x + chip / 2, y + chip / 2 + 4.4, String(key), { role: 'tick', weight: 700, anchor: 'middle', fill: 'label-on-subject' });
+        var nm = named.indexOf(String(key)) >= 0, y = base - tk * 0.35;
+        c.circle(x + chip / 2, y, chip / 2, { fill: 'subject', data: { key: String(key), field: 'part', value: key } });
+        c.text(x + chip / 2, y + 4.4, String(key), { role: 'tick', weight: 700, anchor: 'middle', fill: 'label-on-subject' });
         return nm;
       };
       // the words of a block, as lines, with the lead in bold

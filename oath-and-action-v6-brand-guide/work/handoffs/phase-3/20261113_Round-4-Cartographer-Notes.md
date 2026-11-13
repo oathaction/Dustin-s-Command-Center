@@ -39,6 +39,10 @@ Proposed, each tested in a scratch mirror of the kit (nothing in `work/build/` c
 
 - **D4-1, S16 at 326 px: the column, or the note (D3-1553's "a ruling where a choice is needed").** (A) The column (C4-E2): every state coded at 326 px; 22 leaders, 11 crossing another state's circle (today 14 and 15), longest 72 px (today 104); the eleven column codes sit 41 to 84 px from their circles by design, in latitude order; the South's codes stay the search's, as today (GA's sits under Florida at 326 px, where today MD's does). Unchanged from 358 px up. Costs 1,395 bytes of renderer. (B) The note as today: "Not labeled at this width: DC, DE, ME, NH. The table names every one." Pictures: `scratch/exp/s16-o-map.png` (today, 326 px, 3x), `scratch/exp/s16-w3-map.png` (column, 326 px, 3x), `scratch/exp/s16-col-charcoal-326-map.png` (column on Charcoal, the kit's own export). I recommend (A).
 
+## S12's stacked tile (DR-261, ruling (d))
+
+Ready in scratch, waiting on the engineer's LANDED: `scratch/draft/s12.json` changes `s12.json` in three places only: `"stage_min": 618` where `"stage": 1024` stood; the alt's desk clause reads "At a desk each square holds the state’s code over its figure, with an arrow beneath as long as the state’s shift ..." (was "holds an arrow as long as the state’s shift ..."), the scroll clause and every other word kept, since the frame still scrolls below a 618 px column; and one `notes_internal` line. `phone_note` stays: the kit does not print it, and its words still hold. Built against a copy of the engineer's mirror kit (20:57 UTC): PASS, 0 faults, sweep on; drawings at 1024, 723, 618, 618 (the 558 px column, framed) and 326 px; 13,206 bytes as the guide places it, about 13,956 with its frame, under 15,000 (ruling (d) gives 14,076 by the page measure). Looked at: 618 px on Newsprint (every tile holds its code, figure and arrow) and the 558 px column's frame (the hint above it; ME, NH and RI past the edge until the reader scrolls).
+
 ## Pixels changed, for board 3
 
 (Filled in as changes land.)

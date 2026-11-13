@@ -5,43 +5,92 @@
   "family": "proportion-and-overlap",
   "tier": "extended",
   "dataset": "census-acs-health-coverage-overlap",
-  "sort": [{ "field": "order", "order": "asc" }],
+  "sort": [
+    {
+      "field": "order",
+      "order": "asc"
+    }
+  ],
   "reader_question": "How many people have private health coverage, public coverage, both, or neither?",
-  "evidence": "estimate",
-  "evidence_label": "Estimate",
-  "grade_line": "Official statistics: the Census Bureau’s American Community Survey",
-  "title": "About 23.8 million Americans had both private and public health coverage in 2025, and 28.3 million had neither.",
-  "measure_line": "People by health insurance coverage, millions, 2025, civilian noninstitutionalized population, United States",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: a Census Bureau survey, with its published margins of error",
+  "title": "In 2025, 189.4 million people had private health coverage alone, 95.4 million had public coverage alone, 23.8 million had both and 28.3 million had neither.",
+  "measure_line": "People by health insurance coverage, millions and percent of everyone, 2025, civilian noninstitutionalized population, United States",
   "notes": [
-    "The two circles are drawn the same size, so their areas carry no count; the chart for Rule 14.82 draws each region at its true size.",
-    "Private coverage includes plans through an employer, plans bought directly and TRICARE; public coverage includes Medicare, Medicaid and other means-tested plans, and VA care."
+    "The two circles are drawn the same size, so their areas carry no count; the chart for Rule 14.82 draws each group at its true size.",
+    "The four groups are Oath & Action’s sums and differences of the Census Bureau’s published counts, so the margins of error in the table are approximate.",
+    "The Bureau counts coverage through an employer, coverage bought directly and TRICARE as private, and Medicare, Medicaid, other means-tested coverage and VA care as public."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
-  "alt": "Two overlapping circles inside a frame for everyone. Private coverage only, 189.4 million; both, 23.8 million; public coverage only, 95.4 million; and no coverage, outside both circles, 28.3 million.",
+  "alt": "Two overlapping circles of one size inside a frame for everyone, 336.8 million people in 2025. Private coverage alone, 189.4 million, 56.2 percent; both, 23.8 million, 7.1 percent; public coverage alone, 95.4 million, 28.3 percent; and no coverage, outside both circles, 28.3 million, 8.4 percent.",
   "table": {
-    "caption": "People by health insurance coverage, 2025",
+    "caption": "People by health insurance coverage, 2025; the groups are sums and differences of the published counts, so their margins are approximate",
     "columns": [
-      { "field": "region", "label": "Coverage", "format": "text", "row_header": true },
-      { "field": "people", "label": "People", "format": "integer" },
-      { "field": "people_moe_approx", "label": "Margin of error, approximate", "format": "integer" },
-      { "field": "pct", "label": "Share of everyone, percent", "format": "number:1" }
+      {
+        "field": "region",
+        "label": "Coverage",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "people",
+        "label": "People",
+        "format": "integer"
+      },
+      {
+        "field": "people_moe_approx",
+        "label": "Margin of error, approximate",
+        "format": "integer"
+      },
+      {
+        "field": "pct",
+        "label": "Share of everyone, percent",
+        "format": "number:1"
+      }
     ]
   },
-  "encode": { "region": "region", "value": "people" },
-  "labels": {
-    "regions": { "a": "Private coverage only", "ab": "Both private and public coverage", "b": "Public coverage only", "none": "No health insurance coverage" },
-    "names": { "Private coverage only": "Private only", "Both private and public coverage": "Both", "Public coverage only": "Public only", "No health insurance coverage": "No coverage" },
-    "sets": ["Private coverage", "Public coverage"],
-    "frame": "Everyone, {total}",
-    "fills": { "ab": "light-fill" }
+  "encode": {
+    "region": "region",
+    "value": "people",
+    "share": "pct"
   },
-  "formats": { "value": "millions:1" },
+  "labels": {
+    "regions": {
+      "a": "Private coverage only",
+      "ab": "Both private and public coverage",
+      "b": "Public coverage only",
+      "none": "No health insurance coverage"
+    },
+    "names": {
+      "Private coverage only": "Private only",
+      "Both private and public coverage": "Both",
+      "Public coverage only": "Public only",
+      "No health insurance coverage": "No coverage"
+    },
+    "sets": [
+      "Private coverage",
+      "Public coverage"
+    ],
+    "frame": "Civilian noninstitutionalized population, {total}",
+    "fills": {
+      "ab": "track"
+    },
+    "value_words": "{v}, {p}"
+  },
+  "formats": {
+    "value": "millions:1",
+    "share": "percent:1"
+  },
   "phone": "same",
   "artboard": "reading",
   "domain": "D09",
   "states": [],
   "notes_internal": [
-    "Maker A, round 4. Data plan row 117, rule 14.81. Domain D09 (V7 I133). Draft before the data lead's rulings."
+    "Maker A, round 4. Data plan row 117, rule 14.81. Domain D09 (V7 I133). Data lead rulings (a) nothing named, (b) the frame in the context ink, two equal circles with 1.5 px subject-ink edges and no fill, the overlap in the track ink, (c) the grade line."
+  ],
+  "chart_notes": [
+    "Each group’s count and share sit inside it; the overlap, people with both kinds, is shaded. The frame stands for everyone, and the space outside both circles holds the people with no coverage."
   ]
 }

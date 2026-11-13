@@ -2,10 +2,11 @@
  * so four regions: the first group alone, both, the second alone, and neither (the frame outside both circles). Each region
  * prints its name and count inside it. The circles are one size whatever the counts, and the spec's note says so; the
  * Euler diagram draws the same regions at true area (Rule 14.82).
- * encode: region (text), value (number).
+ * encode: region (text), value (number), share (number, optional).
  * labels: regions ({a, ab, b, none}: the region each row is, by its stored name), names ({stored: printed}), sets ([the
  * first circle's name, the second's]), frame (the frame's name, {total} the sum of every row), fills ({a, ab, b, none}: color
- * roles, none by default), named ([regions] set in 700), edge (the circles' ink, default subject). formats: value. */
+ * roles, none by default), named ([regions] set in 700), edge (the circles' ink, default subject), value_words ("{v}, {p}": the
+ * count and share). formats: value, share. */
 (function (K) {
   'use strict';
   var ON = { subject: 'label-on-subject', point: 'label-on-subject', 'cat-1': 'on-cat-1', 'cat-2': 'on-cat-2', 'cat-3': 'on-cat-3' };
@@ -14,15 +15,16 @@
   var R1 = function (v) { return Math.round(v * 10) / 10; };
   K.register_chart({
     form: 'venn-diagram', name: 'Venn Diagram', family: 'proportion-and-overlap',
-    encode: { region: 'text', value: 'number' },
-    labels: ['regions', 'names', 'sets', 'frame', 'fills', 'named', 'edge'],
+    encode: { region: 'text', value: 'number', share: 'number?' },
+    labels: ['regions', 'names', 'sets', 'frame', 'fills', 'named', 'edge', 'value_words'],
     phone: 'same',
     draw: function (c) {
-      var L = c.labels, W = c.width, er = c.field('region'), ev = c.field('value'), f = c.spec.formats || {};
+      var L = c.labels, W = c.width, er = c.field('region'), ev = c.field('value'), es = c.field('share', false), f = c.spec.formats || {};
       var RG = L.regions || {}, FI = L.fills || {}, rows = c.all_rows || c.rows, by = {};
       ['a', 'ab', 'b', 'none'].forEach(function (k) { by[k] = rows.filter(function (r) { return r[er] === RG[k]; })[0]; if (!by[k]) c.warn('labels.regions.' + k + ' names no row'); });
       if (!by.a || !by.ab || !by.b || !by.none) { c.height(10); return; }
       var nm = function (r) { return (L.names || {})[r[er]] || r[er]; }, fv = function (v) { return K.fmt(v, f.value || 'integer'); };
+      var vw = function (r) { return String(L.value_words || '{v}').split('{v}').join(fv(r[ev])).split('{p}').join(es ? K.fmt(r[es], f.share || 'percent:1') : ''); };
       var named = function (r) { return (L.named || []).indexOf(r[er]) >= 0; };
       var tot = rows.reduce(function (t, r) { return t + (+r[ev] || 0); }, 0);
       var tick = c.size('tick'), lab = c.size('label'), pad = c.phone ? 10 : 16, y = 0;
@@ -48,7 +50,7 @@
       };
       var top = cy - r, bot = cy + r;
       // the frame for everyone, its words in the corner that the circles leave
-      var none = by.none, nw = [nm(none), fv(none[ev])], nwid = Math.max(c.measure(nw[0], 'label', named(none) ? 700 : 600), c.measure(nw[1], 'label', named(none) ? 700 : 400, true));
+      var none = by.none, nw = [nm(none), vw(none)], nwid = Math.max(c.measure(nw[0], 'label', named(none) ? 700 : 600), c.measure(nw[1], 'label', named(none) ? 700 : 400, true));
       var nh = lab * 1.25 + lab, corner_x = W - pad - nwid, corner_top = bot + pad - nh;
       // the corner's top left must sit outside the second circle, or the frame grows a band under the circles for it
       var ddx = Math.max(0, corner_x - cx2), ddy = Math.max(0, corner_top - cy), clear = ddx * ddx + ddy * ddy > (r + 6) * (r + 6) && corner_x > cx2;
@@ -67,17 +69,17 @@
       c.circle(cx2, cy, r, { stroke: edge, width: c.t('line-baseline'), mark: false });
       // each region's words: its name and its count, on as few lines as fit inside it
       var words = function (k, x, mid, room) {
-        var row = by[k], nmw = named(row) ? 700 : 600, vw = named(row) ? 700 : 400, ink = ON[FI[k]] || 'label';
+        var row = by[k], nmw = named(row) ? 700 : 600, vwt = named(row) ? 700 : 400, ink = ON[FI[k]] || 'label';
         var roles = ['label', 'tick'];
         for (var i = 0; i < roles.length; i++) {
           var sz = c.size(roles[i]), lh = Math.round(sz * 1.25);
-          var l1 = c.wrap(nm(row), roles[i], room(0), nmw), l2 = c.wrap(fv(row[ev]), roles[i], room(0), vw), n = l1.length + l2.length;
+          var l1 = c.wrap(nm(row), roles[i], room(0), nmw), l2 = c.wrap(vw(row), roles[i], room(0), vwt), n = l1.length + l2.length;
           var hh = sz + (n - 1) * lh, wide = 0;
           l1.forEach(function (s) { wide = Math.max(wide, c.measure(s, sz, nmw)); });
-          l2.forEach(function (s) { wide = Math.max(wide, c.measure(s, sz, vw, true)); });
+          l2.forEach(function (s) { wide = Math.max(wide, c.measure(s, sz, vwt, true)); });
           if (wide > Math.min(room(-hh / 2), room(hh / 2)) || n > 4) continue;
           var t = c.text(x, mid - hh / 2 + sz * 0.86, nm(row), { role: roles[i], weight: nmw, anchor: 'middle', max: room(0) + 0.5, leading: lh, fill: ink });
-          c.text(x, t.bottom + sz * 0.86 - sz * 0.241 + (lh - sz), fv(row[ev]), { role: roles[i], weight: vw, anchor: 'middle', max: room(0) + 0.5, leading: lh, tnum: true, fill: ink });
+          c.text(x, t.bottom - sz * 0.241 + lh, vw(row), { role: roles[i], weight: vwt, anchor: 'middle', max: room(0) + 0.5, leading: lh, tnum: true, fill: ink });
           return true;
         }
         c.warn('the words for ' + nm(row) + ' do not fit inside its region at ' + W + ' px');
@@ -87,8 +89,8 @@
       words('a', cx1 - r + d / 2, cy, function () { return d - 10; });
       words('ab', px, cy, function (dy) { return 2 * half(dy) - d - 8; });
       words('b', cx2 + r - d / 2, cy, function () { return d - 10; });
-      var nb = c.text(W - pad, fb - pad - lab * 1.25 - lab * 0.24 + 0, nw[0], { role: 'label', weight: named(none) ? 700 : 600, anchor: 'end', fill: ON[FI.none] || 'label' });
-      c.text(W - pad, nb.bottom + lab * 0.86 - lab * 0.241 + lab * 0.25, nw[1], { role: 'label', weight: named(none) ? 700 : 400, anchor: 'end', tnum: true, fill: ON[FI.none] || 'label' });
+      var nb = c.text(W - pad, fb - pad - lab * 1.25 - lab * 0.24, nw[0], { role: 'label', weight: named(none) ? 700 : 600, anchor: 'end', fill: ON[FI.none] || 'label' });
+      c.text(W - pad, nb.bottom - lab * 0.241 + Math.round(lab * 1.25), nw[1], { role: 'label', weight: named(none) ? 700 : 400, anchor: 'end', tnum: true, fill: ON[FI.none] || 'label' });
       c.height(fb + 2);
       void top;
     }

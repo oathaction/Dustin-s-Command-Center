@@ -1,0 +1,34 @@
+{
+  "id": "14.139",
+  "title": "Use an annotated illustration to show what each part of a document tells a reader.",
+  "rule": [
+    "Redraw the document in vector with its own words and nothing invented, mark each part with a numbered disc in the text’s ink, and list the parts beside it, or under it on a phone, in the order they sit on the page, each with its name in bold and what it tells a reader. Where the drawing stops partway down, crop it at an open edge and say so in a note. Draw a dash the page prints as a rule one em wide, and give the table each part with its words as printed."
+  ],
+  "use_when": "The reader asks what the parts of one document mean, such as what the first page of a law tells them.",
+  "use_instead": [
+    {
+      "when": "The steps a bill or rule goes through",
+      "rule": "14.88"
+    },
+    {
+      "when": "How an institution makes a decision",
+      "rule": "14.96"
+    }
+  ],
+  "why": {
+    "text": [
+      "A reader learns a document’s parts fastest on the page itself, where each part sits, and the numbered list carries the names to a reader who cannot see the drawing. Redrawing with the page’s own words keeps every callout checkable against the source."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S93",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.88",
+    "14.96"
+  ],
+  "builders": "Form annotated-illustration: node work/build/chart-kit/oa-chart.mjs build s93; encode key, part, text and tells; labels.layout sets each block of the page in order (slot head, main or margin), with breaks, a bold lead and the margin block beside its line.",
+  "correct": null,
+  "failure": null
+}

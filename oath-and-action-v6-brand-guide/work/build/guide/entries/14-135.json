@@ -1,0 +1,39 @@
+{
+  "id": "14.135",
+  "title": "Use a process explainer to show the steps of a public process and who acts at each one.",
+  "rule": [
+    "Give each level of government, and the public where it acts, a column named in words at its head, and set each step in a box across the columns of those who act at it, numbered in the order the law sets and joined by arrows in the text’s ink. A step some cases take in place of another sits under it with a gray edge and a line that says when it applies; steps that follow one step side by side share a row, each with its own arrow. Print each time as the law’s limit, never as a wait, and the date of the law once, in the grade line. Name every actor in words, since no symbol means a governor, an agency or the President, and give the table every step in reading order with where it leads. On a phone the steps run down one column, each naming who acts."
+  ],
+  "use_when": "The reader asks how a public process runs across levels of government and who has to ask or act at each step, such as how a disaster declaration brings federal help.",
+  "use_instead": [
+    {
+      "when": "One institution’s steps, with where others can step in",
+      "rule": "14.96"
+    },
+    {
+      "when": "The steps a reader takes, in order",
+      "rule": "14.138"
+    },
+    {
+      "when": "How long each step can take for one person",
+      "rule": "14.112"
+    }
+  ],
+  "why": {
+    "text": [
+      "A column for each level lets a reader find where their own government acts by reading down one column, and the numbered path keeps the order when the drawing is read aloud or as a table. Naming each actor in words keeps a symbol from taking a meaning it was never given."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S89",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.96",
+    "14.112",
+    "14.138"
+  ],
+  "builders": "Form process-explainer: node work/build/chart-kit/oa-chart.mjs build s89; encode key, path, step, level, who and limit; labels.lanes names each column and the levels it holds, labels.branches gives a step taken in place of another (at), labels.together sets steps side by side in one row, and labels.limit_words prints each limit in its words.",
+  "correct": null,
+  "failure": null
+}

@@ -1,0 +1,95 @@
+{
+  "kit": 1,
+  "id": "S88",
+  "form": "euler-diagram",
+  "family": "proportion-and-overlap",
+  "tier": "extended",
+  "dataset": "census-acs-health-coverage-overlap",
+  "sort": [
+    {
+      "field": "order",
+      "order": "asc"
+    }
+  ],
+  "reader_question": "How many people have private health coverage, public coverage, both, or neither, with each region drawn at its true size?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: a Census Bureau survey, with its published margins of error",
+  "title": "Drawn at true size, the 23.8 million people with both private and public health coverage in 2025 share a narrow overlap, and the 28.3 million with neither form a circle of their own.",
+  "measure_line": "People by health insurance coverage, millions and percent of the 336.8 million in the civilian noninstitutionalized population, 2025, United States; each area is in proportion to its count",
+  "notes": [
+    "Each circle’s area, and the area the two circles share, is in proportion to its count on one scale; the chart for Rule 14.81 draws the same groups with circles of one size.",
+    "The four groups are Oath & Action’s sums and differences of the Census Bureau’s published counts, so the margins of error in the table are approximate.",
+    "The Bureau counts coverage through an employer, coverage bought directly and TRICARE as private, and Medicare, Medicaid, other means-tested coverage and VA care as public."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Three circles drawn at true area for 2025. Private coverage, 213.2 million people, overlaps public coverage, 119.1 million, by the 23.8 million with both, 7.1 percent; private coverage alone holds 189.4 million, 56.2 percent, and public coverage alone 95.4 million, 28.3 percent. A separate circle holds the 28.3 million with no coverage, 8.4 percent.",
+  "table": {
+    "caption": "People by health insurance coverage, 2025; the groups are sums and differences of the published counts, so their margins are approximate",
+    "columns": [
+      {
+        "field": "region",
+        "label": "Coverage",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "people",
+        "label": "People",
+        "format": "integer"
+      },
+      {
+        "field": "people_moe_approx",
+        "label": "Margin of error, approximate",
+        "format": "integer"
+      },
+      {
+        "field": "pct",
+        "label": "Share of everyone, percent",
+        "format": "number:1"
+      }
+    ]
+  },
+  "encode": {
+    "region": "region",
+    "value": "people",
+    "share": "pct"
+  },
+  "labels": {
+    "regions": {
+      "a": "Private coverage only",
+      "ab": "Both private and public coverage",
+      "b": "Public coverage only",
+      "none": "No health insurance coverage"
+    },
+    "names": {
+      "Private coverage only": "Private only",
+      "Both private and public coverage": "Both",
+      "Public coverage only": "Public only",
+      "No health insurance coverage": "No coverage"
+    },
+    "sets": [
+      "Private coverage",
+      "Public coverage"
+    ],
+    "fills": {
+      "ab": "track"
+    },
+    "value_words": "{v}, {p}"
+  },
+  "formats": {
+    "value": "millions:1",
+    "share": "percent:1"
+  },
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D09",
+  "states": [],
+  "notes_internal": [
+    "Maker A, round 4. Data plan row 118, rule 14.82. Domain D09 (V7 I133). Data lead rulings (a) nothing named, (b) three circles at true area on one scale, no frame, the third circle apart by at least its radius, inks as S87, (c) the grade line."
+  ],
+  "chart_notes": [
+    "Each group’s count and share sit inside it, or below the circles on a thin line where it does not fit; the overlap, people with both kinds, is shaded."
+  ]
+}

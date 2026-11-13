@@ -41,5 +41,11 @@
  "ledger_row": "P7-309",
  "domain": "D04",
  "domain_note": "How Congress writes a law; S62 follows the same bill, S. 146, to its signing (data lead change 2)",
- "states": []
+ "states": [],
+ "source_line_variants": {
+  "date_on_page": "Source: Public Law 119-12, the TAKE IT DOWN Act, 139 Stat. 55, first page, United States, from govinfo, U.S. Government Publishing Office. Retrieved November 12, 2026."
+ },
+ "notes": [
+  "Row 11 added November 13, 2026 at the infographics maker’s request (IM-4): the right margin beside section 1 prints the short title as its own margin note, above “47 USC 609 note.”, read by position in page 1 of the PDF (eight lines) and in govinfo’s HTML text, where the two are separate notes."
+ ]
 }
