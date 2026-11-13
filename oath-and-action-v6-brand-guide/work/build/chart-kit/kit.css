@@ -117,6 +117,9 @@
   .oac-art.oac-html { break-inside: auto; }
   .oac-h-item { break-inside: avoid; }
 }
+/* A4-E1 (round 4): a Civic Line drawing in a chart, one color in the icon ink (its symbol draws in currentColor) */
+.oac-icon { color: var(--oa-component-icon-ink); --oa-icon-accent: currentColor; }
+@media (forced-colors: active) { .oac-svg .oac-icon { color: CanvasText; } }
 /* R4-4 (round 4): a social card's crops, each drawn at its true size and shown at the column's width or at its own, whichever
    is less, with its size in words under it; the words and alt text to post beside it as live text */
 .oac-fig[data-oa-card] { max-width: none; }

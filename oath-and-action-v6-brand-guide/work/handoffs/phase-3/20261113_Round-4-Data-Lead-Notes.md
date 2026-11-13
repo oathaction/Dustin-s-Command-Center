@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
-- 21:18 UTC. Entries 14.135 and 14.139 read: nothing in them for me to change; I sign them off with their specimens. Waiting on: the cards S90 to S92 and S94, S95, S85's parts, MA-9, MI-2, the phone codes, DR-265's captures and 15.19 to 15.21.
+- 21:17 UTC. Entries 14.135 and 14.139 read: nothing in them for me to change; I sign them off with their specimens. Waiting on: the cards S90 to S92 and S94, S95, S85's parts, MA-9, MI-2, the phone codes, DR-265's captures and 15.19 to 15.21.
 - 21:17 UTC. IM-E5 ruled: S95's card turns the ranks across, with five conditions.
 - 21:16 UTC. Maker A’s six entries and both sketches signed off.
 - 21:14 UTC. Signed off S86, S88 (one small item) and S89; S87 and S93 but for 256 px (MA-9, MI-2); S85's figures, with its icon and chip waiting on the engineer. The share per plate is now 12,495.
@@ -309,7 +309,8 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 
 ## Not tested
 
-- Sweeps on S85 to S89 (built with `--no-sweep` as drafts); widths 390, 296 and 256 px of S85, S86 and S89 not yet looked at, nor their grayscale, nor Charcoal for S85 to S89. Each sign-off names the widths it looked at.
+- Not every capture of every width and ground: each sign-off names the ones I looked at; the rest I read through the kit's checks and, where named, by script on the SVGs.
 - R4-2's bytes are the engineer's measure; I checked its arithmetic, not the minified files.
-- The U.S. Code's currency after its 2024 edition (request R-2).
+- The U.S. Code's currency is the research lead's check (R-2), which I read, not repeated.
 - Chapter 15's Rule 01.9 count is read from the generator's source, not from a run of it.
+- No guide page build or guide check of my own; the kit's build only.

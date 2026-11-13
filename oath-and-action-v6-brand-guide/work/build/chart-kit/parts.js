@@ -167,6 +167,24 @@
   };
   // A shift arrow from x1 (its tail dot) to x2 (its head) at height y, in the subject ink; o.data marks the head for the checks.
   // Shared by shift-arrows, results-table, tile-map-shift-arrows and diverging-bar-arrows (moved from shift-arrows.js, R-B6).
+  // A4-E1 (round 4): one approved drawing from the guide's sprite (Civic Line CL-050) at s px square, in the icon ink and one
+  // color (no red accent), hidden from screen readers, since its word stands beside it (Rules 10.4, 10.6). It draws as a
+  // <use> of the sprite's symbol: the guide holds the symbol once (guide_build.py reads the figure's data-oa-sym), the kit's
+  // page carries it, and the SVG export draws it inline. Its box is a shape to the checks, so no word sits on it.
+  P.icon = function (c, id, x, y, s) {
+    c._push('<use href="#oa-sym-' + String(id).toLowerCase() + '" x="' + x + '" y="' + y + '" width="' + s + '" height="' + s + '" class="oac-icon" data-icon="' + id + '" data-icon-family="civic-line"/>');
+    c._ink('icon', x, y, s, s, { fill: 'label' }, { a: s * s });
+    return { x: x, y: y, w: s, h: s };
+  };
+  // A4-E1: a typed ID chip in a drawing, as Rule 18.24 draws one: the kind and the ID ("Variable A2") inside a hairline edge
+  // in the text ink, 8 px either side, never broken. y is the baseline; returns the chip's box.
+  P.chip = function (c, x, y, words, o) {
+    o = o || {};
+    var ro = { role: o.role || 'tick', weight: o.weight || 600 }, b = c.text_box(x + 8, y, words, ro);
+    c.rect(x + 0.5, b.y - 2.5, b.w + 15, b.h + 5, { stroke: 'label', width: 1, mark: false });
+    c.text(x + 8, y, words, Object.assign({ fill: 'label' }, ro));
+    return { x: x, y: b.y - 3, w: b.w + 16, h: b.h + 6 };
+  };
   P.arrow = function (c, x1, x2, y, o) {
     var hl = c.t(c.phone ? 'arrow-phone-head-length' : 'arrow-head-length'), hw = c.t(c.phone ? 'arrow-phone-head-half-width' : 'arrow-head-half-width');
     // BC S16: the shaft lands on the pixel grid (K.snap), and its tail dot and head follow it, so the three stay on one line
