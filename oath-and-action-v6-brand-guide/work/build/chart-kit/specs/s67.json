@@ -1,0 +1,128 @@
+{
+  "kit": 1,
+  "id": "S67",
+  "form": "decision-tree",
+  "family": "structure",
+  "tier": "core",
+  "dataset": [
+    "ballotpedia-rcv-prohibitions-by-state",
+    "v7-rcv-local-routes"
+  ],
+  "reader_question": "Can my city switch its own elections to ranked-choice voting?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: state laws compiled by Ballotpedia, a secondary source, and the atlas’s local route",
+  "title": "A state ban on ranked-choice voting reaches city elections in 18 states, Ohio’s ban leaves home-rule cities an opening at a price, and elsewhere the answer turns on state home-rule law.",
+  "measure_line": "Whether a state ban on ranked-choice voting reaches a city’s own elections, 50 states and the District of Columbia, bans as of November 2026, read November 6, 2026 and read again November 12, 2026, after the November 3 election",
+  "notes": [
+    "Tennessee’s ban covers some elections, but it names local government offices and counts an incorporated city or town as local government, so its cities follow the first answer with the other 17 states.",
+    "Every ban but Tennessee’s rests on Ballotpedia’s quotation of the law, Ohio’s terms included; we read Tennessee’s act, Public Chapter 621, ourselves."
+  ],
+  "source_line": "Source: Ballotpedia, a secondary source, Ranked-choice voting (RCV), state laws prohibiting RCV, as of November 2026, 50 states and DC, retrieved November 6, 2026; Oath & Action’s systems atlas, Who Do They Answer To?, reform profiles R-01 and R-02, the local route, as of October 15, 2026.",
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "A decision tree that starts with one question: does a state law ban ranked-choice voting in your city’s own elections? Yes, in 18 states, Tennessee among them: a city cannot adopt it while the ban stands. Partly, in Ohio: home-rule cities may still adopt it, but lose state local government fund distributions while it is in effect. No, in 31 states and the District of Columbia: check your state’s home-rule law. If it lets a city set its own election rules, the city can act by ordinance, charter amendment or local practice; if cities hold only the powers the state grants, the legislature decides.",
+  "table": {
+    "caption": "Whether a state ban on ranked-choice voting reaches city elections, by state, as of November 2026, in the tree’s order",
+    "columns": [
+      {
+        "field": "name",
+        "label": "State",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "reaches_city_elections",
+        "label": "Does a ban reach city elections?",
+        "format": "text",
+        "words": { "yes": "Yes", "partly": "Partly" },
+        "empty": "No ban"
+      },
+      {
+        "field": "reaches_city_elections",
+        "label": "Then",
+        "format": "text",
+        "words": { "yes": "A city cannot adopt it while the ban stands", "partly": "Home-rule cities may, at a price" },
+        "empty": "Check the state’s home-rule law"
+      },
+      {
+        "field": "measure",
+        "label": "Law",
+        "format": "text",
+        "empty": "None"
+      },
+      {
+        "field": "enacted_year",
+        "label": "Year",
+        "format": "year",
+        "empty": "None"
+      },
+      {
+        "field": "city_reach_note",
+        "label": "Note",
+        "format": "text",
+        "empty": ""
+      }
+    ]
+  },
+  "chart_notes": [
+    "The question sits in a box with a heavy edge, and each answer under it in a box with a fine edge, joined by an arrow. Each answer gives its count of states, what it means for a city and, where it is short, the states by name."
+  ],
+  "phone": "differs",
+  "phone_note": "Where three columns cannot each hold 190 px, the answers run down the page, each set in from a line at the left.",
+  "artboard": "reading",
+  "domain": "D02",
+  "states": ["OH", "TN"],
+  "sort": [
+    { "field": "reaches_city_elections", "values": ["yes", "partly"] },
+    { "field": "name" }
+  ],
+  "encode": {
+    "place": "name"
+  },
+  "labels": {
+    "tree": {
+      "q": "Does a state law ban ranked-choice voting in your city’s own elections?",
+      "sub": "State bans as of November 2026",
+      "branches": [
+        {
+          "answer": "Yes",
+          "where": { "reaches_city_elections": "yes" },
+          "count": "{n} states",
+          "leaf": "A city cannot adopt it while the ban stands.",
+          "list": true
+        },
+        {
+          "answer": "Partly",
+          "where": { "reaches_city_elections": "partly" },
+          "count": "Ohio",
+          "leaf": "Home-rule cities may still adopt it, but lose state local government fund distributions while it is in effect."
+        },
+        {
+          "answer": "No",
+          "where": { "reaches_city_elections": null, "code": { "not": ["DC"] } },
+          "count": "{n} states and the District of Columbia",
+          "then": {
+            "q": "Check your state’s home-rule law. May a city set its own election rules?",
+            "branches": [
+              {
+                "answer": "Yes",
+                "leaf": "The city can act by ordinance, charter amendment or local practice."
+              },
+              {
+                "answer": "No",
+                "leaf": "Where cities hold only the powers the state grants, the legislature decides."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "typography": { "curl_quotes": true, "nbsp": true },
+  "notes_internal": [
+    "Maker A, round 3. Data plan row 87 with the sign-off's change 12, rule 14.97. Domain D02 from the sidecar; Ohio and Tennessee count, since the tree and its notes name them.",
+    "The first question branches on reaches_city_elections (yes for the 17 full bans and Tennessee, partly for Ohio, empty where there is no ban). The third answer's where leaves DC out of its count so the words read 31 states and the District of Columbia; the table keeps every row.",
+    "The second question's two answers rest on V7's local route (v7-rcv-local-routes; routes.items LOC): its instrument (ordinance, charter amendment or local practice) and its dependence on state home-rule law, with Dillon's Rule states, where cities hold only the powers the state grants."
+  ]
+}
