@@ -9,6 +9,7 @@ Run, with the downloads in folders of their own:
     python3 -I work/build/scripts/phase-3/research_review_fix_round3.py bc_m1 --dl <folder with the FEC downloads below>
     python3 -I work/build/scripts/phase-3/research_review_fix_round3.py st_s4 --dl <folder with the Census API reads for state 72>
     python3 -I work/build/scripts/phase-3/research_review_fix_round3.py bc_s9 --dl <folder with ecfr-435-916-20231001.xml, fr-2024-06566.htm, gi-1396a.htm>
+    python3 -I work/build/scripts/phase-3/research_review_fix_round3.py st2_m1 --dl <download root holding bcm1/ and st2m1/>
 
 Add --write to write. Each item reads its downloads, checks them against the hashes the sidecars record, asserts every
 frozen field it does not mean to change, and sets values rather than appending, so a rerun writes nothing. It refuses
@@ -38,6 +39,12 @@ to write when a check fails.
 - bc_s9 (BC-S9): the CMS sidecars' note on the procedural reason adds the regulation's words (42 CFR 435.916(a)(3)(iii)
   as in force in 2023) and CMS's own gloss in its 2024 rule (89 FR 22780, at 22800 and 22781), so a note can say what a
   procedural ending is from a primary source.
+- st2_m1 (ST2-M1, S73): fec-jfc-transfers-2024-all-committees gains each line 22 amount's part paid before July 21, 2024,
+  the day Harris's principal campaign committee and her three funds filed their new names (each had carried Joe
+  Biden's), read the same way for all seven funds; the sidecar gives the sums by fund and kind on each side of the date
+  and every fund's and principal committee's names in the cycle, as their statements of organization (Form 1) filed them.
+  dl/st2m1 holds the two original funds' line 22 rows (hvf-22.json, tnc-22.json), the committees' Form 1 lists
+  (f1-<id>.json, with f1-list.tsv) and the Form 1 files themselves (f1fec/<file>.fec); dl/bcm1 the five others' rows.
 """
 import argparse
 import csv
@@ -617,8 +624,149 @@ def bc_s9(dl, write):
         files.append((mp, dump_meta(m, end)))
     return files, 'note added to both CMS sidecars: 42 CFR 435.916(a)(3)(iii) and 89 FR 22800, 22781'
 
+def st2_m1(dl, write):
+    import collections
+    import glob as _glob
+    from decimal import Decimal
+    CUT = '2024-07-21'
+    name = 'fec-jfc-transfers-2024-all-committees'
+    cp, mp = OUT / f'{name}.csv', OUT / f'{name}.meta.json'
+    rows, (m, end) = read_csv_raw(cp), read_meta(mp)
+    head = rows[0]
+    new_cols = ['amount_before_2024_07_21', 'transactions_before_2024_07_21']
+    base = head[:-2] if head[-2:] == new_cols else head
+    assert base[-3:] == ['recipient_designation', 'recipient_party_type', 'recipient_kind'] and len(base) == 19, base
+    ix = {c: i for i, c in enumerate(base)}
+    items = []
+    for f in ('hvf-22.json', 'tnc-22.json'):
+        d = json.loads((dl / 'st2m1' / f).read_text())
+        assert d['pagination']['count'] == len(d['results'])
+        items += d['results']
+    for f in sorted(_glob.glob(str(dl / 'bcm1' / 'sbr-*.json'))):
+        items += [e for e in json.loads(Path(f).read_text())['results'] if e['line_number'] == '22']
+    assert all(e['line_number'] == '22' and e['memo_code'] is None for e in items)
+    assert len({e['sub_id'] for e in items}) == len(items) == 1030
+    by = collections.defaultdict(lambda: [0, 0, 0, 0])   # cents before, count before, cents all, count all
+    for e in items:
+        k = (e['committee_id'], e['recipient_committee_id'])
+        c = round(e['disbursement_amount'] * 100)
+        by[k][2] += c
+        by[k][3] += 1
+        if e['disbursement_date'][:10] < CUT:
+            by[k][0] += c
+            by[k][1] += 1
+    cents = lambda v: int((Decimal(v) * 100).to_integral_value())
+    usd = lambda c: f'${c // 100:,}.{c % 100:02d}'
+    out = [base + new_cols]
+    n22 = 0
+    for r in rows[1:]:
+        r = list(r[:len(base)])
+        k = (r[ix['jfc_id']], r[ix['recipient_id']])
+        if r[ix['amount_lines']] == '22':
+            n22 += 1
+            b = by[k]
+            assert (b[2], b[3]) == (cents(r[ix['amount']]), int(r[ix['transactions']])), (k, b, r[ix['amount']])
+            r += [f'{b[0] // 100}.{b[0] % 100:02d}', str(b[1])]
+        else:
+            assert k not in by
+            r += ['', '']
+        out.append(r)
+    assert n22 == len(by) == 119
+    jx = {c: i for i, c in enumerate(out[0])}
+    body = out[1:]
+    # sums by fund and kind, and by nominee and kind, before and on or after the date
+    S = collections.OrderedDict()
+    for r in body:
+        if r[jx['amount_lines']] != '22':
+            continue
+        for key in ((r[jx['nominee']], r[jx['jfc_name']], r[jx['recipient_kind']]), (r[jx['nominee']], 'all funds', r[jx['recipient_kind']]),
+                    (r[jx['nominee']], r[jx['jfc_name']], 'all kinds'), (r[jx['nominee']], 'all funds', 'all kinds')):
+            s = S.setdefault(key, [0, 0, 0, 0, set(), set()])
+            bc, bn = cents(r[jx['amount_before_2024_07_21']]), int(r[jx['transactions_before_2024_07_21']])
+            ac, an = cents(r[jx['amount']]), int(r[jx['transactions']])
+            s[0] += bc; s[1] += bn; s[2] += ac - bc; s[3] += an - bn
+            if bn:
+                s[4].add(r[jx['recipient_id']])
+            if an - bn:
+                s[5].add(r[jx['recipient_id']])
+    def side(c, n, who, when):
+        if not n:
+            return f'none {when}'
+        return f'{usd(c)} to {len(who)} {when} ({n} {"payment" if n == 1 else "payments"})'
 
-ITEMS = {'st_s8': st_s8, 'st_s11': st_s11, 'st_s2': st_s2, 'bc_m1': bc_m1, 'st_s4': st_s4, 'bc_s9': bc_s9}
+    def words(key):
+        s = S[key]
+        return side(s[0], s[1], s[4], 'before') + ', ' + side(s[2], s[3], s[5], 'on or after')
+    lines = []
+    for nom in ('Kamala D. Harris', 'Donald J. Trump'):
+        lines.append(f'{nom}, all funds: ' + words((nom, 'all funds', 'all kinds')) + '; by kind: ' + '; '.join(
+            f'{k} {words((nom, "all funds", k))}' for k in ('nominee campaign', 'national party committee', 'state party committee', 'other committee')
+            if (nom, 'all funds', k) in S))
+        for fund in dict.fromkeys(r[jx['jfc_name']] for r in body if r[jx['nominee']] == nom):
+            if (nom, fund, 'all kinds') not in S:
+                continue
+            lines.append(f'{fund}: ' + words((nom, fund, 'all kinds')) + '; by kind: ' + '; '.join(
+                f'{k} {words((nom, fund, k))}' for k in ('nominee campaign', 'national party committee', 'state party committee', 'other committee')
+                if (nom, fund, k) in S))
+    # names in the cycle, as each statement of organization (Form 1) filed them
+    flist = [l.split('\t') for l in (dl / 'st2m1' / 'f1-list.tsv').read_text().strip().split('\n')]
+    names = collections.OrderedDict()
+    for cid, date, num, url in flist:
+        txt = (dl / 'st2m1' / 'f1fec' / f'{num}.fec').read_bytes().decode('latin-1').replace('\r', '')
+        rec = [l.split('\x1c') for l in txt.split('\n') if l.startswith('F1')][0]
+        assert rec[1] == cid, (cid, num)
+        names.setdefault(cid, []).append((date, rec[3], rec[2] == 'X', rec[0]))
+    order = ['C00703975', 'C00744946', 'C00838912', 'C00849281', 'C00828541', 'C00873893', 'C00770941', 'C00867937', 'C00855114']
+    assert list(names) == ['C00744946', 'C00703975', 'C00838912', 'C00849281', 'C00873893', 'C00828541', 'C00770941', 'C00867937', 'C00855114']
+    def history(cid):
+        seq, last = [], None
+        for date, nm, flag, form in names[cid]:
+            if nm != last:
+                seq.append(f'“{nm}” ({"first filed" if form == "F1N" else ("filed as a new name" if flag else "on file")} {date})')
+                last = nm
+        return ' then '.join(seq)
+    want = {'C00744946': ['Biden Victory Fund', 'Harris Victory Fund'], 'C00703975': ['Biden for President', 'Harris for President'],
+            'C00838912': ['Biden Action Fund', 'Harris Action Fund'], 'C00849281': ['Biden Baldwin Victory Fund', 'Harris Baldwin Victory Fund'],
+            'C00828541': ['DONALD J. TRUMP FOR PRESIDENT 2024, INC.', 'NEVER SURRENDER, INC.'],
+            'C00873893': ['TRUMP NATIONAL COMMITTEE JFC', 'TRUMP NATIONAL COMMITTEE JFC, INC.'],
+            'C00770941': ['TRUMP SAVE AMERICA JOINT FUNDRAISING COMMITTEE'],
+            'C00867937': ['2024 RNC VICTORY', 'TRUMP 47 COMMITTEE', 'TRUMP 47 COMMITTEE, INC.'],
+            'C00855114': ['TRUMP BILIRAKIS VICTORY FUND']}
+    for cid, w in want.items():
+        assert list(dict.fromkeys(n for _, n, _, _ in names[cid])) == w, (cid, names[cid])
+    for cid in ('C00744946', 'C00703975', 'C00838912', 'C00849281'):
+        assert [d for d, n, flag, _ in names[cid] if flag] == [CUT], cid   # the new name filed July 21, 2024
+    assert [d for d, n, flag, _ in names['C00828541'] if n == 'NEVER SURRENDER, INC.'] == ['2024-11-12']
+    cols = m['columns']
+    cols['nominee']['description'] = (
+        'the 2024 major-party nominee whose principal campaign committee the fund paid; Kamala D. Harris’s committee and her '
+        'three funds carried Joe Biden’s name until July 21, 2024 (see amount_before_2024_07_21 and the notes)')
+    cols['amount_before_2024_07_21'] = {'type': 'number', 'unit': 'dollars', 'description': (
+        'of amount, the line 22 payments dated before July 21, 2024, the day Harris’s principal campaign committee and her '
+        'three funds filed their new names; the same date test for all seven funds; empty for a line 28C row')}
+    cols['transactions_before_2024_07_21'] = {'type': 'integer', 'description': (
+        'of transactions, the line 22 payments dated before July 21, 2024; empty for a line 28C row')}
+    q = m['qualification']
+    add = (' Before July 21, 2024, the Democratic principal campaign committee and its three funds carried Joe Biden’s name '
+           '(Biden for President, Biden Victory Fund, Biden Action Fund, Biden Baldwin Victory Fund); each filed its new name '
+           'on a statement of organization received July 21, 2024. amount_before_2024_07_21 splits each line 22 amount by '
+           'payment date at that day, read the same way for both sides.')
+    if add not in q:
+        q = q + add
+    m['qualification'] = q
+    notes = list(m.get('notes') or [])
+    notes = set_note(notes, 'Names in the cycle, as each committee’s statements of organization', (
+        'Names in the cycle, as each committee’s statements of organization (Form 1) filed them (ST2-M1, read November 13, '
+        '2026 from the FEC’s filings list and the filed Form 1 files; the FEC’s committee history gives one name a two-year '
+        'cycle, the latest): ' + '; '.join(f'{cid}, {history(cid)}' for cid in order) + '.'))
+    notes = set_note(notes, 'Line 22 before July 21, 2024 and on or after', (
+        'Line 22 before July 21, 2024 and on or after, by payment date, read the same way for all seven funds (ST2-M1; '
+        'the 1,030 itemized payments sum to amount in all 119 line 22 rows): ' + ' | '.join(lines) + '.'))
+    m['notes'] = notes
+    return [(cp, write_csv(out)), (mp, dump_meta(m, end))], '\n'.join(lines)
+
+
+ITEMS = {'st_s8': st_s8, 'st_s11': st_s11, 'st_s2': st_s2, 'bc_m1': bc_m1, 'st_s4': st_s4, 'bc_s9': bc_s9, 'st2_m1': st2_m1}
 
 
 def main():

@@ -25,8 +25,8 @@
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: a Census Bureau survey, with its published margins of error",
- "title": "In the Census Bureau’s 2025 survey, broadband such as cable, fiber or DSL reached at least 79 percent of households in 10 states and DC and under 71 percent in nine.",
- "measure_line": "Households with home broadband such as cable, fiber optic or DSL, percent of all households, 2025, 50 states and the District of Columbia, in four classes, with the United States above the map.",
+ "title": "In a 2025 Census survey, broadband such as cable, fiber or DSL reached at least 79 percent of households in 10 states and DC and under 71 in nine.",
+ "measure_line": "Households with home broadband such as cable, fiber optic or DSL, percent of all households, 2025, 50 states and the District of Columbia, in four classes, with the United States above the map",
  "notes": [
   "Each class spans 4 percentage points, wider than any state’s 90 percent margin of error. On the figures the table prints, 11 states and the District of Columbia sit close enough to a class line that they could fall in the next class; no state could fall two classes away.",
   "The count leaves out a household whose only subscription is a cellular data plan. The table gives each state’s figure with its margin of error.",

@@ -72,13 +72,19 @@
       var two = W >= (L.side_by_side || 680), pw = two ? Math.floor((W - 28) / 2) : W, gap = 10, bw = 12, lb = c.size('label');
       var bx = Math.round(pw * (two ? 0.4 : W < 420 ? 0.34 : 0.4)), lw = pw - bx - bw - 8;
       var top = y, low = y;
-      blocks.forEach(function (b, bi) {
-        var x0 = two ? bi * (pw + 28) : 0, y0 = two ? top : low + (bi ? 28 : 0), rx = x0 + bx;
+      // each source's words over its block; side by side, every block's bars start under the deepest heading, so the two
+      // sides' bars share one top
+      var head = function (b, x0, y0) {
         var hsub = (L.sub || {})[b.source];
         hsub = hsub ? String(hsub).split('{total}').join(v(b.total)).split('{n}').join(String(b.rows)) : undefined;
         var nb = c.text(x0, y0 + lb * 0.95, String((L.sources || {})[b.source] || b.source).split('{total}').join(v(b.total)), { role: 'label', weight: 700, max: pw });
         if (hsub) nb = c.text(x0, nb.bottom + tk * 0.95, hsub, { role: 'tick', max: pw, fill: 'label' });
-        y0 = Math.ceil(nb.bottom) + 12;
+        return Math.ceil(nb.bottom) + 12;
+      };
+      var shared = two ? Math.max.apply(null, blocks.map(function (b, bi) { return head(b, bi * (pw + 28), top); })) : 0;
+      blocks.forEach(function (b, bi) {
+        var x0 = two ? bi * (pw + 28) : 0, y0 = two ? top : low + (bi ? 28 : 0), rx = x0 + bx;
+        y0 = two ? shared : head(b, x0, y0);
         // each receiver's slot: as tall as its bar or its words, whichever is taller
         var ny = y0, items = b.nodes.map(function (nd) {
           var h = Math.max(1, fl.px(nd.value)), nl = c.wrap(nd.name, 'label', lw, 600).length;

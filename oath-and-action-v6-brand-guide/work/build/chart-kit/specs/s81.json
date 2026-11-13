@@ -13,7 +13,7 @@
  "evidence_label": "Finding",
  "grade_line": "Documented: a Census Bureau survey, five years of responses pooled, with its published margins of error",
  "title": "In the Census Bureau’s survey of 2020 to 2024, median household income was $80,000 or more in 585 counties and under $50,000 in 371, and the nation’s median was $80,734.",
- "measure_line": "Median household income by county, in 2024 dollars, from five years of survey responses, 2020 to 2024, 50 states and DC, in four classes, with the nation above the map.",
+ "measure_line": "Median household income by county, in 2024 dollars, from five years of survey responses, 2020 to 2024, 50 states and DC, in four classes, with the nation above the map",
  "notes": [
   "More than half the counties, 1,707 of 3,143, sit close enough to a class line that their margin of error could put them in the next class, and 182 two classes away, so the map shows a broad pattern and ranks no county.",
   "The Census Bureau takes the nation’s median over all households, so a county with many households weighs more in it than on the map, where each county is one shape; 549 of the 3,143 counties sit at or above it.",

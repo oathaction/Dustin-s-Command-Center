@@ -24,7 +24,7 @@
   "The chart draws both nominees’ committees alike, in one ink, on one scale: each bar is as tall as the dollars it sent or received, and each link as wide as the dollars it carried; a link under $4 million shows as a hairline."
  ],
  "table": {
-  "caption": "Transfers by each nominee’s joint fundraising committees to other committees, 2023 to 2024 cycle, one row for each fund and kind of committee it paid, with refunds set apart; the download lists every committee",
+  "caption": "Transfers by the joint fundraising committees that paid each party’s presidential campaign to other committees, 2023 to 2024 cycle, one row for each fund and kind of committee it paid, with refunds set apart; the download lists every committee",
   "columns": [
    {
     "field": "jfc_name",

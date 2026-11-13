@@ -50,3 +50,27 @@ Oath & Action Edition 06, Phase 3, round 3 review, November 13, 2026. **Simulate
 | The source line | Partly | README step 5 misleads for maps; a wrong retrieval date passed |
 | The national figure | **No** | Required by the entry, absent from the file, not checked |
 | The weight limit | **No** | Not in the README, the entries or the kit's output |
+
+## Second pass (November 13, 2026, after the fix pass)
+
+**Simulated, untested with real people.** The designer started again from the kit README's new section, "A county map, start to finish (round 3)", with no other help. The kit was the committed one of the fix pass's close, read between 06:58 and 07:03 UTC.
+
+1. **Steps 1 to 3 of the section** named the form and starter (`county-choropleth`, `specs/s81.json`). They showed both datasets in the right order (the example names this very file). They pointed to `county_income_classes` in `cartographer_round3_derive.py` and stated Rule 14.9's three tests, the class width as "the plus or minus figure". The designer's own derive script already did the same and was kept.
+2. **Step 4: `--data`.** With the derived file and sidecar in a folder of the designer's own, `check --data` read it and still found the boundary file in `work/build/data/`. No runner of the designer's own was needed.
+3. **The old specs, rerun with `--data`:**
+   - V1 fails only on its own faults: the missing source line and the publisher.
+   - V2's wrong retrieval date now fails, naming the boundary file's November 13.
+   - V4 passes.
+4. **Steps 5 to 7.** Source line by hand; "Estimate" for a model's estimates, which the README now says outright; the national figure. The kit warns that `nation_text` is not set. The file has no national row, so V5's note says so, as step 7 allows, and the row is asked of the research lead. The warning stays, since a note does not silence it.
+5. **Step 8.** V5's note writes `{data_file}`, as the README asks. It printed "...prints beside the map. this chart’s data file in the guide’s asset package lists every county...": the placeholder does not take a capital at the start of a sentence.
+6. **Step 9: the weight line.** `build` printed "12,798 bytes as the guide places it, about 13,548 with its plate's frame; share per plate 13,588 (the guide build of 2026-11-13 06:55:07), ceiling 15,000". The designer read the limit without help. V5 has 40 bytes to spare.
+7. **Result.** V5 passes with 0 faults, sweep on, with one warning (the national figure). It draws at 1440 and 390 px on both grounds, and its CSV holds 3,144 counties. Files: `20261113_P03-Spec-V5.json`, `20261113_P03-Check-V5.txt`, `20261113_P03-Check-V5.json`, `20261113_P03-Capture-V5-Newsprint-1440.png`, `20261113_P03-Capture-V5-Charcoal-390.png`.
+
+| To | First pass | Second pass |
+|---|---|---|
+| Running the kit on a derived file | No | Yes, `--data` |
+| The source line | Partly (a wrong date passed) | Yes (the date check caught it) |
+| The national figure | No | Yes: warned, and told what to do |
+| The evidence label | Found by searching specs | Yes, from the README |
+| The weight limit | No | Yes, from `build`'s weight line |
+| The words for the full data | Not asked | Yes, but `{data_file}` prints lowercase at a sentence's start |

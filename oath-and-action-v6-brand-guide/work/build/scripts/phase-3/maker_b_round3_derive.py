@@ -306,23 +306,32 @@ def figures():
         by = lambda k: [r for r in mine if r['recipient_kind'] == k]
         dist = lambda k: len({r['recipient_id'] for r in by(k)})
         same('S73', (dist('nominee campaign'), dist('national party committee'), dist('state party committee'), dist('other committee')), (1, 1, nst, noth), nom + ': committees by kind')
-        want('S73', sp['title'], '%s’s %s joint fundraising committees sent $%s million to %d other committees' % (nom, 'three', mil(tot(mine)), n_all) if short == 'Harris' else 'and %s’s four sent $%s million to %d' % (nom, mil(tot(mine)), n_all), nom + ': title')
+        # the title is the editor's (ST2-M1): it must give each side's sum and count of committees, and own no fund as a nominee's
+        want('S73', sp['title'], '$%s million to %d' % (mil(tot(mine)), n_all), nom + ': title, sum and committees')
+        party = 'Democratic' if short == 'Harris' else 'Republican'
+        want('S73', sp['labels']['sources'][nom], '%s joint fundraising committees that paid the %s presidential campaign, {total} in all' % ('Three' if short == 'Harris' else 'Four', party), nom + ': bar head by the rule (ST2-M1)')
         oth = tot(by('other committee'))
         oth_words = '$%s' % '{:,.0f}'.format(oth) if oth < 1e6 else '$%s million' % mil(oth)
-        want('S73', sp['alt'], '%s’s %s funds sent $%s million to %s, $%s million to %s, $%s million to %d state party committees and %s to %s other committee%s, $%s million in all' % (
-            nom, 'three' if short == 'Harris' else 'four', mil(tot(by('nominee campaign'))), camp, mil(tot(by('national party committee'))), nat, mil(tot(by('state party committee'))), nst,
+        want('S73', sp['alt'], 'The %s that paid the %s campaign, whose candidate was %s, sent $%s million to the campaign, $%s million to %s, $%s million to %d state party committees and %s to %s other committee%s, $%s million in all' % (
+            'three' if short == 'Harris' else 'four', party, 'Joseph R. Biden Jr. until July 21, 2024, then Kamala D. Harris' if short == 'Harris' else 'Donald J. Trump', mil(tot(by('nominee campaign'))), mil(tot(by('national party committee'))), nat, mil(tot(by('state party committee'))), nst,
             oth_words, 'one' if noth == 1 else 'four', '' if noth == 1 else 's', mil(tot(mine))), nom + ': alt')
         b21 = [r for r in rows if r['nominee'] == nom and float(r['line_21b_amount'] or 0) > 0]
         same('S73', all(r['amount_lines'] == '22' for r in b21), True, nom + ': line 21B only to committees drawn')
-        want('S73', t, '%s’s funds%s paid committees drawn here $%s million for operating expenses (line 21B)' % (short, ' also' if short == 'Harris' else '', mil(sum(float(r['line_21b_amount']) for r in b21))) if short == 'Harris' else 'and %s’s $%s million, which the chart leaves out' % (short, mil(sum(float(r['line_21b_amount']) for r in b21))), nom + ': line 21B')
+        want('S73', t, ('the Democratic funds also paid committees drawn here $%s million for operating expenses (line 21B)' if short == 'Harris' else 'and the Republican funds $%s million, which the chart leaves out') % mil(sum(float(r['line_21b_amount']) for r in b21)), nom + ': line 21B')
         rf = [r for r in refunds if r['nominee'] == nom]
         alt[nom] = (len(rf), tot(rf))
         sts = {r['recipient_state'] for r in by('state party committee')}
         same('S73', ('DC' in sts, 'GU' in sts), (True, short == 'Trump'), nom + ': DC among the state parties, and Guam for Trump')
     same('S73', (alt['Kamala D. Harris'], alt['Donald J. Trump']), ((2, 81000.0), (4, 4000.0)), 'refunds')
-    want('S73', t, 'Harris’s funds refunded $81,000 to two committees that had given to them, and Trump’s $4,000 to four (line 28C)', 'note 4, refunds')
+    want('S73', t, 'The Democratic funds refunded $81,000 to two committees that had given to them, and the Republican funds $4,000 to four (line 28C)', 'note 4, refunds')
     same('S73', len({r['recipient_state'] for r in l22 if r['nominee'] == 'Donald J. Trump' and r['recipient_kind'] == 'state party committee'} - {'DC', 'GU'}), 48, 'Trump: 48 states')
-    want('S73', t, 'Harris’s funds paid the state party committees of the 50 states and the District of Columbia, and Trump’s those of 48 states, the District of Columbia and Guam', 'note 3')
+    want('S73', t, 'The Democratic funds paid the state party committees of the 50 states and the District of Columbia, and the Republican funds those of 48 states, the District of Columbia and Guam', 'note 3')
+    same('S73', [w for w in ('Harris’s', 'Trump’s', 'nominee’s') if w in t + ' ' + ' '.join(sp['labels']['sources'].values()) + ' ' + sp['table']['caption']], [], 'no nominee\'s possessive over the funds (ST2-M1)')
+    same('S73', sp['labels']['sub'], {'Kamala D. Harris': 'Joseph R. Biden Jr. until July 21, 2024, then Kamala D. Harris', 'Donald J. Trump': 'Donald J. Trump'}, 'the campaigns\' candidates under each bar (ST2-M1)')
+    names = sorted({r['recipient_name_2024_election'] for r in nodes if r['recipient_kind'] == 'other committee' or r['amount_lines'] == '28C'})
+    tc = dict(sp['typography']['replace'])
+    same('S73', sorted(tc), names, 'every capitals name the table prints has its title-case words (RS-3)')
+    same('S73', all(tc[k].upper() == k for k in tc), True, 'the title-case words spell the stored names (RS-3)')
     same('S73', sp['labels']['unit'], 4000000, 'unit')
     want('S73', t, 'and the agreement that formed a fund sets how many committees it pays', 'note 2 (ST-S6)')
     same('S73', any(w in sp['title'] for w in ('53', 'to two')), False, 'the title sets no one fund\'s reach against another\'s (BC-M1)')
