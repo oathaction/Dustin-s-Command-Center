@@ -38,7 +38,7 @@
    "Panel 1 asks only what is still open. The panels after it are for reference, from every form at true size on both grounds to the scores and what was tested."
   ],
   "toc_h": "On this board",
-  "minutes": "Panel 1 takes about fifteen minutes to read and answer. Pictures show at true size; where one is wider than your window, its frame scrolls sideways."
+  "minutes": "Panel 1 holds {p1_words} words with its folds closed, about {p1_min} minutes to read at 200 words a minute. Pictures show at true size; where one is wider than your window, its frame scrolls sideways."
  },
  "status_words": {
   "ready": "Ready",
@@ -59,7 +59,8 @@
   "cd": "the creative director’s scores",
   "cd_board": "the creative director’s score of this board",
   "red": "the reviewers’ second passes",
-  "notes": "the owners’ notes"
+  "notes": "the owners’ notes",
+  "engineer": "the engineer’s plate measures"
  },
  "sections": {
   "decide": {
@@ -67,7 +68,7 @@
    "nav": "What you decide",
    "title": "What you decide",
    "refs": "DR-252 · DR-254 to DR-260 · D3-1541",
-   "lede": "Each item opens with its answer and the studio’s recommendation, then shows the pictures it needs. Items marked “You decide” are still open; the rest are your answers from before the board, shown done beside what they replaced.",
+   "lede": "Five replies are still yours to give, listed first with the studio’s recommendation for each and a link to its item below. Your five answers from before the board sit in one closed fold at the end of this panel, shown done beside what they replaced.",
    "wait": "Waiting for the data lead’s decisions file. This panel fills in when it lands.",
    "picture_wait": "Waiting for the picture {path}.",
    "toc_h": "The items on this panel",
@@ -104,7 +105,27 @@
     "before": "Before",
     "after": "Now",
     "view": ""
-   }
+   },
+   "replies_h": "The {n} replies we need from you",
+   "replies_wait": "Waiting for the data lead’s five replies.",
+   "reply_tag": "Reply {n}",
+   "done_group": "answered",
+   "done_chip": "Done",
+   "done_count": "{n} answers",
+   "fold_title": "More pictures: board 1’s plate, today’s full plates and the phone drawings",
+   "form_pic": "Panel 2’s picture of {spec} on Newsprint, at a 1440 px and a 390 px window.",
+   "form_link": "See Rule {rule} in panel 2.",
+   "rows_fold_over": 6,
+   "rows_summary": "The {n} places, line by line",
+   "alt_source": {
+    "guide": "photographed from today’s guide",
+    "board-1": "as board 1 showed it",
+    "kit": "drawn by the chart kit",
+    "board-pictures": "drawn by the cartographer for this board",
+    "file": "from the studio’s files"
+   },
+   "alt_chart": "{form} ({spec}), {src}, at a {w} px window. Its title: {title}",
+   "alt_other": "A picture for “{title}”, {src}, at a {w} px window."
   },
   "forms": {
    "n": 2,
@@ -112,7 +133,7 @@
    "title": "The {n_forms} forms by family",
    "refs": "DR-252 · D3-1505 · D3-1527",
    "lede": "This panel shows every form rounds 1 to 3 built, in the plan’s order: {n_spec_rows} forms with a chart, drawn from {n_specs} charts, and {n_sketches} with a sketch. Within each family, a form to avoid comes first.",
-   "how": "Each chart shows as the guide draws it at a 1440 px window and a 390 px window, at true size, first on Newsprint and then on Charcoal; a fold under them holds both grounds in grayscale. Under the pictures sit the source line as printed, the bytes the chart adds to the page, and its table as text in a second fold. Each heading links to the form’s live entry in the guide preview.",
+   "how": "Each chart shows as the guide draws it at a 1440 px window and a 390 px window, at true size, first on Newsprint and then on Charcoal; a fold under them holds both grounds in grayscale. Under the pictures sit the source line as printed, the chart’s weight on the page, and its table as text in a second fold. Each heading links to the form’s live entry in the guide preview.",
    "lede_est": "The guide labels {n_est_w} of these charts Estimate, in Rules {est_rules}, and the board shows that label as the guide prints it.",
    "estimate_label": "Estimate",
    "index_h": "The forms by family",
@@ -135,14 +156,21 @@
    "row_charcoal": "On Charcoal",
    "row_gray": "Grayscale proof of both grounds",
    "gray_label": "{g} · {w} px window",
-   "bytes_line": "{with_frame} bytes on the page with the frame round the chart, {figure} for the chart alone.",
+   "bytes_line": "{on_page} bytes on the page: {placed} for the chart as the build places it and {frame} for the frame round it.",
    "kit_pass": "Passes every check in the kit.",
    "kit_faults": "{n} faults in the kit’s checks:",
    "table_summary": "The table, as the guide prints it",
    "b1_group": "board-1-changed",
    "b1_named": "A board 1 chart, changed since board 1.",
    "b1_link": "See what changed in panel 1.",
-   "b1_differs": "A board 1 chart. Its drawing at a 1440 px window differs from board 1’s."
+   "b1_differs": "A board 1 chart. Its drawing at a 1440 px window differs from board 1’s.",
+   "label_desk_frame": "At a 1440 px window · the whole {px} px drawing, which the guide shows in a frame that scrolls",
+   "narrow_hint": "On a narrow screen this frame opens on the phone drawing; scroll it sideways for the 1440 px drawing.",
+   "bytes_wait": "{placed} bytes for the chart as the build places it; the frame round it waits for the engineer’s measure.",
+   "ceiling_line": "A round 3 chart may take {ceiling}.",
+   "ceiling_over": "A round 3 chart may take {ceiling}; this one is over.",
+   "measure_line": "Every weight on this board is one measure: the bytes the guide build reports for the chart as placed, plus the frame round its plate, measured on the page by the engineer.",
+   "measure_wait": "Every weight on this board will be one measure: the bytes the guide build reports for the chart as placed, plus the frame round its plate, which the engineer measures on the page. Until that file lands, the weights give the chart as placed."
   },
   "rules": {
    "n": 3,
@@ -199,7 +227,9 @@
     "test",
     "passes"
    ],
-   "script_ref": "counted by {script}"
+   "script_ref": "counted by {script}",
+   "not_applied": "Not applied",
+   "not_applied_re": "^\\s*not (?:a form|applied|tested)|before the test|not applied"
   },
   "spend": {
    "n": 5,
@@ -244,9 +274,10 @@
     "Rule",
     "Form",
     "As placed",
-    "With its frame"
+    "Frame",
+    "On the page"
    ],
-   "heavy_note": "“As placed” is the guide build’s own figure, and “With its frame” is the kit’s, which adds the frame the guide draws round each chart."
+   "heavy_note": "“As placed” is the guide build’s own figure; “Frame” is the frame round the plate, measured on the page by the engineer; “On the page” is the two together, the one measure the board uses."
   },
   "scores": {
    "n": 6,
@@ -295,7 +326,8 @@
      "label": "Quick guide check",
      "kind": "guide_check",
      "scratch_file": "phase-3/board-2/main/quick/guide-Guide-Check-Results.json",
-     "words": "run by the main session on a copy of its strict build of {page_bytes} bytes at {widths} px, with {specimens} drawn examples, {links} same-page links and {failures} failures"
+     "words": "run by the main session on a copy of its strict build of {page_bytes} bytes at {widths} px, with {specimens} drawn examples, {links} same-page links and {failures} failures",
+     "words_other": "run by the main session on a copy of the committed build of {page_bytes} bytes, before your answers landed, at {widths} px, with {specimens} drawn examples, {links} same-page links and {failures} failures; this board’s strict build after them is {build_bytes} bytes, and the main session’s check of the final build replaces this line when it runs"
     },
     {
      "label": "The kit’s build of every chart",
@@ -346,6 +378,7 @@
    ],
    "not_tested": [
     "The guide check itself: the main session runs it, and this board’s build never does.",
+    "The {n_links} links to the guide preview, which point at version 9: each anchor was checked on this board’s strict build only, since version 9 is not yet published.",
     "The four scripts for real devices, which stay not tested.",
     "The board in Safari or Firefox, on a 2x screen, printed, or as the host shows it once published; a copy wrapped as the host wraps it stands in.",
     "Every picture by eye: the build checks each one’s size and source, and the builder looked at a sample.",
@@ -436,6 +469,7 @@
     "round": 3,
     "file": "work/handoffs/phase-3/20261113_Round-3-Red-Team-Access-Production.md"
    }
-  ]
+  ],
+  "plate_bytes": "work/handoffs/phase-3/board-2-pictures/20261113_Plate-Bytes.json"
  }
 }

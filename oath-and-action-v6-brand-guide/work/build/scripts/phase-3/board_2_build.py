@@ -96,6 +96,7 @@ MEAS = {}                 # spec -> {window: the guide's measure of its figure}
 SPECINFO = {}             # spec -> {'form', 'title', 'rule'}
 FORMPIC = {}              # spec -> (panel 2's Newsprint picture, its rule, its alt)
 PLATES = None             # the engineer's plate measures (B2-M4)
+CHARCOAL = None           # the Charcoal ground, from tokens.css
 
 
 def fail(msg):
@@ -488,7 +489,7 @@ def board1_compare(ids, kit_out, pages):
         res[sid] = {'named_in_panel_1': named.get(sid), 'desk_pixels_same': same,
                     'files': [rel(old[-1]) if old else None, rel(new[-1]) if new else None]}
         if same is False and D is not None and sid not in named:
-            warn(f'{sid}: its desk drawing differs from board 1’s pixel for pixel, and the decisions file’s board 1 group does not name it')
+            fail(f'{sid}: its desk drawing differs from board 1’s pixel for pixel, and the decisions file’s board 1 group does not name it')
     FIG['board1_compare'] = res
     return res
 
@@ -1333,8 +1334,12 @@ def count_panel():
         ex = dr.get('examples') or dr.get('forms') or []
         if ex:
             cols = [c for c in S['dr229_cols'] if any(c in x for x in ex)]
-            yn = lambda v: (S['pass_words'] if v else S['fail_words']) if isinstance(v, bool) else v
-            out.append(rows_table([{c: yn(x.get(c, '')) for c in cols} for x in ex], S['dr229_caption']))
+            for x in ex:
+                # B2-M6: a "No" stands only where the test was applied and failed
+                if x.get('passes') is False and re.search(S['not_applied_re'], str(x.get('test', '')), flags=re.I):
+                    fail(f'the election table prints “No” for {x.get("where") or x.get("spec")}, whose test was not applied ({x.get("test")})')
+            yn = lambda v: S['not_applied'] if v is None else ((S['pass_words'] if v else S['fail_words']) if isinstance(v, bool) else v)
+            out.append(rows_table([{c: yn(x.get(c)) if c == 'passes' else x.get(c, '') for c in cols} for x in ex], S['dr229_caption']))
         if dr.get('note'):
             QUOTED.append(dr['note'])
             out.append(f'<p>{esc(dr["note"])}</p>')
@@ -1408,16 +1413,16 @@ def spend_panel(G, rn, kit_out):
     # the heaviest plates, with the kit's measure with the plate's frame
     plates = []
     for sid in sorted({f['spec_id'] for f in rn if f.get('spec_id')}):
-        c = charts.get(f's-14-{sid.lower()}') or {}
-        chk_p = kit_out / sid.lower() / f'{sid.lower()}-check.json'
-        wf = (json.loads(chk_p.read_text()).get('weight') or {}).get('with_frame') if chk_p.exists() else None
+        W_ = plate_weight(G, sid)
         rule = next((f['rule'] for f in rn if f.get('spec_id') == sid), '')
         form = next((f['form'] for f in rn if f.get('spec_id') == sid), '')
-        plates.append((int(c.get('bytes') or 0), sid, rule, form, wf))
-    plates.sort(reverse=True)
+        plates.append((W_['on_page'] if W_['on_page'] is not None else int(W_['placed'] or 0), sid, rule, form, W_))
+    plates.sort(key=lambda x: -x[0])
     top = plates[:int(S.get('heaviest_n', 10))]
-    hrows = ''.join(f'<tr><th scope="row">{esc(sid)}</th><td><a href="#form-{rule.replace(".", "-")}">{esc(rule)}</a></td><td>{esc(form)}</td><td class="num">{b:,}</td><td class="num">{"" if wf is None else f"{wf:,}"}</td></tr>'
-                    for b, sid, rule, form, wf in top)
+    nb = lambda v: '' if v is None else f'{v:,}'
+    hrows = ''.join(f'<tr><th scope="row">{esc(sid)}</th><td><a href="#form-{rule.replace(".", "-")}">{esc(rule)}</a></td><td>{esc(form)}</td>'
+                    f'<td class="num">{nb(W_["placed"])}</td><td class="num">{nb(W_["frame"])}</td><td class="num">{nb(W_["on_page"])}</td></tr>'
+                    for b, sid, rule, form, W_ in top)
     body += (f'<h3 class="sub">{esc(fill(S["heavy_h"], {"n": len(top)}))}</h3><div class="tw" role="region" tabindex="0" aria-label="{esc(S["heavy_caption"])}; scrolls sideways">'
              f'<table class="wt ht"><caption>{esc(S["heavy_caption"])}</caption><thead><tr>' + ''.join(f'<th scope="col"{" class=\"n\"" if i >= 3 else ""}>{esc(c)}</th>' for i, c in enumerate(S['heavy_cols']))
              + f'</tr></thead><tbody>{hrows}</tbody></table></div><p class="small">{esc(S["heavy_note"])}</p>')
@@ -1590,11 +1595,14 @@ def tested_panel(G, kit_out, all_specs):
                 sp = (r0.get('specimens') or {}).get('stages') if isinstance(r0.get('specimens'), dict) else None
                 an = (r0.get('anchors') or {}).get('links') if isinstance(r0.get('anchors'), dict) else None
                 pg = p.with_name(re.sub(r'-Guide-Check-Results\.json$', '.html', p.name))
-                w = fill(it['words'], {'widths': join_words(widths), 'failures': nw(len(J.get('failures', []))), 'specimens': f'{sp:,}' if sp else '?',
-                                       'links': f'{an:,}' if an else '?', 'page_bytes': f'{pg.stat().st_size:,}' if pg.exists() else '?'})
+                other = pg.exists() and G['report'].get('bytes') and pg.stat().st_size != G['report']['bytes']
+                w = fill(it['words_other'] if other and it.get('words_other') else it['words'],
+                         {'widths': join_words(widths), 'failures': nw(len(J.get('failures', []))), 'specimens': f'{sp:,}' if sp else '?',
+                          'links': f'{an:,}' if an else '?', 'page_bytes': f'{pg.stat().st_size:,}' if pg.exists() else '?',
+                          'build_bytes': f'{G["report"].get("bytes", 0):,}'})
                 FIG['guide_check'] = {'file': '[scratch]/' + it['scratch_file'], 'failures': J.get('failures'), 'pass': J.get('pass'),
                                       'page_bytes': pg.stat().st_size if pg.exists() else None}
-                if pg.exists() and G['report'].get('bytes') and pg.stat().st_size != G['report']['bytes']:
+                if other and not it.get('words_other'):
                     warn(f'the quick guide check ran on {pg.stat().st_size:,} bytes and this board’s strict build is {G["report"]["bytes"]:,}')
         elif kind == 'kit':
             fs = [kit_out / s.lower() / f'{s.lower()}-check.json' for s in all_specs]
@@ -1625,7 +1633,8 @@ def tested_panel(G, kit_out, all_specs):
             w = S['wait_words']
         rows.append(f'<li><b>{esc(it["label"])}:</b> {esc(w if w.endswith(".") else w + ".")}</li>')
         FIG.setdefault('tested', {})[it['label']] = w
-    nots = ''.join(f'<li>{esc(x)}</li>' for x in S['not_tested'])
+    FILL['n_links'] = f'{len([c for c in LINKED if c.startswith("rule-")]):,}'
+    nots = ''.join(f'<li>{esc(fill(x))}</li>' for x in S['not_tested'])
     body = (f'<p class="intro">{esc(S["lede"])}</p><div class="tcols">'
             f'<div class="tcol"><h3 class="tcol-h">{esc(S["tested_h"])}</h3><ul>{"".join(rows)}</ul></div>'
             f'<div class="tcol"><h3 class="tcol-h">{esc(S["not_h"])}</h3><ul>{nots}</ul></div></div>')
@@ -1639,6 +1648,13 @@ def next_panel():
 
 # ------------------------------------------------------------------------------------------------------- page
 ORDER = ['decide', 'forms', 'rules', 'count', 'spend', 'scores', 'tested', 'next']
+
+
+def panel_words(html_):
+    """The words a reader meets in a panel with its folds closed: every <details> body left out, its summary kept."""
+    t = re.sub(r'<details\b[^>]*>\s*(<summary>.*?</summary>).*?</details>', r'\1', html_, flags=re.S)
+    t = re.sub(r'<p class="codes">.*?</p>', ' ', t, flags=re.S)
+    return len(re.findall(r"[A-Za-z0-9][A-Za-z0-9’'.,-]*", visible_text(t)))
 
 
 def cover():
@@ -1766,6 +1782,23 @@ blockquote.q footer{font:var(--oa-type-caption);color:var(--ink-2)}
 .role{display:inline-block;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;padding:1px 6px;margin-right:var(--oa-space-050);border:var(--oa-border-width-hairline) solid var(--strong)}
 .role.after{background:var(--charcoal);color:var(--np);border-color:var(--charcoal)}
 .pair.ba{border-top:var(--oa-border-width-hairline) solid var(--hair);margin-top:var(--oa-space-200)}
+.rep-h{margin-top:var(--oa-space-300)}
+ol.replies{list-style:none;margin:0 0 var(--oa-space-300);padding:0;border-top:var(--oa-border-width-rule) solid var(--strong);max-width:var(--oa-layout-measure-intro-max)}
+ol.replies li{border-bottom:var(--oa-border-width-hairline) solid var(--hair)}
+ol.replies a{display:flex;gap:var(--oa-space-200);align-items:baseline;padding:var(--oa-space-150) 0;text-decoration:none;min-height:2.75rem}
+ol.replies a:hover .rl{text-decoration:underline}
+ol.replies .rn{flex:0 0 auto;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;background:var(--charcoal);color:var(--np);padding:2px 6px;white-space:nowrap}
+ol.replies .rl{font:var(--oa-type-ui);font-weight:600}
+.tag.rn{background:transparent;color:var(--ink);border-width:var(--oa-border-width-rule)}
+.tag.done{background:var(--charcoal);color:var(--np);border-color:var(--charcoal)}
+details.done-g{margin-top:var(--oa-space-1000);border-top:var(--oa-border-width-bar) solid var(--charcoal)}
+details.done-g>summary{cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:var(--oa-space-100) var(--oa-space-200);min-height:2.75rem;padding:var(--oa-space-200) 0;font:var(--oa-type-h3);letter-spacing:var(--oa-type-h3-letter-spacing)}
+details.done-g>summary .n{font:var(--oa-type-caption);color:var(--ink-2)}
+.dec-done{font-weight:600;max-width:var(--oa-layout-measure-intro-max)}
+details.pics{margin-top:var(--oa-space-300)}
+.measure{font:var(--oa-type-ui);font-weight:600;border-left:var(--oa-border-width-bar) solid var(--charcoal);padding-left:var(--oa-space-200);max-width:var(--oa-layout-measure-intro-max)}
+.narrow-hint{display:none;font:var(--oa-type-caption);color:var(--ink-2);margin:0 0 var(--oa-space-100)}
+@media (max-width:47.49em){.narrow-hint{display:block}.frame.dp{direction:rtl}}
 .frame{max-width:100%;line-height:0;overflow-x:auto;overscroll-behavior-x:contain;align-self:flex-start}
 .frame img{display:block;max-width:none;height:auto}
 .pair{display:flex;flex-wrap:wrap;gap:0 var(--oa-space-400);align-items:flex-start}
@@ -1993,6 +2026,23 @@ def main():
     ch, held = chapter14()
     D = decisions()
     specs = sorted({f['spec_id'] for f in rn if f.get('spec_id')}, key=lambda s: int(s[1:]))
+    global CHARCOAL, PLATES
+    m = re.search(r'--oa-color-palette-charcoal:\s*#([0-9A-Fa-f]{6})', (ROOT / C['slots']['tokens_css']).read_text())
+    need(m, 'tokens.css names no Charcoal')
+    CHARCOAL = tuple(int(m.group(1)[i:i + 2], 16) for i in (0, 2, 4))
+    pp_ = ROOT / C['slots']['plate_bytes']
+    if pp_.exists():
+        try:
+            PLATES = json.loads(pp_.read_text())
+            FIG['plate_bytes'] = {'file': rel(pp_), 'build': PLATES.get('build')}
+            if (PLATES.get('build') or {}).get('bytes') and G['report'].get('bytes') and PLATES['build']['bytes'] != G['report']['bytes']:
+                warn(f'the engineer measured the plates on a {PLATES["build"]["bytes"]:,}-byte build and this board’s strict build is {G["report"]["bytes"]:,}')
+        except json.JSONDecodeError as e:
+            warn(f'{rel(pp_)} does not parse: {e}')
+    for f in rn:
+        if f.get('spec_id') and f['spec_id'] not in SPECINFO:
+            sj = json.loads((ROOT / C['slots']['specs_dir'] / f'{f["spec_id"].lower()}.json').read_text())
+            SPECINFO[f['spec_id']] = {'form': f['form'], 'title': sj.get('title', ''), 'rule': f['rule']}
     # 1. the guide: measure each chart's drawing at both windows, and photograph sketches, plates and panel 1's pictures
     shots = {}
     items = []
@@ -2034,6 +2084,7 @@ def main():
             p = shots.get(f'm-{sid}-{w}')
             mw[w] = json.loads(p.read_text()).get('svg_w') if p and p.exists() else None
         measured[sid] = mw
+        MEAS[sid] = {w: (json.loads(shots[f'm-{sid}-{w}'].read_text()) if shots.get(f'm-{sid}-{w}') and shots[f'm-{sid}-{w}'].exists() else {}) for w in (DESK, PHONE)}
         dp = DESK if not mw[DESK] or int(mw[DESK]) <= 720 else int(mw[DESK]) + 64
         pw = int(mw[PHONE]) + 32 if mw[PHONE] else PHONE
         pages[sid] = (dp, pw)
@@ -2048,9 +2099,14 @@ def main():
                 if measured[sid][w] and dw.get(('newsprint', pw)) and int(dw[('newsprint', pw)]) != int(measured[sid][w]):
                     warn(f'{sid}: the guide draws {measured[sid][w]} px at a {w} px window and the kit {dw[("newsprint", pw)]} px at {pw}')
     b1cmp = board1_compare([s for s in specs if s in C['board1_ids']], kit_out, pages)
-    # 3. the panels
-    parts = [decide_panel(shots, fshots, kit_out, pages), forms_panel(G, P, rn, held, kit_out, pages, b1cmp, shots),
-             rules_panel(G, ch, held, shots), count_panel(), spend_panel(G, rn, kit_out), scores_panel(), tested_panel(G, kit_out, specs), next_panel()]
+    # 3. the panels: the forms first, so panel 1 can show their Newsprint pictures (B2-M7); the tested panel last of all
+    s_forms = forms_panel(G, P, rn, held, kit_out, pages, b1cmp, shots)
+    s_decide = decide_panel(shots, fshots, kit_out, pages)
+    w1 = panel_words(s_decide)
+    FILL.update({'p1_words': f'{w1:,}', 'p1_min': max(1, round(w1 / 200))})
+    FIG['panel_1_words'] = w1
+    others = [rules_panel(G, ch, held, shots), count_panel(), spend_panel(G, rn, kit_out), scores_panel()]
+    parts = [s_decide, s_forms] + others + [tested_panel(G, kit_out, specs), next_panel()]
     cache_file.write_text(json.dumps(CACHE))
     keep = set(IMAGES)
     for p in [q for q in IMG.iterdir() if q.suffix.lower() in IMG_EXT]:
@@ -2087,13 +2143,17 @@ def main():
     print(f'wrote {rel(a.out)} ({len(page.encode()) / 1e3:.0f} kB, {wcount:,} words) and {len(imgs)} images; the folder holds {len(files)} files, {total:,} bytes')
     print('panels: ' + ', '.join(f'{k} {status_words(v)}' for k, v in STATUS.items()))
     print(f'{len(WARN)} warnings')
+    ok = True
     if a.check:
         ok = run_checks(a.out, page)
         files = [p for p in BOARD_DIR.rglob('*') if p.is_file()]
         FIG.update({'folder_files': len(files), 'folder_bytes': sum(p.stat().st_size for p in files), 'warnings': WARN})
-        FIGURES.write_text(json.dumps(FIG, indent=1, ensure_ascii=False, default=str))
-        if not ok:
-            sys.exit(1)
+    FIG['fails'] = FAILS
+    FIGURES.write_text(json.dumps(FIG, indent=1, ensure_ascii=False, default=str))
+    if FAILS:
+        print(f'{len(FAILS)} failures: ' + '; '.join(FAILS))
+    if FAILS or not ok:
+        sys.exit(1)
     if WARN and a.strict:
         sys.exit(1)
 

@@ -4,12 +4,59 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. The cartographer,
 
 ## Status
 
-17:35 UTC (clock read). **All three items done.**
+18:27 UTC (clock read). **Fix round (B2-M2, B2-S2): done.** File names for the builder are under "Fix round: files for the builder". Nothing in `work/build/` changed.
+
+17:35 UTC. **All three items done.**
 
 - **A2: done; signed off by the data lead at 17:29.** `work/build/guide/specimens/s-14-124-sketch.html` draws the misleading half in red `#CC0000` and blue `#3A8AC4`, 3,941 bytes (limit 4,096), with the editor's caption as its first `<desc>`; the better half is byte for byte as signed off. The gray "before" is copied to `work/handoffs/phase-3/board-2-pictures/20261113_S-14-124-Sketch-Gray-Before.html`, with a page to photograph it by, `20261113_S-14-124-Sketch-Gray-Before-Plate.html`.
 - **A4: done, waiting on the data lead's sign-off of the layout.** S16 passes `oa-chart.mjs build s16`, sweep on, 0 faults, and its drawing is the same as before A4 at every width the sweep runs (1,230 of 1,230 drawings equal, the alt aside); only note 3 and the alt changed.
 - **S12 stacked tile: done, for the data lead's sign-off.** `20261113_S12-Stacked-Tile-1440.html` and `-1024.html` with their source and measure file. At a 1440 px window (723 px drawing) every tile holds its code, figure and arrow; at 1024 (558 px) none holds its arrow. Details under "S12 stacked tile".
 - Nothing blocking. Nothing in `work/build/` changed but the sketch file.
+
+## Fix round: files for the builder (B2-M2, B2-S2)
+
+From 18:19 UTC, under `work/handoffs/phase-3/20261113_Board-2-Fix-Brief.md` and the creative director's B2-M2, B2-S2 and B2-S8. Every picture is a 1x PNG at true size in `work/handoffs/phase-3/board-2-pictures/`, photographed in Chromium, one browser at a time. Each frame picture comes from the main session's final strict build (`scratch/../main/final/guide.html`, 11,236,230 bytes, 18:02 UTC), with S12's or the sketch's own plate changed only in the page's memory; the file was never written.
+
+**B2-M2, S12, the row at a 1440 px window:**
+
+| File | What it shows | Size |
+|---|---|---|
+| `20261113_S12-Stage-1440-Frame-Newsprint.png` (and `-Charcoal`) | S12 as built: board 1's 1024 px drawing in its frame, as a reader sees it before scrolling (the frame's box, 943 px showing) | 946 by 769 |
+| `20261113_S12-Stacked-Tile-1440-Drawing-Newsprint.png` (and `-Charcoal`) | the stacked tile cropped to its 723 px drawing | 723 by 569 |
+
+**B2-M2, S12, the row at a 1024 px window:**
+
+| File | What it shows | Size |
+|---|---|---|
+| `20261113_S12-Stage-1024-Frame-Newsprint.png` (and `-Charcoal`) | S12 as built: the 1024 px drawing in its frame in the 558 px column, before scrolling | 558 by 769 |
+| `20261113_S12-Stacked-Tile-1024-Frame-Newsprint.png` (and `-Charcoal`) | the stacked tile drawn at 618 px, set in that same frame in place of the 1024 px drawing, before scrolling | 558 by 505 |
+
+Extra, for a fold if wanted: `20261113_S12-Stacked-Tile-618-Drawing-*.png` (the whole 618 px drawing, 618 by 505) and `20261113_S12-Stacked-Tile-558-Drawing-*.png` (the stacked tile forced into 558 px, every arrow past its tile, 558 by 465). Standalone pages: `20261113_S12-Stacked-Tile-1440.html`, `-1024.html` (558, forced) and the new `-618.html`.
+
+**Where arrows overrun, from the measure file only** (`20261113_S12-Stacked-Tile-Measure.json`, key `frames`, B2-S8):
+
+| Frame | Box (the column) | Shows inside its 1 px edges | Scrolls | Out of view until the reader scrolls | Cut by the edge |
+|---|---|---|---|---|---|
+| As built, 1440 window | 944.67 | 943 | 81 | none | ME, NH, RI (8 px of each tile shows; their codes, figures and arrows are past the edge) |
+| As built, 1024 window | 558 | 556 | 468 | 21 states: AL, CT, DC, DE, FL, GA, MA, MD, ME, MI, NC, NH, NJ, NY, OH, PA, RI, SC, VA, VT, WV | IL, IN, KY, MS, TN, WI (IL, IN and WI still show code, figure and arrow) |
+| Stacked at 618, 1024 window | 558 | 556 | 62 | ME, NH, RI | CT, DE, MA, VT (each still shows its code, figure and arrow) |
+
+- In the 618 px stacked tile **no arrow runs past its tile** (`frames.stacked_618_in_1024.arrows_past_their_tile` is empty; least foot 1.5 px). What the 1024 px frame hides is the last column, ME, NH and RI, with their arrows, until the reader scrolls 62 px.
+- At 618 px, 23 arrows draw as a head alone (shifts under 3.3 points), against 12 at 723 and 6 on the 1024 px stage (`pictures[key=618].head_only`).
+- **B2-S8's one figure:** the column and the frame's box are 558 px; what shows inside the frame's two 1 px edges is 556 px; the 1024 px drawing scrolls 1,024 less 556, **468 px** (the page's own `scrollWidth` less `clientWidth`). The review's 466 subtracts the box, not the part that shows. Each figure is in `frames.stage_1024`.
+
+**B2-S2, sketch 14.124, like for like:** `20261113_S-14-124-Sketch-Gray-Before-Plate-1440-Newsprint.png` is the gray half in the guide's own plate at a 1440 px window, heading, bar and caption as the gray build printed them, 868 by 545, the size of the board's "after". `20261113_S-14-124-Sketch-After-Plate-1440-Newsprint.png` is today's plate from the same build and crop, 868 by 545, so the pair matches pixel for pixel outside the half and the caption. Charcoal copies end `-Charcoal.png`. Made by `20261113_S-14-124-Sketch-Plate-Photos.cjs`: it sets the gray half's shapes and its first `<desc>` into the plate's first drawing and the gray build's caption (read from `20261113_S-14-124-Sketch-Gray-Before-Plate.html`) into the plate's caption, then photographs `#fig-s-14-124-sketch`.
+
+**Rerun** from the project folder (`<guide>` is the strict build to photograph):
+- `TMPDIR=<scratch> node work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-Build.mjs --repo . --form work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-Form.js --spec work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-Spec.json --work <scratch> --out work/handoffs/phase-3/board-2-pictures --guide <guide>`
+- `TMPDIR=<scratch> node work/handoffs/phase-3/board-2-pictures/20261113_S-14-124-Sketch-Plate-Photos.cjs <guide> work/handoffs/phase-3/board-2-pictures/20261113_S-14-124-Sketch-Gray-Before.html work/handoffs/phase-3/board-2-pictures/20261113_S-14-124-Sketch-Gray-Before-Plate.html work/handoffs/phase-3/board-2-pictures`
+
+**Routine calls, fix round:**
+- D3-xxx | S12's 1024 px stacked picture draws the stacked tile at 618 px in the guide's own frame, swapped into the strict build in the page's memory | B2-M2 asks for the stacked tile "in its 618 px frame" beside the frame as built; the same page, frame and crop make the two comparable
+- D3-xxx | The as-built frames are photographed too, with the same crop (the frame's box) | The builder can set two pictures of one crop side by side
+- D3-xxx | Sketch 14.124's before and after are photographed from one build, at one window and one crop | B2-S2: like for like, 868 by 545 each
+
+**Tested, fix round:** both scripts run to their end (18:25 to 18:26 UTC), every PNG listed above written at the sizes given; the build script's tile-by-tile measure at 723, 558 and 618 px (51, 0 and 51 tiles hold); the frames' widths read from the page (`clientWidth`, `scrollWidth`, edges); looked at both rows on Newsprint (the 1024 px row whole, the 1440 px row at three-quarter scale) and the sketch pair on Newsprint. **Not tested:** the Charcoal pictures by eye (made by swapping the stage's surface class, as before); grayscale; the board itself after the builder's next run.
 
 ## A2: sketch 14.124 in red and blue (DR-255)
 

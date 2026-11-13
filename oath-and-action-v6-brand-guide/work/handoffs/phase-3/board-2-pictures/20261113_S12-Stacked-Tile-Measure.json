@@ -1,5 +1,5 @@
 {
- "written": "2026-11-13T17:27:46.307Z",
+ "written": "2026-11-13T18:25:51.815Z",
  "by": "cartographer, board 2",
  "spec": "20261113_S12-Stacked-Tile-Spec.json",
  "form": "20261113_S12-Stacked-Tile-Form.js",
@@ -13,8 +13,10 @@
  },
  "pictures": [
   {
+   "key": "1440",
    "window": 1440,
    "drawing_px": 723,
+   "in_a_frame": false,
    "stage_shows_px_of_1024": 943,
    "tile_px": 54,
    "arrow_px_per_point": 3.8,
@@ -716,8 +718,10 @@
    ]
   },
   {
+   "key": "1024",
    "window": 1024,
    "drawing_px": 558,
+   "in_a_frame": false,
    "stage_shows_px_of_1024": 556,
    "tile_px": 41,
    "arrow_px_per_point": 2.56,
@@ -1482,6 +1486,721 @@
      "holds": false
     }
    ]
+  },
+  {
+   "key": "618",
+   "window": 1024,
+   "drawing_px": 618,
+   "in_a_frame": true,
+   "tile_px": 46,
+   "arrow_px_per_point": 3.04,
+   "drawing": [
+    618,
+    504
+   ],
+   "tiles_hold": 51,
+   "tiles": 51,
+   "tiles_fail": [],
+   "least_room_px": {
+    "code_right": 17.8,
+    "figure_right": 15.6,
+    "code_to_figure": 3,
+    "figure_to_arrow": 1.7,
+    "arrow_foot": 1.5,
+    "arrow_right": 7
+   },
+   "head_only": [
+    "AK",
+    "AR",
+    "CO",
+    "DC",
+    "GA",
+    "IN",
+    "KS",
+    "ME",
+    "MN",
+    "MO",
+    "NE",
+    "NC",
+    "ND",
+    "OH",
+    "OK",
+    "OR",
+    "PA",
+    "SD",
+    "UT",
+    "WA",
+    "WV",
+    "WI",
+    "WY"
+   ],
+   "layout_guard": [],
+   "form_warnings": [],
+   "rows": [
+    {
+     "code": "AL",
+     "figure": "5.0",
+     "code_right": 23.9,
+     "figure_right": 21.3,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 23.8,
+     "arrow_px": 15.2,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "AK",
+     "figure": "3.1",
+     "code_right": 21.9,
+     "figure_right": 23.9,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 29.7,
+     "arrow_px": 9.3,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "AZ",
+     "figure": "5.8",
+     "code_right": 22.7,
+     "figure_right": 21.5,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 21.3,
+     "arrow_px": 17.7,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "AR",
+     "figure": "3.0",
+     "code_right": 22.7,
+     "figure_right": 21,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 29.8,
+     "arrow_px": 9.2,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "CA",
+     "figure": "9.0",
+     "code_right": 21.7,
+     "figure_right": 21,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 11.6,
+     "arrow_px": 27.4,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "CO",
+     "figure": "2.5",
+     "code_right": 21.4,
+     "figure_right": 21.6,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 31.4,
+     "arrow_px": 7.6,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "CT",
+     "figure": "5.6",
+     "code_right": 22.7,
+     "figure_right": 21.5,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 22.1,
+     "arrow_px": 16.9,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "DE",
+     "figure": "4.3",
+     "code_right": 23.7,
+     "figure_right": 20.8,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 26,
+     "arrow_px": 13,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "DC",
+     "figure": "2.9",
+     "code_right": 22,
+     "figure_right": 21.3,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 30.1,
+     "arrow_px": 8.9,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "FL",
+     "figure": "9.7",
+     "code_right": 26,
+     "figure_right": 21.8,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 9.4,
+     "arrow_px": 29.6,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "GA",
+     "figure": "2.4",
+     "code_right": 21.5,
+     "figure_right": 20.9,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 31.6,
+     "arrow_px": 7.4,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "HI",
+     "figure": "6.4",
+     "code_right": 27.6,
+     "figure_right": 20.8,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 19.7,
+     "arrow_px": 19.3,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "ID",
+     "figure": "5.7",
+     "code_right": 28,
+     "figure_right": 22.2,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 21.6,
+     "arrow_px": 17.4,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "IL",
+     "figure": "6.1",
+     "code_right": 30,
+     "figure_right": 23.9,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 20.5,
+     "arrow_px": 18.5,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "IN",
+     "figure": "2.9",
+     "code_right": 27.4,
+     "figure_right": 21.3,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 30.2,
+     "arrow_px": 8.8,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "IA",
+     "figure": "5.0",
+     "code_right": 27.6,
+     "figure_right": 21.3,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 23.8,
+     "arrow_px": 15.2,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "KS",
+     "figure": "1.5",
+     "code_right": 23.1,
+     "figure_right": 24.3,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 34.5,
+     "arrow_px": 4.5,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "KY",
+     "figure": "4.6",
+     "code_right": 22.1,
+     "figure_right": 20.8,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 25,
+     "arrow_px": 14,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "LA",
+     "figure": "3.4",
+     "code_right": 23.9,
+     "figure_right": 20.8,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 28.7,
+     "arrow_px": 10.3,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "ME",
+     "figure": "2.1",
+     "code_right": 21,
+     "figure_right": 24,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 32.5,
+     "arrow_px": 6.5,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "MD",
+     "figure": "4.7",
+     "code_right": 19.5,
+     "figure_right": 21.5,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 24.8,
+     "arrow_px": 14.2,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "MA",
+     "figure": "8.3",
+     "code_right": 19.2,
+     "figure_right": 21.2,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 13.9,
+     "arrow_px": 25.1,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "MI",
+     "figure": "4.2",
+     "code_right": 25.2,
+     "figure_right": 20.9,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 26.3,
+     "arrow_px": 12.7,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "MN",
+     "figure": "2.9",
+     "code_right": 19,
+     "figure_right": 21.3,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 30.3,
+     "arrow_px": 8.7,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "MS",
+     "figure": "6.3",
+     "code_right": 20.4,
+     "figure_right": 21.2,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 19.7,
+     "arrow_px": 19.3,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "MO",
+     "figure": "3.0",
+     "code_right": 18.9,
+     "figure_right": 21,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 29.8,
+     "arrow_px": 9.2,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "MT",
+     "figure": "3.6",
+     "code_right": 20.2,
+     "figure_right": 21.2,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 28.2,
+     "arrow_px": 10.8,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "NE",
+     "figure": "1.4",
+     "code_right": 23.2,
+     "figure_right": 23.6,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 34.7,
+     "arrow_px": 4.3,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "NV",
+     "figure": "5.5",
+     "code_right": 21.4,
+     "figure_right": 21.8,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 22.3,
+     "arrow_px": 16.7,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "NH",
+     "figure": "4.6",
+     "code_right": 21.4,
+     "figure_right": 20.8,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 25.1,
+     "arrow_px": 13.9,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "NJ",
+     "figure": "10.0",
+     "code_right": 23.5,
+     "figure_right": 15.6,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 8.5,
+     "arrow_px": 30.5,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "NM",
+     "figure": "4.8",
+     "code_right": 19,
+     "figure_right": 20.8,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 24.4,
+     "arrow_px": 14.6,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "NY",
+     "figure": "10.5",
+     "code_right": 21.6,
+     "figure_right": 16.1,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 7,
+     "arrow_px": 32,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "NC",
+     "figure": "1.9",
+     "code_right": 21.5,
+     "figure_right": 23.9,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 33.3,
+     "arrow_px": 5.7,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "ND",
+     "figure": "3.1",
+     "code_right": 21.7,
+     "figure_right": 23.9,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 29.6,
+     "arrow_px": 9.4,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "OH",
+     "figure": "3.2",
+     "code_right": 21.3,
+     "figure_right": 21.3,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 29.4,
+     "arrow_px": 9.6,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "OK",
+     "figure": "1.2",
+     "code_right": 21.6,
+     "figure_right": 24,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 35.4,
+     "arrow_px": 3.6,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "OR",
+     "figure": "1.8",
+     "code_right": 22.4,
+     "figure_right": 23.9,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 33.6,
+     "arrow_px": 5.4,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "PA",
+     "figure": "2.9",
+     "code_right": 22.9,
+     "figure_right": 21.3,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 30.3,
+     "arrow_px": 8.7,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "RI",
+     "figure": "7.0",
+     "code_right": 28.8,
+     "figure_right": 21.7,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 17.8,
+     "arrow_px": 21.2,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "SC",
+     "figure": "6.2",
+     "code_right": 22.9,
+     "figure_right": 21.3,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 20.2,
+     "arrow_px": 18.8,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "SD",
+     "figure": "3.0",
+     "code_right": 23.1,
+     "figure_right": 21,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 29.8,
+     "arrow_px": 9.2,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "TN",
+     "figure": "6.5",
+     "code_right": 22.4,
+     "figure_right": 21.5,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 19.2,
+     "arrow_px": 19.8,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "TX",
+     "figure": "8.1",
+     "code_right": 22.7,
+     "figure_right": 23.9,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 14.4,
+     "arrow_px": 24.6,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "UT",
+     "figure": "1.1",
+     "code_right": 22.8,
+     "figure_right": 26.7,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 35.7,
+     "arrow_px": 3.3,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "VT",
+     "figure": "3.9",
+     "code_right": 22.6,
+     "figure_right": 21.2,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 27.1,
+     "arrow_px": 11.9,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "VA",
+     "figure": "4.3",
+     "code_right": 21.6,
+     "figure_right": 20.8,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 25.8,
+     "arrow_px": 13.2,
+     "head_only": false,
+     "holds": true
+    },
+    {
+     "code": "WA",
+     "figure": "1.0",
+     "code_right": 17.8,
+     "figure_right": 23.8,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 36,
+     "arrow_px": 3,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "WV",
+     "figure": "2.9",
+     "code_right": 17.8,
+     "figure_right": 21.3,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 30.1,
+     "arrow_px": 8.9,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "WI",
+     "figure": "1.5",
+     "code_right": 23.9,
+     "figure_right": 24.3,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 34.5,
+     "arrow_px": 4.5,
+     "head_only": true,
+     "holds": true
+    },
+    {
+     "code": "WY",
+     "figure": "2.4",
+     "code_right": 18,
+     "figure_right": 20.9,
+     "code_to_figure": 3,
+     "figure_to_arrow": 1.7,
+     "arrow_foot": 1.5,
+     "arrow_right": 31.8,
+     "arrow_px": 7.2,
+     "head_only": true,
+     "holds": true
+    }
+   ]
   }
  ],
  "stage_1024": {
@@ -1501,5 +2220,273 @@
    "WI"
   ],
   "note": "Board 1’s drawing, which the guide draws at 1024 px in a frame that scrolls sideways, drawn here by the kit’s own form"
- }
+ },
+ "frames": {
+  "stage_1440": {
+   "window": 1440,
+   "what": "S12 as built: board 1’s drawing at 1024 px in its frame",
+   "box_px": 944.67,
+   "viewport_px": 943,
+   "drawing_px": 1024,
+   "scroll_range_px": 81,
+   "edges_px": [
+    1,
+    1
+   ],
+   "height_px": 768,
+   "stage": "1024",
+   "tiles_out_of_view": [],
+   "tiles_cut_by_the_edge": [
+    "ME",
+    "NH",
+    "RI"
+   ],
+   "cut_tiles_whose_code_figure_and_arrow_show": [],
+   "words_past_the_edge": [
+    "ME",
+    "2.1",
+    "NH",
+    "4.6",
+    "RI",
+    "7.0"
+   ]
+  },
+  "stage_1024": {
+   "window": 1024,
+   "what": "S12 as built: board 1’s drawing at 1024 px in its frame",
+   "box_px": 558,
+   "viewport_px": 556,
+   "drawing_px": 1024,
+   "scroll_range_px": 468,
+   "edges_px": [
+    1,
+    1
+   ],
+   "height_px": 768,
+   "stage": "1024",
+   "tiles_out_of_view": [
+    "AL",
+    "CT",
+    "DC",
+    "DE",
+    "FL",
+    "GA",
+    "MA",
+    "MD",
+    "ME",
+    "MI",
+    "NC",
+    "NH",
+    "NJ",
+    "NY",
+    "OH",
+    "PA",
+    "RI",
+    "SC",
+    "VA",
+    "VT",
+    "WV"
+   ],
+   "tiles_cut_by_the_edge": [
+    "IL",
+    "IN",
+    "KY",
+    "MS",
+    "TN",
+    "WI"
+   ],
+   "cut_tiles_whose_code_figure_and_arrow_show": [
+    "IL",
+    "IN",
+    "WI"
+   ],
+   "words_past_the_edge": [
+    "AL",
+    "5.0",
+    "CT",
+    "5.6",
+    "DE",
+    "4.3",
+    "DC",
+    "2.9",
+    "FL",
+    "9.7",
+    "GA",
+    "2.4",
+    "4.6",
+    "ME",
+    "2.1",
+    "MD",
+    "4.7",
+    "MA",
+    "8.3",
+    "MI",
+    "4.2",
+    "6.3",
+    "NH",
+    "4.6",
+    "NJ",
+    "10.0",
+    "NY",
+    "10.5",
+    "NC",
+    "1.9",
+    "OH",
+    "3.2",
+    "PA",
+    "2.9",
+    "RI",
+    "7.0",
+    "SC",
+    "6.2",
+    "6.5",
+    "VT",
+    "3.9",
+    "VA",
+    "4.3",
+    "WV",
+    "2.9"
+   ]
+  },
+  "stacked_618_in_1024": {
+   "window": 1024,
+   "what": "the stacked tile drawn at 618 px in S12’s frame, swapped in the page’s memory",
+   "box_px": 558,
+   "viewport_px": 556,
+   "drawing_px": 618,
+   "scroll_range_px": 62,
+   "edges_px": [
+    1,
+    1
+   ],
+   "height_px": 504,
+   "stage": "618",
+   "tiles_out_of_view": [
+    "ME",
+    "NH",
+    "RI"
+   ],
+   "tiles_cut_by_the_edge": [
+    "CT",
+    "DE",
+    "MA",
+    "VT"
+   ],
+   "cut_tiles_whose_code_figure_and_arrow_show": [
+    "CT",
+    "DE",
+    "MA",
+    "VT"
+   ],
+   "words_past_the_edge": [
+    "ME",
+    "2.1",
+    "NH",
+    "4.6",
+    "RI",
+    "7.0"
+   ],
+   "arrows_past_their_tile": []
+  },
+  "note": "box_px is the frame as laid out (the column); viewport_px is what shows inside its two 1 px edges; scroll_range_px is how far the reader scrolls (the drawing less the viewport). Measured in Chromium on the strict build named in guide_build; nothing was written to it."
+ },
+ "guide_build": "phase-3/board-2/main/final/guide.html, 11236230 bytes, written 2026-11-13T18:02:58.256Z",
+ "photographs": [
+  {
+   "file": "20261113_S12-Stacked-Tile-1440-Drawing-Newsprint.png",
+   "what": "the stacked tile at 723 px, the guide’s drawing width at a 1440 px window, cropped to its drawing, newsprint",
+   "css_px": [
+    723,
+    568
+   ]
+  },
+  {
+   "file": "20261113_S12-Stacked-Tile-1440-Drawing-Charcoal.png",
+   "what": "the stacked tile at 723 px, the guide’s drawing width at a 1440 px window, cropped to its drawing, charcoal",
+   "css_px": [
+    723,
+    568
+   ]
+  },
+  {
+   "file": "20261113_S12-Stacked-Tile-618-Drawing-Newsprint.png",
+   "what": "the stacked tile at 618 px, the narrowest width at which every tile holds, its whole drawing, newsprint",
+   "css_px": [
+    618,
+    504
+   ]
+  },
+  {
+   "file": "20261113_S12-Stacked-Tile-618-Drawing-Charcoal.png",
+   "what": "the stacked tile at 618 px, the narrowest width at which every tile holds, its whole drawing, charcoal",
+   "css_px": [
+    618,
+    504
+   ]
+  },
+  {
+   "file": "20261113_S12-Stacked-Tile-558-Drawing-Newsprint.png",
+   "what": "the stacked tile forced into 558 px, the guide’s column at a 1024 px window: every arrow runs past its tile, newsprint",
+   "css_px": [
+    558,
+    464
+   ]
+  },
+  {
+   "file": "20261113_S12-Stacked-Tile-558-Drawing-Charcoal.png",
+   "what": "the stacked tile forced into 558 px, the guide’s column at a 1024 px window: every arrow runs past its tile, charcoal",
+   "css_px": [
+    558,
+    464
+   ]
+  },
+  {
+   "file": "20261113_S12-Stage-1440-Frame-Newsprint.png",
+   "what": "S12 as built, board 1’s 1024 px drawing in its frame at a 1440 px window, as a reader sees it before scrolling, newsprint",
+   "css_px": [
+    945,
+    768
+   ]
+  },
+  {
+   "file": "20261113_S12-Stage-1440-Frame-Charcoal.png",
+   "what": "S12 as built, board 1’s 1024 px drawing in its frame at a 1440 px window, as a reader sees it before scrolling, charcoal",
+   "css_px": [
+    945,
+    768
+   ]
+  },
+  {
+   "file": "20261113_S12-Stage-1024-Frame-Newsprint.png",
+   "what": "S12 as built, board 1’s 1024 px drawing in its frame at a 1024 px window, as a reader sees it before scrolling, newsprint",
+   "css_px": [
+    558,
+    768
+   ]
+  },
+  {
+   "file": "20261113_S12-Stage-1024-Frame-Charcoal.png",
+   "what": "S12 as built, board 1’s 1024 px drawing in its frame at a 1024 px window, as a reader sees it before scrolling, charcoal",
+   "css_px": [
+    558,
+    768
+   ]
+  },
+  {
+   "file": "20261113_S12-Stacked-Tile-1024-Frame-Newsprint.png",
+   "what": "the stacked tile at 618 px in S12’s frame at a 1024 px window, as a reader would see it before scrolling, newsprint",
+   "css_px": [
+    558,
+    504
+   ]
+  },
+  {
+   "file": "20261113_S12-Stacked-Tile-1024-Frame-Charcoal.png",
+   "what": "the stacked tile at 618 px in S12’s frame at a 1024 px window, as a reader would see it before scrolling, charcoal",
+   "css_px": [
+    558,
+    504
+   ]
+  }
+ ]
 }

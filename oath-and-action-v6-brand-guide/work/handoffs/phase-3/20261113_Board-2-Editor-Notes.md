@@ -215,6 +215,18 @@ Applied by `tools/apply.py` (each old phrase once in its field and once in the f
 
 Under `work/handoffs/phase-3/20261113_Board-2-Fix-Brief.md` and the creative director's review (`20261113_CD-Review-Of-Board-2.md`). My items: every word item, B2-M1, B2-M3, B2-M5 (S03 and S08 only under the data lead's ruling), B2-S1, B2-S3, B2-S5, B2-S9, B2-S10 and B2-S11, then one read of the rebuilt board.
 
+Routine calls, fix round:
+
+- D3-xxx | S21, S09 and S10 curl the atlas's straight apostrophes in their tables through `typography.curl_quotes`, the data as stored | The data lead's answer of 17:39 (D3-519); every drawing equal byte for byte
+- D3-xxx | S73's reach names each side: "the Democratic funds 54 and the Republican funds 56" | B2-S9, DR-124: a count read from both sides names both
+- D3-xxx | DR-258's reason names Concepts V2 and the Atlas Visual System as the pages the 668 comparisons needed | B2-S10: none of the 668 read V5 Polished, as the item's own fact says
+- D3-xxx | Claim IDs and the V7.1 list's item numbers leave the items' words for their reference lines; "sidecars" becomes "the notes kept with the two FEC data files" | B2-S1: plain words on the face
+- D3-xxx | S03 and S08 keep their November 10 count, and their words do not change | B2-M5: the data lead's R-01 recommendation keeps the count until all three measures certify
+- D3-xxx | A drawing "carries" its state codes, never "codes" them | W01: the verb read as studio shorthand
+- D3-xxx | Sketch 14.124's two board pictures take alts that say what each drawing shows | B2-S3: the alt named the item in place of the picture
+
+**For the data lead (18:21 UTC): S21, S09 and S10 curl their apostrophes, as you answered at 17:39.** Each spec gains `"typography": {"curl_quotes": true}` after its `table`, and nothing else (by parse). The straight apostrophes sit only in table columns (S10's and S21's `question`, S09's `mechanism`), and every drawing is the same byte for byte: the twelve SVGs of the three charts (1440 and 390 px, Newsprint and Charcoal) equal before and after by `cmp`. The pages now print "isn’t", "child’s", "President’s" and "Humphrey’s" (16 curled, 0 straight); the CSV exports keep the atlas's words as stored (D3-519). `oa-chart.mjs build s09 s10 s21`, sweep on: 3 PASS, 0 faults; with the frame S09 13,642 to 13,652, S10 8,156 to 8,162, S21 6,432 to 6,438. S09 and S10 are board 1 charts whose drawings did not move, so panel 1 needs no new line; the main session's rebuild of the guide carries the change.
+
 **For the data lead (18:23 UTC): fields I wrote in the decisions file in this round.** Please read the file before any write, as before. I leave B2-M3's and B2-S11's words where you wrote them at 18:21 and read them for voice only.
 
 | Item | Field | Before | After |
@@ -226,7 +238,35 @@ Under `work/handoffs/phase-3/20261113_Board-2-Fix-Brief.md` and the creative dir
 | B2-S1 | figure 7 `recommendation`, `list_note` | …as list item 36 already asks for its status entry.; Item 36 covers H.R. 7008’s status entry;… | …as the October list already asks for its status entry.; The October list covers H.R. 7008’s status entry;… |
 | B2-S1 | A15 (drug price strings) `answer` | The four are two straight apostrophes, in claims CL1359 and CL1363, straight quote marks… | The four are straight apostrophes in two claims, straight quote marks… |
 
+| B2-M3 | S12 `pictures[6].label` | On a phone, with each state’s code | On a phone |
+
+The S12 phone label claimed every code, which the 326 px drawing does not carry; the builder's `phone_px` adds each phone picture's drawing width (B2-M3, its code as of 18:23).
+
+| B2-M3, read for voice | S16 `what_changed` | …a 358 px phone drawing codes all 51, … the 326 px drawing a 390 px phone gets codes 47 and names… | …a 358 px phone drawing carries all 51 codes, … the 326 px drawing a 390 px phone gets carries 47 and names… |
+| B2-M3, read for voice | S78 `what_changed` | …a 358 px drawing codes every state,… | …a 358 px drawing carries every state’s code,… |
+| B2-S11, read for voice | placement `what_changed` | Panel 2 compares each chart with board 1’s own files, where the pixel grid below and these moves show. …so it draws crisp at 1x; | Panel 2 compares each chart with board 1’s own files, so it marks a chart changed for these moves and for the pixel grid below. …so it draws crisp at normal screen size; |
+
+No figure moved in these three (18:24 UTC). B2-M5: your R-01 recommendation (18:21) keeps S03's and S08's November 10 count until all three measures certify, so S03 and S08 take no words from me.
+
 The claim IDs CL1359 and CL1363 and the list's item numbers 8 and 36 belong in each item's `refs` (or in your B2-S4 line, "On the October list as item N"), which only you write.
+
+### Fix round: the content file and the sketch's alts (18:26 UTC)
+
+The builder's new words (B2-M1, B2-M4, B2-S3, B2-S5, B2-S6, B2-S12; its 18:25 file) read whole and kept, but four:
+
+| Field | Before | After | Why |
+|---|---|---|---|
+| `cover.minutes` | …about {p1_min} minutes at 200 words a minute. | …about {p1_min} minutes to read at 200 words a minute. | Says what the minutes are for |
+| `sections.decide.lede` | …listed first with the studio’s recommendation for each; each links to its item below. | …listed first with the studio’s recommendation for each and a link to its item below. | Two "each" clauses in a row (W13) |
+| `sections.decide.replies_h` | The {n} replies you owe | The {n} replies we need from you | Plain and courteous to the client |
+| `sections.decide.alt_other` | A picture {src}, at a {w} px window, for the item “{title}”. | A picture for “{title}”, {src}, at a {w} px window. | Reads with every `alt_source` phrase |
+
+**B2-S3, the sketch's two pictures** (the decisions file's DR-255 item, `pictures[0].alt` and `[1].alt`, which `picture_alt` reads first; the only key I added, words only, proven by parse):
+
+- Before: "Sketch 14.124’s misleading half in gray, as it stood before your answer: seven small places for Party A and five large blocks for Party B under the do-not-publish bar, beside the two panels by party, with Illustrative data."
+- Now: "Sketch 14.124 as the guide now draws it: the misleading half shades Party A’s seven small places red and Party B’s five large blocks blue, each color named in its key, under the do-not-publish bar, beside the two panels by party."
+
+The other panel 1 pictures take the builder's `alt_chart` ("{form} ({spec}), {src}, at a {w} px window. Its title: …") after their labels, which already say what each shows. I read every alt again on the rebuilt page.
 
 ## Words for the cartographer
 

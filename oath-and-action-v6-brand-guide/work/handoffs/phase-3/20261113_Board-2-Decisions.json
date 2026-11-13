@@ -104,7 +104,7 @@
        "width": 390,
        "ground": "newsprint",
        "path": null,
-       "label": "On a phone, with each state’s code",
+       "label": "On a phone",
        "role": "after",
        "element": "oac-s-14-s12"
       }
@@ -135,7 +135,7 @@
      "rule": "14.116",
      "title": "S16, the turnout bubble map",
      "answer": "S16 now draws on the Census Bureau’s 2024 state outlines, with Alaska and Hawaii framed apart, DC on a leader at a desk, a code for every state it has room for on a phone, a credit line for the map, and the range words you approved on November 13. Its data, circle sizes, inks and named states are as board 1 approved.",
-     "what_changed": "The 2024 outlines, with the coast drawn as an edge; Alaska and Hawaii each in a frame, not to scale; DC on a leader at a desk and West Virginia beside its own circle; codes placed so that a 358 px phone drawing codes all 51, where board 1’s named MA and NJ in a note, and the 326 px drawing a 390 px phone gets codes 47 and names DC, DE, ME and NH in a note; a credit line naming the map’s source; note 3’s range and the alt’s last sentence in the words you approved on November 13.",
+     "what_changed": "The 2024 outlines, with the coast drawn as an edge; Alaska and Hawaii each in a frame, not to scale; DC on a leader at a desk and West Virginia beside its own circle; codes placed so that a 358 px phone drawing carries all 51 codes, where board 1’s named MA and NJ in a note, and the 326 px drawing a 390 px phone gets carries 47 and names DC, DE, ME and NH in a note; a credit line naming the map’s source; note 3’s range and the alt’s last sentence in the words you approved on November 13.",
      "why": "Round 3 moved every state map onto one set of 2024 outlines, and the reviewers asked for DC and the small northeastern states to be findable. Placement only: the data, the circle scale and its key, the inks, the title, every note but note 3, and the table are unchanged.",
      "recommendation": "Approve S16 as drawn. A code for every state at 326 px, on S12, S16 and S78, goes to round 4 as a guide fix.",
      "refs": [
@@ -269,7 +269,7 @@
      "id": "placement",
      "title": "Thirteen board 1 drawings moved a word, a label, a line or a key",
      "answer": "A width check now draws every chart at every width from 256 px up, and a crossing check finds words that touch a line. Thirteen board 1 drawings moved a word, a label, a line or a key, eleven where those checks found a fault and two from later fixes to the chart kit, most of them only at widths board 1 did not show. No figure or ink changed; S12’s phone adds a note naming the codes its tiles have no room for.",
-     "what_changed": "Each row says what moved and where. Each owner compared its drawing before and after its own move, and S01, S02, S07, S15 and S16 drew the same at 1,440 and 390 px across that move. Panel 2 compares each chart with board 1’s own files, where the pixel grid below and these moves show. Separately, in round 1 the chart kit set every straight line of a whole-pixel width on the pixel grid, so it draws crisp at 1x; that moved lines in most board 1 drawings by up to half a pixel, with nothing else changed.",
+     "what_changed": "Each row says what moved and where. Each owner compared its drawing before and after its own move, and S01, S02, S07, S15 and S16 drew the same at 1,440 and 390 px across that move. Panel 2 compares each chart with board 1’s own files, so it marks a chart changed for these moves and for the pixel grid below. Separately, in round 1 the chart kit set every straight line of a whole-pixel width on the pixel grid, so it draws crisp at normal screen size; that moved lines in most board 1 drawings by up to half a pixel, with nothing else changed.",
      "why": "At some widths a label ran past the edge or across a line.",
      "recommendation": "Approve the moves as listed.",
      "refs": [
@@ -555,7 +555,7 @@
      "rule": "14.117",
      "title": "S78, broadband by state",
      "answer": "S78 maps home broadband such as cable, fiber or DSL, a line of the Census Bureau’s table the plan left open, with the Bureau’s own published margins, and on a phone it draws a grid of equal state tiles in place of state outlines.",
-     "what_changed": "The plan asked for “households with a broadband internet subscription”. The chart reads the table’s fixed broadband line, which leaves out a household with a cellular data plan alone, and prints the margins the Bureau publishes. Under 520 px the map becomes the tile grid S07 uses, with the same classes, inks and key: a 358 px drawing codes every state, and at the 326 px drawing a 390 px phone gets, a note names WA, WV and WY.",
+     "what_changed": "The plan asked for “households with a broadband internet subscription”. The chart reads the table’s fixed broadband line, which leaves out a household with a cellular data plan alone, and prints the margins the Bureau publishes. Under 520 px the map becomes the tile grid S07 uses, with the same classes, inks and key: a 358 px drawing carries every state’s code, and at the 326 px drawing a 390 px phone gets, a note names WA, WV and WY.",
      "why": "The atlas issue it serves, Issue I015 “Public information is out of reach for some residents”, names slow or missing home internet, which a phone plan alone does not answer, and broadband of any kind spans too narrow a range for more than two honest classes. On the outlines, 19 states had no room for a code at a 358 px phone drawing.",
      "recommendation": "Approve S78 as drawn. A code for every state at 326 px goes to round 4 as a guide fix.",
      "refs": [
@@ -1181,7 +1181,8 @@
        "ground": "newsprint",
        "path": "work/handoffs/phase-3/board-2-pictures/20261113_S-14-124-Sketch-Gray-Before.html",
        "label": "In gray, as it stood before your answer",
-       "role": "before"
+       "role": "before",
+       "alt": "Sketch 14.124’s misleading half in gray, as it stood before your answer: seven small places for Party A and five large blocks for Party B under the do-not-publish bar, beside the two panels by party, with Illustrative data."
       },
       {
        "kind": "guide",
@@ -1191,7 +1192,8 @@
        "path": null,
        "label": "In red and blue",
        "role": "after",
-       "element": "fig-s-14-124-sketch"
+       "element": "fig-s-14-124-sketch",
+       "alt": "Sketch 14.124 as the guide now draws it: the misleading half shades Party A’s seven small places red and Party B’s five large blocks blue, each color named in its key, under the do-not-publish bar, beside the two panels by party."
       }
      ]
     },
