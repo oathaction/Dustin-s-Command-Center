@@ -1180,7 +1180,10 @@
     var head = '<tr>' + cols.map(function (col) { return '<th scope="col"' + (numc(col) ? '' : ' class="t"') + '>' + K.chips(col.label, ids) + '</th>'; }).join('') + '</tr>';
     var body = K.table_groups(spec, rows).map(function (grp) {
       return '<tr>' + cols.map(function (col) {
-        var txt = esc(K.group_cell(col, grp)), hd = col.row_header || (col.agg || 'key') === 'key';
+        // A-E7 (maker A): a grouped table's words take the spec's typography, as an ungrouped table's text columns do
+        var raw = K.group_cell(col, grp);
+        if (spec.typography && !numc(col)) raw = K.typeset(spec, raw);
+        var txt = esc(raw), hd = col.row_header || (col.agg || 'key') === 'key';
         return '<' + (hd ? 'th scope="row"' : 'td') + (numc(col) ? '' : ' class="t"') + '>' + txt + '</' + (hd ? 'th' : 'td') + '>';
       }).join('') + '</tr>';
     }).join('');

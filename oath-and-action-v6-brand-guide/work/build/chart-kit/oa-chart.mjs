@@ -1067,6 +1067,11 @@ async function self_test() {
       const h = K.table_html(sp, rows, { lean: true });
       pass(/>Senate Democrats<\/th><td>1<\/td><td class="t">A; B<\/td><td>1<\/td>/.test(h) && />House, D<\/th><td>1<\/td><td class="t">C<\/td><td>1<\/td>/.test(h),
         'A-E1 and A-E2: a table grouped by two columns, with a list and a count of the set' + (/Senate Democrats/.test(h) ? '' : ': ' + h.slice(0, 300))); }
+    { // A-E7: a grouped table's words take the spec's typography
+      const sp = { id: 'T', typography: { replace: [['Davis (NC) (NC, ', 'Davis (NC, ']], curl_quotes: true }, table: { columns: [{ field: 'm', label: 'M' }], group: { by: 'p', columns: [{ label: 'Party', agg: 'key' },
+        { label: 'Broke', agg: 'list', field: 'm', with: ['st', 'v'] }, { label: 'Seats', agg: 'count' }] } } };
+      const h = K.table_html(sp, [{ p: "D's", m: 'Davis (NC)', st: 'NC', v: 'Yea' }], { lean: true });
+      pass(/>D’s<\/th><td class="t">Davis \(NC, Yea\)<\/td><td>1<\/td>/.test(h), "A-E7: a grouped table's words take the spec's typography" + (/Davis \(NC, Yea\)/.test(h) ? '' : ': ' + h.slice(0, 300))); }
     { // C-3, C-E6: a claim ID listed in v7.ids prints in its typed chip, once
       pass(K.chips('as CL1516 records', ['CL1516']) === 'as <span class="oa-id" data-oa-id="CL1516">Claim CL1516</span> records' && /claim <span class="oa-id" data-oa-id="CL1516">CL1516</.test(K.chips('the atlas’s claim CL1516', ['CL1516'])),
         "C-3: an atlas claim ID takes its typed chip, its type word printed once"); }

@@ -30,6 +30,13 @@
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: the Department of Labor’s table of state minimum wages on January 1 of each year shown",
+ "v7": {
+  "grade": "documented",
+  "ids": [
+   "CL1516"
+  ],
+  "snapshot": "2026-10-15"
+ },
  "title": "Thirty states and DC had a minimum wage above the federal $7.25 on January 1, 2024, up from 14 states and DC on January 1, 2010.",
  "measure_line": "Each state’s basic minimum wage under state law for non-farm work, against the federal $7.25, on January 1 of 2010, 2014, 2019 and 2024, 50 states and the District of Columbia, in three classes.",
  "notes": [
@@ -95,7 +102,8 @@
  "notes_internal": [
   "DR-243 and ruling (b): January 1 of 2010, 2014, 2019 and 2024 from dol-state-minimum-wage-classes; three classes in sequential steps 1 (with the edge), 3 and 5; one key; each panel named with its date and counts: 2010, 15 above, 26 at, 10 below or none; 2014, 24, 19, 8; 2019, 30, 14, 7; 2024, 31, 13, 7, DC counted with the states and above in every panel (check S84 in cartographer_round3_derive.py --figures).",
   "The first note is the sourced sentence DR-243 asks for, its figures read by script from Atlas V7 claim CL1516 in work/extract/atlas-v7-data.json (30 states and DC above, 13 at, Georgia and Wyoming at $5.15, five with no law; snapshot October 15, 2026).",
-  "Ruling (a): no named mark; four panels."
+  "Ruling (a): no named mark; four panels.",
+  "C-3: CL1516 sits in v7.ids, so note 1's claim ID prints as its typed chip (Rule 13.9), now that the kit's atlas check indexes claims (C-E6)."
  ],
  "formats": {
   "panel": "year"
