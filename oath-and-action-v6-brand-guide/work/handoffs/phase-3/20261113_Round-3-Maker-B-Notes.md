@@ -71,12 +71,13 @@ Built. Six forms (`funnel`, `network-diagram`, `adjacency-matrix`, `arc-diagram`
 - The six sketches: 1,963 to 2,987 bytes; rendered in Chromium (Playwright) with `tokens.css` and `kit.css` on Newsprint and Charcoal and in grayscale at device scale 2, looked at; every shape's box inside the drawing after the survival curve's label moved (`getBBox` against the viewBox); classes only, no `style` and no literal color; each first `<desc>` is its entry's `sketch_alt`.
 - `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py --rounds 1,2,3`: 128 rules, 114 entries, 84 chart plates, 0 faults (earlier runs showed only the cartographer's then missing entries).
 - `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide3/guide.html`: exit 0, 11,216,709 bytes, 344 rules. Plate weights from its report: S65 5,396; S73 8,813; S74 10,940; S75 7,159; S76 6,488; S77 6,630 bytes, each under D3-1097's 13,852.
+- `node work/build/scripts/phase-2/guide_check.js <scratch>/guide3/guide.html --quick --no-captures` (run to its end, no time limit): FAIL with 2 failures, both the cartographer's avoid sketch `s-14-124-sketch` ("Party B", "Closer" and "Wider margin" under contrast, at 1440 and 390 px); its results file names none of my six plates or six sketches. 2 widths, 344 rules, 694 specimens, 3,262 same-page links.
 - My specs and entries scanned by script for em dashes, U+2011, straight apostrophes, ink words (dark, light) and "subject ink" outside builders' lines: none.
 - Forms' sizes (bytes, unminified): `funnel` 6,587; `network-diagram` 8,381; `adjacency-matrix` 7,046; `arc-diagram` 5,594; `sankey` 7,524; `journey-map` 6,228.
 
 ## Not tested
 
-- The quick guide check: my first run was cut off by its own 15-minute limit (exit 124), so it does not count; a second run on `guide3` is under way (see below when it lands).
+- My first quick guide check was cut off by its own 15-minute limit (exit 124) and is not counted; the second, listed under Tested, ran to its end.
 - My entries in the guide page at any width (read from the files only); the six plates inside the guide were not captured.
 - Forced colors, print and 200 percent text beyond the kit's emulated checks; no screen reader or real device.
 - Grayscale of S73, S75 and S77 at desk widths (each draws one ink plus gray, or one ink).

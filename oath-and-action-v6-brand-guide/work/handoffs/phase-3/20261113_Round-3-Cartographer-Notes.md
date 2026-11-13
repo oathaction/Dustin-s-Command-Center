@@ -4,9 +4,9 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. The cartographer,
 
 ## Summary
 
-Done (05:20 UTC), waiting on the editor's words pass and the data lead's sign-off. Seven map forms written on the engineer's R3-2 parts; S78 to S84 pass `oa-chart.mjs build` with the sweep, 0 faults; S16 placed on the 2024 outlines with its credit note replaced; entries 14.113 to 14.124 written; both sketches drawn; `phase3_ch14_build.py --rounds 1,2,3`: 0 faults; a strict build: exit 0, no warning on my plates. Every figure in my titles, notes and alts is checked by `cartographer_round3_derive.py --figures` (0 faults).
+Done (02:00 UTC by the container's clock), waiting on the editor's words pass and the data lead's sign-off. Seven map forms written on the engineer's R3-2 parts; S78 to S84 pass `oa-chart.mjs build` with the sweep, 0 faults; S16 placed on the 2024 outlines with its credit note replaced; entries 14.113 to 14.124 written; both sketches drawn; `phase3_ch14_build.py --rounds 1,2,3`: 0 faults; a strict build: exit 0, no warning on my plates. Every figure in my titles, notes and alts is checked by `cartographer_round3_derive.py --figures` (0 faults).
 
-| Rule | Spec or sketch | Form | Bytes in the strict build (05:05) | Status |
+| Rule | Spec or sketch | Form | Bytes in the strict build (01:40) | Status |
 |---|---|---|---|---|
 | 14.113 | sketch `s-14-113-sketch` | flow map (reference) | entry 6,386, sketch 2,700 | Done; editor's first look applied |
 | 14.114 | S07 (built) | tile-map-categorical | 13,619 | Entry; drawing unchanged |
@@ -15,13 +15,13 @@ Done (05:20 UTC), waiting on the editor's words pass and the data lead's sign-of
 | 14.117 | S78 | choropleth | 8,310 | Done |
 | 14.118 | S79 | locator-map | 3,503 | Done |
 | 14.119 | S80 | district-map | 5,710 | Done |
-| 14.120 | S81 | county-choropleth | 10,873 | Done (DL-E1 variant B: the drawing reads a class) |
-| 14.121 | S82 | district-tile-map | 13,038 in the build; 12,378 after the table's last column left (05:15, `fragments`) | Done |
-| 14.122 | S83 | dot-density-map | 12,380 | Done |
+| 14.120 | S81 | county-choropleth | 10,873 in the build; 12,497 with DL-E1's lowest and highest columns (`fragments`) | Done (DL-E1 variant B and its conditions 1 to 3) |
+| 14.121 | S82 | district-tile-map | 13,038 in the build; 12,378 after the table's last column left (`fragments`, 01:45) | Done |
+| 14.122 | S83 | dot-density-map | 12,380 in the build; 12,374 with RL-2's notes (`fragments`) | Done (RL-2 and DL-E1 condition 4) |
 | 14.123 | S84 | small-multiple-maps | 10,068 | Done |
 | 14.124 | sketch `s-14-124-sketch` | avoid: party colors | entry 7,646, sketch 3,309 | Done; one choice for the data lead (below) |
 
-Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map is inside D3-1097's 13,852 bytes with a 1,300-byte frame; S82 and S83 are closest, at about 13,680 each.
+Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map is inside D3-1097's 13,852 bytes with a 1,300-byte frame; S81 (about 13,800), S82 and S83 (about 13,680) are closest.
 
 **From the main session (D3-1087):** S79's California inset and Kern County draw from `census-cb-2024-counties-california-5m.geojson` (the kit's `counties-ca` layer); the inset draws `census-cb-2024-states`. Both are among S79's datasets.
 
@@ -51,18 +51,24 @@ Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map 
 - D3-xxx | S79's "Kern County" sits under the county on the ground's halo where it finds no room inside clear of the two places' names (at every width I looked at) | The places' names claim the county's middle; a name across the county's edge failed the crossing check
 - D3-xxx | S79's title gives the distance as "about 37 miles northeast", from the Gazetteer's internal points (36.9 miles by the haversine formula, bearing 58 degrees) | A Finding the two points hold; a note says the distance is a straight line between them
 - D3-xxx | S80 numbers each district with `map_labels` (no east column, leaders of 10 to 32 px, 10 and 20 under 300 px) and names any number with no room under the maps | At 257 to 260 px a longer leader crossed "11"
+- D3-xxx | S81's grouped table prints state, counties, the lowest and highest county estimate (values, no names) and the count in each class; its CSV adds each county's class in words | DL-E1's conditions 2 and 3; the nation stays out of the drawn rows (request D-2)
+- D3-xxx | S81's alt, last note, measure line and caption shortened, and its table's extremes headed "Lowest" and "Highest" | The two columns DL-E1 asks for put the plate about 170 bytes over 13,852 with its frame
+- D3-xxx | S83's notes 3 and 4 take the data lead's RL-2 words for the noise flags and the 7.7 million counted in no county, and a note of their own says what County Business Patterns leaves out | RL-2, signed off; the data plan's condition on row 112
+- D3-xxx | S81's and S83's land edge is a 1 px context line (state lines stay 0.5 px) | The engineer's word: on Charcoal the land ink sits close to the ground, so the edge carries each shape
 - D3-xxx | Every map's derived file lists only data files in `derived_from`, the boundary file in its derivation's words | The data check reads `derived_from` as files in the folder and refused a `.geojson` there
 
 ## Requests to the engineer
 
 - **C-E1 (landed):** `count_eq` for grouped tables. S82 uses it.
 - **C-E3 (landed, with RB3-G2):** the page check for a grouped table.
-- **C-E4, a question on S16 (R3-4):** in my 1440 px capture Alaska and Hawaii draw no land under their circles, though `OAChartGeo.land` holds their rings (Alaska's box in the states layer runs from x −57.5 to 203, y 464.5 to 604). Board 1's capture showed none either. If the land should draw there now, the fix is in the legacy land path or the bubble map's group; S16's words and inks would not change.
-- **C-E5, optional, `parts.js` `map_labels`:** a name placed beside its shape at a place's own point (`place_labels`' first ring, no leader) can land on a mid or dark step at a coast, where `fill_under` and the forced-colors check read different points; S78 places its codes beside by its own search for now, testing a padded box against both. A `ring0: false` option, or `light_under` sampling a padded box, would let the form go back to the part.
+- **C-E4, answered:** the engineer's own captures of `build s16` show Alaska's and Hawaii's land on both grounds; my capture came before its rebuild. Earlier text: **a question on S16 (R3-4):** in my 1440 px capture Alaska and Hawaii draw no land under their circles, though `OAChartGeo.land` holds their rings (Alaska's box in the states layer runs from x −57.5 to 203, y 464.5 to 604). Board 1's capture showed none either. If the land should draw there now, the fix is in the legacy land path or the bubble map's group; S16's words and inks would not change.
+- **C-E5, landed** (`light_pad`, `ring0: false`); S78 keeps its own search for now, which passes, and can move onto the part in the fix pass. Earlier text: **optional, `parts.js` `map_labels`:** a name placed beside its shape at a place's own point (`place_labels`' first ring, no leader) can land on a mid or dark step at a coast, where `fill_under` and the forced-colors check read different points; S78 places its codes beside by its own search for now, testing a padded box against both. A `ring0: false` option, or `light_under` sampling a padded box, would let the form go back to the part.
 
 ## Requests to the data lead
 
 - **D-1, sketch 14.124's misleading half:** it shades 12 invented places on the guide's diverging pair (Prussian to Verdigris), the ends named "Party A" and "Party B", as the form to avoid. Literal red and blue need classes the kit lacks, and the guide check fails red within 2 px of Prussian. Please confirm, or name the pair to use.
+- **D-2, S81's CSV and the nation (DL-E1 condition 3):** the CSV export carries every county's value, margin and class, but not the nation's row: the drawn rows must be the layer's 3,144 counties in geoid order, so the page reads their geoids back from `geo.js` (the engineer's `geo_key`); a nation's row among them costs the island the geoid column. The nation prints beside the map ("United States $80,734 (±$166)") and sits in the research lead's source file, which the source line names. Please accept this, or I ask the engineer for an export row apart from the drawn rows.
+- **For the sign-off, Charcoal:** S81's and S83's land edge is now 1 px; S79 draws California in the track ink with a 1 px context edge and Kern County's edge, and S78 and S84 draw the lightest step with its edge. S16's outlines are the engineer's drawing (R3-4).
 - Sign-off of S78 to S84, S16 on the 2024 outlines, the entries and both sketches. Captures at 1440 and 390 px on both grounds are in each spec's folder under my scratch `kit-out/`.
 
 ## Requests to the research lead
@@ -72,7 +78,7 @@ Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map 
 ## Requests to the main session
 
 - **S82's and S80's datasets (R3-1):** the plan rows list `clerk-house-results-2024-by-district` with `census-gazetteer-2024-cd119` (S82) and `census-cb-2024-cd119` (S80). Both maps now read `clerk-house-results-2024-classes`, derived from the Clerk's file and our layout; S81 and S83 read their derived class and dot files. Please name the derived files in the plan rows, or keep the source files there as their sources; either reads true.
-- **The chapter build:** I ran `phase3_ch14_build.py --rounds 1,2,3` (05:00), which wrote the chapter with round 3's entries in, as you asked. The editor's note asks for `phase3_ch14_rules_build.py` then `phase3_ch14_build.py` once the chapter build takes round 3 in.
+- **The chapter build:** I ran `phase3_ch14_build.py --rounds 1,2,3` (01:35), which wrote the chapter with round 3's entries in, as you asked. The editor's note asks for `phase3_ch14_rules_build.py` then `phase3_ch14_build.py` once the chapter build takes round 3 in.
 
 ## Requests to the editor
 
@@ -80,7 +86,9 @@ Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map 
 
 ## Tested
 
-- `node work/build/chart-kit/oa-chart.mjs build <id> --out <scratch>/kit-out`, sweep on, at 1440 and 390 px on Newsprint and Charcoal, the guide's widths and every whole width from 256 to 720 px: S78, S79, S80, S81, S82, S83, S84 and S16 each PASS, 0 faults, read from each run's full output (05:00 to 05:10); S07 and S12 PASS as board 1 drew them (00:55).
+- `node work/build/chart-kit/oa-chart.mjs build <id> --out <scratch>/kit-out`, sweep on, at 1440 and 390 px on Newsprint and Charcoal, the guide's widths and every whole width from 256 to 720 px: S78, S79, S80, S81, S82, S83, S84 and S16 each PASS, 0 faults, read from each run's full output (01:00 to 01:40); S07 and S12 PASS as board 1 drew them (00:55).
+- `node work/build/chart-kit/oa-chart.mjs check s78 s79 s80 s81 s82 s83 s84 s16 s07 s12`: 10 of 10 PASS, 0 faults, after the last word, table and edge changes.
+- A words scan by script of S78 to S84, S16, entries 14.113 to 14.124 and both sketches: no em dash, no U+2011, no straight apostrophe or quotation mark in reader words.
 - Looked at by eye: every new map at 1440 px on Newsprint (S82 and S81 cropped at 1.5 times), S78, S79 and S83 at 390 px (Charcoal for S78, S79 and S83), S82's Republican panel, S16 at 1440 px; both sketches on Newsprint and Charcoal and in grayscale at twice size. Fixed from what I saw: S82's ghosts (read as the lightest step), its heavy state lines and colliding codes; S78's long phone leaders and missing Delaware code; S79's county name across its edge; S84's 2014 count in the alt.
 - `python3 -I work/build/scripts/phase-3/cartographer_round3_derive.py`, then `--check`: 0 faults (435 squares on a 38 by 23 grid, no state split; classes 36, 33, 85, 259 and 22 unopposed; 371, 1,138, 1,049 and 585 counties with 1,707 and 182 crossings; 13,040 and 2,402 dots).
 - `--figures`: 0 faults over 80 checks (counted) of the figures in S78 to S84's titles, notes, alts and labels, among them the national figures, class counts, crossings, the Michigan races, the seat totals, the county concentration, the panel counts and V7 claim CL1516's words, read from `work/extract/atlas-v7-data.json`.
@@ -92,7 +100,7 @@ Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map 
 
 ## Not tested
 
-- The quick guide check on the strict build: running at 05:20 (result below when it lands).
+- The quick guide check on the strict build: running since 01:43 (result below when it lands).
 - S80 and S82 rebuilt after their last word and table changes (title numbers in words, S82's table column) with the sweep; the figure checks and weights ran after them.
 - My entries placed in the guide page, by eye; forced colors, print and 200 percent text beyond the kit's emulated checks; screen readers and real devices.
 
