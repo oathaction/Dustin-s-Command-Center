@@ -1,7 +1,7 @@
 {
  "schema": "board-2-decisions/1",
  "state": "signed off",
- "updated_utc": "2026-11-13T18:42:18Z",
+ "updated_utc": "2026-11-13T19:33:12Z",
  "written_by": "data lead",
  "words_owner": "editor",
  "reply_line": "To answer, reply “As recommended”, or name the item and your change.",
@@ -861,7 +861,7 @@
   {
    "id": "atlas-v7-1",
    "title": "Atlas V7.1 items",
-   "lede": "Nine atlas items come to this board, with one question. Seven are new to the V7.1 list you approved in October, and the item on the FEC’s joint fundraising totals is no atlas item and should come off it. None changes the guide now. The question is whether each variable takes one name across chapters 10, 11 and 15, and we recommend each variable’s own title.",
+   "lede": "Nine atlas items come to this board, with one question. Seven are new to the V7.1 list you approved in October, and the item on the FEC’s joint fundraising totals is no atlas item and should come off it. None changes the guide now. The question is whether each variable takes one name in loop drawings across chapters 11 and 15, and we recommend its own title there, with Civic Line icon CL-026 keeping its approved name.",
    "approval": "one",
    "items": [
     {
@@ -1068,14 +1068,15 @@
      "id": "loop-labels",
      "title": "One name for each variable: the loop label or the variable’s title",
      "answer": "The atlas gives 24 of the 25 variables in its numbered loops two names: a title on the variable and a shorter label inside each loop. Several loop labels carry a verdict or a term a reader has to look up: “Executive unilateralism” for presidential action without new legislation, “Policy tilt to insiders” for policy advantages for wealthy and organized interests, “Affective polarization” for hostility toward the other political party. The guide prints the loop labels inside loops and the titles elsewhere, and chapters 10 and 11 use “Executive unilateralism” as the name of Civic Line icon CL-026.",
-     "question": "Should every variable’s own title replace its loop label wherever the guide draws a loop, in chapters 10, 11 and 15 together?",
-     "what_changed": "Nothing yet. Until you answer, chapter 15 keeps loop labels inside loops and the titles of variables D1, D2, D4 and D6 outside them.",
+     "question": "Should each variable’s own title replace its loop label in every loop drawing, in chapters 11 and 15 together?",
+     "what_changed": "Nothing yet. Until you answer, chapter 15 keeps loop labels inside loops and the titles of variables D1, D2, D4 and D6 outside them. Civic Line icon CL-026 keeps its approved name either way.",
      "why": "Two names for one variable make a reader ask whether they are two things, and the titles are the plainer names, with no verdict in them.",
-     "recommendation": "Yes. Use each variable’s title in every loop drawing in chapters 10, 11 and 15, and ask V7.1 to do the same, so each variable has one name. The titles run longer, 36.5 characters on average against 22.0, so loop drawings need more room, and Civic Line icon CL-026 would print “Presidential action without new legislation” in place of “Executive unilateralism”.",
+     "recommendation": "Yes, in loop drawings. Use each variable’s own title in every loop drawing in chapters 11 and 15, and ask V7.1 to do the same, so each variable carries one name wherever a loop is drawn. Civic Line icon CL-026 keeps the name you approved, “Executive unilateralism”, in chapter 10’s library and wherever the guide names the icon, so where the icon and Variable D2 meet, the icon’s name and the variable’s title differ. Renaming the icon would change a settled element and would need your own named approval; the studio asks for no such change. The titles run longer, 36.5 characters on average against 22.0, so loop drawings need more room.",
      "refs": [
       "D3-906",
       "D3-908",
-      "D3-912"
+      "D3-912",
+      "DR-144"
      ],
      "new_to_v7_1_list": true,
      "question_for_dustin": true,
@@ -5224,8 +5225,8 @@
    "n": 5,
    "panel": "atlas-v7-1",
    "id": "loop-labels",
-   "line": "One name for each variable in chapters 10, 11 and 15: its own title, or the shorter loop label.",
-   "recommendation": "Its own title everywhere.",
+   "line": "One name for each variable in loop drawings, in chapters 11 and 15: its own title, or the shorter loop label.",
+   "recommendation": "Its own title in loop drawings; Civic Line icon CL-026 keeps its approved name.",
    "item": "loop-labels"
   }
  ]

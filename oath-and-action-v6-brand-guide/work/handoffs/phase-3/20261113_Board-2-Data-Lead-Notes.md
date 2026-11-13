@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. Data visualizatio
 
 ## Status
 
+- 19:33 UTC. Reply 5 revised: loop drawings in chapters 11 and 15 take each variable's title; Civic Line icon CL-026 keeps its approved name (DR-144). Decisions file saved.
 - 18:48 UTC. **Guide words final** ("Fix round"), with the editor's S06, S37 and S42 curl the one change still to land. S12's rows and fold and sketch 14.124's pair set in the decisions file; S12's scroll figures corrected to 468 and 62.
 - 18:32 UTC. Ruled: S06, S37 and S42 curl their apostrophes (printed words only, drawings byte-identical); S12's column figure is 558 px. "Guide words final" follows the editor's change.
 - 18:31 UTC. **B2-M6 confirmed** on the 18:25 run but for two builder items (reply `item` keys added at 18:30; count captions to print). All my fix round items are in.
@@ -68,6 +69,10 @@ The main session's final strict build measures S73 at 13,263 bytes as placed, ab
 ### Guide words final (18:48 UTC)
 
 No further spec change comes from me this round. The one spec change still to come is the editor's curl of S06, S37 and S42 under my 18:32 ruling: printed words only, data as stored, each drawing byte-identical by `cmp`, as S09, S10 and S21 were; if the drawings are byte-identical it needs no further sign-off, and if one moves the editor holds it. When it lands, the guide's words are final for this round.
+
+### Reply 5 revised: CL-026 keeps its approved name (19:33 UTC)
+
+At the main session's word: the loop label item and Reply 5 no longer recommend anything that renames an approved Civic Line icon (DR-144, D3-906). The recommendation is each variable's own title in every loop drawing in chapters 11 and 15, and in V7.1; CL-026 keeps "Executive unilateralism" in chapter 10's library and wherever the icon is named, so the icon's name and Variable D2's title differ where they meet; renaming the icon would change a settled element and need Dustin's own named approval, which the studio does not ask for. Read from both sides: the change removes verdict words from loop drawings whichever side a label would charge, and it leaves the icon as Dustin set it. The V7.1 lede and Reply 5's line follow; DR-144 joins the item's `refs`.
 
 ### Routine calls, fix round
 
@@ -323,7 +328,7 @@ Each a targeted edit of one field, for the editor's table.
 - D3-xxx | A2 to A5 are signed off on a field-by-field comparison with the committed state before Part A (`33dc30a3`), every figure in each changed string listed old and new, and a `cmp` of all 125 data files | "No figure changes" is checked by script, not by reading
 - D3-xxx | The 15 of D3-1308's 21 atlas source lines that print nowhere stay as stored; board 2 says so | DR-257 fixes what a reader meets; a future spec that prints one takes a `snapshot_once` variant
 - D3-xxx | S12's recommendation is the stacked tile at every desk width, held in a 618 px frame that scrolls where the column is narrower; it replaces my first draft's recommendation of the 1,024 px frame | The cartographer's measure: the stacked tile fits from 618 px (a 1,104 px window), shows the whole map at 1,440 px and scrolls about 60 px at 1,024 against 468; C-M2 point 3
-- D3-xxx | The loop label question (D3-912) is recommended "yes": each variable's own title in every loop drawing in chapters 10, 11 and 15, and in V7.1 | The titles carry no verdict and need no gloss ("Executive unilateralism", "Policy tilt to insiders", "Affective polarization" do); one name per variable; the costs (longer words, CL-026's printed name) go on the board
+- D3-xxx | The loop label question (D3-912) is recommended "yes" for loop drawings in chapters 11 and 15 and for V7.1; Civic Line icon CL-026 keeps its approved name, "Executive unilateralism", in chapter 10's library and wherever the icon is named (revised 19:33 UTC) | The titles carry no verdict and need no gloss; DR-144 settled the icons and their names, so renaming CL-026 would need Dustin's own named approval, and the studio asks for none
 - D3-xxx | RL-3 is recommended off the V7.1 list | No atlas record names joint fundraising; the fact lives in the two FEC sidecars
 - D3-xxx | The issue title item asks one test for all 18 atlas titles with an effect verb, whoever the actor | DR-93; five concern the executive and thirteen do not, and a test applied to five alone would be one standard for one side
 - D3-xxx | S74's measure line and caption drop the snapshot date its grade and source lines print, and S71 prints the four constitutions' addresses in place of a studio path; both signed off before A6 | D3-1485; no studio path in reader text (H11); words only

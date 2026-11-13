@@ -1,17 +1,17 @@
 {
- "built": "2026-11-13T19:28:56.173683+00:00",
+ "built": "2026-11-13T19:33:59.466634+00:00",
  "guide_build": {
   "exit": 0,
   "bytes": 11236260,
   "rules": 344,
   "specimens": 638,
   "warnings": 0,
-  "built": "2026-11-13T19:29:08"
+  "built": "2026-11-13T19:34:10"
  },
  "decisions": {
   "file": "work/handoffs/phase-3/20261113_Board-2-Decisions.json",
   "state": "signed off",
-  "updated_utc": "2026-11-13T18:42:18Z",
+  "updated_utc": "2026-11-13T19:33:12Z",
   "schema": "board-2-decisions/1"
  },
  "preview_page": {
@@ -4108,7 +4108,7 @@
   ],
   "waiting": []
  },
- "panel_1_top_words": 201,
+ "panel_1_top_words": 213,
  "decide": {
   "items": 31,
   "questions": 2,
@@ -4116,7 +4116,7 @@
   "state": "signed off",
   "pictures_waiting": []
  },
- "panel_1_words": 5975,
+ "panel_1_words": 6056,
  "rules": {
   "14.1": {
    "plates": 2,
@@ -4602,7 +4602,7 @@
   ]
  },
  "tested": {
-  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 19:29 UTC, with exit 0, no warnings, 11,236,260 bytes, 344 rules and 638 examples placed",
+  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 19:34 UTC, with exit 0, no warnings, 11,236,260 bytes, 344 rules and 638 examples placed",
   "Quick guide check": "run by the main session on a copy of its strict build of 11,236,260 bytes at 1440 and 390 px, with 694 drawn examples, 3,296 same-page links and no failures",
   "Links to the guide preview": "183 links to 128 entries, each anchor read by this board’s build on the page published as version 9, 183 of 183 found",
   "The kit’s build of every chart": "run by this board’s build at the widths the guide draws and at every whole width from 256 px, with 84 of 84 charts passing with no fault and no warnings",
@@ -4628,11 +4628,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-3/board-2/20261113_Board-2.html",
- "html_bytes": 1046788,
+ "html_bytes": 1047251,
  "images": 314,
  "image_bytes": 40707016,
  "folder_files": 318,
- "folder_bytes": 41956844,
+ "folder_bytes": 41957319,
  "largest_image": [
   496612,
   "20261113_Form-S37-Grayscale.webp"
@@ -5033,6 +5033,7 @@
   "D3-946",
   "D3-98",
   "D3-998",
+  "DR-144",
   "DR-213",
   "DR-229",
   "DR-234",
@@ -5182,8 +5183,8 @@
  ],
  "notes": [],
  "warnings": [],
- "seconds": 19,
- "words": 61963,
+ "seconds": 16,
+ "words": 62045,
  "check": {
   "page": {
    "failures": [
