@@ -72,7 +72,6 @@
       // one size for every name: the label size where every name fits its column, else the tick size
       var fits = function () { return c.rows.every(function (r) { return !!size_of(r, ws[col(r)]); }); };
       if (wide) { share(); if (!fits()) { role = ['tick']; share(); if (!fits()) wide = false; } }
-      if (globalThis.OA_DBG) { var tab = {}; c.rows.forEach(function (r) { tab[r[ek]] = [118, 126, 134, 142, 150, 160, 170, 180, 200, 220].map(function (w) { var s = size_of(r, w); return w + ':' + (s && s.h); }).join(' '); }); globalThis.OA_DBG.push(tab); }
       var heading = function (x, yb, words, max) { return c.text(x, yb, words, { role: 'label', weight: 700, max: max }); };
       if (wide) {
         // column heads, then each band under its heading, set in the first column's width so a line of authority clears it
