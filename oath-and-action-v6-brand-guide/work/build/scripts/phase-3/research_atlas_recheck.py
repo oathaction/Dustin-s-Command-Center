@@ -438,7 +438,7 @@ def table_md(data, rows, tot_p0, tot_re, tot_conf, changed, model_ok, id_changed
     rec = [r for r in rows if r[3]]
     notrec = [r for r in rows if not r[3]]
     n_rec_p0 = sum(r[1] for r in rec)
-    n_not = sum(r[1] for r in notrec)
+    n_not = tot_p0 - tot_re  # families not recorded, and the Circuit's 18
     rfp = data['reviewed_false_positives_found_again']
     L = []
     w = L.append
@@ -489,14 +489,15 @@ def table_md(data, rows, tot_p0, tot_re, tot_conf, changed, model_ok, id_changed
         v7s = FAM[r[0]].get('v7_side')
         w(f'| {r[0]} | {r[1]:,} | {r[2]} | {r[3]:,} | {r[4]} | {r[5]} | ' +
           (f'yes, {sum(v7s)} of {len(v7s)} values' if v7s else 'none recorded') + ' |')
-    w(f'| **Total** | **{tot_p0:,}** | **2** | **{tot_re:,}** | **{tot_conf}** | {n_rec_p0:,} rerun; {n_not:,} not | |')
+    w(f'| **Total** | **{tot_p0:,}** | **2** | **{tot_re:,}** | **{tot_conf}** | {tot_re:,} rerun; {n_not:,} not | |')
     w('')
     w('## Conflicts today')
     w('')
     for r in rows:
         for c in FAM[r[0]]['conflicts']:
-            w(f'- {r[0]}: {c["item"]}, shown {c["shown"]}, V7 today {c["v7_today"]}. Phase 0 found the same (its findings, '
-              'Ledger reform counts; Phase 0 table rows on D03 and D04).')
+            same = r[0] == 'Concepts V2 Ledger rows' and c['item'] in ('D03 reforms', 'D04 reforms')
+            w(f'- {r[0]}: {c["item"]}, shown {c["shown"]}, V7 today {c["v7_today"]}. ' +
+              ('Phase 0 found the same (its findings, the Ledger’s reform counts for D03 and D04).' if same else 'NEW since Phase 0.'))
     w('')
     w(f'Flags set aside as in Phase 0 ({len(rfp)}): ' + '; '.join(f'{x["item"]} "{x["shown"]}" in {x["file"].split("/")[-1]} ({x["why"]})' for x in rfp) + '.')
     w('')
