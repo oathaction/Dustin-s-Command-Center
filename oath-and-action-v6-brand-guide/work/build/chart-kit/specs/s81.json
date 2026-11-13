@@ -13,7 +13,7 @@
  "evidence_label": "Finding",
  "grade_line": "Documented: a Census Bureau survey, five years of responses pooled, with its published margins of error",
  "title": "Median household income was $80,000 or more in 585 counties and under $50,000 in 371 over 2020 to 2024, when the nation’s was $80,734.",
- "measure_line": "Median household income in each county, in 2024 dollars, from five years of survey responses, 2020 to 2024, every county in the 50 states and the District of Columbia, in four classes, with the United States above the map.",
+ "measure_line": "Median household income by county, in 2024 dollars, from five years of survey responses, 2020 to 2024, 50 states and DC, in four classes, with the nation above the map.",
  "notes": [
   "More than half the counties, 1,707 of 3,143, sit close enough to a class line that their margin of error could put them in the next class, and 182 two classes away, so the map shows a broad pattern and ranks no county.",
   "The Census Bureau publishes no estimate for De Baca County, New Mexico, which is left unshaded. Connecticut’s counties are its nine planning regions.",
@@ -24,7 +24,7 @@
  "illustrative": false,
  "alt": "A map of every county shaded in four classes by median household income. The top class, $80,000 or more, holds 585 counties, many around large cities and on the coasts; the lowest, under $50,000, holds 371, many in the rural South. The nation’s median was $80,734.",
  "table": {
-  "caption": "Counties by median household income class, by state, 2020 to 2024",
+  "caption": "Counties by income class, by state, 2020 to 2024",
   "columns": [
    {
     "field": "name",
