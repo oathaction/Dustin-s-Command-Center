@@ -6,7 +6,8 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the UX
 
 - 20:39 UTC: started (clock read).
 - **20:53 UTC: "Interaction specification" WRITTEN** for the engineer and the systems designer (Rules 15.19 and 15.20, with what holds for 15.21). It is written for any loop and any two to five reforms, so it holds whatever the data lead rules under (f); the two key paths take the ruled IDs and step count once (f) lands.
-- Next: R4-3's card text order and R4-4's social card with the engineer, once its contracts are written; then the tests of 15.19, 15.20, the cards and S95 as built.
+- **20:56 UTC: "Cards as HTML text (R4-3): the reading order" and "The social card (R4-4)" WRITTEN**, ahead of the engineer's R4-3 and R4-4 contracts, which govern the elements; I read those contracts when they land and reconcile.
+- Next: the tests of 15.19, 15.20, the cards and S95 as built, when the owners report.
 
 ## Summary
 
@@ -214,6 +215,40 @@ No control in either plate (R4-5). The correct plate is a still drawing of the m
 ### 5. What I test once they are built
 
 At 1440, 390 and 320 px, light ground, with the keyboard alone and Chromium's accessibility tree (Playwright's snapshot): the Tab order and every key above; focus visible and never covered by the sticky masthead (2.4.11); the status line's words after each press; the roles, names and states in the tree; reduced motion (pace kept, nothing moving); scripts off (Playwright with JavaScript disabled); print emulation; forced colors, dark and light; text at 200 percent; 320 px reflow; the ring's ground; axe-core over the plates. No screen reader runs in this container, so what NVDA, VoiceOver or TalkBack say goes under "Not tested".
+
+## Cards as HTML text (R4-3): the reading order
+
+For the engineer's R4-3 contract and the infographics maker's four card forms (comparison cards S91, by the numbers S90, step-by-step S92, calendar S94). Written before the contract, so the engineer's "Contracts" governs the elements and classes; this section sets what a screen reader, a keyboard and a reader at 200 percent must get from them. The two forms that stay drawings (the process explainer S89 and the annotated illustration S93) take the last two items.
+
+**For every card form.**
+1. **The words stay out of any `role="img"`.** The kit draws its SVG as `role="img"` with a `title` and `desc`, and a picture's children are not read. A card's words sit as HTML in the figure, beside or around any SVG, never inside it. An SVG mark that carries data keeps its own name, or is `aria-hidden` where the HTML text beside it states the same value.
+2. **The DOM order is the reading order, at every width.** Grid and flex lay the cards out with no `order`, no `row-reverse` or `column-reverse`, no `grid-auto-flow: dense`, and no words placed by `position: absolute`. A reader who moves by line, by Tab or by a screen reader's list keys meets each card whole, in the order the eye takes at 1440 px (left to right, then down) and at 390 px (down).
+3. **The figure keeps its order:** evidence word and grade, title, measure line, reading guide, then the cards, then the notes, the source and the table equivalent (C7), as `K.figure` writes it now.
+4. **Lists, not boxes.** A set of cards, facts or steps is a list: `ol` where order means something (steps, dates), `ul` where it does not (cards, facts). Each list keeps `role="list"` where its CSS sets `list-style: none`, since Safari then drops the role. A card's fields are a `dl`, a term and its value, in the same order on every card. No heading inside a plate (the structure check): a card's name is a `p`.
+5. **The alt is short.** The words are live, so the figure's description (`oac-alt`) names the form and its finding in a sentence or two and does not repeat the cards, or a screen reader hears every word twice. A card form that draws no SVG at all needs no "This chart needs JavaScript" line: its words are written at build and read with scripts off.
+6. **Live text a reader can find and copy.** No word in CSS `content` (a step's number from a list counter is the one exception), no `user-select: none`, no words drawn as SVG paths. A number keeps its unit with a no-break space ("$39.2&#160;billion", "20&#160;days").
+7. **Reflow and 200 percent.** One card a row at 390 and 320 px, no fixed height on any box of words, no `white-space: nowrap` on a label or a value (a typed chip or a number with its unit may stay whole), nothing clipped at `html { font-size: 200% }`. Every size on the type scale (the type check reads HTML text inside a stage).
+8. **Edges, not fills, mark a card.** A card's edge is a border, so it holds in forced colors and in print, where backgrounds drop. Text at 4.5 to 1 against the card's own fill. In print each card keeps whole (`break-inside: avoid`).
+9. **The table equivalent stays**, from the same rows, folded as now. It may repeat the cards, which is its job.
+
+**Each form.**
+- **Comparison cards (S91).** One `li` per kind of judge, in the order the cards stand: its name, then a `dl` of the same fields in the same order (who appoints, with whose consent, for how long, what cases, how many seats, who sets the number). A reader hears card by card; the table lets a reader compare field by field. The territorial courts' four named in the card's words, not in a mark alone.
+- **By the numbers (S90).** One `li` per fact, in reading order. The figure and its words in one sentence in one block, so a screen reader says "$39.2 billion in COVID-19 relief", never the number alone and the words after a pause; the table it comes from on a line of its own after it.
+- **Step-by-step (S92).** An `ol`, one `li` per step, its number visible and matching any drawn number; each step's action, then its limit in law, then its section. A branch ("If the agency says no") is a step of its own or a nested `ol`, never a drawn arrow alone. Connectors between steps are `aria-hidden`.
+- **Calendar (S94).** If it draws a month grid, the grid is a picture (`aria-hidden`, or `role="img"` with a short name), since a grid of 31 numbers read in turn says nothing. The live words are an `ol` of the marked dates in date order, each with a `time` element (`datetime="2027-02-01"`), its weekday, what the law sets, and in words whether it is a deadline with a consequence in law or a target (the file's `kind` and `consequence`), never by a mark's shape or color alone.
+- **Process explainer (S89), a drawing.** Its text equivalent (the alt and the table) runs in the order of the process, each step naming its actor in words first, then the action, then its limit in law; each branch named. An icon beside an actor carries `aria-hidden`, since its word stands beside it (Rule 10.6).
+- **Annotated illustration (S93), a drawing.** The redrawn page is a picture with a short name; the callouts' words run in the order the parts sit on the page, top to bottom, each numbered as on the drawing, naming the part and quoting the page's own words.
+
+## The social card (R4-4)
+
+For the engineer and the infographics maker, on S95's two crops (1080 by 1350 and 1080 by 1080, DR-268).
+
+1. **In the guide, a picture with its words beside it** (Rule 19.4). The card shows at the column's width as a picture of the image a post carries, with its true size stated. Beside it, as live text a reader can copy: the words the post carries and the alt text to post with the image. The alt says the finding in one or two sentences, as S19's does (the highest and lowest states with their rates, and the all-states line), never "image of" and never the card's words in full.
+2. **The full list is one step away in text.** The card labels only Mississippi and Massachusetts and the all-states line, so the plate keeps the kit's table equivalent with all 50 states, from S19's frozen rows. The card's own line that says each dot is a state names where the full list is, in words a reader of the post can act on.
+3. **Type at feed scale.** A 1080 px card shows at about 390 px on a phone, about 0.36 of its size. Its smallest words therefore stand at 36 px or more at true size, so they read at 13 px in a feed, the guide's floor; the title larger. Today's `social-data-card` module draws the inner form with the inner form's own sizes (ticks near 13 px at true size, under 5 px in a feed). The engineer's contract sets the card's sizes, and the type check reads them at the card's own scale (the stage's `data-scale`).
+4. **Contrast at true size.** Words at 4.5 to 1, or 3 to 1 at 24 px and up (18.66 px bold); every dot and the all-states line at 3 to 1 against the card's ground (1.4.11); the two named states in the subject ink, so they differ from the other dots by more than color: a larger dot or a ring, and their labels.
+5. **The PNG.** Exported at true pixels (1080 by 1350 and 1080 by 1080), its file name dated and descriptive (Rule 18.14), and the guide's download names its size. A PNG holds no alt, so the alt text sits beside the download as the words to paste.
+6. **No motion, no control** on the card.
 
 ## Routine calls
 

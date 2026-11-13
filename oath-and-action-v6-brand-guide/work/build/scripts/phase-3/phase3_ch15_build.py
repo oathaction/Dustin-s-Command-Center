@@ -109,17 +109,15 @@ def short(code):
     return node(code)["title"]
 
 
-# The data lead's RF-16 and RF-16a (BC S4, D3-893): the atlas names these four core variables two ways, a chain label inside
-# its loop records ("Executive unilateralism", "Congressional capacity") and its own title on the variable's record
-# ("Presidential action without new legislation"). A loop drawing quotes the loop's chain and keeps the chain label; a
-# drawing outside any loop (an authority diagram, a single connection) prints the variable's own title.
+# The data lead's RF-16 and RF-16a (BC S4, D3-893) gave these four core variables their own titles outside a loop; DR-265
+# (November 13, 2026) gives every variable its own title in every drawing, a loop's included, so TWO_NAMES stays only to
+# hold the atlas's two names for them, which the V7.1 list asks the atlas to make one.
 TWO_NAMES = {"D1", "D2", "D4", "D6"}
 need(all(LOOP_NAME.get(c) and LOOP_NAME[c] != node(c)["title"] for c in TWO_NAMES), "the atlas no longer names D1, D2, D4 and D6 two ways")
 
 
 def own(code):
-    """A variable's label in a drawing outside any loop: its own title for the four the atlas names two ways (RF-16),
-    else DR-185's short name."""
+    """A variable's label in a drawing outside any loop: its own title (RF-16, then DR-265 for every variable)."""
     return node(code)["title"] if code in TWO_NAMES else short(code)
 
 
@@ -446,7 +444,7 @@ def rows_of(label, width):
 
 
 class Pill:
-    """A variable as a pill with its short name inside (System 1's station_block, DR-36), or a thin pill for a station
+    """A variable as a pill with its own title inside (System 1's station_block, DR-36), or a thin pill for a station
     that is no numbered variable (a conceptual loop's)."""
 
     def __init__(self, label, cx, cy, pw=PW, thin=False, cls="", red=False, shared=False):
@@ -589,7 +587,7 @@ def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None, targets
     the bottom, as two_loop draws a two-variable loop; steps 2 and 4 run straight down the right and up the left, each on
     its pills' flat edges near their inner ends, with its words outside the loop, so the loop's ID sits clear between
     them. inside is (loop ID, kind); inside_rows sets words of a failure plate's own on two rows; targets and shared as
-    two_loop takes them; labels overrides the short names (a failure plate's own words). Returns (body, h)."""
+    two_loop takes them; labels overrides the titles (a failure plate's own words). Returns (body, h)."""
     labels = labels or [short(c) for c in codes]
     (w0, w1), (w3, w2) = pair_w(labels[0], labels[1]), pair_w(labels[3], labels[2])
     pw = [w0, w1, w2, w3]
@@ -860,7 +858,7 @@ def opener(book):
             + numeral(4, xa - 20, a.bot + 30) + numeral(5, W / 2 - 4, fy) + numeral(6, W / 2 + 64, run2 + 20))
     total = ec.bot + 4
     svg = svg_wrap(body + f'<g class="wr">{m}</g>' + lab + fr + ec.svg() + nums, total)
-    parts = [("A variable, by its short name", "15.2"), ("A sign tag and the word for which way", "15.3"),
+    parts = [("A variable, by its own title", "15.2"), ("A sign tag and the word for which way", "15.3"),
              ("The loop’s number and kind", "15.6"), ("Authority, with no sign", "15.5"),
              ("A boundary between layers", "15.9"), ("A dashed line for a plausible step", "13.4")]
     lst = "".join(f"<li>{C13.mk(LETTERS[n - 1])} {e(w)}, Rule {r}</li>" for n, (w, r) in enumerate(parts, 1))
@@ -870,10 +868,10 @@ def opener(book):
                      f'{steps}<p class="k">What each lettered part says</p><ol class="kw hg">{lst}</ol>'
                      + src("loop R13 and connections L11, L12 and LE02")))
     book.add("s-15-opener", body, rule=None, readable=True, wide=True,
-             alt=(f"Loop R13 from our systems atlas, “{lp['title']}”, drawn as two pills, Congressional capacity and Executive "
-                  "unilateralism, with an arrow over the top marked minus, lowers, and one under the bottom marked minus, lowers, "
+             alt=(f"Loop R13 from our systems atlas, “{lp['title']}”, drawn as two pills, {short('D1')} and "
+                  f"{lc(short('D2'))}, with an arrow over the top marked minus, lowers, and one under the bottom marked minus, lowers, "
                   "drawn dashed. The loop’s name and the word reinforcing sit inside it. A line with an open diamond and the word "
-                  "decides runs from Congressional capacity down across a rule into the economy layer, to Public investment in "
+                  f"decides runs from {lc(short('D1'))} down across a rule into the economy layer, to Public investment in "
                   "research and infrastructure. Six letters, A to F, tie the parts to a list: a variable, Rule 15.2; a sign tag "
                   "and its word, Rule 15.3; the loop’s number and kind, Rule 15.6; authority with no sign, Rule 15.5; a boundary "
                   "between layers, Rule 15.9; a dashed line for a plausible step, Rule 13.4."),
@@ -1050,8 +1048,8 @@ def rule_15_1(book):
                      ra_p(read_aloud(["E1", "D4"], lp["links"])) + f'<p class="k">What the drawing holds</p>{words}'
                      + src("loop B1a and connections L17 and L16")))
     book.add("s-15-1-correct", body, rule="15.1", readable=True, wide=True,
-             alt=(f"Loop B1a from our systems atlas, “{lp['title']}”, drawn as two pills of one size, Policy tilt to insiders "
-                  "and Oversight and enforcement. Step 1, dashed, runs over the top with a plus tag and the word raises; step 2, "
+             alt=(f"Loop B1a from our systems atlas, “{lp['title']}”, drawn as two pills of one size, {short('E1')} "
+                  f"and {lc(short('D4'))}. Step 1, dashed, runs over the top with a plus tag and the word raises; step 2, "
                   "solid, runs under the bottom with a minus tag and the word lowers. Both lines are 2 px. Beside it, three notes "
                   "say every connection draws at 2 px, both variables take the same pill, and nothing in the drawing measures."),
              notes="Lines by the atlas build's wire_marks at 2 px with the 28 px lead-in; pills sized only by their labels.")
@@ -1059,8 +1057,8 @@ def rule_15_1(book):
     fb, fh, _ = two_loop(["E1", "D4"], lp["links"], inside=("B1a", "balancing"), widths={1: 6}, scale=[1.2, 1.0])
     fail = dnp() + hed("Loop", "B1a", lp["title"]) + fig(svg_wrap(fb, fh))
     book.add("s-15-1-failure", fail, rule="15.1",
-             alt=(FC + "Loop B1a with its second step drawn 6 px thick, three times the first, and the pill for Policy tilt "
-                  "to insiders drawn larger than the other, with no key to say what the width or the size measures."),
+             alt=(FC + "Loop B1a with its second step drawn 6 px thick, three times the first, and the pill for "
+                  f"{lc(short('E1'))} drawn larger than the other, with no key to say what the width or the size measures."),
              notes="Labeled failure: width and size used as if they measured strength, with no measure behind them and no key.")
     return {
         "id": "15.1",
@@ -1105,7 +1103,6 @@ def rule_15_2(book):
     need(split == ["D6"], f"the variables whose type and plain kind disagree changed: {split}")
     kinds = Counter(n["type"] for n in NODE.values())
     need(kinds == Counter({"stock": 31, "flow": 9, "auxiliary": 6, "driver": 5}), f"the atlas's kinds changed: {dict(kinds)}")
-    from_loops = sum(1 for c in NODE if c in LOOP_NAME)
     need(GLOSS["Variable"].startswith("A quantity or condition in the model that can rise or fall."), "the atlas's definition of a variable changed")
     cards = []
     for c, _ in picks:
@@ -1113,17 +1110,15 @@ def rule_15_2(book):
         p.cy = p.h / 2 + 2
         svg = svg_wrap(p.svg(), p.h + 4, w=174)
         n = node(c)
-        cards.append(f'<div class="vc">{svg}<p class="hed">{chip("Variable", c)}<span>{e(n["title"])}</span></p>'
+        cards.append(f'<div class="vc">{svg}<p class="hed">{chip("Variable", c)}</p>'
                      f'<p class="sub">{e(kind_word(c))}</p><p class="nt">{e(n["increase_means"])}</p></div>')
     need(174 <= TRI, "a variable's card is wider than a column of three")
     body = f'<div class="fx tri">{"".join(cards)}</div>' + src("variables B3, B1 and C3")
     book.add("s-15-2-correct", body, rule="15.2", readable=True, wide=True,
-             alt=("Three variables from our systems atlas, each drawn as a pill with its short name, then its typed chip and "
-                  "title, its kind and the atlas’s sentence on a higher value. "
-                  + " ".join(f"Variable {c}, {node(c)['title']}, short name {short(c)}: {kind_word(c)}. {node(c)['increase_means']}"
-                             for c, _ in picks)),
-             notes="Short names by DR-185's rule, read from the loops that hold each variable; kinds and sentences from each "
-                   "variable's own record.")
+             alt=("Three variables from our systems atlas, each drawn as a pill with its own title, then its typed chip, "
+                  "its kind and the atlas’s sentence on a higher value. "
+                  + " ".join(f"Variable {c}, {short(c)}: {kind_word(c)}. {node(c)['increase_means']}" for c, _ in picks)),
+             notes="Names are each variable's own title (DR-265); kinds and sentences from each variable's own record.")
     for c, d in (("B3", "D10"), ("B1", "D03"), ("C3", "D02")):
         book.log("15.2 correct", f"Variable {c}", d)
     l44 = link("L44")
@@ -1132,7 +1127,7 @@ def rule_15_2(book):
     fb, fh, _ = card("C4", "B5", "L44", labels=(short("C4"), "Turnout"))
     fail = dnp() + fig(svg_wrap(fb, fh))
     book.add("s-15-2-failure", fail, rule="15.2",
-             alt=(FC + "A connection from Incumbent control of election rules, with a minus tag and the word lowers, into a pill "
+             alt=(FC + f"A connection from {lc(short('C4'))}, with a minus tag and the word lowers, into a pill "
                   "labeled Turnout, with no chip, no kind and no sentence on what a higher value means."),
              notes="Labeled failure: B5's pill cut to one word, so its minus sign reads as fewer voters.")
     return {
@@ -1140,8 +1135,9 @@ def rule_15_2(book):
         "title": "Name each variable, its kind and what a higher value means.",
         "rule": [
             f"Our systems atlas defines a variable as “{GLOSS['Variable'].split('.')[0].lower()}”. Draw each one as a pill "
-            "holding its short name, the name the atlas gives it on its loops, or its title where it sits in no loop. The first "
-            "time a reader meets it, give its typed chip, its kind in words and the atlas’s own sentence on what a higher value means.",
+            "holding its own title, the name on its record, in every drawing, a loop’s among them, so it carries one name "
+            "wherever it appears. The first time a reader meets it, give its typed chip, its kind in words and the atlas’s own "
+            "sentence on what a higher value means.",
             f"Of its {len(NODE)} variables, {kinds['stock']} are stocks, amounts built up over time, and "
             f"{words_n(kinds['flow'])} are flows, amounts per period. {words_n(kinds['auxiliary']).capitalize()} are conditions "
             f"the atlas calls auxiliary, worked out from other variables. The other {words_n(kinds['driver'])} are outside "
@@ -1157,10 +1153,10 @@ def rule_15_2(book):
                                "kind and the atlas’s sentence on what a higher value means."},
         "failure": {"specimen": "s-15-2-failure",
                     "caption": "<strong>Fails Rule 15.2.</strong> Variable B5 is cut to Turnout, with no kind and no sentence, "
-                               "so its minus sign reads as fewer voters. The atlas’s variable is turnout equality, and the sign "
+                               f"so its minus sign reads as fewer voters. The atlas’s variable is {lc(short('B5'))}, and the sign "
                                "says the gap between income groups widens."},
         "specs": [
-            {"label": "Short name", "value": f"The atlas’s name on the loops that hold the variable ({from_loops} of {len(NODE)}), or its title ({len(NODE) - from_loops})"},
+            {"label": "Name", "value": f"The variable’s own title, for all {len(NODE)}, never the shorter label a loop’s record lists for a step"},
             {"label": "Label", "value": f"15 px, semibold, wrapped inside the pill with {PAD} px at each end", "token": "oa.chart.type.label"},
             {"label": "Kind", "value": "Stock, flow, condition or outside driver, in words, from the variable’s type and its plain description; "
                                        "where the two disagree, as for Variable D6, no kind, since the atlas lists the question for its next version"},
@@ -1168,8 +1164,8 @@ def rule_15_2(book):
             {"label": "Chip", "value": "Variable and the ID, as Rule 13.9 sets"},
         ],
         "related": ["10", "13", "18"],
-        "builders": ["Read the short name from the loops that hold the variable, and its kind and its higher-value sentence from "
-                     "its own record. Print the sentence as the atlas writes it."],
+        "builders": ["Read the name, the kind and the higher-value sentence from the variable’s own record, and stop the build "
+                     "if a drawing prints the shorter label a loop’s record lists for it. Print the sentence as the atlas writes it."],
     }
 
 
@@ -1193,7 +1189,7 @@ def rule_15_3(book):
     book.add("s-15-3-correct", body, rule="15.3", readable=True, wide=True,
              alt=(f"Two connections from our systems atlas. Connection L46 runs from Hostility toward the other party to Exposure "
                   f"to hostile political content, with a plus tag and the words information, raises; its sentence reads: "
-                  f"{l46['sign_meaning']} Connection L16 runs from {own('D4')} to Policy tilt to insiders, with a "
+                  f"{l46['sign_meaning']} Connection L16 runs from {own('D4')} to {lc(short('E1'))}, with a "
                   f"minus tag and the word lowers; its sentence reads: {l16['sign_meaning']} A key says plus raises, the two move "
                   "the same way; minus lowers, they move in opposite directions; and quotes the atlas: a positive sign does not mean a benefit."),
              notes="Sentences on each sign from the connections' own records; the key's last line from the atlas glossary.")
@@ -1503,7 +1499,7 @@ def rule_15_7(book):
     body = f'<div class="fx pr"><div>{col1}</div><div>{col2}</div></div>' + src("loops R16 and B3")
     book.add("s-15-7-correct", body, rule="15.7", readable=True, wide=True,
              alt=(f"Two loops from our systems atlas with their closure in words beside their grade. Loop R16, “{r16['title']}”, "
-                  "labeled Hypothesis: a solid step from Local news supply to Electoral pressure, and a dotted step back that "
+                  f"labeled Hypothesis: a solid step from {lc(short('B2'))} to {lc(short('C3'))}, and a dotted step back that "
                   f"closes it; the words read Closes through a hypothesis. Loop B3, “{b3['title']}”, labeled Well supported: "
                   "three thin pills, Excess profits, Entry and Competitive pressure, joined by hollow lines with their signs; the "
                   "words read No numbered chain, its three stations sit outside the atlas’s numbered variables."),
@@ -1603,16 +1599,16 @@ def rule_15_8(book):
             + beside(fig(svg), ra_p(ra) + f'<p class="k">Carry the sign along</p>{words}'
                      + src("connections LE12, LE14 and L37, and the atlas’s model conventions")))
     book.add("s-15-8-correct", body, rule="15.8", readable=True, wide=True,
-             alt=(f"An open chain from our systems atlas, drawn downward: Policy tilt to insiders, a minus tag and the words money, "
-                  f"lowers, into Net support from taxes and public benefits, framed as the economy layer, then a plus tag and the "
-                  f"words money, raises, into Household security. On the right, connection L37 runs from Policy tilt to insiders "
-                  f"straight to Household security with a minus tag and the words money, lowers. The chain reads: {ra} Beside it, "
+             alt=(f"An open chain from our systems atlas, drawn downward: {short('E1')}, a minus tag and the words money, "
+                  f"lowers, into {short('EC6')}, framed as the economy layer, then a plus tag and the "
+                  f"words money, raises, into {lc(short('A4'))}. On the right, connection L37 runs from {lc(short('E1'))} "
+                  f"straight to {lc(short('A4'))} with a minus tag and the words money, lowers. The chain reads: {ra} Beside it, "
                   "notes say the chain carries one minus sign, so the end moves opposite to the start, and the core map’s arrow agrees."),
              notes="Signs carried along the chain by script and checked against connection L37 (the atlas's convention).")
     book.log("15.8 correct", "Connections LE12, LE14 and L37, taxes and benefits", "D08")
     fail = dnp() + fig(chain_plate("+"))
     book.add("s-15-8-failure", fail, rule="15.8",
-             alt=(FC + "The same chain with a summary arrow on the right from Policy tilt to insiders to Household security "
+             alt=(FC + f"The same chain with a summary arrow on the right from {lc(short('E1'))} to {lc(short('A4'))} "
                   "drawn with a plus tag and the word raises, the sign of the chain’s last step."),
              notes="Labeled failure: the chain's answer read from its last step.")
     return {
@@ -1628,14 +1624,14 @@ def rule_15_8(book):
         ],
         "tokens": [TOKEN_LINE],
         "why": {"text": ["A reader who takes the last step’s sign as the chain’s answer will often get it backward. Here the "
-                         "last step raises household security, and the chain as a whole lowers it, as the core arrow says."],
+                         f"last step raises {lc(short('A4'))}, and the chain as a whole lowers it, as the core arrow says."],
                 "basis": "Our systems atlas’s model conventions"},
         "correct": {"specimen": "s-15-8-correct",
                     "caption": "An open chain from our systems atlas through its economy layer, read with its signs carried "
                                "along, beside connection L37, the core map’s one arrow for the same path."},
         "failure": {"specimen": "s-15-8-failure",
                     "caption": "<strong>Fails Rule 15.8.</strong> The summary arrow takes the last step’s plus, so the chain reads "
-                               "as raising household security. One minus sign along the way turns it, as connection L37 says."},
+                               f"as raising {lc(short('A4'))}. One minus sign along the way turns it, as connection L37 says."},
         "specs": [
             {"label": "Direction", "value": "One way, first variable to last; an open chain never bends back into a loop"},
             {"label": "Combined sign", "value": "An even count of minus signs for the same direction, odd for the opposite"},
@@ -1703,9 +1699,9 @@ def rule_15_9(book):
     book.add("s-15-9-correct", body, rule="15.9", readable=True, wide=True,
              alt=("A drawing from our systems atlas in three bands. At the top, outside every frame, Foreign interference, marked "
                   "outside driver. A line marked information, raises crosses into a frame named Core layer, Political inputs, "
-                  "holding Hostile-content exposure. Below it a frame named Technology layer holds How platforms rank feeds and "
-                  "seek attention, and a line marked information, raises runs up from it across both frames into Hostile-content "
-                  "exposure. Each frame breaks where a line crosses it."),
+                  f"holding {short('B6')}. Below it a frame named Technology layer holds How platforms rank feeds and "
+                  f"seek attention, and a line marked information, raises runs up from it across both frames into "
+                  f"{lc(short('B6'))}. Each frame breaks where a line crosses it."),
              notes="Frames 1 px in the strong border color, broken 7 px each side of a crossing; layers and clusters from the atlas's layers record.")
     book.log("15.9 correct", "Variables X4, B6 and TC1, hostile content", "D01")
     fail = dnp() + fig(layers_plate(failure=True))
@@ -1732,7 +1728,7 @@ def rule_15_9(book):
                          "from 2026 to 2036."],
                 "basis": "Our systems atlas’s layers, boundary and glossary"},
         "correct": {"specimen": "s-15-9-correct",
-                    "caption": "Foreign interference outside every frame, Hostile-content exposure in the core layer’s cluster B, "
+                    "caption": f"Foreign interference outside every frame, {lc(short('B6'))} in the core layer’s cluster B, "
                                "and feed ranking in the technology layer, with each frame broken where a connection crosses it."},
         "failure": {"specimen": "s-15-9-failure",
                     "caption": "<strong>Fails Rule 15.9.</strong> Foreign interference sits inside the model’s frame as one more "
@@ -1783,7 +1779,7 @@ def rule_15_10(book):
                      panel + src("connection LT01, rejected connection LTR1 and connection L47")))
     book.add("s-15-10-correct", body, rule="15.10", readable=True, wide=True,
              alt=(f"Connection LT01 from our systems atlas, “{link('LT01')['name']}”, drawn from How platforms rank feeds and seek "
-                  "attention, in the technology layer, down to Hostile-content exposure, in the core layer, with the words "
+                  f"attention, in the technology layer, down to {lc(short('B6'))}, in the core layer, with the words "
                   f"information, raises. Beside it, under the heading Reviewed and not drawn, the claim from feed ranking to "
                   f"hostility toward the other party, with the atlas’s reason: feed ranking changes what people see; then, quoted, "
                   f"{quote} {tail_txt}"),
@@ -1794,7 +1790,7 @@ def rule_15_10(book):
     fail = dnp() + fig(svg_wrap(fb, fh))
     book.add("s-15-10-failure", fail, rule="15.10",
              alt=(FC + "A dashed line marked information, raises, from How platforms rank feeds and seek attention down to "
-                  "Affective polarization, a connection the atlas reviewed and left off its map."),
+                  f"{lc(short('B4'))}, a connection the atlas reviewed and left off its map."),
              notes="Labeled failure: a line drawn for a rejected connection, in the plausible pattern.")
     return {
         "id": "15.10",
@@ -1918,10 +1914,10 @@ def rule_15_11(book):
             + beside(hed("Loop", "R4a", lp["title"]) + fig(svg) + under, words))
     book.add("s-15-11-correct", body, rule="15.11", readable=True, wide=True,
              alt=(f"Reform R-03 from our systems atlas, “{r['title']}”, on Loop R4a, “{lp['title']}”. Three pills: "
-                  "Incumbent control of election rules at the top, Safe seats below right, Entrenched majority control below "
-                  "left. Step 1, from the top to Safe seats, is drawn heavy in red, and the outlines of Safe seats and "
-                  "Entrenched majority control are red; step 2, dashed, and step 3 stay in ink, as does Incumbent control of "
-                  "election rules. Beside it: the reform acts where the marks turn red, on one connection and two variables: "
+                  f"{short('C4')} at the top, {lc(short('C1'))} below right, {lc(short('D7'))} below "
+                  f"left. Step 1, from the top to {lc(short('C1'))}, is drawn heavy in red, and the outlines of {lc(short('C1'))} "
+                  f"and {lc(short('D7'))} are red; step 2, dashed, and step 3 stay in ink, as does {lc(short('C4'))}. "
+                  "Beside it: the reform acts where the marks turn red, on one connection and two variables: "
                   f"Connection L42, {link('L42')['name']}, documented; Variable C1, {lc(node('C1')['title'])}; Variable D7, "
                   f"{lc(node('D7')['title'])}. Its band, rules: {BANDS['rules']} Under the drawing: Variable C4, "
                   f"{lc(node('C4')['title'])}, the pill at the top, sits in the electoral competition cluster with Variable C1 "
@@ -1936,8 +1932,8 @@ def rule_15_11(book):
     fail = (dnp() + hed("Reform", "R-03", r["title"]) + fig(svg_wrap(fb, fh))
             + f'<p class="nt">Reform R-03 acts on {e(cname.lower())}.</p>')
     book.add("s-15-11-failure", fail, rule="15.11",
-             alt=(FC + "Loop R4a with every mark of the electoral competition cluster in red: Incumbent control of election "
-                  "rules, Safe seats and the step between them. Entrenched majority control stays in ink. A note reads: Reform "
+             alt=(FC + f"Loop R4a with every mark of the electoral competition cluster in red: {lc(short('C4'))}, "
+                  f"{lc(short('C1'))} and the step between them. {short('D7')} stays in ink. A note reads: Reform "
                   "R-03 acts on electoral competition."),
              notes="Labeled failure: the red set by the cluster, so a variable the reform does not target turns red and one "
                    "it does target stays in ink.")
@@ -2062,8 +2058,8 @@ def rule_15_12(book):
          "Rule 15.12's plate must lead with its two grades in the page's order (RF-21, SD-9)")
     book.add("s-15-12-correct", body, rule="15.12", readable=True, wide=True,
              alt=(f"Reform R-32 from our systems atlas, “{r['title']}”, on a chain of three pills drawn downward: Concentration "
-                  "of platforms and digital advertising, in the technology layer, then across a rule into the core layer, Local "
-                  "news supply and Electoral pressure. Both connections and the outline of Local news supply are red: money, "
+                  f"of platforms and digital advertising, in the technology layer, then across a rule into the core layer, "
+                  f"{lc(short('B2'))} and {lc(short('C3'))}. Both connections and the outline of {lc(short('B2'))} are red: money, "
                   "lowers, then information, raises. Beside it, two labels: Well supported, strong research evidence, for the "
                   f"evidence of the problem, with the atlas’s words: {pt[0]} Hypothesis, not yet tested, for the evidence for "
                   f"the remedy, with the atlas’s words: {rt_} Under the drawing, each step with its grade: "
@@ -2157,8 +2153,8 @@ def rule_15_13(book):
                      f'<p class="nt">{said}</p>' + src("loop R1 and connections L01, L02 and L03")))
     book.add("s-15-13-correct", body, rule="15.13", readable=True, wide=True,
              alt=(f"Loop R1 from our systems atlas, “{lp['title']}”, under a label reading Plausible, the grade of its least "
-                  "certain step. Three pills: Wealth concentration at the top, Money in politics below right, Policy tilt to "
-                  "insiders below left. Step 1, solid, money, raises; step 2, dashed, money, raises, marked weakest step; step 3, "
+                  f"certain step. Three pills: {short('A1')} at the top, {lc(short('B1'))} below right, "
+                  f"{lc(short('E1'))} below left. Step 1, solid, money, raises; step 2, dashed, money, raises, marked weakest step; step 3, "
                   f"solid, money, raises. The loop reads: {read_aloud(codes, lp['links'])} Beside it, each step with its grade. "
                   f"{said_alt} A key says money is what moves along each connection and raises says the next variable moves "
                   f"the same way, and that ticks count a step’s delay, {dg[0].lower() + dg[1:]}: {ticks}."),
@@ -2233,8 +2229,8 @@ def rule_15_14(book):
                      ra_p(read_aloud(codes, lp["links"])) + panel
                      + src("loop R8, its evidence note and qualification, and connection T12")))
     book.add("s-15-14-correct", body, rule="15.14", readable=True, wide=True,
-             alt=(f"Loop R8 from our systems atlas, “{lp['title']}”, under a label reading Well supported. Two pills, Housing "
-                  "scarcity and Owner home equity, with step 1 over the top, plus, raises, and step 2 under the bottom, plus, "
+             alt=(f"Loop R8 from our systems atlas, “{lp['title']}”, under a label reading Well supported. Two pills, {short('A5')} "
+                  f"and {lc(short('A6'))}, with step 1 over the top, plus, raises, and step 2 under the bottom, plus, "
                   f"raises, both solid with three delay ticks. The loop reads: {read_aloud(codes, lp['links'])} Beside it, the "
                   f"atlas’s revision as of {SNAP}. {rev_txt} {why_txt}"),
              notes="The revision and its reason quoted from the loop's evidence and qualification fields, with the snapshot date.")
@@ -2243,7 +2239,7 @@ def rule_15_14(book):
     fb, fh = drawn_loop(3, stations, [{"sign": "+", "grade": "well-supported", "delay": "L"}] * 3, inside=("R8", "reinforcing"))
     fail = dnp() + hed("Loop", "R8", lp["title"]) + fig(svg_wrap(fb, fh))
     book.add("s-15-14-failure", fail, rule="15.14",
-             alt=(FC + "Loop R8 drawn through three pills, Housing scarcity, Owner home equity and Wealth concentration, with "
+             alt=(FC + f"Loop R8 drawn through three pills, {short('A5')}, {lc(short('A6'))} and {lc(short('A1'))}, with "
                   "plus signs on every step and no date."),
              notes="Labeled failure: the loop routed through A1 with plus signs, against the atlas's revision and connection T12's minus.")
     return {
@@ -2266,7 +2262,7 @@ def rule_15_14(book):
                     "caption": "Loop R8 as our systems atlas holds it, with the atlas’s revision and its reason quoted beside "
                                f"the drawing, as of {SNAP}."},
         "failure": {"specimen": "s-15-14-failure",
-                    "caption": "<strong>Fails Rule 15.14.</strong> The drawing routes Loop R8 through wealth concentration with "
+                    "caption": f"<strong>Fails Rule 15.14.</strong> The drawing routes Loop R8 through {lc(short('A1'))} with "
                                "plus signs and prints no date. The atlas says the loop no longer depends on Variable A1, and its "
                                "connection T12 runs from home equity to the top wealth share with a minus."},
         "specs": [
@@ -2479,9 +2475,9 @@ def rule_15_16(book):
                        + (f"checked {C13.words_date(x['checked'])}" if x["checked"] else "not checked") for x in r["routes"])
     book.add("s-15-16-correct", body, rule="15.16", readable=True, wide=True,
              alt=(f"Reform R-01 from our systems atlas, “{r['title']}”, on Loop R10, “{lp['title']}”, drawn on a square: "
-                  "Safe seats, Primary decisiveness, Electoral pressure and Incumbent control of election rules. Step 1, from "
-                  "Safe seats to Primary decisiveness, and step 2, from Primary decisiveness to Electoral pressure, are drawn "
-                  "heavy in red, and the outline of Primary decisiveness is red; the other two steps and pills stay in ink. "
+                  f"{short('C1')}, {lc(short('C2'))}, {lc(short('C3'))} and {lc(short('C4'))}. Step 1, from "
+                  f"{lc(short('C1'))} to {lc(short('C2'))}, and step 2, from {lc(short('C2'))} to {lc(short('C3'))}, are drawn "
+                  f"heavy in red, and the outline of {lc(short('C2'))} is red; the other two steps and pills stay in ink. "
                   f"Beside it: Connection L08, {link('L08')['name']}, documented; Connection L25, {link('L25')['name']}, well "
                   f"supported; Variable C2, {lc(node('C2')['title'])}. Its loops: Loop R10, Loop B4 and Loop R11. Evidence of "
                   f"the problem, plausible, some evidence; for the remedy, contested, evidence disputed, each as its own label. "
@@ -2965,6 +2961,7 @@ def _strings(x, key=""):
 
 _LABELS = set(LOOP_NAME.values())
 ATLAS_STRINGS = sorted({s_ for part in (LOOP, LINK, REFORM) for s_ in _strings(part) if s_ not in _LABELS}, key=len, reverse=True)
+DR265_FAULT = {"s-15-15-failure": "Electoral pressure"}   # the plate draws it exactly once, in Loop B4's pill
 DR265_ALLOW = {"s-15-15-failure": ("named Electoral pressure in Loop B4",),
                "s-15-15-correct": ("glossary defines it as electoral pressure", "glossary defines as electoral pressure",
                                    "glossary entry for electoral pressure"),
@@ -3077,6 +3074,11 @@ def check(data, book):
         flat = " ".join(re.sub(r"<[^>]+>", " ", t_).replace("’", "'").split())
         for phrase in DR265_ALLOW.get(k.replace(" alt", ""), ()):
             flat = flat.replace(phrase, " ")
+        if k in DR265_FAULT:
+            n_ = flat.count(DR265_FAULT[k])
+            if n_ != 1:
+                fails.append(f"{k}: the fault prints {DR265_FAULT[k]!r} {n_} times, where it draws it once")
+            flat = flat.replace(DR265_FAULT[k], " ")
         for s_ in ATLAS_STRINGS:
             if s_ in flat:
                 flat = flat.replace(s_, " ")

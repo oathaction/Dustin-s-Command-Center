@@ -30,13 +30,61 @@ The owners read the four "Words for" sections directly. Each row gives the file,
 
 ## Words for maker A
 
+### First look (21:02 UTC): S85 and S86 as drafted, read only
+
+Maker A applies these until it reports finished; after that I write any still open straight in (D3-669). Each title's word count is by script; the house limit is under 30 (round 3's RS-4).
+
+| File | Field | Now | Suggested | Why |
+|---|---|---|---|---|
+| S85 | `labels.topic.words` | Worker bargaining | Worker bargaining power | Chapter 10 prints CL-050's word as "Worker bargaining power" (`s-10-list-41`, `s-10-lib-03`, `s-11-12-correct`: "Worker bargaining power, CL-050"). Rule 10.6 sets an icon beside its own word, and the data lead's (b) asks for the ID and approved name checked by script against chapter 10's register. The inventory's sheet label, "Worker Bargaining", is not the word a reader meets beside the icon in chapter 10. **For the data lead too**, since DR-266 quotes the sheet label |
+| S85 | `grade_line` | Documented: the Bureau of Labor Statistics’ count of union members, as the atlas records it | Documented: a Bureau of Labor Statistics survey, as the atlas records it on October 15, 2026 | The data lead's (c) words. The Bureau's union figures come from a survey, so "count" claims more than the evidence (W20), and the brief's call 1 puts the snapshot date once, here, with the source line taking the data lead's request R-1 variant |
+| S85 | `notes[0]` | In 1983, 20.1 percent of wage and salary workers belonged to a union. In 2025, 5.9 percent of workers in the private sector did and 32.9 percent in the public sector, 14.7 million members in all. | The share stood at 20.1 percent in 1983. In 2025 it was 5.9 percent in the private sector and 32.9 percent in the public sector, with 14.7 million members in all. | Two sentences opening on the same frame, "In 1983," and "In 2025," (W13). Figures unchanged |
+| S85 | `chart_notes[0]` | Each square stands for one worker in 100: the 10 union members are filled, in the text’s ink, and the 90 others are open. | Each square stands for one worker in 100. The 10 squares filled in the text’s ink are union members, and the 90 open squares are the rest. | Says what each kind of mark means, as a key does, and drops the passive "are filled" (W02) |
+| S85 | `title` | One in ten U.S. wage and salary workers belonged to a union in 2025. (14 words) | Stands | "One in ten" follows S01's approved "nine in ten"; record language for a documented figure (H08) |
+| S86 | `title` | Special districts are the most common kind of government in the country, 39,555 of the 90,888 the Census Bureau counted in 2022. (22) | Special districts were the most common kind of government in the country in 2022, 39,555 of the 90,888 the Census Bureau counted. (22) | A 2022 count takes the past tense, as Rule 13.2's record language does (H08); "the most common" claims no majority, as the data lead's (a) asks (39,555 of 90,837 local governments, 43.5 percent) |
+| S86 | `notes[0]` | School systems run by a state, county, city or township count with that government, so independent school districts are not every school system. | The Census Bureau counts a school system run by a state, county, city or township as part of that government, so the 12,546 independent school districts leave those systems out. | Names who counts (W02) and says what the count holds in place of what it is not (W09). 12,546 is the file's `Independent school district governments` row |
+| S86 | `chart_notes[0]`, second sentence | The federal government and the 50 states print in words, since their circles would draw under a pixel and a few pixels across. | The federal government and the 50 states print in words, since at this scale the federal government’s circle would be under a pixel across and the states’ a few pixels. | The old clause paired two sizes with two subjects a reader has to sort out |
+| S86 | `grade_line` | Documented: the Census Bureau’s 2022 count of every government in the country | Either this or the data lead's "Documented: the Census Bureau’s 2022 Census of Governments" | Both read plainly; the data lead's names the census a reader can look up, so it is the data lead's call |
+
+**S87 as drafted (21:06 UTC), read only:**
+
+| File | Field | Now | Suggested | Why |
+|---|---|---|---|---|
+| S87 | `evidence_label`, `grade_line` | Estimate; "Official statistics: the Census Bureau’s American Community Survey" | Finding; "Documented: a Census Bureau survey, with its published margins of error" | The data lead's (c) makes every round 4 title a Finding and gives S87 and S88 this grade line, so the Venn and the Euler read as one file drawn two ways. `evidence` is the data lead's key, so I name it only |
+| S87 | `title` | About 23.8 million Americans had both private and public health coverage in 2025, and 28.3 million had neither. (18) | In 2025, 23.8 million people had both private and public health coverage, and 28.3 million had neither. (17) | The survey counts the civilian noninstitutionalized population, which leaves out the military and people in institutions, so "Americans" names more than was measured (W20); the grade line and the table's margins carry the survey's doubt, so "About" is a second hedge (W16). The year leads so the sentence does not open on a figure |
+| S87 | `notes[0]` | The two circles are drawn the same size, so their areas carry no count; the chart for Rule 14.82 draws each region at its true size. | The two circles share one size, so their areas carry no count; Rule 14.82’s chart draws each region at its true size. | Drops the passive (W02) and the long way round to the cross-reference |
+| S87 | `notes[1]` | Private coverage includes plans through an employer, plans bought directly and TRICARE; public coverage includes Medicare, Medicaid and other means-tested plans, and VA care. | The Census Bureau counts plans through an employer, plans bought directly and TRICARE, the military’s health plan, as private coverage, and Medicare, Medicaid, other plans with an income limit and care from the Department of Veterans Affairs as public. | Names who sorts the plans (W02), as the sidecar says ("The Bureau counts…"); glosses TRICARE and "means-tested" at first use (H02) and spells out VA |
+| S87 | notes | (none) | A note that the four groups are Oath & Action's sums of the published counts, unless the source line's "Overlap computed by Oath & Action from the published counts; margins approximate" is the place you and the data lead settle on | The data lead's (b) for S87 asks the note to say so; the source line already does, so one place is enough |
+
 ## Words for the infographics maker
+
+### First look (21:02 UTC): S89 and S93 as drafted, read only
+
+The infographics maker applies these until it reports finished; after that I write any still open straight in (D3-669). Title word counts by script; the house limit is under 30 (round 3's RS-4).
+
+| File | Field | Now | Suggested | Why |
+|---|---|---|---|---|
+| S89 | `title` | A governor or a tribal government’s chief executive asks the President for a disaster declaration, within 30 days of the disaster under the law, and a declaration opens federal help to people and to governments. (35 words) | Under the law, a governor or a tribal government’s chief executive has 30 days from the incident to ask the President for a disaster declaration, which opens federal help. (28) | Under 30 words; "has 30 days under the law" states a limit, as the data lead's (c) and the plan's condition ask; "incident" is the regulation's word and the alt's, where the title said "disaster". The two kinds of help stay in the drawing, the alt and the table |
+| S89 | `notes[1]` | Times are limits in law, not measured waits, and FEMA may extend several of them. | Each time is a limit the law sets, and FEMA may extend several of them. The chart measures no wait. | Drops the ", not measured waits" turn (W09); S77's measure line says "the chart measures no wait" in the same family |
+| S89 | `alt` | …within 5 days after the need becomes apparent and no later than 30 days. | …within five days after the need becomes apparent and no later than 30 days. | Numbers under ten in words in an alt (H06) |
+| S93 | `grade_line` | Documented: Public Law 119-12 as the Government Publishing Office publishes it, approved May 19, 2025 | Documented: Public Law 119-12’s first page, as the Government Publishing Office prints it | The data lead's (c): the approval date is a part the page prints and a callout names, so it prints there once, never again in the grade or source line. The sidecar's source line also carries "approved May 19, 2025", so S93 needs a source variant without it (a request to the research lead, below) |
+| S93 | `title` | The first page of Public Law 119-12 gives its number, the Congress that passed it, where it starts in the Statutes at Large, the day it was approved and the bill it began as. (34) | Public Law 119-12’s first page gives its number, the Congress that passed it, its place in the Statutes at Large, its approval date and the bill it began as. (28) | Under 30 words, and no passive "was approved" (W02); "approval date" keeps the page's own word, "Approved" |
+| S93 | `alt` | …Public Law 119–12, May 19, 2025… 2, the Public Law number, Public Law 119–12. | …Public Law 119-12, May 19, 2025… 2, the Public Law number, Public Law 119-12. | An en dash in an alt can be read aloud as "to" ("119 to 12"); the table's "As printed" column may keep the page's own mark, and note 2 already says the page prints a dash |
 
 ## Words for the cartographer
 
+Nothing yet: no change to S12, S16 or S78 or their entries has landed.
+
 ## Words for the systems designer
 
+- **Rule 13.4 (20:53 UTC).** Your scan and mine agree: its two plates print no chain label, so `phase3_ch13_build.py` stays as it is under DR-267. Thank you for the list.
+- Nothing else yet: rules 15.19 to 15.21 have not landed, and I read each DR-265 title change in your generators' words once you report them.
+
 ## Requests
+
+### Requests to the research lead
+
+- **ED4-2, S93's source line without the approval date (21:02 UTC).** `govinfo-pl-119-12-first-page`'s `printed_source_line` reads "…139 Stat. 55, approved May 19, 2025, first page, United States…". The data lead's (c) prints the approval date once, as the part a callout names, and in neither the grade nor the source line. Please add a variant without it (as `snapshot_once` and `date_in_grade_line` were added before), for the infographics maker to print.
 
 ### Requests to the data lead
 

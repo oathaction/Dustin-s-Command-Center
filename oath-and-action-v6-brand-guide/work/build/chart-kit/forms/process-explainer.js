@@ -11,13 +11,14 @@
  * (text: the levels that act, "; " between), who (text, optional: who acts), limit (text, optional: the time the law sets).
  * labels: main (default "main"), lanes ([{levels: [level, ...], label, share, min (px: the lane's least width)}]), branches ({key: {at: the key of the step
  * it replaces, words}}), together ([[key, key], ...]: steps in one row, left to right), lines ({key: words over the
- * step's name}), named (keys the title names: a 2 px edge in the subject ink), lane_min (px, default 150). */
+ * step's name}), named (keys the title names: a 2 px edge in the subject ink), lane_min (px, default 150), limit_words
+ * (the words a limit prints in, {limit} for the column's words; default "{limit}"). Main steps take a 1.5 px edge. */
 (function (K) {
   'use strict';
   K.register_chart({
     form: 'process-explainer', name: 'Process Explainer', family: 'infographics',
     encode: { key: 'integer', path: 'category', step: 'text', level: 'text', who: 'text?', limit: 'text?' },
-    labels: ['main', 'lanes', 'branches', 'together', 'lines', 'named', 'lane_min'],
+    labels: ['main', 'lanes', 'branches', 'together', 'lines', 'named', 'lane_min', 'limit_words'],
     phone: 'differs',
     draw: function (c) {
       var L = c.labels, W = c.width, ek = c.field('key'), ep = c.field('path'), es = c.field('step'), ev = c.field('level');
@@ -44,7 +45,7 @@
         if (lw2) p.push({ w: lw2, role: 'tick', wt: 600, fill: 'secondary' });
         p.push({ w: r[es], role: 'label', wt: 700, ind: n ? chip + 8 : 0 });
         if (ew && r[ew]) p.push({ w: r[ew], role: 'tick', wt: 400, fill: 'secondary' });
-        if (el && r[el]) p.push({ w: r[el], role: 'tick', wt: 400, fill: 'label' });
+        if (el && r[el]) p.push({ w: String(L.limit_words || '{limit}').split('{limit}').join(r[el]), role: 'tick', wt: 400, fill: 'label' });
         p.forEach(function (q) { q.w = ty(q.w); });
         return p;
       };
@@ -61,8 +62,8 @@
       };
       var heavy = function (r) { return String(r[ep]) === mv; };
       var box = function (r, b) {
-        var hv = heavy(r), nm = named.indexOf(k(r)) >= 0;
-        c.rect(b.x + (nm ? 1 : 0.5), b.y + (nm ? 1 : 0.5), b.w - (nm ? 2 : 1), b.h - (nm ? 2 : 1), { fill: 'surface', stroke: hv ? 'subject' : 'context', width: nm ? 2 : 1, data: { key: k(r), field: 'step', value: r[es] } });
+        var hv = heavy(r), sw = named.indexOf(k(r)) >= 0 ? 2 : hv ? 1.5 : 1;
+        c.rect(b.x + sw / 2, b.y + sw / 2, b.w - sw, b.h - sw, { fill: 'surface', stroke: hv ? 'subject' : 'context', width: sw, data: { key: k(r), field: 'step', value: r[es] } });
         var n = num[k(r)];
         if (n) {
           var cy = b.y + b.p.filter(function (q) { return q.ind; })[0].base - 5 - chip / 2;

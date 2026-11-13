@@ -89,7 +89,7 @@
    "id": "15.2",
    "title": "Name each variable, its kind and what a higher value means.",
    "rule": [
-    "Our systems atlas defines a variable as “a quantity or condition in the model that can rise or fall”. Draw each one as a pill holding its short name, the name the atlas gives it on its loops, or its title where it sits in no loop. The first time a reader meets it, give its typed chip, its kind in words and the atlas’s own sentence on what a higher value means.",
+    "Our systems atlas defines a variable as “a quantity or condition in the model that can rise or fall”. Draw each one as a pill holding its own title, the name on its record, in every drawing, a loop’s among them, so it carries one name wherever it appears. The first time a reader meets it, give its typed chip, its kind in words and the atlas’s own sentence on what a higher value means.",
     "Of its 51 variables, 31 are stocks, amounts built up over time, and nine are flows, amounts per period. Six are conditions the atlas calls auxiliary, worked out from other variables. The other five are outside drivers, forces whose causes lie outside the model, and Rule 15.9 sets where they go."
    ],
    "tokens": [
@@ -107,12 +107,12 @@
    },
    "failure": {
     "specimen": "s-15-2-failure",
-    "caption": "<strong>Fails Rule 15.2.</strong> Variable B5 is cut to Turnout, with no kind and no sentence, so its minus sign reads as fewer voters. The atlas’s variable is turnout equality, and the sign says the gap between income groups widens."
+    "caption": "<strong>Fails Rule 15.2.</strong> Variable B5 is cut to Turnout, with no kind and no sentence, so its minus sign reads as fewer voters. The atlas’s variable is equality of voter turnout, and the sign says the gap between income groups widens."
    },
    "specs": [
     {
-     "label": "Short name",
-     "value": "The atlas’s name on the loops that hold the variable (25 of 51), or its title (26)"
+     "label": "Name",
+     "value": "The variable’s own title, for all 51, never the shorter label a loop’s record lists for a step"
     },
     {
      "label": "Label",
@@ -138,7 +138,7 @@
     "18"
    ],
    "builders": [
-    "Read the short name from the loops that hold the variable, and its kind and its higher-value sentence from its own record. Print the sentence as the atlas writes it."
+    "Read the name, the kind and the higher-value sentence from the variable’s own record, and stop the build if a drawing prints the shorter label a loop’s record lists for it. Print the sentence as the atlas writes it."
    ]
   },
   {
@@ -416,7 +416,7 @@
    ],
    "why": {
     "text": [
-     "A reader who takes the last step’s sign as the chain’s answer will often get it backward. Here the last step raises household security, and the chain as a whole lowers it, as the core arrow says."
+     "A reader who takes the last step’s sign as the chain’s answer will often get it backward. Here the last step raises households’ financial security, and the chain as a whole lowers it, as the core arrow says."
     ],
     "basis": "Our systems atlas’s model conventions"
    },
@@ -426,7 +426,7 @@
    },
    "failure": {
     "specimen": "s-15-8-failure",
-    "caption": "<strong>Fails Rule 15.8.</strong> The summary arrow takes the last step’s plus, so the chain reads as raising household security. One minus sign along the way turns it, as connection L37 says."
+    "caption": "<strong>Fails Rule 15.8.</strong> The summary arrow takes the last step’s plus, so the chain reads as raising households’ financial security. One minus sign along the way turns it, as connection L37 says."
    },
    "specs": [
     {
@@ -471,7 +471,7 @@
    },
    "correct": {
     "specimen": "s-15-9-correct",
-    "caption": "Foreign interference outside every frame, Hostile-content exposure in the core layer’s cluster B, and feed ranking in the technology layer, with each frame broken where a connection crosses it."
+    "caption": "Foreign interference outside every frame, exposure to hostile political content in the core layer’s cluster B, and feed ranking in the technology layer, with each frame broken where a connection crosses it."
    },
    "failure": {
     "specimen": "s-15-9-failure",
@@ -740,7 +740,7 @@
    },
    "failure": {
     "specimen": "s-15-14-failure",
-    "caption": "<strong>Fails Rule 15.14.</strong> The drawing routes Loop R8 through wealth concentration with plus signs and prints no date. The atlas says the loop no longer depends on Variable A1, and its connection T12 runs from home equity to the top wealth share with a minus."
+    "caption": "<strong>Fails Rule 15.14.</strong> The drawing routes Loop R8 through concentration of household wealth with plus signs and prints no date. The atlas says the loop no longer depends on Variable A1, and its connection T12 runs from home equity to the top wealth share with a minus."
    },
    "specs": [
     {
@@ -771,7 +771,7 @@
    "id": "15.15",
    "title": "Follow a variable two loops share through each loop in turn.",
    "rule": [
-    "Loop B4, “Electoral consequences can improve public performance”, and Loop R10, “Safe seats shift accountability to small primary electorates”, both pass through Variable C3, risk of losing office. Draw the two loops side by side, give the shared variable the same short name in both, and fill its pill in ink in each drawing, the one place a pill takes a fill. Under each loop, print the connection that brings a change into the shared variable and the one that carries it on, with the atlas’s sentence on each sign.",
+    "Loop B4, “Electoral consequences can improve public performance”, and Loop R10, “Safe seats shift accountability to small primary electorates”, both pass through Variable C3, risk of losing office. Draw the two loops side by side, give the shared variable its own title in both, and fill its pill in ink in each drawing, the one place a pill takes a fill. Under each loop, print the connection that brings a change into the shared variable and the one that carries it on, with the atlas’s sentence on each sign.",
     "Then say where the loops meet, in the atlas’s words. As primaries decide more seats in Loop R10, the risk of losing office falls, and in Loop B4 that same risk turns poor service into defeats that improve it. The atlas says Loop B4 “works only where seats are competitive”."
    ],
    "tokens": [
@@ -798,7 +798,7 @@
     },
     {
      "label": "Shared variable",
-     "value": "One short name in both drawings, its pill filled in ink with its name in the surface color",
+     "value": "Its own title in both drawings, its pill filled in ink with its name in the surface color",
      "token": "oa.color.graphic.essential.onNewsprint"
     },
     {

@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
-- 20:54 UTC. **All seven rulings (a) to (g) are posted.** (d) covers R4-2's measure; S12's capture sign-off and the phone codes follow as they land. Requests R-1 to R-3 to the research lead. Next: reading S85, S86 and S89, which exist.
+- 20:54 UTC. **All seven rulings (a) to (g) are posted.** (d) covers R4-2's measure; S12's capture sign-off and the phone codes follow as they land. Requests R-1 to R-3 to the research lead. Early read of S85, S86 and S89 posted under "Sign-offs" (MA-1 to MA-6, MI-1).
 - 20:52 UTC. (d), R4-2's measure, signed off: the engineer may land the stacked tile; 13,172 bytes a plate is round 4's ceiling once it lands.
 - 20:46 UTC. Rulings (a), (b) and (c) posted: makers may draw.
 - 20:40 UTC. Started.
@@ -139,9 +139,25 @@ Type never drops under the type scale's smallest drawing size to make a title fi
 
 **Rule 01.9 holds in chapter 14 and nothing moves.** By script from `work/build/guide/entries/14-example-log.json` (97 examples for rounds 0 to 3 with the 13 rule plates: D08 15, D02 12, D09 11, D04 10, D07 9, D10 8, D03 7, D06 6, D01 5, D05 5, atlas-wide 9) and the plan's round 4 rows, which my rulings leave in their domains: 108 examples, taxes, wealth and economic security the largest at 16 against 27. By state: S95 adds Mississippi and Massachusetts (2 each with S19); if S90 prints the most and the least per pupil, New York reaches 5 and Idaho 1. California, Florida and New York then lead at 5 each, against 21. The build's log recounts every state from the finished titles.
 
-**DR-229 under D3-689's test.** No round 4 chapter 14 form draws election data: the coverage plan writes each form's use in general words ("people out of 100", "Two or three groups that overlap", "Steps of a public process with icons", "Two or three options side by side", "A drawing with callouts", "Any core specimen"), and rows 123 and 125 moved off election data at the round 4 plan's sign-off. S95 redraws S19's prison counts, which count under checks on power and equal justice. Chapter 15's 15.20 and 15.21 draw an Elections loop, R4a, because the model's structure picks it (f), and Rule 01.9 holds there too.
+**DR-229 under D3-689's test.** No round 4 chapter 14 form draws election data: the coverage plan (sections 3.8 and 3.16) writes each form's use in general words, none of them an election question: "One in ten, made countable", "Sizes compared by area", "Two or three groups that overlap", "Overlaps drawn at true size", "Steps of a public process with icons", "Four to six facts with sources", "Two or three options side by side", "What a reader can do, in order", "A drawing with callouts", "Dates that matter" and "One chart or figure at 1080 by 1350 and 1080 by 1080". Rows 123 and 125 moved off election data at the round 4 plan's sign-off. S95 redraws S19's prison counts, which count under checks on power and equal justice. Chapter 15's 15.20 and 15.21 draw an Elections loop, R4a, because the model's structure picks it (f), and Rule 01.9 holds there too.
 
 ## Sign-offs
+
+### Early read of three drafts against the rulings (20:56 UTC, specs only, no build yet)
+
+Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, with the forms `icon-array.js` and `proportional-symbols.js` and the shared part `named_fill` in `parts.js`. These are requests before the first build, not a sign-off.
+
+**Maker A**
+- **MA-1, S85's grade line.** The Bureau's union figures come from a household survey, so "count" claims more than the source. Use (c)'s line, "Documented: a Bureau of Labor Statistics survey, as the atlas records it on October 15, 2026", with the research lead's source variant (R-1) once it lands.
+- **MA-2, S85's open marks.** The form edges open marks in the subject ink unless the spec says otherwise (`L.open_stroke || 'subject'`). Set `labels.open_stroke: "context"`, as (b) rules, so the 90 open marks read lighter than the 10 filled ones on both grounds.
+- **MA-3, S85's topic word.** Chapter 10 prints CL-050 as "Worker bargaining power" (its icon list, `s-10-list-41`); the inventory's label is "Worker Bargaining". Print chapter 10's word beside the icon, checked by script against chapter 10's list, and name the check in `notes_internal`. "Worker bargaining" matches neither.
+- **MA-4, S86's unnamed circles.** `named_fill` gives the four unnamed circles the light fill on Newsprint and the context ink on Charcoal. RF-1 sets unnamed areas in the track ink with a 1 px context-ink edge on both grounds, as `treemap.js` draws them, so the drawing reads light with one dark circle. The form is yours; change it there.
+- **MA-5, S86's key.** Add a third step at 40,000 so the key spans the largest circle (39,555), as (b) rules; 1,000 and 10,000 alone leave a reader to guess past a quarter of the largest.
+- **MA-6, S86's title tense.** "Special districts are the most common kind ... counted in 2022" mixes tenses on a 2022 count. Rule 13.2's record words suggest "were"; the editor decides the words. The claim itself holds: 39,555 of 90,888 is the largest share (43.5 percent of local governments), not a majority, and the title claims none.
+
+**Infographics maker**
+- **MI-1, S89's chart note.** "Numbered boxes ... are the steps every declaration takes" is not what the file says: steps 7 and 8 (public assistance and individual help) follow only where FEMA names that help for an area, and a denial ends the path at step 5. Word it as the path from a request to the help a declaration names, with the editor.
+- S89's grade line, lanes by position, the branch in a gray edge, the limits as "time the law allows" and `phone: "differs"` with its note match (b) and (c).
 
 ## Routine calls
 
@@ -156,11 +172,11 @@ Type never drops under the type scale's smallest drawing size to make a title fi
 
 ### To maker A
 
-- Read (a) to (c) before titles and inks. S85 and S86 specs exist; I read them against the rulings next.
+- Read (a) to (c) before titles and inks. MA-1 to MA-6 under "Sign-offs", early read.
 
 ### To the infographics maker
 
-- Read (a) to (c) before titles and inks. S89's spec exists; I read it against the rulings next.
+- Read (a) to (c) before titles and inks. MI-1 under "Sign-offs", early read.
 
 ### To the systems designer
 

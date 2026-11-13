@@ -14,7 +14,61 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Research lead (`o
 
 - **The data lead's ruling figures, rechecked from the frozen files (20:48 UTC), all equal:** S86, 90,837 local governments, 90,888 with the federal government and the states, special districts 39,555 (43.5 percent), county radius 0.277 of theirs; S87 and S88, the four regions recomputed from DP03 (189,377,193; 23,775,140; 95,362,515; 28,323,306; sum 336,838,154, the population), every gap past its approximate margin, the closest both kinds against none, 4,548,166 against 618,795; S90, shares 45.2341, 43.1987 and 11.5672 summing to 100.0000 and rounding to 45, 43 and 12, New York $31,917.51 and Idaho $11,060.40 per pupil; S94, 16 events on 13 days, 7 with a consequence stated and 9 without, every stored weekday equal to the calendar's; S95, 50 states, Mississippi 652 the highest and Massachusetts 96 the lowest.
 
-## Facts for Rule 15.20's reforms
+## Facts for Rules 15.19 to 15.21
+
+For the systems designer, under the data lead's ruling (f). Written 20:56 UTC. Every value read by script (`scripts/r4_ch15_facts.py`, output `r4/ch15-facts.json` in scratch) from `work/extract/atlas-v7-data.json`, SHA-256 ef1028ac...c7f2, snapshot of October 15, 2026; the script asserts each structural point (f) states, and reruns its rule over all 20 closed loops: R4a alone passes. Quoted text is the atlas's as stored, with its straight apostrophes; the guide curls them in print. Delay words are the atlas's glossary: S under 2 years, M 2 to 10 years, L over 10 years.
+
+### Rule 15.20: Reforms R-03 and R-04 on Loop R4a
+
+Loop R4a, "Majorities draw maps that help them keep control": reinforcing, closed ("closed: every step is a numbered connection"), delay M. Loop grade text: "documented for C4 to C1 and D7 to C4; plausible for C1 to D7". Both lists agree: `loops.R4a.reforms` is R-03 and R-04, and no other reform names R4a. Its chain, with each variable's title (DR-265):
+
+| Step | Connection | Name | From, to | Sign | Grade | Delay | Type |
+|---|---|---|---|---|---|---|---|
+| 1 | L42 | "Incumbent-drawn maps create safe seats" | C4 "Officeholders' control over election rules" to C1 "Seats with little electoral competition" | + | documented | M | causal |
+| 2 | L55 | "Safe seats keep majorities in power" | C1 to D7 "Entrenched control of rule-setting institutions" | + | plausible | M | causal |
+| 3 | L56 | "Durable majorities control maps and voting rules" | D7 to C4 | + | documented | S | causal |
+
+R4a's `qualification`: "Courts and voters can interrupt the loop, as in Missouri, where the 2025 map is set aside for 2026 pending a November 3 referendum. Voters' residential sorting also makes seats safe without any map." (Missouri's Proposition A is V7.1 row 39's, DR-269; print it only under "As of October 15, 2026", as (f) says.) L56's own qualification also names the pending referendum.
+
+| Field | R-03 | R-04 |
+|---|---|---|
+| Title | "Proportional elections in multi-seat House districts" | "Independent citizen commissions draw election maps" |
+| Band | "rules" | "power to change the rules" |
+| Targets | L42 (connection, "Incumbent-drawn maps create safe seats"); C1 (variable, "Seats with little electoral competition"); D7 (variable, "Entrenched control of rule-setting institutions") | L42 (connection); L56 (connection, "Durable majorities control maps and voting rules") |
+| Loops it names | R4a, R10, R12 | R4a |
+| Effects, as coded | DQ +L; GE ?; EP 0; EQ +S | DQ +M; GE 0; EP 0; EQ 0 |
+| Qualifiers on effects | None: all four are bare codes | None: all four are bare codes |
+| `effects_confidence` | "medium (representation); low (other)" | "high (fairness); medium (competition)" |
+| Routes (route, who, feasibility, checked) | FS Federal statute, "Repeal the single-member mandate (2 U.S.C. 2c) and require ranked multi-winner counting", very low, Not checked; SS State statute, "State legislatures for their own chambers", low, Not checked; LOC Local, "City councils", medium, Not checked | BI State ballot, "Voters in initiative states", medium, Not checked; SS State statute, "Legislatures", low, Not checked; FS Federal statute, "Congress", very low, Not checked; CRT Court doctrine, "State courts enforcing fair-district clauses", medium, Not checked |
+| Route notes | LOC only: "Cambridge, Massachusetts has counted this way since 1941; Portland, Oregon adopted it in 2022." | None |
+| Problem evidence grade | documented | documented |
+| Remedy evidence grade | plausible | plausible |
+| Remedy evidence text | "Support comes from comparisons across countries and from simulations. Carey and Hix (2011) found in cross-national data that districts electing three to eight members improve proportionality without fragmenting governments. Main limitation: no U.S. congressional election has used the system, so there is no direct American test." | "Evidence that commissions reduce partisan bias comes from one descriptive study of the 2021-22 maps: Warshaw, McGhee and Migurski found less partisan bias in commission-drawn and court-drawn maps than in legislature-drawn ones. Evidence that commissions create more competitive seats is weaker. Main limitation: that study covers one redistricting cycle and uses descriptive measures." |
+| `tradeoffs` | "Each member would represent a larger area, which weakens the tie to one place. In small states with one or two seats, little changes. Coalition-building can get harder when more parties win seats." | "Commissions correct bias more than they increase competition. A state that adopts one while its neighbors do not can lose seats, and that risk can drive retaliatory redraws elsewhere." |
+
+Points for the systems designer and the data lead:
+- **No route of either reform has a `checked` date**, so all seven print "Not checked" (Rule 15.16). R-04's status carries a check date (2026-10-15) and R-03's none; neither dates a route.
+- **R-03's federal route stores an action in `who`.** Of the atlas's 126 route entries, this is the only one whose `who` names what to do ("Repeal the single-member mandate (2 U.S.C. 2c) and require ranked multi-winner counting") instead of who acts. Printed under a "Who acts" label it would misread. One way: print the route name and the atlas's words as stored under a label such as "What it takes", or ask the data lead to rule. Proposed for board 3 as a V7.1 row (below).
+- **"?" is the atlas's code for "direction uncertain"** (V7's effect codes: +L large positive, +M moderate positive, +S small positive, 0 no expected effect, -S small negative, -M moderate negative, ? direction uncertain). R-03's GE prints "?", never 0.
+- R-03 also names R10 and R12, which list it back; only R4a holds all of its targets.
+
+### Rule 15.19: Loop R1's steps
+
+Loop R1, "Wealth and political influence reinforce each other": reinforcing, closed, loop grade "plausible", loop delay L. Reforms the loop lists: R-08, R-09, R-11, R-28 (not printed by 15.19).
+
+| Step | Connection | Name | From, to (titles, DR-265) | Sign | Grade | Delay | Type | `qualification` |
+|---|---|---|---|---|---|---|---|---|
+| 1 | L01 | "Concentrated wealth funds more political spending" | A1 "Concentration of household wealth" to B1 "Money spent to influence politics" | + | well-supported | S | money | none |
+| 2 | L02 | "Political spending can tilt policy toward donors" | B1 to E1 "Policy advantages for wealthy and organized interests" | + | plausible | M | money | "A 2016 field experiment (Kalla and Broockman) found congressional offices granted meetings more often to people identified as donors; affluent and middle-income Americans want the same policy about 90% of the time, so any tilt shows on the issues where they differ." |
+| 3 | L03 | "Policy advantages add to wealth at the top" | E1 to A1 | + | well-supported | L | money | "CBO estimated that about 75% of the benefit of lower tax rates on capital gains and dividends went to the top 1% of households in 2019; asset prices also move the top share, so policy is one cause among several." |
+
+Each step's `sign_meaning`: L01 "When wealth becomes more concentrated at the top, spending to influence politics tends to rise."; L02 "When more money is spent to influence politics, policy tends to favor wealthy and organized interests more."; L03 "When policy favors wealthy and organized interests more, wealth tends to become more concentrated at the top."
+
+R1's `qualification`, printed once under the steps: "The loop runs on issues where wealthy donors' preferences differ from those of middle-income voters; on most issues the two groups agree, so its reach depends on the issue." Its `evidence_summary` names L02 as "plausible and the weakest". The three titles equal those (f) gives for the DR-267 code set.
+
+### Rule 15.21: Connection L55
+
+L55, "Safe seats keep majorities in power": C1 "Seats with little electoral competition" to D7 "Entrenched control of rule-setting institutions"; causal; sign + ("When safe seats increase, majority control tends to become more entrenched."); grade plausible, not contested; delay M; in loops R4a and R12. Its `qualification`, the sentence the correct plate rests on: "Seat safety is documented (Unite America's 2026 count, an advocacy source); the effect on how long majorities last relies on seats-votes analysis with no single estimate in this model." The model holds no strength, amount or estimate for L55: its record has no numeric field (keys: id, layer, from, to, polarity, type, delay, evidence, contested, loops, spine, name, plain, sign_meaning, qualification, mechanism, citation, counterevidence, summary_of). Its `citation`: "Unite America 2026 (W017) for seat safety; seats-votes analysis in the redistricting literature".
 
 ## V7.1 items raised in round 4
 

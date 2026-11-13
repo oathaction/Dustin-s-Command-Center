@@ -193,6 +193,12 @@ export function run_spec(spec, o) {
     const art = K.artboard(spec, K.token_reader(TOK.newsprint));
     if (!(typeof spec.stage === 'number' && spec.stage >= K.PHONE_MAX && spec.stage <= art)) res.faults.push(`stage: ${JSON.stringify(spec.stage)} is not a width in px from ${K.PHONE_MAX} to the artboard's ${art} (C-M2)`);
   }
+  // DR-261 (round 4): stage_min, a floor, is a width in px from the phone's limit to the artboard, and never beside stage
+  if (spec.stage_min !== undefined) {
+    const art = K.artboard(spec, K.token_reader(TOK.newsprint));
+    if (!(typeof spec.stage_min === 'number' && spec.stage_min >= K.PHONE_MAX && spec.stage_min <= art)) res.faults.push(`stage_min: ${JSON.stringify(spec.stage_min)} is not a width in px from ${K.PHONE_MAX} to the artboard's ${art} (DR-261)`);
+    if (spec.stage !== undefined) res.faults.push('stage_min: a spec sets stage (one width) or stage_min (a floor), never both (DR-261)');
+  }
   res.rows = chk.rows;
   res.datasets = chk.datasets;
   if (!K.forms[spec.form] || !chk.rows || !chk.rows.length) return res;
@@ -243,7 +249,7 @@ export function used_columns(spec, columns) {
 // The keys a page needs to draw: no words the figure already prints (method load-table)
 // typography rides along (round 3 fix pass): c.text sets a drawing's words through it, so a page without it drew S81's key
 // without its no-break spaces and failed parity
-const DRAW_KEYS = ['kit', 'id', 'form', 'artboard', 'stage', 'encode', 'labels', 'annotations', 'formats', 'scale', 'table', 'phone', 'typography'];
+const DRAW_KEYS = ['kit', 'id', 'form', 'artboard', 'stage', 'stage_min', 'encode', 'labels', 'annotations', 'formats', 'scale', 'table', 'phone', 'typography'];
 export function draw_spec(spec) {
   const out = {};
   DRAW_KEYS.forEach(k => { if (spec[k] !== undefined) out[k] = spec[k]; });
@@ -1247,6 +1253,21 @@ async function self_test() {
         && K.chips('In {data_file}.', []).indexOf(K.fill_words('{data_file}')) > 0 && K.fill_words('{data_file}') === K.word('data_file')
         && draw_spec({ id: 'x', typography: { nbsp: true }, stage: 1024 }).typography.nbsp === true && draw_spec({ id: 'x', stage: 1024 }).stage === 1024,
         'C-M2, AX-S1, ST-M2: a stage keeps its desk width; fc classes and a forced edge print; {data_file} fills; the island keeps stage and typography' + (a.f.length ? ': ' + a.f[0] : '')); }
+    { // DR-261 (round 4): stage_min is a floor; D3-1546: the stacked tile forced into a 558 px drawing (board 2's picture at a
+      // 1024 px window) fails the cell check, and the real form passes at 558 (gray steps) and at 618 (the stacked tile)
+      const fl = { artboard: 'wide', stage_min: 618 };
+      const floor = K.draw_width(fl, 558) === 618 && K.draw_width(fl, 723) === 723 && K.draw_width(fl, 479) === 479 && container(1440, fl) === 1024 && container(1024, fl) === 960
+        && draw_spec({ id: 'x', stage_min: 618 }).stage_min === 618;
+      const s12 = JSON.parse(fs.readFileSync(path.join(KIT, 'specs/s12.json'), 'utf8')), r12 = C.check_spec(K, s12, {}).rows;
+      const at = (w) => { const d = K.draw(s12, r12, { width: w, ground: 'newsprint', tokens: TOK.newsprint }); return { n: d.cells.length, f: C.check_drawing(s12, d, TOK.newsprint, 'self-test').filter(x => /cell\(s\)/.test(x)) }; };
+      const a558 = at(558), a618 = at(618);
+      const real = K.forms['tile-map-shift-arrows'], src = fs.readFileSync(path.join(KIT, 'forms/tile-map-shift-arrows.js'), 'utf8');
+      const planted = src.replace('var tight = c.phone || size < AY + hw + 1 || wide + 7 > size;', 'var tight = c.phone;');
+      let p558 = { n: 0, f: [] };
+      if (planted !== src) { new Function(planted)(); p558 = at(558); }
+      K.forms['tile-map-shift-arrows'] = real;
+      pass(floor && a558.n === 0 && !a558.f.length && a618.n === 51 && !a618.f.length && p558.n === 51 && p558.f.length === 1 && /51 cell\(s\)/.test(p558.f[0]),
+        'DR-261, D3-1546: stage_min is a floor; the stacked tile forced into 558 px fails the cell check (51 tiles), and the real form passes at 558 and 618' + (p558.f.length ? '' : ': not caught')); }
     { // board 2 (A1): a table caption's {data_file} fills in the visible caption, the table's name and the summary's hidden words
       const sp = { id: 'T', title: 'A title.', table: { caption: 'Every row is in {data_file}', columns: [{ field: 'k', label: 'Key', format: 'text', row_header: true }] } };
       const fig = [false, true].map(g => K.figure(sp, [{ k: 'A' }], { id: 'oac-t', guide: g }));

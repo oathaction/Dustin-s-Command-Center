@@ -8,7 +8,7 @@
   "reader_question": "How does a disaster declaration bring federal help, and who asks for it at each step?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: the Stafford Act and FEMA’s regulation, 44 CFR part 206, as in force on November 9, 2026",
+  "grade_line": "Documented: the Stafford Act and FEMA’s rule, 44 CFR part 206, as in force on November 9, 2026",
   "title": "A governor or a tribal government’s chief executive asks the President for a disaster declaration, within 30 days of the disaster under the law, and a declaration opens federal help to people and to governments.",
   "measure_line": "The steps from a disaster to federal help in 42 U.S.C. 5170 and 5191 and 44 CFR 206.33 to 206.40, 206.112 and 206.202, with who acts at each step and the longest time the law allows",
   "notes": [
@@ -151,7 +151,7 @@
     "branches": {
       "4": {
         "at": 3,
-        "words": "In place of step 3, for an emergency"
+        "words": "Or, for an emergency"
       }
     },
     "together": [
@@ -161,7 +161,8 @@
       ]
     ],
     "named": [],
-    "lane_min": 150
+    "lane_min": 150,
+    "limit_words": "{limit}, the law’s limit"
   },
   "typography": {
     "curl_quotes": true,
@@ -189,6 +190,6 @@
     "Infographics maker, round 4. Data plan row 121, rule 14.135. Domain D04 from the sidecar (data lead sign-off, point 4).",
     "The eight main steps are the rows with path main, numbered 1 to 8 in reading order; row 4 is the emergency request, drawn in place of step 3. Rows 9 and 8 (public assistance, individual help) share one row after step 6, governments at the left, so the sort puts 9 before 8 and the numbers read left to right.",
     "Actors in words: no Civic Line drawing means a governor, a tribe, FEMA or the President, and CL-026 never stands for the President (round 4 call 7; Rule 10.6).",
-    "DRAFT words, waiting on the data lead's rulings (a) to (c) and the editor's words pass."
+    "Data lead rulings (a) to (c), 20:46 UTC: no named mark; main steps 1.5 px subject-ink edges and links, the branch in the context ink named \"Or, for an emergency\"; lanes named in words, gridline-ink rules; each limit printed as the law's limit; grade line as (c). Words still waiting on the editor's pass."
   ]
 }
