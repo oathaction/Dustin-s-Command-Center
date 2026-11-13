@@ -11,6 +11,7 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Written by the en
 - **RB3-G1 LANDED:** the band check reads a band's x extent (maker B). **C-E1 LANDED:** `count_eq`. **ENG-R3-1 DONE:** the data script carries the new Ballotpedia publisher. **Step label inks LANDED:** `on-seq-N`, `on-mag-N`, `on-div-N` for words and marks on a map's steps.
 - **DL-E1 SIGNED OFF** by the data lead: S81 national as variant B (D3-1090).
 - **Checks, first run:** `oa-chart.mjs build --all --no-png`: 78 specs, 78 check files, 78 PASS (the makers' drafts included), 78 s; self-test every fault caught; strict build exit 0, no warning. **Second run:** `build --all --no-png` 79 specs, 79 check files, 79 PASS; strict build with round 3's landed entries placed exits 1 on three of maker A's plates far over (weight below). **Last run (01:50 UTC, clock read):** self-test every fault caught; `build --all --no-png` 84 specs, 84 check files, 84 PASS (163 s); `guide_build.py --self-test` 32 of 32; `guide_charts.py --self-test` every fault caught; `geo_build.py --check` current; data check 124 tables, 0 faults; strict build (01:46) exit 0, no warning, every round 3 plate under 15,000 with its frame and the share for the 13 to come 14,719.
+- **Later requests LANDED:** A-E3 (node words at one width), A-E4 (open diamond), A-E5 and A-E6 (list options), `fraction-percent`, claim IDs (C-E6, C-3), a boundary file in `derived_from`; C-4 answered. Last `build --all --no-png`: 84 of 84, 84 check files; self-test every fault caught; drawings on the 84 current specs unchanged apart from A-E3's node words in S68 and S69.
 - **A-E1 and A-E2 LANDED:** `table.group.by` as a list, aggregates `list` and `count_set`. **RB3-G2 and C-E3 LANDED:** the page check reads a grouped table's rows from the island. **C-E5 LANDED, C-E4 ANSWERED** (cartographer).
 
 ## Contracts
@@ -146,6 +147,9 @@ Exit 0, no warning. Page 11,218,725; projected 15,044,385; chapter 14 with the k
 - D3-xxx | `phase3_ch14_build.py` builds rounds 1, 2 and 3 by default (DR-253) | Dustin's permission, as round 2's default did for its round; run with no flag it writes what `--rounds 1,2,3` writes (80 of 80 files current both ways), and lists 7 faults, the map entries 14.117 to 14.123 not yet written
 - D3-xxx | Each step's label ink is a text and fill role (`on-seq-N`, `on-mag-N`, `on-div-N`) | Ruling (b) sets codes and district marks in the step's label ink; the tokens existed, the kit had no class for them
 - D3-xxx | The page check reads a grouped table's rows back from the island and compares its printed rows with the data's groups (RB3-G2) | A grouped table prints no data row; the island holds every row, and the group count proves the page printed each group
+- D3-xxx | A node fits and sets its words at one width, after the spec's typography (A-E3) | A box sized by `node_size` then never shows a line it does not set, and a size that fits always draws
+- D3-xxx | Atlas claims (CL) are atlas IDs with the type word "Claim" (C-3) | Rule 13.9 sets every atlas ID as a typed chip; the check must see a bare claim to require its chip
+- D3-xxx | `fraction-percent:N` prints a share held as a fraction as a percent | A reader should not convert 0.9368; the stored value rides in the lean table's carrier
 - D3-xxx | A map name that does not fit its shape goes to an eastern column first, then beside through `place_labels`, never onto a dark fill | The small northeastern states read as a list on the ocean; a name over another state's dark step fails forced colors and reads badly
 
 ## Requests log
@@ -163,6 +167,14 @@ Taken in the order they arrived:
 | RB3-G2, the page check counts a grouped table's rows | maker B | **Done**: read back from the island, as `K.rows_from_table` does, and the page's grouped rows compared with the data's groups; S73 and S82 pass `build` with captures; told the main session for maker B |
 | C-E3, the same fault on S82 | cartographer | **Done** by RB3-G2's fix |
 | C-E4, S16's Alaska and Hawaii show no land | cartographer | **Answered:** the land draws there in the kit's captures on both grounds (`build s16`: the 1440 px Newsprint and Charcoal captures, Alaska and Hawaii cropped and looked at); the land ink on Charcoal sits close to the ground, so it reads faintly. Nothing to change in the kit |
+| A-E3, a node's blank foot line | maker A | **Done:** `node` fits and sets its words at one width, as `c.text` prints them (typography included); the old part left one width in 166 short, the new none; only S68's and S69's node words change (6 of 924 drawings, words alone); self-test case |
+| A boundary file in a derived sidecar's `derived_from` | research lead | **Done:** the kit's check reads a `.geojson` source; self-test case. The cartographer's sidecars stay as they are this round |
+| C-4, S16's Alaska and Hawaii land (data lead) | data lead, cartographer | **Answered:** the data lead's own exports and captures draw the land; it reads faintly because the land ink is 1.17 to 1 against the ground on both grounds and Alaska and Hawaii carry no inner borders. A matter of the form's inks (inset frames through `map_insets`, or a land edge), not of the kit |
+| A-E6, `list` with `odd` and `with` | maker A | **Done**, self-test case |
+| A-E4, the open diamond on `link` | maker A | **Done:** `arrow: 'diamond'` (14 by 11 px, `o.diamond`), self-test case |
+| A-E5, `distinct` on `list` | maker A | **Done**, self-test case |
+| A share held as a fraction printed as a percent | maker B | **Done:** format `fraction-percent:N`; the lean table carries the stored value; self-test case |
+| C-E6 (the data lead's C-3), claim IDs in the atlas check | cartographer | **Done:** `v7()` indexes the 433 claims, type word "Claim"; S84 fails one line until CL1516 joins its `v7.ids`; self-test cases |
 | C-E5, `map_labels` beside a coast | cartographer | **Done:** a name set beside is tested on its box padded by `light_pad` px (default 2) at nine points, and `ring0: false` gives every name set beside a leader (`place_labels` takes `ring0` too). Committed drawings unchanged (704 of 704) |
 
 To others:

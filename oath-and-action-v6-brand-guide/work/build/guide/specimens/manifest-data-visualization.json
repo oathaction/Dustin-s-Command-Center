@@ -849,7 +849,7 @@
   "chapter": "14",
   "rule": "14.99",
   "width_px": null,
-  "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, from Agriculture to Ways and Means, three select committees and four joint committees shared with the Senate, each with its subcommittees under it, 109 in all. Appropriations has the most, 12; Budget, Ethics, two select committees and the joint committees have none.",
+  "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, three select committees and four joint committees shared with the Senate, each with its subcommittees under it, 109 in all. Appropriations has the most, 12; Budget, Ethics, two select committees and the joint committees have none.",
   "illustrative": false,
   "notes": "S69, org-chart: the chart kit draws it from work/build/chart-kit/specs/s69.json (contract R1-C3)"
  },
@@ -1031,7 +1031,7 @@
   "chapter": "14",
   "rule": "14.121",
   "width_px": null,
-  "alt": "Two tile maps of the 435 House districts, one square each, grouped by state. The first fills the 215 seats Democrats won and the second the 220 Republicans won, each square shaded by the winner’s margin in four gray steps from under 5 points to 20 or more, with the other party’s seats as outlines. Thirty-six races were decided by under 5 points, 22 won by Democrats and 14 by Republicans, and 22 seats had one candidate on the ballot.",
+  "alt": "Two tile maps of the 435 House districts, one square each, grouped by state. The first fills the 215 seats Democrats won and the second the 220 Republicans won, each square shaded by the winner’s margin in four steps of one ink from under 5 points to 20 or more, with the other party’s seats as outlines. Thirty-six races were decided by under 5 points, 22 won by Democrats and 14 by Republicans, and 22 seats had one candidate on the ballot.",
   "illustrative": false,
   "notes": "S82, district-tile-map: the chart kit draws it from work/build/chart-kit/specs/s82.json (contract R1-C3)"
  },
@@ -1056,7 +1056,7 @@
   "rule": "14.124",
   "width_px": null,
   "illustrative": true,
-  "alt": "The same invented results drawn twice: shaded from one party’s color to the other’s, the map takes a side at a glance, while two gray panels, one for each party’s seats, show who won each place and by how much with no color for either party.",
+  "alt": "Drawn here in gray: a map shaded red for one party and blue for the other takes a side at a glance, while two panels, one for each party’s seats, show who won each place and by how much in steps of one ink, with no color for either party.",
   "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
  },
  "s-14-s15": {

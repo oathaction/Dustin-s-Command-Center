@@ -117,11 +117,11 @@ November 13, 2026, after the data lead's "Sign-off, maker A" (MA-1 to MA-8, with
 
 ### Tested
 
-- `oa-chart.mjs build` with the sweep and PNGs at 1440, 390, 328 and 288 px pages, both grounds, after the last change (S66 to S72 into `kit-signoff`): results below.
+- `oa-chart.mjs build` with the sweep and PNGs at 1440, 390, 328 and 288 px pages, both grounds, after the last change (S66 to S72 into `kit-signoff`): 7 of 7 PASS, 0 faults, 7 check files counted.
 - `maker_a_round3_derive.py --figures`: 35 of 35 (S66's and S70's checked phrases kept: "five steps", "94 district courts", "13 courts of appeals"; S72's counts and names read from the file by script for MA-6, the 20 names equal the data lead's list).
 - Words lint on the seven specs and eight entries: no dash, U+2011, straight quote, banned word or studio code.
 - Strict build (`guide-final.html`): exit 0, no warning, 11,226,900 bytes; share per plate 14,092 for the 13 to come. Plates: S66 9,357; S67 12,495; S68 8,749; S69 13,851; S70 10,605; S71 11,399; S72 11,508 bytes.
-- `phase3_ch14_build.py --rounds 1,2,3`: my rules clean; its two faults are the cartographer's sketch 14.124, mid-edit.
+- `phase3_ch14_build.py --rounds 1,2,3`, last run: 128 rules, 114 entries, 0 faults (an earlier run showed two faults, both the cartographer's sketch 14.124 mid-edit).
 - Looked at: S68's diamonds at 1440 px Newsprint and 358 px Charcoal (drawn in-form first, then on the kit's part, its path read from the SVG); S72's and S70's grouped tables read from the build pages.
 
 ### Not tested
