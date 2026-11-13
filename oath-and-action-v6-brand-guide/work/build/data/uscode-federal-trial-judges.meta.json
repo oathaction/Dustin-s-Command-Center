@@ -80,7 +80,7 @@
    "description": "of seats, the judgeships of the three territorial district courts (Guam 1, the Northern Mariana Islands 1, the Virgin Islands 2), set by Title 48, whose judges serve ten-year terms; district row only"
   }
  },
- "printed_source_line": "Source: U.S. Code, 2024 edition, 28 U.S.C. 133, 134, 152, 631 and 633; Administrative Office of the U.S. Courts, Judicial Business 2025, seats as of September 30, 2025, United States. Retrieved November 12, 2026. Seats include vacant ones; the 677 district positions include the territorial courts’ 4.",
+ "printed_source_line": "Source: U.S. Code, 2024 edition, 28 U.S.C. 133, 134, 152, 631 and 633; Administrative Office of the U.S. Courts, Judicial Business 2025, seats as of September 30, 2025, United States. Retrieved November 12, 2026. Seats include vacant ones; the 677 district positions include four in the territorial courts.",
  "ledger_row": "P7-307",
  "domain": "D05",
  "domain_note": "V7 domain D05, Courts subsystem (data lead change 1)",
@@ -91,6 +91,6 @@
   "U.S. Code currency, checked November 13, 2026: each section this file draws reads the same, word for word with spaces set aside, in the Office of the Law Revision Counsel’s release current through Public Law 119-138 (November 3, 2026) as in the 2024 edition govinfo serves; Public Laws 119-139 to 119-142, which Congress.gov lists after it, amend none of them (28 U.S.C. 133, 134, 152, 631 and 633)."
  ],
  "source_line_variants": {
-  "seats_date_in_grade": "Source: U.S. Code, 2024 edition, 28 U.S.C. 133, 134, 152, 631 and 633; Administrative Office of the U.S. Courts, Judicial Business 2025, United States. Retrieved November 12, 2026. Seats include vacant ones; the 677 district positions include the territorial courts’ 4."
+  "seats_date_in_grade": "Source: U.S. Code, 2024 edition, 28 U.S.C. 133, 134, 152, 631 and 633; Administrative Office of the U.S. Courts, Judicial Business 2025, United States. Retrieved November 12, 2026. Seats include vacant ones; the 677 district positions include four in the territorial courts."
  }
 }

@@ -19,7 +19,9 @@ Started 20:39 UTC (clock read).
 - **Landed by 21:40 UTC (clock read):** S91's shared-row grid (DD-I12, `oac-h-rows`); IM-E6's band under the zero line with the 2 px dot gap (least gap 2.32 px, rings 3.08 px, on both crops), and IM-E8 (`grade_line` rides to the page for a card); the `typography.hold` row-header parity fix (S89 with "individual help" held: the old kit fails parity at 1440 and 390 px on both grounds, the new passes); IM-E7's five items (below); **C4-E1** in the tokens, 6.0.0-gate3.3 (the phone tile gap 2.5 to 2 px), token tests all passing, S12 and S78 coding all 51 states at 326 and 358 px. **C4-E2 went to the component engineer** (it changes only `bubble-map.js`). S85, S89 to S94, S12 and S19 build PASS with captures and the sweep on today's kit.
 - **Chapter 26's token table rerun (by 21:40, on the main session's word):** `token_table_build.py` wrote `s-26-token-table.html` for 6.0.0-gate3.3; `git diff` shows exactly the four pieces previewed (the version three times, the gap 2.5px to 2px; 2 lines changed); its `--check` passes; **the 21:40 strict build exits 0 with 0 warnings.**
 - **Confirmed landed (clock read 21:44 UTC):** DD-I21 (S95's words clear the gridlines under them: the card mode's placed words go through `K.parts.clear_label` with a 1 px knockout; S95 PASS at both crops, S19 byte-identical); DD-I10 (each fact's table line pinned to its card's foot, so a row's lines share one line; S90 PASS); the `typography.hold` row-header parity fix (S89); IM-E7's five items (S92, S94); the design director's facts variant (`oac-h-plain`) and `text-wrap: pretty` on card words and the HTML source line; the orphan guard **opt-in only** (`typography.pretty`), since a global guard would move drawings in 61 specs, 56 of them signed off (S01 to S84; the list in scratch `orphan_reach.json`).
-- **Queue, in order:** the count of source lines whose breaks `text-wrap: pretty` moves (running); the guide check's key path walk for specimens (R4-5); S12's 1-px stage case at a 1,103 px window (low); then ready for the closing checks.
+- **Landed by 21:52 UTC (clock read):** the guide check's **key path walk for specimens** (R4-5, the accessibility lead's request 2): a manifest entry's `"keys": "<id>"` (or `true` for the specimen's own id) marks its stage `data-oa-keys`, and `keyPaths` walks `work/build/guide/specimens/<id>.keys.json` in that stage at 1440 and 390 px; proved on a scratch page (a good path passes, a planted wrong status line fails at step 3 at both widths, a stage naming a missing keys file is reported). **S12's 1 px stage case** (a 1,103 px window): a staged drawing at most 1 px wider than its column shrinks to it (`data-oa-stage-fit`), tested on the kit's page at 614, 617 and 618 px columns. **The source line count:** `text-wrap: pretty` on `.oac-source` moves the breaks of 4 of the guide's 107 kit source lines at 1440 px and 20 of 107 at 390 px (no drawing moves).
+- **For the systems designer:** set `"keys": "s-15-19-correct"` and `"keys": "s-15-20-correct"` (or `true`) on the two manifest entries and save the accessibility lead's two paths as `work/build/guide/specimens/s-15-19-correct.keys.json` and `s-15-20-correct.keys.json`, with the ruled IDs and step count.
+- **Next:** the closing checks (running: the guide check's self-test; a snapshot of every committed spec with the committed kit against today's).
 
 ## Summary
 
@@ -175,7 +177,10 @@ Dustin's answer (DR-271), applied by the main session's instruction. What change
 - **S19:** unchanged (932 drawings byte-identical); the dot plot's card mode draws only inside S95.
 - **S94's dates (IM-E7 item 5):** two columns from 480 px; a round 4 plate, not yet on a board.
 
-## Changed outside chapters 13 to 15
+## Changed outside chapters 13 to 15 (and outside round 4's plates)
+
+- **`text-wrap: pretty` on every kit figure's HTML source line** (`.oac-source`), S01 to S84 included: measured on the 21:44 strict build in Chromium, the breaks of 4 of the 107 source lines move at a 1440 px window and 20 of 107 at 390 px; no drawing moves.
+- **A staged drawing at most 1 px wider than its column** shrinks to it instead of scrolling (S12 at a 1,103 px window, by under 0.2 percent).
 
 - `kit.css` on the guide's page is minified (the same 204 rules by the browser's parse).
 - **Chapter 26's token table** (`s-26-token-table.html`) follows token release **6.0.0-gate3.3**: the version three times and the phone tile gap, 2.5px to 2px. `tokens.css` and `tokens.json` carry the same release with its change note, which chapter 26 prints as the newest (Rule 26.8).
@@ -183,6 +188,9 @@ Dustin's answer (DR-271), applied by the main session's instruction. What change
 
 ## Routine calls
 
+- D3-xxx | A specimen's keyboard path is named by its manifest's `"keys"` and walked from `work/build/guide/specimens/<id>.keys.json` | The accessibility lead's request 2; the walk is the code sets' own, so one reader of oa-keys/1 serves both
+- D3-xxx | S12's 1 px case shrinks the drawing to its column rather than moving the frame's switch point | At a 617 px column the stacked tile does not fit (it needs 618), so drawing at the column would fall back to the phone's steps; a shrink of 1 px in 618 moves no word off the type scale
+- D3-xxx | The design director's orphan guard is opt-in, `typography.pretty` | Applied to every drawing it would move words in 61 specs, 56 of them signed off
 - D3-xxx | Under DR-271 an allocation's figure is a note in the build report and its printed log, and only the page over 16,000,000 bytes stops the build | Dustin's answer: allocations move as content needs; the page is the one fixed limit, with the 15.5 MB projection as its early warning, which still warns
 - D3-xxx | The fonts part's agreement with its manifest stays a warning | It tests that the embedded fonts are the licensed files, not a byte allocation
 - D3-xxx | The chart kit part's budget rises from 0.55 to 0.56 MB (`guide_build.py` WEIGHT_FIXED) once all 97 forms are registered, at 549,966 bytes on the 21:21 strict build | The main session's call (by 21:24), as D3-345 raised it from 0.22 MB: chapter 14's 2,803,941-byte stop and the 15.5 MB projection (15,050,450) do not move

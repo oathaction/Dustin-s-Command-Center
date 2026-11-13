@@ -240,7 +240,21 @@ The three rules read as one voice with chapter 15, each names what a builder doe
 | File | Field | Now | Suggested | Why |
 |---|---|---|---|---|
 | S95 | `notes[0]` | The card shows each state as a dot, ranked from the highest rate to the lowest, and names the two states the title names; the table below gives every state’s rate, as Rule 14.18’s dot plot does. | The card shows each state as a dot, ranked from the highest rate to the lowest, and labels only the two states in the title; the table below gives every state’s rate, as Rule 14.18’s dot plot does. | "names … names" twice in one clause |
-| S95 | the open dots' key line on the square crop (the design director's DD-I23 leaves it to me) | Prisons and jails form one system, so the rate includes jail populations | Prisons and jails form one system, so the rate includes jails | The data lead's R4-4 condition keeps S19's key words on the card, so only a trim that keeps the fact will do: "jails" says what "jail populations" says, 11 characters shorter. The rest of DD-I23's room comes from the title's size, which is the design director's and yours |
+| S95 | **Withdrawn at 21:46:** the key line comes from S19's own labels, not a field of S95's. The open dots' key line on the square crop (the design director's DD-I23 leaves it to me) | Prisons and jails form one system, so the rate includes jail populations | Prisons and jails form one system, so the rate includes jails | The data lead's R4-4 condition keeps S19's key words on the card, so only a trim that keeps the fact will do: "jails" says what "jail populations" says, 11 characters shorter. The rest of DD-I23's room comes from the title's size, which is the design director's and yours |
+
+### Words pass, the infographics maker finished (D3-669), 21:45 to 21:46 UTC
+
+The infographics maker reported at 21:45 ("Built and checked; reporting"). I read every reader field of S89 to S95 and entries 14.135 to 14.141 again as they stand, by dump and by hand, with the lint over them, and wrote straight into three word fields:
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| S91 | `title` | …the Virgin Islands; judges pick bankruptcy judges for 14 years and full-time magistrate judges for eight. | …the Virgin Islands; courts pick bankruptcy judges for 14 years and full-time magistrate judges for eight. | The "judges … judges" echo; a court of appeals picks bankruptcy judges and a district court its magistrate judges. Still 29 words, and still MI-7's claim, true of every seat |
+| S93 | `alt` | …with its eleven parts numbered… | …with its 11 parts numbered… | Figures for 10 and up (H06) |
+| S95 | `notes[0]` | …and names the two states the title names; … | …and labels only the two states in the title; … | "names … names" in one clause |
+
+Left as they are: S95's open dots' key line, which the card takes from S19's own labels rather than a field of S95's, so trimming it would change a finished board 1 chart (my 21:42 row is withdrawn on that ground; DD-I23's room comes from the title's size). S89's and S91's source line endings wait on the research lead (ED4-4, ED4-5). Every other row through 21:42 is applied as written.
+
+Checks: `apply.py` (each phrase once in its field, only that field moved, by parse); `oa-chart.mjs build s91 s93 s95`, sweep on: 3 PASS, 0 faults, three check files; `maker_i_round4_derive.py --figures`: all passed, the data folder unchanged; `phase3_ch14_build.py --rounds 1,2,3,4`: 141 rules, 0 faults.
 
 ### What the infographics maker applied (its 21:39 notes, read at 21:40 UTC)
 
@@ -272,4 +286,5 @@ Every row through 21:35 is applied as written, by its own list: the first looks,
 - Created: this file.
 - Modified: `work/build/chart-kit/specs/s37.json` (the `typography` key, three lines, ED4-1).
 - Modified: `work/build/scripts/phase-3/phase3_ch14_rules_build.py` (group 9's line), which rewrote `work/build/guide/entries/14-chapter.json` (that one line); the other entries 14.1 to 14.14, the plates and the opener were rewritten byte for byte as they stood.
+- Modified, the infographics maker's pass (D3-669), words only: `work/build/chart-kit/specs/s91.json` (title), `s93.json` (alt), `s95.json` (note 1).
 - Modified: `phase3_ch14_rules_build.py` again (group 17's line), which rewrote `14-chapter.json` (that line) and `work/build/guide/specimens/s-14-opener.html` (groups 9 and 17 linked, once the chapter build printed them). The engineer's `phase3_ch14_build.py`, run as `--rounds 1,2,3,4`, rewrote `work/build/guide/chapters/14-data-visualization.json` with the two lines, as every owner's run does (see the slip under "Group lines 9 and 17").

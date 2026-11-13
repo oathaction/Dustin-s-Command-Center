@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:47 UTC. S90, S92, S94 and S95 re-read after the design director's second read: still signed off. Every round 4 item is now signed off, with 15.20's R-04 state resting on the accessibility lead's behavior test. Left: the final note under (g) after the closing strict build, if the main session asks.
 - 21:46 UTC. DR-265 and Rules 15.19 to 15.21 signed off (15.20's R-04 state rests on the accessibility lead's behavior test). Next: re-read S90, S92, S94 and S95 after the design director's second read.
 - 21:44 UTC. D4-3 signed off: S12, S16 and S78 code all 51 states at 326 px. Next: the systems designer's DR-265 plates and 15.19 to 15.21.
 - 21:43 UTC. S95's date answered: "the end of 2023" meets the R4-4 condition.
@@ -31,15 +32,12 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Summary
 
-Rulings (a) to (g) are final for drawing; owners read them directly. Sign-offs follow as owners report.
+Every round 4 item is signed off as of 21:47 UTC. Owners read "Rulings" and "Sign-offs" directly.
 
-- **(a) Named marks.** No red point in round 4. Subject ink on S85's 10 members, S86's special districts (if the title names them) and S95's Mississippi and Massachusetts; nothing on the other eight, which answer with a path or a set.
-- **(b) Inks** per form, every distinction carried by fill against outline, position or words.
-- **(c) Grade lines.** Every title is a Finding; a law's or snapshot's date prints once, in the grade line.
-- **(d) R4-2's measure signed off;** 13,172 bytes a plate is round 4's ceiling once the tile lands.
-- **(e) DR-265's titles** wrap, then re-lay, then take a chip with a keyed title; never cut.
-- **(f) 15.19 steps Loop R1; 15.20 offers R-03 and R-04 on Loop R4a;** 15.21 recommended on Connection L55. Chapter 15's Rule 01.9 holds at 7 of 30 in Elections.
-- **(g) Rule 01.9 and DR-229 hold;** 108 examples, nothing moves.
+- **Rulings (a) to (g)** posted by 20:54. No round 4 plate takes the red point. Every title is a Finding, with a law's or the atlas's date printed once, in the grade line. 15.19 steps Loop R1. 15.20 offers R-03 and R-04 on Loop R4a. 15.21 shows L55. Rule 01.9 holds in chapter 14 (108 examples, largest domain 16) and chapter 15 (30 examples, Elections 7).
+- **Signed off:** R4-2's measure and S12's stacked tile; the phone codes on S12, S16 (code column, D4-1) and S78; S85 to S95; maker A's entries 14.79 to 14.84 and both sketches; DR-265 and DR-267's titles; Rules 15.19 to 15.21 (15.20's R-04 state rests on the accessibility lead's behavior test).
+- **Other rulings:** ED4-1 (S37's curl), Q-A1 (CL-050's word and chip), R-03's route words, R-2 (grade-line dates; S94's 7508A note), IM-E5 and IM-E6 (S95's card), DD-A5, DD-A6 and DD-I7 (yes), S95's date. DR-271 turned every byte figure into a reported one.
+- **V7 items:** R-3 is V7.1 item 29 already. The research lead proposes a `routes[].who` row for board 3.
 
 ## Rulings
 
@@ -147,6 +145,12 @@ The engineer may land items 1 to 3; the cartographer then writes `s12.json` (`"s
 ### Q-A1, S85's word and chip: yes, "Worker bargaining power" with the chip "Variable A2" (21:01 UTC, for maker A and the editor)
 
 CL-050 is an atlas symbol, not a topic symbol: chapter 10's label table files it as Variable A2 (`v7_chip` "Variable A2", label "Worker bargaining power"), and Rule 10.6 sets an atlas drawing only beside the atlas's own name for it, followed by its typed chip. So S85 prints "Worker bargaining power" and the chip "Variable A2" beside the 48 px drawing, both checked by script against `work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json`, with the check named in `notes_internal`. This keeps DR-266 and Rule 10.1 exact: by script, Variable A2's own indicator in the atlas is "Union density (BLS, 10.0% 2025)", the very figure S85 draws, so the drawing means its own variable and nothing else. The chip is a reference line in the label style, which the brief's call 5 allows. DR-265 does not reach it: S85 is not a loop drawing, and chapter 10's icon names stay as approved, so the V7 title "Workers' bargaining power" does not replace the label here. Add `CL1514` to the spec's `v7.ids`, since the figure is that claim's.
+
+### S90, S92, S94 and S95 after the design director's second read: still signed off (21:47 UTC)
+
+`build s90 s92 s94 s95 --widths 1440,390 --no-sweep` to my scratch (the infographics maker ran the sweep): all PASS, 0 faults.
+- **S90, S92 and S94:** I read each plate's whole text from the built HTML against the files and my sign-offs. No figure, limit, date, kind or consequence moved. S90's eight facts and notes, S92's eight steps and limits, and S94's 16 events with their kinds and consequences are as signed off. S94's reworded title ("Of 16 budget and tax deadlines federal law sets on 13 days of 2027, seven carry a consequence ...") keeps MI-5's count. Its key marks the two kinds of date in the file's words. Looked at: S94 Newsprint 1440.
+- **S95:** by script on all four SVGs and PNGs after the new 64 px margins and the square's 40 px title: 50 columns on each crop, a 2.27 px gap between dots at true size, the open rings at 3.08 px, S19's grade line, "Mississippi 652", "Massachusetts 96" in its band and the all-states line at 318 on every crop, and PNGs of exactly 1080 by 1350 and 1080 by 1080. The square's plot runs about 180 px for 0 to 700, still S19's scale. IM-E5's five conditions and my R4-4 conditions hold. Looked at: the square on Newsprint. The 400 gridline that runs under "All states together: 318" (DD-I21, the engineer's) is a craft fix; it moves no figure, so it needs no second read from me.
 
 ### DR-265 and DR-267's titles, and Rules 15.19 to 15.21: signed off (21:46 UTC, for the systems designer)
 

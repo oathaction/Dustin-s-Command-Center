@@ -56,13 +56,13 @@
    "description": "the provision’s own words"
   }
  },
- "printed_source_line": "Source: Robert T. Stafford Disaster Relief and Emergency Assistance Act, 42 U.S.C. 5170 and 5191 (United States Code, 2024 edition), and FEMA’s regulation, 44 CFR part 206, as in force November 9, 2026, United States. Retrieved November 12, 2026. Times are limits in law, not measured waits.",
+ "printed_source_line": "Source: Robert T. Stafford Disaster Relief and Emergency Assistance Act, 42 U.S.C. 5170 and 5191 (United States Code, 2024 edition), and FEMA’s regulation, 44 CFR part 206, as in force November 9, 2026, United States. Retrieved November 12, 2026. Times are the law’s limits.",
  "ledger_row": "P7-305",
  "domain": "D04",
  "domain_note": "V7 I063, Overlapping federal, state and local roles leave gaps (data lead sign-off, point 4)",
  "states": [],
  "source_line_variants": {
-  "in_force_in_grade": "Source: Robert T. Stafford Disaster Relief and Emergency Assistance Act, 42 U.S.C. 5170 and 5191 (United States Code, 2024 edition), and FEMA’s regulation, 44 CFR part 206, United States. Retrieved November 12, 2026. Times are limits in law, not measured waits."
+  "in_force_in_grade": "Source: Robert T. Stafford Disaster Relief and Emergency Assistance Act, 42 U.S.C. 5170 and 5191 (United States Code, 2024 edition), and FEMA’s regulation, 44 CFR part 206, United States. Retrieved November 12, 2026. Times are the law’s limits."
  },
  "notes": [
   "U.S. Code currency, checked November 13, 2026: each section this file draws reads the same, word for word with spaces set aside, in the Office of the Law Revision Counsel’s release current through Public Law 119-138 (November 3, 2026) as in the 2024 edition govinfo serves; Public Laws 119-139 to 119-142, which Congress.gov lists after it, amend none of them (42 U.S.C. 5170 and 5191)."
