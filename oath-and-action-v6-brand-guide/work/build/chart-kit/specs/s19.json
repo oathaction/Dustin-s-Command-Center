@@ -43,7 +43,8 @@
         "row_header": true,
         "words": {
           "State": "All states together"
-        }
+        },
+        "words_pass": true
       },
       {
         "field": "rate_2023",

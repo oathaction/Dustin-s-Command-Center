@@ -53,7 +53,8 @@
           "Medicare drug plans' pharmacy benefit managers may take bona fide service fees only, among other requirements": "Medicare drug plans’ pharmacy benefit managers may take bona fide service fees only, among other requirements",
           "Standards for Medicare drug plans' contract terms with pharmacies, with accountability for pharmacy benefit managers": "Standards for Medicare drug plans’ contract terms with pharmacies, with accountability for pharmacy benefit managers",
           "Deadline for HHS to set a standard reporting format and final rules": "Deadline for the Department of Health and Human Services to set a standard reporting format and final rules"
-        }
+        },
+        "words_pass": true
       },
       {
         "field": "date_basis",

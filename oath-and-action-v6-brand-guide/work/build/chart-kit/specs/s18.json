@@ -36,7 +36,8 @@
         "row_header": true,
         "words": {
           "Third fifth": "Middle fifth"
-        }
+        },
+        "words_pass": true
       },
       {
         "field": "share_of_households_pct",
