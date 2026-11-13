@@ -31,18 +31,25 @@ Under DR-271 the share and the 15,000-byte line are figures the build reports; e
 | DD-I1, Must | Yes | The emergency request's link drops down the middle of the lane to its left (the Local lane), clear of every lane rule, then into the box's side |
 | DD-I2, Must | Yes | Every head on one line on one baseline (the form draws lanes only where each head fits on one line and the lane holds its least width); heads now "Local", "State and tribal", "Federal", "Residents"; lanes sized by a stated rule in `notes_internal`: a lane's share follows the steps it holds alone (0.6, 1.2, 1.2, 1.0) |
 | DD-I3, Should | Yes | Set-in boxes at 44 px on a phone, so each link shows a 16 px stem before its head |
-| DD-I4, Should | Yes, in S89's own boxes | The form narrows a box's measure a step at a time, by up to a third, until no word stands alone on a block's last line ("help" now ends "individual help"; "The President decides" holds two words a line); "the law’s limit" and "30 days" held. The same on S95's title |
+| DD-I4, Should | Yes, in S89's own boxes, not through `typography.pretty` | The form narrows a box's measure a step at a time, by up to a third, until no word stands alone on a block's last line ("help" now ends "individual help"; "The President decides" holds two words a line); "the law’s limit" and "30 days" held. The same on S95's title |
 | DD-I5, Should | Yes | "30 days" held (`typography.hold`) |
 | DD-I6, Must | Yes | A dashed context-ink rule across the sheet's foot and "The page continues with section 2." under it, inside the drawing; the old note is gone |
 | DD-I7, Must | Yes, with the data lead's yes (21:25) | Parts numbered in the page's reading order through the spec's sort; the table's Number column maps the same; the file is as stored |
 | DD-I8, Should | Yes | A running head that wraps sets "139 STAT. 55" on a line of its own, right-aligned |
 | DD-I9, Should | Yes, with the editor's ruling (21:24) | The page's doubled single marks set as double quotation marks (`typography.replace`, printed words only); the note says so beside the dash |
-| DD-I10, DD-I11 | Waiting | The engineer's facts variant (the director's own kit request) |
+| DD-I10, Must; DD-I11 | Yes | The engineer's `oac-h-plain` and the source line at each fact's foot, set by S90's `labels.plain`: each fact under a hairline, no frame |
 | DD-I12, Must | Yes | The engineer's shared-row grid (`.oac-h-rows`), set by S91's `labels.rows`; stacked on a phone, each card flows as before |
-| DD-I13, DD-I14 | Waiting | IM-E7 items 1 and 2 (an eyebrow class; the step's measure is the kit's 38em) |
-| DD-I15, Should | In part | The limit's own words in bold; the 8 px above waits on IM-E7 item 2 |
+| DD-I13 | Yes | The optional step's opening line and the actor line print as `p.oac-h-k` (IM-E7) |
+| DD-I14 | The kit's | The step's lines are `oac-h-body` at the kit's 38em; the measure is the engineer's CSS |
+| DD-I15, Should | Yes | The limit's own words in bold, on its own `p.oac-h-limit` line with 8 px above (IM-E7) |
 | DD-I16, Must | Yes | Each kind of date on a line of its own, its consequence on the next |
-| DD-I17 to DD-I19 | Waiting | IM-E7 items 3 to 5 |
+| DD-I17 | Yes | Each kind of date after the year's own square (`oac-h-sq`, `oac-h-sq-strong`), and a key line with the two squares beside the list's words |
+| DD-I18 | No, with a reason | `h.mark`'s fluid mark may hold no words (the kit fails one that does), and the year's month names are its labels; the year stays drawn at 224 px, the narrowest art box |
+| DD-I19 | Yes | The kit sets `oac-h-dates` as two columns from 480 px |
+| DD-I21, Must | The engineer's | The 400 gridline through "All states together: 318" sits in the dot plot's card mode |
+| DD-I22, Should | Yes | One 64 px margin on both crops (`labels.card_margin`, default 64) |
+| DD-I23, Should | In part | The square's title at 40 px gives its plot about 180 px; the key's words stay S19's, as ruling (b) sets them |
+| DD-I24, Should | Yes | "day-to-day" held |
 | DD-I20, Should | Yes | "fiscal 2028" held |
 
 ### The editor's words: what I applied

@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:44 UTC. D4-3 signed off: S12, S16 and S78 code all 51 states at 326 px. Next: the systems designer's DR-265 plates and 15.19 to 15.21.
 - 21:43 UTC. S95's date answered: "the end of 2023" meets the R4-4 condition.
 - 21:39 UTC. D4-2 signed off: S16's phone codes complete. S12's and S78's wait on C4-E1.
 - 21:38 UTC. S95, S91 and S90 signed off; all eleven specimens, S85 to S95, and both sketches are signed off. Left: the phone codes, DR-265's captures and 15.19 to 15.21.
@@ -145,6 +146,10 @@ The engineer may land items 1 to 3; the cartographer then writes `s12.json` (`"s
 ### Q-A1, S85's word and chip: yes, "Worker bargaining power" with the chip "Variable A2" (21:01 UTC, for maker A and the editor)
 
 CL-050 is an atlas symbol, not a topic symbol: chapter 10's label table files it as Variable A2 (`v7_chip` "Variable A2", label "Worker bargaining power"), and Rule 10.6 sets an atlas drawing only beside the atlas's own name for it, followed by its typed chip. So S85 prints "Worker bargaining power" and the chip "Variable A2" beside the 48 px drawing, both checked by script against `work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json`, with the check named in `notes_internal`. This keeps DR-266 and Rule 10.1 exact: by script, Variable A2's own indicator in the atlas is "Union density (BLS, 10.0% 2025)", the very figure S85 draws, so the drawing means its own variable and nothing else. The chip is a reference line in the label style, which the brief's call 5 allows. DR-265 does not reach it: S85 is not a loop drawing, and chapter 10's icon names stay as approved, so the V7 title "Workers' bargaining power" does not replace the label here. Add `CL1514` to the spec's `v7.ids`, since the figure is that claim's.
+
+### D4-3, S12's and S78's phone codes: signed off (21:44 UTC). The phone codes (D3-1553) are complete.
+
+**Signed off.** My own `build s12 s78 --widths 358,328` on the landed C4-E1 token (`--oa-chart-tile-phone-gap: 2px` in `tokens.css`), sweep on: both PASS, 0 faults. By script on the exported SVGs: at the 326 px phone drawing, S12 and S78 each print all 51 codes on Newsprint. At 296 px each prints 41, as before the change, and the drawing names the other ten under "Not labeled at this width", as call 6 asks. The tile gap changes no figure, step, ink or word. S07, S12, S16 and S78 are on board 3's list of changed board 1 drawings, as the cartographer lists them. **The cartographer's round 4 work is signed off.**
 
 ### S95's date: "the end of 2023" meets the condition (21:43 UTC, for the infographics maker and the design director)
 
