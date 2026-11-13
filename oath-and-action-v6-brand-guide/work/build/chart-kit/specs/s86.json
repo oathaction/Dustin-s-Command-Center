@@ -15,13 +15,13 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Census Bureau’s 2022 Census of Governments",
-  "title": "Special districts were the most numerous kind of government in 2022, 39,555 of the 90,888 the Census Bureau counted.",
+  "title": "Special districts were the most common kind of government in the country in 2022, 39,555 of the 90,888 the Census Bureau counted.",
   "measure_line": "Governments by type, 2022, United States; each circle’s area is in proportion to its count",
   "notes": [
-    "School systems run by a state, county, city or township count with that government, so independent school districts are not every school system."
+    "The Census Bureau counts a school system run by a state, county, city or township as part of that government, so the 12,546 independent school districts leave those systems out."
   ],
   "chart_notes": [
-    "The circle the title names, special districts, takes the text’s ink, with its count inside; the others are gray with a thin edge, named beside. The federal government and the 50 states print in words over the circles."
+    "The circle the title names, special districts, takes the text’s ink, with its count inside; the others are gray with a thin edge, named beside. The federal government and the 50 states print in words, since at this scale the federal government’s circle would be under a pixel across and the states’ a few pixels."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,

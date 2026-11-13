@@ -68,7 +68,7 @@ def s85():
     check('S85', allw['members_pct'] == 10.0 and n == 10, '10.0 percent draws 10 of 100')
     check('S85', s['title'].startswith('One in ten') and '2025' in s['title'], 'one in ten, 2025 (title)')
     note = s['notes'][0].replace(' ', ' ')
-    check('S85', by[(1983, 'All wage and salary workers')]['members_pct'] == 20.1 and '1983, 20.1 percent' in note, '1983, 20.1 percent (note 1)')
+    check('S85', by[(1983, 'All wage and salary workers')]['members_pct'] == 20.1 and '20.1 percent in 1983' in note, '20.1 percent in 1983 (note 1)')
     check('S85', by[(2025, 'Private sector')]['members_pct'] == 5.9 and '5.9 percent' in note, 'private sector 5.9 percent (note 1)')
     check('S85', by[(2025, 'Public sector')]['members_pct'] == 32.9 and '32.9 percent' in note, 'public sector 32.9 percent (note 1)')
     check('S85', allw['members_millions'] == 14.7 and '14.7 million' in note, '14.7 million members (note 1)')
@@ -117,7 +117,8 @@ def s86():
     # the county circle at the narrowest phone drawing: the form's phone radius is at most 84 px and at least the width
     # left by the longest name; at 256 px the largest is at least 56 px, so counties take at least 0.277 of it
     check('S86', math.sqrt(local['County governments'] / local[big]) * 56 * 2 >= 12, 'counties at least 12 px across at 256 px')
-    check('S86', 'school' in s['notes'][0].lower() and 'state, county, city or township' in s['notes'][0], 'school systems run by a state, county, city or township (note, row 116)')
+    check('S86', 'school system' in s['notes'][0] and 'state, county, city or township' in s['notes'][0], 'school systems run by a state, county, city or township (note, row 116)')
+    check('S86', g['Independent school district governments'] == 12546 and '12,546 independent school districts' in s['notes'][0].replace('\u00a0', ' '), '12,546 independent school districts (note)')
 
 
 def regions():

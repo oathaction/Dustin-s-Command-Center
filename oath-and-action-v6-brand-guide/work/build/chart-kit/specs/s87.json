@@ -18,9 +18,9 @@
   "title": "In 2025, 189.4 million people had private health coverage alone, 95.4 million had public coverage alone, 23.8 million had both and 28.3 million had neither.",
   "measure_line": "People by health insurance coverage, millions and percent of everyone, 2025, civilian noninstitutionalized population, United States",
   "notes": [
-    "The two circles are drawn the same size, so their areas carry no count; the chart for Rule 14.82 draws each group at its true size.",
+    "The two circles share one size, so their areas carry no count; Rule 14.82’s chart draws each region at its true size.",
     "The four groups are Oath & Action’s sums and differences of the Census Bureau’s published counts, so the margins of error in the table are approximate.",
-    "The Bureau counts coverage through an employer, coverage bought directly and TRICARE as private, and Medicare, Medicaid, other means-tested coverage and VA care as public."
+    "The Bureau counts coverage through an employer, coverage bought directly and TRICARE, the military’s health plan, as private, and Medicare, Medicaid, other coverage for people under an income limit and care from the Department of Veterans Affairs as public."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,

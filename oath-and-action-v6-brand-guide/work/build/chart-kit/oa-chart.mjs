@@ -575,10 +575,9 @@ async function card_captures(items, o) {
                 if (rc.left < ab.left - 0.5 || rc.right > ab.right + 0.5) out.push(`${g}: words past the cards' box: "${say(n.textContent)}"`);
               }
             }
-            art.querySelectorAll('*').forEach(el => {
-              if (el.closest('svg') || !el.clientWidth) return;
-              if (el.scrollWidth > el.clientWidth + 1) out.push(`${g}: a <${el.tagName.toLowerCase()}${el.className ? ' class="' + el.className + '"' : ''}> whose words overflow it: "${say(el.textContent)}"`);
-            });
+            // the innermost box whose words overflow it, once
+            const ov = [...art.querySelectorAll('*')].filter(el => !el.closest('svg') && el.clientWidth && el.scrollWidth > el.clientWidth + 1);
+            ov.filter(el => !ov.some(d => d !== el && el.contains(d))).forEach(el => out.push(`${g}: a <${el.tagName.toLowerCase()}${el.className ? ' class="' + el.className + '"' : ''}> whose words overflow it: "${say(el.textContent)}"`));
             for (let i = 0; i < lines.length; i++) for (let j = i + 1; j < lines.length; j++) {
               const a = lines[i].rc, b = lines[j].rc;
               if (lines[i].n === lines[j].n) continue;
