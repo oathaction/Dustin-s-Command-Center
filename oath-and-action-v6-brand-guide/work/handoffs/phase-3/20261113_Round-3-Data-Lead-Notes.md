@@ -14,6 +14,15 @@ Rulings (a) to (g) below are final for drawing. Makers, the cartographer, the ed
 - **(f) Change 9's classes** confirmed from the file: 36, 33, 85 and 259 seats by margin, 22 unopposed, 14 decided another way.
 - **(g) Rule 01.9 and DR-229 hold after round 3; nothing moves.** Row 109 passes D3-689's test.
 - **After RL-3 (second run).** S73 draws line 22 transfers alone for both committees: $899.4 million to 53 committees and $273.8 million to two. The refunds go apart in the table and the operating expenses into a note. Widths stay; the title changes. RL-1, RL-2 and DL-E1 are signed off, with S81 national as the engineer's variant B.
+- **Cartographer (fifth run).** S78, S79, S81 and S83 are signed off, with nine of twelve entries and the flow map sketch. D-2 is accepted. D-1: the avoid sketch draws in gray with the colors named in words, not in the diverging pair. C-1 to C-4 ask for changes:
+  - S80's and S82's closest races read as the other party's seats, so the margins move to Verdigris steps 2 to 5;
+  - S84 fails at 256 px;
+  - S84's claim ID needs its chip;
+  - S16 draws no land for Alaska and Hawaii.
+- **Maker A (fourth run).** S67, S68 (but for the diamond), S69 (but for two small items) and S71 are signed off, with six of eight entries and the mind map sketch. Q-A1: S68's lines of authority take Rule 15.5's open diamond. S70's 673 plus 4 checks with D3-1096. MA-1 to MA-8 ask for changes:
+  - S66's title and its White House review branch;
+  - S70's title, and its grouped table, which lacks states;
+  - S72's grouped table, which names no member: name the 20 who broke from their party or did not vote.
 - **Maker B (third run).** S75 is signed off, and S74 and S77 are signed off but for one small item each (MB-6, MB-7). Nine of maker B's twelve entries and five of its six sketches are signed off. Its four open items, RB3-D1 to RB3-D4, are signed off, and RL-4 changes nothing. MB-1 to MB-9 ask for changes:
   - S65's and S76's titles each name two findings;
   - S73's word boxes read as a measure;
@@ -63,7 +72,7 @@ Round 2's five principles hold unchanged (round 2 notes, "How the test runs this
 - **S65, funnel.** Bars aligned left from one baseline, so each stage reads against the base by length; each stage sits inside the one before. Stages in the light fill with their counts and shares of renewals due printed; the named drop in the subject ink; the other drop (found ineligible, 6,948,106) in the track ink with the context edge, named. Pending (4,851,632) sits apart below the stages, set off by a gap, in the track ink with the context edge, named "Pending, set apart". Automatic and form renewals (28,979,658 and 19,988,340) split in the table only. No red.
 - **S66, process diagram.** The main path (draft, proposed rule, comment, final rule, effective) in node boxes with a subject-ink edge, label in the text ink, links in the subject ink with arrowheads. The three places someone else steps in (White House review, Congress's disapproval, court review) as branch nodes with a context-ink edge, links in the context ink with arrowheads, each named with its legal basis in the table. No red. The date of the law prints with the source.
 - **S67, decision tree.** Every question node and link in the subject ink at link weight, all branches equal, since the reader's state picks the path. Leaves in the light fill with the context edge, each with its count of states and their names in the table: the ban reaches city elections (17 full bans and Tennessee), Ohio's partial opening with its note, no ban (check the state's home-rule law, the last leaf). No red.
-- **S68, who-decides.** Position carries the split: a band "Can change the rules" (six) above a band "Apply the rules" (two: PJM and other grid operators; the investor-owned utility), with columns by V7's `jurisdiction` (federal, regional, state, local, private). One node style for all eight, a subject-ink edge with the text ink inside. Lines of authority (FERC approves PJM's rules; the legislature sets the commission's powers) in the context ink with an arrowhead, no plus or minus and no loop (R3-6). No solid against outline, which the guide keeps for the sides of a vote.
+- **S68, who-decides.** Position carries the split: a band "Can change the rules" (six) above a band "Apply the rules" (two: PJM and other grid operators; the investor-owned utility), with columns by V7's `jurisdiction` (federal, regional, state, local, private). One node style for all eight, a subject-ink edge with the text ink inside. Lines of authority (FERC approves PJM's rules; the legislature sets the commission's powers) in the context ink with an arrowhead, no plus or minus and no loop (R3-6). (Corrected: the line ends in Rule 15.5's open diamond, not an arrowhead; see Q-A1 under "Sign-off, maker A".) No solid against outline, which the guide keeps for the sides of a vote.
 - **S69, org chart; S70, hierarchy tree.** Nodes with a subject-ink edge, links in the context ink (elbow), all one ink. S69 draws no party split; majority and minority seats sit in the table under the Clerk's words. S70 prints each court's authorized judgeships on its node; the territorial courts take the light fill with the context edge and the words "not an Article III court"; the Federal Circuit sits apart from the twelve regional circuits, named.
 - **S71, comparison grid.** Words in the text ink on the ground; rules between rows in the gridline ink. If the count of reforms per route draws as a bar, it is one series in the subject ink with each value printed. No fills by category.
 - **S72, roll-call grid.** Every seat in the party-mark ink. Yes solid; no in outline at S61's 1.2 px; not voting in the light fill with no edge; vacant seats as ghost outlines (D3-16) named "vacant". Grouped by position: Democrats from the left, then independents as the Senate record lists them, folded into no party, then Republicans (S48's order); within each group yes, no, not voting. Each vote's question prints in the record's words. By script: Senate, vote 618, "On Passage of the Bill H.R. 5371", 60 to 40 (52 Republicans, 7 Democrats and 1 independent yes; 38 Democrats, 1 Republican and 1 independent no); House, "On Motion to Concur in the Senate Amendment", 222 to 209 (216 Republicans and 6 Democrats yes; 207 Democrats and 2 Republicans no; 1 of each party not voting), so 433 seats voted or did not and 2 were vacant.
@@ -84,7 +93,7 @@ Round 2's five principles hold unchanged (round 2 notes, "How the test runs this
 - **S78 and S81, sequential.** Four classes on sequential Verdigris steps 1, 3, 4 and 5 (on Newsprint, 1.21, 2.46, 3.69 and 5.87 to 1 against the ground; neighbors 2.0, 1.5 and 1.6 to 1). Step 1 regions take the context edge. Classes per (c). Labels inside regions in the step's label ink.
 - **S84, small multiples.** Three classes, in the order of the wage: below $7.25 or no state minimum (step 1 with the edge), at $7.25 (step 3), above $7.25 (step 5). The same classes, inks and key in all four panels; each panel named with its date and its counts. By script from `dol-state-minimum-wage-classes`: January 1, 2010, 15 above, 26 at, 10 below or none; 2014, 24, 19, 8; 2019, 30, 14, 7; 2024, 31, 13, 7 (DC counted with the states). The sentence beneath reads V7 claim CL1516: 30 states and DC above $7.25, 13 states at $7.25, Georgia and Wyoming at $5.15 and five states with no minimum wage law, July 1, 2026.
 - **S79, locator.** Lake Isabella as the red point with its keyline (a); Bakersfield, the county seat, as a 4 px dot in the text ink, named, for scale; Kern County in the light fill with the context edge, named; California in the track ink with the context edge; neighboring states as ghost outlines. A small United States inset in a frame with California in the light fill and the view's frame drawn. California counts once.
-- **S80 and S82, the district map and the district tile map.** Party by position: two panels, Democrats first (S48's order), each named for its party and the seats it won, "Democrats won 215 seats" and "Republicans won 220 seats" on S82, and "Democrats won 6 of 13" and "Republicans won 7 of 13" on S80. A seat fills in its winner's panel and shows as a 1 px ghost outline in the other. Margin by four gray magnitude steps, closer races lighter: under 5 points, step 1 (with the context edge); 5 to under 10, step 2; 10 to under 20, step 3; 20 or more, step 4 (on Newsprint, neighbors differ by 1.56, 2.71 and 1.91 to 1). Unopposed seats take step 4 with a centered dot in the step's label ink, keyed "Unopposed on the ballot, no margin". Seats decided another way (f) take their margin's step with a centered ring in the step's label ink, keyed "Another kind of contest; the table names it". No hue anywhere carries party, Verdigris and Prussian included. Where a tile falls under 10 px, the ring and dot drop and a note names those seats (`phone: "differs"`). The two maps share these classes, marks, key words and order exactly.
+- **S80 and S82, the district map and the district tile map.** Party by position: two panels, Democrats first (S48's order), each named for its party and the seats it won, "Democrats won 215 seats" and "Republicans won 220 seats" on S82, and "Democrats won 6 of 13" and "Republicans won 7 of 13" on S80. A seat fills in its winner's panel and shows as a 1 px ghost outline in the other. Margin by four gray magnitude steps, closer races lighter: under 5 points, step 1 (with the context edge); 5 to under 10, step 2; 10 to under 20, step 3; 20 or more, step 4 (on Newsprint, neighbors differ by 1.56, 2.71 and 1.91 to 1). Unopposed seats take step 4 with a centered dot in the step's label ink, keyed "Unopposed on the ballot, no margin". Seats decided another way (f) take their margin's step with a centered ring in the step's label ink, keyed "Another kind of contest; the table names it". No hue anywhere carries party, Verdigris and Prussian included. Where a tile falls under 10 px, the ring and dot drop and a note names those seats (`phone: "differs"`). The two maps share these classes, marks, key words and order exactly. (Corrected after the drawings: the four margin steps are sequential Verdigris steps 2 to 5, since gray step 1 read as the other party's ghost; see C-1 under "Sign-off, cartographer".)
 - **S83, dot density.** Dots in the subject ink, 1.5 px across, on the land ink with state borders in the context ink at 0.5 px. One dot is 10,000 private-sector paid employees from 480 px up and 50,000 below, the key printing the unit at each width (`phone: "differs"`). Each county draws its count over the unit rounded to the nearest whole dot, placed at random inside the county from the seed the spec records; the note gives the counties that draw no dot (at 10,000, 1,354 counties holding 2,841,136 employees) and says a dot is a count, never an address.
 - **S07, S12, S16 (built).** Inks unchanged; S16 per (e).
 
@@ -228,6 +237,112 @@ November 13, 2026, from 02:04 UTC (clock read from `date -u`). I built S65 and S
 
 S65, S73, S76, entries 14.104, 14.108 and 14.109 and sketch 14.108 are signed off once their items land. I sign off from 1440 and 256 px on both grounds, and from 390 px for MB-3.
 
+## Sign-off, maker A
+
+November 13, 2026, from 02:23 UTC. I built S66 to S72 from the files as they stand with `oa-chart.mjs build s66 s67 s68 s69 s70 s71 s72 --widths 1440,390,296,256 --out <scratch>/kit-r3a`, sweep on: 7 PASS, 0 faults, seven check files read, each with `faults` empty. I looked at the page captures at 1x:
+- every spec at 1440 px on Newsprint and on Charcoal in grayscale;
+- S66, S68 and S72 at 390, 296 and 256 px on Newsprint, with 390 in grayscale;
+- S67 at 390, 296 and 256 px on Charcoal, with 256 in grayscale.
+
+I rendered the mind map sketch on Newsprint and read the eight entries by script. Figures checked by script:
+- S67's 18, 1 and 31 states with DC, and the 18 names;
+- S68's six and two, from PW03;
+- S69's 20 standing, 3 select and 4 joint committees and 109 subcommittees;
+- S70's courts and judgeships;
+- S71's eleven counts against V7's 50 reforms (38 FS, 29 SS, 15 LOC, 11 BI, 7 CRT, 7 FA, 6 FR, 5 ENF, 4 CIV, 3 AV, 1 IC);
+- S72's votes by chamber, party and member.
+
+### Q-A1, S68's lines of authority: the open diamond
+
+S68 takes Rule 15.5's mark: a solid gray line ending in an open diamond, 14 by 11 px, in place of the arrowhead, with no sign and no loop. I correct ruling (b), which said "arrowhead". In the guide's systems grammar an arrowhead ends a connection that acts, and the open diamond ends a line of authority. S68's two lines are lines of authority in the same sense: FERC approves the grid operator's rules, and the legislature sets the commission's powers. One mark must mean one thing in chapters 14 and 15. The note adds that a line ending in an open diamond is a line of authority. S68 prints no verb on its lines, so "decides" is not needed. Entry 14.98's words follow (MA-7). If `K.parts.link` has no diamond end, the engineer adds one from chapter 15's mark (request to the main session). Board 2 sees nothing new: chapter 15 already draws it.
+
+### S70's district count (D3-1096): signed off
+
+By script from `uscode-federal-courts-circuits-districts`:
+- 91 Article III district courts with 669 judgeships, plus 4 shared across districts: 673 under 28 U.S.C. 133;
+- 3 territorial courts with 4: Guam 1, the Northern Mariana Islands 1, the Virgin Islands 2;
+- 94 district courts in all, 13 courts of appeals with 179 judgeships, and 9 justices.
+
+Note 1 prints 673, the four territorial judgeships and no 677 total, as D3-1096 traces them. Each circuit's card counts the territorial court under it in "in its district courts": the Third Circuit's 61 includes the Virgin Islands' 2, and the Ninth Circuit's 112 includes Guam's and the Northern Mariana Islands'. The shaded boxes say so, and the twelve cards sum to 677. Signed off.
+
+### Grouped tables (D3-1097)
+
+- **S69, by committee, each with its subcommittees listed by name and the seats: answers its question** (how the House is divided). Signed off.
+- **S70, by the court that hears appeals: does not yet answer "which federal court hears a case from my state".** Its columns are the court of appeals, the count of courts and the judgeships, so no state appears on the page. MA-8 adds the states.
+- **S72, by chamber and party with counts: answers "how did each party vote", not "how did each member vote".** No member is named on the page. MA-6 fixes it without the 533 rows. 18 members of the two parties voted against most of their party in their chamber or did not vote, and the two independents split. Name those 20 in the grouped table, and every other member's vote follows from the party's count. By script: in the Senate, Democrats Cortez Masto, Durbin, Fetterman, Hassan, Kaine, Rosen and Shaheen voted yes, Republican Rand Paul voted no, and independents King voted yes and Sanders no. In the House, Democrats Cuellar, Davis (NC), Golden (ME), Gray, Perez and Suozzi voted yes, and Watson Coleman did not vote; Republicans Massie and Steube voted no, and McCaul did not vote. That is about 450 bytes of names.
+
+### Signed off
+
+- **S67, S68 (but for MA-7), S69 (but for MA-3 and MA-4), S71.** S71's three-clause title stands. "Most bills need 60 senators to end debate" agrees with its own row, and the count of 38 checks.
+- **Entries** 14.96, 14.97, 14.99, 14.100, 14.101 and 14.103. Entry 14.98 waits on MA-7 and 14.102 on MA-6.
+- **The mind map sketch (14.103),** 2,437 bytes. One topic with four parts and an idea beside each, labeled illustrative; the alt says the lines claim no order or size. Signed off.
+
+### Requests to maker A
+
+- **MA-1, S66's title.** "Congress can strike the rule down" leaves out the President. The file's own row says the joint resolution "passes both chambers and is signed, or a veto is overridden", and the box says "Congress and the President". For example: "and Congress and the President can strike the rule down or a court can set it aside once it is final."
+- **MA-2, S66's White House review.** The branch reads "Before step 2, for some rules". The file's row says the agency sends a significant draft "for review before publishing", which Executive Order 12866 asks at the proposed and the final stage alike. Join the branch to both steps 2 and 4, or label it "Before steps 2 and 4, for significant rules", and the table's "where it leads" says the same.
+- **MA-3, S69's grade line.** "As of November 12, 2026" is the retrieval date, while the measure line, caption and sidecar give the file of November 3, 2026. Write "the Clerk of the House’s committee list of November 3, 2026".
+- **MA-4, S69's select subcommittee.** The title counts three select committees, and one of them is the "Select Subcommittee to Investigate the Remaining Questions Surrounding January 6, 2021", which the Clerk's file lists as a committee of its own (code QJ00). One short note: "The Clerk’s file lists the select subcommittee on January 6, 2021 as a committee of its own, and the chart follows it."
+- **MA-5, S70's title.** "A federal case starts in one of 94 district courts" claims every federal case. Some start elsewhere, as the Federal Circuit's own card says for appeals by subject. Keep the claim to what the drawing draws, for example: "The 94 district courts try federal cases, an appeal goes to the court of appeals for the region, and the Supreme Court sits over all 13 courts of appeals."
+- **MA-6, S72's table.** Add a column, "Voted the other way or did not vote", naming each member in the group whose vote differs from the group's majority, with their state, as the record gives the name. It can come from a derived column in your derive script, with a sidecar and the research lead's check, or from a filtered `list` the engineer adds. The caption adds: "Every member not named voted with most of their party in that chamber; the download lists all 533 members." Entry 14.102 adds one line: "Where the table must stay short, group it by party and name every member who voted the other way, so each member’s vote can still be read."
+- **MA-7, S68 and entry 14.98 (Q-A1).** Lines of authority end in Rule 15.5's open diamond, and the note says so. Entry 14.98: "as a gray line ending in an open diamond, from the body that decides to the one it governs, as chapter 15 draws authority (Rule 15.5)".
+- **MA-8, S70's table.** Add each group's states and territories, distinct and in the drawing's order, through `agg: "list"` (with a distinct option from the engineer if the list repeats New York's four districts), so the page answers "which court hears a case from my state". By my estimate that is under 1 KB.
+
+S66, S70, S72 and entries 14.98 and 14.102 are signed off once their items land. I sign off from 1440 and 256 px on both grounds.
+
+## Sign-off, cartographer
+
+November 13, 2026, from 02:31 UTC. I built S78 to S84 and S16 from the files as they stand with `oa-chart.mjs build s78 s79 s80 s81 s82 s83 s84 s16 --widths 1440,390,296,256 --out <scratch>/kit-r3c`, sweep on: 7 PASS and **S84 FAIL with 2 faults**, eight check files read. I looked at the page captures at 1x:
+- every map at 1440 px on Newsprint, on Charcoal and on Newsprint in grayscale;
+- S81 and S82 at 390 px on both grounds, 296 px on Newsprint, and 256 px on Charcoal and in grayscale.
+
+I rendered both sketches on Newsprint and in grayscale and read the twelve entries' rule text by script. Figures checked by script:
+- S78's classes, 9, 11, 20 and 11;
+- S79's 36.9 miles, and the photograph's date and place from its record;
+- S80's Michigan counts;
+- S82's 36 races under 5 points, and 220 and 215 seats;
+- S81's 585, 371 and $80,734;
+- S83's top 100 counties holding 66,244,044 of 132,151,802 (50.1 percent);
+- S84's 15 above $7.25 in 2010 and 31 in 2024, DC in both.
+
+### Signed off
+
+- **S78.** Fixed broadband with breaks at 71, 75 and 79 percent, the class note in my words, the nation set apart above the map, DC beside Maryland, the insets framed. On Charcoal the lowest step's states keep their 1 px edges and read as shapes. The title's class counts rest on the estimates the note qualifies.
+- **S79.** Lake Isabella as the view's one red point, Bakersfield for scale, Kern County in the light fill with its edge, neighbors as ghost lines, the inset framed, and a scale bar. "About 37 miles northeast" is 36.9 miles between the Gazetteer's points, and the note says the distance is a straight line. The photograph's date and place, March 27, 2014 in Lake Isabella, match its record.
+- **S81.** Four classes at $50,000, $65,000 and $80,000, the note's 1,707 and 182 of 3,143, and the nation's $80,734 (±$166) above the map. De Baca County, New Mexico, is unshaded and named. On Charcoal the 1 px land edge carries the coast, and the grouped table prints values and names no county (DL-E1's conditions 1 to 3).
+- **S83.** Dots in the text's ink, 10,000 a dot at a desk, with RL-2's notes and the 1,354 counties that draw no dot. The title's "half ... in 100 of the 3,142 counties" checks.
+- **Entries** 14.113 to 14.118, 14.120, 14.122 and 14.123. Entry 14.119 waits on C-1, 14.121 on C-1 and 14.124 on C-1 and D-1.
+- **Sketch 14.113,** the flow map: widths on one scale with a two-width key and arrowheads at the destinations, labeled illustrative.
+- **D-2, S81's CSV without the nation's row: accepted.** The drawn rows must stay the layer's counties in geoid order. The nation prints beside the map with its margin, the source line names the file that holds it, and the export adds no page bytes either way. One line in the grouped table's caption gives it ("United States, $80,734 (±$166)"), since call 4 puts a national figure first in a listing. If the engineer can add an export-only row at no page cost, take it; nothing waits on it.
+
+### D-1, the avoid sketch's party colors: not the diverging pair
+
+The guide's diverging pair cannot stand in for party colors, even in the drawing to avoid:
+- **DR-48:** Prussian is never assigned to a party, on any chart or map.
+- **DR-58:** the guide draws no party color pair, for results or anything else.
+- **Teaching harm:** a reader who meets pair B as "Party A" and "Party B" in the avoid entry would carry that reading to every diverging chart the guide draws in it, the deficit waterfall among them.
+
+The kit has no blue, and Pillar Red cannot mark a party either.
+
+The misleading half therefore draws what the failure does, in gray, and names the colors in words:
+- the same 12 invented places, each filled whole by its winner with no margin, Party A in the darkest gray step and Party B in the lightest with its edge;
+- the key reads "Party A, shown red" and "Party B, shown blue";
+- the caption's first sentence starts "Drawn here in gray: a map shaded red for one party and blue for the other".
+
+The reader learns the failure from the entry's title, the key and the caption, and the guide gives no ink of its own a party. The better half follows C-1. Board 2 shows the sketch, and Dustin can ask for literal red and blue there if he wants the failure in color.
+
+### Requests to the cartographer
+
+- **C-1, S80 and S82: the closest races read as seats the party did not win.**
+  - **What I saw.** On both maps the lightest margin step, gray step 1 (#CCCAC5, 1.16 to 1 against Newsprint), sits next to the ghost outline of a seat the other party won, and in color and in gray the two look alike. In S80's Republican panel the 7th district, the title's closest race at 3.7 points, reads like the Democratic seats' outlines beside it. In S82 the 36 races under 5 points, the title's own count, sink among the ghosts in both panels. On Charcoal the step order flips and the same happens at the dark end.
+  - **I correct ruling (b).** The four margin classes take sequential Verdigris steps 2, 3, 4 and 5 on both maps (on Newsprint 1.70, 2.46, 3.69 and 5.87 to 1 against the ground; neighbors 1.44, 1.50 and 1.59), every won seat with the context edge. The other party's seats stay empty ghost outlines, inset as S82 has them. Unopposed seats take step 5 with the dot. Both maps share one ink for both parties, so no hue carries party, as DR-48 and DR-58 ask. On Charcoal the kit's Charcoal steps of the same numbers. The lightest won seat must read as filled against an empty ghost on both grounds and in grayscale; the kit's check measures it.
+  - **Words that follow.** Entry 14.119's "an edge on the step that holds the closest races" becomes "the margin in steps of one ink, the lightest still a clear fill". Entry 14.124's "with the margin in gray steps" becomes "with the margin in steps of one ink". The avoid sketch's better half takes the same steps.
+- **C-2, S84 fails at 256 px:** "Below $7.25 or no state minimum" runs past the artboard (205 px from x 20 on a 224 px board) on both grounds. The spec changed at 02:28, after your last passing build. Wrap the key or set its swatches one to a line under 300 px.
+- **C-3, S84's note 1 prints "claim CL1516" as plain words.** Rule 13.9 sets an atlas ID as a typed chip wherever it prints. The kit's atlas check lists no claim IDs, which is why the chip failed (request to the engineer below). Once the check reads claims, chip it; until then the note stands as words.
+- **C-4, S16's Alaska and Hawaii draw no land.** In my build their circles sit on the ground, at 1440 px on both grounds. The engineer's answer to C-E4 says their captures show land; mine, from the files as they stand, do not. Please rebuild and look, with the engineer, so S16 shows every state's land as the other maps do. This changes placement only (ruling (e)), and I sign S16 off when it lands. Note 5's new map credit, naming the 2024 Census files, is signed off, since the old credit named outlines S16 no longer draws.
+
+S80, S82, S84, S16, entries 14.119, 14.121 and 14.124 and sketch 14.124 are signed off once their items land. I sign off from 1440 and 256 px on both grounds and in grayscale.
+
 ## Routine calls
 
 - D3-xxx | S78 draws fixed broadband (B28002 line 007) with S2801's margins, source variant `fixed_with_s2801_margin` | V7 I015 names slow or missing service, and the any-type line's 5.9-point spread allows no more than two honest classes
@@ -255,6 +370,13 @@ S65, S73, S76, entries 14.104, 14.108 and 14.109 and sketch 14.108 are signed of
 - D3-xxx | RL-4 changes nothing on S73 | The note speaks only of the committees drawn; the sidecar records the rest for both committees
 - D3-xxx | A network node is a bar as tall as its amount, words beside it, never a word box of free height | A box sized by its words reads as a measure (Rule 14.4)
 - D3-xxx | A chapter 14 network never tells kinds of tie apart by dash or dot | Rule 13.4 keeps line patterns for a connection's grade and chapter 14 keeps the dash for a total line
+- D3-xxx | S68's lines of authority end in Rule 15.5's open diamond, not an arrowhead; corrects ruling (b) | One mark means one thing across chapters 14 and 15 (Q-A1)
+- D3-xxx | A grouped table must still answer its reader question; S72's names every member who voted the other way or did not vote, and S70's lists each circuit's states | D3-1097 cuts rows, not answers; 20 names let every member's vote be read
+- D3-xxx | S70 prints 673 Article III district judgeships and 4 territorial, each circuit's card counting the territorial court under it | D3-1096
+- D3-xxx | S80's and S82's margin classes take sequential Verdigris steps 2 to 5, for both parties; corrects ruling (b)'s gray steps | Gray step 1 reads like the ghost of a seat the other party won, so the closest races vanish; one ink for both parties keeps DR-48 and DR-58
+- D3-xxx | The avoid sketch draws its misleading half in gray with the party colors named in words, not in the diverging pair | DR-48 and DR-58; a reader would carry pair B as a party pair to every diverging chart
+- D3-xxx | S81's CSV may leave out the nation's row; the grouped table's caption gives it | The drawn rows read their geoids from geo.js; the nation prints beside the map
+- D3-xxx | S16's map credit names the 2024 Census files | The credit must name the outlines drawn (R3-4)
 
 ## Requests
 
@@ -270,9 +392,19 @@ S65, S73, S76, entries 14.104, 14.108 and 14.109 and sketch 14.108 are signed of
 
 ### To maker B
 - MB-1 to MB-9: see "Sign-off, maker B".
+
+### To maker A
+- MA-1 to MA-8: see "Sign-off, maker A".
+
+### To the engineer (through the main session)
+- Let the kit's atlas check read claim IDs (CL) so S84's "claim CL1516" can print as Rule 13.9's typed chip (C-3).
+- With the cartographer, S16's Alaska and Hawaii land (C-4).
+- Optional: an export-only row for S81's nation (D-2).
+- If `K.parts.link` has no open-diamond end, add one from Rule 15.5's mark (14 by 11 px, open) for S68 (MA-7); and, if `agg: "list"` repeats values, a distinct option for S70 (MA-8).
 - MB-R3-1 (closed: S73 draws line 22 alone as built). Draw line 22 alone; the "{n} other committees" node and the hairline sentence go; title, measure line, note, alt text, source variant and table as RL-3a sets them. The editor reads the words.
 
 ### To the cartographer
+- C-1 to C-4, D-1, D-2: see "Sign-off, cartographer".
 - C-R3-1. S81: DL-E1's conditions 1 to 3, and the nation from RL-1 beside the map. S83: RL-2's table and note, DL-E1's condition 4.
 
 ### To the main session
@@ -282,6 +414,8 @@ S65, S73, S76, entries 14.104, 14.108 and 14.109 and sketch 14.108 are signed of
 Read rulings (a) to (g) and "Rulings, after RL-3" directly.
 
 ## Tested
+- Cartographer, 02:31 UTC: `oa-chart.mjs build s78 s79 s80 s81 s82 s83 s84 s16 --widths 1440,390,296,256 --out <scratch>/kit-r3c`, sweep on: 7 PASS, S84 FAIL (2 faults, the key at 256 px), eight check files read; captures as listed under "Sign-off, cartographer"; both sketches rendered and looked at on Newsprint and in grayscale; twelve entries read by script; figures checked by script as listed there.
+- Maker A, 02:23 UTC: `oa-chart.mjs build s66 s67 s68 s69 s70 s71 s72 --widths 1440,390,296,256 --out <scratch>/kit-r3a`, sweep on, 7 PASS, 0 faults, seven check files read; captures as listed under "Sign-off, maker A"; the mind map sketch rendered and looked at on Newsprint; eight entries read by script; the figures listed there checked by script.
 - Maker B, 02:04 UTC: `oa-chart.mjs build s65 s73 s74 s75 s76 s77 --widths 1440,390,296,256 --out <scratch>/kit-r3`, sweep on, 6 PASS, 0 faults, six check files read; captures looked at as listed under "Sign-off, maker B"; six sketches rendered with Chromium (maker B's script, copied) and looked at on Newsprint; twelve entries read by script; figures checked by script: S65's 2.30 ratio, S75's dates and counts, S74's 32, S76's 1,926 candidates and 61.4 percent, RL-4 from the sidecar.
 
 - Read by script from the frozen files: the funnel stages and shares; the Sankey's sixteen lines and its remainder; both committees' transfers by recipient type; both roll calls by party and vote; the bills by chamber and the shared-backer counts; the district results by party, kind of seat and margin class, Michigan's 13 rows and the seats within 0.15 of a break; fixed and any-type broadband with S2801 margins, clear gaps, break sets and pairwise overlaps; county income ranges, margins, break sets and crossings; County Business Patterns totals and dots by unit; the minimum wage classes for the four panels.
@@ -291,6 +425,8 @@ Read rulings (a) to (g) and "Rulings, after RL-3" directly.
 - Contrast by the WCAG formula on token hexes: sequential steps 1 to 5 and gray magnitude steps 1 to 4 against Newsprint and against each other.
 
 ## Not tested
+- Cartographer: S78, S79, S80, S83, S84 and S16 below 1440 px (looked at 1440 px only, on both grounds and in grayscale); S81 and S82 at 296 px on Charcoal and 256 px on Newsprint; the sketches on Charcoal; the cartographer's plates inside a guide build.
+- Maker A: S67, S69, S70 and S71 below 1440 px on Newsprint, and S66, S68, S69 to S72 below 1440 px on Charcoal (the 1440 Charcoal grayscale captures looked at for all); the mind map sketch on Charcoal; maker A's plates inside a guide build.
 - Maker B's six specs on Charcoal at 390, 296 and 256 px for S73, S75 and S77 (looked at on Newsprint, in grayscale, and on Charcoal at 1440 px only).
 - Maker B's entries and sketches inside a guide build; I read the entry files and rendered the sketches alone. I ran no strict build or guide check.
 - Sketches on Charcoal and in grayscale (rendered, not looked at); I looked at the Newsprint renders.

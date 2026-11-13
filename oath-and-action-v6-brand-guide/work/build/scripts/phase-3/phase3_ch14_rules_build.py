@@ -1607,7 +1607,8 @@ GROUP_LINES = {
     13: "Networks, matrices and arc diagrams show who is connected to whom, with a width or a shade for each link’s amount or count.",
     14: ("Sankeys, alluvial charts and flow maps show where money or people go, and the table gives every flow’s amount. A journey map "
          "follows one person through a public service, step by step."),
-    15: "A map appears when the place answers the question, and it names its places in words as well as color.",
+    15: ("A map appears when the place answers the question, and words in its key, labels and table say what every shade, size or "
+         "mark stands for."),
     16: "A table lets a reader look a value up, and one sentence answers when a single figure is the whole story.",
     17: "Process explainers, number panels and comparison cards show how something works in one view.",
 }

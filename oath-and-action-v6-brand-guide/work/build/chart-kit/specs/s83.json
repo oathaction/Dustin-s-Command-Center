@@ -15,11 +15,11 @@
  "title": "Half of the 132.2 million private-sector paid employees counted by county in 2023 worked in 100 of the 3,142 counties.",
  "measure_line": "Private-sector paid employees, counted where they work, by county, 2023, the 50 states and the District of Columbia; one dot for each 10,000 employees, or each 50,000 on a phone.",
  "notes": [
-  "Each dot sits at random inside its county; a dot is a count, never an address. A county with fewer than 5,000 employees draws no dot: 1,354 counties holding 2,841,136 employees.",
+  "Each dot sits at random inside its county, so it stands for a count and marks no address. A county with fewer than 5,000 employees draws no dot: 1,354 counties holding 2,841,136 employees.",
   "County Business Patterns counts employees of private employers, and leaves out government workers, the self-employed and most farm and household workers.",
   "The Bureau adds a little noise to each count to protect employers. It changed 378 counties’ counts by 2 to under 5 percent and 29 by 5 percent or more; the download gives each county’s flag.",
-  "The dots draw the 132.2 million paid employees counted in counties. Another 7.7 million in the nation’s total work for employers the Bureau places in a state but in no county, and they draw no dots. Kalawao County, Hawaii, and King County, Texas, are not in the Bureau’s file.",
-  "Alaska and Hawaii are drawn apart and not to scale."
+  "The dots draw the 132.2 million paid employees counted in counties. Another 7.7 million in the nation’s total work for employers the Bureau places in a state but in no county, and they draw no dots. The Bureau’s file holds no row for Kalawao County, Hawaii, or King County, Texas.",
+  "The map draws Alaska and Hawaii apart and not to scale."
  ],
  "source_line": "Source: U.S. Census Bureau, County Business Patterns, paid employees by county, 2023, counties of the 50 states and DC, with the Bureau’s noise flags; Cartographic Boundary Files, 2024, counties, 1:20,000,000. Retrieved November 12 and 13, 2026. Private-sector paid employees only, counted where they work.",
  "credit": "Chart: Oath & Action",

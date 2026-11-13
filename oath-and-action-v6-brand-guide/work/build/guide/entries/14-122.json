@@ -2,7 +2,7 @@
  "id": "14.122",
  "title": "Use a dot density map to show where a count clusters, each dot a stated number.",
  "rule": [
-  "Place one dot for each stated count, such as 10,000 employees, at random inside its county from a seed the chart records, and say that a dot is a count, never an address. Draw the dots in the subject ink over the land with thin gray state lines, raise the count per dot on a phone so the dots never cover the land, print the count in the key at every width, and say in a note how many units draw no dot (Rule 14.12)."
+  "Place one dot for each stated count, such as 10,000 employees, at random inside its county from a seed the chart records, and say that each dot stands for a count and marks no address. Draw the dots in the text’s ink over the land with thin gray state lines, raise the count per dot on a phone (Rule 14.12), print the count in the key at every width, and say in a note how many units draw no dot."
  ],
  "use_when": "The reader asks where people, jobs or homes are, and a count matters more than a rate.",
  "use_instead": [
@@ -17,7 +17,7 @@
  ],
  "why": {
   "text": [
-   "A dot for every 10,000 shows both how many and where, so a crowded city and an empty county read for what they are. Random places inside each county keep a dot from pointing at any one address."
+   "A dot for every 10,000 shows both how many and where, so a crowded city and a thinly settled county read for what they are. Random places inside each county keep a dot from pointing at any one address."
   ],
   "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
  },

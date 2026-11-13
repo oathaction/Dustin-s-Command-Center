@@ -2,7 +2,7 @@
  "id": "14.113",
  "title": "Use a flow map only when the routes between places answer the question.",
  "rule": [
-  "Use a flow map, a reference form, to show how many people, goods or dollars moved between places: a line from each origin to each destination over a plain map, as wide as the amount it carries on one scale, with an arrowhead where it arrives and a key of two widths. Draw the lines under the place names, keep the few largest flows and say how many the map leaves out, and give every flow’s amount in the table."
+  "Use a flow map, a reference form, to show how many people, goods or dollars moved between places: a line from each origin to each destination over a plain map, as wide as the amount it carries on one scale (Rule 14.4), with an arrowhead where it arrives and a key of two widths. Draw the lines under the place names, keep the few largest flows and say how many the map leaves out, and give every flow’s amount in the table."
  ],
  "use_when": "A reader asks where people or money went from a few places, and the routes matter as much as the amounts.",
  "use_instead": [

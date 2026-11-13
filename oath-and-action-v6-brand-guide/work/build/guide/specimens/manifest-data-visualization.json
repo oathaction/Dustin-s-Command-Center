@@ -1015,7 +1015,7 @@
   "chapter": "14",
   "rule": "14.119",
   "width_px": null,
-  "alt": "Two maps of Michigan’s 13 House districts. The first shades the six districts Democrats won by the winner’s margin and outlines the rest; the second does the same for the seven Republicans won. The 7th district was closest, won by 3.7 points, and seven races were decided by 20 points or more. Nationally, Republicans won 220 House seats and Democrats 215.",
+  "alt": "Two maps of Michigan’s 13 House districts. The first shades the six districts Democrats won by the winner’s margin and outlines the rest; the second does the same for the seven seats Republicans won. The 7th district was closest, won by 3.7 points, and seven races were decided by 20 points or more. Nationally, Republicans won 220 House seats and Democrats 215.",
   "illustrative": false,
   "notes": "S80, district-map: the chart kit draws it from work/build/chart-kit/specs/s80.json (contract R1-C3)"
  },

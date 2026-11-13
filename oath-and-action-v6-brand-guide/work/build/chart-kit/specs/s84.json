@@ -33,9 +33,9 @@
  "title": "Thirty states and DC had a minimum wage above the federal $7.25 on January 1, 2024, up from 14 states and DC on January 1, 2010.",
  "measure_line": "Each state’s basic minimum wage under state law for non-farm work, against the federal $7.25, on January 1 of 2010, 2014, 2019 and 2024, 50 states and the District of Columbia, in three classes.",
  "notes": [
-  "On July 1, 2026, 30 states and DC set a minimum wage above $7.25, 13 states set $7.25, Georgia and Wyoming set $5.15, and five states had no minimum wage law, where the federal rate applies to covered employers, by the count in our systems atlas, Who Do They Answer To? (claim CL1516, graded documented, from the Department of Labor’s state minimum wage page of that date; atlas snapshot of October 15, 2026).",
+  "On July 1, 2026, 30 states and DC set a minimum wage above $7.25, 13 states set $7.25, Georgia and Wyoming set $5.15, and five states had no minimum wage law, so the federal rate applies there to covered employers, by the count in our systems atlas, Who Do They Answer To? (claim CL1516, graded documented, from the Department of Labor’s state minimum wage page of that date; atlas snapshot of October 15, 2026).",
   "Classes follow each state’s highest listed rate, and some rates apply only to larger employers. Where a state’s rate is below $7.25, or it has none, employers the federal law covers pay $7.25.",
-  "Alaska and Hawaii are drawn apart and not to scale; the District of Columbia is drawn as a square beside Maryland. The table gives each state’s rate at each date as the Department prints it."
+  "The map draws Alaska and Hawaii apart and not to scale, and the District of Columbia as a square beside Maryland. The table gives each state’s rate at each date as the Department prints it."
  ],
  "source_line": "Source: U.S. Department of Labor, Wage and Hour Division, Changes in Basic Minimum Wages in Non-Farm Employment Under State Law, January 1 rates in 2010, 2014, 2019 and 2024, 50 states and DC; U.S. Census Bureau, Cartographic Boundary Files, 2024, states. Retrieved November 12 and 13, 2026. Classes by Oath & Action from each state’s highest listed rate; some rates apply only to larger employers, and where a state is below $7.25 or has none, covered employers pay the federal rate.",
  "credit": "Chart: Oath & Action",

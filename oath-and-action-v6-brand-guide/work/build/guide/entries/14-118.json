@@ -2,7 +2,7 @@
  "id": "14.118",
  "title": "Use a locator map to show where a story takes place, with one red point on the place.",
  "rule": [
-  "Mark the place in the view’s one red point with its keyline and name it (Rule 14.6), with a second, better-known place nearby in the text’s ink for scale. Shade the place’s county lightly with an edge, draw the rest of the state in the track ink and its neighbors as thin gray lines, add a scale bar, and set a small inset of the country with the state shaded and the view outlined on it."
+  "Mark the place with the view’s one red point and name it (Rule 14.6), with a second, better-known place nearby in the text’s ink for scale. Shade the place’s county gray with an edge, the rest of the state a second gray, and its neighbors as thin gray lines, add a scale bar, and set a small inset of the country with the state shaded and the view outlined on it."
  ],
  "use_when": "The reader needs to know where a place in the story is, such as the town in a photograph.",
  "use_instead": [

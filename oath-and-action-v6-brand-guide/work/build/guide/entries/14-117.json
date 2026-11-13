@@ -2,7 +2,7 @@
  "id": "14.117",
  "title": "Use a choropleth to show a rate on the shapes of the states, in a few classes a margin of error cannot blur.",
  "rule": [
-  "Shade each state by its class in the sequential steps, four classes at most, the lightest with a 1 px edge, and draw the borders as thin lines of the page color. Set each class at least as wide as the widest margin of error drawn, and say in a note how many states sit close enough to a class line to fall in the next one (Rule 14.9). Print each state’s code on its shape in its step’s label ink, or beside it with a short leader; draw the District of Columbia as a small square beside Maryland; set Alaska and Hawaii apart in thin frames, and put the national figure above the map with its name (Rule 14.6)."
+  "Shade each state by its class in the sequential steps, four classes at most, the step nearest the page color with a 1 px edge, and draw the borders as thin lines of the page color. Set the classes and their note by Rule 14.9’s test for a class map, and print each state’s code on its shape or beside it (Rule 14.3). Draw the District of Columbia as a small square beside Maryland, set Alaska and Hawaii apart in thin frames, and put the national figure above the map (Rule 14.6)."
  ],
  "use_when": "The reader asks where a rate runs high or low across the states, and the shape of the country helps them find their own.",
  "use_instead": [

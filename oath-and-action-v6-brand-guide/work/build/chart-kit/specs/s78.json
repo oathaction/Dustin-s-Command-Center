@@ -29,8 +29,8 @@
  "measure_line": "Households with home broadband such as cable, fiber optic or DSL, percent of all households, 2025, 50 states and the District of Columbia, in four classes, with the United States above the map.",
  "notes": [
   "Each class spans 4 percentage points, wider than any state’s 90 percent margin of error. Thirteen of the 50 states and the District of Columbia sit close enough to a class line that they could fall in the next class; no state could fall two classes away.",
-  "A cellular data plan alone is not counted here. The table gives each state’s figure with its margin of error.",
-  "Alaska and Hawaii are drawn apart and not to scale. The District of Columbia is drawn as a square beside Maryland."
+  "The count leaves out a household whose only subscription is a cellular data plan. The table gives each state’s figure with its margin of error.",
+  "The map draws Alaska and Hawaii apart and not to scale, and the District of Columbia as a square beside Maryland."
  ],
  "source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B28002, broadband such as cable, fiber optic or DSL, with margins of error from Subject Table S2801, 2025, 50 states and DC; Cartographic Boundary Files, 2024, states. Retrieved November 12 and 13, 2026. Survey estimates; margins of error at 90 percent as the Bureau publishes them in S2801.",
  "credit": "Chart: Oath & Action",

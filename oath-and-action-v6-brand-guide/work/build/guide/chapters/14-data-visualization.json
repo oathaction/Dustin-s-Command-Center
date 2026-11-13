@@ -111,7 +111,7 @@
    "before_rule": "14.114",
    "title": "Maps: where is it happening?",
    "rules": "14.114 to 14.124",
-   "line": "A map appears when the place answers the question, and it names its places in words as well as color."
+   "line": "A map appears when the place answers the question, and words in its key, labels and table say what every shade, size or mark stands for."
   },
   {
    "number": 16,
@@ -4555,7 +4555,7 @@
    "id": "14.113",
    "title": "Use a flow map only when the routes between places answer the question.",
    "rule": [
-    "Use a flow map, a reference form, to show how many people, goods or dollars moved between places: a line from each origin to each destination over a plain map, as wide as the amount it carries on one scale, with an arrowhead where it arrives and a key of two widths. Draw the lines under the place names, keep the few largest flows and say how many the map leaves out, and give every flow’s amount in the table."
+    "Use a flow map, a reference form, to show how many people, goods or dollars moved between places: a line from each origin to each destination over a plain map, as wide as the amount it carries on one scale (Rule 14.4), with an arrowhead where it arrives and a key of two widths. Draw the lines under the place names, keep the few largest flows and say how many the map leaves out, and give every flow’s amount in the table."
    ],
    "why": {
     "text": [
@@ -4597,7 +4597,7 @@
    "id": "14.114",
    "title": "Use a tile-grid map to show each state’s status, every state the same size.",
    "rule": [
-    "Draw each state and the District of Columbia as one square of the same size, on a grid that keeps each state beside its neighbors, with Alaska and Hawaii at its corners, and print each state’s two-letter code in its square. Tell the categories apart by fill and outline as well as shade, so the key still reads in gray print: solid squares for the status the title names, open squares for a partial case and gray squares for none, each named in the key. Print one more fact under the code, such as the year a law took effect, wherever the square holds it. Where the squares grow too small for their codes, leave the codes out and say under the map that the table names every state."
+    "Draw each state and the District of Columbia as one square of the same size, on a grid that keeps each state beside its neighbors, with Alaska and Hawaii at its corners, and print each state’s two-letter code in its square (Rule 14.3). Tell the categories apart by fill and outline as well as shade, so the key still reads in gray print: solid squares for the status the title names, open squares for a partial case and gray squares for none, each named in the key. Print one more fact under the code, such as the year a law took effect, wherever the square holds it. Where the squares grow too small for their codes, leave the codes out and say under the map that the table names every state."
    ],
    "why": {
     "text": [
@@ -4722,7 +4722,7 @@
    "id": "14.117",
    "title": "Use a choropleth to show a rate on the shapes of the states, in a few classes a margin of error cannot blur.",
    "rule": [
-    "Shade each state by its class in the sequential steps, four classes at most, the lightest with a 1 px edge, and draw the borders as thin lines of the page color. Set each class at least as wide as the widest margin of error drawn, and say in a note how many states sit close enough to a class line to fall in the next one (Rule 14.9). Print each state’s code on its shape in its step’s label ink, or beside it with a short leader; draw the District of Columbia as a small square beside Maryland; set Alaska and Hawaii apart in thin frames, and put the national figure above the map with its name (Rule 14.6)."
+    "Shade each state by its class in the sequential steps, four classes at most, the step nearest the page color with a 1 px edge, and draw the borders as thin lines of the page color. Set the classes and their note by Rule 14.9’s test for a class map, and print each state’s code on its shape or beside it (Rule 14.3). Draw the District of Columbia as a small square beside Maryland, set Alaska and Hawaii apart in thin frames, and put the national figure above the map (Rule 14.6)."
    ],
    "why": {
     "text": [
@@ -4766,7 +4766,7 @@
    "id": "14.118",
    "title": "Use a locator map to show where a story takes place, with one red point on the place.",
    "rule": [
-    "Mark the place in the view’s one red point with its keyline and name it (Rule 14.6), with a second, better-known place nearby in the text’s ink for scale. Shade the place’s county lightly with an edge, draw the rest of the state in the track ink and its neighbors as thin gray lines, add a scale bar, and set a small inset of the country with the state shaded and the view outlined on it."
+    "Mark the place with the view’s one red point and name it (Rule 14.6), with a second, better-known place nearby in the text’s ink for scale. Shade the place’s county gray with an edge, the rest of the state a second gray, and its neighbors as thin gray lines, add a scale bar, and set a small inset of the country with the state shaded and the view outlined on it."
    ],
    "why": {
     "text": [
@@ -4801,7 +4801,7 @@
    "id": "14.119",
    "title": "Use a district map to show one state’s races on the shapes of its districts, with party told by panel.",
    "rule": [
-    "Draw the state’s districts twice, one panel for each party, named with the seats it won: a district fills in its winner’s panel and shows as a thin gray outline in the other, so position carries party and no color does (Rule 14.7). Shade the winner’s margin in four gray steps, closer races lighter, the lightest with an edge, with the same steps and key words as the district tile map. Number each district on its shape, or beside it with a leader, and set the national result beside the panels."
+    "Draw the state’s districts in one panel for each party, as Rule 14.7 sets seats on a map, with the same steps and key words as the district tile map and an edge on the step that holds the closest races. Number each district on its shape, or beside it with a leader, and set the national result beside the panels (Rule 14.6)."
    ],
    "why": {
     "text": [
@@ -4836,7 +4836,7 @@
    "id": "14.120",
    "title": "Use a county choropleth for a pattern across thousands of places, and rank none of them.",
    "rule": [
-    "Shade every county by its class in four sequential steps, with no county lines, the state lines thin and gray, and a county with no estimate unshaded with an edge, named in a note. Set classes wide against the typical county’s margin of error, and say in a note what share of counties could fall in the next class, so the map reads as a pattern (Rule 14.9). Name no county in words unless its gap passes its margin. Put the national figure above the map, group the table by state and give every county with its margin in the download."
+    "Shade every county by its class in four sequential steps, with no county lines, the state lines thin and gray, and a county with no estimate unshaded with an edge, named in a note. Set the classes, their note and the words by Rule 14.9’s test for small places, so the map reads as a pattern. Put the national figure above the map (Rule 14.6), group the table by state and give every county with its margin in the download."
    ],
    "why": {
     "text": [
@@ -4872,7 +4872,7 @@
    "id": "14.121",
    "title": "Use a district tile map to show every House seat as one square, with party told by panel.",
    "rule": [
-    "Give each district one square of the same size on a layout that keeps states in their places and districts in their order, with lines between states and each state’s code where its block leaves room. Draw the map twice, one panel for each party, named with its seats, each seat filled in its winner’s panel and outlined in the other (Rule 14.7). Shade the margin in four gray steps, mark a seat unopposed on the ballot with a dot and a race decided another way with a ring, and name those seats in a note where the squares grow too small for the marks."
+    "Give each district one square of the same size on a layout that keeps states in their places and districts in their order, with lines between states and each state’s code where its block leaves room. Set party and margin in one panel for each party, as Rule 14.7 sets seats on a map. Mark a seat unopposed on the ballot with a dot and a race decided another way with a ring, and name those seats in a note where the squares grow too small for the marks (Rule 14.12)."
    ],
    "why": {
     "text": [
@@ -4908,11 +4908,11 @@
    "id": "14.122",
    "title": "Use a dot density map to show where a count clusters, each dot a stated number.",
    "rule": [
-    "Place one dot for each stated count, such as 10,000 employees, at random inside its county from a seed the chart records, and say that a dot is a count, never an address. Draw the dots in the subject ink over the land with thin gray state lines, raise the count per dot on a phone so the dots never cover the land, print the count in the key at every width, and say in a note how many units draw no dot (Rule 14.12)."
+    "Place one dot for each stated count, such as 10,000 employees, at random inside its county from a seed the chart records, and say that each dot stands for a count and marks no address. Draw the dots in the text’s ink over the land with thin gray state lines, raise the count per dot on a phone (Rule 14.12), print the count in the key at every width, and say in a note how many units draw no dot."
    ],
    "why": {
     "text": [
-     "A dot for every 10,000 shows both how many and where, so a crowded city and an empty county read for what they are. Random places inside each county keep a dot from pointing at any one address."
+     "A dot for every 10,000 shows both how many and where, so a crowded city and a thinly settled county read for what they are. Random places inside each county keep a dot from pointing at any one address."
     ]
    },
    "tokens": [],
@@ -4983,7 +4983,7 @@
    "id": "14.124",
    "title": "Avoid coloring a map by party, which takes a side before the reader reads it.",
    "rule": [
-    "Leave party colors, and above all red and blue, off every Oath & Action map, and draw no scale that runs from one party’s color to the other’s. Show who won by position and words: one panel for each party, named with the seats it won, each place filled in its winner’s panel and outlined in the other, and the margin in gray steps that darken as it widens (Rule 14.7). Show a shift with arrows and the direction named in words."
+    "Leave party colors, and above all red and blue, off every Oath & Action map, and draw no scale that runs from one party’s color to the other’s. Show who won by position and words, in one panel for each party with the margin in gray steps, as Rule 14.7 sets seats on a map. Show a shift with arrows and the direction named in words."
    ],
    "why": {
     "text": [

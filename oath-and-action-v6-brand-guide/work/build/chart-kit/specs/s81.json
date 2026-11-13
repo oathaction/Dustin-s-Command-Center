@@ -12,12 +12,12 @@
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: a Census Bureau survey, five years of responses pooled, with its published margins of error",
- "title": "Median household income was $80,000 or more in 585 counties and under $50,000 in 371 over 2020 to 2024, when the nation’s was $80,734.",
+ "title": "From 2020 to 2024, median household income was $80,000 or more in 585 counties and under $50,000 in 371, and the nation’s median was $80,734.",
  "measure_line": "Median household income by county, in 2024 dollars, from five years of survey responses, 2020 to 2024, 50 states and DC, in four classes, with the nation above the map.",
  "notes": [
   "More than half the counties, 1,707 of 3,143, sit close enough to a class line that their margin of error could put them in the next class, and 182 two classes away, so the map shows a broad pattern and ranks no county.",
-  "The Census Bureau publishes no estimate for De Baca County, New Mexico, which is left unshaded. Connecticut’s counties are its nine planning regions.",
-  "Alaska and Hawaii are drawn apart and not to scale. The download lists every county with its margin of error."
+  "The Census Bureau publishes no estimate for De Baca County, New Mexico, so the map leaves it unshaded. Connecticut’s counties are its nine planning regions.",
+  "The map draws Alaska and Hawaii apart and not to scale. The download lists every county with its margin of error."
  ],
  "source_line": "Source: U.S. Census Bureau, American Community Survey 5-year estimates, Table B19013, median household income, 2020 to 2024, every county in the 50 states and DC, and the United States; Cartographic Boundary Files, 2024, counties, 1:20,000,000. Retrieved November 12 and 13, 2026. Survey estimates in 2024 dollars; margins are wide in small counties.",
  "credit": "Chart: Oath & Action",

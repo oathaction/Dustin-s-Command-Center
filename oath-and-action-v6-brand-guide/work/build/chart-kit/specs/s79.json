@@ -24,7 +24,7 @@
  "notes": [
   "A census-designated place is a community the Census Bureau maps and counts that has no city government of its own.",
   "The distance is a straight line between the Bureau’s internal points for the two places, a point inside each place.",
-  "Chapter 01’s photograph of a public meeting on the Isabella Lake Dam safety project was taken in Lake Isabella on March 27, 2014."
+  "Chapter 01’s photograph of a public meeting on the Isabella Lake Dam safety project comes from Lake Isabella, March 27, 2014."
  ],
  "source_line": "Source: U.S. Census Bureau, 2024 Gazetteer Files, places, Kern County, California; Cartographic Boundary Files, 2024, counties of California, 1:5,000,000, and states, 1:20,000,000. Retrieved November 12 and 13, 2026. Points sit inside each place.",
  "credit": "Chart: Oath & Action",
@@ -73,7 +73,7 @@
   "county": "06029",
   "county_label": "Kern County",
   "state_label": "California",
-  "point": "Lake Isabella CDP",
+  "point": "Lake Isabella",
   "names": {
    "Lake Isabella CDP": "Lake Isabella",
    "Bakersfield city": "Bakersfield"

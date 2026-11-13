@@ -2,7 +2,7 @@
  "id": "14.124",
  "title": "Avoid coloring a map by party, which takes a side before the reader reads it.",
  "rule": [
-  "Leave party colors, and above all red and blue, off every Oath & Action map, and draw no scale that runs from one party’s color to the other’s. Show who won by position and words: one panel for each party, named with the seats it won, each place filled in its winner’s panel and outlined in the other, and the margin in gray steps that darken as it widens (Rule 14.7). Show a shift with arrows and the direction named in words."
+  "Leave party colors, and above all red and blue, off every Oath & Action map, and draw no scale that runs from one party’s color to the other’s. Show who won by position and words, in one panel for each party with the margin in gray steps, as Rule 14.7 sets seats on a map. Show a shift with arrows and the direction named in words."
  ],
  "use_when": "Never: a reader who asks which party won each place, and by how much, gets a fairer answer from gray panels by party.",
  "use_instead": [

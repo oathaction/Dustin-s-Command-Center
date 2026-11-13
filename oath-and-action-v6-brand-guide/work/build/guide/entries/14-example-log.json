@@ -723,7 +723,7 @@
    "source": "s80.json"
   },
   {
-   "example": "Median household income was $80,000 or more in 585 counties and under $50,000 in 371 over 2020 to 2024, when the nation’s was $80,734.",
+   "example": "From 2020 to 2024, median household income was $80,000 or more in 585 counties and under $50,000 in 371, and the nation’s median was $80,734.",
    "domain": "D08",
    "states": [],
    "rule": "14.120",

@@ -2,7 +2,7 @@
  "id": "14.121",
  "title": "Use a district tile map to show every House seat as one square, with party told by panel.",
  "rule": [
-  "Give each district one square of the same size on a layout that keeps states in their places and districts in their order, with lines between states and each state’s code where its block leaves room. Draw the map twice, one panel for each party, named with its seats, each seat filled in its winner’s panel and outlined in the other (Rule 14.7). Shade the margin in four gray steps, mark a seat unopposed on the ballot with a dot and a race decided another way with a ring, and name those seats in a note where the squares grow too small for the marks."
+  "Give each district one square of the same size on a layout that keeps states in their places and districts in their order, with lines between states and each state’s code where its block leaves room. Set party and margin in one panel for each party, as Rule 14.7 sets seats on a map. Mark a seat unopposed on the ballot with a dot and a race decided another way with a ring, and name those seats in a note where the squares grow too small for the marks (Rule 14.12)."
  ],
  "use_when": "The reader asks which party won each House seat and by how much, and every seat should count the same.",
  "use_instead": [

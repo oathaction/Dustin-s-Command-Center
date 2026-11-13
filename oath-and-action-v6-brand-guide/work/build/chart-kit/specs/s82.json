@@ -22,10 +22,10 @@
  "title": "Republicans won 220 House seats in November 2024 and Democrats 215, and 36 of the 435 races were decided by under 5 points.",
  "measure_line": "Winner’s margin over the runner-up, in percentage points of all votes for the office, in each of the 435 House districts, general election of November 5, 2024. Each square is one district, whatever its size.",
  "notes": [
-  "Each district is one square, placed so states keep their places and districts their order within each state, with Alaska and Hawaii apart at the lower left. The squares show seats, not land.",
+  "Each district is one square, placed so states keep their places and districts their order within each state, with Alaska and Hawaii apart at the lower left.",
   "The margin is the winner’s votes less the runner-up’s, as a share of all votes for the office, the same rule in every kind of race. A seat with one candidate on the ballot has no margin.",
   "A ring marks 14 races decided another way: six between two candidates of one party (California’s 12th, 16th, 20th and 34th, and Washington’s 4th and 9th), Alaska’s first round of ranked-choice counting, Maine’s 2nd district’s final round, and Louisiana’s six November open primaries.",
-  "The District of Columbia’s delegate, who has no vote on the House floor, is not drawn."
+  "The map leaves out the District of Columbia’s delegate, who has no vote on the House floor."
  ],
  "source_line": "Source: Office of the Clerk, U.S. House of Representatives, Statistics of the Presidential and Congressional Election of November 5, 2024, 435 House districts; U.S. Census Bureau, 2024 Gazetteer Files, congressional districts of the 119th Congress. Retrieved November 12, 2026. Margins computed by Oath & Action from the official counts; tile layout by Oath & Action from the Bureau’s district centers.",
  "credit": "Chart: Oath & Action",
