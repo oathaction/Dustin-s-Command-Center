@@ -47,11 +47,11 @@
     }
     if (o.codes) {
       // names claim room largest shape first: inside the shape in its step's label ink (the kit's map_labels, which here
-      // places none beside); the rest beside with a leader, on the ground's halo, clear of every word, leader and darker step
+      // places none beside); the rest beside with a leader, on the ground's halo, clear of every word and leader, over the ground or the lightest step only
       var items = o.items.filter(function (it) { return it.code && it.id !== '11' && L.index[it.id] !== undefined; })
         .sort(function (a, b) { return L.labels[L.index[b.id]][2] - L.labels[L.index[a.id]][2] || (a.id < b.id ? -1 : 1); });
       var r1 = K.parts.map_labels(c, L, T, items.map(function (it) { return { id: it.id, words: it.code, weight: 600, fill: on_ink(fill_of(it)) }; }), { role: 'tick', reach: [], top: Infinity });
-      var dark = o.items.filter(function (it) { return on_ink(fill_of(it)) !== 'label'; }).map(function (it) { return L.rings(L.index[it.id]).map(function (rs) { return rs.map(function (r) { return r.map(T.pt); }); }); });
+      var dark = o.items.filter(function (it) { return it.cls > 1; }).map(function (it) { return L.rings(L.index[it.id]).map(function (rs) { return rs.map(function (r) { return r.map(T.pt); }); }); });
       var in_dark = function (x, y) { return dark.some(function (ps) { return ps.some(function (rs) { return K.in_poly(rs, x, y); }); }); };
       var hit = function (a, b2) { return a.x < b2.x + b2.w + 2 && b2.x < a.x + a.w + 2 && a.y < b2.y + b2.h + 2 && b2.y < a.y + a.h + 2; };
       var size = c.size('tick');
