@@ -336,6 +336,21 @@ def figures():
     same('S73', all(tc[k].upper() == k for k in tc), True, 'the title-case words spell the stored names (RS-3)')
     same('S73', sp['labels']['unit'], 4000000, 'unit')
     want('S73', t, 'and the agreement that formed a fund sets how many committees it pays', 'note 2 (ST-S6)')
+    # ST2-M1: the Democratic funds' line 22 before July 21, 2024 and from that day, by kind, from the research lead's split
+    dem = [r for r in l22 if r['nominee'] == 'Kamala D. Harris']
+    bef = lambda k: round(sum(float(r['amount_before_2024_07_21'] or 0) for r in dem if r['recipient_kind'] == k), 2)
+    aft = lambda k: round(sum(float(r['amount']) - float(r['amount_before_2024_07_21'] or 0) for r in dem if r['recipient_kind'] == k), 2)
+    cnt = lambda k, before: len({r['recipient_id'] for r in dem if r['recipient_kind'] == k and ((float(r['amount_before_2024_07_21'] or 0) > 0) if before else (float(r['amount']) - float(r['amount_before_2024_07_21'] or 0) > 0.004))})
+    same('S73', (bef('nominee campaign'), bef('national party committee'), bef('state party committee'), bef('other committee')), (161426350.0, 85750000.0, 68058500.0, 29350.0), 'Democratic funds before July 21, 2024')
+    same('S73', (aft('nominee campaign'), aft('national party committee'), aft('state party committee'), aft('other committee')), (372239915.32, 155095000.0, 113330624.21, 9290.21), 'Democratic funds from July 21, 2024')
+    same('S73', (cnt('state party committee', True), cnt('state party committee', False), cnt('other committee', True), cnt('other committee', False)), (50, 51, 1, 1), 'state parties and other committee before and after')
+    want('S73', t, 'Before that day the three funds sent the campaign $%s million, the Democratic National Committee $%s million, %d state party committees $%s million and one other committee $%s; from that day on, $%s million, $%s million, $%s million to %d and $%s' % (
+        mil(bef('nominee campaign')), mil(bef('national party committee')), cnt('state party committee', True), mil(bef('state party committee')), '{:,.0f}'.format(bef('other committee')),
+        mil(aft('nominee campaign')), mil(aft('national party committee')), mil(aft('state party committee')), cnt('state party committee', False), '{:,.0f}'.format(aft('other committee'))), 'the July 21 note (ST2-M1)')
+    names = ' '.join(meta('fec-jfc-transfers-2024-all-committees')['notes'])
+    for piece in ('“Biden for President” (on file 2022-08-30) then “Harris for President” (filed as a new name 2024-07-21)', '“Biden Victory Fund” (on file 2022-07-01) then “Harris Victory Fund” (filed as a new name 2024-07-21)', '“Biden Action Fund”', '“Biden Baldwin Victory Fund”'):
+        same('S73', piece in names, True, 'the sidecar records the July 21, 2024 names: ' + piece[:40])
+    want('S73', t, 'On July 21, 2024, the Democratic campaign committee and its three funds filed new names', 'the July 21 note, the names')
     same('S73', any(w in sp['title'] for w in ('53', 'to two')), False, 'the title sets no one fund\'s reach against another\'s (BC-M1)')
     n22 = [r for r in nodes if r['amount_lines'] == '22']
     nk = lambda r: r['node'] + ' (' + r['nominee'] + ')'

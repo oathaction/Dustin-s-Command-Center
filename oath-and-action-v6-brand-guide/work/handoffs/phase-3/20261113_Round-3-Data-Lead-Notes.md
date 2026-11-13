@@ -1024,6 +1024,25 @@ Reason: DR-93 and DR-124 read a title from both sides. Read from the right, the 
 - D3-xxx | S73's title, bar heads, measure line, note 1 and alt name the funds as the committees that paid each party's presidential campaign committee, in one form for both sides, with the Democratic campaign's candidates and dates under its bar | ST2-M1: the Harris Victory Fund and the campaign carried Biden's name until July 2024, and the words made them Harris's for the whole cycle
 - D3-xxx | S73 adds a note with each Democratic fund's line 22 transfers before and after the name change by receiver kind, and one clause reading the same test on the Republican funds | $158.2 million to the campaign and $75.0 million to the DNC passed before July 21, 2024, by the itemized records; one standard for both sides
 
+### ST2-M1, point 3: the Republican side and the source line (07:06 UTC)
+
+Read by script:
+- **The frozen file's new columns.** Line 22 before July 21, 2024, and on or after it: the Democratic funds $315,264,200.00 and $640,674,829.74; the Republican funds $322,781,666.07 and $357,037,277.40. Each pair sums to the drawn total.
+- **The research lead's saved itemized payments.** The fund named 2024 RNC Victory until March 14, 2024 (now the Trump 47 Committee) sent $952,050.48 in 4 line 22 payments before that date. No payment in the saved files reaches Trump's campaign committee on or after November 12, 2024. The Trump National Committee JFC's itemized payments are not in those files.
+
+**Ruled, one test for both sides.**
+- **Splits.** The note splits a fund's transfers at a date only where the candidate of the presidential campaign it paid changed in the cycle: the Democratic campaign on July 21, 2024, and the Republican campaign never.
+- **Renames.** A rename with no change of candidate is named once with its date and no split, for example "the Trump 47 Committee was named 2024 RNC Victory until March 14, 2024". A change of legal form only, such as ", Inc." on April 12, 2024, is not a rename for this test.
+- **The November 12 rename.** The Republican campaign committee became Never Surrender, Inc. on November 12, 2024, after the election. D3-1114 already names every committee as its payer wrote it before the election, so the note names this change only if the research lead's 1,030 itemized payments show a drawn payment to that committee on or after November 12, 2024.
+- **The July 21 split on the Republican side** stays in the file and its export and prints nowhere on the page, since a split at a date when nothing changed would read as one.
+
+**Source line: take the research lead's variant,** on condition that it names the committees' Statements of Organization (Form 1) for the names and dates beside the itemized Schedule B payments, in H04's order, and that the spec prints it exactly. The note's dates rest on Form 1, and the before-and-after sums on the itemized payments rather than the aggregate.
+
+Owners: maker B (the note and the line under each bar), editor (words), research lead (the November 12 check and the variant). S73's sign-off follows when they land.
+
+- D3-xxx | S73's note splits a fund's transfers only where the candidate of the campaign it paid changed (the Democratic campaign, July 21, 2024), names a rename with no change of candidate once with its date (2024 RNC Victory to Trump 47 Committee, March 14, 2024), and leaves out changes of legal form and the post-election rename unless a drawn payment follows it | One test read on both sides; a split where nothing changed would read as one
+- D3-xxx | S73's source line takes the research lead's variant naming the Statements of Organization beside the itemized Schedule B payments | The note's dates come from Form 1 and its split sums from the itemized payments
+
 ### Tested, review fix pass
 
 - Clock read with `date -u` at 04:24, 04:26, 04:30, 04:31, 04:32, 04:34, 04:37 and 04:38 UTC.
@@ -1148,3 +1167,4 @@ Not tested:
 - Rule 14.6 after R-S1, 06:45 UTC: the entry compared by script with its text at `8507b822` (rule paragraphs, spec rows by label and value, title, why, plates, related, builders).
 - Maker B second pass, 07:00 to 07:01 UTC: `build s53 s59 --widths 1440,296,256`, sweep on, 2 PASS, 0 faults; captures looked at as listed under "Maker B’s second pass, S53 and S59".
 - ST2-M1, 07:02 to 07:03 UTC: the reviewer's itemized Harris Victory Fund downloads summed by script by line and by date (before and after July 21, 2024), with payee names and the payment dates around the change; totals against the frozen file. Not tested: the state party payments before the change, the other two Democratic funds' dates, and any committee's FEC name history (the research lead's part).
+- ST2-M1 point 3, 07:06 UTC: the frozen file's before and after columns summed by script; the research lead's saved itemized payments read for Trump 47 Committee before March 14, 2024 and for any payment to Trump's campaign committee on or after November 12, 2024. Not tested: the Trump National Committee JFC's itemized dates; the Form 1 files themselves.
