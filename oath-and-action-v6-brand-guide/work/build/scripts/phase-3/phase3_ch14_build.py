@@ -198,6 +198,10 @@ def outputs(rounds):
             manifest[frag] = {"chapter": "14", "rule": rid, "width_px": None, "alt": spec.get("alt", ""),
                               "illustrative": bool(spec.get("illustrative")),
                               "notes": f"{p['spec_id']}, {p['form_id']}: the chart kit draws it from {sp.relative_to(ROOT)} (contract R1-C3)"}
+            # RS-1 (second pass): a staged drawing (the spec's stage, S12) takes the room over the rail from 80em, the shell's
+            # flowing breakout, so its fixed width shows whole or nearly where a desk page has the room
+            if spec.get("stage"):
+                manifest[frag]["breakout"] = True
             if spec.get("lookup"):
                 manifest[frag]["interactive"] = True   # access S3: a lookup is a control besides the table's disclosure
             log.append({"example": spec.get("title", p["spec_id"]), "domain": spec.get("domain"), "states": spec.get("states") or [],

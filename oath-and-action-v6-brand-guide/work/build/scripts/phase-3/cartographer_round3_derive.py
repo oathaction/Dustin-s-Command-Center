@@ -598,7 +598,7 @@ def figures():
     byc = {k: [r['code'] for r in st if cl(float(r['broadband_fixed_pct'])) == k] for k in (1, 2, 3, 4)}
     eq('S78', [len(byc[k]) for k in (1, 2, 3, 4)], [9, 11, 20, 11], 'class counts')
     eq('S78', 'DC' in byc[4] and 'DC' not in byc[1], True, 'DC in the top class, so 10 states and DC; nine states at the bottom')
-    has('S78', '10 states and DC', 'title'); has('S78', 'under 71 percent in nine.', 'title')
+    has('S78', '10 states and DC', 'title'); has('S78', 'under 71 in nine.', 'title')
     # ST-S12 (review fix pass, the data lead's rule): count on the figures the table prints, one decimal half up; a place
     # crosses where its printed interval reaches a value in another class, an interval ending exactly on a break reaching
     # the class that begins there

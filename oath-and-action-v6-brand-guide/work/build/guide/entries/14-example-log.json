@@ -574,7 +574,7 @@
    "source": "s64.json"
   },
   {
-   "example": "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, states ended 16.0 million for a procedural reason, more than twice the 6.9 million they found ineligible.",
+   "example": "Of 76.7 million Medicaid and CHIP renewals due April 2023 to March 2024, states ended 16.0 million for a procedural reason, over twice the 6.9 million they found ineligible.",
    "domain": "D04",
    "states": [],
    "rule": "14.93",
@@ -661,7 +661,7 @@
    "source": "s76.json"
   },
   {
-   "example": "Under the federal SNAP rule, a state has at most 30 days from an application to a decision, and at most seven days for a household with very little income or cash.",
+   "example": "Under the federal SNAP rule, a state has at most 30 days from an application to a decision, and seven for a household with very little income or cash.",
    "domain": "D04",
    "states": [],
    "rule": "14.112",
@@ -698,7 +698,7 @@
    "source": "s16.json"
   },
   {
-   "example": "In the Census Bureau’s 2025 survey, broadband such as cable, fiber or DSL reached at least 79 percent of households in 10 states and DC and under 71 percent in nine.",
+   "example": "In a 2025 Census survey, broadband such as cable, fiber or DSL reached at least 79 percent of households in 10 states and DC and under 71 in nine.",
    "domain": "D01",
    "states": [],
    "rule": "14.117",

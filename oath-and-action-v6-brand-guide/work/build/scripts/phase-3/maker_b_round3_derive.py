@@ -209,7 +209,7 @@ def jfc_nodes():
                     grp.sort(key=lambda r: -float(r['amount']))
                     tt = table_to(grp[0], grp)
                     for r in grp:
-                        out.append(dict(r, link_id=r['jfc_id'] + '>' + r['recipient_id'] + '>' + r['amount_lines'], node=node(r), table_row=str(order), table_to=tt))
+                        out.append(dict(r, link_id=str(len(out) + 1), node=node(r), table_row=str(order), table_to=tt))
     if len(out) != len(rows):
         FAULTS.append('S73: %d rows written of %d' % (len(out), len(rows)))
     cols = list(rows[0].keys()) + ['link_id', 'node', 'table_row', 'table_to']
@@ -220,13 +220,13 @@ def jfc_nodes():
         'kind': 'derived',
         'title_or_table': m['title_or_table'] + ', each payment with the node the network diagram draws it in and the table row it prints in',
         'columns': dict(m['columns'],
-                        link_id={'type': 'id', 'description': 'the payment line\'s own ID: the paying fund, the committee paid and the report line'},
+                        link_id={'type': 'id', 'description': 'the row\'s own short ID, its place in this file\'s order: one paying fund, one committee paid, one report line'},
                         node={'type': 'text', 'description': 'the receiver the drawing folds the payment into, for its nominee: the campaign, the national party committee, the state party committees with their count, or the other committees with their count; a line 28C refund does not draw'},
                         table_row={'type': 'id', 'description': 'the page table\'s row: one for each fund and kind of receiver, then each fund\'s refunds, in the order the table prints them'},
                         table_to={'type': 'text', 'description': 'the words the page table prints for the row\'s receivers: the committee, its kind, or the other committees and refunds by name, as the payer wrote them'}),
         'printed_source_line': m['printed_source_line'],
         'derived_from': [src + '.csv'],
-        'derivation': 'The rows of ' + src + ' unchanged, with four columns added, read the same way for both nominees: node names the receiver the network diagram draws each line 22 payment in, by recipient_kind (each nominee\'s campaign and national party committee alone; its state party committees and its other committees each as one node, counted once each, whichever fund paid them), and marks a line 28C refund, which does not draw; link_id joins the paying fund, the committee paid and the report line; table_row and table_to give the page table one row for each fund and kind of receiver, in the order nominee, kind, then fund by what it sent the campaign, with each fund\'s refunds after every drawn row. Rows sorted in that order, then by amount, largest first.',
+        'derivation': 'The rows of ' + src + ' unchanged, with four columns added, read the same way for both nominees: node names the receiver the network diagram draws each line 22 payment in, by recipient_kind (each nominee\'s campaign and national party committee alone; its state party committees and its other committees each as one node, counted once each, whichever fund paid them), and marks a line 28C refund, which does not draw; link_id numbers the rows in this order, one fund, committee and report line each; table_row and table_to give the page table one row for each fund and kind of receiver, in the order nominee, kind, then fund by what it sent the campaign, with each fund\'s refunds after every drawn row. Rows sorted in that order, then by amount, largest first.',
     })
     write('fec-jfc-transfers-2024-by-node', cols, out, side)
 
@@ -270,7 +270,7 @@ def figures():
     same('S65', fu['kept'], fu['not_ended_procedural'] - fu['ended_ineligible'], 'nests')
     for k in ('due', 'decided', 'not_ended_procedural', 'kept', 'ended_procedural', 'ended_ineligible', 'pending'):
         want('S65', t, mil(fu[k]) + ' million', k)
-    want('S65', sp['title'], 'Of %s million Medicaid and CHIP renewals due from April 2023 to March 2024, states ended %s million for a procedural reason, more than twice the %s million they found ineligible' % (mil(fu['due']), mil(fu['ended_procedural']), mil(fu['ended_ineligible'])), 'title (MB-1, BC-S9)')
+    want('S65', sp['title'], 'Of %s million Medicaid and CHIP renewals due April 2023 to March 2024, states ended %s million for a procedural reason, over twice the %s million they found ineligible' % (mil(fu['due']), mil(fu['ended_procedural']), mil(fu['ended_ineligible'])), 'title (MB-1, BC-S9, the editor\'s second pass)')
     for piece in ('terminated for a procedural or administrative reason', 'determined ineligible'):
         same('S65', piece in ' '.join(meta('cms-medicaid-chip-renewal-funnel')['notes'] + [meta('cms-medicaid-chip-renewal-funnel')['qualification']]), True, 'CMS term in the sidecar: ' + piece)
         want('S65', t, piece, 'note 1 quotes CMS (BC-S9)')
@@ -326,7 +326,9 @@ def figures():
     want('S73', t, 'The Democratic funds refunded $81,000 to two committees that had given to them, and the Republican funds $4,000 to four (line 28C)', 'note 4, refunds')
     same('S73', len({r['recipient_state'] for r in l22 if r['nominee'] == 'Donald J. Trump' and r['recipient_kind'] == 'state party committee'} - {'DC', 'GU'}), 48, 'Trump: 48 states')
     want('S73', t, 'The Democratic funds paid the state party committees of the 50 states and the District of Columbia, and the Republican funds those of 48 states, the District of Columbia and Guam', 'note 3')
-    same('S73', [w for w in ('Harris’s', 'Trump’s', 'nominee’s') if w in t + ' ' + ' '.join(sp['labels']['sources'].values()) + ' ' + sp['table']['caption']], [], 'no nominee\'s possessive over the funds (ST2-M1)')
+    mine_words = ' '.join(sp['notes'] + sp.get('chart_notes', []) + [sp['alt'], sp['table']['caption']] + list(sp['labels']['sources'].values()))
+    same('S73', [w for w in ('Harris’s', 'Trump’s', 'nominee’s') if w in mine_words], [], 'no nominee\'s possessive over the funds in the drawing, notes, alt and caption (ST2-M1)')
+    same('S73', [w for w in ('Harris’s', 'Trump’s', 'nominee’s') if w in sp['title'] + ' ' + sp['measure_line']], [], 'no nominee\'s possessive over the funds in the title and measure line (ST2-M1, the editor\'s words)')
     same('S73', sp['labels']['sub'], {'Kamala D. Harris': 'Joseph R. Biden Jr. until July 21, 2024, then Kamala D. Harris', 'Donald J. Trump': 'Donald J. Trump'}, 'the campaigns\' candidates under each bar (ST2-M1)')
     names = sorted({r['recipient_name_2024_election'] for r in nodes if r['recipient_kind'] == 'other committee' or r['amount_lines'] == '28C'})
     tc = dict(sp['typography']['replace'])
@@ -438,7 +440,7 @@ def figures():
     sp, t = spec('s77')
     st = {r['order']: r for r in read('govinfo-snap-application-path')}
     same('S77', (st['4']['time_limit'], st['5']['time_limit'], st['3']['time_limit'], st['1']['time_limit'], st['2']['time_limit']), ('30 calendar days', '7 calendar days', 'At least 10 days', 'Same day', ''), 'limits as the file holds them')
-    want('S77', sp['title'], 'at most 30 days from an application to a decision, and at most seven days for a household with very little income or cash', 'title')
+    want('S77', sp['title'], 'at most 30 days from an application to a decision, and seven for a household with very little income or cash', 'title (the editor\'s second pass)')
     want('S77', t, 'at least 10 days', 'proof')
     lim = sp['labels']['limits']
     same('S77', (lim['4'], lim['5'], lim['3'], lim['1']), ('Within 30 days of filing, the rule’s limit', 'Interview and benefits within 7 days of filing, the rule’s limit', 'At least 10 days to send it', 'Taken the same day'), 'step words against the limits')

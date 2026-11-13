@@ -890,7 +890,7 @@
   "chapter": "14",
   "rule": "14.104",
   "width_px": null,
-  "alt": "Two senders side by side, one bar for each nominee’s joint fundraising committees, with links to bars for the committees they transferred money to, every bar as tall and every link as wide as its dollars on one scale. Kamala D. Harris’s three funds sent $533.7 million to the Harris campaign, $240.8 million to the Democratic National Committee, $181.4 million to 51 state party committees and $38,640 to one other committee, $955.9 million in all. Donald J. Trump’s four funds sent $407.8 million to the Trump campaign, $163.8 million to the Republican National Committee, $69.9 million to 50 state party committees and $38.3 million to four other committees, $679.8 million in all.",
+  "alt": "Two senders side by side, one bar for the joint fundraising committees that paid each party’s presidential campaign, with links to bars for the committees they transferred money to, every bar as tall and every link as wide as its dollars on one scale. The three that paid the Democratic campaign, whose candidate was Joseph R. Biden Jr. until July 21, 2024, then Kamala D. Harris, sent $533.7 million to the campaign, $240.8 million to the Democratic National Committee, $181.4 million to 51 state party committees and $38,640 to one other committee, $955.9 million in all. The four that paid the Republican campaign, whose candidate was Donald J. Trump, sent $407.8 million to the campaign, $163.8 million to the Republican National Committee, $69.9 million to 50 state party committees and $38.3 million to four other committees, $679.8 million in all.",
   "illustrative": false,
   "notes": "S73, network-diagram: the chart kit draws it from work/build/chart-kit/specs/s73.json (contract R1-C3)"
  },
@@ -985,7 +985,8 @@
   "width_px": null,
   "alt": "A tile map with one square per state. At a desk each square holds an arrow as long as the state’s shift toward the Republican nominee from 2020 to 2024, every arrow pointing the same way, in a frame that scrolls sideways where the page is narrower than the drawing; on a phone each square takes a gray step by the size of its shift instead. The largest shifts were New York 10.5, New Jersey 10.0, Florida 9.7 and California 9.0 points; the smallest were Washington 1.0, Utah 1.1, Oklahoma 1.2 and Nebraska 1.4. The United States moved 5.9 points.",
   "illustrative": false,
-  "notes": "S12, tile-map-shift-arrows: the chart kit draws it from work/build/chart-kit/specs/s12.json (contract R1-C3)"
+  "notes": "S12, tile-map-shift-arrows: the chart kit draws it from work/build/chart-kit/specs/s12.json (contract R1-C3)",
+  "breakout": true
  },
  "s-14-s16": {
   "chapter": "14",

@@ -302,3 +302,126 @@ Scratch only, in the folder named at the top:
 - the page copies, the kit builds and captures, the probes and their results;
 - the designer's data links and runs;
 - the PDF.
+
+## Second pass
+
+November 13, 2026, after the review fix pass, from 06:53 UTC (clock read).
+
+**What I read.**
+- The fix brief with its addendum (D3-1319 to D3-1330).
+- The data lead's "Review fix pass" rulings on AX and its "Sign-off, review fix pass" sections.
+- The engineer's, makers' and cartographer's "Review fix pass" sections.
+- The decision log from D3-1319 to D3-1448 and the calls named for my items.
+
+**What I tested on.**
+- The closing strict build, `.../round-3-fix/close/guide.html` (11,231,784 bytes), copied into `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-second-pass/access-production/`. The original is unchanged.
+- As before, copies holding chapters 13 to 15, or chapter 14 alone, for the browser.
+- My kit runs (S84 in Node, the designer's specs) read the kit as committed at the fix pass's close, between 06:58 and 07:03 UTC, before the next commit (`cf1f2f80`, 07:04).
+
+### Second score
+
+**4 of 5.** Both Must fix items are closed. Seven of the eight Should fix items are closed, and AX-S2's colors and AX-S5's words wait on Dustin. Forced colors now keep every mark apart. The simulated designer reached a passing county map from the README alone. Three small new faults hold the score at 4; the largest is S12's sideways stage, which is cut at every desk width with no visible sign that it scrolls.
+
+### Status of each item
+
+| Item | Status | Why |
+|---|---|---|
+| AX-M1, S73's "From" | **Closed** | The table names a fund in all 20 rows, as the drawing names it ("Harris Victory Fund", "Trump 47 Committee"), and both refund rows print "28C, refund". The kit's `first` prints text, and a printed column empty in every row now fails |
+| AX-M2, S68's numbers | **Closed** | "None drawn" for the four bodies with no line, and each drawn line's words for the other four. The kit warns where `words` leave a stored value unmapped |
+| AX-S1, forced colors | **Closed** | Light and dark contrast themes, 1440 px at 2x: S83's dots alone take CanvasText, with state lines and coast in GrayText and no county mesh; S81 draws no county outlines, and "No estimate" takes a hatch apart from every class; S72's "Did not vote" fills GrayText, apart from "No"'s outline, key included; S74's authority cells take a double edge. The eight forced-only marks are hidden in normal colors |
+| AX-S2, the avoid sketch | **Partly closed; colors wait on Dustin** (D3-1322) | The misleading half now draws Party B's five places as large blocks around Party A's seven small ones, so land standing in for votes shows at a glance (D3-1360). `use_when` says "two panels, one for each party". The second drawing's name reads "...the form to use instead. The same places, ...". The gray stays until Dustin rules |
+| AX-S3, S84 | **Closed** | DC's square prints in all four panels at every whole drawing width from 256 to 388 px (Node, 0 faults). The table prints "No state law" in all 20 cells that held "...", and note 4 keys [c], (d), (e) and (g) |
+| AX-S4, the sort | **Closed** | S81, S82 and S83 run Alabama, Alaska, Arizona, Arkansas |
+| AX-S5, "the download" | **Waits on Dustin** (D3-1321, D3-1334) | The nine promises still print "the download" or "the CSV file"; `{data_file}` is ready in the kit for his answer |
+| AX-S6, the designer's kit | **Closed** | From the README's new section alone: `--data` read the designer's folder; V2's wrong retrieval date now fails; the README names the Estimate kind; the kit warns of the missing national figure; `build` prints the weight and the share per plate. V5 passes (production test below). New fault N3 |
+| AX-S7, Rule 14.9 | **Closed** under the data lead's ruling (D3-1347) | The rule reads "the widest margin of error drawn, the plus or minus figure", and "their gap's margin" became "the margin of error of the gap between them" |
+| AX-S8, the reader's words | **Closed** | S66 spells out the Office of Management and Budget and glosses notice and comment as steps 2 and 3. Entry 14.110 and S76 gloss a Sankey and the node. Entry 14.117 defines a choropleth and 14.120 points to it. Entry 14.120 says "four steps of one ink". Entry 14.124's `use_when` no longer opens "Never". "Net transfers" stays, as a band's name the note explains |
+
+### New faults
+
+**N1. S82's "Closest races, under 5 points" column prints 29 blank cells.**
+- **Where:** S82's grouped table (ST-M4's new `list` column).
+- **What is wrong.** The 29 states with no race under 5 points print an empty cell. A screen reader says "blank" and leaves the reader to guess whether a cell is empty or missing. Round 2's standard (S58, AX S5) gives a blank its word.
+- **Fix.** `"empty": "None"` on that group column.
+- **Owner:** the cartographer.
+
+**N2. S12's 1024 px stage is cut at every desk width, with no visible sign that it scrolls.**
+- **Where:** S12 (entry 14.115), `kit.js` `stage_stop`, `kit.css` `.oac-art[data-oa-stage]`.
+- **What is wrong.**
+  - At 1440 px the column is 723 px, so the drawing stops at about seven tenths of its width, mid-tile ("PA 2.", "VA 4."). New York, New Jersey and Florida sit out of view, three of the four states the title names (the lists below the map do name them).
+  - The plate's own hint ("Wider than this column. Scroll the frame sideways to see all of it.") stays hidden, because the plate's frame does not scroll; only the drawing inside it does.
+  - Overlay scrollbars show nothing. In Chromium the stage's scrollbar takes 0 px.
+  - The keyboard and screen-reader paths hold:
+    - a tab stop after the link before it;
+    - the name "The drawing at its full width, 1024 px; scroll sideways to see all of it";
+    - the arrow keys scrolled it 301 px at 1440 and 320 px at 1024.
+  - At 390, 360 and 320 px the phone form draws at 326, 296 and 256 px with no scroll.
+- **Fix.** Show a visible hint while the stage scrolls, as chapter 15's wide plates do (the same words, un-hidden by `stage_stop`), or a visible edge that says more lies to the right.
+- **Owner:** the engineer.
+
+**N3. `{data_file}` prints in lowercase at the start of a sentence.**
+- **Where:** `kit.js` `K.fill_words`; the README's county map step 8.
+- **What is wrong.** The designer's note, written as the README asks ("{data_file} lists every county ..."), printed "... beside the map. this chart’s data file in the guide’s asset package lists every county". No committed spec prints the placeholder yet; every spec waits on Dustin's answer (D3-1334). Any note that opens a sentence with it will print this way.
+- **Fix.** The kit capitalizes the filled words after a sentence's end or at a note's start, or the README tells builders to write the placeholder mid-sentence only.
+- **Owners:** the engineer, the editor.
+
+**Noted, no item.** S73's "To" column prints other committees and refund payers in the capitals the payers filed ("TAMMY BALDWIN FOR SENATE"), under D3-1418, while its "From" uses the drawing's names. A screen reader reads the capitals as words; a low-vision reader meets a run of capitals. The editor may want title case in printed words only, as D3-519 allows.
+
+### The production test, second pass
+
+The panel is simulated and untested with real people. The full log is under "Second pass" in `round-3-production-test/20261113_Designer-Log.md`.
+- **Without help, the designer reached** the form, the derive script's model, `--data`, the source line (the date check caught the old error), the Estimate kind, the national figure's warning, and the weight line.
+- **The result:** V5 passes with 0 faults and one warning. It weighs about 13,548 bytes with its frame against a share of 13,588.
+- **Not reached cleanly:** `{data_file}` at a sentence's start (N3). The national figure's warning cannot be silenced once a note gives the reason.
+- **The reader panel** was not rerun. I checked the words that stopped the reader in the files instead (AX-S8).
+
+### Tested in the second pass
+
+- **Tables, parsed from the close build's chapter 14,** every row: S68 (8), S73 (20), S72 (5), S84 (51), and the first rows of S81, S82 and S83. "No state law" counted (20), and no "..." left. S82's blank cells counted (29).
+- **Opened tables in Chromium's aria snapshots:** S68, S73, S82 and S84, each a captioned table with column and row headers.
+- **Widths** on the chapters 13 to 15 copy:
+  - 1440, 1024, 768, 600, 390, 360 and 320 px, and 720 px at device scale 2.
+  - All 23 round 3 entry figures drew, with no warning, page error or drawing text under 13 px, and no sideways page scroll.
+  - S12's stage attributes at each width, captures at 1440, 1024, 600, 390 and 320 px, its plate hint's state and its scrollbar's height.
+- **Keyboard** on S12 at 1440 and 1024 px: Tab from the preceding link reached the stage, and eight arrow presses scrolled it. Focus style read as a 2 px solid outline from computed style, not seen in a capture.
+- **Aria snapshots:** S12 at 1024 and 768 px, and the avoid sketch's stage.
+- **axe-core** over groups 11 to 15 at 1440 and 390 px with every table open: 0 violations. Color contrast was incomplete on 7,086 and 8,294 nodes, the text over drawings measured below.
+- **Forced colors,** Chromium's light and dark emulation:
+  - Every drawing word in the 23 figures: 1,544 at 1440 px and 815 at 390 px in each theme, 0 under 4.5 to 1 on a solid paint. Words on hatches sit in S78, S12, S74, S16 and S80.
+  - Captures at 1440 px (device scale 2) of S68, S72, S73, S74, S80, S81, S82, S83 and S12, and at 390 px of S72, S74 and S83.
+  - I looked at S83's and S81's eastern thirds and keys in the light theme, S72 in the light theme and S74 in the dark.
+  - The forced-only marks counted: 8, hidden in normal colors.
+- **S84's DC square in Node:** every whole drawing width from 256 to 388 px, 4 labels each, 0 faults.
+- **Words, read by script:** Rule 14.9, entries 14.110, 14.117, 14.120 and 14.124, S66's typography and notes, and S76's notes. The nine "download" and "CSV file" promises found in the page text.
+- **The avoid sketch** captured at 1440 px.
+- **Production test 1:**
+  - `check --data` on V1, V2 and V4.
+  - `build --data` on V5 with captures at 1440 and 390 px on both grounds.
+  - V5's check file, CSV (3,144 rows) and printed note read.
+
+### Not tested in the second pass
+
+- **The main session's runs:** the quick and four-width guide checks, and axe on the whole page.
+- **Real people and real tools:** real screen readers, real devices, Windows' own contrast themes and paper. Print was not rerun this pass.
+- **Not rerun this pass:**
+  - reduced motion;
+  - the scripts-off read of the full page;
+  - kit pages of the round 3 specs on Charcoal (the owners' and the data lead's captures cover them; I rebuilt only the designer's map);
+  - S81's Charcoal key in normal colors (BC-S3).
+- **The commit after the close:** `cf1f2f80` (S12's phone tile codes), committed after my runs. I did not test it.
+- **The panels:** both simulated and untested with real people, and the reader panel not rerun.
+
+### Change log, second pass
+
+Modified:
+- this report (this section);
+- `work/handoffs/phase-3/round-3-production-test/20261113_Designer-Log.md` (its "Second pass" section).
+
+Created in `work/handoffs/phase-3/round-3-production-test/`:
+- `20261113_P03-Spec-V5.json`;
+- `20261113_P03-Check-V5.txt`, `20261113_P03-Check-V5.json`;
+- `20261113_P03-Capture-V5-Newsprint-1440.png`, `20261113_P03-Capture-V5-Charcoal-390.png`.
+
+Scratch only, in the folder named above:
+- the page copies, probes, captures and results;
+- the designer's data folder and kit output.

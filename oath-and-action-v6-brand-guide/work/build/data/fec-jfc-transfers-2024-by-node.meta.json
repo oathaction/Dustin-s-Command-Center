@@ -109,7 +109,7 @@
   },
   "link_id": {
    "type": "id",
-   "description": "the payment line's own ID: the paying fund, the committee paid and the report line"
+   "description": "the row's own short ID, its place in this file's order: one paying fund, one committee paid, one report line"
   },
   "node": {
    "type": "text",
@@ -145,5 +145,5 @@
  "derived_from": [
   "fec-jfc-transfers-2024-all-committees.csv"
  ],
- "derivation": "The rows of fec-jfc-transfers-2024-all-committees unchanged, with four columns added, read the same way for both nominees: node names the receiver the network diagram draws each line 22 payment in, by recipient_kind (each nominee's campaign and national party committee alone; its state party committees and its other committees each as one node, counted once each, whichever fund paid them), and marks a line 28C refund, which does not draw; link_id joins the paying fund, the committee paid and the report line; table_row and table_to give the page table one row for each fund and kind of receiver, in the order nominee, kind, then fund by what it sent the campaign, with each fund's refunds after every drawn row. Rows sorted in that order, then by amount, largest first."
+ "derivation": "The rows of fec-jfc-transfers-2024-all-committees unchanged, with four columns added, read the same way for both nominees: node names the receiver the network diagram draws each line 22 payment in, by recipient_kind (each nominee's campaign and national party committee alone; its state party committees and its other committees each as one node, counted once each, whichever fund paid them), and marks a line 28C refund, which does not draw; link_id numbers the rows in this order, one fund, committee and report line each; table_row and table_to give the page table one row for each fund and kind of receiver, in the order nominee, kind, then fund by what it sent the campaign, with each fund's refunds after every drawn row. Rows sorted in that order, then by amount, largest first."
 }

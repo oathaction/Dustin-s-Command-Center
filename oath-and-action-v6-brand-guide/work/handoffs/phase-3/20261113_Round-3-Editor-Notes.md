@@ -597,3 +597,21 @@ By the data lead's script (Q3): Arkansas's gap to Texas, 5.1 points against 3.55
 - Modified, finished owners' words (D3-669): `work/build/guide/entries/14-024.json`, `14-045.json`, `14-057.json`, `14-073.json`, `14-091.json`, `14-092.json` (rounds 1 and 2); maker A's `work/build/chart-kit/specs/s67.json`, `s68.json`, `s70.json`, `s72.json` and `work/build/guide/entries/14-096.json`; maker B's `s73.json`, `s76.json`, `s77.json`; the cartographer's `s81.json`, `work/build/guide/entries/14-117.json`, `14-124.json` and `work/build/guide/specimens/s-14-124-sketch.html` (its first `<desc>`).
 - Rewritten by every owner's run: `work/build/guide/chapters/14-data-visualization.json`, the chapter manifest and the example log (`phase3_ch14_build.py`, the engineer's).
 - This file. Scratch only: `tools/dump.py`, `tools/lint.py`, `tools/apply.py`, `tools/cap.js`, `words/*.json`, the builds `guide1.html` and `guide2.html` with their reports, `kit-out-a/`, `kit-out-b/`, `kit-out-c/`, and the captures in `caps/` and `caps2/`.
+
+## Second pass
+
+The creative director's rescore (`20261113_CD-Review-Of-Round-3.md`, "## Second pass") and the data lead's ST2-M1, at the main session's word; all three makers had reported, so I write in their fields (D3-669) and log each here.
+
+### RS-4: three titles past 30 words, two stray periods (06:58 to 07:06 UTC)
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| S65 | title | Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, states ended 16.0 million for a procedural reason, more than twice the 6.9 million they found ineligible. (31 words) | Of 76.7 million Medicaid and CHIP renewals due April 2023 to March 2024, states ended 16.0 million for a procedural reason, over twice the 6.9 million they found ineligible. (29) | RS-4; the finding and both actors (BC-S9) kept; 15,966,431 against 6,948,106 is 2.30 times, by script |
+| S77 | title | …, a state has at most 30 days from an application to a decision, and at most seven days for a household with very little income or cash. (32) | …, a state has at most 30 days from an application to a decision, and seven for a household with very little income or cash. (29) | RS-4; "at most" and "days" carry over to the second limit, which the file holds as 7 calendar days |
+| S78 | title | In the Census Bureau’s 2025 survey, broadband such as cable, fiber or DSL reached at least 79 percent of households in 10 states and DC and under 71 percent in nine. (31) | In a 2025 Census survey, broadband such as cable, fiber or DSL reached at least 79 percent of households in 10 states and DC and under 71 in nine. (29) | RS-4; the survey still names its source (C-S3), and the census line's own words ("such as") stay. By script on `census-acs-broadband-by-state`: 11 places at 79 or more (10 states and DC), nine under 71 |
+| S78 | measure_line | …, with the United States above the map. | …, with the United States above the map | RS-4: no other measure line ends with a period |
+| S81 | measure_line | …, with the nation above the map. | …, with the nation above the map | The same |
+
+**New strings for the figure checks, through the main session:** maker B's S65 title check (`maker_b_round3_derive.py`, line 273) reads "Of %s million Medicaid and CHIP renewals due April 2023 to March 2024, states ended %s million for a procedural reason, over twice the %s million they found ineligible"; its S77 title check (line 432) reads "at most 30 days from an application to a decision, and seven for a household with very little income or cash". The cartographer's S78 check (`cartographer_round3_derive.py`, line 601) reads "under 71 in nine." in place of "under 71 percent in nine.".
+
+Checks: `tools/apply.py` (each phrase once, only its field changed); `oa-chart.mjs build s65 s77 s78 s81`, sweep on: 4 PASS, 0 faults (S65 6,567, S77 7,622, S78 9,406 and S81 13,597 bytes with frames). `cartographer_round3_derive.py --figures`: 1 fault, the S78 string above, as expected. `maker_b_round3_derive.py --figures` stopped before S65 and S77 on S73's new column `amount_before_2024_07_21` (maker B's S73 work for ST2-M1 in progress), so its S65 and S77 lines were not run; they will fail on the two strings above until maker B changes them.
