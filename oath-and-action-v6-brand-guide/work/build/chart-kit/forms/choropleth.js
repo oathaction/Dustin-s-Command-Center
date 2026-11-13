@@ -41,7 +41,8 @@
         .sort(function (a, b) { return L.labels[L.index[b.id]][2] - L.labels[L.index[a.id]][2] || (a.id < b.id ? -1 : 1); });
       var r1 = K.parts.map_labels(c, L, T, items.map(function (it) { return { id: it.id, words: it.code, weight: 600, fill: on_ink(fill_of(it)) }; }), { role: 'tick', beside: false, inset: 1 });
       var dark = o.items.filter(function (it) { return it.cls > 1; }).map(function (it) { return L.rings(L.index[it.id]).map(function (rs) { return rs.map(function (r) { return r.map(T.pt); }); }); });
-      var in_dark = function (x, y) { return dark.some(function (ps) { return ps.some(function (rs) { return K.in_poly(rs, x, y); }); }); };
+      var LIGHT = [null, 'surface', 'none', 'land', 'seq-1'];
+      var in_dark = function (x, y) { return LIGHT.indexOf(c.fill_under(x, y)) < 0 || dark.some(function (ps) { return ps.some(function (rs) { return K.in_poly(rs, x, y); }); }); };
       var hit = function (a, b2) { return a.x < b2.x + b2.w + 2 && b2.x < a.x + a.w + 2 && a.y < b2.y + b2.h + 2 && b2.y < a.y + a.h + 2; };
       var size = c.size('tick');
       r1.unplaced.forEach(function (it) {
