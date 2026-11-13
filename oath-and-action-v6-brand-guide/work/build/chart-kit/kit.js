@@ -274,6 +274,7 @@
     this.texts = [];
     this.marks = [];
     this.leaders = [];
+    this.cells = [];   // D3-1546 (round 4): c.cell's boxes, read by checks.js
     this.warnings = [];
     this.ink = [];   // K-S2 (round 1 fix pass): the box of every shape drawn, marks or not, so the check finds one outside the drawing
     this._tf = 0;
@@ -495,6 +496,14 @@
       }
     };
   };
+  // D3-1546 (round 4): a cell, a box that must hold every shape and word drawn while it is open (a tile's code, figure and
+  // arrow) with o.spare px to spare on every side (default 1); checks.js fails one that leaves it. c.cell(null) closes it.
+  Ctx.prototype.cell = function (x, y, w, h, o) {
+    var b = this._cell;
+    if (b) b.s1 = this._seq;
+    this._cell = b = x === null || this._tf ? null : { x: x, y: y, w: w, h: h, s0: this._seq, s1: 1e9, o: o || {} };
+    if (b) { if (this._m) K.map_ink(b, this._m); this.cells.push(b); }
+  };
   Ctx.prototype.mark = function (m) {
     if (m.job === undefined || m.job === null) m.job = this._job;
     if (this._tf) return m;
@@ -708,8 +717,11 @@
   // column gives the drawing PHONE_MAX px or more, in a frame that scrolls sideways where the column is narrower; under
   // PHONE_MAX the phone drawing takes the column's width as before. For a drawing approved at one width that no column
   // gives it (S12's arrows at board 1's 1024 px). Returns the width to draw at.
+  // DR-261 (round 4): spec.stage_min, a width in px, is a floor: a desk drawing takes the column's width where the column
+  // gives stage_min px or more, and draws at stage_min in the same scrolling frame where it gives less (S12's stacked tile,
+  // 618 px)
   K.PHONE_MAX = PHONE_MAX;
-  K.draw_width = function (spec, w) { return spec && spec.stage && w >= PHONE_MAX ? Math.round(+spec.stage) : w; };
+  K.draw_width = function (spec, w) { return !spec || w < PHONE_MAX ? w : spec.stage ? Math.round(+spec.stage) : spec.stage_min ? Math.max(w, Math.round(+spec.stage_min)) : w; };
   K.draw = function (spec, rows, opts) {
     // returns {svg, width, height, texts, marks, warnings, guard}
     var def = K.forms[spec.form];
@@ -740,6 +752,7 @@
       c.texts.forEach(function (b) { b.y += dy; if (b.top !== undefined) { b.top += dy; b.bottom += dy; } });
       c.marks.forEach(function (m) { m.y += dy; if (m.zero !== undefined && m.axis !== 'x') m.zero += dy; });
       c.leaders.forEach(function (l) { l.y1 += dy; l.y2 += dy; });
+      c.cells.forEach(function (b) { b.y += dy; });
       // the shapes' outlines and points move with them (AX S2: the crossing check reads them against the moved words)
       var mv = function (S) { return S.map(function (pts) { return pts.map(function (q) { return [q[0], q[1] + dy]; }); }); };
       c.ink.forEach(function (b) {
@@ -790,7 +803,7 @@
     var svg = '<svg xmlns="http://www.w3.org/2000/svg" class="oac-svg' + (fc.defs ? ' oac-u-' + c.uid : '') + '" viewBox="0 0 ' + width + ' ' + h + '" width="' + width + '" height="' + h + '"' +
       ' role="img" data-oa-form="' + esc(spec.form) + '" data-oa-width="' + width + '"' + (opts.label_id ? ' aria-labelledby="' + esc(opts.label_id) + '"' : '') + '>' +
       title + desc + fc.style + defs + c._els.join('') + '</svg>';
-    return { svg: svg, width: width, height: h, texts: c.texts, marks: c.marks, leaders: c.leaders, ink: c.ink, keys: c.keys || [], warnings: c.warnings, guard: guard, phone: c.phone,
+    return { svg: svg, width: width, height: h, texts: c.texts, marks: c.marks, leaders: c.leaders, ink: c.ink, keys: c.keys || [], cells: c.cells, warnings: c.warnings, guard: guard, phone: c.phone,
       bands: c.bands || [], interval: def.interval || false, margins_in_words: !!c._ivw,
       arrangement: c._arr || (c.phone ? 'phone' : 'desk'),
       fc: K.FC, fc_on_dark: K.FC_ON_DARK };
@@ -1230,15 +1243,16 @@
     if (!art) return null;
     var cs = root.getComputedStyle(fig), t = token_reader(function (n) { return cs.getPropertyValue(n); });
     var ground = opts.ground || (fig.closest && fig.closest('.oa-surface-charcoal') ? 'charcoal' : 'newsprint');
-    var last = -1, result = null;
+    var last = -1, result = null, staged = !!(spec.stage || spec.stage_min);
     function draw() {
-      var cw = art.clientWidth || fig.clientWidth, w = K.artboard(spec, t, cw);
+      var cw = art.clientWidth || fig.clientWidth, w = K.artboard(spec, t, cw), w0 = w;
       // C-M2: a staged drawing keeps its one width and the frame scrolls sideways; a phone column draws the phone form
-      if (spec.stage) {
+      // DR-261: a floor (stage_min) stages the drawing only where the column is narrower than the floor
+      if (staged) {
         w = K.draw_width(spec, w);
-        if (w === Math.round(+spec.stage)) art.setAttribute('data-oa-stage', String(w)); else art.removeAttribute('data-oa-stage');
+        if (spec.stage ? w === Math.round(+spec.stage) : w > w0) art.setAttribute('data-oa-stage', String(w)); else art.removeAttribute('data-oa-stage');
       }
-      if (w === last) { if (spec.stage) stage_stop(); return; }
+      if (w === last) { if (staged) stage_stop(); return; }
       last = w;
       // the drawing takes its name from the figure's printed title; a plate that prints no title (chapter 13's) names it
       // by its description, so the name never points at an element that is not there

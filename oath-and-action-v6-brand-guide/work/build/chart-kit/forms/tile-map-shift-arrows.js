@@ -1,6 +1,9 @@
 /* Tile-grid map with shift arrows (coverage plan 3.14, core; S12). One tile per state with a flat arrow whose length follows
  * the shift on one scale, the figure printed in the tile (DR-64); a frame marks a tile the spec singles out; gray steps on a
- * phone, where an arrow is too short to read (DR-64).
+ * phone, where an arrow is too short to read (DR-64). DR-261 (round 4): at a desk each tile stacks the state's code over its
+ * figure with the arrow beneath, and each tile is a cell (c.cell) that must hold all three with 1 px to spare; where the
+ * stacked tile has no room (tiles under 46 px, drawings under 618 px) the gray steps draw instead. S12 sets stage_min 618, so a
+ * desk column under 618 px draws at 618 in a frame that scrolls.
  * encode: code (code), shift (number), from (number, optional), to (number, optional).
  * labels: frame ("sign" frames a tile whose from and to differ in sign), key_title, key_steps ([1, 5, 10]), key_unit,
  * frame_label, steps ([lo, mid, hi] for the phone's three gray steps), steps_labels. formats: shift. */
@@ -16,7 +19,14 @@
       var L = c.labels, f = c.spec.formats || {}, W = c.width;
       var tm = K.parts.tiles(c), gap = tm.gap, size = tm.size, pitch = tm.pitch;
       // the phone's shaded tiles wherever a tile is too small for its code, figure and arrow (D3-93)
-      var tight = c.phone || size < c.measure('WW 88.8', 'tick', 700) + 12;
+      // DR-261: code on line 1 (baseline 16), figure on line 2 (baseline 32, the kit's 16 px leading for 13 px text), the arrow
+      // beneath with its head 2 px clear of the figure's box; the stacked tile fits where the head ends 1 px or more inside
+      // the tile and the widest code or figure ends 2 px or more inside its right edge
+      var hw = c.t('arrow-head-half-width'), fb2 = c.text_box(0, 32, '88.8', { role: 'tick' });
+      var AY = K.snap(fb2.y + fb2.h + 2 + hw, c.t('arrow-shaft'));
+      var wide = Math.max.apply(null, rows.filter(function (r) { return G.tiles[r[ec]]; }).map(function (r) {
+        return Math.max(c.measure(r[ec], 'tick', 700), c.measure(K.fmt(Math.abs(r[es]), f.shift || 'number:1'), 'tick', 400)); }));
+      var tight = c.phone || size < AY + hw + 1 || wide + 7 > size;
       // a shaded tile too small for its code at the smallest text size draws no code, and a note says the table names
       // every state, as the categorical tile map does (D3-93; the sweep found codes across the tiles' edges at 256 to 279 px)
       // RS-5 (round 3, second pass): as S78's tiles do, each code sits in its tile where the tile holds it with 1 px to
@@ -62,11 +72,15 @@
         } else {
           // the track ground keeps the code and figure at 4.5 to 1 or more on both grounds, in the label ink
           c.rect(x, y, size, size, { fill: 'track', mark: false });
+          // DR-261: the code over its figure, then the arrow at the tile's foot where there is room (size - 10), never above AY;
+          // the tile is the cell that holds the three (D3-1546)
+          c.cell(x, y, size, size, { key: r[ec] });
           c.text(x + 5, y + 16, r[ec], { role: 'tick', weight: 700, fill: 'label' });
-          c.text(x + 5 + c.measure(r[ec] + ' ', 'tick', 700), y + 16, K.fmt(Math.abs(r[es]), f.shift || 'number:1'), { role: 'tick', fill: 'label' });
-          var len = (size - 14) * Math.abs(r[es]) / max, ay = y + size - 16;
+          c.text(x + 5, y + 32, K.fmt(Math.abs(r[es]), f.shift || 'number:1'), { role: 'tick', fill: 'label' });
+          var len = (size - 14) * Math.abs(r[es]) / max, ay = y + Math.max(AY, size - 10);
           var dir = r[es] >= 0 ? 1 : -1, ax = dir > 0 ? x + 7 : x + size - 7;
           K.parts.arrow(c, ax, ax + dir * len, ay, { data: { key: r[ec], field: es, value: r[es] } });
+          c.cell(null);
         }
         if (framed) c.rect(x - 2, y - 2, size + 4, size + 4, { stroke: 'label', width: c.t('tile-frame'), mark: false });
       });
