@@ -13,7 +13,7 @@
   "measure_line": "Dates federal law sets in calendar 2027 for the budget process and for individual income tax, with what the law attaches to missing each one",
   "notes": [
     "The Budget Act’s timetable, 2 U.S.C. 631, attaches no consequence to its dates. A tax date on a weekend or a legal holiday moves to the next business day (26 U.S.C. 7503); none does in 2027.",
-    "The IRS may postpone tax dates for people in a federally declared disaster area (26 U.S.C. 7508A)."
+    "The IRS may postpone tax dates for people affected by a federally declared disaster, a significant fire or a terrorist or military action, and, at a governor’s request, by a disaster the state declares (26 U.S.C. 7508A)."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -99,6 +99,7 @@
     "Infographics maker, round 4. Data plan row 126, rule 14.140. Domain D08 from the sidecar (data lead sign-off, point 4).",
     "A date carries a consequence in law where the file's consequence column states one (it opens with \"None\" where the sections state none): 7 of 16 by script, the six tax dates and October 1 (31 U.S.C. 1341(a)); ruling (b).",
     "No date moves under 26 U.S.C. 7503 (moved_to_next_business_day false on every row; no 2027 tax date on a weekend, by script). Budget dates stand where they fall (May 15 a Saturday, February 15 Washington’s Birthday), as 2 U.S.C. 631 sets them.",
-    "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S94."
+    "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S94.",
+    "Note 2 as the data lead ruled under R-2 (21:09 UTC): 26 U.S.C. 7508A in force, with all four causes, after Public Laws 119-29 and 119-64; no 2027 date depends on it."
   ]
 }

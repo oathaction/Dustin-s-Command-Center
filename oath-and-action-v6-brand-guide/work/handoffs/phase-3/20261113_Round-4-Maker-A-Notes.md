@@ -38,6 +38,8 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Maker A, briefed 
 - D3-xxx | No derived file this round: the derive script only checks figures (`--figures`, 51 checks) | S85 to S88 draw the research lead's frozen files as they stand
 - D3-xxx | The packed circles sketch draws an illustrative city budget of 12 lines packed by a greedy tangent search, the four largest named, track ink with a context edge | R3-9's frame (320 px, 10 px inset); the same budget the mind map sketch uses, so the two reference sketches read as one family
 - D3-xxx | The rose chart sketch draws four illustrative values as quarter wedges whose radius is the value (A 2, B 4, C 3, D 1) beside bars of the same values from one zero line | R3-9's frame (two 288 px halves of one height); "a value twice another looks four times as large" is A against B
+- D3-xxx | S87's words for a group that cannot fit inside it (at the narrowest drawings, "Both") sit under the circles inside the frame, on a leader straight down from the group, and the frame grows to hold them | MA-9: the count shows at every width; the same rule S88 uses
+- D3-xxx | S88's `notes_internal` names its area check: the form's 1 percent test on the shared area, the kit's `area_of` on each radius, and the derive script's recomputation at six radii | MA-10
 - D3-xxx | I ran `phase3_ch14_build.py --rounds 1,2,3,4` so my entries reach the chapter file for my own strict build | The generator's default builds rounds 1 to 3 (DR-253); its five faults are the infographics maker's entries not yet landed
 
 ## Requests
@@ -49,6 +51,21 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Maker A, briefed 
 ### Requests to the engineer
 
 - **A4-E1, a Civic Line icon in a kit drawing (S85, DR-266).** S85 sets CL-050 once at 48 px beside its word. The kit has no part that draws a Civic Line drawing, and the guide's sprite holds CL-050 as `oa-sym-cl-050`. I ask for one shared part, such as `K.parts.icon(c, 'CL-050', x, y, 48)`, that draws the approved black master at the size given in the icon ink (`--oa-component-icon-ink`, the data lead's ruling (b); one color, no red accent), with `aria-hidden="true" focusable="false"`, `data-icon="CL-050"` and `data-icon-family` (Rule 10.6 and the chapter 10 construction file, section 11), as `<use href="#oa-sym-cl-050">` on the guide's page and with the drawing inline in the SVG and PNG exports, and that the checks see as a shape with a box, so no word sits on it. CL-050 is an atlas symbol (the editor's label table: "Worker bargaining power", chip "Variable A2"), so Rule 10.6 sets a typed chip beside its name: if the data lead rules the chip prints in the drawing, a chip part in the same call (`K.parts.chip(c, x, y, 'Variable A2')`, the chip-fill and chip-label roles kit.css already holds) would keep it in one style with the figure's HTML chips. Until it lands, S85 draws the name alone and fails its build on purpose (the form warns). The infographics maker's S89 takes no icon (ruling (b)), so this part is for S85 alone today.
+
+## Sign-off items from the data lead
+
+| Item | Done |
+|---|---|
+| MA-1 | S85's grade line is ruling (c)'s; its source line is the sidecar's `snapshot_in_grade` variant (R-1) |
+| MA-2 | S85's open marks: a 1 px context-ink edge and no fill, set in the form for every open mark (no spec key needed) |
+| MA-3, Q-A1 | S85 prints "Worker bargaining power" and the chip "Variable A2", checked by script against the label table and chapter 10's list of 41; `CL1514` in `v7.ids` |
+| MA-4 | S86's unnamed circles take the track ink with a 1 px context-ink edge on both grounds |
+| MA-5 | S86's key: 40,000, 10,000 and 1,000 |
+| MA-6 | S86's title in the past tense, in the editor's words |
+| MA-7 | A4-E1 is with the engineer (queued after R4-3 and R4-4) |
+| MA-8 | S88's title states the finding, in the editor's words |
+| MA-9 | S87's "Both" takes a leader under the circles where it cannot fit inside; PASS at 1440, 390, 328, 288 and 256 px pages and in the sweep |
+| MA-10 | S88's area check named in `notes_internal` |
 
 ## Tested
 

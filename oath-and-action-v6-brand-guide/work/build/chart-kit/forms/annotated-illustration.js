@@ -47,7 +47,7 @@
         var role = b.size === 'label' ? 'label' : 'tick', first = null;
         pieces.forEach(function (p, i) {
           var wt = b.weight || 400, size = c.size(role), lead = b.lead && p.indexOf(b.lead) === 0;
-          if (lead) { p = p.slice(b.lead.length).trim(); var lb = c.text(x, y + size * 0.93, b.lead, { role: role, weight: 700, fill: 'label' }); if (first === null) first = y + size * 0.93; y = lb.bottom + 2; if (!p) return; }
+          if (lead) { p = p.slice(b.lead.length).trim(); var lb = c.text(x, y + size * 0.93, b.lead, { role: role, weight: 700, fill: 'label', max: w, leading: Math.round(size * 1.36) }); if (first === null) first = y + size * 0.93; y = lb.bottom + 2; if (!p) return; }
           var ax = anchor === 'end' ? x + w : b.center ? x + w / 2 : x;
           var t = c.text(ax, y + size * 0.93, p, { role: role, weight: wt, max: w, leading: Math.round(size * 1.36), fill: 'label', anchor: anchor === 'end' ? 'end' : b.center ? 'middle' : 'start' });
           if (first === null) first = y + size * 0.93;

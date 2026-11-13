@@ -87,7 +87,9 @@
   "domain": "D09",
   "states": [],
   "notes_internal": [
-    "Maker A, round 4. Data plan row 117, rule 14.81. Domain D09 (V7 I133). Data lead rulings (a) nothing named, (b) the frame in the context ink, two equal circles with 1.5 px subject-ink edges and no fill, the overlap in the track ink, (c) the grade line."
+    "Maker A, round 4. Data plan row 117, rule 14.81. Domain D09 (V7 I133). Source line: the derived file's printed line.",
+    "Data lead rulings (a) nothing named; (b) a frame for everyone, a 1 px context-ink rectangle named with its count, two circles of one size with 1.5 px subject-ink edges and no fill, each named, the overlap in the track ink, each group's count and share inside it with 4 px to spare or by a leader where it does not fit (MA-9: under the circles at the narrowest widths), the note on the circles' sizes; (c) the grade line.",
+    "Checks by script (maker_a_round4_derive.py --figures, check S87): the four counts and shares equal the derived file rounded and sum to 336,838,154 and 100.0 percent; private and public totals equal the published DP03 counts; every gap between two regions passes its approximate margin (the closest about 7 times over), so the title may list them in any order."
   ],
   "chart_notes": [
     "Each group’s count and share sit inside it; the overlap, people with both kinds, is shaded. The frame stands for everyone, and the space outside both circles holds the people with no coverage."

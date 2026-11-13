@@ -4,6 +4,8 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:18 UTC. Entries 14.135 and 14.139 read: nothing in them for me to change; I sign them off with their specimens. Waiting on: the cards S90 to S92 and S94, S95, S85's parts, MA-9, MI-2, the phone codes, DR-265's captures and 15.19 to 15.21.
+- 21:17 UTC. IM-E5 ruled: S95's card turns the ranks across, with five conditions.
 - 21:16 UTC. Maker A’s six entries and both sketches signed off.
 - 21:14 UTC. Signed off S86, S88 (one small item) and S89; S87 and S93 but for 256 px (MA-9, MI-2); S85's figures, with its icon and chip waiting on the engineer. The share per plate is now 12,495.
 - 21:09 UTC. Resumed on the main session's word. R-2 answered: grade line dates stand; S94's 7508A note ruled. Next: sign-off reads of S86, S87, S88, S89, S93 and S85's figures.
@@ -135,6 +137,19 @@ The engineer may land items 1 to 3; the cartographer then writes `s12.json` (`"s
 
 CL-050 is an atlas symbol, not a topic symbol: chapter 10's label table files it as Variable A2 (`v7_chip` "Variable A2", label "Worker bargaining power"), and Rule 10.6 sets an atlas drawing only beside the atlas's own name for it, followed by its typed chip. So S85 prints "Worker bargaining power" and the chip "Variable A2" beside the 48 px drawing, both checked by script against `work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json`, with the check named in `notes_internal`. This keeps DR-266 and Rule 10.1 exact: by script, Variable A2's own indicator in the atlas is "Union density (BLS, 10.0% 2025)", the very figure S85 draws, so the drawing means its own variable and nothing else. The chip is a reference line in the label style, which the brief's call 5 allows. DR-265 does not reach it: S85 is not a loop drawing, and chapter 10's icon names stay as approved, so the V7 title "Workers' bargaining power" does not replace the label here. Add `CL1514` to the spec's `v7.ids`, since the figure is that claim's.
 
+### IM-E5, S95's card mode with the ranks across: accepted, with five conditions (21:17 UTC, for the infographics maker and the engineer)
+
+**Accepted under DR-64's rule for a drawing that changes form with the same data and finding.** Turning S19's dot plot so each state is a column, left to right in rank order, with the value scale vertical, keeps everything the finding rests on: the same 50 rates on one common position scale, the same order (S19 sorts from highest to lowest), the all-states line at 318, the six open dots and their key, and Mississippi (652) and Massachusetts (96) named in the subject ink at the two ends of the staircase. The row 127 condition holds: only the two states the title names are labeled, and the card says each dot is a state. Fifty rows at 36 px cannot fit either crop, so the alternatives would drop states or the type floor, and both are worse.
+
+Conditions:
+1. **One scale, S19's.** The vertical scale keeps S19's domain, 0 to 700 (`scale.x`), with the same ticks and integer format, so a figure read off the card equals one read off S19. Gridlines follow the ticks as S19's do.
+2. **The horizontal position is a rank, not a quantity.** No ticks, gridlines or axis numbers across; the card's words say so: each dot is a state, from the highest rate at the left to the lowest at the right.
+3. **Every dot stands alone.** Each dot's diameter is at most the column's pitch less 2 px at true size (about 16.7 px at 18.7 px a state), so no state hides behind a neighbor whose rate is close. The open dots' ring stays at least 2.8 px at true size (1 px in a phone's feed) and 3 to 1 against the ground, as R4-4 sets for every dot.
+4. **The labels sit clear.** "Mississippi 652" and "Massachusetts 96" sit beside their dots, outside the staircase, at 36 px or more, and cover no other dot. The all-states line's words ("All states together: 318") sit where no dot falls.
+5. **Both crops and both grounds.** The square crop holds the same scale and every dot; if it cannot meet conditions 3 and 4 at 1080 by 1080, it says so with `c.warn` and comes back to me, rather than dropping a state.
+
+My R4-4 conditions stand: the title, grade line, period, the open dots' key and the source line print whole on the card, and the words to post state no figure the card does not print.
+
 ### R4-4, the social card contract: the data side agrees (21:01 UTC, for the infographics maker and the engineer)
 
 Read the engineer's R4-4 (set 21:05 by his clock note). Its data side matches (b) for S95: the inner form keeps S19's inks, key words and all-states line, `c.card` labels only the rows `labels.named` names (Mississippi and Massachusetts), the table carries all 50 states from S19's frozen rows, and the card's own line says each dot is a state and where the full list is. Two conditions from me:
@@ -252,6 +267,7 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 - D3-xxx | S37 takes its curled apostrophes (ED4-1) | Typography only: two drawn labels, same words, data and exports as stored; a binding writing rule
 - D3-xxx | 15.20 prints each route's name, then the atlas's `who` words with no "Who acts" label | R-03's federal route stores an action there; nothing inferred
 - D3-xxx | S85's CL-050 prints "Worker bargaining power" with the chip "Variable A2" (Q-A1) | Rule 10.6 for an atlas symbol; A2's own indicator is the union density S85 draws
+- D3-xxx | S95's card draws the states as columns in rank order with S19's vertical scale (IM-E5) | Same data, order, scale and finding under DR-64's rule; fifty labeled rows cannot fit a card at 36 px
 - D3-xxx | A DR-265 title that will not fit wraps, then re-lays, then takes a chip with a keyed title, never cut | One name for each variable wherever a loop is drawn
 
 ## Requests
@@ -287,6 +303,9 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 - Kit builds to my scratch (`TMPDIR` set, `git status` unchanged by them): `build s85 s86 s89 --widths 1440,390,296,256 --no-sweep` (3 PASS, 0 faults; S85 warns that no kit part draws its icon yet); `build s87 s88 --widths 1440,390,256 --no-sweep` (S87 FAIL 7 faults, S88 FAIL 1, maker A's drafts); `build s12 --widths 1440,1024,768,390` with the sweep (PASS, 0 faults).
 - Looked at: S85, S86, S88 and S89 at 1440 px on Newsprint; S12 at 1440 and 768 px on Newsprint, 1024 px on Charcoal in grayscale, 390 px on Charcoal; the cartographer's S16 pictures at 326 px (3x, Newsprint), today's and the column.
 - Read R4-3 and R4-4 in the engineer's notes, the research lead's facts for 15.19 to 15.21, the accessibility lead's request, the editor's S37 facts and the systems designer's DR-265 list; CL-050's rows in the Civic Line inventory and chapter 10's label table; Variable A2's indicator in V7.
+
+- 21:08 to 21:13 UTC: `build s85 s86 s87 s88 s89 s93 --widths 1440,390,296,256` with the sweep (S86, S88, S89 PASS; S85 FAIL 30, the icon and chip parts; S87 FAIL 2 and S93 FAIL 2, both at 256 px), and S87, S89, S93 again after their specs changed (same results). By script on the exported SVGs: S86's radii and key at four widths; S88's three areas and overlap against the counts at four widths (within 0.12 percent) and the uninsured circle's gap; S93's 36 word pieces against the page file; S89's source line in the built HTML. Looked at: S85 Newsprint 390; S86 Newsprint 1440, Charcoal 256; S87 Newsprint 390, Charcoal 256 grayscale; S88 Newsprint 256, Charcoal 1440 grayscale; S89 Charcoal 390; S93 Newsprint 1440.
+- Read the research lead's answers to R-1 to R-3 and the current text of 26 U.S.C. 7508A(a) and (c) in its download; maker A's six entries and both sketch files (geometry by script); the infographics maker's entries 14.135 and 14.139; IM-E5.
 
 ## Not tested
 
