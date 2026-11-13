@@ -210,8 +210,27 @@ Dustin's answer (DR-271), applied by the main session's instruction. What change
 
 ## Tested
 
-- R4-2 (scratch mirror only): baseline strict build in the repository (20:44, exit 0, 0 warnings, share 13,235; `plate-share.json`'s timestamp alone changed, so the committed file was put back) and in the mirror (chapter 14 the same, share 13,235); the mirror's `build s12` with the sweep, PASS; the planted case caught and the real form clean at 558, 618, 723 and 1024 px; two mirror strict builds measured (share 13,166 with a first, larger cell, then 13,172); each page part minified and compared.
+- **R4-2:** the measure in a scratch mirror (two strict builds read by their reports; each page part minified and compared); the planted 558 px case caught (51 cells) and the real form clean at 558, 618, 723 and 1024 px; the planted case's own proof (the self-test fails when the cell check is removed); `build s12` with captures at 1440, 1024, 768 and 390 px on both grounds, the 1024 px Newsprint capture looked at; the 1 px stage case on the kit's page at 614, 617 and 618 px columns in Chromium (stage, fit, tab stop, hint read by script).
+- **R4-3:** scratch card forms in the mirror end to end: the Node checks, and the browser checks with planted faults (a 12 px class, a reordered card, a held phrase too wide for a phone, each caught; parity clean once the hold was read back); PNGs at the cards' box size; the shared-row grid looked at in a 1440 px capture; the self-test's R4-3 case (eight planted faults caught). The infographics maker's S90 to S94 build PASS with captures on today's kit; S90 at 1440 px looked at (DD-I10).
+- **R4-4:** scratch card forms in the mirror at both crops on both grounds: the 36 px floor, the crop's height, true-pixel PNGs (1080 by 1350 and 1080 by 1080 read from the files), parity; the dot plot's card mode with the data lead's conditions measured from the drawing (least gap 2.32 px, largest dot 14.57 px, open rings 3.08 px, the band and its leader on the square crop); S95 PASS at both crops; its 1080 by 1350 PNG looked at (DD-I21's cleared gridline). S19 byte-identical in all 932 drawings (every sweep width, guide columns, 720 and 1024 px, both grounds), compared after each dot plot change.
+- **A4-E1:** the icon and chip parts in the self-test; S85 PASS with captures; its 1440 px Charcoal capture looked at (the drawing from the sprite in the icon ink); its SVG export draws the drawing inline (no `<use>` left).
+- **IM-E1 and its read-back:** S89 with "individual help" held in the row-header column: the old kit fails parity at 1440 and 390 px on both grounds, the new kit passes.
+- **ED4-3:** S37 and S84 PASS with captures; S37's table headers print the curled apostrophe.
+- **C4-E1:** `tokens_build.mjs` (its rule test) and `--check`; `test_token_parity.py`, `test_token_rules.py`, `test_token_selftest.py` (44 of 44 plants), `test_token_render.mjs` (Chromium, 0 failures), `sd_crosscheck.mjs` (0 disagreements), each run alone so the dated results file stays as it is; S07, S12 and S78 PASS with captures and the sweep; codes counted by script at 296, 326 and 358 px; `token_table_build.py` written, `git diff` read (4 pieces), `--check` passing.
+- **DR-271:** `guide_charts.py --self-test` and `guide_build.py --self-test` (35 of 35 scenarios, 344 of 344 expectations), the page stop and the reported stop proved in real builds with and without `--strict`.
+- **The key path walk:** a scratch page with a good path, a planted fault and a missing keys file, through `guide_check.js --quick --no-captures`.
+- **The orphan guard:** its reach measured over every spec (61 specs would move; 56 signed off); the opt-in key in the self-test.
+- **The source lines:** the 21:44 strict build in Chromium at 1440 and 390 px, every kit source line's line boxes read with and without `text-wrap: pretty` (4 and 20 of 107 differ).
+- **The kit's CSS minify:** the browser's parse of the page's CSS before and after (204, later 215, rules equal); the self-test guard.
+- **The snapshot:** the round's starting commit's 103 specs, 1,133 drawings and figures, with its kit and tokens and with today's: 16 differ, all named.
+- **Strict builds** to scratch at 20:44, 21:19, 21:21, 21:39, 21:40 and 21:44 UTC, their reports read (weights above); `plate-share.json` restored after the 20:44 build (only its time had changed) and kept after the others (its figures changed).
+- Quick checks at 21:52: `guide_charts.py --self-test`, the data check (125 tables, 0 faults), `geo_build.py --check`, `tokens_build.mjs --check`, `token_table_build.py --check`, `phase3_ch14_build.py --check` (98 of 98).
 
 ## Not tested
 
-- The stacked tile in a browser: no capture yet (after sign-off, at landing).
+- The whole-page guide check, quick or full, on a real strict build: the main session's closing check. The guide check ran only on my scratch key path page.
+- Any screen reader; Firefox and Safari (subgrid, `text-wrap: pretty` and `:has()` behave per browser; `text-wrap: pretty` is Chromium's here).
+- Print and forced colors of the card forms and the social card by eye: the CSS is written for both; only the kit's own captures (normal colors) were looked at.
+- The social card on a real feed or phone; the PNGs were read for size, and one looked at.
+- The cartographer's S12 phone codes and the component engineer's C4-E2 in its form: theirs.
+- 200 percent text for the card forms in the kit (the kit has no such check; the guide check's runs on the page).
