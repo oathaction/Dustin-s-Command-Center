@@ -72,7 +72,7 @@
    "individuals": "Individuals",
    "other_committees": "PACs and other committees",
    "candidate_contributions": "Candidates’ own money",
-   "transfers_in_net": "Transfers, net", "transfers_out_net": "Transfers, net",
+   "transfers_in_net": "Transfers in, net", "transfers_out_net": "Transfers out, net",
    "candidate_loans": "Candidates’ loans",
    "cash_end": "Cash at the end"
   },
