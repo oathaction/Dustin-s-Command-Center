@@ -6039,3 +6039,9 @@ The main session posted the board 2 plan with V23's five questions and one of it
 | D3-1671 | S12's 1024 px stacked picture draws the stacked tile at 618 px in the guide's own frame, swapped into the strict build in the page's memory | B2-M2 asks for the stacked tile "in its 618 px frame" beside the frame as built; the same page, frame and crop make the two comparable |
 | D3-1672 | The as-built frames are photographed too, with the same crop (the frame's box) | The builder can set two pictures of one crop side by side |
 | D3-1673 | Sketch 14.124's before and after are photographed from one build, at one window and one crop | B2-S2: like for like, 868 by 545 each |
+
+### Main session, board 2 close
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1674 | This chat hands off after board 2 with handoff V24 (`work/handoffs/phase-3/20261113_Next-Session-Handoff_V24.md`); work tracker row `c04` set done; board 2's five replies wait on Dustin, and the next chat applies them before round 4's plan | Dustin asked for a handoff after board 2 |
