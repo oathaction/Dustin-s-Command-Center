@@ -5,7 +5,10 @@ work/handoffs/phase-3/20261112_Phase-3-Round-1-Brief.md and 20261112_Phase-3-Rou
 rule list the main session fixed (R7) is in work/handoffs/phase-3/20261112_Round-1-Systems-Designer-Notes.md, section
 "Rule list". Round 1 built the grammar, Rules 15.1 to 15.10, and worked examples 1 and 2, Rules 15.13 (Loop R1) and
 15.14 (Loop R8), with the opener. Round 2 (DR-244) builds the reforms on the drawing, Rules 15.11 and 15.12, and worked
-examples 3 to 6, Rules 15.15 to 15.18. The rules of later rounds are listed in PLANNED and join as each round builds them.
+examples 3 to 6, Rules 15.15 to 15.18. Round 4 (November 13, 2026; work/handoffs/phase-3/20261113_Phase-3-Round-4-Brief.md)
+gives every variable its own title in every drawing (DR-265) and builds group 4, Interaction: Rules 15.19 (the loop
+stepper on Rule 18.22's code), 15.20 (the reform chooser on Rules 18.3 and 18.8) and 15.21 (no control for a strength).
+The rules of later rounds are listed in PLANNED and join as each round builds them.
 
 Usage:
     python3 -I work/build/scripts/phase-3/phase3_ch15_build.py [--check-only]
