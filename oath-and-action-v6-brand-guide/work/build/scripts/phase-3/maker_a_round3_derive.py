@@ -134,7 +134,7 @@ def grid():
             'date_read_words': {'type': 'text', 'description': 'the date or dates the route’s texts were read, in words'},
         },
         'printed_source_line': line,
-        'ledger_row': 'pending: the research lead’s data check (R2-2)',
+        'ledger_row': mu['ledger_row'],
         'domain': 'all',
         'domain_note': mu.get('domain_note', ''),
         'states': mu.get('states', []),
