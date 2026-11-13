@@ -13,7 +13,9 @@
   "https://www.uscourts.gov/judges-judgeships/about-federal-judges",
   "https://www.uscourts.gov/data-news/reports/statistical-reports/judicial-business-united-states-courts/judicial-business-2025/status-article-iii-judgeships-judicial-business-2025",
   "https://www.uscourts.gov/data-news/reports/statistical-reports/judicial-business-united-states-courts/judicial-business-2025/status-bankruptcy-judgeships-judicial-business-2025",
-  "https://www.uscourts.gov/data-news/reports/statistical-reports/judicial-business-united-states-courts/judicial-business-2025/status-magistrate-judge-positions-and-appointments-judicial-business-2025"
+  "https://www.uscourts.gov/data-news/reports/statistical-reports/judicial-business-united-states-courts/judicial-business-2025/status-magistrate-judge-positions-and-appointments-judicial-business-2025",
+  "https://www.uscourts.gov/sites/default/files/2025-01/districtauth-with-endnotes.pdf",
+  "https://www.uscourts.gov/sites/default/files/2025-01/districttemp.pdf"
  ],
  "observation_period": "Law in force (U.S. Code, 2024 edition); seats as of September 30, 2025",
  "geography": "United States, the federal district courts",
@@ -21,7 +23,7 @@
  "unit": "seats in judgeships or positions",
  "date_retrieved": "2026-11-12",
  "vintage": "United States Code, 2024 edition; Judicial Business 2025",
- "qualification": "Seats are positions authorized, filled or vacant: 677 district positions (48 vacant), 345 bankruptcy judgeships authorized and funded (63 vacant), and 593 magistrate judge positions (567 full time, 24 part time, 2 combined with a clerk’s post), all as of September 30, 2025. The statute tables list 673 district and 316 bankruptcy judgeships; the courts’ counts also take in temporary judgeships, which the tables leave out. No appointing president or party is recorded.",
+ "qualification": "Seats are positions authorized, filled or vacant: 677 district positions (48 vacant), 345 bankruptcy judgeships authorized and funded (63 vacant), and 593 magistrate judge positions (567 full time, 24 part time, 2 combined with a clerk’s post), all as of September 30, 2025. The courts’ 677 district positions are the 673 judgeships of 28 U.S.C. 133’s table and the 4 of the three territorial district courts (Guam 1, the Northern Mariana Islands 1, the Virgin Islands 2), which Title 48 sets and whose judges serve ten-year terms, not for life; the Administrative Office’s table of authorized district judgeships agrees court by court. No temporary district judgeship remains: Pub. L. 118-203 of December 23, 2024 made the last ten permanent, and the courts counted 677 in every year from 2021 to 2025. The statute table lists 316 bankruptcy judgeships; the 29 more the courts count were not traced. No appointing president or party is recorded.",
  "columns": {
   "order": {
    "type": "integer",
@@ -72,15 +74,19 @@
   "source_words": {
    "type": "text",
    "description": "the statute’s own words"
+  },
+  "seats_in_territorial_courts": {
+   "type": "integer",
+   "description": "of seats, the judgeships of the three territorial district courts (Guam 1, the Northern Mariana Islands 1, the Virgin Islands 2), set by Title 48, whose judges serve ten-year terms; district row only"
   }
  },
- "printed_source_line": "Source: U.S. Code, 2024 edition, 28 U.S.C. 133, 134, 152, 631 and 633; Administrative Office of the U.S. Courts, Judicial Business 2025, seats as of September 30, 2025, United States. Retrieved November 12, 2026. Seats include vacant ones and temporary judgeships.",
+ "printed_source_line": "Source: U.S. Code, 2024 edition, 28 U.S.C. 133, 134, 152, 631 and 633; Administrative Office of the U.S. Courts, Judicial Business 2025, seats as of September 30, 2025, United States. Retrieved November 12, 2026. Seats include vacant ones; the 677 district positions include the territorial courts’ 4.",
  "ledger_row": "P7-307",
  "domain": "D05",
  "domain_note": "V7 domain D05, Courts subsystem (data lead change 1)",
  "states": [],
  "notes": [
   "Statute tables summed by script: 28 U.S.C. 133(a) lists 673 district judgeships, four of them shared between districts; 152(a)(2) lists 316 bankruptcy judgeships, and its notes carry temporary judgeships",
-  "The courts’ 677 district positions against the table’s 673 is not traced seat by seat; temporary judgeships are the likely difference and are not confirmed here"
+  "Traced November 13, 2026 (ledger claim 28): 677 = 673 + 4. The Administrative Office’s \"Additional Authorized Judgeships\" table (January 2025) lists 104 district rows summing to 677; its 97 rows with seats equal, court by court, the 94 statute rows and 3 territorial rows of uscode-federal-courts-circuits-districts. Its \"Authorized Temporary Judgeships\" list shows the last ten temporary district judgeships (Alabama Northern, Arizona, California Central, Florida Southern, Hawaii, Kansas, Missouri Eastern, New Mexico, North Carolina Western, Texas Eastern) made permanent by Pub. L. 118-203, December 23, 2024. Judicial Business 2025, Table 10, gives 677 district positions for 2021 to 2025."
  ]
 }

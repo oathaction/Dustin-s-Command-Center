@@ -38,7 +38,11 @@ Done 01:55 UTC. Files: `work/research/20261113_Atlas-Recheck-Table.md` and `work
 
 ## Judge counts
 
-(Queued.)
+Done 02:20 UTC (ledger claim 28). **677 = 673 + 4.** The courts' 677 district positions (Judicial Business 2025, Table 10, the same 677 in every year from 2021 to 2025) are the 673 judgeships of 28 U.S.C. 133's table, its four shared seats included, and the 4 judgeships of the three territorial district courts: Guam 1, the Northern Mariana Islands 1, the Virgin Islands 2, set by Title 48, whose judges serve ten-year terms. Temporary judgeships, the round 2 guess, are not the difference: the Administrative Office's "Authorized Temporary Judgeships" list (January 2025) shows all 99 temporary district judgeships ever authorized made permanent or lapsed, the last ten (Alabama Northern, Arizona, California Central, Florida Southern, Hawaii, Kansas, Missouri Eastern, New Mexico, North Carolina Western, Texas Eastern) by Pub. L. 118-203 of December 23, 2024, which changed no total. The Administrative Office's "Additional Authorized Judgeships" table (January 2025) parses to 104 district rows summing to 677, and its 97 rows with seats equal, court by court, the 94 statute rows and 3 territorial rows of `uscode-federal-courts-circuits-districts` (scripts `judge_compare.py`, scratch).
+
+- **S70 and round 4's row 123 now print one account.** `uscode-federal-trial-judges` (P7-307): its qualification and printed line no longer say the courts' counts take in temporary judgeships; the line ends "Seats include vacant ones; the 677 district positions include the territorial courts’ 4." A new column, `seats_in_territorial_courts` (4 on the district row), lets row 123's card say that 4 of the 677 serve ten-year terms, or print 673 Article III seats. `uscode-federal-courts-circuits-districts` (P7-206, S70) gains a note giving the same account. S70 rebuilt before and after: PASS, 0 faults, every file equal byte for byte.
+- **Not traced:** the 29 bankruptcy judgeships the courts count (345) beyond 28 U.S.C. 152(a)(2)'s table (316); the bankruptcy status page gives 345 without a breakdown. The sidecar now says so plainly instead of naming temporary judgeships.
+- Written by `research_round3_requests.py judges`, which asserts 673 + 4 = 677 from the frozen files before writing; a rerun writes nothing.
 
 ## Stale lines
 

@@ -172,9 +172,14 @@ file into the chart's rows; `geo.js` carries its shapes once for every map. The 
 var L = K.geo('counties'), T = K.parts.map_fit(c, L, { y: top });          // the layer, and where it draws
 K.parts.map_shapes(c, L, T, items, { merge: true });                       // fills, one path a class
 K.parts.map_mesh(c, L, T, { between: function (a, b) { return b !== null && a.slice(0, 2) !== b.slice(0, 2); }, stroke: 'context', width: 0.5 });
-K.parts.map_labels(c, K.geo('states'), T, names);                          // codes on their shapes, or beside with leaders
 K.parts.map_insets(c, L, T);                                               // Alaska's and Hawaii's frames
+K.parts.map_labels(c, K.geo('states'), T, names);                          // codes on their shapes, or beside with leaders
 ```
+
+A state's name sits inside its shape where it fits; the small northeastern states go to a column on the ocean, so fit
+the map about 44 px narrower than the drawing (`map_fit(c, L, {w: c.width - 44})`); on a phone, `{beside: false}` leaves
+the rest to the table. Words on a step take its label ink: `on-seq-1` to `on-seq-5`, `on-mag-1` to `on-mag-4`,
+`on-div-1` to `on-div-5`.
 
 `K.parts.map_dots` draws a dot density map from counts and a recorded seed as one path, and `K.parts.map_scale` a scale
 bar. A chart of thousands of places groups its table: `"table": {"columns": [...], "group": {"by": "state", "columns":

@@ -76,7 +76,8 @@
         var box = { x: dx - 2, y: Math.min(dy, tb.y) - 2, w: s + 6 + tb.w + 2, h: Math.max(s, tb.h) + 4 };
         if (box.x + box.w > c.width) return;
         if (c.texts.some(function (t) { return box.x < t.x + t.w && t.x < box.x + box.w && box.y < t.y + t.h && t.y < box.y + box.h; })) return;
-        if ((c.leaders || []).some(function (l) { return K.leader_crosses(l, box); })) return;
+        var sq = { x: dx - 1, y: dy - 1, w: s + 2, h: s + 2 };
+        if ((c.leaders || []).some(function (l) { return K.leader_crosses(l, box) || K.leader_crosses(l, sq) || K.leader_crosses(l, tb) || K.seg_hits_box(l.x1, l.y1, l.x2, l.y2, tb.x - 1, tb.y - 1, tb.x + tb.w + 1, tb.y + tb.h + 1); })) return;
         if (c.texts.some(function (t) { return K.seg_hits_box(p0[0], p0[1], dx, dy + s / 2, t.x - 1, t.y - 1, t.x + t.w + 1, t.y + t.h + 1); })) return;
         dpick = [dx, dy];
       });
