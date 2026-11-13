@@ -19,7 +19,7 @@
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Graded by the atlas, connection by connection: our count of its 118 connections by region, as of October 15, 2026",
- "title": "The atlas’s 118 connections fill 44 of the 100 pairs of its ten regions, and 32 of them stay within one region.",
+ "title": "The atlas’s 118 connections fill 44 of the 100 pairs of its ten regions, and 32 of the connections stay within one region.",
  "measure_line": "Connections in the atlas’s model, counted by the region each starts in (rows) and the region it reaches (columns), as of October 15, 2026",
  "notes": [
   "A connection joins two variables in the atlas’s model, from the one that acts to the one it affects. A cell counts the connections between two regions and gives no measure of their strength.",

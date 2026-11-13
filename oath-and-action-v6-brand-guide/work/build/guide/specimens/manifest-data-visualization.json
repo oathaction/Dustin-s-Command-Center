@@ -890,7 +890,7 @@
   "chapter": "14",
   "rule": "14.104",
   "width_px": null,
-  "alt": "Two committees side by side, each a box with links to the committees it transferred money to, each link as wide as its dollars on one scale. The Harris Victory Fund sent $528.7 million to the Harris campaign, $189.3 million to the Democratic National Committee and $181.4 million to 51 state party committees, $899.4 million in all. The Trump National Committee JFC sent $246.8 million to the Trump campaign and $26.9 million to the Republican National Committee.",
+  "alt": "Two committees side by side, each a bar with links to bars for the committees it transferred money to, every bar as tall and every link as wide as its dollars on one scale. The Harris Victory Fund sent $528.7 million to the Harris campaign, $189.3 million to the Democratic National Committee and $181.4 million to 51 state party committees, $899.4 million in all. The Trump National Committee JFC sent $246.8 million to the Trump campaign and $26.9 million to the Republican National Committee.",
   "illustrative": false,
   "notes": "S73, network-diagram: the chart kit draws it from work/build/chart-kit/specs/s73.json (contract R1-C3)"
  },
@@ -924,7 +924,7 @@
   "rule": "14.108",
   "width_px": 320,
   "illustrative": true,
-  "alt": "Five nodes joined by solid lines for one kind of tie and dashed lines for another, each kind named in a key.",
+  "alt": "Five nodes joined by solid lines in two inks, one for each kind of tie, each kind named in a key and on one of its lines.",
   "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
   "fit_switch": false
  },

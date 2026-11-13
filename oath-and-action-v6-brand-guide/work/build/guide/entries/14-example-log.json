@@ -574,7 +574,7 @@
    "source": "s64.json"
   },
   {
-   "example": "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, 16.0 million ended for a procedural reason, and 49.0 million kept coverage.",
+   "example": "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, 16.0 million ended for a procedural reason, more than twice the 6.9 million found ineligible.",
    "domain": "D04",
    "states": [],
    "rule": "14.93",
@@ -640,7 +640,7 @@
    "source": "s73.json"
   },
   {
-   "example": "The atlas’s 118 connections fill 44 of the 100 pairs of its ten regions, and 32 of them stay within one region.",
+   "example": "The atlas’s 118 connections fill 44 of the 100 pairs of its ten regions, and 32 of the connections stay within one region.",
    "domain": "all",
    "states": [],
    "rule": "14.105",
@@ -654,7 +654,7 @@
    "source": "s75.json"
   },
   {
-   "example": "Individuals gave 2024 House campaigns $1,384.1 million, more than any other source, and the campaigns spent $2,045.3 million.",
+   "example": "Individuals gave 2024 House campaigns $1,384.1 million, more than any other source and 61 percent of all they took in.",
    "domain": "D03",
    "states": [],
    "rule": "14.110",

@@ -11,17 +11,18 @@
  * labels: in (default "in"), node (the node's name), names ({key: printed name}), short ({key: name under 480 px}),
  * groups ({key: group name}), track ([keys]), named ([keys]), max_px (the node's height, default 360; 300 on a phone),
  * key_steps ([measures]), key_title, key_hairline (words under the key, {v} the measure of one pixel), open (true: the
- * node need not balance).
+ * node need not balance), list_below (px, default 300: under it each band's end carries a number, and the numbered names
+ * and figures follow the drawing).
  * formats: value, value_phone (under 480 px), key. Maker B, round 3. */
 (function (K) {
   'use strict';
   K.register_chart({
     form: 'sankey', name: 'Sankey', family: 'flow',
     encode: { side: 'category', key: 'id', category: 'text', value: 'number' },
-    labels: ['in', 'node', 'names', 'short', 'groups', 'track', 'named', 'max_px', 'key_steps', 'key_title', 'key_hairline', 'open'],
-    phone: 'same',
+    labels: ['in', 'node', 'names', 'short', 'groups', 'track', 'named', 'max_px', 'key_steps', 'key_title', 'key_hairline', 'open', 'list_below'],
+    phone: 'differs',
     draw: function (c) {
-      var P = K.parts, L = c.labels, f = c.spec.formats || {}, W = c.width, ph = W < 480;
+      var P = K.parts, L = c.labels, f = c.spec.formats || {}, W = c.width, ph = W < 480, nl = W < (L.list_below || 300);
       var es = c.field('side'), ek = c.field('key'), ec = c.field('category'), ev = c.field('value');
       var names = L.names || {}, short = L.short || {}, groups = L.groups || {}, track = [].concat(L.track || []).map(String), named = [].concat(L.named || []).map(String);
       var lb = c.size('label'), tk = c.size('tick'), inv = String(L.in || 'in'), NODE = '\u0000node';
@@ -40,7 +41,11 @@
       // the node's name over the node, centered, then the two sides under it
       var vmax = 0;
       rows.forEach(function (r) { vmax = Math.max(vmax, c.measure('$' + fv(r[ev]), 'tick', 700, true)); });
-      var cw = Math.max(Math.round(W * (ph ? 0.37 : 0.27)), Math.ceil(vmax) + 10), bw = Math.round(W * 0.5 - cw - 7), nx = cw + bw, nw = 14;
+      // under list_below px each band's end carries its number, and the numbered names and figures follow the drawing, so
+      // the bands keep room to read as bands (the data lead's MB-5)
+      var num = {}, nn = 0;
+      fl.links.forEach(function (l) { num[l.key] = ++nn; });
+      var cw = nl ? Math.ceil(c.measure(String(nn), 'label', 700, true)) + 12 : Math.max(Math.round(W * (ph ? 0.37 : 0.27)), Math.ceil(vmax) + 10), bw = Math.round(W * 0.5 - cw - 7), nx = cw + bw, nw = 14;
       var nb = c.text(W / 2, y + lb * 0.95, L.node || '', { role: 'label', weight: 700, anchor: 'middle', max: W });
       var top = Math.ceil(nb.bottom) + 10;
       // one side's items: slots as tall as their band or their words, a gap before each group
@@ -50,9 +55,9 @@
           var g = groups[l.key] || null, w = Math.max(1, l.w), r = l.row.row || l.row;
           if (g !== last && (g || last)) yy += 12;
           var gh = 0;
-          if (g && g !== last) gh = Math.ceil(c.wrap(g, 'tick', cw - 8, 700).length * Math.round(tk * 1.25)) + 4;
-          var words = [nm(r), '$' + fv(l.value)];
-          var th = Math.ceil(c.wrap(words[0], 'label', cw - 8, 400).length * lb * 1.25 + tk * 1.25) + 2;
+          if (g && g !== last && !nl) gh = Math.ceil(c.wrap(g, 'tick', cw - 8, 700).length * Math.round(tk * 1.25)) + 4;
+          var words = nl ? [String(num[l.key])] : [nm(r), '$' + fv(l.value)];
+          var th = nl ? Math.ceil(lb * 1.25) : Math.ceil(c.wrap(words[0], 'label', cw - 8, 400).length * lb * 1.25 + tk * 1.25) + 2;
           out.push({ l: l, r: r, g: g !== last ? g : null, gy: yy, y: yy + gh, h: Math.max(w, th), w: w, words: words });
           yy += gh + Math.max(w, th) + 8;
           last = g;
@@ -84,13 +89,23 @@
       [[L_, true], [R_, false]].forEach(function (sd) {
         sd[0].items.forEach(function (it) {
           var x = sd[1] ? cw - 8 : W - cw + 8, an = sd[1] ? 'end' : 'start', wt = named.indexOf(it.l.key) >= 0 ? 700 : 400;
-          if (it.g) c.text(sd[1] ? cw - 8 : W - cw + 8, it.gy + tk * 0.9, it.g, { role: 'tick', weight: 700, anchor: an, max: cw - 8, fill: 'label' });
+          if (it.g && !nl) c.text(sd[1] ? cw - 8 : W - cw + 8, it.gy + tk * 0.9, it.g, { role: 'tick', weight: 700, anchor: an, max: cw - 8, fill: 'label' });
           var ty = it.y + Math.max(0, (it.h - (it.h > it.w ? it.h : it.w)) / 2) + lb * 0.86;
-          var t1 = c.text(x, ty, it.words[0], { role: 'label', weight: wt, anchor: an, max: cw - 8 });
-          var t2 = c.text(x, t1.bottom + tk * 0.9, it.words[1], { role: 'tick', weight: wt, anchor: an, tnum: true, fill: 'label' });
+          var t1 = c.text(x, ty, it.words[0], { role: 'label', weight: nl ? (wt === 700 ? 700 : 600) : wt, anchor: an, max: cw - 8, tnum: nl });
+          var t2 = nl ? t1 : c.text(x, t1.bottom + tk * 0.9, it.words[1], { role: 'tick', weight: wt, anchor: an, tnum: true, fill: 'label' });
           bottom = Math.max(bottom, t2.bottom, it.y + it.h);
         });
       });
+      // the numbered list: each band's name, its group and its figure
+      if (nl) {
+        bottom += 14;
+        L_.items.concat(R_.items).forEach(function (it) {
+          var g = groups[it.l.key], wt = named.indexOf(it.l.key) >= 0 ? 700 : 400;
+          var t = c.text(0, bottom + lb * 0.95, num[it.l.key] + '  ' + (g ? g + ': ' : '') + nm(it.r) + ', $' + fv(it.l.value), { role: 'label', weight: wt, max: W });
+          bottom = t.bottom + 3;
+        });
+        c.arrange('phone');
+      }
       c.height(bottom + 2);
     }
   });

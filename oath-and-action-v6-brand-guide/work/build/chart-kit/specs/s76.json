@@ -15,12 +15,12 @@
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: House campaigns’ reports to the Federal Election Commission",
- "title": "Individuals gave 2024 House campaigns $1,384.1 million, more than any other source, and the campaigns spent $2,045.3 million.",
+ "title": "Individuals gave 2024 House campaigns $1,384.1 million, more than any other source and 61 percent of all they took in.",
  "measure_line": "Money into and out of every House candidate’s campaign committees together, 2023 to 2024 election cycle, millions of dollars, not adjusted for inflation; a band’s width is its dollars",
  "notes": [
   "The chart traces no dollar received to a dollar spent, since the node holds the committees of all 1,926 House candidates together, primary losers included.",
   "Cash on hand at the start and the end of the cycle lets the node balance. The reports leave $1.5 million unaccounted for, 0.059 percent of the money in, where a campaign’s cash figures come from reports that cover different dates.",
-  "Spending counts every payment other than refunds, loan repayments and transfers. Loans and their repayments stand in their own group on each side. The chart nets transfers between a candidate’s own committees; on the way out they came to $0, so no band draws."
+  "All they took in counts every receipt, loans and net transfers included, and leaves out cash on hand. Spending counts every payment other than refunds, loan repayments and transfers. Loans and their repayments stand in their own group on each side. The chart nets transfers between a candidate’s own committees; on the way out they came to $0, so no band draws."
  ],
  "credit": "Chart: Oath & Action",
  "illustrative": false,
@@ -36,7 +36,8 @@
    {"field": "dollars", "label": "Dollars", "format": "dollars:2"}
   ]
  },
- "phone": "same",
+ "phone": "differs",
+ "phone_note": "Under 300 px each band ends in a number, and the numbered names and figures follow the drawing, so the bands keep room to read as bands.",
  "artboard": "reading",
  "domain": "D03",
  "states": [],

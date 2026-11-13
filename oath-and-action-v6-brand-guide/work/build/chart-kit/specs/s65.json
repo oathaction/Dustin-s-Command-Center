@@ -12,8 +12,8 @@
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: renewal outcomes the states reported to the Centers for Medicare & Medicaid Services",
- "title": "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, 16.0 million ended for a procedural reason, and 49.0 million kept coverage.",
- "measure_line": "Medicaid and CHIP renewals due from April 2023 to March 2024, summed over the 12 months, by what happened to each, United States",
+ "title": "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, 16.0 million ended for a procedural reason, more than twice the 6.9 million found ineligible.",
+ "measure_line": "Medicaid and CHIP renewals due from April 2023 to March 2024, summed over the 12 months, by what happened to each, United States; shares are of renewals due",
  "notes": [
   "Each stage holds only the renewals left in the stage above it. CMS counts two kinds of ending: coverage “terminated for a procedural or administrative reason”, which this chart calls ended for a procedural reason, and people “determined ineligible” on the return of a renewal form, which it calls found ineligible.",
   "Pending renewals, 4.9 million, sit apart at the bottom, since the states had not completed them three months after they were due; a state that held its procedural terminations reports them as pending too.",
@@ -70,6 +70,7 @@
   "Maker B, round 3. Data plan row 83 with change 11, rule 14.93. Draws the derived cms-medicaid-chip-renewal-funnel (P7-202, from cms-medicaid-chip-renewal-outcomes, P7-201): renewals due April 2023 to March 2024, nested stages from one base.",
   "Data lead ruling (a): the named mark is the loss between decided and not ended for a procedural reason, 15,966,431, in the subject ink through labels.named (an area, no red); (b): stages in the light fill with the context edge (context ink on Charcoal) and their counts and shares printed, found ineligible in the track ink with the context edge, pending set apart below the stages after a gap, in the track ink with the context edge; automatic and form renewals in the table only.",
   "Change 11 and Q-18: CMS’s own figures and period print; the difference from V7 I062’s KFF figures (more than 25 million disenrolled) is open question Q-18 for Dustin and is not drawn or corrected here.",
+  "Sign-off fixes: MB-1, the title names one finding, the procedural loss, against the 6.9 million found ineligible (2.30 times), which stays gray as a comparison; MB-2, the measure line gives the shares’ base. The table keeps the share as a fraction from 0 to 1: the kit’s percent format prints a stored value with a percent sign and does not multiply it, so 0.9368 would print as 0.9%.",
   "Figures checked by maker_b_round3_derive.py --figures (check S65): 76,734,167 due (76.7 million), 71,882,535 decided (71.9 million), 55,916,104 not ended for a procedural reason (55.9 million), 48,967,998 kept (49.0 million), 15,966,431 ended for a procedural reason (16.0 million), 6,948,106 found ineligible (6.9 million), 4,851,632 pending (4.9 million); the stages nest; the twelve months April 2023 to March 2024 of the outcomes file sum to these figures."
  ]
 }

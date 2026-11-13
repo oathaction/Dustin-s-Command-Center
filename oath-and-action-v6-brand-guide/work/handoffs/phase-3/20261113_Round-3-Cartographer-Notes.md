@@ -6,7 +6,7 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. The cartographer,
 
 Done (02:00 UTC by the container's clock), waiting on the editor's words pass and the data lead's sign-off. Seven map forms written on the engineer's R3-2 parts; S78 to S84 pass `oa-chart.mjs build` with the sweep, 0 faults; S16 placed on the 2024 outlines with its credit note replaced; entries 14.113 to 14.124 written; both sketches drawn; `phase3_ch14_build.py --rounds 1,2,3`: 0 faults; a strict build: exit 0, no warning on my plates. Every figure in my titles, notes and alts is checked by `cartographer_round3_derive.py --figures` (0 faults).
 
-| Rule | Spec or sketch | Form | Bytes in the strict build (01:40) | Status |
+| Rule | Spec or sketch | Form | Bytes in the second strict build (02:10) | Status |
 |---|---|---|---|---|
 | 14.113 | sketch `s-14-113-sketch` | flow map (reference) | entry 6,386, sketch 2,700 | Done; editor's first look applied |
 | 14.114 | S07 (built) | tile-map-categorical | 13,619 | Entry; drawing unchanged |
@@ -14,14 +14,14 @@ Done (02:00 UTC by the container's clock), waiting on the editor's words pass an
 | 14.116 | S16 (built) | bubble-map | 9,909 | Entry; on the 2024 outlines (R3-4); note 5's map credit now names the 2024 Census files |
 | 14.117 | S78 | choropleth | 8,310 | Done |
 | 14.118 | S79 | locator-map | 3,503 | Done |
-| 14.119 | S80 | district-map | 5,710 | Done |
-| 14.120 | S81 | county-choropleth | 10,873 in the build; 12,497 with DL-E1's lowest and highest columns (`fragments`) | Done (DL-E1 variant B and its conditions 1 to 3) |
-| 14.121 | S82 | district-tile-map | 13,038 in the build; 12,378 after the table's last column left (`fragments`, 01:45) | Done |
-| 14.122 | S83 | dot-density-map | 12,380 in the build; 12,374 with RL-2's notes (`fragments`) | Done (RL-2 and DL-E1 condition 4) |
+| 14.119 | S80 | district-map | 5,724 | Done |
+| 14.120 | S81 | county-choropleth | 12,497 | Done (DL-E1 variant B and its conditions 1 to 3) |
+| 14.121 | S82 | district-tile-map | 12,488 | Done |
+| 14.122 | S83 | dot-density-map | 12,484 | Done (RL-2 and DL-E1 condition 4) |
 | 14.123 | S84 | small-multiple-maps | 10,068 | Done |
-| 14.124 | sketch `s-14-124-sketch` | avoid: party colors | entry 7,646, sketch 3,309 in the first build; sketch 3,674 after the contrast fix | Done; one choice for the data lead (below) |
+| 14.124 | sketch `s-14-124-sketch` | avoid: party colors | entry 8,108, sketch 3,771 | Done; contrast fixed; one choice for the data lead (D-1) |
 
-Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map is inside D3-1097's 13,852 bytes with a 1,300-byte frame; S81 (about 13,800), S82 and S83 (about 13,680) are closest.
+Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map is inside D3-1097's 13,852 bytes with a 1,300-byte frame; S81, S82 and S83 are closest, at about 13,800 each. The second strict build's share is 14,666 bytes a plate for the 13 to come.
 
 **From the main session (D3-1087):** S79's California inset and Kern County draw from `census-cb-2024-counties-california-5m.geojson` (the kit's `counties-ca` layer); the inset draws `census-cb-2024-states`. Both are among S79's datasets.
 

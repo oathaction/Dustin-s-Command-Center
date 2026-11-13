@@ -134,6 +134,7 @@ def snap_path():
         'domain': m['domain'],
         'domain_note': m.get('domain_note', ''),
         'states': [],
+        'notes': m.get('notes', []),
         'derived_from': [src + '.csv'],
         'derivation': 'The rows of ' + src + ' in reading order: the main path by its order, then the branch. next_step names the main step that follows each step (the first also names the branch, with the condition the branch summary opens with); the last step of the path says it ends, and the branch’s next step is the postponed proof, due by the second or third month of benefits, with its interview inside the 7 days (7 CFR 273.2(i)(3)(iii) and (i)(4)(iii)(A), as the research lead read them November 13, 2026). path_words puts the path column in words. No other value changes.',
     }
@@ -217,7 +218,9 @@ def figures():
     same('S65', fu['kept'], fu['not_ended_procedural'] - fu['ended_ineligible'], 'nests')
     for k in ('due', 'decided', 'not_ended_procedural', 'kept', 'ended_procedural', 'ended_ineligible', 'pending'):
         want('S65', t, mil(fu[k]) + ' million', k)
-    want('S65', sp['title'], 'Of %s million Medicaid and CHIP renewals due from April 2023 to March 2024, %s million ended for a procedural reason, and %s million kept coverage' % (mil(fu['due']), mil(fu['ended_procedural']), mil(fu['kept'])), 'title')
+    want('S65', sp['title'], 'Of %s million Medicaid and CHIP renewals due from April 2023 to March 2024, %s million ended for a procedural reason, more than twice the %s million found ineligible' % (mil(fu['due']), mil(fu['ended_procedural']), mil(fu['ended_ineligible'])), 'title (MB-1)')
+    same('S65', 2 < fu['ended_procedural'] / fu['ended_ineligible'] < 3, True, 'more than twice (2.30)')
+    want('S65', sp['measure_line'], 'shares are of renewals due', 'MB-2')
     same('S65', sp['labels']['named'], ['ended_procedural'], 'the named loss')
 
     # S73: both joint fundraising committees, line 22 alone drawn (ruling RL-3a), folded as the drawing folds them
@@ -265,7 +268,7 @@ def figures():
     filled = [r for r in mx if r['links']]
     same('S74', (len(filled), len(mx)), (44, 100), 'cells filled')
     diag = sum(r['links'] for r in mx if r['from_region'] == r['to_region'])
-    want('S74', sp['title'], '118 connections fill 44 of the 100 pairs of its ten regions, and %d of them stay within one region' % diag, 'title')
+    want('S74', sp['title'], '118 connections fill 44 of the 100 pairs of its ten regions, and %d of the connections stay within one region' % diag, 'title')
     out_d = {}
     in_d = {}
     for r in mx:
@@ -292,7 +295,7 @@ def figures():
     hr = sorted([b for b in bills if b['bill_type'] == 'HR'], key=lambda b: (b['introduced'], int(b['number'])))
     se = [b for b in bills if b['bill_type'] == 'S']
     same('S75', (len(hr), len(se)), (10, 8), 'chambers')
-    want('S75', t, '10 House bills and 8 Senate bills', 'note 1')
+    want('S75', t, '10 House bills and eight Senate bills', 'note 1')
     want('S75', t, "The Senate’s eight are " + ', '.join(b['bill'] for b in se[:-1]) + ' and ' + se[-1]['bill'], 'note 2')
     same('S75', sp['labels']['order'], [b['bill'] for b in hr], 'the line in order of introduction')
     want('S75', sp['measure_line'], 'February 4, 2025 to September 14, 2026', 'span')
@@ -318,7 +321,9 @@ def figures():
     outs = {k: v for k, (s, v) in mo.items() if s == 'out'}
     big = max((k for k in ins if k != 'cash_start'), key=ins.get)
     same('S76', big, 'individuals', 'the largest receipt line')
-    want('S76', sp['title'], 'Individuals gave 2024 House campaigns $%s million, more than any other source, and the campaigns spent $%s million' % (mil(ins['individuals']), mil(outs['spending'])), 'title')
+    took = sum(v for k, v in ins.items() if k != 'cash_start')
+    same('S76', round(took, 2), 2252865112.88, 'receipts, cash at the start left out')
+    want('S76', sp['title'], 'Individuals gave 2024 House campaigns $%s million, more than any other source and %d percent of all they took in' % (mil(ins['individuals']), round(100 * ins['individuals'] / took)), 'title (MB-4)')
     rem = round(sum(ins.values()) - sum(outs.values()), 2)
     same('S76', rem, 1533158.03, 'remainder')
     want('S76', t, 'The reports leave $%s million unaccounted for, %s percent of the money in' % (mil(rem), '{:.3f}'.format(100 * rem / sum(ins.values()))), 'note 2')
@@ -333,14 +338,20 @@ def figures():
     sp, t = spec('s77')
     st = {r['order']: r for r in read('govinfo-snap-application-path')}
     same('S77', (st['4']['time_limit'], st['5']['time_limit'], st['3']['time_limit'], st['1']['time_limit'], st['2']['time_limit']), ('30 calendar days', '7 calendar days', 'At least 10 days', 'Same day', ''), 'limits as the file holds them')
-    want('S77', sp['title'], 'at most 30 days from an application to a decision, and at most 7 for a household with very little income or cash', 'title')
+    want('S77', sp['title'], 'at most 30 days from an application to a decision, and at most seven days for a household with very little income or cash', 'title')
     want('S77', t, 'at least 10 days', 'proof')
     lim = sp['labels']['limits']
     same('S77', (lim['4'], lim['5'], lim['3'], lim['1']), ('within 30 days of filing, the rule’s limit', 'interview and benefits within 7 days of filing, the rule’s limit', 'at least 10 days to send it', 'taken the same day'), 'step words against the limits')
     want('S77', sp['grade_line'], 'November 9, 2026', 'in force')
     same('S77', st['5']['next_step'], 'Postponed proof, due by the second or third month of benefits', 'the branch goes on (273.2(i)(4)(iii)(A))')
-    want('S77', t, 'interviewed within the 7 days', 'the expedited interview (273.2(i)(3)(iii))')
+    want('S77', t, 'interviews a household on the expedited branch within the seven days', 'the expedited interview (273.2(i)(3)(iii))')
     want('S77', t, 'second or third month of benefits', 'postponed proof')
+    rule = meta('govinfo-snap-application-path')['notes'][0]
+    for piece in ('less than $150 in monthly gross income', 'do not exceed $100', 'Migrant or seasonal farmworker households who are destitute', 'combined monthly gross income and liquid resources are less than the household\'s monthly rent or mortgage, and utilities'):
+        same('S77', piece in rule, True, 'the quoted rule holds: ' + piece)
+    want('S77', t, 'under $150 in monthly gross income and no more than $100 in cash and other liquid resources', 'expedited test (i)')
+    want('S77', t, 'a destitute migrant or seasonal farmworker household with no more than $100', 'expedited test (ii)')
+    want('S77', t, 'monthly gross income and liquid resources together fall short of its monthly rent or mortgage and utilities', 'expedited test (iii)')
 
     for f in bad:
         print('FAULT ' + f)
