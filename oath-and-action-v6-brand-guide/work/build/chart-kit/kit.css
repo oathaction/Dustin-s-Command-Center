@@ -16,6 +16,11 @@
 /* access N3: a static figure's drawing keeps its true size, so its words never fall under 13 px; a column narrower than it
    scrolls in the plate's frame */
 .oac-fig[data-oa-static] .oac-art > svg.oac-svg { max-width: none; }
+/* C-M2 (round 3 fix pass): a staged drawing (spec.stage) keeps its one width, and its frame scrolls sideways where the
+   column is narrower; the kit gives the frame a tab stop and a name while it scrolls */
+.oac-art[data-oa-stage] { overflow-x: auto; overflow-y: hidden; padding-bottom: 4px; }
+.oac-art[data-oa-stage] > svg.oac-svg { max-width: none; }
+.oac-art[data-oa-stage]:focus-visible { outline: 2px solid var(--oa-color-focus-ring); outline-offset: 2px; }
 .oac-illus { margin: 0 0 8px; font: var(--oa-font-weight-semibold) 14px/20px var(--oa-font-family-reading); }
 .oac-vh, .oac-fig[data-oa-js] .oac-alt, .oac-fig[data-oa-static] .oac-alt { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 /* With scripts off (no data-oa-js on the figure), the description shows as words with a line saying the drawing needs
@@ -170,6 +175,8 @@
   .oac-art[data-oa-sliced] > .oac-slices { display: block; }
   .oac-slices > svg.oac-slice { display: block; max-width: 100%; height: auto; overflow: hidden; break-inside: avoid; }
   .oac-tw { overflow: visible; }
+  .oac-art[data-oa-stage] { overflow: visible; }
+  .oac-art[data-oa-stage] > svg.oac-svg { max-width: 100%; }
   .oac-eq > summary::before { content: none; }
 }
 

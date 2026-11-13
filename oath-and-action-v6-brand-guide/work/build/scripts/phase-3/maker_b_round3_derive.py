@@ -187,6 +187,8 @@ def jfc_nodes():
 def spec(sid):
     with open(os.path.join(SPECS, sid + '.json'), encoding='utf-8') as fh:
         sp = json.load(fh)
+    # a no-break space (BC-S12) reads as a space in every check
+    sp = json.loads(json.dumps(sp, ensure_ascii=False).replace('\u00a0', ' '))
     words = [sp.get('title', ''), sp.get('measure_line', ''), sp.get('reading_guide', ''), sp.get('alt', '')] + sp.get('notes', []) + sp.get('chart_notes', [])
     return sp, ' '.join(words)
 
@@ -218,7 +220,10 @@ def figures():
     same('S65', fu['kept'], fu['not_ended_procedural'] - fu['ended_ineligible'], 'nests')
     for k in ('due', 'decided', 'not_ended_procedural', 'kept', 'ended_procedural', 'ended_ineligible', 'pending'):
         want('S65', t, mil(fu[k]) + ' million', k)
-    want('S65', sp['title'], 'Of %s million Medicaid and CHIP renewals due from April 2023 to March 2024, %s million ended for a procedural reason, more than twice the %s million found ineligible' % (mil(fu['due']), mil(fu['ended_procedural']), mil(fu['ended_ineligible'])), 'title (MB-1)')
+    want('S65', sp['title'], 'Of %s million Medicaid and CHIP renewals due from April 2023 to March 2024, states ended %s million for a procedural reason, more than twice the %s million they found ineligible' % (mil(fu['due']), mil(fu['ended_procedural']), mil(fu['ended_ineligible'])), 'title (MB-1, BC-S9)')
+    for piece in ('terminated for a procedural or administrative reason', 'determined ineligible'):
+        same('S65', piece in ' '.join(meta('cms-medicaid-chip-renewal-funnel')['notes'] + [meta('cms-medicaid-chip-renewal-funnel')['qualification']]), True, 'CMS term in the sidecar: ' + piece)
+        want('S65', t, piece, 'note 1 quotes CMS (BC-S9)')
     same('S65', 2 < fu['ended_procedural'] / fu['ended_ineligible'] < 3, True, 'more than twice (2.30)')
     want('S65', sp['measure_line'], 'shares are of renewals due', 'MB-2')
     same('S65', sp['labels']['named'], ['ended_procedural'], 'the named loss')
@@ -236,7 +241,9 @@ def figures():
     tot = lambda rs: round(sum(float(r['amount']) for r in rs), 2)
     same('S73', (len(hv), tot(hv), len(tn), tot(tn)), (53, 899402049.70, 2, 273762296.73), 'line 22 sums')
     same('S73', (len(refunds), tot(refunds), {r['jfc_name'] for r in refunds}), (2, 81000.0, {'HARRIS VICTORY FUND'}), 'refunds')
-    want('S73', sp['title'], 'The Harris Victory Fund sent $%s million to %d committees in the 2024 cycle, and the Trump National Committee JFC sent $%s million to two' % (mil(tot(hv)), len(hv), mil(tot(tn))), 'title')
+    want('S73', sp['title'], 'The Harris Victory Fund sent $%s million to other committees in the 2024 cycle, and the Trump National Committee JFC sent $%s million' % (mil(tot(hv)), mil(tot(tn))), 'title, no comparison of reach (BC-M1)')
+    same('S73', any(w in sp['title'] for w in ('53', 'to two', 'committees in all')), False, 'the title counts no committees (BC-M1)')
+    want('S73', t, 'by the agreement that formed it, which sets how many committees it pays', 'note 2 (ST-S6)')
     camp = [r for r in hv if r['recipient_id'] == 'C00703975']
     dnc = [r for r in hv if r['recipient_id'] == 'C00010603']
     states = [r for r in hv if r['recipient_type'] == 'Party - Qualified' and r['recipient_id'] != 'C00010603']

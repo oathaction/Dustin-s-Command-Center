@@ -48,7 +48,8 @@ export function container(page, spec) {
   const t = K.token_reader(TOK.newsprint);
   const art = K.artboard(spec, t);
   const gutter = page < 600 ? 16 : 32;
-  return Math.min(art, page - 2 * gutter);
+  // C-M2: a staged drawing (spec.stage) keeps its one width wherever the column gives it a desk drawing
+  return K.draw_width(spec, Math.min(art, page - 2 * gutter));
 }
 
 function args(argv) {
@@ -147,9 +148,12 @@ function span_list(ws) {
 export function sweep_faults(spec, rows, extra) {
   // N1 (access second pass): skip only the columns this spec was already checked at; an entry is never checked at a
   // plate's columns (510 px is a 574 px window), so those stay in its sweep
-  const [lo, hi] = sweep_range(spec), seen = new Map(), skip = new Set(guide_widths(spec));
-  for (let w = lo; w <= hi; w++) {
+  const [lo, hi] = sweep_range(spec), seen = new Map(), skip = new Set(guide_widths(spec).map(w => K.draw_width(spec, w)));
+  for (let w0 = lo; w0 <= hi; w0++) {
+    // C-M2: a staged spec draws its stage at every desk column, so the sweep reads it once and every phone width
+    const w = K.draw_width(spec, w0);
     if (skip.has(w)) continue;   // checked already, at this spec's own guide columns
+    skip.add(w);
     let f;
     try {
       const d = K.draw(spec, rows, { width: w, ground: 'newsprint', tokens: TOK.newsprint, extra });
@@ -173,6 +177,11 @@ export function run_spec(spec, o) {
   try { chk = C.check_spec(K, spec, o); } catch (e) { res.faults.push('spec: ' + e.message); return res; }
   res.faults.push(...chk.faults);
   res.warnings.push(...(chk.warnings || []));
+  // C-M2 (round 3 fix pass): a stage is one desk width, from the phone's limit to the artboard
+  if (spec.stage !== undefined) {
+    const art = K.artboard(spec, K.token_reader(TOK.newsprint));
+    if (!(typeof spec.stage === 'number' && spec.stage >= K.PHONE_MAX && spec.stage <= art)) res.faults.push(`stage: ${JSON.stringify(spec.stage)} is not a width in px from ${K.PHONE_MAX} to the artboard's ${art} (C-M2)`);
+  }
   res.rows = chk.rows;
   res.datasets = chk.datasets;
   if (!K.forms[spec.form] || !chk.rows || !chk.rows.length) return res;
@@ -187,7 +196,7 @@ export function run_spec(spec, o) {
   if (!o.no_narrow) {
     // every column width the guide and zoom give a chart (D3-93), checked and never exported: 656 px (200 percent text at
     // 1440), 558 (1024), 358 (390), 296 (360) and 256 (320 px reflow); chapter 13's narrower plates add 243 and 224
-    for (const w of guide_widths(spec)) {
+    for (const w of [...new Set(guide_widths(spec).map(x => K.draw_width(spec, x)))]) {
       if (w > K.artboard(spec, K.token_reader(TOK.newsprint))) continue;
       try {
         const d = K.draw(spec, chk.rows, { width: w, ground: 'newsprint', tokens: TOK.newsprint, extra: extra_rows(chk) });
@@ -221,7 +230,7 @@ export function used_columns(spec, columns) {
 }
 
 // The keys a page needs to draw: no words the figure already prints (method load-table)
-const DRAW_KEYS = ['kit', 'id', 'form', 'artboard', 'encode', 'labels', 'annotations', 'formats', 'scale', 'table', 'phone'];
+const DRAW_KEYS = ['kit', 'id', 'form', 'artboard', 'stage', 'encode', 'labels', 'annotations', 'formats', 'scale', 'table', 'phone'];
 export function draw_spec(spec) {
   const out = {};
   DRAW_KEYS.forEach(k => { if (spec[k] !== undefined) out[k] = spec[k]; });

@@ -7,7 +7,8 @@
  * unit. Rows a spec folds (labels.nodes) join one node; the table lists each row or groups them. Inks (the data lead's
  * round 3 ruling (b), as its review fix pass corrects it for B-S1): every bar solid in the ink labels.ink names (the
  * party-mark ink for money spent to elect a candidate, Rule 14.6), every link in the light fill with a 1 px edge in that
- * ink (RF-2), as the Sankey draws its bands, so the links read apart from the bars they join; the words in the text's ink.
+ * ink (RF-2), as the Sankey draws its bands, so the links read apart from the bars they join, and the key of widths
+ * draws its bands the same way (BC-S2); the words in the text's ink.
  * encode: source (text), target (text), value (number), target_key (id, matched by labels.nodes), kind (category,
  * optional, matched by labels.nodes), line (category, optional: with labels.lines, only rows of those values draw).
  * labels: nodes ([{source, keys: [target_key], kind: [kind], rest: true, name}], in drawing order: a row joins the first
@@ -61,7 +62,7 @@
       fl.faults.forEach(function (x) { c.warn(x); });
       var y = 0;
       if (L.key_steps) {
-        y += P.width_key(c, 0, y, 1 / unit, L.key_steps, { words: L.key_steps.map(function (s) { return kv(s); }), stroke: ink, len: 32, title: L.key_title, max: W });   // to band: 'light-fill', edge: ink once the key check reads a band key's steps as widths (RB3F-G1)
+        y += P.width_key(c, 0, y, 1 / unit, L.key_steps, { words: L.key_steps.map(function (s) { return kv(s); }), band: 'light-fill', edge: ink, len: 32, title: L.key_title, max: W });
         if (L.key_hairline) { var hb = c.text(0, y + tk * 0.9, String(L.key_hairline).split('{v}').join(kv(unit)), { role: 'tick', max: W }); y = hb.bottom; }
         y += 18;
       }

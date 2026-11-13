@@ -28,14 +28,14 @@
  "title": "Home broadband such as cable, fiber or DSL reached at least 79 percent of households in 10 states and DC in 2025, and under 71 percent in nine states.",
  "measure_line": "Households with home broadband such as cable, fiber optic or DSL, percent of all households, 2025, 50 states and the District of Columbia, in four classes, with the United States above the map.",
  "notes": [
-  "Each class spans 4 percentage points, wider than any state’s 90 percent margin of error. Thirteen of the 50 states and the District of Columbia sit close enough to a class line that they could fall in the next class; no state could fall two classes away.",
+  "Each class spans 4 percentage points, wider than any state’s 90 percent margin of error. On the figures the table prints, 11 states and the District of Columbia sit close enough to a class line that they could fall in the next class; no state could fall two classes away.",
   "The count leaves out a household whose only subscription is a cellular data plan. The table gives each state’s figure with its margin of error.",
   "The map draws Alaska and Hawaii apart and not to scale, and the District of Columbia as a square beside Maryland."
  ],
  "source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B28002, broadband such as cable, fiber optic or DSL, with margins of error from Subject Table S2801, 2025, 50 states and DC; Cartographic Boundary Files, 2024, states. Retrieved November 12 and 13, 2026. Survey estimates; margins of error at 90 percent as the Bureau publishes them in S2801.",
  "credit": "Chart: Oath & Action",
  "illustrative": false,
- "alt": "A map of the United States with each state shaded in one of four classes by the share of households with home broadband such as cable, fiber or DSL in 2025. Ten states and the District of Columbia reach 79 percent or more, most of them in the Northeast, along with Colorado, Utah, Washington and Hawaii; nine states sit under 71 percent, among them Alaska, Mississippi, West Virginia, Montana and New Mexico. The United States stands at 76.6 percent.",
+ "alt": "A map of the United States with each state shaded in one of four classes by the share of households with home broadband such as cable, fiber or DSL in 2025. Ten states and the District of Columbia sit in the top class, 79 percent or more, and eight of them stay in it even at the low end of the survey’s margin of error: Connecticut, Hawaii, Maryland, Massachusetts, New Hampshire, New Jersey, Utah and Washington. Nine states sit under 71 percent, among them Alaska, Mississippi, West Virginia, Montana and New Mexico, each under it across its margin of error. The United States stands at 76.6 percent.",
  "table": {
   "caption": "Households with home broadband such as cable, fiber optic or DSL, by state, 2025",
   "columns": [
@@ -85,7 +85,7 @@
   "dc": "DC"
  },
  "notes_internal": [
-  "Ruling (c): fixed broadband (B28002 line 007) with S2801's published margins; breaks at 71, 75 and 79 percent; classes 9, 11, 20 and 11 places; 13 intervals cross a break (check S78 in cartographer_round3_derive.py --figures).",
+  "Ruling (c), with ST-S12 (review fix pass): fixed broadband (B28002 line 007) with S2801's published margins; breaks at 71, 75 and 79 percent; classes 9, 11, 20 and 11 places. Crossings count on the printed figures, one decimal half up (D3-1106's rule): a place crosses where its printed interval reaches a value in another class, an interval ending exactly on a break reaching the class that begins there; 11 states and DC (AR, CA, CO, DC, DE, KS, ND, NE, OK, VT, WI, WY); rounding moves no state's class. ST-S5: the alt names a state in a class only where its printed interval sits inside it (CT, HI, MD, MA, NH, NJ, UT, WA at 79 or more; AK, MS, WV, MT, NM under 71). Check S78 in cartographer_round3_derive.py --figures.",
   "Ruling (b): sequential steps 1, 3, 4 and 5; step 1 regions take the 1 px context edge; borders a 1 px line of the ground; codes in the step's label ink; DC a square beside Maryland; the nation beside the map with its name and value (call 4).",
   "Ruling (a): no named mark; the map answers with its pattern."
  ],

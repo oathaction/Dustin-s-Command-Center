@@ -4,7 +4,7 @@
   "rule": [
     "Leave thermometers, the tubes with a bulb used for fundraising goals, out of every Oath & Action piece. Draw the same count as a progress bar toward its goal, with the goal marked and the amount still to go printed."
   ],
-  "use_when": "Never: a reader who asks how close a total is to its goal gets the same answer from a progress bar with less ink.",
+  "use_when": "No reader’s question calls for it. A reader who asks how close a total is to its goal gets the same answer from a progress bar with less ink.",
   "use_instead": [
     {
       "when": "The value is a count toward a goal",

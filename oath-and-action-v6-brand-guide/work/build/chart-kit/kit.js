@@ -966,7 +966,7 @@
   K.words = K.words || {};
   // words.json's words, carried inside the kit so a plain page opened from disk prints them too (access S8); the kit's
   // self-test fails when this copy and words.json differ
-  K.WORDS = {"source_label": "Source:", "table_summary": "The table and notes", "notes_in_chart": "Notes in the chart", "table_region": "{caption}, table", "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.", "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.", "scripts_off": "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below.", "export_fonts": "Set in Inter and Inter Tight. On a computer without both fonts, the labels fall back to another font and change width.", "lookup_clear_search": "Clear the search", "lookup_filters": "Filters, {n} on", "lookup_clear_filters": "Clear filters", "lookup_count": "{n} of {total} {noun}", "phone_view": "On a phone, {w} px", "phone_view_part": "On a phone, {w} px: {part}", "phone_view_rows": "the first {n} of {total} rows; a phone draws them all"};
+  K.WORDS = {"source_label": "Source:", "table_summary": "The table and notes", "notes_in_chart": "Notes in the chart", "table_region": "{caption}, table", "unlabeled_marks": "Not labeled at this width: {codes}. The table names every one.", "unlabeled_tiles": "At this width the tiles are too small for state codes. The table names every state.", "scripts_off": "This chart needs JavaScript, which this browser has turned off. Its figures are in the table below.", "export_fonts": "Set in Inter and Inter Tight. On a computer without both fonts, the labels fall back to another font and change width.", "lookup_clear_search": "Clear the search", "lookup_filters": "Filters, {n} on", "lookup_clear_filters": "Clear filters", "lookup_count": "{n} of {total} {noun}", "phone_view": "On a phone, {w} px", "phone_view_part": "On a phone, {w} px: {part}", "phone_view_rows": "the first {n} of {total} rows; a phone draws them all", "stage_scroll": "The drawing at its full width, {w} px; scroll sideways to see all of it", "data_file": "this chart’s data file in the guide’s asset package"};
   function word(opts, k) {
     var w = (opts && opts.words) || K.words;
     if (k in w) return w[k];
@@ -975,9 +975,12 @@
   }
   // the shared words for a form: words.json's, through the same fallback the figure uses (editor's read, K1)
   K.word = function (k) { return word(null, k); };
+  // ST-M2 item 1 (round 3 fix pass): "{data_file}" in a caption or note prints words.json's data_file, the one place
+  // that names where a chart's full rows live, so Dustin's answer changes one string and no spec
+  K.fill_words = function (text) { return String(text).split('{data_file}').join(word(null, 'data_file')); };
   K.chips = function (text, ids) {
     // set each atlas ID the spec names (spec.v7.ids) in its typed chip; an ASCII hyphen, never U+2011, in a no-wrap span
-    var s = esc(text);
+    var s = esc(K.fill_words(text));
     if (!ids || !ids.length) return s;
     var sorted = ids.slice().sort(function (a, b) { return b.length - a.length; });
     var re = new RegExp('(^|[^A-Za-z0-9-])(' + sorted.map(function (x) { return esc(x).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }).join('|') + ')(?![A-Za-z0-9])', 'g');

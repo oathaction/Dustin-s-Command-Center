@@ -15,7 +15,7 @@
  "title": "Half of the 132.2 million private-sector paid employees counted by county in 2023 worked in 100 of the 3,142 counties.",
  "measure_line": "Private-sector paid employees, counted where they work, by county, 2023, the 50 states and the District of Columbia; one dot for each 10,000 employees, or each 50,000 on a phone.",
  "notes": [
-  "Each dot sits at random inside its county, so it stands for a count and marks no address. A county with fewer than 5,000 employees draws no dot: 1,354 counties holding 2,841,136 employees.",
+  "Each dot sits at random inside its county, so it stands for a count and marks no address. A county with fewer than 5,000 employees draws no dot: 1,354 counties holding 2.8 million employees. On a phone, where a dot stands for 50,000, 2,426 counties holding 15.4 million draw none.",
   "County Business Patterns counts employees of private employers, and leaves out government workers, the self-employed and most farm and household workers.",
   "The Bureau adds a little noise to each count to protect employers. It changed 378 counties’ counts by 2 to under 5 percent and 29 by 5 percent or more; the download gives each county’s flag.",
   "The dots draw the 132.2 million paid employees counted in counties. Another 7.7 million in the nation’s total work for employers the Bureau places in a state but in no county, and they draw no dots. The Bureau’s file holds no row for Kalawao County, Hawaii, or King County, Texas.",
@@ -105,7 +105,8 @@
   "Ruling (b): dots in the subject ink, 1.5 px across, on the land ink with state lines in the context ink at 0.5 px; one dot a 10,000 employees from 480 px and a 50,000 below, the count over the unit rounded half up, from census-cbp-county-employment-dots (cartographer_round3_derive.py); 13,040 and 2,402 dots; seed 2023, recorded here (labels.seed).",
   "RL-2, signed off: the table counts each state's flagged counties (H and J); a note names the 7,679,940 employees counted in no county (50 statewide records and 5 in Hawaii's and Texas's totals). Figures checked by script (check S83 in cartographer_round3_derive.py --figures): 100 counties hold half the 132,151,802; 1,354 counties draw no dot at 10,000, holding 2,841,136.",
   "Ruling (a): no named mark; the map answers with its pattern. The alt names cities as places the dots crowd, read from the drawing; the title names no county.",
-  "RL-2 (data lead, signed off): notes 3 and 4 take the data lead's words for the flags and the statewide gap; the source line takes the variant with_noise_flags, with the boundary file. DL-E1 condition 4: the island carries dot counts at both units, each round(count / unit) half up, from the derive script."
+  "RL-2 (data lead, signed off): notes 3 and 4 take the data lead's words for the flags and the statewide gap; the source line takes the variant with_noise_flags, with the boundary file. DL-E1 condition 4: the island carries dot counts at both units, each round(count / unit) half up, from the derive script.",
+  "ST-S1 (review fix pass): note 1 gives the counties that draw no dot at each unit, from the derived dots columns (dots_10k and dots_50k equal 0; map_dots skips the same counties): 1,354 holding 2,841,136 at 10,000, and 2,426 holding 15,370,827 (11.6 percent of 132,151,802) at 50,000 (check S83 in cartographer_round3_derive.py --figures)."
  ],
  "formats": {}
 }

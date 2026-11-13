@@ -4,7 +4,7 @@
   "rule": [
     "Leave streamgraphs out of every Oath & Action piece. Show parts of a total over time as small multiples, one panel per part on one scale, or as a stacked area with a flat baseline when the total matters."
   ],
-  "use_when": "Never: a reader who asks how the parts of a total changed over time gets a truer answer from small multiples or a stacked area.",
+  "use_when": "No reader’s question calls for it. A reader who asks how the parts of a total changed over time gets a truer answer from small multiples or a stacked area.",
   "use_instead": [
     {
       "when": "Each part’s own trend matters",

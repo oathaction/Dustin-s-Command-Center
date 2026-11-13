@@ -4,7 +4,7 @@
  "rule": [
   "Leave dual-axis line charts out of every Oath & Action piece. Draw two measures as two aligned panels, one above the other, each on its own scale from a stated base and sharing one time axis, or index both to one start date on one scale (Rule 14.4)."
  ],
- "use_when": "Never: a reader who asks how two measures moved over the same years gets a truer answer from two aligned panels.",
+ "use_when": "No reader’s question calls for it. A reader who asks how two measures moved over the same years gets a truer answer from two aligned panels.",
  "use_instead": [
   {
    "when": "Growth compared from one start date",

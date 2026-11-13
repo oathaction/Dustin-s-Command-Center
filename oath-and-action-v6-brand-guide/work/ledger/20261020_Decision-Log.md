@@ -5565,3 +5565,4 @@ The main session reported that `phase3_ch14_build.py` still builds rounds 1 and 
 | D3-1369 | Entry 14.115's example names both directions of a shift | BC-S10: one standard (DR-93) |
 | D3-1370 | S77's note drops "and some miss the limits" | BC-S13: an unsourced measured claim on a chart that measures no wait |
 | D3-1371 | S74 marks its diagonal in the gridline ink, keyed "Within one region" | BC-S14: the title counts it |
+| D3-1372 | S12 keeps board 1's arrow drawing unchanged at 1024 px in a stage that scrolls sideways (the kit's `"stage": 1024`, with a tab stop and a name while it scrolls) wherever the column gives a desk drawing, and keeps its phone form under 480 px; the tile that drops its printed figure is not taken | D3-1324's order: the engineer measured that the arrows need 72 px tiles, which only a drawing of 930 px or more gives, so the wide chart's 869 px cannot show them; the data lead ruled that dropping the figures would break DR-64 |

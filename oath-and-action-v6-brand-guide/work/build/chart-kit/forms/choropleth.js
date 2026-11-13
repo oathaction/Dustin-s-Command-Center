@@ -14,10 +14,21 @@
   'use strict';
   var STEPS = ['seq-1', 'seq-3', 'seq-4', 'seq-5'];
   var on_ink = function (fill) { return /^(seq|mag|div)-\d$/.test(fill || '') ? 'on-' + fill : 'label'; };   // the step's own label ink
-  // one map: o = {layer, x, y, w, max_h, items: [{id, cls (1 to n, or null), data, code}], steps, codes, dc, state_lines,
-  // outline_all}; returns {T, bottom, unplaced}
+  // one map: o = {layer, x, y, w, max_h, items: [{id, cls (1 to n, or null), data, code}], steps, codes, dc, dc_room,
+  // state_lines, outline_all}; returns {T, bottom, unplaced}. dc_room (AX-S3, round 3 fix pass): DC's square and its
+  // name stay inside the panel's own width, and where the panel is too narrow for them east of Maryland the map is fitted
+  // narrower, so the square draws in every panel at every width
   var panel = function (c, o) {
-    var L = K.geo(o.layer), steps = o.steps || STEPS, T = K.parts.map_fit(c, L, { x: o.x || 0, y: o.y || 0, w: o.w, max_h: o.max_h });
+    var L = K.geo(o.layer), steps = o.steps || STEPS, fit = function (w) { return K.parts.map_fit(c, L, { x: o.x || 0, y: o.y || 0, w: w, max_h: o.max_h }); };
+    var T = fit(o.w), right = o.dc_room ? (o.x || 0) + o.w : c.width;
+    var dc_size = function (T) { return Math.max(7, Math.min(11, T.k * 12)); };
+    if (o.dc && o.dc_room && L.labels && L.index['11'] !== undefined && o.items.some(function (it) { return it.id === '11'; })) {
+      for (var tries = 0; tries < 6; tries++) {
+        var q0 = T.pt(L.labels[L.index['11']]), need = q0[0] + T.k * 46 - 2 + dc_size(T) + 6 + c.measure(o.dc, 'tick', 600) + 2 - right;
+        if (need <= 0) break;
+        T = fit(T.w - need - 1);
+      }
+    }
     var fill_of = function (it) { return it.cls ? steps[it.cls - 1] : 'land'; };
     K.parts.map_shapes(c, L, T, o.items.map(function (it) { return { id: it.id, fill: fill_of(it), data: it.data }; }), { merge: !!o.merge });
     var cls_of = {};
@@ -72,12 +83,12 @@
     // spot east or south of it clear of every word, leader and darker step, drawn after the codes
     var dc = o.items.filter(function (it) { return it.id === '11'; })[0];
     if (o.dc && dc && L.labels) {
-      var p0 = T.pt(L.labels[L.index['11']]), s = Math.max(7, Math.min(11, T.k * 12)), tw = c.measure(o.dc, 'tick', 600), dpick = null;
+      var p0 = T.pt(L.labels[L.index['11']]), s = dc_size(T), tw = c.measure(o.dc, 'tick', 600), dpick = null;
       [[46, 40], [60, 30], [60, 50], [40, 60], [70, 70], [30, 80], [80, 10], [90, 40]].forEach(function (v) {
         if (dpick) return;
         var dx = p0[0] + T.k * v[0], dy = p0[1] + T.k * v[1], tb = c.text_box(dx + s + 4, dy + s - 1, o.dc, { role: 'tick', weight: 600 });
         var box = { x: dx - 2, y: Math.min(dy, tb.y) - 2, w: s + 6 + tb.w + 2, h: Math.max(s, tb.h) + 4 };
-        if (box.x + box.w > c.width) return;
+        if (box.x + box.w > right) return;
         if (c.texts.some(function (t) { return box.x < t.x + t.w && t.x < box.x + box.w && box.y < t.y + t.h && t.y < box.y + box.h; })) return;
         var sq = { x: dx - 1, y: dy - 1, w: s + 2, h: s + 2 };
         if ((c.leaders || []).some(function (l) { return K.leader_crosses(l, box) || K.leader_crosses(l, sq) || K.leader_crosses(l, tb) || K.seg_hits_box(l.x1, l.y1, l.x2, l.y2, tb.x - 1, tb.y - 1, tb.x + tb.w + 1, tb.y + tb.h + 1); })) return;

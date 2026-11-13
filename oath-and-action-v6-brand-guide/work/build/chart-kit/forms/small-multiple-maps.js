@@ -5,13 +5,15 @@
  * encode: code (code), panel (any: the column whose values split the panels, in order), category (category).
  * labels: categories ([{value, label, step}], the key's order, lightest first; step 1 to n of steps), steps (fills),
  * panel_title ('{panel}' fills), panel_counts (words with {c1} to {cn}, each the count in that category), key_title,
- * dc ('DC'). formats: panel. */
+ * dc ('DC'), dc_room (true: the map is fitted narrower where a panel leaves DC's square no room east of Maryland, so
+ * it draws in every panel at every width; AX-S3, round 3 fix pass), dc_unplaced (a note's words where a panel still has
+ * no room for it). formats: panel. */
 (function (K) {
   'use strict';
   K.register_chart({
     form: 'small-multiple-maps', name: 'Small Multiple Maps', family: 'maps',
     encode: { code: 'code', panel: 'any', category: 'category' },
-    labels: ['categories', 'steps', 'panel_title', 'panel_counts', 'key_title', 'dc'],
+    labels: ['categories', 'steps', 'panel_title', 'panel_counts', 'key_title', 'dc', 'dc_room', 'dc_unplaced'],
     phone: 'same',
     draw: function (c) {
       var B = K.forms.choropleth, L = c.labels, W = c.width, f = c.spec.formats || {}, G = globalThis.OAChartGeo;
@@ -21,7 +23,7 @@
       var keys = [];
       c.rows.forEach(function (r) { var k = String(r[ep]); if (keys.indexOf(k) < 0) keys.push(k); });
       var y = B.key(c, 0, steps, cats.map(function (x) { return x.label; }));
-      var cols = W >= 480 ? 2 : 1, gap = 24, pw = (W - gap * (cols - 1)) / cols, rowtop = y + 8, low = rowtop;
+      var cols = W >= 480 ? 2 : 1, gap = 24, pw = (W - gap * (cols - 1)) / cols, rowtop = y + 8, low = rowtop, lost = 0;
       keys.forEach(function (k, i) {
         var col = i % cols, x0 = col * (pw + gap);
         if (col === 0 && i > 0) rowtop = low + 14;
@@ -33,9 +35,11 @@
         var items = rows.filter(function (r) { return G.tiles[r[ec]]; }).map(function (r) {
           return { id: G.tiles[r[ec]][2], cls: idx[String(r[ek])] || null, data: { key: r[ec] + ' ' + r[ep], field: ek, value: r[ek] } };
         });
-        var res = B.panel(c, { layer: 'states', x: x0, y: t2.bottom + 8, w: pw, items: items, steps: steps, codes: false, dc: L.dc });
+        var res = B.panel(c, { layer: 'states', x: x0, y: t2.bottom + 8, w: pw, items: items, steps: steps, codes: false, dc: L.dc, dc_room: !!L.dc_room });
+        if (res.unplaced.length) lost++;
         low = Math.max(low, res.bottom);
       });
+      if (lost && L.dc_unplaced) { var nt = c.text(0, low + 20, L.dc_unplaced, { role: 'note', max: W, fill: 'secondary' }); low = nt.bottom; }
       c.height(low + 4);
     }
   });

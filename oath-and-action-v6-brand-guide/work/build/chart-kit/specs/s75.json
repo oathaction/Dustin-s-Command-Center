@@ -9,18 +9,18 @@
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: bill records from the Library of Congress’s bill status files",
- "title": "Of 10 House bills whose titles name pharmacy benefit managers, H.R. 6609 and H.R. 6610 shared the most backers, 34 members.",
+ "title": "Of 10 House bills whose titles name pharmacy benefit managers, H.R. 6609 and H.R. 6610 shared the most backers, 34 members.",
  "measure_line": "Members who sponsored or cosponsored both bills of a pair, House bills of the 119th Congress whose titles name pharmacy benefit managers, in order of introduction, February 4, 2025 to September 14, 2026; an arc’s width is its count",
  "notes": [
   "Pharmacy benefit managers run prescription drug benefits for insurers and employers. We searched every bill of the 119th Congress in the Library of Congress’s files of November 11, 2026 for a title, official, short or popular, that names “pharmacy benefit manager” or “PBM”, and found 10 House bills and eight Senate bills.",
-  "A representative cannot back a Senate bill, so the chart draws the House, the chamber with more such bills. The Senate’s eight are S. 526, S. 882, S. 3345, S. 3349, S. 3549, S. 3729, S. 3822 and S. 4509.",
+  "A representative cannot back a Senate bill, so the chart draws the House, the chamber with more such bills. The Senate’s eight are S. 526, S. 882, S. 3345, S. 3349, S. 3549, S. 3729, S. 3822 and S. 4509.",
   "A backer is the sponsor or a cosponsor who did not withdraw. Two bills that share backers drew some of the same members, and their texts may still differ."
  ],
  "credit": "Chart: Oath & Action",
  "illustrative": false,
  "alt": "Ten House bills on a line in order of introduction, with 33 arcs joining each pair that shares a sponsor or cosponsor, each arc as wide as its count. H.R. 6609 and H.R. 6610, introduced the same day, share 34 backers, the most; H.R. 4317 shares 19 with each of them; the other 30 pairs share one to six.",
  "chart_notes": [
-  "The pair the title names, H.R. 6609 and H.R. 6610, is in the text’s ink; every other arc is gray. The chart draws the widest arcs first, so the narrow ones stay in view."
+  "The pair the title names, H.R. 6609 and H.R. 6610, is in the text’s ink; every other arc is gray. The chart draws the widest arcs first, so the narrow ones stay in view."
  ],
  "table": {
   "caption": "Pairs of House bills naming pharmacy benefit managers that share a sponsor or cosponsor, 119th Congress",
@@ -55,6 +55,7 @@
   "Maker B, round 3. Data plan row 96 with change 6, rule 14.106. Draws the derived congress-gov-pbm-bill-shared-backers-119, whose sidecar names congress-gov-pbm-bills-119 and congress-gov-pbm-bill-backers-119 as its sources; one dataset, so the sidecar's printed line prints (the multi-file check would ask for the publisher's full words).",
   "Data lead ruling (a): the title names the pair with the most shared backers, 34, so that arc takes the subject ink through labels.named; (b): bills on one line in order of introduction, labeled by number, arc width linear in shared backers with a key of three widths, other arcs in the context ink, widest first. Change 6: the House drawn, the Senate's eight listed in note 2. A third of a pixel a backer, so the widest arc is 11.3 px; an arc under a pixel draws at 1 px and the key says so.",
   "The entry does not retell S32's law; none of the 18 bills shows a public law in the file.",
-  "Figures checked by maker_b_round3_derive.py --figures (check S75): 10 House and 8 Senate bills by the sidecar's count and the bills file; the Senate list; 33 pairs; the top pair H.R. 6609 and H.R. 6610 at 34, introduced the same day; H.R. 4317 at 19 with each; every other pair 1 to 6; introduction dates February 4, 2025 and September 14, 2026; labels.order sorted by introduction."
+  "Figures checked by maker_b_round3_derive.py --figures (check S75): 10 House and 8 Senate bills by the sidecar's count and the bills file; the Senate list; 33 pairs; the top pair H.R. 6609 and H.R. 6610 at 34, introduced the same day; H.R. 4317 at 19 with each; every other pair 1 to 6; introduction dates February 4, 2025 and September 14, 2026; labels.order sorted by introduction.",
+  "Review fix pass, BC-S12: each bill number in the title, notes and chart note holds to its prefix with a no-break space (H.R. 6609, S. 3349)."
  ]
 }

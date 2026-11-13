@@ -4,7 +4,7 @@
   "rule": [
     "Leave dials, speedometers and other gauges out of every Oath & Action piece. Draw the same value as a progress bar toward its threshold, or as a bullet graph where a target and ranges matter, so it is read as a length from zero."
   ],
-  "use_when": "Never: a reader who asks how close a measure is to a mark gets a truer answer from a progress bar or a bullet graph.",
+  "use_when": "No reader’s question calls for it. A reader who asks how close a measure is to a mark gets a truer answer from a progress bar or a bullet graph.",
   "use_instead": [
     {
       "when": "The value is a count toward a threshold",

@@ -4,7 +4,7 @@
   "rule": [
     "Leave 3D pies, 3D bars and every chart drawn with depth or tilt out of every Oath & Action piece. Draw the same values flat, as bars from one zero line, so each value is read as a length."
   ],
-  "use_when": "Never: a reader who asks how parts compare gets a truer answer from flat bars or a flat 100 percent bar.",
+  "use_when": "No reader’s question calls for it. A reader who asks how parts compare gets a truer answer from flat bars or a flat 100 percent bar.",
   "use_instead": [
     {
       "when": "The reader compares a handful of values",

@@ -43,11 +43,13 @@
       // each column's width (A-S5): 118 px each, then the rest a step at a time to the column that shortens the bands most
       var ws = levels.map(function () { return cw; });
       var band_h = function (v, w2) {
-        var hs = levels.map(function () { return 0; }), ns = levels.map(function () { return 0; });
-        c.rows.forEach(function (r) { if (!!r[ec] !== v) return; var i = col(r), s = size_of(r, w2[i]); hs[i] += (s ? s.h : 999) + (ns[i]++ ? 22 : 0); });
-        return Math.max.apply(null, hs);
+        // a name that cannot fit its column costs more than any height, each one alone, so the step that fits one counts
+        var hs = levels.map(function () { return 0; }), ns = levels.map(function () { return 0; }), miss = 0;
+        c.rows.forEach(function (r) { if (!!r[ec] !== v) return; var i = col(r), s = size_of(r, w2[i]); if (!s) miss++; hs[i] += (s ? s.h : 0) + (ns[i]++ ? 22 : 0); });
+        return Math.max.apply(null, hs) + 10000 * miss;
       };
-      var cost = function (w2) { return band_h(true, w2) + band_h(false, w2); };
+      // the bands' heights, and every box's own, so a name stops wrapping where the room is there
+      var cost = function (w2) { var all = 0; c.rows.forEach(function (r) { var s = size_of(r, w2[col(r)]); all += s ? s.h : 0; }); return band_h(true, w2) + band_h(false, w2) + all; };
       var share = function () {
         var avail = W - cg * (levels.length - 1), base = 118, step = 4;
         ws = levels.map(function () { return base; });
@@ -70,6 +72,7 @@
       // one size for every name: the label size where every name fits its column, else the tick size
       var fits = function () { return c.rows.every(function (r) { return !!size_of(r, ws[col(r)]); }); };
       if (wide) { share(); if (!fits()) { role = ['tick']; share(); if (!fits()) wide = false; } }
+      if (globalThis.OA_DBG) { var tab = {}; c.rows.forEach(function (r) { tab[r[ek]] = [118, 126, 134, 142, 150, 160, 170, 180, 200, 220].map(function (w) { var s = size_of(r, w); return w + ':' + (s && s.h); }).join(' '); }); globalThis.OA_DBG.push(tab); }
       var heading = function (x, yb, words, max) { return c.text(x, yb, words, { role: 'label', weight: 700, max: max }); };
       if (wide) {
         // column heads, then each band under its heading, set in the first column's width so a line of authority clears it
