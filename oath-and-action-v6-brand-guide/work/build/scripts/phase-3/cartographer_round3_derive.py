@@ -642,7 +642,8 @@ def figures():
     eq('S83', n_half, 100, 'counties holding half'); has('S83', 'Half of the 132.2 million', 'title'); has('S83', '100 of the 3,142 counties', 'title')
     none = [r for r in e if r['dots_10k'] == '0']; eq('S83', (len(none), sum(int(r['paid_employees']) for r in none)), (1354, 2841136), 'no dot')
     cbm = meta('census-cbp-county-employment'); eq('S83', any('139,831,742' in n and '7,679,940' in n for n in cbm.get('notes', [])), True, 'the national total and the gap in the sidecar')
-    eq('S83', 139831742 - tot, 7679940, 'gap'); has('S83', 'another 7,679,940', 'note 2')
+    eq('S83', 139831742 - tot, 7679940, 'gap'); has('S83', 'Another 7.7 million', 'note 4'); has('S83', 'The dots draw the 132.2 million', 'note 4')
+    eq('S83', (sum(1 for r in e if r['emp_noise_flag'] == 'H'), sum(1 for r in e if r['emp_noise_flag'] == 'J')), (378, 29), 'flags'); has('S83', '378 counties’ counts by 2 to under 5 percent and 29 by 5 percent or more', 'note 3')
     top = sorted(e, key=lambda r: -int(r['paid_employees']))[:20]; ids = set(r['geoid'] for r in top)
     for g, nm in (('36061', 'New York'), ('06037', 'Los Angeles'), ('17031', 'Chicago'), ('48113', 'Dallas'), ('48201', 'Houston'), ('13121', 'Atlanta')): eq('S83', g in ids, True, 'alt: %s among the 20 largest counties' % nm)
     # S84: the panels and the atlas's sentence

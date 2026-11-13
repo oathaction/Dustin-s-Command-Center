@@ -11,7 +11,7 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Written by the en
 - **RB3-G1 LANDED:** the band check reads a band's x extent (maker B). **C-E1 LANDED:** `count_eq`. **ENG-R3-1 DONE:** the data script carries the new Ballotpedia publisher. **Step label inks LANDED:** `on-seq-N`, `on-mag-N`, `on-div-N` for words and marks on a map's steps.
 - **DL-E1 SIGNED OFF** by the data lead: S81 national as variant B (D3-1090).
 - **Checks, first run:** `oa-chart.mjs build --all --no-png`: 78 specs, 78 check files, 78 PASS (the makers' drafts included), 78 s; self-test every fault caught; strict build exit 0, no warning. **Second run:** `build --all --no-png` 79 specs, 79 check files, 79 PASS; strict build with round 3's landed entries placed exits 1 on three of maker A's plates far over (weight below).
-- **A-E1 and A-E2 LANDED:** `table.group.by` as a list, aggregates `list` and `count_set`. **RB3-G2 and C-E3 LANDED:** the page check reads a grouped table's rows from the island.
+- **A-E1 and A-E2 LANDED:** `table.group.by` as a list, aggregates `list` and `count_set`. **RB3-G2 and C-E3 LANDED:** the page check reads a grouped table's rows from the island. **C-E5 LANDED, C-E4 ANSWERED** (cartographer).
 
 ## Contracts
 
@@ -158,6 +158,8 @@ Taken in the order they arrived:
 | A-E2, aggregates `list` and `count_set` | maker A | **Done** with A-E1 |
 | RB3-G2, the page check counts a grouped table's rows | maker B | **Done**: read back from the island, as `K.rows_from_table` does, and the page's grouped rows compared with the data's groups; S73 and S82 pass `build` with captures; told the main session for maker B |
 | C-E3, the same fault on S82 | cartographer | **Done** by RB3-G2's fix |
+| C-E4, S16's Alaska and Hawaii show no land | cartographer | **Answered:** the land draws there in the kit's captures on both grounds (`build s16`: the 1440 px Newsprint and Charcoal captures, Alaska and Hawaii cropped and looked at); the land ink on Charcoal sits close to the ground, so it reads faintly. Nothing to change in the kit |
+| C-E5, `map_labels` beside a coast | cartographer | **Done:** a name set beside is tested on its box padded by `light_pad` px (default 2) at nine points, and `ring0: false` gives every name set beside a leader (`place_labels` takes `ring0` too). Committed drawings unchanged (704 of 704) |
 
 To others:
 - **Cartographer:** S16's spec still prints the 2017 credit ("via us-atlas 3.0.1"); replace it with the 2024 files' credit. S16 may move onto `map_fit` to show all of Alaska. De Baca County (35011) has no estimate: per the data lead, the land ink with the context edge and a note. S81 reads a class column (DL-E1 variant B); ruling (c)'s breaks give four classes.

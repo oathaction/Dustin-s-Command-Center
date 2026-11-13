@@ -17,12 +17,12 @@
  "notes": [
   "More than half the counties, 1,707 of 3,143, sit close enough to a class line that their margin of error could put them in the next class, and 182 two classes away, so the map shows a broad pattern and ranks no county.",
   "The Census Bureau publishes no estimate for De Baca County, New Mexico, which is left unshaded. Connecticut’s counties are its nine planning regions.",
-  "Alaska and Hawaii are drawn apart and not to scale. The table gives each state’s counties by class; the download lists every county with its margin of error."
+  "Alaska and Hawaii are drawn apart and not to scale. The download lists every county with its margin of error."
  ],
- "source_line": "Source: U.S. Census Bureau, American Community Survey 5-year estimates, Table B19013, median household income, 2020 to 2024, every county in the 50 states and DC; Cartographic Boundary Files, 2024, counties, 1:20,000,000. Retrieved November 12 and 13, 2026. Survey estimates in 2024 dollars; margins are wide in small counties.",
+ "source_line": "Source: U.S. Census Bureau, American Community Survey 5-year estimates, Table B19013, median household income, 2020 to 2024, every county in the 50 states and DC, and the United States; Cartographic Boundary Files, 2024, counties, 1:20,000,000. Retrieved November 12 and 13, 2026. Survey estimates in 2024 dollars; margins are wide in small counties.",
  "credit": "Chart: Oath & Action",
  "illustrative": false,
- "alt": "A map of every county in the United States shaded in four classes by median household income for 2020 to 2024. The highest class, $80,000 or more, covers 585 counties, many around large cities and along the coasts; the lowest, under $50,000, covers 371, many across the rural South. The nation’s median was $80,734.",
+ "alt": "A map of every county shaded in four classes by median household income. The top class, $80,000 or more, holds 585 counties, many around large cities and on the coasts; the lowest, under $50,000, holds 371, many in the rural South. The nation’s median was $80,734.",
  "table": {
   "caption": "Counties by median household income class, by state, 2020 to 2024",
   "columns": [
@@ -42,6 +42,18 @@
     "field": "moe",
     "label": "Margin of error (90%)",
     "format": "dollars"
+   },
+   {
+    "field": "income_class",
+    "label": "Class",
+    "format": "text",
+    "words": {
+     "1": "Under $50,000",
+     "2": "$50,000 to $64,999",
+     "3": "$65,000 to $79,999",
+     "4": "$80,000 or more"
+    },
+    "empty": "No estimate"
    }
   ],
   "group": {
@@ -57,6 +69,18 @@
     {
      "label": "Counties",
      "agg": "count"
+    },
+    {
+     "label": "Lowest",
+     "agg": "min",
+     "field": "median_household_income",
+     "format": "dollars"
+    },
+    {
+     "label": "Highest",
+     "agg": "max",
+     "field": "median_household_income",
+     "format": "dollars"
     },
     {
      "label": "Under $50,000",
@@ -110,7 +134,8 @@
  "notes_internal": [
   "Ruling (c) and DL-E1 (D3-1090): breaks at $50,000, $65,000 and $80,000; classes 371, 1,138, 1,049 and 585; 1,707 intervals cross a break and 182 two; De Baca County has no estimate; the nation $80,734 (±$166) from the research lead's national row (RL-1, signed off). The drawing reads the class from census-acs5-county-median-household-income-classes (cartographer_round3_derive.py); the table groups by state and the CSV lists every county (check S81 in cartographer_round3_derive.py --figures).",
   "Ruling (b): sequential steps 1, 3, 4 and 5; no county lines; state lines in the context ink at 0.5 px; the land's edge in the context ink; De Baca in the land ink with the context edge, named in a note.",
-  "Ruling (a): no named mark, and no county named in words."
+  "Ruling (a): no named mark, and no county named in words.",
+  "DL-E1's conditions (data lead, signed off): the grouped table prints state, counties, the lowest and highest county estimate as values with no county named, and the count in each class; the CSV carries every county's value, margin and class. The nation's row is not among the drawn rows, since the island reads the counties' geoids back from geo.js in the layer's order; it prints beside the map and in the source file (request D-2)."
  ],
  "formats": {}
 }
