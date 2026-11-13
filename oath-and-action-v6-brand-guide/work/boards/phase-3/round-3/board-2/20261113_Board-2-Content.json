@@ -325,7 +325,7 @@
     {
      "label": "Quick guide check",
      "kind": "guide_check",
-     "scratch_file": "phase-3/board-2/main/quick/guide-Guide-Check-Results.json",
+     "scratch_file": "phase-3/board-2/main/v9/quick/guide-Guide-Check-Results.json",
      "words": "run by the main session on a copy of its strict build of {page_bytes} bytes at {widths} px, with {specimens} drawn examples, {links} same-page links and {failures} failures",
      "words_other": "run by the main session on a copy of the committed build of {page_bytes} bytes, before your answers landed, at {widths} px, with {specimens} drawn examples, {links} same-page links and {failures} failures; this board’s strict build after them is {build_bytes} bytes, and the main session’s check of the final build replaces this line when it runs"
     },

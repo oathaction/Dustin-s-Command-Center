@@ -1,12 +1,12 @@
 {
- "built": "2026-11-13T18:44:57.867033+00:00",
+ "built": "2026-11-13T18:51:50.985251+00:00",
  "guide_build": {
   "exit": 0,
-  "bytes": 11236252,
+  "bytes": 11236260,
   "rules": 344,
   "specimens": 638,
   "warnings": 0,
-  "built": "2026-11-13T18:45:08"
+  "built": "2026-11-13T18:52:00"
  },
  "decisions": {
   "file": "work/handoffs/phase-3/20261113_Board-2-Decisions.json",
@@ -17,18 +17,21 @@
  "plate_bytes": {
   "file": "work/handoffs/phase-3/board-2-pictures/20261113_Plate-Bytes.json",
   "page": {
-   "path": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/main/final/guide.html",
-   "bytes": 11236230,
-   "sha256": "8a01b67e784a302cedc19b482187253407e3c16042993eccda579234821710a8",
-   "report": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/main/final/guide-Build-Report.json",
-   "report_built": "2026-11-13T18:02:58",
+   "path": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/main/v9/guide.html",
+   "bytes": 11236260,
+   "sha256": "4c834d2b11c983d6f33ca8c5ca2c85d703ac04aa9df6bedf77923c6ad8c544c8",
+   "report": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/main/v9/guide-Build-Report.json",
+   "report_built": "2026-11-13T18:49:34",
    "rules": 344,
    "specimens_placed": 638
   },
-  "measured_utc": "2026-11-13T18:22:52Z"
+  "measured_utc": "2026-11-13T18:50:35Z"
  },
  "shots": {
-  "taken": [],
+  "taken": [
+   "m-S06-1440",
+   "m-S06-390"
+  ],
   "reused": [
    "ch14-opener",
    "dec-oac-s-14-s05-1440",
@@ -48,8 +51,6 @@
    "m-S04-390",
    "m-S05-1440",
    "m-S05-390",
-   "m-S06-1440",
-   "m-S06-390",
    "m-S07-1440",
    "m-S07-390",
    "m-S08-1440",
@@ -603,10 +604,12 @@
   }
  },
  "kit_builds": {
-  "rebuilt": [],
+  "rebuilt": [
+   "S06",
+   "S42"
+  ],
   "reused": [
    "S05",
-   "S06",
    "S08",
    "S09",
    "S11",
@@ -646,7 +649,6 @@
    "S39",
    "S40",
    "S41",
-   "S42",
    "S43",
    "S44",
    "S45",
@@ -2554,9 +2556,9 @@
    "maker": "B",
    "status": "built",
    "weight": {
-    "placed": 16077,
+    "placed": 16085,
     "frame": 1113,
-    "on_page": 17190,
+    "on_page": 17198,
     "ceiling": null,
     "within": true
    },
@@ -3754,9 +3756,9 @@
    "maker": "A",
    "status": "built",
    "weight": {
-    "placed": 16077,
+    "placed": 16085,
     "frame": 1113,
-    "on_page": 17190,
+    "on_page": 17198,
     "ceiling": null,
     "within": true
    },
@@ -4150,7 +4152,7 @@
   "rows": [
    [
     "Chapter 14 with the chart kit",
-    2228300,
+    2228308,
     2803941
    ],
    [
@@ -4174,7 +4176,7 @@
     15500000
    ]
   ],
-  "per_plate": 13236,
+  "per_plate": 13235,
   "plates_to_come": 13,
   "by_family": {
    "3.1": [
@@ -4208,7 +4210,7 @@
     4
    ],
    "3.7": [
-    51679,
+    51687,
     4,
     1
    ],
@@ -4328,14 +4330,14 @@
     }
    ],
    [
-    17190,
+    17198,
     "S06",
     "14.76",
     "Scenario directions",
     {
-     "placed": 16077,
+     "placed": 16085,
      "frame": 1113,
-     "on_page": 17190,
+     "on_page": 17198,
      "ceiling": null,
      "within": true
     }
@@ -4501,17 +4503,11 @@
   ]
  },
  "tested": {
-  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 18:45 UTC, with exit 0, no warnings, 11,236,252 bytes, 344 rules and 638 examples placed",
-  "Quick guide check": "run by the main session on a copy of the committed build of 11,235,128 bytes, before your answers landed, at 1440 and 390 px, with 694 drawn examples, 3,296 same-page links and no failures; this board’s strict build after them is 11,236,252 bytes, and the main session’s check of the final build replaces this line when it runs",
+  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 18:52 UTC, with exit 0, no warnings, 11,236,260 bytes, 344 rules and 638 examples placed",
+  "Quick guide check": "Waiting for its file",
   "The kit’s build of every chart": "run by this board’s build at the widths the guide draws and at every whole width from 256 px, with 84 of 84 charts passing with no fault and no warnings",
   "The engineer’s checks after your answers landed": "chapter 14’s generator, 87 of 87 files current; the kit’s build of every chart at every whole width from 256 px, 84 of 84 pass and 0 fail; the data check, 125 tables and 0 faults; the map shapes current; the atlas check PASS with 0 failures; the kit’s self-test, every planted fault caught",
   "This board’s own check": "on its last run at 1440, 390 and 360 px, with no failures once the page’s language is left aside, since the host’s wrapper sets it"
- },
- "guide_check": {
-  "file": "[scratch]/phase-3/board-2/main/quick/guide-Guide-Check-Results.json",
-  "failures": [],
-  "pass": true,
-  "page_bytes": 11235128
  },
  "kit_checks": {
   "check_files": 84,
@@ -4520,11 +4516,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-3/board-2/20261113_Board-2.html",
- "html_bytes": 1044392,
+ "html_bytes": 1044139,
  "images": 314,
  "image_bytes": 40707016,
  "folder_files": 318,
- "folder_bytes": 41950781,
+ "folder_bytes": 41949582,
  "largest_image": [
   496612,
   "20261113_Form-S37-Grayscale.webp"
@@ -4536,7 +4532,10 @@
   "count": "ready",
   "spend": "ready",
   "scores": "ready",
-  "tested": "ready",
+  "tested": [
+   "partial",
+   "notes"
+  ],
   "next": "ready"
  },
  "image_sources": {
@@ -5072,17 +5071,10 @@
   "rule-14-98",
   "rule-14-99"
  ],
- "notes": [
-  "this build’s share per plate is 13236; work/build/chart-kit/plate-share.json keeps 13237, as found"
- ],
- "warnings": [
-  "the engineer measured the plates on a 11,236,230-byte build and this board’s strict build is 11,236,252",
-  "S21: the engineer measured 5,697 bytes as placed and this build’s report gives 5,703",
-  "S09: the engineer measured 13,017 bytes as placed and this build’s report gives 13,027",
-  "S10: the engineer measured 7,421 bytes as placed and this build’s report gives 7,427"
- ],
- "seconds": 16,
- "words": 61879,
+ "notes": [],
+ "warnings": [],
+ "seconds": 67,
+ "words": 61831,
  "check": {
   "page": {
    "failures": [

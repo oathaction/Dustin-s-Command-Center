@@ -4,8 +4,8 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. The board builder
 
 ## Status
 
-- 18:46 UTC. **Run 14 clean.** `--reuse --check` exits 0, no failures. S12 now lays out from the data lead's rows and fold (18:42 decisions file): the 1,440 px row, the 1,024 px row, and board 1's plate, the full plates and the phone pair in one closed fold; the item is about 4,500 px tall at 1440, down from 14,220. Sketch 14.124's before and after are the cartographer's like-for-like plates. The cover gives both reading times in one sentence: the five replies about one minute (201 words), every item about 30 minutes (5,952 words, folds closed). Folder 318 files, 41,950,781 bytes. Board check: the page alone fails only axe html-has-lang at 1440, 390 and 360 px; the wrapped copy passes (run 13's target-size failure on S12's entry link is fixed).
-- Four warnings stand: the engineer's plate file was measured on the 11,236,230-byte build, and S09, S10 and S21 gained 6 to 10 bytes since; they clear when the engineer remeasures on the build published as version 9.
+- 18:54 UTC. **Run 15 (`--reuse --check --strict`) exits 0, 0 warnings, no failures**, on this board's strict build of 11,236,260 bytes (the size of the main session's version 9 build) and the engineer's plate file remeasured on that build. Folder 318 files, 41,949,582 bytes. Board check: the page alone fails only axe html-has-lang at 1440, 390 and 360 px; the wrapped copy passes. The quick check line points at `phase-3/board-2/main/v9/quick/guide-Guide-Check-Results.json`, which had not landed, so it prints "Waiting for its file" and the Tested panel reads "Part waiting"; one more run after it lands.
+
 - Waiting: the main session's word that version 9 is published, then `--reuse --check` against it.
 
 ## Contracts
