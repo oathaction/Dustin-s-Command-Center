@@ -1,12 +1,12 @@
 {
- "built": "2026-11-13T18:33:06.228057+00:00",
+ "built": "2026-11-13T18:38:55.755626+00:00",
  "guide_build": {
   "exit": 0,
   "bytes": 11236252,
   "rules": 344,
   "specimens": 638,
   "warnings": 0,
-  "built": "2026-11-13T18:33:16"
+  "built": "2026-11-13T18:39:06"
  },
  "decisions": {
   "file": "work/handoffs/phase-3/20261113_Board-2-Decisions.json",
@@ -1129,7 +1129,7 @@
    "weight": {
     "placed": 5703,
     "frame": 734,
-    "on_page": 6431,
+    "on_page": 6437,
     "ceiling": null,
     "within": true
    },
@@ -1653,7 +1653,7 @@
    "weight": {
     "placed": 13027,
     "frame": 774,
-    "on_page": 13791,
+    "on_page": 13801,
     "ceiling": null,
     "within": true
    },
@@ -1849,7 +1849,7 @@
    "weight": {
     "placed": 7427,
     "frame": 745,
-    "on_page": 8166,
+    "on_page": 8172,
     "ceiling": null,
     "within": true
    },
@@ -4026,7 +4026,7 @@
   "state": "signed off",
   "pictures_waiting": []
  },
- "panel_1_words": 5888,
+ "panel_1_words": 5913,
  "rules": {
   "14.1": {
    "plates": 2,
@@ -4501,7 +4501,7 @@
   ]
  },
  "tested": {
-  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 18:33 UTC, with exit 0, no warnings, 11,236,252 bytes, 344 rules and 638 examples placed",
+  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 18:39 UTC, with exit 0, no warnings, 11,236,252 bytes, 344 rules and 638 examples placed",
   "Quick guide check": "run by the main session on a copy of the committed build of 11,235,128 bytes, before your answers landed, at 1440 and 390 px, with 694 drawn examples, 3,296 same-page links and no failures; this board’s strict build after them is 11,236,252 bytes, and the main session’s check of the final build replaces this line when it runs",
   "The kit’s build of every chart": "run by this board’s build at the widths the guide draws and at every whole width from 256 px, with 84 of 84 charts passing with no fault and no warnings",
   "The engineer’s checks after your answers landed": "chapter 14’s generator, 87 of 87 files current; the kit’s build of every chart at every whole width from 256 px, 84 of 84 pass and 0 fail; the data check, 125 tables and 0 faults; the map shapes current; the atlas check PASS with 0 failures; the kit’s self-test, every planted fault caught",
@@ -4520,11 +4520,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-3/board-2/20261113_Board-2.html",
- "html_bytes": 1040853,
+ "html_bytes": 1041696,
  "images": 312,
  "image_bytes": 40879944,
  "folder_files": 316,
- "folder_bytes": 42120100,
+ "folder_bytes": 42120689,
  "largest_image": [
   496612,
   "20261113_Form-S37-Grayscale.webp"
@@ -5077,13 +5077,10 @@
   "the engineer measured the plates on a 11,236,230-byte build and this board’s strict build is 11,236,252",
   "S21: the engineer measured 5,697 bytes as placed and this build’s report gives 5,703",
   "S09: the engineer measured 13,017 bytes as placed and this build’s report gives 13,027",
-  "S10: the engineer measured 7,421 bytes as placed and this build’s report gives 7,427",
-  "S09: the engineer measured 13,017 bytes as placed and this build’s report gives 13,027",
-  "S10: the engineer measured 7,421 bytes as placed and this build’s report gives 7,427",
-  "S21: the engineer measured 5,697 bytes as placed and this build’s report gives 5,703"
+  "S10: the engineer measured 7,421 bytes as placed and this build’s report gives 7,427"
  ],
  "seconds": 15,
- "words": 61746,
+ "words": 61774,
  "check": {
   "page": {
    "failures": [

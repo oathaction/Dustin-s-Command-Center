@@ -91,6 +91,7 @@ IMAGES = {}
 STATUS = {}
 CACHE = {}
 ANCHORS = set()
+LINKS = []                # every link to the guide preview, one entry a link
 FAILS = []                # B2-M6: what fails the build outright, whatever --strict says
 MEAS = {}                 # spec -> {window: the guide's measure of its figure}
 SPECINFO = {}             # spec -> {'form', 'title', 'rule'}
@@ -182,6 +183,7 @@ def rule_href(rid):
     if ANCHORS and a not in ANCHORS:
         warn(f'Rule {rid}: #{a} is not on today’s strict build')
     LINKED.add(a)
+    LINKS.append(a)
     return f'{C["slots"]["preview_url"]}#{a}'
 
 
@@ -943,9 +945,10 @@ def decide_panel(shots, fshots, kit_out, pages):
         for k, r in enumerate(reps, 1):
             n = r.get('n', k)
             rmap[str(r.get('item'))] = n
-            QUOTED.append(r.get('line', ''))
+            QUOTED.extend([r.get('line', ''), r.get('recommendation', '')])
             aid = re.sub(r"[^A-Za-z0-9-]+", "-", str(r.get('item')))
-            lis.append(f'<li><a href="#d-{esc(aid)}"><span class="rn">{esc(fill(S["reply_tag"], {"n": n}))}</span> <span class="rl">{esc(r.get("line", ""))}</span></a></li>')
+            rr_ = (f'<span class="rr"><span class="k">{esc(S["tag_rec"])}</span> {esc(r["recommendation"])}</span>' if r.get('recommendation') else '')
+            lis.append(f'<li><a href="#d-{esc(aid)}"><span class="rn">{esc(fill(S["reply_tag"], {"n": n}))}</span> <span class="rb"><span class="rl">{esc(r.get("line", ""))}</span>{rr_}</span></a></li>')
         parts.append(f'<h3 class="sub rep-h">{esc(fill(S["replies_h"], {"n": nw(len(reps))}))}</h3><ol class="replies">{"".join(lis)}</ol>')
     else:
         parts.append(pending(S['replies_wait']))
@@ -1642,7 +1645,8 @@ def tested_panel(G, kit_out, all_specs):
             w = S['wait_words']
         rows.append(f'<li><b>{esc(it["label"])}:</b> {esc(w if w.endswith(".") else w + ".")}</li>')
         FIG.setdefault('tested', {})[it['label']] = w
-    FILL['n_links'] = f'{len([c for c in LINKED if c.startswith("rule-")]):,}'
+    FILL['n_links'] = f'{len(LINKS):,}'
+    FILL['n_anchors'] = f'{len(set(LINKS)):,}'
     nots = ''.join(f'<li>{esc(fill(x))}</li>' for x in S['not_tested'])
     body = (f'<p class="intro">{esc(S["lede"])}</p><div class="tcols">'
             f'<div class="tcol"><h3 class="tcol-h">{esc(S["tested_h"])}</h3><ul>{"".join(rows)}</ul></div>'
@@ -1797,7 +1801,10 @@ ol.replies li{border-bottom:var(--oa-border-width-hairline) solid var(--hair)}
 ol.replies a{display:flex;gap:var(--oa-space-200);align-items:baseline;padding:var(--oa-space-150) 0;text-decoration:none;min-height:2.75rem}
 ol.replies a:hover .rl{text-decoration:underline}
 ol.replies .rn{flex:0 0 auto;font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;background:var(--charcoal);color:var(--np);padding:2px 6px;white-space:nowrap}
+ol.replies .rb{display:flex;flex-direction:column;gap:var(--oa-space-050)}
 ol.replies .rl{font:var(--oa-type-ui);font-weight:600}
+ol.replies .rr{font:var(--oa-type-body-small)}
+ol.replies .rr .k{font:var(--oa-type-label);letter-spacing:var(--oa-type-label-letter-spacing);text-transform:uppercase;color:var(--ink-2);margin-right:var(--oa-space-100)}
 .tag.rn{background:transparent;color:var(--ink);border-width:var(--oa-border-width-rule)}
 .tag.done{background:var(--charcoal);color:var(--np);border-color:var(--charcoal)}
 details.done-g{margin-top:var(--oa-space-1000);border-top:var(--oa-border-width-bar) solid var(--charcoal)}

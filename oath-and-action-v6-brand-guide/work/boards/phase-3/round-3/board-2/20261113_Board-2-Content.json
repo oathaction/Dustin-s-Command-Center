@@ -378,7 +378,7 @@
    ],
    "not_tested": [
     "The guide check itself: the main session runs it, and this board’s build never does.",
-    "The {n_links} links to the guide preview, which point at version 9: each anchor was checked on this board’s strict build only, since version 9 is not yet published.",
+    "The {n_links} links to the guide preview, to {n_anchors} entries, which point at version 9: each anchor was checked on this board’s strict build only, since version 9 is not yet published.",
     "The four scripts for real devices, which stay not tested.",
     "The board in Safari or Firefox, on a 2x screen, printed, or as the host shows it once published; a copy wrapped as the host wraps it stands in.",
     "Every picture by eye: the build checks each one’s size and source, and the builder looked at a sample.",

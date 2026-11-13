@@ -4,12 +4,9 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. The board builder
 
 ## Status
 
-- 17:52 UTC. **Built on today's files; waiting for the final build.** `python3 -I work/build/scripts/phase-3/board_2_build.py --reuse --check` exits 0 (run 6, 17:50 UTC). Page `work/boards/phase-3/round-3/board-2/20261113_Board-2.html`, 987 kB, about 57,000 words; folder 314 files, 41,813,958 bytes (310 composed pictures, lossless WebP, the largest 492,518 bytes). Seven of eight panels Ready; Scores waits only for the creative director's score of this board. Board check: the page itself fails only axe html-has-lang at 1440, 390 and 360 px (no `<html>` tag by contract); the copy wrapped as the host wraps it passes at all three. No sideways page scroll at 1440 or 390 px.
-- Reads the data lead's decisions file as signed off (17:35 UTC; 30 items in four groups, two open questions), the cartographer's board-only pictures, and the engineer's A6 results for the Tested panel.
-- Four warnings stand, none the builder's to fix: (1) the quick guide check's results file is the main session's run on the 11,235,128-byte committed build, and today's strict build is 11,236,319 after Part A; it clears when the main session names the final check's results file. (2) Decision codes in the decisions file's words on the board's face (D3-1515, D3-689, DR-256, DR-64), for the editor. (3, 4) S04's and S08's desk drawings differ from board 1's pixel for pixel and the board 1 group does not name them, for the data lead.
-- **For the editor:** besides the codes, the data lead's view on S12 repeats the recommendation word for word; the board's own words are in the content file, ready for your pass. File paths in the decisions file's facts now move to the panel's reference line by themselves.
-- **For the data lead:** S04 (the gridlines now break round the value labels and sit 1 px lower) and S08 differ from board 1 at 1,440 px; pictures `scratch/builder/cmp-S04-old.png`, `-new.png`, and the same for S08. Either name them in the board 1 group's placement rows or tell me they are not changes worth listing, and I drop the warning for them by name.
-- Next: when the main session says the final build is ready and preview version 9 is published, `--reuse --check`, then the creative director's and editor's fix round, then `--check --strict`.
+- 18:40 UTC. **Fix round built; the board reruns clean.** `--reuse --check` exits 0 with no failure. Panel 1 opens with the data lead's five replies, each with its recommendation and a link, then the reply line; the five carry "Reply 1" to "Reply 5"; the answered items sit in one closed "Done" fold; every forms item shows panel 2's Newsprint picture, linked. One byte measure from the engineer's file (S73: 14,059 bytes on the page against 14,106). Counts name their base (108; 97). Folder 316 files, about 42.1 MB. Board check: the page alone fails only axe html-has-lang at 1440, 390 and 360 px; the wrapped copy passes.
+- **Waiting on others:** S12's two rows and fold (B2-M2) and the like-for-like 14.124 pair (B2-S2) need the data lead to name the cartographer's PNGs with `row` and `fold` in the decisions file (request under "For the data lead (18:33 UTC)"); the builder's layout is ready. The engineer's plate file was measured on the 11,236,230-byte build; S09, S10 and S21 gained 6 to 10 bytes since (the editor's curled quotes), and the board warns until the engineer remeasures on the final build. The guide preview is not yet version 9.
+- Panel 1 holds 5,913 words with its folds closed; the cover says so, about 30 minutes at 200 words a minute (B2-M1).
 
 ## Contracts
 
@@ -111,6 +108,26 @@ python3 -I work/build/scripts/phase-3/board_2_build.py --reuse --check
 - D3-xxx | The composed pictures are lossless WebP, pixel for pixel the captures (checked by decoding four against their PNGs), not PNG | The first run's PNGs came to 124.55 MB for the folder, past the brief's 120 MB; lossless WebP holds the same pixels at about a fifth of the bytes for color pictures and a half for gray, and it is a standard web image type
 - D3-xxx | The page table is the guide's own table from the strict build, with its caption, its classes and data attributes left out, in a fold under each chart | Live text as printed, with no second source to drift
 - D3-xxx | The strict build's rewrite of `plate-share.json` is put back after each run when the file carries this build's own timestamp | The board's build is a scratch build; the file belongs to the guide's own builds (D3-1500), and this builder writes only its two scripts, the board folder, its notes and scratch
+
+## Fix round
+
+Under `work/handoffs/phase-3/20261113_Board-2-Fix-Brief.md` (calls 1 to 8) and the creative director's review, from 18:19 UTC.
+
+- D3-xxx | Panel 1 opens with the decisions file's `replies`, each line with its recommendation and a same-page link, then the reply line; the group navigation goes, since the replies link to their items and groups | B2-M1: board 1 named its answers, recommendations and reply line in its first screen
+- D3-xxx | The answered group folds closed under one heading with a "Done" chip and its count; an answered item whose recommendation reads "Done." prints no "Recommended" line | B2-M1 and B2-S5
+- D3-xxx | A decision item's table of more than six rows folds closed under "The N places, line by line" | B2-M1's long "Answered" tables; the moves and plan-changes lists fold the same way, which shortens panel 1 without hiding a decision
+- D3-xxx | The cover's minutes line counts panel 1's words with every fold closed (summaries kept, reference lines left out) and divides by 200, rounded | Call 1: measured by word count at 200 a minute
+- D3-xxx | Pictures may carry `row` (side by side), `fold` (one closed fold at the item's end) and an `element` with a selector inside it | B2-M2's two rows and fold, written by the data lead in its own file
+- D3-xxx | A phone picture's label gains its drawing width, read from the guide's measure or board 1's check file, unless the label names one | B2-M3: every phone picture labeled by its drawing width
+- D3-xxx | A picture's alt text is the data lead's `alt`, else the label, the chart's form and id, where it comes from, the window and the chart's title | B2-S3: say what each picture shows
+- D3-xxx | An item about charts with no pictures of its own shows panel 2's Newsprint picture of each chart, the same file, under its recommendation with a link to the form | B2-M7; an item covering two charts (S54-S55) shows both
+- D3-xxx | Every weight is the build report's bytes as placed plus the plate's frame and what the page adds inside it, from the engineer's `20261113_Plate-Bytes.json`; the ceiling prints where the engineer's file sets it on that whole measure (round 3, 14,106) | B2-M4 and call 4; the kit's 15,000 hard limit is not the ceiling that binds (the data lead's sign-off)
+- D3-xxx | The page sum uses this build's bytes as placed with the engineer's frame, and warns where the engineer's as-placed figure differs | The frame does not move when a chart's words do; the warning says when to remeasure
+- D3-xxx | A board 1 drawing that differs from board 1's and panel 1 does not name, and a "No" in the election table whose test was not applied, fail the build (exit 1, page still written); a test not applied prints "Not applied" | B2-M6 and call 6
+- D3-xxx | The count captions name their base from the decisions file: 108 examples (97 built and round 4's 11 as planned) by topic and by state; the 17 of the 97 built for election data | B2-S7 and the data lead's sign-off
+- D3-xxx | The quick check line says it ran on the committed build before the answers landed, with this board's build beside it; Not tested counts every link to the preview and the entries they reach | B2-S6
+- D3-xxx | A chart the guide shows in a scrolling frame is labeled "the whole N px drawing, which the guide shows in a frame that scrolls" | B2-S8: S12's picture is the drawing the frame scrolls through
+- D3-xxx | Under 760 px a side-by-side chart frame opens at its right end, on the phone drawing (`direction: rtl` on the frame), with a line above it saying so; composed Charcoal pictures take a 16 px Charcoal margin | B2-S12; one picture a ground keeps the folder near 300 files, where separate phone pictures would add 168
 
 ## Tested
 
