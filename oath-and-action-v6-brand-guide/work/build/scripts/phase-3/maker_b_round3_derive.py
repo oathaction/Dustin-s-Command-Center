@@ -2,8 +2,10 @@
 
     python3 -I work/build/scripts/phase-3/maker_b_round3_derive.py [--check] [--figures]
 
-Reads frozen files in work/build/data/ and writes one derived table with its sidecar (contract C1, R2-2):
+Reads frozen files in work/build/data/ and writes two derived tables with their sidecars (contract C1, R2-2):
 
+- fec-jfc-transfers-2024-by-node: every payment row of fec-jfc-transfers-2024 (P7-216, RL-3) with the node S73
+  draws it in, so the page's table prints one row a node and the CSV export every row (D3-1097)
 - govinfo-snap-application-path: the steps of 7 CFR 273.2 in the order a screen reader takes them, each with the step
   that follows it named (contract R3-6: a journey map's table lists its steps in reading order with each link named),
   from govinfo-snap-application-steps (P7-208). The main path's steps run in their order and the last says the path
@@ -136,6 +138,46 @@ def snap_path():
         'derivation': 'The rows of ' + src + ' in reading order: the main path by its order, then the branch. next_step names the main step that follows each step (the first also names the branch, with the condition the branch summary opens with); the last step of the path says it ends, and the branch’s next step is the postponed proof, due by the second or third month of benefits, with its interview inside the 7 days (7 CFR 273.2(i)(3)(iii) and (i)(4)(iii)(A), as the research lead read them November 13, 2026). path_words puts the path column in words. No other value changes.',
     }
     write('govinfo-snap-application-path', cols, out, side)
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# S73: each payment row with the node the drawing folds it into, so the page's table prints one row a node and the CSV
+# export every row (the main session's D3-1097 on weight; the data lead's ruling RL-3a on what draws)
+# ---------------------------------------------------------------------------------------------------------------
+def jfc_nodes():
+    src = 'fec-jfc-transfers-2024'
+    m = meta(src)
+    rows = read(src)
+    states = [r for r in rows if r['jfc_name'] == 'HARRIS VICTORY FUND' and r['amount_lines'] == '22' and r['recipient_type'] == 'Party - Qualified' and r['recipient_id'] != 'C00010603']
+    named = {'C00703975': (1, 'Harris for President, the campaign'), 'C00010603': (2, 'Democratic National Committee'),
+             'C00828541': (4, 'Donald J. Trump for President 2024, the campaign'), 'C00003418': (5, 'Republican National Committee')}
+    out = []
+    for r in rows:
+        if r['amount_lines'] == '28C':
+            o, nd = 6, r['recipient_name_2024_election'] + ', a refund of its own contribution, not drawn'
+        elif r['recipient_id'] in named:
+            o, nd = named[r['recipient_id']]
+        elif r in states:
+            o, nd = 3, '%d state party committees, the District of Columbia’s included' % len(states)
+        else:
+            FAULTS.append('S73: a line 22 row the drawing does not fold: ' + r['recipient_id'])
+            continue
+        out.append(dict(r, node_order=str(o), node=nd))
+    out.sort(key=lambda r: (int(r['node_order']), -float(r['amount'])))
+    cols = list(rows[0].keys()) + ['node_order', 'node']
+    side = dict(m)
+    side.pop('source_line_variants', None)
+    side.update({
+        'file': 'fec-jfc-transfers-2024-by-node.csv',
+        'kind': 'derived',
+        'title_or_table': m['title_or_table'] + ', each payment with the node the network diagram draws it in',
+        'columns': dict(m['columns'], node_order={'type': 'integer', 'description': 'the order of the node in the drawing; 6 for a refund, which does not draw'},
+                        node={'type': 'text', 'description': 'the node the drawing folds the payment into, or the refund it is, in words'}),
+        'printed_source_line': m['source_line_variants']['transfers_and_refunds'],
+        'derived_from': [src + '.csv'],
+        'derivation': 'The rows of ' + src + ' unchanged, with two columns added: node names the node the network diagram draws each line 22 payment in (each nominee’s campaign and national party committee alone, and the Harris Victory Fund’s 51 state party committees, DC’s included, as one node), or marks a line 28C refund, which does not draw; node_order orders the nodes. Rows sorted by node, then by amount, largest first.',
+    })
+    write('fec-jfc-transfers-2024-by-node', cols, out, side)
 
 
 # ---------------------------------------------------------------------------------------------------------------
@@ -306,6 +348,7 @@ if __name__ == '__main__':
     if '--figures' in sys.argv:
         sys.exit(1 if figures() else 0)
     snap_path()
+    jfc_nodes()
     if FAULTS:
         print('\n'.join('FAULT ' + f for f in FAULTS))
         sys.exit(1)

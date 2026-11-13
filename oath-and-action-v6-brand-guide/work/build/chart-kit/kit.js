@@ -1104,20 +1104,22 @@
     return K.fmt(v, col.format);
   };
   // R3-3 (round 3, DR-249): a table grouped by a column, for a chart of thousands of rows (a county map): table.group =
-  // {by: a column, sort: 'key' (else first seen), columns: [{label, agg, field, format, words, state_name, row_header,
+  // {by: a column, or a list of columns whose values join with ", " (A-E1), sort: 'key' (else first seen, after the spec's sort), columns: [{label, agg, field, format, words, state_name, row_header,
   // from, to, name}]}. agg: 'key' (the group's value, its words, or with state_name the state's name from the tile grid),
   // 'count' (rows in the group), 'count_in' (rows whose field is at least from and under to; either may be left out),
-  // 'count_eq' (rows whose field equals value, or any value of a list: C-E1), 'min',
+  // 'count_eq' (rows whose field equals value, or any value of a list: C-E1), 'count_set' (rows whose field is not
+  // empty), 'list' (the field's values joined with "; "), 'min',
   // 'max', 'median', 'sum', 'first', and 'min_name' or 'max_name' (the name column of the row with the least or most of
   // field). The page prints one row a group; the island carries every row the drawing reads, and the CSV export every row
   // (table.columns names them). Its rows are not read back from the table.
+  // A-E1 (maker A): by may be a list of columns; the group's key is their values joined with ", " ("Senate, D")
   K.table_groups = function (spec, rows) {
-    var g = spec.table.group, keys = [], map = {};
-    rows.forEach(function (r) { var k = String(r[g.by]); if (!(k in map)) { map[k] = []; keys.push(k); } map[k].push(r); });
+    var g = spec.table.group, keys = [], map = {}, by = [].concat(g.by);
+    rows.forEach(function (r) { var k = by.map(function (f) { return String(r[f]); }).join(', '); if (!(k in map)) { map[k] = []; keys.push(k); } map[k].push(r); });
     if (g.sort === 'key') keys.sort();
     return keys.map(function (k) { return { key: k, rows: map[k] }; });
   };
-  var GROUP_NUM = /^(count|count_in|count_eq|min|max|median|sum)$/;
+  var GROUP_NUM = /^(count|count_in|count_eq|count_set|min|max|median|sum)$/;
   K.group_cell = function (col, grp) {
     var f = col.field, rs = grp.rows, ok = function (v) { return v !== null && v !== undefined && v !== '' && isFinite(+v); };
     var vals = rs.filter(function (r) { return ok(r[f]); });
@@ -1128,6 +1130,10 @@
       return col.words && col.words[grp.key] !== undefined ? col.words[grp.key] : grp.key;
     }
     if (a === 'count') return K.fmt(rs.length, col.format || 'integer');
+    // A-E2 (maker A): 'list', the field's non-empty values in the group in row order joined with "; "; 'count_set', the
+    // rows whose field is not empty
+    if (a === 'list') return rs.map(function (r) { return r[f]; }).filter(function (v) { return v !== null && v !== undefined && v !== ''; }).map(String).join('; ') || col.empty || '';
+    if (a === 'count_set') return K.fmt(rs.filter(function (r) { return r[f] !== null && r[f] !== undefined && r[f] !== ''; }).length, col.format || 'integer');
     // C-E1 (cartographer): rows whose field equals value (or any of a list of values)
     if (a === 'count_eq') { var want = [].concat(col.value).map(String); return K.fmt(rs.filter(function (r) { return want.indexOf(String(r[f])) >= 0; }).length, col.format || 'integer'); }
     if (a === 'count_in') return K.fmt(nums.filter(function (v) { return (col.from === undefined || col.from === null || v >= col.from) && (col.to === undefined || col.to === null || v < col.to); }).length, col.format || 'integer');

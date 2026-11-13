@@ -1033,6 +1033,13 @@ async function self_test() {
       pass(/<tr><th scope="row" class="t">Alabama<\/th><td>1<\/td><td>1<\/td><td>0<\/td><td>40\.0<\/td><td class="t">AL-01<\/td><\/tr><tr><th scope="row" class="t">Michigan<\/th><td>2<\/td><td>1<\/td><td>1<\/td><td>3\.2<\/td><td class="t">MI-01<\/td><\/tr>/.test(h)
         && K.table_rows(sp, rows).rows.length === 3 && K.rows_from_table(null, sp, { csv: 'g,m\nMI-01,3.2\n', columns: { g: { type: 'text' }, m: { type: 'number' } } }).length === 1,
         'R3-3: a grouped table prints a row a group with its counts (count_eq: C-E1) and reads its rows from the island' + (/Alabama/.test(h) ? '' : ': ' + h.slice(0, 200))); }
+    { // A-E1 and A-E2: a group of two columns, and a list and a count of the set
+      const sp = { id: 'T', table: { columns: [{ field: 'm', label: 'M' }], group: { by: ['ch', 'p'], columns: [{ label: 'Group', agg: 'key', words: { 'Senate, D': 'Senate Democrats' } },
+        { label: 'Yes', agg: 'count_eq', field: 'v', value: 'Yea' }, { label: 'Named', agg: 'list', field: 'm' }, { label: 'With a seat', agg: 'count_set', field: 's' }] } } };
+      const rows = [{ ch: 'Senate', p: 'D', v: 'Yea', m: 'A', s: '1' }, { ch: 'Senate', p: 'D', v: 'Nay', m: 'B', s: '' }, { ch: 'House', p: 'D', v: 'Yea', m: 'C', s: '2' }];
+      const h = K.table_html(sp, rows, { lean: true });
+      pass(/>Senate Democrats<\/th><td>1<\/td><td class="t">A; B<\/td><td>1<\/td>/.test(h) && />House, D<\/th><td>1<\/td><td class="t">C<\/td><td>1<\/td>/.test(h),
+        'A-E1 and A-E2: a table grouped by two columns, with a list and a count of the set' + (/Senate Democrats/.test(h) ? '' : ': ' + h.slice(0, 300))); }
     { // R3-3: a one-column island keeps a row whose value is empty
       const back = K.parse_csv(C.to_csv([{ v: 1 }, { v: null }, { v: 3 }], ['v']));
       pass(back.length === 3 && back[1].v === '', 'R3-3: a one-column CSV keeps its empty cells as rows'); }

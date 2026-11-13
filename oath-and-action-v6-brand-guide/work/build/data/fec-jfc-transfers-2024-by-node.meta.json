@@ -1,0 +1,113 @@
+{
+ "file": "fec-jfc-transfers-2024-by-node.csv",
+ "kind": "derived",
+ "publisher": "Federal Election Commission",
+ "title_or_table": "Schedule B disbursements of each nominee’s joint fundraising committee to other committees, aggregated by recipient, each payment with the node the network diagram draws it in",
+ "table_id": "OpenFEC /schedules/schedule_b/by_recipient_id/ and /schedules/schedule_b/, 2024 cycle",
+ "url": [
+  "https://api.open.fec.gov/v1/schedules/schedule_b/by_recipient_id/?recipient_id=C00703975&cycle=2024",
+  "https://api.open.fec.gov/v1/schedules/schedule_b/by_recipient_id/?recipient_id=C00828541&cycle=2024",
+  "https://api.open.fec.gov/v1/schedules/schedule_b/by_recipient_id/?committee_id=C00744946&cycle=2024",
+  "https://api.open.fec.gov/v1/schedules/schedule_b/by_recipient_id/?committee_id=C00873893&cycle=2024",
+  "https://api.open.fec.gov/v1/schedules/schedule_b/?committee_id={jfc}&recipient_committee_id={recipient}&two_year_transaction_period=2024"
+ ],
+ "observation_period": "2023 to 2024 election cycle",
+ "geography": "United States",
+ "universe_or_base": "For each major-party nominee, the joint fundraising committee that transferred the most to the nominee’s principal campaign committee in the 2024 cycle, and every committee it paid",
+ "unit": "dollars; transactions",
+ "date_retrieved": "2026-11-12",
+ "vintage": "FEC processed filings as the API served them on November 12, 2026",
+ "qualification": "Amounts and transactions are the FEC’s aggregate of Schedule B by recipient for the cycle, which sums line 22 transfers to other committees (55 rows) and, for two committees, a line 28C refund of their own contribution (Progressive Turnout Project, $80,000; Operating Engineers Local 478, $1,000). It leaves out line 21B operating expenditures paid to three of the same committees, which line_21b_amount gives: $11,993,565.82 to Harris’s campaign, $15,146,635.19 to the DNC and $1,501.00 to Kentucky’s party. A joint fundraising committee splits contributions among its participants under its agreement, so a transfer is not a gift from the committee’s own funds. Each nominee had more than one joint fundraising committee; the rule above picks one for each, read the same way. Names: recipient_name_2024_election gives each committee the name its payer wrote just before the election, \"HARRIS FOR PRESIDENT\" (called \"BIDEN FOR PRESIDENT\" on its 14 payments to July 2024) and \"DONALD J. TRUMP FOR PRESIDENT 2024, INC.\"; both have since become PACs.",
+ "columns": {
+  "nominee": {
+   "type": "text",
+   "description": "the presidential nominee"
+  },
+  "jfc_id": {
+   "type": "id",
+   "description": "FEC ID of the joint fundraising committee"
+  },
+  "jfc_name": {
+   "type": "text",
+   "description": "its name"
+  },
+  "recipient_id": {
+   "type": "id",
+   "description": "FEC ID of the committee paid"
+  },
+  "recipient_name": {
+   "type": "text",
+   "description": "its name as the FEC’s aggregate by recipient gave it on November 12, 2026: mostly the committee’s name today, but Harris’s campaign under its 2024 name and Trump’s under its name today; print recipient_name_2024_election"
+  },
+  "recipient_type": {
+   "type": "category",
+   "description": "committee type as the FEC lists it today; both campaign committees have since become PACs, and is_nominee_campaign marks them"
+  },
+  "recipient_state": {
+   "type": "code",
+   "description": "committee’s state, if any"
+  },
+  "amount": {
+   "type": "number",
+   "description": "total paid in the cycle",
+   "unit": "dollars"
+  },
+  "transactions": {
+   "type": "integer",
+   "description": "itemized transactions"
+  },
+  "schedule_b_lines": {
+   "type": "text",
+   "description": "every Schedule B line the itemized payments to this committee use, line 21B included; amount sums only the line in amount_lines"
+  },
+  "is_nominee_campaign": {
+   "type": "category",
+   "description": "yes for the nominee’s principal campaign committee"
+  },
+  "recipient_name_2024_election": {
+   "type": "text",
+   "description": "the name the joint fundraising committee wrote for this recipient on its last itemized payment dated on or before November 5, 2024 (its first payment, where none came before), read the same way for every recipient"
+  },
+  "recipient_names_itemized": {
+   "type": "text",
+   "description": "every name the itemized payments give this recipient, each with its row count and first and last date"
+  },
+  "amount_lines": {
+   "type": "category",
+   "description": "the Schedule B line amount and transactions sum: 22, transfers to other committees, or 28C, a refund of a committee’s contribution"
+  },
+  "line_21b_amount": {
+   "type": "number",
+   "unit": "dollars",
+   "description": "line 21B operating expenditures paid to the same committee in the cycle, not in amount"
+  },
+  "line_21b_transactions": {
+   "type": "integer",
+   "description": "itemized line 21B payments, not in transactions"
+  },
+  "node_order": {
+   "type": "integer",
+   "description": "the order of the node in the drawing; 6 for a refund, which does not draw"
+  },
+  "node": {
+   "type": "text",
+   "description": "the node the drawing folds the payment into, or the refund it is, in words"
+  }
+ },
+ "printed_source_line": "Source: Federal Election Commission, Schedule B transfers and refunds to other committees (lines 22 and 28C) of the Harris Victory Fund and the Trump National Committee JFC, 2023 to 2024 cycle, United States. Retrieved November 12 and 13, 2026. Each is the nominee’s joint fundraising committee that sent the most to the campaign; committees named as their payer wrote them before the November 5, 2024 election.",
+ "ledger_row": "P7-216",
+ "domain": "D03",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "fetch-log.tsv": "see the download folder"
+ },
+ "notes": [
+  "{\"Kamala D. Harris\": {\"principal_committee\": \"C00703975\", \"principal_name_in_2024\": \"Harris for President\", \"principal_name_now\": \"FIGHT FOR THE PEOPLE PAC\", \"jfc\": \"C00744946\", \"jfc_name\": \"HARRIS VICTORY FUND\", \"to_campaign\": 528730999.7, \"other_jfcs\": [[\"HARRIS ACTION FUND\", 4900000.0], [\"HARRIS BALDWIN VICTORY FUND\", 35265.62]]}, \"Donald J. Trump\": {\"principal_committee\": \"C00828541\", \"principal_name_in_2024\": \"Donald J. Trump for President 2024\", \"principal_name_now\": \"NEVER SURRENDER, INC.\", \"jfc\": \"C00873893\", \"jfc_name\": \"TRUMP NATIONAL COMMITTEE JFC, INC.\", \"to_campaign\": 246821872.35, \"other_jfcs\": [[\"TRUMP SAVE AMERICA JOINT FUNDRAISING COMMITTEE\", 134018942.92], [\"TRUMP 47 COMMITTEE, INC.\", 26908283.76]]}}",
+  "Schedule B lines in the itemized payments: 22 (629 rows), 21B (40) and 28C (2); amount and transactions sum line 22, or 28C for the two refunds (RL-3, read November 13, 2026: the aggregate today equals all 57 frozen rows, and each row’s line 22 or 28C payments sum to it).",
+  "The principal campaign committees have since changed name and type, as the FEC lists them today (principal_name_now in the note above). The FEC’s committee history for the 2024 cycle already lists Trump’s as \"NEVER SURRENDER, INC.\", a leadership PAC, since it changed before the cycle ended, so the names in the cycle come from the itemized payments instead (RL-3)."
+ ],
+ "derived_from": [
+  "fec-jfc-transfers-2024.csv"
+ ],
+ "derivation": "The rows of fec-jfc-transfers-2024 unchanged, with two columns added: node names the node the network diagram draws each line 22 payment in (each nominee’s campaign and national party committee alone, and the Harris Victory Fund’s 51 state party committees, DC’s included, as one node), or marks a line 28C refund, which does not draw; node_order orders the nodes. Rows sorted by node, then by amount, largest first."
+}

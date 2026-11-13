@@ -192,6 +192,12 @@ function check_spec(K, spec, opts) {
     const tb = spec.table || {};
     (tb.columns || []).forEach(c => { if (!(c.field in cols)) f.push(`table: column "${c.field}" is not in the data`); });
     if (tb.pivot) ['row', 'column', 'value'].forEach(k => { if (!(tb.pivot[k] in cols)) f.push(`table.pivot.${k}: "${tb.pivot[k]}" is not in the data`); });
+    // R3-3: a grouped table's columns and the columns it groups by are in the data
+    if (tb.group) {
+      [].concat(tb.group.by).forEach(b => { if (!(b in cols)) f.push(`table.group.by: "${b}" is not in the data`); });
+      (tb.group.columns || []).forEach(c => { if (c.field !== undefined && !(c.field in cols)) f.push(`table.group: column "${c.field}" is not in the data`); });
+      if (!(tb.group.columns || []).length) f.push('table.group: no columns; the page prints a row a group');
+    }
     if (!tb.columns || !tb.columns.length) f.push('table: no columns; every chart carries its table equivalent');
     // the source line against the sidecar (H04)
     if (datasets.length === 1) {
