@@ -9,12 +9,12 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the Constitution, statutes and official pages behind each route, read on November 11 and 12, 2026; route names and our count of reforms from the atlas, as of October 15, 2026",
-  "title": "The eleven routes a reform can take run from a city ordinance to a constitutional amendment, and 38 reforms list a federal statute, more than any other route.",
-  "measure_line": "The eleven routes to change in our systems atlas, as of October 15, 2026, with what the Constitution, statutes and official pages require of each, as read November 11 and 12, 2026, and how many of the atlas’s reform profiles list each route",
+  "title": "The eleven routes a reform can take run from a city ordinance to a constitutional amendment, and 38 reforms list a federal statute, more than any other route.",
+  "measure_line": "The eleven routes to change in our systems atlas, with what the Constitution, statutes and official pages require of each and how many of the atlas’s reform profiles list each route",
   "notes": [
     "A route’s count is the number of the atlas’s reform profiles that list it; each reform’s own profile in the atlas rates its chances.",
     "The state and local rows name the examples read, such as California’s signature counts; other states differ.",
-    "A federal statute, the route the most reforms list, needs 60 senators to end debate on most bills in the Senate."
+    "A federal statute is the route the most reforms list, and in the Senate most bills need 60 senators to end debate before the vote to pass them."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,

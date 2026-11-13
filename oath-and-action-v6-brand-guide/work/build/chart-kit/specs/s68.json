@@ -10,7 +10,7 @@
   "evidence_label": "Finding",
   "grade_line": "Checked by the atlas: its pathway record on electric and utility bills, as of October 15, 2026",
   "title": "Six of the eight bodies behind an electric bill can change the rules behind it, and two, the regional grid operators and the investor-owned utility, apply them.",
-  "measure_line": "The eight decision makers our systems atlas lists for “Why is my electric bill going up?”, by level and by whether each can change the rules or applies them, as of October 15, 2026",
+  "measure_line": "The eight decision makers our systems atlas lists for “Why is my electric bill going up?”, by level and by whether each can change the rules or applies them",
   "notes": [
     "A line ending in an open diamond is a line of authority, one body setting or approving another’s rules as the atlas records it: the legislature writes the laws that define the commission’s powers, and the Federal Energy Regulatory Commission approves the rule changes grid operators file. It shows who decides and carries no sign for which way the decision goes.",
     "The atlas lists Congress and the Department of Health and Human Services (HHS) for the Low Income Home Energy Assistance Program (LIHEAP): “Congress appropriates LIHEAP funds and amends the Federal Power Act; HHS distributes LIHEAP grants to states, tribes and territories.”"
@@ -19,7 +19,7 @@
   "illustrative": false,
   "alt": "Eight bodies behind an electric bill, by level. Six can change the rules: Congress and the Department of Health and Human Services, and the Federal Energy Regulatory Commission, at the federal level; the state legislature and the state public utility commission; a city council or municipal utility board; and an electric cooperative’s board. Two apply them: PJM Interconnection and other regional grid operators, whose rule changes the Federal Energy Regulatory Commission approves, and the investor-owned utility. Two lines of authority, each ending in an open diamond, run from the legislature to the commission, whose powers it sets, and from the Federal Energy Regulatory Commission to the grid operators, whose rule changes it approves.",
   "table": {
-    "caption": "Who decides an electric bill, as our systems atlas lists them, in the drawing’s order, as of October 15, 2026",
+    "caption": "Who decides an electric bill, as our systems atlas lists them, in the drawing’s order",
     "columns": [
       {
         "field": "who",

@@ -8,11 +8,11 @@
   "reader_question": "Which federal court hears a case from my state, and where does an appeal go?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: the text of title 28 of the U.S. Code, as in force on November 12, 2026, with the territorial courts from title 48",
+  "grade_line": "Documented: the text of title 28 of the U.S. Code, as in force on November 12, 2026, with the territorial courts from title 48",
   "title": "The 94 district courts try federal cases, an appeal goes to the court of appeals for the region, and the Supreme Court sits over all 13 courts of appeals.",
   "measure_line": "The Supreme Court, the 13 courts of appeals and the 94 district courts, with the judgeships the law authorizes for each, as the 2024 edition of the U.S. Code sets them, retrieved November 12, 2026",
   "notes": [
-    "The law authorizes 179 judgeships on the courts of appeals, 673 in the district courts of the states, DC and Puerto Rico, a few of them shared between districts of one state, and four in the territorial courts of Guam, the Northern Mariana Islands and the Virgin Islands, whose judges serve 10-year terms. Judges of the Article III courts, the courts the Constitution’s Article III sets up, hold their seats for life.",
+    "The law authorizes 179 judgeships on the courts of appeals, 673 in the district courts of the states, DC and Puerto Rico, a few of them shared between districts of one state, and four in the territorial courts of Guam, the Northern Mariana Islands and the Virgin Islands, whose judges serve 10-year terms. Judges of the Article III courts, the courts the Constitution’s Article III sets up, hold their seats for life.",
     "Judgeships count the seats the law creates, filled or vacant, and leave out senior judges."
   ],
   "credit": "Chart: Oath & Action",
@@ -115,7 +115,7 @@
     }
   },
   "chart_notes": [
-    "Each court of appeals’ box gives its own judgeships and the sum of its district courts’ judgeships, and each row under it names a state or territory with its district courts and their judgeships. A shaded row is a territorial court, not an Article III court."
+    "Each court of appeals’ box gives its own judgeships and the sum of its district courts’ judgeships, and each row under it names a state or territory with its district courts and their judgeships. A shaded row is a territorial court, not an Article III court."
   ],
   "phone": "differs",
   "phone_note": "Where two columns of 210 px do not fit, the courts of appeals run in one column down the page.",

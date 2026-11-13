@@ -182,8 +182,9 @@ def grid():
 
 # ---- figure checks ---------------------------------------------------------------------------------------------------
 def spec(sid):
+    # no-break spaces (BC-S12) read as spaces, so a check's phrase matches the words as a reader hears them
     with open(os.path.join(SPECS, sid + '.json'), encoding='utf-8') as fh:
-        return json.load(fh)
+        return json.loads(fh.read().replace('\u00a0', ' '))
 
 
 def words_of(s):
@@ -274,7 +275,7 @@ def figures():
     s, rows = spec('s71'), read_csv('usgov-v7-route-grid')
     n = {r['route']: int(r['route_entries']) for r in rows}
     check('S71', len(rows) == 11 and n['FS'] == 38 and max(n.values()) == 38 and '38' in s['title'], 'federal statute listed most, 38')
-    check('S71', '60 senators to end debate on most bills' in [r for r in rows if r['route'] == 'FS'][0]['what_it_takes'] and '60 senators to end debate on most bills' in s['notes'][2], '60 senators to end debate (note 3)')
+    check('S71', '60 senators to end debate on most bills' in [r for r in rows if r['route'] == 'FS'][0]['what_it_takes'] and 'most bills need 60 senators to end debate' in s['notes'][2], '60 senators to end debate (note 3)')
     want = {'SS': 29, 'LOC': 15, 'BI': 11, 'FA': 7, 'CRT': 7, 'FR': 6, 'ENF': 5, 'CIV': 4, 'AV': 3, 'IC': 1}
     check('S71', all(n[k] == v for k, v in want.items()), 'every route count in the alt')
     check('S71', '546,651' in [r for r in rows if r['route'] == 'BI'][0]['what_it_takes'], "California's signature count behind note 2")

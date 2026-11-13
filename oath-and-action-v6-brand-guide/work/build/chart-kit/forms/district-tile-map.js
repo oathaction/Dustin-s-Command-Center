@@ -12,7 +12,8 @@
  * mark_labels ({dot, ring}), ghost_label, small ({dot, ring}: the note's words where marks drop; {seats} fills),
  * codes_note (words under the map naming states whose code found no room in either panel; {codes} fills), at_large
  * (words for an at-large seat in the note's lists, {state} the state's name: "Alaska at large", so a two-letter code
- * stands for a state only; C-S6, round 3 fix pass). */
+ * stands for a state only; C-S6, round 3 fix pass), ghost_ink (the ghost outline's role, default 'ghost'; BC-S4). At a
+ * desk a state whose block leaves its code no room takes it beside on a leader (BC-S5); the grid sits 2 px in. */
 (function (K) {
   'use strict';
   K.register_chart({
@@ -28,7 +29,9 @@
         cols = Math.max(cols, r[ecol] + 1); nrows = Math.max(nrows, r[erow] + 1); at[r[es] + '|' + r[ed]] = 1;
         return { r: r, col: r[ecol], row: r[erow], st: r[ek], mk: (emk && r[emk]) || null };
       });
-      var gap = W >= 560 ? 2 : 1, pitch = Math.floor((W + gap) / cols * 10) / 10, size = pitch - gap;
+      // BC-S4 (round 3 fix pass): the grid sits 2 px inside the drawing, so no square ends on its last pixel
+      var IN = 2, gap = W >= 560 ? 2 : 1, pitch = Math.floor((W - 2 * IN + gap) / cols * 10) / 10, size = pitch - gap;
+      var ghost = L.ghost_ink || 'ghost';
       var big = size >= 10, gi = size >= 10 ? 2 : size >= 6 ? 1 : 0;   // a ghost sits inset, so it never reads as the lightest step   // dots and rings only where a square holds them (ruling (b))
       // the margin's four classes on sequential steps 2 to 5 of one ink, every won seat with its 1 px context edge, so the
       // closest races read as filled beside the other party's empty outlines (the data lead's C-1, round 3)
@@ -52,7 +55,7 @@
       entries.forEach(function (e) {
         var tw = c.measure(e.w, 'tick'), need = sw + 6 + tw;
         if (kx > 0 && kx + need > W) { kx = 0; ky += row_h; }
-        if (e.ghost) c.rect(kx + 2.5, ky - 8.5, sw - 5, sw - 5, { stroke: 'ghost', width: 1, mark: false });
+        if (e.ghost) c.rect(kx + 2.5, ky - 8.5, sw - 5, sw - 5, { stroke: ghost, width: 1, mark: false });
         else swatch(kx, ky, e.s, e.mk);
         var tb = c.text(kx + sw + 6, ky, e.w, { role: 'tick', max: W - kx - sw - 6 });
         kx = tb.x + tb.w + 18;
@@ -66,14 +69,14 @@
         var nb = c.text(0, y + 15, String(pn.label).replace('{n}', K.fmt(n, 'integer')), { role: 'label', weight: 700, max: W });
         var top = nb.bottom + 8, own = {};
         seats.forEach(function (s) { own[s.col + ',' + s.row] = s; });
-        var X = function (col) { return col * pitch; }, Y = function (row) { return top + row * pitch; };
+        var X = function (col) { return IN + col * pitch; }, Y = function (row) { return top + row * pitch; };
         seats.forEach(function (s) {
           var x = X(s.col), yy = Y(s.row), key = s.r[es] + ' ' + s.r[ed];
           if (String(s.r[ep]) === String(pn.value)) {
             c.rect(x, yy, size, size, { fill: ink(s.st), data: { key: key, field: ek, value: s.st, party: s.r[ep] } });
             c.rect(x + 0.5, yy + 0.5, size - 1, size - 1, { stroke: 'context', width: 1, mark: false });
             if (big && s.mk) mark_at(x + size / 2, yy + size / 2, size, s.st, s.mk);
-          } else c.rect(x + gi + 0.5, yy + gi + 0.5, size - 2 * gi - 1, size - 2 * gi - 1, { stroke: 'ghost', width: 1, mark: false });
+          } else c.rect(x + gi + 0.5, yy + gi + 0.5, size - 2 * gi - 1, size - 2 * gi - 1, { stroke: ghost, width: 1, mark: false });
         });
         // lines between states and round the map, in the gaps between squares
         var d = '', half = gap / 2;
@@ -102,7 +105,7 @@
             var bx = cands[i][0] - b0.w / 2, byy = cands[i][1] - b0.h / 2, ok = bx >= 0 && bx + b0.w <= W;
             if (placed.some(function (p) { return bx < p.x + p.w + 2 && p.x < bx + b0.w + 2 && byy < p.y + p.h + 2 && p.y < byy + b0.h + 2; })) ok = false;
             // every square the words touch is this state's, and an outline or one of the two light steps here
-            for (var col = Math.floor(bx / pitch); ok && col <= Math.floor((bx + b0.w) / pitch); col++) {
+            for (var col = Math.floor((bx - IN) / pitch); ok && col <= Math.floor((bx + b0.w - IN) / pitch); col++) {
               for (var row = Math.floor((byy - top) / pitch); ok && row <= Math.floor((byy + b0.h - top) / pitch); row++) {
                 var o = own[col + ',' + row];
                 var touches = X(col) < bx + b0.w && X(col) + size > bx && Y(row) < byy + b0.h && Y(row) + size > byy;
@@ -111,7 +114,40 @@
                 else if (String(o.r[ep]) === String(pn.value)) ok = false;   // a code sits over outlines only
               }
             }
-            if (ok) { c.text(cands[i][0], byy - b0.y, st, { role: 'tick', weight: 700, anchor: 'middle', halo: true }); placed.push({ x: bx, y: byy, w: b0.w, h: b0.h }); named[st] = true; break; }
+            if (ok) { c.text(cands[i][0], byy - b0.y, st, { role: 'tick', weight: 700, anchor: 'middle', halo: true }); placed.push({ x: bx, y: byy, w: b0.w, h: b0.h }); named[st] = true; ok = 'in'; break; }
+          }
+          // BC-S5 (round 3 fix pass): at a desk, a state whose block holds no room for its code (a single seat, a block
+          // of its party's own squares) takes it beside the block on the ground, on the shortest leader from one of its
+          // squares that clears every word and every other leader; the words never sit on a square
+          if (ok !== 'in' && big) {
+            var occupied = function (x0, y0, x1, y1) {
+              for (var cc = Math.floor((x0 - IN) / pitch); cc <= Math.floor((x1 - IN) / pitch); cc++) for (var rr = Math.floor((y0 - top) / pitch); rr <= Math.floor((y1 - top) / pitch); rr++) if (own[cc + ',' + rr]) return true;
+              return false;
+            };
+            var done = false;
+            [6, 12, 20, 30, 44, 60, 80].forEach(function (d) {
+              cells.forEach(function (sq) {
+                [[1, 0], [-1, 0], [0, -1], [0, 1], [0.7, -0.7], [0.7, 0.7], [-0.7, -0.7], [-0.7, 0.7]].forEach(function (v) {
+                  if (done) return;
+                  var qx = X(sq.col) + size / 2, qy = Y(sq.row) + size / 2;
+                  var ex = qx + v[0] * size / 2, ey = qy + v[1] * size / 2;
+                  var mx2 = ex + v[0] * (d + b0.w / 2), my2 = ey + v[1] * (d + b0.h / 2);
+                  var b = { x: mx2 - b0.w / 2, y: my2 - b0.h / 2, w: b0.w, h: b0.h };
+                  if (b.x < 0 || b.x + b.w > W || b.y < top) return;
+                  if (occupied(b.x - 1, b.y - 1, b.x + b.w + 1, b.y + b.h + 1)) return;
+                  if (c.texts.some(function (t) { return b.x < t.x + t.w + 2 && t.x < b.x + b.w + 2 && b.y < t.y + t.h + 2 && t.y < b.y + b.h + 2; })) return;
+                  var lx = Math.max(b.x, Math.min(ex, b.x + b.w)), ly = Math.max(b.y, Math.min(ey, b.y + b.h));
+                  var ln = { x1: ex, y1: ey, x2: lx, y2: ly };
+                  if (c.texts.some(function (t) { return K.leader_crosses(ln, t); })) return;
+                  // the leader crosses no other leader
+                  var xl = function (a, b2) { var dd = function (p, q, r) { return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]); }; return dd([a.x1, a.y1], [a.x2, a.y2], [b2.x1, b2.y1]) * dd([a.x1, a.y1], [a.x2, a.y2], [b2.x2, b2.y2]) < 0 && dd([b2.x1, b2.y1], [b2.x2, b2.y2], [a.x1, a.y1]) * dd([b2.x1, b2.y1], [b2.x2, b2.y2], [a.x2, a.y2]) < 0; };
+                  if ((c.leaders || []).some(function (l) { return xl(l, ln); })) return;
+                  c.line(ex, ey, lx, ly, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+                  c.text(mx2, b.y - b0.y, st, { role: 'tick', weight: 700, anchor: 'middle', halo: true });
+                  placed.push(b); named[st] = true; done = true;
+                });
+              });
+            });
           }
         });
         y = Y(nrows - 1) + size + (pi < (L.panels || []).length - 1 ? 26 : 8);

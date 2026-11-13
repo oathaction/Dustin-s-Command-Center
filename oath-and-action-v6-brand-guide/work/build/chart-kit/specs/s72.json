@@ -10,16 +10,16 @@
   "evidence_label": "Finding",
   "grade_line": "Documented: the Senate’s and the House Clerk’s roll call records",
   "title": "The bill that ended the shutdown passed the Senate 60 to 40 on November 10, 2025, and the House 222 to 209 two days later.",
-  "measure_line": "How each member voted on H.R. 5371, the continuing appropriations act that became Public Law 119-37: the Senate’s vote on passage, November 10, 2025, and the House’s vote to agree to the Senate’s changes, November 12, 2025",
+  "measure_line": "How each member voted on H.R. 5371, the continuing appropriations act that became Public Law 119-37: the Senate’s vote on passage, November 10, 2025, and the House’s vote to agree to the Senate’s changes, November 12, 2025",
   "notes": [
-    "The House had 433 members on November 12, 2025, and two of its 435 seats were vacant. Six Democrats voted yes in the House and two Republicans voted no; one member of each party did not vote.",
+    "The House had 433 members on November 12, 2025, and two of its 435 seats were vacant. Six Democrats voted yes in the House and two Republicans voted no; one member of each party did not vote.",
     "In the Senate, seven Democrats voted yes and one Republican voted no, and the two independents, whom the record lists apart from both parties, split one yes and one no."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
   "alt": "One square for each member of Congress on the bill that ended the November 2025 shutdown. Senate, November 10, 2025, on passage of the bill: passed 60 to 40. Democrats, 45: 7 yes, 38 no. Independents, 2: 1 yes, 1 no. Republicans, 53: 52 yes, 1 no. House, November 12, 2025, on the motion to concur in the Senate amendment: passed 222 to 209. Democrats, 214: 6 yes, 207 no, 1 not voting. Two seats vacant. Republicans, 219: 216 yes, 2 no, 1 not voting.",
   "table": {
-    "caption": "How each party voted on H.R. 5371 in each chamber, Senate vote 618 of November 10, 2025 and House roll call 285 of November 12, 2025, naming each member who voted the other way or did not vote; every member not named voted with most of their party in that chamber, and the CSV file lists all 533 members",
+    "caption": "How each party voted on H.R. 5371 in each chamber, Senate vote 618 of November 10, 2025 and House roll call 285 of November 12, 2025, naming each member who voted the other way or did not vote; every member not named voted with most of their party in that chamber, and the CSV file lists all 533 members",
     "columns": [
       {
         "field": "member",

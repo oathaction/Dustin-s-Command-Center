@@ -148,37 +148,84 @@ def snap_path():
 # export every row (the main session's D3-1097 on weight; the data lead's ruling RL-3a on what draws)
 # ---------------------------------------------------------------------------------------------------------------
 def jfc_nodes():
-    src = 'fec-jfc-transfers-2024'
+    # BC-M1 with D3-1330 (the data lead's ruling and its sign-off of the seven): every committee the FEC designates a joint
+    # fundraising committee that paid a nominee's campaign, three for Harris and four for Trump, from the research lead's
+    # fec-jfc-transfers-2024-all-committees (P7-226). The drawing folds each nominee's funds into one sender and the
+    # receivers by the sidecar's recipient_kind, read the same way for both; the table prints one row for each fund and
+    # kind of receiver, its refunds last
+    src = 'fec-jfc-transfers-2024-all-committees'
     m = meta(src)
     rows = read(src)
-    states = [r for r in rows if r['jfc_name'] == 'HARRIS VICTORY FUND' and r['amount_lines'] == '22' and r['recipient_type'] == 'Party - Qualified' and r['recipient_id'] != 'C00010603']
-    named = {'C00703975': (1, 'Harris for President, the campaign'), 'C00010603': (2, 'Democratic National Committee'),
-             'C00828541': (4, 'Donald J. Trump for President 2024, the campaign'), 'C00003418': (5, 'Republican National Committee')}
-    out = []
-    for r in rows:
+    nominees = ['Kamala D. Harris', 'Donald J. Trump']
+    kinds = ['nominee campaign', 'national party committee', 'state party committee', 'other committee']
+    campaign = {'Kamala D. Harris': 'Harris for President, the campaign', 'Donald J. Trump': 'Donald J. Trump for President 2024, the campaign'}
+    national = {'Kamala D. Harris': 'Democratic National Committee', 'Donald J. Trump': 'Republican National Committee'}
+    # each fund in the order the sidecar's notes list it, by what it sent the campaign
+    funds = {}
+    for nom in nominees:
+        paid = {}
+        for r in rows:
+            if r['nominee'] == nom and r['recipient_kind'] == 'nominee campaign' and r['amount_lines'] == '22':
+                paid[r['jfc_name']] = paid.get(r['jfc_name'], 0) + float(r['amount'])
+        funds[nom] = sorted(paid, key=lambda f: -paid[f])
+    if [len(funds[n]) for n in nominees] != [3, 4]:
+        FAULTS.append('S73: expected three funds for Harris and four for Trump, found %r' % funds)
+        return
+    drawn = [r for r in rows if r['amount_lines'] == '22']
+    bad = [r['recipient_id'] for r in rows if r['amount_lines'] not in ('22', '28C') or r['recipient_kind'] not in kinds or r['nominee'] not in nominees]
+    if bad:
+        FAULTS.append('S73: rows outside the rule: %r' % bad)
+        return
+    # a receiver paid by two funds counts once in its node's count
+    distinct = {(n, k): len({r['recipient_id'] for r in drawn if r['nominee'] == n and r['recipient_kind'] == k}) for n in nominees for k in kinds}
+    def node(r):
+        n, k = r['nominee'], r['recipient_kind']
         if r['amount_lines'] == '28C':
-            o, nd = 6, r['recipient_name_2024_election'] + ', a refund of its own contribution, not drawn'
-        elif r['recipient_id'] in named:
-            o, nd = named[r['recipient_id']]
-        elif r in states:
-            o, nd = 3, '%d state party committees, the District of Columbia’s included' % len(states)
-        else:
-            FAULTS.append('S73: a line 22 row the drawing does not fold: ' + r['recipient_id'])
-            continue
-        out.append(dict(r, node_order=str(o), node=nd))
-    out.sort(key=lambda r: (int(r['node_order']), -float(r['amount'])))
-    cols = list(rows[0].keys()) + ['node_order', 'node']
+            return 'Refunds, not drawn'
+        if k == 'nominee campaign':
+            return campaign[n]
+        if k == 'national party committee':
+            return national[n]
+        c = distinct[(n, k)]
+        return '%d state party committee%s' % (c, '' if c == 1 else 's') if k == 'state party committee' else '%d other committee%s' % (c, '' if c == 1 else 's')
+    def table_to(r, grp):
+        k = r['recipient_kind']
+        if r['amount_lines'] == '28C':
+            return 'Refunds of their own contributions (line 28C), not drawn: ' + '; '.join(x['recipient_name_2024_election'] for x in grp)
+        if k in ('nominee campaign', 'national party committee'):
+            return node(r)
+        if k == 'state party committee':
+            return 'State party committees'
+        return 'Other committees: ' + '; '.join(x['recipient_name_2024_election'] for x in grp)
+    out, order = [], 0
+    for refund in (False, True):
+        for n in nominees:
+            for k in kinds:
+                for f in funds[n]:
+                    grp = [r for r in rows if r['nominee'] == n and r['recipient_kind'] == k and r['jfc_name'] == f and (r['amount_lines'] == '28C') == refund]
+                    if not grp:
+                        continue
+                    order += 1
+                    grp.sort(key=lambda r: -float(r['amount']))
+                    tt = table_to(grp[0], grp)
+                    for r in grp:
+                        out.append(dict(r, node=node(r), table_row=str(order), table_to=tt))
+    if len(out) != len(rows):
+        FAULTS.append('S73: %d rows written of %d' % (len(out), len(rows)))
+    cols = list(rows[0].keys()) + ['node', 'table_row', 'table_to']
     side = dict(m)
     side.pop('source_line_variants', None)
     side.update({
         'file': 'fec-jfc-transfers-2024-by-node.csv',
         'kind': 'derived',
-        'title_or_table': m['title_or_table'] + ', each payment with the node the network diagram draws it in',
-        'columns': dict(m['columns'], node_order={'type': 'integer', 'description': 'the order of the node in the drawing; 6 for a refund, which does not draw'},
-                        node={'type': 'text', 'description': 'the node the drawing folds the payment into, or the refund it is, in words'}),
-        'printed_source_line': m['source_line_variants']['transfers_and_refunds'],
+        'title_or_table': m['title_or_table'] + ', each payment with the node the network diagram draws it in and the table row it prints in',
+        'columns': dict(m['columns'],
+                        node={'type': 'text', 'description': 'the receiver the drawing folds the payment into, for its nominee: the campaign, the national party committee, the state party committees with their count, or the other committees with their count; a line 28C refund does not draw'},
+                        table_row={'type': 'id', 'description': 'the page table\'s row: one for each fund and kind of receiver, then each fund\'s refunds, in the order the table prints them'},
+                        table_to={'type': 'text', 'description': 'the words the page table prints for the row\'s receivers: the committee, its kind, or the other committees and refunds by name, as the payer wrote them'}),
+        'printed_source_line': m['printed_source_line'],
         'derived_from': [src + '.csv'],
-        'derivation': 'The rows of ' + src + ' unchanged, with two columns added: node names the node the network diagram draws each line 22 payment in (each nominee’s campaign and national party committee alone, and the Harris Victory Fund’s 51 state party committees, DC’s included, as one node), or marks a line 28C refund, which does not draw; node_order orders the nodes. Rows sorted by node, then by amount, largest first.',
+        'derivation': 'The rows of ' + src + ' unchanged, with three columns added, read the same way for both nominees: node names the receiver the network diagram draws each line 22 payment in, by recipient_kind (each nominee\'s campaign and national party committee alone; its state party committees and its other committees each as one node, counted once each, whichever fund paid them), and marks a line 28C refund, which does not draw; table_row and table_to give the page table one row for each fund and kind of receiver, in the order nominee, kind, then fund by what it sent the campaign, with each fund\'s refunds after every drawn row. Rows sorted in that order, then by amount, largest first.',
     })
     write('fec-jfc-transfers-2024-by-node', cols, out, side)
 
