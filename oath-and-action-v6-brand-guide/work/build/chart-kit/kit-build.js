@@ -435,8 +435,10 @@
     // the table equivalent is always kept (contract C7), folded, as live text
     var cn = spec.chart_notes && spec.chart_notes.length ? '<p class="oac-eq-h">' + esc(word(opts, 'notes_in_chart')) + '</p><ul class="oac-eq-n">' +
       spec.chart_notes.map(function (n) { return '<li>' + K.chips(n, ids) + '</li>'; }).join('') + '</ul>' : '';
-    var region = word(opts, 'table_region').replace('{caption}', (spec.table && spec.table.caption) || spec.id);
-    var cap = (spec.table && spec.table.caption) || spec.title || '';
+    // board 2 (A1, the editor's find): the caption's two hidden copies, the table's name and the summary's words, fill
+    // {data_file} as the visible caption does, so a screen reader never hears the braces
+    var region = word(opts, 'table_region').replace('{caption}', function () { return K.fill_words((spec.table && spec.table.caption) || spec.id); });
+    var cap = K.fill_words((spec.table && spec.table.caption) || spec.title || '');
     var lookup = spec.lookup && !(spec.table && spec.table.pivot) ? K.lookup_html(spec, id, opts) : '';
     if (lookup) p.push(lookup);
     p.push('<details class="oac-eq" data-role="equivalent"' + (opts.svg && !lookup ? '' : ' open') + '><summary>' + esc(word(opts, 'table_summary')) + (cap ? '<span class="oac-vh">: ' + esc(cap) + '</span>' : '') + '</summary>' +

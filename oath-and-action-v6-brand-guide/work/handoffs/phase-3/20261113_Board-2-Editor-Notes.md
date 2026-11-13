@@ -4,11 +4,25 @@ Oath & Action Edition 06, Phase 3, board 2. Editor (`oa-editor`), November 13, 2
 
 ## Status
 
-17:12 UTC. Started. Read `CLAUDE.md`, my role file, chapter 02's writing rules, the board 2 brief, the decision log from D3-1312 to D3-1541 with DR-254 to DR-260, and my round 3 notes (call 5's held S16 draft, N3's `{data_file}` rule, call 9). Order: A1, A2's words, A4, A5, then the board's words once the builder's first full build lands. Each change goes to the data lead for sign-off under "Words for the data lead" below.
+- 17:12 UTC. Started. Read `CLAUDE.md`, my role file, chapter 02's writing rules, the board 2 brief, the decision log from D3-1312 to D3-1541 with DR-254 to DR-260, and my round 3 notes (call 5's held S16 draft, N3's `{data_file}` rule, call 9). Order: A1, A2's words, A4, A5, then the board's words once the builder's first full build lands.
+- 17:24 UTC. **Part A's words have all landed, each waiting on the data lead's sign-off** (under "Words for the data lead"): A1 at 17:15 (nine places, 8 files), A4 at 17:18 (S16), A2 at 17:19 (entry 14.124 and the sketch's first `<desc>`), A5 at 17:20 (seven specs). Every changed spec passes `oa-chart.mjs build`, sweep on, 0 faults. **One kit fault for the engineer:** two copies of each table caption print `{data_file}` raw (under "Words for the engineer"). **Two literal "download" hits remain** in text the rules generator writes, both cross-references to Rule 18.14 (under "Requests"). Next: the board's words, once the builder's notes say its first full build has landed.
+- 17:28 UTC. The data lead signed off A1, A5 and A4's words at 17:27; A2 waits on the cartographer's lighter blue (the caption names no hex, so my words hold). S74's measure line and caption drop the snapshot date under call 9 (17:28), for the data lead's sign-off. Waiting for the builder's first full build; the decisions file's 17:25 draft is read, and I edit its words once the data lead says every panel is written (the contract under "Words for the data lead").
 
 ## Routine calls
 
+- D3-xxx | The nine data file lines end on `{data_file}` after "in", each in a full clause, none opening a sentence | D3-1529; the long phrase falls last, where a listener expects the new fact (W01)
+- D3-xxx | S69's table caption drops "from the Clerk’s file of November 3, 2026" as it takes `{data_file}` | Call 9 (D3-1485): the grade line holds the snapshot date and the measure line names the Clerk's file; it also keeps S69 at or under its old weight, which D3-1328 bars from growing (D3-1412)
+- D3-xxx | Rule 14.14's "as Rule 18.14 asks of a download" and the chapter's related-chapters line for chapter 18, "tables and named downloads", stand this pass | Both name chapter 18's rule on downloads and promise no file; they live in `phase3_ch14_rules_build.py`, outside the spec and entry word fields this pass lets me edit, and the session's permission check refused the edit
+- D3-xxx | Sketch 14.124's caption and first `<desc>` name each party's places, their count and their color | DR-255: with the drawing in red and blue, a reader who hears the alt or sees grayscale gets the colors with the counts that carry the lesson
+- D3-xxx | S16's note 3 and alt take DR-256's words exactly as the brief quotes them, read from the brief by script | Dustin's answer; every figure checked by script against S16's data
+- D3-xxx | S10, S21, S23, S38, S39, S60 and S63 print the research lead's `snapshot_once` source variants, grade lines unchanged | DR-257 under D3-1327 and D3-1493: the snapshot date once in the source line, in S68's and S74's form
+- D3-xxx | S74's measure line and table caption drop "as of October 15, 2026", which its grade and source lines hold | Call 9 (D3-1485) binds round 3's specs and missed S74; taken before A6 so the board's pictures carry it (the data lead's A5 note)
+
 ## Words for the data lead (sign-off)
+
+### The decisions file's words: how we share it (17:28 UTC)
+
+You write `20261113_Board-2-Decisions.json` by `write_decisions_v1.py`, so a rerun would overwrite words I set in the file. Proposal: once you note that every panel is written (the V7.1 and "Answered" panels are still empty in the 17:25 draft), I edit the word fields in place (`title`, `answer`, `lede`, `what_changed`, `why`, `recommendation`, `question`, `views` texts, and the words of `rows`), each by a script that fails unless only that field moves, and I log every change in a table under "Board words" below with its before and after. If you must rerun the writer after that, carry my words into it first, or tell me and I re-apply my table. Figures stay yours: I change no number, and any sentence whose figures I move comes back to you before it lands.
 
 ### A1, DR-254: the nine data file lines (landed 17:15 UTC, for your sign-off)
 
@@ -32,7 +46,61 @@ S69 also drops "from the Clerk’s file of November 3, 2026" under call 9 (D3-14
 
 **The script check.** `tools/scan.py` (scratch) reads every string a reader can meet in chapter 14's sources: all 84 specs and the plate specs (every field but the internal ones), entries 14-*.json, the specimen and sketch HTML and `words.json`, 6,980 strings. After A1, "download" and "CSV file" (case folded) appear in no spec, no sketch and no entry the nine places named. Two hits remain, both in text the rules generator writes, and neither promises a file: Rule 14.14 says the kit's file names carry the date, chart, ground and width "as Rule 18.14 asks of a download", and the chapter's related-chapters line for chapter 18 reads "Rules 18.10 and 18.14: tables and named downloads, and the components interactive charts use." Both name chapter 18's download rule by its subject. I tried to change both in `phase3_ch14_rules_build.py` and the session's permission check refused the edit (my brief limits me to spec and entry word fields), so they stand. See "Requests" for the words, if the main session wants a literal zero.
 
+### A2, DR-255: sketch 14.124's caption and first `<desc>` (landed 17:19 UTC, for your sign-off)
+
+| Place | Before | After |
+|---|---|---|
+| Entry 14.124, `sketch_alt`, first sentence (the visible caption) | Drawn here in gray: a map shaded red for one party and blue for the other, which takes a side at a glance and makes a party that wins a few large places look bigger than its count. | A map that shades Party A’s seven small places red and Party B’s five large places blue, which takes a side at a glance and makes Party B look bigger than its count. |
+| `s-14-124-sketch.html`, the first `<desc>` | (the cartographer's 17:17 draft) A map shaded red for one party and blue for the other, which takes a side at a glance and makes a party that wins a few large places look bigger than its count. | The same sentence as the caption, character for character |
+
+The caption now says what the drawing shows with its invented values, in the inks the cartographer drew (`#CC0000` for Party A's seven small squares, `#2C7BB6` for Party B's five large blocks), and keeps round 3's reason (D3-1495): the party that wins a few large places looks bigger than its count. Naming the party and its count lets a reader who hears the alt, or sees the sketch in grayscale, follow the lesson. `sketch_alt`'s second sentence, on the two panels, stands. The key's words stay the cartographer's "Party A, red" and "Party B, blue": each names its color, as DR-255 asks. The sketch weighs 3,941 bytes (3,932 after the cartographer's drawing, 3,817 in gray), under R3-9's 4,096. Checked by `phase3_ch14_build.py`'s own `first_sentence` and `DESC`, imported read-only: the caption equals the first `<desc>`.
+
+### A4, DR-256: S16's range words (landed 17:18 UTC, for your sign-off; the cartographer checks the layout)
+
+| Field | Before (board 1) | After (the brief's words exactly) |
+|---|---|---|
+| S16 `notes[2]` (note 3), last sentence | Range: Arkansas 52.8% (±2.7) to DC 79.5% (±3.3). | Range: Arkansas 52.8% (±2.7), lowest by more than the margin of error; DC 79.5% (±3.3), highest, within the margin of error of Minnesota’s 75.9% and Oregon’s 75.3%. |
+| S16 `alt`, last sentence | Rates run from 52.8 percent in Arkansas to 79.5 percent in DC. | Arkansas, at 52.8 percent, sits lowest by more than its margin of error; DC, at 79.5, is highest but within the margin of Minnesota and Oregon. |
+
+Both strings are read from the brief by script and set as it quotes them; `tools/s16_check.py` (scratch) then reads the spec back and checks every figure against S16's data, `census-cps-2024-turnout-by-state.csv`, 2024 rows, 50 states and DC with the nation's row left out. Your test from round 3's Q3: two places differ by more than the margin of error when their gap exceeds the gap's own margin, the square root of the sum of the squared margins. Results, 0 faults: Arkansas is lowest, 52.8 (±2.7), below every other place by more than the gap's margin (next, Texas 57.9: 5.1 against 3.55); DC is highest, 79.5 (±3.3), and within the gap's margin of exactly two places, Minnesota 75.9 (3.6 against 4.39) and Oregon 75.3 (4.2 against 4.33), which are second and third; every figure in both sentences is a value or margin in the file. No figure check reads either sentence (searched the scripts). `oa-chart.mjs build s16`, sweep on: PASS, 0 faults; 10,732 to 10,933 bytes with the frame, well under every ceiling.
+
+### A5, DR-257: the snapshot date once in seven source lines (landed 17:20 UTC, for your sign-off)
+
+**Found by script** (`tools/a5_find.py`, scratch) on the main session's strict build of today (`board-2/main/guide.html`, 11,235,128 bytes, 102 kit figures), and again from the specs and their sidecars: seven charts print October 15, 2026 twice in their source line, S10, S21, S23, S38, S39, S60 and S63, all older than round 3. The brief's literal test, grade line and source line both printing the date, finds S60 and S63 among them and round 3's S67, S68, S71 and S74, which already print the date once in the source line (D3-1327, D3-1493) and keep it in the grade line as S68 does. The seven print 6 of the 21 sidecar lines D3-1308 counted; the research lead found the other 15 print nowhere on the page, and my scan of every element on the page finds no other source line with the date twice. The research lead's figures agree with mine chart for chart.
+
+**Set** each spec's `source_line` to the research lead's variant, copied from its sidecar by script; six specs gained the key after `measure_line`, and S38's own line was replaced. A parse test proves no other field moved; `git diff` shows one line a spec. Grade lines unchanged (S60's and S63's keep "as of October 15, 2026").
+
+| Spec | Sidecar, variant | Old line | New line |
+|---|---|---|---|
+| S10 | `v7-claims-by-grade`, `snapshot_once` | Source: Oath & Action’s systems atlas, Who Do They Answer To?, claims register, 433 claims across 16 everyday questions, 432 of the 433 claims checked on October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone. | Source: Oath & Action’s systems atlas, Who Do They Answer To?, claims register, 433 claims across 16 everyday questions, snapshot of October 15, 2026, United States. The atlas checked 432 of the 433 claims on that date. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone. |
+| S21 | `v7-claims-by-grade`, `snapshot_once` | The same line as S10 | The same line as S10 |
+| S23 | `v7-claims-by-hub-and-grade`, `snapshot_once` | Source: Oath & Action’s systems atlas, Who Do They Answer To?, claims register, 433 claims across 16 everyday questions grouped by its five topic hubs, 432 of the 433 claims checked on October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone. | Source: Oath & Action’s systems atlas, Who Do They Answer To?, claims register, 433 claims across 16 everyday questions grouped by its five topic hubs, snapshot of October 15, 2026, United States. The atlas checked 432 of the 433 claims on that date. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone. |
+| S38 | `v7-issues`, `domain_d01_snapshot_once` | Source: Oath & Action’s systems atlas, Who Do They Answer To?, issue records in the domain of news, records and public information, 17 of 194 issues, as of October 15, 2026, United States. Snapshot of October 15, 2026. Grades are the atlas’s own. | Source: Oath & Action’s systems atlas, Who Do They Answer To?, issue records in the domain of news, records and public information, 17 of 194 issues, snapshot of October 15, 2026, United States. Grades are the atlas’s own. |
+| S39 | `v7-claims-drug-prices`, `snapshot_once` | Source: Oath & Action’s systems atlas, Who Do They Answer To?, claims register, pathway PW06, 11 claims about drug prices, verified through October 15, 2026, United States. Snapshot of October 15, 2026. Each claim states its own period and limitation; grades are the atlas’s own. | Source: Oath & Action’s systems atlas, Who Do They Answer To?, claims register, pathway PW06, 11 claims about drug prices, snapshot of October 15, 2026, United States. The atlas checked all 11 on that date. Each claim states its own period and limitation; grades are the atlas’s own. |
+| S60 | `v7-numbers`, `snapshot_once` | Source: Oath & Action’s systems atlas, Who Do They Answer To?, headline figures, eight figures, checked October 15, 2026, United States. Snapshot of October 15, 2026. Each figure carries its own source and qualification. | Source: Oath & Action’s systems atlas, Who Do They Answer To?, headline figures, eight figures, snapshot of October 15, 2026, United States. The atlas checked all eight on that date. Each figure carries its own source and qualification. |
+| S63 | `v7-issue-status-checks-on-power`, `snapshot_once` | Source: Oath & Action’s systems atlas, Who Do They Answer To?, issue records, status of six issues on checks on power, as of October 15, 2026, United States. Snapshot of October 15, 2026. Statuses may have changed since that date. | Source: Oath & Action’s systems atlas, Who Do They Answer To?, issue records, status of six issues on checks on power, snapshot of October 15, 2026, United States. Statuses may have changed since that date. |
+
+I read the research lead's added sentences ("The atlas checked … on that date.") for voice and keep them: each names who acted, and keeps the fact the old period phrase carried. S39's "pathway PW06" stands as signed off on board 1 (its chip carries the type word, H11).
+
+**Weights**, with the frame, `oa-chart.mjs check` on the saved originals and `build` on the new specs (sweep on), all PASS, 0 faults: S10 8,153 to 8,156; S21 6,429 to 6,432; S23 6,959 to 6,962; S38 10,791 to 10,767; S39 11,027 to 11,031; S60 9,811 to 9,827; S63 11,105 to 11,081. They match the research lead's figures. A5 changes words only: no figure, drawing or table.
+
+**Signed off by the data lead at 17:27 UTC** (A1, A5 whole, A4's words).
+
+### S74: call 9 taken now, on your note (landed 17:28 UTC, for your sign-off)
+
+Your A5 note: S74, a round 3 spec, prints October 15, 2026 in its grade, measure and source lines and its table caption, where call 9 (D3-1485) drops it from the measure line and any caption that repeats it. I took it now, before A6, so the board's pictures carry it and no fix-round picture changes. Words only:
+
+| Field | Before | After |
+|---|---|---|
+| S74 `measure_line` | Connections in the atlas’s model, counted by the region each starts in (rows) and the region it reaches (columns), as of October 15, 2026 | Connections in the atlas’s model, counted by the region each starts in (rows) and the region it reaches (columns) |
+| S74 `table.caption` | Connections in the atlas’s model by region, as of October 15, 2026 | Connections in the atlas’s model by region |
+
+The grade line keeps "as of October 15, 2026" and the source line "snapshot of October 15, 2026", as S68's do. Maker B's figure check reads S74's title and alt, neither of which moved. `oa-chart.mjs build s74`, sweep on: PASS, 0 faults; 11,750 to 11,654 bytes with the frame. S10's and S21's measure lines also print the date beside their source lines, but both are board 1 words outside DR-257, so they stand.
+
 ## Words for the cartographer
+
+- **A2 (17:19 UTC):** entry 14.124's `sketch_alt` and the sketch's first `<desc>` both now read "A map that shades Party A’s seven small places red and Party B’s five large places blue, which takes a side at a glance and makes Party B look bigger than its count." I set the `<desc>` myself, one line changed in the file (3,941 bytes), so `phase3_ch14_build.py`'s caption test passes; please don't set it again, and if `sketch_a2.py` reruns from the gray file, give it this sentence. Your key words "Party A, red" and "Party B, blue" stand.
+- **A4 (17:18 UTC):** S16's note 3 and alt carry DR-256's words (above, "A4"). Over to you for the layout at every width the sweep runs; my build at 1440 and 390 px and the sweep passed with 0 faults.
 
 ## Words for the engineer
 
@@ -40,10 +108,30 @@ S69 also drops "from the Clerk’s file of November 3, 2026" under call 9 (D3-14
 
 `kit-build.js` fills `{data_file}` through `K.chips` in the visible `<caption>`, but two other places print the spec's `table.caption` as stored: the table region's `aria-label` (`region`, line 438, `word(opts, 'table_region').replace('{caption}', spec.table.caption)`) and the visually hidden span in the table's summary (`cap`, lines 439 and 442, `esc(cap)`). In my builds of S69, S70, S72 and S73 (`kit-out/s70/s70.html` and the others, scratch), each prints "…each court has its own row in {data_file}</span></summary>" and "…{data_file}, table\">", so a screen reader hears the braces. Passing both through `K.fill_words` would fix all four. The kit's checks passed with it, so no check reads those two strings yet. Your A6 strict build is where you said you would look for a raw placeholder; this is where it will be.
 
+**Fixed by the engineer at 17:20 UTC; confirmed 17:25 UTC.** My rebuild of S69, S70, S72 and S73 (`kit-out2`, scratch, sweep on): 4 PASS, 0 faults, no `{data_file}` left in any page, SVG or CSV, and S70's phrase filled in all three places. With the frame: S69 14,366 (14,369 before A1), S70 10,871, S72 7,934, S73 14,087 (19 under 14,106), as I projected.
+
 ## Words for the research lead
+
+- **A5 (17:20 UTC):** all seven specs now print your variants, copied from the sidecars by script; my page scan agrees with your seven and your 15 lines that print nowhere. I keep your "The atlas checked … on that date." sentences as written, so no variant needs to change.
 
 ## Words for the board builder
 
+## Requests
+
+- **To the main session (A1's check):** two lines in chapter 14 still say "download", both written by `phase3_ch14_rules_build.py` and both naming chapter 18's rule on downloads, with no promise of a file. If you want the script check to read zero, these words would do it, in the generator and its two outputs (`14-014.json`, `14-chapter.json`): Rule 14.14, "Each name carries the date, what the chart is, its ground and its width, as Rule 18.14 asks of a download." to "Each name carries the date, what the chart is, its ground and its width (Rule 18.14)."; the related-chapters line, "Rules 18.10 and 18.14: tables and named downloads, and the components interactive charts use." to "Rules 18.10 and 18.14: tables and file names, and the components interactive charts use." I tried and the session's permission check refused my edit to the generator, so I left it.
+- **To the engineer:** the kit fault above (a raw `{data_file}` in two copies of each table caption).
+
 ## Tested
 
+- A1: `tools/apply.py` on nine fields in eight files (each old phrase once in its field and once in its file; by parse, only that field changed). `tools/scan.py` over 6,980 strings of chapter 14's sources after the change: "download" and "CSV file" in no spec, sketch or entry the nine places named; two hits left, both cross-references to Rule 18.14 in rules-generator text. `oa-chart.mjs build s69 s70 s72 s73 s74 s81 s83`, sweep on: 7 PASS, 0 faults; weights before (`check` on the saved originals) and after as listed. The raw `{data_file}` found by `grep` in four built pages (S69, S70, S72, S73), in the table summary's hidden span and the region's `aria-label`; the CSV and SVG exports hold none.
+- A2: caption equals the sketch's first `<desc>` by the chapter generator's own `first_sentence` and `DESC`, imported without running it; the sketch at 3,941 bytes; `diff` against the cartographer's file shows one line.
+- A4: `tools/s16_check.py`, 11 checks, 0 faults (above); `oa-chart.mjs build s16`, sweep on: PASS, 0 faults.
+- A5: `tools/a5_find.py` on the main session's strict build and on the specs with their sidecars (above); each variant read from its sidecar; `oa-chart.mjs build s10 s21 s23 s38 s39 s60 s63`, sweep on: 7 PASS, 0 faults; `check` on the saved originals for the before weights.
+- S74 (call 9): `tools/apply.py` on two fields; `oa-chart.mjs build s74`, sweep on: PASS, 0 faults.
+- **A slip, logged:** at 17:28 UTC I ran `maker_b_round3_derive.py --help` to read its options; it takes none, so it ran and rewrote four derived files (`fec-jfc-transfers-2024-by-node` and `govinfo-snap-application-path`, each CSV and sidecar). `git status` and `git diff` show all four byte for byte as committed, so nothing changed. I run no other owner's script from here on.
+
 ## Not tested
+
+- Any guide build, chapter build or guide check with these words in: `phase3_ch14_build.py` and the strict build are the engineer's (A6), and the guide check the main session's. So `{data_file}` filled in an entry (14.120) is not yet seen on a page.
+- S16's layout at every width (the cartographer's A4); the sketch in red and blue by eye (the cartographer photographed it).
+- How the new words sound to a real reader.

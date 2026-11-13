@@ -1,0 +1,4585 @@
+{
+ "schema": "board-2-decisions/1",
+ "state": "draft",
+ "updated_utc": "2026-11-13T17:25:27Z",
+ "written_by": "data lead",
+ "words_owner": "editor",
+ "reply_line": "To answer, reply “As recommended”, or name the item and your change.",
+ "panels": [
+  {
+   "id": "board-1-changed",
+   "title": "Board 1 drawings that changed",
+   "lede": "Three drawings you approved on board 1 changed in rounds 2 and 3: S12, S16 and S10. Eleven board 1 drawings, S12 and S16 among them, moved a word, label or key at widths board 1 did not show, and twelve round 1 charts changed the words that name an ink. We recommend one approval for the lot, with S12 kept in its scrolling frame.",
+   "approval": "one",
+   "items": [
+    {
+     "id": "S12",
+     "spec": "S12",
+     "rule": "14.115",
+     "title": "S12, the shift arrows map at a desk",
+     "answer": "Board 1 approved S12 drawn 1,024 px wide. The guide's column is narrower than that at every desk width, so the approved drawing now sits in a frame 1,024 px wide that scrolls sideways. From a 1,280 px window the frame widens over the chapter list on the left. The other choice is a tile that sets each state's code and figure on two lines with the arrow under them, which fits a column 723 px wide or more.",
+     "what_changed": "At a 1,440 px window the frame shows 943 of the drawing's 1,024 px, from Alaska to New Jersey and Connecticut, with New York, Florida and California in view; the column with Maine and Rhode Island needs a scroll, and a line above the map says so. At a 1,024 px window the column shows about 558 px, a little over half. While S12 is in view the chapter list on the left is hidden. On a phone S12 draws gray steps, as board 1 approved, and now prints each state's code where its tile holds it.",
+     "why": "Board 1's arrows need tiles 72 px wide, which only a drawing 930 px wide or more gives. Chapter 14 never gives a drawing that width, so the round 3 reviewers found S12 drawing gray steps at every desk width, with no arrows, though its entry, reading guide and alt describe arrows.",
+     "recommendation": "Keep the 1,024 px frame as built. It shows the drawing you approved, unchanged, at every desk width, and the four states the title names are in view at 1,440 px. The stacked tile fits only from a 723 px column, so a 1,024 px window would still need the scrolling frame, and the guide would carry two desk drawings of one chart.",
+     "refs": [
+      "DR-64",
+      "D3-1324",
+      "D3-1372",
+      "D3-1515",
+      "D3-1524"
+     ],
+     "question_for_dustin": true,
+     "views": [
+      {
+       "who": "data lead",
+       "text": "Keep the 1,024 px frame as built: it is board 1's drawing unchanged, and at 1,440 px only the column with Maine and Rhode Island sits past the edge. Take the stacked tile only if you want the whole map in view at 1,440 px with the chapter list kept, knowing a 1,024 px window still scrolls.",
+       "source": "work/handoffs/phase-3/20261113_Board-2-Data-Lead-Notes.md#rulings"
+      },
+      {
+       "who": "creative director",
+       "text": "S12's stage: the arrows draw, but at a 1440 px desk a reader sees about 70 percent of the map and must scroll to reach the title's eastern states. Board 2 should show the scrolling stage beside the stacked tile, which keeps board 1's encoding and fits the column from 723 px.",
+       "source": "work/handoffs/phase-3/20261113_Round-3-CD-Rescores.json#risks_for_dustin",
+       "note": "Written before the frame widened over the chapter list (D3-1515), when 723 of the 1,024 px showed at 1,440 px."
+      }
+     ],
+     "pictures": [
+      {
+       "kind": "board-1",
+       "spec": "s12",
+       "width": 1440,
+       "ground": "newsprint",
+       "path": "work/boards/phase-3/round-0/specimens/s12-newsprint-1440.png",
+       "label": "Board 1: the 1,024 px drawing",
+       "role": "before"
+      },
+      {
+       "kind": "guide",
+       "spec": "s12",
+       "width": 1440,
+       "ground": "newsprint",
+       "path": null,
+       "label": "Today at a 1,440 px window: the frame widened over the chapter list",
+       "role": "after",
+       "element": "oac-s-14-s12"
+      },
+      {
+       "kind": "guide",
+       "spec": "s12",
+       "width": 1024,
+       "ground": "newsprint",
+       "path": null,
+       "label": "Today at a 1,024 px window: the frame in the column",
+       "role": "after",
+       "element": "oac-s-14-s12"
+      },
+      {
+       "kind": "board-pictures",
+       "spec": "s12",
+       "width": 1440,
+       "ground": "newsprint",
+       "path": null,
+       "label": "The stacked tile at a 1,440 px window",
+       "role": "view"
+      },
+      {
+       "kind": "board-pictures",
+       "spec": "s12",
+       "width": 1024,
+       "ground": "newsprint",
+       "path": null,
+       "label": "The stacked tile at a 1,024 px window",
+       "role": "view"
+      },
+      {
+       "kind": "board-1",
+       "spec": "s12",
+       "width": 390,
+       "ground": "newsprint",
+       "path": "work/boards/phase-3/round-0/specimens/s12-newsprint-390.png",
+       "label": "Board 1 on a phone",
+       "role": "before"
+      },
+      {
+       "kind": "guide",
+       "spec": "s12",
+       "width": 390,
+       "ground": "newsprint",
+       "path": null,
+       "label": "Today on a phone, with the state codes",
+       "role": "after",
+       "element": "oac-s-14-s12"
+      }
+     ]
+    },
+    {
+     "id": "S16",
+     "spec": "S16",
+     "rule": "14.116",
+     "title": "S16, the turnout bubble map",
+     "answer": "S16 now draws on the Census Bureau's 2024 state outlines, with Alaska and Hawaii framed apart, DC on a leader at a desk, every state's code on a phone, a credit line for the map, and the range words you approved on November 13. Its data, circle sizes, inks and named states are as board 1 approved.",
+     "what_changed": "The 2024 outlines, with the coast drawn as an edge; Alaska and Hawaii each in a frame, not to scale; DC on a leader at a desk and West Virginia beside its own circle; codes placed so that at a 358 px phone drawing all 51 carry a code, where board 1's named two in a note; a credit line naming the map's source; note 3's range and the alt's last sentence in the words of DR-256.",
+     "why": "Round 3 moved every state map onto one set of 2024 outlines, and the reviewers asked for DC and the small northeastern states to be findable. Placement only: the data, the circle scale and its key, the inks, the title, the notes but note 3, and the table are unchanged.",
+     "recommendation": "Approve S16 as drawn.",
+     "refs": [
+      "D3-1329",
+      "D3-1472",
+      "D3-1527",
+      "DR-256"
+     ],
+     "question_for_dustin": false,
+     "pictures": [
+      {
+       "kind": "board-1",
+       "spec": "s16",
+       "width": 1440,
+       "ground": "newsprint",
+       "path": "work/boards/phase-3/round-0/specimens/s16-newsprint-1440.png",
+       "label": "Board 1",
+       "role": "before"
+      },
+      {
+       "kind": "guide",
+       "spec": "s16",
+       "width": 1440,
+       "ground": "newsprint",
+       "path": null,
+       "label": "Today at a 1,440 px window",
+       "role": "after",
+       "element": "oac-s-14-s16"
+      },
+      {
+       "kind": "board-1",
+       "spec": "s16",
+       "width": 390,
+       "ground": "newsprint",
+       "path": "work/boards/phase-3/round-0/specimens/s16-newsprint-390.png",
+       "label": "Board 1 on a phone",
+       "role": "before"
+      },
+      {
+       "kind": "guide",
+       "spec": "s16",
+       "width": 390,
+       "ground": "newsprint",
+       "path": null,
+       "label": "Today on a phone",
+       "role": "after",
+       "element": "oac-s-14-s16"
+      }
+     ]
+    },
+    {
+     "id": "S10",
+     "spec": "S10",
+     "rule": "14.46",
+     "title": "S10, the evidence mix bars",
+     "answer": "S10's bar for all 433 claims now draws as a dashed line in the text's ink with its own label, the way every total or national line in chapter 14 draws (Rule 14.6). Nothing else in the drawing moved.",
+     "what_changed": "The overall line, “All 433 claims”, is a dashed total line.",
+     "why": "One treatment for a total line across the chapter.",
+     "recommendation": "Approve S10 as drawn.",
+     "refs": [
+      "D3-677",
+      "D3-895"
+     ],
+     "question_for_dustin": false,
+     "pictures": [
+      {
+       "kind": "board-1",
+       "spec": "s10",
+       "width": 1440,
+       "ground": "newsprint",
+       "path": "work/boards/phase-3/round-0/specimens/s10-newsprint-1440.png",
+       "label": "Board 1",
+       "role": "before"
+      },
+      {
+       "kind": "guide",
+       "spec": "s10",
+       "width": 1440,
+       "ground": "newsprint",
+       "path": null,
+       "label": "Today at a 1,440 px window",
+       "role": "after",
+       "element": "oac-s-14-s10"
+      }
+     ]
+    },
+    {
+     "id": "placement",
+     "title": "Eleven board 1 drawings moved a word or a label at widths board 1 did not show",
+     "answer": "A width check now draws every chart at every width from 256 px up, and a crossing check finds words that touch a line. Eleven board 1 drawings moved a word, a label or a key where those checks found a fault. No figure, ink or word changed.",
+     "what_changed": "Each row says what moved. Unless the row says otherwise, the 1,440 and 390 px drawings board 1 showed are unchanged.",
+     "why": "At some widths a label ran past the edge or across a line.",
+     "recommendation": "Approve the moves as listed.",
+     "refs": [
+      "D3-904",
+      "D3-909",
+      "D3-911"
+     ],
+     "question_for_dustin": false,
+     "pictures": [],
+     "rows": [
+      {
+       "spec": "S01",
+       "rule": "14.85",
+       "what_changed": "Takes its phone arrangement wherever “86%” would reach the bars beside it, and a party's words move under the bar where the 60-vote line would cross them.",
+       "refs": [
+        "D3-904"
+       ]
+      },
+      {
+       "spec": "S02",
+       "rule": "14.29",
+       "what_changed": "Its two notes move under the chart below 620 px (2025) and 510 px (2021), as on a phone.",
+       "refs": [
+        "D3-911"
+       ]
+      },
+      {
+       "spec": "S05",
+       "rule": "14.30",
+       "what_changed": "Gridlines draw before the panel words, and each bracket's words after its lines.",
+       "refs": [
+        "D3-911"
+       ]
+      },
+      {
+       "spec": "S07",
+       "rule": "14.114",
+       "what_changed": "The year line sits in from the left, and only where the tile holds it with 2 px each side.",
+       "refs": [
+        "D3-911"
+       ]
+      },
+      {
+       "spec": "S09",
+       "rule": "14.38",
+       "what_changed": "Each label is measured at the width it is drawn and may wrap at six more widths; the drawing differs at 558 px only.",
+       "refs": [
+        "D3-904"
+       ]
+      },
+      {
+       "spec": "S11",
+       "rule": "14.25",
+       "what_changed": "The center line draws before the rows, and the bottom scale drops a figure that would touch its neighbor; the same figures sit at the same places.",
+       "refs": [
+        "D3-904"
+       ]
+      },
+      {
+       "spec": "S12",
+       "rule": "14.115",
+       "what_changed": "On a phone each tile prints its state's code where the tile holds it, and a note names the codes with no room; under 292 px the table names every state.",
+       "refs": [
+        "D3-911",
+        "D3-1524"
+       ]
+      },
+      {
+       "spec": "S13",
+       "rule": "14.34",
+       "what_changed": "A one-word panel name wider than its panel stays inside the drawing.",
+       "refs": [
+        "D3-904"
+       ]
+      },
+      {
+       "spec": "S14",
+       "rule": "14.32",
+       "what_changed": "The “Three-month average” note sits 10 px higher at every desk width and moves to the key under 490 px.",
+       "refs": [
+        "D3-911"
+       ]
+      },
+      {
+       "spec": "S15",
+       "rule": "14.125",
+       "what_changed": "The “Leader changed” tag goes under the state's name on a phone where it would reach the shift column.",
+       "refs": [
+        "D3-911"
+       ]
+      },
+      {
+       "spec": "S16",
+       "rule": "14.116",
+       "what_changed": "The size key drops under the shade key where it would run past the edge.",
+       "refs": [
+        "D3-904",
+        "D3-909"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "round-1-notes",
+     "title": "Twelve round 1 drawings whose note words changed",
+     "answer": "The notes and alt text of twelve round 1 charts now name a mark the same way on both grounds: the mark the title names is “in the text’s ink”, other marks are “gray”, and no ink is called dark or light. No drawing changed.",
+     "what_changed": "The words that name inks in each chart's notes, alt text and reading guide.",
+     "why": "Dark and light swap on Charcoal, so “dark ink” was wrong on one ground.",
+     "recommendation": "Approve the words as listed.",
+     "refs": [
+      "D3-914"
+     ],
+     "question_for_dustin": false,
+     "pictures": [],
+     "rows": [
+      {
+       "spec": "S10",
+       "old": "the ink of the text",
+       "new": "the text’s ink"
+      },
+      {
+       "spec": "S17",
+       "old": "light gray",
+       "new": "gray"
+      },
+      {
+       "spec": "S18",
+       "old": "light gray",
+       "new": "gray"
+      },
+      {
+       "spec": "S20",
+       "old": "red with a dark outline; … light gray",
+       "new": "red; … gray"
+      },
+      {
+       "spec": "S21",
+       "old": "red with a dark outline; … light gray",
+       "new": "red; … gray"
+      },
+      {
+       "spec": "S23",
+       "old": "red with a dark outline; … light gray",
+       "new": "red; … gray"
+      },
+      {
+       "spec": "S24",
+       "old": "dark ink, dark line, dark outline",
+       "new": "the text’s ink, a line in the text’s ink, the outline in the text’s ink"
+      },
+      {
+       "spec": "S27",
+       "old": "Darker gray line: Connecticut",
+       "new": "Named gray line: Connecticut"
+      },
+      {
+       "spec": "S34",
+       "old": "dark ink, dark line, dark outline",
+       "new": "the text’s ink, a line in the text’s ink, the outline in the text’s ink"
+      },
+      {
+       "spec": "S35",
+       "old": "light band",
+       "new": "shaded band"
+      },
+      {
+       "spec": "S36",
+       "old": "light gray",
+       "new": "gray"
+      },
+      {
+       "spec": "S37",
+       "old": "from very low, the lightest, to high, the darkest",
+       "new": "from very low, closest to the page color, to high, the strongest"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "forms-changed",
+   "title": "Forms whose tier or data changed",
+   "lede": "No form changed its tier. Nine specimens changed their data, measure or drawing after their data plan row was signed off, each for a reason a review found, and seventeen changes were made to the data plans before anything was fetched. We recommend one approval for the list.",
+   "approval": "one",
+   "items": [
+    {
+     "id": "tiers",
+     "title": "Tiers",
+     "answer": "No form changed its tier. All 114 forms of rounds 1 to 3 carry the tier the coverage plan gave them: 50 core, 36 extended, 21 reference and 7 to avoid.",
+     "what_changed": "Nothing.",
+     "why": "A script read each form's tier in the coverage plan, the chapter 14 plan, the data plans, each entry and each spec.",
+     "recommendation": "No decision needed.",
+     "refs": [
+      "DR-62",
+      "DR-63"
+     ],
+     "question_for_dustin": false,
+     "pictures": [],
+     "facts": [
+      {
+       "label": "Forms checked",
+       "value": "114"
+      },
+      {
+       "label": "Tier changed",
+       "value": "0"
+      },
+      {
+       "label": "Script",
+       "value": "work/build/scripts/phase-3/board_2_data_lead_counts.py"
+      }
+     ]
+    },
+    {
+     "id": "S73",
+     "spec": "S73",
+     "rule": "14.104",
+     "title": "S73, the joint fundraising committees",
+     "answer": "S73 now draws every committee the Federal Election Commission designates a joint fundraising committee that paid either party's 2024 presidential campaign: three on the Democratic side and four on the Republican side, in place of one each.",
+     "what_changed": "The plan picked the one committee per nominee that sent the campaign the most. The chart now reads all seven by that rule, from a new file, with transfers to other committees (line 22) as the measure for both. The Democratic campaign and its main fund carried Joseph R. Biden Jr.'s name until July 21, 2024, so the line under that bar names both candidates with the date, and a note splits that side's transfers before and after the date. The Republican side kept one candidate and is not split; its two renames are named with their dates.",
+     "why": "Read from the right, picking one committee per side drew a contrast in reach (53 committees against two) that came from the rule, not from the record. Read across all seven, both sides reached a similar number of committees: 54 and 56.",
+     "recommendation": "Approve S73 as drawn.",
+     "refs": [
+      "D3-1330",
+      "D3-1477",
+      "D3-1508",
+      "D3-1509"
+     ],
+     "question_for_dustin": false,
+     "pictures": [],
+     "plan_row": {
+      "file": "work/handoffs/phase-3/20261112_Round-3-Data-Plan.md",
+      "row": 94,
+      "said": "`fec-jfc-transfers-2024`: the one committee per nominee that transferred the most to the nominee's principal campaign committee (data lead change 8)."
+     },
+     "built": "`fec-jfc-transfers-2024-all-committees` (research ledger P7-226): all seven designated joint fundraising committees, line 22, refunds on line 28C set apart."
+    },
+    {
+     "id": "S76",
+     "spec": "S76",
+     "rule": "14.110",
+     "title": "S76, where 2024 House campaign money came from and went",
+     "answer": "S76 now nets the transfers between each campaign and its own other committees candidate by candidate, and draws the money sent out as its own band.",
+     "what_changed": "The file had netted transfers across all 1,926 campaigns at once, which left $156.8 million in and nothing out. Netted for each candidate, $175.1 million came in and $18.3 million went out. The money left unaccounted for stays $1.5 million, and a note says 297 campaigns' figures do not balance, with one campaign leaving nearly all of it.",
+     "why": "Netting across campaigns cancels one campaign's money out against another's money in, and those dollars never met. The note promised candidate-by-candidate netting.",
+     "recommendation": "Approve S76 as drawn.",
+     "refs": [
+      "D3-1338",
+      "D3-1339"
+     ],
+     "question_for_dustin": false,
+     "pictures": [],
+     "plan_row": {
+      "file": "work/handoffs/phase-3/20261112_Round-3-Data-Plan.md",
+      "row": 100,
+      "said": "Transfers between a candidate's own committees are netted out."
+     },
+     "built": "`fec-house-campaigns-2024-money-in-out`, transfers netted candidate by candidate (research ledger P7-217)."
+    },
+    {
+     "id": "S78",
+     "spec": "S78",
+     "rule": "14.117",
+     "title": "S78, broadband by state",
+     "answer": "S78 maps home broadband such as cable, fiber or DSL, a line of the Census Bureau's table the plan left open, with the Bureau's own published margins, and on a phone it draws the studio's tile grid in place of state outlines.",
+     "what_changed": "The plan asked for “households with a broadband internet subscription”. The chart reads the table's fixed broadband line, which leaves out a household with a cellular data plan alone, and prints the margins the Bureau publishes. Under 520 px the map becomes the tile grid S07 uses, with the same classes, inks and key, so every state carries its code.",
+     "why": "The atlas issue it serves (I015) names slow or missing home internet, which a phone plan alone does not answer, and broadband of any kind spans too narrow a range for more than two honest classes. On the outlines, 19 states had no room for a code at a 358 px phone drawing.",
+     "recommendation": "Approve S78 as drawn.",
+     "refs": [
+      "D3-1102",
+      "D3-1104",
+      "D3-1343",
+      "D3-1351",
+      "D3-1463"
+     ],
+     "question_for_dustin": false,
+     "pictures": [],
+     "plan_row": {
+      "file": "work/handoffs/phase-3/20261112_Round-3-Data-Plan.md",
+      "row": 107,
+      "said": "Households with a broadband internet subscription, table B28002, with margins; the line used to be named."
+     },
+     "built": "B28002's fixed broadband line, with the published margins of table S2801 (source variant `fixed_with_s2801_margin`)."
+    },
+    {
+     "id": "S80",
+     "spec": "S80",
+     "rule": "14.119",
+     "title": "S80, Michigan's House districts",
+     "answer": "S80 now draws a framed inset of the Detroit area in both panels, so the five districts there are large enough to number and read.",
+     "what_changed": "The 6th and the 10th to 13th districts draw again, larger, in a framed inset in each panel, and a note says each district elects one member whatever its area. The margin steps on S80 and S82 moved from gray to four steps of Verdigris.",
+     "why": "Land stood in for seats: the small Detroit districts were too small to see, and gray step 1 read as the other party's empty seat.",
+     "recommendation": "Approve S80 as drawn.",
+     "refs": [
+      "D3-1130",
+      "D3-1363",
+      "D3-1465"
+     ],
+     "question_for_dustin": false,
+     "pictures": [],
+     "plan_row": {
+      "file": "work/handoffs/phase-3/20261112_Round-3-Data-Plan.md",
+      "row": 109,
+      "said": "Michigan's 13 districts with the district geometry."
+     },
+     "built": "The same results and geometry, with the Detroit inset drawn from them."
+    },
+    {
+     "id": "S59",
+     "spec": "S59",
+     "rule": "14.77",
+     "title": "S59, the Federal Reserve's unemployment projections",
+     "answer": "S59 adds where the unemployment rate stood: its fourth-quarter average for 2021 to 2024, the projections' own measure, drawn before the fan.",
+     "what_changed": "A second file, the fourth-quarter averages derived from the monthly rate the guide already holds. 2025 has no average, since October 2025 was not collected, and its column is drawn empty.",
+     "why": "A fan of projections reads only against where the rate started.",
+     "recommendation": "Approve S59 as drawn.",
+     "refs": [
+      "D3-936",
+      "D3-998"
+     ],
+     "question_for_dustin": false,
+     "pictures": [],
+     "plan_row": {
+      "file": "work/handoffs/phase-3/20261111_Rounds-1-2-Data-Plan.md",
+      "row": 73,
+      "said": "`frb-fomc-projections-unemployment` alone."
+     },
+     "built": "Adds `fred-unemployment-fourth-quarter`, derived from `fred-unemployment-and-job-openings`."
+    },
+    {
+     "id": "S54-S55",
+     "spec": "S54",
+     "rule": "14.67",
+     "title": "S54 and S55, rent against renters' income",
+     "answer": "S54 and S55 draw the Census Bureau's own measure of rent burden, median gross rent as a share of household income with its margin, in place of a ratio the studio worked out.",
+     "what_changed": "The first file divided a year of median rent by the median income of all households, owners included. The file now carries the Bureau's table B25071 with its margin, beside median rent and renters' median income.",
+     "why": "The studio's ratio mixed owners' income into a renters' measure and carried no margin.",
+     "recommendation": "Approve S54 and S55 as drawn.",
+     "refs": [
+      "D3-88"
+     ],
+     "question_for_dustin": false,
+     "pictures": [],
+     "plan_row": {
+      "file": "work/handoffs/phase-3/20261111_Rounds-1-2-Data-Plan.md",
+      "row": 63,
+      "said": "`census-acs-rent-and-income-by-state`, with the studio's rent-to-income ratio."
+     },
+     "built": "The same file rebuilt from tables B25071, B25064 and B25119 (research ledger P7-030)."
+    },
+    {
+     "id": "S41",
+     "spec": "S41",
+     "rule": "14.133",
+     "title": "S41, the plain table",
+     "answer": "S41's table shows the 2023 survey alone, the question it answers. The House and Senate votes stay in S01 and S61.",
+     "what_changed": "The plan's five rows mixed the survey's shares with the two chambers' votes.",
+     "why": "A plain table should answer one question; the votes came three years after the survey and are on a bill with a second provision the survey never asked about.",
+     "recommendation": "Approve S41 as drawn.",
+     "refs": [
+      "D3-89",
+      "D3-168"
+     ],
+     "question_for_dustin": false,
+     "pictures": [],
+     "plan_row": {
+      "file": "work/handoffs/phase-3/20261111_Rounds-1-2-Data-Plan.md",
+      "row": 40,
+      "said": "S01's survey shares and votes as a five-row table."
+     },
+     "built": "The 2023 survey's shares alone."
+    },
+    {
+     "id": "S20",
+     "spec": "S20",
+     "rule": "14.20",
+     "title": "S20, homeownership by age",
+     "answer": "S20 reads a second file with the Census Bureau's published margins for its 2015 and 2025 rates, so its title claims the rise for householders under 35 only because it passes its margin.",
+     "what_changed": "A margins file beside the planned rates file, and a note that prints each change's margin.",
+     "why": "Rule 14.9 lets a chart single out a survey change only past its margin; the under-35 rate rose 2.0 points against a margin of about 0.8.",
+     "recommendation": "Approve S20 as drawn.",
+     "refs": [
+      "D3-309",
+      "D3-354"
+     ],
+     "question_for_dustin": false,
+     "pictures": [],
+     "plan_row": {
+      "file": "work/handoffs/phase-3/20261111_Rounds-1-2-Data-Plan.md",
+      "row": 6,
+      "said": "`census-hvs-homeownership-by-age` alone."
+     },
+     "built": "Adds `census-hvs-homeownership-by-age-moe` (research ledger P7-222)."
+    },
+    {
+     "id": "plan-changes",
+     "title": "Changes the data lead made to the data plans before anything was fetched",
+     "answer": "Seventeen changes, five to the rounds 1 and 2 plan and twelve to the round 3 plan, each made before the research lead fetched the data, so the plan rows already carry them. They are listed so you can see where the specimens differ from the coverage plan you approved.",
+     "what_changed": "Each row gives the change in a line.",
+     "why": "Each keeps the form and tier and fixes a period, a source, a grouping or a rule the drawing needs.",
+     "recommendation": "Approve the changes as listed.",
+     "refs": [
+      "DR-229"
+     ],
+     "question_for_dustin": false,
+     "pictures": [],
+     "rows": [
+      {
+       "spec": "S25",
+       "rule": "14.27",
+       "what_changed": "Federal civilian employees by agency from January 2022 to August 2026, so the window does not start four months before an inauguration.",
+       "refs": []
+      },
+      {
+       "spec": "S33",
+       "rule": "14.40",
+       "what_changed": "The fastest-growing of seven revenue sources in ink and the rest in gray, since no chart colors more than four groups.",
+       "refs": [
+        "DR-234"
+       ]
+      },
+      {
+       "spec": "S46",
+       "rule": "14.51",
+       "what_changed": "Health spending folded into four payers, the last hatched, with the folded payers listed.",
+       "refs": []
+      },
+      {
+       "spec": "S47",
+       "rule": "14.52",
+       "what_changed": "Federal spending by function in one light fill, the named function in ink, small tiles folded in the table.",
+       "refs": []
+      },
+      {
+       "spec": "S26",
+       "rule": "14.28",
+       "what_changed": "Parties in one neutral ink, each party named on its marks; S48 the same.",
+       "refs": []
+      },
+      {
+       "spec": "S61",
+       "rule": "14.87",
+       "what_changed": "H.R. 7008 named with both of its provisions at first mention.",
+       "refs": [
+        "DR-98"
+       ]
+      },
+      {
+       "spec": "S20",
+       "rule": "14.20",
+       "what_changed": "The 2025 averages say they leave out October 2025, which the Census Bureau did not collect; S31 marks that month missing.",
+       "refs": []
+      },
+      {
+       "spec": "S74",
+       "rule": "14.105",
+       "what_changed": "The matrix groups the atlas's 51 variables by its ten regions, since 20 variables have no domain.",
+       "refs": []
+      },
+      {
+       "spec": "S79",
+       "rule": "14.118",
+       "what_changed": "Counted under taking part, trust and shared norms, the public meeting in chapter 01's photograph.",
+       "refs": []
+      },
+      {
+       "spec": "S77",
+       "rule": "14.112",
+       "what_changed": "Counted under Congress, agencies and public services, with the renewal funnel.",
+       "refs": []
+      },
+      {
+       "spec": "S66",
+       "rule": "14.96",
+       "what_changed": "Adds the court review sections (5 U.S.C. 701 to 706) and Executive Order 14215 of February 18, 2025.",
+       "refs": []
+      },
+      {
+       "spec": "S70",
+       "rule": "14.100",
+       "what_changed": "Each court's authorized judgeships, and the territorial courts cited from title 48 as courts that are not Article III courts.",
+       "refs": []
+      },
+      {
+       "spec": "S75",
+       "rule": "14.106",
+       "what_changed": "One chamber, the one with more matching bills, found by a stated search of every title a bill carries.",
+       "refs": []
+      },
+      {
+       "spec": "S76",
+       "rule": "14.110",
+       "what_changed": "Cash on hand at the start and end of the cycle so the node balances, with loans and repayments as their own lines.",
+       "refs": []
+      },
+      {
+       "spec": "S73",
+       "rule": "14.104",
+       "what_changed": "One stated rule picks each nominee's committee, read the same way for both; the review later widened it to every committee (above).",
+       "refs": []
+      },
+      {
+       "spec": "S80",
+       "rule": "14.119",
+       "what_changed": "One margin rule for every kind of seat, with unopposed, one-party, ranked-choice and Louisiana seats named; S82 the same.",
+       "refs": []
+      },
+      {
+       "spec": "S84",
+       "rule": "14.123",
+       "what_changed": "Panels after the federal $7.25 took effect in July 2009; you set January 1 of 2010, 2014, 2019 and 2024.",
+       "refs": [
+        "DR-243"
+       ]
+      },
+      {
+       "spec": "S65",
+       "rule": "14.93",
+       "what_changed": "Nested stages from one base, renewals due, with CMS's own figures and period.",
+       "refs": []
+      },
+      {
+       "spec": "S67",
+       "rule": "14.97",
+       "what_changed": "The first branch asks whether a state ban reaches city elections, with the bans reconfirmed after the November 3, 2026 election.",
+       "refs": []
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "atlas-v7-1",
+   "title": "Atlas V7.1 items",
+   "lede": "Waiting for the research lead's facts.",
+   "approval": "each",
+   "items": []
+  },
+  {
+   "id": "answered",
+   "title": "Answered before the board",
+   "lede": "You answered five questions on November 13 before the board's pictures were taken. Each is done, shown with its old version beside it.",
+   "approval": "none",
+   "items": []
+  }
+ ],
+ "counts": {
+  "script": "work/build/scripts/phase-3/board_2_data_lead_counts.py",
+  "run_utc": "2026-11-13T17:25:28Z",
+  "rule_01_9": {
+   "limits": {
+    "domain": "1 in 4",
+    "state": "1 in 5"
+   },
+   "total_examples": 108,
+   "limit_domain": 27,
+   "limit_state": 21,
+   "atlas_wide": 9,
+   "by_domain": [
+    {
+     "domain": "D08",
+     "title": "Taxes, wealth and economic security",
+     "count": 16,
+     "limit": 27,
+     "share": 0.148,
+     "passes": true
+    },
+    {
+     "domain": "D09",
+     "title": "Housing, health care and getting ahead",
+     "count": 14,
+     "limit": 27,
+     "share": 0.13,
+     "passes": true
+    },
+    {
+     "domain": "D04",
+     "title": "Congress, agencies and public services",
+     "count": 13,
+     "limit": 27,
+     "share": 0.12,
+     "passes": true
+    },
+    {
+     "domain": "D02",
+     "title": "Elections and representation",
+     "count": 12,
+     "limit": 27,
+     "share": 0.111,
+     "passes": true
+    },
+    {
+     "domain": "D07",
+     "title": "Work, pay and bargaining power",
+     "count": 10,
+     "limit": 27,
+     "share": 0.093,
+     "passes": true
+    },
+    {
+     "domain": "D10",
+     "title": "Taking part, trust and shared norms",
+     "count": 8,
+     "limit": 27,
+     "share": 0.074,
+     "passes": true
+    },
+    {
+     "domain": "D03",
+     "title": "Money, lobbying and influence",
+     "count": 7,
+     "limit": 27,
+     "share": 0.065,
+     "passes": true
+    },
+    {
+     "domain": "D05",
+     "title": "Checks on power and equal justice",
+     "count": 7,
+     "limit": 27,
+     "share": 0.065,
+     "passes": true
+    },
+    {
+     "domain": "D01",
+     "title": "News, records and public information",
+     "count": 6,
+     "limit": 27,
+     "share": 0.056,
+     "passes": true
+    },
+    {
+     "domain": "D06",
+     "title": "Competition and market power",
+     "count": 6,
+     "limit": 27,
+     "share": 0.056,
+     "passes": true
+    }
+   ],
+   "by_state": [
+    {
+     "state": "California",
+     "code": "CA",
+     "count": 5,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Florida",
+     "code": "FL",
+     "count": 5,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "New York",
+     "code": "NY",
+     "count": 4,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Illinois",
+     "code": "IL",
+     "count": 2,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Massachusetts",
+     "code": "MA",
+     "count": 2,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Michigan",
+     "code": "MI",
+     "count": 2,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Mississippi",
+     "code": "MS",
+     "count": 2,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "North Dakota",
+     "code": "ND",
+     "count": 2,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Ohio",
+     "code": "OH",
+     "count": 2,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Texas",
+     "code": "TX",
+     "count": 2,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Alaska",
+     "code": "AK",
+     "count": 1,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Connecticut",
+     "code": "CT",
+     "count": 1,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Georgia",
+     "code": "GA",
+     "count": 1,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Montana",
+     "code": "MT",
+     "count": 1,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "New Jersey",
+     "code": "NJ",
+     "count": 1,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "North Carolina",
+     "code": "NC",
+     "count": 1,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Pennsylvania",
+     "code": "PA",
+     "count": 1,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Tennessee",
+     "code": "TN",
+     "count": 1,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Utah",
+     "code": "UT",
+     "count": 1,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Vermont",
+     "code": "VT",
+     "count": 1,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Washington",
+     "code": "WA",
+     "count": 1,
+     "limit": 21,
+     "passes": true
+    },
+    {
+     "state": "Wyoming",
+     "code": "WY",
+     "count": 1,
+     "limit": 21,
+     "passes": true
+    }
+   ],
+   "passes": true,
+   "built": {
+    "examples": 97,
+    "limit_domain": 24,
+    "limit_state": 19,
+    "atlas_wide": 9,
+    "by_domain": [
+     {
+      "domain": "D08",
+      "title": "Taxes, wealth and economic security",
+      "count": 15,
+      "limit": 24,
+      "share": 0.155,
+      "passes": true
+     },
+     {
+      "domain": "D02",
+      "title": "Elections and representation",
+      "count": 12,
+      "limit": 24,
+      "share": 0.124,
+      "passes": true
+     },
+     {
+      "domain": "D09",
+      "title": "Housing, health care and getting ahead",
+      "count": 11,
+      "limit": 24,
+      "share": 0.113,
+      "passes": true
+     },
+     {
+      "domain": "D04",
+      "title": "Congress, agencies and public services",
+      "count": 10,
+      "limit": 24,
+      "share": 0.103,
+      "passes": true
+     },
+     {
+      "domain": "D07",
+      "title": "Work, pay and bargaining power",
+      "count": 9,
+      "limit": 24,
+      "share": 0.093,
+      "passes": true
+     },
+     {
+      "domain": "D10",
+      "title": "Taking part, trust and shared norms",
+      "count": 8,
+      "limit": 24,
+      "share": 0.082,
+      "passes": true
+     },
+     {
+      "domain": "D03",
+      "title": "Money, lobbying and influence",
+      "count": 7,
+      "limit": 24,
+      "share": 0.072,
+      "passes": true
+     },
+     {
+      "domain": "D06",
+      "title": "Competition and market power",
+      "count": 6,
+      "limit": 24,
+      "share": 0.062,
+      "passes": true
+     },
+     {
+      "domain": "D01",
+      "title": "News, records and public information",
+      "count": 5,
+      "limit": 24,
+      "share": 0.052,
+      "passes": true
+     },
+     {
+      "domain": "D05",
+      "title": "Checks on power and equal justice",
+      "count": 5,
+      "limit": 24,
+      "share": 0.052,
+      "passes": true
+     }
+    ],
+    "by_state": [
+     {
+      "state": "California",
+      "code": "CA",
+      "count": 5,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Florida",
+      "code": "FL",
+      "count": 5,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "New York",
+      "code": "NY",
+      "count": 4,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Illinois",
+      "code": "IL",
+      "count": 2,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Michigan",
+      "code": "MI",
+      "count": 2,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "North Dakota",
+      "code": "ND",
+      "count": 2,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Ohio",
+      "code": "OH",
+      "count": 2,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Texas",
+      "code": "TX",
+      "count": 2,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Alaska",
+      "code": "AK",
+      "count": 1,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Connecticut",
+      "code": "CT",
+      "count": 1,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Georgia",
+      "code": "GA",
+      "count": 1,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Massachusetts",
+      "code": "MA",
+      "count": 1,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Mississippi",
+      "code": "MS",
+      "count": 1,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Montana",
+      "code": "MT",
+      "count": 1,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "New Jersey",
+      "code": "NJ",
+      "count": 1,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "North Carolina",
+      "code": "NC",
+      "count": 1,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Pennsylvania",
+      "code": "PA",
+      "count": 1,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Tennessee",
+      "code": "TN",
+      "count": 1,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Utah",
+      "code": "UT",
+      "count": 1,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Vermont",
+      "code": "VT",
+      "count": 1,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Washington",
+      "code": "WA",
+      "count": 1,
+      "limit": 19,
+      "passes": true
+     },
+     {
+      "state": "Wyoming",
+      "code": "WY",
+      "count": 1,
+      "limit": 19,
+      "passes": true
+     }
+    ],
+    "passes": true
+   },
+   "ruling_g": 108,
+   "recount": 108,
+   "agrees_with_generator_log": true,
+   "generator_log": "work/build/guide/entries/14-example-log.json",
+   "round_4_rows": [
+    {
+     "where": "Round 4 row 115",
+     "rule": "14.79",
+     "form": "Icon array with Civic Line icons",
+     "domain": "D07",
+     "states": [],
+     "kind": "planned",
+     "round": 4
+    },
+    {
+     "where": "Round 4 row 116",
+     "rule": "14.80",
+     "form": "Proportional symbols",
+     "domain": "D04",
+     "states": [],
+     "kind": "planned",
+     "round": 4
+    },
+    {
+     "where": "Round 4 row 117",
+     "rule": "14.81",
+     "form": "Venn diagram",
+     "domain": "D09",
+     "states": [],
+     "kind": "planned",
+     "round": 4
+    },
+    {
+     "where": "Round 4 row 118",
+     "rule": "14.82",
+     "form": "Euler diagram",
+     "domain": "D09",
+     "states": [],
+     "kind": "planned",
+     "round": 4
+    },
+    {
+     "where": "Round 4 row 121",
+     "rule": "14.135",
+     "form": "Process explainer",
+     "domain": "D04",
+     "states": [],
+     "kind": "planned",
+     "round": 4
+    },
+    {
+     "where": "Round 4 row 122",
+     "rule": "14.136",
+     "form": "By-the-numbers panel",
+     "domain": "D09",
+     "states": [],
+     "kind": "planned",
+     "round": 4
+    },
+    {
+     "where": "Round 4 row 123",
+     "rule": "14.137",
+     "form": "Comparison cards",
+     "domain": "D05",
+     "states": [],
+     "kind": "planned",
+     "round": 4
+    },
+    {
+     "where": "Round 4 row 124",
+     "rule": "14.138",
+     "form": "Step-by-step",
+     "domain": "D01",
+     "states": [],
+     "kind": "planned",
+     "round": 4
+    },
+    {
+     "where": "Round 4 row 125",
+     "rule": "14.139",
+     "form": "Annotated illustration",
+     "domain": "D04",
+     "states": [],
+     "kind": "planned",
+     "round": 4
+    },
+    {
+     "where": "Round 4 row 126",
+     "rule": "14.140",
+     "form": "Calendar",
+     "domain": "D08",
+     "states": [],
+     "kind": "planned",
+     "round": 4
+    },
+    {
+     "where": "Round 4 row 127",
+     "rule": "14.141",
+     "form": "Social data card",
+     "domain": "D05",
+     "states": [
+      "MA",
+      "MS"
+     ],
+     "kind": "planned",
+     "round": 4
+    }
+   ],
+   "note": "Chapter 14 holds 97 examples as built, 84 specimens and 13 rule plates, and 108 with round 4's 11 as planned, the figure the data lead's ruling (g) gave. No atlas domain passes one in four (27 of 108) and no state passes one in five (21). Taxes, wealth and economic security is the largest domain at 16, and California and Florida are the most named states at 5 each. The script's count of the 97 equals the guide's own build log."
+  },
+  "dr_229": {
+   "test": "D3-689: a form keeps election data only where the coverage plan writes its use as an election question",
+   "examples": [
+    {
+     "where": "Rule 14.3 plate",
+     "rule": "14.3",
+     "kind": "rule plate",
+     "domain": "D10",
+     "data": "voting: reported voting or turnout, counted under taking part",
+     "dataset": [],
+     "example": "Reported voting by age, presidential years 2004 to 2024",
+     "test": "not a form: a rule's plate, whose data the rule itself needs",
+     "election_data": true,
+     "passes": false
+    },
+    {
+     "where": "Rule 14.4 plate",
+     "rule": "14.4",
+     "kind": "rule plate",
+     "domain": "D10",
+     "data": "voting: reported voting or turnout, counted under taking part",
+     "dataset": [],
+     "example": "Reported voting, citizens 18 and over, presidential years",
+     "test": "not a form: a rule's plate, whose data the rule itself needs",
+     "election_data": true,
+     "passes": false
+    },
+    {
+     "where": "Rule 14.7 plate",
+     "rule": "14.7",
+     "kind": "rule plate",
+     "domain": "D02",
+     "data": "election results, seats or election rules",
+     "dataset": [],
+     "example": "House seats by party, November 11, 2026",
+     "test": "not a form: a rule's plate, whose data the rule itself needs",
+     "election_data": true,
+     "passes": false
+    },
+    {
+     "where": "Rule 14.9 plate",
+     "rule": "14.9",
+     "kind": "rule plate",
+     "domain": "D10",
+     "data": "voting: reported voting or turnout, counted under taking part",
+     "dataset": [],
+     "example": "Reported turnout, ten states with the most voting-age citizens, 2024",
+     "test": "not a form: a rule's plate, whose data the rule itself needs",
+     "election_data": true,
+     "passes": false
+    },
+    {
+     "where": "S03",
+     "rule": "14.15",
+     "kind": "specimen",
+     "domain": "D02",
+     "data": "the atlas's log of rule changes, counted under elections",
+     "dataset": [
+      "v7-repair-log-by-instrument"
+     ],
+     "example": "The atlas codes nine of the 11 state statutes in its log as moving the rules away from voters.",
+     "form": "Ranked bar",
+     "coverage_use": "Ranking places, groups, instruments",
+     "election_use": false,
+     "built_in_phase_2": true,
+     "spec": "S03",
+     "test": "not applied: built in Phase 2 and approved on board 1, before the test",
+     "election_data": true,
+     "passes": false
+    },
+    {
+     "where": "S04",
+     "rule": "14.19",
+     "kind": "specimen",
+     "domain": "D10",
+     "data": "voting: reported voting or turnout, counted under taking part",
+     "dataset": [
+      "census-cps-reported-voting",
+      "census-cps-voting-age-gap-moe"
+     ],
+     "example": "The gap in reported voting between citizens 18 to 24 and those 65 and over grew from 23 points in 2020 to 27 in 2024.",
+     "form": "Dumbbell",
+     "coverage_use": "Two values per item",
+     "election_use": false,
+     "built_in_phase_2": true,
+     "spec": "S04",
+     "test": "not applied: built in Phase 2 and approved on board 1, before the test",
+     "election_data": true,
+     "passes": false
+    },
+    {
+     "where": "S11",
+     "rule": "14.25",
+     "kind": "specimen",
+     "domain": "D02",
+     "data": "election results, seats or election rules",
+     "dataset": [
+      "fec-presidential-shift-by-state"
+     ],
+     "example": "The margin in every state and DC moved toward the Republican nominee from 2020 to 2024, by 1.0 point in Washington to 10.5 points in New York.",
+     "form": "Shift arrows (from, to)",
+     "coverage_use": "Change between two elections or two years",
+     "election_use": true,
+     "built_in_phase_2": true,
+     "spec": "S11",
+     "test": "passes",
+     "election_data": true,
+     "passes": true
+    },
+    {
+     "where": "S26",
+     "rule": "14.28",
+     "kind": "specimen",
+     "domain": "D02",
+     "data": "election results, seats or election rules",
+     "dataset": [
+      "house-history-party-divisions"
+     ],
+     "example": "Republicans won five more House seats than Democrats in the 2024 election, the smallest lead in the first count for any Congress since 1951.",
+     "form": "Diverging bar with arrows over time",
+     "coverage_use": "A majority or advantage election by election",
+     "election_use": true,
+     "built_in_phase_2": false,
+     "spec": "S26",
+     "test": "passes",
+     "election_data": true,
+     "passes": true
+    },
+    {
+     "where": "S08",
+     "rule": "14.49",
+     "kind": "specimen",
+     "domain": "D02",
+     "data": "the atlas's log of rule changes, counted under elections",
+     "dataset": [
+      "v7-repair-log"
+     ],
+     "example": "Of the 64 rule changes in its log, the atlas codes 24 as moving the rules toward voters and 24 as moving them away.",
+     "form": "Unit chart or waffle",
+     "coverage_use": "A count a reader can see",
+     "election_use": false,
+     "built_in_phase_2": true,
+     "spec": "S08",
+     "test": "not applied: built in Phase 2 and approved on board 1, before the test",
+     "election_data": true,
+     "passes": false
+    },
+    {
+     "where": "S48",
+     "rule": "14.53",
+     "kind": "specimen",
+     "domain": "D02",
+     "data": "election results, seats or election rules",
+     "dataset": [
+      "clerk-house-current-party-breakdown",
+      "house-history-party-divisions"
+     ],
+     "example": "Republicans held 218 of the House’s 435 seats on November 11, 2026, and Democrats 214, with one independent and two seats vacant.",
+     "form": "Parliament chart",
+     "coverage_use": "Seats in a chamber, party marks neutral",
+     "election_use": true,
+     "built_in_phase_2": false,
+     "spec": "S48",
+     "test": "passes",
+     "election_data": true,
+     "passes": true
+    },
+    {
+     "where": "S67",
+     "rule": "14.97",
+     "kind": "specimen",
+     "domain": "D02",
+     "data": "election results, seats or election rules",
+     "dataset": [
+      "ballotpedia-rcv-prohibitions-by-state",
+      "v7-rcv-local-routes"
+     ],
+     "example": "A state ban on ranked-choice voting reaches city elections in 18 states and partly in Ohio, and elsewhere the answer turns on state home-rule law.",
+     "form": "Decision tree",
+     "coverage_use": "\"Can my city adopt ranked-choice voting?\"",
+     "election_use": true,
+     "built_in_phase_2": false,
+     "spec": "S67",
+     "test": "passes",
+     "election_data": true,
+     "passes": true
+    },
+    {
+     "where": "S07",
+     "rule": "14.114",
+     "kind": "specimen",
+     "domain": "D02",
+     "data": "election results, seats or election rules",
+     "dataset": [
+      "ballotpedia-rcv-prohibitions-by-state"
+     ],
+     "example": "Nineteen states ban ranked-choice voting as of November 2026, 17 of them in all elections, by Ballotpedia’s reading.",
+     "form": "Tile-grid map, categorical",
+     "coverage_use": "States by status, every state equal",
+     "election_use": false,
+     "built_in_phase_2": true,
+     "spec": "S07",
+     "test": "not applied: built in Phase 2 and approved on board 1, before the test",
+     "election_data": true,
+     "passes": false
+    },
+    {
+     "where": "S12",
+     "rule": "14.115",
+     "kind": "specimen",
+     "domain": "D02",
+     "data": "election results, seats or election rules",
+     "dataset": [
+      "fec-presidential-shift-by-state"
+     ],
+     "example": "New York, New Jersey, Florida and California moved furthest toward the Republican nominee, each by 9 points or more.",
+     "form": "Tile-grid map with shift arrows",
+     "coverage_use": "Where a shift happened",
+     "election_use": false,
+     "built_in_phase_2": true,
+     "spec": "S12",
+     "test": "not applied: built in Phase 2 and approved on board 1, before the test",
+     "election_data": true,
+     "passes": false
+    },
+    {
+     "where": "S16",
+     "rule": "14.116",
+     "kind": "specimen",
+     "domain": "D10",
+     "data": "voting: reported voting or turnout, counted under taking part",
+     "dataset": [
+      "census-cps-2024-turnout-by-state"
+     ],
+     "example": "Texas, Florida and New York, three of the four states with the most citizens 18 and over, reported turnout below the national 65.3 percent by more than the survey’s margin of error.",
+     "form": "Bubble map",
+     "coverage_use": "Size and shade by state",
+     "election_use": false,
+     "built_in_phase_2": true,
+     "spec": "S16",
+     "test": "not applied: built in Phase 2 and approved on board 1, before the test",
+     "election_data": true,
+     "passes": false
+    },
+    {
+     "where": "S80",
+     "rule": "14.119",
+     "kind": "specimen",
+     "domain": "D02",
+     "data": "election results, seats or election rules",
+     "dataset": [
+      "clerk-house-results-2024-classes",
+      "census-cb-2024-cd119"
+     ],
+     "example": "Michigan’s closest House race in 2024, in the 7th district, was decided by 3.7 points, and seven of its 13 races by 20 points or more.",
+     "form": "District map",
+     "coverage_use": "House districts",
+     "election_use": true,
+     "built_in_phase_2": false,
+     "spec": "S80",
+     "test": "passes",
+     "election_data": true,
+     "passes": true
+    },
+    {
+     "where": "S82",
+     "rule": "14.121",
+     "kind": "specimen",
+     "domain": "D02",
+     "data": "election results, seats or election rules",
+     "dataset": [
+      "clerk-house-results-2024-classes"
+     ],
+     "example": "Republicans won 220 House seats in November 2024 and Democrats 215, and 36 of the 435 races were decided by under 5 points.",
+     "form": "District tile map",
+     "coverage_use": "Every House seat as a square",
+     "election_use": true,
+     "built_in_phase_2": false,
+     "spec": "S82",
+     "test": "passes",
+     "election_data": true,
+     "passes": true
+    },
+    {
+     "where": "S15",
+     "rule": "14.125",
+     "kind": "specimen",
+     "domain": "D02",
+     "data": "election results, seats or election rules",
+     "dataset": [
+      "fec-presidential-shift-by-state"
+     ],
+     "example": "The Republican nominee led in 31 states in 2024, six more than in 2020; in four of the six states that changed leader, the lead was under 2.5 points.",
+     "form": "Results table with margin cells",
+     "coverage_use": "Races or states with margins and shift",
+     "election_use": true,
+     "built_in_phase_2": true,
+     "spec": "S15",
+     "test": "passes",
+     "election_data": true,
+     "passes": true
+    }
+   ],
+   "count": 17,
+   "election_domain": 12,
+   "voting_under_taking_part": 5,
+   "new_forms_pass": 5,
+   "new_forms_fail": 0,
+   "built_specimens": 8,
+   "rule_plates": 4,
+   "round_4_planned_election_rows": 0,
+   "note": "Seventeen of the 97 examples draw election or voting data: 12 in elections and representation, and 5 on reported voting, counted under taking part. Every form built in rounds 1 to 3 that keeps election data passes D3-689's test, since the coverage plan writes its use as an election question: S26, S48, S67, S80 and S82. Eight are Phase 2 specimens board 1 approved before the test (S03, S04, S07, S08, S11, S12, S15 and S16), and four are rule plates whose rules need the data. Round 4 plans no election data."
+  }
+ },
+ "checks": {
+  "script": "work/build/scripts/phase-3/board_2_data_lead_counts.py",
+  "run_utc": "2026-11-13T17:25:28Z",
+  "tiers": {
+   "forms": 114,
+   "by_tier": {
+    "core": 50,
+    "extended": 36,
+    "avoid": 7,
+    "reference": 21
+   },
+   "changed": [],
+   "unmatched_in_coverage_plan": [],
+   "rows": [
+    {
+     "rule": "14.15",
+     "form": "Ranked bar",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.16",
+     "form": "Column",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.17",
+     "form": "Bar with a benchmark tick",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.18",
+     "form": "Dot plot",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.19",
+     "form": "Dumbbell",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.20",
+     "form": "Slope chart",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.21",
+     "form": "Lollipop",
+     "round": 1,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.22",
+     "form": "Grouped bar",
+     "round": 1,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.23",
+     "form": "Small-multiple bars",
+     "round": 1,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.24",
+     "form": "Radar chart",
+     "round": 1,
+     "coverage plan": "avoid",
+     "chapter 14 plan": "avoid",
+     "data plan": "avoid",
+     "entry": "avoid",
+     "changed": false
+    },
+    {
+     "rule": "14.25",
+     "form": "Shift arrows (from, to)",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.26",
+     "form": "Change lollipop with a size-of-shift key",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.27",
+     "form": "Diverging bar",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.28",
+     "form": "Diverging bar with arrows over time",
+     "round": 1,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.29",
+     "form": "Line with event notes",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.30",
+     "form": "Multi-line with one highlighted",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.31",
+     "form": "Line field with highlight",
+     "round": 1,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.32",
+     "form": "Columns with a moving average",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.33",
+     "form": "Sparkline",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.34",
+     "form": "Small-multiple area sparklines",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.35",
+     "form": "Area chart",
+     "round": 1,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.36",
+     "form": "Step line",
+     "round": 1,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.37",
+     "form": "Line with a data gap marked",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.38",
+     "form": "Timeline",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.39",
+     "form": "Implementation timeline",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.40",
+     "form": "Indexed line",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.41",
+     "form": "Bubble timeline",
+     "round": 1,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.42",
+     "form": "Benefit-cliff line",
+     "round": 1,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.43",
+     "form": "Run chart",
+     "round": 1,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.44",
+     "form": "Cycle or seasonal chart",
+     "round": 1,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.45",
+     "form": "Streamgraph",
+     "round": 1,
+     "coverage plan": "avoid",
+     "chapter 14 plan": "avoid",
+     "data plan": "avoid",
+     "entry": "avoid",
+     "changed": false
+    },
+    {
+     "rule": "14.46",
+     "form": "100 percent bar",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.47",
+     "form": "Stacked share bar with a midline",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.48",
+     "form": "Waterfall",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.49",
+     "form": "Unit chart or waffle",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.50",
+     "form": "Stacked column",
+     "round": 2,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.51",
+     "form": "Stacked area",
+     "round": 2,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.52",
+     "form": "Treemap",
+     "round": 2,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.53",
+     "form": "Parliament chart",
+     "round": 2,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.54",
+     "form": "Pie",
+     "round": 2,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.55",
+     "form": "Donut with a center number",
+     "round": 2,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.56",
+     "form": "Marimekko",
+     "round": 2,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.57",
+     "form": "3D pie or bar",
+     "round": 2,
+     "coverage plan": "avoid",
+     "chapter 14 plan": "avoid",
+     "data plan": "avoid",
+     "entry": "avoid",
+     "changed": false
+    },
+    {
+     "rule": "14.58",
+     "form": "Histogram",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.59",
+     "form": "Beeswarm or strip plot",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.60",
+     "form": "Box plot",
+     "round": 2,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.61",
+     "form": "Line histogram",
+     "round": 2,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.62",
+     "form": "Population pyramid",
+     "round": 2,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.63",
+     "form": "Violin",
+     "round": 2,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.64",
+     "form": "Ridgeline",
+     "round": 2,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.65",
+     "form": "Hexbin",
+     "round": 2,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.66",
+     "form": "Contour or density",
+     "round": 2,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.67",
+     "form": "Scatter plot with named points",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.68",
+     "form": "Bubble chart",
+     "round": 2,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.69",
+     "form": "Connected scatter",
+     "round": 2,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.70",
+     "form": "Correlogram",
+     "round": 2,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.71",
+     "form": "Pair plot",
+     "round": 2,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.72",
+     "form": "Trajectory or speed chart",
+     "round": 2,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.73",
+     "form": "Dual-axis line",
+     "round": 2,
+     "coverage plan": "avoid",
+     "chapter 14 plan": "avoid",
+     "data plan": "avoid",
+     "entry": "avoid",
+     "changed": false
+    },
+    {
+     "rule": "14.74",
+     "form": "Range bar or error bar",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.75",
+     "form": "Confidence band on a line",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.76",
+     "form": "Scenario directions",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.77",
+     "form": "Fan chart",
+     "round": 2,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.78",
+     "form": "Hypothetical outcomes",
+     "round": 2,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.85",
+     "form": "Big number in context",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.86",
+     "form": "Indicator row",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.87",
+     "form": "Progress bar",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.88",
+     "form": "Step tracker",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.89",
+     "form": "Status chips",
+     "round": 2,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.90",
+     "form": "Bullet graph",
+     "round": 2,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.91",
+     "form": "Gauge",
+     "round": 2,
+     "coverage plan": "avoid",
+     "chapter 14 plan": "avoid",
+     "data plan": "avoid",
+     "entry": "avoid",
+     "changed": false
+    },
+    {
+     "rule": "14.92",
+     "form": "Thermometer",
+     "round": 2,
+     "coverage plan": "avoid",
+     "chapter 14 plan": "avoid",
+     "data plan": "avoid",
+     "entry": "avoid",
+     "changed": false
+    },
+    {
+     "rule": "14.93",
+     "form": "Funnel",
+     "round": 3,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.94",
+     "form": "Cohort chart",
+     "round": 3,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.95",
+     "form": "Survival curve",
+     "round": 3,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.96",
+     "form": "Process diagram",
+     "round": 3,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.97",
+     "form": "Decision tree",
+     "round": 3,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.98",
+     "form": "Who-decides diagram",
+     "round": 3,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.99",
+     "form": "Org chart",
+     "round": 3,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.100",
+     "form": "Hierarchy tree",
+     "round": 3,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.101",
+     "form": "Comparison grid",
+     "round": 3,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.102",
+     "form": "Roll-call grid",
+     "round": 3,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.103",
+     "form": "Mind map",
+     "round": 3,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.104",
+     "form": "Network diagram",
+     "round": 3,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.105",
+     "form": "Adjacency matrix",
+     "round": 3,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.106",
+     "form": "Arc diagram",
+     "round": 3,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.107",
+     "form": "Chord diagram",
+     "round": 3,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.108",
+     "form": "Multi-network",
+     "round": 3,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.109",
+     "form": "Symmetrical links",
+     "round": 3,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.110",
+     "form": "Sankey",
+     "round": 3,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.111",
+     "form": "Alluvial",
+     "round": 3,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.112",
+     "form": "Journey map",
+     "round": 3,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.113",
+     "form": "Flow map",
+     "round": 3,
+     "coverage plan": "reference",
+     "chapter 14 plan": "reference",
+     "data plan": "reference",
+     "entry": "reference",
+     "changed": false
+    },
+    {
+     "rule": "14.114",
+     "form": "Tile-grid map, categorical",
+     "round": 3,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.115",
+     "form": "Tile-grid map with shift arrows",
+     "round": 3,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.116",
+     "form": "Bubble map",
+     "round": 3,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.117",
+     "form": "Choropleth, sequential",
+     "round": 3,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.118",
+     "form": "Locator map",
+     "round": 3,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.119",
+     "form": "District map",
+     "round": 3,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.120",
+     "form": "County choropleth",
+     "round": 3,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.121",
+     "form": "District tile map",
+     "round": 3,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.122",
+     "form": "Dot density map",
+     "round": 3,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.123",
+     "form": "Small-multiple maps",
+     "round": 3,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.124",
+     "form": "Party-colored map or red and blue scale",
+     "round": 3,
+     "coverage plan": "avoid",
+     "chapter 14 plan": "avoid",
+     "data plan": "avoid",
+     "entry": "avoid",
+     "changed": false
+    },
+    {
+     "rule": "14.125",
+     "form": "Results table with margin cells",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.126",
+     "form": "Ranked register",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.127",
+     "form": "Comparison matrix",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.128",
+     "form": "Sparkline table",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.129",
+     "form": "Heat table",
+     "round": 1,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.130",
+     "form": "Filterable lookup table",
+     "round": 1,
+     "coverage plan": "extended",
+     "chapter 14 plan": "extended",
+     "data plan": "extended",
+     "entry": "extended",
+     "spec": "extended",
+     "changed": false
+    },
+    {
+     "rule": "14.131",
+     "form": "Evidence table",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.132",
+     "form": "Tracker list",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.133",
+     "form": "Plain table",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    },
+    {
+     "rule": "14.134",
+     "form": "One sentence",
+     "round": 1,
+     "coverage plan": "core",
+     "chapter 14 plan": "core",
+     "data plan": "core",
+     "entry": "core",
+     "spec": "core",
+     "changed": false
+    }
+   ]
+  },
+  "datasets": {
+   "specs": 86,
+   "not_as_planned": [
+    {
+     "rule": "14.19",
+     "spec": "S04",
+     "plan_row": 5,
+     "planned": [
+      "census-cps-reported-voting"
+     ],
+     "spec_dataset": [
+      "census-cps-reported-voting",
+      "census-cps-voting-age-gap-moe"
+     ],
+     "reaches": [
+      "census-cps-reported-voting",
+      "census-cps-voting-age-gap-moe"
+     ],
+     "missing": [],
+     "extra": [
+      "census-cps-voting-age-gap-moe"
+     ],
+     "status": "adds a file the plan row does not name"
+    },
+    {
+     "rule": "14.20",
+     "spec": "S20",
+     "plan_row": 6,
+     "planned": [
+      "census-hvs-homeownership-by-age"
+     ],
+     "spec_dataset": [
+      "census-hvs-homeownership-by-age",
+      "census-hvs-homeownership-by-age-moe"
+     ],
+     "reaches": [
+      "census-hvs-homeownership-by-age",
+      "census-hvs-homeownership-by-age-moe"
+     ],
+     "missing": [],
+     "extra": [
+      "census-hvs-homeownership-by-age-moe"
+     ],
+     "status": "adds a file the plan row does not name"
+    },
+    {
+     "rule": "14.30",
+     "spec": "S05",
+     "plan_row": 16,
+     "planned": [
+      "census-hvs-homeownership-by-race-annual"
+     ],
+     "spec_dataset": [
+      "census-hvs-homeownership-by-race-annual",
+      "census-hvs-homeownership-gap-moe"
+     ],
+     "reaches": [
+      "census-hvs-homeownership-by-race-annual",
+      "census-hvs-homeownership-gap-moe"
+     ],
+     "missing": [],
+     "extra": [
+      "census-hvs-homeownership-gap-moe"
+     ],
+     "status": "adds a file the plan row does not name"
+    },
+    {
+     "rule": "14.77",
+     "spec": "S59",
+     "plan_row": 73,
+     "planned": [
+      "frb-fomc-projections-unemployment"
+     ],
+     "spec_dataset": [
+      "frb-fomc-projections-unemployment",
+      "fred-unemployment-fourth-quarter"
+     ],
+     "reaches": [
+      "frb-fomc-projections-unemployment",
+      "fred-unemployment-and-job-openings",
+      "fred-unemployment-fourth-quarter"
+     ],
+     "missing": [],
+     "extra": [
+      "fred-unemployment-fourth-quarter"
+     ],
+     "status": "adds a file the plan row does not name"
+    },
+    {
+     "rule": "14.104",
+     "spec": "S73",
+     "plan_row": 94,
+     "planned": [
+      "fec-jfc-transfers-2024"
+     ],
+     "spec_dataset": [
+      "fec-jfc-transfers-2024-by-node"
+     ],
+     "reaches": [
+      "fec-jfc-transfers-2024-all-committees",
+      "fec-jfc-transfers-2024-by-node"
+     ],
+     "missing": [
+      "fec-jfc-transfers-2024"
+     ],
+     "extra": [
+      "fec-jfc-transfers-2024-by-node"
+     ],
+     "status": "none of the planned files"
+    }
+   ],
+   "rows": [
+    {
+     "rule": "14.15",
+     "spec": "S03",
+     "plan_row": 1,
+     "planned": [],
+     "spec_dataset": [
+      "v7-repair-log-by-instrument"
+     ],
+     "reaches": [
+      "v7-repair-log",
+      "v7-repair-log-by-instrument"
+     ],
+     "missing": [],
+     "extra": [
+      "v7-repair-log-by-instrument"
+     ],
+     "status": "plan row names no file (an atlas file or a built specimen)"
+    },
+    {
+     "rule": "14.16",
+     "spec": "S17",
+     "plan_row": 2,
+     "planned": [
+      "congress-gov-laws-by-congress"
+     ],
+     "spec_dataset": [
+      "congress-gov-laws-by-congress"
+     ],
+     "reaches": [
+      "congress-gov-laws-by-congress"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.17",
+     "spec": "S18",
+     "plan_row": 3,
+     "planned": [
+      "census-acs-income-shares-by-quintile"
+     ],
+     "spec_dataset": [
+      "census-acs-income-shares-by-quintile"
+     ],
+     "reaches": [
+      "census-acs-income-shares-by-quintile"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.18",
+     "spec": "S19",
+     "plan_row": 4,
+     "planned": [
+      "bjs-imprisonment-rate-by-state"
+     ],
+     "spec_dataset": [
+      "bjs-imprisonment-rate-by-state"
+     ],
+     "reaches": [
+      "bjs-imprisonment-rate-by-state"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.19",
+     "spec": "S04",
+     "plan_row": 5,
+     "planned": [
+      "census-cps-reported-voting"
+     ],
+     "spec_dataset": [
+      "census-cps-reported-voting",
+      "census-cps-voting-age-gap-moe"
+     ],
+     "reaches": [
+      "census-cps-reported-voting",
+      "census-cps-voting-age-gap-moe"
+     ],
+     "missing": [],
+     "extra": [
+      "census-cps-voting-age-gap-moe"
+     ],
+     "status": "adds a file the plan row does not name"
+    },
+    {
+     "rule": "14.20",
+     "spec": "S20",
+     "plan_row": 6,
+     "planned": [
+      "census-hvs-homeownership-by-age"
+     ],
+     "spec_dataset": [
+      "census-hvs-homeownership-by-age",
+      "census-hvs-homeownership-by-age-moe"
+     ],
+     "reaches": [
+      "census-hvs-homeownership-by-age",
+      "census-hvs-homeownership-by-age-moe"
+     ],
+     "missing": [],
+     "extra": [
+      "census-hvs-homeownership-by-age-moe"
+     ],
+     "status": "adds a file the plan row does not name"
+    },
+    {
+     "rule": "14.21",
+     "spec": "S21",
+     "plan_row": 7,
+     "planned": [
+      "v7-claims-by-grade"
+     ],
+     "spec_dataset": [
+      "v7-claims-by-grade"
+     ],
+     "reaches": [
+      "v7-claims-by-grade"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.22",
+     "spec": "S22",
+     "plan_row": 8,
+     "planned": [
+      "census-acs-labor-force-by-age-sex"
+     ],
+     "spec_dataset": [
+      "census-acs-labor-force-by-age-sex"
+     ],
+     "reaches": [
+      "census-acs-labor-force-by-age-sex"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.23",
+     "spec": "S23",
+     "plan_row": 9,
+     "planned": [
+      "v7-claims-by-grade"
+     ],
+     "spec_dataset": [
+      "v7-claims-by-hub-and-grade"
+     ],
+     "reaches": [
+      "v7-claims-by-grade",
+      "v7-claims-by-hub-and-grade"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.25",
+     "spec": "S11",
+     "plan_row": 11,
+     "planned": [
+      "fec-presidential-results-by-state"
+     ],
+     "spec_dataset": [
+      "fec-presidential-shift-by-state"
+     ],
+     "reaches": [
+      "fec-presidential-results-by-state",
+      "fec-presidential-shift-by-state"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.26",
+     "spec": "S24",
+     "plan_row": 12,
+     "planned": [
+      "census-bfs-business-applications-by-state"
+     ],
+     "spec_dataset": [
+      "census-bfs-business-applications-change-by-state"
+     ],
+     "reaches": [
+      "census-bfs-business-applications-by-state",
+      "census-bfs-business-applications-change-by-state"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.27",
+     "spec": "S25",
+     "plan_row": 13,
+     "planned": [
+      "opm-federal-employment-by-agency"
+     ],
+     "spec_dataset": [
+      "opm-federal-employment-by-agency"
+     ],
+     "reaches": [
+      "opm-federal-employment-by-agency"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.28",
+     "spec": "S26",
+     "plan_row": 14,
+     "planned": [
+      "house-history-party-divisions"
+     ],
+     "spec_dataset": [
+      "house-history-party-divisions"
+     ],
+     "reaches": [
+      "house-history-party-divisions"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.29",
+     "spec": "S02",
+     "plan_row": 15,
+     "planned": [
+      "census-spm-child-poverty"
+     ],
+     "spec_dataset": [
+      "census-spm-child-poverty"
+     ],
+     "reaches": [
+      "census-spm-child-poverty"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.30",
+     "spec": "S05",
+     "plan_row": 16,
+     "planned": [
+      "census-hvs-homeownership-by-race-annual"
+     ],
+     "spec_dataset": [
+      "census-hvs-homeownership-by-race-annual",
+      "census-hvs-homeownership-gap-moe"
+     ],
+     "reaches": [
+      "census-hvs-homeownership-by-race-annual",
+      "census-hvs-homeownership-gap-moe"
+     ],
+     "missing": [],
+     "extra": [
+      "census-hvs-homeownership-gap-moe"
+     ],
+     "status": "adds a file the plan row does not name"
+    },
+    {
+     "rule": "14.31",
+     "spec": "S27",
+     "plan_row": 17,
+     "planned": [
+      "fhfa-house-price-index-by-state"
+     ],
+     "spec_dataset": [
+      "fhfa-house-price-index-by-state"
+     ],
+     "reaches": [
+      "fhfa-house-price-index-by-state"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.32",
+     "spec": "S14",
+     "plan_row": 18,
+     "planned": [
+      "fred-payrolls-by-sector"
+     ],
+     "spec_dataset": [
+      "fred-payrolls-monthly-change"
+     ],
+     "reaches": [
+      "fred-payrolls-by-sector",
+      "fred-payrolls-monthly-change"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.33",
+     "spec": "S28",
+     "plan_row": 19,
+     "planned": [
+      "census-cbp-civic-organizations"
+     ],
+     "spec_dataset": [
+      "census-cbp-civic-organizations"
+     ],
+     "reaches": [
+      "census-cbp-civic-organizations"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.34",
+     "spec": "S13",
+     "plan_row": 20,
+     "planned": [
+      "fred-payrolls-by-sector"
+     ],
+     "spec_dataset": [
+      "fred-payrolls-by-sector-change"
+     ],
+     "reaches": [
+      "fred-payrolls-by-sector",
+      "fred-payrolls-by-sector-change"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.35",
+     "spec": "S29",
+     "plan_row": 21,
+     "planned": [
+      "census-cbp-newspaper-publishers"
+     ],
+     "spec_dataset": [
+      "census-cbp-newspaper-publishers"
+     ],
+     "reaches": [
+      "census-cbp-newspaper-publishers"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.36",
+     "spec": "S30",
+     "plan_row": 22,
+     "planned": [
+      "govinfo-child-tax-credit-by-law"
+     ],
+     "spec_dataset": [
+      "govinfo-child-tax-credit-by-law"
+     ],
+     "reaches": [
+      "govinfo-child-tax-credit-by-law"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.37",
+     "spec": "S31",
+     "plan_row": 23,
+     "planned": [
+      "fred-unemployment-and-job-openings"
+     ],
+     "spec_dataset": [
+      "fred-unemployment-and-job-openings"
+     ],
+     "reaches": [
+      "fred-unemployment-and-job-openings"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.38",
+     "spec": "S09",
+     "plan_row": 24,
+     "planned": [],
+     "spec_dataset": [
+      "v7-history-events"
+     ],
+     "reaches": [
+      "v7-history-events"
+     ],
+     "missing": [],
+     "extra": [
+      "v7-history-events"
+     ],
+     "status": "plan row names no file (an atlas file or a built specimen)"
+    },
+    {
+     "rule": "14.39",
+     "spec": "S32",
+     "plan_row": 25,
+     "planned": [
+      "govinfo-pl-119-75-effective-dates"
+     ],
+     "spec_dataset": [
+      "govinfo-pl-119-75-effective-dates"
+     ],
+     "reaches": [
+      "govinfo-pl-119-75-effective-dates"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.40",
+     "spec": "S33",
+     "plan_row": 26,
+     "planned": [
+      "treasury-mts-receipts-by-source"
+     ],
+     "spec_dataset": [
+      "treasury-mts-receipts-by-source"
+     ],
+     "reaches": [
+      "treasury-mts-receipts-by-source"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.41",
+     "spec": "S34",
+     "plan_row": 27,
+     "planned": [
+      "senate-cloture-motions-by-congress"
+     ],
+     "spec_dataset": [
+      "senate-cloture-motions-by-congress"
+     ],
+     "reaches": [
+      "senate-cloture-motions-by-congress"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.42",
+     "spec": "S35",
+     "plan_row": 28,
+     "planned": [
+      "illustrative-benefit-cliff"
+     ],
+     "spec_dataset": [
+      "illustrative-benefit-cliff"
+     ],
+     "reaches": [
+      "illustrative-benefit-cliff"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.46",
+     "spec": "S10",
+     "plan_row": 42,
+     "planned": [],
+     "spec_dataset": [
+      "v7-claims-by-grade"
+     ],
+     "reaches": [
+      "v7-claims-by-grade"
+     ],
+     "missing": [],
+     "extra": [
+      "v7-claims-by-grade"
+     ],
+     "status": "plan row names no file (an atlas file or a built specimen)"
+    },
+    {
+     "rule": "14.47",
+     "spec": "S43",
+     "plan_row": 43,
+     "planned": [
+      "census-acs-tenure-by-state"
+     ],
+     "spec_dataset": [
+      "census-acs-tenure-by-state"
+     ],
+     "reaches": [
+      "census-acs-tenure-by-state"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.48",
+     "spec": "S44",
+     "plan_row": 44,
+     "planned": [
+      "treasury-mts-fy2026-budget-results"
+     ],
+     "spec_dataset": [
+      "treasury-mts-fy2026-budget-results"
+     ],
+     "reaches": [
+      "treasury-mts-fy2026-budget-results"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.49",
+     "spec": "S08",
+     "plan_row": 45,
+     "planned": [],
+     "spec_dataset": [
+      "v7-repair-log"
+     ],
+     "reaches": [
+      "v7-repair-log"
+     ],
+     "missing": [],
+     "extra": [
+      "v7-repair-log"
+     ],
+     "status": "plan row names no file (an atlas file or a built specimen)"
+    },
+    {
+     "rule": "14.50",
+     "spec": "S45",
+     "plan_row": 46,
+     "planned": [
+      "census-nrc-completions-by-structure"
+     ],
+     "spec_dataset": [
+      "census-nrc-completions-by-structure"
+     ],
+     "reaches": [
+      "census-nrc-completions-by-structure"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.51",
+     "spec": "S46",
+     "plan_row": 47,
+     "planned": [
+      "cms-nhe-by-payer-four-groups",
+      "cms-nhe-by-source-of-funds"
+     ],
+     "spec_dataset": [
+      "cms-nhe-by-payer-four-groups"
+     ],
+     "reaches": [
+      "cms-nhe-by-payer-four-groups",
+      "cms-nhe-by-source-of-funds"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.52",
+     "spec": "S47",
+     "plan_row": 48,
+     "planned": [
+      "treasury-mts-outlays-by-function"
+     ],
+     "spec_dataset": [
+      "treasury-mts-outlays-by-function"
+     ],
+     "reaches": [
+      "treasury-mts-outlays-by-function"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.53",
+     "spec": "S48",
+     "plan_row": 49,
+     "planned": [
+      "clerk-house-current-party-breakdown",
+      "house-history-party-divisions"
+     ],
+     "spec_dataset": [
+      "clerk-house-current-party-breakdown",
+      "house-history-party-divisions"
+     ],
+     "reaches": [
+      "clerk-house-current-party-breakdown",
+      "house-history-party-divisions"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.58",
+     "spec": "S49",
+     "plan_row": 54,
+     "planned": [
+      "fjc-article-iii-judges"
+     ],
+     "spec_dataset": [
+      "fjc-article-iii-judges-years-bins"
+     ],
+     "reaches": [
+      "fjc-article-iii-judges",
+      "fjc-article-iii-judges-years-bins"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.59",
+     "spec": "S50",
+     "plan_row": 55,
+     "planned": [
+      "census-stc-state-tax-collections"
+     ],
+     "spec_dataset": [
+      "census-stc-state-tax-collections"
+     ],
+     "reaches": [
+      "census-stc-state-tax-collections"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.60",
+     "spec": "S51",
+     "plan_row": 56,
+     "planned": [
+      "census-sahie-county-uninsured"
+     ],
+     "spec_dataset": [
+      "census-sahie-county-uninsured-box-by-region",
+      "census-sahie-county-uninsured-outliers"
+     ],
+     "reaches": [
+      "census-sahie-county-uninsured",
+      "census-sahie-county-uninsured-box-by-region",
+      "census-sahie-county-uninsured-outliers"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.61",
+     "spec": "S52",
+     "plan_row": 57,
+     "planned": [
+      "census-saipe-county-child-poverty"
+     ],
+     "spec_dataset": [
+      "census-saipe-county-child-poverty-bins"
+     ],
+     "reaches": [
+      "census-saipe-county-child-poverty",
+      "census-saipe-county-child-poverty-bins"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.62",
+     "spec": "S53",
+     "plan_row": 58,
+     "planned": [
+      "census-pep-population-by-age-sex"
+     ],
+     "spec_dataset": [
+      "census-pep-population-by-age-sex"
+     ],
+     "reaches": [
+      "census-pep-population-by-age-sex"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.67",
+     "spec": "S54",
+     "plan_row": 63,
+     "planned": [
+      "census-acs-rent-and-income-by-state"
+     ],
+     "spec_dataset": [
+      "census-acs-rent-and-income-by-state"
+     ],
+     "reaches": [
+      "census-acs-rent-and-income-by-state"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.68",
+     "spec": "S55",
+     "plan_row": 64,
+     "planned": [
+      "census-acs-rent-and-income-by-state"
+     ],
+     "spec_dataset": [
+      "census-acs-rent-and-income-by-state"
+     ],
+     "reaches": [
+      "census-acs-rent-and-income-by-state"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.69",
+     "spec": "S56",
+     "plan_row": 65,
+     "planned": [
+      "fred-unemployment-and-job-openings"
+     ],
+     "spec_dataset": [
+      "fred-unemployment-and-job-openings-quarterly"
+     ],
+     "reaches": [
+      "fred-unemployment-and-job-openings",
+      "fred-unemployment-and-job-openings-quarterly"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.74",
+     "spec": "S57",
+     "plan_row": 70,
+     "planned": [
+      "census-acs-earnings-ratio-by-state"
+     ],
+     "spec_dataset": [
+      "census-acs-earnings-ratio-by-state"
+     ],
+     "reaches": [
+      "census-acs-earnings-ratio-by-state"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.75",
+     "spec": "S58",
+     "plan_row": 71,
+     "planned": [
+      "census-cps-median-household-income"
+     ],
+     "spec_dataset": [
+      "census-cps-median-household-income"
+     ],
+     "reaches": [
+      "census-cps-median-household-income"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.76",
+     "spec": "S06",
+     "plan_row": 72,
+     "planned": [],
+     "spec_dataset": [
+      "v7-scenarios-2030"
+     ],
+     "reaches": [
+      "v7-scenarios-2030"
+     ],
+     "missing": [],
+     "extra": [
+      "v7-scenarios-2030"
+     ],
+     "status": "plan row names no file (an atlas file or a built specimen)"
+    },
+    {
+     "rule": "14.77",
+     "spec": "S59",
+     "plan_row": 73,
+     "planned": [
+      "frb-fomc-projections-unemployment"
+     ],
+     "spec_dataset": [
+      "frb-fomc-projections-unemployment",
+      "fred-unemployment-fourth-quarter"
+     ],
+     "reaches": [
+      "frb-fomc-projections-unemployment",
+      "fred-unemployment-and-job-openings",
+      "fred-unemployment-fourth-quarter"
+     ],
+     "missing": [],
+     "extra": [
+      "fred-unemployment-fourth-quarter"
+     ],
+     "status": "adds a file the plan row does not name"
+    },
+    {
+     "rule": "14.85",
+     "spec": "S01",
+     "plan_row": 75,
+     "planned": [],
+     "spec_dataset": [
+      "v7-stock-trading-ban",
+      "congress-hr7008-roll-calls"
+     ],
+     "reaches": [
+      "congress-hr7008-roll-calls",
+      "v7-stock-trading-ban"
+     ],
+     "missing": [],
+     "extra": [
+      "congress-hr7008-roll-calls",
+      "v7-stock-trading-ban"
+     ],
+     "status": "plan row names no file (an atlas file or a built specimen)"
+    },
+    {
+     "rule": "14.86",
+     "spec": "S60",
+     "plan_row": 76,
+     "planned": [
+      "v7-numbers"
+     ],
+     "spec_dataset": [
+      "v7-numbers"
+     ],
+     "reaches": [
+      "v7-numbers"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.87",
+     "spec": "S61",
+     "plan_row": 77,
+     "planned": [
+      "congress-hr7008-roll-calls"
+     ],
+     "spec_dataset": [
+      "congress-hr7008-roll-calls"
+     ],
+     "reaches": [
+      "congress-hr7008-roll-calls"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.88",
+     "spec": "S62",
+     "plan_row": 78,
+     "planned": [
+      "congress-gov-take-it-down-act-actions"
+     ],
+     "spec_dataset": [
+      "congress-gov-take-it-down-act-actions"
+     ],
+     "reaches": [
+      "congress-gov-take-it-down-act-actions"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.89",
+     "spec": "S63",
+     "plan_row": 79,
+     "planned": [
+      "v7-issue-status-checks-on-power"
+     ],
+     "spec_dataset": [
+      "v7-issue-status-checks-on-power"
+     ],
+     "reaches": [
+      "v7-issue-status-checks-on-power"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.90",
+     "spec": "S64",
+     "plan_row": 80,
+     "planned": [
+      "treasury-mspd-debt-subject-to-limit"
+     ],
+     "spec_dataset": [
+      "treasury-mspd-debt-subject-to-limit"
+     ],
+     "reaches": [
+      "treasury-mspd-debt-subject-to-limit"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.93",
+     "spec": "S65",
+     "plan_row": 83,
+     "planned": [
+      "cms-medicaid-chip-renewal-funnel",
+      "cms-medicaid-chip-renewal-outcomes"
+     ],
+     "spec_dataset": [
+      "cms-medicaid-chip-renewal-funnel",
+      "cms-medicaid-chip-renewal-outcomes"
+     ],
+     "reaches": [
+      "cms-medicaid-chip-renewal-funnel",
+      "cms-medicaid-chip-renewal-outcomes"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.96",
+     "spec": "S66",
+     "plan_row": 86,
+     "planned": [
+      "govinfo-federal-rulemaking-steps"
+     ],
+     "spec_dataset": [
+      "govinfo-federal-rulemaking-steps"
+     ],
+     "reaches": [
+      "govinfo-federal-rulemaking-steps"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.97",
+     "spec": "S67",
+     "plan_row": 87,
+     "planned": [
+      "ballotpedia-rcv-prohibitions-by-state",
+      "v7-rcv-local-routes"
+     ],
+     "spec_dataset": [
+      "ballotpedia-rcv-prohibitions-by-state",
+      "v7-rcv-local-routes"
+     ],
+     "reaches": [
+      "ballotpedia-rcv-prohibitions-by-state",
+      "v7-rcv-local-routes"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.98",
+     "spec": "S68",
+     "plan_row": 88,
+     "planned": [
+      "v7-pathway-electric-decision-makers"
+     ],
+     "spec_dataset": [
+      "v7-pathway-electric-decision-makers"
+     ],
+     "reaches": [
+      "v7-pathway-electric-decision-makers"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.99",
+     "spec": "S69",
+     "plan_row": 89,
+     "planned": [
+      "clerk-house-committees-119"
+     ],
+     "spec_dataset": [
+      "clerk-house-committees-119"
+     ],
+     "reaches": [
+      "clerk-house-committees-119"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.100",
+     "spec": "S70",
+     "plan_row": 90,
+     "planned": [
+      "uscode-federal-courts-circuits-districts"
+     ],
+     "spec_dataset": [
+      "uscode-federal-courts-circuits-districts"
+     ],
+     "reaches": [
+      "uscode-federal-courts-circuits-districts"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.101",
+     "spec": "S71",
+     "plan_row": 91,
+     "planned": [
+      "usgov-route-requirements",
+      "v7-routes"
+     ],
+     "spec_dataset": [
+      "usgov-v7-route-grid"
+     ],
+     "reaches": [
+      "usgov-route-requirements",
+      "usgov-v7-route-grid",
+      "v7-routes"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.102",
+     "spec": "S72",
+     "plan_row": 92,
+     "planned": [
+      "congress-hr5371-roll-calls-by-member"
+     ],
+     "spec_dataset": [
+      "congress-hr5371-roll-calls-by-member"
+     ],
+     "reaches": [
+      "congress-hr5371-roll-calls-by-member"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.104",
+     "spec": "S73",
+     "plan_row": 94,
+     "planned": [
+      "fec-jfc-transfers-2024"
+     ],
+     "spec_dataset": [
+      "fec-jfc-transfers-2024-by-node"
+     ],
+     "reaches": [
+      "fec-jfc-transfers-2024-all-committees",
+      "fec-jfc-transfers-2024-by-node"
+     ],
+     "missing": [
+      "fec-jfc-transfers-2024"
+     ],
+     "extra": [
+      "fec-jfc-transfers-2024-by-node"
+     ],
+     "status": "none of the planned files"
+    },
+    {
+     "rule": "14.105",
+     "spec": "S74",
+     "plan_row": 95,
+     "planned": [
+      "v7-links-with-regions",
+      "v7-region-connection-matrix"
+     ],
+     "spec_dataset": [
+      "v7-region-connection-matrix",
+      "v7-links-with-regions"
+     ],
+     "reaches": [
+      "v7-links-with-regions",
+      "v7-region-connection-matrix"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.106",
+     "spec": "S75",
+     "plan_row": 96,
+     "planned": [
+      "congress-gov-pbm-bill-backers-119",
+      "congress-gov-pbm-bill-shared-backers-119",
+      "congress-gov-pbm-bills-119"
+     ],
+     "spec_dataset": [
+      "congress-gov-pbm-bill-shared-backers-119"
+     ],
+     "reaches": [
+      "congress-gov-pbm-bill-backers-119",
+      "congress-gov-pbm-bill-shared-backers-119",
+      "congress-gov-pbm-bills-119"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.110",
+     "spec": "S76",
+     "plan_row": 100,
+     "planned": [
+      "fec-house-campaigns-2024-by-candidate",
+      "fec-house-campaigns-2024-money-in-out"
+     ],
+     "spec_dataset": [
+      "fec-house-campaigns-2024-money-in-out",
+      "fec-house-campaigns-2024-by-candidate"
+     ],
+     "reaches": [
+      "fec-house-campaigns-2024-by-candidate",
+      "fec-house-campaigns-2024-money-in-out"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.112",
+     "spec": "S77",
+     "plan_row": 102,
+     "planned": [
+      "govinfo-snap-application-steps"
+     ],
+     "spec_dataset": [
+      "govinfo-snap-application-path"
+     ],
+     "reaches": [
+      "govinfo-snap-application-path",
+      "govinfo-snap-application-steps"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.114",
+     "spec": "S07",
+     "plan_row": 104,
+     "planned": [
+      "ballotpedia-rcv-prohibitions-by-state"
+     ],
+     "spec_dataset": [
+      "ballotpedia-rcv-prohibitions-by-state"
+     ],
+     "reaches": [
+      "ballotpedia-rcv-prohibitions-by-state"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.115",
+     "spec": "S12",
+     "plan_row": 105,
+     "planned": [
+      "fec-presidential-shift-by-state"
+     ],
+     "spec_dataset": [
+      "fec-presidential-shift-by-state"
+     ],
+     "reaches": [
+      "fec-presidential-results-by-state",
+      "fec-presidential-shift-by-state"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.116",
+     "spec": "S16",
+     "plan_row": 106,
+     "planned": [
+      "census-cps-2024-turnout-by-state"
+     ],
+     "spec_dataset": [
+      "census-cps-2024-turnout-by-state"
+     ],
+     "reaches": [
+      "census-cps-2024-turnout-by-state"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.117",
+     "spec": "S78",
+     "plan_row": 107,
+     "planned": [
+      "census-acs-broadband-by-state"
+     ],
+     "spec_dataset": [
+      "census-acs-broadband-by-state",
+      "census-cb-2024-states"
+     ],
+     "reaches": [
+      "census-acs-broadband-by-state",
+      "census-cb-2024-states"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.118",
+     "spec": "S79",
+     "plan_row": 108,
+     "planned": [
+      "census-gazetteer-2024-places"
+     ],
+     "spec_dataset": [
+      "census-gazetteer-2024-places",
+      "census-cb-2024-counties-california-5m",
+      "census-cb-2024-states"
+     ],
+     "reaches": [
+      "census-cb-2024-counties-california-5m",
+      "census-cb-2024-states",
+      "census-gazetteer-2024-places"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.119",
+     "spec": "S80",
+     "plan_row": 109,
+     "planned": [
+      "clerk-house-results-2024-by-district"
+     ],
+     "spec_dataset": [
+      "clerk-house-results-2024-classes",
+      "census-cb-2024-cd119"
+     ],
+     "reaches": [
+      "census-cb-2024-cd119",
+      "census-gazetteer-2024-cd119",
+      "census-gazetteer-2024-cd119-tile-layout",
+      "clerk-house-results-2024-by-candidate",
+      "clerk-house-results-2024-by-district",
+      "clerk-house-results-2024-classes"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.120",
+     "spec": "S81",
+     "plan_row": 110,
+     "planned": [
+      "census-acs5-county-median-household-income"
+     ],
+     "spec_dataset": [
+      "census-acs5-county-median-household-income-classes",
+      "census-cb-2024-counties"
+     ],
+     "reaches": [
+      "census-acs5-county-median-household-income",
+      "census-acs5-county-median-household-income-classes",
+      "census-cb-2024-counties"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.121",
+     "spec": "S82",
+     "plan_row": 111,
+     "planned": [
+      "census-gazetteer-2024-cd119",
+      "clerk-house-results-2024-by-district"
+     ],
+     "spec_dataset": [
+      "clerk-house-results-2024-classes"
+     ],
+     "reaches": [
+      "census-gazetteer-2024-cd119",
+      "census-gazetteer-2024-cd119-tile-layout",
+      "clerk-house-results-2024-by-candidate",
+      "clerk-house-results-2024-by-district",
+      "clerk-house-results-2024-classes"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.122",
+     "spec": "S83",
+     "plan_row": 112,
+     "planned": [
+      "census-cbp-county-employment"
+     ],
+     "spec_dataset": [
+      "census-cbp-county-employment-dots",
+      "census-cb-2024-counties"
+     ],
+     "reaches": [
+      "census-cb-2024-counties",
+      "census-cbp-county-employment",
+      "census-cbp-county-employment-dots"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.123",
+     "spec": "S84",
+     "plan_row": 113,
+     "planned": [
+      "dol-state-minimum-wage-classes",
+      "dol-state-minimum-wage-history"
+     ],
+     "spec_dataset": [
+      "dol-state-minimum-wage-classes",
+      "census-cb-2024-states"
+     ],
+     "reaches": [
+      "census-cb-2024-states",
+      "dol-state-minimum-wage-classes",
+      "dol-state-minimum-wage-history"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.125",
+     "spec": "S15",
+     "plan_row": 32,
+     "planned": [
+      "fec-presidential-results-by-state"
+     ],
+     "spec_dataset": [
+      "fec-presidential-shift-by-state"
+     ],
+     "reaches": [
+      "fec-presidential-results-by-state",
+      "fec-presidential-shift-by-state"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.126",
+     "spec": "S36",
+     "plan_row": 33,
+     "planned": [
+      "fec-independent-expenditures-2024"
+     ],
+     "spec_dataset": [
+      "fec-independent-expenditures-2024"
+     ],
+     "reaches": [
+      "fec-independent-expenditures-2024"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.127",
+     "spec": "S06",
+     "plan_row": 34,
+     "planned": [],
+     "spec_dataset": [
+      "v7-scenarios-2030"
+     ],
+     "reaches": [
+      "v7-scenarios-2030"
+     ],
+     "missing": [],
+     "extra": [
+      "v7-scenarios-2030"
+     ],
+     "status": "plan row names no file (an atlas file or a built specimen)"
+    },
+    {
+     "rule": "14.128",
+     "spec": "S13",
+     "plan_row": 35,
+     "planned": [
+      "fred-payrolls-by-sector"
+     ],
+     "spec_dataset": [
+      "fred-payrolls-by-sector-change"
+     ],
+     "reaches": [
+      "fred-payrolls-by-sector",
+      "fred-payrolls-by-sector-change"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.129",
+     "spec": "S37",
+     "plan_row": 36,
+     "planned": [
+      "v7-reform-routes"
+     ],
+     "spec_dataset": [
+      "v7-reform-routes"
+     ],
+     "reaches": [
+      "v7-reform-routes"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.130",
+     "spec": "S38",
+     "plan_row": 37,
+     "planned": [
+      "v7-issues"
+     ],
+     "spec_dataset": [
+      "v7-issues"
+     ],
+     "reaches": [
+      "v7-issues"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.131",
+     "spec": "S39",
+     "plan_row": 38,
+     "planned": [
+      "v7-claims-drug-prices"
+     ],
+     "spec_dataset": [
+      "v7-claims-drug-prices"
+     ],
+     "reaches": [
+      "v7-claims-drug-prices"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.132",
+     "spec": "S40",
+     "plan_row": 39,
+     "planned": [
+      "congress-gov-housing-bills-119"
+     ],
+     "spec_dataset": [
+      "congress-gov-housing-bills-119"
+     ],
+     "reaches": [
+      "congress-gov-housing-bills-119"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.133",
+     "spec": "S41",
+     "plan_row": 40,
+     "planned": [
+      "v7-stock-trading-ban"
+     ],
+     "spec_dataset": [
+      "v7-stock-trading-ban"
+     ],
+     "reaches": [
+      "v7-stock-trading-ban"
+     ],
+     "missing": [],
+     "extra": [],
+     "status": "as planned"
+    },
+    {
+     "rule": "14.134",
+     "spec": "S42",
+     "plan_row": 41,
+     "planned": [],
+     "spec_dataset": [
+      "v7-stock-trading-ban"
+     ],
+     "reaches": [
+      "v7-stock-trading-ban"
+     ],
+     "missing": [],
+     "extra": [
+      "v7-stock-trading-ban"
+     ],
+     "status": "plan row names no file (an atlas file or a built specimen)"
+    }
+   ]
+  }
+ }
+}

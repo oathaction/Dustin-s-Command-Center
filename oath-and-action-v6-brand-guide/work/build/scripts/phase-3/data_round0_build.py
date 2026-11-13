@@ -465,6 +465,8 @@ def v7_meta(name, table, table_id, period, geography, universe, unit, qual, colu
     old = line.replace(ATLAS_LINE, OLD_ATLAS[0]).replace('as recorded in ' + ATLAS_PUB + ',', 'as recorded in ' + OLD_ATLAS[1] + ',')
     if old != line:
         extra.setdefault('source_line_variants', {})['phase_2_wording'] = old
+    if extra.get('snapshot_once'):  # board 2, A5 (DR-257): the snapshot date once, S68's form, beside the printed line
+        extra.setdefault('source_line_variants', {})['snapshot_once'] = extra.pop('snapshot_once')
     meta = {'file': f'{name}.json', 'kind': extra.pop('kind', 'v7'), 'publisher': ATLAS_PUB, 'title_or_table': table, 'table_id': table_id,
             'url': 'work/extract/atlas-v7-data.json', 'observation_period': period, 'geography': geography, 'universe_or_base': universe,
             'unit': unit, 'date_retrieved': SNAP, 'vintage': f'Atlas V7 snapshot of {SNAP_WORDS}', 'qualification': qual, 'columns': columns,
@@ -696,7 +698,9 @@ def v7_tables():
              'documented_share': col('number', 'documented claims as a share of all claims on the pathway, one decimal; the studio\u2019s arithmetic on V7\u2019s counts (request E4)', 'percent')},
             (f'{ATLAS_LINE}, claims register, 433 claims across 16 everyday questions, {checked}, United States. '
              f'Snapshot of {SNAP_WORDS}. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.'),
-            'all', ['S10'], grade_meaning={'documented': 'on the public record', 'well-supported': 'strong research evidence', 'plausible': 'some evidence', 'contested': 'evidence disputed'},
+            'all', ['S10'], snapshot_once=(f'{ATLAS_LINE}, claims register, 433 claims across 16 everyday questions, snapshot of {SNAP_WORDS}, United States. '
+                                           f'The atlas checked {on_snap} of the {len(claims)} claims on that date. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.'),
+            grade_meaning={'documented': 'on the public record', 'well-supported': 'strong research evidence', 'plausible': 'some evidence', 'contested': 'evidence disputed'},
             domain_note='The 16 everyday questions span the atlas’s five hubs and every domain')
     # maker A's A4 (round 1, S23): the same claims grouped by the atlas's five hubs, one row per hub and grade (C1, derived)
     hubs = []
@@ -725,7 +729,9 @@ def v7_tables():
              'answers': col('integer', 'everyday questions (pathways) in the hub')},
             (f'{ATLAS_LINE}, claims register, 433 claims across 16 everyday questions grouped by its five topic hubs, {checked}, '
              f'United States. Snapshot of {SNAP_WORDS}. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.'),
-            'all', ['S23'], kind='derived', derived_from=['v7-claims-by-grade.json'],
+            'all', ['S23'], kind='derived',
+            snapshot_once=(f'{ATLAS_LINE}, claims register, 433 claims across 16 everyday questions grouped by its five topic hubs, snapshot of {SNAP_WORDS}, United States. '
+                           f'The atlas checked {on_snap} of the {len(claims)} claims on that date. Grades are the atlas’s own, defined on its evidence page; a claim’s grade covers that claim alone.'), derived_from=['v7-claims-by-grade.json'],
             derivation='The rows of v7-claims-by-grade summed by hub, in that file’s hub order, grades in the order documented, well-supported, plausible, contested; share_pct is claims over hub_claims (request A4).',
             grade_meaning={'documented': 'on the public record', 'well-supported': 'strong research evidence', 'plausible': 'some evidence', 'contested': 'evidence disputed'},
             domain_note='The five hubs span every domain, as the 16 everyday questions do')

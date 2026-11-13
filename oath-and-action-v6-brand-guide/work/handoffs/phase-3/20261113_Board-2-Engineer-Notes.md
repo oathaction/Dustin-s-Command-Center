@@ -6,8 +6,8 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. Written by the en
 
 Started 17:07 UTC (clock read). Read CLAUDE.md, my role file, the brief, the decision log from D3-1312 to DR-260 and my round 3 notes.
 
-- **A1 (phrase):** confirmed. `work/build/chart-kit/words.json`'s `data_file` reads "this chart’s data file in the guide’s asset package", DR-254's words character for character. The export check is under "A1" below. No spec or entry carries `{data_file}` yet; the editor's A1 has not landed.
-- **A3:** reading the checks while the cartographer draws. Findings under "A3".
+- **A1: DONE (17:15 UTC).** `work/build/chart-kit/words.json`'s `data_file` reads "this chart’s data file in the guide’s asset package", DR-254's words character for character. The export check holds every row of each chart's CSV, before and after the editor's rewrite (8 PASS, 0 faults). Details under "A1".
+- **A3: LANDED (17:18 UTC).** On the cartographer's red `#CC0000` and blue `#2C7BB6`, one check warned: the guide build's literal color scan, which would fail a strict build. That half has a named exemption in `guide_build.py` (`LITERAL_HALF`) with DR-64's one exception in its comment; nothing else changed. The guide check and the kit's rendered check pass the drawing with no exemption. `guide_build.py --self-test` 33 of 33. Details under "A3".
 - **A6:** waits on the data lead's sign-off of A1 to A5.
 
 ## Contracts
@@ -16,6 +16,13 @@ Started 17:07 UTC (clock read). Read CLAUDE.md, my role file, the brief, the dec
 - `{data_file}` (my round 3 contract, D3-1448, unchanged): in a spec's table caption, a note or a chart note, the kit prints `words.json`'s `data_file`; in an entry file, `phase3_ch14_build.py` fills the same phrase. The phrase is lowercase and never opens a sentence (D3-1529).
 
 ## Routine calls
+
+- D3-xxx | A1 needs no kit or generator change: `words.json`'s `data_file` already reads DR-254's phrase, and the export check already reads every exported row back | ST-M2's placeholder (D3-1448) was built so Dustin's answer changes one string and no spec
+- D3-xxx | A3's exemption lives in `guide_build.py`'s literal color scan, named by specimen and half (`LITERAL_HALF`), not in the manifest's `check_exempt` | `check_exempt` covers a whole stage and is for failure plates only; DR-255 exempts the misleading half alone, and the better half keeps the check
+- D3-xxx | The exemption names the half by its place in the pair (the first `<svg>`, the one under the do-not-publish bar) and applies only while the file is a pair | It needs no new attribute in the cartographer's file, and a file that stops being the avoid pair falls back under the check
+- D3-xxx | `guide_check.js` and `checks.js` stay unchanged | On the real drawing neither reads the red or blue as a guide ink or finds a fault; DR-255 asks for an exemption only where a check fails or warns
+- D3-xxx | The exemption's proof is a self-test scenario of the build, with three planted faults caught | The brief allows changing nothing else in the check; a test changes no check and keeps the exemption from widening unseen
+- D3-xxx | A3 was tested on a scratch page of chapter 14 trimmed to rules 14.7 and 14.124, with the real guide check and kit check | The brief keeps the whole-page guide check with the main session; the trimmed page runs the same checks on the sketch in 20 seconds
 
 ## A1
 
@@ -52,11 +59,44 @@ DR-255: sketch 14.124's misleading half draws in a plain news red and blue that 
 | `dataviz_check.js --kit` (`kitForced`) | in forced colors, sketch text on a shape at 3 to 1, and keyed marks on the ground | literal fills keep their color in forced colors (the drawing sets `forced-color-adjust: none`); fires only if a word sits on a red or blue shape |
 | `checks.js` (the kit's spec and drawing checks) | kit specs only | never reads a sketch |
 
+**The red and blue drawing (landed 17:16 UTC, 3,932 bytes, SHA-256 `41f79d7e5adc89aa…`):** the first `<svg>` fills Party A's places and swatch `fill="#CC0000"` and Party B's `fill="#2C7BB6"`, words on the ground. Tested on the trimmed page (17:16 to 17:17 UTC), against the gray baseline:
+
+| Check | Result on the red and blue |
+|---|---|
+| `guide_build.py` (the build's specimen check) | **one new warning:** "s-14-124-sketch: 4 literal color value(s) (#2C7BB6, #CC0000); use var(--oa-...) from tokens.css", so a strict build would exit 1 |
+| `guide_check.js --quick --no-captures` | the same 7 trim failures as the gray baseline, none in the sketch; Rule 05.3: 23 red marks, 0 unmarked at both widths (the sketch's red is not read as Pillar Red); `redTouchesPrussian` 0 hits; no low contrast in the sketch |
+| `dataviz_check.js --kit` | PASS, 0 failures at 1440 and 390 px, forced colors in both themes included |
+| `phase3_ch14_build.py` faults | one, not a color test: the first `<desc>` does not yet hold `sketch_alt`'s first sentence (the editor's words and the cartographer's `<desc>` are being matched, R2-3); the file is under its 4,096 bytes |
+| `checks.js` | never reads a sketch |
+
+**The exemption (17:17 UTC), in `work/build/scripts/phase-2/guide_build.py`.** A named table beside `EXEMPT_KINDS`, `LITERAL_HALF = {"s-14-124-sketch": 0}`, with DR-64's one exception recorded in its comment (DR-255: the misleading half of sketch 14.124 draws a plain news red and blue that are none of the guide's inks, at sketch size, under its do-not-publish bar). In `process_fragment`, for that specimen only and only when its file holds an avoid pair (two `<svg>`), the literal color scan leaves out the drawing at that index, the first, the half `plate()` sets under the bar. The better half, every other specimen, the regular expression and the warning are unchanged; the manifest's `check_exempt`, the failure-plates-only rule and the generator are untouched. The guide check needs no exemption, since neither ink is a guide ink (above), so `guide_check.js` is unchanged.
+
+- Self-test scenario added ("board 2: DR-64's one exception ..."): `s-14-124-sketch` with `#CC0000` in its first half and `#2C7BB6` in its second must warn "1 literal color value(s) (#2C7BB6)" and never both; another avoid sketch, `s-26-skx`, with `#CC0000` in its first half must still warn; the exempt half still draws its red under the bar. `guide_build.py --self-test`: **33 of 33 scenarios, 334 of 334 expectations** (32 and 328 before; `plate-share.json` byte for byte unchanged). Planted faults, each caught by the new scenario: the exemption removed (both halves warn), moved to the better half, and widened to `s-26-skx`.
+- The trimmed page rebuilt with the exemption (17:18 UTC): its warnings equal the gray baseline's, none new and none gone; both fills on the page twice each; the guide check the same 7 trim failures, none in the sketch; the kit check PASS.
+- For the cartographer: no attribute is needed on the `<svg>`; the exemption names the specimen and the half. If the misleading half ever stops being the file's first drawing, or the file stops being a pair, the exemption stops applying and the build warns, which is what it should do.
+
 **Method for the real drawing.** A scratch page of chapter 14 trimmed to rules 14.7 and 14.124 (`guide_build.py --chapters <scratch>`, which leaves `plate-share.json` alone), then the real guide check (`--quick --no-captures`, 18 s) and `dataviz_check.js --kit` (2 s) on it, and the generator's `--check`. Baseline on today's gray file (17:13 UTC): the guide check lists 7 failures, every one an artifact of the trim (14 links to groups and 4 citations of rules left out, 19 codes in the proofs page, one zoom scroll at 390 px) and none in either sketch plate; the kit check PASS, 0 failures.
 
 ## A6 results
 
 ## Build needs
+
+| Need | From | Status |
+|---|---|---|
+| A table caption's `{data_file}` printed raw in its two hidden copies, the table's name (`aria-label`) and the summary's hidden words | editor (17:16 UTC, "Words for the engineer") | **Done (17:20 UTC)** in `work/build/chart-kit/kit-build.js` (`K.figure`): both copies go through `K.fill_words`, as the visible caption does. A harness on the seven specs (`scratch/scripts/raw_placeholder.cjs`): HEAD's builder half prints 8 raw placeholders (two each in S69, S70, S72 and S73), today's none. New kit self-test case (a caption's `{data_file}` fills in all three places, with and without the guide's markup); self-test every planted fault caught. `kit-build.js` never rides on the guide's page, so the kit part's bytes do not change; the four plates gain the filled words in two hidden places, below |
+| R-B2-1: carry A5's `snapshot_once` variants in `data_round0_build.py` (S10's and S23's sidecars) so a rerun keeps them | research lead (17:13 UTC, "Requests") | **Done (17:28 UTC), after the data lead signed off A5 whole (17:27).** Proven first in scratch (`scratch/scripts/rb21_proof.py`: the script's text run with its real path and its output folder in scratch, every file compared byte for byte with `work/build/data/`): today's script wrote 34 files with 2 differing (it would have dropped S10's and S23's variants on a rerun); the research lead's patched copy wrote 34 of 34 equal. Applied the research lead's diff with `patch -p1` (no fuzz); the script then equals the proven copy, rebuilds 34 of 34 equal, and the data check reads 125 tables, 0 faults. The research lead's own `research_v7_extract.py` is theirs to patch |
+
+**Plate weights through A1 and the caption fix** (kit `build --no-sweep`, about 750 bytes of frame, the kit's own measure; the strict build's page measure follows in A6):
+
+| Plate | Before A1 (17:10) | After the editor's words (17:16, editor's notes) | After the caption fix (17:21) | Against |
+|---|---|---|---|---|
+| S69 | 14,369 | 14,278 | 14,366 | its own measure before A1, under 15,000 (D3-1412) |
+| S70 | 10,703 | 10,783 | 10,871 | 14,106 (D3-1328) |
+| S72 | 7,802 | 7,846 | 7,934 | 14,106 |
+| S73 | 13,913 | 13,999 | 14,087 | 14,106: 19 bytes under |
+| S74 | 11,707 | 11,750 | 11,750 | 14,106 |
+| S81 | 13,597 | 13,640 | 13,640 | 14,106 |
+| S83 | 13,295 | 13,338 | 13,338 | 14,106 |
 
 ## Tested
 

@@ -1,0 +1,401 @@
+{
+ "about": "Board 2's own words and the files each panel reads. work/build/scripts/phase-3/board_2_build.py reads this file on every run; every number, picture and quoted word on the board comes from the files named under slots, read at build time. A {name} in a sentence is filled from those files. Codes in a 'refs' field print only in the small reference lines. The editor owns these words once the first full build lands; the data lead's decisions file holds panel 1's items and panel 4's counts.",
+ "title": "Edition 06 Board 2",
+ "rounds": [
+  1,
+  2,
+  3
+ ],
+ "board1_ids": [
+  "S01",
+  "S02",
+  "S03",
+  "S04",
+  "S05",
+  "S06",
+  "S07",
+  "S08",
+  "S09",
+  "S10",
+  "S11",
+  "S12",
+  "S13",
+  "S14",
+  "S15",
+  "S16"
+ ],
+ "makers": {
+  "A": "Maker A",
+  "B": "Maker B",
+  "C": "The cartographer"
+ },
+ "cover": {
+  "kicker": "Edition 06 · Phase 3 · Board 2",
+  "title": "Chapter 14’s forms, rounds 1 to 3",
+  "for_line": "For Dustin Cathcart · {built_date}",
+  "deck": [
+   "Rounds 1 to 3 built {n_forms} of chapter 14’s forms in {n_fams} families: {n_specs} charts drawn from real data and {n_sketches} sketches. You already answered five questions before this board, and it shows each answer as done beside what it replaced.",
+   "Panel 1 asks only what is still open. Every panel after it is a reference: each form at true size on both grounds, the count of examples by place and topic, what chapter 14 has spent, and the scores."
+  ],
+  "toc_h": "On this board",
+  "minutes": "Panel 1 takes about fifteen minutes to read and answer. Pictures show at true size; where one is wider than your window, its frame scrolls sideways."
+ },
+ "status_words": {
+  "ready": "Ready",
+  "waiting": "Waiting for {who}",
+  "partial": "Part waiting for {who}"
+ },
+ "status_short": {
+  "ready": "Ready",
+  "waiting": "Waiting",
+  "partial": "Part waiting"
+ },
+ "owners": {
+  "data_lead": "the data lead’s sign-off",
+  "pictures": "the board-only pictures",
+  "build": "a passing guide build",
+  "render": "the board’s photographs",
+  "kit": "the kit’s captures",
+  "cd": "the creative director’s scores",
+  "cd_board": "the creative director’s score of this board",
+  "red": "the reviewers’ second passes",
+  "notes": "the owners’ notes"
+ },
+ "sections": {
+  "decide": {
+   "n": 1,
+   "nav": "What you decide",
+   "title": "What you decide",
+   "refs": "DR-252 · DR-254 to DR-260 · D3-1541",
+   "lede": "Each item opens with its answer and the studio’s recommendation, then shows the pictures it needs. Items marked “You decide” are still open; the rest are your answers from before the board, shown done beside what they replaced.",
+   "wait": "Waiting for the data lead’s decisions file. This panel fills in when it lands.",
+   "picture_wait": "Waiting for the picture {path}.",
+   "toc_h": "The items on this panel",
+   "approval_one": "One approval covers every item in this group.",
+   "tag_question": "You decide",
+   "tag_rec": "Recommended",
+   "what_changed": "What changed",
+   "why": "Why",
+   "old": "Before",
+   "new": "Now",
+   "rows_caption": "{title}, line by line",
+   "row_heads": {
+    "spec": "Chart",
+    "rule": "Rule",
+    "where": "Where",
+    "old": "Before",
+    "new": "Now",
+    "what_changed": "What changed",
+    "why": "Why",
+    "form": "Form",
+    "example": "Example",
+    "data": "Data",
+    "test": "The test",
+    "passes": "Passes",
+    "kind": "Kind"
+   },
+   "entry_link": "Open Rule {rule} in the guide preview",
+   "reply": "To answer, reply “As recommended”, or name the item and your change.",
+   "view_by": "The {who}’s view.",
+   "plan_said": "The plan said",
+   "built_k": "As built",
+   "group_wait": "Waiting for this group’s items."
+  },
+  "forms": {
+   "n": 2,
+   "nav": "The {n_forms} forms by family",
+   "title": "The {n_forms} forms by family",
+   "refs": "DR-252 · D3-1505 · D3-1527",
+   "lede": "Every form rounds 1 to 3 built, in the plan’s order: {n_spec_rows} forms with a chart, drawn from {n_specs} charts, and {n_sketches} sketches. Within each family, a form to avoid comes first.",
+   "how": "Each chart shows as the guide draws it at a 1440 px window and a 390 px window, at true size, first on Newsprint and then on Charcoal; a fold under them holds both grounds in grayscale. Under the pictures sit the source line as printed, the chart’s weight with its plate frame, and its table as text in a second fold. Each heading links to the form’s live entry in the guide preview.",
+   "lede_est": "The guide labels {n_est_w} of these charts Estimate, and their label shows filled in black here as it does there: Rules {est_rules}.",
+   "estimate_label": "Estimate",
+   "index_h": "The forms by family",
+   "family_line": "{n} forms, {s} of them sketches.",
+   "live": "Open the live entry",
+   "tag_avoid": "Form to avoid",
+   "use_when": "Use it when",
+   "question": "Reader question",
+   "heading_k": "Heading:",
+   "caption_k": "Caption:",
+   "wait_photo": "Waiting for a passing guide build and this sketch’s photograph.",
+   "wait_kit": "Waiting for the kit’s pictures of this chart.",
+   "wait_some": "Waiting for pictures of Rules {list}.",
+   "b1_same": "A board 1 chart. Its drawing is the one board 1 approved.",
+   "b1_changed": "A board 1 chart. Its drawing changed since board 1 {where}; panel 1 lists the change.",
+   "b1_where": {
+    "newsprint": "on Newsprint at a {w} px window",
+    "charcoal": "on Charcoal at a {w} px window"
+   },
+   "b1_unknown": "A board 1 chart. The build could not compare its drawing with board 1’s.",
+   "shared_spec": "The same chart serves Rule {rule}, shown above.",
+   "label_desk": "At a 1440 px window · {px} px drawing",
+   "label_phone": "At a 390 px window · {px} px drawing",
+   "row_newsprint": "On Newsprint",
+   "row_charcoal": "On Charcoal",
+   "row_gray": "Grayscale proof of both grounds",
+   "gray_label": "{g} · {w} px window",
+   "bytes_line": "{with_frame} bytes on the page with its plate frame ({figure} for the chart as the guide places it).",
+   "kit_pass": "Passes every check in the kit.",
+   "kit_faults": "{n} faults in the kit’s checks:",
+   "table_summary": "The table, as the guide prints it"
+  },
+  "rules": {
+   "n": 3,
+   "nav": "Rules 14.1 to 14.14",
+   "title": "Rules 14.1 to 14.14 and the opener",
+   "refs": "",
+   "lede": "The fourteen rules every chart follows, as rounds 1 to 3 left them: each rule’s title with its correct and failure plates, photographed from today’s build at a 1440 px window.",
+   "opener_h": "The chapter’s opening plate",
+   "wait": "Waiting for the photographs of this rule’s plates."
+  },
+  "count": {
+   "n": 4,
+   "nav": "Examples by topic and place",
+   "title": "Examples by topic and by place",
+   "refs": "DR-229 · D3-689",
+   "lede": "Rule 01.9 keeps the guide’s examples from leaning on one topic or one state: no topic of the atlas holds more than one example in four, and no state more than one in five. The data lead recounted chapter 14’s examples by script.",
+   "wait": "Waiting for the data lead’s count. This panel fills in when the decisions file lands.",
+   "facts": {
+    "total": "Examples with round 4 as planned",
+    "ruling": "The data lead’s earlier count",
+    "recount": "This recount",
+    "limits": "The limits",
+    "script": "Counted by",
+    "built": "Examples as built"
+   },
+   "limits_words": "{d} for a topic, {s} for a state",
+   "domain_h": "By topic of the atlas",
+   "state_h": "By state",
+   "cols": [
+    "Topic or state",
+    "Examples, drawn to scale",
+    "Count",
+    "Limit",
+    "Within it"
+   ],
+   "caption": "Chapter 14’s examples {what}, against Rule 01.9’s limit",
+   "pass_words": "Yes",
+   "fail_words": "No",
+   "dr229_h": "Election data",
+   "dr229_count": "{n} examples draw on election data.",
+   "dr229_caption": "The examples that draw on election data",
+   "dr229_facts": {
+    "election_domain": "In elections and representation",
+    "voting_under_taking_part": "Reported voting, counted under taking part",
+    "new_forms_pass": "New forms that pass the test",
+    "new_forms_fail": "New forms that fail it",
+    "built_specimens": "Board 1 charts from before the test",
+    "rule_plates": "Rule plates"
+   },
+   "dr229_cols": [
+    "where",
+    "form",
+    "example",
+    "data",
+    "test",
+    "passes"
+   ]
+  },
+  "spend": {
+   "n": 5,
+   "nav": "What chapter 14 has spent",
+   "title": "What chapter 14 has spent",
+   "refs": "D3-1310 · D3-1328 · D3-1414 · D3-1533",
+   "wait": "Waiting for a guide build report.",
+   "lede": "Chapter 14 with its chart kit stands at {ch14_kit} bytes of its {stop}-byte stop, from this board’s strict build on {build_when}.",
+   "caption": "Chapter 14’s parts against their limits, in bytes",
+   "cols": [
+    "Part",
+    "Share of its limit",
+    "Bytes",
+    "Limit"
+   ],
+   "rows": {
+    "ch14": "Chapter 14 with the chart kit",
+    "kit": "The chart kit the page carries",
+    "geo": "Map shapes",
+    "rules": "Rules 14.1 to 14.14 with the opener",
+    "page": "The whole guide, as projected"
+   },
+   "no_limit": "Counted inside chapter 14",
+   "per_plate": "Each of round 4’s {to_come} charts still to come has {per_plate} bytes to spend, its plate frame included.",
+   "geo_line": "The map shapes take {geo} bytes of their {geo_allow}-byte reserve; the unspent {geo_room} stay held for maps to come.",
+   "page_line": "The guide is {page_now} bytes today and projects to {proj} bytes when every chapter is built, {proj_room} under the {budget_mb} MB limit.",
+   "fam_h": "Bytes by family",
+   "fam_lede": "Each chart’s bytes as the guide places it, and each sketch entry’s, summed by family.",
+   "fam_caption": "Chapter 14’s charts and sketch entries by family, in bytes",
+   "fam_cols": [
+    "Family",
+    "Bytes, drawn to scale",
+    "Charts",
+    "Sketches",
+    "Bytes"
+   ],
+   "heaviest_n": 10,
+   "heavy_h": "The {n} heaviest charts",
+   "heavy_caption": "The heaviest charts in chapter 14, in bytes",
+   "heavy_cols": [
+    "Chart",
+    "Rule",
+    "Form",
+    "As placed",
+    "With its plate frame"
+   ],
+   "heavy_note": "As placed is the build report’s figure; with its plate frame is the kit’s measure, which adds the frame round the plate."
+  },
+  "scores": {
+   "n": 6,
+   "nav": "Scores",
+   "title": "Scores",
+   "refs": "D3-1507",
+   "lede": "The creative director scores each round’s work on six criteria from 1 to 5, and an item is ready when every score is 4 or more with no Must fix open. Three reviewers read each round from their own lens.",
+   "legend": "Each cell gives the first score, small, then the score after the fix pass. A box marks a score under 4.",
+   "wait_round": "Waiting for round {r}’s scores.",
+   "cd_h": "Round {r}",
+   "cd_caption": "The creative director’s scores for round {r}",
+   "cd_line": "The first scores found {first} of the {n} items ready; the scores after the fix pass find {now}.",
+   "rt_h": "The reviewers, rounds 1 to 3",
+   "rt_lede": "Each reviewer’s first score with its Must fix and Should fix counts, read from the report’s own findings, and the score after the fix pass.",
+   "rt_cols": [
+    "Reviewer",
+    "Round",
+    "First score",
+    "Must fix",
+    "Should fix",
+    "Second score"
+   ],
+   "rt_wait": "Waiting for this report.",
+   "rt_wait2": "Waiting",
+   "board_h": "This board",
+   "board_caption": "The creative director’s scores for this board",
+   "board_wait": "Waiting for the creative director’s score of this board."
+  },
+  "tested": {
+   "n": 7,
+   "nav": "Tested and not tested",
+   "title": "Tested and not tested",
+   "refs": "DR-213 · D3-1537",
+   "lede": "Each figure here is read from the file that records it.",
+   "tested_h": "Tested",
+   "not_h": "Not tested",
+   "wait_words": "Waiting for its file",
+   "tested": [
+    {
+     "label": "Strict build of the guide",
+     "kind": "build",
+     "words": "run by this board’s build on {when}: exit 0, {warnings} warnings, {bytes} bytes, {rules} rules, {specimens} examples placed",
+     "words_failed": "run by this board’s build, it failed with exit {exit}"
+    },
+    {
+     "label": "Quick guide check",
+     "kind": "guide_check",
+     "scratch_file": "phase-3/board-2/main/quick/guide-Guide-Check-Results.json",
+     "words": "run by the main session on a copy of its strict build of {page_bytes} bytes, at {widths} px: {specimens} examples, {links} same-page links, {failures} failures"
+    },
+    {
+     "label": "The kit’s build of every chart",
+     "kind": "kit",
+     "words": "run by this board’s build at the widths the guide draws, with the sweep from 256 px: {pass} of {n} charts pass with no fault, {warnings} warnings"
+    },
+    {
+     "label": "This board’s own check",
+     "kind": "board_check",
+     "words": "on its last run at {widths} px: {failures} failures, leaving aside the page’s language, which the host’s wrapper sets"
+    }
+   ],
+   "not_tested": [
+    "The guide check itself: the main session runs it, and this board’s build never does.",
+    "The four scripts for real devices, which stay not tested.",
+    "The board in Safari or Firefox, on a 2x screen, printed, or as the host shows it once published; a copy wrapped as the host wraps it stands in.",
+    "Every picture by eye: the build checks each one’s size and source, and a sample was read by eye.",
+    "A keyboard walk past the check’s first stops, and a screen reader."
+   ]
+  },
+  "next": {
+   "n": 8,
+   "nav": "Next",
+   "title": "Next",
+   "refs": "DR-252",
+   "line": "Rounds 4 and 5 build chapter 14’s last forms with chapter 15, and board 3 shows them before Gate 3."
+  }
+ },
+ "foot": "Built {built_date} from the studio’s files. Every number and picture on this board is read from them at build time.",
+ "slots": {
+  "plan": "work/handoffs/phase-3/20261112_Chapter-14-Plan.json",
+  "decisions": "work/handoffs/phase-3/20261113_Board-2-Decisions.json",
+  "chapter14": "work/build/guide/chapters/14-data-visualization.json",
+  "specs_dir": "work/build/chart-kit/specs",
+  "kit_dir": "work/build/chart-kit",
+  "kit_command": "work/build/chart-kit/oa-chart.mjs",
+  "data_dir": "work/build/data",
+  "guide_build": "work/build/scripts/phase-2/guide_build.py",
+  "tokens_css": "work/build/tokens/tokens.css",
+  "plate_share": "work/build/chart-kit/plate-share.json",
+  "board1_specimens": "work/boards/phase-3/round-0/specimens",
+  "board_pictures": "work/handoffs/phase-3/board-2-pictures",
+  "preview_url": "https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF",
+  "scores": {
+   "1": {
+    "first": "work/handoffs/phase-3/20261112_Round-1-CD-Scores.json",
+    "rescore": "work/handoffs/phase-3/20261112_Round-1-CD-Rescores.json"
+   },
+   "2": {
+    "first": "work/handoffs/phase-3/20261112_Round-2-CD-Scores.json",
+    "rescore": "work/handoffs/phase-3/20261112_Round-2-CD-Rescores.json"
+   },
+   "3": {
+    "first": "work/handoffs/phase-3/20261113_Round-3-CD-Scores.json",
+    "rescore": "work/handoffs/phase-3/20261113_Round-3-CD-Rescores.json"
+   }
+  },
+  "board_scores": "work/handoffs/phase-3/20261113_Board-2-CD-Scores.json",
+  "red_teams": [
+   {
+    "name": "Statistics and civic education",
+    "round": 1,
+    "file": "work/handoffs/phase-3/20261112_Round-1-Red-Team-Statistics-Civic.md"
+   },
+   {
+    "name": "Fairness, brand and craft",
+    "round": 1,
+    "file": "work/handoffs/phase-3/20261112_Round-1-Red-Team-Brand-Craft.md"
+   },
+   {
+    "name": "Access and the test with a simulated designer",
+    "round": 1,
+    "file": "work/handoffs/phase-3/20261112_Round-1-Red-Team-Access-Production.md"
+   },
+   {
+    "name": "Statistics and civic education",
+    "round": 2,
+    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Statistics-Civic.md"
+   },
+   {
+    "name": "Fairness, brand and craft",
+    "round": 2,
+    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Brand-Craft.md"
+   },
+   {
+    "name": "Access and the test with a simulated designer",
+    "round": 2,
+    "file": "work/handoffs/phase-3/20261112_Round-2-Red-Team-Access-Production.md"
+   },
+   {
+    "name": "Statistics and civic education",
+    "round": 3,
+    "file": "work/handoffs/phase-3/20261113_Round-3-Red-Team-Statistics-Civic.md"
+   },
+   {
+    "name": "Fairness, brand and craft",
+    "round": 3,
+    "file": "work/handoffs/phase-3/20261113_Round-3-Red-Team-Brand-Craft.md"
+   },
+   {
+    "name": "Access and the test with a simulated designer",
+    "round": 3,
+    "file": "work/handoffs/phase-3/20261113_Round-3-Red-Team-Access-Production.md"
+   }
+  ]
+ }
+}

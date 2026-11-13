@@ -260,21 +260,28 @@ def main():
         doms = Counter(x["domain"] for x in rows if x["domain"] and x["domain"] != "all")
         sts = Counter(s for x in rows for s in x["states"])
         dl, sl = floor(n / 4), floor(n / 5)
+        names = {v: k for k, v in STATES.items()}
         return {"examples": n, "limit_domain": dl, "limit_state": sl,
                 "atlas_wide": sum(1 for x in rows if x["domain"] == "all"),
-                "by_domain": [{"domain": d, "title": dom_title[d], "count": k, "share": round(k / n, 3), "passes": k <= dl}
-                              for d, k in sorted(doms.items(), key=lambda kv: (-kv[1], kv[0]))],
-                "by_state": [{"state": s, "count": k, "passes": k <= sl}
-                             for s, k in sorted(sts.items(), key=lambda kv: (-kv[1], kv[0]))],
+                "by_domain": [{"domain": d, "title": dom_title[d], "count": k, "limit": dl, "share": round(k / n, 3),
+                               "passes": k <= dl} for d, k in sorted(doms.items(), key=lambda kv: (-kv[1], kv[0]))],
+                "by_state": [{"state": names.get(s, s), "code": s, "count": k, "limit": sl, "passes": k <= sl}
+                             for s, k in sorted(sts.items(), key=lambda kv: (-kv[1], names.get(kv[0], kv[0])))],
                 "passes": all(k <= dl for k in doms.values()) and all(k <= sl for k in sts.values())}
 
     gen = json.loads(GEN_LOG.read_text()) if GEN_LOG.exists() else {}
     gen_dom = gen.get("by_domain", {})
     built_t = tally(log)
     mine_dom = {d["domain"]: d["count"] for d in built_t["by_domain"]}
+    whole_t = tally(whole)
     rule_01_9 = {
+        # the board's table (the data lead's schema): chapter 14 as a whole, round 4 as planned; "built" is rounds 0 to 3
+        "limits": {"domain": "1 in 4", "state": "1 in 5"},
+        "total_examples": whole_t["examples"],
+        "limit_domain": whole_t["limit_domain"], "limit_state": whole_t["limit_state"],
+        "atlas_wide": whole_t["atlas_wide"],
+        "by_domain": whole_t["by_domain"], "by_state": whole_t["by_state"], "passes": whole_t["passes"],
         "built": built_t,
-        "with_round_4_as_planned": tally(whole),
         "ruling_g": RULING_G,
         "recount": len(whole),
         "agrees_with_generator_log": gen.get("examples") == built and gen_dom == mine_dom
@@ -303,11 +310,14 @@ def main():
             row.update({"form": x["form"], "coverage_use": c["use"] if c else None,
                         "election_use": bool(c and ELECTION_USE.search(c["use"])),
                         "built_in_phase_2": x["built_in_phase_2"]})
+            row["spec"] = x["where"]
             row["test"] = ("passes" if row["election_use"] else
                            "not applied: built in Phase 2 and approved on board 1, before the test" if x["built_in_phase_2"]
                            else "fails")
         else:
             row["test"] = "not a form: a rule's plate, whose data the rule itself needs"
+        row["election_data"] = True
+        row["passes"] = row["test"] == "passes"
         elect.append(row)
     r4_elect = [x for x in r4 if x["domain"] == "D02"]
     dr_229 = {
@@ -339,7 +349,12 @@ def main():
     if a.write:
         p = Path(a.write)
         doc = json.loads(p.read_text())
-        doc["counts"] = {"script": out["script"], "run_utc": out["run_utc"], **out["counts"]}
+        old = doc.get("counts") or {}
+        new = {"script": out["script"], "run_utc": out["run_utc"], **out["counts"]}
+        for k in ("rule_01_9", "dr_229"):   # a note is words (the editor's); a run keeps it
+            if isinstance(old.get(k), dict) and old[k].get("note"):
+                new[k]["note"] = old[k]["note"]
+        doc["counts"] = new
         doc["checks"] = {"script": out["script"], "run_utc": out["run_utc"], **out["checks"]}
         p.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")
         print(f"wrote counts and checks into {p}")

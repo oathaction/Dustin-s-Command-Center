@@ -1247,6 +1247,11 @@ async function self_test() {
         && K.chips('In {data_file}.', []).indexOf(K.fill_words('{data_file}')) > 0 && K.fill_words('{data_file}') === K.word('data_file')
         && draw_spec({ id: 'x', typography: { nbsp: true }, stage: 1024 }).typography.nbsp === true && draw_spec({ id: 'x', stage: 1024 }).stage === 1024,
         'C-M2, AX-S1, ST-M2: a stage keeps its desk width; fc classes and a forced edge print; {data_file} fills; the island keeps stage and typography' + (a.f.length ? ': ' + a.f[0] : '')); }
+    { // board 2 (A1): a table caption's {data_file} fills in the visible caption, the table's name and the summary's hidden words
+      const sp = { id: 'T', title: 'A title.', table: { caption: 'Every row is in {data_file}', columns: [{ field: 'k', label: 'Key', format: 'text', row_header: true }] } };
+      const fig = [false, true].map(g => K.figure(sp, [{ k: 'A' }], { id: 'oac-t', guide: g }));
+      pass(fig.every(h => h.indexOf('{data_file}') < 0 && h.split('Every row is in this chart').length - 1 >= 3),
+        'board 2: a table caption\'s {data_file} fills in the caption, the table\'s name and the summary, never printed raw'); }
     { // C-E7: a pivot's text cells take the spec's typography, and the lean table reads them back with no carried value
       const sp = { id: 'T', typography: { replace: [['...', 'No state law']] }, table: { columns: [{ field: 'st', label: 'State', format: 'text', row_header: true }], pivot: { row: 'st', column: 'y', value: 'r', format: 'text' } } };
       const rows = [{ st: 'AL', y: 2020, r: '...' }, { st: 'AL', y: 2024, r: '7.25' }];
