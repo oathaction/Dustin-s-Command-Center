@@ -817,6 +817,41 @@ The research lead found that the rule names seven committees, not six. My BC-M1 
 - **The contrast does not hold.** By script, Trump 47 Committee paid 54 recipients, the Republican National Committee $136,907,129.22 of them; the Harris Action Fund paid the DNC $51,530,000.00. So "53 committees" against "two" goes. The title states what the record shows across all seven by one measure, and I read it from the left and the right before sign-off. The editor drafts it from the frozen file's sums; no figure prints until the research lead's data check passes.
 - **Sign-off of S73** waits on the frozen file, maker B's build and the editor's title. I check every sum by script and look at 1440 and 390 px on both grounds and in grayscale.
 
+### Maker A, review fix pass: signed off (05:17 UTC)
+
+The container restarted at about 05:07; I worked from the files on disk. At 05:13 I built S66 to S72 from the files as they stand with `node work/build/chart-kit/oa-chart.mjs build s66 s67 s68 s69 s70 s71 s72 --widths 1440,390,296,256 --out <scratch>/kit-a`, sweep on: 7 PASS, 0 faults, and seven check files read, each with 0 faults and 0 warnings. One browser was used (the kit's own), and I ran no guide check.
+
+What I looked at, at 1x:
+- S68 at 1440 px on Newsprint, and at 256 px on Newsprint, on Charcoal and on Charcoal in grayscale.
+- S72 at 1440 px on Charcoal, and at 256 px on both grounds.
+- S66 at 1440 px on Newsprint, and at 256 px on both grounds.
+- S67 at 1440 px on Charcoal, and at 256 px on both grounds.
+- S69 and S70 at 1440 px on Newsprint, the first 1,500 px of each.
+- S71 at 1440 px on Newsprint (the first 1,300 px) and at 256 px on Charcoal (the first 1,400 px).
+
+I read every page table of S68 (scripts-off markup, all 8 rows), S72 (all 6), S71 (all 11), S70 (the first 3) and S69 (the first 5), parsed from the kit's pages by script.
+
+**Signed off: maker A's seven specs and entries 14.96, 14.98 and 14.99, with every maker A item from the four reports.**
+- **S68 (ST-M3, AX-M2, A-M2, BC-M2; A-S5).** The page table prints "None drawn" for Congress and the Department of Health and Human Services, the city council, the cooperative and the investor-owned utility. The two lines print their words: the commission "The state legislature’s laws set its powers", PJM "Files its rule changes with the Federal Energy Regulatory Commission for approval". The two lines of authority end in the open diamond at the body governed, at 1440 px and in the phone's lane at 256 px on both grounds and in grayscale. Congress and HHS now fit in two lines. Note 2 quotes PW03's record for order 7 exactly as stored, which equals the frozen file's `controls` cell, and spells out LIHEAP once with no claim of its own.
+- **S72 (A-S2, BC-S10, A-S6, ST-S8, AX-S1).**
+  - The title gives both tallies and names no crossover: "passed the Senate 60 to 40 on November 10, 2025, and the House 222 to 209 two days later". By script, 52, 7 and 1 yes against 38, 1 and 1 no in the Senate, and 216 and 6 yes against 207 and 2 no in the House.
+  - Notes 1 and 2 name each chamber's crossovers both ways.
+  - The table names the same 20 members as my earlier list, each group in last-name order (Cortez Masto to Shaheen; Cuellar to Watson Coleman; Massie, McCaul, Steube).
+  - Forced colors: maker A looked; I did not.
+- **S66 (A-S1, AX-S8, BC-S8).** The title is 29 words with "Congress and the President" kept. The Office of Management and Budget is spelled out. The five steps sit one even gap apart, with the branches beside them.
+- **S67 (A-S1).** The title reads "reaches city elections in 18 states and partly in Ohio", as the ruling gave it. Ohio's cost stays on its leaf. The 18 states' names are in the leaf and match the earlier count.
+- **S69 and S70 (A-S4, BC-S7).** The cards read in order down each column, S69's by printed name, and S69's subcommittees are named rows with hairlines. S70's Supreme Court rows open its table, and its Ninth Circuit card still counts Guam and the Northern Mariana Islands in 112.
+- **S71 (A-M1, BC-M3, ST-S10, A-S1).**
+  - "State constitutions read: Massachusetts, Nebraska, Virginia and Arizona".
+  - "changed the vote needed to end debate on nominations in 2013 and 2017".
+  - The title drops its 60-senator clause, which the "Federal statute" row still states.
+  - "38" ends inside the plate at 1440 px.
+
+**Word items for the editor, not maker A (none blocks this sign-off):**
+- S68's source line prints "as of October 15, 2026" and "Snapshot of October 15, 2026", beside the grade line's date. Under D3-1327 the date prints once, in the grade line. A source variant from the research lead, as S74 got (D3-1305), would carry it.
+- S70's measure line still ends "retrieved November 12, 2026". S70 is not on D3-1327's list; the editor decides whether call 9's rule reaches it.
+- S72's House panel head reads "House roll call 285, 2025, November 12, 2025", with the year twice.
+
 ### Tested, review fix pass
 
 - Clock read with `date -u` at 04:24, 04:26, 04:30, 04:31, 04:32, 04:34, 04:37 and 04:38 UTC.
@@ -934,3 +969,4 @@ Not tested:
 - The four other joint fundraising committees' line 22 transfers (the research lead reads them under BC-M1).
 - BC's, CD's and AX's captures, label counts and contrast figures: read from their reports, not repeated, except where a figure above says "by script".
 - After BC-M1's confirmation, 04:48 to 04:49 UTC, by script from the research lead's downloads in `.../round-3-fix/research/dl/bcm1/`: the payers to each campaign with their FEC designation (3 of 92 designated J for Harris, 4 of 64 for Trump), each fund's transfers to its campaign, each fund's recipient count and aggregate total, and the top recipients of five funds (Trump 47 Committee to the RNC $136,907,129.22; the Harris Action Fund to the DNC $51,530,000.00). Not tested: the line split of the four new funds, which waits on the research lead's itemized files and data check.
+- Maker A's sign-off, 05:13 to 05:17 UTC: the kit build and captures listed under "Maker A, review fix pass: signed off"; page tables parsed by script (`tables.py`, scratch); S72's tallies recounted from the frozen file; S68's note 2 compared with the frozen `controls` cell. Not tested: S72 in forced colors (maker A ran it); any capture at 390 or 296 px; S69 to S71 below the parts named; the CSV exports; maker A's plates inside a guide build.
