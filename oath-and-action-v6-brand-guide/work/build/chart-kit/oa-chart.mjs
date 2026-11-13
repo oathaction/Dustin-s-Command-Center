@@ -828,6 +828,14 @@ async function self_test() {
       console.log(`${c2 ? 'caught' : 'MISSED'} a derived table's line that leaves out its source's publisher${c2 ? '' : ': ' + JSON.stringify(f2.slice(0, 3))}`);
       console.log(`${c3 ? 'caught' : 'MISSED'} a derived table with no derivation${c3 ? '' : ': ' + JSON.stringify(f3.slice(0, 3))}`);
       if (!okd) bad++; if (!c2) bad++; if (!c3) bad++;
+      // round 3: a boundary file may be among a derived table's sources; its publisher must then be named too
+      ['census-cb-2024-counties.geojson', 'census-cb-2024-counties.meta.json'].forEach(f => fs.symlinkSync(path.join(DATA, f), path.join(td, f)));
+      const both = 'Source: U.S. Bureau of Labor Statistics, all nonfarm employees, monthly change, 2022 to 2026; county boundaries, U.S. Census Bureau, 2024. Retrieved November 6, 2026.';
+      const dg = Object.assign({}, der, { derived_from: ['oa-test-public.csv', 'census-cb-2024-counties.geojson'], source_line_variants: Object.assign({}, der.source_line_variants, { both }) });
+      const g1 = run_d(dg, both), g2 = run_d(dg);
+      const okg = !g1.some(x => /R2-2|not in the data folder/.test(x)) && g2.some(x => /does not name U\.S\. Census Bureau/.test(x));
+      console.log(`${okg ? 'pass' : 'FAIL'} a derived table may name a boundary file among its sources, and its line names the Bureau${okg ? '' : ': ' + JSON.stringify(g1.concat(g2).filter(x => /R2-2|data folder|Census/.test(x)).slice(0, 3))}`);
+      if (!okg) bad++;
       fs.rmSync(td, { recursive: true, force: true });
     }
     // ED-E15 and ruling (c): marks the title names together share the red as one job; two jobs still fail. G2: the opt-in edge

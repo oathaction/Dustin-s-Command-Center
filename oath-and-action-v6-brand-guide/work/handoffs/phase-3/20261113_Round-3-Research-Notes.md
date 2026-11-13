@@ -10,7 +10,7 @@ Started 00:49 UTC; this state at 01:34 UTC. Times below are clock readings or th
 - **Atlas re-check (DR-250): no comparison changed, no candidate V7.1 item.** 1,976 of the 2,644 comparisons rerun against today's V7 give Phase 0's results; 668 could not be rerun because the supplied pages are not in the container, and rest on Phase 0's stored V7 values or the model's provenance.
 - **Judge counts: 677 = 673 + 4.** The courts count the territorial district courts' 4 judgeships beside 28 U.S.C. 133's 673; temporary judgeships, the round 2 guess, are not the difference. Row 123's file and S70's file now give the same account.
 - **Requests landed:** R3-A1 (Ballotpedia's publisher), RL-1 (the nation's county median), RL-2 (County Business Patterns' noise flags and the 7.7 million gap), RL-3 (names in the cycle; the FEC aggregate's lines 22 and 28C, with line 21B apart), RL-3a's phrase, and RL-4 (the Harris Victory Fund's line 21B payments to seven committees outside the file, $7,630,069.02; none from the Trump committee).
-- **Derived files checked:** seven, 0 faults (maker A's route grid after it set its ledger row to P7-209). Maker A's S69 file has not landed.
+- **Derived files checked:** seven, 0 faults (maker A's route grid after it set its ledger row to P7-209). Maker A dropped its two grouped files for S69 and S72 (D3-1097), so they need no check.
 - **Stale lines marked** in the ledger, the round 3 plan and, by D3-1098, the round 4 plan's row 123.
 
 ## Geometry
@@ -78,7 +78,7 @@ Done 01:28 UTC. Each line stays as the record, marked "Stale (research lead, rou
   - `clerk-house-results-2024-classes` (cartographer, S80 and S82): printed margins rounded half up to one decimal; classes reproduce ruling (f)'s table, party by party (36, 33, 85, 259; 22 unopposed); the ring mark on the 14 seats decided another way and on no other; squares equal the layout's.
   - `usgov-v7-route-grid` (maker A, S71): every value equals `v7-routes` and `usgov-route-requirements` by route code, in V7's order; each date is in the workflow sources file. One fault: `ledger_row` read "pending"; maker A set it to P7-209 by 01:33 UTC, so the file now has 0 faults.
 - **The cartographer’s four, rechecked at 02:25 UTC as they stand after its finish (files written 01:33 UTC):** every recomputed value as before (S81 classes 371, 1,138, 1,049, 585 with 1,707 and 182 crossing; S83 dots 13,040 and 2,402; S82 435 squares, seats per state, every state in one piece; results classes as ruling (f)); its `--check` 0 faults; data check 124 tables, 0 faults. One change since my first check: S81’s and S83’s sidecars name only the data file in `derived_from` and the boundary file in the derivation’s words, the cartographer’s call because the data check refuses a `.geojson` there. The words are accurate, so it is not a fault; the ledger already lists all four under P7-211, P7-212, P7-214 and P7-215, and no row is needed. Request to the engineer, not blocking: let the data check accept a `.geojson` boundary file in `derived_from`, so a map’s sidecar can list it.
-- Waiting: maker A's `clerk-house-committees-119-grouped` (S69), not yet in the folder.
+- Dropped, no check needed: maker A's `clerk-house-committees-119-grouped` (S69) and `congress-hr5371-roll-calls-grouped` (S72). The kit's grouped table (A-E1, A-E2) groups both tables from the frozen files (D3-1097).
 
 ## Routine calls
 

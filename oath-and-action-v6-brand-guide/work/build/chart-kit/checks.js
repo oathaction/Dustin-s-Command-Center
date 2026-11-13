@@ -264,7 +264,8 @@ function check_spec(K, spec, opts) {
     if (!from.length || !m.derivation) { f.push(`dataset ${ds.file}: a derived table's sidecar names derived_from and derivation (C1, R2-2)`); return; }
     const norm = x => String(x).replace(/United States/g, 'U.S.').trim();
     from.forEach(fn => {
-      const src = load_dataset(String(fn).replace(/\.(csv|json)$/, ''), opts.data_dir);
+      // round 3 (the research lead's request): a boundary file may be a source too, named with its .geojson extension
+      const src = load_dataset(String(fn).replace(/\.(csv|json|geojson)$/, ''), opts.data_dir);
       if (src.fault) { f.push(`dataset ${ds.file}: derived_from names ${fn}, which is not in the data folder`); return; }
       if (['public', 'secondary'].indexOf(src.meta.kind) < 0 || !spec.source_line) return;
       const line = norm(spec.source_line);
