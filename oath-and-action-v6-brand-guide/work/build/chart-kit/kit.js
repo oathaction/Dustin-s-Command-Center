@@ -770,6 +770,12 @@
     var want = t(ARTBOARDS[spec.artboard || 'reading'] || 'artboard-reading');
     return container ? Math.min(want, Math.floor(container)) : want;
   };
+  // C-M2, D3-1324 (round 3 fix pass): spec.stage, a width in px, draws the desk drawing at that one width wherever the
+  // column gives the drawing PHONE_MAX px or more, in a frame that scrolls sideways where the column is narrower; under
+  // PHONE_MAX the phone drawing takes the column's width as before. For a drawing approved at one width that no column
+  // gives it (S12's arrows at board 1's 1024 px). Returns the width to draw at.
+  K.PHONE_MAX = PHONE_MAX;
+  K.draw_width = function (spec, w) { return spec && spec.stage && w >= PHONE_MAX ? Math.round(+spec.stage) : w; };
   K.draw = function (spec, rows, opts) {
     // returns {svg, width, height, texts, marks, warnings, guard}
     var def = K.forms[spec.form];
@@ -1663,8 +1669,13 @@
     var ground = opts.ground || (fig.closest && fig.closest('.oa-surface-charcoal') ? 'charcoal' : 'newsprint');
     var last = -1, result = null;
     function draw() {
-      var w = K.artboard(spec, t, art.clientWidth || fig.clientWidth);
-      if (w === last) return;
+      var cw = art.clientWidth || fig.clientWidth, w = K.artboard(spec, t, cw);
+      // C-M2: a staged drawing keeps its one width and the frame scrolls sideways; a phone column draws the phone form
+      if (spec.stage) {
+        w = K.draw_width(spec, w);
+        if (w === Math.round(+spec.stage)) art.setAttribute('data-oa-stage', String(w)); else art.removeAttribute('data-oa-stage');
+      }
+      if (w === last) { if (spec.stage) stage_stop(); return; }
       last = w;
       // the drawing takes its name from the figure's printed title; a plate that prints no title (chapter 13's) names it
       // by its description, so the name never points at an element that is not there
@@ -1686,6 +1697,15 @@
       // AX S1 (round 2 fix pass): a clean redraw clears the count a narrower or wider drawing left
       if (result.guard.length || result.warnings.length) fig.setAttribute('data-oa-warnings', String(result.guard.length + result.warnings.length));
       else fig.removeAttribute('data-oa-warnings');
+      if (spec.stage) stage_stop();
+    }
+    // C-M2: a staged drawing wider than its column takes a tab stop and a name, so a keyboard can scroll it (as the table's
+    // frame does); it gives them up when it fits
+    function stage_stop() {
+      if (art.hasAttribute('data-oa-stage') && art.scrollWidth > art.clientWidth + 1) {
+        art.setAttribute('tabindex', '0'); art.setAttribute('role', 'group');
+        art.setAttribute('aria-label', word(opts, 'stage_scroll').replace('{w}', art.getAttribute('data-oa-stage')));
+      } else { art.removeAttribute('tabindex'); art.removeAttribute('role'); art.removeAttribute('aria-label'); }
     }
     draw();
     // the phone drawing at its fixed width, once (D3-487); the figure's description and table carry its data, so it is

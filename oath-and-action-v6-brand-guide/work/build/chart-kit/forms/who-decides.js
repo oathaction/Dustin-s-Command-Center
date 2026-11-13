@@ -3,8 +3,10 @@
  * (federal, regional, state, local, private). One node style for every body, a subject-ink edge with the text's ink
  * inside, the name in bold and any words in parentheses under it. Lines of authority (one body setting or approving
  * another's rules) run in the context ink and end in Rule 15.5's open diamond; they take no sign and close no loop (R3-6).
- * Narrower than five columns of 118 px, the bands run down the page, each body a row under its level's name, and the
- * lines of authority run in a lane at the left.
+ * Each column takes the width its names need (A-S5): every column starts at 118 px and the width left over goes, a few
+ * pixels at a time, to the column whose widening shortens the bands most, so a long name stops wrapping to five lines
+ * beside an empty column; what no column can use is shared evenly. Narrower than five columns of 118 px, the bands run
+ * down the page, each body a row under its level's name, and the lines of authority run in a lane at the left.
  * encode: who (text), level (category), changes (boolean: can change the rules), key (the body's own key, for links).
  * labels: levels ([values], the columns' order), level_words ({value: words}), bands ({true: words, false: words}),
  * authority ([{from: key, to: key}]), order ([keys]: the order bodies stack in a column; a body whose line leaves for
@@ -32,25 +34,57 @@
         if (!nb) c.warn('who-decides: the words of ' + words + ' do not fit their box at ' + W + ' px');
         return nb;
       };
-      var size_of = function (r, w) { var nm = split(r); return K.parts.node_size(c, nm[0], { max: w, min: w, lines: 8, pad: pad, sub: nm[1] || undefined, sub_lines: 4, weight: 600, roles: role }); };
+      var memo = {};
+      var size_of = function (r, w) {
+        var k = role[0] + '|' + r[ek] + '|' + w;
+        if (!(k in memo)) { var nm = split(r); memo[k] = K.parts.node_size(c, nm[0], { max: w, min: w, lines: 8, pad: pad, sub: nm[1] || undefined, sub_lines: 4, weight: 600, roles: role }); }
+        return memo[k];
+      };
+      // each column's width (A-S5): 118 px each, then the rest a step at a time to the column that shortens the bands most
+      var ws = levels.map(function () { return cw; });
+      var band_h = function (v, w2) {
+        var hs = levels.map(function () { return 0; }), ns = levels.map(function () { return 0; });
+        c.rows.forEach(function (r) { if (!!r[ec] !== v) return; var i = col(r), s = size_of(r, w2[i]); hs[i] += (s ? s.h : 999) + (ns[i]++ ? 22 : 0); });
+        return Math.max.apply(null, hs);
+      };
+      var cost = function (w2) { return band_h(true, w2) + band_h(false, w2); };
+      var share = function () {
+        var avail = W - cg * (levels.length - 1), base = 118, step = 4;
+        ws = levels.map(function () { return base; });
+        var left = avail - base * levels.length, now = cost(ws);
+        while (left >= step) {
+          var best = -1, bd = 0, bgain = 0;
+          levels.forEach(function (v, i) {
+            // the least widening of this column, up to what is left, that shortens the bands
+            for (var d = step; d <= left; d += step) {
+              var w2 = ws.slice(); w2[i] += d;
+              var g = now - cost(w2);
+              if (g > 0) { if (best < 0 || g / d > bgain / bd) { best = i; bd = d; bgain = g; } break; }
+            }
+          });
+          if (best < 0) break;
+          ws[best] += bd; left -= bd; now -= bgain;
+        }
+        ws = ws.map(function (w) { return Math.floor((w + left / levels.length) * 100) / 100; });
+      };
       // one size for every name: the label size where every name fits its column, else the tick size
-      var fits = function (w) { return c.rows.every(function (r) { return !!size_of(r, w); }); };
-      if (wide && !fits(cw)) { role = ['tick']; if (!fits(cw)) wide = false; }
+      var fits = function () { return c.rows.every(function (r) { return !!size_of(r, ws[col(r)]); }); };
+      if (wide) { share(); if (!fits()) { role = ['tick']; share(); if (!fits()) wide = false; } }
       var heading = function (x, yb, words, max) { return c.text(x, yb, words, { role: 'label', weight: 700, max: max }); };
       if (wide) {
         // column heads, then each band under its heading, set in the first column's width so a line of authority clears it
-        var cx = function (i) { return i * (cw + cg); };
+        var cx = function (i) { var x = 0; for (var j = 0; j < i; j++) x += ws[j] + cg; return x; };
         var hb = 0;
-        levels.forEach(function (v, i) { hb = Math.max(hb, c.text(cx(i), tick * 0.95, lw[v] || v, { role: 'tick', weight: 600, fill: 'secondary', max: cw }).bottom); });
+        levels.forEach(function (v, i) { hb = Math.max(hb, c.text(cx(i), tick * 0.95, lw[v] || v, { role: 'tick', weight: 600, fill: 'secondary', max: ws[i] }).bottom); });
         y = hb + 14;
         [true, false].forEach(function (v, bi) {
           var rows = band(v);
           if (!rows.length) return;
-          var hd = heading(0, y + size * 0.93, bands[String(v)] || String(v), bi ? cw : W);
+          var hd = heading(0, y + size * 0.93, bands[String(v)] || String(v), bi ? ws[0] : W);
           var top = hd.bottom + 10, stack = levels.map(function () { return top; });
           rows.forEach(function (r) {
-            var i = col(r), s = size_of(r, cw), h = s ? s.h : 60;
-            node(r, cx(i), stack[i], cw, h);
+            var i = col(r), s = size_of(r, ws[i]), h = s ? s.h : 60;
+            node(r, cx(i), stack[i], ws[i], h);
             stack[i] += h + 22;
           });
           y = Math.max.apply(null, stack) - 22 + (bi ? 0 : 28);
