@@ -11,7 +11,7 @@
   "reader_question": "Can my city switch its own elections to ranked-choice voting?",
   "evidence": "finding",
   "evidence_label": "Finding",
-  "grade_line": "Documented: state laws compiled by Ballotpedia, a secondary source, and the atlas’s local route",
+  "grade_line": "Documented: state laws compiled by Ballotpedia, a secondary source, as of November 2026; the city route from the atlas, as of October 15, 2026",
   "title": "A state ban on ranked-choice voting reaches city elections in 18 states, Ohio’s ban leaves home-rule cities an opening at a price, and elsewhere the answer turns on state home-rule law.",
   "measure_line": "Whether a state ban on ranked-choice voting reaches a city’s own elections, 50 states and the District of Columbia, bans as of November 2026, read November 6, 2026 and read again November 12, 2026, after the November 3 election",
   "notes": [
@@ -72,7 +72,7 @@
     ]
   },
   "chart_notes": [
-    "The question sits in a box with a heavy edge, and each answer under it in a box with a fine edge, joined by an arrow. Each answer gives its count of states, what it means for a city and, where it is short, the states by name."
+    "Each question sits in a box with a heavy edge, and each answer under it in a shaded box, joined by an arrow; every answer is drawn alike, since your state picks the path. Each answer gives its count of states, what it means for a city and, where the list is short, the states by name."
   ],
   "phone": "differs",
   "phone_note": "Where three columns cannot each hold 190 px, the answers run down the page, each set in from a line at the left.",

@@ -47,12 +47,12 @@
       };
       var box = function (x, y, w, p, ask, key) {
         var h = fit(p, w);
-        c.rect(x + 0.5, y + 0.5, w - 1, h - 1, { fill: 'surface', stroke: ask ? 'subject' : 'context', width: 1, data: { key: key, field: ask ? 'question' : 'answer', value: p[0].w } });
+        c.rect(x + 0.5, y + 0.5, w - 1, h - 1, { fill: ask ? 'surface' : 'track', stroke: ask ? 'subject' : 'context', width: 1, data: { key: key, field: ask ? 'question' : 'answer', value: p[0].w } });
         p.forEach(function (q) { c.text(x + pad, y + q.base, q.w, { role: q.role, weight: q.wt, max: w - 2 * pad, leading: q.lh, fill: q.fill }); });
         return h;
       };
       // a run of the kit's link part (R3-5); arrow: a head at its end
-      var ln = function (x1, y1, x2, y2, arrow) { K.parts.link(c, { x: x1, y: y1 }, { x: x2, y: y2 }, { stroke: 'context', width: 1, arrow: !!arrow, head: [7, 4] }); };
+      var ln = function (x1, y1, x2, y2, arrow) { K.parts.link(c, { x: x1, y: y1 }, { x: x2, y: y2 }, { stroke: 'subject', arrow: !!arrow, head: [7, 4] }); };
       // a further question under an answer at x, its top 16 px under the answer's bottom y, joined by an arrow from the
       // line at the answer's left, and its own answers under it, set in
       var ask = function (q, x, y, w, key) {

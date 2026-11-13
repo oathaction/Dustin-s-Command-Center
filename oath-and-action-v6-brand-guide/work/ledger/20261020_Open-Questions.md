@@ -8,6 +8,7 @@ Opened at Gate 0, October 20, 2026. Q-11 to Q-14 added at Gate 1, October 21, 20
 
 | # | Question | Why it matters | Default until answered | Raised by |
 |---|---|---|---|---|
+| Q-18 | Atlas V7's issue I062 cites KFF for “more than 25 million disenrolled, 69 percent for procedural reasons”. CMS's own renewal outcomes for renewals due April 2023 to March 2024 sum to 22,914,537 ended, 15,966,431 of them (69.7 percent) for procedural reasons. Should the atlas's V7.1 date I062's count to KFF's period, or keep it as written? | Chapter 14's funnel (S65) prints CMS's figures and period beside an atlas issue that gives a larger count; the share agrees, and the count most likely differs because KFF's tally runs past March 2024 | S65 prints CMS's figures and period and corrects nothing in V7; the item joins board 2's V7.1 list | Data visualization lead, round 3 (data plan change 11) |
 | Q-12 | Will a trademark attorney run clearance on OATH & ACTION, the monogram and a standalone ampersand before launch? | The drawn ampersand's value depends on it, and Braver Angels had to rename after a settlement | The guide flags the need. No filing assumed | Research lead, Gate 1 |
 
 ## Answered

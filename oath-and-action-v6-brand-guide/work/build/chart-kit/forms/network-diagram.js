@@ -1,41 +1,32 @@
-/* Network diagram (coverage plan 3.12, extended; S73). Who sends to whom: each source a box at the left, links running
- * to the boxes of the nodes it sent to at the right, every link's width its measure in one unit for the whole drawing,
- * with a key that gives the unit. Links leave a source stacked in the order of the nodes they reach, so none cross.
- * Sources stack one under another; rows a spec folds (labels.nodes) join one node, and the table lists each row. The
- * same drawing serves a phone, its boxes narrower.
+/* Network diagram (coverage plan 3.12, extended; S73). Who sends to whom: each source a box, links running from it to the
+ * boxes of the nodes it sent to, every link's width its measure in one linear unit for the whole drawing (K.parts.flows),
+ * with a key of widths; a link narrower than a pixel draws at 1 px, and the key says so. Links leave a source stacked in
+ * the order of the nodes they reach, so none cross. Sources sit side by side from labels.side_by_side px (default 600) and
+ * one under another below it, drawn alike on one unit. Rows a spec folds (labels.nodes) join one node; the table lists
+ * each row. Inks (the data lead's round 3 ruling (b)): every node and link in the ink labels.ink names (the party-mark
+ * ink for money spent to elect a candidate, Rule 14.6), node boxes outlined in it with the words in the text's ink.
  * encode: source (text), target (text), value (number), target_key (id, matched by labels.nodes), kind (category,
  * optional, matched by labels.nodes).
  * labels: nodes ([{source, keys: [target_key], kind: [kind], rest: true, name}], in drawing order: a row joins the first
  * node it matches; {n} in a name counts its rows), sources ({source: the box's name}), sub ({source: words under the
  * name, with {total} and {n}}), value ('{v}' words under a node's name; default '{v}'), unit (the measure one pixel of
- * width carries), key ('{v}' words beside the key's link), key_value (the key link's measure), named (node names the
- * title names: the subject ink), fills ({node name, "links" or "boxes": color role}).
- * formats: value. Maker B, round 3. */
+ * width carries), key_steps ([measures] the key draws), key_title, key_hairline (words under the key, {v} the measure of
+ * one pixel), ink (a color role; default 'party'), side_by_side (px).
+ * formats: value, small (for a measure under 1 million; default the value's). Maker B, round 3. */
 (function (K) {
   'use strict';
-  // a link from x0 (y0 to y0 + h0) to x1 (y1 to y1 + h1), its edges eased, as points the checks can read
-  var ribbon = function (x0, y0, h0, x1, y1, h1) {
-    var n = 14, top = [], bot = [], ease = function (t) { return t * t * (3 - 2 * t); };
-    for (var i = 0; i <= n; i++) {
-      var t = i / n, x = x0 + (x1 - x0) * t, e = ease(t);
-      top.push([x, y0 + (y1 - y0) * e]);
-      bot.push([x, y0 + h0 + (y1 + h1 - y0 - h0) * e]);
-    }
-    var R = function (p) { return Math.round(p[0] * 10) / 10 + ',' + Math.round(p[1] * 10) / 10; };
-    return 'M' + top.map(R).join('L') + 'L' + bot.reverse().map(R).join('L') + 'Z';
-  };
   K.register_chart({
     form: 'network-diagram', name: 'Network Diagram', family: 'relationships',
     encode: { source: 'text', target: 'text', value: 'number', target_key: 'id', kind: 'category?' },
-    labels: ['nodes', 'sources', 'sub', 'value', 'unit', 'key', 'key_value', 'named', 'fills'],
+    labels: ['nodes', 'sources', 'sub', 'value', 'unit', 'key_steps', 'key_title', 'key_hairline', 'ink', 'side_by_side'],
     phone: 'same',
     draw: function (c) {
-      var L = c.labels, f = c.spec.formats || {}, W = c.width, ph = c.phone;
+      var P = K.parts, L = c.labels, f = c.spec.formats || {}, W = c.width;
       var es = c.field('source'), et = c.field('target'), ev = c.field('value'), ek = c.field('target_key'), ekd = c.field('kind', false);
-      var specs = L.nodes || [], fills = L.fills || {}, named = [].concat(L.named || []);
-      var unit = +L.unit || 1, lb = c.size('label'), tk = c.size('tick'), pad = 6;
-      var v = function (x) { return String(L.value || '{v}').split('{v}').join(K.fmt(x, f.value || 'integer')); };
-      // group the rows: one block a source, in first-seen order, and one node a matching spec
+      var specs = L.nodes || [], ink = L.ink || 'party', unit = +L.unit || 1, tk = c.size('tick');
+      var fv = function (x) { return K.fmt(x, Math.abs(x) < 1e6 && f.small ? f.small : f.value || 'integer').replace(/ (million|billion)$/, ' $1'); };
+      var v = function (x) { return String(L.value || '{v}').split('{v}').join(fv(x)); };
+      // one block a source, in first-seen order, and one node a matching spec
       var blocks = [];
       c.rows.forEach(function (r) {
         var s = String(r[es]), b = blocks.filter(function (x) { return x.source === s; })[0];
@@ -51,60 +42,56 @@
         if (!nd) { nd = { id: id, order: m === null ? 1e6 : m, spec: m === null ? null : specs[m], rows: [], value: 0 }; b.nodes.push(nd); }
         nd.rows.push(r); nd.value += r[ev]; b.total += r[ev]; b.rows++;
       });
-      var lfill = fills.links || 'context', bfill = fills.boxes || 'track';
-      // a box with its words inside, top left; returns its bottom. Named: the subject ink with light words
-      var box = function (x, y, w, h, words, isn, data) {
-        c.rect(x, y, w, h, { fill: isn ? 'subject' : bfill, kind: 'node', data: data });
-        if (!isn) c.rect(x + 0.5, y + 0.5, w - 1, h - 1, { stroke: 'context', width: 1, mark: false });
-        var ink = isn ? 'label-on-subject' : 'label', yy = y + pad;
-        words.forEach(function (wd, i) {
-          var b = c.text(x + pad, yy + (i ? tk : lb) * 0.86, wd, { role: i ? 'tick' : 'label', weight: i ? 400 : 700, max: w - 2 * pad, fill: ink, tnum: i > 0 });
-          yy = b.bottom + 1;
-        });
-      };
-      var words_h = function (words, w) {
-        var h = 2 * pad;
-        words.forEach(function (wd, i) { h += c.wrap(wd, i ? 'tick' : 'label', w - 2 * pad, i ? 400 : 700).length * Math.round((i ? tk : lb) * 1.25) + 1; });
-        return Math.ceil(h);
-      };
-      var y = 0;
-      // the key: one link of the key's measure, so a reader can size every link
-      if (L.key_value) {
-        var kh = L.key_value / unit, kw = 40;
-        c.rect(0, y, kw, kh, { fill: lfill, mark: false });
-        c.key([{ fill: lfill }]);
-        c.text(kw + 8, y + kh / 2 + lb * 0.35, String(L.key || '{v}').split('{v}').join(K.fmt(L.key_value, f.value || 'integer')), { role: 'label', max: W - kw - 8 });
-        y += Math.max(kh, lb * 1.3) + 20;
-      }
-      var hw = Math.round(W * (ph ? 0.33 : 0.27)), rw = Math.round(W * (ph ? 0.4 : 0.36)), rx = W - rw, gap = 10;
-      blocks.forEach(function (b, bi) {
+      // one linear unit for every link in the drawing
+      var links = [];
+      blocks.forEach(function (b) {
         b.nodes.sort(function (p, q) { return p.order - q.order; });
-        var hwords = [String((L.sources || {})[b.source] || b.source)];
-        var sub = (L.sub || {})[b.source];
-        if (sub) hwords.push(String(sub).split('{total}').join(v(b.total)).split('{n}').join(String(b.rows)));
-        // the nodes' boxes at the right, each as tall as its link or its words
-        var ny = y, items = b.nodes.map(function (nd) {
-          var name = String(nd.spec && nd.spec.name ? nd.spec.name : nd.rows[0][et]).split('{n}').join(String(nd.rows.length));
-          var lh = Math.max(1, nd.value / unit), words = [name, v(nd.value)], bh = Math.max(lh + 8, words_h(words, rw));
-          var it = { nd: nd, name: name, lh: lh, words: words, y: ny, h: bh };
-          ny += bh + gap;
+        b.nodes.forEach(function (nd) {
+          nd.name = String(nd.spec && nd.spec.name ? nd.spec.name : nd.rows[0][et]).split('{n}').join(String(nd.rows.length));
+          links.push({ from: b.source, to: b.source + '>' + nd.id, value: nd.value, key: nd.name });
+        });
+      });
+      var fl = P.flows(links, { unit: 1 / unit });
+      fl.faults.forEach(function (x) { c.warn(x); });
+      var y = 0;
+      if (L.key_steps) {
+        y += P.width_key(c, 0, y, 1 / unit, L.key_steps, { words: L.key_steps.map(function (s) { return fv(s); }), stroke: ink, len: 32, title: L.key_title, max: W });
+        if (L.key_hairline) { var hb = c.text(0, y + tk * 0.9, String(L.key_hairline).split('{v}').join(fv(unit)), { role: 'tick', max: W }); y = hb.bottom; }
+        y += 18;
+      }
+      var two = W >= (L.side_by_side || 600), pw = two ? Math.floor((W - 28) / 2) : W, gap = 10;
+      var hw = Math.round(pw * (two ? 0.3 : 0.32)), rw = Math.round(pw * (two ? 0.42 : 0.4));
+      var top = y, low = y;
+      blocks.forEach(function (b, bi) {
+        var x0 = two ? bi * (pw + 28) : 0, y0 = two ? top : low + (bi ? 28 : 0), rx = x0 + pw - rw;
+        var hsub = (L.sub || {})[b.source];
+        hsub = hsub ? String(hsub).split('{total}').join(v(b.total)).split('{n}').join(String(b.rows)) : undefined;
+        var hname = String((L.sources || {})[b.source] || b.source);
+        // the nodes' boxes, each as tall as its link or its words
+        var ny = y0, items = b.nodes.map(function (nd) {
+          var lw = Math.max(1, fl.px(nd.value)), sz = P.node_size(c, nd.name, { max: rw, sub: v(nd.value), lines: 3, pad: [8, 6] });
+          var it = { nd: nd, lw: lw, y: ny, h: Math.max(lw + 6, sz ? sz.h : 40) };
+          ny += it.h + gap;
           return it;
         });
-        var stack = items.reduce(function (s, it) { return s + it.lh; }, 0);
-        var hh = Math.max(stack + 8, words_h(hwords, hw)), ly = y + (hh - stack) / 2;
-        // links first, then the boxes over their ends
+        var stack = items.reduce(function (s, it) { return s + it.lw; }, 0);
+        var hs = P.node_size(c, hname, { max: hw, sub: hsub, lines: 3, pad: [8, 6] });
+        var hh = Math.max(stack + 6, hs ? hs.h : 60), ly = y0 + (hh - stack) / 2;
+        // links first, then the boxes and their words over the links' ends
         items.forEach(function (it) {
-          var isn = named.indexOf(it.name) >= 0, ty = it.y + (it.h - it.lh) / 2;
-          c.path(ribbon(hw, ly, it.lh, rx, ty, it.lh), { fill: fills[it.name] || (isn ? 'subject' : lfill), kind: 'link', data: { key: it.name, field: ev, value: it.nd.value } },
-            [hw, Math.min(ly, ty), rx - hw, Math.max(ly, ty) + it.lh - Math.min(ly, ty)]);
-          if (it.nd.rows.length > 1) it.nd.rows.forEach(function (r) { c.datum(rx, ty + it.lh / 2, { data: { key: r[ek], field: ev, value: r[ev] } }); });
-          ly += it.lh;
+          var ty = it.y + (it.h - it.lw) / 2;
+          P.flow_band(c, x0 + hw, ly, rx, ty, it.lw, { fill: ink, edge: false, data: { key: it.nd.name, from: b.source, to: it.nd.name, value: it.nd.value } });
+          if (it.nd.rows.length > 1) it.nd.rows.forEach(function (r) { c.datum(rx, ty + it.lw / 2, { data: { key: r[ek], field: ev, value: r[ev] } }); });
+          ly += it.lw;
         });
-        box(0, y, hw, hh, hwords, false, { key: b.source, field: ev, value: b.total });
-        items.forEach(function (it) { box(rx, it.y, rw, it.h, it.words, named.indexOf(it.name) >= 0, { key: it.name, field: ev, value: it.nd.value }); });
-        y = Math.max(ny - gap, y + hh) + (bi < blocks.length - 1 ? 28 : 0);
+        var opt = function (data, sub) { return { stroke: ink, width: 1.5, align: 'start', pad: [8, 6], sub: sub, lines: 3, data: data }; };
+        if (!P.node(c, { x: x0, y: y0, w: hw, h: hh }, hname, opt({ key: b.source, field: ev, value: b.total }, hsub))) c.warn('network-diagram: the words do not fit the box for ' + hname + ' at ' + W + ' px');
+        items.forEach(function (it) {
+          if (!P.node(c, { x: rx, y: it.y, w: rw, h: it.h }, it.nd.name, opt({ key: it.nd.name, field: ev, value: it.nd.value }, v(it.nd.value)))) c.warn('network-diagram: the words do not fit the box for ' + it.nd.name + ' at ' + W + ' px');
+        });
+        low = Math.max(low, ny - gap, y0 + hh);
       });
-      c.height(y + 1);
+      c.height(low + 1);
     }
   });
 })(globalThis.OAChart);
