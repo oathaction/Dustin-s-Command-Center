@@ -102,6 +102,9 @@ for _k, _p in LOOP.items():
             LOOP_NAME.setdefault(_code, _lab)
 
 
+DR265_TITLES = {NODE[c]["title"] for c, lab in LOOP_NAME.items() if lab != NODE[c]["title"]}
+
+
 def short(code):
     """A variable's name on every plate and in every line of the chapter: its own title (nodes[].title), never the
     chain label a loop's record gives it (DR-265, November 13, 2026). LOOP_NAME stays only for the check that no chain
@@ -399,6 +402,9 @@ def pill_w(label, pw=PW, hi=None):
 
 
 ROW_ROOM = W - 4 - 12      # two pills side by side in one row: 2 px from each edge and 12 px between them
+ROW_ROOM3 = W - 4 - 6      # a three-variable loop's lower row, where nothing runs between its two pills
+MAX_ROWS = 3               # the data lead's ruling (e): a title wraps onto three rows at most in a pill that can grow
+STACK_HI = 250             # a two-variable loop drawn one pill above the other: its pills' widest
 
 
 def _rows_n(label, w_):
@@ -411,19 +417,33 @@ def _rows_n(label, w_):
 _ROWS_N = {}
 
 
-def pair_w(la, lb, lo=PW):
-    """Two pills that share a row (a two-variable loop, a row of a four-variable one): the widths that set both titles in
-    the fewest rows, then the fewest rows in all, then the narrowest, inside ROW_ROOM together (DR-265)."""
-    ba, bb = pill_w(la, lo), pill_w(lb, lo)
+def pair_w(la, lb, lo=PW, room=ROW_ROOM):
+    """Two pills that share a row (a two-variable loop, a row of a four- or three-variable one): the widths that set both
+    titles in the fewest rows, then the fewest rows in all, then the narrowest, inside room together (DR-265). Each pill
+    keeps the 130 px base where that still holds both titles in three rows or fewer, the data lead's ruling (e), and may
+    narrow to its longest word where it does not."""
     best = None
-    for wa in range(ba, ROW_ROOM - bb + 1):
-        for wb in range(bb, ROW_ROOM - wa + 1):
-            ra, rb = _rows_n(la, wa), _rows_n(lb, wb)
-            k = (max(ra, rb), ra + rb, wa + wb, abs(wa - wb))
-            if best is None or k < best[0]:
-                best = (k, wa, wb)
+    for lo_ in (lo, 0):
+        ba, bb = pill_w(la, lo_), pill_w(lb, lo_)
+        best = None
+        for wa in range(ba, room - bb + 1):
+            for wb in range(bb, room - wa + 1):
+                ra, rb = _rows_n(la, wa), _rows_n(lb, wb)
+                k = (max(ra, rb), ra + rb, wa + wb, abs(wa - wb))
+                if best is None or k < best[0]:
+                    best = (k, wa, wb)
+        if best and best[0][0] <= MAX_ROWS:
+            break
     need(best is not None, f"two pills cannot share a {W} px row: {la!r}, {lb!r}")
-    return best[1], best[2]
+    return best[1], best[2], best[0][0]
+
+
+def stack_w(labels, scale=None):
+    """One width for the pills of a loop drawn one above the other: the narrowest that sets every title in its fewest rows
+    up to STACK_HI, two rows where that fits; scale widens a failure plate's pill on purpose."""
+    w_ = max(next(x for x in range(pill_w(lb, PW), STACK_HI + 1) if _rows_n(lb, x) == min(_rows_n(lb, STACK_HI), MAX_ROWS)
+                  or x == STACK_HI) for lb in labels)
+    return [min(W - 4, round(w_ * sc)) for sc in (scale or [1] * len(labels))]
 
 
 def rows_of(label, width):
@@ -450,6 +470,8 @@ class Pill:
     def __init__(self, label, cx, cy, pw=PW, thin=False, cls="", red=False, shared=False):
         pw = pill_w(label, pw)
         self.rows = rows_of(label, pw - 2 * PAD)
+        need(len(self.rows) <= MAX_ROWS or label not in DR265_TITLES,
+             f"the title {label!r} takes {len(self.rows)} rows in a {pw:.0f} px pill; ruling (e) holds a pill to {MAX_ROWS}")
         self.h = max(len(self.rows) * LH + 22, 44)
         self.cx, self.cy, self.pw, self.thin, self.cls = cx, cy, pw, thin, cls
         self.red, self.shared = red, shared
@@ -509,7 +531,11 @@ def two_loop(codes, lids, numbered=True, weakest=None, inside=None, labels=None,
     connections and variables a reform acts on (Rule 12.5's red); shared names a variable another loop holds too
     (Rule 15.15). Returns (body, h, pills)."""
     labels = labels or [short(c) for c in codes]
-    pw = list(pair_w(*labels)) if not scale else [pill_w(lb, PW * sc) for lb, sc in zip(labels, scale)]
+    wa, wb, most = pair_w(*labels)
+    if most > MAX_ROWS:
+        return stacked_loop(codes, lids, labels, numbered, weakest, inside, thin, grades, widths, hollow, scale, top,
+                            targets, shared)
+    pw = [wa, wb] if not scale else [pill_w(lb, PW * sc) for lb, sc in zip(labels, scale)]
     rows_h = [max(len(wrap(lb, p - 2 * PAD)) * LH + 22, 44) for lb, p in zip(labels, pw)]
     wrows = [len(step_words(1, x, ("weakest step",) if weakest == i else ())) if x else 1 for i, x in enumerate(lids)]
     run_y = top + 30 + (wrows[0] - 1) * LH + (3 if lids[0] in targets else 0)
@@ -537,13 +563,66 @@ def two_loop(codes, lids, numbered=True, weakest=None, inside=None, labels=None,
     return "".join(out), h, (a, b)
 
 
+def stacked_loop(codes, lids, labels, numbered, weakest, inside, thin, grades, widths, hollow, scale, top, targets, shared):
+    """A loop of two variables whose titles cannot share one row in three rows each (the data lead's ruling (e), step 2:
+    re-lay the drawing): one pill above the other at one width, step 1 straight down the right and step 2 straight up the
+    left, each on both pills' flat edges, its words outside the loop and the loop's ID between them above the tags, as a
+    four-variable loop draws its side steps. Returns (body, h, pills)."""
+    sw = stack_w(labels, scale)
+    hs = [max(len(wrap(lb, w_ - 2 * PAD)) * LH + 22, 44) for lb, w_ in zip(labels, sw)]
+    kw_ = [dict(red=c in targets, shared=c in shared) for c in codes]
+    a = Pill(labels[0], W / 2, top + 2 + hs[0] / 2, sw[0], thin, **kw_[0])
+    b = Pill(labels[1], W / 2, a.bot + GAP4 + hs[1] / 2, sw[1], thin, **kw_[1])
+    lo_, hi_ = max(a.left + a.h / 2, b.left + b.h / 2), min(a.right - a.h / 2, b.right - b.h / 2)
+
+    def span(i):
+        lid = lids[i]
+        if not lid:
+            return 0
+        ws = step_words(i + 1 if numbered else 0, lid, ("weakest step",) if weakest == i else ())
+        return max(tw(w_, 600 if re.match(r"\d+ ", w_) else 400) for w_ in ws) + (3 if lid in targets else 0)
+    # each step on both pills' flat edges, pulled in from the ends where its words need the room outside it
+    xr = min(hi_ - INNER, W - 2 - 15 - span(0))
+    xl = max(lo_ + INNER, 2 + 15 + span(1))
+    need(lo_ <= xl and xr <= hi_, "a stacked loop's steps miss their pills' flat edges")
+    need(xr - xl >= 80, "a stacked loop's two steps sit too close for its ID between them")
+    paths = [([(xr, a.bot + 2), (xr, b.top - 2)], "right"), ([(xl, b.top - 2), (xl, a.bot + 2)], "left")]
+    out, tag_tops = [], []
+    for i, ((pts, side), lid) in enumerate(zip(paths, lids)):
+        l = link(lid) if lid else {"polarity": None, "evidence": None, "delay": None}
+        g = (grades or {}).get(i, l["evidence"])
+        w = (widths or {}).get(i, LW)
+        tg = bool(lid) and lid in targets
+        m, _ = conn(pts, g, l["polarity"], l["delay"], hollow=hollow, w=w, target=tg)
+        out.append(wr(m, tg))
+        if lid:
+            extra = ("weakest step",) if weakest == i else ()
+            words = step_words(i + 1 if numbered else 0, lid, extra)
+            out.append(verb_at(pts, l["polarity"], words, side, big=tg))
+            x, ty, _, _ = anchor_at(pts, l["polarity"])
+            tag_tops.append(ty - (TAG_HALF + 3 if tg else TAG_HALF) - (len(words) - 1) * LH / 2)
+            span = max(tw(w_, 600 if re.match(r"\d+ ", w_) else 400) for w_ in words) + (3 if tg else 0)
+            need((x - 15 - span >= 2) if side == "left" else (x + 15 + span <= W - 2),
+                 f"step {i + 1}'s words of a stacked loop leave the {W} px artboard")
+    out.append(a.svg() + b.svg())
+    if inside:
+        ceil_, floor_ = a.bot, min(tag_tops)
+        y = (ceil_ + floor_ - ID_DOWN + ID_UP) / 2
+        need(y - ID_UP >= ceil_ + 4 and y + ID_DOWN <= floor_ - 4,
+             f"a stacked loop's ID has no room above its steps' tags ({floor_ - ceil_:.0f} px)")
+        need(max(tw(f"Loop {inside[0]}", 700), tw(inside[1])) <= xr - xl - 24, "a stacked loop's ID crowds its steps")
+        out.append(loop_id((xl + xr) / 2, y, *inside, two=True))
+    return "".join(out), b.bot + 4, (a, b)
+
+
 def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=None, hollow=False, labels=None, thin=False,
                targets=(), shared=(), top=0):
     """A loop of three variables: the first centered at the top, the second below it to the right and the third to the
     left. Steps 1 and 3 run straight between overlapping pills; step 2 arches under the bottom row. targets and shared
     as two_loop takes them. Returns (body, h)."""
     labels = labels or [short(c) for c in codes]
-    pw = [pill_w(labels[0], PW, TOP_HI), pill_w(labels[1], PW, LOOP_HI), pill_w(labels[2], PW, LOOP_HI)]
+    w3, w2, _ = pair_w(labels[2], labels[1], room=ROW_ROOM3)
+    pw = [pill_w(labels[0], PW, TOP_HI), w2, w3]
     hs = [max(len(wrap(lb, p - 2 * PAD)) * LH + 22, 44) for lb, p in zip(labels, pw)]
     y1 = top + 4 + hs[0] / 2
     gap = 108
@@ -552,8 +631,14 @@ def three_loop(codes, lids, numbered=True, weakest=None, grades=None, inside=Non
     p1 = Pill(labels[0], W / 2, y1, pw[0], thin, **kw_[0])
     p2 = Pill(labels[1], W - 2 - pw[1] / 2, y2, pw[1], thin, **kw_[1])
     p3 = Pill(labels[2], 2 + pw[2] / 2, y2, pw[2], thin, **kw_[2])
-    xr = (max(p1.left, p2.left) + min(p1.right, p2.right)) / 2
-    xl = (max(p1.left, p3.left) + min(p1.right, p3.right)) / 2
+    def mid(p, q):
+        """An upright step's place: the middle of the two pills' shared flat edge, or of their overlap where the flat
+        edges share none (DR-265's wider pills)."""
+        lo_, hi_ = max(p.left + p.h / 2, q.left + q.h / 2), min(p.right - p.h / 2, q.right - q.h / 2)
+        if hi_ - lo_ >= 8:
+            return (lo_ + hi_) / 2
+        return (max(p.left, q.left) + min(p.right, q.right)) / 2
+    xr, xl = mid(p1, p2), mid(p1, p3)
     bot_y = max(p2.bot, p3.bot) + RISE
     paths = [([(xr, p1.bot + 2), (xr, p2.top - 2)], "right"),
              ([(p2.cx, p2.bot + 2), (p2.cx, bot_y), (p3.cx, bot_y), (p3.cx, p3.bot + 2)], "below"),
@@ -589,7 +674,7 @@ def four_loop(codes, lids, numbered=True, inside=None, inside_rows=None, targets
     them. inside is (loop ID, kind); inside_rows sets words of a failure plate's own on two rows; targets and shared as
     two_loop takes them; labels overrides the titles (a failure plate's own words). Returns (body, h)."""
     labels = labels or [short(c) for c in codes]
-    (w0, w1), (w3, w2) = pair_w(labels[0], labels[1]), pair_w(labels[3], labels[2])
+    (w0, w1, _), (w3, w2, _) = pair_w(labels[0], labels[1]), pair_w(labels[3], labels[2])
     pw = [w0, w1, w2, w3]
     rows = [len(step_words(1, x)) if x else 1 for x in lids]
     run_y = 30 + (rows[0] - 1) * LH + (3 if lids[0] in targets else 0)
@@ -1037,7 +1122,8 @@ def rule_15_1(book):
     q = "Loops show structure: the size of any effect comes from the studies attached to each connection, and no whole loop has a measured strength."
     need(q in limits, "the atlas's limits no longer say no loop has a measured strength")
     g = least_certain(lp["links"])
-    body, h, _ = two_loop(["E1", "D4"], lp["links"], inside=("B1a", "balancing"))
+    body, h, (pa, pb) = two_loop(["E1", "D4"], lp["links"], inside=("B1a", "balancing"))
+    need(pa.cx == pb.cx and pa.pw == pb.pw, "Loop B1a no longer draws one pill above the other at one width, as its alt says")
     svg = svg_wrap(body, h)
     words = kw([f"Every connection draws at 2 px. The dashed line says {chip('Connection', 'L17')} is plausible; the solid "
                 f"line says {chip('Connection', 'L16')} is well supported.",
@@ -1048,9 +1134,9 @@ def rule_15_1(book):
                      ra_p(read_aloud(["E1", "D4"], lp["links"])) + f'<p class="k">What the drawing holds</p>{words}'
                      + src("loop B1a and connections L17 and L16")))
     book.add("s-15-1-correct", body, rule="15.1", readable=True, wide=True,
-             alt=(f"Loop B1a from our systems atlas, “{lp['title']}”, drawn as two pills of one size, {short('E1')} "
-                  f"and {lc(short('D4'))}. Step 1, dashed, runs over the top with a plus tag and the word raises; step 2, "
-                  "solid, runs under the bottom with a minus tag and the word lowers. Both lines are 2 px. Beside it, three notes "
+             alt=(f"Loop B1a from our systems atlas, “{lp['title']}”, drawn as two pills of one size, one above the other: "
+                  f"{short('E1')} at the top and {lc(short('D4'))} below. Step 1, dashed, runs down the right with a plus tag "
+                  "and the word raises; step 2, solid, runs up the left with a minus tag and the word lowers. Both lines are 2 px. Beside it, three notes "
                   "say every connection draws at 2 px, both variables take the same pill, and nothing in the drawing measures."),
              notes="Lines by the atlas build's wire_marks at 2 px with the 28 px lead-in; pills sized only by their labels.")
     book.log("15.1 correct", "Loop B1a, oversight", "D05")
@@ -1085,7 +1171,9 @@ def rule_15_1(book):
                                "larger, with no key, so the drawing claims sizes our systems atlas never measured."},
         "specs": [
             {"label": "Line width", "value": "One width in a drawing: 2 px in a figure, 3 px in a large drawing; only Rule 12.5’s red target draws heavier", "token": TOKEN_LINE},
-            {"label": "Pill", "value": f"{PW} px wide on a {W} px drawing, with {PAD} px inside each end; 44 px tall, or the label’s rows at {LH} px plus 22; a 2 px outline"},
+            {"label": "Pill", "value": f"{PW} px wide on a {W} px drawing, wider where the variable’s title would take more than "
+                                       f"{words_n(MAX_ROWS)} rows, with {PAD} px inside each end; 44 px tall, or the title’s rows at "
+                                       f"{LH} px plus 22; a 2 px outline"},
             {"label": "Width or area as a quantity", "value": "Only with a defined measure and a key beside the drawing"},
             {"label": "Measured flows", "value": "A chart, under chapter 14’s rules"},
         ],

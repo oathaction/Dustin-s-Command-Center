@@ -38,7 +38,13 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the in
 
 ### Requests to the engineer
 
-- **IM-E1, a law's number held on one line.** Titles and measure lines are HTML text, and a browser breaks "Public Law 119-12" after the hyphen (S93's title at 390 px breaks "119-" from "12"). A typography key that holds listed phrases together (a nowrap span in the HTML words, measured as one word in the drawing) would keep a law's or bill's number whole. No U+2011, which the checks bar.
+- **IM-E1, a law's number held on one line.** (SET by the engineer with R4-3 as `typography.hold`.) Titles and measure lines are HTML text, and a browser breaks "Public Law 119-12" after the hyphen (S93's title at 390 px breaks "119-" from "12"). A typography key that holds listed phrases together (a nowrap span in the HTML words, measured as one word in the drawing) would keep a law's or bill's number whole. No U+2011, which the checks bar.
+
+- **IM-E2, four small additions to R4-3, for S90, S92 and S94 (21:02 UTC).**
+  1. *A figure and its words in one block (S90).* The accessibility lead asks that a screen reader say "$994.9 billion came in to public school systems ..." as one sentence; the contract sets `oac-h-big` on a `p`, which makes the figure its own paragraph. Please let `oac-h-big` sit on a `span` (or `strong`) at the start of a `p.oac-h-body`, set on its own line by the class, so the figure and its words are one block.
+  2. *One fact for several rows (S90).* Fact 2 prints the three revenue shares (rows 2, 3 and 4) and fact 4 New York's and Idaho's spending (rows 7 and 8). Please let `h.row` take a list, `h.row([2, 3, 4])` giving `data-oa-row="2 3 4"`, with the check counting each row once across items.
+  3. *Order marks on the steps (S92), ruling (b).* The data lead sets each step's number on a 24 px disc in the subject ink with its numeral in the label-on-subject ink, the line joining the discs in the subject ink, and an optional step (S92's rows 4 and 7) on a disc edged in the context ink with a text-ink numeral, named optional in words. Please draw `oac-h-steps`' counter that way, with a modifier for the optional step's `li` (`oac-h-branch`, say); the words "Optional" print in the step as HTML text.
+  4. *Months in order (S94).* The calendar lists its dates as an `ol.oac-h-dates` under one year mark drawn by `h.mark`; nothing more is needed if `h.mark`'s drawing holds its month names (a picture, `aria-hidden`, as the accessibility lead allows for a grid). I draw it 256 px wide, the narrowest column, so it never scales.
 
 ## Tested
 

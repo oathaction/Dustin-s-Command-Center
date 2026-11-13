@@ -65,7 +65,7 @@
     },
     {
      "label": "Pill",
-     "value": "130 px wide on a 296 px drawing, with 12 px inside each end; 44 px tall, or the label’s rows at 18 px plus 22; a 2 px outline"
+     "value": "130 px wide on a 296 px drawing, wider where the variable’s title would take more than three rows, with 12 px inside each end; 44 px tall, or the title’s rows at 18 px plus 22; a 2 px outline"
     },
     {
      "label": "Width or area as a quantity",

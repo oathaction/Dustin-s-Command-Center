@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:01 UTC. Q-A1 ruled: S85 prints "Worker bargaining power" with the chip "Variable A2". Drafts of S85, S86 and S89 built and looked at (MA-7 added).
 - 20:58 UTC. ED4-1 ruled: the editor applies S37's curl. R-03's federal route display ruled for the systems designer (under (f)).
 - 20:57 UTC. D4-1 ruled: S16 takes the code column under 358 px, with two conditions (radii unchanged; the engineer reports the new share).
 - 20:54 UTC. **All seven rulings (a) to (g) are posted.** (d) covers R4-2's measure; S12's capture sign-off and the phone codes follow as they land. Requests R-1 to R-3 to the research lead. Early read of S85, S86 and S89 posted under "Sign-offs" (MA-1 to MA-6, MI-1).
@@ -117,6 +118,16 @@ The engineer may land items 1 to 3; the cartographer then writes `s12.json` (`"s
 
 **Apply `"typography": {"curl_quotes": true}` to S37.** I read the editor's facts (20:45 UTC preview): the two drawn row labels "Congress's" and "rivals'" become "Congress’s" and "rivals’" at the same x and y, nothing else in any of the four SVGs changes, and the CSV export stays as stored, byte for byte. That is a change of typography, not of data, mark, ink or order: the words, the figures and the reading are identical, and curly apostrophes are a binding writing rule for every word in the guide. D3-1556 held S37 only because its drawing would move; the drawing moves by two glyphs, now shown and listed. The 129 bytes (16,944 with its frame) are the cost of a writing rule on a plate placed under its own round's limit (D3-1451); they come out of chapter 14's stop with every other byte, and the engineer's next strict build reports the share they leave. List both labels for board 3, as the brief asks.
 
+### Q-A1, S85's word and chip: yes, "Worker bargaining power" with the chip "Variable A2" (21:01 UTC, for maker A and the editor)
+
+CL-050 is an atlas symbol, not a topic symbol: chapter 10's label table files it as Variable A2 (`v7_chip` "Variable A2", label "Worker bargaining power"), and Rule 10.6 sets an atlas drawing only beside the atlas's own name for it, followed by its typed chip. So S85 prints "Worker bargaining power" and the chip "Variable A2" beside the 48 px drawing, both checked by script against `work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json`, with the check named in `notes_internal`. This keeps DR-266 and Rule 10.1 exact: by script, Variable A2's own indicator in the atlas is "Union density (BLS, 10.0% 2025)", the very figure S85 draws, so the drawing means its own variable and nothing else. The chip is a reference line in the label style, which the brief's call 5 allows. DR-265 does not reach it: S85 is not a loop drawing, and chapter 10's icon names stay as approved, so the V7 title "Workers' bargaining power" does not replace the label here. Add `CL1514` to the spec's `v7.ids`, since the figure is that claim's.
+
+### R4-4, the social card contract: the data side agrees (21:01 UTC, for the infographics maker and the engineer)
+
+Read the engineer's R4-4 (set 21:05 by his clock note). Its data side matches (b) for S95: the inner form keeps S19's inks, key words and all-states line, `c.card` labels only the rows `labels.named` names (Mississippi and Massachusetts), the table carries all 50 states from S19's frozen rows, and the card's own line says each dot is a state and where the full list is. Two conditions from me:
+- **The card prints S19's finding whole at 36 px or more:** its title, its grade line, the measure's period ("December 31, 2023"), the open dots' key words and its source line naming the Bureau of Justice Statistics, Prisoners in 2023, Table 7. A card cropped from its source is the view most often shared alone (RF-1's reasoning), so nothing that qualifies the figures may fall off it.
+- **"Words to post" state no figure the card does not print,** and any figure they state carries its year and source in the same post. They may repeat S19's title; they add no claim, adjective or comparison of their own.
+
 ### (f) Rules 15.19 to 15.21: which loop, which reforms (for the systems designer, the accessibility lead and the research lead)
 
 Read by script from `work/extract/atlas-v7-data.json` (`loops`, `links`, `nodes`, `reforms`) and from `phase3_ch15_build.py`'s example log as it stands (27 examples, counted from its `book.log` calls).
@@ -198,6 +209,7 @@ Read `specs/s85.json`, `s86.json` and `s89.json` as written before my rulings, w
 - D3-xxx | S16 takes the cartographer's code column under 358 px (D4-1, (A)) | Every state coded on the map with fewer and shorter crossing leaders; unchanged from board 1's 358 px up; radii and legend held exactly
 - D3-xxx | S37 takes its curled apostrophes (ED4-1) | Typography only: two drawn labels, same words, data and exports as stored; a binding writing rule
 - D3-xxx | 15.20 prints each route's name, then the atlas's `who` words with no "Who acts" label | R-03's federal route stores an action there; nothing inferred
+- D3-xxx | S85's CL-050 prints "Worker bargaining power" with the chip "Variable A2" (Q-A1) | Rule 10.6 for an atlas symbol; A2's own indicator is the union density S85 draws
 - D3-xxx | A DR-265 title that will not fit wraps, then re-lays, then takes a chip with a keyed title, never cut | One name for each variable wherever a loop is drawn
 
 ## Requests

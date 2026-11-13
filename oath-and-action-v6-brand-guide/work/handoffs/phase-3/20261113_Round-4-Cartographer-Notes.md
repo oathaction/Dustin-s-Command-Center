@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. The cartographer,
 
 ## Status
 
+- 21:02 UTC (clock read). **S12 placed on the landed stacked tile** (`s12.json`: `stage_min` 618, the alt's clause, one `notes_internal` line): `build s12`, sweep on, PASS, 0 faults. **D4-1 ruled (A), the column** (20:57). Waiting on the engineer for C4-E1 (tile gap) and C4-E2 (S16's column, after the tile); then I add `labels.column_phone` to `s16.json`, name the radius check in its `notes_internal`, and run the closing checks. `cartographer_round4_derive.py` written: PASS on the mirror with both changes, FAIL with the six expected faults on the repository until they land.
 - 20:56 UTC (clock read). **Phone codes: measured, two kit requests out (C4-E1, C4-E2), one choice for the data lead (D4-1).** No repository file changed yet. S12's stacked tile: ruling (d) signed off at 20:52; I write `s12.json` when the engineer marks the tile LANDED.
 - 20:40 UTC. Started.
 
@@ -41,7 +42,7 @@ Proposed, each tested in a scratch mirror of the kit (nothing in `work/build/` c
 
 ## S12's stacked tile (DR-261, ruling (d))
 
-Ready in scratch, waiting on the engineer's LANDED: `scratch/draft/s12.json` changes `s12.json` in three places only: `"stage_min": 618` where `"stage": 1024` stood; the alt's desk clause reads "At a desk each square holds the state’s code over its figure, with an arrow beneath as long as the state’s shift ..." (was "holds an arrow as long as the state’s shift ..."), the scroll clause and every other word kept, since the frame still scrolls below a 618 px column; and one `notes_internal` line. `phone_note` stays: the kit does not print it, and its words still hold. Built against a copy of the engineer's mirror kit (20:57 UTC): PASS, 0 faults, sweep on; drawings at 1024, 723, 618, 618 (the 558 px column, framed) and 326 px; 13,206 bytes as the guide places it, about 13,956 with its frame, under 15,000 (ruling (d) gives 14,076 by the page measure). Looked at: 618 px on Newsprint (every tile holds its code, figure and arrow) and the 558 px column's frame (the hint above it; ME, NH and RI past the edge until the reader scrolls).
+**Placed at 21:01 UTC** (the tile LANDED at 20:57), from the draft below, unchanged. Drafted in scratch first: `scratch/draft/s12.json` changes `s12.json` in three places only: `"stage_min": 618` where `"stage": 1024` stood; the alt's desk clause reads "At a desk each square holds the state’s code over its figure, with an arrow beneath as long as the state’s shift ..." (was "holds an arrow as long as the state’s shift ..."), the scroll clause and every other word kept, since the frame still scrolls below a 618 px column; and one `notes_internal` line. `phone_note` stays: the kit does not print it, and its words still hold. Built against a copy of the engineer's mirror kit (20:57 UTC): PASS, 0 faults, sweep on; drawings at 1024, 723, 618, 618 (the 558 px column, framed) and 326 px; 13,206 bytes as the guide places it, about 13,956 with its frame, under 15,000 (ruling (d) gives 14,076 by the page measure). Looked at: 618 px on Newsprint (every tile holds its code, figure and arrow) and the 558 px column's frame (the hint above it; ME, NH and RI past the edge until the reader scrolls).
 
 ## Pixels changed, for board 3
 
