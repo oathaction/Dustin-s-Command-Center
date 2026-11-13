@@ -8,7 +8,7 @@
  "reader_question": "Where did each 2024 presidential nominee’s joint fundraising committee send what it raised?",
  "evidence": "finding",
  "evidence_label": "Finding",
- "grade_line": "Documented: disbursements the committees reported to the Federal Election Commission",
+ "grade_line": "Documented: the committees’ reports to the Federal Election Commission",
  "title": "Kamala D. Harris’s main joint fundraising committee sent $899.5 million to 55 committees in the 2024 cycle, and Donald J. Trump’s sent $273.8 million to two.",
  "measure_line": "Dollars each nominee’s joint fundraising committee paid to other committees, 2023 to 2024 election cycle; a link’s width is its dollars, on one scale for both",
  "notes": [
@@ -104,12 +104,18 @@
   },
   "value": "${v}",
   "unit": 4000000,
-  "key_value": 100000000,
-  "key": "A link this wide carries ${v}",
-  "named": []
+  "key_steps": [
+   10000000,
+   50000000,
+   100000000
+  ],
+  "key_title": "Each link’s width is the dollars it carried",
+  "key_hairline": "A link under {v} draws 1 pixel wide",
+  "ink": "party"
  },
  "formats": {
-  "value": "millions:1"
+  "value": "millions:1",
+  "small": "dollars"
  },
  "notes_internal": [
   "Maker B, round 3. Data plan row 94 with change 8, rule 14.104. Draft words, before the data lead's rulings."

@@ -60,7 +60,7 @@
         y += 18;
       }
       var two = W >= (L.side_by_side || 600), pw = two ? Math.floor((W - 28) / 2) : W, gap = 10;
-      var hw = Math.round(pw * (two ? 0.3 : 0.32)), rw = Math.round(pw * (two ? 0.42 : 0.4));
+      var hw = Math.round(pw * (two ? 0.32 : 0.38)), rw = Math.round(pw * (two ? 0.42 : 0.46));
       var top = y, low = y;
       blocks.forEach(function (b, bi) {
         var x0 = two ? bi * (pw + 28) : 0, y0 = two ? top : low + (bi ? 28 : 0), rx = x0 + pw - rw;
@@ -69,13 +69,13 @@
         var hname = String((L.sources || {})[b.source] || b.source);
         // the nodes' boxes, each as tall as its link or its words
         var ny = y0, items = b.nodes.map(function (nd) {
-          var lw = Math.max(1, fl.px(nd.value)), sz = P.node_size(c, nd.name, { max: rw, sub: v(nd.value), lines: 3, pad: [8, 6] });
+          var lw = Math.max(1, fl.px(nd.value)), sz = P.node_size(c, nd.name, { max: rw, sub: v(nd.value), sub_lines: 3, lines: 4, pad: [8, 6] });
           var it = { nd: nd, lw: lw, y: ny, h: Math.max(lw + 6, sz ? sz.h : 40) };
           ny += it.h + gap;
           return it;
         });
         var stack = items.reduce(function (s, it) { return s + it.lw; }, 0);
-        var hs = P.node_size(c, hname, { max: hw, sub: hsub, lines: 3, pad: [8, 6] });
+        var hs = P.node_size(c, hname, { max: hw, sub: hsub, sub_lines: 3, lines: 4, pad: [8, 6] });
         var hh = Math.max(stack + 6, hs ? hs.h : 60), ly = y0 + (hh - stack) / 2;
         // links first, then the boxes and their words over the links' ends
         items.forEach(function (it) {
@@ -84,7 +84,7 @@
           if (it.nd.rows.length > 1) it.nd.rows.forEach(function (r) { c.datum(rx, ty + it.lw / 2, { data: { key: r[ek], field: ev, value: r[ev] } }); });
           ly += it.lw;
         });
-        var opt = function (data, sub) { return { stroke: ink, width: 1.5, align: 'start', pad: [8, 6], sub: sub, lines: 3, data: data }; };
+        var opt = function (data, sub) { return { stroke: ink, width: 1.5, align: 'start', pad: [8, 6], sub: sub, sub_lines: 3, lines: 4, data: data }; };
         if (!P.node(c, { x: x0, y: y0, w: hw, h: hh }, hname, opt({ key: b.source, field: ev, value: b.total }, hsub))) c.warn('network-diagram: the words do not fit the box for ' + hname + ' at ' + W + ' px');
         items.forEach(function (it) {
           if (!P.node(c, { x: rx, y: it.y, w: rw, h: it.h }, it.nd.name, opt({ key: it.nd.name, field: ev, value: it.nd.value }, v(it.nd.value)))) c.warn('network-diagram: the words do not fit the box for ' + it.nd.name + ' at ' + W + ' px');
