@@ -130,6 +130,11 @@ Under `work/handoffs/phase-3/20261113_Board-2-Fix-Brief.md` (calls 1 to 8) and t
 - D3-xxx | The cover's minutes line gives both figures: the words from panel 1's top through the reply line (lede, the five replies, the reply line) and every item with its folds closed, each at 200 words a minute | The coordinator's change after run 11: the time to answer and the time to read every item, in one sentence
 - D3-xxx | Pictures in one `row` that do not fit the column side by side at true size wrap, one under the other, inside one bordered row | S12's frame (946 px) and stacked tile (723 px) need 1,693 px at true size, wider than the 1,312 px column at 1440
 - D3-xxx | A decision item's entry link takes a 44 px target | Run 13's axe target-size failure: the link sat alone in its line beside the new picture fold
+- D3-xxx | The Scores panel's board row reads `20261113_Board-2-CD-Rescores.json` as the rescore beside the first score, as rounds 1 to 3 do, with one line on what each found | B2-S14
+- D3-xxx | A Tested line waiting for its file names that file in the panel's chip ("the quick guide check's results file") | B2-S14: the chip read "the owners' notes" where it waited for the quick check
+- D3-xxx | S06's and S67's weight lines name apart the bytes the build adds inside the chart round its atlas IDs (360 and 48, the engineer's `added_on_page`); the ten-heaviest table keeps one "Frame" column and says which charts it also counts them for | B2-S13
+- D3-xxx | An item whose id names two charts (S54-S55) shows both of panel 2's Newsprint pictures even where it names one `spec` | B2-S15
+- D3-xxx | The content file keeps the editor's two alts for sketch 14.124's pair (its 18:26 words), keyed by each picture's file, read where the decisions file's picture carries none | B2-S3: the alts the editor set in the decisions file left with the pictures the data lead replaced for B2-S2
 - D3-xxx | Under 760 px a side-by-side chart frame opens at its right end, on the phone drawing (`direction: rtl` on the frame), with a line above it saying so; composed Charcoal pictures take a 16 px Charcoal margin | B2-S12; one picture a ground keeps the folder near 300 files, where separate phone pictures would add 168
 
 ## Tested
