@@ -2,7 +2,7 @@
  "id": "14.105",
  "title": "Use an adjacency matrix when many parts link to many others.",
  "rule": [
-  "Draw one row for each part a link starts from and one column for each part it reaches, in the same order, and shade each cell by its count on a sequential scale, with the count printed in it; leave an empty cell as the page inside a thin grid line. Group the parts with a gap between groups, number the columns and name the rows; on a phone, number the rows too and list the names under the grid. Give a class of links that differs in kind, such as lines of authority with no sign, an outline and a key entry of its own, never a step of the scale."
+  "Draw one row for each part a link starts from and one column for each part it reaches, in the same order, and shade each cell by its count on a sequential scale, with the count printed in it; leave an empty cell as the page inside a thin grid line. Group the parts with a gap between groups, number the columns and name the rows; on a phone, number the rows too and list the names under the grid. Give a class of links that differs in kind, such as lines of authority with no sign, an outline and a key entry of its own, apart from the scale’s steps."
  ],
  "use_when": "The reader asks which parts of a system connect to which, and the links are too many for lines to stay readable.",
  "use_instead": [

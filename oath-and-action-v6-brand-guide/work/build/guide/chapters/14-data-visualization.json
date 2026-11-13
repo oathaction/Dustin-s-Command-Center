@@ -83,7 +83,7 @@
    "before_rule": "14.93",
    "title": "Behavior: how do people move through a process?",
    "rules": "14.93 to 14.95",
-   "line": "People move through a process in funnels, cohort charts and survival curves, which show where they leave it."
+   "line": "Funnels, cohort charts and survival curves follow people through a process and show at which stage, or how soon, they leave it."
   },
   {
    "number": 12,
@@ -97,14 +97,14 @@
    "before_rule": "14.104",
    "title": "Relationships: who is connected to whom?",
    "rules": "14.104 to 14.109",
-   "line": "Networks, matrices and arc diagrams show who is connected to whom, and how strongly."
+   "line": "Networks, matrices and arc diagrams show who is connected to whom, with a width or a shade for each link’s amount or count."
   },
   {
    "number": 14,
    "before_rule": "14.110",
    "title": "Flow: where does it go?",
    "rules": "14.110 to 14.113",
-   "line": "Sankeys, alluvial charts and flow maps show where money or people go, with every flow accounted for."
+   "line": "Sankeys, alluvial charts and flow maps show where money or people go, and the table gives every flow’s amount. A journey map follows one person through a public service, step by step."
   },
   {
    "number": 15,
@@ -3805,7 +3805,7 @@
    "id": "14.94",
    "title": "Use a cohort chart to follow groups that started at different times.",
    "rule": [
-    "Use a cohort chart, a reference form, to track groups that began at different times, such as the people who enrolled in a program each year, on one clock that starts when each group began. Draw one line a group, the years since its start across and the share still enrolled up from 100 percent, and name each line at its end by its start year. Keep to four groups, or set the one the title names in the text’s ink and the rest in gray (Rule 14.8)."
+    "Use a cohort chart, a reference form, to track groups that began at different times, such as the people who enrolled in a program each year, on one clock that starts when each group began. Draw one line for each group, with the years since its start along the bottom and the share still enrolled up the side, from 100 percent at the start, and name each line at its end by its start year. Keep to four groups, or set the one the title names in the text’s ink and the rest in gray (Rule 14.8)."
    ],
    "why": {
     "text": [
@@ -4205,7 +4205,7 @@
    "id": "14.104",
    "title": "Use a network diagram to show who sent what to whom.",
    "rule": [
-    "Draw each sender and each receiver as a box with its name and amount inside, and join them with links whose width is the amount, in one linear unit for the whole drawing, with a key of widths; a link too narrow to see draws one pixel wide, and the key says so. Stack the links that leave a box in the order of the boxes they reach, so none cross. Fold many small receivers of one kind into one box with their count, and list each in the table. Draw two sides alike, side by side and in one ink, and name each side in words; money spent to elect a candidate takes the party-mark ink, never red or blue (Rule 14.7)."
+    "Draw each sender and each receiver as a box with its name and amount inside, and join them with links whose width is the amount, in one linear unit for the whole drawing, with a key of widths (Rule 14.4). Stack the links that leave a box in the order of the boxes they reach, so none cross. Fold many small receivers of one kind into one box with their count, and list each in the table. Draw two sides alike, side by side and in one ink, and name each side in words; money spent to elect a candidate takes one neutral ink for every party, with no red or blue (Rules 14.6 and 14.7)."
    ],
    "why": {
     "text": [
@@ -4244,7 +4244,7 @@
    "id": "14.105",
    "title": "Use an adjacency matrix when many parts link to many others.",
    "rule": [
-    "Draw one row for each part a link starts from and one column for each part it reaches, in the same order, and shade each cell by its count on a sequential scale, with the count printed in it; leave an empty cell as the page inside a thin grid line. Group the parts with a gap between groups, number the columns and name the rows; on a phone, number the rows too and list the names under the grid. Give a class of links that differs in kind, such as lines of authority with no sign, an outline and a key entry of its own, never a step of the scale."
+    "Draw one row for each part a link starts from and one column for each part it reaches, in the same order, and shade each cell by its count on a sequential scale, with the count printed in it; leave an empty cell as the page inside a thin grid line. Group the parts with a gap between groups, number the columns and name the rows; on a phone, number the rows too and list the names under the grid. Give a class of links that differs in kind, such as lines of authority with no sign, an outline and a key entry of its own, apart from the scale’s steps."
    ],
    "why": {
     "text": [
@@ -4285,7 +4285,7 @@
    "id": "14.106",
    "title": "Use an arc diagram for links among items in a set order.",
    "rule": [
-    "Set the items on one line in an order that means something, such as the date each was introduced, and join each linked pair with an arc above the line whose width is the pair’s count, in one linear unit with a key of widths. Draw the widest arcs first so narrow ones stay in view, name each item under the line, and set the pair the title names in the text’s ink with every other arc gray. On a phone, run the line down the left and bow the arcs to the right. Print every pair and its count in the table."
+    "Set the items on one line in an order that means something, such as the date each was introduced, and join each linked pair with an arc above the line whose width is the pair’s count, in one linear unit with a key of widths (Rule 14.4). Draw the widest arcs first so narrow ones stay in view, name each item under the line, and set the pair the title names in the text’s ink with every other arc gray (Rule 14.6). On a phone, run the line down the left and bow the arcs to the right. Print every pair and its count in the table."
    ],
    "why": {
     "text": [
@@ -4320,7 +4320,7 @@
    "id": "14.107",
    "title": "Use a chord diagram only for flows among a few groups, for specialists.",
    "rule": [
-    "Use a chord diagram, a reference form, to show flows both ways among a few groups: each group an arc on a circle, sized by its total, and each flow a ribbon between two arcs, as wide at each end as the amount it carries from that side. Keep to five groups or fewer, name each arc outside the circle, and draw the ribbons gray, with the one the title names in the text’s ink."
+    "Use a chord diagram, a reference form, to show flows both ways among a few groups: each group an arc on a circle, sized by its total, and each flow a ribbon between two arcs, as wide at each end as the amount it carries from that side. Keep to five groups or fewer, name each arc outside the circle, and draw the ribbons gray, with the one the title names in the text’s ink (Rule 14.6)."
    ],
    "why": {
     "text": [
@@ -4432,7 +4432,7 @@
    "id": "14.110",
    "title": "Use a Sankey to show money into one account and out of it.",
    "rule": [
-    "Draw each source as a band from the left into one node and each use as a band from the node to the right, every band as wide as its amount in one linear unit, with a key band, so the bands sum at the node. Put the money on hand at the start first on the left and at the end last on the right, so the node balances, and give any remainder the record leaves in a note. Group loans and their repayments apart by a gap under their own names, so a reader can tell a loan from a gift, and say in a note that no dollar received is traced to a dollar spent. The flow the title names takes the text’s ink; the rest are gray with a thin edge (Rule 14.6)."
+    "Draw each source as a band from the left into one node and each use as a band from the node to the right, every band as wide as its amount in one linear unit, with a key band (Rule 14.4), so the bands sum at the node. Put the money on hand at the start first on the left and at the end last on the right, so the node balances, and give any remainder the record leaves in a note. Group loans and their repayments apart by a gap under their own names, so a reader can tell a loan from a gift, and say in a note that the chart traces no dollar received to a dollar spent. The flow the title names takes the text’s ink; the rest are gray with a thin edge (Rule 14.6)."
    ],
    "why": {
     "text": [
@@ -4510,11 +4510,11 @@
    "id": "14.112",
    "title": "Use a journey map to show a person’s path through a public service, step by step.",
    "rule": [
-    "Draw each step as a box with its name, who acts and the time the rule allows, joined in order by arrows, and draw a branch some people take from the step it leaves. Print each time as the rule’s limit, say in the measure line that waits are not measured, and print the date of the rule. The path every person takes is in the text’s ink and a branch is gray, with no red, since red on a step would code it. At a desk the path reads across; on a phone it reads down, with the branch after the last step. The table lists the steps in reading order, each with the step that follows it."
+    "Draw each step as a box with its name, who acts and the time the rule allows, joined in order by arrows, and draw a branch some people take from the step it leaves. Print each time as the rule’s limit, say in the measure line that the chart measures no wait, and print the date of the rule. The main path is in the text’s ink and a branch is gray (Rule 14.6). At a desk the path reads across; on a phone it reads down, with the branch after the last step. The table lists the steps in reading order, each with the step that follows it."
    ],
    "why": {
     "text": [
-     "A journey map follows one person rather than an office, so a reader finds their own place in the process and the longest they may wait. Calling each time a limit keeps a reader from taking it as a promise."
+     "A journey map follows the person who applies, so a reader finds their own place in the process and the longest they may wait. Calling each time a limit keeps a reader from taking it as a promise."
     ]
    },
    "tokens": [],

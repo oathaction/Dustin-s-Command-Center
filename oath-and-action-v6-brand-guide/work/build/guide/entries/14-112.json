@@ -2,7 +2,7 @@
  "id": "14.112",
  "title": "Use a journey map to show a person’s path through a public service, step by step.",
  "rule": [
-  "Draw each step as a box with its name, who acts and the time the rule allows, joined in order by arrows, and draw a branch some people take from the step it leaves. Print each time as the rule’s limit, say in the measure line that waits are not measured, and print the date of the rule. The path every person takes is in the text’s ink and a branch is gray, with no red, since red on a step would code it. At a desk the path reads across; on a phone it reads down, with the branch after the last step. The table lists the steps in reading order, each with the step that follows it."
+  "Draw each step as a box with its name, who acts and the time the rule allows, joined in order by arrows, and draw a branch some people take from the step it leaves. Print each time as the rule’s limit, say in the measure line that the chart measures no wait, and print the date of the rule. The main path is in the text’s ink and a branch is gray (Rule 14.6). At a desk the path reads across; on a phone it reads down, with the branch after the last step. The table lists the steps in reading order, each with the step that follows it."
  ],
  "use_when": "The reader asks what happens after they apply, sign up or file, and how long each step can take.",
  "use_instead": [
@@ -21,7 +21,7 @@
  ],
  "why": {
   "text": [
-   "A journey map follows one person rather than an office, so a reader finds their own place in the process and the longest they may wait. Calling each time a limit keeps a reader from taking it as a promise."
+   "A journey map follows the person who applies, so a reader finds their own place in the process and the longest they may wait. Calling each time a limit keeps a reader from taking it as a promise."
   ],
   "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
  },

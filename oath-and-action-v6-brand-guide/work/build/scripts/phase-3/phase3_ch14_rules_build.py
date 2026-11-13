@@ -1601,10 +1601,12 @@ GROUP_LINES = {
     9: "Icon arrays, proportional symbols and overlap diagrams make a share countable and show where groups overlap.",
     10: ("Big numbers give a figure with the context to judge it, and progress bars and bullet graphs set one measure against its "
          "target or limit. Step trackers and status chips show how far a bill or a dispute has come."),
-    11: "People move through a process in funnels, cohort charts and survival curves, which show where they leave it.",
+    # round 3: checked against entries 14.93 to 14.112 as built
+    11: "Funnels, cohort charts and survival curves follow people through a process and show at which stage, or how soon, they leave it.",
     12: "Process diagrams, decision trees and who-decides diagrams show who decides and how a decision moves.",
-    13: "Networks, matrices and arc diagrams show who is connected to whom, and how strongly.",
-    14: "Sankeys, alluvial charts and flow maps show where money or people go, with every flow accounted for.",
+    13: "Networks, matrices and arc diagrams show who is connected to whom, with a width or a shade for each link’s amount or count.",
+    14: ("Sankeys, alluvial charts and flow maps show where money or people go, and the table gives every flow’s amount. A journey map "
+         "follows one person through a public service, step by step."),
     15: "A map appears when the place answers the question, and it names its places in words as well as color.",
     16: "A table lets a reader look a value up, and one sentence answers when a single figure is the whole story.",
     17: "Process explainers, number panels and comparison cards show how something works in one view.",

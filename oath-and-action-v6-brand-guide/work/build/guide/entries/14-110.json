@@ -2,7 +2,7 @@
  "id": "14.110",
  "title": "Use a Sankey to show money into one account and out of it.",
  "rule": [
-  "Draw each source as a band from the left into one node and each use as a band from the node to the right, every band as wide as its amount in one linear unit, with a key band, so the bands sum at the node. Put the money on hand at the start first on the left and at the end last on the right, so the node balances, and give any remainder the record leaves in a note. Group loans and their repayments apart by a gap under their own names, so a reader can tell a loan from a gift, and say in a note that no dollar received is traced to a dollar spent. The flow the title names takes the text’s ink; the rest are gray with a thin edge (Rule 14.6)."
+  "Draw each source as a band from the left into one node and each use as a band from the node to the right, every band as wide as its amount in one linear unit, with a key band (Rule 14.4), so the bands sum at the node. Put the money on hand at the start first on the left and at the end last on the right, so the node balances, and give any remainder the record leaves in a note. Group loans and their repayments apart by a gap under their own names, so a reader can tell a loan from a gift, and say in a note that the chart traces no dollar received to a dollar spent. The flow the title names takes the text’s ink; the rest are gray with a thin edge (Rule 14.6)."
  ],
  "use_when": "The reader asks where an account’s money came from and where it went, in one period.",
  "use_instead": [

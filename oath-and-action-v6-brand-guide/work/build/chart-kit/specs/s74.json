@@ -23,13 +23,13 @@
  "measure_line": "Connections in the atlas’s model, counted by the region each starts in (rows) and the region it reaches (columns), as of October 15, 2026",
  "notes": [
   "A connection joins two variables in the atlas’s model, from the one that acts to the one it affects. A cell counts the connections between two regions and gives no measure of their strength.",
-  "Lines of authority, such as Congress deciding public investment levels or the executive setting tariff rates, carry no plus or minus sign in the atlas. All seven start in governing institutions and fill three cells alone, each drawn with an outline.",
+  "Lines of authority, such as Congress deciding public investment levels or the executive setting tariff rates, carry no plus or minus sign in the atlas. All seven start in governing institutions and are the only connections in three cells, which the grid draws with an outline.",
   "Outside drivers, conditions the atlas treats as given, such as geography, receive no connection.",
   "The download lists the connections in each cell by their atlas IDs."
  ],
  "credit": "Chart: Oath & Action",
  "illustrative": false,
- "alt": "A grid of the atlas’s ten regions, rows for where a connection starts and columns for where it ends. Forty-four of the 100 cells hold connections, from 1 to 7 each, and the diagonal holds the 32 that stay within a region. Governing institutions starts 23, the most, among them all seven lines of authority; no connection reaches outside drivers.",
+ "alt": "A grid of the atlas’s ten regions, rows for where a connection starts and columns for where it ends. Forty-four of the 100 cells hold connections, from one to seven each, and the diagonal holds the 32 that stay within a region. Governing institutions starts 23, the most, among them all seven lines of authority; no connection reaches outside drivers.",
  "table": {
   "caption": "Connections in the atlas’s model by region, as of October 15, 2026",
   "columns": [
@@ -76,7 +76,7 @@
   "ids": [],
   "snapshot": "2026-10-15"
  },
- "source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, model connections counted by region, as of October 15, 2026, United States. Snapshot of October 15, 2026. Counted by Oath & Action.",
+ "source_line": "Source: Oath & Action’s systems atlas, Who Do They Answer To?, model connections counted by region, snapshot of October 15, 2026, United States. Counted by Oath & Action.",
  "encode": {
   "from": "from_region",
   "to": "to_region",
@@ -174,6 +174,6 @@
   "Weight (D3-1097): the table drops the connection IDs (118 typed chips, about 8,000 bytes on the page); the CSV export keeps link_ids for every cell and note 4 says so; v7.ids is empty since no ID prints."
  ],
  "chart_notes": [
-  "Each filled cell is shaded by its count, with the count printed in it; the more connections, the stronger the shade. Lines of authority, which carry no sign, fill three cells drawn with an outline and no shade."
+  "A filled cell’s shade grows stronger with its count, which is printed in it. Lines of authority, which carry no sign, are the only connections in three cells, drawn with an outline and no shade."
  ]
 }

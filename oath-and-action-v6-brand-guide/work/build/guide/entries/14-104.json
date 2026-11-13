@@ -2,7 +2,7 @@
  "id": "14.104",
  "title": "Use a network diagram to show who sent what to whom.",
  "rule": [
-  "Draw each sender and each receiver as a box with its name and amount inside, and join them with links whose width is the amount, in one linear unit for the whole drawing, with a key of widths; a link too narrow to see draws one pixel wide, and the key says so. Stack the links that leave a box in the order of the boxes they reach, so none cross. Fold many small receivers of one kind into one box with their count, and list each in the table. Draw two sides alike, side by side and in one ink, and name each side in words; money spent to elect a candidate takes the party-mark ink, never red or blue (Rule 14.7)."
+  "Draw each sender and each receiver as a box with its name and amount inside, and join them with links whose width is the amount, in one linear unit for the whole drawing, with a key of widths (Rule 14.4). Stack the links that leave a box in the order of the boxes they reach, so none cross. Fold many small receivers of one kind into one box with their count, and list each in the table. Draw two sides alike, side by side and in one ink, and name each side in words; money spent to elect a candidate takes one neutral ink for every party, with no red or blue (Rules 14.6 and 14.7)."
  ],
  "use_when": "The reader asks where money or influence went from a few senders, and which links carried the most.",
  "use_instead": [

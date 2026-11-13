@@ -661,7 +661,7 @@
    "source": "s76.json"
   },
   {
-   "example": "Under the federal SNAP rule, a state has at most 30 days from an application to a decision, and at most 7 for a household with very little income or cash.",
+   "example": "Under the federal SNAP rule, a state has at most 30 days from an application to a decision, and at most seven days for a household with very little income or cash.",
    "domain": "D04",
    "states": [],
    "rule": "14.112",

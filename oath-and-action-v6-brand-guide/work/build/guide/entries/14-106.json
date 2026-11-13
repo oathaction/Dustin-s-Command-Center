@@ -2,7 +2,7 @@
  "id": "14.106",
  "title": "Use an arc diagram for links among items in a set order.",
  "rule": [
-  "Set the items on one line in an order that means something, such as the date each was introduced, and join each linked pair with an arc above the line whose width is the pair’s count, in one linear unit with a key of widths. Draw the widest arcs first so narrow ones stay in view, name each item under the line, and set the pair the title names in the text’s ink with every other arc gray. On a phone, run the line down the left and bow the arcs to the right. Print every pair and its count in the table."
+  "Set the items on one line in an order that means something, such as the date each was introduced, and join each linked pair with an arc above the line whose width is the pair’s count, in one linear unit with a key of widths (Rule 14.4). Draw the widest arcs first so narrow ones stay in view, name each item under the line, and set the pair the title names in the text’s ink with every other arc gray (Rule 14.6). On a phone, run the line down the left and bow the arcs to the right. Print every pair and its count in the table."
  ],
  "use_when": "The reader asks which items in a list share something, such as bills that drew the same backers, and the list has an order worth keeping.",
  "use_instead": [

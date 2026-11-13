@@ -2,7 +2,7 @@
  "id": "14.94",
  "title": "Use a cohort chart to follow groups that started at different times.",
  "rule": [
-  "Use a cohort chart, a reference form, to track groups that began at different times, such as the people who enrolled in a program each year, on one clock that starts when each group began. Draw one line a group, the years since its start across and the share still enrolled up from 100 percent, and name each line at its end by its start year. Keep to four groups, or set the one the title names in the text’s ink and the rest in gray (Rule 14.8)."
+  "Use a cohort chart, a reference form, to track groups that began at different times, such as the people who enrolled in a program each year, on one clock that starts when each group began. Draw one line for each group, with the years since its start along the bottom and the share still enrolled up the side, from 100 percent at the start, and name each line at its end by its start year. Keep to four groups, or set the one the title names in the text’s ink and the rest in gray (Rule 14.8)."
  ],
  "use_when": "A specialist asks whether people who started later stay longer or leave sooner than those who started earlier.",
  "use_instead": [

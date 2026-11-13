@@ -898,7 +898,7 @@
   "chapter": "14",
   "rule": "14.105",
   "width_px": null,
-  "alt": "A grid of the atlas’s ten regions, rows for where a connection starts and columns for where it ends. Forty-four of the 100 cells hold connections, from 1 to 7 each, and the diagonal holds the 32 that stay within a region. Governing institutions starts 23, the most, among them all seven lines of authority; no connection reaches outside drivers.",
+  "alt": "A grid of the atlas’s ten regions, rows for where a connection starts and columns for where it ends. Forty-four of the 100 cells hold connections, from one to seven each, and the diagonal holds the 32 that stay within a region. Governing institutions starts 23, the most, among them all seven lines of authority; no connection reaches outside drivers.",
   "illustrative": false,
   "notes": "S74, adjacency-matrix: the chart kit draws it from work/build/chart-kit/specs/s74.json (contract R1-C3)"
  },

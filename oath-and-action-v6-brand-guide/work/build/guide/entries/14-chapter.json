@@ -93,7 +93,7 @@
    "before_rule": "14.93",
    "title": "Behavior: how do people move through a process?",
    "rules": "14.93 to 14.95",
-   "line": "People move through a process in funnels, cohort charts and survival curves, which show where they leave it."
+   "line": "Funnels, cohort charts and survival curves follow people through a process and show at which stage, or how soon, they leave it."
   },
   {
    "number": 12,
@@ -107,14 +107,14 @@
    "before_rule": "14.104",
    "title": "Relationships: who is connected to whom?",
    "rules": "14.104 to 14.109",
-   "line": "Networks, matrices and arc diagrams show who is connected to whom, and how strongly."
+   "line": "Networks, matrices and arc diagrams show who is connected to whom, with a width or a shade for each link’s amount or count."
   },
   {
    "number": 14,
    "before_rule": "14.110",
    "title": "Flow: where does it go?",
    "rules": "14.110 to 14.113",
-   "line": "Sankeys, alluvial charts and flow maps show where money or people go, with every flow accounted for."
+   "line": "Sankeys, alluvial charts and flow maps show where money or people go, and the table gives every flow’s amount. A journey map follows one person through a public service, step by step."
   },
   {
    "number": 15,

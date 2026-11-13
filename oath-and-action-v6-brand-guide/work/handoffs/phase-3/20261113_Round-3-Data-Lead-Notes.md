@@ -14,6 +14,11 @@ Rulings (a) to (g) below are final for drawing. Makers, the cartographer, the ed
 - **(f) Change 9's classes** confirmed from the file: 36, 33, 85 and 259 seats by margin, 22 unopposed, 14 decided another way.
 - **(g) Rule 01.9 and DR-229 hold after round 3; nothing moves.** Row 109 passes D3-689's test.
 - **After RL-3 (second run).** S73 draws line 22 transfers alone for both committees: $899.4 million to 53 committees and $273.8 million to two. The refunds go apart in the table and the operating expenses into a note. Widths stay; the title changes. RL-1, RL-2 and DL-E1 are signed off, with S81 national as the engineer's variant B.
+- **Maker B (third run).** S75 is signed off, and S74 and S77 are signed off but for one small item each (MB-6, MB-7). Nine of maker B's twelve entries and five of its six sketches are signed off. Its four open items, RB3-D1 to RB3-D4, are signed off, and RL-4 changes nothing. MB-1 to MB-9 ask for changes:
+  - S65's and S76's titles each name two findings;
+  - S73's word boxes read as a measure;
+  - S76's bands collapse to lines at 256 px;
+  - the multi-network sketch's dashed lines clash with Rule 13.4.
 
 ## Rulings
 
@@ -184,6 +189,45 @@ I read the engineer's measure under "Contracts", R3-3, at 03:05 UTC: the table o
 3. **The CSV export carries every county's value, margin and class,** with the nation's row apart and labeled.
 4. **S83:** the island carries dot counts, not employee counts, as the engineer proposes, one column for each unit ruling (b) sets (10,000 from 480 px up, 50,000 below), each equal to round(count / unit) from the published count, written by the cartographer's derive script with a sidecar. If one column with a unit chosen by width costs less, the engineer may draw that instead, so long as each width's dots equal that rounding. The note's count of counties with no dot comes from `map_dots`'s `skipped` at each unit.
 
+## Sign-off, maker B
+
+November 13, 2026, from 02:04 UTC (clock read from `date -u`). I built S65 and S73 to S77 from the files as they stand with `node work/build/chart-kit/oa-chart.mjs build s65 s73 s74 s75 s76 s77 --widths 1440,390,296,256 --out <scratch>/kit-r3`, sweep on: 6 PASS, 0 faults, six check files read, each with `faults` 0. I looked at the page captures at 1x: every spec at 1440 px on Newsprint and on Charcoal in grayscale; at 390, 296 and 256 px on Newsprint, with 390 in grayscale; and at 390, 296 and 256 px on Charcoal, with 256 in grayscale, for S65, S74 and S76. For S73, S75 and S77 I looked at Charcoal only at 1440 px. I rendered the six sketches from `work/build/guide/specimens/` with maker B's shooting script copied to my scratch, on Newsprint at device scale 2, and read the twelve entries' rule, use, instead, why, builders and spec fields by script. Every figure below was checked by script against the frozen files.
+
+### Signed off
+
+- **S74** but for MB-6 (one word). The steps, the empty cells, the three outlined authority cells and the gap between the core layer and the others read on both grounds and in grayscale at every width. At 256 px the cells are small but every count reads. The 44 filled pairs and the 32 connections within one region check.
+- **S75.** The named pair (H.R. 6609 and H.R. 6610, 34 backers) is the only arc in the text's ink. Ten House bills, introduced February 4, 2025 to September 14, 2026, and eight Senate bills check. The vertical phone line keeps the order. **RB3-D2 signed off:** the Senate's eight bills by number in note 2, since a table of pairs cannot hold bills that pair with none. **RB3-D4 signed off:** the key starts at 3 with the sentence on one- and two-member arcs. 25 of 33 arcs have one or two backers, the key says how they draw, and the table gives every count. Half a pixel a backer would put a 17 px arc on a 256 px drawing.
+- **S77** but for MB-7 (a note on who qualifies). The path in the text's ink and the expedited branch in gray read at every width, across at a desk and down on a phone. The title says "at most" and the measure line says waits are not measured, as ruling (d) asks. **The expedited branch as applied (7 CFR 273.2(i)) is signed off:** the box says "interview and benefits within 7 days of filing". Note 3 and the table's next step carry the postponed proof, "due by the second or third month of benefits". No box of its own is needed, since the branch's drawing ends where its limit ends.
+- **Entries** 14.93, 14.94, 14.95, 14.105, 14.106, 14.107, 14.110, 14.111 and 14.112. Entry 14.104 waits on MB-3, 14.108 on MB-8 and 14.109 on MB-9. Rule numbers cited were checked against the plan file: 14.129 is the heat table and 14.46 the 100 percent bar.
+- **Sketches** 14.94, 14.95, 14.107, 14.109 and 14.111, all 1,963 to 2,987 bytes:
+  - the cohort lines name their start years;
+  - the survival steps carry their censoring ticks, and half is reached at month 11 where the line drops;
+  - the chord's ribbons don't cross;
+  - the symmetrical links have no arrowheads and a two-step key;
+  - the alluvial columns sum to 100 at each time.
+- **RB3-D1, S74's chips: signed off.** Rule 13.9 sets how an atlas ID prints, never that one must. The page table prints each cell as a row (from, to, count), which is R3-6's "links as rows" at the level the matrix draws. The CSV export carries `link_ids` for every cell, and note 4 says so.
+- **RB3-D3, S73's table grouped by node: signed off.** One row for each node drawn and each refund, every one of the 57 rows in the CSV with its node, and the note says the download lists each state party committee. This is DR-249's model for the county maps.
+- **RL-4: no change to S73.** The research lead read every line 21B row of the cycle: the Trump committee paid no committee on line 21B, and the Harris Victory Fund paid seven committees outside the file $7,630,069.02. S73's note speaks only of the committees drawn and stays true. The sidecar records the rest, read the same way for both.
+
+### Requests to maker B
+
+- **MB-1, S65's title names two findings.** It names the 16.0 million ended for a procedural reason, which is in the text's ink, and the 49.0 million that kept coverage, which is gray. Two findings stated each on its own take the text's ink both (ruling (c) of round 2 with RF-17). The better fix is one finding. For example: "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, 16.0 million ended for a procedural reason, more than twice the 6.9 million found ineligible." By script that is 2.30 times. Found ineligible stays gray with its label, as a comparison. If the editor keeps both findings, "Kept coverage" takes the text's ink as well.
+- **MB-2, S65's shares.** "93.7%" and the others print with no base. Add the base to the measure line ("; shares are of renewals due").
+- **MB-3, S73's boxes look like a measure and are not.** Node boxes take their height from their words or their links, whichever is taller. The DNC's box (189.3 million) and the RNC's (26.9 million) draw the same height at 1440 px, and the Harris Victory Fund's box is near its dollars while the Trump committee's is set by its words. A reader compares box sizes, and Rule 14.4 lets an area carry a quantity only with a measure and a key. Draw every node as the bar maker B already draws under 420 px: as tall as its dollars in the band unit, with its name and amount beside it. Entry 14.104's first sentence follows: "Draw each sender and each receiver as a bar as tall as its amount, with its name and amount beside it". The title, widths, key and note stay.
+- **MB-4, S76's title names two findings.** Individuals' $1,384.1 million is in the text's ink; spending's $2,045.3 million is gray. Name one, as MB-1 does. For example: "Individuals gave 2024 House campaigns $1,384.1 million, more than any other source and 61 percent of all they took in." By script: 1,384,115,131.69 of 2,252,865,112.88 in receipts, cash at the start left out, 61.4 percent. Or spending takes the text's ink too, which darkens half the drawing.
+- **MB-5, S76 at 256 px.** The label columns leave the bands about 10 px of run on each side of the node. Every band, the named one included, reads as a line, on both grounds. At 296 px they still read as bands. Under about 300 px, change the phone drawing (`phone: "differs"`) so the bands keep room. For example, set receipts above the node and spending below it, with words beside each band, or move the smaller lines' words under the drawing as a numbered list. The check passes either way; the reader needs to see a band as a band.
+- **MB-6, S74's title.** "32 of them" follows "44 of the 100 pairs", so it reads as 32 pairs; the 32 are connections (by script, the diagonal sums to 32). Write "and 32 of the connections stay within one region".
+- **MB-7, S77, who gets expedited service.** "Very little income or cash" is the drawing's short name. A note should give the rule's tests once, in its words, from 7 CFR 273.2(i)(1), so the short name does not stand in for the rule. Please wait for the research lead's source words (request RL-5) before printing figures.
+- **MB-8, 14.108, the multi-network's dashed lines.** Rule 13.4 keeps solid, dashed and dotted lines for a connection's grade, and chapter 14 keeps a dashed line in the text's ink for a total or national line. A dash for a kind of tie would give the guide a third meaning for it. Change the entry and its sketch:
+  - each kind takes its own ink in the categorical order (Charcoal, then Verdigris, then Prussian), solid;
+  - each kind is named in a key and along at least one of its lines, so it holds in gray;
+  - past three kinds, one panel for each kind with every node in place, as the entry says now.
+
+  New rule words: "Give each kind of link its own ink in the chart order, solid, and name it in a key and on one of its lines; never a dash or dot, which Rule 13.4 keeps for a connection’s grade." The builders' line follows.
+- **MB-9, 14.109's width.** "As thick as its strength where it has one" needs a defined measure and a key. Write "as thick as its count, such as shared members, with a key of widths (Rule 14.4)". The sketch already has the key.
+
+S65, S73, S76, entries 14.104, 14.108 and 14.109 and sketch 14.108 are signed off once their items land. I sign off from 1440 and 256 px on both grounds, and from 390 px for MB-3.
+
 ## Routine calls
 
 - D3-xxx | S78 draws fixed broadband (B28002 line 007) with S2801's margins, source variant `fixed_with_s2801_margin` | V7 I015 names slow or missing service, and the any-type line's 5.9-point spread allows no more than two honest classes
@@ -205,6 +249,12 @@ I read the engineer's measure under "Contracts", R3-3, at 03:05 UTC: the table o
 - D3-xxx | RL-1 signed off: S81 sets the nation apart at $80,734 (±$166); breaks stand | The nation sits $734 from the top break
 - D3-xxx | RL-2 signed off: S83's table counts H and J counties by state, the CSV carries every flag, and the note names the 7.7 million in no county | The Bureau's flags and statewide records, read from its county file
 - D3-xxx | DL-E1 signed off: S81 national as variant B, four classes plus no estimate, grouped table with values and no county names | About 14,200 bytes against 14,495; Rule 14.9 names no county inside its margin
+- D3-xxx | S74's page table prints cells without connection IDs; the CSV carries them | Rule 13.9 sets how an ID prints, not that it must; the table still lists links as rows at the matrix's level (R3-6)
+- D3-xxx | S73's table groups by node, every row in the CSV | DR-249's model, at D3-1097's weight
+- D3-xxx | S75's key starts at 3 members, with a sentence on narrower arcs; the Senate's bills in a note | 25 of 33 arcs carry one or two backers, and a table of pairs cannot list unpaired bills
+- D3-xxx | RL-4 changes nothing on S73 | The note speaks only of the committees drawn; the sidecar records the rest for both committees
+- D3-xxx | A network node is a bar as tall as its amount, words beside it, never a word box of free height | A box sized by its words reads as a measure (Rule 14.4)
+- D3-xxx | A chapter 14 network never tells kinds of tie apart by dash or dot | Rule 13.4 keeps line patterns for a connection's grade and chapter 14 keeps the dash for a total line
 
 ## Requests
 
@@ -216,8 +266,11 @@ I read the engineer's measure under "Contracts", R3-3, at 03:05 UTC: the table o
 - **RL-4 (not blocking).** If time allows, read both joint fundraising committees' full line 21B lists for any payee with a committee ID outside the file, and say what you find in the sidecar. S73 draws no such committee, and its note speaks only of the committees drawn.
 - **RL-3a follow-up.** `fec-jfc-transfers-2024.meta.json`'s `universe_or_base` says "every committee it paid"; it holds every committee paid on line 22 or 28C. One phrase.
 
-### To maker B (S73, ruling RL-3a)
-- MB-R3-1. Draw line 22 alone; the "{n} other committees" node and the hairline sentence go; title, measure line, note, alt text, source variant and table as RL-3a sets them. The editor reads the words.
+- **RL-5 (for MB-7).** Add the words of 7 CFR 273.2(i)(1), who qualifies for expedited service with its dollar tests, to `govinfo-snap-application-path`'s sidecar (`source_words` or a note), so maker B prints them from the file.
+
+### To maker B
+- MB-1 to MB-9: see "Sign-off, maker B".
+- MB-R3-1 (closed: S73 draws line 22 alone as built). Draw line 22 alone; the "{n} other committees" node and the hairline sentence go; title, measure line, note, alt text, source variant and table as RL-3a sets them. The editor reads the words.
 
 ### To the cartographer
 - C-R3-1. S81: DL-E1's conditions 1 to 3, and the nation from RL-1 beside the map. S83: RL-2's table and note, DL-E1's condition 4.
@@ -229,6 +282,7 @@ I read the engineer's measure under "Contracts", R3-3, at 03:05 UTC: the table o
 Read rulings (a) to (g) and "Rulings, after RL-3" directly.
 
 ## Tested
+- Maker B, 02:04 UTC: `oa-chart.mjs build s65 s73 s74 s75 s76 s77 --widths 1440,390,296,256 --out <scratch>/kit-r3`, sweep on, 6 PASS, 0 faults, six check files read; captures looked at as listed under "Sign-off, maker B"; six sketches rendered with Chromium (maker B's script, copied) and looked at on Newsprint; twelve entries read by script; figures checked by script: S65's 2.30 ratio, S75's dates and counts, S74's 32, S76's 1,926 candidates and 61.4 percent, RL-4 from the sidecar.
 
 - Read by script from the frozen files: the funnel stages and shares; the Sankey's sixteen lines and its remainder; both committees' transfers by recipient type; both roll calls by party and vote; the bills by chamber and the shared-backer counts; the district results by party, kind of seat and margin class, Michigan's 13 rows and the seats within 0.15 of a break; fixed and any-type broadband with S2801 margins, clear gaps, break sets and pairwise overlaps; county income ranges, margins, break sets and crossings; County Business Patterns totals and dots by unit; the minimum wage classes for the four panels.
 - Read by script from `work/extract/atlas-v7-data.json`: CL1516; PW03's eight decision makers with `can_change_rule` (six true); the 118 connections by type and polarity (seven authority connections with no sign); the region matrix's 100 cells.
@@ -237,6 +291,9 @@ Read rulings (a) to (g) and "Rulings, after RL-3" directly.
 - Contrast by the WCAG formula on token hexes: sequential steps 1 to 5 and gray magnitude steps 1 to 4 against Newsprint and against each other.
 
 ## Not tested
+- Maker B's six specs on Charcoal at 390, 296 and 256 px for S73, S75 and S77 (looked at on Newsprint, in grayscale, and on Charcoal at 1440 px only).
+- Maker B's entries and sketches inside a guide build; I read the entry files and rendered the sketches alone. I ran no strict build or guide check.
+- Sketches on Charcoal and in grayscale (rendered, not looked at); I looked at the Newsprint renders.
 
 - No drawing yet: nothing in rulings (b) has been built or looked at; every ink above waits for the kit's checks and my sign-off.
 - Contrast on Charcoal for the steps I picked; the kit's check measures both grounds.

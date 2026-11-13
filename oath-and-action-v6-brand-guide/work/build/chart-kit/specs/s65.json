@@ -15,9 +15,9 @@
  "title": "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, 16.0 million ended for a procedural reason, and 49.0 million kept coverage.",
  "measure_line": "Medicaid and CHIP renewals due from April 2023 to March 2024, summed over the 12 months, by what happened to each, United States",
  "notes": [
-  "Each stage holds only the renewals left in the stage above it. A renewal ended for a procedural reason when the state stopped coverage for what CMS calls a procedural or administrative reason, with no finding that the person no longer qualified. A finding that the person no longer qualified counts as found ineligible.",
-  "Pending renewals, 4.9 million, sit apart at the bottom, since the states had not decided them three months after they were due.",
-  "The national figures are our sums of the states’ reports. The file ends with renewals due in March 2024, before every state had finished, and a person due in two of the months counts twice."
+  "Each stage holds only the renewals left in the stage above it. CMS counts two kinds of ending: coverage “terminated for a procedural or administrative reason”, which this chart calls ended for a procedural reason, and people “determined ineligible” on the return of a renewal form, which it calls found ineligible.",
+  "Pending renewals, 4.9 million, sit apart at the bottom, since the states had not completed them three months after they were due; a state that held its procedural terminations reports them as pending too.",
+  "The national figures are our sums of the states’ reports. The file ends with renewals due in March 2024, before every state had finished its renewals, and a person due in two of the months counts twice."
  ],
  "credit": "Chart: Oath & Action",
  "illustrative": false,

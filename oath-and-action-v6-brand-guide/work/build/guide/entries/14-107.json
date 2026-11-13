@@ -2,7 +2,7 @@
  "id": "14.107",
  "title": "Use a chord diagram only for flows among a few groups, for specialists.",
  "rule": [
-  "Use a chord diagram, a reference form, to show flows both ways among a few groups: each group an arc on a circle, sized by its total, and each flow a ribbon between two arcs, as wide at each end as the amount it carries from that side. Keep to five groups or fewer, name each arc outside the circle, and draw the ribbons gray, with the one the title names in the text’s ink."
+  "Use a chord diagram, a reference form, to show flows both ways among a few groups: each group an arc on a circle, sized by its total, and each flow a ribbon between two arcs, as wide at each end as the amount it carries from that side. Keep to five groups or fewer, name each arc outside the circle, and draw the ribbons gray, with the one the title names in the text’s ink (Rule 14.6)."
  ],
  "use_when": "A specialist asks how much flows each way among a few groups, such as people moving among four regions.",
  "use_instead": [
