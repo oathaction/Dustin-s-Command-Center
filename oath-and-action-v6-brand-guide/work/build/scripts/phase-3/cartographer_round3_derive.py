@@ -25,6 +25,16 @@ Writes, from frozen files in work/build/data/:
   7. Alaska (one seat) and Hawaii (two) sit apart at the lower left, a square's gap from the mainland.
   Every step is deterministic: no random numbers, ties broken by row, column and name.
 
+- census-acs5-county-median-household-income-classes: S81's county map (rule 14.120). Every county of the 2024
+  boundary layer in its geoid order (3,144), with its median, its margin, its class under the data lead's breaks of
+  $50,000, $65,000 and $80,000 (ruling (c), round 3: 1 under $50,000 to 4 at $80,000 or more; empty where the Bureau
+  publishes no estimate) and the count of breaks its 90 percent interval crosses (0 to 3). The map reads the class, so
+  the page carries one small number a county (DL-E1, variant B); the CSV export carries every county's value and margin.
+- census-cbp-county-employment-dots: S83's dot density map (rule 14.122). Every county of the layer in its geoid order,
+  with its private-sector paid employees and noise flag, and its dots at one dot a 10,000 and a 50,000 employees
+  (ruling (b): the count over the unit rounded half up to a whole dot). The two counties the Bureau's file lacks
+  (Kalawao County, Hawaii, 15005; King County, Texas, 48269) are kept with no count, so the rows match the layer.
+
 --check writes nothing and fails when a written file differs from what the script computes now. --figures checks
 figures in the cartographer's specs against the data files (added as specs land). Standard library only.
 """
@@ -382,6 +392,119 @@ def tile_layout():
     return [{'state': s_, 'district': d_, 'col': x, 'row': y} for s_, d_, x, y in out]
 
 
+INCOME_BREAKS = [50000, 65000, 80000]
+
+
+def layer_ids():
+    """The county layer's geoids in order: the 2024 boundary file's counties of the 50 states and DC, as geo.js carries them."""
+    with open(os.path.join(DATA, 'census-cb-2024-counties.geojson'), encoding='utf-8') as fh:
+        gj = json.load(fh)
+    return [f['properties']['geoid'] for f in gj['features'] if not f['properties']['geoid'].startswith('72')]
+
+
+def county_income_classes():
+    src = [r for r in read('census-acs5-county-median-household-income') if r['geoid'] != 'US']
+    by = {r['geoid']: r for r in src}
+    ids = layer_ids()
+    if sorted(by) != ids: FAULTS.append('income: the counties differ from the boundary layer')
+    out = []
+    for g in ids:
+        r = by[g]
+        if r['median_household_income'] in ('', None):
+            out.append({'geoid': g, 'name': r['name'], 'state': r['state'], 'median_household_income': '', 'moe': r['moe'] or '', 'income_class': '', 'breaks_crossed': ''})
+            continue
+        v, m = int(r['median_household_income']), int(r['moe'])
+        out.append({'geoid': g, 'name': r['name'], 'state': r['state'], 'median_household_income': v, 'moe': m,
+                    'income_class': 1 + sum(1 for b in INCOME_BREAKS if v >= b),
+                    'breaks_crossed': sum(1 for b in INCOME_BREAKS if v - m < b < v + m)})
+    m0 = meta('census-acs5-county-median-household-income')
+    n = [sum(1 for r in out if r['income_class'] == k) for k in (1, 2, 3, 4)]
+    x1 = sum(1 for r in out if r['breaks_crossed'] not in ('',) and r['breaks_crossed'] >= 1)
+    x2 = sum(1 for r in out if r['breaks_crossed'] not in ('',) and r['breaks_crossed'] >= 2)
+    LOG.append('income classes %s, none %d; intervals crossing a break %d, two %d' % (n, sum(1 for r in out if r['income_class'] == ''), x1, x2))
+    side = {
+        "file": "census-acs5-county-median-household-income-classes.csv", "kind": "derived",
+        "publisher": m0["publisher"], "title_or_table": m0["title_or_table"] + ", with class and break crossings for the county map",
+        "table_id": m0.get("table_id"), "url": m0.get("url"), "observation_period": m0.get("observation_period"),
+        "geography": "Every county and county equivalent of the 50 states and DC in the 2024 boundary files, in geoid order (Connecticut’s nine planning regions)",
+        "universe_or_base": m0.get("universe_or_base"), "unit": m0.get("unit"), "date_retrieved": m0.get("date_retrieved"), "vintage": m0.get("vintage"),
+        "qualification": m0.get("qualification", "") + " Classes: 1, under $50,000; 2, $50,000 to under $65,000; 3, $65,000 to under $80,000; 4, $80,000 or more; empty where the Bureau publishes no estimate (De Baca County, New Mexico).",
+        "columns": {
+            "geoid": {"type": "id", "description": "county FIPS code"},
+            "name": {"type": "text", "description": "county name and state, as the Bureau prints it"},
+            "state": {"type": "code", "description": "USPS state code"},
+            "median_household_income": {"type": "integer", "description": "median household income, 2024 dollars", "unit": "dollars"},
+            "moe": {"type": "integer", "description": "90 percent margin of error, as published", "unit": "dollars"},
+            "income_class": {"type": "integer", "description": "class under the breaks $50,000, $65,000 and $80,000, 1 to 4; empty with no estimate"},
+            "breaks_crossed": {"type": "integer", "description": "breaks inside the 90 percent interval (value less margin to value plus margin), 0 to 3"}
+        },
+        "printed_source_line": m0["printed_source_line"],
+        "ledger_row": m0.get("ledger_row"), "domain": m0.get("domain"), "states": [],
+        "derived_from": ["census-acs5-county-median-household-income.csv", "census-cb-2024-counties.geojson"],
+        "derivation": "Each county's class by the data lead's breaks (round 3 ruling (c)) and the count of breaks strictly inside its 90 percent interval; rows in the boundary layer's geoid order, the national row left out (the map prints it beside itself) (cartographer_round3_derive.py)",
+        "margin_columns": {"median_household_income": "moe"},
+        "notes": LOG[-1:]
+    }
+    write('census-acs5-county-median-household-income-classes', ['geoid', 'name', 'state', 'median_household_income', 'moe', 'income_class', 'breaks_crossed'], out, side)
+
+
+def half_up(x):
+    return int(math.floor(x + 0.5))
+
+
+def cbp_dots():
+    src = read('census-cbp-county-employment')
+    by = {r['geoid']: r for r in src}
+    out = []
+    for g in layer_ids():
+        r = by.get(g)
+        if r is None:
+            out.append({'geoid': g, 'name': '', 'state': '', 'paid_employees': '', 'emp_noise_flag': '', 'emp_noise_words': 'not in the Bureau’s county file', 'dots_10k': '', 'dots_50k': ''})
+            continue
+        e = int(r['paid_employees'])
+        out.append({'geoid': g, 'name': r['name'], 'state': r['state'], 'paid_employees': e, 'emp_noise_flag': r['emp_noise_flag'], 'emp_noise_words': r['emp_noise_words'],
+                    'dots_10k': half_up(e / 10000), 'dots_50k': half_up(e / 50000)})
+    # the two counties the file lacks: their names from the boundary file
+    with open(os.path.join(DATA, 'census-cb-2024-counties.geojson'), encoding='utf-8') as fh:
+        props = {f['properties']['geoid']: f['properties'] for f in json.load(fh)['features']}
+    st = {r['geoid'][:2]: r['state'] for r in src}
+    for r in out:
+        if r['name'] == '':
+            p0 = props[r['geoid']]; r['state'] = p0.get('code') or st.get(r['geoid'][:2], '')
+            sname = next(x['name'].split(', ')[-1] for x in src if x['geoid'][:2] == r['geoid'][:2])
+            r['name'] = p0['name'] + ', ' + sname
+    has = [r for r in out if r['paid_employees'] != '']
+    none10 = [r for r in has if r['dots_10k'] == 0]
+    LOG.append('dots: %d at 10,000 and %d at 50,000; %d counties draw no dot at 10,000, holding %d employees; counties sum %d; missing %s'
+               % (sum(r['dots_10k'] for r in has), sum(r['dots_50k'] for r in has), len(none10), sum(r['paid_employees'] for r in none10),
+                  sum(r['paid_employees'] for r in has), [r['geoid'] for r in out if r['paid_employees'] == '']))
+    m0 = meta('census-cbp-county-employment')
+    side = {
+        "file": "census-cbp-county-employment-dots.csv", "kind": "derived",
+        "publisher": m0["publisher"], "title_or_table": m0["title_or_table"] + ", with dots for the dot density map",
+        "table_id": m0.get("table_id"), "url": m0.get("url"), "observation_period": m0.get("observation_period"),
+        "geography": "Every county and county equivalent of the 50 states and DC in the 2024 boundary files, in geoid order",
+        "universe_or_base": m0.get("universe_or_base"), "unit": m0.get("unit"), "date_retrieved": m0.get("date_retrieved"), "vintage": m0.get("vintage"),
+        "qualification": m0.get("qualification", "") + " Dots: one a 10,000 or a 50,000 employees, the count over the unit rounded half up; a dot is a count, placed at random inside its county, never an address.",
+        "columns": {
+            "geoid": {"type": "id", "description": "county FIPS code"},
+            "name": {"type": "text", "description": "county name and state"},
+            "state": {"type": "code", "description": "USPS state code"},
+            "paid_employees": {"type": "integer", "description": "private-sector paid employees, week of March 12, as published; empty for the two counties the file lacks", "unit": "employees"},
+            "emp_noise_flag": {"type": "category", "description": "the Bureau's noise flag: G, H or J"},
+            "emp_noise_words": {"type": "text", "description": "the flag in words"},
+            "dots_10k": {"type": "integer", "description": "dots at one a 10,000 employees"},
+            "dots_50k": {"type": "integer", "description": "dots at one a 50,000 employees"}
+        },
+        "printed_source_line": m0["printed_source_line"],
+        "ledger_row": m0.get("ledger_row"), "domain": m0.get("domain"), "states": [],
+        "derived_from": ["census-cbp-county-employment.csv", "census-cb-2024-counties.geojson"],
+        "derivation": "Each county's dots at one a 10,000 and one a 50,000 paid employees, rounded half up; rows in the boundary layer's geoid order, with the two counties the Bureau's file lacks kept empty (cartographer_round3_derive.py)",
+        "notes": LOG[-1:]
+    }
+    write('census-cbp-county-employment-dots', ['geoid', 'name', 'state', 'paid_employees', 'emp_noise_flag', 'emp_noise_words', 'dots_10k', 'dots_50k'], out, side)
+
+
 def main():
     lay = tile_layout()
     g = meta('census-gazetteer-2024-cd119')
@@ -416,6 +539,8 @@ def main():
     write('census-gazetteer-2024-cd119-tile-layout', ['state', 'district', 'col', 'row'], lay, side)
     cols = max(r['col'] for r in lay) + 1; rws = max(r['row'] for r in lay) + 1
     print('tile layout: %d squares on a %d by %d grid' % (len(lay), cols, rws))
+    county_income_classes()
+    cbp_dots()
     for line in LOG: print(line)
     if FAULTS:
         for f in FAULTS: print('FAULT', f)

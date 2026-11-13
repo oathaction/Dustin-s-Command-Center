@@ -1,0 +1,65 @@
+{
+ "file": "census-acs5-county-median-household-income-classes.csv",
+ "kind": "derived",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "American Community Survey 5-year estimates, Table B19013, Median Household Income in the Past 12 Months (in 2024 inflation-adjusted dollars), with class and break crossings for the county map",
+ "table_id": "ACS 2020-2024 5-year, B19013_001",
+ "url": [
+  "https://api.census.gov/data/2024/acs/acs5?get=NAME,B19013_001E,B19013_001M&for=county:*",
+  "https://api.census.gov/data/2024/acs/acs5?get=NAME,B19013_001E,B19013_001M&for=us:1"
+ ],
+ "observation_period": "2020 to 2024 (five years pooled)",
+ "geography": "Every county and county equivalent of the 50 states and DC in the 2024 boundary files, in geoid order (Connecticut’s nine planning regions)",
+ "universe_or_base": "Households",
+ "unit": "2024 dollars, with 90 percent margins of error",
+ "date_retrieved": "2026-11-12",
+ "vintage": "ACS 2020-2024 5-year release",
+ "qualification": "Five years of survey responses pooled, in 2024 dollars; margins are wide in small counties, so read classes with them. Connecticut’s counties are its planning regions, as in the 2024 boundary files. Classes: 1, under $50,000; 2, $50,000 to under $65,000; 3, $65,000 to under $80,000; 4, $80,000 or more; empty where the Bureau publishes no estimate (De Baca County, New Mexico).",
+ "columns": {
+  "geoid": {
+   "type": "id",
+   "description": "county FIPS code"
+  },
+  "name": {
+   "type": "text",
+   "description": "county name and state, as the Bureau prints it"
+  },
+  "state": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "median_household_income": {
+   "type": "integer",
+   "description": "median household income, 2024 dollars",
+   "unit": "dollars"
+  },
+  "moe": {
+   "type": "integer",
+   "description": "90 percent margin of error, as published",
+   "unit": "dollars"
+  },
+  "income_class": {
+   "type": "integer",
+   "description": "class under the breaks $50,000, $65,000 and $80,000, 1 to 4; empty with no estimate"
+  },
+  "breaks_crossed": {
+   "type": "integer",
+   "description": "breaks inside the 90 percent interval (value less margin to value plus margin), 0 to 3"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, American Community Survey 5-year estimates, Table B19013, median household income, 2020 to 2024, every county in the 50 states and DC. Retrieved November 12, 2026. Survey estimates in 2024 dollars; margins are wide in small counties.",
+ "ledger_row": "P7-211",
+ "domain": "D08",
+ "states": [],
+ "derived_from": [
+  "census-acs5-county-median-household-income.csv",
+  "census-cb-2024-counties.geojson"
+ ],
+ "derivation": "Each county's class by the data lead's breaks (round 3 ruling (c)) and the count of breaks strictly inside its 90 percent interval; rows in the boundary layer's geoid order, the national row left out (the map prints it beside itself) (cartographer_round3_derive.py)",
+ "margin_columns": {
+  "median_household_income": "moe"
+ },
+ "notes": [
+  "income classes [371, 1138, 1049, 585], none 1; intervals crossing a break 1707, two 182"
+ ]
+}

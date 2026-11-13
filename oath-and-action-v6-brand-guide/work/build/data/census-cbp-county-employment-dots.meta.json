@@ -1,0 +1,71 @@
+{
+ "file": "census-cbp-county-employment-dots.csv",
+ "kind": "derived",
+ "publisher": "U.S. Census Bureau",
+ "title_or_table": "County Business Patterns, all sectors (NAICS 00), paid employees and establishments by county, with dots for the dot density map",
+ "table_id": "CBP 2023, NAICS2017 00, EMP and ESTAB",
+ "url": [
+  "https://api.census.gov/data/2023/cbp?get=NAME,EMP,EMP_N,ESTAB,NAICS2017&for=county:*&NAICS2017=00",
+  "https://api.census.gov/data/2023/cbp?get=NAME,EMP,ESTAB,NAICS2017&for=us:*&NAICS2017=00",
+  "https://api.census.gov/data/2023/cbp/variables.json",
+  "https://www2.census.gov/programs-surveys/cbp/datasets/2023/cbp23co.zip",
+  "https://www2.census.gov/programs-surveys/cbp/datasets/2023/cbp23st.zip",
+  "https://www2.census.gov/programs-surveys/cbp/datasets/2023/cbp23us.zip",
+  "https://www2.census.gov/programs-surveys/cbp/technical-documentation/records-layouts/2020_record_layouts/county-layout-2020.txt",
+  "https://www.census.gov/programs-surveys/cbp/technical-documentation/methodology.html"
+ ],
+ "observation_period": "2023; employees in the pay period including March 12",
+ "geography": "Every county and county equivalent of the 50 states and DC in the 2024 boundary files, in geoid order",
+ "universe_or_base": "Paid employees of private establishments; government, the self-employed and most farm and household workers are not counted",
+ "unit": "employees; establishments",
+ "date_retrieved": "2026-11-12",
+ "vintage": "CBP 2023 release",
+ "qualification": "Counts private-sector paid employees where they work, not where they live. The Bureau adds noise to each establishment’s figures to protect employers, and flags each published count by how much noise changed it: G, less than 2 percent (2,735 counties); H, 2 to under 5 percent (378); J, 5 percent or more (29). The flags come from the Bureau’s downloadable 2023 county file, whose counts equal the data API’s in every row; the API’s own noise range code returned 0 for every county, and its variable list defines no values for it. Kalawao County, Hawaii, and King County, Texas, are not in the file. Dots: one a 10,000 or a 50,000 employees, the count over the unit rounded half up; a dot is a count, placed at random inside its county, never an address.",
+ "columns": {
+  "geoid": {
+   "type": "id",
+   "description": "county FIPS code"
+  },
+  "name": {
+   "type": "text",
+   "description": "county name and state"
+  },
+  "state": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "paid_employees": {
+   "type": "integer",
+   "description": "private-sector paid employees, week of March 12, as published; empty for the two counties the file lacks",
+   "unit": "employees"
+  },
+  "emp_noise_flag": {
+   "type": "category",
+   "description": "the Bureau's noise flag: G, H or J"
+  },
+  "emp_noise_words": {
+   "type": "text",
+   "description": "the flag in words"
+  },
+  "dots_10k": {
+   "type": "integer",
+   "description": "dots at one a 10,000 employees"
+  },
+  "dots_50k": {
+   "type": "integer",
+   "description": "dots at one a 50,000 employees"
+  }
+ },
+ "printed_source_line": "Source: U.S. Census Bureau, County Business Patterns, paid employees by county, 2023, counties of the 50 states and DC. Retrieved November 12, 2026. Private-sector paid employees only, counted where they work.",
+ "ledger_row": "P7-212",
+ "domain": "D07",
+ "states": [],
+ "derived_from": [
+  "census-cbp-county-employment.csv",
+  "census-cb-2024-counties.geojson"
+ ],
+ "derivation": "Each county's dots at one a 10,000 and one a 50,000 paid employees, rounded half up; rows in the boundary layer's geoid order, with the two counties the Bureau's file lacks kept empty (cartographer_round3_derive.py)",
+ "notes": [
+  "dots: 13040 at 10,000 and 2402 at 50,000; 1354 counties draw no dot at 10,000, holding 2841136 employees; counties sum 132151802; missing ['15005', '48269']"
+ ]
+}

@@ -5208,3 +5208,4 @@ The main session reported that `phase3_ch14_build.py` still builds rounds 1 and 
 | # | Decision | Source |
 |---|---|---|
 | DR-253 | The engineer changes `phase3_ch14_build.py`'s default to build rounds 1, 2 and 3 | Dustin, November 13 |
+| D3-1095 | DR-253 landed: `phase3_ch14_build.py` builds rounds 1, 2 and 3 by default; run with no flag it wrote no file, since the chapter files already matched `--rounds 1,2,3`, and both `--check` forms read 80 of 80 files current; its 7 faults are the map entries 14.117 to 14.123 not yet written. D3-1093's flag is no longer needed | The engineer's report after Dustin's permission |
