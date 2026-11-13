@@ -16,11 +16,11 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the in
 |---|---|---|---|
 | S89 | `process-explainer` (drawing) | Signed off (21:14); DD-I1 to DD-I3 and DD-I5 applied since, for the director's second read | 10,554 |
 | S90 | `by-the-numbers` (HTML text) | Signed off; MI-3 applied (current spending's exclusions, fall 2023) | 6,410 |
-| S91 | `comparison-cards` (HTML text) | MI-4 and MI-7 applied (the three territories named); shared rows wait on the engineer (DD-I12) | 7,101 |
+| S91 | `comparison-cards` (HTML text) | MI-4 and MI-7 applied (the three territories named); the shared-row grid applied (DD-I12, `labels.rows`) | 7,112 |
 | S92 | `step-by-step` (HTML text) | Signed off; DD-I15's bold limit applied | 9,358 |
 | S93 | `annotated-illustration` (drawing) | Signed off whole; DD-I6 to DD-I9 applied, page order with the data lead's yes | 7,383 |
 | S94 | `calendar` (HTML text and one year mark) | MI-5, MI-6, DD-I16 and DD-I20 applied; DD-I17 to DD-I19 wait on the engineer | 12,200 |
-| S95 | `social-data-card` (two crops, 1080 by 1350 and 1080 by 1080) | Builds; two kit faults (IM-E6, IM-E8) | 12,286 (21:29 build) |
+| S95 | `social-data-card` (two crops, 1080 by 1350 and 1080 by 1080) | PASS with the sweep after IM-E6 and IM-E8 landed; S19's grade line beside "Finding"; for the data lead's and the accessibility lead's read | 12,326 |
 
 Under DR-271 the share and the 15,000-byte line are figures the build reports; every plate above is under both. Entries 14.135 to 14.141 are written; the chapter generator, run with `--rounds 1,2,3,4`, takes all seven in (141 rules, 0 faults). Every figure in a title, note, card or alt is checked by `python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures` (all pass, S89 to S95).
 
@@ -31,14 +31,14 @@ Under DR-271 the share and the 15,000-byte line are figures the build reports; e
 | DD-I1, Must | Yes | The emergency request's link drops down the middle of the lane to its left (the Local lane), clear of every lane rule, then into the box's side |
 | DD-I2, Must | Yes | Every head on one line on one baseline (the form draws lanes only where each head fits on one line and the lane holds its least width); heads now "Local", "State and tribal", "Federal", "Residents"; lanes sized by a stated rule in `notes_internal`: a lane's share follows the steps it holds alone (0.6, 1.2, 1.2, 1.0) |
 | DD-I3, Should | Yes | Set-in boxes at 44 px on a phone, so each link shows a 16 px stem before its head |
-| DD-I4, Should | In part | "the law’s limit" and "30 days" held on one line; a hold on a step's name fails parity (IM-E6 item 2), so "help" and "decides" wait on the engineer's orphan guard |
+| DD-I4, Should | Yes, in S89's own boxes | The form narrows a box's measure a step at a time, by up to a third, until no word stands alone on a block's last line ("help" now ends "individual help"; "The President decides" holds two words a line); "the law’s limit" and "30 days" held. The same on S95's title |
 | DD-I5, Should | Yes | "30 days" held (`typography.hold`) |
 | DD-I6, Must | Yes | A dashed context-ink rule across the sheet's foot and "The page continues with section 2." under it, inside the drawing; the old note is gone |
 | DD-I7, Must | Yes, with the data lead's yes (21:25) | Parts numbered in the page's reading order through the spec's sort; the table's Number column maps the same; the file is as stored |
 | DD-I8, Should | Yes | A running head that wraps sets "139 STAT. 55" on a line of its own, right-aligned |
 | DD-I9, Should | Yes, with the editor's ruling (21:24) | The page's doubled single marks set as double quotation marks (`typography.replace`, printed words only); the note says so beside the dash |
 | DD-I10, DD-I11 | Waiting | The engineer's facts variant (the director's own kit request) |
-| DD-I12, Must | Waiting | The engineer's shared-row card grid (the director's own kit request) |
+| DD-I12, Must | Yes | The engineer's shared-row grid (`.oac-h-rows`), set by S91's `labels.rows`; stacked on a phone, each card flows as before |
 | DD-I13, DD-I14 | Waiting | IM-E7 items 1 and 2 (an eyebrow class; the step's measure is the kit's 38em) |
 | DD-I15, Should | In part | The limit's own words in bold; the 8 px above waits on IM-E7 item 2 |
 | DD-I16, Must | Yes | Each kind of date on a line of its own, its consequence on the next |

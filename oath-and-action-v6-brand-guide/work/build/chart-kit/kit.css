@@ -92,6 +92,20 @@
 .oac-h-tag-strong { background: var(--oa-color-text-primary); color: var(--oa-color-surface); }
 .oac-h-mark { display: block; margin: 8px 0 0; }
 .oac-h-mark > svg.oac-svg { max-width: none; }
+/* IM-E7 (round 4): a mark drawn with h.mark(..., {fluid: true}) scales to its box and holds no words (they print as HTML
+   beside it); a limit line takes 8 px above it; a kind of date takes a 10 px square before its words, filled in the subject
+   ink for the strong kind and open with a 1.5 px subject edge for the plain one; dates run as two columns from 480 px */
+.oac-h-mark.oac-h-fluid > svg.oac-svg { width: 100%; height: auto; max-width: 100%; }
+.oac-h-limit { margin: 8px 0 0; font: var(--oa-font-weight-regular) var(--oa-chart-type-note)/var(--oa-chart-type-note-leading) var(--oa-font-family-reading); max-width: 38em; }
+.oac-h-sq, .oac-h-sq-strong { font-weight: var(--oa-font-weight-semibold); }
+.oac-h-sq::before, .oac-h-sq-strong::before { content: ""; display: inline-block; width: 10px; height: 10px; box-sizing: border-box; margin-right: 6px; border: 1.5px solid var(--oa-chart-color-subject); }
+.oac-h-sq-strong::before { background: var(--oa-chart-color-subject); }
+@container (min-width: 480px) {
+  .oac-h-dates > .oac-h-item { display: grid; grid-template-columns: 11.25rem 1fr; column-gap: 16px; }
+  .oac-h-dates > .oac-h-item > .oac-h-name { grid-row: 1 / span 12; }
+  .oac-h-dates > .oac-h-item > :not(.oac-h-name) { grid-column: 2; }
+  .oac-h-dates > .oac-h-item > .oac-h-name + * { margin-top: 0; }
+}
 .oac-nw { white-space: nowrap; }
 /* steps: the number on a 24 px disc in the subject ink, its numeral in the label ink on the subject, the discs joined by a
    line in the subject ink (the data lead's ruling (b)); an optional step (.oac-h-branch) on a disc edged in the context ink
@@ -121,6 +135,8 @@
   .oac-h-steps > .oac-h-item:not(:last-child)::after { forced-color-adjust: none; background: CanvasText; }
   .oac-h-steps > .oac-h-item.oac-h-branch::before { border-style: dashed; }
   .oac-h-tag-strong { forced-color-adjust: none; background: CanvasText; color: Canvas; border-color: CanvasText; }
+  .oac-h-sq::before, .oac-h-sq-strong::before { forced-color-adjust: none; border-color: CanvasText; }
+  .oac-h-sq-strong::before { background: CanvasText; }
 }
 @media print {
   .oac-art.oac-html { break-inside: auto; }

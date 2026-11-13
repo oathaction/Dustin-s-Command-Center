@@ -33,7 +33,7 @@
   "14.9",
   "14.68"
  ],
- "builders": "Form bubble-map: node work/build/chart-kit/oa-chart.mjs build s16; encode code, size (the circle’s area) and shade; labels.bins sets the shade’s four breaks, labels.size_steps and size_step_words the size key, labels.ring the circles ringed, labels.nation and nation_label the national rate on the step key, and labels.offsets a code’s place where the search finds none.",
+ "builders": "Form bubble-map: node work/build/chart-kit/oa-chart.mjs build s16; encode code, size (the circle’s area) and shade; labels.bins sets the shade’s four breaks, labels.size_steps and size_step_words the size key, labels.ring the circles ringed, labels.nation and nation_label the national rate on the step key, labels.offsets a code’s place where the search finds none, and labels.column_phone the small states whose codes stand in a column at the right on a phone drawing narrower than 358 px.",
  "correct": null,
  "failure": null
 }

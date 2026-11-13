@@ -417,8 +417,10 @@
         var nm = 'oac-h-mark-form', d;
         K.register_chart({ form: nm, name: 'Mark', family: def.family, encode: {}, labels: [], phone: 'same', draw: function (c) { fn(c); c.height(ht); } });
         try { d = K.draw({ kit: 1, id: spec.id, form: nm, typography: spec.typography }, rows, { width: w, ground: ground, t: opts.t, tokens: opts.tokens, uid: id + '-m' + (n++) }); } finally { delete K.forms[nm]; }
+        // IM-E7: a fluid mark scales to its box, so it holds no words (they print as HTML beside it)
+        d.fluid = !!o.fluid;
         marks.push(d);
-        return '<span class="oac-h-mark">' + d.svg.replace('data-oa-form="' + nm + '"', 'data-oa-form="' + esc(spec.form) + '"')
+        return '<span class="oac-h-mark' + (o.fluid ? ' oac-h-fluid' : '') + '">' + d.svg.replace('data-oa-form="' + nm + '"', 'data-oa-form="' + esc(spec.form) + '"')
           .replace(' role="img"', o.name ? ' role="img" aria-label="' + esc(o.name) + '"' : ' aria-hidden="true" focusable="false"') + '</span>';
       }
     };

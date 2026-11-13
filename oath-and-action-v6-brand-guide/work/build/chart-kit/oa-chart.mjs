@@ -233,7 +233,10 @@ export function run_spec(spec, o) {
       try { hc = K.html_card(spec, chk.rows, { ground: g, tokens: TOK[g] }); } catch (e) { res.faults.push(`html on ${g}: ${e.message}`); return; }
       res.cards[g] = K.hold(spec, hc.html);   // as the figure prints it, held phrases in .oac-nw (IM-E1)
       if (!gi) res.faults.push(...C.check_html(spec, res.cards[g], chk.rows));
-      hc.marks.forEach((d, i) => res.faults.push(...C.check_drawing({ kit: 1, id: spec.id, form: spec.form }, d, TOK[g], `${g}, mark ${i + 1}`)));
+      hc.marks.forEach((d, i) => {
+        res.faults.push(...C.check_drawing({ kit: 1, id: spec.id, form: spec.form }, d, TOK[g], `${g}, mark ${i + 1}`));
+        if (d.fluid && d.texts.length) res.faults.push(`html: mark ${i + 1} scales to its box (fluid) and holds words ("${d.texts[0].words.slice(0, 30)}"); set them as HTML beside it (IM-E7)`);
+      });
     });
     return res;
   }

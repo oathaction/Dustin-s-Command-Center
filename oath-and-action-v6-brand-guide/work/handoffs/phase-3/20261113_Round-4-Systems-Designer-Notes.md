@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the sy
 
 ## Status
 
-21:31 UTC. DR-265 is applied in my four generators and Rules 15.19 to 15.21 are built, each with a correct and a failure plate; every generator check passes and a strict build exits 0 with 0 warnings. Captures of every changed plate at five widths on both grounds are running. Waiting on: the editor's words pass, the data lead's sign-off and the accessibility lead's tests (requests below).
+21:36 UTC. **Ready for sign-off: DR-265 in chapters 11, 12, 15 and 17, and Rules 15.19 to 15.21 as built.** Every generator check passes; strict builds exit 0 with 0 warnings; the editor's first-read words for 15.19 to 15.21 are applied (21:35). Captures: all 51 changed plates on Newsprint at 1440, 1024, 768, 390 and 360 px are taken and measured (0 flagged, `capF/` in my scratch folder); Charcoal (`capFd/`) is finishing. The behavior test of 15.19 and 15.20 (keys, status lines, drawing state, print emulation, scripts off) passes, 11 of 11. Still to run: the second generator chain pass on the final files, and recaptures of 15.19 to 15.21 after the editor's words, once the machine's load drops under 4.
 
 ## Summary
 

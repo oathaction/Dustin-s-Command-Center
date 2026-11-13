@@ -3,7 +3,7 @@
  * still compare. At a desk the circles stand side by side on one line, each named under it with its count; on a phone they
  * stand one under another, named beside. The circle the title names takes the subject ink with its words inside where they
  * fit; the rest take the track ink with a 1 px context-ink edge (RF-1). A size key in S16's grammar follows the circles: an
- * eyebrow title, circles at set counts side by side on one line, each count centered under its circle. Rows too small to draw
+ * eyebrow title, rings at set counts side by side on one line in the context ink, each count centered under its ring. Rows too small to draw
  * at that scale print as counts in words in the key's band, never as circles: at a desk beside the key, its first line level
  * with the key's title; on a phone under the key.
  * encode: category (text), value (number).
@@ -69,8 +69,8 @@
         circ.forEach(function (r) { tw = Math.max(tw, name_w(r, W * 0.48).w, c.measure(fv(r[ev]), 'label', 400, true)); });
         R = Math.max(12, Math.min(84, Math.floor((W - 14 - tw) / 2)));
         // the key shares the scale, so the circles shrink until its steps fit the width side by side
-        var kneed = function (Rr) { return (L.key_steps || []).reduce(function (t, st) { return t + Math.max(2 * Math.sqrt(st / maxv) * Rr, c.measure(fv(st), 'tick', 400, true)) + 6; }, -6); };
-        while (R > 12 && kneed(R) > W) R -= 1;
+        var kneed = function (Rr) { return (L.key_steps || []).reduce(function (t, st) { return t + Math.max(2 * Math.sqrt(st / maxv) * Rr + 1, c.measure(fv(st), 'tick', 400, true)) + 6; }, -6); };
+        while (R > 12 && kneed(R) > W - 1) R -= 1;
         circ.forEach(function (r) {
           var rad = Math.sqrt(+r[ev] / maxv) * R, nw = name_w(r, W - 2 * R - 14), th = nw.n * lh + lh;
           var h = Math.max(2 * rad, th), cy = y + h / 2;
@@ -87,12 +87,13 @@
       if (L.key_title) c.text(0, ky, L.key_title, { role: 'eyebrow', weight: 700, fill: 'secondary' });
       var kmax = ks.length ? Math.sqrt(Math.max.apply(null, ks) / maxv) * R : 0;
       kb = ky + 14 + 2 * kmax;
-      // each step takes its circle's width or its count's, whichever is wider; the gaps close up to 6 px on a narrow phone
-      var kw = ks.map(function (st) { return Math.max(2 * Math.sqrt(st / maxv) * R, c.measure(fv(st), 'tick', 400, true)); });
-      var kg = ks.length > 1 ? Math.max(6, Math.min(14, (W - kw.reduce(function (t, w) { return t + w; }, 0)) / (ks.length - 1))) : 0;
+      // each step takes its circle's width with its stroke, or its count's, whichever is wider; the gaps close up to 6 px on a
+      // narrow phone, 1 px clear of the edge; the rings in the context ink, lighter than the data's edges
+      var kw = ks.map(function (st) { return Math.max(2 * Math.sqrt(st / maxv) * R + 1, c.measure(fv(st), 'tick', 400, true)); });
+      var kg = ks.length > 1 ? Math.max(6, Math.min(14, (W - 1 - kw.reduce(function (t, w) { return t + w; }, 0)) / (ks.length - 1))) : 0;
       ks.forEach(function (st, i) {
         var r = Math.sqrt(st / maxv) * R, mid = kx + kw[i] / 2;
-        c.circle(mid, kb - r, r, { stroke: 'label', width: c.t('bubble-outline'), mark: false });
+        c.circle(mid, kb - r, r, { stroke: 'context', width: 1, mark: false });
         c.text(mid, kb + 16, fv(st), { role: 'tick', anchor: 'middle', tnum: true });
         kx = mid + kw[i] / 2 + kg;
       });

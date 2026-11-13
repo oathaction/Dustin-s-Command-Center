@@ -805,7 +805,8 @@ function id_types() {
 // oa-chart.mjs build.
 const HTML_TAGS = ['ul', 'ol', 'li', 'dl', 'dt', 'dd', 'p', 'span', 'strong', 'time'];
 const HTML_CLASSES = ['oac-h-cards', 'oac-h-rows', 'oac-h-facts', 'oac-h-steps', 'oac-h-dates', 'oac-h-item', 'oac-h-branch', 'oac-h-name', 'oac-h-big', 'oac-h-body',
-  'oac-h-small', 'oac-h-src', 'oac-h-fields', 'oac-h-k', 'oac-h-v', 'oac-h-tag', 'oac-h-tag-strong', 'oac-h-mark', 'oac-nw', 'oa-id'];
+  'oac-h-small', 'oac-h-src', 'oac-h-fields', 'oac-h-k', 'oac-h-v', 'oac-h-tag', 'oac-h-tag-strong', 'oac-h-mark', 'oac-nw', 'oa-id',
+  'oac-h-limit', 'oac-h-sq', 'oac-h-sq-strong', 'oac-h-fluid'];   // IM-E7
 const HTML_ATTRS = ['class', 'role', 'data-oa-row', 'data-oa-id', 'datetime', 'id', 'aria-hidden'];
 function html_tree(html) {
   const root = { tag: '#root', attrs: {}, kids: [], text: '' }, stack = [root], f = [];

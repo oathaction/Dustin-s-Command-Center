@@ -114,14 +114,28 @@
     "lead": [
       "DC"
     ],
-    "narrow_under": 300
+    "narrow_under": 300,
+    "column_phone": [
+      "ME",
+      "NH",
+      "VT",
+      "MA",
+      "RI",
+      "CT",
+      "NJ",
+      "DE",
+      "MD",
+      "DC",
+      "WV"
+    ]
   },
   "notes_internal": [
     "The national 65.3 percent (margin 0.5) is in the sidecar's notes and in census-cps-reported-voting.csv (2024, all ages, citizens); it matches Table A-1.",
     "Circle area, never radius, follows citizens 18 and over (D2-124).",
     "Checked by script: TX 57.9 (±2.3), FL 60.3 (±1.9), NY 59.2 (±2.6), each more than its margin below 65.3; CA 64.7 (±1.6) within it.",
     "D3-83: the grade line prints 'Documented' with its source after the colon; 'Official statistic' leaves every spec.",
-    "R2: the source line is the sidecar's 2024-only variant, as Phase 2 printed it. X7: the size key reads 1, 5 and 20 million. ENG-7: the data now holds the United States row (65.3 percent, margin 0.5), so the table equivalent lists it, labeled, and the key's 'Nation 65.3%' matches a data row (DR-64)."
+    "R2: the source line is the sidecar's 2024-only variant, as Phase 2 printed it. X7: the size key reads 1, 5 and 20 million. ENG-7: the data now holds the United States row (65.3 percent, margin 0.5), so the table equivalent lists it, labeled, and the key's 'Nation 65.3%' matches a data row (DR-64).",
+    "D4-1 (round 4, the data lead's ruling (A)) and D3-1553: on a phone drawing narrower than 358 px, labels.column_phone sets ME, NH, VT, MA, RI, CT, NJ, DE, MD, DC and WV in a column of codes on the ocean at the right, north to south, each on a leader, and the map fits that much narrower; every state is coded at the 326 px drawing (before: 47, with DC, DE, ME and NH in the note). Placement only, checked by `python3 -I work/build/scripts/phase-3/cartographer_round4_derive.py` (radii): at every whole width from 300 to 357 px each state's circle has the same radius to 0.01 px, the same shade and the same key words as the layout without the column, and from 358 to 479 px the drawing is the same SVG as before."
   ],
   "formats": {
     "shade": "number:1",
