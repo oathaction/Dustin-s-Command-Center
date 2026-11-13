@@ -1,0 +1,124 @@
+{
+  "kit": 1,
+  "id": "S92",
+  "form": "step-by-step",
+  "family": "infographics",
+  "tier": "core",
+  "dataset": "govinfo-foia-request-steps",
+  "reader_question": "How do I ask a federal agency for its records, and what can I do if it says no?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the Freedom of Information Act, 5 U.S.C. 552, as in force on November 12, 2026",
+  "title": "A federal agency has 20 working days under the law to answer a request for its records, and a requester it turns down can appeal, ask for mediation or sue.",
+  "measure_line": "What a requester does to get records from a federal agency under 5 U.S.C. 552, in order, with the longest time the law allows at each step",
+  "notes": [
+    "Federal agencies take weeks or months to answer requests for public records, as our systems atlas records in Issue I013.",
+    "The steps cover federal agencies only; each state has its own public records law."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Eight steps a requester takes to get records from a federal agency, two of them optional, each with the time the law allows.",
+  "table": {
+    "caption": "Requesting records from a federal agency, step by step",
+    "columns": [
+      {
+        "field": "order",
+        "label": "Step",
+        "format": "integer"
+      },
+      {
+        "field": "step",
+        "label": "What you do",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "path",
+        "label": "Every request or optional",
+        "format": "text",
+        "words": {
+          "main": "Every request",
+          "branch": "Optional"
+        }
+      },
+      {
+        "field": "who_acts",
+        "label": "Who acts",
+        "format": "text"
+      },
+      {
+        "field": "time_limit",
+        "label": "Time the law allows",
+        "format": "text",
+        "empty": "None set"
+      },
+      {
+        "field": "what_happens",
+        "label": "In more detail",
+        "format": "text"
+      },
+      {
+        "field": "legal_basis",
+        "label": "The law or guide",
+        "format": "text"
+      }
+    ]
+  },
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D01",
+  "states": [],
+  "v7": {
+    "grade": "documented",
+    "ids": [
+      "I013"
+    ],
+    "snapshot": "2026-10-15"
+  },
+  "encode": {
+    "key": "order",
+    "path": "path",
+    "step": "step",
+    "what": "what_happens",
+    "who": "who_acts",
+    "limit": "time_limit",
+    "basis": "legal_basis"
+  },
+  "labels": {
+    "main": "main",
+    "branches": {
+      "4": "Optional, when the need is urgent",
+      "7": "Optional, in place of a lawsuit"
+    },
+    "you": "Requester",
+    "limit_words": "{limit}, the law’s limit",
+    "stop": "."
+  },
+  "typography": {
+    "curl_quotes": true,
+    "nbsp": true,
+    "replace": [
+      [
+        " U.S.C.",
+        " U.S.C."
+      ],
+      [
+        "U.S.C. ",
+        "U.S.C. "
+      ],
+      [
+        " CFR",
+        " CFR"
+      ],
+      [
+        "CFR ",
+        "CFR "
+      ]
+    ]
+  },
+  "notes_internal": [
+    "Infographics maker, round 4. Data plan row 124, rule 14.138. Domain D01 from the sidecar (V7 I013).",
+    "Steps in the file's order; rows 4 and 7 are the optional steps (path branch), with an outlined disc and their words (ruling (b)). Who acts prints only where it is not the requester (rows 5 and 7).",
+    "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S92."
+  ]
+}

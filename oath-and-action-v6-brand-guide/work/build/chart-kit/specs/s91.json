@@ -1,0 +1,141 @@
+{
+  "kit": 1,
+  "id": "S91",
+  "form": "comparison-cards",
+  "family": "infographics",
+  "tier": "core",
+  "dataset": "uscode-federal-trial-judges",
+  "reader_question": "How do the three kinds of federal trial judges differ: district, bankruptcy and magistrate judges?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: title 28 of the U.S. Code, as in force on November 12, 2026, with seats as the federal courts counted them on September 30, 2025",
+  "title": "District judges hold office for life once the President appoints them and the Senate consents, and other judges choose bankruptcy and magistrate judges for terms of 14 years and eight years.",
+  "measure_line": "Who appoints each kind of federal trial judge, with whose consent, for how long, what cases they hear, how many seats there are and who sets that number, from 28 U.S.C. 133, 134, 152, 631 and 633 and the federal courts’ count",
+  "notes": [
+    "Seats include vacant ones. The law’s own tables list 673 district judgeships and 316 bankruptcy judgeships, and the Judicial Conference sets the number of magistrate judges."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "Three cards compare district, bankruptcy and magistrate judges on who appoints them, for how long, what they hear and how many seats there are.",
+  "table": {
+    "caption": "The three kinds of federal trial judges",
+    "columns": [
+      {
+        "field": "kind",
+        "label": "Kind of judge",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "appointed_by",
+        "label": "Appointed by",
+        "format": "text"
+      },
+      {
+        "field": "consent",
+        "label": "With the consent of",
+        "format": "text"
+      },
+      {
+        "field": "term",
+        "label": "Term",
+        "format": "text"
+      },
+      {
+        "field": "cases_heard",
+        "label": "Cases heard",
+        "format": "text"
+      },
+      {
+        "field": "seats",
+        "label": "Seats",
+        "format": "integer"
+      },
+      {
+        "field": "seats_in_statute_table",
+        "label": "Judgeships the law’s table lists",
+        "format": "integer",
+        "empty": "None; set by the Judicial Conference"
+      },
+      {
+        "field": "number_set_by",
+        "label": "Number of seats set by",
+        "format": "text"
+      },
+      {
+        "field": "legal_basis",
+        "label": "The law",
+        "format": "text"
+      }
+    ]
+  },
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D05",
+  "states": [],
+  "encode": {
+    "key": "order",
+    "name": "kind"
+  },
+  "labels": {
+    "fields": [
+      {
+        "field": "appointed_by",
+        "label": "Appointed by"
+      },
+      {
+        "field": "consent",
+        "label": "With the consent of"
+      },
+      {
+        "field": "term",
+        "label": "Term"
+      },
+      {
+        "field": "cases_heard",
+        "label": "Cases heard"
+      },
+      {
+        "field": "seats",
+        "label": "Seats",
+        "format": "integer",
+        "notes": {
+          "1": "Includes four in the territorial district courts of Guam, the Northern Mariana Islands and the Virgin Islands, whose judges serve ten-year terms."
+        }
+      },
+      {
+        "field": "number_set_by",
+        "label": "Number of seats set by"
+      }
+    ]
+  },
+  "typography": {
+    "curl_quotes": true,
+    "nbsp": true,
+    "replace": [
+      [
+        " U.S.C.",
+        " U.S.C."
+      ],
+      [
+        "U.S.C. ",
+        "U.S.C. "
+      ],
+      [
+        " CFR",
+        " CFR"
+      ],
+      [
+        "CFR ",
+        "CFR "
+      ]
+    ]
+  },
+  "notes_internal": [
+    "Infographics maker, round 4. Data plan row 123 (data lead change 1), rule 14.137. Domain D05 from the sidecar. No appointing president or party (data plan condition), checked by script.",
+    "677 printed with the territorial courts' four named in the card (research lead D3-1096; ruling (b)), so 'for life' in the district card's term holds for the 673.",
+    "Source line: the sidecar's seats_date_in_grade variant (IM-2), since the grade line prints the seats' date once (call 1).",
+    "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S91."
+  ],
+  "source_line": "Source: U.S. Code, 2024 edition, 28 U.S.C. 133, 134, 152, 631 and 633; Administrative Office of the U.S. Courts, Judicial Business 2025, United States. Retrieved November 12, 2026. Seats include vacant ones; the 677 district positions include the territorial courts’ 4."
+}

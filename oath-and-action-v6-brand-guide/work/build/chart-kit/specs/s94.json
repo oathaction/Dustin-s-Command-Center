@@ -1,0 +1,104 @@
+{
+  "kit": 1,
+  "id": "S94",
+  "form": "calendar",
+  "family": "infographics",
+  "tier": "extended",
+  "dataset": "govinfo-budget-and-tax-deadlines-2027",
+  "reader_question": "Which dates does federal law set for the budget and for taxes in 2027?",
+  "evidence": "finding",
+  "evidence_label": "Finding",
+  "grade_line": "Documented: the U.S. Code and the Treasury’s rule, 26 CFR 1.6081-4, as in force on November 9, 2026",
+  "title": "Federal law sets 16 budget and tax dates in 2027, and seven of them, the six tax dates and the start of the fiscal year, carry a consequence in law.",
+  "measure_line": "Dates federal law sets in calendar 2027 for the budget process and for individual income tax, with what the law attaches to missing each one",
+  "notes": [
+    "The Budget Act’s timetable, 2 U.S.C. 631, attaches no consequence to its dates. A tax date on a weekend or a legal holiday moves to the next business day (26 U.S.C. 7503); none does in 2027.",
+    "The IRS may postpone tax dates for people in a federally declared disaster area (26 U.S.C. 7508A)."
+  ],
+  "credit": "Chart: Oath & Action",
+  "illustrative": false,
+  "alt": "The 16 budget and tax dates federal law sets in 2027, each marked by whether the law attaches a consequence to missing it.",
+  "table": {
+    "caption": "Federal budget and tax dates in 2027",
+    "columns": [
+      {
+        "field": "date",
+        "label": "Date",
+        "format": "date",
+        "row_header": true
+      },
+      {
+        "field": "event",
+        "label": "What falls due",
+        "format": "text"
+      },
+      {
+        "field": "basis",
+        "label": "The law",
+        "format": "text"
+      }
+    ]
+  },
+  "phone": "same",
+  "artboard": "reading",
+  "domain": "D08",
+  "states": [],
+  "encode": {
+    "date": "date",
+    "event": "event",
+    "who": "who",
+    "consequence": "consequence",
+    "weekday": "weekday"
+  },
+  "labels": {
+    "none": "None",
+    "tags": {
+      "strong": "Consequence in law",
+      "plain": "No consequence stated"
+    },
+    "months": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    "consequence_words": "{consequence}",
+    "key": "Each square in the year is a date on its day, filled where the law attaches a consequence and open where it states none."
+  },
+  "typography": {
+    "curl_quotes": true,
+    "nbsp": true,
+    "replace": [
+      [
+        " U.S.C.",
+        " U.S.C."
+      ],
+      [
+        "U.S.C. ",
+        "U.S.C. "
+      ],
+      [
+        " CFR",
+        " CFR"
+      ],
+      [
+        "CFR ",
+        "CFR "
+      ]
+    ]
+  },
+  "notes_internal": [
+    "Infographics maker, round 4. Data plan row 126, rule 14.140. Domain D08 from the sidecar (data lead sign-off, point 4).",
+    "A date carries a consequence in law where the file's consequence column states one (it opens with \"None\" where the sections state none): 7 of 16 by script, the six tax dates and October 1 (31 U.S.C. 1341(a)); ruling (b).",
+    "No date moves under 26 U.S.C. 7503 (moved_to_next_business_day false on every row; no 2027 tax date on a weekend, by script). Budget dates stand where they fall (May 15 a Saturday, February 15 Washington’s Birthday), as 2 U.S.C. 631 sets them.",
+    "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S94."
+  ]
+}

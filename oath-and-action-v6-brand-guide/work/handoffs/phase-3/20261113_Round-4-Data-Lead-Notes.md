@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:16 UTC. Maker A’s six entries and both sketches signed off.
 - 21:14 UTC. Signed off S86, S88 (one small item) and S89; S87 and S93 but for 256 px (MA-9, MI-2); S85's figures, with its icon and chip waiting on the engineer. The share per plate is now 12,495.
 - 21:09 UTC. Resumed on the main session's word. R-2 answered: grade line dates stand; S94's 7508A note ruled. Next: sign-off reads of S86, S87, S88, S89, S93 and S85's figures.
 - 21:03 UTC. S12's stacked tile signed off from my own build; the phone codes wait on C4-E1 and C4-E2. R4-4's data side agreed with two conditions.
@@ -188,6 +189,14 @@ Type never drops under the type scale's smallest drawing size to make a title fi
 **DR-229 under D3-689's test.** No round 4 chapter 14 form draws election data: the coverage plan (sections 3.8 and 3.16) writes each form's use in general words, none of them an election question: "One in ten, made countable", "Sizes compared by area", "Two or three groups that overlap", "Overlaps drawn at true size", "Steps of a public process with icons", "Four to six facts with sources", "Two or three options side by side", "What a reader can do, in order", "A drawing with callouts", "Dates that matter" and "One chart or figure at 1080 by 1350 and 1080 by 1080". Rows 123 and 125 moved off election data at the round 4 plan's sign-off. S95 redraws S19's prison counts, which count under checks on power and equal justice. Chapter 15's 15.20 and 15.21 draw an Elections loop, R4a, because the model's structure picks it (f), and Rule 01.9 holds there too.
 
 ## Sign-offs
+
+### Maker A's entries 14.79 to 14.84 and the two sketches: signed off (21:16 UTC)
+
+Read all six entries and both sketch files; checked by script.
+- **Figures in the entries** equal the files: 14.80's "13 times another draws a circle about 3.6 times as wide" (39,555 over 3,031 is 13.05, its square root 3.61); 14.82's 23.8 and 213.2 million; 14.79's one in ten. 14.82's builders line names the form's 1 percent area check, which is the check MA-10 asks `s88.json`'s `notes_internal` to name.
+- **Sketch 14.83, packed circles** (1,893 bytes): twelve circles in the track ink with the context edge, none overlapping (by script), no red, "Illustrative data" beside it, four largest named; the alt says no value can be read off it, which is the entry's point.
+- **Sketch 14.84, rose chart beside bars** (3,037 bytes, under R3-9's 4,096): wedge radii 21, 42, 63 and 84 px for the values 1, 2, 3 and 4, so B's wedge covers four times A's area, as the caption says; the bars run 50, 100, 150 and 200 px from one zero line. Both halves carry "Illustrative data", in one categorical ink, with no red.
+- **Words for the editor, not mine to rule:** 14.79's why calls CL-050 "a topic drawing", where Q-A1 found it an atlas symbol; the editor may say "a Civic Line drawing".
 
 ### Maker A's S85 to S88 and the infographics maker's S89 and S93 (21:14 UTC)
 

@@ -50,6 +50,8 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the in
 
 - **IM-E4, three cards side by side at a desk, 13rem (21:15 UTC).** `oac-h-cards` at 15rem (240 px) sets S91's three cards two and one at the 720 px artboard (three need 752 px), so the cards stop reading side by side, which is the form's job ("two or three options side by side") and the data lead's (b) ("three cards of one width and one height"). At 13rem (208 px) three stand side by side from 656 px. Only S91 uses `oac-h-cards`.
 
+- **IM-E5, dot-plot's card mode fits the crop (21:17 UTC; the main session relays).** Labeling only Mississippi and Massachusetts leaves 50 rows: at k = 2.77 (36 px words) the form's pitch runs about 3,100 px, where the 1080 by 1350 crop leaves about 550 px for the plot and the square about 380. Please let the card mode read `c.card.height` (inner px) and `c.card.ranks: "across"`: one column a state, left to right in rank order; the value scale vertical with its ticks at the left; the all-states line horizontal, dashed, with its words; Mississippi and Massachusetts named beside their dots in the subject ink; the open dots and their key as S19 draws them; the plot filling `c.card.height`. S19's dots, inks, key and line stay (ruling (b)); at 936 px each state takes about 18.7 px. `social-data-card` passes `c.card = {label: "named", ranks: "across", height}`.
+
 ## Tested
 
 ## Not tested
