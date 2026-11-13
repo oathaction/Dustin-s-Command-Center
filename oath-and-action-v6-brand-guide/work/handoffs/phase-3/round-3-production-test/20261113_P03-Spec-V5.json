@@ -1,0 +1,151 @@
+{
+ "kit": 1,
+ "id": "P03",
+ "form": "county-choropleth",
+ "family": "maps",
+ "tier": "extended",
+ "dataset": [
+  "census-sahie-county-uninsured-classes",
+  "census-cb-2024-counties"
+ ],
+ "reader_question": "Where in the country do the most people under 65 go without health insurance, county by county, and how sure can a reader be of any one county?",
+ "evidence": "estimate",
+ "evidence_label": "Estimate",
+ "grade_line": "Documented: the Census Bureau’s Small Area Health Insurance Estimates",
+ "title": "In 2024, 612 counties had 16 percent or more of people under 65 without health insurance by the Census Bureau’s estimates, 397 of them in Texas, Georgia and Oklahoma.",
+ "measure_line": "Share of people under 65 without health insurance by county, 2024, 50 states and DC, in four classes, from the Census Bureau’s model-based estimates with their 90 percent margins of error.",
+ "notes": [
+  "More than half the counties, 1,705 of 3,142 with a published margin, sit close enough to a class line that their margin of error could put them in the next class, and none two classes away, so the map shows a broad pattern and ranks no county.",
+  "The Census Bureau publishes no estimate for Kalawao County, Hawaii, so the map leaves it unshaded, and no margin for Loving County, Texas. Connecticut’s counties are its nine planning regions.",
+  "The map draws Alaska and Hawaii apart and not to scale. The Census Bureau’s county file holds no national figure, so none prints beside the map. {data_file} lists every county with its margin of error."
+ ],
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "A map of every county shaded in four classes by the share of people under 65 without health insurance in 2024. The top class, 16 percent or more, holds 612 counties, 397 of them in Texas, Georgia and Oklahoma; the lowest, under 8 percent, holds 634, many in the Northeast and the upper Midwest.",
+ "table": {
+  "caption": "Counties by share uninsured, by state, 2024, with the counties whose margin of error crosses a class line",
+  "columns": [
+   {
+    "field": "name",
+    "label": "County",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "uninsured_pct",
+    "label": "Under 65 without health insurance, percent",
+    "format": "number:1",
+    "empty": "No estimate"
+   },
+   {
+    "field": "uninsured_moe",
+    "label": "Margin of error, points (90%)",
+    "format": "number:1",
+    "empty": "Not published"
+   },
+   {
+    "field": "uninsured_class",
+    "label": "Class",
+    "format": "text",
+    "words": {
+     "1": "Under 8%",
+     "2": "8% to 11.9%",
+     "3": "12% to 15.9%",
+     "4": "16% or more"
+    },
+    "empty": "No estimate"
+   },
+   {
+    "field": "breaks_crossed",
+    "label": "Class lines inside its margin",
+    "format": "integer",
+    "empty": "No margin published"
+   }
+  ],
+  "group": {
+   "by": "state",
+   "sort": "key",
+   "columns": [
+    {
+     "label": "State",
+     "agg": "key",
+     "state_name": true,
+     "row_header": true
+    },
+    {
+     "label": "Counties",
+     "agg": "count"
+    },
+    {
+     "label": "Lowest",
+     "agg": "min",
+     "field": "uninsured_pct",
+     "format": "number:1"
+    },
+    {
+     "label": "Highest",
+     "agg": "max",
+     "field": "uninsured_pct",
+     "format": "number:1"
+    },
+    {
+     "label": "Under 8%",
+     "agg": "count_in",
+     "field": "uninsured_pct",
+     "to": 8
+    },
+    {
+     "label": "8% to 11.9%",
+     "agg": "count_in",
+     "field": "uninsured_pct",
+     "from": 8,
+     "to": 12
+    },
+    {
+     "label": "12% to 15.9%",
+     "agg": "count_in",
+     "field": "uninsured_pct",
+     "from": 12,
+     "to": 16
+    },
+    {
+     "label": "16% or more",
+     "agg": "count_in",
+     "field": "uninsured_pct",
+     "from": 16
+    },
+    {
+     "label": "Could fall in the next class",
+     "agg": "count_in",
+     "field": "breaks_crossed",
+     "from": 1
+    }
+   ]
+  }
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D09",
+ "states": [],
+ "encode": {
+  "id": "geoid",
+  "cls": "uninsured_class"
+ },
+ "labels": {
+  "layer": "counties",
+  "class_labels": [
+   "Under 8%",
+   "8% to 11.9%",
+   "12% to 15.9%",
+   "16% or more"
+  ],
+  "key_title": "People under 65 without health insurance, 2024",
+  "none_label": "No estimate"
+ },
+ "notes_internal": [
+  "Production test 1 (simulated designer, round 3): classes from sahie_classes_derive.py, breaks 8, 12 and 16 percent; Rule 14.9 tests run by that script.",
+  "Second pass: built from the README’s “A county map, start to finish” with --data; the national row is asked of the research lead (README step 7)."
+ ],
+ "formats": {},
+ "source_line": "Source: U.S. Census Bureau, Small Area Health Insurance Estimates, people under 65 without health insurance, 2024, counties in the 50 states and DC; Cartographic Boundary Files, 2024, counties, 1:20,000,000. Retrieved November 11 and 13, 2026. Model-based estimates; small counties carry wide margins of error."
+}

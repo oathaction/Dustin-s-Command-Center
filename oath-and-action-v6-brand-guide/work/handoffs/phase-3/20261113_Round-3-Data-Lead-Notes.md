@@ -986,6 +986,44 @@ I looked at both at 256 and 296 px on Newsprint and on Charcoal, with S59's plot
 
 Not tested: either plate in a guide build; the 390 px drawings, which maker B reports byte for byte the same as before.
 
+### Second pass ruling: ST2-M1, S73’s funds before July 21, 2024 (07:03 UTC)
+
+**The fault, checked by script.** I summed the statistics reviewer's itemized Schedule B downloads of the Harris Victory Fund (`.../round-3-review/statistics-civic/dl/fec/hvf-C00703975.json` and `hvf-C00010603.json`, FEC API, 2024 cycle). Line 22 payments dated before July 21, 2024:
+- to the campaign, $158,200,000.00 in 9 payments, against $370,530,999.70 in 12 after;
+- to the DNC, $75,000,000.00 in 21, against $114,315,000.00 in 20 after.
+
+Both totals equal the frozen file ($528,730,999.70; $189,315,000.00). The campaign's payments before that date name the payee "BIDEN FOR PRESIDENT" and those after "HARRIS FOR PRESIDENT". No line 22 payment to either falls between June 28 and July 31, 2024, so any dividing date in that span gives the same split.
+
+The title ("Kamala D. Harris’s three joint fundraising committees"), the bar head ("Harris’s three joint fundraising committees", "For Kamala D. Harris") and note 1 make the funds hers for the whole cycle. The rule that picked them (D3-1361) is sound; the words that own them are not. Ruled:
+
+1. **Title and bar heads (editor: title and measure line; maker B: drawing words and alt).**
+   - The title names the funds by what the rule finds, in one form for both sides, with no nominee's possessive over the funds. For example: "In the 2024 cycle, the joint fundraising committees that paid the Democratic presidential campaign sent $955.9 million to 54 other committees, and those that paid the Republican campaign sent $679.8 million to 56." The editor fits the words. If the title names people instead of parties, it names both sides' campaign committees the same way and still claims no fund as a nominee's own for the cycle.
+   - Each bar head reads in the same form, for example "Three joint fundraising committees that paid the Democratic campaign" and "Four … that paid the Republican campaign". The line under it names the campaign's candidate over the cycle: "Joseph R. Biden Jr. until July 21, 2024, then Kamala D. Harris" against "Donald J. Trump".
+   - The measure line, note 1 and the alt follow ("the committees that paid each major party's presidential campaign committee").
+   - The receiver nodes keep D3-1114's rule, the name the payer wrote just before the election ("Harris for President, the campaign"); the new note gives the earlier name.
+   - Both parties stay named on their marks in the neutral party ink (Rule 14.6's party row).
+2. **A note with the sums before the change (research lead: sums and sidecar; maker B: note).**
+   - One note gives, for every Democratic fund, line 22 transfers before and after the change, by receiver kind: the campaign, the national party, the state party committees with their count, and other committees. This covers the Harris Victory Fund, and also the Harris Action Fund and the Harris Baldwin Victory Fund if either paid anyone before the change.
+   - The research lead sums them from its saved itemized downloads, or fetches what is missing (the state party payments), and freezes the split with its sidecar and the data check. No figure prints until the check passes.
+   - For example: "Until July 21, 2024, when President Biden withdrew, the campaign was Biden for President and the Harris Victory Fund the Biden Victory Fund; before then the funds sent the campaign $158.2 million, the Democratic National Committee $75.0 million and state party committees $[sum]."
+   - **The dividing date** is the one the records support. The research lead reads each committee's name history from the FEC's committee records and gives a source for the withdrawal date. If any payment falls between the withdrawal and the recorded name change, the note uses the recorded date and says so.
+3. **One standard for the Republican side (research lead; maker B).**
+   - The research lead reads, by the same test, the FEC name history of all seven funds and both campaign committees for the 2024 cycle: whether each was formed during the cycle, renamed, or changed the candidate it raised for.
+   - Any Republican fund that changed name or candidate in the cycle gets the same before-and-after sums in the same note.
+   - If none did, the note says so in one clause, for example "The Republican campaign and its four funds kept their names and candidate through the cycle", so the reader sees one test read on both sides.
+   - A committee formed partway through the cycle is not a change of candidate and needs no split.
+   - The later renaming of Trump's committee to "NEVER SURRENDER, INC." came after the election and is already handled by D3-1114's rule.
+4. **Weight.** S73 measures 13,504 bytes on the page. The note must keep it under D3-1328's 14,106 bytes with its frame; if it would not, the editor trims note 4's line 21B sentence before anything else.
+
+Owners: research lead (name histories, the split sums, sidecar, data check), maker B (bar heads, the lines under them, note 1, the new note, alt, figure checks in `maker_b_round3_derive.py`), editor (title, measure line, and every changed word read from the left and the right). I sign off S73 again when all three land, with every figure checked by script and the drawing looked at at 1440 and 390 px on both grounds.
+
+Reason: DR-93 and DR-124 read a title from both sides. Read from the right, the title gave the Democratic nominee money raised and sent while the fund and campaign carried another candidate's name. Naming the committees by the rule, with the dates and the sums in a note, says what the record shows for both campaigns alike.
+
+### Routine calls, second pass
+
+- D3-xxx | S73's title, bar heads, measure line, note 1 and alt name the funds as the committees that paid each party's presidential campaign committee, in one form for both sides, with the Democratic campaign's candidates and dates under its bar | ST2-M1: the Harris Victory Fund and the campaign carried Biden's name until July 2024, and the words made them Harris's for the whole cycle
+- D3-xxx | S73 adds a note with each Democratic fund's line 22 transfers before and after the name change by receiver kind, and one clause reading the same test on the Republican funds | $158.2 million to the campaign and $75.0 million to the DNC passed before July 21, 2024, by the itemized records; one standard for both sides
+
 ### Tested, review fix pass
 
 - Clock read with `date -u` at 04:24, 04:26, 04:30, 04:31, 04:32, 04:34, 04:37 and 04:38 UTC.
@@ -1109,3 +1147,4 @@ Not tested:
 - S84's table after C-E7, 06:12 UTC: `build s84` with the sweep, PASS, 0 faults; its page table parsed by script (20 "No state law" cells, none with "..."); its CSV read by grep (20 "..." cells kept).
 - Rule 14.6 after R-S1, 06:45 UTC: the entry compared by script with its text at `8507b822` (rule paragraphs, spec rows by label and value, title, why, plates, related, builders).
 - Maker B second pass, 07:00 to 07:01 UTC: `build s53 s59 --widths 1440,296,256`, sweep on, 2 PASS, 0 faults; captures looked at as listed under "Maker B’s second pass, S53 and S59".
+- ST2-M1, 07:02 to 07:03 UTC: the reviewer's itemized Harris Victory Fund downloads summed by script by line and by date (before and after July 21, 2024), with payee names and the payment dates around the change; totals against the frozen file. Not tested: the state party payments before the change, the other two Democratic funds' dates, and any committee's FEC name history (the research lead's part).
