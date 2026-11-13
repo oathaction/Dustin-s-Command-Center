@@ -5648,3 +5648,30 @@ The main session reported that `phase3_ch14_build.py` still builds rounds 1 and 
 | D3-1432 | Figures and units, and bill numbers and their prefix, hold together with no-break spaces in my titles, notes and S77's limits; the figure checks read a no-break space as a space | BC-S12 |
 | D3-1433 | Sketch 14.94 frames at 320 by 236 px, its value labels end 12 px left of the plot and “Start” sits at the plot's left edge, set from its start | SK-S1 and D3-966: every word 10 px inside the frame; a left-set “Start” aligns with the lines' start and reads as the time axis, apart from the value column |
 | D3-1434 | S73's table prints each fund as the drawing names it (“Harris Victory Fund”, “Trump National Committee JFC”), through the From column's `words`; the CSV keeps the FEC's stored names | ST-M1's reason: the table names both funds the way the drawing does, and the drawing and title print `labels.sources`' words |
+
+### Engineer, round 3 review fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1435 | `first` prints the group's first row as stored, through the column's words and empty word | The data lead's ruling on ST-M1: "the group's first row through `K.cell_text` whatever its type" |
+| D3-1436 | `sort: "key"` sorts by the printed name wherever the key column prints a state's name, and `sort: "name"` does so for any key column | Call 2 asks the sort "where a key prints as a state's name"; in the kit it fixes S81 to S83 and every map that copies them with no spec change |
+| D3-1437 | The name sort folds case and compares by code point, the key breaking ties | One order in Node and every browser, with no locale tables |
+| D3-1438 | An empty printed column fails in the spec check as well as the page check | `check` and the sweep run without a browser; the page check proves the page prints what the Node table prints |
+| D3-1439 | An unmapped `words` value is a warning, printed under the spec's PASS line and written to its check file, never a fault, and the guide build does not list it | The data lead's ruling on AX-M2; S18, S19, S32 and S59 also warn, each a column whose words map only some values by design |
+| D3-1440 | `map_labels` tries the label point first, then the widest run across the shape that holds the name's full height with 1 px to spare, the name centered on it | Call 7's words; the label point stays first so no name that fit moves |
+| D3-1441 | The widest run is measured on the name's box at the font size (13 px for a code), not on the capitals' ink | The kit's checks read a word by that box; a code set on its ink alone would put map lines inside the box the checks read |
+| D3-1442 | A staged drawing is the drawing alone; the title, notes and table keep the column's width | A reader never scrolls sideways to read a title; only the approved drawing keeps its 1024 px |
+| D3-1443 | The stage applies wherever the column gives a desk drawing (480 px or more); a phone column draws the phone form | The phone form is board 1's own phone drawing, `phone: "differs"` |
+| D3-1444 | A merged map fill takes no edge in forced colors | The data lead's ruling on AX-S1 for S81 and S83; a map with one path a shape keeps its edges, since no ruling covers it |
+| D3-1445 | A mark for forced colors only is hidden in normal colors by `visibility` and dropped from the standalone SVG | The drawing a sighted reader sees stays as signed off; an exported file is never in forced colors |
+| D3-1446 | The island carries `typography` | A drawing's words go through it in Node; the page must draw the same words |
+| D3-1447 | A sketch title named together with its desc takes a closing period in the built page only | The title never prints, so the period changes only what a screen reader says; the maker's file stays as it is |
+| D3-1448 | The data file phrase is a placeholder, `{data_file}`, filled from `words.json` in captions and notes | ST-M2 item 1: Dustin's answer changes one string and no spec |
+| D3-1449 | `--data DIR` is read first and `work/build/data/` after it, per dataset | A derived file sits beside the frozen files it was derived from, with nothing written into `work/build/data/` |
+| D3-1450 | The retrieval dates are read only where a line written for two or more datasets says "Retrieved"; an atlas dataset is left out | Atlas charts print a snapshot, not a retrieval; the designer's fault was a wrong date in such a line |
+| D3-1451 | The weight line measures as `load-table` places an entry, with a 750-byte frame; it warns past 15,000 only from S65 on | D3-1328 governs round 3's plates; older plates were placed under their own rounds' limits |
+| D3-1452 | Where the side list's first line sits cut under its top and showing it whole would push the current rule under the foot, the cut line leaves the top instead | BC-S15 asks for the current rule whole; round 2's BC S17 asks for no line cut at the top; both hold |
+| D3-1453 | A desk's phone part passes every row as `c.all_rows`, drawn rows unchanged | A-E8: a group's count must read the whole set while the part draws its first rows |
+| D3-1454 | A kit self-test fixture that copied a derived sidecar becomes a plain table | Since `--data`, a derived sidecar's sources are found in `work/build/data/`, and the fixture's invented publisher names none of them |
+| D3-1455 | The code the guide's page never runs (the figure's HTML, the table equivalent, chips, `K.render`, `K.select`, tokens from CSS, words.json's copy) lives in `kit-build.js`, loaded by Node and a plain page after `kit.js`, never by the page | Call 10 and the main session's request: the page carries only what draws, reads back or checks itself; moved whole, so every drawing and figure is equal (924 of 924) |
+| D3-1456 | The README points a designer to Rule 13.1's Estimate for a model's figures and keeps a survey's published estimates a Finding | The data lead's ruling on AX-S6 |

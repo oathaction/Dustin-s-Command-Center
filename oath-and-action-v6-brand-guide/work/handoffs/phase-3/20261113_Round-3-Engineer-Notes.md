@@ -222,7 +222,7 @@ To others:
 
 ## Review fix pass
 
-November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Engineer" paragraph, calls D3-1320, D3-1324 to D3-1326 and D3-1328, and the addendum's BC items) and the data lead's rulings under "Review fix pass" in `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC (clock read); this section last brought up to date at 05:30 UTC. The container restarted at about 05:08 UTC; every file had been written and committed, and the checks below the restart were run again from the start. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/`, with a frozen copy of the kit and the 84 specs as they stood at the start in `base/` for snapshots.
+November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Engineer" paragraph, calls D3-1320, D3-1324 to D3-1326 and D3-1328, and the addendum's BC items) and the data lead's rulings under "Review fix pass" in `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC (clock read); this section last brought up to date at 05:51 UTC. The container restarted at about 05:08 UTC; every file had been written and committed, and the checks below the restart were run again from the start. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/`, with a frozen copy of the kit and the 84 specs as they stood at the start in `base/` for snapshots.
 
 ### Summary
 
@@ -350,6 +350,7 @@ No export lacks a column its words promise. Phase 5's package can ship these exp
 - **After the move to `kit-build.js`:** the kit's self-test, every planted fault caught (129 lines, none missed); the snapshot before and after, 924 of 924 equal; `build` with captures on twelve specs and then nine (S38's lookup among them), 0 faults; a plain page in Chromium; **`build --all --no-png` with the sweep, 05:25 to 05:29 UTC: 84 specs, 84 check files counted, 84 PASS** (S16 passes after the cartographer's rebuild), 3 min 58 s, the same four warnings; `guide_build.py --self-test` 32 of 32 scenarios, 328 of 328 expectations; `guide_charts.py --self-test` every planted fault caught; strict build 05:25, exit 0, no warning.
 - **`guide_build.py --self-test`** after the restart: 32 of 32 scenarios, 328 of 328 expectations. **`guide_charts.py --self-test`**: every planted fault caught. **`geo_build.py --check`**: current. **`phase3_ch14_build.py --check`**: 87 of 87 files current.
 - **Strict builds** to scratch: 04:59 (exit 0, no warning); 05:00 (exit 1, only S73's layout guard while maker B redrew it); 05:09 after the restart (exit 0, no warning), measured above.
+- **Quick guide check, `--no-captures`, on the 05:25 strict build** (`guide_check.js .../g5/guide.html --quick --no-captures`, 05:25 to 05:50 UTC): 1440 and 390 px, 344 rules, 694 specimens, 3,295 same-page links; **FAIL on 2 lines, one fault**: a studio word in reader text in entry 14.117 ("draw each state as one square of the studio’s tile grid", at both widths), the entry's new words for S78's phone drawing as they stood at 05:25; the entry file no longer holds the phrase at 05:50 (by grep). Every other check passed, the staged S12 frame and the side list among them. An earlier run on the 05:09 build was stopped unfinished when the kit changed and is not counted.
 - **AX-S2:** `sketch_names` on the avoid sketch's file gives the second title its period and leaves the first, whose desc the caption holds, as it was.
 
 ### Weight (call 10): what the pass added to the kit part, and the builder's half moved off the page
@@ -402,7 +403,7 @@ At about 04:55 UTC I ran `data_round0_build.py --help` to read its usage. The sc
 - The stacked tile for S12 (the data lead's third route): measured from the form's layout, not drawn.
 - `{data_file}` in a real caption, note or entry: no owner has written it yet (D3-1321 holds the words until Dustin answers); the kit and the chapter generator fill it in the self-test and by a check of the generator's output only.
 - The national figure warning on a spec that lacks one: no current map spec lacks it; the self-test does not plant one, and the designer's V1 to V4 printed it.
-- The guide check's own self-test: `guide_check.js` is unchanged, so I did not run it.
+- The guide check's own self-test: `guide_check.js` is unchanged, so I did not run it. The quick check did not rerun after entry 14.117's words changed.
 - Print of a staged drawing (the print rule scales it to the page); screen readers on the staged frame's name (Chromium's attributes read by script only).
 - S16 at board 1's places; S16's drawing is unchanged by this pass.
 
