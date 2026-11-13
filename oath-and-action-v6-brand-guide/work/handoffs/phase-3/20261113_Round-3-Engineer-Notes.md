@@ -4,20 +4,20 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Written by the en
 
 ## Summary
 
-- **R3-5 LANDED (01:05 UTC):** `node_size`, `node`, `link`, `tree`, `flows`, `flow_band` and `width_key` in `parts.js`, with the layout guard reading links and self-test cases. Calls under "Contracts".
-- **R3-2 LANDED (02:40 UTC):** `geo.js` from the 2024 files (133,117 bytes against 250,000), the map parts, `.geojson` in the kit's check and in the data check, the geometry weighed apart in `guide_charts.py`, and the checks reaching shapes in moved groups. Calls under "Contracts".
-- **DL-E1 MEASURED (03:05 UTC):** S81 fits its share, about 14,200 bytes with its frame, when the drawing reads a class column and the table groups by state; reading the value costs about 24,780. Figures under "Contracts", for the data lead's sign-off.
+- **R3-5 LANDED:** `node_size`, `node`, `link`, `tree`, `flows`, `flow_band` and `width_key` in `parts.js`, with the layout guard reading links and self-test cases. Calls under "Contracts".
+- **R3-2 LANDED:** `geo.js` from the 2024 files (133,117 bytes against 250,000), the map parts, `.geojson` in the kit's check and in the data check, the geometry weighed apart in `guide_charts.py`, and the checks reaching shapes in moved groups. Calls under "Contracts".
+- **DL-E1 MEASURED:** S81 fits its share, about 14,200 bytes with its frame, when the drawing reads a class column and the table groups by state; reading the value costs about 24,780. Figures under "Contracts", for the data lead's sign-off.
 - **R3-4 LANDED:** the kit's state outlines are the 2024 file's; S16 passes as committed on them (`build s16`: 0 faults, sweep on). S16 can be placed.
-- **RB3-G1 LANDED (01:55 UTC):** the band check reads a band's x extent (maker B). **C-E1 LANDED:** `count_eq`. **ENG-R3-1 DONE:** the data script carries the new Ballotpedia publisher. **Step label inks LANDED (03:50):** `on-seq-N`, `on-mag-N`, `on-div-N` for words and marks on a map's steps.
+- **RB3-G1 LANDED:** the band check reads a band's x extent (maker B). **C-E1 LANDED:** `count_eq`. **ENG-R3-1 DONE:** the data script carries the new Ballotpedia publisher. **Step label inks LANDED:** `on-seq-N`, `on-mag-N`, `on-div-N` for words and marks on a map's steps.
 - **DL-E1 SIGNED OFF** by the data lead: S81 national as variant B (D3-1090).
-- **Checks, 03:45 UTC:** `oa-chart.mjs build --all --no-png`: 78 specs, 78 check files, 78 PASS (the makers' drafts included), 78 s; self-test every fault caught; strict build exit 0, no warning. **04:30 UTC:** `build --all --no-png` 79 specs, 79 check files, 79 PASS; strict build with round 3's landed entries placed exits 1 on three of maker A's plates far over (weight below).
-- **A-E1 and A-E2 LANDED (04:35):** `table.group.by` as a list, aggregates `list` and `count_set`. **RB3-G2 and C-E3 LANDED (04:50):** the page check reads a grouped table's rows from the island.
+- **Checks, first run:** `oa-chart.mjs build --all --no-png`: 78 specs, 78 check files, 78 PASS (the makers' drafts included), 78 s; self-test every fault caught; strict build exit 0, no warning. **04:30 UTC:** `build --all --no-png` 79 specs, 79 check files, 79 PASS; strict build with round 3's landed entries placed exits 1 on three of maker A's plates far over (weight below).
+- **A-E1 and A-E2 LANDED:** `table.group.by` as a list, aggregates `list` and `count_set`. **RB3-G2 and C-E3 LANDED:** the page check reads a grouped table's rows from the island.
 
 ## Contracts
 
 Round 0 to round 2 contracts stand (C1 to C7, R1 to R7, R1-C1 to R1-C7, R2-1 to R2-6, R2-C1 to R2-C6, with the round 1 and round 2 notes' changes). Round 3's additions follow as they land. A line marked **LANDED** is in the kit now.
 
-### R3-5. Nodes, links, trees and flows (`parts.js`, `K.parts`). LANDED, 01:05 UTC
+### R3-5. Nodes, links, trees and flows (`parts.js`, `K.parts`). LANDED
 
 Every part draws through the form's context, so the layout guard and the checks see it. A maker who drew one of these in a form moves onto the part. Each call is also in the comment above the part.
 
@@ -35,7 +35,7 @@ Every part draws through the form's context, so the layout guard and the checks 
 
 **Moved and scaled groups (R3-2's last item, landed with these).** A shape inside `c.group({transform: 'translate(x,y) scale(k)'})` is now read through the transform by the red share, the crossing and half-under checks, the edge check and the guard; words inside one are read where and at the size they print. Only a transform the kit cannot read (a rotation) still hides its shapes. Every committed drawing is unchanged (snapshot below).
 
-### R3-2. Map geometry in the kit (ENG-10). LANDED, 02:40 UTC
+### R3-2. Map geometry in the kit (ENG-10). LANDED
 
 **The geometry.** `work/build/chart-kit/tools/geo_build.py` writes `geo.js` from the research lead's frozen 2024 files (`python3 -I work/build/chart-kit/tools/geo_build.py`; `--check` exits 1 when `geo.js` is stale). The page carries it once, inside the kit's script, for every map that shares it.
 - **Projection:** d3's `geoAlbersUsa` at scale 1300 in a 975 by 610 frame, computed in the tool: the lower 48 on an Albers equal-area conic (parallels 29.5 and 45.5); Alaska at 0.35 of the scale (parallels 55 and 65) and Hawaii (parallels 8 and 18) set apart at the lower left, where the tile maps put them. A feature goes to Alaska or Hawaii by its state code, so the Aleutians west of 180 degrees sit with the rest of Alaska. The states' centers match the 2017 us-atlas frame to 0.1 unit (Alabama 671.6, 432.2 in both). A state-level layer is drawn on the lower 48's projection and fitted to a frame 975 units wide.
@@ -70,13 +70,13 @@ Every part draws through the form's context, so the layout guard and the checks 
 | `map_dots` | A dot density map, one path for every dot | `K.parts.map_dots(c, L, T, counts, {per, seed, r, fill, job})`; `counts` `{geoid: count}`; each feature's dots are round(count / per), placed at random inside its shape in frame units (the same places at every width) by a generator seeded from `seed` and the geoid, drawn as one path of round dots (`kit.css` `.oac-dots`). Returns `{dots, per, seed, skipped}` |
 | `table.group` | A table grouped by a column (DL-E1, DR-249) | `"table": {"caption", "columns": [every column, for the CSV export], "group": {"by": "state", "sort": "key", "columns": [{label, agg, field, format, state_name, from, to, name}]}}`; `by` one column or a list (the key their values joined with ", ", A-E1); `agg` `key` (with `state_name: true`, the state's name), `count`, `count_in` (field at least `from` and under `to`), `count_eq` (field equals `value`, or any of a list: C-E1), `count_set` (field not empty), `list` (the field's values joined with "; ", A-E2), `min`, `max`, `median`, `sum`, `first`, `min_name`, `max_name`. The page prints one row a group; the island carries the drawing's columns for every row; the CSV export lists every row |
 
-**Each step's label ink (LANDED, 03:50 UTC).** For ruling (b)'s "codes in the label ink of its step" and the districts' dots and rings: the text and fill roles `on-seq-1` to `on-seq-5`, `on-mag-1` to `on-mag-4` and `on-div-1` to `on-div-5`, from the tokens' step label inks (`c.text(..., {fill: 'on-seq-4'})`, `c.circle(..., {fill: 'on-mag-4'})`, or a `map_labels` item's `fill`). Each reads at 4.6 to 1 or more on its own step on both grounds (Newsprint seq-4 5.2, mag-3 4.9; Charcoal seq-3 4.6, div-2 and div-4 4.6 and 4.7). In forced colors the dark steps' inks (sequential 4 and 5, magnitude 3 and 4, diverging 1 and 5) take Canvas, as words on a dark fill do.
+**Each step's label ink (LANDED).** For ruling (b)'s "codes in the label ink of its step" and the districts' dots and rings: the text and fill roles `on-seq-1` to `on-seq-5`, `on-mag-1` to `on-mag-4` and `on-div-1` to `on-div-5`, from the tokens' step label inks (`c.text(..., {fill: 'on-seq-4'})`, `c.circle(..., {fill: 'on-mag-4'})`, or a `map_labels` item's `fill`). Each reads at 4.6 to 1 or more on its own step on both grounds (Newsprint seq-4 5.2, mag-3 4.9; Charcoal seq-3 4.6, div-2 and div-4 4.6 and 4.7). In forced colors the dark steps' inks (sequential 4 and 5, magnitude 3 and 4, diverging 1 and 5) take Canvas, as words on a dark fill do.
 
 **Islands for maps.** Where a column of the rows holds a layer's geoids, every one, in the layer's order (sorted by geoid, as every frozen file is), the island leaves it out and the page reads it back from `geo.js` (`geo_key`). A grouped table's island carries only the columns the drawing reads (encode, where, sort, formats, labels, annotations), never the table's.
 
 **S16 and the bubble map (R3-4).** `OAChartGeo.land`, `.borders` and `.centers` are still there, now worked out from the 2024 `states` layer the first time a map reads them, so `bubble-map.js` draws unchanged. `land` is cut at the frame's left edge (x 0), as the board 1 drawing showed it: four western Aleutian polygons lie wholly left of it and one crosses it. On `map_fit` the whole of Alaska draws.
 
-### R3-3. DL-E1: S81's county map measured. MEASURED, 03:05 UTC (for the data lead's sign-off)
+### R3-3. DL-E1: S81's county map measured. MEASURED (for the data lead's sign-off)
 
 Measured with a scratch form that draws S81 through the map parts above (`.../round-3/engineer/dle1/dle1.mjs`), placed as the guide places an entry (method `load-table`: words, lean table, compressed island), on `census-acs5-county-median-household-income` (3,144 counties, one with no estimate: 35011, De Baca County, New Mexico) and the `counties` layer. Words at a full entry's length (title, measure line, a four-note list, a two-dataset source line, a 380-character description: 2,419 bytes). A plate frame adds about 1,300 bytes.
 
@@ -95,7 +95,7 @@ Measured with a scratch form that draws S81 through the map parts above (`.../ro
 
 ## Weight
 
-Strict build of 03:30 UTC (`guide_build.py --strict --out .../round-3/engineer/b1/guide.html`: exit 0, no warning), with rounds 1 and 2 placed and the makers' round 3 forms registered in the renderer as they stood (79 form files, 81 forms):
+First strict build (`guide_build.py --strict --out .../round-3/engineer/b1/guide.html`: exit 0, no warning), with rounds 1 and 2 placed and the makers' round 3 forms registered in the renderer as they stood (79 form files, 81 forms):
 
 | Measure | Bytes | Against |
 |---|---|---|
@@ -111,7 +111,7 @@ Strict build of 03:30 UTC (`guide_build.py --strict --out .../round-3/engineer/b
 - **Why the share fell 643 bytes:** the renderer grew. My shared files grew by 30,953 bytes minified (`parts.js` 17,216 to 42,331 with the diagram and map parts and the decoder; `kit.js` 66,353 to 72,191 with the grouped table, the moved-group reading and the island's geoids), and the makers' new forms raised the form average to 4,298, which the projection counts for each form still to come. The geometry's growth (45,232 to 133,117) costs the share nothing: it sits in its own reserve.
 - **The geometry is now weighed apart:** `guide_build.py` reports `map geometry` as its own part (the 0.55 MB "chart kit" part had held the 2017 outlines, 45 KB); `guide_charts.py` adds it back inside chapter 14's stop and warns past 250,000.
 
-### Weight, 04:20 UTC (round 3's landed entries placed)
+### Weight (round 3's landed entries placed)
 
 Strict build exit 1 on three far-over plates, all maker A's: S72 81,880 bytes, S70 35,545, S69 27,629 (three times the extended average is 24,576). Page 11,245,119; projected 15,044,385; chapter 14 with the kit 2,237,609 of 2,803,941; renderer 496,447; map geometry 133,117 of 250,000; rules with the opener 175,577 of 212,288; chapter 15 307,066. **The share per plate for the 20 still to come fell to 7,108** (77 plates placed, 82 forms at a 4,342 average). Round 3's 13 placed plates: S72 81,880; S70 35,545; S69 27,629; S74 19,833; S67 17,262; S73 16,547; S71 11,413; S66 9,157; S68 8,691; S75 7,159; S77 6,630; S76 6,488; S65 5,306 (253,540 in all). Sent to the main session, which routed it (D3-1097: every round 3 plate at or under 13,852 with its frame, none over 15,000; S72 by `table.group` with every member in the CSV).
 
@@ -150,13 +150,13 @@ Taken in the order they arrived:
 
 | Request | From | Status |
 |---|---|---|
-| RB3-G1, the band check reads x | maker B | **Done** (01:55); S73 and S76 pass `check --no-sweep`; told the main session for maker B |
+| RB3-G1, the band check reads x | maker B | **Done**; S73 and S76 pass `check --no-sweep`; told the main session for maker B |
 | ENG-R3-1, the Ballotpedia publisher in the data script | research lead | **Done**; a rerun to scratch writes the 34 files as they stand |
 | C-E1, `count_eq` for a grouped table | cartographer | **Done**, with a self-test case; told the main session (the cartographer is not reachable by name) |
 | C-E2, S82's tile layout through `c.extra` | cartographer | Read; nothing to do: the island carries it compressed |
-| A-E1, `table.group.by` as a list of columns | maker A | **Done** (04:35): the key joins the values with ", "; `check` fails a `by` or group column missing from the data; self-test case; told the main session for maker A |
+| A-E1, `table.group.by` as a list of columns | maker A | **Done**: the key joins the values with ", "; `check` fails a `by` or group column missing from the data; self-test case; told the main session for maker A |
 | A-E2, aggregates `list` and `count_set` | maker A | **Done** with A-E1 |
-| RB3-G2, the page check counts a grouped table's rows | maker B | **Done** (04:50): read back from the island, as `K.rows_from_table` does, and the page's grouped rows compared with the data's groups; S73 and S82 pass `build` with captures; told the main session for maker B |
+| RB3-G2, the page check counts a grouped table's rows | maker B | **Done**: read back from the island, as `K.rows_from_table` does, and the page's grouped rows compared with the data's groups; S73 and S82 pass `build` with captures; told the main session for maker B |
 | C-E3, the same fault on S82 | cartographer | **Done** by RB3-G2's fix |
 
 To others:
