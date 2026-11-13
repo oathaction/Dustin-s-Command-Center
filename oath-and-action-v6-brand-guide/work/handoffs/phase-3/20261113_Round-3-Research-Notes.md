@@ -156,7 +156,7 @@ Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c155381-70e7-54
 
 ## Review fix pass
 
-November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Research lead" paragraph and its addendum) and the data lead's rulings in "Review fix pass" of `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC; this state at 05:01 UTC. Script: `work/build/scripts/phase-3/research_review_fix_round3.py`, one item a subcommand (`st_s8`, `st_s11`, `st_s2`, `bc_m1`, `st_s4`, `bc_s9`); each checks its downloads against the hashes the sidecars record or against today's records, asserts every field it does not mean to change, and writes nothing on a rerun. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/research/` (downloads under `dl/`, each folder with a fetch log of time, address without key, status, bytes and SHA-256; checking scripts under `scripts/`; kit builds under `kit/`).
+November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Research lead" paragraph and its addendum) and the data lead's rulings in "Review fix pass" of `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC; this state at 05:19 UTC. Script: `work/build/scripts/phase-3/research_review_fix_round3.py`, one item a subcommand (`st_s8`, `st_s11`, `st_s2`, `bc_m1`, `st_s4`, `bc_s9`); each checks its downloads against the hashes the sidecars record or against today's records, asserts every field it does not mean to change, and writes nothing on a rerun. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/research/` (downloads under `dl/`, each folder with a fetch log of time, address without key, status, bytes and SHA-256; checking scripts under `scripts/`; kit builds under `kit/`).
 
 ### Summary
 
@@ -167,6 +167,7 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - **ST-S4 done (04:56 UTC).** All three Census tables behind S78, S81 and S83 publish Puerto Rico; each file's geography line says it leaves Puerto Rico out.
 - **BC-S9 done (04:56 UTC).** The CMS sidecars quote the renewal rule and CMS's 2024 rule on what a procedural ending is; the figures in S65's title check.
 - **A-M1's check and ST-S10's check done (04:57 UTC).** Maker A's route grid: 0 faults by my own script.
+- **The editor's request, S68's line (05:19 UTC).** Variant `snapshot_once` on `v7-pathway-electric-decision-makers` prints the snapshot date once, in S74's form.
 - **ST-S6:** folded into BC-M1 by the data lead (the title drops its comparison of reach); the figures it asked for are in the new file's notes.
 - **Data check over the folder and over every file this pass changed (05:00 UTC):** 125 tables, 0 faults. All 18 data files changed since the pass began (against commit 77f08669) are checked: my 11 by my writing script's assertions and second scripts, and the owners' 7 by my own scripts (below), each 0 faults. Ledger row P7-226 and the round 3 data plan's row 94 status line are written.
 
@@ -189,6 +190,7 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
   - The cartographer's `clerk-house-results-2024-classes` (ST-M4): every column it held before the pass unchanged in all 435 rows; `close_seat` set on exactly the 36 seats under 5 points as printed, 22 Democratic and 14 Republican in 21 states, in the form "7 (Republican, 3.7)"; `party` the winner's letter in every row.
   - Maker A's `usgov-v7-route-grid` (A-M1, ST-S10): below.
   - S65, S72, S73 and S76 built with `--no-png` on the current files at 05:01 UTC: PASS, 0 faults each; S65 prints `with_release`, S72's export carries the four accented names and no doubled space, S76 names `transfers_out_net`.
+- **The editor's request (S68).** `v7-pathway-electric-decision-makers.meta.json` gains `source_line_variants.snapshot_once`, written by `research_v7_extract.py` so a rerun keeps it: "Source: Oath & Action’s systems atlas, Who Do They Answer To?, everyday answer “Electric and utility bills”, decision makers, snapshot of October 15, 2026, United States. Roles as the atlas states them." Nothing else in the file changed, and the other 39 V7 files stayed byte for byte (SHA-256 before and after); a second rerun writes nothing. A scratch S68 printing the variant builds PASS, 0 faults. The editor sets S68 to it.
 - **A-M1 (and ST-S10's cell).** Maker A's `usgov-v7-route-grid`, checked by my own script against `v7-routes` and `usgov-route-requirements`: 11 routes in V7's order, every value equal except the two reworded cells (SS's sources, "State constitutions read: Massachusetts, Nebraska, Virginia and Arizona", the four states the workflow sources file's section SS reads; FR's what it takes, "changed the vote needed to end debate on nominations in 2013 and 2017"), no studio word or decision code in any cell, no em dash or U+2011, ledger row P7-209. 0 faults. The public file `usgov-route-requirements.csv` keeps "round 0" in its SS `sources` cell, which no page prints.
 
 ### Routine calls, review fix pass
@@ -204,6 +206,7 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - D3-xxx | Line 21B to committees outside the file was not read for the five new funds | The ruling's measure is line 22 with 28C apart; the outside 21B payments are a note on the old file, and reading every 21B row of five more funds is not needed for the drawing
 - D3-xxx | The Puerto Rico finding goes in each public file's geography line, not as a new row | The files are frozen as the maps use them (50 states and DC); the line says what the publisher covers and what the file leaves out
 - D3-xxx | BC-S9's sentence is checked against the renewal rule, CMS's 2024 rule and the statute, and the parts no source supports are named | medicaid.gov's definitions page refused this container (HTTP 403); the eCFR, govinfo and the Federal Register's own text say what a procedural ending is
+- D3-xxx | S68's variant is named `snapshot_once` and added in the extract script beside the printed line, which stays | The editor sets S68 to it; the printed line is the round 0 form other readers of the file may still print
 - D3-xxx | `usgov-route-requirements.csv` keeps "round 0" in its SS `sources` cell | Maker A's derive rewords the cell for the reader and no page prints the public file; changing it would make the derive's record of its two rewordings untrue
 
 ### Requests, review fix pass
@@ -224,7 +227,8 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 - A-M1: `check_route_grid.py` over the grid and its two sources: 0 faults.
 - Makers' derive checks after my source changes: the cartographer's and maker B's `--check` 0 faults; maker A's printed no fault line.
 - The owners' changed derived files: `check_by_node.py`, `check_classes_fix.py`, `check_route_grid.py` and a one-line check of the SNAP variant, each 0 faults; S65, S72, S73 and S76 built with `--no-png`, PASS.
-- Data check after each write: 124 tables, 0 faults (after ST-S8, ST-S11, ST-S2); 125 tables, 1 fault not mine at 04:54 UTC (the cartographer's `clerk-house-results-2024-classes.csv` columns out of order with its sidecar, mid-edit); 125 tables, 0 faults at 04:56 and 05:00 UTC.
+- Data check after each write: 124 tables, 0 faults (after ST-S8, ST-S11, ST-S2); 125 tables, 1 fault not mine at 04:54 UTC (the cartographer's `clerk-house-results-2024-classes.csv` columns out of order with its sidecar, mid-edit); 125 tables, 0 faults at 04:56, 05:00 and 05:19 UTC.
+- S68's variant: the V7 files' SHA-256 before and after the extract's rerun (only the pathway sidecar differs), a second rerun, S68 built as it stands and from a scratch spec printing the variant, PASS both.
 
 ### Not tested, review fix pass
 
@@ -246,6 +250,7 @@ Modified:
 - `work/build/data/cms-medicaid-chip-renewal-funnel.meta.json` and `cms-medicaid-chip-renewal-outcomes.meta.json` (ST-S11, BC-S9)
 - `work/build/data/fec-house-campaigns-2024-money-in-out.csv` and `.meta.json` (ST-S2)
 - `work/build/data/census-acs-broadband-by-state.meta.json`, `census-acs5-county-median-household-income.meta.json`, `census-cbp-county-employment.meta.json` (ST-S4, geography lines)
+- `work/build/data/v7-pathway-electric-decision-makers.meta.json` (the editor's request), through `work/build/scripts/phase-3/research_v7_extract.py` (one key)
 - `work/research/20261021_Research-Ledger.md` (Part 7's "Review fix pass, round 3" with P7-226; stale cells in P7-216 and P7-217; claims 13 and 38 settled in part, 39 added; change log)
 - `work/handoffs/phase-3/20261112_Round-3-Data-Plan.md` (change 8 marked superseded in part; a status line for row 94)
 - `work/handoffs/phase-3/20261113_Round-3-Research-Notes.md` (this section)
