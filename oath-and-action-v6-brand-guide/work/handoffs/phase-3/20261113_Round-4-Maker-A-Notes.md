@@ -16,14 +16,14 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Maker A, briefed 
 | 14.81 | S87 | venn-diagram | form, spec, entry; PASS with the sweep |
 | 14.82 | S88 | euler-diagram | form, spec, entry; PASS with the sweep |
 | 14.83 | sketch | packed circles (reference) | sketch 1,893 bytes, entry |
-| 14.84 | sketch | rose chart (avoid) | sketch 2,986 bytes, entry |
+| 14.84 | sketch | rose chart (avoid) | sketch 2,978 bytes, entry |
 
 ## Summary
 
 - Four forms (`icon-array`, `proportional-symbols`, `venn-diagram`, `euler-diagram`), specs S85 to S88, entries 14.79 to 14.84 and two sketches (14.83 packed circles, reference; 14.84 rose chart, avoid) are written, on the data lead's rulings (a) to (c), Q-A1 and MA-1 to MA-10, the editor's words and the design director's DD-A1 to DD-A13. All four build PASS with the sweep, 0 faults. The data lead signed off S86 and S88 and S87 with MA-9 since applied; the design director's second read passes all four.
 - No red on any plate (ruling (a)). S85 and S86 name one mark in the subject ink; S87 and S88 name none.
 - `maker_a_round4_derive.py --figures` checks 51 figures and facts (CL-050's name and chip against chapter 10, every gap against its margin, the Euler's areas), 0 failed. No derived file this round.
-- Plates, as the final strict build places them: S85 4,228, S86 4,283, S87 4,694, S88 4,733 bytes (about 750 more each with the frame). Sketches: s-14-83 1,893 bytes, s-14-84 2,986 bytes.
+- Plates, as the final strict build places them: S85 4,228, S86 4,283, S87 4,694, S88 4,733 bytes (about 750 more each with the frame). Sketches: s-14-83 1,893 bytes, s-14-84 2,978 bytes.
 
 ## Routine calls
 
@@ -43,7 +43,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Maker A, briefed 
 - D3-xxx | S87's and S88's titles: S87 lists the four groups; S88 states the two circles and their overlap ("In 2025, 213.2 million people had private health coverage and 119.1 million had public coverage, and 23.8 million had both.") | MA-8 and the editor's words: two findings from one file, each in its drawing's terms
 - D3-xxx | No derived file this round: the derive script only checks figures (`--figures`, 51 checks) | S85 to S88 draw the research lead's frozen files as they stand
 - D3-xxx | The packed circles sketch draws an illustrative city budget of 12 lines packed by a greedy tangent search, the four largest named, track ink with a context edge | R3-9's frame (320 px, 10 px inset); the same budget the mind map sketch uses, so the two reference sketches read as one family
-- D3-xxx | The rose chart sketch draws four illustrative values as quarter wedges whose radius is the value (A 2, B 4, C 3, D 1) beside bars of the same values from one zero line | R3-9's frame (two 288 px halves of one height); "a value twice another looks four times as large" is A against B
+- D3-xxx | The rose chart sketch draws four illustrative values as quarter wedges whose radius is the value (A 2, B 4, C 3, D 1) beside bars of the same values from one zero line, each wedge's label beside it and clear of its box | R3-9's frame (two 288 px halves of one height); "a value twice another looks four times as large" is A against B; the guide check reads a label inside a wedge's box as set on its fill
 - D3-xxx | S87's words for a group that cannot fit inside it (at the narrowest drawings, "Both") sit under the circles inside the frame, on a leader straight down from the group, and the frame grows to hold them | MA-9: the count shows at every width; the same rule S88 uses
 - D3-xxx | S88's `notes_internal` names its area check: the form's 1 percent test on the shared area, the kit's `area_of` on each radius, and the derive script's recomputation at six radii | MA-10
 - D3-xxx | I ran `phase3_ch14_build.py --rounds 1,2,3,4` so my entries reach the chapter file for my own strict build | The generator's default builds rounds 1 to 3 (DR-253); its five faults are the infographics maker's entries not yet landed
@@ -106,6 +106,8 @@ Read at 21:22 UTC; all eleven applied by 21:30 UTC. No figure or word changed; D
 - Second set (21:3x UTC), after DD-A1 to DD-A13 and the editor's entry words: `oa-chart.mjs build s85 s86 s87 s88 --widths 1440,390,352,328,288`, sweep on, both grounds with grayscale: 4 PASS, 0 faults (S86 again after DD-A12 and DD-A13 with `--no-png`, sweep on: PASS; its PNGs wait for the machine's load to fall, per the main session's rule). `phase3_ch14_build.py --rounds 1,2,3,4`: 141 rules, 127 entries, 0 faults. `maker_a_round4_derive.py --figures`: 51 of 51.
 - Final strict build to scratch (`guide-final.html`, 21:32 UTC, before DD-A12 and DD-A13): exit 1 on two warnings, both S95's card ("no place clear of the dots for Massachusetts 96", the infographics maker's); none names S85 to S88 or my sketches. 11,493,502 bytes. Plates as the guide places them: S85 4,228, S86 4,283, S87 4,694, S88 4,733 bytes, each about 750 more with its frame.
 - After DD-A12 and DD-A13 (21:40 UTC, load under 3): `oa-chart.mjs build s86 --widths 1440,390,352,288`, sweep on: PASS, 0 faults; the key's rings looked at in the 1440 px Newsprint and 256 px Charcoal captures. Last strict build (`guide-last.html`): exit 0, no warning, 11,500,303 bytes; plates S85 4,228, S86 4,283, S87 4,694, S88 4,733 bytes.
+- Quick guide check, `guide_check.js <scratch>/guide-last.html --quick --no-captures` (21:42 to 22:07 UTC, started at a load under 3): exit 1 with 4 failures at 1440 and 390 px. Two are mine: "B, 4" in `s-14-84-sketch` at 3.95 to 1, read against the B wedge's box it sat over. I moved each rose label beside its wedge, clear of the wedge's whole box (the right wedges' labels to their right, the left wedges' to their left); 2,978 bytes. The other two are `s-14-s90` and three more infographics plates without alt text (the infographics maker's). No line names S85 to S88 or `s-14-83-sketch`.
+- After the rose fix: `phase3_ch14_build.py --rounds 1,2,3,4` 0 faults; strict build (`guide-last2.html`) exit 0, no warning, 11,501,823 bytes; the quick guide check on it is running (22:08 UTC).
 - The quick guide check on my first strict build (`guide.html`) crashed after about 20 minutes ("page.goto: Target page, context or browser has been closed") under a machine load of about 8: not counted.
 
 - `node work/build/chart-kit/oa-chart.mjs build s85 s86 s87 s88`, sweep on (256 to 720 px), PNGs at 1440 and 390 px pages on both grounds with grayscale: 4 of 4 PASS, 0 faults (S85 after A4-E1 landed, 21:19 UTC; S86 to S88 at 21:1x). Also built without the sweep at 328 and 288 px pages (296 and 256 px drawings) on both grounds, and S87 at 256 px pages (224 px drawing) after MA-9: PASS.
