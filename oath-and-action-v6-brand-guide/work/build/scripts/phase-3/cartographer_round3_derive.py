@@ -34,6 +34,11 @@ Writes, from frozen files in work/build/data/:
   with its private-sector paid employees and noise flag, and its dots at one dot a 10,000 and a 50,000 employees
   (ruling (b): the count over the unit rounded half up to a whole dot). The two counties the Bureau's file lacks
   (Kalawao County, Hawaii, 15005; King County, Texas, 48269) are kept with no count, so the rows match the layer.
+- clerk-house-results-2024-classes: S80 and S82, the district map and the district tile map (rules 14.119 and 14.121),
+  one results file drawn two ways. Each of the 435 races from clerk-house-results-2024-by-district with its margin as
+  printed (one decimal, half up), its class under the data lead's ruling (f) (1 under 5 points, 2 under 10, 3 under 20,
+  4 at 20 or more; unopposed seats 4), its mark (dot: unopposed on the ballot; ring: a race decided another way), and
+  its square in the tile layout above, so both maps take one set of classes and the page carries small numbers.
 
 --check writes nothing and fails when a written file differs from what the script computes now. --figures checks
 figures in the cartographer's specs against the data files (added as specs land). Standard library only.
@@ -505,6 +510,60 @@ def cbp_dots():
     write('census-cbp-county-employment-dots', ['geoid', 'name', 'state', 'paid_employees', 'emp_noise_flag', 'emp_noise_words', 'dots_10k', 'dots_50k'], out, side)
 
 
+RING_KINDS = ['one-party contest (top-two)', 'ranked-choice, first round (the Clerk prints the first round)',
+              'ranked-choice, final round (the Clerk prints the final round)', 'Louisiana open primary, decided in November']
+
+
+def house_classes(lay):
+    src = read('clerk-house-results-2024-by-district')
+    at = {(r['state'], r['district']): r for r in lay}
+    out = []
+    for r in src:
+        t = at.get((r['state'], r['district']))
+        if t is None: FAULTS.append('house: no square for %s %s' % (r['state'], r['district'])); continue
+        m = r['margin_pct']
+        printed = '' if m == '' else '%.1f' % (math.floor(float(m) * 10 + 0.5) / 10)
+        cls = 4 if printed == '' else (1 if float(printed) < 5 else 2 if float(printed) < 10 else 3 if float(printed) < 20 else 4)
+        mark = 'dot' if r['seat_kind'] == 'unopposed on the ballot' else 'ring' if r['seat_kind'] in RING_KINDS else ''
+        if r['seat_kind'] not in RING_KINDS + ['unopposed on the ballot', 'Republican and Democratic', 'other pairing']: FAULTS.append('house: a kind of seat with no rule: ' + r['seat_kind'])
+        out.append({'state': r['state'], 'district': r['district'], 'winner': r['winner'], 'winner_group': r['winner_group'],
+                    'runner_up': r['runner_up'], 'runner_up_group': r['runner_up_group'], 'margin_pct': m, 'margin_printed': printed,
+                    'margin_class': cls, 'seat_kind': r['seat_kind'], 'mark': mark, 'col': t['col'], 'row': t['row']})
+    import collections
+    k = collections.Counter((str(r['margin_class']) if r['mark'] != 'dot' else 'unopposed', r['winner_group']) for r in out)
+    LOG.append('house classes (class, party): %s' % sorted(k.items()))
+    m0 = meta('clerk-house-results-2024-by-district')
+    side = {
+        "file": "clerk-house-results-2024-classes.csv", "kind": "derived",
+        "publisher": m0["publisher"], "title_or_table": m0["title_or_table"] + ", with margin classes and tile squares for the district maps",
+        "table_id": m0.get("table_id"), "url": m0.get("url"), "observation_period": m0.get("observation_period"),
+        "geography": m0.get("geography"), "universe_or_base": m0.get("universe_or_base"), "unit": m0.get("unit"),
+        "date_retrieved": m0.get("date_retrieved"), "vintage": m0.get("vintage"),
+        "qualification": m0.get("qualification", "") + " Classes follow the margin as printed to one decimal: 1, under 5 points; 2, 5 to under 10; 3, 10 to under 20; 4, 20 or more, and every seat unopposed on the ballot. Marks: dot, unopposed on the ballot; ring, a race decided another way (one-party contests, Alaska’s first round, Maine’s 2nd district’s final round, Louisiana’s open primaries). Squares: Oath & Action’s tile layout (census-gazetteer-2024-cd119-tile-layout).",
+        "columns": {
+            "state": {"type": "code", "description": "USPS state code"},
+            "district": {"type": "text", "description": "district number; 00 at large"},
+            "winner": {"type": "text", "description": "candidate with the most votes"},
+            "winner_group": {"type": "category", "description": "the winner's party: Republican or Democratic (Minnesota’s DFL included)"},
+            "runner_up": {"type": "text", "description": "candidate with the second most votes"},
+            "runner_up_group": {"type": "category", "description": "the runner-up's party, Republican, Democratic or other"},
+            "margin_pct": {"type": "number", "description": "winner less runner-up, percentage points of all votes for the office", "unit": "percentage points"},
+            "margin_printed": {"type": "number", "description": "the margin as printed, one decimal, half up", "unit": "percentage points"},
+            "margin_class": {"type": "integer", "description": "1 under 5 points, 2 under 10, 3 under 20, 4 at 20 or more and unopposed"},
+            "seat_kind": {"type": "category", "description": "kind of seat, in the source file's words"},
+            "mark": {"type": "category", "description": "dot, unopposed on the ballot; ring, decided another way; empty otherwise"},
+            "col": {"type": "integer", "description": "tile layout column"},
+            "row": {"type": "integer", "description": "tile layout row"}
+        },
+        "printed_source_line": m0["printed_source_line"],
+        "ledger_row": m0.get("ledger_row"), "domain": m0.get("domain"), "states": [],
+        "derived_from": ["clerk-house-results-2024-by-district.csv", "census-gazetteer-2024-cd119-tile-layout.csv"],
+        "derivation": "Each race's printed margin, class (data lead's ruling (f), round 3) and mark, joined to its square in the tile layout by state and district (cartographer_round3_derive.py)",
+        "notes": LOG[-1:]
+    }
+    write('clerk-house-results-2024-classes', ['state', 'district', 'winner', 'winner_group', 'runner_up', 'runner_up_group', 'margin_pct', 'margin_printed', 'margin_class', 'seat_kind', 'mark', 'col', 'row'], out, side)
+
+
 def main():
     lay = tile_layout()
     g = meta('census-gazetteer-2024-cd119')
@@ -539,6 +598,7 @@ def main():
     write('census-gazetteer-2024-cd119-tile-layout', ['state', 'district', 'col', 'row'], lay, side)
     cols = max(r['col'] for r in lay) + 1; rws = max(r['row'] for r in lay) + 1
     print('tile layout: %d squares on a %d by %d grid' % (len(lay), cols, rws))
+    house_classes(lay)
     county_income_classes()
     cbp_dots()
     for line in LOG: print(line)

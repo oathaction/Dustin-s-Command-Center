@@ -1,0 +1,85 @@
+{
+ "file": "clerk-house-results-2024-classes.csv",
+ "kind": "derived",
+ "publisher": "Office of the Clerk, U.S. House of Representatives",
+ "title_or_table": "Statistics of the Presidential and Congressional Election of November 5, 2024 (published March 10, 2025), House races, with margin classes and tile squares for the district maps",
+ "table_id": "Clerk of the House, election statistics 2024",
+ "url": [
+  "https://clerk.house.gov/member_info/electionInfo/2024/statistics2024.pdf"
+ ],
+ "observation_period": "General election of November 5, 2024 (Louisiana’s open primary the same day; Maine’s ranked-choice tabulation as the Clerk prints it)",
+ "geography": "The 435 House districts of the 50 states",
+ "universe_or_base": "Each of the 435 House races: winner, runner-up, total votes, margin and the kind of seat",
+ "unit": "votes; margin in percentage points of all votes cast for the office in the district",
+ "date_retrieved": "2026-11-12",
+ "vintage": "Compiled by the Clerk from official sources, published March 10, 2025",
+ "qualification": "Margin is the winner’s votes less the runner-up’s, over all votes for the office, so it reads the same in every kind of seat; blank, void, over and under votes and continuing and exhausted ballots are not votes for a candidate, and a fusion candidate’s party lines are summed. A seat with one candidate on the ballot has no margin, even where write-ins drew votes. In one-party contests both top candidates share a party, so the margin is between two candidates of one party. Alaska’s figures are the first round and Maine’s 2nd district the final round, as the Clerk prints them; Louisiana’s House races were decided in the November 5 open primary. Classes follow the margin as printed to one decimal: 1, under 5 points; 2, 5 to under 10; 3, 10 to under 20; 4, 20 or more, and every seat unopposed on the ballot. Marks: dot, unopposed on the ballot; ring, a race decided another way (one-party contests, Alaska’s first round, Maine’s 2nd district’s final round, Louisiana’s open primaries). Squares: Oath & Action’s tile layout (census-gazetteer-2024-cd119-tile-layout).",
+ "columns": {
+  "state": {
+   "type": "code",
+   "description": "USPS state code"
+  },
+  "district": {
+   "type": "text",
+   "description": "district number; 00 at large"
+  },
+  "winner": {
+   "type": "text",
+   "description": "candidate with the most votes"
+  },
+  "winner_group": {
+   "type": "category",
+   "description": "the winner's party: Republican or Democratic (Minnesota’s DFL included)"
+  },
+  "runner_up": {
+   "type": "text",
+   "description": "candidate with the second most votes"
+  },
+  "runner_up_group": {
+   "type": "category",
+   "description": "the runner-up's party, Republican, Democratic or other"
+  },
+  "margin_pct": {
+   "type": "number",
+   "description": "winner less runner-up, percentage points of all votes for the office",
+   "unit": "percentage points"
+  },
+  "margin_printed": {
+   "type": "number",
+   "description": "the margin as printed, one decimal, half up",
+   "unit": "percentage points"
+  },
+  "margin_class": {
+   "type": "integer",
+   "description": "1 under 5 points, 2 under 10, 3 under 20, 4 at 20 or more and unopposed"
+  },
+  "seat_kind": {
+   "type": "category",
+   "description": "kind of seat, in the source file's words"
+  },
+  "mark": {
+   "type": "category",
+   "description": "dot, unopposed on the ballot; ring, decided another way; empty otherwise"
+  },
+  "col": {
+   "type": "integer",
+   "description": "tile layout column"
+  },
+  "row": {
+   "type": "integer",
+   "description": "tile layout row"
+  }
+ },
+ "printed_source_line": "Source: Office of the Clerk, U.S. House of Representatives, Statistics of the Presidential and Congressional Election of November 5, 2024, 435 House districts. Retrieved November 12, 2026. Margins computed by Oath & Action from the official counts.",
+ "ledger_row": "P7-215",
+ "domain": "D02",
+ "states": [],
+ "derived_from": [
+  "clerk-house-results-2024-by-district.csv",
+  "census-gazetteer-2024-cd119-tile-layout.csv"
+ ],
+ "derivation": "Each race's printed margin, class (data lead's ruling (f), round 3) and mark, joined to its square in the tile layout by state and district (cartographer_round3_derive.py)",
+ "notes": [
+  "house classes (class, party): [(('1', 'Democratic'), 22), (('1', 'Republican'), 14), (('2', 'Democratic'), 24), (('2', 'Republican'), 9), (('3', 'Democratic'), 43), (('3', 'Republican'), 42), (('4', 'Democratic'), 117), (('4', 'Republican'), 142), (('unopposed', 'Democratic'), 9), (('unopposed', 'Republican'), 13)]"
+ ]
+}

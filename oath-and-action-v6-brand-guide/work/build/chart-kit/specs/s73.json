@@ -4,10 +4,7 @@
  "form": "network-diagram",
  "family": "relationships",
  "tier": "extended",
- "dataset": "fec-jfc-transfers-2024",
- "sort": [
-  {"field": "amount_lines", "values": ["22"]}
- ],
+ "dataset": "fec-jfc-transfers-2024-by-node",
  "reader_question": "Where did each 2024 presidential nominee’s joint fundraising committee send what it raised?",
  "evidence": "finding",
  "evidence_label": "Finding",
@@ -17,7 +14,7 @@
  "notes": [
   "Each nominee had more than one joint fundraising committee. Each drawn here is the one that sent its nominee’s campaign the most, read the same way for both; the nominees’ other such committees sent the Harris campaign $4.9 million and the Trump campaign $160.9 million.",
   "A joint fundraising committee raises money for several committees at once and splits it among them by agreement, so a transfer passes on money raised for the committee that gets it.",
-  "The 51 state party committees include the District of Columbia’s. Drawn here are transfers, line 22 of each committee’s reports, where a joint fundraising committee reports the shares it passes on. On the same reports, the Harris Victory Fund also paid three of the committees drawn $27.1 million for operating expenses (line 21B), $12.0 million of it to the campaign and $15.1 million to the Democratic National Committee, and refunded $81,000 to two committees that had given to it (line 28C), which the table lists. The Trump National Committee JFC’s payments to its two committees were all transfers."
+  "The 51 state party committees include the District of Columbia’s. Drawn here are transfers, line 22 of each committee’s reports, where a joint fundraising committee reports the shares it passes on. On the same reports, the Harris Victory Fund also paid three of the committees drawn $27.1 million for operating expenses (line 21B), $12.0 million of it to the campaign and $15.1 million to the Democratic National Committee, and refunded $81,000 to two committees that had given to it (line 28C), which the table sets apart. The download lists each of the 51 state party committees with its transfers. The Trump National Committee JFC’s payments to its two committees were all transfers."
  ],
  "credit": "Chart: Oath & Action",
  "illustrative": false,
@@ -26,20 +23,81 @@
   "Both committees are drawn alike, in one ink, on one scale of widths."
  ],
  "table": {
-  "caption": "Transfers by each nominee’s joint fundraising committee to other committees, 2023 to 2024 cycle, with two refunds set apart",
+  "caption": "Transfers by each nominee’s joint fundraising committee to other committees, 2023 to 2024 cycle, one row for each committee or group of committees drawn, with two refunds set apart; the download lists every committee",
   "columns": [
-   {"field": "jfc_name", "label": "From", "format": "text"},
-   {"field": "recipient_name_2024_election", "label": "To", "format": "text", "row_header": true},
-   {"field": "recipient_state", "label": "State", "format": "text"},
-   {"field": "amount", "label": "Dollars", "format": "dollars:2"},
-   {"field": "amount_lines", "label": "Report line", "format": "text", "words": {"22": "22, transfer", "28C": "28C, refund of its own contribution, not drawn"}}
-  ]
+   {
+    "field": "jfc_name",
+    "label": "From",
+    "format": "text"
+   },
+   {
+    "field": "recipient_name_2024_election",
+    "label": "To",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "recipient_state",
+    "label": "State",
+    "format": "text"
+   },
+   {
+    "field": "amount",
+    "label": "Dollars",
+    "format": "dollars:2"
+   },
+   {
+    "field": "amount_lines",
+    "label": "Report line",
+    "format": "text"
+   },
+   {
+    "field": "node",
+    "label": "Drawn as",
+    "format": "text"
+   }
+  ],
+  "group": {
+   "by": "node",
+   "columns": [
+    {
+     "label": "From",
+     "agg": "first",
+     "field": "jfc_name",
+     "format": "text"
+    },
+    {
+     "label": "To",
+     "agg": "key",
+     "row_header": true
+    },
+    {
+     "label": "Committees",
+     "agg": "count"
+    },
+    {
+     "label": "Dollars",
+     "agg": "sum",
+     "field": "amount",
+     "format": "dollars:2"
+    },
+    {
+     "label": "Report line",
+     "agg": "first",
+     "field": "amount_lines",
+     "format": "text",
+     "words": {
+      "22": "22, transfer",
+      "28C": "28C, refund"
+     }
+    }
+   ]
+  }
  },
  "phone": "same",
  "artboard": "reading",
  "domain": "D03",
  "states": [],
- "source_line": "Source: Federal Election Commission, Schedule B transfers and refunds to other committees (lines 22 and 28C) of the Harris Victory Fund and the Trump National Committee JFC, 2023 to 2024 cycle, United States. Retrieved November 12 and 13, 2026. Each is the nominee’s joint fundraising committee that sent the most to the campaign; committees named as their payer wrote them before the November 5, 2024 election.",
  "encode": {
   "source": "jfc_name",
   "target": "recipient_name_2024_election",
@@ -49,13 +107,41 @@
   "line": "amount_lines"
  },
  "labels": {
-  "lines": ["22"],
+  "lines": [
+   "22"
+  ],
   "nodes": [
-   {"keys": ["C00703975"], "name": "Harris for President, the campaign"},
-   {"keys": ["C00010603"], "name": "Democratic National Committee"},
-   {"source": "HARRIS VICTORY FUND", "kind": ["Party - Qualified"], "name": "{n} state party committees"},
-   {"keys": ["C00828541"], "name": "Donald J. Trump for President 2024, the campaign"},
-   {"keys": ["C00003418"], "name": "Republican National Committee"}
+   {
+    "keys": [
+     "C00703975"
+    ],
+    "name": "Harris for President, the campaign"
+   },
+   {
+    "keys": [
+     "C00010603"
+    ],
+    "name": "Democratic National Committee"
+   },
+   {
+    "source": "HARRIS VICTORY FUND",
+    "kind": [
+     "Party - Qualified"
+    ],
+    "name": "{n} state party committees"
+   },
+   {
+    "keys": [
+     "C00828541"
+    ],
+    "name": "Donald J. Trump for President 2024, the campaign"
+   },
+   {
+    "keys": [
+     "C00003418"
+    ],
+    "name": "Republican National Committee"
+   }
   ],
   "sources": {
    "HARRIS VICTORY FUND": "Harris Victory Fund",
@@ -67,7 +153,11 @@
   },
   "value": "${v}",
   "unit": 4000000,
-  "key_steps": [10000000, 50000000, 100000000],
+  "key_steps": [
+   10000000,
+   50000000,
+   100000000
+  ],
   "key_title": "Each link’s width is the dollars it carried",
   "ink": "party"
  },
@@ -77,9 +167,10 @@
   "key": "millions:0"
  },
  "notes_internal": [
-  "Maker B, round 3. Data plan row 94 with change 8, rule 14.104. Draws fec-jfc-transfers-2024 (P7-216, RL-3 of November 13, 2026): for each nominee the joint fundraising committee that sent the most to the principal campaign committee, read the same way for both, and every committee it paid on lines 22 and 28C.",
+  "Maker B, round 3. Data plan row 94 with change 8, rule 14.104. Draws the derived fec-jfc-transfers-2024-by-node (maker_b_round3_derive.py, from fec-jfc-transfers-2024, P7-216, RL-3 of November 13, 2026): for each nominee the joint fundraising committee that sent the most to the principal campaign committee, read the same way for both, and every committee it paid on lines 22 and 28C.",
   "Data lead ruling (a): no named mark, both committees as a set; (b): both drawn alike, side by side from 680 px (one under the other below, each source's words heading its block under 420 px); every node edge and link in the party-mark ink (money spent to elect a candidate, Rule 14.6's list), node words in the text's ink; one linear unit for both, $4 million a pixel, with a key of three widths; Harris's 51 state party committees fold into one node and the table lists each.",
   "Ruling RL-3a (MB-R3-1): line 22 alone draws, for both committees (labels.lines, encode.line amount_lines); the two line 28C refunds sort after the drawn rows and print in the table as not drawn; line 21B's $27,141,702.01 to three drawn committees is named in note 3; the other committees node and the hairline sentence leave; names from recipient_name_2024_election; source variant transfers_and_refunds. Every drawn link is wider than a pixel, so the key's hairline line is left out.",
-  "Figures checked by maker_b_round3_derive.py --figures (check S73): line 22 sums, Harris Victory Fund $899,402,049.70 to 53 committees ($528.7 million campaign, $189.3 million DNC, $181.4 million to 51 state party committees, DC among them); Trump National Committee JFC $273,762,296.73 to two ($246.8 million campaign, $26.9 million RNC), every row on line 22; line 28C $81,000 in two rows; line 21B $27.1 million to three drawn committees, $12.0 million to the campaign and $15.1 million to the DNC, none for the Trump committee; the other joint fundraising committees' transfers to the campaigns from the sidecar's note, $4,935,265.62 and $160,927,226.68."
+  "Figures checked by maker_b_round3_derive.py --figures (check S73): line 22 sums, Harris Victory Fund $899,402,049.70 to 53 committees ($528.7 million campaign, $189.3 million DNC, $181.4 million to 51 state party committees, DC among them); Trump National Committee JFC $273,762,296.73 to two ($246.8 million campaign, $26.9 million RNC), every row on line 22; line 28C $81,000 in two rows; line 21B $27.1 million to three drawn committees, $12.0 million to the campaign and $15.1 million to the DNC, none for the Trump committee; the other joint fundraising committees' transfers to the campaigns from the sidecar's note, $4,935,265.62 and $160,927,226.68.",
+  "Weight (D3-1097): the page's table groups by the derived node column, one row a node drawn and one a refund, with each committee's count; the CSV export lists all 57 rows with the node each is drawn in; the sidecar's printed line is the transfers_and_refunds variant."
  ]
 }

@@ -10,7 +10,8 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Written by the en
 - **R3-4 LANDED:** the kit's state outlines are the 2024 file's; S16 passes as committed on them (`build s16`: 0 faults, sweep on). S16 can be placed.
 - **RB3-G1 LANDED (01:55 UTC):** the band check reads a band's x extent (maker B). **C-E1 LANDED:** `count_eq`. **ENG-R3-1 DONE:** the data script carries the new Ballotpedia publisher. **Step label inks LANDED (03:50):** `on-seq-N`, `on-mag-N`, `on-div-N` for words and marks on a map's steps.
 - **DL-E1 SIGNED OFF** by the data lead: S81 national as variant B (D3-1090).
-- **Checks, 03:45 UTC:** `oa-chart.mjs build --all --no-png`: 78 specs, 78 check files, 78 PASS (the makers' drafts included), 78 s; self-test every fault caught; strict build exit 0, no warning.
+- **Checks, 03:45 UTC:** `oa-chart.mjs build --all --no-png`: 78 specs, 78 check files, 78 PASS (the makers' drafts included), 78 s; self-test every fault caught; strict build exit 0, no warning. **04:30 UTC:** `build --all --no-png` 79 specs, 79 check files, 79 PASS; strict build with round 3's landed entries placed exits 1 on three of maker A's plates far over (weight below).
+- **A-E1 and A-E2 LANDED (04:35):** `table.group.by` as a list, aggregates `list` and `count_set`.
 
 ## Contracts
 
@@ -67,7 +68,7 @@ Every part draws through the form's context, so the layout guard and the checks 
 | `map_insets` | A thin frame round Alaska and Hawaii | `K.parts.map_insets(c, L, T, {prefixes, pad, stroke, width})`; default geoid prefixes '02' and '15', `gridline` at 1 px, kept inside the map's box |
 | `map_scale` | A scale bar for a fitted layer | `K.parts.map_scale(c, L, T, x, y, {miles, words, stroke})`; default a round figure near a fifth of the map's width, words '{n} miles' |
 | `map_dots` | A dot density map, one path for every dot | `K.parts.map_dots(c, L, T, counts, {per, seed, r, fill, job})`; `counts` `{geoid: count}`; each feature's dots are round(count / per), placed at random inside its shape in frame units (the same places at every width) by a generator seeded from `seed` and the geoid, drawn as one path of round dots (`kit.css` `.oac-dots`). Returns `{dots, per, seed, skipped}` |
-| `table.group` | A table grouped by a column (DL-E1, DR-249) | `"table": {"caption", "columns": [every column, for the CSV export], "group": {"by": "state", "sort": "key", "columns": [{label, agg, field, format, state_name, from, to, name}]}}`; `agg` `key` (with `state_name: true`, the state's name), `count`, `count_in` (field at least `from` and under `to`), `count_eq` (field equals `value`, or any of a list: C-E1), `min`, `max`, `median`, `sum`, `first`, `min_name`, `max_name`. The page prints one row a group; the island carries the drawing's columns for every row; the CSV export lists every row |
+| `table.group` | A table grouped by a column (DL-E1, DR-249) | `"table": {"caption", "columns": [every column, for the CSV export], "group": {"by": "state", "sort": "key", "columns": [{label, agg, field, format, state_name, from, to, name}]}}`; `by` one column or a list (the key their values joined with ", ", A-E1); `agg` `key` (with `state_name: true`, the state's name), `count`, `count_in` (field at least `from` and under `to`), `count_eq` (field equals `value`, or any of a list: C-E1), `count_set` (field not empty), `list` (the field's values joined with "; ", A-E2), `min`, `max`, `median`, `sum`, `first`, `min_name`, `max_name`. The page prints one row a group; the island carries the drawing's columns for every row; the CSV export lists every row |
 
 **Each step's label ink (LANDED, 03:50 UTC).** For ruling (b)'s "codes in the label ink of its step" and the districts' dots and rings: the text and fill roles `on-seq-1` to `on-seq-5`, `on-mag-1` to `on-mag-4` and `on-div-1` to `on-div-5`, from the tokens' step label inks (`c.text(..., {fill: 'on-seq-4'})`, `c.circle(..., {fill: 'on-mag-4'})`, or a `map_labels` item's `fill`). Each reads at 4.6 to 1 or more on its own step on both grounds (Newsprint seq-4 5.2, mag-3 4.9; Charcoal seq-3 4.6, div-2 and div-4 4.6 and 4.7). In forced colors the dark steps' inks (sequential 4 and 5, magnitude 3 and 4, diverging 1 and 5) take Canvas, as words on a dark fill do.
 
@@ -152,6 +153,8 @@ Taken in the order they arrived:
 | ENG-R3-1, the Ballotpedia publisher in the data script | research lead | **Done**; a rerun to scratch writes the 34 files as they stand |
 | C-E1, `count_eq` for a grouped table | cartographer | **Done**, with a self-test case; told the main session (the cartographer is not reachable by name) |
 | C-E2, S82's tile layout through `c.extra` | cartographer | Read; nothing to do: the island carries it compressed |
+| A-E1, `table.group.by` as a list of columns | maker A | **Done** (04:35): the key joins the values with ", "; `check` fails a `by` or group column missing from the data; self-test case; told the main session for maker A |
+| A-E2, aggregates `list` and `count_set` | maker A | **Done** with A-E1 |
 
 To others:
 - **Cartographer:** S16's spec still prints the 2017 credit ("via us-atlas 3.0.1"); replace it with the 2024 files' credit. S16 may move onto `map_fit` to show all of Alaska. De Baca County (35011) has no estimate: per the data lead, the land ink with the context edge and a note. S81 reads a class column (DL-E1 variant B); ruling (c)'s breaks give four classes.

@@ -223,6 +223,9 @@ def figures():
     # S73: both joint fundraising committees, line 22 alone drawn (ruling RL-3a), folded as the drawing folds them
     sp, t = spec('s73')
     rows = read('fec-jfc-transfers-2024')
+    nodes = read('fec-jfc-transfers-2024-by-node')
+    same('S73', sorted((r['recipient_id'], r['amount']) for r in nodes), sorted((r['recipient_id'], r['amount']) for r in rows), 'the node file keeps every row')
+    same('S73', sorted(set(r['node'] for r in nodes if r['amount_lines'] == '22')), sorted(['Harris for President, the campaign', 'Democratic National Committee', '51 state party committees, the District of Columbia’s included', 'Donald J. Trump for President 2024, the campaign', 'Republican National Committee']), 'the table groups as the drawing folds')
     hv = [r for r in rows if r['jfc_name'] == 'HARRIS VICTORY FUND' and r['amount_lines'] == '22']
     tn = [r for r in rows if r['jfc_name'] == 'TRUMP NATIONAL COMMITTEE JFC, INC.' and r['amount_lines'] == '22']
     refunds = [r for r in rows if r['amount_lines'] == '28C']
@@ -278,7 +281,8 @@ def figures():
     same('S74', (min(r['links'] for r in filled), max(r['links'] for r in filled)), (1, 7), 'counts run 1 to 7')
     names = {r['id']: r['name'] for r in lk}
     same('S74', (names['LE02'], names['LE19']), ('Congress decides public investment levels', 'The executive sets tariff rates'), 'the two examples')
-    same('S74', sorted(sp['v7']['ids']), sorted(r['id'] for r in lk), 'every connection ID in v7.ids for its chip')
+    same('S74', sp['v7']['ids'], [], 'no ID prints, so v7.ids is empty; the CSV export carries link_ids')
+    same('S74', sorted(sum([r['link_ids'].split('; ') for r in filled], [])), sorted(r['id'] for r in lk), 'every connection ID in a cell of the export')
     steps = sp['labels']['steps']
     same('S74', [(s['min'], s['max'], s['fill']) for s in steps], [(1, 1, 'seq-1'), (2, 3, 'seq-3'), (4, 5, 'seq-4'), (6, 7, 'seq-5')], 'ruling (b) steps')
 
