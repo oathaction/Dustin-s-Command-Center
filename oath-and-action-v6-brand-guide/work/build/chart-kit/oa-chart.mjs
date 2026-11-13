@@ -236,7 +236,9 @@ export function table_fields(spec) {
 }
 export function island_table(spec, rows, columns, extra) {
   // method load-table: the drawing spec, the types of the columns it uses, and as CSV only the used columns the table lacks
-  const used = used_columns(spec, columns), inTable = new Set(table_fields(spec));
+  // R3-3: a grouped table prints no row, so the island carries only the columns the drawing reads (its encode, where, sort,
+  // formats, labels and annotations), never the table's own; the CSV export still lists every column
+  const used = used_columns((spec.table || {}).group ? Object.assign({}, spec, { table: undefined }) : spec, columns), inTable = new Set(table_fields(spec));
   const missing = used.filter(c => !inTable.has(c));
   const ctypes = {};
   used.concat([...inTable]).forEach(c => { if (columns[c]) ctypes[c] = { type: columns[c].type }; });

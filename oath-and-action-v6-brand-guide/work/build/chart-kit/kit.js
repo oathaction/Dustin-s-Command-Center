@@ -1135,14 +1135,15 @@
     return '';
   };
   function group_table(spec, rows) {
+    // set as the lean table is: numbers bare, words in class t
     var tb = spec.table, g = tb.group, ids = (spec.v7 && spec.v7.ids) || [], cols = g.columns || [];
     var cap = tb.caption ? '<caption>' + K.chips(tb.caption, ids) + '</caption>' : '';
     var numc = function (col) { return GROUP_NUM.test(col.agg || '') || /^(integer|number|percent|dollars|thousands)/.test(String(col.format || '')); };
-    var head = '<tr>' + cols.map(function (col) { return '<th scope="col"' + (numc(col) ? ' class="oac-num"' : '') + '>' + K.chips(col.label, ids) + '</th>'; }).join('') + '</tr>';
+    var head = '<tr>' + cols.map(function (col) { return '<th scope="col"' + (numc(col) ? '' : ' class="t"') + '>' + K.chips(col.label, ids) + '</th>'; }).join('') + '</tr>';
     var body = K.table_groups(spec, rows).map(function (grp) {
       return '<tr>' + cols.map(function (col) {
-        var txt = esc(K.group_cell(col, grp));
-        return col.row_header || (col.agg || 'key') === 'key' ? '<th scope="row">' + txt + '</th>' : '<td' + (numc(col) ? ' class="oac-num"' : '') + '>' + txt + '</td>';
+        var txt = esc(K.group_cell(col, grp)), hd = col.row_header || (col.agg || 'key') === 'key';
+        return '<' + (hd ? 'th scope="row"' : 'td') + (numc(col) ? '' : ' class="t"') + '>' + txt + '</' + (hd ? 'th' : 'td') + '>';
       }).join('') + '</tr>';
     }).join('');
     return '<table class="oac-table" data-oa-group>' + cap + '<thead>' + head + '</thead><tbody>' + body + '</tbody></table>';
