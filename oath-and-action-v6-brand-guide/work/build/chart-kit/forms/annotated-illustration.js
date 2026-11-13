@@ -102,7 +102,7 @@
       // the page's edge, and across its foot a dashed rule where the drawing crops the page, with the words under it (DD-I6)
       c.path('M' + x0 + ',' + frame_bottom + 'V' + (frame_top + 0.5) + 'H' + x1 + 'V' + frame_bottom, { fill: 'none', stroke: 'context', width: 1, mark: false });
       c.line(x0, frame_bottom + 0.5, x1, frame_bottom + 0.5, { stroke: 'context', width: 1, dash: '4 3', mark: false });
-      if (L.crop_words) frame_bottom = c.text(x0, frame_bottom + 8 + tk * 0.93, ty(L.crop_words), { role: 'tick', fill: 'secondary', max: x1 - x0, leading: lh }).bottom;
+      if (L.crop_words) frame_bottom = c.text(x0, frame_bottom + 8 + c.size('label') * 0.93, ty(L.crop_words), { role: 'label', fill: 'secondary', max: x1 - x0 }).bottom;
       // the numbers: the main column's in the left gutter, the margin's and the flush-right piece's outside the right edge
       Object.keys(placed).sort(function (a, b) { return num[a] - num[b]; }).forEach(function (key) {
         var p = placed[key]; if (p.base === undefined || p.base === null) return;

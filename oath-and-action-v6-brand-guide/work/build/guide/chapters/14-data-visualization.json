@@ -4955,7 +4955,7 @@
    },
    "tokens": [],
    "related": [],
-   "builders": "Form bubble-map: node work/build/chart-kit/oa-chart.mjs build s16; encode code, size (the circle’s area) and shade; labels.bins sets the shade’s four breaks, labels.size_steps and size_step_words the size key, labels.ring the circles ringed, labels.nation and nation_label the national rate on the step key, and labels.offsets a code’s place where the search finds none.",
+   "builders": "Form bubble-map: node work/build/chart-kit/oa-chart.mjs build s16; encode code, size (the circle’s area) and shade; labels.bins sets the shade’s four breaks, labels.size_steps and size_step_words the size key, labels.ring the circles ringed, labels.nation and nation_label the national rate on the step key, labels.offsets a code’s place where the search finds none, and labels.column_phone the small states whose codes stand in a column at the right on a phone drawing narrower than 358 px.",
    "related_rules": [
     "14.4",
     "14.9",
@@ -5785,7 +5785,7 @@
    "id": "14.137",
    "title": "Use comparison cards to set two or three options side by side on the same fields.",
    "rule": [
-    "Give each option a card of one width and one height with a thin edge and no fill, its name first, then the same fields in the same order on every card, each a field’s name over its value in live text. Print a field the law leaves empty in the source’s own words, never as a dash, and put a qualification that touches one card’s value under that value. Keep the cards in the order the source gives them, with no color by option, and let them run one a row on a phone."
+    "Give each option a card of one width and one height with a thin edge and no fill, its name first, then the same fields in the same order on every card, each a field’s name over its value in live text. Print a field the law leaves empty in the source’s own words, such as “None”, and put a qualification that touches one card’s value under that value. Keep the cards in the order the source gives them, with no color by option, and let them run one a row on a phone."
    ],
    "why": {
     "text": [
@@ -5824,7 +5824,7 @@
    ],
    "why": {
     "text": [
-     "Numbers carry the order to every reader, by sight, in a screen reader’s list or in print, and the law’s limit beside each step tells a reader when they can press. Text keeps every step searchable and copyable."
+     "Numbers carry the order to every reader, by sight, in a screen reader’s list or in print, and the law’s limit beside each step tells a reader when they may take the next step. Live text keeps every step searchable and copyable."
     ]
    },
    "tokens": [],
@@ -5895,11 +5895,11 @@
    "id": "14.140",
    "title": "Use a calendar to show the dates that matter in a year and what each one carries.",
    "rule": [
-    "Draw the year as twelve months in order, each date a square on its day, filled where the law attaches a consequence and open where it states none, with the squares of a busy day stacked. Under it, list every date in order in live text: the day and weekday, what falls due, who acts where the words do not say, and the kind of date in words beside its consequence. Say in a note which dates carry no stated consequence and what can move a date."
+    "Draw the year as 12 months in order, each date a square on its day, filled where the law attaches a consequence and open where it states none, with the squares of a busy day stacked. Under it, list every date in order in live text: the day and weekday, what falls due, who acts where the words do not say, and the kind of date in words beside its consequence. Say in a note which dates carry no stated consequence and what can move a date."
    ],
    "why": {
     "text": [
-     "The year shows at a glance where the dates crowd, and the list gives each one exactly. The kind of date in words means no reader has to read a square’s fill to learn whether missing a date carries a penalty."
+     "The year shows at a glance where the dates crowd, and the list gives each one in full. The kind of date in words means no reader has to read a square’s fill to learn whether missing a date carries a consequence."
     ]
    },
    "tokens": [],
@@ -5928,9 +5928,9 @@
   },
   {
    "id": "14.141",
-   "title": "Use a social data card to carry one chart’s finding into a feed at the platform’s sizes.",
+   "title": "Use a social data card to carry one chart’s finding into a feed in two crops.",
    "rule": [
-    "Draw the card at true size for each crop, 1080 by 1350 and 1080 by 1080, with the evidence word, the chart’s own title, the chart redrawn at card scale with its inks, key and named marks, and a short source line that says where every value is. Set every word at 36 px or more at true size, since a feed shows the card at about a third of its size, and the title larger. Where the chart’s labels cannot fit, name only the marks the title names and say what each mark stands for. Post the card with its alt text, the finding in a sentence or two, and keep the full table with the chart."
+    "Draw the card at true size for each crop, 1080 by 1350 and 1080 by 1080, with the evidence word, the chart’s own title, the chart redrawn at card scale with its inks, key and named marks, and a short source line that says where every value is. Set every word at 36 px or more at true size, since a feed shows the card at about a third of its size, and the title larger. Where the chart’s labels cannot fit, name only the marks the title names and say what each mark stands for. Post the card with its alt text and the finding in a sentence or two, and keep the full table with the chart."
    ],
    "why": {
     "text": [

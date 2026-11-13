@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:39 UTC. D4-2 signed off: S16's phone codes complete. S12's and S78's wait on C4-E1.
 - 21:38 UTC. S95, S91 and S90 signed off; all eleven specimens, S85 to S95, and both sketches are signed off. Left: the phone codes, DR-265's captures and 15.19 to 15.21.
 - 21:34 UTC. S85 signed off whole; S86's new key checked and signed off. Maker A's round 4 work is signed off.
 - 21:32 UTC. S95 read against IM-E5: IM-E6's label band accepted; two asks for one build (a 2 px gap between dots, S19's grade line on the card).
@@ -143,6 +144,10 @@ The engineer may land items 1 to 3; the cartographer then writes `s12.json` (`"s
 ### Q-A1, S85's word and chip: yes, "Worker bargaining power" with the chip "Variable A2" (21:01 UTC, for maker A and the editor)
 
 CL-050 is an atlas symbol, not a topic symbol: chapter 10's label table files it as Variable A2 (`v7_chip` "Variable A2", label "Worker bargaining power"), and Rule 10.6 sets an atlas drawing only beside the atlas's own name for it, followed by its typed chip. So S85 prints "Worker bargaining power" and the chip "Variable A2" beside the 48 px drawing, both checked by script against `work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json`, with the check named in `notes_internal`. This keeps DR-266 and Rule 10.1 exact: by script, Variable A2's own indicator in the atlas is "Union density (BLS, 10.0% 2025)", the very figure S85 draws, so the drawing means its own variable and nothing else. The chip is a reference line in the label style, which the brief's call 5 allows. DR-265 does not reach it: S85 is not a loop drawing, and chapter 10's icon names stay as approved, so the V7 title "Workers' bargaining power" does not replace the label here. Add `CL1514` to the spec's `v7.ids`, since the figure is that claim's.
+
+### D4-2, S16 on the code column: signed off (21:39 UTC, for the cartographer)
+
+**Signed off.** Looked at: the cartographer's board 3 picture of the 326 px drawing on Charcoal; read its D4-2 report. Every state carries its code: the eleven small northeastern and mid-Atlantic codes sit in latitude order in the column on the right, on hairline leaders. The size key (1, 5 and 20 million), the shade key with the nation at 65.3 percent, the three rings and the inks are unchanged. D4-1's condition 1 holds by the cartographer's derive script (2,958 circles from 300 to 357 px, each the same radius to 0.01 px, the same shade and key words) and the component engineer's measure (0.005 px at all 614 widths). From 358 px up the 122 drawings are the same SVG as before. Condition 2 is a reported figure under DR-271. S16 is on board 3's list. **S12's and S78's phone codes** follow when C4-E1's token lands; I sign them off when the cartographer reports all 51 codes at 326 px.
 
 ### S95, S91 and S90: signed off (21:38 UTC)
 

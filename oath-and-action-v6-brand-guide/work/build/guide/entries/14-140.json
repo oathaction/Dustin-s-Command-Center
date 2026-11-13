@@ -2,7 +2,7 @@
   "id": "14.140",
   "title": "Use a calendar to show the dates that matter in a year and what each one carries.",
   "rule": [
-    "Draw the year as twelve months in order, each date a square on its day, filled where the law attaches a consequence and open where it states none, with the squares of a busy day stacked. Under it, list every date in order in live text: the day and weekday, what falls due, who acts where the words do not say, and the kind of date in words beside its consequence. Say in a note which dates carry no stated consequence and what can move a date."
+    "Draw the year as 12 months in order, each date a square on its day, filled where the law attaches a consequence and open where it states none, with the squares of a busy day stacked. Under it, list every date in order in live text: the day and weekday, what falls due, who acts where the words do not say, and the kind of date in words beside its consequence. Say in a note which dates carry no stated consequence and what can move a date."
   ],
   "use_when": "The reader asks which dates in a year carry obligations and which of them carry a consequence, such as the federal budget and tax dates.",
   "use_instead": [
@@ -17,7 +17,7 @@
   ],
   "why": {
     "text": [
-      "The year shows at a glance where the dates crowd, and the list gives each one exactly. The kind of date in words means no reader has to read a square’s fill to learn whether missing a date carries a penalty."
+      "The year shows at a glance where the dates crowd, and the list gives each one in full. The kind of date in words means no reader has to read a square’s fill to learn whether missing a date carries a consequence."
     ],
     "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
   },

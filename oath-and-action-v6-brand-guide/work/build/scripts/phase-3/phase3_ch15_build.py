@@ -3205,9 +3205,14 @@ def chooser_css(rids):
     out = []
     for rid in rids[1:]:
         has = f'.p:has([value="{rid}"]:checked)'
-        out.append(f'{has} [data-oa-for]:not([data-oa-for~="{rid}"]) .hi,{has} [data-oa-for~="{rid}"] .lo{{display:none}}'
-                   f'{has} [data-oa-for]:not([data-oa-for~="{rid}"]) .lo,{has} [data-oa-for~="{rid}"] .hi{{display:inline}}'
-                   f'{has} [data-oa-for]:not([data-oa-for~="{rid}"]) .pl{{stroke:{INK};stroke-width:2px}}')
+        no, yes = f'{has} [data-oa-for]:not([data-oa-for~="{rid}"])', f'{has} [data-oa-for~="{rid}"]'
+        # the chosen reform's targets take Rule 12.5's red (the lit marks, a 4 px red line on a 6 px ink case, red head,
+        # a 3 px red outline), as the class rt and rp draw the first reform's in the markup; the others go back to ink
+        out.append(f'{no} .hi,{yes} .lo{{display:none}}{no} .lo,{yes} .hi{{display:inline}}'
+                   f'{no} .pl{{stroke:{INK};stroke-width:2px}}{no} .ak-mark{{stroke:{INK};stroke-width:2px}}{no} .hd{{fill:{INK}}}'
+                   f'{yes} .ak-mark{{stroke:var(--oa-color-data-emphasis-red);stroke-width:4px}}'
+                   f'{yes} .ak-case{{fill:none;stroke:{INK};stroke-width:6px}}{yes} .hd{{fill:var(--oa-color-data-emphasis-red)}}'
+                   f'{yes} .pl{{stroke:var(--oa-color-data-emphasis-red);stroke-width:3px}}')
     shows = "".join(f'.p:has([value="{rid}"]:checked) [data-oa-panel]:not([data-oa-panel="{rid}"]){{display:none}}' for rid in rids)
     prints = "".join(f'.p:has([value="{rid}"]:checked) [data-oa-print="{rid}"]' + ("," if k < len(rids) - 1 else "")
                      for k, rid in enumerate(rids))

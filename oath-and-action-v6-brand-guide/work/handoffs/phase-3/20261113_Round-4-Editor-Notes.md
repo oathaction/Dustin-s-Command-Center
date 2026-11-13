@@ -108,6 +108,9 @@ Maker A applies these until it reports finished; after that I write any still op
 | File | Field | Now | Suggested | Why |
 |---|---|---|---|---|
 | S85 | `chart_notes[0]`, last sentence | The drawing beside the words Worker bargaining power is the atlas’s symbol for that variable. | The drawing beside “Worker bargaining power” is the atlas’s symbol for Variable A2. | Words quoted as words take quotation marks, and the chip's own name says which variable, as the plate prints it (H11) |
+| S88 | `measure_line` (added at 21:38) | People by health insurance coverage, millions and percent of the 336.8 million in the civilian noninstitutionalized population, 2025, United States; each area is in proportion to its count | People by health insurance coverage, millions and percent of the 336.8 million in the civilian noninstitutionalized population, 2025, United States | Note 1 says it in full ("Each circle’s area, and the area the two circles share, is in proportion to its count on one scale"), so once is enough, as with S86's key (W07) |
+
+**Checked again at 21:38 UTC:** every entry row below is applied as written (14.79's figures, chip and why with "a Civic Line drawing"; 14.80's 2022 counts; "track gray" in 14.80 and 14.81; 14.82's why; 14.83's and 14.84's alts, and 14.84's caption now equals its sketch's first `<desc>`, by script), and S86's measure line is done. Open on maker A's files: the two rows just above.
 
 **The design director's ask for maker A (its "Requests to the editor", 21:22), ruled at 21:24 UTC:**
 

@@ -9,7 +9,7 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Documented: the U.S. Code and the Treasury’s rule, 26 CFR 1.6081-4, as in force on November 9, 2026",
-  "title": "Federal law sets 16 deadlines on 13 days of 2027 for the budget and taxes, and attaches a consequence to seven: the six tax deadlines and the fiscal year’s start.",
+  "title": "Of 16 budget and tax deadlines federal law sets on 13 days of 2027, seven carry a consequence, the six tax deadlines and the start of the fiscal year.",
   "measure_line": "Dates federal law sets in calendar 2027 for the budget process and for individual income tax, with what the law attaches to missing each one",
   "notes": [
     "The Budget Act’s timetable, 2 U.S.C. 631, attaches no consequence to its dates. A tax date on a weekend or a legal holiday moves to the next business day (26 U.S.C. 7503); none does in 2027.",
@@ -108,6 +108,7 @@
     "The year mark draws 224 px wide, the art box at a 256 px window, so it never scales and never overflows; its squares are 6 px.",
     "Editor's words (21:17 UTC) applied: title and note 2 with \"written\", the law's word in subsection (c).",
     "Data lead MI-5 (21:21 UTC): the title counts deadlines (16 on 13 days; the six tax deadlines fall on five days). MI-6: the year mark draws 224 px wide, so nothing overflows at a 256 px window.",
-    "Design director DD-I16 and DD-I20 (21:28 UTC): each kind of date sits on a line of its own and its consequence on the next, so a wrapped consequence never starts under the tag; \"fiscal 2028\" held on one line."
+    "Design director DD-I16 and DD-I20 (21:28 UTC): each kind of date sits on a line of its own and its consequence on the next, so a wrapped consequence never starts under the tag; \"fiscal 2028\" held on one line.",
+    "Editor's title (21:22 UTC, on MI-5) applied."
   ]
 }

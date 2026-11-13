@@ -12,7 +12,7 @@
   "title": "Public Law 119-12’s first page gives its number, the Congress that passed it, its place in the Statutes at Large, its approval date and the bill it began as.",
   "measure_line": "The parts of the first page of Public Law 119-12, the TAKE IT DOWN Act, redrawn with the page’s own words",
   "notes": [
-    "The drawing sets the page’s dash in the running head as a rule and its doubled single quotation marks as double quotation marks."
+    "The drawing sets the running head’s dash, between the law’s number and its date, as a rule, and each pair of single quotation marks the page prints as one double mark."
   ],
   "credit": "Chart: Oath & Action",
   "illustrative": false,
@@ -184,7 +184,8 @@
     "Source line: the sidecar's date_on_page variant (IM-3); grade line as ruling (c); the approval date prints only on the page drawing and its callout.",
     "Data lead (20:59 UTC) accepted numbered markers with no leader lines, and the redraw in Inter with the drawing's own line breaks.",
     "Editor's words (21:03 UTC) applied: title and grade line; the alt prints a hyphen in 119-12.",
-    "Design director DD-I6 to DD-I9 (21:22 UTC) and the data lead's yes to DD-I7 (21:25): the crop drawn as a dashed rule across the sheet's foot, with \"The page continues with section 2.\" under it, in place of the old note; parts numbered in the page's reading order through the sort (1 running head, 2 the Statutes at Large citation beside it, 3 Public Law number, 4 Congress, 5 long title, 6 date approved, 7 bill number, 8 enacting clause, 9 short title section, 10 margin short title, 11 margin note), the table's Number column mapped the same way and the file as stored; a running head that wraps sets its citation on a line of its own; the page's doubled single quotation marks set as double quotation marks in the drawing (typography.replace, printed words only), with the note saying so."
+    "Design director DD-I6 to DD-I9 (21:22 UTC) and the data lead's yes to DD-I7 (21:25): the crop drawn as a dashed rule across the sheet's foot, with \"The page continues with section 2.\" under it, in place of the old note; parts numbered in the page's reading order through the sort (1 running head, 2 the Statutes at Large citation beside it, 3 Public Law number, 4 Congress, 5 long title, 6 date approved, 7 bill number, 8 enacting clause, 9 short title section, 10 margin short title, 11 margin note), the table's Number column mapped the same way and the file as stored; a running head that wraps sets its citation on a line of its own; the page's doubled single quotation marks set as double quotation marks in the drawing (typography.replace, printed words only), with the note saying so.",
+    "Editor's words (21:24 UTC) applied: the note on the redraw's two typesetting choices; the crop's words in the label style."
   ],
   "source_line": "Source: Public Law 119-12, the TAKE IT DOWN Act, 139 Stat. 55, first page, United States, from govinfo, U.S. Government Publishing Office. Retrieved November 12, 2026."
 }

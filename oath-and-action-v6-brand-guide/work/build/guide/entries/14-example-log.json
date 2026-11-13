@@ -875,7 +875,7 @@
    "source": "s93.json"
   },
   {
-   "example": "Federal law sets 16 deadlines on 13 days of 2027 for the budget and taxes, and attaches a consequence to seven: the six tax deadlines and the fiscal year’s start.",
+   "example": "Of 16 budget and tax deadlines federal law sets on 13 days of 2027, seven carry a consequence, the six tax deadlines and the start of the fiscal year.",
    "domain": "D08",
    "states": [],
    "rule": "14.140",

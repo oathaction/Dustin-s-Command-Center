@@ -2,7 +2,7 @@
   "id": "14.137",
   "title": "Use comparison cards to set two or three options side by side on the same fields.",
   "rule": [
-    "Give each option a card of one width and one height with a thin edge and no fill, its name first, then the same fields in the same order on every card, each a field’s name over its value in live text. Print a field the law leaves empty in the source’s own words, never as a dash, and put a qualification that touches one card’s value under that value. Keep the cards in the order the source gives them, with no color by option, and let them run one a row on a phone."
+    "Give each option a card of one width and one height with a thin edge and no fill, its name first, then the same fields in the same order on every card, each a field’s name over its value in live text. Print a field the law leaves empty in the source’s own words, such as “None”, and put a qualification that touches one card’s value under that value. Keep the cards in the order the source gives them, with no color by option, and let them run one a row on a phone."
   ],
   "use_when": "The reader weighs two or three options on the same handful of questions, such as how district, bankruptcy and magistrate judges are chosen and how long they serve.",
   "use_instead": [

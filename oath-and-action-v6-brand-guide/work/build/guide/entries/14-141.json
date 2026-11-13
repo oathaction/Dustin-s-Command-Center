@@ -1,8 +1,8 @@
 {
   "id": "14.141",
-  "title": "Use a social data card to carry one chart’s finding into a feed at the platform’s sizes.",
+  "title": "Use a social data card to carry one chart’s finding into a feed in two crops.",
   "rule": [
-    "Draw the card at true size for each crop, 1080 by 1350 and 1080 by 1080, with the evidence word, the chart’s own title, the chart redrawn at card scale with its inks, key and named marks, and a short source line that says where every value is. Set every word at 36 px or more at true size, since a feed shows the card at about a third of its size, and the title larger. Where the chart’s labels cannot fit, name only the marks the title names and say what each mark stands for. Post the card with its alt text, the finding in a sentence or two, and keep the full table with the chart."
+    "Draw the card at true size for each crop, 1080 by 1350 and 1080 by 1080, with the evidence word, the chart’s own title, the chart redrawn at card scale with its inks, key and named marks, and a short source line that says where every value is. Set every word at 36 px or more at true size, since a feed shows the card at about a third of its size, and the title larger. Where the chart’s labels cannot fit, name only the marks the title names and say what each mark stands for. Post the card with its alt text and the finding in a sentence or two, and keep the full table with the chart."
   ],
   "use_when": "A finding from a core chart goes to Substack, email or a social feed as a still image.",
   "use_instead": [

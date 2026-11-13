@@ -89,14 +89,22 @@
       },
       {
         "rows": [
-          2,
-          3,
-          4
+          2
         ],
         "figure": 2,
         "format": "integer",
         "after": " cents",
-        "words": "of each dollar came from the states, 43 cents from local sources, mostly property taxes, and 12 cents from the federal government."
+        "words": "of each dollar came from the states."
+      },
+      {
+        "rows": [
+          3,
+          4
+        ],
+        "figure": 3,
+        "format": "integer",
+        "after": " cents",
+        "words": "came from local sources, mostly property taxes, and 12 cents from the federal government."
       },
       {
         "rows": [
@@ -108,19 +116,12 @@
       },
       {
         "rows": [
-          7
+          7,
+          8
         ],
         "figure": 7,
         "format": "dollars",
-        "words": "for each pupil in New York was the most among the 50 states and DC."
-      },
-      {
-        "rows": [
-          8
-        ],
-        "figure": 8,
-        "format": "dollars",
-        "words": "for each pupil in Idaho was the least."
+        "words": "for each pupil in New York was the most among the 50 states and DC, and Idaho’s $11,060 the least."
       },
       {
         "rows": [
@@ -139,7 +140,7 @@
   },
   "notes_internal": [
     "Infographics maker, round 4. Data plan row 122, rule 14.136. Domain D09 from the sidecar; New York and Idaho named (fact 4), so states lists both (sidecar note 1).",
-    "Six facts from eight rows: fact 2 stands for the three revenue shares (rows 2 to 4); New York's and Idaho's spending (rows 7 and 8) take a fact each. Row 5, the COVID-19 relief sum, prints in the note, as the brief and the data lead's condition ask, and is left out of the cards and the table by where.",
+    "Six facts from eight rows: the states' share (row 2) and the local and federal shares (rows 3 and 4) take a fact each, so each figure names what its words lead with (the design director's ask, the editor's words, 21:28); New York's and Idaho's spending (rows 7 and 8) share one. Row 5, the COVID-19 relief sum, prints in the note, as the brief and the data lead's condition ask, and is left out of the cards and the table by where.",
     "Source line: the sidecar's tables_named variant (ruling (c)).",
     "Shares in cents: 45.2341, 43.1987 and 11.5672 percent round to 45, 43 and 12, which sum to 100 (ruling (b)); 88 cents is 45 plus 43 (88.43 percent unrounded).",
     "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S90.",
