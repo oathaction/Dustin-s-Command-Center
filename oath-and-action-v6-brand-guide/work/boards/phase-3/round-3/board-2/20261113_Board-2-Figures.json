@@ -4012,7 +4012,7 @@
  "images": 310,
  "image_bytes": 40639494,
  "folder_files": 314,
- "folder_bytes": 41811688,
+ "folder_bytes": 41811351,
  "largest_image": [
   492518,
   "20261113_Form-S37-Grayscale.webp"
@@ -4561,5 +4561,30 @@
   "file paths on the board’s face, which belong in reference lines: Full-Table.md, work/build/scripts/phase-3/board_2_data_lead_counts.py, work/handoffs/phase-3/board-2-pictures/20261113_S12-Stacked-Tile-Measure.json, work/research/20261113_Atlas-Recheck-Full-Data.json"
  ],
  "seconds": 14,
- "words": 56916
+ "words": 56916,
+ "check": {
+  "page": {
+   "failures": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "allowed": [
+    "1440 overview: axe html-has-langx1",
+    "390 overview: axe html-has-langx1",
+    "360 overview: axe html-has-langx1"
+   ],
+   "results": "work/boards/phase-3/round-3/board-2/20261113_Board-2-Check-Results.json"
+  },
+  "wrapped": {
+   "failures": [],
+   "pass": true,
+   "results": "[scratch]/phase-3/board-2/builder/publish-view/20261113_Board-2-Check-Results.json"
+  },
+  "widths": [
+   1440,
+   390,
+   360
+  ]
+ }
 }

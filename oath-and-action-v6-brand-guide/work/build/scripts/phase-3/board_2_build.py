@@ -811,8 +811,13 @@ def decide_panel(shots, fshots, kit_out, pages):
                 body += (f'<div class="oldnew"><div><p class="row-label">{esc(S["old"])}</p><p class="was">{esc(words(it, "old") or "")}</p></div>'
                          f'<div><p class="row-label">{esc(S["new"])}</p><p class="now">{esc(words(it, "new") or "")}</p></div></div>')
             if it.get('facts'):
-                body += '<dl class="facts">' + ''.join(f'<div><dt>{esc(f.get("label", ""))}</dt><dd>{esc(f.get("value", ""))}</dd></div>' for f in it['facts']) + '</dl>'
-                QUOTED.extend(f.get('label', '') + ' ' + str(f.get('value', '')) for f in it['facts'])
+                # a fact whose value names a file goes to the panel's reference line, where file paths belong
+                fpath = [f for f in it['facts'] if re.search(PATH_RE, str(f.get('value', '')))]
+                shown = [f for f in it['facts'] if f not in fpath]
+                refs += [f'{f.get("label", "")}: {f.get("value", "")}' for f in fpath]
+                if shown:
+                    body += '<dl class="facts">' + ''.join(f'<div><dt>{esc(f.get("label", ""))}</dt><dd>{esc(f.get("value", ""))}</dd></div>' for f in shown) + '</dl>'
+                QUOTED.extend(f.get('label', '') + ' ' + str(f.get('value', '')) for f in shown)
             if it.get('rows'):
                 body += rows_table(it['rows'], fill(S['rows_caption'], {'title': it.get('title', '')}))
                 for r_ in it['rows']:
@@ -1247,6 +1252,7 @@ def spend_panel(G, rn, kit_out):
 
 # ------------------------------------------------------------------------------------------------------- panel 6
 ID = r'[A-Z]{1,4}(?:[- ][A-Z]{1,3})?-?\d{1,3}'
+PATH_RE = r'\b(?:work|source|deliverables|brief)/[\w./-]+|\b[\w-]+\.(?:json|md|py|mjs|js|csv|html)\b'
 
 
 def findings(body):
@@ -1704,7 +1710,7 @@ def checks(page):
     quoted_codes = set(re.findall(r'\b' + CODE_DEC + r'\b', face_all)) - stray
     if quoted_codes:
         warn('decision codes in the words the board quotes from teammates’ files, on its face: ' + ', '.join(sorted(quoted_codes)))
-    paths = sorted(set(re.findall(r'\b(?:work|source|deliverables|brief)/[\w./-]+|\b[\w-]+\.(?:json|md|py|mjs|js|csv|html)\b', face_all)))
+    paths = sorted(set(re.findall(PATH_RE, face_all)))
     if paths:
         warn('file paths on the board’s face, which belong in reference lines: ' + ', '.join(paths[:8]) + (f' and {len(paths) - 8} more' if len(paths) > 8 else ''))
     for pat in (r'/home/', r'file://', r'scratchpad', r'/tmp/', r'@anthropic'):
