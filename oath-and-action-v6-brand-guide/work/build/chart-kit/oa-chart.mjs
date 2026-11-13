@@ -1008,6 +1008,10 @@ async function self_test() {
     { const a = drawn(c => { P.flow_band(c, 10, 10, 300, 60, 20, { fill: 'band', edge: false }); });
       const b = drawn(c => { P.flow_band(c, 10, 10, 300, 60, 20, { fill: 'band' }); });
       pass(a.f.some(x => x.indexOf('band:') >= 0) && !b.f.some(x => x.indexOf('band:') >= 0), 'R3-5: a light flow band with no edge fails 3 to 1, and passes with its edges'); }
+    { // RB3-G1: two bands side by side at one height lie on the ground; a band inside a wider one across and down lies on it
+      const side = drawn(c => { P.flow_band(c, 10, 10, 150, 10, 40, { fill: 'light-fill' }); P.flow_band(c, 200, 10, 340, 10, 40, { fill: 'light-fill' }); });
+      const held = drawn(c => { P.flow_band(c, 10, 10, 340, 10, 60, { fill: 'light-fill' }); P.flow_band(c, 60, 20, 300, 20, 20, { fill: 'light-fill' }); });
+      pass(!side.f.some(x => x.indexOf('band:') >= 0) && held.f.some(x => x.indexOf('light-fill band under it') >= 0), 'RB3-G1: a band lies under another only where the other holds it across as well as down'); }
     { const a = drawn(c => { const g = c.group({ transform: 'translate(0,20) scale(0.5)' }); c.rect(0, 0, 400, 40, { fill: 'point', data: { key: 'x' } }); g.end(); });
       const b = drawn(c => { const g = c.group({ transform: 'translate(0,20) scale(2)' }); c.rect(0, 0, 400, 40, { fill: 'subject', mark: false }); g.end(); });
       const e = drawn(c => { const g = c.group({ transform: 'translate(10,20) scale(0.5)' }); c.line(0, 30, 300, 30, { stroke: 'subject', width: 2 }); g.end(); c.text(40, 40, 'Beside the line'); });

@@ -401,7 +401,10 @@ function band_faults(d, tok, at) {
   const f = [], ground = tok['--oa-color-surface'] || tok['--oa-chart-color-surface'];
   (d.bands || []).forEach((b, i) => {
     if (!b.fill) return;   // a hatched band shows by its lines
-    const outer = (d.bands || []).slice(0, i).reverse().find(o => o.fill && o.top <= b.top + 0.5 && o.bottom >= b.bottom - 0.5);
+    // RB3-G1 (round 3): a band lies under another only where the other holds it across as well as down (side by side links
+    // and a Sankey's left and right bands lie on the ground)
+    const across = o => o.left === undefined || b.left === undefined || (o.left <= b.left + 0.5 && o.right >= b.right - 0.5);
+    const outer = (d.bands || []).slice(0, i).reverse().find(o => o.fill && o.top <= b.top + 0.5 && o.bottom >= b.bottom - 0.5 && across(o));
     const under = outer ? role_color(outer.fill, tok) : String(ground || '').trim().toUpperCase(), uname = outer ? `the ${outer.fill} band under it` : 'the ground';
     const fc = contrast(role_color(b.fill, tok), under), ec = b.edge ? contrast(role_color(b.edge, tok), under) : null;
     if (fc === null) { f.push(`band: its fill ${b.fill} has no resolved color${at}`); return; }

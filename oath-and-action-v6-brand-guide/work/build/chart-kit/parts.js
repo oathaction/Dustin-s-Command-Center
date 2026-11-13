@@ -298,8 +298,10 @@
     });
     // D3-903 (round 2 fix pass): the band is recorded for the checks, which hold its fill, or its edges, to 3 to 1 against
     // what lies under it, and its height to the line it carries (o.line_width, default the context line's 2 px)
+    // RB3-G1 (round 3): with its x extent, so a band lies under another only where the other holds it across as well as down
+    var okp = pts.filter(ok), lx = Math.min.apply(null, okp.map(function (p) { return p.x; })), rx = Math.max.apply(null, okp.map(function (p) { return p.x; }));
     (c.bands = c.bands || []).push({ fill: o.pattern ? null : (o.fill || 'band'), pattern: o.pattern || null, edge: o.edge || null,
-      edge_width: o.edge ? (o.edge_width || c.t('line-hairline')) : 0, line: o.line_width || c.t('line-context'), top: top, bottom: bottom,
+      edge_width: o.edge ? (o.edge_width || c.t('line-hairline')) : 0, line: o.line_width || c.t('line-context'), top: top, bottom: bottom, left: lx, right: rx,
       heights: pts.filter(ok).map(function (p) { return Math.abs(p.y1 - p.y0); }), runs: runs.length });
     var R = K.round, edge = { stroke: o.edge, width: o.edge_width || c.t('line-hairline'), mark: false };
     runs.forEach(function (rn) {
@@ -738,7 +740,7 @@
     var outline = top.concat(bot.slice().reverse());
     var ys = outline.map(function (p) { return p[1]; });
     (c.bands = c.bands || []).push({ fill: o.pattern ? null : (o.fill || 'band'), pattern: o.pattern || null, edge: edge, edge_width: edge ? (o.edge_width || c.t('line-hairline')) : 0,
-      line: 0, top: Math.min.apply(null, ys), bottom: Math.max.apply(null, ys), heights: [w], runs: 1, flow: true });
+      line: 0, top: Math.min.apply(null, ys), bottom: Math.max.apply(null, ys), left: Math.min(x0, x1), right: Math.max(x0, x1), heights: [w], runs: 1, flow: true });
     c.path(d, { fill: o.pattern ? undefined : (o.fill || 'band'), pattern: o.pattern, pts: [outline], data: o.data, job: o.job, kind: 'flow', mark: o.data ? undefined : false },
       o.data ? [Math.min(x0, x1), Math.min.apply(null, ys), Math.abs(x1 - x0), Math.max.apply(null, ys) - Math.min.apply(null, ys)] : undefined);
     if (edge) {
