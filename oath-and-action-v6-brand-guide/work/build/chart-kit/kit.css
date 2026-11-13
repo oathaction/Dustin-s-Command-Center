@@ -104,6 +104,15 @@
 .oac-h-steps > .oac-h-item:not(:last-child)::after { content: ""; position: absolute; left: 11px; top: 24px; bottom: 0; width: 2px; background: var(--oa-chart-color-subject); }
 .oac-h-steps > .oac-h-item.oac-h-branch::before { background: var(--oa-color-surface); color: var(--oa-color-text-primary); border-color: var(--oa-chart-color-context); }
 .oac-h-steps > .oac-h-item > :first-child { margin-top: 0; line-height: 24px; }
+/* DD-I12 (round 4): .oac-h-rows on .oac-h-cards lines each card's name and fields up across the cards that stand side by
+   side: each card a subgrid of the list's rows, its dl's terms and values grid items of the card; where the cards stack
+   (under 27rem), each card flows as before */
+@container (min-width: 27rem) {
+  .oac-h-cards.oac-h-rows { row-gap: 0; }
+  .oac-h-rows > .oac-h-item { display: grid; grid-template-rows: subgrid; grid-row: span 24; align-content: start; margin-bottom: 16px; }
+  .oac-h-rows .oac-h-fields { display: contents; }
+  .oac-h-rows .oac-h-k:first-child { margin-top: 10px; }
+}
 @container (max-width: 479px) {
   .oac-h-big { font-size: var(--oa-chart-type-title-phone-size); line-height: var(--oa-chart-type-title-phone-leading); }
 }

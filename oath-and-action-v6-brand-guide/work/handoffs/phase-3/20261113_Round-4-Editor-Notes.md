@@ -193,7 +193,7 @@ Nothing yet: no change to S12, S16 or S78 or their entries has landed.
 
 ### First read of rules 15.19 to 15.21 (21:31 UTC), read only, from `15-systems-graphics.json` as built
 
-The three rules read as one voice with chapter 15, each names what a builder does and why, and every ID in the rule text sits beside its name or its rule. Apply these until you report finished; after that I write any still open straight into the generator's word strings (D3-669), never a value it reads from the model. Plates and status lines I read once your captures land.
+The three rules read as one voice with chapter 15, each names what a builder does and why, and every ID in the rule text sits beside its name or its rule. Apply these until you report finished; after that I write any still open straight into the generator's word strings (D3-669), never a value it reads from the model. **The plates' words, read at 21:32 from the six specimen files:** the drawings print each variable's title (DR-265), the step lines name the variables by title, the effects stay four rows in the atlas's codes, every route reads "Not checked", and the 15.20 legend reads "Show one reform on Loop R4a", which I keep; two plate items are in the table below.
 
 | Rule | Field | Now | Suggested | Why |
 |---|---|---|---|---|
@@ -206,6 +206,8 @@ The three rules read as one voice with chapter 15, each names what a builder doe
 | 15.21 | `why.text[0]`, last clause | …so the honest control has exactly those steps and no more. | …so the honest control offers those steps alone. | "exactly … and no more" says one thing twice (W17) |
 | 15.21 | `correct.caption` | Connection L55 with what our systems atlas holds for it, … | Connection L55, “Safe seats keep majorities in power”, with what our systems atlas holds for it, … | First mention of the ID (H11); the name is the atlas's `links.L55.name` |
 | 15.21 | `failure.caption`, second sentence (corrected at 21:32, after reading the plate) | The picture names the value as its own. | A line under the slider says the picture made the value up. | The plate's line reads "The value 70 is this picture’s own; the atlas holds no such figure.", so the caption means the picture owns the figure; "names the value as its own" leaves a reader to guess whose. My 21:31 wording said the opposite and is withdrawn |
+| 15.19 | the correct plate's third step line | Policy advantages for wealthy and organized interests raise concentration of household wealth, where the loop began. Connection L03 …: … over 10 years. The loop is back where it began, and with no minus signs on its steps it is reinforcing. | Policy advantages for wealthy and organized interests raise concentration of household wealth. Connection L03 …: … over 10 years. The loop is back where it began, and with no minus sign on any step it is reinforcing. | "where the loop began" printed twice in one step, which a listener hears twice in one status line (W07) |
+| 15.19 | the failure plate's description | Playing. A button with a play icon and no word; no step list, no numbers and no Pause. | Playing. A play button with no word on it, and nothing else: the step list, the numbers and Pause are missing. | A run of matched negatives (W11) |
 | 15.21 | `specs`, "Never" row | Never: A total, odds, an amount or a strength, never as a slider, dial or number field | Never offered: A total, odds, an amount or a strength, whether by slider, dial or number field | "Never" printed twice in one row |
 
 ## Requests

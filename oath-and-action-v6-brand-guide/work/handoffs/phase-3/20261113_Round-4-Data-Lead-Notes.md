@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4. Data visualization and systems lead 
 
 ## Status
 
+- 21:34 UTC. S85 signed off whole; S86's new key checked and signed off. Maker A's round 4 work is signed off.
 - 21:32 UTC. S95 read against IM-E5: IM-E6's label band accepted; two asks for one build (a 2 px gap between dots, S19's grade line on the card).
 - 21:25 UTC. DR-271 applied: byte figures are reported, not sign-off conditions; data conditions stand. MI-7 is with the infographics maker.
 - 21:25 UTC. The design director's DD-A5, DD-A6 and DD-I7 answered yes, with conditions; MI-3 answered by the research lead, words for S90 set.
@@ -141,6 +142,12 @@ The engineer may land items 1 to 3; the cartographer then writes `s12.json` (`"s
 ### Q-A1, S85's word and chip: yes, "Worker bargaining power" with the chip "Variable A2" (21:01 UTC, for maker A and the editor)
 
 CL-050 is an atlas symbol, not a topic symbol: chapter 10's label table files it as Variable A2 (`v7_chip` "Variable A2", label "Worker bargaining power"), and Rule 10.6 sets an atlas drawing only beside the atlas's own name for it, followed by its typed chip. So S85 prints "Worker bargaining power" and the chip "Variable A2" beside the 48 px drawing, both checked by script against `work/handoffs/phase-2/20261110_Stage-B-Ch10-Labels.json`, with the check named in `notes_internal`. This keeps DR-266 and Rule 10.1 exact: by script, Variable A2's own indicator in the atlas is "Union density (BLS, 10.0% 2025)", the very figure S85 draws, so the drawing means its own variable and nothing else. The chip is a reference line in the label style, which the brief's call 5 allows. DR-265 does not reach it: S85 is not a loop drawing, and chapter 10's icon names stay as approved, so the V7 title "Workers' bargaining power" does not replace the label here. Add `CL1514` to the spec's `v7.ids`, since the figure is that claim's.
+
+### S85 whole, and S86 after DD-A5 and DD-A6: signed off (21:34 UTC)
+
+From maker A's final captures (`.../round-4/maker-a/kit-final/`).
+- **S85: signed off whole.** Looked at: Newsprint 1440, Charcoal 288 in grayscale; the SVG read by script. CL-050 draws in its own 48 by 48 px box, as DR-266 sets, in the icon ink, beside "Worker bargaining power" and the chip "Variable A2" (Q-A1), one row pitch above the grid and never in a mark's place. The 10 members fill the first row in the subject ink, the 90 others are open with the context edge, the key words are the file's, and every figure and the source line are as signed off at 21:14. In grayscale on Charcoal the filled row, the open squares, the drawing and the chip all read.
+- **S86: still signed off, the key changed as DD-A5 asked.** By script on the Newsprint SVGs at 1440 and 288 px: the side-by-side key's circles sit on the drawing's one area scale (40,000 at r 101.57 against the 39,555 circle's 101.0 at 1440, and 66.37 against 66.0 at 288; 10,000 and 1,000 in proportion). The "not drawn" sentence keeps 1 federal government and 50 state governments. DD-A5's and DD-A6's conditions are met.
 
 ### S95 read against IM-E5's five conditions, and IM-E6 (21:32 UTC, for the engineer and the infographics maker)
 

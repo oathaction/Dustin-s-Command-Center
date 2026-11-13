@@ -804,7 +804,7 @@ function id_types() {
 // out first. The browser half (sizes on the type scale, overflow, overlap, reading order, 200 percent) runs in
 // oa-chart.mjs build.
 const HTML_TAGS = ['ul', 'ol', 'li', 'dl', 'dt', 'dd', 'p', 'span', 'strong', 'time'];
-const HTML_CLASSES = ['oac-h-cards', 'oac-h-facts', 'oac-h-steps', 'oac-h-dates', 'oac-h-item', 'oac-h-branch', 'oac-h-name', 'oac-h-big', 'oac-h-body',
+const HTML_CLASSES = ['oac-h-cards', 'oac-h-rows', 'oac-h-facts', 'oac-h-steps', 'oac-h-dates', 'oac-h-item', 'oac-h-branch', 'oac-h-name', 'oac-h-big', 'oac-h-body',
   'oac-h-small', 'oac-h-src', 'oac-h-fields', 'oac-h-k', 'oac-h-v', 'oac-h-tag', 'oac-h-tag-strong', 'oac-h-mark', 'oac-nw', 'oa-id'];
 const HTML_ATTRS = ['class', 'role', 'data-oa-row', 'data-oa-id', 'datetime', 'id', 'aria-hidden'];
 function html_tree(html) {
