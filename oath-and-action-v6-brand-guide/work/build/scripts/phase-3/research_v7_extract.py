@@ -129,7 +129,11 @@ write('v7-issues', rows, cols, {
                                                      f'{sum(1 for r in rows if r["domain"] == d)} of {len(rows)} issues, as of October 15, 2026, United States. '
                                                      'Snapshot of October 15, 2026. Grades are the atlas\u2019s own'
                                                      + ('; retired records are marked.' if any(r['retired'] for r in rows if r['domain'] == d) else '.'))
-                             for d in sorted(DOMAIN_TITLE)},
+                             for d in sorted(DOMAIN_TITLE)}
+                            | {'domain_d01_snapshot_once': (f'Source: {PUB}, issue records in the domain of {DOMAIN_TITLE["D01"][0].lower() + DOMAIN_TITLE["D01"][1:]}, '
+                                                            f'{sum(1 for r in rows if r["domain"] == "D01")} of {len(rows)} issues, snapshot of October 15, 2026, United States. '
+                                                            'Grades are the atlas\u2019s own'
+                                                            + ('; retired records are marked.' if any(r['retired'] for r in rows if r['domain'] == 'D01') else '.'))},  # board 2, A5 (DR-257): S38, the snapshot date once
     'domain': 'all', 'domain_note': 'The issue register spans all ten domains', 'states': []})
 
 # 3. Drug-price claims on pathway PW06 (evidence table)
@@ -153,6 +157,8 @@ write('v7-claims-drug-prices', rows, cols, {
     'unit': 'claims',
     'qualification': 'Each claim carries its own population, place, period and limitation, and its grade covers that claim alone. The filter is the studio\'s, so the table is a selection from the pathway, which also holds claims on medical bills',
     'printed_source_line': f'Source: {PUB}, claims register, pathway PW06, {len(rows)} claims about drug prices, verified through October 15, 2026, United States. Snapshot of October 15, 2026. Each claim states its own period and limitation; grades are the atlas\'s own.',
+    # board 2, A5 (DR-257): S39, the snapshot date once in S68's form; every drawn claim carries the snapshot's check date
+    'source_line_variants': {'snapshot_once': f'Source: {PUB}, claims register, pathway PW06, {len(rows)} claims about drug prices, snapshot of October 15, 2026, United States. The atlas checked all {len(rows)} on that date. Each claim states its own period and limitation; grades are the atlas\'s own.'},
     'domain': 'D06', 'domain_note': 'V7\'s competition domain asks why prescriptions cost so much, and the claims are about drug-benefit middlemen, patents and generic competition', 'states': []})
 
 # 4. Headline figures (indicator row)
@@ -173,6 +179,8 @@ write('v7-numbers', rows, cols, {
                       ' section 2, "Restrictions on covered investments", and section 3, "Requiring voters to provide photo identification" to vote in person in an election for federal office.'
                       ' The table keeps V7’s words as stored (data lead ruling RF-4)'),
     'printed_source_line': f'Source: {PUB}, headline figures, eight figures, checked October 15, 2026, United States. Snapshot of October 15, 2026. Each figure carries its own source and qualification.',
+    # board 2, A5 (DR-257): S60, the snapshot date once in S68's form; V7 marks all eight "checked October 15, 2026"
+    'source_line_variants': {'snapshot_once': f'Source: {PUB}, headline figures, eight figures, snapshot of October 15, 2026, United States. The atlas checked all eight on that date. Each figure carries its own source and qualification.'},
     'domain': 'all', 'domain_note': 'The eight figures come from several domains', 'states': []})
 assert len(rows) == 8
 
@@ -192,6 +200,8 @@ write('v7-issue-status-checks-on-power', rows, cols, {
     'unit': 'issue statuses',
     'qualification': 'Statuses can have moved since October 15, 2026; a chip prints V7\'s date beside it. The chip words (decided, pending, in court) are the studio\'s reading of V7\'s text and must quote the case and date the text gives',
     'printed_source_line': f'Source: {PUB}, issue records, status of six issues on checks on power, as of October 15, 2026, United States. Snapshot of October 15, 2026. Statuses may have changed since that date.',
+    # board 2, A5 (DR-257): S63, the snapshot date once in S68's form
+    'source_line_variants': {'snapshot_once': f'Source: {PUB}, issue records, status of six issues on checks on power, snapshot of October 15, 2026, United States. Statuses may have changed since that date.'},
     'domain': 'D05', 'states': ['IL'], 'domain_note': 'Issue X05 names Trump v. Illinois, so Illinois counts once under Rule 01.9'})
 
 

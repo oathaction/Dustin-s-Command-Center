@@ -124,6 +124,14 @@ How I check Part A: a script (`scratch/.../data-lead/scripts/parta_diff.py`) com
 
 I read the diff of `work/build/scripts/phase-2/guide_build.py` against `33dc30a3`: `LITERAL_HALF = {"s-14-124-sketch": 0}` with DR-64's one exception recorded in its comment, five lines in `process_fragment` that drop the first `<svg>` of that specimen's avoid pair from the literal color scan only when the file holds exactly two drawings, and a self-test scenario that proves the better half and another avoid sketch still warn. Nothing else in the check changed. The engineer reports `--self-test` 33 of 33 and the guide check and kit check passing the drawing with no exemption; I did not rerun them.
 
+### A2, DR-255: signed off (17:29 UTC)
+
+- The cartographer took `#3A8AC4` for the blue at 17:28 UTC. By the kit's key test the two fills now differ by 12.6 (L* 42.5 and 55.1; luma gap 82), over its 10. **My request carried one wrong figure:** I measured contrast against `#ECEAE6`, but Newsprint is `#DCD9D2` (`tokens.css`), so the blue reaches 2.65 to 1 on Newsprint, as the cartographer says, not 3.1. Every place keeps its 1 px context edge, which carries its outline at 4.29 to 1, so the shapes stay apart from the ground; I accept it.
+- By script against `33dc30a3`: the places' paths and rectangles are unchanged (seven small places for Party A, five large blocks for Party B); the only geometry added is the context edge round the large blocks and the second swatch. The better half is byte for byte as signed off. The file is 3,941 bytes, under 4,096. Neither `#CC0000` nor `#3A8AC4` is a value in `tokens.css`.
+- The caption (`sketch_alt`'s first sentence) and the first `<desc>` match character for character: "A map that shades Party A’s seven small places red and Party B’s five large places blue, which takes a side at a glance and makes Party B look bigger than its count." Seven and five are the drawing's counts. The key names each color.
+- Looked at: the cartographer's 1x grayscale comparison on both grounds (`scratch/.../cartographer/shots/a2-gray-compare.png`, 17:16 UTC, with the earlier blue): the bar, the label, every place and its edge read; Party A's small places are the darkest marks and Party B's large blocks a mid gray. The blue has since only grown lighter, which widens that gap. I did not render the final file myself.
+- **A2 changes no figure.** The do-not-publish bar is the guide's own.
+
 ### A4, DR-256: the words signed off (17:27 UTC); the layout waits on the cartographer
 
 - Note 3's range and the alt's last sentence read DR-256's words exactly.

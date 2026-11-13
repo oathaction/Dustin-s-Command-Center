@@ -1,6 +1,6 @@
 # Atlas re-check, all three pages
 
-Research lead, November 13, 2026, for DR-258, board 2. Data for chapter 15’s reconciliation table at board 3. These are older files: today’s guide is the standard, and this rerun changes nothing in it. Nothing in Phase 0’s files, `source/`, the atlas or the guide changed. Machine-readable results: `work/research/20261113_Atlas-Recheck-Full-Data.json`. It completes round 3’s re-check (`work/research/20261113_Atlas-Recheck-Table.md`, D3-1094), which could rerun 1,976 of the 2,644.
+Research lead, November 13, 2026, for DR-258, board 2. Data for chapter 15’s reconciliation table at board 3. These are older files: today’s guide is the standard, and this rerun changes nothing in it. Nothing in Phase 0’s files, `source/`, the atlas or the guide changed. Machine-readable results: `work/research/20261113_Atlas-Recheck-Full-Data.json`. It completes round 3’s re-check (`work/research/20261113_Atlas-Recheck-Table.md`, D3-1094), which could rerun 1,976 of the 2,644. Script: `work/build/scripts/phase-3/research_atlas_recheck_full.py`.
 
 ## What the rerun found
 
