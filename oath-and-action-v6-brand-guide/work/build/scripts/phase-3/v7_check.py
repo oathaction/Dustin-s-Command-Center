@@ -39,7 +39,7 @@ GRADE_WORDS = {"documented": "documented", "well supported": "well-supported", "
                "plausible": "plausible", "contested": "contested", "hypothesis": "hypothesis"}
 DISCLOSURE = re.compile(r"Yes on 3|Veterans for All Voters|Ranked Choice Melrose|\bDisclosure:", re.I)
 TALLY = re.compile(r"\b(total effect|net effect|effects? (?:add|adds|added|sum|sums|summed) up|sum of (?:its |the )?effects|effect score|tally of (?:its |the )?effects)\b", re.I)
-TYPE_WORD = {"node": "Variable", "link": "Connection", "loop": "Loop", "reform": "Reform", "issue": "Issue"}
+TYPE_WORD = {"node": "Variable", "link": "Connection", "loop": "Loop", "reform": "Reform", "issue": "Issue", "claim": "Claim"}
 MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 
@@ -64,6 +64,8 @@ def model():
     for k in d["deliveryLog"]: add(k, "delivery")
     for x in d["domains"]: add(x["id"], "domain")
     for x in d["overlays"]: add(x["id"], "overlay")
+    # round 3 (C-3, C-E6, as the kit's v7() reads them): the atlas's claims, which a chip may name with the type word Claim
+    for k in d.get("claims") or {}: add(k, "claim")
     routes = set()
     for r in d["reforms"].values():
         for x in r.get("routes") or []:
@@ -226,6 +228,7 @@ def self_test():
     sec = lambda body: f'<section class="chapter" id="evidence">{body}</section>'
     cases = [
         ("a chip that names no atlas ID", f"<p>{chip('L99x', 'Connection')}</p>", "ids:"),
+        ("a claim chip without its type word (round 3)", '<p>As <span class="oa-id" data-oa-id="CL1516">CL1516</span> records.</p>', "typed:"),
         ("a chip without its type word", '<p><span class="id">R10</span> is a loop.</p>', "typed:"),
         ("a bare atlas ID", "<p>R10 shifts accountability.</p>", "bare:"),
         # the systems designer's request (round 1): connections whose IDs start with T or LX
@@ -248,6 +251,9 @@ def self_test():
     clean = f"<p>{chip('L25', 'Connection')} <b>{L25['evidence'].replace('-', ' ').capitalize()}</b>.</p>"
     fl = check_html(sec(clean), d, ids, routes, "self-test")
     print(f"{'pass' if not fl else 'FAIL'} a correct connection passes" + ("" if not fl else f": {fl}"))
+    bad += bool(fl)
+    fl = check_html(sec('<p>The atlas’s claim <span class="oa-id" data-oa-id="CL1516">CL1516</span> and <span class="oa-id" data-oa-id="CL1516">Claim CL1516</span>.</p>'), d, ids, routes, "self-test")
+    print(f"{'pass' if not fl else 'FAIL'} a claim chip with its type word passes (round 3)" + ("" if not fl else f": {fl}"))
     bad += bool(fl)
     fl = check_html(sec(f'<figure class="plate plate--failure"><p>Loop R10 bare on purpose.</p></figure>'), d, ids, routes, "self-test")
     print(f"{'pass' if not fl else 'FAIL'} a failure plate's planted fault is left out")
