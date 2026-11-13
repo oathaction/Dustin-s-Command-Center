@@ -13,7 +13,7 @@
 (function (K) {
   'use strict';
   var STEPS = ['seq-1', 'seq-3', 'seq-4', 'seq-5'];
-  var on_ink = function (fill) { var m = /^(?:seq|mag)-(\d)$/.exec(fill || ''); return m && +m[1] >= (fill.charAt(0) === 'm' ? 3 : 4) ? 'label-on-subject' : 'label'; };
+  var on_ink = function (fill) { return /^(seq|mag|div)-\d$/.test(fill || '') ? 'on-' + fill : 'label'; };   // the step's own label ink
   // one map: o = {layer, x, y, w, max_h, items: [{id, cls (1 to n, or null), data, code}], steps, codes, dc, state_lines,
   // outline_all}; returns {T, bottom, unplaced}
   var panel = function (c, o) {
@@ -60,7 +60,7 @@
         [14, 24, 36, 50].forEach(function (d) {
           [[1, 0], [-1, 0], [0, -1], [0, 1], [0.7, -0.7], [0.7, 0.7], [-0.7, -0.7], [-0.7, 0.7]].forEach(function (v) {
             if (pick) return;
-            var cx = q[0] + v[0] * (d + w / 2), cy = q[1] + v[1] * (d + size / 2), b = { x: cx - w / 2, y: cy - size / 2, w: w, h: size };
+            var cx = q[0] + v[0] * (d + w / 2), base = q[1] + v[1] * (d + size / 2) + size * 0.32, b = c.text_box(cx, base, it.words, { role: 'tick', weight: 600, anchor: 'middle' }); b.base = base;
             if (b.x < 0 || b.x + b.w > c.width || b.y < T.y) return;
             if (c.texts.some(function (t) { return hit(b, t); }) || avoid.some(function (t) { return hit(b, t); })) return;
             if ((c.leaders || []).some(function (l) { return K.leader_crosses(l, b); })) return;
@@ -73,7 +73,7 @@
         if (!pick) { unplaced.push(it.words); return; }
         var len = Math.hypot(pick.ex - q[0], pick.ey - q[1]) || 1, ux = (pick.ex - q[0]) / len, uy = (pick.ey - q[1]) / len;
         c.line(q[0], q[1], pick.ex - ux * 2, pick.ey - uy * 2, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
-        c.text(pick.b.x + w / 2, pick.b.y + size * 0.82, it.words, { role: 'tick', weight: 600, anchor: 'middle', halo: true });
+        c.text(pick.b.x + pick.b.w / 2, pick.b.base, it.words, { role: 'tick', weight: 600, anchor: 'middle', halo: true });
       });
       c.texts.forEach(function (t) { bottom = Math.max(bottom, t.y + t.h); });
     }

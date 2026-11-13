@@ -452,6 +452,7 @@
           // R3-5: nor on a link between nodes
           if (c.ink.some(function (s) { return s.link && K.stroke_crosses(s, b); })) continue;
           if (o.clear_paths && on_path(b)) continue;
+          if (o.ok && !o.ok(b)) continue;   // round 3: a place the caller refuses (a map name over a dark fill)
           if (ring) {
             var L = leader_of(it, b);
             if (c.texts.some(function (t) { return crosses(L, t); })) continue;
@@ -995,6 +996,8 @@
   // wholly inside the shape, at least o.inset px (default 2) from every edge; any other goes beside its shape with a
   // leader, through place_labels (o.reach, default [16, 30, 46, 64] px; o.avoid boxes). o.role (default 'label'); o.halo
   // (default true) sets words on the ground's halo. A layer with no label points (counties) places every name beside.
+  // An item's fill is the ink inside its shape (its step's label ink, on-seq-4); a name set beside takes the label ink.
+  // Draw the inset frames and every line before the names.
   // Returns {inside: [{item, box}], beside: [{item, box}], unplaced: [items]}; name the unplaced in a note or the table.
   P.map_labels = function (c, L, T, items, o) {
     o = o || {};
@@ -1016,8 +1019,15 @@
         inside.push({ item: it, box: tb });
       } else rest.push({ it: it, p: p });
     });
-    var pl = P.place_labels(c, rest.map(function (r) { return { x: r.p[0], y: r.p[1], r: 1.5, words: r.it.words, weight: r.it.weight, fill: r.it.fill, src: r.it }; }),
-      { role: role, reach: o.reach || [16, 30, 46, 64], avoid: o.avoid, top: o.top, bottom: o.bottom, halo: o.halo });
+    // a name set beside its shape sits on the ground or another shape, so it takes the label ink on a halo, never its
+    // step's ink (o.beside_fill sets another)
+    // and only where the ground or a light fill lies under the whole name (its corners and middle), so it reads in its ink
+    var LIGHT = [null, 'surface', 'none', 'land', 'light-fill', 'track', 'band', 'seq-1', 'mag-1', 'div-3', 'plate'];
+    var light_under = function (b) {
+      return [[b.x, b.y], [b.x + b.w, b.y], [b.x, b.y + b.h], [b.x + b.w, b.y + b.h], [b.x + b.w / 2, b.y + b.h / 2]].every(function (q) { return LIGHT.indexOf(c.fill_under(q[0], q[1])) >= 0; });
+    };
+    var pl = P.place_labels(c, rest.map(function (r) { return { x: r.p[0], y: r.p[1], r: 1.5, words: r.it.words, weight: r.it.weight, fill: o.beside_fill, src: r.it }; }),
+      { role: role, reach: o.reach || [16, 30, 46, 64], avoid: o.avoid, top: o.top, bottom: o.bottom, halo: o.halo, ok: o.beside_fill ? null : light_under });
     return { inside: inside, beside: pl.placed.map(function (x) { return { item: x.item.src, box: x.box }; }), unplaced: pl.unplaced.map(function (x) { return x.src; }) };
   };
   // map_insets(c, L, T, o): a thin frame round the features of each code in o.codes (default Alaska and Hawaii, the

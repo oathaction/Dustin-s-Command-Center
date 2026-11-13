@@ -28,7 +28,13 @@ For the engineer and the cartographer: Alaska's Aleutians west of 180 degrees ca
 
 ## Atlas re-check (DR-250)
 
-(In progress.)
+Done 01:55 UTC. Files: `work/research/20261113_Atlas-Recheck-Table.md` and `work/research/20261113_Atlas-Recheck-Data.json`, written by `work/build/scripts/phase-3/research_atlas_recheck.py`. Phase 0's files are untouched.
+
+- **No comparison changed, and no candidate V7.1 item.** 1,976 of the 2,644 comparisons were rerun against today's V7 and give Phase 0's results: 2 conflicts, the same Ledger reform counts for D03 (shown 10, V7 9) and D04 (shown 14, V7 13), already on Phase 0's list. The context scan's 8 flags came back word for word and match Phase 0's 8 reviewed false positives. All 1,425 identifier occurrences (1,447 less 18 Standards rule numbers and 4 placeholders) resolve to the same kinds of record.
+- **Could read:** Phase 0's data file (each page's side as Phase 0 extracted it, and the V7 values it computed), Phase 0's script header (its V7 helpers, run as Phase 0 ran them), and today's V7 (`work/extract/atlas-v7-data.json`, byte for byte the committed model, SHA-256 ef1028ac...c7f2).
+- **Could not read:** Concepts V2, V5 Polished and the Atlas Visual System (supplied HTML, out of git, not in this container) or their extracts, nor the V7 HTML itself. So 668 comparisons could not be rerun: effect cells (344), Who Can Act (94), production table rows (48), names without an ID (127), effect words (24), domain and layer rows (13), and 18 of the Circuit's 27. The effect cells, Who Can Act and the Circuit are tested through the V7-side values Phase 0 stored (effect-code and route tallies, the Circuit's counts), all equal; the other four rest on provenance: the V7 HTML Phase 0 read (SHA-256 05e26c6b...7649 on October 20) is byte for byte the page re-supplied on November 5 and 10, whose model block is the committed file.
+- **Stored V7 sides equal today:** sheet figures (12 sheets and the eight busiest crossings), the Ledger's computed counts (12), the Circuit's counts, the 21 claims' V7 values, the Field Guide's sign counts (20), and the Who Can Act tallies (5).
+- **The rerun catches change:** in a scratch mirror with L01's grade and R8's title altered, it reported 14 new conflicts in five families, a stored V7 side unequal, and the model hash mismatch.
 
 ## Judge counts
 
