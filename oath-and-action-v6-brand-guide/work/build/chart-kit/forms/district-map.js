@@ -20,7 +20,7 @@
       var G = K.geo(L.layer), id_of = function (r) { return String(L.fips) + (r[ed] === '00' ? '00' : r[ed]); };
       var y = 0, sw = 14, kx = 0;
       if (L.key_title) { var kt = c.text(0, 13, L.key_title, { role: 'eyebrow', weight: 700, fill: 'secondary', max: W }); y = kt.bottom + 6; }
-      var ky = y + 14;
+      var ky = y + 14, kbot = 0;
       var entries = (L.step_labels || []).map(function (w, i) { return { w: w, s: i + 1 }; });
       if (L.ghost_label) entries.push({ w: L.ghost_label, ghost: true });
       entries.forEach(function (e) {
@@ -32,12 +32,13 @@
           if (e.s === 1) c.rect(kx + 0.5, ky - 10.5, sw - 1, sw - 1, { stroke: 'context', width: 1, mark: false });
         }
         var tb = c.text(kx + sw + 6, ky, e.w, { role: 'tick', max: W - kx - sw - 6 });
-        kx = tb.x + tb.w + 18;
+        kx = tb.x + tb.w + 18; kbot = Math.max(kbot, tb.bottom);
+        if (tb.lines > 1) { kx = 0; ky = tb.bottom + 14; }
       });
       c.key([1, 2, 3, 4].map(function (s) { return { fill: 'mag-' + s, ordered: true, outline: s === 1 }; }));
-      y = ky + 14;
+      y = Math.max(ky, kbot) + 14;
       if (L.nation) { var nb = c.text(0, y + 13, L.nation, { role: 'tick', weight: 700, max: W }); y = nb.bottom + 4; }
-      var panels = L.panels || [], side = W >= 560, gap = 24, pw = side ? (W - gap * (panels.length - 1)) / panels.length : W, low = y;
+      var unplaced = [], panels = L.panels || [], side = W >= 560, gap = 24, pw = side ? (W - gap * (panels.length - 1)) / panels.length : W, low = y;
       panels.forEach(function (pn, pi) {
         var x0 = side ? pi * (pw + gap) : 0, y0 = side ? y + 10 : low + 10;
         var mine = c.rows.filter(function (r) { return String(r[ep]) === String(pn.value); });
@@ -57,11 +58,13 @@
           var w2 = won[id_of(r)];
           return { id: id_of(r), words: String(+r[ed]), weight: 600, fill: w2 ? 'on-mag-' + w2 : undefined };
         }), { role: 'tick', inset: 1, column: false, reach: [10, 20, 32] });
-        if (res.unplaced.length) c.warn('district numbers with no place: ' + res.unplaced.map(function (u) { return u.words; }).join(', '));
+        res.unplaced.forEach(function (u) { if (unplaced.indexOf(u.words) < 0) unplaced.push(u.words); });
         var bottom = T.y + T.h;
         c.texts.forEach(function (t) { if (t.x >= x0 - 1 && t.x < x0 + pw) bottom = Math.max(bottom, t.y + t.h); });
         low = Math.max(low, bottom + 18);
       });
+      // a district with no room for its number at this width is named under the maps; the table names every one
+      if (unplaced.length) low = c.text(0, low + 6, K.word('unlabeled_marks').replace('{codes}', unplaced.sort(function (a, b) { return a - b; }).join(', ')), { role: 'note', max: W, fill: 'secondary' }).bottom + 6;
       c.height(low);
     }
   });
