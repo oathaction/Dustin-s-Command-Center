@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. Data visualizatio
 
 ## Status
 
+- 18:19 UTC. **B2-M5 ruled: keep** S03's and S08's November 10 count until certification ("Fix round"). The guide preview need not wait.
 Current at 18:02 UTC (clock read). My three tasks are done; what is left is a recheck at the builder's next run.
 
 - **Part A closed (17:48 UTC).** A1 to A5 signed off (17:27 to 17:35), the editor's later S74 and S71 words (17:39) and S73's trim (17:54) signed off; A2 to A5 change no figure and A5 changes words only. A6 passed (the engineer). S73 was ruled to come back to 14,106 bytes or under with its frame; the editor cut note 4's last sentence, and the main session's final strict build measures it.
@@ -22,6 +23,15 @@ Current at 18:02 UTC (clock read). My three tasks are done; what is left is a re
 - 17:25 UTC. Decisions file, first draft; `counts` and `checks` written by the script.
 - 17:14 UTC. Schema agreed with the board builder: my schema below plus its six additions (`state`; `spec` and `rule`; picture `role` and `element`; `facts`; `rows` fields; `counts` as proposed). For the builder: `counts.rule_01_9` holds the board's table at the top level (108 examples, limits 27 and 21) and `built` holds the 97 as built; `counts.dr_229.examples` rows carry `passes` true, false or null (null where the test was not applied). Optional fields added later: `facts`, `question`, `list_item`, `list_note`, `list_file`, and `old`/`new` on DR-255.
 - 17:09 UTC. Started. Read CLAUDE.md, my role file, the brief, the decision log from D3-1312 to DR-260, V23 section 1, my round 3 notes and Gate 2's section 9.
+
+## Fix round
+
+### B2-M5 ruled (18:19 UTC): S03's and S08's notes keep the November 10 count until certification
+
+- **Ruled: keep.** S03's and S08's first notes stand as written: "As of November 11, 2026", with Alaska Ballot Measure 2 "trailed 47.4 percent to 52.6 in the unofficial count of November 10, with mailed and overseas ballots still to come". Nothing in S03 or S08 changes, so the guide preview need not wait on a rebuild for this.
+- **Why.** The note is dated and true on its date, and it says the count is unofficial with ballots still to come. The November 12 count (47.19 to 52.81, every precinct in) is also unofficial, and certification (Alaska aims for November 25, 2026) will change it again; taking it now would change the words of two board 1 drawings twice for one outcome that has not moved. The three measures the note names (Massachusetts Question 3, Missouri Proposition A, Alaska Measure 2) stay on one date and one rule, whichever way each went (DR-93): all three update together, once, to each state's certified result.
+- **When they update:** at the refresh once all three are certified, as one change the next board lists among the board 1 changes (Rule 13.10's dated note keeps its date until then).
+- **The R-01 item** now says where the guide prints outcomes (S03's and S08's first notes), from which count (Alaska's unofficial count of November 10), and that the board's November 12 figures are the research lead's later read, printed on the board only.
 
 ## Schema for the decisions file (proposed 17:09 UTC, for the board builder)
 
