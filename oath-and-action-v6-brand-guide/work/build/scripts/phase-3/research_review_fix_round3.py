@@ -762,7 +762,31 @@ def st2_m1(dl, write):
     notes = set_note(notes, 'Line 22 before July 21, 2024 and on or after', (
         'Line 22 before July 21, 2024 and on or after, by payment date, read the same way for all seven funds (ST2-M1; '
         'the 1,030 itemized payments sum to amount in all 119 line 22 rows): ' + ' | '.join(lines) + '.'))
+    # the Republican campaign committee filed "NEVER SURRENDER, INC." on November 12, 2024: any line 22 payment after it
+    camp = [e for e in items if e['recipient_committee_id'] == 'C00828541']
+    late = sorted((e for e in camp if e['disbursement_date'][:10] >= '2024-11-12'), key=lambda e: (e['disbursement_date'], -e['disbursement_amount']))
+    assert [(e['committee_id'], e['disbursement_date'][:10], round(e['disbursement_amount'] * 100), e['recipient_name']) for e in late] == [
+        ('C00873893', '2024-12-11', 1518774435, 'DONALD J. TRUMP FOR PRESIDENT 2024, INC.'),
+        ('C00873893', '2024-12-11', 394106284, 'NEVER SURRENDER, INC.')], late
+    last_other = max(e['disbursement_date'][:10] for e in camp if e['committee_id'] != 'C00873893')
+    assert last_other == '2024-10-30'
+    lc = sum(round(e['disbursement_amount'] * 100) for e in late)
+    notes = set_note(notes, 'Line 22 payments to the Republican principal campaign committee on or after November 12, 2024', (
+        'Line 22 payments to the Republican principal campaign committee on or after November 12, 2024, the day it filed '
+        'the name “NEVER SURRENDER, INC.” (ST2-M1, read by script from the itemized payments): two, both from the Trump '
+        f'National Committee JFC on December 11, 2024, {usd(round(late[0]["disbursement_amount"] * 100))} with the payee '
+        f'written “{late[0]["recipient_name"]}” and {usd(round(late[1]["disbursement_amount"] * 100))} written '
+        f'“{late[1]["recipient_name"]}”, {usd(lc)} in all, inside the drawn amount; no other fund paid it on line 22 '
+        'after October 30, 2024.'))
     m['notes'] = notes
+    v = dict(m.get('source_line_variants') or {})
+    v['with_form_1'] = (
+        'Source: Federal Election Commission, itemized Schedule B transfers and refunds to other committees (lines 22 and '
+        '28C) of the seven committees the FEC designates joint fundraising committees that paid the Democratic or the '
+        'Republican presidential campaign committee, and those committees’ Statements of Organization (Form 1), 2023 to '
+        '2024 cycle, United States. Retrieved November 12 and 13, 2026. Names and the dates they changed from Form 1; '
+        'committees named as their payer wrote them before the November 5, 2024 election.')
+    m['source_line_variants'] = v
     return [(cp, write_csv(out)), (mp, dump_meta(m, end))], '\n'.join(lines)
 
 
