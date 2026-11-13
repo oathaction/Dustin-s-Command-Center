@@ -4,7 +4,8 @@ Oath & Action Edition 06, Phase 3, November 13, 2026. Creative director (`.claud
 
 ## Status
 
-- 18:14 UTC. **Scored. Not ready to ship: 7 Must fix, 12 Should fix.** Craft 3, Clarity 3, Brand fidelity 4, Usefulness 3, Evidence honesty 3, Accessibility 4.
+- 19:00 UTC. **Second pass on run 15: ready to ship.** Craft 4, Clarity 4, Brand fidelity 4, Usefulness 4, Evidence honesty 4, Accessibility 4; all 7 Must fix closed (B2-M5 under the data lead's ruling); 11 of 12 Should fix closed, B2-S3 all but two alts; three small new Should fix (B2-S13 to B2-S15). Rescores: `work/handoffs/phase-3/20261113_Board-2-CD-Rescores.json`. See "Second pass" at the end.
+- 18:14 UTC. **First score. Not ready to ship: 7 Must fix, 12 Should fix.** Craft 3, Clarity 3, Brand fidelity 4, Usefulness 3, Evidence honesty 3, Accessibility 4.
 - Board scored: the builder's run 6 (17:50 UTC; 986,621 bytes; SHA-256 `362326e978435040…`; 310 pictures), frozen with its pictures in scratch. The data lead changed the decisions file at 17:51 and 17:52, after this run; B2-M6 covers what that file already fixes.
 
 ## Verdict
@@ -124,8 +125,87 @@ To replace the round 3 text the board quotes: "I agree with the stacked tile. At
 - The links to the guide preview: version 9 is not yet published.
 - The guide check, the strict build and the kit's build: not run by me; their figures are read from files.
 
+## Second pass
+
+Run 15 (18:52 UTC file, `--reuse --check --strict`, exit 0, no warnings; 1,044,139 bytes, SHA-256 `1d6f99f0ee236c47…`, 314 pictures), frozen in scratch, under `work/handoffs/phase-3/20261113_Board-2-Fix-Brief.md` and each owner's "Fix round" notes. The Tested panel's quick guide check line reads "Waiting for its file" by design; it is not held against the board.
+
+### Verdict
+
+Ready to ship. Panel 1 now opens with the five replies Dustin owes, each with its recommendation and a link, and the reply line beneath them; the cover says the replies take about a minute to read and every item about 30. S12's choice sits in two rows of pictures under its recommendation, and every "approve as drawn" shows its drawing. Each claim I found contradicted now matches its picture or its file. Every criterion reaches 4 and no Must fix is open.
+
+### Scores
+
+| Criterion | First | Second |
+|---|---|---|
+| Craft | 3 | 4 |
+| Clarity | 3 | 4 |
+| Brand fidelity | 4 | 4 |
+| Usefulness | 3 | 4 |
+| Evidence honesty | 3 | 4 |
+| Accessibility | 4 | 4 |
+
+### Reasons
+
+- **Craft, 4.** S12's item falls from 14,220 to 4,573 px with its extra plates folded, the as-built frame and the stacked tile sit one under the other at true size in each window's row, sketch 14.124's gray and red-and-blue halves stand in one plate at 868 px each, and composed Charcoal pictures take a 16 px margin.
+- **Clarity, 4.** The five numbered replies and the reply line fill panel 1's first screen as board 1's answers did, the items carry the reply numbers, and the codes, ledger numbers and dataset names have left the face for the reference lines.
+- **Brand fidelity, 4.** Unchanged: token colors only, no Pillar Red in the board's chrome, red and blue only in the decided avoid half under its bar, and S73's count now names both sides.
+- **Usefulness, 4.** Dustin can answer from the replies in about a minute, S12's two options show at 1,440 and 1,024 px under the recommendation, every forms-changed item carries panel 2's picture with a link to the form, and each V7.1 item states its place on the October list.
+- **Evidence honesty, 4.** S12, S16 and S78 say what the 326 px phone drawing shows, with each phone picture labeled by its width; all 86 weight lines are one measure that sums and matches panel 5 and the engineer's plate file (S73 14,059 under 14,106); the R-01 item names where the guide prints outcomes and from which count; panel 2's board 1 lines agree with panel 1, and the election table prints "Not applied" with no false "No".
+- **Accessibility, 4.** The builder's board check passes the wrapped copy and fails the page alone only on its missing `<html>` tag, panel 1's pictures carry alt text that says what each shows (two excepted, B2-S3), and under 760 px each chart's frame opens on the phone drawing with a line that says so.
+
+### Must fix, checked
+
+| Code | State | What I saw on run 15 |
+|---|---|---|
+| B2-M1 | Closed | "The five replies we need from you", numbered 1 to 5, each with its recommendation and a same-page link, then the reply line, in panel 1's first screen at 1440 and readable at 390; the answered items fold closed under one "Done" heading; the cover gives 201 words (about one minute) for the replies and 5,952 (about 30 minutes) for every item, at 200 a minute. |
+| B2-M2 | Closed | Row at 1,440 px: the as-built frame (946 px, 943 showing) and the stacked tile cropped to 723 px; row at 1,024 px: the frame in its 558 px column and the 618 px stacked tile in the same frame; board 1's plate, the full plates and the phone pair in one fold. My view on S12 is quoted beside the data lead's. |
+| B2-M3 | Closed | S12, S16 and S78 state the 326 px phone drawing: WA, WV and WY in a note for S12 and S78; 47 codes and DC, DE, ME, NH named for S16, beside board 1's MA and NJ at 358 px. Each phone picture says its drawing width. The guide fix is listed for round 4. |
+| B2-M4 | Closed | Panel 2 names one measure at its top; all 86 weight lines read "bytes on the page: as placed and frame", every sum checks, panel 5 prints the same three figures for S13 (33,488, 752, 34,240) and S05, all equal to `20261113_Plate-Bytes.json`; S73 reads 14,059 with its 14,106 ceiling. |
+| B2-M5 | Closed under a ruling | The data lead ruled at 18:19 UTC that S03's and S08's notes keep Alaska's unofficial count of November 10 until all three measures certify (DR-93: one date and one rule for all three). The R-01 item now says the guide prints outcomes only there, from that count, and labels the November 12 count a later read shown on the board only. |
+| B2-M6 | Closed | Panel 1 names S05 as a changed drawing and S04 and S08 among thirteen moves; panel 2's board 1 lines agree with the builder's pixel comparison; the election table prints 7 "Yes" and "Not applied" for the rest, no "No"; the builder's warnings list is empty. |
+| B2-M7 | Closed | Each of the eight items carries panel 2's Newsprint picture under its recommendation, with a link to its form in panel 2. The S54 and S55 item shows S54 only (B2-S15). |
+
+### Should fix, checked
+
+| Code | State | Note |
+|---|---|---|
+| B2-S1 | Closed | No D3 or DR code, finding code, ledger number, dataset name or "sidecar" on the face by pattern; atlas IDs that remain carry their titles. |
+| B2-S2 | Closed | Gray before and today's after, each the full plate at 868 by 545 px. |
+| B2-S3 | Closed but for two alts | Panel 1's S12, S16, S10 and S05 alts say what each picture shows. The two DR-255 alts still read "A picture for 'Sketch 14.124 in red and blue'", the gray one included; the editor's alts in its 18:26 notes did not reach the page. |
+| B2-S4 | Closed | Each V7.1 item's "V7.1 list" fact: seven new, item 8, partly new beside item 36, no atlas record. |
+| B2-S5 | Closed | One "Done" chip; no "Recommended: Done." |
+| B2-S6 | Closed | The quick check line waits for version 9's file by design; Not tested names the 183 links to 128 entries, checked on this build only. |
+| B2-S7 | Closed | Captions name 108 (97 built and round 4's 11 planned) and the 17 of the 97 built. |
+| B2-S8 | Closed | 558 px column, 556 showing, 468 scrolled, 62 for the stacked tile, all as the measure file's `frames` give them; panel 2 labels S12 "the whole 1024 px drawing, which the guide shows in a frame that scrolls". |
+| B2-S9 | Closed | "the Democratic funds 54 and the Republican funds 56". |
+| B2-S10 | Closed | "needed Concepts V2 and the Atlas Visual System". |
+| B2-S11 | Closed | "No figure or ink changed; S12's phone adds a note…", with what each comparison compares. |
+| B2-S12 | Closed | At 390 px each frame opens on the phone drawing (direction right to left) under "On a narrow screen this frame opens on the phone drawing"; Charcoal pictures carry their margin. |
+
+### New Should fix (none blocks shipping)
+
+- **B2-S13. Two charts' "frame" holds bytes the build adds inside them.** Where: S06's weight lines (forms 14.76 and 14.127) and panel 5's heaviest charts; S67's weight line. What: S06 prints "1,113 for the frame round it", which is its 753-byte frame plus 360 bytes of spans the build adds round its atlas IDs (the engineer's `added_on_page`); S67 the same with 48. Fix: name the page's additions apart, or call the figure "the frame and what the page adds". Owner: builder.
+- **B2-S14. The Scores panel and the Tested chip.** Where: panel 6's "This board" row; panel 7's chip. What: the row shows only this board's first score, with "Not yet", and panel 7's chip reads "Part waiting for the owners' notes" where it waits for the quick check's file. Fix: read `20261113_Board-2-CD-Rescores.json` as the rescore beside the first score, as rounds 1 to 3 do, before the board ships; let the chip name the file it waits for. Owner: builder.
+- **B2-S15. S55's picture.** Where: the S54 and S55 item. What: it asks for both charts and shows S54 alone. Fix: add S55's Newsprint picture from panel 2 and its link (form 14.68). Owner: builder.
+
+### Tested, second pass
+
+- Run 15 frozen in scratch with its 314 pictures, wrapped with a doctype, `<html lang="en">`, charset and viewport; Playwright with Chromium, one browser at a time.
+- Whole board at 1440 and 390 px: 551,242 and 599,149 px tall, scroll width equal to the window; 329 images, each scrolled into view, all loaded and drawn at natural size (0 differ); 432 labeled frames.
+- Visible text read by script with folds closed and open; codes on the face scanned by pattern; panel 1's 30 items read.
+- At 1440: the cover, panel 1's first two screens, S12's four row pictures one by one, the DR-255 pair, S73 with its new picture, S16's phone labels, S73's weight line and table fold, the count tables. At 390: panel 1's replies, form 14.117's frame opening on the phone drawing (direction rtl, 358 of 1,070 px), S73's frame.
+- From the files: S12's and S78's composed labels and Charcoal margin; every panel 1 picture's alt text; the nine forms-changed items' pictures and links.
+- Figures by script: the 86 weight lines' sums; S13, S05, S06 and S73 against `20261113_Plate-Bytes.json` and panel 5; S12's figures against the cartographer's notes on the measure file's `frames`; the board 1 comparison and the builder's empty warnings in the figures file; the board check results file (axe html-has-lang only, on the page without its `<html>` tag).
+
+### Not tested, second pass
+
+- The quick guide check on the version 9 build, and the board's last run after it lands.
+- The guide preview links against version 9 as published.
+- The S12 fold's pictures, the forms panel past the forms named above, and the grayscale proofs, one by one on run 15; my first pass covered them on run 6, and the builder's notes name what changed since.
+- The board as the host shows it once published, in Safari or Firefox, printed, or on a physical 2x screen; a keyboard walk and a screen reader.
+
 ## Change log
 
-- Created: `work/handoffs/phase-3/20261113_CD-Review-Of-Board-2.md`, `work/handoffs/phase-3/20261113_Board-2-CD-Scores.json`.
+- Created: `work/handoffs/phase-3/20261113_CD-Review-Of-Board-2.md`, `work/handoffs/phase-3/20261113_Board-2-CD-Scores.json`, `work/handoffs/phase-3/20261113_Board-2-CD-Rescores.json` (second pass).
 - Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/creative-director/` (the frozen board and board 1 copies, scripts, screenshots, crops, measurements, the count rerun).
 - Modified: none.
