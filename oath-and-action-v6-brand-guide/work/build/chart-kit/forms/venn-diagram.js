@@ -1,6 +1,6 @@
 /* Venn diagram (coverage plan 3.8, extended; S87). Two groups that overlap, as two equal circles inside a frame for everyone,
  * so four regions: the first group alone, both, the second alone, and neither (the frame outside both circles). Each region
- * prints its name, count and share inside it, with 4 px to spare. The circles are one size whatever the counts, and the
+ * prints its name, count and share inside it with 4 px to spare, or under the circles on a leader where it does not fit. The circles are one size whatever the counts, and the
  * spec's note says so; the Euler diagram draws the same regions at true area (Rule 14.82).
  * encode: region (text), value (number), share (number, optional).
  * labels: regions ({a, ab, b, none}: the region each row is, by its stored name), names ({stored: printed}), sets ([the
@@ -36,8 +36,8 @@
         ls.forEach(function (ln, j) { b = c.text(x, top + j * lh + sz * 0.86, ln[0], { role: role, weight: ln[1], anchor: anchor, tnum: ln[1] === 400, fill: ink }); });
         return b.bottom;
       };
-      // inside a region bounded at each height dy from the circles' middle by lo(dy) and hi(dy); a fault where nothing fits
-      var inside = function (r, cy, lo, hi, ink) {
+      // inside a region bounded at each height dy from the circles' middle by lo(dy) and hi(dy): the words' plan, or null
+      var plan = function (r, cy, lo, hi) {
         var roles = ['label', 'tick'];
         // each role at the room's width, then narrower, so a long count breaks onto a second line where the region narrows
         for (var n = 0; n < 2 * roles.length; n++) {
@@ -45,11 +45,9 @@
           var hh = sz + (ls.length - 1) * lh, top = cy - hh / 2, a = -1e9, b = 1e9, wide = 0;
           ls.forEach(function (ln, j) { wide = Math.max(wide, ln[2]); [top + j * lh - cy, top + j * lh + sz - cy].forEach(function (dy) { a = Math.max(a, lo(dy)); b = Math.min(b, hi(dy)); }); });
           if (ls.length > 5 || wide + 8 > b - a) continue;
-          set_lines(ls, (a + b) / 2, top, role, 'middle', ink);
-          return true;
+          return { ls: ls, x: (a + b) / 2, top: top, role: role };
         }
-        c.warn('the words for ' + r[er] + ' do not fit inside its region at ' + W + ' px');
-        return false;
+        return null;
       };
       var tot = rows.reduce(function (t, r) { return t + (+r[ev] || 0); }, 0);
       var tick = c.size('tick'), lab = c.size('label'), pad = c.phone ? 10 : 16;
@@ -69,10 +67,26 @@
         ab: { d: M + 'A' + rr + ' 0 0 0 ' + Pb + 'A' + rr + ' 0 0 0 ' + Pt + 'Z', p: arc_pts(cx2, cy, r, 2 * Math.PI + B, -B, 12).concat(arc_pts(cx1, cy, r, -A, A, 12)) },
         b: { d: M + 'A' + rr + ' 0 1 1 ' + Pb + 'A' + rr + ' 0 0 0 ' + Pt + 'Z', p: arc_pts(cx2, cy, r, B, -B, 40).concat(arc_pts(cx1, cy, r, -A, A, 12)) }
       };
-      // no coverage: in the frame beside the second circle where it fits, else in a band under the circles
-      var nl = lines(by.none, 'label', 9999), nh = lab + (nl.length - 1) * Math.round(lab * 1.25), nw = 0;
+      // each group's words inside it where they fit; else under the circles, in the frame, on a leader up into the group
+      var half = function (dy) { return Math.sqrt(Math.max(0, r * r - dy * dy)); };
+      var P = {
+        a: plan(by.a, cy, function (dy) { return cx1 - half(dy); }, function (dy) { return cx2 - half(dy); }),
+        ab: plan(by.ab, cy, function (dy) { return cx2 - half(dy); }, function (dy) { return cx1 + half(dy); }),
+        b: plan(by.b, cy, function (dy) { return cx1 + half(dy); }, function (dy) { return cx2 + half(dy); })
+      };
+      var AT = { a: [cx1 - r / 2, cy + r * 0.5], ab: [px, cy], b: [cx2 + r / 2, cy + r * 0.5] }, LH = Math.round(lab * 1.25);
+      var y = cy + r + 12, out = [];
+      ['a', 'ab', 'b'].forEach(function (k) {
+        if (P[k]) return;
+        var ls = lines(by[k], 'label', W - 2 * pad), w = 0;
+        ls.forEach(function (ln) { w = Math.max(w, ln[2]); });
+        out.push({ k: k, ls: ls, x: Math.max(pad + w / 2, Math.min(W - pad - w / 2, AT[k][0])), top: y });
+        y += lab + (ls.length - 1) * LH + 12;
+      });
+      // no coverage: in the frame beside the second circle where it fits, else in the band under the circles
+      var nl = lines(by.none, 'label', 9999), nh = lab + (nl.length - 1) * LH, nw = 0;
       nl.forEach(function (ln) { nw = Math.max(nw, ln[2]); });
-      var side = W - pad - (cx2 + r + 16) >= nw && nh <= 2 * r, fb = side ? cy + r + pad : cy + r + 12 + nh + pad;
+      var side = W - pad - (cx2 + r + 16) >= nw && nh <= 2 * r, ntop = y, fb = side ? Math.max(cy + r + pad, y - 12 + pad) : y + nh + pad;
       c.rect(0.5, 0.5, W - 1, fb - 0.5, { fill: FI.none || 'none', kind: 'region', data: { key: by.none[er], field: ev, value: by.none[ev] } });
       c.rect(0.5, 0.5, W - 1, fb - 0.5, { stroke: 'context', width: 1, mark: false });
       // the circles' ground knocks the frame's fill out, then each region takes its own
@@ -84,12 +98,11 @@
       });
       c.circle(cx1, cy, r, { stroke: L.edge || 'subject', width: c.t('line-baseline'), mark: false });
       c.circle(cx2, cy, r, { stroke: L.edge || 'subject', width: c.t('line-baseline'), mark: false });
-      var half = function (dy) { return Math.sqrt(Math.max(0, r * r - dy * dy)); };
-      inside(by.a, cy, function (dy) { return cx1 - half(dy); }, function (dy) { return cx2 - half(dy); }, ON[FI.a] || 'label');
-      inside(by.ab, cy, function (dy) { return cx2 - half(dy); }, function (dy) { return cx1 + half(dy); }, ON[FI.ab] || 'label');
-      inside(by.b, cy, function (dy) { return cx1 + half(dy); }, function (dy) { return cx2 + half(dy); }, ON[FI.b] || 'label');
+      out.forEach(function (o) { c.line(AT[o.k][0], AT[o.k][1], AT[o.k][0], o.top - 3, { stroke: 'leader', width: c.t('line-hairline'), mark: false }); });
+      ['a', 'ab', 'b'].forEach(function (k) { if (P[k]) set_lines(P[k].ls, P[k].x, P[k].top, P[k].role, 'middle', ON[FI[k]] || 'label'); });
+      out.forEach(function (o) { set_lines(o.ls, o.x, o.top, 'label', 'middle', 'label'); });
       if (side) set_lines(nl, cx2 + r + 16 + (W - pad - cx2 - r - 16 - nw) / 2, cy - nh / 2, 'label', 'start', ON[FI.none] || 'label');
-      else set_lines(nl, W - pad, cy + r + 12, 'label', 'end', ON[FI.none] || 'label');
+      else set_lines(nl, W - pad, ntop, 'label', 'end', ON[FI.none] || 'label');
       c.height(fb + 2);
     }
   });
