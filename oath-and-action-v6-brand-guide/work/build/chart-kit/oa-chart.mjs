@@ -1072,6 +1072,12 @@ async function self_test() {
         { label: 'Broke', agg: 'list', field: 'm', with: ['st', 'v'] }, { label: 'Seats', agg: 'count' }] } } };
       const h = K.table_html(sp, [{ p: "D's", m: 'Davis (NC)', st: 'NC', v: 'Yea' }], { lean: true });
       pass(/>D’s<\/th><td class="t">Davis \(NC, Yea\)<\/td><td>1<\/td>/.test(h), "A-E7: a grouped table's words take the spec's typography" + (/Davis \(NC, Yea\)/.test(h) ? '' : ': ' + h.slice(0, 300))); }
+    { // MA-9: a list column's words, keyed by the group, stand in for its list in that group alone
+      const sp = { id: 'T', table: { columns: [{ field: 'c', label: 'C' }], group: { by: 'court', columns: [{ label: 'Court', agg: 'key' },
+        { label: 'States', agg: 'list', field: 'st', distinct: true, words: { 'Supreme Court': 'Every state, DC and the territories' } }] } } };
+      const h = K.table_html(sp, [{ court: 'Supreme Court', st: 'All' }, { court: 'First Circuit', st: 'ME' }, { court: 'First Circuit', st: 'MA' }], { lean: true });
+      pass(/>Supreme Court<\/th><td class="t">Every state, DC and the territories<\/td>/.test(h) && />First Circuit<\/th><td class="t">ME; MA<\/td>/.test(h),
+        "MA-9: a column's words keyed by the group stand in for its list in that group alone" + (/Every state/.test(h) ? '' : ': ' + h.slice(0, 300))); }
     { // C-3, C-E6: a claim ID listed in v7.ids prints in its typed chip, once
       pass(K.chips('as CL1516 records', ['CL1516']) === 'as <span class="oa-id" data-oa-id="CL1516">Claim CL1516</span> records' && /claim <span class="oa-id" data-oa-id="CL1516">CL1516</.test(K.chips('the atlas’s claim CL1516', ['CL1516'])),
         "C-3: an atlas claim ID takes its typed chip, its type word printed once"); }

@@ -1109,6 +1109,7 @@
     if (col.words && v !== null && v !== undefined && col.words[String(v)] !== undefined) return col.words[String(v)];
     return K.fmt(v, col.format);
   };
+  // MA-9: a column's words, {group key: words}, print in place of its aggregate for those groups (any agg).
   // R3-3 (round 3, DR-249): a table grouped by a column, for a chart of thousands of rows (a county map): table.group =
   // {by: a column, or a list of columns whose values join with ", " (A-E1), sort: 'key' (else first seen, after the spec's sort), columns: [{label, agg, field, format, words, state_name, row_header,
   // from, to, name}]}. agg: 'key' (the group's value, its words, or with state_name the state's name from the tile grid),
@@ -1131,6 +1132,9 @@
     var vals = rs.filter(function (r) { return ok(r[f]); });
     var nums = vals.map(function (r) { return +r[f]; });
     var a = col.agg || 'key';
+    // MA-9 (round 3): any column's words, keyed by the group's key, print in place of its aggregate for that group (a
+    // court whose list stands for every state)
+    if (a !== 'key' && col.words && col.words[grp.key] !== undefined) return col.words[grp.key];
     if (a === 'key') {
       if (col.state_name && root.OAChartGeo && root.OAChartGeo.tiles && root.OAChartGeo.tiles[grp.key]) return root.OAChartGeo.tiles[grp.key][3];
       return col.words && col.words[grp.key] !== undefined ? col.words[grp.key] : grp.key;
