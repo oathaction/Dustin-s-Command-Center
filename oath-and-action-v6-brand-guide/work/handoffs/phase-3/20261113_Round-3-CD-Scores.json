@@ -178,12 +178,13 @@
    "specimens_under_the_bar": [],
    "must_fix": [],
    "should_fix": [
-    "SK-S1"
+    "SK-S1",
+    "SK-S2"
    ],
    "must_fix_count": 0,
-   "should_fix_count": 1,
+   "should_fix_count": 2,
    "ready": true,
-   "to_ready": "Ready; SK-S1 is a placement fix for the fix pass."
+   "to_ready": "Ready; SK-S1 is a placement fix and SK-S2 a word fix for the fix pass."
   },
   {
    "key": "rules",
@@ -199,7 +200,7 @@
     "accessibility": 4
    },
    "reasons": {
-    "craft": "No plate changed (D3-1289), the plates read as before at 1440, 1024 and 390 px, and rules with the opener weigh 175,796 of 212,288 bytes.",
+    "craft": "No plate changed (D3-1289), the plates for Rules 14.7 and 14.9 read at 390 and 1024 px as round 2 left them, and rules with the opener weigh 175,796 of 212,288 bytes.",
     "clarity": "Rule 14.9's second paragraph states the class-map test in plain words, though Rule 14.6 now runs five paragraphs and about 530 words, more than 50 lines at 1440 px, restating its own spec rows (R-S1).",
     "brand_fidelity": "Rule 14.6's area case keeps red off maps, nodes, cells and flows, and Rule 14.7's \"Seats on a map\" row writes the party test into the rules.",
     "usefulness": "Rules 14.3, 14.4, 14.7 and 14.12 each gain one spec row a builder can act on, and the opener links groups 11 to 15.",
@@ -221,7 +222,7 @@
  ],
  "totals": {
   "must_fix": 4,
-  "should_fix": 21,
+  "should_fix": 22,
   "under_4": [
    "maker_a.clarity",
    "maker_a.accessibility",
@@ -441,6 +442,14 @@
     "sketches"
    ]
   },
+  "SK-S2": {
+   "title": "The avoid entry and Rule 14.7's failure plate",
+   "what_and_fix": "Rule 14.7's failure plate already draws a House bar chart in red and blue under \"Failure case: do not publish\", while sketch 14.124 draws the same fault in gray with the colors named. Keep the sketch gray, and add one clause to entry 14.124's why or caption pointing to Rule 14.7's failure plate, which shows the colors, so the two places teach one lesson.",
+   "owner": "Cartographer, editor",
+   "items": [
+    "sketches"
+   ]
+  },
   "R-S1": {
    "title": "Rule 14.6's length",
    "what_and_fix": "Five paragraphs, about 530 words; paragraph 5 alone is 149. Keep each paragraph to its principle in two or three sentences and let the spec rows carry the lists.",
@@ -473,7 +482,7 @@
   "4_diagrams_reading_order": "S66's table follows the phone's order with each next step; S77 names each next step; S74 and S76 print links as rows; S68's lines end in the open diamond. Accessibility tree not tested.",
   "5_weight": "Every round 3 plate under 15,000 bytes with its frame, S69 the only one over 13,852 (14,591); chapter 14 with the kit 2,219,208 of 2,803,941; geometry 133,117 of 250,000; rules with the opener 175,796 of 212,288; share 14,106 for 13; projection 15,044,385 of 15,500,000.",
   "6_rule_14_9": "The notes give 13 of 51 and 1,707 and 182 of 3,143 and name no place above another; the titles count places by class (C-S3). Classes not recomputed.",
-  "7_sketches": "All nine at 1x and 2x on Newsprint, four at 2x on Charcoal; the avoid bar sits over the misleading half only and \"Use instead\" over the panels at every width; the gray half still teaches party coded by fill with no margin."
+  "7_sketches": "All nine at 1x and 2x on Newsprint, four at 2x on Charcoal; the avoid bar sits over the misleading half only and \"Use instead\" over the panels at every width; the gray half still teaches party coded by fill with no margin. Rule 14.7's failure plate already shows red against blue, so entry 14.124 should point to it (SK-S2)."
  },
  "structure_verdict": {
   "verdict": "Chapter 14 at 128 rules on the page (124 by the plan's count for round 3) still reads as a reference a designer would trust: every entry keeps one anatomy (rule, use it when, use instead, why it works, specimen with chip, title, measure and source, reader’s question, builders line), the rail and local contents track the reader at 1440 px, and the opener links each built group’s question.",
@@ -530,7 +539,7 @@
   }
  ],
  "risks_for_dustin": [
-  "The avoid sketch in gray or in color: I recommend gray. Literal red and blue would put a party-colored map on an Oath & Action page against DR-64 and Rule 14.7, and a screenshot travels without its do-not-publish bar; the gray half still shows party coded by fill with no margin, and its key names the red and blue.",
+  "The avoid sketch in gray or in color: I recommend gray, with SK-S2's pointer. Rule 14.7's failure plate already shows red against blue under its do-not-publish bar, so the reader meets the colors once, on a bar chart; a second, map-shaped red and blue is the most shareable partisan image there is, and a screenshot travels without its bar. The gray half still shows party coded by fill with no margin, and its key names the red and blue.",
   "S12 is a board 1 drawing: a fixed 1024 px stage keeps the approved drawing and adds a sideways scroll under 1024 px; a change in the form changes the drawing. Either belongs on board 2.",
   "Chapter length: at this rate chapter 14 passes 380,000 px at 1440 px after round 4, and the selection guide becomes its front door."
  ],

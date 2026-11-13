@@ -524,3 +524,118 @@ Read rulings (a) to (g) and "Rulings, after RL-3" directly.
 - The engineer's DL-E1 measure: I read its figures and did not rerun `dle1.mjs` or any build.
 - Line 21B payments from either committee to committees outside the file (RL-4).
 - Tile size at each width for S82's ring and dot marks.
+
+## Review fix pass
+
+November 13, 2026, review fix pass, first run, from 04:24 UTC (clock read from `date -u`). Inputs: the review brief, the statistics and civic report (ST, `work/handoffs/phase-3/20261113_Round-3-Red-Team-Statistics-Civic.md`), then the access and production report (AX), the brand and craft report (BC) and the creative director's (CD) as each lands. Every figure here was read by script (`python3 -I`) from `work/build/data/`, the kit's specs and `kit.js`, or the main session's strict build of `8507b822` (plate bytes measured from the page). Scripts: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/data-lead/scripts/` (`st_check.py` and the one-off checks logged under "Tested, review fix pass"). Owners read this section directly (D3-662). Items marked **waits on Dustin** carry the ruling I recommend; their other parts are ruled now and do not wait.
+
+### Corrections to my round 3 rulings
+
+- **Ruling (b), "Puerto Rico is not drawn; no round 3 file holds it", was wrong.** The 2024 boundary files hold Puerto Rico (the states file's 52nd feature, its municipios in the counties file, district 7298 in the cd119 file), and `dol-state-minimum-wage-history` holds Guam, Puerto Rico and the U.S. Virgin Islands ($9.50 in Puerto Rico on January 1, 2024). `geo.js` draws none of them, which stays right; the notes say so (ST-S4 below).
+- **Ruling (c)'s "13 of 51" counted by no single rule.** On the figures the table prints, 11 states and DC have an interval that reaches another class; on the unrounded estimates, 10 states and DC. My 13 joined the two lists. ST-S12 below sets the rule.
+- **C-5's "gray panels by party can stay" was wrong.** Entry 14.124's better half draws its margin in Verdigris steps 2 to 5, so "gray" no longer describes it (ST-S3).
+
+### Rulings on the statistics and civic report (ST)
+
+**ST-M1. S73's empty "From" and "Report line" cells.**
+- Confirmed in `kit.js` `K.group_cell`: `if (!nums.length) return col.empty || '';` sits above `if (a === 'first') ...`, so `agg: "first"` on a text field prints nothing. On S73 that empties "From" in all seven rows and "Report line" on both refunds (whose `amount_lines` is "28C"); "22" passes only because it parses as a number.
+- Ruling: the engineer moves the `first` branch above the numeric guard, so `first` prints the group's first row through `K.cell_text` whatever its type, and lists every spec whose group table uses `first` (by grep, `s69.json` and `s73.json` name it) and rebuilds them. Maker B rebuilds S73 and reads the page table: "From" names each fund in every row, and the refund rows print "28C, refund" from the column's existing `words`. One fix for AX-M1 as well.
+- Owner: engineer; maker B rebuilds and looks; I sign off from the page table with scripts on and off.
+- Reason: the table equivalent must name both funds the same way the drawing does (Rule 01.11), and the refunds must carry the line RL-3a asked for.
+
+**ST-M2 and Q1. Where a chart's full rows live. Waits on Dustin; its page parts are ruled now.**
+- **Recommended to Dustin (waits):** each chart whose page table groups or trims its rows ships its full data as a CSV in Phase 5's asset package, one file per chart, and every note that sends a reader to the full rows names that file. The guide page offers no per-chart download, since a download control on every plate is new interface and weight that no rule asks for, and the asset package already carries the guide's other files.
+- **Ruled now (does not wait):**
+  1. No reader text promises "the download" or "the CSV file" in its present form. The editor rewrites all nine places the report lists (captions of S69, S70, S72 and S73; notes of S73 note 3, S74 note 4, S81 note 3, S83 note 3; entry 14.120's rule) to one form that names the file and where it lives, for example "Every county’s estimate and margin of error is in this chart’s data file in the guide’s asset package." The phrase lives in one place (the engineer's `words.json`, or one string the editor's script fills), so Dustin's answer changes one string and no spec.
+  2. The engineer confirms that the kit's CSV export for each of those nine charts holds every column its words promise: S81 each county's estimate, margin and class with the nation apart; S83 each county's flag in the Bureau's words; S72 all 533 members; S69 each subcommittee's seats; S70 each court; S73 every recipient with lines 21B and 28C; S74 `link_ids`. It writes the result in its notes. Phase 5's package then ships those exports unchanged.
+  3. S81's page stays as DL-E1 set it: the island carries the class only and the grouped table prints values and names no county. Carrying each county's value and margin costs about 10,600 bytes more (D3-1090's 24,780 against 14,200), past the 15,000 ceiling. A reader who needs one county's figure gets it from the file the note names.
+- Owners: editor (words), engineer (the phrase's one home and the export check); Dustin (where the files live).
+- Reason: a note may only point to something that exists; the fix to the words cannot wait on where the file lives, only on its name.
+
+**ST-M3. S68's "Line of authority" prints bare order numbers.**
+- Confirmed: the column reads `order` through `words` keyed 1, 2, 5 and 6, so orders 3 (city council or municipal utility board), 4 (electric cooperative board), 7 (Congress and the Department of Health and Human Services) and 8 (investor-owned utility) print "3", "4", "7" and "8".
+- Ruling: maker A adds `"3"`, `"4"`, `"7"` and `"8"` to the column's `words`, each "None drawn", so the four bodies with no line read as the column's `empty` says. The kit's fallback (a value with no word prints itself) stays, since S82's district column depends on it. One fix for AX-M2 as well.
+- Owner: maker A; I sign off from the page table.
+- Reason: "7" beside Congress reads as a count of lines, and R3-6 asks each link to be named.
+
+**ST-M4. S82's page cannot answer its reader question for any seat, and its phone note is false.**
+- Confirmed: the grouped table gives each state's seats, the seats each party won and a count under 5 points; no seat and no margin appear. `labels.codes_note` ends "The table names every seat." S82 measures 13,270 bytes on the page, 582 under D3-1097's 13,852.
+- Ruling, ruled now:
+  1. The "Under 5 points" count column becomes a list column, "Closest races, under 5 points", naming each such seat in its state's row with its district, winner's party and printed margin (for example "7 (Republican, 3.7)"), empty where a state has none. By script: 36 seats in 21 states (22 Democratic, 14 Republican), about 360 bytes of words, against the count column it replaces. The cartographer chooses with the engineer the lighter of two ways: a derived column in `cartographer_round3_derive.py` that is empty for seats at 5 points or more (`list` skips empty values, no kit change), or a `where` range on the kit's `list`.
+  2. `codes_note` ends "The table gives each state’s seats and names its closest races."
+  3. The caption names the file that lists every seat with its winner and margin, in ST-M2's one form.
+  4. Weight: S82 must stay at or under 13,852. If it lands between 13,852 and 15,000, it comes to the main session as D3-1099's case.
+- Not ruled now: every one of the 435 seats on the page. By script the shortest list of all 435 (district, party letter, margin) runs 4,648 bytes, which puts S82 near 18,000, past the ceiling. The drawing itself names no district, so the page answers at the drawing's grain plus the close seats; the full answer is the file (Q1). If AX or the creative director asks for more, I rule it with their reports.
+- Owners: cartographer (spec, derive script), editor (words), engineer if the `where` route is chosen.
+- Reason: D3-1128 asks a grouped table to keep its answer; the title names the 36 close races, and the reader can now find each one.
+
+**ST-S1. S83's no-dot count at the phone's unit.** Ruling: note 1 adds the phone's figure. By script, at 50,000 a dot 2,426 counties holding 15,370,827 employees (11.6 percent of 132,151,802) draw no dot; at 10,000 the note's 1,354 and 2,841,136 hold. For example: "A county with fewer than 5,000 employees draws no dot: 1,354 counties holding 2.8 million employees. On a phone, where a dot stands for 50,000, 2,426 counties holding 15.4 million draw none." Owner: cartographer, the editor reads. Reason: DL-E1's condition 4 asks for the count at each unit, and the sentence is false at the phone's.
+
+**ST-S2. S76's transfers and its remainder.**
+- **Transfers, ruled: net them candidate by candidate, as note 3 says, and draw the out band.** By script from `fec-house-campaigns-2024-by-candidate`: netted per candidate, transfers from a candidate's own other committees come to $175,103,772.47 in and $18,313,248.58 out (84 candidates sent more than they took). The file now nets across all 1,926 at once ($156,790,523.89 in, $0 out), which cancels one campaign's outgoing dollars against another's incoming, and those never met. The remainder does not move ($1,533,158.03), since both sides grow by $18,313,248.58.
+  - Maker B changes `maker_b_round3_derive.py` to net per candidate, rewrites the derived file and its sidecar's `derivation`, and draws an out line named for transfers to a candidate's own other committees, at the drawing's one unit (a keyed hairline if thinner than the narrowest drawn width, Rule 14.4). The research lead runs the data check over it.
+  - Figures that follow, by script: money in $2,626,481,617.75 and out $2,624,948,459.72; "all they took in" $2,271,178,361.46, so individuals' $1,384,115,131.69 is 60.9 percent. The title's "61 percent" holds. Note 2's "0.059 percent of the money in" becomes 0.058 percent. Note 3's last sentence goes; in its place, for example: "Transfers count only what moved, net, between each campaign and its own other committees."
+- **Remainder, ruled: state what the file shows and no cause.** By script, 297 of the 1,926 campaigns' figures do not balance; one campaign whose last report ran to April 30, 2024 leaves $1,500,000.00 of the $1,533,158.03 (97.8 percent). Note 2's second sentence becomes, for example: "The figures for 297 of the 1,926 campaigns do not balance, which leaves $1.5 million unaccounted for, 0.058 percent of the money in; one campaign’s reports leave nearly all of it." The research lead adds the 297 and the one campaign's ID to the sidecar. The chart names no candidate.
+- Owners: maker B (derive, spec, words), research lead (data check, sidecar), editor (words). Board 2 shows S76 as a round 3 form in any case.
+- Reason: a note must describe the derivation the file holds, and a cause the file does not show is a claim with no source.
+
+**ST-S3. Entry 14.119's "gray steps" and entry 14.124's "gray panels".** Ruling: entry 14.119's `why` reads "Steps of one ink for the margin keep a close race and a safe one apart on both sides alike"; entry 14.124's `use_when` drops "gray": "panels by party, with the margin in steps of one ink". Owner: cartographer, or the editor straight into the fields (D3-669). Reason: C-1 moved both maps to Verdigris steps 2 to 5, and an entry must describe its own specimen. Corrects my C-5 acceptance.
+
+**ST-S4. Puerto Rico and the House's non-voting members.**
+- Ruling, by map:
+  - **S84:** note adds "The Department’s table also lists Guam, Puerto Rico and the U.S. Virgin Islands, which the map does not draw." By script, `dol-state-minimum-wage-history` holds GU, PR and VI.
+  - **S78, S81, S83:** one sentence each, "Puerto Rico, which the [survey or count] also covers, is not drawn", written only once the research lead confirms that the exact table (B28002 with S2801 by state; B19013 5-year by county; County Business Patterns 2023 by county) publishes Puerto Rico rows. Where it does not, no sentence.
+  - **S82:** note 4 names all six: "The map leaves out the six members who have no vote on the House floor: the delegates of the District of Columbia, American Samoa, Guam, the Northern Mariana Islands and the U.S. Virgin Islands, and Puerto Rico’s Resident Commissioner." By script, `census-cb-2024-cd119` holds all six at district 98 (geoids 1198, 6098, 6698, 6998, 7298, 7898).
+  - S16 draws the Current Population Survey, which does not cover Puerto Rico; no sentence.
+- Owners: cartographer (notes), editor (words), research lead (which tables hold Puerto Rico, in each sidecar's geography line).
+- Reason: Rule 13.6 asks a source's universe to be stated, and a reader in Puerto Rico should learn the map leaves them out from the map, not from its absence.
+
+**ST-S5. S78's alt and entry 14.117's why.**
+- Ruling: the alt names a state in a class only where its interval sits inside that class, on the printed figures (ST-S12's rule), and counts the rest. By script, eight top-class states clear 79: Connecticut, Hawaii, Maryland, Massachusetts, New Hampshire, New Jersey, Utah and Washington (Washington 79.5 ±0.5 stops at 79.0, inside its class); Colorado (79.0 ±0.4), Delaware and DC do not. The five low states the alt names (Alaska, Mississippi, West Virginia, Montana, New Mexico) all stay under 71. "Most of them in the Northeast" goes, since four of the eleven sit in the Census Bureau's Northeast. For example: "Ten states and the District of Columbia sit in the top class, 79 percent or more; Connecticut, Hawaii, Maryland, Massachusetts, New Hampshire, New Jersey, Utah and Washington clear it by more than the survey’s margin of error."
+- Entry 14.117's `why`: "Classes wider than the survey’s margins keep a state’s shade within one class of what the survey can tell."
+- Owners: cartographer, editor. Reason: Rule 14.9 lets words single out a place only past its margin; the classes stop a two-class error, not a one-class one.
+
+**ST-S6. S73's title reads as a comparison of support.** Ruling: the title stands; it states two documented sums read the same way. Note 1 already gives the one rule that picked each fund and what the nominees' other funds sent the campaigns. Note 2 adds one clause after "by agreement": "so the number of committees a fund pays is set by the agreement that formed it." No new data: the other funds' transfers to party committees are not needed for a chart that draws one fund each. Owner: maker B, the editor reads. Reason: the reader needs to know why two funds paid 53 and two committees, and the notes already keep the chart to one fund each.
+
+**ST-S7. S81's county count beside a household median.** Ruling: a note adds, for example: "The nation’s median is taken over all households, so a county with many households weighs more in it than on the map, where each county is one shape; 549 of the 3,143 counties sit at or above it." By script, 549 counties at or above $80,734. The title stands. Owner: cartographer, the editor reads. Reason: a newcomer will read "585 counties at $80,000 or more" against "$80,734" as most Americans below the median.
+
+**ST-S8. Four accents stripped in the roll call file.** No ruling on the marks; the research lead refreezes `congress-hr5371-roll-calls-by-member.csv` from the same raw file with each name as the Clerk prints it (Barragán, García (IL), Sánchez, Velázquez), as the sidecar promises; maker A rebuilds S72 and its export. The page names none of the four, so no word on the page moves. Reason: the sidecar promises the record's spelling.
+
+**ST-S9. Grouped tables sorted by code and printed by name.** Ruling: the engineer adds a sort by the printed name to `table.group` (for example `sort: "name"`, which sorts by the `state_name` word), and S81, S82 and S83 take it. Owners: engineer, cartographer. Reason: a reader scans the names they see.
+
+**ST-S10. "Class" and "cloture".** No ruling on marks.
+- The editor defines class at its first use in Rule 14.9's class map paragraph and in entry 14.117 ("a class, a range of values that share one shade").
+- S71's cell is maker A's own words in `usgov-v7-route-grid.csv` (column `how_it_can_be_undone`), not atlas text, so D3-893 does not reach it. Maker A rewrites it through the derive script, for example "precedents set by majority vote changed the vote needed to end debate on nominations in 2013 and 2017", and the research lead runs the data check.
+
+**ST-S11. S65's source line lacks its release.** No ruling on marks; the research lead adds the release to the sidecar's source line or a named variant ("October 2024 release"), and maker B prints that line exactly (H04). Reason: the brief asks a vintage to print where the publisher revises.
+
+**ST-S12. S78's crossing count.**
+- Ruling: count on the figures the table prints, one decimal half up, as D3-1106 sets for the House margins. A place crosses where its printed interval reaches a value in another class (an interval that ends exactly on a break reaches the class that begins there). By script: 11 states and DC (Arkansas, California, Colorado, Delaware, DC, Kansas, Nebraska, North Dakota, Oklahoma, Vermont, Wisconsin, Wyoming). Rounding moves no state's class.
+- Note 1's second sentence: "On the figures the table prints, 11 states and the District of Columbia sit close enough to a class line that they could fall in the next class; no state could fall two classes away." The cartographer records the rule and the list in `notes_internal`, and in the derive script's sidecar if S78 reads a derived class.
+- S81 needs nothing: its estimates and margins are whole dollars, so its 1,707 and 182 stand under either rule.
+- Owners: cartographer (note, internal record), editor (words); this corrects my ruling (c) and D3-1104's reason.
+- Reason: the reader checks the note against the table, and one rule must give one count.
+
+**Q2. The avoid sketch's colors (14.124). Waits on Dustin.**
+- **Recommended to Dustin (waits): literal red and blue in the misleading half only**, under its do-not-publish bar, in a plain news red and blue that are neither Pillar Red nor Prussian nor any guide ink, with the colors also named in the key so the lesson holds in grayscale. The review shows my D-1 gray stand-in does not teach: twelve equal squares in dark and light gray read like S07's approved two-status tiles and like solid against light party marks. Rule 01.1's own failure plate already puts red on one side of a vote to teach its failure. My D-1 concern stands for the guide's inks (a reader must never meet pair B or Prussian as a party pair); literal colors outside the palette do not raise it.
+- **Ruled now (does not wait):** the misleading half draws places of unequal size, so the second harm the entry names, land standing in for votes, shows: Party B's five places together cover more of the drawing than Party A's seven, and the better half keeps one square per seat. Still in gray until Dustin answers, within R3-9's 4,096 bytes (now 3,797). If he approves color, the cartographer changes two fills and the caption drops "Drawn here in gray"; board 2 shows both versions side by side.
+- Owner: cartographer; Dustin (color).
+- Reason: an avoid sketch must show the failure, not describe it, and unequal land is drawable in any ink.
+
+**Q3. S16's range words (board 1). Waits on Dustin.**
+- By script on `census-cps-2024-turnout-by-state`: Arkansas's 52.8 (±2.7) sits lowest past every gap's margin (Texas, the next, 5.1 points against 3.55). DC's 79.5 (±3.3) does not sit highest past its margin: Minnesota (75.9 ±2.9, gap 3.6 against 4.39) and Oregon (75.3 ±2.8, gap 4.2 against 4.33) are within it. So the report's suggested words, which set DC and Minnesota above Oregon, fail the same test.
+- **Recommended to Dustin (waits):** note 3's range reads "Range: Arkansas 52.8% (±2.7), lowest by more than the margin of error; DC 79.5% (±3.3), highest, within the margin of error of Minnesota’s 75.9% and Oregon’s 75.3%." The alt's last sentence reads "Arkansas, at 52.8 percent, sits lowest by more than its margin of error; DC, at 79.5, is highest but within the margin of Minnesota and Oregon." Board 2 shows the old and new words side by side.
+- Ruled now: nothing on S16 changes until Dustin answers (ruling (e)).
+- Reason: entry 14.116 says a survey rate is singled out only past its margin, and its own specimen should meet it.
+
+**Noted, no item.** The report's Tested list says S84's source line drops the boundary file's scale ("1:20,000,000") that S81 and S83 keep. No ruling on marks; the cartographer gives S84 the same boundary line as S81 and S83 if the editor agrees (H04's one form).
+
+### Requests, review fix pass
+
+- **To the engineer:** ST-M1 (`first` above the numeric guard; every spec using `first` rebuilt); ST-M2 items 1 and 2 (one home for the file phrase; the export check for nine charts); ST-S9 (sort by printed name); ST-M4's `where` on `list` only if the cartographer chooses it.
+- **To maker A:** ST-M3 (S68's words for orders 3, 4, 7, 8); ST-S10 (S71's cloture cell through the derive script); rebuild S72 after ST-S8.
+- **To maker B:** ST-M1 (rebuild S73 and read its table); ST-S2 (per-candidate netting, out band, notes 2 and 3); ST-S6 (note 2's clause).
+- **To the cartographer:** ST-M4; ST-S1; ST-S3; ST-S4's notes; ST-S5; ST-S7; ST-S9's sort on S81 to S83; ST-S12; Q2's unequal places.
+- **To the editor:** ST-M2 item 1 (nine places); the words of ST-M4, ST-S1 to ST-S7, ST-S10 and ST-S12 as owners apply them, or straight into finished owners' fields (D3-669).
+- **To the research lead:** ST-S2's data check and sidecar lines; ST-S4 (which tables publish Puerto Rico); ST-S8 (refreeze with accents); ST-S10's data check on the route grid; ST-S11 (S65's release in the source line).
+- **To the main session, for Dustin:** Q1, Q2 and Q3 as recommended above.

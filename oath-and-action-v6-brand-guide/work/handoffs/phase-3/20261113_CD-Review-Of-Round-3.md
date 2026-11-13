@@ -154,9 +154,9 @@ An asterisk marks a score under 4. Specimens under the bar: S68 (accessibility),
 ## Tested
 
 - Copied the strict build and its report to my scratch folder; made a Charcoal copy by setting each plate stage's surface class to Charcoal under the dark scheme.
-- Captured all 32 round 3 plates at 1x at 1440 and 390 px on Newsprint and on Charcoal, after `OAChart.draw_all()`, with Playwright (one browser at a time); looked at each at 1440 px on Newsprint, the maps and six diagrams on Charcoal at 1440 px, and every map and the avoid sketch at 390 px.
+- Captured all 32 round 3 plates at 1x at 1440 and 390 px on Newsprint and on Charcoal, after `OAChart.draw_all()`, with Playwright (one browser at a time); looked at all 32 at 1440 px on Newsprint, at S16, S78, S79, S80, S65, S72, S73 and S76 on Charcoal at 1440 px, and at S78 to S84, S16, S68, S73, S74, S76 and the avoid sketch at 390 px on Newsprint.
 - Captured at 2x the nine sketches, S16, S68, S78, S79, S80 and S82 at 1440 px on Newsprint, and sketches 14.95, 14.108, 14.124 and S82 on Charcoal; looked at sketches 14.94, 14.95 and 14.124, and crops of S16, S80 and S82 on both grounds.
-- Captured rules 14.3, 14.4, 14.6, 14.7, 14.9, 14.12 and entries 14.96, 14.104, 14.117, 14.124 whole at 1024 px; Rules 14.6, 14.7, 14.9 and entry 14.124 at 390 px; Rules 14.6, 14.9 and entries 14.117, 14.124 at 1440 px; looked at Rule 14.6 at 1440 and Rule 14.9 at 1024 px.
+- Captured rules 14.3, 14.4, 14.6, 14.7, 14.9, 14.12 and entries 14.96, 14.104, 14.117, 14.124 whole at 1024 px; Rules 14.6, 14.7, 14.9 and entry 14.124 at 390 px; Rules 14.6, 14.9 and entries 14.117, 14.124 at 1440 px; looked at Rule 14.6 at 1440 and 390 px, Rule 14.9 at 1024 and 390 px, and Rule 14.7's correct and failure plates at 390 px.
 - Took viewport screenshots of the page with rail and contents at 1440, 1024 and 390 px at group 12, group 15, Rule 14.102 and Rule 14.120; looked at four.
 - Built S78 to S84 and S16 with `oa-chart.mjs build ... --widths 390,358,296,256` on both grounds (8 PASS, 0 faults); looked at S78 at 358 to 256 px on both grounds and in grayscale, and S80, S82, S16, S79 and S83 at 256 px on Charcoal.
 - Probed S12 in the page at 1920, 1440, 1024 and 390 px: drawn width and SVG elements (no arrow at any width); compared board 1's S12 SVG (1024 px).
@@ -171,4 +171,4 @@ An asterisk marks a score under 4. Specimens under the bar: S68 (accessibility),
 - The CSV exports of any table, and any figure against the frozen files (I recomputed no class, count or sum).
 - The plates at 768 px, and the chapter opener as a drawing.
 - Maker A's and maker B's plates at 358, 296 and 256 px with the kit; S65 to S77 at 2x except S68.
-- Grayscale for the diagrams; Charcoal at 2x for S16, S78 and S80.
+- Grayscale for the diagrams; Charcoal at 2x for S16, S78 and S80; S81 to S84, S66 to S71, S74, S75 and S77 on Charcoal at 1440 px (captured, not looked at); maker A's and maker B's plates other than S68, S73, S74 and S76, and S07 and S12, at 390 px (captured, not looked at).
