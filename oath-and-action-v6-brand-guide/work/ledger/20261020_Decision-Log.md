@@ -5675,3 +5675,27 @@ The main session reported that `phase3_ch14_build.py` still builds rounds 1 and 
 | D3-1454 | A kit self-test fixture that copied a derived sidecar becomes a plain table | Since `--data`, a derived sidecar's sources are found in `work/build/data/`, and the fixture's invented publisher names none of them |
 | D3-1455 | The code the guide's page never runs (the figure's HTML, the table equivalent, chips, `K.render`, `K.select`, tokens from CSS, words.json's copy) lives in `kit-build.js`, loaded by Node and a plain page after `kit.js`, never by the page | Call 10 and the main session's request: the page carries only what draws, reads back or checks itself; moved whole, so every drawing and figure is equal (924 of 924) |
 | D3-1456 | The README points a designer to Rule 13.1's Estimate for a model's figures and keeps a survey's published estimates a Finding | The data lead's ruling on AX-S6 |
+
+### Cartographer, round 3 review fix pass
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1457 | S82's closest races print from a derived column, `close_seat`, set only where the printed margin is under 5 points ("7 (Republican, 3.7)"), through `list` | ST-M4's lighter route: no kit change, and the island carries no new column |
+| D3-1458 | S82's panels read a one-letter party column (D or R) the derive script writes; the table and the CSV keep the party in words | Saves 208 bytes of island with nothing printed changed (call 10) |
+| D3-1459 | S82's ring key reads "Another kind of contest; a note names it" | The grouped table names no kind of seat since D3-1097; note 3 names the 14 |
+| D3-1460 | S82's phone lists print an at-large seat as "Alaska at large" | C-S6: "AL" is Alabama's code |
+| D3-1461 | S82's grid sits 2 px inside the drawing at every width, and its ghosts take the band stroke on Charcoal | BC-S4, the data lead's ruling |
+| D3-1462 | S82's codes with no room in their block go beside on a leader of 30 px at most over the ground or the state's own squares; an inland single-seat state with no ground in reach stays in the codes note | BC-S5; a leader across other states' squares points the reader at the wrong state (request D-4) |
+| D3-1463 | S78 draws the studio's tile grid under 480 px (and from 480 to 519 px), `phone: "differs"` | C-M1 step 2: 19 states uncoded at 358 px on the outlines after call 7 |
+| D3-1464 | S78's desk map fits 44 px narrower, and the northeastern codes, West Virginia and DC's square take a column on the ocean on leaders; a code with no room inside tries a no-spare fit before the search | C-M1 step 1: every state and DC coded from 520 to 720 px |
+| D3-1465 | S80 numbers each district only in the panel where it is filled, and draws a framed Detroit inset (6th, 10th to 13th) in both panels at every width | C-S1, BC-S1 (the data lead's ruling) |
+| D3-1466 | S80's ghosts take the band stroke on Charcoal, as S82's | One ghost for both maps of one results file (BC-S4) |
+| D3-1467 | S79's view sits in a thin gridline frame, and "Kern County" sits under the county on a short leader where no box inside clears the two places | C-S5, BC-S6 |
+| D3-1468 | S84's panel fits the map narrower where DC's square has no room east of Maryland (`dc_room`); a note names DC if a panel still has none | AX-S3: DC in every panel at every width |
+| D3-1469 | S84 prints the Department's "..." as "No state law" by `typography.replace`, and one note keys [c], (d), (e) and (g) | AX-S3, the data lead's ruling; the CSV keeps the Department's cells |
+| D3-1470 | S84's, S78's, S81's and S83's notes say the publisher's table covers Puerto Rico (S84: Guam, Puerto Rico and the U.S. Virgin Islands), which the map does not draw; S82 names the six non-voting members | ST-S4, with the research lead's check |
+| D3-1471 | S81's "No estimate" takes a hatch in the context ink over the land ink, map and key | BC-S3 |
+| D3-1472 | S16's outside labels are placed by the best of four orders on a dry run, with CT, TN and VA claiming their places first on a phone, a 110 px reach on a phone, DC on a leader at a desk and WV against its own circle | BC-S5 and C-S2, inside ruling (e) |
+| D3-1473 | S12 takes `"stage": 1024` and an alt that says what each width draws | C-M2 with call 6 (D3-1324); the engineer measured the stacked tile at 41 px against 48 needed at 558 px |
+| D3-1474 | Sketch 14.124's misleading half draws five large places for Party B and seven small ones for Party A, Party B in the dark step | Q2's unequal places, ruled now; colors wait on Dustin |
+| D3-1475 | S78's and S84's boundary lines keep their wording | The data lead's "Noted, no item" asks for the editor's agreement first; left for the editor (request below) |

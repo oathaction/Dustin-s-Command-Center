@@ -164,7 +164,7 @@ November 13, 2026, from 04:36 UTC (clock read from `date -u`). Brief: `work/hand
 
 ### Summary
 
-Done, 05:30 UTC. Every cartographer item in the ST, AX, CD and BC reports is in, under the data lead's rulings and the main session's calls: ST-M4, ST-S1, ST-S3, ST-S4, ST-S5, ST-S7, ST-S12; AX-S3; C-M1, C-M2, C-S1, C-S2, C-S3, C-S5, C-S6, SK-S2; BC-S1, BC-S3, BC-S4, BC-S5, BC-S6, BC-S10, BC-S11, BC-S12; Q2's unequal places; the editor's words for my fields. ST-S9 (C-S4, AX-S4) landed in the kit with no spec change. Waiting on Dustin, left as they are: the download words (call 3), the avoid sketch's colors (call 4), S16's range words (call 5). Open: C-E7 (S84's "No state law" needs the kit to typeset a pivot's cells), D-4 to D-6 for the data lead's sign-off. The nine specs I touched pass the kit with the sweep; S82 sits under call 10's 14,106 with its frame after dropping "Seats" at the main session's word.
+Done, 06:03 UTC. Every cartographer item in the ST, AX, CD and BC reports is in, under the data lead's rulings and the main session's calls: ST-M4, ST-S1, ST-S3, ST-S4, ST-S5, ST-S7, ST-S12; AX-S3; C-M1, C-M2, C-S1, C-S2, C-S3, C-S5, C-S6, SK-S2; BC-S1, BC-S3, BC-S4, BC-S5, BC-S6, BC-S10, BC-S11, BC-S12; Q2's unequal places; the editor's words for my fields. ST-S9 (C-S4, AX-S4) landed in the kit with no spec change. Waiting on Dustin, left as they are: the download words (call 3), the avoid sketch's colors (call 4), S16's range words (call 5). Open: C-E7 (S84's "No state law" needs the kit to typeset a pivot's cells), D-4 to D-6 for the data lead's sign-off. The nine specs I touched pass the kit with the sweep; S82 sits under call 10's 14,106 with its frame after dropping "Seats" at the main session's word.
 
 ### Items done, by code
 
@@ -250,7 +250,8 @@ Done, 05:30 UTC. Every cartographer item in the ST, AX, CD and BC reports is in,
 - A words scan by script of S78 to S84, S16, S12, entries 14.115, 14.117, 14.119, 14.120 and 14.124 and the sketch: no em dash, no U+2011, no straight apostrophe or quotation mark in reader words.
 - `phase3_ch14_build.py`: 128 rules, 114 entries, 84 chart plates, 0 faults (05:16, and again at 05:37 after 14.117's reword).
 - `guide_build.py --strict --out <scratch>/guide.html`: exit 0 at 05:16 (11,255,388 bytes; share per plate 11,776) and at 05:37 after 14.117's reword (11,231,782 bytes; chapter 14's share per plate 13,592 for 13 to come).
-- My first quick guide check (05:17) ran into my own 20-minute cap and its browser closed: counted as not run.
+- My first quick guide check (05:17) ran into my own 20-minute cap and its browser closed: counted as not run. `guide_check.js --quick --no-captures` on the 05:37 strict build, run to its end (05:38 to 06:01 UTC): PASS, 2 widths, 344 rules, 694 specimens, 0 failures (14.117's studio word gone, sketch 14.124 among the specimens).
+- `oa-chart.mjs build s82 s16 --widths 1440,390,296,256`, sweep on, after "Seats" left S82 (06:02): 2 of 2 PASS, 0 faults.
 - Sketch 14.124: 3,796 bytes; the first `<desc>` holds `sketch_alt`'s first sentence (the chapter build checks it).
 
 ### Not tested, review fix pass
@@ -260,3 +261,7 @@ Done, 05:30 UTC. Every cartographer item in the ST, AX, CD and BC reports is in,
 - S12's sideways scroll and its tab stop in the guide (the engineer's stage code).
 - S84's "No state law" in its table, which waits on C-E7.
 - S83 by eye this pass (only its notes changed).
+
+### Files, review fix pass
+
+Modified: `work/build/chart-kit/forms/choropleth.js`, `county-choropleth.js`, `small-multiple-maps.js`, `district-map.js`, `district-tile-map.js`, `locator-map.js`, `bubble-map.js`; `work/build/chart-kit/specs/s12.json`, `s16.json`, `s78.json` to `s84.json`; `work/build/guide/entries/14-115.json`, `14-117.json`, `14-119.json`, `14-120.json`, `14-124.json`; `work/build/guide/specimens/s-14-124-sketch.html`; `work/build/scripts/phase-3/cartographer_round3_derive.py`; `work/build/data/clerk-house-results-2024-classes.csv` and `.meta.json` (written by the script); this notes file. Written by running the engineer's generator (not edited by hand): the chapter files `phase3_ch14_build.py` writes. Created: none in the repository. Scratch only: probes, captures, kit-out, strict builds and check logs under the scratch folder above.
