@@ -795,6 +795,160 @@
   "alt": "A thermometer fills an illustrative 70 percent of a goal inside a tube with a bulb, and a progress bar of the same values shows the share with the goal marked and less ink. The bulb holds no value.",
   "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
  },
+ "s-14-s65": {
+  "chapter": "14",
+  "rule": "14.93",
+  "width_px": null,
+  "alt": "Four bars from one left edge, each shorter than the one above: 76.7 million renewals due; 71.9 million decided; 55.9 million not ended for a procedural reason, after 16.0 million were, the loss drawn in the text’s ink; and 49.0 million that kept coverage, after 6.9 million were found ineligible. Below them, 4.9 million pending renewals sit apart.",
+  "illustrative": false,
+  "notes": "S65, funnel: the chart kit draws it from work/build/chart-kit/specs/s65.json (contract R1-C3)"
+ },
+ "s-14-s66": {
+  "chapter": "14",
+  "rule": "14.96",
+  "width_px": null,
+  "alt": "A diagram of how a federal agency makes a rule, read in order. A way in: anyone may petition an agency to issue, change or repeal a rule. Step 1, the agency drafts a rule; a significant draft goes to the White House’s Office of Information and Regulatory Affairs, which has 90 days to finish its review, and guidance can skip notice and comment. Step 2, the agency publishes the proposed rule. Step 3, anyone may comment. Step 4, the agency publishes the final rule at least 30 days before it takes effect, and a person harmed by it can ask a court to set it aside. Step 5, the agency reports the rule to Congress, which can pass a joint resolution of disapproval so the rule has no effect.",
+  "illustrative": false,
+  "notes": "S66, process-diagram: the chart kit draws it from work/build/chart-kit/specs/s66.json (contract R1-C3)"
+ },
+ "s-14-s67": {
+  "chapter": "14",
+  "rule": "14.97",
+  "width_px": null,
+  "alt": "A decision tree that starts with one question: does a state law ban ranked-choice voting in your city’s own elections? Yes, in 18 states, Tennessee among them: a city cannot adopt it while the ban stands. Partly, in Ohio: home-rule cities may still adopt it, but lose state local government fund distributions while it is in effect. No, in 31 states and the District of Columbia: check your state’s home-rule law. If it lets a city set its own election rules, the city can act by ordinance, charter amendment or local practice; if cities hold only the powers the state grants, the legislature decides.",
+  "illustrative": false,
+  "notes": "S67, decision-tree: the chart kit draws it from work/build/chart-kit/specs/s67.json (contract R1-C3)"
+ },
+ "s-14-s68": {
+  "chapter": "14",
+  "rule": "14.98",
+  "width_px": null,
+  "alt": "Eight bodies behind an electric bill, by level. Six can change the rules: Congress and the Department of Health and Human Services, and the Federal Energy Regulatory Commission, at the federal level; the state legislature and the state public utility commission; a city council or municipal utility board; and an electric cooperative’s board. Two apply them: PJM Interconnection and other regional grid operators, whose rule changes the Federal Energy Regulatory Commission approves, and the investor-owned utility. A line runs from the legislature to the commission, whose powers it sets.",
+  "illustrative": false,
+  "notes": "S68, who-decides: the chart kit draws it from work/build/chart-kit/specs/s68.json (contract R1-C3)"
+ },
+ "s-14-s69": {
+  "chapter": "14",
+  "rule": "14.99",
+  "width_px": null,
+  "alt": "An org chart of the House of Representatives. Under it sit 20 standing committees, from Agriculture to Ways and Means, 3 select committees and 4 joint committees shared with the Senate. Each committee lists its subcommittees under it, 109 in all; Appropriations has the most, 12, and the Budget, Ethics, two select committees and the joint committees have none.",
+  "illustrative": false,
+  "notes": "S69, org-chart: the chart kit draws it from work/build/chart-kit/specs/s69.json (contract R1-C3)"
+ },
+ "s-14-s70": {
+  "chapter": "14",
+  "rule": "14.100",
+  "width_px": null,
+  "alt": "A tree of the federal courts. The Supreme Court, with nine justices, sits at the top. Under it are 12 regional courts of appeals, from the District of Columbia Circuit with 11 judgeships to the Ninth Circuit with 29, each listing the states and territories whose district courts it hears appeals from, with each district court’s judgeships; the Ninth Circuit’s districts hold the most, 112. Apart from them, the Federal Circuit, with 12 judgeships, hears appeals by subject from every district. The courts of Guam, the Northern Mariana Islands and the Virgin Islands are territorial courts, not Article III courts.",
+  "illustrative": false,
+  "notes": "S70, hierarchy-tree: the chart kit draws it from work/build/chart-kit/specs/s70.json (contract R1-C3)"
+ },
+ "s-14-s71": {
+  "chapter": "14",
+  "rule": "14.101",
+  "width_px": null,
+  "alt": "A grid of the eleven routes to change in our systems atlas, each with who acts, what it takes, how it can be undone and how many of the atlas’s reform profiles list it. A federal statute takes a majority of each chamber, 60 senators to end debate on most bills and the President’s signature, and 38 reforms list it. A state statute is listed by 29, the local route by 15 and a state ballot measure by 11. Executive action and court doctrine are listed by 7 each, a chamber rule or confirmation by 6, enforcement and litigation by 5, civil society by 4, an amendment under Article V by 3 and an interstate compact by 1.",
+  "illustrative": false,
+  "notes": "S71, comparison-grid: the chart kit draws it from work/build/chart-kit/specs/s71.json (contract R1-C3)"
+ },
+ "s-14-s72": {
+  "chapter": "14",
+  "rule": "14.102",
+  "width_px": null,
+  "alt": "One square for each member of Congress on the bill that ended the November 2025 shutdown. Senate, November 10, 2025, on passage of the bill: passed 60 to 40. Democrats, 45: 7 yes, 38 no. Independents, 2: 1 yes, 1 no. Republicans, 53: 52 yes, 1 no. House, November 12, 2025, on the motion to concur in the Senate amendment: passed 222 to 209. Democrats, 214: 6 yes, 207 no, 1 not voting. Two seats vacant. Republicans, 219: 216 yes, 2 no, 1 not voting.",
+  "illustrative": false,
+  "notes": "S72, roll-call-grid: the chart kit draws it from work/build/chart-kit/specs/s72.json (contract R1-C3)"
+ },
+ "s-14-103-sketch": {
+  "chapter": "14",
+  "rule": "14.103",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "A mind map of an illustrative city budget, one topic in the middle with four parts on lines around it and a further idea beside each. The lines say each part belongs to the budget, and nothing about order or size.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-s73": {
+  "chapter": "14",
+  "rule": "14.104",
+  "width_px": null,
+  "alt": "Two committees side by side, each a box with links to the committees it paid, each link as wide as its dollars on one scale. The Harris Victory Fund sent $528.7 million to the Harris campaign, $189.3 million to the Democratic National Committee, $181.4 million to 51 state party committees and $81,000 to two other committees. The Trump National Committee JFC sent $246.8 million to the Trump campaign and $26.9 million to the Republican National Committee.",
+  "illustrative": false,
+  "notes": "S73, network-diagram: the chart kit draws it from work/build/chart-kit/specs/s73.json (contract R1-C3)"
+ },
+ "s-14-s74": {
+  "chapter": "14",
+  "rule": "14.105",
+  "width_px": null,
+  "alt": "A grid of the atlas’s ten regions, rows for where a connection starts and columns for where it ends. Forty-four of the 100 cells hold connections, from 1 to 7 each, and the diagonal holds the 32 that stay within a region. Governing institutions starts 23, the most, among them all seven lines of authority; no connection reaches outside drivers.",
+  "illustrative": false,
+  "notes": "S74, adjacency-matrix: the chart kit draws it from work/build/chart-kit/specs/s74.json (contract R1-C3)"
+ },
+ "s-14-s75": {
+  "chapter": "14",
+  "rule": "14.106",
+  "width_px": null,
+  "alt": "Ten House bills on a line in order of introduction, with 33 arcs joining each pair that shares a sponsor or cosponsor, each arc as wide as its count. H.R. 6609 and H.R. 6610, introduced the same day, share 34 backers, the most; H.R. 4317 shares 19 with each of them; the other 30 pairs share one to six.",
+  "illustrative": false,
+  "notes": "S75, arc-diagram: the chart kit draws it from work/build/chart-kit/specs/s75.json (contract R1-C3)"
+ },
+ "s-14-s76": {
+  "chapter": "14",
+  "rule": "14.110",
+  "width_px": null,
+  "alt": "Bands of money flowing into one node for all 2024 House campaigns and out of it, each as wide as its dollars. In: cash on hand at the start, $355.3 million; contributions from individuals, $1,384.1 million; from PACs and other political committees, $429.9 million; loans from the candidates, $228.5 million; and smaller lines. Out: spending, $2,045.3 million; refunds and loan repayments; and cash on hand at the end, $487.8 million.",
+  "illustrative": false,
+  "notes": "S76, sankey: the chart kit draws it from work/build/chart-kit/specs/s76.json (contract R1-C3)"
+ },
+ "s-14-s77": {
+  "chapter": "14",
+  "rule": "14.112",
+  "width_px": null,
+  "alt": "Four steps in order, each a box with who acts and the time the rule allows: the household files an application, taken the same day; an interview; the household sends proof, with at least 10 days to do it; and the state’s decision, within 30 days of filing. A branch after filing leads to expedited service, an interview and benefits within 7 days, for a household with very little income or cash, with postponed proof due later.",
+  "illustrative": false,
+  "notes": "S77, journey-map: the chart kit draws it from work/build/chart-kit/specs/s77.json (contract R1-C3)"
+ },
+ "s-14-113-sketch": {
+  "chapter": "14",
+  "rule": "14.113",
+  "width_px": 320,
+  "illustrative": true,
+  "alt": "Curved lines run from one place to four others over a plain map, each as wide as the invented number of people who moved along it, with a key of two widths.",
+  "notes": "reference sketch, at most 4,096 bytes (contract R1-C1, D3-486)",
+  "fit_switch": false
+ },
+ "s-14-s07": {
+  "chapter": "14",
+  "rule": "14.114",
+  "width_px": null,
+  "alt": "A tile map with one square per state. Nineteen states ban ranked-choice voting as of November 2026: 17 in all elections, from Florida in 2022 to Indiana in 2026, and Ohio and Tennessee in some elections. The other 31 states and DC have no state ban.",
+  "illustrative": false,
+  "notes": "S07, tile-map-categorical: the chart kit draws it from work/build/chart-kit/specs/s07.json (contract R1-C3)"
+ },
+ "s-14-s12": {
+  "chapter": "14",
+  "rule": "14.115",
+  "width_px": null,
+  "alt": "A tile map with one square per state, each holding an arrow as long as the state’s shift toward the Republican nominee from 2020 to 2024. Every arrow points the same way. The largest shifts were New York 10.5, New Jersey 10.0, Florida 9.7 and California 9.0 points; the smallest were Washington 1.0, Utah 1.1, Oklahoma 1.2 and Nebraska 1.4. The United States moved 5.9 points.",
+  "illustrative": false,
+  "notes": "S12, tile-map-shift-arrows: the chart kit draws it from work/build/chart-kit/specs/s12.json (contract R1-C3)"
+ },
+ "s-14-s16": {
+  "chapter": "14",
+  "rule": "14.116",
+  "width_px": null,
+  "alt": "A map of the United States with a circle on each state sized by its citizens 18 and over and shaded by the share who said they voted in November 2024. California, Texas, Florida and New York have the most citizens 18 and over; Texas at 57.9 percent, New York at 59.2 and Florida at 60.3 sit below the national 65.3 percent by more than their margins of error, while California’s 64.7 does not. Rates run from 52.8 percent in Arkansas to 79.5 percent in DC.",
+  "illustrative": false,
+  "notes": "S16, bubble-map: the chart kit draws it from work/build/chart-kit/specs/s16.json (contract R1-C3)"
+ },
+ "s-14-124-sketch": {
+  "chapter": "14",
+  "rule": "14.124",
+  "width_px": null,
+  "illustrative": true,
+  "alt": "The same invented results drawn twice: shaded from one party’s color to the other’s, the map takes a side at a glance, while two gray panels, one for each party’s seats, show who won each place and by how much with no color for either party.",
+  "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
+ },
  "s-14-s15": {
   "chapter": "14",
   "rule": "14.125",

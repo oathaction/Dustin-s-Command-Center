@@ -1036,6 +1036,11 @@ async function self_test() {
     { // R3-3: a one-column island keeps a row whose value is empty
       const back = K.parse_csv(C.to_csv([{ v: 1 }, { v: null }, { v: 3 }], ['v']));
       pass(back.length === 3 && back[1].v === '', 'R3-3: a one-column CSV keeps its empty cells as rows'); }
+    { // round 3: a word on a dark step in that step's label ink passes in forced colors; the plain label ink there fails
+      const ok1 = drawn(c => { c.rect(0, 0, 200, 40, { fill: 'seq-5', data: { key: 'a' } }); c.text(10, 26, 'OK', { fill: 'on-seq-5' }); c.rect(0, 50, 200, 40, { fill: 'mag-4', data: { key: 'b' } }); c.circle(100, 70, 4, { fill: 'on-mag-4', mark: false }); });
+      const bad = drawn(c => { c.rect(0, 0, 200, 40, { fill: 'seq-5', data: { key: 'a' } }); c.text(10, 26, 'OK', { fill: 'label' }); });
+      pass(!ok1.f.length && bad.f.some(x => /forced colors/.test(x)) && C.role_color('on-seq-5', TOK.newsprint) && C.contrast(C.role_color('on-seq-5', TOK.newsprint), C.role_color('seq-5', TOK.newsprint)) >= 4.5,
+        "round 3: a step's label ink reads on its step, in forced colors too" + (ok1.f.length ? ': ' + ok1.f[0] : '')); }
     { // RB3-G1: two bands side by side at one height lie on the ground; a band inside a wider one across and down lies on it
       const side = drawn(c => { P.flow_band(c, 10, 10, 150, 10, 40, { fill: 'light-fill' }); P.flow_band(c, 200, 10, 340, 10, 40, { fill: 'light-fill' }); });
       const held = drawn(c => { P.flow_band(c, 10, 10, 340, 10, 60, { fill: 'light-fill' }); P.flow_band(c, 60, 20, 300, 20, 20, { fill: 'light-fill' }); });

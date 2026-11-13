@@ -870,7 +870,10 @@
     'cat-1': 'CanvasText', 'cat-2': 'GrayText', 'cat-3': 'dense', 'cat-4': 'hatch', none: 'Canvas'
   };
   // text inks: these set text on a dark fill, so they take Canvas in forced colors
-  K.FC_ON_DARK = ['label-on-subject', 'on-cat-1', 'on-cat-2', 'on-cat-3', 'chip-label'];
+  // round 3: a dark step's label ink (sequential 4 and 5, magnitude 4, diverging 1) sets words on a dark fill too
+  K.FC_ON_DARK = ['label-on-subject', 'on-cat-1', 'on-cat-2', 'on-cat-3', 'chip-label', 'on-seq-4', 'on-seq-5', 'on-mag-4', 'on-div-1'];
+  ['seq-1', 'seq-2', 'seq-3', 'mag-1', 'mag-2', 'div-2', 'div-3', 'div-4'].forEach(function (r) { K.FC['on-' + r] = 'CanvasText'; });
+  ['seq-4', 'seq-5', 'mag-3', 'mag-4', 'div-1', 'div-5'].forEach(function (r) { K.FC['on-' + r] = 'Canvas'; });
   var FC_PATTERN = { hatch: [6, 1, 'CanvasText'], dense: [3, 1.5, 'CanvasText'], 'hatch-gray': [6, 1.5, 'GrayText'] };
   function forced_patterns(c) {
     var body = c._els.join(''), used = {}, rules = [], defs = '';

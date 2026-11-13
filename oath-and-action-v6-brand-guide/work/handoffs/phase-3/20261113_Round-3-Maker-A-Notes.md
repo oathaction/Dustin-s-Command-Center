@@ -4,18 +4,19 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Maker A, briefed 
 
 ## Summary
 
-- 00:5x. Started. Read `CLAUDE.md`, the round 3 brief, the kit README, the plan file's round 3 rows, data plan rows 86 to 93 with the sign-off's changes 4, 5 and 12 and its conditions, round 2's maker A notes, S62, `step-tracker` and entry 14.88, and the seven datasets with their sidecars. The data lead's "Rulings", the engineer's "Contracts" and the editor's "Words for maker A" are in progress. Writing the seven forms now.
+- 00:5x. Started. Read `CLAUDE.md`, the round 3 brief, the kit README, the plan file's round 3 rows, data plan rows 86 to 93 with the sign-off's changes 4, 5 and 12 and its conditions, round 2's maker A notes, S62, `step-tracker` and entry 14.88, and the seven datasets with their sidecars.
+- 01:2x. All seven forms, specs S66 to S72, entries 14.96 to 14.103 and the mind map sketch are written, on the engineer's R3-5 parts (`link`, `node`, `node_size`, `tree`) and under the data lead's rulings (a) to (d): no named mark on any of S66 to S72, inks and grade lines as ruled. Each spec builds PASS with the sweep, 0 faults. `maker_a_round3_derive.py` writes S71's joined table and checks every figure in my titles, notes and alts (23 checks, 0 failed so far; S71 and S72 checks being added). R3-A1 landed (the research lead's Ballotpedia publisher). Now: the review pass at 1440, 390, 296 and 256 px on both grounds and in grayscale, then the strict build and the quick guide check.
 
 | Rule | Spec | Form ID | Status |
 |---|---|---|---|
-| 14.96 | S66 | process-diagram | form in progress |
-| 14.97 | S67 | decision-tree | waiting |
-| 14.98 | S68 | who-decides | waiting |
-| 14.99 | S69 | org-chart | waiting |
-| 14.100 | S70 | hierarchy-tree | waiting |
-| 14.101 | S71 | comparison-grid | waiting |
-| 14.102 | S72 | roll-call-grid | waiting |
-| 14.103 | sketch | mind map (reference) | waiting |
+| 14.96 | S66 | process-diagram | form, spec, entry; build passes |
+| 14.97 | S67 | decision-tree | form, spec, entry; build passes |
+| 14.98 | S68 | who-decides | form, spec, entry; build passes |
+| 14.99 | S69 | org-chart | form, spec, entry; build passes |
+| 14.100 | S70 | hierarchy-tree | form, spec, entry; build passes |
+| 14.101 | S71 | comparison-grid | form, spec, entry, derived table; build passes |
+| 14.102 | S72 | roll-call-grid | form, spec, entry; build passes |
+| 14.103 | sketch | mind map (reference) | sketch 2,4xx bytes, entry |
 
 ## Routine calls
 

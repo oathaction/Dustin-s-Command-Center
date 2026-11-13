@@ -8,7 +8,9 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Written by the en
 - **R3-2 LANDED (02:40 UTC):** `geo.js` from the 2024 files (133,117 bytes against 250,000), the map parts, `.geojson` in the kit's check and in the data check, the geometry weighed apart in `guide_charts.py`, and the checks reaching shapes in moved groups. Calls under "Contracts".
 - **DL-E1 MEASURED (03:05 UTC):** S81 fits its share, about 14,200 bytes with its frame, when the drawing reads a class column and the table groups by state; reading the value costs about 24,780. Figures under "Contracts", for the data lead's sign-off.
 - **R3-4 LANDED:** the kit's state outlines are the 2024 file's; S16 passes as committed on them (`build s16`: 0 faults, sweep on). S16 can be placed.
-- **RB3-G1 LANDED (01:55 UTC):** the band check reads a band's x extent (maker B).
+- **RB3-G1 LANDED (01:55 UTC):** the band check reads a band's x extent (maker B). **C-E1 LANDED:** `count_eq`. **ENG-R3-1 DONE:** the data script carries the new Ballotpedia publisher. **Step label inks LANDED (03:50):** `on-seq-N`, `on-mag-N`, `on-div-N` for words and marks on a map's steps.
+- **DL-E1 SIGNED OFF** by the data lead: S81 national as variant B (D3-1090).
+- **Checks, 03:45 UTC:** `oa-chart.mjs build --all --no-png`: 78 specs, 78 check files, 78 PASS (the makers' drafts included), 78 s; self-test every fault caught; strict build exit 0, no warning.
 
 ## Contracts
 
@@ -66,6 +68,8 @@ Every part draws through the form's context, so the layout guard and the checks 
 | `map_scale` | A scale bar for a fitted layer | `K.parts.map_scale(c, L, T, x, y, {miles, words, stroke})`; default a round figure near a fifth of the map's width, words '{n} miles' |
 | `map_dots` | A dot density map, one path for every dot | `K.parts.map_dots(c, L, T, counts, {per, seed, r, fill, job})`; `counts` `{geoid: count}`; each feature's dots are round(count / per), placed at random inside its shape in frame units (the same places at every width) by a generator seeded from `seed` and the geoid, drawn as one path of round dots (`kit.css` `.oac-dots`). Returns `{dots, per, seed, skipped}` |
 | `table.group` | A table grouped by a column (DL-E1, DR-249) | `"table": {"caption", "columns": [every column, for the CSV export], "group": {"by": "state", "sort": "key", "columns": [{label, agg, field, format, state_name, from, to, name}]}}`; `agg` `key` (with `state_name: true`, the state's name), `count`, `count_in` (field at least `from` and under `to`), `count_eq` (field equals `value`, or any of a list: C-E1), `min`, `max`, `median`, `sum`, `first`, `min_name`, `max_name`. The page prints one row a group; the island carries the drawing's columns for every row; the CSV export lists every row |
+
+**Each step's label ink (LANDED, 03:50 UTC).** For ruling (b)'s "codes in the label ink of its step" and the districts' dots and rings: the text and fill roles `on-seq-1` to `on-seq-5`, `on-mag-1` to `on-mag-4` and `on-div-1` to `on-div-5`, from the tokens' step label inks (`c.text(..., {fill: 'on-seq-4'})`, `c.circle(..., {fill: 'on-mag-4'})`, or a `map_labels` item's `fill`). Each reads at 4.6 to 1 or more on its own step on both grounds (Newsprint seq-4 5.2, mag-3 4.9; Charcoal seq-3 4.6, div-2 and div-4 4.6 and 4.7). In forced colors the dark steps' inks (sequential 4 and 5, magnitude 3 and 4, diverging 1 and 5) take Canvas, as words on a dark fill do.
 
 **Islands for maps.** Where a column of the rows holds a layer's geoids, every one, in the layer's order (sorted by geoid, as every frozen file is), the island leaves it out and the page reads it back from `geo.js` (`geo_key`). A grouped table's island carries only the columns the drawing reads (encode, where, sort, formats, labels, annotations), never the table's.
 

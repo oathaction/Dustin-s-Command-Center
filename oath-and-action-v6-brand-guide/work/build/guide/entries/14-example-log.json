@@ -3,27 +3,28 @@
  "written_by": "work/build/scripts/phase-3/phase3_ch14_build.py",
  "rounds": [
   1,
-  2
+  2,
+  3
  ],
- "examples": 74,
+ "examples": 90,
  "by_domain": {
   "D01": 4,
-  "D02": 7,
-  "D03": 5,
-  "D04": 6,
-  "D05": 3,
-  "D06": 4,
+  "D02": 10,
+  "D03": 7,
+  "D04": 10,
+  "D05": 5,
+  "D06": 6,
   "D07": 7,
   "D08": 14,
   "D09": 11,
-  "D10": 6
+  "D10": 7
  },
- "all_domains": 7,
+ "all_domains": 9,
  "by_state": {
   "AK": 1,
-  "CA": 3,
+  "CA": 4,
   "CT": 1,
-  "FL": 3,
+  "FL": 5,
   "GA": 1,
   "IL": 2,
   "MA": 1,
@@ -32,10 +33,12 @@
   "MT": 1,
   "NC": 1,
   "ND": 2,
-  "NY": 2,
-  "OH": 1,
+  "NJ": 1,
+  "NY": 4,
+  "OH": 2,
   "PA": 1,
-  "TX": 1,
+  "TN": 1,
+  "TX": 2,
   "UT": 1,
   "VT": 1,
   "WA": 1,
@@ -569,6 +572,130 @@
    "states": [],
    "rule": "14.90",
    "source": "s64.json"
+  },
+  {
+   "example": "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, 16.0 million ended for a procedural reason, and 49.0 million kept coverage.",
+   "domain": "D04",
+   "states": [],
+   "rule": "14.93",
+   "source": "s65.json"
+  },
+  {
+   "example": "A federal agency makes a rule in five steps the law sets, and Congress can strike the rule down or a court can set it aside once it is final.",
+   "domain": "D05",
+   "states": [],
+   "rule": "14.96",
+   "source": "s66.json"
+  },
+  {
+   "example": "A state ban on ranked-choice voting reaches city elections in 18 states, Ohio’s ban leaves home-rule cities an opening at a price, and elsewhere the answer turns on state home-rule law.",
+   "domain": "D02",
+   "states": [
+    "OH",
+    "TN"
+   ],
+   "rule": "14.97",
+   "source": "s67.json"
+  },
+  {
+   "example": "Six of the eight bodies behind an electric bill can change its rules, and two, the regional grid operators and the investor-owned utility, apply them.",
+   "domain": "D06",
+   "states": [],
+   "rule": "14.98",
+   "source": "s68.json"
+  },
+  {
+   "example": "The House splits its work among 20 standing committees and 3 select committees, which divide it again among 109 subcommittees.",
+   "domain": "D04",
+   "states": [],
+   "rule": "14.99",
+   "source": "s69.json"
+  },
+  {
+   "example": "A federal case starts in one of 94 district courts, an appeal goes to the court of appeals for its region, and the Supreme Court sits over all 13 courts of appeals.",
+   "domain": "D05",
+   "states": [],
+   "rule": "14.100",
+   "source": "s70.json"
+  },
+  {
+   "example": "The eleven routes a reform can take run from a city ordinance to a constitutional amendment, and a federal statute, which needs 60 senators to end debate on most bills, is the route the most reforms list, 38.",
+   "domain": "all",
+   "states": [],
+   "rule": "14.101",
+   "source": "s71.json"
+  },
+  {
+   "example": "The bill that ended the shutdown passed the Senate 60 to 40 on November 10, 2025, with 7 Democrats and 1 independent joining 52 Republicans, and the House 222 to 209 two days later.",
+   "domain": "D04",
+   "states": [],
+   "rule": "14.102",
+   "source": "s72.json"
+  },
+  {
+   "example": "The Harris Victory Fund sent $899.5 million to 55 committees in the 2024 cycle, and the Trump National Committee JFC sent $273.8 million to two.",
+   "domain": "D03",
+   "states": [],
+   "rule": "14.104",
+   "source": "s73.json"
+  },
+  {
+   "example": "The atlas’s 118 connections fill 44 of the 100 pairs of its ten regions, and 32 of them stay within one region.",
+   "domain": "all",
+   "states": [],
+   "rule": "14.105",
+   "source": "s74.json"
+  },
+  {
+   "example": "Of 10 House bills whose titles name pharmacy benefit managers, H.R. 6609 and H.R. 6610 shared the most backers, 34 members.",
+   "domain": "D06",
+   "states": [],
+   "rule": "14.106",
+   "source": "s75.json"
+  },
+  {
+   "example": "Individuals gave 2024 House campaigns $1,384.1 million, more than any other source, and the campaigns spent $2,045.3 million.",
+   "domain": "D03",
+   "states": [],
+   "rule": "14.110",
+   "source": "s76.json"
+  },
+  {
+   "example": "Under the federal SNAP rule, a state has at most 30 days from an application to a decision, and at most 7 for a household with very little income or cash.",
+   "domain": "D04",
+   "states": [],
+   "rule": "14.112",
+   "source": "s77.json"
+  },
+  {
+   "example": "Nineteen states ban ranked-choice voting as of November 2026, 17 of them in all elections, by Ballotpedia’s reading.",
+   "domain": "D02",
+   "states": [],
+   "rule": "14.114",
+   "source": "s07.json"
+  },
+  {
+   "example": "New York, New Jersey, Florida and California moved furthest toward the Republican nominee, each by 9 points or more.",
+   "domain": "D02",
+   "states": [
+    "NY",
+    "NJ",
+    "FL",
+    "CA"
+   ],
+   "rule": "14.115",
+   "source": "s12.json"
+  },
+  {
+   "example": "Texas, Florida and New York, three of the four states with the most citizens 18 and over, reported turnout below the national 65.3 percent by more than the survey’s margin of error.",
+   "domain": "D10",
+   "states": [
+    "TX",
+    "FL",
+    "NY"
+   ],
+   "rule": "14.116",
+   "source": "s16.json"
   },
   {
    "example": "The Republican nominee led in 31 states in 2024, six more than in 2020; in four of the six states that changed leader, the lead was under 2.5 points.",

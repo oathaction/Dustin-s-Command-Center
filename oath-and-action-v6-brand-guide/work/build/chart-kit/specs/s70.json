@@ -21,12 +21,43 @@
   "table": {
     "caption": "The federal courts and the judgeships the law authorizes for each, the Supreme Court, then the courts of appeals, then the district courts grouped by the court of appeals that hears their appeals",
     "columns": [
-      { "field": "court", "label": "Court", "format": "text", "row_header": true },
-      { "field": "judgeships", "label": "Judgeships", "format": "integer" },
-      { "field": "parent", "label": "Appeals go to", "format": "text", "empty": "None: the highest court" },
-      { "field": "state_or_territory", "label": "Serves", "format": "text", "empty": "The whole country" },
-      { "field": "article", "label": "Kind", "format": "text", "words": { "III": "Article III court", "IV": "Territorial court, not an Article III court" } },
-      { "field": "statute", "label": "The law", "format": "text" }
+      {
+        "field": "court",
+        "label": "Court",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "judgeships",
+        "label": "Judgeships",
+        "format": "integer"
+      },
+      {
+        "field": "parent",
+        "label": "Appeals go to",
+        "format": "text",
+        "empty": "None: the highest court"
+      },
+      {
+        "field": "state_or_territory",
+        "label": "Serves",
+        "format": "text",
+        "empty": "The whole country"
+      },
+      {
+        "field": "article",
+        "label": "Kind",
+        "format": "text",
+        "words": {
+          "III": "Article III court",
+          "IV": "Territorial court, not an Article III court"
+        }
+      },
+      {
+        "field": "statute",
+        "label": "The law",
+        "format": "text"
+      }
     ]
   },
   "chart_notes": [
@@ -38,15 +69,50 @@
   "domain": "D05",
   "states": [],
   "sort": [
-    { "field": "parent", "values": ["", "Supreme Court of the United States", "U.S. Court of Appeals for the District of Columbia Circuit", "U.S. Court of Appeals for the First Circuit", "U.S. Court of Appeals for the Second Circuit", "U.S. Court of Appeals for the Third Circuit", "U.S. Court of Appeals for the Fourth Circuit", "U.S. Court of Appeals for the Fifth Circuit", "U.S. Court of Appeals for the Sixth Circuit", "U.S. Court of Appeals for the Seventh Circuit", "U.S. Court of Appeals for the Eighth Circuit", "U.S. Court of Appeals for the Ninth Circuit", "U.S. Court of Appeals for the Tenth Circuit", "U.S. Court of Appeals for the Eleventh Circuit"] }
+    {
+      "field": "parent",
+      "values": [
+        "",
+        "Supreme Court of the United States",
+        "U.S. Court of Appeals for the District of Columbia Circuit",
+        "U.S. Court of Appeals for the First Circuit",
+        "U.S. Court of Appeals for the Second Circuit",
+        "U.S. Court of Appeals for the Third Circuit",
+        "U.S. Court of Appeals for the Fourth Circuit",
+        "U.S. Court of Appeals for the Fifth Circuit",
+        "U.S. Court of Appeals for the Sixth Circuit",
+        "U.S. Court of Appeals for the Seventh Circuit",
+        "U.S. Court of Appeals for the Eighth Circuit",
+        "U.S. Court of Appeals for the Ninth Circuit",
+        "U.S. Court of Appeals for the Tenth Circuit",
+        "U.S. Court of Appeals for the Eleventh Circuit"
+      ]
+    }
   ],
-  "encode": { "name": "court", "parent": "parent", "level": "level", "count": "judgeships", "place": "state_or_territory" },
+  "encode": {
+    "name": "court",
+    "parent": "parent",
+    "level": "level",
+    "count": "judgeships",
+    "place": "state_or_territory"
+  },
   "labels": {
     "root_sub": "{n} justices",
-    "groups": { "main": "{n} regional courts of appeals", "apart": "Apart from them, by subject" },
-    "apart": ["U.S. Court of Appeals for the Federal Circuit"],
+    "groups": {
+      "main": "{n} regional courts of appeals",
+      "apart": "Apart from them, by subject"
+    },
+    "apart": [
+      "U.S. Court of Appeals for the Federal Circuit"
+    ],
     "card_sub": "{n} judgeships; {d} in its district courts",
-    "drop": ["U.S. Court of Appeals for the ", "U.S. District Court for the ", "District Court for the ", "District Court of the ", "District Court of "],
+    "drop": [
+      "U.S. Court of Appeals for the ",
+      "U.S. District Court for the ",
+      "District Court for the ",
+      "District Court of the ",
+      "District Court of "
+    ],
     "single": "District of",
     "shared_level": "district-shared",
     "shared_words": "{n} shared",
@@ -54,10 +120,14 @@
     "apart_words": "not an Article III court",
     "note_field": "note"
   },
-  "typography": { "curl_quotes": true, "nbsp": true },
+  "typography": {
+    "curl_quotes": true,
+    "nbsp": true
+  },
   "notes_internal": [
     "Maker A, round 3. Data plan row 90 with the sign-off's change 5, rule 14.100. Domain D05 from the sidecar.",
     "Data lead ruling (b): nodes with a subject-ink edge, links in the context ink (elbow); each court's judgeships on its node; the territorial courts shaded (the track ink, which holds words at 4.5 to 1 on both grounds, where the light fill measures 4.29 on Charcoal) with a context edge and the words 'not an Article III court'; the Federal Circuit apart, named.",
-    "The 673 and 4 in note 1 are the sidecar's own sums of 28 U.S.C. 133 (shared seats included) and the Title 48 courts; the drawing prints no single district total until the research lead's finding on 673 against 677 lands."
+    "The 673 and 4 in note 1 are the sidecar's own sums of 28 U.S.C. 133 (shared seats included) and the Title 48 courts; the drawing prints no single district total until the research lead's finding on 673 against 677 lands.",
+    "Every figure in the title, notes and alt checked by script: python3 -I work/build/scripts/phase-3/maker_a_round3_derive.py --figures, check S70."
   ]
 }

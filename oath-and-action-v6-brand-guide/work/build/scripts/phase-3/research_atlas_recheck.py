@@ -177,6 +177,9 @@ for k, L in LINKS.items():
 for (pair, n) in D0['busiest_crossings_computed'][:4]:
     a, b = pair.split(' to ')
     cmp(f, 'busiest crossing ' + pair, n, cross[(a, b)], 'structure')
+# Phase 0's recorded V7 side: its computed sheet figures and its eight busiest crossings
+f['v7_side'] = [D0['sheet_stats_computed'][c] == sheet_computed(c) for c in D0['sheet_stats_computed']]
+f['v7_side'].append([[f'{a} to {b}', n] for (a, b), n in cross.most_common(8)] == D0['busiest_crossings_computed'])
 
 # 6. Field Guide specimens: six word checks and two glyph checks each
 f = fam('Concepts V2 Field Guide specimens', 160, 0, 'recomputed from the recorded specimens and glyph counts')
@@ -206,17 +209,19 @@ for s, g in zip(D0['field_guide'], D0['field_guide_glyphs']):
     pos = sum(1 for l in LP['links'] if LINKS[l]['polarity'] == '+')
     neg = sum(1 for l in LP['links'] if LINKS[l]['polarity'] == '-')
     cmp(f, s['loop'] + ' end marks', (g['arrowheads_or_triangles'] - 1, g['bars']), (pos, neg), 'sign')
+    f.setdefault('v7_side', []).append((g['v7_plus'], g['v7_minus']) == (pos, neg))
 
 # 7. Who Can Act: the page side was not recorded; Phase 0's recorded V7 tallies are compared with today's
 f = fam('Concepts V2 Who Can Act', 94, 0, 'V7 side only: Phase 0’s recorded route and effect tallies against today’s')
 live = {k: R for k, R in REFORMS.items() if not R['rejected']}
 rc = collections.Counter(x['route'] for R in live.values() for x in R['routes'])
-cmp(f, 'route counts (live reforms)', dict(rc), D0['who_can_act']['route_counts'], 'structure')
+f['v7_side'] = [dict(rc) == D0['who_can_act']['route_counts']]
 for fm in ('DQ', 'GE', 'EP', 'EQ'):
     codes = collections.Counter(lead_code(R['effects'][fm]) for R in live.values())
-    cmp(f, fm + ' effect codes (live reforms)', dict(codes), D0['who_can_act']['families'][fm]['codes'], 'structure')
-f['n'] = 0  # these are V7-side checks, not the page comparisons; counted apart below
-f['v7_side_checks'] = 5
+    f['v7_side'].append(dict(codes) == D0['who_can_act']['families'][fm]['codes'])
+# the same tallies stand for the effect cells' V7 side: every live reform's four effect codes
+FAM['Concepts V2 Register effect cells']['v7_side'] = list(f['v7_side'][1:])
+FAM['Concepts V2 Register effect cells']['method'] += '; V7 side tested through Phase 0’s recorded effect-code tallies'
 
 # 8. Ledger rows: variables, links, loops, reforms (Phase 0 found the D03 and D04 reform counts)
 f = fam('Concepts V2 Ledger rows', 48, 2, 'recomputed from the recorded rows')
@@ -333,6 +338,13 @@ for o in D0['occurrences']:
             ok &= GL.get(end) == L['polarity'] and tex == TEX[L['evidence']]
     f['n'] += 1
     if not ok:
+        g = re.search(r'grade (\S+)', o['shown'])
+        reviewed = [x for x in D0['reviewed_false_positives'] if x['item'] == o['id'] and x['file'] == o['file']
+                    and g and x['shown'] == g.group(1) and x['v7'] == L['evidence']]
+        if reviewed:  # Phase 0 read each of these in context and found the word belongs to another record
+            f.setdefault('reviewed_false_positives', []).append({'item': o['id'], 'shown': o['shown'], 'file': o['file'],
+                                                                 'why': reviewed[0]['why']})
+            continue
         f['conflicts'].append({'item': o['id'], 'shown': o['shown'], 'v7_today': '%s %s %s' % (L['evidence'], L['delay'], L['polarity']),
                                'type': 'attribute', 'where': o['file'] + ', ' + o['location']})
 
@@ -353,9 +365,14 @@ for o in D0['occurrences']:
         continue
     if after and len(after) > 25 and not ID_RE.match(after) and re.match(r'^[A-Z][a-z]', after):
         lt = LOOPS[o['id']]['title']
-        ok = norm(after).startswith(norm(lt)) or norm(lt)[:20] in norm(after)
-        if o['id'] in NODES and not ok and norm(NODES[o['id']]['title'])[:20] in norm(after):
-            continue  # a colliding ID used as a variable here, which Phase 0 set aside by its meaning test
+        na = norm(after)
+        # Phase 0's meaning test (its lines 498 to 507): a colliding ID followed by its variable title or a recorded
+        # variable label is a variable here, and Phase 0 set it aside
+        if o['id'] in NODES and not na.startswith(norm(lt)[:25]):
+            labels = [norm(x['label']) for x in D0['variable_labels_shown'].get(o['id'], [])]
+            if na.startswith(norm(NODES[o['id']]['title'])[:18]) or any(l and na.startswith(l[:14]) for l in labels):
+                continue
+        ok = na.startswith(norm(lt)) or norm(lt)[:20] in na
         cmp(f, o['id'] + ' title', ok, True, 'label')
 
 fam('Reform effect words (Concepts V2 and AVS outcome figure)', 24, 0, 'not recomputed: read from the lines after each heading')

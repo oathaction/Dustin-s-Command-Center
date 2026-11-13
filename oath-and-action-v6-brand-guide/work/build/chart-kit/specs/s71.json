@@ -21,14 +21,47 @@
   "table": {
     "caption": "The atlas’s eleven routes to change, with what the official texts require of each and the date they were read",
     "columns": [
-      { "field": "name", "label": "Route", "format": "text", "row_header": true },
-      { "field": "v7_who", "label": "Who acts, in the atlas’s words", "format": "text" },
-      { "field": "what_it_takes", "label": "What it takes", "format": "text" },
-      { "field": "how_it_can_be_undone", "label": "How it can be undone", "format": "text" },
-      { "field": "route_entries", "label": "Reforms that list it", "format": "integer" },
-      { "field": "sources", "label": "The texts", "format": "text" },
-      { "field": "url", "label": "Where they were read", "format": "text" },
-      { "field": "date_read_words", "label": "Read", "format": "text" }
+      {
+        "field": "name",
+        "label": "Route",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "v7_who",
+        "label": "Who acts, in the atlas’s words",
+        "format": "text"
+      },
+      {
+        "field": "what_it_takes",
+        "label": "What it takes",
+        "format": "text"
+      },
+      {
+        "field": "how_it_can_be_undone",
+        "label": "How it can be undone",
+        "format": "text"
+      },
+      {
+        "field": "route_entries",
+        "label": "Reforms that list it",
+        "format": "integer"
+      },
+      {
+        "field": "sources",
+        "label": "The texts",
+        "format": "text"
+      },
+      {
+        "field": "url",
+        "label": "Where they were read",
+        "format": "text"
+      },
+      {
+        "field": "date_read_words",
+        "label": "Read",
+        "format": "text"
+      }
     ]
   },
   "chart_notes": [
@@ -39,23 +72,45 @@
   "artboard": "reading",
   "domain": "all",
   "states": [],
-  "v7": { "snapshot": "2026-10-15" },
-  "encode": { "name": "name", "count": "route_entries" },
+  "v7": {
+    "snapshot": "2026-10-15"
+  },
+  "encode": {
+    "name": "name",
+    "count": "route_entries"
+  },
   "labels": {
     "name_label": "Route",
     "name_share": 0.8,
     "columns": [
-      { "field": "v7_who", "label": "Who acts", "share": 1.05 },
-      { "field": "what_it_takes", "label": "What it takes", "share": 1.75, "under_words": "{sources}; read {date_read_words}" },
-      { "field": "how_it_can_be_undone", "label": "How it can be undone", "share": 1.05 }
+      {
+        "field": "v7_who",
+        "label": "Who acts",
+        "share": 1.05
+      },
+      {
+        "field": "what_it_takes",
+        "label": "What it takes",
+        "share": 1.75,
+        "under_words": "{sources}; read {date_read_words}"
+      },
+      {
+        "field": "how_it_can_be_undone",
+        "label": "How it can be undone",
+        "share": 1.05
+      }
     ],
     "count_label": "Reforms that list it",
     "count_share": 0.65
   },
-  "typography": { "curl_quotes": true, "nbsp": true },
+  "typography": {
+    "curl_quotes": true,
+    "nbsp": true
+  },
   "notes_internal": [
     "Maker A, round 3. Data plan row 91, rule 14.101. Atlas-wide (data lead check 1).",
     "Data: usgov-v7-route-grid, derived by work/build/scripts/phase-3/maker_a_round3_derive.py from v7-routes (names, who acts, the count) and usgov-route-requirements (what each route takes, how it is undone, the texts and their address), with each route's reading date from the workflow sources file (R2-2; the research lead's data check).",
-    "Data lead ruling (b): words in the text's ink on the ground, rules between rows in the gridline ink; the count as one series of bars in the subject ink with each value printed; no fills by category."
+    "Data lead ruling (b): words in the text's ink on the ground, rules between rows in the gridline ink; the count as one series of bars in the subject ink with each value printed; no fills by category.",
+    "Every figure in the title, notes and alt checked by script: python3 -I work/build/scripts/phase-3/maker_a_round3_derive.py --figures, check S71."
   ]
 }

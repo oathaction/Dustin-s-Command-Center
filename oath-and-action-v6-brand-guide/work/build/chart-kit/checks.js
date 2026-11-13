@@ -375,6 +375,9 @@ function role_color(role, tok) {
   };
   for (let i = 1; i <= 5; i++) { names['seq-' + i] = 'chart-color-sequential-fill-step' + i; names['div-' + i] = 'chart-color-diverging-fill-step' + i; }
   for (let i = 1; i <= 4; i++) names['mag-' + i] = 'chart-color-magnitude-fill-step' + i;
+  // round 3: each step's label ink
+  for (let i = 1; i <= 5; i++) { names['on-seq-' + i] = 'chart-color-sequential-label-step' + i; names['on-div-' + i] = 'chart-color-diverging-label-step' + i; }
+  for (let i = 1; i <= 4; i++) names['on-mag-' + i] = 'chart-color-magnitude-label-step' + i;
   const n = names[role];
   if (!n) return null;
   for (const x of [].concat(n)) { const v = tok['--oa-' + x]; if (v && /^#[0-9a-f]{6}$/i.test(v.trim())) return v.trim().toUpperCase(); }

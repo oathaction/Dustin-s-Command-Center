@@ -6,23 +6,24 @@
  * each row. Inks (the data lead's round 3 ruling (b)): every node and link in the ink labels.ink names (the party-mark
  * ink for money spent to elect a candidate, Rule 14.6), node boxes outlined in it with the words in the text's ink.
  * encode: source (text), target (text), value (number), target_key (id, matched by labels.nodes), kind (category,
- * optional, matched by labels.nodes).
+ * optional, matched by labels.nodes), line (category, optional: with labels.lines, only rows of those values draw).
  * labels: nodes ([{source, keys: [target_key], kind: [kind], rest: true, name}], in drawing order: a row joins the first
  * node it matches; {n} in a name counts its rows), sources ({source: the box's name}), sub ({source: words under the
  * name, with {total} and {n}}), value ('{v}' words under a node's name; default '{v}'), unit (the measure one pixel of
  * width carries), key_steps ([measures] the key draws), key_title, key_hairline (words under the key, {v} the measure of
- * one pixel), ink (a color role; default 'party'), side_by_side (px).
+ * one pixel), ink (a color role; default 'party'), side_by_side (px), lines ([values of encode.line] drawn).
  * formats: value, small (for a measure under 1 million; default the value's), key (the key's measures). Maker B, round 3. */
 (function (K) {
   'use strict';
   K.register_chart({
     form: 'network-diagram', name: 'Network Diagram', family: 'relationships',
-    encode: { source: 'text', target: 'text', value: 'number', target_key: 'id', kind: 'category?' },
-    labels: ['nodes', 'sources', 'sub', 'value', 'unit', 'key_steps', 'key_title', 'key_hairline', 'ink', 'side_by_side'],
+    encode: { source: 'text', target: 'text', value: 'number', target_key: 'id', kind: 'category?', line: 'category?' },
+    labels: ['nodes', 'sources', 'sub', 'value', 'unit', 'key_steps', 'key_title', 'key_hairline', 'ink', 'side_by_side', 'lines'],
     phone: 'same',
     draw: function (c) {
       var P = K.parts, L = c.labels, f = c.spec.formats || {}, W = c.width;
-      var es = c.field('source'), et = c.field('target'), ev = c.field('value'), ek = c.field('target_key'), ekd = c.field('kind', false);
+      var es = c.field('source'), et = c.field('target'), ev = c.field('value'), ek = c.field('target_key'), ekd = c.field('kind', false), eln = c.field('line', false);
+      var keep = eln && L.lines ? [].concat(L.lines).map(String) : null;
       var specs = L.nodes || [], ink = L.ink || 'party', unit = +L.unit || 1, tk = c.size('tick');
       var fv = function (x) { return K.fmt(x, Math.abs(x) < 1e6 && f.small ? f.small : f.value || 'integer').replace(/ (million|billion)$/, ' $1'); };
       var v = function (x) { return String(L.value || '{v}').split('{v}').join(fv(x)); };
@@ -30,6 +31,7 @@
       // one block a source, in first-seen order, and one node a matching spec
       var blocks = [];
       c.rows.forEach(function (r) {
+        if (keep && keep.indexOf(String(r[eln])) < 0) return;   // a row of another measure: the table keeps it, the drawing does not
         var s = String(r[es]), b = blocks.filter(function (x) { return x.source === s; })[0];
         if (!b) { b = { source: s, nodes: [], total: 0, rows: 0 }; blocks.push(b); }
         var m = null;

@@ -79,6 +79,41 @@
    "line": "Big numbers give a figure with the context to judge it, and progress bars and bullet graphs set one measure against its target or limit. Step trackers and status chips show how far a bill or a dispute has come."
   },
   {
+   "number": 11,
+   "before_rule": "14.93",
+   "title": "Behavior: how do people move through a process?",
+   "rules": "14.93 to 14.95",
+   "line": "People move through a process in funnels, cohort charts and survival curves, which show where they leave it."
+  },
+  {
+   "number": 12,
+   "before_rule": "14.96",
+   "title": "Structure: who decides, and how does it work?",
+   "rules": "14.96 to 14.103",
+   "line": "Process diagrams, decision trees and who-decides diagrams show who decides and how a decision moves."
+  },
+  {
+   "number": 13,
+   "before_rule": "14.104",
+   "title": "Relationships: who is connected to whom?",
+   "rules": "14.104 to 14.109",
+   "line": "Networks, matrices and arc diagrams show who is connected to whom, and how strongly."
+  },
+  {
+   "number": 14,
+   "before_rule": "14.110",
+   "title": "Flow: where does it go?",
+   "rules": "14.110 to 14.113",
+   "line": "Sankeys, alluvial charts and flow maps show where money or people go, with every flow accounted for."
+  },
+  {
+   "number": 15,
+   "before_rule": "14.114",
+   "title": "Maps: where is it happening?",
+   "rules": "14.114 to 14.124",
+   "line": "A map appears when the place answers the question, and it names its places in words as well as color."
+  },
+  {
    "number": 16,
    "before_rule": "14.125",
    "title": "Tables and plain words: where does a reader look things up, and when do words answer faster?",
@@ -3728,6 +3763,775 @@
    }
   },
   {
+   "id": "14.93",
+   "title": "Use a funnel when people pass through stages and some leave at each.",
+   "rule": [
+    "Draw each stage as a bar from one left edge, each inside the one before, so every stage reads against the first by length, and print each stage’s count and its share of the first. Beside each bar, draw what the stage lost as a segment from its end to the end of the stage before, and name it under the segment. The loss the title names takes the text’s ink, and stages and other losses are gray (Rule 14.6). Set a group still waiting, decided neither way, apart below the stages, and keep the parts of a stage in the table."
+   ],
+   "why": {
+    "text": [
+     "A funnel puts the start and every stage on one scale, so a reader sees how many remain and where the largest loss came. Bars from one edge compare more exactly than the centered funnel shape, which makes the eye judge widths from the middle."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form funnel: node work/build/chart-kit/oa-chart.mjs build s65; encode category, value, key and role (labels.stage marks a stage); labels.losses maps each stage to the loss before it, labels.apart sets a group aside below the stages, labels.named takes the loss the title names into the subject ink; stages take the light fill with the context edge.",
+   "related_rules": [
+    "14.4",
+    "14.6"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how many people made it through each step of a process, and where the rest left.",
+   "use_instead": [
+    {
+     "when": "Steps of a process with the time each may take",
+     "rule": "14.112"
+    },
+    {
+     "when": "Parts of one whole with no order",
+     "rule": "14.46"
+    },
+    {
+     "when": "One group followed over time until an event",
+     "rule": "14.95"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s65",
+    "caption": "Of the people whose Medicaid or CHIP coverage came up for renewal, how many had a decision, how many were not cut off for paperwork, and how many kept coverage?"
+   }
+  },
+  {
+   "id": "14.96",
+   "title": "Use a process diagram to show how a decision is made, step by step, and where others can step in.",
+   "rule": [
+    "Number the steps every case takes and run them down one heavy line in order, each in a box with an edge in the text’s ink that names the step, who acts and the time the law sets. Set each branch a case may take beside the step it leaves or enters, in a box with a gray edge and a short line that says when it applies, joined by a gray arrow; arrows on the main line point the way a case moves. Print the date of the law the diagram draws, and give the table every step and branch in the order a reader meets them, each with where it leads. On a phone the steps run in one column, a step’s way in above it and its branches below it, set in from the line."
+   ],
+   "why": {
+    "text": [
+     "One line through the steps every case takes lets a reader learn the main path first, and the branches beside it show where the path can turn without hiding it. Numbers keep the order when the diagram is read aloud or as a table."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "11"
+   ],
+   "builders": "Form process-diagram: node work/build/chart-kit/oa-chart.mjs build s66; encode.path marks the main steps with labels.main, labels.branches gives each branch the step it leaves or enters (at), its way (dir, out or in) and its line of words, and the table sorts by encode.key’s values in reading order.",
+   "related_rules": [
+    "11.9",
+    "14.88",
+    "14.97"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how an institution makes or changes something, such as how an agency writes a rule, and where Congress, a court or the public can step in.",
+   "use_instead": [
+    {
+     "when": "One bill or rule’s place in its steps is the question",
+     "rule": "14.88"
+    },
+    {
+     "when": "The reader picks a path by answering questions about their own place",
+     "rule": "14.97"
+    },
+    {
+     "when": "The question is how long each step can take for one person",
+     "rule": "14.112"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s66",
+    "caption": "How does a federal agency make or change a rule, and where can Congress or a court step in?"
+   }
+  },
+  {
+   "id": "14.97",
+   "title": "Use a decision tree when the answer turns on facts about the reader’s own place.",
+   "rule": [
+    "Put the question in a box with an edge in the text’s ink and each answer under it in a shaded box, joined by arrows of one weight, every answer drawn alike, since the reader’s own place picks the path. Open each answer with its word and how many places it holds, then what it means, then the places by name where the list is short; a further question sits in its own box under the answer that leads to it. Print the date the facts were checked. On a phone the answers run down the page, set in from a line at the left, and the table lists every place in the tree’s order with the answer it takes."
+   ],
+   "why": {
+    "text": [
+     "A reader answers one question at a time and finds their own case at the end, with the count of places that share it. Drawing every answer alike keeps the tree from steering a reader toward any one of them."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form decision-tree: node work/build/chart-kit/oa-chart.mjs build s67; labels.tree gives the question and its answers, each with a where over the rows that it counts, its count words with {n}, its meaning, list to name the places and then for a further question.",
+   "related_rules": [
+    "14.6",
+    "14.114",
+    "14.130"
+   ],
+   "entry": true,
+   "use_when": "The reader asks a yes-or-no question whose answer depends on their state or city, such as whether a city may switch its own elections to ranked-choice voting.",
+   "use_instead": [
+    {
+     "when": "Every state’s answer at once is the point",
+     "rule": "14.114"
+    },
+    {
+     "when": "Everyone follows the same steps",
+     "rule": "14.96"
+    },
+    {
+     "when": "A reader looks up one place in a long list",
+     "rule": "14.130"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s67",
+    "caption": "Can my city switch its own elections to ranked-choice voting?"
+   }
+  },
+  {
+   "id": "14.98",
+   "title": "Use a who-decides diagram to show who can change a rule and who only applies it.",
+   "rule": [
+    "Place each body by what it can do: those who can change the rules in a band above those who apply them, in columns from federal to regional, state, local and private hands, every body in one box style with its name in bold. Draw a line of authority, one body setting or approving another’s rules, as a gray arrow from the body that decides to the one it governs, with no plus or minus sign and no loop, as chapter 15 keeps authority apart from cause (Rule 15.5). On a phone the bands run down the page, each body under its level’s name, with the lines of authority in a lane at the left."
+   ],
+   "why": {
+    "text": [
+     "Position answers the reader’s first question before any line is read: the upper band can change the rules. A line of authority says who decides and leaves the choice open, as the atlas records it, so it carries no sign."
+    ],
+    "basis": "Our systems atlas’s definition of an authority connection; design judgment"
+   },
+   "tokens": [],
+   "related": [
+    "15"
+   ],
+   "builders": "Form who-decides: node work/build/chart-kit/oa-chart.mjs build s68; encode.changes sets the band, encode.level the column (labels.levels and labels.level_words), labels.authority the lines from one body’s key to another’s and labels.order the order bodies stack in a column.",
+   "related_rules": [
+    "15.5",
+    "14.96",
+    "14.99"
+   ],
+   "entry": true,
+   "use_when": "The reader asks who sets something they pay or live under, such as an electric bill, and which of those bodies could change the rules behind it.",
+   "use_instead": [
+    {
+     "when": "One body’s own structure is the question",
+     "rule": "14.99"
+    },
+    {
+     "when": "The steps of one decision matter more than the bodies",
+     "rule": "14.96"
+    },
+    {
+     "when": "Many bodies trade money or ties, and the links are the point",
+     "rule": "14.104"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s68",
+    "caption": "Who sets my electric bill, and who can change the rules behind it?"
+   }
+  },
+  {
+   "id": "14.99",
+   "title": "Use an org chart to show who sits under whom inside one body.",
+   "rule": [
+    "Put the body’s box at the top and run a line down the left to each group of its units, headed with the group’s count. Draw each unit as a card: its box, named, with the count of units under it, and under it, set in, a box for each of those, joined by gray elbow lines, every box with an edge in the text’s ink. Fill as many columns as the width holds, each card in the shortest, so the order reads from the top down, and keep any split by party to the table. On a phone the cards run in one column."
+   ],
+   "why": {
+    "text": [
+     "A reader looking for one committee scans the cards, then reads down to its subcommittees, and the counts tell how the work divides before any name is read. One ink keeps every unit equal, since no unit here answers the question more than another."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form org-chart: node work/build/chart-kit/oa-chart.mjs build s69; encode.unit and encode.unit_key name each unit, encode.group its group (labels.groups), encode.sub its sub-units; labels.drop sets prefixes a unit’s name leaves off, labels.count the count words.",
+   "related_rules": [
+    "14.98",
+    "14.100"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how one body divides its work, such as the House’s committees and their subcommittees.",
+   "use_instead": [
+    {
+     "when": "Each part carries a count that sums up the tree",
+     "rule": "14.100"
+    },
+    {
+     "when": "Who can change a rule across several bodies is the question",
+     "rule": "14.98"
+    },
+    {
+     "when": "The parts’ sizes matter more than who sits under whom",
+     "rule": "14.52"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s69",
+    "caption": "How is the House divided into committees and subcommittees?"
+   }
+  },
+  {
+   "id": "14.100",
+   "title": "Use a hierarchy tree for parts nested inside parts, with a count at every level.",
+   "rule": [
+    "Put the top part’s box first and run a line down the left to each group of its children, headed with the group’s count. Draw each child as a card that prints its own count and the sum of the counts under it, so the levels add up, and list its parts under it, set in and joined by gray elbow lines, grouped the way a reader looks for them, such as by state. Shade a part of another kind and say what it is in words, and set apart a child that serves the whole tree, named. On a phone the cards run in one column."
+   ],
+   "why": {
+    "text": [
+     "A reader finds their own part first, then follows the line up to the level that hears its appeal. A count at every level lets the tree be checked by addition, and the shaded parts show at a glance which courts stand on a different footing."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form hierarchy-tree: node work/build/chart-kit/oa-chart.mjs build s70; encode.parent links each part to its parent, encode.count gives its count and encode.place groups its parts; labels.card_sub prints {n} and {d}, labels.apart sets children apart, labels.apart_level shades parts of another kind.",
+   "related_rules": [
+    "14.52",
+    "14.99"
+   ],
+   "entry": true,
+   "use_when": "The reader asks where something sits in a nested system and where it leads next, such as which federal court hears a case from their state and where an appeal goes.",
+   "use_instead": [
+    {
+     "when": "The parts’ sizes are the point",
+     "rule": "14.52"
+    },
+    {
+     "when": "One body’s units sit under it with no count to add up",
+     "rule": "14.99"
+    },
+    {
+     "when": "A reader looks up one part in a long list",
+     "rule": "14.130"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s70",
+    "caption": "Which federal court hears a case from my state, and where does an appeal go?"
+   }
+  },
+  {
+   "id": "14.101",
+   "title": "Use a comparison grid to weigh a few options against the same questions in words.",
+   "rule": [
+    "Give each option a row, named in bold, and each question a column, every cell in words in the text’s ink with a thin gray rule between rows. Keep the options in the order their source gives them, and draw a count, where one helps, as a single series of bars with its value printed. Under a cell that rests on a text, print the text and the date it was read. On a phone each option runs as a block: its name and count, then each column’s name over its words."
+   ],
+   "why": {
+    "text": [
+     "A reader reads across a row to learn one option and down a column to compare them on one question, and words keep the requirements exact where a symbol would round them off. The source under each cell lets a reader check a threshold against its text."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form comparison-grid: node work/build/chart-kit/oa-chart.mjs build s71; encode.name names each row and encode.count draws the bar; labels.columns gives each column’s field, label and share of the width, and under_words a line under its cells.",
+   "related_rules": [
+    "14.129",
+    "14.133"
+   ],
+   "entry": true,
+   "use_when": "The reader weighs a handful of options against the same questions, such as what each route to change a law takes and how it can be undone.",
+   "use_instead": [
+    {
+     "when": "Many rows carry one value each, read by step",
+     "rule": "14.129"
+    },
+    {
+     "when": "Two or three options suit cards side by side",
+     "rule": "14.137"
+    },
+    {
+     "when": "A handful of numbers answers the question",
+     "rule": "14.133"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s71",
+    "caption": "Which of the eleven routes can carry a reform, and what does each one take?"
+   }
+  },
+  {
+   "id": "14.102",
+   "title": "Use a roll-call grid to show how every member voted, with each party named in words.",
+   "rule": [
+    "Draw one square a member in the party-mark ink: solid for yes, an outline for no, shaded for a member who did not vote and a faint outline for a vacant seat. Head each chamber with its vote, its date and the question and result in the record’s words. Give each party a row of its own, named in words with its count and how it voted, Democrats first, independents as the record lists them, folded into no party, and Republicans last, with vacant seats between, as the chart for Rule 14.53 orders the sides (Rule 14.7)."
+   ],
+   "why": {
+    "text": [
+     "A square for each member lets a reader count the members who crossed party lines without a key to colors, and solid against outline in one ink tells yes from no in gray print and for a reader who sees no color. Naming each party in words keeps the sides clear with no red and blue."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form roll-call-grid: node work/build/chart-kit/oa-chart.mjs build s72; labels.chambers, labels.parties and labels.votes set the order, labels.seats each chamber’s seats so the vacant count follows, labels.head and labels.ask the panel’s words from the record.",
+   "related_rules": [
+    "14.7",
+    "14.53",
+    "14.87"
+   ],
+   "entry": true,
+   "use_when": "The reader asks how each member of a chamber voted on one bill, and how many from each party crossed over.",
+   "use_instead": [
+    {
+     "when": "Only the totals matter, against the votes a rule needs",
+     "rule": "14.87"
+    },
+    {
+     "when": "The chamber’s seats are the question, with no vote",
+     "rule": "14.53"
+    },
+    {
+     "when": "How members voted across many bills",
+     "rule": "14.129"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s72",
+    "caption": "How did each senator and representative vote on the November 2025 bill that ended the shutdown?"
+   }
+  },
+  {
+   "id": "14.103",
+   "title": "Keep a mind map for sorting ideas, and publish a diagram that shows how the parts connect.",
+   "rule": [
+    "Use a mind map, a reference form, while a story is being planned: one topic in the middle, its parts on lines around it, and their own parts beyond them. Before it reaches a reader, turn it into the form that shows how the parts relate, a process diagram for steps in order, a hierarchy tree for parts with counts or a table for a list."
+   ],
+   "why": {
+    "text": [
+     "Lines around a center say only that two ideas belong together. A reader also needs to know how they relate, whether one comes before another, sits under it or causes it, and the forms built for each relation draw it."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw a mind map only as a sketch for planning; build process-diagram or hierarchy-tree for a reader.",
+   "sketch_alt": "A mind map of an illustrative city budget, one topic in the middle with four parts on lines around it and a further idea beside each. The lines say each part belongs to the budget, and nothing about order or size.",
+   "related_rules": [
+    "14.96",
+    "14.100"
+   ],
+   "entry": true,
+   "use_when": "Writers and editors sort the parts of a subject before they know how the parts connect, such as the topics a guide to a city budget might cover.",
+   "use_instead": [
+    {
+     "when": "The parts follow one another in order",
+     "rule": "14.96"
+    },
+    {
+     "when": "The parts nest inside one another with counts",
+     "rule": "14.100"
+    },
+    {
+     "when": "The parts are a list a reader scans",
+     "rule": "14.133"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-103-sketch",
+    "caption": "A mind map of an illustrative city budget, one topic in the middle with four parts on lines around it and a further idea beside each.",
+    "kind": "sketch",
+    "label": "Mind map, a sketch"
+   }
+  },
+  {
+   "id": "14.104",
+   "title": "Use a network diagram to show who sent what to whom.",
+   "rule": [
+    "Draw each sender and each receiver as a box with its name and amount inside, and join them with links whose width is the amount, in one linear unit for the whole drawing, with a key of widths; a link too narrow to see draws one pixel wide, and the key says so. Stack the links that leave a box in the order of the boxes they reach, so none cross. Fold many small receivers of one kind into one box with their count, and list each in the table. Draw two sides alike, side by side and in one ink, and name each side in words; money spent to elect a candidate takes the party-mark ink, never red or blue (Rule 14.7)."
+   ],
+   "why": {
+    "text": [
+     "Widths on one scale let a reader compare every link of both senders at a glance, and boxes that hold their names keep each end readable on a phone. Folding many small receivers keeps the drawing calm, and the table keeps every one."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form network-diagram: node work/build/chart-kit/oa-chart.mjs build s73; encode source, target, value, target_key and kind; labels.nodes folds rows into nodes, labels.unit sets the measure one pixel of width carries, labels.key_steps the key, labels.ink the party-mark ink; draws through K.parts.node, flows, flow_band and width_key.",
+   "related_rules": [
+    "14.3",
+    "14.7"
+   ],
+   "entry": true,
+   "use_when": "The reader asks where money or influence went from a few senders, and which links carried the most.",
+   "use_instead": [
+    {
+     "when": "Money into one account and out of it",
+     "rule": "14.110"
+    },
+    {
+     "when": "Many parts with many links among them",
+     "rule": "14.105"
+    },
+    {
+     "when": "Links among items in a set order",
+     "rule": "14.106"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s73",
+    "caption": "Where did each 2024 presidential nominee’s joint fundraising committee send what it raised?"
+   }
+  },
+  {
+   "id": "14.105",
+   "title": "Use an adjacency matrix when many parts link to many others.",
+   "rule": [
+    "Draw one row for each part a link starts from and one column for each part it reaches, in the same order, and shade each cell by its count on a sequential scale, with the count printed in it; leave an empty cell as the page inside a thin grid line. Group the parts with a gap between groups, number the columns and name the rows; on a phone, number the rows too and list the names under the grid. Give a class of links that differs in kind, such as lines of authority with no sign, an outline and a key entry of its own, never a step of the scale."
+   ],
+   "why": {
+    "text": [
+     "A grid never tangles, however many links it holds, and its rows and columns let a reader find any pair. It gives up the paths a network shows, so it suits counts between groups more than one route."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "13"
+   ],
+   "builders": "Form adjacency-matrix: node work/build/chart-kit/oa-chart.mjs build s74; encode from, to, value and special (the count in the class with no sign); labels.order sets the parts, labels.groups the gaps, labels.steps the scale with its fills (seq-1 takes the context edge), labels.special_label the outlined class.",
+   "related_rules": [
+    "14.5",
+    "13.9"
+   ],
+   "entry": true,
+   "use_when": "The reader asks which parts of a system connect to which, and the links are too many for lines to stay readable.",
+   "use_instead": [
+    {
+     "when": "A few senders and the amounts they sent",
+     "rule": "14.104"
+    },
+    {
+     "when": "Links among items in a set order",
+     "rule": "14.106"
+    },
+    {
+     "when": "Values across two categories, with no links",
+     "rule": "14.129"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s74",
+    "caption": "Which parts of the atlas connect to which?"
+   }
+  },
+  {
+   "id": "14.106",
+   "title": "Use an arc diagram for links among items in a set order.",
+   "rule": [
+    "Set the items on one line in an order that means something, such as the date each was introduced, and join each linked pair with an arc above the line whose width is the pair’s count, in one linear unit with a key of widths. Draw the widest arcs first so narrow ones stay in view, name each item under the line, and set the pair the title names in the text’s ink with every other arc gray. On a phone, run the line down the left and bow the arcs to the right. Print every pair and its count in the table."
+   ],
+   "why": {
+    "text": [
+     "Keeping the items in their own order lets a reader see whether linked items sit close together or far apart. Arcs cross one another, so the form holds a few dozen links before the table must carry the detail."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form arc-diagram: node work/build/chart-kit/oa-chart.mjs build s75; encode from, to and value; labels.order sets the line, labels.unit the px of width per unit, labels.named the pair in the subject ink, labels.split breaks “H.R. 950” over two lines; draws through K.parts.link with shape arc and K.parts.width_key.",
+   "related_rules": [
+    "14.3",
+    "14.6"
+   ],
+   "entry": true,
+   "use_when": "The reader asks which items in a list share something, such as bills that drew the same backers, and the list has an order worth keeping.",
+   "use_instead": [
+    {
+     "when": "Many parts with many links among them",
+     "rule": "14.105"
+    },
+    {
+     "when": "Amounts sent from a few senders",
+     "rule": "14.104"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s75",
+    "caption": "Which House bills to rein in drug middlemen drew the same backers?"
+   }
+  },
+  {
+   "id": "14.110",
+   "title": "Use a Sankey to show money into one account and out of it.",
+   "rule": [
+    "Draw each source as a band from the left into one node and each use as a band from the node to the right, every band as wide as its amount in one linear unit, with a key band, so the bands sum at the node. Put the money on hand at the start first on the left and at the end last on the right, so the node balances, and give any remainder the record leaves in a note. Group loans and their repayments apart by a gap under their own names, so a reader can tell a loan from a gift, and say in a note that no dollar received is traced to a dollar spent. The flow the title names takes the text’s ink; the rest are gray with a thin edge (Rule 14.6)."
+   ],
+   "why": {
+    "text": [
+     "Bands on one scale show the largest sources and uses at a glance and keep the account’s balance in view. Small lines shrink to a hairline at that scale, so each band prints its amount and the table keeps every cent."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form sankey: node work/build/chart-kit/oa-chart.mjs build s76; encode side, key, category and value; labels.groups sets bands apart under a name, labels.track the cash on hand, labels.named the flow in the subject ink, labels.open lets the node keep the record’s remainder; draws through K.parts.flows, flow_band and width_key.",
+   "related_rules": [
+    "14.3",
+    "14.4",
+    "14.6"
+   ],
+   "entry": true,
+   "use_when": "The reader asks where an account’s money came from and where it went, in one period.",
+   "use_instead": [
+    {
+     "when": "Money sent from a few senders to receivers",
+     "rule": "14.104"
+    },
+    {
+     "when": "Lines that add and subtract to a total",
+     "rule": "14.48"
+    },
+    {
+     "when": "Parts of one total in one year",
+     "rule": "14.52"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s76",
+    "caption": "Where did the money for 2024 House campaigns come from, and where did it go?"
+   }
+  },
+  {
+   "id": "14.112",
+   "title": "Use a journey map to show a person’s path through a public service, step by step.",
+   "rule": [
+    "Draw each step as a box with its name, who acts and the time the rule allows, joined in order by arrows, and draw a branch some people take from the step it leaves. Print each time as the rule’s limit, say in the measure line that waits are not measured, and print the date of the rule. The path every person takes is in the text’s ink and a branch is gray, with no red, since red on a step would code it. At a desk the path reads across; on a phone it reads down, with the branch after the last step. The table lists the steps in reading order, each with the step that follows it."
+   ],
+   "why": {
+    "text": [
+     "A journey map follows one person rather than an office, so a reader finds their own place in the process and the longest they may wait. Calling each time a limit keeps a reader from taking it as a promise."
+    ]
+   },
+   "tokens": [],
+   "related": [
+    "13"
+   ],
+   "builders": "Form journey-map: node work/build/chart-kit/oa-chart.mjs build s77; encode step, path, key, who and limit; labels.limits gives each step’s time in words, labels.branch_label names who takes the branch, labels.across_from sets the width where the path turns down; draws through K.parts.node and K.parts.link.",
+   "related_rules": [
+    "14.12",
+    "14.13",
+    "13.6"
+   ],
+   "entry": true,
+   "use_when": "The reader asks what happens after they apply, sign up or file, and how long each step can take.",
+   "use_instead": [
+    {
+     "when": "How a rule or a law is made, with its branches",
+     "rule": "14.96"
+    },
+    {
+     "when": "Counts of people who made it through each step",
+     "rule": "14.93"
+    },
+    {
+     "when": "Steps a reader takes, with no times",
+     "rule": "14.138"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s77",
+    "caption": "What happens after someone applies for SNAP food benefits, and how long can each step take?"
+   }
+  },
+  {
+   "id": "14.113",
+   "title": "Use a flow map only when the routes between places answer the question.",
+   "rule": [
+    "Use a flow map, a reference form, to show how many people, goods or dollars moved between places: a line from each origin to each destination over a plain map, as wide as the amount it carries on one scale, with an arrowhead where it arrives and a key of two widths. Draw the lines under the place names, keep the few largest flows and say how many the map leaves out, and give every flow’s amount in the table."
+   ],
+   "why": {
+    "text": [
+     "A line between two places gives a route a reader can follow, and its width shows how much moved along it. Past a few dozen lines the routes cross into a tangle, so the form suits a few large flows or a single origin."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form: draw each flow as a curve in the subject ink under the place dots and names, its stroke width set by one scale (amount per pixel) with a key of two widths, and an arrowhead at the destination.",
+   "sketch_alt": "Curved lines run from one place to four others over a plain map, each as wide as the invented number of people who moved along it, with a key of two widths.",
+   "related_rules": [
+    "14.4",
+    "14.110"
+   ],
+   "entry": true,
+   "use_when": "A reader asks where people or money went from a few places, and the routes matter as much as the amounts.",
+   "use_instead": [
+    {
+     "when": "The amounts matter and the places do not",
+     "rule": "14.110"
+    },
+    {
+     "when": "Moves among many places, in both directions",
+     "rule": "14.105"
+    },
+    {
+     "when": "Each place’s total moving in or out, with no routes",
+     "rule": "14.116"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-113-sketch",
+    "caption": "Curved lines run from one place to four others over a plain map, each as wide as the invented number of people who moved along it, with a key of two widths.",
+    "kind": "sketch",
+    "label": "Flow map, a sketch"
+   }
+  },
+  {
+   "id": "14.114",
+   "title": "Use a tile-grid map to show each state’s status, every state the same size.",
+   "rule": [
+    "Draw each state and the District of Columbia as one square of the same size, on a grid that keeps each state beside its neighbors, with Alaska and Hawaii at its corners, and print each state’s two-letter code in its square. Tell the categories apart by fill and outline as well as shade, so the key still reads in gray print: solid squares for the status the title names, open squares for a partial case and gray squares for none, each named in the key. Print one more fact under the code, such as the year a law took effect, wherever the square holds it. Where the squares grow too small for their codes, leave the codes out and say under the map that the table names every state."
+   ],
+   "why": {
+    "text": [
+     "On a map of real shapes, large, thinly settled states take most of the page, so a status held mostly by small eastern states looks rare. Equal squares give every state the same weight, and the code in each square names the place in words."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form tile-map-categorical: node work/build/chart-kit/oa-chart.mjs build s07, or copy specs/s07.json and point it at a new dataset; encode code, category and sub (the line under the code); labels.categories sets each category’s style (solid, open or light) and words, and labels.key_at the key’s place in the grid’s empty upper middle.",
+   "related_rules": [
+    "14.3",
+    "14.5",
+    "14.13"
+   ],
+   "entry": true,
+   "use_when": "The reader asks which states have a law or status, and each state counts once, whatever its size or population.",
+   "use_instead": [
+    {
+     "when": "A rate by state, on the shapes readers know",
+     "rule": "14.117"
+    },
+    {
+     "when": "How far each state moved between two dates",
+     "rule": "14.115"
+    },
+    {
+     "when": "The same status at several dates, to show how it spread",
+     "rule": "14.123"
+    },
+    {
+     "when": "The reader looks up one state’s law and its details",
+     "rule": "14.130"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s07",
+    "caption": "Which states prohibit ranked-choice voting?"
+   }
+  },
+  {
+   "id": "14.115",
+   "title": "Use a tile map of arrows to show where a measure moved, every state on one scale.",
+   "rule": [
+    "Give each state one square holding an arrow that points the way the measure moved, its length set by the shift on one scale across the map, with the state’s code and the shift printed above the arrow. Name the direction in words in the key, as “toward the Republican nominee”, so no color stands for a party (Rule 14.7). Set the national figure beside the key with its own label and arrow (Rule 14.6), and frame each state whose leader changed.",
+    "On a phone, where an arrow would be too short to read, each square takes a gray step by the size of its shift, and two lists under the map name the largest and smallest shifts with their figures (Rule 14.12)."
+   ],
+   "why": {
+    "text": [
+     "A reader compares lengths more surely than shades, so arrows on one scale show at a glance where a shift ran large. The arrows and the words in the key carry the direction, so no party needs a color, and equal squares keep a small state’s move as visible as a large one’s."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form tile-map-shift-arrows: node work/build/chart-kit/oa-chart.mjs build s12; encode code, shift, from and to; labels.frame \"sign\" frames a state whose from and to differ in sign, labels.key_steps sets the sample arrows, labels.steps and steps_labels the phone’s gray steps, labels.nation_label the national figure beside the key, and labels.lists the two lists.",
+   "related_rules": [
+    "14.7",
+    "14.12",
+    "14.25"
+   ],
+   "entry": true,
+   "use_when": "The reader asks where a measure moved between two dates and how far, state by state, such as a presidential margin from one election to the next.",
+   "use_instead": [
+    {
+     "when": "The reader asks which places moved most, more than where they sit",
+     "rule": "14.25"
+    },
+    {
+     "when": "The reader looks up how each state voted in each year",
+     "rule": "14.125"
+    },
+    {
+     "when": "Each state has a status with no direction",
+     "rule": "14.114"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s12",
+    "caption": "Where did the presidential margin move between 2020 and 2024?"
+   }
+  },
+  {
+   "id": "14.116",
+   "title": "Use a bubble map when the size of each place matters as much as its rate.",
+   "rule": [
+    "Set a circle at each state’s center over the land, its area in proportion to a count such as citizens 18 and over (Rule 14.4), and shade it by a rate in the sequential steps, with a key for each. Move circles apart only where they would overlap, and print each state’s code inside its circle, or beside it with a leader where the circle is too small to hold it (Rule 14.3). Mark the national rate on the step key with its label (Rule 14.6). Ring only the circles the title names, and single out a survey rate only where its gap passes the margin of error (Rule 14.9)."
+   ],
+   "why": {
+    "text": [
+     "On a map of shaded states, land sets how much of the page each state takes, so a large state with few people outweighs a small, crowded one. A circle sized by people gives each state its weight on the page, and its shade adds the rate without a second map."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "Form bubble-map: node work/build/chart-kit/oa-chart.mjs build s16; encode code, size (the circle’s area) and shade; labels.bins sets the shade’s four breaks, labels.size_steps and size_step_words the size key, labels.ring the circles ringed, labels.nation and nation_label the national rate on the step key, and labels.offsets a code’s place where the search finds none.",
+   "related_rules": [
+    "14.4",
+    "14.9",
+    "14.68"
+   ],
+   "entry": true,
+   "use_when": "The reader asks where a rate ran high or low and where most of the people are, such as which of the largest states reported low turnout.",
+   "use_instead": [
+    {
+     "when": "A rate alone, where each state’s size adds nothing",
+     "rule": "14.117"
+    },
+    {
+     "when": "Where a count sits inside the states, county by county",
+     "rule": "14.122"
+    },
+    {
+     "when": "Two measures compared as a pattern, with size as a third",
+     "rule": "14.68"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-s16",
+    "caption": "Where did more citizens report voting in 2024?"
+   }
+  },
+  {
+   "id": "14.124",
+   "title": "Avoid coloring a map by party, which takes a side before the reader reads it.",
+   "rule": [
+    "Leave party colors, and above all red and blue, off every Oath & Action map, and draw no scale that runs from one party’s color to the other’s. Show who won by position and words: one panel for each party, named with the seats it won, each place filled in its winner’s panel and outlined in the other, and the margin in gray steps that darken as it widens (Rule 14.7). Show a shift with arrows and the direction named in words."
+   ],
+   "why": {
+    "text": [
+     "Red and blue are the parties’ own colors, so a map in them reads as one side’s scoreboard before anyone reads a number. On real shapes the color also lets land stand in for votes, and a party that wins large, thinly settled places looks bigger than its count."
+    ]
+   },
+   "tokens": [],
+   "related": [],
+   "builders": "No kit form, by design; draw district-map (s80) or district-tile-map (s82): labels.panels names each party with its seats, and the margin takes the gray magnitude steps.",
+   "sketch_alt": "The same invented results drawn twice: shaded from one party’s color to the other’s, the map takes a side at a glance, while two gray panels, one for each party’s seats, show who won each place and by how much with no color for either party.",
+   "related_rules": [
+    "14.7",
+    "14.6"
+   ],
+   "entry": true,
+   "use_when": "Never: a reader who asks which party won each place, and by how much, gets a fairer answer from gray panels by party.",
+   "use_instead": [
+    {
+     "when": "Every House seat, who won it and by how much",
+     "rule": "14.121"
+    },
+    {
+     "when": "One state’s districts on their real shapes",
+     "rule": "14.119"
+    },
+    {
+     "when": "How far each state moved between two elections",
+     "rule": "14.115"
+    }
+   ],
+   "correct": {
+    "specimen": "s-14-124-sketch",
+    "caption": "The same invented results drawn twice: shaded from one party’s color to the other’s, the map takes a side at a glance, while two gray panels, one for each party’s seats, show who won each place and by how much with no color for either party.",
+    "kind": "avoid",
+    "label": "Party-colored map or red and blue scale, a form that misleads"
+   }
+  },
+  {
    "id": "14.125",
    "title": "Set results as a table with each row’s margin drawn in it.",
    "rule": [
@@ -4194,30 +4998,12 @@
   "14.82",
   "14.83",
   "14.84",
-  "14.93",
   "14.94",
   "14.95",
-  "14.96",
-  "14.97",
-  "14.98",
-  "14.99",
-  "14.100",
-  "14.101",
-  "14.102",
-  "14.103",
-  "14.104",
-  "14.105",
-  "14.106",
   "14.107",
   "14.108",
   "14.109",
-  "14.110",
   "14.111",
-  "14.112",
-  "14.113",
-  "14.114",
-  "14.115",
-  "14.116",
   "14.117",
   "14.118",
   "14.119",
@@ -4225,7 +5011,6 @@
   "14.121",
   "14.122",
   "14.123",
-  "14.124",
   "14.135",
   "14.136",
   "14.137",

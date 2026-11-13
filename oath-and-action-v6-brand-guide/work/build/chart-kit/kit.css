@@ -112,6 +112,11 @@
 .oac-f-cat-4 { fill: var(--oa-chart-color-categorical-fill-group4); } .oac-s-cat-4 { stroke: var(--oa-chart-color-categorical-fill-group4); fill: none; }
 .oac-f-on-cat-1 { fill: var(--oa-chart-color-categorical-label-group1); } .oac-f-on-cat-2 { fill: var(--oa-chart-color-categorical-label-group2); }
 .oac-f-on-cat-3 { fill: var(--oa-chart-color-categorical-label-group3); } .oac-f-beside-cat-4 { fill: var(--oa-chart-color-categorical-label-beside-group4); }
+/* Round 3 (the data lead's ruling (b) for the maps): words and small marks set on a sequential, magnitude or diverging step
+   take that step's label ink (a state's code on its class, a district's dot or ring on its margin step). */
+.oac-f-on-seq-1 { fill: var(--oa-chart-color-sequential-label-step1); } .oac-f-on-seq-2 { fill: var(--oa-chart-color-sequential-label-step2); } .oac-f-on-seq-3 { fill: var(--oa-chart-color-sequential-label-step3); } .oac-f-on-seq-4 { fill: var(--oa-chart-color-sequential-label-step4); } .oac-f-on-seq-5 { fill: var(--oa-chart-color-sequential-label-step5); }
+.oac-f-on-mag-1 { fill: var(--oa-chart-color-magnitude-label-step1); } .oac-f-on-mag-2 { fill: var(--oa-chart-color-magnitude-label-step2); } .oac-f-on-mag-3 { fill: var(--oa-chart-color-magnitude-label-step3); } .oac-f-on-mag-4 { fill: var(--oa-chart-color-magnitude-label-step4); }
+.oac-f-on-div-1 { fill: var(--oa-chart-color-diverging-label-step1); } .oac-f-on-div-2 { fill: var(--oa-chart-color-diverging-label-step2); } .oac-f-on-div-3 { fill: var(--oa-chart-color-diverging-label-step3); } .oac-f-on-div-4 { fill: var(--oa-chart-color-diverging-label-step4); } .oac-f-on-div-5 { fill: var(--oa-chart-color-diverging-label-step5); }
 .oac-s-ghost { stroke: var(--oa-chart-color-ghost); fill: none; }
 .oac-f-none { fill: none; }
 .oac-svg line, .oac-svg path, .oac-svg polyline { vector-effect: non-scaling-stroke; }
@@ -141,7 +146,9 @@
   .oac-svg .oac-s-surface { stroke: Canvas; }
   .oac-svg .oac-fc-bg { fill: Canvas; } .oac-svg .oac-fc-ink { stroke: CanvasText; } .oac-svg .oac-fc-gray { stroke: GrayText; }
   .oac-svg .oac-t { fill: CanvasText; paint-order: stroke; stroke: Canvas; stroke-width: 3px; stroke-linejoin: round; }
-  .oac-svg .oac-t:is(.oac-f-label-on-subject, .oac-f-on-cat-1, .oac-f-on-cat-2, .oac-f-on-cat-3, .oac-f-chip-label) { fill: Canvas; stroke: CanvasText; }
+  .oac-svg .oac-t:is(.oac-f-label-on-subject, .oac-f-on-cat-1, .oac-f-on-cat-2, .oac-f-on-cat-3, .oac-f-chip-label, .oac-f-on-seq-4, .oac-f-on-seq-5, .oac-f-on-mag-4, .oac-f-on-div-1) { fill: Canvas; stroke: CanvasText; }
+  /* round 3: a small mark in a dark step's label ink (a dot or ring on a district) takes the ground, as words there do */
+  .oac-svg :is(.oac-f-on-seq-4, .oac-f-on-seq-5, .oac-f-on-mag-3, .oac-f-on-mag-4, .oac-f-on-div-1, .oac-f-on-div-5):not(.oac-t) { fill: Canvas; }
   /* second pass: a word on a GrayText mark takes Canvas in both themes (GrayText is a mid ink against either ground); on a
      context mark beside a red point, which takes the ground (access S10), it keeps CanvasText */
   .oac-svg .oac-t.oac-fc-on-gray { fill: Canvas; stroke: CanvasText; }

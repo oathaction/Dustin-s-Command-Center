@@ -21,11 +21,37 @@
   "table": {
     "caption": "How each member voted on H.R. 5371, Senate vote 618 of November 10, 2025 and House roll call 285 of November 12, 2025, as each record lists them",
     "columns": [
-      { "field": "member", "label": "Member", "format": "text", "row_header": true },
-      { "field": "chamber", "label": "Chamber", "format": "text" },
-      { "field": "party", "label": "Party", "format": "text", "words": { "D": "Democrat", "R": "Republican", "I": "Independent" } },
-      { "field": "state", "label": "State", "format": "text" },
-      { "field": "vote_cast", "label": "Vote, as recorded", "format": "text" }
+      {
+        "field": "member",
+        "label": "Member",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "chamber",
+        "label": "Chamber",
+        "format": "text"
+      },
+      {
+        "field": "party",
+        "label": "Party",
+        "format": "text",
+        "words": {
+          "D": "Democrat",
+          "R": "Republican",
+          "I": "Independent"
+        }
+      },
+      {
+        "field": "state",
+        "label": "State",
+        "format": "text"
+      },
+      {
+        "field": "vote_cast",
+        "label": "Vote, as recorded",
+        "format": "text"
+      }
     ]
   },
   "chart_notes": [
@@ -37,28 +63,104 @@
   "domain": "D04",
   "states": [],
   "sort": [
-    { "field": "chamber", "values": ["Senate", "House"] },
-    { "field": "party", "values": ["D", "I", "R"] },
-    { "field": "vote_cast", "values": ["Yea", "Nay", "Present", "Not Voting"] },
-    { "field": "member" }
+    {
+      "field": "chamber",
+      "values": [
+        "Senate",
+        "House"
+      ]
+    },
+    {
+      "field": "party",
+      "values": [
+        "D",
+        "I",
+        "R"
+      ]
+    },
+    {
+      "field": "vote_cast",
+      "values": [
+        "Yea",
+        "Nay",
+        "Present",
+        "Not Voting"
+      ]
+    },
+    {
+      "field": "member"
+    }
   ],
-  "encode": { "chamber": "chamber", "party": "party", "vote": "vote_cast", "roll": "vote", "date": "vote_date", "question": "question", "result": "result" },
+  "encode": {
+    "chamber": "chamber",
+    "party": "party",
+    "vote": "vote_cast",
+    "roll": "vote",
+    "date": "vote_date",
+    "question": "question",
+    "result": "result"
+  },
   "labels": {
-    "chambers": ["Senate", "House"],
-    "seats": { "Senate": 100, "House": 435 },
-    "parties": ["D", "I", "R"],
-    "party_words": { "D": ["Democrat", "Democrats"], "I": ["Independent", "Independents"], "R": ["Republican", "Republicans"] },
-    "votes": ["Yea", "Nay", "Present", "Not Voting"],
-    "vote_words": { "Yea": "yes", "Nay": "no", "Present": "present", "Not Voting": "not voting" },
-    "vacant": ["Vacant seat", "Vacant seats"],
-    "key": { "yes": "Yes", "no": "No", "not": "Did not vote", "vacant": "Vacant seat" },
+    "chambers": [
+      "Senate",
+      "House"
+    ],
+    "seats": {
+      "Senate": 100,
+      "House": 435
+    },
+    "parties": [
+      "D",
+      "I",
+      "R"
+    ],
+    "party_words": {
+      "D": [
+        "Democrat",
+        "Democrats"
+      ],
+      "I": [
+        "Independent",
+        "Independents"
+      ],
+      "R": [
+        "Republican",
+        "Republicans"
+      ]
+    },
+    "votes": [
+      "Yea",
+      "Nay",
+      "Present",
+      "Not Voting"
+    ],
+    "vote_words": {
+      "Yea": "yes",
+      "Nay": "no",
+      "Present": "present",
+      "Not Voting": "not voting"
+    },
+    "vacant": [
+      "Vacant seat",
+      "Vacant seats"
+    ],
+    "key": {
+      "yes": "Yes",
+      "no": "No",
+      "not": "Did not vote",
+      "vacant": "Vacant seat"
+    },
     "head": "{roll}, {date}",
     "ask": "The question: “{question}.” The result: “{result}.”"
   },
-  "typography": { "curl_quotes": true, "nbsp": true },
+  "typography": {
+    "curl_quotes": true,
+    "nbsp": true
+  },
   "notes_internal": [
     "Maker A, round 3. Data plan row 92 with the sign-off's conditions on party, rule 14.102. Domain D04 from the sidecar (V7 I054).",
     "Data lead ruling (b): every seat in the party-mark ink; yes solid, no in outline at S61's 1.2 px, not voting in the light fill with no edge, vacant seats as ghost outlines named; Democrats first, then independents as the record lists them, folded into no party, then Republicans; within each group yes, no, not voting. Vacant seats sit between, S48's order.",
-    "The House's 435 seats are set by law (2 U.S.C. 2a); the Senate's 100 by the Constitution. Vacant seats are seats less members recorded: House 435 less 433, Senate 100 less 100. Which two House seats were vacant is not in the file and the drawing does not say."
+    "The House's 435 seats are set by law (2 U.S.C. 2a); the Senate's 100 by the Constitution. Vacant seats are seats less members recorded: House 435 less 433, Senate 100 less 100. Which two House seats were vacant is not in the file and the drawing does not say.",
+    "Every figure in the title, notes and alt checked by script: python3 -I work/build/scripts/phase-3/maker_a_round3_derive.py --figures, check S72."
   ]
 }

@@ -20,11 +20,38 @@
   "table": {
     "caption": "Committees and subcommittees of the House, 119th Congress, as the Clerk’s file of November 3, 2026 lists them, each committee followed by its subcommittees",
     "columns": [
-      { "field": "committee", "label": "Committee", "format": "text", "row_header": true },
-      { "field": "subcommittee", "label": "Subcommittee", "format": "text", "empty": "The committee as a whole" },
-      { "field": "committee_type", "label": "Kind", "format": "text", "words": { "standing": "Standing", "select": "Select", "joint": "Joint, with the Senate" } },
-      { "field": "majority_seats", "label": "Majority seats", "format": "integer" },
-      { "field": "minority_seats", "label": "Minority seats", "format": "integer" }
+      {
+        "field": "committee",
+        "label": "Committee",
+        "format": "text",
+        "row_header": true
+      },
+      {
+        "field": "subcommittee",
+        "label": "Subcommittee",
+        "format": "text",
+        "empty": "The committee as a whole"
+      },
+      {
+        "field": "committee_type",
+        "label": "Kind",
+        "format": "text",
+        "words": {
+          "standing": "Standing",
+          "select": "Select",
+          "joint": "Joint, with the Senate"
+        }
+      },
+      {
+        "field": "majority_seats",
+        "label": "Majority seats",
+        "format": "integer"
+      },
+      {
+        "field": "minority_seats",
+        "label": "Minority seats",
+        "format": "integer"
+      }
     ]
   },
   "chart_notes": [
@@ -32,21 +59,43 @@
   ],
   "phone": "differs",
   "phone_note": "Where two columns of 220 px do not fit, the committees run in one column down the page.",
-  "desk_phone": { "rows": 20, "part": "the first two committees; a phone draws all 27" },
+  "desk_phone": {
+    "rows": 20,
+    "part": "the first two committees; a phone draws all 27"
+  },
   "artboard": "reading",
   "domain": "D04",
   "states": [],
-  "encode": { "unit": "committee", "unit_key": "committee_code", "group": "committee_type", "sub": "subcommittee" },
+  "encode": {
+    "unit": "committee",
+    "unit_key": "committee_code",
+    "group": "committee_type",
+    "sub": "subcommittee"
+  },
   "labels": {
     "root": "House of Representatives",
-    "groups": { "standing": "{n} standing committees", "select": "{n} select committees", "joint": "{n} joint committees, shared with the Senate" },
-    "drop": ["Committee on the ", "Committee on "],
-    "count": { "one": "{n} subcommittee", "many": "{n} subcommittees" },
+    "groups": {
+      "standing": "{n} standing committees",
+      "select": "{n} select committees",
+      "joint": "{n} joint committees, shared with the Senate"
+    },
+    "drop": [
+      "Committee on the ",
+      "Committee on "
+    ],
+    "count": {
+      "one": "{n} subcommittee",
+      "many": "{n} subcommittees"
+    },
     "none": "No subcommittees"
   },
-  "typography": { "curl_quotes": true, "nbsp": true },
+  "typography": {
+    "curl_quotes": true,
+    "nbsp": true
+  },
   "notes_internal": [
     "Maker A, round 3. Data plan row 89, rule 14.99. Domain D04 from the sidecar.",
-    "Data lead ruling (b): nodes with a subject-ink edge, links in the context ink (elbow), all one ink; no party split in the drawing; majority and minority seats in the table under the Clerk's words."
+    "Data lead ruling (b): nodes with a subject-ink edge, links in the context ink (elbow), all one ink; no party split in the drawing; majority and minority seats in the table under the Clerk's words.",
+    "Every figure in the title, notes and alt checked by script: python3 -I work/build/scripts/phase-3/maker_a_round3_derive.py --figures, check S69."
   ]
 }

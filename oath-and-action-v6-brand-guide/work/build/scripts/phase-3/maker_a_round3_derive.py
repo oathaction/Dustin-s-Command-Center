@@ -218,7 +218,27 @@ def figures():
     fed = [r for r in app if 'Federal' in r['court']][0]
     check('S70', dcc['judgeships'] == '11' and fed['judgeships'] == '12' and rows[0]['judgeships'] == '9', 'DC Circuit 11, Federal Circuit 12, nine justices')
     check('S70', '10-year terms' in s['notes'][0], 'territorial judges serve ten-year terms (sidecar note)')
-    # S71 and S72 are added as they are written
+    # S71: the counts of reforms per route, the 60 senators
+    s, rows = spec('s71'), read_csv('usgov-v7-route-grid')
+    n = {r['route']: int(r['route_entries']) for r in rows}
+    check('S71', len(rows) == 11 and n['FS'] == 38 and max(n.values()) == 38 and '38' in s['title'], 'federal statute listed most, 38')
+    check('S71', '60 senators to end debate on most bills' in [r for r in rows if r['route'] == 'FS'][0]['what_it_takes'] and '60 senators' in s['title'], '60 senators to end debate')
+    want = {'SS': 29, 'LOC': 15, 'BI': 11, 'FA': 7, 'CRT': 7, 'FR': 6, 'ENF': 5, 'CIV': 4, 'AV': 3, 'IC': 1}
+    check('S71', all(n[k] == v for k, v in want.items()), 'every route count in the alt')
+    check('S71', '546,651' in [r for r in rows if r['route'] == 'BI'][0]['what_it_takes'], "California's signature count behind note 2")
+    # S72: both votes by party
+    s, rows = spec('s72'), read_csv('congress-hr5371-roll-calls-by-member')
+    def cnt(ch, party=None, vote=None):
+        return sum(1 for r in rows if r['chamber'] == ch and (party is None or r['party'] == party) and (vote is None or r['vote_cast'] == vote))
+    check('S72', cnt('Senate', vote='Yea') == 60 and cnt('Senate', vote='Nay') == 40 and '60 to 40' in s['title'], 'Senate 60 to 40')
+    check('S72', cnt('Senate', 'D', 'Yea') == 7 and cnt('Senate', 'I', 'Yea') == 1 and cnt('Senate', 'R', 'Yea') == 52, 'Senate yes: 7 D, 1 I, 52 R')
+    check('S72', cnt('Senate', 'R', 'Nay') == 1 and cnt('Senate', 'I', 'Nay') == 1 and cnt('Senate', 'D', 'Nay') == 38, 'Senate no: 1 R, 1 I, 38 D')
+    check('S72', cnt('House', vote='Yea') == 222 and cnt('House', vote='Nay') == 209 and '222 to 209' in s['title'], 'House 222 to 209')
+    check('S72', cnt('House') == 433 and 435 - cnt('House') == 2, 'House 433 members recorded, 2 of 435 seats vacant')
+    check('S72', cnt('House', 'D', 'Yea') == 6 and cnt('House', 'R', 'Nay') == 2 and cnt('House', 'D', 'Not Voting') == 1 and cnt('House', 'R', 'Not Voting') == 1, 'House: 6 D yes, 2 R no, 1 of each not voting')
+    check('S72', cnt('House', 'D') == 214 and cnt('House', 'R') == 219 and cnt('Senate', 'D') == 45 and cnt('Senate', 'R') == 53 and cnt('Senate', 'I') == 2, 'party sizes in the alt')
+    dates = {(r['chamber'], r['vote_date']) for r in rows}
+    check('S72', dates == {('Senate', '2025-11-10'), ('House', '2025-11-12')} and 'November 10, 2025' in s['title'] and 'two days later' in s['title'], 'vote dates, two days apart')
     for name, ok, what in CHECKS:
         print(('ok    ' if ok else 'FAIL  ') + name + ': ' + what)
         if not ok:

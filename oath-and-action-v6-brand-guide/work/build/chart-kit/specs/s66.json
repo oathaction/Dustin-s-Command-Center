@@ -153,6 +153,7 @@
   },
   "notes_internal": [
     "Maker A, round 3. Data plan row 86 with the sign-off's change 4, rule 14.96. Domain D05 from the sidecar (data lead check 1).",
-    "The five main steps are the rows with path main (orders 1, 3, 4, 5 and 6), numbered 1 to 5 in the drawing; the five branches attach where labels.branches says. Reading order: the way in, then each step followed by its branches."
+    "The five main steps are the rows with path main (orders 1, 3, 4, 5 and 6), numbered 1 to 5 in the drawing; the five branches attach where labels.branches says. Reading order: the way in, then each step followed by its branches.",
+    "Every figure in the title, notes and alt checked by script: python3 -I work/build/scripts/phase-3/maker_a_round3_derive.py --figures, check S66."
   ]
 }
