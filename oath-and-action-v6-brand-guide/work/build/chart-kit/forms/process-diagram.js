@@ -54,18 +54,12 @@
           c.text(x + pad + (q.ind || 0), y + q.base, q.w, { role: q.role, weight: q.wt, max: q.max, leading: q.lh, fill: q.fill });
         });
       };
-      var head = function (x, y, dir, ink) {
-        var l = 7, h = 4, pts = dir === 'right' ? [[x, y], [x - l, y - h], [x - l, y + h]] : dir === 'left' ? [[x, y], [x + l, y - h], [x + l, y + h]] : [[x, y], [x - h, y - l], [x + h, y - l]];
-        c.polygon(pts, { fill: ink, mark: false });
-      };
-      var link = function (pts, r, dir) {
-        var hv = r ? heavy(r) : true, ink = hv ? 'subject' : 'context', wd = hv ? 2 : 1, a = pts[pts.length - 2], b = pts[pts.length - 1];
+      // a link along its points through the kit's link part, one straight run a segment, the head on the last (R3-5)
+      var link = function (pts, r) {
+        var hv = r ? heavy(r) : true, o = { stroke: hv ? 'subject' : 'context', width: hv ? 2 : 1, head: [7, 4] };
         for (var i = 1; i < pts.length; i++) {
-          var p0 = pts[i - 1], p1 = pts[i], last = i === pts.length - 1, cut = last ? 6 : 0;
-          var dx = Math.sign(p1[0] - p0[0]), dy = Math.sign(p1[1] - p0[1]);
-          c.line(p0[0], p0[1], p1[0] - dx * cut, p1[1] - dy * cut, { stroke: ink, width: wd, mark: false });
+          K.parts.link(c, { x: pts[i - 1][0], y: pts[i - 1][1] }, { x: pts[i][0], y: pts[i][1] }, Object.assign({ arrow: i === pts.length - 1 }, o));
         }
-        head(b[0], b[1], b[0] > a[0] ? 'right' : b[0] < a[0] ? 'left' : 'down', ink);
       };
       var n = 0, y = 0, prev = null, spine = 15;
       main.forEach(function (m) {
@@ -112,7 +106,7 @@
           outs.forEach(function (r, i) {
             var p = parts(r, 0), h = fit(p, iw), top2 = yy + (i ? gap : 16), ly = top2 + Math.min(22, h / 2);
             box(r, ind, top2, iw, h, 0, p);
-            c.line(spine, yy, spine, ly, { stroke: 'subject', width: 2, mark: false });
+            K.parts.link(c, { x: spine, y: yy }, { x: spine, y: ly }, { stroke: 'subject', width: 2 });
             link([[spine, ly], [ind, ly]], r);
             yy = top2 + h;
           });

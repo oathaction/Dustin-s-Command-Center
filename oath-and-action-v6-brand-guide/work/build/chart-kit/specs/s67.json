@@ -130,8 +130,9 @@
             }
           },
           "count": "{n} states and the District of Columbia",
+          "leaf": "Check your state’s home-rule law.",
           "then": {
-            "q": "Check your state’s home-rule law. May a city set its own election rules?",
+            "q": "Does it let a city set its own election rules?",
             "branches": [
               {
                 "answer": "Yes",

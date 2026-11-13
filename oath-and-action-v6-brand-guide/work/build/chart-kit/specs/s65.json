@@ -11,7 +11,7 @@
  "reader_question": "Of the people whose Medicaid or CHIP coverage came up for renewal, how many had a decision, how many were not cut off for paperwork, and how many kept coverage?",
  "evidence": "finding",
  "evidence_label": "Finding",
- "grade_line": "Documented: counts the states reported to the Centers for Medicare & Medicaid Services",
+ "grade_line": "Documented: renewal outcomes the states reported to the Centers for Medicare & Medicaid Services",
  "title": "Of 76.7 million Medicaid and CHIP renewals due from April 2023 to March 2024, 49.0 million kept coverage and 16.0 million ended for a procedural reason.",
  "measure_line": "Medicaid and CHIP renewals due from April 2023 to March 2024, summed over the 12 months, by what happened to each, United States; a person due in two of the months counts twice",
  "notes": [
@@ -23,10 +23,27 @@
  "table": {
   "caption": "Medicaid and CHIP renewals due April 2023 to March 2024, by stage, United States",
   "columns": [
-   {"field": "stage", "label": "Stage", "format": "text", "row_header": true},
-   {"field": "people", "label": "People", "format": "integer"},
-   {"field": "share_of_due", "label": "Share of renewals due", "format": "number:4"},
-   {"field": "role", "label": "Kind of row", "format": "text"}
+   {
+    "field": "stage",
+    "label": "Stage",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "people",
+    "label": "People",
+    "format": "integer"
+   },
+   {
+    "field": "share_of_due",
+    "label": "Share of renewals due",
+    "format": "number:4"
+   },
+   {
+    "field": "role",
+    "label": "Kind of row",
+    "format": "text"
+   }
   ]
  },
  "phone": "same",
@@ -42,10 +59,12 @@
  },
  "labels": {
   "losses": {
-   "decided": "pending",
    "not_ended_procedural": "ended_procedural",
    "kept": "ended_ineligible"
   },
+  "apart": [
+   "pending"
+  ],
   "names": {
    "due": "Renewals due",
    "decided": "Decided",
@@ -55,11 +74,9 @@
    "ended_procedural": "Ended for a procedural reason",
    "ended_ineligible": "Found ineligible"
   },
-  "short": {
-   "not_ended_procedural": "Not ended for a procedural reason"
-  },
-  "named": ["ended_procedural"],
-  "set_apart": ["pending"]
+  "named": [
+   "ended_procedural"
+  ]
  },
  "formats": {
   "value": "millions:1",

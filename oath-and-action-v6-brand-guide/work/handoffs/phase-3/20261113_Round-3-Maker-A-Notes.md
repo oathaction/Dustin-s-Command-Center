@@ -25,6 +25,8 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Maker A, briefed 
 
 ## Requests to the research lead
 
+- **R3-A1, `ballotpedia-rcv-prohibitions-by-state.meta.json`:** its `publisher` reads "Ballotpedia. Secondary source". S67 draws this file with `v7-rcv-local-routes`, so its source line names both, and the kit's check for a spec of two datasets wants each publisher's words in the line, here "Ballotpedia. Secondary source", which no reader line says. Please set `publisher` to "Ballotpedia, a secondary source" (the words S07's printed line already uses), or tell me the words to print. S67 fails only this check until then.
+
 ## Tested
 
 ## Not tested

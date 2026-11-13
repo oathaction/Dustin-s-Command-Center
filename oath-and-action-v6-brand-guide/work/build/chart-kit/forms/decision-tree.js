@@ -32,7 +32,6 @@
         var rows = c.rows.filter(function (r) { return keeps(r, b.where); });
         p.push({ w: b.answer + (b.count ? ': ' + String(b.count).split('{n}').join(String(rows.length)) : ''), role: 'label', wt: 700 });
         if (b.leaf) p.push({ w: b.leaf, role: 'label', wt: 400 });
-        if (b.then) p.push({ w: b.then.q, role: 'label', wt: 700 });
         if (b.list) p.push({ w: rows.map(function (r) { return r[ep]; }).join(', '), role: 'tick', wt: 400, fill: 'secondary' });
         return p;
       };
@@ -52,20 +51,24 @@
         p.forEach(function (q) { c.text(x + pad, y + q.base, q.w, { role: q.role, weight: q.wt, max: w - 2 * pad, leading: q.lh, fill: q.fill }); });
         return h;
       };
-      var head = function (x, y, dir) {
-        var pts = dir === 'right' ? [[x, y], [x - 7, y - 4], [x - 7, y + 4]] : [[x, y], [x - 4, y - 7], [x + 4, y - 7]];
-        c.polygon(pts, { fill: 'context', mark: false });
+      // a run of the kit's link part (R3-5); arrow: a head at its end
+      var ln = function (x1, y1, x2, y2, arrow) { K.parts.link(c, { x: x1, y: y1 }, { x: x2, y: y2 }, { stroke: 'context', width: 1, arrow: !!arrow, head: [7, 4] }); };
+      // a further question under an answer at x, its top 16 px under the answer's bottom y, joined by an arrow from the
+      // line at the answer's left, and its own answers under it, set in
+      var ask = function (q, x, y, w, key) {
+        var qy = y + 16, qh = box(x, qy, w, lines(q), true, key + '.q');
+        ln(x + spine, y, x + spine, qy, true);
+        return down(q.branches || [], x, qy + qh, w, qy + qh, key + '.q');
       };
-      var ln = function (x1, y1, x2, y2) { c.line(x1, y1, x2, y2, { stroke: 'context', width: 1, mark: false }); };
       // the answers of one question, down the page from a line at the parent box's left, set in
       var down = function (bs, x, y, w, top, key) {
         var sx = x + spine, last = top;
         bs.forEach(function (b, i) {
           var by = y + (i ? gap : 16), bh = box(x + ind, by, w - ind, lines(b), false, key + '.' + i), ly = by + Math.min(22, bh / 2);
-          ln(sx, last, sx, ly); ln(sx, ly, x + ind - 7, ly); head(x + ind, ly, 'right');
+          ln(sx, last, sx, ly); ln(sx, ly, x + ind, ly, true);
           last = ly;
           y = by + bh;
-          if (b.then) y = down(b.then.branches || [], x + ind, y, w - ind, y, key + '.' + i);
+          if (b.then) y = ask(b.then, x + ind, y, w - ind, key + '.' + i);
         });
         return y;
       };
@@ -78,9 +81,9 @@
         y = 0;
         bs.forEach(function (b, i) {
           var x = i * (cw + cg), top = bus + 22;
-          ln(cx(i), bus, cx(i), top - 7); head(cx(i), top, 'down');
+          ln(cx(i), bus, cx(i), top, true);
           var bh = box(x, top, cw, lines(b), false, 'b' + i), yy = top + bh;
-          if (b.then) yy = down(b.then.branches || [], x, yy, cw, yy, 'b' + i);
+          if (b.then) yy = ask(b.then, x, yy, cw, 'b' + i);
           y = Math.max(y, yy);
         });
       } else {
