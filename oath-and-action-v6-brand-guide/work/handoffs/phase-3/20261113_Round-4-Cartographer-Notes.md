@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. The cartographer,
 
 ## Status
 
+- 21:37 UTC (clock read). **S16 placed on C4-E2** (landed 21:35:40 in `forms/bubble-map.js`, byte-identical to my revised patch): `s16.json` takes `labels.column_phone` and a `notes_internal` line naming the radius check; entry 14.116's builders line names the key. `build s16`, sweep on: PASS, 0 faults; `cartographer_round4_derive.py`: S16 coded 51 of 51 at 326 px and its radius check passes (D4-1 condition 1); the four faults left are S12's and S78's, which wait on C4-E1.
 - 21:36 UTC (clock read). Routing from the main session: C4-E2 goes to the component engineer with the revised 1,121-byte patch; C4-E1 (a token value) to the engineer after its card work; no size allocation holds either back (DR-271). S12's before and after captures gathered in `scratch/board3/s12/`.
 - 21:02 UTC (clock read). **S12 placed on the landed stacked tile** (`s12.json`: `stage_min` 618, the alt's clause, one `notes_internal` line): `build s12`, sweep on, PASS, 0 faults. **D4-1 ruled (A), the column** (20:57). Waiting on the engineer for C4-E1 (tile gap) and C4-E2 (S16's column, after the tile); then I add `labels.column_phone` to `s16.json`, name the radius check in its `notes_internal`, and run the closing checks. `cartographer_round4_derive.py` written: PASS on the mirror with both changes, FAIL with the six expected faults on the repository until they land.
 - 20:56 UTC (clock read). **Phone codes: measured, two kit requests out (C4-E1, C4-E2), one choice for the data lead (D4-1).** No repository file changed yet. S12's stacked tile: ruling (d) signed off at 20:52; I write `s12.json` when the engineer marks the tile LANDED.
@@ -59,7 +60,15 @@ DR-261 holds to the pixel: the stacked tile in the column from a 1,104 px window
 
 ## Pixels changed, for board 3
 
-(Filled in as changes land.)
+Before captures are the kit's at 20:44 UTC (before any round 4 change); after captures are the kit's at landing. Kit pages give the guide's drawings: page 787 the 723 px drawing (a 1,440 px window), 682 the 618 px drawing (a 1,104 px window), 622 the 618 px frame in a 558 px column (a 1,024 px window), 358 the 326 px phone drawing (a 390 px window).
+
+| Drawing | What changed | Widths whose pixels changed | Before and after (in `scratch/board3/`) |
+|---|---|---|---|
+| S12, desk (DR-261) | Board 1's 1024 px stage in a sideways frame becomes the stacked tile: each state's code over its figure, the arrow beneath, in the column from 618 px, in a 618 px frame that scrolls 62 px below that | every desk drawing (480 px and wider) | `s12/before-page-787-*.png`, `before-page-682-*.png`, `before-drawing-1024-stage-*.png`; `s12/after-page-787-*.png`, `after-page-682-*.png`, `after-page-622-framed-*.png`, `after-drawing-723-*.png`, `after-drawing-618-*.png` (Newsprint and Charcoal each) |
+| S16, phone (D3-1553, D4-1) | A column of codes on the ocean for ME, NH, VT, MA, RI, CT, NJ, DE, MD, DC and WV, the map fitted that much narrower; the search's other codes move with it; circle sizes, shades, key and words unchanged | phone drawings from 300 to 357 px (326 among them); none from 358 px up, none under 300 | `s16/before-*-326-*.png`, `s16/after-*-326-*.png` (Newsprint and Charcoal), `s16/before-map-326-newsprint-3x.png` and `after-map-326-newsprint-3x.png` |
+| S12, phone (C4-E1) | waiting on C4-E1 | | |
+| S78, phone (C4-E1) | waiting on C4-E1 | | |
+| S07, phone (C4-E1, if the token changes) | waiting on C4-E1 | | |
 
 ## Tested
 

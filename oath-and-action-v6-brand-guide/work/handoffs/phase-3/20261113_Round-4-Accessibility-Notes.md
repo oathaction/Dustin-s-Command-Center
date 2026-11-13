@@ -9,7 +9,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the UX
 - **20:56 UTC: "Cards as HTML text (R4-3): the reading order" and "The social card (R4-4)" WRITTEN**, ahead of the engineer's R4-3 and R4-4 contracts, which govern the elements; I read those contracts when they land and reconcile.
 - 21:13 UTC: the main session asks a second owner's look at S93: the infographics maker shortened its alt and moved its three alt-word checks to the table. When I test S93 I confirm that the alt and the table together give a reader who cannot see the drawing every callout in page order (R4-3, "Annotated illustration"), or send a request.
 - 21:31 UTC: the systems designer reports 15.19 to 15.21 built. 15.19's first run (keyboard, tree, axe, 200 percent) passed; its mode passes were stopped at 21:36 under the machine's load (8.3 on 4 cores) and not counted.
-- **21:40 UTC: handed back to the main session before the remaining tests ran** (the main session asked for the report). Still to run, once the load reads under 4: 15.19's reduced motion, scripts off, print and forced colors (`stepper_states.js`); 15.20 in every state (`chooser_states.js`); the cards S90, S91, S92, S94 (`cards_test.js`); S95 in the guide. All three scripts sit ready in my scratch folder.
+- **21:38 UTC: handed back to the main session before the remaining tests ran** (the main session asked for the report). Still to run, once the load reads under 4: 15.19's reduced motion, scripts off, print and forced colors (`stepper_states.js`); 15.20 in every state (`chooser_states.js`); the cards S90, S91, S92, S94 (`cards_test.js`); S95 in the guide. All three scripts sit ready in my scratch folder.
 
 ## Summary
 
@@ -279,7 +279,7 @@ The main session split the files at 20:58 UTC: requests 1, 3, 4 and 5 are the co
 1. Section 1 and the plate sections above: `"interactive": true` in both manifests; short alts; the `forced-color-adjust` pair with their own grounds; the controls inside chapter 15's 320 px rule; controls 4 px or more inside the stage edge; the drawing after the grade line inside the stepper's root (15.19); the CSS counter, the print and scripts-off rules; 15.20's panels with `data-oa-panel` (or your attribute), `data-oa-for` on each target mark, the visually hidden status line after the `fieldset`, and the "Each step" list.
 2. Every fact the drawing shows for a step in that step's words (15.19), and every target in typed chips (15.20).
 
-### Requests to the systems designer, from the tests (21:40 UTC)
+### Requests to the systems designer, from the tests (21:38 UTC)
 
 3. **Rule 15.19 (low).** Each step's `.oa-stepper-line` and `.oa-stepper-more` sit with no space between them, so the text reads "politics.Connection L01" when copied, searched or read word by word; Rule 18.22's code set puts a space there. One space in the markup.
 4. **Rule 15.20 (to verify, from a reading of the CSS only, not yet seen in a browser).** With Reform R-04 checked, the `@supports` block shows Connection L56's heavier ticks (`.hi`) but I find no rule that turns its line red: only `.rt` marks take `--oa-color-data-emphasis-red`, and L56 carries no `.rt`. If so, R-04's panel says "acts where the marks turn red: on two connections" while one turns red. `chooser_states.js` in my scratch checks it in the browser with captures; please check it at your end too.
@@ -302,7 +302,7 @@ The main session split the files at 20:58 UTC: requests 1, 3, 4 and 5 are the co
 - **Rule 15.19's reduced motion, print and forced colors passes, and the Play pace by clock**: stopped under load, not counted. Scripts off: only the capture was looked at (no status, no buttons, every step numbered in full ink, the drawing in ink), its logged readings were lost, so it is listed here, not as a pass.
 - **Rule 15.21's two plates**: markup read only (no control, failure plate a picture); not run in a browser.
 - **The card forms S90, S91, S92, S94 as HTML text**: forms and the kit's markup read (lists with `role="list"`, `dl` fields, group named by the short alt, no words in SVG); not run in a browser. S91 and S95 are being rebuilt (shared-row grid; IM-E6, IM-E8).
-- **S95 in the guide** (both crops' names, the words and alt to post, the table) and its 1080 by 1080 Newsprint and 1080 by 1350 Charcoal crops by measurement (two of four measured).
+- **S95 and S91 as rebuilt at 21:37 UTC (IM-E6, IM-E8, the shared-row grid), and S95 in the guide** (both crops' names, the words and alt to post, the table) and its 1080 by 1080 Newsprint and 1080 by 1350 Charcoal crops by measurement (two of four measured).
 - 1024, 768 and 360 px; the dark ground for 15.19 and 15.20.
 
 - The plates themselves: not built yet.
