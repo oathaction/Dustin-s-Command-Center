@@ -942,6 +942,16 @@ The kit's weight line puts every plate under 14,106 bytes with its frame: S82 13
   - The better half keeps one square a place: 7 and 5 filled, the same winners, margin steps with ghosts.
   - The file is 3,817 bytes. Its colors still wait on Dustin (D3-1322).
 
+### S84's table after C-E7: signed off (06:12 UTC). The fix pass's sign-offs are complete.
+
+At 06:12 I built S84 alone from the files as they stand with `oa-chart.mjs build s84 --widths 1440,256 --out <scratch>/kit-d`, sweep on: PASS, 0 faults, 0 warnings. I parsed its page table by script from the kit's page:
+- 52 rows.
+- "No state law" in all 20 of the four years' cells for Alabama, Louisiana, Mississippi, South Carolina and Tennessee, and no "..." left in any printed cell.
+- The Department's marks print as it prints them ("5.15(d)" for Georgia, "10.85(g)" for Minnesota in 2024), and note 4 keys them.
+- The CSV export keeps the Department's "..." in those 20 cells, as D3-519's printed-words rule asks.
+
+With this, every chart, sketch and entry the review fix pass changed is signed off: maker A's, maker B's with S73's title, and the cartographer's. What still waits on Dustin is unchanged: Q1 (where the full data lives, and with it the "download" lines), Q2 (literal red and blue in sketch 14.124's misleading half), Q3 (S16's range words), and a tile that drops S12's printed figure, which DR-64 does not allow without him and which the 1024 px stage made unnecessary.
+
 ### Tested, review fix pass
 
 - Clock read with `date -u` at 04:24, 04:26, 04:30, 04:31, 04:32, 04:34, 04:37 and 04:38 UTC.
@@ -1062,3 +1072,4 @@ Not tested:
 - Maker A's sign-off, 05:13 to 05:17 UTC: the kit build and captures listed under "Maker A, review fix pass: signed off"; page tables parsed by script (`tables.py`, scratch); S72's tallies recounted from the frozen file; S68's note 2 compared with the frozen `controls` cell. Not tested: S72 in forced colors (maker A ran it); any capture at 390 or 296 px; S69 to S71 below the parts named; the CSV exports; maker A's plates inside a guide build.
 - Maker B’s sign-off, 05:37 to 05:40 UTC: the kit build and captures listed under "Maker B, review fix pass: signed off"; S73's sums by nominee, kind and line, state counts and the title's figures recomputed from `fec-jfc-transfers-2024-all-committees`; S73's page table parsed by script; sketch 14.94 rendered with Playwright (`sketch94.cjs`, scratch) and its word boxes measured.
 - Cartographer's sign-off, 06:03 to 06:11 UTC: the two kit builds and the captures listed under "Cartographer, review fix pass: signed off"; S82's closest-races list and S84's table parsed by script (`tables.py`); the S78 and S16 "Not labeled" notes read from the SVGs; sketch 14.124 rendered with Playwright (`sketch124.cjs`, scratch). Not tested: forced colors on any map; S12's sideways scroll and S16 inside the guide; S83 by eye; sketch 14.124 on Charcoal.
+- S84's table after C-E7, 06:12 UTC: `build s84` with the sweep, PASS, 0 faults; its page table parsed by script (20 "No state law" cells, none with "..."); its CSV read by grep (20 "..." cells kept).
