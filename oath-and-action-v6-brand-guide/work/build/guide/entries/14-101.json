@@ -1,0 +1,38 @@
+{
+  "id": "14.101",
+  "title": "Use a comparison grid to weigh a few options against the same questions in words.",
+  "rule": [
+    "Give each option a row, named in bold, and each question a column, every cell in words in the text’s ink with a thin gray rule between rows. Keep the options in the order their source gives them, and draw a count, where one helps, as a single series of bars with its value printed. Under a cell that rests on a text, print the text and the date it was read. On a phone each option runs as a block: its name and count, then each column’s name over its words."
+  ],
+  "use_when": "The reader weighs a handful of options against the same questions, such as what each route to change a law takes and how it can be undone.",
+  "use_instead": [
+    {
+      "when": "Many rows carry one value each, read by step",
+      "rule": "14.129"
+    },
+    {
+      "when": "Two or three options suit cards side by side",
+      "rule": "14.137"
+    },
+    {
+      "when": "A handful of numbers answers the question",
+      "rule": "14.133"
+    }
+  ],
+  "why": {
+    "text": [
+      "A reader reads across a row to learn one option and down a column to compare them on one question, and words keep the requirements exact where a symbol would round them off. The source under each cell lets a reader check a threshold against its text."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S71",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.129",
+    "14.133"
+  ],
+  "builders": "Form comparison-grid: node work/build/chart-kit/oa-chart.mjs build s71; encode.name names each row and encode.count draws the bar; labels.columns gives each column’s field, label and share of the width, and under_words a line under its cells.",
+  "correct": null,
+  "failure": null
+}

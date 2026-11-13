@@ -1,0 +1,39 @@
+{
+  "id": "14.96",
+  "title": "Use a process diagram to show how a decision is made, step by step, and where others can step in.",
+  "rule": [
+    "Number the steps every case takes and run them down one heavy line in order, each in a box with an edge in the text’s ink that names the step, who acts and the time the law sets. Set each branch a case may take beside the step it leaves or enters, in a box with a gray edge and a short line that says when it applies, joined by a gray arrow; arrows on the main line point the way a case moves. Print the date of the law the diagram draws, and give the table every step and branch in the order a reader meets them, each with where it leads. On a phone the steps run in one column, a step’s way in above it and its branches below it, set in from the line."
+  ],
+  "use_when": "The reader asks how an institution makes or changes something, such as how an agency writes a rule, and where Congress, a court or the public can step in.",
+  "use_instead": [
+    {
+      "when": "One bill or rule’s place in its steps is the question",
+      "rule": "14.88"
+    },
+    {
+      "when": "The reader picks a path by answering questions about their own place",
+      "rule": "14.97"
+    },
+    {
+      "when": "The question is how long each step can take for one person",
+      "rule": "14.112"
+    }
+  ],
+  "why": {
+    "text": [
+      "One line through the steps every case takes lets a reader learn the main path first, and the branches beside it show where the path can turn without hiding it. Numbers keep the order when the diagram is read aloud or as a table."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S66",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "11.9",
+    "14.88",
+    "14.97"
+  ],
+  "builders": "Form process-diagram: node work/build/chart-kit/oa-chart.mjs build s66; encode.path marks the main steps with labels.main, labels.branches gives each branch the step it leaves or enters (at), its way (dir, out or in) and its line of words, and the table sorts by encode.key’s values in reading order.",
+  "correct": null,
+  "failure": null
+}

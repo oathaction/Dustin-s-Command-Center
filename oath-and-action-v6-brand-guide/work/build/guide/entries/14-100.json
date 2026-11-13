@@ -1,0 +1,38 @@
+{
+  "id": "14.100",
+  "title": "Use a hierarchy tree for parts nested inside parts, with a count at every level.",
+  "rule": [
+    "Put the top part’s box first and run a line down the left to each group of its children, headed with the group’s count. Draw each child as a card that prints its own count and the sum of the counts under it, so the levels add up, and list its parts under it, set in and joined by gray elbow lines, grouped the way a reader looks for them, such as by state. Shade a part of another kind and say what it is in words, and set apart a child that serves the whole tree, named. On a phone the cards run in one column."
+  ],
+  "use_when": "The reader asks where something sits in a nested system and where it leads next, such as which federal court hears a case from their state and where an appeal goes.",
+  "use_instead": [
+    {
+      "when": "The parts’ sizes are the point",
+      "rule": "14.52"
+    },
+    {
+      "when": "One body’s units sit under it with no count to add up",
+      "rule": "14.99"
+    },
+    {
+      "when": "A reader looks up one part in a long list",
+      "rule": "14.130"
+    }
+  ],
+  "why": {
+    "text": [
+      "A reader finds their own part first, then follows the line up to the level that hears its appeal. A count at every level lets the tree be checked by addition, and the shaded parts show at a glance which courts stand on a different footing."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S70",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.52",
+    "14.99"
+  ],
+  "builders": "Form hierarchy-tree: node work/build/chart-kit/oa-chart.mjs build s70; encode.parent links each part to its parent, encode.count gives its count and encode.place groups its parts; labels.card_sub prints {n} and {d}, labels.apart sets children apart, labels.apart_level shades parts of another kind.",
+  "correct": null,
+  "failure": null
+}

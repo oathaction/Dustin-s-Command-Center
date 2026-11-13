@@ -1,0 +1,39 @@
+{
+  "id": "14.103",
+  "title": "Keep a mind map for sorting ideas, and publish a diagram that shows how the parts connect.",
+  "rule": [
+    "Use a mind map, a reference form, while a story is being planned: one topic in the middle, its parts on lines around it, and their own parts beyond them. Before it reaches a reader, turn it into the form that shows how the parts relate, a process diagram for steps in order, a hierarchy tree for parts with counts or a table for a list."
+  ],
+  "use_when": "Writers and editors sort the parts of a subject before they know how the parts connect, such as the topics a guide to a city budget might cover.",
+  "use_instead": [
+    {
+      "when": "The parts follow one another in order",
+      "rule": "14.96"
+    },
+    {
+      "when": "The parts nest inside one another with counts",
+      "rule": "14.100"
+    },
+    {
+      "when": "The parts are a list a reader scans",
+      "rule": "14.133"
+    }
+  ],
+  "why": {
+    "text": [
+      "Lines around a center say only that two ideas belong together, not how: one comes before another, sits under it or causes it. A reader needs that relation, which the forms built for it draw."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "s-14-103-sketch",
+  "tier": "reference",
+  "tokens": [],
+  "related": [
+    "14.96",
+    "14.100"
+  ],
+  "builders": "No kit form: draw a mind map only as a sketch for planning; build process-diagram or hierarchy-tree for a reader.",
+  "correct": null,
+  "failure": null,
+  "sketch_alt": "A mind map of an illustrative city budget, one topic in the middle with four parts on lines around it and a further idea beside each. The lines say each part belongs to the budget, and nothing about order or size."
+}

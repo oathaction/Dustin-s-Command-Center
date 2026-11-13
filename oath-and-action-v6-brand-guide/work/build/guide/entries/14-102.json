@@ -1,0 +1,39 @@
+{
+  "id": "14.102",
+  "title": "Use a roll-call grid to show how every member voted, with each party named in words.",
+  "rule": [
+    "Draw one square a member in the party-mark ink: solid for yes, an outline for no, shaded for a member who did not vote and a faint outline for a vacant seat. Head each chamber with its vote, its date and the question and result in the record’s words. Give each party a row of its own, named in words with its count and how it voted, Democrats first, independents as the record lists them, folded into no party, and Republicans last, with vacant seats between, as the chart for Rule 14.53 orders the sides (Rule 14.7)."
+  ],
+  "use_when": "The reader asks how each member of a chamber voted on one bill, and how many from each party crossed over.",
+  "use_instead": [
+    {
+      "when": "Only the totals matter, against the votes a rule needs",
+      "rule": "14.87"
+    },
+    {
+      "when": "The chamber’s seats are the question, with no vote",
+      "rule": "14.53"
+    },
+    {
+      "when": "How members voted across many bills",
+      "rule": "14.129"
+    }
+  ],
+  "why": {
+    "text": [
+      "A square for each member lets a reader count the members who crossed party lines without a key to colors, and solid against outline in one ink tells yes from no in gray print and for a reader who sees no color. Naming each party in words keeps the sides clear with no red and blue."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S72",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.7",
+    "14.53",
+    "14.87"
+  ],
+  "builders": "Form roll-call-grid: node work/build/chart-kit/oa-chart.mjs build s72; labels.chambers, labels.parties and labels.votes set the order, labels.seats each chamber’s seats so the vacant count follows, labels.head and labels.ask the panel’s words from the record.",
+  "correct": null,
+  "failure": null
+}

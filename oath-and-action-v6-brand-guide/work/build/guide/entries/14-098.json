@@ -1,0 +1,39 @@
+{
+  "id": "14.98",
+  "title": "Use a who-decides diagram to show who can change a rule and who only applies it.",
+  "rule": [
+    "Place each body by what it can do: those who can change the rules in a band above those who apply them, in columns from federal to regional, state, local and private hands, every body in one box style with its name in bold. Draw a line of authority, one body setting or approving another’s rules, as a gray arrow from the body that decides to the one it governs, with no plus or minus sign and no loop, as chapter 15 keeps authority apart from cause (Rule 15.5). On a phone the bands run down the page, each body under its level’s name, with the lines of authority in a lane at the left."
+  ],
+  "use_when": "The reader asks who sets something they pay or live under, such as an electric bill, and which of those bodies could change the rules behind it.",
+  "use_instead": [
+    {
+      "when": "One body’s own structure is the question",
+      "rule": "14.99"
+    },
+    {
+      "when": "The steps of one decision matter more than the bodies",
+      "rule": "14.96"
+    },
+    {
+      "when": "Many bodies trade money or ties, and the links are the point",
+      "rule": "14.104"
+    }
+  ],
+  "why": {
+    "text": [
+      "Position answers the reader’s first question before any line is read: the upper band can change the rules. A line of authority says who decides, never which way, so it carries no sign, as the atlas records it."
+    ],
+    "basis": "Our systems atlas’s definition of an authority connection; design judgment"
+  },
+  "specimen": "S68",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "15.5",
+    "14.96",
+    "14.99"
+  ],
+  "builders": "Form who-decides: node work/build/chart-kit/oa-chart.mjs build s68; encode.changes sets the band, encode.level the column (labels.levels and labels.level_words), labels.authority the lines from one body’s key to another’s and labels.order the order bodies stack in a column.",
+  "correct": null,
+  "failure": null
+}

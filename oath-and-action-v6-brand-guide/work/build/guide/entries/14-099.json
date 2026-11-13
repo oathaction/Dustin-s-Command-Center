@@ -1,0 +1,38 @@
+{
+  "id": "14.99",
+  "title": "Use an org chart to show who sits under whom inside one body.",
+  "rule": [
+    "Put the body’s box at the top and run a line down the left to each group of its units, headed with the group’s count. Draw each unit as a card: its box, named, with the count of units under it, and under it, set in, a box for each of those, joined by gray elbow lines, every box with an edge in the text’s ink. Fill as many columns as the width holds, each card in the shortest, so the order reads from the top down, and keep any split by party to the table. On a phone the cards run in one column."
+  ],
+  "use_when": "The reader asks how one body divides its work, such as the House’s committees and their subcommittees.",
+  "use_instead": [
+    {
+      "when": "Each part carries a count that sums up the tree",
+      "rule": "14.100"
+    },
+    {
+      "when": "Who can change a rule across several bodies is the question",
+      "rule": "14.98"
+    },
+    {
+      "when": "The parts’ sizes matter more than who sits under whom",
+      "rule": "14.52"
+    }
+  ],
+  "why": {
+    "text": [
+      "A reader looking for one committee scans the cards, then reads down to its subcommittees, and the counts tell how the work divides before any name is read. One ink keeps every unit equal, since no unit here answers the question more than another."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S69",
+  "tier": "extended",
+  "tokens": [],
+  "related": [
+    "14.98",
+    "14.100"
+  ],
+  "builders": "Form org-chart: node work/build/chart-kit/oa-chart.mjs build s69; encode.unit and encode.unit_key name each unit, encode.group its group (labels.groups), encode.sub its sub-units; labels.drop sets prefixes a unit’s name leaves off, labels.count the count words.",
+  "correct": null,
+  "failure": null
+}

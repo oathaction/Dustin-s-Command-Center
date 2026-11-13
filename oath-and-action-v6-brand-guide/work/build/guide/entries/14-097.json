@@ -1,0 +1,39 @@
+{
+  "id": "14.97",
+  "title": "Use a decision tree when the answer turns on facts about the reader’s own place.",
+  "rule": [
+    "Put the question in a box with an edge in the text’s ink and each answer under it in a shaded box, joined by arrows of one weight, every answer drawn alike, since the reader’s own place picks the path. Open each answer with its word and how many places it holds, then what it means, then the places by name where the list is short; a further question sits in its own box under the answer that leads to it. Print the date the facts were checked. On a phone the answers run down the page, set in from a line at the left, and the table lists every place in the tree’s order with the answer it takes."
+  ],
+  "use_when": "The reader asks a yes-or-no question whose answer depends on their state or city, such as whether a city may switch its own elections to ranked-choice voting.",
+  "use_instead": [
+    {
+      "when": "Every state’s answer at once is the point",
+      "rule": "14.114"
+    },
+    {
+      "when": "Everyone follows the same steps",
+      "rule": "14.96"
+    },
+    {
+      "when": "A reader looks up one place in a long list",
+      "rule": "14.130"
+    }
+  ],
+  "why": {
+    "text": [
+      "A reader answers one question at a time and finds their own case at the end, with the count of places that share it. Drawing every answer alike keeps the tree from steering a reader toward any one of them."
+    ],
+    "basis": "Design judgment, from the chart system our founder and editor approved in November 2026"
+  },
+  "specimen": "S67",
+  "tier": "core",
+  "tokens": [],
+  "related": [
+    "14.6",
+    "14.114",
+    "14.130"
+  ],
+  "builders": "Form decision-tree: node work/build/chart-kit/oa-chart.mjs build s67; labels.tree gives the question and its answers, each with a where over the rows that it counts, its count words with {n}, its meaning, list to name the places and then for a further question.",
+  "correct": null,
+  "failure": null
+}
