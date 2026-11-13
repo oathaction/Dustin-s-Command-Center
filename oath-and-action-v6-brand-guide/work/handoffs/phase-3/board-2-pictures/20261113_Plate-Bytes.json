@@ -1,12 +1,12 @@
 {
  "written_by": "the engineer, board 2 fix round, item B2-M4 (work/handoffs/phase-3/20261113_Board-2-Fix-Brief.md, call 4)",
- "measured_utc": "2026-11-13T18:22:52Z",
+ "measured_utc": "2026-11-13T18:50:35Z",
  "page": {
-  "path": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/main/final/guide.html",
-  "bytes": 11236230,
-  "sha256": "8a01b67e784a302cedc19b482187253407e3c16042993eccda579234821710a8",
-  "report": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/main/final/guide-Build-Report.json",
-  "report_built": "2026-11-13T18:02:58",
+  "path": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/main/v9/guide.html",
+  "bytes": 11236260,
+  "sha256": "4c834d2b11c983d6f33ca8c5ca2c85d703ac04aa9df6bedf77923c6ad8c544c8",
+  "report": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/main/v9/guide-Build-Report.json",
+  "report_built": "2026-11-13T18:49:34",
   "rules": 344,
   "specimens_placed": 638
  },
@@ -28,10 +28,10 @@
   "sketches": "R1-C1 and D3-486: the sketch file at most 4,096 bytes"
  },
  "chapter_14": {
-  "bytes": 1582200,
+  "bytes": 1582230,
   "stop_with_kit": 2803941,
-  "with_kit": 2228278,
-  "share_per_plate": 13237,
+  "with_kit": 2228308,
+  "share_per_plate": 13235,
   "plates_to_come": 13,
   "projected_page": 15044827,
   "rules_and_opener": 175678,
@@ -170,10 +170,10 @@
    "tier": "core",
    "placed_under": "board 1 (round 0)",
    "plate": "fig-s-14-s06",
-   "bytes_as_placed": 16077,
+   "bytes_as_placed": 16085,
    "added_on_page": 360,
    "frame_bytes": 753,
-   "total": 17190,
+   "total": 17198,
    "ceiling": {
     "bytes": 24576,
     "measure": "bytes_as_placed",
@@ -181,7 +181,7 @@
     "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
    },
    "within_ceiling": true,
-   "room": 8499
+   "room": 8491
   },
   {
    "specimen": "s-14-s07",
@@ -242,10 +242,10 @@
    "tier": "core",
    "placed_under": "board 1 (round 0)",
    "plate": "fig-s-14-s09",
-   "bytes_as_placed": 13017,
+   "bytes_as_placed": 13027,
    "added_on_page": 0,
    "frame_bytes": 774,
-   "total": 13791,
+   "total": 13801,
    "ceiling": {
     "bytes": 24576,
     "measure": "bytes_as_placed",
@@ -253,7 +253,7 @@
     "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
    },
    "within_ceiling": true,
-   "room": 11559
+   "room": 11549
   },
   {
    "specimen": "s-14-s10",
@@ -266,10 +266,10 @@
    "tier": "core",
    "placed_under": "board 1 (round 0)",
    "plate": "fig-s-14-s10",
-   "bytes_as_placed": 7421,
+   "bytes_as_placed": 7427,
    "added_on_page": 0,
    "frame_bytes": 745,
-   "total": 8166,
+   "total": 8172,
    "ceiling": {
     "bytes": 24576,
     "measure": "bytes_as_placed",
@@ -277,7 +277,7 @@
     "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
    },
    "within_ceiling": true,
-   "room": 17155
+   "room": 17149
   },
   {
    "specimen": "s-14-s11",
@@ -531,10 +531,10 @@
    "tier": "extended",
    "placed_under": "round 1",
    "plate": "fig-s-14-s21",
-   "bytes_as_placed": 5697,
+   "bytes_as_placed": 5703,
    "added_on_page": 0,
    "frame_bytes": 734,
-   "total": 6431,
+   "total": 6437,
    "ceiling": {
     "bytes": 24576,
     "measure": "bytes_as_placed",
@@ -542,7 +542,7 @@
     "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
    },
    "within_ceiling": true,
-   "room": 18879
+   "room": 18873
   },
   {
    "specimen": "s-14-s22",
@@ -2900,7 +2900,7 @@
   "rule_plates_with_charts": 13,
   "other_plates": 44,
   "over_ceiling": [],
-  "sum_of_plates": 1124287
+  "sum_of_plates": 1124317
  },
  "rerun": "python3 -I /tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/engineer/scripts/plate_bytes.py --page <page> --report <page>-Build-Report.json --out <this file>"
 }

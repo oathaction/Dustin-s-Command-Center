@@ -170,6 +170,7 @@ Under `work/handoffs/phase-3/20261113_Board-2-Fix-Brief.md` call 4. Read only; n
 - **Ceilings by round:** round 3 D3-1328's 14,106 total (S69 at its 14,556, D3-1412); rounds 1 and 2 and board 1 the far-over test on bytes as placed, 24,576 (S05 31,961 and S13 47,212, D3-350); sketches 4,096 for the file. **None over.** S73 after the trim: 13,263 + 796 = **14,059**, 47 under 14,106. S82 14,039 (67 under), S69 14,553 (3 under its own measure).
 - 141 chapter 14 plates: 84 entries, 13 rule plates with charts (their frame and own HTML apart), 44 others (21 sketches, 7 avoid sketches, 15 rule plates with no chart, the opener).
 - At 18:23 S09's, S10's and S21's specs show changed since that build (another owner's); their rows hold the final build's figures until a rebuild, as S03's and S08's would.
+- **Remeasured on the version 9 build (18:50 UTC)**, `.../board-2/main/v9/guide.html` (11,236,260 bytes, SHA-256 `4c834d2b11c983d6…`, share per plate 13,235), and the JSON rewritten. Against the final build: S06 17,190 to 17,198, S09 13,791 to 13,801, S10 8,166 to 8,172, S21 6,431 to 6,437 (the curled apostrophes, in bytes as placed; frames unchanged); S42's `curl_quotes` prints no different byte (2,454 as placed in both reports); every other plate the same. None over its ceiling; S73 still 14,059. The earlier file is kept in scratch as `plate-bytes-final-build.json`.
 
 ## Tested
 
