@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. Data visualizatio
 
 ## Status
 
+- 18:21 UTC. **Fix round items written** into the decisions file (B2-M1 five replies, B2-M2, B2-M3, B2-M5, B2-S4, B2-S7, B2-S8, B2-S11); S73's cut and the editor's two counts signed off; B2-M6 waits on the builder's rerun.
 - 18:19 UTC. **B2-M5 ruled: keep** S03's and S08's November 10 count until certification ("Fix round"). The guide preview need not wait.
 Current at 18:02 UTC (clock read). My three tasks are done; what is left is a recheck at the builder's next run.
 
@@ -32,6 +33,41 @@ Current at 18:02 UTC (clock read). My three tasks are done; what is left is a re
 - **Why.** The note is dated and true on its date, and it says the count is unofficial with ballots still to come. The November 12 count (47.19 to 52.81, every precinct in) is also unofficial, and certification (Alaska aims for November 25, 2026) will change it again; taking it now would change the words of two board 1 drawings twice for one outcome that has not moved. The three measures the note names (Massachusetts Question 3, Missouri Proposition A, Alaska Measure 2) stay on one date and one rule, whichever way each went (DR-93): all three update together, once, to each state's certified result.
 - **When they update:** at the refresh once all three are certified, as one change the next board lists among the board 1 changes (Rule 13.10's dated note keeps its date until then).
 - **The R-01 item** now says where the guide prints outcomes (S03's and S08's first notes), from which count (Alaska's unofficial count of November 10), and that the board's November 12 figures are the research lead's later read, printed on the board only.
+
+### Fix round items in the decisions file (18:21 UTC)
+
+Applied by one guarded script at 18:20 UTC (each old phrase must be found, or nothing is written), on the file as the editor left it; `counts` and `checks` rerun after.
+- **B2-M1, the five replies:** a top-level `replies` list, `n` 1 to 5, each with `panel`, `id` (the item, or null for a whole group), `line` and `recommendation`: (1) S12, take the stacked tile; (2) the other board 1 changes, approve as listed; (3) the forms whose data or drawing changed, approve as listed; (4) atlas V7.1, as each item recommends; (5) one name per variable, its own title. The same numbers sit as `reply_number` on S12, the board 1 group, the forms group, the V7.1 group and the loop label item. **For the builder:** panel 1 opens with `replies` in order, each linking to its item or group.
+- **B2-M2:** the creative director's view on S12 is now the text under "My view on S12" in its review, with that file as its source; the old note on the 723 px figure is gone. **The editor's rewording of my view is confirmed** as mine; it carries no figure.
+- **B2-M3:** S12, S16 and S78 now say what the 326 px drawing a 390 px phone gets shows: S12 and S78 name WA, WV and WY in a note; S16 codes 47 and names DC, DE, ME and NH. S16's 358 px claim now names board 1's two (MA and NJ). Each figure is from the owners' signed-off measures (D3-1524, D3-1527, my round 3 sign-off of S78). S16's and S78's recommendations add that a code for every state at 326 px goes to round 4 as a guide fix.
+- **B2-M5:** the R-01 item now names where the guide prints the outcomes (S03's and S08's first notes, dated November 11, 2026), from which count (Alaska's unofficial count of November 10, 47.4 percent yes), and that they change once at certification; the November 12 count is labeled a later unofficial read on this board only.
+- **B2-S4:** each V7.1 item opens its facts with "V7.1 list": new to the list (seven), on the October list as item 8 (D6), partly new beside item 36 (figure 7), no atlas record (the FEC item).
+- **B2-S7:** `counts.rule_01_9.caption` names its base, 108 (97 built and round 4's 11 planned), and `counts.dr_229.caption` its base, the 97 built. The count script now keeps each `caption` as it keeps each `note`. **For the builder:** print each `caption` over its table.
+- **B2-S8:** S12's 1,024 px figures come from the measure file only: the column is 558 px, so the frame scrolls 466 px (the recommendation's 468 is now 466; the stacked tile's 618 px frame still scrolls 60).
+- **B2-S11:** the moves item now reads "No figure or ink changed; S12's phone adds a note naming the codes its tiles have no room for", and says the owners compared each drawing across its own move while panel 2 compares with board 1's files.
+- **The editor's counts:** DR-254's item says nine places, eight of which name the file, with S73's note giving its line to the table caption. The plan changes item says one change reached three charts, so seventeen changes fill nineteen rows, and three rows apply Dustin's rules (four groups at most, H.R. 7008 named with both provisions, the panel years he chose), with DR-234, DR-98 and DR-243 in its `refs`.
+
+### S73's cut and the counts it moves: signed off (18:21 UTC)
+
+The main session's final strict build measures S73 at 13,263 bytes as placed, about 14,074 with its 811-byte frame, under D3-1328's 14,106. The words were signed off at 17:54; the weight now is too. The nine-into-eight count and the seventeen-in-nineteen count are right as the decisions file now states them.
+
+### Routine calls, fix round
+
+- D3-xxx | S03's and S08's first notes keep Alaska's unofficial count of November 10 until all three measures they name are certified, then change once | Dated and true on its date; a second unofficial count would change two board 1 drawings twice for one outcome; one date and one rule for all three measures (DR-93)
+- D3-xxx | Panel 1 opens with five numbered replies from the decisions file's `replies` list | B2-M1: Dustin's answers first, each with its recommendation and a link
+- D3-xxx | The creative director's view on S12 quotes its board 2 review, not the round 3 risk note | B2-M2: the old note gave 723 px, since measured at 618
+- D3-xxx | S12, S16 and S78 state what the 326 px phone drawing shows, and coding every state at 326 px goes to round 4 as a guide fix | B2-M3: the items claimed every code on a phone where the pictures beside them leave three or four to a note
+- D3-xxx | S12's 1,024 px column is 558 px and the frame's scroll 466 px, from the measure file alone | B2-S8: one figure per fact
+- D3-xxx | Each V7.1 item states its place on the October list in its first fact | B2-S4
+- D3-xxx | Each count names its base in a caption, 108 for Rule 01.9 and 97 for the election table | B2-S7
+
+### Requests, fix round
+
+- **To the main session, for round 4:** a state code for every state at the guide's 326 px phone drawing on S12, S16 and S78 (today S12 and S78 leave WA, WV and WY to a note, S16 DC, DE, ME and NH). A guide item for the cartographer and the engineer, not this board.
+
+### B2-M6: waits on the builder's rerun
+
+I confirm when the builder's run on the current file prints S05's item, S04's and S08's rows, the five replies, and no "No" in the election table where the test was not applied; my figure script runs on it too.
 
 ## Schema for the decisions file (proposed 17:09 UTC, for the board builder)
 

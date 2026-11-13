@@ -354,9 +354,10 @@ def main():
         doc = json.loads(p.read_text())
         old = doc.get("counts") or {}
         new = {"script": out["script"], "run_utc": out["run_utc"], **out["counts"]}
-        for k in ("rule_01_9", "dr_229"):   # a note is words (the editor's); a run keeps it
-            if isinstance(old.get(k), dict) and old[k].get("note"):
-                new[k]["note"] = old[k]["note"]
+        for k in ("rule_01_9", "dr_229"):   # a note and a caption are words (the editor's); a run keeps them
+            for w in ("note", "caption"):
+                if isinstance(old.get(k), dict) and old[k].get(w):
+                    new[k][w] = old[k][w]
         doc["counts"] = new
         doc["checks"] = {"script": out["script"], "run_utc": out["run_utc"], **out["checks"]}
         p.write_text(json.dumps(doc, indent=1, ensure_ascii=False) + "\n")

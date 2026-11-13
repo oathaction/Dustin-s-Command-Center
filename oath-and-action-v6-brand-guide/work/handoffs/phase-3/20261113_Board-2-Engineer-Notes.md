@@ -161,6 +161,16 @@ The share fell 92 bytes a plate because the chapter as built grew 1,191 bytes (1
 | S81 | 13,597 | 13,640 | 13,640 | 14,106 |
 | S83 | 13,295 | 13,338 | 13,338 | 14,106 |
 
+## Fix round: B2-M4, one byte measure per chart (18:18 to 18:23 UTC)
+
+Under `work/handoffs/phase-3/20261113_Board-2-Fix-Brief.md` call 4. Read only; no build file changed.
+
+- **Wrote** `work/handoffs/phase-3/board-2-pictures/20261113_Plate-Bytes.json` (18:22 UTC) from the main session's final strict build, `.../board-2/main/final/guide.html` (11,236,230 bytes, SHA-256 `8a01b67e784a302c…`) and its build report. Script: `scratch/scripts/plate_bytes.py` (the rerun line in the JSON names it).
+- **One measure:** `total` = `bytes_as_placed` (the report's) + `added_on_page` + `frame_bytes` = the plate whole on the page. 95 of the 97 chapter 14 charts sit on the page byte for byte as the report counts them; S06 (+360) and S67 (+48) carry D2-975's `<span class="nw">` round their atlas IDs, which the build adds after the report counts the chart. Frames run 723 to 847 bytes (the kit's line estimates 750).
+- **Ceilings by round:** round 3 D3-1328's 14,106 total (S69 at its 14,556, D3-1412); rounds 1 and 2 and board 1 the far-over test on bytes as placed, 24,576 (S05 31,961 and S13 47,212, D3-350); sketches 4,096 for the file. **None over.** S73 after the trim: 13,263 + 796 = **14,059**, 47 under 14,106. S82 14,039 (67 under), S69 14,553 (3 under its own measure).
+- 141 chapter 14 plates: 84 entries, 13 rule plates with charts (their frame and own HTML apart), 44 others (21 sketches, 7 avoid sketches, 15 rule plates with no chart, the opener).
+- At 18:23 S09's, S10's and S21's specs show changed since that build (another owner's); their rows hold the final build's figures until a rebuild, as S03's and S08's would.
+
 ## Tested
 
 - **A1:** `words.json`'s `data_file` read by script against DR-254's words. `oa-chart.mjs build` on S69, S70, S72, S73, S74, S81, S82 and S83 with no PNG and no sweep, before (17:10) and after (17:15) the editor's rewrite, and after the caption fix (17:21): 8 PASS, 0 faults each time; each export read against its whole data file by script (rows, columns, CSV faults).

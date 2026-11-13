@@ -56,6 +56,9 @@
       }
     ]
   },
+  "typography": {
+    "curl_quotes": true
+  },
   "chart_notes": [
     "The answer on voting and public influence, which the title names, ends in a red dot; the other 15 answers are gray."
   ],

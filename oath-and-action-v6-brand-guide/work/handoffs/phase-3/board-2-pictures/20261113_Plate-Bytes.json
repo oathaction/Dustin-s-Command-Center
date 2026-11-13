@@ -1,0 +1,2906 @@
+{
+ "written_by": "the engineer, board 2 fix round, item B2-M4 (work/handoffs/phase-3/20261113_Board-2-Fix-Brief.md, call 4)",
+ "measured_utc": "2026-11-13T18:22:52Z",
+ "page": {
+  "path": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/main/final/guide.html",
+  "bytes": 11236230,
+  "sha256": "8a01b67e784a302cedc19b482187253407e3c16042993eccda579234821710a8",
+  "report": "/tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/main/final/guide-Build-Report.json",
+  "report_built": "2026-11-13T18:02:58",
+  "rules": 344,
+  "specimens_placed": 638
+ },
+ "one_measure": "total = bytes_as_placed + added_on_page + frame_bytes = the plate whole on the page, <figure class=\"plate ...\"> to its own </figure>, UTF-8 bytes",
+ "how_measured": [
+  "bytes_as_placed: the build report's weight.charts[specimen].bytes, the chart kit's figure HTML as guide_charts.py substitutes it into the page.",
+  "The figure was then found on the page (<figure class=\"oac-fig\" id=\"oac-<specimen>\"> to its own </figure>) and measured: for 95 of the 97 chapter 14 charts it equals bytes_as_placed byte for byte.",
+  "added_on_page: what the build adds inside the figure after the report counts it: D2-975's <span class=\"nw\"> round each atlas ID, 24 bytes each (S06 15 IDs, 360 bytes; S67 2 IDs, 48 bytes); 0 for every other chart.",
+  "frame_bytes: the plate whole less the figure as it sits on the page: the plate's head (label, size line), its scroll frame and stage, the alt paragraph where the plate has one, and its caption.",
+  "total: the plate whole, measured by script (nesting-aware, so a kit figure inside the plate is counted once).",
+  "For a rule plate (rules 14.1 to 14.14), frame_and_other_bytes is the plate less its charts, so it holds the plate's own HTML specimen as well as the frame. For a sketch, stage_bytes is the stage's inside as guide_charts.py measures it, and sketch_file_bytes the file on disk.",
+  "The kit's weight line (oa-chart.mjs build) estimates the frame at 750 bytes; this file measures each plate's own. S73's frame, for one, is 811."
+ ],
+ "ceilings": {
+  "round 3 (S65 to S84)": "D3-1328: total at most 14,106, none past 15,000; S69 at its page measure of 14,556 (D3-1412)",
+  "rounds 1 and 2 (S17 to S64)": "the build's far-over test on bytes as placed, three times the tier's average: 24,576 for core and extended (round 1 brief R6, round 2 brief R2-6). The rounds' shares per plate were targets for plates still to come, not ceilings on these (round 2 R2-6: 14,337)",
+  "board 1 (S01 to S16)": "the same far-over test; S05 and S13 approved on board 1 at up to 31,961 and 47,212 bytes as placed (D3-350)",
+  "rules 14.1 to 14.14": "each chart the far-over test; the rules with the opener together under their 212,288-byte allowance (rules_and_opener below)",
+  "sketches": "R1-C1 and D3-486: the sketch file at most 4,096 bytes"
+ },
+ "chapter_14": {
+  "bytes": 1582200,
+  "stop_with_kit": 2803941,
+  "with_kit": 2228278,
+  "share_per_plate": 13237,
+  "plates_to_come": 13,
+  "projected_page": 15044827,
+  "rules_and_opener": 175678,
+  "rules_allowance": 212288
+ },
+ "entries": [
+  {
+   "specimen": "s-14-s01",
+   "spec": "S01",
+   "rule": "14.85",
+   "serves_rules": [
+    "14.85"
+   ],
+   "form": "big-number",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s01",
+   "bytes_as_placed": 6927,
+   "added_on_page": 0,
+   "frame_bytes": 749,
+   "total": 7676,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 17649
+  },
+  {
+   "specimen": "s-14-s02",
+   "spec": "S02",
+   "rule": "14.29",
+   "serves_rules": [
+    "14.29"
+   ],
+   "form": "line-event-notes",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s02",
+   "bytes_as_placed": 10655,
+   "added_on_page": 0,
+   "frame_bytes": 783,
+   "total": 11438,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 13921
+  },
+  {
+   "specimen": "s-14-s03",
+   "spec": "S03",
+   "rule": "14.15",
+   "serves_rules": [
+    "14.15"
+   ],
+   "form": "ranked-bar",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s03",
+   "bytes_as_placed": 8557,
+   "added_on_page": 0,
+   "frame_bytes": 741,
+   "total": 9298,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 16019
+  },
+  {
+   "specimen": "s-14-s04",
+   "spec": "S04",
+   "rule": "14.19",
+   "serves_rules": [
+    "14.19"
+   ],
+   "form": "dumbbell",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s04",
+   "bytes_as_placed": 4713,
+   "added_on_page": 0,
+   "frame_bytes": 761,
+   "total": 5474,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 19863
+  },
+  {
+   "specimen": "s-14-s05",
+   "spec": "S05",
+   "rule": "14.30",
+   "serves_rules": [
+    "14.30"
+   ],
+   "form": "multi-line-highlight",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s05",
+   "bytes_as_placed": 30312,
+   "added_on_page": 0,
+   "frame_bytes": 757,
+   "total": 31069,
+   "ceiling": {
+    "bytes": 31961,
+    "measure": "bytes_as_placed",
+    "hard": 31961,
+    "basis": "D3-350: approved on board 1 at up to 31,961 bytes as placed, listed and not failed"
+   },
+   "within_ceiling": true,
+   "room": 1649
+  },
+  {
+   "specimen": "s-14-s06",
+   "spec": "S06",
+   "rule": "14.76",
+   "serves_rules": [
+    "14.76",
+    "14.127"
+   ],
+   "form": "scenario-directions",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s06",
+   "bytes_as_placed": 16077,
+   "added_on_page": 360,
+   "frame_bytes": 753,
+   "total": 17190,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 8499
+  },
+  {
+   "specimen": "s-14-s07",
+   "spec": "S07",
+   "rule": "14.114",
+   "serves_rules": [
+    "14.114"
+   ],
+   "form": "tile-map-categorical",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s07",
+   "bytes_as_placed": 13619,
+   "added_on_page": 0,
+   "frame_bytes": 732,
+   "total": 14351,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 10957
+  },
+  {
+   "specimen": "s-14-s08",
+   "spec": "S08",
+   "rule": "14.49",
+   "serves_rules": [
+    "14.49"
+   ],
+   "form": "unit-chart",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s08",
+   "bytes_as_placed": 21780,
+   "added_on_page": 0,
+   "frame_bytes": 746,
+   "total": 22526,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 2796
+  },
+  {
+   "specimen": "s-14-s09",
+   "spec": "S09",
+   "rule": "14.38",
+   "serves_rules": [
+    "14.38"
+   ],
+   "form": "timeline",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s09",
+   "bytes_as_placed": 13017,
+   "added_on_page": 0,
+   "frame_bytes": 774,
+   "total": 13791,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 11559
+  },
+  {
+   "specimen": "s-14-s10",
+   "spec": "S10",
+   "rule": "14.46",
+   "serves_rules": [
+    "14.46"
+   ],
+   "form": "percent-bar",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s10",
+   "bytes_as_placed": 7421,
+   "added_on_page": 0,
+   "frame_bytes": 745,
+   "total": 8166,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 17155
+  },
+  {
+   "specimen": "s-14-s11",
+   "spec": "S11",
+   "rule": "14.25",
+   "serves_rules": [
+    "14.25"
+   ],
+   "form": "shift-arrows",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s11",
+   "bytes_as_placed": 14248,
+   "added_on_page": 0,
+   "frame_bytes": 760,
+   "total": 15008,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 10328
+  },
+  {
+   "specimen": "s-14-s12",
+   "spec": "S12",
+   "rule": "14.115",
+   "serves_rules": [
+    "14.115"
+   ],
+   "form": "tile-map-shift-arrows",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s12",
+   "bytes_as_placed": 13278,
+   "added_on_page": 0,
+   "frame_bytes": 764,
+   "total": 14042,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 11298
+  },
+  {
+   "specimen": "s-14-s13",
+   "spec": "S13",
+   "rule": "14.34",
+   "serves_rules": [
+    "14.34",
+    "14.128"
+   ],
+   "form": "area-sparklines",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s13",
+   "bytes_as_placed": 33488,
+   "added_on_page": 0,
+   "frame_bytes": 752,
+   "total": 34240,
+   "ceiling": {
+    "bytes": 47212,
+    "measure": "bytes_as_placed",
+    "hard": 47212,
+    "basis": "D3-350: approved on board 1 at up to 47,212 bytes as placed, listed and not failed"
+   },
+   "within_ceiling": true,
+   "room": 13724
+  },
+  {
+   "specimen": "s-14-s14",
+   "spec": "S14",
+   "rule": "14.32",
+   "serves_rules": [
+    "14.32"
+   ],
+   "form": "columns-moving-average",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s14",
+   "bytes_as_placed": 11368,
+   "added_on_page": 0,
+   "frame_bytes": 732,
+   "total": 12100,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 13208
+  },
+  {
+   "specimen": "s-14-s15",
+   "spec": "S15",
+   "rule": "14.125",
+   "serves_rules": [
+    "14.125"
+   ],
+   "form": "results-table",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s15",
+   "bytes_as_placed": 16673,
+   "added_on_page": 0,
+   "frame_bytes": 757,
+   "total": 17430,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 7903
+  },
+  {
+   "specimen": "s-14-s16",
+   "spec": "S16",
+   "rule": "14.116",
+   "serves_rules": [
+    "14.116"
+   ],
+   "form": "bubble-map",
+   "tier": "core",
+   "placed_under": "board 1 (round 0)",
+   "plate": "fig-s-14-s16",
+   "bytes_as_placed": 10198,
+   "added_on_page": 0,
+   "frame_bytes": 735,
+   "total": 10933,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under board 1 (round 0), whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 14378
+  },
+  {
+   "specimen": "s-14-s17",
+   "spec": "S17",
+   "rule": "14.16",
+   "serves_rules": [
+    "14.16"
+   ],
+   "form": "column",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s17",
+   "bytes_as_placed": 4259,
+   "added_on_page": 0,
+   "frame_bytes": 730,
+   "total": 4989,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 20317
+  },
+  {
+   "specimen": "s-14-s18",
+   "spec": "S18",
+   "rule": "14.17",
+   "serves_rules": [
+    "14.17"
+   ],
+   "form": "bar-benchmark-tick",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s18",
+   "bytes_as_placed": 4221,
+   "added_on_page": 0,
+   "frame_bytes": 755,
+   "total": 4976,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 20355
+  },
+  {
+   "specimen": "s-14-s19",
+   "spec": "S19",
+   "rule": "14.18",
+   "serves_rules": [
+    "14.18"
+   ],
+   "form": "dot-plot",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s19",
+   "bytes_as_placed": 10541,
+   "added_on_page": 0,
+   "frame_bytes": 749,
+   "total": 11290,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 14035
+  },
+  {
+   "specimen": "s-14-s20",
+   "spec": "S20",
+   "rule": "14.20",
+   "serves_rules": [
+    "14.20"
+   ],
+   "form": "slope",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s20",
+   "bytes_as_placed": 4430,
+   "added_on_page": 0,
+   "frame_bytes": 739,
+   "total": 5169,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 20146
+  },
+  {
+   "specimen": "s-14-s21",
+   "spec": "S21",
+   "rule": "14.21",
+   "serves_rules": [
+    "14.21"
+   ],
+   "form": "lollipop",
+   "tier": "extended",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s21",
+   "bytes_as_placed": 5697,
+   "added_on_page": 0,
+   "frame_bytes": 734,
+   "total": 6431,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 18879
+  },
+  {
+   "specimen": "s-14-s22",
+   "spec": "S22",
+   "rule": "14.22",
+   "serves_rules": [
+    "14.22"
+   ],
+   "form": "grouped-bar",
+   "tier": "extended",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s22",
+   "bytes_as_placed": 5083,
+   "added_on_page": 0,
+   "frame_bytes": 759,
+   "total": 5842,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 19493
+  },
+  {
+   "specimen": "s-14-s23",
+   "spec": "S23",
+   "rule": "14.23",
+   "serves_rules": [
+    "14.23"
+   ],
+   "form": "small-multiple-bars",
+   "tier": "extended",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s23",
+   "bytes_as_placed": 6227,
+   "added_on_page": 0,
+   "frame_bytes": 747,
+   "total": 6974,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 18349
+  },
+  {
+   "specimen": "s-14-s24",
+   "spec": "S24",
+   "rule": "14.26",
+   "serves_rules": [
+    "14.26"
+   ],
+   "form": "change-lollipop",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s24",
+   "bytes_as_placed": 9368,
+   "added_on_page": 0,
+   "frame_bytes": 751,
+   "total": 10119,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 15208
+  },
+  {
+   "specimen": "s-14-s25",
+   "spec": "S25",
+   "rule": "14.27",
+   "serves_rules": [
+    "14.27"
+   ],
+   "form": "diverging-bar",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s25",
+   "bytes_as_placed": 22806,
+   "added_on_page": 0,
+   "frame_bytes": 744,
+   "total": 23550,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 1770
+  },
+  {
+   "specimen": "s-14-s26",
+   "spec": "S26",
+   "rule": "14.28",
+   "serves_rules": [
+    "14.28"
+   ],
+   "form": "diverging-bar-arrows",
+   "tier": "extended",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s26",
+   "bytes_as_placed": 9626,
+   "added_on_page": 0,
+   "frame_bytes": 755,
+   "total": 10381,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 14950
+  },
+  {
+   "specimen": "s-14-s27",
+   "spec": "S27",
+   "rule": "14.31",
+   "serves_rules": [
+    "14.31"
+   ],
+   "form": "line-field",
+   "tier": "extended",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s27",
+   "bytes_as_placed": 14193,
+   "added_on_page": 0,
+   "frame_bytes": 757,
+   "total": 14950,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 10383
+  },
+  {
+   "specimen": "s-14-s28",
+   "spec": "S28",
+   "rule": "14.33",
+   "serves_rules": [
+    "14.33"
+   ],
+   "form": "sparkline",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s28",
+   "bytes_as_placed": 5849,
+   "added_on_page": 0,
+   "frame_bytes": 752,
+   "total": 6601,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 18727
+  },
+  {
+   "specimen": "s-14-s29",
+   "spec": "S29",
+   "rule": "14.35",
+   "serves_rules": [
+    "14.35"
+   ],
+   "form": "area",
+   "tier": "extended",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s29",
+   "bytes_as_placed": 5210,
+   "added_on_page": 0,
+   "frame_bytes": 733,
+   "total": 5943,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 19366
+  },
+  {
+   "specimen": "s-14-s30",
+   "spec": "S30",
+   "rule": "14.36",
+   "serves_rules": [
+    "14.36"
+   ],
+   "form": "step-line",
+   "tier": "extended",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s30",
+   "bytes_as_placed": 6098,
+   "added_on_page": 0,
+   "frame_bytes": 768,
+   "total": 6866,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 18478
+  },
+  {
+   "specimen": "s-14-s31",
+   "spec": "S31",
+   "rule": "14.37",
+   "serves_rules": [
+    "14.37"
+   ],
+   "form": "line-data-gap",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s31",
+   "bytes_as_placed": 8142,
+   "added_on_page": 0,
+   "frame_bytes": 757,
+   "total": 8899,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 16434
+  },
+  {
+   "specimen": "s-14-s32",
+   "spec": "S32",
+   "rule": "14.39",
+   "serves_rules": [
+    "14.39"
+   ],
+   "form": "implementation-timeline",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s32",
+   "bytes_as_placed": 7049,
+   "added_on_page": 0,
+   "frame_bytes": 764,
+   "total": 7813,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 17527
+  },
+  {
+   "specimen": "s-14-s33",
+   "spec": "S33",
+   "rule": "14.40",
+   "serves_rules": [
+    "14.40"
+   ],
+   "form": "indexed-line",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s33",
+   "bytes_as_placed": 16583,
+   "added_on_page": 0,
+   "frame_bytes": 751,
+   "total": 17334,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 7993
+  },
+  {
+   "specimen": "s-14-s34",
+   "spec": "S34",
+   "rule": "14.41",
+   "serves_rules": [
+    "14.41"
+   ],
+   "form": "bubble-timeline",
+   "tier": "extended",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s34",
+   "bytes_as_placed": 11324,
+   "added_on_page": 0,
+   "frame_bytes": 757,
+   "total": 12081,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 13252
+  },
+  {
+   "specimen": "s-14-s35",
+   "spec": "S35",
+   "rule": "14.42",
+   "serves_rules": [
+    "14.42"
+   ],
+   "form": "benefit-cliff",
+   "tier": "extended",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s35",
+   "bytes_as_placed": 10079,
+   "added_on_page": 0,
+   "frame_bytes": 797,
+   "total": 10876,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 14497
+  },
+  {
+   "specimen": "s-14-s36",
+   "spec": "S36",
+   "rule": "14.126",
+   "serves_rules": [
+    "14.126"
+   ],
+   "form": "ranked-register",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s36",
+   "bytes_as_placed": 10283,
+   "added_on_page": 0,
+   "frame_bytes": 760,
+   "total": 11043,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 14293
+  },
+  {
+   "specimen": "s-14-s37",
+   "spec": "S37",
+   "rule": "14.129",
+   "serves_rules": [
+    "14.129"
+   ],
+   "form": "heat-table",
+   "tier": "extended",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s37",
+   "bytes_as_placed": 16268,
+   "added_on_page": 0,
+   "frame_bytes": 752,
+   "total": 17020,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 8308
+  },
+  {
+   "specimen": "s-14-s38",
+   "spec": "S38",
+   "rule": "14.130",
+   "serves_rules": [
+    "14.130"
+   ],
+   "form": "filterable-lookup-table",
+   "tier": "extended",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s38",
+   "bytes_as_placed": 10072,
+   "added_on_page": 0,
+   "frame_bytes": 739,
+   "total": 10811,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 14504
+  },
+  {
+   "specimen": "s-14-s39",
+   "spec": "S39",
+   "rule": "14.131",
+   "serves_rules": [
+    "14.131"
+   ],
+   "form": "evidence-table",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s39",
+   "bytes_as_placed": 10406,
+   "added_on_page": 0,
+   "frame_bytes": 748,
+   "total": 11154,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 14170
+  },
+  {
+   "specimen": "s-14-s40",
+   "spec": "S40",
+   "rule": "14.132",
+   "serves_rules": [
+    "14.132"
+   ],
+   "form": "tracker-list",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s40",
+   "bytes_as_placed": 8799,
+   "added_on_page": 0,
+   "frame_bytes": 739,
+   "total": 9538,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 15777
+  },
+  {
+   "specimen": "s-14-s41",
+   "spec": "S41",
+   "rule": "14.133",
+   "serves_rules": [
+    "14.133"
+   ],
+   "form": "plain-table",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s41",
+   "bytes_as_placed": 3408,
+   "added_on_page": 0,
+   "frame_bytes": 773,
+   "total": 4181,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 21168
+  },
+  {
+   "specimen": "s-14-s42",
+   "spec": "S42",
+   "rule": "14.134",
+   "serves_rules": [
+    "14.134"
+   ],
+   "form": "one-sentence",
+   "tier": "core",
+   "placed_under": "round 1",
+   "plate": "fig-s-14-s42",
+   "bytes_as_placed": 2454,
+   "added_on_page": 0,
+   "frame_bytes": 803,
+   "total": 3257,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 1, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 22122
+  },
+  {
+   "specimen": "s-14-s43",
+   "spec": "S43",
+   "rule": "14.47",
+   "serves_rules": [
+    "14.47"
+   ],
+   "form": "stacked-share-bar",
+   "tier": "core",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s43",
+   "bytes_as_placed": 9988,
+   "added_on_page": 0,
+   "frame_bytes": 753,
+   "total": 10741,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 14588
+  },
+  {
+   "specimen": "s-14-s44",
+   "spec": "S44",
+   "rule": "14.48",
+   "serves_rules": [
+    "14.48"
+   ],
+   "form": "waterfall",
+   "tier": "core",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s44",
+   "bytes_as_placed": 8313,
+   "added_on_page": 0,
+   "frame_bytes": 754,
+   "total": 9067,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 16263
+  },
+  {
+   "specimen": "s-14-s45",
+   "spec": "S45",
+   "rule": "14.50",
+   "serves_rules": [
+    "14.50"
+   ],
+   "form": "stacked-column",
+   "tier": "extended",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s45",
+   "bytes_as_placed": 6884,
+   "added_on_page": 0,
+   "frame_bytes": 731,
+   "total": 7615,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 17692
+  },
+  {
+   "specimen": "s-14-s46",
+   "spec": "S46",
+   "rule": "14.51",
+   "serves_rules": [
+    "14.51"
+   ],
+   "form": "stacked-area",
+   "tier": "extended",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s46",
+   "bytes_as_placed": 11096,
+   "added_on_page": 0,
+   "frame_bytes": 728,
+   "total": 11824,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 13480
+  },
+  {
+   "specimen": "s-14-s47",
+   "spec": "S47",
+   "rule": "14.52",
+   "serves_rules": [
+    "14.52"
+   ],
+   "form": "treemap",
+   "tier": "extended",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s47",
+   "bytes_as_placed": 5338,
+   "added_on_page": 0,
+   "frame_bytes": 732,
+   "total": 6070,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 19238
+  },
+  {
+   "specimen": "s-14-s48",
+   "spec": "S48",
+   "rule": "14.53",
+   "serves_rules": [
+    "14.53"
+   ],
+   "form": "parliament",
+   "tier": "extended",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s48",
+   "bytes_as_placed": 3860,
+   "added_on_page": 0,
+   "frame_bytes": 738,
+   "total": 4598,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 20716
+  },
+  {
+   "specimen": "s-14-s49",
+   "spec": "S49",
+   "rule": "14.58",
+   "serves_rules": [
+    "14.58"
+   ],
+   "form": "histogram",
+   "tier": "core",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s49",
+   "bytes_as_placed": 5527,
+   "added_on_page": 0,
+   "frame_bytes": 733,
+   "total": 6260,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 19049
+  },
+  {
+   "specimen": "s-14-s50",
+   "spec": "S50",
+   "rule": "14.59",
+   "serves_rules": [
+    "14.59"
+   ],
+   "form": "beeswarm",
+   "tier": "core",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s50",
+   "bytes_as_placed": 9798,
+   "added_on_page": 0,
+   "frame_bytes": 742,
+   "total": 10540,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 14778
+  },
+  {
+   "specimen": "s-14-s51",
+   "spec": "S51",
+   "rule": "14.60",
+   "serves_rules": [
+    "14.60"
+   ],
+   "form": "box-plot",
+   "tier": "extended",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s51",
+   "bytes_as_placed": 6626,
+   "added_on_page": 0,
+   "frame_bytes": 752,
+   "total": 7378,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 17950
+  },
+  {
+   "specimen": "s-14-s52",
+   "spec": "S52",
+   "rule": "14.61",
+   "serves_rules": [
+    "14.61"
+   ],
+   "form": "line-histogram",
+   "tier": "extended",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s52",
+   "bytes_as_placed": 7633,
+   "added_on_page": 0,
+   "frame_bytes": 757,
+   "total": 8390,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 16943
+  },
+  {
+   "specimen": "s-14-s53",
+   "spec": "S53",
+   "rule": "14.62",
+   "serves_rules": [
+    "14.62"
+   ],
+   "form": "population-pyramid",
+   "tier": "extended",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s53",
+   "bytes_as_placed": 11454,
+   "added_on_page": 0,
+   "frame_bytes": 753,
+   "total": 12207,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 13122
+  },
+  {
+   "specimen": "s-14-s54",
+   "spec": "S54",
+   "rule": "14.67",
+   "serves_rules": [
+    "14.67"
+   ],
+   "form": "scatter-named",
+   "tier": "core",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s54",
+   "bytes_as_placed": 9710,
+   "added_on_page": 0,
+   "frame_bytes": 796,
+   "total": 10506,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 14866
+  },
+  {
+   "specimen": "s-14-s55",
+   "spec": "S55",
+   "rule": "14.68",
+   "serves_rules": [
+    "14.68"
+   ],
+   "form": "bubble-scatter",
+   "tier": "extended",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s55",
+   "bytes_as_placed": 11004,
+   "added_on_page": 0,
+   "frame_bytes": 773,
+   "total": 11777,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 13572
+  },
+  {
+   "specimen": "s-14-s56",
+   "spec": "S56",
+   "rule": "14.69",
+   "serves_rules": [
+    "14.69"
+   ],
+   "form": "connected-scatter",
+   "tier": "extended",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s56",
+   "bytes_as_placed": 14640,
+   "added_on_page": 0,
+   "frame_bytes": 741,
+   "total": 15381,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 9936
+  },
+  {
+   "specimen": "s-14-s57",
+   "spec": "S57",
+   "rule": "14.74",
+   "serves_rules": [
+    "14.74"
+   ],
+   "form": "range-bar",
+   "tier": "core",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s57",
+   "bytes_as_placed": 11137,
+   "added_on_page": 0,
+   "frame_bytes": 777,
+   "total": 11914,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 13439
+  },
+  {
+   "specimen": "s-14-s58",
+   "spec": "S58",
+   "rule": "14.75",
+   "serves_rules": [
+    "14.75"
+   ],
+   "form": "line-confidence-band",
+   "tier": "core",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s58",
+   "bytes_as_placed": 11448,
+   "added_on_page": 0,
+   "frame_bytes": 774,
+   "total": 12222,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 13128
+  },
+  {
+   "specimen": "s-14-s59",
+   "spec": "S59",
+   "rule": "14.77",
+   "serves_rules": [
+    "14.77"
+   ],
+   "form": "fan-chart",
+   "tier": "extended",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s59",
+   "bytes_as_placed": 6719,
+   "added_on_page": 0,
+   "frame_bytes": 775,
+   "total": 7494,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 17857
+  },
+  {
+   "specimen": "s-14-s60",
+   "spec": "S60",
+   "rule": "14.86",
+   "serves_rules": [
+    "14.86"
+   ],
+   "form": "indicator-row",
+   "tier": "core",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s60",
+   "bytes_as_placed": 9092,
+   "added_on_page": 0,
+   "frame_bytes": 727,
+   "total": 9819,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 15484
+  },
+  {
+   "specimen": "s-14-s61",
+   "spec": "S61",
+   "rule": "14.87",
+   "serves_rules": [
+    "14.87"
+   ],
+   "form": "progress-bar",
+   "tier": "core",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s61",
+   "bytes_as_placed": 3896,
+   "added_on_page": 0,
+   "frame_bytes": 809,
+   "total": 4705,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 20680
+  },
+  {
+   "specimen": "s-14-s62",
+   "spec": "S62",
+   "rule": "14.88",
+   "serves_rules": [
+    "14.88"
+   ],
+   "form": "step-tracker",
+   "tier": "core",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s62",
+   "bytes_as_placed": 5189,
+   "added_on_page": 0,
+   "frame_bytes": 743,
+   "total": 5932,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 19387
+  },
+  {
+   "specimen": "s-14-s63",
+   "spec": "S63",
+   "rule": "14.89",
+   "serves_rules": [
+    "14.89"
+   ],
+   "form": "status-chips",
+   "tier": "core",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s63",
+   "bytes_as_placed": 10346,
+   "added_on_page": 0,
+   "frame_bytes": 736,
+   "total": 11082,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for core; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 14230
+  },
+  {
+   "specimen": "s-14-s64",
+   "spec": "S64",
+   "rule": "14.90",
+   "serves_rules": [
+    "14.90"
+   ],
+   "form": "bullet-graph",
+   "tier": "extended",
+   "placed_under": "round 2",
+   "plate": "fig-s-14-s64",
+   "bytes_as_placed": 3750,
+   "added_on_page": 0,
+   "frame_bytes": 737,
+   "total": 4487,
+   "ceiling": {
+    "bytes": 24576,
+    "measure": "bytes_as_placed",
+    "hard": 24576,
+    "basis": "placed under round 2, whose limit is the build's far-over test: bytes as placed at most three times the tier's average (24,576 for extended; D3-350, round 1 R6, round 2 R2-6)"
+   },
+   "within_ceiling": true,
+   "room": 20826
+  },
+  {
+   "specimen": "s-14-s65",
+   "spec": "S65",
+   "rule": "14.93",
+   "serves_rules": [
+    "14.93"
+   ],
+   "form": "funnel",
+   "tier": "extended",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s65",
+   "bytes_as_placed": 5832,
+   "added_on_page": 0,
+   "frame_bytes": 847,
+   "total": 6679,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 7427
+  },
+  {
+   "specimen": "s-14-s66",
+   "spec": "S66",
+   "rule": "14.96",
+   "serves_rules": [
+    "14.96"
+   ],
+   "form": "process-diagram",
+   "tier": "core",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s66",
+   "bytes_as_placed": 9432,
+   "added_on_page": 0,
+   "frame_bytes": 778,
+   "total": 10210,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 3896
+  },
+  {
+   "specimen": "s-14-s67",
+   "spec": "S67",
+   "rule": "14.97",
+   "serves_rules": [
+    "14.97"
+   ],
+   "form": "decision-tree",
+   "tier": "core",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s67",
+   "bytes_as_placed": 12340,
+   "added_on_page": 48,
+   "frame_bytes": 748,
+   "total": 13136,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 970
+  },
+  {
+   "specimen": "s-14-s68",
+   "spec": "S68",
+   "rule": "14.98",
+   "serves_rules": [
+    "14.98"
+   ],
+   "form": "who-decides",
+   "tier": "core",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s68",
+   "bytes_as_placed": 9125,
+   "added_on_page": 0,
+   "frame_bytes": 753,
+   "total": 9878,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 4228
+  },
+  {
+   "specimen": "s-14-s69",
+   "spec": "S69",
+   "rule": "14.99",
+   "serves_rules": [
+    "14.99"
+   ],
+   "form": "org-chart",
+   "tier": "extended",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s69",
+   "bytes_as_placed": 13807,
+   "added_on_page": 0,
+   "frame_bytes": 746,
+   "total": 14553,
+   "ceiling": {
+    "bytes": 14556,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1412: S69 stands at its page measure of 14,556 with its frame, under 15,000 (D3-1328 bars growth past it)"
+   },
+   "within_ceiling": true,
+   "room": 3
+  },
+  {
+   "specimen": "s-14-s70",
+   "spec": "S70",
+   "rule": "14.100",
+   "serves_rules": [
+    "14.100"
+   ],
+   "form": "hierarchy-tree",
+   "tier": "extended",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s70",
+   "bytes_as_placed": 10349,
+   "added_on_page": 0,
+   "frame_bytes": 765,
+   "total": 11114,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 2992
+  },
+  {
+   "specimen": "s-14-s71",
+   "spec": "S71",
+   "rule": "14.101",
+   "serves_rules": [
+    "14.101"
+   ],
+   "form": "comparison-grid",
+   "tier": "extended",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s71",
+   "bytes_as_placed": 12037,
+   "added_on_page": 0,
+   "frame_bytes": 764,
+   "total": 12801,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 1305
+  },
+  {
+   "specimen": "s-14-s72",
+   "spec": "S72",
+   "rule": "14.102",
+   "serves_rules": [
+    "14.102"
+   ],
+   "form": "roll-call-grid",
+   "tier": "extended",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s72",
+   "bytes_as_placed": 7309,
+   "added_on_page": 0,
+   "frame_bytes": 784,
+   "total": 8093,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 6013
+  },
+  {
+   "specimen": "s-14-s73",
+   "spec": "S73",
+   "rule": "14.104",
+   "serves_rules": [
+    "14.104"
+   ],
+   "form": "network-diagram",
+   "tier": "extended",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s73",
+   "bytes_as_placed": 13263,
+   "added_on_page": 0,
+   "frame_bytes": 796,
+   "total": 14059,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 47
+  },
+  {
+   "specimen": "s-14-s74",
+   "spec": "S74",
+   "rule": "14.105",
+   "serves_rules": [
+    "14.105"
+   ],
+   "form": "adjacency-matrix",
+   "tier": "extended",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s74",
+   "bytes_as_placed": 11029,
+   "added_on_page": 0,
+   "frame_bytes": 731,
+   "total": 11760,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 2346
+  },
+  {
+   "specimen": "s-14-s75",
+   "spec": "S75",
+   "rule": "14.106",
+   "serves_rules": [
+    "14.106"
+   ],
+   "form": "arc-diagram",
+   "tier": "extended",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s75",
+   "bytes_as_placed": 7181,
+   "added_on_page": 0,
+   "frame_bytes": 755,
+   "total": 7936,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 6170
+  },
+  {
+   "specimen": "s-14-s76",
+   "spec": "S76",
+   "rule": "14.110",
+   "serves_rules": [
+    "14.110"
+   ],
+   "form": "sankey",
+   "tier": "extended",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s76",
+   "bytes_as_placed": 6945,
+   "added_on_page": 0,
+   "frame_bytes": 765,
+   "total": 7710,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 6396
+  },
+  {
+   "specimen": "s-14-s77",
+   "spec": "S77",
+   "rule": "14.112",
+   "serves_rules": [
+    "14.112"
+   ],
+   "form": "journey-map",
+   "tier": "core",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s77",
+   "bytes_as_placed": 6997,
+   "added_on_page": 0,
+   "frame_bytes": 780,
+   "total": 7777,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 6329
+  },
+  {
+   "specimen": "s-14-s78",
+   "spec": "S78",
+   "rule": "14.117",
+   "serves_rules": [
+    "14.117"
+   ],
+   "form": "choropleth",
+   "tier": "core",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s78",
+   "bytes_as_placed": 8781,
+   "added_on_page": 0,
+   "frame_bytes": 753,
+   "total": 9534,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 4572
+  },
+  {
+   "specimen": "s-14-s79",
+   "spec": "S79",
+   "rule": "14.118",
+   "serves_rules": [
+    "14.118"
+   ],
+   "form": "locator-map",
+   "tier": "core",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s79",
+   "bytes_as_placed": 3569,
+   "added_on_page": 0,
+   "frame_bytes": 807,
+   "total": 4376,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 9730
+  },
+  {
+   "specimen": "s-14-s80",
+   "spec": "S80",
+   "rule": "14.119",
+   "serves_rules": [
+    "14.119"
+   ],
+   "form": "district-map",
+   "tier": "extended",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s80",
+   "bytes_as_placed": 6156,
+   "added_on_page": 0,
+   "frame_bytes": 784,
+   "total": 6940,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 7166
+  },
+  {
+   "specimen": "s-14-s81",
+   "spec": "S81",
+   "rule": "14.120",
+   "serves_rules": [
+    "14.120"
+   ],
+   "form": "county-choropleth",
+   "tier": "extended",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s81",
+   "bytes_as_placed": 12905,
+   "added_on_page": 0,
+   "frame_bytes": 749,
+   "total": 13654,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 452
+  },
+  {
+   "specimen": "s-14-s82",
+   "spec": "S82",
+   "rule": "14.121",
+   "serves_rules": [
+    "14.121"
+   ],
+   "form": "district-tile-map",
+   "tier": "extended",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s82",
+   "bytes_as_placed": 13234,
+   "added_on_page": 0,
+   "frame_bytes": 805,
+   "total": 14039,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 67
+  },
+  {
+   "specimen": "s-14-s83",
+   "spec": "S83",
+   "rule": "14.122",
+   "serves_rules": [
+    "14.122"
+   ],
+   "form": "dot-density-map",
+   "tier": "extended",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s83",
+   "bytes_as_placed": 12713,
+   "added_on_page": 0,
+   "frame_bytes": 723,
+   "total": 13436,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 670
+  },
+  {
+   "specimen": "s-14-s84",
+   "spec": "S84",
+   "rule": "14.123",
+   "serves_rules": [
+    "14.123"
+   ],
+   "form": "small-multiple-maps",
+   "tier": "extended",
+   "placed_under": "round 3",
+   "plate": "fig-s-14-s84",
+   "bytes_as_placed": 10738,
+   "added_on_page": 0,
+   "frame_bytes": 752,
+   "total": 11490,
+   "ceiling": {
+    "bytes": 14106,
+    "measure": "total",
+    "hard": 15000,
+    "basis": "D3-1328: no round 3 plate past 14,106 bytes with its frame, none past 15,000"
+   },
+   "within_ceiling": true,
+   "room": 2616
+  }
+ ],
+ "rule_plates": [
+  {
+   "plate": "fig-s-14-1-correct",
+   "specimen": "s-14-1-correct",
+   "kind": "correct",
+   "rule": "14.1",
+   "total": 5145,
+   "charts": [
+    {
+     "specimen": "s-14-1-line",
+     "tier": "core",
+     "bytes_as_placed": 4068,
+     "added_on_page": 0,
+     "ceiling": {
+      "bytes": 24576,
+      "measure": "bytes_as_placed",
+      "basis": "the build's far-over test, three times the tier's average"
+     }
+    }
+   ],
+   "frame_and_other_bytes": 1077
+  },
+  {
+   "plate": "fig-s-14-2-correct",
+   "specimen": "s-14-2-correct",
+   "kind": "correct",
+   "rule": "14.2",
+   "total": 7261,
+   "charts": [
+    {
+     "specimen": "s-14-2-full",
+     "tier": "core",
+     "bytes_as_placed": 4286,
+     "added_on_page": 0,
+     "ceiling": {
+      "bytes": 24576,
+      "measure": "bytes_as_placed",
+      "basis": "the build's far-over test, three times the tier's average"
+     }
+    }
+   ],
+   "frame_and_other_bytes": 2975
+  },
+  {
+   "plate": "fig-s-14-2-failure",
+   "specimen": "s-14-2-failure",
+   "kind": "failure",
+   "rule": "14.2",
+   "total": 4330,
+   "charts": [
+    {
+     "specimen": "s-14-2-bare",
+     "tier": "core",
+     "bytes_as_placed": 3158,
+     "added_on_page": 0,
+     "ceiling": {
+      "bytes": 24576,
+      "measure": "bytes_as_placed",
+      "basis": "the build's far-over test, three times the tier's average"
+     }
+    }
+   ],
+   "frame_and_other_bytes": 1172
+  },
+  {
+   "plate": "fig-s-14-3-correct",
+   "specimen": "s-14-3-correct",
+   "kind": "correct",
+   "rule": "14.3",
+   "total": 6112,
+   "charts": [
+    {
+     "specimen": "s-14-3-lines",
+     "tier": "core",
+     "bytes_as_placed": 5053,
+     "added_on_page": 0,
+     "ceiling": {
+      "bytes": 24576,
+      "measure": "bytes_as_placed",
+      "basis": "the build's far-over test, three times the tier's average"
+     }
+    }
+   ],
+   "frame_and_other_bytes": 1059
+  },
+  {
+   "plate": "fig-s-14-4-correct",
+   "specimen": "s-14-4-correct",
+   "kind": "correct",
+   "rule": "14.4",
+   "total": 4287,
+   "charts": [
+    {
+     "specimen": "s-14-4-cols",
+     "tier": "core",
+     "bytes_as_placed": 3228,
+     "added_on_page": 0,
+     "ceiling": {
+      "bytes": 24576,
+      "measure": "bytes_as_placed",
+      "basis": "the build's far-over test, three times the tier's average"
+     }
+    }
+   ],
+   "frame_and_other_bytes": 1059
+  },
+  {
+   "plate": "fig-s-14-6-correct",
+   "specimen": "s-14-6-correct",
+   "kind": "correct",
+   "rule": "14.6",
+   "total": 4520,
+   "charts": [
+    {
+     "specimen": "s-14-6-bars",
+     "tier": "core",
+     "bytes_as_placed": 3421,
+     "added_on_page": 0,
+     "ceiling": {
+      "bytes": 24576,
+      "measure": "bytes_as_placed",
+      "basis": "the build's far-over test, three times the tier's average"
+     }
+    }
+   ],
+   "frame_and_other_bytes": 1099
+  },
+  {
+   "plate": "fig-s-14-7-correct",
+   "specimen": "s-14-7-correct",
+   "kind": "correct",
+   "rule": "14.7",
+   "total": 3449,
+   "charts": [
+    {
+     "specimen": "s-14-7-seats",
+     "tier": "core",
+     "bytes_as_placed": 2456,
+     "added_on_page": 0,
+     "ceiling": {
+      "bytes": 24576,
+      "measure": "bytes_as_placed",
+      "basis": "the build's far-over test, three times the tier's average"
+     }
+    }
+   ],
+   "frame_and_other_bytes": 993
+  },
+  {
+   "plate": "fig-s-14-8-correct",
+   "specimen": "s-14-8-correct",
+   "kind": "correct",
+   "rule": "14.8",
+   "total": 6963,
+   "charts": [
+    {
+     "specimen": "s-14-8-panels",
+     "tier": "core",
+     "bytes_as_placed": 5928,
+     "added_on_page": 0,
+     "ceiling": {
+      "bytes": 24576,
+      "measure": "bytes_as_placed",
+      "basis": "the build's far-over test, three times the tier's average"
+     }
+    }
+   ],
+   "frame_and_other_bytes": 1035
+  },
+  {
+   "plate": "fig-s-14-9-correct",
+   "specimen": "s-14-9-correct",
+   "kind": "correct",
+   "rule": "14.9",
+   "total": 5028,
+   "charts": [
+    {
+     "specimen": "s-14-9-range",
+     "tier": "core",
+     "bytes_as_placed": 3935,
+     "added_on_page": 0,
+     "ceiling": {
+      "bytes": 24576,
+      "measure": "bytes_as_placed",
+      "basis": "the build's far-over test, three times the tier's average"
+     }
+    }
+   ],
+   "frame_and_other_bytes": 1093
+  },
+  {
+   "plate": "fig-s-14-10-correct",
+   "specimen": "s-14-10-correct",
+   "kind": "correct",
+   "rule": "14.10",
+   "total": 4923,
+   "charts": [
+    {
+     "specimen": "s-14-10-line",
+     "tier": "core",
+     "bytes_as_placed": 3844,
+     "added_on_page": 0,
+     "ceiling": {
+      "bytes": 24576,
+      "measure": "bytes_as_placed",
+      "basis": "the build's far-over test, three times the tier's average"
+     }
+    }
+   ],
+   "frame_and_other_bytes": 1079
+  },
+  {
+   "plate": "fig-s-14-11-correct",
+   "specimen": "s-14-11-correct",
+   "kind": "correct",
+   "rule": "14.11",
+   "total": 6382,
+   "charts": [
+    {
+     "specimen": "s-14-11-line",
+     "tier": "core",
+     "bytes_as_placed": 5295,
+     "added_on_page": 0,
+     "ceiling": {
+      "bytes": 24576,
+      "measure": "bytes_as_placed",
+      "basis": "the build's far-over test, three times the tier's average"
+     }
+    }
+   ],
+   "frame_and_other_bytes": 1087
+  },
+  {
+   "plate": "fig-s-14-12-correct",
+   "specimen": "s-14-12-correct",
+   "kind": "correct",
+   "rule": "14.12",
+   "total": 4544,
+   "charts": [
+    {
+     "specimen": "s-14-12-cols",
+     "tier": "core",
+     "bytes_as_placed": 3453,
+     "added_on_page": 0,
+     "ceiling": {
+      "bytes": 24576,
+      "measure": "bytes_as_placed",
+      "basis": "the build's far-over test, three times the tier's average"
+     }
+    }
+   ],
+   "frame_and_other_bytes": 1091
+  },
+  {
+   "plate": "fig-s-14-13-correct",
+   "specimen": "s-14-13-correct",
+   "kind": "correct",
+   "rule": "14.13",
+   "total": 4421,
+   "charts": [
+    {
+     "specimen": "s-14-13-cols",
+     "tier": "core",
+     "bytes_as_placed": 3375,
+     "added_on_page": 0,
+     "ceiling": {
+      "bytes": 24576,
+      "measure": "bytes_as_placed",
+      "basis": "the build's far-over test, three times the tier's average"
+     }
+    }
+   ],
+   "frame_and_other_bytes": 1046
+  }
+ ],
+ "other_plates": [
+  {
+   "plate": "fig-s-14-opener",
+   "specimen": "s-14-opener",
+   "kind": "opener",
+   "rule": null,
+   "total": 6064
+  },
+  {
+   "plate": "fig-s-14-1-failure",
+   "specimen": "s-14-1-failure",
+   "kind": "failure",
+   "rule": "14.1",
+   "total": 2732
+  },
+  {
+   "plate": "fig-s-14-3-failure",
+   "specimen": "s-14-3-failure",
+   "kind": "failure",
+   "rule": "14.3",
+   "total": 3281
+  },
+  {
+   "plate": "fig-s-14-4-failure",
+   "specimen": "s-14-4-failure",
+   "kind": "failure",
+   "rule": "14.4",
+   "total": 3255
+  },
+  {
+   "plate": "fig-s-14-5-correct",
+   "specimen": "s-14-5-correct",
+   "kind": "correct",
+   "rule": "14.5",
+   "total": 4740
+  },
+  {
+   "plate": "fig-s-14-5-failure",
+   "specimen": "s-14-5-failure",
+   "kind": "failure",
+   "rule": "14.5",
+   "total": 2485
+  },
+  {
+   "plate": "fig-s-14-6-failure",
+   "specimen": "s-14-6-failure",
+   "kind": "failure",
+   "rule": "14.6",
+   "total": 2307
+  },
+  {
+   "plate": "fig-s-14-7-failure",
+   "specimen": "s-14-7-failure",
+   "kind": "failure",
+   "rule": "14.7",
+   "total": 1918
+  },
+  {
+   "plate": "fig-s-14-8-failure",
+   "specimen": "s-14-8-failure",
+   "kind": "failure",
+   "rule": "14.8",
+   "total": 3354
+  },
+  {
+   "plate": "fig-s-14-9-failure",
+   "specimen": "s-14-9-failure",
+   "kind": "failure",
+   "rule": "14.9",
+   "total": 2647
+  },
+  {
+   "plate": "fig-s-14-10-failure",
+   "specimen": "s-14-10-failure",
+   "kind": "failure",
+   "rule": "14.10",
+   "total": 3097
+  },
+  {
+   "plate": "fig-s-14-11-failure",
+   "specimen": "s-14-11-failure",
+   "kind": "failure",
+   "rule": "14.11",
+   "total": 2372
+  },
+  {
+   "plate": "fig-s-14-12-failure",
+   "specimen": "s-14-12-failure",
+   "kind": "failure",
+   "rule": "14.12",
+   "total": 1979
+  },
+  {
+   "plate": "fig-s-14-13-failure",
+   "specimen": "s-14-13-failure",
+   "kind": "failure",
+   "rule": "14.13",
+   "total": 2975
+  },
+  {
+   "plate": "fig-s-14-14-correct",
+   "specimen": "s-14-14-correct",
+   "kind": "correct",
+   "rule": "14.14",
+   "total": 2333
+  },
+  {
+   "plate": "fig-s-14-14-failure",
+   "specimen": "s-14-14-failure",
+   "kind": "failure",
+   "rule": "14.14",
+   "total": 1804
+  },
+  {
+   "plate": "fig-s-14-24-sketch",
+   "specimen": "s-14-24-sketch",
+   "kind": "avoid",
+   "rule": "14.24",
+   "total": 5133,
+   "stage_bytes": 3990,
+   "frame_bytes": 1143,
+   "sketch_file_bytes": 3428,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-43-sketch",
+   "specimen": "s-14-43-sketch",
+   "kind": "sketch",
+   "rule": "14.43",
+   "total": 3752,
+   "stage_bytes": 2604,
+   "frame_bytes": 1148,
+   "sketch_file_bytes": 2574,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-44-sketch",
+   "specimen": "s-14-44-sketch",
+   "kind": "sketch",
+   "rule": "14.44",
+   "total": 3080,
+   "stage_bytes": 1876,
+   "frame_bytes": 1204,
+   "sketch_file_bytes": 1846,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-45-sketch",
+   "specimen": "s-14-45-sketch",
+   "kind": "avoid",
+   "rule": "14.45",
+   "total": 4890,
+   "stage_bytes": 3973,
+   "frame_bytes": 917,
+   "sketch_file_bytes": 3408,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-54-sketch",
+   "specimen": "s-14-54-sketch",
+   "kind": "sketch",
+   "rule": "14.54",
+   "total": 2212,
+   "stage_bytes": 1166,
+   "frame_bytes": 1046,
+   "sketch_file_bytes": 1136,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-55-sketch",
+   "specimen": "s-14-55-sketch",
+   "kind": "sketch",
+   "rule": "14.55",
+   "total": 2235,
+   "stage_bytes": 1105,
+   "frame_bytes": 1130,
+   "sketch_file_bytes": 1075,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-56-sketch",
+   "specimen": "s-14-56-sketch",
+   "kind": "sketch",
+   "rule": "14.56",
+   "total": 3113,
+   "stage_bytes": 1984,
+   "frame_bytes": 1129,
+   "sketch_file_bytes": 1954,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-57-sketch",
+   "specimen": "s-14-57-sketch",
+   "kind": "avoid",
+   "rule": "14.57",
+   "total": 3804,
+   "stage_bytes": 2769,
+   "frame_bytes": 1035,
+   "sketch_file_bytes": 2249,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-63-sketch",
+   "specimen": "s-14-63-sketch",
+   "kind": "sketch",
+   "rule": "14.63",
+   "total": 4378,
+   "stage_bytes": 3408,
+   "frame_bytes": 970,
+   "sketch_file_bytes": 3378,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-64-sketch",
+   "specimen": "s-14-64-sketch",
+   "kind": "sketch",
+   "rule": "14.64",
+   "total": 4094,
+   "stage_bytes": 3167,
+   "frame_bytes": 927,
+   "sketch_file_bytes": 3137,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-65-sketch",
+   "specimen": "s-14-65-sketch",
+   "kind": "sketch",
+   "rule": "14.65",
+   "total": 4032,
+   "stage_bytes": 3106,
+   "frame_bytes": 926,
+   "sketch_file_bytes": 3076,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-66-sketch",
+   "specimen": "s-14-66-sketch",
+   "kind": "sketch",
+   "rule": "14.66",
+   "total": 4227,
+   "stage_bytes": 3258,
+   "frame_bytes": 969,
+   "sketch_file_bytes": 3228,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-70-sketch",
+   "specimen": "s-14-70-sketch",
+   "kind": "sketch",
+   "rule": "14.70",
+   "total": 4759,
+   "stage_bytes": 3797,
+   "frame_bytes": 962,
+   "sketch_file_bytes": 3767,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-71-sketch",
+   "specimen": "s-14-71-sketch",
+   "kind": "sketch",
+   "rule": "14.71",
+   "total": 4983,
+   "stage_bytes": 4043,
+   "frame_bytes": 940,
+   "sketch_file_bytes": 4013,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-72-sketch",
+   "specimen": "s-14-72-sketch",
+   "kind": "sketch",
+   "rule": "14.72",
+   "total": 2704,
+   "stage_bytes": 1708,
+   "frame_bytes": 996,
+   "sketch_file_bytes": 1678,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-73-sketch",
+   "specimen": "s-14-73-sketch",
+   "kind": "avoid",
+   "rule": "14.73",
+   "total": 4940,
+   "stage_bytes": 3969,
+   "frame_bytes": 971,
+   "sketch_file_bytes": 3441,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-78-sketch",
+   "specimen": "s-14-78-sketch",
+   "kind": "sketch",
+   "rule": "14.78",
+   "total": 3865,
+   "stage_bytes": 2853,
+   "frame_bytes": 1012,
+   "sketch_file_bytes": 2823,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-91-sketch",
+   "specimen": "s-14-91-sketch",
+   "kind": "avoid",
+   "rule": "14.91",
+   "total": 3857,
+   "stage_bytes": 2825,
+   "frame_bytes": 1032,
+   "sketch_file_bytes": 2297,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-92-sketch",
+   "specimen": "s-14-92-sketch",
+   "kind": "avoid",
+   "rule": "14.92",
+   "total": 3712,
+   "stage_bytes": 2671,
+   "frame_bytes": 1041,
+   "sketch_file_bytes": 2143,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-94-sketch",
+   "specimen": "s-14-94-sketch",
+   "kind": "sketch",
+   "rule": "14.94",
+   "total": 3723,
+   "stage_bytes": 2760,
+   "frame_bytes": 963,
+   "sketch_file_bytes": 2730,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-95-sketch",
+   "specimen": "s-14-95-sketch",
+   "kind": "sketch",
+   "rule": "14.95",
+   "total": 3302,
+   "stage_bytes": 2328,
+   "frame_bytes": 974,
+   "sketch_file_bytes": 2298,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-103-sketch",
+   "specimen": "s-14-103-sketch",
+   "kind": "sketch",
+   "rule": "14.103",
+   "total": 3587,
+   "stage_bytes": 2469,
+   "frame_bytes": 1118,
+   "sketch_file_bytes": 2437,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-107-sketch",
+   "specimen": "s-14-107-sketch",
+   "kind": "sketch",
+   "rule": "14.107",
+   "total": 3331,
+   "stage_bytes": 2372,
+   "frame_bytes": 959,
+   "sketch_file_bytes": 2340,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-108-sketch",
+   "specimen": "s-14-108-sketch",
+   "kind": "sketch",
+   "rule": "14.108",
+   "total": 3591,
+   "stage_bytes": 2652,
+   "frame_bytes": 939,
+   "sketch_file_bytes": 2620,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-109-sketch",
+   "specimen": "s-14-109-sketch",
+   "kind": "sketch",
+   "rule": "14.109",
+   "total": 2917,
+   "stage_bytes": 1995,
+   "frame_bytes": 922,
+   "sketch_file_bytes": 1963,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-111-sketch",
+   "specimen": "s-14-111-sketch",
+   "kind": "sketch",
+   "rule": "14.111",
+   "total": 3970,
+   "stage_bytes": 3019,
+   "frame_bytes": 951,
+   "sketch_file_bytes": 2987,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-113-sketch",
+   "specimen": "s-14-113-sketch",
+   "kind": "sketch",
+   "rule": "14.113",
+   "total": 3659,
+   "stage_bytes": 2700,
+   "frame_bytes": 959,
+   "sketch_file_bytes": 2668,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  },
+  {
+   "plate": "fig-s-14-124-sketch",
+   "specimen": "s-14-124-sketch",
+   "kind": "avoid",
+   "rule": "14.124",
+   "total": 5725,
+   "stage_bytes": 4476,
+   "frame_bytes": 1249,
+   "sketch_file_bytes": 3941,
+   "ceiling": {
+    "bytes": 4096,
+    "measure": "sketch_file_bytes",
+    "basis": "R1-C1 and D3-486: a sketch file at most 4,096 bytes"
+   },
+   "within_ceiling": true
+  }
+ ],
+ "counts": {
+  "plates_on_page": 141,
+  "entry_charts": 84,
+  "rule_plates_with_charts": 13,
+  "other_plates": 44,
+  "over_ceiling": [],
+  "sum_of_plates": 1124287
+ },
+ "rerun": "python3 -I /tmp/claude-0/-home-user-Dustin-s-Command-Center/4af740fe-eb77-5222-8bcc-cd714f9f6532/scratchpad/phase-3/board-2/engineer/scripts/plate_bytes.py --page <page> --report <page>-Build-Report.json --out <this file>"
+}

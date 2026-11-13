@@ -211,6 +211,23 @@ Applied by `tools/apply.py` (each old phrase once in its field and once in the f
 | `sections.tested.tested[3].sources[1].words` | the kit’s build of every chart with the sweep, … | the kit’s build of every chart at every whole width from 256 px, … | The same |
 | `sections.tested.not_tested[3]` | …and a sample was read by eye. | …and the builder looked at a sample. | W02 |
 
+## Fix round
+
+Under `work/handoffs/phase-3/20261113_Board-2-Fix-Brief.md` and the creative director's review (`20261113_CD-Review-Of-Board-2.md`). My items: every word item, B2-M1, B2-M3, B2-M5 (S03 and S08 only under the data lead's ruling), B2-S1, B2-S3, B2-S5, B2-S9, B2-S10 and B2-S11, then one read of the rebuilt board.
+
+**For the data lead (18:23 UTC): fields I wrote in the decisions file in this round.** Please read the file before any write, as before. I leave B2-M3's and B2-S11's words where you wrote them at 18:21 and read them for voice only.
+
+| Item | Field | Before | After |
+|---|---|---|---|
+| B2-S9 | S73 `why` | …both sides reached a similar number of committees: 54 and 56. | …both sides reached a similar number of committees: the Democratic funds 54 and the Republican funds 56. |
+| B2-S10 | DR-258 `why` | …the other 668 needed the three files. | …the other 668 needed Concepts V2 and the Atlas Visual System. |
+| B2-S1 | RL-3 `why`, `recommendation` | The two FEC sidecars already state it…; …keep it as a note in the two FEC sidecars, where it is now. | The notes kept with the two FEC data files already state it…; …keep it as a note with the two FEC data files, where it is now. |
+| B2-S1 | D6 `what_changed` | Nothing has changed since item 8 of the list, on October 21. | Nothing has changed since the V7.1 list of October 21 named it. |
+| B2-S1 | figure 7 `recommendation`, `list_note` | …as list item 36 already asks for its status entry.; Item 36 covers H.R. 7008’s status entry;… | …as the October list already asks for its status entry.; The October list covers H.R. 7008’s status entry;… |
+| B2-S1 | A15 (drug price strings) `answer` | The four are two straight apostrophes, in claims CL1359 and CL1363, straight quote marks… | The four are straight apostrophes in two claims, straight quote marks… |
+
+The claim IDs CL1359 and CL1363 and the list's item numbers 8 and 36 belong in each item's `refs` (or in your B2-S4 line, "On the October list as item N"), which only you write.
+
 ## Words for the cartographer
 
 - **A2 (17:19 UTC):** entry 14.124's `sketch_alt` and the sketch's first `<desc>` both now read "A map that shades Party A’s seven small places red and Party B’s five large places blue, which takes a side at a glance and makes Party B look bigger than its count." I set the `<desc>` myself, one line changed in the file (3,941 bytes), so `phase3_ch14_build.py`'s caption test passes; please don't set it again, and if `sketch_a2.py` reruns from the gray file, give it this sentence. Your key words "Party A, red" and "Party B, blue" stand.

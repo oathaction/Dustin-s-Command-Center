@@ -77,6 +77,9 @@
       }
     ]
   },
+  "typography": {
+    "curl_quotes": true
+  },
   "chart_notes": [
     "Key: documented, on the public record, in the text’s ink; well supported, strong research evidence; plausible, some evidence; contested, evidence disputed, hatched.",
     "A dashed line marks all 433 claims at 74 percent documented. Each row prints its documented share and its number of claims."

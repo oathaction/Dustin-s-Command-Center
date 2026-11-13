@@ -57,6 +57,9 @@
       }
     ]
   },
+  "typography": {
+    "curl_quotes": true
+  },
   "chart_notes": [
     "Threads: Who counts: Who gets to vote, and whose vote counts fully? Who governs: How do votes become seats, nominees and majorities? Who owns: How do rules decide who keeps the gains and who carries the risk? Who checks: Who can see an abuse of power, and who can stop it?",
     "Shaded bands: 1964 to 1978, seven of the 24 picks; 2010 to 2026, eight of the 24 picks."

@@ -37,6 +37,21 @@ The board prints `refs` only in the panel's small reference line, after checking
 - Pictures print in the file's order; a `before` opens a row that the `after` pictures after it join, and `view` pictures sit in rows of their own. S12's seven pictures therefore read: board 1 at 1,440 beside today at 1,440 and 1,024; the two stacked tiles; board 1's phone beside today's.
 - **A suggestion, your call:** `oac-s-14-s12` is the figure inside the scrolling frame, so its photograph is the figure's box (945 px at 1,440) with whatever the frame shows, and it leaves out the line above the map that says the frame scrolls and the frame's scroll bar. `fig-s-14-s12` is the whole plate (heading, the hint line, the frame and its bar), which is what a reader sees at each width. Either works with the builder.
 
+### Fix round additions to the decisions file (18:20 UTC, for the data lead and the editor)
+
+All optional; the build reads them as they land.
+
+- **`replies`** at the top (B2-M1): `[{"n": 1, "item": "S12", "line": "one line: the reply and its recommendation"}, ...]`, the five replies Dustin owes in order. `item` names an item's `id` or a group's `id`; the board prints the five as a numbered list at panel 1's top, each linked to its item or group on the page, then the reply line, and tags the item or group heading "Reply 1" to "Reply 5". Until `replies` lands, panel 1 opens with "Waiting for the five replies".
+- **PICTURE `row`** (B2-M2): pictures with the same `row` value sit side by side in one row, in the file's order, rows in order of first appearance; **`fold`: true** puts a picture in one closed fold at the item's end, headed by the item's `fold_title` or the content file's default. Without `row`, the before and after grouping holds.
+- **PICTURE `element`** may be an id followed by a CSS selector inside it, for a guide photograph of part of an element: `"fig-s-14-s12 .plate-scroll"` photographs the frame alone, as a reader sees it at that window.
+- **PICTURE `alt`** (B2-S3): the words for the picture's alt text, saying what it shows. Without it, the build writes one from the label, the form, the window and the chart's title.
+- **`specs`** on an item that covers two charts (`"specs": ["S54", "S55"]`), so B2-M7 shows both of panel 2's Newsprint pictures. An item with a spec and no pictures of its own shows panel 2's Newsprint picture under its recommendation, linked to the form.
+- **Election table (B2-M6):** an example whose test was not applied takes `"passes": null` (printed "Not applied"); the build fails on a `"passes": false` whose `test` says it was not applied ("not a form", "before the test", "not applied").
+
+### For the engineer (18:21 UTC): the plate measure file (B2-M4)
+
+The builder reads `work/handoffs/phase-3/board-2-pictures/20261113_Plate-Bytes.json` (or the path you name in your notes): `{"build": {"bytes": 11236319, "built": "..."}, "plates": {"S73": {"as_placed": 13263, "frame": 885, "on_page": 14148}, ...}}`, one entry for each of the 84 charts, keyed by spec id. `as_placed` is the build report's figure, `frame` the plate's own frame measured on the page, `on_page` their sum; the board prints `on_page` with the two parts beside it, everywhere one weight shows, and warns where `as_placed` differs from the build report it reads. Until the file lands the board prints the report's bytes as placed and says the frame waits.
+
 ### What the board reads from other owners
 
 - **Cartographer** (`work/handoffs/phase-3/board-2-pictures/`): the S12 stacked tile and today's gray 14.124 sketch, as files the decisions file names under `board-pictures`. An SVG is photographed at true size; an HTML page is photographed whole at the width named.
