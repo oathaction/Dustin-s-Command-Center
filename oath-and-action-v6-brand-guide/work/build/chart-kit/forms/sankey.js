@@ -29,7 +29,7 @@
       var nm = function (r) { var k = String(r[ek]); return ph && short[k] !== undefined ? short[k] : names[k] !== undefined ? names[k] : r[ec]; };
       var rows = c.rows.filter(function (r) { return r[ev] > 0; });
       var links = rows.map(function (r) { var i = String(r[es]) === inv; return { from: i ? String(r[ek]) : NODE, to: i ? NODE : String(r[ek]), value: r[ev], key: String(r[ek]), row: r }; });
-      var fl = P.flows(links, { max_px: L.max_px || (ph ? 300 : 360), open: L.open ? [NODE] : [] });
+      var fl = P.flows(links, { max_px: L.max_px || (ph ? 420 : 440), open: L.open ? [NODE] : [] });
       fl.faults.forEach(function (x) { c.warn(x); });
       var y = 0;
       if (L.key_steps) {
@@ -62,7 +62,7 @@
       var L_ = side(true), R_ = side(false);
       var ins = L_.items.reduce(function (s, it) { return s + it.w; }, 0), outs = R_.items.reduce(function (s, it) { return s + it.w; }, 0);
       var nh = Math.max(ins, outs), ny = top + Math.max(0, (Math.max(L_.bottom, R_.bottom) - top - nh) / 2);
-      ny = Math.min(ny, top + 40);
+      ny = Math.min(ny, top + (ph ? 120 : 80));
       var ink = function (k) { return named.indexOf(k) >= 0 ? 'subject' : track.indexOf(k) >= 0 || groups[k] ? 'track' : 'light-fill'; };
       // bands first, then the node over their ends, then the words
       [[L_, true], [R_, false]].forEach(function (sd) {

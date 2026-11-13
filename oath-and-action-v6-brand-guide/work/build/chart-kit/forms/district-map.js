@@ -57,7 +57,7 @@
         var res = K.parts.map_labels(c, G, T, c.rows.slice().sort(function (a, b) { return G.labels[G.index[id_of(b)]][2] - G.labels[G.index[id_of(a)]][2]; }).map(function (r) {
           var w2 = won[id_of(r)];
           return { id: id_of(r), words: String(+r[ed]), weight: 600, fill: w2 ? 'on-mag-' + w2 : undefined };
-        }), { role: 'tick', inset: 1, column: false, reach: [10, 20, 32] });
+        }), { role: 'tick', inset: 1, column: false, reach: W < 300 ? [10, 20] : [10, 20, 32] });
         res.unplaced.forEach(function (u) { if (unplaced.indexOf(u.words) < 0) unplaced.push(u.words); });
         var bottom = T.y + T.h;
         c.texts.forEach(function (t) { if (t.x >= x0 - 1 && t.x < x0 + pw) bottom = Math.max(bottom, t.y + t.h); });

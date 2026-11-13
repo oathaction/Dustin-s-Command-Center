@@ -34,7 +34,7 @@
         var nw = Math.max(1, nr[ev] * unit), ky = y + Math.max(nw, tk) / 2 + 4;
         c.line(0, ky, 32, ky, { stroke: 'subject', width: nw, mark: false });
         c.key([{ fill: 'subject', pattern: true }]);
-        y = c.text(40, ky + tk * 0.35, String(L.named_words || '{from} and {to}: {v}').split('{from}').join(nr[ef]).split('{to}').join(nr[et]).split('{v}').join(K.fmt(nr[ev], f.value || 'integer')), { role: 'tick', weight: 700, max: W - 40 }).bottom;
+        y = c.text(40, ky + tk * 0.35, String(L.named_words || '{from} and {to}: {v}').split('{from}').join(nr[ef]).split('{to}').join(nr[et]).split('{v}').join(K.fmt(nr[ev], f.value || 'integer')), { role: 'tick', weight: 700, max: W - 40, fill: 'label' }).bottom;
       }
       y += 16;
       var n = order.length, pos = {}, box = function (k) { var p = pos[k]; return { x: p[0], y: p[1], w: 0, h: 0 }; };
