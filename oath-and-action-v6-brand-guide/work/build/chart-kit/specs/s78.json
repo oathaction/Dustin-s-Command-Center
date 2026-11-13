@@ -1,0 +1,96 @@
+{
+ "kit": 1,
+ "id": "S78",
+ "form": "choropleth",
+ "family": "maps",
+ "tier": "core",
+ "dataset": [
+  "census-acs-broadband-by-state",
+  "census-cb-2024-states"
+ ],
+ "sort": [
+  {
+   "field": "code",
+   "order": "asc",
+   "values": [
+    "US"
+   ]
+  },
+  {
+   "field": "name",
+   "order": "asc"
+  }
+ ],
+ "reader_question": "Where do more households have a broadband internet subscription?",
+ "evidence": "finding",
+ "evidence_label": "Finding",
+ "grade_line": "Documented: a Census Bureau survey, with its published margins of error",
+ "title": "Home broadband such as cable, fiber or DSL reached at least 79 percent of households in 10 states and DC in 2025, and under 71 percent in nine states.",
+ "measure_line": "Households with home broadband such as cable, fiber optic or DSL, percent of all households, 2025, 50 states and the District of Columbia, in four classes, with the United States above the map.",
+ "notes": [
+  "Each class spans 4 percentage points, wider than any state’s 90 percent margin of error. Thirteen of the 50 states and the District of Columbia sit close enough to a class line that they could fall in the next class; no state could fall two classes away.",
+  "A cellular data plan alone is not counted here. The table gives each state’s figure with its margin of error.",
+  "Alaska and Hawaii are drawn apart and not to scale. The District of Columbia is drawn as a square beside Maryland."
+ ],
+ "source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B28002, broadband such as cable, fiber optic or DSL, with margins of error from Subject Table S2801, 2025, 50 states and DC; Cartographic Boundary Files, 2024, states. Retrieved November 12 and 13, 2026. Survey estimates; margins of error at 90 percent as the Bureau publishes them in S2801.",
+ "credit": "Chart: Oath & Action",
+ "illustrative": false,
+ "alt": "A map of the United States with each state shaded in one of four classes by the share of households with home broadband such as cable, fiber or DSL in 2025. Ten states and the District of Columbia reach 79 percent or more, most of them in the Northeast, along with Colorado, Utah, Washington and Hawaii; nine states sit under 71 percent, among them Alaska, Mississippi, West Virginia, Montana and New Mexico. The United States stands at 76.6 percent.",
+ "table": {
+  "caption": "Households with home broadband such as cable, fiber optic or DSL, by state, 2025",
+  "columns": [
+   {
+    "field": "name",
+    "label": "Place",
+    "format": "text",
+    "row_header": true
+   },
+   {
+    "field": "broadband_fixed_pct",
+    "label": "Households, percent",
+    "format": "number:1"
+   },
+   {
+    "field": "broadband_fixed_pct_moe_s2801",
+    "label": "Margin of error, points (90%)",
+    "format": "number:1"
+   }
+  ]
+ },
+ "phone": "same",
+ "artboard": "reading",
+ "domain": "D01",
+ "states": [],
+ "encode": {
+  "code": "code",
+  "value": "broadband_fixed_pct",
+  "margin": "broadband_fixed_pct_moe_s2801"
+ },
+ "labels": {
+  "layer": "states",
+  "bins": [
+   71,
+   75,
+   79
+  ],
+  "class_labels": [
+   "Under 71%",
+   "71 to 74.9%",
+   "75 to 78.9%",
+   "79% or more"
+  ],
+  "key_title": "Households with home broadband such as cable, fiber or DSL",
+  "nation": "US",
+  "nation_label": "United States {value}% (±{margin})",
+  "dc": "DC"
+ },
+ "notes_internal": [
+  "Ruling (c): fixed broadband (B28002 line 007) with S2801's published margins; breaks at 71, 75 and 79 percent; classes 9, 11, 20 and 11 places; 13 intervals cross a break (check S78 in cartographer_round3_derive.py --figures).",
+  "Ruling (b): sequential steps 1, 3, 4 and 5; step 1 regions take the 1 px context edge; borders a 1 px line of the ground; codes in the step's label ink; DC a square beside Maryland; the nation beside the map with its name and value (call 4).",
+  "Ruling (a): no named mark; the map answers with its pattern."
+ ],
+ "formats": {
+  "value": "number:1",
+  "margin": "number:1"
+ }
+}
