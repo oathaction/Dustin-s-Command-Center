@@ -47,6 +47,11 @@ CHAPTER_14_STOP = 2_803_941
 CEILING = {"13": 0.25 * MB, "14": CHAPTER_14_STOP, "15": 0.60 * MB}
 HARD_STOP = "14"
 PAGE_BUDGET = 15.5 * MB
+# DR-271 (November 13, 2026): the one fixed limit is the page, one file under 16 MB; past it the build writes no page, in
+# every mode. Every allocation inside the page (chapter ceilings, chapter 14's stop, the chart kit and map geometry parts,
+# the rules' allowance, a chart's tier average) is a figure the build reports as a note; the projection over 15.5 MB stays a
+# warning, the page limit's early warning.
+PAGE_LIMIT = 16 * MB
 # The allocation of each chapter not yet built (proposal section 3): Phase 3's three at their ceilings, Phase 4's seven
 # sharing 2.54 MB, Phase 5's two sharing 0.40 MB
 ALLOCATION = {"13": 0.25 * MB, "14": CHAPTER_14_STOP, "15": 0.60 * MB,
@@ -213,19 +218,25 @@ def kit_bytes(page):
     return sum(len(m.group(0).encode()) for m in KIT_RE.finditer(page))
 
 
-def gates(weights, charts, fonts_file_bytes, present, warn):
-    """The Phase 3 weight gates on a weighed page. Returns (stop message or None, the projection record)."""
+def gates(weights, charts, fonts_file_bytes, present, warn, note=None):
+    """The Phase 3 weight gates on a weighed page. Returns (stop message or None, the projection record). DR-271: the page's
+    16 MB limit stops the build; an allocation past its figure goes to note(where, message), reported and never failing;
+    the projection and the fonts' agreement with their manifest still warn."""
+    note = note or (lambda w, m: None)
     ch = {n: v["bytes"] for n, v in weights["chapters"].items()}
     # R3-2: the page weighs the map geometry apart from the renderer; inside chapter 14's stop they count together
     kit = weights["parts"].get("chart kit", 0) + weights["parts"].get("map geometry", 0)
     for n in ("13", "15"):
         if n in ch and ch[n] > CEILING[n]:
-            warn(f"chapter {n}", f"weighs {ch[n] / MB:.3f} MB, over its Phase 3 ceiling of {CEILING[n] / MB:.2f} MB (proposal section 3)")
+            note(f"chapter {n}", f"weighs {ch[n] / MB:.3f} MB, over its Phase 3 ceiling of {CEILING[n] / MB:.2f} MB (proposal section 3), reported (DR-271)")
     stop = None
+    if weights["bytes"] > PAGE_LIMIT:
+        stop = (f"the page weighs {weights['bytes']:,} bytes, over the one fixed limit of {PAGE_LIMIT:,} (one file under 16 MB, DR-271); "
+                "the build stops in every mode")
     c14 = ch.get("14", 0) + (kit if charts or "14" in ch else 0)
     if c14 > CEILING[HARD_STOP]:
-        stop = (f"chapter 14 with the chart kit weighs {c14:,} bytes ({c14 / MB:.3f} MB), over its hard stop of "
-                f"{CEILING[HARD_STOP]:,.0f} bytes (DR-227, raised by DR-238); the build stops in every mode")
+        note("chapter 14", f"with the chart kit weighs {c14:,} bytes ({c14 / MB:.3f} MB), over its stop of {CEILING[HARD_STOP]:,.0f} bytes "
+                           "(DR-227, raised by DR-238), reported; the studio raises it and logs the raise (DR-271)")
     # the fonts as their own part, against the manifest's files
     fp = weights["parts"].get("fonts", 0)
     if fonts_file_bytes:
@@ -241,8 +252,8 @@ def gates(weights, charts, fonts_file_bytes, present, warn):
         if r["bytes"] > FAR_OVER * avg and cid in BOARD_1_APPROVED and r["bytes"] <= BOARD_1_APPROVED[cid]:
             approved[cid] = {"bytes": r["bytes"], "board_1_bytes": BOARD_1_APPROVED[cid], "tier_average": avg}
         elif r["bytes"] > FAR_OVER * avg:
-            warn(f"chart {cid}", f"weighs {r['bytes']:,} bytes, far over its tier's average of {avg:,} ({FAR_OVER:g} times is {FAR_OVER * avg:,.0f}); "
-                                 "trim the table equivalent or the island, or move rows to a download")
+            note(f"chart {cid}", f"weighs {r['bytes']:,} bytes, far over its tier's average of {avg:,} ({FAR_OVER:g} times is {FAR_OVER * avg:,.0f}), "
+                                 "reported (DR-271)")
     # the projection: today's bytes plus every unbuilt chapter's allocation
     unbuilt = {n: a for n, a in ALLOCATION.items() if n not in present}
     built14 = "14" in present
@@ -263,13 +274,13 @@ def gates(weights, charts, fonts_file_bytes, present, warn):
     if parts14:
         rec["chapter_14_rules"] = {k: parts14.get(k, 0) for k in ("rules_1_to_14", "opener", "plate_css", "rules_and_opener", "allowance")}
         if parts14["rules_and_opener"] > RULES_ALLOWANCE:
-            warn("chapter 14", f"rules 14.1 to 14.14 with the opener weigh {parts14['rules_and_opener']:,} bytes, over their {RULES_ALLOWANCE:,} "
-                               "(0.20 MB and the 12,288 bytes call 4 moved to them)")
+            note("chapter 14", f"rules 14.1 to 14.14 with the opener weigh {parts14['rules_and_opener']:,} bytes, over their {RULES_ALLOWANCE:,} "
+                               "(0.20 MB and the 12,288 bytes call 4 moved to them), reported (DR-271)")
     geo = weights["parts"].get("map geometry") or ((KIT_SIZES or {}).get("geo", 0) if kit else 0)
     if geo:
         rec["map_geometry"] = {"bytes": geo, "allowance": GEOMETRY_ALLOWANCE, "room": GEOMETRY_ALLOWANCE - geo}
         if geo > GEOMETRY_ALLOWANCE:
-            warn("chart kit", f"the shared map geometry (geo.js) weighs {geo:,} bytes, over its {GEOMETRY_ALLOWANCE:,} byte allowance (R3-2)")
+            note("chart kit", f"the shared map geometry (geo.js) weighs {geo:,} bytes, over its {GEOMETRY_ALLOWANCE:,} byte allowance (R3-2), reported (DR-271)")
     share = per_plate(ch.get("14", 0), kit, charts, KIT_SIZES, parts14)
     if share:
         rec["chapter_14_per_plate"] = share
@@ -330,28 +341,33 @@ def self_test():
     bad = 0
 
     def run(weights, charts, fonts, present):
-        got = []
-        stop, rec = gates(weights, charts, fonts, present, lambda w, m: got.append(f"{w}: {m}"))
+        got, noted = [], []
+        stop, rec = gates(weights, charts, fonts, present, lambda w, m: got.append(f"{w}: {m}"), lambda w, m: noted.append(f"{w}: {m}"))
+        run.noted = noted
         return stop, rec, got
 
     base = {"bytes": 9_500_000, "parts": {"chart kit": 100_000, "fonts": int(300_000 * 4 / 3)}, "chapters": {}}
     cases = []
     w = json.loads(json.dumps(base)); w["chapters"]["14"] = {"bytes": int(CEILING["14"]) - 100_000 + 1}
-    cases.append(("chapter 14 one byte over its hard stop", w, {}, 300_000, {"14"}, "stop", None))
+    cases.append(("DR-271: chapter 14 one byte over its stop is reported, never stopped", w, {}, 300_000, {"14"}, "note", "over its stop of 2,803,941"))
     w = json.loads(json.dumps(base)); w["chapters"]["14"] = {"bytes": int(CEILING["14"]) - 100_000}
     cases.append(("chapter 14 exactly at its stop passes", w, {}, 300_000, {"14"}, "no stop", None))
-    cases.append(("a specimen far over its form's average", base, {"s-14-s99": {"tier": "core", "bytes": 3 * 8 * 1024 + 1}}, 300_000, set(), "warn", "far over"))
+    cases.append(("DR-271: a specimen far over its form's average is reported", base, {"s-14-s99": {"tier": "core", "bytes": 3 * 8 * 1024 + 1}}, 300_000, set(), "note", "far over"))
     cases.append(("a specimen just under three times passes", base, {"s-14-s98": {"tier": "core", "bytes": 3 * 8 * 1024}}, 300_000, set(), "none", "far over"))
     w = json.loads(json.dumps(base)); w["bytes"] = int(PAGE_BUDGET - sum(ALLOCATION.values()) + 1 + 100_000)
     cases.append(("a projection over the budget", w, {}, 300_000, set(), "warn", "projected page"))
     w = json.loads(json.dumps(base)); w["chapters"]["13"] = {"bytes": int(CEILING["13"]) + 1}
-    cases.append(("chapter 13 over its ceiling", w, {}, 300_000, {"13"}, "warn", "chapter 13"))
+    cases.append(("DR-271: chapter 13 over its ceiling is reported", w, {}, 300_000, {"13"}, "note", "chapter 13"))
     w = json.loads(json.dumps(base)); w["chapters"]["15"] = {"bytes": int(CEILING["15"]) + 1}
-    cases.append(("chapter 15 over its ceiling", w, {}, 300_000, {"15"}, "warn", "chapter 15"))
+    cases.append(("DR-271: chapter 15 over its ceiling is reported", w, {}, 300_000, {"15"}, "note", "chapter 15"))
+    w = json.loads(json.dumps(base)); w["bytes"] = PAGE_LIMIT + 1
+    cases.append(("DR-271: a page one byte over 16 MB stops", w, {}, 300_000, set(), "stop", None))
+    w = json.loads(json.dumps(base)); w["bytes"] = PAGE_LIMIT
+    cases.append(("DR-271: a page at 16,000,000 bytes is not stopped by the limit", w, {}, 300_000, set(), "no stop", None))
     cases.append(("fonts that disagree with the manifest", base, {}, 200_000, set(), "warn", "fonts part"))
     # board 1 (DR-238): the stop is 2,803,941 bytes, a hard stop at that figure; the old 1.75 MB stop no longer stops
     w = json.loads(json.dumps(base)); w["chapters"]["14"] = {"bytes": 2_803_941 - 100_000 + 1}
-    cases.append(("chapter 14 at 2,803,942 bytes with the kit stops (DR-238)", w, {}, 300_000, {"14"}, "stop", None))
+    cases.append(("DR-271: chapter 14 at 2,803,942 bytes with the kit is reported, never stopped", w, {}, 300_000, {"14"}, "no stop", None))
     w = json.loads(json.dumps(base)); w["chapters"]["14"] = {"bytes": 2_803_941 - 100_000}
     cases.append(("chapter 14 at 2,803,941 bytes with the kit passes", w, {}, 300_000, {"14"}, "no stop", None))
     w = json.loads(json.dumps(base)); w["chapters"]["14"] = {"bytes": 1_750_000 - 100_000 + 1}
@@ -366,6 +382,8 @@ def self_test():
             ok = stop is None
         elif want == "warn":
             ok = any(text in g for g in got)
+        elif want == "note":
+            ok = stop is None and any(text in g for g in run.noted) and not any(text in g for g in got)
         else:
             ok = not any(text in g for g in got)
         print(f"{'pass' if ok else 'FAIL'} {name}")
@@ -383,12 +401,12 @@ def self_test():
     bad += not ok
     # board 1's approved specimens are listed, not failed, up to the bytes board 1 measured; a new one over keeps failing
     _, rec, got = run(base, {"s-14-s05": {"tier": "core", "bytes": 30_524}, "s-14-s99": {"tier": "core", "bytes": 30_524}}, 300_000, set())
-    ok = "s-14-s05" in rec["far_over_approved"] and not any("s-14-s05" in g for g in got) and any("s-14-s99" in g for g in got)
-    print(f"{'pass' if ok else 'FAIL'} S05, approved on board 1, is listed with its bytes; a new specimen as heavy fails")
+    ok = "s-14-s05" in rec["far_over_approved"] and not any("s-14-s05" in g for g in got + run.noted) and any("s-14-s99" in g for g in run.noted)
+    print(f"{'pass' if ok else 'FAIL'} S05, approved on board 1, is listed with its bytes; a new specimen as heavy is reported (DR-271)")
     bad += not ok
     _, rec, got = run(base, {"s-14-s13": {"tier": "core", "bytes": 47_213}}, 300_000, set())
-    ok = any("s-14-s13" in g for g in got) and not rec["far_over_approved"]
-    print(f"{'pass' if ok else 'FAIL'} S13 one byte over its board 1 weight fails again")
+    ok = any("s-14-s13" in g for g in run.noted) and not rec["far_over_approved"]
+    print(f"{'pass' if ok else 'FAIL'} S13 one byte over its board 1 weight is reported again (DR-271)")
     bad += not ok
     # a chapter still being built counts at its allocation in the projection, and at its bytes once past it
     w = json.loads(json.dumps(base)); w["chapters"]["15"] = {"bytes": 200_000}
@@ -425,8 +443,8 @@ def self_test():
     bad += not ok
     w = json.loads(json.dumps(base)); w["chapter_14_parts"] = dict(p14, rules_and_opener=RULES_ALLOWANCE + 1)
     _, rec, got = run(w, {}, 300_000, set())
-    ok = any("over their 212,288" in g for g in got)
-    print(f"{'pass' if ok else 'FAIL'} rules 14.1 to 14.14 with the opener one byte over 212,288 warn")
+    ok = any("over their 212,288" in g for g in run.noted) and not any("212,288" in g for g in got)
+    print(f"{'pass' if ok else 'FAIL'} rules 14.1 to 14.14 with the opener one byte over 212,288 are reported (DR-271)")
     bad += not ok
     pg = ('<section class="chapter" id="data-visualization"><figure class="plate plate--opener" id="fig-s-14-opener"><p>Op</p></figure>'
           '<div class="rule" id="rule-14-1" data-rule="14.1"><p>One</p></div><div class="rule" id="rule-14-24" data-rule="14.24"><p>W</p></div>'
@@ -445,12 +463,12 @@ def self_test():
     # R3-2: the map geometry is weighed apart, against its 250,000 bytes
     KIT_SIZES.clear(); KIT_SIZES.update({"geo": GEOMETRY_ALLOWANCE + 1, "registered": 1, "forms": {"a.js": 1}})
     _, rec, got = run(base, {}, 300_000, set())
-    over = any("shared map geometry" in g for g in got) and rec["map_geometry"]["room"] == -1
+    over = any("shared map geometry" in g for g in run.noted) and rec["map_geometry"]["room"] == -1
     KIT_SIZES.update({"geo": GEOMETRY_ALLOWANCE})
     _, rec, got = run(base, {}, 300_000, set())
-    ok = over and not any("shared map geometry" in g for g in got) and rec["map_geometry"]["bytes"] == 250_000
+    ok = over and not any("shared map geometry" in g for g in got + run.noted) and rec["map_geometry"]["bytes"] == 250_000
     KIT_SIZES.clear()
-    print(f"{'pass' if ok else 'FAIL'} R3-2: map geometry one byte over its 250,000 bytes warns, and at them passes")
+    print(f"{'pass' if ok else 'FAIL'} R3-2: map geometry one byte over its 250,000 bytes is reported (DR-271), and at them nothing")
     bad += not ok
     print("guide_charts self-test: " + ("every planted fault caught" if not bad else f"{bad} failed"))
     return bad

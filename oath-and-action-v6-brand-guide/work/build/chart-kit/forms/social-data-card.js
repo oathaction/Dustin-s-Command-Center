@@ -29,7 +29,8 @@
       var nb = function (w) { return w ? K.wrap(K.typeset(c.spec, w), min, cw, 400, 'reading').length * lh : 0; };
       var note = L.card_note || '', src = L.card_source || c.spec.source_line || '', nh = nb(note), sh = nb(src);
       var fy = H - pad - sh - 24, ny = fy - (note ? nh + 20 : 0), room = ny - (tall ? 32 : 24) - y;
-      var ih = c.inner(pad, y, cw, k, Object.assign({}, L.card_inner || {}, { height: room / k }));
+      // the inner form's lowest words hang about 16 px under the height it fills, so it is given that much less
+      var ih = c.inner(pad, y, cw, k, Object.assign({}, L.card_inner || {}, { height: (room - 18) / k }));
       if (ih > room + 0.5) c.warn('social-data-card: the inner form runs ' + Math.round(ih - room) + ' px past the room the ' + (c.crop ? c.crop.name : '') + ' crop leaves it');
       if (note) c.text(pad, ny + min * 0.93, note, { role: 'label', size: min, fill: 'label', max: cw, leading: lh });
       c.line(pad, fy, W - pad, fy, { stroke: 'gridline', width: 2, mark: false });
