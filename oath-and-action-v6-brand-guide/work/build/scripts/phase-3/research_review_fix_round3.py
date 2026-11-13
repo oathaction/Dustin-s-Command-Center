@@ -6,6 +6,7 @@ Run, with the downloads in folders of their own:
     python3 -I work/build/scripts/phase-3/research_review_fix_round3.py st_s8 --dl <folder with roll285.xml, senate-618.xml>
     python3 -I work/build/scripts/phase-3/research_review_fix_round3.py st_s11 --dl <folder with meta-e6205a51.json, renewals.csv>
     python3 -I work/build/scripts/phase-3/research_review_fix_round3.py st_s2 --dl <any folder; reads only frozen files>
+    python3 -I work/build/scripts/phase-3/research_review_fix_round3.py bc_m1 --dl <folder with the FEC downloads below>
 
 Add --write to write. Each item reads its downloads, checks them against the hashes the sidecars record, asserts every
 frozen field it does not mean to change, and sets values rather than appending, so a rerun writes nothing. It refuses
@@ -20,6 +21,14 @@ to write when a check fails.
   the title, from the metastore record and the file, both read today and equal to the frozen file's hash.
 - st_s2 (ST-S2, S76): fec-house-campaigns-2024-money-in-out nets transfers between a candidate's own committees
   candidate by candidate (the data lead's ruling), so an out line appears; its sidecar gives the remainder by campaign.
+- bc_m1 (BC-M1 with ST-S6, S73): fec-jfc-transfers-2024-all-committees, a new public file (P7-226). Every committee
+  the FEC designates a joint fundraising committee (J) that paid either nominee's principal campaign committee in the
+  2024 cycle (three for Harris, four for Trump), and every committee each paid on line 22 or line 28C, from the same
+  aggregate by recipient and itemized Schedule B reads as RL-3. The two funds fec-jfc-transfers-2024 holds keep its 57
+  rows unchanged (asserted equal to today's aggregate and committee records). Each recipient carries its kind by one
+  rule (nominee campaign, national party committee, state party committee, other committee), stated in the sidecar.
+  dl holds agg-to-<campaign>.json (2), committees-payers.json, agg-<jfc>.json (7), sbr-<jfc>-<recipient>.json for the
+  five new funds' pairs, committees-recipients.json and detail-<recipient>.json (the FEC's Form 1 party type).
 """
 import argparse
 import csv
@@ -68,7 +77,7 @@ def dump_meta(m, end):
 
 
 def put(path, text, write):
-    if path.read_text(encoding='utf-8') == text:
+    if path.exists() and path.read_text(encoding='utf-8') == text:
         return 'unchanged'
     if write:
         path.write_text(text, encoding='utf-8')
@@ -277,8 +286,248 @@ def st_s2(dl, write):
         f'remainder {usd(rem)} ({pct(rem, ins, 3)} percent); individuals {pct(want["individuals"], took, 1)} percent of '
         f'{usd(took)}; {len(nz)} campaigns unbalanced, {big_id} {usd(big)}')
 
+def bc_m1(dl, write):
+    import collections
+    NOM = {'Kamala D. Harris': 'C00703975', 'Donald J. Trump': 'C00828541'}
+    ELECTION = '2024-11-05'
+    payers = {r['committee_id']: r for r in json.loads((dl / 'committees-payers.json').read_text())['results']}
+    funds = {}
+    for nom, camp in NOM.items():
+        agg = json.loads((dl / f'agg-to-{camp}.json').read_text())
+        assert agg['pagination']['count'] == len(agg['results'])
+        js = [a for a in agg['results'] if payers[a['committee_id']]['designation'] == 'J']
+        js.sort(key=lambda a: -a['total'])
+        funds[nom] = [(a['committee_id'], payers[a['committee_id']]['name'], round(a['total'] * 100), a['count']) for a in js]
+    assert [f[0] for f in funds['Kamala D. Harris']] == ['C00744946', 'C00838912', 'C00849281'], funds
+    assert [f[0] for f in funds['Donald J. Trump']] == ['C00873893', 'C00770941', 'C00867937', 'C00855114'], funds
+    cm = {r['committee_id']: r for r in json.loads((dl / 'committees-recipients.json').read_text())['results']}
+    detail = {}
+    for c in cm:
+        d = json.loads((dl / f'detail-{c}.json').read_text())['results'][0]
+        assert d['committee_id'] == c and d['committee_type'] == cm[c]['committee_type']
+        detail[c] = d
 
-ITEMS = {'st_s8': st_s8, 'st_s11': st_s11, 'st_s2': st_s2}
+    def kind(nom, rid):
+        x = detail[rid]
+        if rid == NOM[nom]:
+            return 'nominee campaign'
+        if x['committee_type'] in ('X', 'Y'):
+            pt = x.get('party_type')
+            if pt == 'NAT':
+                return 'national party committee'
+            if pt == 'STA':
+                return 'state party committee'
+            # one party committee's record gives no party type; its own name says state (Missouri)
+            assert pt is None and rid == 'C00008664' and 'STATE COMMITTEE' in x['name'], (rid, x['name'], pt)
+            return 'state party committee'
+        return 'other committee'
+
+    old = read_csv_raw(OUT / 'fec-jfc-transfers-2024.csv')
+    head = old[0]
+    assert len(head) == 16 and len(old) == 58
+    ix = {c: i for i, c in enumerate(head)}
+    new_cols = ['recipient_designation', 'recipient_party_type', 'recipient_kind']
+    out_rows = {}
+    for r in old[1:]:  # the two funds already frozen: rows unchanged, checked against today's reads
+        jfc, rid = r[ix['jfc_id']], r[ix['recipient_id']]
+        a = [x for x in json.loads((dl / f'agg-{jfc}.json').read_text())['results'] if x['recipient_id'] == rid][0]
+        assert round(a['total'] * 100) == round(float(r[ix['amount']]) * 100) and a['count'] == int(r[ix['transactions']]), r
+        assert a['recipient_name'] == r[ix['recipient_name']], (a['recipient_name'], r)
+        x = cm[rid]
+        assert (x['committee_type_full'], x['state'] or '') == (r[ix['recipient_type']], r[ix['recipient_state']]), (x, r)
+        nom = r[ix['nominee']]
+        out_rows.setdefault((nom, jfc), []).append(list(r) + [x['designation_full'], detail[rid].get('party_type_full') or '', kind(nom, rid)])
+    for nom, fl in funds.items():
+        for jfc, jname, to_camp, _ in fl:
+            agg = json.loads((dl / f'agg-{jfc}.json').read_text())
+            assert agg['pagination']['count'] == len(agg['results'])
+            if (nom, jfc) in out_rows:
+                assert len(out_rows[(nom, jfc)]) == len(agg['results']), jfc
+                continue
+            rows = []
+            for a in sorted(agg['results'], key=lambda a: (-a['total'], a['recipient_id'])):
+                rid = a['recipient_id']
+                d = json.loads((dl / f'sbr-{jfc}-{rid}.json').read_text())
+                res = d['results']
+                assert d['pagination']['count'] == len(res) and all(e['memo_code'] is None for e in res), (jfc, rid)
+                assert len({e['transaction_id'] for e in res}) == len(res) and len({e['sub_id'] for e in res}) == len(res)
+                assert all(e['committee_id'] == jfc and e['recipient_committee_id'] == rid for e in res)
+                res.sort(key=lambda e: (e['disbursement_date'], e['transaction_id']))
+                lines = collections.defaultdict(list)
+                for e in res:
+                    lines[e['line_number']].append(e)
+                counted = [ln for ln in ('22', '28C') if ln in lines]
+                assert len(counted) == 1 and set(lines) <= {'22', '28C', '21B'}, (jfc, rid, set(lines))
+                c = lines[counted[0]]
+                amt = sum(round(e['disbursement_amount'] * 100) for e in c)
+                assert amt == round(a['total'] * 100) and len(c) == a['count'], (jfc, rid)
+                before = [e for e in res if e['disbursement_date'][:10] <= ELECTION]
+                pick = before[-1] if before else res[0]
+                assert len({e['recipient_name'] for e in res if e['disbursement_date'] == pick['disbursement_date']}) == 1
+                spans = collections.OrderedDict()
+                for e in res:
+                    s = spans.setdefault(e['recipient_name'], [0, e['disbursement_date'][:10], e['disbursement_date'][:10]])
+                    s[0] += 1
+                    s[2] = e['disbursement_date'][:10]
+                names = '; '.join(f'{k} ({v[0]} {"row" if v[0] == 1 else "rows"}, {v[1]} to {v[2]})' for k, v in spans.items())
+                b = lines.get('21B', [])
+                b_amt = sum(round(e['disbursement_amount'] * 100) for e in b)
+                x = cm[rid]
+                rows.append([nom, jfc, jname, rid, a['recipient_name'], x['committee_type_full'], x['state'] or '',
+                             f'{amt // 100}.{amt % 100:02d}', str(len(c)), '; '.join(sorted(lines)),
+                             'yes' if rid == NOM[nom] else '', pick['recipient_name'], names, counted[0],
+                             f'{b_amt // 100}.{b_amt % 100:02d}', str(len(b)),
+                             x['designation_full'], detail[rid].get('party_type_full') or '', kind(nom, rid)])
+            out_rows[(nom, jfc)] = rows
+    out = [head + new_cols]
+    for nom, fl in funds.items():
+        for jfc, *_ in fl:
+            out.extend(out_rows[(nom, jfc)])
+    body = out[1:]
+    jx = {c: i for i, c in enumerate(out[0])}
+    ids = set(f[0] for fl in funds.values() for f in fl)
+    assert not any(r[jx['recipient_id']] in ids for r in body), 'a fund paid another fund'
+    # each fund's line 22 or 28C row to its nominee's campaign equals what the campaign's aggregate shows it received
+    for nom, fl in funds.items():
+        for jfc, jname, to_camp, n in fl:
+            cr = [r for r in body if r[jx['jfc_id']] == jfc and r[jx['is_nominee_campaign']] == 'yes']
+            assert len(cr) == 1 and round(float(cr[0][jx['amount']]) * 100) == to_camp and int(cr[0][jx['transactions']]) == n, jfc
+            assert cr[0][jx['amount_lines']] == '22'
+
+    # sums by nominee and kind, line 22 only, for the sidecar and the report
+    cents = lambda r: round(float(r[jx['amount']]) * 100)
+    usd = lambda c: f'${c // 100:,}.{c % 100:02d}'
+    summ = {}
+    for nom in NOM:
+        k22 = collections.OrderedDict((k, [0, set()]) for k in ('nominee campaign', 'national party committee', 'state party committee', 'other committee'))
+        refunds = []
+        for r in body:
+            if r[jx['nominee']] != nom:
+                continue
+            if r[jx['amount_lines']] == '28C':
+                refunds.append(r)
+                continue
+            s = k22[r[jx['recipient_kind']]]
+            s[0] += cents(r)
+            s[1].add(r[jx['recipient_id']])
+        summ[nom] = (k22, refunds)
+    hk, hr = summ['Kamala D. Harris']
+    tk, tr = summ['Donald J. Trump']
+    h22, t22 = sum(v[0] for v in hk.values()), sum(v[0] for v in tk.values())
+    hn = len(set().union(*[v[1] for v in hk.values()]))
+    tn = len(set().union(*[v[1] for v in tk.values()]))
+
+    def kinds_words(k):
+        return '; '.join(f'{kk} {usd(v[0])} to {len(v[1])}' for kk, v in k.items())
+
+    name = 'fec-jfc-transfers-2024-all-committees'
+    cp, mp = OUT / f'{name}.csv', OUT / f'{name}.meta.json'
+    old_m, _ = read_meta(OUT / 'fec-jfc-transfers-2024.meta.json')
+    cols = json.loads(json.dumps(old_m['columns']))
+    cols['jfc_id']['description'] = 'FEC committee ID of the joint fundraising committee that paid'
+    cols['jfc_name']['description'] = 'the joint fundraising committee’s name in the FEC’s committee record'
+    cols['recipient_designation'] = {'type': 'category', 'description': (
+        'the recipient committee’s designation in the FEC’s committee record today (for example principal campaign '
+        'committee, leadership PAC, unauthorized)')}
+    cols['recipient_party_type'] = {'type': 'category', 'description': (
+        'for a party committee, the party type its statement of organization (Form 1) gives in the FEC’s committee record: '
+        'NATIONAL or STATE; empty for any other committee, and for one party committee whose record gives none')}
+    cols['recipient_kind'] = {'type': 'category', 'description': (
+        'the receiver’s kind by the rule in the qualification: nominee campaign, national party committee, state party '
+        'committee or other committee')}
+    fund_words = {nom: ', '.join(f'{jn} ({j}, {usd(tc)} to the campaign in {n} {"payment" if n == 1 else "payments"})'
+                                 for j, jn, tc, n in fl) for nom, fl in funds.items()}
+    m = collections.OrderedDict()
+    m['file'] = f'{name}.csv'
+    m['kind'] = 'public'
+    m['publisher'] = 'Federal Election Commission'
+    m['title_or_table'] = ('Schedule B transfers and refunds to other committees of every joint fundraising committee '
+                           'that paid a 2024 major-party nominee’s campaign, aggregated by recipient')
+    m['table_id'] = ('OpenFEC /schedules/schedule_b/by_recipient_id/, /schedules/schedule_b/, /committees/ and '
+                     '/committee/{id}/, 2024 cycle')
+    m['url'] = ['https://api.open.fec.gov/v1/schedules/schedule_b/by_recipient_id/?recipient_id=C00703975&cycle=2024',
+                'https://api.open.fec.gov/v1/schedules/schedule_b/by_recipient_id/?recipient_id=C00828541&cycle=2024',
+                'https://api.open.fec.gov/v1/committees/?committee_id={payer}',
+                'https://api.open.fec.gov/v1/schedules/schedule_b/by_recipient_id/?committee_id={jfc}&cycle=2024',
+                'https://api.open.fec.gov/v1/schedules/schedule_b/?committee_id={jfc}&recipient_committee_id={recipient}&two_year_transaction_period=2024',
+                'https://api.open.fec.gov/v1/committee/{recipient}/']
+    m['observation_period'] = '2023 to 2024 election cycle'
+    m['geography'] = 'United States'
+    m['universe_or_base'] = (
+        'For each 2024 major-party nominee, every committee the FEC designates a joint fundraising committee (designation '
+        'J) that paid the nominee’s principal campaign committee in the 2024 cycle, three for Kamala Harris and four for '
+        'Donald Trump, and every committee each paid on line 22 (transfers) or line 28C (refunds)')
+    m['unit'] = 'dollars; transactions'
+    m['date_retrieved'] = '2026-11-13'
+    m['vintage'] = ('FEC processed filings as the API served them on November 12 and 13, 2026 (the Harris Victory Fund’s '
+                    'and the Trump National Committee JFC’s rows as frozen in fec-jfc-transfers-2024, checked equal on '
+                    'November 13)')
+    m['qualification'] = (
+        'The rule picks the senders: of the 92 committees that paid Harris’s campaign in the cycle, the FEC designates 3 '
+        'joint fundraising committees, and of the 64 that paid Trump’s, 4; a committee that paid a campaign but is not '
+        'designated J stays out for both (for example the Donald J. Trump Republican Nominee Fund 2024, an authorized '
+        'committee). Amounts and transactions are the FEC’s aggregate by recipient for the cycle, which equals, for every '
+        'row, the itemized payments on one line: line 22, transfers to other committees, or line 28C, a refund of a '
+        'committee’s own contribution (amount_lines). Line 21B operating expenditures to the same committees are left out '
+        'of amount and given in line_21b_amount. A joint fundraising committee splits contributions among its '
+        'participants under its agreement, so a transfer is not a gift from the committee’s own funds. Receivers fold '
+        'by kind, read the same way for both nominees: the nominee’s principal campaign committee is the nominee campaign; '
+        'any other committee the FEC lists as a party committee (committee type X or Y) is a national party committee '
+        'where its statement of organization gives the party type NATIONAL (the DNC and the RNC; no party’s House or '
+        'Senate committee appears) and a state party committee where it gives STATE (the parties of states, DC and '
+        'Guam, whatever their names, such as the Oklahoma Leadership Council, the Oklahoma Republican Party’s federal '
+        'committee); the Missouri Republican State Committee-Federal’s record gives no party type and its own name '
+        'makes it a state party committee; every other committee (campaigns of other candidates, leadership PACs, '
+        'other PACs, and the Trump nominee fund) is an other committee. No fund paid another of the seven.')
+    m['columns'] = cols
+    m['printed_source_line'] = (
+        'Source: Federal Election Commission, Schedule B transfers and refunds to other committees (lines 22 and 28C) of '
+        'the seven committees the FEC designates joint fundraising committees that paid Kamala Harris’s or Donald '
+        'Trump’s campaign, 2023 to 2024 cycle, United States. Retrieved November 12 and 13, 2026. Committees named as '
+        'their payer wrote them before the November 5, 2024 election.')
+    m['ledger_row'] = 'P7-226'
+    m['domain'] = 'D03'
+    m['states'] = []
+    m['raw_files_sha256_prefix'] = {'fetch-log.tsv': 'see the download folder; every response logged with its SHA-256'}
+    notes = []
+    for nom in NOM:
+        notes.append(f'{nom}’s joint fundraising committees, by what each sent the campaign: {fund_words[nom]}.')
+    for nom, (k, rf) in summ.items():
+        tot = sum(v[0] for v in k.values())
+        n = len(set().union(*[v[1] for v in k.values()]))
+        notes.append(
+            f'Line 22 for {nom}, all funds together (BC-M1, read by script): {usd(tot)} to {n} committees; by kind, '
+            f'{kinds_words(k)}. Line 28C refunds apart: '
+            + ('; '.join(f'{r[jx["recipient_name_2024_election"]]} {usd(cents(r))} from {r[jx["jfc_name"]]}' for r in rf) or 'none') + '.')
+    per_fund = []
+    for nom, fl in funds.items():
+        for j, jn, *_ in fl:
+            rs = [r for r in body if r[jx['jfc_id']] == j and r[jx['amount_lines']] == '22']
+            per_fund.append(f'{jn} {usd(sum(cents(r) for r in rs))} to {len(rs)}')
+    notes.append('Line 22 by fund: ' + '; '.join(per_fund) + '.')
+    b21 = [r for r in body if r[jx['line_21b_amount']] not in ('', '0.00')]
+    notes.append('Line 21B to committees in the file, not in amount: ' + '; '.join(
+        f'{r[jx["jfc_name"]]} to {r[jx["recipient_name_2024_election"]]}, {usd(round(float(r[jx["line_21b_amount"]]) * 100))} in {r[jx["line_21b_transactions"]]}'
+        for r in b21) + '. Line 21B paid to committees outside the file was read for the Harris Victory Fund and the '
+        'Trump National Committee JFC only (RL-4, in fec-jfc-transfers-2024’s notes), not for the other five.')
+    st = lambda j: sorted(r[jx['recipient_state']] for r in body if r[jx['jfc_id']] == j and r[jx['recipient_kind']] == 'state party committee')
+    fifty = set('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH '
+                'OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY'.split())
+    assert st('C00744946') == sorted(fifty | {'DC'})
+    assert st('C00867937') == sorted((fifty - {'HI', 'VT'}) | {'DC', 'GU'})
+    assert st('C00849281') == ['WI'] and not st('C00838912') and not st('C00873893') and not st('C00770941') and not st('C00855114')
+    notes.append('Trump 47 Committee’s 50 state party committees are those of 48 states, DC and Guam (none for Hawaii or '
+                 'Vermont); the Harris Victory Fund’s 51 are those of the 50 states and DC, and the Harris Baldwin Victory '
+                 'Fund’s one, Wisconsin’s, is among them. The principal campaign committees’ names: see '
+                 'fec-jfc-transfers-2024’s notes (both have since become PACs).')
+    m['notes'] = notes
+    text = dump_meta(m, '')
+    return [(cp, write_csv(out)), (mp, text)], (
+        f'{len(body)} rows; Harris {usd(h22)} on line 22 to {hn}, Trump {usd(t22)} to {tn}; '
+        + ' | '.join(f'{nom}: {kinds_words(k)}' for nom, (k, _) in summ.items()))
+
+
+ITEMS = {'st_s8': st_s8, 'st_s11': st_s11, 'st_s2': st_s2, 'bc_m1': bc_m1}
 
 
 def main():

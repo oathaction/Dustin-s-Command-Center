@@ -66,7 +66,29 @@ function strings(node, out, where) {
 // ---------------------------------------------------------------------------------------------------------------
 // Data
 // ---------------------------------------------------------------------------------------------------------------
+// AX-S6 (round 3 fix pass): the dates a source line's "Retrieved ..." clause names, as YYYY-MM-DD, or null where it has
+// none: "Retrieved November 12 and 13, 2026" gives 2026-11-12 and 2026-11-13; "Retrieved October 30 and November 13,
+// 2026" gives both; a year closes every date before it
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+function retrieved_dates(line) {
+  const m = /\bRetrieved\s+(.*?)(?:\.(?:\s|$)|$)/.exec(String(line || '').replace(/\u00a0/g, ' '));
+  if (!m) return null;
+  const out = [], open = [];
+  let mon = null;
+  for (const tok of m[1].split(/[\s,]+/)) {
+    const mi = MONTHS.indexOf(tok);
+    if (mi >= 0) { mon = mi + 1; continue; }
+    if (/^\d{4}$/.test(tok)) { open.splice(0).forEach(([mo, dd]) => out.push(`${tok}-${String(mo).padStart(2, '0')}-${String(dd).padStart(2, '0')}`)); continue; }
+    if (/^\d{1,2}$/.test(tok) && mon) open.push([mon, +tok]);
+  }
+  return out;
+}
+function long_date(iso) { const [y, mo, d] = String(iso).split('-').map(Number); return `${MONTHS[mo - 1]} ${d}, ${y}`; }
+
 function load_dataset(name, dir) {
+  // AX-S6 (round 3 fix pass): a data folder of one's own (oa-chart.mjs --data DIR) is read first, then work/build/data/,
+  // so a designer's derived file sits beside the frozen files it was derived from without writing into work/build/data/
+  if (dir && path.resolve(dir) !== path.resolve(DATA) && !fs.existsSync(path.join(dir, name + '.meta.json'))) dir = DATA;
   dir = dir || DATA;
   const mp = path.join(dir, name + '.meta.json');
   if (!fs.existsSync(mp)) return { fault: `dataset ${name}: no sidecar ${path.relative(ROOT, mp)}` };
@@ -229,6 +251,15 @@ function check_spec(K, spec, opts) {
         const parts = String(d.meta.publisher).split(';').map(norm);
         const ok = parts.every(p => line.indexOf(p) >= 0 || line.indexOf(p.split(',').slice(-1)[0].trim()) >= 0);
         if (!ok) f.push(`source: the source line does not name ${d.meta.publisher}`);
+      });
+      // AX-S6 (round 3 fix pass): a line written for two or more datasets that says when they were retrieved names each
+      // one's date, as its sidecar's date_retrieved gives it ("Retrieved November 12 and 13, 2026"); an atlas dataset prints
+      // its snapshot instead, and a line with no "Retrieved" (an atlas chart's) is not read
+      const got = retrieved_dates(spec.source_line);
+      if (got !== null) datasets.forEach(d => {
+        const want = d.meta.date_retrieved;
+        if (d.meta.kind === 'v7' || /^v7-/.test(d.file || '') || !/^\d{4}-\d{2}-\d{2}$/.test(String(want || ''))) return;
+        if (got.indexOf(want) < 0) f.push(`source: the source line's retrieval dates (${got.map(long_date).join(', ') || 'none read'}) leave out ${d.file}'s ${long_date(want)} (its sidecar's date_retrieved)`);
       });
     }
   }

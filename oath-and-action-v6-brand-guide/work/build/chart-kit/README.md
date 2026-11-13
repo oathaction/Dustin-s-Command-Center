@@ -27,13 +27,14 @@ R2-C6, and the fix pass's "Contract changes") are in `work/handoffs/phase-3/2026
 |---|---|
 | `kit.js` | The renderer, the code that turns a spec and its rows into a drawing. A page reaches it by one name, `OAChart`, and it carries the shared words |
 | `parts.js` | Drawing parts the forms share (since round 3 also nodes, links, trees and flows, and the map parts with `K.geo`): keys, gridlines, notes, scales, styled fills and tile sizes; the light fill and the red point (`named_fill`); since round 2, an estimate's interval (`interval_of`, `whisker`), a band between two series (`band`), a stack's segments (`stack`, `wide`), the total line and point (`total_line`, `total_ring`), words inside a small area (`fit_label`) and labels beside points that keep clear of each other (`place_labels`); since round 2's fix pass, words set clear of a line (`clear_label`) and a listing's row names and values in one weight (`row_name`, `row_value`). Each part's call is in the comment above it |
-| `forms/*.js` | One file per chart form, 65 files (November 12, 2026, round 2). Each file's header lists the `encode` and `labels` names it reads |
+| `forms/*.js` | One file per chart form, 85 files (November 13, 2026, round 3). Each file's header lists the `encode` and `labels` names it reads |
 | `metrics.js` | Widths of Inter and Inter Tight, so a chart lays out the same way in Node and in every browser |
 | `geo.js` | The map geometry, carried once a page: the studio's state tiles and four layers from the 2024 Census boundary files (states, counties, Michigan's districts, California's counties), projected and simplified at build by `tools/geo_build.py` (round 3). Never edit it by hand |
 | `kit.css` | The figure's style. It uses only `var(--oa-...)` tokens from `tokens.css` |
 | `words.json` | The words every figure prints the same way, such as "Source:". The editor owns them |
 | `checks.js`, `oa-chart.mjs` | The checks and the command |
-| `specs/` | The specs for S01 to S64, the charts in chapter 14. Each one is a starter for its form |
+| `specs/` | The specs for S01 to S84, the charts in chapter 14. Each one is a starter for its form |
+| `tools/` | `geo_build.py` writes `geo.js`; `kit_snapshot.mjs` compares what two copies of the kit draw; `minify.mjs` shrinks the kit for the page |
 
 ## Make a chart from an existing dataset
 
@@ -50,8 +51,11 @@ R2-C6, and the fix pass's "Contract changes") are in `work/handoffs/phase-3/2026
    - `title`, a full sentence in the verb its evidence grade allows (Rule 13.2);
    - `measure_line`, `alt` (the description a screen reader hears), `notes` and `table.caption`;
    - the form's `labels`.
-5. **Leave out `source_line`** to print the sidecar's own line. If you need different words, copy one of the sidecar's
-   `source_line_variants`. If none fits, ask the research lead to add a variant to the sidecar.
+5. **Leave out `source_line`** to print the sidecar's own line, for a chart of one dataset. If you need different words,
+   copy one of the sidecar's `source_line_variants`. If none fits, ask the research lead to add a variant to the sidecar.
+   **A chart of two or more datasets, every map among them, always writes its `source_line`.** It names each dataset's
+   publisher, and where it says "Retrieved", each dataset's date as its sidecar's `date_retrieved` gives it ("Retrieved
+   November 12 and 13, 2026"); the check reads both.
 6. **Run it:**
 
    ```sh
@@ -102,6 +106,21 @@ R2-C6, and the fix pass's "Contract changes") are in `work/handoffs/phase-3/2026
 | `box-plot` | `specs/s51.json` | `step-tracker` | `specs/s62.json` |
 | `line-histogram` | `specs/s52.json` | `status-chips` | `specs/s63.json` |
 | `population-pyramid` | `specs/s53.json` | `bullet-graph` | `specs/s64.json` |
+
+Round 3's forms (diagrams and maps):
+
+| Form | Starter spec | Form | Starter spec |
+|---|---|---|---|
+| `funnel` | `specs/s65.json` | `arc-diagram` | `specs/s75.json` |
+| `process-diagram` | `specs/s66.json` | `sankey` | `specs/s76.json` |
+| `decision-tree` | `specs/s67.json` | `journey-map` | `specs/s77.json` |
+| `who-decides` | `specs/s68.json` | `choropleth` | `specs/s78.json` |
+| `org-chart` | `specs/s69.json` | `locator-map` | `specs/s79.json` |
+| `hierarchy-tree` | `specs/s70.json` | `district-map` | `specs/s80.json` |
+| `comparison-grid` | `specs/s71.json` | `county-choropleth` | `specs/s81.json` |
+| `roll-call-grid` | `specs/s72.json` | `district-tile-map` | `specs/s82.json` |
+| `network-diagram` | `specs/s73.json` | `dot-density-map` | `specs/s83.json` |
+| `adjacency-matrix` | `specs/s74.json` | `small-multiple-maps` | `specs/s84.json` |
 
 ## Estimates with their intervals, stacks, bands and summaries (round 2)
 
@@ -186,9 +205,69 @@ the rest to the table. Words on a step take its label ink: `on-seq-1` to `on-seq
 bar. A chart of thousands of places groups its table: `"table": {"columns": [...], "group": {"by": "state", "columns":
 [{"label": "State", "agg": "key", "state_name": true}, {"label": "Counties", "agg": "count"}, ...]}}`. The page prints one
 row a state; the CSV export lists every row. `by` may list several columns; the aggregates are `key`, `count`, `count_in`,
-`count_eq`, `count_set`, `list` (with `distinct`, `odd` and `with`), `min`, `max`, `median`, `sum`, `first`. The full calls
-are in the round 3 notes. A share held as a fraction prints as a percent with the format `fraction-percent:1`
-(0.9368 as 93.7%).
+`count_eq`, `count_set`, `list` (with `distinct`, `odd` and `with`), `min`, `max`, `median`, `sum`, `first` (the group's
+first row, words or figure). `"sort": "key"` puts the groups in the key's order, and where the key column prints a
+state's name (`state_name: true`) in the order of the names, Alabama before Alaska; `"sort": "name"` orders any grouped
+table by its printed key. The full calls are in the round 3 notes. A share held as a fraction prints as a percent with
+the format `fraction-percent:1` (0.9368 as 93.7%).
+
+## A county map, start to finish (round 3)
+
+This is the whole path for a map of every county, such as S81. Read entry 14.120 and Rule 14.9 in the guide first.
+
+1. **Pick the form and the starter.** A rate or a median by county is `county-choropleth`; copy `specs/s81.json`. A count
+   that matters more than a rate (people, jobs) is `dot-density-map`; copy `specs/s83.json`.
+2. **Name both datasets**, the data file first and the boundary file second:
+   `"dataset": ["census-sahie-county-uninsured-classes", "census-cb-2024-counties"]`. The kit draws the shapes from
+   `geo.js`, never from the boundary file's rows.
+3. **Write the class column with a derive script.** The drawing reads a class from 1 to n (`labels.class_field`, `cls` in
+   S81), so the page carries one small number a county, not its value and margin (about 10,600 bytes less). Copy
+   `work/build/scripts/phase-3/cartographer_round3_derive.py`'s county part: it reads the data file, sets the breaks under
+   Rule 14.9's three tests (each class at least as wide as the widest margin of error, the plus or minus figure; no two
+   places drawn two classes apart within their gap's margin; a note counting the places whose interval reaches another
+   class) and writes the class beside every county's value and margin. It writes a sidecar too: `kind: "derived"`,
+   `derived_from` (the data file, and the boundary file if you name it), `derivation` (the breaks in words), the columns,
+   and a `printed_source_line`.
+4. **Where the derived file goes.** In the studio, the script writes into `work/build/data/` and the research lead runs
+   the data check over it (`python3 -I work/build/scripts/phase-3/data_round0_build.py --check`, which writes nothing).
+   Outside the studio, or before that check, keep the file and its sidecar in a folder of your own and run the kit with
+   `--data FOLDER`: the kit reads each dataset there first and from `work/build/data/` after, so the boundary file is
+   still found.
+
+   ```sh
+   node work/build/chart-kit/oa-chart.mjs build my-map.json --data ~/maps/data
+   ```
+
+5. **Write the source line yourself** (step 5 above): both publishers, both retrieval dates.
+6. **Label the evidence.** A survey's own published estimates with their margins are a Finding (S78, S81). A model's
+   estimates, such as the Census Bureau's Small Area Health Insurance Estimates, are an Estimate under Rule 13.1, as S51
+   prints them: `"evidence": "estimate"`, `"evidence_label": "Estimate"`, and a grade line that names the model.
+7. **Print the national figure** beside the map, never as a region (`labels.nation_text` on `county-choropleth`,
+   `labels.nation` and `nation_label` on `choropleth`). The kit warns where a map form's national figure is not set. If
+   the data file holds no national row, ask the research lead for one, or say in a note why there is none.
+8. **Group the table by state** (the `table.group` paragraph above): the page prints a row a state, and the CSV export
+   lists every county with its value, margin and class. Give the reader's question its answer in the grouped columns
+   (the count in each class, the lowest and highest county). A caption or note that sends a reader to every county's
+   figure writes `{data_file}`: the kit prints the words `words.json` holds for where a chart's full data lives.
+9. **Run the kit, then read the weight line.** `build` prints, for each spec, what it weighs on the guide's page as the
+   guide places an entry (its figure, lean table and compressed data) and about what it weighs with its plate's frame:
+   `weight: 12,664 bytes as the guide places it, about 13,414 with its plate's frame; share per plate 14,106, ceiling
+   15,000`. The share per plate is what each plate still to come may carry (D3-1328's 14,106 for round 3); the strict
+   guide build prints the current figure in its report as "chapter 14's share per plate". A plate from S65 on that passes
+   15,000 with its frame warns. The figure is also in each spec's check file, under `weight`.
+
+## Fix pass keys (round 3)
+
+- `"stage": 1024` draws the desk drawing at that one width wherever the column gives a desk drawing (480 px or more), in
+  a frame that scrolls sideways, with a tab stop and a name while it scrolls; a phone draws the phone form. For a
+  drawing approved at a width no column gives it (S12's arrows).
+- `"words_pass": true` on a table column whose `words` map only some values: the rest print as stored, with no warning.
+- `fc` on a mark sets its forced-colors paint: `"region"` (a map fill with no edge; merged fills take it already),
+  `"muted"` (GrayText with no edge, for a light fill that must stay apart from an outline), `"forced"` (drawn in forced
+  colors only, such as a second edge). A key entry takes `fc` for its swatch and `forced_edge: true` for a second edge.
+- `K.parts.width_key(..., {band: true})` keys band widths in the band's fill with its edges.
+- `K.parts.map_labels` sets a name inside its shape at the label point, or else at the shape's widest run that holds it
+  with 1 px to spare (`spare`), before it sets the name beside.
 
 ## The keys a spec takes
 
@@ -236,11 +315,17 @@ the printed words only; the data keeps its words.
 ## The commands
 
 ```sh
-node work/build/chart-kit/oa-chart.mjs build <ID or spec path>... [--all] [--widths 1440,390] [--grounds newsprint,charcoal] [--no-png]
-node work/build/chart-kit/oa-chart.mjs check <ID or spec path>... [--all]
+node work/build/chart-kit/oa-chart.mjs build <ID or spec path>... [--all] [--widths 1440,390] [--grounds newsprint,charcoal] [--no-png] [--no-sweep] [--out FOLDER] [--data FOLDER]
+node work/build/chart-kit/oa-chart.mjs check <ID or spec path>... [--all] [--data FOLDER]
 node work/build/chart-kit/oa-chart.mjs figure <spec path> --svg DRAWING.svg [--phone-svg PHONE.svg] [--id ID] [--out FILE]
+node work/build/chart-kit/oa-chart.mjs fragments --in LIST.json --out OUT.json
 node work/build/chart-kit/oa-chart.mjs self-test
 ```
+
+`--data FOLDER` reads each dataset's file and sidecar from that folder first, then from `work/build/data/`. `fragments` is
+the guide build's own call (`guide_build.py` runs it); you never need it to make a chart. Each `build` prints a PASS or
+FAIL line for every spec, its faults, its warnings (`~ warning:`, which do not fail it) and its weight line; read the
+whole output and count the check files, since a passing last line can follow an earlier failure.
 
 `figure` sets a drawing made outside the kit, until a kit form draws it, inside the kit's figure: the title, measure
 line, notes, source line, credit and table come from the spec, and the drawing follows the sketch rules (the class
@@ -298,6 +383,14 @@ editing an export. Embedding the fonts in each export waits for Phase 5's packag
 - **`data: a bar reads "Total"`**: a chart of the parts leaves the total out with `where` and `not`.
 - **`source: the source line names ..., but the chart draws ...`**: print a line for the years drawn: a variant, or a
   template named by `source_line_template`. If the sidecar has neither, ask the research lead.
+- **`source: the source line's retrieval dates ... leave out ...`**: a line written for two or more datasets names each
+  one's retrieval date as its sidecar gives it.
+- **`dataset ...: no sidecar ...`**: the kit looks in `work/build/data/`, and first in the folder `--data` names.
+- **`table: the column "..." prints nothing in any of its rows`**: the column's field or aggregate gives no words for
+  any row; check its `field` and `agg`.
+- **`~ warning: table: the column "..." has words and prints ... stored values they do not map`**: add the missing
+  values to `words`, or set `"words_pass": true` where the stored value is meant to print.
+- **`~ warning: map: the form prints a national figure ...`**: set the form's national label (step 7 of the county map).
 - **`chart: a line (baseline) drawn outside its drawing`**: a shape the form draws lies outside the drawing's box, where it
   would paint over the figure's words. A zero line draws only where the scale holds zero; for anything else, tell the
   engineer.

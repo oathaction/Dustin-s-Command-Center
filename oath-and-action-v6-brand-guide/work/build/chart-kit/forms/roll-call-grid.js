@@ -39,11 +39,13 @@
         if (kind === 'yes') c.rect(x, y, u, u, { fill: 'party', data: d });
         else if (kind === 'no') c.rect(x + 0.6, y + 0.6, u - 1.2, u - 1.2, { stroke: 'party', width: 1.2, data: d });
         else if (kind === 'vacant') c.rect(x + 0.5, y + 0.5, u - 1, u - 1, { stroke: 'ghost', width: 1, data: d });
-        else c.rect(x, y, u, u, { fill: 'light-fill', data: d });
+        // AX-S1 (round 3 fix pass): in forced colors "did not vote" fills with GrayText and no edge, so it stays apart
+        // from "no", the only CanvasText outline
+        else c.rect(x, y, u, u, { fill: 'light-fill', fc: 'muted', data: d });
       };
       var kind_of = function (v) { var i = votes.indexOf(String(v)); return i === 0 ? 'yes' : i === 1 ? 'no' : 'not'; };
       // the key, once, over both panels
-      var kh = K.parts.key(c, [{ label: KY.yes || 'Yes', fill: 'party' }, { label: KY.no || 'No', stroke: 'party' }, { label: KY.not || 'Not voting', fill: 'light-fill' }, { label: KY.vacant || 'Vacant', stroke: 'ghost' }], 0, size * 0.93, W);
+      var kh = K.parts.key(c, [{ label: KY.yes || 'Yes', fill: 'party' }, { label: KY.no || 'No', stroke: 'party' }, { label: KY.not || 'Not voting', fill: 'light-fill', fc: 'muted' }, { label: KY.vacant || 'Vacant', stroke: 'ghost' }], 0, size * 0.93, W);
       var y = kh + 10;
       (L.chambers || []).forEach(function (ch, ci) {
         var rows = c.rows.filter(function (r) { return String(r[E.chamber]) === String(ch); });

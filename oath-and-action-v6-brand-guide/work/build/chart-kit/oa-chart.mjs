@@ -5,6 +5,8 @@
 //   node work/build/chart-kit/oa-chart.mjs build <ID|spec path>... [--all] [--widths 1440,390] [--grounds newsprint,charcoal]
 //                                          [--out DIR] [--no-png] [--date YYYYMMDD] [--specs DIR]
 //   node work/build/chart-kit/oa-chart.mjs check <ID|spec path>... [--all]
+//   build and check take --data DIR: a folder of data files and sidecars read before work/build/data/ (AX-S6), for a
+//   derived file kept outside the repository
 //   build and check also draw every whole width from 256 px (224 for a rule plate) to the widest the guide gives the chart
 //   (720 px for a reading chart, 869 for a wide one) on Newsprint, the sweep (AX S1, N1); --no-sweep leaves it out
 //   node work/build/chart-kit/oa-chart.mjs fragments --in LIST.json --out OUT.json     (guide_build.py's hook)
@@ -66,6 +68,7 @@ function args(argv) {
     else if (a === '--png') o.png = true;
     else if (a === '--date') o.date = argv[++i];
     else if (a === '--specs') o.specs = path.resolve(argv[++i]);
+    else if (a === '--data') o.data_dir = path.resolve(argv[++i]);   // AX-S6: read before work/build/data/
     else if (a === '--in') o.in = argv[++i];
     else if (a === '--svg') o.svg = argv[++i];
     else if (a === '--phone-svg') o.phone_svg = argv[++i];
@@ -177,6 +180,13 @@ export function run_spec(spec, o) {
   try { chk = C.check_spec(K, spec, o); } catch (e) { res.faults.push('spec: ' + e.message); return res; }
   res.faults.push(...chk.faults);
   res.warnings.push(...(chk.warnings || []));
+  // AX-S6 (round 3 fix pass): a map form that sets a national figure beside the map (a labels key that starts "nation")
+  // warns where the spec sets none, since entries 14.115 to 14.120 ask for it
+  const fdef = K.forms[spec.form];
+  if (fdef && fdef.family === 'maps') {
+    const nl = (fdef.labels || []).filter(l => /^nation/.test(l));
+    if (nl.length && !nl.some(l => (spec.labels || {})[l] !== undefined)) res.warnings.push(`map: the form prints a national figure beside the map (labels.${nl.join(' or labels.')}) and this spec sets none; entries 14.115 to 14.120 ask for it: print it, or say in a note why the data holds no national row and ask the research lead for one (AX-S6)`);
+  }
   // C-M2 (round 3 fix pass): a stage is one desk width, from the phone's limit to the artboard
   if (spec.stage !== undefined) {
     const art = K.artboard(spec, K.token_reader(TOK.newsprint));
@@ -505,11 +515,15 @@ async function build(o, check_only) {
     }
   }
   for (const { spec, res } of items) {
+    let wt = null;
+    try { wt = plate_weight(spec, res); } catch (e) { res.warnings.push('weight: not measured: ' + e.message); }
+    if (wt && wt.with_frame > wt.ceiling && +String(spec.id).replace(/^S/i, '') >= 65) res.warnings.push(`weight: about ${wt.with_frame.toLocaleString('en-US')} bytes on the page with its frame, past ${wt.ceiling.toLocaleString('en-US')}; no plate from round 3 on (S65 and later) goes past it (D3-1328)`);
     const summary = { id: spec.id, form: spec.form, spec: path.relative(ROOT, res.spec_path), rows: res.rows ? res.rows.length : 0,
-      drawings: res.drawings.map(d => ({ ground: d.ground, page: d.page, width: d.width, height: d.height, svg_bytes: d.bytes })), faults: res.faults, warnings: res.warnings };
+      drawings: res.drawings.map(d => ({ ground: d.ground, page: d.page, width: d.width, height: d.height, svg_bytes: d.bytes })), faults: res.faults, warnings: res.warnings, weight: wt };
     if (!check_only) fs.writeFileSync(path.join(o.out, spec.id.toLowerCase(), `${spec.id.toLowerCase()}-check.json`), JSON.stringify(summary, null, 1));
     console.log(`${res.faults.length ? 'FAIL' : 'PASS'} ${spec.id} ${spec.form}: ${summary.rows} rows, ${res.drawings.length} drawings, ${res.faults.length} faults`);
     res.faults.slice(0, 40).forEach(f => console.log('  - ' + f));
+    if (wt) console.log(`  weight: ${wt.figure.toLocaleString('en-US')} bytes as the guide places it, about ${wt.with_frame.toLocaleString('en-US')} with its plate's frame; share per plate ${wt.share.toLocaleString('en-US')}, ceiling ${wt.ceiling.toLocaleString('en-US')}`);
     // AX-M2 (round 3 fix pass): a warning prints and is written to the check file; it does not fail the spec
     (res.warnings || []).forEach(x => console.log('  ~ warning: ' + x));
     if (res.faults.length) bad++;
@@ -517,6 +531,20 @@ async function build(o, check_only) {
   // say where the files went, so a reader who does not code can find them (editor's read, K7)
   if (!check_only) console.log(`wrote: ${o.out}, one folder per spec (its pages, SVG, PNG and CSV exports, captures and check file)`);
   return bad ? 1 : 0;
+}
+
+// AX-S6 (round 3 fix pass): what a spec weighs on the guide's page, measured as guide_build.py's load-table method
+// places an entry (the figure with its lean table and its compressed island), with a plate's frame added; the share per
+// plate is D3-1328's for round 3's plates, and the guide's strict build prints the current share in its report
+// ("chapter 14's share per plate")
+export const PLATE_FRAME = 750, PLATE_SHARE = 14106, PLATE_CEILING = 15000;
+export function plate_weight(spec, res) {
+  if (!res.rows || !res.rows.length || !K.forms[spec.form]) return null;
+  const columns = res.datasets && res.datasets.length ? res.datasets[0].meta.columns : (spec.data || {}).columns || {};
+  let html = K.figure(spec, res.rows, { id: 'oac-' + String(spec.id).toLowerCase(), lean_table: true, types: columns, guide: true });
+  html = html.slice(0, html.lastIndexOf('</figure>')) + island_table(spec, res.rows, columns, extra_island(res)) + '</figure>';
+  const fig = Buffer.byteLength(html);
+  return { figure: fig, with_frame: fig + PLATE_FRAME, share: PLATE_SHARE, ceiling: PLATE_CEILING };
 }
 
 export const GUIDE_NOTE_FAULTS = [/^layout: a /, /^chart: Pillar Red covers /];

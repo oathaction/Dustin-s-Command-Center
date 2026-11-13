@@ -35,7 +35,7 @@
  "source_line": "Source: U.S. Census Bureau, American Community Survey 1-year estimates, Table B28002, broadband such as cable, fiber optic or DSL, with margins of error from Subject Table S2801, 2025, 50 states and DC; Cartographic Boundary Files, 2024, states. Retrieved November 12 and 13, 2026. Survey estimates; margins of error at 90 percent as the Bureau publishes them in S2801.",
  "credit": "Chart: Oath & Action",
  "illustrative": false,
- "alt": "A map of the United States with each state shaded in one of four classes by the share of households with home broadband such as cable, fiber or DSL in 2025. Ten states and the District of Columbia sit in the top class, 79 percent or more, and eight of them stay in it even at the low end of the survey’s margin of error: Connecticut, Hawaii, Maryland, Massachusetts, New Hampshire, New Jersey, Utah and Washington. Nine states sit under 71 percent, among them Alaska, Mississippi, West Virginia, Montana and New Mexico, each under it across its margin of error. The United States stands at 76.6 percent.",
+ "alt": "A map of the United States, or on a phone a grid of one square for each state, with each state shaded in one of four classes by the share of households with home broadband such as cable, fiber or DSL in 2025. Ten states and the District of Columbia sit in the top class, 79 percent or more, and eight of them stay in it even at the low end of the survey’s margin of error: Connecticut, Hawaii, Maryland, Massachusetts, New Hampshire, New Jersey, Utah and Washington. Nine states sit under 71 percent, among them Alaska, Mississippi, West Virginia, Montana and New Mexico, each under it across its margin of error. The United States stands at 76.6 percent.",
  "table": {
   "caption": "Households with home broadband such as cable, fiber optic or DSL, by state, 2025",
   "columns": [
@@ -57,7 +57,8 @@
    }
   ]
  },
- "phone": "same",
+ "phone": "differs",
+ "phone_note": "On phones each state and the District of Columbia is one square on a grid, in the same four classes, so every state keeps its code.",
  "artboard": "reading",
  "domain": "D01",
  "states": [],
@@ -82,13 +83,17 @@
   "key_title": "Households with home broadband such as cable, fiber or DSL",
   "nation": "US",
   "nation_label": "United States {value}% (±{margin})",
-  "dc": "DC"
+  "dc": "DC",
+  "phone_tiles": true,
+  "code_column": true,
+  "tiles_under": 520
  },
  "notes_internal": [
   "Ruling (c), with ST-S12 (review fix pass): fixed broadband (B28002 line 007) with S2801's published margins; breaks at 71, 75 and 79 percent; classes 9, 11, 20 and 11 places. Crossings count on the printed figures, one decimal half up (D3-1106's rule): a place crosses where its printed interval reaches a value in another class, an interval ending exactly on a break reaching the class that begins there; 11 states and DC (AR, CA, CO, DC, DE, KS, ND, NE, OK, VT, WI, WY); rounding moves no state's class. ST-S5: the alt names a state in a class only where its printed interval sits inside it (CT, HI, MD, MA, NH, NJ, UT, WA at 79 or more; AK, MS, WV, MT, NM under 71). Check S78 in cartographer_round3_derive.py --figures.",
   "Ruling (b): sequential steps 1, 3, 4 and 5; step 1 regions take the 1 px context edge; borders a 1 px line of the ground; codes in the step's label ink; DC a square beside Maryland; the nation beside the map with its name and value (call 4).",
   "Ruling (a): no named mark; the map answers with its pattern.",
-  "C-S3 (review fix pass): the title names the survey as the source of its class counts and stays a Finding (the data lead's ruling)."
+  "C-S3 (review fix pass): the title names the survey as the source of its class counts and stays a Finding (the data lead's ruling).",
+  "C-M1 (review fix pass, the data lead's ruling and call 7): the engineer's map_labels at the widest interior point still left 19 states uncoded at 358 px (the engineer's measure), more than six, so under 480 px S78 draws the studio's tile grid (S07's), phone: differs, with the same classes, steps, step-1 edges, key and national figure, every state's and DC's code on its tile in its step's label ink with 1 px to spare each side; a code with no room is named in the kit's note. At a desk the map fits 44 px narrower and the northeastern codes, West Virginia's and DC's square take a column on the ocean on leaders (labels.code_column), so every state and DC carries its code from 520 px; from 480 to 519 px, a width only zoom gives, the tile grid draws too (labels.tiles_under), since there West Virginia's leader finds no free row."
  ],
  "formats": {
   "value": "number:1",

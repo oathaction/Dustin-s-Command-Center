@@ -113,5 +113,9 @@
     "Data: usgov-v7-route-grid, derived by work/build/scripts/phase-3/maker_a_round3_derive.py from v7-routes (names, who acts, the count) and usgov-route-requirements (what each route takes, how it is undone, the texts and their address), with each route's reading date from the workflow sources file (R2-2; the research lead's data check).",
     "Data lead ruling (b): words in the text's ink on the ground, rules between rows in the gridline ink; the count as one series of bars in the subject ink with each value printed; no fills by category.",
     "Every figure in the title, notes and alt checked by script: python3 -I work/build/scripts/phase-3/maker_a_round3_derive.py --figures, check S71."
-  ]
+  ],
+  "desk_phone": {
+    "rows": 3,
+    "part": "the first three routes; a phone draws all eleven"
+  }
 }

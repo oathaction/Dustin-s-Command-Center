@@ -150,18 +150,35 @@ In progress. Order: items no ruling touches first (SK-S1, B-S5, B-S2, AX-S1's S7
 
 | Item | Status |
 |---|---|
-| SK-S1 | Done: sketch 14.94's words held 10 px inside the frame, “Start” set at the plot's left edge, clear of the value column; frame 320 by 236 |
-| B-S5 | to do |
-| B-S2 | to do |
-| AX-S1 (S74) | to do |
-| ST-S6 | to do |
-| ST-S2, AX-S8 (S76) | to do |
-| ST-M1, AX-M1 (S73 rebuild) | Done after the engineer's fix: rebuilt, PASS; the page table read with scripts on and off names the fund in all seven rows, the refunds print “28C, refund”; “From” takes `words` so each fund reads as the drawing and title name it |
-| ST-S11 (S65) | Done: `source_line` is the sidecar's `with_release` variant, copied exactly; rebuilt, PASS |
-| B-S1 (S73) | waits on the data lead's CD ruling |
-| B-S3 (S77) | waits on the data lead's CD ruling |
+| ST-M1, AX-M1, BC-M2 (S73's table) | Done after the engineer's fix: the page table, read with scripts on and off, names the fund in all seven rows and prints “28C, refund” on both refunds; “From” takes `words` so each fund reads as the drawing and title name it |
+| ST-S11 (S65) | Done: `source_line` is the sidecar's `with_release` variant, copied exactly |
+| SK-S1 (sketch 14.94) | Done: every word 10 px or more inside the frame (by `getBBox`), “Start” set from the plot's left edge, clear of the value column; frame 320 by 236 |
+| B-S5 (entry 14.109) | Done: a one-way tie shows its way with an arrowhead as on a flow map (Rule 14.113), or senders apart from receivers as a network diagram sets them (Rule 14.104); 14.113 added to related |
+| B-S1, BC-S2 (S73's mass) | Done: bars solid in the party-mark ink, links in the light fill with a 1 px party-ink edge, and the key's widths drawn as the links are (`width_key` `band`, after RB3F-G1) |
+| BC-S2 (S76's key) | Done: the key band draws in the light fill with the context edge, as the bands do |
+| B-S2 (S73's note 3) | Done: split in two, the state parties apart from the report lines; the download sentence kept as written (D3-1321) |
+| ST-S6 (S73's note 2) | Done: the agreement that formed a fund sets how many committees it pays |
+| BC-M1 (S73's title, data, entry 14.104) | Part done: the title compares no reach ($899.4 million and $273.8 million, no committee counts). Waits on the research lead's file of all seven committees; then derive, draw, entry 14.104, and the title to the editor |
+| ST-S2, AX-S8 (S76) | Done on the research lead's per-candidate file: the out line for transfers drawn and named; note 2 gives the 297 campaigns and one campaign's share, 0.058 percent, no cause; note 3's last sentence says how transfers count, in place of “nets transfers”; note 1 glosses the node; the alt names the transfers out; the title's 61 percent holds (60.9 by script); entry 14.110 glosses a Sankey diagram and a node |
+| BC-S9 (S65) | Done: the title names the states in both clauses; note 1 says a procedural ending records no decision on eligibility and the record does not count how many still qualified, in CMS's two terms, with no cause |
+| B-S3 (S77) | Done: each limit on its own line under the step's name, in the text's ink at the label size, who acts under it in the tick size; entry 14.112 follows |
+| BC-S13 (S77) | Done: note 1 drops “and some miss the limits” |
+| BC-S14 (S74) | Done: a 1 px gridline-ink line along the diagonal, broken round each count, keyed “Within one region”; a chart note names it; entry 14.105 says when to draw it |
+| AX-S1 (S74) | Done: each authority cell's second 1 px edge 2 px inside its first for forced colors only, the key entry with `forced_edge`; looked at in forced colors, light and dark, at 1440 and 256 px |
+| BC-S12 (my titles and notes) | Done: figures hold to their units (S65, S73, S76, S77 titles; S77's limits) and bill numbers to their prefix (S75) with no-break spaces |
+| B-S4 (S77's date) | The editor's, under D3-1327; S77's source line is the derived sidecar's, which my derive script copies from the research lead's steps sidecar |
 
 ### Routine calls, review fix pass
+- D3-xxx | Entry 14.109 sends a one-way tie to Rule 14.113's arrowhead or to Rule 14.104's senders set apart from receivers | B-S5: S73 draws no arrowhead; its direction reads from sender to receiver by position
+- D3-xxx | `network-diagram` draws its links in the light fill with a 1 px edge in the bars' ink and its key's widths the same way | B-S1, BC-S2 under the data lead's ruling: the links read apart from the bars they join, and a key looks like what it measures
+- D3-xxx | `sankey` draws its key band in the light fill with the context edge, the ink most of its bands take | BC-S2: the key drew in the context ink, which no band takes
+- D3-xxx | S76 names its new out line “Transfers to the candidates’ other committees, net” (“Transfers, net” under 480 px), and note 3 says a campaign that took in more adds to the left band and one that sent more to the right | ST-S2 and AX-S8: the reader stopped at “nets transfers”
+- D3-xxx | S76's note 1 and entry 14.110 gloss the node as the bar where every band meets, and the entry glosses a Sankey diagram | AX-S8 (H02)
+- D3-xxx | `journey-map` sets each box's name, then its limit in the label size and the text's ink, then who acts in the tick size, laid out in the form (the node part holds a name and one tick-size block) | B-S3 under the data lead's ruling
+- D3-xxx | S74 marks its diagonal with a gridline-ink line broken round each count's box, the lighter of the data lead's two marks | BC-S14: the frame inside each diagonal cell ran through the counts at 256 px (6 guard faults); the line passes the sweep and reads at 1440 and 256 px
+- D3-xxx | S74's authority counts sit on a knockout of the ground with no gap, so the forced-colors second edge stops at the count | AX-S1: the cell's fill is the ground, so the knockout does not show in normal colors; with no knockout the second edge ran through the counts at 256 to 300 px
+- D3-xxx | S73's interim title gives each fund's dollars and no count of committees | BC-M1 under the data lead's ruling, until every committee of both nominees is drawn
+- D3-xxx | Figures and units, and bill numbers and their prefix, hold together with no-break spaces in my titles, notes and S77's limits; the figure checks read a no-break space as a space | BC-S12
 
 - D3-xxx | Sketch 14.94 frames at 320 by 236 px, its value labels end 12 px left of the plot and “Start” sits at the plot's left edge, set from its start | SK-S1 and D3-966: every word 10 px inside the frame; a left-set “Start” aligns with the lines' start and reads as the time axis, apart from the value column
 - D3-xxx | S73's table prints each fund as the drawing names it (“Harris Victory Fund”, “Trump National Committee JFC”), through the From column's `words`; the CSV keeps the FEC's stored names | ST-M1's reason: the table names both funds the way the drawing does, and the drawing and title print `labels.sources`' words

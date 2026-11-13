@@ -222,14 +222,20 @@ To others:
 
 ## Review fix pass
 
-November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Engineer" paragraph, calls D3-1320, D3-1324 to D3-1326 and D3-1328) and the data lead's rulings under "Review fix pass" in `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC (clock read). Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/`, with a frozen copy of the kit and the 84 specs as they stood at the start in `base/` for snapshots.
+November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (the "Engineer" paragraph, calls D3-1320, D3-1324 to D3-1326 and D3-1328, and the addendum's BC items) and the data lead's rulings under "Review fix pass" in `work/handoffs/phase-3/20261113_Round-3-Data-Lead-Notes.md`. Started 04:34 UTC (clock read); this section last brought up to date at 04:52 UTC. Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c39ddae-7cec-55d0-9e8a-b2e47330229b/scratchpad/phase-3/round-3-fix/engineer/`, with a frozen copy of the kit and the 84 specs as they stood at the start in `base/` for snapshots.
 
 ### Summary
 
-- **ST-M1, AX-M1 LANDED (04:38 UTC):** `K.group_cell`'s `first` runs above the numeric guard and prints the group's first row through `K.cell_text` whatever its type. S73's "From" names the fund in all seven rows and both refunds print "28C, refund". Told the main session for maker B.
-- **ST-S9, AX-S4, C-S4 LANDED (04:38 UTC):** `table.group.sort` takes `name` (the key column's printed words), and `key` sorts by the printed name where the key column sets `state_name`. S81, S82 and S83 now run Alabama, Alaska, Arizona, Arkansas with no spec change.
-- **AX-M1's check LANDED:** a printed column empty in every row fails, in the spec check (`check`, `build`, the sweep and the guide build) and in the page check (read from the page's own table).
-- **AX-M2's warning LANDED:** a column with `words` that prints a stored value its words do not map warns (it does not fail); `"words_pass": true` on the column silences it. S68 warns until maker A maps 3, 4, 7 and 8.
+- **ST-M1, AX-M1, BC-M2 (kit) LANDED (04:38):** `K.group_cell`'s `first` runs above the numeric guard and prints the group's first row through `K.cell_text` whatever its type. S73's "From" names the fund in all seven rows and both refunds print "28C, refund". Told the main session for maker B.
+- **ST-S9, AX-S4, C-S4 LANDED (04:38):** `table.group.sort` takes `name`, and `key` sorts by the printed name where the key column sets `state_name`. S81, S82 and S83 run Alabama, Alaska, Arizona, Arkansas with no spec change.
+- **AX-M1's check LANDED:** a printed column empty in every row fails, in the spec check and in the page check. **AX-M2's warning LANDED:** a `words` column printing a stored value its words do not map warns; `"words_pass": true` silences it.
+- **Call 7, C-M1 (kit side) LANDED (04:45):** `map_labels` sets a name at the shape's widest interior point where the label point has no room. Told the main session for the cartographer, with S78's count (below).
+- **BC-S2 kit side and RB3F-G1 LANDED:** `width_key` takes `band` (the band's fill with its two edges), and its steps read as widths of one ink in the key check. Told the main session for maker B.
+- **Call 6, C-M2 (kit side) LANDED:** a spec key `stage` draws the desk drawing at one fixed width in a frame that scrolls sideways. S12's arrows need 72 px tiles, which a drawing gives only from 930 px, so the wide chart's 869 px cannot show them; `"stage": 1024` (board 1's width) does. Told the main session for the cartographer.
+- **AX-S1 kit side LANDED:** forced-colors classes `region` (a merged map fill, no edge), `muted` (GrayText, no edge) and `forced` (a mark drawn in forced colors only), and the key's `fc` and `forced_edge`. S81 and S83 take `region` with no spec change; S72 and S74 need their makers' one-line changes. Told the main session.
+- **Found and fixed in passing:** the page's island did not carry a spec's `typography`, so S81's new no-break spaces drew in Node and not on the page (a parity fault). The island now carries it.
+- **AX-S2's accessible name LANDED:** `guide_build.py` gives a sketch title named together with its desc a closing period.
+- **AX-S6 code LANDED:** `--data DIR`; a weight line in `build`'s output; the retrieval dates of a source line written for two or more datasets; a warning where a map form's national figure is not set. The README's round 3 section is next.
 
 (More items follow as they land.)
 
@@ -237,29 +243,67 @@ November 13, 2026, under `work/handoffs/phase-3/20261113_Round-3-Fix-Brief.md` (
 
 | Code | What changed | Where |
 |---|---|---|
-| ST-M1, AX-M1 | `first` prints text; specs using it on a grouped table: S69 (numbers, unchanged) and S73 (text, now printed) | `kit.js` `K.group_cell` |
+| ST-M1, AX-M1, BC-M2 | `first` prints text; specs using it on a grouped table: S69 (numbers, unchanged) and S73 (text, now printed) | `kit.js` `K.group_cell` |
 | ST-S9, AX-S4, C-S4 | `sort: "name"`, and `sort: "key"` by name where `state_name` | `kit.js` `K.table_groups` |
 | AX-M1 (check) | empty printed column fails | `checks.js` `check_spec`; `oa-chart.mjs` page check |
 | AX-M2 (check) | unmapped `words` value warns; `words_pass` | `checks.js`; `oa-chart.mjs` prints warnings and writes them to the check file |
+| C-M1, call 7, BC-S5 (kit) | widest interior point in `map_labels` (`o.spare`, `o.widest`); `P.widest_spots` | `parts.js` |
+| BC-S2, RB3F-G1 | `width_key` `band`, `edge`; band steps keyed as widths | `parts.js` |
+| C-M2, call 6 | `spec.stage`; `K.draw_width`; the staged frame's tab stop and name; Node drawings, guide columns and sweep at the stage | `kit.js`, `kit.css`, `oa-chart.mjs`, `words.json` (`stage_scroll`) |
+| AX-S1 | `fc` `region`, `muted`, `forced`; merged map fills take `region`; key swatches carry `fc`, `forced_edge`; forced-only marks leave SVG exports | `kit.js`, `parts.js`, `kit.css`, `oa-chart.mjs` |
+| AX-S2 | a sketch title named with its desc ends with a period | `guide_build.py` `sketch_names` |
+| ST-M2 item 1 | `{data_file}` in a caption or note prints `words.json`'s `data_file` | `kit.js` `K.fill_words`, `words.json` |
+| AX-S6 | `--data DIR`; weight line; retrieval dates; national figure warning | `oa-chart.mjs`, `checks.js` |
+| (in passing) | the island carries `typography` (S81 parity) | `oa-chart.mjs` `DRAW_KEYS` |
 
 ### Routine calls, review fix pass
 
 - D3-xxx | `first` prints the group's first row as stored, through the column's words and empty word | The data lead's ruling on ST-M1: "the group's first row through `K.cell_text` whatever its type"
-- D3-xxx | `sort: "key"` sorts by the printed name wherever the key column prints a state's name, and `sort: "name"` does so for any key column | Call 2 asks the sort "where a key prints as a state's name"; doing it in the kit fixes S81 to S83 and every map that copies them with no spec change
+- D3-xxx | `sort: "key"` sorts by the printed name wherever the key column prints a state's name, and `sort: "name"` does so for any key column | Call 2 asks the sort "where a key prints as a state's name"; in the kit it fixes S81 to S83 and every map that copies them with no spec change
 - D3-xxx | The name sort folds case and compares by code point, the key breaking ties | One order in Node and every browser, with no locale tables
 - D3-xxx | An empty printed column fails in the spec check as well as the page check | `check` and the sweep run without a browser; the page check proves the page prints what the Node table prints
-- D3-xxx | An unmapped `words` value is a warning, printed under the spec's PASS line and written to its check file, never a fault, and the guide build does not list it | The data lead's ruling on AX-M2: S82 depends on the fallback
+- D3-xxx | An unmapped `words` value is a warning, printed under the spec's PASS line and written to its check file, never a fault, and the guide build does not list it | The data lead's ruling on AX-M2; S18, S19, S32 and S59 also warn, each a column whose words map only some values by design
+- D3-xxx | `map_labels` tries the label point first, then the widest run across the shape that holds the name's full height with 1 px to spare, the name centered on it | Call 7's words; the label point stays first so no name that fit moves
+- D3-xxx | The widest run is measured on the name's box at the font size (13 px for a code), not on the capitals' ink | The kit's checks read a word by that box; a code set on its ink alone would put map lines inside the box the checks read
+- D3-xxx | A staged drawing is the drawing alone; the title, notes and table keep the column's width | A reader never scrolls sideways to read a title; only the approved drawing keeps its 1024 px
+- D3-xxx | The stage applies wherever the column gives a desk drawing (480 px or more); a phone column draws the phone form | The phone form is board 1's own phone drawing, `phone: "differs"`
+- D3-xxx | A merged map fill takes no edge in forced colors | The data lead's ruling on AX-S1 for S81 and S83; a map with one path a shape keeps its edges, since no ruling covers it
+- D3-xxx | A mark for forced colors only is hidden in normal colors by `visibility` and dropped from the standalone SVG | The drawing a sighted reader sees stays as signed off; an exported file is never in forced colors
+- D3-xxx | The island carries `typography` | A drawing's words go through it in Node; the page must draw the same words
+- D3-xxx | A sketch title named together with its desc takes a closing period in the built page only | The title never prints, so the period changes only what a screen reader says; the maker's file stays as it is
+- D3-xxx | The data file phrase is a placeholder, `{data_file}`, filled from `words.json` in captions and notes | ST-M2 item 1: Dustin's answer changes one string and no spec
+- D3-xxx | `--data DIR` is read first and `work/build/data/` after it, per dataset | A derived file sits beside the frozen files it was derived from, with nothing written into `work/build/data/`
+- D3-xxx | The retrieval dates are read only where a line written for two or more datasets says "Retrieved"; an atlas dataset is left out | Atlas charts print a snapshot, not a retrieval; the designer's fault was a wrong date in such a line
+- D3-xxx | The weight line measures as `load-table` places an entry, with a 750-byte frame; it warns past 15,000 only from S65 on | D3-1328 governs round 3's plates; older plates were placed under their own rounds' limits
 
 ### Contract changes, review fix pass
 
 - `table.group.sort`: `"key"`, `"name"`, or left out (first seen). With `"key"` and a key column that sets `state_name`, the groups sort by the printed name.
 - A column (grouped or not) may set `"words_pass": true`: its stored values print where its `words` give none, with no warning.
-- `check_spec` returns `{faults, warnings, rows, datasets}`; `run_spec`'s result carries `warnings`; each check file carries `warnings`.
+- `check_spec` returns `{faults, warnings, rows, datasets}`; `run_spec`'s result carries `warnings`; each check file carries `warnings` and `weight` (`{figure, with_frame, share, ceiling}`).
+- `map_labels(c, L, T, items, o)`: `o.spare` (default the smaller of `inset` and 1) and `o.widest` (default true). Each `inside` entry carries `moved: true` where it sits off the label point. `K.parts.widest_spots(polys, w, h, spare, near_y)` gives the candidate centers.
+- `width_key(c, x, y, unit, steps, o)`: `o.band` (true for `band`, or a fill role) and `o.edge` (default `context`, false for none).
+- `spec.stage`: a width in px from 480 to the artboard. `K.draw_width(spec, w)`; `K.PHONE_MAX`. The staged frame is `.oac-art[data-oa-stage]`.
+- `fc` on any mark: `total` (as before), `region`, `muted`, `forced`. `K.parts.key` entries take `fc` (a filled swatch) and `forced_edge` (an outlined swatch).
+- `{data_file}` in a table caption, a note or a chart note prints `words.json`'s `data_file`. `words.json` adds `data_file` and `stage_scroll`.
+- `oa-chart.mjs build` and `check` take `--data DIR`.
+
+### Requests sent
+
+- **Maker B:** `sankey.js` passes `band: true` to `width_key` (BC-S2); S74's authority cell draws its forced-colors second edge and its key entry takes `forced_edge: true` (AX-S1).
+- **Maker A:** S72's "not voting" rect and its key entry take `fc: 'muted'` (AX-S1).
+- **Cartographer:** `"stage": 1024` in `s12.json` and its alt for each width (call 6); S78 at 358 px still leaves 19 states uncoded, so call 7's tile grid phone drawing applies; S80's 10th and 12th need the form to label each panel's own districts (C-S1).
+- **Editor:** `{data_file}` for the nine places of ST-M2 item 1.
 
 ### Tested, review fix pass
 
 - Snapshot against the frozen kit and specs (`tools/kit_snapshot.mjs`, 924 drawings and figures from 84 specs): after ST-M1 and the sort, only the figures (tables) of S73, S81, S82 and S83 differ; no drawing differs.
-- `build s69 s73 s68 s82 s81 s83 --no-png --no-sweep`: 6 PASS, 0 faults; S68 prints the AX-M2 warning for "7", "3", "4" and "8". `build s73 s81` with captures at 1440 and 390 px on both grounds: 0 faults, the page check's empty-column reading included. S73's and S69's page tables read in Node (`gt.mjs` in scratch).
+- `build s69 s73 s68 s82 s81 s83 --no-png --no-sweep`: 6 PASS; S68 printed the AX-M2 warning for "7", "3", "4" and "8" (gone once maker A mapped them). `build s73 s81` with captures at 1440 and 390 px on both grounds: 0 faults. S73's and S69's page tables read in Node.
+- `check s78 s80 s84 s81` with the sweep after `map_labels`' change: 4 PASS. S78's "Not labeled" lists before and after, by script: 720 px 3 to 2 (WV placed); 480 px 6 to 5; 358 px 23 to 19; 326 px 23 to 20 (CA, WA, GA, AL placed); 256 px 36 to 30. S78 at 390 px looked at on Newsprint.
+- A staged copy of S12 in scratch: `build` at 1440, 1024 and 390 px on both grounds with the sweep, 0 faults; every arrow drawn at 1024 (looked at); in Chromium the frame takes a tab stop, a role and a name at 1024 and 600 px windows, none at 1440, and draws the phone form at 390, with no sideways scroll of the page at any of the four.
+- Forced colors in Chromium, both themes: S83 and S81 at 1440 px looked at; a test page of S72's and S74's marks with the new classes looked at in normal and forced colors.
+- `width_key` with three band steps: no key fault on either ground.
+- `build --all --no-png --no-sweep` (84 specs, 84 check files): 84 PASS after the retrieval date check was narrowed to lines that say "Retrieved".
 
 ### Not tested, review fix pass
 

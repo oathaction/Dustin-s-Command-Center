@@ -37,7 +37,7 @@
       if (L.key_title) { c.text(0, y - lb + tk, L.key_title, { role: 'tick', weight: 600, fill: 'label', max: W }); y += tk + 8; }
       var ks = steps.map(function (s, i) { return { label: s.label, fill: tint(i), edge: EDGE[tint(i)] ? 'context' : undefined, ordered: true, direct: true }; });
       y += P.key(c, ks, 0, y, W) - 6;
-      if (L.special_label && esp) y += P.key(c, [{ label: L.special_label, stroke: 'label' }], 0, y, W) - 6;
+      if (L.special_label && esp) y += P.key(c, [{ label: L.special_label, stroke: 'label', forced_edge: true }], 0, y, W) - 6;
       if (L.diagonal && L.diagonal_label) {
         // the diagonal's key: a square swatch with the mark the grid draws, in the gridline ink
         var sw = Math.round(lb * 0.9), kt = y - sw + 2;
@@ -72,11 +72,15 @@
       var diag = function (i, j, x, ry, words) {
         if (i !== j || !L.diagonal) return;
         if (L.diagonal === 'frame') { c.rect(x + 4.5, ry + 4.5, cs - 9, cs - 9, { stroke: 'gridline', width: 1, mark: false }); return; }
-        var h = words ? Math.ceil(tk * 0.6) + 2 : 0, m = cs / 2, R = K.round;
+        // the count's box, as the guard reads it (its em box, 0.864 em over the baseline), and the run of the line inside
+        // it, widened by 1.5 px: the line breaks there
         var seg = function (a0, a1) { if (a1 - a0 > 0.5) c.line(x + a0, ry + a0, x + a1, ry + a1, { stroke: 'gridline', width: 1, mark: false }); };
-        if (h) { seg(0, m - h); seg(m + h, cs); } else seg(0, cs);
+        if (words) {
+          var tw = c.measure(words, 'tick', 700, true), base = cs / 2 + tk * 0.35;
+          var g0 = Math.max(cs / 2 - tw / 2, base - 0.864 * tk) - 1.5, g1 = Math.min(cs / 2 + tw / 2, base + 0.136 * tk) + 1.5;
+          seg(0, g0); seg(g1, cs);
+        } else seg(0, cs);
         if (i < n - 1) { var nx = x0 + pos(i + 1); if (nx > x + cs + 0.5) c.line(x + cs, ry + cs, nx, y0 + pos(i + 1), { stroke: 'gridline', width: 1, mark: false }); }
-        void R;
       };
       order.forEach(function (a, i) {
         var ry = y0 + pos(i), isn = named.indexOf(a) >= 0, cy = ry + cs / 2;
@@ -90,11 +94,12 @@
           if (esp && r[esp] > 0 && r[esp] !== v) c.warn('adjacency-matrix: cell ' + a + ' to ' + b + ' mixes the class with no sign with others');
           if (sp) {
             // the class with no sign: no fill, a 1.5 px edge in the text's ink, its count inside; in forced colors a second
-            // edge 2 px inside the first (AX-S1)
+            // 1 px edge 2 px inside the first (AX-S1), which the count clears on a knockout of the ground: the cell is the
+            // ground, so in normal colors the knockout does not show
             c.rect(x + 1, ry + 1, cs - 2, cs - 2, { fill: 'surface', kind: 'cell', data: { key: a + ' to ' + b, field: ev, value: v } });
             c.rect(x + 1.75, ry + 1.75, cs - 3.5, cs - 3.5, { stroke: 'label', width: 1.5, mark: false });
-            c.rect(x + 5.25, ry + 5.25, cs - 10.5, cs - 10.5, { stroke: 'label', width: 1.5, fc: 'forced', mark: false });
-            c.text(x + cs / 2, cy + tk * 0.35, String(v), { role: 'tick', weight: 700, anchor: 'middle', tnum: true, fill: 'label' });
+            c.rect(x + 5, ry + 5, cs - 10, cs - 10, { stroke: 'label', width: 1, fc: 'forced', mark: false });
+            P.clear_label(c, x + cs / 2, cy + tk * 0.35, String(v), { role: 'tick', weight: 700, anchor: 'middle', tnum: true, fill: 'label', gap: 0 });
           } else {
             c.rect(x + 1, ry + 1, cs - 2, cs - 2, { fill: f, kind: 'cell', data: { key: a + ' to ' + b, field: ev, value: v } });
             if (EDGE[f]) c.rect(x + 1.5, ry + 1.5, cs - 3, cs - 3, { stroke: 'context', width: 1, mark: false });

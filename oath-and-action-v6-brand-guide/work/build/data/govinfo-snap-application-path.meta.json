@@ -60,6 +60,9 @@
   }
  },
  "printed_source_line": "Source: Office of the Federal Register and U.S. Government Publishing Office, Electronic Code of Federal Regulations, 7 CFR 273.2, SNAP application processing, as in force November 9, 2026, United States. Retrieved November 12, 2026. Times are the regulation’s limits; each step’s next step named by Oath & Action.",
+ "source_line_variants": {
+  "date_in_grade_line": "Source: Office of the Federal Register and U.S. Government Publishing Office, Electronic Code of Federal Regulations, 7 CFR 273.2, SNAP application processing, United States. Retrieved November 12, 2026. Times are the regulation’s limits; each step’s next step named by Oath & Action."
+ },
  "ledger_row": "P7-208",
  "domain": "D04",
  "domain_note": "V7 I062, \"Delivering services\" (data lead change 3)",

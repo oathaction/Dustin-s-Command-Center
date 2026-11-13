@@ -244,6 +244,17 @@ def figures():
     check('S69', ty.count('standing') == 20 and ty.count('select') == 3 and ty.count('joint') == 4, '20 standing, 3 select, 4 joint')
     check('S69', sum(v[2] for v in com.values()) == 109 and '109 subcommittees' in s['title'] and '20 standing committees and three select' in s['title'], '20 standing, three select, 109 subcommittees (title)')
     check('S69', com['AP00'][2] == 12 and max(v[2] for v in com.values()) == 12, 'Appropriations has the most, 12')
+    def short(x):
+        x = ' '.join(x.split())
+        for pre in s['labels']['drop']:
+            if x.startswith(pre):
+                x = x[len(pre):]
+        return x[0].upper() + x[1:]
+    want = []
+    for ty_ in ('standing', 'select', 'joint'):
+        us = sorted(((short(v[0]), k) for k, v in com.items() if v[1] == ty_), key=lambda z: (z[0].lower(), z[0]))
+        want += [k for _, k in us]
+    check('S69', s['sort'][1]['values'] == want, 'committees in order of their printed names, by kind (BC-S7)')
     check('S69', com['BU00'][2] == 0 and com['SO00'][2] == 0 and [v[0] for v in com.values() if v[1] == 'standing' and v[2] == 0] == ['Committee on the Budget', 'Committee on Ethics'], 'Budget and Ethics have none')
     # S70: 94 districts, 13 appeals, 179, 673, 4, 9, the circuits' figures in the alt
     s, rows = spec('s70'), read_csv('uscode-federal-courts-circuits-districts')

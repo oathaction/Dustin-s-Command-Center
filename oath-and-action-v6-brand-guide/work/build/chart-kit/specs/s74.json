@@ -166,16 +166,17 @@
   "from_label": "From",
   "to_label": "To",
   "axes_short": "Rows: where a connection starts. Columns: where it ends.",
-  "diagonal": "frame",
+  "diagonal": "line",
   "diagonal_label": "Within one region"
  },
  "notes_internal": [
   "Maker B, round 3. Data plan row 95 with change 1, rule 14.105. Draws the derived v7-region-connection-matrix (from v7-links-with-regions), V7 snapshot October 15, 2026; where drops the 56 empty pairs, so the table lists the 44 filled cells as links (from, to, count), R3-6.",
   "Data lead ruling (a): no named mark, the matrix answers with its pattern; (b): four sequential steps 1; 2 or 3; 4 or 5; 6 or 7 on seq-1, seq-3, seq-4 and seq-5, seq-1 with the context edge; empty cells the ground in a gridline; the seven lines of authority in three cells with no fill and a 1.5 px edge in the text's ink; no split by sign; the table gives plus, minus and no sign per cell with the connection IDs as typed chips (every ID in v7.ids).",
   "Figures checked by maker_b_round3_derive.py --figures (check S74): 118 connections, 44 of 100 cells filled, 32 within a region (the diagonal), governing institutions starts 23 (the most), all 7 authority connections start there and fill three cells, outside drivers receives 0, counts run 1 to 7. The two example lines of authority are LE02's and LE19's names in V7.",
-  "Weight (D3-1097): the table drops the connection IDs (118 typed chips, about 8,000 bytes on the page); the CSV export keeps link_ids for every cell and note 4 says so; v7.ids is empty since no ID prints."
+  "Weight (D3-1097): the table drops the connection IDs (118 typed chips, about 8,000 bytes on the page); the CSV export keeps link_ids for every cell and note 4 says so; v7.ids is empty since no ID prints.",
+  "Review fix pass: BC-S14 (the data lead's ruling) marks the diagonal with the lighter of the two marks it named, a 1 px line in the gridline ink from the grid's top left corner to its bottom right, broken round each count's box, keyed “Within one region” (labels.diagonal 'line'); the frame inside each diagonal cell ran through the counts at phone widths. AX-S1: each authority cell draws a second 1 px edge 2 px inside its first for forced colors only (fc 'forced', the engineer's CSS), its count on a knockout of the ground, which the cell's own fill hides in normal colors; the key's entry takes forced_edge."
  ],
  "chart_notes": [
-  "A filled cell’s shade grows stronger with its count, which is printed in it. Lines of authority, which carry no sign, are the only connections in three cells, drawn with an outline and no shade."
+  "A filled cell’s shade grows stronger with its count, which is printed in it. Lines of authority, which carry no sign, are the only connections in three cells, drawn with an outline and no shade. A thin gray line runs along the diagonal, through the cells of connections that stay within one region."
  ]
 }

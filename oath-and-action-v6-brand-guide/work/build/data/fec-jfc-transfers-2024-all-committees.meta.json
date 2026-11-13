@@ -1,0 +1,118 @@
+{
+ "file": "fec-jfc-transfers-2024-all-committees.csv",
+ "kind": "public",
+ "publisher": "Federal Election Commission",
+ "title_or_table": "Schedule B transfers and refunds to other committees of every joint fundraising committee that paid a 2024 major-party nominee’s campaign, aggregated by recipient",
+ "table_id": "OpenFEC /schedules/schedule_b/by_recipient_id/, /schedules/schedule_b/, /committees/ and /committee/{id}/, 2024 cycle",
+ "url": [
+  "https://api.open.fec.gov/v1/schedules/schedule_b/by_recipient_id/?recipient_id=C00703975&cycle=2024",
+  "https://api.open.fec.gov/v1/schedules/schedule_b/by_recipient_id/?recipient_id=C00828541&cycle=2024",
+  "https://api.open.fec.gov/v1/committees/?committee_id={payer}",
+  "https://api.open.fec.gov/v1/schedules/schedule_b/by_recipient_id/?committee_id={jfc}&cycle=2024",
+  "https://api.open.fec.gov/v1/schedules/schedule_b/?committee_id={jfc}&recipient_committee_id={recipient}&two_year_transaction_period=2024",
+  "https://api.open.fec.gov/v1/committee/{recipient}/"
+ ],
+ "observation_period": "2023 to 2024 election cycle",
+ "geography": "United States",
+ "universe_or_base": "For each 2024 major-party nominee, every committee the FEC designates a joint fundraising committee (designation J) that paid the nominee’s principal campaign committee in the 2024 cycle, three for Kamala Harris and four for Donald Trump, and every committee each paid on line 22 (transfers) or line 28C (refunds)",
+ "unit": "dollars; transactions",
+ "date_retrieved": "2026-11-13",
+ "vintage": "FEC processed filings as the API served them on November 12 and 13, 2026 (the Harris Victory Fund’s and the Trump National Committee JFC’s rows as frozen in fec-jfc-transfers-2024, checked equal on November 13)",
+ "qualification": "The rule picks the senders: of the 92 committees that paid Harris’s campaign in the cycle, the FEC designates 3 joint fundraising committees, and of the 64 that paid Trump’s, 4; a committee that paid a campaign but is not designated J stays out for both (for example the Donald J. Trump Republican Nominee Fund 2024, an authorized committee). Amounts and transactions are the FEC’s aggregate by recipient for the cycle, which equals, for every row, the itemized payments on one line: line 22, transfers to other committees, or line 28C, a refund of a committee’s own contribution (amount_lines). Line 21B operating expenditures to the same committees are left out of amount and given in line_21b_amount. A joint fundraising committee splits contributions among its participants under its agreement, so a transfer is not a gift from the committee’s own funds. Receivers fold by kind, read the same way for both nominees: the nominee’s principal campaign committee is the nominee campaign; any other committee the FEC lists as a party committee (committee type X or Y) is a national party committee where its statement of organization gives the party type NATIONAL (the DNC and the RNC; no party’s House or Senate committee appears) and a state party committee where it gives STATE (the parties of states, DC and Guam, whatever their names, such as the Oklahoma Leadership Council, the Oklahoma Republican Party’s federal committee); the Missouri Republican State Committee-Federal’s record gives no party type and its own name makes it a state party committee; every other committee (campaigns of other candidates, leadership PACs, other PACs, and the Trump nominee fund) is an other committee. No fund paid another of the seven.",
+ "columns": {
+  "nominee": {
+   "type": "text",
+   "description": "the presidential nominee"
+  },
+  "jfc_id": {
+   "type": "id",
+   "description": "FEC committee ID of the joint fundraising committee that paid"
+  },
+  "jfc_name": {
+   "type": "text",
+   "description": "the joint fundraising committee’s name in the FEC’s committee record"
+  },
+  "recipient_id": {
+   "type": "id",
+   "description": "FEC ID of the committee paid"
+  },
+  "recipient_name": {
+   "type": "text",
+   "description": "its name as the FEC’s aggregate by recipient gave it on November 12, 2026: mostly the committee’s name today, but Harris’s campaign under its 2024 name and Trump’s under its name today; print recipient_name_2024_election"
+  },
+  "recipient_type": {
+   "type": "category",
+   "description": "committee type as the FEC lists it today; both campaign committees have since become PACs, and is_nominee_campaign marks them"
+  },
+  "recipient_state": {
+   "type": "code",
+   "description": "committee’s state, if any"
+  },
+  "amount": {
+   "type": "number",
+   "description": "total paid in the cycle",
+   "unit": "dollars"
+  },
+  "transactions": {
+   "type": "integer",
+   "description": "itemized transactions"
+  },
+  "schedule_b_lines": {
+   "type": "text",
+   "description": "every Schedule B line the itemized payments to this committee use, line 21B included; amount sums only the line in amount_lines"
+  },
+  "is_nominee_campaign": {
+   "type": "category",
+   "description": "yes for the nominee’s principal campaign committee"
+  },
+  "recipient_name_2024_election": {
+   "type": "text",
+   "description": "the name the joint fundraising committee wrote for this recipient on its last itemized payment dated on or before November 5, 2024 (its first payment, where none came before), read the same way for every recipient"
+  },
+  "recipient_names_itemized": {
+   "type": "text",
+   "description": "every name the itemized payments give this recipient, each with its row count and first and last date"
+  },
+  "amount_lines": {
+   "type": "category",
+   "description": "the Schedule B line amount and transactions sum: 22, transfers to other committees, or 28C, a refund of a committee’s contribution"
+  },
+  "line_21b_amount": {
+   "type": "number",
+   "unit": "dollars",
+   "description": "line 21B operating expenditures paid to the same committee in the cycle, not in amount"
+  },
+  "line_21b_transactions": {
+   "type": "integer",
+   "description": "itemized line 21B payments, not in transactions"
+  },
+  "recipient_designation": {
+   "type": "category",
+   "description": "the recipient committee’s designation in the FEC’s committee record today (for example principal campaign committee, leadership PAC, unauthorized)"
+  },
+  "recipient_party_type": {
+   "type": "category",
+   "description": "for a party committee, the party type its statement of organization (Form 1) gives in the FEC’s committee record: NATIONAL or STATE; empty for any other committee, and for one party committee whose record gives none"
+  },
+  "recipient_kind": {
+   "type": "category",
+   "description": "the receiver’s kind by the rule in the qualification: nominee campaign, national party committee, state party committee or other committee"
+  }
+ },
+ "printed_source_line": "Source: Federal Election Commission, Schedule B transfers and refunds to other committees (lines 22 and 28C) of the seven committees the FEC designates joint fundraising committees that paid Kamala Harris’s or Donald Trump’s campaign, 2023 to 2024 cycle, United States. Retrieved November 12 and 13, 2026. Committees named as their payer wrote them before the November 5, 2024 election.",
+ "ledger_row": "P7-226",
+ "domain": "D03",
+ "states": [],
+ "raw_files_sha256_prefix": {
+  "fetch-log.tsv": "see the download folder; every response logged with its SHA-256"
+ },
+ "notes": [
+  "Kamala D. Harris’s joint fundraising committees, by what each sent the campaign: HARRIS VICTORY FUND (C00744946, $528,730,999.70 to the campaign in 21 payments), HARRIS ACTION FUND (C00838912, $4,900,000.00 to the campaign in 8 payments), HARRIS BALDWIN VICTORY FUND (C00849281, $35,265.62 to the campaign in 3 payments).",
+  "Donald J. Trump’s joint fundraising committees, by what each sent the campaign: TRUMP NATIONAL COMMITTEE JFC, INC. (C00873893, $246,821,872.35 to the campaign in 13 payments), TRUMP SAVE AMERICA JOINT FUNDRAISING COMMITTEE (C00770941, $134,018,942.92 to the campaign in 15 payments), TRUMP 47 COMMITTEE, INC. (C00867937, $26,908,283.76 to the campaign in 14 payments), TRUMP BILIRAKIS VICTORY FUND (C00855114, $5,832.04 to the campaign in 3 payments).",
+  "Line 22 for Kamala D. Harris, all funds together (BC-M1, read by script): $955,939,029.74 to 54 committees; by kind, nominee campaign $533,666,265.32 to 1; national party committee $240,845,000.00 to 1; state party committee $181,389,124.21 to 51; other committee $38,640.21 to 1. Line 28C refunds apart: PROGRESSIVE TURNOUT PROJECT $80,000.00 from HARRIS VICTORY FUND; OPERATING ENGINEERS LOCAL 478 POLITICAL ACTION COMMITTEE (OE478PAC) $1,000.00 from HARRIS VICTORY FUND.",
+  "Line 22 for Donald J. Trump, all funds together (BC-M1, read by script): $679,818,943.47 to 56 committees; by kind, nominee campaign $407,754,931.07 to 1; national party committee $163,847,553.60 to 1; state party committee $69,874,339.21 to 50; other committee $38,342,119.59 to 4. Line 28C refunds apart: DR. BRIAN BABIN FOR CONGRESS $1,000.00 from TRUMP SAVE AMERICA JOINT FUNDRAISING COMMITTEE; BURCHETT FOR CONGRESS $1,000.00 from TRUMP SAVE AMERICA JOINT FUNDRAISING COMMITTEE; MICHAEL WALTZ FOR CONGRESS $1,000.00 from TRUMP SAVE AMERICA JOINT FUNDRAISING COMMITTEE; VICTORIA SPARTZ FOR CONGRESS $1,000.00 from TRUMP SAVE AMERICA JOINT FUNDRAISING COMMITTEE.",
+  "Line 22 by fund: HARRIS VICTORY FUND $899,402,049.70 to 53; HARRIS ACTION FUND $56,430,000.00 to 2; HARRIS BALDWIN VICTORY FUND $106,980.04 to 3; TRUMP NATIONAL COMMITTEE JFC, INC. $273,762,296.73 to 2; TRUMP SAVE AMERICA JOINT FUNDRAISING COMMITTEE $162,502,905.75 to 2; TRUMP 47 COMMITTEE, INC. $243,503,360.87 to 54; TRUMP BILIRAKIS VICTORY FUND $50,380.12 to 3.",
+  "Line 21B to committees in the file, not in amount: HARRIS VICTORY FUND to HARRIS FOR PRESIDENT, $11,993,565.82 in 7; HARRIS VICTORY FUND to DNC SERVICES CORP./DEM. NAT'L COMMITTEE, $15,146,635.19 in 32; HARRIS VICTORY FUND to KENTUCKY STATE DEMOCRATIC CENTRAL EXECUTIVE COMMITTEE, $1,501.00 in 1; HARRIS ACTION FUND to DNC SERVICES CORP./DEM. NAT'L COMMITTEE, $196,203.09 in 9; HARRIS BALDWIN VICTORY FUND to TAMMY BALDWIN FOR SENATE, $4,692.76 in 3; TRUMP SAVE AMERICA JOINT FUNDRAISING COMMITTEE to DONALD J. TRUMP FOR PRESIDENT 2024, INC., $2,626,877.56 in 12; TRUMP SAVE AMERICA JOINT FUNDRAISING COMMITTEE to SAVE AMERICA, $4,355.16 in 1; TRUMP 47 COMMITTEE, INC. to DONALD J. TRUMP FOR PRESIDENT 2024, INC., $10,004,291.24 in 26; TRUMP BILIRAKIS VICTORY FUND to BILIRAKIS FOR CONGRESS, $24,584.45 in 1. Line 21B paid to committees outside the file was read for the Harris Victory Fund and the Trump National Committee JFC only (RL-4, in fec-jfc-transfers-2024’s notes), not for the other five.",
+  "Trump 47 Committee’s 50 state party committees are those of 48 states, DC and Guam (none for Hawaii or Vermont); the Harris Victory Fund’s 51 are those of the 50 states and DC, and the Harris Baldwin Victory Fund’s one, Wisconsin’s, is among them. The principal campaign committees’ names: see fec-jfc-transfers-2024’s notes (both have since become PACs)."
+ ]
+}

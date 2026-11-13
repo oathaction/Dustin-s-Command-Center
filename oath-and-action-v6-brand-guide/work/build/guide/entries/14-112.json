@@ -2,7 +2,7 @@
  "id": "14.112",
  "title": "Use a journey map to show a person’s path through a public service, step by step.",
  "rule": [
-  "Draw each step as a box with its name, who acts and the time the rule allows, joined in order by arrows, and draw a branch some people take from the step it leaves. Print each time as the rule’s limit, say in the measure line that the chart measures no wait, and print the date of the rule. The main path is in the text’s ink and a branch is gray (Rule 14.6). At a desk the path reads across; on a phone it reads down, with the branch after the last step. The table lists the steps in reading order, each with the step that follows it."
+  "Draw each step as a box with its name, then the time the rule allows on a line of its own in the text’s ink, then who acts, joined in order by arrows, and draw a branch some people take from the step it leaves. Print each time as the rule’s limit, say in the measure line that the chart measures no wait, and print the date of the rule. The main path is in the text’s ink and a branch is gray (Rule 14.6). At a desk the path reads across; on a phone it reads down, with the branch after the last step. The table lists the steps in reading order, each with the step that follows it."
  ],
  "use_when": "The reader asks what happens after they apply, sign up or file, and how long each step can take.",
  "use_instead": [
@@ -33,7 +33,7 @@
   "14.13",
   "13.6"
  ],
- "builders": "Form journey-map: node work/build/chart-kit/oa-chart.mjs build s77; encode step, path, key, who and limit; labels.limits gives each step’s time in words, labels.branch_label names who takes the branch, labels.across_from sets the width where the path turns down; draws through K.parts.node and K.parts.link.",
+ "builders": "Form journey-map: node work/build/chart-kit/oa-chart.mjs build s77; encode step, path, key, who and limit; labels.limits gives each step’s time in words, labels.branch_label names who takes the branch, labels.across_from sets the width where the path turns down; sets each box’s name, limit and who acts in that order and draws its arrows through K.parts.link.",
  "correct": null,
  "failure": null
 }

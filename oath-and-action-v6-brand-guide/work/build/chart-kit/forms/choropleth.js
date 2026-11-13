@@ -11,7 +11,10 @@
  * state_lines (true on a county layer: state borders in the context ink at 0.5 px), none_label (a region with no value),
  * none_hatch (true: that region and its key swatch take a hatch in the context ink over the land ink; BC-S3),
  * outline_all (true: the context edge round the land), phone_tiles (true: under 480 px the states take the studio's tile
- * grid, every state's code on its tile; set phone "differs"; C-M1, round 3 fix pass). formats: value, margin. */
+ * grid, every state's code on its tile; set phone "differs"; C-M1, round 3 fix pass), code_column (true: at a desk the map
+ * fits 44 px narrower and the northeastern codes with no room inside take a column on the ocean, on leaders), tiles_under
+ * (a width in px under which the tile grid draws at a desk too, where the outlines leave a code no room). formats:
+ * value, margin. */
 (function (K) {
   'use strict';
   var STEPS = ['seq-1', 'seq-3', 'seq-4', 'seq-5'];
@@ -23,7 +26,9 @@
   // narrower, so the square draws in every panel at every width
   var panel = function (c, o) {
     var L = K.geo(o.layer), steps = o.steps || STEPS, fit = function (w) { return K.parts.map_fit(c, L, { x: o.x || 0, y: o.y || 0, w: w, max_h: o.max_h }); };
-    var T = fit(o.w), right = o.dc_room ? (o.x || 0) + o.w : c.width;
+    // o.column (C-M1, round 3 fix pass): the map fits 44 px narrower than the panel, leaving the ocean to the east room for
+    // a column of the small northeastern states' codes on leaders (the kit's map_labels column)
+    var T = fit(o.column ? o.w - 44 : o.w), right = o.dc_room ? (o.x || 0) + o.w : c.width;
     var dc_size = function (T) { return Math.max(7, Math.min(11, T.k * 12)); };
     if (o.dc && o.dc_room && L.labels && L.index['11'] !== undefined && o.items.some(function (it) { return it.id === '11'; })) {
       for (var tries = 0; tries < 6; tries++) {
@@ -56,13 +61,56 @@
       K.parts.map_mesh(c, L, T, { between: function (a, b) { return o.outline_all ? b === null || first(a) || first(b) : first(a) || first(b); }, stroke: 'context', width: 1 });
     }
     if (L.ids.some(function (id) { return id.slice(0, 2) === '02'; })) K.parts.map_insets(c, L, T);
-    var bottom = T.y + T.h, unplaced = [], avoid = [];
+    var bottom = T.y + T.h, unplaced = [], avoid = [], colinfo = null;
     if (o.codes) {
       // names claim room largest shape first: inside the shape in its step's label ink (the kit's map_labels, inside
       // only); the rest beside with a leader, on the ground's halo, clear of every word and leader, over the ground or the lightest step only
       var items = o.items.filter(function (it) { return it.code && it.id !== '11' && L.index[it.id] !== undefined; })
         .sort(function (a, b) { return L.labels[L.index[b.id]][2] - L.labels[L.index[a.id]][2] || (a.id < b.id ? -1 : 1); });
       var r1 = K.parts.map_labels(c, L, T, items.map(function (it) { return { id: it.id, words: it.code, weight: 600, fill: on_ink(fill_of(it)) }; }), { role: 'tick', beside: false, inset: 1 });
+      if (o.column && r1.unplaced.length) {
+        // the codes that found no room inside: the eastern ones to the column on the ocean, the rest on short leaders over
+        // light ground; whatever is left goes to the search below
+        var r2 = K.parts.map_labels(c, L, T, r1.unplaced, { role: 'tick', inset: 1, column: 0.8, reach: [16, 30, 46, 64], ring0: false });
+        // a code left over (West Virginia, whose leader would cross a neighbor's code at the column's own row) joins the
+        // column below its last name, on the ocean, if its leader crosses no word and no other leader
+        var colb = r2.beside.filter(function (b) { return b.box.x > T.x + T.w * 0.8; }).map(function (b) { return b.box; });
+        if (colb.length) {
+          var cx0 = Math.min.apply(null, colb.map(function (b) { return b.x; })), cy = Math.max.apply(null, colb.map(function (b) { return b.y + b.h; }));
+          var ctop = Math.min.apply(null, colb.map(function (b) { return b.y; }));
+          var lh = Math.round(c.size('tick') * 1.3), sz = c.size('tick');
+          var cross = function (a, b2) {
+            var d = function (p, q, r) { return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]); };
+            var p1 = [a.x1, a.y1], p2 = [a.x2, a.y2], q1 = [b2.x1, b2.y1], q2 = [b2.x2, b2.y2];
+            return d(p1, p2, q1) * d(p1, p2, q2) < 0 && d(q1, q2, p1) * d(q1, q2, p2) < 0;
+          };
+          r2.unplaced = r2.unplaced.filter(function (it) {
+            var q = T.pt(L.labels[L.index[it.id]]);
+            // any free row of the column, nearest the code's own height first
+            var rows = [];
+            for (var yy0 = ctop + sz / 2; yy0 + sz / 2 < T.y + T.h; yy0 += lh / 2) rows.push(yy0);
+            rows.sort(function (a, b) { return Math.abs(a - q[1]) - Math.abs(b - q[1]); });
+            for (var ri = 0; ri < rows.length; ri++) {
+              var yy = rows[ri];
+              var b = c.text_box(cx0, yy + 0.35 * sz, it.words, { role: 'tick', weight: 600 }), ln = { x1: q[0], y1: q[1], x2: cx0 - 3, y2: yy };
+              if (c.texts.some(function (t) { return b.x < t.x + t.w + 1 && t.x < b.x + b.w + 1 && b.y < t.y + t.h + 1 && t.y < b.y + b.h + 1; })) continue;
+              if (c.texts.some(function (t) { return K.leader_crosses(ln, t); }) || (c.leaders || []).some(function (l) { return cross(l, ln); })) continue;
+              var ok = true;
+              for (var i = 0; i <= 4 && ok; i++) for (var j = 0; j <= 2 && ok; j++) if (['surface', 'none', null].indexOf(c.fill_under(b.x - 2 + i * (b.w + 4) / 4, b.y - 2 + j * (b.h + 4) / 2)) < 0) ok = false;
+              if (!ok) continue;
+              c.line(q[0], q[1], cx0 - 3, yy, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+              var tb3 = c.text(cx0, yy + 0.35 * sz, it.words, { role: 'tick', weight: 600, halo: true });
+              cy = Math.max(cy, tb3.y + tb3.h);
+              return false;
+            }
+            return true;
+          });
+          colinfo = { x: cx0, y: cy, lh: lh };
+        }
+        // last, inside the shape with no room to spare (Kentucky and Tennessee near 480 px)
+        if (r2.unplaced.length) r2 = K.parts.map_labels(c, L, T, r2.unplaced, { role: 'tick', beside: false, inset: 0, spare: 0 });
+        r1 = { unplaced: r2.unplaced };
+      }
       var dark = o.items.filter(function (it) { return it.cls > 1; }).map(function (it) { return L.rings(L.index[it.id]).map(function (rs) { return rs.map(function (r) { return r.map(T.pt); }); }); });
       var LIGHT = [null, 'surface', 'none', 'land', 'seq-1'];
       var in_dark = function (x, y) { return LIGHT.indexOf(c.fill_under(x, y)) < 0 || dark.some(function (ps) { return ps.some(function (rs) { return K.in_poly(rs, x, y); }); }); };
@@ -94,7 +142,9 @@
     var dc = o.items.filter(function (it) { return it.id === '11'; })[0];
     if (o.dc && dc && L.labels) {
       var p0 = T.pt(L.labels[L.index['11']]), s = dc_size(T), tw = c.measure(o.dc, 'tick', 600), dpick = null;
-      [[46, 40], [60, 30], [60, 50], [40, 60], [70, 70], [30, 80], [80, 10], [90, 40]].forEach(function (v) {
+      // with a column of codes on the ocean, DC's square joins it below its last name (frame units from DC's point)
+      var spots = colinfo ? [0, 1, 2, 3, 4, 5].map(function (k) { return [(colinfo.x - p0[0]) / T.k, (colinfo.y + 4 + k * colinfo.lh - p0[1]) / T.k]; }) : [];
+      spots.concat([[46, 40], [60, 30], [60, 50], [40, 60], [70, 70], [30, 80], [80, 10], [90, 40], [60, 90], [90, 80], [40, 100], [80, 110], [20, 110], [100, 100], [60, 130]]).forEach(function (v) {
         if (dpick) return;
         var dx = p0[0] + T.k * v[0], dy = p0[1] + T.k * v[1], tb = c.text_box(dx + s + 4, dy + s - 1, o.dc, { role: 'tick', weight: 600 });
         var box = { x: dx - 2, y: Math.min(dy, tb.y) - 2, w: s + 6 + tb.w + 2, h: Math.max(s, tb.h) + 4 };
@@ -150,7 +200,7 @@
   var def = K.register_chart({
     form: 'choropleth', name: 'Choropleth', family: 'maps',
     encode: { code: 'code?', id: 'id?', value: 'number', margin: 'number?' },
-    labels: ['layer', 'bins', 'class_field', 'steps', 'class_labels', 'key_title', 'nation', 'nation_label', 'dc', 'codes', 'state_lines', 'none_label', 'none_hatch', 'outline_all', 'phone_tiles'],
+    labels: ['layer', 'bins', 'class_field', 'steps', 'class_labels', 'key_title', 'nation', 'nation_label', 'dc', 'codes', 'state_lines', 'none_label', 'none_hatch', 'outline_all', 'phone_tiles', 'tiles_under', 'code_column'],
     phone: 'same',
     draw: function (c) {
       var L = c.labels, W = c.width, f = c.spec.formats || {}, G = globalThis.OAChartGeo;
@@ -167,7 +217,7 @@
         var nb = c.text(0, y + 12, nw, { role: 'tick', weight: 700, max: W });
         y = nb.bottom + 4;
       }
-      if (c.phone && L.phone_tiles && ec && G.tiles) {
+      if ((c.phone || W < (L.tiles_under || 0)) && L.phone_tiles && ec && G.tiles) {
         // C-M1 (round 3 fix pass): under 480 px the states take the studio's tile grid (S07's), one square each in the same
         // classes, steps and edges, so every state keeps its code where outlines leave most of them no room; a code sits
         // on its tile in its step's label ink with 1 px to spare each side, and any that cannot is named in a note
@@ -187,7 +237,7 @@
         c.height(tb2 + 4);
         return;
       }
-      var r = panel(c, { layer: layer, x: 0, y: y + 10, w: W, items: items, steps: steps, codes: L.codes !== false && !!ec, dc: L.dc, merge: !!L.state_lines, state_lines: L.state_lines, outline_all: L.outline_all });
+      var r = panel(c, { layer: layer, x: 0, y: y + 10, w: W, items: items, steps: steps, codes: L.codes !== false && !!ec, dc: L.dc, merge: !!L.state_lines, state_lines: L.state_lines, outline_all: L.outline_all, column: !!L.code_column && !c.phone });
       var bottom = r.bottom;
       if (r.unplaced.length) {
         var nt = c.text(0, bottom + 20, K.word('unlabeled_marks').replace('{codes}', r.unplaced.sort().join(', ')), { role: 'note', max: W, fill: 'secondary' });

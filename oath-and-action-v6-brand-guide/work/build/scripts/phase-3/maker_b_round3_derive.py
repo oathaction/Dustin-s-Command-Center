@@ -130,6 +130,8 @@ def snap_path():
             'source_words': m['columns']['source_words'],
         },
         'printed_source_line': 'Source: Office of the Federal Register and U.S. Government Publishing Office, Electronic Code of Federal Regulations, 7 CFR 273.2, SNAP application processing, as in force November 9, 2026, United States. Retrieved November 12, 2026. Times are the regulation’s limits; each step’s next step named by Oath & Action.',
+        # D3-1327 (B-S4): the rule's in-force date prints once, in the grade line; this variant leaves it out of the source line
+        'source_line_variants': {'date_in_grade_line': 'Source: Office of the Federal Register and U.S. Government Publishing Office, Electronic Code of Federal Regulations, 7 CFR 273.2, SNAP application processing, United States. Retrieved November 12, 2026. Times are the regulation’s limits; each step’s next step named by Oath & Action.'},
         'ledger_row': m['ledger_row'],
         'domain': m['domain'],
         'domain_note': m.get('domain_note', ''),

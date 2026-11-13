@@ -4,8 +4,9 @@
  * set in and joined by elbow links in the context ink, one row a place, each row naming the place's leaves with their
  * counts. A leaf at labels.apart_level (a court of another kind) sits on a box of the track ink with a context edge
  * and its words. Children listed in labels.apart sit in a group of their own after the others, named. Every box takes a
- * subject-ink edge, all one ink. Cards fill as many columns of 210 px as the width holds, each in the shortest column;
- * a phone draws one column.
+ * subject-ink edge, all one ink. Cards fill as many columns of 210 px as the width holds, in the data's order down the
+ * first column, then the next, the columns as even in height as the order allows (BC-S7); a phone draws one column.
+ * A group's count reads every row (c.all_rows where the kit draws only a part).
  * encode: name (text), parent (text: the parent's name), level (category), count (integer), place (text: the leaves'
  * grouping, such as a state).
  * labels: root_sub (words under the root's name, {n}), groups ({main, apart}: headings with {n}), apart ([names]),
@@ -16,6 +17,24 @@
  * leaves). */
 (function (K) {
   'use strict';
+  // BC-S7: cut a list of heights, in order, into at most k runs, one a column, so the tallest column is as short as it
+  // can be, then fill each column in turn up to that height, so the first columns are the fuller; returns each item's
+  // column
+  function K_split(hs, k, gap) {
+    var n = hs.length, pre = [0];
+    hs.forEach(function (h, i) { pre.push(pre[i] + h); });
+    var run = function (i, j) { return j > i ? pre[j] - pre[i] + gap * (j - i - 1) : 0; };
+    var best = [];
+    for (var j = 0; j <= n; j++) best[j] = run(0, j);
+    for (var p = 1; p < k; p++) {
+      var nb = [];
+      for (var j2 = 0; j2 <= n; j2++) { nb[j2] = Infinity; for (var i = 0; i <= j2; i++) nb[j2] = Math.min(nb[j2], Math.max(best[i], run(i, j2))); }
+      best = nb;
+    }
+    var m = best[n] + 1e-6, out = [], col = 0, st = 0;
+    for (var q = 0; q < n; q++) { if (q > st && run(st, q + 1) > m && col < k - 1) { col++; st = q; } out[q] = col; }
+    return out;
+  }
   K.register_chart({
     form: 'hierarchy-tree', name: 'Hierarchy Tree', family: 'structure',
     encode: { name: 'text', parent: 'text', level: 'category', count: 'integer', place: 'text' },
@@ -30,6 +49,10 @@
       var root = c.rows.filter(function (r) { return !r[ep]; })[0];
       if (!root) { c.warn('hierarchy-tree: no row without a parent'); return; }
       var kids = c.rows.filter(function (r) { return String(r[ep]) === String(root[en]); });
+      // where the kit draws only the first rows (a desk's phone drawing, c.all_rows every row), a child whose leaves are
+      // not all among them is left out, so no card prints a part of its count as the whole
+      var all = c.all_rows || c.rows;
+      kids = kids.filter(function (k) { return c.rows.filter(function (r) { return String(r[ep]) === String(k[en]); }).length === all.filter(function (r) { return String(r[ep]) === String(k[en]); }).length; });
       var leaves = function (k) { return c.rows.filter(function (r) { return String(r[ep]) === String(k[en]); }); };
       var ncol = Math.max(1, Math.floor((W - ind + cg) / (210 + cg))), cw = (W - ind - cg * (ncol - 1)) / ncol;
       if (ncol === 1) c.arrange('phone');
@@ -48,14 +71,13 @@
         var odd = L.apart_level && ls.some(function (r) { return String(r[el]) === String(L.apart_level); });
         return { words: ty(place + ': ' + parts.join(', ') + (odd && L.apart_words ? ', ' + L.apart_words : '')), odd: odd };
       };
-      var group = function (list, head) {
+      var group = function (list, head, list_n) {
         if (!list.length) return;
-        var hb = c.text(ind, y + c.size('label') * 0.93, fill(head, { n: list.length }), { role: 'label', weight: 700, max: W - ind });
+        var hb = c.text(ind, y + c.size('label') * 0.93, fill(head, { n: list_n === undefined ? list.length : list_n }), { role: 'label', weight: 700, max: W - ind });
         heads.push(y + c.size('label') * 0.6);
-        var cols = []; for (var i = 0; i < ncol; i++) cols.push(hb.bottom + 10);
-        list.forEach(function (k) {
-          var ci = 0; cols.forEach(function (v, i2) { if (v < cols[ci] - 0.5) ci = i2; });
-          var x = ind + ci * (cw + cg), ls = leaves(k), d = ls.reduce(function (s, r) { return s + (+r[ec] || 0); }, 0);
+        // each card laid out first, so the columns can be cut in order and balanced by height
+        var cards = list.map(function (k) {
+          var ls = leaves(k), d = ls.reduce(function (s, r) { return s + (+r[ec] || 0); }, 0);
           var places = [], byp = {};
           ls.forEach(function (r) { var p = String(r[eg]); if (!byp[p]) { byp[p] = []; places.push(p); } byp[p].push(r); });
           var sub = ty(fill(ls.length ? L.card_sub : (L.card_sub_none || L.card_sub), { n: k[ec], d: d })) + (!ls.length && L.note_field && k[L.note_field] ? '. ' + ty(k[L.note_field]) : '');
@@ -68,9 +90,14 @@
             var s = P.node_size(c, it.words, Object.assign({ max: w, min: w, named: it.head, sub: it.sub, roles: it.head ? ['label'] : ['tick'], pad: it.head ? [10, 7] : (it.odd ? [8, 4] : [0, 3]), weight: it.head ? 700 : 400 }, szo));
             it.w = w; it.h = s ? s.h : 30;
           });
-          var t = P.tree(items, { dir: 'indent', indent: sub_in, row_gap: 2 });
-          t.faults.forEach(function (f) { c.warn(f); });
-          var top = cols[ci];
+          var t2 = P.tree(items, { dir: 'indent', indent: sub_in, row_gap: 2 });
+          t2.faults.forEach(function (f) { c.warn(f); });
+          return { k: k, t: t2 };
+        });
+        var at = K_split(cards.map(function (cd) { return cd.t.height; }), ncol, vg);
+        var cols = []; for (var i = 0; i < ncol; i++) cols.push(hb.bottom + 10);
+        cards.forEach(function (cd, n) {
+          var ci = at[n], x = ind + ci * (cw + cg), k = cd.k, t = cd.t, top = cols[ci];
           t.links.forEach(function (l) {
             var a = t.by[l.from], b = t.by[l.to], lx = x + 8, my = top + b.y + b.h / 2;
             P.link(c, { x: lx, y: top + a.y + a.h }, { x: lx, y: my }, { stroke: 'context', width: 1 });
@@ -88,8 +115,10 @@
         });
         y = Math.max.apply(null, cols) - vg + 26;
       };
-      group(kids.filter(function (k) { return apart.indexOf(String(k[en])) < 0; }), G.main);
-      group(kids.filter(function (k) { return apart.indexOf(String(k[en])) >= 0; }), G.apart);
+      // a group's count reads every row, where the kit draws only the first rows (a desk's phone drawing)
+      var all_kids = (c.all_rows || c.rows).filter(function (r) { return String(r[ep]) === String(root[en]); });
+      group(kids.filter(function (k) { return apart.indexOf(String(k[en])) < 0; }), G.main, all_kids.filter(function (k) { return apart.indexOf(String(k[en])) < 0; }).length);
+      group(kids.filter(function (k) { return apart.indexOf(String(k[en])) >= 0; }), G.apart, all_kids.filter(function (k) { return apart.indexOf(String(k[en])) >= 0; }).length);
       heads.forEach(function (hy, i) {
         P.link(c, { x: spine, y: i ? heads[i - 1] : rb.h }, { x: spine, y: hy }, { stroke: 'context', width: 1 });
         P.link(c, { x: spine, y: hy }, { x: ind - 6, y: hy }, { stroke: 'context', width: 1 });

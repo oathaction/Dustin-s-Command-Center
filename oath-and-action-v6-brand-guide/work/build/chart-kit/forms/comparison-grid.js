@@ -19,13 +19,15 @@
       var tick = c.size('tick'), size = c.size('label'), lh = Math.round(tick * 1.3), llh = Math.round(size * 1.25);
       var ty = function (s) { return K.typeset({ typography: c.spec.typography || { curl_quotes: true, nbsp: true } }, String(s === null || s === undefined ? '' : s).replace(/[ \t\n]+/g, ' ')); };
       var under = function (cl, r) { return cl.under_words ? ty(String(cl.under_words).replace(/\{(\w+)\}/g, function (_, f) { return r[f] === null || r[f] === undefined ? '' : r[f]; })) : ''; };
-      var max = 0; c.rows.forEach(function (r) { if (ek) max = Math.max(max, +r[ek] || 0); });
+      // the bars' scale reads every row, where the kit draws only the first rows (a desk's phone drawing)
+      var max = 0; (c.all_rows || c.rows).forEach(function (r) { if (ek) max = Math.max(max, +r[ek] || 0); });
       var vw = 0; if (ek) c.rows.forEach(function (r) { vw = Math.max(vw, c.measure(K.fmt(r[ek], 'integer'), 'tick', 600, true)); });
       var shares = [L.name_share || 1].concat(cols.map(function (cl) { return cl.share || 1; })).concat(ek ? [L.count_share || 0.6] : []);
       var tot = shares.reduce(function (s, v) { return s + v; }, 0), avail = W - g * (shares.length - 1), ws = shares.map(function (s) { return avail * s / tot; });
       var wide = ws.every(function (w, i) { return w >= (ek && i === ws.length - 1 ? 64 : 96); });
       var bar = function (x, yb, w, r) {
-        var v = +r[ek] || 0, bw = Math.max(1, (w - vw - 6) * v / (max || 1));
+        // BC-S12: the longest bar's value ends 4 px inside its column, never on the drawing's last pixel
+        var v = +r[ek] || 0, bw = Math.max(1, (w - vw - 10) * v / (max || 1));
         c.rect(x, yb - tick * 0.75, bw, tick * 0.8, { fill: 'subject', data: { key: String(r[en]), field: 'count', value: v } });
         c.text(x + bw + 5, yb, K.fmt(v, 'integer'), { role: 'tick', weight: 600, tnum: true, fill: 'label' });
       };
@@ -34,7 +36,7 @@
         var xs = [0]; ws.forEach(function (w, i) { if (i) xs.push(xs[i - 1] + ws[i - 1] + g); });
         var heads = [L.name_label || ''].concat(cols.map(function (cl) { return cl.label; })).concat(ek ? [L.count_label || ''] : []);
         var hb = 0;
-        heads.forEach(function (h, i) { hb = Math.max(hb, c.text(xs[i], tick * 0.95, h, { role: 'tick', weight: 600, fill: 'secondary', max: ws[i] }).bottom); });
+        heads.forEach(function (h, i) { hb = Math.max(hb, c.text(xs[i], tick * 0.95, h, { role: 'tick', weight: 600, fill: 'secondary', max: ws[i] - 4 }).bottom); });
         y = hb + 6;
         c.line(0, y, W, y, { stroke: 'label', width: 1, mark: false });
         c.rows.forEach(function (r) {

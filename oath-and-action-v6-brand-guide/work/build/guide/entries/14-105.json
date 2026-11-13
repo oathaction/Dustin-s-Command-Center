@@ -2,7 +2,7 @@
  "id": "14.105",
  "title": "Use an adjacency matrix when many parts link to many others.",
  "rule": [
-  "Draw one row for each part a link starts from and one column for each part it reaches, in the same order, and shade each cell by its count on a sequential scale, with the count printed in it; leave an empty cell as the page inside a thin grid line. Group the parts with a gap between groups, number the columns and name the rows; on a phone, number the rows too and list the names under the grid. Give a class of links that differs in kind, such as lines of authority with no sign, an outline and a key entry of its own, apart from the scale’s steps."
+  "Draw one row for each part a link starts from and one column for each part it reaches, in the same order, and shade each cell by its count on a sequential scale, with the count printed in it; leave an empty cell as the page inside a thin grid line. Group the parts with a gap between groups, number the columns and name the rows; on a phone, number the rows too and list the names under the grid. Give a class of links that differs in kind, such as lines of authority with no sign, an outline and a key entry of its own, apart from the scale’s steps. Where the title counts the links that stay within one part, mark the diagonal with a thin gray line and name it in the key."
  ],
  "use_when": "The reader asks which parts of a system connect to which, and the links are too many for lines to stay readable.",
  "use_instead": [
@@ -32,7 +32,7 @@
   "14.5",
   "13.9"
  ],
- "builders": "Form adjacency-matrix: node work/build/chart-kit/oa-chart.mjs build s74; encode from, to, value and special (the count in the class with no sign); labels.order sets the parts, labels.groups the gaps, labels.steps the scale with its fills (seq-1 takes the context edge), labels.special_label the outlined class.",
+ "builders": "Form adjacency-matrix: node work/build/chart-kit/oa-chart.mjs build s74; encode from, to, value and special (the count in the class with no sign); labels.order sets the parts, labels.groups the gaps, labels.steps the scale with its fills (seq-1 takes the context edge), labels.special_label the outlined class, labels.diagonal and labels.diagonal_label the diagonal’s line and its key words.",
  "correct": null,
  "failure": null
 }
