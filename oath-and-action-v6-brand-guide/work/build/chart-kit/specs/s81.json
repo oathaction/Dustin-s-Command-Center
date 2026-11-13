@@ -18,7 +18,7 @@
   "More than half the counties, 1,707 of 3,143, sit close enough to a class line that their margin of error could put them in the next class, and 182 two classes away, so the map shows a broad pattern and ranks no county.",
   "The nation’s median is taken over all households, so a county with many households weighs more in it than on the map, where each county is one shape; 549 of the 3,143 counties sit at or above it.",
   "The Census Bureau publishes no estimate for De Baca County, New Mexico, so the map leaves it unshaded. Connecticut’s counties are its nine planning regions.",
-  "The map draws Alaska and Hawaii apart and not to scale. The download lists every county with its margin of error."
+  "The map draws Alaska and Hawaii apart and not to scale. The survey also covers Puerto Rico, which the map does not draw. The download lists every county with its margin of error."
  ],
  "source_line": "Source: U.S. Census Bureau, American Community Survey 5-year estimates, Table B19013, median household income, 2020 to 2024, every county in the 50 states and DC, and the United States; Cartographic Boundary Files, 2024, counties, 1:20,000,000. Retrieved November 12 and 13, 2026. Survey estimates in 2024 dollars; margins are wide in small counties.",
  "credit": "Chart: Oath & Action",
@@ -139,7 +139,8 @@
   "Ruling (a): no named mark, and no county named in words.",
   "DL-E1's conditions (data lead, signed off): the grouped table prints state, counties, the lowest and highest county estimate as values with no county named, and the count in each class; the CSV carries every county's value, margin and class. The nation's row is not among the drawn rows, since the island reads the counties' geoids back from geo.js in the layer's order; it prints beside the map and in the source file (request D-2).",
   "ST-S7 (review fix pass): note 2 says the nation's median weighs households, not counties; 549 of the 3,143 counties with an estimate sit at or above $80,734 (check S81 in cartographer_round3_derive.py --figures). BC-S12: typography.nbsp holds \"2020 to 2024\" together in the key's title at 256 px.",
-  "BC-S3 (review fix pass): no estimate (De Baca County, New Mexico) takes a hatch in the context ink over the land ink on both grounds, map and key, so it never reads as the lowest class (1.09 to 1 on Charcoal before). C-S3: the title names the survey as the source of its class counts and stays a Finding (the data lead's ruling)."
+  "BC-S3 (review fix pass): no estimate (De Baca County, New Mexico) takes a hatch in the context ink over the land ink on both grounds, map and key, so it never reads as the lowest class (1.09 to 1 on Charcoal before). C-S3: the title names the survey as the source of its class counts and stays a Finding (the data lead's ruling).",
+  "ST-S4 (review fix pass): B19013 publishes Puerto Rico's 78 municipios (the research lead's check); the map draws the 50 states and DC, and a note says Puerto Rico is not drawn."
  ],
  "formats": {},
  "typography": {

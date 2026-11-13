@@ -83,16 +83,22 @@
         if (ht < tb.top + 8) toc.scrollTop -= (tb.top + 8 - ht);
         else keepInView(a, toc, 16);
       } else keepInView(a, toc, 16);
-      snapTop(toc);
+      snapTop(toc, a, 16);
     }
   }
-  // the first line cut by a list's top edge comes into whole view
-  function snapTop(box) {
-    var top = box.getBoundingClientRect().top + box.clientTop, links = $$('a', box);
+  // the first line cut by a list's top edge comes into whole view; BC-S15 (round 3 fix pass): where that would push the
+  // current rule (keep) under the list's foot, the cut line leaves the top instead, so the current rule stays whole
+  function snapTop(box, keep, foot) {
+    var top = box.getBoundingClientRect().top + box.clientTop, bottom = top + box.clientHeight, links = $$('a', box);
     for (var i = 0; i < links.length; i++) {
       var r = links[i].getBoundingClientRect();
       if (!r.height) continue;
-      if (r.top < top && r.bottom > top) { box.scrollTop -= (top - r.top); return; }
+      if (r.top < top && r.bottom > top) {
+        var up = top - r.top, k = keep ? keep.getBoundingClientRect() : null;
+        if (k && k.bottom + up > bottom - (foot || 0) && k.top - (r.bottom - top) >= top) box.scrollTop += (r.bottom - top);
+        else box.scrollTop -= up;
+        return;
+      }
       if (r.top >= top) return;
     }
   }

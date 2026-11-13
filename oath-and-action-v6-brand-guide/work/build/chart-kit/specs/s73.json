@@ -5,26 +5,26 @@
  "family": "relationships",
  "tier": "extended",
  "dataset": "fec-jfc-transfers-2024-by-node",
- "reader_question": "Where did each 2024 presidential nominee’s joint fundraising committee send what it raised?",
+ "reader_question": "Where did each 2024 presidential nominee’s joint fundraising committees send what they raised?",
  "evidence": "finding",
  "evidence_label": "Finding",
  "grade_line": "Documented: the committees’ reports to the Federal Election Commission",
- "title": "The Harris Victory Fund sent $899.4 million to other committees in the 2024 cycle, and the Trump National Committee JFC sent $273.8 million.",
- "measure_line": "Dollars each 2024 presidential nominee’s joint fundraising committee transferred to other committees (line 22 of its reports), 2023 to 2024 election cycle, not adjusted for inflation; a link’s width is its dollars, on one scale for both",
+ "title": "Kamala D. Harris’s three joint fundraising committees sent $955.9 million to 54 other committees in the 2024 cycle, and Donald J. Trump’s four sent $679.8 million to 56.",
+ "measure_line": "Dollars each 2024 presidential nominee’s joint fundraising committees transferred to other committees (line 22 of their reports), 2023 to 2024 election cycle, not adjusted for inflation; a link’s width is its dollars, on one scale for both",
  "notes": [
-  "Each nominee had more than one joint fundraising committee. Each drawn here is the one that sent its nominee’s campaign the most, read the same way for both; the nominees’ other such committees sent the Harris campaign $4.9 million and the Trump campaign $160.9 million.",
+  "Each nominee’s bar holds every committee the Federal Election Commission designates a joint fundraising committee that paid the nominee’s campaign in the cycle: for Kamala D. Harris, the Harris Victory Fund, the Harris Action Fund and the Harris Baldwin Victory Fund; for Donald J. Trump, the Trump National Committee JFC, the Trump Save America Joint Fundraising Committee, the Trump 47 Committee and the Trump Bilirakis Victory Fund. The table gives each fund’s transfers.",
   "A joint fundraising committee raises money for several committees at once and splits it among them by the agreement that formed it, which sets how many committees it pays; a transfer passes on money raised for the committee that gets it.",
-  "The 51 state party committees include the District of Columbia’s, and the download lists each with its transfers.",
-  "Drawn here are transfers, line 22 of each committee’s reports, where a joint fundraising committee reports the shares it passes on. On the same reports, the Harris Victory Fund also paid three of the committees drawn $27.1 million for operating expenses (line 21B), $12.0 million of it to the campaign and $15.1 million to the Democratic National Committee, and refunded $81,000 to two committees that had given to it (line 28C), which the table sets apart. The Trump National Committee JFC’s payments to its two committees were all transfers."
+  "Harris’s funds paid the state party committees of the 50 states and the District of Columbia, and Trump’s those of 48 states, the District of Columbia and Guam; a committee two funds paid counts once. The download lists each with its transfers.",
+  "Drawn here are transfers, line 22 of each committee’s reports, where a joint fundraising committee reports the shares it passes on. On the same reports, Harris’s funds also paid committees drawn here $27.3 million for operating expenses (line 21B) and Trump’s $12.7 million, which the chart leaves out. Harris’s funds refunded $81,000 to two committees that had given to them, and Trump’s $4,000 to four (line 28C); the table sets the refunds apart."
  ],
  "credit": "Chart: Oath & Action",
  "illustrative": false,
- "alt": "Two committees side by side, each a bar with links to bars for the committees it transferred money to, every bar as tall and every link as wide as its dollars on one scale. The Harris Victory Fund sent $528.7 million to the Harris campaign, $189.3 million to the Democratic National Committee and $181.4 million to 51 state party committees, $899.4 million in all. The Trump National Committee JFC sent $246.8 million to the Trump campaign and $26.9 million to the Republican National Committee.",
+ "alt": "Two senders side by side, one bar for each nominee’s joint fundraising committees, with links to bars for the committees they transferred money to, every bar as tall and every link as wide as its dollars on one scale. Kamala D. Harris’s three funds sent $533.7 million to the Harris campaign, $240.8 million to the Democratic National Committee, $181.4 million to 51 state party committees and $38,640 to one other committee, $955.9 million in all. Donald J. Trump’s four funds sent $407.8 million to the Trump campaign, $163.8 million to the Republican National Committee, $69.9 million to 50 state party committees and $38.3 million to four other committees, $679.8 million in all.",
  "chart_notes": [
-  "The chart draws both committees alike, in one ink, on one scale: each bar is as tall as the dollars it sent or received, and each link as wide as the dollars it carried."
+  "The chart draws both nominees’ committees alike, in one ink, on one scale: each bar is as tall as the dollars it sent or received, and each link as wide as the dollars it carried; a link under $4 million shows as a hairline."
  ],
  "table": {
-  "caption": "Transfers by each nominee’s joint fundraising committee to other committees, 2023 to 2024 cycle, one row for each committee or group of committees drawn, with two refunds set apart; the download lists every committee",
+  "caption": "Transfers by each nominee’s joint fundraising committees to other committees, 2023 to 2024 cycle, one row for each fund and kind of committee it paid, with refunds set apart; the download lists every committee",
   "columns": [
    {
     "field": "jfc_name",
@@ -36,11 +36,6 @@
     "label": "To",
     "format": "text",
     "row_header": true
-   },
-   {
-    "field": "recipient_state",
-    "label": "State",
-    "format": "text"
    },
    {
     "field": "amount",
@@ -59,7 +54,7 @@
    }
   ],
   "group": {
-   "by": "node",
+   "by": "table_row",
    "columns": [
     {
      "label": "From",
@@ -68,12 +63,19 @@
      "format": "text",
      "words": {
       "HARRIS VICTORY FUND": "Harris Victory Fund",
-      "TRUMP NATIONAL COMMITTEE JFC, INC.": "Trump National Committee JFC"
+      "HARRIS ACTION FUND": "Harris Action Fund",
+      "HARRIS BALDWIN VICTORY FUND": "Harris Baldwin Victory Fund",
+      "TRUMP NATIONAL COMMITTEE JFC, INC.": "Trump National Committee JFC",
+      "TRUMP SAVE AMERICA JOINT FUNDRAISING COMMITTEE": "Trump Save America Joint Fundraising Committee",
+      "TRUMP 47 COMMITTEE, INC.": "Trump 47 Committee",
+      "TRUMP BILIRAKIS VICTORY FUND": "Trump Bilirakis Victory Fund"
      }
     },
     {
      "label": "To",
-     "agg": "key",
+     "agg": "first",
+     "field": "table_to",
+     "format": "text",
      "row_header": true
     },
     {
@@ -104,11 +106,11 @@
  "domain": "D03",
  "states": [],
  "encode": {
-  "source": "jfc_name",
-  "target": "recipient_name_2024_election",
+  "source": "nominee",
+  "target": "node",
   "value": "amount",
-  "target_key": "recipient_id",
-  "kind": "recipient_type",
+  "target_key": "link_id",
+  "kind": "recipient_kind",
   "line": "amount_lines"
  },
  "labels": {
@@ -117,44 +119,61 @@
   ],
   "nodes": [
    {
-    "keys": [
-     "C00703975"
-    ],
-    "name": "Harris for President, the campaign"
-   },
-   {
-    "keys": [
-     "C00010603"
-    ],
-    "name": "Democratic National Committee"
-   },
-   {
-    "source": "HARRIS VICTORY FUND",
+    "source": "Kamala D. Harris",
     "kind": [
-     "Party - Qualified"
-    ],
-    "name": "{n} state party committees"
+     "nominee campaign"
+    ]
    },
    {
-    "keys": [
-     "C00828541"
-    ],
-    "name": "Donald J. Trump for President 2024, the campaign"
+    "source": "Kamala D. Harris",
+    "kind": [
+     "national party committee"
+    ]
    },
    {
-    "keys": [
-     "C00003418"
-    ],
-    "name": "Republican National Committee"
+    "source": "Kamala D. Harris",
+    "kind": [
+     "state party committee"
+    ]
+   },
+   {
+    "source": "Kamala D. Harris",
+    "kind": [
+     "other committee"
+    ]
+   },
+   {
+    "source": "Donald J. Trump",
+    "kind": [
+     "nominee campaign"
+    ]
+   },
+   {
+    "source": "Donald J. Trump",
+    "kind": [
+     "national party committee"
+    ]
+   },
+   {
+    "source": "Donald J. Trump",
+    "kind": [
+     "state party committee"
+    ]
+   },
+   {
+    "source": "Donald J. Trump",
+    "kind": [
+     "other committee"
+    ]
    }
   ],
   "sources": {
-   "HARRIS VICTORY FUND": "Harris Victory Fund",
-   "TRUMP NATIONAL COMMITTEE JFC, INC.": "Trump National Committee JFC"
+   "Kamala D. Harris": "Harris’s three joint fundraising committees",
+   "Donald J. Trump": "Trump’s four joint fundraising committees"
   },
   "sub": {
-   "HARRIS VICTORY FUND": "For Kamala D. Harris, {total}",
-   "TRUMP NATIONAL COMMITTEE JFC, INC.": "For Donald J. Trump, {total}"
+   "Kamala D. Harris": "For Kamala D. Harris, {total}",
+   "Donald J. Trump": "For Donald J. Trump, {total}"
   },
   "value": "${v}",
   "unit": 4000000,
@@ -164,7 +183,8 @@
    100000000
   ],
   "key_title": "Each link’s width is the dollars it carried",
-  "ink": "party"
+  "ink": "party",
+  "key_hairline": "A link under {v} shows as a hairline."
  },
  "formats": {
   "value": "millions:1",
@@ -179,6 +199,7 @@
   "Sign-off fix MB-3: every node is a bar as tall as its dollars in the links' unit, its words beside it (each committee's words head its block), so no box's size reads as a measure it is not; title, widths, unit, key and notes unchanged.",
   "Weight (D3-1097): the page's table groups by the derived node column, one row a node drawn and one a refund, with each committee's count; the CSV export lists all 57 rows with the node each is drawn in; the sidecar's printed line is the transfers_and_refunds variant.",
   "Review fix pass, ST-M1 and AX-M1: with the engineer’s K.group_cell fix the table’s From column prints each fund, through words that name it as the drawing and the title do (labels.sources); the refund rows print “28C, refund”.",
-  "Review fix pass: the title compares no reach until every joint fundraising committee of both nominees is read (the data lead's BC-M1 ruling, D3-1330); note 2 says the agreement that formed a fund sets how many committees it pays (ST-S6's clause); note 3 splits in two, the state parties apart from the report lines (B-S2)."
+  "Review fix pass: the title compares no reach until every joint fundraising committee of both nominees is read (the data lead's BC-M1 ruling, D3-1330); note 2 says the agreement that formed a fund sets how many committees it pays (ST-S6's clause); note 3 splits in two, the state parties apart from the report lines (B-S2).",
+  "Review fix pass, BC-M1 with D3-1330 (the data lead's ruling and its sign-off of the seven funds): S73 draws the derived fec-jfc-transfers-2024-by-node, now from the research lead's fec-jfc-transfers-2024-all-committees (P7-226), every committee the FEC designates a joint fundraising committee that paid a nominee's campaign, three for Harris and four for Trump; one sender bar for each nominee (encode.source nominee); receivers folded by the sidecar's recipient_kind, the same way for both (labels.nodes by source and kind; names from the derived node column, each count of committees distinct); line 22 at RL-3a's $4 million a pixel and key; a link under a pixel keyed as a hairline (Harris's one other committee, $38,640.21). The table groups by the derived table_row, one row for each fund and kind, refunds last; From names each fund through words. The title, which the editor writes, compares no reach the rule does not hold: 54 and 56 committees are counted alike."
  ]
 }

@@ -106,7 +106,33 @@
   },
   "typography": {
     "curl_quotes": true,
-    "nbsp": true
+    "nbsp": true,
+    "replace": [
+      [
+        " U.S.C.",
+        " U.S.C."
+      ],
+      [
+        "U.S.C. ",
+        "U.S.C. "
+      ],
+      [
+        " CFR",
+        " CFR"
+      ],
+      [
+        "CFR ",
+        "CFR "
+      ],
+      [
+        "Section ",
+        "Section "
+      ],
+      [
+        "Article I,",
+        "Article I,"
+      ]
+    ]
   },
   "notes_internal": [
     "Maker A, round 3. Data plan row 91, rule 14.101. Atlas-wide (data lead check 1).",

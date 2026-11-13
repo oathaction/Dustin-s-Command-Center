@@ -274,47 +274,61 @@ def figures():
     for piece in ('terminated for a procedural or administrative reason', 'determined ineligible'):
         same('S65', piece in ' '.join(meta('cms-medicaid-chip-renewal-funnel')['notes'] + [meta('cms-medicaid-chip-renewal-funnel')['qualification']]), True, 'CMS term in the sidecar: ' + piece)
         want('S65', t, piece, 'note 1 quotes CMS (BC-S9)')
+    sn = ' '.join(meta('cms-medicaid-chip-renewal-funnel')['notes'])
+    for piece in ('terminated for failure to submit the renewal form or necessary information', 'did not respond to the State’s request for additional information', 'No record read says how many people ended for a procedural reason were still eligible'):
+        same('S65', piece in sn, True, 'the sidecar quotes the rules (BC-S9): ' + piece)
+    want('S65', t, 'a renewal form or information it asked for does not come back; the record does not say whether those people were still eligible', 'note 1, the procedural reason in the rules\' terms (BC-S9)')
     same('S65', 2 < fu['ended_procedural'] / fu['ended_ineligible'] < 3, True, 'more than twice (2.30)')
     want('S65', sp['measure_line'], 'shares are of renewals due', 'MB-2')
     same('S65', sp['labels']['named'], ['ended_procedural'], 'the named loss')
 
-    # S73: both joint fundraising committees, line 22 alone drawn (ruling RL-3a), folded as the drawing folds them
+    # S73: every joint fundraising committee of both nominees (BC-M1, D3-1330), line 22 alone drawn (RL-3a), folded by kind
     sp, t = spec('s73')
-    rows = read('fec-jfc-transfers-2024')
+    rows = read('fec-jfc-transfers-2024-all-committees')
     nodes = read('fec-jfc-transfers-2024-by-node')
-    same('S73', sorted((r['recipient_id'], r['amount']) for r in nodes), sorted((r['recipient_id'], r['amount']) for r in rows), 'the node file keeps every row')
-    same('S73', sorted(set(r['node'] for r in nodes if r['amount_lines'] == '22')), sorted(['Harris for President, the campaign', 'Democratic National Committee', '51 state party committees, the District of Columbia’s included', 'Donald J. Trump for President 2024, the campaign', 'Republican National Committee']), 'the table groups as the drawing folds')
-    hv = [r for r in rows if r['jfc_name'] == 'HARRIS VICTORY FUND' and r['amount_lines'] == '22']
-    tn = [r for r in rows if r['jfc_name'] == 'TRUMP NATIONAL COMMITTEE JFC, INC.' and r['amount_lines'] == '22']
-    refunds = [r for r in rows if r['amount_lines'] == '28C']
-    same('S73', len(hv) + len(tn) + len(refunds), len(rows), 'every row is line 22 or a line 28C refund')
+    key = lambda r: (r['jfc_id'], r['recipient_id'], r['amount_lines'], r['amount'])
+    same('S73', sorted(key(r) for r in nodes), sorted(key(r) for r in rows), 'the node file keeps every row of the seven funds')
+    same('S73', all(r[k] == n[k] for r, n in zip(sorted(rows, key=key), sorted(nodes, key=key)) for k in rows[0]), True, 'every carried column equal')
     tot = lambda rs: round(sum(float(r['amount']) for r in rs), 2)
-    same('S73', (len(hv), tot(hv), len(tn), tot(tn)), (53, 899402049.70, 2, 273762296.73), 'line 22 sums')
-    same('S73', (len(refunds), tot(refunds), {r['jfc_name'] for r in refunds}), (2, 81000.0, {'HARRIS VICTORY FUND'}), 'refunds')
-    want('S73', sp['title'], 'The Harris Victory Fund sent $%s million to other committees in the 2024 cycle, and the Trump National Committee JFC sent $%s million' % (mil(tot(hv)), mil(tot(tn))), 'title, no comparison of reach (BC-M1)')
-    same('S73', any(w in sp['title'] for w in ('53', 'to two', 'committees in all')), False, 'the title counts no committees (BC-M1)')
-    want('S73', t, 'by the agreement that formed it, which sets how many committees it pays', 'note 2 (ST-S6)')
-    camp = [r for r in hv if r['recipient_id'] == 'C00703975']
-    dnc = [r for r in hv if r['recipient_id'] == 'C00010603']
-    states = [r for r in hv if r['recipient_type'] == 'Party - Qualified' and r['recipient_id'] != 'C00010603']
-    same('S73', (len(camp), len(dnc), len(states), len(hv) - len(camp) - len(dnc) - len(states)), (1, 1, 51, 0), 'Harris folds')
-    same('S73', 'DC' in [r['recipient_state'] for r in states], True, 'the District of Columbia among the 51')
-    want('S73', t, '$%s million to the Harris campaign, $%s million to the Democratic National Committee and $%s million to 51 state party committees, $%s million in all' % (mil(tot(camp)), mil(tot(dnc)), mil(tot(states)), mil(tot(hv))), 'alt, Harris')
-    tc = [r for r in tn if r['recipient_id'] == 'C00828541']
-    rnc = [r for r in tn if r['recipient_id'] == 'C00003418']
-    want('S73', t, '$%s million to the Trump campaign and $%s million to the Republican National Committee' % (mil(tot(tc)), mil(tot(rnc))), 'alt, Trump')
-    b21 = [r for r in rows if float(r['line_21b_amount'] or 0) > 0]
-    same('S73', (len(b21), round(sum(float(r['line_21b_amount']) for r in b21), 2), {r['jfc_name'] for r in b21}), (3, 27141702.01, {'HARRIS VICTORY FUND'}), 'line 21B')
-    same('S73', all(r in hv for r in b21), True, 'line 21B only to drawn committees')
-    want('S73', t, 'paid three of the committees drawn $%s million for operating expenses (line 21B), $%s million of it to the campaign and $%s million to the Democratic National Committee, and refunded $%s to two committees' % (mil(sum(float(r['line_21b_amount']) for r in b21)), mil(float(camp[0]['line_21b_amount'])), mil(float(dnc[0]['line_21b_amount'])), '{:,.0f}'.format(tot(refunds))), 'note 3')
-    note = json.loads(meta('fec-jfc-transfers-2024')['notes'][0])
-    for nominee, campaign_words, drawn in (('Kamala D. Harris', 'Harris', camp), ('Donald J. Trump', 'Trump', tc)):
-        nt = note[nominee]
-        same('S73', round(nt['to_campaign'], 2), tot(drawn), nominee + ': the committee drawn sent the most')
-        same('S73', all(o[1] < nt['to_campaign'] for o in nt['other_jfcs']), True, nominee + ': the rule picks the largest')
-        want('S73', t, 'the %s campaign $%s million' % (campaign_words, mil(sum(o[1] for o in nt['other_jfcs']))), nominee + ': other committees')
+    funds = {n: sorted({r['jfc_name'] for r in rows if r['nominee'] == n}) for n in ('Kamala D. Harris', 'Donald J. Trump')}
+    same('S73', (len(funds['Kamala D. Harris']), len(funds['Donald J. Trump'])), (3, 4), 'three funds and four')
+    words = sp['table']['group']['columns'][0]['words']
+    same('S73', sorted(words), sorted(funds['Kamala D. Harris'] + funds['Donald J. Trump']), 'From names every fund')
+    for f in words:
+        want('S73', sp['notes'][0], words[f], 'note 1 names ' + f)
+    l22 = [r for r in rows if r['amount_lines'] == '22']
+    refunds = [r for r in rows if r['amount_lines'] == '28C']
+    same('S73', len(l22) + len(refunds), len(rows), 'every row is line 22 or a line 28C refund')
+    alt = {}
+    for nom, short, camp, nat, nst, noth in (('Kamala D. Harris', 'Harris', 'the Harris campaign', 'the Democratic National Committee', 51, 1), ('Donald J. Trump', 'Trump', 'the Trump campaign', 'the Republican National Committee', 50, 4)):
+        mine = [r for r in l22 if r['nominee'] == nom]
+        n_all = len({r['recipient_id'] for r in mine})
+        by = lambda k: [r for r in mine if r['recipient_kind'] == k]
+        dist = lambda k: len({r['recipient_id'] for r in by(k)})
+        same('S73', (dist('nominee campaign'), dist('national party committee'), dist('state party committee'), dist('other committee')), (1, 1, nst, noth), nom + ': committees by kind')
+        want('S73', sp['title'], '%s’s %s joint fundraising committees sent $%s million to %d other committees' % (nom, 'three', mil(tot(mine)), n_all) if short == 'Harris' else 'and %s’s four sent $%s million to %d' % (nom, mil(tot(mine)), n_all), nom + ': title')
+        oth = tot(by('other committee'))
+        oth_words = '$%s' % '{:,.0f}'.format(oth) if oth < 1e6 else '$%s million' % mil(oth)
+        want('S73', sp['alt'], '%s’s %s funds sent $%s million to %s, $%s million to %s, $%s million to %d state party committees and %s to %s other committee%s, $%s million in all' % (
+            nom, 'three' if short == 'Harris' else 'four', mil(tot(by('nominee campaign'))), camp, mil(tot(by('national party committee'))), nat, mil(tot(by('state party committee'))), nst,
+            oth_words, 'one' if noth == 1 else 'four', '' if noth == 1 else 's', mil(tot(mine))), nom + ': alt')
+        b21 = [r for r in rows if r['nominee'] == nom and float(r['line_21b_amount'] or 0) > 0]
+        same('S73', all(r['amount_lines'] == '22' for r in b21), True, nom + ': line 21B only to committees drawn')
+        want('S73', t, '%s’s funds%s paid committees drawn here $%s million for operating expenses (line 21B)' % (short, ' also' if short == 'Harris' else '', mil(sum(float(r['line_21b_amount']) for r in b21))) if short == 'Harris' else 'and %s’s $%s million, which the chart leaves out' % (short, mil(sum(float(r['line_21b_amount']) for r in b21))), nom + ': line 21B')
+        rf = [r for r in refunds if r['nominee'] == nom]
+        alt[nom] = (len(rf), tot(rf))
+        sts = {r['recipient_state'] for r in by('state party committee')}
+        same('S73', ('DC' in sts, 'GU' in sts), (True, short == 'Trump'), nom + ': DC among the state parties, and Guam for Trump')
+    same('S73', (alt['Kamala D. Harris'], alt['Donald J. Trump']), ((2, 81000.0), (4, 4000.0)), 'refunds')
+    want('S73', t, 'Harris’s funds refunded $81,000 to two committees that had given to them, and Trump’s $4,000 to four (line 28C)', 'note 4, refunds')
+    same('S73', len({r['recipient_state'] for r in l22 if r['nominee'] == 'Donald J. Trump' and r['recipient_kind'] == 'state party committee'} - {'DC', 'GU'}), 48, 'Trump: 48 states')
+    want('S73', t, 'Harris’s funds paid the state party committees of the 50 states and the District of Columbia, and Trump’s those of 48 states, the District of Columbia and Guam', 'note 3')
     same('S73', sp['labels']['unit'], 4000000, 'unit')
-    same('S73', min(tot(rnc), tot(states), tot(dnc)) > sp['labels']['unit'], True, 'every drawn link is wider than a pixel')
+    n22 = [r for r in nodes if r['amount_lines'] == '22']
+    nk = lambda r: r['node'] + ' (' + r['nominee'] + ')'
+    under = sorted(n for n in {nk(r) for r in n22} if sum(float(r['amount']) for r in n22 if nk(r) == n) < sp['labels']['unit'])
+    same('S73', under, ['1 other committee (Kamala D. Harris)'], 'the one link under a pixel, keyed as a hairline')
+    want('S73', t, 'a link under $4 million shows as a hairline', 'chart note, hairline')
 
     # S74: the region matrix against the 118 links
     sp, t = spec('s74')

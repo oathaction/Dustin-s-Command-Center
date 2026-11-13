@@ -177,7 +177,17 @@
   },
   "typography": {
     "curl_quotes": true,
-    "nbsp": true
+    "nbsp": true,
+    "replace": [
+      [
+        " U.S.C.",
+        " U.S.C."
+      ],
+      [
+        "U.S.C. ",
+        "U.S.C. "
+      ]
+    ]
   },
   "notes_internal": [
     "Maker A, round 3. Data plan row 90 with the sign-off's change 5, rule 14.100. Domain D05 from the sidecar.",

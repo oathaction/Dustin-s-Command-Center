@@ -1,6 +1,6 @@
 /* Locator map (coverage plan 3.14, core; S79). Where a story takes place: the place the title names as the view's one red
  * point with its keyline, a second place in the text's ink for scale, its county in the light fill with a context edge,
- * the state's other counties in the track ink, neighboring states as ghost lines cut at the view's edge, a scale bar,
+ * the state's other counties in the track ink, neighboring states as ghost lines cut at the view's thin frame, a scale bar,
  * and a small United States inset in a frame with the state in the light fill and the view drawn on it.
  * encode: name (text), lon (number), lat (number).
  * labels: layer (a fitted county layer, 'counties-ca'), state (the state's two-digit code), county (the county's geoid),
@@ -17,8 +17,9 @@
       var L = c.labels, W = c.width, en = c.field('name'), elo = c.field('lon'), ela = c.field('lat');
       var C = K.geo(L.layer), S = K.geo('states'), desk = W >= 560;
       var vw = desk ? Math.round(W * 0.56) : W, vh = desk ? 560 : Math.round(W * 1.45);
-      var T = K.parts.map_fit(c, C, { x: 0, y: 0, w: vw - 40, max_h: vh });
-      var box = { x0: 0, y0: 0, x1: vw, y1: T.h };
+      // C-S5, BC-S6 (round 3 fix pass): the view sits in a thin frame, so the neighbors' lines end at a drawn edge
+      var FP = 8, T = K.parts.map_fit(c, C, { x: FP, y: FP, w: vw - 40 - FP, max_h: vh - 2 * FP });
+      var box = { x0: 0, y0: 0, x1: vw, y1: T.h + 2 * FP };
       // the states layer in this view: the county layer's frame is the base projection fitted (L.fit)
       var f = C.fit || [1, 0, 0], TS = { k: T.k * f[0], ox: T.ox + T.k * f[1], oy: T.oy + T.k * f[2] };
       // neighboring states: their lines, cut at the view's edge, every line the state does not share
@@ -46,6 +47,7 @@
         flush();
       });
       if (d) c.path(d, { fill: 'none', stroke: 'ghost', width: 1, pts: subs, closed: false, mark: false });
+      c.rect(box.x0 + 0.5, box.y0 + 0.5, box.x1 - box.x0 - 1, box.y1 - box.y0 - 1, { stroke: 'gridline', width: 1, mark: false });
       // the state's counties, its county in the light fill
       K.parts.map_shapes(c, C, T, C.ids.map(function (id) { return { id: id, fill: id === L.county ? 'light-fill' : 'track' }; }));
       K.parts.map_mesh(c, C, T, { stroke: 'surface', width: 1 });
@@ -85,6 +87,17 @@
         var clear = pts.every(function (p) { return p.x + p.r + 4 < g.x || p.x - p.r - 4 > g.x + g.w || p.y + p.r + 4 < g.y || p.y - p.r - 4 > g.y + g.h; });
         if (fits && clear) { kpick = [cp[0] + o[0], cp[1] + o[1]]; krole = role; }
       }); });
+      // else at the county's widest room clear of the places (C-S5: its lower right at a desk)
+      ['label', 'tick'].forEach(function (role) {
+        if (kpick) return;
+        var kb0 = c.text_box(0, 0, L.county_label, { role: role, weight: 600, anchor: 'middle' });
+        K.parts.widest_spots(polys, kb0.w, kb0.h, 2, cp[1]).some(function (sp) {
+          var g = { x: sp.x - kb0.w / 2 - 2, y: sp.y - kb0.h / 2 - 2, w: kb0.w + 4, h: kb0.h + 4 };
+          var clear = pts.every(function (p) { return p.x + p.r + 4 < g.x || p.x - p.r - 4 > g.x + g.w || p.y + p.r + 4 < g.y || p.y - p.r - 4 > g.y + g.h; });
+          if (clear) { kpick = [sp.x, sp.y - kb0.h / 2 - kb0.y]; krole = role; }
+          return clear;
+        });
+      });
       var kt;
       if (kpick) kt = c.text(kpick[0], kpick[1], L.county_label, { role: krole, weight: 600, anchor: 'middle' });
       else {
@@ -98,8 +111,8 @@
         c.text(sp[0], sp[1], L.state_label, { role: 'label', weight: 600, anchor: 'middle', halo: true });
       }
       // the scale, under the state at its left
-      var sb = K.parts.map_scale(c, C, T, 8, T.y + T.h - 22);
-      var low = T.y + T.h;
+      var sb = K.parts.map_scale(c, C, T, 8 + FP, T.y + T.h - 22);
+      var low = box.y1;
       // the inset: the United States in a frame, the state in the light fill, the view drawn on it
       var ix = desk ? vw + 24 : 0, iy = desk ? 0 : low + 16, iw = desk ? W - vw - 24 : Math.min(W, 240);
       var TI = K.parts.map_fit(c, S, { x: ix, y: iy, w: iw, pad: 6 });

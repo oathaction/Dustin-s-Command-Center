@@ -117,8 +117,9 @@
             if (ok) { c.text(cands[i][0], byy - b0.y, st, { role: 'tick', weight: 700, anchor: 'middle', halo: true }); placed.push({ x: bx, y: byy, w: b0.w, h: b0.h }); named[st] = true; ok = 'in'; break; }
           }
           // BC-S5 (round 3 fix pass): at a desk, a state whose block holds no room for its code (a single seat, a block
-          // of its party's own squares) takes it beside the block on the ground, on the shortest leader from one of its
-          // squares that clears every word and every other leader; the words never sit on a square
+          // of its party's own squares) takes it beside the block on the ground, on the shortest leader (30 px at most) from one
+          // of its squares that runs over the ground or its own squares and clears every word and every other leader; the
+          // words never sit on a square. An inland state with no ground in reach stays in the note
           if (ok !== 'in' && big) later.push({ st: st, cells: cells, b0: b0 });
         });
         // the codes set beside, after every code inside a block, so no leader runs under a code set later
@@ -130,7 +131,7 @@
               return false;
             };
             var done = false;
-            [6, 12, 20, 30, 44, 60, 80].forEach(function (d) {
+            [6, 12, 20, 30].forEach(function (d) {
               cells.forEach(function (sq) {
                 [[1, 0], [-1, 0], [0, -1], [0, 1], [0.7, -0.7], [0.7, 0.7], [-0.7, -0.7], [-0.7, 0.7]].forEach(function (v) {
                   if (done) return;
@@ -138,15 +139,17 @@
                   var ex = qx + v[0] * size / 2, ey = qy + v[1] * size / 2;
                   var mx2 = ex + v[0] * (d + b0.w / 2), my2 = ey + v[1] * (d + b0.h / 2);
                   var b = { x: mx2 - b0.w / 2, y: my2 - b0.h / 2, w: b0.w, h: b0.h };
-                  if (b.x < 0 || b.x + b.w > W || b.y < top) return;
+                  if (b.x < 0 || b.x + b.w > W || b.y < nb.bottom + 2) return;
                   if (occupied(b.x - 1, b.y - 1, b.x + b.w + 1, b.y + b.h + 1)) return;
                   if (c.texts.some(function (t) { return b.x < t.x + t.w + 2 && t.x < b.x + b.w + 2 && b.y < t.y + t.h + 2 && t.y < b.y + b.h + 2; })) return;
                   var lx = Math.max(b.x, Math.min(ex, b.x + b.w)), ly = Math.max(b.y, Math.min(ey, b.y + b.h));
                   var ln = { x1: ex, y1: ey, x2: lx, y2: ly };
-                  if (c.texts.some(function (t) { return K.leader_crosses(ln, t); })) return;
+                  if (c.texts.some(function (t) { return K.seg_hits_box(ln.x1, ln.y1, ln.x2, ln.y2, t.x - 1, t.y - 1, t.x + t.w + 1, t.y + t.h + 1); })) return;
                   // the leader crosses no other leader
                   var xl = function (a, b2) { var dd = function (p, q, r) { return (q[0] - p[0]) * (r[1] - p[1]) - (q[1] - p[1]) * (r[0] - p[0]); }; return dd([a.x1, a.y1], [a.x2, a.y2], [b2.x1, b2.y1]) * dd([a.x1, a.y1], [a.x2, a.y2], [b2.x2, b2.y2]) < 0 && dd([b2.x1, b2.y1], [b2.x2, b2.y2], [a.x1, a.y1]) * dd([b2.x1, b2.y1], [b2.x2, b2.y2], [a.x2, a.y2]) < 0; };
                   if ((c.leaders || []).some(function (l) { return xl(l, ln); })) return;
+                  // and runs over the ground or the state's own squares only, so it never points across another state
+                  for (var k2 = 1; k2 < 8; k2++) { var px = ex + (lx - ex) * k2 / 8, py = ey + (ly - ey) * k2 / 8, o3 = own[Math.floor((px - IN) / pitch) + ',' + Math.floor((py - top) / pitch)]; if (o3 && o3.r[es] !== st) return; }
                   c.line(ex, ey, lx, ly, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
                   c.text(mx2, b.y - b0.y, st, { role: 'tick', weight: 700, anchor: 'middle', halo: true });
                   placed.push(b); named[st] = true; done = true;
