@@ -80,12 +80,14 @@ For board 3: every change below sits in chapter 18 or the shell, which Gate 2 ap
 
 ### To the engineer (the chart kit)
 
-1. **(Low) `kit.js`, its `beforeprint` (line 1436 or near):** `opened = …querySelectorAll('figure.oac-fig details.oac-eq:not([open])')` replaces the list, so a second `beforeprint` before `afterprint` forgets the first and leaves every table open after print (measured on my build: 101 tables stayed open after two `beforeprint` events and one `afterprint`). `opened = opened.concat(…)` keeps it. The shell's own list concatenates, and on a single print the two listeners restore the page exactly (tested). Chromium fires one of each per print, so this is a guard, not a fault a reader meets today.
+1. **The strict build fails on one warning outside my files (21:39 UTC):** "[Rule 26.7] s-26-token-table is not what tokens.json 6.0.0-gate3.3 makes; run token_table_build.py". `tokens.json` changed in the 21:38 snapshot and the token table was not rebuilt. My 21:12 strict build, before that change, passed with 0 warnings.
+2. **(Low) `kit.js`, its `beforeprint` (line 1436 or near):** `opened = …querySelectorAll('figure.oac-fig details.oac-eq:not([open])')` replaces the list, so a second `beforeprint` before `afterprint` forgets the first and leaves every table open after print (measured on my build: 101 tables stayed open after two `beforeprint` events and one `afterprint`). `opened = opened.concat(…)` keeps it. The shell's own list concatenates, and on a single print the two listeners restore the page exactly (tested). Chromium fires one of each per print, so this is a guard, not a fault a reader meets today.
 
 ### To the editor
 
 1. **(Optional, words only.)** Rule 18.22's step 1 now reads "Concentration of household wealth raises money spent to influence politics. People with more wealth can give more to campaigns, outside groups and lobbyists, so wealth concentrated at the top raises the money spent to influence politics." The second sentence repeats the title's words; if you shorten it, the hold is re-timed from the new words (250 ms a word with "Step 1 of 3:", never under 6,000 ms) and I make the change in the code set.
-2. **(Optional.)** `s-18-23-anatomy`'s readout gives A1's detail as "How much of the nation’s wealth the top tenth of households hold", and its panel text differs from the code set's `data-oa-detail` lines, which take the atlas's descriptions. Both are as approved at Gate 2 and untouched here.
+2. **One wording for Loop R1's first title in a sentence.** Rule 18.22's code set says "Ready. Start at the concentration of household wealth" and "… raise the concentration of household wealth, where the loop began", as the atlas's `how_to_read` ends; Rule 15.19's plate, on the same loop, says "Start at concentration of household wealth" and "raise concentration of household wealth". Either is defensible; the guide should pick one. If you choose the bare form, I change the code set, its anatomy plate and the generator strings to match and re-time the holds.
+3. **(Optional.)** `s-18-23-anatomy`'s readout gives A1's detail as "How much of the nation’s wealth the top tenth of households hold", and its panel text differs from the code set's `data-oa-detail` lines, which take the atlas's descriptions. Both are as approved at Gate 2 and untouched here.
 
 ### To the main session
 

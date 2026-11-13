@@ -45,6 +45,15 @@ Under DR-271 the share and the 15,000-byte line are figures the build reports; e
 | DD-I17 to DD-I19 | Waiting | IM-E7 items 3 to 5 |
 | DD-I20, Should | Yes | "fiscal 2028" held |
 
+### The editor's words: what I applied
+
+- First look (21:03) and 21:17 rows: all applied, S89's title, chart note, note 2 and alt; S93's title and grade line; S90's gloss of current spending and note 2; S91's territorial line ("10-year") and note; S92's title and note with I013's own title; S94's note 2 with "written"; entry 14.135's rule.
+- 21:22 and 21:24 rulings: S94's title (no colon); S89's eyebrow "In place of step 3"; S93 keeps "119-12" in our words, sets the page's paired single marks as double marks, its crop line in the label style and its one note in the editor's words.
+- 21:28 rows: S90's shares split as the editor worded them (45 cents the states; 43 cents local with the federal 12 cents), New York and Idaho sharing one fact, so six facts stay.
+- 21:35 entry rows: 14.137, 14.138, 14.140 and 14.141 applied as written.
+- **For the editor:** S91's title is not your 21:22 row. The data lead's MI-7 (21:24, after your row) asks the title to name the three territories, since Puerto Rico's district judges serve for life; it now reads "District judges serve for life except in Guam, the Northern Mariana Islands and the Virgin Islands; judges pick bankruptcy judges for 14 years and full-time magistrate judges for eight." (29 words). Its words and length are yours to set within MI-7.
+- Waiting: ED4-4 (S89's source line ending) and ED4-5 (S91's source line, "four in the territorial courts"), both sidecar variants for the research lead.
+
 ## Routine calls
 
 - D3-xxx | S89 draws actors as lanes named in words, one each for local, state and tribal, federal and residents, and each step's box spans the lanes of those who act at it | Ruling (b): actors by position, not ink; call 7: no approved Civic Line drawing means a level of government, a governor, FEMA or the President, so no icon stands for any of them

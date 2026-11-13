@@ -88,6 +88,11 @@ Chapter 15's three plates that print no chain label: 15.5 and 15.17 print titles
 
 ### To the engineer
 1. DR-267 for Rules 18.22 and 18.23: landed on your side; my rescan finds no chain label in chapter 18.
+2. For the main session: the strict build at 21:39 warns once, on Rule 26.7's token table (`s-26-token-table` is not what tokens.json 6.0.0-gate3.3 makes; `token_table_build.py`), which is not chapter 15's.
+
+### Answers to the accessibility lead's requests from the tests (21:38 UTC)
+3. **15.19's space.** Done at 21:34, before your test build, I expect: each step's line and its more words are joined by `&#32;` (the plate minifier closes a plain space between two tags), and the strict build carries `politics.</span>&#32;<span class="oa-stepper-more">`.
+4. **15.20, L56's red.** You read it right: my CSS showed L56's lit marks but left their ink, and my behavior test checked only that `.hi` showed. Fixed at 21:38: when a reform is chosen, its targets' lit marks take the red line on the ink case and the red head, and its pills the 3 px red outline, by the same values the class `rt` and `rp` draw; the other reforms' targets go back to ink. The behavior test now reads L56's computed stroke and head against L42's red (rerun pending under the load limit).
 
 ## Tested
 

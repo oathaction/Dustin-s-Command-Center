@@ -16,7 +16,9 @@ Started 20:39 UTC (clock read).
 - **Dot plot card mode LANDED (by 21:27; my message to the main session said 21:36, written without reading the clock):** `c.inner(x, y, w, k, {label: 'named', ranks: 'across', height})`, on the data lead's five conditions; **S19 byte-identical** in all 932 drawings (every sweep width from 256 to 720 px, the guide columns, 720 and 1024 px, both grounds), compared by script before and after. Under "Contracts", R4-4.
 - **Kit part budget raised to 560,000 bytes (by 21:24, the main session's call; routine calls).**
 - **DR-271 LANDED in the build (clock read 21:41 UTC):** every allocation is a reported note; the page's 16 MB is the one stop. Details under "DR-271". `guide_build.py --self-test` 35 of 35 scenarios, 344 of 344 expectations; `guide_charts.py --self-test` every planted fault caught.
-- **Queue, in order (the main session's order):** the design director's Must, S91's shared-row card grid (DD-I12); IM-E6 (S95's lowest label band, and the row-header hold parity bug); C4-E1; C4-E2; the design director's three Should (text-wrap pretty on card text and the source line; S90's facts variant; the orphan guard last, measured for reach first, every signed-off drawing it would move listed for the data lead before it lands); the key path walk; each landing build's weight report.
+- **Landed by 21:40 UTC (clock read):** S91's shared-row grid (DD-I12, `oac-h-rows`); IM-E6's band under the zero line with the 2 px dot gap (least gap 2.32 px, rings 3.08 px, on both crops), and IM-E8 (`grade_line` rides to the page for a card); the `typography.hold` row-header parity fix (S89 with "individual help" held: the old kit fails parity at 1440 and 390 px on both grounds, the new passes); IM-E7's five items (below); **C4-E1** in the tokens, 6.0.0-gate3.3 (the phone tile gap 2.5 to 2 px), token tests all passing, S12 and S78 coding all 51 states at 326 and 358 px. **C4-E2 went to the component engineer** (it changes only `bubble-map.js`). S85, S89 to S94, S12 and S19 build PASS with captures and the sweep on today's kit.
+- **Waiting on the main session:** chapter 26's token table (`s-26-token-table.html`, written by `token_table_build.py`, neither in my row) is one token version behind, so the strict build warns on Rule 26.7 until it is rerun; asked at 21:40.
+- **Queue, in order:** the design director's two Should (text-wrap pretty on card text and the source line; S90's facts variant); the orphan guard last, measured for reach first, every signed-off drawing it would move listed for the data lead before it lands; the key path walk (R4-5); each landing build's weight report.
 
 ## Summary
 
@@ -115,7 +117,11 @@ Each text class sets one type role from the chart tokens, so the type check can 
 
 **9. Weight.** A card's words print twice, in the card and in the table equivalent. Each plate stays at 13,172 bytes or less with its frame (read the share again from each strict build); the weight line in `build` reports it.
 
-**IM-E1, a phrase held on one line (SET with R4-3).** A spec's `typography` takes `hold`: a list of phrases, such as `["Public Law 119-12", "H.R. 7008"]`. In HTML words (title, measure line, notes, source, cards, table cells) each listed phrase prints inside `<span class="oac-nw">`, which keeps it on one line; in a drawing, `K.wrap` treats it as one word. No U+2011 and no change to the stored words.
+**IM-E7 (LANDED by 21:37 UTC), for S92 and S94:** (1) an eyebrow line is `p.oac-h-k` (secondary ink, 600 weight), already in the contract; (2) `p.oac-h-limit`, a limit line with 8 px above it at the small size; (3) `span.oac-h-sq` and `span.oac-h-sq-strong`, a kind of date with a 10 px square before its words at 600 weight, open with a 1.5 px subject edge or filled in the subject ink (CanvasText in forced colors), the words always present; (4) `h.mark(w, ht, fn, {fluid: true})` draws a mark that scales to its box (`oac-h-fluid`), and a fluid mark that holds words fails (`build`), since its words would scale; (5) `oac-h-dates` items run as two columns from 480 px (the date's `p.oac-h-name` in an 11.25rem column, the rest beside it), one column under it, the DOM order unchanged.
+
+**DD-I12 (LANDED by 21:33 UTC), S91's shared rows:** `oac-h-rows` on `.oac-h-cards`: from 27rem each card is a subgrid of the list's rows (`grid-row: span 24`, so up to 11 fields with a name and a mark) and its `dl` is `display: contents`, so each field's term and value sit on rows shared across the cards side by side; where the cards stack they flow as before.
+
+**IM-E1, a phrase held on one line (SET with R4-3; read-back fixed by 21:35 UTC).** A spec's `typography` takes `hold`: a list of phrases, such as `["Public Law 119-12", "H.R. 7008"]`. In HTML words (title, measure line, notes, source, cards, table cells) each listed phrase prints inside `<span class="oac-nw">`, which keeps it on one line; in a drawing, `K.wrap` treats it as one word. No U+2011 and no change to the stored words. The page reads a held phrase back from the table with its stored spaces (`K.rows_from_table`), so a form that wraps a stored word before typesetting it draws on the page as in Node (the infographics maker's IM-E6 item 2, S89's row-header column).
 
 ### R4-4. The social card, S95 (SET 21:05 UTC; the kit side is being built)
 
@@ -145,6 +151,7 @@ Each strict build of the guide's own chapters to scratch (`guide_build.py --stri
 | 20:49, scratch mirror with the stacked tile | (mirror) | | 513,702 | 2,229,083 | 13,172 for 13 | | |
 | 21:19, R4-2 to R4-4 and A4-E1 landed, the makers' forms registered (97 of 97) | **1**: "chart kit weighs 0.55 MB, over its budget of 0.55 MB" | 11,358,287 | 550,217 | 2,339,184 | 17,323 for 7 | 15,050,450 | 312,594 |
 | 21:21, the page's kit.css minified | 0, 0 warnings | 11,405,561 | **549,966 (34 bytes under)** | 2,386,458 | 24,663 for 3 | 15,050,450 | 312,594 |
+| 21:39, DR-271, the dot plot's card mode, IM-E6 to IM-E8, the shared rows, C4-E1 and the makers' latest forms | **1**: Rule 26.7's token table one version behind (C4-E1; waiting on the main session) | 11,500,254 | 558,221 (the reported figure 560,000, a note under DR-271) | 2,411,559 | 24,458 for 2 | 15,051,456 | 381,180 (the systems designer's 15.19 to 15.21) |
 
 - The share rises as plates land (fewer to come) and falls as the kit grows. From 21:19 the renderer is no longer projected: all 97 forms are registered, so `renderer_grown` equals the part itself.
 - **The kit part is the binding line now.** Round 4's six drawn forms add 29,870 bytes minified (process explainer 6,576, Euler 5,994, Venn 5,477, annotated illustration 4,347, proportional symbols 4,322, icon array 3,154); the four card forms ride nowhere (R4-3). My additions: `kit.js` about 1,400 (the cell, the stage floor, the crop, `c.inner`, the crop mount, the hold), `parts.js` about 520 (icon, chip), `kit.css` about 3,000 before the minify. The dot plot's card mode, C4-E1 and C4-E2 will add 2 to 3 KB, past the budget; the main session holds the call (21:22).
@@ -158,6 +165,18 @@ Dustin's answer (DR-271), applied by the main session's instruction. What change
 - `work/build/scripts/phase-3/phase3_ch14_build.py`: a sketch over its 4,096 bytes (R1-C1) is a printed note, not a fault.
 - Unchanged: the kit's own weight line (it never failed a spec; it warns past 15,000 for S65 on, and reports the share).
 - **Proof:** `guide_build.py --self-test` 35 of 35 scenarios, 344 of 344 expectations, among them: chapter 14 at 2,900,000 bytes writes its page with and without `--strict`, a note names the stop and no warning does; a page of 16,471,698 bytes writes no page and exits 3, with and without `--strict`, its warning naming the 16,000,000-byte limit; the stage B and opener scenarios read their weight lines as notes. `guide_charts.py --self-test`: a page one byte over 16 MB stops, one at 16,000,000 does not; chapter 14 one byte over its stop, a chart far over its average, chapters 13 and 15 over their ceilings, the rules' allowance and the map geometry are each reported as a note and not a warning; the projection still warns.
+
+## Changed drawings, for board 3
+
+- **S07, S12 and S78's phone drawings (C4-E1, tokens 6.0.0-gate3.3):** the phone tile gap narrows from 2.5 to 2 px, so each phone tile is 1 px larger. S12 and S78 now code all 51 states at 326 and 358 px (they left WA, WV and WY to a note); **S07's tiles move 1 px larger and draw no codes on a phone, as before.**
+- **S12 at a desk (DR-261, approved):** the stacked tile in place of board 1's one-line tile, at every desk width, from a 618 px drawing once the cartographer sets `stage_min`.
+- **S19:** unchanged (932 drawings byte-identical); the dot plot's card mode draws only inside S95.
+- **S94's dates (IM-E7 item 5):** two columns from 480 px; a round 4 plate, not yet on a board.
+
+## Changed outside chapters 13 to 15
+
+- `kit.css` on the guide's page is minified (the same 204 rules by the browser's parse).
+- `guide_build.py` and `guide_charts.py` under DR-271: allocations reported as notes, the 16 MB page stop added (above).
 
 ## Routine calls
 
