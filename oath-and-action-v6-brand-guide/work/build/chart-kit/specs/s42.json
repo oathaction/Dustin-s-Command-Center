@@ -41,6 +41,9 @@
       }
     ]
   },
+  "typography": {
+    "curl_quotes": true
+  },
   "show": [
     "evidence",
     "chart",

@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. Data visualizatio
 
 ## Status
 
+- 18:48 UTC. **Guide words final** ("Fix round"), with the editor's S06, S37 and S42 curl the one change still to land. S12's rows and fold and sketch 14.124's pair set in the decisions file; S12's scroll figures corrected to 468 and 62.
 - 18:32 UTC. Ruled: S06, S37 and S42 curl their apostrophes (printed words only, drawings byte-identical); S12's column figure is 558 px. "Guide words final" follows the editor's change.
 - 18:31 UTC. **B2-M6 confirmed** on the 18:25 run but for two builder items (reply `item` keys added at 18:30; count captions to print). All my fix round items are in.
 - 18:21 UTC. **Fix round items written** into the decisions file (B2-M1 five replies, B2-M2, B2-M3, B2-M5, B2-S4, B2-S7, B2-S8, B2-S11); S73's cut and the editor's two counts signed off; B2-M6 waits on the builder's rerun.
@@ -57,6 +58,16 @@ The main session's final strict build measures S73 at 13,263 bytes as placed, ab
 
 - **S06, S37 and S42 take `"typography": {"curl_quotes": true}`, as S09, S10 and S21 did. For the editor:** printed words only (D3-519); the data and each CSV export stay as stored. By `grep` on the builder's 1,440 px SVGs, none of the three drawings holds a straight apostrophe, so each drawing must come out byte-identical; please confirm that with the kit after the change, and if any drawing moves, hold the change and tell me. S06 is a board 1 chart: a curl in its table text changes no drawing, so panel 1 needs no new row.
 - **S12's 1,024 px figure is 558 px, for the builder:** the guide's column at a 1,024 px window, from the cartographer's measure file (`guide_column`, "558 px at 1024"), so the 1,024 px frame scrolls 466 px. The measure file's 556 is the part of the drawing visible inside the frame's edges; the board prints 558 wherever it names the column, labels included.
+
+### S12’s rows and fold, sketch 14.124’s pair, and one correction (18:48 UTC)
+
+- **S12's `pictures`** now follow the builder's schema: row "1440", the as-built frame (`20261113_S12-Stage-1440-Frame-Newsprint.png`) beside the stacked tile cropped to its 723 px drawing (`…_S12-Stacked-Tile-1440-Drawing-Newsprint.png`); row "1024", the frame in its 558 px column (`…_S12-Stage-1024-Frame-Newsprint.png`) beside the stacked tile in its 618 px frame (`…_S12-Stacked-Tile-1024-Frame-Newsprint.png`); then, `fold: true`, board 1's 1,024 px plate, the as-built plates at 1,440 and 1,024 px, and the phone pair in row "phone" (board 1's 358 px drawing, today's 326 px). Each label states what the picture shows, with figures from the measure file's `frames`.
+- **DR-255's `pictures`:** the gray half in the same plate (`20261113_S-14-124-Sketch-Gray-Before-Plate-1440-Newsprint.png`, before) beside today's (`…_Sketch-After-Plate-1440-Newsprint.png`, after), both 868 by 545.
+- **Correction to my 18:21 B2-S8 figure:** the measure file's `frames` give the 1,024 px frame a 558 px box, 556 px showing inside its two 1 px edges, and a 468 px scroll (1,024 less 556); the stacked tile's 618 px frame scrolls 62. I had written 466 and about 60, taking 558 as the part showing. S12's words now say 558, 556, 468 and 62, and add that ME, NH and RI sit past the 1,440 px frame's edge until an 81 px scroll and that 23 arrows draw as a head alone in the 618 px frame. The column figure for every label stays **558 px**.
+
+### Guide words final (18:48 UTC)
+
+No further spec change comes from me this round. The one spec change still to come is the editor's curl of S06, S37 and S42 under my 18:32 ruling: printed words only, data as stored, each drawing byte-identical by `cmp`, as S09, S10 and S21 were; if the drawings are byte-identical it needs no further sign-off, and if one moves the editor holds it. When it lands, the guide's words are final for this round.
 
 ### Routine calls, fix round
 

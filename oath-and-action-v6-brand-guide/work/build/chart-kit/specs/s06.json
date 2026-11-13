@@ -112,6 +112,9 @@
       }
     ]
   },
+  "typography": {
+    "curl_quotes": true
+  },
   "chart_notes": [
     "Key: Oath & Action’s reading of the atlas’s words, by arrow and tint: up; slightly up; flat; flat or down; down; mixed; same as scenario ii."
   ],
