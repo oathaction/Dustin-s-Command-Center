@@ -9,7 +9,8 @@
  * encode: name (text), parent (text: the parent's name), level (category), count (integer), place (text: the leaves'
  * grouping, such as a state).
  * labels: root_sub (words under the root's name, {n}), groups ({main, apart}: headings with {n}), apart ([names]),
- * card_sub (words under a child's name: {n} its count, {d} the sum under it), drop ([prefixes left off names]),
+ * card_sub (words under a child's name: {n} its count, {d} the sum under it), card_sub_none (the same for a child with
+ * no leaves), drop ([prefixes left off names]),
  * single (words a leaf with no name of its own drops, such as "District of"), shared_level and shared_words (a count
  * shared by several leaves, {n}), apart_level and apart_words, note_field (a field whose words go under a child with no
  * leaves). */
@@ -18,7 +19,7 @@
   K.register_chart({
     form: 'hierarchy-tree', name: 'Hierarchy Tree', family: 'structure',
     encode: { name: 'text', parent: 'text', level: 'category', count: 'integer', place: 'text' },
-    labels: ['root_sub', 'groups', 'apart', 'card_sub', 'drop', 'single', 'shared_level', 'shared_words', 'apart_level', 'apart_words', 'note_field'],
+    labels: ['root_sub', 'groups', 'apart', 'card_sub', 'card_sub_none', 'drop', 'single', 'shared_level', 'shared_words', 'apart_level', 'apart_words', 'note_field'],
     phone: 'differs',
     draw: function (c) {
       var L = c.labels, W = c.width, en = c.field('name'), ep = c.field('parent'), el = c.field('level'), ec = c.field('count'), eg = c.field('place');
@@ -57,7 +58,7 @@
           var x = ind + ci * (cw + cg), ls = leaves(k), d = ls.reduce(function (s, r) { return s + (+r[ec] || 0); }, 0);
           var places = [], byp = {};
           ls.forEach(function (r) { var p = String(r[eg]); if (!byp[p]) { byp[p] = []; places.push(p); } byp[p].push(r); });
-          var sub = ty(fill(L.card_sub, { n: k[ec], d: d })) + (!ls.length && L.note_field && k[L.note_field] ? '. ' + ty(k[L.note_field]) : '');
+          var sub = ty(fill(ls.length ? L.card_sub : (L.card_sub_none || L.card_sub), { n: k[ec], d: d })) + (!ls.length && L.note_field && k[L.note_field] ? '. ' + ty(k[L.note_field]) : '');
           var items = [{ id: 'k', parent: null, words: ty(short(k[en])), sub: sub, head: true }].concat(places.map(function (p, j) {
             var rw = row_words(p, byp[p]);
             return { id: 'p' + j, parent: 'k', words: rw.words, odd: rw.odd, place: p };

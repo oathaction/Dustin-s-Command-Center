@@ -40,9 +40,16 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Maker A, briefed 
 - D3-xxx | S67's table drops its "Then" and "Year" columns | D3-1097; the drawing gives what each answer means, and the year sits in the CSV
 - D3-xxx | The mind map sketch draws an invented city budget, one topic with four parts and an idea beside each, in 2,4xx bytes, 320 px with the 10 px inset | R3-9; the entry sends a reader to the process diagram, hierarchy tree or a table
 
+- D3-xxx | The editor's first look applied as given: S66's chart note ("the steps the law sets for a rule") and note 1's comma; S67's title ("lets home-rule cities adopt it at the cost of state local government funds"); S68's note ("It shows who decides and carries no sign for which way the decision goes."); S69's "three" and "four" and "Budget and Ethics" | Editor, "Words for maker A", first look
+- D3-xxx | S70's note 2 reads "Judgeships count the seats the law creates, filled or vacant, and leave out senior judges."; S71's note 1 drops "not how likely a change is"; entry 14.99's why says the question is about the body as a whole | W09, W11: no turn on "not"
+- D3-xxx | S70's Federal Circuit card reads "12 judgeships." with its note, through `labels.card_sub_none`, in place of "0 in its district courts" | A court of appeals with no district courts has no sum to print
+- D3-xxx | The node forms (S68 to S70) size each box at the width the kit's node fits it, and warn, so the build fails, wherever a node cannot hold its words | At 720 px S68 drew seven boxes of eight with every check passing (A-E3)
+
 ## Requests to the engineer
 
 - **A-E1, `kit.js` (`K.table_groups`), needed for S72's weight:** let `table.group.by` take a list of columns, the group's key their values joined with ", " (so `words` and `agg: "key"` read the joined key, such as "Senate, D"), groups in first-seen order after the spec's `sort`. S72's member-by-member table is 77,142 bytes of HTML (the plate 81,880, against 24,576 far-over and the 13,852 share); grouped by chamber and party, with `count` and `count_eq` columns for yes, no and not voting, it prints 5 rows and the CSV export keeps all 533 members, DR-249's pattern. A single column cannot split a party by chamber.
+- **A-E1 and A-E2: done** by the engineer (noted 01:3x); S69, S70 and S72 group their tables on them.
+- **A-E3, optional, `parts.js` (`node`):** `node` fits its words at the box's inner width but sets them with `max` half a pixel wider, so a box sized by `node_size` at the same width can draw its words on one line fewer and show a blank line at its foot (S68's "Congress and the Department of Health and Human Services" at 720 px). And `node_size` at `max: w + 0.5` against `node` at `w` let a name fit the size and fail the node, which then drew nothing (S68 at 720 px lost that box until I sized at `w`). Fitting and setting at one width would close both. My forms now warn, so the build fails, wherever a node cannot hold its words.
 - **A-E2, optional, `kit.js` (`K.group_cell`):** `agg: "list"`, a field's non-empty values in the group joined with "; ", and `agg: "count_set"`, the rows whose field is non-empty. S69 would then group by committee and list each committee's subcommittees in one cell (27 rows in place of 136), and keep every name in the page's table.
 
 ## Requests to the data lead
@@ -57,6 +64,23 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Maker A, briefed 
 
 ## Tested
 
+- `node work/build/chart-kit/oa-chart.mjs build` for S66 to S72 with the sweep (256 to 720 px) and PNGs at 1440, 390, 328 and 288 px pages (720, 358, 296 and 256 px drawings) on both grounds with grayscale captures: 7 of 7 PASS, 0 faults, 7 check files counted (last full run 01:4x after the last form change; S66, S67, S71 and S72 again after their last word changes, PASS).
+- Captures looked at, at twice size or as contact sheets: S66 to S72 at 1440 px Newsprint; at 358 px on both grounds (Charcoal in grayscale), 296 px Newsprint and 256 px Charcoal; S66 to S72 (less S69) at 1440 px Charcoal in grayscale; S69's top and S70's top at 1440 px; the mind map sketch on both grounds and Charcoal in grayscale. Fixes that came of it: S66's stretched step box, S67's follow-on question in its own box, S68's missing nodes (twice), S70's orphaned counts, S71's phone block, S72's party rows at 358 px.
+- Page-to-Node parity on every drawing (the build's own check): failed for S69 and S72 until the forms set their words once (curly quotes, held dates) for both; passes.
+- `python3 -I work/build/scripts/phase-3/maker_a_round3_derive.py --figures`: 35 checks, 0 failed, every figure in my titles, notes and alts against the data files (named in each spec's `notes_internal`); `--check`: the derived grid equals what the script computes.
+- Words lint by script on the seven specs, eight entries and the sketch: no em or en dash, U+2011, straight quote in reader text, banned word or studio code; every "no", "not" and "never" read: the rest are vote words, the data lead's "not an Article III court" or the rule's own terms.
+- `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py --rounds 1,2,3`: 128 rules, 114 entries, 0 faults.
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide.html`: exit 0, no warning, 11,218,853 bytes; share per plate 14,707 for the 13 still to come. My plates: S66 9,165; S67 12,487; S68 8,700; S69 13,838; S70 8,923; S71 11,385; S72 10,512 bytes, each under 13,852 (D3-1097).
+
 ## Not tested
 
+- Real screen readers, devices, print and 200 percent text; forced colors only through the kit's own checks (no `dataviz_check.js --kit` run this round).
+- The editor's full words pass (only its first look, S66 to S69, applied).
+- The data lead's sign-off of the drawings and of the grouped tables.
+
 ## Files
+
+Created: `work/build/chart-kit/forms/process-diagram.js`, `decision-tree.js`, `who-decides.js`, `org-chart.js`, `hierarchy-tree.js`, `comparison-grid.js`, `roll-call-grid.js`; `work/build/chart-kit/specs/s66.json` to `s72.json`; `work/build/guide/entries/14-096.json` to `14-103.json`; `work/build/guide/specimens/s-14-103-sketch.html`; `work/build/scripts/phase-3/maker_a_round3_derive.py`; `work/build/data/usgov-v7-route-grid.csv` and `.meta.json` (by the script); this notes file.
+Created and removed (a snapshot commit caught them): `work/build/data/clerk-house-committees-119-grouped.*`, `congress-hr5371-roll-calls-grouped.*`.
+Written by running the engineer's generator, not by hand: chapter 14's JSON, its manifest, the example log and the `s-14-sNN.html` fragments.
+Scratch only: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c155381-70e7-5490-bd84-f6f867d97cb7/scratchpad/phase-3/round-3/maker-a/` (kit-out, kit-final, guide.html, captures, contact sheets, lint and parity tools).

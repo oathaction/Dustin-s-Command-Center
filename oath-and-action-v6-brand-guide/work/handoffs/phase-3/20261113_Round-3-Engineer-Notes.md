@@ -10,7 +10,7 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Written by the en
 - **R3-4 LANDED:** the kit's state outlines are the 2024 file's; S16 passes as committed on them (`build s16`: 0 faults, sweep on). S16 can be placed.
 - **RB3-G1 LANDED:** the band check reads a band's x extent (maker B). **C-E1 LANDED:** `count_eq`. **ENG-R3-1 DONE:** the data script carries the new Ballotpedia publisher. **Step label inks LANDED:** `on-seq-N`, `on-mag-N`, `on-div-N` for words and marks on a map's steps.
 - **DL-E1 SIGNED OFF** by the data lead: S81 national as variant B (D3-1090).
-- **Checks, first run:** `oa-chart.mjs build --all --no-png`: 78 specs, 78 check files, 78 PASS (the makers' drafts included), 78 s; self-test every fault caught; strict build exit 0, no warning. **Second run:** `build --all --no-png` 79 specs, 79 check files, 79 PASS; strict build with round 3's landed entries placed exits 1 on three of maker A's plates far over (weight below).
+- **Checks, first run:** `oa-chart.mjs build --all --no-png`: 78 specs, 78 check files, 78 PASS (the makers' drafts included), 78 s; self-test every fault caught; strict build exit 0, no warning. **Second run:** `build --all --no-png` 79 specs, 79 check files, 79 PASS; strict build with round 3's landed entries placed exits 1 on three of maker A's plates far over (weight below). **Last run (01:50 UTC, clock read):** self-test every fault caught; `build --all --no-png` 84 specs, 84 check files, 84 PASS (163 s); `guide_build.py --self-test` 32 of 32; `guide_charts.py --self-test` every fault caught; `geo_build.py --check` current; data check 124 tables, 0 faults; strict build (01:46) exit 0, no warning, every round 3 plate under 15,000 with its frame and the share for the 13 to come 14,719.
 - **A-E1 and A-E2 LANDED:** `table.group.by` as a list, aggregates `list` and `count_set`. **RB3-G2 and C-E3 LANDED:** the page check reads a grouped table's rows from the island. **C-E5 LANDED, C-E4 ANSWERED** (cartographer).
 
 ## Contracts
@@ -177,11 +177,21 @@ To others:
 - `build s16` on the 2024 outlines, sweep on: 0 faults; its captures at 1440 px on Newsprint and 390 px on Charcoal looked at.
 - The data check: 117 tables, 0 faults, the five boundary files read; nine planted faults in a copy of the states file each caught.
 - DL-E1's scratch measure (variants A to D), the grouped island read back to equal rows and an equal drawing, and the county map's sweep (17 s, no fault); its 720 px drawing looked at.
-- `guide_charts.py --self-test` and `guide_build.py --self-test` (32 of 32 scenarios) pass; the strict build passes with no warning.
+- `guide_charts.py --self-test` and `guide_build.py --self-test` (32 of 32 scenarios) pass. Strict builds to scratch: the first (rounds 1 and 2 placed) exit 0 with no warning; the second (round 3's first entries placed) exit 1 on three far-over plates of maker A's; the last (01:46 UTC) exit 0 with no warning, each round 3 plate measured on the page with its frame.
+- `oa-chart.mjs build --all --no-png`, three runs: 78 of 78, 79 of 79 and 84 of 84 specs pass, check files counted (78, 79, 84).
+- The page check of a grouped table (RB3-G2): `build s73` and `build s82` with captures, 0 faults.
 - The data script's rerun to scratch: 34 of 34 files equal.
 
 ## Not tested
 
 - The map parts in a maker's own form: the cartographer has not drawn on them yet. In scratch forms I looked at `map_labels` on the states (720 and 358 px), `map_dots` on 13,028 dots at 10,000 a dot and 2,400 at 50,000, and California's counties with Kern County, Lake Isabella and `map_scale` (50 miles); the self-test covers each.
-- The page's own read-back of a grouped table in a browser (tested in Node through the kit's own functions).
+- A planted fault for the page check's grouped-row count (a page printing fewer groups); S73 and S82 pass it as built.
+- The guide check (`guide_check.js`) and `dataviz_check.js --kit`: I changed neither, so I ran neither's self-test; the quick guide check over the whole page is the main session's closing check.
 - S16 at 1440 px on Charcoal and at 390 px on Newsprint after the outline change (the build's checks ran on all four; I looked at 1440 px on Newsprint and 390 px on Charcoal).
+
+## Files
+
+- Created: `work/handoffs/phase-3/20261113_Round-3-Engineer-Notes.md` (these notes).
+- Modified: `work/build/chart-kit/kit.js` (moved groups read by the checks, links, curve points, grouped tables, the island's geoids, step label inks, one-column CSV cells), `parts.js` (R3-5's parts, `K.geo` and the map parts, the legacy names, `place_labels`' `ok` and `ring0`), `checks.js` (links, RB3-G1, boundary datasets, grouped tables, step inks, one-column CSV), `oa-chart.mjs` (boundary datasets, grouped islands and page check, self-test cases), `kit.css` (round dots, step label inks), `README.md` (round 3), `geo.js` (regenerated from the 2024 files), `tools/geo_build.py` (rewritten for the 2024 files); `work/build/scripts/phase-2/guide_build.py` (map geometry as its own part); `work/build/scripts/phase-3/guide_charts.py` (geometry allowance), `data_round0_build.py` (`.geojson` reading, ENG-R3-1), `phase3_ch14_build.py` (default rounds 1, 2 and 3, DR-253).
+- Deleted: `work/build/chart-kit/geo-LICENSE.txt` (us-atlas's license; no us-atlas data remains, R3-4).
+- Scratch: `/tmp/claude-0/-home-user-Dustin-s-Command-Center/1c155381-70e7-5490-bd84-f6f867d97cb7/scratchpad/phase-3/round-3/engineer/` (the DL-E1 measure in `dle1/`, snapshots, builds `b1` to `b3`, `kit-all1` to `kit-all3`, trial maps in `t/`).

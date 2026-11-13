@@ -162,7 +162,8 @@
     "shared_words": "{n} shared",
     "apart_level": "district-territorial",
     "apart_words": "not an Article III court",
-    "note_field": "note"
+    "note_field": "note",
+    "card_sub_none": "{n} judgeships"
   },
   "typography": {
     "curl_quotes": true,
