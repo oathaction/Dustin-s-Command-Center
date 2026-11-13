@@ -59,14 +59,22 @@
         if (L.key_hairline) { var hb = c.text(0, y + tk * 0.9, String(L.key_hairline).split('{v}').join(fv(unit)), { role: 'tick', max: W }); y = hb.bottom; }
         y += 18;
       }
-      var two = W >= (L.side_by_side || 600), pw = two ? Math.floor((W - 28) / 2) : W, gap = 10;
-      var hw = Math.round(pw * (two ? 0.32 : 0.38)), rw = Math.round(pw * (two ? 0.42 : 0.46));
+      // side by side where both fit; stacked below that; under 420 px each source's words head its block and its box
+      // narrows to a bar, so the nodes' words keep their room
+      var two = W >= (L.side_by_side || 680), pw = two ? Math.floor((W - 28) / 2) : W, gap = 10, head = W < 420;
+      var hw = head ? 12 : Math.round(pw * (two ? 0.36 : 0.36)), rw = Math.round(pw * (two ? 0.4 : head ? 0.6 : 0.44));
+      var opt = function (data, sub) { return { stroke: ink, width: 1.5, align: 'start', pad: [8, 6], sub: sub, sub_lines: 3, lines: 4, data: data }; };
       var top = y, low = y;
       blocks.forEach(function (b, bi) {
         var x0 = two ? bi * (pw + 28) : 0, y0 = two ? top : low + (bi ? 28 : 0), rx = x0 + pw - rw;
         var hsub = (L.sub || {})[b.source];
         hsub = hsub ? String(hsub).split('{total}').join(v(b.total)).split('{n}').join(String(b.rows)) : undefined;
         var hname = String((L.sources || {})[b.source] || b.source);
+        if (head) {
+          var nb = c.text(0, y0 + c.size('label') * 0.95, hname, { role: 'label', weight: 700, max: W });
+          if (hsub) nb = c.text(0, nb.bottom + tk * 0.95, hsub, { role: 'tick', max: W, fill: 'label' });
+          y0 = Math.ceil(nb.bottom) + 10;
+        }
         // the nodes' boxes, each as tall as its link or its words
         var ny = y0, items = b.nodes.map(function (nd) {
           var lw = Math.max(1, fl.px(nd.value)), sz = P.node_size(c, nd.name, { max: rw, sub: v(nd.value), sub_lines: 3, lines: 4, pad: [8, 6] });
@@ -75,8 +83,8 @@
           return it;
         });
         var stack = items.reduce(function (s, it) { return s + it.lw; }, 0);
-        var hs = P.node_size(c, hname, { max: hw, sub: hsub, sub_lines: 3, lines: 4, pad: [8, 6] });
-        var hh = Math.max(stack + 6, hs ? hs.h : 60), ly = y0 + (hh - stack) / 2;
+        var hs = head ? null : P.node_size(c, hname, { max: hw, sub: hsub, sub_lines: 3, lines: 4, pad: [8, 6] });
+        var hh = Math.max(stack + 6, hs ? hs.h : 0), ly = y0 + (hh - stack) / 2;
         // links first, then the boxes and their words over the links' ends
         items.forEach(function (it) {
           var ty = it.y + (it.h - it.lw) / 2;
@@ -84,8 +92,8 @@
           if (it.nd.rows.length > 1) it.nd.rows.forEach(function (r) { c.datum(rx, ty + it.lw / 2, { data: { key: r[ek], field: ev, value: r[ev] } }); });
           ly += it.lw;
         });
-        var opt = function (data, sub) { return { stroke: ink, width: 1.5, align: 'start', pad: [8, 6], sub: sub, sub_lines: 3, lines: 4, data: data }; };
-        if (!P.node(c, { x: x0, y: y0, w: hw, h: hh }, hname, opt({ key: b.source, field: ev, value: b.total }, hsub))) c.warn('network-diagram: the words do not fit the box for ' + hname + ' at ' + W + ' px');
+        if (head) c.rect(x0, y0, hw, hh, { fill: ink, kind: 'node', data: { key: b.source, field: ev, value: b.total } });
+        else if (!P.node(c, { x: x0, y: y0, w: hw, h: hh }, hname, opt({ key: b.source, field: ev, value: b.total }, hsub))) c.warn('network-diagram: the words do not fit the box for ' + hname + ' at ' + W + ' px');
         items.forEach(function (it) {
           if (!P.node(c, { x: rx, y: it.y, w: rw, h: it.h }, it.nd.name, opt({ key: it.nd.name, field: ev, value: it.nd.value }, v(it.nd.value)))) c.warn('network-diagram: the words do not fit the box for ' + it.nd.name + ' at ' + W + ' px');
         });

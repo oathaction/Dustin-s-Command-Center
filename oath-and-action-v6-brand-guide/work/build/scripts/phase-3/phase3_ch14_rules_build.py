@@ -911,12 +911,13 @@ def rule_14_6(B):
          ("A named area, or past 5 percent of the drawing", "Charcoal, with the label (Rule 05.1)", "oa.chart.color.subject.onNewsprint"),
          # ruling (b) of round 2 (D3-677) and round 3's map case: one row for every place a total or national figure sits
          ("A total or national figure", "Across a plot, a line dashed in the text’s ink; as a point, an open ring; in a list, the first row, "
-                                        "set apart; on a map, beside it with its name and value. Each takes its own label",
+                                        "set apart; on a map, beside it with its name and value; each with its own label",
           "oa.chart.color.label.onNewsprint"),
          ("Red never", "Codes a series, a group, a step on a scale or in a process, or a sign, such as a deficit or a loss")],
         ["05.1", "05.3", "05.5", "05.7", "01.1", "01.2", "14.7", "14.12"],
         "Name the one point in the spec’s labels.point, which draws it in red with its keyline and every other mark in the light fill; "
-        "where the subject ink takes its place, labels.named does it instead, with a list for two marks. The kit counts working reds and "
+        "where the subject ink takes its place, labels.named does it instead, with a list for two marks, and a diagram or map that names "
+        "no mark sets neither. The kit counts working reds and "
         "fails a view whose red falls on two jobs or covers more than 5 percent of the drawing at any width it checks.",
         B.plate("s-14-6-correct", "The title names Great Smoky Mountains, and its bar alone takes the view’s red, inside its keyline. Zion, "
                                   "which the title names only to compare, stays gray with its value like every other park."),
