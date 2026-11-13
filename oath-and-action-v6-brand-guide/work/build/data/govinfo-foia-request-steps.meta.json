@@ -53,5 +53,8 @@
  "ledger_row": "P7-308",
  "domain": "D01",
  "domain_note": "V7 I013, Public records arrive too late to be useful",
- "states": []
+ "states": [],
+ "notes": [
+  "U.S. Code currency, checked November 13, 2026: each section this file draws reads the same, word for word with spaces set aside, in the Office of the Law Revision Counsel’s release current through Public Law 119-138 (November 3, 2026) as in the 2024 edition govinfo serves; Public Laws 119-139 to 119-142, which Congress.gov lists after it, amend none of them (5 U.S.C. 552)."
+ ]
 }

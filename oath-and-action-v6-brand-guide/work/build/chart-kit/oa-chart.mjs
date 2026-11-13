@@ -208,6 +208,19 @@ export function run_spec(spec, o) {
   res.rows = chk.rows;
   res.datasets = chk.datasets;
   if (!K.forms[spec.form] || !chk.rows || !chk.rows.length) return res;
+  // R4-3 (round 4): a card form builds its HTML in Node; the checks read that HTML (check_html) and every mark h.mark drew;
+  // its sizes, overflow, overlap and reading order are read in the browser by build (card_checks)
+  if (K.is_card(spec)) {
+    res.cards = {};
+    (o.grounds && o.grounds.length ? o.grounds : ['newsprint']).forEach((g, gi) => {
+      let hc;
+      try { hc = K.html_card(spec, chk.rows, { ground: g, tokens: TOK[g] }); } catch (e) { res.faults.push(`html on ${g}: ${e.message}`); return; }
+      res.cards[g] = hc.html;
+      if (!gi) res.faults.push(...C.check_html(spec, hc.html, chk.rows));
+      hc.marks.forEach((d, i) => res.faults.push(...C.check_drawing({ kit: 1, id: spec.id, form: spec.form }, d, TOK[g], `${g}, mark ${i + 1}`)));
+    });
+    return res;
+  }
   for (const g of o.grounds) for (const w of o.widths) {
     const cw = container(w, spec);
     let d;

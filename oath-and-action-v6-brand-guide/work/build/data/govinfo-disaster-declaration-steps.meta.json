@@ -63,5 +63,8 @@
  "states": [],
  "source_line_variants": {
   "in_force_in_grade": "Source: Robert T. Stafford Disaster Relief and Emergency Assistance Act, 42 U.S.C. 5170 and 5191 (United States Code, 2024 edition), and FEMA’s regulation, 44 CFR part 206, United States. Retrieved November 12, 2026. Times are limits in law, not measured waits."
- }
+ },
+ "notes": [
+  "U.S. Code currency, checked November 13, 2026: each section this file draws reads the same, word for word with spaces set aside, in the Office of the Law Revision Counsel’s release current through Public Law 119-138 (November 3, 2026) as in the 2024 edition govinfo serves; Public Laws 119-139 to 119-142, which Congress.gov lists after it, amend none of them (42 U.S.C. 5170 and 5191)."
+ ]
 }
