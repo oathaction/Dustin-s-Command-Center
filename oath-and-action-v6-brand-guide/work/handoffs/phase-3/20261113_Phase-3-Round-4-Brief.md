@@ -1,6 +1,6 @@
 # Brief: Phase 3, round 4, proportion and overlap, infographics, and chapter 15's interaction rules
 
-Oath & Action Edition 06, Phase 3, November 13, 2026. Written by the main session for round 4's owners, on round 3's model (`work/handoffs/phase-3/20261113_Phase-3-Round-3-Brief.md`). Gate 2 approved the Phase 3 proposal (G2-01). Dustin accepted all five of board 2's recommendations (DR-261 to DR-265). The studio's calls continue from D3-1680. Paths are relative to `oath-and-action-v6-brand-guide/`.
+Oath & Action Edition 06, Phase 3, November 13, 2026. Written by the main session for round 4's owners, on round 3's model (`work/handoffs/phase-3/20261113_Phase-3-Round-3-Brief.md`). Gate 2 approved the Phase 3 proposal (G2-01). Dustin accepted all five of board 2's recommendations (DR-261 to DR-265). The studio’s calls continue from D3-1699. Paths are relative to `oath-and-action-v6-brand-guide/`.
 
 **Status: draft for Dustin's go.** The three lines marked "Dustin's answer" hold the studio's recommendation until he replies.
 
