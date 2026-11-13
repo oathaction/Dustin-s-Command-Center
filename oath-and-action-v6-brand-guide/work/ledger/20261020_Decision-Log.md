@@ -5764,3 +5764,55 @@ The main session reported that `phase3_ch14_build.py` still builds rounds 1 and 
 | D3-1508 | ST2-M1 as the data lead rules it: S73's title, bar heads and measure line name the funds by the selection rule in one form for both sides with no nominee's possessive, the Democratic bar's line reads "Joseph R. Biden Jr. until July 21, 2024, then Kamala D. Harris", a new note splits the Democratic funds' line 22 transfers before and after the change by receiver kind, and every fund's and campaign committee's name history is read by one test for both sides | The reviewer's figures checked by script ($158,200,000.00 to the campaign in 9 payments and $75,000,000.00 to the DNC in 21 before July 21, 2024); DR-93 |
 | D3-1509 | S73's note reads both sides by one test (the data lead, ST2-M1 point 3): a fund's transfers split at a date only where the candidate of the campaign it paid changed (the Democratic side on July 21, 2024; never the Republican side); a rename with no change of candidate is named once with its date and no split (2024 RNC Victory to the Trump 47 Committee, March 14, 2024); a change of legal form (", Inc.") is not named; the post-election rename to Never Surrender, Inc. is named only if a drawn payment follows it; the Republican July 21 columns stay in the file and CSV and print nowhere; the source line takes the research lead's variant naming Form 1 beside Schedule B | DR-93: one test for both sides; a split where nothing changed would read as one |
 | D3-1510 | After a second container restart during the second pass, five agents resume from their transcripts (the engineer, maker B, the research lead, the editor, the brand and craft reviewer); their files were committed first (`97597db0`); the closing quick guide check on the fix pass's build was cut off and is not counted, since the final checks run on the second pass's build | V21 section 3; a check that stops has checked nothing |
+
+### Data visualization lead, round 3 second pass (logged at the close)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1511 | S73's title, bar heads, measure line, note 1 and alt name the funds as the committees that paid each party's presidential campaign committee, in one form for both sides, with the Democratic campaign's candidates and dates under its bar | ST2-M1: the Harris Victory Fund and the campaign carried Biden's name until July 2024, and the words made them Harris's for the whole cycle |
+| D3-1512 | S73 adds a note with each Democratic fund's line 22 transfers before and after the name change by receiver kind, and one clause reading the same test on the Republican funds | $158.2 million to the campaign and $75.0 million to the DNC passed before July 21, 2024, by the itemized records; one standard for both sides |
+| D3-1513 | S73's note splits a fund's transfers only where the candidate of the campaign it paid changed (the Democratic campaign, July 21, 2024), names a rename with no change of candidate once with its date (2024 RNC Victory to Trump 47 Committee, March 14, 2024), and leaves out changes of legal form and the post-election rename unless a drawn payment follows it | One test read on both sides; a split where nothing changed would read as one |
+| D3-1514 | S73's source line takes the research lead's variant naming the Statements of Organization beside the itemized Schedule B payments | The note's dates come from Form 1 and its split sums from the itemized payments |
+
+### Engineer, round 3 second pass (logged at the close)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1515 | A staged drawing that scrolls shows a hint above it, both edges and a scroll bar that stays in sight, and a staged spec's plate breaks out over the rail from 80em | RS-1 and N2: a reader must see that the frame scrolls before scrolling; the breakout shows the whole map at 1280 and 1920 px and all but the last column at 1440, with no change to the drawing |
+
+### Maker B, round 3 second pass (logged at the close)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1516 | S73's bar heads name the funds by the rule that found them, one form for both parties and no nominee's possessive (“Three joint fundraising committees that paid the Democratic presidential campaign, $955.9 million in all”; “Four … Republican …, $679.8 million in all”), the total held to its words with no-break spaces; the line under each names the campaign's candidate over the cycle (“Joseph R. Biden Jr. until July 21, 2024, then Kamala D. Harris”; “Donald J. Trump”) | ST2-M1 (D3-1508): the words made the funds Harris's for the whole cycle; `network-diagram` now fills `{total}` in a block's head |
+| D3-1517 | Side by side, `network-diagram` starts every block's bars under the deepest heading | The Democratic head runs a line longer, and the two sides' bars must share one top to be read on one scale |
+| D3-1518 | S73's note 1, notes 3 and 4, alt and table caption name the funds by party (“the Democratic funds”, “the Republican funds”), never by a nominee's possessive | ST2-M1, in one form for both sides; the title and measure line are the editor's |
+| D3-1519 | S73's new note 2 splits the Democratic funds' line 22 at July 21, 2024 by kind ($161.4 million, $85.8 million, $68.1 million to 50 and $29,350 before; $372.2 million, $155.1 million, $113.3 million to 51 and $9,290 from that day), says the Republican campaign kept one candidate so its funds are not split, and names its two renames once with their dates (2024 RNC Victory to the Trump 47 Committee, March 14, 2024; the campaign committee to Never Surrender, Inc., November 12, 2024, which two drawn payments followed) | D3-1509, one test for both sides, on the research lead's split and Form 1 names |
+| D3-1520 | S73 prints the committee names its table lists in title case through `typography.replace`, eleven pairs, the data as stored | RS-3: the FEC's capitals read as shouting beside the drawing's names |
+| D3-1521 | S73's source line is the sidecar's `with_form_1` variant; the derive script carries the source file's variants into the by-node sidecar | D3-1509: the note's dates rest on Form 1 |
+| D3-1522 | S73's `encode.target_key` reads `table_row`, so a node's marks carry the table rows they sum; `link_id` stays in the file and its export | 372 bytes off the page, so the July 21 note and the longer source line fit under D3-1328's 14,106 (13,866 with the frame) |
+| D3-1523 | My figure check reads S65's and S77's titles as the editor shortened them (RS-4), figures unchanged | D3-1307 |
+
+### Cartographer, round 3 second pass (logged at the close)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1524 | S12's phone tiles set each state's code in its tile's label ink where the tile holds it with 1 px to spare each side, as S78's tiles do, and a note names the codes with no room; where more than ten have none (under 292 px) no tile carries a code and the kit's note says the table names every state; the frame's words now push that note below them when they wrap | RS-5: board 1's phone drawing (`work/boards/phase-3/round-0/specimens/s12-newsprint-390.png`, 358 px) printed every code, and the all-or-nothing test (the widest code against every tile) had dropped them all at 326 px. Placement only: data, inks, figures and words unchanged; the data lead signs off and board 2 shows it |
+| D3-1525 | The S78 title check in `cartographer_round3_derive.py` (line 601) reads "under 71 in nine." | The editor's RS-4 shortening of S78's title (findings and figures unchanged); `--figures` at 07:06 UTC: 0 faults |
+| D3-1526 | S82's closest-races column prints "None" for the 29 states with no race under 5 points, through the column's `empty` word, under its head "Closest races, under 5 points" | N1 (accessibility, second pass): a screen reader met 29 blank cells. `build s82 --widths 1440,390,296,256`, sweep on (07:07 UTC): PASS, 0 faults, 13,109 bytes as the guide places it, about 13,859 with its frame (under 14,106); 29 "None" cells in each built page's table |
+| D3-1527 | S16 on a phone: outside codes from 300 px (`labels.narrow_under`, was 340, so the guide's 326 px drawing carries them as board 1's 358 px did), rings 8 px apart at 36 angles, and VT ("above") and KY claim their places first (`prefer_phone`) | BC N2 (second pass, D3-1329): by the kit's draw, at 358 px every one of the 51 is coded (board 1: 49, MA and NJ named), VT beside its circle and KY 29 px from it on a short leader (was 86 and 73); at 326 px 47 coded (DC, DE, ME, NH named), where the guide coded 9. Placement only, inside ruling (e) |
+| D3-1528 | S80's state outline, and its Detroit inset's, take a 1 px context edge above the ghosts; S80's and S82's "Outline" key swatch takes a 1 px context edge round its ghost inset, on both grounds | BC N3 (second pass): the band-ink ghosts (BC-S4) had thinned Michigan's outline and the key swatch on Charcoal; the ghosts stay below the lightest won fill |
+
+### Editor, round 3 second pass (logged at the close)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1529 | `{data_file}` never opens a sentence in a caption, note or entry | N3: the kit prints the phrase as stored, in lowercase, so a sentence that starts with it would start in lowercase |
+| D3-1530 | S73's title, measure line, reader question and chart note, and entry 14.104's plate caption, name the funds as the joint fundraising committees that paid each party's presidential campaign, with no nominee's possessive | D3-1508 (ST2-M1): the main Democratic fund and the campaign carried Biden's name until July 21, 2024 |
+
+### Research lead, round 3 second pass (logged at the close)
+
+| # | Decision | Reason |
+|---|---|---|
+| D3-1531 | ST2-M1's split is by payment date at July 21, 2024, for every fund on both sides, carried as two columns on the line 22 rows | One date test read both ways (DR-93); columns let every figure a note prints be checked by script against the rows |
+| D3-1532 | A committee's names in the cycle come from its filed Form 1 files, not the FEC's committee history | The history gives one name a two-year cycle, the latest, and the filings list prints today's name on old filings |

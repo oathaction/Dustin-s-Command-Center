@@ -1043,6 +1043,49 @@ Owners: maker B (the note and the line under each bar), editor (words), research
 - D3-xxx | S73's note splits a fund's transfers only where the candidate of the campaign it paid changed (the Democratic campaign, July 21, 2024), names a rename with no change of candidate once with its date (2024 RNC Victory to Trump 47 Committee, March 14, 2024), and leaves out changes of legal form and the post-election rename unless a drawn payment follows it | One test read on both sides; a split where nothing changed would read as one
 - D3-xxx | S73's source line takes the research lead's variant naming the Statements of Organization beside the itemized Schedule B payments | The note's dates come from Form 1 and its split sums from the itemized payments
 
+### Second pass, last round: signed off (07:21 UTC)
+
+**Builds.** At 07:15 I built S73, S12, S16, S80, S82, S65, S77 and S78 from the files as they stand, `oa-chart.mjs build ... --widths 1440,390,358 --out <scratch>/kit-f`, sweep on: 8 PASS, 0 faults, 0 warnings, eight check files read. At 07:17, a strict guide build into scratch (`guide_build.py --strict`), exit 0, no warning, with chapter 14's share per plate at 13,322 bytes. I used one browser at a time and ran no guide check.
+
+**(1) S73 under ST2-M1 (D3-1508, D3-1509): signed off.** I looked at it at 1440 px on both grounds and at 390 px on Newsprint, Charcoal and Charcoal in grayscale. Its page table and entry 14.104 were read by script.
+- **The title, read from the left and the right:** "Joint fundraising committees that paid the 2024 Democratic presidential campaign sent $955.9 million to 54 other committees, and those that paid the Republican one sent $679.8 million to 56."
+  - It names both sides by party in one form, owns no fund on either side's behalf, and claims nothing about any candidate.
+  - Its figures check by script, as before.
+- **The bar heads** are by party, each with its total. Under them: "Joseph R. Biden Jr. until July 21, 2024, then Kamala D. Harris" and "Donald J. Trump". The alt says the same.
+- **The July 21 date rests on the Statements of Organization, and the words claim no more.**
+  - I parsed the campaign committee's Form 1 amendment filed July 21, 2024 (file 1805326, in the research lead's downloads). It names the committee "Harris for President" and its candidate "Harris, Kamala", party DEM, with the Harris Victory Fund, Harris Action Fund and Harris Baldwin Victory Fund as its joint fundraising representatives. The research lead's list also shows the Harris Victory Fund's Form 1 of the same day.
+  - Note 2 says the committees "filed new names" that day, and the bar's line and the alt say the campaign's candidate changed that day. Both rest on those filings. No word on the page mentions a withdrawal or its cause.
+- **Note 2's split, by script from the frozen file's new columns, Democratic side only.**
+  - Before July 21, 2024: the campaign $161,426,350.00, the DNC $85,750,000.00, 50 state party committees $68,058,500.00, and one other committee $29,350.00.
+  - From that day: $372,239,915.32, $155,095,000.00, 51 state party committees with $113,330,624.21, and $9,290.21.
+  - The note prints $161.4 million, $85.8 million, $68.1 million, $29,350; $372.2 million, $155.1 million, $113.3 million and $9,290. Each pair sums to the drawn total.
+  - The Republican side is not split, as my point 3 ruled. Each of the two renames is named once with its date: March 14 for the Trump 47 Committee, and November 12 for the campaign committee, since the research lead found two drawn payments on December 11, 2024.
+- **The rest.** The source line is the `with_form_1` variant, naming Form 1 beside the itemized Schedule B payments. The table's 20 rows name each fund and every committee in title case. Entry 14.104's caption reads "Where did the joint fundraising committees that paid each 2024 presidential campaign send what they raised?". The kit puts the plate at 13,913 bytes with its frame, under 14,106.
+
+**(2) S12: signed off, RS-5 and RS-1.**
+- **RS-5.** At a 358 px drawing every state's code prints. At 326 px all but WA, WV and WY print, and the note names them. I looked at both on Charcoal and Newsprint in grayscale, and read the notes from the SVGs.
+- **RS-1, in the strict build at 1440, 1024 and 768 px.**
+  - At every width the hint "Wider than this column. Scroll the drawing sideways to see all of it." shows above the map, and the frame shows both edges.
+  - At 1024 and 768 px the plate stays in its column (556 and 558 px of the 1024 px drawing show) and the rails are untouched.
+  - At 1440 px the plate breaks out to the left and 943 px of the drawing show, from Alaska to New Jersey and Connecticut, with New York, Florida and California in view; only the Maine and Rhode Island column needs a scroll.
+- **The breakout hides nothing a reader needs there.**
+  - The rule rail on the right ("6 Distribution …" to "Rule 14.115", the active entry highlighted) stays whole and uncrowded.
+  - The plate's words (grade line, title, measure line, hint) sit inside the plate's frame.
+  - What it covers is the left chapter rail. The shell hides it while S12 is in view (`nav.rail.is-covered { visibility: hidden }`), so it neither shows under the plate nor takes a tab stop, and it returns once S12 scrolls past. The top part navigation and the right rule rail still let a reader move on.
+- I looked at the guide on Newsprint only. The guide pins plates to Newsprint, and the dark-scheme emulation drew the same page. S12 on Charcoal I looked at in the kit's pages.
+
+**(3) S16, S80 and S82: signed off.**
+- **S16:** at a 358 px drawing every state's code prints (no "Not labeled" note), Vermont and Kentucky among them. At 326 px the note names DC, DE, ME and NH.
+- **S80 and S82 on Charcoal at 1440 px:** the state outlines and the key's "Outline" swatch now draw above the ghosts and read. I looked at S82's key and western block enlarged twice over, and at both of S80's panels.
+- **S82's table:** "None" fills the closest-races cell in the 29 states with no race under 5 points, by script.
+
+**(4) RS-4, titles under 30 words: signed off.** By script, each title runs 29 words with its findings and figures unchanged.
+- S65: 76.7 million due; states ended 16.0 million for a procedural reason, "over twice" the 6.9 million they found ineligible.
+- S77: "at most 30 days … and seven for a household with very little income or cash". The "at most" still governs both limits.
+- S78: "In a 2025 Census survey", 10 states and DC at 79 percent or more and nine under 71.
+
+Not tested: S12's scroll in Firefox and Safari; a keyboard walk through S12's stage; the guide in a dark theme with plates on Charcoal; forced colors on any of these.
+
 ### Tested, review fix pass
 
 - Clock read with `date -u` at 04:24, 04:26, 04:30, 04:31, 04:32, 04:34, 04:37 and 04:38 UTC.
@@ -1168,3 +1211,4 @@ Not tested:
 - Maker B second pass, 07:00 to 07:01 UTC: `build s53 s59 --widths 1440,296,256`, sweep on, 2 PASS, 0 faults; captures looked at as listed under "Maker B’s second pass, S53 and S59".
 - ST2-M1, 07:02 to 07:03 UTC: the reviewer's itemized Harris Victory Fund downloads summed by script by line and by date (before and after July 21, 2024), with payee names and the payment dates around the change; totals against the frozen file. Not tested: the state party payments before the change, the other two Democratic funds' dates, and any committee's FEC name history (the research lead's part).
 - ST2-M1 point 3, 07:06 UTC: the frozen file's before and after columns summed by script; the research lead's saved itemized payments read for Trump 47 Committee before March 14, 2024 and for any payment to Trump's campaign committee on or after November 12, 2024. Not tested: the Trump National Committee JFC's itemized dates; the Form 1 files themselves.
+- Second pass, last round, 07:14 to 07:21 UTC: the kit build and strict guide build listed under "Second pass, last round"; S12 captured in the guide at 1440, 1024 and 768 px with the stage, hint and rails probed by script (`s12guide.cjs`, `s12rail.cjs`, scratch); S73's July 21 Form 1 (file 1805326) parsed; note 2's split and S82's None cells recounted by script; titles counted by script.
