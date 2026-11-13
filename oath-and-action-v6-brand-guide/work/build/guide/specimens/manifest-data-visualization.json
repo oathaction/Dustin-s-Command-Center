@@ -825,7 +825,7 @@
   "chapter": "14",
   "rule": "14.96",
   "width_px": null,
-  "alt": "A diagram of how a federal agency makes a rule, read in order. A way in: anyone may petition an agency to issue, change or repeal a rule. Step 1, the agency drafts a rule; a significant draft goes to the White House’s Office of Information and Regulatory Affairs, which has 90 days to finish its review before the proposed and again before the final rule, and guidance can skip notice and comment, steps 2 and 3. Step 2, the agency publishes the proposed rule. Step 3, anyone may comment. Step 4, the agency publishes the final rule at least 30 days before it takes effect, and a person harmed by it can ask a court to set it aside. Step 5, the agency reports the rule to Congress, and a joint resolution of disapproval that Congress passes and the President signs, or that survives a veto, leaves the rule with no effect.",
+  "alt": "A diagram of how a federal agency makes a rule, read in order. A way in: anyone may petition an agency to issue, change or repeal a rule. Step 1, the agency drafts a rule; a significant draft goes to the White House’s Office of Information and Regulatory Affairs, which has 90 days to finish its review before the proposed and again before the final rule, and guidance can skip steps 2 and 3, the published proposal and the public’s comments. Step 2, the agency publishes the proposed rule. Step 3, anyone may comment. Step 4, the agency publishes the final rule at least 30 days before it takes effect, and a person harmed by it can ask a court to set it aside. Step 5, the agency reports the rule to Congress, and a joint resolution of disapproval that Congress passes and the President signs, or that survives a veto, leaves the rule with no effect.",
   "illustrative": false,
   "notes": "S66, process-diagram: the chart kit draws it from work/build/chart-kit/specs/s66.json (contract R1-C3)"
  },
@@ -890,7 +890,7 @@
   "chapter": "14",
   "rule": "14.104",
   "width_px": null,
-  "alt": "Two committees side by side, each a bar with links to bars for the committees it transferred money to, every bar as tall and every link as wide as its dollars on one scale. The Harris Victory Fund sent $528.7 million to the Harris campaign, $189.3 million to the Democratic National Committee and $181.4 million to 51 state party committees, $899.4 million in all. The Trump National Committee JFC sent $246.8 million to the Trump campaign and $26.9 million to the Republican National Committee.",
+  "alt": "Two senders side by side, one bar for each nominee’s joint fundraising committees, with links to bars for the committees they transferred money to, every bar as tall and every link as wide as its dollars on one scale. Kamala D. Harris’s three funds sent $533.7 million to the Harris campaign, $240.8 million to the Democratic National Committee, $181.4 million to 51 state party committees and $38,640 to one other committee, $955.9 million in all. Donald J. Trump’s four funds sent $407.8 million to the Trump campaign, $163.8 million to the Republican National Committee, $69.9 million to 50 state party committees and $38.3 million to four other committees, $679.8 million in all.",
   "illustrative": false,
   "notes": "S73, network-diagram: the chart kit draws it from work/build/chart-kit/specs/s73.json (contract R1-C3)"
  },
@@ -958,7 +958,7 @@
   "chapter": "14",
   "rule": "14.112",
   "width_px": null,
-  "alt": "Four steps in order, each a box with who acts and the time the rule allows: the household files an application, taken the same day; an interview; the household sends proof, with at least 10 days to do it; and the state’s decision, within 30 days of filing. A branch after filing leads to expedited service, an interview and benefits within 7 days, for a household with very little income or cash, with postponed proof due later.",
+  "alt": "Four steps in order, each a box with the time the rule allows and who acts: the household files an application, taken the same day; an interview; the household sends proof, with at least 10 days to do it; and the state’s decision, within 30 days of filing. A branch after filing leads to expedited service, an interview and benefits within 7 days, for a household with very little income or cash, with postponed proof due later.",
   "illustrative": false,
   "notes": "S77, journey-map: the chart kit draws it from work/build/chart-kit/specs/s77.json (contract R1-C3)"
  },
@@ -999,7 +999,7 @@
   "chapter": "14",
   "rule": "14.117",
   "width_px": null,
-  "alt": "A map of the United States with each state shaded in one of four classes by the share of households with home broadband such as cable, fiber or DSL in 2025. Ten states and the District of Columbia sit in the top class, 79 percent or more, and eight of them stay in it even at the low end of the survey’s margin of error: Connecticut, Hawaii, Maryland, Massachusetts, New Hampshire, New Jersey, Utah and Washington. Nine states sit under 71 percent, among them Alaska, Mississippi, West Virginia, Montana and New Mexico, each under it across its margin of error. The United States stands at 76.6 percent.",
+  "alt": "A map of the United States, or on a phone a grid of one square for each state, with each state shaded in one of four classes by the share of households with home broadband such as cable, fiber or DSL in 2025. Ten states and the District of Columbia sit in the top class, 79 percent or more, and eight of them stay in it even at the low end of the survey’s margin of error: Connecticut, Hawaii, Maryland, Massachusetts, New Hampshire, New Jersey, Utah and Washington. Nine states sit under 71 percent, among them Alaska, Mississippi, West Virginia, Montana and New Mexico, each under it across its margin of error. The United States stands at 76.6 percent.",
   "illustrative": false,
   "notes": "S78, choropleth: the chart kit draws it from work/build/chart-kit/specs/s78.json (contract R1-C3)"
  },
@@ -1056,7 +1056,7 @@
   "rule": "14.124",
   "width_px": null,
   "illustrative": true,
-  "alt": "Drawn here in gray: a map shaded red for one party and blue for the other takes a side at a glance, while two panels, one for each party’s seats, show who won each place and by how much in steps of one ink, with no color for either party.",
+  "alt": "Drawn here in gray: a map shaded red for one party and blue for the other takes a side at a glance, and its few large places outweigh many small ones. Two panels, one for each party, give each place one square and show who won it and by how much in steps of one ink, with no color for either party.",
   "notes": "avoid sketch, at most 4,096 bytes (contract R1-C1, D3-486)"
  },
  "s-14-s15": {

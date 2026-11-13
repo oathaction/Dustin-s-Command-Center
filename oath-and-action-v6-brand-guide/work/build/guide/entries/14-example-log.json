@@ -581,7 +581,7 @@
    "source": "s65.json"
   },
   {
-   "example": "A federal agency makes a rule in five steps the law sets, and once it is final, Congress and the President or a court can undo it.",
+   "example": "A federal agency makes a rule in five steps the law sets, and Congress and the President can then strike it down or a court can set it aside.",
    "domain": "D05",
    "states": [],
    "rule": "14.96",
@@ -605,7 +605,7 @@
    "source": "s68.json"
   },
   {
-   "example": "The House splits its work among 20 standing committees and three select committees, which divide it again among 109 subcommittees.",
+   "example": "The House splits its work among 20 standing committees and three select committees, which divide it again among 109 subcommittees.",
    "domain": "D04",
    "states": [],
    "rule": "14.99",
@@ -619,7 +619,7 @@
    "source": "s70.json"
   },
   {
-   "example": "The eleven routes a reform can take run from a city ordinance to a constitutional amendment, and 38 reforms list a federal statute, more than any other route.",
+   "example": "The eleven routes a reform can take run from a city ordinance to a constitutional amendment, and 38 reforms list a federal statute, more than any other route.",
    "domain": "all",
    "states": [],
    "rule": "14.101",
@@ -633,7 +633,7 @@
    "source": "s72.json"
   },
   {
-   "example": "The Harris Victory Fund sent $899.4 million to other committees in the 2024 cycle, and the Trump National Committee JFC sent $273.8 million.",
+   "example": "Kamala D. Harris’s three joint fundraising committees sent $955.9 million to 54 other committees in the 2024 cycle, and Donald J. Trump’s four sent $679.8 million to 56.",
    "domain": "D03",
    "states": [],
    "rule": "14.104",
@@ -698,7 +698,7 @@
    "source": "s16.json"
   },
   {
-   "example": "Home broadband such as cable, fiber or DSL reached at least 79 percent of households in 10 states and DC in 2025, and under 71 percent in nine states.",
+   "example": "In the Census Bureau’s 2025 survey, home broadband such as cable, fiber or DSL reached at least 79 percent of households in 10 states and DC, and under 71 percent in nine states.",
    "domain": "D01",
    "states": [],
    "rule": "14.117",
@@ -723,7 +723,7 @@
    "source": "s80.json"
   },
   {
-   "example": "From 2020 to 2024, median household income was $80,000 or more in 585 counties and under $50,000 in 371, and the nation’s median was $80,734.",
+   "example": "In the Census Bureau’s survey of 2020 to 2024, median household income was $80,000 or more in 585 counties and under $50,000 in 371, and the nation’s median was $80,734.",
    "domain": "D08",
    "states": [],
    "rule": "14.120",

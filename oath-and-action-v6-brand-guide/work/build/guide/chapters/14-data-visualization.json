@@ -3890,7 +3890,7 @@
    "id": "14.96",
    "title": "Use a process diagram to show the steps an institution takes to decide, and where others can step in.",
    "rule": [
-    "Number the steps of the main path, as the law lays them out, and run them down one heavy line in order, each in a box with an edge in the text’s ink that names the step, who acts and the time the law sets. Set each branch a case may take beside the step it leaves or enters, in a box with a gray edge and a short line that says when it applies, joined by a gray arrow (Rule 14.6); arrows on the main line point the way a case moves. Print the date of the law the diagram draws, and give the table every step and branch in the order a reader meets them, each with where it leads. On a phone the steps run in one column, a step’s way in above it and its branches below it, set in from the line."
+    "Number the steps of the main path, as the law lays them out, and run them down one heavy line in order, each in a box with an edge in the text’s ink that names the step, who acts and the time the law sets. Keep the steps one even gap apart, since distance along the line reads as time, and set each branch a case may take in a column beside them, from the step it leaves or enters down, in a box with a gray edge and a short line that says when it applies, joined by a gray arrow (Rule 14.6); arrows on the main line point the way a case moves. Print the date of the law the diagram draws, and give the table every step and branch in the order a reader meets them, each with where it leads. On a phone the steps run in one column, a step’s way in above it and its branches below it, set in from the line."
    ],
    "why": {
     "text": [
@@ -3972,7 +3972,7 @@
    "id": "14.98",
    "title": "Use a who-decides diagram to show who can change a rule and who only applies it.",
    "rule": [
-    "Place each body by what it can do: those who can change the rules in a band above those who apply them, in columns from federal to regional, state, local and private hands, every body in one box style with its name in bold. Draw a line of authority, one body setting or approving another’s rules, as a gray line ending in an open diamond, from the body that decides to the one it governs, as chapter 15 draws authority (Rule 15.5). On a phone the bands run down the page, each body under its level’s name, with the lines of authority in a lane at the left."
+    "Place each body by what it can do: those who can change the rules in a band above those who apply them, in columns from federal to regional, state, local and private hands, each band naming the level over its bodies, every body in one box style with its name in bold. A box may take the next column too where that column holds no body in its band. Draw a line of authority, one body setting or approving another’s rules, as a gray line ending in an open diamond, from the body that decides to the one it governs, as chapter 15 draws authority (Rule 15.5). On a phone the bands run down the page, each body under its level’s name, with the lines of authority in a lane at the left."
    ],
    "why": {
     "text": [
@@ -4015,7 +4015,7 @@
    "id": "14.99",
    "title": "Use an org chart to show who sits under whom inside one body.",
    "rule": [
-    "Put the body’s box at the top and run a line down the left to each group of its units, headed with the group’s count. Draw each unit as a card: a named box with the count of units under it and, below it, set in, a box for each of those units, joined by gray elbow lines. Every box takes an edge in the text’s ink. Fill as many columns as the width holds, each card in the shortest column, so the order reads from the top down, and keep any split by party to the table. On a phone the cards run in one column."
+    "Put the body’s box at the top and run a line down the left to each group of its units, headed with the group’s count. Draw each unit as a card: a named box with the count of units under it and, below it, set in, each of those units by name on a row of its own, with a hairline between rows and gray elbow lines from the box. Every box takes an edge in the text’s ink. Fill as many columns as the width holds, in order down the first column and then the next, the columns as even as the order allows, and keep any split by party to the table. On a phone the cards run in one column."
    ],
    "why": {
     "text": [
@@ -4214,16 +4214,16 @@
    "id": "14.104",
    "title": "Use a network diagram to show who sent what to whom.",
    "rule": [
-    "Draw each sender and each receiver as a bar as tall as its amount, with its name and amount beside it, and join them with links whose width is the amount, in one linear unit for the whole drawing, with a key of widths (Rule 14.4). Stack the links that leave a bar in the order of the bars they reach, so none cross. Fold many small receivers of one kind into one bar with their count, and list each in the table. Draw two sides alike, side by side and in one ink, and name each side in words; money spent to elect a candidate takes one neutral ink for every party, with no red or blue (Rules 14.6 and 14.7)."
+    "Pick the senders by one rule read the same way for every side, and draw every sender the rule finds, folded into one bar for each side where the question asks about the side. Draw each sender and each receiver as a solid bar as tall as its amount, with its name and amount beside it, and join them with links in a light fill with a thin edge in the bars’ ink, each as wide as its amount, in one linear unit for the whole drawing, with a key of widths (Rule 14.4). Stack the links that leave a bar in the order of the bars they reach, so none cross. Fold receivers of one kind into one bar with their count, by one rule for every side, and list each in the table. Draw two sides alike, side by side and in one ink, and name each side in words; money spent to elect a candidate takes one neutral ink for every party, with no red or blue (Rules 14.6 and 14.7)."
    ],
    "why": {
     "text": [
-     "Bars and links on one scale let a reader compare every sender and receiver of both sides at a glance, and names set beside the bars keep each end readable on a phone. Folding many small receivers keeps the drawing calm, and the table keeps every one."
+     "Bars and links on one scale let a reader compare every sender and receiver of both sides at a glance, and names set beside the bars keep each end readable on a phone. Folding many small receivers keeps the drawing calm, and the table keeps every one. A rule that picks one sender for each side can make a contrast the record does not hold, so the drawing takes every sender the rule finds."
     ]
    },
    "tokens": [],
    "related": [],
-   "builders": "Form network-diagram: node work/build/chart-kit/oa-chart.mjs build s73; encode source, target, value, target_key and kind; labels.nodes folds rows into nodes, labels.unit sets the measure one pixel of width carries, labels.key_steps the key, labels.ink the party-mark ink; draws its bars as tall as their dollars in the links’ unit, through K.parts.flows, flow_band and width_key.",
+   "builders": "Form network-diagram: node work/build/chart-kit/oa-chart.mjs build s73; encode source (the side each bar sends for), target, value, target_key and kind; labels.nodes folds rows into nodes by source and kind, labels.unit sets the measure one pixel of width carries, labels.key_steps the key, labels.ink the party-mark ink; draws its bars as tall as their dollars in the links’ unit, through K.parts.flows, flow_band and width_key.",
    "related_rules": [
     "14.3",
     "14.7"
@@ -4253,7 +4253,7 @@
    "id": "14.105",
    "title": "Use an adjacency matrix when many parts link to many others.",
    "rule": [
-    "Draw one row for each part a link starts from and one column for each part it reaches, in the same order, and shade each cell by its count on a sequential scale, with the count printed in it; leave an empty cell as the page inside a thin grid line. Group the parts with a gap between groups, number the columns and name the rows; on a phone, number the rows too and list the names under the grid. Give a class of links that differs in kind, such as lines of authority with no sign, an outline and a key entry of its own, apart from the scale’s steps."
+    "Draw one row for each part a link starts from and one column for each part it reaches, in the same order, and shade each cell by its count on a sequential scale, with the count printed in it; leave an empty cell as the page inside a thin grid line. Group the parts with a gap between groups, number the columns and name the rows; on a phone, number the rows too and list the names under the grid. Give a class of links that differs in kind, such as lines of authority with no sign, an outline and a key entry of its own, apart from the scale’s steps. Where the title counts the links that stay within one part, mark the diagonal with a thin gray line and name it in the key."
    ],
    "why": {
     "text": [
@@ -4264,7 +4264,7 @@
    "related": [
     "13"
    ],
-   "builders": "Form adjacency-matrix: node work/build/chart-kit/oa-chart.mjs build s74; encode from, to, value and special (the count in the class with no sign); labels.order sets the parts, labels.groups the gaps, labels.steps the scale with its fills (seq-1 takes the context edge), labels.special_label the outlined class.",
+   "builders": "Form adjacency-matrix: node work/build/chart-kit/oa-chart.mjs build s74; encode from, to, value and special (the count in the class with no sign); labels.order sets the parts, labels.groups the gaps, labels.steps the scale with its fills (seq-1 takes the context edge), labels.special_label the outlined class, labels.diagonal and labels.diagonal_label the diagonal’s line and its key words.",
    "related_rules": [
     "14.5",
     "13.9"
@@ -4445,7 +4445,7 @@
    "id": "14.110",
    "title": "Use a Sankey to show money into one account and out of it.",
    "rule": [
-    "Draw each source as a band from the left into one node and each use as a band from the node to the right, every band as wide as its amount in one linear unit, with a key band (Rule 14.4), so the bands sum at the node. Put the money on hand at the start first on the left and at the end last on the right, so the node balances, and give any remainder the record leaves in a note. Group loans and their repayments apart by a gap under their own names, so a reader can tell a loan from a gift, and say in a note that the chart traces no dollar received to a dollar spent. The flow the title names takes the text’s ink; the rest are gray with a thin edge (Rule 14.6)."
+    "A Sankey is a flow diagram whose bands are as wide as the amounts they carry. Draw each source as a band from the left into one box, the node, and each use as a band from the node to the right, every band as wide as its amount in one linear unit, with a key band drawn as the bands are (Rule 14.4), so the bands sum at the node. Put the money on hand at the start first on the left and at the end last on the right, so the node balances, and give any remainder the record leaves in a note. Group loans and their repayments apart by a gap under their own names, so a reader can tell a loan from a gift, and say in a note that the chart traces no dollar received to a dollar spent. The flow the title names takes the text’s ink; the rest are gray with a thin edge (Rule 14.6)."
    ],
    "why": {
     "text": [
@@ -4523,7 +4523,7 @@
    "id": "14.112",
    "title": "Use a journey map to show a person’s path through a public service, step by step.",
    "rule": [
-    "Draw each step as a box with its name, who acts and the time the rule allows, joined in order by arrows, and draw a branch some people take from the step it leaves. Print each time as the rule’s limit, say in the measure line that the chart measures no wait, and print the date of the rule. The main path is in the text’s ink and a branch is gray (Rule 14.6). At a desk the path reads across; on a phone it reads down, with the branch after the last step. The table lists the steps in reading order, each with the step that follows it."
+    "Draw each step as a box with its name, then the time the rule allows on a line of its own in the text’s ink, then who acts, joined in order by arrows, and draw a branch some people take from the step it leaves. Print each time as the rule’s limit, say in the measure line that the chart measures no wait, and print the date of the rule. The main path is in the text’s ink and a branch is gray (Rule 14.6). At a desk the path reads across; on a phone it reads down, with the branch after the last step. The table lists the steps in reading order, each with the step that follows it."
    ],
    "why": {
     "text": [
@@ -4534,7 +4534,7 @@
    "related": [
     "13"
    ],
-   "builders": "Form journey-map: node work/build/chart-kit/oa-chart.mjs build s77; encode step, path, key, who and limit; labels.limits gives each step’s time in words, labels.branch_label names who takes the branch, labels.across_from sets the width where the path turns down; draws through K.parts.node and K.parts.link.",
+   "builders": "Form journey-map: node work/build/chart-kit/oa-chart.mjs build s77; encode step, path, key, who and limit; labels.limits gives each step’s time in words, labels.branch_label names who takes the branch, labels.across_from sets the width where the path turns down; sets each box’s name, limit and who acts in that order and draws its arrows through K.parts.link.",
    "related_rules": [
     "14.12",
     "14.13",
@@ -4651,7 +4651,7 @@
    "id": "14.115",
    "title": "Use a tile map of arrows to show where a measure moved, every state on one scale.",
    "rule": [
-    "Give each state one square holding an arrow that points the way the measure moved, its length set by the shift on one scale across the map, with the state’s code and the shift printed above the arrow. Name the direction in words in the key, as “toward the Republican nominee”, so no color stands for a party (Rule 14.7). Set the national figure beside the key with its own label and arrow (Rule 14.6), and frame each state whose leader changed.",
+    "Give each state one square holding an arrow that points the way the measure moved, its length set by the shift on one scale across the map, with the state’s code and the shift printed above the arrow. Name the direction in words in the key, as “toward the Democratic nominee” or “toward the Republican nominee”, so no color stands for a party (Rule 14.7). Set the national figure beside the key with its own label and arrow (Rule 14.6), and frame each state whose leader changed.",
     "On a phone, where an arrow would be too short to read, each square takes a gray step by the size of its shift, and two lists under the map name the largest and smallest shifts with their figures (Rule 14.12)."
    ],
    "why": {
@@ -4736,7 +4736,7 @@
    ],
    "why": {
     "text": [
-     "A reader finds a state by its shape faster than by a list, and a few classes turn the rates into a pattern at a glance. Classes wider than the survey’s margins keep a state’s shade from claiming more than the survey can tell."
+     "A reader finds a state by its shape faster than by a list, and a few classes turn the rates into a pattern at a glance. Classes wider than the survey’s margins keep a state’s shade within one class of what the survey can tell."
     ]
    },
    "tokens": [],
@@ -4815,7 +4815,7 @@
    ],
    "why": {
     "text": [
-     "Shapes let a reader find the district where they live, and two panels put each party’s seats together without a party color. Gray steps for the margin keep a close race and a safe one apart on both sides alike."
+     "Shapes let a reader find the district where they live, and two panels put each party’s seats together without a party color. Steps of one ink for the margin keep a close race and a safe one apart on both sides alike."
     ]
    },
    "tokens": [],
@@ -4997,19 +4997,19 @@
    ],
    "why": {
     "text": [
-     "Red and blue are the parties’ own colors, so a map in them reads as one side’s scoreboard before anyone reads a number. On real shapes the color also lets land stand in for votes, and a party that wins large, thinly settled places looks bigger than its count."
+     "Red and blue are the parties’ own colors, so a map in them reads as one side’s scoreboard before anyone reads a number. On real shapes the color also lets land stand in for votes, and a party that wins large, thinly settled places looks bigger than its count. Rule 14.7’s failure case shows the same fault in red and blue, on a bar chart of House seats."
     ]
    },
    "tokens": [],
    "related": [],
    "builders": "No kit form, by design; draw district-map (s80) or district-tile-map (s82): labels.panels names each party with its seats, and the margin takes sequential steps 2 to 5.",
-   "sketch_alt": "Drawn here in gray: a map shaded red for one party and blue for the other takes a side at a glance, while two panels, one for each party’s seats, show who won each place and by how much in steps of one ink, with no color for either party.",
+   "sketch_alt": "Drawn here in gray: a map shaded red for one party and blue for the other takes a side at a glance, and its few large places outweigh many small ones. Two panels, one for each party, give each place one square and show who won it and by how much in steps of one ink, with no color for either party.",
    "related_rules": [
     "14.7",
     "14.6"
    ],
    "entry": true,
-   "use_when": "Never: a reader who asks which party won each place, and by how much, gets a fairer answer from gray panels by party.",
+   "use_when": "Never: a reader who asks which party won each place, and by how much, gets a fairer answer from two panels, one for each party, with the margin in steps of one ink.",
    "use_instead": [
     {
      "when": "Every House seat, who won it and by how much",
@@ -5026,7 +5026,7 @@
    ],
    "correct": {
     "specimen": "s-14-124-sketch",
-    "caption": "Drawn here in gray: a map shaded red for one party and blue for the other takes a side at a glance, while two panels, one for each party’s seats, show who won each place and by how much in steps of one ink, with no color for either party.",
+    "caption": "Drawn here in gray: a map shaded red for one party and blue for the other takes a side at a glance, and its few large places outweigh many small ones.",
     "kind": "avoid",
     "label": "Party-colored map or red and blue scale, a form that misleads"
    }

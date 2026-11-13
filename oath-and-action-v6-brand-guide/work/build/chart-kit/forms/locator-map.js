@@ -120,8 +120,12 @@
         kt = kts[0];
       }
       else {
+        // under the county on the ground's halo, on a short leader up into it (C-S5), since its two places fill its middle
         var lowest = 0; polys.forEach(function (rs) { rs[0].forEach(function (q) { lowest = Math.max(lowest, q[1]); }); });
-        kt = c.text(cp[0], lowest + 16, L.county_label, { role: 'label', weight: 600, anchor: 'middle', halo: true });
+        var kx = cp[0], ky = lowest + 16, ktb = c.text_box(kx, ky, L.county_label, { role: 'label', weight: 600, anchor: 'middle' }), edge = null;
+        for (var yy = ktb.y - 2; yy > kbx[1] && edge === null; yy -= 1) if (polys.some(function (rs) { return K.in_poly(rs, kx, yy); })) edge = yy;
+        if (edge !== null) c.line(kx, ktb.y - 2, kx, edge - 6, { stroke: 'leader', width: c.t('line-hairline'), mark: false });
+        kt = c.text(kx, ky, L.county_label, { role: 'label', weight: 600, anchor: 'middle', halo: true });
       }
       var pl = K.parts.place_labels(c, pts.map(function (p) { return { x: p.x, y: p.y, r: p.r, words: p.words, weight: p.weight }; }), { role: 'label', reach: [8, 18, 30], avoid: kts.length ? kts : [kt] });
       if (pl.unplaced.length) c.warn('places with no room for a name: ' + pl.unplaced.map(function (u) { return u.words; }).join(', '));

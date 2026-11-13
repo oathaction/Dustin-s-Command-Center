@@ -670,6 +670,9 @@ async function self_test() {
     fs.copyFileSync(path.join(DATA, meta.file), path.join(td, meta.file));
     const one = 'Source: a fixture publisher, all nonfarm employees, 2026, United States. Retrieved November 6, 2026.';
     meta.printed_source_line = one; meta.source_line_variants = {};
+    // the fixture is a plain table: since --data (AX-S6) a derived sidecar's sources are found in work/build/data/ after
+    // the scratch folder, and the fixture's publisher names none of them
+    meta.kind = 'public'; delete meta.derived_from; delete meta.derivation;
     meta.source_line_templates = { span: 'Source: a fixture publisher, all nonfarm employees, {from} to {to}, United States. Retrieved November 6, 2026.' };
     fs.writeFileSync(path.join(td, base.dataset + '.meta.json'), JSON.stringify(meta));
     const s1 = JSON.parse(JSON.stringify(base)); delete s1.source_line;

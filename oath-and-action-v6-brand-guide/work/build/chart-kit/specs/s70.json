@@ -198,5 +198,9 @@
     "MA-5: the title keeps to what the drawing draws, the 94 district courts that try federal cases.",
     "MA-8: the grouped table lists each group's states and territories once, in the drawing's order (agg list with distinct, A-E5), so a reader finds the court that hears a case from their state.",
     "MA-9: the Supreme Court's row in the grouped table reads 'Every state, DC and the territories, through the 13 courts of appeals' through the column's words, keyed by the group's key, the parent's name as stored (the engineer's group-column words)."
-  ]
+  ],
+  "desk_phone": {
+    "rows": 20,
+    "part": "the District of Columbia and First Circuits; a phone draws all 13 courts of appeals"
+  }
 }
