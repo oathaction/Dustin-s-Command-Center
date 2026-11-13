@@ -94,7 +94,8 @@
   "Ruling (a): no named mark; the map answers with its pattern.",
   "C-S3 (review fix pass): the title names the survey as the source of its class counts and stays a Finding (the data lead's ruling).",
   "C-M1 (review fix pass, the data lead's ruling and call 7): the engineer's map_labels at the widest interior point still left 19 states uncoded at 358 px (the engineer's measure), more than six, so under 480 px S78 draws the studio's tile grid (S07's), phone: differs, with the same classes, steps, step-1 edges, key and national figure, every state's and DC's code on its tile in its step's label ink with 1 px to spare each side; a code with no room is named in the kit's note. At a desk the map fits 44 px narrower and the northeastern codes, West Virginia's and DC's square take a column on the ocean on leaders (labels.code_column), so every state and DC carries its code from 520 px; from 480 to 519 px, a width only zoom gives, the tile grid draws too (labels.tiles_under), since there West Virginia's leader finds no free row.",
-  "ST-S4 (review fix pass): B28002 and S2801 publish Puerto Rico as state 72 (the research lead's check, now in the sidecar's geography line); the map draws the 50 states and DC, and note 3 says Puerto Rico is not drawn."
+  "ST-S4 (review fix pass): B28002 and S2801 publish Puerto Rico as state 72 (the research lead's check, now in the sidecar's geography line); the map draws the 50 states and DC, and note 3 says Puerto Rico is not drawn.",
+  "D3-1553 (round 4): with the phone tile gap at 2 px (C4-E1, tokens 6.0.0-gate3.3) every state's and DC's code sits on its tile at the guide's 326 px phone drawing, 1 px or more to spare each side (before: WA, WV and WY in the note); checked by `python3 -I work/build/scripts/phase-3/cartographer_round4_derive.py` (codes). Placement only: figures, inks and words unchanged."
  ],
  "formats": {
   "value": "number:1",

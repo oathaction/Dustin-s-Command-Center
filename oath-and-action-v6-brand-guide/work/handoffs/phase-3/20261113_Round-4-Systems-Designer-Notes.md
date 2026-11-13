@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the sy
 
 ## Status
 
-21:36 UTC. **Ready for sign-off: DR-265 in chapters 11, 12, 15 and 17, and Rules 15.19 to 15.21 as built.** Every generator check passes; strict builds exit 0 with 0 warnings; the editor's first-read words for 15.19 to 15.21 are applied (21:35). Captures: all 51 changed plates on Newsprint at 1440, 1024, 768, 390 and 360 px are taken and measured (0 flagged, `capF/` in my scratch folder); Charcoal (`capFd/`) is finishing. The behavior test of 15.19 and 15.20 (keys, status lines, drawing state, print emulation, scripts off) passes, 11 of 11. Still to run: the second generator chain pass on the final files, and recaptures of 15.19 to 15.21 after the editor's words, once the machine's load drops under 4.
+21:42 UTC. **Ready for sign-off and tests: DR-265 in chapters 11, 12, 15 and 17, and Rules 15.19, 15.20 and 15.21 as built.** For the accessibility lead: 15.20 and 15.21 are built, and 15.20's L56 now turns red when Reform R-04 is chosen (fixed 21:38, its unlit case given no paint 21:41); the step space in 15.19 was in place at 21:34. Every generator check passes; the strict build `guide12.html` (21:41) exits 0 with 0 warnings, chapter 15 at 381,215 bytes. The editor's first-read words are applied. Captures of all 51 changed plates at five widths on both grounds: 510, 0 flagged (from `guide9.html`, before the editor's words and the red fix). Running when the machine's load is under 4: the behavior test with L56's stroke check and fresh captures of 15.19 to 15.21 from `guide12.html`.
 
 ## Summary
 
@@ -17,7 +17,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the sy
 - 15.20 offers Reforms R-03 and R-04 on Loop R4a as Rule 18.3's radio group; the checked radio shows its panel and lights its targets through CSS, scripts on or off; the shell writes the status line (C-2); qualifications and assumptions sit in Rule 18.8's disclosure.
 - 15.21 draws Connection L55 with what the model holds on the model's own steps (sign, grade on the ladder, delay class, no strength), against a still picture of a 0 to 100 slider whose 70 the plate names as its own.
 
-**Weight (reported, DR-271).** Rules 15.19 to 15.21: 48,699 bytes (plates 35,498, rule entries 7,973, styles 4,355, the shell's listener 873), against R4-6's 75,000. Chapter 15 in the strict build: see "Tested".
+**Weight (reported, DR-271).** Rules 15.19 to 15.21: 49,764 bytes (plates 35,498, rule entries 8,288, styles 5,105, the shell's listener 873), against R4-6's 75,000. Chapter 15 in the final strict build: 381,215 bytes of its 600,000.
 
 ## DR-265 list
 
@@ -96,9 +96,30 @@ Chapter 15's three plates that print no chain label: 15.5 and 15.17 print titles
 
 ## Tested
 
-- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide0.html` on HEAD: exit 0, 0 warnings; chapter 15 at 307,066 bytes.
-- `dr265_scan.py` over that page, as described above.
+All in my scratch folder (`/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af59004-38b5-5773-926b-c1b00dd9bd57/scratchpad/phase-3/round-4/systems-designer/`), on this container's Chromium (Playwright).
+
+- **Generators and their checks.** `python3 -I work/build/scripts/phase-3/phase3_ch15_build.py`: every check passes, round 1's to round 4's. New this round: no chain label in any plate, alt or line of the chapter but Rule 15.15's fault (exactly once) and the glossary's term; every DR-265 title at three rows or fewer in its pill; a stacked loop's steps on both pills' flat edges, its words inside the artboard and its ID clear of its tags; a three-variable loop's ID clear of its lower arch; no script in any plate; no working control in any failure plate or in 15.21's; 15.19's markup as C-1 lists it, its steps equal to Loop R1's connections; 15.20's radios one group in ruling (f)'s order with one checked, each with its panel and its `data-oa-say` line, and the shell's hooks; 15.20's red marks equal to the union of both reforms' targets (four); every route "Not checked" per its own record; Rule 01.9 over 30 examples (D02 at 7). `apply_systems_ch11.py`, `stage_b_ch12_systems_build.py` and `stage_c_ch17_build.py` run clean.
+- **The generator chain** (handoff V12, with V15's `stage_c_ch17_build.py`, then chapter 15's), run five times (`chain.sh`); after runs 2, 3, 4 and 5, `git status` lists no file I own, and between runs 4 and 5 only other owners' files changed (chart kit, notes), so nothing crossed.
+- **Strict builds.** `guide12.html` (21:41, final): exit 0, 0 warnings; chapter 15 at 381,215 bytes; the page at 11,500,550, projected 15,051,454. `guide10.html` (21:37): exit 0, 0 warnings; chapter 15 at 380,465 bytes; the page at 11,498,314, projected 15,050,450. `guide11.html` (21:39, after the 15.20 red fix): exit 1 on one warning that is not chapter 15's (Rule 26.7's token table, above); chapter 15 at 381,180 bytes; the page at 11,500,236, projected 15,051,456. Rules 15.19 to 15.21: 49,764 bytes with their styles and the shell's 873-byte listener (reported, DR-271).
+- **DR-265 rescan** (`dr265_scan.py`, case-insensitive, atlas strings masked) on `guide10.html`: no chain label in any loop drawing of chapters 11, 12, 13, 15, 17 or 18, but Rule 15.15's deliberate pair; chapter 10's and Rule 11.12's icon names, Rule 18.6's menu topic, Rule 12.7's header and three plain-word notes in chapter 14 remain, as listed above.
+- **V7 check** (`v7_check.py --page guide9.html`): PASS, 0 failures; chapter 15 at 145 chips.
+- **Captures, measured by script** (`cap.js`: type under 13 px, text outside its stage, two SVG labels overlapping): every changed plate, 51 of them (chapter 15's 43, Rules 11.14 and 11.16's four, Rule 12.5's two, Rules 17.3 and 17.4's two), at 1440, 1024, 768, 390 and 360 px, on Newsprint (`capF/`, 255 captures, 0 flagged) and with the stage set to Charcoal (`capFd/`, 255 captures, 0 flagged), from `guide9.html`.
+- **Read by eye:** chapter 15's loop plates at 390 (opener, 15.1, 15.6, 15.7, 15.11, 15.13 to 15.16), its other plates at 390 (15.2 to 15.5, 15.8 to 15.10, 15.12, 15.17, 15.18), 15.6, 15.11, 15.13, 15.16 and the opener at 1440, 15.1 at 1024, 15.15 and 15.20 at 360, 15.19 at 768; Rules 11.14, 11.16, 12.5 and 17.4 at 1440; 15.19, 15.20, 15.1 and 12.5 on Charcoal at 1440; 15.19 to 15.21's six plates at 1440 and 390.
+- **Behavior test** (`live.js`) on `guide8.html`, 11 of 11 passing: 15.19 at load (live, `data-oa-at="0"`, controls shown), Next step by keyboard (status "Step 1 of 3: …", focus kept, band on step 1 alone, step 3 muted), the last step (Next unavailable, the loop named reinforcing), print emulation (buttons hidden, no band, every step in ink), scripts off (controls, status and reason hidden, no step current, numbers shown); 15.20 at load (R-03's panel alone, status silent), ArrowDown (R-04 checked and focused, its panel, status line "Reform R-04 acts where the marks turn red: on two connections."), print emulation (both panels, the line naming R-04), scripts off (the radios still choose and the panel follows).
 
 ## Not tested
 
-- Nothing changed yet.
+- Rule 15.20's print emulation hid its radio group only after a later fix, and L56's red after another (21:38); the rerun of the behavior test with the stroke-color check and the recaptures of 15.19 to 15.21 after the editor's words wait on the machine's load (see Status when they land).
+- The guide check (`guide_check.js`), quick or full, on these builds: not run, to keep browser load down; the accessibility lead ran its tests on 15.19.
+- A screen reader; forced colors; 200 percent text; a 320 px window (the accessibility lead covers these for 15.19 and 15.20).
+- Rule 12.5's plates on Charcoal: they draw for Newsprint only, as before this round (their wires use Newsprint's tokens); DR-265 changed their words only.
+- Print of the shell's own `beforeprint` disclosure opening (C-3): Playwright's print emulation does not fire `beforeprint`.
+- Firefox and Safari.
+
+## Files
+
+- `work/build/scripts/phase-3/phase3_ch15_build.py` (modified), with what it writes: `work/build/guide/chapters/15-systems-graphics.json`, `work/build/guide/specimens/s-15-*.html` (37 rewritten, 6 new: `s-15-19-correct`, `s-15-19-failure`, `s-15-20-correct`, `s-15-20-failure`, `s-15-21-correct`, `s-15-21-failure`), `work/build/guide/specimens/manifest-systems-graphics.json`
+- `work/build/scripts/phase-2/apply_systems_ch11_ui.py` (modified), with `work/build/guide/chapters/11-icons.json`, `s-11-14-correct.html`, `s-11-14-failure.html`, `s-11-16-correct.html`, `s-11-16-failure.html`, `manifest-systems.json`
+- `work/build/scripts/phase-2/stage_b_ch12_systems_build.py` (modified), with `s-12-marker-correct.html`, `s-12-marker-failure.html`, `manifest-systems.json`
+- `work/build/scripts/phase-2/stage_c_ch17_build.py` (modified), with `work/build/guide/chapters/17-motion-and-states.json`, `s-17-3-correct.html`, `s-17-4-correct.html`, `manifest-motion.json` and the generator's record `work/handoffs/phase-2/20261111_Stage-C-Round-1-Ch17-Figures.json` (its token set line only)
+- `work/handoffs/phase-3/20261113_Round-4-Systems-Designer-Notes.md` (this file)

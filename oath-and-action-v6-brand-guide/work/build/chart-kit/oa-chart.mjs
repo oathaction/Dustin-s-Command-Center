@@ -1504,6 +1504,12 @@ async function self_test() {
       const small = d.guard.filter(g => /under 36 px/.test(g)), plain = K.draw(s19, r19, { width: 720, ground: 'newsprint', tokens: TOK.newsprint });
       pass(d.height === 760 && dots.length === 50 && xs.every((x, i) => !i || x > xs[i - 1]) && labs.length === 2 && !d.warnings.length && !small.length && plain.marks.filter(m => m.kind === 'circle').length >= 50,
         'R4-4, IM-E5: a crop is exactly its height; S19 across on a card draws 50 columns in rank order with its two named states and no word under 36 px' + (d.warnings.length ? ': ' + d.warnings[0] : '') + (small.length ? ': ' + small[0] : '')); }
+    { // the design director's orphan guard (round 4): with typography.pretty a last line of one word takes the word before it;
+      // without the key K.wrap is unchanged
+      const t = 'one two three four five six seven eight nine ten eleven twelve', w = K.measure('one two three four five six seven eight nine ten eleven', 13, 400, 'reading') + 2;
+      const a = K.wrap(t, 13, w, 400, 'reading'), b = K.wrap(t, 13, w, 400, 'reading', true);
+      pass(a.length === 2 && a[1] === 'twelve' && b.length === 2 && b[1] === 'eleven twelve' && K.wrap('two words', 13, 20, 400, 'reading', true).join('|') === K.wrap('two words', 13, 20, 400, 'reading').join('|'),
+        'the orphan guard: typography.pretty moves a lone last word\'s neighbour down; without it the lines are as before'); }
     { // board 2 (A1): a table caption's {data_file} fills in the visible caption, the table's name and the summary's hidden words
       const sp = { id: 'T', title: 'A title.', table: { caption: 'Every row is in {data_file}', columns: [{ field: 'k', label: 'Key', format: 'text', row_header: true }] } };
       const fig = [false, true].map(g => K.figure(sp, [{ k: 'A' }], { id: 'oac-t', guide: g }));

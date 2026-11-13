@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Design director (
 
 ## Status
 
+- 21:42 UTC. **Second read of the infographics maker's S89 to S94, and first read of S95, written** under "Second read". Closed: DD-I1 to DD-I3, DD-I5 to DD-I9, DD-I12, DD-I15, DD-I16, DD-I19 and DD-I20. Open with the engineer: DD-I4, DD-I10 (Must), DD-I11, DD-I13, DD-I14, DD-I17 and DD-I18. New: DD-I21, a Must on S95, where the 400 gridline runs through "All states together: 318"; DD-I22 to DD-I24, Shoulds. S89, S91 and S93 pass my read. S90, S92, S94 and S95 do not yet: S90 on DD-I10, S95 on DD-I21, and S92 and S94 on their open Shoulds.
 - 21:35 UTC. **Second read of maker A's S85 to S88 written** under "Second read": DD-A1 to DD-A11 all closed, so S85 to S88 pass my read. Two new Shoulds on S86's key (DD-A12, DD-A13) don't block. Still to read: the infographics maker's fixes and S95 (waiting on the engineer's IM-E6).
 - 21:28 UTC. **Cards read:** S90, S91, S92 and S94 at twice size, beside S60, S66, S77 and S89. Requests DD-I10 to DD-I20 (3 Must, 8 Should), four to the engineer and three more to the editor. The infographics maker's running total is 7 Must and 13 Should. Waiting for S95 (the engineer's card mode) and both makers' fixes.
 - 21:22 UTC. **First read of the six drafts written:** maker A's S85 to S88 and the infographics maker's S89 and S93, read at twice size from my own builds at 1440, 390 and 320 px on Newsprint and Charcoal and in grayscale, beside round 3's S47, S66, S71 and S77. Requests below: maker A 4 Must and 7 Should; the infographics maker 4 Must and 5 Should; small requests to the data lead, the editor and the engineer. Next: S90, S91, S92 and S94 (built, read next), then S95 when the engineer's card mode lands, then the fixes.
@@ -94,10 +95,47 @@ New, from this read:
 - **DD-A12, Should. S86's key rings in the context ink.** The key's rings are drawn in the label ink (Charcoal on Newsprint, Newsprint on Charcoal), darker than the data circles' context-ink edges. The 40,000 ring, as large as the special districts circle, is now the heaviest outline on the plate and pulls the eye below the data. Draw the rings in the context ink at 1 px, as ruling (b) first set them; on S16's map, label-ink rings sit beside filled shades, where this cannot happen.
 - **DD-A13, Should. 1 px clear at the 256 px column.** There the 40,000 ring's stroke reaches 256.47 px in a 256 px drawing (cx 189.6 + r 66.37 + half the 1 px stroke), so at twice size its rightmost arc flattens against the edge. Keep 1 px clear at every width (the 320 px column has 0.93 px), by tightening the key's gaps there.
 
+### The infographics maker, S89 to S95 (21:41 UTC)
+
+I read my own kit build of S89 to S95 (21:38 UTC, `--no-sweep`, all seven PASS, S95 included). The drawn forms (S89, S93, S95) I read from their PNG exports, which are the drawings at twice size, or at true pixels for S95's two crops, with the exported SVGs. The cards (S90, S91, S92, S94) I read from the 1x page captures at 1440 px. I started no browser, since the load average was over 4. **13 items closed, 7 open:** six wait on the engineer (IM-E7 and my own kit requests) and one is a Must. **S95, first read:** one Must, two Shoulds.
+
+**Closed**
+- **DD-I1, S89.** The emergency branch runs down the middle of the local lane (x 52.2), clear of every lane rule.
+- **DD-I2, S89.** The four lane heads ("Local", "State and tribal", "Federal", "Residents") sit on one line each on one baseline. The lanes follow a rule stated in `notes_internal` (a lane's share follows the steps it holds alone), which meets the Should.
+- **DD-I3, S89.** On a phone the branch boxes start at x 44, so each link shows a 16 px stem before its arrowhead.
+- **DD-I5, S89.** "30 days" and "law’s limit" are held.
+- **DD-I6, S93.** The sheet closes on a dashed rule, with "The page continues with section 2." under it, inside the drawing.
+- **DD-I7, S93.** Parts are numbered in the order the eye meets them: left 1, 3, 4, 5, 8, 9 and right 2, 6, 7, 10, 11. Page and list share one sequence.
+- **DD-I8, S93.** At 320 px "139 STAT. 55" takes its own line, right-aligned.
+- **DD-I9, S93.** The short title section prints true double quotation marks.
+- **DD-I12, S91.** The engineer's shared-row grid puts each field on one line across the three cards ("Appointed by", "With the consent of", "Term", "Cases heard", "Seats", "Number of seats set by"). The rows open gaps under the shorter answers, which is the right price for a comparison the eye can make in one sweep.
+- **DD-I15, S92.** Each limit's figure phrase is in 600 weight with space above it, so the law's limit is the line a reader finds first.
+- **DD-I16, S94.** Each consequence takes its own line under its chip; nothing wraps back under a chip.
+- **DD-I19, S94.** The list is set as rows: the date in a left column, events and consequences beside it, hairlines between.
+- **DD-I20, S94.** "fiscal 2028" is held.
+
+**Still open**
+- **DD-I4, S89, with the engineer's orphan guard.** No lone last word shows at a desk now; I did not reread the phone widths.
+- **DD-I10, S90, Must, with the engineer (IM-E7).** Still open, and wider now: the third fact grew to ten lines with MI-3's words, so the first row's table lines sit at y 179, 248 and 340, with about 190 px of empty frame under "Table 1".
+- **DD-I11, S90, with the engineer.** Still boxed.
+- **DD-I13 and DD-I14, S92, with the engineer (IM-E7).** The eyebrow and actor lines are still in the text ink, and the step's lines still run to about 84 characters.
+- **DD-I17 and DD-I18, S94, with the engineer.** The chips stay, the key is still a sentence with no mark, and the year mark is still 256 px wide at a desk.
+
+**New, S90**
+- **DD-I24, Should.** At a desk the third fact breaks "day- / to-day" at its hyphen. Hold "day-to-day".
+
+**S95, social card, first read** (both crops at true pixels on Newsprint and Charcoal; the guide's page at 1440 px)
+
+The card is calm and complete. S19's finding is whole: title, grade line, key words, the all-states line and the source naming the Bureau, Prisoners in 2023 and Table 7. Every card-level line is set at 36 px or more, with only the two named states labeled, so it holds when it travels alone. The guide shows each crop at the column's width with its true size beside it, and gives the words and the alt text to post.
+- **DD-I21, Must, with the engineer if the fix sits in the dot plot's card mode (IM-E6).** The 400 gridline runs through "All states together: 318" in both crops on both grounds: across the words' x-height in the tall crop, at their baseline in the square one. On a card made to travel alone, a line through words is the first flaw a reader sees at full size. Clear the label: a ground-colored knockout behind its words (the kit's `clear_label`), or set it in the band between two gridlines.
+- **DD-I22, Should. One safe margin for both crops.** The tall crop keeps 72 px to every edge and the square crop 49 px, so the square card's words come within 49 px of the edges where a platform lays its own controls. Use one stated margin in both (64 or 72 px) and let the chart give up the height.
+- **DD-I23, Should. The square crop's slope.** The square crop plots 0 to 600 in about 150 px across 880 px, so the fall from 652 to 96 reads as a gentle slope; the tall crop gives it about 215 px. Give the square crop's chart about 200 px, by setting the title at 40 px or shortening the key line (the editor's words), not by shrinking the dots.
+
 ## Requests to the data lead
 
 - **S86's key and its "not drawn" sentence (DD-A5, DD-A6).** I ask maker A to use S16's side-by-side size key so chapter 14 keeps one key grammar, and to move the "not drawn" sentence into the key's band. Both touch ruling (b)'s words ("nested circles", "above or beside the circles"); neither changes a figure, ink or scale. Yes or no.
 - **S93's order (DD-I7).** I ask the infographics maker to order the derived rows by place on the page, so the "file's order" in (b) is the page's reading order. Yes or no.
+- **S95's period (21:41 UTC).** Your R4-4 condition lists the measure's period, "December 31, 2023", among what the card prints. The card prints "at the end of 2023" in its title and no separate measure line; the plate's measure line beside it holds the date. Your call whether the title meets the condition.
 - *Answered 21:25 UTC: yes to all three,* with conditions: S86's key stays on the drawing's one area scale with its 40,000 step and every value printed, and the sentence keeps both counts and its reason; S93's order is set through the spec's sort and the table's Number column, the frozen file unchanged.
 
 ## Requests to the editor
@@ -127,6 +165,8 @@ New, from this read:
 - D3-xxx | S93's two-digit numerals stay in 20 px discs | At twice size "10" and "11" clear the disc's edge by about 3 px; ruling (b) sets 20 px
 - D3-xxx | S91's fields aligned across side-by-side cards is a Must | Comparing one field across the cards is the form's job; fields at three heights make the reader hunt
 - D3-xxx | S94's chips, its year mark's width and its list layout are Shoulds | Each reads correctly today; the changes are weight, scale and scanning, not errors
+- D3-xxx | S95 is read as a chart card with its credit line and no wordmark, and I ask for none | DR-268 leaves the social frame (marks, safe areas, platform sizes) to chapter 23 in Phase 4
+- D3-xxx | The second reads use exports and 1x page captures without a browser when the load average is over 4 | The brief's limit of two browsers at once; the PNG exports are the drawings at twice size
 - D3-xxx | S90, S92 and S94 are read against S60, S66, S77 and S89 for one family grammar (hairline-separated facts; eyebrow and actor in the secondary ink) | The chapter teaches by repetition; a form that renames the grammar teaches less
 
 ## Tested
@@ -137,6 +177,7 @@ New, from this read:
 - Read from the exported SVGs: S85's mark and key geometry at 1440, 390 and 320 px; S87's and S88's circles, label positions and sizes at 1440, 390 and 320 px in both builds; S89's lane rules, boxes, badges and arrowheads at 1440 and 390 px; S93's disc sizes.
 - Looked at, for the cards (21:23 to 21:27 UTC, from the 21:18 build): S90 at 1440 px (Newsprint), 390 px (Newsprint) and 320 px (Charcoal, grayscale), beside S60 at 1440 px (built at 21:23); S91 at 1440 and 390 px (Newsprint); S92 at 1440 px (Newsprint) and 320 px (Charcoal), beside S77 at 1440 px; S94 at 1440 px (Newsprint, the year mark and the list to June 15) and 320 px (Charcoal, grayscale). Read the R4-3 classes in `kit.css` (`.oac-h-cards`, `.oac-h-facts`, `.oac-h-item`, `.oac-h-big`, `.oac-source`).
 - Second read (21:31 to 21:34 UTC), from maker A's `kit-final` build, without starting a browser (load average 8 to 9 with five headless browsers already running): S85's exports at 1440, 390, 352 and 288 px on Newsprint and at 288 px on Charcoal; its 288 px page capture (grade line). S86's exports at 1440 and 390 px on Newsprint and at 288 px on Charcoal, converted to grayscale, with an 8x zoom of the 40,000 ring's right edge at 288 px. S87's exports at 390 px on Newsprint and 288 px on Charcoal. S88's exports at 1440, 390 and 288 px on Newsprint. The exported SVGs' circles, leaders and label positions for S86 at 288 to 390 px, S87 at 1440, 390, 352 and 288 px, and S88 at 1440, 390 and 288 px; the four specs' `typography`, `sort`, S86's key labels and measure line.
+- Second read of the infographics maker (21:38 to 21:41 UTC): `build s89 to s95 --widths 1440,390,320 --no-sweep` to my scratch (7 PASS, 0 faults). Looked at S89's export at 1440 px (Newsprint) and its 390 px SVG (branch stems, arrowheads, boxes); S93's exports at 1440 px (Newsprint) and 320 px (Charcoal); S95's four exports at true pixels (1080 by 1350 and 1080 by 1080, Newsprint and Charcoal) with a zoom of the all-states label in two of them, and its guide page at 1440 px (Newsprint); the 1x page captures at 1440 px on Newsprint of S90, S91, S92 and S94. Read the seven specs' `typography` keys, S89's `notes_internal` lane rule, and S95's text sizes and dot fills from its SVGs.
 - Read the token chain for the icon ink and the subject, context and track inks on both grounds in `work/build/tokens/tokens.css`; S16's size key in `forms/bubble-map.js` and S86's in `forms/proportional-symbols.js`; the kit's wrapping rules in `kit.css`.
 
 ## Not tested
@@ -149,5 +190,6 @@ New, from this read:
 - The guide page: I read the kit's page, not a strict guide build.
 - For the cards: S91 at 320 px and on Charcoal; S92 at 390 px and on Newsprint at the phone widths; S94 at 390 px and its list after June 15; S90's and S91's text order for a screen reader (the accessibility lead's).
 - Maker A's two sketches (`s-14-83-sketch.html`, `s-14-84-sketch.html`): outside my brief's list for this read.
+- Second read of S89 to S95: no captures of my own at twice size (load over 4); the cards only at 1440 px on Newsprint at 1x, not on a phone or on Charcoal; S89 and S93 not on Charcoal at a desk; S95's crops not in grayscale; the sweep, which the infographics maker runs.
 - Second read of S85 to S88: no capture of my own at twice size, and not the 328 px page or S85's and S88's Charcoal exports at a desk. Maker A's sweep and build results are its own (PASS, as the main session reports); I did not rerun them.
 - Print, forced colors and 200 percent text: the accessibility lead's.

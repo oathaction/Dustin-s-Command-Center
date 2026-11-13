@@ -17,7 +17,7 @@ Started 20:39 UTC (clock read).
 - **Kit part budget raised to 560,000 bytes (by 21:24, the main session's call; routine calls).**
 - **DR-271 LANDED in the build (clock read 21:41 UTC):** every allocation is a reported note; the page's 16 MB is the one stop. Details under "DR-271". `guide_build.py --self-test` 35 of 35 scenarios, 344 of 344 expectations; `guide_charts.py --self-test` every planted fault caught.
 - **Landed by 21:40 UTC (clock read):** S91's shared-row grid (DD-I12, `oac-h-rows`); IM-E6's band under the zero line with the 2 px dot gap (least gap 2.32 px, rings 3.08 px, on both crops), and IM-E8 (`grade_line` rides to the page for a card); the `typography.hold` row-header parity fix (S89 with "individual help" held: the old kit fails parity at 1440 and 390 px on both grounds, the new passes); IM-E7's five items (below); **C4-E1** in the tokens, 6.0.0-gate3.3 (the phone tile gap 2.5 to 2 px), token tests all passing, S12 and S78 coding all 51 states at 326 and 358 px. **C4-E2 went to the component engineer** (it changes only `bubble-map.js`). S85, S89 to S94, S12 and S19 build PASS with captures and the sweep on today's kit.
-- **Waiting on the main session:** chapter 26's token table (`s-26-token-table.html`, written by `token_table_build.py`, neither in my row) is one token version behind, so the strict build warns on Rule 26.7 until it is rerun; asked at 21:40.
+- **Chapter 26's token table rerun (by 21:40, on the main session's word):** `token_table_build.py` wrote `s-26-token-table.html` for 6.0.0-gate3.3; `git diff` shows exactly the four pieces previewed (the version three times, the gap 2.5px to 2px; 2 lines changed); its `--check` passes; **the 21:40 strict build exits 0 with 0 warnings.**
 - **Queue, in order:** the design director's two Should (text-wrap pretty on card text and the source line; S90's facts variant); the orphan guard last, measured for reach first, every signed-off drawing it would move listed for the data lead before it lands; the key path walk (R4-5); each landing build's weight report.
 
 ## Summary
@@ -151,6 +151,7 @@ Each strict build of the guide's own chapters to scratch (`guide_build.py --stri
 | 20:49, scratch mirror with the stacked tile | (mirror) | | 513,702 | 2,229,083 | 13,172 for 13 | | |
 | 21:19, R4-2 to R4-4 and A4-E1 landed, the makers' forms registered (97 of 97) | **1**: "chart kit weighs 0.55 MB, over its budget of 0.55 MB" | 11,358,287 | 550,217 | 2,339,184 | 17,323 for 7 | 15,050,450 | 312,594 |
 | 21:21, the page's kit.css minified | 0, 0 warnings | 11,405,561 | **549,966 (34 bytes under)** | 2,386,458 | 24,663 for 3 | 15,050,450 | 312,594 |
+| 21:40, the token table rerun | **0, 0 warnings** | 11,500,361 | 558,224 | 2,411,668 | 24,404 for 2 | 15,051,454 | 381,180 |
 | 21:39, DR-271, the dot plot's card mode, IM-E6 to IM-E8, the shared rows, C4-E1 and the makers' latest forms | **1**: Rule 26.7's token table one version behind (C4-E1; waiting on the main session) | 11,500,254 | 558,221 (the reported figure 560,000, a note under DR-271) | 2,411,559 | 24,458 for 2 | 15,051,456 | 381,180 (the systems designer's 15.19 to 15.21) |
 
 - The share rises as plates land (fewer to come) and falls as the kit grows. From 21:19 the renderer is no longer projected: all 97 forms are registered, so `renderer_grown` equals the part itself.
@@ -176,6 +177,7 @@ Dustin's answer (DR-271), applied by the main session's instruction. What change
 ## Changed outside chapters 13 to 15
 
 - `kit.css` on the guide's page is minified (the same 204 rules by the browser's parse).
+- **Chapter 26's token table** (`s-26-token-table.html`) follows token release **6.0.0-gate3.3**: the version three times and the phone tile gap, 2.5px to 2px. `tokens.css` and `tokens.json` carry the same release with its change note, which chapter 26 prints as the newest (Rule 26.8).
 - `guide_build.py` and `guide_charts.py` under DR-271: allocations reported as notes, the 16 MB page stop added (above).
 
 ## Routine calls

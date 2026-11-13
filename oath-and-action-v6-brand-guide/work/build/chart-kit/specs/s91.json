@@ -133,8 +133,9 @@
     ],
     "hold": [
       "Virgin Islands",
-      "Northern Mariana Islands",
-      "14 years"
+      "14 years",
+      "November 12, 2026",
+      "September 30, 2025"
     ]
   },
   "notes_internal": [
@@ -146,7 +147,8 @@
     "Data lead MI-4 (21:21 UTC): the title is true of every seat (the four territorial judges serve 10-year terms; eight years is the full-time magistrate term, four part time), and the note says why the courts count 345 bankruptcy judgeships against the table's 316, in the research lead's words. Words for the editor to set.",
     "Data lead MI-7 (21:24 UTC): Puerto Rico's district judges serve for life, so the title names the three territories whose district judges serve 10-year terms.",
     "Design director DD-I12 (21:28 UTC): labels.rows sets the engineer's shared-row grid (.oac-h-rows, from 27rem), so each field lies on one line across the three cards; stacked on a phone, each card flows as before.",
-    "Place names and \"14 years\" held on one line (typography.hold), so the title never breaks \"Virgin / Islands\" or \"14 / years\"."
+    "\"Virgin Islands\" and \"14 years\" held on one line (typography.hold), so the title never breaks \"Virgin / Islands\" or \"14 / years\"; \"Northern Mariana Islands\" is not held, since held whole it runs past a 224 px column at the phone title size.",
+    "The grade line's dates held whole (typography.hold), so no column breaks a date before its year (the design director's DD-A3 rule, applied to this plate)."
   ],
   "source_line": "Source: U.S. Code, 2024 edition, 28 U.S.C. 133, 134, 152, 631 and 633; Administrative Office of the U.S. Courts, Judicial Business 2025, United States. Retrieved November 12, 2026. Seats include vacant ones; the 677 district positions include the territorial courts’ 4."
 }

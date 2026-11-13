@@ -43,7 +43,7 @@
 .oac-notes li { max-width: 38em; }
 .oac-notes li + li { margin-top: 8px; }
 .oac-src { display: flex; justify-content: space-between; align-items: flex-start; gap: 4px 24px; flex-wrap: wrap; margin-top: 20px; padding-top: 10px; border-top: 1px solid var(--oa-color-border-hairline); }
-.oac-source, .oac-credit { margin: 0; font: var(--oa-font-weight-regular) 13px/18px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); max-width: 42em; }
+.oac-source, .oac-credit { margin: 0; font: var(--oa-font-weight-regular) 13px/18px var(--oa-font-family-reading); color: var(--oa-color-text-secondary); max-width: 42em; text-wrap: pretty; }
 .oac-src-k { font-weight: var(--oa-font-weight-semibold); color: var(--oa-color-text-primary); }
 .oac-eq { margin-top: 14px; }
 .oac-eq > summary { cursor: pointer; font: var(--oa-font-weight-semibold) 15px/22px var(--oa-font-family-reading); list-style: none; padding: 4px 0; }
@@ -78,6 +78,12 @@
 .oac-h-cards { grid-template-columns: repeat(auto-fill, minmax(min(100%, 13rem), 1fr)); }   /* IM-E4: three cards in one row at 720 px */
 .oac-h-facts { grid-template-columns: repeat(auto-fill, minmax(min(100%, 13.5rem), 1fr)); }   /* IM-E3: S90's "$994.9 billion" fits at 656 px */
 .oac-h-cards > .oac-h-item, .oac-h-facts > .oac-h-item { border: 1px solid var(--oa-color-border-hairline); padding: 14px 16px 16px; min-width: 0; }
+/* the design director's second read (round 4): card words wrap with no lone last word where the browser can; a fact's source
+   line sits at its card's foot; .oac-h-plain sets facts with a hairline above each and no frame, as S60 does */
+.oac-html :is(p, dd) { text-wrap: pretty; }
+.oac-h-facts > .oac-h-item { display: flex; flex-direction: column; }
+.oac-h-facts > .oac-h-item > .oac-h-src { margin-top: auto; padding-top: 8px; }
+.oac-h-facts.oac-h-plain > .oac-h-item { border: 0; border-top: 1px solid var(--oa-color-border-hairline); padding: 12px 0 0; }
 .oac-h-dates > .oac-h-item { border-top: 1px solid var(--oa-color-border-hairline); padding: 10px 0 12px; }
 .oac-h-name { margin: 0; font: var(--oa-font-weight-bold) var(--oa-chart-type-measure-size)/24px var(--oa-font-family-reading); color: var(--oa-color-text-primary); }
 .oac-h-big { display: block; margin: 0 0 4px; font: var(--oa-font-weight-extrabold) var(--oa-chart-type-title-size)/var(--oa-chart-type-title-leading) var(--oa-font-family-display); letter-spacing: -0.02em; color: var(--oa-color-text-primary); }

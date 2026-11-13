@@ -112,4 +112,18 @@ Under DR-271 the share and the 15,000-byte line are figures the build reports; e
 
 ## Tested
 
+- `node work/build/chart-kit/oa-chart.mjs build s89 s90 s91 s92 s93 s94 s95` with the sweep on (every whole width from 256 to 720 px, the guide's columns, both grounds), to my scratch `kit-out`: all seven PASS, 0 faults, last at 21:38 to 21:43 UTC after each change; the whole output read and each spec's check file counted. S95 at both crops, each exactly 1080 by 1350 and 1080 by 1080 px.
+- Captures looked at as a design director would: every spec at 1440 and 390 px on Newsprint and Charcoal (S94 at 390 in grayscale too); at 296 and 256 px windows on Newsprint (S89, S90, S91, S93, S94) and Charcoal (S89 to S94), which found and fixed S94's year overflowing a 224 px column, S93's lead line crossing its frame (MI-2) and S91's held "Northern Mariana Islands" running past 224 px; S95's four true-pixel PNGs.
+- `python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures`: every figure in S89 to S95's titles, notes, cards, alts and drawn figures checked against its data file (weekdays by `datetime`, shares' rounding, the 677 = 673 + 4 sum, the 16 deadlines on 13 days and the six tax deadlines on five, Mississippi's and Massachusetts's ranks, no party or president on S91); all pass.
+- `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py --rounds 1,2,3,4`: 141 rules, 127 entries, 95 chart plates, 108 examples logged, 0 faults. (A first run without `--rounds` dropped round 4 from the generated chapter, manifest and log; rerunning with `--rounds 1,2,3,4` restored them at once, with only my entries' additions in the diff.)
+- A strict guide build of my own to scratch (`guide_build.py --strict --out .../strict/guide.html`, 21:38 UTC): exit 0, 0 warnings, 11,498,515 bytes; the seven plates as placed: S89 9,929, S90 5,670, S91 6,573, S92 8,618, S93 6,758, S94 11,460, S95 11,591 bytes (each about 750 more with its frame). That build rewrote `plate-share.json`, as every strict build does.
+- S93's layout against the page itself: govinfo's PLAW-119publ12.pdf, fetched 20:44 UTC to my scratch `dl-plaw`, page 1 rendered and read with `pdftotext -layout` and `-bbox-layout`.
+- S89's parity fault isolated by builds of three variants: a `typography.hold` on a phrase in the table's row-header column fails parity, the same hold elsewhere passes (IM-E6 item 2).
+
 ## Not tested
+
+- Screen readers, the keyboard and the browser's accessibility tree on the cards: the accessibility lead's (its notes record S89's and S93's text order as met; the four card forms' browser tests had not run at 21:38).
+- Print, forced colors and 200 percent text on the cards, and S95 inside the guide page beside its words to post.
+- The quick guide check (`guide_check.js`): I drew no sketch, and the brief asks it of sketches; not run.
+- Captures at twice size: I looked at the kit's 1x captures and the cards' true-pixel PNGs; the design director reads at 2x.
+- DD-I10, DD-I11, DD-I13, DD-I14, DD-I17 to DD-I19 and the 8 px of DD-I15: not built, waiting on the engineer's kit classes.

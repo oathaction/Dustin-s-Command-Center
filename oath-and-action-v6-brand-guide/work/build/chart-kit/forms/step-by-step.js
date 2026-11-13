@@ -24,11 +24,11 @@
       return '<ol class="oac-h-steps" role="list">' + h.rows.map(function (r, i) {
         var opt = String(r[ep]) !== mv, k = String(r[ek]);
         return '<li class="oac-h-item' + (opt ? ' oac-h-branch' : '') + '"' + h.row(i) + '>' +
-          p('oac-h-small', opt ? B[k] : '') +
+          p('oac-h-k', opt ? B[k] : '') +
           p('oac-h-name', r[es]) +
-          p('oac-h-small', eo && r[eo] && String(r[eo]) !== String(L.you) ? r[eo] : '') +
+          p('oac-h-k', eo && r[eo] && String(r[eo]) !== String(L.you) ? r[eo] : '') +
           p('oac-h-body', ew && r[ew] ? String(r[ew]) + (L.stop && !/[.?!]$/.test(String(r[ew])) ? L.stop : '') : '') +
-          (el && r[el] ? '<p class="oac-h-small">' + String(L.limit_words || '{limit}').split('{limit}').map(function (w) { return h.words(w); }).join('<strong>' + h.words(r[el]) + '</strong>') + '</p>' : '') +
+          (el && r[el] ? '<p class="oac-h-limit">' + String(L.limit_words || '{limit}').split('{limit}').map(function (w) { return h.words(w); }).join('<strong>' + h.words(r[el]) + '</strong>') + '</p>' : '') +
           p('oac-h-src', eb ? r[eb] : '') + '</li>';
       }).join('') + '</ol>';
     }

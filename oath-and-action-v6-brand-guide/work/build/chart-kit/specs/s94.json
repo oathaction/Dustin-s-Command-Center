@@ -96,7 +96,8 @@
       ]
     ],
     "hold": [
-      "fiscal 2028"
+      "fiscal 2028",
+      "November 9, 2026"
     ]
   },
   "notes_internal": [
@@ -109,6 +110,7 @@
     "Editor's words (21:17 UTC) applied: title and note 2 with \"written\", the law's word in subsection (c).",
     "Data lead MI-5 (21:21 UTC): the title counts deadlines (16 on 13 days; the six tax deadlines fall on five days). MI-6: the year mark draws 224 px wide, so nothing overflows at a 256 px window.",
     "Design director DD-I16 and DD-I20 (21:28 UTC): each kind of date sits on a line of its own and its consequence on the next, so a wrapped consequence never starts under the tag; \"fiscal 2028\" held on one line.",
-    "Editor's title (21:22 UTC, on MI-5) applied."
+    "Editor's title (21:22 UTC, on MI-5) applied.",
+    "The grade line's dates held whole (typography.hold), so no column breaks a date before its year (the design director's DD-A3 rule, applied to this plate)."
   ]
 }

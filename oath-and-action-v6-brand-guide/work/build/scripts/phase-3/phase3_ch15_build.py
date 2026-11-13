@@ -3435,7 +3435,7 @@ CSS.update({
            ".dw{forced-color-adjust:none;background:var(--oa-color-surface)}.lv>.oa-choice{margin:0 0 16px}"),
     "dw": (f".dw{{--k:{INK};--t:var(--oa-color-text-primary);--f:var(--oa-color-surface)}}"
            ".dw .ak-mark,.dw .tk{stroke:var(--k)}.dw .hd,.dw .tg polygon{fill:var(--k)}.dw text{fill:var(--t)}"
-           ".dw .pl{stroke:var(--k);fill:var(--f)}"
+           ".dw .pl{stroke:var(--k);fill:var(--f)}.dw .ak-case{fill:none;stroke:none}"
            f".dw .bd{{display:none;fill:none;stroke:{BAND};stroke-width:14px;stroke-linecap:round}}" + stepper_css(3)
            # C-1: scripts off, the buttons and the two lines that speak of them stay hidden; the still sequence shows
            + "[data-oa-stepper]:not([data-oa-live]) :is(.oa-stepper-controls,.oa-stepper-status,.oa-stepper-why){display:none}"

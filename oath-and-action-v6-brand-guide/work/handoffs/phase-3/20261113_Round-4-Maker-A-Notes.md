@@ -105,6 +105,7 @@ Read at 21:22 UTC; all eleven applied by 21:30 UTC. No figure or word changed; D
 
 - Second set (21:3x UTC), after DD-A1 to DD-A13 and the editor's entry words: `oa-chart.mjs build s85 s86 s87 s88 --widths 1440,390,352,328,288`, sweep on, both grounds with grayscale: 4 PASS, 0 faults (S86 again after DD-A12 and DD-A13 with `--no-png`, sweep on: PASS; its PNGs wait for the machine's load to fall, per the main session's rule). `phase3_ch14_build.py --rounds 1,2,3,4`: 141 rules, 127 entries, 0 faults. `maker_a_round4_derive.py --figures`: 51 of 51.
 - Final strict build to scratch (`guide-final.html`, 21:32 UTC, before DD-A12 and DD-A13): exit 1 on two warnings, both S95's card ("no place clear of the dots for Massachusetts 96", the infographics maker's); none names S85 to S88 or my sketches. 11,493,502 bytes. Plates as the guide places them: S85 4,228, S86 4,283, S87 4,694, S88 4,733 bytes, each about 750 more with its frame.
+- After DD-A12 and DD-A13 (21:40 UTC, load under 3): `oa-chart.mjs build s86 --widths 1440,390,352,288`, sweep on: PASS, 0 faults; the key's rings looked at in the 1440 px Newsprint and 256 px Charcoal captures. Last strict build (`guide-last.html`): exit 0, no warning, 11,500,303 bytes; plates S85 4,228, S86 4,283, S87 4,694, S88 4,733 bytes.
 - The quick guide check on my first strict build (`guide.html`) crashed after about 20 minutes ("page.goto: Target page, context or browser has been closed") under a machine load of about 8: not counted.
 
 - `node work/build/chart-kit/oa-chart.mjs build s85 s86 s87 s88`, sweep on (256 to 720 px), PNGs at 1440 and 390 px pages on both grounds with grayscale: 4 of 4 PASS, 0 faults (S85 after A4-E1 landed, 21:19 UTC; S86 to S88 at 21:1x). Also built without the sweep at 328 and 288 px pages (296 and 256 px drawings) on both grounds, and S87 at 256 px pages (224 px drawing) after MA-9: PASS.
@@ -118,9 +119,7 @@ Read at 21:22 UTC; all eleven applied by 21:30 UTC. No figure or word changed; D
 ## Not tested
 
 - Real screen readers, devices, print and 200 percent text; forced colors only through the kit's own checks (no `dataviz_check.js --kit` run).
-- S86's PNG captures after DD-A12 and DD-A13 (held for the machine's load; the drawing checked in Node and by measure).
 - The CSV exports beyond S85's.
-- A strict build after DD-A12 and DD-A13 (S86's key ink and gaps only).
 
 ## Files
 

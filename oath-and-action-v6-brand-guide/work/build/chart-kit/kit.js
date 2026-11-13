@@ -128,7 +128,7 @@
     }
     return w * size / 1000;
   };
-  K.wrap = function (text, size, max, weight, face) {
+  K.wrap = function (text, size, max, weight, face, pretty) {
     // lines break at spaces only, so a no-break space holds two words together
     var words = String(text).split(/[ \t\r\n]+/), lines = [], cur = '';
     for (var i = 0; i < words.length; i++) {
@@ -136,6 +136,11 @@
       if (cur && K.measure(t, size, weight, face) > max) { lines.push(cur); cur = words[i]; } else cur = t;
     }
     if (cur) lines.push(cur);
+    // the design director's orphan guard (round 4), for a spec that sets typography.pretty: a last line of one word takes
+    // the line above's last word where it fits, the line above keeping two or more (a global guard would move 56 signed-off
+    // specs' drawings, so it is opt-in)
+    var n = lines.length, pw = n > 1 && !/ /.test(lines[n - 1]) ? lines[n - 2].split(' ') : [];
+    if (pretty && pw.length > 2 && K.measure(pw[pw.length - 1] + ' ' + lines[n - 1], size, weight, face) <= max) lines.splice(n - 2, 2, pw.slice(0, -1).join(' '), pw[pw.length - 1] + ' ' + lines[n - 1]);
     return lines;
   };
 
@@ -474,7 +479,7 @@
   K.OPEN_WORD_SPACE = 0.1;
   K.open_space = function (line, size) { var n = (String(line).match(/[ \u00a0]/g) || []).length; return n * K.OPEN_WORD_SPACE * size; };
   Ctx.prototype.wrap = function (words, role, max, weight) {
-    return K.wrap(words, this.size(role || 'note'), max, weight || 400, role === 'big' ? 'display' : 'reading');
+    return K.wrap(words, this.size(role || 'note'), max, weight || 400, role === 'big' ? 'display' : 'reading', (this.spec.typography || {}).pretty);
   };
   Ctx.prototype._push = function (s) { (this._grp || this._els).push(s); };
   Ctx.prototype.group = function (o) {
@@ -602,7 +607,7 @@
     if (this.spec.typography) words = K.typeset(this.spec, words);
     var role = o.role || 'label', size = o.size || this.size(role), weight = o.weight || 400, anchor = o.anchor || 'start';
     var face = o.face || (role === 'big' ? 'display' : 'reading');
-    var lines = o.max ? K.wrap(words, size, o.max, weight, face) : [String(words)];
+    var lines = o.max ? K.wrap(words, size, o.max, weight, face, (this.spec.typography || {}).pretty) : [String(words)];
     var lh = o.leading || Math.round(size * (role === 'note' ? 1.36 : 1.25)), w = 0, open = !!o.open && face === 'display' && /[ \u00a0]/.test(String(words));
     lines.forEach(function (ln) { w = Math.max(w, K.measure(ln, size, weight, face, o.tnum) + (open ? K.open_space(ln, size) : 0)); });
     var x0 = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x;
@@ -616,7 +621,7 @@
     if (this.spec.typography) words = K.typeset(this.spec, words);   // D3-519
     var role = o.role || 'label', size = o.size || this.size(role), weight = o.weight || 400, anchor = o.anchor || 'start';
     var face = o.face || (role === 'big' ? 'display' : 'reading');
-    var lines = o.max ? K.wrap(words, size, o.max, weight, face) : [String(words)];
+    var lines = o.max ? K.wrap(words, size, o.max, weight, face, (this.spec.typography || {}).pretty) : [String(words)];
     var lh = o.leading || Math.round(size * (role === 'note' ? 1.36 : 1.25));
     var self = this, w = 0, open = !!o.open && face === 'display' && /[ \u00a0]/.test(String(words));
     lines.forEach(function (ln) { w = Math.max(w, K.measure(ln, size, weight, face, o.tnum) + (open ? K.open_space(ln, size) : 0)); });

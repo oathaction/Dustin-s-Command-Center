@@ -5,12 +5,15 @@ Oath & Action Edition 06, Phase 3, round 4, November 13, 2026. Written by the co
 ## Status
 
 - 20:58 UTC: started (clock read 20:58:05).
-- 21:04 UTC: the main session gave me every loop word in chapter 18 for DR-267: the code sets, the two KEYS strings in `stage_c_ch18_build.py` (lines 1954, 1970), its lines 1352 and 1631, and `stage_c_ch18_anatomy_build.py` lines 1127 and 1129, as string changes only, with their outputs. **Neither generator is rerun to write until the main session rules on the staleness below.**
-- In progress: the five tasks under "Contracts".
+- 21:04 UTC: the main session gave me every loop word in chapter 18 for DR-267: the code sets, the two KEYS strings in `stage_c_ch18_build.py` (lines 1954, 1970), its lines 1352 and 1631, and `stage_c_ch18_anatomy_build.py` lines 1127 and 1129, as string changes only, with their outputs, and no generator rerun to write until it ruled on the staleness below.
+- 21:11 UTC: contracts C-1 to C-3 LANDED (the five tasks: requests 1, 3, 4 and 5, and DR-267 in chapter 18).
+- 21:16 UTC: the main session ruled the stale line ("105 KB"); both generators rerun to write, their outputs changed only by that line and the titles.
+- 21:35 UTC: C4-E2 (S16's code column, handed over at 21:31) LANDED in `bubble-map.js`; the cartographer placed S16 at 21:36.
+- 21:41 UTC: done but for the guide check's self-test, which is running; the quick guide check waits for the machine's load (see "Not tested").
 
 ## Summary
 
-To come.
+The accessibility lead's requests 1, 3, 4 and 5 and DR-267's titles in chapter 18 are in. Rule 18.22's script now writes `data-oa-live` and `data-oa-at`, and its step list carries `role="list"`. The shell opens every closed disclosure for print and closes it after (Rule 18.8), and holds Rule 15.20's status line, keyed by data attributes (873 bytes toward R4-6). Loop R1's three variables print their atlas titles in both code sets and their keys files, in 18.22's anatomy and failure plates and in 18.23's anatomy plate. The stepper's holds are re-timed from the new words. Chapter 18's two generators carry the same strings and write the same files; with the main session's ruling, Rule 18.14's example now says 105 KB. The systems designer's 15.19 and 15.20 run on these contracts as built, at 1440 and 390 px. C4-E2 landed in the kit's bubble map, and S16's circles keep their radii at every width. Eight changes for board 3 are listed below. One fault on HEAD (18.22's anatomy buttons at 360 px) and two small kit and token items go to their owners under "Requests".
 
 ## Staleness of chapter 18's generators on HEAD (for the main session's ruling)
 
@@ -95,4 +98,30 @@ For board 3: every change below sits in chapter 18 or the shell, which Gate 2 ap
 
 ## Tested
 
+Scratch is `/tmp/claude-0/-home-user-Dustin-s-Command-Center/5af59004-38b5-5773-926b-c1b00dd9bd57/scratchpad/phase-3/round-4/component-engineer/`. Each strict build rewrote `work/build/chart-kit/plate-share.json`, and each time I put back the copy I took just before.
+
+- **Strict builds to scratch.** 21:01, on HEAD before any change: exit 0, 0 warnings. 21:12, with every chapter 18 and shell change: exit 0, 0 warnings. Head and shell grew 1,529 bytes, the shell file exactly. Chapter 18 grew 2,631 bytes, to 1,163,415 of its 1,250,000. 21:39, with the systems designer's 15.19 to 15.21 in: exit 1 on the one token table warning under "Requests to the engineer", outside my files; the page was written.
+- **`guide_build.py --self-test`**: 33 of 33 scenarios, 334 of 334 expectations (21:22).
+- **Chapter 18's generators.** Both run on a scratch copy of HEAD for the staleness report. Both then rerun to write after the main session's ruling. `stage_c_ch18_build.py --check` reports "current". A second anatomy run changes nothing (md5 of the plates).
+- **Holds re-timed by script**: 40, 56 and 48 words give 10,000, 14,000 and 12,000 ms. The same script reproduces the old 9,000, 12,750 and 10,500 from the old words.
+- **Chromium (Playwright), on the 21:12 build: `test_r4.js`, at 1440 and 390 px, 52 of 54 passed.** The two misses are the doubled-`beforeprint` case, traced to `kit.js` (request 2 to the engineer). What passed:
+  - both stepper stages carry `data-oa-live` and `data-oa-at="0"` after load, with `role="list"` on the step list; the accessibility tree reads a list of 3 items;
+  - Next step moves `data-oa-at` from 1 to 3, with `aria-current` and `data-oa-ahead` in step; the status lines say the titles; Next step turns unavailable at the last step and keeps focus; Reset the loop sets 0; the dark stage keeps its own state;
+  - the diagram's readout and items carry the titles;
+  - every stepper and diagram part stays inside its stage, at 100 and 200 percent text;
+  - print opens all 135 `details` on the page (132 were closed), and after print each is as it was;
+  - Rule 15.20's line (C-2), on a fixture placed before the shell: silent on load and on focus; the arrow keys check each reform and the line says its `[data-oa-say]` words with whitespace collapsed; focus stays on the radio and the page does not scroll; Space on the checked reform says nothing new; a radio outside a chooser writes nothing to it;
+  - no script errors.
+- **Chromium, on the 21:39 build: `test_ch15.js`, the systems designer's real plates, at 1440 and 390 px, 18 of 18 passed.** 15.19's stepper is wired by chapter 18's one script: three roots, one script. It is live, its reason line's id (`s-15-19-correct--oa-stepper-why`) is unique, and its buttons point at it. Next step sets `data-oa-at="1"`, says step 1 and keeps focus, and chapter 18's stepper keeps its own state. 15.20 says nothing on load. ArrowDown checks Reform R-04, the line says "Reform R-04 acts where the marks turn red: on two connections.", and focus stays. Print opens its two disclosures and closes them after. No script errors.
+- **Captures of the changed plates** (`b1/caps/`) at 1440, 1024, 390, 360 and 320 px, looked at: the code stages of 18.22 and 18.23 on both grounds, `s-18-22-anatomy`, `s-18-23-anatomy` and `s-18-22-failure`. Every part sits inside its stage at every width, with no callout over another. The pre-existing button break in `s-18-22-anatomy` is under "Requests to the main session", and HEAD's capture shows the same.
+- **C4-E2.** The revised patch applies cleanly to the form as it stood and equals the cartographer's whole form byte for byte. The kit's self-test catches every planted fault. `build s16` with the sweep: PASS, 0 faults, 4 drawings, 10,235 bytes as placed. `build s16 --widths 358` on both grounds, looked at: the column codes ME, VT, NH, MA, CT, RI, DE, DC, NJ, WV and MD at the 326 px drawing.
+- **C4-E2's radii** (`s16_circles.mjs`, every drawing width from 256 to 869 px, 614 drawings):
+  - with `labels.column_phone`, every state's circle keeps its radius within 0.005 px; circles move only at the 58 widths from 300 to 357 px; 0 drawing faults at every width;
+  - without the key, the circles and checks are identical to the old form's at every width.
+
 ## Not tested
+
+- **Any screen reader.** None runs here, so what NVDA, JAWS, VoiceOver or TalkBack say for the stepper's list role, the chooser's status line or the opened disclosures is unheard.
+- **Safari and Firefox.** No WebKit or Gecko runs here, so the effect of `role="list"` in Safari (request 5's purpose) is unverified.
+- **A real print dialog.** Print was tested by dispatching `beforeprint` and `afterprint`; no paper or PDF output was compared.
+- **Forced colors, reduced motion and scripts off on 15.19 and 15.20.** These are the systems designer's CSS and the accessibility lead's tests.

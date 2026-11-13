@@ -114,6 +114,9 @@
         "CFR ",
         "CFR "
       ]
+    ],
+    "hold": [
+      "November 12, 2026"
     ]
   },
   "notes_internal": [
@@ -121,6 +124,7 @@
     "Steps in the file's order; rows 4 and 7 are the optional steps (path branch), with an outlined disc and their words (ruling (b)). Who acts prints only where it is not the requester (rows 5 and 7).",
     "Every figure checked by script: python3 -I work/build/scripts/phase-3/maker_i_round4_derive.py --figures S92.",
     "Editor's words (21:17 UTC) applied: title and note 1 with I013's own title.",
-    "Design director DD-I15 (21:28 UTC): each limit's own words print in bold (strong), with \", the law’s limit\" after them in the line's weight."
+    "Design director DD-I15 (21:28 UTC): each limit's own words print in bold (strong), with \", the law’s limit\" after them in the line's weight.",
+    "The grade line's dates held whole (typography.hold), so no column breaks a date before its year (the design director's DD-A3 rule, applied to this plate)."
   ]
 }

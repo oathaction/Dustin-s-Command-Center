@@ -160,6 +160,7 @@ function check_spec(K, spec, opts) {
     else {
       if (ty.curl_quotes !== undefined && typeof ty.curl_quotes !== 'boolean') f.push('spec: typography.curl_quotes is true or false');
       if (ty.nbsp !== undefined && typeof ty.nbsp !== 'boolean') f.push('spec: typography.nbsp is true or false');
+      if (ty.pretty !== undefined && typeof ty.pretty !== 'boolean') f.push('spec: typography.pretty is true or false (the orphan guard for drawn words)');
       // IM-E1 (round 4): phrases held on one line
       if (ty.hold !== undefined && (!Array.isArray(ty.hold) || ty.hold.some(p => typeof p !== 'string' || !p.trim()))) f.push('spec: typography.hold is a list of phrases, such as ["Public Law 119-12"]');
       (ty.replace || []).forEach((pr, i) => {
@@ -806,7 +807,7 @@ function id_types() {
 const HTML_TAGS = ['ul', 'ol', 'li', 'dl', 'dt', 'dd', 'p', 'span', 'strong', 'time'];
 const HTML_CLASSES = ['oac-h-cards', 'oac-h-rows', 'oac-h-facts', 'oac-h-steps', 'oac-h-dates', 'oac-h-item', 'oac-h-branch', 'oac-h-name', 'oac-h-big', 'oac-h-body',
   'oac-h-small', 'oac-h-src', 'oac-h-fields', 'oac-h-k', 'oac-h-v', 'oac-h-tag', 'oac-h-tag-strong', 'oac-h-mark', 'oac-nw', 'oa-id',
-  'oac-h-limit', 'oac-h-sq', 'oac-h-sq-strong', 'oac-h-fluid'];   // IM-E7
+  'oac-h-limit', 'oac-h-sq', 'oac-h-sq-strong', 'oac-h-fluid', 'oac-h-plain'];   // IM-E7; the design director's facts variant
 const HTML_ATTRS = ['class', 'role', 'data-oa-row', 'data-oa-id', 'datetime', 'id', 'aria-hidden'];
 function html_tree(html) {
   const root = { tag: '#root', attrs: {}, kids: [], text: '' }, stack = [root], f = [];
