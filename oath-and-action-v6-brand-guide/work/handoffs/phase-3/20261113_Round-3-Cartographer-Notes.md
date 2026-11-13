@@ -4,7 +4,7 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. The cartographer,
 
 ## Summary
 
-Done (02:00 UTC by the container's clock), waiting on the editor's words pass and the data lead's sign-off. Seven map forms written on the engineer's R3-2 parts; S78 to S84 pass `oa-chart.mjs build` with the sweep, 0 faults; S16 placed on the 2024 outlines with its credit note replaced; entries 14.113 to 14.124 written; both sketches drawn; `phase3_ch14_build.py --rounds 1,2,3`: 0 faults; a strict build: exit 0, no warning on my plates. Every figure in my titles, notes and alts is checked by `cartographer_round3_derive.py --figures` (0 faults).
+Done (02:25 UTC by the container's clock), waiting on the editor's words pass and the data lead's sign-off; the quick guide check passes with 0 failures on my second strict build. Seven map forms written on the engineer's R3-2 parts; S78 to S84 pass `oa-chart.mjs build` with the sweep, 0 faults; S16 placed on the 2024 outlines with its credit note replaced; entries 14.113 to 14.124 written; both sketches drawn; `phase3_ch14_build.py --rounds 1,2,3`: 0 faults; a strict build: exit 0, no warning on my plates. Every figure in my titles, notes and alts is checked by `cartographer_round3_derive.py --figures` (0 faults).
 
 | Rule | Spec or sketch | Form | Bytes in the second strict build (02:10) | Status |
 |---|---|---|---|---|
@@ -95,6 +95,7 @@ Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map 
 - `--figures`: 0 faults over 80 checks (counted) of the figures in S78 to S84's titles, notes, alts and labels, among them the national figures, class counts, crossings, the Michigan races, the seat totals, the county concentration, the panel counts and V7 claim CL1516's words, read from `work/extract/atlas-v7-data.json`.
 - A mutation test of the figure checks: scratch copies of S79, S81 and S83 with one figure changed each (39 miles, 1,770 counties, 120 counties) failed on all three.
 - The quick guide check (`guide_check.js --quick --no-captures`) on my first strict build: exit 1, two failures, both my avoid sketch's key words under contrast (above); fixed, and each sketch word measured the check's way (`svgUnder`, copied into a scratch script) on both grounds: lowest 5.49 to 1 on Newsprint, 7.26 on Charcoal.
+- A second strict build with the fixed sketch (`guide_build.py --strict`): exit 0, 11,219,383 bytes, no warning on my plates; then `guide_check.js --quick --no-captures` on it: PASS, 0 failures, 2 widths, 344 rules, 694 specimens.
 - `oa-chart.mjs build s80 s81 s82 s83`, sweep on, after the last word, table and edge changes: 4 of 4 PASS, 0 faults.
 - `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py --rounds 1,2,3`: 128 rules, 114 entries, 84 chart plates, 0 faults.
 - `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide.html`: exit 0, 11,217,245 bytes, no warning on my plates; chapter 14's share 14,833 bytes a plate for 13 to come.
@@ -103,7 +104,6 @@ Map geometry: `geo.js` 133,117 of its 250,000 bytes (the engineer's). Every map 
 
 ## Not tested
 
-- The quick guide check on a second strict build with the fixed sketch: running (result below when it lands).
 - My entries placed in the guide page, by eye; forced colors, print and 200 percent text beyond the kit's emulated checks; screen readers and real devices.
 
 ## Files

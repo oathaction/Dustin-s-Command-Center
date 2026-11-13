@@ -1017,6 +1017,18 @@ async function self_test() {
       pass(!a.f.length, 'R3-5: nodes with straight, elbow and arc links to their edges pass, words drawn after links or not' + (a.f.length ? ': ' + a.f[0] : '')); }
     { const c = mk({}); const r = P.node(c, { x: 0, y: 0, w: 60, h: 24 }, 'Office of Information and Regulatory Affairs'); const sz = P.node_size(c, 'Office of Information and Regulatory Affairs', { max: 200 });
       pass(r === null && c._els.length === 0 && sz && sz.w <= 200 && sz.lines >= 2, 'R3-5: a node too small for its words draws nothing and says so; node_size gives the box it needs'); }
+    { // A-E3: a node sized by node_size at a width sets its words on the lines it was sized for, at every width tried
+      let bad = 0, tried = 0;
+      const words = 'Congress and the Department of Health and Human Services';
+      for (let w = 90; w <= 260; w += 1) {
+        const c = mk({}), sz = P.node_size(c, words, { max: w, min: w, lines: 8, sub: 'the Secretary', sub_lines: 3 });
+        if (!sz) continue;
+        tried++;
+        const n = P.node(c, { x: 0, y: 0, w: sz.w, h: sz.h }, words, { lines: 8, sub: 'the Secretary', sub_lines: 3 });
+        const el = n ? c._els.filter(e => e.indexOf('<text') >= 0)[0] : '';
+        if (!n || ((el.match(/<tspan/g) || []).length || 1) !== sz.lines) bad++;
+      }
+      pass(tried > 100 && !bad, `A-E3: a node set in the box node_size gives draws on the lines it was sized for (${tried} widths, ${bad} short)`); }
     { const items = [{ id: 'r', w: 120, h: 30 }, { id: 'a', parent: 'r', w: 100, h: 30 }, { id: 'b', parent: 'r', w: 160, h: 50 }, { id: 'a1', parent: 'a', w: 90, h: 30 }, { id: 'a2', parent: 'a', w: 90, h: 30 }, { id: 'b1', parent: 'b', w: 90, h: 30 }, { id: 'x', parent: 'nobody', w: 40, h: 30 }];
       const T = P.tree(items, { gap: 10, level: 20 }), N = T.nodes;
       let clash = false; for (let i = 0; i < N.length; i++) for (let j = i + 1; j < N.length; j++) { const p = N[i], q = N[j]; if (p.x < q.x + q.w + 9.99 && q.x < p.x + p.w + 9.99 && p.y < q.y + q.h && q.y < p.y + p.h) clash = true; }

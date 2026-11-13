@@ -496,12 +496,16 @@
   var ON_FILL = { subject: 'label-on-subject', 'cat-1': 'on-cat-1', 'cat-2': 'on-cat-2', 'cat-3': 'on-cat-3' };
   // the lines a node's words break into inside an inner width aw, trying each role in turn (fit_label's model): the first
   // role whose lines fit within maxl lines and ah px, or null
+  // A-E3 (maker A): the words are fitted and then set at one width, aw, and as c.text prints them (with the spec's
+  // typography), so a box sized by node_size never shows a line it does not set, and a size that fits always draws
   var node_fit = function (c, words, aw, ah, o) {
     var roles = o.roles || ['label', 'tick'], wgt = o.weight || (o.named ? 700 : 600), maxl = o.lines || 3;
+    if (c.spec && c.spec.typography) words = K.typeset(c.spec, words);
+    var subw = o.sub === undefined || o.sub === null || o.sub === '' ? o.sub : (c.spec && c.spec.typography ? K.typeset(c.spec, o.sub) : o.sub);
     var ss = c.size('tick'), slh = Math.round(ss * 1.25), sgap = 3;
-    var sub = o.sub === undefined || o.sub === null || o.sub === '' ? null : K.wrap(o.sub, ss, aw, 400, 'reading'), sw = 0;
+    var sub = subw === undefined || subw === null || subw === '' ? null : K.wrap(subw, ss, aw, 400, 'reading'), sw = 0;
     if (sub) sub.forEach(function (ln) { sw = Math.max(sw, c.measure(ln, ss, 400)); });
-    if (sub && (sub.length > (o.sub_lines || 2) || sw > aw)) return null;
+    if (sub && (sub.length > (o.sub_lines || 2) || sw > aw + 0.01)) return null;
     var sh = sub ? sgap + ss + (sub.length - 1) * slh : 0;
     for (var i = 0; i < roles.length; i++) {
       var role = roles[i], size = c.size(role), lh = Math.round(size * 1.25);
@@ -543,9 +547,9 @@
     if (st) c.rect(box.x + 0.5, box.y + 0.5, box.w - 1, box.h - 1, { stroke: st, width: o.width || c.t('line-hairline'), dash: o.dash, mark: false });
     var mid = o.align !== 'start', x = mid ? box.x + box.w / 2 : box.x + pd.x;
     var bh = f.th + f.sh, y = box.y + (mid ? (box.h - bh) / 2 : pd.y) + 0.864 * f.size;
-    var tb = c.text(x, y, String(words), { role: f.role, weight: f.wgt, anchor: mid ? 'middle' : 'start', max: aw + 0.5, leading: f.lh, fill: ink });
+    var tb = c.text(x, y, String(words), { role: f.role, weight: f.wgt, anchor: mid ? 'middle' : 'start', max: aw, leading: f.lh, fill: ink });
     var sb = null;
-    if (f.sub) sb = c.text(x, y + 0.136 * f.size + (f.lines.length - 1) * f.lh + f.sgap + 0.864 * f.ss, String(o.sub), { role: 'tick', weight: 400, anchor: mid ? 'middle' : 'start', max: aw + 0.5, leading: f.slh, fill: ink });
+    if (f.sub) sb = c.text(x, y + 0.136 * f.size + (f.lines.length - 1) * f.lh + f.sgap + 0.864 * f.ss, String(o.sub), { role: 'tick', weight: 400, anchor: mid ? 'middle' : 'start', max: aw, leading: f.slh, fill: ink });
     return { x: box.x, y: box.y, w: box.w, h: box.h, cx: box.x + box.w / 2, cy: box.y + box.h / 2, text: tb, sub: sb };
   };
   // the point where the segment from a box's center toward (tx, ty) leaves the box (a point box returns itself)
