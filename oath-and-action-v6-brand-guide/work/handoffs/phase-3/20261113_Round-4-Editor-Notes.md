@@ -8,12 +8,19 @@ The owners read the four "Words for" sections directly. Each row gives the file,
 
 - 20:41 UTC. Started. Read my role file, `CLAUDE.md`, chapter 02's writing rules, the round 4 brief and my round 3 and board 2 notes. No round 4 spec, entry, sketch or notes file of another owner exists yet. Working tree clean at `829d0db8`. Next: the rest of the brief's "Read first" list, then group lines 9 and 17, then Rule 13.4's plates once the systems designer's DR-265 list lands, and S37 once the data lead rules.
 
+- 22:04 UTC. **Done.** The D3-669 passes are written for every owner who reported (maker A 2 fields, the infographics maker 5, the cartographer none, the systems designer none, since each applied my rows itself). Final strict build `guide2.html`: exit 0, 0 warnings, 11,501,831 bytes, 360 rules, 657 specimens, every group link lands; 25 of 25 captures clean. Open with others: ED4-7 (S92's sidecar line, research lead), and an optional S16 chart note for the data lead.
 - 21:36 UTC. **Group lines 9 and 17 rewritten** against every round 4 entry and carried into the chapter, which now prints all 17 groups and 141 rules; the opener links groups 9 and 17; group 16 stands. First reads written for every round 4 spec, entry and both sketches, and for rules 15.19 to 15.21 with their plates, all read only until each owner reports finished. The design director's six asks to me ruled, the data lead's MI-4, MI-5 and MA-8 titles set. One slip of mine, put right within a minute: a default run of the chapter build dropped round 4 (ED4-6 to the engineer). Waiting on owners to report finished, then the D3-669 passes, the strict build and captures.
 - 21:02 UTC. **S37's curl applied** on the data lead's ED4-1 ruling: one key in `s37.json`, PASS with the sweep, the two drawn labels curled in all four SVGs at the same positions, CSV unchanged; board 3's list is under "S37's curled apostrophes". It showed a kit fault, ED4-3 to the engineer: a pivot table's row headers skip `typography`, so S37's table still prints the straight marks. ED4-4 to the research lead (S89's source line). S89's note words revised after the data lead's 21:00 note.
 - 20:57 UTC. First looks written for maker A (S85, S86, S87) and the infographics maker (S89 with the data lead's MI-1, S93), read only, under the two "Words for" sections; the data lead's MA-1, MA-3 and MA-6 agree with mine. Rule 13.4 confirmed unchanged under DR-267 (the systems designer's list agrees). Baseline strict build to scratch (`guide0.html`): exit 0, 11,245,723 bytes, 344 rules, 638 specimens; the build's share per plate is 13,188. Requests: ED4-1 (S37) to the data lead, ED4-2 (S93's source variant) to the research lead. Waiting on: the data lead's S37 ruling, the makers' entries, owners reporting finished.
 - 20:49 UTC. Baselines taken: `phase3_ch14_rules_build.py` and `phase3_ch13_build.py` each rerun with no change and write nothing (`git status` unchanged). S37 built as committed to scratch (PASS, 16,065 bytes, 16,815 with its frame), and a scratch preview of its curl (below) for the data lead. Read the data lead's rulings (a) to (c); no ruling on S37 yet. Rule 13.4's two plates print no chain label (below), which the systems designer's list should confirm.
 
 ## Summary
+
+- **Group lines.** Group 9's and group 17's lines rewritten against every round 4 entry, each untrue as it stood (proportional symbols compare counts, not shares; a number panel, a calendar and a social card show no workings); group 16's stands. Both print in the chapter, and the opener links groups 9 and 17.
+- **Words pass.** First reads of every round 4 spec, entry and sketch caption and of rules 15.19 to 15.21 with their plates, under the four "Words for" sections; the owners applied nearly all of them, and I wrote the rest after each reported (D3-669): S85, S88, S89, S91 (twice), S93 and S95, words only, each built with the sweep and figure-checked. The design director's eight asks to me, and the data lead's MA-8, MI-4, MI-5 and 7508A words, are ruled.
+- **Rule 13.4 (DR-267).** Its two plates print no chain label, by my script and the systems designer's scan, so `phase3_ch13_build.py` is unchanged.
+- **S37 (D3-1556).** Curled on the data lead's ruling; two labels listed for board 3; the kit fault it showed (ED4-3) is fixed, so the table curls too.
+- **Requests closed:** ED4-1 to ED4-6. **Open:** ED4-7 (research lead). **A slip of mine** (a default chapter build that dropped round 4 for under a minute) is put right and logged.
 
 ## Routine calls
 
@@ -112,6 +119,17 @@ Maker A applies these until it reports finished; after that I write any still op
 |---|---|---|---|---|
 | S85 | `chart_notes[0]`, last sentence | The drawing beside the words Worker bargaining power is the atlas’s symbol for that variable. | The drawing beside “Worker bargaining power” is the atlas’s symbol for Variable A2. | Words quoted as words take quotation marks, and the chip's own name says which variable, as the plate prints it (H11) |
 | S88 | `measure_line` (added at 21:38) | People by health insurance coverage, millions and percent of the 336.8 million in the civilian noninstitutionalized population, 2025, United States; each area is in proportion to its count | People by health insurance coverage, millions and percent of the 336.8 million in the civilian noninstitutionalized population, 2025, United States | Note 1 says it in full ("Each circle’s area, and the area the two circles share, is in proportion to its count on one scale"), so once is enough, as with S86's key (W07) |
+
+### Words pass, maker A finished (D3-669), 22:03 UTC
+
+At the main session's word (maker A signed off and only rerunning its quick guide check), I wrote the two rows still open:
+
+| File | Field | Before | After | Why |
+|---|---|---|---|---|
+| S85 | `chart_notes[0]`, last sentence | The drawing beside the words Worker bargaining power is the atlas’s symbol for that variable. | The drawing beside “Worker bargaining power” is the atlas’s symbol for Variable A2. | Words quoted as words take quotation marks, and the chip's name says which variable (H11) |
+| S88 | `measure_line` | …, 2025, United States; each area is in proportion to its count | …, 2025, United States | Note 1 says it in full (W07) |
+
+No figure moved. Checks: `apply.py` (each phrase once, only its field moved, by parse); `oa-chart.mjs build s85 s88`, sweep on: 2 PASS, 0 faults, two check files; `maker_a_round4_derive.py --figures`: 51 checks, 0 failed. Every other row for maker A was applied by maker A as written.
 
 **Checked again at 21:38 UTC:** every entry row below is applied as written (14.79's figures, chip and why with "a Civic Line drawing"; 14.80's 2022 counts; "track gray" in 14.80 and 14.81; 14.82's why; 14.83's and 14.84's alts, and 14.84's caption now equals its sketch's first `<desc>`, by script), and S86's measure line is done. Open on maker A's files: the two rows just above.
 
@@ -296,12 +314,32 @@ Every row through 21:35 is applied as written, by its own list: the first looks,
 
 ## Tested
 
+- Baselines (20:49): `phase3_ch14_rules_build.py` and `phase3_ch13_build.py` rerun with no change write nothing; strict build `guide0.html` exit 0, 0 warnings, 11,245,723 bytes, 344 rules, 638 specimens.
+- Rule 13.4: a script over both plates' visible text, alts, attributes and SVGs for all 31 chain labels that differ from their titles (whole items and short phrases): none; Rule 13.4 at 1440, 1024, 768, 390 and 360 px in `guide0.html`, clean, looked at by eye at 390 px.
+- S37: scratch preview and the applied build, sweep on, PASS; every SVG differs from the committed build in exactly two `<text>` elements at the same x and y; CSV byte-identical; both labels cropped before and after and looked at; after ED4-3, the table's two row headers curled by script and the drawings and CSV byte-identical to my applied build.
+- Every word change by `apply.py` (phrase once in its field, only that field moved, by parse) and every changed spec through `oa-chart.mjs build` with the sweep on: S37, S85, S88, S89, S91, S93 and S95, each PASS, 0 faults, one check file each; `maker_a_round4_derive.py --figures` 51 of 51, `maker_i_round4_derive.py --figures` all passed; source lines of S89 and S91 equal their sidecar variants, by script.
+- Sketch captions: 14.83's and 14.84's first `<desc>` equal their entries' first `sketch_alt` sentence, by script.
+- Every title's word count by script; the lint (words tool) over every round 4 spec and entry and over rules 15.19 to 15.21: no em or en dash, U+2011, straight quote, studio word, "download", filler or corporate word in reader text; the remaining hits read by hand.
+- Group lines: `phase3_ch14_rules_build.py` passes its checks after each line; `phase3_ch14_build.py --rounds 1,2,3,4` 141 rules, 127 entries, 0 faults; the opener links groups 2 to 17.
+- Final strict build `guide2.html` (22:03): exit 0, 0 warnings, 11,501,831 bytes, 360 rules, 657 specimens; all 50 `#group-14-N` links land; both new group lines, S85's new note, S89's and S91's new source lines, S91's title, S93's alt and S95's note found by script (S89's in the build before, `guide1.html`).
+- Captures by Playwright (`cap.js`, scratch) in `guide1.html` at 1440, 1024, 768, 390 and 360 px of group heads 9 and 17, the opener, S37's plate and Rule 13.4: 25 of 25 with no visible text under 13 px, nothing past the page's width outside scrolling frames, no sideways page scroll; looked at by eye: group 17 at 390 px, group 9 at 1440 px.
+- The page over every line for "not measured waits": one hit, S92's sidecar line (ED4-7).
+
 ## Not tested
+
+- The quick guide check, the kit's `build --all` and axe-core: the main session and the engineer run them.
+- Captures on Charcoal, in grayscale and in forced colors of anything I changed; the round 4 plates' captures, which their owners, the design director and the data lead took.
+- The DR-265 plates of chapters 11, 12 and 17 beyond a script for titles set in capitals mid-sentence; their layout at each width is the systems designer's.
+- S95's crops at true size and its PNG exports; the cards read aloud by a screen reader (none runs in this container).
+- How the new words sound read aloud to real readers; triplets, parallel runs and setup lines were read by hand, helped by the lint, and no script rules them out.
 
 ## Files
 
 - Created: this file.
 - Modified: `work/build/chart-kit/specs/s37.json` (the `typography` key, three lines, ED4-1).
 - Modified: `work/build/scripts/phase-3/phase3_ch14_rules_build.py` (group 9's line), which rewrote `work/build/guide/entries/14-chapter.json` (that one line); the other entries 14.1 to 14.14, the plates and the opener were rewritten byte for byte as they stood.
+- Modified, maker A's pass (D3-669), words only: `work/build/chart-kit/specs/s85.json` (chart note), `s88.json` (measure line).
+- My strict builds rewrite `work/build/chart-kit/plate-share.json`, as every strict build does (the engineer's file); left as the last build wrote it.
+- Scratch only: `words/words.py`, `words/apply.py` and their change lists, `cap.js`, `wait.sh`, the builds `guide0.html` to `guide2.html`, `kit-s37-*`, `kit-out-*`, the captures in `caps0/` and `caps1/`.
 - Modified, the infographics maker's pass (D3-669), words only: `work/build/chart-kit/specs/s91.json` (title, then `source_line`), `s93.json` (alt), `s95.json` (note 1), `s89.json` (`source_line`).
 - Modified: `phase3_ch14_rules_build.py` again (group 17's line), which rewrote `14-chapter.json` (that line) and `work/build/guide/specimens/s-14-opener.html` (groups 9 and 17 linked, once the chapter build printed them). The engineer's `phase3_ch14_build.py`, run as `--rounds 1,2,3,4`, rewrote `work/build/guide/chapters/14-data-visualization.json` with the two lines, as every owner's run does (see the slip under "Group lines 9 and 17").
