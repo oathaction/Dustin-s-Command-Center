@@ -1,12 +1,12 @@
 {
- "built": "2026-11-13T00:27:57.907409+00:00",
+ "built": "2026-11-13T00:30:20.701703+00:00",
  "guide_build": {
   "exit": 0,
   "bytes": 10638223,
   "rules": 312,
   "specimens": 606,
   "warnings": 0,
-  "built": "2026-11-13T00:28:05",
+  "built": "2026-11-13T00:30:28",
   "pictures_from_failed_build": false
  },
  "kit_builds": {
@@ -958,11 +958,11 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-2/progress/20261112_Round-2-Progress.html",
- "html_bytes": 128678,
+ "html_bytes": 128813,
  "images": 84,
  "image_bytes": 25151319,
  "folder_files": 88,
- "folder_bytes": 25336020,
+ "folder_bytes": 25336327,
  "largest_image": [
   689459,
   "20261112_Entry-14-74-1440.png"
@@ -1086,7 +1086,7 @@
  "notes": [],
  "warnings": [],
  "seconds": 8,
- "words": 4103,
+ "words": 4128,
  "words_tested_part": 234,
  "check": {
   "page": {

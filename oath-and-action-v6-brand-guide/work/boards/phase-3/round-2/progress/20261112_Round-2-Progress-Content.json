@@ -59,7 +59,7 @@
     "style_h": "Chapter 14’s plate style",
     "style": "Printed once for every rule plate, in one shared block of {b} bytes. The rules for every chart, with the opener, weigh {ro} bytes against their allowance of {al}.",
     "ch13_h": "Chapter 13’s chart titles",
-    "ch13_all": "All {n} of its chart titles now end with a period.",
+    "ch13_all": "All {n} chart titles the chart kit draws in it now end with a period, and so do the chart heads its other plates draw, apart from the faulty titles three failure plates show on purpose.",
     "ch13_some": "{k} of its {n} chart titles end with a period.",
     "wide_h": "Chapter 15’s wide stage",
     "wide": "At a {w1} px and a {w2} px window, {k} of the chapter’s wide plates draw their full {px} px stage.",
