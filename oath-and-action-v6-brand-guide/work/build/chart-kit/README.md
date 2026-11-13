@@ -33,6 +33,7 @@ R2-C6, and the fix pass's "Contract changes") are in `work/handoffs/phase-3/2026
 | `geo.js` | The map geometry, carried once a page: the studio's state tiles and four layers from the 2024 Census boundary files (states, counties, Michigan's districts, California's counties), projected and simplified at build by `tools/geo_build.py` (round 3). Never edit it by hand |
 | `kit.css` | The figure's style. It uses only `var(--oa-...)` tokens from `tokens.css` |
 | `words.json` | The words every figure prints the same way, such as "Source:". The editor owns them |
+| `plate-share.json` | Chapter 14's share per plate, written by each build of the guide's own chapters; `build` prints it on every weight line. Never edit it |
 | `checks.js`, `oa-chart.mjs` | The checks and the command |
 | `specs/` | The specs for S01 to S84, the charts in chapter 14. Each one is a starter for its form |
 | `tools/` | `geo_build.py` writes `geo.js`; `kit_snapshot.mjs` compares what two copies of the kit draw; `minify.mjs` shrinks the kit for the page |
@@ -252,11 +253,11 @@ This is the whole path for a map of every county, such as S81. Read entry 14.120
    (the count in each class, the lowest and highest county). A caption or note that sends a reader to every county's
    figure writes `{data_file}`: the kit prints the words `words.json` holds for where a chart's full data lives.
 9. **Run the kit, then read the weight line.** `build` prints, for each spec, what it weighs on the guide's page as the
-   guide places an entry (its figure, lean table and compressed data) and about what it weighs with its plate's frame:
-   `weight: 12,768 bytes as the guide places it, about 13,518 with its plate's frame; share per plate 14,106, ceiling
-   15,000` (S81, November 13, 2026). The share per plate is what each plate still to come may carry (D3-1328's 14,106 for round 3); the strict
-   guide build prints the current figure in its report as "chapter 14's share per plate". A plate from S65 on that passes
-   15,000 with its frame warns. The figure is also in each spec's check file, under `weight`.
+   guide places an entry (its figure, lean table and compressed data), about what it weighs with its plate's frame, and
+   chapter 14's share per plate: what each plate still to come may carry, as the last build of the guide reported it
+   (`guide_build.py` writes it to `plate-share.json` here, and the build report prints it as "chapter 14's share per
+   plate"). With no guide build recorded, the line gives D3-1328's 14,106. A plate from S65 on that passes 15,000 with its
+   frame warns. The figures are also in each spec's check file, under `weight`.
 
 ## Fix pass keys (round 3)
 

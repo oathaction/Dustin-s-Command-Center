@@ -226,3 +226,19 @@ Every maker B item in the fix brief and its addendum is done but S73's title, wh
 - Forced colors beyond Chromium's emulation for S74; S73's and S77's drawings in forced colors; print and 200 percent text beyond the kit's checks; no screen reader or real device.
 - S75 looked at after its no-break spaces (its drawing did not change; built PASS).
 - The FEC, CMS and eCFR sources themselves: the figures come from the frozen files and the research lead's sidecars.
+
+## Second pass
+
+November 13, 2026, from 06:53 UTC (clock read from `date -u`), on the main session's D3-1497.
+
+### Routine calls, second pass
+
+- D3-xxx | S32's "What starts" and S59's "Period" set `"words_pass": true`, nothing else changed | The engineer's words check warned on stored values these columns print on purpose: S32's three plain step names (its words only curl two apostrophes and spell out HHS) and S59's years 2026 to 2029 (its words only name the longer run)
+
+### Tested, second pass
+
+- `node work/build/chart-kit/oa-chart.mjs build s32 s59 --widths 1440,390,296,256 --out <scratch>/kit-second`, sweep on, whole output and both check files read: S32 PASS, 0 faults, 0 warnings; S59 0 warnings but FAIL, 2 faults, both "layout guard: texts overlap: "4.1" and "4.1"" at 256 px on Newsprint and Charcoal (the median's first and last labels touch, looked at in the 256 px capture). The committed S59 without `words_pass`, built the same way at 256 px, fails the same two faults, so the fault came before this change; per D3-1497 I changed nothing else. For the main session: S59's 256 px drawing needs its own fix.
+
+### Not tested, second pass
+
+- S32 and S59 in the guide page; no strict build or guide check for this change (two table keys only).

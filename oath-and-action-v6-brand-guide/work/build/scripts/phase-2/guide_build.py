@@ -3465,7 +3465,7 @@ def build(args):
     pp = projection.get("chapter_14_per_plate")
     if pp and not args.chapters and not args.demo and not stop:
         KIT_SHARE.write_text(json.dumps({"per_plate": pp["per_plate"], "plates_to_come": pp["plates_to_come"], "built": report["built"],
-                                         "page": report["page"], "about": "Written by guide_build.py from its weight report; "
+                                         "about": "Written by guide_build.py from its weight report; "
                                          "oa-chart.mjs build prints per_plate on each spec's weight line. Never edit by hand."},
                                         indent=1, ensure_ascii=False) + "\n")
     if not args.quiet:
