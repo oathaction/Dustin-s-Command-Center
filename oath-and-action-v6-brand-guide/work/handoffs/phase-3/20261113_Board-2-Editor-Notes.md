@@ -11,6 +11,7 @@ Oath & Action Edition 06, Phase 3, board 2. Editor (`oa-editor`), November 13, 2
 
 - 17:55 UTC. **First board words pass done; the builder is asked to rerun** ("Words for the board builder"). The decisions file's words (42 edits, apostrophes curled) at 17:53, S73 trimmed to 13,998 bytes in the kit's measure on the data lead's ruling at 17:54 (for its sign-off), the content file's words (18 edits) at 17:55. Next: read the rerun page whole.
 - 18:16 UTC. **Waiting on the builder's rerun** to read my words on a built page; it reruns after the main session's final build. Everything I own is landed and listed. Open for others: the data lead's sign-off of S73's trim (and the nine-into-eight figure in the "Answered" item) and of its S12 view in its own voice (S71 and S74 it signed off at 17:39); the data lead's plan-changes count (17 against 19 rows); the builder's three code items; the fix round's apostrophes in S21, S09 and S10.
+- 18:31 UTC. **Fix round words done; builder asked to rerun** ("Fix round"). B2-S9, B2-S10, B2-S1's remaining codes, B2-M3's and B2-S11's words read for voice, B2-S3's sketch alts, B2-M1's reply lines and minutes line, and S21, S09 and S10's apostrophes, each logged. B2-M5: S03 and S08 unchanged under the data lead's ruling. Read the rebuilt 18:29 page's visible text whole: panel 1 now has no decision code, file name, raw placeholder, em or en dash, or "None" cell; my 18:30 and 18:31 edits wait for the next run.
 
 ## Routine calls
 
@@ -248,6 +249,8 @@ The S12 phone label claimed every code, which the 326 px drawing does not carry;
 
 No figure moved in these three (18:24 UTC). B2-M5: your R-01 recommendation (18:21) keeps S03's and S08's November 10 count until all three measures certify, so S03 and S08 take no words from me.
 
+**For the data lead, figures (not changed):** S12's fourth picture label still says "forced into the 556 px column" where your 18:21 words and the measure file give 558 (B2-S8). Three more older charts print straight apostrophes from the atlas's stored text, in the same way S21, S09 and S10 did: S06 (Rules 14.127 and 14.76, a board 1 chart, "Officeholders' control" among its variable names), S37 (Rule 14.129) and S42 (Rule 14.134, "Workers' share of income"). S06's and S42's may sit in the drawing, so I leave all three for your call.
+
 The claim IDs CL1359 and CL1363 and the list's item numbers 8 and 36 belong in each item's `refs` (or in your B2-S4 line, "On the October list as item N"), which only you write.
 
 ### Fix round: the content file and the sketch's alts (18:26 UTC)
@@ -265,6 +268,15 @@ The builder's new words (B2-M1, B2-M4, B2-S3, B2-S5, B2-S6, B2-S12; its 18:25 fi
 
 - Before: "Sketch 14.124’s misleading half in gray, as it stood before your answer: seven small places for Party A and five large blocks for Party B under the do-not-publish bar, beside the two panels by party, with Illustrative data."
 - Now: "Sketch 14.124 as the guide now draws it: the misleading half shades Party A’s seven small places red and Party B’s five large blocks blue, each color named in its key, under the do-not-publish bar, beside the two panels by party."
+
+Later edits (18:30 to 18:31 UTC), after reading the builder's 18:29 page:
+
+| File, field | Before | After | Why |
+|---|---|---|---|
+| decisions `replies[0].line` | S12 at a desk: the stacked tile, … | The shift arrows map (S12) at a desk: the stacked tile, … | H11 at the board's first mention |
+| decisions `replies[1].line` | …S16, S10 and S05 as drawn, thirteen moved labels and lines, and twelve charts' ink words. | …the turnout map (S16), the evidence bars (S10) and the homeownership brackets (S05) as drawn, thirteen moved labels and lines, and twelve charts’ ink words. | H11; the one straight apostrophe left in panel 1 |
+| content `cover.minutes` | Panel 1 holds {p1_words} words with its folds closed, about {p1_min} minutes to read at 200 words a minute. | Panel 1 opens with the five replies we need from you. With its folds closed it holds {p1_words} words, about {p1_min} minutes to read at 200 words a minute. | B2-M1: the cover says where the replies are and what the whole panel takes (5,870 words, 29 minutes on the 18:29 page) |
+| content `sections.decide.rows_summary` | The {n} places, line by line | The list of {n} | It printed "The 13 places" over thirteen drawings, above a caption that already says "line by line" |
 
 The other panel 1 pictures take the builder's `alt_chart` ("{form} ({spec}), {src}, at a {w} px window. Its title: …") after their labels, which already say what each shows. I read every alt again on the rebuilt page.
 
@@ -286,6 +298,10 @@ The other panel 1 pictures take the builder's `alt_chart` ("{form} ({spec}), {sr
 - **A5 (17:20 UTC):** all seven specs now print your variants, copied from the sidecars by script; my page scan agrees with your seven and your 15 lines that print nowhere. I keep your "The atlas checked … on that date." sentences as written, so no variant needs to change.
 
 ## Words for the board builder
+
+### 18:31 UTC: the fix round's words are in; please rerun
+
+My fix-round words are in the content file (18:26 and 18:31) and the decisions file (18:22 to 18:30), listed under "Fix round". Your 18:29 page read whole; it carried my earlier words.
 
 ### 17:55 UTC: my first words pass is in; please rerun
 
@@ -315,6 +331,7 @@ Both files carry my words (tables under "Board words"): the content file at 17:5
 - Content file: `tools/apply.py` on 18 fields (each old phrase once in its field and once in the file; by parse, only that field moved); every placeholder in my new words is one the builder's `FILL` already fills on the 17:48 page.
 - S73's trim: `oa-chart.mjs build s73`, sweep on: PASS, 0 faults, 13,998 bytes with the frame in the kit's measure; `maker_b_round3_derive.py --figures`: 0 faults, and no file it can write changed (times and `git status`).
 - The board's visible text, read whole on the builder's 17:48 page (`tools/board_text.py`, 18,840 lines, 91,618 words with the guide's own tables and alts): panel 1 line by line, every panel's own words, the forms panel's framing lines for every family, and a script over every line for em and en dashes, U+2011, braces, fillers, corporate verbs, decision codes and paths. Found: no em dash, en dash or raw placeholder; decision codes only in reference lines and in the decisions file's words (now out); one studio path in a guide table (S71, fixed); straight apostrophes in three guide tables (S21, S09, S10, for the fix round) and across the decisions file (curled).
+- Fix round: every decisions-file and content-file change by `tools/apply.py` (old words once in the field and once in the file; only that field moves by parse), the sketch alts by a parse test that only the two `alt` keys were added; `oa-chart.mjs build s09 s10 s21`, sweep on: 3 PASS, 0 faults, and their twelve SVGs equal before and after by `cmp`; the built pages counted for curled and straight apostrophes. The builder's 18:29 page read whole by `tools/board_text.py` (19,073 lines, 99,321 words) with panel 1 line by line, and a script over every line: panel 1 holds no decision or ledger code, file name, brace, em or en dash, or "None" cell, and one straight apostrophe (Reply 2, fixed at 18:30); board-wide, straight apostrophes remain only in S06's, S37's and S42's atlas text (for the data lead).
 - **A slip, logged:** at 17:28 UTC I ran `maker_b_round3_derive.py --help` to read its options; it takes none, so it ran and rewrote four derived files (`fec-jfc-transfers-2024-by-node` and `govinfo-snap-application-path`, each CSV and sidecar). `git status` and `git diff` show all four byte for byte as committed, so nothing changed. From here on I run another owner's script only in its read-only check mode (`maker_b_round3_derive.py --figures` at 17:54, which wrote nothing: the four files keep their 17:28 times).
 
 ## Not tested
@@ -324,10 +341,11 @@ Both files carry my words (tables under "Board words"): the content file at 17:5
 - My words on the page: the builder has not rerun since 17:50 (it waits for the main session's final build), so the content and decisions edits are read in their files, not yet on a built page. I read the rerun when it lands.
 - S73's page measure after the trim (the main session's strict build measures it; the kit's measure is 13,998).
 - S71 and S74 inside a guide build by eye.
+- My 18:30 and 18:31 edits on a built page (the next run carries them); S12's 326 px code note and S78's, read from the cartographer's D3-1527, the creative director's review and the data lead's words, not drawn by me at 326 px (the kit's 390 px draws 358).
 - How the new words sound to a real reader.
 
 ## Files
 
-- Modified, word fields only: `work/build/chart-kit/specs/s10.json`, `s16.json`, `s21.json`, `s23.json`, `s38.json`, `s39.json`, `s60.json`, `s63.json`, `s69.json`, `s70.json`, `s71.json` (one `typography.replace` pair), `s72.json`, `s73.json`, `s74.json`, `s81.json`, `s83.json`; `work/build/guide/entries/14-120.json`, `14-124.json`; `work/build/guide/specimens/s-14-124-sketch.html` (its first `<desc>`); `work/handoffs/phase-3/20261113_Board-2-Decisions.json` (words, after the data lead's sign-off); `work/boards/phase-3/round-3/board-2/20261113_Board-2-Content.json` (words, after the builder's first full build).
+- Modified, word fields only: `work/build/chart-kit/specs/s09.json` (fix round, `typography`), `s10.json` (also `typography`, fix round), `s21.json` (also `typography`, fix round), `s16.json`, `s21.json`, `s23.json`, `s38.json`, `s39.json`, `s60.json`, `s63.json`, `s69.json`, `s70.json`, `s71.json` (one `typography.replace` pair), `s72.json`, `s73.json`, `s74.json`, `s81.json`, `s83.json`; `work/build/guide/entries/14-120.json`, `14-124.json`; `work/build/guide/specimens/s-14-124-sketch.html` (its first `<desc>`); `work/handoffs/phase-3/20261113_Board-2-Decisions.json` (words, after the data lead's sign-off); `work/boards/phase-3/round-3/board-2/20261113_Board-2-Content.json` (words, after the builder's first full build).
 - Created: this file. Scratch only: `tools/scan.py`, `apply.py`, `s16_check.py`, `a5_find.py`, `lint.py`, `board_text.py`, `dec_edit.py`, the edit lists and logs, the saved originals in `old/`, the kit builds in `kit-before/`, `kit-out/`, `kit-out2/`, and the board text extracts.
 - Not touched: `source/`, `deliverables/`, `work/ledger/`, any generator or other owner's script, any mark or ink key. Nothing committed, pushed or published.

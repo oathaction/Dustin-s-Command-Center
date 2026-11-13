@@ -38,7 +38,7 @@
    "Panel 1 asks only what is still open. The panels after it are for reference, from every form at true size on both grounds to the scores and what was tested."
   ],
   "toc_h": "On this board",
-  "minutes": "Panel 1 holds {p1_words} words with its folds closed, about {p1_min} minutes to read at 200 words a minute. Pictures show at true size; where one is wider than your window, its frame scrolls sideways."
+  "minutes": "Panel 1 opens with the five replies we need from you. With its folds closed it holds {p1_words} words, about {p1_min} minutes to read at 200 words a minute. Pictures show at true size; where one is wider than your window, its frame scrolls sideways."
  },
  "status_words": {
   "ready": "Ready",
@@ -116,7 +116,7 @@
    "form_pic": "Panel 2’s picture of {spec} on Newsprint, at a 1440 px and a 390 px window.",
    "form_link": "See Rule {rule} in panel 2.",
    "rows_fold_over": 6,
-   "rows_summary": "The {n} places, line by line",
+   "rows_summary": "The list of {n}",
    "alt_source": {
     "guide": "photographed from today’s guide",
     "board-1": "as board 1 showed it",

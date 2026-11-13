@@ -1,24 +1,28 @@
 {
- "built": "2026-11-13T17:50:32.420709+00:00",
+ "built": "2026-11-13T18:25:20.454731+00:00",
  "guide_build": {
   "exit": 0,
-  "bytes": 11236319,
+  "bytes": 11236252,
   "rules": 344,
   "specimens": 638,
   "warnings": 0,
-  "built": "2026-11-13T17:50:42"
+  "built": "2026-11-13T18:25:31"
  },
  "decisions": {
   "file": "work/handoffs/phase-3/20261113_Board-2-Decisions.json",
   "state": "signed off",
-  "updated_utc": "2026-11-13T17:43:30Z",
+  "updated_utc": "2026-11-13T18:20:45Z",
   "schema": "board-2-decisions/1"
  },
+ "plate_bytes": {
+  "file": "work/handoffs/phase-3/board-2-pictures/20261113_Plate-Bytes.json",
+  "build": null
+ },
  "shots": {
-  "taken": [],
-  "reused": [
+  "taken": [
    "ch14-opener",
    "dec-fig-s-14-124-sketch-1440",
+   "dec-oac-s-14-s05-1440",
    "dec-oac-s-14-s10-1440",
    "dec-oac-s-14-s12-1024",
    "dec-oac-s-14-s12-1440",
@@ -249,7 +253,8 @@
    "sketch-14.92",
    "sketch-14.94",
    "sketch-14.95"
-  ]
+  ],
+  "reused": []
  },
  "guide_widths": {
   "S01": {
@@ -590,12 +595,16 @@
   }
  },
  "kit_builds": {
-  "rebuilt": [],
+  "rebuilt": [
+   "S09",
+   "S10",
+   "S21",
+   "S73"
+  ],
   "reused": [
    "S05",
    "S06",
    "S08",
-   "S09",
    "S11",
    "S13",
    "S15",
@@ -607,13 +616,11 @@
    "S03",
    "S04",
    "S07",
-   "S10",
    "S14",
    "S17",
    "S18",
    "S19",
    "S20",
-   "S21",
    "S22",
    "S23",
    "S24",
@@ -664,7 +671,6 @@
    "S70",
    "S71",
    "S72",
-   "S73",
    "S74",
    "S75",
    "S76",
@@ -796,7 +802,7 @@
    ]
   },
   "S04": {
-   "named_in_panel_1": null,
+   "named_in_panel_1": "placement",
    "desk_pixels_same": false,
    "files": [
     "work/boards/phase-3/round-0/specimens/20261112_S04-Dumbbell-Newsprint-1440.png",
@@ -804,7 +810,7 @@
    ]
   },
   "S05": {
-   "named_in_panel_1": "placement",
+   "named_in_panel_1": "S05",
    "desk_pixels_same": false,
    "files": [
     "work/boards/phase-3/round-0/specimens/20261112_S05-Small-Multiple-Lines-Newsprint-1440.png",
@@ -828,7 +834,7 @@
    ]
   },
   "S08": {
-   "named_in_panel_1": null,
+   "named_in_panel_1": "placement",
    "desk_pixels_same": false,
    "files": [
     "work/boards/phase-3/round-0/specimens/20261112_S08-Unit-Chart-Newsprint-1440.png",
@@ -900,12 +906,6 @@
    ]
   }
  },
- "decide": {
-  "items": 30,
-  "questions": 2,
-  "state": "signed off",
-  "pictures_waiting": []
- },
  "forms": {
   "14.24": {
    "rule": "14.24",
@@ -926,8 +926,12 @@
    "round": 1,
    "maker": "A",
    "status": "built",
-   "with_frame": 9292,
-   "figure_bytes": 8542,
+   "weight": {
+    "placed": 8557,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -953,8 +957,12 @@
    "round": 1,
    "maker": "A",
    "status": "new",
-   "with_frame": 4884,
-   "figure_bytes": 4134,
+   "weight": {
+    "placed": 4259,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -980,8 +988,12 @@
    "round": 1,
    "maker": "A",
    "status": "new",
-   "with_frame": 4956,
-   "figure_bytes": 4206,
+   "weight": {
+    "placed": 4221,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1007,8 +1019,12 @@
    "round": 1,
    "maker": "A",
    "status": "new",
-   "with_frame": 11276,
-   "figure_bytes": 10526,
+   "weight": {
+    "placed": 10541,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1034,8 +1050,12 @@
    "round": 1,
    "maker": "A",
    "status": "built",
-   "with_frame": 5448,
-   "figure_bytes": 4698,
+   "weight": {
+    "placed": 4713,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1061,8 +1081,12 @@
    "round": 1,
    "maker": "A",
    "status": "new",
-   "with_frame": 5165,
-   "figure_bytes": 4415,
+   "weight": {
+    "placed": 4430,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1088,8 +1112,12 @@
    "round": 1,
    "maker": "A",
    "status": "new",
-   "with_frame": 6432,
-   "figure_bytes": 5682,
+   "weight": {
+    "placed": 5703,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1115,8 +1143,12 @@
    "round": 1,
    "maker": "A",
    "status": "new",
-   "with_frame": 5818,
-   "figure_bytes": 5068,
+   "weight": {
+    "placed": 5083,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1142,8 +1174,12 @@
    "round": 1,
    "maker": "A",
    "status": "new",
-   "with_frame": 6962,
-   "figure_bytes": 6212,
+   "weight": {
+    "placed": 6227,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1169,8 +1205,12 @@
    "round": 1,
    "maker": "B",
    "status": "built",
-   "with_frame": 14873,
-   "figure_bytes": 14123,
+   "weight": {
+    "placed": 14248,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     787,
@@ -1196,8 +1236,12 @@
    "round": 1,
    "maker": "B",
    "status": "new",
-   "with_frame": 10103,
-   "figure_bytes": 9353,
+   "weight": {
+    "placed": 9368,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1223,8 +1267,12 @@
    "round": 1,
    "maker": "B",
    "status": "new",
-   "with_frame": 23541,
-   "figure_bytes": 22791,
+   "weight": {
+    "placed": 22806,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1250,8 +1298,12 @@
    "round": 1,
    "maker": "B",
    "status": "new",
-   "with_frame": 10361,
-   "figure_bytes": 9611,
+   "weight": {
+    "placed": 9626,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1289,8 +1341,12 @@
    "round": 1,
    "maker": "B",
    "status": "built",
-   "with_frame": 11390,
-   "figure_bytes": 10640,
+   "weight": {
+    "placed": 10655,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1316,8 +1372,12 @@
    "round": 1,
    "maker": "B",
    "status": "built",
-   "with_frame": 31047,
-   "figure_bytes": 30297,
+   "weight": {
+    "placed": 30312,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     787,
@@ -1343,8 +1403,12 @@
    "round": 1,
    "maker": "B",
    "status": "new",
-   "with_frame": 14928,
-   "figure_bytes": 14178,
+   "weight": {
+    "placed": 14193,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1370,8 +1434,12 @@
    "round": 1,
    "maker": "B",
    "status": "built",
-   "with_frame": 12103,
-   "figure_bytes": 11353,
+   "weight": {
+    "placed": 11368,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1397,8 +1465,12 @@
    "round": 1,
    "maker": "B",
    "status": "new",
-   "with_frame": 6584,
-   "figure_bytes": 5834,
+   "weight": {
+    "placed": 5849,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1424,8 +1496,12 @@
    "round": 1,
    "maker": "B",
    "status": "built",
-   "with_frame": 34223,
-   "figure_bytes": 33473,
+   "weight": {
+    "placed": 33488,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     787,
@@ -1451,8 +1527,12 @@
    "round": 1,
    "maker": "B",
    "status": "new",
-   "with_frame": 5945,
-   "figure_bytes": 5195,
+   "weight": {
+    "placed": 5210,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1478,8 +1558,12 @@
    "round": 1,
    "maker": "B",
    "status": "new",
-   "with_frame": 6833,
-   "figure_bytes": 6083,
+   "weight": {
+    "placed": 6098,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1505,8 +1589,12 @@
    "round": 1,
    "maker": "B",
    "status": "new",
-   "with_frame": 8877,
-   "figure_bytes": 8127,
+   "weight": {
+    "placed": 8142,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1532,8 +1620,12 @@
    "round": 1,
    "maker": "B",
    "status": "built",
-   "with_frame": 13642,
-   "figure_bytes": 12892,
+   "weight": {
+    "placed": 13027,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     787,
@@ -1559,8 +1651,12 @@
    "round": 1,
    "maker": "B",
    "status": "new",
-   "with_frame": 7784,
-   "figure_bytes": 7034,
+   "weight": {
+    "placed": 7049,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1586,8 +1682,12 @@
    "round": 1,
    "maker": "B",
    "status": "new",
-   "with_frame": 17208,
-   "figure_bytes": 16458,
+   "weight": {
+    "placed": 16583,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1613,8 +1713,12 @@
    "round": 1,
    "maker": "B",
    "status": "new",
-   "with_frame": 11949,
-   "figure_bytes": 11199,
+   "weight": {
+    "placed": 11324,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1640,8 +1744,12 @@
    "round": 1,
    "maker": "B",
    "status": "new",
-   "with_frame": 10814,
-   "figure_bytes": 10064,
+   "weight": {
+    "placed": 10079,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1703,8 +1811,12 @@
    "round": 2,
    "maker": "A",
    "status": "built",
-   "with_frame": 8156,
-   "figure_bytes": 7406,
+   "weight": {
+    "placed": 7427,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1730,8 +1842,12 @@
    "round": 2,
    "maker": "A",
    "status": "new",
-   "with_frame": 10723,
-   "figure_bytes": 9973,
+   "weight": {
+    "placed": 9988,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1757,8 +1873,12 @@
    "round": 2,
    "maker": "A",
    "status": "new",
-   "with_frame": 9048,
-   "figure_bytes": 8298,
+   "weight": {
+    "placed": 8313,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1784,8 +1904,12 @@
    "round": 2,
    "maker": "A",
    "status": "built",
-   "with_frame": 22515,
-   "figure_bytes": 21765,
+   "weight": {
+    "placed": 21780,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     787,
@@ -1811,8 +1935,12 @@
    "round": 2,
    "maker": "A",
    "status": "new",
-   "with_frame": 7619,
-   "figure_bytes": 6869,
+   "weight": {
+    "placed": 6884,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1838,8 +1966,12 @@
    "round": 2,
    "maker": "A",
    "status": "new",
-   "with_frame": 11831,
-   "figure_bytes": 11081,
+   "weight": {
+    "placed": 11096,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1865,8 +1997,12 @@
    "round": 2,
    "maker": "A",
    "status": "new",
-   "with_frame": 6073,
-   "figure_bytes": 5323,
+   "weight": {
+    "placed": 5338,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1892,8 +2028,12 @@
    "round": 2,
    "maker": "A",
    "status": "new",
-   "with_frame": 4595,
-   "figure_bytes": 3845,
+   "weight": {
+    "placed": 3860,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1955,8 +2095,12 @@
    "round": 2,
    "maker": "B",
    "status": "new",
-   "with_frame": 6262,
-   "figure_bytes": 5512,
+   "weight": {
+    "placed": 5527,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -1982,8 +2126,12 @@
    "round": 2,
    "maker": "B",
    "status": "new",
-   "with_frame": 10533,
-   "figure_bytes": 9783,
+   "weight": {
+    "placed": 9798,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2009,8 +2157,12 @@
    "round": 2,
    "maker": "B",
    "status": "new",
-   "with_frame": 7361,
-   "figure_bytes": 6611,
+   "weight": {
+    "placed": 6626,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2036,8 +2188,12 @@
    "round": 2,
    "maker": "B",
    "status": "new",
-   "with_frame": 8368,
-   "figure_bytes": 7618,
+   "weight": {
+    "placed": 7633,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2063,8 +2219,12 @@
    "round": 2,
    "maker": "B",
    "status": "new",
-   "with_frame": 12189,
-   "figure_bytes": 11439,
+   "weight": {
+    "placed": 11454,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2150,8 +2310,12 @@
    "round": 2,
    "maker": "B",
    "status": "new",
-   "with_frame": 10445,
-   "figure_bytes": 9695,
+   "weight": {
+    "placed": 9710,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2177,8 +2341,12 @@
    "round": 2,
    "maker": "B",
    "status": "new",
-   "with_frame": 11739,
-   "figure_bytes": 10989,
+   "weight": {
+    "placed": 11004,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2204,8 +2372,12 @@
    "round": 2,
    "maker": "B",
    "status": "new",
-   "with_frame": 15375,
-   "figure_bytes": 14625,
+   "weight": {
+    "placed": 14640,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2267,8 +2439,12 @@
    "round": 2,
    "maker": "B",
    "status": "new",
-   "with_frame": 11650,
-   "figure_bytes": 10900,
+   "weight": {
+    "placed": 11137,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2294,8 +2470,12 @@
    "round": 2,
    "maker": "B",
    "status": "new",
-   "with_frame": 12183,
-   "figure_bytes": 11433,
+   "weight": {
+    "placed": 11448,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2321,8 +2501,12 @@
    "round": 2,
    "maker": "B",
    "status": "built",
-   "with_frame": 16702,
-   "figure_bytes": 15952,
+   "weight": {
+    "placed": 16077,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     787,
@@ -2348,8 +2532,12 @@
    "round": 2,
    "maker": "B",
    "status": "new",
-   "with_frame": 7454,
-   "figure_bytes": 6704,
+   "weight": {
+    "placed": 6719,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2411,8 +2599,12 @@
    "round": 2,
    "maker": "A",
    "status": "built",
-   "with_frame": 7662,
-   "figure_bytes": 6912,
+   "weight": {
+    "placed": 6927,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2438,8 +2630,12 @@
    "round": 2,
    "maker": "A",
    "status": "new",
-   "with_frame": 9827,
-   "figure_bytes": 9077,
+   "weight": {
+    "placed": 9092,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2465,8 +2661,12 @@
    "round": 2,
    "maker": "A",
    "status": "new",
-   "with_frame": 4631,
-   "figure_bytes": 3881,
+   "weight": {
+    "placed": 3896,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2492,8 +2692,12 @@
    "round": 2,
    "maker": "A",
    "status": "new",
-   "with_frame": 5814,
-   "figure_bytes": 5064,
+   "weight": {
+    "placed": 5189,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2519,8 +2723,12 @@
    "round": 2,
    "maker": "A",
    "status": "new",
-   "with_frame": 11081,
-   "figure_bytes": 10331,
+   "weight": {
+    "placed": 10346,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2546,8 +2754,12 @@
    "round": 2,
    "maker": "A",
    "status": "new",
-   "with_frame": 4485,
-   "figure_bytes": 3735,
+   "weight": {
+    "placed": 3750,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2573,8 +2785,12 @@
    "round": 3,
    "maker": "B",
    "status": "new",
-   "with_frame": 6567,
-   "figure_bytes": 5817,
+   "weight": {
+    "placed": 5832,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2624,8 +2840,12 @@
    "round": 3,
    "maker": "A",
    "status": "new",
-   "with_frame": 10057,
-   "figure_bytes": 9307,
+   "weight": {
+    "placed": 9432,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2651,8 +2871,12 @@
    "round": 3,
    "maker": "A",
    "status": "new",
-   "with_frame": 12965,
-   "figure_bytes": 12215,
+   "weight": {
+    "placed": 12340,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2678,8 +2902,12 @@
    "round": 3,
    "maker": "A",
    "status": "new",
-   "with_frame": 9750,
-   "figure_bytes": 9000,
+   "weight": {
+    "placed": 9125,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2705,8 +2933,12 @@
    "round": 3,
    "maker": "A",
    "status": "new",
-   "with_frame": 14366,
-   "figure_bytes": 13616,
+   "weight": {
+    "placed": 13807,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2732,8 +2964,12 @@
    "round": 3,
    "maker": "A",
    "status": "new",
-   "with_frame": 10871,
-   "figure_bytes": 10121,
+   "weight": {
+    "placed": 10349,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2759,8 +2995,12 @@
    "round": 3,
    "maker": "A",
    "status": "new",
-   "with_frame": 12595,
-   "figure_bytes": 11845,
+   "weight": {
+    "placed": 12037,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2786,8 +3026,12 @@
    "round": 3,
    "maker": "A",
    "status": "new",
-   "with_frame": 7934,
-   "figure_bytes": 7184,
+   "weight": {
+    "placed": 7309,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2825,8 +3069,12 @@
    "round": 3,
    "maker": "B",
    "status": "new",
-   "with_frame": 14087,
-   "figure_bytes": 13337,
+   "weight": {
+    "placed": 13263,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2852,8 +3100,12 @@
    "round": 3,
    "maker": "B",
    "status": "new",
-   "with_frame": 11654,
-   "figure_bytes": 10904,
+   "weight": {
+    "placed": 11029,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2879,8 +3131,12 @@
    "round": 3,
    "maker": "B",
    "status": "new",
-   "with_frame": 7806,
-   "figure_bytes": 7056,
+   "weight": {
+    "placed": 7181,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2942,8 +3198,12 @@
    "round": 3,
    "maker": "B",
    "status": "new",
-   "with_frame": 7570,
-   "figure_bytes": 6820,
+   "weight": {
+    "placed": 6945,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -2981,8 +3241,12 @@
    "round": 3,
    "maker": "B",
    "status": "new",
-   "with_frame": 7622,
-   "figure_bytes": 6872,
+   "weight": {
+    "placed": 6997,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3032,8 +3296,12 @@
    "round": 3,
    "maker": "C",
    "status": "built",
-   "with_frame": 14354,
-   "figure_bytes": 13604,
+   "weight": {
+    "placed": 13619,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3059,8 +3327,12 @@
    "round": 3,
    "maker": "C",
    "status": "built",
-   "with_frame": 13903,
-   "figure_bytes": 13153,
+   "weight": {
+    "placed": 13278,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1088,
@@ -3086,8 +3358,12 @@
    "round": 3,
    "maker": "C",
    "status": "built",
-   "with_frame": 10933,
-   "figure_bytes": 10183,
+   "weight": {
+    "placed": 10198,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     787,
@@ -3113,8 +3389,12 @@
    "round": 3,
    "maker": "C",
    "status": "new",
-   "with_frame": 9406,
-   "figure_bytes": 8656,
+   "weight": {
+    "placed": 8781,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3140,8 +3420,12 @@
    "round": 3,
    "maker": "C",
    "status": "new",
-   "with_frame": 4304,
-   "figure_bytes": 3554,
+   "weight": {
+    "placed": 3569,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3167,8 +3451,12 @@
    "round": 3,
    "maker": "C",
    "status": "new",
-   "with_frame": 6891,
-   "figure_bytes": 6141,
+   "weight": {
+    "placed": 6156,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3194,8 +3482,12 @@
    "round": 3,
    "maker": "C",
    "status": "new",
-   "with_frame": 13640,
-   "figure_bytes": 12890,
+   "weight": {
+    "placed": 12905,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3221,8 +3513,12 @@
    "round": 3,
    "maker": "C",
    "status": "new",
-   "with_frame": 13859,
-   "figure_bytes": 13109,
+   "weight": {
+    "placed": 13234,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3248,8 +3544,12 @@
    "round": 3,
    "maker": "C",
    "status": "new",
-   "with_frame": 13338,
-   "figure_bytes": 12588,
+   "weight": {
+    "placed": 12713,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3275,8 +3575,12 @@
    "round": 3,
    "maker": "C",
    "status": "new",
-   "with_frame": 11473,
-   "figure_bytes": 10723,
+   "weight": {
+    "placed": 10738,
+    "frame": null,
+    "on_page": null,
+    "ceiling": 15000
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3302,8 +3606,12 @@
    "round": 1,
    "maker": "A",
    "status": "built",
-   "with_frame": 17298,
-   "figure_bytes": 16548,
+   "weight": {
+    "placed": 16673,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     787,
@@ -3329,8 +3637,12 @@
    "round": 1,
    "maker": "A",
    "status": "new",
-   "with_frame": 11018,
-   "figure_bytes": 10268,
+   "weight": {
+    "placed": 10283,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3356,8 +3668,12 @@
    "round": 1,
    "maker": "A",
    "status": "built",
-   "with_frame": 16702,
-   "figure_bytes": 15952,
+   "weight": {
+    "placed": 16077,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     787,
@@ -3383,8 +3699,12 @@
    "round": 1,
    "maker": "A",
    "status": "built",
-   "with_frame": 34223,
-   "figure_bytes": 33473,
+   "weight": {
+    "placed": 33488,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     787,
@@ -3410,8 +3730,12 @@
    "round": 1,
    "maker": "A",
    "status": "new",
-   "with_frame": 16815,
-   "figure_bytes": 16065,
+   "weight": {
+    "placed": 16268,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     787,
@@ -3437,8 +3761,12 @@
    "round": 1,
    "maker": "A",
    "status": "new",
-   "with_frame": 10767,
-   "figure_bytes": 10017,
+   "weight": {
+    "placed": 10072,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3464,8 +3792,12 @@
    "round": 1,
    "maker": "A",
    "status": "new",
-   "with_frame": 11031,
-   "figure_bytes": 10281,
+   "weight": {
+    "placed": 10406,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3491,8 +3823,12 @@
    "round": 1,
    "maker": "A",
    "status": "new",
-   "with_frame": 9424,
-   "figure_bytes": 8674,
+   "weight": {
+    "placed": 8799,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3518,8 +3854,12 @@
    "round": 1,
    "maker": "A",
    "status": "new",
-   "with_frame": 4143,
-   "figure_bytes": 3393,
+   "weight": {
+    "placed": 3408,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3545,8 +3885,12 @@
    "round": 1,
    "maker": "A",
    "status": "new",
-   "with_frame": 3194,
-   "figure_bytes": 2444,
+   "weight": {
+    "placed": 2454,
+    "frame": null,
+    "on_page": null,
+    "ceiling": null
+   },
    "faults": 0,
    "kit_windows": [
     1440,
@@ -3581,6 +3925,14 @@
   ],
   "waiting": []
  },
+ "decide": {
+  "items": 31,
+  "questions": 2,
+  "replies": 5,
+  "state": "signed off",
+  "pictures_waiting": []
+ },
+ "panel_1_words": 5870,
  "rules": {
   "14.1": {
    "plates": 2,
@@ -3704,7 +4056,7 @@
   "rows": [
    [
     "Chapter 14 with the chart kit",
-    2228367,
+    2228300,
     2803941
    ],
    [
@@ -3728,11 +4080,11 @@
     15500000
    ]
   ],
-  "per_plate": 13230,
+  "per_plate": 13236,
   "plates_to_come": 13,
   "by_family": {
    "3.1": [
-    61708,
+    61714,
     9,
     1
    ],
@@ -3742,12 +4094,12 @@
     0
    ],
    "3.3": [
-    202821,
+    202831,
     14,
     3
    ],
    "3.4": [
-    96787,
+    96793,
     8,
     4
    ],
@@ -3782,7 +4134,7 @@
     1
    ],
    "3.12": [
-    49413,
+    49324,
     3,
     3
    ],
@@ -3808,72 +4160,127 @@
     "S13",
     "14.34",
     "Small-multiple area sparklines",
-    34223
+    {
+     "placed": 33488,
+     "frame": null,
+     "on_page": null,
+     "ceiling": null
+    }
    ],
    [
     30312,
     "S05",
     "14.30",
     "Multi-line with one highlighted",
-    31047
+    {
+     "placed": 30312,
+     "frame": null,
+     "on_page": null,
+     "ceiling": null
+    }
    ],
    [
     22806,
     "S25",
     "14.27",
     "Diverging bar",
-    23541
+    {
+     "placed": 22806,
+     "frame": null,
+     "on_page": null,
+     "ceiling": null
+    }
    ],
    [
     21780,
     "S08",
     "14.49",
     "Unit chart or waffle",
-    22515
+    {
+     "placed": 21780,
+     "frame": null,
+     "on_page": null,
+     "ceiling": null
+    }
    ],
    [
     16673,
     "S15",
     "14.125",
     "Results table with margin cells",
-    17298
+    {
+     "placed": 16673,
+     "frame": null,
+     "on_page": null,
+     "ceiling": null
+    }
    ],
    [
     16583,
     "S33",
     "14.40",
     "Indexed line",
-    17208
+    {
+     "placed": 16583,
+     "frame": null,
+     "on_page": null,
+     "ceiling": null
+    }
    ],
    [
     16268,
     "S37",
     "14.129",
     "Heat table",
-    16815
+    {
+     "placed": 16268,
+     "frame": null,
+     "on_page": null,
+     "ceiling": null
+    }
    ],
    [
     16077,
     "S06",
     "14.76",
     "Scenario directions",
-    16702
+    {
+     "placed": 16077,
+     "frame": null,
+     "on_page": null,
+     "ceiling": null
+    }
    ],
    [
     14640,
     "S56",
     "14.69",
     "Connected scatter",
-    15375
+    {
+     "placed": 14640,
+     "frame": null,
+     "on_page": null,
+     "ceiling": null
+    }
    ],
    [
     14248,
     "S11",
     "14.25",
     "Shift arrows (from, to)",
-    14873
+    {
+     "placed": 14248,
+     "frame": null,
+     "on_page": null,
+     "ceiling": null
+    }
    ]
   ]
+ },
+ "board_score": {
+  "file": "work/handoffs/phase-3/20261113_Board-2-CD-Scores.json",
+  "ready": 0,
+  "items": 1
  },
  "scores": {
   "cd": [
@@ -3990,11 +4397,11 @@
   ]
  },
  "tested": {
-  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 17:50 UTC: exit 0, no warnings, 11,236,319 bytes, 344 rules, 638 examples placed",
-  "Quick guide check": "run by the main session on a copy of its strict build of 11,235,128 bytes, at 1440 and 390 px: 694 drawn examples, 3,296 same-page links, no failures",
-  "The kit’s build of every chart": "run by this board’s build at the widths the guide draws, with the sweep from 256 px: 84 of 84 charts pass with no fault, no warnings",
-  "The engineer’s checks after your answers landed": "chapter 14’s generator, 87 of 87 files current; the kit’s build of every chart with the sweep, 84 of 84 pass and 0 fail; the data check, 125 tables and 0 faults; the map shapes current; the atlas check PASS with 0 failures; the kit’s self-test, every planted fault caught",
-  "This board’s own check": "on its last run at 1440, 390 and 360 px: no failures, leaving aside the page’s language, which the host’s wrapper sets"
+  "Strict build of the guide": "run by this board’s build on November 13, 2026 at 18:25 UTC, with exit 0, no warnings, 11,236,252 bytes, 344 rules and 638 examples placed",
+  "Quick guide check": "run by the main session on a copy of the committed build of 11,235,128 bytes, before your answers landed, at 1440 and 390 px, with 694 drawn examples, 3,296 same-page links and no failures; this board’s strict build after them is 11,236,252 bytes, and the main session’s check of the final build replaces this line when it runs",
+  "The kit’s build of every chart": "run by this board’s build at the widths the guide draws and at every whole width from 256 px, with 84 of 84 charts passing with no fault and no warnings",
+  "The engineer’s checks after your answers landed": "chapter 14’s generator, 87 of 87 files current; the kit’s build of every chart at every whole width from 256 px, 84 of 84 pass and 0 fail; the data check, 125 tables and 0 faults; the map shapes current; the atlas check PASS with 0 failures; the kit’s self-test, every planted fault caught",
+  "This board’s own check": "on its last run at 1440, 390 and 360 px, with no failures once the page’s language is left aside, since the host’s wrapper sets it"
  },
  "guide_check": {
   "file": "[scratch]/phase-3/board-2/main/quick/guide-Guide-Check-Results.json",
@@ -4009,44 +4416,26 @@
  },
  "tokens_used": 110,
  "page": "work/boards/phase-3/round-3/board-2/20261113_Board-2.html",
- "html_bytes": 986621,
- "images": 310,
- "image_bytes": 40639494,
- "folder_files": 314,
- "folder_bytes": 41813355,
+ "html_bytes": 1040263,
+ "images": 312,
+ "image_bytes": 40879944,
+ "folder_files": 316,
+ "folder_bytes": 42116363,
  "largest_image": [
-  492518,
+  496612,
   "20261113_Form-S37-Grayscale.webp"
  ],
  "status": {
-  "decide": "ready",
   "forms": "ready",
+  "decide": "ready",
   "rules": "ready",
   "count": "ready",
   "spend": "ready",
-  "scores": [
-   "partial",
-   "cd_board"
-  ],
+  "scores": "ready",
   "tested": "ready",
   "next": "ready"
  },
  "image_sources": {
-  "img/20261113_Decide-S12-1.webp": "work/boards/phase-3/round-0/specimens/s12-newsprint-1440.png",
-  "img/20261113_Decide-S12-2.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s12-1440.png",
-  "img/20261113_Decide-S12-3.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s12-1024.png",
-  "img/20261113_Decide-S12-4.webp": "[scratch]/phase-3/board-2/builder/files/file-20261113-S12-Stacked-Tile-1440-newsprint-1440.png",
-  "img/20261113_Decide-S12-5.webp": "[scratch]/phase-3/board-2/builder/files/file-20261113-S12-Stacked-Tile-1024-newsprint-1024.png",
-  "img/20261113_Decide-S12-6.webp": "work/boards/phase-3/round-0/specimens/s12-newsprint-390.png",
-  "img/20261113_Decide-S12-7.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s12-390.png",
-  "img/20261113_Decide-S16-1.webp": "work/boards/phase-3/round-0/specimens/s16-newsprint-1440.png",
-  "img/20261113_Decide-S16-2.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s16-1440.png",
-  "img/20261113_Decide-S16-3.webp": "work/boards/phase-3/round-0/specimens/s16-newsprint-390.png",
-  "img/20261113_Decide-S16-4.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s16-390.png",
-  "img/20261113_Decide-S10-1.webp": "work/boards/phase-3/round-0/specimens/s10-newsprint-1440.png",
-  "img/20261113_Decide-S10-2.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s10-1440.png",
-  "img/20261113_Decide-DR-255-1.webp": "[scratch]/phase-3/board-2/builder/files/file-20261113-S-14-124-Sketch-Gray-Before-newsprint-1440.png",
-  "img/20261113_Decide-DR-255-2.webp": "[scratch]/phase-3/board-2/builder/shots/dec-fig-s-14-124-sketch-1440.png",
   "img/20261113_Sketch-14-24.webp": "[scratch]/phase-3/board-2/builder/shots/sketch-14.24.png",
   "img/20261113_Form-S03-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s03/s03-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-newsprint-358.png",
   "img/20261113_Form-S03-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s03/s03-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s03/s03-charcoal-358.png",
@@ -4327,6 +4716,23 @@
   "img/20261113_Form-S42-Newsprint.webp": "[scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-358.png",
   "img/20261113_Form-S42-Charcoal.webp": "[scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-1440.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-358.png",
   "img/20261113_Form-S42-Grayscale.webp": "[scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-newsprint-358-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-1440-grayscale.png, [scratch]/phase-3/board-2/builder/kit-out/s42/s42-charcoal-358-grayscale.png",
+  "img/20261113_Decide-S12-1.webp": "work/boards/phase-3/round-0/specimens/s12-newsprint-1440.png",
+  "img/20261113_Decide-S12-2.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s12-1440.png",
+  "img/20261113_Decide-S12-3.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s12-1024.png",
+  "img/20261113_Decide-S12-4.webp": "[scratch]/phase-3/board-2/builder/files/file-20261113-S12-Stacked-Tile-1440-newsprint-1440.png",
+  "img/20261113_Decide-S12-5.webp": "[scratch]/phase-3/board-2/builder/files/file-20261113-S12-Stacked-Tile-1024-newsprint-1024.png",
+  "img/20261113_Decide-S12-6.webp": "work/boards/phase-3/round-0/specimens/s12-newsprint-390.png",
+  "img/20261113_Decide-S12-7.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s12-390.png",
+  "img/20261113_Decide-S16-1.webp": "work/boards/phase-3/round-0/specimens/s16-newsprint-1440.png",
+  "img/20261113_Decide-S16-2.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s16-1440.png",
+  "img/20261113_Decide-S16-3.webp": "work/boards/phase-3/round-0/specimens/s16-newsprint-390.png",
+  "img/20261113_Decide-S16-4.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s16-390.png",
+  "img/20261113_Decide-S10-1.webp": "work/boards/phase-3/round-0/specimens/s10-newsprint-1440.png",
+  "img/20261113_Decide-S10-2.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s10-1440.png",
+  "img/20261113_Decide-S05-1.webp": "work/boards/phase-3/round-0/specimens/s05-newsprint-1440.png",
+  "img/20261113_Decide-S05-2.webp": "[scratch]/phase-3/board-2/builder/shots/dec-oac-s-14-s05-1440.png",
+  "img/20261113_Decide-DR-255-1.webp": "[scratch]/phase-3/board-2/builder/files/file-20261113-S-14-124-Sketch-Gray-Before-newsprint-1440.png",
+  "img/20261113_Decide-DR-255-2.webp": "[scratch]/phase-3/board-2/builder/shots/dec-fig-s-14-124-sketch-1440.png",
   "img/20261113_Ch14-Opener.webp": "[scratch]/phase-3/board-2/builder/shots/ch14-opener.png",
   "img/20261113_Rule-14-1-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.1-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.1-failure.png",
   "img/20261113_Rule-14-2-Plates.webp": "[scratch]/phase-3/board-2/builder/shots/plate-14.2-correct.png, [scratch]/phase-3/board-2/builder/shots/plate-14.2-failure.png",
@@ -4380,13 +4786,18 @@
   "D3-1542",
   "D3-1543",
   "D3-168",
+  "D3-174",
+  "D3-191",
   "D3-260",
   "D3-261",
   "D3-309",
   "D3-349",
   "D3-354",
+  "D3-36",
+  "D3-428",
   "D3-482",
   "D3-519",
+  "D3-555",
   "D3-566",
   "D3-581",
   "D3-628",
@@ -4405,6 +4816,8 @@
   "D3-914",
   "D3-930",
   "D3-936",
+  "D3-946",
+  "D3-98",
   "D3-998",
   "DR-213",
   "DR-229",
@@ -4553,15 +4966,15 @@
   "rule-14-98",
   "rule-14-99"
  ],
- "notes": [],
- "warnings": [
-  "S04: its desk drawing differs from board 1’s pixel for pixel, and the decisions file’s board 1 group does not name it",
-  "S08: its desk drawing differs from board 1’s pixel for pixel, and the decisions file’s board 1 group does not name it",
-  "the quick guide check ran on 11,235,128 bytes and this board’s strict build is 11,236,319",
-  "decision codes in the words the board quotes from teammates’ files, on its face: D3-1515, D3-689, DR-256, DR-64"
+ "notes": [
+  "this build’s share per plate is 13236; work/build/chart-kit/plate-share.json keeps 13237, as found"
  ],
- "seconds": 14,
- "words": 56974,
+ "warnings": [
+  "two replies name the same item",
+  "reply 5 names None, which no item or group holds"
+ ],
+ "seconds": 274,
+ "words": 61500,
  "check": {
   "page": {
    "failures": [
@@ -4586,5 +4999,6 @@
    390,
    360
   ]
- }
+ },
+ "fails": []
 }

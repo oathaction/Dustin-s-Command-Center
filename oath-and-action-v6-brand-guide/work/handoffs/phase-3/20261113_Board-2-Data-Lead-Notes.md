@@ -4,6 +4,7 @@ Oath & Action Edition 06, Phase 3, board 2, November 13, 2026. Data visualizatio
 
 ## Status
 
+- 18:31 UTC. **B2-M6 confirmed** on the 18:25 run but for two builder items (reply `item` keys added at 18:30; count captions to print). All my fix round items are in.
 - 18:21 UTC. **Fix round items written** into the decisions file (B2-M1 five replies, B2-M2, B2-M3, B2-M5, B2-S4, B2-S7, B2-S8, B2-S11); S73's cut and the editor's two counts signed off; B2-M6 waits on the builder's rerun.
 - 18:19 UTC. **B2-M5 ruled: keep** S03's and S08's November 10 count until certification ("Fix round"). The guide preview need not wait.
 Current at 18:02 UTC (clock read). My three tasks are done; what is left is a recheck at the builder's next run.
@@ -65,9 +66,11 @@ The main session's final strict build measures S73 at 13,263 bytes as placed, ab
 
 - **To the main session, for round 4:** a state code for every state at the guide's 326 px phone drawing on S12, S16 and S78 (today S12 and S78 leave WA, WV and WY to a note, S16 DC, DE, ME and NH). A guide item for the cartographer and the engineer, not this board.
 
-### B2-M6: waits on the builder's rerun
+### B2-M6: confirmed on the builder's 18:25 run, with two items for its next run (18:31 UTC)
 
-I confirm when the builder's run on the current file prints S05's item, S04's and S08's rows, the five replies, and no "No" in the election table where the test was not applied; my figure script runs on it too.
+- **Confirmed** by script on the page text: panel 1 names S05 as its own item and S04 and S08 in the moves list; the election table prints no "No" (7 "Yes", the rest blank); the five replies open panel 1; S12's 558 px column and 466 px scroll, the 326 px phone words, each V7.1 item's place on the list, the R-01 count of November 10 and "No figure or ink changed" all print. `board_figures_check.py`, adapted to the board's one byte measure (B2-M4: bytes as placed against the build report), agrees on every figure; its only differences are the five answered items' "Done.", which the board now shows as one chip (B2-S5).
+- **For the builder's next run:** (1) each reply needed an `item` key, the item or group id your code reads; I added it at 18:30 UTC (S12, board-1-changed, forms-changed, atlas-v7-1, loop-labels), which clears both reply warnings. (2) Print `counts.rule_01_9.caption` and `counts.dr_229.caption` over their tables (B2-S7); neither prints yet.
+- S73's weight line shows its 15,000 ceiling; D3-1328's 14,106 is the one that binds a round 3 plate, so the line should show 14,106 once the engineer's frame bytes land (13,263 placed plus the 811-byte frame is about 14,074).
 
 ## Schema for the decisions file (proposed 17:09 UTC, for the board builder)
 

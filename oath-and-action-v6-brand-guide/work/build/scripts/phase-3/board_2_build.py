@@ -1051,20 +1051,23 @@ def form_head(f, held, S, extra=''):
 
 
 def plate_weight(G, sid, chk=None):
-    """One measure on the whole board (B2-M4): the build report's bytes as placed, plus the plate's own frame measured on
-    the page by the engineer; the kit's ceiling where D3-1328 sets one (S65 on)."""
+    """One measure on the whole board (B2-M4), from the engineer's plate file: the build report's bytes as placed, plus
+    what the page adds inside the figure and the plate's own frame, measured on the page; the plate's ceiling where it is
+    set on that whole measure (round 3, D3-1328)."""
     placed = ((G['report'].get('weight', {}).get('charts', {}).get(f's-14-{sid.lower()}') or {}).get('bytes'))
-    e = (PLATES or {}).get('plates', {}).get(sid) or {}
-    frame_b = e.get('frame')
-    if frame_b is None and e.get('on_page') is not None and e.get('as_placed') is not None:
-        frame_b = e['on_page'] - e['as_placed']
-    if e.get('as_placed') is not None and placed is not None and int(e['as_placed']) != int(placed):
-        warn(f'{sid}: the engineer measured {e["as_placed"]:,} bytes as placed and this build’s report gives {placed:,}')
-    ceiling = None
-    if int(sid[1:]) >= 65 and chk is not None:
-        ceiling = (chk.get('weight') or {}).get('ceiling')
-    on_page = placed + frame_b if placed is not None and frame_b is not None else None
-    return {'placed': placed, 'frame': frame_b, 'on_page': on_page, 'ceiling': ceiling}
+    ents = (PLATES or {}).get('entries') or []
+    e = next((x for x in ents if str(x.get('spec', '')).upper() == sid), {})
+    frame_b = on_page = None
+    if e:
+        if placed is not None and e.get('bytes_as_placed') is not None and int(e['bytes_as_placed']) != int(placed):
+            warn(f'{sid}: the engineer measured {e["bytes_as_placed"]:,} bytes as placed and this build’s report gives {placed:,}')
+        frame_b = int(e.get('frame_bytes', 0)) + int(e.get('added_on_page', 0))
+        on_page = int(e['total']) if e.get('total') is not None else (placed + frame_b if placed is not None else None)
+        if placed is None:
+            placed = e.get('bytes_as_placed')
+    ce = e.get('ceiling') or {}
+    ceiling = ce.get('bytes') if ce.get('measure') == 'total' else None
+    return {'placed': placed, 'frame': frame_b, 'on_page': on_page, 'ceiling': ceiling, 'within': e.get('within_ceiling')}
 
 
 def form_article(G, f, held, S, kit_out, pages, b1cmp, rendered, sk_shots):
@@ -1170,6 +1173,8 @@ def form_article(G, f, held, S, kit_out, pages, b1cmp, rendered, sk_shots):
             bytes_line = fill(S['bytes_wait'], {'placed': f'{W_["placed"]:,}' if W_['placed'] is not None else '?'})
         if W_['ceiling']:
             bytes_line += ' ' + fill(S['ceiling_line'] if wf is None or wf <= W_['ceiling'] else S['ceiling_over'], {'ceiling': f'{int(W_["ceiling"]):,}'})
+            if wf is not None and wf > W_['ceiling'] and sid != 'S69':
+                warn(f'{sid}: {wf:,} bytes on the page, over its {int(W_["ceiling"]):,}-byte ceiling')
         result = S['kit_pass'] if not faults else fill(S['kit_faults'], {'n': nw(len(faults))})
         src = pr.get('source')
         if src:
@@ -2034,9 +2039,10 @@ def main():
     if pp_.exists():
         try:
             PLATES = json.loads(pp_.read_text())
-            FIG['plate_bytes'] = {'file': rel(pp_), 'build': PLATES.get('build')}
-            if (PLATES.get('build') or {}).get('bytes') and G['report'].get('bytes') and PLATES['build']['bytes'] != G['report']['bytes']:
-                warn(f'the engineer measured the plates on a {PLATES["build"]["bytes"]:,}-byte build and this board’s strict build is {G["report"]["bytes"]:,}')
+            FIG['plate_bytes'] = {'file': rel(pp_), 'page': PLATES.get('page'), 'measured_utc': PLATES.get('measured_utc')}
+            pb = (PLATES.get('page') or {}).get('bytes')
+            if pb and G['report'].get('bytes') and pb != G['report']['bytes']:
+                warn(f'the engineer measured the plates on a {pb:,}-byte build and this board’s strict build is {G["report"]["bytes"]:,}')
         except json.JSONDecodeError as e:
             warn(f'{rel(pp_)} does not parse: {e}')
     for f in rn:

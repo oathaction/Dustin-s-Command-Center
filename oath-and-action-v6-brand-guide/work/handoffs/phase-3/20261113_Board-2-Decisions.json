@@ -1,7 +1,7 @@
 {
  "schema": "board-2-decisions/1",
  "state": "signed off",
- "updated_utc": "2026-11-13T18:20:45Z",
+ "updated_utc": "2026-11-13T18:31:17Z",
  "written_by": "data lead",
  "words_owner": "editor",
  "reply_line": "To answer, reply “As recommended”, or name the item and your change.",
@@ -5162,36 +5162,41 @@
    "n": 1,
    "panel": "board-1-changed",
    "id": "S12",
-   "line": "S12 at a desk: the stacked tile, or the 1,024 px frame that scrolls sideways.",
-   "recommendation": "Take the stacked tile."
+   "line": "The shift arrows map (S12) at a desk: the stacked tile, or the 1,024 px frame that scrolls sideways.",
+   "recommendation": "Take the stacked tile.",
+   "item": "S12"
   },
   {
    "n": 2,
    "panel": "board-1-changed",
    "id": null,
-   "line": "The other board 1 changes: S16, S10 and S05 as drawn, thirteen moved labels and lines, and twelve charts' ink words.",
-   "recommendation": "Approve them as listed."
+   "line": "The other board 1 changes: the turnout map (S16), the evidence bars (S10) and the homeownership brackets (S05) as drawn, thirteen moved labels and lines, and twelve charts’ ink words.",
+   "recommendation": "Approve them as listed.",
+   "item": "board-1-changed"
   },
   {
    "n": 3,
    "panel": "forms-changed",
    "id": null,
    "line": "Forms whose data or drawing changed: nine charts, and seventeen changes to the data plans; no tier changed.",
-   "recommendation": "Approve them as listed."
+   "recommendation": "Approve them as listed.",
+   "item": "forms-changed"
   },
   {
    "n": 4,
    "panel": "atlas-v7-1",
    "id": null,
    "line": "Atlas V7.1: eight items for the atlas editor, and the FEC item off the list.",
-   "recommendation": "As each item recommends."
+   "recommendation": "As each item recommends.",
+   "item": "atlas-v7-1"
   },
   {
    "n": 5,
    "panel": "atlas-v7-1",
    "id": "loop-labels",
    "line": "One name for each variable in chapters 10, 11 and 15: its own title, or the shorter loop label.",
-   "recommendation": "Its own title everywhere."
+   "recommendation": "Its own title everywhere.",
+   "item": "loop-labels"
   }
  ]
 }
