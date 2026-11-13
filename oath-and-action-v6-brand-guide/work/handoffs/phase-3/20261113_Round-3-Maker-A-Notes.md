@@ -5,6 +5,7 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Maker A, briefed 
 ## Summary
 
 - 00:5x. Started. Read `CLAUDE.md`, the round 3 brief, the kit README, the plan file's round 3 rows, data plan rows 86 to 93 with the sign-off's changes 4, 5 and 12 and its conditions, round 2's maker A notes, S62, `step-tracker` and entry 14.88, and the seven datasets with their sidecars.
+- 02:2x. **Done.** Seven forms, specs S66 to S72, entries 14.96 to 14.103 and the mind map sketch; the editor's 15 word changes applied; every plate under 13,852 bytes (D3-1097); strict build exit 0 with no warning; quick guide check clean for my sketch and plates (its two failures are the cartographer's s-14-124 sketch). Open: Q-A1 to the data lead (S68's arrowhead against Rule 15.5's diamond), A-E3 optional to the engineer, and the data lead's sign-off.
 - 01:2x. All seven forms, specs S66 to S72, entries 14.96 to 14.103 and the mind map sketch are written, on the engineer's R3-5 parts (`link`, `node`, `node_size`, `tree`) and under the data lead's rulings (a) to (d): no named mark on any of S66 to S72, inks and grade lines as ruled. Each spec builds PASS with the sweep, 0 faults. `maker_a_round3_derive.py` writes S71's joined table and checks every figure in my titles, notes and alts (23 checks, 0 failed so far; S71 and S72 checks being added). R3-A1 landed (the research lead's Ballotpedia publisher). Now: the review pass at 1440, 390, 296 and 256 px on both grounds and in grayscale, then the strict build and the quick guide check.
 
 | Rule | Spec | Form ID | Status |
@@ -45,6 +46,9 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Maker A, briefed 
 - D3-xxx | S70's Federal Circuit card reads "12 judgeships." with its note, through `labels.card_sub_none`, in place of "0 in its district courts" | A court of appeals with no district courts has no sum to print
 - D3-xxx | The node forms (S68 to S70) size each box at the width the kit's node fits it, and warn, so the build fails, wherever a node cannot hold its words | At 720 px S68 drew seven boxes of eight with every check passing (A-E3)
 
+- D3-xxx | The editor's words pass of 02:12 applied, 15 of 15: S67's measure line comma; S68's title ("the rules behind it") and table word; S70's note 1 gloss of Article III courts; S71's title, note 1, alt and chart note; entries 14.96 (and its title, the editor's suggested "the steps an institution takes to decide"), 14.97, 14.98, 14.99 and 14.102 | Editor, "Words for maker A"; figure checks rerun, 35 of 35
+- D3-xxx | S67's source line reads "reform profiles R-01 and reform R-02, the local route", with "reform" in lower case before R-02 as well | The editor's words ("reform profiles R-01 and R-02") print "and Reform R-02": the kit's chip adds its type word wherever the 16 characters before an ID lack it, and "reform" before R-02 keeps Rule 13.9's lower-case kind word
+
 ## Requests to the engineer
 
 - **A-E1, `kit.js` (`K.table_groups`), needed for S72's weight:** let `table.group.by` take a list of columns, the group's key their values joined with ", " (so `words` and `agg: "key"` read the joined key, such as "Senate, D"), groups in first-seen order after the spec's `sort`. S72's member-by-member table is 77,142 bytes of HTML (the plate 81,880, against 24,576 far-over and the 13,852 share); grouped by chamber and party, with `count` and `count_eq` columns for yes, no and not voting, it prints 5 rows and the CSV export keeps all 533 members, DR-249's pattern. A single column cannot split a party by chamber.
@@ -64,18 +68,18 @@ Oath & Action Edition 06, Phase 3, round 3, November 13, 2026. Maker A, briefed 
 
 ## Tested
 
-- `node work/build/chart-kit/oa-chart.mjs build` for S66 to S72 with the sweep (256 to 720 px) and PNGs at 1440, 390, 328 and 288 px pages (720, 358, 296 and 256 px drawings) on both grounds with grayscale captures: 7 of 7 PASS, 0 faults, 7 check files counted (last full run 01:4x after the last form change; S66, S67, S71 and S72 again after their last word changes, PASS).
+- `node work/build/chart-kit/oa-chart.mjs build` for S66 to S72 with the sweep (256 to 720 px) and PNGs at 1440, 390, 328 and 288 px pages (720, 358, 296 and 256 px drawings) on both grounds with grayscale captures: 7 of 7 PASS, 0 faults, 7 check files counted (last full run 01:4x after the last form change; S67, S68, S70 and S71 again with the sweep after the editor's words, PASS).
 - Captures looked at, at twice size or as contact sheets: S66 to S72 at 1440 px Newsprint; at 358 px on both grounds (Charcoal in grayscale), 296 px Newsprint and 256 px Charcoal; S66 to S72 (less S69) at 1440 px Charcoal in grayscale; S69's top and S70's top at 1440 px; the mind map sketch on both grounds and Charcoal in grayscale. Fixes that came of it: S66's stretched step box, S67's follow-on question in its own box, S68's missing nodes (twice), S70's orphaned counts, S71's phone block, S72's party rows at 358 px.
 - Page-to-Node parity on every drawing (the build's own check): failed for S69 and S72 until the forms set their words once (curly quotes, held dates) for both; passes.
 - `python3 -I work/build/scripts/phase-3/maker_a_round3_derive.py --figures`: 35 checks, 0 failed, every figure in my titles, notes and alts against the data files (named in each spec's `notes_internal`); `--check`: the derived grid equals what the script computes.
 - Words lint by script on the seven specs, eight entries and the sketch: no em or en dash, U+2011, straight quote in reader text, banned word or studio code; every "no", "not" and "never" read: the rest are vote words, the data lead's "not an Article III court" or the rule's own terms.
 - `python3 -I work/build/scripts/phase-3/phase3_ch14_build.py --rounds 1,2,3`: 128 rules, 114 entries, 0 faults.
-- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide.html`: exit 0, no warning, 11,218,853 bytes; share per plate 14,707 for the 13 still to come. My plates: S66 9,165; S67 12,487; S68 8,700; S69 13,838; S70 8,923; S71 11,385; S72 10,512 bytes, each under 13,852 (D3-1097).
+- `python3 -I work/build/scripts/phase-2/guide_build.py --strict --out <scratch>/guide-final.html` after the editor's words (02:2x): exit 0, no warning, 11,221,845 bytes; share per plate 14,478 for the 13 still to come. My plates: S66 9,165; S67 12,495; S68 8,695; S69 13,838; S70 9,049; S71 11,399; S72 10,512 bytes, each under 13,852 (D3-1097).
+- `node work/build/scripts/phase-2/guide_check.js <scratch>/guide-check.html --quick --no-captures` on the strict build of 02:02 (run when fewer than two other guide checks were driving a browser; an earlier run of mine, started as a third, I stopped and do not count): exit 1 with 2 failures, both contrast in the cartographer's `s-14-124-sketch` ("Party B" at 2.65 to 1, at 1440 and 390 px); no line names `s-14-103-sketch` or any of S66 to S72. The editor's word changes after that build touch no sketch.
 
 ## Not tested
 
 - Real screen readers, devices, print and 200 percent text; forced colors only through the kit's own checks (no `dataviz_check.js --kit` run this round).
-- The editor's full words pass (only its first look, S66 to S69, applied).
 - The data lead's sign-off of the drawings and of the grouped tables.
 
 ## Files

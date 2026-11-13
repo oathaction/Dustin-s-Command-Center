@@ -598,7 +598,7 @@
    "source": "s67.json"
   },
   {
-   "example": "Six of the eight bodies behind an electric bill can change its rules, and two, the regional grid operators and the investor-owned utility, apply them.",
+   "example": "Six of the eight bodies behind an electric bill can change the rules behind it, and two, the regional grid operators and the investor-owned utility, apply them.",
    "domain": "D06",
    "states": [],
    "rule": "14.98",
@@ -619,7 +619,7 @@
    "source": "s70.json"
   },
   {
-   "example": "The eleven routes a reform can take run from a city ordinance to a constitutional amendment, and a federal statute, which needs 60 senators to end debate on most bills, is the route the most reforms list, 38.",
+   "example": "The eleven routes a reform can take run from a city ordinance to a constitutional amendment, and 38 reforms list a federal statute, more than any other route, though most bills need 60 senators to end debate.",
    "domain": "all",
    "states": [],
    "rule": "14.101",

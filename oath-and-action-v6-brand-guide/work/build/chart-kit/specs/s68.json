@@ -9,7 +9,7 @@
   "evidence": "finding",
   "evidence_label": "Finding",
   "grade_line": "Checked by the atlas: its pathway record on electric and utility bills, as of October 15, 2026",
-  "title": "Six of the eight bodies behind an electric bill can change its rules, and two, the regional grid operators and the investor-owned utility, apply them.",
+  "title": "Six of the eight bodies behind an electric bill can change the rules behind it, and two, the regional grid operators and the investor-owned utility, apply them.",
   "measure_line": "The eight decision makers our systems atlas lists for “Why is my electric bill going up?”, by level and by whether each can change the rules or applies them, as of October 15, 2026",
   "notes": [
     "A line of authority shows one body setting or approving another’s rules, as the atlas records it: the legislature writes the laws that define the commission’s powers, and the Federal Energy Regulatory Commission approves the rule changes grid operators file. It shows who decides and carries no sign for which way the decision goes."
@@ -55,7 +55,7 @@
           "5": "Approves the rule changes of PJM and other grid operators",
           "6": "Files its rule changes with the Federal Energy Regulatory Commission for approval",
           "2": "Writes the laws that define the commission’s powers",
-          "1": "Its powers are set by the state legislature’s laws"
+          "1": "The state legislature’s laws set its powers"
         },
         "empty": "None drawn"
       },

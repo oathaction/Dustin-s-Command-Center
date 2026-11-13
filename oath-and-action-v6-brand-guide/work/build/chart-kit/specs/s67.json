@@ -13,12 +13,12 @@
   "evidence_label": "Finding",
   "grade_line": "Documented: state laws compiled by Ballotpedia, a secondary source, as of November 2026; the city route from the atlas, as of October 15, 2026",
   "title": "A state ban on ranked-choice voting reaches city elections in 18 states, Ohio’s ban lets home-rule cities adopt it at the cost of state local government funds, and elsewhere the answer turns on state home-rule law.",
-  "measure_line": "Whether a state ban on ranked-choice voting reaches a city’s own elections, 50 states and the District of Columbia, bans as of November 2026, read November 6, 2026 and read again November 12, 2026, after the November 3 election",
+  "measure_line": "Whether a state ban on ranked-choice voting reaches a city’s own elections, 50 states and the District of Columbia, bans as of November 2026, read November 6, 2026, and read again November 12, 2026, after the November 3 election",
   "notes": [
     "Tennessee’s ban covers some elections, but it names local government offices and counts an incorporated city or town as local government, so its cities follow the first answer with the other 17 states.",
     "Every ban but Tennessee’s rests on Ballotpedia’s quotation of the law, Ohio’s terms included; we read Tennessee’s act, Public Chapter 621, ourselves."
   ],
-  "source_line": "Source: Ballotpedia, a secondary source, Ranked-choice voting (RCV), state laws prohibiting RCV, as of November 2026, 50 states and DC, retrieved November 6, 2026; Oath & Action’s systems atlas, Who Do They Answer To?, Reform R-01 and Reform R-02, their local route, as of October 15, 2026.",
+  "source_line": "Source: Ballotpedia, a secondary source, Ranked-choice voting (RCV), state laws prohibiting RCV, as of November 2026, 50 states and DC, retrieved November 6, 2026; Oath & Action’s systems atlas, Who Do They Answer To?, reform profiles R-01 and reform R-02, the local route, as of October 15, 2026.",
   "credit": "Chart: Oath & Action",
   "illustrative": false,
   "alt": "A decision tree that starts with one question: does a state law ban ranked-choice voting in your city’s own elections? Yes, in 18 states, Tennessee among them: a city cannot adopt it while the ban stands. Partly, in Ohio: home-rule cities may still adopt it, but lose state local government fund distributions while it is in effect. No, in 31 states and the District of Columbia: check your state’s home-rule law. If it lets a city set its own election rules, the city can act by ordinance, charter amendment or local practice; if cities hold only the powers the state grants, the legislature decides.",

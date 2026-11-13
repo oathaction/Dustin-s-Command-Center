@@ -3879,9 +3879,9 @@
   },
   {
    "id": "14.96",
-   "title": "Use a process diagram to show how a decision is made, step by step, and where others can step in.",
+   "title": "Use a process diagram to show the steps an institution takes to decide, and where others can step in.",
    "rule": [
-    "Number the steps every case takes and run them down one heavy line in order, each in a box with an edge in the text’s ink that names the step, who acts and the time the law sets. Set each branch a case may take beside the step it leaves or enters, in a box with a gray edge and a short line that says when it applies, joined by a gray arrow; arrows on the main line point the way a case moves. Print the date of the law the diagram draws, and give the table every step and branch in the order a reader meets them, each with where it leads. On a phone the steps run in one column, a step’s way in above it and its branches below it, set in from the line."
+    "Number the steps of the main path, as the law lays them out, and run them down one heavy line in order, each in a box with an edge in the text’s ink that names the step, who acts and the time the law sets. Set each branch a case may take beside the step it leaves or enters, in a box with a gray edge and a short line that says when it applies, joined by a gray arrow (Rule 14.6); arrows on the main line point the way a case moves. Print the date of the law the diagram draws, and give the table every step and branch in the order a reader meets them, each with where it leads. On a phone the steps run in one column, a step’s way in above it and its branches below it, set in from the line."
    ],
    "why": {
     "text": [
@@ -3923,7 +3923,7 @@
    "id": "14.97",
    "title": "Use a decision tree when the answer turns on facts about the reader’s own place.",
    "rule": [
-    "Put the question in a box with an edge in the text’s ink and each answer under it in a shaded box, joined by arrows of one weight, every answer drawn alike, since the reader’s own place picks the path. Open each answer with its word and how many places it holds, then what it means, then the places by name where the list is short; a further question sits in its own box under the answer that leads to it. Print the date the facts were checked. On a phone the answers run down the page, set in from a line at the left, and the table lists every place in the tree’s order with the answer it takes."
+    "Put the question in a box with an edge in the text’s ink and each answer under it in a shaded box, joined by arrows of one weight, every answer drawn alike (Rule 14.6). Open each answer with its word and how many places it holds, then what it means, then the places by name where the list is short; a further question sits in its own box under the answer that leads to it. Print the date the facts were checked. On a phone the answers run down the page, set in from a line at the left, and the table lists every place in the tree’s order with the answer it takes."
    ],
    "why": {
     "text": [
@@ -3967,7 +3967,7 @@
    ],
    "why": {
     "text": [
-     "Position answers the reader’s first question before any line is read: the upper band can change the rules. A line of authority says who decides and leaves the choice open, as the atlas records it, so it carries no sign."
+     "Position answers the reader’s first question before they read a single line, since the bodies in the upper band can change the rules. A line of authority says who decides and leaves the choice open, as the atlas records it, so it carries no sign."
     ],
     "basis": "Our systems atlas’s definition of an authority connection; design judgment"
    },
@@ -4006,7 +4006,7 @@
    "id": "14.99",
    "title": "Use an org chart to show who sits under whom inside one body.",
    "rule": [
-    "Put the body’s box at the top and run a line down the left to each group of its units, headed with the group’s count. Draw each unit as a card: its box, named, with the count of units under it, and under it, set in, a box for each of those, joined by gray elbow lines, every box with an edge in the text’s ink. Fill as many columns as the width holds, each card in the shortest, so the order reads from the top down, and keep any split by party to the table. On a phone the cards run in one column."
+    "Put the body’s box at the top and run a line down the left to each group of its units, headed with the group’s count. Draw each unit as a card: a named box with the count of units under it and, below it, set in, a box for each of those units, joined by gray elbow lines. Every box takes an edge in the text’s ink. Fill as many columns as the width holds, each card in the shortest column, so the order reads from the top down, and keep any split by party to the table. On a phone the cards run in one column."
    ],
    "why": {
     "text": [
@@ -4123,7 +4123,7 @@
    "id": "14.102",
    "title": "Use a roll-call grid to show how every member voted, with each party named in words.",
    "rule": [
-    "Draw one square a member in the party-mark ink: solid for yes, an outline for no, shaded for a member who did not vote and a faint outline for a vacant seat. Head each chamber with its vote, its date and the question and result in the record’s words. Give each party a row of its own, named in words with its count and how it voted, Democrats first, independents as the record lists them, folded into no party, and Republicans last, with vacant seats between, as the chart for Rule 14.53 orders the sides (Rule 14.7)."
+    "Draw one square for each member, in one neutral ink for every party (Rule 14.7): solid for yes, an outline for no, shaded for a member who did not vote and a faint outline for a vacant seat. Head each chamber with its vote, its date and the question and result in the record’s words. Give each party a row of its own, named in words with its count and how it voted, Democrats first, independents as the record lists them, folded into no party, and Republicans last, with vacant seats between, as the chart for Rule 14.53 orders the sides (Rule 14.7)."
    ],
    "why": {
     "text": [

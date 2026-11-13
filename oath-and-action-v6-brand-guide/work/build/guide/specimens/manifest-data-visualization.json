@@ -865,7 +865,7 @@
   "chapter": "14",
   "rule": "14.101",
   "width_px": null,
-  "alt": "A grid of the eleven routes to change in our systems atlas, each with who acts, what it takes, how it can be undone and how many of the atlas’s reform profiles list it. A federal statute takes a majority of each chamber, 60 senators to end debate on most bills and the President’s signature, and 38 reforms list it. A state statute is listed by 29, the local route by 15 and a state ballot measure by 11. Executive action and court doctrine are listed by 7 each, a chamber rule or confirmation by 6, enforcement and litigation by 5, civil society by 4, an amendment under Article V by 3 and an interstate compact by 1.",
+  "alt": "A grid of the eleven routes to change in our systems atlas, each with who acts, what it takes, how it can be undone and how many of the atlas’s reform profiles list it. A federal statute takes a majority of each chamber, 60 senators to end debate on most bills and the President’s signature, and 38 reforms list it. A state statute is listed by 29, the local route by 15 and a state ballot measure by 11. Seven reforms list executive action and seven court doctrine, six a chamber rule or confirmation, five enforcement and litigation, four civil society, three an amendment under Article V and one an interstate compact.",
   "illustrative": false,
   "notes": "S71, comparison-grid: the chart kit draws it from work/build/chart-kit/specs/s71.json (contract R1-C3)"
  },

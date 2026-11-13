@@ -2,7 +2,7 @@
   "id": "14.102",
   "title": "Use a roll-call grid to show how every member voted, with each party named in words.",
   "rule": [
-    "Draw one square a member in the party-mark ink: solid for yes, an outline for no, shaded for a member who did not vote and a faint outline for a vacant seat. Head each chamber with its vote, its date and the question and result in the record’s words. Give each party a row of its own, named in words with its count and how it voted, Democrats first, independents as the record lists them, folded into no party, and Republicans last, with vacant seats between, as the chart for Rule 14.53 orders the sides (Rule 14.7)."
+    "Draw one square for each member, in one neutral ink for every party (Rule 14.7): solid for yes, an outline for no, shaded for a member who did not vote and a faint outline for a vacant seat. Head each chamber with its vote, its date and the question and result in the record’s words. Give each party a row of its own, named in words with its count and how it voted, Democrats first, independents as the record lists them, folded into no party, and Republicans last, with vacant seats between, as the chart for Rule 14.53 orders the sides (Rule 14.7)."
   ],
   "use_when": "The reader asks how each member of a chamber voted on one bill, and how many from each party crossed over.",
   "use_instead": [
