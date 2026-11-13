@@ -1,10 +1,10 @@
 # Handoff for the next session: Oath & Action Edition 06 (twenty-fourth handoff, November 13)
 
-Written November 13, 2026, after board 2 was built, scored and published. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-3/20261113_Next-Session-Handoff_V23.md`. V5's sections 3 to 5, section 3 of V8 to V23, and section 3 below hold together. Decision log entries for this chat run from D3-1536 to D3-1673, with Dustin's answers DR-254 to DR-260. The change ledger runs to C-105.
+Written November 13, 2026, after board 2 was built, scored and published. A new session reads `CLAUDE.md`, then its start-of-session list, then this note. It replaces `work/handoffs/phase-3/20261113_Next-Session-Handoff_V23.md`. V5's sections 3 to 5, section 3 of V8 to V23, and section 3 below hold together. Decision log entries for this chat run from D3-1536 to D3-1673, with Dustin's answers DR-254 to DR-265. The change ledger runs to C-105.
 
 ## 1. Where things stand
 
-Phase 3 is the active phase. Board 2 is published privately and waits on Dustin's five replies: https://claude.ai/artifact/AyKqXMpc5Ao68NuZ7wL2m2. The guide preview it links to is the chapters page, version 9: https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF (chapters 01 to 15, 17 to 19 and 26). Tracker row `c04` is done; row `c05` is next.
+Phase 3 is the active phase. Board 2 is published privately, and Dustin accepted all five of its recommendations on November 13 (DR-261 to DR-265): https://claude.ai/artifact/AyKqXMpc5Ao68NuZ7wL2m2. The guide preview it links to is the chapters page, version 9: https://claude.ai/artifact/9pWY47rkVa8N2SFwAPExTF (chapters 01 to 15, 17 to 19 and 26). Tracker row `c04` is done; row `c05` is next.
 
 **What this chat did**
 - **Confirmed the committed state** (D3-1536, D3-1537): tip `8dddf518`; V11's three setup steps; the three keys answered 200; strict build exit 0, 0 warnings, 11,235,128 bytes, 344 rules, 638 specimens; quick guide check PASS at 1440 and 390 px.
@@ -15,7 +15,7 @@ Phase 3 is the active phase. Board 2 is published privately and waits on Dustin'
 - **Reply 5 and DR-144** (D3-1561): the first wording would have renamed Civic Line icon CL-026; the recommendation now keeps "Executive unilateralism" as the icon's approved name and recommends each variable's own title only in loop drawings (chapters 11 and 15) and in V7.1.
 - **The guide's last build** (D3-1557, D3-1558): strict exit 0, 0 warnings, 11,236,260 bytes, 344 rules, 638 specimens; quick guide check PASS, 694 specimens, 3,296 same-page links, 0 failures; committed as `work/boards/phase-3/round-3/20261113_Guide-Preview-V9.html` (SHA-256 `4c834d2b…`). Share per plate 13,235 bytes for round 4's 13 specimens; projection 15,044,827 of 15,500,000. S73 measures 14,059 bytes with its frame, under D3-1328's 14,106; all 141 plates under their ceilings (`work/handoffs/phase-3/board-2-pictures/20261113_Plate-Bytes.json`).
 
-**Board 2's five replies, with the studio's recommendations**
+**Board 2's five replies, each answered as recommended (DR-261 to DR-265)**
 1. S12 at a desk: the stacked tile (each state's code over its figure, arrow beneath; fits a 618 px drawing, the column from a 1,104 px window; a 618 px frame scrolling 62 px below that), or the 1,024 px frame that scrolls 468 px. Recommended: the stacked tile (data lead and creative director agree). If chosen, the cartographer and engineer build it in round 4's pass and the engineer measures the kit's bytes first.
 2. The other board 1 changes (S16, S10, S05 as drawn; thirteen moved labels and lines; twelve charts' ink words). Recommended: approve as listed.
 3. Forms whose data or drawing changed (nine charts: S73, S76, S78, S80, S59, S54, S55, S41, S20) and seventeen data plan changes; no tier changed. Recommended: approve as listed.
@@ -29,8 +29,8 @@ Phase 3 is the active phase. Board 2 is published privately and waits on Dustin'
 ### A. Confirm the committed state
 Set row `c05` of the work tracker active. Then V11's three setup steps, the three key tests, a strict build and the quick guide check, on a quiet machine.
 
-### B. Board 2's answers
-If Dustin has answered the five replies, log them as DR-261 on, then apply them with the owners who hold each file (the stacked tile, if chosen, belongs in round 4's build with a weight measure first). If he has not, ask for them first.
+### B. Board 2's answers (DR-261 to DR-265)
+Apply them with the owners who hold each file: the stacked tile for S12 in round 4's build, with the engineer's weight measure first (DR-261); the V7.1 items added to `work/handoffs/phase-1/20261021_Atlas-V7-1-Issue-List.md` by the research lead (DR-264); each variable's title in loop drawings in chapters 11 and 15, CL-026 keeping its name (DR-265). DR-262 and DR-263 need no work beyond the ledger.
 
 ### C. Round 4 and chapter 15's interaction rules
 Row `c05`: board 2's apply pass; round 4's build, 13 forms (proportion and overlap, infographics and social formats); chapter 15's rules 15.19 to 15.21. Ask the analyst's questions, post a short plan with the round 4 brief on round 3's model (plan file rows fixed first, rulings first, a weight ceiling per plate in the brief: at most 13,235 bytes with its frame, none past 15,000), and wait for Dustin's go. Rounds 4 and 5 with chapter 15 end at board 3, then Gate 3.
@@ -50,17 +50,17 @@ Row `c05`: board 2's apply pass; round 4's build, 13 forms (proportion and overl
 ```
 I'm continuing the Oath & Action Edition 06 brand guide rebuild. All work is on the branch claude/friendly-brahmagupta-tonmfa in the oathaction/Dustin-s-Command-Center repo, in the folder oath-and-action-v6-brand-guide/. Fetch that branch and work from it. Keep committing and pushing to it unless I say otherwise.
 
-Board 2 is published (https://claude.ai/artifact/AyKqXMpc5Ao68NuZ7wL2m2) with five replies for me, and the guide preview is version 9. [Paste your five replies here, or say "As recommended".] Apply my board 2 answers, then plan round 4 (13 forms: proportion and overlap, infographics and social formats) and chapter 15's rules 15.19 to 15.21, as the Gate 2 report's section 9 sets it. Confirm the committed state with a strict build and the quick guide check first.
+Board 2 is published (https://claude.ai/artifact/AyKqXMpc5Ao68NuZ7wL2m2) and the guide preview is version 9. I accepted all five of board 2's recommendations (DR-261 to DR-265). Apply them, then plan round 4 (13 forms: proportion and overlap, infographics and social formats) and chapter 15's rules 15.19 to 15.21, as the Gate 2 report's section 9 sets it. Confirm the committed state with a strict build and the quick guide check first.
 
 Before you do anything else, read these in order:
-1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from D3-1536 to the end), the change ledger (to C-105), the open questions (Q-18), and the Gate 2 report (work/ledger/20261111_Gate-2-Report.md), section 9.
+1. oath-and-action-v6-brand-guide/CLAUDE.md (the studio rules), then its start-of-session reading list: the decision log (from D3-1536 to the end, with DR-254 to DR-265), the change ledger (to C-105), the open questions (Q-18), and the Gate 2 report (work/ledger/20261111_Gate-2-Report.md), section 9.
 2. oath-and-action-v6-brand-guide/work/handoffs/phase-3/20261113_Next-Session-Handoff_V24.md, then section 3 of V5 to V23's handoffs as V24 lists them, the board 2 brief and fix brief (work/handoffs/phase-3/20261113_Board-2-Brief.md and 20261113_Board-2-Fix-Brief.md), the board's decisions file (work/handoffs/phase-3/20261113_Board-2-Decisions.json), the creative director's board 2 review with its second pass (20261113_CD-Review-Of-Board-2.md), the round 4 data plan (work/handoffs/phase-3/20261112_Round-4-Data-Plan.md) and the round 3 brief (20261113_Phase-3-Round-3-Brief.md) as the model for round 4's.
 
 Data keys are already saved in this environment: the api.data.gov key for api.open.fec.gov and api.congress.gov, and the Census key as CENSUS_API_KEY. Test each with one request before use. Never ask me to paste a key into the chat.
 
 Nonpartisan means one standard of evidence for everyone, with findings reported as the record shows them, even when they fall more on one side (DR-93). Never manufacture balance.
 
-Settled and not to be changed: the Civic Line icons (DR-144) with the redraws and new drawings I approved (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 like every other reform (DR-223); the atlas visual system (DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and build order (DR-62, DR-63); the chart rules of DR-64, with DR-255's one exception; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on, including DR-225 to DR-260.
+Settled and not to be changed: the Civic Line icons (DR-144) with the redraws and new drawings I approved (DR-156 to DR-182, DR-207 to DR-211, DR-216, DR-217); Reforms R-01 and R-02 like every other reform (DR-223); the atlas visual system (DR-36); the chart system (Explainer on Newsprint with diverging pair B, DR-52 to DR-61); the chapter 14 coverage plan and build order (DR-62, DR-63); the chart rules of DR-64, with DR-255's one exception; chapter 02's writing rules (DR-73 to DR-83); and every answer I have given from DR-95 on, including DR-225 to DR-265.
 
 Phase 3 runs as the proposal sets it: rounds 4 and 5 with chapter 15 ending at board 3, then Gate 3. The guide stays one file.
 
@@ -87,7 +87,7 @@ Created, all under `work/` unless named:
 - **Research:** `research/20261113_Atlas-Recheck-Full-Table.md`, `-Full-Data.json`; `build/scripts/phase-3/research_atlas_recheck_full.py`.
 
 Modified:
-- `ledger/20261020_Decision-Log.md` (D3-1536 to D3-1673, DR-254 to DR-260); `ledger/20261020_Change-Ledger.md` (C-099 to C-105).
+- `ledger/20261020_Decision-Log.md` (D3-1536 to D3-1674, DR-254 to DR-265); `ledger/20261020_Change-Ledger.md` (C-099 to C-105).
 - Specs S06, S09, S10, S16, S21, S23, S38, S39, S42, S60, S63, S69, S70, S71, S72, S73, S74, S81, S83; entries 14-120 and 14-124; sketch `s-14-124-sketch.html`; chapter 14's generated files; six atlas sidecars; `research_v7_extract.py`, `data_round0_build.py`; `kit-build.js`, `oa-chart.mjs`, `plate-share.json`; `scripts/phase-2/guide_build.py` (DR-255's exemption and its self-test).
 
 Published: the chapters page, version 9 (private); board 2 (private). Work tracker: row `c04` done. Not touched: `source/`, `deliverables/`, Atlas V7.
